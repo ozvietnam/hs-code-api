@@ -16,7 +16,8 @@
     { "source": "/api/customs-types/recommend", "destination": "/api/customs-types?action=recommend" },
     { "source": "/api/customs-types/:code", "destination": "/api/customs-types?code=:code" },
     { "source": "/api/legal-docs/:code", "destination": "/api/dataset?resource=legal_doc&code=:code" },
-    { "source": "/api/legal-docs", "destination": "/api/dataset?resource=legal_docs" }
+    { "source": "/api/legal-docs", "destination": "/api/dataset?resource=legal_docs" },
+    { "source": "/api/match", "destination": "/api/search?mode=match" }
   ],
   "functions": {
     "api/**/*.js": {

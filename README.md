@@ -20,7 +20,11 @@ vercel env add GEMINI_API_KEY production
 vercel env add GEMINI_RERANK_MODEL production   # optional, default gemini-2.5-flash
 vercel env add GEMINI_DESCRIBE_MODEL production # optional, default gemini-2.5-flash
 vercel env add GEMINI_ENRICH_MODEL production   # optional, default gemini-2.5-pro (offline enrich script only)
+vercel env add HS_MATCH_PUBLIC production       # optional: "true" = /api/match without Bearer token
+vercel env add CORS_ORIGINS production          # optional comma list; defaults include ERP + localhost
 ```
+
+\* When `HS_MATCH_PUBLIC=true`, `/api/match` skips Bearer auth (for server-to-server ERP). Other routes still require `HS_API_TOKEN`.
 
 Generate token:
 
@@ -35,6 +39,7 @@ openssl rand -hex 32
 | `/api/health` | GET | No | Service health + config checks |
 | `/api/tax?hs=` | GET | Yes | Tariff lookup (camelCase) |
 | `/api/search?q=` | GET | Yes | Keyword / HS search |
+| `/api/match` | POST | Optional* | Multilingual product → top-K HS (OZSource ERP) |
 | `/api/notes?chapter=` | GET | Yes | Chapter notes |
 | `/api/conflicts?hs=` | GET | Yes | HS conflict/risk details |
 | `/api/precedents?hs=` | GET | Yes | TB-TCHQ precedent list by HS |

@@ -3,10 +3,51 @@ const { setCors, handleOptions } = require('../lib/cors');
 const { taxData } = require('../lib/data');
 const { mapSearchResult } = require('../lib/tax-mapper');
 const { searchCandidates } = require('../lib/search-utils');
+const { matchProducts } = require('../lib/product-match');
+
+function parseBody(req) {
+  let body = req.body;
+  if (typeof body === 'string') {
+    try {
+      body = JSON.parse(body);
+    } catch {
+      return null;
+    }
+  }
+  return body && typeof body === 'object' ? body : null;
+}
+
+function handleMatch(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed', hint: 'Use POST /api/match' });
+  }
+  if (requireAuth(req, res, { publicRoute: true })) return;
+
+  const body = parseBody(req);
+  if (!body) {
+    return res.status(400).json({ error: 'Invalid JSON body' });
+  }
+
+  try {
+    const payload = matchProducts(body);
+    return res.status(200).json(payload);
+  } catch (error) {
+    if (error.code === 'VALIDATION') {
+      return res.status(400).json({ ok: false, error: error.message });
+    }
+    return res.status(500).json({ ok: false, error: error.message });
+  }
+}
 
 module.exports = function handler(req, res) {
-  setCors(res);
+  setCors(res, req);
   if (handleOptions(req, res)) return;
+
+  const mode = String(req.query.mode || '').trim();
+  if (mode === 'match') {
+    return handleMatch(req, res);
+  }
+
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
