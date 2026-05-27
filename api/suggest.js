@@ -3,6 +3,7 @@ const { setCors, handleOptions } = require('../lib/cors');
 const { searchCandidates } = require('../lib/search-utils');
 const { geminiGenerateJson } = require('../lib/gemini');
 const { buildEvidenceTrace } = require('../lib/suggest-evidence');
+const { translateToVi, getBrandHint } = require('../lib/glossary');
 
 const SYSTEM_PROMPT = `Bạn là chuyên gia phân loại hàng hóa hải quan Việt Nam.
 Cho mô tả hàng hóa và danh sách mã HS candidate, hãy chọn tối đa 3 mã phù hợp nhất.
@@ -47,6 +48,8 @@ module.exports = async function handler(req, res) {
 
   const topCandidates = Math.min(Math.max(parseInt(body?.options?.topCandidates, 10) || 10, 3), 20);
   const topReranked = Math.min(Math.max(parseInt(body?.options?.topReranked, 10) || 3, 1), 5);
+  const glossaryVi = translateToVi(description);
+  const brandHint = getBrandHint(description);
   const evidence = searchCandidates(description, { topCandidates });
   const audit = buildEvidenceTrace(description, evidence);
 
@@ -67,6 +70,8 @@ module.exports = async function handler(req, res) {
     const userPrompt = JSON.stringify(
       {
         description,
+        glossaryTranslation: glossaryVi !== description ? glossaryVi : undefined,
+        brandHint,
         candidates: evidence.map(({ hsCode, nameVi, policyByHs, score }) => ({
           hsCode,
           nameVi,
@@ -101,6 +106,8 @@ module.exports = async function handler(req, res) {
       evidenceTrace: audit.evidenceTrace,
       girRulesApplied: audit.girRulesApplied,
       antiPatternWarnings: audit.antiPatternWarnings,
+      glossaryTranslation: glossaryVi !== description ? glossaryVi : undefined,
+      brandHint,
       llmModel: model,
       ms,
     });
