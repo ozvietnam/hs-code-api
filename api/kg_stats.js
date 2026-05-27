@@ -1,6 +1,6 @@
 const { requireAuth } = require('../lib/auth');
 const { setCors, handleOptions } = require('../lib/cors');
-const { taxData } = require('../lib/data');
+const { taxData, explanatoryNotesData, precedentsData, conflictsData } = require('../lib/data');
 const { enrichedEntryCount } = require('../lib/enriched-data');
 const fs = require('fs');
 const path = require('path');
@@ -34,6 +34,9 @@ module.exports = function handler(req, res) {
     },
     withWarnings,
     enrichedPolicies,
+    explanatoryNotes: Object.keys(explanatoryNotesData).length,
+    precedentHsCodes: Object.keys(precedentsData).length,
+    conflictHsCodes: Object.keys(conflictsData).length,
     lastEnrichedAt,
   });
 };

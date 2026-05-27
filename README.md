@@ -36,6 +36,8 @@ openssl rand -hex 32
 | `/api/tax?hs=` | GET | Yes | Tariff lookup (camelCase) |
 | `/api/search?q=` | GET | Yes | Keyword / HS search |
 | `/api/notes?chapter=` | GET | Yes | Chapter notes |
+| `/api/conflicts?hs=` | GET | Yes | HS conflict/risk details |
+| `/api/precedents?hs=` | GET | Yes | TB-TCHQ precedent list by HS |
 | `/api/suggest` | POST | Yes | AI HS suggestions (Gemini) |
 | `/api/describe` | POST | Yes | AI customs description (Gemini) |
 | `/api/feedback` | POST | Yes | Capture director override feedback |
@@ -74,6 +76,9 @@ Tax/search responses use camelCase fields expected by `erp-xnk` client:
 - `data/search.json` — search index
 - `data/notes.json` — chapter notes
 - `data/tax-enriched.json` — optional Gemini-enriched policy structure (see below)
+- `data/explanatory-notes.json` — Level 2 explanatory notes by HS (from legacy import)
+- `data/precedents.json` — Level 4 TB-TCHQ precedents by HS (from legacy import)
+- `data/conflicts.json` — Level 5 conflict/risk hints by HS (from legacy import)
 - `data/feedback.jsonl` — feedback events (append-only; may not persist on serverless cold paths)
 - `data/legacy-knowledge.sample.json` — example for legacy merge (#4); real export → `legacy-knowledge.json` (gitignored)
 
@@ -82,6 +87,9 @@ Tax/search responses use camelCase fields expected by `erp-xnk` client:
 ```bash
 # Snapshot current tariff JSON (writes data/versions/tax-<label>.json, gitignored)
 npm run data:snapshot-tax -- --label=v2026
+
+# Import legacy knowledge datasets from hs-knowledge-api (writes 3 data files)
+npm run data:import-legacy
 
 # Gemini deep-parse policy strings → data/tax-enriched.json (resume-safe, commits API batches)
 GEMINI_API_KEY=... npm run data:enrich-policies -- --dry-run --limit=3

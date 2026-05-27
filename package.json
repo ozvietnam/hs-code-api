@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
+    "data:import-legacy": "node scripts/import-legacy.mjs",
     "data:merge-legacy": "node scripts/merge-legacy-knowledge.mjs",
     "data:snapshot-tax": "node scripts/tariff-snapshot.mjs",
     "data:enrich-policies": "node scripts/enrich-policies.mjs"
