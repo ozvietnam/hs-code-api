@@ -1,0 +1,31 @@
+name: Describe compliance regression
+
+on:
+  push:
+    paths:
+      - 'lib/declaration-validator.js'
+      - 'lib/customs-prompt.js'
+      - 'lib/describe-compose.js'
+      - 'api/describe.js'
+      - 'data/anti-patterns.json'
+      - 'data/chapter-specific-rules.json'
+      - 'tests/describe-cases.json'
+  pull_request:
+    paths:
+      - 'lib/declaration-validator.js'
+      - 'lib/customs-prompt.js'
+      - 'lib/describe-compose.js'
+      - 'api/describe.js'
+      - 'data/anti-patterns.json'
+      - 'data/chapter-specific-rules.json'
+      - 'tests/describe-cases.json'
+
+jobs:
+  test-describe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm run test:describe

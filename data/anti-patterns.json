@@ -1,5 +1,73 @@
 {
   "version": "2026-01",
+  "validation": [
+    {
+      "code": "TOO_GENERIC",
+      "severity": "error",
+      "scorePenalty": 25,
+      "patterns": ["\\bcác loại\\b", "\\bhang tieu dung\\b", "\\bhang khac\\b", "\\bmot so\\b", "\\bvai chiec\\b"],
+      "fields": ["tenHang", "customsDescription"]
+    },
+    {
+      "code": "ABBREVIATION_UNCLEAR",
+      "severity": "error",
+      "scorePenalty": 15,
+      "patterns": ["\\b(TB|SP|PC|TH|HH)\\b(?!\\s*[-—:])"],
+      "fields": ["tenHang"]
+    },
+    {
+      "code": "LOCAL_DIALECT",
+      "severity": "error",
+      "scorePenalty": 15,
+      "patterns": ["\\bcay nuoc\\b", "\\bdo dien gia dung\\b"],
+      "fields": ["tenHang"]
+    },
+    {
+      "code": "VAGUE_QUANTITY",
+      "severity": "warn",
+      "scorePenalty": 10,
+      "patterns": ["\\bmot so\\b", "\\bvai chiec\\b", "\\bnhieu loai\\b"],
+      "fields": ["tenHang", "quyCach"]
+    },
+    {
+      "code": "MISSING_MATERIAL",
+      "severity": "warn",
+      "scorePenalty": 10,
+      "chapters": ["39", "40", "44", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63"],
+      "requireField": "thanhPhanCauTao"
+    },
+    {
+      "code": "MISSING_SPEC",
+      "severity": "error",
+      "scorePenalty": 20,
+      "chapters": ["84", "85"],
+      "requireField": "thongSoKyThuat"
+    },
+    {
+      "code": "MISMATCH_HS",
+      "severity": "error",
+      "scorePenalty": 25
+    },
+    {
+      "code": "MISSING_BRAND",
+      "severity": "warn",
+      "scorePenalty": 8,
+      "requireField": "nhanHieu",
+      "whenBrandProvidedInInput": true
+    },
+    {
+      "code": "WRONG_CONDITION",
+      "severity": "error",
+      "scorePenalty": 20,
+      "patterns": ["\\bcu\\b", "\\bda qua su dung\\b", "\\bused\\b"],
+      "allowedTinhTrang": ["Đã qua sử dụng", "Tân trang"]
+    },
+    {
+      "code": "MIXED_LANGUAGE",
+      "severity": "warn",
+      "scorePenalty": 5
+    }
+  ],
   "patterns": [
     {
       "id": "marketing-only",

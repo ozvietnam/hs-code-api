@@ -1,0 +1,70 @@
+[
+  {
+    "id": "excellent-phone",
+    "hsCode": "85171300",
+    "declaration": {
+      "tenHang": "Điện thoại di động thông minh Apple iPhone 15 Pro Max",
+      "xuatXu": { "code": "CN", "nameVi": "Trung Quốc" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "nhanHieu": "Apple",
+      "model": "A2848",
+      "thongSoKyThuat": ["dung lượng 256GB", "chip A17 Pro", "màn 6.7 inch"],
+      "chapterSpecific": { "voltage": "3.7V Li-ion", "power": "20W", "modelNumber": "A2848" }
+    },
+    "context": { "tariffNameVi": "Điện thoại di động" },
+    "minLevel": "GOOD",
+    "expectPass": true
+  },
+  {
+    "id": "reject-generic",
+    "hsCode": "85171300",
+    "declaration": {
+      "tenHang": "Điện thoại các loại",
+      "xuatXu": { "code": "CN", "nameVi": "Trung Quốc" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%"
+    },
+    "context": { "tariffNameVi": "Điện thoại di động" },
+    "maxLevel": "WEAK",
+    "expectPass": false
+  },
+  {
+    "id": "missing-origin",
+    "hsCode": "85171300",
+    "declaration": {
+      "tenHang": "Điện thoại thông minh Samsung Galaxy S24",
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thongSoKyThuat": ["5G", "256GB"]
+    },
+    "context": {},
+    "expectPass": false,
+    "expectMissing": ["xuatXu"]
+  },
+  {
+    "id": "wrong-condition",
+    "hsCode": "85171300",
+    "declaration": {
+      "tenHang": "Điện thoại iPhone đã qua sử dụng",
+      "xuatXu": { "code": "US", "nameVi": "Hoa Kỳ" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thongSoKyThuat": ["128GB"]
+    },
+    "context": { "customerDescription": "hàng cũ" },
+    "expectCodes": ["WRONG_CONDITION"]
+  },
+  {
+    "id": "chapter-85-missing-spec",
+    "hsCode": "85171300",
+    "declaration": {
+      "tenHang": "Thiết bị điện thoại di động không có thông số",
+      "xuatXu": { "code": "VN", "nameVi": "Việt Nam" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%"
+    },
+    "context": { "tariffNameVi": "Điện thoại" },
+    "expectCodes": ["MISSING_SPEC"]
+  }
+]
