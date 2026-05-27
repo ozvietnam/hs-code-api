@@ -19,6 +19,7 @@ vercel env add HS_API_TOKEN production
 vercel env add GEMINI_API_KEY production
 vercel env add GEMINI_RERANK_MODEL production   # optional, default gemini-2.5-flash
 vercel env add GEMINI_DESCRIBE_MODEL production # optional, default gemini-2.5-flash
+vercel env add GEMINI_ENRICH_MODEL production   # optional, default gemini-2.5-pro (offline enrich script only)
 ```
 
 Generate token:
@@ -72,4 +73,22 @@ Tax/search responses use camelCase fields expected by `erp-xnk` client:
 - `data/tax.json` — 11,871 HS codes + tariffs + policies
 - `data/search.json` — search index
 - `data/notes.json` — chapter notes
+- `data/tax-enriched.json` — optional Gemini-enriched policy structure (see below)
 - `data/feedback.jsonl` — feedback events (append-only; may not persist on serverless cold paths)
+- `data/legacy-knowledge.sample.json` — example for legacy merge (#4); real export → `legacy-knowledge.json` (gitignored)
+
+## Offline data pipeline (Issues #5, #7, partial #4)
+
+```bash
+# Snapshot current tariff JSON (writes data/versions/tax-<label>.json, gitignored)
+npm run data:snapshot-tax -- --label=v2026
+
+# Gemini deep-parse policy strings → data/tax-enriched.json (resume-safe, commits API batches)
+GEMINI_API_KEY=... npm run data:enrich-policies -- --dry-run --limit=3
+GEMINI_API_KEY=... npm run data:enrich-policies -- --batch=5 --concurrency=2
+
+# Merge legacy blobs (place data/legacy-knowledge.json export first)
+npm run data:merge-legacy
+```
+
+When `tax-enriched.json` contains entries keyed by HS, `/api/tax` returns those `warnings` with `enrichmentSource: "gemini"`. Until then the API uses heuristic regex (`enrichmentSource: "heuristic"`).

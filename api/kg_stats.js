@@ -1,6 +1,7 @@
 const { requireAuth } = require('../lib/auth');
 const { setCors, handleOptions } = require('../lib/cors');
 const { taxData } = require('../lib/data');
+const { enrichedEntryCount } = require('../lib/enriched-data');
 const fs = require('fs');
 const path = require('path');
 
@@ -15,6 +16,7 @@ module.exports = function handler(req, res) {
   const rows = Object.values(taxData);
   const chapters = new Set(rows.map((r) => r.hs.slice(0, 2)));
   const withWarnings = rows.filter((r) => r.cs && String(r.cs).trim()).length;
+  const enrichedPolicies = enrichedEntryCount();
 
   const enrichedPath = path.join(process.cwd(), 'data', 'tax-enriched.json');
   let lastEnrichedAt = null;
@@ -31,6 +33,7 @@ module.exports = function handler(req, res) {
       withVat: rows.filter((r) => r.vat !== null && r.vat !== '').length,
     },
     withWarnings,
+    enrichedPolicies,
     lastEnrichedAt,
   });
 };

@@ -1,5 +1,10 @@
 {
   "name": "hs-code-api-1",
   "version": "2.0.0",
-  "private": true
+  "private": true,
+  "scripts": {
+    "data:merge-legacy": "node scripts/merge-legacy-knowledge.mjs",
+    "data:snapshot-tax": "node scripts/tariff-snapshot.mjs",
+    "data:enrich-policies": "node scripts/enrich-policies.mjs"
+  }
 }
