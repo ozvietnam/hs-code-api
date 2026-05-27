@@ -25,7 +25,14 @@ module.exports = function handler(req, res) {
   const candidates = searchCandidates(q, { topCandidates: limitNum, csOnly: onlyCS });
   const results = candidates.map((item) => {
     const full = taxData[item.hsCode] || {};
-    return mapSearchResult({ hs: item.hsCode, vn: item.nameVi, cs: item.hasPolicyWarning ? '1' : '0' }, full);
+    return mapSearchResult(
+      {
+        hs: item.hsCode,
+        vn: item.nameVi,
+        cs: item.hasPolicyWarning ? '1' : '0',
+      },
+      full
+    );
   });
 
   return res.status(200).json({
