@@ -3,10 +3,12 @@
   "rewrites": [
     { "source": "/admin", "destination": "/admin/index.html" },
     { "source": "/admin/", "destination": "/admin/index.html" },
-    {
-      "source": "/api/version/diff",
-      "destination": "/api/version-diff"
-    }
+    { "source": "/api/versions", "destination": "/api/tariff-versions" },
+    { "source": "/api/versions/", "destination": "/api/tariff-versions" },
+    { "source": "/api/version", "destination": "/api/tariff-version" },
+    { "source": "/api/version/", "destination": "/api/tariff-version" },
+    { "source": "/api/version/diff", "destination": "/api/tariff-version-diff" },
+    { "source": "/api/version-diff", "destination": "/api/tariff-version-diff" }
   ],
   "functions": {
     "api/**/*.js": {

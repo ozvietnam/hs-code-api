@@ -43,9 +43,9 @@ openssl rand -hex 32
 | `/api/feedback` | POST | Yes | Capture director override feedback |
 | `/api/kg_chapter?chapter=` | GET | Yes | List HS codes in chapter |
 | `/api/kg_stats` | GET | Yes | Dataset overview |
-| `/api/versions` | GET | Yes | Tariff snapshot index |
-| `/api/version?id=` | GET | Yes | One snapshot metadata |
-| `/api/version/diff?from=&to=` | GET | Yes | Diff two snapshots (alias: **`/api/version-diff`**) |
+| `/api/versions` | GET | Yes | Tariff snapshot index (rewrite → `/api/tariff-versions`) |
+| `/api/version?id=` | GET | Yes | One snapshot metadata (rewrite → `/api/tariff-version`) |
+| `/api/version/diff?from=&to=` | GET | Yes | Diff two snapshots (rewrite → **`/api/tariff-version-diff`**) |
 | `/api/admin/overview` | GET | Yes | Aggregated KPIs for `/admin` dashboard |
 
 ## Admin dashboard

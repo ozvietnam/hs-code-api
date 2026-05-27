@@ -2,8 +2,8 @@ const { requireAuth } = require('../lib/auth');
 const { setCors, handleOptions } = require('../lib/cors');
 const { diffSnapshotFiles, resolveVersionMeta } = require('../lib/tariff-versions');
 
-/** Flat route avoids Vercel conflict: sibling `api/version.js` + `api/version/` breaks builds.
- * Canonical URL preserved via rewrite: `/api/version/diff` → this handler.
+/** Implemented as `/api/tariff-version-diff` because Vercel blocks or shadows `/api/version*`
+ * routes on some projects. Public URL remains `/api/version/diff` via `vercel.json` rewrite.
  */
 module.exports = function handler(req, res) {
   setCors(res);
