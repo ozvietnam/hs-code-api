@@ -3,6 +3,7 @@ const { setCors, handleOptions } = require('../lib/cors');
 const { searchCandidates } = require('../lib/search-utils');
 const { geminiGenerateJson } = require('../lib/gemini');
 const { buildEvidenceTrace } = require('../lib/suggest-evidence');
+const { applyGirRules } = require('../lib/gir-engine');
 const { translateToVi, getBrandHint } = require('../lib/glossary');
 
 const SYSTEM_PROMPT = `Bạn là chuyên gia phân loại hàng hóa hải quan Việt Nam.
@@ -93,10 +94,14 @@ module.exports = async function handler(req, res) {
       defaultModel: 'gemini-2.5-flash',
     });
 
-    const suggestions = (json.suggestions || []).slice(0, topReranked);
+    const rawSuggestions = (json.suggestions || []).slice(0, topReranked);
+    const girRanked = applyGirRules(rawSuggestions, description);
+    const suggestions = girRanked.suggestions.slice(0, topReranked);
+    const girRankingRules = girRanked.girRankingRules || [];
 
     return res.status(200).json({
       suggestions,
+      girRankingRules,
       evidence: evidence.map(({ hsCode, source, score, queryExpansion }) => ({
         hsCode,
         source,
