@@ -3,12 +3,16 @@
   "rewrites": [
     { "source": "/admin", "destination": "/admin/index.html" },
     { "source": "/admin/", "destination": "/admin/index.html" },
-    { "source": "/api/versions", "destination": "/api/tariff-versions" },
-    { "source": "/api/versions/", "destination": "/api/tariff-versions" },
-    { "source": "/api/version", "destination": "/api/tariff-version" },
-    { "source": "/api/version/", "destination": "/api/tariff-version" },
-    { "source": "/api/version/diff", "destination": "/api/tariff-version-diff" },
-    { "source": "/api/version-diff", "destination": "/api/tariff-version-diff" }
+    { "source": "/api/kg_stats", "destination": "/api/dataset?resource=kg_stats" },
+    { "source": "/api/conflicts", "destination": "/api/dataset?resource=conflicts" },
+    { "source": "/api/precedents", "destination": "/api/dataset?resource=precedents" },
+    { "source": "/api/admin/overview", "destination": "/api/dataset?resource=admin_overview" },
+    { "source": "/api/versions", "destination": "/api/tariff?op=versions" },
+    { "source": "/api/versions/", "destination": "/api/tariff?op=versions" },
+    { "source": "/api/version", "destination": "/api/tariff?op=detail" },
+    { "source": "/api/version/", "destination": "/api/tariff?op=detail" },
+    { "source": "/api/version/diff", "destination": "/api/tariff?op=diff" },
+    { "source": "/api/version-diff", "destination": "/api/tariff?op=diff" }
   ],
   "functions": {
     "api/**/*.js": {

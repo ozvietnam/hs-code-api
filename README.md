@@ -42,16 +42,18 @@ openssl rand -hex 32
 | `/api/describe` | POST | Yes | AI customs description (Gemini) |
 | `/api/feedback` | POST | Yes | Capture director override feedback |
 | `/api/kg_chapter?chapter=` | GET | Yes | List HS codes in chapter |
-| `/api/kg_stats` | GET | Yes | Dataset overview |
-| `/api/versions` | GET | Yes | Tariff snapshot index (rewrite → `/api/tariff-versions`) |
-| `/api/version?id=` | GET | Yes | One snapshot metadata (rewrite → `/api/tariff-version`) |
-| `/api/version/diff?from=&to=` | GET | Yes | Diff two snapshots (rewrite → **`/api/tariff-version-diff`**) |
-| `/api/admin/overview` | GET | Yes | Aggregated KPIs for `/admin` dashboard |
+| `/api/kg_stats` | GET | Yes | Dataset overview (rewrite → `/api/dataset?resource=kg_stats`) |
+| `/api/versions` | GET | Yes | Tariff snapshot index (rewrite → `/api/tariff?op=versions`) |
+| `/api/version?id=` | GET | Yes | Snapshot metadata (rewrite → `/api/tariff?op=detail`) |
+| `/api/version/diff?from=&to=` | GET | Yes | Diff snapshots (rewrite → `/api/tariff?op=diff`) |
+| `/api/admin/overview` | GET | Yes | Admin KPI JSON (rewrite → `/api/dataset?resource=admin_overview`) |
+
+**Vercel Hobby** projects cap serverless functions (~12). Several “logical” endpoints are implemented as **`/api/dataset`** and **`/api/tariff`** with `resource` / `op` query params; `vercel.json` rewrites preserve the public URLs above.
 
 ## Admin dashboard
 
 - **URL:** `/admin` — read-only operator UI (paste Bearer token; optional one-time `?token=` then stored in `localStorage`).
-- **Data:** `GET /api/admin/overview` aggregates health, tariff coverage, feedback file summary, version index, and knowledge layer counts.
+- **Data:** `GET /api/admin/overview` (rewrites to dataset handler) aggregates health, tariff coverage, feedback file summary, version index, and knowledge layer counts.
 - **Follow-up:** request logging for “today stats” (see `todayStats.note` in JSON).
 
 ## Examples
