@@ -43,6 +43,9 @@ openssl rand -hex 32
 | `/api/feedback` | POST | Yes | Capture director override feedback |
 | `/api/kg_chapter?chapter=` | GET | Yes | List HS codes in chapter |
 | `/api/kg_stats` | GET | Yes | Dataset overview |
+| `/api/versions` | GET | Yes | Tariff snapshot index |
+| `/api/version?id=` | GET | Yes | One snapshot metadata |
+| `/api/version/diff?from=&to=` | GET | Yes | Diff two snapshots |
 
 ## Examples
 
@@ -80,13 +83,20 @@ Tax/search responses use camelCase fields expected by `erp-xnk` client:
 - `data/precedents.json` — Level 4 TB-TCHQ precedents by HS (from legacy import)
 - `data/conflicts.json` — Level 5 conflict/risk hints by HS (from legacy import)
 - `data/feedback.jsonl` — feedback events (append-only; may not persist on serverless cold paths)
-- `data/legacy-knowledge.sample.json` — example for legacy merge (#4); real export → `legacy-knowledge.json` (gitignored)
+- `data/versions/index.json` — tariff version catalog (`current` + metadata)
+- `data/versions/tax-v2026-01-01-base.json` — baseline snapshot (same row set as `tax.json` at import)
 
 ## Offline data pipeline (Issues #5, #7, partial #4)
 
 ```bash
-# Snapshot current tariff JSON (writes data/versions/tax-<label>.json, gitignored)
-npm run data:snapshot-tax -- --label=v2026
+# Snapshot current tariff JSON (updates data/versions/index.json)
+npm run data:snapshot-tax -- --label=v2026-w27 --set-current
+
+# Diff two snapshots on disk
+npm run data:diff-tax -- --from=tax-v2026-01-01-base.json --to=tax-other.json
+
+# Rollback live tax.json from a snapshot (local only; redeploy after)
+npm run data:rollback-tax -- --to=tax-v2026-01-01-base.json --backup
 
 # Import legacy knowledge datasets from hs-knowledge-api (writes 3 data files)
 npm run data:import-legacy

@@ -1,6 +1,7 @@
 const { requireAuth } = require('../lib/auth');
 const { setCors, handleOptions } = require('../lib/cors');
 const { taxData, explanatoryNotesData, precedentsData, conflictsData } = require('../lib/data');
+const { loadIndex } = require('../lib/tariff-versions');
 const { enrichedEntryCount } = require('../lib/enriched-data');
 const fs = require('fs');
 const path = require('path');
@@ -17,6 +18,7 @@ module.exports = function handler(req, res) {
   const chapters = new Set(rows.map((r) => r.hs.slice(0, 2)));
   const withWarnings = rows.filter((r) => r.cs && String(r.cs).trim()).length;
   const enrichedPolicies = enrichedEntryCount();
+  const versionIndex = loadIndex();
 
   const enrichedPath = path.join(process.cwd(), 'data', 'tax-enriched.json');
   let lastEnrichedAt = null;
@@ -37,6 +39,8 @@ module.exports = function handler(req, res) {
     explanatoryNotes: Object.keys(explanatoryNotesData).length,
     precedentHsCodes: Object.keys(precedentsData).length,
     conflictHsCodes: Object.keys(conflictsData).length,
+    tariffVersions: versionIndex.versions.length,
+    currentTariffVersion: versionIndex.current || null,
     lastEnrichedAt,
   });
 };
