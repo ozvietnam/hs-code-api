@@ -7,6 +7,7 @@ const { buildAdminOverview } = require('../lib/admin-overview');
 const { getDocByCode, listDocs } = require('../lib/legal-docs');
 const { getNotesCoverage } = require('../lib/gir-notes');
 const { searchPrecedents } = require('../lib/precedent-search');
+const { listMinistries, getMinistriesByChapter } = require('../lib/ministries');
 const fs = require('fs');
 const path = require('path');
 
@@ -128,6 +129,17 @@ module.exports = function handler(req, res) {
 
     if (resource === 'admin_overview') {
       return res.status(200).json(buildAdminOverview());
+    }
+
+    if (resource === 'ministries') {
+      const { chapter } = req.query;
+      if (chapter) {
+        const ch = String(parseInt(chapter, 10)).padStart(2, '0');
+        const items = getMinistriesByChapter(ch);
+        return res.status(200).json({ chapter: ch, total: items.length, items });
+      }
+      const items = listMinistries();
+      return res.status(200).json({ total: items.length, items });
     }
 
     if (resource === 'legal_docs') {
