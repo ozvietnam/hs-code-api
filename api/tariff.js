@@ -10,13 +10,99 @@ const {
   buildVersionsListResponse,
   diffSnapshotFiles,
 } = require('../lib/tariff-versions');
+const {
+  snapshotCurrentTax,
+  uploadTariffMap,
+  rollbackToSnapshot,
+  activateVersion,
+} = require('../lib/tariff-mutations');
+
+function parseJsonBody(req) {
+  let body = req.body;
+  if (typeof body === 'string') {
+    try {
+      body = JSON.parse(body);
+    } catch {
+      return { error: 'Invalid JSON body' };
+    }
+  }
+  return { body: body || {} };
+}
 
 /** Tariff versioning routes consolidated for Vercel Hobby function limit (~12 max).
  * Public URLs (/api/versions, /api/version, /api/version/diff) rewritten here with ?op=
+ * POST: op=snapshot|upload|rollback|activate (Bearer auth, local FS — may not persist on Vercel)
  */
 module.exports = function handler(req, res) {
   setCors(res);
   if (handleOptions(req, res)) return;
+
+  if (req.method === 'POST') {
+    if (requireAuth(req, res)) return;
+    const op = String(req.query.op || req.body?.op || '').trim();
+    const { body, error: parseErr } = parseJsonBody(req);
+    if (parseErr) return res.status(400).json({ error: parseErr });
+
+    try {
+      if (op === 'snapshot') {
+        const result = snapshotCurrentTax({
+          label: body.label,
+          id: body.id,
+          setCurrent: Boolean(body.setCurrent),
+          source: body.source || 'POST /api/tariff?op=snapshot',
+        });
+        return res.status(200).json(result);
+      }
+
+      if (op === 'upload') {
+        const taxMap = body.rows || body.tax || body.data;
+        const result = uploadTariffMap(taxMap, {
+          label: body.label,
+          id: body.id,
+          setCurrent: Boolean(body.setCurrent),
+          replaceLive: body.replaceLive !== false,
+          source: body.source || 'POST /api/tariff?op=upload',
+        });
+        return res.status(200).json(result);
+      }
+
+      if (op === 'rollback') {
+        const to = String(body.to || body.file || body.id || '').trim();
+        if (!to) {
+          return res.status(400).json({
+            error: 'to required',
+            example: { to: 'tax-v2026-01-01-base.json', backup: true },
+          });
+        }
+        const result = rollbackToSnapshot(to, { backup: body.backup !== false });
+        return res.status(200).json(result);
+      }
+
+      if (op === 'activate') {
+        const id = String(body.id || body.file || '').trim();
+        if (!id) {
+          return res.status(400).json({ error: 'id required', example: { id: 'v-2026-04-01' } });
+        }
+        const result = activateVersion(id);
+        return res.status(200).json(result);
+      }
+
+      return res.status(400).json({
+        error: 'Missing or unknown POST op',
+        allowed: ['snapshot', 'upload', 'rollback', 'activate'],
+      });
+    } catch (e) {
+      const readOnly = /EROFS|read-only|EPERM/i.test(e.message);
+      return res.status(readOnly ? 503 : 400).json({
+        error: 'Tariff mutation failed',
+        detail: e.message,
+        hint: readOnly
+          ? 'Serverless filesystem is read-only; run npm run data:snapshot-tax locally and redeploy.'
+          : undefined,
+      });
+    }
+  }
+
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
   }

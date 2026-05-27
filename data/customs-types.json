@@ -1,0 +1,304 @@
+{
+  "version": "1357-QD-TCHQ",
+  "source": "Quyết định 1357/QĐ-TCHQ (danh mục mã loại hình XNK)",
+  "types": {
+    "A11": {
+      "code": "A11",
+      "nameVi": "Nhập kinh doanh tiêu dùng",
+      "direction": "NK",
+      "category": "business",
+      "vatTreatment": "applicable",
+      "applicableScenarios": ["NK hàng tiêu dùng để bán", "Hàng thương mại thông thường", "NK điện thoại/máy móc bán lẻ"],
+      "documentsRequired": ["Hợp đồng", "Invoice", "Packing list", "Vận đơn"],
+      "exclusions": ["Hàng phi mậu dịch", "Quà biếu không thương mại"]
+    },
+    "A12": {
+      "code": "A12",
+      "nameVi": "Nhập kinh doanh sản xuất",
+      "direction": "NK",
+      "category": "business",
+      "vatTreatment": "applicable",
+      "applicableScenarios": ["NK nguyên vật liệu sản xuất", "NK bán thành phẩm để chế biến tiêu thụ nội địa"],
+      "documentsRequired": ["Hợp đồng", "Invoice", "Packing list", "Vận đơn"],
+      "exclusions": []
+    },
+    "A21": {
+      "code": "A21",
+      "nameVi": "Nhập gia công",
+      "direction": "NK",
+      "category": "processing",
+      "applicableScenarios": ["NK nguyên liệu gia công xuất khẩu", "Hàng trả gia công"],
+      "documentsRequired": ["Hợp đồng gia công", "Invoice", "Danh mục NL nhập"],
+      "exclusions": []
+    },
+    "A22": {
+      "code": "A22",
+      "nameVi": "Nhập chế xuất",
+      "direction": "NK",
+      "category": "processing",
+      "applicableScenarios": ["NK nguyên liệu chế xuất", "Hàng trả chế xuất"],
+      "documentsRequired": ["Hợp đồng chế xuất", "Invoice"],
+      "exclusions": []
+    },
+    "A31": {
+      "code": "A31",
+      "nameVi": "Nhập tạm nhập tái xuất",
+      "direction": "NK",
+      "category": "temporary",
+      "applicableScenarios": ["Tạm nhập máy móc triển lãm", "Tạm nhập sửa chữa tái xuất"],
+      "documentsRequired": ["Hợp đồng tạm nhập", "Bảo lãnh tái xuất"],
+      "exclusions": []
+    },
+    "A41": {
+      "code": "A41",
+      "nameVi": "Nhập đầu tư",
+      "direction": "NK",
+      "category": "investment",
+      "vatTreatment": "may_exempt",
+      "applicableScenarios": ["NK máy móc thiết bị TSCĐ", "Dự án đầu tư", "Nhà xưởng sản xuất"],
+      "documentsRequired": ["Giấy chứng nhận đầu tư", "Hợp đồng", "Invoice", "Tờ khai hải quan đầu tư"],
+      "exclusions": ["Hàng tiêu dùng thông thường"]
+    },
+    "A42": {
+      "code": "A42",
+      "nameVi": "Nhập đầu tư (chương trình ưu đãi)",
+      "direction": "NK",
+      "category": "investment",
+      "applicableScenarios": ["Dự án ưu đãi đầu tư", "Miễn thuế NK theo giấy phép đầu tư"],
+      "documentsRequired": ["Giấy phép đầu tư", "Quyết định ưu đãi"],
+      "exclusions": []
+    },
+    "A43": {
+      "code": "A43",
+      "nameVi": "Nhập mẫu",
+      "direction": "NK",
+      "category": "sample",
+      "applicableScenarios": ["Hàng mẫu không bán", "Mẫu thử nghiệm"],
+      "documentsRequired": ["Công văn mẫu", "Invoice ghi rõ mẫu"],
+      "exclusions": ["Hàng bán thương mại"]
+    },
+    "A44": {
+      "code": "A44",
+      "nameVi": "Nhập khu phi thuế quan / EPZ",
+      "direction": "NK",
+      "category": "zone",
+      "applicableScenarios": ["NK vào khu công nghiệp", "NK vào kho ngoại quan"],
+      "documentsRequired": ["Hợp đồng thuê kho", "Giấy phép khu"],
+      "exclusions": []
+    },
+    "A45": {
+      "code": "A45",
+      "nameVi": "Nhập khác",
+      "direction": "NK",
+      "category": "other",
+      "applicableScenarios": ["Trường hợp đặc biệt không thuộc mã khác"],
+      "documentsRequired": ["Công văn giải trình"],
+      "exclusions": []
+    },
+    "A51": {
+      "code": "A51",
+      "nameVi": "Nhập hỗ trợ sản xuất xuất khẩu",
+      "direction": "NK",
+      "category": "support",
+      "applicableScenarios": ["Hàng hỗ trợ doanh nghiệp SXXK"],
+      "documentsRequired": ["Quyết định hỗ trợ"],
+      "exclusions": []
+    },
+    "A52": {
+      "code": "A52",
+      "nameVi": "Nhập sản xuất tiêu dùng trong nước",
+      "direction": "NK",
+      "category": "business",
+      "applicableScenarios": ["NK phục vụ SX tiêu thụ nội địa"],
+      "documentsRequired": ["Hợp đồng", "Invoice"],
+      "exclusions": []
+    },
+    "A60": {
+      "code": "A60",
+      "nameVi": "Nhập từ nước ngoài vào kho ngoại quan",
+      "direction": "NK",
+      "category": "bonded",
+      "applicableScenarios": ["Hàng vào kho ngoại quan chờ thông quan"],
+      "documentsRequired": ["Hợp đồng kho", "Vận đơn"],
+      "exclusions": []
+    },
+    "A61": {
+      "code": "A61",
+      "nameVi": "Nhập từ kho ngoại quan ra nội địa",
+      "direction": "NK",
+      "category": "bonded",
+      "applicableScenarios": ["Chuyển từ kho ngoại quan vào tiêu thụ nội địa"],
+      "documentsRequired": ["Tờ khai chuyển kho"],
+      "exclusions": []
+    },
+    "A71": {
+      "code": "A71",
+      "nameVi": "Nhập hàng viện trợ",
+      "direction": "NK",
+      "category": "aid",
+      "applicableScenarios": ["Viện trợ nhân đạo", "Quà tặng chính phủ"],
+      "documentsRequired": ["Công văn viện trợ"],
+      "exclusions": []
+    },
+    "A81": {
+      "code": "A81",
+      "nameVi": "Nhập hàng quà biếu, hành lý",
+      "direction": "NK",
+      "category": "personal",
+      "applicableScenarios": ["Quà biếu cá nhân", "Hành lý vượt ngưỡng"],
+      "documentsRequired": ["Tờ khai hành lý"],
+      "exclusions": ["Hàng thương mại"]
+    },
+    "B11": {
+      "code": "B11",
+      "nameVi": "Xuất kinh doanh",
+      "direction": "XK",
+      "category": "business",
+      "applicableScenarios": ["XK hàng thương mại", "XK bán FOB/CIF"],
+      "documentsRequired": ["Hợp đồng", "Invoice", "Packing list"],
+      "exclusions": []
+    },
+    "B12": {
+      "code": "B12",
+      "nameVi": "Xuất sản xuất kinh doanh",
+      "direction": "XK",
+      "category": "business",
+      "applicableScenarios": ["XK thành phẩm sản xuất trong nước"],
+      "documentsRequired": ["Hợp đồng", "Invoice"],
+      "exclusions": []
+    },
+    "B13": {
+      "code": "B13",
+      "nameVi": "Xuất gia công",
+      "direction": "XK",
+      "category": "processing",
+      "applicableScenarios": ["XK sản phẩm gia công", "Trả hàng gia công"],
+      "documentsRequired": ["Hợp đồng gia công", "Invoice"],
+      "exclusions": []
+    },
+    "B14": {
+      "code": "B14",
+      "nameVi": "Xuất chế xuất",
+      "direction": "XK",
+      "category": "processing",
+      "applicableScenarios": ["XK sản phẩm chế xuất"],
+      "documentsRequired": ["Hợp đồng chế xuất"],
+      "exclusions": []
+    },
+    "B21": {
+      "code": "B21",
+      "nameVi": "Xuất tạm xuất tái nhập",
+      "direction": "XK",
+      "category": "temporary",
+      "applicableScenarios": ["Tạm xuất sửa chữa", "Tạm xuất triển lãm"],
+      "documentsRequired": ["Hợp đồng tạm xuất", "Bảo lãnh tái nhập"],
+      "exclusions": []
+    },
+    "B31": {
+      "code": "B31",
+      "nameVi": "Xuất đầu tư",
+      "direction": "XK",
+      "category": "investment",
+      "applicableScenarios": ["XK máy móc đầu tư ra nước ngoài", "Chuyển giao dự án"],
+      "documentsRequired": ["Giấy phép đầu tư"],
+      "exclusions": []
+    },
+    "B41": {
+      "code": "B41",
+      "nameVi": "Xuất khác",
+      "direction": "XK",
+      "category": "other",
+      "applicableScenarios": ["Trường hợp đặc biệt"],
+      "documentsRequired": ["Công văn giải trình"],
+      "exclusions": []
+    },
+    "B51": {
+      "code": "B51",
+      "nameVi": "Xuất hỗ trợ sản xuất xuất khẩu",
+      "direction": "XK",
+      "category": "support",
+      "applicableScenarios": ["XK hàng hỗ trợ SXXK"],
+      "documentsRequired": ["Quyết định hỗ trợ"],
+      "exclusions": []
+    },
+    "B60": {
+      "code": "B60",
+      "nameVi": "Xuất từ nội địa vào kho ngoại quan",
+      "direction": "XK",
+      "category": "bonded",
+      "applicableScenarios": ["Đưa hàng vào kho chờ XK"],
+      "documentsRequired": ["Hợp đồng kho"],
+      "exclusions": []
+    },
+    "C11": {
+      "code": "C11",
+      "nameVi": "Chuyển cửa khẩu / quá cảnh",
+      "direction": "TRANSIT",
+      "category": "transit",
+      "applicableScenarios": ["Hàng quá cảnh lãnh thổ VN"],
+      "documentsRequired": ["Vận đơn quá cảnh"],
+      "exclusions": []
+    },
+    "C21": {
+      "code": "C21",
+      "nameVi": "Chuyển kho nội địa",
+      "direction": "TRANSIT",
+      "category": "transit",
+      "applicableScenarios": ["Chuyển kho giữa hai chi cục"],
+      "documentsRequired": ["Tờ khai chuyển kho"],
+      "exclusions": []
+    },
+    "G11": {
+      "code": "G11",
+      "nameVi": "Hàng gửi bưu chính / chuyển phát",
+      "direction": "NK",
+      "category": "postal",
+      "applicableScenarios": ["Bưu kiện thương mại"],
+      "documentsRequired": ["Vận đơn bưu chính"],
+      "exclusions": []
+    },
+    "G12": {
+      "code": "G12",
+      "nameVi": "Hàng gửi bưu chính xuất",
+      "direction": "XK",
+      "category": "postal",
+      "applicableScenarios": ["XK qua bưu chính"],
+      "documentsRequired": ["Vận đơn bưu chính"],
+      "exclusions": []
+    },
+    "H11": {
+      "code": "H11",
+      "nameVi": "Nhập hàng kinh doanh qua thương mại điện tử",
+      "direction": "NK",
+      "category": "ecommerce",
+      "applicableScenarios": ["NK hàng TMĐT B2C", "Sàn thương mại điện tử"],
+      "documentsRequired": ["Invoice TMĐT", "Vận đơn"],
+      "exclusions": []
+    },
+    "H21": {
+      "code": "H21",
+      "nameVi": "Xuất hàng kinh doanh qua TMĐT",
+      "direction": "XK",
+      "category": "ecommerce",
+      "applicableScenarios": ["XK hàng TMĐT"],
+      "documentsRequired": ["Invoice", "Hợp đồng"],
+      "exclusions": []
+    },
+    "A13": { "code": "A13", "nameVi": "Nhập kinh doanh khác (tiêu dùng)", "direction": "NK", "category": "business", "applicableScenarios": [], "documentsRequired": [], "exclusions": [] },
+    "A14": { "code": "A14", "nameVi": "Nhập hàng tiêu dùng đặc thù", "direction": "NK", "category": "business", "applicableScenarios": [], "documentsRequired": [], "exclusions": [] },
+    "A23": { "code": "A23", "nameVi": "Nhập gia công khác", "direction": "NK", "category": "processing", "applicableScenarios": [], "documentsRequired": [], "exclusions": [] },
+    "A32": { "code": "A32", "nameVi": "Nhập tạm nhập khác", "direction": "NK", "category": "temporary", "applicableScenarios": [], "documentsRequired": [], "exclusions": [] },
+    "A46": { "code": "A46", "nameVi": "Nhập hàng dịch vụ kết hợp", "direction": "NK", "category": "other", "applicableScenarios": [], "documentsRequired": [], "exclusions": [] },
+    "A53": { "code": "A53", "nameVi": "Nhập SXXK khác", "direction": "NK", "category": "support", "applicableScenarios": [], "documentsRequired": [], "exclusions": [] },
+    "A62": { "code": "A62", "nameVi": "Nhập từ kho nội địa ra nước ngoài", "direction": "NK", "category": "bonded", "applicableScenarios": [], "documentsRequired": [], "exclusions": [] },
+    "A72": { "code": "A72", "nameVi": "Nhập viện trợ khác", "direction": "NK", "category": "aid", "applicableScenarios": [], "documentsRequired": [], "exclusions": [] },
+    "A82": { "code": "A82", "nameVi": "Nhập hành lý khác", "direction": "NK", "category": "personal", "applicableScenarios": [], "documentsRequired": [], "exclusions": [] },
+    "B15": { "code": "B15", "nameVi": "Xuất kinh doanh khác", "direction": "XK", "category": "business", "applicableScenarios": [], "documentsRequired": [], "exclusions": [] },
+    "B16": { "code": "B16", "nameVi": "Xuất hàng tiêu dùng đặc thù", "direction": "XK", "category": "business", "applicableScenarios": [], "documentsRequired": [], "exclusions": [] },
+    "B22": { "code": "B22", "nameVi": "Xuất tạm xuất khác", "direction": "XK", "category": "temporary", "applicableScenarios": [], "documentsRequired": [], "exclusions": [] },
+    "B32": { "code": "B32", "nameVi": "Xuất đầu tư khác", "direction": "XK", "category": "investment", "applicableScenarios": [], "documentsRequired": [], "exclusions": [] },
+    "B42": { "code": "B42", "nameVi": "Xuất khác (bổ sung)", "direction": "XK", "category": "other", "applicableScenarios": [], "documentsRequired": [], "exclusions": [] },
+    "B52": { "code": "B52", "nameVi": "Xuất hỗ trợ SXXK khác", "direction": "XK", "category": "support", "applicableScenarios": [], "documentsRequired": [], "exclusions": [] },
+    "C31": { "code": "C31", "nameVi": "Chuyển kho nội địa khác", "direction": "TRANSIT", "category": "transit", "applicableScenarios": [], "documentsRequired": [], "exclusions": [] }
+  }
+}

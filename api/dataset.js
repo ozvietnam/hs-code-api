@@ -4,6 +4,7 @@ const { taxData, explanatoryNotesData, precedentsData, conflictsData, normalizeH
 const { loadIndex } = require('../lib/tariff-versions');
 const { enrichedEntryCount } = require('../lib/enriched-data');
 const { buildAdminOverview } = require('../lib/admin-overview');
+const { getDocByCode, listDocs } = require('../lib/legal-docs');
 const fs = require('fs');
 const path = require('path');
 
@@ -114,6 +115,28 @@ module.exports = function handler(req, res) {
 
     if (resource === 'admin_overview') {
       return res.status(200).json(buildAdminOverview());
+    }
+
+    if (resource === 'legal_docs') {
+      const { chapter, status, issuer } = req.query;
+      const items = listDocs({ chapter, status, issuer });
+      return res.status(200).json({
+        total: items.length,
+        chapter: chapter || 'all',
+        items,
+      });
+    }
+
+    if (resource === 'legal_doc') {
+      const code = String(req.query.code || '').trim();
+      if (!code) {
+        return res.status(400).json({ error: 'code query required', example: '/api/legal-docs/08-2023-TT-BCT' });
+      }
+      const doc = getDocByCode(code);
+      if (!doc) {
+        return res.status(404).json({ found: false, code, message: 'Legal document not in catalog' });
+      }
+      return res.status(200).json({ found: true, ...doc });
     }
 
     return res.status(404).json({ error: 'Unknown resource', resource });

@@ -12,7 +12,11 @@
     { "source": "/api/version", "destination": "/api/tariff?op=detail" },
     { "source": "/api/version/", "destination": "/api/tariff?op=detail" },
     { "source": "/api/version/diff", "destination": "/api/tariff?op=diff" },
-    { "source": "/api/version-diff", "destination": "/api/tariff?op=diff" }
+    { "source": "/api/version-diff", "destination": "/api/tariff?op=diff" },
+    { "source": "/api/customs-types/recommend", "destination": "/api/customs-types?action=recommend" },
+    { "source": "/api/customs-types/:code", "destination": "/api/customs-types?code=:code" },
+    { "source": "/api/legal-docs/:code", "destination": "/api/dataset?resource=legal_doc&code=:code" },
+    { "source": "/api/legal-docs", "destination": "/api/dataset?resource=legal_docs" }
   ],
   "functions": {
     "api/**/*.js": {

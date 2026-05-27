@@ -128,6 +128,7 @@
       <section class="card"><h2>Tariff coverage</h2><div class="skeleton"></div><div class="skeleton"></div></section>
       <section class="card"><h2>Recent updates</h2><div class="skeleton"></div><div class="skeleton"></div></section>
       <section class="card"><h2>Knowledge layers</h2><div class="skeleton"></div><div class="skeleton"></div></section>
+      <section class="card"><h2>Data catalog</h2><div class="skeleton"></div><div class="skeleton"></div></section>
     </div>
     <div id="content" class="grid" hidden></div>
   </main>
@@ -180,6 +181,8 @@
       var ts = data.todayStats || {};
       var ru = data.recentUpdates || {};
       var kl = data.knowledgeLayers || {};
+      var dc = data.dataCatalog || {};
+      var api = data.apiEndpoints || {};
 
       var sys =
         '<section class="card"><h2>System health</h2>' +
@@ -255,7 +258,18 @@
         '<dt>Precedent HS</dt><dd>' + (kl.precedentHsCodes ?? 0) + '</dd>' +
         '<dt>Conflict HS</dt><dd>' + (kl.conflictHsCodes ?? 0) + '</dd></dl></section>';
 
-      return sys + today + feedback + cov + updates + know;
+      var catalog =
+        '<section class="card"><h2>Data catalog</h2>' +
+        '<dl><dt>Customs types (QĐ 1357)</dt><dd>' + (dc.customsTypes ?? 0) + '</dd>' +
+        '<dt>Legal documents cited</dt><dd>' + (dc.legalDocuments ?? 0) + '</dd>' +
+        '<dt>Glossary VN-EN</dt><dd>' + (dc.glossaryEntries ?? 0) + '</dd>' +
+        '<dt>ISO countries</dt><dd>' + (dc.isoCountries ?? 0) + '</dd>' +
+        '<dt>TCHQ units</dt><dd>' + (dc.tchqUnits ?? 0) + '</dd></dl>' +
+        '<p style="margin:0.5rem 0 0;font-size:0.75rem;color:var(--muted)">API: ' +
+        escapeHtml(api.customsTypes || '') + ', ' + escapeHtml(api.legalDocs || '') +
+        '</p></section>';
+
+      return sys + today + feedback + cov + updates + know + catalog;
     }
 
     function escapeHtml(s) {
