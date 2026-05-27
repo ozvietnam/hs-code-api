@@ -8,6 +8,7 @@ const { getDocByCode, listDocs } = require('../lib/legal-docs');
 const { getNotesCoverage } = require('../lib/gir-notes');
 const { searchPrecedents } = require('../lib/precedent-search');
 const { listMinistries, getMinistriesByChapter } = require('../lib/ministries');
+const { detectMaterials, listTaxonomySummary } = require('../lib/material-taxonomy');
 const fs = require('fs');
 const path = require('path');
 
@@ -129,6 +130,19 @@ module.exports = function handler(req, res) {
 
     if (resource === 'admin_overview') {
       return res.status(200).json(buildAdminOverview());
+    }
+
+    if (resource === 'materials' || resource === 'material_taxonomy') {
+      const { q } = req.query;
+      if (q && String(q).trim().length >= 2) {
+        const materials = detectMaterials(String(q));
+        return res.status(200).json({ query: q, total: materials.length, materials });
+      }
+      const families = listTaxonomySummary();
+      return res.status(200).json({
+        families,
+        totalEntries: families.reduce((n, f) => n + f.count, 0),
+      });
     }
 
     if (resource === 'ministries') {
