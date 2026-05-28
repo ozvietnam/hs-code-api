@@ -28,7 +28,10 @@
     "test:admin-update": "node scripts/test-admin-update.mjs",
     "test:augment-english": "node scripts/test-augment-english.mjs",
     "data:build-specificity": "node scripts/build-specificity.mjs",
-    "data:extract-legal-refs": "node scripts/extract-legal-refs.mjs"
+    "data:extract-legal-refs": "node scripts/extract-legal-refs.mjs",
+    "bench:accuracy": "node scripts/accuracy-benchmark.mjs",
+    "bench:accuracy:dry": "node scripts/accuracy-benchmark.mjs --dry-run",
+    "bench:search": "node scripts/accuracy-benchmark.mjs --search-only"
   },
   "devDependencies": {
     "xlsx": "^0.18.5"
