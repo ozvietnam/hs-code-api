@@ -10,6 +10,7 @@ const { searchPrecedents } = require('../lib/precedent-search');
 const { listMinistries, getMinistriesByChapter } = require('../lib/ministries');
 const { detectMaterials, listTaxonomySummary } = require('../lib/material-taxonomy');
 const { buildChaptersIndex } = require('../lib/chapters-index');
+const { readAuditLog } = require('../lib/admin-update');
 const fs = require('fs');
 const path = require('path');
 
@@ -73,6 +74,12 @@ module.exports = function handler(req, res) {
     if (resource === 'chapters') {
       const chapters = buildChaptersIndex();
       return res.status(200).json({ total: chapters.length, chapters });
+    }
+
+    if (resource === 'admin_audit') {
+      const limit = Math.min(parseInt(req.query.limit, 10) || 50, 200);
+      const entries = readAuditLog({ hsCode: req.query.hs || req.query.hsCode, limit });
+      return res.status(200).json({ total: entries.length, entries });
     }
 
     if (resource === 'conflicts') {

@@ -40,6 +40,7 @@
     <input id="token" type="password" placeholder="Bearer token" class="no-print" />
     <button type="button" class="primary no-print" id="save">Load</button>
     <button type="button" class="no-print" id="print" hidden>Print</button>
+    <a id="edit-link" href="/admin/edit.html" class="no-print" hidden>Edit</a>
   </header>
   <main>
     <nav class="crumbs" id="crumbs"></nav>
@@ -187,6 +188,9 @@
         { label: hs, hash: '/hs/' + hs },
       ]);
       printBtn.hidden = false;
+      const editLink = document.getElementById('edit-link');
+      editLink.hidden = false;
+      editLink.href = '/admin/edit.html#' + hs;
       const tabs = ['Thuế', 'Chú giải', 'Tiền lệ', 'Cảnh báo', 'Conflict', 'Feedback'];
       viewEl.innerHTML = '<h2 style="margin:0 0 0.5rem"><code>' + hs + '</code></h2><div class="tabs"></div><div class="panel" id="tabBody">Loading…</div>';
       const tabBar = viewEl.querySelector('.tabs');

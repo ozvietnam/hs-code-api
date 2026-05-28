@@ -20,7 +20,10 @@
     { "source": "/api/match", "destination": "/api/search?mode=match" },
     { "source": "/api/ministries", "destination": "/api/dataset?resource=ministries" },
     { "source": "/api/materials", "destination": "/api/dataset?resource=materials" },
-    { "source": "/api/chapters", "destination": "/api/dataset?resource=chapters" }
+    { "source": "/api/chapters", "destination": "/api/dataset?resource=chapters" },
+    { "source": "/api/admin/update", "destination": "/api/tariff?op=admin_update" },
+    { "source": "/api/admin/revert", "destination": "/api/tariff?op=admin_revert" },
+    { "source": "/api/admin/audit", "destination": "/api/dataset?resource=admin_audit" }
   ],
   "functions": {
     "api/**/*.js": {

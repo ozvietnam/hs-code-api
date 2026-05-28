@@ -1,4 +1,5 @@
-const { requireAuth } = require('../lib/auth');
+const { requireAuth, requireAdmin } = require('../lib/auth');
+const { applyAdminPatch, revertToTimestamp } = require('../lib/admin-update');
 const { setCors, handleOptions } = require('../lib/cors');
 const fs = require('fs');
 const {
@@ -87,9 +88,35 @@ module.exports = function handler(req, res) {
         return res.status(200).json(result);
       }
 
+      if (op === 'admin_update') {
+        if (requireAdmin(req, res)) return;
+        const hsCode = body.hsCode || body.hs;
+        if (!hsCode) {
+          return res.status(400).json({ error: 'hsCode required' });
+        }
+        const result = applyAdminPatch(hsCode, body.patch, {
+          comment: body.comment,
+          admin: body.admin || 'api',
+        });
+        return res.status(200).json(result);
+      }
+
+      if (op === 'admin_revert') {
+        if (requireAdmin(req, res)) return;
+        const hsCode = body.hsCode || body.hs;
+        const toTimestamp = body.toTimestamp || body.timestamp;
+        if (!hsCode || !toTimestamp) {
+          return res.status(400).json({
+            error: 'hsCode and toTimestamp required',
+          });
+        }
+        const result = revertToTimestamp(hsCode, toTimestamp, { admin: body.admin || 'api' });
+        return res.status(200).json(result);
+      }
+
       return res.status(400).json({
         error: 'Missing or unknown POST op',
-        allowed: ['snapshot', 'upload', 'rollback', 'activate'],
+        allowed: ['snapshot', 'upload', 'rollback', 'activate', 'admin_update', 'admin_revert'],
       });
     } catch (e) {
       const readOnly = /EROFS|read-only|EPERM/i.test(e.message);

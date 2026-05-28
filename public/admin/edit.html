@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HS Editor</title>
+  <style>
+    :root { --bg:#f8fafc; --card:#fff; --text:#0f172a; --muted:#64748b; --border:#e2e8f0; --accent:#2563eb; }
+    body { margin:0; font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); }
+    header { padding:0.75rem 1rem; background:var(--card); border-bottom:1px solid var(--border); display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center; }
+    h1 { font-size:1rem; margin:0; flex:1; }
+    main { padding:1rem; max-width:720px; margin:0 auto; }
+    label { display:block; font-size:0.8rem; color:var(--muted); margin:0.75rem 0 0.25rem; }
+    input, textarea, select, button { width:100%; padding:0.5rem; border:1px solid var(--border); border-radius:0.35rem; font-size:0.875rem; }
+    button { width:auto; cursor:pointer; margin-top:0.75rem; }
+    button.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+    .err { padding:0.65rem; background:#fee2e2; border-radius:0.35rem; font-size:0.875rem; }
+    .ok { padding:0.65rem; background:#dcfce7; border-radius:0.35rem; font-size:0.875rem; }
+    pre { font-size:0.75rem; background:var(--card); border:1px solid var(--border); padding:0.5rem; overflow:auto; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HS Editor</h1>
+    <a href="/admin/browse.html">Browse</a>
+    <input id="admin-token" type="password" placeholder="HS_ADMIN_TOKEN" style="width:14rem" />
+    <input id="hs" type="text" placeholder="85171300" style="width:8rem" />
+    <button type="button" id="load" class="primary">Load</button>
+  </header>
+  <main>
+    <p id="msg" hidden></p>
+    <form id="form" hidden>
+      <label>nameVi</label>
+      <input id="nameVi" />
+      <label>nameEn</label>
+      <input id="nameEn" />
+      <label>discriminatingFeatures (comma-separated)</label>
+      <input id="features" />
+      <label>warnings.summary</label>
+      <textarea id="warnSummary" rows="3"></textarea>
+      <label>warnings.severity</label>
+      <select id="warnSeverity">
+        <option value="">—</option>
+        <option value="LOW">LOW</option>
+        <option value="MEDIUM">MEDIUM</option>
+        <option value="HIGH">HIGH</option>
+        <option value="CRITICAL">CRITICAL</option>
+      </select>
+      <label>Comment (audit)</label>
+      <input id="comment" placeholder="Lý do sửa…" />
+      <button type="submit" class="primary">Save patch</button>
+    </form>
+    <h2 style="font-size:0.95rem">Audit log</h2>
+    <pre id="audit">—</pre>
+  </main>
+  <script>
+    const adminEl = document.getElementById('admin-token');
+    const hsEl = document.getElementById('hs');
+    const form = document.getElementById('form');
+    const msg = document.getElementById('msg');
+    const auditEl = document.getElementById('audit');
+    let current = null;
+
+    if (localStorage.getItem('hs_admin_token')) adminEl.value = localStorage.getItem('hs_admin_token');
+    const hashHs = location.hash.replace(/^#/, '').replace(/\D/g, '').slice(0, 8);
+    if (hashHs) hsEl.value = hashHs;
+
+    function show(text, ok) {
+      msg.textContent = text;
+      msg.className = ok ? 'ok' : 'err';
+      msg.hidden = false;
+    }
+
+    async function api(path, opts) {
+      const res = await fetch(path, {
+        ...opts,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + adminEl.value.trim(),
+          ...(opts.headers || {}),
+        },
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(j.detail || j.error || res.statusText);
+      return j;
+    }
+
+    async function loadAudit(hs) {
+      const a = await api('/api/admin/audit?hs=' + encodeURIComponent(hs) + '&limit=20');
+      auditEl.textContent = JSON.stringify(a.entries, null, 2);
+    }
+
+    document.getElementById('load').onclick = async () => {
+      msg.hidden = true;
+      try {
+        localStorage.setItem('hs_admin_token', adminEl.value.trim());
+        const hs = hsEl.value.replace(/\D/g, '').slice(0, 8);
+        location.hash = hs;
+        const t = await api('/api/tax?hs=' + hs);
+        if (!t.found) throw new Error('HS not found');
+        current = t;
+        document.getElementById('nameVi').value = t.nameVi || '';
+        document.getElementById('nameEn').value = t.nameEn || '';
+        const feats = t.discriminatingFeatures || t.warnings?.discriminatingFeatures;
+        document.getElementById('features').value = Array.isArray(feats) ? feats.join(', ') : '';
+        document.getElementById('warnSummary').value = t.warnings?.summary || '';
+        document.getElementById('warnSeverity').value = t.warnings?.severity || '';
+        form.hidden = false;
+        await loadAudit(hs);
+      } catch (e) {
+        show(e.message, false);
+        form.hidden = true;
+      }
+    };
+
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      try {
+        const hs = hsEl.value.replace(/\D/g, '').slice(0, 8);
+        const patch = { nameVi: document.getElementById('nameVi').value };
+        const nameEn = document.getElementById('nameEn').value.trim();
+        if (nameEn) patch.nameEn = nameEn;
+        const feats = document.getElementById('features').value.split(',').map((s) => s.trim()).filter(Boolean);
+        if (feats.length) patch.discriminatingFeatures = feats;
+        const summary = document.getElementById('warnSummary').value.trim();
+        const severity = document.getElementById('warnSeverity').value;
+        if (summary || severity) {
+          patch.warnings = {};
+          if (summary) patch.warnings.summary = summary;
+          if (severity) patch.warnings.severity = severity;
+        }
+        const out = await api('/api/admin/update', {
+          method: 'POST',
+          body: JSON.stringify({
+            hsCode: hs,
+            patch,
+            comment: document.getElementById('comment').value,
+            admin: 'admin-ui',
+          }),
+        });
+        show('Saved: ' + JSON.stringify(out.applied), true);
+        await loadAudit(hs);
+      } catch (err) {
+        show(err.message, false);
+      }
+    };
+
+    if (hashHs) document.getElementById('load').click();
+  </script>
+</body>
+</html>
