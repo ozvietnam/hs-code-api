@@ -37,6 +37,7 @@ function kgStatsPayload() {
       withMfn: rows.filter((r) => r.mfn !== null && r.mfn !== '').length,
       withAcfta: rows.filter((r) => r.acfta !== null && r.acfta !== '').length,
       withVat: rows.filter((r) => r.vat !== null && r.vat !== '').length,
+      withNameEn: rows.filter((r) => r.en && String(r.en).trim()).length,
     },
     withWarnings,
     enrichedPolicies,
