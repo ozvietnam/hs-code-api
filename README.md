@@ -102,29 +102,27 @@ Tax/search responses use camelCase fields expected by `erp-xnk` client:
 
 ## Oz historical training
 
-- Import private Oz declarations from Excel (supports `--dry-run`, `--file`, `--mapping`):
-  - `node scripts/import-oz-declarations.mjs --dry-run --file=data/oz-export/1.BaoCaoHangChiTiet.xlsx`
-  - `node scripts/import-oz-declarations.mjs --file=data/oz-export/1.BaoCaoHangChiTiet.xlsx`
-- Build declaration embeddings (resume-safe, 768 dims):
-  - `node scripts/embed-oz-declarations.mjs`
-- `/api/suggest` now includes:
-  - `evidenceTrace.matchedOzPrecedents` (top-5 similar Oz declarations)
-  - confidence boost `+5` when an Oz `APPROVED` precedent matches same HS
-  - warning when an Oz `REJECTED` precedent matches suggested HS
 - `data/oz-declarations.jsonl` — Oz historical declarations (gitignored private training data)
 - `data/oz-declaration-embeddings.json` — declaration vectors (768-dim, gitignored)
-
-## Oz historical training
-
-- Import declarations from private Excel in `data/oz-export/`:
+- Import declarations from private Excel in `data/oz-export/` (supports `--dry-run`, `--file`, `--mapping`):
   - `node scripts/import-oz-declarations.mjs --dry-run --file=data/oz-export/1.BaoCaoHangChiTiet.xlsx`
   - `node scripts/import-oz-declarations.mjs --file=data/oz-export/1.BaoCaoHangChiTiet.xlsx`
-- Generate embeddings (resume-safe):
+- Build embeddings (resume-safe):
   - `node scripts/embed-oz-declarations.mjs`
-- `/api/suggest` now enriches `evidenceTrace` with:
-  - `evidenceTrace.matchedOzPrecedents` (top-5 similar Oz declarations)
-  - `+5 confidence` boost when an Oz `APPROVED` precedent matches same HS
-  - extra warning when an Oz `REJECTED` precedent matches suggested HS
+
+### Suggest guardrails (historical + current policy)
+
+- `/api/suggest` includes `evidenceTrace.matchedOzPrecedents` (top-5 similar Oz declarations).
+- Historical precedents are advisory only:
+  - response adds warning: `Historical precedent only... đối chiếu biểu thuế/policy hiện hành`.
+  - `confidenceBreakdown` shows base confidence, historical boost, similarity, recency, and conflict block flag.
+- Recency decay applies to historical boost (newer precedents weigh more).
+- Historical boost is blocked when candidate HS has current `hasPolicyWarning`.
+- Oz precedent candidates are deduplicated by HS + normalized description cluster to reduce embedding bias.
+
+### Tests
+
+- `node scripts/test-suggest-confidence.mjs` — verifies recency decay, boost behavior, policy conflict blocking, confidence breakdown, and warnings.
 
 ## Offline data pipeline (Issues #5, #7, partial #4)
 
