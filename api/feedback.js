@@ -7,6 +7,7 @@ const {
   listFeedback,
   reviewFeedback,
   bulkReviewFeedback,
+  bulkApproveByPattern,
   detectRepeatedPatterns,
   exportCsv,
   FEEDBACK_PATH,
@@ -30,7 +31,19 @@ module.exports = function handler(req, res) {
   if (requireAuth(req, res)) return;
 
   if (req.method === 'GET') {
-    const { status, feedbackType, hsPrefix, limit, offset, export: exportCsvFlag, patterns } =
+    const {
+      status,
+      feedbackType,
+      hsPrefix,
+      dateFrom,
+      dateTo,
+      sortBy,
+      sortDir,
+      limit,
+      offset,
+      export: exportCsvFlag,
+      patterns,
+    } =
       req.query;
 
     if (patterns === '1' || patterns === 'true') {
@@ -50,6 +63,10 @@ module.exports = function handler(req, res) {
       status: status || undefined,
       feedbackType: feedbackType || undefined,
       hsPrefix: hsPrefix || undefined,
+      dateFrom: dateFrom || undefined,
+      dateTo: dateTo || undefined,
+      sortBy: sortBy || undefined,
+      sortDir: sortDir || undefined,
       limit: Math.min(parseInt(limit, 10) || 50, 200),
       offset: parseInt(offset, 10) || 0,
     });
@@ -58,6 +75,14 @@ module.exports = function handler(req, res) {
 
   if (req.method === 'PATCH') {
     const body = parseBody(req);
+    if (body?.pattern && body.action === 'approve') {
+      const bulk = bulkApproveByPattern({
+        fromHs: body.pattern.fromHs,
+        toHs: body.pattern.toHs,
+        reviewedBy: body.reviewedBy,
+      });
+      return res.status(200).json({ ok: true, ...bulk });
+    }
     if (Array.isArray(body?.feedbackIds) && body.feedbackIds.length) {
       const bulk = bulkReviewFeedback(body.feedbackIds, {
         action: body.action,

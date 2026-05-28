@@ -91,6 +91,19 @@
       <option value="approved">approved</option>
       <option value="rejected">rejected</option>
     </select>
+    <input id="type-filter" type="text" placeholder="feedbackType" aria-label="Feedback type" />
+    <input id="hs-prefix" type="text" placeholder="HS prefix" aria-label="HS prefix" />
+    <input id="date-from" type="date" aria-label="Date from" />
+    <input id="date-to" type="date" aria-label="Date to" />
+    <select id="sort-by" aria-label="Sort by">
+      <option value="createdAt" selected>Sort: Created</option>
+      <option value="feedbackType">Sort: Type</option>
+      <option value="status">Sort: Status</option>
+    </select>
+    <select id="sort-dir" aria-label="Sort direction">
+      <option value="desc" selected>Desc</option>
+      <option value="asc">Asc</option>
+    </select>
     <button type="button" class="primary" id="reload">Reload</button>
     <button type="button" id="bulk-approve">Bulk approve</button>
     <button type="button" id="export-csv">Export CSV</button>
@@ -128,6 +141,12 @@
     const tokenEl = document.getElementById('token');
     const erpEl = document.getElementById('erp-base');
     const statusEl = document.getElementById('status-filter');
+    const typeEl = document.getElementById('type-filter');
+    const hsPrefixEl = document.getElementById('hs-prefix');
+    const dateFromEl = document.getElementById('date-from');
+    const dateToEl = document.getElementById('date-to');
+    const sortByEl = document.getElementById('sort-by');
+    const sortDirEl = document.getElementById('sort-dir');
     const errEl = document.getElementById('error');
     const rowsEl = document.getElementById('rows');
     const metaEl = document.getElementById('meta');
@@ -235,6 +254,12 @@
         localStorage.setItem('hs_admin_token', tokenEl.value.trim());
         const q = new URLSearchParams();
         if (statusEl.value) q.set('status', statusEl.value);
+        if (typeEl.value.trim()) q.set('feedbackType', typeEl.value.trim());
+        if (hsPrefixEl.value.trim()) q.set('hsPrefix', hsPrefixEl.value.trim());
+        if (dateFromEl.value) q.set('dateFrom', dateFromEl.value);
+        if (dateToEl.value) q.set('dateTo', dateToEl.value);
+        q.set('sortBy', sortByEl.value || 'createdAt');
+        q.set('sortDir', sortDirEl.value || 'desc');
         q.set('limit', String(pageLimit));
         q.set('offset', String(pageOffset));
         const data = await api('/api/feedback?' + q.toString());
@@ -243,7 +268,20 @@
         patternsEl.innerHTML = '';
         for (const p of pat.patterns || []) {
           const li = document.createElement('li');
-          li.textContent = `${p.count}× ${p.fromHs} → ${p.toHs}`;
+          li.innerHTML = `${p.count}× ${p.fromHs} → ${p.toHs} <button data-f="${p.fromHs}" data-t="${p.toHs}">Approve all</button>`;
+          li.querySelector('button').onclick = async (ev) => {
+            const fromHs = ev.target.getAttribute('data-f');
+            const toHs = ev.target.getAttribute('data-t');
+            await api('/api/feedback', {
+              method: 'PATCH',
+              body: JSON.stringify({
+                action: 'approve',
+                pattern: { fromHs, toHs },
+                reviewedBy: 'admin-ui',
+              }),
+            });
+            await load();
+          };
           patternsEl.appendChild(li);
         }
         if (!(pat.patterns || []).length) {
@@ -289,6 +327,12 @@
       }
     };
     statusEl.onchange = () => { pageOffset = 0; load(); };
+    typeEl.onchange = () => { pageOffset = 0; load(); };
+    hsPrefixEl.onchange = () => { pageOffset = 0; load(); };
+    dateFromEl.onchange = () => { pageOffset = 0; load(); };
+    dateToEl.onchange = () => { pageOffset = 0; load(); };
+    sortByEl.onchange = () => { pageOffset = 0; load(); };
+    sortDirEl.onchange = () => { pageOffset = 0; load(); };
   </script>
 </body>
 </html>
