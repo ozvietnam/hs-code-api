@@ -8,7 +8,7 @@ module.exports = function handler(req, res) {
   const withPolicy = Object.values(taxData).filter((r) => r.cs && String(r.cs).trim()).length;
 
   return res.status(200).json({
-    service: 'hs-code-api-1',
+    service: 'hs-code-api',
     version: '2.0.0',
     status: 'healthy',
     checks: {

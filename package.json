@@ -1,5 +1,5 @@
 {
-  "name": "hs-code-api-1",
+  "name": "hs-code-api",
   "version": "2.0.0",
   "private": true,
   "scripts": {
@@ -28,5 +28,8 @@
     "test:augment-english": "node scripts/test-augment-english.mjs",
     "data:build-specificity": "node scripts/build-specificity.mjs",
     "data:extract-legal-refs": "node scripts/extract-legal-refs.mjs"
+  },
+  "devDependencies": {
+    "xlsx": "^0.18.5"
   }
 }

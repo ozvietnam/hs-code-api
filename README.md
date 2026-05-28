@@ -1,8 +1,8 @@
-# hs-code-api-1
+# hs-code-api
 
 Lightweight HS Code + tariff API for ERP `erp-xnk`.
 
-**Live:** https://hs-code-api-1-ywbe.vercel.app
+**Live:** https://hs-code-api-thangs-projects-4472c6e9.vercel.app
 
 ## Auth
 
@@ -66,17 +66,17 @@ openssl rand -hex 32
 ```bash
 TOKEN=your_token
 
-curl https://hs-code-api-1-ywbe.vercel.app/api/health
+curl https://hs-code-api-thangs-projects-4472c6e9.vercel.app/api/health
 
 curl -H "Authorization: Bearer $TOKEN" \
-  "https://hs-code-api-1-ywbe.vercel.app/api/tax?hs=85171300"
+  "https://hs-code-api-thangs-projects-4472c6e9.vercel.app/api/tax?hs=85171300"
 
 curl -H "Authorization: Bearer $TOKEN" \
-  "https://hs-code-api-1-ywbe.vercel.app/api/search?q=điện+thoại&limit=5"
+  "https://hs-code-api-thangs-projects-4472c6e9.vercel.app/api/search?q=điện+thoại&limit=5"
 
 curl -X POST -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
   -d '{"description":"iPhone 15 Pro Max 256GB"}' \
-  https://hs-code-api-1-ywbe.vercel.app/api/suggest
+  https://hs-code-api-thangs-projects-4472c6e9.vercel.app/api/suggest
 ```
 
 ## Response shape (ERP contract)
@@ -99,6 +99,20 @@ Tax/search responses use camelCase fields expected by `erp-xnk` client:
 - `data/feedback.jsonl` — feedback events (append-only; may not persist on serverless cold paths)
 - `data/versions/index.json` — tariff version catalog (`current` + metadata)
 - `data/versions/tax-v2026-01-01-base.json` — baseline snapshot (same row set as `tax.json` at import)
+- `data/oz-declarations.jsonl` — Oz historical declarations (gitignored private training data)
+- `data/oz-declaration-embeddings.json` — declaration vectors (768-dim, gitignored)
+
+## Oz historical training
+
+- Import declarations from private Excel in `data/oz-export/`:
+  - `node scripts/import-oz-declarations.mjs --dry-run --file=data/oz-export/1.BaoCaoHangChiTiet.xlsx`
+  - `node scripts/import-oz-declarations.mjs --file=data/oz-export/1.BaoCaoHangChiTiet.xlsx`
+- Generate embeddings (resume-safe):
+  - `node scripts/embed-oz-declarations.mjs`
+- `/api/suggest` now enriches `evidenceTrace` with:
+  - `evidenceTrace.matchedOzPrecedents` (top-5 similar Oz declarations)
+  - `+5 confidence` boost when an Oz `APPROVED` precedent matches same HS
+  - extra warning when an Oz `REJECTED` precedent matches suggested HS
 
 ## Offline data pipeline (Issues #5, #7, partial #4)
 
