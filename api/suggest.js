@@ -8,6 +8,7 @@ const { applyPrecedentBoost, detectSet } = require('../lib/precedent-search');
 const { translateToVi, getBrandHint } = require('../lib/glossary');
 const { searchOzPrecedents } = require('../lib/oz-precedent-search');
 const { applyHistoricalSignals } = require('../lib/suggest-confidence');
+const { appendSuggestLog } = require('../lib/ml-log');
 
 const SYSTEM_PROMPT = `Bạn là chuyên gia phân loại hàng hóa hải quan Việt Nam.
 Cho mô tả hàng hóa và danh sách mã HS candidate, hãy chọn tối đa 3 mã phù hợp nhất.
@@ -58,6 +59,14 @@ module.exports = async function handler(req, res) {
   const audit = buildEvidenceTrace(description, evidence);
 
   if (evidence.length === 0) {
+    appendSuggestLog({
+      description: description.slice(0, 120),
+      top1Hs: null,
+      top1Confidence: null,
+      ms: Date.now() - started,
+      candidates: 0,
+      wasOverridden: false,
+    });
     return res.status(200).json({
       suggestions: [],
       evidence: [],
@@ -108,6 +117,22 @@ module.exports = async function handler(req, res) {
       evidenceByHs,
     });
     const suggestions = historyAdjusted.suggestions;
+
+    appendSuggestLog({
+      description: description.slice(0, 120),
+      top1Hs: suggestions[0]?.hsCode || null,
+      top1Confidence: suggestions[0]?.confidence ?? null,
+      ms: Date.now() - started,
+      candidates: evidence.length,
+      girRules: [
+        ...(girRanked.girRankingRules || []),
+        ...(precedentRanked.girPrecedentRule ? [precedentRanked.girPrecedentRule] : []),
+        ...(detectSet(description) ? ['GIR-3b'] : []),
+      ],
+      llmModel: model,
+      wasOverridden: false,
+    });
+
     const girRankingRules = [
       ...(girRanked.girRankingRules || []),
       ...(precedentRanked.girPrecedentRule ? [precedentRanked.girPrecedentRule] : []),

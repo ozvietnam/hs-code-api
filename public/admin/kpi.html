@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HS Admin — ML KPI</title>
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #fff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --ok: #16a34a;
+      --warn: #d97706;
+      --bad: #dc2626;
+      --accent: #2563eb;
+      --bar: #3b82f6;
+    }
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: #334155;
+      --accent: #60a5fa;
+      --bar: #60a5fa;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    header {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--card);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    h1 { font-size: 1.125rem; margin: 0; font-weight: 600; flex: 1; }
+    main { padding: 1rem; max-width: 1200px; margin: 0 auto; }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+    section.card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 1rem;
+    }
+    section.card h2 { margin: 0 0 0.75rem; font-size: 0.95rem; font-weight: 600; }
+    dl { margin: 0; font-size: 0.875rem; }
+    dt { color: var(--muted); margin-top: 0.5rem; }
+    dd { margin: 0.15rem 0 0; font-variant-numeric: tabular-nums; }
+    .big { font-size: 2rem; font-weight: 700; line-height: 1.2; }
+    .big.ok { color: var(--ok); }
+    .big.warn { color: var(--warn); }
+    .big.bad { color: var(--bad); }
+    .bar-track { height: 6px; background: var(--border); border-radius: 3px; margin: 0.25rem 0 0.5rem; }
+    .bar-fill { height: 100%; border-radius: 3px; background: var(--bar); transition: width 0.4s; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
+    th, td { text-align: left; padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--border); }
+    th { color: var(--muted); font-weight: 500; }
+    code { font-size: 0.8125rem; }
+    .pill {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .pill.high { background: #dcfce7; color: #166534; }
+    .pill.mid { background: #fef3c7; color: #92400e; }
+    .pill.low { background: #fee2e2; color: #991b1b; }
+    [data-theme="dark"] .pill.high { background: #14532d; color: #86efac; }
+    [data-theme="dark"] .pill.mid { background: #78350f; color: #fde68a; }
+    [data-theme="dark"] .pill.low { background: #7f1d1d; color: #fecaca; }
+    footer { padding: 1rem; color: var(--muted); font-size: 0.75rem; text-align: center; }
+    a { color: var(--accent); }
+    button {
+      padding: 0.45rem 0.85rem;
+      border-radius: 0.375rem;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.875rem;
+    }
+    input[type="password"] {
+      padding: 0.5rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 0.375rem;
+      background: var(--bg);
+      color: var(--text);
+      min-width: 12rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ML KPI Dashboard</h1>
+    <a href="/admin/" style="font-size:0.875rem">← Admin</a>
+    <div style="display:flex;gap:0.5rem;align-items:center;margin-left:auto">
+      <input id="token" type="password" placeholder="Bearer token" />
+      <button id="load-btn">Load</button>
+    </div>
+  </header>
+  <main>
+    <div id="empty" style="text-align:center;padding:3rem;color:var(--muted)">
+      Enter token and click Load to view KPI data
+    </div>
+    <div id="content" class="grid" hidden></div>
+  </main>
+  <footer>Data from <code>/api/admin/kpi</code> — powered by <code>data/ml-log.jsonl</code></footer>
+
+  <script>
+    var TOKEN_KEY = 'hs_admin_hs_api_token';
+
+    function getToken() {
+      var t = new URLSearchParams(location.search).get('token');
+      if (t) localStorage.setItem(TOKEN_KEY, t);
+      return localStorage.getItem(TOKEN_KEY) || '';
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function pill(confidence) {
+      if (confidence == null) return '<span class="pill mid">N/A</span>';
+      var n = Number(confidence);
+      if (n >= 80) return '<span class="pill high">' + n + '</span>';
+      if (n >= 50) return '<span class="pill mid">' + n + '</span>';
+      return '<span class="pill low">' + n + '</span>';
+    }
+
+    function renderPeriod(label, p) {
+      if (!p || p.total === 0) {
+        return '<section class="card"><h2>' + label + '</h2><p style="color:var(--muted)">No suggest data yet</p></section>';
+      }
+      var lat = p.latency || {};
+      var con = p.confidence || {};
+      var orLabel = p.overrideRate != null ? p.overrideRate + '%' : '—';
+      var overrideColor = p.overrideRate != null && p.overrideRate > 30 ? 'warn' : (p.overrideRate != null && p.overrideRate > 60 ? 'bad' : 'ok');
+
+      var h = '<section class="card"><h2>' + label + '</h2>';
+      h += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem">';
+
+      h += '<div><dt>Total suggests</dt><dd class="big ok">' + p.total + '</dd></div>';
+      h += '<div><dt>Override rate</dt><dd class="big ' + overrideColor + '">' + orLabel + '</dd></div>';
+      h += '<div><dt>Confidence avg</dt><dd class="big">' + (con.avg ?? '—') + '</dd></div>';
+      h += '<div><dt>p90 latency</dt><dd class="big">' + (lat.p90 ?? '—') + ' ms</dd></div>';
+      h += '</div>';
+
+      // Confidence distribution bar
+      if (con.p25 != null) {
+        h += '<div style="margin-top:0.75rem"><dt>Confidence distribution</dt>';
+        h += '<div class="bar-track"><div class="bar-fill" style="width:' + Math.min(con.avg || 0, 100) + '%"></div></div>';
+        h += '<div style="display:flex;justify-content:space-between;font-size:0.75rem;color:var(--muted)">';
+        h += '<span>p25: ' + con.p25 + '</span><span>p50: ' + con.p50 + '</span><span>p75: ' + con.p75 + '</span></div></div>';
+      }
+
+      // Latency breakdown
+      if (lat.p50 != null) {
+        h += '<div style="margin-top:0.5rem"><dt>Latency</dt>';
+        h += '<div style="display:flex;justify-content:space-between;font-size:0.8125rem">';
+        h += '<span>p50: ' + lat.p50 + 'ms</span><span>p90: ' + lat.p90 + 'ms</span><span>p99: ' + (lat.p99 ?? '—') + 'ms</span>';
+        h += '<span>avg: ' + (lat.avg ?? '—') + 'ms</span></div></div>';
+      }
+
+      // Top overridden HS
+      var topOv = (p.topOverriddenHs || []).slice(0, 5);
+      if (topOv.length) {
+        h += '<div style="margin-top:0.75rem"><dt>Most overridden HS (top 5)</dt>';
+        h += '<table><tr><th>HS code</th><th>Overrides</th></tr>';
+        for (var i = 0; i < topOv.length; i++) {
+          h += '<tr><td><code>' + escapeHtml(topOv[i].hsCode) + '</code></td><td>' + topOv[i].count + '</td></tr>';
+        }
+        h += '</table></div>';
+      }
+
+      h += '</section>';
+      return h;
+    }
+
+    function renderRecent(rows) {
+      if (!rows || !rows.length) return '';
+      var h = '<section class="card" style="grid-column:1/-1"><h2>Recent suggests (last 20)</h2>';
+      h += '<table><tr><th>Time</th><th>Description</th><th>Top-1 HS</th><th>Conf</th><th>Ms</th></tr>';
+      for (var i = 0; i < rows.length; i++) {
+        var r = rows[i];
+        var ts = (r.ts || '').slice(11, 19);
+        h += '<tr><td>' + ts + '</td><td>' + escapeHtml((r.description || '').slice(0, 60)) + '</td>';
+        h += '<td><code>' + escapeHtml(r.top1Hs || '—') + '</code></td>';
+        h += '<td>' + pill(r.top1Confidence) + '</td>';
+        h += '<td>' + (r.ms ?? '—') + '</td></tr>';
+      }
+      h += '</table></section>';
+      return h;
+    }
+
+    async function loadKpi() {
+      var token = getToken();
+      document.getElementById('token').value = token;
+      if (!token) {
+        document.getElementById('empty').textContent = 'Enter Bearer token first';
+        return;
+      }
+
+      try {
+        var res = await fetch('/api/admin/kpi', {
+          headers: { Authorization: 'Bearer ' + token }
+        });
+        if (!res.ok) {
+          var msg = res.status === 401 ? 'Unauthorized — check token' : 'Error ' + res.status;
+          document.getElementById('empty').textContent = msg;
+          document.getElementById('empty').hidden = false;
+          return;
+        }
+        var data = await res.json();
+
+        var html = '';
+        html += '<section class="card"><h2>ML Log Summary</h2>';
+        html += '<dl><dt>Total log entries</dt><dd>' + (data.totalLogs ?? 0) + '</dd>';
+        html += '<dt>Last 7d suggests</dt><dd>' + (data.last7d?.total ?? 0) + '</dd>';
+        html += '<dt>Last 30d suggests</dt><dd>' + (data.last30d?.total ?? 0) + '</dd>';
+        html += '</dl></section>';
+
+        html += renderPeriod('Last 7 days', data.last7d);
+        html += renderPeriod('Last 30 days', data.last30d);
+        html += renderRecent(data.recentSuggests);
+
+        document.getElementById('empty').hidden = true;
+        document.getElementById('content').innerHTML = html;
+        document.getElementById('content').hidden = false;
+      } catch (e) {
+        document.getElementById('empty').textContent = 'Network error: ' + (e.message || 'failed');
+      }
+    }
+
+    document.getElementById('load-btn').addEventListener('click', function() {
+      localStorage.setItem(TOKEN_KEY, document.getElementById('token').value.trim());
+      loadKpi();
+    });
+
+    var t = getToken();
+    if (t) loadKpi();
+  </script>
+</body>
+</html>

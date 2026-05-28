@@ -12,6 +12,7 @@ const { listMinistries, getMinistriesByChapter } = require('../lib/ministries');
 const { detectMaterials, listTaxonomySummary } = require('../lib/material-taxonomy');
 const { buildChaptersIndex } = require('../lib/chapters-index');
 const { readAuditLog } = require('../lib/admin-update');
+const { buildKpiDashboard } = require('../lib/ml-log');
 const fs = require('fs');
 const path = require('path');
 
@@ -218,6 +219,11 @@ module.exports = async function handler(req, res) {
         return res.status(404).json({ found: false, code, message: 'Legal document not in catalog' });
       }
       return res.status(200).json({ found: true, ...doc });
+    }
+
+    if (resource === 'kpi') {
+      const kpi = buildKpiDashboard();
+      return res.status(200).json(kpi);
     }
 
     return res.status(404).json({ error: 'Unknown resource', resource });
