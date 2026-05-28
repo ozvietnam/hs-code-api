@@ -99,6 +99,18 @@ Tax/search responses use camelCase fields expected by `erp-xnk` client:
 - `data/feedback.jsonl` — feedback events (append-only; may not persist on serverless cold paths)
 - `data/versions/index.json` — tariff version catalog (`current` + metadata)
 - `data/versions/tax-v2026-01-01-base.json` — baseline snapshot (same row set as `tax.json` at import)
+
+## Oz historical training
+
+- Import private Oz declarations from Excel (supports `--dry-run`, `--file`, `--mapping`):
+  - `node scripts/import-oz-declarations.mjs --dry-run --file=data/oz-export/1.BaoCaoHangChiTiet.xlsx`
+  - `node scripts/import-oz-declarations.mjs --file=data/oz-export/1.BaoCaoHangChiTiet.xlsx`
+- Build declaration embeddings (resume-safe, 768 dims):
+  - `node scripts/embed-oz-declarations.mjs`
+- `/api/suggest` now includes:
+  - `evidenceTrace.matchedOzPrecedents` (top-5 similar Oz declarations)
+  - confidence boost `+5` when an Oz `APPROVED` precedent matches same HS
+  - warning when an Oz `REJECTED` precedent matches suggested HS
 - `data/oz-declarations.jsonl` — Oz historical declarations (gitignored private training data)
 - `data/oz-declaration-embeddings.json` — declaration vectors (768-dim, gitignored)
 

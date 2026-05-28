@@ -6,6 +6,7 @@ const { buildEvidenceTrace } = require('../lib/suggest-evidence');
 const { applyGirRules } = require('../lib/gir-engine');
 const { applyPrecedentBoost, detectSet } = require('../lib/precedent-search');
 const { translateToVi, getBrandHint } = require('../lib/glossary');
+const { searchOzPrecedents } = require('../lib/oz-precedent-search');
 
 const SYSTEM_PROMPT = `Bạn là chuyên gia phân loại hàng hóa hải quan Việt Nam.
 Cho mô tả hàng hóa và danh sách mã HS candidate, hãy chọn tối đa 3 mã phù hợp nhất.
@@ -98,7 +99,20 @@ module.exports = async function handler(req, res) {
     const rawSuggestions = (json.suggestions || []).slice(0, topReranked);
     const girRanked = applyGirRules(rawSuggestions, description);
     const precedentRanked = applyPrecedentBoost(girRanked.suggestions, description);
-    const suggestions = precedentRanked.suggestions.slice(0, topReranked);
+    const ozPrecedents = await searchOzPrecedents(description, { topK: 5 });
+    const suggestions = precedentRanked.suggestions.slice(0, topReranked).map((suggestion) => {
+      const related = ozPrecedents.filter((item) => item.hsCode === suggestion.hsCode);
+      if (related.some((item) => item.outcome === 'APPROVED')) {
+        return { ...suggestion, confidence: Math.min(100, (suggestion.confidence || 0) + 5) };
+      }
+      return suggestion;
+    });
+    const ozRejectedWarnings = ozPrecedents
+      .filter((item) => item.outcome === 'REJECTED' && suggestions.some((s) => s.hsCode === item.hsCode))
+      .map((item) => ({
+        hsCode: item.hsCode,
+        message: `Oz từng bị bác mã này ở tờ khai ${item.declId}`,
+      }));
     const girRankingRules = [
       ...(girRanked.girRankingRules || []),
       ...(precedentRanked.girPrecedentRule ? [precedentRanked.girPrecedentRule] : []),
@@ -115,9 +129,12 @@ module.exports = async function handler(req, res) {
         score,
         queryExpansion,
       })),
-      evidenceTrace: audit.evidenceTrace,
+      evidenceTrace: {
+        candidates: audit.evidenceTrace,
+        matchedOzPrecedents: ozPrecedents,
+      },
       girRulesApplied: audit.girRulesApplied,
-      antiPatternWarnings: audit.antiPatternWarnings,
+      antiPatternWarnings: [...audit.antiPatternWarnings, ...ozRejectedWarnings],
       glossaryTranslation: glossaryVi !== description ? glossaryVi : undefined,
       brandHint,
       llmModel: model,
