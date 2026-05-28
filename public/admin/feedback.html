@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HS Admin — Feedback queue</title>
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #fff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --ok: #16a34a;
+      --bad: #dc2626;
+      --accent: #2563eb;
+      --warn: #ca8a04;
+    }
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: #334155;
+      --accent: #60a5fa;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    header {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--card);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    h1 { font-size: 1.125rem; margin: 0; flex: 1; }
+    a { color: var(--accent); font-size: 0.875rem; }
+    input, select, button {
+      padding: 0.45rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 0.375rem;
+      background: var(--card);
+      color: var(--text);
+      font-size: 0.875rem;
+    }
+    button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    main { padding: 1rem; max-width: 1400px; margin: 0 auto; }
+    .layout { display: grid; gap: 1rem; grid-template-columns: 1fr 280px; }
+    @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+    table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; background: var(--card); border: 1px solid var(--border); border-radius: 0.5rem; overflow: hidden; }
+    th, td { padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+    th { background: color-mix(in srgb, var(--border), transparent 60%); font-weight: 600; }
+    .badge { font-size: 0.7rem; padding: 0.1rem 0.35rem; border-radius: 0.25rem; border: 1px solid var(--border); }
+    .badge.pending { color: var(--warn); }
+    .badge.approved { color: var(--ok); }
+    .badge.rejected { color: var(--bad); }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      font-size: 0.8125rem;
+    }
+    .panel h2 { margin: 0 0 0.5rem; font-size: 0.9rem; }
+    .err { padding: 0.75rem; background: color-mix(in srgb, var(--bad), transparent 92%); border-radius: 0.375rem; }
+    ul { margin: 0; padding-left: 1rem; }
+    .actions { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Feedback review queue</h1>
+    <a href="/admin/">← Dashboard</a>
+    <input id="token" type="password" placeholder="Bearer token" aria-label="API token" />
+    <input id="erp-base" type="text" placeholder="ERP_BASE_URL (optional)" style="min-width:14rem" />
+    <select id="status-filter" aria-label="Status filter">
+      <option value="">All status</option>
+      <option value="pending" selected>pending</option>
+      <option value="approved">approved</option>
+      <option value="rejected">rejected</option>
+    </select>
+    <button type="button" class="primary" id="reload">Reload</button>
+    <button type="button" id="export-csv">Export CSV</button>
+  </header>
+  <main>
+    <p id="error" class="err" hidden></p>
+    <div class="layout">
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Type</th>
+              <th>HS change</th>
+              <th>Product</th>
+              <th>Order</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <p id="meta" style="color:var(--muted);font-size:0.8rem;margin-top:0.5rem"></p>
+      </div>
+      <aside class="panel">
+        <h2>Repeated patterns (≥3)</h2>
+        <ul id="patterns"></ul>
+      </aside>
+    </div>
+  </main>
+  <script>
+    const tokenEl = document.getElementById('token');
+    const erpEl = document.getElementById('erp-base');
+    const statusEl = document.getElementById('status-filter');
+    const errEl = document.getElementById('error');
+    const rowsEl = document.getElementById('rows');
+    const metaEl = document.getElementById('meta');
+    const patternsEl = document.getElementById('patterns');
+
+    const saved = localStorage.getItem('hs_admin_token');
+    if (saved) tokenEl.value = saved;
+    const erpSaved = localStorage.getItem('hs_erp_base');
+    if (erpSaved) erpEl.value = erpSaved;
+
+    function authHeaders() {
+      const t = tokenEl.value.trim();
+      if (!t) throw new Error('Nhập Bearer token');
+      return { Authorization: 'Bearer ' + t };
+    }
+
+    async function api(path, opts = {}) {
+      const res = await fetch(path, {
+        ...opts,
+        headers: { 'Content-Type': 'application/json', ...authHeaders(), ...(opts.headers || {}) },
+      });
+      if (!res.ok) {
+        const j = await res.json().catch(() => ({}));
+        throw new Error(j.error || res.statusText);
+      }
+      if (res.headers.get('content-type')?.includes('text/csv')) return res.text();
+      return res.json();
+    }
+
+    function orderLink(code) {
+      if (!code) return '—';
+      const base = erpEl.value.trim().replace(/\/$/, '');
+      if (!base) return code;
+      return `<a href="${base}/staff/orders/${encodeURIComponent(code)}" target="_blank" rel="noopener">${code}</a>`;
+    }
+
+    function renderRows(data) {
+      rowsEl.innerHTML = '';
+      for (const r of data.items || []) {
+        const tr = document.createElement('tr');
+        const hs = `${r.hsCodeAtTime || '—'} → ${r.correctedHsCode || '—'}`;
+        tr.innerHTML = `
+          <td>${(r.createdAt || r.receivedAt || '').slice(0, 19)}</td>
+          <td><span class="badge">${r.feedbackType || ''}</span></td>
+          <td>${hs}</td>
+          <td>${r.productName || '—'}<br><small style="color:var(--muted)">${r.directorNote || ''}</small></td>
+          <td>${orderLink(r.orderCode)}</td>
+          <td><span class="badge ${r.status || 'pending'}">${r.status || 'pending'}</span></td>
+          <td class="actions"></td>`;
+        const actions = tr.querySelector('.actions');
+        if ((r.status || 'pending') === 'pending') {
+          const ok = document.createElement('button');
+          ok.textContent = 'Approve';
+          ok.className = 'primary';
+          ok.onclick = () => review(r.feedbackId, 'approve');
+          const no = document.createElement('button');
+          no.textContent = 'Reject';
+          no.onclick = () => {
+            const reason = prompt('Lý do từ chối (optional):');
+            review(r.feedbackId, 'reject', reason);
+          };
+          actions.append(ok, no);
+        }
+        rowsEl.appendChild(tr);
+      }
+      metaEl.textContent = `Hiển thị ${(data.items || []).length} / ${data.total || 0}`;
+    }
+
+    async function review(feedbackId, action, rejectionReason) {
+      errEl.hidden = true;
+      try {
+        localStorage.setItem('hs_admin_token', tokenEl.value.trim());
+        localStorage.setItem('hs_erp_base', erpEl.value.trim());
+        await api('/api/feedback', {
+          method: 'PATCH',
+          body: JSON.stringify({
+            feedbackId,
+            action: action === 'approve' ? 'approve' : 'reject',
+            rejectionReason: rejectionReason || undefined,
+            reviewedBy: 'admin-ui',
+          }),
+        });
+        await load();
+      } catch (e) {
+        errEl.textContent = e.message;
+        errEl.hidden = false;
+      }
+    }
+
+    async function load() {
+      errEl.hidden = true;
+      try {
+        localStorage.setItem('hs_admin_token', tokenEl.value.trim());
+        const q = new URLSearchParams();
+        if (statusEl.value) q.set('status', statusEl.value);
+        q.set('limit', '50');
+        const data = await api('/api/feedback?' + q.toString());
+        renderRows(data);
+        const pat = await api('/api/feedback?patterns=1');
+        patternsEl.innerHTML = '';
+        for (const p of pat.patterns || []) {
+          const li = document.createElement('li');
+          li.textContent = `${p.count}× ${p.fromHs} → ${p.toHs}`;
+          patternsEl.appendChild(li);
+        }
+        if (!(pat.patterns || []).length) {
+          patternsEl.innerHTML = '<li style="color:var(--muted)">Chưa có pattern lặp</li>';
+        }
+      } catch (e) {
+        errEl.textContent = e.message;
+        errEl.hidden = false;
+      }
+    }
+
+    document.getElementById('reload').onclick = load;
+    document.getElementById('export-csv').onclick = async () => {
+      try {
+        const csv = await api('/api/feedback?export=1');
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'feedback-export.csv';
+        a.click();
+      } catch (e) {
+        errEl.textContent = e.message;
+        errEl.hidden = false;
+      }
+    };
+    statusEl.onchange = load;
+  </script>
+</body>
+</html>
