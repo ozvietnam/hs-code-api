@@ -52,6 +52,8 @@ openssl rand -hex 32
 | `/api/version?id=` | GET | Yes | Snapshot metadata (rewrite → `/api/tariff?op=detail`) |
 | `/api/version/diff?from=&to=` | GET | Yes | Diff snapshots (rewrite → `/api/tariff?op=diff`) |
 | `/api/admin/overview` | GET | Yes | Admin KPI JSON (rewrite → `/api/dataset?resource=admin_overview`) |
+| `/api/oz-precedents?hs=` | GET | Yes | Oz historical declarations by HS code |
+| `/api/oz-precedents?q=` | GET | Yes | Oz precedents semantic search (needs GEMINI_API_KEY) |
 
 **Vercel Hobby** projects cap serverless functions (~12). Several “logical” endpoints are implemented as **`/api/dataset`** and **`/api/tariff`** with `resource` / `op` query params; `vercel.json` rewrites preserve the public URLs above.
 

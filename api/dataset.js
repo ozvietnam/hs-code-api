@@ -7,6 +7,7 @@ const { buildAdminOverview } = require('../lib/admin-overview');
 const { getDocByCode, listDocs } = require('../lib/legal-docs');
 const { getNotesCoverage } = require('../lib/gir-notes');
 const { searchPrecedents } = require('../lib/precedent-search');
+const { searchOzPrecedents, searchOzByHs } = require('../lib/oz-precedent-search');
 const { listMinistries, getMinistriesByChapter } = require('../lib/ministries');
 const { detectMaterials, listTaxonomySummary } = require('../lib/material-taxonomy');
 const { buildChaptersIndex } = require('../lib/chapters-index');
@@ -51,7 +52,7 @@ function kgStatsPayload() {
   };
 }
 
-module.exports = function handler(req, res) {
+module.exports = async function handler(req, res) {
   setCors(res);
   if (handleOptions(req, res)) return;
   if (req.method !== 'GET') {
@@ -144,6 +145,33 @@ module.exports = function handler(req, res) {
 
     if (resource === 'admin_overview') {
       return res.status(200).json(buildAdminOverview());
+    }
+
+    if (resource === 'oz_precedents') {
+      const { hs, q, description } = req.query;
+      if (hs) {
+        const items = searchOzByHs(hs, { limit: req.query.limit });
+        return res.status(200).json({
+          found: items.length > 0,
+          hsCode: hs,
+          total: items.length,
+          items,
+        });
+      }
+      const searchText = String(q || description || '').trim();
+      if (searchText.length < 3) {
+        return res.status(400).json({
+          error: 'hs or q (description, min 3 chars) parameter required',
+          examples: ['/api/oz-precedents?hs=85171300', '/api/oz-precedents?q=điện thoại iPhone'],
+        });
+      }
+      const matches = await searchOzPrecedents(searchText, { topK: 10 });
+      return res.status(200).json({
+        found: matches.length > 0,
+        query: searchText,
+        total: matches.length,
+        matches,
+      });
     }
 
     if (resource === 'materials' || resource === 'material_taxonomy') {
