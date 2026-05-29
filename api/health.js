@@ -1,5 +1,6 @@
 const { taxData } = require('../lib/data');
 const { isApiTokenConfigured } = require('../lib/auth');
+const { ozGoldStats } = require('../lib/oz-precedent-search');
 
 module.exports = function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -13,6 +14,7 @@ module.exports = function handler(req, res) {
     status: 'healthy',
     checks: {
       taxData: { ok: true, rows: Object.keys(taxData).length },
+      ozGold: ozGoldStats(),
       geminiKey: { ok: Boolean(process.env.GEMINI_API_KEY) },
       apiToken: { ok: isApiTokenConfigured() },
     },
