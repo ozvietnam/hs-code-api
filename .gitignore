@@ -23,7 +23,12 @@ data/oz-declarations.jsonl
 .env
 .vercel
 
-# Oz private derived data (mô tả sản phẩm — KHÔNG commit)
+# Oz private derived data (raw + trung gian — KHÔNG commit)
 data/oz-*.jsonl
 data/oz-*.json
 data/oz-declaration-embeddings.json
+
+# EXCEPTION: gold dataset đã làm sạch — COMMIT để production dùng.
+# CEO duyệt 2026-05-29: privacy không critical, cho lên git + Vercel.
+# (raw xlsx + file trung gian oz-declarations/extracted/distinct vẫn ignored)
+!data/oz-gold-final.jsonl
