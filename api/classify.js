@@ -32,9 +32,12 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'tenHang (tên hàng) bắt buộc, tối thiểu 2 ký tự' });
   }
 
+  // tier: "auto" của NV (body.auto=true hoặc tier="premium") → Gemini trả phí (nhanh+chính xác); mặc định MiniMax $0
+  const tier = (body?.tier === 'premium' || body?.auto === true) ? 'premium' : 'standard';
+
   try {
     const started = Date.now();
-    const result = await classify(attrs);
+    const result = await classify(attrs, { tier });
     return res.status(200).json({ ...result, attrs, ms: Date.now() - started });
   } catch (e) {
     return res.status(502).json({ error: 'Classify failed', detail: String(e.message).slice(0, 240) });
