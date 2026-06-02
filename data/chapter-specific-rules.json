@@ -1,5 +1,9 @@
 {
-  "version": "2026-01",
+  "version": "2026-06",
+  "_meta": {
+    "purpose": "Thuộc tính bắt buộc theo chương để engine sinh missing[] checklist (đấu nối ở B2 #48). Không phải căn cứ pháp lý — chỉ là yếu tố khu biệt HS theo thực hành GIR/Hải quan VN.",
+    "schema": "chapters[chapter] = { titleVi, requiredAttributes[], chapterSpecificRequired[], girHints[] }"
+  },
   "chapters": {
     "28": {
       "titleVi": "Hóa chất vô cơ",
@@ -37,6 +41,84 @@
       "chapterSpecificRequired": ["species", "moisturePercent"],
       "girHints": ["Loài gỗ và độ ẩm"]
     },
+    "48": {
+      "titleVi": "Giấy và bìa",
+      "requiredAttributes": ["gsm", "coating", "primaryUse"],
+      "chapterSpecificRequired": ["gsm", "primaryUse"],
+      "girHints": ["Định lượng g/m² + có tráng phủ hay không quyết định nhóm"]
+    },
+    "52": {
+      "titleVi": "Bông (sợi + vải dệt thoi)",
+      "requiredAttributes": ["fiberComposition", "weave", "gsm"],
+      "chapterSpecificRequired": ["fiberComposition", "gsm"],
+      "girHints": ["Tỉ lệ % thành phần xơ + định lượng g/m²"]
+    },
+    "54": {
+      "titleVi": "Sợi filament nhân tạo",
+      "requiredAttributes": ["fiberComposition", "filamentType"],
+      "chapterSpecificRequired": ["fiberComposition"],
+      "girHints": ["Filament liên tục, ghi rõ % thành phần"]
+    },
+    "55": {
+      "titleVi": "Xơ staple nhân tạo",
+      "requiredAttributes": ["fiberComposition", "gsm"],
+      "chapterSpecificRequired": ["fiberComposition"],
+      "girHints": ["Xơ ngắn (staple), ghi % thành phần"]
+    },
+    "61": {
+      "titleVi": "Quần áo dệt kim hoặc móc",
+      "requiredAttributes": ["fiberComposition", "knitOrWoven", "gender"],
+      "chapterSpecificRequired": ["fiberComposition", "knitOrWoven"],
+      "girHints": ["DỆT KIM → chương 61 (không phải 62); ghi % xơ + giới tính"]
+    },
+    "62": {
+      "titleVi": "Quần áo không dệt kim (dệt thoi)",
+      "requiredAttributes": ["fiberComposition", "knitOrWoven", "gender"],
+      "chapterSpecificRequired": ["fiberComposition", "knitOrWoven"],
+      "girHints": ["DỆT THOI → chương 62 (không phải 61); ghi % xơ + giới tính"]
+    },
+    "63": {
+      "titleVi": "Hàng dệt may sẵn khác",
+      "requiredAttributes": ["fiberComposition", "primaryUse"],
+      "chapterSpecificRequired": ["fiberComposition", "primaryUse"],
+      "girHints": ["Hàng may sẵn (khăn, rèm, bộ ga...) — ghi % xơ + công dụng"]
+    },
+    "64": {
+      "titleVi": "Giày dép",
+      "requiredAttributes": ["upperMaterial", "soleMaterial", "footwearType"],
+      "chapterSpecificRequired": ["upperMaterial", "soleMaterial"],
+      "girHints": ["Vật liệu mũ giày + đế giày quyết định phân nhóm 64.xx"]
+    },
+    "69": {
+      "titleVi": "Sản phẩm gốm, sứ",
+      "requiredAttributes": ["material", "primaryUse"],
+      "chapterSpecificRequired": ["material", "primaryUse"],
+      "girHints": ["Sứ vs gốm thường; công dụng (xây dựng/gia dụng/kỹ thuật)"]
+    },
+    "70": {
+      "titleVi": "Thủy tinh và sản phẩm thủy tinh",
+      "requiredAttributes": ["glassType", "form", "primaryUse"],
+      "chapterSpecificRequired": ["form", "primaryUse"],
+      "girHints": ["Dạng (tấm/rỗng/sợi) + công dụng"]
+    },
+    "72": {
+      "titleVi": "Sắt và thép",
+      "requiredAttributes": ["steelGrade", "form", "dimensions"],
+      "chapterSpecificRequired": ["form", "dimensions"],
+      "girHints": ["Hợp kim hay không hợp kim + dạng (cuộn/thanh/tấm) + kích thước"]
+    },
+    "73": {
+      "titleVi": "Sản phẩm bằng sắt hoặc thép",
+      "requiredAttributes": ["material", "function"],
+      "chapterSpecificRequired": ["material", "function"],
+      "girHints": ["Chức năng sản phẩm quyết định nhóm 73.xx"]
+    },
+    "76": {
+      "titleVi": "Nhôm và sản phẩm bằng nhôm",
+      "requiredAttributes": ["alloyGrade", "form"],
+      "chapterSpecificRequired": ["form"],
+      "girHints": ["Hợp kim nhôm + dạng (thỏi/tấm/thanh/sản phẩm)"]
+    },
     "84": {
       "titleVi": "Máy móc, thiết bị cơ khí",
       "requiredAttributes": ["function", "powerOrCapacity"],
@@ -53,7 +135,25 @@
       "titleVi": "Phương tiện giao thông",
       "requiredAttributes": ["vehicleType", "engineDisplacementOrPower", "newOrUsed"],
       "chapterSpecificRequired": ["engineCapacity", "seatCount"],
-      "girHints": ["Xe mô tô vs ô tô"]
+      "girHints": ["Xe mô tô vs ô tô; dung tích xy-lanh + số chỗ ngồi"]
+    },
+    "90": {
+      "titleVi": "Thiết bị quang học, đo lường, y tế",
+      "requiredAttributes": ["function", "principle", "modelNumber"],
+      "chapterSpecificRequired": ["function", "modelNumber"],
+      "girHints": ["Nguyên lý đo/quang học + model; phân biệt kính thuốc/râm/bảo hộ"]
+    },
+    "94": {
+      "titleVi": "Đồ nội thất, giường, đèn",
+      "requiredAttributes": ["material", "furnitureType", "primaryUse"],
+      "chapterSpecificRequired": ["material", "furnitureType"],
+      "girHints": ["Vật liệu khung + loại đồ nội thất + nơi sử dụng"]
+    },
+    "95": {
+      "titleVi": "Đồ chơi, dụng cụ thể thao",
+      "requiredAttributes": ["productType", "ageGroup", "material"],
+      "chapterSpecificRequired": ["productType", "material"],
+      "girHints": ["Loại sản phẩm + nhóm tuổi (đồ chơi trẻ em)"]
     }
   }
 }
