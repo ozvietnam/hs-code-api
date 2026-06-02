@@ -1,5 +1,5 @@
 {
-  "version": "2026-02",
+  "version": "2026-06",
   "chapters": {
     "28": {
       "titleVi": "Hóa chất vô cơ",
@@ -114,6 +114,60 @@
       "requiredAttributes": ["chatLieu", "congDung"],
       "chapterSpecificRequired": ["furnitureType", "material"],
       "girHints": ["Loại (chỗ ngồi 9401/nội thất khác 9403/đèn 9405); vật liệu chính; dùng nhà hay văn phòng"]
+    },
+    "48": {
+      "titleVi": "Giấy và bìa",
+      "requiredAttributes": ["gsm", "coating", "congDung"],
+      "chapterSpecificRequired": ["gsm"],
+      "girHints": ["Định lượng g/m² + có tráng phủ hay không quyết định nhóm 48.xx"]
+    },
+    "52": {
+      "titleVi": "Bông (sợi và vải dệt thoi)",
+      "requiredAttributes": ["chatLieu", "loaiVai", "gsm"],
+      "chapterSpecificRequired": ["fiberContent", "gsm"],
+      "girHints": ["% bông + định lượng g/m²; sợi (52.04-52.07) vs vải dệt thoi (52.08-52.12)"]
+    },
+    "54": {
+      "titleVi": "Sợi filament nhân tạo",
+      "requiredAttributes": ["chatLieu", "loaiSoi"],
+      "chapterSpecificRequired": ["fiberContent"],
+      "girHints": ["Filament liên tục; % thành phần sợi; sợi (54.01-54.06) vs vải (54.07-54.08)"]
+    },
+    "55": {
+      "titleVi": "Xơ staple nhân tạo",
+      "requiredAttributes": ["chatLieu", "loaiSoi"],
+      "chapterSpecificRequired": ["fiberContent"],
+      "girHints": ["Xơ ngắn (staple); % thành phần; xơ/sợi vs vải dệt"]
+    },
+    "69": {
+      "titleVi": "Sản phẩm gốm, sứ",
+      "requiredAttributes": ["chatLieu", "congDung"],
+      "chapterSpecificRequired": ["ceramicType"],
+      "girHints": ["Sứ (porcelain/china) vs gốm thường; công dụng (xây dựng/bàn ăn/vệ sinh/kỹ thuật)"]
+    },
+    "70": {
+      "titleVi": "Thủy tinh và sản phẩm thủy tinh",
+      "requiredAttributes": ["chatLieu", "hinhDang", "congDung"],
+      "chapterSpecificRequired": ["glassForm"],
+      "girHints": ["Dạng (tấm/rỗng/sợi/khối) + công dụng quyết định 70.xx"]
+    },
+    "72": {
+      "titleVi": "Sắt và thép (nguyên liệu)",
+      "requiredAttributes": ["chatLieu", "hinhDang", "kichThuoc"],
+      "chapterSpecificRequired": ["steelGrade", "form"],
+      "girHints": ["Hợp kim/không hợp kim + dạng (phôi/cuộn/thanh/tấm/dây) + kích thước"]
+    },
+    "76": {
+      "titleVi": "Nhôm và sản phẩm bằng nhôm",
+      "requiredAttributes": ["chatLieu", "hinhDang"],
+      "chapterSpecificRequired": ["alloyGrade", "form"],
+      "girHints": ["Nhôm/hợp kim nhôm + dạng (thỏi/tấm/thanh/ống/sản phẩm)"]
+    },
+    "95": {
+      "titleVi": "Đồ chơi, dụng cụ thể thao",
+      "requiredAttributes": ["congDung", "chatLieu", "doiTuong"],
+      "chapterSpecificRequired": ["productType"],
+      "girHints": ["Loại (đồ chơi 9503/dụng cụ thể thao 9506/trò chơi 9504); nhóm tuổi"]
     }
   }
 }
