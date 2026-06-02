@@ -25,9 +25,9 @@ const LIMIT = parseInt(arg('limit', '0'), 10) || Infinity;
 const BATCH = parseInt(arg('batch', '10'), 10);
 const DRY = !!arg('dry-run', false);
 
-const hasKey = !!(process.env.GEMINI_API_KEY || process.env.MINIMAX_API_KEY || process.env.OPENROUTER_API_KEY);
+const hasKey = !!(process.env.BYTEPLUS_API_KEY || process.env.GEMINI_API_KEY || process.env.MINIMAX_API_KEY || process.env.OPENROUTER_API_KEY);
 if (!hasKey && !DRY) {
-  console.log('⚠ Chưa có LLM key. Bỏ qua enrich conflicts (bước LLM của A2 #44).');
+  console.log('⚠ Chưa có LLM key (BYTEPLUS_API_KEY / GEMINI / MINIMAX). Bỏ qua enrich conflicts (bước LLM của A2 #44).');
   console.log('  Worklist deterministic đã sẵn: npm run data:build-conflict-worklist → data/conflict-worklist.json');
   process.exit(0);
 }
@@ -62,8 +62,8 @@ async function main() {
     const E = conflicts[item.hsCode];
     if (!E || (E.reasonsVi && E.reasonsVi.length)) continue; // resume-safe
 
-    let json;
-    try { ({ json } = await callLLMJson(SYS, buildUser(item), { tier, maxTokens: 600, timeoutMs: 30000 })); }
+    let json, provider;
+    try { ({ json, provider } = await callLLMJson(SYS, buildUser(item), { tier, maxTokens: 600, timeoutMs: 30000 })); }
     catch (e) { console.error(`  ${item.hsCode} lỗi LLM: ${String(e.message).slice(0, 80)}`); continue; }
     done += 1;
     if (!json || !Array.isArray(json.reasonsVi) || !json.reasonsVi.length) continue;
@@ -74,7 +74,7 @@ async function main() {
     const merged = new Set([...(E.confusedWith || []), ...item.seededConfusedWith, ...(json.confusedWith || []).map((x) => String(x).replace(/\D/g, ''))]);
     merged.delete(item.hsCode);
     E.confusedWith = [...merged].filter((x) => x.length === 8);
-    E.reasonsSource = tier === 'premium' ? 'gemini' : 'minimax';
+    E.reasonsSource = provider || (tier === 'premium' ? 'gemini' : 'llm');
     written += 1; since += 1;
 
     if (since >= BATCH) {

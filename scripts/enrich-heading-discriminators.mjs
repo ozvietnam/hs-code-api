@@ -30,9 +30,9 @@ const LIMIT = parseInt(arg('limit', '0'), 10) || Infinity;
 const BATCH = parseInt(arg('batch', '10'), 10);
 const DRY = !!arg('dry-run', false);
 
-const hasKey = !!(process.env.GEMINI_API_KEY || process.env.MINIMAX_API_KEY || process.env.OPENROUTER_API_KEY);
+const hasKey = !!(process.env.BYTEPLUS_API_KEY || process.env.GEMINI_API_KEY || process.env.MINIMAX_API_KEY || process.env.OPENROUTER_API_KEY);
 if (!hasKey && !DRY) {
-  console.log('⚠ Chưa có LLM key (GEMINI_API_KEY / MINIMAX_API_KEY). Bỏ qua enrich.');
+  console.log('⚠ Chưa có LLM key (BYTEPLUS_API_KEY / GEMINI_API_KEY / MINIMAX_API_KEY). Bỏ qua enrich.');
   console.log('  Đây là bước LLM của A1 (#43) — chạy lại khi có key. Worklist deterministic đã sẵn ở');
   console.log('  data/discriminator-worklist.json (chạy: npm run data:build-discriminator-worklist).');
   process.exit(0);
@@ -75,9 +75,9 @@ async function main() {
     const H = heading[item.heading];
     if (!H || (H.phan_biet && String(H.phan_biet).trim())) continue; // resume-safe
 
-    let json;
+    let json, provider;
     try {
-      ({ json } = await callLLMJson(SYS, buildUser(item), { tier, maxTokens: 800, timeoutMs: 30000 }));
+      ({ json, provider } = await callLLMJson(SYS, buildUser(item), { tier, maxTokens: 800, timeoutMs: 30000 }));
     } catch (e) {
       console.error(`  ${item.heading} lỗi LLM: ${String(e.message).slice(0, 80)}`);
       continue;
@@ -93,7 +93,7 @@ async function main() {
 
     H.phan_biet = String(json.phan_biet).trim();
     if (item.needs.tinh_chat && json.tinh_chat) H.tinh_chat = String(json.tinh_chat).trim();
-    H.phan_biet_source = tier === 'premium' ? 'gemini' : 'minimax';
+    H.phan_biet_source = provider || (tier === 'premium' ? 'gemini' : 'llm');
     written += 1; since += 1;
 
     if (since >= BATCH) {
