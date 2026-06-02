@@ -16,6 +16,7 @@ Plus phục vụ tương lai chatbot công khai (Track B, T6/2026).
 - Node.js Vercel functions (serverless) — KHÔNG dùng Next.js framework
 - Data: JSON files trong `data/` (no DB cho serverless cold start nhanh)
 - AI: Gemini 2.5 Flash (rerank, describe) + Gemini Embedding 001 (semantic search)
+- Fallback local: OpenRouter free models via `.env` — `docs/openrouter.md`, `npm run openrouter:ping`
 - Auth: Bearer token (`HS_API_TOKEN` env)
 - Deploy: Vercel project `hs-code-api`
 

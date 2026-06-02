@@ -155,6 +155,117 @@ async function geminiSingle(hs, cs, model, apiKey) {
   return map.get(normalizeHs(hs)) || null;
 }
 
+async function ollamaBatch(items, model, apiKey, baseUrl) {
+  const userPayload = {
+    task: 'Parse policy text for each HS code',
+    items: items.map((x) => ({ hsCode: x.hs, policyText: x.cs })),
+  };
+
+  const url = `${baseUrl}/chat`;
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model,
+      messages: [
+        { role: 'system', content: SYSTEM_PROMPT },
+        { role: 'user', content: JSON.stringify(userPayload, null, 2) },
+      ],
+      stream: false,
+      format: 'json',
+      options: { temperature: 0.15 },
+    }),
+  });
+
+  if (!response.ok) {
+    const t = await response.text();
+    throw new Error(`Ollama ${response.status}: ${t.slice(0, 400)}`);
+  }
+
+  const data = await response.json();
+  let text = data.message?.content || '';
+  if (!text) throw new Error('Empty Ollama response');
+
+  // Strip markdown code fences if present
+  text = text.replace(/^```(?:json)?\s*\n?/i, '').replace(/\n?```\s*$/i, '').trim();
+
+  const parsed = JSON.parse(text);
+  const list = parsed.items || parsed.results || parsed;
+  if (!Array.isArray(list)) throw new Error('Expected JSON array or { items: [] }');
+
+  const byHs = new Map();
+  for (const row of list) {
+    if (!row || !row.hsCode) continue;
+    const code = normalizeHs(row.hsCode);
+    const w = validateWarnings(row.warnings, items.find((i) => i.hs === code)?.cs);
+    if (w) byHs.set(code, w);
+  }
+  return byHs;
+}
+
+async function ollamaSingle(hs, cs, model, apiKey, baseUrl) {
+  const map = await ollamaBatch([{ hs, cs }], model, apiKey, baseUrl);
+  return map.get(normalizeHs(hs)) || null;
+}
+
+async function openaiCompatBatch(items, model, apiKey, baseUrl, providerLabel) {
+  const userPayload = {
+    task: 'Parse policy text for each HS code',
+    items: items.map((x) => ({ hsCode: x.hs, policyText: x.cs })),
+  };
+
+  const url = `${baseUrl}/chat/completions`;
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model,
+      messages: [
+        { role: 'system', content: SYSTEM_PROMPT },
+        { role: 'user', content: JSON.stringify(userPayload, null, 2) },
+      ],
+      temperature: 0.15,
+      stream: false,
+    }),
+  });
+
+  if (!response.ok) {
+    const t = await response.text();
+    throw new Error(`${providerLabel} ${response.status}: ${t.slice(0, 400)}`);
+  }
+
+  const data = await response.json();
+  let text = data.choices?.[0]?.message?.content || '';
+  if (!text) throw new Error(`Empty ${providerLabel} response`);
+
+  text = text.replace(/<think[^>]*>[\s\S]*?<\/think>/gi, '').trim();
+  text = text.replace(/^```(?:json)?\s*\n?/i, '').replace(/\n?```\s*$/i, '').trim();
+
+  const parsed = JSON.parse(text);
+  const list = parsed.items || parsed.results || parsed;
+  if (!Array.isArray(list)) throw new Error('Expected JSON array or { items: [] }');
+
+  const byHs = new Map();
+  for (const row of list) {
+    if (!row || !row.hsCode) continue;
+    const code = normalizeHs(row.hsCode);
+    const w = validateWarnings(row.warnings, items.find((i) => i.hs === code)?.cs);
+    if (w) byHs.set(code, w);
+  }
+  return byHs;
+}
+
+async function openaiCompatSingle(hs, cs, model, apiKey, baseUrl, providerLabel) {
+  const map = await openaiCompatBatch([{ hs, cs }], model, apiKey, baseUrl, providerLabel);
+  return map.get(normalizeHs(hs)) || null;
+}
+
 function loadOut(p) {
   if (!fs.existsSync(p)) return {};
   try {
@@ -190,8 +301,56 @@ async function runPool(tasks, concurrency, fn) {
 
 async function main() {
   const opts = parseArgs();
-  const apiKey = process.env.GEMINI_API_KEY;
-  const model = (process.env.GEMINI_ENRICH_MODEL || 'gemini-2.5-pro').replace(/^models\//, '');
+
+  // Provider priority: --provider flag > MINIMAX > OLLAMA > GEMINI
+  const providerFlag = (process.argv.find((a) => a.startsWith('--provider=')) || '').split('=')[1] || '';
+
+  const minimaxKey = process.env.MINIMAX_API_KEY;
+  const minimaxModel = process.env.MINIMAX_ENRICH_MODEL || 'MiniMax-M2.7';
+  const minimaxBase = process.env.MINIMAX_BASE_URL || 'https://api.minimax.io/v1';
+
+  const ollamaKey = process.env.OLLAMA_API_KEY;
+  const ollamaModel = process.env.OLLAMA_ENRICH_MODEL || 'gemma4:31b';
+  const ollamaBase = process.env.OLLAMA_BASE_URL || 'https://ollama.com/api';
+
+  const openrouterKey = process.env.OPENROUTER_API_KEY;
+  const openrouterModel = process.env.OPENROUTER_ENRICH_MODEL || 'google/gemma-3-27b-it:free';
+  const openrouterBase = process.env.OPENROUTER_BASE_URL || 'https://openrouter.ai/api/v1';
+
+  const geminiKey = process.env.GEMINI_API_KEY;
+  const geminiModel = (process.env.GEMINI_ENRICH_MODEL || 'gemini-2.5-flash').replace(/^models\//, '');
+
+  let provider, model, apiKey, batchFn, singleFn, extraArgs;
+
+  if (providerFlag === 'openrouter' || (!providerFlag && openrouterKey && !minimaxKey)) {
+    provider = 'openrouter';
+    model = openrouterModel;
+    apiKey = openrouterKey;
+    batchFn = openaiCompatBatch;
+    singleFn = openaiCompatSingle;
+    extraArgs = [openrouterKey, openrouterBase, 'OpenRouter'];
+  } else if (providerFlag === 'minimax' || (!providerFlag && minimaxKey)) {
+    provider = 'minimax';
+    model = minimaxModel;
+    apiKey = minimaxKey;
+    batchFn = openaiCompatBatch;
+    singleFn = openaiCompatSingle;
+    extraArgs = [minimaxKey, minimaxBase, 'MiniMax'];
+  } else if (providerFlag === 'ollama' || (!providerFlag && ollamaKey)) {
+    provider = 'ollama';
+    model = ollamaModel;
+    apiKey = ollamaKey;
+    batchFn = ollamaBatch;
+    singleFn = ollamaSingle;
+    extraArgs = [ollamaKey, ollamaBase];
+  } else {
+    provider = 'gemini';
+    model = geminiModel;
+    apiKey = geminiKey;
+    batchFn = geminiBatch;
+    singleFn = geminiSingle;
+    extraArgs = [geminiKey];
+  }
 
   const tax = JSON.parse(fs.readFileSync(TAX_PATH, 'utf8'));
   const withPolicy = Object.values(tax).filter((r) => r.cs && String(r.cs).trim());
@@ -207,6 +366,7 @@ async function main() {
   console.log(
     JSON.stringify(
       {
+        provider,
         model,
         totalWithPolicy: withPolicy.length,
         toProcess: queue.length,
@@ -228,26 +388,51 @@ async function main() {
 
   if (!apiKey) {
     // eslint-disable-next-line no-console
-    console.error('Set GEMINI_API_KEY');
+    console.error('Set MINIMAX_API_KEY, OPENROUTER_API_KEY, OLLAMA_API_KEY, or GEMINI_API_KEY');
     process.exit(1);
   }
+
+  const batchFnRef = batchFn;
+  const singleFnRef = singleFn;
 
   const batches = chunk(queue, opts.batch);
   const merged = { ...existing };
   let done = 0;
 
-  await runPool(batches, opts.concurrency, async (batch) => {
-    let byHs = await geminiBatch(batch, model, apiKey);
+  await runPool(batches, opts.concurrency, async (batch, batchIdx) => {
+    let byHs;
+    let retries = 3;
+    while (retries > 0) {
+      try {
+        byHs = await batchFnRef(batch, model, ...extraArgs);
+        break;
+      } catch (e) {
+        retries--;
+        if (retries <= 0) {
+          // eslint-disable-next-line no-console
+          console.warn(`Batch ${batchIdx} failed after 3 retries: ${e.message}`);
+          byHs = new Map();
+          break;
+        }
+        // eslint-disable-next-line no-console
+        console.warn(`Batch ${batchIdx} error (retries left: ${retries}): ${e.message}`);
+        await new Promise((r) => setTimeout(r, 5000));
+      }
+    }
     if (byHs.size < batch.length) {
       for (const row of batch) {
         if (!byHs.has(row.hs)) {
-          const w = await geminiSingle(row.hs, row.cs, model, apiKey);
-          if (w) byHs.set(row.hs, w);
+          try {
+            const w = await singleFnRef(row.hs, row.cs, model, ...extraArgs);
+            if (w) byHs.set(row.hs, w);
+          } catch {
+            // skip individual failures
+          }
         }
       }
     }
 
-    const enrichModel = `models/${model}`;
+    const enrichModel = provider === 'gemini' ? `models/${model}` : `${provider}/${model}`;
     const enrichedAt = new Date().toISOString();
     for (const row of batch) {
       const w = byHs.get(row.hs);

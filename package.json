@@ -32,7 +32,8 @@
     "data:extract-legal-refs": "node scripts/extract-legal-refs.mjs",
     "bench:accuracy": "node scripts/accuracy-benchmark.mjs",
     "bench:accuracy:dry": "node scripts/accuracy-benchmark.mjs --dry-run",
-    "bench:search": "node scripts/accuracy-benchmark.mjs --search-only"
+    "bench:search": "node scripts/accuracy-benchmark.mjs --search-only",
+    "openrouter:ping": "node scripts/openrouter-ping.mjs"
   },
   "devDependencies": {
     "xlsx": "^0.18.5"
