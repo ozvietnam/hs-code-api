@@ -9,6 +9,15 @@ const { translateToVi, getBrandHint } = require('../lib/glossary');
 const { searchOzByKeyword } = require('../lib/oz-precedent-search');
 const { applyHistoricalSignals } = require('../lib/suggest-confidence');
 const { appendSuggestLog } = require('../lib/ml-log');
+// B4: shared knowledge layer — cùng conflicts/explanatory-notes với /api/classify
+const { getNoteSummaryForHs } = require('../lib/explanatory-notes-index');
+const fs = require('fs');
+const path = require('path');
+let _conflicts;
+function conflictsDb() {
+  try { return (_conflicts ||= JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'conflicts.json'), 'utf8'))); }
+  catch { return (_conflicts = {}); }
+}
 
 const SYSTEM_PROMPT = `Bạn là chuyên gia phân loại hàng hóa hải quan Việt Nam.
 Cho mô tả hàng hóa và danh sách mã HS candidate, hãy chọn tối đa 3 mã phù hợp nhất.
@@ -140,6 +149,14 @@ module.exports = async function handler(req, res) {
       ...(detectSet(description) ? ['GIR-3b'] : []),
     ];
 
+    // B4: shared knowledge — conflicts + explanatory note cho mã top (cùng layer với /classify)
+    const top1Hs = suggestions[0]?.hsCode;
+    const explanatoryNote = top1Hs ? getNoteSummaryForHs(top1Hs) : null;
+    const topConflict = top1Hs ? conflictsDb()[top1Hs] : null;
+    const confusionWarning = topConflict?.confusedWith?.length
+      ? { riskLevel: topConflict.riskLevel, confusedWith: topConflict.confusedWith, reasonsVi: topConflict.reasonsVi || [] }
+      : null;
+
     return res.status(200).json({
       suggestions,
       girRankingRules,
@@ -159,6 +176,8 @@ module.exports = async function handler(req, res) {
         ...audit.antiPatternWarnings,
         ...historyAdjusted.warnings,
       ],
+      explanatoryNote,   // giải trình mã top (null nếu không có) — cùng field với /classify
+      confusionWarning,  // cảnh báo nhầm (null nếu không có rủi ro) — cùng field với /classify
       glossaryTranslation: glossaryVi !== description ? glossaryVi : undefined,
       brandHint,
       llmModel: model,
