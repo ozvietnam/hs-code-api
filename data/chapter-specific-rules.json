@@ -1,5 +1,5 @@
 {
-  "version": "2026-01",
+  "version": "2026-02",
   "chapters": {
     "28": {
       "titleVi": "Hóa chất vô cơ",
@@ -49,11 +49,71 @@
       "chapterSpecificRequired": ["voltage", "power", "modelNumber"],
       "girHints": ["Điện thoại thông minh thường 8517"]
     },
+    "42": {
+      "titleVi": "Hàng da, túi xách, hành lý",
+      "requiredAttributes": ["chatLieu", "congDung"],
+      "chapterSpecificRequired": ["outerMaterial"],
+      "girHints": ["Vật liệu mặt ngoài chính quyết định 42.01-42.03 (da thật/da tổng hợp/vải dệt/nhựa)"]
+    },
+    "61": {
+      "titleVi": "Quần áo dệt kim",
+      "requiredAttributes": ["chatLieu", "loaiVai", "doiTuong"],
+      "chapterSpecificRequired": ["fiberContent", "constructionType"],
+      "girHints": ["Cấu trúc dệt kim; % sợi chính; đối tượng mặc (nam/nữ/trẻ em)"]
+    },
+    "62": {
+      "titleVi": "Quần áo dệt thoi",
+      "requiredAttributes": ["chatLieu", "loaiVai", "doiTuong"],
+      "chapterSpecificRequired": ["fiberContent", "constructionType"],
+      "girHints": ["Vải dệt thoi (không phải dệt kim); % sợi chính; đối tượng mặc"]
+    },
+    "63": {
+      "titleVi": "Hàng may mặc khác; đồ dùng làm bằng vải",
+      "requiredAttributes": ["chatLieu", "congDung"],
+      "chapterSpecificRequired": ["fiberContent"],
+      "girHints": ["Mục đích dùng cụ thể (túi vải/bạt/thảm/chăn) + % sợi chính"]
+    },
+    "64": {
+      "titleVi": "Giày dép",
+      "requiredAttributes": ["chatLieu", "loaiDe", "doiTuong"],
+      "chapterSpecificRequired": ["upperMaterial", "soleMaterial"],
+      "girHints": ["Vật liệu mũi giày (da/vải/nhựa) + đế (cao su/nhựa/da/gỗ); đối tượng (nam/nữ/trẻ em)"]
+    },
+    "73": {
+      "titleVi": "Sắt thép và sản phẩm bằng sắt thép",
+      "requiredAttributes": ["chatLieu", "congDung", "hinhDang"],
+      "chapterSpecificRequired": ["steelGrade"],
+      "girHints": ["Loại thép (carbon/không gỉ/hợp kim) + hình dạng (tấm/thanh/ống/dây/bu lông) + mục đích"]
+    },
+    "82": {
+      "titleVi": "Dụng cụ, dao kéo, đồ kim loại",
+      "requiredAttributes": ["congDung", "chatLieu"],
+      "chapterSpecificRequired": ["toolType", "bladeMaterial"],
+      "girHints": ["Loại dụng cụ (cầm tay/lưỡi cắt/thay thế); vật liệu lưỡi; dùng tay hay gắn máy"]
+    },
+    "83": {
+      "titleVi": "Đồ kim loại khác",
+      "requiredAttributes": ["chatLieu", "congDung"],
+      "chapterSpecificRequired": ["baseMetal"],
+      "girHints": ["Loại kim loại cơ bản; chức năng sản phẩm (bản lề/móc/khung/dây xiết)"]
+    },
     "87": {
       "titleVi": "Phương tiện giao thông",
       "requiredAttributes": ["vehicleType", "engineDisplacementOrPower", "newOrUsed"],
       "chapterSpecificRequired": ["engineCapacity", "seatCount"],
       "girHints": ["Xe mô tô vs ô tô"]
+    },
+    "90": {
+      "titleVi": "Thiết bị quang học, đo lường, kiểm tra",
+      "requiredAttributes": ["congDung", "nguyenLy"],
+      "chapterSpecificRequired": ["measurementType", "principle"],
+      "girHints": ["Nguyên lý đo (cơ/điện tử/quang học) + đại lượng đo (lưu lượng/áp suất/nhiệt độ/vị trí)"]
+    },
+    "94": {
+      "titleVi": "Đồ nội thất, đèn, lều trại",
+      "requiredAttributes": ["chatLieu", "congDung"],
+      "chapterSpecificRequired": ["furnitureType", "material"],
+      "girHints": ["Loại (chỗ ngồi 9401/nội thất khác 9403/đèn 9405); vật liệu chính; dùng nhà hay văn phòng"]
     }
   }
 }
