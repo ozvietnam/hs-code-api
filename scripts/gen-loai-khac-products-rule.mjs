@@ -264,7 +264,7 @@ const H6EN_DOMAINS = [
     },
   },
   {
-    match: /spark.ignition.*propulsion of vehicles|petrol.*engine.*vehicle/i,
+    match: /with only spark.ignition.*piston engine|spark.ignition.*propulsion of vehicles|petrol.*engine.*vehicle/i,
     domain: {
       type: 'Xe ô tô động cơ xăng',
       items: [
@@ -282,7 +282,7 @@ const H6EN_DOMAINS = [
     },
   },
   {
-    match: /compression.ignition.*propulsion of vehicles|diesel.*engine.*vehicle/i,
+    match: /with only compression.ignition.*piston engine|compression.ignition.*propulsion of vehicles|diesel.*engine.*vehicle/i,
     domain: {
       type: 'Xe ô tô động cơ diesel',
       items: [
@@ -300,7 +300,7 @@ const H6EN_DOMAINS = [
     },
   },
   {
-    match: /both spark.ignition.*compression.ignition|hybrid.*petrol|plug.in hybrid/i,
+    match: /with both spark.ignition.*compression.ignition|with both compression.ignition.*spark.ignition|hybrid.*petrol|plug.in hybrid/i,
     domain: {
       type: 'Xe hybrid/PHEV',
       items: [
@@ -867,6 +867,196 @@ const H6EN_DOMAINS = [
         'Bộ phận thép đã qua gia công nhiệt luyện',
         'Cụm lắp ráp đồng bộ (sub-assembly) thiết bị',
         'Bộ phận cao su kỹ thuật (rubber part) đặc chủng',
+      ],
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // CH.87 ADDITIONAL DOMAINS
+  // ══════════════════════════════════════════════════════════════
+  {
+    match: /with only electric motor for propulsion|electric.*motor.*propulsion/i,
+    domain: {
+      type: 'Xe ô tô điện (EV)',
+      items: [
+        'Xe ô tô điện 5 chỗ sedan pin 60kWh tầm 400km',
+        'Xe ô tô điện SUV 7 chỗ pin 75kWh',
+        'Xe ô tô điện mini hatchback 5 chỗ pin 30kWh',
+        'Xe tải điện nhẹ 1 tấn pin LFP 100kWh',
+        'Xe van điện 6 chỗ giao hàng pin 50kWh',
+        'Xe ô tô điện crossover 5 chỗ 500km range',
+        'Xe ô tô điện thể thao 2 chỗ pin solid-state',
+        'Xe pickup bán tải điện 4WD pin 120kWh',
+      ],
+    },
+  },
+  {
+    match: /n\.e\.c.*heading.*8701|tractors.*n\.e\.c/i,
+    domain: {
+      type: 'Máy kéo/đầu kéo',
+      items: [
+        'Đầu kéo xe tải (semi-truck tractor) 6×4 380HP Euro 4',
+        'Đầu kéo 4×2 340HP cabin cao LNG/diesel',
+        'Máy kéo nông nghiệp 75HP 4WD cabin',
+        'Máy kéo 2 bánh (walking tractor) 12HP',
+        'Đầu kéo rơ-mooc sân bay (airport tractor)',
+        'Máy kéo vườn (garden tractor) 25HP cắt cỏ',
+        'Đầu kéo cảng container (port terminal tractor)',
+        'Máy kéo nhỏ đa năng (compact utility tractor) 45HP',
+      ],
+    },
+  },
+  {
+    match: /spark.ignition.*reciprocating.*piston.*motorcycle|motorcycles.*spark.ignition/i,
+    domain: {
+      type: 'Xe mô tô',
+      items: [
+        'Xe mô tô 150cc 4 kỳ phun xăng điện tử',
+        'Xe mô tô 200cc naked bike tay côn',
+        'Xe mô tô 250cc dual sport off-road',
+        'Xe mô tô 300cc naked sport ABS',
+        'Xe mô tô 400cc cruiser kiểu Harley',
+        'Xe mô tô côn tay 150cc dáng sport',
+        'Xe mô tô adventure 250cc 21"/18" offroad',
+        'Xe mô tô retro cafe racer 200cc',
+      ],
+    },
+  },
+  {
+    match: /road wheels.*parts.*accessories|wheels.*tyres.*motor vehicles/i,
+    domain: {
+      type: 'Bánh xe ô tô và bộ phận',
+      items: [
+        'Mâm nhôm (alloy wheel) 17" 5×114.3 ô tô sedan',
+        'Mâm thép dập 15" xe con 4 bulông',
+        'Lốp xe (tyre) 205/55R16 91V xe con',
+        'Lốp xe SUV 235/65R17 108T all-terrain',
+        'Lốp xe tải 11R22.5 16PR radial',
+        'Lốp xe máy 90/90-14 tubeless',
+        'Căm (spoke) mâm thép xe máy 18" stainless',
+        'Đai hơi (bead) lốp công nghiệp 8.25R20',
+        'Cụm trục bánh (axle hub) xe tải 10 tấn',
+        'Bu lông bánh xe (wheel bolt) M12×1.5 hex 17',
+      ],
+    },
+  },
+  {
+    match: /bodies.*cabs.*motor vehicles|body.*cab.*truck/i,
+    domain: {
+      type: 'Thân/cabin xe ô tô',
+      items: [
+        'Cabin xe tải hạng nặng steel cab double-sleeper',
+        'Cabin xe tải nhỏ (single cab) thép dập',
+        'Thùng xe (truck body) tải cẩu hiệu nghiêng 5m',
+        'Thùng đông lạnh (refrigerated body) 5 tấn polyurethane',
+        'Thùng xe container 20ft dry van body',
+        'Cabin xe đầu kéo high-roof aerodynamic',
+        'Thùng xe ben (dump body) thép Hardox 10m3',
+        'Thùng xe bồn (tank body) inox SS304 5000L',
+      ],
+    },
+  },
+  {
+    match: /parts.*accessories.*bodies.*seat belt|parts.*body.*motor vehicle/i,
+    domain: {
+      type: 'Phụ kiện thân xe',
+      items: [
+        'Cánh cửa xe ô tô con phải trước OEM',
+        'Nắp ca-pô (hood) xe sedan thép dập',
+        'Kính chắn gió (windshield) xe con laminated',
+        'Cản trước (front bumper) xe SUV PP plastic',
+        'Đèn pha (headlamp) LED DRL xe con',
+        'Tấm lót sàn (floor mat) PVC xe con 5 tấm',
+        'Gương chiếu hậu ngoài (side mirror) có sưởi',
+        'Đuôi xe (tailgate/trunk lid) xe sedan OEM',
+        'Lưới tản nhiệt (grille) xe con chrome',
+        'Bộ kép (door handle) ngoài xe con chrome',
+      ],
+    },
+  },
+  {
+    match: /fitted with engines.*motor vehicles|engines.*tractors/i,
+    domain: {
+      type: 'Bộ phận động cơ xe cơ giới',
+      items: [
+        'Động cơ diesel xe tải 6 xi-lanh 250HP Euro 4 (lắp ráp)',
+        'Hộp số tự động (automatic gearbox) 6AT xe con',
+        'Hộp số sàn (manual gearbox) 5MT xe tải nhỏ',
+        'Cầu sau (rear axle) xe tải 8 tấn',
+        'Cầu trước (front axle) xe tải off-road',
+        'Khớp nối truyền động (driveshaft) CV joint',
+        'Bộ nhún (suspension assembly) MacPherson trước',
+        'Hệ thống phanh ABS+EBD xe con',
+        'Bơm trợ lực lái (power steering pump) xe tải',
+        'Bộ tản nhiệt (radiator) xe tải 5 tấn nhôm',
+      ],
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // CH.01-15 AGRICULTURAL / FOOD — basic fallback improvers
+  // ══════════════════════════════════════════════════════════════
+  {
+    match: /horses.*asses.*mules|bovine.*animals|swine|sheep.*goats/i,
+    domain: {
+      type: 'Gia súc sống',
+      items: [
+        'Bò thịt giống Brahman sống 300-350kg/con nhập khẩu',
+        'Bò sữa Holstein Friesian cái tơ 24 tháng tuổi',
+        'Lợn thịt giống Landrace sống 100kg/con',
+        'Dê thịt Boer sống 35-40kg/con',
+        'Ngựa đua thuần chủng (thoroughbred) sống',
+        'Trâu cày/kéo sống 350-400kg/con',
+        'Cừu thịt sống Dorper 60kg/con',
+        'Lợn nái giống F1 130kg/con nhập khẩu',
+      ],
+    },
+  },
+  {
+    match: /poultry|chickens.*ducks.*geese|live poultry/i,
+    domain: {
+      type: 'Gia cầm sống',
+      items: [
+        'Gà thịt sống giống Ross 308 1 ngày tuổi',
+        'Gà đẻ trứng sống giống Hy-Line Brown 16 tuần',
+        'Vịt thịt sống giống Cherry Valley 1 ngày tuổi',
+        'Ngan (muscovy duck) sống 1 ngày tuổi',
+        'Gà tây (turkey) sống con giống',
+        'Chim cút (quail) thịt sống 45-50 ngày',
+        'Gà giống bố mẹ (PS) Ross 308 sống 17 tuần',
+        'Vịt xiêm con giống 1 ngày tuổi nhập khẩu',
+      ],
+    },
+  },
+  {
+    match: /meat.*bovine|beef.*frozen|meat.*swine|pork|poultry.*meat/i,
+    domain: {
+      type: 'Thịt đông lạnh',
+      items: [
+        'Thịt bò đông lạnh (beef) nạc vai block 20kg',
+        'Thịt heo đông lạnh ba rọi (pork belly) block 20kg',
+        'Thịt gà đông lạnh nguyên con 1.2-1.5kg IQF',
+        'Thịt bò đông lạnh thăn ngoài (striploin) 4kg',
+        'Gà ức (chicken breast) IQF đông lạnh 2kg',
+        'Thịt heo vai đông lạnh (pork shoulder) block',
+        'Thịt bê đông lạnh (veal) lưng 10kg',
+        'Cánh gà (chicken wings) IQF đông lạnh 2kg',
+      ],
+    },
+  },
+  {
+    match: /vegetables.*fresh.*chilled|onions.*garlic.*leeks|tomatoes/i,
+    domain: {
+      type: 'Rau quả tươi',
+      items: [
+        'Hành tây (onion) tươi loại 60-80mm 10kg/túi lưới',
+        'Tỏi (garlic) khô nguyên củ loại 4-6cm 10kg',
+        'Cà chua (tomato) tươi loại 1 100-120g/quả 5kg',
+        'Ớt chuông (bell pepper) đỏ tươi 500g/hộp',
+        'Bắp cải (cabbage) tươi loại 1 1-1.5kg/củ 10kg',
+        'Khoai tây (potato) tươi loại 1 80-100g 10kg',
+        'Gừng tươi (fresh ginger) có vỏ 1kg/túi lưới',
+        'Cần tây (celery) tươi 1 bó 500g',
       ],
     },
   },
