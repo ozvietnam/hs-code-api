@@ -5,19 +5,24 @@
  * Sinh corpus tìm kiếm cho 3,383 mã "Loại khác" — hoàn toàn từ cấu trúc biểu thuế.
  * Không dùng oz-gold, không dùng AI API.
  *
- * Công thức:
- *   Loại khác = [phạm vi heading H] - [tiêu chí từng sibling S1..Sn]
+ * Công thức 4 tầng (GIR Rule 1):
+ *   1. Chapter (2 số): phạm vi chương — CHAPTER_NOUN[ch]
+ *   2. Heading (4 số): loại hàng cụ thể — từ headingNote.phan_biet / tinh_chat
+ *   3. Subheading (6 số): phân nhóm — từ tax.json `en` field (qualifier sau ";")
+ *   4. Code (8 số): loại trừ sibling — từ specificSiblings[].vn
  *
  * Với mỗi mã LK:
- *   1. Trích danh mục từ heading notes (nhom/bao_gom)
- *   2. Tổng hợp 2-3 sản phẩm: [danh mục] + congDung "không phải [sibling1], [sibling2]..."
- *   3. Chạy qua reasoning engine → lấy steps làm lyDo
- *   4. Ghi ra data/loai-khac-corpus.jsonl
+ *   1. Trích h4Scope từ phan_biet/tinh_chat (phạm vi heading4 dương)
+ *   2. Trích h6En từ tax.json `en` (phân nhóm 6 số — tiếng Anh, dùng trong lyDo)
+ *   3. Trích categoryNoun từ sibling names / bao_gom (tên loại hàng VN)
+ *   4. Build congDung = h4Scope + sibling denials
+ *   5. Build lyDo = Ch → H4 → H6 → loại trừ sibs → Loại khác
+ *   6. Ghi ra data/loai-khac-corpus.jsonl
  *
  * Usage:
  *   node scripts/gen-loai-khac-corpus.mjs
  *   node scripts/gen-loai-khac-corpus.mjs --dry-run     # 10 mã đầu
- *   node scripts/gen-loai-khac-corpus.mjs --hs 90049090 # 1 mã cụ thể
+ *   node scripts/gen-loai-khac-corpus.mjs --hs 87149290 # 1 mã cụ thể
  */
 
 import { createRequire } from 'module';
@@ -26,12 +31,12 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const require = createRequire(import.meta.url);
-const { reasonLoaiKhac } = require('../lib/loai-khac-classifier.js');
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT     = path.join(__dirname, '..');
 const IDX_PATH = path.join(ROOT, 'data', 'loai-khac-index.json');
 const ENR_PATH = path.join(ROOT, 'data', 'loai-khac-enriched.json');
+const TAX_PATH = path.join(ROOT, 'data', 'tax.json');
 const OUT_PATH = path.join(ROOT, 'data', 'loai-khac-corpus.jsonl');
 
 // --------------------------------------------------------------------------
@@ -68,75 +73,9 @@ function parseArgs() {
 }
 
 // --------------------------------------------------------------------------
-// Extract category noun — primary source: sibling names (most reliable)
-// Sibling names share a common base noun; strip the specific qualifier
+// Chapter-level noun and material tables
 // --------------------------------------------------------------------------
 
-function extractCategoryNoun(headingNote, siblings) {
-  // Strategy 1: find common base from sibling names
-  // Siblings like ["Bút chì đen", "Bút chì màu"] → common = "Bút chì"
-  if (siblings.length >= 1) {
-    const sibNames = siblings
-      .map(s => s.v.replace(/^[-\s]+/, '').replace(/\s*\(SEN\)\s*/i, '').split(/[;(]/)[0].trim())
-      .filter(s => s.length >= 3 && s.length <= 60);
-
-    if (sibNames.length >= 2) {
-      // Find longest common prefix across all sibling names
-      const words0 = sibNames[0].split(' ');
-      let commonLen = words0.length;
-      for (const name of sibNames.slice(1)) {
-        const w = name.split(' ');
-        let match = 0;
-        for (let i = 0; i < Math.min(commonLen, w.length); i++) {
-          if (norm(words0[i]) === norm(w[i])) match++;
-          else break;
-        }
-        commonLen = match;
-        if (commonLen === 0) break;
-      }
-      if (commonLen >= 1) {
-        return words0.slice(0, commonLen).join(' ');
-      }
-    }
-
-    // Only 1 sibling: strip last keyword if sibling is short (≤4 words)
-    // Long sibling names (like "Loại có mũi giày được gắn...") are too specific to extract from
-    if (sibNames.length === 1) {
-      const words = sibNames[0].split(' ');
-      if (words.length >= 2 && words.length <= 4) {
-        return words.slice(0, -1).join(' ');
-      }
-    }
-  }
-
-  // Strategy 2: first clean noun phrase from bao_gom
-  const baoGom = clean(headingNote?.bao_gom || '');
-  if (baoGom.length > 8) {
-    const stripped = baoGom
-      .replace(/^các sản phẩm[^,;]*[,;]\s*/i, '')
-      .replace(/^những sản phẩm[^,;]*[,;]\s*/i, '')
-      .replace(/^hàng hóa[^,;]*[,;]\s*/i, '')
-      .replace(/^sản phẩm[^,;]*[,;]\s*/i, '');
-    const first = stripped.split(/[,;(]/)[0].trim();
-    if (first.length >= 5 && first.length <= 50
-        && !/^nhóm này|^phân nhóm|^loại|^hàng|^sản phẩm/i.test(first)) {
-      return first;
-    }
-  }
-
-  return '';  // caller will use CHAPTER_NOUN fallback
-}
-
-function chapterNoun(hs) {
-  return CHAPTER_NOUN[hs.slice(0, 2)] || '';
-}
-
-// --------------------------------------------------------------------------
-// Extract material hint — use chapter-level mapping (reliable) not phan_biet
-// phan_biet mentions materials as contrasts, not as the product's material
-// --------------------------------------------------------------------------
-
-// Chapter-level noun fallback when sibling extraction fails
 const CHAPTER_NOUN = {
   '01': 'Động vật sống',       '02': 'Thịt các loại',        '03': 'Thủy sản',
   '04': 'Sữa và sản phẩm sữa', '05': 'Sản phẩm động vật',    '06': 'Cây trồng',
@@ -184,11 +123,131 @@ const CHAPTER_MATERIAL = {
   '81': 'kim loại', '82': 'kim loại cơ bản', '83': 'kim loại cơ bản',
 };
 
+// --------------------------------------------------------------------------
+// Level-2: Chapter noun
+// --------------------------------------------------------------------------
+
+function chapterNoun(hs) {
+  return CHAPTER_NOUN[hs.slice(0, 2)] || '';
+}
+
+// --------------------------------------------------------------------------
+// Level-4: Heading scope — what this heading covers (positive qualifier)
+// Source: phan_biet "Chỉ dùng cho X" pattern (most reliable)
+// tinh_chat skipped — often contains garbled OCR fragments
+// --------------------------------------------------------------------------
+
+function extractH4Scope(headingNote) {
+  if (!headingNote) return '';
+
+  // 1. phan_biet "dùng cho X" / "dành cho X" — explicit positive scope
+  const pb = clean(headingNote.phan_biet || '');
+  const m = pb.match(/(?:dùng|dành) cho\s+(.{5,100})/i);
+  if (m) {
+    const raw = m[1]
+      .replace(/\([^)]*\)/g, '')   // strip parentheticals like (87.11, 87.12)
+      .split(/\.\s+/)[0]            // clip at first sentence boundary
+      .replace(/[,\s]+$/, '')
+      .trim();
+    if (raw.length >= 5 && raw.length <= 100
+        && !/^các loại trên|^những loại trên|^nhóm này/i.test(raw)) {
+      return raw.slice(0, 80);
+    }
+  }
+
+  // 2. nhom first sentence — only clean positive descriptions
+  const nhomFirst = clean(headingNote.nhom || '')
+    .replace(/^\(i\)\s*/i, '')
+    .split(/\.\s|\n/)[0].trim();
+  if (nhomFirst.length > 15 && nhomFirst.length < 100
+      && !/nhóm này|phân nhóm|chú giải|không bao gồm|loại trừ|chúng phải|những loại|tuy nhiên/i.test(nhomFirst.slice(0, 40))) {
+    return nhomFirst.slice(0, 80);
+  }
+
+  return '';
+}
+
+// --------------------------------------------------------------------------
+// Level-6: Subheading qualifier — from tax.json `en` field
+// Format: "Category; specific qualifier" — extract the qualifier part
+// --------------------------------------------------------------------------
+
+function parseEnQualifier(en) {
+  if (!en) return '';
+  const i = en.indexOf(';');
+  if (i < 0) return '';
+  const tail = en.slice(i + 1).trim();
+  // Skip "n.e.c." / "not elsewhere classified" — these are standalone residuals
+  if (/n\.?e\.?c\.?|not elsewhere|not specified/i.test(tail)) return '';
+  // Skip pure criteria phrases (not category nouns)
+  if (/^parts thereof$|^whether or not|^suitable for use solely/i.test(tail)) return '';
+  return tail.slice(0, 80);
+}
+
+// --------------------------------------------------------------------------
+// Category noun — the VN product type name
+// Primary: common prefix of sibling names
+// Secondary: bao_gom first clean item
+// --------------------------------------------------------------------------
+
+function extractCategoryNoun(headingNote, siblings) {
+  // Strategy 1: find common base from sibling names
+  if (siblings.length >= 1) {
+    const sibNames = siblings
+      .map(s => s.v.replace(/^[-\s]+/, '').replace(/\s*\(SEN\)\s*/i, '').split(/[;(]/)[0].trim())
+      .filter(s => s.length >= 3 && s.length <= 60);
+
+    if (sibNames.length >= 2) {
+      const words0 = sibNames[0].split(' ');
+      let commonLen = words0.length;
+      for (const name of sibNames.slice(1)) {
+        const w = name.split(' ');
+        let match = 0;
+        for (let i = 0; i < Math.min(commonLen, w.length); i++) {
+          if (norm(words0[i]) === norm(w[i])) match++;
+          else break;
+        }
+        commonLen = match;
+        if (commonLen === 0) break;
+      }
+      if (commonLen >= 1) {
+        return words0.slice(0, commonLen).join(' ');
+      }
+    }
+
+    // Only 1 sibling: strip last keyword if sibling name is short (≤4 words)
+    if (sibNames.length === 1) {
+      const words = sibNames[0].split(' ');
+      if (words.length >= 2 && words.length <= 4) {
+        return words.slice(0, -1).join(' ');
+      }
+    }
+  }
+
+  // Strategy 2: first clean noun phrase from bao_gom
+  const baoGom = clean(headingNote?.bao_gom || '');
+  if (baoGom.length > 8) {
+    const stripped = baoGom
+      .replace(/^các sản phẩm[^,;]*[,;]\s*/i, '')
+      .replace(/^những sản phẩm[^,;]*[,;]\s*/i, '')
+      .replace(/^hàng hóa[^,;]*[,;]\s*/i, '')
+      .replace(/^sản phẩm[^,;]*[,;]\s*/i, '');
+    const first = stripped.split(/[,;(]/)[0].trim();
+    if (first.length >= 5 && first.length <= 50
+        && !/^nhóm này|^phân nhóm|^loại|^hàng|^sản phẩm/i.test(first)) {
+      return first;
+    }
+  }
+
+  return '';
+}
+
+// --------------------------------------------------------------------------
+// Level-8: Material hint from sibling text + chapter fallback
+// --------------------------------------------------------------------------
+
 function extractMaterialHint(hs, siblings) {
   const chapter = hs.slice(0, 2);
-
-  // Only use sibling text for "bằng [material]" explicit patterns — avoid false positives
-  // (e.g., "nhom" = nhóm/group, "su" = sử/dụng, "giay" = giày/shoes)
   const BANG_MAT = [
     ['bang nhua',     'nhựa'],    ['bang thep',    'thép'],
     ['bang nhom',     'nhôm'],    ['bang dong',    'đồng'],
@@ -200,24 +259,35 @@ function extractMaterialHint(hs, siblings) {
   for (const [key, label] of BANG_MAT) {
     if (sibText.includes(key)) return label;
   }
-
   return CHAPTER_MATERIAL[chapter] || '';
 }
 
 // --------------------------------------------------------------------------
-// Build sibling denial phrase for congDung
-// Key: explicit "không phải X" triggers high-confidence denial in reasoning engine
+// Build congDung: h4Scope (positive) + sibling denials (negative)
+// This directly mirrors the GIR Rule 1 requirement: must satisfy ALL levels
 // --------------------------------------------------------------------------
 
-function buildDenialCongDung(categoryNoun, siblings, headingNote) {
-  const baseUse = inferBaseUse(categoryNoun, headingNote);
-
-  if (siblings.length === 0) {
-    return baseUse + ' — thuộc loại thông thường trong phân nhóm này';
+function buildCongDung(categoryNoun, siblings, headingNote, h4Scope) {
+  // Positive base: what this product IS (heading4 scope)
+  let base;
+  if (h4Scope && h4Scope.length >= 5 && h4Scope.length < 100) {
+    // Check if the noun is already embedded in h4Scope
+    const n = norm(categoryNoun);
+    const s = norm(h4Scope);
+    if (categoryNoun && !s.includes(n.slice(0, 6))) {
+      base = `${categoryNoun} — ${h4Scope}`;
+    } else {
+      base = h4Scope;
+    }
+  } else {
+    base = inferBaseUse(categoryNoun, headingNote);
   }
 
-  // Take top 4 siblings as explicit denials (most discriminating first)
-  // Prioritise siblings with specific discriminating words
+  if (siblings.length === 0) {
+    return base + ' — loại thông thường trong phân nhóm này';
+  }
+
+  // Negative: sibling exclusions — take top 4, prioritise discriminating keywords
   const DISC = ['ngam', 'quan su', 'y te', 'san bay', 'tau', 'gat tan', 'bao ho', 'thuoc'];
   const sorted = [...siblings].sort((a, b) => {
     const an = norm(a.v), bn = norm(b.v);
@@ -230,130 +300,127 @@ function buildDenialCongDung(categoryNoun, siblings, headingNote) {
     s.v.replace(/^[-\s]+/, '').replace(/\s*\(SEN\)\s*/i, '').split(/[;(]/)[0].trim().slice(0, 50)
   );
 
-  return `${baseUse}, không phải ${denials.join(', không phải ')}`;
+  return `${base}, không phải ${denials.join(', không phải ')}`;
 }
 
 function inferBaseUse(categoryNoun, headingNote) {
   if (!categoryNoun) return 'sử dụng thông thường trong thương mại';
   const n = norm(categoryNoun);
-
-  // Specific use inferences
   if (n.includes('kinh') && n.includes('mat')) return `${categoryNoun} đeo thời trang trang trí`;
   if (n.includes('but') || n.includes('but chi')) return `${categoryNoun} dùng học sinh sinh viên`;
   if (n.includes('cap') || n.includes('day dan')) return `${categoryNoun} dùng kết nối thiết bị điện tử`;
   if (n.includes('den') || n.includes('bong den')) return `${categoryNoun} chiếu sáng thông thường`;
   if (n.includes('dong ho')) return `${categoryNoun} dùng đeo tay xem giờ`;
-
   return `${categoryNoun} loại thông thường dùng thương mại`;
 }
 
 // --------------------------------------------------------------------------
-// Synthesize 2-3 product variants per LK code
+// Build lyDo — full 4-level hierarchical chain (GIR Rule 1)
+// Format: Ch.XX (scope) → nhóm XXXX (h4Scope) → phân nhóm XXXXXX [h6En] → loại trừ sibs → Loại khác HS
 // --------------------------------------------------------------------------
 
-function synthesizeProducts(hs, lkRec, headingNote) {
+function buildHierarchicalLyDo(hs, chNoun, h4Scope, h6En, siblings) {
+  const ch = hs.slice(0, 2);
+  const h4 = hs.slice(0, 4);
+  const h6 = hs.slice(0, 6);
+
+  const chain = [];
+
+  chain.push(`Ch.${ch} (${chNoun || 'hàng hóa chương ' + ch})`);
+
+  if (h4Scope) {
+    chain.push(`nhóm ${h4} (${h4Scope.slice(0, 60)})`);
+  } else {
+    chain.push(`nhóm ${h4}`);
+  }
+
+  if (h6En) {
+    chain.push(`phân nhóm ${h6} [${h6En.slice(0, 60)}]`);
+  }
+
+  if (siblings.length > 0) {
+    const sibNames = siblings.slice(0, 3)
+      .map(s => s.v.replace(/^[-\s]+/, '').replace(/\s*\(SEN\)\s*/i, '').split(/[;(]/)[0].trim().slice(0, 45))
+      .join('; ');
+    chain.push(`loại trừ: ${sibNames}`);
+  } else {
+    chain.push(`mã duy nhất trong phân nhóm ${h6} — áp dụng cho toàn bộ hàng nhóm ${h4} chưa được chi tiết`);
+  }
+
+  chain.push(`Loại khác ${hs}`);
+
+  return chain.join(' → ');
+}
+
+// --------------------------------------------------------------------------
+// Synthesize product variants per Loại khác code
+// --------------------------------------------------------------------------
+
+function synthesizeProducts(hs, lkRec, headingNote, taxRec) {
   const siblings = lkRec.s || [];
-  const rawNoun  = extractCategoryNoun(headingNote, siblings);
-  // Reject extracted noun if it looks like a failed parse (too long or is a clause)
-  const isClause = !rawNoun || rawNoun.length > 40
-    || /^loại có|^đồ chứa|^chưa được|^bao gồm|^nhóm này|^những bộ phận|^phân nhóm này/i.test(rawNoun);
-  const noun     = isClause ? '' : rawNoun;
-  const mat      = extractMaterialHint(hs, siblings);
   const heading  = hs.slice(0, 4);
 
-  // Best available noun: extracted → chapter noun → generic fallback
-  const fallbackNoun = noun || chapterNoun(hs) || `Hàng hóa nhóm ${heading}`;
+  const rawNoun = extractCategoryNoun(headingNote, siblings);
+  const isClause = !rawNoun || rawNoun.length > 40
+    || /^loại có|^đồ chứa|^chưa được|^bao gồm|^nhóm này|^những bộ phận|^phân nhóm này/i.test(rawNoun);
+  const noun    = isClause ? '' : rawNoun;
+  const mat     = extractMaterialHint(hs, siblings);
+  const h4Scope = extractH4Scope(headingNote);
+  const h6En    = parseEnQualifier(taxRec?.en);
+
+  // When sibling extraction fails (all siblings start with "Dùng cho..." / use-case descriptors),
+  // derive noun from h4Scope first qualifier rather than falling back to chapter-level noun.
+  // e.g., 87149290: sib = "Dùng cho xe đạp 8712.00.20", h4Scope = "xe đạp, xe máy"
+  //   → noun = "Bộ phận xe đạp/xe máy" (more specific than "Phương tiện vận tải")
+  let derivedNoun = noun;
+  if (!derivedNoun && h4Scope) {
+    const allSibsDungCho = siblings.length > 0
+      && siblings.every(s => /^[-\s]*(?:dùng|dành|được dùng) cho/i.test(s.v));
+    if (allSibsDungCho) {
+      // This heading is about parts/accessories — prefix "Bộ phận"
+      const h4First = h4Scope.split(/,|;/)[0].trim();
+      const isBoPhan = /bộ phận|phụ kiện/i.test(clean(headingNote?.nhom || '') + clean(headingNote?.bao_gom || ''));
+      derivedNoun = isBoPhan ? `Bộ phận ${h4First}` : h4First;
+    }
+  }
+
+  const fallbackNoun = derivedNoun || chapterNoun(hs) || `Hàng hóa nhóm ${heading}`;
   const products = [];
 
-  // Variant 1: Generic "thông thường" — explicit denials of all key siblings
+  // Variant 1: standard "thông thường" — explicit denials of all key siblings
   products.push({
     tenHang: `${fallbackNoun} thông thường`,
     chatLieu: mat,
-    congDung: buildDenialCongDung(fallbackNoun, siblings, headingNote),
+    congDung: buildCongDung(fallbackNoun, siblings, headingNote, h4Scope),
+    h4Scope,
+    h6En,
   });
 
-  // Variant 2: "Thương mại / phổ thông" — different qualifier, same denial
+  // Variant 2: "phổ thông" — different qualifier, same logic
   if (siblings.length > 0) {
     const phanBiet = truncate(clean(headingNote?.phan_biet || ''), 80);
     products.push({
       tenHang: `${fallbackNoun} phổ thông`,
       chatLieu: mat,
-      congDung: buildDenialCongDung(fallbackNoun, siblings.slice(0, 3), headingNote)
+      congDung: buildCongDung(fallbackNoun, siblings.slice(0, 3), headingNote, h4Scope)
                + (phanBiet ? ` — ${phanBiet}` : ''),
+      h4Scope,
+      h6En,
     });
   }
 
-  // Variant 3: Material-specific (only if material not already in the noun)
+  // Variant 3: material-specific (only if material not already in the noun)
   if (siblings.length >= 3 && mat && !norm(fallbackNoun).includes(norm(mat))) {
     products.push({
       tenHang: `${fallbackNoun} bằng ${mat}`,
       chatLieu: mat,
-      congDung: buildDenialCongDung(fallbackNoun, siblings, headingNote),
+      congDung: buildCongDung(fallbackNoun, siblings, headingNote, h4Scope),
+      h4Scope,
+      h6En,
     });
   }
 
   return products;
-}
-
-// --------------------------------------------------------------------------
-// Format lyDo from reasoning engine steps
-// Purpose: human-readable, specific, not a template
-// --------------------------------------------------------------------------
-
-function formatLyDo(product, result, hs) {
-  if (!result.ok || !result.result) {
-    return `Thuộc nhóm ${hs.slice(0, 4)} — không khớp với bất kỳ mã cụ thể nào → Loại khác ${hs}`;
-  }
-
-  const r = result.result;
-  const steps = r.steps;
-  const total = steps.length;
-
-  // Standalone (no siblings)
-  if (total === 0) {
-    return `${product.tenHang}: mã duy nhất trong phân nhóm ${hs.slice(0, 6)} — áp dụng cho toàn bộ hàng thuộc nhóm ${hs.slice(0, 4)} chưa được chi tiết tại nhóm con khác`;
-  }
-
-  // Group rejection reasons by mechanism type
-  const byType = {
-    denial:        steps.filter(s => !s.match && s.reason.includes('không phải')),
-    contradiction: steps.filter(s => !s.match && s.reason.includes('Mâu thuẫn')),
-    discriminating:steps.filter(s => !s.match && s.reason.includes('chuyên biệt')),
-    material:      steps.filter(s => !s.match && s.reason.includes('Chất liệu')),
-    keyword:       steps.filter(s => !s.match && (s.reason.includes('Từ khóa') || s.reason.includes('Không tìm'))),
-  };
-
-  const parts = [];
-
-  // Lead with the most informative reason type
-  if (byType.denial.length > 0) {
-    const names = byType.denial.slice(0, 3).map(s => `"${s.siblingName.slice(0, 35)}"`).join(', ');
-    parts.push(`Khai báo rõ không phải: ${names}`);
-  }
-  if (byType.contradiction.length > 0) {
-    parts.push(byType.contradiction[0].reason.slice(0, 80));
-  }
-  if (byType.discriminating.length > 0) {
-    const names = byType.discriminating.slice(0, 2).map(s => `"${s.siblingName.slice(0, 30)}"`).join(', ');
-    const chars = [...new Set(byType.discriminating.slice(0, 2).map(s => {
-      const m = s.reason.match(/"([^"]+)"/);
-      return m ? m[1] : '';
-    }).filter(Boolean))].join('/', '');
-    parts.push(`Thiếu đặc điểm chuyên biệt (${chars || 'xem sibling'}) của: ${names}`);
-  }
-  if (byType.material.length > 0 && parts.length < 2) {
-    parts.push(byType.material[0].reason.slice(0, 80));
-  }
-  if (byType.keyword.length > 0 && parts.length < 2) {
-    const topKw = byType.keyword.slice(0, 2).map(s => `"${s.siblingName.slice(0, 30)}"`).join(', ');
-    parts.push(`Không có đặc điểm của: ${topKw}`);
-  }
-
-  const conclusionPrefix = r.isLoaiKhac
-    ? `${total}/${total} mã cụ thể loại trừ`
-    : `Cảnh báo: có thể khớp ${steps.filter(s => s.match).length} mã cụ thể`;
-
-  return `${conclusionPrefix} — ${parts.join('; ')} → Loại khác ${hs}`;
 }
 
 // --------------------------------------------------------------------------
@@ -366,28 +433,34 @@ async function main() {
   console.log('Loading data...');
   const idx      = JSON.parse(fs.readFileSync(IDX_PATH, 'utf8'));
   const enriched = JSON.parse(fs.readFileSync(ENR_PATH, 'utf8'));
+  const tax      = JSON.parse(fs.readFileSync(TAX_PATH, 'utf8'));
 
   const allHs = opts.hs ? [opts.hs] : Object.keys(idx);
   const todo  = opts.dryRun ? allHs.slice(0, 10) : allHs;
 
-  console.log(`Generating corpus for ${todo.length} mã Loại khác...`);
+  console.log(`Generating corpus for ${todo.length} mã Loại khác (4-level hierarchy formula)...`);
 
   const out = fs.createWriteStream(opts.dryRun ? '/dev/stdout' : OUT_PATH, { flags: 'w' });
   let total = 0, errors = 0;
 
   for (const hs of todo) {
     const lkRec      = idx[hs];
-    const codeRec    = enriched.codes?.[hs];
     const heading    = hs.slice(0, 4);
     const headingNote = enriched.headings?.[heading] || {};
+    const taxRec     = tax[hs];
 
     if (!lkRec) { errors++; continue; }
 
-    const products = synthesizeProducts(hs, lkRec, headingNote);
+    const products = synthesizeProducts(hs, lkRec, headingNote, taxRec);
 
     for (const product of products) {
-      const result = reasonLoaiKhac(product, hs);
-      const lyDo   = formatLyDo(product, result, hs);
+      const lyDo = buildHierarchicalLyDo(
+        hs,
+        chapterNoun(hs),
+        product.h4Scope,
+        product.h6En,
+        lkRec.s || [],
+      );
 
       const doc = {
         hs,
