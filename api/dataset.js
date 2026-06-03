@@ -13,6 +13,7 @@ const { detectMaterials, listTaxonomySummary } = require('../lib/material-taxono
 const { buildChaptersIndex } = require('../lib/chapters-index');
 const { readAuditLog } = require('../lib/admin-update');
 const { buildKpiDashboard } = require('../lib/ml-log');
+const { getProducts, isLoaiKhac } = require('../lib/loai-khac-products');
 const fs = require('fs');
 const path = require('path');
 
@@ -226,6 +227,41 @@ module.exports = async function handler(req, res) {
     if (resource === 'kpi') {
       const kpi = buildKpiDashboard();
       return res.status(200).json(kpi);
+    }
+
+    if (resource === 'products') {
+      const { hs, limit: limitQ } = req.query;
+      const limit = Math.min(Math.max(parseInt(limitQ, 10) || 8, 1), 20);
+
+      // Batch mode: ?hs=84021219,85044090
+      const hsCodes = String(hs || '').split(',').map(s => s.trim().replace(/\D/g, '')).filter(s => s.length === 8);
+      if (hsCodes.length === 0) {
+        return res.status(400).json({
+          error: 'hs parameter required (8-digit code or comma-separated list)',
+          examples: ['/api/products?hs=84021219', '/api/products?hs=84021219,87032290'],
+        });
+      }
+
+      if (hsCodes.length === 1) {
+        const hsCode = hsCodes[0];
+        const products = getProducts(hsCode, limit);
+        return res.status(200).json({
+          found: products.length > 0,
+          hsCode,
+          isLoaiKhac: isLoaiKhac(hsCode),
+          total: products.length,
+          products,
+        });
+      }
+
+      // Multiple codes
+      const results = hsCodes.map(hsCode => ({
+        hsCode,
+        isLoaiKhac: isLoaiKhac(hsCode),
+        total: getProducts(hsCode, limit).length,
+        products: getProducts(hsCode, limit),
+      }));
+      return res.status(200).json({ total: results.length, results });
     }
 
     return res.status(404).json({ error: 'Unknown resource', resource });

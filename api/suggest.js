@@ -11,6 +11,7 @@ const { applyHistoricalSignals } = require('../lib/suggest-confidence');
 const { appendSuggestLog } = require('../lib/ml-log');
 // B4: shared knowledge layer — cùng conflicts/explanatory-notes với /api/classify
 const { getNoteSummaryForHs } = require('../lib/explanatory-notes-index');
+const { getProducts, isLoaiKhac } = require('../lib/loai-khac-products');
 const fs = require('fs');
 const path = require('path');
 let _conflicts;
@@ -149,16 +150,22 @@ module.exports = async function handler(req, res) {
       ...(detectSet(description) ? ['GIR-3b'] : []),
     ];
 
+    // Attach product examples for "Loại khác" codes
+    const enrichedSuggestions = suggestions.map(s => {
+      if (!isLoaiKhac(s.hsCode)) return s;
+      return { ...s, productExamples: getProducts(s.hsCode, 5) };
+    });
+
     // B4: shared knowledge — conflicts + explanatory note cho mã top (cùng layer với /classify)
-    const top1Hs = suggestions[0]?.hsCode;
-    const explanatoryNote = top1Hs ? getNoteSummaryForHs(top1Hs) : null;
-    const topConflict = top1Hs ? conflictsDb()[top1Hs] : null;
+    const top1Hs = enrichedSuggestions[0]?.hsCode;
+    const explanatoryNote  = top1Hs ? getNoteSummaryForHs(top1Hs) : null;
+    const topConflict      = top1Hs ? conflictsDb()[top1Hs] : null;
     const confusionWarning = topConflict?.confusedWith?.length
       ? { riskLevel: topConflict.riskLevel, confusedWith: topConflict.confusedWith, reasonsVi: topConflict.reasonsVi || [] }
       : null;
 
     return res.status(200).json({
-      suggestions,
+      suggestions: enrichedSuggestions,
       girRankingRules,
       precedentMatches: precedentRanked.precedentMatches?.slice(0, 3) || [],
       evidence: evidence.map(({ hsCode, source, score, queryExpansion }) => ({
