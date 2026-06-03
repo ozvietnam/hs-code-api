@@ -77,6 +77,800 @@ function parseCapacityConstraint(siblingNames) {
 // --------------------------------------------------------------------------
 
 const H6EN_DOMAINS = [
+
+  // ══════════════════════════════════════════════════════════════
+  // CH.85 — ĐIỆN TỬ / ĐIỆN
+  // ══════════════════════════════════════════════════════════════
+  {
+    match: /smart cards|cards incorporating.*integrated circuit|IC cards/i,
+    domain: {
+      type: 'Thẻ thông minh (smart card)',
+      items: [
+        'Thẻ CCCD gắn chip (citizen ID smart card)',
+        'Thẻ SIM điện thoại nano SIM 4G',
+        'Thẻ ngân hàng EMV chip Visa/Mastercard',
+        'Thẻ thông minh (smart card) MIFARE 1K 13.56MHz',
+        'Thẻ nhân viên RFID 125kHz Clamshell',
+        'Thẻ từ + chip combo thẻ đa năng',
+        'Thẻ y tế điện tử BHYT gắn chip',
+        'Thẻ giao thông thông minh contactless',
+        'Thẻ SIM eSIM công nghiệp IoT',
+        'Thẻ thông minh JavaCard nền tảng an toàn',
+        'Thẻ SIM M2M machine-to-machine LTE',
+        'Thẻ RFID UHF EPC Gen2 860-960MHz',
+      ],
+    },
+  },
+  {
+    match: /power handling capacity.*1 kva|1 kva.*transformers|n\.e\.c.*8504\.2/i,
+    domain: {
+      type: 'Máy biến áp',
+      items: [
+        'Máy biến áp tự ngẫu (autotransformer) 3kVA',
+        'Máy biến áp hàn (welding transformer) 200A',
+        'Biến áp nguồn tuyến tính 1kVA 220V/12V',
+        'Máy biến áp cách ly (isolation transformer) 500VA',
+        'Biến áp xung (switching transformer) inverter',
+        'Máy biến áp 3 pha 30kVA 10kV/0.4kV',
+        'Máy biến áp chiếu sáng 220V/12V 150VA',
+        'Biến áp đo lường (PT/current transformer) 100/5A',
+        'Cuộn kháng lọc (line reactor) 5kW 3 pha',
+        'Cuộn cảm (inductor) lọc nhiễu EMC 3mH',
+        'Máy biến áp trung tần (medium frequency) 20kHz',
+        'Biến áp bù lưới (voltage regulator) 1kVA',
+      ],
+    },
+  },
+  {
+    match: /for a voltage not exceeding 1000 volts.*not fitted|switches.*1000 volt/i,
+    domain: {
+      type: 'Thiết bị đóng cắt điện',
+      items: [
+        'Aptomat (MCB) 1P 20A 6kA',
+        'Aptomat (MCCB) 3P 100A 25kA',
+        'Cầu dao tự động (ELCB/RCCB) 2P 32A 30mA',
+        'Công tắc xoay (rotary switch) 3P 25A',
+        'Cầu chì hộp (fuse holder) NH00 160A',
+        'Contactor (công tắc-tơ) 3P 32A 230VAC',
+        'Relay nhiệt (overload relay) 20-25A',
+        'Nút nhấn (push button) 22mm xanh/đỏ',
+        'Công tắc hành trình (limit switch) công nghiệp',
+        'Relay trung gian (intermediate relay) 8 chân 24VDC',
+        'Timer relay (rờ-le thời gian) ON-delay 0-60s',
+        'Switch tay (manual switch) 2P 10A 250VAC',
+      ],
+    },
+  },
+  {
+    match: /for a voltage not exceeding 1000 volts.*fitted with connectors|connectors.*1000 volt/i,
+    domain: {
+      type: 'Phích cắm và ổ cắm điện',
+      items: [
+        'Ổ cắm điện âm tường 3 chấu 16A 250V',
+        'Phích cắm (plug) 3P 16A 250V IP44',
+        'Ổ cắm nối dài 4 cổng + 2 USB 2m',
+        'Ổ cắm công nghiệp CEE 3P+N+E 32A 5P IP67',
+        'Đầu nối RJ45 Cat6 bấm sẵn',
+        'Giắc cắm XLR 3P đực/cái audio',
+        'Đầu nối M12 4 chân A-coded cảm biến',
+        'Phích cắm IEC C13/C14 15A panel mount',
+        'Ổ cắm 45 độ nghiêng âm tường đơn 10A',
+        'Đầu nối Anderson SB50 50A DC connector',
+        'Cáp nguồn IEC C13-NEMA 5-15P 1.8m',
+        'Ổ cắm đa năng du lịch toàn cầu 3 cổng USB',
+      ],
+    },
+  },
+  {
+    match: /recorded.*excluding.*chapter 37|optical.*recorded|magnetic.*recorded/i,
+    domain: {
+      type: 'Thiết bị lưu trữ đã ghi',
+      items: [
+        'Ổ cứng SSD 256GB SATA 2.5"',
+        'Ổ cứng SSD 512GB NVMe M.2',
+        'Thẻ nhớ microSD 128GB Class10 UHS-I',
+        'Ổ USB flash 64GB 3.0 tốc độ cao',
+        'Ổ cứng HDD 2TB 3.5" SATA desktop',
+        'Ổ cứng HDD 1TB 2.5" laptop 5400rpm',
+        'Thẻ nhớ SD 32GB 10MB/s camera',
+        'SSD công nghiệp 64GB -40°C~85°C',
+        'Đĩa DVD-R 4.7GB ghi một lần (xuất xưởng đã ghi dữ liệu phần mềm)',
+        'Ổ cứng NAS 4TB 7200rpm SATA',
+        'Ổ USB eMMC 128GB module',
+        'CFast 2.0 card 64GB industrial',
+      ],
+    },
+  },
+  {
+    match: /LED.*lamps|light.*emitting diode|LED.*light/i,
+    domain: {
+      type: 'Đèn LED',
+      items: [
+        'Đèn LED bulb 9W E27 ánh sáng trắng 6500K',
+        'Đèn LED bulb 12W E27 ánh vàng 3000K',
+        'Đèn LED tube 18W T8 1.2m thay huỳnh quang',
+        'Đèn LED downlight âm trần 12W 3000K',
+        'Đèn LED panel vuông 600×600 40W',
+        'Đèn LED highbay nhà xưởng 100W IP65',
+        'Đèn LED spotlight 7W GU10 góc chiếu 36°',
+        'Đèn LED dây (strip light) 12V 60LED/m 5050',
+        'Đèn LED streetlight 80W IP66 5700K',
+        'Đèn LED lắp nổi văn phòng 36W 600mm',
+        'Đèn LED cột đường 150W solar',
+        'Đèn LED khẩn cấp (emergency) 2h thoát nạn',
+      ],
+    },
+  },
+  {
+    match: /motors.*ac|motors.*single.phase|electric motors.*output/i,
+    domain: {
+      type: 'Động cơ điện',
+      items: [
+        'Động cơ điện 3 pha 0.75kW 4P 1450rpm',
+        'Động cơ điện 3 pha 1.5kW IE2 B3',
+        'Động cơ điện 3 pha 2.2kW IE3 VSD',
+        'Động cơ điện 1 pha 0.37kW 220V',
+        'Động cơ điện 3 pha 5.5kW chống nổ Ex',
+        'Động cơ servo AC 750W encoder 17bit',
+        'Động cơ bước (stepper) Nema 23 3Nm',
+        'Động cơ điện submersible 4" 1HP bơm giếng',
+        'Động cơ điện tuyến tính (linear motor) 250N',
+        'Động cơ điện 3 pha 11kW IE3 inverter',
+        'Motor giảm tốc (gearmotor) 24VDC 100RPM',
+        'Động cơ điện từ trường vĩnh cửu (PMSM) 2kW',
+      ],
+    },
+  },
+  {
+    match: /insulated wire|winding wire|electrical conductors/i,
+    domain: {
+      type: 'Dây điện/cáp điện',
+      items: [
+        'Cáp điện đồng XLPE 4×16mm² 0.6/1kV',
+        'Cáp điện đồng 2×2.5mm² vỏ PVC đôi',
+        'Dây điện đơn cứng 2.5mm² vỏ PVC 100m',
+        'Cáp tín hiệu (signal cable) 2×0.5mm² có shield',
+        'Cáp điều khiển (control cable) 12×0.75mm²',
+        'Cáp CAT6 UTP 4 đôi 305m cuộn',
+        'Cáp trung thế (MV cable) 3×185mm² 15kV XLPE',
+        'Cáp quang đơn mode (SMF) 4 lõi OS2',
+        'Cáp ổ đĩa (flex cable) FFC 0.5mm 20P',
+        'Cáp HDMI 2.0 dài 3m 4K 60Hz',
+        'Cáp USB-C 3.1 Gen2 100W 1m',
+        'Cáp kết nối MIL-DTL-26482 Series I',
+      ],
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // CH.87 — XE CỘ
+  // ══════════════════════════════════════════════════════════════
+  {
+    match: /public transport.*10 or more persons|carries 10.*persons/i,
+    domain: {
+      type: 'Xe buýt/xe khách',
+      items: [
+        'Xe buýt thành phố 12m 80 chỗ động cơ diesel Euro 4',
+        'Xe khách 45 chỗ giường nằm đường dài',
+        'Xe buýt nhanh BRT (Bus Rapid Transit) 18m',
+        'Xe khách 29 chỗ ngồi thân thấp trường học',
+        'Xe buýt điện (EV bus) 12m 250kWh lithium',
+        'Xe khách 16 chỗ minibus diesel',
+        'Xe buýt 2 tầng (double-decker) 45 chỗ',
+        'Xe khách 35 chỗ thân cao ghế nệm',
+        'Xe buýt đô thị hybrid CNG + điện',
+        'Xe limousine VIP 9 chỗ giường nằm phẳng',
+      ],
+    },
+  },
+  {
+    match: /spark.ignition.*propulsion of vehicles|petrol.*engine.*vehicle/i,
+    domain: {
+      type: 'Xe ô tô động cơ xăng',
+      items: [
+        'Xe ô tô 5 chỗ sedan 1.5L xăng',
+        'Xe ô tô 5 chỗ hatchback 1.4L xăng turbo',
+        'Xe SUV 7 chỗ 1.5L xăng turbo',
+        'Xe MPV 7 chỗ 2.0L xăng',
+        'Xe bán tải 4×4 2.5L xăng',
+        'Xe ô tô con 2 chỗ coupe 1.4L xăng',
+        'Xe thể thao 5 chỗ crossover 1.6L xăng turbo',
+        'Xe pickup 4×2 2.0L xăng',
+        'Xe ô tô sedan 4 chỗ 1.0L xăng turbocharged',
+        'Xe city car 5 chỗ 0.8L xăng tự động',
+      ],
+    },
+  },
+  {
+    match: /compression.ignition.*propulsion of vehicles|diesel.*engine.*vehicle/i,
+    domain: {
+      type: 'Xe ô tô động cơ diesel',
+      items: [
+        'Xe ô tô 5 chỗ sedan 2.0L diesel',
+        'Xe SUV 7 chỗ 2.2L diesel 4WD',
+        'Xe pickup bán tải 2.4L diesel 4×4',
+        'Xe MPV 8 chỗ 2.0L diesel',
+        'Xe tải nhỏ 2 tấn 2.5L diesel',
+        'Xe van 6 chỗ 1.9L diesel hộp số tự động',
+        'Xe SUV hạng sang 3.0L diesel V6',
+        'Xe pickup 4×4 2.5L diesel hộp số 6 cấp',
+        'Xe đầu kéo (semi-truck) 6×4 375HP diesel Euro 4',
+        'Xe tải thùng 5 tấn 4×2 diesel',
+      ],
+    },
+  },
+  {
+    match: /both spark.ignition.*compression.ignition|hybrid.*petrol|plug.in hybrid/i,
+    domain: {
+      type: 'Xe hybrid/PHEV',
+      items: [
+        'Xe hybrid xăng-điện 5 chỗ 1.8L HEV tự sạc',
+        'Xe PHEV 5 chỗ 1.5L sạc ngoài 50km EV range',
+        'Xe hybrid SUV 7 chỗ 2.5L AWD E-Four',
+        'Xe hybrid sedan 4 chỗ 1.8L 60% FE cải thiện',
+        'Xe PHEV crossover 5 chỗ 1.6L + 100kW motor',
+        'Xe mild-hybrid 48V 5 chỗ 1.5L turbo',
+        'Xe hybrid thành phố hatchback 1.0L 3 chỗ',
+        'Xe minivan hybrid 8 chỗ 2.0L HEV',
+      ],
+    },
+  },
+  {
+    match: /fitted with auxiliary motor.*pedals|electric bicycle|e.bike/i,
+    domain: {
+      type: 'Xe đạp điện/xe đạp có động cơ phụ',
+      items: [
+        'Xe đạp điện trợ lực (pedelec) 250W pin 36V',
+        'Xe đạp điện gấp (folding e-bike) 20" 350W',
+        'Xe đạp điện leo núi (e-MTB) 500W mid-drive',
+        'Xe đạp điện thành thị 26" 500Wh lithium',
+        'Xe đạp đường trường điện (e-road bike) 250W',
+        'Xe đạp điện cargobike 3 bánh tải hàng 250W',
+        'Xe đạp điện dành cho người cao tuổi step-thru',
+        'Xe đạp điện chia sẻ (share bike) IoT GPS',
+        'Xe đạp điện giao hàng curie-last-mile 350W',
+      ],
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // CH.72 — THÉP
+  // ══════════════════════════════════════════════════════════════
+  {
+    match: /flat.rolled.*plated.*coated.*zinc|zinc coated.*flat.rolled/i,
+    domain: {
+      type: 'Thép tấm mạ kẽm',
+      items: [
+        'Thép tấm mạ kẽm nhúng nóng (HDG) 0.5mm×1250mm',
+        'Thép tấm mạ kẽm điện phân (EG) 0.8mm×1000mm',
+        'Thép cuộn mạ kẽm 1.0mm×1000mm×CL (coil)',
+        'Thép mạ kẽm + sơn màu (PPGI) 0.5mm xanh dương',
+        'Thép lợp sóng mạ kẽm dày 0.42mm rộng 900mm',
+        'Thép tấm mạ kẽm dày 1.2mm cắt tấm 2440×1220',
+        'Thép lá mạ kẽm nhẹ 0.35mm làm thùng hàng',
+        'Thép mạ kẽm nhúng nóng dày 2.0mm khung kết cấu',
+        'Thép mạ hợp kim Galvalume (AZ150) 0.6mm',
+        'Thép cán nguội mạ kẽm 0.3mm×1000mm',
+        'Tôn mạ kẽm phủ sơn màu 0.45mm lợp nhà',
+        'Thép tấm mạ kẽm dày 3mm phủ epoxy',
+      ],
+    },
+  },
+  {
+    match: /bars and rods.*hot.rolled.*irregularly wound coils|hot.rolled.*bars/i,
+    domain: {
+      type: 'Thép thanh/que cán nóng',
+      items: [
+        'Thép cuộn cán nóng SD295A phi 10mm xây dựng',
+        'Thép cuộn cán nóng phi 12mm CB300-V',
+        'Thép thanh cán nóng phi 16mm SD390',
+        'Thép thanh tròn cán nóng phi 20mm A36',
+        'Thép que hàn CO2 ER70S-6 phi 0.9mm cuộn 15kg',
+        'Thép cuộn dây (wire rod) phi 6.5mm SAE1008',
+        'Thép thanh gai (deformed bar) phi 25mm TCVN 1651',
+        'Thép cuộn cán nóng phi 8mm xây dựng thông thường',
+        'Thép góc (angle steel) L50×50×5mm cán nóng',
+        'Thép I-beam (chữ I) 100×50mm cán nóng',
+        'Thép H-beam 150×150mm cán nóng kết cấu',
+        'Thép hộp vuông (SHS) 50×50×3mm cán nóng',
+      ],
+    },
+  },
+  {
+    match: /flat.rolled.*n\.e\.c.*600mm or more|flat.rolled.*not elsewhere.*600mm/i,
+    domain: {
+      type: 'Thép tấm cán phẳng',
+      items: [
+        'Thép tấm cán nóng (HR) 3mm×1500mm×6000mm A36',
+        'Thép tấm cán nguội (CR) 1mm×1000mm×2000mm',
+        'Thép tấm cán nóng 5mm rộng 1500mm cuộn',
+        'Thép tấm cán nóng 8mm×1500mm×6000mm S355',
+        'Thép tấm cán nguội 0.5mm×1000mm cán phẳng',
+        'Thép tấm cán nóng dày 10mm HRC A283',
+        'Thép tấm cán nóng 6mm×1200mm dùng đóng tàu',
+        'Thép tấm kết cấu 12mm Q345B cán nóng',
+        'Thép lá cán nguội 0.8mm×1250mm cuộn CR4',
+        'Thép tấm dày 20mm AH36 đóng tàu LR',
+      ],
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // CH.39 — NHỰA
+  // ══════════════════════════════════════════════════════════════
+  {
+    match: /plates.*sheets.*film.*foil.*strip.*not self.adhesive|plastic.*film.*sheet/i,
+    domain: {
+      type: 'Tấm/màng nhựa',
+      items: [
+        'Màng BOPP trong suốt dày 20 micron cuộn 1000m',
+        'Tấm nhựa PC (polycarbonate) dày 3mm trong suốt',
+        'Màng PE LDPE đen dày 0.1mm che phủ nông nghiệp',
+        'Tấm nhựa PVC cứng trắng 2mm 1220×2440mm',
+        'Màng PET trong 50 micron cuộn 1000m',
+        'Tấm Foam PVC (celuka) trắng 10mm 1220×2440mm',
+        'Màng PP dệt (woven PP) chống thấm nền đất',
+        'Tấm nhựa HDPE đen dày 5mm chống thấm hồ',
+        'Màng khí (bubble wrap) 50cm×100m bong bóng khí',
+        'Tấm ABS 3mm trắng 1220×2440mm',
+        'Màng màu BOPP 30 micron cuốn nhãn thực phẩm',
+        'Tấm nhựa PP dạng tổ ong (corrugated) 4mm',
+      ],
+    },
+  },
+  {
+    match: /in primary forms|plastics.*primary forms/i,
+    domain: {
+      type: 'Hạt nhựa nguyên liệu',
+      items: [
+        'Hạt nhựa PP (polypropylene) H030EG màu tự nhiên 25kg',
+        'Hạt nhựa HDPE B5420 dùng thổi màng bao bì',
+        'Hạt nhựa LDPE LD150BW màu trong suốt 25kg',
+        'Hạt nhựa ABS PA757 grade điện tử 25kg bao',
+        'Hạt nhựa PET chip HS21 dùng kéo sợi PET',
+        'Hạt nhựa POM (Delrin) GH-25 25kg dạng granule',
+        'Hạt nhựa Nylon PA6 grade đúc phun 25kg',
+        'Hạt nhựa PS (polystyrene) GPPS 525N 25kg',
+        'Hạt nhựa TPE/TPR màu đen Shore 60A 25kg',
+        'Hạt nhựa PC (Lexan) ML3451 grade thấu kính 25kg',
+        'Hạt nhựa LLDPE 7042 grade màng mỏng 25kg',
+        'Hạt nhựa EVA 28% VA content dùng đế giày',
+      ],
+    },
+  },
+  {
+    match: /other articles.*n\.e\.c.*chapter 39|plastic.*articles.*n\.e\.c/i,
+    domain: {
+      type: 'Sản phẩm nhựa công nghiệp',
+      items: [
+        'Thùng nhựa HDPE 60L có nắp dùng thực phẩm',
+        'Pallet nhựa PP 1200×1000mm tải 2 tấn',
+        'Khay nhựa đựng linh kiện điện tử ESD',
+        'Rổ nhựa PP dùng đựng trái cây rau củ',
+        'Thùng đựng rác nhựa HDPE 120L có bánh xe',
+        'Ống nhựa PVC âm tường phi 49 dùng dây điện',
+        'Khay đựng cây giống (seedling tray) PS 50 lỗ',
+        'Nắp chai nhựa PP 28mm PCO1810 đóng gói',
+        'Thùng nhựa IBC 1000L HDPE khung thép tái sử dụng',
+        'Giá kệ nhựa PP dùng siêu thị 4 tầng',
+        'Phụ kiện ống nhựa: tê, cút, nối, cúp van 25mm',
+        'Sọt nhựa dùng logistics chuỗi lạnh 60×40cm',
+      ],
+    },
+  },
+  {
+    match: /tubes.*pipes.*hoses.*plastics|plastic.*tubes.*pipes/i,
+    domain: {
+      type: 'Ống nhựa',
+      items: [
+        'Ống nhựa uPVC cấp nước phi 90mm PN10',
+        'Ống nhựa PPR phi 25mm cấp nước nóng PN20',
+        'Ống PE100 phi 63mm nước sinh hoạt SDR11',
+        'Ống nhựa PVC thoát nước phi 110mm',
+        'Ống nhựa HDPE phi 32mm cuộn 50m tưới nhỏ giọt',
+        'Ống nhựa composite đa lớp (PEX-AL-PEX) 16mm',
+        'Ống kết cấu uPVC dùng cột, dầm phi 100mm',
+        'Ống nhựa chịu nhiệt PP phi 20mm PN20',
+        'Ống nhựa PVC điện phi 20mm cuộn 25m',
+        'Ống nhựa HDPE bơm nước biển phi 200mm',
+        'Ống hút PVC dẻo có lõi thép xoắn phi 75mm',
+        'Ống nhựa PP lưới composite phi 50mm cấp nước',
+      ],
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // CH.73 — SẮT THÉP GIA CÔNG
+  // ══════════════════════════════════════════════════════════════
+  {
+    match: /tubes.*pipes.*hollow.*not seamless|welded.*tubes.*pipes/i,
+    domain: {
+      type: 'Ống thép hàn',
+      items: [
+        'Ống thép hàn phi 48.3mm 3mm ERW kết cấu',
+        'Ống thép vuông (SHS) 50×50×2mm hàn ERW',
+        'Ống thép chữ nhật (RHS) 60×40×2mm hàn',
+        'Ống thép phi 60.3mm 4mm SAW dẫn nước',
+        'Ống thép phi 159mm 6mm LSAW dẫn khí',
+        'Ống thép mạ kẽm phi 20mm đi dây điện',
+        'Ống thép phi 114mm 5mm hàn đường ống thoát nước',
+        'Ống thép đen phi 33.7mm 2mm ERW kết cấu nội thất',
+        'Ống thép phi 89mm 5mm hàn dẫn dầu thủy lực',
+        'Ống thép lớn phi 508mm 8mm LSAW hải lý',
+        'Ống hộp thép 100×100×4mm hàn kết cấu nhà',
+        'Ống thép dẫn nhiệt P235GH phi 57mm 4mm',
+      ],
+    },
+  },
+  {
+    match: /table.*kitchen.*household.*iron.*steel|household.*articles.*steel/i,
+    domain: {
+      type: 'Đồ dùng nhà bếp inox/thép',
+      items: [
+        'Chậu rửa chén 1 ngăn inox 304 80×50cm',
+        'Chậu rửa chén 2 ngăn inox 304 80×50×45cm',
+        'Bộ xoong nồi inox 5 chiếc đáy 3 lớp',
+        'Nồi inox 20L nấu cơm công nghiệp',
+        'Rổ inox đựng rau dạng ống phi 30cm',
+        'Khay đựng đồ inox 304 GN1/1 530×325×65mm',
+        'Muỗng/nĩa thép không gỉ bộ 6 chiếc',
+        'Bình giữ nhiệt inox 1L giữ nóng 12 giờ',
+        'Chảo inox 3 đáy 28cm không phủ chống dính',
+        'Nắp vung inox kính cường lực 24cm',
+        'Thùng inox 20L có vòi dùng đựng thức ăn',
+        'Đĩa inox tiêu chuẩn nhà hàng phi 25cm',
+      ],
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // CH.90 — THIẾT BỊ ĐO LƯỜNG / Y TẾ
+  // ══════════════════════════════════════════════════════════════
+  {
+    match: /for measuring.*checking.*voltage.*current.*resistance|measuring.*electrical/i,
+    domain: {
+      type: 'Thiết bị đo điện',
+      items: [
+        'Đồng hồ vạn năng (multimeter) kỹ thuật số Fluke 117',
+        'Đồng hồ đo điện trở cách điện (megger) 500V',
+        'Máy phân tích chất lượng điện (power analyzer)',
+        'Đầu dò điện (current probe) 400A AC/DC clamp',
+        'Thiết bị đo điện trở đất (earth tester) 4 cực',
+        'Oscilloscope 2 kênh 100MHz USB',
+        'Đồng hồ điện tử 3 pha đo cosφ/THD',
+        'Clamp meter (ampe kìm) AC/DC 600A',
+        'Thiết bị kiểm tra đường cáp (cable tester) TDR',
+        'Đồng hồ đo cách điện (hipot tester) 5kV',
+        'Watt-hour meter (đồng hồ điện) 3 pha RS485',
+        'Thiết bị hiệu chuẩn điện (calibrator) 4-20mA',
+      ],
+    },
+  },
+  {
+    match: /for navigation.*aeronautical.*space|marine.*navigation|navigation instruments/i,
+    domain: {
+      type: 'Thiết bị dẫn đường hàng hải',
+      items: [
+        'Máy định vị GPS hàng hải (chartplotter) 7" màn hình',
+        'Radar hàng hải (marine radar) 24NM 4kW',
+        'Hệ thống AIS transponder Class B tàu biển',
+        'Máy đo độ sâu (echo sounder/depth finder) dual-freq',
+        'Thiết bị liên lạc VHF hàng hải cầm tay IP67',
+        'Máy định vị GPS tàu thuyền 12 kênh WAAS',
+        'Đầu dò siêu âm CHIRP fishfinder 200kHz',
+        'Hải đồ điện tử (electronic chart display ECDIS)',
+        'Thiết bị compass từ hàng hải (marine compass)',
+        'Hệ thống kiểm soát tàu thuyền VHF DSC CH70',
+      ],
+    },
+  },
+  {
+    match: /n\.e\.c.*heading.*9018|instruments.*apparatus.*medical|medical instruments/i,
+    domain: {
+      type: 'Thiết bị y tế',
+      items: [
+        'Máy đo huyết áp bắp tay tự động OMRON',
+        'Máy đo SpO2 (pulse oximeter) ngón tay',
+        'Máy siêu âm cầm tay (pocket ultrasound) WiFi',
+        'Máy đo đường huyết (glucometer) + 50 que thử',
+        'Đèn mổ (surgical light) LED treo trần 50000lux',
+        'Thiết bị gây mê (anesthesia machine) 3 vaporizer',
+        'Máy điện tim (ECG) 12 chuyển đạo màn hình 5"',
+        'Máy theo dõi bệnh nhân (patient monitor) 6 thông số',
+        'Bàn mổ điện (operating table) motor 4 section',
+        'Thiết bị hút máu (suction unit) phẫu thuật 15L',
+        'Máy đo nhiệt độ hồng ngoại không tiếp xúc',
+        'Hệ thống nội soi (endoscope) ống mềm tiêu hóa',
+      ],
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // CH.48 — GIẤY
+  // ══════════════════════════════════════════════════════════════
+  {
+    match: /printing.*writing.*graphic.*10%.*mechanical|writing.*paper.*uncoated/i,
+    domain: {
+      type: 'Giấy in/viết',
+      items: [
+        'Giấy in A4 80gsm 500 tờ/ream trắng sáng',
+        'Giấy photocopy A4 70gsm IK Green 500 tờ',
+        'Giấy in phun A4 90gsm 500 tờ',
+        'Giấy cuộn plotter 80gsm 610mm×50m',
+        'Giấy in 1 mặt bóng (C1S) 90gsm A3',
+        'Giấy offset 90gsm cuộn 1090mm×1000m',
+        'Giấy in văn phòng A4 75gsm 500 tờ (màu xanh nhạt)',
+        'Giấy cuộn fax nhiệt (thermal fax) 216mm×50m',
+        'Giấy in hóa đơn NCR 2 liên A5 100 bộ',
+        'Giấy viết tay ivory 100gsm A4 500 tờ',
+        'Giấy không tro (wood-free) 80gsm cuộn 880mm',
+        'Giấy in 2 mặt bóng (C2S) 115gsm A4',
+      ],
+    },
+  },
+  {
+    match: /over 10%.*mechanical.*chemi.mechanical|mechanical.*wood.*paper/i,
+    domain: {
+      type: 'Giấy kraft/công nghiệp',
+      items: [
+        'Giấy kraft nâu 80gsm cuộn 1000mm đóng gói',
+        'Giấy lót thùng carton (corrugating medium) 125gsm',
+        'Giấy kraft trắng 80gsm in bao bì thực phẩm',
+        'Giấy vệ sinh (tissue) cuộn 2 lớp 400 tờ',
+        'Giấy khăn (paper towel) Z-fold 200 tờ/gói',
+        'Giấy bìa carton (liner board) 180gsm nâu',
+        'Giấy nhám (sandpaper) P80 A4 wet/dry silicon carbide',
+        'Giấy xi-măng (cement bag paper) 70gsm 4 lớp',
+        'Giấy sáp (wax-coated paper) 60gsm bao thực phẩm',
+        'Giấy lọc cà phê (coffee filter paper) dạng túi',
+        'Giấy cuộn in báo (newsprint) 45gsm 1380mm',
+        'Giấy bìa duplex 300gsm 70×100cm in màu',
+      ],
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // CH.62 — QUẦN ÁO MAY SẴN
+  // ══════════════════════════════════════════════════════════════
+  {
+    match: /women.*girls.*cotton.*not knitted|women.*cotton.*woven/i,
+    domain: {
+      type: 'Quần áo nữ vải cotton',
+      items: [
+        'Áo sơ mi nữ vải cotton 100% tay dài màu trắng',
+        'Quần jean nữ vải denim cotton 98% size S-XL',
+        'Đầm nữ vải cotton thun cổ tròn dáng suông',
+        'Áo thun nữ cotton 100% cổ V ngắn tay',
+        'Quần kaki nữ cotton 97% dáng ống đứng',
+        'Áo khoác nữ vải cotton twill bomber jacket',
+        'Bộ đồ bộ nữ cotton mặc nhà quần dài + áo',
+        'Váy nữ vải bông cotton flare midi skirt',
+        'Áo phao nữ cotton kẻ sọc cổ bẻ tay dài',
+        'Quần short nữ cotton 100% dạng bermuda',
+        'Áo croptop nữ cotton cổ tròn form fitted',
+        'Đầm xòe nữ vải cotton thêu 100% size M',
+      ],
+    },
+  },
+  {
+    match: /men.*boys.*cotton.*not knitted|men.*cotton.*woven/i,
+    domain: {
+      type: 'Quần áo nam vải cotton',
+      items: [
+        'Áo sơ mi nam vải Oxford cotton 100% tay dài',
+        'Quần jean nam denim cotton 98% slim fit',
+        'Áo thun nam cotton 100% cổ tròn ngắn tay',
+        'Quần kaki nam cotton dáng regular chino',
+        'Áo polo nam cotton 100% cổ bẻ ngắn tay',
+        'Quần short nam cotton twill 5 túi',
+        'Bộ vest nam vải cotton pha linen 2 mảnh',
+        'Áo khoác nam cotton 97% windbreaker',
+        'Quần đùi thể thao nam cotton + spandex',
+        'Áo sơ mi flannel nam cotton kẻ ô đỏ đen',
+        'Quần cargo nam cotton 100% nhiều túi',
+        'Áo hoodie nam cotton 80% + polyester 20%',
+      ],
+    },
+  },
+  {
+    match: /women.*girls.*textile.*n\.e\.c|women.*not elsewhere.*textile/i,
+    domain: {
+      type: 'Quần áo nữ vải tổng hợp',
+      items: [
+        'Áo sơ mi nữ vải polyester 100% tay dài công sở',
+        'Váy midi nữ vải viscose/rayon tơ nhân tạo',
+        'Đầm nữ vải lụa polyester satin dài tay',
+        'Áo blazer nữ vải polyester-rayon dáng suông',
+        'Quần nữ vải crepe polyester 95% ống đứng',
+        'Áo thun nữ polyester 100% đi thể thao UV',
+        'Váy xòe nữ vải tulle tầng lớp dự tiệc',
+        'Áo phao nữ vải polyester lining bông nhân tạo',
+        'Bộ suit nữ vải polyester-rayon 2 mảnh',
+        'Quần legging nữ vải nylon spandex 4 chiều',
+      ],
+    },
+  },
+  {
+    match: /men.*boys.*textile.*n\.e\.c|men.*not elsewhere.*textile/i,
+    domain: {
+      type: 'Quần áo nam vải tổng hợp',
+      items: [
+        'Áo sơ mi nam vải polyester 100% tay dài',
+        'Quần tây nam vải polyester-viscose ống đứng',
+        'Áo blazer nam vải polyester blend 2 lớp',
+        'Áo gió nam polyester ripstop nhẹ thoáng khí',
+        'Quần nỉ nam polyester thể thao jogger',
+        'Bộ thể thao nam polyester áo + quần dài',
+        'Áo thun nam polyester dri-fit gym workout',
+        'Áo khoác nam vải polyester padding lightweight',
+        'Quần short nam polyester 100% bơi lội boardshort',
+        'Áo hoodie nam polyester fleece dày dặn',
+      ],
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // CH.29 — HÓA CHẤT HỮU CƠ
+  // ══════════════════════════════════════════════════════════════
+  {
+    match: /acyclic.*without other oxygen|acyclic.*n\.e\.c/i,
+    domain: {
+      type: 'Hóa chất hữu cơ mạch hở',
+      items: [
+        'Methanol kỹ thuật CH3OH 99.9% thùng 200L',
+        'Ethanol công nghiệp C2H5OH 99.5% thùng 200L',
+        'Butanol n-Butanol 99.5% thùng 200L',
+        'Acetone kỹ thuật 99.5% thùng 200L',
+        'Isopropanol (IPA) 99.7% thùng 200L',
+        'Hexane kỹ thuật (n-Hexane) 99% thùng 200L',
+        'MEK (methyl ethyl ketone) 99.5% thùng 200L',
+        'Ethyl acetate (EAc) 99.5% thùng 200L',
+        'MIBK (methyl isobutyl ketone) 98% thùng 200L',
+        'Cyclohexane 99% dung môi công nghiệp thùng 200L',
+      ],
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // CH.03 / THỰC PHẨM / THỦY SẢN
+  // ══════════════════════════════════════════════════════════════
+  {
+    match: /fish.*frozen|frozen.*fish|other than fillets/i,
+    domain: {
+      type: 'Cá đông lạnh',
+      items: [
+        'Cá tra fillet đông lạnh (IQF) 150-200g/piece VN',
+        'Cá basa fillet đông lạnh (skin-on) 1kg block',
+        'Cá ngừ vây vàng đông lạnh (loại thường)',
+        'Cá thu (mackerel) đông lạnh nguyên con 300-500g',
+        'Cá nục (round scad) đông lạnh nguyên con',
+        'Cá hố (hairtail) đông lạnh nguyên con block 10kg',
+        'Cá chép đông lạnh loại 500g-1kg',
+        'Cá mú đông lạnh nguyên con 500g-1kg',
+        'Cá bớp (cobia) đông lạnh fillet 200-300g',
+        'Cá hồi (salmon) Atlantic fillet tươi sơ chế đông lạnh',
+      ],
+    },
+  },
+  {
+    match: /crustaceans.*not frozen|shrimps.*prawns|shellfish/i,
+    domain: {
+      type: 'Tôm/giáp xác không đông lạnh',
+      items: [
+        'Tôm thẻ chân trắng sống (live white shrimp) 30-40 con/kg',
+        'Tôm sú sống (black tiger shrimp) 10-12 con/kg',
+        'Tôm hùm (lobster) sống 500g-800g/con',
+        'Cua (swimming crab) sống 200-300g/con',
+        'Ghẹ xanh (blue crab) sống 100-150g/con',
+        'Tôm càng xanh (giant freshwater prawn) sống',
+        'Tôm đất (banana shrimp) tươi 50-60 con/kg',
+        'Cua đồng (rice field crab) tươi 100-150g',
+      ],
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // CH.94 — NỘI THẤT
+  // ══════════════════════════════════════════════════════════════
+  {
+    match: /seats.*wooden frames|chairs.*wooden|sofas.*wooden/i,
+    domain: {
+      type: 'Ghế/sofa khung gỗ',
+      items: [
+        'Ghế gỗ oak đơn giản nệm vải sofa 1 chỗ',
+        'Bộ sofa gỗ thịt 3 + 1 + 1 chỗ nệm nhung',
+        'Ghế ăn gỗ cao su (rubberwood) nệm vải',
+        'Bộ bàn ăn 6 ghế gỗ sồi tự nhiên',
+        'Ghế làm việc gỗ + đệm da màu nâu',
+        'Ghế xích đu gỗ keo ngoài trời',
+        'Bộ sofa góc L gỗ tự nhiên nệm cotton 4 chỗ',
+        'Ghế phòng khách gỗ óc chó (walnut) hiện đại',
+        'Bộ ghế salon tóc gỗ 3 chiếc',
+        'Ghế ăn nhà hàng gỗ beech khung thép',
+      ],
+    },
+  },
+  {
+    match: /furniture.*bedroom|beds.*furniture|mattresses/i,
+    domain: {
+      type: 'Nội thất phòng ngủ',
+      items: [
+        'Giường ngủ đôi gỗ công nghiệp MDF 1.6m',
+        'Tủ quần áo 4 cánh gỗ MDF phủ melamine trắng',
+        'Nệm lò xo Bonnell 1.6m×2m dày 20cm',
+        'Nệm foam memory 160×200×25cm',
+        'Bàn đầu giường (nightstand) gỗ công nghiệp 2 ngăn',
+        'Bàn trang điểm gỗ MDF có gương 80×40×75cm',
+        'Giường tầng trẻ em gỗ thông 90×190cm',
+        'Đầu giường da (headboard) 1.8m màu xám',
+        'Tủ đầu giường gỗ tự nhiên 1 ngăn kéo',
+        'Bộ phòng ngủ 5 món: giường + tủ + bàn phấn',
+      ],
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // CH.95 — ĐỒ CHƠI / THỂ THAO
+  // ══════════════════════════════════════════════════════════════
+  {
+    match: /toys.*children|dolls.*toys|video games/i,
+    domain: {
+      type: 'Đồ chơi trẻ em',
+      items: [
+        'Xe đồ chơi điều khiển từ xa 4 bánh 2.4GHz',
+        'Búp bê Barbie thời trang 30cm phụ kiện',
+        'Bộ Lego xây dựng 500 mảnh ghép nhà',
+        'Robot đồ chơi biến hình (transformer) 20cm',
+        'Súng đồ chơi bắn nước ngoài trời 50cm',
+        'Bộ đồ chơi bác sĩ 20 chi tiết nhựa ABS',
+        'Xe đẩy đồ chơi cho bé 1-3 tuổi',
+        'Khối gỗ xếp hình (wooden blocks) 60 chi tiết',
+        'Thú nhồi bông gấu teddy bear 50cm',
+        'Ô tô đồ chơi die-cast 1:43 kim loại',
+        'Máy bay điều khiển từ xa (drone) trẻ em 360°',
+        'Bộ bài (cards) trading card Pokemon',
+      ],
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // CROSS-CHAPTER GENERIC PATTERNS
+  // ══════════════════════════════════════════════════════════════
+  {
+    match: /parts and accessories.*machinery|parts.*accessories.*equipment/i,
+    domain: {
+      type: 'Bộ phận và phụ kiện máy móc',
+      items: [
+        'Bộ phận thay thế máy móc chuyên dụng',
+        'Phụ kiện thiết bị sản xuất OEM',
+        'Mô-đun điều khiển (control module) thiết bị',
+        'Bộ dẫn động (drive assembly) máy công nghiệp',
+        'Khung đỡ (bracket/frame) thiết bị thép không gỉ',
+        'Bộ seal/gioăng đệm kín (seal kit) máy móc',
+        'Màn hình hiển thị (display panel) thiết bị',
+        'Bộ cảm biến (sensor assembly) máy móc',
+        'Ổ đỡ (bearing housing) thiết bị quay',
+        'Bơm dầu bôi trơn (lube pump) máy công nghiệp',
+      ],
+    },
+  },
+  {
+    match: /parts thereof$|^parts thereof/i,
+    domain: {
+      type: 'Bộ phận thiết bị',
+      items: [
+        'Bộ phận thay thế thiết bị theo đặt hàng OEM',
+        'Linh kiện lắp ráp (assembly component) chính hãng',
+        'Cụm chi tiết gia công CNC inox',
+        'Bộ phận nhựa kỹ thuật đúc phun (injection mold)',
+        'Chi tiết đúc nhôm áp lực (die-cast aluminum)',
+        'Bộ phận thép đã qua gia công nhiệt luyện',
+        'Cụm lắp ráp đồng bộ (sub-assembly) thiết bị',
+        'Bộ phận cao su kỹ thuật (rubber part) đặc chủng',
+      ],
+    },
+  },
+
   // Central heating boiler parts
   {
     match: /parts of central heating boilers/i,
