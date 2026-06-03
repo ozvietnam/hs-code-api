@@ -77,6 +77,97 @@ function parseCapacityConstraint(siblingNames) {
 // --------------------------------------------------------------------------
 
 const H6EN_DOMAINS = [
+  // Central heating boiler parts
+  {
+    match: /parts of central heating boilers/i,
+    domain: {
+      type: 'Bộ phận nồi hơi sưởi ấm',
+      items: [
+        'Đầu đốt (burner head) nồi hơi sưởi ấm gas',
+        'Bộ trao đổi nhiệt (heat exchanger) nồi hơi trung tâm',
+        'Bơm tuần hoàn (circulation pump) hệ sưởi 180W',
+        'Van điều nhiệt (thermostatic valve) hệ sưởi ấm',
+        'Bộ xả khí tự động (auto air vent) hệ sưởi',
+        'Đầu điều nhiệt (thermostat head) TRV 15mm',
+        'Bộ điều khiển nồi hơi (boiler controller) 230V',
+        'Ống dẫn hơi (flue pipe) nồi hơi condensing 60/100',
+        'Bình giãn nở (expansion vessel) 12L 1.5 bar',
+        'Thiết bị lọc từ (magnetic filter) hệ sưởi 22mm',
+      ],
+    },
+  },
+  // Auxiliary plant for boilers
+  {
+    match: /auxiliary plant.*use with boilers|parts.*auxiliary plant.*boilers/i,
+    domain: {
+      type: 'Thiết bị phụ trợ lò hơi',
+      items: [
+        'Thiết bị xử lý nước cấp lò hơi (feedwater treatment)',
+        'Bình khử khí (deaerator) lò hơi công nghiệp',
+        'Bộ tái sinh (regenerator) hơi nước lò hơi',
+        'Thiết bị thu hồi nước ngưng (condensate recovery)',
+        'Bộ đo lưu lượng hơi (steam flow meter) 2"',
+        'Bẫy hơi (steam trap) phao cầu 15mm',
+        'Bình tách hơi-nước (steam separator) DN50',
+        'Thiết bị làm mềm nước (softener) ion trao đổi',
+        'Hệ thống xả bề mặt (surface blowdown) tự động',
+        'Bơm cấp nước lò (boiler feed pump) 1.5kW',
+      ],
+    },
+  },
+  // Steam turbines
+  {
+    match: /steam.*vapour turbines|vapour turbines/i,
+    domain: {
+      type: 'Tuabin hơi nước',
+      items: [
+        'Tuabin hơi nước ngưng tụ (condensing turbine) 1MW',
+        'Tuabin hơi trích hơi (extraction turbine) 500kW',
+        'Tuabin hơi áp suất ngược (back pressure) 200kW',
+        'Tuabin hơi nước nhỏ (micro steam turbine) 50kW',
+        'Cánh tuabin (turbine blade) hợp kim titan',
+        'Bộ giảm tốc tuabin hơi 1500rpm',
+        'Bộ điều tốc (governor) tuabin hơi',
+        'Vòng bi tuabin hơi (turbine bearing)',
+        'Bộ phận hệ thống bịt kín (seal system) tuabin',
+        'Bộ bảo vệ tuabin (turbine protection system)',
+      ],
+    },
+  },
+  // Reciprocating piston engines for vehicles
+  {
+    match: /reciprocating piston engines.*propulsion|piston engines.*vehicles/i,
+    domain: {
+      type: 'Động cơ piston tịnh tiến xe',
+      items: [
+        'Động cơ xăng 4 kỳ xe gắn máy 125cc mới',
+        'Động cơ xăng 4 kỳ xe gắn máy 150cc mới',
+        'Động cơ xăng 4 kỳ ô tô con 1.5L mới',
+        'Động cơ xăng 4 kỳ ô tô con 1.6L mới',
+        'Động cơ xăng xe tải nhỏ 2.0L mới',
+        'Động cơ xăng đa năng (multipurpose) 7HP',
+        'Động cơ xăng 4 kỳ máy phát điện 5kVA',
+        'Động cơ xăng xe golf cart 350cc',
+        'Động cơ xăng 4 kỳ xe ba bánh 200cc',
+        'Động cơ xăng 2 kỳ cưa xích 45cc',
+      ],
+    },
+  },
+  // Rotary piston engines
+  {
+    match: /rotary internal combustion piston engines/i,
+    domain: {
+      type: 'Động cơ piston quay',
+      items: [
+        'Động cơ piston quay Wankel 1.3L (Mazda RX)',
+        'Động cơ piston quay áp suất thấp nhỏ gọn',
+        'Bộ phận động cơ quay Wankel: rotor đỉnh tam giác',
+        'Bộ phận vỏ (housing) động cơ piston quay',
+        'Bộ phận trục lệch tâm (eccentric shaft) động cơ quay',
+        'Apex seal (đỉnh rotor) động cơ Wankel thay thế',
+      ],
+    },
+  },
   // Parts — must come BEFORE generic boiler patterns (parts h6En contains "vapour generating")
   {
     match: /parts of steam.*boilers|parts.*vapour generating/i,
@@ -223,6 +314,417 @@ const H6EN_DOMAINS = [
         'Máy cưa cung (hacksaw machine)',
         'Máy gia công trung tâm CNC 4 trục',
         'Máy tiện CNC mini đào tạo',
+      ],
+    },
+  },
+  // Air conditioners / HVAC
+  {
+    match: /motor driven fan.*cool|containing a motor driven fan/i,
+    domain: {
+      type: 'Máy điều hòa không khí',
+      items: [
+        'Máy điều hòa điều nhiệt inverter 9000 BTU',
+        'Máy điều hòa điều nhiệt inverter 12000 BTU',
+        'Máy điều hòa điều nhiệt inverter 18000 BTU',
+        'Máy điều hòa điều nhiệt inverter 24000 BTU',
+        'Dàn lạnh multi-split 1 chiều 9000 BTU',
+        'Máy điều hòa tủ đứng 3.5HP',
+        'Máy điều hòa tủ đứng 5HP công nghiệp',
+        'Máy điều hòa casette âm trần 2.5HP',
+        'Dàn nóng điều hòa trung tâm VRF 8HP',
+        'Máy điều hòa áp trần ống gió 2 chiều 5HP',
+        'Máy điều hòa 1 chiều tiết kiệm điện 12000 BTU',
+        'Máy điều hòa di động không cần ống thải 12000 BTU',
+      ],
+    },
+  },
+  {
+    match: /motor driven fan and elements for.*heating|fan and elements for/i,
+    domain: {
+      type: 'Máy điều hòa không khí 2 chiều',
+      items: [
+        'Máy điều hòa 2 chiều inverter 9000 BTU',
+        'Máy điều hòa 2 chiều inverter 12000 BTU',
+        'Máy điều hòa 2 chiều inverter 18000 BTU',
+        'Máy điều hòa 2 chiều inverter 24000 BTU',
+        'Máy điều hòa 2 chiều tủ đứng 4HP',
+        'Máy điều hòa heat pump công nghiệp 10HP',
+        'Dàn nóng multi-split 2 chiều 3HP',
+        'Máy điều hòa âm trần 2 chiều 2.5HP',
+        'Máy điều hòa giấu trần 2 chiều 5HP',
+        'Máy điều hòa VRF 2 chiều outdoor unit 12HP',
+        'Máy bơm nhiệt (heat pump) nước nóng 200L',
+        'Máy điều hòa 2 chiều áp trần 3.5HP',
+      ],
+    },
+  },
+  // Industrial valves (heading 8481)
+  {
+    match: /for pipes, boiler shells, tanks, vats/i,
+    domain: {
+      type: 'Van công nghiệp',
+      items: [
+        'Van bi cầu (ball valve) thép không gỉ DN25',
+        'Van cổng (gate valve) gang DN50 PN16',
+        'Van bướm (butterfly valve) mặt bích DN100',
+        'Van cầu (globe valve) đồng thau 1/2 inch',
+        'Van một chiều (check valve) thép không gỉ DN40',
+        'Van an toàn (safety relief valve) hơi nước 1/2"',
+        'Van điện từ (solenoid valve) 24VDC DN15',
+        'Van điều khiển (control valve) pneumatic DN50',
+        'Van giảm áp (pressure reducing valve) khí nén DN25',
+        'Van bi 3 chiều (3-way ball valve) thép không gỉ',
+        'Van xả đáy (drain valve) lò hơi 1/2"',
+        'Van bi đầu nối nhanh (quick connect ball valve)',
+      ],
+    },
+  },
+  // Engine parts
+  {
+    match: /parts.*suitable for use solely.*piston eng|parts.*internal combustion piston eng/i,
+    domain: {
+      type: 'Bộ phận động cơ đốt trong',
+      items: [
+        'Bộ piston + xylanh động cơ xe máy 125cc',
+        'Trục khuỷu (crankshaft) động cơ ô tô',
+        'Nắp máy (cylinder head) động cơ diesel',
+        'Thân máy (cylinder block) động cơ xăng',
+        'Thanh truyền (connecting rod) động cơ diesel',
+        'Trục cam (camshaft) động cơ 4 kỳ',
+        'Bộ xéc-măng (piston ring set) động cơ diesel',
+        'Bộ lọc dầu (oil filter) động cơ ô tô',
+        'Turbo-tăng áp (turbocharger) động cơ diesel',
+        'Bơm dầu (oil pump) động cơ xăng',
+        'Két làm mát (oil cooler) động cơ diesel',
+        'Cạc-te (oil pan/sump) động cơ',
+      ],
+    },
+  },
+  // Centrifugal pumps
+  {
+    match: /centrifugal.*n\.e\.c.*heading.*8413|centrifugal.*for liquids/i,
+    domain: {
+      type: 'Bơm ly tâm',
+      items: [
+        'Bơm ly tâm một tầng trục ngang 1.5kW',
+        'Bơm ly tâm đa tầng 3kW áp cao',
+        'Bơm ly tâm inox thực phẩm 2.2kW',
+        'Bơm ly tâm công nghiệp 5.5kW',
+        'Bơm ly tâm hóa chất thân nhựa PP',
+        'Bơm ly tâm bơm bùn (slurry) 11kW',
+        'Bơm ly tâm trục đứng 2.2kW',
+        'Bơm ly tâm nhà dân áp suất 0.37kW',
+        'Bơm ly tâm tự mồi 0.75kW',
+        'Bơm ly tâm lưu lượng lớn DN80',
+        'Bơm ly tâm nhiệt độ cao 180°C',
+        'Bơm ly tâm inverter biến tần 7.5kW',
+      ],
+    },
+  },
+  // Refrigerators / freezers
+  {
+    match: /combined refrigerator.freezers|refrigerating or freezing equipment/i,
+    domain: {
+      type: 'Tủ lạnh',
+      items: [
+        'Tủ lạnh 2 cánh ngăn đá trên 180L',
+        'Tủ lạnh 2 cánh ngăn đá dưới (bottom freezer) 300L',
+        'Tủ lạnh 2 cửa side-by-side 600L inverter',
+        'Tủ lạnh mini 50L văn phòng',
+        'Tủ lạnh 4 cánh French door 450L',
+        'Tủ đông đứng (upright freezer) 200L',
+        'Tủ đông nằm (chest freezer) 300L',
+        'Tủ mát trưng bày siêu thị 1 cánh kính 400L',
+        'Tủ lạnh thương mại 2 cánh kính inox 600L',
+        'Tủ lạnh bảo quản dược phẩm 2-8°C 300L',
+        'Tủ đông âm sâu (deep freezer) -80°C 100L',
+        'Tủ lạnh không đóng tuyết (no-frost) 220L',
+      ],
+    },
+  },
+  // Lifting/parts
+  {
+    match: /parts of the machinery of heading.*8426|parts of the machinery of heading.*8428|parts.*lifting|parts.*elevators/i,
+    domain: {
+      type: 'Bộ phận thiết bị nâng chuyển',
+      items: [
+        'Puly (pulley) tời điện 5 tấn',
+        'Móc cẩu (hook) cần cẩu 10 tấn tiêu chuẩn',
+        'Trống cuốn cáp (drum) cẩu điện 3 tấn',
+        'Bộ hộp số (gearbox) cần trục cổng 5 tấn',
+        'Ray (rail) cần trục dầm đơn A45',
+        'Khung (frame) xe con (trolley) cần trục 10 tấn',
+        'Cáp thép (wire rope) 6x37 đường kính 16mm',
+        'Bộ hãm điện (brake) cẩu điện 2 tấn',
+        'Bánh xe (wheel) xe con cầu trục 300mm',
+        'Bộ giảm tốc (reducer) băng tải xích',
+        'Con lăn (roller) băng tải cao su',
+        'Bộ điều khiển (controller) palang điện',
+      ],
+    },
+  },
+  // Printers / copiers
+  {
+    match: /single.function printing.*copying|printing.*copying.*fac/i,
+    domain: {
+      type: 'Máy in',
+      items: [
+        'Máy in laser đen trắng A4 26ppm',
+        'Máy in laser màu A4 20ppm',
+        'Máy in phun màu A4 có WiFi',
+        'Máy in nhiệt (thermal printer) 80mm cổng USB',
+        'Máy in mã vạch (barcode printer) 203dpi',
+        'Máy in tem nhãn (label printer) 4"',
+        'Máy in hóa đơn POS 80mm cổng USB+LAN',
+        'Máy in laser A3 đơn năng 30ppm',
+        'Máy in kim 24 kim A4 (dot matrix)',
+        'Máy in laser đen trắng A4 duplex tự động',
+        'Máy in thẻ nhựa (card printer) PVC',
+        'Máy in ảnh (photo printer) A4 6 màu',
+      ],
+    },
+  },
+  // Multi-function printers
+  {
+    match: /machines.*two or more.*printing|multi.function.*printing/i,
+    domain: {
+      type: 'Máy in đa chức năng',
+      items: [
+        'Máy photocopy đa chức năng A4 in/scan/copy',
+        'Máy in laser đa chức năng A4 WiFi',
+        'Máy photocopy đa chức năng A3 25ppm',
+        'Máy in laser màu đa chức năng A4 NW',
+        'Máy in laser đen trắng đa chức năng A3 30ppm',
+        'Máy in phun đa chức năng A4 in/copy/scan',
+        'Máy fax đa chức năng laser A4',
+        'Máy photocopy A3 đa chức năng 40ppm',
+        'Máy in laser color đa chức năng A3 NW',
+        'Máy in phun đa chức năng A3 WiFi',
+        'Máy scan + in A4 có ADF',
+        'Máy in fax đa chức năng inkjet A4',
+      ],
+    },
+  },
+  // Woodworking machines
+  {
+    match: /working wood.*cork.*bone|for working wood/i,
+    domain: {
+      type: 'Máy gia công gỗ',
+      items: [
+        'Máy cưa bàn (table saw) gỗ 3kW',
+        'Máy bào thẩm (surface planer) gỗ 4 mặt',
+        'Máy phay CNC gỗ 3 trục 1325',
+        'Máy đục mộng (mortising machine) gỗ',
+        'Máy khoan đa trục (line bore) ván MDF',
+        'Máy chà nhám (sanding machine) băng tải',
+        'Máy cưa vòng (bandsaw) gỗ khúc',
+        'Máy tiện gỗ (wood lathe) CNC',
+        'Máy cắt ván (panel saw) 3.2m tự động',
+        'Máy bào cuốn (thickness planer) gỗ 400mm',
+        'Máy khắc laser gỗ CO2 1390',
+        'Máy phay ngang (spindle moulder) gỗ',
+      ],
+    },
+  },
+  // Spraying / dispensing equipment
+  {
+    match: /projecting.*dispersing.*spraying|for spraying liquid/i,
+    domain: {
+      type: 'Thiết bị phun xịt',
+      items: [
+        'Máy phun sơn khí nén (spray gun) HVLP',
+        'Máy phun thuốc trừ sâu điện 16L',
+        'Súng phun (spray gun) màng lọc cao áp',
+        'Máy phun sương siêu âm công nghiệp',
+        'Béc phun (nozzle) tưới nhỏ giọt ren 1/2"',
+        'Máy phun khí (air blower gun) công nghiệp',
+        'Máy phun polyurethane (PU foam) 2 thành phần',
+        'Súng bơm mỡ (grease gun) điện 18V',
+        'Máy phun nước áp suất cao 140 bar',
+        'Thiết bị phun hóa chất vệ sinh CIP',
+        'Béc phun dầu bôi trơn CNC',
+        'Máy phun cát (sandblasting) áp suất 6 bar',
+      ],
+    },
+  },
+  // Agricultural sprayers
+  {
+    match: /agricultural.*horticultural sprayers|sprayers.*agricultural/i,
+    domain: {
+      type: 'Máy phun nông nghiệp',
+      items: [
+        'Máy phun thuốc trừ sâu điện đeo vai 20L',
+        'Bình xịt tay đeo lưng 16L nhựa',
+        'Máy phun ULV (ultra-low volume) diệt côn trùng',
+        'Máy phun sương tưới vườn tự động',
+        'Máy phun thuốc sâu động cơ xăng 2 thì 26cc',
+        'Máy phun cao áp nông nghiệp 20L/phút',
+        'Béc phun điều chỉnh nông nghiệp',
+        'Máy phun dạng cột (mist blower) 5L',
+        'Máy phun điện đa năng 10L lithium',
+        'Dây chuyền phun thuốc nhỏ giọt tưới rau',
+      ],
+    },
+  },
+  // Ventilation hoods
+  {
+    match: /ventilating.*recycling hoods.*fan/i,
+    domain: {
+      type: 'Máy hút mùi bếp',
+      items: [
+        'Máy hút mùi âm tủ 60cm motor 2 tốc độ',
+        'Máy hút mùi âm tủ 70cm 3 tốc độ đèn LED',
+        'Máy hút mùi áp tường 90cm inox',
+        'Máy hút mùi treo tường 70cm 2 tốc độ',
+        'Máy hút mùi bếp công nghiệp inox 1000mm',
+        'Máy hút khói nhà bếp âm trần 60cm',
+        'Máy hút mùi đảo bếp (island hood) 90cm',
+        'Quạt hút gió bếp công nghiệp 40cm',
+        'Máy hút khói hàn (welding fume extractor)',
+        'Hệ thống hút bụi gỗ (dust collector) 2.2kW',
+      ],
+    },
+  },
+  // Fans
+  {
+    match: /table.*floor.*wall.*window.*ceiling.*fans|fans.*self.contained/i,
+    domain: {
+      type: 'Quạt điện',
+      items: [
+        'Quạt cây (tower fan) đứng 45W 3 tốc độ',
+        'Quạt trần (ceiling fan) 5 cánh 56" có điều khiển từ xa',
+        'Quạt bàn mini (desk fan) 14W USB',
+        'Quạt hộp (box fan) 40cm công nghiệp',
+        'Quạt tường công nghiệp 60cm 3 tốc độ',
+        'Quạt hút thông gió (ventilating fan) 30cm',
+        'Quạt cột đứng (column fan) 45W timer',
+        'Quạt trần nhà xưởng HVLS 7.3m',
+        'Quạt thông gió âm tường (wall exhaust fan) 20cm',
+        'Quạt đứng công nghiệp 75cm 250W',
+        'Quạt sải cánh (axial fan) ống gió phi 300',
+        'Quạt ly tâm (centrifugal blower) 2.2kW',
+      ],
+    },
+  },
+  // Conveyor systems
+  {
+    match: /continuous.action.*goods.*materials|conveyor/i,
+    domain: {
+      type: 'Băng tải',
+      items: [
+        'Băng tải cao su (rubber belt conveyor) rộng 500mm',
+        'Băng tải PVC thực phẩm rộng 400mm',
+        'Băng tải lưới thép (wire mesh conveyor) 600mm',
+        'Băng tải xích (chain conveyor) bước 38.1mm',
+        'Băng tải con lăn (roller conveyor) 500mm/đoạn',
+        'Băng tải nghiêng (inclined conveyor) 30° rộng 600mm',
+        'Băng tải phân loại (sorting conveyor) có cảm biến',
+        'Hệ thống băng tải kho hàng tự động',
+        'Băng tải vít tải (screw conveyor) phi 150 inox',
+        'Băng tải gàu (bucket elevator) cao 6m',
+        'Băng tải khí (air conveyor) chai PET',
+        'Hệ thống con lăn chuyển hướng (roller diverter)',
+      ],
+    },
+  },
+  // Weighing machines
+  {
+    match: /weighing machines|other than personal.*conveyor.*constant|scales.*weighing/i,
+    domain: {
+      type: 'Cân công nghiệp',
+      items: [
+        'Cân bàn điện tử 300kg chính xác 0.1kg',
+        'Cân sàn điện tử 1 tấn nền inox',
+        'Cân treo điện tử 500kg móc cẩu',
+        'Cân xe tải (truck scale) 60 tấn',
+        'Cân băng tải (belt weigher) 50kg/s',
+        'Cân đóng bao tự động 25kg/50kg',
+        'Cân điếm (counting scale) linh kiện 30kg',
+        'Cân kỹ thuật phòng thí nghiệm 0.01g',
+        'Cân bồn (tank load cell) 2 tấn',
+        'Cân trục xe (axle weigher) 20 tấn',
+        'Cân khối lượng riêng (density scale)',
+        'Cân điện tử nhãn hàng 30kg in tem tự động',
+      ],
+    },
+  },
+  // Liquid filters
+  {
+    match: /filtering.*purifying.*liquids.*n\.e\.c|filter.*liquid/i,
+    domain: {
+      type: 'Thiết bị lọc chất lỏng',
+      items: [
+        'Bộ lọc nước RO công nghiệp 1000L/h',
+        'Thiết bị lọc dầu thủy lực 10 micron',
+        'Bộ lọc túi (bag filter) SS304 DN65',
+        'Thiết bị lọc đĩa (disc filter) 120 mesh',
+        'Bộ lọc nước uống 5 cấp 1/4"',
+        'Thiết bị siêu lọc (ultrafiltration) 1000L/h',
+        'Bộ lọc màng (membrane filter) 0.2 micron',
+        'Thiết bị khử ion (deionizer) trao đổi ion',
+        'Bộ lọc cát (sand filter) nước hồ bơi 500mm',
+        'Thiết bị lọc dầu thực vật cartridge',
+        'Bộ lọc nước đầu nguồn 20" PP 5 micron',
+        'Thiết bị lọc rượu (wine filter) khung bản',
+      ],
+    },
+  },
+  // CNC metal working
+  {
+    match: /working any material by removal of material|removal of material/i,
+    domain: {
+      type: 'Máy gia công cắt gọt',
+      items: [
+        'Máy cắt laser fiber kim loại 1500W',
+        'Máy cắt plasma CNC bàn 1500×3000mm',
+        'Máy phay CNC 3 trục gia công nhôm',
+        'Máy tiện CNC 2 trục bar feeder',
+        'Máy cắt dây EDM (wire EDM) 0.25mm',
+        'Trung tâm gia công CNC (VMC) 4 trục',
+        'Máy khoan taro (tapping machine) CNC',
+        'Máy mài phẳng CNC (surface grinder)',
+        'Máy gia công tia lửa điện (EDM die-sinking)',
+        'Máy cắt ống laser CNC phi 20-160mm',
+        'Trung tâm tiện phay (turn-mill center) CNC',
+        'Máy mài tròn CNC (cylindrical grinder)',
+      ],
+    },
+  },
+  // Gas/air/vacuum pumps
+  {
+    match: /for air.*vacuum.*gas.*n\.e\.c|air.*vacuum.*pumps/i,
+    domain: {
+      type: 'Bơm khí/chân không',
+      items: [
+        'Bơm chân không vòng chất lỏng (liquid ring) 15kW',
+        'Bơm chân không dầu bôi trơn rotary vane 3kW',
+        'Máy thổi khí (roots blower) áp thấp 5.5kW',
+        'Bơm khí màng (diaphragm air pump) 12VDC',
+        'Bơm tay không khí (hand air pump) xe đạp',
+        'Máy nén khí piston 2 xi-lanh không dầu 1.5HP',
+        'Bơm chân không khô (dry vacuum pump) 11kW',
+        'Máy thổi bột (powder blower) vận chuyển khí nén',
+        'Bơm chân không turbo-molecular (turbo pump)',
+        'Bơm tay chân không (hand vacuum pump) 200mbar',
+      ],
+    },
+  },
+  // Oil/gas separators / filters
+  {
+    match: /filtering.*purifying.*oil.*gas|oil.*gas.*filter/i,
+    domain: {
+      type: 'Thiết bị lọc/tách dầu khí',
+      items: [
+        'Thiết bị tách dầu-nước (oil-water separator) 5L/min',
+        'Bộ lọc dầu nhờn động cơ 10 micron spin-on',
+        'Thiết bị tách khí/lỏng (gas-liquid separator)',
+        'Bộ lọc khí nén 3 in 1 (regulator/filter/lubricator)',
+        'Thiết bị lọc nhiên liệu diesel 30 micron',
+        'Bình tách nhớt (oil mist separator) máy nén',
+        'Thiết bị lọc khí tự nhiên (gas filter) DN50',
+        'Bộ lọc tách ẩm (coalescing filter) khí nén',
+        'Thiết bị tách cặn dầu (oil skimmer) bể cắt gọt',
+        'Bộ lọc xăng đôi (dual fuel filter) tàu thuyền',
       ],
     },
   },
