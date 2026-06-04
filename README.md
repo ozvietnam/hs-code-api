@@ -56,19 +56,25 @@ openssl rand -hex 32
 | `/api/admin/overview` | GET | Yes | Admin KPI JSON (rewrite → `/api/dataset?resource=admin_overview`) |
 | `/api/oz-precedents?hs=` | GET | Yes | Oz historical declarations by HS code |
 | `/api/oz-precedents?q=` | GET | Yes | Oz precedents semantic search (needs GEMINI_API_KEY) |
-| `/api/trademark?q=` | GET | Yes | Trademark Watch — cảnh báo rủi ro nhãn hiệu bảo hộ (rewrite → `/api/dataset?resource=trademark`) |
+| `/api/trademark?q=` | GET | Yes | Trademark Watch — cảnh báo nhãn hiệu (VN nhập + TQ xuất); `&origin=CN` bật trục GACC (rewrite → `/api/dataset?resource=trademark`) |
 
-### Trademark Watch (cảnh báo SHTT khi nhập khẩu)
+### Trademark Watch (cảnh báo SHTT — đa pháp tài VN nhập + TQ xuất)
 
-Cảnh báo khi lô hàng mang nhãn hiệu có thể được bảo hộ tại VN — căn cứ TT 13/2015 & 13/2020/TT-BTC (giám sát + tạm dừng thông quan) và quyền chủ động dừng thông quan của hải quan từ 1/3/2026.
+Cảnh báo khi lô hàng mang nhãn hiệu có thể được bảo hộ. Hai trục rủi ro:
+- **VN nhập** — TT 13/2015 & 13/2020/TT-BTC (giám sát + tạm dừng thông quan); HQ chủ động dừng từ 1/3/2026.
+- **TQ xuất** — Hải quan TQ (GACC) tạm dừng cả hàng XUẤT nghi vi phạm SHTT đã ghi nhận; chủ thể quyền chỉ có **3 ngày làm việc** (không gia hạn); Smart Customs TQ dùng AI nhận diện rủi ro. **Kích hoạt khi `origin` là Trung Quốc** (phần lớn hàng của hệ thống).
 
-- `GET /api/trademark?q=vpower[&hs=27101990]` — tra watchlist; `hs` để cross-check nhóm Nice ↔ chương HS (giảm false positive).
-- `GET /api/trademark?q=vpower&risk=1&hs=...` — trả thẳng object cảnh báo (riskLevel CRITICAL/HIGH/MEDIUM/WATCH + recommendations).
-- `GET /api/trademark?stats=1` — thống kê watchlist.
-- `/api/describe` tự đính kèm `trademarkRisk` + thêm cảnh báo `TRADEMARK_WATCH` vào `compliance.warnings`.
-- Data: `data/trademark-watch.json` (hybrid `customs` + `wipo`, seed từ `npm run data:build-trademark-seed`), bản đồ `data/nice-hs-map.json`. Nạp dữ liệu thật: `npm run data:ingest-trademark -- --customs <file.csv>` / `-- --wipo <file.json>`.
-- Admin UI: `/admin/trademark.html`.
-- ⚠️ Tư vấn tham khảo, **không phải phán quyết hải quan**; entry `verified:false` là seed cần xác minh tại iplib.noip.gov.vn / WIPO.
+Endpoint:
+- `GET /api/trademark?q=vpower[&hs=27101990][&origin=CN]` — tra watchlist; `hs` cross-check nhóm Nice ↔ chương HS; `origin=CN` bật trục rủi ro xuất khẩu TQ.
+- `GET /api/trademark?q=vpower&risk=1&hs=...&origin=CN` — object cảnh báo (`riskLevel` tổng = max(VN, CN); `matches[].vnImportRisk` + `matches[].cnExportRisk`; recommendations).
+- `GET /api/trademark?stats=1` — thống kê (`customsRecorded` VN + `gaccRecorded` TQ).
+- `/api/describe` tự đính kèm `trademarkRisk` (truyền `origin` từ `xuatXu`) + cảnh báo `TRADEMARK_WATCH` vào `compliance.warnings`.
+
+Data & ingest:
+- `data/trademark-watch.json` (mỗi nhãn có field VN + khối `cn` cho GACC), `data/nice-hs-map.json`. Seed: `npm run data:build-trademark-seed`.
+- Nạp dữ liệu thật: `npm run data:ingest-trademark -- --customs <csv>` (giám sát TCHQ) / `-- --wipo <json>` (WIPO) / `-- --gacc <json>` (ghi nhận Hải quan TQ).
+- Admin UI: `/admin/trademark.html` (cột rủi ro VN + cột xuất khẩu TQ, ô nhập Xuất xứ).
+- ⚠️ Tư vấn tham khảo, **không phải phán quyết hải quan**; entry `verified:false` là seed cần xác minh tại iplib.noip.gov.vn / WIPO / danh sách GACC.
 
 **Vercel Hobby** projects cap serverless functions (~12). Several “logical” endpoints are implemented as **`/api/dataset`** and **`/api/tariff`** with `resource` / `op` query params; `vercel.json` rewrites preserve the public URLs above.
 

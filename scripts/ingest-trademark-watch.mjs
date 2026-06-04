@@ -3,12 +3,14 @@
  * Nạp dữ liệu nhãn hiệu THẬT vào data/trademark-watch.json (hybrid: hải quan + WIPO).
  *
  * Cách dùng:
- *   node scripts/ingest-trademark-watch.mjs --customs <file.csv|xlsx>   # danh sách giám sát TCHQ
- *   node scripts/ingest-trademark-watch.mjs --wipo <file.json>          # export WIPO Global Brand DB
+ *   node scripts/ingest-trademark-watch.mjs --customs <file.csv|xlsx>   # danh sách giám sát TCHQ (VN nhập)
+ *   node scripts/ingest-trademark-watch.mjs --wipo <file.json>          # export WIPO Global Brand DB (VN)
+ *   node scripts/ingest-trademark-watch.mjs --gacc <file.json>          # danh sách ghi nhận Hải quan TQ (CN xuất)
  *
  * Merge rule: ghi đè entry cùng tên nhãn (so khớp theo normalized). Nguồn "customs"
  * ưu tiên cao nhất (đặt customsRecorded=true, verified=true). Nguồn "wipo" set
  * status/owner/regNo + verified=true nhưng KHÔNG tự đặt customsRecorded.
+ * Nguồn "gacc" set khối cn.{gaccRecorded,recordNo,ipTypes,verified} (rủi ro XUẤT KHẨU TQ).
  *
  * --- ĐỊNH DẠNG FILE ĐẦU VÀO ---
  * Customs (CSV, từ "Danh sách nhãn hiệu đăng ký giám sát" của Tổng cục Hải quan):
@@ -70,10 +72,11 @@ const args = process.argv.slice(2);
 const mode = args[0];
 const file = args[1];
 
-if (!['--customs', '--wipo'].includes(mode) || !file) {
+if (!['--customs', '--wipo', '--gacc'].includes(mode) || !file) {
   console.log('Cách dùng:');
-  console.log('  node scripts/ingest-trademark-watch.mjs --customs <file.csv>');
-  console.log('  node scripts/ingest-trademark-watch.mjs --wipo <file.json>');
+  console.log('  node scripts/ingest-trademark-watch.mjs --customs <file.csv>   # giám sát TCHQ (VN nhập)');
+  console.log('  node scripts/ingest-trademark-watch.mjs --wipo <file.json>     # WIPO Global Brand DB (VN)');
+  console.log('  node scripts/ingest-trademark-watch.mjs --gacc <file.json>     # ghi nhận Hải quan TQ (CN xuất)');
   console.log('\nXem header file cho định dạng cột mong đợi. Script này KHÔNG bịa dữ liệu.');
   process.exit(args.length ? 1 : 0);
 }
@@ -124,7 +127,7 @@ if (mode === '--customs') {
       source: 'customs',
     });
   }
-} else {
+} else if (mode === '--wipo') {
   const items = JSON.parse(readFileSync(file, 'utf8'));
   for (const it of items) {
     upsert(it.mark, {
@@ -136,6 +139,26 @@ if (mode === '--customs') {
       customsRecorded: db.marks[it.mark]?.customsRecorded === true, // giữ nguyên, không tự bật
       source: 'wipo',
     });
+  }
+} else {
+  // --gacc: cập nhật khối cn (rủi ro XUẤT KHẨU phía Trung Quốc), không clobber field VN.
+  const items = JSON.parse(readFileSync(file, 'utf8'));
+  for (const it of items) {
+    if (!it.mark) continue;
+    const existing = db.marks[it.mark] || { normalized: normalizeMark(it.mark), niceClasses: [], hsChapters: [], source: 'gacc' };
+    db.marks[it.mark] = {
+      ...existing,
+      cn: {
+        gaccRecorded: true,
+        recordNo: it.recordNo || null,
+        ipTypes: Array.isArray(it.ipTypes) ? it.ipTypes : ['trademark'],
+        owner: it.owner || existing.cn?.owner || null,
+        verified: true,
+        source: 'gacc',
+      },
+      updatedAt: new Date().toISOString().slice(0, 10),
+    };
+    upserts += 1;
   }
 }
 

@@ -114,6 +114,7 @@ module.exports = async function handler(req, res) {
     brand: declaration.nhanHieu || context.brand,
     text: `${declaration.tenHang || ''} ${context.customerDescription || ''}`,
     hsCode,
+    origin: declaration.xuatXu?.nameVi || declaration.xuatXu?.code || context.origin,
   });
   if (trademarkRisk.matched) {
     compliance.warnings.push({

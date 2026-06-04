@@ -51,13 +51,16 @@
   <main>
     <p id="error" class="err" hidden></p>
     <div class="note">
-      ⚖️ Cảnh báo dựa trên watchlist nội bộ (TT 13/2015 &amp; 13/2020/TT-BTC; hải quan chủ động dừng thông quan từ 1/3/2026).
-      <strong>Tư vấn tham khảo, không phải phán quyết hải quan.</strong> Dữ liệu seed cần xác minh tại
+      ⚖️ Cảnh báo đa pháp tài: <strong>VN nhập</strong> (TT 13/2015 &amp; 13/2020/TT-BTC; HQ chủ động dừng từ 1/3/2026)
+      + <strong>TQ xuất</strong> (GACC — Hải quan TQ tạm dừng cả hàng xuất nghi vi phạm; cửa sổ 3 ngày làm việc).
+      Nhập ô <em>Xuất xứ = China</em> để bật trục rủi ro xuất khẩu TQ.
+      <strong>Tư vấn tham khảo, không phải phán quyết hải quan.</strong> Seed cần xác minh tại
       <a href="https://iplib.noip.gov.vn" target="_blank" rel="noopener">iplib.noip.gov.vn</a>.
     </div>
     <div class="searchbar">
       <input id="q" type="text" placeholder="Nhãn hiệu (vd: vpower, honda...)" />
-      <input id="hs" type="text" placeholder="Mã HS (tuỳ chọn, để cross-check)" style="max-width:14rem" />
+      <input id="hs" type="text" placeholder="Mã HS (cross-check)" style="max-width:11rem" />
+      <input id="origin" type="text" placeholder="Xuất xứ (vd: China)" style="max-width:10rem" />
       <button type="button" class="primary" id="search">Tra cứu</button>
     </div>
     <p id="stats" class="stats"></p>
@@ -91,7 +94,8 @@
       try {
         var s = await api('/api/trademark?stats=1');
         document.getElementById('stats').innerHTML =
-          'Watchlist: <strong>' + s.total + '</strong> nhãn · giám sát hải quan: <strong>' + s.customsRecorded +
+          'Watchlist: <strong>' + s.total + '</strong> nhãn · giám sát HQ VN: <strong>' + s.customsRecorded +
+          '</strong> · ghi nhận GACC (TQ): <strong>' + (s.gaccRecorded || 0) +
           '</strong> · đã xác minh: <strong>' + s.verified + '</strong> · nguồn: ' +
           esc(JSON.stringify(s.bySource));
       } catch (e) { /* token chưa nhập */ }
@@ -103,13 +107,21 @@
       return '<span class="badge muted">n/a</span>';
     }
 
+    function cnLabel(cn) {
+      if (!cn) return '<span class="muted">—</span>';
+      var txt = (cn.gaccRecorded ? '🛃 GACC' : 'soi xét') ;
+      return '<span class="badge risk-' + esc(cn.level) + '">' + esc(cn.level) + '</span> ' + txt;
+    }
+
     async function search() {
       clearError();
       var q = document.getElementById('q').value.trim();
       var hs = document.getElementById('hs').value.trim().replace(/\D/g, '');
+      var origin = document.getElementById('origin').value.trim();
       if (q.length < 2) { showError('Nhập tối thiểu 2 ký tự.'); return; }
       try {
-        var url = '/api/trademark?q=' + encodeURIComponent(q) + (hs ? '&hs=' + hs : '');
+        var url = '/api/trademark?q=' + encodeURIComponent(q) +
+          (hs ? '&hs=' + hs : '') + (origin ? '&origin=' + encodeURIComponent(origin) : '');
         var data = await api(url);
         var box = document.getElementById('results');
         if (!data.found) {
@@ -121,17 +133,17 @@
           return '<tr>' +
             '<td><strong>' + esc(m.mark) + '</strong></td>' +
             '<td><span class="badge risk-' + esc(m.riskLevel) + '">' + esc(m.riskLevel) + '</span></td>' +
-            '<td>' + (m.customsRecorded ? '🛃 có' : '—') + '</td>' +
+            '<td>' + (m.customsRecorded ? '🛃 VN' : '—') + '</td>' +
+            '<td>' + (origin ? cnLabel(m.cnExportRisk) : '<span class="muted">nhập origin</span>') + '</td>' +
             '<td>' + esc(m.status) + (m.verified ? '' : ' <span class="badge muted">seed</span>') + '</td>' +
             '<td>' + esc((m.niceClasses || []).join(', ')) + '</td>' +
             '<td>' + (hs ? classMatchLabel(m.classMatch) : '<span class="muted">—</span>') + '</td>' +
-            '<td>' + esc(m.owner || '—') + '</td>' +
             '<td class="muted">' + esc(m.source) + '</td>' +
           '</tr>';
         }).join('');
         box.innerHTML =
-          '<table><thead><tr><th>Nhãn</th><th>Rủi ro</th><th>Giám sát HQ</th><th>Trạng thái</th>' +
-          '<th>Nhóm Nice</th><th>Cross-check HS</th><th>Chủ sở hữu</th><th>Nguồn</th></tr></thead>' +
+          '<table><thead><tr><th>Nhãn</th><th>Rủi ro tổng</th><th>Giám sát HQ VN</th><th>Xuất khẩu TQ (GACC)</th>' +
+          '<th>Trạng thái</th><th>Nhóm Nice</th><th>Cross-check HS</th><th>Nguồn</th></tr></thead>' +
           '<tbody>' + rows + '</tbody></table>' +
           '<p class="muted" style="margin-top:0.75rem">' + esc(data.disclaimer || '') + '</p>';
       } catch (e) {

@@ -282,20 +282,26 @@ module.exports = async function handler(req, res) {
     if (resource === 'trademark') {
       const q = String(req.query.q || req.query.brand || '').trim();
       const hsCode = req.query.hs || req.query.hsCode;
+      const origin = req.query.origin || req.query.xuatXu;
       if (String(req.query.stats || '') === '1' && !q) {
         return res.status(200).json(watchlistStats());
       }
       if (q.length < 2) {
         return res.status(400).json({
           error: 'q (nhãn hiệu, tối thiểu 2 ký tự) required',
-          examples: ['/api/trademark?q=vpower', '/api/trademark?q=honda&hs=84073100', '/api/trademark?stats=1'],
+          examples: [
+            '/api/trademark?q=vpower',
+            '/api/trademark?q=honda&hs=84073100',
+            '/api/trademark?q=honda&origin=CN&risk=1',
+            '/api/trademark?stats=1',
+          ],
         });
       }
-      // risk=1: trả luôn object cảnh báo (dùng khi đã biết hsCode)
+      // risk=1: trả luôn object cảnh báo (dùng khi đã biết hsCode + origin)
       if (String(req.query.risk || '') === '1') {
-        return res.status(200).json(checkTrademarkRisk({ brand: q, hsCode }));
+        return res.status(200).json(checkTrademarkRisk({ brand: q, hsCode, origin }));
       }
-      const matches = searchWatchlist(q, { hsCode });
+      const matches = searchWatchlist(q, { hsCode, origin });
       return res.status(200).json({
         found: matches.length > 0,
         query: q,

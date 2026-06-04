@@ -10,6 +10,8 @@ const {
   searchWatchlist,
   findMarks,
   normalizeMark,
+  isChinaOrigin,
+  scoreCnExport,
   hsChaptersForNice,
   watchlistStats,
 } = require('./lib/trademark-watch');
@@ -58,10 +60,42 @@ check('nhãn lạ -> matched false', r3.matched === false);
 const s = searchWatchlist('honda');
 check('searchWatchlist honda có kết quả', s.length > 0 && s[0].mark === 'Honda');
 
+// --- Trục XUẤT KHẨU Trung Quốc (GACC) ---
+check('isChinaOrigin nhận "China"', isChinaOrigin('China') === true);
+check('isChinaOrigin nhận "Trung Quốc"', isChinaOrigin('Trung Quốc') === true);
+check('isChinaOrigin nhận "CN"', isChinaOrigin('CN') === true);
+check('isChinaOrigin nhận "中国"', isChinaOrigin('中国') === true);
+check('isChinaOrigin từ chối "Vietnam"', isChinaOrigin('Vietnam') === false);
+
+// scoreCnExport: chỉ áp dụng khi origin TQ
+check('scoreCnExport null khi origin không phải TQ', scoreCnExport({ cn: { gaccRecorded: true, verified: true } }, 'Japan') === null);
+check('scoreCnExport CRITICAL khi GACC recorded + verified + origin TQ',
+  scoreCnExport({ cn: { gaccRecorded: true, verified: true } }, 'CN').level === 'CRITICAL');
+check('scoreCnExport HIGH khi GACC recorded chưa verified',
+  scoreCnExport({ cn: { gaccRecorded: true, verified: false } }, 'CN').level === 'HIGH');
+check('scoreCnExport WATCH khi nhãn TQ chưa rõ GACC',
+  scoreCnExport({ cn: {} }, 'China').level === 'WATCH');
+
+// checkTrademarkRisk với origin TQ (seed VPOWER chưa GACC -> WATCH + fromChina)
+const cn1 = checkTrademarkRisk({ brand: 'VPOWER', hsCode: '27101990', origin: 'China' });
+check('origin TQ -> fromChina true', cn1.fromChina === true);
+check('origin TQ -> match có cnExportRisk', cn1.matches[0].cnExportRisk !== null && cn1.matches[0].cnExportRisk !== undefined);
+check('origin TQ -> legalBasis gồm điều khoản TQ', cn1.legalBasis.some((s) => /GACC|Trung Quốc/.test(s)));
+check('origin TQ -> recommendations nhắc cửa khẩu xuất', cn1.matches[0].recommendations.some((r) => /XUẤT|xuất/.test(r)));
+
+// origin không phải TQ -> không có cnExportRisk
+const cn2 = checkTrademarkRisk({ brand: 'VPOWER', hsCode: '27101990', origin: 'Germany' });
+check('origin Đức -> fromChina false', cn2.fromChina === false);
+check('origin Đức -> cnExportRisk null', cn2.matches[0].cnExportRisk === null);
+
+// vnImportRisk luôn tách riêng
+check('match có vnImportRisk', !!cn1.matches[0].vnImportRisk && typeof cn1.matches[0].vnImportRisk.level === 'string');
+
 // stats
 const st = watchlistStats();
 check('watchlistStats total > 0', st.total > 0);
 check('watchlistStats có bySource.seed', st.bySource.seed > 0);
+check('watchlistStats có gaccRecorded field', typeof st.gaccRecorded === 'number');
 
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed > 0 ? 1 : 0);
