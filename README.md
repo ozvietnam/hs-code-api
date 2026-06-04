@@ -56,6 +56,19 @@ openssl rand -hex 32
 | `/api/admin/overview` | GET | Yes | Admin KPI JSON (rewrite → `/api/dataset?resource=admin_overview`) |
 | `/api/oz-precedents?hs=` | GET | Yes | Oz historical declarations by HS code |
 | `/api/oz-precedents?q=` | GET | Yes | Oz precedents semantic search (needs GEMINI_API_KEY) |
+| `/api/trademark?q=` | GET | Yes | Trademark Watch — cảnh báo rủi ro nhãn hiệu bảo hộ (rewrite → `/api/dataset?resource=trademark`) |
+
+### Trademark Watch (cảnh báo SHTT khi nhập khẩu)
+
+Cảnh báo khi lô hàng mang nhãn hiệu có thể được bảo hộ tại VN — căn cứ TT 13/2015 & 13/2020/TT-BTC (giám sát + tạm dừng thông quan) và quyền chủ động dừng thông quan của hải quan từ 1/3/2026.
+
+- `GET /api/trademark?q=vpower[&hs=27101990]` — tra watchlist; `hs` để cross-check nhóm Nice ↔ chương HS (giảm false positive).
+- `GET /api/trademark?q=vpower&risk=1&hs=...` — trả thẳng object cảnh báo (riskLevel CRITICAL/HIGH/MEDIUM/WATCH + recommendations).
+- `GET /api/trademark?stats=1` — thống kê watchlist.
+- `/api/describe` tự đính kèm `trademarkRisk` + thêm cảnh báo `TRADEMARK_WATCH` vào `compliance.warnings`.
+- Data: `data/trademark-watch.json` (hybrid `customs` + `wipo`, seed từ `npm run data:build-trademark-seed`), bản đồ `data/nice-hs-map.json`. Nạp dữ liệu thật: `npm run data:ingest-trademark -- --customs <file.csv>` / `-- --wipo <file.json>`.
+- Admin UI: `/admin/trademark.html`.
+- ⚠️ Tư vấn tham khảo, **không phải phán quyết hải quan**; entry `verified:false` là seed cần xác minh tại iplib.noip.gov.vn / WIPO.
 
 **Vercel Hobby** projects cap serverless functions (~12). Several “logical” endpoints are implemented as **`/api/dataset`** and **`/api/tariff`** with `resource` / `op` query params; `vercel.json` rewrites preserve the public URLs above.
 

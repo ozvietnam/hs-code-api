@@ -14,6 +14,7 @@ const { buildChaptersIndex } = require('../lib/chapters-index');
 const { readAuditLog } = require('../lib/admin-update');
 const { buildKpiDashboard } = require('../lib/ml-log');
 const { getProducts, isLoaiKhac, getCodeStats, getStatsSummary } = require('../lib/loai-khac-products');
+const { searchWatchlist, watchlistStats, checkTrademarkRisk } = require('../lib/trademark-watch');
 const fs = require('fs');
 const path = require('path');
 
@@ -276,6 +277,32 @@ module.exports = async function handler(req, res) {
         };
       });
       return res.status(200).json({ total: results.length, results });
+    }
+
+    if (resource === 'trademark') {
+      const q = String(req.query.q || req.query.brand || '').trim();
+      const hsCode = req.query.hs || req.query.hsCode;
+      if (String(req.query.stats || '') === '1' && !q) {
+        return res.status(200).json(watchlistStats());
+      }
+      if (q.length < 2) {
+        return res.status(400).json({
+          error: 'q (nhãn hiệu, tối thiểu 2 ký tự) required',
+          examples: ['/api/trademark?q=vpower', '/api/trademark?q=honda&hs=84073100', '/api/trademark?stats=1'],
+        });
+      }
+      // risk=1: trả luôn object cảnh báo (dùng khi đã biết hsCode)
+      if (String(req.query.risk || '') === '1') {
+        return res.status(200).json(checkTrademarkRisk({ brand: q, hsCode }));
+      }
+      const matches = searchWatchlist(q, { hsCode });
+      return res.status(200).json({
+        found: matches.length > 0,
+        query: q,
+        total: matches.length,
+        matches,
+        disclaimer: 'Tư vấn tham khảo, không phải phán quyết hải quan.',
+      });
     }
 
     return res.status(404).json({ error: 'Unknown resource', resource });
