@@ -11,9 +11,22 @@ Sandbox **Claude Code on the web** chặn outbound tới host ngoài allowlist
 ingest tự động từ trong session web được**. Ba cách gỡ:
 
 1. **Chạy ở máy/CI mạng mở** (khuyến nghị) — clone repo, chạy script ingest dưới đây, commit.
-2. **Đổi network policy của environment** để allowlist các host: `www.tmdn.org`,
-   `haiguanbeian.com`, `api.euipo.europa.eu`, `branddb.wipo.int`
-   (xem https://code.claude.com/docs — network policy). Sau đó ingest chạy ngay trong session.
+2. **Đổi network policy của environment** để allowlist các host. Cách làm (Claude Code on the web):
+   - Mở environment để chỉnh (biểu tượng cloud nơi tạo session/routine) → mục **Network access**.
+   - Chọn **Custom** → ô **Allowed domains** hiện ra → nhập mỗi dòng 1 domain:
+     ```text
+     www.tmdn.org
+     tmdn.org
+     haiguanbeian.com
+     www.haiguanbeian.com
+     branddb.wipo.int
+     *.wipo.int
+     api.euipo.europa.eu
+     auth.euipo.europa.eu
+     ```
+   - Tick **"Also include default list of common package managers"** (giữ npm/github).
+   - ⚠️ Áp dụng cho **session MỚI** — sau khi lưu, mở session mới rồi yêu cầu chạy:
+     `npm run data:ingest-tmview -- --all` (TMview, phủ CN+VN). GACC nạp qua `--gacc` (xuất file từ haiguanbeian.com).
 3. **Xuất file thủ công** từ portal rồi nạp qua `--customs/--wipo/--gacc` (offline-safe, luôn chạy được).
 
 ---
