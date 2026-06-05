@@ -6,6 +6,7 @@ const { geminiGenerateJson } = require('../lib/gemini');
 const { SYSTEM_PROMPT } = require('../lib/customs-prompt');
 const { composeCustomsDescription } = require('../lib/describe-compose');
 const { validateDeclaration, normalizeDeclaration } = require('../lib/declaration-validator');
+const { checkTrademarkRisk } = require('../lib/trademark-watch');
 
 module.exports = async function handler(req, res) {
   setCors(res);
@@ -107,10 +108,29 @@ module.exports = async function handler(req, res) {
   const compliance = validateDeclaration(declaration, hsCode, context);
   const customsDescription = composeCustomsDescription(declaration);
 
+  // P2: cảnh báo rủi ro nhãn hiệu được bảo hộ (TT 13/2015 & 13/2020).
+  // Tách trục riêng với điểm compliance TT 39/2018 — chỉ thêm 1 cảnh báo mềm.
+  const trademarkRisk = checkTrademarkRisk({
+    brand: declaration.nhanHieu || context.brand,
+    text: `${declaration.tenHang || ''} ${context.customerDescription || ''}`,
+    hsCode,
+    origin: declaration.xuatXu?.nameVi || declaration.xuatXu?.code || context.origin,
+  });
+  if (trademarkRisk.matched) {
+    compliance.warnings.push({
+      code: 'TRADEMARK_WATCH',
+      field: 'nhanHieu',
+      severity: trademarkRisk.riskLevel === 'CRITICAL' || trademarkRisk.riskLevel === 'HIGH' ? 'error' : 'warn',
+      message: trademarkRisk.summary,
+      suggestion: trademarkRisk.matches[0]?.recommendations?.[0],
+    });
+  }
+
   return res.status(200).json({
     declaration,
     customsDescription,
     compliance,
+    trademarkRisk,
     llmModel,
     contextUsed: {
       tariffFound: true,
