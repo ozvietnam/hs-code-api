@@ -5,10 +5,18 @@
     "schema": {
       "status": "REGISTERED | PENDING | EXPIRED | UNKNOWN",
       "customsRecorded": "true nếu nằm trong danh sách giám sát của Tổng cục Hải quan",
-      "source": "customs | wipo | seed",
+      "source": "customs | wipo | ipvietnam | seed",
       "verified": "true nếu đã đối chiếu nguồn chính thức"
     },
-    "generatedAt": "2026-06-05T01:02:01.126Z"
+    "generatedAt": "2026-06-05T01:02:01.126Z",
+    "lastManualIngest": {
+      "at": "2026-06-05",
+      "source": "wipopublish.ipvietnam.gov.vn (CEO tra tay)",
+      "marks": [
+        "Kamoer"
+      ],
+      "note": "Kamoer: 1 bằng cấp class 35 (chủ VN ≠ hãng gốc TQ) + 2 đơn đang xử lý. Chỉ registry, KHÔNG phải recordal hải quan."
+    }
   },
   "marks": {
     "Apple": {
@@ -1582,19 +1590,15 @@
     },
     "Kamoer": {
       "normalized": "kamoer",
-      "owner": "Kamoer Fluid Tech (Shanghai) Co., Ltd.",
-      "appNo": null,
-      "regNo": null,
+      "owner": "Công ty TNHH thương mại dịch vụ Điện máy Thông minh",
+      "brandOwner": "Kamoer Fluid Tech (Shanghai) Co., Ltd.",
+      "appNo": "VN-4-2019-03170",
+      "regNo": "4-0384295-000",
       "niceClasses": [
-        7,
-        9,
-        11
+        35
       ],
       "hsChapters": [
-        "84",
-        "85",
-        "90",
-        "94"
+        "84"
       ],
       "status": "REGISTERED",
       "customsRecorded": false,
@@ -1606,13 +1610,53 @@
         "source": "seed"
       },
       "verified": true,
-      "source": "web",
+      "source": "ipvietnam",
+      "registrations": [
+        {
+          "office": "VN",
+          "appNo": "VN-4-2019-03170",
+          "regNo": "4-0384295-000",
+          "mark": "K KAMOER",
+          "status": "REGISTERED",
+          "applicant": "Công ty TNHH thương mại dịch vụ Điện máy Thông minh",
+          "applicantAddress": "18Bis/22/3 Nguyễn Thị Minh Khai, P. Đa Kao, Q.1, TP.HCM",
+          "niceClasses": [
+            35
+          ],
+          "goods": "Mua bán thiết bị viễn thông, máy vi tính, điện thoại, máy bơm nước",
+          "markType": "Combined",
+          "filingDate": "2019-01-25",
+          "grantDate": "2021-04-13",
+          "expiryDate": "2029-01-25",
+          "source": "ipvietnam"
+        },
+        {
+          "office": "VN",
+          "appNo": "VN-4-2025-17890",
+          "regNo": null,
+          "mark": "K Kamoer",
+          "status": "PENDING",
+          "applicant": null,
+          "niceClasses": [],
+          "source": "ipvietnam"
+        },
+        {
+          "office": "VN",
+          "appNo": "VN-4-2025-17886",
+          "regNo": null,
+          "mark": "K Kamoer",
+          "status": "PENDING",
+          "applicant": null,
+          "niceClasses": [],
+          "source": "ipvietnam"
+        }
+      ],
       "productCategories": [
         "bơm nhu động",
         "bơm định lượng",
         "máy bơm"
       ],
-      "note": "Nhãn TQ đã đăng ký (chủ: Kamoer Fluid Tech Thượng Hải; 550+ sáng chế). XÁC MINH: owner+registered từ nguồn chính chủ. CHƯA xác nhận: số đăng ký VN/NOIP, ghi nhận TCHQ & GACC. Không thấy NPP độc quyền VN → rủi ro nhập song song thấp; rủi ro chính = hàng nhái.",
+      "note": "VN: nhãn 'K KAMOER' ĐÃ CẤP BẰNG tại IP Vietnam (VN-4-2019-03170, số bằng 4-0384295-000, cấp 13/04/2021, hết hạn 25/01/2029) — nhóm 35 (dịch vụ MUA BÁN, gồm 'máy bơm nước'). ⚠️ Chủ bằng = 'Công ty TNHH TM DV Điện máy Thông minh' (TP.HCM), KHÔNG phải hãng gốc Kamoer Fluid Tech (Shanghai) → dấu hiệu nhà phân phối/ôm nhãn (squatting). Thêm 2 đơn nộp 2025 đang giải quyết (VN-4-2025-17890, VN-4-2025-17886, chưa rõ chủ đơn). XÁC MINH từ wipopublish.ipvietnam.gov.vn (CEO tra tay 05/06/2026). CHƯA có: ghi nhận giám sát TCHQ (customsRecorded) & GACC.",
       "updatedAt": "2026-06-05"
     }
   }
