@@ -72,7 +72,7 @@ Endpoint:
 
 Data & ingest:
 - `data/trademark-watch.json` (mỗi nhãn có field VN + khối `cn` cho GACC), `data/nice-hs-map.json`. Seed: `npm run data:build-trademark-seed`.
-- Nạp dữ liệu thật: `npm run data:ingest-trademark -- --customs <csv>` (giám sát TCHQ) / `-- --wipo <json>` (WIPO) / `-- --gacc <json>` (ghi nhận Hải quan TQ).
+- Nạp dữ liệu thật: `npm run data:ingest-trademark -- --customs <csv>` (giám sát TCHQ) / `-- --wipo <json>` (WIPO) / `-- --gacc <json>` (ghi nhận Hải quan TQ); hoặc tự động CN+VN qua `npm run data:ingest-tmview -- --brands "Kamoer,..."`. **Nguồn dữ liệu + cách lấy: [`docs/trademark-sources.md`](docs/trademark-sources.md)** (gồm xử lý chặn allowlist của sandbox web).
 - Admin UI: `/admin/trademark.html` (cột rủi ro VN + cột xuất khẩu TQ, ô nhập Xuất xứ).
 - ⚠️ Tư vấn tham khảo, **không phải phán quyết hải quan**; entry `verified:false` là seed cần xác minh tại iplib.noip.gov.vn / WIPO / danh sách GACC.
 
