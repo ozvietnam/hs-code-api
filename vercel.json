@@ -18,6 +18,7 @@
     { "source": "/api/legal-docs/:code", "destination": "/api/dataset?resource=legal_doc&code=:code" },
     { "source": "/api/legal-docs", "destination": "/api/dataset?resource=legal_docs" },
     { "source": "/api/match", "destination": "/api/search?mode=match" },
+    { "source": "/api/detect-brand", "destination": "/api/suggest?mode=detect-brand" },
     { "source": "/api/ministries", "destination": "/api/dataset?resource=ministries" },
     { "source": "/api/materials", "destination": "/api/dataset?resource=materials" },
     { "source": "/api/chapters", "destination": "/api/dataset?resource=chapters" },

@@ -20,6 +20,7 @@ vercel env add GEMINI_API_KEY production
 vercel env add GEMINI_RERANK_MODEL production   # optional, default gemini-2.5-flash
 vercel env add GEMINI_DESCRIBE_MODEL production # optional, default gemini-2.5-flash
 vercel env add GEMINI_ENRICH_MODEL production   # optional, default gemini-2.5-pro (offline enrich script only)
+vercel env add GEMINI_VISION_MODEL production   # optional, default models/gemini-2.5-flash (for /api/detect-brand)
 vercel env add HS_MATCH_PUBLIC production       # optional: "true" = /api/match without Bearer token
 vercel env add CORS_ORIGINS production          # optional comma list; defaults include ERP + localhost
 ```
@@ -46,6 +47,7 @@ openssl rand -hex 32
 | `/api/conflicts?hs=` | GET | Yes | HS conflict/risk details |
 | `/api/precedents?hs=` | GET | Yes | TB-TCHQ precedent list by HS |
 | `/api/suggest` | POST | Yes | AI HS suggestions (Gemini) |
+| `/api/detect-brand` | POST | Yes | Brand detection from product images (Gemini Vision) |
 | `/api/describe` | POST | Yes | AI customs description (Gemini) |
 | `/api/feedback` | POST | Yes | Capture director override feedback |
 | `/api/kg_chapter?chapter=` | GET | Yes | List HS codes in chapter |
@@ -81,6 +83,13 @@ curl -H "Authorization: Bearer $TOKEN" \
 curl -X POST -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
   -d '{"description":"iPhone 15 Pro Max 256GB"}' \
   https://hs-code-api-thangs-projects-4472c6e9.vercel.app/api/suggest
+
+# Brand detection from product image URLs (Gemini Vision)
+curl -X POST -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+  -d '{"imageUrls":["https://example.com/product.jpg"],"productName":"Laptop"}' \
+  https://hs-code-api-thangs-projects-4472c6e9.vercel.app/api/detect-brand
+# Response: { "brand": "Apple", "confidence": 95, "detectedText": ["Apple", "MacBook Pro"],
+#             "model": "A2338", "alternatives": [], "reasoning": "...", "llmModel": "models/gemini-2.5-flash", "ms": 1234 }
 ```
 
 ## Response shape (ERP contract)

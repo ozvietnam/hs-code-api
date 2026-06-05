@@ -16,6 +16,7 @@ module.exports = function handler(req, res) {
       taxData: { ok: true, rows: Object.keys(taxData).length },
       ozGold: ozGoldStats(),
       geminiKey: { ok: Boolean(process.env.GEMINI_API_KEY) },
+      geminiVision: { ok: Boolean(process.env.GEMINI_API_KEY), model: process.env.GEMINI_VISION_MODEL || 'models/gemini-2.5-flash' },
       apiToken: { ok: isApiTokenConfigured() },
     },
     stats: {
