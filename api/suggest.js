@@ -12,6 +12,8 @@ const { appendSuggestLog } = require('../lib/ml-log');
 // B4: shared knowledge layer — cùng conflicts/explanatory-notes với /api/classify
 const { getNoteSummaryForHs } = require('../lib/explanatory-notes-index');
 const { getProducts, isLoaiKhac } = require('../lib/loai-khac-products');
+// Brand detection via Gemini Vision (mode=detect-brand)
+const { detectBrand } = require('../lib/detect-brand');
 const fs = require('fs');
 const path = require('path');
 let _conflicts;
@@ -45,6 +47,30 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
   if (requireAuth(req, res)) return;
+
+  // --- mode=detect-brand: POST /api/detect-brand (via vercel.json rewrite) ---
+  if (req.query.mode === 'detect-brand') {
+    let body = req.body;
+    if (typeof body === 'string') {
+      try { body = JSON.parse(body); } catch { return res.status(400).json({ error: 'Invalid JSON body' }); }
+    }
+
+    const imageUrls = body?.imageUrls;
+    if (!Array.isArray(imageUrls) || imageUrls.length === 0) {
+      return res.status(400).json({ error: 'imageUrls is required and must be a non-empty array' });
+    }
+    const validUrls = imageUrls.filter((u) => typeof u === 'string' && u.startsWith('http')).slice(0, 5);
+    if (validUrls.length === 0) {
+      return res.status(400).json({ error: 'imageUrls must contain at least one valid HTTP URL' });
+    }
+
+    const productName = typeof body?.productName === 'string' ? body.productName.slice(0, 300) : undefined;
+    const hint = typeof body?.hint === 'string' ? body.hint.slice(0, 300) : undefined;
+
+    const result = await detectBrand({ imageUrls: validUrls, productName, hint });
+    return res.status(200).json(result);
+  }
+  // --- end mode=detect-brand ---
 
   const started = Date.now();
   let body = req.body;
