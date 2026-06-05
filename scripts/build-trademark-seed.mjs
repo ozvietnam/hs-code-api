@@ -89,6 +89,12 @@ const manual = {
     productCategories: ['dầu nhớt', 'máy phát điện', 'ắc quy'],
     note: 'Nhãn ví dụ từ yêu cầu CEO — cần tra cứu xác minh tại iplib.noip.gov.vn',
   },
+  Kamoer: {
+    niceClasses: [7, 9, 11],
+    status: 'UNKNOWN',
+    productCategories: ['bơm nhu động', 'bơm định lượng', 'máy bơm'],
+    note: 'Nhãn TQ (Kamoer Fluid Tech, Thượng Hải) — hàng nhập TQ; cần xác minh NOIP + GACC',
+  },
 };
 for (const [brand, info] of Object.entries(manual)) {
   marks[brand] = {
