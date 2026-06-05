@@ -68,6 +68,7 @@ Endpoint:
 - `GET /api/trademark?q=vpower[&hs=27101990][&origin=CN]` — tra watchlist; `hs` cross-check nhóm Nice ↔ chương HS; `origin=CN` bật trục rủi ro xuất khẩu TQ.
 - `GET /api/trademark?q=vpower&risk=1&hs=...&origin=CN` — object cảnh báo (`riskLevel` tổng = max(VN, CN); `matches[].vnImportRisk` + `matches[].cnExportRisk`; recommendations).
 - `GET /api/trademark?stats=1` — thống kê (`customsRecorded` VN + `gaccRecorded` TQ).
+- `POST /api/trademark` — **screening hàng loạt (số lượng lớn)**: body `{ "items": [{ "id?", "brand", "hs?", "origin?" }, ...] }` (tối đa 1000). Trả gọn mỗi item: `matched`, `riskLevel`, `mark`, `owner`, `customsRecorded`, `classMatch`, `cnExportLevel`, `verified` + `byLevel{}` + `coverageNote`. Không kèm giải trình — dùng cho ERP quét lô. ⚠️ `matched:false` chỉ chắc khi watchlist đủ phủ.
 - `/api/describe` tự đính kèm `trademarkRisk` (truyền `origin` từ `xuatXu`) + cảnh báo `TRADEMARK_WATCH` vào `compliance.warnings`.
 
 Data & ingest:
