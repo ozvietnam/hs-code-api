@@ -91,15 +91,22 @@ const manual = {
   },
   Kamoer: {
     niceClasses: [7, 9, 11],
-    status: 'UNKNOWN',
+    status: 'REGISTERED',
+    owner: 'Kamoer Fluid Tech (Shanghai) Co., Ltd.',
+    verified: true,
+    source: 'web',
     productCategories: ['bơm nhu động', 'bơm định lượng', 'máy bơm'],
-    note: 'Nhãn TQ (Kamoer Fluid Tech, Thượng Hải) — hàng nhập TQ; cần xác minh NOIP + GACC',
+    note: 'Nhãn TQ đã đăng ký (chủ: Kamoer Fluid Tech Thượng Hải; 550+ sáng chế). XÁC MINH: owner+registered từ nguồn chính chủ. CHƯA xác nhận: số đăng ký VN/NOIP, ghi nhận TCHQ & GACC. Không thấy NPP độc quyền VN → rủi ro nhập song song thấp; rủi ro chính = hàng nhái.',
   },
 };
+
+// Override mặc định seed cho các entry đã xác minh từng phần.
+const MANUAL_DEFAULTS = { owner: null, verified: false, source: 'seed' };
 for (const [brand, info] of Object.entries(manual)) {
+  const m = { ...MANUAL_DEFAULTS, ...info };
   marks[brand] = {
     normalized: normalizeMark(brand),
-    owner: null,
+    owner: m.owner,
     appNo: null,
     regNo: null,
     niceClasses: info.niceClasses,
@@ -107,8 +114,8 @@ for (const [brand, info] of Object.entries(manual)) {
     status: info.status || 'UNKNOWN',
     customsRecorded: false,
     cn: { gaccRecorded: false, recordNo: null, ipTypes: [], verified: false, source: 'seed' },
-    verified: false,
-    source: 'seed',
+    verified: m.verified,
+    source: m.source,
     productCategories: info.productCategories || [],
     note: info.note,
     updatedAt: new Date().toISOString().slice(0, 10),
