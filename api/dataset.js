@@ -14,6 +14,8 @@ const { buildChaptersIndex } = require('../lib/chapters-index');
 const { readAuditLog } = require('../lib/admin-update');
 const { buildKpiDashboard } = require('../lib/ml-log');
 const { getProducts, isLoaiKhac, getCodeStats, getStatsSummary } = require('../lib/loai-khac-products');
+const { getAccuracyStats } = require('../lib/learned-corrections');
+const { readErrorLog } = require('../lib/error-monitor');
 const fs = require('fs');
 const path = require('path');
 
@@ -72,10 +74,12 @@ module.exports = async function handler(req, res) {
 
   try {
     if (resource === 'kg_stats') {
+      res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=600');
       return res.status(200).json(kgStatsPayload());
     }
 
     if (resource === 'chapters') {
+      res.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=3600');
       const chapters = buildChaptersIndex();
       return res.status(200).json({ total: chapters.length, chapters });
     }
@@ -229,14 +233,28 @@ module.exports = async function handler(req, res) {
       return res.status(200).json(kpi);
     }
 
+    if (resource === 'accuracy') {
+      return res.status(200).json(getAccuracyStats());
+    }
+
+    if (resource === 'error_log') {
+      const limit = Math.min(parseInt(req.query.limit, 10) || 50, 200);
+      const entries = readErrorLog(limit);
+      return res.status(200).json({ total: entries.length, entries });
+    }
+
     if (resource === 'products') {
       const { hs, limit: limitQ } = req.query;
       const limit = Math.min(Math.max(parseInt(limitQ, 10) || 8, 1), 20);
 
       // Summary mode: ?stats=1 → tổng quan + queue ưu tiên đào (không cần hs)
       if (String(req.query.stats || '') === '1' && !hs) {
+        res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=600');
         return res.status(200).json(getStatsSummary());
       }
+
+      // Product corpus is static between deploys
+      res.setHeader('Cache-Control', 'public, max-age=604800, stale-while-revalidate=86400');
 
       // Batch mode: ?hs=84021219,85044090
       const hsCodes = String(hs || '').split(',').map(s => s.trim().replace(/\D/g, '')).filter(s => s.length === 8);

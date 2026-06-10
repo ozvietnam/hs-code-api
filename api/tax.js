@@ -19,5 +19,9 @@ module.exports = function handler(req, res) {
   }
 
   const result = mapTaxLookup(hs);
+  if (result.found) {
+    // Tariff changes at most a few times/year — safe to cache 24h
+    res.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=3600');
+  }
   return res.status(result.found ? 200 : 404).json(result);
 };
