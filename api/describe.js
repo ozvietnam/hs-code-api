@@ -6,6 +6,7 @@ const { geminiGenerateJson } = require('../lib/gemini');
 const { SYSTEM_PROMPT } = require('../lib/customs-prompt');
 const { composeCustomsDescription } = require('../lib/describe-compose');
 const { validateDeclaration, normalizeDeclaration } = require('../lib/declaration-validator');
+const { captureError } = require('../lib/error-monitor');
 
 module.exports = async function handler(req, res) {
   setCors(res);
@@ -81,6 +82,7 @@ module.exports = async function handler(req, res) {
       llmModel = model;
       declaration = normalizeDeclaration(json, context);
     } catch (error) {
+      captureError(error, { endpoint: 'describe', hsCode });
       if (error.code === 'GEMINI_NOT_CONFIGURED') {
         return res.status(503).json({ error: 'Gemini is not configured', detail: error.message });
       }

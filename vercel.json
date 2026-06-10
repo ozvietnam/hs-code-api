@@ -26,7 +26,10 @@
     { "source": "/api/admin/audit", "destination": "/api/dataset?resource=admin_audit" },
     { "source": "/api/admin/kpi", "destination": "/api/dataset?resource=kpi" },
     { "source": "/api/oz-precedents", "destination": "/api/dataset?resource=oz_precedents" },
-    { "source": "/api/products", "destination": "/api/dataset?resource=products" }
+    { "source": "/api/products", "destination": "/api/dataset?resource=products" },
+    { "source": "/api/suggest/batch", "destination": "/api/suggest" },
+    { "source": "/api/accuracy", "destination": "/api/dataset?resource=accuracy" },
+    { "source": "/api/errors", "destination": "/api/dataset?resource=error_log" }
   ],
   "functions": {
     "api/**/*.js": {
