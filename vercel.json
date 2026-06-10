@@ -29,7 +29,9 @@
     { "source": "/api/products", "destination": "/api/dataset?resource=products" },
     { "source": "/api/suggest/batch", "destination": "/api/suggest" },
     { "source": "/api/accuracy", "destination": "/api/dataset?resource=accuracy" },
-    { "source": "/api/errors", "destination": "/api/dataset?resource=error_log" }
+    { "source": "/api/errors", "destination": "/api/dataset?resource=error_log" },
+    { "source": "/api/policy-procedures", "destination": "/api/dataset?resource=policy_procedures" },
+    { "source": "/api/policy-procedures/:code", "destination": "/api/dataset?resource=policy_procedures&code=:code" }
   ],
   "functions": {
     "api/**/*.js": {

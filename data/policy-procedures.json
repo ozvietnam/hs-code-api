@@ -1,0 +1,369 @@
+{
+  "attp": {
+    "code": "attp",
+    "label": "Kiểm tra an toàn thực phẩm",
+    "labelShort": "ATTP",
+    "ministry": "BYT/BCT/BNNPTNT",
+    "ministryLabel": "Bộ Y tế / Bộ Công Thương / Bộ NN&PTNT (tùy loại hàng)",
+    "trigger": "Hàng thực phẩm, đồ uống, phụ gia, bao bì tiếp xúc thực phẩm",
+    "matchPatterns": ["attp", "an toàn thực phẩm", "kiểm tra thực phẩm", "food safety", "ktattp", "ktcn.*thực phẩm"],
+    "documents": [
+      "Đăng ký kiểm tra nhà nước về ATTP (online tại cổng thông tin một cửa)",
+      "Hợp đồng thương mại (Commercial Invoice)",
+      "Packing List",
+      "Vận đơn (B/L hoặc Airway Bill)",
+      "Giấy chứng nhận ATTP do cơ quan có thẩm quyền nước xuất khẩu cấp (Health Certificate / Certificate of Free Sale)",
+      "Nhãn hàng hóa (cả nhãn gốc và nhãn phụ tiếng Việt nếu có)",
+      "Kết quả kiểm nghiệm của lô hàng (nếu cơ quan yêu cầu)"
+    ],
+    "estimatedDays": { "min": 3, "max": 15, "note": "Nhanh nếu hàng đã có lịch sử nhập khẩu tốt; chậm nếu lần đầu hoặc bị lấy mẫu kiểm nghiệm" },
+    "estimatedCost": "500,000–3,000,000 VND/lô (phí kiểm nghiệm nếu lấy mẫu: 500K–5tr tùy chỉ tiêu)",
+    "agency": "Chi cục An toàn vệ sinh thực phẩm (BYT); hoặc Cục An toàn thực phẩm; hoặc Chi cục Quản lý chất lượng nông lâm thủy sản (BNNPTNT)",
+    "legalBasis": "Luật An toàn thực phẩm 2010; Nghị định 15/2018/NĐ-CP; TT 48/2015/TT-BYT",
+    "exemptions": [
+      "Hàng là quà biếu, phi thương mại số lượng nhỏ",
+      "Hàng mang theo người trong hành lý cá nhân (giới hạn theo quy định)"
+    ],
+    "notes": "Hàng nhập khẩu lần đầu thường bị lấy mẫu kiểm nghiệm 100%. Các lần sau có thể giảm tần suất nếu lịch sử tốt.",
+    "severity": "HIGH",
+    "onFail": "Hàng bị buộc tái xuất hoặc tiêu hủy. Doanh nghiệp có thể khiếu nại trong 5 ngày làm việc."
+  },
+
+  "kiem-dich-thuc-vat": {
+    "code": "kiem-dich-thuc-vat",
+    "label": "Kiểm dịch thực vật",
+    "labelShort": "KDTV",
+    "ministry": "BNNPTNT",
+    "ministryLabel": "Bộ Nông nghiệp và Phát triển Nông thôn — Cục Bảo vệ Thực vật",
+    "trigger": "Thực vật, sản phẩm thực vật, đất, giá thể, gỗ, tre, rơm...",
+    "matchPatterns": ["kiểm dịch thực vật", "kdtv", "plant quarantine", "phytosanitary"],
+    "documents": [
+      "Đăng ký kiểm dịch thực vật (nộp trước khi hàng về ít nhất 1 ngày)",
+      "Giấy chứng nhận kiểm dịch thực vật nước xuất khẩu (Phytosanitary Certificate — bản gốc)",
+      "Invoice + Packing List",
+      "Vận đơn (B/L hoặc Airway Bill)",
+      "Tờ khai hải quan (nộp sau khi có kết quả kiểm dịch)"
+    ],
+    "estimatedDays": { "min": 1, "max": 5, "note": "1 ngày nếu hàng sạch; 3–5 ngày nếu phải xử lý nhiệt/fumigation tại cửa khẩu" },
+    "estimatedCost": "150,000–800,000 VND/lô (chưa gồm phí xử lý nhiệt nếu phát hiện sinh vật hại)",
+    "agency": "Chi cục Kiểm dịch thực vật cửa khẩu (thuộc Cục Bảo vệ thực vật)",
+    "legalBasis": "Pháp lệnh Bảo vệ và Kiểm dịch thực vật 2001; TT 33/2014/TT-BNNPTNT; TT 01/2024/TT-BNNPTNT",
+    "exemptions": [
+      "Hàng quá cảnh không dỡ xuống",
+      "Hàng mang theo người trong hành lý (số lượng nhỏ theo quy định)"
+    ],
+    "notes": "Một số loại thực vật thuộc danh mục cấm hoặc phải có giấy phép nhập khẩu riêng (sinh vật sống, hạt giống một số loài).",
+    "severity": "MEDIUM",
+    "onFail": "Trả lại nước xuất khẩu hoặc tiêu hủy theo quy định. Chi phí do chủ hàng chịu."
+  },
+
+  "kiem-dich-dong-vat": {
+    "code": "kiem-dich-dong-vat",
+    "label": "Kiểm dịch động vật / thủy sản",
+    "labelShort": "KDĐV",
+    "ministry": "BNNPTNT",
+    "ministryLabel": "Bộ Nông nghiệp — Cục Thú y / Cục Thủy sản",
+    "trigger": "Động vật sống, sản phẩm động vật, thủy sản, thịt, trứng, sữa, mật ong...",
+    "matchPatterns": ["kiểm dịch động vật", "kiểm dịch thủy sản", "kdđv", "animal quarantine", "veterinary", "thú y"],
+    "documents": [
+      "Đăng ký kiểm dịch (nộp trước khi hàng đến ít nhất 1 ngày làm việc)",
+      "Giấy chứng nhận kiểm dịch động vật/thủy sản của nước xuất khẩu (Veterinary Health Certificate — bản gốc)",
+      "Invoice + Packing List",
+      "Vận đơn",
+      "Giấy phép nhập khẩu động vật sống (nếu thuộc danh mục cần phép)"
+    ],
+    "estimatedDays": { "min": 1, "max": 7, "note": "Thủy sản thường 1–3 ngày; động vật sống có thể cách ly 7–21 ngày" },
+    "estimatedCost": "200,000–2,000,000 VND/lô (phí cách ly nếu cần: tính theo ngày/con)",
+    "agency": "Trạm Kiểm dịch động vật cửa khẩu (thuộc Cục Thú y) hoặc Chi cục Thú y vùng",
+    "legalBasis": "Luật Thú y 2015; TT 25/2016/TT-BNNPTNT",
+    "exemptions": ["Thủy sản đã qua chế biến sâu (không còn nguy cơ lây bệnh) có thể giảm kiểm tra"],
+    "notes": "Động vật sống phải có giấy phép nhập khẩu trước. Một số loài thuộc CITES cần thêm giấy phép CITES.",
+    "severity": "HIGH",
+    "onFail": "Cách ly xử lý hoặc tiêu hủy. Cấm nhập khẩu từ vùng dịch."
+  },
+
+  "chat-luong": {
+    "code": "chat-luong",
+    "label": "Kiểm tra chất lượng nhà nước (Hàng hóa nhóm 2)",
+    "labelShort": "KTCL",
+    "ministry": "BKHCN / BCT / BGTVT / BXD",
+    "ministryLabel": "Bộ Khoa học Công nghệ / Bộ Công Thương / Bộ GTVT / Bộ Xây dựng (tùy sản phẩm)",
+    "trigger": "Hàng hóa nhóm 2 (sản phẩm có khả năng gây mất an toàn): điện-điện tử, máy móc, vật liệu xây dựng, đồ chơi trẻ em, mũ bảo hiểm, thiết bị điện...",
+    "matchPatterns": ["chất lượng", "ktcl", "ktcn", "hàng hóa nhóm 2", "nhóm 2", "hợp quy", "chứng nhận chất lượng", "atkt", "bvmt", "an toàn kỹ thuật"],
+    "documents": [
+      "Đăng ký kiểm tra chất lượng tại cơ quan kiểm tra nhà nước được chỉ định",
+      "Invoice + Packing List",
+      "Vận đơn",
+      "Catalogue / Tài liệu kỹ thuật sản phẩm",
+      "Giấy chứng nhận hợp quy / chứng nhận chất lượng của nước xuất khẩu (nếu có)",
+      "Kết quả thử nghiệm từ phòng thí nghiệm được công nhận (nếu cơ quan chấp nhận)"
+    ],
+    "estimatedDays": { "min": 3, "max": 30, "note": "3–7 ngày nếu có kết quả thử nghiệm hợp lệ; 15–30 ngày nếu phải lấy mẫu thử nghiệm tại VN" },
+    "estimatedCost": "500,000–5,000,000 VND/lô (phí thử nghiệm nếu lấy mẫu: 500K–20tr tùy sản phẩm)",
+    "agency": "Cơ quan kiểm tra nhà nước được Bộ chỉ định (QUACERT, TÜV Rheinland, SGS, VILAS labs...)",
+    "legalBasis": "Luật Chất lượng sản phẩm hàng hóa 2007; Nghị định 132/2008/NĐ-CP; TT 27/2012/TT-BKHCN",
+    "exemptions": [
+      "Hàng đã có Giấy chứng nhận hợp chuẩn/hợp quy còn hiệu lực từ tổ chức VN công nhận",
+      "Hàng mẫu, hàng trưng bày triển lãm (cần xuất trình bằng chứng)",
+      "Hàng nhập sản xuất không tiêu thụ nội địa (cần cam kết)"
+    ],
+    "notes": "Nhiều mặt hàng đã được cắt giảm kiểm tra chuyên ngành theo Nghị quyết 19. Kiểm tra sau thông quan (sau TQ) là xu hướng cho hàng ít rủi ro.",
+    "severity": "MEDIUM",
+    "onFail": "Hàng bị tạm giữ, yêu cầu khắc phục hoặc tái xuất. Dán nhãn sai có thể bị phạt hành chính."
+  },
+
+  "duoc": {
+    "code": "duoc",
+    "label": "Kiểm tra chất lượng Dược phẩm / Nguyên liệu làm thuốc",
+    "labelShort": "Dược",
+    "ministry": "BYT",
+    "ministryLabel": "Bộ Y tế — Cục Quản lý Dược",
+    "trigger": "Thuốc, nguyên liệu làm thuốc, dược liệu, vị thuốc cổ truyền, thực phẩm chức năng dạng thuốc",
+    "matchPatterns": ["dược", "thuốc", "nguyên liệu làm thuốc", "dược phẩm", "pharmaceutical", "dược liệu", "dược chất"],
+    "documents": [
+      "Giấy phép nhập khẩu thuốc/nguyên liệu làm thuốc (do Cục Quản lý Dược cấp — nộp trước)",
+      "Số đăng ký lưu hành thuốc tại VN (nếu là thuốc thành phẩm)",
+      "Giấy chứng nhận GMP của cơ sở sản xuất",
+      "Certificate of Pharmaceutical Product (CPP) / Certificate of Free Sale",
+      "Giấy phân tích kiểm nghiệm (Certificate of Analysis — CoA) của lô hàng",
+      "Invoice + Packing List + Vận đơn"
+    ],
+    "estimatedDays": { "min": 5, "max": 21, "note": "Phụ thuộc vào việc có phải lấy mẫu kiểm nghiệm hay không (3–10 ngày làm việc nếu có mẫu)" },
+    "estimatedCost": "2,000,000–10,000,000 VND/lô (phí kiểm nghiệm 500K–5tr tùy chỉ tiêu)",
+    "agency": "Viện Kiểm nghiệm thuốc TW; Viện Kiểm nghiệm thuốc TP.HCM; Trung tâm Kiểm nghiệm tỉnh",
+    "legalBasis": "Luật Dược 2016; Nghị định 54/2017/NĐ-CP; TT 06/2023/TT-BYT",
+    "exemptions": ["Thuốc mẫu (số lượng nhỏ theo quy định của Cục QL Dược)"],
+    "notes": "Giấy phép nhập khẩu là bắt buộc TRƯỚC khi hàng về. Không có giấy phép = hàng bị giữ tại cảng, chi phí lưu kho cộng dồn.",
+    "severity": "HIGH",
+    "onFail": "Tịch thu, tiêu hủy hoặc tái xuất. Truy tố hình sự nếu nhập khẩu thuốc giả."
+  },
+
+  "buc-xa": {
+    "code": "buc-xa",
+    "label": "Kiểm tra an toàn bức xạ",
+    "labelShort": "Bức xạ",
+    "ministry": "BKHCN",
+    "ministryLabel": "Bộ Khoa học Công nghệ — Cục An toàn bức xạ và hạt nhân",
+    "trigger": "Nguồn phóng xạ, thiết bị X-quang, máy dò kim loại có nguồn phóng xạ, thiết bị hạt nhân y tế",
+    "matchPatterns": ["bức xạ", "phóng xạ", "hạt nhân", "x-quang", "radiation", "nuclear", "an toàn bức xạ"],
+    "documents": [
+      "Giấy phép nhập khẩu nguồn phóng xạ / thiết bị bức xạ (Cục An toàn bức xạ cấp)",
+      "Invoice + Packing List",
+      "Vận đơn",
+      "Tài liệu kỹ thuật thiết bị",
+      "Chứng chỉ an toàn bức xạ của nước xuất khẩu"
+    ],
+    "estimatedDays": { "min": 7, "max": 30, "note": "Cần phê duyệt trước khi nhập — không thể làm tại cửa khẩu" },
+    "estimatedCost": "1,000,000–5,000,000 VND (phí cấp phép)",
+    "agency": "Cục An toàn bức xạ và hạt nhân (VARANS)",
+    "legalBasis": "Luật Năng lượng nguyên tử 2008; Nghị định 142/2020/NĐ-CP",
+    "exemptions": ["Thiết bị điện tử thông thường không chứa nguồn phóng xạ"],
+    "notes": "Giấy phép phải có TRƯỚC khi nhập. Hàng đến mà chưa có phép sẽ bị niêm phong lưu kho.",
+    "severity": "HIGH",
+    "onFail": "Tịch thu và tiêu hủy theo quy định an toàn hạt nhân. Truy cứu trách nhiệm hình sự."
+  },
+
+  "hoa-chat": {
+    "code": "hoa-chat",
+    "label": "Khai báo / Kiểm soát hóa chất nguy hiểm",
+    "labelShort": "Hóa chất",
+    "ministry": "BCT",
+    "ministryLabel": "Bộ Công Thương — Cục Hóa chất",
+    "trigger": "Hóa chất công nghiệp, dung môi, axit, kiềm, hóa chất hạn chế kinh doanh, tiền chất ma túy",
+    "matchPatterns": ["hóa chất", "khai báo hóa chất", "hóa chất nguy hiểm", "chemical", "tiền chất", "dung môi"],
+    "documents": [
+      "Khai báo hóa chất nhập khẩu (online tại Portal của Cục Hóa chất — bắt buộc trước khi nhập)",
+      "Giấy phép kinh doanh hóa chất hạn chế / có điều kiện (nếu thuộc danh mục)",
+      "Bản thông tin an toàn hóa chất (Safety Data Sheet — SDS/MSDS)",
+      "Invoice + Packing List + Vận đơn",
+      "Nhãn hàng hóa đúng quy định GHS"
+    ],
+    "estimatedDays": { "min": 1, "max": 5, "note": "Khai báo online thường được duyệt trong 1–2 ngày; hóa chất hạn chế cần giấy phép trước (7–30 ngày)" },
+    "estimatedCost": "Phí khai báo: miễn phí. Phí cấp phép hóa chất hạn chế: 200,000–1,000,000 VND",
+    "agency": "Cục Hóa chất — Bộ Công Thương",
+    "legalBasis": "Luật Hóa chất 2007; Nghị định 113/2017/NĐ-CP; TT 32/2017/TT-BCT",
+    "exemptions": [
+      "Hóa chất nghiên cứu số lượng nhỏ (< 1kg theo quy định)",
+      "Hóa chất là hàng mẫu"
+    ],
+    "notes": "Tiền chất ma túy và tiền chất thuốc nổ cần giấy phép đặc biệt, thời gian xử lý 30–60 ngày.",
+    "severity": "MEDIUM",
+    "onFail": "Từ chối thông quan, phạt hành chính 50–100tr. Hóa chất cấm: truy tố hình sự."
+  },
+
+  "cites": {
+    "code": "cites",
+    "label": "Giấy phép CITES — Kiểm soát động thực vật hoang dã",
+    "labelShort": "CITES",
+    "ministry": "BNNPTNT / BTNMT",
+    "ministryLabel": "Bộ NN&PTNT (động vật) / Bộ TN&MT (thực vật quý hiếm)",
+    "trigger": "Động vật hoang dã, sản phẩm từ động vật hoang dã (da, ngà, sừng, vảy), gỗ quý, lan rừng, san hô",
+    "matchPatterns": ["cites", "động vật hoang dã", "wildlife", "ngà voi", "sừng tê giác", "gỗ quý", "gỗ hương", "lan rừng"],
+    "documents": [
+      "Giấy phép xuất khẩu CITES của nước xuất khẩu (bản gốc — do cơ quan CITES nước đó cấp)",
+      "Giấy phép nhập khẩu CITES của VN (do Cơ quan CITES VN cấp trước khi nhập)",
+      "Invoice + Packing List",
+      "Vận đơn"
+    ],
+    "estimatedDays": { "min": 14, "max": 45, "note": "Giấy phép CITES VN cần 14–30 ngày để được cấp. Không thể làm nhanh." },
+    "estimatedCost": "200,000–500,000 VND (phí cấp phép CITES VN)",
+    "agency": "Cơ quan quản lý CITES VN (Cục Kiểm lâm — BNNPTNT cho động vật; BTNMT cho thực vật)",
+    "legalBasis": "Công ước CITES; Nghị định 06/2019/NĐ-CP; Nghị định 84/2021/NĐ-CP",
+    "exemptions": ["Hàng mẫu vật khoa học với số lượng nhỏ và đúng thủ tục"],
+    "notes": "Phụ lục I CITES: CẤM thương mại. Phụ lục II: cần phép. Phụ lục III: cần chứng từ xuất xứ. Vi phạm CITES là tội hình sự tại VN.",
+    "severity": "CRITICAL",
+    "onFail": "Tịch thu toàn bộ lô hàng, phạt hình sự theo điều 244 BLHS."
+  },
+
+  "nang-luong": {
+    "code": "nang-luong",
+    "label": "Kiểm tra hiệu suất năng lượng + Dán nhãn năng lượng",
+    "labelShort": "Năng lượng",
+    "ministry": "BCT",
+    "ministryLabel": "Bộ Công Thương — Vụ Tiết kiệm năng lượng",
+    "trigger": "Thiết bị điện gia dụng (máy lạnh, tủ lạnh, máy giặt, đèn LED, quạt điện, máy bơm điện, biến áp...)",
+    "matchPatterns": ["hiệu suất năng lượng", "dán nhãn năng lượng", "năng lượng", "ktcn hiệu suất", "energy efficiency", "energy label"],
+    "documents": [
+      "Kết quả thử nghiệm hiệu suất năng lượng từ phòng thí nghiệm được chỉ định (hoặc được công nhận tương đương)",
+      "Bản đăng ký dán nhãn năng lượng (nộp tại Vụ Tiết kiệm năng lượng — BCT)",
+      "Mẫu nhãn năng lượng đúng quy cách",
+      "Invoice + Packing List + Vận đơn",
+      "Tài liệu kỹ thuật sản phẩm"
+    ],
+    "estimatedDays": { "min": 7, "max": 21, "note": "Có thể thông quan trước nếu cam kết dán nhãn trước khi đưa ra thị trường (kiểm tra sau TQ)" },
+    "estimatedCost": "1,000,000–5,000,000 VND (phí thử nghiệm hiệu suất, phí đăng ký nhãn)",
+    "agency": "Vụ Tiết kiệm năng lượng và Phát triển bền vững — Bộ Công Thương; Phòng thí nghiệm được chỉ định",
+    "legalBasis": "Luật Sử dụng năng lượng tiết kiệm và hiệu quả 2010; Quyết định 04/2017/QĐ-TTg; TT 36/2016/TT-BCT",
+    "exemptions": [
+      "Hàng mẫu dùng để thử nghiệm (số lượng nhỏ)",
+      "Thiết bị không tiêu thụ điện (cơ khí thuần túy)"
+    ],
+    "notes": "Dán nhãn năng lượng sao (1–5 sao) là bắt buộc trước khi đưa ra thị trường, không nhất thiết phải trước khi thông quan.",
+    "severity": "MEDIUM",
+    "onFail": "Phạt hành chính, thu hồi sản phẩm nếu không đạt hiệu suất tối thiểu."
+  },
+
+  "vat-lieu-xd": {
+    "code": "vat-lieu-xd",
+    "label": "Kiểm tra chất lượng vật liệu xây dựng",
+    "labelShort": "VLXD",
+    "ministry": "BXD",
+    "ministryLabel": "Bộ Xây dựng — Vụ Vật liệu Xây dựng",
+    "trigger": "Xi măng, kính xây dựng, gạch ốp lát, thép xây dựng, tấm lợp, ống nhựa, sơn...",
+    "matchPatterns": ["vật liệu xây dựng", "vlxd", "xi măng", "kính xây dựng", "gạch", "thép xây dựng", "kiểm tra xây dựng"],
+    "documents": [
+      "Đăng ký kiểm tra chất lượng vật liệu xây dựng nhập khẩu (tại Sở Xây dựng hoặc Bộ XD)",
+      "Giấy chứng nhận chất lượng của nước xuất khẩu (Certificate of Quality / Conformity)",
+      "Kết quả thử nghiệm từ phòng thí nghiệm được Bộ XD công nhận",
+      "Invoice + Packing List + Vận đơn",
+      "Catalogue kỹ thuật"
+    ],
+    "estimatedDays": { "min": 5, "max": 20 },
+    "estimatedCost": "500,000–3,000,000 VND/lô (phí thử nghiệm nếu lấy mẫu)",
+    "agency": "Sở Xây dựng tỉnh/thành phố; hoặc Vụ Vật liệu Xây dựng — Bộ XD",
+    "legalBasis": "Luật Xây dựng; Nghị định 40/2019/NĐ-CP; TT 10/2021/TT-BXD",
+    "exemptions": ["Hàng mẫu thử nghiệm, số lượng nhỏ"],
+    "notes": "Xi măng và thép xây dựng thường bị lấy mẫu. Nhập khẩu thép phải kết hợp kiểm tra nguồn gốc xuất xứ tránh phòng vệ thương mại.",
+    "severity": "MEDIUM",
+    "onFail": "Từ chối nhập khẩu, phạt hành chính, buộc tái xuất."
+  },
+
+  "phe-lieu": {
+    "code": "phe-lieu",
+    "label": "Kiểm tra điều kiện nhập khẩu phế liệu",
+    "labelShort": "Phế liệu",
+    "ministry": "BTNMT",
+    "ministryLabel": "Bộ Tài nguyên và Môi trường — Tổng cục Môi trường",
+    "trigger": "Phế liệu sắt thép, phế liệu nhựa, phế liệu giấy, phế liệu kim loại màu dùng làm nguyên liệu sản xuất",
+    "matchPatterns": ["phế liệu", "scrap", "waste", "phế thải", "tái chế", "điều kiện nhập khẩu phế liệu"],
+    "documents": [
+      "Giấy xác nhận đủ điều kiện nhập khẩu phế liệu (Tổng cục Môi trường cấp — hiệu lực 2 năm)",
+      "Hợp đồng với đơn vị xử lý phế liệu",
+      "Kết quả kiểm tra phế liệu trước khi xếp hàng (Pre-shipment Inspection — PSI) từ đơn vị được BTNMT chỉ định",
+      "Invoice + Packing List + Vận đơn",
+      "Chứng thư giám định chất lượng phế liệu"
+    ],
+    "estimatedDays": { "min": 5, "max": 15, "note": "PSI tại cảng nước xuất khẩu cần 3–7 ngày. Thủ tục thông quan sau đó 2–5 ngày." },
+    "estimatedCost": "5,000,000–20,000,000 VND/lô (chủ yếu là phí PSI tại nước xuất khẩu)",
+    "agency": "Tổng cục Môi trường (cấp phép); Chi cục Hải quan cửa khẩu (thông quan)",
+    "legalBasis": "Luật Bảo vệ Môi trường 2020; Nghị định 08/2022/NĐ-CP; QĐ 28/2020/QĐ-TTg",
+    "exemptions": ["Phế liệu sản xuất trong nước (không nhập khẩu)"],
+    "notes": "Đây là loại hàng kiểm tra chặt nhất. Lô không có PSI hợp lệ = từ chối thông quan 100%.",
+    "severity": "HIGH",
+    "onFail": "Buộc tái xuất trong 30 ngày. Chi phí lưu kho + tái xuất do chủ hàng chịu."
+  },
+
+  "giao-thong": {
+    "code": "giao-thong",
+    "label": "Kiểm tra an toàn kỹ thuật phương tiện / thiết bị giao thông",
+    "labelShort": "GTVT",
+    "ministry": "BGTVT",
+    "ministryLabel": "Bộ Giao thông Vận tải — Cục Đăng kiểm VN",
+    "trigger": "Xe ô tô, xe máy, xe tải, phụ tùng ô tô xe máy, tàu thủy, thiết bị đường sắt, phương tiện thủy",
+    "matchPatterns": ["đăng kiểm", "giao thông", "ô tô", "xe máy", "an toàn phương tiện", "bgtvt", "cục đăng kiểm"],
+    "documents": [
+      "Giấy chứng nhận chất lượng an toàn kỹ thuật và bảo vệ môi trường xe nhập khẩu (Cục Đăng kiểm cấp)",
+      "Thông báo miễn kiểm tra (nếu đã được cấp phép model/type nhập khẩu trước)",
+      "Invoice + Packing List + Vận đơn",
+      "Tài liệu kỹ thuật xe (specs sheet, catalogue)",
+      "Ảnh xe thực tế"
+    ],
+    "estimatedDays": { "min": 5, "max": 30, "note": "Model đã được cấp phép: 5–10 ngày. Model mới lần đầu: 20–30 ngày." },
+    "estimatedCost": "500,000–5,000,000 VND/xe (phí kiểm tra mỗi chiếc); phí type approval cho model mới: 10–50tr",
+    "agency": "Cục Đăng kiểm Việt Nam",
+    "legalBasis": "Nghị định 116/2017/NĐ-CP; TT 25/2019/TT-BGTVT",
+    "exemptions": [
+      "Xe nhập khẩu phi thương mại (hành lý cá nhân khi nhập cảnh, số lượng 1 xe/người)",
+      "Xe ngoại giao"
+    ],
+    "notes": "Ô tô nhập khẩu phải đáp ứng tiêu chuẩn khí thải Euro 4 (hiện hành). Xe điện có quy định riêng.",
+    "severity": "HIGH",
+    "onFail": "Từ chối thông quan, phải tái xuất hoặc điều chỉnh theo quy chuẩn VN."
+  },
+
+  "giai-tri": {
+    "code": "giai-tri",
+    "label": "Kiểm tra nội dung văn hóa phẩm / xuất bản phẩm",
+    "labelShort": "Văn hóa",
+    "ministry": "BVHTTDL",
+    "ministryLabel": "Bộ Văn hóa Thể thao và Du lịch / Bộ Thông tin Truyền thông",
+    "trigger": "Sách, phim, băng đĩa, trò chơi điện tử, tranh ảnh nghệ thuật nhập khẩu thương mại",
+    "matchPatterns": ["văn hóa phẩm", "xuất bản phẩm", "phim", "trò chơi", "game", "sách nhập khẩu", "đĩa nhạc"],
+    "documents": [
+      "Giấy phép nhập khẩu xuất bản phẩm (Cục Xuất bản cấp cho từng lô)",
+      "Danh mục chi tiết tên/tác giả/năm xuất bản từng đầu sách",
+      "Invoice + Packing List"
+    ],
+    "estimatedDays": { "min": 7, "max": 30 },
+    "estimatedCost": "200,000–1,000,000 VND (phí cấp phép)",
+    "agency": "Cục Xuất bản In và Phát hành (Bộ TTTT); Cục Điện ảnh (Bộ VHTTDL)",
+    "legalBasis": "Luật Xuất bản 2012; Nghị định 195/2013/NĐ-CP",
+    "exemptions": ["Sách mang theo người (≤5 cuốn cho mục đích cá nhân)"],
+    "notes": "Nội dung bị cấm (chính trị nhạy cảm, khiêu dâm, bạo lực) sẽ bị tịch thu toàn bộ lô.",
+    "severity": "MEDIUM",
+    "onFail": "Tịch thu toàn bộ, phạt hành chính."
+  },
+
+  "gp-nk": {
+    "code": "gp-nk",
+    "label": "Giấy phép nhập khẩu tự động / không tự động",
+    "labelShort": "GP NK",
+    "ministry": "BCT",
+    "ministryLabel": "Bộ Công Thương",
+    "trigger": "Một số mặt hàng cần giấy phép nhập khẩu theo quy định quản lý thương mại",
+    "matchPatterns": ["giấy phép nhập khẩu", "gp nk", "gp-nk", "import license", "hạn ngạch", "quota", "tự động"],
+    "documents": [
+      "Đơn xin cấp giấy phép nhập khẩu (theo mẫu của Bộ Công Thương)",
+      "Hợp đồng thương mại",
+      "Giấy phép kinh doanh ngành nghề có điều kiện (nếu áp dụng)"
+    ],
+    "estimatedDays": { "min": 3, "max": 15, "note": "GP tự động: 3–5 ngày. GP không tự động (theo hạn ngạch): tùy thời điểm trong năm" },
+    "estimatedCost": "100,000–500,000 VND (phí cấp phép)",
+    "agency": "Bộ Công Thương — Cục Xuất nhập khẩu",
+    "legalBasis": "Nghị định 69/2018/NĐ-CP",
+    "exemptions": ["Hàng phi thương mại, hàng biếu tặng trong định mức"],
+    "notes": "Hạn ngạch thuế quan (muối, thuốc lá, trứng, đường...) chỉ còn số lượng nhất định mỗi năm — nên đăng ký sớm trong năm.",
+    "severity": "MEDIUM",
+    "onFail": "Không được thông quan khi thiếu giấy phép."
+  }
+}

@@ -16,6 +16,8 @@ const { buildKpiDashboard } = require('../lib/ml-log');
 const { getProducts, isLoaiKhac, getCodeStats, getStatsSummary } = require('../lib/loai-khac-products');
 const { getAccuracyStats } = require('../lib/learned-corrections');
 const { readErrorLog } = require('../lib/error-monitor');
+const { getProcedureByCode, listProcedures, getProcedures } = require('../lib/policy-procedures');
+const { getEnrichedForHs } = require('../lib/enriched-data');
 const fs = require('fs');
 const path = require('path');
 
@@ -241,6 +243,28 @@ module.exports = async function handler(req, res) {
       const limit = Math.min(parseInt(req.query.limit, 10) || 50, 200);
       const entries = readErrorLog(limit);
       return res.status(200).json({ total: entries.length, entries });
+    }
+
+    if (resource === 'policy_procedures') {
+      const { code, hs } = req.query;
+      // ?code=attp → 1 procedure detail
+      if (code) {
+        const proc = getProcedureByCode(String(code));
+        if (!proc) return res.status(404).json({ found: false, code });
+        res.setHeader('Cache-Control', 'public, max-age=86400');
+        return res.status(200).json({ found: true, ...proc });
+      }
+      // ?hs=10011100 → procedures applicable to this HS code
+      if (hs) {
+        const enriched = getEnrichedForHs(hs);
+        const procedures = enriched?.warnings ? getProcedures(enriched.warnings) : [];
+        res.setHeader('Cache-Control', 'public, max-age=86400');
+        return res.status(200).json({ hsCode: String(hs).replace(/\D/g,'').slice(0,8), total: procedures.length, procedures });
+      }
+      // No params → list all procedure types
+      const all = listProcedures();
+      res.setHeader('Cache-Control', 'public, max-age=86400');
+      return res.status(200).json({ total: all.length, procedures: all });
     }
 
     if (resource === 'products') {
