@@ -56,6 +56,9 @@ openssl rand -hex 32
 | `/api/admin/overview` | GET | Yes | Admin KPI JSON (rewrite → `/api/dataset?resource=admin_overview`) |
 | `/api/oz-precedents?hs=` | GET | Yes | Oz historical declarations by HS code |
 | `/api/oz-precedents?q=` | GET | Yes | Oz precedents semantic search (needs GEMINI_API_KEY) |
+| `/api/products?hs=` | GET | Yes | Sản phẩm ví dụ (Shopee/Taobao) cho mã HS Loại khác — 11,072 sản phẩm / 3,383 mã |
+| `/api/products?hs=A,B` | GET | Yes | Batch tra nhiều mã cùng lúc |
+| `/api/products?stats=1` | GET | Yes | Tổng quan corpus + priority queue đào sâu |
 
 **Vercel Hobby** projects cap serverless functions (~12). Several “logical” endpoints are implemented as **`/api/dataset`** and **`/api/tariff`** with `resource` / `op` query params; `vercel.json` rewrites preserve the public URLs above.
 

@@ -1,6 +1,8 @@
 const { requireAuth } = require('../lib/auth');
 const { setCors, handleOptions } = require('../lib/cors');
 const { mapTaxLookup } = require('../lib/tax-mapper');
+const { getEnrichedForHs } = require('../lib/enriched-data');
+const { getProcedures } = require('../lib/policy-procedures');
 
 module.exports = function handler(req, res) {
   setCors(res);
@@ -19,5 +21,17 @@ module.exports = function handler(req, res) {
   }
 
   const result = mapTaxLookup(hs);
-  return res.status(result.found ? 200 : 404).json(result);
+  if (!result.found) {
+    return res.status(404).json(result);
+  }
+
+  // Attach structured policy procedures when available
+  const enriched = getEnrichedForHs(hs);
+  const procedures = enriched?.warnings ? getProcedures(enriched.warnings) : [];
+  if (procedures.length > 0) {
+    result.policyProcedures = procedures;
+  }
+
+  res.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=3600');
+  return res.status(200).json(result);
 };
