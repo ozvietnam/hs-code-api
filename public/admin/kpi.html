@@ -228,10 +228,16 @@
         var data = await res.json();
 
         var html = '';
+        var fb = data.feedbackStats || {};
+        var orRate = fb.overrideRateVsSuggests;
+        var orColor = orRate == null ? '' : (orRate > 25 ? 'bad' : (orRate > 15 ? 'warn' : 'ok'));
         html += '<section class="card"><h2>ML Log Summary</h2>';
         html += '<dl><dt>Total log entries</dt><dd>' + (data.totalLogs ?? 0) + '</dd>';
         html += '<dt>Last 7d suggests</dt><dd>' + (data.last7d?.total ?? 0) + '</dd>';
         html += '<dt>Last 30d suggests</dt><dd>' + (data.last30d?.total ?? 0) + '</dd>';
+        html += '<dt>Total feedback received</dt><dd>' + (fb.totalFeedback ?? 0) + '</dd>';
+        html += '<dt>Director overrides</dt><dd>' + (fb.directorOverrides ?? 0) + '</dd>';
+        html += '<dt>Override rate (feedback/suggest)</dt><dd class="big ' + orColor + '">' + (orRate != null ? orRate + '%' : '—') + '</dd>';
         html += '</dl></section>';
 
         html += renderPeriod('Last 7 days', data.last7d);

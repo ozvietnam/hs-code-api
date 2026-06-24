@@ -17,6 +17,8 @@ const { getProducts, isLoaiKhac, getCodeStats, getStatsSummary } = require('../l
 const { getAccuracyStats } = require('../lib/learned-corrections');
 const { readErrorLog } = require('../lib/error-monitor');
 const { getProcedureByCode, listProcedures, getProcedures } = require('../lib/policy-procedures');
+const { detectRepeatedPatterns } = require('../lib/feedback-store');
+const { listPromptVersions } = require('../lib/prompt-version');
 const { getEnrichedForHs } = require('../lib/enriched-data');
 const fs = require('fs');
 const path = require('path');
@@ -318,6 +320,21 @@ module.exports = async function handler(req, res) {
         };
       });
       return res.status(200).json({ total: results.length, results });
+    }
+
+    if (resource === 'prompt_versions') {
+      return res.status(200).json(listPromptVersions());
+    }
+
+    if (resource === 'admin_suggestions') {
+      const minCount = Math.max(parseInt(req.query.minCount, 10) || 3, 1);
+      const patterns = detectRepeatedPatterns(minCount);
+      return res.status(200).json({
+        total: patterns.length,
+        minCount,
+        note: 'Patterns with ≥minCount director overrides within feedback. Approve bulk via POST /api/feedback/bulk-approve.',
+        patterns,
+      });
     }
 
     return res.status(404).json({ error: 'Unknown resource', resource });

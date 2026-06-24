@@ -15,6 +15,7 @@ const { getProducts, isLoaiKhac } = require('../lib/loai-khac-products');
 const { captureError } = require('../lib/error-monitor');
 const { applyLearnedCorrections } = require('../lib/learned-corrections');
 const { getSuggestCache, setSuggestCache } = require('../lib/suggest-cache');
+const { getPrompt } = require('../lib/prompt-version');
 const fs = require('fs');
 const path = require('path');
 let _conflicts;
@@ -23,7 +24,8 @@ function conflictsDb() {
   catch { return (_conflicts = {}); }
 }
 
-const SYSTEM_PROMPT = `Bạn là chuyên gia phân loại hàng hóa hải quan Việt Nam.
+// Default prompt — used if data/prompts/index.json or active file is missing
+const FALLBACK_PROMPT = `Bạn là chuyên gia phân loại hàng hóa hải quan Việt Nam.
 Cho mô tả hàng hóa và danh sách mã HS candidate, hãy chọn tối đa 3 mã phù hợp nhất.
 Áp dụng GIR và gợi ý chương (girRulesApplied) khi giải thích.
 Chỉ trả JSON đúng schema:
@@ -125,7 +127,8 @@ module.exports = async function handler(req, res) {
     );
 
     // callLLMJson: Gemini → OpenRouter fallback (see lib/llm-tier.js)
-    const { json, model } = await callLLMJson(SYSTEM_PROMPT, userPrompt, {
+    const { promptText, variant: promptVariant, promptVersion } = getPrompt(FALLBACK_PROMPT);
+    const { json, model } = await callLLMJson(promptText, userPrompt, {
       tier: 'premium',
       timeoutMs: 30000,
     });
@@ -155,6 +158,8 @@ module.exports = async function handler(req, res) {
         ...(detectSet(description) ? ['GIR-3b'] : []),
       ],
       llmModel: model,
+      promptVersion,
+      promptVariant,
       wasOverridden: false,
     });
 
@@ -205,6 +210,8 @@ module.exports = async function handler(req, res) {
       glossaryTranslation: glossaryVi !== description ? glossaryVi : undefined,
       brandHint,
       llmModel: model,
+      promptVersion,
+      promptVariant,
       ms: Date.now() - started,
     };
 
@@ -275,7 +282,8 @@ async function handleBatch(req, res, body, started) {
         topReranked,
       }, null, 2);
 
-      const { json, model } = await callLLMJson(SYSTEM_PROMPT, userPrompt, { tier: 'premium', timeoutMs: 25000 });
+      const { promptText: batchPrompt } = getPrompt(FALLBACK_PROMPT);
+      const { json, model } = await callLLMJson(batchPrompt, userPrompt, { tier: 'premium', timeoutMs: 25000 });
       const rawSuggestions = (json.suggestions || []).slice(0, topReranked);
       const girRanked = applyGirRules(rawSuggestions, item.description);
       const precedentRanked = applyPrecedentBoost(girRanked.suggestions, item.description);

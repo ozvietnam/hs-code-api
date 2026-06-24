@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HS Admin — Tariff Versions</title>
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root {
+      --bg: #f8fafc; --card: #fff; --text: #0f172a; --muted: #64748b;
+      --border: #e2e8f0; --ok: #16a34a; --warn: #d97706; --bad: #dc2626;
+      --accent: #2563eb;
+    }
+    [data-theme="dark"] {
+      --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8;
+      --border: #334155; --accent: #60a5fa;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+    header { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); background: var(--card); display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; position: sticky; top: 0; z-index: 10; }
+    h1 { font-size: 1.125rem; margin: 0; font-weight: 600; flex: 1; }
+    main { padding: 1rem; max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
+    section.card { background: var(--card); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.25rem; }
+    h2 { margin: 0 0 1rem; font-size: 0.95rem; font-weight: 600; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
+    th, td { text-align: left; padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--border); }
+    th { color: var(--muted); font-weight: 500; }
+    code { font-size: 0.8125rem; }
+    .pill { display: inline-block; font-size: 0.7rem; padding: 0.1rem 0.4rem; border-radius: 999px; font-weight: 600; }
+    .pill.ok { background: #dcfce7; color: #166534; }
+    .pill.info { background: #dbeafe; color: #1e40af; }
+    [data-theme="dark"] .pill.ok { background: #14532d; color: #86efac; }
+    [data-theme="dark"] .pill.info { background: #1e3a8a; color: #93c5fd; }
+    button { padding: 0.45rem 0.85rem; border-radius: 0.375rem; border: 1px solid var(--border); background: var(--card); color: var(--text); cursor: pointer; font-size: 0.875rem; }
+    button:hover { background: var(--border); }
+    button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    input[type="password"], input[type="text"], select { padding: 0.5rem 0.65rem; border: 1px solid var(--border); border-radius: 0.375rem; background: var(--bg); color: var(--text); }
+    .diff-added { color: var(--ok); }
+    .diff-removed { color: var(--bad); }
+    .diff-changed { color: var(--warn); }
+    pre { background: var(--bg); border: 1px solid var(--border); border-radius: 0.375rem; padding: 0.75rem; font-size: 0.8125rem; overflow: auto; max-height: 400px; }
+    .row { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+    a { color: var(--accent); }
+    footer { padding: 1rem; color: var(--muted); font-size: 0.75rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tariff Version Manager</h1>
+    <a href="/admin/" style="font-size:0.875rem">← Admin</a>
+    <div style="display:flex;gap:0.5rem;align-items:center;margin-left:auto">
+      <input id="token" type="password" placeholder="Bearer token" style="min-width:12rem" />
+      <button id="load-btn">Load</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="empty" style="text-align:center;padding:3rem;color:var(--muted)">
+      Enter token and click Load
+    </div>
+
+    <div id="content" hidden>
+      <!-- Current version card -->
+      <section class="card">
+        <h2>Current version</h2>
+        <div id="current-info" style="color:var(--muted)">Loading…</div>
+      </section>
+
+      <!-- Version list -->
+      <section class="card">
+        <h2>All versions</h2>
+        <div id="versions-table" style="color:var(--muted)">Loading…</div>
+      </section>
+
+      <!-- Diff tool -->
+      <section class="card">
+        <h2>Diff two versions</h2>
+        <div class="row">
+          <select id="diff-from"><option value="">From…</option></select>
+          <select id="diff-to"><option value="">To…</option></select>
+          <button id="diff-btn">Compare</button>
+        </div>
+        <div id="diff-result" style="margin-top:1rem"></div>
+      </section>
+
+      <!-- How to upload -->
+      <section class="card">
+        <h2>Upload new tariff (CLI — recommended)</h2>
+        <p style="font-size:0.875rem;color:var(--muted);margin:0 0 0.75rem">
+          Vercel serverless filesystem is read-only. Tariff updates must be applied locally then deployed.
+        </p>
+        <pre># 1. Dry-run to preview diff
+npm run data:upload-xlsx -- --file=data/new-tariff.xlsx --dry-run
+
+# 2. Apply + create version entry
+npm run data:upload-xlsx -- --file=data/new-tariff.xlsx --label=v2026-07 --replace
+
+# 3. Commit + push → Vercel auto-deploy
+git add data/tax.json data/versions/
+git commit -m "deploy(data): update tariff v2026-07"
+git push origin main</pre>
+      </section>
+    </div>
+  </main>
+
+  <footer>Tariff versions stored in <code>data/versions/</code></footer>
+
+  <script>
+    var TOKEN_KEY = 'hs_admin_hs_api_token';
+    var _versions = [];
+
+    function getToken() {
+      var t = new URLSearchParams(location.search).get('token');
+      if (t) localStorage.setItem(TOKEN_KEY, t);
+      return localStorage.getItem(TOKEN_KEY) || '';
+    }
+
+    function auth() { return { headers: { Authorization: 'Bearer ' + getToken() } }; }
+
+    function escapeHtml(s) {
+      return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    async function load() {
+      var token = getToken();
+      document.getElementById('token').value = token;
+      if (!token) { document.getElementById('empty').textContent = 'Enter Bearer token first'; return; }
+
+      try {
+        var res = await fetch('/api/versions', auth());
+        if (!res.ok) {
+          document.getElementById('empty').textContent = 'Error ' + res.status + (res.status === 401 ? ' — check token' : '');
+          return;
+        }
+        var data = await res.json();
+        _versions = data.versions || [];
+        renderVersions(data);
+        document.getElementById('empty').hidden = true;
+        document.getElementById('content').hidden = false;
+      } catch(e) {
+        document.getElementById('empty').textContent = 'Network error: ' + e.message;
+      }
+    }
+
+    function renderVersions(data) {
+      var current = data.current;
+      var versions = data.versions || [];
+
+      // Current info
+      var cv = versions.find(function(v) { return v.id === current || v.file === current; });
+      if (cv) {
+        document.getElementById('current-info').innerHTML =
+          '<code>' + escapeHtml(cv.id || cv.file) + '</code>' +
+          (cv.label ? ' — ' + escapeHtml(cv.label) : '') +
+          (cv.rowCount ? ' &nbsp;|&nbsp; ' + cv.rowCount + ' rows' : '') +
+          (cv.createdAt ? ' &nbsp;|&nbsp; ' + escapeHtml(cv.createdAt.slice(0,10)) : '') +
+          ' <span class="pill ok">ACTIVE</span>';
+      } else {
+        document.getElementById('current-info').innerHTML = current
+          ? '<code>' + escapeHtml(current) + '</code>'
+          : '<span style="color:var(--muted)">None set</span>';
+      }
+
+      // Version table
+      var html = '<table><tr><th>ID / File</th><th>Label</th><th>Rows</th><th>Date</th><th>Status</th></tr>';
+      for (var i = 0; i < versions.length; i++) {
+        var v = versions[i];
+        var isCurrent = v.id === current || v.file === current;
+        html += '<tr>';
+        html += '<td><code>' + escapeHtml(v.id || v.file) + '</code></td>';
+        html += '<td>' + escapeHtml(v.label || '—') + '</td>';
+        html += '<td>' + (v.rowCount ?? '—') + '</td>';
+        html += '<td>' + escapeHtml((v.createdAt || '').slice(0,10)) + '</td>';
+        html += '<td>' + (isCurrent ? '<span class="pill ok">active</span>' : '<span class="pill info">snapshot</span>') + '</td>';
+        html += '</tr>';
+      }
+      html += '</table>';
+      document.getElementById('versions-table').innerHTML = versions.length ? html : '<p style="color:var(--muted)">No versions yet.</p>';
+
+      // Populate diff selects
+      var fromSel = document.getElementById('diff-from');
+      var toSel = document.getElementById('diff-to');
+      fromSel.innerHTML = '<option value="">From…</option>';
+      toSel.innerHTML = '<option value="">To…</option>';
+      for (var j = 0; j < versions.length; j++) {
+        var id = versions[j].id || versions[j].file;
+        fromSel.innerHTML += '<option value="' + escapeHtml(id) + '">' + escapeHtml(id) + '</option>';
+        toSel.innerHTML += '<option value="' + escapeHtml(id) + '">' + escapeHtml(id) + '</option>';
+      }
+    }
+
+    document.getElementById('diff-btn').addEventListener('click', async function() {
+      var from = document.getElementById('diff-from').value;
+      var to = document.getElementById('diff-to').value;
+      if (!from || !to) { alert('Select both from and to versions'); return; }
+      if (from === to) { alert('from and to must be different'); return; }
+
+      document.getElementById('diff-result').innerHTML = '<p style="color:var(--muted)">Loading diff…</p>';
+      try {
+        var res = await fetch('/api/version/diff?from=' + encodeURIComponent(from) + '&to=' + encodeURIComponent(to) + '&limit=30', auth());
+        var data = await res.json();
+        if (!res.ok) { document.getElementById('diff-result').innerHTML = '<p style="color:var(--bad)">' + escapeHtml(data.error || 'Error') + '</p>'; return; }
+
+        var s = data.summary || {};
+        var html = '<div style="font-size:0.875rem;margin-bottom:0.75rem">';
+        html += '<span class="diff-added">+' + (s.added || 0) + ' added</span> &nbsp; ';
+        html += '<span class="diff-removed">−' + (s.removed || 0) + ' removed</span> &nbsp; ';
+        html += '<span class="diff-changed">~' + (s.changed || 0) + ' changed</span>';
+        html += '</div>';
+
+        var details = data.details || [];
+        if (details.length) {
+          html += '<table><tr><th>HS Code</th><th>Change</th><th>Detail</th></tr>';
+          for (var i = 0; i < details.length; i++) {
+            var d = details[i];
+            var cls = d.type === 'added' ? 'diff-added' : (d.type === 'removed' ? 'diff-removed' : 'diff-changed');
+            html += '<tr class="' + cls + '"><td><code>' + escapeHtml(d.hsCode) + '</code></td>';
+            html += '<td>' + escapeHtml(d.type) + '</td>';
+            html += '<td>' + escapeHtml(JSON.stringify(d.changes || d.nameVi || '')) + '</td></tr>';
+          }
+          html += '</table>';
+          if (s.changed > 30 || s.added > 30 || s.removed > 30) {
+            html += '<p style="color:var(--muted);font-size:0.8rem">Showing first 30 changes. Total: +' + s.added + ' −' + s.removed + ' ~' + s.changed + '</p>';
+          }
+        } else {
+          html += '<p style="color:var(--muted)">No differences found.</p>';
+        }
+        document.getElementById('diff-result').innerHTML = html;
+      } catch(e) {
+        document.getElementById('diff-result').innerHTML = '<p style="color:var(--bad)">Error: ' + escapeHtml(e.message) + '</p>';
+      }
+    });
+
+    document.getElementById('load-btn').addEventListener('click', function() {
+      localStorage.setItem(TOKEN_KEY, document.getElementById('token').value.trim());
+      load();
+    });
+
+    var t = getToken();
+    if (t) load();
+  </script>
+</body>
+</html>

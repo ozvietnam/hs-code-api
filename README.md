@@ -122,14 +122,14 @@ Tax/search responses use camelCase fields expected by `erp-xnk` client:
 - `/api/suggest` includes `evidenceTrace.matchedOzPrecedents` (top-5 similar Oz declarations).
 - Historical precedents are advisory only:
   - response adds warning: `Historical precedent only... đối chiếu biểu thuế/policy hiện hành`.
-  - `confidenceBreakdown` shows base confidence, historical boost, similarity, recency, and conflict block flag.
-- Recency decay applies to historical boost (newer precedents weigh more).
-- Historical boost is blocked when candidate HS has current `hasPolicyWarning`.
+  - `confidenceBreakdown` shows `baseConfidence`, `ozPrecedentBoost`, `ozDeclarationCount`, `ozMatchCoverage`, and `policyConflictBlockedBoost`.
+- Boost is familiarity-based: how many times Oz declared this HS for similar products (`ozCount × matchCoverage`, log-scaled, capped at +8). No recency decay.
+- Historical boost is blocked when candidate HS has current `hasPolicyWarning`. Precedents are **Oz's own declarations**, not customs rulings — treat as advisory only.
 - Oz precedent candidates are deduplicated by HS + normalized description cluster to reduce embedding bias.
 
 ### Tests
 
-- `node scripts/test-suggest-confidence.mjs` — verifies recency decay, boost behavior, policy conflict blocking, confidence breakdown, and warnings.
+- `node scripts/test-suggest-confidence.mjs` — verifies `familiarityBoost`, policy conflict blocking, `confidenceBreakdown` fields, and honest-disclaimer warning messages.
 
 ## Offline data pipeline (Issues #5, #7, partial #4)
 
