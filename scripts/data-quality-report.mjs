@@ -27,26 +27,52 @@ const badHs = rows.filter((r) => !/^\d{8}$/.test(String(r.hs))).map((r) => r.hs)
 addFinding('hsFormatInvalid', 'Mã HS không đúng 8 chữ số', 'error', badHs);
 
 // ── 2. Thiếu tên / đơn vị tính ───────────────────────────────────────────────
+// Quy ước biểu thuế: chương 98 (mã ưu đãi đặc biệt) — VAT/đơn vị tính áp theo
+// mã gốc tương ứng tại 97 chương, nên để trống là ĐÚNG quy ước, không phải thiếu data.
+const isCh98 = (r) => r.hs.startsWith('98');
+
 addFinding('missingNameVi', 'Thiếu tên tiếng Việt', 'error',
   rows.filter((r) => !String(r.vn || '').trim()).map((r) => r.hs));
-addFinding('missingUnit', 'Thiếu đơn vị tính (dvt)', 'warn',
-  rows.filter((r) => !String(r.dvt || '').trim()).map((r) => r.hs));
-addFinding('missingNameEn', 'Thiếu tên tiếng Anh (ảnh hưởng search song ngữ)', 'info',
-  rows.filter((r) => !String(r.en || '').trim()).map((r) => r.hs));
+
+const noUnit = rows.filter((r) => !String(r.dvt || '').trim());
+addFinding('unitEmptyCh98', 'Đơn vị tính trống ở chương 98 (đúng quy ước — theo mã gốc tương ứng)', 'info',
+  noUnit.filter(isCh98).map((r) => r.hs));
+addFinding('unitEmptyOther', 'Thiếu đơn vị tính NGOÀI chương 98 (thiếu data thật)', 'warn',
+  noUnit.filter((r) => !isCh98(r)).map((r) => r.hs));
+
+const noEn = rows.filter((r) => !String(r.en || '').trim());
+const enByChapter = {};
+for (const r of noEn) { const ch = r.hs.slice(0, 2); enByChapter[ch] = (enByChapter[ch] || 0) + 1; }
+addFinding('missingNameEn', `Thiếu tên tiếng Anh (ảnh hưởng search song ngữ) — theo chương: ${JSON.stringify(enByChapter)}`, 'info',
+  noEn.map((r) => r.hs));
 
 // ── 3. Thuế bất thường ───────────────────────────────────────────────────────
-addFinding('missingVat', 'VAT rỗng', 'warn',
-  rows.filter((r) => !String(r.vat || '').trim()).map((r) => r.hs));
+const noVat = rows.filter((r) => !String(r.vat || '').trim());
+addFinding('vatEmptyCh98', 'VAT trống ở chương 98 (đúng quy ước — theo mã gốc tương ứng)', 'info',
+  noVat.filter(isCh98).map((r) => r.hs));
+addFinding('vatEmptyOther', 'VAT trống NGOÀI chương 98 (thiếu data thật)', 'warn',
+  noVat.filter((r) => !isCh98(r)).map((r) => r.hs));
+
 addFinding('ttWithoutMfn', 'Có thuế TT nhưng MFN rỗng (nghi thiếu data)', 'warn',
   rows.filter((r) => String(r.tt || '').trim() && !String(r.mfn || '').trim()).map((r) => r.hs));
 addFinding('mfnWithoutTt', 'Có MFN nhưng TT rỗng (nghi thiếu data)', 'warn',
   rows.filter((r) => String(r.mfn || '').trim() && !String(r.tt || '').trim()).map((r) => r.hs));
 
 const numRe = /^\d+(\.\d+)?$/;
-addFinding('mfnNonNumeric', 'MFN không phải số thuần (cần kiểm tra format)', 'info',
-  rows.filter((r) => {
-    const v = String(r.mfn || '').trim();
-    return v && !numRe.test(v);
+const quotaRe = /^\d+(\.\d+)?\s*\(NHN:\s*\d+(\.\d+)?\)$/; // "27 (NHN: 80)" = trong/ngoài hạn ngạch
+const nonNum = rows.filter((r) => {
+  const v = String(r.mfn || '').trim();
+  return v && !numRe.test(v);
+});
+const ch98RefRe = /^Theo hướng dẫn tại .*Chương 98$/;
+addFinding('mfnQuotaFormat', 'MFN dạng thuế hạn ngạch "X (NHN: Y)" — trong/ngoài hạn ngạch, data hợp lệ', 'info',
+  nonNum.filter((r) => quotaRe.test(String(r.mfn).trim())).map((r) => `${r.hs}: "${r.mfn}"`));
+addFinding('mfnCh98Reference', 'MFN là text tham chiếu hướng dẫn Chương 98 — đúng quy ước biểu thuế', 'info',
+  nonNum.filter((r) => ch98RefRe.test(String(r.mfn).trim())).map((r) => `${r.hs}: "${r.mfn}"`));
+addFinding('mfnMalformed', 'MFN format lạ (không phải số/hạn ngạch NHN/tham chiếu Ch.98) — cần kiểm tra', 'warn',
+  nonNum.filter((r) => {
+    const v = String(r.mfn).trim();
+    return !quotaRe.test(v) && !ch98RefRe.test(v);
   }).map((r) => `${r.hs}: "${r.mfn}"`));
 
 // ── 4. Tên trùng lặp (khác mã, cùng tên) ────────────────────────────────────
