@@ -33,7 +33,8 @@
     { "source": "/api/policy-procedures", "destination": "/api/dataset?resource=policy_procedures" },
     { "source": "/api/policy-procedures/:code", "destination": "/api/dataset?resource=policy_procedures&code=:code" },
     { "source": "/api/admin/suggestions", "destination": "/api/dataset?resource=admin_suggestions" },
-    { "source": "/api/admin/prompts", "destination": "/api/dataset?resource=prompt_versions" }
+    { "source": "/api/admin/prompts", "destination": "/api/dataset?resource=prompt_versions" },
+    { "source": "/api/data-quality", "destination": "/api/dataset?resource=data_quality" }
   ],
   "functions": {
     "api/**/*.js": {

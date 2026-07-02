@@ -241,6 +241,23 @@ module.exports = async function handler(req, res) {
       return res.status(200).json(getAccuracyStats());
     }
 
+    if (resource === 'data_quality') {
+      const reportPath = path.join(process.cwd(), 'data', 'data-quality-report.json');
+      if (!fs.existsSync(reportPath)) {
+        return res.status(404).json({ error: 'Chưa có report — chạy npm run data:quality-report rồi commit' });
+      }
+      const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+      // ?category=missingVat → chỉ trả 1 nhóm finding
+      const category = req.query.category;
+      if (category) {
+        const f = report.findings?.[category];
+        if (!f) return res.status(404).json({ error: 'Unknown category', available: Object.keys(report.findings || {}) });
+        return res.status(200).json({ generatedAt: report.generatedAt, category, ...f });
+      }
+      res.setHeader('Cache-Control', 'public, max-age=3600');
+      return res.status(200).json(report);
+    }
+
     if (resource === 'error_log') {
       const limit = Math.min(parseInt(req.query.limit, 10) || 50, 200);
       const entries = readErrorLog(limit);
