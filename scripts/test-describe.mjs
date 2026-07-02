@@ -7,7 +7,7 @@ import { createRequire } from 'module';
 const rootDir = join(dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(join(rootDir, 'package.json'));
 const { validateDeclaration, normalizeDeclaration } = require('./lib/declaration-validator');
-const { composeCustomsDescription } = require('./lib/describe-compose');
+const { composeCustomsDescription, composeWithMeta, ECUS_MAX_LENGTH } = require('./lib/describe-compose');
 
 const cases = JSON.parse(readFileSync(join(rootDir, 'tests', 'describe-cases.json'), 'utf8'));
 const LEVEL_RANK = { REJECT: 0, WEAK: 1, ACCEPTABLE: 2, GOOD: 3, EXCELLENT: 4 };
@@ -65,5 +65,104 @@ for (const tc of cases) {
   }
 }
 
-console.log(`\n${passed}/${cases.length} passed, ${failed} failed`);
+// ── ECUS 200 ký tự (tính cả dấu cách) ───────────────────────────────────────
+
+function check(id, cond, detail = '') {
+  if (cond) {
+    passed += 1;
+    console.log(`PASS ${id}`);
+  } else {
+    failed += 1;
+    console.error(`FAIL ${id} — ${detail}`);
+  }
+}
+
+const longDecl = normalizeDeclaration({
+  declaration: {
+    tenHang: 'Máy xúc đào bánh xích thủy lực dùng trong xây dựng công trình dân dụng',
+    xuatXu: { code: 'CN', nameVi: 'Trung Quốc' },
+    donViTinh: 'chiếc',
+    tinhTrang: 'Mới 100%',
+    nhanHieu: 'Komatsu',
+    model: 'PC200-8MO',
+    thongSoKyThuat: [
+      'dung tích gầu 0.8m3',
+      'công suất động cơ 110kW',
+      'trọng lượng vận hành 20 tấn',
+      'chiều sâu đào tối đa 6.62m',
+      'tầm với tối đa 9.87m',
+    ],
+    thanhPhanCauTao: 'khung thép, gầu thép hợp kim chống mài mòn',
+    congDung: 'đào đất đá, san lấp mặt bằng thi công công trình',
+    quyCach: 'nguyên chiếc đồng bộ kèm gầu tiêu chuẩn',
+  },
+}, {});
+
+const longMeta = composeWithMeta(longDecl);
+check('ecus-length: composed ≤ 200 ký tự', longMeta.text.length <= ECUS_MAX_LENGTH,
+  `length=${longMeta.text.length}`);
+check('ecus-length: đánh dấu truncated', longMeta.truncated === true,
+  `fullLength=${longMeta.fullLength}`);
+check('ecus-length: tình trạng vẫn ở cuối sau khi cắt', longMeta.text.endsWith('Mới 100%'),
+  `tail="${longMeta.text.slice(-40)}"`);
+check('ecus-length: xuất xứ không bị cắt', longMeta.text.includes('xuất xứ Trung Quốc'),
+  longMeta.text);
+check('ecus-length: tên hàng giữ nguyên (chỉ cắt phần phụ)', longMeta.text.startsWith('Máy xúc đào'),
+  longMeta.text);
+
+const longCompliance = validateDeclaration(longDecl, '84295200', {});
+check('ecus-length: validator cảnh báo LENGTH_EXCEEDED',
+  longCompliance.warnings.some((w) => w.code === 'LENGTH_EXCEEDED'),
+  JSON.stringify(longCompliance.warnings.map((w) => w.code)));
+
+const shortDecl = normalizeDeclaration({
+  declaration: {
+    tenHang: 'Điện thoại di động thông minh Apple iPhone 15',
+    xuatXu: { code: 'CN', nameVi: 'Trung Quốc' },
+    donViTinh: 'chiếc',
+    tinhTrang: 'Mới 100%',
+    thongSoKyThuat: ['256GB'],
+  },
+}, {});
+const shortMeta = composeWithMeta(shortDecl);
+check('ecus-length: mô tả ngắn không truncate, không warning',
+  shortMeta.truncated === false
+    && !validateDeclaration(shortDecl, '85171300', {}).warnings.some((w) => w.code === 'LENGTH_EXCEEDED'),
+  `truncated=${shortMeta.truncated}`);
+check('ecus-length: đuôi đúng quy ước "xuất xứ X; tình trạng"',
+  shortMeta.text.endsWith('xuất xứ Trung Quốc; Mới 100%'),
+  shortMeta.text);
+
+// tenHang siêu dài: hard-trim nhưng đuôi bắt buộc còn nguyên
+const hugeName = normalizeDeclaration({
+  declaration: {
+    tenHang: 'Thiết bị chuyên dùng '.repeat(20),
+    xuatXu: { code: 'JP', nameVi: 'Nhật Bản' },
+    donViTinh: 'bộ',
+    tinhTrang: 'Đã qua sử dụng',
+  },
+}, {});
+const hugeMeta = composeWithMeta(hugeName);
+check('ecus-length: tenHang siêu dài bị hard-trim, vẫn ≤200 + giữ đuôi',
+  hugeMeta.text.length <= ECUS_MAX_LENGTH && hugeMeta.text.endsWith('xuất xứ Nhật Bản; Đã qua sử dụng'),
+  `length=${hugeMeta.text.length} tail="${hugeMeta.text.slice(-40)}"`);
+
+// ── CONDITION_DEFAULTED: default ngầm "Mới 100%" phải có cảnh báo ───────────
+
+const noCondition = normalizeDeclaration({
+  declaration: {
+    tenHang: 'Điện thoại di động thông minh Samsung Galaxy S24',
+    xuatXu: { code: 'VN', nameVi: 'Việt Nam' },
+    donViTinh: 'chiếc',
+    thongSoKyThuat: ['5G', '256GB'],
+  },
+}, {});
+check('condition-default: tinhTrangDefaulted=true khi input thiếu',
+  noCondition.tinhTrangDefaulted === true && noCondition.tinhTrang === 'Mới 100%');
+check('condition-default: validator cảnh báo CONDITION_DEFAULTED',
+  validateDeclaration(noCondition, '85171300', {}).warnings.some((w) => w.code === 'CONDITION_DEFAULTED'));
+check('condition-default: khai rõ tinhTrang thì không cảnh báo',
+  !validateDeclaration(shortDecl, '85171300', {}).warnings.some((w) => w.code === 'CONDITION_DEFAULTED'));
+
+console.log(`\n${passed}/${passed + failed} passed, ${failed} failed`);
 process.exit(failed > 0 ? 1 : 0);

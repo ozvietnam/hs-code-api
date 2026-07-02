@@ -4,7 +4,7 @@ const { getTaxRecord, normalizeHs } = require('../lib/data');
 const { mapTaxRecord } = require('../lib/tax-mapper');
 const { geminiGenerateJson } = require('../lib/gemini');
 const { SYSTEM_PROMPT } = require('../lib/customs-prompt');
-const { composeCustomsDescription } = require('../lib/describe-compose');
+const { composeWithMeta } = require('../lib/describe-compose');
 const { validateDeclaration, normalizeDeclaration } = require('../lib/declaration-validator');
 const { captureError } = require('../lib/error-monitor');
 
@@ -92,7 +92,7 @@ module.exports = async function handler(req, res) {
             tenHang: context.productName,
             xuatXu: context.origin,
             donViTinh: context.unitVi,
-            tinhTrang: context.condition || 'Mới 100%',
+            tinhTrang: context.condition,
             nhanHieu: context.brand,
             model: context.model,
             thongSoKyThuat: context.technicalSpec ? [context.technicalSpec] : [],
@@ -107,11 +107,19 @@ module.exports = async function handler(req, res) {
   }
 
   const compliance = validateDeclaration(declaration, hsCode, context);
-  const customsDescription = composeCustomsDescription(declaration);
+  const composed = composeWithMeta(declaration);
 
   return res.status(200).json({
     declaration,
-    customsDescription,
+    customsDescription: composed.text,
+    descriptionMeta: {
+      length: composed.length,
+      maxLength: composed.maxLength,
+      truncated: composed.truncated,
+      fullLength: composed.fullLength,
+      dropped: composed.dropped,
+      ...(composed.truncated ? { fullText: composed.fullText } : {}),
+    },
     compliance,
     llmModel,
     contextUsed: {
