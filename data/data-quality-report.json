@@ -1,0 +1,432 @@
+{
+  "generatedAt": "2026-07-02T04:10:11.858Z",
+  "stats": {
+    "taxRows": 11871,
+    "rowsWithPolicy": 7928,
+    "enrichedRows": 7928,
+    "enrichedCoveragePct": 100,
+    "severityDistribution": {
+      "MEDIUM": 4234,
+      "HIGH": 1749,
+      "LOW": 1636,
+      "CRITICAL": 309
+    },
+    "categoriesWithErrors": 0,
+    "categoriesWithWarnings": 3
+  },
+  "findings": {
+    "hsFormatInvalid": {
+      "severity": "error",
+      "description": "Mã HS không đúng 8 chữ số",
+      "count": 0,
+      "samples": []
+    },
+    "missingNameVi": {
+      "severity": "error",
+      "description": "Thiếu tên tiếng Việt",
+      "count": 0,
+      "samples": []
+    },
+    "missingUnit": {
+      "severity": "warn",
+      "description": "Thiếu đơn vị tính (dvt)",
+      "count": 3,
+      "samples": [
+        "98493810",
+        "98493890",
+        "98494321"
+      ]
+    },
+    "missingNameEn": {
+      "severity": "info",
+      "description": "Thiếu tên tiếng Anh (ảnh hưởng search song ngữ)",
+      "count": 457,
+      "samples": [
+        "98041500",
+        "98041600",
+        "98041711",
+        "98041719",
+        "98041721",
+        "98041722",
+        "98041729",
+        "98041730",
+        "98041790",
+        "98041900",
+        "98042811",
+        "98042819",
+        "98042890",
+        "98050000",
+        "98080010",
+        "98080090",
+        "98100010",
+        "98100090",
+        "98110010",
+        "98110090"
+      ]
+    },
+    "missingVat": {
+      "severity": "warn",
+      "description": "VAT rỗng",
+      "count": 457,
+      "samples": [
+        "98041500",
+        "98041600",
+        "98041711",
+        "98041719",
+        "98041721",
+        "98041722",
+        "98041729",
+        "98041730",
+        "98041790",
+        "98041900",
+        "98042811",
+        "98042819",
+        "98042890",
+        "98050000",
+        "98080010",
+        "98080090",
+        "98100010",
+        "98100090",
+        "98110010",
+        "98110090"
+      ]
+    },
+    "ttWithoutMfn": {
+      "severity": "warn",
+      "description": "Có thuế TT nhưng MFN rỗng (nghi thiếu data)",
+      "count": 0,
+      "samples": []
+    },
+    "mfnWithoutTt": {
+      "severity": "warn",
+      "description": "Có MFN nhưng TT rỗng (nghi thiếu data)",
+      "count": 0,
+      "samples": []
+    },
+    "mfnNonNumeric": {
+      "severity": "info",
+      "description": "MFN không phải số thuần (cần kiểm tra format)",
+      "count": 295,
+      "samples": [
+        "17011200: \"25 (NHN: 80)\"",
+        "17011300: \"25 (NHN: 80)\"",
+        "17011400: \"25 (NHN: 80)\"",
+        "17019100: \"40 (NHN: 100)\"",
+        "17019910: \"40 (NHN: 85)\"",
+        "17019990: \"40 (NHN: 85)\"",
+        "24011010: \"30 (NHN: 80)\"",
+        "24011020: \"30 (NHN: 90)\"",
+        "24011040: \"30 (NHN: 80)\"",
+        "24011050: \"30 (NHN: 80)\"",
+        "24011090: \"30 (NHN: 90)\"",
+        "24012010: \"30 (NHN: 80)\"",
+        "24012020: \"30 (NHN: 90)\"",
+        "24012030: \"30 (NHN: 90)\"",
+        "24012040: \"30 (NHN: 80)\"",
+        "24012050: \"30 (NHN: 80)\"",
+        "24012090: \"30 (NHN: 90)\"",
+        "24013010: \"15 (NHN: 80)\"",
+        "24013090: \"30 (NHN: 90)\"",
+        "25010010: \"30 (NHN: 60)\""
+      ]
+    },
+    "duplicateNames": {
+      "severity": "info",
+      "description": "Nhóm tên VN trùng nhau (thường là \"Loại khác\" — hợp lệ nhưng cần mô tả khu biệt)",
+      "count": 50,
+      "samples": [
+        {
+          "name": "- - - loại khác",
+          "count": 1197,
+          "hs": [
+            "10059099",
+            "10063099",
+            "11031990",
+            "11041990",
+            "11042990",
+            "11081990"
+          ]
+        },
+        {
+          "name": "- - loại khác",
+          "count": 1072,
+          "hs": [
+            "10011900",
+            "10061090",
+            "10062090",
+            "10082900",
+            "11010019",
+            "11029090"
+          ]
+        },
+        {
+          "name": "- - - - loại khác",
+          "count": 437,
+          "hs": [
+            "12122119",
+            "12122919",
+            "13023919",
+            "15119032",
+            "15119039",
+            "15152919"
+          ]
+        },
+        {
+          "name": "- loại khác",
+          "count": 239,
+          "hs": [
+            "10029000",
+            "10039000",
+            "10049000",
+            "10079000",
+            "12019000",
+            "12059000"
+          ]
+        },
+        {
+          "name": "- - - - - loại khác",
+          "count": 98,
+          "hs": [
+            "27101223",
+            "27101226",
+            "27101229",
+            "39173299",
+            "84099159",
+            "84099169"
+          ]
+        },
+        {
+          "name": "- - hoạt động bằng điện",
+          "count": 43,
+          "hs": [
+            "84022010",
+            "84194010",
+            "84231010",
+            "84336010",
+            "84351010",
+            "84361010"
+          ]
+        },
+        {
+          "name": "- - - - - ô tô tải đông lạnh (1)",
+          "count": 40,
+          "hs": [
+            "87042211",
+            "87042221",
+            "87042231",
+            "87042241",
+            "87042311",
+            "87042321"
+          ]
+        },
+        {
+          "name": "- - không hoạt động bằng điện",
+          "count": 38,
+          "hs": [
+            "84022020",
+            "84194020",
+            "84231020",
+            "84336020",
+            "84351020",
+            "84361020"
+          ]
+        },
+        {
+          "name": "- - từ bông",
+          "count": 36,
+          "hs": [
+            "56012100",
+            "57025010",
+            "58061020",
+            "58109100",
+            "60012100",
+            "60019100"
+          ]
+        },
+        {
+          "name": "- - - được in bằng phương pháp batik truyền thống (sen)",
+          "count": 33,
+          "hs": [
+            "51121110",
+            "51121910",
+            "52085110",
+            "52085210",
+            "52085910",
+            "52095110"
+          ]
+        },
+        {
+          "name": "- - - không hoạt động bằng điện",
+          "count": 33,
+          "hs": [
+            "84021120",
+            "84131920",
+            "84135032",
+            "84136032",
+            "84138220",
+            "84193520"
+          ]
+        },
+        {
+          "name": "- - - hoạt động bằng điện",
+          "count": 31,
+          "hs": [
+            "84021110",
+            "84131910",
+            "84135031",
+            "84136031",
+            "84138210",
+            "84193510"
+          ]
+        },
+        {
+          "name": "- - từ các vật liệu dệt khác",
+          "count": 30,
+          "hs": [
+            "56022900",
+            "58109900",
+            "60012900",
+            "60019900",
+            "61032900",
+            "61034900"
+          ]
+        },
+        {
+          "name": "- - từ sợi tổng hợp",
+          "count": 28,
+          "hs": [
+            "61032300",
+            "61033300",
+            "61034300",
+            "61041300",
+            "61042300",
+            "61043300"
+          ]
+        },
+        {
+          "name": "- - - - dung tích xi lanh không quá 1.000 cc",
+          "count": 28,
+          "hs": [
+            "87034032",
+            "87034041",
+            "87034051",
+            "87034061",
+            "87034071",
+            "87034081"
+          ]
+        },
+        {
+          "name": "- - - - khối lượng toàn bộ theo thiết kế (sen) trên 24 tấn",
+          "count": 26,
+          "hs": [
+            "87021042",
+            "87021072",
+            "87021082",
+            "87021091",
+            "87022023",
+            "87022032"
+          ]
+        },
+        {
+          "name": "- - - - dung tích xi lanh trên 1.000 cc nhưng không quá 1.50",
+          "count": 26,
+          "hs": [
+            "87034034",
+            "87034042",
+            "87034052",
+            "87034062",
+            "87034072",
+            "87034082"
+          ]
+        },
+        {
+          "name": "- - từ lông cừu hoặc lông động vật loại mịn",
+          "count": 25,
+          "hs": [
+            "56022100",
+            "57023100",
+            "58022010",
+            "60059010",
+            "61033100",
+            "61034100"
+          ]
+        },
+        {
+          "name": "- - - - loại khác (sen)",
+          "count": 24,
+          "hs": [
+            "10019919",
+            "10019999",
+            "27101239",
+            "38231919",
+            "39172919",
+            "39173119"
+          ]
+        },
+        {
+          "name": "- - - - dung tích xi lanh trên 2.000 cc",
+          "count": 24,
+          "hs": [
+            "87034017",
+            "87034021",
+            "87034024",
+            "87034026",
+            "87034028",
+            "87034058"
+          ]
+        }
+      ]
+    },
+    "policyNotEnriched": {
+      "severity": "warn",
+      "description": "Có policy text (cs) nhưng CHƯA enrich (chạy npm run data:enrich-policies)",
+      "count": 0,
+      "samples": []
+    },
+    "enrichedOrphan": {
+      "severity": "warn",
+      "description": "Enriched nhưng mã không còn trong tax.json (stale sau update biểu thuế)",
+      "count": 0,
+      "samples": []
+    },
+    "enrichedStaleText": {
+      "severity": "warn",
+      "description": "Policy text đã đổi so với lúc enrich (cần re-enrich)",
+      "count": 28,
+      "samples": [
+        "28111910",
+        "38245000",
+        "44071300",
+        "44072110",
+        "44181100",
+        "44183000",
+        "44191100",
+        "49119990",
+        "52079000",
+        "58011090",
+        "61033100",
+        "61033200",
+        "61178020",
+        "62160091",
+        "62160092",
+        "72069000",
+        "73181290",
+        "76051100",
+        "85161019",
+        "87044219"
+      ]
+    },
+    "enrichedUnknownIssuer": {
+      "severity": "info",
+      "description": "legalDocs có issuer không nhận diện được",
+      "count": 0,
+      "samples": []
+    },
+    "enrichedFutureYear": {
+      "severity": "warn",
+      "description": "legalDocs có năm > 2026 (nghi typo LLM)",
+      "count": 0,
+      "samples": []
+    }
+  }
+}

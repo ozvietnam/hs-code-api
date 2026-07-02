@@ -1,104 +1,27 @@
 {
-  "version": "2026-05-27",
-  "extractedFrom": "data/tax.json policyByHs (cs)",
-  "total": 32,
+  "version": "2026-07-02",
+  "extractedFrom": "data/tax-enriched.json (LLM legalDocs) + data/tax.json cs (regex sweep)",
+  "total": 108,
+  "citations": {
+    "fromEnriched": 18575,
+    "fromRegexSweep": 880
+  },
   "documents": {
-    "01/2024/TT-BNNPTNT": {
-      "code": "01/2024/TT-BNNPTNT",
-      "type": "Thông tư",
-      "issuer": "BNNPTNT",
-      "issuerFullVi": "Bộ Nông nghiệp",
-      "titleVi": "Văn bản 01/2024/TT-BNNPTNT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=01%2F2024%2FTT-BNNPTNT",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "01",
-        "02",
-        "03",
-        "04",
-        "05",
-        "06",
-        "07",
-        "08",
-        "09",
-        "10",
-        "11",
-        "12",
-        "13",
-        "14",
-        "15",
-        "16",
-        "17",
-        "18",
-        "19",
-        "20",
-        "21",
-        "23",
-        "24",
-        "26",
-        "28",
-        "29",
-        "32",
-        "35",
-        "38",
-        "41",
-        "43",
-        "44",
-        "50",
-        "51",
-        "52",
-        "53",
-        "94"
-      ],
-      "citedInHsCount": 2006
-    },
-    "09/2024/TT-BYT": {
-      "code": "09/2024/TT-BYT",
-      "type": "Thông tư",
-      "issuer": "BYT",
-      "issuerFullVi": "Bộ Y tế",
-      "titleVi": "Văn bản 09/2024/TT-BYT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=09%2F2024%2FTT-BYT",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "02",
-        "03",
-        "04",
-        "05",
-        "08",
-        "10",
-        "12",
-        "13",
-        "15",
-        "17",
-        "21",
-        "25",
-        "26",
-        "27",
-        "28",
-        "29",
-        "30",
-        "31",
-        "32",
-        "33",
-        "34",
-        "35",
-        "38",
-        "39"
-      ],
-      "citedInHsCount": 510
-    },
     "42/2019/TT-BCT": {
       "code": "42/2019/TT-BCT",
       "type": "Thông tư",
+      "year": 2019,
       "issuer": "BCT",
       "issuerFullVi": "Bộ Công Thương",
       "titleVi": "Văn bản 42/2019/TT-BCT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=42%2F2019%2FTT-BCT",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=42%2F2019%2FTT-BCT",
       "status": "ACTIVE",
-      "domain": [],
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
       "scopeHsChapters": [
         "03",
         "04",
@@ -155,65 +78,51 @@
         "94",
         "96"
       ],
-      "citedInHsCount": 3779
-    },
-    "34/2025/TT-BCT": {
-      "code": "34/2025/TT-BCT",
-      "type": "Thông tư",
-      "issuer": "BCT",
-      "issuerFullVi": "Bộ Công Thương",
-      "titleVi": "Văn bản 34/2025/TT-BCT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=34%2F2025%2FTT-BCT",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "03",
-        "04",
-        "06",
-        "07",
-        "08",
-        "09",
-        "10",
-        "11",
-        "12",
-        "13",
-        "14",
-        "19",
-        "20",
-        "25",
-        "27",
-        "31",
-        "39",
-        "40",
-        "42",
-        "44",
-        "48",
-        "61",
-        "62",
-        "63",
-        "64",
-        "66",
-        "68",
-        "69",
-        "73",
-        "82",
-        "84",
-        "85",
-        "87",
-        "94",
-        "96"
+      "sections": [
+        "-",
+        "All",
+        "Cư dân biên giới",
+        "DM",
+        "DM HH",
+        "DM HH CK Phụ, Lối mở biên giới",
+        "DM HH biên giới",
+        "DM HH cư dân biên giới",
+        "DM HH cửa khẩu phụ",
+        "DM HH cửa khẩu phụ, lối mở biên giới",
+        "DM HH mua bán",
+        "DM HH mua bán trao đổi cư dân biên giới"
       ],
-      "citedInHsCount": 1764
+      "citedInHsCount": 3316,
+      "contextCounts": {
+        "license": 1167,
+        "inspection": 370,
+        "quarantine": 691,
+        "dualUse": 24
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "10051000",
+        "10059010",
+        "10059091",
+        "10059099",
+        "10061010"
+      ]
     },
     "33/2025/TT-BCT": {
       "code": "33/2025/TT-BCT",
       "type": "Thông tư",
+      "year": 2025,
       "issuer": "BCT",
       "issuerFullVi": "Bộ Công Thương",
       "titleVi": "Văn bản 33/2025/TT-BCT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=33%2F2025%2FTT-BCT",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=33%2F2025%2FTT-BCT",
       "status": "ACTIVE",
-      "domain": [],
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
       "scopeHsChapters": [
         "07",
         "08",
@@ -246,17 +155,51 @@
         "79",
         "80"
       ],
-      "citedInHsCount": 2015
+      "sections": [
+        "DM",
+        "DM HH",
+        "DM HH CK Phụ, Lối mở biên giới",
+        "DM HH TNTX qua cửa khẩu phụ, lối mở thương nhân",
+        "DM HH biên giới",
+        "DM HH cư dân biên giới",
+        "DM HH cửa khẩu phụ",
+        "DM HH cửa khẩu phụ, lối mở biên giới",
+        "DM HH mua bán",
+        "DM HH mua bán, trao đổi",
+        "DM HH mua bán, trao đổi qua cửa khẩu phụ, lối mở biên giới",
+        "DM HH mua bán, trao đổi qua cửa khẩu phụ, lối mở biên giới c"
+      ],
+      "citedInHsCount": 2015,
+      "contextCounts": {
+        "license": 604,
+        "inspection": 216,
+        "quarantine": 326,
+        "dualUse": 5
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "10051000",
+        "10059010",
+        "10059091",
+        "10059099",
+        "11010011"
+      ]
     },
     "08/2023/TT-BCT": {
       "code": "08/2023/TT-BCT",
       "type": "Thông tư",
+      "year": 2023,
       "issuer": "BCT",
       "issuerFullVi": "Bộ Công Thương",
       "titleVi": "Văn bản 08/2023/TT-BCT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=08%2F2023%2FTT-BCT",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=08%2F2023%2FTT-BCT",
       "status": "ACTIVE",
-      "domain": [],
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
       "scopeHsChapters": [
         "10",
         "24",
@@ -301,17 +244,584 @@
         "95",
         "96"
       ],
-      "citedInHsCount": 3583
+      "sections": [
+        "PL1.I",
+        "PL1.I & PL2",
+        "PL1.I - Hàng tiêu dùng QSD cấp NK",
+        "PL1.I ^ PL2",
+        "PL1.I và PL2",
+        "PL1.I, PL2",
+        "PL1.I; PL2",
+        "PL1.II",
+        "PL1.II, PL2",
+        "PL1.III",
+        "PL2",
+        "PL3"
+      ],
+      "citedInHsCount": 1964,
+      "contextCounts": {
+        "license": 1734,
+        "inspection": 239,
+        "quarantine": 40,
+        "dualUse": 79
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "10061010",
+        "10061090",
+        "10062010",
+        "10062090",
+        "10063030"
+      ]
+    },
+    "34/2025/TT-BCT": {
+      "code": "34/2025/TT-BCT",
+      "type": "Thông tư",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 34/2025/TT-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=34%2F2025%2FTT-BCT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "03",
+        "04",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "19",
+        "20",
+        "25",
+        "27",
+        "31",
+        "39",
+        "40",
+        "42",
+        "44",
+        "48",
+        "61",
+        "62",
+        "63",
+        "64",
+        "66",
+        "68",
+        "69",
+        "73",
+        "82",
+        "84",
+        "85",
+        "87",
+        "94",
+        "96"
+      ],
+      "sections": [
+        "-",
+        "All",
+        "Cư dân biên giới",
+        "DM HH cư dân biên giới",
+        "DM HH mua bán trao đổi cư dân biên giới",
+        "DM HH mua bán, trao đổi cư dân biên giới",
+        "DM cư dân biên giới",
+        "M4",
+        "M8",
+        "Mua bán cư dân biên giới",
+        "Mua bán, trao đổi cư dân biên giới",
+        "Mục 1"
+      ],
+      "citedInHsCount": 1764,
+      "contextCounts": {
+        "license": 653,
+        "inspection": 216,
+        "quarantine": 630,
+        "dualUse": 24
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "10051000",
+        "10059010",
+        "10059091",
+        "10059099",
+        "10061010"
+      ]
+    },
+    "01/2024/TT-BNNPTNT": {
+      "code": "01/2024/TT-BNNPTNT",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BNNPTNT",
+      "issuerFullVi": "Bộ Nông nghiệp và PTNT",
+      "titleVi": "Văn bản 01/2024/TT-BNNPTNT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=01%2F2024%2FTT-BNNPTNT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "23",
+        "24",
+        "26",
+        "28",
+        "29",
+        "32",
+        "35",
+        "38",
+        "41",
+        "43",
+        "44",
+        "50",
+        "51",
+        "52",
+        "53",
+        "94"
+      ],
+      "sections": [
+        "M1",
+        "M1, M4",
+        "M10",
+        "M15",
+        "M20",
+        "M20 (cấm XK gỗ rừng tự nhiên), M21 (HS lâm sản XK)",
+        "M20 - Cấm XK gỗ tròn, gỗ xẻ từ gỗ rừng tự nhiên trong nước",
+        "M21",
+        "M21 (HS lâm sản XK)",
+        "M21 - HS lâm sản hợp pháp",
+        "M21 - HS lâm sản hợp pháp khi XK",
+        "M23"
+      ],
+      "citedInHsCount": 1468,
+      "contextCounts": {
+        "license": 247,
+        "inspection": 125,
+        "quarantine": 1333,
+        "dualUse": 7
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "10011100",
+        "10011900",
+        "10019100",
+        "10019911",
+        "10019912"
+      ]
+    },
+    "12/2022/TT-BGTVT": {
+      "code": "12/2022/TT-BGTVT",
+      "type": "Thông tư",
+      "year": 2022,
+      "issuer": "BGTVT",
+      "issuerFullVi": "Bộ Giao thông vận tải",
+      "titleVi": "Văn bản 12/2022/TT-BGTVT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=12%2F2022%2FTT-BGTVT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "36",
+        "40",
+        "44",
+        "70",
+        "73",
+        "84",
+        "85",
+        "86",
+        "87",
+        "89"
+      ],
+      "sections": [
+        "ATKT BVMT",
+        "ATKT và BVMT",
+        "ATKT-BVMT",
+        "CQCL",
+        "Chất lượng ATKT và BVMT",
+        "Chứng nhận A",
+        "Chứng nhận CL ATKT & BVMT sau TQ",
+        "Chứng nhận chất lượng",
+        "Chứng nhận chất lượng ATKT và BVMT",
+        "Chứng nhận chất lượng ATKT và BVMT sau TQ",
+        "I",
+        "N/A"
+      ],
+      "citedInHsCount": 1315,
+      "contextCounts": {
+        "license": 78,
+        "inspection": 1312,
+        "quarantine": 3,
+        "dualUse": 3
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "36049090",
+        "40111000",
+        "40112011",
+        "40112012",
+        "40112013"
+      ]
+    },
+    "62/2024/TT-BGTVT": {
+      "code": "62/2024/TT-BGTVT",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BGTVT",
+      "issuerFullVi": "Bộ Giao thông vận tải",
+      "titleVi": "Văn bản 62/2024/TT-BGTVT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=62%2F2024%2FTT-BGTVT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "36",
+        "40",
+        "44",
+        "70",
+        "73",
+        "84",
+        "85",
+        "86",
+        "87",
+        "89"
+      ],
+      "sections": [
+        "-",
+        "ATKT & BVMT",
+        "ATKT BVMT",
+        "ATKT và BVMT",
+        "ATKT-BVMT",
+        "BVMT",
+        "CQATKT&BVMT",
+        "CQCL",
+        "Chất lượng ATKT và BVMT",
+        "Chứng nhận A",
+        "Chứng nhận ATKT và BVMT",
+        "Chứng nhận CL ATKT & BVMT sau TQ"
+      ],
+      "citedInHsCount": 1315,
+      "contextCounts": {
+        "license": 78,
+        "inspection": 1312,
+        "quarantine": 3,
+        "dualUse": 3
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "36049090",
+        "40111000",
+        "40112011",
+        "40112012",
+        "40112013"
+      ]
+    },
+    "765/QD-BCT": {
+      "code": "765/QD-BCT",
+      "type": "Quyết định",
+      "year": 2019,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 765/QD-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=765%2FQD-BCT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "42",
+        "43",
+        "50",
+        "51",
+        "52",
+        "53",
+        "54",
+        "55",
+        "56",
+        "57",
+        "58",
+        "59",
+        "60",
+        "61",
+        "62",
+        "63",
+        "64",
+        "65",
+        "67",
+        "72",
+        "73",
+        "87",
+        "94",
+        "96"
+      ],
+      "sections": [
+        "-",
+        "29/03/2019",
+        "765/QĐ-BCT",
+        "Cắt giảm KIỂM TRA",
+        "Cắt giảm KIỂM TRA*",
+        "Cắt giảm KT chuyên ngành",
+        "Cắt giảm kiểm tra chuyên ngành",
+        "DM",
+        "DM cắt giảm",
+        "DM cắt giảm KT CN",
+        "DM cắt giảm KT chuyên ngành",
+        "DM cắt giảm KTNB"
+      ],
+      "citedInHsCount": 1075,
+      "contextCounts": {
+        "license": 807,
+        "inspection": 126,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "42031000",
+        "42032110",
+        "42032190",
+        "42032910",
+        "42032990"
+      ]
+    },
+    "23/2019/QD-TTG": {
+      "code": "23/2019/QD-TTG",
+      "type": "Quyết định",
+      "year": 2019,
+      "issuer": "TTG",
+      "issuerFullVi": "Thủ tướng Chính phủ",
+      "titleVi": "Văn bản 23/2019/QD-TTG (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=23%2F2019%2FQD-TTG",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "22",
+        "24",
+        "27",
+        "28",
+        "29",
+        "31",
+        "36",
+        "48",
+        "84",
+        "87",
+        "88",
+        "89",
+        "95"
+      ],
+      "sections": [
+        "CK nhập",
+        "PL1",
+        "Thủ tục HQ tại CK nhập",
+        "Toàn bộ",
+        "full",
+        "Điều 1"
+      ],
+      "citedInHsCount": 749,
+      "contextCounts": {
+        "license": 103,
+        "inspection": 655,
+        "quarantine": 18,
+        "dualUse": 2
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "22030011",
+        "22030019",
+        "22030091",
+        "22030099",
+        "22041000"
+      ]
+    },
+    "113/2017/ND-CP": {
+      "code": "113/2017/ND-CP",
+      "type": "Nghị định",
+      "year": 2017,
+      "issuer": "CP",
+      "issuerFullVi": "Chính phủ",
+      "titleVi": "Văn bản 113/2017/ND-CP (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=113%2F2017%2FND-CP",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+        "36",
+        "38",
+        "39",
+        "75",
+        "76",
+        "81"
+      ],
+      "sections": [
+        "PL1",
+        "PL1, PL3, PL5",
+        "PL1, PL4, PL5",
+        "PL1, PL5",
+        "PL1; PL5",
+        "PL3",
+        "PL3, PL1, PL4, PL5",
+        "PL3, PL5",
+        "PL4",
+        "PL4, PL5",
+        "PL4, PL5, PL1",
+        "PL5"
+      ],
+      "citedInHsCount": 667,
+      "contextCounts": {
+        "license": 548,
+        "inspection": 103,
+        "quarantine": 1,
+        "dualUse": 8
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "25249000",
+        "26201100",
+        "26201900",
+        "26209100",
+        "27071000"
+      ]
+    },
+    "09/2024/TT-BYT": {
+      "code": "09/2024/TT-BYT",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BYT",
+      "issuerFullVi": "Bộ Y tế",
+      "titleVi": "Văn bản 09/2024/TT-BYT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=09%2F2024%2FTT-BYT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "02",
+        "03",
+        "08",
+        "10",
+        "12",
+        "13",
+        "15",
+        "17",
+        "21",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "38",
+        "39"
+      ],
+      "sections": [
+        "DM1",
+        "DM10",
+        "DM11",
+        "DM12",
+        "DM14",
+        "DM2",
+        "DM3",
+        "DM4",
+        "DM5",
+        "DM6",
+        "DM7",
+        "DM7, DM2"
+      ],
+      "citedInHsCount": 376,
+      "contextCounts": {
+        "license": 375,
+        "inspection": 123,
+        "quarantine": 16,
+        "dualUse": 14
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "10019919",
+        "12112090",
+        "12115000",
+        "12119013",
+        "12119017"
+      ]
     },
     "17/2023/TT-BNNPTNT": {
       "code": "17/2023/TT-BNNPTNT",
       "type": "Thông tư",
+      "year": 2023,
       "issuer": "BNNPTNT",
-      "issuerFullVi": "Bộ Nông nghiệp",
+      "issuerFullVi": "Bộ Nông nghiệp và PTNT",
       "titleVi": "Văn bản 17/2023/TT-BNNPTNT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=17%2F2023%2FTT-BNNPTNT",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=17%2F2023%2FTT-BNNPTNT",
       "status": "ACTIVE",
-      "domain": [],
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
       "scopeHsChapters": [
         "01",
         "02",
@@ -329,17 +839,274 @@
         "94",
         "96"
       ],
-      "citedInHsCount": 340
+      "sections": [
+        "CITES",
+        "CITES - Phụ lục thực vật rừng nguy cấp, quý hiếm",
+        "CITES - mẫu vật thực vật rừng nguy cấp, quý hiếm, phụ lục CI",
+        "CITES phụ lục",
+        "CITES phụ lục thực vật rừng nguy cấp, quý hiếm",
+        "CITES thực vật rừng nguy cấp, quý hiếm",
+        "M5",
+        "N/A",
+        "PL1.I",
+        "PL2",
+        "Phụ lục CITES",
+        "Toàn văn"
+      ],
+      "citedInHsCount": 340,
+      "contextCounts": {
+        "license": 177,
+        "inspection": 38,
+        "quarantine": 256,
+        "dualUse": 8
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "12071010",
+        "12071030",
+        "12071090",
+        "12079100",
+        "12112010"
+      ]
+    },
+    "2711/QD-BKHCN": {
+      "code": "2711/QD-BKHCN",
+      "type": "Quyết định",
+      "year": 2022,
+      "issuer": "BKHCN",
+      "issuerFullVi": "Bộ Khoa học và Công nghệ",
+      "titleVi": "Văn bản 2711/QD-BKHCN (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=2711%2FQD-BKHCN",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "22",
+        "27",
+        "38",
+        "65",
+        "72",
+        "73",
+        "84",
+        "85",
+        "94",
+        "95"
+      ],
+      "sections": [
+        "-",
+        "Hàng hóa nhóm 2",
+        "N/A",
+        "Nhóm 2"
+      ],
+      "citedInHsCount": 263,
+      "contextCounts": {
+        "license": 49,
+        "inspection": 197,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "22071000",
+        "22072011",
+        "22072019",
+        "22072090",
+        "27071000"
+      ]
+    },
+    "82/2022/ND-CP": {
+      "code": "82/2022/ND-CP",
+      "type": "Nghị định",
+      "year": 2022,
+      "issuer": "CP",
+      "issuerFullVi": "Chính phủ",
+      "titleVi": "Văn bản 82/2022/ND-CP (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=82%2F2022%2FND-CP",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "26",
+        "27",
+        "28",
+        "29",
+        "38",
+        "81"
+      ],
+      "sections": [
+        "PL2"
+      ],
+      "citedInHsCount": 258,
+      "contextCounts": {
+        "license": 256,
+        "inspection": 31,
+        "quarantine": 0,
+        "dualUse": 3
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "26209100",
+        "27071000",
+        "27109100",
+        "28013000",
+        "28100010"
+      ]
+    },
+    "1182/QD-BCT-PL2-2021": {
+      "code": "1182/QD-BCT-PL2-2021",
+      "type": "Quyết định",
+      "year": 2021,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 1182/QD-BCT-PL2-2021 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=1182%2FQD-BCT-PL2-2021",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "04",
+        "11",
+        "15",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22"
+      ],
+      "sections": [
+        "PL2"
+      ],
+      "citedInHsCount": 249,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 249,
+        "quarantine": 63,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "11010011",
+        "11010019",
+        "11010020",
+        "11022000",
+        "11029010"
+      ]
+    },
+    "1182/QD-BCT-PL1-2021": {
+      "code": "1182/QD-BCT-PL1-2021",
+      "type": "Quyết định",
+      "year": 2021,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 1182/QD-BCT-PL1-2021 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=1182%2FQD-BCT-PL1-2021",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "31",
+        "36",
+        "73",
+        "84",
+        "85",
+        "94"
+      ],
+      "sections": [
+        "Hàng hóa KTCN về chất lượng SP HH nhóm 2",
+        "KTCN chất lượng SP HH nhóm 2",
+        "PL1",
+        "PL1.I"
+      ],
+      "citedInHsCount": 247,
+      "contextCounts": {
+        "license": 36,
+        "inspection": 247,
+        "quarantine": 0,
+        "dualUse": 42
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "31023000",
+        "36020000",
+        "36031000",
+        "36032000",
+        "36033000"
+      ]
+    },
+    "09/2024/TT-BYT-DM7": {
+      "code": "09/2024/TT-BYT-DM7",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BYT",
+      "issuerFullVi": "Bộ Y tế",
+      "titleVi": "Văn bản 09/2024/TT-BYT-DM7 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=09%2F2024%2FTT-BYT-DM7",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "13",
+        "15",
+        "17",
+        "21",
+        "25",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "38",
+        "39"
+      ],
+      "sections": [],
+      "citedInHsCount": 198,
+      "contextCounts": {
+        "license": 198,
+        "inspection": 73,
+        "quarantine": 2,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "13021990",
+        "15042090",
+        "17023010",
+        "21021000",
+        "21022090"
+      ]
     },
     "15/2024/TT-BYT": {
       "code": "15/2024/TT-BYT",
       "type": "Thông tư",
+      "year": 2024,
       "issuer": "BYT",
       "issuerFullVi": "Bộ Y tế",
       "titleVi": "Văn bản 15/2024/TT-BYT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=15%2F2024%2FTT-BYT",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=15%2F2024%2FTT-BYT",
       "status": "ACTIVE",
-      "domain": [],
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
       "scopeHsChapters": [
         "09",
         "13",
@@ -358,315 +1125,122 @@
         "39",
         "40"
       ],
-      "citedInHsCount": 186
+      "sections": [],
+      "citedInHsCount": 186,
+      "contextCounts": {
+        "license": 98,
+        "inspection": 186,
+        "quarantine": 4,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "13012000",
+        "13019040",
+        "13019090",
+        "13021990",
+        "13022000"
+      ]
     },
-    "12/2018/TT-BTC": {
-      "code": "12/2018/TT-BTC",
+    "11/2018/TT-BTTTT": {
+      "code": "11/2018/TT-BTTTT",
       "type": "Thông tư",
-      "issuer": "BTC",
-      "issuerFullVi": "Bộ Tài chính",
-      "titleVi": "Văn bản 12/2018/TT-BTC (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=12%2F2018%2FTT-BTC",
+      "year": 2018,
+      "issuer": "BTTTT",
+      "issuerFullVi": "Bộ Thông tin và Truyền thông",
+      "titleVi": "Văn bản 11/2018/TT-BTTTT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=11%2F2018%2FTT-BTTTT",
       "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "04",
-        "17",
-        "24",
-        "25"
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
       ],
-      "citedInHsCount": 37
-    },
-    "23/2019/QD-TTG": {
-      "code": "23/2019/QD-TTG",
-      "type": "Quyết định",
-      "issuer": "TTG",
-      "issuerFullVi": "Thủ tướng Chính phủ",
-      "titleVi": "Văn bản 23/2019/QD-TTG (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=23%2F2019%2FQD-TTG",
-      "status": "ACTIVE",
-      "domain": [],
       "scopeHsChapters": [
-        "22",
-        "24",
-        "27",
-        "28",
-        "29",
-        "31",
-        "36",
-        "48",
         "84",
-        "87",
-        "88",
-        "89",
-        "95"
+        "85"
       ],
-      "citedInHsCount": 749
+      "sections": [
+        "N/A",
+        "PL1.I",
+        "ĐQSD cấm NK"
+      ],
+      "citedInHsCount": 186,
+      "contextCounts": {
+        "license": 90,
+        "inspection": 76,
+        "quarantine": 0,
+        "dualUse": 162
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "84433119",
+        "84433129",
+        "84433139",
+        "84433219",
+        "84433229"
+      ]
     },
-    "37/2013/TT-BCT": {
-      "code": "37/2013/TT-BCT",
-      "type": "Thông tư",
+    "1182/QD-BCT": {
+      "code": "1182/QD-BCT",
+      "type": "Quyết định",
+      "year": 2021,
       "issuer": "BCT",
       "issuerFullVi": "Bộ Công Thương",
-      "titleVi": "Văn bản 37/2013/TT-BCT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=37%2F2013%2FTT-BCT",
+      "titleVi": "Văn bản 1182/QD-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=1182%2FQD-BCT",
       "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "24"
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
       ],
-      "citedInHsCount": 6
-    },
-    "45/2023/TT-BCT": {
-      "code": "45/2023/TT-BCT",
-      "type": "Thông tư",
-      "issuer": "BCT",
-      "issuerFullVi": "Bộ Công Thương",
-      "titleVi": "Văn bản 45/2023/TT-BCT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=45%2F2023%2FTT-BCT",
-      "status": "ACTIVE",
-      "domain": [],
       "scopeHsChapters": [
-        "25",
-        "26",
-        "28"
-      ],
-      "citedInHsCount": 15
-    },
-    "04/2021/TT-BXD": {
-      "code": "04/2021/TT-BXD",
-      "type": "Thông tư",
-      "issuer": "BXD",
-      "issuerFullVi": "Bộ Xây dựng",
-      "titleVi": "Văn bản 04/2021/TT-BXD (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=04%2F2021%2FTT-BXD",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "25",
-        "68"
-      ],
-      "citedInHsCount": 34
-    },
-    "113/2017/ND-CP": {
-      "code": "113/2017/ND-CP",
-      "type": "Nghị định",
-      "issuer": "UNKNOWN",
-      "issuerFullVi": "Chưa rà soát",
-      "titleVi": "Văn bản 113/2017/ND-CP (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=113%2F2017%2FND-CP",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "25",
-        "26",
-        "27",
-        "28",
-        "29",
-        "30",
+        "11",
+        "15",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
         "31",
-        "32",
-        "36",
-        "38",
-        "39",
-        "75",
-        "76",
-        "81"
-      ],
-      "citedInHsCount": 1333
-    },
-    "45/2024/TT-BCT": {
-      "code": "45/2024/TT-BCT",
-      "type": "Thông tư",
-      "issuer": "BCT",
-      "issuerFullVi": "Bộ Công Thương",
-      "titleVi": "Văn bản 45/2024/TT-BCT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=45%2F2024%2FTT-BCT",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "26"
-      ],
-      "citedInHsCount": 1
-    },
-    "82/2022/ND-CP": {
-      "code": "82/2022/ND-CP",
-      "type": "Nghị định",
-      "issuer": "UNKNOWN",
-      "issuerFullVi": "Chưa rà soát",
-      "titleVi": "Văn bản 82/2022/ND-CP (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=82%2F2022%2FND-CP",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "26",
-        "27",
-        "28",
-        "29",
-        "38",
-        "81"
-      ],
-      "citedInHsCount": 278
-    },
-    "41/2019/TT-BCT": {
-      "code": "41/2019/TT-BCT",
-      "type": "Thông tư",
-      "issuer": "BCT",
-      "issuerFullVi": "Bộ Công Thương",
-      "titleVi": "Văn bản 41/2019/TT-BCT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=41%2F2019%2FTT-BCT",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "27",
-        "33",
-        "71"
-      ],
-      "citedInHsCount": 32
-    },
-    "07/2023/TT-NHNN": {
-      "code": "07/2023/TT-NHNN",
-      "type": "Thông tư",
-      "issuer": "NHNN",
-      "issuerFullVi": "Ngân hàng Nhà nước",
-      "titleVi": "Văn bản 07/2023/TT-NHNN (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=07%2F2023%2FTT-NHNN",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "32",
-        "39",
-        "48",
-        "49",
-        "72",
-        "84"
-      ],
-      "citedInHsCount": 20
-    },
-    "173/2018/TT-BQP": {
-      "code": "173/2018/TT-BQP",
-      "type": "Thông tư",
-      "issuer": "BQP",
-      "issuerFullVi": "Bộ Quốc phòng",
-      "titleVi": "Văn bản 173/2018/TT-BQP (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=173%2F2018%2FTT-BQP",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "36",
-        "87",
-        "88",
-        "89",
-        "93"
-      ],
-      "citedInHsCount": 41
-    },
-    "125/2021/TT-BCA": {
-      "code": "125/2021/TT-BCA",
-      "type": "Thông tư",
-      "issuer": "BCA",
-      "issuerFullVi": "Bộ Công an",
-      "titleVi": "Văn bản 125/2021/TT-BCA (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=125%2F2021%2FTT-BCA",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
         "36"
       ],
-      "citedInHsCount": 1
-    },
-    "12/2022/TT-BGTVT": {
-      "code": "12/2022/TT-BGTVT",
-      "type": "Thông tư",
-      "issuer": "BGTVT",
-      "issuerFullVi": "Bộ Giao thông",
-      "titleVi": "Văn bản 12/2022/TT-BGTVT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=12%2F2022%2FTT-BGTVT",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "36",
-        "40",
-        "44",
-        "70",
-        "73",
-        "84",
-        "85",
-        "86",
-        "87",
-        "89"
+      "sections": [
+        "PL1",
+        "PL2"
       ],
-      "citedInHsCount": 2183
-    },
-    "62/2024/TT-BGTVT": {
-      "code": "62/2024/TT-BGTVT",
-      "type": "Thông tư",
-      "issuer": "BGTVT",
-      "issuerFullVi": "Bộ Giao thông",
-      "titleVi": "Văn bản 62/2024/TT-BGTVT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=62%2F2024%2FTT-BGTVT",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "36",
-        "40",
-        "44",
-        "70",
-        "73",
-        "84",
-        "85",
-        "86",
-        "87",
-        "89"
-      ],
-      "citedInHsCount": 1315
-    },
-    "16/2024/TT-BYT": {
-      "code": "16/2024/TT-BYT",
-      "type": "Thông tư",
-      "issuer": "BYT",
-      "issuerFullVi": "Bộ Y tế",
-      "titleVi": "Văn bản 16/2024/TT-BYT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=16%2F2024%2FTT-BYT",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "38"
-      ],
-      "citedInHsCount": 17
-    },
-    "13/2023/QD-TTG": {
-      "code": "13/2023/QD-TTG",
-      "type": "Quyết định",
-      "issuer": "TTG",
-      "issuerFullVi": "Thủ tướng Chính phủ",
-      "titleVi": "Văn bản 13/2023/QD-TTG (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=13%2F2023%2FQD-TTG",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "39",
-        "47",
-        "70",
-        "72",
-        "74",
-        "75",
-        "76",
-        "79",
-        "80",
-        "81"
-      ],
-      "citedInHsCount": 24
+      "citedInHsCount": 147,
+      "contextCounts": {
+        "license": 2,
+        "inspection": 147,
+        "quarantine": 10,
+        "dualUse": 1
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "11010011",
+        "11010019",
+        "11010020",
+        "11022000",
+        "11029010"
+      ]
     },
     "01/2021/TT-BLDTBXH": {
       "code": "01/2021/TT-BLDTBXH",
       "type": "Thông tư",
+      "year": 2021,
       "issuer": "BLDTBXH",
-      "issuerFullVi": "Bộ LĐ-TB&XH",
+      "issuerFullVi": "Bộ Lao động - Thương binh và Xã hội",
       "titleVi": "Văn bản 01/2021/TT-BLDTBXH (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=01%2F2021%2FTT-BLDTBXH",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=01%2F2021%2FTT-BLDTBXH",
       "status": "ACTIVE",
-      "domain": [],
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
       "scopeHsChapters": [
         "39",
         "40",
@@ -681,111 +1255,2986 @@
         "84",
         "90"
       ],
-      "citedInHsCount": 123
-    },
-    "22/2018/TT-BTTTT": {
-      "code": "22/2018/TT-BTTTT",
-      "type": "Thông tư",
-      "issuer": "BTTTT",
-      "issuerFullVi": "Bộ TT&TT",
-      "titleVi": "Văn bản 22/2018/TT-BTTTT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=22%2F2018%2FTT-BTTTT",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "49",
-        "84"
+      "sections": [
+        "-",
+        "CL",
+        "CL NK",
+        "KTNN",
+        "N/A",
+        "SPHH",
+        "SPHH không phải KTNN",
+        "SPHH không phải KTNN về CL khi NK",
+        "SPHH phải KTNN về CL khi NK"
       ],
-      "citedInHsCount": 31
+      "citedInHsCount": 123,
+      "contextCounts": {
+        "license": 56,
+        "inspection": 98,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "39233020",
+        "39262060",
+        "39262090",
+        "39269039",
+        "39269042"
+      ]
     },
-    "47/2018/TT-NHNN": {
-      "code": "47/2018/TT-NHNN",
-      "type": "Thông tư",
-      "issuer": "NHNN",
-      "issuerFullVi": "Ngân hàng Nhà nước",
-      "titleVi": "Văn bản 47/2018/TT-NHNN (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=47%2F2018%2FTT-NHNN",
+    "2711/QD-BKHCN 2022": {
+      "code": "2711/QD-BKHCN 2022",
+      "type": "Quyết định",
+      "year": 2022,
+      "issuer": "BKHCN",
+      "issuerFullVi": "Bộ Khoa học và Công nghệ",
+      "titleVi": "Văn bản 2711/QD-BKHCN 2022 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=2711%2FQD-BKHCN%202022",
       "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "71"
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
       ],
-      "citedInHsCount": 2
-    },
-    "69/2018/ND-CP": {
-      "code": "69/2018/ND-CP",
-      "type": "Nghị định",
-      "issuer": "UNKNOWN",
-      "issuerFullVi": "Chưa rà soát",
-      "titleVi": "Văn bản 69/2018/ND-CP (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=69%2F2018%2FND-CP",
-      "status": "ACTIVE",
-      "domain": [],
       "scopeHsChapters": [
-        "84"
+        "72",
+        "73",
+        "84",
+        "85",
+        "94",
+        "95"
       ],
-      "citedInHsCount": 21
-    },
-    "11/2024/TT-BTTTT": {
-      "code": "11/2024/TT-BTTTT",
-      "type": "Thông tư",
-      "issuer": "BTTTT",
-      "issuerFullVi": "Bộ TT&TT",
-      "titleVi": "Văn bản 11/2024/TT-BTTTT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=11%2F2024%2FTT-BTTTT",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "84"
+      "sections": [
+        "2711/QĐ-BKHCN",
+        "Hàng hóa nhóm 2",
+        "NHÓM 2",
+        "Nhóm 2",
+        "Phụ lục I - Nhóm 2"
       ],
-      "citedInHsCount": 23
+      "citedInHsCount": 77,
+      "contextCounts": {
+        "license": 4,
+        "inspection": 70,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "72071290",
+        "72071900",
+        "72072092",
+        "72109010",
+        "72109090"
+      ]
     },
-    "11/2018/TT-BTTTT": {
-      "code": "11/2018/TT-BTTTT",
-      "type": "Thông tư",
-      "issuer": "BTTTT",
-      "issuerFullVi": "Bộ TT&TT",
-      "titleVi": "Văn bản 11/2018/TT-BTTTT (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=11%2F2018%2FTT-BTTTT",
+    "1725/QD-BCT": {
+      "code": "1725/QD-BCT",
+      "type": "Quyết định",
+      "year": 2024,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 1725/QD-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=1725%2FQD-BCT",
       "status": "ACTIVE",
-      "domain": [],
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
       "scopeHsChapters": [
         "84",
         "85"
       ],
-      "citedInHsCount": 186
-    },
-    "211/2025/ND-CP": {
-      "code": "211/2025/ND-CP",
-      "type": "Nghị định",
-      "issuer": "UNKNOWN",
-      "issuerFullVi": "Chưa rà soát",
-      "titleVi": "Văn bản 211/2025/ND-CP (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=211%2F2025%2FND-CP",
-      "status": "ACTIVE",
-      "domain": [],
-      "scopeHsChapters": [
-        "84",
-        "85"
+      "sections": [
+        "KTCN",
+        "KTCN hiệu suất năng lượng",
+        "KTCN năng lượng",
+        "N/A"
       ],
-      "citedInHsCount": 34
+      "citedInHsCount": 61,
+      "contextCounts": {
+        "license": 38,
+        "inspection": 61,
+        "quarantine": 0,
+        "dualUse": 11
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "84145110",
+        "84145191",
+        "84145199",
+        "84151020",
+        "84181031"
+      ]
+    },
+    "09/2024/TT-BYT-DM8": {
+      "code": "09/2024/TT-BYT-DM8",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BYT",
+      "issuerFullVi": "Bộ Y tế",
+      "titleVi": "Văn bản 09/2024/TT-BYT-DM8 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=09%2F2024%2FTT-BYT-DM8",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "30"
+      ],
+      "sections": [],
+      "citedInHsCount": 59,
+      "contextCounts": {
+        "license": 59,
+        "inspection": 14,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "30021500",
+        "30041015",
+        "30041016",
+        "30041019",
+        "30041020"
+      ]
+    },
+    "1182/2021/QD-BCT": {
+      "code": "1182/2021/QD-BCT",
+      "type": "Quyết định",
+      "year": 2021,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 1182/2021/QD-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=1182%2F2021%2FQD-BCT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "11",
+        "15",
+        "17",
+        "19",
+        "20",
+        "22",
+        "36"
+      ],
+      "sections": [
+        "PL1",
+        "PL2"
+      ],
+      "citedInHsCount": 58,
+      "contextCounts": {
+        "license": 5,
+        "inspection": 58,
+        "quarantine": 6,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "11071000",
+        "11072000",
+        "11081100",
+        "11081200",
+        "11081300"
+      ]
     },
     "29/2025/TT-BKHCN": {
       "code": "29/2025/TT-BKHCN",
       "type": "Thông tư",
-      "issuer": "UNKNOWN",
-      "issuerFullVi": "Chưa rà soát",
+      "year": 2025,
+      "issuer": "BKHCN",
+      "issuerFullVi": "Bộ Khoa học và Công nghệ",
       "titleVi": "Văn bản 29/2025/TT-BKHCN (cần bổ sung tiêu đề)",
-      "url": "https://vbpl.vn/search?q=29%2F2025%2FTT-BKHCN",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=29%2F2025%2FTT-BKHCN",
       "status": "ACTIVE",
-      "domain": [],
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
       "scopeHsChapters": [
         "84",
         "85",
         "88",
         "90"
       ],
-      "citedInHsCount": 62
+      "sections": [
+        "PL1",
+        "PL1-SP CNTT và VT bắt buộc chứng nhận hợp quy",
+        "PL2",
+        "PL2-SP CNTT và VT công bố hợp quy"
+      ],
+      "citedInHsCount": 52,
+      "contextCounts": {
+        "license": 28,
+        "inspection": 52,
+        "quarantine": 0,
+        "dualUse": 46
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "84713020",
+        "84713090",
+        "84714110",
+        "84714190",
+        "84716090"
+      ]
+    },
+    "173/2018/TT-BQP": {
+      "code": "173/2018/TT-BQP",
+      "type": "Thông tư",
+      "year": 2018,
+      "issuer": "BQP",
+      "issuerFullVi": "Bộ Quốc phòng",
+      "titleVi": "Văn bản 173/2018/TT-BQP (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=173%2F2018%2FTT-BQP",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "36",
+        "87",
+        "88",
+        "89",
+        "93"
+      ],
+      "sections": [
+        "QLCN",
+        "QLCN BQP"
+      ],
+      "citedInHsCount": 41,
+      "contextCounts": {
+        "license": 40,
+        "inspection": 10,
+        "quarantine": 0,
+        "dualUse": 7
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "36010000",
+        "36020000",
+        "36031000",
+        "36032000",
+        "36033000"
+      ]
+    },
+    "2310/QD-BCT-2025": {
+      "code": "2310/QD-BCT-2025",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 2310/QD-BCT-2025 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=2310%2FQD-BCT-2025",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "72"
+      ],
+      "sections": [
+        "2310/QĐ-BCT",
+        "CBPG",
+        "CBPG Thép mạ",
+        "Thuế CBPG"
+      ],
+      "citedInHsCount": 38,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 22,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "72104111",
+        "72104112",
+        "72104119",
+        "72104911",
+        "72104914"
+      ]
+    },
+    "12/2018/TT-BTC": {
+      "code": "12/2018/TT-BTC",
+      "type": "Thông tư",
+      "year": 2018,
+      "issuer": "BTC",
+      "issuerFullVi": "Bộ Tài chính",
+      "titleVi": "Văn bản 12/2018/TT-BTC (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=12%2F2018%2FTT-BTC",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH"
+      ],
+      "scopeHsChapters": [
+        "04",
+        "17",
+        "24",
+        "25"
+      ],
+      "sections": [
+        "Hạn ngạch thuế quan"
+      ],
+      "citedInHsCount": 37,
+      "contextCounts": {
+        "license": 27,
+        "inspection": 0,
+        "quarantine": 25,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "17011200",
+        "17011300",
+        "17011400",
+        "17019100",
+        "17019910"
+      ]
+    },
+    "04/2021/TT-BXD": {
+      "code": "04/2021/TT-BXD",
+      "type": "Thông tư",
+      "year": 2021,
+      "issuer": "BXD",
+      "issuerFullVi": "Bộ Xây dựng",
+      "titleVi": "Văn bản 04/2021/TT-BXD (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=04%2F2021%2FTT-BXD",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "25",
+        "68"
+      ],
+      "sections": [],
+      "citedInHsCount": 34,
+      "contextCounts": {
+        "license": 8,
+        "inspection": 17,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "25051000",
+        "25059000",
+        "25061000",
+        "25062000",
+        "25070000"
+      ]
+    },
+    "09/2024/TT-BYT-DM1": {
+      "code": "09/2024/TT-BYT-DM1",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BYT",
+      "issuerFullVi": "Bộ Y tế",
+      "titleVi": "Văn bản 09/2024/TT-BYT-DM1 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=09%2F2024%2FTT-BYT-DM1",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "28",
+        "29",
+        "30"
+      ],
+      "sections": [],
+      "citedInHsCount": 34,
+      "contextCounts": {
+        "license": 34,
+        "inspection": 12,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "28112990",
+        "28439000",
+        "29037900",
+        "29042090",
+        "29071900"
+      ]
+    },
+    "211/2025/ND-CP": {
+      "code": "211/2025/ND-CP",
+      "type": "Nghị định",
+      "year": 2025,
+      "issuer": "CP",
+      "issuerFullVi": "Chính phủ",
+      "titleVi": "Văn bản 211/2025/ND-CP (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=211%2F2025%2FND-CP",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "84",
+        "85"
+      ],
+      "sections": [
+        "N/A",
+        "SP mật mã dân sự"
+      ],
+      "citedInHsCount": 34,
+      "contextCounts": {
+        "license": 34,
+        "inspection": 28,
+        "quarantine": 0,
+        "dualUse": 33
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "84433131",
+        "84433139",
+        "84433191",
+        "84433199",
+        "84433240"
+      ]
+    },
+    "29/2025/TT-BKHCN-PL2": {
+      "code": "29/2025/TT-BKHCN-PL2",
+      "type": "Thông tư",
+      "year": 2025,
+      "issuer": "BKHCN",
+      "issuerFullVi": "Bộ Khoa học và Công nghệ",
+      "titleVi": "Văn bản 29/2025/TT-BKHCN-PL2 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=29%2F2025%2FTT-BKHCN-PL2",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "84",
+        "85"
+      ],
+      "sections": [
+        "PL2"
+      ],
+      "citedInHsCount": 34,
+      "contextCounts": {
+        "license": 19,
+        "inspection": 34,
+        "quarantine": 0,
+        "dualUse": 31
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "84713020",
+        "84713090",
+        "84714110",
+        "84714190",
+        "84716090"
+      ]
+    },
+    "41/2019/TT-BCT": {
+      "code": "41/2019/TT-BCT",
+      "type": "Thông tư",
+      "year": 2019,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 41/2019/TT-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=41%2F2019%2FTT-BCT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "27",
+        "33",
+        "71"
+      ],
+      "sections": [],
+      "citedInHsCount": 32,
+      "contextCounts": {
+        "license": 18,
+        "inspection": 20,
+        "quarantine": 1,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "27011100",
+        "27090010",
+        "27090020",
+        "27090090",
+        "27101211"
+      ]
+    },
+    "22/2018/TT-BTTTT": {
+      "code": "22/2018/TT-BTTTT",
+      "type": "Thông tư",
+      "year": 2018,
+      "issuer": "BTTTT",
+      "issuerFullVi": "Bộ Thông tin và Truyền thông",
+      "titleVi": "Văn bản 22/2018/TT-BTTTT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=22%2F2018%2FTT-BTTTT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "49",
+        "84"
+      ],
+      "sections": [
+        "PL1",
+        "PL2"
+      ],
+      "citedInHsCount": 31,
+      "contextCounts": {
+        "license": 18,
+        "inspection": 7,
+        "quarantine": 0,
+        "dualUse": 3
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "49011000",
+        "49019100",
+        "49019910",
+        "49019990",
+        "49030000"
+      ]
+    },
+    "3765/QD-BCT-2025": {
+      "code": "3765/QD-BCT-2025",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 3765/QD-BCT-2025 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=3765%2FQD-BCT-2025",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "72"
+      ],
+      "sections": [
+        "3765/QĐ-BCT",
+        "Thép cán nguội (Trung Quốc)",
+        "Áp thuế CBPG Thép cán nguội (NƯỚC CN)"
+      ],
+      "citedInHsCount": 29,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 12,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "72091610",
+        "72091690",
+        "72091710",
+        "72091790",
+        "72091891"
+      ]
+    },
+    "29/2025/TT-BKHCN-PL1": {
+      "code": "29/2025/TT-BKHCN-PL1",
+      "type": "Thông tư",
+      "year": 2025,
+      "issuer": "BKHCN",
+      "issuerFullVi": "Bộ Khoa học và Công nghệ",
+      "titleVi": "Văn bản 29/2025/TT-BKHCN-PL1 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=29%2F2025%2FTT-BKHCN-PL1",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "85",
+        "88",
+        "90"
+      ],
+      "sections": [
+        "PL1"
+      ],
+      "citedInHsCount": 28,
+      "contextCounts": {
+        "license": 11,
+        "inspection": 28,
+        "quarantine": 0,
+        "dualUse": 25
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "85171100",
+        "85171300",
+        "85176243",
+        "85181011",
+        "85181019"
+      ]
+    },
+    "09/2024/TT-BYT-DM11": {
+      "code": "09/2024/TT-BYT-DM11",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BYT",
+      "issuerFullVi": "Bộ Y tế",
+      "titleVi": "Văn bản 09/2024/TT-BYT-DM11 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=09%2F2024%2FTT-BYT-DM11",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "02",
+        "03",
+        "04",
+        "05",
+        "08",
+        "10",
+        "12",
+        "13",
+        "25",
+        "26"
+      ],
+      "sections": [
+        "DM11"
+      ],
+      "citedInHsCount": 27,
+      "contextCounts": {
+        "license": 20,
+        "inspection": 3,
+        "quarantine": 19,
+        "dualUse": 1
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "10019919",
+        "12112090",
+        "12115000",
+        "12119013",
+        "12119017"
+      ]
+    },
+    "3176/QD-BCT-2025": {
+      "code": "3176/QD-BCT-2025",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 3176/QD-BCT-2025 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=3176%2FQD-BCT-2025",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "72"
+      ],
+      "sections": [
+        "3176/QĐ-BCT",
+        "Toàn bộ"
+      ],
+      "citedInHsCount": 26,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 2,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "72082500",
+        "72082600",
+        "72082719",
+        "72082799",
+        "72083600"
+      ]
+    },
+    "13/2023/QD-TTG": {
+      "code": "13/2023/QD-TTG",
+      "type": "Quyết định",
+      "year": 2023,
+      "issuer": "TTG",
+      "issuerFullVi": "Thủ tướng Chính phủ",
+      "titleVi": "Văn bản 13/2023/QD-TTG (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=13%2F2023%2FQD-TTG",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "39",
+        "47",
+        "70",
+        "72",
+        "74",
+        "75",
+        "76",
+        "79",
+        "80",
+        "81"
+      ],
+      "sections": [
+        "PL1.I",
+        "Phần I",
+        "Phế liệu NK",
+        "Phế liệu NK làm NLSX"
+      ],
+      "citedInHsCount": 24,
+      "contextCounts": {
+        "license": 9,
+        "inspection": 8,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "39151010",
+        "39151090",
+        "39152090",
+        "39153090",
+        "39159010"
+      ]
+    },
+    "09/2024/TT-BYT-DM14": {
+      "code": "09/2024/TT-BYT-DM14",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BYT",
+      "issuerFullVi": "Bộ Y tế",
+      "titleVi": "Văn bản 09/2024/TT-BYT-DM14 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=09%2F2024%2FTT-BYT-DM14",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "33",
+        "34"
+      ],
+      "sections": [],
+      "citedInHsCount": 23,
+      "contextCounts": {
+        "license": 23,
+        "inspection": 4,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "33030000",
+        "33041000",
+        "33042000",
+        "33043000",
+        "33049100"
+      ]
+    },
+    "11/2024/TT-BTTTT": {
+      "code": "11/2024/TT-BTTTT",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BTTTT",
+      "issuerFullVi": "Bộ Thông tin và Truyền thông",
+      "titleVi": "Văn bản 11/2024/TT-BTTTT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=11%2F2024%2FTT-BTTTT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "84"
+      ],
+      "sections": [
+        "toàn bộ"
+      ],
+      "citedInHsCount": 23,
+      "contextCounts": {
+        "license": 17,
+        "inspection": 6,
+        "quarantine": 0,
+        "dualUse": 2
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "84401010",
+        "84411010",
+        "84412000",
+        "84413000",
+        "84425000"
+      ]
+    },
+    "69/2018/ND-CP": {
+      "code": "69/2018/ND-CP",
+      "type": "Nghị định",
+      "year": 2018,
+      "issuer": "CP",
+      "issuerFullVi": "Chính phủ",
+      "titleVi": "Văn bản 69/2018/ND-CP (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=69%2F2018%2FND-CP",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "84"
+      ],
+      "sections": [
+        "ĐK TNTX",
+        "ĐQSD kinh doanh TNTX có ĐK"
+      ],
+      "citedInHsCount": 21,
+      "contextCounts": {
+        "license": 19,
+        "inspection": 2,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "84158111",
+        "84158112",
+        "84158119",
+        "84158121",
+        "84158129"
+      ]
+    },
+    "07/2023/TT-NHNN": {
+      "code": "07/2023/TT-NHNN",
+      "type": "Thông tư",
+      "year": 2023,
+      "issuer": "NHNN",
+      "issuerFullVi": "Ngân hàng Nhà nước",
+      "titleVi": "Văn bản 07/2023/TT-NHNN (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=07%2F2023%2FTT-NHNN",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "32",
+        "39",
+        "48",
+        "49",
+        "72",
+        "84"
+      ],
+      "sections": [
+        "HH chỉ định cơ sở in, đúc tiền",
+        "Hàng hóa chỉ định CS in, đúc tiền",
+        "toàn bộ"
+      ],
+      "citedInHsCount": 20,
+      "contextCounts": {
+        "license": 10,
+        "inspection": 2,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "32151110",
+        "32151190",
+        "32151990",
+        "39209921",
+        "39209929"
+      ]
+    },
+    "6266/QD-BCA": {
+      "code": "6266/QD-BCA",
+      "type": "Quyết định",
+      "year": 2023,
+      "issuer": "BCA",
+      "issuerFullVi": "Bộ Công an",
+      "titleVi": "Văn bản 6266/QD-BCA (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=6266%2FQD-BCA",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "36",
+        "38",
+        "39",
+        "62",
+        "65",
+        "73",
+        "84",
+        "85",
+        "90",
+        "93"
+      ],
+      "sections": [
+        "A.3",
+        "N/A",
+        "SPHH có khả năng gây mất an toàn",
+        "Toàn bộ"
+      ],
+      "citedInHsCount": 19,
+      "contextCounts": {
+        "license": 9,
+        "inspection": 15,
+        "quarantine": 0,
+        "dualUse": 1
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "36041000",
+        "38130000",
+        "39269041",
+        "39269049",
+        "62160099"
+      ]
+    },
+    "2284/QD-BKHCN": {
+      "code": "2284/QD-BKHCN",
+      "type": "Quyết định",
+      "year": 2018,
+      "issuer": "BKHCN",
+      "issuerFullVi": "Bộ Khoa học và Công nghệ",
+      "titleVi": "Văn bản 2284/QD-BKHCN (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=2284%2FQD-BKHCN",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "84",
+        "85",
+        "90"
+      ],
+      "sections": [
+        "N/A"
+      ],
+      "citedInHsCount": 19,
+      "contextCounts": {
+        "license": 3,
+        "inspection": 19,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "84231010",
+        "84231020",
+        "84232010",
+        "84238110",
+        "84238910"
+      ]
+    },
+    "16/2024/TT-BYT": {
+      "code": "16/2024/TT-BYT",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BYT",
+      "issuerFullVi": "Bộ Y tế",
+      "titleVi": "Văn bản 16/2024/TT-BYT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=16%2F2024%2FTT-BYT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "38"
+      ],
+      "sections": [],
+      "citedInHsCount": 17,
+      "contextCounts": {
+        "license": 15,
+        "inspection": 2,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "38086110",
+        "38086120",
+        "38086130",
+        "38086140",
+        "38086190"
+      ]
+    },
+    "1182/QD-BCT-PL1": {
+      "code": "1182/QD-BCT-PL1",
+      "type": "Quyết định",
+      "year": 2021,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 1182/QD-BCT-PL1 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=1182%2FQD-BCT-PL1",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "85",
+        "94"
+      ],
+      "sections": [
+        "PL1"
+      ],
+      "citedInHsCount": 17,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 17,
+        "quarantine": 0,
+        "dualUse": 1
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "85437090",
+        "85442011",
+        "85442019",
+        "85442021",
+        "85442029"
+      ]
+    },
+    "2822/QD-BCT-2024": {
+      "code": "2822/QD-BCT-2024",
+      "type": "Quyết định",
+      "year": 2024,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 2822/QD-BCT-2024 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=2822%2FQD-BCT-2024",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "72"
+      ],
+      "sections": [
+        "CBPG",
+        "Thuế CBPG"
+      ],
+      "citedInHsCount": 16,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 11,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "72107012",
+        "72107013",
+        "72107019",
+        "72107021",
+        "72107029"
+      ]
+    },
+    "45/2023/TT-BCT": {
+      "code": "45/2023/TT-BCT",
+      "type": "Thông tư",
+      "year": 2023,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 45/2023/TT-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=45%2F2023%2FTT-BCT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "25",
+        "26",
+        "28"
+      ],
+      "sections": [
+        "PL1",
+        "PL1/PL2"
+      ],
+      "citedInHsCount": 15,
+      "contextCounts": {
+        "license": 3,
+        "inspection": 13,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "25041000",
+        "25049000",
+        "25111000",
+        "25120000",
+        "25174100"
+      ]
+    },
+    "45/2023/TT-BCT-PL1": {
+      "code": "45/2023/TT-BCT-PL1",
+      "type": "Thông tư",
+      "year": 2023,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 45/2023/TT-BCT-PL1 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=45%2F2023%2FTT-BCT-PL1",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "25",
+        "26",
+        "28"
+      ],
+      "sections": [],
+      "citedInHsCount": 15,
+      "contextCounts": {
+        "license": 3,
+        "inspection": 13,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "25041000",
+        "25049000",
+        "25111000",
+        "25120000",
+        "25174100"
+      ]
+    },
+    "691/QD-BCT-2023": {
+      "code": "691/QD-BCT-2023",
+      "type": "Quyết định",
+      "year": 2023,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 691/QD-BCT-2023 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=691%2FQD-BCT-2023",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "72",
+        "98"
+      ],
+      "sections": [
+        "Thuế tự vệ",
+        "Tự vệ",
+        "Áp thuế tự vệ"
+      ],
+      "citedInHsCount": 14,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 7,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "72071100",
+        "72071900",
+        "72072029",
+        "72072099",
+        "72131010"
+      ]
+    },
+    "22/2018/TT-BTTTT-PL2": {
+      "code": "22/2018/TT-BTTTT-PL2",
+      "type": "Thông tư",
+      "year": 2018,
+      "issuer": "BTTTT",
+      "issuerFullVi": "Bộ Thông tin và Truyền thông",
+      "titleVi": "Văn bản 22/2018/TT-BTTTT-PL2 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=22%2F2018%2FTT-BTTTT-PL2",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "49"
+      ],
+      "sections": [],
+      "citedInHsCount": 13,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "49011000",
+        "49019100",
+        "49019910",
+        "49019990",
+        "49030000"
+      ]
+    },
+    "9981/QD-BCA": {
+      "code": "9981/QD-BCA",
+      "type": "Quyết định",
+      "year": 2019,
+      "issuer": "BCA",
+      "issuerFullVi": "Bộ Công an",
+      "titleVi": "Văn bản 9981/QD-BCA (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=9981%2FQD-BCA",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "32",
+        "39",
+        "66",
+        "84",
+        "90",
+        "93"
+      ],
+      "sections": [
+        "DM SPHH nhóm 2",
+        "N/A"
+      ],
+      "citedInHsCount": 12,
+      "contextCounts": {
+        "license": 8,
+        "inspection": 9,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "32042000",
+        "39269041",
+        "39269049",
+        "66020000",
+        "84241090"
+      ]
+    },
+    "09/2024/TT-BYT-DM6": {
+      "code": "09/2024/TT-BYT-DM6",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BYT",
+      "issuerFullVi": "Bộ Y tế",
+      "titleVi": "Văn bản 09/2024/TT-BYT-DM6 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=09%2F2024%2FTT-BYT-DM6",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "28"
+      ],
+      "sections": [],
+      "citedInHsCount": 11,
+      "contextCounts": {
+        "license": 11,
+        "inspection": 10,
+        "quarantine": 0,
+        "dualUse": 11
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "28441010",
+        "28441090",
+        "28442010",
+        "28442090",
+        "28443010"
+      ]
+    },
+    "09/2024/TT-BYT-DM3": {
+      "code": "09/2024/TT-BYT-DM3",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BYT",
+      "issuerFullVi": "Bộ Y tế",
+      "titleVi": "Văn bản 09/2024/TT-BYT-DM3 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=09%2F2024%2FTT-BYT-DM3",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "29"
+      ],
+      "sections": [],
+      "citedInHsCount": 11,
+      "contextCounts": {
+        "license": 11,
+        "inspection": 1,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "29055100",
+        "29214600",
+        "29241100",
+        "29242400",
+        "29251200"
+      ]
+    },
+    "765/QD-BCT NGÀY 29/03/2019": {
+      "code": "765/QD-BCT NGÀY 29/03/2019",
+      "type": "Quyết định",
+      "year": 2019,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 765/QD-BCT NGÀY 29/03/2019 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=765%2FQD-BCT%20NG%C3%80Y%2029%2F03%2F2019",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "72"
+      ],
+      "sections": [
+        "Cắt giảm kiểm tra chuyên ngành"
+      ],
+      "citedInHsCount": 10,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 10,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "72269911",
+        "72269919",
+        "72269991",
+        "72269999",
+        "72279010"
+      ]
+    },
+    "235/QD-BCT-2023": {
+      "code": "235/QD-BCT-2023",
+      "type": "Quyết định",
+      "year": 2023,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 235/QD-BCT-2023 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=235%2FQD-BCT-2023",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "94"
+      ],
+      "sections": [
+        "CBPG",
+        "CBPG Bàn, ghế",
+        "CBPG Bàn, ghế (CN)",
+        "CBPG Bàn, ghế(CN)"
+      ],
+      "citedInHsCount": 10,
+      "contextCounts": {
+        "license": 10,
+        "inspection": 2,
+        "quarantine": 4,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "94013100",
+        "94013900",
+        "94014100",
+        "94014900",
+        "94016100"
+      ]
+    },
+    "09/2024/TT-BYT-DM5": {
+      "code": "09/2024/TT-BYT-DM5",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BYT",
+      "issuerFullVi": "Bộ Y tế",
+      "titleVi": "Văn bản 09/2024/TT-BYT-DM5 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=09%2F2024%2FTT-BYT-DM5",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "29",
+        "30"
+      ],
+      "sections": [],
+      "citedInHsCount": 9,
+      "contextCounts": {
+        "license": 9,
+        "inspection": 1,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "29031300",
+        "29072990",
+        "29215900",
+        "29321900",
+        "29398000"
+      ]
+    },
+    "765/QD-BCT 29/03/2019": {
+      "code": "765/QD-BCT 29/03/2019",
+      "type": "Quyết định",
+      "year": 2019,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 765/QD-BCT 29/03/2019 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=765%2FQD-BCT%2029%2F03%2F2019",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "72"
+      ],
+      "sections": [
+        "DM cắt giảm KTNB"
+      ],
+      "citedInHsCount": 9,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 7,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "72142069",
+        "72143010",
+        "72143090",
+        "72149111",
+        "72149112"
+      ]
+    },
+    "09/2024/TT-BYT-DM2": {
+      "code": "09/2024/TT-BYT-DM2",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BYT",
+      "issuerFullVi": "Bộ Y tế",
+      "titleVi": "Văn bản 09/2024/TT-BYT-DM2 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=09%2F2024%2FTT-BYT-DM2",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP"
+      ],
+      "scopeHsChapters": [
+        "29"
+      ],
+      "sections": [],
+      "citedInHsCount": 8,
+      "contextCounts": {
+        "license": 8,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "29222900",
+        "29223100",
+        "29223900",
+        "29333300",
+        "29334100"
+      ]
+    },
+    "715/QD-BCT-2020": {
+      "code": "715/QD-BCT-2020",
+      "type": "Quyết định",
+      "year": 2020,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 715/QD-BCT-2020 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=715%2FQD-BCT-2020",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "31"
+      ],
+      "sections": [],
+      "citedInHsCount": 8,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "31051020",
+        "31051090",
+        "31052000",
+        "31053000",
+        "31054000"
+      ]
+    },
+    "2333/QD-BCT-2025": {
+      "code": "2333/QD-BCT-2025",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 2333/QD-BCT-2025 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=2333%2FQD-BCT-2025",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "69"
+      ],
+      "sections": [],
+      "citedInHsCount": 8,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "69072121",
+        "69072122",
+        "69072123",
+        "69072124",
+        "69072191"
+      ]
+    },
+    "3176/QD-BCT": {
+      "code": "3176/QD-BCT",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 3176/QD-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=3176%2FQD-BCT",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "72"
+      ],
+      "sections": [
+        "-",
+        "AD BP chống lẩn tránh PVTM"
+      ],
+      "citedInHsCount": 8,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "72082500",
+        "72082600",
+        "72082719",
+        "72082799",
+        "72083600"
+      ]
+    },
+    "09/2024/TT-BYT-DM9": {
+      "code": "09/2024/TT-BYT-DM9",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BYT",
+      "issuerFullVi": "Bộ Y tế",
+      "titleVi": "Văn bản 09/2024/TT-BYT-DM9 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=09%2F2024%2FTT-BYT-DM9",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "30",
+        "34"
+      ],
+      "sections": [],
+      "citedInHsCount": 7,
+      "contextCounts": {
+        "license": 7,
+        "inspection": 1,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "30042039",
+        "30045021",
+        "30045029",
+        "30045091",
+        "30046010"
+      ]
+    },
+    "2105/QD-BCT-2025": {
+      "code": "2105/QD-BCT-2025",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 2105/QD-BCT-2025 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=2105%2FQD-BCT-2025",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP"
+      ],
+      "scopeHsChapters": [
+        "17"
+      ],
+      "sections": [],
+      "citedInHsCount": 6,
+      "contextCounts": {
+        "license": 5,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "17011300",
+        "17011400",
+        "17019100",
+        "17019910",
+        "17019990"
+      ]
+    },
+    "37/2013/TT-BCT": {
+      "code": "37/2013/TT-BCT",
+      "type": "Thông tư",
+      "year": 2013,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 37/2013/TT-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=37%2F2013%2FTT-BCT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP"
+      ],
+      "scopeHsChapters": [
+        "24"
+      ],
+      "sections": [],
+      "citedInHsCount": 6,
+      "contextCounts": {
+        "license": 6,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "24021000",
+        "24022010",
+        "24022020",
+        "24022090",
+        "24029010"
+      ]
+    },
+    "2491/QD-BCT-2025": {
+      "code": "2491/QD-BCT-2025",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 2491/QD-BCT-2025 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=2491%2FQD-BCT-2025",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "44"
+      ],
+      "sections": [
+        "Áp thuế CBPG một số SP ván sợi gỗ"
+      ],
+      "citedInHsCount": 6,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "44111200",
+        "44111300",
+        "44111400",
+        "44119200",
+        "44119300"
+      ]
+    },
+    "3546/QD-BCT-2025": {
+      "code": "3546/QD-BCT-2025",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 3546/QD-BCT-2025 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=3546%2FQD-BCT-2025",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "54"
+      ],
+      "sections": [
+        "Thuế CBPG sợi dài polyester"
+      ],
+      "citedInHsCount": 6,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "54023310",
+        "54023390",
+        "54024610",
+        "54024690",
+        "54024710"
+      ]
+    },
+    "3765/QD-BCT": {
+      "code": "3765/QD-BCT",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 3765/QD-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=3765%2FQD-BCT",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "72"
+      ],
+      "sections": [
+        "Áp thuế CBPG Thép cán nguội"
+      ],
+      "citedInHsCount": 6,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 2,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "72091610",
+        "72091690",
+        "72091710",
+        "72091790",
+        "72091891"
+      ]
+    },
+    "366/QD-BKHCN": {
+      "code": "366/QD-BKHCN",
+      "type": "Quyết định",
+      "year": 2023,
+      "issuer": "BKHCN",
+      "issuerFullVi": "Bộ Khoa học và Công nghệ",
+      "titleVi": "Văn bản 366/QD-BKHCN (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=366%2FQD-BKHCN",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "73"
+      ],
+      "sections": [
+        "I"
+      ],
+      "citedInHsCount": 6,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 6,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "73064020",
+        "73064090",
+        "73066110",
+        "73066190",
+        "73066910"
+      ]
+    },
+    "09/2024/TT-BYT-DM12": {
+      "code": "09/2024/TT-BYT-DM12",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BYT",
+      "issuerFullVi": "Bộ Y tế",
+      "titleVi": "Văn bản 09/2024/TT-BYT-DM12 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=09%2F2024%2FTT-BYT-DM12",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "13",
+        "33"
+      ],
+      "sections": [],
+      "citedInHsCount": 5,
+      "contextCounts": {
+        "license": 5,
+        "inspection": 5,
+        "quarantine": 1,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "13021200",
+        "33012500",
+        "33012950",
+        "33012970",
+        "33012990"
+      ]
+    },
+    "09/2024/TT-BYT-DM4": {
+      "code": "09/2024/TT-BYT-DM4",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BYT",
+      "issuerFullVi": "Bộ Y tế",
+      "titleVi": "Văn bản 09/2024/TT-BYT-DM4 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=09%2F2024%2FTT-BYT-DM4",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "29"
+      ],
+      "sections": [],
+      "citedInHsCount": 5,
+      "contextCounts": {
+        "license": 5,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 2
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "29394100",
+        "29394200",
+        "29394900",
+        "29396100",
+        "29396200"
+      ]
+    },
+    "2310/QD-BCT": {
+      "code": "2310/QD-BCT",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 2310/QD-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=2310%2FQD-BCT",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "72"
+      ],
+      "sections": [
+        "Toàn bộ văn bản"
+      ],
+      "citedInHsCount": 5,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "72123011",
+        "72123012",
+        "72123013",
+        "72123014",
+        "72123019"
+      ]
+    },
+    "1978/QD-BCT": {
+      "code": "1978/QD-BCT",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 1978/QD-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=1978%2FQD-BCT",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "72"
+      ],
+      "sections": [
+        "Áp thuế CBPG Thép hình chữ H (MA)"
+      ],
+      "citedInHsCount": 5,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "72163311",
+        "72163319",
+        "72163390",
+        "72287010",
+        "72287090"
+      ]
+    },
+    "1978/QD-BCT-2025": {
+      "code": "1978/QD-BCT-2025",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 1978/QD-BCT-2025 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=1978%2FQD-BCT-2025",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "72"
+      ],
+      "sections": [],
+      "citedInHsCount": 5,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "72163311",
+        "72163319",
+        "72163390",
+        "72287010",
+        "72287090"
+      ]
+    },
+    "2531/QD-BCT-2024": {
+      "code": "2531/QD-BCT-2024",
+      "type": "Quyết định",
+      "year": 2024,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 2531/QD-BCT-2024 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=2531%2FQD-BCT-2024",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP"
+      ],
+      "scopeHsChapters": [
+        "76"
+      ],
+      "sections": [
+        "Thuế CBPG",
+        "Áp thuế CBPG SP nhôm"
+      ],
+      "citedInHsCount": 5,
+      "contextCounts": {
+        "license": 2,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "76041010",
+        "76041090",
+        "76042190",
+        "76042910",
+        "76042990"
+      ]
+    },
+    "715/QD-BCT": {
+      "code": "715/QD-BCT",
+      "type": "Quyết định",
+      "year": 2020,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 715/QD-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=715%2FQD-BCT",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "31"
+      ],
+      "sections": [],
+      "citedInHsCount": 4,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "LOW",
+      "sampleHsCodes": [
+        "31051020",
+        "31051090",
+        "31052000",
+        "31053000"
+      ]
+    },
+    "693/QD-BCT-2023": {
+      "code": "693/QD-BCT-2023",
+      "type": "Quyết định",
+      "year": 2023,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 693/QD-BCT-2023 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=693%2FQD-BCT-2023",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "72"
+      ],
+      "sections": [
+        "AD BP chống lẩn tránh PVTM"
+      ],
+      "citedInHsCount": 4,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 1,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "72139190",
+        "72171010",
+        "72171029",
+        "72299099"
+      ]
+    },
+    "3765/QD-BCT 2025": {
+      "code": "3765/QD-BCT 2025",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 3765/QD-BCT 2025 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=3765%2FQD-BCT%202025",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "72"
+      ],
+      "sections": [
+        "Thuế CBPG Thép cán nguội (Nước CN)"
+      ],
+      "citedInHsCount": 4,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 4,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "72202010",
+        "72202090",
+        "72209010",
+        "72209090"
+      ]
+    },
+    "3453/QD-BCT-2024": {
+      "code": "3453/QD-BCT-2024",
+      "type": "Quyết định",
+      "year": 2024,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 3453/QD-BCT-2024 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=3453%2FQD-BCT-2024",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "73",
+        "85"
+      ],
+      "sections": [],
+      "citedInHsCount": 4,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "73082011",
+        "73082019",
+        "85023110",
+        "85023120"
+      ]
+    },
+    "1725/QD-BCT 2024": {
+      "code": "1725/QD-BCT 2024",
+      "type": "Quyết định",
+      "year": 2024,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 1725/QD-BCT 2024 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=1725%2FQD-BCT%202024",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "84"
+      ],
+      "sections": [
+        "KTCN hiệu suất năng lượng",
+        "KTCN năng lượng"
+      ],
+      "citedInHsCount": 4,
+      "contextCounts": {
+        "license": 4,
+        "inspection": 4,
+        "quarantine": 0,
+        "dualUse": 2
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "84151020",
+        "84433121",
+        "84433129",
+        "84433131"
+      ]
+    },
+    "367/QD-BHKCN": {
+      "code": "367/QD-BHKCN",
+      "type": "Quyết định",
+      "year": null,
+      "issuer": "BHKCN",
+      "issuerFullVi": "Cơ quan BHKCN",
+      "titleVi": "Văn bản 367/QD-BHKCN (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=367%2FQD-BHKCN",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "85",
+        "94"
+      ],
+      "sections": [],
+      "citedInHsCount": 4,
+      "contextCounts": {
+        "license": 1,
+        "inspection": 4,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "85395210",
+        "85395290",
+        "94051191",
+        "94052190"
+      ]
+    },
+    "2711/2022/QD-BKHCN": {
+      "code": "2711/2022/QD-BKHCN",
+      "type": "Quyết định",
+      "year": 2022,
+      "issuer": "BKHCN",
+      "issuerFullVi": "Bộ Khoa học và Công nghệ",
+      "titleVi": "Văn bản 2711/2022/QD-BKHCN (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=2711%2F2022%2FQD-BKHCN",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "27"
+      ],
+      "sections": [],
+      "citedInHsCount": 3,
+      "contextCounts": {
+        "license": 2,
+        "inspection": 3,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "27101946",
+        "27101971",
+        "27101972"
+      ]
+    },
+    "691/QD-BCT": {
+      "code": "691/QD-BCT",
+      "type": "Quyết định",
+      "year": 2023,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 691/QD-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=691%2FQD-BCT",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "72"
+      ],
+      "sections": [
+        "-",
+        "Áp thuế tự vệ Phôi thép và thép dài"
+      ],
+      "citedInHsCount": 3,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "72072099",
+        "72142031",
+        "72142041"
+      ]
+    },
+    "693/QD-BCT": {
+      "code": "693/QD-BCT",
+      "type": "Quyết định",
+      "year": 2023,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 693/QD-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=693%2FQD-BCT",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "72"
+      ],
+      "sections": [
+        "AD BP chống lẩn tránh PVTM Thép cuộn, thép dây",
+        "BP chống lẩn tránh PVTM - Thép cuộn, thép dây"
+      ],
+      "citedInHsCount": 3,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "72171010",
+        "72171029",
+        "72299099"
+      ]
+    },
+    "10.2022/TT-BTTT": {
+      "code": "10.2022/TT-BTTT",
+      "type": "Thông tư",
+      "year": 2022,
+      "issuer": "BTTT",
+      "issuerFullVi": "Cơ quan BTTT",
+      "titleVi": "Văn bản 10.2022/TT-BTTT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=10.2022%2FTT-BTTT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "84"
+      ],
+      "sections": [],
+      "citedInHsCount": 3,
+      "contextCounts": {
+        "license": 3,
+        "inspection": 3,
+        "quarantine": 0,
+        "dualUse": 3
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "84713090",
+        "84714190",
+        "84714990"
+      ]
+    },
+    "367/QD-BKHCN": {
+      "code": "367/QD-BKHCN",
+      "type": "Quyết định",
+      "year": null,
+      "issuer": "BKHCN",
+      "issuerFullVi": "Bộ Khoa học và Công nghệ",
+      "titleVi": "Văn bản 367/QD-BKHCN (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=367%2FQD-BKHCN",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "85",
+        "94"
+      ],
+      "sections": [],
+      "citedInHsCount": 3,
+      "contextCounts": {
+        "license": 1,
+        "inspection": 3,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "85395210",
+        "85395290",
+        "94052190"
+      ]
+    },
+    "2105/QD-BCT": {
+      "code": "2105/QD-BCT",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 2105/QD-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=2105%2FQD-BCT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP"
+      ],
+      "scopeHsChapters": [
+        "17"
+      ],
+      "sections": [],
+      "citedInHsCount": 2,
+      "contextCounts": {
+        "license": 1,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "17019990",
+        "17029091"
+      ]
+    },
+    "09/2024/TT-BYT-DM10": {
+      "code": "09/2024/TT-BYT-DM10",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BYT",
+      "issuerFullVi": "Bộ Y tế",
+      "titleVi": "Văn bản 09/2024/TT-BYT-DM10 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=09%2F2024%2FTT-BYT-DM10",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP"
+      ],
+      "scopeHsChapters": [
+        "30"
+      ],
+      "sections": [],
+      "citedInHsCount": 2,
+      "contextCounts": {
+        "license": 2,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "30024120",
+        "30024190"
+      ]
+    },
+    "2027/2025/QD-BCT": {
+      "code": "2027/2025/QD-BCT",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 2027/2025/QD-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=2027%2F2025%2FQD-BCT",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "39"
+      ],
+      "sections": [],
+      "citedInHsCount": 2,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "39202010",
+        "39202091"
+      ]
+    },
+    "2027/QD-BCT-2025": {
+      "code": "2027/QD-BCT-2025",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 2027/QD-BCT-2025 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=2027%2FQD-BCT-2025",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "39"
+      ],
+      "sections": [],
+      "citedInHsCount": 2,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "39202010",
+        "39202091"
+      ]
+    },
+    "2093/QD-BCT-2025": {
+      "code": "2093/QD-BCT-2025",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 2093/QD-BCT-2025 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=2093%2FQD-BCT-2025",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "70"
+      ],
+      "sections": [],
+      "citedInHsCount": 2,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "70052920",
+        "70052990"
+      ]
+    },
+    "47/2018/TT-NHNN": {
+      "code": "47/2018/TT-NHNN",
+      "type": "Thông tư",
+      "year": 2018,
+      "issuer": "NHNN",
+      "issuerFullVi": "Ngân hàng Nhà nước",
+      "titleVi": "Văn bản 47/2018/TT-NHNN (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=47%2F2018%2FTT-NHNN",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "71"
+      ],
+      "sections": [],
+      "citedInHsCount": 2,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "71081210",
+        "71081290"
+      ]
+    },
+    "143/QD-BCT-2025": {
+      "code": "143/QD-BCT-2025",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 143/QD-BCT-2025 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=143%2FQD-BCT-2025",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "73"
+      ],
+      "sections": [
+        "Áp thuế CBPG Cáp thép dự ứng lực (MA, TH, CN)"
+      ],
+      "citedInHsCount": 2,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 1,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "73121091",
+        "73121099"
+      ]
+    },
+    "10/2022/TT-BTTTT": {
+      "code": "10/2022/TT-BTTTT",
+      "type": "Thông tư",
+      "year": 2022,
+      "issuer": "BTTTT",
+      "issuerFullVi": "Bộ Thông tin và Truyền thông",
+      "titleVi": "Văn bản 10/2022/TT-BTTTT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=10%2F2022%2FTT-BTTTT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG",
+        "LƯỠNG_DỤNG"
+      ],
+      "scopeHsChapters": [
+        "85"
+      ],
+      "sections": [
+        "SP an toàn thông tin mạng NK"
+      ],
+      "citedInHsCount": 2,
+      "contextCounts": {
+        "license": 2,
+        "inspection": 2,
+        "quarantine": 0,
+        "dualUse": 2
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "85176243",
+        "85176249"
+      ]
+    },
+    "6266/QD-BCA 2023": {
+      "code": "6266/QD-BCA 2023",
+      "type": "Quyết định",
+      "year": 2023,
+      "issuer": "BCA",
+      "issuerFullVi": "Bộ Công an",
+      "titleVi": "Văn bản 6266/QD-BCA 2023 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=6266%2FQD-BCA%202023",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP"
+      ],
+      "scopeHsChapters": [
+        "93"
+      ],
+      "sections": [
+        "SPHH"
+      ],
+      "citedInHsCount": 2,
+      "contextCounts": {
+        "license": 2,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "93063030",
+        "93069010"
+      ]
+    },
+    "9981/QD-BCA 2019": {
+      "code": "9981/QD-BCA 2019",
+      "type": "Quyết định",
+      "year": 2019,
+      "issuer": "BCA",
+      "issuerFullVi": "Bộ Công an",
+      "titleVi": "Văn bản 9981/QD-BCA 2019 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=9981%2FQD-BCA%202019",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP"
+      ],
+      "scopeHsChapters": [
+        "93"
+      ],
+      "sections": [
+        "DM SPHH Nhóm 2"
+      ],
+      "citedInHsCount": 2,
+      "contextCounts": {
+        "license": 2,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "CRITICAL",
+      "sampleHsCodes": [
+        "93069010",
+        "93069090"
+      ]
+    },
+    "45/2024/TT-BCT": {
+      "code": "45/2024/TT-BCT",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 45/2024/TT-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=45%2F2024%2FTT-BCT",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "26"
+      ],
+      "sections": [
+        "PL2"
+      ],
+      "citedInHsCount": 1,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 1,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "26140010"
+      ]
+    },
+    "45/2024/TT-BCT-PL2": {
+      "code": "45/2024/TT-BCT-PL2",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 45/2024/TT-BCT-PL2 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=45%2F2024%2FTT-BCT-PL2",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "26"
+      ],
+      "sections": [],
+      "citedInHsCount": 1,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 1,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "26140010"
+      ]
+    },
+    "1914/QD-BCT": {
+      "code": "1914/QD-BCT",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 1914/QD-BCT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=1914%2FQD-BCT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "29"
+      ],
+      "sections": [],
+      "citedInHsCount": 1,
+      "contextCounts": {
+        "license": 1,
+        "inspection": 1,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "29224220"
+      ]
+    },
+    "1914/QD-BCT-2025": {
+      "code": "1914/QD-BCT-2025",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 1914/QD-BCT-2025 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=1914%2FQD-BCT-2025",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "29"
+      ],
+      "sections": [],
+      "citedInHsCount": 1,
+      "contextCounts": {
+        "license": 1,
+        "inspection": 1,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "29224220"
+      ]
+    },
+    "125/2021/TT-BCA": {
+      "code": "125/2021/TT-BCA",
+      "type": "Thông tư",
+      "year": 2021,
+      "issuer": "BCA",
+      "issuerFullVi": "Bộ Công an",
+      "titleVi": "Văn bản 125/2021/TT-BCA (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=125%2F2021%2FTT-BCA",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "36"
+      ],
+      "sections": [],
+      "citedInHsCount": 1,
+      "contextCounts": {
+        "license": 1,
+        "inspection": 1,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "36041000"
+      ]
+    },
+    "01/2024/FT-BNNPTNT": {
+      "code": "01/2024/FT-BNNPTNT",
+      "type": "Văn bản",
+      "year": 2024,
+      "issuer": "BNNPTNT",
+      "issuerFullVi": "Bộ Nông nghiệp và PTNT",
+      "titleVi": "Văn bản 01/2024/FT-BNNPTNT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=01%2F2024%2FFT-BNNPTNT",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "44"
+      ],
+      "sections": [
+        "M9"
+      ],
+      "citedInHsCount": 1,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 1,
+        "quarantine": 1,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "44071200"
+      ]
+    },
+    "01/2024/TT-BBNPTNT": {
+      "code": "01/2024/TT-BBNPTNT",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BBNPTNT",
+      "issuerFullVi": "Cơ quan BBNPTNT",
+      "titleVi": "Văn bản 01/2024/TT-BBNPTNT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=01%2F2024%2FTT-BBNPTNT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH"
+      ],
+      "scopeHsChapters": [
+        "44"
+      ],
+      "sections": [
+        "M21"
+      ],
+      "citedInHsCount": 1,
+      "contextCounts": {
+        "license": 1,
+        "inspection": 0,
+        "quarantine": 1,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "44072290"
+      ]
+    },
+    "01/I_2024/TT-BNNPTNT": {
+      "code": "01/I_2024/TT-BNNPTNT",
+      "type": "Thông tư",
+      "year": 2024,
+      "issuer": "BNNPTNT",
+      "issuerFullVi": "Bộ Nông nghiệp và PTNT",
+      "titleVi": "Văn bản 01/I_2024/TT-BNNPTNT (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=01%2FI_2024%2FTT-BNNPTNT",
+      "status": "ACTIVE",
+      "domain": [
+        "GIẤY_PHÉP",
+        "KIỂM_DỊCH",
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "44"
+      ],
+      "sections": [
+        "M21"
+      ],
+      "citedInHsCount": 1,
+      "contextCounts": {
+        "license": 1,
+        "inspection": 1,
+        "quarantine": 1,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "44182900"
+      ]
+    },
+    "1959/QD-BCT-2025": {
+      "code": "1959/QD-BCT-2025",
+      "type": "Quyết định",
+      "year": 2025,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 1959/QD-BCT-2025 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=1959%2FQD-BCT-2025",
+      "status": "ACTIVE",
+      "domain": [],
+      "scopeHsChapters": [
+        "72"
+      ],
+      "sections": [
+        "Toàn bộ"
+      ],
+      "citedInHsCount": 1,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [
+        "72085100"
+      ]
+    },
+    "1725/QD-BCT-2024": {
+      "code": "1725/QD-BCT-2024",
+      "type": "Quyết định",
+      "year": 2024,
+      "issuer": "BCT",
+      "issuerFullVi": "Bộ Công Thương",
+      "titleVi": "Văn bản 1725/QD-BCT-2024 (cần bổ sung tiêu đề)",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-timkiem.aspx?Keyword=1725%2FQD-BCT-2024",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_TRA_CHẤT_LƯỢNG"
+      ],
+      "scopeHsChapters": [
+        "85"
+      ],
+      "sections": [],
+      "citedInHsCount": 1,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 1,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [
+        "85041000"
+      ]
     }
   }
 }

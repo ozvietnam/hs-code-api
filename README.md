@@ -59,6 +59,7 @@ openssl rand -hex 32
 | `/api/products?hs=` | GET | Yes | Sản phẩm ví dụ (Shopee/Taobao) cho mã HS Loại khác — 11,072 sản phẩm / 3,383 mã |
 | `/api/products?hs=A,B` | GET | Yes | Batch tra nhiều mã cùng lúc |
 | `/api/products?stats=1` | GET | Yes | Tổng quan corpus + priority queue đào sâu |
+| `/api/data-quality` | GET | Yes | Data quality report — anomaly tax.json + enriched (`?category=missingVat` lọc 1 nhóm; regen: `npm run data:quality-report`) |
 
 **Vercel Hobby** projects cap serverless functions (~12). Several “logical” endpoints are implemented as **`/api/dataset`** and **`/api/tariff`** with `resource` / `op` query params; `vercel.json` rewrites preserve the public URLs above.
 
