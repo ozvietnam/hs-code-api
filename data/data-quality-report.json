@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T04:10:11.858Z",
+  "generatedAt": "2026-07-02T05:45:37.633Z",
   "stats": {
     "taxRows": 11871,
     "rowsWithPolicy": 7928,
@@ -12,7 +12,7 @@
       "CRITICAL": 309
     },
     "categoriesWithErrors": 0,
-    "categoriesWithWarnings": 3
+    "categoriesWithWarnings": 1
   },
   "findings": {
     "hsFormatInvalid": {
@@ -27,9 +27,9 @@
       "count": 0,
       "samples": []
     },
-    "missingUnit": {
-      "severity": "warn",
-      "description": "Thiếu đơn vị tính (dvt)",
+    "unitEmptyCh98": {
+      "severity": "info",
+      "description": "Đơn vị tính trống ở chương 98 (đúng quy ước — theo mã gốc tương ứng)",
       "count": 3,
       "samples": [
         "98493810",
@@ -37,9 +37,15 @@
         "98494321"
       ]
     },
+    "unitEmptyOther": {
+      "severity": "warn",
+      "description": "Thiếu đơn vị tính NGOÀI chương 98 (thiếu data thật)",
+      "count": 0,
+      "samples": []
+    },
     "missingNameEn": {
       "severity": "info",
-      "description": "Thiếu tên tiếng Anh (ảnh hưởng search song ngữ)",
+      "description": "Thiếu tên tiếng Anh (ảnh hưởng search song ngữ) — theo chương: {\"98\":457}",
       "count": 457,
       "samples": [
         "98041500",
@@ -64,9 +70,9 @@
         "98110090"
       ]
     },
-    "missingVat": {
-      "severity": "warn",
-      "description": "VAT rỗng",
+    "vatEmptyCh98": {
+      "severity": "info",
+      "description": "VAT trống ở chương 98 (đúng quy ước — theo mã gốc tương ứng)",
       "count": 457,
       "samples": [
         "98041500",
@@ -90,6 +96,12 @@
         "98110010",
         "98110090"
       ]
+    },
+    "vatEmptyOther": {
+      "severity": "warn",
+      "description": "VAT trống NGOÀI chương 98 (thiếu data thật)",
+      "count": 0,
+      "samples": []
     },
     "ttWithoutMfn": {
       "severity": "warn",
@@ -103,10 +115,10 @@
       "count": 0,
       "samples": []
     },
-    "mfnNonNumeric": {
+    "mfnQuotaFormat": {
       "severity": "info",
-      "description": "MFN không phải số thuần (cần kiểm tra format)",
-      "count": 295,
+      "description": "MFN dạng thuế hạn ngạch \"X (NHN: Y)\" — trong/ngoài hạn ngạch, data hợp lệ",
+      "count": 31,
       "samples": [
         "17011200: \"25 (NHN: 80)\"",
         "17011300: \"25 (NHN: 80)\"",
@@ -129,6 +141,39 @@
         "24013090: \"30 (NHN: 90)\"",
         "25010010: \"30 (NHN: 60)\""
       ]
+    },
+    "mfnCh98Reference": {
+      "severity": "info",
+      "description": "MFN là text tham chiếu hướng dẫn Chương 98 — đúng quy ước biểu thuế",
+      "count": 264,
+      "samples": [
+        "87021010: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87021041: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87021042: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87021049: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87021050: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87022010: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87022022: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87022023: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87022029: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87022031: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87022032: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87022039: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87022041: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87022049: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87023010: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87023021: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87023029: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87023031: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87023039: \"Theo hướng dẫn tại khoản 1.1 Chương 98\"",
+        "87023041: \"Theo hướng dẫn tại khoản 1.1 Chương 98\""
+      ]
+    },
+    "mfnMalformed": {
+      "severity": "warn",
+      "description": "MFN format lạ (không phải số/hạn ngạch NHN/tham chiếu Ch.98) — cần kiểm tra",
+      "count": 0,
+      "samples": []
     },
     "duplicateNames": {
       "severity": "info",
