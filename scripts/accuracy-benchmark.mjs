@@ -131,20 +131,18 @@ if (dryRun) {
 // Load shared libs
 const { searchCandidates } = await import('../lib/search-utils.js');
 const { translateToVi, getBrandHint } = await import('../lib/glossary.js');
-let buildSuggestCandidates = null;
-if (candMode === 'hybrid') {
-  ({ buildSuggestCandidates } = await import('../lib/suggest-candidates.js'));
-}
+const { getCandidateEvidence } = await import('../lib/suggest-candidates.js');
 
-// Sinh candidate theo mode (keyword cũ vs hybrid mới).
 async function getEvidence(description) {
-  if (candMode === 'hybrid') {
-    const { candidates } = await buildSuggestCandidates(description, {
-      topCandidates: 12, perHeading: 6, includePrecedent: !noPrecedent, tier: via === 'hermes' ? 'standard' : 'premium', timeoutMs: 18000,
-    });
-    return candidates;
-  }
-  return searchCandidates(description, { topCandidates: 10 });
+  const { candidates } = await getCandidateEvidence(description, {
+    hybrid: candMode === 'hybrid',
+    topCandidates: candMode === 'hybrid' ? 12 : 10,
+    perHeading: 6,
+    includePrecedent: !noPrecedent,
+    tier: 'standard',
+    timeoutMs: 18000,
+  });
+  return candidates;
 }
 
 let geminiGenerateJson, applyGirRules, applyPrecedentBoost, routerChat, parseJsonLoose;

@@ -421,7 +421,12 @@ function renderStats(s){
 }
 
 function renderBench(b){
-  if (!b) { document.getElementById("accuracy").style.display = "none"; return; }
+  if (!b) {
+    document.getElementById("accuracy").style.display = "none";
+    const navLink = document.querySelector('.nav-links a[href="#accuracy"]');
+    if (navLink) navLink.style.display = "none";
+    return;
+  }
   const bars = (b.levels||[]).map(l => `
     <div class="bar-row">
       <div class="bar-head"><span>${esc(l.label)}</span><span class="val">${l.pipeline}%</span></div>

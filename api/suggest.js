@@ -1,7 +1,6 @@
 const { requireAuth } = require('../lib/auth');
 const { setCors, handleOptions } = require('../lib/cors');
-const { searchCandidates } = require('../lib/search-utils');
-const { buildSuggestCandidates } = require('../lib/suggest-candidates');
+const { getCandidateEvidence } = require('../lib/suggest-candidates');
 const { callLLMJson } = require('../lib/llm-tier');
 const { buildEvidenceTrace } = require('../lib/suggest-evidence');
 const { applyGirRules } = require('../lib/gir-engine');
@@ -17,31 +16,10 @@ const { captureError } = require('../lib/error-monitor');
 const { applyLearnedCorrections } = require('../lib/learned-corrections');
 const { getSuggestCache, setSuggestCache } = require('../lib/suggest-cache');
 const { getPrompt } = require('../lib/prompt-version');
-const fs = require('fs');
-const path = require('path');
-let _conflicts;
-function conflictsDb() {
-  try { return (_conflicts ||= JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'conflicts.json'), 'utf8'))); }
-  catch { return (_conflicts = {}); }
-}
+const { conflictsData } = require('../lib/data');
 
-// Candidate generation: hybrid (LLM heading + precedent + keyword) mặc định bật.
-// SUGGEST_HYBRID_CANDIDATES=0 → rollback về keyword thuần. buildSuggestCandidates
-// đã tự fallback keyword nội bộ nếu LLM lỗi, nên không bao giờ tệ hơn tầng cũ.
-const HYBRID_CANDIDATES = process.env.SUGGEST_HYBRID_CANDIDATES !== '0';
-async function getCandidateEvidence(description, topCandidates) {
-  if (!HYBRID_CANDIDATES) return searchCandidates(description, { topCandidates });
-  try {
-    const { candidates } = await buildSuggestCandidates(description, {
-      topCandidates: Math.max(topCandidates, 12),
-      perHeading: 6,
-      includePrecedent: true,
-      tier: 'standard',
-      timeoutMs: 15000,
-    });
-    if (candidates && candidates.length) return candidates;
-  } catch { /* fall back to keyword below */ }
-  return searchCandidates(description, { topCandidates });
+function conflictsDb() {
+  return conflictsData;
 }
 
 // Default prompt — used if data/prompts/index.json or active file is missing
@@ -93,9 +71,16 @@ module.exports = async function handler(req, res) {
 
   const topCandidates = Math.min(Math.max(parseInt(body?.options?.topCandidates, 10) || 10, 3), 20);
   const topReranked = Math.min(Math.max(parseInt(body?.options?.topReranked, 10) || 3, 1), 5);
+
+  const cached = getSuggestCache(description, topReranked);
+  if (cached) {
+    res.setHeader('Cache-Control', 'private, max-age=300');
+    return res.status(200).json({ ...cached, cached: true });
+  }
+
   const glossaryVi = translateToVi(description);
   const brandHint = getBrandHint(description);
-  const evidence = await getCandidateEvidence(description, topCandidates);
+  const { candidates: evidence, ozPrecedents } = await getCandidateEvidence(description, { topCandidates });
   const audit = buildEvidenceTrace(description, evidence);
 
   if (evidence.length === 0) {
@@ -117,13 +102,6 @@ module.exports = async function handler(req, res) {
       ms: Date.now() - started,
       message: 'No candidates found in tariff index',
     });
-  }
-
-  // Check in-memory cache before calling LLM
-  const cached = getSuggestCache(description, topReranked);
-  if (cached) {
-    res.setHeader('Cache-Control', 'private, max-age=300');
-    return res.status(200).json({ ...cached, cached: true });
   }
 
   try {
@@ -156,12 +134,13 @@ module.exports = async function handler(req, res) {
     const rawSuggestions = (json.suggestions || []).slice(0, topReranked);
     const girRanked = applyGirRules(rawSuggestions, description);
     const precedentRanked = applyPrecedentBoost(girRanked.suggestions, description);
-    const ozSearch = await searchOzByKeyword(description, { limit: 5 });
-    const ozPrecedents = ozSearch.items; // [{hsCode, tenHang, ozCount, matchCoverage, ...}]
+    const ozSearchItems = ozPrecedents.length
+      ? ozPrecedents
+      : (await searchOzByKeyword(description, { limit: 5 })).items;
     const evidenceByHs = new Map(evidence.map((item) => [item.hsCode, item]));
     const historyAdjusted = applyHistoricalSignals({
       suggestions: precedentRanked.suggestions.slice(0, topReranked),
-      ozPrecedents,
+      ozPrecedents: ozSearchItems,
       evidenceByHs,
     });
     const suggestions = historyAdjusted.suggestions;
@@ -284,7 +263,7 @@ async function handleBatch(req, res, body, started) {
         return { id: item.id, cached: true, ms: 0, ...cached };
       }
 
-      const evidence = await getCandidateEvidence(item.description, topCandidates);
+      const { candidates: evidence } = await getCandidateEvidence(item.description, { topCandidates });
       if (evidence.length === 0) {
         return { id: item.id, suggestions: [], evidence: [], ms: Date.now() - itemStart };
       }
