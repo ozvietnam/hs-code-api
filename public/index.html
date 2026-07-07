@@ -135,9 +135,25 @@
   }
   .toolbar input { flex: 1; min-width: 200px; }
   .toolbar input:focus, .toolbar select:focus { border-color: var(--accent); }
-  .table-wrap { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .table-wrap { border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
   table { width: 100%; border-collapse: collapse; font-size: .9rem; }
-  thead th { background: var(--bg-soft); text-align: left; padding: 12px 14px; color: var(--muted); font-weight: 600; position: sticky; top: 60px; }
+  thead th {
+    background: var(--bg-soft); text-align: left; padding: 12px 14px;
+    color: var(--muted); font-weight: 600;
+  }
+  /* Chỉ khóa header trong vùng cuộn nội bộ — top:0 theo scroll-tbl, không theo viewport */
+  .scroll-tbl {
+    max-height: min(560px, 70vh);
+    overflow: auto;
+    border-radius: var(--radius);
+    -webkit-overflow-scrolling: touch;
+  }
+  .scroll-tbl thead th {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    box-shadow: 0 1px 0 var(--line);
+  }
   tbody td { padding: 11px 14px; border-top: 1px solid var(--line); vertical-align: top; }
   tbody tr:hover { background: rgba(74,140,255,.05); }
   .code-cell { font-family: ui-monospace, "SF Mono", Menlo, monospace; white-space: nowrap; color: var(--accent-2); }
@@ -172,7 +188,6 @@
   }
   .api-detail .tip { background: rgba(53,196,167,.08); border: 1px solid rgba(53,196,167,.25); border-radius: 10px; padding: 10px 12px; color: var(--muted); font-size: .85rem; }
   .api-detail .tip b { color: var(--accent); }
-  .scroll-tbl { max-height: 560px; overflow-y: auto; }
   .count-note { color: var(--muted); font-size: .85rem; margin-top: 10px; }
 
   /* Feedback */
@@ -190,7 +205,7 @@
   @media (max-width: 720px) {
     .nav-links a:not(.btn) { display: none; }
     .fb-grid { grid-template-columns: 1fr; }
-    thead th { position: static; }
+    .scroll-tbl thead th { position: sticky; top: 0; }
   }
 </style>
 </head>
@@ -411,10 +426,12 @@ Kho tri thức cũ                    →  import-legacy              →  notes
       Bấm <b>Chi tiết</b> ở từng dòng để xem ví dụ curl + response thực tế.
     </p>
     <div class="table-wrap">
-      <table class="ep-tbl">
-        <thead><tr><th>Endpoint</th><th>Method</th><th>Token</th><th>Khi nào dùng</th><th></th></tr></thead>
-        <tbody id="apiRows"><tr><td colspan="5" class="muted" style="padding:20px">Đang tải hướng dẫn API…</td></tr></tbody>
-      </table>
+      <div class="scroll-tbl">
+        <table class="ep-tbl">
+          <thead><tr><th>Endpoint</th><th>Method</th><th>Token</th><th>Khi nào dùng</th><th></th></tr></thead>
+          <tbody id="apiRows"><tr><td colspan="5" class="muted" style="padding:20px">Đang tải hướng dẫn API…</td></tr></tbody>
+        </table>
+      </div>
     </div>
     <p class="ep-note">
       <b>*</b> <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">/api/match</code> có thể bỏ token khi bật <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">HS_MATCH_PUBLIC=true</code> (server-to-server ERP).
