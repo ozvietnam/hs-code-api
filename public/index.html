@@ -106,6 +106,13 @@
   .pill.v { background: rgba(53,196,167,.15); color: var(--accent); border: 1px solid rgba(53,196,167,.35); }
   .pill.nv { background: rgba(157,176,204,.12); color: var(--muted); border: 1px solid var(--line); }
   .pill.st { background: rgba(74,140,255,.12); color: var(--accent-2); border: 1px solid rgba(74,140,255,.3); }
+  .pill.get { background: rgba(53,196,167,.15); color: var(--accent); border: 1px solid rgba(53,196,167,.35); }
+  .pill.post { background: rgba(242,176,46,.14); color: var(--warn); border: 1px solid rgba(242,176,46,.32); }
+  .pill.auth { background: rgba(74,140,255,.12); color: var(--accent-2); border: 1px solid rgba(74,140,255,.3); }
+  .pill.free { background: rgba(157,176,204,.12); color: var(--muted); border: 1px solid var(--line); }
+  .ep-tbl td { font-size: .88rem; }
+  .ep-tbl .code-cell { color: var(--accent-2); }
+  .ep-note { color: var(--muted); font-size: .85rem; margin-top: 12px; }
   .scroll-tbl { max-height: 560px; overflow-y: auto; }
   .count-note { color: var(--muted); font-size: .85rem; margin-top: 10px; }
 
@@ -273,6 +280,41 @@ Kho tri thức cũ                    →  import-legacy              →  notes
         </p>
       </div>
     </div>
+
+    <h3 style="margin:34px 0 6px">Toàn bộ endpoint</h3>
+    <p class="ep-note" style="margin-bottom:16px">
+      Chỉ <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">/api/health</code> không cần token; còn lại cần header
+      <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">Authorization: Bearer &lt;token&gt;</code>.
+    </p>
+    <div class="table-wrap">
+      <table class="ep-tbl">
+        <thead><tr><th>Endpoint</th><th>Method</th><th>Token</th><th>Công dụng</th></tr></thead>
+        <tbody>
+          <tr><td class="code-cell">/api/health</td><td><span class="pill get">GET</span></td><td><span class="pill free">không</span></td><td>Kiểm tra dịch vụ sống + cấu hình</td></tr>
+          <tr><td class="code-cell">/api/tax?hs=</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Tra thuế NK/ACFTA/VAT + cảnh báo chính sách</td></tr>
+          <tr><td class="code-cell">/api/search?q=</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Tìm mã HS theo từ khoá</td></tr>
+          <tr><td class="code-cell">/api/kg_chapter?chapter=</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Liệt kê mã HS trong một chương</td></tr>
+          <tr><td class="code-cell">/api/notes?chapter=</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Chú giải chương/nhóm (hỗ trợ GIR)</td></tr>
+          <tr><td class="code-cell">/api/conflicts?hs=</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Cảnh báo các mã dễ nhầm lẫn</td></tr>
+          <tr><td class="code-cell">/api/precedents?hs=</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Tiền lệ phân loại TB-TCHQ</td></tr>
+          <tr><td class="code-cell">/api/legal-docs · /:code</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Thư viện văn bản pháp luật</td></tr>
+          <tr><td class="code-cell">/api/products?hs=</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Sản phẩm ví dụ cho mã "Loại khác"</td></tr>
+          <tr><td class="code-cell">/api/customs-types · /recommend</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Mã loại hình XNK (QĐ 1357)</td></tr>
+          <tr><td class="code-cell">/api/suggest</td><td><span class="pill post">POST</span></td><td><span class="pill auth">Bearer</span></td><td>Gợi ý mã HS bằng AI + audit GIR</td></tr>
+          <tr><td class="code-cell">/api/match</td><td><span class="pill post">POST</span></td><td><span class="pill auth">Bearer*</span></td><td>Sản phẩm ERP đa ngữ → top-K mã HS</td></tr>
+          <tr><td class="code-cell">/api/describe</td><td><span class="pill post">POST</span></td><td><span class="pill auth">Bearer</span></td><td>Sinh mô tả khai báo chuẩn TT 39/2018</td></tr>
+          <tr><td class="code-cell">/api/feedback</td><td><span class="pill post">POST</span></td><td><span class="pill auth">Bearer</span></td><td>Ghi nhận chỉnh sửa của giám đốc</td></tr>
+          <tr><td class="code-cell">/api/kg_stats</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Tổng quan toàn bộ dataset</td></tr>
+          <tr><td class="code-cell">/api/versions · /version · /version/diff</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Phiên bản biểu thuế + so sánh thay đổi</td></tr>
+          <tr><td class="code-cell">/api/data-quality</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Báo cáo chất lượng dữ liệu</td></tr>
+          <tr><td class="code-cell">/api/admin/overview</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>KPI tổng hợp cho dashboard quản trị</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ep-note">
+      <b>*</b> <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">/api/match</code> có thể bỏ token khi bật <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">HS_MATCH_PUBLIC=true</code> (server-to-server ERP).
+      Về hạ tầng: <b>12 file function</b> (kịch trần Vercel Hobby), nhiều route đi qua rewrite trong <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">vercel.json</code> (vd <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">dataset.js</code> gánh hàng chục resource) nên URL công khai vẫn gọn.
+    </p>
   </div>
 </section>
 
