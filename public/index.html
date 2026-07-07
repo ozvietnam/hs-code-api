@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HS Knowledge Base — Tra mã HS, thuế & pháp lý XNK (dự án cộng đồng)</title>
+<meta name="description" content="Cơ sở tri thức mở về mã HS, biểu thuế, chính sách và văn bản pháp luật xuất nhập khẩu Việt Nam. Dữ liệu công khai, API cho ERP & cộng đồng." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>" />
+<style>
+  :root {
+    --bg: #0b1220;
+    --bg-soft: #111a2e;
+    --card: #16233d;
+    --line: #24334f;
+    --text: #e7edf7;
+    --muted: #9db0cc;
+    --accent: #35c4a7;
+    --accent-2: #4a8cff;
+    --warn: #f2b02e;
+    --radius: 14px;
+    --max: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+  .muted { color: var(--muted); }
+
+  /* Nav */
+  header.nav {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(11,18,32,.82); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-in { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .brand { font-weight: 700; font-size: 1.05rem; display: flex; align-items: center; gap: 9px; }
+  .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+  .nav-links { display: flex; gap: 18px; align-items: center; font-size: .93rem; }
+  .nav-links a { color: var(--muted); }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+  .btn {
+    display: inline-block; padding: 9px 16px; border-radius: 10px; font-weight: 600; font-size: .92rem;
+    border: 1px solid var(--line); color: var(--text); background: var(--card); cursor: pointer; transition: .15s;
+  }
+  .btn:hover { border-color: var(--accent); text-decoration: none; }
+  .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); border: none; color: #06121f; }
+  .btn.primary:hover { filter: brightness(1.07); }
+
+  /* Hero */
+  .hero { padding: 72px 0 40px; }
+  .tag { display: inline-block; font-size: .8rem; letter-spacing: .04em; text-transform: uppercase;
+    color: var(--accent); background: rgba(53,196,167,.1); border: 1px solid rgba(53,196,167,.3);
+    padding: 5px 12px; border-radius: 99px; margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(1.9rem, 4.5vw, 3.1rem); line-height: 1.12; margin: 0 0 16px; letter-spacing: -.01em; }
+  .hero h1 .grad { background: linear-gradient(120deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p.lead { font-size: 1.12rem; color: var(--muted); max-width: 660px; margin: 0 0 26px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* Sections */
+  section { padding: 46px 0; border-top: 1px solid var(--line); }
+  section h2 { font-size: 1.5rem; margin: 0 0 6px; letter-spacing: -.01em; }
+  section .sub { color: var(--muted); margin: 0 0 26px; }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 14px; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+  .stat .num { font-size: 1.9rem; font-weight: 800; line-height: 1; background: linear-gradient(120deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color: transparent; }
+  .stat .lbl { color: var(--muted); font-size: .88rem; margin-top: 8px; }
+
+  /* Feature cards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .card .ico { font-size: 1.6rem; }
+  .card h3 { margin: 10px 0 6px; font-size: 1.08rem; }
+  .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+  .card code { background: var(--bg-soft); padding: 2px 7px; border-radius: 6px; font-size: .85em; color: var(--accent); }
+
+  /* Pipeline */
+  .pipe { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; overflow-x: auto; }
+  .pipe pre { margin: 0; font-size: .8rem; color: var(--muted); line-height: 1.7; white-space: pre; }
+  .principles { margin-top: 18px; display: grid; gap: 10px; }
+  .principle { display: flex; gap: 10px; align-items: flex-start; color: var(--muted); font-size: .95rem; }
+  .principle::before { content: "✓"; color: var(--accent); font-weight: 700; }
+
+  /* Data table */
+  .toolbar { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+  .toolbar input, .toolbar select {
+    background: var(--bg-soft); border: 1px solid var(--line); color: var(--text);
+    padding: 9px 12px; border-radius: 9px; font-size: .92rem; outline: none;
+  }
+  .toolbar input { flex: 1; min-width: 200px; }
+  .toolbar input:focus, .toolbar select:focus { border-color: var(--accent); }
+  .table-wrap { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  thead th { background: var(--bg-soft); text-align: left; padding: 12px 14px; color: var(--muted); font-weight: 600; position: sticky; top: 60px; }
+  tbody td { padding: 11px 14px; border-top: 1px solid var(--line); vertical-align: top; }
+  tbody tr:hover { background: rgba(74,140,255,.05); }
+  .code-cell { font-family: ui-monospace, "SF Mono", Menlo, monospace; white-space: nowrap; color: var(--accent-2); }
+  .pill { font-size: .72rem; padding: 2px 8px; border-radius: 99px; font-weight: 600; white-space: nowrap; }
+  .pill.v { background: rgba(53,196,167,.15); color: var(--accent); border: 1px solid rgba(53,196,167,.35); }
+  .pill.nv { background: rgba(157,176,204,.12); color: var(--muted); border: 1px solid var(--line); }
+  .pill.st { background: rgba(74,140,255,.12); color: var(--accent-2); border: 1px solid rgba(74,140,255,.3); }
+  .scroll-tbl { max-height: 560px; overflow-y: auto; }
+  .count-note { color: var(--muted); font-size: .85rem; margin-top: 10px; }
+
+  /* Feedback */
+  .fb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .fb textarea, .fb input {
+    width: 100%; background: var(--bg-soft); border: 1px solid var(--line); color: var(--text);
+    border-radius: 10px; padding: 11px 13px; font-size: .95rem; font-family: inherit; outline: none; margin-bottom: 12px;
+  }
+  .fb textarea { min-height: 120px; resize: vertical; }
+  .fb textarea:focus, .fb input:focus { border-color: var(--accent); }
+
+  footer { border-top: 1px solid var(--line); padding: 30px 0 50px; color: var(--muted); font-size: .9rem; }
+  footer .fl { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 720px) {
+    .nav-links a:not(.btn) { display: none; }
+    .fb-grid { grid-template-columns: 1fr; }
+    thead th { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <div class="brand"><span class="dot"></span> HS Knowledge Base</div>
+    <nav class="nav-links">
+      <a href="#data">Dữ liệu</a>
+      <a href="#method">Cách làm</a>
+      <a href="#api">API</a>
+      <a href="#feedback">Góp ý</a>
+      <a class="btn" href="https://github.com/ozvietnam/hs-code-api" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <span class="tag">Dự án cộng đồng · mã nguồn &amp; dữ liệu mở</span>
+    <h1>Cơ sở tri thức mở về <span class="grad">mã HS, thuế &amp; pháp lý</span> xuất nhập khẩu Việt Nam</h1>
+    <p class="lead">
+      Thu thập &amp; chuẩn hoá biểu thuế, chính sách và văn bản pháp luật XNK thành dữ liệu sạch,
+      phơi ra API chuẩn cho ERP và cộng đồng. Toàn bộ dữ liệu pháp quy công khai — không giấu.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="#data">Xem dữ liệu đang có</a>
+      <a class="btn" href="#api">Cách gọi API</a>
+      <a class="btn" href="#feedback">Góp ý cho dự án</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="wrap">
+    <h2>Chúng ta đang có gì</h2>
+    <p class="sub">Số liệu cập nhật trực tiếp từ kho dữ liệu.</p>
+    <div class="stats" id="statsGrid">
+      <div class="stat"><div class="num">…</div><div class="lbl">đang tải…</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT -->
+<section id="what">
+  <div class="wrap">
+    <h2>API làm được gì</h2>
+    <p class="sub">Ba việc lõi phục vụ nghiệp vụ khai báo Hải quan.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ico">🔎</div>
+        <h3>Xác định mã HS</h3>
+        <p>Nhập tên hàng → gợi ý mã HS kèm độ tin cậy, áp 6 quy tắc GIR (WCO) và đối chiếu tiền lệ. <code>/api/suggest</code></p>
+      </div>
+      <div class="card">
+        <div class="ico">💰</div>
+        <h3>Tra thuế &amp; chính sách</h3>
+        <p>Tra thuế NK/ACFTA/VAT theo mã HS, kèm cảnh báo giấy phép/kiểm tra chuyên ngành + link văn bản. <code>/api/tax</code></p>
+      </div>
+      <div class="card">
+        <div class="ico">📝</div>
+        <h3>Sinh mô tả khai báo</h3>
+        <p>Tạo mô tả hàng hoá chuẩn Thông tư 39/2018 để khai tờ khai Hải quan. <code>/api/describe</code></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA -->
+<section id="data">
+  <div class="wrap">
+    <h2>Thư viện văn bản pháp luật</h2>
+    <p class="sub">Văn bản được trích tự động từ chính sách của <span id="docTotal">…</span> mã HS. Ô <span class="pill v">verified</span> = tiêu đề đã đối chiếu nguồn chính thống.</p>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Tìm theo mã hoặc tiêu đề… (vd 113/2017, hoá chất)" />
+      <select id="fStatus">
+        <option value="">Mọi tình trạng</option>
+        <option value="ACTIVE">ACTIVE</option>
+        <option value="AMENDED">AMENDED</option>
+        <option value="REPLACED">REPLACED</option>
+      </select>
+      <select id="fVerified">
+        <option value="">Tất cả</option>
+        <option value="1">Đã verify</option>
+        <option value="0">Chưa verify</option>
+      </select>
+    </div>
+    <div class="table-wrap">
+      <div class="scroll-tbl">
+        <table>
+          <thead><tr><th>Mã văn bản</th><th>Tiêu đề</th><th>Cơ quan</th><th>Trích dẫn</th><th></th></tr></thead>
+          <tbody id="docRows"><tr><td colspan="5" class="muted" style="padding:20px">Đang tải…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+    <p class="count-note" id="countNote"></p>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section id="method">
+  <div class="wrap">
+    <h2>Cách thu thập &amp; chuẩn hoá dữ liệu</h2>
+    <p class="sub">Dữ liệu đi qua pipeline nhiều lớp, mỗi lớp làm sạch thêm.</p>
+    <div class="pipe">
+<pre>Nguồn thô                          →  Chuẩn hoá                  →  File sạch              →  API
+─────────────────────────────────────────────────────────────────────────────────────────────
+Biểu thuế TCHQ (Excel)             →  import + snapshot          →  tax.json (11.871 mã)   →  /api/tax
+Cột chính sách (chữ tự do)         →  Gemini bóc tách (AI)       →  tax-enriched.json      →  warnings
+Mã văn bản trong chính sách        →  extract-legal-refs         →  legal-docs.json (108)  →  /api/legal-docs
+Tiêu đề VB (tra tay, chính thống)  →  legal-doc-titles.json      →  apply-verified-titles  →  tiêu đề thật (30)
+Kho tri thức cũ                    →  import-legacy              →  notes/precedents/...   →  /api/notes...</pre>
+    </div>
+    <div class="principles">
+      <div class="principle"><b>Không bịa dữ liệu</b> — tiêu đề văn bản chỉ ghi khi đã đối chiếu nguồn chính thống (congbao.chinhphu.vn, vbpl.vn, thuvienphapluat.vn…).</div>
+      <div class="principle"><b>Minh bạch tình trạng</b> — văn bản chưa verify để nhãn rõ, mời cộng đồng cùng bổ sung.</div>
+      <div class="principle"><b>Bảo vệ dữ liệu riêng tư</b> — tờ khai khách hàng không bao giờ công khai; trang này chỉ có dữ liệu pháp quy.</div>
+      <div class="principle"><b>Có kiểm thử tự động</b> mỗi lớp dữ liệu trước khi phát hành.</div>
+    </div>
+  </div>
+</section>
+
+<!-- API -->
+<section id="api">
+  <div class="wrap">
+    <h2>Dùng API thế nào</h2>
+    <p class="sub">API dành cho hệ thống (ERP, tích hợp) — cần Bearer token. Xem tài liệu đầy đủ trên GitHub.</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Tra thuế 1 mã HS</h3>
+        <p><code>GET /api/tax?hs=85171300</code><br />→ tên hàng, thuế NK/ACFTA/VAT, cảnh báo chính sách + văn bản liên quan.</p>
+      </div>
+      <div class="card">
+        <h3>Tra văn bản pháp luật</h3>
+        <p><code>GET /api/legal-docs?issuer=BCT</code><br />→ danh sách văn bản kèm tiêu đề &amp; link gốc.</p>
+      </div>
+      <div class="card">
+        <h3>Tài liệu chi tiết</h3>
+        <p>
+          <a href="https://github.com/ozvietnam/hs-code-api/blob/main/docs/TONG-QUAN.md" target="_blank" rel="noopener">Tổng quan dự án ↗</a><br />
+          <a href="https://github.com/ozvietnam/hs-code-api/blob/main/docs/legal-docs-api.md" target="_blank" rel="noopener">API văn bản pháp luật ↗</a><br />
+          <a href="https://github.com/ozvietnam/hs-code-api/blob/main/README.md" target="_blank" rel="noopener">README (đầy đủ) ↗</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEEDBACK -->
+<section id="feedback">
+  <div class="wrap">
+    <h2>Góp ý &amp; bình luận</h2>
+    <p class="sub">Đây là dự án cộng đồng — mọi góp ý, phát hiện sai sót, đề xuất tính năng đều quý. Góp ý gửi công khai qua GitHub (cần tài khoản GitHub, miễn phí).</p>
+    <div class="fb-grid">
+      <div class="fb card">
+        <h3 style="margin-top:0">✍️ Gửi góp ý nhanh</h3>
+        <input id="fbTitle" type="text" placeholder="Tiêu đề góp ý (vd: Sai tiêu đề văn bản 08/2023/TT-BCT)" />
+        <textarea id="fbBody" placeholder="Nội dung: bạn thấy gì chưa đúng / muốn thêm gì / dữ liệu nào cần bổ sung…"></textarea>
+        <button class="btn primary" id="fbSubmit">Gửi qua GitHub Issue →</button>
+        <p class="count-note">Nút này mở GitHub với nội dung điền sẵn để bạn xác nhận đăng.</p>
+      </div>
+      <div class="fb card">
+        <h3 style="margin-top:0">💬 Thảo luận cộng đồng</h3>
+        <p class="muted">Đặt câu hỏi, chia sẻ kinh nghiệm phân loại HS, thảo luận chính sách XNK cùng mọi người.</p>
+        <p>
+          <a class="btn" href="https://github.com/ozvietnam/hs-code-api/discussions" target="_blank" rel="noopener">Mở Thảo luận (Discussions) →</a>
+        </p>
+        <p>
+          <a class="btn" href="https://github.com/ozvietnam/hs-code-api/issues" target="_blank" rel="noopener">Xem góp ý đã gửi →</a>
+        </p>
+      </div>
+    </div>
+    <!--
+      NÂNG CẤP BÌNH LUẬN INLINE (Giscus) — tuỳ chọn, cần CEO làm 1 lần:
+      1) GitHub repo → Settings → General → bật "Discussions".
+      2) Cài app: https://github.com/apps/giscus (cấp quyền repo ozvietnam/hs-code-api).
+      3) Lấy repo-id + category-id tại https://giscus.app rồi dán <script> giscus vào đây.
+    -->
+  </div>
+</section>
+
+<footer>
+  <div class="wrap fl">
+    <div>
+      <b>HS Knowledge Base</b> — dự án mở phục vụ cộng đồng xuất nhập khẩu Việt Nam.<br />
+      Dữ liệu pháp quy công khai · cập nhật liên tục.
+    </div>
+    <div>
+      <a href="https://github.com/ozvietnam/hs-code-api" target="_blank" rel="noopener">GitHub ↗</a> ·
+      <span class="muted" id="genAt">—</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const REPO = "ozvietnam/hs-code-api";
+let DOCS = [];
+
+function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+function renderStats(s){
+  const items = [
+    [s.hsCodes, "Mã HS + biểu thuế"],
+    [s.policiesEnriched, "Chính sách bóc tách (AI)"],
+    [s.legalDocs, "Văn bản pháp luật"],
+    [s.legalDocsVerified, "Tiêu đề đã verify"],
+    [s.precedents, "Mã có tiền lệ TB-TCHQ"],
+    [s.conflicts, "Mã cảnh báo dễ nhầm"],
+    [s.chapterNotes, "Chương có chú giải"],
+    [s.ministries, "Bộ ngành quản lý"],
+  ];
+  document.getElementById("statsGrid").innerHTML = items.map(([n,l]) =>
+    `<div class="stat"><div class="num">${Number(n).toLocaleString("vi-VN")}</div><div class="lbl">${l}</div></div>`
+  ).join("");
+}
+
+function renderDocs(){
+  const q = document.getElementById("search").value.trim().toLowerCase();
+  const st = document.getElementById("fStatus").value;
+  const vf = document.getElementById("fVerified").value;
+  let rows = DOCS.filter(d => {
+    if (st && d.status !== st) return false;
+    if (vf === "1" && !d.verified) return false;
+    if (vf === "0" && d.verified) return false;
+    if (q && !(`${d.code} ${d.titleVi} ${d.issuerFullVi}`.toLowerCase().includes(q))) return false;
+    return true;
+  });
+  const body = document.getElementById("docRows");
+  if (!rows.length){ body.innerHTML = `<tr><td colspan="5" class="muted" style="padding:20px">Không có văn bản khớp.</td></tr>`; }
+  else {
+    body.innerHTML = rows.slice(0, 300).map(d => {
+      const badge = d.verified ? `<span class="pill v">verified</span>` : `<span class="pill nv">chưa verify</span>`;
+      const link = d.url ? `<a href="${esc(d.url)}" target="_blank" rel="noopener">tra cứu ↗</a>` : "";
+      return `<tr>
+        <td class="code-cell">${esc(d.code)}<div style="margin-top:5px">${badge}</div></td>
+        <td>${esc(d.titleVi)}<div style="margin-top:5px"><span class="pill st">${esc(d.status)}</span></div></td>
+        <td class="muted">${esc(d.issuerFullVi || d.issuer)}</td>
+        <td class="muted">${Number(d.citedInHsCount||0).toLocaleString("vi-VN")}</td>
+        <td>${link}</td>
+      </tr>`;
+    }).join("");
+  }
+  document.getElementById("countNote").textContent =
+    `Hiển thị ${Math.min(rows.length,300)} / ${rows.length} văn bản khớp (tổng ${DOCS.length}).`;
+}
+
+document.getElementById("fbSubmit").addEventListener("click", () => {
+  const title = document.getElementById("fbTitle").value.trim() || "Góp ý cho HS Knowledge Base";
+  const body = document.getElementById("fbBody").value.trim() || "(mô tả góp ý của bạn)";
+  const url = `https://github.com/${REPO}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body + "\n\n— gửi từ trang cộng đồng hs-kb.uythacnhapkhau.com")}&labels=community-feedback`;
+  window.open(url, "_blank", "noopener");
+});
+
+["search","fStatus","fVerified"].forEach(id =>
+  document.getElementById(id).addEventListener("input", renderDocs));
+
+fetch("/community-data.json")
+  .then(r => r.json())
+  .then(data => {
+    renderStats(data.stats);
+    DOCS = data.legalDocs || [];
+    document.getElementById("docTotal").textContent = (data.stats.hsCodes||0).toLocaleString("vi-VN");
+    renderDocs();
+    if (data.generatedAt) {
+      document.getElementById("genAt").textContent =
+        "Cập nhật " + new Date(data.generatedAt).toLocaleDateString("vi-VN");
+    }
+  })
+  .catch(() => {
+    document.getElementById("statsGrid").innerHTML =
+      `<div class="stat"><div class="num">!</div><div class="lbl">Không tải được dữ liệu</div></div>`;
+  });
+</script>
+</body>
+</html>
