@@ -34,6 +34,9 @@ const outFile = args.find((a) => a.startsWith('--out='));
 const outPath = outFile ? outFile.split('=')[1] : null;
 const delayArg = args.find((a) => a.startsWith('--delay='));
 const callDelay = delayArg ? parseInt(delayArg.split('=')[1], 10) : 2000;
+// --via=hermes: rerank qua router lib/llm.mjs (Hermes Pool ưu tiên #1). Mặc định 'gemini' (giữ hành vi cũ).
+const viaArg = args.find((a) => a.startsWith('--via='));
+const via = viaArg ? viaArg.split('=')[1] : 'gemini';
 
 // Deterministic PRNG (mulberry32)
 function mulberry32(a) {
@@ -124,11 +127,16 @@ if (dryRun) {
 const { searchCandidates } = await import('../lib/search-utils.js');
 const { translateToVi, getBrandHint } = await import('../lib/glossary.js');
 
-let geminiGenerateJson, applyGirRules, applyPrecedentBoost;
+let geminiGenerateJson, applyGirRules, applyPrecedentBoost, routerChat, parseJsonLoose;
 if (!searchOnly) {
-  ({ geminiGenerateJson } = await import('../lib/gemini.js'));
   ({ applyGirRules } = await import('../lib/gir-engine.js'));
   ({ applyPrecedentBoost } = await import('../lib/precedent-search.js'));
+  if (via === 'hermes') {
+    ({ chat: routerChat } = await import('../lib/llm.mjs'));
+    ({ parseJsonLoose } = await import('../lib/parse-json.js'));
+  } else {
+    ({ geminiGenerateJson } = await import('../lib/gemini.js'));
+  }
 }
 
 const SYSTEM_PROMPT = `Bạn là chuyên gia phân loại hàng hóa hải quan Việt Nam.
@@ -156,7 +164,7 @@ async function retryGemini(fn, maxRetries = 3) {
 }
 
 // --- Run ---
-const mode = searchOnly ? 'search-only' : 'full-pipeline';
+const mode = searchOnly ? 'search-only' : `full-pipeline (via=${via})`;
 console.log(`\nMode: ${mode} | ${sampled.length} samples\n`);
 
 const results = [];
@@ -205,9 +213,21 @@ for (let i = 0; i < sampled.length; i++) {
         topReranked: 3,
       }, null, 2);
 
-      const { json, model, ms } = await retryGemini(() =>
-        geminiGenerateJson({ systemPrompt: SYSTEM_PROMPT, userPrompt, modelEnv: 'GEMINI_RERANK_MODEL', defaultModel: 'gemini-2.5-flash' })
-      );
+      let json, model, ms;
+      if (via === 'hermes') {
+        const started = Date.now();
+        const { content, provider, model: m } = await routerChat(
+          [{ role: 'system', content: SYSTEM_PROMPT }, { role: 'user', content: userPrompt }],
+          { json: true, maxTokens: 2000, timeoutMs: 60000 },
+        );
+        json = parseJsonLoose(content);
+        model = `${provider}/${m}`;
+        ms = Date.now() - started;
+      } else {
+        ({ json, model, ms } = await retryGemini(() =>
+          geminiGenerateJson({ systemPrompt: SYSTEM_PROMPT, userPrompt, modelEnv: 'GEMINI_RERANK_MODEL', defaultModel: 'gemini-2.5-flash' })
+        ));
+      }
 
       const rawSuggestions = (json.suggestions || []).slice(0, 3);
       const girRanked = applyGirRules(rawSuggestions, description);
