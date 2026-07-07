@@ -78,7 +78,7 @@ tests/             # Test fixtures
 4. **camelCase response** — chuẩn shape camelCase cho ERP, dùng `lib/tax-mapper.js`.
 5. **Compliance TT 39/2018** — `/api/describe` phải trả structured `declaration` + `compliance.score` + `level` + `warnings[]`.
 6. **GIR audit trail** — `/api/suggest` response phải có `girRulesApplied[]` (Issue #24).
-7. **Vercel Hobby limit** — không tạo > 12 function (đã merge routes qua `vercel.json` rewrites).
+7. **Vercel Pro** — đã nâng Pro (T7/2026), KHÔNG còn trần 12 function của Hobby; maxDuration cho phép tới 300s. Vẫn giữ pattern gộp route qua `vercel.json` rewrites (`dataset.js`/`tariff.js`) vì ít cold start + repo gọn — chỉ tách function mới khi thật sự cần.
 
 ## Tham chiếu pháp luật quan trọng
 

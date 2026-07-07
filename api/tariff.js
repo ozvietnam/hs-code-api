@@ -30,7 +30,7 @@ function parseJsonBody(req) {
   return { body: body || {} };
 }
 
-/** Tariff versioning routes consolidated for Vercel Hobby function limit (~12 max).
+/** Tariff versioning routes consolidated into one handler (fewer cold starts, tidy repo).
  * Public URLs (/api/versions, /api/version, /api/version/diff) rewritten here with ?op=
  * POST: op=snapshot|upload|rollback|activate (Bearer auth, local FS — may not persist on Vercel)
  */

@@ -313,7 +313,7 @@ Kho tri thức cũ                    →  import-legacy              →  notes
     </div>
     <p class="ep-note">
       <b>*</b> <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">/api/match</code> có thể bỏ token khi bật <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">HS_MATCH_PUBLIC=true</code> (server-to-server ERP).
-      Về hạ tầng: <b>12 file function</b> (kịch trần Vercel Hobby), nhiều route đi qua rewrite trong <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">vercel.json</code> (vd <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">dataset.js</code> gánh hàng chục resource) nên URL công khai vẫn gọn.
+      Về hạ tầng: chạy trên <b>Vercel Pro</b>; nhiều route logic được gộp qua rewrite trong <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">vercel.json</code> (vd <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">dataset.js</code> gánh hàng chục resource) để ít cold start &amp; repo gọn — URL công khai vẫn tách bạch.
     </p>
   </div>
 </section>

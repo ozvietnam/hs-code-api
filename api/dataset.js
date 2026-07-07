@@ -23,7 +23,8 @@ const { getEnrichedForHs } = require('../lib/enriched-data');
 const fs = require('fs');
 const path = require('path');
 
-/** Multi-route handler to stay under Vercel Hobby ~12 Serverless Functions cap.
+/** Multi-route handler consolidating several logical endpoints into one function
+ * (fewer cold starts, tidy repo — not a plan constraint; project is on Vercel Pro).
  * Entry: `GET /api/dataset` with `resource` query (set via rewrites from legacy URLs).
  */
 function kgStatsPayload() {

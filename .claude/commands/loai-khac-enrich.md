@@ -12,7 +12,7 @@ trạng thái lưu trong `data/loai-khac-products-stats.json`.
 
 ## CONTEXT phải đọc trước
 
-1. `CLAUDE.md` — 7 rule bất biến (privacy oz-export, Bearer auth, ≤12 function)
+1. `CLAUDE.md` — 7 rule bất biến (privacy oz-export, Bearer auth, Vercel Pro)
 2. `data/loai-khac-products-stats.json` — **state file**: bộ đếm + queue đào ưu tiên
 3. `scripts/gen-loai-khac-products-rule.mjs` — engine sinh sản phẩm (bảng `H6EN_DOMAINS`)
 4. `scripts/loai-khac-products-stats.mjs` — script đếm + chấm điểm độ đào sâu
