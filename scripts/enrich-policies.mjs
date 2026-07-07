@@ -305,6 +305,10 @@ async function main() {
   // Provider priority: --provider flag > MINIMAX > OLLAMA > GEMINI
   const providerFlag = (process.argv.find((a) => a.startsWith('--provider=')) || '').split('=')[1] || '';
 
+  const hermesKey = process.env.HERMES_API_KEY;
+  const hermesModel = process.env.HERMES_ENRICH_MODEL || 'reasoning';
+  const hermesBase = process.env.HERMES_BASE_URL || ''; // chỉ từ env — không hardcode IP vào repo public
+
   const minimaxKey = process.env.MINIMAX_API_KEY;
   const minimaxModel = process.env.MINIMAX_ENRICH_MODEL || 'MiniMax-M2.7';
   const minimaxBase = process.env.MINIMAX_BASE_URL || 'https://api.minimax.io/v1';
@@ -322,7 +326,14 @@ async function main() {
 
   let provider, model, apiKey, batchFn, singleFn, extraArgs;
 
-  if (providerFlag === 'openrouter' || (!providerFlag && openrouterKey && !minimaxKey)) {
+  if (providerFlag === 'hermes' || (!providerFlag && hermesKey && hermesBase)) {
+    provider = 'hermes';
+    model = hermesModel;
+    apiKey = hermesKey;
+    batchFn = openaiCompatBatch;
+    singleFn = openaiCompatSingle;
+    extraArgs = [hermesKey, hermesBase, 'HermesPool'];
+  } else if (providerFlag === 'openrouter' || (!providerFlag && openrouterKey && !minimaxKey)) {
     provider = 'openrouter';
     model = openrouterModel;
     apiKey = openrouterKey;
@@ -388,7 +399,7 @@ async function main() {
 
   if (!apiKey) {
     // eslint-disable-next-line no-console
-    console.error('Set MINIMAX_API_KEY, OPENROUTER_API_KEY, OLLAMA_API_KEY, or GEMINI_API_KEY');
+    console.error('Set HERMES_API_KEY, MINIMAX_API_KEY, OPENROUTER_API_KEY, OLLAMA_API_KEY, or GEMINI_API_KEY');
     process.exit(1);
   }
 
