@@ -30,6 +30,41 @@ const ministries = read('ministries-vn.json');
 let benchmark = null;
 try { benchmark = read('accuracy-latest.json'); } catch { /* chưa có thì bỏ qua */ }
 
+// Corpus sản phẩm mã "Loại khác" — chỉ số tổng hợp + vài ví dụ công khai (tên sinh từ template, không phải tờ khai khách).
+let loaiKhac = null;
+try {
+  const lkStats = read('loai-khac-products-stats.json');
+  const showcaseHs = ['84021219', '39269099', '87032290'];
+  const productsByHs = {};
+  const jsonlPath = join(dataDir, 'loai-khac-products.jsonl');
+  try {
+    for (const line of readFileSync(jsonlPath, 'utf8').split('\n')) {
+      if (!line.trim()) continue;
+      try {
+        const { hs, tenHang } = JSON.parse(line);
+        if (!showcaseHs.includes(hs)) continue;
+        if (!productsByHs[hs]) productsByHs[hs] = [];
+        if (productsByHs[hs].length < 4) productsByHs[hs].push(tenHang);
+      } catch { /* skip bad line */ }
+    }
+  } catch { /* jsonl missing */ }
+  loaiKhac = {
+    updatedAt: lkStats.generatedAt || null,
+    totals: lkStats.totals,
+    byPotential: lkStats.byPotential,
+    indexCodes: count(read('loai-khac-index.json')),
+    explain: 'Mã HS 8 số "Loại khác" (residual): hàng thuộc nhóm cha nhưng không khớp mã con cụ thể. Corpus gồm tên sản phẩm ví dụ giúp ERP tra cứu và AI gợi ý đúng phạm vi.',
+    pipeline: 'tax.json (h6En qualifier) + loai-khac-index (sibling/oz-gold) → domain template (H6EN_DOMAINS) → gen-loai-khac-products-rule.mjs → loai-khac-products.jsonl',
+    showcase: showcaseHs.map((hs) => ({
+      hsCode: hs,
+      h6En: lkStats.codes?.[hs]?.signals?.h6En || null,
+      productCount: lkStats.codes?.[hs]?.productCount || 0,
+      potential: lkStats.codes?.[hs]?.potential || null,
+      products: productsByHs[hs] || [],
+    })),
+  };
+} catch { /* chưa có corpus thì bỏ qua */ }
+
 // ── Số liệu tổng quan ────────────────────────────────────────────────────────
 const stats = {
   hsCodes: taxRows.length,
@@ -40,6 +75,8 @@ const stats = {
   precedents: count(precedents),
   conflicts: count(conflicts),
   ministries: count(ministries),
+  loaiKhacCodes: loaiKhac?.totals?.codes || 0,
+  loaiKhacProducts: loaiKhac?.totals?.products || 0,
 };
 
 // ── Danh sách văn bản pháp luật (chỉ field an toàn, public) ──────────────────
@@ -63,6 +100,7 @@ const out = {
   generatedAt: new Date().toISOString(),
   stats,
   benchmark,
+  loaiKhac,
   legalDocs: docs,
   meta: {
     note: 'Dữ liệu công khai phục vụ cộng đồng XNK. Không chứa thông tin khách hàng.',

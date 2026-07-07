@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T10:08:33.541Z",
+  "generatedAt": "2026-07-07T11:14:55.023Z",
   "stats": {
     "hsCodes": 11871,
     "policiesEnriched": 7928,
@@ -8,7 +8,9 @@
     "chapterNotes": 87,
     "precedents": 242,
     "conflicts": 57,
-    "ministries": 14
+    "ministries": 14,
+    "loaiKhacCodes": 3383,
+    "loaiKhacProducts": 11072
   },
   "benchmark": {
     "updatedAt": "2026-07-07T10:07:03.363Z",
@@ -44,6 +46,63 @@
     },
     "pipeline": "Ứng viên lai (AI đề xuất nhóm 4 số + tiền lệ + từ khoá) → AI xếp hạng → quy tắc GIR → tiền lệ",
     "interpret": "Mã HS 8 số rất khó khớp tuyệt đối vì mô tả hàng thực tế thường thiếu thuộc tính. Chương/nhóm đúng cao (73–65%) đủ để định hướng khai đúng dòng thuế; con người chốt 2 số cuối."
+  },
+  "loaiKhac": {
+    "updatedAt": "2026-06-04T03:22:05.094Z",
+    "totals": {
+      "codes": 3383,
+      "products": 11072,
+      "avgPerCode": 3.27,
+      "canMine": 2347,
+      "done": 1036
+    },
+    "byPotential": {
+      "saturated": 706,
+      "high": 1850,
+      "medium": 120,
+      "low": 707
+    },
+    "indexCodes": 3383,
+    "explain": "Mã HS 8 số \"Loại khác\" (residual): hàng thuộc nhóm cha nhưng không khớp mã con cụ thể. Corpus gồm tên sản phẩm ví dụ giúp ERP tra cứu và AI gợi ý đúng phạm vi.",
+    "pipeline": "tax.json (h6En qualifier) + loai-khac-index (sibling/oz-gold) → domain template (H6EN_DOMAINS) → gen-loai-khac-products-rule.mjs → loai-khac-products.jsonl",
+    "showcase": [
+      {
+        "hsCode": "84021219",
+        "h6En": "watertube boilers with a steam production not exceeding 45t per hour",
+        "productCount": 12,
+        "potential": "saturated",
+        "products": [
+          "Nồi hơi ống nước 1t/h đốt dầu DO áp suất 8 bar, nhà máy thực phẩm",
+          "Nồi hơi ống nước 1t/h đốt dầu FO áp suất 10 bar, nhà máy dệt nhuộm",
+          "Nồi hơi ống nước 1t/h đốt gas tự nhiên áp suất 12.7 bar, xưởng sản xuất",
+          "Nồi hơi ống nước 1t/h đốt gas LPG áp suất 13 bar, nhà máy gỗ"
+        ]
+      },
+      {
+        "hsCode": "39269099",
+        "h6En": null,
+        "productCount": 12,
+        "potential": "saturated",
+        "products": [
+          "Vỏ ốp lưng điện thoại",
+          "Vỏ ốp điện thoại",
+          "Ốp lưng điện thoại di động",
+          "Thùng nhựa HDPE 60L có nắp dùng thực phẩm"
+        ]
+      },
+      {
+        "hsCode": "87032290",
+        "h6En": "with only spark-ignition internal combustion piston engine, cylinder c",
+        "productCount": 10,
+        "potential": "saturated",
+        "products": [
+          "Xe ô tô 5 chỗ sedan 1.5L xăng",
+          "Xe ô tô 5 chỗ hatchback 1.4L xăng turbo",
+          "Xe SUV 7 chỗ 1.5L xăng turbo",
+          "Xe MPV 7 chỗ 2.0L xăng"
+        ]
+      }
+    ]
   },
   "legalDocs": [
     {

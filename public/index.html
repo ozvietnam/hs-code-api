@@ -108,6 +108,16 @@
   .bench-vs .vs-box .c { font-size: .78rem; color: var(--muted); margin-top: 4px; }
   @media (max-width: 720px) { .bench-grid { grid-template-columns: 1fr; } }
 
+  /* Loại khác corpus */
+  .lk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+  .lk-pot { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+  .pill.sat { background: rgba(53,196,167,.15); color: var(--accent); border: 1px solid rgba(53,196,167,.35); }
+  .pill.hi { background: rgba(242,176,46,.14); color: var(--warn); border: 1px solid rgba(242,176,46,.32); }
+  .pill.med { background: rgba(74,140,255,.12); color: var(--accent-2); border: 1px solid rgba(74,140,255,.3); }
+  .pill.low { background: rgba(157,176,204,.12); color: var(--muted); border: 1px solid var(--line); }
+  .lk-showcase td ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted); font-size: .88rem; }
+  @media (max-width: 720px) { .lk-grid { grid-template-columns: 1fr; } }
+
   /* Data table */
   .toolbar { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
   .toolbar input, .toolbar select {
@@ -162,6 +172,7 @@
     <div class="brand"><span class="dot"></span> HS Knowledge Base</div>
     <nav class="nav-links">
       <a href="#accuracy">Độ chính xác</a>
+      <a href="#loai-khac">Loại khác</a>
       <a href="#data">Dữ liệu</a>
       <a href="#method">Cách làm</a>
       <a href="#api">API</a>
@@ -220,6 +231,11 @@
         <h3>Sinh mô tả khai báo</h3>
         <p>Tạo mô tả hàng hoá chuẩn Thông tư 39/2018 để khai tờ khai Hải quan. <code>/api/describe</code></p>
       </div>
+      <div class="card">
+        <div class="ico">📦</div>
+        <h3>Corpus mã Loại khác</h3>
+        <p>Hàng nghìn tên sản phẩm ví dụ cho mã HS 8 số "Loại khác" — giúp tra cứu &amp; AI hiểu phạm vi từng mã. <code>/api/products</code></p>
+      </div>
     </div>
   </div>
 </section>
@@ -234,6 +250,26 @@
       <div class="bench-note" id="benchNote"></div>
     </div>
     <p class="ep-note" id="benchMethod" style="margin-top:14px"></p>
+  </div>
+</section>
+
+<!-- LOAI KHAC -->
+<section id="loai-khac">
+  <div class="wrap">
+    <h2>Corpus sản phẩm — mã HS "Loại khác"</h2>
+    <p class="sub" id="lkSub">Hệ thống định nghĩa &amp; mô tả sản phẩm cho nhóm mã residual (không khớp mã con cụ thể).</p>
+    <div class="lk-grid" id="lkGrid">
+      <div class="card"><p class="muted" style="margin:0">Đang tải corpus Loại khác…</p></div>
+      <div class="card" id="lkExplain"></div>
+    </div>
+    <h3 style="margin:28px 0 10px">Ví dụ thực tế trong corpus</h3>
+    <div class="table-wrap">
+      <table class="lk-showcase">
+        <thead><tr><th>Mã HS</th><th>Phạm vi (h6En)</th><th>Sản phẩm ví dụ</th><th>Độ đào</th></tr></thead>
+        <tbody id="lkShowcase"><tr><td colspan="4" class="muted" style="padding:20px">Đang tải…</td></tr></tbody>
+      </table>
+    </div>
+    <p class="ep-note" id="lkApi" style="margin-top:14px"></p>
   </div>
 </section>
 
@@ -280,6 +316,7 @@ Biểu thuế TCHQ (Excel)             →  import + snapshot          →  tax.
 Cột chính sách (chữ tự do)         →  Gemini bóc tách (AI)       →  tax-enriched.json      →  warnings
 Mã văn bản trong chính sách        →  extract-legal-refs         →  legal-docs.json (108)  →  /api/legal-docs
 Tiêu đề VB (tra tay, chính thống)  →  legal-doc-titles.json      →  apply-verified-titles  →  tiêu đề thật (50)
+Mã Loại khác (residual)            →  domain template + index    →  loai-khac-products.jsonl →  /api/products
 Kho tri thức cũ                    →  import-legacy              →  notes/precedents/...   →  /api/notes...</pre>
     </div>
     <div class="principles">
@@ -412,12 +449,58 @@ function renderStats(s){
     [s.legalDocsVerified, "Tiêu đề đã verify"],
     [s.precedents, "Mã có tiền lệ TB-TCHQ"],
     [s.conflicts, "Mã cảnh báo dễ nhầm"],
+    [s.loaiKhacCodes, "Mã Loại khác có corpus"],
+    [s.loaiKhacProducts, "Sản phẩm ví dụ Loại khác"],
     [s.chapterNotes, "Chương có chú giải"],
     [s.ministries, "Bộ ngành quản lý"],
   ];
   document.getElementById("statsGrid").innerHTML = items.map(([n,l]) =>
     `<div class="stat"><div class="num">${Number(n).toLocaleString("vi-VN")}</div><div class="lbl">${l}</div></div>`
   ).join("");
+}
+
+function potPill(p) {
+  const map = { saturated: ["sat","đủ"], high: ["hi","cần đào"], medium: ["med","mở rộng"], low: ["low","thấp"] };
+  const [cls, lbl] = map[p] || ["nv", p || "?"];
+  return `<span class="pill ${cls}">${lbl}</span>`;
+}
+
+function renderLoaiKhac(lk) {
+  if (!lk) {
+    document.getElementById("loai-khac").style.display = "none";
+    const navLink = document.querySelector('.nav-links a[href="#loai-khac"]');
+    if (navLink) navLink.style.display = "none";
+    return;
+  }
+  const t = lk.totals || {};
+  const bp = lk.byPotential || {};
+  document.querySelector("#lkGrid .card").innerHTML = `
+    <h3 style="margin-top:0">Quy mô corpus</h3>
+    <div class="stats" style="grid-template-columns:repeat(2,1fr);margin-bottom:12px">
+      <div class="stat" style="padding:14px"><div class="num" style="font-size:1.5rem">${Number(t.codes||0).toLocaleString("vi-VN")}</div><div class="lbl">mã Loại khác</div></div>
+      <div class="stat" style="padding:14px"><div class="num" style="font-size:1.5rem">${Number(t.products||0).toLocaleString("vi-VN")}</div><div class="lbl">tên sản phẩm</div></div>
+    </div>
+    <p class="muted" style="font-size:.9rem;margin:0">Trung bình <b>${t.avgPerCode || "—"}</b> sp/mã · Đã đào sâu <b>${t.done || 0}</b> · Còn đào được <b>${t.canMine || 0}</b></p>
+    <div class="lk-pot">
+      ${potPill("saturated")} ${bp.saturated||0} &nbsp;
+      ${potPill("high")} ${bp.high||0} &nbsp;
+      ${potPill("medium")} ${bp.medium||0} &nbsp;
+      ${potPill("low")} ${bp.low||0}
+    </div>`;
+  document.getElementById("lkExplain").innerHTML = `
+    <h3 style="margin-top:0">Công thức &amp; cách làm</h3>
+    <p>${esc(lk.explain||"")}</p>
+    <p class="muted" style="font-size:.85rem"><b>Pipeline:</b> ${esc(lk.pipeline||"")}</p>
+    <p class="muted" style="font-size:.85rem">Index <b>${lk.indexCodes||0}</b> mã có sibling criteria + oz-gold anchor. Khi <code>/api/suggest</code> trả mã Loại khác, response kèm <code>productExamples</code>.</p>`;
+  const rows = (lk.showcase||[]).map(s => `<tr>
+    <td class="code-cell">${esc(s.hsCode)}<div style="margin-top:5px">${potPill(s.potential)}</div></td>
+    <td class="muted" style="font-size:.88rem">${esc(s.h6En || "—")}<div style="margin-top:4px">${s.productCount} sp trong corpus</div></td>
+    <td><ul>${(s.products||[]).map(p=>`<li>${esc(p)}</li>`).join("")}</ul></td>
+    <td class="muted">${s.potential==="saturated"?"đủ template":"còn đào"}</td>
+  </tr>`).join("");
+  document.getElementById("lkShowcase").innerHTML = rows || `<tr><td colspan="4" class="muted">Chưa có ví dụ.</td></tr>`;
+  document.getElementById("lkApi").innerHTML =
+    `<b>API:</b> <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">GET /api/products?hs=84021219</code> — trả danh sách sản phẩm ví dụ + đánh giá độ đào sâu (<code>potential</code>, <code>canMine</code>). Chi tiết: <a href="https://github.com/ozvietnam/hs-code-api/blob/main/docs/api-products.md" target="_blank" rel="noopener">docs/api-products.md ↗</a>`;
 }
 
 function renderBench(b){
@@ -496,6 +579,7 @@ fetch("/community-data.json")
   .then(data => {
     renderStats(data.stats);
     renderBench(data.benchmark);
+    renderLoaiKhac(data.loaiKhac);
     DOCS = data.legalDocs || [];
     document.getElementById("docTotal").textContent = (data.stats.hsCodes||0).toLocaleString("vi-VN");
     renderDocs();
