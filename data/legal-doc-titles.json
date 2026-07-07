@@ -1,0 +1,276 @@
+{
+  "_meta": {
+    "purpose": "Tiêu đề văn bản pháp luật ĐÃ VERIFY từ nguồn chính thống. KHÔNG bịa.",
+    "sources": ["vbpl.vn", "chinhphu.vn", "congbao.chinhphu.vn", "thuvienphapluat.vn", "luatvietnam.vn"],
+    "rule": "Chỉ thêm entry khi đã đọc trích yếu/tên chính thức. build-legal-library.mjs merge file này vào data/legal-docs.json.",
+    "note": "42/2019/TT-BCT là chế độ báo cáo định kỳ (không phải danh mục HS) — cần CEO review vì sao enrichment cite 7,144 lượt."
+  },
+  "titles": {
+    "42/2019/TT-BCT": {
+      "titleVi": "Sửa đổi, bổ sung một số quy định về chế độ báo cáo định kỳ tại các Thông tư do Bộ trưởng Bộ Công Thương ban hành hoặc liên tịch ban hành",
+      "issuedDate": "2019-12-18",
+      "effectiveDate": "2020-02-05",
+      "status": "ACTIVE",
+      "url": "https://chinhphu.vn/default.aspx?docid=198850&pageid=27160",
+      "verifiedSource": "chinhphu.vn"
+    },
+    "08/2023/TT-BCT": {
+      "titleVi": "Sửa đổi, bổ sung một số điều quy định Danh mục chi tiết theo mã số HS của hàng hóa xuất khẩu, nhập khẩu ban hành kèm theo một số Thông tư của Bộ trưởng Bộ Công Thương",
+      "issuedDate": "2023-03-31",
+      "effectiveDate": "2023-05-16",
+      "status": "ACTIVE",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=160072",
+      "verifiedSource": "vbpl.vn"
+    },
+    "113/2017/ND-CP": {
+      "titleVi": "Quy định chi tiết và hướng dẫn thi hành một số điều của Luật Hóa chất",
+      "issuedDate": "2017-10-09",
+      "effectiveDate": "2017-11-25",
+      "status": "AMENDED",
+      "replacedBy": "82/2022/ND-CP",
+      "url": "https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-113-2017-nd-cp-24884/19507.htm",
+      "verifiedSource": "congbao.chinhphu.vn"
+    },
+    "82/2022/ND-CP": {
+      "titleVi": "Sửa đổi, bổ sung một số điều của Nghị định số 113/2017/NĐ-CP ngày 09/10/2017 của Chính phủ quy định chi tiết và hướng dẫn thi hành một số điều của Luật Hóa chất",
+      "issuedDate": "2022-10-18",
+      "effectiveDate": "2022-12-22",
+      "status": "ACTIVE",
+      "url": "https://luatvietnam.vn/cong-nghiep/nghi-dinh-82-2022-nd-cp-sua-doi-nghi-dinh-113-2017-nd-cp-huong-dan-luat-hoa-chat-231981-d1.html",
+      "verifiedSource": "luatvietnam.vn"
+    },
+    "12/2018/TT-BCT": {
+      "titleVi": "Quy định chi tiết một số điều của Luật Quản lý ngoại thương và Nghị định số 69/2018/NĐ-CP ngày 15/5/2018 của Chính phủ quy định chi tiết một số điều của Luật Quản lý ngoại thương",
+      "issuedDate": "2018-06-15",
+      "effectiveDate": "2018-06-15",
+      "status": "ACTIVE",
+      "url": "https://vbpl.vn/search?q=12%2F2018%2FTT-BCT",
+      "verifiedSource": "reference-trong-08/2023/TT-BCT (chinhphu.vn)"
+    },
+    "41/2019/TT-BCT": {
+      "titleVi": "Bổ sung Danh mục chi tiết theo mã số HS của hàng hóa xuất khẩu, nhập khẩu quy định tại một số Thông tư của Bộ Công Thương",
+      "issuedDate": "2019-12-16",
+      "effectiveDate": "2019-12-16",
+      "status": "ACTIVE",
+      "url": "https://vbpl.vn/search?q=41%2F2019%2FTT-BCT",
+      "verifiedSource": "reference-trong-08/2023/TT-BCT (chinhphu.vn)"
+    },
+    "69/2018/ND-CP": {
+      "titleVi": "Quy định chi tiết một số điều của Luật Quản lý ngoại thương",
+      "issuedDate": "2018-05-15",
+      "effectiveDate": "2018-05-15",
+      "status": "ACTIVE",
+      "url": "https://vbpl.vn/search?q=69%2F2018%2FND-CP",
+      "verifiedSource": "reference-trong-08/2023/TT-BCT (chinhphu.vn)"
+    },
+    "33/2025/TT-BCT": {
+      "titleVi": "Sửa đổi, bổ sung một số điều của Thông tư số 01/2018/TT-BCT ngày 27/02/2018 của Bộ trưởng Bộ Công Thương quy định chi tiết hàng hóa mua bán, trao đổi qua cửa khẩu phụ, lối mở biên giới của thương nhân",
+      "issuedDate": "2025-06-02",
+      "effectiveDate": "2025-07-21",
+      "status": "ACTIVE",
+      "url": "https://chinhphu.vn/?docid=213824&pageid=27160",
+      "verifiedSource": "chinhphu.vn"
+    },
+    "01/2024/TT-BNNPTNT": {
+      "titleVi": "Ban hành bảng mã số HS đối với danh mục hàng hóa thuộc thẩm quyền quản lý nhà nước của Bộ Nông nghiệp và Phát triển nông thôn và danh mục hàng hóa xuất, nhập khẩu phải kiểm tra chuyên ngành trong lĩnh vực nông nghiệp và phát triển nông thôn",
+      "issuedDate": "2024-02-02",
+      "effectiveDate": "2024-03-20",
+      "status": "ACTIVE",
+      "replaces": "11/2021/TT-BNNPTNT",
+      "url": "https://chinhphu.vn/?docid=209723&pageid=27160",
+      "verifiedSource": "chinhphu.vn"
+    },
+    "12/2022/TT-BGTVT": {
+      "titleVi": "Quy định Danh mục sản phẩm, hàng hóa có khả năng gây mất an toàn thuộc trách nhiệm quản lý nhà nước của Bộ Giao thông vận tải",
+      "issuedDate": "2022-06-30",
+      "effectiveDate": "2022-08-15",
+      "status": "AMENDED",
+      "replacedBy": "62/2024/TT-BGTVT",
+      "url": "https://vanban.chinhphu.vn/?docid=206074&pageid=27160",
+      "verifiedSource": "vanban.chinhphu.vn"
+    },
+    "62/2024/TT-BGTVT": {
+      "titleVi": "Sửa đổi, bổ sung một số điều của Thông tư số 12/2022/TT-BGTVT ngày 30/6/2022 của Bộ trưởng Bộ Giao thông vận tải quy định danh mục sản phẩm, hàng hóa có khả năng gây mất an toàn thuộc trách nhiệm quản lý nhà nước của Bộ Giao thông vận tải",
+      "issuedDate": "2024-12-31",
+      "effectiveDate": "2025-02-15",
+      "status": "ACTIVE",
+      "url": "https://vbpl.vn/search?q=62%2F2024%2FTT-BGTVT",
+      "verifiedSource": "thuvienxuatnhapkhau.com (đối chiếu trích yếu)"
+    },
+    "34/2025/TT-BCT": {
+      "titleVi": "Sửa đổi, bổ sung một số điều của Thông tư số 02/2018/TT-BCT ngày 27/02/2018 của Bộ trưởng Bộ Công Thương quy định chi tiết Danh mục hàng hóa mua bán, trao đổi của cư dân biên giới",
+      "issuedDate": "2025-06-02",
+      "effectiveDate": "2025-07-21",
+      "status": "ACTIVE",
+      "url": "https://vanban.chinhphu.vn/?docid=213832&pageid=27160",
+      "verifiedSource": "vanban.chinhphu.vn"
+    },
+    "23/2019/QD-TTG": {
+      "titleVi": "Ban hành Danh mục hàng hóa nhập khẩu phải làm thủ tục hải quan tại cửa khẩu nhập",
+      "issuedDate": "2019-06-27",
+      "effectiveDate": "2019-09-01",
+      "status": "ACTIVE",
+      "url": "https://vanban.chinhphu.vn/default.aspx?docid=197288&pageid=27160",
+      "verifiedSource": "vanban.chinhphu.vn"
+    },
+    "765/QD-BCT": {
+      "titleVi": "Về việc công bố Danh mục các mặt hàng (kèm theo mã HS) đã được cắt giảm kiểm tra chuyên ngành thuộc trách nhiệm quản lý của Bộ Công Thương",
+      "issuedDate": "2019-03-29",
+      "effectiveDate": "2019-03-29",
+      "status": "ACTIVE",
+      "url": "https://luatvietnam.vn/cong-nghiep/quyet-dinh-765-qd-bct-2019-danh-muc-mat-hang-duoc-cat-giam-kiem-tra-chuyen-nganh-171670-d1.html",
+      "verifiedSource": "luatvietnam.vn + sct.dongnai.gov.vn"
+    },
+    "09/2024/TT-BYT": {
+      "titleVi": "Ban hành các Danh mục thuốc, nguyên liệu làm thuốc dùng cho người và mỹ phẩm xuất khẩu, nhập khẩu đã được xác định mã số hàng hóa theo Danh mục hàng hóa xuất khẩu, nhập khẩu Việt Nam",
+      "issuedDate": "2024-06-11",
+      "effectiveDate": "2024-07-26",
+      "status": "ACTIVE",
+      "url": "https://congbao.chinhphu.vn/noi-dung-van-ban-so-09-2024-tt-byt",
+      "verifiedSource": "chinhphu.vn + thoibaotaichinhvietnam.vn"
+    },
+    "17/2023/TT-BNNPTNT": {
+      "titleVi": "Ban hành Bảng mã HS đối với hàng hóa là thực vật rừng, động vật rừng nguy cấp, quý, hiếm và động vật, thực vật thuộc các Phụ lục Công ước về buôn bán quốc tế các loài động vật, thực vật hoang dã nguy cấp",
+      "issuedDate": "2023-12-15",
+      "effectiveDate": "2024-01-30",
+      "status": "ACTIVE",
+      "replaces": "924/QD-BNN-TCLN",
+      "url": "https://congbao.chinhphu.vn/van-ban/thong-tu-so-17-2023-tt-bnnptnt-40996/48231.htm",
+      "verifiedSource": "congbao.chinhphu.vn"
+    },
+    "1182/QD-BCT": {
+      "titleVi": "Về việc ban hành Danh mục các mặt hàng nhập khẩu (kèm theo mã HS) thực hiện kiểm tra chuyên ngành thuộc trách nhiệm quản lý của Bộ Công Thương",
+      "issuedDate": "2021-04-06",
+      "effectiveDate": "2021-04-06",
+      "status": "ACTIVE",
+      "replaces": "1325A/QD-BCT",
+      "url": "https://thuvienphapluat.vn/van-ban/Xuat-nhap-khau/Quyet-dinh-1182-QD-BCT-2021-Danh-muc-hang-nhap-khau-thuc-hien-kiem-tra-chuyen-nganh-470522.aspx",
+      "verifiedSource": "thuvienphapluat.vn + caselaw.vn",
+      "note": "Trùng với 1182/2021/QD-BCT — cùng 1 văn bản, normalize tách nhầm"
+    },
+    "1182/2021/QD-BCT": {
+      "titleVi": "Về việc ban hành Danh mục các mặt hàng nhập khẩu (kèm theo mã HS) thực hiện kiểm tra chuyên ngành thuộc trách nhiệm quản lý của Bộ Công Thương",
+      "issuedDate": "2021-04-06",
+      "effectiveDate": "2021-04-06",
+      "status": "ACTIVE",
+      "replaces": "1325A/QD-BCT",
+      "url": "https://thuvienphapluat.vn/van-ban/Xuat-nhap-khau/Quyet-dinh-1182-QD-BCT-2021-Danh-muc-hang-nhap-khau-thuc-hien-kiem-tra-chuyen-nganh-470522.aspx",
+      "verifiedSource": "thuvienphapluat.vn + caselaw.vn",
+      "note": "Cùng văn bản với 1182/QD-BCT (alias)"
+    },
+    "15/2024/TT-BYT": {
+      "titleVi": "Ban hành Danh mục thực phẩm, phụ gia thực phẩm và dụng cụ chứa đựng thực phẩm, vật liệu bao gói tiếp xúc trực tiếp với thực phẩm đã được xác định mã số hàng hóa theo Danh mục hàng hóa xuất khẩu, nhập khẩu Việt Nam phải kiểm tra nhà nước về an toàn thực phẩm nhập khẩu thuộc phạm vi quản lý của Bộ Y tế",
+      "issuedDate": "2024-09-19",
+      "effectiveDate": "2024-11-04",
+      "status": "ACTIVE",
+      "url": "https://thuvienphapluat.vn/van-ban/xuat-nhap-khau/thong-tu-15-2024-tt-byt-danh-muc-thuc-pham-phu-gia-thuc-pham-duoc-xac-dinh-ma-so-hang-hoa-625177.aspx",
+      "verifiedSource": "thuvienphapluat.vn"
+    },
+    "11/2018/TT-BTTTT": {
+      "titleVi": "Công bố chi tiết Danh mục sản phẩm công nghệ thông tin đã qua sử dụng cấm nhập khẩu kèm theo mã số HS",
+      "issuedDate": "2018-10-15",
+      "effectiveDate": "2018-12-01",
+      "status": "ACTIVE",
+      "url": "https://congbao.chinhphu.vn/van-ban/thong-tu-so-11-2018-tt-btttt-27500.htm",
+      "verifiedSource": "congbao.chinhphu.vn"
+    },
+    "2711/QD-BKHCN": {
+      "titleVi": "Về việc công bố sản phẩm, hàng hóa nhóm 2 thuộc trách nhiệm quản lý của Bộ Khoa học và Công nghệ",
+      "issuedDate": "2022-12-30",
+      "effectiveDate": "2022-12-30",
+      "status": "AMENDED",
+      "replaces": "3810/QD-BKHCN, 3115/QD-BKHCN",
+      "url": "https://thuvienphapluat.vn/van-ban/Thuong-mai/Quyet-dinh-2711-QD-BKHCN-2022-san-pham-hang-hoa-nhom-2-thuoc-quan-ly-Bo-Khoa-hoc-Cong-nghe-549982.aspx",
+      "verifiedSource": "thuvienphapluat.vn + luatvietnam.vn",
+      "note": "Đã sửa đổi/bổ sung bởi QĐ 366/QĐ-BKHCN (2023), QĐ 367/QĐ-BKHCN (2024); phần CNTT-viễn thông thay bằng TT 29/2025/TT-BKHCN"
+    },
+    "01/2021/TT-BLDTBXH": {
+      "titleVi": "Quy định Danh mục sản phẩm, hàng hóa có khả năng gây mất an toàn thuộc trách nhiệm quản lý nhà nước của Bộ Lao động - Thương binh và Xã hội",
+      "issuedDate": "2021-06-03",
+      "effectiveDate": "2021-07-18",
+      "status": "ACTIVE",
+      "url": "https://congbao.chinhphu.vn/van-ban/thong-tu-so-01-2021-tt-bldtbxh-33806/35953.htm",
+      "verifiedSource": "congbao.chinhphu.vn"
+    },
+    "29/2025/TT-BKHCN": {
+      "titleVi": "Quy định Danh mục sản phẩm, hàng hóa có khả năng gây mất an toàn lĩnh vực công nghệ thông tin và viễn thông thuộc trách nhiệm quản lý của Bộ Khoa học và Công nghệ",
+      "issuedDate": "2025-11-13",
+      "effectiveDate": null,
+      "status": "ACTIVE",
+      "url": "https://vbpl.vn/search?q=29%2F2025%2FTT-BKHCN",
+      "verifiedSource": "ib-lenhardt.com (trích dẫn nguyên văn Điều 6)"
+    },
+    "173/2018/TT-BQP": {
+      "titleVi": "Công bố danh mục cụ thể hàng hóa cấm xuất khẩu, cấm nhập khẩu thuộc diện quản lý chuyên ngành của Bộ Quốc phòng theo quy định tại Nghị định số 69/2018/NĐ-CP ngày 15/5/2018 của Chính phủ",
+      "issuedDate": "2018-12-31",
+      "effectiveDate": "2019-02-14",
+      "status": "ACTIVE",
+      "replaces": "40/2017/TT-BQP",
+      "url": "https://caselaw.vn/van-ban-phap-luat/327200",
+      "verifiedSource": "caselaw.vn + luatvietnam.vn"
+    },
+    "04/2021/TT-BXD": {
+      "titleVi": "Hướng dẫn xuất khẩu khoáng sản làm vật liệu xây dựng",
+      "issuedDate": "2021-06-30",
+      "effectiveDate": "2021-08-15",
+      "status": "AMENDED",
+      "replacedBy": "11/2026/TT-BXD",
+      "url": "https://vbpl.vn/boxaydung/Pages/vbpq-toanvan.aspx?ItemID=150532",
+      "verifiedSource": "vbpl.vn (boxaydung)",
+      "note": "Hết hiệu lực từ 01/6/2026 khi TT 11/2026/TT-BXD có hiệu lực"
+    },
+    "22/2018/TT-BTTTT": {
+      "titleVi": "Ban hành Danh mục hàng hóa nhập khẩu, xuất khẩu trong lĩnh vực in, phát hành xuất bản phẩm",
+      "issuedDate": "2018-12-28",
+      "effectiveDate": "2019-02-12",
+      "status": "AMENDED",
+      "url": "https://mst.gov.vn/van-ban-phap-luat/14290.htm",
+      "verifiedSource": "mst.gov.vn (Bộ) + caselaw.vn",
+      "note": "Sửa đổi bởi TT 11/2024/TT-BTTTT; hợp nhất tại VB 09/VBHN-BTTTT (2024)"
+    },
+    "1725/QD-BCT": {
+      "titleVi": "Về việc ban hành Danh mục các mặt hàng kiểm tra hiệu suất năng lượng và dán nhãn năng lượng thuộc trách nhiệm quản lý của Bộ Công Thương",
+      "issuedDate": "2024-07-01",
+      "effectiveDate": "2024-07-01",
+      "status": "ACTIVE",
+      "replaces": "Phụ lục III của 1182/QD-BCT",
+      "url": "https://thuvienphapluat.vn/van-ban/Xuat-nhap-khau/Quyet-dinh-1725-QD-BCT-2024-Danh-muc-mat-hang-kiem-tra-hieu-suat-nang-luong-615929.aspx",
+      "verifiedSource": "thuvienphapluat.vn + luatvietnam.vn"
+    },
+    "12/2018/TT-BTC": {
+      "titleVi": "Quy định chi tiết một số điều của Luật Quản lý ngoại thương và Nghị định số 69/2018/NĐ-CP ngày 15/5/2018 của Chính phủ quy định chi tiết một số điều của Luật Quản lý ngoại thương",
+      "issuedDate": "2018-06-15",
+      "effectiveDate": "2018-07-30",
+      "status": "ACTIVE",
+      "issuerOverride": "BCT",
+      "url": "https://congbao.chinhphu.vn/van-ban/thong-tu-so-12-2018-tt-bct-26878/23046.htm",
+      "verifiedSource": "congbao.chinhphu.vn",
+      "note": "TYPO trong enrichment: Gemini ghi '12/2018/TT-BTC' nhưng văn bản đúng là 12/2018/TT-BCT (Bộ Công Thương). Cite ở HS 1701/2401 (hạn ngạch thuế quan đường/thuốc lá) — đúng phạm vi 12/2018/TT-BCT. TT-BTC thật là về giám sát tài chính TCTD, không liên quan HS."
+    },
+    "211/2025/ND-CP": {
+      "titleVi": "Quy định về hoạt động mật mã dân sự và sửa đổi, bổ sung một số điều của Nghị định số 15/2020/NĐ-CP ngày 03/02/2020 của Chính phủ quy định xử phạt vi phạm hành chính trong lĩnh vực bưu chính, viễn thông, tần số vô tuyến điện, công nghệ thông tin và giao dịch điện tử",
+      "issuedDate": "2025-07-25",
+      "effectiveDate": "2025-09-09",
+      "status": "ACTIVE",
+      "url": "https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-211-2025-nd-cp-45739/58043.htm",
+      "verifiedSource": "congbao.chinhphu.vn + luatvietnam.vn"
+    },
+    "13/2023/QD-TTG": {
+      "titleVi": "Ban hành Danh mục phế liệu được phép nhập khẩu từ nước ngoài làm nguyên liệu sản xuất",
+      "issuedDate": "2023-05-22",
+      "effectiveDate": "2023-06-01",
+      "status": "ACTIVE",
+      "replaces": "28/2020/QD-TTG",
+      "url": "https://vanban.chinhphu.vn/?docid=207922&pageid=27160",
+      "verifiedSource": "vanban.chinhphu.vn + caselaw.vn"
+    },
+    "07/2023/TT-NHNN": {
+      "titleVi": "Sửa đổi, bổ sung một số điều của Thông tư số 38/2018/TT-NHNN ngày 25/12/2018 của Thống đốc Ngân hàng Nhà nước Việt Nam quy định việc nhập khẩu hàng hóa phục vụ hoạt động in, đúc tiền của Ngân hàng Nhà nước Việt Nam",
+      "issuedDate": "2023-06-30",
+      "effectiveDate": "2023-08-15",
+      "status": "ACTIVE",
+      "url": "https://congbao.chinhphu.vn/van-ban/thong-tu-so-07-2023-tt-nhnn-39759/45761.htm",
+      "verifiedSource": "congbao.chinhphu.vn"
+    }
+  }
+}
