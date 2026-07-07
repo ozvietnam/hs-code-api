@@ -152,6 +152,26 @@
   .ep-tbl td { font-size: .88rem; }
   .ep-tbl .code-cell { color: var(--accent-2); }
   .ep-note { color: var(--muted); font-size: .85rem; margin-top: 12px; }
+  .btn-detail {
+    font-size: .78rem; padding: 4px 10px; border-radius: 8px; cursor: pointer;
+    border: 1px solid var(--line); background: var(--bg-soft); color: var(--muted);
+    white-space: nowrap; transition: .15s;
+  }
+  .btn-detail:hover, .btn-detail.open { border-color: var(--accent); color: var(--accent); }
+  .api-detail-row td { padding: 0 !important; border-top: none !important; background: var(--bg-soft); }
+  .api-detail {
+    padding: 16px 18px; font-size: .88rem; border-top: 1px dashed var(--line);
+  }
+  .api-detail h4 { margin: 0 0 8px; font-size: .92rem; color: var(--text); }
+  .api-detail p { margin: 0 0 12px; color: var(--muted); line-height: 1.55; }
+  .api-detail pre {
+    margin: 0 0 12px; padding: 12px; border-radius: 10px;
+    background: var(--card); border: 1px solid var(--line);
+    font-size: .78rem; line-height: 1.5; overflow-x: auto; color: var(--muted);
+    white-space: pre-wrap; word-break: break-word;
+  }
+  .api-detail .tip { background: rgba(53,196,167,.08); border: 1px solid rgba(53,196,167,.25); border-radius: 10px; padding: 10px 12px; color: var(--muted); font-size: .85rem; }
+  .api-detail .tip b { color: var(--accent); }
   .scroll-tbl { max-height: 560px; overflow-y: auto; }
   .count-note { color: var(--muted); font-size: .85rem; margin-top: 10px; }
 
@@ -388,30 +408,12 @@ Kho tri thức cũ                    →  import-legacy              →  notes
     <p class="ep-note" style="margin-bottom:16px">
       Chỉ <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">/api/health</code> không cần token; còn lại cần header
       <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">Authorization: Bearer &lt;token&gt;</code>.
+      Bấm <b>Chi tiết</b> ở từng dòng để xem ví dụ curl + response thực tế.
     </p>
     <div class="table-wrap">
       <table class="ep-tbl">
-        <thead><tr><th>Endpoint</th><th>Method</th><th>Token</th><th>Công dụng</th></tr></thead>
-        <tbody>
-          <tr><td class="code-cell">/api/health</td><td><span class="pill get">GET</span></td><td><span class="pill free">không</span></td><td>Kiểm tra dịch vụ sống + cấu hình</td></tr>
-          <tr><td class="code-cell">/api/tax?hs=</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Tra thuế NK/ACFTA/VAT + cảnh báo chính sách</td></tr>
-          <tr><td class="code-cell">/api/search?q=</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Tìm mã HS theo từ khoá</td></tr>
-          <tr><td class="code-cell">/api/kg_chapter?chapter=</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Liệt kê mã HS trong một chương</td></tr>
-          <tr><td class="code-cell">/api/notes?chapter=</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Chú giải chương/nhóm (hỗ trợ GIR)</td></tr>
-          <tr><td class="code-cell">/api/conflicts?hs=</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Cảnh báo các mã dễ nhầm lẫn</td></tr>
-          <tr><td class="code-cell">/api/precedents?hs=</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Tiền lệ phân loại TB-TCHQ</td></tr>
-          <tr><td class="code-cell">/api/legal-docs · /:code</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Thư viện văn bản pháp luật</td></tr>
-          <tr><td class="code-cell">/api/products?hs=</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Sản phẩm ví dụ cho mã "Loại khác"</td></tr>
-          <tr><td class="code-cell">/api/customs-types · /recommend</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Mã loại hình XNK (QĐ 1357)</td></tr>
-          <tr><td class="code-cell">/api/suggest</td><td><span class="pill post">POST</span></td><td><span class="pill auth">Bearer</span></td><td>Gợi ý mã HS bằng AI + audit GIR</td></tr>
-          <tr><td class="code-cell">/api/match</td><td><span class="pill post">POST</span></td><td><span class="pill auth">Bearer*</span></td><td>Sản phẩm ERP đa ngữ → top-K mã HS</td></tr>
-          <tr><td class="code-cell">/api/describe</td><td><span class="pill post">POST</span></td><td><span class="pill auth">Bearer</span></td><td>Sinh mô tả khai báo chuẩn TT 39/2018</td></tr>
-          <tr><td class="code-cell">/api/feedback</td><td><span class="pill post">POST</span></td><td><span class="pill auth">Bearer</span></td><td>Ghi nhận chỉnh sửa của giám đốc</td></tr>
-          <tr><td class="code-cell">/api/kg_stats</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Tổng quan toàn bộ dataset</td></tr>
-          <tr><td class="code-cell">/api/versions · /version · /version/diff</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Phiên bản biểu thuế + so sánh thay đổi</td></tr>
-          <tr><td class="code-cell">/api/data-quality</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>Báo cáo chất lượng dữ liệu</td></tr>
-          <tr><td class="code-cell">/api/admin/overview</td><td><span class="pill get">GET</span></td><td><span class="pill auth">Bearer</span></td><td>KPI tổng hợp cho dashboard quản trị</td></tr>
-        </tbody>
+        <thead><tr><th>Endpoint</th><th>Method</th><th>Token</th><th>Khi nào dùng</th><th></th></tr></thead>
+        <tbody id="apiRows"><tr><td colspan="5" class="muted" style="padding:20px">Đang tải hướng dẫn API…</td></tr></tbody>
       </table>
     </div>
     <p class="ep-note">
@@ -600,6 +602,59 @@ function renderBench(b){
     "Không tô hồng: chấm AI trên " + b.sampleSize + " tờ khai thật, phủ mọi chương HS. Càng sâu (nhiều số) càng khó.";
 }
 
+function authPill(auth) {
+  if (auth === "none") return `<span class="pill free">không</span>`;
+  if (auth === "bearer-opt") return `<span class="pill auth">Bearer*</span>`;
+  return `<span class="pill auth">Bearer</span>`;
+}
+
+function methodPill(m) {
+  return `<span class="pill ${m === "POST" ? "post" : "get"}">${m}</span>`;
+}
+
+function renderApiGuide(guide) {
+  const body = document.getElementById("apiRows");
+  if (!guide || !guide.endpoints) {
+    body.innerHTML = `<tr><td colspan="5" class="muted" style="padding:20px">Không tải được hướng dẫn API.</td></tr>`;
+    return;
+  }
+  let html = "";
+  for (const ep of guide.endpoints) {
+    const detailId = `api-detail-${ep.id}`;
+    html += `<tr>
+      <td class="code-cell">${esc(ep.endpoint)}</td>
+      <td>${methodPill(ep.method)}</td>
+      <td>${authPill(ep.auth)}</td>
+      <td>${esc(ep.summary)}</td>
+      <td><button type="button" class="btn-detail" data-target="${detailId}" aria-expanded="false">Chi tiết ▾</button></td>
+    </tr>
+    <tr class="api-detail-row" id="${detailId}" hidden>
+      <td colspan="5">
+        <div class="api-detail">
+          <h4>Khi nào gọi?</h4>
+          <p>${esc(ep.when)}</p>
+          <h4>Ví dụ request</h4>
+          <pre>${esc(ep.request)}</pre>
+          <h4>Response mẫu</h4>
+          <pre>${esc(ep.response)}</pre>
+          ${ep.tip ? `<div class="tip"><b>💡 ERP:</b> ${esc(ep.tip)}</div>` : ""}
+        </div>
+      </td>
+    </tr>`;
+  }
+  body.innerHTML = html;
+  body.querySelectorAll(".btn-detail").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const row = document.getElementById(btn.dataset.target);
+      const open = row.hidden;
+      row.hidden = !open;
+      btn.classList.toggle("open", open);
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      btn.textContent = open ? "Thu gọn ▴" : "Chi tiết ▾";
+    });
+  });
+}
+
 function renderDocs(){
   const q = document.getElementById("search").value.trim().toLowerCase();
   const st = document.getElementById("fStatus").value;
@@ -658,6 +713,14 @@ fetch("/community-data.json")
   .catch(() => {
     document.getElementById("statsGrid").innerHTML =
       `<div class="stat"><div class="num">!</div><div class="lbl">Không tải được dữ liệu</div></div>`;
+  });
+
+fetch("/api-guide.json")
+  .then(r => r.json())
+  .then(renderApiGuide)
+  .catch(() => {
+    document.getElementById("apiRows").innerHTML =
+      `<tr><td colspan="5" class="muted" style="padding:20px">Không tải được hướng dẫn API.</td></tr>`;
   });
 </script>
 </body>
