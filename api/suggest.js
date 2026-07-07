@@ -1,6 +1,7 @@
 const { requireAuth } = require('../lib/auth');
 const { setCors, handleOptions } = require('../lib/cors');
 const { searchCandidates } = require('../lib/search-utils');
+const { buildSuggestCandidates } = require('../lib/suggest-candidates');
 const { callLLMJson } = require('../lib/llm-tier');
 const { buildEvidenceTrace } = require('../lib/suggest-evidence');
 const { applyGirRules } = require('../lib/gir-engine');
@@ -22,6 +23,25 @@ let _conflicts;
 function conflictsDb() {
   try { return (_conflicts ||= JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'conflicts.json'), 'utf8'))); }
   catch { return (_conflicts = {}); }
+}
+
+// Candidate generation: hybrid (LLM heading + precedent + keyword) mặc định bật.
+// SUGGEST_HYBRID_CANDIDATES=0 → rollback về keyword thuần. buildSuggestCandidates
+// đã tự fallback keyword nội bộ nếu LLM lỗi, nên không bao giờ tệ hơn tầng cũ.
+const HYBRID_CANDIDATES = process.env.SUGGEST_HYBRID_CANDIDATES !== '0';
+async function getCandidateEvidence(description, topCandidates) {
+  if (!HYBRID_CANDIDATES) return searchCandidates(description, { topCandidates });
+  try {
+    const { candidates } = await buildSuggestCandidates(description, {
+      topCandidates: Math.max(topCandidates, 12),
+      perHeading: 6,
+      includePrecedent: true,
+      tier: 'standard',
+      timeoutMs: 15000,
+    });
+    if (candidates && candidates.length) return candidates;
+  } catch { /* fall back to keyword below */ }
+  return searchCandidates(description, { topCandidates });
 }
 
 // Default prompt — used if data/prompts/index.json or active file is missing
@@ -75,7 +95,7 @@ module.exports = async function handler(req, res) {
   const topReranked = Math.min(Math.max(parseInt(body?.options?.topReranked, 10) || 3, 1), 5);
   const glossaryVi = translateToVi(description);
   const brandHint = getBrandHint(description);
-  const evidence = searchCandidates(description, { topCandidates });
+  const evidence = await getCandidateEvidence(description, topCandidates);
   const audit = buildEvidenceTrace(description, evidence);
 
   if (evidence.length === 0) {
@@ -264,7 +284,7 @@ async function handleBatch(req, res, body, started) {
         return { id: item.id, cached: true, ms: 0, ...cached };
       }
 
-      const evidence = searchCandidates(item.description, { topCandidates });
+      const evidence = await getCandidateEvidence(item.description, topCandidates);
       if (evidence.length === 0) {
         return { id: item.id, suggestions: [], evidence: [], ms: Date.now() - itemStart };
       }

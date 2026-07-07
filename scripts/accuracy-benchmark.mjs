@@ -37,6 +37,11 @@ const callDelay = delayArg ? parseInt(delayArg.split('=')[1], 10) : 2000;
 // --via=hermes: rerank qua router lib/llm.mjs (Hermes Pool ưu tiên #1). Mặc định 'gemini' (giữ hành vi cũ).
 const viaArg = args.find((a) => a.startsWith('--via='));
 const via = viaArg ? viaArg.split('=')[1] : 'gemini';
+// --candidates=hybrid: sinh candidate bằng buildSuggestCandidates (LLM heading + precedent + keyword)
+// = đúng tầng /api/suggest sau khi wire. Mặc định 'keyword' (searchCandidates cũ).
+const candArg = args.find((a) => a.startsWith('--candidates='));
+const candMode = candArg ? candArg.split('=')[1] : 'keyword';
+const noPrecedent = args.includes('--no-precedent');
 
 // Deterministic PRNG (mulberry32)
 function mulberry32(a) {
@@ -126,6 +131,21 @@ if (dryRun) {
 // Load shared libs
 const { searchCandidates } = await import('../lib/search-utils.js');
 const { translateToVi, getBrandHint } = await import('../lib/glossary.js');
+let buildSuggestCandidates = null;
+if (candMode === 'hybrid') {
+  ({ buildSuggestCandidates } = await import('../lib/suggest-candidates.js'));
+}
+
+// Sinh candidate theo mode (keyword cũ vs hybrid mới).
+async function getEvidence(description) {
+  if (candMode === 'hybrid') {
+    const { candidates } = await buildSuggestCandidates(description, {
+      topCandidates: 12, perHeading: 6, includePrecedent: !noPrecedent, tier: via === 'hermes' ? 'standard' : 'premium', timeoutMs: 18000,
+    });
+    return candidates;
+  }
+  return searchCandidates(description, { topCandidates: 10 });
+}
 
 let geminiGenerateJson, applyGirRules, applyPrecedentBoost, routerChat, parseJsonLoose;
 if (!searchOnly) {
@@ -164,7 +184,7 @@ async function retryGemini(fn, maxRetries = 3) {
 }
 
 // --- Run ---
-const mode = searchOnly ? 'search-only' : `full-pipeline (via=${via})`;
+const mode = searchOnly ? `search-only (cand=${candMode})` : `full-pipeline (cand=${candMode}${noPrecedent ? ',no-prec' : ''}, via=${via})`;
 console.log(`\nMode: ${mode} | ${sampled.length} samples\n`);
 
 const results = [];
@@ -184,7 +204,7 @@ for (let i = 0; i < sampled.length; i++) {
   try {
     const glossaryVi = translateToVi(description);
     const brandHint = getBrandHint(description);
-    const evidence = searchCandidates(description, { topCandidates: 10 });
+    const evidence = await getEvidence(description);
 
     if (evidence.length === 0) {
       noCandidates++;

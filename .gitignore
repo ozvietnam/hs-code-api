@@ -11,6 +11,16 @@ data/versions/*.json
 data/access-log.jsonl
 data/ml-log.jsonl
 
+# Raw benchmark reports chứa mô tả tờ khai khách (PRIVATE). Chỉ commit bản tổng hợp
+# public-safe: data/accuracy-latest.json (không có productName).
+data/accuracy-report-*.json
+
+# macOS / editor junk
+.DS_Store
+**/.DS_Store
+.vscode/
+.codegraph/
+
 # Env
 .env
 .env.*

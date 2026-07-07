@@ -26,6 +26,10 @@ const precedents = read('precedents.json');
 const conflicts = read('conflicts.json');
 const ministries = read('ministries-vn.json');
 
+// Benchmark độ chính xác (public-safe: chỉ số liệu tổng hợp, không có mô tả tờ khai).
+let benchmark = null;
+try { benchmark = read('accuracy-latest.json'); } catch { /* chưa có thì bỏ qua */ }
+
 // ── Số liệu tổng quan ────────────────────────────────────────────────────────
 const stats = {
   hsCodes: taxRows.length,
@@ -58,6 +62,7 @@ const docs = legalDocs
 const out = {
   generatedAt: new Date().toISOString(),
   stats,
+  benchmark,
   legalDocs: docs,
   meta: {
     note: 'Dữ liệu công khai phục vụ cộng đồng XNK. Không chứa thông tin khách hàng.',

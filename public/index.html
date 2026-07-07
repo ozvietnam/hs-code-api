@@ -88,6 +88,26 @@
   .principle { display: flex; gap: 10px; align-items: flex-start; color: var(--muted); font-size: .95rem; }
   .principle::before { content: "✓"; color: var(--accent); font-weight: 700; }
 
+  /* Benchmark accuracy */
+  .bench-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; align-items: start; }
+  .bench-bars { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .bar-row { margin-bottom: 16px; }
+  .bar-row:last-child { margin-bottom: 0; }
+  .bar-head { display: flex; justify-content: space-between; font-size: .9rem; margin-bottom: 6px; }
+  .bar-head .val { font-weight: 700; color: var(--accent); }
+  .bar-track { height: 10px; background: var(--bg-soft); border-radius: 99px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .8s cubic-bezier(.2,.7,.2,1); }
+  .bench-note { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .bench-note h3 { margin: 0 0 10px; font-size: 1.02rem; }
+  .bench-note p { margin: 0 0 12px; color: var(--muted); font-size: .92rem; }
+  .bench-vs { display: flex; gap: 12px; margin: 14px 0; }
+  .bench-vs .vs-box { flex: 1; text-align: center; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 8px; }
+  .bench-vs .vs-box .n { font-size: 1.5rem; font-weight: 800; }
+  .bench-vs .vs-box.old .n { color: var(--muted); }
+  .bench-vs .vs-box.new .n { background: linear-gradient(120deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .bench-vs .vs-box .c { font-size: .78rem; color: var(--muted); margin-top: 4px; }
+  @media (max-width: 720px) { .bench-grid { grid-template-columns: 1fr; } }
+
   /* Data table */
   .toolbar { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
   .toolbar input, .toolbar select {
@@ -141,6 +161,7 @@
   <div class="wrap nav-in">
     <div class="brand"><span class="dot"></span> HS Knowledge Base</div>
     <nav class="nav-links">
+      <a href="#accuracy">Độ chính xác</a>
       <a href="#data">Dữ liệu</a>
       <a href="#method">Cách làm</a>
       <a href="#api">API</a>
@@ -203,6 +224,19 @@
   </div>
 </section>
 
+<!-- ACCURACY -->
+<section id="accuracy">
+  <div class="wrap">
+    <h2>Độ chính xác — đo trên tờ khai thật</h2>
+    <p class="sub" id="benchSub">Không tô hồng: chấm AI trên mẫu tờ khai thật, phủ mọi chương HS.</p>
+    <div class="bench-grid" id="benchGrid">
+      <div class="bench-bars"><p class="muted" style="margin:0">Đang tải kết quả benchmark…</p></div>
+      <div class="bench-note" id="benchNote"></div>
+    </div>
+    <p class="ep-note" id="benchMethod" style="margin-top:14px"></p>
+  </div>
+</section>
+
 <!-- DATA -->
 <section id="data">
   <div class="wrap">
@@ -245,7 +279,7 @@
 Biểu thuế TCHQ (Excel)             →  import + snapshot          →  tax.json (11.871 mã)   →  /api/tax
 Cột chính sách (chữ tự do)         →  Gemini bóc tách (AI)       →  tax-enriched.json      →  warnings
 Mã văn bản trong chính sách        →  extract-legal-refs         →  legal-docs.json (108)  →  /api/legal-docs
-Tiêu đề VB (tra tay, chính thống)  →  legal-doc-titles.json      →  apply-verified-titles  →  tiêu đề thật (30)
+Tiêu đề VB (tra tay, chính thống)  →  legal-doc-titles.json      →  apply-verified-titles  →  tiêu đề thật (50)
 Kho tri thức cũ                    →  import-legacy              →  notes/precedents/...   →  /api/notes...</pre>
     </div>
     <div class="principles">
@@ -386,6 +420,32 @@ function renderStats(s){
   ).join("");
 }
 
+function renderBench(b){
+  if (!b) { document.getElementById("accuracy").style.display = "none"; return; }
+  const bars = (b.levels||[]).map(l => `
+    <div class="bar-row">
+      <div class="bar-head"><span>${esc(l.label)}</span><span class="val">${l.pipeline}%</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(2,l.pipeline)}%"></div></div>
+    </div>`).join("");
+  document.querySelector("#benchGrid .bench-bars").innerHTML = bars;
+
+  const oldV = (b.baselineSearchOnly && b.baselineSearchOnly.top1Exact8) || 0;
+  document.getElementById("benchNote").innerHTML = `
+    <h3>Trước &amp; sau khi có AI</h3>
+    <p>Đúng <b>đủ mã 8 số</b> ở vị trí #1 — mức khắt khe nhất:</p>
+    <div class="bench-vs">
+      <div class="vs-box old"><div class="n">${oldV}%</div><div class="c">Tìm từ khoá thô</div></div>
+      <div class="vs-box new"><div class="n">${b.top1Exact8}%</div><div class="c">Pipeline AI hiện tại</div></div>
+    </div>
+    <p>${esc(b.interpret||"")}</p>
+    <p class="muted" style="font-size:.82rem">Pipeline: ${esc(b.pipeline||"")}</p>`;
+
+  document.getElementById("benchMethod").innerHTML =
+    `<b>Cách đo:</b> ${esc(b.method||"")} Mẫu ${b.sampleSize} tờ khai. Top-3 đúng 8 số: ${b.top3Exact8}%.`;
+  document.getElementById("benchSub").textContent =
+    "Không tô hồng: chấm AI trên " + b.sampleSize + " tờ khai thật, phủ mọi chương HS. Càng sâu (nhiều số) càng khó.";
+}
+
 function renderDocs(){
   const q = document.getElementById("search").value.trim().toLowerCase();
   const st = document.getElementById("fStatus").value;
@@ -430,6 +490,7 @@ fetch("/community-data.json")
   .then(r => r.json())
   .then(data => {
     renderStats(data.stats);
+    renderBench(data.benchmark);
     DOCS = data.legalDocs || [];
     document.getElementById("docTotal").textContent = (data.stats.hsCodes||0).toLocaleString("vi-VN");
     renderDocs();

@@ -1,0 +1,35 @@
+{
+  "updatedAt": "2026-07-07T10:07:03.363Z",
+  "method": "Chấm trên 57 tờ khai thật, lấy mẫu phân tầng phủ 50 chương HS (seed cố định). Không dùng mẫu để train — chỉ để đo.",
+  "sampleSize": 57,
+  "levels": [
+    {
+      "label": "Đúng chương (2 số)",
+      "pipeline": 73.7,
+      "depth": 2
+    },
+    {
+      "label": "Đúng nhóm/heading (4 số)",
+      "pipeline": 64.9,
+      "depth": 4
+    },
+    {
+      "label": "Đúng phân nhóm (6 số)",
+      "pipeline": 40.4,
+      "depth": 6
+    },
+    {
+      "label": "Đúng đủ mã (8 số)",
+      "pipeline": 24.6,
+      "depth": 8
+    }
+  ],
+  "top1Exact8": 24.6,
+  "top3Exact8": 28.1,
+  "baselineSearchOnly": {
+    "top1Exact8": 1.75,
+    "note": "keyword search thô, không có AI rerank"
+  },
+  "pipeline": "Ứng viên lai (AI đề xuất nhóm 4 số + tiền lệ + từ khoá) → AI xếp hạng → quy tắc GIR → tiền lệ",
+  "interpret": "Mã HS 8 số rất khó khớp tuyệt đối vì mô tả hàng thực tế thường thiếu thuộc tính. Chương/nhóm đúng cao (73–65%) đủ để định hướng khai đúng dòng thuế; con người chốt 2 số cuối."
+}
