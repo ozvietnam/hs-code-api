@@ -118,6 +118,15 @@
   .lk-showcase td ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted); font-size: .88rem; }
   @media (max-width: 720px) { .lk-grid { grid-template-columns: 1fr; } }
 
+  /* Describe ECUS */
+  .desc-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0; }
+  .desc-step { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; text-align: center; font-size: .9rem; }
+  .desc-step .n { font-size: 1.4rem; margin-bottom: 6px; }
+  .desc-box { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; font-family: ui-monospace, Menlo, monospace; font-size: .82rem; line-height: 1.55; color: var(--muted); white-space: pre-wrap; word-break: break-word; }
+  .desc-len { font-size: .85rem; color: var(--muted); margin-top: 8px; }
+  .desc-len b { color: var(--accent); }
+  @media (max-width: 720px) { .desc-flow { grid-template-columns: 1fr; } }
+
   /* Data table */
   .toolbar { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
   .toolbar input, .toolbar select {
@@ -173,6 +182,7 @@
     <nav class="nav-links">
       <a href="#accuracy">Độ chính xác</a>
       <a href="#loai-khac">Loại khác</a>
+      <a href="#describe-ecus">Mô tả ECUS</a>
       <a href="#data">Dữ liệu</a>
       <a href="#method">Cách làm</a>
       <a href="#api">API</a>
@@ -273,6 +283,27 @@
   </div>
 </section>
 
+<!-- DESCRIBE ECUS -->
+<section id="describe-ecus">
+  <div class="wrap">
+    <h2>Sinh mô tả khai báo ECUS — tối đa 200 ký tự</h2>
+    <p class="sub" id="descSub">Từ mã HS 8 số đã chốt → mô tả một dòng khớp ô ECUS/VNACCS, chấm compliance TT 39/2018.</p>
+    <div class="lk-grid" id="descGrid">
+      <div class="card"><p class="muted" style="margin:0">Đang tải…</p></div>
+      <div class="card" id="descLegal"></div>
+    </div>
+    <div class="desc-flow" id="descFlow"></div>
+    <h3 style="margin:20px 0 8px">Ví dụ output (không cần gọi API)</h3>
+    <div class="desc-box" id="descExample"></div>
+    <p class="desc-len" id="descLen"></p>
+    <h3 style="margin:24px 0 8px">Khi vượt 200 ký tự — tự cắt thông minh</h3>
+    <p class="muted" style="font-size:.9rem;margin:0 0 10px">Bỏ phụ kiện trước (quy cách → công dụng → thông số → thành phần → model → nhãn hiệu). <b>Xuất xứ + tình trạng luôn giữ cuối.</b></p>
+    <div class="desc-box" id="descTruncate"></div>
+    <p class="desc-len" id="descTruncateMeta"></p>
+    <p class="ep-note" id="descApi" style="margin-top:14px"></p>
+  </div>
+</section>
+
 <!-- DATA -->
 <section id="data">
   <div class="wrap">
@@ -317,6 +348,7 @@ Cột chính sách (chữ tự do)         →  Gemini bóc tách (AI)       →
 Mã văn bản trong chính sách        →  extract-legal-refs         →  legal-docs.json (108)  →  /api/legal-docs
 Tiêu đề VB (tra tay, chính thống)  →  legal-doc-titles.json      →  apply-verified-titles  →  tiêu đề thật (50)
 Mã Loại khác (residual)            →  domain template + index    →  loai-khac-products.jsonl →  /api/products
+Mô tả ECUS (≤200 ký tự)            →  AI + compose + validator   →  customsDescription       →  /api/describe
 Kho tri thức cũ                    →  import-legacy              →  notes/precedents/...   →  /api/notes...</pre>
     </div>
     <div class="principles">
@@ -465,6 +497,40 @@ function potPill(p) {
   return `<span class="pill ${cls}">${lbl}</span>`;
 }
 
+function renderDescribe(d) {
+  if (!d) {
+    document.getElementById("describe-ecus").style.display = "none";
+    const navLink = document.querySelector('.nav-links a[href="#describe-ecus"]');
+    if (navLink) navLink.style.display = "none";
+    return;
+  }
+  document.querySelector("#descGrid .card").innerHTML = `
+    <h3 style="margin-top:0">Luồng xử lý</h3>
+    <p>${esc(d.explain||"")}</p>
+    <p class="muted" style="font-size:.85rem"><b>Pipeline:</b> ${esc(d.pipeline||"")}</p>
+    <p style="margin-top:12px"><span class="pill sat">≤ ${d.maxLength} ký tự</span></p>`;
+  document.getElementById("descLegal").innerHTML = `
+    <h3 style="margin-top:0">Căn cứ pháp lý &amp; chấm điểm</h3>
+    <ul style="margin:0;padding-left:18px;color:var(--muted);font-size:.9rem">
+      ${(d.legalRefs||[]).map(r=>`<li>${esc(r)}</li>`).join("")}
+    </ul>
+    <p class="muted" style="font-size:.85rem;margin-top:12px">Mức: ${(d.levels||[]).map(l=>`<code style="color:var(--accent)">${l}</code>`).join(" → ")}</p>`;
+  document.getElementById("descFlow").innerHTML = `
+    <div class="desc-step"><div class="n">1️⃣</div><b>Mã HS + attrs</b><div class="muted">tên, nhãn, model, xuất xứ…</div></div>
+    <div class="desc-step"><div class="n">2️⃣</div><b>Declaration</b><div class="muted">JSON có cấu trúc (AI)</div></div>
+    <div class="desc-step"><div class="n">3️⃣</div><b>customsDescription</b><div class="muted">một dòng ≤200 ký tự</div></div>`;
+  const ex = d.showcase || {};
+  document.getElementById("descExample").textContent = ex.customsDescription || "";
+  document.getElementById("descLen").innerHTML =
+    `<b>${ex.length||0}</b> / ${d.maxLength} ký tự · compliance <b>${esc(ex.compliance?.level||"?")}</b> (${ex.compliance?.score??"—"}/100) · HS <code>${esc(ex.input?.hsCode||"")}</code>`;
+  const tr = d.truncateExample || {};
+  document.getElementById("descTruncate").textContent = tr.text || "";
+  document.getElementById("descTruncateMeta").innerHTML =
+    `Gốc <b>${tr.fullLength||0}</b> ký tự → còn <b>${tr.length||0}</b> · đã bỏ: ${(tr.dropped||[]).join(", ") || "—"}`;
+  document.getElementById("descApi").innerHTML =
+    `<b>API:</b> <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">POST /api/describe</code> body: <code>hsCode, productName, brand, model, origin, technicalSpec, condition</code> → trả <code>declaration</code> + <code>customsDescription</code> + <code>compliance</code>. Chi tiết: <a href="https://github.com/ozvietnam/hs-code-api/blob/main/docs/integration-guide.md#5-sinh-mô-tả-khai-báo-hải-quan-tt-392018" target="_blank" rel="noopener">integration-guide ↗</a>`;
+}
+
 function renderLoaiKhac(lk) {
   if (!lk) {
     document.getElementById("loai-khac").style.display = "none";
@@ -580,6 +646,7 @@ fetch("/community-data.json")
     renderStats(data.stats);
     renderBench(data.benchmark);
     renderLoaiKhac(data.loaiKhac);
+    renderDescribe(data.describe);
     DOCS = data.legalDocs || [];
     document.getElementById("docTotal").textContent = (data.stats.hsCodes||0).toLocaleString("vi-VN");
     renderDocs();

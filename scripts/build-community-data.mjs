@@ -65,6 +65,41 @@ try {
   };
 } catch { /* chưa có corpus thì bỏ qua */ }
 
+// Mô tả khai báo ECUS (public-safe: ví dụ tĩnh từ test fixture, không cần gọi AI).
+const describe = {
+  maxLength: 200,
+  legalRefs: [
+    'TT 39/2018/TT-BTC mục 1.78 Phụ lục I',
+    'CV 5189/TCHQ-GSQL (2019)',
+    'CV 755/TCHQ-GSQL (2020)',
+  ],
+  explain: 'Từ mã HS 8 số đã chốt + thông tin hàng (tên, nhãn hiệu, model, xuất xứ…), hệ thống sinh mô tả một dòng cho ô ECUS/VNACCS — tối đa 200 ký tự, xuất xứ và tình trạng luôn giữ ở cuối.',
+  pipeline: 'hsCode + attrs → Gemini (structured declaration) → composeWithMeta (≤200 ký tự) → validateDeclaration (TT39 + anti-pattern)',
+  levels: ['EXCELLENT', 'GOOD', 'ACCEPTABLE', 'WEAK', 'REJECT'],
+  showcase: {
+    input: {
+      hsCode: '85171300',
+      productName: 'Điện thoại di động thông minh Apple iPhone 15 Pro Max',
+      brand: 'Apple',
+      model: 'A2848',
+      origin: 'CN',
+      condition: 'Mới 100%',
+    },
+    customsDescription:
+      'Điện thoại di động thông minh Apple iPhone 15 Pro Max; nhãn hiệu Apple; model A2848; thông số: dung lượng 256GB; chip A17 Pro; màn 6.7 inch; xuất xứ Trung Quốc; Mới 100%',
+    length: 169,
+    truncated: false,
+    compliance: { level: 'EXCELLENT', score: 100 },
+  },
+  truncateExample: {
+    fullLength: 341,
+    length: 180,
+    dropped: ['quyCach', 'congDung', 'thongSoKyThuat', 'thanhPhanCauTao'],
+    text:
+      'Máy bơm nước ly tâm đầu gang inox dùng cho hệ thống tưới tiêu nông nghiệp và cấp nước sinh hoạt công nghiệp quy mô vừa và nhỏ; nhãn hiệu Pentax; model CM50-220; xuất xứ Ý; Mới 100%',
+  },
+};
+
 // ── Số liệu tổng quan ────────────────────────────────────────────────────────
 const stats = {
   hsCodes: taxRows.length,
@@ -101,6 +136,7 @@ const out = {
   stats,
   benchmark,
   loaiKhac,
+  describe,
   legalDocs: docs,
   meta: {
     note: 'Dữ liệu công khai phục vụ cộng đồng XNK. Không chứa thông tin khách hàng.',
