@@ -9,7 +9,13 @@ on:
       - 'api/describe.js'
       - 'data/anti-patterns.json'
       - 'data/chapter-specific-rules.json'
+      - 'data/chapter-declaration-fields.json'
+      - 'data/heading-declaration-fields.json'
+      - 'data/hs-declaration-overrides.json'
+      - 'lib/declaration-field-templates.js'
+      - 'lib/compliance-data.js'
       - 'tests/describe-cases.json'
+      - 'tests/describe-chapter-fields.json'
   pull_request:
     paths:
       - 'lib/declaration-validator.js'
@@ -18,7 +24,13 @@ on:
       - 'api/describe.js'
       - 'data/anti-patterns.json'
       - 'data/chapter-specific-rules.json'
+      - 'data/chapter-declaration-fields.json'
+      - 'data/heading-declaration-fields.json'
+      - 'data/hs-declaration-overrides.json'
+      - 'lib/declaration-field-templates.js'
+      - 'lib/compliance-data.js'
       - 'tests/describe-cases.json'
+      - 'tests/describe-chapter-fields.json'
 
 jobs:
   test-describe:

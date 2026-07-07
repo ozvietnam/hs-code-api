@@ -1,0 +1,439 @@
+[
+  {
+    "id": "ch84-pump-complete",
+    "hsCode": "84137090",
+    "declaration": {
+      "tenHang": "Máy bơm nước ly tâm đầu gang dùng tưới tiêu",
+      "xuatXu": { "code": "IT", "nameVi": "Ý" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thongSoKyThuat": ["công suất 1.5HP", "điện áp 220V", "lưu lượng 3m³/h", "bơm ly tâm"]
+    },
+    "expectChapterPresent": ["power", "voltage", "flowRate", "pumpType"],
+    "expectChapterMissing": []
+  },
+  {
+    "id": "ch84-pump-missing-flow",
+    "hsCode": "84137090",
+    "declaration": {
+      "tenHang": "Máy bơm nước ly tâm công nghiệp",
+      "xuatXu": { "code": "CN", "nameVi": "Trung Quốc" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thongSoKyThuat": ["công suất 2.2kW", "điện áp 380V", "bơm ly tâm"]
+    },
+    "expectChapterPresent": ["power", "voltage", "pumpType"],
+    "expectChapterMissing": ["flowRate"]
+  },
+  {
+    "id": "ch84-excavator-8digit",
+    "hsCode": "84295200",
+    "declaration": {
+      "tenHang": "Máy xúc đào bánh xích thủy lực",
+      "xuatXu": { "code": "JP", "nameVi": "Nhật Bản" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "chapterSpecific": { "operatingWeight": "20 tấn", "bucketCapacity": "0.8m³", "power": "110kW", "modelNumber": "PC200" }
+    },
+    "expectChapterPresent": ["operatingWeight", "bucketCapacity", "power", "modelNumber"],
+    "expectChapterMissing": []
+  },
+  {
+    "id": "ch85-phone-8digit-complete",
+    "hsCode": "85171300",
+    "declaration": {
+      "tenHang": "Điện thoại di động thông minh Apple iPhone 15 Pro Max",
+      "xuatXu": { "code": "CN", "nameVi": "Trung Quốc" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thongSoKyThuat": ["256GB", "5G", "màn 6.7 inch", "dual SIM"],
+      "chapterSpecific": { "modelNumber": "A2848" }
+    },
+    "expectChapterPresent": ["modelNumber", "hasSim", "storageCapacity", "networkGeneration", "screenSize"],
+    "expectChapterMissing": []
+  },
+  {
+    "id": "ch85-phone-missing-sim",
+    "hsCode": "85171300",
+    "declaration": {
+      "tenHang": "Điện thoại thông minh Samsung Galaxy S24",
+      "xuatXu": { "code": "VN", "nameVi": "Việt Nam" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thongSoKyThuat": ["256GB", "5G", "màn 6.7 inch"],
+      "chapterSpecific": { "modelNumber": "SM-S928" }
+    },
+    "expectChapterPresent": ["modelNumber", "storageCapacity", "networkGeneration", "screenSize"],
+    "expectChapterMissing": ["hasSim"]
+  },
+  {
+    "id": "ch85-motor-8501",
+    "hsCode": "85015210",
+    "declaration": {
+      "tenHang": "Động cơ điện ba pha công nghiệp",
+      "xuatXu": { "code": "DE", "nameVi": "Đức" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thongSoKyThuat": ["7.5kW", "380V", "1450rpm", "3 pha"]
+    },
+    "expectChapterPresent": ["power", "voltage", "rpm", "phaseCount"],
+    "expectChapterMissing": []
+  },
+  {
+    "id": "ch85-transformer-8digit",
+    "hsCode": "85043119",
+    "declaration": {
+      "tenHang": "Máy biến áp lực dầu phân phối",
+      "xuatXu": { "code": "KR", "nameVi": "Hàn Quốc" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "chapterSpecific": { "power": "500kVA", "voltagePrimary": "22kV", "voltageSecondary": "0.4kV", "frequency": "50Hz" }
+    },
+    "expectChapterPresent": ["power", "voltagePrimary", "voltageSecondary", "frequency"],
+    "expectChapterMissing": []
+  },
+  {
+    "id": "ch85-laptop-8digit",
+    "hsCode": "84713000",
+    "declaration": {
+      "tenHang": "Máy tính xách tay Dell Latitude 5540",
+      "xuatXu": { "code": "CN", "nameVi": "Trung Quốc" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thongSoKyThuat": ["Core i7", "16GB RAM", "SSD 512GB", "màn 15.6 inch"],
+      "chapterSpecific": { "modelNumber": "Latitude 5540" }
+    },
+    "expectChapterPresent": ["cpuModel", "ramCapacity", "storageCapacity", "modelNumber", "screenSize"],
+    "expectChapterMissing": []
+  },
+  {
+    "id": "ch39-sheet-8digit",
+    "hsCode": "39201090",
+    "declaration": {
+      "tenHang": "Tấm nhựa PP dùng đóng gói thực phẩm",
+      "xuatXu": { "code": "TH", "nameVi": "Thái Lan" },
+      "donViTinh": "kg",
+      "tinhTrang": "Mới 100%",
+      "chapterSpecific": { "polymerType": "PP", "form": "tấm", "thickness": "2mm", "dimensions": "1000x2000mm" }
+    },
+    "expectChapterPresent": ["polymerType", "form", "thickness", "dimensions"],
+    "expectChapterMissing": []
+  },
+  {
+    "id": "ch39-pvc-pipe-8digit",
+    "hsCode": "39172300",
+    "declaration": {
+      "tenHang": "Ống nhựa PVC cứng cấp thoát nước",
+      "xuatXu": { "code": "VN", "nameVi": "Việt Nam" },
+      "donViTinh": "mét",
+      "tinhTrang": "Mới 100%",
+      "thongSoKyThuat": ["PVC", "ống", "DN110", "PN10"]
+    },
+    "expectChapterPresent": ["polymerType", "form", "pipeDiameter", "pressureRating"],
+    "expectChapterMissing": []
+  },
+  {
+    "id": "ch39-missing-form",
+    "hsCode": "39201090",
+    "declaration": {
+      "tenHang": "Nhựa polyethylene dùng cách điện",
+      "xuatXu": { "code": "CN", "nameVi": "Trung Quốc" },
+      "donViTinh": "kg",
+      "tinhTrang": "Mới 100%",
+      "thanhPhanCauTao": "PE"
+    },
+    "expectChapterPresent": ["polymerType"],
+    "expectChapterMissing": ["form", "dimensions"]
+  },
+  {
+    "id": "ch40-rubber-sheet",
+    "hsCode": "40082190",
+    "declaration": {
+      "tenHang": "Tấm cao su SBR làm gioăng",
+      "xuatXu": { "code": "MY", "nameVi": "Malaysia" },
+      "donViTinh": "kg",
+      "tinhTrang": "Mới 100%",
+      "chapterSpecific": { "rubberType": "SBR", "form": "tấm" }
+    },
+    "expectChapterPresent": ["rubberType", "form"],
+    "expectChapterMissing": []
+  },
+  {
+    "id": "ch40-tire-8digit",
+    "hsCode": "40111000",
+    "declaration": {
+      "tenHang": "Lốp xe ô tô Michelin Energy XM2",
+      "xuatXu": { "code": "TH", "nameVi": "Thái Lan" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "chapterSpecific": { "tireSize": "205/55R16", "rubberType": "SBR", "loadIndex": "91", "speedRating": "V" }
+    },
+    "expectChapterPresent": ["tireSize", "rubberType", "loadIndex", "speedRating"],
+    "expectChapterMissing": []
+  },
+  {
+    "id": "ch61-knit-8digit",
+    "hsCode": "61091000",
+    "declaration": {
+      "tenHang": "Áo phông nam dệt kim cotton",
+      "xuatXu": { "code": "BD", "nameVi": "Bangladesh" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thanhPhanCauTao": "100% cotton",
+      "chapterSpecific": { "constructionType": "dệt kim", "targetGroup": "nam", "garmentType": "áo phông", "size": "L" }
+    },
+    "expectChapterPresent": ["fiberContent", "constructionType", "targetGroup", "garmentType", "size"],
+    "expectChapterMissing": []
+  },
+  {
+    "id": "ch61-missing-garment",
+    "hsCode": "61091000",
+    "declaration": {
+      "tenHang": "Áo len dệt kim 80% wool",
+      "xuatXu": { "code": "CN", "nameVi": "Trung Quốc" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thanhPhanCauTao": "80% wool",
+      "chapterSpecific": { "constructionType": "dệt kim", "targetGroup": "nam" }
+    },
+    "expectChapterPresent": ["fiberContent", "constructionType", "targetGroup"],
+    "expectChapterMissing": ["garmentType"]
+  },
+  {
+    "id": "ch62-woven-8digit",
+    "hsCode": "62044200",
+    "declaration": {
+      "tenHang": "Váy nữ dệt thoi polyester pha cotton",
+      "xuatXu": { "code": "VN", "nameVi": "Việt Nam" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thanhPhanCauTao": "65% polyester 35% cotton",
+      "chapterSpecific": { "constructionType": "dệt thoi", "targetGroup": "nữ", "garmentType": "váy" }
+    },
+    "expectChapterPresent": ["fiberContent", "constructionType", "targetGroup", "garmentType"],
+    "expectChapterMissing": []
+  },
+  {
+    "id": "ch63-blanket",
+    "hsCode": "63019090",
+    "declaration": {
+      "tenHang": "Chăn cotton dệt thoi cho trẻ em",
+      "xuatXu": { "code": "IN", "nameVi": "Ấn Độ" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thanhPhanCauTao": "100% cotton",
+      "chapterSpecific": { "constructionType": "dệt thoi", "articleType": "chăn" }
+    },
+    "expectChapterPresent": ["fiberContent", "constructionType", "articleType"],
+    "expectChapterMissing": []
+  },
+  {
+    "id": "ch33-cosmetic-8digit",
+    "hsCode": "33049900",
+    "declaration": {
+      "tenHang": "Kem dưỡng da mặt Vitamin C",
+      "xuatXu": { "code": "KR", "nameVi": "Hàn Quốc" },
+      "donViTinh": "chai",
+      "tinhTrang": "Mới 100%",
+      "chapterSpecific": { "cosmeticFunction": "dưỡng ẩm", "dosageForm": "kem", "activeIngredient": "Vitamin C 10%", "volumeMl": "50ml" }
+    },
+    "expectChapterPresent": ["cosmeticFunction", "dosageForm", "activeIngredient", "volumeMl"],
+    "expectChapterMissing": []
+  },
+  {
+    "id": "ch33-perfume-8digit",
+    "hsCode": "33030010",
+    "declaration": {
+      "tenHang": "Nước hoa eau de parfum hương hoa nhài",
+      "xuatXu": { "code": "FR", "nameVi": "Pháp" },
+      "donViTinh": "chai",
+      "tinhTrang": "Mới 100%",
+      "thongSoKyThuat": ["EDP", "50ml", "hương hoa nhài"]
+    },
+    "expectChapterPresent": ["fragranceType", "dosageForm", "volumeMl"],
+    "expectChapterMissing": []
+  },
+  {
+    "id": "ch34-detergent",
+    "hsCode": "34022090",
+    "declaration": {
+      "tenHang": "Bột giặt enzyme tẩy vết bẩn",
+      "xuatXu": { "code": "US", "nameVi": "Hoa Kỳ" },
+      "donViTinh": "kg",
+      "tinhTrang": "Mới 100%",
+      "chapterSpecific": { "activeIngredient": "enzyme 2%", "dosageForm": "bột", "form": "bột" }
+    },
+    "expectChapterPresent": ["activeIngredient", "dosageForm", "form"],
+    "expectChapterMissing": []
+  },
+  {
+    "id": "hs-source-phone",
+    "hsCode": "85171300",
+    "declaration": {
+      "tenHang": "Điện thoại thông minh",
+      "xuatXu": { "code": "CN", "nameVi": "Trung Quốc" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "chapterSpecific": { "modelNumber": "X1", "hasSim": "dual SIM", "storageCapacity": "128GB", "networkGeneration": "5G", "screenSize": "6.1 inch" }
+    },
+    "expectSource": "hs",
+    "expectHeading": "8517"
+  },
+  {
+    "id": "hs-source-pump-heading",
+    "hsCode": "84138100",
+    "declaration": {
+      "tenHang": "Bơm piston thủy lực",
+      "xuatXu": { "code": "IT", "nameVi": "Ý" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thongSoKyThuat": ["15HP", "220V", "bơm piston", "lưu lượng 50L/min", "cột áp 200bar"]
+    },
+    "expectSource": "hs",
+    "expectHeading": "8413",
+    "expectChapterPresent": ["power", "voltage", "flowRate", "pumpType", "headPressure"]
+  },
+  {
+    "id": "oz39269099-phone-case",
+    "hsCode": "39269099",
+    "declaration": {
+      "tenHang": "Vỏ ốp lưng điện thoại iPhone 15 bằng nhựa PVC",
+      "xuatXu": { "code": "CN", "nameVi": "Trung Quốc" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thanhPhanCauTao": "nhựa PVC",
+      "chapterSpecific": { "application": "bảo vệ điện thoại", "dimensions": "15*7cm", "modelNumber": "IP15-CASE" }
+    },
+    "expectSource": "hs",
+    "expectChapterPresent": ["polymerType", "application", "dimensions", "modelNumber"]
+  },
+  {
+    "id": "oz84818099-valve",
+    "hsCode": "84818099",
+    "declaration": {
+      "tenHang": "Vòi chậu rửa nhà bếp inox",
+      "xuatXu": { "code": "CN", "nameVi": "Trung Quốc" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thongSoKyThuat": ["van một tay", "thép không gỉ", "dùng cho bếp"]
+    },
+    "expectSource": "hs",
+    "expectChapterPresent": ["valveType", "material", "application"]
+  },
+  {
+    "id": "oz64029990-sandal",
+    "hsCode": "64029990",
+    "declaration": {
+      "tenHang": "Dép nhựa PVC nam size 42",
+      "xuatXu": { "code": "CN", "nameVi": "Trung Quốc" },
+      "donViTinh": "đôi",
+      "tinhTrang": "Mới 100%",
+      "chapterSpecific": { "upperMaterial": "PVC", "soleMaterial": "PVC", "targetGroup": "nam", "size": "42" }
+    },
+    "expectSource": "hs",
+    "expectChapterPresent": ["upperMaterial", "soleMaterial", "targetGroup", "size"]
+  },
+  {
+    "id": "ch84-generic-fallback",
+    "hsCode": "84799090",
+    "declaration": {
+      "tenHang": "Máy công nghiệp đa năng dùng gia công kim loại",
+      "xuatXu": { "code": "CN", "nameVi": "Trung Quốc" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thongSoKyThuat": ["chức năng gia công kim loại", "220V", "1.5kW"]
+    },
+    "expectHeading": "8479",
+    "expectChapterPresent": ["machineFunction", "power", "voltage"]
+  },
+  {
+    "id": "ch85-display-8528",
+    "hsCode": "85287200",
+    "declaration": {
+      "tenHang": "Màn hình LCD 55 inch dùng truyền hình",
+      "xuatXu": { "code": "KR", "nameVi": "Hàn Quốc" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thongSoKyThuat": ["55 inch", "4K UHD", "LCD", "220V"],
+      "chapterSpecific": { "modelNumber": "UN55" }
+    },
+    "expectHeading": "8528",
+    "expectChapterPresent": ["screenSize", "resolution", "modelNumber", "voltage"]
+  },
+  {
+    "id": "ch33-missing-all",
+    "hsCode": "33049900",
+    "declaration": {
+      "tenHang": "Mỹ phẩm chăm sóc da không ghi chi tiết",
+      "xuatXu": { "code": "CN", "nameVi": "Trung Quốc" },
+      "donViTinh": "chai",
+      "tinhTrang": "Mới 100%"
+    },
+    "expectChapterMissing": ["cosmeticFunction", "dosageForm"]
+  },
+  {
+    "id": "ch61-partial-cotton",
+    "hsCode": "61091000",
+    "declaration": {
+      "tenHang": "Áo thun cotton không ghi loại",
+      "xuatXu": { "code": "VN", "nameVi": "Việt Nam" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "thanhPhanCauTao": "100% cotton"
+    },
+    "expectChapterPresent": ["fiberContent"],
+    "expectChapterMissing": ["garmentType", "targetGroup"]
+  },
+  {
+    "id": "ch39-polymer-primary",
+    "hsCode": "39011000",
+    "declaration": {
+      "tenHang": "Nhựa PE nguyên sinh dạng hạt",
+      "xuatXu": { "code": "SG", "nameVi": "Singapore" },
+      "donViTinh": "kg",
+      "tinhTrang": "Mới 100%",
+      "chapterSpecific": { "polymerType": "PE", "form": "hạt", "meltIndex": "MFI 8" }
+    },
+    "expectHeading": "3901",
+    "expectChapterPresent": ["polymerType", "form", "meltIndex"]
+  },
+  {
+    "id": "ch34-lubricant",
+    "hsCode": "34031990",
+    "declaration": {
+      "tenHang": "Dầu bôi trơn động cơ SAE 40",
+      "xuatXu": { "code": "US", "nameVi": "Hoa Kỳ" },
+      "donViTinh": "lít",
+      "tinhTrang": "Mới 100%",
+      "thongSoKyThuat": ["SAE 40", "dầu khoáng", "dạng lỏng", "1L"]
+    },
+    "expectHeading": "3403",
+    "expectChapterPresent": ["viscosityGrade", "dosageForm", "baseOilType"]
+  },
+  {
+    "id": "ch84-refrigeration-8415",
+    "hsCode": "84151010",
+    "declaration": {
+      "tenHang": "Máy điều hòa không khí 12000BTU",
+      "xuatXu": { "code": "TH", "nameVi": "Thái Lan" },
+      "donViTinh": "bộ",
+      "tinhTrang": "Mới 100%",
+      "thongSoKyThuat": ["12000BTU", "220V", "R32", "1.5HP"]
+    },
+    "expectHeading": "8415",
+    "expectChapterPresent": ["coolingCapacity", "voltage", "refrigerant"]
+  },
+  {
+    "id": "ch85-semiconductor",
+    "hsCode": "85423100",
+    "declaration": {
+      "tenHang": "Vi mạch xử lý STM32F103",
+      "xuatXu": { "code": "CN", "nameVi": "Trung Quốc" },
+      "donViTinh": "chiếc",
+      "tinhTrang": "Mới 100%",
+      "chapterSpecific": { "partNumber": "STM32F103C8T6", "function": "MCU", "packageType": "LQFP48" }
+    },
+    "expectHeading": "8542",
+    "expectChapterPresent": ["partNumber", "function", "packageType"]
+  }
+]

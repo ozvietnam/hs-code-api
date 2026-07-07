@@ -10,6 +10,9 @@ const { validateDeclaration, normalizeDeclaration } = require('./lib/declaration
 const { composeCustomsDescription, composeWithMeta, ECUS_MAX_LENGTH } = require('./lib/describe-compose');
 
 const cases = JSON.parse(readFileSync(join(rootDir, 'tests', 'describe-cases.json'), 'utf8'));
+const chapterFieldCases = JSON.parse(
+  readFileSync(join(rootDir, 'tests', 'describe-chapter-fields.json'), 'utf8')
+);
 const LEVEL_RANK = { REJECT: 0, WEAK: 1, ACCEPTABLE: 2, GOOD: 3, EXCELLENT: 4 };
 
 let passed = 0;
@@ -163,6 +166,71 @@ check('condition-default: validator cảnh báo CONDITION_DEFAULTED',
   validateDeclaration(noCondition, '85171300', {}).warnings.some((w) => w.code === 'CONDITION_DEFAULTED'));
 check('condition-default: khai rõ tinhTrang thì không cảnh báo',
   !validateDeclaration(shortDecl, '85171300', {}).warnings.some((w) => w.code === 'CONDITION_DEFAULTED'));
+
+// ── Chapter declaration fields (30 case, target ≥80% field assertions) ─────
+
+let chapterFieldAssertions = 0;
+let chapterFieldCorrect = 0;
+
+for (const tc of chapterFieldCases) {
+  const declaration = normalizeDeclaration({ declaration: tc.declaration }, tc.context || {});
+  const compliance = validateDeclaration(declaration, tc.hsCode, tc.context || {});
+  const present = compliance.chapterFields?.present || [];
+  const missing = compliance.chapterFields?.missing || [];
+  let ok = true;
+  const reasons = [];
+
+  if (tc.expectSource && compliance.chapterFields?.source !== tc.expectSource) {
+    ok = false;
+    reasons.push(`expected source ${tc.expectSource}, got ${compliance.chapterFields?.source}`);
+  }
+  if (tc.expectHeading && compliance.chapterFields?.heading !== tc.expectHeading) {
+    ok = false;
+    reasons.push(`expected heading ${tc.expectHeading}`);
+  }
+
+  for (const key of tc.expectChapterPresent || []) {
+    chapterFieldAssertions += 1;
+    const inPresent = present.includes(key);
+    const inMissingRequired = compliance.missingRequired.includes(`chapterSpecific.${key}`);
+    if (inPresent && !inMissingRequired) {
+      chapterFieldCorrect += 1;
+    } else {
+      ok = false;
+      if (!inPresent) reasons.push(`expected present ${key}`);
+      if (inMissingRequired) reasons.push(`${key} wrongly in missingRequired`);
+    }
+  }
+
+  for (const key of tc.expectChapterMissing || []) {
+    chapterFieldAssertions += 1;
+    const inMissing = missing.includes(key);
+    const inMissingRequired = compliance.missingRequired.includes(`chapterSpecific.${key}`);
+    if (inMissing && inMissingRequired) {
+      chapterFieldCorrect += 1;
+    } else {
+      ok = false;
+      if (!inMissing) reasons.push(`expected missing ${key}`);
+      if (!inMissingRequired) reasons.push(`${key} not in missingRequired`);
+    }
+  }
+
+  if (ok) {
+    passed += 1;
+    console.log(`PASS ${tc.id}`);
+  } else {
+    failed += 1;
+    console.error(`FAIL ${tc.id} — ${reasons.join(', ')}`);
+  }
+}
+
+const chapterAccuracy =
+  chapterFieldAssertions > 0 ? (chapterFieldCorrect / chapterFieldAssertions) * 100 : 0;
+check(
+  `chapter-fields: accuracy ≥80% (${chapterFieldCorrect}/${chapterFieldAssertions} = ${chapterAccuracy.toFixed(1)}%)`,
+  chapterAccuracy >= 80,
+  `${chapterFieldCorrect}/${chapterFieldAssertions}`
+);
 
 console.log(`\n${passed}/${passed + failed} passed, ${failed} failed`);
 process.exit(failed > 0 ? 1 : 0);

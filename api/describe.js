@@ -3,7 +3,7 @@ const { setCors, handleOptions } = require('../lib/cors');
 const { getTaxRecord, normalizeHs } = require('../lib/data');
 const { mapTaxRecord } = require('../lib/tax-mapper');
 const { geminiGenerateJson } = require('../lib/gemini');
-const { SYSTEM_PROMPT } = require('../lib/customs-prompt');
+const { SYSTEM_PROMPT, buildChapterFieldsPrompt } = require('../lib/customs-prompt');
 const { composeWithMeta } = require('../lib/describe-compose');
 const { validateDeclaration, normalizeDeclaration } = require('../lib/declaration-validator');
 const { captureError } = require('../lib/error-monitor');
@@ -73,8 +73,9 @@ module.exports = async function handler(req, res) {
     };
 
     try {
+      const chapterHint = buildChapterFieldsPrompt(hsCode.slice(0, 2), hsCode);
       const { json, model } = await geminiGenerateJson({
-        systemPrompt: SYSTEM_PROMPT,
+        systemPrompt: SYSTEM_PROMPT + chapterHint,
         userPrompt: JSON.stringify(payload, null, 2),
         modelEnv: 'GEMINI_DESCRIBE_MODEL',
         defaultModel: 'gemini-2.5-flash',

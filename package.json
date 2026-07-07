@@ -40,7 +40,9 @@
     "data:sync-tariff": "node scripts/sync-tariff.mjs",
     "data:sync-tariff:dry": "node scripts/sync-tariff.mjs --source=data/tchq-export.json",
     "data:build-community": "node scripts/build-community-data.mjs",
-    "build": "node scripts/build-community-data.mjs"
+    "build": "node scripts/build-heading-declaration-fields.mjs && node scripts/build-community-data.mjs",
+    "build:declaration-fields": "node scripts/build-heading-declaration-fields.mjs",
+    "mine:declaration-overrides": "node scripts/mine-hs-declaration-overrides.mjs && node scripts/build-heading-declaration-fields.mjs"
   },
   "devDependencies": {
     "xlsx": "^0.18.5"
