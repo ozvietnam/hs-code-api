@@ -1,10 +1,10 @@
 {
-  "version": "2026-07-07",
+  "version": "2026-07-08",
   "generatedBy": "scripts/mine-hs-declaration-overrides.mjs",
   "stats": {
     "total": 119,
-    "expert": 55,
-    "auto": 64,
+    "expert": 70,
+    "auto": 49,
     "topNOz": 100,
     "ozGoldRecords": 5156
   },
@@ -39,18 +39,19 @@
       "source": "expert"
     },
     "39174000": {
-      "titleVi": "Cút nối khí",
       "heading": "3917",
+      "titleVi": "Cút nối khí nhựa",
       "addRequired": [
         "modelNumber",
         "dimensions",
         "application",
-        "polymerType"
+        "polymerType",
+        "pipeDiameter"
       ],
-      "noteVi": "16 tờ khai Oz — bổ sung thông số từ catalog/hóa đơn",
+      "noteVi": "Fitting khí — DN, loại nhựa, áp suất, model",
+      "ozPriority": 2,
       "ozCount": 16,
-      "mined": true,
-      "source": "mined"
+      "source": "expert"
     },
     "39199010": {
       "titleVi": "Miếng dán tự dính dạng tấm",
@@ -157,18 +158,18 @@
       "source": "expert"
     },
     "39262090": {
-      "titleVi": "Dây thun TPU",
       "heading": "3926",
+      "titleVi": "Dây thun TPU",
       "addRequired": [
         "modelNumber",
         "dimensions",
         "application",
         "polymerType"
       ],
-      "noteVi": "Mã Loại khác — 16 tờ khai Oz. Mô tả cụ thể theo CV 5189/755 (tránh \"các loại\")",
+      "noteVi": "Dây thun TPU — chiều dài, đường kính, màu, công dụng",
+      "ozPriority": 2,
       "ozCount": 16,
-      "mined": true,
-      "source": "mined"
+      "source": "expert"
     },
     "39263000": {
       "titleVi": "Giá đỡ kẹp điện thoại xe ô tô",
@@ -291,18 +292,18 @@
       "source": "mined"
     },
     "42022220": {
-      "titleVi": "Túi xách tay",
       "heading": "4202",
+      "titleVi": "Túi xách tay",
       "addRequired": [
         "modelNumber",
         "dimensions",
         "application",
         "material"
       ],
-      "noteVi": "16 tờ khai Oz — bổ sung thông số từ catalog/hóa đơn",
+      "noteVi": "Túi xách — chất liệu (da/vải/PU), kích thước, model",
+      "ozPriority": 2,
       "ozCount": 16,
-      "mined": true,
-      "source": "mined"
+      "source": "expert"
     },
     "42029290": {
       "titleVi": "Hộp đựng tai nghe",
@@ -538,30 +539,31 @@
       "source": "mined"
     },
     "73181510": {
-      "titleVi": "Bu lông ren suốt",
       "heading": "7318",
+      "titleVi": "Bu lông ren suốt",
       "addRequired": [
         "dimensions",
         "application",
-        "steelGrade"
+        "steelGrade",
+        "modelNumber"
       ],
-      "noteVi": "16 tờ khai Oz — bổ sung thông số từ catalog/hóa đơn",
+      "noteVi": "Bu lông — M×L, mác thép, lớp mạ, model",
+      "ozPriority": 2,
       "ozCount": 16,
-      "mined": true,
-      "source": "mined"
+      "source": "expert"
     },
     "73182400": {
-      "titleVi": "Chốt hình B",
       "heading": "7318",
+      "titleVi": "Chốt hình B",
       "addRequired": [
         "dimensions",
         "application",
         "steelGrade"
       ],
-      "noteVi": "16 tờ khai Oz — bổ sung thông số từ catalog/hóa đơn",
+      "noteVi": "Chốt B — đường kính, chiều dài, mác, công dụng lắp ráp",
+      "ozPriority": 2,
       "ozCount": 16,
-      "mined": true,
-      "source": "mined"
+      "source": "expert"
     },
     "73239310": {
       "heading": "7323",
@@ -660,18 +662,19 @@
       "source": "mined"
     },
     "83014020": {
-      "titleVi": "Khóa cửa thông minh",
       "heading": "8301",
+      "titleVi": "Khóa cửa thông minh",
       "addRequired": [
         "modelNumber",
         "dimensions",
         "application",
-        "material"
+        "material",
+        "voltage"
       ],
-      "noteVi": "16 tờ khai Oz — bổ sung thông số từ catalog/hóa đơn",
+      "noteVi": "Khóa smart — vân tay/mã PIN/BT, model, điện áp pin",
+      "ozPriority": 2,
       "ozCount": 16,
-      "mined": true,
-      "source": "mined"
+      "source": "expert"
     },
     "83022090": {
       "titleVi": "Bánh xe đẩy",
@@ -823,16 +826,17 @@
       "source": "expert"
     },
     "84224000": {
-      "titleVi": "Máy đóng gói tự động",
       "heading": "8422",
+      "titleVi": "Máy đóng gói tự động",
       "addRequired": [
         "modelNumber",
-        "application"
+        "application",
+        "power"
       ],
-      "noteVi": "15 tờ khai Oz — bổ sung thông số từ catalog/hóa đơn",
+      "noteVi": "Máy đóng gói — tốc độ túi/phút, model, đóng gói gì",
+      "ozPriority": 2,
       "ozCount": 15,
-      "mined": true,
-      "source": "mined"
+      "source": "expert"
     },
     "84295200": {
       "heading": "8429",
@@ -955,32 +959,33 @@
       "source": "expert"
     },
     "84819090": {
-      "titleVi": "Đế van điện",
       "heading": "8481",
+      "titleVi": "Đế van điện",
       "addRequired": [
         "modelNumber",
         "dimensions",
         "application",
-        "material"
+        "material",
+        "valveType"
       ],
-      "noteVi": "Mã Loại khác — 16 tờ khai Oz. Mô tả cụ thể theo CV 5189/755 (tránh \"các loại\")",
+      "noteVi": "Đế van actuator — loại van, vật liệu, model tương thích",
+      "ozPriority": 2,
       "ozCount": 16,
-      "mined": true,
-      "source": "mined"
+      "source": "expert"
     },
     "84821000": {
-      "titleVi": "Vòng bi",
       "heading": "8482",
+      "titleVi": "Vòng bi",
       "addRequired": [
         "modelNumber",
         "dimensions",
         "application",
         "material"
       ],
-      "noteVi": "17 tờ khai Oz — bổ sung thông số từ catalog/hóa đơn",
+      "noteVi": "Vòng bi — ID/OD/width, mác thép, model, lắp trục gì",
+      "ozPriority": 2,
       "ozCount": 17,
-      "mined": true,
-      "source": "mined"
+      "source": "expert"
     },
     "84834090": {
       "heading": "8483",
@@ -1089,18 +1094,18 @@
       "source": "expert"
     },
     "85131090": {
-      "titleVi": "Gậy cổ vũ phát sáng",
       "heading": "8513",
+      "titleVi": "Gậy cổ vũ phát sáng",
       "addRequired": [
         "modelNumber",
         "dimensions",
         "application",
         "material"
       ],
-      "noteVi": "Mã Loại khác — 15 tờ khai Oz. Mô tả cụ thể theo CV 5189/755 (tránh \"các loại\")",
+      "noteVi": "Light stick — chiều dài, pin/LED, model, chất liệu vỏ",
+      "ozPriority": 2,
       "ozCount": 15,
-      "mined": true,
-      "source": "mined"
+      "source": "expert"
     },
     "85171200": {
       "heading": "8517",
@@ -1132,16 +1137,17 @@
       "source": "expert"
     },
     "85183020": {
-      "titleVi": "Tai nghe bluetooth",
       "heading": "8518",
+      "titleVi": "Tai nghe bluetooth",
       "addRequired": [
         "modelNumber",
-        "application"
+        "application",
+        "connectivity"
       ],
-      "noteVi": "17 tờ khai Oz — bổ sung thông số từ catalog/hóa đơn",
+      "noteVi": "Tai nghe — BT version, model, có mic/ANC không",
+      "ozPriority": 2,
       "ozCount": 17,
-      "mined": true,
-      "source": "mined"
+      "source": "expert"
     },
     "85249100": {
       "heading": "8524",
@@ -1229,17 +1235,18 @@
       "source": "expert"
     },
     "85365099": {
-      "titleVi": "Công tắc thẻ từ khách sạn",
       "heading": "8536",
+      "titleVi": "Công tắc thẻ từ khách sạn",
       "addRequired": [
         "dimensions",
         "application",
-        "material"
+        "voltage",
+        "currentRating"
       ],
-      "noteVi": "Mã Loại khác — 16 tờ khai Oz. Mô tả cụ thể theo CV 5189/755 (tránh \"các loại\")",
+      "noteVi": "Công tắc thẻ từ — điện áp, dòng, loại thẻ, model",
+      "ozPriority": 2,
       "ozCount": 16,
-      "mined": true,
-      "source": "mined"
+      "source": "expert"
     },
     "85369012": {
       "titleVi": "Đầu kết nối dây điện",
@@ -1256,17 +1263,18 @@
       "source": "mined"
     },
     "85369094": {
-      "titleVi": "Đầu nối kiểu giắc cắm",
       "heading": "8536",
+      "titleVi": "Đầu nối kiểu giắc cắm",
       "addRequired": [
         "modelNumber",
         "dimensions",
-        "application"
+        "application",
+        "connectivity"
       ],
-      "noteVi": "Mã Loại khác — 15 tờ khai Oz. Mô tả cụ thể theo CV 5189/755 (tránh \"các loại\")",
+      "noteVi": "Connector — loại giắc, số cực, dòng/áp, model",
+      "ozPriority": 2,
       "ozCount": 15,
-      "mined": true,
-      "source": "mined"
+      "source": "expert"
     },
     "85371019": {
       "heading": "8537",
@@ -1311,18 +1319,17 @@
       "source": "expert"
     },
     "85411000": {
-      "titleVi": "Đi ốt dán",
       "heading": "8541",
+      "titleVi": "Đi ốt dán (diode)",
       "addRequired": [
         "modelNumber",
-        "dimensions",
         "application",
-        "material"
+        "voltage"
       ],
-      "noteVi": "16 tờ khai Oz — bổ sung thông số từ catalog/hóa đơn",
+      "noteVi": "Diode SMD — part number, điện áp/dòng, lắp board gì",
+      "ozPriority": 2,
       "ozCount": 16,
-      "mined": true,
-      "source": "mined"
+      "source": "expert"
     },
     "85423900": {
       "heading": "8542",
@@ -1534,17 +1541,17 @@
       "source": "mined"
     },
     "95069100": {
-      "titleVi": "Dụng cụ đạp xe tập thể dục tại chỗ",
       "heading": "9506",
+      "titleVi": "Dụng cụ đạp xe tập thể dục",
       "addRequired": [
         "dimensions",
         "application",
         "material"
       ],
-      "noteVi": "16 tờ khai Oz — bổ sung thông số từ catalog/hóa đơn",
+      "noteVi": "Xe đạp tại chỗ — khung, bàn đạp, có màn hình/đo nhịp tim",
+      "ozPriority": 2,
       "ozCount": 16,
-      "mined": true,
-      "source": "mined"
+      "source": "expert"
     },
     "96039090": {
       "titleVi": "Đầu mút",
