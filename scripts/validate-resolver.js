@@ -26,8 +26,10 @@ const tables = tablesDoc.tables || {};
 const conflicts = JSON.parse(fs.readFileSync(CONFLICTS_PATH, 'utf8'));
 const tax = JSON.parse(fs.readFileSync(TAX_PATH, 'utf8'));
 
-// 1. Registry
+// 1. Registry — chỉ validate thuộc tính RESOLVER (có domain). Thuộc tính vocab-only
+// (labelVi/aliases/detect, dùng cho map EN/VN + dò missing[]) không thuộc phạm vi resolver.
 for (const [key, def] of Object.entries(registry)) {
+  if (!def.domain) continue; // vocab-only → bỏ qua
   if (def.canonical !== key) fail(`registry canonical mismatch: ${key}`);
   if (!Array.isArray(def.domain) || !def.domain.length) fail(`registry empty domain: ${key}`);
   for (const v of def.domain) {
