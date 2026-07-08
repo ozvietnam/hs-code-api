@@ -21,6 +21,9 @@ module.exports = async function handler(req, res) {
   }
 
   const attrs = {
+    // structured attrs tuỳ chọn từ ERP (vd { voltage:"220V", gsm:"80" }) — registry sẽ honor.
+    // 6 field VN chuẩn dưới đây luôn thắng để giữ shape ổn định.
+    ...(body?.attributes && typeof body.attributes === 'object' && !Array.isArray(body.attributes) ? body.attributes : {}),
     tenHang: (body?.tenHang || body?.name || body?.productName || '').trim(),
     chatLieu: body?.chatLieu || body?.material || null,
     congDung: body?.congDung || body?.purpose || body?.customerDescription || null,

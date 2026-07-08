@@ -1,0 +1,198 @@
+{
+  "version": "2026-07-08",
+  "note": "Registry thuộc tính canonical dùng cho chapter-specific-rules. Mỗi key = tên canonical (EN) mà chapterSpecificRequired tham chiếu. labelVi = nhãn hiển thị cho NV. aliases = tên đồng nghĩa EN/VN để resolve về canonical. sourceAttrs = field free-text trong hồ sơ M0 (attrs) mà nếu có giá trị thì coi như thuộc tính này ĐÃ được cung cấp. detect = regex (ascii, đã bỏ dấu, lowercase) dò trong haystack free-text. Một thuộc tính chỉ vào missing[] khi KHÔNG khớp bất kỳ nguồn nào ở trên.",
+  "attributes": {
+    "material": {
+      "labelVi": "Chất liệu chính",
+      "aliases": ["chatLieu", "vatLieu", "chat lieu", "vat lieu"],
+      "sourceAttrs": ["chatLieu"],
+      "detect": ["chat lieu", "vat lieu", "\\bmaterial\\b", "lam bang", "che tao tu"]
+    },
+    "outerMaterial": {
+      "labelVi": "Vật liệu mặt ngoài",
+      "aliases": ["vatLieuMatNgoai", "mat ngoai"],
+      "sourceAttrs": ["chatLieu"],
+      "detect": ["mat ngoai", "outer", "\\bda that\\b", "\\bda thuoc\\b", "da tong hop", "\\bpu\\b", "\\bpvc\\b", "vai det", "\\bnhua\\b", "\\bda bo\\b", "\\bda\\b"]
+    },
+    "upperMaterial": {
+      "labelVi": "Vật liệu mũ giày",
+      "aliases": ["vatLieuMuGiay", "mu giay"],
+      "sourceAttrs": [],
+      "detect": ["\\bmu (da|vai|nhua|dai|luoi|textile|synthetic)", "mui giay", "than giay", "\\bupper\\b"]
+    },
+    "soleMaterial": {
+      "labelVi": "Vật liệu đế giày",
+      "aliases": ["vatLieuDeGiay", "de giay"],
+      "sourceAttrs": [],
+      "detect": ["\\bde (cao su|nhua|da|go|pu|eva|tpr|phylon)", "de giay", "\\bsole\\b", "outsole"]
+    },
+    "bladeMaterial": {
+      "labelVi": "Vật liệu lưỡi cắt",
+      "aliases": ["vatLieuLuoi"],
+      "sourceAttrs": ["chatLieu"],
+      "detect": ["luoi (thep|inox|hss|carbide|gom|ceramic)", "\\bblade\\b", "\\bhss\\b", "\\bcarbide\\b"]
+    },
+    "baseMetal": {
+      "labelVi": "Kim loại cơ bản",
+      "aliases": ["kimLoaiCoBan", "kim loai"],
+      "sourceAttrs": ["chatLieu"],
+      "detect": ["\\bsat\\b", "\\bthep\\b", "\\bnhom\\b", "\\bdong\\b", "\\bkem\\b", "\\binox\\b", "\\bniken\\b", "\\bbrass\\b", "\\bzinc\\b", "\\bsteel\\b", "\\biron\\b", "\\bcopper\\b", "\\baluminum\\b", "\\baluminium\\b", "hop kim mau"]
+    },
+    "polymerType": {
+      "labelVi": "Loại polymer",
+      "aliases": ["loaiPolymer"],
+      "sourceAttrs": [],
+      "detect": ["\\b(pe|pp|pvc|pet|abs|ps|pa|pc|pu|eva|hdpe|ldpe|pmma|pom|ptfe|nylon)\\b", "polyme", "polymer", "polyethylen", "polypropylen", "polyester", "\\bsilicon", "acrylic", "\\bresin\\b", "nhua (pe|pp|pvc|pet|abs|acrylic)"]
+    },
+    "form": {
+      "labelVi": "Dạng / hình thái",
+      "aliases": ["hinhDang", "dang", "hinh dang"],
+      "sourceAttrs": ["hinhDang"],
+      "detect": ["dang nguyen sinh", "nguyen sinh", "\\bhat\\b", "\\bbot\\b", "\\btam\\b", "\\bthanh\\b", "\\bong\\b", "\\bcuon\\b", "\\bday\\b", "\\bthoi\\b", "\\bkhoi\\b", "primary form", "\\bsheet\\b", "\\bpellet", "granule", "\\bfilm\\b", "\\brod\\b", "\\btube\\b", "\\bcoil\\b", "\\bpowder\\b", "\\bwire\\b", "\\bplate\\b", "\\bstrip\\b"]
+    },
+    "species": {
+      "labelVi": "Loài gỗ",
+      "aliases": ["loaiGo", "loai go"],
+      "sourceAttrs": ["chatLieu"],
+      "detect": ["loai go", "\\bgo (keo|thong|soi|xoan|cao su|teak|oak|walnut|beech|pine|tram|bach dan|cam xe|huong)", "\\bspecies\\b", "hardwood", "softwood", "\\bteak\\b", "\\boak\\b", "\\bpine\\b"]
+    },
+    "moisturePercent": {
+      "labelVi": "Độ ẩm (%)",
+      "aliases": ["doAm"],
+      "sourceAttrs": [],
+      "detect": ["do am", "moisture", "\\d+\\s?%\\s?am", "\\bam \\d+", "\\d+\\s?%\\s?moisture"]
+    },
+    "voltage": {
+      "labelVi": "Điện áp",
+      "aliases": ["dienAp", "dien ap"],
+      "sourceAttrs": [],
+      "detect": ["\\d+\\s?v(?![a-z])", "\\d+\\s?vac", "\\d+\\s?vdc", "dien ap", "\\bvolt", "\\bvon\\b", "220v", "\\b\\d+\\s?-\\s?\\d+\\s?v\\b"]
+    },
+    "power": {
+      "labelVi": "Công suất",
+      "aliases": ["congSuat", "cong suat"],
+      "sourceAttrs": [],
+      "detect": ["\\d+(\\.\\d+)?\\s?k?w(?![a-z])", "\\bwatt", "cong suat", "\\d+(\\.\\d+)?\\s?hp\\b", "ma luc", "\\d+\\s?kva"]
+    },
+    "modelNumber": {
+      "labelVi": "Mã model / mã hiệu",
+      "aliases": ["model", "maModel", "ma model", "ma hieu"],
+      "sourceAttrs": [],
+      "detect": ["\\bmodel\\b", "\\bmodel:", "ma model", "ma hieu", "part\\s?number", "\\bp/n\\b", "\\bmpn\\b", "\\bsku\\b"]
+    },
+    "fiberContent": {
+      "labelVi": "Thành phần sợi (%)",
+      "aliases": ["thanhPhanSoi", "thanh phan soi"],
+      "sourceAttrs": [],
+      "detect": ["\\d+\\s?%\\s?(cotton|polyester|bong|len|wool|silk|lua|to tam|nylon|spandex|elastane|viscose|acrylic|linen|lanh|ny lon|modal|rayon)", "thanh phan soi", "fiber content", "\\bfiber\\b", "\\d+%\\s?(cotton|polyester|bong|len)", "\\d+/\\d+\\s?(cotton|polyester)"]
+    },
+    "constructionType": {
+      "labelVi": "Kiểu dệt (dệt kim/dệt thoi)",
+      "aliases": ["kieuDet", "loaiVai"],
+      "sourceAttrs": [],
+      "detect": ["det kim", "det thoi", "\\bknit", "\\bwoven", "khong det", "non[- ]?woven", "construction", "crochet", "moc len", "vai thun"]
+    },
+    "steelGrade": {
+      "labelVi": "Mác thép",
+      "aliases": ["macThep"],
+      "sourceAttrs": [],
+      "detect": ["\\bss\\s?\\d{3}", "\\bsus\\s?\\d{3}", "\\binox\\b", "khong gi", "stainless", "\\bcarbon\\b", "hop kim", "mac thep", "\\bgrade\\b", "\\bq235\\b", "\\bq345\\b", "\\ba36\\b", "thep (carbon|hop kim|khong gi)"]
+    },
+    "alloyGrade": {
+      "labelVi": "Mác hợp kim",
+      "aliases": ["macHopKim"],
+      "sourceAttrs": [],
+      "detect": ["hop kim", "\\balloy\\b", "606[0-9]", "\\b7075\\b", "\\b5052\\b", "\\b5083\\b", "\\b1050\\b", "\\b3003\\b", "\\b2024\\b", "\\bt6\\b", "nhom \\d{4}"]
+    },
+    "toolType": {
+      "labelVi": "Loại dụng cụ",
+      "aliases": ["loaiDungCu"],
+      "sourceAttrs": ["congDung"],
+      "detect": ["\\bdao\\b", "\\bkeo\\b", "\\bbua\\b", "tua vit", "mo let", "\\bkim\\b", "luoi cua", "\\bcua\\b", "\\bduc\\b", "screwdriver", "hammer", "plier", "wrench", "\\bcle\\b", "\\bkim bam\\b"]
+    },
+    "engineCapacity": {
+      "labelVi": "Dung tích xi-lanh",
+      "aliases": ["dungTichXiLanh", "phanKhoi"],
+      "sourceAttrs": [],
+      "detect": ["\\d+\\s?cc\\b", "\\d+(\\.\\d+)?\\s?l\\b", "phan khoi", "dung tich", "\\d+\\s?cm3", "\\d+\\s?lit"]
+    },
+    "seatCount": {
+      "labelVi": "Số chỗ ngồi",
+      "aliases": ["soCho", "soChoNgoi"],
+      "sourceAttrs": [],
+      "detect": ["\\d+\\s?cho", "so cho", "\\d+\\s?seat", "\\bseat\\b", "\\d+\\s?ghe"]
+    },
+    "measurementType": {
+      "labelVi": "Đại lượng đo",
+      "aliases": ["daiLuongDo"],
+      "sourceAttrs": ["congDung", "chucNang"],
+      "detect": ["do (luu luong|ap suat|nhiet do|vi tri|do dai|khoi luong|dong dien|dien ap|do am|toc do|luong)", "\\bcam bien\\b", "\\bsensor\\b", "measure", "\\bdong ho do", "\\bmet do"]
+    },
+    "principle": {
+      "labelVi": "Nguyên lý hoạt động",
+      "aliases": ["nguyenLy"],
+      "sourceAttrs": ["chucNang"],
+      "detect": ["nguyen ly", "principle", "quang hoc", "sieu am", "hong ngoai", "\\bdien tu\\b", "co hoc", "cam ung", "laser"]
+    },
+    "furnitureType": {
+      "labelVi": "Loại đồ nội thất",
+      "aliases": ["loaiNoiThat"],
+      "sourceAttrs": ["congDung"],
+      "detect": ["\\bghe\\b", "\\bban\\b", "\\btu\\b", "\\bgiuong\\b", "\\bke\\b", "\\bden\\b", "\\bsofa\\b", "\\bchair", "\\btable\\b", "cabinet", "\\bbed\\b", "\\blamp", "noi that"]
+    },
+    "gsm": {
+      "labelVi": "Định lượng (g/m²)",
+      "aliases": ["dinhLuong"],
+      "sourceAttrs": [],
+      "detect": ["\\d+\\s?g/?m2", "\\d+\\s?g/?m²", "\\d+\\s?gsm", "dinh luong", "\\d+\\s?gram/?m"]
+    },
+    "ceramicType": {
+      "labelVi": "Loại gốm/sứ",
+      "aliases": ["loaiGom"],
+      "sourceAttrs": ["chatLieu"],
+      "detect": ["\\bsu\\b", "\\bgom\\b", "porcelain", "ceramic", "\\bchina\\b", "stoneware", "earthenware", "\\bbat trang\\b"]
+    },
+    "glassForm": {
+      "labelVi": "Dạng thủy tinh",
+      "aliases": ["dangThuyTinh"],
+      "sourceAttrs": [],
+      "detect": ["thuy tinh (tam|rong|soi|khoi|dinh hinh)", "tam kinh", "kinh cuong luc", "glass (sheet|fiber|block)", "soi thuy tinh", "\\bkinh noi\\b"]
+    },
+    "casNumber": {
+      "labelVi": "Số CAS",
+      "aliases": ["soCas"],
+      "sourceAttrs": [],
+      "detect": ["\\bcas\\b", "\\d{2,7}-\\d{2}-\\d\\b"]
+    },
+    "purityPercent": {
+      "labelVi": "Độ tinh khiết (%)",
+      "aliases": ["doTinhKhiet"],
+      "sourceAttrs": [],
+      "detect": ["tinh khiet", "purity", "do tinh khiet", "\\d+(\\.\\d+)?\\s?%\\s?(purity|tinh khiet)"]
+    },
+    "commercialName": {
+      "labelVi": "Tên thương mại",
+      "aliases": ["tenThuongMai"],
+      "sourceAttrs": ["tenHang"],
+      "detect": ["ten thuong mai", "commercial name", "\\bbrand\\b", "nhan hieu"]
+    },
+    "dosageForm": {
+      "labelVi": "Dạng bào chế",
+      "aliases": ["dangBaoChe"],
+      "sourceAttrs": [],
+      "detect": ["vien nen", "vien nang", "\\bnang\\b", "dung dich", "\\bsiro\\b", "\\btiem\\b", "thuoc mo", "\\bgel\\b", "\\bkem boi\\b", "dosage", "bao che", "\\bvien\\b", "capsule", "tablet", "\\bsyrup\\b", "\\bampoule\\b"]
+    },
+    "concentration": {
+      "labelVi": "Nồng độ / hàm lượng",
+      "aliases": ["nongDo", "hamLuong"],
+      "sourceAttrs": [],
+      "detect": ["nong do", "ham luong", "concentration", "\\d+\\s?mg", "mg/ml", "\\d+\\s?%", "\\biu\\b", "\\d+\\s?mcg"]
+    },
+    "productType": {
+      "labelVi": "Loại sản phẩm",
+      "aliases": ["loaiSanPham"],
+      "sourceAttrs": ["congDung"],
+      "detect": ["do choi", "the thao", "tro choi", "\\btoy", "\\bgame", "\\bsport", "puzzle", "\\bvot\\b", "xe dap", "dung cu the thao", "\\bbong (da|ro|chuyen|ban)"]
+    }
+  }
+}
