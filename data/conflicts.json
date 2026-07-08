@@ -17,7 +17,8 @@
       "Mã 2106.90.99 là chế phẩm thực phẩm chưa được chi tiết ở nơi khác, áp dụng khi sản phẩm không đáp ứng tiêu chí cụ thể của nhóm 1901."
     ],
     "precedents": [],
-    "sourceFile": "conflict_index.json"
+    "sourceFile": "conflict_index.json",
+    "group": "CF-dairy-infant-formula"
   },
   "19019031": {
     "hsCode": "19019031",
@@ -57,7 +58,8 @@
       "Mã 1904.90.90 là thực phẩm chế biến từ ngũ cốc đã phồng hoặc rang; mã 1901.90.99 là chế phẩm từ bột/tinh bột không thuộc dạng ngũ cốc phồng/rang."
     ],
     "precedents": [],
-    "sourceFile": "conflict_index.json"
+    "sourceFile": "conflict_index.json",
+    "group": "CF-dairy-infant-formula"
   },
   "21012090": {
     "hsCode": "21012090",
@@ -595,6 +597,32 @@
     "precedents": [],
     "sourceFile": "conflict_index.json"
   },
+  "61091010": {
+    "hsCode": "61091010",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "62041100"
+    ],
+    "reasonsVi": [
+      "Dệt kim Ch.61 vs dệt thoi Ch.62 — kiểm tra mũi vòng vs dệt thoi."
+    ],
+    "precedents": [],
+    "group": "CF-textile-knit-vs-woven",
+    "sourceFile": "conflict_resolver_seed"
+  },
+  "62041100": {
+    "hsCode": "62041100",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "61091010"
+    ],
+    "reasonsVi": [
+      "Dệt thoi Ch.62 vs dệt kim Ch.61."
+    ],
+    "precedents": [],
+    "group": "CF-textile-knit-vs-woven",
+    "sourceFile": "conflict_resolver_seed"
+  },
   "73181510": {
     "hsCode": "73181510",
     "riskLevel": "ORANGE",
@@ -815,6 +843,66 @@
     ],
     "precedents": [],
     "sourceFile": "conflict_index.json"
+  },
+  "85044090": {
+    "hsCode": "85044090",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "85076090",
+      "85076033",
+      "85065000"
+    ],
+    "reasonsVi": [
+      "Bộ đổi điện tĩnh vs khối lưu trữ điện (pin/ắc quy)."
+    ],
+    "precedents": [],
+    "group": "CF-storage-vs-converter",
+    "sourceFile": "conflict_resolver_seed"
+  },
+  "85065000": {
+    "hsCode": "85065000",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "85076090",
+      "85076033",
+      "85044090"
+    ],
+    "reasonsVi": [
+      "Pin sơ cấp Li vs ắc quy sạc lại / bộ đổi điện."
+    ],
+    "precedents": [],
+    "group": "CF-storage-vs-converter",
+    "sourceFile": "conflict_resolver_seed"
+  },
+  "85076033": {
+    "hsCode": "85076033",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "85076090",
+      "85065000",
+      "85044090"
+    ],
+    "reasonsVi": [
+      "Ắc quy Li-ion cho xe Ch.87 vs sạc dự phòng điện tử."
+    ],
+    "precedents": [],
+    "group": "CF-storage-vs-converter",
+    "sourceFile": "conflict_resolver_seed"
+  },
+  "85076090": {
+    "hsCode": "85076090",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "85076033",
+      "85065000",
+      "85044090"
+    ],
+    "reasonsVi": [
+      "Sạc dự phòng/pin Li-ion loại khác dễ nhầm với pin sơ cấp 8506 hoặc bộ đổi điện 8504."
+    ],
+    "precedents": [],
+    "group": "CF-storage-vs-converter",
+    "sourceFile": "conflict_resolver_seed"
   },
   "85143990": {
     "hsCode": "85143990",

@@ -28,6 +28,15 @@ module.exports = async function handler(req, res) {
     nameZh: body?.nameZh || null,
     specs: body?.specs || body?.technicalSpec || null,
   };
+
+  // Resolver attrs: canonical + aliasVi từ attributes.json
+  try {
+    const REG = require('../data/attributes.json').attributes || {};
+    for (const [canon, def] of Object.entries(REG)) {
+      const v = body?.[canon] ?? (def.aliasVi ? body?.[def.aliasVi] : undefined);
+      if (v != null && String(v).trim() !== '') attrs[canon] = String(v).trim();
+    }
+  } catch { /* registry optional at runtime */ }
   if (!attrs.tenHang || attrs.tenHang.length < 2) {
     return res.status(400).json({ error: 'tenHang (tên hàng) bắt buộc, tối thiểu 2 ký tự' });
   }

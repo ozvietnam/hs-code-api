@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "test": "node scripts/test-search.mjs && node scripts/test-suggest-confidence.mjs && node scripts/test-gir-engine.mjs && node scripts/test-gir-tree.mjs && node scripts/test-gir-notes.mjs && node scripts/test-precedent-search.mjs && node scripts/test-chapters-index.mjs && node scripts/test-customs-types.mjs && node scripts/test-feedback-store.mjs && node scripts/test-match.mjs && node scripts/test-material-taxonomy.mjs && node scripts/test-tariff-mutations.mjs && node scripts/test-ministries.mjs && node scripts/test-access-log.mjs && node scripts/test-admin-update.mjs && node scripts/test-augment-english.mjs && node scripts/test-loai-khac-classifier.mjs && node scripts/test-suggest-classify-parity.mjs && node scripts/test-describe.mjs && node scripts/test-legal-docs.mjs && echo '=== ALL TESTS PASSED ==='",
+    "test": "node scripts/validate-resolver.js && node scripts/test-conflict-resolver.mjs && node scripts/test-search.mjs && node scripts/test-suggest-confidence.mjs && node scripts/test-gir-engine.mjs && node scripts/test-gir-tree.mjs && node scripts/test-gir-notes.mjs && node scripts/test-precedent-search.mjs && node scripts/test-chapters-index.mjs && node scripts/test-customs-types.mjs && node scripts/test-feedback-store.mjs && node scripts/test-match.mjs && node scripts/test-material-taxonomy.mjs && node scripts/test-tariff-mutations.mjs && node scripts/test-ministries.mjs && node scripts/test-access-log.mjs && node scripts/test-admin-update.mjs && node scripts/test-augment-english.mjs && node scripts/test-loai-khac-classifier.mjs && node scripts/test-suggest-classify-parity.mjs && node scripts/test-describe.mjs && node scripts/test-legal-docs.mjs && echo '=== ALL TESTS PASSED ==='",
     "data:import-legacy": "node scripts/import-legacy.mjs",
     "data:merge-legacy": "node scripts/merge-legacy-knowledge.mjs",
     "data:snapshot-tax": "node scripts/tariff-snapshot.mjs",
@@ -36,7 +36,8 @@
     "bench:accuracy": "node scripts/accuracy-benchmark.mjs",
     "bench:accuracy:dry": "node scripts/accuracy-benchmark.mjs --dry-run",
     "bench:search": "node scripts/accuracy-benchmark.mjs --search-only",
-    "openrouter:ping": "node scripts/openrouter-ping.mjs",
+    "validate:resolver": "node scripts/validate-resolver.js",
+    "test:conflict-resolver": "node scripts/test-conflict-resolver.mjs",
     "data:sync-tariff": "node scripts/sync-tariff.mjs",
     "data:sync-tariff:dry": "node scripts/sync-tariff.mjs --source=data/tchq-export.json",
     "data:build-community": "node scripts/build-community-data.mjs",

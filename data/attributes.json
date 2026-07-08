@@ -1,0 +1,66 @@
+{
+  "version": "2026-07",
+  "attributes": {
+    "energyFunction": {
+      "canonical": "energyFunction",
+      "aliasVi": "chucNangNangLuong",
+      "domain": ["store", "convert"],
+      "questionVi": "Chức năng chính: LƯU TRỮ điện (tích/xả) hay chỉ BIẾN ĐỔI điện?",
+      "labelsVi": {
+        "store": "Lưu trữ (tích/xả)",
+        "convert": "Chỉ biến đổi/cấp nguồn"
+      }
+    },
+    "rechargeable": {
+      "canonical": "rechargeable",
+      "aliasVi": "sacLaiDuoc",
+      "domain": ["yes", "no"],
+      "questionVi": "Sạc lại được không?",
+      "labelsVi": {
+        "yes": "Có sạc lại",
+        "no": "Dùng một lần"
+      }
+    },
+    "endUse": {
+      "canonical": "endUse",
+      "aliasVi": "mucDichSuDung",
+      "domain": ["ev", "electronics"],
+      "questionVi": "Nguồn cấp cho xe điện (nhóm 8702/03/04/11) hay thiết bị điện tử?",
+      "labelsVi": {
+        "ev": "Xe điện",
+        "electronics": "Thiết bị điện tử"
+      }
+    },
+    "fabricConstruction": {
+      "canonical": "fabricConstruction",
+      "aliasVi": "kieuDet",
+      "domain": ["knit", "woven"],
+      "questionVi": "Hàng dệt kim (co giãn, mũi vòng) hay dệt thoi?",
+      "labelsVi": {
+        "knit": "Dệt kim",
+        "woven": "Dệt thoi"
+      }
+    },
+    "productBase": {
+      "canonical": "productBase",
+      "aliasVi": "nguonGocSanPham",
+      "domain": ["malt", "milk", "starch"],
+      "questionVi": "Chế phẩm từ malt, từ sữa (nhóm 04), hay từ bột/tinh bột khác?",
+      "labelsVi": {
+        "malt": "Từ chiết xuất malt",
+        "milk": "Từ sữa (04.01–04.04)",
+        "starch": "Từ bột/tinh bột khác"
+      }
+    },
+    "infantFormula": {
+      "canonical": "infantFormula",
+      "aliasVi": "dinhDuongTreSoSinh",
+      "domain": ["yes", "no"],
+      "questionVi": "Chế phẩm dinh dưỡng cho trẻ sơ sinh/trẻ nhỏ?",
+      "labelsVi": {
+        "yes": "Có — dùng cho trẻ sơ sinh/nhỏ",
+        "no": "Không — dùng chung"
+      }
+    }
+  }
+}

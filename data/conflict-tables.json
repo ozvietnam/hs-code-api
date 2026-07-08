@@ -1,0 +1,139 @@
+{
+  "version": "2026-07",
+  "tables": {
+    "CF-storage-vs-converter": {
+      "titleVi": "Ắc quy / sạc dự phòng vs Bộ nạp vs Pin sơ cấp",
+      "members": ["85076033", "85076090", "85065000", "85044090"],
+      "essenceTestVi": "Hàng LƯU TRỮ điện để xả sau, hay chỉ BIẾN ĐỔI điện tức thời?",
+      "inputs": [
+        { "attribute": "energyFunction" },
+        { "attribute": "rechargeable" },
+        { "attribute": "endUse" }
+      ],
+      "hitPolicy": "PRIORITY",
+      "rules": [
+        {
+          "id": "r1",
+          "priority": 40,
+          "when": { "energyFunction": "convert" },
+          "hs": "85044090",
+          "gir": "GIR 1",
+          "evidence": "hard",
+          "reasonVi": "Không tích điện → bộ đổi điện tĩnh, nhóm 8504",
+          "source": "Chú giải Chương 85 / heading 8504"
+        },
+        {
+          "id": "r2",
+          "priority": 30,
+          "when": { "energyFunction": "store", "rechargeable": "no" },
+          "hs": "85065000",
+          "gir": "GIR 1",
+          "evidence": "hard",
+          "reasonVi": "Không sạc lại → pin sơ cấp Li, nhóm 8506",
+          "source": "Chú giải heading 8506"
+        },
+        {
+          "id": "r3",
+          "priority": 20,
+          "when": { "energyFunction": "store", "rechargeable": "yes", "endUse": "ev" },
+          "hs": "85076033",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Ắc quy Li-ion dùng cho xe thuộc Chương 87",
+          "source": "Chú giải phân nhóm 8507.60"
+        },
+        {
+          "id": "r4",
+          "priority": 10,
+          "when": { "energyFunction": "store", "rechargeable": "yes", "endUse": "electronics" },
+          "hs": "85076090",
+          "gir": "GIR 3(b)",
+          "evidence": "hard",
+          "reasonVi": "Sạc dự phòng: pin+mạch boost → bản chất khối ắc quy (essential character)",
+          "source": "GIR 3(b)"
+        }
+      ]
+    },
+    "CF-textile-knit-vs-woven": {
+      "titleVi": "Dệt kim (Ch.61) vs Dệt thoi (Ch.62)",
+      "members": ["61091010", "62041100"],
+      "essenceTestVi": "Hàng dệt kim hay dệt thoi?",
+      "inputs": [{ "attribute": "fabricConstruction" }],
+      "hitPolicy": "UNIQUE",
+      "rules": [
+        {
+          "id": "t1",
+          "priority": 10,
+          "when": { "fabricConstruction": "knit" },
+          "hs": "61091010",
+          "gir": "GIR 1",
+          "evidence": "hard",
+          "reasonVi": "Dệt kim → Chương 61 (áo phông và tương tự dệt kim)",
+          "source": "Chú giải Chương 61 vs 62"
+        },
+        {
+          "id": "t2",
+          "priority": 10,
+          "when": { "fabricConstruction": "woven" },
+          "hs": "62041100",
+          "gir": "GIR 1",
+          "evidence": "hard",
+          "reasonVi": "Dệt thoi → Chương 62 (váy/đầm dệt thoi)",
+          "source": "Chú giải Chương 61 vs 62"
+        }
+      ]
+    },
+    "CF-dairy-infant-formula": {
+      "titleVi": "Chế phẩm 1901 — malt vs sữa vs bột/tinh bột",
+      "members": ["19011010", "19011020", "19011099", "19019099"],
+      "essenceTestVi": "Nguồn gốc chế phẩm và đối tượng sử dụng (trẻ sơ sinh hay không)?",
+      "inputs": [
+        { "attribute": "productBase" },
+        { "attribute": "infantFormula" }
+      ],
+      "hitPolicy": "PRIORITY",
+      "rules": [
+        {
+          "id": "d1",
+          "priority": 40,
+          "when": { "productBase": "malt" },
+          "hs": "19011010",
+          "gir": "GIR 1",
+          "evidence": "hard",
+          "reasonVi": "Chế phẩm từ chiết xuất malt → 1901.10.10",
+          "source": "Chú giải nhóm 1901.10"
+        },
+        {
+          "id": "d2",
+          "priority": 30,
+          "when": { "productBase": "milk", "infantFormula": "yes" },
+          "hs": "19011020",
+          "gir": "GIR 1",
+          "evidence": "hard",
+          "reasonVi": "Chế phẩm từ sữa dùng cho trẻ sơ sinh/nhỏ → 1901.10.20",
+          "source": "Chú giải 1901.10.20; conflicts.json"
+        },
+        {
+          "id": "d3",
+          "priority": 20,
+          "when": { "productBase": "milk", "infantFormula": "no" },
+          "hs": "19011099",
+          "gir": "GIR 1",
+          "evidence": "hard",
+          "reasonVi": "Chế phẩm từ sữa không thuộc loại trẻ sơ sinh → 1901.10.99",
+          "source": "Chú giải nhóm 1901.10"
+        },
+        {
+          "id": "d4",
+          "priority": 10,
+          "when": { "productBase": "starch" },
+          "hs": "19019099",
+          "gir": "GIR 1",
+          "evidence": "hard",
+          "reasonVi": "Chế phẩm từ bột/tinh bột khác → 1901.90.99",
+          "source": "Chú giải nhóm 1901.90"
+        }
+      ]
+    }
+  }
+}
