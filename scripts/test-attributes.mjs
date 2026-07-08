@@ -39,6 +39,14 @@ chk('ch84 thiếu → voltage+power+modelNumber',
 // 4. Chương 42 (VN) — outerMaterial đủ qua chatLieu; thiếu khi không có chất liệu
 chk('ch42 outerMaterial đủ (chatLieu=da bò)', !miss('42', { tenHang: 'Túi xách', chatLieu: 'da bò thật' }).includes('outerMaterial'));
 chk('ch42 outerMaterial thiếu (không chất liệu)', miss('42', { tenHang: 'Túi xách' }).includes('outerMaterial'));
+// 4b. Chống false-positive: chữ "đã" (bỏ dấu = "da") KHÔNG được nhận nhầm là vật liệu da.
+chk('ch42 "đã qua sử dụng" KHÔNG bị nhận là da → vẫn thiếu outerMaterial',
+  miss('42', { tenHang: 'Túi xách đã qua sử dụng' }).includes('outerMaterial'));
+chk('ch42 "đã thuộc/đã bỏ" KHÔNG bị nhận là da → vẫn thiếu',
+  miss('42', { tenHang: 'Lô hàng mẫu đã bỏ, quyền đã thuộc đối tác' }).includes('outerMaterial'));
+// 4c. Vẫn dò được da THẬT trong free-text (có dấu) khi không có chatLieu structured.
+chk('ch42 "da bò" trong tên hàng → detect outerMaterial (hết thiếu)',
+  !miss('42', { tenHang: 'Túi xách da bò cao cấp' }).includes('outerMaterial'));
 // 5. Chương 61 (VN) — % sợi + kiểu dệt
 chk('ch61 đủ (95% cotton, dệt kim) → rỗng',
   miss('61', { tenHang: 'Áo thun nam dệt kim', chatLieu: '95% cotton 5% spandex' }).length === 0);
