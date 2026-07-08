@@ -16,9 +16,30 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
+import { chat, listConfigured } from '../lib/llm.mjs';
+
+const require = createRequire(import.meta.url);
+const { parseJsonLoose } = require('../lib/parse-json.js');
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
+const ENV_PATH = path.join(ROOT, '.env');
+
+function loadDotEnv() {
+  if (!fs.existsSync(ENV_PATH)) return;
+  for (const line of fs.readFileSync(ENV_PATH, 'utf8').split('\n')) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const eq = trimmed.indexOf('=');
+    if (eq <= 0) continue;
+    const key = trimmed.slice(0, eq);
+    const val = trimmed.slice(eq + 1);
+    if (!process.env[key]) process.env[key] = val;
+  }
+}
+
+loadDotEnv();
 const CHG_PATH = path.join(ROOT, 'data', 'chu-giai-heading.json');
 const CONFLICTS_PATH = path.join(ROOT, 'data', 'conflicts.json');
 const OZ_GOLD_PATH = path.join(ROOT, 'data', 'oz-gold-final.jsonl');
@@ -108,16 +129,35 @@ function buildPriorityList(headings) {
   return ordered;
 }
 
-async function geminiBatch(items, apiKey, model) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-  const userPayload = { items: items.map((x) => ({
+function buildUserPayload(items) {
+  return { items: items.map((x) => ({
     h4: x.h4,
     nhom: (x.nhom || '').slice(0, 500),
     bao_gom: (x.bao_gom || '').slice(0, 250),
     khong_bao_gom: (x.khong_bao_gom || '').slice(0, 200),
     loai_tru: (x.loai_tru || '').slice(0, 200),
-    tinh_chat_hien_tai: x.tinh_chat || '',  // existing tinh_chat (may be empty)
+    tinh_chat_hien_tai: x.tinh_chat || '',
   })) };
+}
+
+async function llmBatch(items) {
+  const userPayload = buildUserPayload(items);
+  const { content, provider, model } = await chat(
+    [
+      { role: 'system', content: SYSTEM_PROMPT },
+      { role: 'user', content: JSON.stringify(userPayload, null, 2) },
+    ],
+    { json: true, temperature: 0.2, maxTokens: 8000, timeoutMs: 120000, order: ['hermes', 'minimax', 'openrouter'] },
+  );
+  const parsed = parseJsonLoose(content);
+  const list = parsed.items || parsed;
+  if (!Array.isArray(list)) throw new Error(`${provider}/${model}: expected { items: [] }`);
+  return list;
+}
+
+async function geminiBatch(items, apiKey, model) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+  const userPayload = buildUserPayload(items);
 
   const res = await fetch(url, {
     method: 'POST',
@@ -155,9 +195,20 @@ async function runPool(tasks, concurrency, fn) {
 
 async function main() {
   const opts = parseArgs();
+  const hermesOk = !!(process.env.HERMES_API_KEY && process.env.HERMES_BASE_URL);
   const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) { console.error('GEMINI_API_KEY missing'); process.exit(1); }
-  const model = process.env.GEMINI_ENRICH_MODEL || 'gemini-2.5-flash';
+  if (!hermesOk && !apiKey) {
+    console.error('Set HERMES_API_KEY+HERMES_BASE_URL or GEMINI_API_KEY in .env');
+    process.exit(1);
+  }
+  const model = hermesOk
+    ? `hermes:${process.env.HERMES_ENRICH_MODEL || 'reasoning'}`
+    : (process.env.GEMINI_ENRICH_MODEL || 'gemini-2.5-flash');
+  const runBatch = hermesOk ? llmBatch : (items) => geminiBatch(items, apiKey, model);
+  if (hermesOk) {
+    const cfg = listConfigured().find((c) => c.provider === 'hermes');
+    console.log(`Provider: Hermes Pool @ ${cfg?.baseUrl || process.env.HERMES_BASE_URL}`);
+  }
 
   const headings = loadHeadings();
   const priority = buildPriorityList(headings);
@@ -188,7 +239,7 @@ async function main() {
   await runPool(batches, opts.concurrency, async (batch, bIdx) => {
     const items = batch.map((h4) => ({ h4, ...headings[h4] }));
     try {
-      const results = await geminiBatch(items, apiKey, model);
+      const results = await runBatch(items);
       for (const r of results) {
         const h4 = String(r.h4 || '').replace(/\D/g, '');
         if (!h4 || !headings[h4]) continue;
