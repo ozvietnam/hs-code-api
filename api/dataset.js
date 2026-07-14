@@ -20,6 +20,7 @@ const { getProcedureByCode, listProcedures, getProcedures } = require('../lib/po
 const { detectRepeatedPatterns } = require('../lib/feedback-store');
 const { listPromptVersions } = require('../lib/prompt-version');
 const { getEnrichedForHs } = require('../lib/enriched-data');
+const { searchWatchlist, watchlistStats, checkTrademarkRisk } = require('../lib/trademark-watch');
 const fs = require('fs');
 const path = require('path');
 
@@ -64,12 +65,15 @@ function kgStatsPayload() {
 module.exports = async function handler(req, res) {
   setCors(res);
   if (handleOptions(req, res)) return;
-  if (req.method !== 'GET') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
   if (requireAuth(req, res)) return;
 
   const resource = String(req.query.resource || '').trim();
+  // GET cho mọi resource; POST chỉ mở cho screening batch nhãn hiệu (số lượng lớn).
+  const isTrademarkBatch = req.method === 'POST' && resource === 'trademark';
+  if (req.method !== 'GET' && !isTrademarkBatch) {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
   if (!resource) {
     return res.status(400).json({
       error: 'Missing resource',
@@ -352,6 +356,100 @@ module.exports = async function handler(req, res) {
         minCount,
         note: 'Patterns with ≥minCount director overrides within feedback. Approve bulk via POST /api/feedback/bulk-approve.',
         patterns,
+      });
+    }
+
+    if (resource === 'trademark') {
+      // ── Batch screening (số lượng lớn): POST { items: [{id?,brand?,text?,hs?,origin?}, ...] } ──
+      // Trả gọn cho ERP screen hàng loạt: mỗi item 1 cờ rủi ro va chạm nhãn hiệu, không kèm giải trình.
+      if (req.method === 'POST') {
+        let body = req.body;
+        if (typeof body === 'string') {
+          try {
+            body = JSON.parse(body);
+          } catch {
+            return res.status(400).json({ error: 'Invalid JSON body' });
+          }
+        }
+        const items = Array.isArray(body?.items) ? body.items : null;
+        if (!items) {
+          return res.status(400).json({
+            error: 'Body phải có items[] — vd { "items": [{ "brand": "ABB", "hs": "85371019", "origin": "China" }] }',
+          });
+        }
+        const MAX = 1000;
+        if (items.length > MAX) {
+          return res.status(400).json({ error: `Tối đa ${MAX} item/lần (gửi ${items.length}).` });
+        }
+        const byLevel = {};
+        const results = items.map((it, i) => {
+          const brand = String(it?.brand || it?.q || '').trim();
+          const text = String(it?.text || it?.productName || it?.ten || '').trim();
+          const hs = it?.hs || it?.hsCode;
+          const origin = it?.origin || it?.xuatXu;
+          const r = checkTrademarkRisk({ brand, text, hsCode: hs, origin });
+          const top = r.matched ? r.matches[0] : null;
+          const level = r.matched ? r.riskLevel : 'NONE';
+          byLevel[level] = (byLevel[level] || 0) + 1;
+          return {
+            id: it?.id ?? i,
+            brand: brand || null,
+            hs: hs || null,
+            origin: origin || null,
+            matched: r.matched,
+            riskLevel: level,
+            mark: top?.mark || null,
+            owner: top?.owner || null,
+            customsRecorded: top?.customsRecorded ?? false,
+            classMatch: top?.classMatch ?? null,
+            cnExportLevel: top?.cnExportRisk?.level || null,
+            verified: top?.verified ?? false,
+            status: top?.status || null,
+            regNo: top?.regNo || null,
+          };
+        });
+        const flagged = results.filter((x) => x.matched).length;
+        return res.status(200).json({
+          total: results.length,
+          flagged,
+          byLevel,
+          results,
+          coverageNote:
+            'Chỉ phát hiện nhãn CÓ trong watchlist (' +
+            watchlistStats().total +
+            ' nhãn). "matched:false" KHÔNG chắc là sạch — phụ thuộc độ phủ watchlist.',
+          disclaimer: 'Tư vấn tham khảo, không phải phán quyết hải quan.',
+        });
+      }
+
+      const q = String(req.query.q || req.query.brand || '').trim();
+      const hsCode = req.query.hs || req.query.hsCode;
+      const origin = req.query.origin || req.query.xuatXu;
+      if (String(req.query.stats || '') === '1' && !q) {
+        return res.status(200).json(watchlistStats());
+      }
+      if (q.length < 2) {
+        return res.status(400).json({
+          error: 'q (nhãn hiệu, tối thiểu 2 ký tự) required',
+          examples: [
+            '/api/trademark?q=vpower',
+            '/api/trademark?q=honda&hs=84073100',
+            '/api/trademark?q=honda&origin=CN&risk=1',
+            '/api/trademark?stats=1',
+          ],
+        });
+      }
+      // risk=1: trả luôn object cảnh báo (dùng khi đã biết hsCode + origin)
+      if (String(req.query.risk || '') === '1') {
+        return res.status(200).json(checkTrademarkRisk({ brand: q, hsCode, origin }));
+      }
+      const matches = searchWatchlist(q, { hsCode, origin });
+      return res.status(200).json({
+        found: matches.length > 0,
+        query: q,
+        total: matches.length,
+        matches,
+        disclaimer: 'Tư vấn tham khảo, không phải phán quyết hải quan.',
       });
     }
 
