@@ -36,7 +36,8 @@
     { "source": "/api/policy-procedures/:code", "destination": "/api/dataset?resource=policy_procedures&code=:code" },
     { "source": "/api/admin/suggestions", "destination": "/api/dataset?resource=admin_suggestions" },
     { "source": "/api/admin/prompts", "destination": "/api/dataset?resource=prompt_versions" },
-    { "source": "/api/data-quality", "destination": "/api/dataset?resource=data_quality" }
+    { "source": "/api/data-quality", "destination": "/api/dataset?resource=data_quality" },
+    { "source": "/api/trademark", "destination": "/api/dataset?resource=trademark" }
   ],
   "functions": {
     "api/**/*.js": {

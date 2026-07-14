@@ -1,0 +1,1695 @@
+{
+  "_meta": {
+    "purpose": "Watchlist nhãn hiệu để cảnh báo rủi ro SHTT khi nhập khẩu (TT 13/2015 & 13/2020).",
+    "warning": "SEED chưa xác minh (verified=false). Nạp dữ liệu thật qua scripts/ingest-trademark-watch.mjs.",
+    "schema": {
+      "status": "REGISTERED | PENDING | EXPIRED | UNKNOWN",
+      "customsRecorded": "true nếu nằm trong danh sách giám sát của Tổng cục Hải quan",
+      "source": "customs | wipo | ipvietnam | seed",
+      "verified": "true nếu đã đối chiếu nguồn chính thức"
+    },
+    "generatedAt": "2026-06-05T01:02:01.126Z",
+    "lastManualIngest": {
+      "at": "2026-06-05",
+      "source": "wipopublish.ipvietnam.gov.vn (CEO tra tay)",
+      "marks": [
+        "Kamoer"
+      ],
+      "note": "Kamoer: 1 bằng cấp class 35 (chủ VN ≠ hãng gốc TQ) + 2 đơn đang xử lý. Chỉ registry, KHÔNG phải recordal hải quan."
+    }
+  },
+  "marks": {
+    "ABB": {
+      "normalized": "abb",
+      "owner": "ABB Asea Brown Boveri Ltd / ABB AB (Thụy Sĩ–Thụy Điển)",
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        9
+      ],
+      "hsChapters": [
+        "85",
+        "90"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "PLC / bộ điều khiển",
+        "thiết bị tự động hóa công nghiệp",
+        "biến tần",
+        "thiết bị điện"
+      ],
+      "note": "Nhãn công nghiệp lớn (ABB AC 800M, PM8xx, biến tần ACS...). RỦI RO CAO trên thực tế: linh kiện tự động hóa ABB nằm trong nhóm bị LÀM GIẢ / hàng xám nhiều nhất từ TQ. CHƯA xác minh đăng ký VN/NOIP — cần tra wipopublish.ipvietnam.gov.vn để set verified + regNo. Thêm vào watchlist 06/2026 sau ca PM864AK01 (nhập từ TQ, khai CO Thụy Điển).",
+      "updatedAt": "2026-06-05"
+    },
+    "Apple": {
+      "normalized": "apple",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        9
+      ],
+      "hsChapters": [
+        "85",
+        "90"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "điện thoại",
+        "điện thoại thông minh",
+        "máy tính",
+        "máy tính xách tay",
+        "tai nghe",
+        "máy tính bảng"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Samsung": {
+      "normalized": "samsung",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        9,
+        11
+      ],
+      "hsChapters": [
+        "84",
+        "85",
+        "90",
+        "94"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "điện thoại",
+        "tivi",
+        "tủ lạnh",
+        "máy giặt",
+        "máy điều hòa"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Xiaomi": {
+      "normalized": "xiaomi",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        9,
+        11
+      ],
+      "hsChapters": [
+        "84",
+        "85",
+        "90",
+        "94"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "điện thoại",
+        "điện thoại thông minh",
+        "robot hút bụi"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Huawei": {
+      "normalized": "huawei",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        9
+      ],
+      "hsChapters": [
+        "85",
+        "90"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "điện thoại",
+        "máy tính bảng",
+        "thiết bị mạng"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Oppo": {
+      "normalized": "oppo",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        9
+      ],
+      "hsChapters": [
+        "85",
+        "90"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "điện thoại",
+        "điện thoại thông minh"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Vivo": {
+      "normalized": "vivo",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        9
+      ],
+      "hsChapters": [
+        "85",
+        "90"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "điện thoại",
+        "điện thoại thông minh"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "LG": {
+      "normalized": "lg",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        9,
+        11
+      ],
+      "hsChapters": [
+        "84",
+        "85",
+        "90",
+        "94"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "tivi",
+        "tủ lạnh",
+        "máy giặt",
+        "máy điều hòa"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Panasonic": {
+      "normalized": "panasonic",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        9,
+        11
+      ],
+      "hsChapters": [
+        "84",
+        "85",
+        "90",
+        "94"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "tivi",
+        "tủ lạnh",
+        "máy giặt",
+        "pin",
+        "ắc quy"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Toshiba": {
+      "normalized": "toshiba",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        9,
+        11
+      ],
+      "hsChapters": [
+        "84",
+        "85",
+        "90",
+        "94"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "máy giặt",
+        "tủ lạnh",
+        "máy điều hòa",
+        "tivi",
+        "máy bơm"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Hitachi": {
+      "normalized": "hitachi",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        11
+      ],
+      "hsChapters": [
+        "84",
+        "85",
+        "94"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "tủ lạnh",
+        "máy giặt",
+        "máy điều hòa",
+        "máy bơm"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Bosch": {
+      "normalized": "bosch",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        11
+      ],
+      "hsChapters": [
+        "84",
+        "85",
+        "94"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "máy giặt",
+        "máy rửa bát",
+        "máy khoan",
+        "dụng cụ điện"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Siemens": {
+      "normalized": "siemens",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        11
+      ],
+      "hsChapters": [
+        "84",
+        "85",
+        "94"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "máy giặt",
+        "tủ lạnh",
+        "máy rửa bát"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Electrolux": {
+      "normalized": "electrolux",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        11
+      ],
+      "hsChapters": [
+        "84",
+        "85",
+        "94"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "tủ lạnh",
+        "máy giặt",
+        "máy hút bụi"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Whirlpool": {
+      "normalized": "whirlpool",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        11
+      ],
+      "hsChapters": [
+        "84",
+        "85",
+        "94"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "tủ lạnh",
+        "máy giặt",
+        "máy sấy"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Haier": {
+      "normalized": "haier",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        11
+      ],
+      "hsChapters": [
+        "84",
+        "85",
+        "94"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "tủ lạnh",
+        "máy giặt",
+        "máy điều hòa"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Midea": {
+      "normalized": "midea",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        11
+      ],
+      "hsChapters": [
+        "84",
+        "85",
+        "94"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "máy điều hòa",
+        "quạt",
+        "tủ lạnh",
+        "máy giặt"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Daikin": {
+      "normalized": "daikin",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        11
+      ],
+      "hsChapters": [
+        "84",
+        "85",
+        "94"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "máy điều hòa",
+        "máy lạnh"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Pentax": {
+      "normalized": "pentax",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7
+      ],
+      "hsChapters": [
+        "84"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "máy bơm",
+        "bơm nước"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Grundfos": {
+      "normalized": "grundfos",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7
+      ],
+      "hsChapters": [
+        "84"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "máy bơm",
+        "bơm nước"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Honda": {
+      "normalized": "honda",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        12
+      ],
+      "hsChapters": [
+        "84",
+        "86",
+        "87",
+        "88",
+        "89"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "xe máy",
+        "động cơ",
+        "máy phát điện"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Toyota": {
+      "normalized": "toyota",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        12
+      ],
+      "hsChapters": [
+        "86",
+        "87",
+        "88",
+        "89"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "ô tô",
+        "xe",
+        "linh kiện ô tô"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Ford": {
+      "normalized": "ford",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        12
+      ],
+      "hsChapters": [
+        "86",
+        "87",
+        "88",
+        "89"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "ô tô",
+        "xe",
+        "linh kiện ô tô"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Nike": {
+      "normalized": "nike",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        25
+      ],
+      "hsChapters": [
+        "61",
+        "62",
+        "64",
+        "65"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "giày",
+        "giày thể thao",
+        "quần áo"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Adidas": {
+      "normalized": "adidas",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        25
+      ],
+      "hsChapters": [
+        "61",
+        "62",
+        "64",
+        "65"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "giày",
+        "giày thể thao",
+        "quần áo thể thao"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Unilever": {
+      "normalized": "unilever",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        3
+      ],
+      "hsChapters": [
+        "33",
+        "34"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "mỹ phẩm",
+        "hóa mỹ phẩm",
+        "chất tẩy rửa"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "P&G": {
+      "normalized": "p g",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        3
+      ],
+      "hsChapters": [
+        "33",
+        "34"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "mỹ phẩm",
+        "bột giặt",
+        "chăm sóc cá nhân"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "3M": {
+      "normalized": "3m",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [],
+      "hsChapters": [],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "băng keo",
+        "vật liệu lọc",
+        "mặt nạ"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Intel": {
+      "normalized": "intel",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        9
+      ],
+      "hsChapters": [
+        "85",
+        "90"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "vi xử lý",
+        "linh kiện điện tử",
+        "máy tính"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "AMD": {
+      "normalized": "amd",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [],
+      "hsChapters": [],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "vi xử lý",
+        "linh kiện điện tử"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "NVIDIA": {
+      "normalized": "nvidia",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [],
+      "hsChapters": [],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "card đồ họa",
+        "linh kiện điện tử",
+        "chip"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Dell": {
+      "normalized": "dell",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        9
+      ],
+      "hsChapters": [
+        "85",
+        "90"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "máy tính",
+        "máy tính xách tay",
+        "màn hình"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "HP": {
+      "normalized": "hp",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        9
+      ],
+      "hsChapters": [
+        "85",
+        "90"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "máy tính",
+        "máy tính xách tay",
+        "máy in"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Lenovo": {
+      "normalized": "lenovo",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        9
+      ],
+      "hsChapters": [
+        "85",
+        "90"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "máy tính",
+        "máy tính xách tay",
+        "máy tính bảng"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Asus": {
+      "normalized": "asus",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        9
+      ],
+      "hsChapters": [
+        "85",
+        "90"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "máy tính",
+        "máy tính xách tay",
+        "bo mạch chủ"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Acer": {
+      "normalized": "acer",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        9
+      ],
+      "hsChapters": [
+        "85",
+        "90"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "máy tính",
+        "máy tính xách tay",
+        "màn hình"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "MSI": {
+      "normalized": "msi",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        9
+      ],
+      "hsChapters": [
+        "85",
+        "90"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "máy tính",
+        "máy tính xách tay",
+        "bo mạch chủ"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Canon": {
+      "normalized": "canon",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [],
+      "hsChapters": [],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "máy in",
+        "máy ảnh",
+        "ống kính"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Nikon": {
+      "normalized": "nikon",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [],
+      "hsChapters": [],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "máy ảnh",
+        "ống kính"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Sony": {
+      "normalized": "sony",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        9
+      ],
+      "hsChapters": [
+        "85",
+        "90"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "tivi",
+        "máy ảnh",
+        "tai nghe",
+        "điện thoại",
+        "máy chơi game"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "JBL": {
+      "normalized": "jbl",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        9
+      ],
+      "hsChapters": [
+        "85",
+        "90"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "loa",
+        "tai nghe",
+        "âm thanh"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Philips": {
+      "normalized": "philips",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        9
+      ],
+      "hsChapters": [
+        "85",
+        "90"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "tivi",
+        "đèn",
+        "máy cạo râu",
+        "nồi cơm điện"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Sharp": {
+      "normalized": "sharp",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        9,
+        11
+      ],
+      "hsChapters": [
+        "84",
+        "85",
+        "90",
+        "94"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "tivi",
+        "tủ lạnh",
+        "máy giặt"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "TCL": {
+      "normalized": "tcl",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        9
+      ],
+      "hsChapters": [
+        "85",
+        "90"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "tivi",
+        "điện thoại"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Hisense": {
+      "normalized": "hisense",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        9,
+        11
+      ],
+      "hsChapters": [
+        "84",
+        "85",
+        "90",
+        "94"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "tivi",
+        "tủ lạnh",
+        "máy điều hòa"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Carrier": {
+      "normalized": "carrier",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        11
+      ],
+      "hsChapters": [
+        "84",
+        "85",
+        "94"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "máy điều hòa",
+        "máy lạnh"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Yamaha": {
+      "normalized": "yamaha",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        7,
+        12
+      ],
+      "hsChapters": [
+        "84",
+        "86",
+        "87",
+        "88",
+        "89"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "xe máy",
+        "âm thanh",
+        "động cơ"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Bridgestone": {
+      "normalized": "bridgestone",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        12
+      ],
+      "hsChapters": [
+        "86",
+        "87",
+        "88",
+        "89"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "lốp xe",
+        "cao su"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Michelin": {
+      "normalized": "michelin",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        12
+      ],
+      "hsChapters": [
+        "86",
+        "87",
+        "88",
+        "89"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "lốp xe",
+        "cao su"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Coca-Cola": {
+      "normalized": "coca cola",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [],
+      "hsChapters": [],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "nước giải khát",
+        "đồ uống"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "Nestle": {
+      "normalized": "nestle",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [],
+      "hsChapters": [],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "sữa",
+        "thực phẩm",
+        "đồ uống"
+      ],
+      "updatedAt": "2026-06-05"
+    },
+    "VPOWER": {
+      "normalized": "vpower",
+      "owner": null,
+      "appNo": null,
+      "regNo": null,
+      "niceClasses": [
+        4,
+        7,
+        9
+      ],
+      "hsChapters": [
+        "27",
+        "34",
+        "84",
+        "85",
+        "90"
+      ],
+      "status": "UNKNOWN",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": false,
+      "source": "seed",
+      "productCategories": [
+        "dầu nhớt",
+        "máy phát điện",
+        "ắc quy"
+      ],
+      "note": "Nhãn ví dụ từ yêu cầu CEO — cần tra cứu xác minh tại iplib.noip.gov.vn",
+      "updatedAt": "2026-06-05"
+    },
+    "Kamoer": {
+      "normalized": "kamoer",
+      "owner": "Công ty TNHH thương mại dịch vụ Điện máy Thông minh",
+      "brandOwner": "Kamoer Fluid Tech (Shanghai) Co., Ltd.",
+      "appNo": "VN-4-2019-03170",
+      "regNo": "4-0384295-000",
+      "niceClasses": [
+        35
+      ],
+      "hsChapters": [
+        "84"
+      ],
+      "status": "REGISTERED",
+      "customsRecorded": false,
+      "cn": {
+        "gaccRecorded": false,
+        "recordNo": null,
+        "ipTypes": [],
+        "verified": false,
+        "source": "seed"
+      },
+      "verified": true,
+      "source": "ipvietnam",
+      "registrations": [
+        {
+          "office": "VN",
+          "appNo": "VN-4-2019-03170",
+          "regNo": "4-0384295-000",
+          "mark": "K KAMOER",
+          "status": "REGISTERED",
+          "applicant": "Công ty TNHH thương mại dịch vụ Điện máy Thông minh",
+          "applicantAddress": "18Bis/22/3 Nguyễn Thị Minh Khai, P. Đa Kao, Q.1, TP.HCM",
+          "niceClasses": [
+            35
+          ],
+          "goods": "Mua bán thiết bị viễn thông, máy vi tính, điện thoại, máy bơm nước",
+          "markType": "Combined",
+          "filingDate": "2019-01-25",
+          "grantDate": "2021-04-13",
+          "expiryDate": "2029-01-25",
+          "source": "ipvietnam"
+        },
+        {
+          "office": "VN",
+          "appNo": "VN-4-2025-17890",
+          "regNo": null,
+          "mark": "K Kamoer",
+          "status": "PENDING",
+          "applicant": null,
+          "niceClasses": [],
+          "source": "ipvietnam"
+        },
+        {
+          "office": "VN",
+          "appNo": "VN-4-2025-17886",
+          "regNo": null,
+          "mark": "K Kamoer",
+          "status": "PENDING",
+          "applicant": null,
+          "niceClasses": [],
+          "source": "ipvietnam"
+        }
+      ],
+      "productCategories": [
+        "bơm nhu động",
+        "bơm định lượng",
+        "máy bơm"
+      ],
+      "note": "VN: nhãn 'K KAMOER' ĐÃ CẤP BẰNG tại IP Vietnam (VN-4-2019-03170, số bằng 4-0384295-000, cấp 13/04/2021, hết hạn 25/01/2029) — nhóm 35 (dịch vụ MUA BÁN, gồm 'máy bơm nước'). ⚠️ Chủ bằng = 'Công ty TNHH TM DV Điện máy Thông minh' (TP.HCM), KHÔNG phải hãng gốc Kamoer Fluid Tech (Shanghai) → dấu hiệu nhà phân phối/ôm nhãn (squatting). Thêm 2 đơn nộp 2025 đang giải quyết (VN-4-2025-17890, VN-4-2025-17886, chưa rõ chủ đơn). XÁC MINH từ wipopublish.ipvietnam.gov.vn (CEO tra tay 05/06/2026). CHƯA có: ghi nhận giám sát TCHQ (customsRecorded) & GACC.",
+      "updatedAt": "2026-06-05"
+    }
+  }
+}
