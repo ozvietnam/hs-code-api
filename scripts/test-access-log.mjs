@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 import fs from 'fs';
 import path from 'path';

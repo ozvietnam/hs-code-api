@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import './test-isolate-data.mjs';
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';

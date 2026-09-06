@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import './test-isolate-data.mjs';
 /**
  * test-conflict-resolver.mjs — unit tests cho lib/conflict-resolver.js
  */

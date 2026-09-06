@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const tax = require('../data/tax.json');

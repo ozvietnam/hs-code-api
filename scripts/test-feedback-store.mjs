@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 import fs from 'fs';
 import path from 'path';
@@ -12,9 +13,10 @@ const {
   bulkReviewFeedback,
   detectRepeatedPatterns,
   FEEDBACK_PATH,
+  PROMOTIONS_PATH,
 } = require('../lib/feedback-store.js');
 
-const promotionsPath = path.join(__dirname, '..', 'data', 'pattern-promotions.jsonl');
+const promotionsPath = PROMOTIONS_PATH;
 
 for (const p of [FEEDBACK_PATH, promotionsPath]) {
   if (fs.existsSync(p)) fs.unlinkSync(p);
