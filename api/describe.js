@@ -57,6 +57,8 @@ module.exports = async function handler(req, res) {
   const started = Date.now();
   let declaration;
   let llmModel = null;
+  // Cờ báo LLM lỗi → mô tả rơi về fallback context thô (không im lặng nữa).
+  let llmError = null;
 
   if (body?.declaration && body?.validateOnly) {
     declaration = normalizeDeclaration(body, context);
@@ -105,11 +107,32 @@ module.exports = async function handler(req, res) {
         context
       );
       llmModel = null;
+      // Phân loại lỗi tạm thời (nên retry) vs vĩnh viễn — để MCP/ERP xử đúng.
+      const errText = `${error.code || ''} ${error.status || ''} ${error.message || ''}`;
+      const retryable = /429|rate|quota|timeout|etimedout|econnreset|503|500|overload|unavailable/i.test(errText);
+      llmError = {
+        code: error.code || 'GEMINI_ERROR',
+        message: error.message || 'LLM generation failed',
+        retryable,
+      };
     }
   }
 
   const compliance = validateDeclaration(declaration, hsCode, context);
   const composed = composeWithMeta(declaration);
+
+  // Không fail-silent: LLM lỗi → mô tả là fallback context thô, báo rõ vào warnings.
+  if (llmError) {
+    compliance.warnings.push({
+      code: 'DESCRIPTION_DEGRADED',
+      field: 'customsDescription',
+      severity: 'warn',
+      message: `Mô tả sinh ở chế độ dự phòng (không qua AI) do LLM lỗi: ${llmError.message}. ${
+        llmError.retryable ? 'Lỗi tạm thời — nên gọi lại.' : 'Cần kiểm tra cấu hình/model LLM.'
+      }`,
+      suggestion: 'Chạy lại /api/describe khi LLM sẵn sàng để có mô tả chuẩn TT 39/2018.',
+    });
+  }
 
   // P2: cảnh báo rủi ro nhãn hiệu được bảo hộ (TT 13/2015 & 13/2020).
   // Tách trục riêng với điểm compliance TT 39/2018 — chỉ thêm 1 cảnh báo mềm.
@@ -143,6 +166,8 @@ module.exports = async function handler(req, res) {
     compliance,
     trademarkRisk,
     llmModel,
+    degraded: llmError !== null,
+    llmError,
     contextUsed: {
       tariffFound: true,
       policyByHs: mapped.policyByHs,
