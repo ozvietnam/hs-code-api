@@ -33,7 +33,7 @@ Mỗi file `NN-<chủ-đề>.md` ứng với một bước đã triển khai, g�
 | 2 | GIR trung thực — sửa audit trail | ✅ Xong | [`02-gir.md`](02-gir.md) |
 | 3 | Điểm vào cho AI (AGENTS.md, llms.txt, OpenAPI, mở đọc không token) | ✅ Xong | [`03-ai-entrypoint.md`](03-ai-entrypoint.md) |
 | 4 | Đường đóng góp (CONTRIBUTING, schema, DCO, mẫu Issue) | ✅ Xong | [`04-contribution.md`](04-contribution.md) |
-| 5 | Nạp bảng quyết định — kéo độ chính xác | ⏳ Chưa | — |
+| 5 | Nạp bảng quyết định — kéo độ chính xác | ⚙️ Công cụ xong, nạp bảng là việc dài hạn | [`05-decision-tables.md`](05-decision-tables.md) |
 
 ## Nhịp cập nhật tổng hợp
 
@@ -59,5 +59,10 @@ Bảng này gom mọi việc định kỳ từ các file con, để dựng lịc
 | Hằng tuần | Gộp `data/community/` vào kho chính (cần C-2 trước) | [04](04-contribution.md) |
 | Hằng tháng | Cập nhật `CONTRIBUTORS.md` + số liệu đóng góp trên trang chủ | [04](04-contribution.md) |
 | Hằng quý | Rà bộ lọc riêng tư có kiểu rò rỉ mới nào lọt không | [04](04-contribution.md) |
+| **Sau mỗi lần đổi pipeline/prompt** | Chạy lại benchmark, ghi commit SHA — không đo thì không biết tiến hay lùi | [05](05-decision-tables.md) |
+| Hằng tháng | `npm run data:conflict-worklist` — xem cụm nhầm lẫn nào mới nổi | [05](05-decision-tables.md) |
+| Hằng quý | Rà bảng quyết định: chú giải viện dẫn còn hiệu lực, tiền lệ còn áp dụng | [05](05-decision-tables.md) |
+| **Khi biểu thuế mới ban hành** | Kiểm `members` của bảng quyết định còn tồn tại — bảng trỏ mã đã bãi bỏ là sai âm thầm | [05](05-decision-tables.md) |
+| Hằng năm | Rà chính sách chương 98 — chế độ ưu đãi đổi thì giả định của `lib/chapter98.js` phải xem lại | [05](05-decision-tables.md) |
 
 Xem chi tiết trong từng file.

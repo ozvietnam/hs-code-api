@@ -15,6 +15,8 @@ const { getProducts, isLoaiKhac } = require('../lib/loai-khac-products');
 const { captureError } = require('../lib/error-monitor');
 // Nguồn chân lý duy nhất cho trích dẫn GIR — mọi nhãn phải có căn cứ + bằng chứng.
 const { determineGir, DISCLAIMER_VI } = require('../lib/gir');
+// Cảnh báo thiên vị mã cụ thể — KHÔNG tự đổi đáp án, chỉ nêu để người khai quyết.
+const { checkResidualPreference } = require('../lib/residual-guard');
 const { applyLearnedCorrections } = require('../lib/learned-corrections');
 const { getSuggestCache, setSuggestCache } = require('../lib/suggest-cache');
 const { getPrompt } = require('../lib/prompt-version');
@@ -185,6 +187,16 @@ module.exports = async function handler(req, res) {
     });
     const rankingSignals = girRanked.rankingSignals || [];
 
+    // 52% tờ khai thật có đáp án là mã "Loại khác", nhưng hệ thống thiên vị mã cụ
+    // thể (74% lỗi cùng nhóm là "đúng residual, đoán cụ thể"; chiều ngược lại 0%).
+    // Mô phỏng trên benchmark: can thiệp 24% mẫu, sửa 3 / hỏng 1 — lãi quá mỏng để
+    // tự động ghi đè. Nên chỉ CẢNH BÁO, để người có chuyên môn chốt.
+    const residualAdvisory = checkResidualPreference({
+      hsCode: precedentRanked.suggestions?.[0]?.hsCode || null,
+      description,
+      candidates: precedentRanked.suggestions,
+    });
+
     // Apply learned corrections from director feedback history
     const correctedSuggestions = applyLearnedCorrections(suggestions);
 
@@ -219,11 +231,21 @@ module.exports = async function handler(req, res) {
       // Rule bất biến #6: audit trail GIR. Nay chỉ chứa trích dẫn CÓ CĂN CỨ.
       girRulesApplied: girVerdict.determinations,
       girDisclaimer: girVerdict.disclaimer,
+      ...(residualAdvisory ? { residualAdvisory } : {}),
       // Checklist dữ kiện theo chương — trước đây bị đặt nhầm tên girRulesApplied.
       chapterGuidance: audit.chapterGuidance,
       antiPatternWarnings: [
         ...audit.antiPatternWarnings,
         ...historyAdjusted.warnings,
+        ...(residualAdvisory
+          ? [{
+              id: 'residual-preference',
+              description:
+                `Mô tả chưa chứng minh điều kiện của mã cụ thể ${residualAdvisory.currentHs}. ` +
+                `Cân nhắc ${residualAdvisory.suggestedHs} ("${residualAdvisory.suggestedName}").`,
+              fix: 'Bổ sung dữ kiện chứng minh điều kiện của mã cụ thể, hoặc chuyển sang mã Loại khác.',
+            }]
+          : []),
       ],
       explanatoryNote,
       confusionWarning,

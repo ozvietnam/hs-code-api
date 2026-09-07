@@ -6,6 +6,7 @@ const { mapSearchResult } = require('../lib/tax-mapper');
 const { searchCandidates } = require('../lib/search-utils');
 const { matchProducts } = require('../lib/product-match');
 const { appendAccess } = require('../lib/access-log');
+const { filterChapter98 } = require('../lib/chapter98');
 
 function parseBody(req) {
   let body = req.body;
@@ -74,7 +75,14 @@ module.exports = function handler(req, res) {
   const limitNum = Math.min(parseInt(limit, 10) || 20, 50);
   const onlyCS = cs_only === '1' || cs_only === 'true';
   const started = Date.now();
-  const candidates = searchCandidates(q, { topCandidates: limitNum, csOnly: onlyCS });
+  const rawCandidates = searchCandidates(q, { topCandidates: limitNum, csOnly: onlyCS });
+  // Chương 98 là mã ưu đãi riêng, không phải kết luận phân loại — loại khỏi kết
+  // quả trừ khi người dùng chủ động hỏi (gõ "98..." hoặc includeChapter98=1).
+  const ch98 = filterChapter98(rawCandidates, {
+    query: q,
+    include: req.query.includeChapter98 === '1' || req.query.includeChapter98 === 'true',
+  });
+  const candidates = ch98.items;
   appendAccess({
     route: '/api/search',
     ms: Date.now() - started,
@@ -97,5 +105,14 @@ module.exports = function handler(req, res) {
     keyword: q,
     total: results.length,
     results,
+    ...(ch98.removed
+      ? {
+          chapter98Filtered: {
+            removed: ch98.removed,
+            reason: ch98.reason,
+            hint: 'Thêm &includeChapter98=1 nếu bạn thực sự cần mã thuế ưu đãi riêng.',
+          },
+        }
+      : {}),
   });
 };
