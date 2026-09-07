@@ -176,3 +176,21 @@ npm run data:merge-legacy
 ```
 
 When `tax-enriched.json` contains entries keyed by HS, `/api/tax` returns those `warnings` with `enrichmentSource: "gemini"`. Until then the API uses heuristic regex (`enrichmentSource: "heuristic"`).
+
+## Giấy phép
+
+Dự án dùng **giấy phép kép** — code và dữ liệu tách riêng:
+
+| Phần | Đường dẫn | Giấy phép |
+|---|---|---|
+| Mã nguồn | `api/`, `lib/`, `scripts/`, `public/**/*.html` | [MIT](LICENSE) |
+| Dữ liệu + tài liệu | `data/**`, `public/*.json`, `docs/**`, `tests/**` | [CC BY-SA 4.0](LICENSE-DATA) |
+| Tờ khai gốc | `data/oz-export/**` | Không phát hành (gitignored) |
+
+Dùng lại dữ liệu được, kể cả cho mục đích thương mại và để huấn luyện AI — miễn
+**ghi nguồn** và **chia sẻ ngược** bản phái sinh theo cùng giấy phép. Chi tiết,
+nguồn dữ liệu gốc và miễn trừ trách nhiệm: [`NOTICE.md`](NOTICE.md).
+
+⚠️ Đây là tài liệu tham khảo nghiệp vụ, **không phải** phán quyết phân loại của
+Hải quan và **không phải** tư vấn pháp lý. Pháp luật XNK thay đổi liên tục — luôn
+đối chiếu văn bản gốc còn hiệu lực tại thời điểm khai báo.
