@@ -32,7 +32,7 @@ Mỗi file `NN-<chủ-đề>.md` ứng với một bước đã triển khai, g�
 | 1 | Giấy phép — mở khoá pháp lý | ✅ Xong | [`01-license.md`](01-license.md) |
 | 2 | GIR trung thực — sửa audit trail | ✅ Xong | [`02-gir.md`](02-gir.md) |
 | 3 | Điểm vào cho AI (AGENTS.md, llms.txt, OpenAPI, mở đọc không token) | ✅ Xong | [`03-ai-entrypoint.md`](03-ai-entrypoint.md) |
-| 4 | Đường đóng góp (CONTRIBUTING, schema, Discussions) | ⏳ Chưa | — |
+| 4 | Đường đóng góp (CONTRIBUTING, schema, DCO, mẫu Issue) | ✅ Xong | [`04-contribution.md`](04-contribution.md) |
 | 5 | Nạp bảng quyết định — kéo độ chính xác | ⏳ Chưa | — |
 
 ## Nhịp cập nhật tổng hợp
@@ -55,5 +55,9 @@ Bảng này gom mọi việc định kỳ từ các file con, để dựng lịc
 | Hằng tuần | Xem băng thông + lượt gọi công khai trên Vercel (phát hiện lạm dụng) | [03](03-ai-entrypoint.md) |
 | Hằng tháng | Cập nhật số liệu trong `AGENTS.md` mục 5 + `llms.txt` (benchmark, số verified) | [03](03-ai-entrypoint.md) |
 | Hằng quý | Rà allowlist công khai theo độ chín của dữ liệu | [03](03-ai-entrypoint.md) |
+| **Hằng tuần** | Rà PR + Issue đóng góp mới, trả lời trong 7 ngày — im lặng giết dự án cộng đồng nhanh nhất | [04](04-contribution.md) |
+| Hằng tuần | Gộp `data/community/` vào kho chính (cần C-2 trước) | [04](04-contribution.md) |
+| Hằng tháng | Cập nhật `CONTRIBUTORS.md` + số liệu đóng góp trên trang chủ | [04](04-contribution.md) |
+| Hằng quý | Rà bộ lọc riêng tư có kiểu rò rỉ mới nào lọt không | [04](04-contribution.md) |
 
 Xem chi tiết trong từng file.

@@ -4,7 +4,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "test": "node scripts/validate-resolver.js && node scripts/test-conflict-resolver.mjs && node scripts/test-search.mjs && node scripts/test-suggest-confidence.mjs && node scripts/test-gir.mjs && node scripts/test-public-access.mjs && node scripts/test-gir-engine.mjs && node scripts/test-gir-tree.mjs && node scripts/test-gir-notes.mjs && node scripts/test-precedent-search.mjs && node scripts/test-chapters-index.mjs && node scripts/test-customs-types.mjs && node scripts/test-feedback-store.mjs && node scripts/test-match.mjs && node scripts/test-material-taxonomy.mjs && node scripts/test-tariff-mutations.mjs && node scripts/test-ministries.mjs && node scripts/test-access-log.mjs && node scripts/test-admin-update.mjs && node scripts/test-augment-english.mjs && node scripts/test-loai-khac-classifier.mjs && node scripts/test-suggest-classify-parity.mjs && node scripts/test-describe.mjs && node scripts/test-describe-degraded.mjs && node scripts/test-legal-docs.mjs && node scripts/test-attributes.mjs && echo '=== ALL TESTS PASSED ==='",
+    "test": "node scripts/validate-resolver.js && node scripts/test-conflict-resolver.mjs && node scripts/test-search.mjs && node scripts/test-suggest-confidence.mjs && node scripts/test-gir.mjs && node scripts/test-public-access.mjs && node scripts/validate-community.mjs && node scripts/test-gir-engine.mjs && node scripts/test-gir-tree.mjs && node scripts/test-gir-notes.mjs && node scripts/test-precedent-search.mjs && node scripts/test-chapters-index.mjs && node scripts/test-customs-types.mjs && node scripts/test-feedback-store.mjs && node scripts/test-match.mjs && node scripts/test-material-taxonomy.mjs && node scripts/test-tariff-mutations.mjs && node scripts/test-ministries.mjs && node scripts/test-access-log.mjs && node scripts/test-admin-update.mjs && node scripts/test-augment-english.mjs && node scripts/test-loai-khac-classifier.mjs && node scripts/test-suggest-classify-parity.mjs && node scripts/test-describe.mjs && node scripts/test-describe-degraded.mjs && node scripts/test-legal-docs.mjs && node scripts/test-attributes.mjs && echo '=== ALL TESTS PASSED ==='",
     "data:import-legacy": "node scripts/import-legacy.mjs",
     "data:merge-legacy": "node scripts/merge-legacy-knowledge.mjs",
     "data:snapshot-tax": "node scripts/tariff-snapshot.mjs",
@@ -21,6 +21,7 @@
     "test:gir-notes": "node scripts/test-gir-notes.mjs",
     "test:gir": "node scripts/test-gir.mjs",
     "test:public-access": "node scripts/test-public-access.mjs",
+    "validate:community": "node scripts/validate-community.mjs",
     "build:openapi": "node scripts/build-openapi.mjs",
     "test:gir-engine": "node scripts/test-gir-engine.mjs",
     "test:gir-tree": "node scripts/test-gir-tree.mjs",
