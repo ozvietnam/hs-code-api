@@ -1,16 +1,14 @@
 const { requireAuthUnlessPublic } = require('../lib/public-access');
 const { setCors, handleOptions } = require('../lib/cors');
-const { taxData, explanatoryNotesData, precedentsData, conflictsData, normalizeHs } = require('../lib/data');
-const { loadIndex } = require('../lib/tariff-versions');
-const { enrichedEntryCount } = require('../lib/enriched-data');
+const { taxData, precedentsData, conflictsData, normalizeHs } = require('../lib/data');
 const { buildAdminOverview } = require('../lib/admin-overview');
 const { getDocByCode, listDocs } = require('../lib/legal-docs');
-const { getNotesCoverage } = require('../lib/gir-notes');
 const { searchPrecedents } = require('../lib/precedent-search');
 const { searchOzByHs, searchOzByKeyword } = require('../lib/oz-precedent-search');
 const { listMinistries, getMinistriesByChapter } = require('../lib/ministries');
 const { detectMaterials, listTaxonomySummary } = require('../lib/material-taxonomy');
 const { buildChaptersIndex } = require('../lib/chapters-index');
+const { kgStatsPayload } = require('../lib/kg-stats');
 const { readAuditLog } = require('../lib/admin-update');
 const { buildKpiDashboard } = require('../lib/ml-log');
 const { getProducts, isLoaiKhac, getCodeStats, getStatsSummary } = require('../lib/loai-khac-products');
@@ -28,40 +26,6 @@ const path = require('path');
  * (fewer cold starts, tidy repo — not a plan constraint; project is on Vercel Pro).
  * Entry: `GET /api/dataset` with `resource` query (set via rewrites from legacy URLs).
  */
-function kgStatsPayload() {
-  const rows = Object.values(taxData);
-  const chapters = new Set(rows.map((r) => r.hs.slice(0, 2)));
-  const withWarnings = rows.filter((r) => r.cs && String(r.cs).trim()).length;
-  const enrichedPolicies = enrichedEntryCount();
-  const versionIndex = loadIndex();
-
-  const enrichedPath = path.join(process.cwd(), 'data', 'tax-enriched.json');
-  let lastEnrichedAt = null;
-  if (fs.existsSync(enrichedPath)) {
-    lastEnrichedAt = fs.statSync(enrichedPath).mtime.toISOString();
-  }
-
-  return {
-    totalHsCodes: rows.length,
-    chapters: chapters.size,
-    tariffCoverage: {
-      withMfn: rows.filter((r) => r.mfn !== null && r.mfn !== '').length,
-      withAcfta: rows.filter((r) => r.acfta !== null && r.acfta !== '').length,
-      withVat: rows.filter((r) => r.vat !== null && r.vat !== '').length,
-      withNameEn: rows.filter((r) => r.en && String(r.en).trim()).length,
-    },
-    withWarnings,
-    enrichedPolicies,
-    explanatoryNotes: Object.keys(explanatoryNotesData).length,
-    precedentHsCodes: Object.keys(precedentsData).length,
-    conflictHsCodes: Object.keys(conflictsData).length,
-    tariffVersions: versionIndex.versions.length,
-    currentTariffVersion: versionIndex.current || null,
-    lastEnrichedAt,
-    notesCoverage: getNotesCoverage(),
-  };
-}
-
 module.exports = async function handler(req, res) {
   setCors(res);
   if (handleOptions(req, res)) return;
