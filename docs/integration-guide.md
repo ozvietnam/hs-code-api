@@ -39,10 +39,29 @@ curl -X POST https://.../api/suggest \
       "nameVi": "Bơm chất lỏng khác, loại khác",
       "confidence": 88,
       "reasoning": "Máy bơm ly tâm dân dụng, không phải bơm nhiên liệu hay bơm bê tông",
-      "girRulesApplied": ["GIR 1", "Chương 84: máy móc cơ khí"],
       "productExamples": ["Máy bơm nước ly tâm 1HP đầu gang", "Bơm tưới tiêu 2HP inox"],
       "learnedPenalty": null
     }
+  ],
+  "girRulesApplied": [
+    {
+      "rule": "GIR 6",
+      "ruleKey": "6",
+      "titleVi": "Phân loại ở cấp phân nhóm",
+      "textVi": "Việc phân loại ở cấp phân nhóm được xác định theo nội dung của phân nhóm...",
+      "basis": "DETERMINISTIC",
+      "confidence": "high",
+      "reasonVi": "Kết quả được chọn ở cấp phân nhóm giữa nhiều phân nhóm cùng nhóm 4 số...",
+      "evidence": { "heading": "8413", "subheadingsCompared": ["84137090", "84138190"], "picked": "84137090" },
+      "source": "WCO General Interpretative Rules"
+    }
+  ],
+  "girDisclaimer": "Trích dẫn GIR là căn cứ tham khảo do hệ thống suy ra, KHÔNG phải phán quyết...",
+  "rankingSignals": [
+    { "signal": "specificity_filter", "effect": "loại 2 ứng viên...", "note": "Ước lượng — CHƯA đối chiếu nguyên văn nhóm." }
+  ],
+  "chapterGuidance": [
+    { "chapter": "84", "titleVi": "Máy móc cơ khí", "hints": [...], "requiredAttributes": [...] }
   ],
   "precedentMatches": [...],
   "confusionWarning": null,
@@ -51,6 +70,31 @@ curl -X POST https://.../api/suggest \
   "ms": 1240
 }
 ```
+
+### ⚠️ Thay đổi hợp đồng `girRulesApplied` (2026-09)
+
+Trước đây trường này chứa **checklist dữ kiện theo chương**, dù tên gọi là "GIR
+rules applied" — và tài liệu thì mô tả nó là mảng chuỗi. Cả hai đều không khớp
+code. Nay đã tách bạch:
+
+| Trường | Nội dung | Dùng để |
+|---|---|---|
+| `girRulesApplied[]` | Trích dẫn quy tắc GIR **có căn cứ**, mỗi mục kèm `basis` + `evidence` + `source` | Audit trail, hồ sơ giải trình Hải quan |
+| `girDisclaimer` | Cảnh báo pháp lý bắt buộc hiển thị kèm | Bảo vệ người khai |
+| `rankingSignals[]` | Tín hiệu xếp hạng kỹ thuật (heuristic) | Debug, KHÔNG dùng làm căn cứ pháp lý |
+| `chapterGuidance[]` | Checklist dữ kiện theo chương (nội dung cũ của `girRulesApplied`) | Nhắc NV nhập thiếu thông tin gì |
+
+**Đọc `basis` trước khi tin:**
+
+| basis | Nghĩa | Đưa vào hồ sơ giải trình? |
+|---|---|---|
+| `RULE_TABLE` | Bảng quyết định do người soạn, có dẫn văn bản gốc | ✅ Được |
+| `DETERMINISTIC` | Code suy ra từ tín hiệu chắc chắn | ✅ Được |
+| `HEURISTIC` | Dò từ khoá / điểm ước lượng | ⚠️ Cần người kiểm chứng |
+| `LLM_ASSERTED` | Mô hình tự khai, chưa kiểm chứng | ❌ Không |
+
+ERP nên hiển thị `basis` ngay cạnh mỗi trích dẫn — người khai phải biết chỗ nào
+chắc, chỗ nào cần tự xác minh trước khi ký tờ khai.
 
 **Lưu ý ERP:**
 - `confidence ≥ 85`: tự động điền mã, chỉ cần user confirm

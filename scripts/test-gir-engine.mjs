@@ -36,7 +36,29 @@ const tie = applyGirRules(
   'áo sơ mi',
 );
 assert('tiebreaker picks larger hs', tie.suggestions[0].hsCode === '62053090');
-assert('GIR-3c flagged', tie.girRankingRules.includes('GIR-3c'));
+
+// ĐỔI HÀNH VI CÓ CHỦ ĐÍCH: gir-engine không còn tự phán định quy tắc GIR.
+// Nó chỉ báo tín hiệu xếp hạng; việc trích dẫn GIR thuộc lib/gir.js, nơi mỗi
+// trích dẫn phải kèm căn cứ + bằng chứng. Xem scripts/test-gir.mjs.
+assert(
+  'phát tín hiệu hoà điểm (không phải nhãn GIR)',
+  tie.rankingSignals.some((s) => s.signal === 'numerical_order_tiebreak'),
+  JSON.stringify(tie.rankingSignals),
+);
+assert(
+  'KHÔNG còn tự gắn nhãn GIR',
+  (tie.girRankingRules || []).length === 0,
+  JSON.stringify(tie.girRankingRules),
+);
+const noFakeGir = applyGirRules(
+  [{ hsCode: '84137090', nameVi: 'bơm', confidence: 90 }],
+  'máy bơm ly tâm hoàn chỉnh',
+);
+assert(
+  'tín hiệu xếp hạng luôn kèm ghi chú cảnh báo là ước lượng',
+  noFakeGir.rankingSignals.every((s) => typeof s.note === 'string' && s.note.length > 0),
+  JSON.stringify(noFakeGir.rankingSignals),
+);
 
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);

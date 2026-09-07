@@ -30,7 +30,7 @@ Mỗi file `NN-<chủ-đề>.md` ứng với một bước đã triển khai, g�
 | Bước | Chủ đề | Trạng thái | File |
 |---|---|---|---|
 | 1 | Giấy phép — mở khoá pháp lý | ✅ Xong | [`01-license.md`](01-license.md) |
-| 2 | GIR trung thực — sửa audit trail | ⏳ Chưa | — |
+| 2 | GIR trung thực — sửa audit trail | ✅ Xong | [`02-gir.md`](02-gir.md) |
 | 3 | Điểm vào cho AI (AGENTS.md, llms.txt, OpenAPI, mở đọc không token) | ⏳ Chưa | — |
 | 4 | Đường đóng góp (CONTRIBUTING, schema, Discussions) | ⏳ Chưa | — |
 | 5 | Nạp bảng quyết định — kéo độ chính xác | ⏳ Chưa | — |
@@ -45,5 +45,10 @@ Bảng này gom mọi việc định kỳ từ các file con, để dựng lịc
 | Hằng quý | Rà bảng phạm vi giấy phép trong `NOTICE.md` còn khớp cấu trúc thư mục | [01](01-license.md) |
 | Theo sự kiện | Thêm nguồn dữ liệu mới → bổ sung bảng "Nguồn dữ liệu gốc" trong `NOTICE.md` | [01](01-license.md) |
 | Theo sự kiện | Có contributor đầu tiên → `CONTRIBUTORS.md` + sửa dòng bản quyền | [01](01-license.md) |
+| Hằng tháng | Đọc `ml-log.jsonl` — phân bố `basis`; `LLM_ASSERTED` áp đảo = suy luận có căn cứ đang teo | [02](02-gir.md) |
+| Hằng quý | Rà `conflict-tables.json`: mọi `gir` normalize được, mọi rule có `source` | [02](02-gir.md) |
+| Khi TCHQ ra TB phân loại mới | Bổ sung `precedents.json`, cân nhắc dựng bảng quyết định | [02](02-gir.md) |
+| Mỗi lần đổi prompt LLM | Chạy lại đối chiếu tỷ lệ LLM khai đúng quy tắc (G-4) | [02](02-gir.md) |
+| Khi WCO cập nhật HS (kế tiếp HS 2028) | Rà `GIR_RULES` + chú giải phần/chương | [02](02-gir.md) |
 
 Xem chi tiết trong từng file.

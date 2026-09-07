@@ -90,7 +90,7 @@ tests/             # Test fixtures
 3. **CORS** — luôn `setCors(res)` + `handleOptions(req, res)` ở đầu handler.
 4. **camelCase response** — chuẩn shape camelCase cho ERP, dùng `lib/tax-mapper.js`.
 5. **Compliance TT 39/2018** — `/api/describe` phải trả structured `declaration` + `compliance.score` + `level` + `warnings[]`.
-6. **GIR audit trail** — `/api/suggest` response phải có `girRulesApplied[]` (Issue #24).
+6. **GIR audit trail** — `/api/suggest` response phải có `girRulesApplied[]` (Issue #24), và **mọi trích dẫn GIR phải đi qua `lib/gir.js`**. Không nơi nào khác được tự gắn nhãn `GIR-*`. Mỗi mục bắt buộc có `basis` (`RULE_TABLE` > `DETERMINISTIC` > `HEURISTIC` > `LLM_ASSERTED`) + `evidence` + `source`. Trích sai điều luật tệ hơn không trích: đây là bằng chứng người khai đưa cho Hải quan. Tín hiệu heuristic đi vào `rankingSignals[]`, checklist theo chương đi vào `chapterGuidance[]` — tuyệt đối không gọi chúng là GIR.
 7. **Vercel Pro** — đã nâng Pro (T7/2026), KHÔNG còn trần 12 function của Hobby; maxDuration cho phép tới 300s. Vẫn giữ pattern gộp route qua `vercel.json` rewrites (`dataset.js`/`tariff.js`) vì ít cold start + repo gọn — chỉ tách function mới khi thật sự cần.
 8. **Test KHÔNG được ghi vào `data/` thật** — mọi lib có ghi (`feedback-store`, `admin-update`, `tariff-mutations`, `access-log`, `error-monitor`, `ml-log`) phải lấy đường dẫn qua `lib/data-paths.js` (`dataPath` để ghi, `dataReadPath` để đọc), và test phải `import './test-isolate-data.mjs'` ở dòng đầu để ghi vào thư mục tạm. Trước đây `npm test` làm bẩn repo, có lần commit lẫn snapshot `v-api-test` thành phiên bản biểu thuế "đang hiệu lực".
 
