@@ -1,4 +1,4 @@
-const { requireAuth } = require('../lib/auth');
+const { requireAuthUnlessPublic } = require('../lib/public-access');
 const { setCors, handleOptions } = require('../lib/cors');
 const { taxData, explanatoryNotesData, precedentsData, conflictsData, normalizeHs } = require('../lib/data');
 const { loadIndex } = require('../lib/tariff-versions');
@@ -65,9 +65,10 @@ function kgStatsPayload() {
 module.exports = async function handler(req, res) {
   setCors(res);
   if (handleOptions(req, res)) return;
-  if (requireAuth(req, res)) return;
 
   const resource = String(req.query.resource || '').trim();
+  // Allowlist tường minh trong lib/public-access.js — resource mới mặc định KÍN.
+  if (requireAuthUnlessPublic(req, res, { endpoint: 'dataset', resource })) return;
   // GET cho mọi resource; POST chỉ mở cho screening batch nhãn hiệu (số lượng lớn).
   const isTrademarkBatch = req.method === 'POST' && resource === 'trademark';
   if (req.method !== 'GET' && !isTrademarkBatch) {

@@ -1,4 +1,5 @@
 const { requireAuth } = require('../lib/auth');
+const { requireAuthUnlessPublic } = require('../lib/public-access');
 const { setCors, handleOptions } = require('../lib/cors');
 const { taxData } = require('../lib/data');
 const { mapSearchResult } = require('../lib/tax-mapper');
@@ -59,7 +60,8 @@ module.exports = function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
-  if (requireAuth(req, res)) return;
+  // /api/match (mode=match) vẫn cần token — xử lý ở nhánh riêng phía trên.
+  if (requireAuthUnlessPublic(req, res, { endpoint: 'search' })) return;
 
   const { q, cs_only, limit = '20' } = req.query;
   if (!q || q.trim().length < 2) {

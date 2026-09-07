@@ -1,0 +1,778 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "HS Knowledge Base API",
+    "version": "2.0.0",
+    "summary": "Kho tri thức mở về mã HS, thuế và pháp lý xuất nhập khẩu Việt Nam",
+    "description": "API tra mã HS, thuế suất, chính sách mặt hàng và sinh mô tả khai báo Hải quan theo TT 39/2018.\n\n## Quyền truy cập\n\n**Không cần token** — nhóm tra cứu (/api/tax, /api/search, /api/notes, /api/kg_chapter, /api/customs-types và các resource dữ liệu).\nĐây là kho tri thức mở: bất kỳ AI hay người nào cũng gọi được ngay.\n\n**Cần Bearer token** — nhóm AI (`/api/suggest`, `/api/describe`, `/api/classify`, `/api/match`) vì mỗi lượt gọi tốn chi phí mô hình, và nhóm quản trị.\n\n## Đọc kết quả cho đúng\n\nMọi trích dẫn quy tắc GIR đều kèm trường `basis`:\n\n| basis | Nghĩa | Dùng cho hồ sơ giải trình Hải quan? |\n|---|---|---|\n| `RULE_TABLE` | Bảng quyết định do người soạn, có dẫn văn bản gốc | Được |\n| `DETERMINISTIC` | Hệ thống suy ra từ tín hiệu chắc chắn | Được |\n| `HEURISTIC` | Dò từ khoá / điểm ước lượng | Cần người kiểm chứng |\n| `LLM_ASSERTED` | Mô hình tự khai, chưa kiểm chứng | Không |\n\n## Miễn trừ trách nhiệm\n\nĐây là **tài liệu tham khảo nghiệp vụ**, không phải phán quyết phân loại của cơ quan Hải quan và không phải tư vấn pháp lý.\nPháp luật XNK thay đổi liên tục — luôn đối chiếu văn bản gốc còn hiệu lực tại thời điểm khai báo.",
+    "license": {
+      "name": "MIT (code) / CC BY-SA 4.0 (dữ liệu)",
+      "url": "https://github.com/ozvietnam/hs-code-api/blob/main/NOTICE.md"
+    },
+    "contact": {
+      "name": "HS Knowledge Base",
+      "url": "https://github.com/ozvietnam/hs-code-api"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://hs-kb.uythacnhapkhau.com",
+      "description": "Production"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Tra cứu",
+      "description": "Đọc kho tri thức — không cần token"
+    },
+    {
+      "name": "AI",
+      "description": "Sinh nội dung bằng mô hình — cần token"
+    },
+    {
+      "name": "Hệ thống",
+      "description": "Giám sát"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "HS_API_TOKEN"
+      }
+    }
+  },
+  "paths": {
+    "/api/health": {
+      "get": {
+        "operationId": "health",
+        "summary": "Kiểm tra dịch vụ + trạng thái LLM",
+        "description": "Trả 200 khi đủ cả 3 điều kiện: có dữ liệu biểu thuế, có token cấu hình, và còn ít nhất một nhà cung cấp LLM. Thiếu LLM thì trả 503 kèm `checks.llm.note` — /api/suggest và /api/describe sẽ lỗi.",
+        "tags": [
+          "Hệ thống"
+        ],
+        "security": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/tax": {
+      "get": {
+        "operationId": "getTax",
+        "summary": "Tra thuế NK/ACFTA/VAT + cảnh báo chính sách theo mã HS",
+        "description": "Trả thuế suất, đơn vị tính và cảnh báo quản lý chuyên ngành kèm liên kết văn bản pháp luật. ⚠️ Thuế suất và chính sách thay đổi theo thông tư — luôn đối chiếu văn bản gốc còn hiệu lực khi khai báo.",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": true,
+            "description": "Mã HS 8 số, vd 84137090",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/search": {
+      "get": {
+        "operationId": "search",
+        "summary": "Tìm mã HS theo từ khoá hoặc mã một phần",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "description": "Từ khoá tiếng Việt hoặc mã HS một phần",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Số kết quả tối đa (mặc định 10)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/notes": {
+      "get": {
+        "operationId": "getNotes",
+        "summary": "Chú giải chương — căn cứ áp dụng GIR 1",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "chapter",
+            "in": "query",
+            "required": true,
+            "description": "Số chương, vd 39",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/kg_chapter": {
+      "get": {
+        "operationId": "listChapterCodes",
+        "summary": "Liệt kê mã HS trong một chương",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "chapter",
+            "in": "query",
+            "required": true,
+            "description": "Số chương",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/customs-types": {
+      "get": {
+        "operationId": "customsTypes",
+        "summary": "Mã loại hình xuất nhập khẩu (QĐ 1357/QĐ-TCHQ)",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "required": false,
+            "description": "Mã loại hình, vd A11",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/suggest": {
+      "post": {
+        "operationId": "suggest",
+        "summary": "Gợi ý mã HS bằng AI, kèm audit trail GIR có căn cứ",
+        "description": "Body: `{\"description\": \"tên hàng\"}`. Trả `suggestions[]`, `girRulesApplied[]` (mỗi mục có `basis`: RULE_TABLE/DETERMINISTIC là căn cứ chắc, HEURISTIC/LLM_ASSERTED phải kiểm chứng lại), `girDisclaimer`, `rankingSignals[]` (kỹ thuật, không có giá trị pháp lý) và `chapterGuidance[]`. Cần token vì mỗi lượt gọi tốn chi phí LLM.",
+        "tags": [
+          "AI"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Thiếu hoặc sai Bearer token"
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/describe": {
+      "post": {
+        "operationId": "describe",
+        "summary": "Sinh mô tả khai báo Hải quan chuẩn TT 39/2018 (tối đa 200 ký tự ECUS)",
+        "description": "Khi LLM lỗi, trả `degraded: true` + `llmError{code,message,retryable}` + cảnh báo `DESCRIPTION_DEGRADED` — mô tả khi đó là bản dự phòng thô, không được coi là đạt chuẩn.",
+        "tags": [
+          "AI"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Thiếu hoặc sai Bearer token"
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/classify": {
+      "post": {
+        "operationId": "classify",
+        "summary": "Phân loại có cây quyết định + bảng phân giải cụm mã dễ nhầm",
+        "tags": [
+          "AI"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Thiếu hoặc sai Bearer token"
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/kg_stats": {
+      "get": {
+        "operationId": "dataset_kg_stats",
+        "summary": "Thống kê kho dữ liệu",
+        "description": "Rewrite tới /api/dataset?resource=kg_stats",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/chapters": {
+      "get": {
+        "operationId": "dataset_chapters",
+        "summary": "Chỉ mục chương HS",
+        "description": "Rewrite tới /api/dataset?resource=chapters",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/conflicts": {
+      "get": {
+        "operationId": "dataset_conflicts",
+        "summary": "Cảnh báo mã dễ nhầm",
+        "description": "Rewrite tới /api/dataset?resource=conflicts",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/precedents": {
+      "get": {
+        "operationId": "dataset_precedents",
+        "summary": "Tiền lệ phân loại TB-TCHQ",
+        "description": "Rewrite tới /api/dataset?resource=precedents",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/materials": {
+      "get": {
+        "operationId": "dataset_materials",
+        "summary": "Phân loại vật liệu",
+        "description": "Rewrite tới /api/dataset?resource=materials",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/ministries": {
+      "get": {
+        "operationId": "dataset_ministries",
+        "summary": "14 bộ ngành quản lý chuyên ngành",
+        "description": "Rewrite tới /api/dataset?resource=ministries",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/legal-docs": {
+      "get": {
+        "operationId": "dataset_legal_docs",
+        "summary": "Thư viện văn bản pháp luật",
+        "description": "Rewrite tới /api/dataset?resource=legal_docs",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/policy-procedures": {
+      "get": {
+        "operationId": "dataset_policy_procedures",
+        "summary": "Thủ tục kiểm tra chuyên ngành",
+        "description": "Rewrite tới /api/dataset?resource=policy_procedures",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/products": {
+      "get": {
+        "operationId": "dataset_products",
+        "summary": "Corpus sản phẩm cho mã \"Loại khác\"",
+        "description": "Rewrite tới /api/dataset?resource=products",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/accuracy": {
+      "get": {
+        "operationId": "dataset_accuracy",
+        "summary": "Benchmark độ chính xác (công khai, không tô hồng)",
+        "description": "Rewrite tới /api/dataset?resource=accuracy",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    },
+    "/api/data-quality": {
+      "get": {
+        "operationId": "dataset_data_quality",
+        "summary": "Báo cáo chất lượng dữ liệu — gồm cả điểm yếu",
+        "description": "Rewrite tới /api/dataset?resource=data_quality",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ"
+          }
+        }
+      }
+    }
+  },
+  "x-generated": {
+    "by": "scripts/build-openapi.mjs",
+    "at": "2026-09-07",
+    "note": "Sinh tự động từ lib/public-access.js — đừng sửa tay, sửa nguồn rồi chạy npm run build."
+  }
+}

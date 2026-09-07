@@ -86,7 +86,7 @@ tests/             # Test fixtures
 ## Rule bất biến
 
 1. **Privacy data** — KHÔNG bao giờ commit `data/oz-export/*.{xlsx,csv,jsonl}` (gitignored). Đây là tờ khai cũ Oz có thông tin khách hàng.
-2. **Bearer auth** — TẤT CẢ endpoint trừ `/api/health` phải check `requireAuth(req, res)` từ `lib/auth.js`.
+2. **Bearer auth** — mặc định KÍN. Endpoint sinh nội dung bằng LLM (`suggest`, `describe`, `classify`, `match`) và mọi thứ quản trị phải `requireAuth(req, res)` từ `lib/auth.js`. Nhóm tra cứu chỉ đọc dữ liệu tĩnh thì mở công khai qua `requireAuthUnlessPublic(...)` — **allowlist tường minh** ở `lib/public-access.js`. Thêm resource mới vào `dataset.js` thì nó mặc định KÍN; muốn mở phải khai có ý thức và `scripts/test-public-access.mjs` phải xanh. Quên khai = mất tính năng, quên chặn = lộ dữ liệu; luôn chọn hướng sai an toàn.
 3. **CORS** — luôn `setCors(res)` + `handleOptions(req, res)` ở đầu handler.
 4. **camelCase response** — chuẩn shape camelCase cho ERP, dùng `lib/tax-mapper.js`.
 5. **Compliance TT 39/2018** — `/api/describe` phải trả structured `declaration` + `compliance.score` + `level` + `warnings[]`.

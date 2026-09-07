@@ -31,7 +31,7 @@ Mỗi file `NN-<chủ-đề>.md` ứng với một bước đã triển khai, g�
 |---|---|---|---|
 | 1 | Giấy phép — mở khoá pháp lý | ✅ Xong | [`01-license.md`](01-license.md) |
 | 2 | GIR trung thực — sửa audit trail | ✅ Xong | [`02-gir.md`](02-gir.md) |
-| 3 | Điểm vào cho AI (AGENTS.md, llms.txt, OpenAPI, mở đọc không token) | ⏳ Chưa | — |
+| 3 | Điểm vào cho AI (AGENTS.md, llms.txt, OpenAPI, mở đọc không token) | ✅ Xong | [`03-ai-entrypoint.md`](03-ai-entrypoint.md) |
 | 4 | Đường đóng góp (CONTRIBUTING, schema, Discussions) | ⏳ Chưa | — |
 | 5 | Nạp bảng quyết định — kéo độ chính xác | ⏳ Chưa | — |
 
@@ -50,5 +50,10 @@ Bảng này gom mọi việc định kỳ từ các file con, để dựng lịc
 | Khi TCHQ ra TB phân loại mới | Bổ sung `precedents.json`, cân nhắc dựng bảng quyết định | [02](02-gir.md) |
 | Mỗi lần đổi prompt LLM | Chạy lại đối chiếu tỷ lệ LLM khai đúng quy tắc (G-4) | [02](02-gir.md) |
 | Khi WCO cập nhật HS (kế tiếp HS 2028) | Rà `GIR_RULES` + chú giải phần/chương | [02](02-gir.md) |
+| **Khi biểu thuế đổi (TT mới)** | Cập nhật `tax.json` + `generatedAt` NGAY, báo ở `llms.txt` — AI ngoài đang tra thẳng, dữ liệu sai lan không thu hồi được | [03](03-ai-entrypoint.md) |
+| Mỗi lần thêm/sửa endpoint | `npm run build` sinh lại `openapi.json`; cập nhật `AGENTS.md` + `llms.txt` | [03](03-ai-entrypoint.md) |
+| Hằng tuần | Xem băng thông + lượt gọi công khai trên Vercel (phát hiện lạm dụng) | [03](03-ai-entrypoint.md) |
+| Hằng tháng | Cập nhật số liệu trong `AGENTS.md` mục 5 + `llms.txt` (benchmark, số verified) | [03](03-ai-entrypoint.md) |
+| Hằng quý | Rà allowlist công khai theo độ chín của dữ liệu | [03](03-ai-entrypoint.md) |
 
 Xem chi tiết trong từng file.
