@@ -9,7 +9,7 @@ import { createRequire } from 'module';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(join(root, 'package.json'));
-const { getDocByCode, listDocs, enrichLegalCitations } = require('./lib/legal-docs.js');
+const { getDocByCode, listDocs, enrichLegalCitations, aliasKeys } = require('./lib/legal-docs.js');
 
 let passed = 0;
 let failed = 0;
@@ -53,6 +53,16 @@ const cites = enrichLegalCitations('Theo 08/2023/TT-BCT hàng cần giấy phép
 assert('enrichLegalCitations resolve doc từ text',
   cites.length === 1 && cites[0].code === '08/2023/TT-BCT' && cites[0].type === 'Thông tư',
   JSON.stringify(cites));
+
+assert('aliasKeys gồm dạng không năm',
+  aliasKeys('2310/QD-BCT-2025').includes('2310/QD-BCT'));
+assert('aliasKeys gồm dạng NNN/YYYY/TYPE',
+  aliasKeys('2310/QD-BCT-2025').includes('2310/2025/QD-BCT'));
+assert('getDocByCode tra được alias không năm (2310/QĐ-BCT)',
+  Boolean(getDocByCode('2310/QĐ-BCT')),
+  JSON.stringify(getDocByCode('2310/QĐ-BCT') && { code: getDocByCode('2310/QĐ-BCT').code, titleVi: getDocByCode('2310/QĐ-BCT').titleVi }));
+assert('getDocByCode tra được 16/2024/TT-BYT',
+  Boolean(getDocByCode('16/2024/TT-BYT')));
 
 // ── data-quality-report.json ─────────────────────────────────────────────────
 

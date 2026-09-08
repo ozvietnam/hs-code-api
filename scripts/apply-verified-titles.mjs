@@ -10,6 +10,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DRY = process.argv.includes('--dry-run');
@@ -39,33 +40,60 @@ const titlesRaw = JSON.parse(readFileSync(titlesPath, 'utf8'));
 const titles = titlesRaw.titles || titlesRaw;
 const documents = idx.documents || {};
 
+const require = createRequire(join(root, 'package.json'));
+const { aliasKeys, parseDocCode } = require('./lib/legal-docs.js');
+
+function docsMatchingTitle(code) {
+  const want = new Set(aliasKeys(code));
+  const title = parseDocCode(code);
+  const hits = [];
+  for (const [key, doc] of Object.entries(documents)) {
+    const parsed = parseDocCode(key);
+    if (title.year && parsed.year && title.year !== parsed.year) continue;
+    if (title.number && parsed.number && title.number !== parsed.number) continue;
+    const keys = new Set([...aliasKeys(key), ...(doc.aliases || []).flatMap((a) => aliasKeys(a))]);
+    for (const k of keys) {
+      if (want.has(k)) {
+        hits.push(doc);
+        break;
+      }
+    }
+  }
+  return hits;
+}
+
 let applied = 0;
 const skipped = [];
+const painted = new Set();
 
 for (const [code, t] of Object.entries(titles)) {
-  const doc = documents[code];
-  if (!doc) {
+  const targets = docsMatchingTitle(code);
+  if (!targets.length) {
     skipped.push(code);
     continue;
   }
-  if (t.titleVi) doc.titleVi = t.titleVi;
-  if (t.url) doc.url = t.url;
-  if (t.status) doc.status = t.status;
-  if (t.issuedDate) doc.issuedDate = t.issuedDate;
-  if (t.effectiveDate) doc.effectiveDate = t.effectiveDate;
-  if (t.replaces) doc.replaces = t.replaces;
-  if (t.replacedBy) doc.replacedBy = t.replacedBy;
-  if (t.domain) doc.domain = t.domain;
-  if (t.note) doc.note = t.note;
-  // Sửa issuer sai (typo enrichment) — vd 12/2018/TT-BTC → thực là BCT
-  if (t.issuerOverride) {
-    doc.issuer = t.issuerOverride;
-    doc.issuerFullVi = ISSUER_FULL[t.issuerOverride] || doc.issuerFullVi;
+  for (const doc of targets) {
+    if (painted.has(doc.code)) continue;
+    painted.add(doc.code);
+    if (t.titleVi) doc.titleVi = t.titleVi;
+    if (t.url) doc.url = t.url;
+    if (t.status) doc.status = t.status;
+    if (t.issuedDate) doc.issuedDate = t.issuedDate;
+    if (t.effectiveDate) doc.effectiveDate = t.effectiveDate;
+    if (t.replaces) doc.replaces = t.replaces;
+    if (t.replacedBy) doc.replacedBy = t.replacedBy;
+    if (t.domain) doc.domain = t.domain;
+    if (t.note) doc.note = t.note;
+    // Sửa issuer sai (typo enrichment) — vd 12/2018/TT-BTC → thực là BCT
+    if (t.issuerOverride) {
+      doc.issuer = t.issuerOverride;
+      doc.issuerFullVi = ISSUER_FULL[t.issuerOverride] || doc.issuerFullVi;
+    }
+    doc.verified = true;
+    doc.verifiedSource = t.verifiedSource || 'manual';
+    if (t.issuedDate) doc.year = +t.issuedDate.slice(0, 4);
+    applied += 1;
   }
-  doc.verified = true;
-  doc.verifiedSource = t.verifiedSource || 'manual';
-  if (t.issuedDate) doc.year = +t.issuedDate.slice(0, 4);
-  applied += 1;
 }
 
 const verifiedCount = Object.values(documents).filter((d) => d.verified).length;
