@@ -80,13 +80,16 @@ cho nhóm tra cứu.
 Nghiệm thu: gọi quá ngưỡng trả 429 kèm `Retry-After`; ERP có token không bị ảnh
 hưởng.
 
-### A-2 · Đăng ký llms.txt + sitemap để AI tìm thấy — P1 · ~2h
+### A-2 · Đăng ký llms.txt + sitemap để AI tìm thấy — P1 · ✅ xong phần repo 2026-09-08
 
-Có `llms.txt` mà không ai biết thì vô nghĩa. Cần:
-- `public/robots.txt` cho phép crawl và trỏ tới `llms.txt` + `sitemap.xml`
-- `public/sitemap.xml`
-- Thẻ `<link rel="alternate" type="text/plain" href="/llms.txt">` trong `index.html`
-- Gửi tới các thư mục llms.txt đang phổ biến
+Đã làm trong repo:
+- `public/robots.txt` — `Allow: /`, `Content-Signal: search=yes, ai-input=yes, ai-train=yes`, không `Disallow`, trỏ sitemap + llms.txt
+- `public/sitemap.xml` — trang chủ, llms.txt, openapi.json, community-data.json, api-guide.json
+- Thẻ `<link rel="alternate" type="text/plain" href="/llms.txt">` trên trang chủ
+- `vercel.json` header cho robots.txt / sitemap.xml
+- Bản tĩnh (`build-static.mjs`) copy robots + sitemap lên CDN
+
+Còn việc CEO: tắt "block training in robots.txt" trên Cloudflare (file origin một mình chưa gỡ khối CF chèn trước). Đăng ký thư mục llms.txt bên ngoài là việc tuỳ chọn.
 
 ### A-3 · Endpoint `/api/openapi` trả spec động — P2 · ~2h
 

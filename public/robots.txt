@@ -1,0 +1,19 @@
+# robots.txt — HS Knowledge Base
+#
+# Giấy phép dữ liệu là CC BY-SA 4.0 (LICENSE-DATA): cho phép tìm kiếm, dùng làm
+# đầu vào AI, và huấn luyện — miễn ghi nguồn và chia sẻ ngược bản phái sinh.
+# Content-Signal phải khớp giấy phép đó. Khai ai-train=no là tự bác bỏ licence.
+#
+# Cloudflare đang chèn khối Disallow cho Google-Extended / GPTBot / ClaudeBot
+# TRƯỚC file origin nếu bật "Set your preference to block training in robots.txt".
+# Tắt tuỳ chọn đó: dash.cloudflare.com → zone uythacnhapkhau.com → Security
+# → Settings → Bot traffic. Kiểm: curl -s https://hs-kb.uythacnhapkhau.com/robots.txt
+# | grep -c Disallow  → phải ra 0.
+
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+
+Sitemap: https://hs-kb.uythacnhapkhau.com/sitemap.xml
+# Điểm vào cho AI (chuẩn llms.txt)
+# https://hs-kb.uythacnhapkhau.com/llms.txt

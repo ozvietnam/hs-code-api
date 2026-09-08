@@ -7,9 +7,13 @@
  * (kể cả AI) vô tình nới allowlist mà không nhận ra.
  */
 import './test-isolate-data.mjs';
+import { readFileSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
+const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const {
   isPublicRead,
   publicReadEnabled,
@@ -136,6 +140,31 @@ assert(
   'allowlist dataset không vượt 20 resource (phình = dấu hiệu mở ẩu)',
   PUBLIC_DATASET_RESOURCES.size <= 20,
   PUBLIC_DATASET_RESOURCES.size,
+);
+
+// --- A-2: robots.txt + sitemap phải mở cửa cho AI, không tự cấm ----------
+const robots = readFileSync(join(root, 'public', 'robots.txt'), 'utf8');
+assert('robots.txt tồn tại và không rỗng', robots.length > 80);
+assert(
+  'robots.txt không có lệnh Disallow',
+  !robots.split(/\r?\n/).some((l) => /^\s*Disallow:/i.test(l)),
+);
+assert('robots.txt Allow: /', /^\s*Allow:\s*\/\s*$/m.test(robots));
+assert(
+  'robots.txt Content-Signal cho phép ai-train (khớp CC BY-SA)',
+  /Content-Signal:.*ai-train=yes/i.test(robots),
+);
+assert('robots.txt trỏ sitemap', /Sitemap:\s+https:\/\/hs-kb\.uythacnhapkhau\.com\/sitemap\.xml/i.test(robots));
+
+const sitemap = readFileSync(join(root, 'public', 'sitemap.xml'), 'utf8');
+assert('sitemap.xml chứa trang chủ', sitemap.includes('https://hs-kb.uythacnhapkhau.com/</loc>'));
+assert('sitemap.xml chứa llms.txt', sitemap.includes('/llms.txt'));
+assert('sitemap.xml chứa openapi.json', sitemap.includes('/openapi.json'));
+
+const homepage = readFileSync(join(root, 'public', 'index.html'), 'utf8');
+assert(
+  'trang chủ có link rel=alternate tới llms.txt',
+  /rel="alternate"[^>]+href="\/llms\.txt"/i.test(homepage) || /href="\/llms\.txt"[^>]+rel="alternate"/i.test(homepage),
 );
 
 console.log(`\n${passed}/${passed + failed} passed, ${failed} failed`);

@@ -394,6 +394,8 @@ for (const [src, dest] of [
   ['public/llms.txt', 'llms.txt'],
   ['public/openapi.json', 'openapi.json'],
   ['public/community-data.json', 'community-data.json'],
+  ['public/robots.txt', 'robots.txt'],
+  ['public/sitemap.xml', 'sitemap.xml'],
   ['AGENTS.md', 'AGENTS.md'],
   ['LICENSE-DATA', 'LICENSE-DATA'],
   ['NOTICE.md', 'NOTICE.md'],
