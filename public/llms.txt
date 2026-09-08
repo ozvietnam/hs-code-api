@@ -1,0 +1,62 @@
+# HS Knowledge Base
+
+> Kho tri thức mở về mã HS, thuế nhập khẩu và pháp lý xuất nhập khẩu Việt Nam.
+> 11.871 mã HS · chú giải nhóm phủ 100% · 242 tiền lệ TB-TCHQ · 108 văn bản pháp
+> luật · API tra cứu mở, không cần token.
+
+Dự án cộng đồng, mã nguồn MIT và dữ liệu CC BY-SA 4.0. Dùng lại được cho cả mục
+đích thương mại và huấn luyện AI, miễn ghi nguồn và chia sẻ ngược bản phái sinh.
+
+## Quan trọng khi dùng dữ liệu này
+
+- **Đừng đoán mã HS từ trí nhớ** — hãy gọi API hoặc đọc dữ liệu ở đây.
+- **Luôn kèm ngày dữ liệu** (`generatedAt` trong mỗi tệp). Luật XNK đổi liên tục;
+  dữ liệu không có ngày là dữ liệu không kiểm chứng được.
+- **Độ chính xác thật** (đo trên 57 tờ khai, phủ 50 chương): đúng chương 73,7% ·
+  đúng nhóm 4 số 64,9% · đúng 6 số 40,4% · **đúng đủ 8 số 24,6%**. Hệ thống định
+  hướng tốt tới chương/nhóm, hai số cuối phải để người có chuyên môn chốt.
+- **Mỗi trích dẫn quy tắc GIR đều có trường `basis`**: `RULE_TABLE` và
+  `DETERMINISTIC` là căn cứ chắc, dùng được cho hồ sơ giải trình; `HEURISTIC` và
+  `LLM_ASSERTED` phải kiểm chứng lại. Hãy truyền mức này cho người dùng.
+- **Đây là tài liệu tham khảo nghiệp vụ**, không phải phán quyết phân loại của cơ
+  quan Hải quan và không phải tư vấn pháp lý.
+
+## API — không cần token
+
+- [Đặc tả OpenAPI 3.1](https://hs-kb.uythacnhapkhau.com/openapi.json): toàn bộ endpoint, tham số, mức phân quyền
+- [Tra thuế theo mã HS](https://hs-kb.uythacnhapkhau.com/api/tax?hs=84137090): thuế NK/ACFTA/VAT + cảnh báo chính sách + link văn bản
+- [Tìm mã theo từ khoá](https://hs-kb.uythacnhapkhau.com/api/search?q=máy%20bơm): tra nhanh không cần AI
+- [Chú giải chương](https://hs-kb.uythacnhapkhau.com/api/notes?chapter=84): căn cứ áp dụng GIR 1
+- [Tiền lệ phân loại TB-TCHQ](https://hs-kb.uythacnhapkhau.com/api/precedents?hs=84137090): cách Hải quan đã từng phân loại
+- [Cảnh báo mã dễ nhầm](https://hs-kb.uythacnhapkhau.com/api/conflicts?hs=84137090): cụm mã hay bị áp sai
+- [Thư viện văn bản pháp luật](https://hs-kb.uythacnhapkhau.com/api/legal-docs): 108 văn bản, 50 đã verify tiêu đề thật
+- [Thủ tục kiểm tra chuyên ngành](https://hs-kb.uythacnhapkhau.com/api/policy-procedures): hồ sơ cần chuẩn bị theo từng loại chính sách
+- [Mã loại hình XNK](https://hs-kb.uythacnhapkhau.com/api/customs-types): theo QĐ 1357/QĐ-TCHQ
+- [Corpus sản phẩm mã "Loại khác"](https://hs-kb.uythacnhapkhau.com/api/products?hs=84137090): tên sản phẩm ví dụ giúp hiểu phạm vi mã residual
+- [Tổng quan số liệu + benchmark](https://hs-kb.uythacnhapkhau.com/community-data.json): thống kê kho dữ liệu và độ chính xác đo được
+
+## API — cần Bearer token
+
+Nhóm này gọi mô hình ngôn ngữ nên tốn chi phí mỗi lượt. Xin token qua GitHub Issue.
+
+- `POST /api/suggest`: gợi ý mã HS kèm audit trail GIR có căn cứ
+- `POST /api/describe`: sinh mô tả khai báo Hải quan chuẩn TT 39/2018, tối đa 200 ký tự ECUS
+- `POST /api/classify`: phân loại có cây quyết định + bảng phân giải cụm mã dễ nhầm
+
+## Hướng dẫn cho AI
+
+- [AGENTS.md](https://github.com/ozvietnam/hs-code-api/blob/main/AGENTS.md): quy trình 6 bước xác định mã HS đúng phương pháp, cách đọc `basis`, và các ranh giới không được vượt
+- [NOTICE.md](https://github.com/ozvietnam/hs-code-api/blob/main/NOTICE.md): giấy phép, nguồn dữ liệu gốc, cách ghi công
+- [Hướng dẫn tích hợp](https://github.com/ozvietnam/hs-code-api/blob/main/docs/integration-guide.md): hợp đồng dữ liệu chi tiết cho ERP
+
+## Dữ liệu tải thẳng
+
+- [Kho mã nguồn + toàn bộ dữ liệu](https://github.com/ozvietnam/hs-code-api): clone về là có `data/tax.json` (11.871 mã), chú giải, tiền lệ, bảng quyết định
+
+## Đóng góp
+
+Dự án cần dữ liệu cộng đồng để mã HS ngày càng rõ ràng cho mọi người: tờ khai đã
+thông quan (cặp mô tả ↔ mã HS, **không kèm thông tin khách hàng**), thông báo
+TB-TCHQ mới, cụm mã hay nhầm kèm cách phân biệt, hoặc báo lỗi sai trong dữ liệu.
+
+- [Mở Issue đóng góp](https://github.com/ozvietnam/hs-code-api/issues)

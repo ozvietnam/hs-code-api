@@ -1,4 +1,4 @@
-const { requireAuth } = require('../lib/auth');
+const { requireAuthUnlessPublic } = require('../lib/public-access');
 const { setCors, handleOptions } = require('../lib/cors');
 const { mapTaxLookup } = require('../lib/tax-mapper');
 const { getEnrichedForHs } = require('../lib/enriched-data');
@@ -10,7 +10,7 @@ module.exports = function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
-  if (requireAuth(req, res)) return;
+  if (requireAuthUnlessPublic(req, res, { endpoint: 'tax' })) return;
 
   const { hs } = req.query;
   if (!hs) {

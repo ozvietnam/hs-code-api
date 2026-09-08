@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import './test-isolate-data.mjs';
 /**
  * Integration smoke: classify B3.5 override path (no LLM).
  */

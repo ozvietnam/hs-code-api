@@ -1,4 +1,4 @@
-const { requireAuth } = require('../lib/auth');
+const { requireAuthUnlessPublic } = require('../lib/public-access');
 const { setCors, handleOptions } = require('../lib/cors');
 const { taxData } = require('../lib/data');
 const { buildChapterTree } = require('../lib/tree-metadata');
@@ -9,7 +9,7 @@ module.exports = function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
-  if (requireAuth(req, res)) return;
+  if (requireAuthUnlessPublic(req, res, { endpoint: 'kg_chapter' })) return;
 
   const chapterRaw = req.query.chapter;
   if (!chapterRaw) {

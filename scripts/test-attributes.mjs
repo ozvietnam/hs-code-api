@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import './test-isolate-data.mjs';
 // Test registry thuộc tính canonical (data/attributes.json + lib/attributes.js).
 // Bảo vệ fix finding 9.3: chapterSpecificRequired dùng tên EN, hồ sơ attrs là field VN
 // → missing[] chỉ chứa thuộc tính THẬT SỰ thiếu (không nhiễu tên EN luôn "thiếu").

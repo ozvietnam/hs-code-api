@@ -13,6 +13,10 @@ const { appendSuggestLog } = require('../lib/ml-log');
 const { getNoteSummaryForHs } = require('../lib/explanatory-notes-index');
 const { getProducts, isLoaiKhac } = require('../lib/loai-khac-products');
 const { captureError } = require('../lib/error-monitor');
+// Nguồn chân lý duy nhất cho trích dẫn GIR — mọi nhãn phải có căn cứ + bằng chứng.
+const { determineGir, DISCLAIMER_VI } = require('../lib/gir');
+// Cảnh báo thiên vị mã cụ thể — KHÔNG tự đổi đáp án, chỉ nêu để người khai quyết.
+const { checkResidualPreference } = require('../lib/residual-guard');
 const { applyLearnedCorrections } = require('../lib/learned-corrections');
 const { getSuggestCache, setSuggestCache } = require('../lib/suggest-cache');
 const { getPrompt } = require('../lib/prompt-version');
@@ -25,7 +29,13 @@ function conflictsDb() {
 // Default prompt — used if data/prompts/index.json or active file is missing
 const FALLBACK_PROMPT = `Bạn là chuyên gia phân loại hàng hóa hải quan Việt Nam.
 Cho mô tả hàng hóa và danh sách mã HS candidate, hãy chọn tối đa 3 mã phù hợp nhất.
-Áp dụng GIR và gợi ý chương (girRulesApplied) khi giải thích.
+Dùng chapterGuidance (checklist dữ kiện theo chương) làm ngữ cảnh khi cân nhắc.
+
+Về quy tắc GIR: nếu bạn thực sự dựa vào một quy tắc để chốt, ghi ĐÚNG MỘT quy tắc
+vào trường "gir" (vd "GIR 3(b)") kèm lý do cụ thể trong "reasoning". KHÔNG liệt kê
+quy tắc cho có — hệ thống sẽ đánh dấu phần bạn khai là CHƯA KIỂM CHỨNG và đối
+chiếu độc lập. Không chắc thì để "gir": null.
+
 Chỉ trả JSON đúng schema:
 {
   "suggestions": [
@@ -35,7 +45,7 @@ Chỉ trả JSON đúng schema:
       "confidence": 92,
       "reasoning": "Giải thích ngắn",
       "disambiguationFeatures": ["brand", "model"],
-      "girRulesApplied": ["GIR 1", "Chương 85: thiết bị điện hoàn chỉnh"]
+      "gir": "GIR 1"
     }
   ]
 }
@@ -96,7 +106,9 @@ module.exports = async function handler(req, res) {
       suggestions: [],
       evidence: [],
       evidenceTrace: [],
-      girRulesApplied: audit.girRulesApplied,
+      girRulesApplied: [],
+      chapterGuidance: audit.chapterGuidance,
+      girDisclaimer: DISCLAIMER_VI,
       antiPatternWarnings: audit.antiPatternWarnings,
       llmModel: null,
       ms: Date.now() - started,
@@ -116,7 +128,7 @@ module.exports = async function handler(req, res) {
           policyByHs,
           score,
         })),
-        girRulesApplied: audit.girRulesApplied,
+        chapterGuidance: audit.chapterGuidance,
         antiPatternWarnings: audit.antiPatternWarnings,
         topReranked,
       },
@@ -151,22 +163,39 @@ module.exports = async function handler(req, res) {
       top1Confidence: suggestions[0]?.confidence ?? null,
       ms: Date.now() - started,
       candidates: evidence.length,
-      girRules: [
-        ...(girRanked.girRankingRules || []),
-        ...(precedentRanked.girPrecedentRule ? [precedentRanked.girPrecedentRule] : []),
-        ...(detectSet(description) ? ['GIR-3b'] : []),
-      ],
+      girRules: determineGir({
+        description,
+        candidates: precedentRanked.suggestions,
+        pickedHs: precedentRanked.suggestions?.[0]?.hsCode || null,
+        isSet: detectSet(description),
+        precedentDrove: Boolean(precedentRanked.girPrecedentRule),
+      }).determinations.map((d) => `${d.rule}:${d.basis}`),
       llmModel: model,
       promptVersion,
       promptVariant,
       wasOverridden: false,
     });
 
-    const girRankingRules = [
-      ...(girRanked.girRankingRules || []),
-      ...(precedentRanked.girPrecedentRule ? [precedentRanked.girPrecedentRule] : []),
-      ...(detectSet(description) ? ['GIR-3b'] : []),
-    ];
+    // Trích dẫn GIR: chỉ phát ra khi có căn cứ kiểm chứng được (xem lib/gir.js).
+    const girVerdict = determineGir({
+      description,
+      candidates: precedentRanked.suggestions,
+      pickedHs: precedentRanked.suggestions?.[0]?.hsCode || null,
+      isSet: detectSet(description),
+      precedentDrove: Boolean(precedentRanked.girPrecedentRule),
+      llmGir: precedentRanked.suggestions?.[0]?.gir || null,
+    });
+    const rankingSignals = girRanked.rankingSignals || [];
+
+    // 52% tờ khai thật có đáp án là mã "Loại khác", nhưng hệ thống thiên vị mã cụ
+    // thể (74% lỗi cùng nhóm là "đúng residual, đoán cụ thể"; chiều ngược lại 0%).
+    // Mô phỏng trên benchmark: can thiệp 24% mẫu, sửa 3 / hỏng 1 — lãi quá mỏng để
+    // tự động ghi đè. Nên chỉ CẢNH BÁO, để người có chuyên môn chốt.
+    const residualAdvisory = checkResidualPreference({
+      hsCode: precedentRanked.suggestions?.[0]?.hsCode || null,
+      description,
+      candidates: precedentRanked.suggestions,
+    });
 
     // Apply learned corrections from director feedback history
     const correctedSuggestions = applyLearnedCorrections(suggestions);
@@ -187,7 +216,7 @@ module.exports = async function handler(req, res) {
 
     const responsePayload = {
       suggestions: enrichedSuggestions,
-      girRankingRules,
+      rankingSignals,
       precedentMatches: precedentRanked.precedentMatches?.slice(0, 3) || [],
       evidence: evidence.map(({ hsCode, source, score, queryExpansion }) => ({
         hsCode,
@@ -199,10 +228,24 @@ module.exports = async function handler(req, res) {
         candidates: audit.evidenceTrace,
         matchedOzPrecedents: ozPrecedents,
       },
-      girRulesApplied: audit.girRulesApplied,
+      // Rule bất biến #6: audit trail GIR. Nay chỉ chứa trích dẫn CÓ CĂN CỨ.
+      girRulesApplied: girVerdict.determinations,
+      girDisclaimer: girVerdict.disclaimer,
+      ...(residualAdvisory ? { residualAdvisory } : {}),
+      // Checklist dữ kiện theo chương — trước đây bị đặt nhầm tên girRulesApplied.
+      chapterGuidance: audit.chapterGuidance,
       antiPatternWarnings: [
         ...audit.antiPatternWarnings,
         ...historyAdjusted.warnings,
+        ...(residualAdvisory
+          ? [{
+              id: 'residual-preference',
+              description:
+                `Mô tả chưa chứng minh điều kiện của mã cụ thể ${residualAdvisory.currentHs}. ` +
+                `Cân nhắc ${residualAdvisory.suggestedHs} ("${residualAdvisory.suggestedName}").`,
+              fix: 'Bổ sung dữ kiện chứng minh điều kiện của mã cụ thể, hoặc chuyển sang mã Loại khác.',
+            }]
+          : []),
       ],
       explanatoryNote,
       confusionWarning,
@@ -277,7 +320,7 @@ async function handleBatch(req, res, body, started) {
         glossaryTranslation: glossaryVi !== item.description ? glossaryVi : undefined,
         brandHint,
         candidates: evidence.map(({ hsCode, nameVi, policyByHs, score }) => ({ hsCode, nameVi, policyByHs, score })),
-        girRulesApplied: audit.girRulesApplied,
+        chapterGuidance: audit.chapterGuidance,
         topReranked,
       }, null, 2);
 
@@ -291,11 +334,21 @@ async function handleBatch(req, res, body, started) {
         return { ...s, productExamples: getProducts(s.hsCode, 3) };
       });
 
+      const batchGir = determineGir({
+        description: item.description,
+        candidates: precedentRanked.suggestions,
+        pickedHs: precedentRanked.suggestions?.[0]?.hsCode || null,
+        isSet: detectSet(item.description),
+        precedentDrove: Boolean(precedentRanked.girPrecedentRule),
+      });
+
       const result = {
         id: item.id,
         suggestions,
         evidence: evidence.map(({ hsCode, source, score }) => ({ hsCode, source, score })),
-        girRulesApplied: audit.girRulesApplied,
+        girRulesApplied: batchGir.determinations,
+        girDisclaimer: batchGir.disclaimer,
+        chapterGuidance: audit.chapterGuidance,
         llmModel: model,
         ms: Date.now() - itemStart,
       };

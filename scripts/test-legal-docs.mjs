@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import './test-isolate-data.mjs';
 // Test index văn bản pháp luật (data/legal-docs.json) + lib/legal-docs.js
 // + cấu trúc data quality report.
 import { readFileSync, existsSync } from 'fs';

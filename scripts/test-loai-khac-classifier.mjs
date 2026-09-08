@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import './test-isolate-data.mjs';
 /**
  * test-loai-khac-classifier.mjs
  *

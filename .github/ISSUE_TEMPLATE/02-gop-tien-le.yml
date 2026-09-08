@@ -1,0 +1,61 @@
+name: 📋 Góp tiền lệ phân loại (TB-TCHQ)
+description: Chia sẻ một thông báo phân loại của Hải quan chưa có trong kho
+title: "[precedent] "
+labels: ["data", "precedent"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Tiền lệ TB-TCHQ là **căn cứ mạnh nhất** khi giải trình với Hải quan.
+
+        ⚠️ Chỉ gửi nội dung của thông báo. **Không gửi tờ khai, chứng từ, hay
+        thông tin doanh nghiệp.**
+  - type: input
+    id: so-hieu
+    attributes:
+      label: Số hiệu thông báo
+      placeholder: "1234/TB-TCHQ"
+    validations:
+      required: true
+  - type: input
+    id: ngay
+    attributes:
+      label: Ngày ban hành
+      placeholder: "2025-03-15"
+  - type: input
+    id: hs
+    attributes:
+      label: Mã HS được xác định
+      placeholder: "84137090"
+    validations:
+      required: true
+  - type: textarea
+    id: mo-ta
+    attributes:
+      label: Mô tả hàng hoá
+      description: Chỉ đặc điểm hàng — tên, vật liệu, công dụng, thông số kỹ thuật
+    validations:
+      required: true
+  - type: textarea
+    id: ly-do
+    attributes:
+      label: Lý do phân loại
+      description: |
+        Phần quý nhất. Vì sao là mã này, và **vì sao không phải mã kia**?
+        Có viện dẫn chú giải hay quy tắc GIR nào không?
+    validations:
+      required: true
+  - type: input
+    id: nham
+    attributes:
+      label: Hay bị nhầm với mã nào
+      placeholder: "84133090, 84134000"
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Xác nhận
+      options:
+        - label: Nội dung không chứa thông tin doanh nghiệp, số tờ khai hay trị giá
+          required: true
+        - label: Tôi đồng ý đóng góp này được phát hành theo CC BY-SA 4.0
+          required: true

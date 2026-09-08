@@ -9,41 +9,54 @@ Service HTTP API cho ERP `erp-xnk` gọi sang để:
 2. **Tra thuế** (`GET /api/tax?hs=X`)
 3. **Sinh mô tả khai báo Hải quan** (`POST /api/describe` — chuẩn TT 39/2018)
 
-Plus phục vụ tương lai chatbot công khai (Track B, T6/2026).
+**Track B (chatbot công khai + landing SEO) đã HOÃN vô thời hạn** — CEO chốt
+2026-07-06 tại Issue #34: ưu tiên đào sâu data + API nội bộ trước. Đừng tự khởi
+động lại Track B khi chưa có chỉ đạo mới.
 
 ## Tech stack
 
 - Node.js Vercel functions (serverless) — KHÔNG dùng Next.js framework
 - Data: JSON files trong `data/` (no DB cho serverless cold start nhanh)
 - AI: Gemini 2.5 Flash (rerank, describe) + Gemini Embedding 001 (semantic search)
-- Fallback local: OpenRouter free models via `.env` — `docs/openrouter.md`, `npm run openrouter:ping`
+- Chuỗi fallback LLM (`lib/llm-tier.js` → `lib/llm.mjs`): Gemini → Hermes → MiniMax
+  → OpenRouter. Thiếu key provider nào thì tự bỏ qua provider đó. Prod đang có
+  `MINIMAX_API_KEY`; local dev dùng OpenRouter free — `docs/openrouter.md`,
+  `npm run openrouter:ping`
 - Auth: Bearer token (`HS_API_TOKEN` env)
 - Deploy: Vercel project `hs-code-api`
 
 ## Cấu trúc dự án
 
 ```
-api/               # 12 endpoint handlers (each = 1 Vercel function)
+api/               # 12 file handler = 12 Vercel function.
+                   # Nhiều URL "logic" khác được gộp vào dataset.js/tariff.js
+                   # qua rewrite trong vercel.json — KHÔNG có file riêng.
   health.js          # Public — health check
   tax.js             # Bearer — tra thuế
-  search.js          # Bearer — search HS
+  search.js          # Bearer — search HS (+ /api/match qua ?mode=match)
   suggest.js         # Bearer — AI suggest
   describe.js        # Bearer — AI describe
+  classify.js        # Bearer — phân loại có decision tree + conflict resolver
   feedback.js        # Bearer — capture director feedback
-  notes.js, conflicts.js, precedents.js, ...
-  admin/overview.js  # Bearer admin — dashboard stats
-  match.js           # Bearer — OZSource ERP product → HS
+  notes.js           # Bearer — chú giải chương
+  kg_chapter.js      # Bearer — liệt kê HS trong chương
+  customs-types.js   # Bearer — mã loại hình XNK
+  dataset.js         # Bearer — gộp: conflicts, precedents, ministries, products,
+                     #   legal-docs, trademark, admin/overview, kpi, data-quality...
+  tariff.js          # Bearer — gộp: versions, version/diff, admin/update, admin/revert
 
-lib/               # Business logic
-  data.js, auth.js, cors.js, gemini.js
+lib/               # Business logic (~50 module)
+  data.js, auth.js, cors.js, gemini.js, llm-tier.js, llm.mjs
+  data-paths.js           # phân giải đường dẫn data/ — HS_DATA_DIR để test cách ly
   search-utils.js, tax-mapper.js
-  declaration-validator.js, gir-engine.js
-  ministries.js, taxonomy.js, glossary.js
+  declaration-validator.js, gir-engine.js, conflict-resolver.js
+  ministries.js, material-taxonomy.js, glossary.js
   legal-docs.js, customs-types.js, tariff-versions.js
+  trademark-watch.js, loai-khac-classifier.js
   ...
 
 data/              # Lookup tables + main dataset
-  tax.json (4.3 MB)       # 11,871 HS code chính
+  tax.json (5.6 MB)       # 11,871 HS code chính
   notes.json              # Chú giải
   precedents.json         # TB-TCHQ
   conflicts.json          # HS dễ nhầm
@@ -73,12 +86,13 @@ tests/             # Test fixtures
 ## Rule bất biến
 
 1. **Privacy data** — KHÔNG bao giờ commit `data/oz-export/*.{xlsx,csv,jsonl}` (gitignored). Đây là tờ khai cũ Oz có thông tin khách hàng.
-2. **Bearer auth** — TẤT CẢ endpoint trừ `/api/health` phải check `requireAuth(req, res)` từ `lib/auth.js`.
+2. **Bearer auth** — mặc định KÍN. Endpoint sinh nội dung bằng LLM (`suggest`, `describe`, `classify`, `match`) và mọi thứ quản trị phải `requireAuth(req, res)` từ `lib/auth.js`. Nhóm tra cứu chỉ đọc dữ liệu tĩnh thì mở công khai qua `requireAuthUnlessPublic(...)` — **allowlist tường minh** ở `lib/public-access.js`. Thêm resource mới vào `dataset.js` thì nó mặc định KÍN; muốn mở phải khai có ý thức và `scripts/test-public-access.mjs` phải xanh. Quên khai = mất tính năng, quên chặn = lộ dữ liệu; luôn chọn hướng sai an toàn.
 3. **CORS** — luôn `setCors(res)` + `handleOptions(req, res)` ở đầu handler.
 4. **camelCase response** — chuẩn shape camelCase cho ERP, dùng `lib/tax-mapper.js`.
 5. **Compliance TT 39/2018** — `/api/describe` phải trả structured `declaration` + `compliance.score` + `level` + `warnings[]`.
-6. **GIR audit trail** — `/api/suggest` response phải có `girRulesApplied[]` (Issue #24).
+6. **GIR audit trail** — `/api/suggest` response phải có `girRulesApplied[]` (Issue #24), và **mọi trích dẫn GIR phải đi qua `lib/gir.js`**. Không nơi nào khác được tự gắn nhãn `GIR-*`. Mỗi mục bắt buộc có `basis` (`RULE_TABLE` > `DETERMINISTIC` > `HEURISTIC` > `LLM_ASSERTED`) + `evidence` + `source`. Trích sai điều luật tệ hơn không trích: đây là bằng chứng người khai đưa cho Hải quan. Tín hiệu heuristic đi vào `rankingSignals[]`, checklist theo chương đi vào `chapterGuidance[]` — tuyệt đối không gọi chúng là GIR.
 7. **Vercel Pro** — đã nâng Pro (T7/2026), KHÔNG còn trần 12 function của Hobby; maxDuration cho phép tới 300s. Vẫn giữ pattern gộp route qua `vercel.json` rewrites (`dataset.js`/`tariff.js`) vì ít cold start + repo gọn — chỉ tách function mới khi thật sự cần.
+8. **Test KHÔNG được ghi vào `data/` thật** — mọi lib có ghi (`feedback-store`, `admin-update`, `tariff-mutations`, `access-log`, `error-monitor`, `ml-log`) phải lấy đường dẫn qua `lib/data-paths.js` (`dataPath` để ghi, `dataReadPath` để đọc), và test phải `import './test-isolate-data.mjs'` ở dòng đầu để ghi vào thư mục tạm. Trước đây `npm test` làm bẩn repo, có lần commit lẫn snapshot `v-api-test` thành phiên bản biểu thuế "đang hiệu lực".
 
 ## Tham chiếu pháp luật quan trọng
 

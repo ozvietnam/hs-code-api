@@ -5,6 +5,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
 

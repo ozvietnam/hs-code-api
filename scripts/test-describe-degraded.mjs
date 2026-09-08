@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import './test-isolate-data.mjs';
 /**
  * Test /api/describe KHÔNG fail-silent khi LLM lỗi (Issue #67).
  * Mock geminiGenerateJson TRƯỚC khi require handler (handler destructure ở load-time).

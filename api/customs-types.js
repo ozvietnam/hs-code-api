@@ -1,4 +1,4 @@
-const { requireAuth } = require('../lib/auth');
+const { requireAuthUnlessPublic } = require('../lib/public-access');
 const { setCors, handleOptions } = require('../lib/cors');
 const { listTypes, getTypeByCode, recommendCustomsType } = require('../lib/customs-types');
 
@@ -13,7 +13,7 @@ function parsePath(req) {
 module.exports = async function handler(req, res) {
   setCors(res);
   if (handleOptions(req, res)) return;
-  if (requireAuth(req, res)) return;
+  if (requireAuthUnlessPublic(req, res, { endpoint: 'customs-types' })) return;
 
   const { action, code } = parsePath(req);
 

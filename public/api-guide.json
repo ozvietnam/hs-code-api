@@ -55,7 +55,7 @@
       "when": "Phân loại khó — đọc chú giải pháp lý của chương/nhóm HS trước khi chốt mã (áp dụng quy tắc GIR 1–6).",
       "request": "curl -H \"Authorization: Bearer $TOKEN\" \\\n  \"https://hs-kb.uythacnhapkhau.com/api/notes?chapter=84\"",
       "response": "{\n  \"chapter\": \"84\",\n  \"titleVi\": \"Máy móc, thiết bị cơ khí...\",\n  \"notes\": \"Chương này không bao gồm...\",\n  \"coverage\": { \"headingsWithNotes\": 87 }\n}",
-      "tip": "GIR audit trong /api/suggest cũng trích chú giải này vào girRulesApplied[]."
+      "tip": "Chú giải nhóm là căn cứ để trích GIR 1 trong /api/suggest (basis=HEURISTIC, kèm trích đoạn loại trừ)."
     },
     {
       "id": "conflicts",
@@ -120,8 +120,8 @@
       "summary": "Gợi ý mã HS bằng AI + audit GIR",
       "when": "Việc lõi: NV nhập mô tả hàng → AI trả top 3 mã kèm confidence, lý do, quy tắc GIR đã áp dụng.",
       "request": "curl -X POST https://hs-kb.uythacnhapkhau.com/api/suggest \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"description\": \"Máy bơm nước ly tâm Pentax 1.5HP 220V\",\n    \"options\": { \"topReranked\": 3 }\n  }'",
-      "response": "{\n  \"suggestions\": [\n    {\n      \"hsCode\": \"84137090\",\n      \"nameVi\": \"Bơm chất lỏng khác, loại khác\",\n      \"confidence\": 88,\n      \"reasoning\": \"Máy bơm ly tâm dân dụng...\",\n      \"girRulesApplied\": [\"GIR 1\", \"Chương 84: máy móc cơ khí\"],\n      \"productExamples\": [\"Máy bơm nước ly tâm 1HP đầu gang\"]\n    }\n  ],\n  \"ms\": 1240\n}",
-      "tip": "confidence ≥85: tự điền · 70–84: highlight review · <70: chọn tay. Batch: gửi items[] tối đa 20 dòng PO."
+      "response": "{\n  \"suggestions\": [\n    {\n      \"hsCode\": \"84137090\",\n      \"nameVi\": \"Bơm chất lỏng khác, loại khác\",\n      \"confidence\": 88,\n      \"reasoning\": \"Máy bơm ly tâm dân dụng...\",\n      \"productExamples\": [\n        \"Máy bơm nước ly tâm 1HP đầu gang\"\n      ]\n    }\n  ],\n  \"girRulesApplied\": [\n    {\n      \"rule\": \"GIR 6\",\n      \"basis\": \"DETERMINISTIC\",\n      \"confidence\": \"high\",\n      \"reasonVi\": \"Chọn ở cấp phân nhóm giữa nhiều phân nhóm cùng nhóm 4 số.\",\n      \"evidence\": {\n        \"heading\": \"8413\",\n        \"subheadingsCompared\": [\n          \"84137090\",\n          \"84138190\"\n        ]\n      },\n      \"source\": \"WCO General Interpretative Rules\"\n    }\n  ],\n  \"girDisclaimer\": \"Trích dẫn GIR là căn cứ tham khảo, KHÔNG phải phán quyết của Hải quan.\",\n  \"rankingSignals\": [\n    {\n      \"signal\": \"specificity_filter\",\n      \"note\": \"Ước lượng, chưa đối chiếu nguyên văn nhóm.\"\n    }\n  ],\n  \"chapterGuidance\": [\n    {\n      \"chapter\": \"84\",\n      \"titleVi\": \"Máy móc cơ khí\"\n    }\n  ],\n  \"ms\": 1240\n}",
+      "tip": "girRulesApplied[] mỗi mục có `basis`: RULE_TABLE/DETERMINISTIC là căn cứ chắc, HEURISTIC/LLM_ASSERTED phải kiểm chứng lại trước khi đưa vào hồ sơ giải trình. rankingSignals là tín hiệu kỹ thuật, không có giá trị pháp lý."
     },
     {
       "id": "match",

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import './test-isolate-data.mjs';
 /**
  * Test batch screening nhãn hiệu qua endpoint /api/trademark (POST items[]).
  * Gọi thẳng handler dataset.js với mock req/res — không cần server chạy.

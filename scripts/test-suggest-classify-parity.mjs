@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import './test-isolate-data.mjs';
 /**
  * B4 — Verify shared knowledge layer (confusionWarning + explanatoryNote) in both endpoints.
  * Tests WITHOUT live LLM calls — checks data + code wiring.

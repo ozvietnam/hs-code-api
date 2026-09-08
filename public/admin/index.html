@@ -192,7 +192,11 @@
 
       var sys =
         '<section class="card"><h2>System health</h2>' +
-        '<dl><dt>Gemini API key</dt><dd>' + badge(ch.geminiKey && ch.geminiKey.ok) + '</dd>' +
+        '<dl><dt>LLM (suggest/describe)</dt><dd>' + badge(ch.llm && ch.llm.ok) +
+        (ch.llm && ch.llm.note ? ' <small>' + ch.llm.note + '</small>' : '') +
+        (ch.llm && ch.llm.fallbacks && ch.llm.fallbacks.length
+          ? ' <small>fallback: ' + ch.llm.fallbacks.join(', ') + '</small>' : '') + '</dd>' +
+        '<dt>Gemini API key</dt><dd>' + badge(ch.geminiKey && ch.geminiKey.ok) + '</dd>' +
         '<dt>Bearer HS_API_TOKEN</dt><dd>' + badge(ch.apiToken && ch.apiToken.ok) + '</dd>' +
         '<dt>HS codes</dt><dd>' + (h.totalHsCodes ?? '—') + '</dd>' +
         '<dt>Chapters</dt><dd>' + (h.chapters ?? '—') + '</dd>' +

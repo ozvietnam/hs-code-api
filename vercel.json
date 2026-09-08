@@ -3,41 +3,146 @@
   "buildCommand": "npm run build",
   "outputDirectory": "public",
   "rewrites": [
-    { "source": "/admin", "destination": "/admin/index.html" },
-    { "source": "/admin/", "destination": "/admin/index.html" },
-    { "source": "/api/kg_stats", "destination": "/api/dataset?resource=kg_stats" },
-    { "source": "/api/conflicts", "destination": "/api/dataset?resource=conflicts" },
-    { "source": "/api/precedents", "destination": "/api/dataset?resource=precedents" },
-    { "source": "/api/admin/overview", "destination": "/api/dataset?resource=admin_overview" },
-    { "source": "/api/versions", "destination": "/api/tariff?op=versions" },
-    { "source": "/api/versions/", "destination": "/api/tariff?op=versions" },
-    { "source": "/api/version", "destination": "/api/tariff?op=detail" },
-    { "source": "/api/version/", "destination": "/api/tariff?op=detail" },
-    { "source": "/api/version/diff", "destination": "/api/tariff?op=diff" },
-    { "source": "/api/version-diff", "destination": "/api/tariff?op=diff" },
-    { "source": "/api/customs-types/recommend", "destination": "/api/customs-types?action=recommend" },
-    { "source": "/api/customs-types/:code", "destination": "/api/customs-types?code=:code" },
-    { "source": "/api/legal-docs/:code", "destination": "/api/dataset?resource=legal_doc&code=:code" },
-    { "source": "/api/legal-docs", "destination": "/api/dataset?resource=legal_docs" },
-    { "source": "/api/match", "destination": "/api/search?mode=match" },
-    { "source": "/api/ministries", "destination": "/api/dataset?resource=ministries" },
-    { "source": "/api/materials", "destination": "/api/dataset?resource=materials" },
-    { "source": "/api/chapters", "destination": "/api/dataset?resource=chapters" },
-    { "source": "/api/admin/update", "destination": "/api/tariff?op=admin_update" },
-    { "source": "/api/admin/revert", "destination": "/api/tariff?op=admin_revert" },
-    { "source": "/api/admin/audit", "destination": "/api/dataset?resource=admin_audit" },
-    { "source": "/api/admin/kpi", "destination": "/api/dataset?resource=kpi" },
-    { "source": "/api/oz-precedents", "destination": "/api/dataset?resource=oz_precedents" },
-    { "source": "/api/products", "destination": "/api/dataset?resource=products" },
-    { "source": "/api/suggest/batch", "destination": "/api/suggest" },
-    { "source": "/api/accuracy", "destination": "/api/dataset?resource=accuracy" },
-    { "source": "/api/errors", "destination": "/api/dataset?resource=error_log" },
-    { "source": "/api/policy-procedures", "destination": "/api/dataset?resource=policy_procedures" },
-    { "source": "/api/policy-procedures/:code", "destination": "/api/dataset?resource=policy_procedures&code=:code" },
-    { "source": "/api/admin/suggestions", "destination": "/api/dataset?resource=admin_suggestions" },
-    { "source": "/api/admin/prompts", "destination": "/api/dataset?resource=prompt_versions" },
-    { "source": "/api/data-quality", "destination": "/api/dataset?resource=data_quality" },
-    { "source": "/api/trademark", "destination": "/api/dataset?resource=trademark" }
+    {
+      "source": "/admin",
+      "destination": "/admin/index.html"
+    },
+    {
+      "source": "/admin/",
+      "destination": "/admin/index.html"
+    },
+    {
+      "source": "/api/kg_stats",
+      "destination": "/api/dataset?resource=kg_stats"
+    },
+    {
+      "source": "/api/conflicts",
+      "destination": "/api/dataset?resource=conflicts"
+    },
+    {
+      "source": "/api/precedents",
+      "destination": "/api/dataset?resource=precedents"
+    },
+    {
+      "source": "/api/admin/overview",
+      "destination": "/api/dataset?resource=admin_overview"
+    },
+    {
+      "source": "/api/versions",
+      "destination": "/api/tariff?op=versions"
+    },
+    {
+      "source": "/api/versions/",
+      "destination": "/api/tariff?op=versions"
+    },
+    {
+      "source": "/api/version",
+      "destination": "/api/tariff?op=detail"
+    },
+    {
+      "source": "/api/version/",
+      "destination": "/api/tariff?op=detail"
+    },
+    {
+      "source": "/api/version/diff",
+      "destination": "/api/tariff?op=diff"
+    },
+    {
+      "source": "/api/version-diff",
+      "destination": "/api/tariff?op=diff"
+    },
+    {
+      "source": "/api/customs-types/recommend",
+      "destination": "/api/customs-types?action=recommend"
+    },
+    {
+      "source": "/api/customs-types/:code",
+      "destination": "/api/customs-types?code=:code"
+    },
+    {
+      "source": "/api/legal-docs/:code",
+      "destination": "/api/dataset?resource=legal_doc&code=:code"
+    },
+    {
+      "source": "/api/legal-docs",
+      "destination": "/api/dataset?resource=legal_docs"
+    },
+    {
+      "source": "/api/match",
+      "destination": "/api/search?mode=match"
+    },
+    {
+      "source": "/api/ministries",
+      "destination": "/api/dataset?resource=ministries"
+    },
+    {
+      "source": "/api/materials",
+      "destination": "/api/dataset?resource=materials"
+    },
+    {
+      "source": "/api/chapters",
+      "destination": "/api/dataset?resource=chapters"
+    },
+    {
+      "source": "/api/admin/update",
+      "destination": "/api/tariff?op=admin_update"
+    },
+    {
+      "source": "/api/admin/revert",
+      "destination": "/api/tariff?op=admin_revert"
+    },
+    {
+      "source": "/api/admin/audit",
+      "destination": "/api/dataset?resource=admin_audit"
+    },
+    {
+      "source": "/api/admin/kpi",
+      "destination": "/api/dataset?resource=kpi"
+    },
+    {
+      "source": "/api/oz-precedents",
+      "destination": "/api/dataset?resource=oz_precedents"
+    },
+    {
+      "source": "/api/products",
+      "destination": "/api/dataset?resource=products"
+    },
+    {
+      "source": "/api/suggest/batch",
+      "destination": "/api/suggest"
+    },
+    {
+      "source": "/api/accuracy",
+      "destination": "/api/dataset?resource=accuracy"
+    },
+    {
+      "source": "/api/errors",
+      "destination": "/api/dataset?resource=error_log"
+    },
+    {
+      "source": "/api/policy-procedures",
+      "destination": "/api/dataset?resource=policy_procedures"
+    },
+    {
+      "source": "/api/policy-procedures/:code",
+      "destination": "/api/dataset?resource=policy_procedures&code=:code"
+    },
+    {
+      "source": "/api/admin/suggestions",
+      "destination": "/api/dataset?resource=admin_suggestions"
+    },
+    {
+      "source": "/api/admin/prompts",
+      "destination": "/api/dataset?resource=prompt_versions"
+    },
+    {
+      "source": "/api/data-quality",
+      "destination": "/api/dataset?resource=data_quality"
+    },
+    {
+      "source": "/api/trademark",
+      "destination": "/api/dataset?resource=trademark"
+    }
   ],
   "functions": {
     "api/**/*.js": {
@@ -45,5 +150,67 @@
       "maxDuration": 300,
       "includeFiles": "data/**"
     }
-  }
+  },
+  "headers": [
+    {
+      "source": "/llms.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/openapi.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/community-data.json",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/api-guide.json",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    }
+  ]
 }

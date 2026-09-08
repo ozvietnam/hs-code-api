@@ -48,3 +48,7 @@ docs/methodology/
 
 # Loại khác per-chapter build artifacts (regenerate với build-loai-khac-chapter.mjs)
 data/loai-khac/
+
+# Bộ dữ liệu tĩnh sinh ra cho CDN — dựng lại bằng `npm run build:static`,
+# không commit (14.000 file / 75 MB, và luôn phải khớp data/ mới nhất).
+/dist/
