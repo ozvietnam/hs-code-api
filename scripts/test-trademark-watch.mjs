@@ -14,6 +14,7 @@ const {
   isChinaOrigin,
   scoreCnExport,
   hsChaptersForNice,
+  mergeNiceClasses,
   watchlistStats,
 } = require('./lib/trademark-watch');
 
@@ -97,6 +98,19 @@ const st = watchlistStats();
 check('watchlistStats total > 0', st.total > 0);
 check('watchlistStats có bySource.seed', st.bySource.seed > 0);
 check('watchlistStats có gaccRecorded field', typeof st.gaccRecorded === 'number');
+
+check('mergeNiceClasses gộp không ghi đè',
+  JSON.stringify(mergeNiceClasses([7, 9, 11], [35])) === JSON.stringify([7, 9, 11, 35]));
+check('mergeNiceClasses bỏ số rác', mergeNiceClasses([7, 0, 99, 'x'], [11]).join(',') === '7,11');
+
+const kamoerPump = checkTrademarkRisk({ brand: 'Kamoer', hsCode: '84137090' });
+check('Kamoer bơm ch.84 classMatch=true (không mất vì class 35 dịch vụ)', kamoerPump.matched && kamoerPump.matches[0].classMatch === true);
+check('Kamoer registry vẫn ghi class 35',
+  (findMarks('Kamoer')[0].registeredNiceClasses || []).includes(35));
+check('Kamoer giữ class hàng hoá 7/9/11',
+  (findMarks('Kamoer')[0].goodsNiceClasses || []).includes(7));
+const kamoerCloth = checkTrademarkRisk({ brand: 'Kamoer', hsCode: '61091000' });
+check('Kamoer quần áo ch.61 classMatch=false', kamoerCloth.matches[0].classMatch === false);
 
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed > 0 ? 1 : 0);

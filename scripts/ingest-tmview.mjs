@@ -28,10 +28,13 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { createRequire } from 'module';
 
 const rootDir = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dataDir = join(rootDir, 'data');
 const watchPath = join(dataDir, 'trademark-watch.json');
+const require = createRequire(join(rootDir, 'package.json'));
+const { mergeNiceClasses } = require('./lib/trademark-watch');
 
 // ---- CONFIG (sửa ở đây nếu TMview đổi contract) ----
 const CONFIG = {
@@ -158,13 +161,22 @@ for (const brand of brands) {
   const niceClasses = [...new Set(recs.flatMap((r) => r.niceClasses))].sort((a, b) => a - b);
 
   const existing = db.marks[brand] || {};
+  const registeredNiceClasses = mergeNiceClasses(existing.registeredNiceClasses, niceClasses);
+  const goodsNiceClasses = mergeNiceClasses(existing.goodsNiceClasses);
+  const mergedNice = mergeNiceClasses(existing.niceClasses, niceClasses, registeredNiceClasses, goodsNiceClasses);
   db.marks[brand] = {
     ...existing,
     normalized: normalizeMark(brand),
     owner: best.applicant || existing.owner || null,
     regNo: best.regNo || existing.regNo || null,
-    niceClasses: niceClasses.length ? niceClasses : existing.niceClasses || [],
-    hsChapters: hsChaptersForNice(niceClasses.length ? niceClasses : existing.niceClasses || []),
+    niceClasses: mergedNice.length ? mergedNice : existing.niceClasses || [],
+    registeredNiceClasses,
+    goodsNiceClasses,
+    hsChapters: hsChaptersForNice(
+      goodsNiceClasses.length ? goodsNiceClasses : mergedNice.filter((c) => c < 35).length
+        ? mergedNice.filter((c) => c < 35)
+        : mergedNice,
+    ),
     status: best.status,
     customsRecorded: existing.customsRecorded === true, // KHÔNG đổi — chỉ --customs mới bật
     cn: existing.cn || { gaccRecorded: false, recordNo: null, ipTypes: [], verified: false, source: 'seed' },

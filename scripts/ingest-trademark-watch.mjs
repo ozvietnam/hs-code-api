@@ -7,9 +7,10 @@
  *   node scripts/ingest-trademark-watch.mjs --wipo <file.json>          # export WIPO Global Brand DB (VN)
  *   node scripts/ingest-trademark-watch.mjs --gacc <file.json>          # danh sách ghi nhận Hải quan TQ (CN xuất)
  *
- * Merge rule: ghi đè entry cùng tên nhãn (so khớp theo normalized). Nguồn "customs"
- * ưu tiên cao nhất (đặt customsRecorded=true, verified=true). Nguồn "wipo" set
- * status/owner/regNo + verified=true nhưng KHÔNG tự đặt customsRecorded.
+ * Merge rule: GỘP (không ghi đè) niceClasses / registeredNiceClasses /
+ * goodsNiceClasses — ca Kamoer mất class hàng hoá vì ingest thay [7,9,11] bằng [35].
+ * Nguồn "customs" ưu tiên cao nhất (đặt customsRecorded=true, verified=true).
+ * Nguồn "wipo" set status/owner/regNo + verified=true nhưng KHÔNG tự đặt customsRecorded.
  * Nguồn "gacc" set khối cn.{gaccRecorded,recordNo,ipTypes,verified} (rủi ro XUẤT KHẨU TQ).
  *
  * --- ĐỊNH DẠNG FILE ĐẦU VÀO ---
@@ -26,10 +27,13 @@
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join, extname } from 'path';
+import { createRequire } from 'module';
 
 const rootDir = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dataDir = join(rootDir, 'data');
 const watchPath = join(dataDir, 'trademark-watch.json');
+const require = createRequire(join(rootDir, 'package.json'));
+const { mergeNiceClasses, hsChaptersForNice } = require('./lib/trademark-watch');
 
 function normalizeMark(text) {
   return String(text || '')
@@ -39,13 +43,6 @@ function normalizeMark(text) {
     .replace(/[^a-z0-9\s]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
-}
-
-const niceHs = JSON.parse(readFileSync(join(dataDir, 'nice-hs-map.json'), 'utf8')).map || {};
-function hsChaptersForNice(niceClasses) {
-  const out = new Set();
-  for (const c of niceClasses) for (const ch of niceHs[String(c)] || []) out.add(ch);
-  return [...out].sort();
 }
 
 function parseCsv(text) {
@@ -94,13 +91,22 @@ let upserts = 0;
 function upsert(mark, patch) {
   if (!mark) return;
   const existing = db.marks[mark] || {};
-  const niceClasses = patch.niceClasses && patch.niceClasses.length ? patch.niceClasses : existing.niceClasses || [];
+  const registeredNiceClasses = mergeNiceClasses(existing.registeredNiceClasses, patch.registeredNiceClasses);
+  const goodsNiceClasses = mergeNiceClasses(existing.goodsNiceClasses, patch.goodsNiceClasses);
+  const niceClasses = mergeNiceClasses(
+    existing.niceClasses,
+    patch.niceClasses,
+    registeredNiceClasses,
+    goodsNiceClasses,
+  );
   db.marks[mark] = {
     ...existing,
     ...patch,
     normalized: normalizeMark(mark),
     niceClasses,
-    hsChapters: hsChaptersForNice(niceClasses),
+    registeredNiceClasses: registeredNiceClasses.length ? registeredNiceClasses : existing.registeredNiceClasses || [],
+    goodsNiceClasses: goodsNiceClasses.length ? goodsNiceClasses : existing.goodsNiceClasses || [],
+    hsChapters: hsChaptersForNice(goodsNiceClasses.length ? goodsNiceClasses : niceClasses.filter((c) => c < 35)),
     verified: true,
     updatedAt: new Date().toISOString().slice(0, 10),
   };
