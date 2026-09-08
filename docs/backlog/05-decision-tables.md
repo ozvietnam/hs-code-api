@@ -108,15 +108,15 @@ và dữ kiện phân biệt rõ ràng về mặt kỹ thuật.
 
 Đây cũng là đóng góp mà cộng đồng làm tốt nhất — xem mẫu Issue "cụm mã dễ nhầm".
 
-### D-2 · Thêm cờ `verified` cho bảng quyết định — P0 · ~4h
+### D-2 · Thêm cờ `verified` cho bảng quyết định — P0 · ✅ xong 2026-09-08
 
-Sắp có bảng từ cộng đồng, nhưng `conflict-resolver` hiện coi **mọi** bảng là căn
-cứ `RULE_TABLE` (mức tin cậy cao nhất, dùng được cho hồ sơ giải trình). Nhận bảng
-chưa kiểm chứng vào là phá vỡ chính hệ thống `basis` vừa xây ở bước 2.
+Bảng cộng đồng chưa kiểm chứng không được đội lốt `RULE_TABLE`.
 
-Việc: thêm `verified: true|false` + `verifiedBy` + `verifiedAt` vào mỗi bảng;
-`lib/gir.js` chỉ cấp `RULE_TABLE` cho bảng `verified: true`, còn lại là
-`HEURISTIC`. **Phải làm TRƯỚC khi nhận bảng đầu tiên từ ngoài.**
+Đã làm:
+- Mỗi bảng trong `data/conflict-tables.json` có `verified` + `verifiedBy` + `verifiedAt`. 3 bảng nội bộ hiện tại: `verified: true`.
+- `conflict-resolver` trả `tableVerified`.
+- `lib/gir.js` chỉ cấp `RULE_TABLE` khi `tableVerified === true`; thiếu cờ hoặc `false` → `HEURISTIC`.
+- Test khoá: bảng verified → RULE_TABLE; bảng cộng đồng / thiếu cờ → HEURISTIC.
 
 ### D-3 · Định tuyến đúng nhánh 6 số — P1 · ~1 tuần
 

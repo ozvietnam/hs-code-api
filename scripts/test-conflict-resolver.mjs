@@ -41,6 +41,7 @@ function run(topHs, attrs, expect) {
   }, {});
   assert('powerbank resolved 85076090', r.status === 'RESOLVED' && r.decidedHs === '85076090');
   assert('powerbank gir', r.gir === 'GIR 3(b)');
+  assert('bảng nội bộ đã verified → tableVerified true', r.tableVerified === true);
 }
 
 // 2. Bộ đổi điện
@@ -97,6 +98,11 @@ function run(topHs, attrs, expect) {
 {
   const r = run('61091010', { fabricConstruction: 'knit' }, {});
   assert('textile knit', r.status === 'RESOLVED' && r.decidedHs === '61091010');
+}
+
+{
+  const tables = Object.values(tablesDb.tables || {});
+  assert('mọi bảng đều có cờ verified boolean', tables.length > 0 && tables.every((t) => typeof t.verified === 'boolean'));
 }
 {
   const r = run('19011020', { productBase: 'milk', infantFormula: 'yes' }, {});

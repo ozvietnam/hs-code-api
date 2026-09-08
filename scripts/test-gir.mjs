@@ -144,6 +144,7 @@ const fromTable = determineGir({
     group: 'CF-dairy-infant-formula',
     decidedHs: '19011010',
     reasonVi: 'Chú giải Chương 19 loại trừ...',
+    tableVerified: true,
     trace: [{ ruleId: 'R1', source: 'TT31/2022/TT-BTC' }],
   },
 });
@@ -151,6 +152,35 @@ const tableDet = find(fromTable, 'GIR 1');
 assert('bảng quyết định → basis RULE_TABLE', tableDet?.basis === BASIS.RULE_TABLE, tableDet?.basis);
 assert('bảng quyết định → confidence high', tableDet?.confidence === 'high');
 assert('bảng quyết định → giữ nguyên source văn bản gốc', tableDet?.source === 'TT31/2022/TT-BTC', tableDet?.source);
+
+const fromUnverified = determineGir({
+  description: 'sữa công thức cho trẻ sơ sinh',
+  candidates: [{ hsCode: '19011010', confidence: 80 }],
+  pickedHs: '19011010',
+  resolver: {
+    status: 'RESOLVED',
+    gir: 'GIR 1',
+    group: 'CF-community-draft',
+    decidedHs: '19011010',
+    reasonVi: 'Bảng gửi từ cộng đồng, chưa kiểm chứng.',
+    tableVerified: false,
+    trace: [{ ruleId: 'R1', source: 'data/community/draft.json' }],
+  },
+});
+assert(
+  'bảng chưa verified → basis HEURISTIC, không đội lốt RULE_TABLE',
+  find(fromUnverified, 'GIR 1')?.basis === BASIS.HEURISTIC,
+  find(fromUnverified, 'GIR 1')?.basis,
+);
+assert(
+  'thiếu cờ tableVerified cũng không được RULE_TABLE',
+  find(determineGir({
+    description: 'x',
+    candidates: [{ hsCode: '19011010', confidence: 80 }],
+    pickedHs: '19011010',
+    resolver: { status: 'RESOLVED', gir: 'GIR 1', group: 'x', decidedHs: '19011010' },
+  }), 'GIR 1')?.basis === BASIS.HEURISTIC,
+);
 
 // --- LLM tự khai bị đánh dấu CHƯA KIỂM CHỨNG --------------------------------
 const llmClaim = determineGir({

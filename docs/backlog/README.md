@@ -33,7 +33,7 @@ Mỗi file `NN-<chủ-đề>.md` ứng với một bước đã triển khai, g�
 | 2 | GIR trung thực — sửa audit trail | ✅ Xong | [`02-gir.md`](02-gir.md) |
 | 3 | Điểm vào cho AI (AGENTS.md, llms.txt, OpenAPI, mở đọc không token) | ✅ Xong | [`03-ai-entrypoint.md`](03-ai-entrypoint.md) |
 | 4 | Đường đóng góp (CONTRIBUTING, schema, DCO, mẫu Issue) | ✅ Xong | [`04-contribution.md`](04-contribution.md) |
-| 5 | Nạp bảng quyết định — kéo độ chính xác | ⚙️ Công cụ xong, nạp bảng là việc dài hạn | [`05-decision-tables.md`](05-decision-tables.md) |
+| 5 | Nạp bảng quyết định — kéo độ chính xác | ⚙️ Công cụ xong, nạp bảng là việc dài hạn. D-2 (cờ verified) đã xong | [`05-decision-tables.md`](05-decision-tables.md) |
 | 6 | Tách mặt công khai ra CDN tĩnh | ⚙️ Công cụ xong, chờ deploy | [`06-static-cdn.md`](06-static-cdn.md) |
 
 ## Nhịp cập nhật tổng hợp
