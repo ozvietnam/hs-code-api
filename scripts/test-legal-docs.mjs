@@ -63,6 +63,12 @@ assert('getDocByCode tra được alias không năm (2310/QĐ-BCT)',
   JSON.stringify(getDocByCode('2310/QĐ-BCT') && { code: getDocByCode('2310/QĐ-BCT').code, titleVi: getDocByCode('2310/QĐ-BCT').titleVi }));
 assert('getDocByCode tra được 16/2024/TT-BYT',
   Boolean(getDocByCode('16/2024/TT-BYT')));
+assert('getDocByCode tra được 3765/QĐ-BCT (alias không năm)',
+  Boolean(getDocByCode('3765/QĐ-BCT')) && !String(getDocByCode('3765/QĐ-BCT').titleVi || '').includes('cần bổ sung'));
+assert('getDocByCode tra được 37/2013/TT-BCT',
+  Boolean(getDocByCode('37/2013/TT-BCT')) && /thuốc lá/i.test(getDocByCode('37/2013/TT-BCT').titleVi || ''));
+assert('getDocByCode tra được 6266/QĐ-BCA',
+  Boolean(getDocByCode('6266/QĐ-BCA')) && /mất an toàn/i.test(getDocByCode('6266/QĐ-BCA').titleVi || ''));
 
 // ── data-quality-report.json ─────────────────────────────────────────────────
 
