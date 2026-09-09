@@ -24,6 +24,9 @@ Khi gửi dữ liệu, **chỉ gửi cặp mô tả hàng hoá ↔ mã HS**. Tuy
 | Tên đối tác, nhà cung cấp | Bí mật kinh doanh |
 | Invoice, packing list, vận đơn | Chứng từ thương mại |
 | Số điện thoại, email, địa chỉ | Thông tin cá nhân |
+| Tên doanh nghiệp Trung Quốc (有限公司, 贸易) | Cùng lý do — nguồn hàng hay gặp |
+| Mã container (MSCU…) và số seal | Truy ngược lô vận chuyển |
+| Toạ độ / địa chỉ kho | Không liên quan tới phân loại |
 
 Repo này **công khai**, và lịch sử git thì **không xoá được**. Một lần lọt là dữ
 liệu của khách hàng bạn nằm vĩnh viễn trên Internet.
@@ -48,7 +51,7 @@ Ba loại dữ liệu quý nhất, xếp theo mức hữu ích:
 
 | Loại | `kind` | Vì sao quý |
 |---|---|---|
-| **Bảng phân giải cụm mã dễ nhầm** | `conflict-table` | Quý nhất. Hệ thống mới có 3 bảng, phủ 10/11.871 mã. Đây là thứ trực tiếp kéo độ chính xác lên |
+| **Bảng phân giải cụm mã dễ nhầm** | `conflict-table` | Quý nhất. Hiện 4 bảng verified, phủ 14/11.871 mã. Đây là thứ trực tiếp kéo độ chính xác lên |
 | **Thông báo phân loại TB-TCHQ** | `precedent` | Căn cứ mạnh nhất khi giải trình — đây là cách Hải quan đã thực sự phân loại |
 | **Báo lỗi dữ liệu hiện có** | `correction` | Dữ liệu sai đang lan ra qua API công khai; sửa được là chặn được sai lan tiếp |
 | Tên sản phẩm ví dụ cho mã "Loại khác" | `product-example` | Giúp AI và người tra hiểu phạm vi mã residual |
@@ -61,6 +64,7 @@ Ba loại dữ liệu quý nhất, xếp theo mức hữu ích:
    ```bash
    npm run validate:community
    ```
+   Maintainer gộp vào kho chính bằng `npm run data:merge-community` (bỏ qua `examples/`, trùng số hiệu TB-TCHQ thì không nhân bản, bảng quyết định verified vẫn phải soạn tay).
 4. Commit **có ký DCO** (xem mục dưới): `git commit -s -m "data: thêm 12 tiền lệ chương 84"`
 5. Mở Pull Request. CI sẽ tự kiểm lại.
 

@@ -77,20 +77,19 @@ Việc: Settings → General → bật Discussions. Tạo 3 category: *Hỏi đ�
 *Tranh luận cụm mã*, *Thông báo*. Rồi trỏ link từ `index.html` và
 `CONTRIBUTING.md`.
 
-### C-2 · Quy trình gộp đóng góp vào kho chính — P0 · ~1 ngày
+### C-2 · Quy trình gộp đóng góp vào kho chính — P0 · ✅ xong 2026-09-09
 
-Hiện dữ liệu đóng góp **nằm yên ở `data/community/`**, chưa có đường vào
-`precedents.json` / `conflicts.json` / `conflict-tables.json`, nên chưa lên API.
+`scripts/merge-community.mjs` (`npm run data:merge-community`):
 
-Người đóng góp mà không thấy dữ liệu của mình được dùng thì sẽ không góp lần hai.
-**Đây là mắt xích quyết định vòng lặp cộng đồng có chạy hay không.**
+- `precedent` → `precedents.json` (giữ `contributor` + `source`)
+- `conflict-table` → gộp `confusedWith`/`reasonVi` vào `conflicts.json` — **không** tự tạo bảng `verified`
+- `correction` / `product-example` → xếp hàng jsonl, không tự áp
+- Bỏ qua `data/community/examples/`
+- Trùng hsCode + số hiệu TB-TCHQ thì bỏ qua
+- Tệp dính bộ lọc riêng tư → từ chối cả tệp
+- Log: `data/community-merge-log.jsonl` (gitignored)
 
-Việc: `scripts/merge-community.mjs` — gộp có kiểm trùng, giữ `contributor` và
-`source` trong bản ghi đích, ghi log ra `data/community-merge-log.jsonl`. Chạy
-định kỳ hoặc khi có đủ đóng góp mới.
-
-Nghiệm thu: một tệp trong `data/community/` sau khi gộp xuất hiện được trong
-`/api/precedents` kèm tên người đóng góp.
+Nghiệm thu: test `scripts/test-merge-community.mjs` — tệp community sau gộp có tên contributor trong `precedents.json` (payload `/api/precedents`).
 
 ### C-3 · `CONTRIBUTORS.md` tự sinh — P1 · ~3h
 
@@ -100,16 +99,11 @@ việc nhớ.
 Việc: script quét `data/community/**` + git log, sinh `CONTRIBUTORS.md` kèm số
 bản ghi mỗi người. Đưa top người đóng góp lên trang chủ.
 
-### C-4 · Mở rộng bộ lọc riêng tư — P1 · ~4h
+### C-4 · Mở rộng bộ lọc riêng tư — P1 · ✅ xong 2026-09-09
 
-Hiện chỉ dò tiếng Việt và tiếng Anh. Còn thiếu:
-- Tên doanh nghiệp Trung Quốc (有限公司, 贸易) — nguồn hàng chính của thị trường này
-- Mã số thuế / EIN nước ngoài
-- Toạ độ, địa chỉ kho
-- Mã container (4 chữ + 7 số) và số seal
+`lib/privacy-filter.js` + `scripts/test-privacy-filter.mjs` (chạy trong `npm test`).
 
-Nên có bộ test riêng `scripts/test-privacy-filter.mjs` với bộ mẫu rò rỉ, để mỗi
-lần thêm mẫu là có hồi quy.
+Đã thêm: tên DN Trung Quốc (有限公司, 贸易有限, 集团…), EIN `NN-NNNNNNN`, container ISO 6346 (`MSCU`+7 số), số seal, toạ độ GPS, địa chỉ kho. Không false-positive `đường kính` hay model van `4V220`.
 
 ### C-5 · Bảng xếp hạng đóng góp công khai — P2 · ~4h
 
@@ -127,7 +121,7 @@ hồi, ghi rõ trong `CONTRIBUTING.md`, và một Routine nhắc rà PR/Issue m�
 | Nhịp | Việc | Vì sao |
 |---|---|---|
 | **Hằng tuần** | Rà PR + Issue đóng góp mới, trả lời trong 7 ngày | Im lặng là cách nhanh nhất giết một dự án cộng đồng |
-| **Hằng tuần** | Chạy gộp `data/community/` vào kho chính (sau khi có C-2) | Đóng góp không lên API = người góp không thấy tác dụng |
+| **Hằng tuần** | Chạy gộp `data/community/` vào kho chính (`npm run data:merge-community`) | Đóng góp không lên API = người góp không thấy tác dụng |
 | **Hằng tháng** | Cập nhật `CONTRIBUTORS.md` + số liệu đóng góp trên trang chủ | Ghi công là phần thưởng duy nhất |
 | **Hằng quý** | Rà lại bộ lọc riêng tư: có kiểu rò rỉ mới nào lọt qua không | Người đóng góp mới mang theo kiểu dữ liệu mới |
 | **Hằng quý** | Rà `CONTRIBUTING.md` còn khớp quy trình thật không | Tài liệu sai còn tệ hơn không có |

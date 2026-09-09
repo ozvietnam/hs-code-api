@@ -20,9 +20,12 @@
 import { readFileSync, readdirSync, existsSync, statSync } from 'fs';
 import { join, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const COMMUNITY_DIR = join(root, 'data', 'community');
+const require = createRequire(join(root, 'package.json'));
+const { PRIVACY_PATTERNS } = require('./lib/privacy-filter.js');
 
 let errors = 0;
 let warnings = 0;
@@ -34,55 +37,6 @@ const warn = (file, msg) => {
   console.warn(`⚠️  ${file}: ${msg}`);
   warnings += 1;
 };
-
-// --- LỚP 1: dò thông tin khách hàng ------------------------------------------
-// Chặn theo hình dạng dữ liệu, không theo danh sách tên — danh sách luôn thiếu.
-const PRIVACY_PATTERNS = [
-  // Đặt TRƯỚC mẫu MST: 10 số bắt đầu bằng đầu số di động thì gần như chắc là
-  // số điện thoại. Báo đúng tên giúp người gửi sửa nhanh, không phải đoán.
-  {
-    re: /(\+84|\b0)(3[2-9]|5[689]|7[06-9]|8[1-9]|9[0-9])\d{7}\b/,
-    what: 'số điện thoại Việt Nam',
-    hint: 'Bỏ mọi thông tin liên hệ.',
-    hard: true,
-  },
-  {
-    re: /\b\d{10}(-\d{3})?\b/,
-    what: 'có thể là mã số thuế (10 hoặc 13 số)',
-    hint: 'Bỏ MST đi — phân loại hàng hoá không cần biết ai nhập.',
-    hard: true,
-  },
-  {
-    re: /\b\d{11,12}\b/,
-    what: 'có thể là số tờ khai hải quan',
-    hint: 'Bỏ số tờ khai. Nếu cần ghi thời điểm, dùng source.clearedYear (chỉ năm).',
-    hard: true,
-  },
-  {
-    re: /(công ty|cty|tnhh|cổ phần|doanh nghiệp tư nhân|co\.,? ?ltd|jsc\b|\bj\.?s\.?c\b)/i,
-    what: 'có thể là tên doanh nghiệp',
-    hint: 'Mô tả hàng hoá không được chứa tên doanh nghiệp nào.',
-    hard: true,
-  },
-  {
-    re: /[\w.+-]+@[\w-]+\.[\w.]+/,
-    what: 'địa chỉ email',
-    hint: 'Bỏ mọi thông tin liên hệ.',
-    hard: true,
-  },
-  {
-    re: /\b(invoice|inv\.?\s?no|packing list|b\/l|bill of lading|vận đơn|hoá đơn số|hóa đơn số)\b/i,
-    what: 'tham chiếu chứng từ thương mại',
-    hint: 'Chỉ nộp cặp mô tả ↔ mã HS, không nộp chứng từ.',
-    hard: true,
-  },
-  {
-    re: /\b\d{1,3}([.,]\d{3}){2,}\s*(vnd|đ|usd)?\b/i,
-    what: 'có thể là trị giá lô hàng',
-    hint: 'Trị giá không liên quan tới phân loại — bỏ đi.',
-    hard: false,
-  },
-];
 
 function scanPrivacy(file, value, path) {
   if (typeof value !== 'string') return;

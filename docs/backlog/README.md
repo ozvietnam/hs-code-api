@@ -32,8 +32,8 @@ Mỗi file `NN-<chủ-đề>.md` ứng với một bước đã triển khai, g�
 | 1 | Giấy phép — mở khoá pháp lý | ✅ Xong | [`01-license.md`](01-license.md) |
 | 2 | GIR trung thực — sửa audit trail | ✅ Xong | [`02-gir.md`](02-gir.md) |
 | 3 | Điểm vào cho AI (AGENTS.md, llms.txt, OpenAPI, mở đọc không token) | ✅ Xong | [`03-ai-entrypoint.md`](03-ai-entrypoint.md) |
-| 4 | Đường đóng góp (CONTRIBUTING, schema, DCO, mẫu Issue) | ✅ Xong | [`04-contribution.md`](04-contribution.md) |
-| 5 | Nạp bảng quyết định — kéo độ chính xác | ⚙️ Công cụ xong, nạp bảng là việc dài hạn. D-2 (cờ verified) đã xong | [`05-decision-tables.md`](05-decision-tables.md) |
+| 4 | Đường đóng góp (CONTRIBUTING, schema, DCO, mẫu Issue) | ✅ Xong (C-2 gộp + C-4 privacy 2026-09-09) | [`04-contribution.md`](04-contribution.md) |
+| 5 | Nạp bảng quyết định — kéo độ chính xác | ⚙️ Công cụ xong; D-2 verified + D-1 cụm 8481 đã xong | [`05-decision-tables.md`](05-decision-tables.md) |
 | 6 | Tách mặt công khai ra CDN tĩnh | ⚙️ Công cụ xong, chờ deploy | [`06-static-cdn.md`](06-static-cdn.md) |
 
 ## Nhịp cập nhật tổng hợp
@@ -57,7 +57,7 @@ Bảng này gom mọi việc định kỳ từ các file con, để dựng lịc
 | Hằng tháng | Cập nhật số liệu trong `AGENTS.md` mục 5 + `llms.txt` (benchmark, số verified) | [03](03-ai-entrypoint.md) |
 | Hằng quý | Rà allowlist công khai theo độ chín của dữ liệu | [03](03-ai-entrypoint.md) |
 | **Hằng tuần** | Rà PR + Issue đóng góp mới, trả lời trong 7 ngày — im lặng giết dự án cộng đồng nhanh nhất | [04](04-contribution.md) |
-| Hằng tuần | Gộp `data/community/` vào kho chính (cần C-2 trước) | [04](04-contribution.md) |
+| Hằng tuần | Gộp `data/community/` vào kho chính (`npm run data:merge-community`) | [04](04-contribution.md) |
 | Hằng tháng | Cập nhật `CONTRIBUTORS.md` + số liệu đóng góp trên trang chủ | [04](04-contribution.md) |
 | Hằng quý | Rà bộ lọc riêng tư có kiểu rò rỉ mới nào lọt không | [04](04-contribution.md) |
 | **Sau mỗi lần đổi pipeline/prompt** | Chạy lại benchmark, ghi commit SHA — không đo thì không biết tiến hay lùi | [05](05-decision-tables.md) |
