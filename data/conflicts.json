@@ -749,6 +749,9 @@
     "hsCode": "84812090",
     "riskLevel": "ORANGE",
     "confusedWith": [
+      "84818083",
+      "84818084",
+      "84818030",
       "84811000",
       "84813000",
       "84814000",
@@ -756,6 +759,7 @@
       "84819000"
     ],
     "reasonsVi": [
+      "Van điện từ/điều áp khí nén công nghiệp thuộc 8481.20 (truyền động oleohydraulic/pneumatic), không phải van ngắt nhiên liệu xe 8481.80.83/84 hay van bếp 8481.80.30.",
       "Mã 84812090 là van thủy lực/khí nén chung, trong khi 84811000 là van giảm áp, phân biệt theo chức năng chính.",
       "Mã 84812090 là van thủy lực/khí nén chung, trong khi 84813000 là van một chiều, phân biệt theo chức năng kiểm soát dòng chảy.",
       "Mã 84812090 là van thủy lực/khí nén chung, trong khi 84814000 là van an toàn/xả, phân biệt theo chức năng bảo vệ.",
@@ -763,7 +767,53 @@
       "Mã 84812090 áp dụng cho van hoàn chỉnh, còn 84819000 là bộ phận riêng lẻ của van."
     ],
     "precedents": [],
+    "group": "CF-valve-pneumatic-vs-other",
     "sourceFile": "conflict_index.json"
+  },
+  "84818083": {
+    "hsCode": "84818083",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "84812090",
+      "84818084",
+      "84818030"
+    ],
+    "reasonsVi": [
+      "8481.80.83 là van ngắt nhiên liệu plastic cho xe 87.02/87.03/87.04, cửa nạp dưới 1cm — không dùng cho van khí nén công nghiệp (8481.20)."
+    ],
+    "precedents": [],
+    "group": "CF-valve-pneumatic-vs-other",
+    "sourceFile": "conflict_resolver_seed"
+  },
+  "84818084": {
+    "hsCode": "84818084",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "84812090",
+      "84818083",
+      "84818030"
+    ],
+    "reasonsVi": [
+      "8481.80.84 là van ngắt nhiên liệu plastic cho xe 87.02/87.03/87.04, cửa nạp 1–2,5cm — không dùng cho van khí nén công nghiệp (8481.20)."
+    ],
+    "precedents": [],
+    "group": "CF-valve-pneumatic-vs-other",
+    "sourceFile": "conflict_resolver_seed"
+  },
+  "84818030": {
+    "hsCode": "84818030",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "84812090",
+      "84818083",
+      "84818084"
+    ],
+    "reasonsVi": [
+      "8481.80.30 là van bếp nấu / bếp có lò nướng ga (kể cả có bộ đánh lửa điện từ) — van điện từ khí nén công nghiệp không thuộc mã này."
+    ],
+    "precedents": [],
+    "group": "CF-valve-pneumatic-vs-other",
+    "sourceFile": "conflict_resolver_seed"
   },
   "84818099": {
     "hsCode": "84818099",

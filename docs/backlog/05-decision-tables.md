@@ -77,13 +77,13 @@ Test có ràng buộc chặn tự lừa mình: nếu sau này lãi ròng vượt
 **cùng nhóm 4 số** vì đó chính là khoảng cách 64,9% (đúng nhóm) → 24,6% (đúng đủ
 mã) đang mất, và là thứ bảng quyết định giải trực tiếp.
 
-Độ phủ hiện tại: **10/11.871 mã (0,084%)** qua 3 bảng.
+Độ phủ hiện tại: **14/11.871 mã (0,12%)** qua 4 bảng (thêm `CF-valve-pneumatic-vs-other` cho cụm 8481).
 
 10 cụm đáng làm trước (đã loại chương 98):
 
 | Điểm | Cụm | Lỗi | Loại |
 |---|---|---|---|
-| 8,4 | 8481 | 3 | cùng nhóm (đã flag) |
+| 8,4 | 8481 | 3 | cùng nhóm (**đã có bảng** `CF-valve-pneumatic-vs-other`, 2026-09) |
 | 6,0 | 8537 | 3 | cùng nhóm |
 | 6,0 | 8443 | 3 | cùng nhóm |
 | 6,0 | 8536 | 3 | cùng nhóm |
@@ -96,24 +96,25 @@ mã) đang mất, và là thứ bảng quyết định giải trực tiếp.
 
 ## VIỆC MỞ RỘNG
 
-### D-1 · Soạn bảng quyết định cho 10 cụm đầu — P0 · ~2 ngày/cụm
+### D-1 · Soạn bảng quyết định cho 10 cụm đầu — P0 · ⚙️ đã làm 8481; còn 9 cụm
 
 Việc chính của cả bước này, và là việc **cần chuyên gia**, không phải AI làm thay.
 Với mỗi cụm: đọc `data/chu-giai-heading.json` của các nhóm liên quan → xác định
 DỮ KIỆN phân biệt → soạn rule vào `data/conflict-tables.json` (mỗi rule cần `gir`
 + `reasonVi` + `source`).
 
-Bắt đầu từ **8481** (van) và **8504** (biến áp/bộ nguồn) — cùng nhóm, lỗi nhiều,
-và dữ kiện phân biệt rõ ràng về mặt kỹ thuật.
+**Đã làm 8481 (2026-09):** thuộc tính `valveCircuit` + bảng `CF-valve-pneumatic-vs-other`.
+GIR 1 từ heading 8481.20 (van truyền động oleohydraulic/pneumatic). 3 lỗi benchmark
+đều là van khí nén bị đoán thành van nhiên liệu xe / van bếp.
 
-Đây cũng là đóng góp mà cộng đồng làm tốt nhất — xem mẫu Issue "cụm mã dễ nhầm".
+Cụm tiếp theo: **8537, 8443, 8536**, rồi 8504 (định tuyến 6 số — D-3).
 
 ### D-2 · Thêm cờ `verified` cho bảng quyết định — P0 · ✅ xong 2026-09-08
 
 Bảng cộng đồng chưa kiểm chứng không được đội lốt `RULE_TABLE`.
 
 Đã làm:
-- Mỗi bảng trong `data/conflict-tables.json` có `verified` + `verifiedBy` + `verifiedAt`. 3 bảng nội bộ hiện tại: `verified: true`.
+- Mỗi bảng trong `data/conflict-tables.json` có `verified` + `verifiedBy` + `verifiedAt`. 4 bảng nội bộ hiện tại: `verified: true`.
 - `conflict-resolver` trả `tableVerified`.
 - `lib/gir.js` chỉ cấp `RULE_TABLE` khi `tableVerified === true`; thiếu cờ hoặc `false` → `HEURISTIC`.
 - Test khoá: bảng verified → RULE_TABLE; bảng cộng đồng / thiếu cờ → HEURISTIC.

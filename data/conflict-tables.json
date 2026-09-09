@@ -143,6 +143,48 @@
           "source": "Chú giải nhóm 1901.90"
         }
       ]
+    },
+    "CF-valve-pneumatic-vs-other": {
+      "titleVi": "Van khí nén/thủy lực (8481.20) vs van nhiên liệu xe vs van bếp (8481.80)",
+      "verified": true,
+      "verifiedBy": "ozvietnam",
+      "verifiedAt": "2026-09",
+      "members": ["84812090", "84818083", "84818084", "84818030"],
+      "essenceTestVi": "Van dùng trong mạch truyền động khí nén/thủy lực, hay van chuyên dụng nhiên liệu xe / bếp ga?",
+      "inputs": [{ "attribute": "valveCircuit" }],
+      "hitPolicy": "UNIQUE",
+      "rules": [
+        {
+          "id": "v1",
+          "priority": 30,
+          "when": { "valveCircuit": "pneumaticHydraulic" },
+          "hs": "84812090",
+          "gir": "GIR 1",
+          "evidence": "hard",
+          "reasonVi": "Heading 8481.20 = van dùng cho truyền động oleohydraulic hoặc pneumatic. Van điện từ/điều áp khí nén công nghiệp vào đây, không vào 8481.80 dù có solenoid.",
+          "source": "Chú giải nhóm 8481.20 — valves for oleohydraulic or pneumatic transmissions"
+        },
+        {
+          "id": "v2",
+          "priority": 20,
+          "when": { "valveCircuit": "vehicleFuel" },
+          "hs": "84818083",
+          "gir": "GIR 1",
+          "evidence": "hard",
+          "reasonVi": "Van ngắt nhiên liệu plastic dùng cho xe 87.02/87.03/87.04. Đường kính trong cửa nạp từ 1cm đến 2,5cm là 8481.80.84 (cùng nhóm, không đổi mạch).",
+          "source": "Biểu thuế VN — 8481.80.83 / 8481.80.84"
+        },
+        {
+          "id": "v3",
+          "priority": 10,
+          "when": { "valveCircuit": "stove" },
+          "hs": "84818030",
+          "gir": "GIR 1",
+          "evidence": "hard",
+          "reasonVi": "Van (kể cả có bộ đánh lửa điện từ) dùng cho bếp nấu hoặc bếp có lò nướng bằng ga — không phải van khí nén công nghiệp.",
+          "source": "Biểu thuế VN — 8481.80.30"
+        }
+      ]
     }
   }
 }

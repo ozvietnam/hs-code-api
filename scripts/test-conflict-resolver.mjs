@@ -109,5 +109,23 @@ function run(topHs, attrs, expect) {
   assert('dairy infant', r.status === 'RESOLVED' && r.decidedHs === '19011020');
 }
 
+{
+  const r = run('84818083', { valveCircuit: 'pneumaticHydraulic' }, {});
+  assert('van khí nén override khỏi 84818083', r.status === 'RESOLVED' && r.decidedHs === '84812090' && r.overrodeLlm === true);
+  assert('van khí nén RULE_TABLE verified', r.tableVerified === true && r.gir === 'GIR 1');
+}
+{
+  const r = run('84812090', { valveCircuit: 'stove' }, {});
+  assert('van bếp 84818030', r.status === 'RESOLVED' && r.decidedHs === '84818030');
+}
+{
+  const r = run('84812090', { machVan: 'vehicleFuel' }, {});
+  assert('van nhiên liệu xe alias VN', r.status === 'RESOLVED' && r.decidedHs === '84818083');
+}
+{
+  const r = run('84812090', {}, {});
+  assert('van thiếu dữ kiện → hỏi valveCircuit', r.status === 'INSUFFICIENT' && (r.ask || []).some((a) => a.attribute === 'valveCircuit'));
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
