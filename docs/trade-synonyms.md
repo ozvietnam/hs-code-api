@@ -139,6 +139,7 @@ lại. `"10/8"` nghĩa là đang 10% (không được giảm). Đọc ngược l
 | Biến | Mặc định | Tác dụng khi đặt `off` |
 |---|---|---|
 | `HS_TRADE_SYNONYMS` | `on` | tắt từ điển tên thương mại |
+| `HS_CONTEXT_SEARCH` | `on` | tắt lớp ngữ cảnh dòng dư |
 | `HS_ALIAS_SEARCH` | `on` | tắt bảng alias đào từ tờ khai |
 
 Gợi ý xấu thì tắt ngay bằng biến môi trường, không phải chờ deploy lại.
