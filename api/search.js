@@ -4,6 +4,7 @@ const { setCors, handleOptions } = require('../lib/cors');
 const { taxData } = require('../lib/data');
 const { mapSearchResult } = require('../lib/tax-mapper');
 const { searchCandidates } = require('../lib/search-utils');
+const { lookupAliases } = require('../lib/hs-aliases');
 const { matchProducts } = require('../lib/product-match');
 const { appendAccess } = require('../lib/access-log');
 const { filterChapter98 } = require('../lib/chapter98');
@@ -91,7 +92,7 @@ module.exports = function handler(req, res) {
   });
   const results = candidates.map((item) => {
     const full = taxData[item.hsCode] || {};
-    return mapSearchResult(
+    const mapped = mapSearchResult(
       {
         hs: item.hsCode,
         vn: item.nameVi,
@@ -99,12 +100,31 @@ module.exports = function handler(req, res) {
       },
       full
     );
+    // Mã đến từ tiền lệ tờ khai: nói rõ đã khai bao nhiêu lần để người tra tự
+    // cân nhắc. Tên chính thức thường là "Loại khác" nên bản thân nó không đủ
+    // căn cứ — tần suất thực tế mới là thứ thuyết phục.
+    if (item.aliasMatch) {
+      mapped.precedent = {
+        matchedPhrase: item.aliasMatch.phrase,
+        declarationCount: item.aliasMatch.declarationCount,
+        confidence: item.aliasMatch.confidence,
+        share: item.aliasMatch.share,
+        source: 'tờ khai đã thông quan (ẩn danh)',
+      };
+    }
+    return mapped;
   });
+
+  // Lệch hình thái nguyên liệu/thành phẩm: phải nói ra, không im lặng bỏ qua.
+  // Người hỏi "tấm thép làm khuôn nhựa" mà không thấy gợi ý nào sẽ tưởng kho
+  // thiếu dữ liệu, trong khi thực chất ta đang cố tình không đoán bừa.
+  const { formWarning } = lookupAliases(q);
 
   return res.status(200).json({
     keyword: q,
     total: results.length,
     results,
+    ...(formWarning ? { formWarning } : {}),
     ...(ch98.removed
       ? {
           chapter98Filtered: {
