@@ -5,6 +5,9 @@ const { taxData } = require('../lib/data');
 const { mapSearchResult } = require('../lib/tax-mapper');
 const { searchCandidates } = require('../lib/search-utils');
 const { lookupAliases } = require('../lib/hs-aliases');
+const { lookupTradeTerms } = require('../lib/trade-synonyms');
+const { breadcrumbOf } = require('../lib/hs-breadcrumb');
+const { vatReductionOf } = require('../lib/vat-reduction');
 const { matchProducts } = require('../lib/product-match');
 const { appendAccess } = require('../lib/access-log');
 const { filterChapter98 } = require('../lib/chapter98');
@@ -112,6 +115,41 @@ module.exports = function handler(req, res) {
         source: 'tờ khai đã thông quan (ẩn danh)',
       };
     }
+
+    // Mã đến từ từ điển tên thương mại: kèm ĐIỀU KIỆN áp dụng và nguồn dẫn.
+    // Không có `whenVi` thì người tra không biết mình thuộc ứng viên nào —
+    // riêng nhóm thép làm khuôn, mã đúng phụ thuộc khổ rộng 600 mm.
+    if (item.tradeMatch) {
+      mapped.tradeTerm = {
+        entryId: item.tradeMatch.entryId,
+        titleVi: item.tradeMatch.titleVi,
+        matchedTerms: item.tradeMatch.matchedTerms,
+        appliesWhenVi: item.tradeMatch.whenVi,
+        confidence: item.tradeMatch.confidence,
+        basis: item.tradeMatch.basis,
+        sourceVi: item.tradeMatch.sourceVi,
+      };
+    }
+
+    // Chuỗi phân cấp: với 25,7% mã tên đúng bằng "Loại khác", dòng kết quả tự
+    // nó vô nghĩa. Breadcrumb cho người tra thấy mã nằm ở đâu trong biểu thuế.
+    const crumb = breadcrumbOf(item.hsCode);
+    if (crumb) {
+      mapped.breadcrumb = {
+        trail: crumb.trail,
+        levels: crumb.levels,
+        isResidual: crumb.isResidual,
+        ...(crumb.scopeVi ? { scopeVi: crumb.scopeVi } : {}),
+        ...(crumb.excludesVi.length ? { excludesVi: crumb.excludesVi } : {}),
+      };
+    }
+
+    // VAT: 1.561 mã KHÔNG được giảm theo NĐ 174/2025. /api/tax có sẵn ghi chú
+    // này từ lâu, nhưng /api/search — nơi người ta thực sự CHỌN mã — thì chưa
+    // trả gì. Chọn xong mới biết mình không được giảm thì đã khai mất rồi.
+    const vatInfo = vatReductionOf(full);
+    if (vatInfo) mapped.vatReduction = vatInfo;
+
     return mapped;
   });
 
@@ -120,11 +158,39 @@ module.exports = function handler(req, res) {
   // thiếu dữ liệu, trong khi thực chất ta đang cố tình không đoán bừa.
   const { formWarning } = lookupAliases(q);
 
+  // Từ điển tên thương mại có thể đã LOẠI HẲN vài mã khỏi kết quả (vd 8480 khi
+  // hỏi thép tấm làm khuôn). Loại mà không nói là giấu; nói ra kèm lý do thì
+  // người tra tự phản biện được.
+  const avoided = rawCandidates.avoidedByTradeRules || [];
+  const tradeMatches = rawCandidates.tradeTermMatches || [];
+  const tradeExcluded = rawCandidates.tradeTermExcluded || [];
+  const askVi = [...new Set(tradeMatches.flatMap((m) => m.askVi || []))];
+
   return res.status(200).json({
     keyword: q,
     total: results.length,
     results,
     ...(formWarning ? { formWarning } : {}),
+    ...(avoided.length
+      ? {
+          avoidedCodes: avoided.slice(0, 12).map((a) => ({
+            hsCode: a.hsCode,
+            nameVi: a.nameVi,
+            whyVi: a.whyVi,
+          })),
+          avoidedTotal: avoided.length,
+        }
+      : {}),
+    ...(askVi.length ? { clarifyingQuestionsVi: askVi } : {}),
+    ...(tradeExcluded.length
+      ? {
+          tradeTermNotApplied: tradeExcluded.map((x) => ({
+            titleVi: x.titleVi,
+            matchedTerms: x.matchedTerms,
+            reasonVi: x.reasonVi,
+          })),
+        }
+      : {}),
     ...(ch98.removed
       ? {
           chapter98Filtered: {
