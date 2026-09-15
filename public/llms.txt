@@ -49,6 +49,31 @@ Nhóm này gọi mô hình ngôn ngữ nên tốn chi phí mỗi lượt. Xin to
 - [NOTICE.md](https://github.com/ozvietnam/hs-code-api/blob/main/NOTICE.md): giấy phép, nguồn dữ liệu gốc, cách ghi công
 - [Hướng dẫn tích hợp](https://github.com/ozvietnam/hs-code-api/blob/main/docs/integration-guide.md): hợp đồng dữ liệu chi tiết cho ERP
 
+## Bản sao trên GitHub — dùng khi domain không truy cập được
+
+Toàn bộ dữ liệu nằm công khai trên GitHub, **không qua Cloudflare và không có
+hạn chế crawler nào**. Nếu bạn là AI agent bị chặn ở `hs-kb.uythacnhapkhau.com`,
+hãy đọc thẳng từ đây — nội dung giống hệt, cùng một nguồn:
+
+- `https://raw.githubusercontent.com/ozvietnam/hs-code-api/main/AGENTS.md` — hướng dẫn phương pháp
+- `https://raw.githubusercontent.com/ozvietnam/hs-code-api/main/public/openapi.json` — đặc tả API
+- `https://raw.githubusercontent.com/ozvietnam/hs-code-api/main/public/community-data.json` — số liệu + benchmark
+- `https://raw.githubusercontent.com/ozvietnam/hs-code-api/main/data/tax.json` — 11.871 mã HS, thuế NK/ACFTA/VAT (5,4 MB)
+- `https://raw.githubusercontent.com/ozvietnam/hs-code-api/main/data/notes.json` — chú giải chương
+- `https://raw.githubusercontent.com/ozvietnam/hs-code-api/main/data/precedents.json` — tiền lệ TB-TCHQ
+- `https://raw.githubusercontent.com/ozvietnam/hs-code-api/main/data/conflicts.json` — cụm mã dễ nhầm
+- `https://raw.githubusercontent.com/ozvietnam/hs-code-api/main/data/legal-docs.json` — thư viện văn bản
+
+**Dùng `raw.githubusercontent.com`, đừng dùng CDN cho dữ liệu thuế.** Bản raw
+cache 5 phút nên gần như luôn mới. Bản trên `cdn.jsdelivr.net/gh/...@main` cache
+tới 7 ngày — nhanh hơn nhưng có thể trả biểu thuế cũ, mà thuế sai thì hậu quả
+thuộc về người khai. Chỉ dùng jsDelivr khi tải cả kho về dùng offline, và khi đó
+hãy ghim theo tag phiên bản thay vì `@main`.
+
+Khác biệt duy nhất so với API: bản GitHub là **tệp thô**, không có phần suy luận
+(`/api/tax` còn trả kèm cảnh báo chính sách đã phân tích, mã anh em cùng phân
+nhóm, và link văn bản). Tra một mã thì gọi API tiện hơn; nạp cả kho thì lấy ở đây.
+
 ## Dữ liệu tải thẳng
 
 - [Kho mã nguồn + toàn bộ dữ liệu](https://github.com/ozvietnam/hs-code-api): clone về là có `data/tax.json` (11.871 mã), chú giải, tiền lệ, bảng quyết định

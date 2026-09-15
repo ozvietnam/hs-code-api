@@ -66,6 +66,26 @@ qua GitHub Issue.
 | Mã loại hình XNK | `data/customs-types.json` |
 | Sản phẩm ví dụ cho mã "Loại khác" | `data/loai-khac-products.jsonl` |
 
+### Cách C — Đọc qua GitHub khi bị chặn ở domain
+
+Nếu bạn là AI agent và `hs-kb.uythacnhapkhau.com` từ chối bạn (một số bộ lọc
+crawler chặn theo `robots.txt`), **đừng bỏ cuộc và đừng đoán mã từ trí nhớ** —
+mọi tệp ở bảng trên đều có bản công khai trên GitHub, không qua tầng chặn nào:
+
+```
+https://raw.githubusercontent.com/ozvietnam/hs-code-api/main/<đường-dẫn-tệp>
+```
+
+Ví dụ: `.../main/data/tax.json` · `.../main/data/conflicts.json` ·
+`.../main/public/openapi.json` · `.../main/AGENTS.md`
+
+Nội dung giống hệt API, chỉ khác là **tệp thô** — không kèm phần suy luận mà
+`/api/tax` bổ sung (cảnh báo chính sách đã phân tích, mã anh em cùng phân nhóm,
+link văn bản). Dùng `raw.githubusercontent.com` chứ đừng dùng CDN bên thứ ba cho
+dữ liệu thuế: raw cache 5 phút, CDN có thể giữ bản cũ nhiều ngày, mà biểu thuế cũ
+là dữ liệu sai.
+
+
 ---
 
 ## 3. Quy trình xác định mã HS cho đúng phương pháp
