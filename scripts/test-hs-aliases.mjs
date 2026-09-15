@@ -68,17 +68,33 @@ console.log('\n== Chốt chặn hình thái nguyên liệu / thành phẩm ==');
 
 console.log('\n== Alias kéo được mã "Loại khác" lên đầu ==');
 {
-  // Bốn câu này trước đây trả về rác (thân mũ nón, dây thép gai, gang thỏi).
+  // Giá trị cốt lõi: tên chính thức của các mã này là "Loại khác" — không từ
+  // khoá nào chạm tới. Trước khi có alias, cả bốn câu đều trả về rác.
+  // Chỉ chọn cụm TẬP TRUNG (share ≥ 0.9): cụm mơ hồ thì dữ liệu vốn không
+  // khẳng định được một mã, khẳng định trong test là tự dối mình.
   const cases = [
     ['kính mắt thời trang', '9004'],
+    ['củ sạc điện thoại', '8504'], // Oz viết "củ sạc"; biến thể "cục sạc" chưa có — xem giới hạn ở cuối file
+    ['nhang thắp hương', '3307'],
     ['xi lanh khí nén', '8412'],
     ['piston động cơ xe máy', '8409'],
-    ['bánh xe đẩy', '8716'],
   ];
   for (const [q, wantPrefix] of cases) {
     const top = searchCandidates(q, { topCandidates: 3 })[0];
     check(`"${q}" → ${wantPrefix}`, top?.hsCode?.startsWith(wantPrefix), `nhận ${top?.hsCode}`);
   }
+}
+
+console.log('\n== Cụm mơ hồ phải phơi ra lựa chọn khác, không giả vờ chắc chắn ==');
+{
+  // "bánh xe đẩy" thật sự mơ hồ: 8302 (bánh xe gắn đồ gỗ) và 8716 (bánh xe xe
+  // đẩy tay) chia nhau gần 50/50 trong kho. Bỏ 15% dữ liệu là thứ tự lật.
+  // Hệ thống phải nói ra sự mơ hồ đó thay vì chốt bừa một mã.
+  const r = lookupAliases('bánh xe đẩy');
+  const m = r.matches.find((x) => x.phrase === 'banh xe day');
+  check('có alias "bánh xe đẩy"', Boolean(m));
+  check('không gắn nhãn tin cậy cao', m?.confidence !== 'high', `nhận ${m?.confidence}`);
+  check('phơi ra ứng viên thay thế', (m?.alternatives?.length || 0) > 0);
 }
 
 console.log('\n== Alias không phá luồng tra theo mã số ==');

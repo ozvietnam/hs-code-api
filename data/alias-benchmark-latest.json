@@ -1,0 +1,38 @@
+{
+  "updatedAt": "2026-09-15T11:09:42.274Z",
+  "method": "Chấm trên tập giữ riêng: các bản ghi bị loại khỏi quá trình đào alias. Alias chưa từng thấy chúng nên không có chuyện học thuộc đề.",
+  "holdout": {
+    "ratio": 0.15,
+    "seed": 42,
+    "excludedRecords": 763
+  },
+  "samples": 763,
+  "baseline": {
+    "top1": {
+      "2": 27.1,
+      "4": 8.9,
+      "6": 5.1,
+      "8": 2.6
+    },
+    "top3": {
+      "2": 40.9,
+      "4": 13.5,
+      "6": 8.7,
+      "8": 4.8
+    }
+  },
+  "withAliases": {
+    "top1": {
+      "2": 35.1,
+      "4": 18.1,
+      "6": 12.6,
+      "8": 8.9
+    },
+    "top3": {
+      "2": 48.5,
+      "4": 25,
+      "6": 18.9,
+      "8": 13.5
+    }
+  }
+}

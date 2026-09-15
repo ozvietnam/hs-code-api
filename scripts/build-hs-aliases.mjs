@@ -16,12 +16,47 @@
  * Chạy: npm run data:build-aliases
  */
 import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { pathToFileURL } from 'url';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const GOLD = join(ROOT, 'data', 'oz-gold-final.jsonl');
 const OUT = join(ROOT, 'data', 'hs-aliases.json');
+
+/**
+ * TẬP GIỮ RIÊNG (holdout) — lý do tồn tại, đọc trước khi sửa.
+ *
+ * Benchmark độ chính xác lấy mẫu từ chính kho tờ khai Oz. Alias cũng đào từ đó.
+ * Nếu không tách, alias sẽ nhớ sẵn đáp án cho mọi mẫu được chấm — điểm vọt lên
+ * nhưng không có thật. Đúng lỗi "học thuộc đề thi".
+ *
+ * Nên một phần bản ghi bị LOẠI khỏi alias, dành riêng để chấm. Chia theo băm
+ * của (mã + tên hàng) nên ổn định qua mọi lần chạy: cùng seed thì cùng tập.
+ */
+const DEFAULT_HOLDOUT_RATIO = 0.15;
+const DEFAULT_HOLDOUT_SEED = 42;
+
+/** FNV-1a 32-bit — nhỏ, không phụ thuộc thư viện, đủ tản đều để chia tập. */
+function hash32(str, seed) {
+  let h = (2166136261 ^ seed) >>> 0;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619) >>> 0;
+  }
+  return h >>> 0;
+}
+
+/** Khoá ổn định của một bản ghi gold — không phụ thuộc thứ tự dòng trong file. */
+export function holdoutKey(record) {
+  return `${String(record.hsCode).replace(/\D/g, '')}|${String(record.tenHang || '').toLowerCase().trim()}`;
+}
+
+/** Bản ghi này có thuộc tập giữ riêng không? */
+export function isHeldOut(record, ratio = DEFAULT_HOLDOUT_RATIO, seed = DEFAULT_HOLDOUT_SEED) {
+  if (ratio <= 0) return false;
+  return hash32(holdoutKey(record), seed) % 10000 < Math.round(ratio * 10000);
+}
 
 /** Bỏ dấu + hạ chữ thường — cùng quy tắc với lib/search-utils.js. */
 function norm(s) {
@@ -112,7 +147,17 @@ function main() {
     console.error(`Không thấy ${GOLD}. Cần file GOLD để đào alias.`);
     process.exit(1);
   }
-  const gold = readFileSync(GOLD, 'utf8').trim().split('\n').filter(Boolean).map((l) => JSON.parse(l));
+  const argv = process.argv.slice(2);
+  const arg = (name, fallback) => {
+    const hit = argv.find((a) => a.startsWith(`--${name}=`));
+    return hit ? Number(hit.split('=')[1]) : fallback;
+  };
+  const holdoutRatio = arg('holdout', DEFAULT_HOLDOUT_RATIO);
+  const holdoutSeed = arg('seed', DEFAULT_HOLDOUT_SEED);
+
+  const all = readFileSync(GOLD, 'utf8').trim().split('\n').filter(Boolean).map((l) => JSON.parse(l));
+  const heldOut = all.filter((g) => isHeldOut(g, holdoutRatio, holdoutSeed));
+  const gold = all.filter((g) => !isHeldOut(g, holdoutRatio, holdoutSeed));
 
   /** phrase -> Map(hsCode -> { count, exact }) */
   const index = new Map();
@@ -177,6 +222,8 @@ function main() {
         'CHỈ chứa cụm từ + mã + tần suất — không có thông tin khách hàng, giá, hay số tờ khai.',
       source: 'data/oz-gold-final.jsonl',
       sourceRecords: gold.length,
+      // Tập giữ riêng KHÔNG tham gia đào alias — dành cho benchmark chấm sạch.
+      holdout: { ratio: holdoutRatio, seed: holdoutSeed, excludedRecords: heldOut.length },
       aliasCount: aliases.length,
       rawFormTokens: RAW_FORM_TOKENS,
       materialWords: MATERIAL_WORDS,
@@ -192,10 +239,14 @@ function main() {
   const ambiguous = aliases.filter((a) => a.share < 0.7).length;
   const chapters = new Set(aliases.map((a) => a.hsCode.slice(0, 2)));
   console.log(`Đã ghi ${OUT}`);
+  console.log(`  nguồn đào     : ${gold.length}/${all.length} bản ghi`);
+  console.log(`  giữ riêng     : ${heldOut.length} bản ghi (${(holdoutRatio * 100).toFixed(0)}%, seed ${holdoutSeed}) — KHÔNG vào alias`);
   console.log(`  alias         : ${aliases.length} (${exact} tên đầy đủ, ${aliases.length - exact} cụm con)`);
   console.log(`  mơ hồ (<70%)  : ${ambiguous}`);
   console.log(`  phủ chương    : ${chapters.size}/97`);
   console.log(`  dung lượng    : ${(JSON.stringify(out).length / 1024).toFixed(0)} KB`);
 }
 
-main();
+// Chỉ chạy khi gọi trực tiếp. Script benchmark import isHeldOut từ file này —
+// không được đào lại alias chỉ vì ai đó cần một hàm.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main();

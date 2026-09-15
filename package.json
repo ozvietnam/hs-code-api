@@ -67,7 +67,8 @@
     "build:static": "node scripts/build-static.mjs",
     "test:build-static": "node scripts/test-build-static.mjs",
     "data:build-aliases": "node scripts/build-hs-aliases.mjs",
-    "test:aliases": "node scripts/test-hs-aliases.mjs"
+    "test:aliases": "node scripts/test-hs-aliases.mjs",
+    "bench:aliases": "node scripts/benchmark-alias-holdout.mjs"
   },
   "devDependencies": {
     "xlsx": "^0.18.5"
