@@ -325,6 +325,90 @@
       "sourceVi": "Biểu thuế 2026 nhóm 8480: 84802000 \"Đế khuôn\", 84807110/84807190 \"Loại phun hoặc nén\", 84807910/84807990 loại khác — dùng cho cao su hoặc plastic."
     },
     {
+      "id": "van-giam-ap",
+      "titleVi": "Van giảm áp (8481.10)",
+      "terms": [
+        "van giảm áp",
+        "van giam ap",
+        "pressure reducing valve",
+        "pressure reducer",
+        "prv valve",
+        "van PRV"
+      ],
+      "excludeIfAny": [
+        "khí nén",
+        "pneumatic",
+        "thủy lực truyền động",
+        "van an toàn",
+        "relief valve",
+        "van một chiều",
+        "check valve"
+      ],
+      "excludeReasonVi": "Van khí nén/thủy lực truyền động = 8481.20; van an toàn = 8481.40; van một chiều = 8481.30.",
+      "candidates": [
+        {
+          "hs": "84811011",
+          "whenVi": "Van cổng điều khiển bằng tay, Ø trong cửa nạp/thoát >5 cm và ≤40 cm (nhánh giảm áp)",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84811019",
+          "whenVi": "Cùng nhánh van cổng giảm áp — loại khác (không khớp .11)",
+          "confidence": "low"
+        },
+        {
+          "hs": "84811021",
+          "whenVi": "Ø trong ≤ 2,5 cm",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84811022",
+          "whenVi": "Ø trong > 2,5 cm",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84811091",
+          "whenVi": "Thân plastic, Ø trong 1–2,5 cm",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84811099",
+          "whenVi": "Loại khác trong 8481.10 — không khớp các phân nhóm kể trên",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "848120",
+          "whyVi": "8481.20 là van truyền động oleohydraulic/pneumatic, không phải van giảm áp đường ống."
+        },
+        {
+          "prefix": "848140",
+          "whyVi": "8481.40 là van an toàn/xả — chức năng bảo vệ quá áp, khác van giảm áp làm việc liên tục."
+        },
+        {
+          "prefix": "8413",
+          "whyVi": "8413 là bơm — tạo dòng; van chỉ điều khiển dòng."
+        },
+        {
+          "prefix": "9032",
+          "whyVi": "9032 là dụng cụ/thiết bị đo-điều khiển tự động, không phải van cơ khí 8481."
+        },
+        {
+          "prefix": "98",
+          "whyVi": "Chương 98 là mã ưu đãi riêng, không dùng làm đáp án phân loại thông thường."
+        }
+      ],
+      "askVi": [
+        "Ø trong cửa nạp/thoát?",
+        "Vật liệu thân (kim loại / plastic)?",
+        "Có phải van cổng tay cỡ lớn (5–40 cm) không?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN — en 848110*: \"Valves; pressure reducing…\". Các mã lá theo tax.json 84811011–84811099."
+    },
+    {
       "id": "van-khi-nen-thuy-luc",
       "titleVi": "Van khí nén / van thủy lực truyền động (8481.20)",
       "terms": [
@@ -349,64 +433,277 @@
         "nhiên liệu xe",
         "dầu thủy lực",
         "dầu thuỷ lực",
-        "hydraulic oil"
+        "hydraulic oil",
+        "van giảm áp",
+        "pressure reducing",
+        "van an toàn",
+        "relief valve"
       ],
-      "excludeReasonVi": "Van bếp ga / van ngắt nhiên liệu xe thuộc 8481.80 (mã kể tên riêng). Dầu thủy lực là chất lỏng (2710), không phải van truyền động 8481.20.",
+      "excludeReasonVi": "Van bếp/nhiên liệu xe thuộc 8481.80; dầu thủy lực là chất lỏng 2710; van giảm áp 8481.10; van an toàn 8481.40.",
       "candidates": [
         {
-          "hs": "84812090",
-          "whenVi": "Van dùng cho truyền động oleohydraulic hoặc pneumatic, không khớp phân nhóm vật liệu/đường kính kể tên ở 8481.20.11–.20",
+          "hs": "84812011",
+          "whenVi": "Thân bằng sắt hoặc thép",
           "confidence": "medium"
         },
         {
-          "hs": "84812011",
-          "whenVi": "Cùng phạm vi 8481.20 nhưng thân bằng sắt hoặc thép",
+          "hs": "84812019",
+          "whenVi": "Cùng nhánh sắt/thép — loại khác",
           "confidence": "low"
         },
         {
           "hs": "84812020",
-          "whenVi": "Cùng phạm vi 8481.20: đồng/hợp kim đồng Ø trong ≤ 2,5 cm, hoặc plastic Ø trong 1–2,5 cm",
-          "confidence": "low"
+          "whenVi": "Đồng/hợp kim đồng Ø ≤2,5 cm, hoặc plastic Ø 1–2,5 cm",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84812090",
+          "whenVi": "Loại khác trong 8481.20 — không khớp .11/.19/.20",
+          "confidence": "medium"
         }
       ],
       "avoid": [
         {
           "prefix": "8481803",
-          "whyVi": "8481.80.30 là van bếp nấu/lò ga (kể cả có bộ đánh lửa điện từ). Chữ 'điện từ' trùng nhưng công dụng khác — không phải van khí nén công nghiệp."
+          "whyVi": "8481.80.30 van bếp — chữ điện từ trùng nhưng công dụng khác."
         },
         {
           "prefix": "8481808",
-          "whyVi": "8481.80.83/84/93 là van ngắt nhiên liệu cho xe 87.02–87.04. Van khí nén thiết bị không thuộc nhóm này."
-        },
-        {
-          "prefix": "9032",
-          "whyVi": "9032 là dụng cụ/thiết bị tự động điều chỉnh đo lường. Van truyền động khí nén/thủy lực thuộc máy cơ khí 8481.20, không phải dụng cụ đo."
+          "whyVi": "8481.80.83/84/93 van ngắt nhiên liệu xe."
         },
         {
           "prefix": "3923",
-          "whyVi": "3923 là bình/đồ chứa plastic (kể cả dùng khí nén). Đây là bao bì/chứa, không phải van."
+          "whyVi": "Bình/đồ chứa plastic, không phải van."
         },
         {
           "prefix": "7613",
-          "whyVi": "7613 là thùng chứa khí nén bằng nhôm — bình chứa, không phải van."
+          "whyVi": "Thùng chứa khí nén nhôm — bình chứa, không phải van."
         },
         {
           "prefix": "8413",
-          "whyVi": "8413 là bơm. Van điều khiển dòng; bơm tạo dòng — GIR 1 phân biệt theo chức năng."
+          "whyVi": "8413 là bơm — tạo dòng; van chỉ điều khiển dòng."
+        },
+        {
+          "prefix": "9032",
+          "whyVi": "9032 là dụng cụ/thiết bị đo-điều khiển tự động, không phải van cơ khí 8481."
         },
         {
           "prefix": "98",
-          "whyVi": "Chương 98 là mã ưu đãi riêng, không phải đáp án phân loại thông thường cho van công nghiệp."
+          "whyVi": "Chương 98 là mã ưu đãi riêng, không dùng làm đáp án phân loại thông thường."
         }
       ],
       "askVi": [
-        "Van dùng trong mạch khí nén/thủy lực truyền động, hay van bếp ga / van nhiên liệu xe?",
-        "Vật liệu thân van (sắt-thép / đồng / plastic) và đường kính trong cửa nạp?",
-        "Có phải van giảm áp đường ống (8481.10), van một chiều (8481.30) hay van an toàn (8481.40) không?"
+        "Vật liệu thân và Ø trong cửa nạp?",
+        "Đúng mạch truyền động khí nén/thủy lực chứ không phải van giảm áp / an toàn / bếp / nhiên liệu xe?"
       ],
       "gir": "1",
       "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN — trường en của 84812090/84812011: \"Valves; for oleohydraulic or pneumatic transmissions\". Không đặt high vì 8481.20 còn tách theo vật liệu/đường kính; mã dư 84812090 chỉ khi không khớp .11/.19/.20."
+      "sourceVi": "Biểu thuế VN — en 848120*: \"Valves; for oleohydraulic or pneumatic transmissions\". Đủ 4 mã lá 84812011/19/20/90."
+    },
+    {
+      "id": "van-mot-chieu",
+      "titleVi": "Van một chiều / van cản (8481.30)",
+      "terms": [
+        "van một chiều",
+        "van mot chieu",
+        "van 1 chiều",
+        "van cản",
+        "van can",
+        "check valve",
+        "non-return valve",
+        "nonreturn valve",
+        "one way valve"
+      ],
+      "excludeIfAny": [
+        "khí nén truyền động",
+        "van giảm áp",
+        "van an toàn",
+        "relief"
+      ],
+      "excludeReasonVi": "Phân biệt với 8481.10/20/40 theo chức năng (GIR 1).",
+      "candidates": [
+        {
+          "hs": "84813010",
+          "whenVi": "Van cản bằng gang đúc, Ø trong cửa nạp 4–60 cm",
+          "confidence": "high"
+        },
+        {
+          "hs": "84813020",
+          "whenVi": "Đồng/hợp kim đồng, Ø trong ≤ 2,5 cm",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84813040",
+          "whenVi": "Plastic, Ø trong 1–2,5 cm",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84813090",
+          "whenVi": "Loại khác trong 8481.30",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "848120",
+          "whyVi": "8481.20 van truyền động — không phải van một chiều đường ống."
+        },
+        {
+          "prefix": "848140",
+          "whyVi": "8481.40 van an toàn/xả."
+        },
+        {
+          "prefix": "8413",
+          "whyVi": "8413 là bơm — tạo dòng; van chỉ điều khiển dòng."
+        },
+        {
+          "prefix": "9032",
+          "whyVi": "9032 là dụng cụ/thiết bị đo-điều khiển tự động, không phải van cơ khí 8481."
+        },
+        {
+          "prefix": "98",
+          "whyVi": "Chương 98 là mã ưu đãi riêng, không dùng làm đáp án phân loại thông thường."
+        }
+      ],
+      "askVi": [
+        "Vật liệu (gang / đồng / plastic / khác)?",
+        "Ø trong cửa nạp?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN — en 848130*: \"Valves; check (nonreturn) valves…\". 84813010 gọi đích danh van cản gang → high."
+    },
+    {
+      "id": "van-an-toan",
+      "titleVi": "Van an toàn / van xả áp (8481.40)",
+      "terms": [
+        "van an toàn",
+        "van xả áp",
+        "van xa ap",
+        "safety valve",
+        "relief valve",
+        "pressure relief valve",
+        "PRV safety",
+        "van safety"
+      ],
+      "excludeIfAny": [
+        "van giảm áp làm việc",
+        "pressure reducing",
+        "khí nén truyền động"
+      ],
+      "excludeReasonVi": "Van giảm áp làm việc liên tục = 8481.10; van truyền động = 8481.20.",
+      "candidates": [
+        {
+          "hs": "84814010",
+          "whenVi": "Đồng/hợp kim đồng, Ø trong ≤ 2,5 cm",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84814030",
+          "whenVi": "Plastic, Ø trong 1–2,5 cm",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84814090",
+          "whenVi": "Loại khác trong 8481.40",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "848110",
+          "whyVi": "8481.10 van giảm áp — khác van an toàn/xả."
+        },
+        {
+          "prefix": "848120",
+          "whyVi": "8481.20 van truyền động khí nén/thủy lực."
+        },
+        {
+          "prefix": "8413",
+          "whyVi": "8413 là bơm — tạo dòng; van chỉ điều khiển dòng."
+        },
+        {
+          "prefix": "9032",
+          "whyVi": "9032 là dụng cụ/thiết bị đo-điều khiển tự động, không phải van cơ khí 8481."
+        },
+        {
+          "prefix": "98",
+          "whyVi": "Chương 98 là mã ưu đãi riêng, không dùng làm đáp án phân loại thông thường."
+        }
+      ],
+      "askVi": [
+        "Vật liệu thân và Ø trong?",
+        "Van mở khi quá áp (an toàn) hay van giảm áp làm việc liên tục?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN — en 848140*: \"Valves; safety or relief valves…\". Đủ 3 mã lá."
+    },
+    {
+      "id": "van-sam",
+      "titleVi": "Van săm / van ruột xe (8481.80 — nhánh săm)",
+      "terms": [
+        "van săm",
+        "van sam",
+        "van ruột xe",
+        "van xe đạp",
+        "valve core",
+        "tyre valve",
+        "tire valve",
+        "schrader",
+        "presta valve"
+      ],
+      "excludeIfAny": [
+        "van bi",
+        "van cổng",
+        "van bướm",
+        "solenoid",
+        "khí nén công nghiệp"
+      ],
+      "excludeReasonVi": "Van công nghiệp đường ống / khí nén thiết bị không phải van săm.",
+      "candidates": [
+        {
+          "hs": "84818011",
+          "whenVi": "Van dùng cho săm, bằng đồng hoặc hợp kim đồng",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84818012",
+          "whenVi": "Van dùng cho săm, vật liệu khác",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84818013",
+          "whenVi": "Cùng nhánh săm — biến thể đồng/hợp kim đồng (theo cấu trúc biểu thuế 8481.80)",
+          "confidence": "low"
+        },
+        {
+          "hs": "84818014",
+          "whenVi": "Cùng nhánh săm — biến thể vật liệu khác",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "848120",
+          "whyVi": "Không phải van truyền động khí nén thiết bị."
+        },
+        {
+          "prefix": "4011",
+          "whyVi": "4011 là săm/lốp — nguyên chiếc; câu hỏi chỉ van thì ở 8481.80."
+        },
+        {
+          "prefix": "8714",
+          "whyVi": "8714 bộ phận xe đạp — van săm được biểu thuế đặt ở 8481.80."
+        }
+      ],
+      "askVi": [
+        "Vật liệu (đồng / khác)?",
+        "Van rời hay gắn sẵn trên săm/lốp?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Cấu trúc biểu thuế VN 8481.80 nhánh \"Van dùng cho săm\" (caselaw/hscode.pro) — mã lá 84818011–14 trong tax.json."
     },
     {
       "id": "van-bep-ga",
@@ -427,39 +724,213 @@
         "thuỷ lực",
         "solenoid valve"
       ],
-      "excludeReasonVi": "Van khí nén/thủy lực truyền động thuộc 8481.20, không phải van bếp 8481.80.30.",
+      "excludeReasonVi": "Van khí nén/thủy lực truyền động thuộc 8481.20.",
       "candidates": [
         {
           "hs": "84818030",
-          "whenVi": "Van dùng cho bếp nấu hoặc bếp có lò nướng bằng ga, đã hoặc chưa lắp bộ phận đánh lửa điện từ",
+          "whenVi": "Van dùng cho bếp nấu hoặc bếp có lò nướng bằng ga, đã hoặc chưa lắp bộ đánh lửa điện từ",
           "confidence": "high"
         }
       ],
       "avoid": [
         {
           "prefix": "7321",
-          "whyVi": "7321 là bếp/lò đốt bằng kim loại — nguyên chiếc. Câu hỏi chỉ van thì ở 8481.80.30."
+          "whyVi": "7321 là bếp/lò nguyên chiếc."
         },
         {
           "prefix": "4009",
-          "whyVi": "4009 là ống vòi cao su (kể cả dùng bếp ga) — ống dẫn, không phải van."
+          "whyVi": "Ống vòi cao su bếp ga — không phải van."
         },
         {
           "prefix": "3917",
-          "whyVi": "3917 là ống nhựa (kể cả dùng bếp ga) — không phải van."
+          "whyVi": "Ống nhựa bếp ga — không phải van."
         },
         {
           "prefix": "848120",
-          "whyVi": "8481.20 dành cho van truyền động oleohydraulic/pneumatic, không phải van bếp ga."
+          "whyVi": "8481.20 van truyền động, không phải van bếp."
         }
       ],
       "askVi": [
-        "Là van riêng hay nguyên chiếc bếp/lò (7321)?",
-        "Có bộ đánh lửa điện từ không? (vẫn 8481.80.30 theo biểu thuế)"
+        "Là van riêng hay nguyên chiếc bếp/lò (7321)?"
       ],
       "gir": "1",
       "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 84818030: \"Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga\" — gọi đích danh mặt hàng nên confidence high."
+      "sourceVi": "Biểu thuế VN 84818030 gọi đích danh mặt hàng → confidence high."
+    },
+    {
+      "id": "van-cong-buom-gang",
+      "titleVi": "Van cổng / van bướm gang — đường ống nước (8481.80.61–.63)",
+      "terms": [
+        "van cổng gang",
+        "van cong gang",
+        "van bướm gang",
+        "van buom gang",
+        "gate valve cast iron",
+        "butterfly valve cast iron",
+        "van cổng đường ống nước"
+      ],
+      "excludeIfAny": [
+        "van bi",
+        "ball valve",
+        "sắt hoặc thép không gang",
+        "plastic"
+      ],
+      "excludeReasonVi": "Van bi = 8481.80.71–.72; van cổng sắt/thép tay = 8481.80.73–.77.",
+      "candidates": [
+        {
+          "hs": "84818061",
+          "whenVi": "Van cổng điều khiển bằng tay, Ø trong >5 cm và ≤40 cm (nhánh gang đường ống nước)",
+          "confidence": "high"
+        },
+        {
+          "hs": "84818062",
+          "whenVi": "Cùng nhánh van cổng/bướm gang đường ống nước — loại khác",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84818063",
+          "whenVi": "Van đường ống nước — loại khác (không khớp .61/.62)",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8481807",
+          "whyVi": "8481.80.71–.72 là van bi."
+        },
+        {
+          "prefix": "84818073",
+          "whyVi": "8481.80.73+ là van cổng sắt/thép (không phải gang đường ống nước .61)."
+        },
+        {
+          "prefix": "848110",
+          "whyVi": "8481.10 van giảm áp — khác van đường ống nước 8481.80."
+        }
+      ],
+      "askVi": [
+        "Van cổng hay van bướm?",
+        "Ø trong? Điều khiển tay hay khác?",
+        "Thân gang đúc đúng không?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN 8481.80 nhánh \"Van đường ống nước — van cổng gang ≥4cm; van bướm gang ≥8cm\" (caselaw). 84818061 gọi đích danh van cổng tay → high."
+    },
+    {
+      "id": "van-bi",
+      "titleVi": "Van bi (8481.80.71–.72)",
+      "terms": [
+        "van bi",
+        "ball valve",
+        "van bi đồng",
+        "van bi inox",
+        "van bi nhựa"
+      ],
+      "excludeIfAny": [
+        "van cổng",
+        "gate valve",
+        "van bướm",
+        "butterfly",
+        "van săm"
+      ],
+      "excludeReasonVi": "Van cổng/bướm có nhánh riêng; van săm khác hoàn toàn.",
+      "candidates": [
+        {
+          "hs": "84818071",
+          "whenVi": "Van bi bằng plastic, Ø trong 1–2,5 cm",
+          "confidence": "high"
+        },
+        {
+          "hs": "84818072",
+          "whenVi": "Van bi — loại khác (không phải plastic Ø 1–2,5 cm)",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "84818061",
+          "whyVi": "8481.80.61–.63 van cổng/bướm gang đường ống nước."
+        },
+        {
+          "prefix": "84818073",
+          "whyVi": "8481.80.73+ van cổng sắt/thép tay."
+        },
+        {
+          "prefix": "848120",
+          "whyVi": "Không mặc định van bi công nghiệp là 8481.20 — chỉ khi đúng truyền động oleohydraulic/pneumatic."
+        }
+      ],
+      "askVi": [
+        "Thân plastic Ø 1–2,5 cm hay vật liệu/cỡ khác?",
+        "Có phải van khí nén truyền động (8481.20) không?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN 8481.80 nhánh \"Van bi\" — 84818071 plastic Ø 1–2,5 cm; 84818072 loại khác (thuvienphapluat / hscode.pro)."
+    },
+    {
+      "id": "van-cong-sat-thep",
+      "titleVi": "Van cổng tay bằng sắt hoặc thép (8481.80.73–.77)",
+      "terms": [
+        "van cổng sắt",
+        "van cổng thép",
+        "van cong sat",
+        "van cong thep",
+        "gate valve steel",
+        "gate valve iron",
+        "van cổng tay"
+      ],
+      "excludeIfAny": [
+        "gang đúc đường ống nước",
+        "van bướm gang",
+        "van bi",
+        "plastic"
+      ],
+      "excludeReasonVi": "Van cổng/bướm gang đường ống nước = .61–.63; van bi = .71–.72.",
+      "candidates": [
+        {
+          "hs": "84818073",
+          "whenVi": "Ø trong cửa nạp và cửa thoát >5 cm và ≤40 cm",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84818074",
+          "whenVi": "Ø trong cửa nạp và cửa thoát >40 cm",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84818077",
+          "whenVi": "Ø trong cửa nạp và cửa thoát ≤5 cm",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84818078",
+          "whenVi": "Cùng khu vực phân nhóm — biến thể plastic Ø 1–2,5 cm (theo lá tax.json)",
+          "confidence": "low"
+        },
+        {
+          "hs": "84818079",
+          "whenVi": "Cùng khu vực — loại khác",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "84818061",
+          "whyVi": "Nhánh gang đường ống nước (.61–.63), không phải sắt/thép tay .73+."
+        },
+        {
+          "prefix": "84818071",
+          "whyVi": "Van bi."
+        }
+      ],
+      "askVi": [
+        "Ø trong cửa nạp/thoát: ≤5 / 5–40 / >40 cm?",
+        "Thân sắt hoặc thép (không phải gang đường ống nước .61)?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN 8481.80 \"Van cổng, điều khiển bằng tay, bằng sắt hoặc thép\" — 84818073/74/77 (thuvienphapluat). .78/.79 kèm theo khu vực lá."
     },
     {
       "id": "van-ngat-nhien-lieu-xe",
@@ -482,42 +953,582 @@
       "candidates": [
         {
           "hs": "84818083",
-          "whenVi": "Thân plastic, dùng cho xe 87.02/87.03/87.04, đường kính trong cửa nạp dưới 1 cm",
+          "whenVi": "Plastic, xe 87.02–87.04, Ø trong cửa nạp <1 cm",
           "confidence": "medium"
         },
         {
           "hs": "84818084",
-          "whenVi": "Thân plastic, dùng cho xe 87.02/87.03/87.04, đường kính trong cửa nạp từ 1 cm đến 2,5 cm",
+          "whenVi": "Plastic, xe 87.02–87.04, Ø trong cửa nạp 1–2,5 cm",
           "confidence": "medium"
         },
         {
           "hs": "84818093",
-          "whenVi": "Vật liệu khác (không phải plastic nêu ở .83/.84), dùng cho xe 87.02/87.03/87.04",
+          "whenVi": "Vật liệu khác, xe 87.02–87.04",
           "confidence": "medium"
         }
       ],
       "avoid": [
         {
           "prefix": "848120",
-          "whyVi": "8481.20 là van truyền động khí nén/thủy lực — không phải van nhiên liệu xe."
+          "whyVi": "8481.20 van truyền động — không phải van nhiên liệu xe."
         },
         {
           "prefix": "9849",
-          "whyVi": "9849 là mã chương 98 ưu đãi riêng cho cùng loại van — không dùng làm đáp án phân loại thông thường."
+          "whyVi": "Chương 98 ưu đãi riêng."
         },
         {
           "prefix": "87",
-          "whyVi": "Chương 87 là xe nguyên chiếc / bộ phận xe được kể tên. Van ngắt nhiên liệu plastic được biểu thuế đặt riêng ở 8481.80.83–.93."
+          "whyVi": "Xe nguyên chiếc / bộ phận xe kể tên ở Ch.87 — van này đặt ở 8481.80.83–.93."
         }
       ],
       "askVi": [
-        "Vật liệu thân van: plastic hay kim loại/khác?",
-        "Đường kính trong cửa nạp: dưới 1 cm, 1–2,5 cm, hay lớn hơn?",
-        "Xe thuộc nhóm 87.02 / 87.03 / 87.04 đúng không?"
+        "Plastic hay vật liệu khác?",
+        "Ø trong cửa nạp?",
+        "Xe đúng nhóm 87.02/03/04?"
       ],
       "gir": "1",
       "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 84818083/84818084/84818093 — van ngắt nhiên liệu dùng cho xe nhóm 87.02, 87.03 hoặc 87.04, tách theo vật liệu và đường kính cửa nạp. Không high vì phải hỏi vật liệu/Ø mới chốt một trong ba mã."
+      "sourceVi": "Biểu thuế VN 84818083/84/93 — van ngắt nhiên liệu xe 87.02–87.04."
+    },
+    {
+      "id": "voi-nuoc",
+      "titleVi": "Vòi nước bằng đồng (8481.80.98)",
+      "terms": [
+        "vòi nước",
+        "voi nuoc",
+        "vòi đồng",
+        "faucet",
+        "water tap",
+        "basin tap",
+        "vòi lavabo",
+        "vòi bếp nước"
+      ],
+      "excludeIfAny": [
+        "van bi",
+        "van cổng",
+        "hose bib plastic"
+      ],
+      "excludeReasonVi": "Vòi nước đồng Ø ≤2,5 cm có mã riêng; van công nghiệp khác nhánh.",
+      "candidates": [
+        {
+          "hs": "84818098",
+          "whenVi": "Vòi nước bằng đồng hoặc hợp kim đồng, Ø trong ≤ 2,5 cm",
+          "confidence": "high"
+        },
+        {
+          "hs": "84818099",
+          "whenVi": "Vòi/van loại khác trong cùng nhánh dư (không khớp .98)",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "84819021",
+          "whyVi": "8481.90.21 là THÂN dùng cho vòi nước — bộ phận, không phải vòi hoàn chỉnh."
+        },
+        {
+          "prefix": "7324",
+          "whyVi": "7324 đồ vệ sinh bằng kim loại — phân biệt với vòi/van 8481."
+        }
+      ],
+      "askVi": [
+        "Vòi hoàn chỉnh hay chỉ thân/vỏ (8481.90)?",
+        "Đồng Ø ≤2,5 cm đúng không?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN 84818098: \"Vòi nước bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống\" → high."
+    },
+    {
+      "id": "van-tay-nhe-inox",
+      "titleVi": "Van tay nhẹ <3 kg, xử lý bề mặt / inox / niken (8481.80.97)",
+      "terms": [
+        "van tay nhỏ",
+        "van inox nhỏ",
+        "van niken",
+        "compact hand valve",
+        "van điều khiển bằng tay nhẹ"
+      ],
+      "excludeIfAny": [
+        "van cổng lớn",
+        "van bi",
+        "trên 3 kg"
+      ],
+      "excludeReasonVi": "Mã .97 giới hạn khối lượng <3 kg và vật liệu/xử lý bề mặt cụ thể.",
+      "candidates": [
+        {
+          "hs": "84818097",
+          "whenVi": "Điều khiển bằng tay, khối lượng <3 kg, đã xử lý bề mặt hoặc làm bằng thép không gỉ hoặc niken",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "84818073",
+          "whyVi": "Van cổng sắt/thép tay cỡ đường ống — nhánh .73+."
+        }
+      ],
+      "askVi": [
+        "Khối lượng dưới 3 kg?",
+        "Inox / niken / đã xử lý bề mặt?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN 84818097 gọi đích danh điều kiện khối lượng và vật liệu → high."
+    },
+    {
+      "id": "van-848180-phu",
+      "titleVi": "Van/vòi 8481.80 — nhánh còn lại (cần Ø / vật liệu / SEN)",
+      "terms": [
+        "van công nghiệp",
+        "industrial valve",
+        "van đường ống",
+        "pipeline valve"
+      ],
+      "excludeIfAny": [
+        "van bi",
+        "ball valve",
+        "van cổng",
+        "gate valve",
+        "van bướm",
+        "butterfly",
+        "van bếp",
+        "van săm",
+        "van ngắt nhiên liệu",
+        "vòi nước",
+        "khí nén",
+        "solenoid",
+        "van giảm áp",
+        "van một chiều",
+        "van an toàn",
+        "van thủy lực"
+      ],
+      "excludeReasonVi": "Các loại đã có mục riêng phải đi mục đó — mục này chỉ hứng phần còn lại của 8481.80.",
+      "candidates": [
+        {
+          "hs": "84818021",
+          "whenVi": "Ø cửa nạp/thoát ≤ 2,5 cm (nhánh đường kính trong 8481.80)",
+          "confidence": "low"
+        },
+        {
+          "hs": "84818022",
+          "whenVi": "Ø cửa nạp/thoát > 2,5 cm",
+          "confidence": "low"
+        },
+        {
+          "hs": "84818041",
+          "whenVi": "Plastic Ø trong 1–2,5 cm",
+          "confidence": "low"
+        },
+        {
+          "hs": "84818049",
+          "whenVi": "Loại khác cùng nhánh với .41",
+          "confidence": "low"
+        },
+        {
+          "hs": "84818051",
+          "whenVi": "Plastic Ø trong 1–2,5 cm (nhánh kế)",
+          "confidence": "low"
+        },
+        {
+          "hs": "84818059",
+          "whenVi": "Loại khác cùng nhánh với .51",
+          "confidence": "low"
+        },
+        {
+          "hs": "84818064",
+          "whenVi": "Plastic Ø 1–2,5 cm (SEN)",
+          "confidence": "low"
+        },
+        {
+          "hs": "84818065",
+          "whenVi": "Loại khác (SEN) cùng nhánh .64",
+          "confidence": "low"
+        },
+        {
+          "hs": "84818066",
+          "whenVi": "Plastic Ø 1–2,5 cm",
+          "confidence": "low"
+        },
+        {
+          "hs": "84818067",
+          "whenVi": "Loại khác cùng nhánh .66",
+          "confidence": "low"
+        },
+        {
+          "hs": "84818081",
+          "whenVi": "Plastic Ø 1–2,5 cm",
+          "confidence": "low"
+        },
+        {
+          "hs": "84818082",
+          "whenVi": "Loại khác cùng nhánh .81",
+          "confidence": "low"
+        },
+        {
+          "hs": "84818094",
+          "whenVi": "Ø trong cửa nạp <1 cm",
+          "confidence": "low"
+        },
+        {
+          "hs": "84818095",
+          "whenVi": "Ø trong cửa nạp 1–2,5 cm",
+          "confidence": "low"
+        },
+        {
+          "hs": "84818096",
+          "whenVi": "Ø trong cửa nạp >2,5 cm",
+          "confidence": "low"
+        },
+        {
+          "hs": "84818099",
+          "whenVi": "Loại khác — dư cuối 8481.80",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "848120",
+          "whyVi": "Ưu tiên hỏi/loại 8481.20 nếu là van truyền động."
+        },
+        {
+          "prefix": "848110",
+          "whyVi": "Van giảm áp có mục riêng."
+        }
+      ],
+      "askVi": [
+        "Có phải van bi / cổng / bướm / bếp / săm / nhiên liệu xe không? (có → dùng mục riêng)",
+        "Vật liệu và Ø trong cửa nạp?",
+        "Hàng SEN hay không?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Các mã lá còn lại của 8481.80 trong tax.json — dòng cha bị lược; confidence thấp, bắt buộc hỏi. Không high."
+    },
+    {
+      "id": "phu-tung-van",
+      "titleVi": "Bộ phận / thân / vỏ van (8481.90)",
+      "terms": [
+        "thân van",
+        "vỏ van",
+        "phụ tùng van",
+        "valve body",
+        "valve housing",
+        "valve parts",
+        "valve spare",
+        "linh kiện van"
+      ],
+      "excludeIfAny": [
+        "van hoàn chỉnh",
+        "complete valve",
+        "van nguyên chiếc"
+      ],
+      "excludeReasonVi": "Van hoàn chỉnh thuộc 8481.10–.80; đây chỉ bộ phận 8481.90.",
+      "candidates": [
+        {
+          "hs": "84819010",
+          "whenVi": "Vỏ van cổng hoặc van cống, Ø trong cửa nạp/thoát >50 mm và ≤400 mm",
+          "confidence": "high"
+        },
+        {
+          "hs": "84819021",
+          "whenVi": "Thân dùng cho vòi nước",
+          "confidence": "high"
+        },
+        {
+          "hs": "84819022",
+          "whenVi": "Thân dùng cho van xi lanh LPG",
+          "confidence": "high"
+        },
+        {
+          "hs": "84819023",
+          "whenVi": "Thân — loại khác",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84819029",
+          "whenVi": "Loại khác trong nhánh thân",
+          "confidence": "low"
+        },
+        {
+          "hs": "84819031",
+          "whenVi": "Bộ phận bằng đồng/hợp kim đồng",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84819039",
+          "whenVi": "Bộ phận — loại khác (cùng nhánh .31)",
+          "confidence": "low"
+        },
+        {
+          "hs": "84819041",
+          "whenVi": "Bộ phận bằng đồng/hợp kim đồng (nhánh khác)",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84819049",
+          "whenVi": "Bộ phận — loại khác (cùng nhánh .41)",
+          "confidence": "low"
+        },
+        {
+          "hs": "84819090",
+          "whenVi": "Bộ phận van — loại khác",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "848180",
+          "whyVi": "8481.80 là thiết bị hoàn chỉnh (van/vòi), không phải bộ phận."
+        },
+        {
+          "prefix": "848120",
+          "whyVi": "Van truyền động hoàn chỉnh — không phải parts."
+        }
+      ],
+      "askVi": [
+        "Thân vòi nước, thân van LPG, vỏ van cổng/cống, hay bộ phận khác?",
+        "Vật liệu (đồng / khác)?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN 848190* — parts; .10/.21/.22 gọi đích danh → high."
+    },
+    {
+      "id": "thep-cuon-can-nong",
+      "titleVi": "Thép cuộn cán nóng (HRC / Hot Rolled Coil)",
+      "terms": [
+        "thép cuộn cán nóng",
+        "thép cán nóng cuộn",
+        "thép tấm cuộn cán nóng",
+        "hrc",
+        "hot rolled coil",
+        "hot rolled steel coil",
+        "thép cuộn cán nóng spcc",
+        "sphc",
+        "tôn cuộn cán nóng",
+        "thép cán nóng dạng cuộn"
+      ],
+      "excludeIfAny": [
+        "thép không gỉ",
+        "stainless",
+        "inox",
+        "thép cuộn cán nguội",
+        "crc"
+      ],
+      "excludeReasonVi": "Từ khoá 'không gỉ/inox/stainless' chuyển mục sang nhóm thép không gỉ 7218-7220; 'cán nguội/CRC' là nhóm 7209 — cơ chế và mã khác hẳn.",
+      "candidates": [
+        {
+          "hs": "72083990",
+          "whenVi": "Cán nóng, dạng cuộn, chiều rộng ≥ 600 mm, chiều dày < 3 mm — phân nhóm 'loại khác' cuối cùng khi không đáp ứng các ngưỡng chiều dày/carbon cụ thể ở 7208.36–7208.39.10–30",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72083700",
+          "whenVi": "Cán nóng, cuộn, chiều rộng ≥ 600 mm, chiều dày từ 4,75 mm đến 10 mm",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72083600",
+          "whenVi": "Cán nóng, cuộn, chiều rộng ≥ 600 mm, chiều dày trên 10 mm",
+          "confidence": "low"
+        },
+        {
+          "hs": "72089090",
+          "whenVi": "Cán nóng, cuộn, chiều rộng ≥ 600 mm — mã dư cuối cùng khi các ngưỡng cụ thể không khớp",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "7221",
+          "whyVi": "7221.00 là thanh và que thép không gỉ được cán nóng dạng cuộn. Mục này về thép đen/cacbon thường; từ khoá 'thép không gỉ/inox' đã được exclude để tránh lẫn."
+        },
+        {
+          "prefix": "7209",
+          "whyVi": "Nhóm 7209 là cán NGUỘI (cold rolled), không phải cán nóng. Lẫn nhóm này là phân loại sai hoàn toàn về bản chất gia công."
+        },
+        {
+          "prefix": "7211",
+          "whyVi": "7211 dành cho dạng TẤM (không cuộn). 'Thép cuộn cán nóng' không thuộc đây."
+        }
+      ],
+      "askVi": [
+        "Dạng cuộn hay dạng tấm (cắt từ cuộn)? (cuộn → 7208, tấm → 7211)",
+        "Chiều rộng ≥ 600 mm hay < 600 mm?",
+        "Chiều dày: ≥ 10 mm / 4,75–10 mm / 3–<4,75 mm / < 3 mm?",
+        "Hàm lượng carbon (≥ 0,6% hay < 0,6%) nếu biết — mác SPCC/SAPHC/SAPH440..."
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN nhóm 7208 — sản phẩm cán phẳng bằng sắt hoặc thép không hợp kim, cán nóng, dạng cuộn. Phạm vi phân nhóm: 7208.36/37/38/39 theo chiều dày, 7208.39.10–30 theo carbon. Chú giải Ch.72 mục 1(k) định nghĩa 'cán phẳng'; 1(l) định nghĩa 'dạng cuộn'."
+    },
+    {
+      "id": "thep-cuon-can-nguoi",
+      "titleVi": "Thép cuộn cán nguội (CRC / Cold Rolled Coil)",
+      "terms": [
+        "thép cuộn cán nguội",
+        "thép cán nguội cuộn",
+        "crc",
+        "cold rolled coil",
+        "cold rolled steel coil",
+        "tôn cuộn cán nguội",
+        "thép cán nguội dạng cuộn",
+        "spcc",
+        "thép tấm cuộn cán nguội"
+      ],
+      "excludeIfAny": [
+        "thép không gỉ",
+        "stainless",
+        "inox",
+        "thép cuộn cán nóng",
+        "hrc",
+        "mạ kẽm",
+        "galvanized",
+        "tôn mạ"
+      ],
+      "excludeReasonVi": "Từ khoá 'không gỉ/inox' chuyển sang nhóm thép không gỉ; 'cán nóng/HRC' là nhóm 7208; 'mạ kẽm/galvanized/tôn mạ' là nhóm 7210 — khi đã phủ lớp bề mặt là chuyển nhóm hoàn toàn.",
+      "candidates": [
+        {
+          "hs": "72099090",
+          "whenVi": "Cán nguội, dạng cuộn, chiều rộng ≥ 600 mm — mã dư cuối cùng khi các ngưỡng chiều dày/carbon cụ thể ở 7209.15–7209.28 không khớp",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72092890",
+          "whenVi": "Cán nguội, cuộn, chiều rộng ≥ 600 mm, chiều dày < 0,5 mm",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72092790",
+          "whenVi": "Cán nguội, cuộn, chiều rộng ≥ 600 mm, chiều dày 0,5 mm đến < 1 mm",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72091790",
+          "whenVi": "Cán nguội, cuộn, chiều rộng ≥ 600 mm, chiều dày 1 mm đến < 3 mm (chưa rõ chính xác)",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "7208",
+          "whyVi": "7208 là cán NÓNG (hot rolled). Cùng dạng cuộn nhưng cơ chế gia công khác — bề mặt, dung sai, ứng dụng đều khác."
+        },
+        {
+          "prefix": "7210",
+          "whyVi": "7210 là sản phẩm đã được mạ/phủ/tráng (mạ kẽm, sơn...). Từ khoá 'mạ kẽm/tôn mạ' đã exclude, nhưng kể cả khi không nói, CRC thuần (SPCC đen) không thuộc nhóm này."
+        },
+        {
+          "prefix": "7212",
+          "whyVi": "7212 dành cho dạng TẤM cán nguội, không phải cuộn."
+        },
+        {
+          "prefix": "7221",
+          "whyVi": "7221.00 là thép không gỉ dạng cuộn. Đã loại trừ bằng từ khoá 'inox/không gỉ'."
+        }
+      ],
+      "askVi": [
+        "Đã mạ/phủ bề mặt chưa (mạ kẽm, sơn, mạ thiếc...) hay tấm đen cán nguội thuần?",
+        "Chiều rộng ≥ 600 mm hay < 600 mm?",
+        "Chiều dày: ≥ 3 mm / 1–<3 mm / 0,5–<1 mm / < 0,5 mm?",
+        "Mác thép (SPCC, SPCD, SPCE...) để xác định hàm lượng carbon"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN nhóm 7209 — sản phẩm cán phẳng bằng sắt hoặc thép không hợp kim, cán nguội, dạng cuộn. Phạm vi phân nhóm: 7209.15/16/17/18/25/26/27/28 theo chiều rộng + chiều dày, 7209.18.10 cho TMBP (tin-mill blackplate). Chú giải Ch.72: 'cán nguội' là gia công giảm tiết diện ở nhiệt độ thường, bề mặt hoàn thiện hơn 7208."
+    },
+    {
+      "id": "thep-hinh-u-i-h",
+      "titleVi": "Thép hình chữ U / I / H (kết cấu xây dựng)",
+      "terms": [
+        "thép hình",
+        "thép hình h",
+        "thép hình i",
+        "thép hình u",
+        "thép i",
+        "thép h",
+        "thép u",
+        "thép i100",
+        "thép i120",
+        "thép i150",
+        "thép i200",
+        "thép h100",
+        "thép h200",
+        "thép h300",
+        "thép u50",
+        "thép u80",
+        "thép u100",
+        "dầm thép",
+        "beam steel",
+        "h beam",
+        "i beam",
+        "u channel",
+        "thép chữ h",
+        "thép chữ i",
+        "thép chữ u",
+        "thép hình cán nóng"
+      ],
+      "excludeIfAny": [
+        "thép không gỉ",
+        "inox",
+        "stainless",
+        "nhôm định hình",
+        "aluminium profile",
+        "thép hộp",
+        "thép ống",
+        "thép tấm"
+      ],
+      "excludeReasonVi": "Từ khoá 'inox/không gỉ' chuyển sang nhóm thép không gỉ 7218-7220; 'nhôm định hình' là chương 76; 'thép hộp/thép ống' là nhóm 7306/7307; 'thép tấm' là nhóm 7208-7212 (cán phẳng, không phải kết cấu cán dạng hình).",
+      "candidates": [
+        {
+          "hs": "72163190",
+          "whenVi": "Hình chữ U/I/H, cán nóng, chiều cao ≥ 80 mm — mã dư 'loại khác' khi không có ngưỡng carbon đặc biệt (carbon ≥ 0,6% xem 7216.31.10)",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72162190",
+          "whenVi": "Hình chữ L (góc), cán nóng, chiều cao < 80 mm",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72164090",
+          "whenVi": "Hình L hoặc T, cán nóng, chiều cao ≥ 80 mm — 'loại khác' khi không có ngưỡng carbon đặc biệt",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72169900",
+          "whenVi": "Các hình khác chưa được chi tiết trong 7216.10–7216.91",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "7306",
+          "whyVi": "7306 là ỐNG (rỗng ruột), hình tròn/oval/DLCN. 'Thép hình' là profile kết cấu ĐẶC ruột — khác hẳn."
+        },
+        {
+          "prefix": "7308",
+          "whyVi": "7308 là KẾT CẤU ĐÃ LẮP RÁP (cột, dầm, khung nhà xưởng hoàn chỉnh), không phải thép hình nguyên liệu. Người gõ 'thép hình I100' mua thanh nguyên liệu, không phải kết cấu đã gia công."
+        },
+        {
+          "prefix": "7210",
+          "whyVi": "7210 dành cho sản phẩm cán PHẲNG (tấm/cuộn) đã mạ/tráng. Thép hình không phải cán phẳng."
+        },
+        {
+          "prefix": "7214",
+          "whyVi": "7214 là thanh que CÁN NÓNG thường (tròn, vuông, lục giác) — không có mặt cắt chữ H/I/U."
+        }
+      ],
+      "askVi": [
+        "Mặt cắt nào? U, I, H, L, T, hay hình đặc biệt (V, Z, Omega)?",
+        "Chiều cao mặt cắt: ≥ 80 mm hay < 80 mm?",
+        "Đã gia công thêm (cắt, hàn, khoan, lắp ráp) hay còn nguyên thanh cán nóng?",
+        "Hàm lượng carbon ≥ 0,6% hay < 0,6%?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN nhóm 7216 — góc, khuôn và hình bằng sắt hoặc thép không hợp kim. Phân nhóm theo mặt cắt: 7216.10 (H/I/U, cao ≥ 80mm), 7216.21 (L, < 80mm), 7216.22 (T), 7216.31 (U/I/H, cao ≥ 80mm), 7216.32 (U/I/H, cao < 80mm), 7216.40 (L/T, cao ≥ 80mm), 7216.50 (khác, cao < 80mm), 7216.61 (từ sản phẩm cán phẳng), 7216.69/99 (loại khác). Chú giải Ch.72 mục 1(n) định nghĩa 'góc, khuôn và hình'."
     }
   ]
 }
