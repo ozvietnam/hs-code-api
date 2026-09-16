@@ -1304,7 +1304,6 @@
         "hrc",
         "hot rolled coil",
         "hot rolled steel coil",
-        "thép cuộn cán nóng spcc",
         "sphc",
         "tôn cuộn cán nóng",
         "thép cán nóng dạng cuộn"
@@ -1319,9 +1318,44 @@
       "excludeReasonVi": "Từ khoá 'không gỉ/inox/stainless' chuyển mục sang nhóm thép không gỉ 7218-7220; 'cán nguội/CRC' là nhóm 7209 — cơ chế và mã khác hẳn.",
       "candidates": [
         {
-          "hs": "72083990",
-          "whenVi": "Cán nóng, dạng cuộn, chiều rộng ≥ 600 mm, chiều dày < 3 mm — phân nhóm 'loại khác' cuối cùng khi không đáp ứng các ngưỡng chiều dày/carbon cụ thể ở 7208.36–7208.39.10–30",
+          "hs": "72081000",
+          "whenVi": "- Dạng cuộn, chưa được gia công quá mức cán nóng, có hình dập nổi — mã 7208.10.00 trong biểu thuế hiện hành",
           "confidence": "medium"
+        },
+        {
+          "hs": "72082500",
+          "whenVi": "- - Chiều dày từ 4,75 mm trở lên — mã 7208.25.00 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72082600",
+          "whenVi": "- - Chiều dày từ 3 mm đến dưới 4,75 mm — mã 7208.26.00 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72082711",
+          "whenVi": "- - - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng — mã 7208.27.11 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72082719",
+          "whenVi": "- - - - Loại khác — mã 7208.27.19 trong biểu thuế hiện hành",
+          "confidence": "low"
+        },
+        {
+          "hs": "72082791",
+          "whenVi": "- - - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng — mã 7208.27.91 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72082799",
+          "whenVi": "- - - - Loại khác — mã 7208.27.99 trong biểu thuế hiện hành",
+          "confidence": "low"
+        },
+        {
+          "hs": "72083600",
+          "whenVi": "Cán nóng, cuộn, chiều rộng ≥ 600 mm, chiều dày trên 10 mm",
+          "confidence": "low"
         },
         {
           "hs": "72083700",
@@ -1329,8 +1363,38 @@
           "confidence": "medium"
         },
         {
-          "hs": "72083600",
-          "whenVi": "Cán nóng, cuộn, chiều rộng ≥ 600 mm, chiều dày trên 10 mm",
+          "hs": "72083800",
+          "whenVi": "- - Chiều dày từ 3 mm đến dưới 4,75 mm — mã 7208.38.00 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72083910",
+          "whenVi": "- - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm — mã 7208.39.10 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72083920",
+          "whenVi": "- - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày trên 0,17 mm nhưng không quá 1,5 mm — mã 7208.39.20 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72083930",
+          "whenVi": "- - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng và chiều dày không quá 1,5 mm — mã 7208.39.30 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72083940",
+          "whenVi": "- - - Chiều dày trên 2 mm, độ bền kéo tối đa 550 Mpa và chiều rộng không quá 1.250 mm — mã 7208.39.40 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72083990",
+          "whenVi": "Cán nóng, dạng cuộn, chiều rộng ≥ 600 mm, chiều dày < 3 mm — phân nhóm 'loại khác' cuối cùng khi không đáp ứng các ngưỡng chiều dày/carbon cụ thể ở 7208.36–7208.39.10–30",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72089020",
+          "whenVi": "- - Loại khác, có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm — mã 7208.90.20 trong biểu thuế hiện hành",
           "confidence": "low"
         },
         {
@@ -1350,14 +1414,14 @@
         },
         {
           "prefix": "7211",
-          "whyVi": "7211 dành cho dạng TẤM (không cuộn). 'Thép cuộn cán nóng' không thuộc đây."
+          "whyVi": "7211 là cán phẳng rộng < 600 mm. HRC rộng ≥600 mm thuộc 7208 — chỉ sang 7211 khi khổ hẹp."
         }
       ],
       "askVi": [
-        "Dạng cuộn hay dạng tấm (cắt từ cuộn)? (cuộn → 7208, tấm → 7211)",
+        "Dạng cuộn hay dạng tấm không cuộn? (cùng nhóm 7208 nếu rộng ≥600 mm; hẹp <600 mm → 7211)",
         "Chiều rộng ≥ 600 mm hay < 600 mm?",
-        "Chiều dày: ≥ 10 mm / 4,75–10 mm / 3–<4,75 mm / < 3 mm?",
-        "Hàm lượng carbon (≥ 0,6% hay < 0,6%) nếu biết — mác SPCC/SAPHC/SAPH440..."
+        "Chiều dày: ≥10 mm / 4,75–10 / 3–<4,75 / <3 mm?",
+        "Có hình dập nổi / đã tẩy gỉ (pickled) / carbon ≥0,6% không?"
       ],
       "gir": "1",
       "basis": "RULE_TABLE",
@@ -1390,24 +1454,49 @@
       "excludeReasonVi": "Từ khoá 'không gỉ/inox' chuyển sang nhóm thép không gỉ; 'cán nóng/HRC' là nhóm 7208; 'mạ kẽm/galvanized/tôn mạ' là nhóm 7210 — khi đã phủ lớp bề mặt là chuyển nhóm hoàn toàn.",
       "candidates": [
         {
-          "hs": "72099090",
-          "whenVi": "Cán nguội, dạng cuộn, chiều rộng ≥ 600 mm — mã dư cuối cùng khi các ngưỡng chiều dày/carbon cụ thể ở 7209.15–7209.28 không khớp",
+          "hs": "72091500",
+          "whenVi": "- - Có chiều dày từ 3 mm trở lên — mã 7209.15.00 trong biểu thuế hiện hành",
           "confidence": "medium"
         },
         {
-          "hs": "72092890",
-          "whenVi": "Cán nguội, cuộn, chiều rộng ≥ 600 mm, chiều dày < 0,5 mm",
+          "hs": "72091610",
+          "whenVi": "- - - Chiều rộng không quá 1.250 mm — mã 7209.16.10 trong biểu thuế hiện hành",
           "confidence": "medium"
         },
         {
-          "hs": "72092790",
-          "whenVi": "Cán nguội, cuộn, chiều rộng ≥ 600 mm, chiều dày 0,5 mm đến < 1 mm",
+          "hs": "72091690",
+          "whenVi": "- - - Loại khác — mã 7209.16.90 trong biểu thuế hiện hành",
+          "confidence": "low"
+        },
+        {
+          "hs": "72091710",
+          "whenVi": "- - - Chiều rộng không quá 1.250 mm — mã 7209.17.10 trong biểu thuế hiện hành",
           "confidence": "medium"
         },
         {
           "hs": "72091790",
           "whenVi": "Cán nguội, cuộn, chiều rộng ≥ 600 mm, chiều dày 1 mm đến < 3 mm (chưa rõ chính xác)",
           "confidence": "low"
+        },
+        {
+          "hs": "72091810",
+          "whenVi": "- - - Tấm thép đen (tôn đen) cán để tráng thiếc (Tin - mill blackplate - TMBP) — mã 7209.18.10 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72091891",
+          "whenVi": "- - - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm — mã 7209.18.91 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72091899",
+          "whenVi": "- - - - Loại khác — mã 7209.18.99 trong biểu thuế hiện hành",
+          "confidence": "low"
+        },
+        {
+          "hs": "72099090",
+          "whenVi": "Cán nguội, dạng cuộn, chiều rộng ≥ 600 mm — mã dư cuối cùng khi các ngưỡng chiều dày/carbon cụ thể ở 7209.15–7209.28 không khớp",
+          "confidence": "medium"
         }
       ],
       "avoid": [
@@ -1429,10 +1518,10 @@
         }
       ],
       "askVi": [
-        "Đã mạ/phủ bề mặt chưa (mạ kẽm, sơn, mạ thiếc...) hay tấm đen cán nguội thuần?",
-        "Chiều rộng ≥ 600 mm hay < 600 mm?",
-        "Chiều dày: ≥ 3 mm / 1–<3 mm / 0,5–<1 mm / < 0,5 mm?",
-        "Mác thép (SPCC, SPCD, SPCE...) để xác định hàm lượng carbon"
+        "Đã mạ/phủ bề mặt chưa (mạ kẽm, sơn, thiếc) hay tấm đen cán nguội thuần?",
+        "Dạng cuộn hay tấm không cuộn? (cùng 7209 nếu rộng ≥600 mm; hẹp → 7212)",
+        "Chiều dày: ≥3 mm / 1–<3 / 0,5–<1 / <0,5 mm?",
+        "Có phải TMBP (tin-mill blackplate) không?"
       ],
       "gir": "1",
       "basis": "RULE_TABLE",
@@ -1482,8 +1571,13 @@
       "excludeReasonVi": "Từ khoá 'inox/không gỉ' chuyển sang nhóm thép không gỉ 7218-7220; 'nhôm định hình' là chương 76; 'thép hộp/thép ống' là nhóm 7306/7307; 'thép tấm' là nhóm 7208-7212 (cán phẳng, không phải kết cấu cán dạng hình).",
       "candidates": [
         {
-          "hs": "72163190",
-          "whenVi": "Hình chữ U/I/H, cán nóng, chiều cao ≥ 80 mm — mã dư 'loại khác' khi không có ngưỡng carbon đặc biệt (carbon ≥ 0,6% xem 7216.31.10)",
+          "hs": "72161000",
+          "whenVi": "- Hình chữ U, I hoặc H, chưa được gia công quá mức cán nóng, kéo nóng hoặc ép đùn, có chiều cao dưới 80 mm — mã 7216.10.00 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72162110",
+          "whenVi": "- - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng — mã 7216.21.10 trong biểu thuế hiện hành",
           "confidence": "medium"
         },
         {
@@ -1492,9 +1586,94 @@
           "confidence": "medium"
         },
         {
+          "hs": "72162200",
+          "whenVi": "- - Hình chữ T — mã 7216.22.00 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72163110",
+          "whenVi": "- - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng — mã 7216.31.10 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72163190",
+          "whenVi": "Hình chữ U/I/H, cán nóng, chiều cao ≥ 80 mm — mã dư 'loại khác' khi không có ngưỡng carbon đặc biệt (carbon ≥ 0,6% xem 7216.31.10)",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72163210",
+          "whenVi": "- - - Chiều dày từ 5 mm trở xuống — mã 7216.32.10 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72163290",
+          "whenVi": "- - - Loại khác — mã 7216.32.90 trong biểu thuế hiện hành",
+          "confidence": "low"
+        },
+        {
+          "hs": "72163311",
+          "whenVi": "- - - - Chiều dày của cạnh (flange) không nhỏ hơn chiều dày của thân (web) — mã 7216.33.11 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72163319",
+          "whenVi": "- - - - Loại khác — mã 7216.33.19 trong biểu thuế hiện hành",
+          "confidence": "low"
+        },
+        {
+          "hs": "72163390",
+          "whenVi": "- - - Loại khác — mã 7216.33.90 trong biểu thuế hiện hành",
+          "confidence": "low"
+        },
+        {
+          "hs": "72164010",
+          "whenVi": "- - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng — mã 7216.40.10 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
           "hs": "72164090",
           "whenVi": "Hình L hoặc T, cán nóng, chiều cao ≥ 80 mm — 'loại khác' khi không có ngưỡng carbon đặc biệt",
           "confidence": "medium"
+        },
+        {
+          "hs": "72165011",
+          "whenVi": "- - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng — mã 7216.50.11 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72165019",
+          "whenVi": "- - - Loại khác — mã 7216.50.19 trong biểu thuế hiện hành",
+          "confidence": "low"
+        },
+        {
+          "hs": "72165091",
+          "whenVi": "- - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng — mã 7216.50.91 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72165099",
+          "whenVi": "- - - Loại khác — mã 7216.50.99 trong biểu thuế hiện hành",
+          "confidence": "low"
+        },
+        {
+          "hs": "72166100",
+          "whenVi": "- - Thu được từ các sản phẩm cán phẳng — mã 7216.61.00 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72166900",
+          "whenVi": "- - Loại khác — mã 7216.69.00 trong biểu thuế hiện hành",
+          "confidence": "low"
+        },
+        {
+          "hs": "72169110",
+          "whenVi": "- - - Dạng góc, trừ góc đục lỗ, rãnh, có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng — mã 7216.91.10 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72169190",
+          "whenVi": "- - - Loại khác — mã 7216.91.90 trong biểu thuế hiện hành",
+          "confidence": "low"
         },
         {
           "hs": "72169900",
@@ -1529,6 +1708,180 @@
       "gir": "1",
       "basis": "RULE_TABLE",
       "sourceVi": "Biểu thuế VN nhóm 7216 — góc, khuôn và hình bằng sắt hoặc thép không hợp kim. Phân nhóm theo mặt cắt: 7216.10 (H/I/U, cao ≥ 80mm), 7216.21 (L, < 80mm), 7216.22 (T), 7216.31 (U/I/H, cao ≥ 80mm), 7216.32 (U/I/H, cao < 80mm), 7216.40 (L/T, cao ≥ 80mm), 7216.50 (khác, cao < 80mm), 7216.61 (từ sản phẩm cán phẳng), 7216.69/99 (loại khác). Chú giải Ch.72 mục 1(n) định nghĩa 'góc, khuôn và hình'."
+    },
+    {
+      "id": "thep-tam-can-nong",
+      "titleVi": "Thép tấm cán nóng (không cuộn / hot rolled plate)",
+      "terms": [
+        "thép tấm cán nóng",
+        "tấm thép cán nóng",
+        "hot rolled plate",
+        "hrp",
+        "thép tấm hrc",
+        "thép tấm cán nóng cắt",
+        "steel plate hot rolled",
+        "thép tấm dập nổi cán nóng"
+      ],
+      "excludeIfAny": [
+        "thép không gỉ",
+        "stainless",
+        "inox",
+        "thép cuộn",
+        "hrc coil",
+        "crc",
+        "thép cuộn cán nóng"
+      ],
+      "excludeReasonVi": "Tách khỏi dạng cuộn cùng nhóm gia công; inox/stainless → nhóm thép không gỉ; mạ/phủ → 7210/7212.",
+      "candidates": [
+        {
+          "hs": "72084000",
+          "whenVi": "- Không ở dạng cuộn, chưa được gia công quá mức cán nóng, có hình dập nổi trên bề mặt — mã 7208.40.00 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72085100",
+          "whenVi": "- - Chiều dày trên 10 mm — mã 7208.51.00 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72085200",
+          "whenVi": "- - Chiều dày từ 4,75 mm đến 10 mm — mã 7208.52.00 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72085300",
+          "whenVi": "- - Chiều dày từ 3 mm đến dưới 4,75 mm — mã 7208.53.00 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72085410",
+          "whenVi": "- - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm — mã 7208.54.10 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72085490",
+          "whenVi": "- - - Loại khác — mã 7208.54.90 trong biểu thuế hiện hành",
+          "confidence": "low"
+        },
+        {
+          "hs": "72089010",
+          "whenVi": "- - Dạng lượn sóng — mã 7208.90.10 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "7209",
+          "whyVi": "7209 là cán nguội — khác cơ chế gia công."
+        },
+        {
+          "prefix": "7210",
+          "whyVi": "7210 đã mạ/phủ/tráng; tấm đen cán nóng thuộc 7208."
+        },
+        {
+          "prefix": "7225",
+          "whyVi": "7225 là thép hợp kim khác (vd làm khuôn) — không mặc định từ “tấm cán nóng” thường."
+        }
+      ],
+      "askVi": [
+        "Dạng tấm (không cuộn) hay còn dạng cuộn?",
+        "Chiều rộng ≥ 600 mm hay < 600 mm?",
+        "Chiều dày và hàm lượng carbon nếu biết?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN nhóm 7208 — sản phẩm cán phẳng, không ở dạng cuộn (và mã dư liên quan). Mỗi mã lá gắn whenVi theo nguyên văn mô tả dòng thuế."
+    },
+    {
+      "id": "thep-tam-can-nguoi",
+      "titleVi": "Thép tấm cán nguội (không cuộn / cold rolled sheet)",
+      "terms": [
+        "thép tấm cán nguội",
+        "tấm thép cán nguội",
+        "cold rolled sheet",
+        "cold rolled plate",
+        "tôn tấm cán nguội",
+        "thép tấm crc",
+        "crs sheet"
+      ],
+      "excludeIfAny": [
+        "thép không gỉ",
+        "stainless",
+        "inox",
+        "thép cuộn",
+        "hrc",
+        "mạ kẽm",
+        "galvanized",
+        "tôn mạ",
+        "thép cuộn cán nguội",
+        "crc coil"
+      ],
+      "excludeReasonVi": "Tách khỏi dạng cuộn cùng nhóm gia công; inox/stainless → nhóm thép không gỉ; mạ/phủ → 7210/7212.",
+      "candidates": [
+        {
+          "hs": "72092500",
+          "whenVi": "- - Có chiều dày từ 3 mm trở lên — mã 7209.25.00 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72092610",
+          "whenVi": "- - - Chiều rộng không quá 1.250 mm — mã 7209.26.10 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72092690",
+          "whenVi": "- - - Loại khác — mã 7209.26.90 trong biểu thuế hiện hành",
+          "confidence": "low"
+        },
+        {
+          "hs": "72092710",
+          "whenVi": "- - - Chiều rộng không quá 1.250 mm — mã 7209.27.10 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72092790",
+          "whenVi": "- - - Loại khác — mã 7209.27.90 trong biểu thuế hiện hành",
+          "confidence": "low"
+        },
+        {
+          "hs": "72092810",
+          "whenVi": "- - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm — mã 7209.28.10 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72092890",
+          "whenVi": "- - - Loại khác — mã 7209.28.90 trong biểu thuế hiện hành",
+          "confidence": "low"
+        },
+        {
+          "hs": "72099010",
+          "whenVi": "- - Dạng lượn sóng — mã 7209.90.10 trong biểu thuế hiện hành",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "7208",
+          "whyVi": "7208 là cán nóng."
+        },
+        {
+          "prefix": "7210",
+          "whyVi": "7210 đã mạ/phủ — CRC/CRS đen thuần không thuộc đây."
+        },
+        {
+          "prefix": "7212",
+          "whyVi": "7212 rộng <600 mm hoặc đã phủ theo nhánh hẹp — chỉ khi khổ hẹp."
+        }
+      ],
+      "askVi": [
+        "Dạng tấm (không cuộn) hay còn dạng cuộn?",
+        "Chiều rộng ≥ 600 mm hay < 600 mm?",
+        "Chiều dày và hàm lượng carbon nếu biết?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN nhóm 7209 — sản phẩm cán phẳng, không ở dạng cuộn (và mã dư liên quan). Mỗi mã lá gắn whenVi theo nguyên văn mô tả dòng thuế."
     }
-  ]
+  ],
+  "updatedAt": "2026-09-16"
 }

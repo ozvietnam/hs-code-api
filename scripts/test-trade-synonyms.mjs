@@ -73,6 +73,11 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     ['solenoid valve', ['84812090', '84812011', '84812020']],
     ['van bếp ga', ['84818030']],
     ['van ngắt nhiên liệu xe', ['84818083', '84818084', '84818093']],
+    ['thép cuộn cán nóng', ['72083990', '72083700', '72083600', '72083800', '72083910', '72081000', '72082500']],
+    ['hot rolled coil', ['72083990', '72083700', '72083600', '72083800', '72081000', '72082500', '72082600']],
+    ['thép cuộn cán nguội', ['72099090', '72092890', '72092790', '72091790', '72091810', '72091500']],
+    ['thép hình H', ['72163190', '72163390', '72161000', '72163290', '72163311']],
+    ['van giảm áp', ['84811011', '84811019', '84811021', '84811022', '84811091', '84811099']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -185,6 +190,45 @@ console.log('\n== Không phá luồng cũ ==');
 
   const dup = searchCandidates('thép hợp kim', { topCandidates: 20 });
   check('không trả mã trùng lặp', new Set(dup.map((c) => c.hsCode)).size === dup.length);
+}
+
+console.log('\n== Phủ 100% mã lá nhóm đã nhận (heading-coverage) ==');
+{
+  const { readdirSync, existsSync, readFileSync } = require('fs');
+  const covDir = join(ROOT, 'data', 'heading-coverage');
+  check('có thư mục heading-coverage', existsSync(covDir));
+  const files = existsSync(covDir) ? readdirSync(covDir).filter((f) => f.endsWith('.json')) : [];
+  check('có ít nhất một nhóm đã khoá phủ', files.length >= 1, `hiện ${files.length}`);
+
+  const candHs = new Set();
+  for (const e of thesaurus.entries) for (const c of e.candidates) candHs.add(c.hs);
+
+  for (const f of files) {
+    const cov = JSON.parse(readFileSync(join(covDir, f), 'utf8'));
+    const heading = String(cov.heading || f.replace(/\.json$/, ''));
+    const leaves = Object.keys(taxData).filter((k) => /^\d{8}$/.test(k) && k.startsWith(heading)).sort();
+    const codeKeys = Object.keys(cov.codes || {}).sort();
+    check(`${heading}: leafCount khớp tax.json`, cov.leafCount === leaves.length, `${cov.leafCount} vs ${leaves.length}`);
+    check(`${heading}: codes[] đủ mọi lá`, codeKeys.join(',') === leaves.join(','));
+    check(`${heading}: coveredCount = leafCount`, cov.coveredCount === leaves.length);
+    check(`${heading}: missingHs rỗng`, Array.isArray(cov.missingHs) && cov.missingHs.length === 0);
+
+    const missCand = leaves.filter((hs) => !candHs.has(hs));
+    check(`${heading}: mọi lá có trong candidates[] trade-synonyms`, missCand.length === 0, missCand.slice(0, 8).join(','));
+
+    const missMap = leaves.filter((hs) => !(cov.codes?.[hs]?.synonymEntryIds || []).length);
+    check(`${heading}: mọi lá gắn synonymEntryIds`, missMap.length === 0, missMap.slice(0, 8).join(','));
+
+    const badId = [];
+    for (const hs of leaves) {
+      for (const id of cov.codes[hs].synonymEntryIds || []) {
+        const entry = thesaurus.entries.find((e) => e.id === id);
+        if (!entry) badId.push(`${hs}:${id}:missing-entry`);
+        else if (!(entry.candidates || []).some((c) => c.hs === hs)) badId.push(`${hs}:${id}:not-in-candidates`);
+      }
+    }
+    check(`${heading}: synonymEntryIds trỏ đúng mục có mã lá`, badId.length === 0, badId.slice(0, 8).join(','));
+  }
 }
 
 console.log('\n== Thống kê ==');
