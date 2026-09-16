@@ -15,7 +15,7 @@
  *    thứ chưa nằm trong allowlist thì build DỪNG, không sinh file. Đây là cùng
  *    một allowlist mà API dùng, nên không thể có chuyện bản tĩnh hở dữ liệu mà
  *    bản API vẫn kín.
- * 2. Dùng lại đúng hàm lib mà handler API gọi (mapTaxLookup, buildChaptersIndex,
+ * 2. Dùng lại đúng hàm lib mà handler API gọi (buildTaxLookup, buildChaptersIndex,
  *    listDocs...). Bản tĩnh và bản API vì thế không thể lệch shape.
  * 3. Có quyền BỎ BỚT so với allowlist (xem OMITTED) — bỏ thì mất tính năng,
  *    lộ thì không thu hồi được; luôn chọn hướng sai an toàn.
@@ -38,9 +38,8 @@ const {
   checkLimits,
 } = require('../lib/static-export.js');
 const { taxData, notesData, precedentsData, conflictsData } = require('../lib/data.js');
-const { mapTaxLookup } = require('../lib/tax-mapper.js');
-const { getEnrichedForHs } = require('../lib/enriched-data.js');
-const { getProcedures, listProcedures } = require('../lib/policy-procedures.js');
+const { buildTaxLookup } = require('../lib/tax-lookup.js');
+const { listProcedures } = require('../lib/policy-procedures.js');
 const { buildChapterTree } = require('../lib/tree-metadata.js');
 const { buildChaptersIndex } = require('../lib/chapters-index.js');
 const { buildNoteChain } = require('../lib/gir-notes.js');
@@ -105,15 +104,13 @@ const V = (p) => `${SCHEMA_VERSION}/${p}`;
 const t0 = Date.now();
 
 // --- 1. Tra thuế theo mã: một file mỗi mã --------------------------------------
-// Mirror api/tax.js — cùng mapTaxLookup + cùng phần policyProcedures.
+// CÙNG MỘT HÀM với api/tax.js (lib/tax-lookup.js), không chép tay nữa. Bản
+// trước chép ba dòng làm giàu rồi trôi: API có vatReduction + breadcrumb, bản
+// tĩnh không, và không test nào kêu.
 {
   const codes = Object.keys(taxData).filter(inSample).sort();
   for (const hs of codes) {
-    const result = mapTaxLookup(hs);
-    const enriched = getEnrichedForHs(hs);
-    const procedures = enriched?.warnings ? getProcedures(enriched.warnings) : [];
-    if (procedures.length > 0) result.policyProcedures = procedures;
-    write(V(`code/${hs}.json`), result);
+    write(V(`code/${hs}.json`), buildTaxLookup(hs));
   }
   emit({
     source: 'endpoint:tax',
