@@ -62,6 +62,10 @@ biệt…") kéo 908 dòng dư vào mọi truy vấn dài.
 
 ## 2. Thêm một mục vào từ điển tên thương mại
 
+> **Giao cho agent khác làm theo tiểu mục?** Đưa họ
+> [`docs/huong-dan-agent-mo-rong-tu-dien.md`](huong-dan-agent-mo-rong-tu-dien.md) —
+> quy trình 6 bước, bốn luật test khoá, mẫu giao việc. Mục này chỉ là tóm tắt.
+
 `data/trade-synonyms.json`. Một mục tối thiểu:
 
 ```json

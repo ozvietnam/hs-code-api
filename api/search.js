@@ -161,6 +161,10 @@ module.exports = function handler(req, res) {
   // Từ điển tên thương mại có thể đã LOẠI HẲN vài mã khỏi kết quả (vd 8480 khi
   // hỏi thép tấm làm khuôn). Loại mà không nói là giấu; nói ra kèm lý do thì
   // người tra tự phản biện được.
+  // Câu hỏi đã được bóc thành thực thể (lib/query-parse.js): danh từ lõi đem đi
+  // tìm, cơ cấu + thông số + mác vật liệu tách riêng. Trả ra để ERP/AI biết hệ
+  // thống đã HIỂU câu thế nào — và để người tra thấy ngay nếu bóc sai.
+  const parsedQuery = rawCandidates.parsedQuery || null;
   const avoided = rawCandidates.avoidedByTradeRules || [];
   const tradeMatches = rawCandidates.tradeTermMatches || [];
   const tradeExcluded = rawCandidates.tradeTermExcluded || [];
@@ -171,6 +175,16 @@ module.exports = function handler(req, res) {
     total: results.length,
     results,
     ...(formWarning ? { formWarning } : {}),
+    ...(parsedQuery
+      ? {
+          parsedQuery: {
+            coreVi: parsedQuery.coreVi,
+            specs: parsedQuery.specs,
+            mechanisms: parsedQuery.mechanisms,
+            materialGrades: parsedQuery.materialGrades,
+          },
+        }
+      : {}),
     ...(avoided.length
       ? {
           avoidedCodes: avoided.slice(0, 12).map((a) => ({

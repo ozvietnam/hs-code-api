@@ -323,6 +323,64 @@
       "gir": "1",
       "basis": "RULE_TABLE",
       "sourceVi": "Biểu thuế 2026 nhóm 8480: 84802000 \"Đế khuôn\", 84807110/84807190 \"Loại phun hoặc nén\", 84807910/84807990 loại khác — dùng cho cao su hoặc plastic."
+    },
+    {
+      "id": "ban-nang-thuy-luc",
+      "titleVi": "Bàn nâng / xe bàn nâng thủy lực (lift table)",
+      "terms": [
+        "bàn nâng",
+        "xe bàn nâng",
+        "bàn nâng thủy lực",
+        "xe nâng bàn",
+        "lift table",
+        "scissor lift",
+        "bàn nâng cắt kéo",
+        "xe nâng tay cao"
+      ],
+      "excludeIfAny": [
+        "xe nâng hàng",
+        "xe nâng điện ngồi lái",
+        "forklift"
+      ],
+      "excludeReasonVi": "Xe nâng hàng có càng (forklift) thuộc 8427 theo nhóm riêng — không phải bàn nâng.",
+      "candidates": [
+        {
+          "hs": "84289090",
+          "whenVi": "Bàn nâng cố định hoặc đẩy tay, nâng bằng thủy lực/cắt kéo, KHÔNG tự hành — máy nâng hạ khác",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84279000",
+          "whenVi": "Có bánh, tự hành hoặc là xe công tác có thiết bị nâng (không phải xe nâng càng)",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "2522",
+          "whyVi": "'Vôi thủy lực' chỉ trùng chữ 'thủy lực' — vôi là vật liệu xây dựng, không phải máy nâng."
+        },
+        {
+          "prefix": "2523",
+          "whyVi": "'Xi măng thủy lực' — trùng chữ, khác hẳn hàng."
+        },
+        {
+          "prefix": "2710",
+          "whyVi": "'Dầu phanh thủy lực' — trùng chữ, là dầu bôi trơn."
+        },
+        {
+          "prefix": "7304",
+          "whyVi": "Ống thép chịu áp lực — chỉ dính vì 'áp lực'/'thủy lực', không phải máy nâng."
+        }
+      ],
+      "askVi": [
+        "Bàn nâng có tự hành (động cơ di chuyển) không? (có → xem 8427)",
+        "Nâng bằng thủy lực, cắt kéo hay tời?",
+        "Tải trọng và chiều cao nâng tối đa?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 8428 (máy nâng hạ, xếp dỡ khác) và 8427 (xe nâng, xe công tác có thiết bị nâng). Bàn nâng không tự hành không phải xe → 8428; mã dư 84289090 vì không thuộc các phân nhóm kể tên."
     }
   ]
 }
