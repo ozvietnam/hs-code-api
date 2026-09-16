@@ -1881,6 +1881,647 @@
       "gir": "1",
       "basis": "RULE_TABLE",
       "sourceVi": "Biểu thuế VN nhóm 7209 — sản phẩm cán phẳng, không ở dạng cuộn (và mã dư liên quan). Mỗi mã lá gắn whenVi theo nguyên văn mô tả dòng thuế."
+    },
+    {
+      "id": "bang-dieu-khien-plc",
+      "titleVi": "Bảng / tủ PLC — bộ điều khiển logic lập trình (≤1000V)",
+      "terms": [
+        "bảng plc",
+        "tủ plc",
+        "plc",
+        "programmable logic controller",
+        "bộ điều khiển logic lập trình",
+        "bảng điều khiển plc",
+        "tủ điều khiển plc",
+        "plc panel",
+        "plc cabinet",
+        "bộ xử lý lập trình",
+        "sen plc"
+      ],
+      "excludeIfAny": [
+        "điện áp cao",
+        "trung thế",
+        "cao thế",
+        ">1000",
+        "kv",
+        "soft starter riêng"
+      ],
+      "excludeReasonVi": "Điện áp >1000V thuộc 8537.20; thiết bị điều khiển tự động đơn lẻ thuộc 9032.",
+      "candidates": [
+        {
+          "hs": "85371012",
+          "whenVi": "- - - Bảng điều khiển có trang bị bộ xử lý lập trình (SEN) — mã 8537.10.12",
+          "confidence": "medium"
+        },
+        {
+          "hs": "85371030",
+          "whenVi": "- - Bộ điều khiển logic có khả năng lập trình cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn — mã 8537.10.30",
+          "confidence": "medium"
+        },
+        {
+          "hs": "85371019",
+          "whenVi": "- - - Loại khác — mã 8537.10.19",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "9032",
+          "whyVi": "9032 là thiết bị điều khiển tự động / dụng cụ đo-điều khiển — không phải bảng/tủ điện hoàn chỉnh 8537."
+        },
+        {
+          "prefix": "8538",
+          "whyVi": "8538 là bộ phận của bảng (relay, busbar…) — không phải bảng hoàn chỉnh."
+        },
+        {
+          "prefix": "8504",
+          "whyVi": "8504 là biến áp / bộ biến đổi tĩnh — khác bảng điều khiển."
+        }
+      ],
+      "askVi": [
+        "Điện áp làm việc ≤1000V hay >1000V?",
+        "Có phải PLC cho máy ép phun / khuôn ép nhựa không? (→ 8537.10.30)",
+        "Là bảng hoàn chỉnh hay chỉ module PLC rời?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN 8537.10 — bảng điều khiển ≤1000V; 8537.10.12 bảng có bộ xử lý lập trình (SEN); 8537.10.30 PLC cho máy tự động dịch chuyển/kẹp khuôn. Chú giải nhóm 8537: gồm bảng chuyển mạch và bộ điều khiển lập trình; không gồm 90.32."
+    },
+    {
+      "id": "bang-dieu-khien-dcs",
+      "titleVi": "Bảng điều khiển DCS / hệ thống điều khiển phân tán (≤1000V)",
+      "terms": [
+        "dcs",
+        "distributed control system",
+        "hệ thống điều khiển phân tán",
+        "bảng điều khiển dcs",
+        "tủ dcs",
+        "dcs panel",
+        "bảng dcs"
+      ],
+      "excludeIfAny": [
+        ">1000",
+        "trung thế",
+        "cao thế"
+      ],
+      "excludeReasonVi": "DCS gắn tủ cao thế → 8537.20; PLC thường → mục bang-dieu-khien-plc.",
+      "candidates": [
+        {
+          "hs": "85371011",
+          "whenVi": "- - - Bảng điều khiển của loại thích hợp sử dụng cho hệ thống điều khiển phân tán — mã 8537.10.11",
+          "confidence": "medium"
+        },
+        {
+          "hs": "85371092",
+          "whenVi": "- - - Loại phù hợp sử dụng cho hệ thống điều khiển phân tán — mã 8537.10.92",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "9032",
+          "whyVi": "9032 không phải bảng/tủ DCS hoàn chỉnh."
+        },
+        {
+          "prefix": "8538",
+          "whyVi": "8538 bộ phận, không phải bảng DCS nguyên chiếc."
+        }
+      ],
+      "askVi": [
+        "Đây là tủ/bảng DCS hoàn chỉnh hay card/module I/O rời?",
+        "Điện áp làm việc ≤1000V?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN 8537.10.11 và 8537.10.92 — bảng điều khiển loại thích hợp cho hệ thống điều khiển phân tán (DCS)."
+    },
+    {
+      "id": "bang-phan-phoi-dien",
+      "titleVi": "Bảng phân phối / tủ điện / MCC / switchboard (≤1000V)",
+      "terms": [
+        "bảng phân phối",
+        "tủ điện",
+        "tủ phân phối",
+        "switchboard",
+        "mcc",
+        "motor control center",
+        "distribution board",
+        "distribution panel",
+        "tủ mcc",
+        "bảng điện",
+        "tủ điều khiển động cơ",
+        "panel điện",
+        "db board",
+        "electrical panel"
+      ],
+      "excludeIfAny": [
+        "plc",
+        "dcs",
+        ">1000",
+        "trung thế",
+        "cao thế",
+        "biến tần"
+      ],
+      "excludeReasonVi": "PLC/DCS có mục riêng; biến tần là 8504; cao thế >1000V là 8537.20.",
+      "candidates": [
+        {
+          "hs": "85371020",
+          "whenVi": "- - Bảng phân phối (gồm cả panel đỡ và tấm đỡ phẳng) chỉ dùng hoặc chủ yếu dùng với các hàng hóa thuộc nhóm 84.71, 85.17 hoặc 85.25 — mã 8537.10.20",
+          "confidence": "medium"
+        },
+        {
+          "hs": "85371013",
+          "whenVi": "- - - Bảng điều khiển khác của loại thích hợp dùng cho hàng hóa của nhóm 84.15, 84.18, 84.50, 85.08, 85.09 hoặc 85.16 (SEN) — mã 8537.10.13",
+          "confidence": "medium"
+        },
+        {
+          "hs": "85371099",
+          "whenVi": "- - - Loại khác — mã 8537.10.99",
+          "confidence": "low"
+        },
+        {
+          "hs": "85371019",
+          "whenVi": "- - - Loại khác — mã 8537.10.19",
+          "confidence": "low"
+        },
+        {
+          "hs": "85371091",
+          "whenVi": "- - - Loại sử dụng trong các thiết bị sóng vô tuyến hoặc quạt điện — mã 8537.10.91",
+          "confidence": "medium"
+        },
+        {
+          "hs": "85371040",
+          "whenVi": "- - Bộ điều khiển động cơ có điện áp đầu ra từ 24V đến 120VDC và có cường độ dòng điện từ 300A đến 500A — mã 8537.10.40",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8536",
+          "whyVi": "8536 là thiết bị đóng cắt/bảo vệ rời (aptomat, contactor…) — chưa lắp thành bảng."
+        },
+        {
+          "prefix": "8538",
+          "whyVi": "8538 bộ phận bảng, không phải bảng hoàn chỉnh."
+        },
+        {
+          "prefix": "8504",
+          "whyVi": "Biến tần / VFD thuộc 8504, không phải bảng phân phối."
+        },
+        {
+          "prefix": "9032",
+          "whyVi": "9032 thiết bị điều khiển tự động đơn lẻ."
+        }
+      ],
+      "askVi": [
+        "Đã lắp thành bảng/tủ hoàn chỉnh hay chỉ thiết bị đóng cắt rời (8536)?",
+        "Dùng cho điều hòa/tủ lạnh/máy giặt/đồ gia dụng điện không? (→ 8537.10.13/.20)",
+        "Điện áp ≤1000V hay >1000V?",
+        "Có phải bộ điều khiển động cơ 24–120VDC / 300–500A không? (→ 8537.10.40)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN 8537.10 — bảng phân phối và bảng điều khiển ≤1000V (8537.10.13/.20/.40/.91/.99 và mã dư .19). Chú giải 8537: từ bảng nhỏ vài cầu chì đến tủ phức tạp nhà máy."
+    },
+    {
+      "id": "tu-dien-cao-ap-8537",
+      "titleVi": "Bảng / tủ điều khiển hoặc phân phối điện áp >1000V",
+      "terms": [
+        "tủ trung thế",
+        "tủ cao thế",
+        "bảng trung thế",
+        "switchgear",
+        "tủ điện >1000v",
+        "tủ điện trên 1000v",
+        "high voltage switchboard",
+        "mv switchgear",
+        "tủ 22kv",
+        "tủ 35kv",
+        "tủ 66kv"
+      ],
+      "excludeIfAny": [
+        "plc gia dụng",
+        "điện áp thấp",
+        "220v",
+        "380v tủ mcc thường"
+      ],
+      "excludeReasonVi": "≤1000V thuộc 8537.10; thiết bị đóng cắt rời cao thế có thể 8535.",
+      "candidates": [
+        {
+          "hs": "85372011",
+          "whenVi": "- - - Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên — mã 8537.20.11",
+          "confidence": "medium"
+        },
+        {
+          "hs": "85372019",
+          "whenVi": "- - - Loại khác — mã 8537.20.19",
+          "confidence": "low"
+        },
+        {
+          "hs": "85372021",
+          "whenVi": "- - - Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên — mã 8537.20.21",
+          "confidence": "medium"
+        },
+        {
+          "hs": "85372029",
+          "whenVi": "- - - Loại khác — mã 8537.20.29",
+          "confidence": "low"
+        },
+        {
+          "hs": "85372090",
+          "whenVi": "- - Loại khác — mã 8537.20.90",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8535",
+          "whyVi": "8535 là thiết bị đóng cắt/bảo vệ dùng riêng cho >1000V (chưa lắp thành bảng)."
+        },
+        {
+          "prefix": "8536",
+          "whyVi": "8536 chỉ cho ≤1000V — thiết bị rời."
+        },
+        {
+          "prefix": "8504",
+          "whyVi": "Máy biến áp thuộc 8504, không phải bảng phân phối."
+        }
+      ],
+      "askVi": [
+        "Điện áp định mức >1000V xác nhận?",
+        "Đã lắp thành bảng/tủ hoàn chỉnh hay thiết bị đóng cắt rời (8535)?",
+        "Có gắn thiết bị ngắt/nối/bảo vệ mạch ≥66 kV không?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN 8537.20 — bảng điều khiển/phân phối cho điện áp trên 1000V, gồm các nhánh gắn thiết bị ≥66 kV và mã dư."
+    },
+    {
+      "id": "thang-may-thang-cuon",
+      "titleVi": "Thang máy / thang cuốn / băng tải người đi bộ",
+      "terms": [
+        "thang máy",
+        "thang cuon",
+        "thang cuốn",
+        "elevator",
+        "lift passenger",
+        "escalator",
+        "moving walk",
+        "băng tải người",
+        "passenger lift",
+        "thang máy chở người",
+        "thang máy hàng"
+      ],
+      "excludeIfAny": [
+        "xe nâng",
+        "forklift",
+        "bàn nâng",
+        "scissor"
+      ],
+      "excludeReasonVi": "Xe nâng càng 8427; bàn nâng/thiết bị nâng khác 8428.90; không lẫn thang máy cố định.",
+      "candidates": [
+        {
+          "hs": "84281031",
+          "whenVi": "- - - Để chở người — mã 8428.10.31",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84281039",
+          "whenVi": "- - - Loại khác — mã 8428.10.39",
+          "confidence": "low"
+        },
+        {
+          "hs": "84281040",
+          "whenVi": "- - Tời nâng kiểu gầu nâng (trục tải thùng kíp) — mã 8428.10.40",
+          "confidence": "high"
+        },
+        {
+          "hs": "84284000",
+          "whenVi": "- Thang cuốn và băng tải tự động dùng cho người đi bộ — mã 8428.40.00",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8427",
+          "whyVi": "8427 là xe nâng tự hành (forklift), không phải thang máy/thang cuốn cố định."
+        },
+        {
+          "prefix": "8431",
+          "whyVi": "8431 bộ phận của máy nâng — không phải nguyên chiếc."
+        }
+      ],
+      "askVi": [
+        "Chở người hay hàng/khác?",
+        "Thang máy cabin, thang cuốn, hay tời gầu nâng?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN 8428.10 (thang máy/tời nâng) và 8428.40 (thang cuốn và băng tải người)."
+    },
+    {
+      "id": "bang-tai-cong-nghiep",
+      "titleVi": "Băng tải / conveyor công nghiệp (không phải băng tải người)",
+      "terms": [
+        "băng tải",
+        "bang tai",
+        "conveyor",
+        "belt conveyor",
+        "screw conveyor",
+        "roller conveyor",
+        "băng chuyền",
+        "máy băng tải",
+        "pneumatic conveyor",
+        "băng tải khí nén"
+      ],
+      "excludeIfAny": [
+        "người đi bộ",
+        "escalator",
+        "thang cuốn",
+        "xe nâng"
+      ],
+      "excludeReasonVi": "Băng tải người/thang cuốn = 8428.40; xe nâng = 8427.",
+      "candidates": [
+        {
+          "hs": "84282010",
+          "whenVi": "- - Loại sử dụng trong nông nghiệp — mã 8428.20.10",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84282090",
+          "whenVi": "- - Loại khác — mã 8428.20.90",
+          "confidence": "low"
+        },
+        {
+          "hs": "84283100",
+          "whenVi": "- - Thiết kế chuyên sử dụng dưới lòng đất — mã 8428.31.00",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84283210",
+          "whenVi": "- - - Loại sử dụng trong nông nghiệp — mã 8428.32.10",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84283290",
+          "whenVi": "- - - Loại khác — mã 8428.32.90",
+          "confidence": "low"
+        },
+        {
+          "hs": "84283310",
+          "whenVi": "- - - Loại sử dụng trong nông nghiệp — mã 8428.33.10",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84283390",
+          "whenVi": "- - - Loại khác — mã 8428.33.90",
+          "confidence": "low"
+        },
+        {
+          "hs": "84283910",
+          "whenVi": "- - - Loại sử dụng trong nông nghiệp — mã 8428.39.10",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84283990",
+          "whenVi": "- - - Loại khác — mã 8428.39.90",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8427",
+          "whyVi": "8427 xe nâng càng — khác băng tải cố định/continuous."
+        },
+        {
+          "prefix": "8431",
+          "whyVi": "8431 bộ phận băng tải, không phải máy nguyên chiếc."
+        }
+      ],
+      "askVi": [
+        "Dùng nông nghiệp?",
+        "Kiểu gầu/xích/đai/trục vít?",
+        "Thiết kế chuyên dưới lòng đất?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN 8428.20–8428.39 — máy nâng liên tục / băng tải cho hàng (không phải người)."
+    },
+    {
+      "id": "xe-nang-forklift",
+      "titleVi": "Xe nâng càng / forklift / stacker tự hành",
+      "terms": [
+        "xe nâng",
+        "xe nâng hàng",
+        "forklift",
+        "xe nâng càng",
+        "xe nâng điện",
+        "reach truck",
+        "stacker",
+        "pallet stacker",
+        "xe nâng pallet"
+      ],
+      "excludeIfAny": [
+        "bàn nâng",
+        "scissor",
+        "thang máy",
+        "băng tải",
+        "crane"
+      ],
+      "excludeReasonVi": "Bàn nâng/scissor không tự hành kiểu càng → 8428; cầu trục khác nhóm.",
+      "candidates": [
+        {
+          "hs": "84271000",
+          "whenVi": "- Xe tự hành chạy bằng mô tơ điện — mã 8427.10.00",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84272000",
+          "whenVi": "- Xe tự hành khác — mã 8427.20.00",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84279000",
+          "whenVi": "- Các loại xe khác — mã 8427.90.00",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8428",
+          "whyVi": "8428 là máy nâng/bốc xếp khác (băng tải, thang máy, bàn nâng…) — không phải xe nâng càng tự hành."
+        },
+        {
+          "prefix": "8709",
+          "whyVi": "8709 xe công tác ngắn không có thiết bị nâng kiểu forklift."
+        },
+        {
+          "prefix": "8431",
+          "whyVi": "8431 bộ phận xe nâng."
+        }
+      ],
+      "askVi": [
+        "Tự hành có càng nâng pallet?",
+        "Điện / diesel / gas?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN nhóm 8427 — xe nâng tự hành có thiết bị nâng kiểu càng và xe nâng khác."
+    },
+    {
+      "id": "ban-nang-thuy-luc",
+      "titleVi": "Bàn nâng / scissor lift / lift table",
+      "terms": [
+        "bàn nâng",
+        "xe bàn nâng",
+        "lift table",
+        "scissor lift",
+        "bàn nâng thủy lực",
+        "bàn nâng cắt kéo"
+      ],
+      "excludeIfAny": [
+        "xe nâng hàng",
+        "forklift",
+        "xe nâng càng",
+        "thang máy",
+        "escalator",
+        "băng tải",
+        "robot"
+      ],
+      "excludeReasonVi": "Forklift 8427; thang máy/băng tải/robot có mục riêng.",
+      "candidates": [
+        {
+          "hs": "84289090",
+          "whenVi": "- - Loại khác — mã 8428.90.90 — bàn nâng/thiết bị nâng không thuộc phân nhóm kể tên",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84289030",
+          "whenVi": "- - Thiết bị đẩy xe goòng trong hầm mỏ, thanh ngang xe goòng hoặc đầu máy, thiết bị lật toa xe và các thiết bị giữ xe goòng chạy đường sắt tương tự — mã 8428.90.30",
+          "confidence": "low"
+        },
+        {
+          "hs": "84289020",
+          "whenVi": "- - Máy tự động để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp — mã 8428.90.20",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8427",
+          "whyVi": "Xe nâng tự hành có càng = 8427."
+        },
+        {
+          "prefix": "2522",
+          "whyVi": "'Vôi thủy lực' chỉ trùng chữ."
+        },
+        {
+          "prefix": "8431",
+          "whyVi": "8431 bộ phận."
+        }
+      ],
+      "askVi": [
+        "Có tự hành kiểu xe nâng càng không? (có → 8427)",
+        "Tải trọng và chiều cao nâng?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN 8428.90 — máy nâng/bốc xếp khác; mã dư 8428.90.90 khi không thuộc .20/.30."
+    },
+    {
+      "id": "robot-cong-nghiep-8428",
+      "titleVi": "Rô bốt công nghiệp (nhóm 8428.70)",
+      "terms": [
+        "robot công nghiệp",
+        "rô bốt công nghiệp",
+        "industrial robot",
+        "robot arm",
+        "cánh tay robot"
+      ],
+      "excludeIfAny": [
+        "đồ chơi",
+        "toy robot",
+        "robot hút bụi",
+        "vacuum"
+      ],
+      "excludeReasonVi": "Robot đồ chơi/gia dụng không thuộc 8428.70.",
+      "candidates": [
+        {
+          "hs": "84287000",
+          "whenVi": "- Rô bốt công nghiệp — mã 8428.70.00",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8508",
+          "whyVi": "Máy hút bụi điện gia dụng — không phải robot công nghiệp 8428."
+        },
+        {
+          "prefix": "9503",
+          "whyVi": "Đồ chơi."
+        }
+      ],
+      "askVi": [
+        "Robot công nghiệp sản xuất hay đồ chơi/gia dụng?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN 8428.70.00 — Rô bốt công nghiệp (gọi đích danh)."
+    },
+    {
+      "id": "cap-treo-thiet-bi-mo",
+      "titleVi": "Cáp treo / thiết bị mỏ / máy xử lý mạch in (8428.60–.90)",
+      "terms": [
+        "cáp treo",
+        "ghế treo",
+        "teleferic",
+        "ski lift",
+        "thiết bị đẩy goòng",
+        "máy lật toa",
+        "máy kẹp mạch in",
+        "pcb handling"
+      ],
+      "excludeIfAny": [
+        "bàn nâng",
+        "forklift",
+        "thang máy"
+      ],
+      "excludeReasonVi": "Các mặt hàng 8428.60/.90 đặc thù — không lẫn bàn nâng/xe nâng.",
+      "candidates": [
+        {
+          "hs": "84286000",
+          "whenVi": "- Thùng cáp treo, ghế treo, cơ cấu kéo người trượt tuyết lên cao dùng trong môn trượt tuyết; cơ cấu kéo dùng cho đường sắt leo núi — mã 8428.60.00",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84289030",
+          "whenVi": "- - Thiết bị đẩy xe goòng trong hầm mỏ, thanh ngang xe goòng hoặc đầu máy, thiết bị lật toa xe và các thiết bị giữ xe goòng chạy đường sắt tương tự — mã 8428.90.30",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84289020",
+          "whenVi": "- - Máy tự động để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp — mã 8428.90.20",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84289090",
+          "whenVi": "- - Loại khác — mã 8428.90.90",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8427",
+          "whyVi": "Không phải xe nâng càng."
+        }
+      ],
+      "askVi": [
+        "Cáp treo/trượt tuyết, thiết bị goòng mỏ, hay máy mạch in?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN 8428.60, 8428.90.20, 8428.90.30."
     }
   ],
   "updatedAt": "2026-09-16"
