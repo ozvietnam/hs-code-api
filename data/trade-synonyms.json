@@ -1,0 +1,328 @@
+{
+  "version": "2026-09",
+  "noteVi": "Từ điển TÊN THƯƠNG MẠI → mã HS, do người soạn và kiểm chứng từng dòng. Khác hoàn toàn data/hs-aliases.json (đào tự động từ tờ khai Oz): bảng này phủ những ngành Oz KHÔNG có tờ khai nào — điển hình là sắt thép chương 72–81 — nên không thể đào ra được. Mỗi mục bắt buộc có sourceVi dẫn chứng; mục nào dữ liệu không khẳng định nổi một mã thì để nhiều ứng viên kèm askVi, KHÔNG chốt bừa.",
+  "numericTermContext": [
+    "thep",
+    "khuon",
+    "steel",
+    "mold",
+    "mac",
+    "tam",
+    "inox"
+  ],
+  "entries": [
+    {
+      "id": "thep-lam-khuon",
+      "titleVi": "Thép làm khuôn (mác P20 / 2311 / NAK80 / 718H / S136)",
+      "terms": [
+        "thép làm khuôn",
+        "thép khuôn mẫu",
+        "thép làm khuôn nhựa",
+        "tấm thép làm khuôn",
+        "thép tấm làm khuôn",
+        "thép chế tạo khuôn",
+        "mold steel",
+        "thép khuôn",
+        "p20",
+        "2311",
+        "2738",
+        "718h",
+        "nak80",
+        "s136",
+        "skd11",
+        "skd61"
+      ],
+      "excludeIfAny": [
+        "bộ khuôn",
+        "mold base",
+        "khuôn đúc",
+        "khuôn hoàn chỉnh",
+        "mold assembly"
+      ],
+      "excludeReasonVi": "Câu hỏi nói tới BỘ KHUÔN đã thành hình, không phải thép tấm nguyên liệu. Bộ khuôn thuộc nhóm 8480 — chính là mã mà mục này vốn dùng để chặn, nên ở đây phải tắt mục đi chứ không chặn 8480.",
+      "candidates": [
+        {
+          "hs": "72254090",
+          "whenVi": "Dạng tấm / cán phẳng, chiều rộng ≥ 600 mm, chưa gia công quá mức cán nóng, không ở dạng cuộn",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72269190",
+          "whenVi": "Dạng tấm / cán phẳng, chiều rộng < 600 mm, chưa gia công quá mức cán nóng",
+          "confidence": "medium"
+        },
+        {
+          "hs": "72285090",
+          "whenVi": "Dạng thanh / que đặc, không phải mặt cắt tròn, chưa gia công quá mức cán nguội",
+          "confidence": "low"
+        },
+        {
+          "hs": "72285010",
+          "whenVi": "Dạng thanh / que đặc, mặt cắt ngang hình tròn",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8480",
+          "whyVi": "Nhóm 8480 là BỘ KHUÔN đã thành hình (khuôn đúc, khuôn ép nhựa) — thành phẩm. Thép tấm mới chỉ là NGUYÊN LIỆU để gia công ra khuôn, chưa có đặc trưng của khuôn nên GIR 2(a) không áp dụng."
+        },
+        {
+          "prefix": "8207",
+          "whyVi": "Nhóm 8207 là dụng cụ thay thế lắp cho máy. Thép tấm chưa gia công không phải dụng cụ."
+        }
+      ],
+      "askVi": [
+        "Chiều rộng tấm: từ 600 mm trở lên hay dưới 600 mm? (ranh giới 7225 / 7226)",
+        "Dạng hàng: tấm cán phẳng hay thanh/que đặc? (7225–7226 so với 7228)",
+        "Đã gia công quá mức cán nóng chưa (cán nguội, phay, tôi, mài)?",
+        "Mác thép và thành phần hợp kim (để loại trừ thép không gỉ nhóm 7219/7220)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 7225/7226/7228; phạm vi phân nhóm lấy từ data/hs-context.json (72254090: \"chiều rộng ≥ 600mm\", 72269190: \"chiều rộng < 600mm\"). Chú giải Chương 72 phân biệt sản phẩm cán phẳng với thanh que."
+    },
+    {
+      "id": "may-lam-mat-bay-hoi",
+      "titleVi": "Quạt điều hòa / máy làm mát không khí bằng hơi nước",
+      "terms": [
+        "quạt điều hòa",
+        "quạt hơi nước",
+        "quạt làm mát hơi nước",
+        "máy làm mát không khí",
+        "máy làm mát bằng hơi nước",
+        "quạt điều hoà hơi nước",
+        "air cooler",
+        "evaporative cooler",
+        "quạt điều hòa không khí"
+      ],
+      "candidates": [
+        {
+          "hs": "84796000",
+          "whenVi": "Làm mát bằng bay hơi nước (tấm làm mát + bơm nước), KHÔNG có chu trình lạnh máy nén",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8415",
+          "whyVi": "Nhóm 8415 đòi hỏi máy điều hòa có quạt VÀ bộ phận thay đổi nhiệt độ ĐỒNG THỜI độ ẩm, gồm cả loại không điều chỉnh độ ẩm riêng biệt — cốt lõi là có chu trình lạnh. Máy làm mát bay hơi không có máy nén nên không thuộc 8415."
+        },
+        {
+          "prefix": "8414",
+          "whyVi": "Nhóm 8414 là quạt đơn thuần. Máy làm mát bay hơi có thêm hệ bơm nước và tấm trao đổi nhiệt, đã được biểu thuế gọi tên riêng ở 8479.60 nên GIR 3(a) ưu tiên mô tả cụ thể hơn."
+        }
+      ],
+      "askVi": [
+        "Máy có block/máy nén và gas lạnh không? (có → xem nhóm 8415)",
+        "Có bình chứa nước và tấm làm mát (cooling pad) không?"
+      ],
+      "gir": "3a",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026: mã 84796000 ghi đúng chữ \"Máy làm mát không khí bằng bay hơi\". Biểu thuế đã gọi tên mặt hàng này nên không cần suy luận."
+    },
+    {
+      "id": "binh-giu-nhiet-chan-khong",
+      "titleVi": "Bình giữ nhiệt / phích nước chân không",
+      "terms": [
+        "bình giữ nhiệt",
+        "phích nước",
+        "phích giữ nhiệt",
+        "bình giữ nhiệt inox",
+        "bình giữ nhiệt chân không",
+        "ly giữ nhiệt",
+        "cốc giữ nhiệt",
+        "bình thủy",
+        "thermos",
+        "vacuum flask"
+      ],
+      "candidates": [
+        {
+          "hs": "96170010",
+          "whenVi": "Bình/phích có lớp CHÂN KHÔNG giữa hai vách, còn nguyên vỏ, hoàn chỉnh",
+          "confidence": "high"
+        },
+        {
+          "hs": "96170020",
+          "whenVi": "Bộ phận rời của bình chân không, trừ ruột thủy tinh",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "7323",
+          "whyVi": "Nhóm 7323 là đồ dùng nhà bếp/bàn ăn bằng sắt thép nói chung. Nhóm 9617 gọi đích danh \"Phích chân không và các loại bình chân không khác, hoàn chỉnh\" nên theo GIR 3(a) mô tả cụ thể hơn được ưu tiên. CHỈ đúng khi hàng thật sự có lớp chân không — bình hai lớp inox KHÔNG hút chân không thì quay lại 7323."
+        }
+      ],
+      "askVi": [
+        "Giữa hai lớp vỏ có hút chân không không? (không chân không → nhóm 7323)",
+        "Hàng nguyên chiếc hay bộ phận rời?"
+      ],
+      "gir": "3a",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 96170010: \"Phích chân không và các loại bình chân không khác, hoàn chỉnh\"; nhóm 7323 giới hạn ở đồ dùng nhà bếp/bàn ăn bằng sắt thép."
+    },
+    {
+      "id": "bien-tan-vfd",
+      "titleVi": "Biến tần công nghiệp (VFD / inverter điều khiển động cơ)",
+      "terms": [
+        "biến tần",
+        "bien tan",
+        "inverter",
+        "vfd",
+        "variable frequency drive",
+        "bộ biến tần",
+        "biến tần 3 pha"
+      ],
+      "excludeIfAny": [
+        "điều hòa",
+        "điều hoà",
+        "máy lạnh",
+        "tủ lạnh",
+        "máy giặt",
+        "điều hòa inverter",
+        "air conditioner",
+        "tủ đông"
+      ],
+      "excludeReasonVi": "Với điều hòa / tủ lạnh / máy giặt thì \"inverter\" chỉ là TÍNH NĂNG của máy, không phải mặt hàng riêng. Hàng vẫn thuộc 8415 / 8418 / 8450 theo bản chất máy.",
+      "candidates": [
+        {
+          "hs": "85044090",
+          "whenVi": "Bộ biến đổi tĩnh điện điều khiển tốc độ động cơ, không thuộc các phân nhóm đã kể tên",
+          "confidence": "medium"
+        },
+        {
+          "hs": "85044040",
+          "whenVi": "Hàng đúng là bộ nghịch lưu thuần (DC → AC) theo tài liệu kỹ thuật — KHÔNG mặc định cho biến tần điều khiển động cơ",
+          "confidence": "low"
+        },
+        {
+          "hs": "85044030",
+          "whenVi": "Hàng đúng là bộ chỉnh lưu (AC → DC)",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8537",
+          "whyVi": "8537 là bảng/tủ điện lắp nhiều thiết bị đóng ngắt. Một con biến tần rời chưa lắp vào tủ thì không thuộc 8537."
+        }
+      ],
+      "askVi": [
+        "Đầu vào / đầu ra là AC hay DC? (quyết định giữa 8504.40.30, .40 và .90)",
+        "Công suất danh định (kVA)?",
+        "Biến tần rời hay đã lắp trong tủ điện hoàn chỉnh?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 phân nhóm 8504.40: 85044030 \"Bộ chỉnh lưu khác\", 85044040 \"Bộ nghịch lưu\", 85044090 \"Loại khác\". Biến tần công nghiệp biến đổi AC → DC → AC nên không trùng khít mô tả nào trong ba mã; thực tế khai báo còn chưa thống nhất. Vì vậy mục này KHÔNG mã nào được \"high\", và mã dư 85044090 xếp trên — chọn mã trung tính thay vì khẳng định .40. Phải đọc tài liệu kỹ thuật để chốt."
+    },
+    {
+      "id": "masterbatch",
+      "titleVi": "Masterbatch (hạt nhựa màu / phụ gia đậm đặc)",
+      "terms": [
+        "masterbatch",
+        "master batch",
+        "hạt nhựa màu",
+        "hạt màu",
+        "hat mau nhua",
+        "phụ gia màu nhựa",
+        "màu chủ",
+        "color masterbatch"
+      ],
+      "candidates": [
+        {
+          "hs": "32061990",
+          "whenVi": "Chất màu vô cơ gốc titan dioxit phân tán trong nền nhựa",
+          "confidence": "low"
+        },
+        {
+          "hs": "32064990",
+          "whenVi": "Chất màu vô cơ khác phân tán trong nền nhựa",
+          "confidence": "low"
+        },
+        {
+          "hs": "32041790",
+          "whenVi": "Chất màu hữu cơ tổng hợp (pigment hữu cơ) phân tán trong nền nhựa",
+          "confidence": "low"
+        },
+        {
+          "hs": "38249999",
+          "whenVi": "Masterbatch phụ gia (không màu): chống UV, chống dính, độn — chế phẩm hóa học chưa được chi tiết ở nhóm khác",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "39",
+          "whyVi": "Chương 39 nhóm 3901–3914 là polymer NGUYÊN SINH. Masterbatch là chế phẩm màu/phụ gia đậm đặc, nhựa chỉ đóng vai trò chất mang, nên bản chất là chế phẩm Chương 32/38 chứ không phải nhựa nguyên sinh."
+        }
+      ],
+      "askVi": [
+        "Chất màu là vô cơ (TiO2, oxit sắt, carbon black) hay hữu cơ tổng hợp?",
+        "Tỷ lệ chất màu / phụ gia so với nhựa nền (%)?",
+        "Có phiếu phân tích thành phần (CA/COA) không?",
+        "Là masterbatch MÀU hay masterbatch PHỤ GIA (UV, chống dính, filler)?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 3204/3206 (chất màu đã phân tán trong môi chất) và 3824 (chế phẩm hóa học chưa chi tiết). Bốn ứng viên đều để confidence thấp: mã đúng phụ thuộc bản chất hóa học của chất màu, không suy ra được từ tên hàng."
+    },
+    {
+      "id": "bo-khuon-ep-nhua",
+      "titleVi": "Bộ khuôn ép / đúc nhựa (thành phẩm)",
+      "terms": [
+        "bộ khuôn",
+        "bộ khuôn ép nhựa",
+        "khuôn ép nhựa",
+        "khuôn đúc nhựa",
+        "khuôn thổi nhựa",
+        "mold base",
+        "đế khuôn",
+        "hộp khuôn",
+        "khuôn ép phun",
+        "khuôn nhựa hoàn chỉnh"
+      ],
+      "candidates": [
+        {
+          "hs": "84807110",
+          "whenVi": "Khuôn ép phun / nén dùng cho cao su hoặc plastic, dùng làm đế giày dép",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84807190",
+          "whenVi": "Khuôn ép phun / nén (injection, compression) dùng cho cao su hoặc plastic, loại khác",
+          "confidence": "high"
+        },
+        {
+          "hs": "84807990",
+          "whenVi": "Khuôn cao su/plastic KHÔNG phải loại ép phun hoặc nén (vd khuôn thổi, khuôn đúc quay)",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84802000",
+          "whenVi": "Chỉ nhập riêng ĐẾ KHUÔN (mold base), chưa có lòng khuôn",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "7225",
+          "whyVi": "7225 là thép tấm NGUYÊN LIỆU. Bộ khuôn đã gia công thành hình, có lòng khuôn và hệ thống dẫn — là thành phẩm nhóm 8480, không quay lại chương 72."
+        },
+        {
+          "prefix": "7226",
+          "whyVi": "Như 7225: thép cán phẳng nguyên liệu, không phải khuôn đã thành hình."
+        }
+      ],
+      "askVi": [
+        "Khuôn dùng cho vật liệu gì: nhựa/cao su (8480.71–.79), kim loại (8480.41–.49) hay thủy tinh (8480.50)?",
+        "Nguyên lý tạo hình: ép phun / ép nén (8480.71) hay thổi, đúc quay (8480.79)?",
+        "Nhập nguyên bộ khuôn hay chỉ đế khuôn rời (8480.20)?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 8480: 84802000 \"Đế khuôn\", 84807110/84807190 \"Loại phun hoặc nén\", 84807910/84807990 loại khác — dùng cho cao su hoặc plastic."
+    }
+  ]
+}

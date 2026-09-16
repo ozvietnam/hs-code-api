@@ -282,6 +282,49 @@
         <h3>Corpus mã Loại khác</h3>
         <p>Hàng nghìn tên sản phẩm ví dụ cho mã HS 8 số "Loại khác" — giúp tra cứu &amp; AI hiểu phạm vi từng mã. <code>/api/products</code></p>
       </div>
+      <div class="card">
+        <div class="ico">🗣️</div>
+        <h3>Hiểu tiếng người đi khai</h3>
+        <p>Tra được theo cách gọi ngoài thị trường, không chỉ lời văn biểu thuế — <em>tấm thép làm khuôn nhựa</em>, <em>quạt điều hòa hơi nước</em>, <em>bình giữ nhiệt chân không</em>. <code>/api/search</code></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIENG DAN BUON -->
+<section id="trade-terms">
+  <div class="wrap">
+    <h2>Khi biểu thuế và người đi khai nói hai thứ tiếng</h2>
+    <p class="sub">3.050 mã trong biểu thuế có tên đúng bằng ba chữ <strong>"Loại khác"</strong> — 25,7% tổng số mã. Không từ khoá nào chạm tới chúng.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="ico">📜</div>
+        <h3>Tiền lệ tờ khai</h3>
+        <p>Cụm từ này đã được khai bao nhiêu lần và có tập trung về một mã không. Bằng chứng thực tế, không phải văn bản. Trả ở <code>precedent</code>.</p>
+      </div>
+      <div class="card">
+        <div class="ico">📖</div>
+        <h3>Từ điển tên thương mại</h3>
+        <p>Bảng soạn tay, mỗi mục dẫn nguyên văn biểu thuế. Phủ được cả những ngành chưa có tờ khai nào để đối chiếu. Trả ở <code>tradeTerm</code>.</p>
+      </div>
+      <div class="card">
+        <div class="ico">🧭</div>
+        <h3>Phạm vi thật của mã dư</h3>
+        <p>Với mã tên là "Loại khác", chuỗi phân cấp kèm phạm vi thật và các mã anh em bị loại trừ. Trả ở <code>breadcrumb</code>.</p>
+      </div>
+      <div class="card">
+        <div class="ico">⚠️</div>
+        <h3>Cảnh báo VAT</h3>
+        <p>1.561 mã nằm trong phụ lục loại trừ của NĐ 174/2025 — vẫn phải khai 10%. Khai 8% là bị truy thu. Trả ở <code>vatReduction</code>.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <h3>Hai thứ quan trọng hơn cả việc trả đúng mã</h3>
+      <p><strong>Mã bẫy bị loại HẲN, và nói rõ vì sao.</strong> Hỏi <em>"tấm thép làm khuôn nhựa"</em> mà hệ thống trả về bộ khuôn nhóm 8480 thì người khai rất dễ gật — tên hàng nghe khớp hoàn toàn, trong khi một bên là nguyên liệu còn bên kia là thành phẩm. Những mã như vậy bị loại khỏi kết quả và trả riêng ở <code>avoidedCodes</code> kèm lý do. Loại công khai, không giấu.</p>
+      <p><strong>Chưa đủ căn cứ thì hỏi, không chốt bừa.</strong> Nhiều tên thương mại ứng với vài mã, phân biệt nhau bằng khổ rộng, dạng gia công hay thành phần hoá học. Khi đó hệ thống trả nhiều ứng viên kèm điều kiện áp dụng và <code>clarifyingQuestionsVi</code> — dữ kiện còn thiếu để chốt. Một mã sai mà tự tin tốn tiền hơn một câu hỏi.</p>
+      <p class="ep-note">Ba lớp có thể mâu thuẫn nhau, và đó là thông tin chứ không phải lỗi. Với <em>biến tần</em>, bảng soạn tay đề xuất một mã nhưng tiền lệ tờ khai lại chỉ sang mã khác — cả hai căn cứ đều hiện ra để người tra tự quyết.</p>
     </div>
   </div>
 </section>

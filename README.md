@@ -148,6 +148,18 @@ Tax/search responses use camelCase fields expected by `erp-xnk` client:
 - Historical boost is blocked when candidate HS has current `hasPolicyWarning`. Precedents are **Oz's own declarations**, not customs rulings — treat as advisory only.
 - Oz precedent candidates are deduplicated by HS + normalized description cluster to reduce embedding bias.
 
+### Từ điển tên thương mại + dòng "Loại khác"
+
+25,7% mã trong biểu thuế có tên đúng bằng "Loại khác" — không từ khoá nào chạm
+tới. Ba lớp xử lý: ngữ cảnh dòng dư (`data/hs-context.json`), từ điển tên
+thương mại do người soạn (`data/trade-synonyms.json`), và cảnh báo VAT theo
+NĐ 174/2025. Chi tiết + cách thêm mục mới: [`docs/trade-synonyms.md`](docs/trade-synonyms.md).
+
+```bash
+npm run test:trade-synonyms
+npm run data:build-context
+```
+
 ### Tests
 
 - `node scripts/test-suggest-confidence.mjs` — verifies `familiarityBoost`, policy conflict blocking, `confidenceBreakdown` fields, and honest-disclaimer warning messages.
