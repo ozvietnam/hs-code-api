@@ -323,6 +323,201 @@
       "gir": "1",
       "basis": "RULE_TABLE",
       "sourceVi": "Biểu thuế 2026 nhóm 8480: 84802000 \"Đế khuôn\", 84807110/84807190 \"Loại phun hoặc nén\", 84807910/84807990 loại khác — dùng cho cao su hoặc plastic."
+    },
+    {
+      "id": "van-khi-nen-thuy-luc",
+      "titleVi": "Van khí nén / van thủy lực truyền động (8481.20)",
+      "terms": [
+        "van khí nén",
+        "van thuỷ lực",
+        "van thủy lực",
+        "van điện từ khí nén",
+        "van điều áp khí nén",
+        "van phân phối khí nén",
+        "solenoid valve",
+        "pneumatic valve",
+        "hydraulic valve",
+        "directional valve",
+        "van solenoid",
+        "air solenoid valve"
+      ],
+      "excludeIfAny": [
+        "van bếp",
+        "bếp ga",
+        "bếp nấu",
+        "van ngắt nhiên liệu",
+        "nhiên liệu xe",
+        "dầu thủy lực",
+        "dầu thuỷ lực",
+        "hydraulic oil"
+      ],
+      "excludeReasonVi": "Van bếp ga / van ngắt nhiên liệu xe thuộc 8481.80 (mã kể tên riêng). Dầu thủy lực là chất lỏng (2710), không phải van truyền động 8481.20.",
+      "candidates": [
+        {
+          "hs": "84812090",
+          "whenVi": "Van dùng cho truyền động oleohydraulic hoặc pneumatic, không khớp phân nhóm vật liệu/đường kính kể tên ở 8481.20.11–.20",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84812011",
+          "whenVi": "Cùng phạm vi 8481.20 nhưng thân bằng sắt hoặc thép",
+          "confidence": "low"
+        },
+        {
+          "hs": "84812020",
+          "whenVi": "Cùng phạm vi 8481.20: đồng/hợp kim đồng Ø trong ≤ 2,5 cm, hoặc plastic Ø trong 1–2,5 cm",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8481803",
+          "whyVi": "8481.80.30 là van bếp nấu/lò ga (kể cả có bộ đánh lửa điện từ). Chữ 'điện từ' trùng nhưng công dụng khác — không phải van khí nén công nghiệp."
+        },
+        {
+          "prefix": "8481808",
+          "whyVi": "8481.80.83/84/93 là van ngắt nhiên liệu cho xe 87.02–87.04. Van khí nén thiết bị không thuộc nhóm này."
+        },
+        {
+          "prefix": "9032",
+          "whyVi": "9032 là dụng cụ/thiết bị tự động điều chỉnh đo lường. Van truyền động khí nén/thủy lực thuộc máy cơ khí 8481.20, không phải dụng cụ đo."
+        },
+        {
+          "prefix": "3923",
+          "whyVi": "3923 là bình/đồ chứa plastic (kể cả dùng khí nén). Đây là bao bì/chứa, không phải van."
+        },
+        {
+          "prefix": "7613",
+          "whyVi": "7613 là thùng chứa khí nén bằng nhôm — bình chứa, không phải van."
+        },
+        {
+          "prefix": "8413",
+          "whyVi": "8413 là bơm. Van điều khiển dòng; bơm tạo dòng — GIR 1 phân biệt theo chức năng."
+        },
+        {
+          "prefix": "98",
+          "whyVi": "Chương 98 là mã ưu đãi riêng, không phải đáp án phân loại thông thường cho van công nghiệp."
+        }
+      ],
+      "askVi": [
+        "Van dùng trong mạch khí nén/thủy lực truyền động, hay van bếp ga / van nhiên liệu xe?",
+        "Vật liệu thân van (sắt-thép / đồng / plastic) và đường kính trong cửa nạp?",
+        "Có phải van giảm áp đường ống (8481.10), van một chiều (8481.30) hay van an toàn (8481.40) không?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN — trường en của 84812090/84812011: \"Valves; for oleohydraulic or pneumatic transmissions\". Không đặt high vì 8481.20 còn tách theo vật liệu/đường kính; mã dư 84812090 chỉ khi không khớp .11/.19/.20."
+    },
+    {
+      "id": "van-bep-ga",
+      "titleVi": "Van bếp nấu / bếp có lò nướng ga (8481.80.30)",
+      "terms": [
+        "van bếp",
+        "van bếp ga",
+        "van bếp nấu",
+        "van lò nướng ga",
+        "van bếp gas",
+        "gas stove valve",
+        "oven gas valve"
+      ],
+      "excludeIfAny": [
+        "khí nén",
+        "pneumatic",
+        "thủy lực",
+        "thuỷ lực",
+        "solenoid valve"
+      ],
+      "excludeReasonVi": "Van khí nén/thủy lực truyền động thuộc 8481.20, không phải van bếp 8481.80.30.",
+      "candidates": [
+        {
+          "hs": "84818030",
+          "whenVi": "Van dùng cho bếp nấu hoặc bếp có lò nướng bằng ga, đã hoặc chưa lắp bộ phận đánh lửa điện từ",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "7321",
+          "whyVi": "7321 là bếp/lò đốt bằng kim loại — nguyên chiếc. Câu hỏi chỉ van thì ở 8481.80.30."
+        },
+        {
+          "prefix": "4009",
+          "whyVi": "4009 là ống vòi cao su (kể cả dùng bếp ga) — ống dẫn, không phải van."
+        },
+        {
+          "prefix": "3917",
+          "whyVi": "3917 là ống nhựa (kể cả dùng bếp ga) — không phải van."
+        },
+        {
+          "prefix": "848120",
+          "whyVi": "8481.20 dành cho van truyền động oleohydraulic/pneumatic, không phải van bếp ga."
+        }
+      ],
+      "askVi": [
+        "Là van riêng hay nguyên chiếc bếp/lò (7321)?",
+        "Có bộ đánh lửa điện từ không? (vẫn 8481.80.30 theo biểu thuế)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN 84818030: \"Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga\" — gọi đích danh mặt hàng nên confidence high."
+    },
+    {
+      "id": "van-ngat-nhien-lieu-xe",
+      "titleVi": "Van ngắt nhiên liệu cho xe 87.02 / 87.03 / 87.04",
+      "terms": [
+        "van ngắt nhiên liệu",
+        "van cắt nhiên liệu",
+        "fuel cut off valve",
+        "fuel shut off valve",
+        "fuel cut-off valve",
+        "van xăng xe"
+      ],
+      "excludeIfAny": [
+        "khí nén",
+        "pneumatic",
+        "bếp ga",
+        "van bếp"
+      ],
+      "excludeReasonVi": "Van khí nén / van bếp không phải van ngắt nhiên liệu xe.",
+      "candidates": [
+        {
+          "hs": "84818083",
+          "whenVi": "Thân plastic, dùng cho xe 87.02/87.03/87.04, đường kính trong cửa nạp dưới 1 cm",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84818084",
+          "whenVi": "Thân plastic, dùng cho xe 87.02/87.03/87.04, đường kính trong cửa nạp từ 1 cm đến 2,5 cm",
+          "confidence": "medium"
+        },
+        {
+          "hs": "84818093",
+          "whenVi": "Vật liệu khác (không phải plastic nêu ở .83/.84), dùng cho xe 87.02/87.03/87.04",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "848120",
+          "whyVi": "8481.20 là van truyền động khí nén/thủy lực — không phải van nhiên liệu xe."
+        },
+        {
+          "prefix": "9849",
+          "whyVi": "9849 là mã chương 98 ưu đãi riêng cho cùng loại van — không dùng làm đáp án phân loại thông thường."
+        },
+        {
+          "prefix": "87",
+          "whyVi": "Chương 87 là xe nguyên chiếc / bộ phận xe được kể tên. Van ngắt nhiên liệu plastic được biểu thuế đặt riêng ở 8481.80.83–.93."
+        }
+      ],
+      "askVi": [
+        "Vật liệu thân van: plastic hay kim loại/khác?",
+        "Đường kính trong cửa nạp: dưới 1 cm, 1–2,5 cm, hay lớn hơn?",
+        "Xe thuộc nhóm 87.02 / 87.03 / 87.04 đúng không?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế VN 84818083/84818084/84818093 — van ngắt nhiên liệu dùng cho xe nhóm 87.02, 87.03 hoặc 87.04, tách theo vật liệu và đường kính cửa nạp. Không high vì phải hỏi vật liệu/Ø mới chốt một trong ba mã."
     }
   ]
 }

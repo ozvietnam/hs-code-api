@@ -69,6 +69,10 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     ['quạt điều hòa hơi nước', ['84796000']],
     ['bình giữ nhiệt chân không', ['96170010']],
     ['biến tần 3 pha', ['85044090', '85044040', '85044030']],
+    ['van điện từ khí nén', ['84812090', '84812011', '84812020']],
+    ['solenoid valve', ['84812090', '84812011', '84812020']],
+    ['van bếp ga', ['84818030']],
+    ['van ngắt nhiên liệu xe', ['84818083', '84818084', '84818093']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -92,11 +96,24 @@ console.log('\n== Mã bẫy phải bị loại HẲN, không phải tụt hạng
   const cooler = searchCandidates('quạt điều hòa hơi nước', { topCandidates: 50 });
   check('máy làm mát bay hơi không lẫn 8415', cooler.every((c) => !c.hsCode.startsWith('8415')));
   check('máy làm mát bay hơi không lẫn quạt 8414', cooler.every((c) => !c.hsCode.startsWith('8414')));
+
+  const pneu = searchCandidates('van điện từ khí nén', { topCandidates: 50 });
+  check('van khí nén không lẫn van bếp 84818030', pneu.every((c) => c.hsCode !== '84818030'));
+  check('van khí nén không lẫn van nhiên liệu xe 84818083', pneu.every((c) => !c.hsCode.startsWith('8481808')));
+  check('van khí nén không lẫn dụng cụ đo 9032', pneu.every((c) => !c.hsCode.startsWith('9032')));
+
+  const stove = searchCandidates('van bếp ga', { topCandidates: 50 });
+  check('van bếp không lẫn 848120', stove.every((c) => !c.hsCode.startsWith('848120')));
+  check('van bếp không lẫn bếp nguyên chiếc 7321', stove.every((c) => !c.hsCode.startsWith('7321')));
 }
 
 console.log('\n== Từ điển không được lan sang câu không liên quan ==');
 {
   // "inverter" ở đây là TÍNH NĂNG của máy lạnh, không phải bộ biến tần 8504.
+  const oil = lookupTradeTerms('dầu thủy lực 68');
+  check('dầu thủy lực không kích hoạt mục van 8481.20',
+    !(oil.matches || []).some((m) => m.entryId === 'van-khi-nen-thuy-luc'));
+
   const ac = lookupTradeTerms('máy điều hòa inverter 12000 BTU');
   check('không gợi ý 8504 cho điều hòa inverter', ac.matches.every((m) => m.entryId !== 'bien-tan-vfd'));
   check('nói rõ vì sao không áp dụng', ac.excluded.some((x) => x.entryId === 'bien-tan-vfd'));
