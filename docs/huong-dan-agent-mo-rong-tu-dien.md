@@ -1,9 +1,22 @@
-# Hướng dẫn cho agent: mở rộng từ điển theo tiểu mục
+# Hướng dẫn cho agent: mở rộng từ điển theo nhóm 4 số
 
-Tài liệu này viết cho **một agent được giao một tiểu mục hàng** (vd "thép làm
-khuôn", "thiết bị nâng hạ", "bình giữ nhiệt") để đào data và thêm mục vào ba
-từ điển. Đọc hết trước khi sửa file nào. Mọi luật ở đây đều có test khoá lại —
-làm sai là `npm test` đỏ, không merge được.
+Tài liệu này viết cho **một agent được giao một nhóm HS 4 số** (vd `8481`,
+`7208`, `8537`) — hoặc một tiểu mục thương mại nằm trọn trong nhóm đó — để đào
+data và thêm mục vào ba từ điển. Đọc hết trước khi sửa file nào. Mọi luật ở đây
+đều có test khoá lại — làm sai là `npm test` đỏ, không merge được.
+
+## 0b. Chuẩn nhận việc (CEO 2026-09-16) — phủ tới từng mã 8 số
+
+- **Đơn vị nhận = nhóm 4 số.** Không nhận cả chương 2 số một lần (Ch.84 ≈ 1.300
+  lá). Nhận `8481` thì làm hết `8481`, không bỏ dở.
+- **Nghiệm thu:** mọi mã 8 số của nhóm trong `data/tax.json` phải xuất hiện trong
+  `candidates[].hs` của ít nhất một mục `trade-synonyms`, **và** có file
+  `data/heading-coverage/<nhóm>.json` (`coveredCount === leafCount`,
+  `missingHs: []`). Test `test-trade-synonyms` khoá điều này.
+- Mã chỉ tách theo Ø / vật liệu / carbon / chiều dày: vẫn phải có trong
+  `candidates`, thường `confidence: low|medium` + `askVi` — **không** bỏ sót
+  vì “người dùng ít gõ”.
+- Xong nhóm nào ghi nhận trên Issue #34; nhóm đó không làm lại trừ khi biểu thuế đổi.
 
 ## 0. Tại sao có ba từ điển, và cái nào là của bạn
 

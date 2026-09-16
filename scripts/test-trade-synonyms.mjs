@@ -69,6 +69,23 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     ['quạt điều hòa hơi nước', ['84796000']],
     ['bình giữ nhiệt chân không', ['96170010']],
     ['biến tần 3 pha', ['85044090', '85044040', '85044030']],
+    ['van điện từ khí nén', ['84812090', '84812011', '84812020']],
+    ['solenoid valve', ['84812090', '84812011', '84812020']],
+    ['van bếp ga', ['84818030']],
+    ['van ngắt nhiên liệu xe', ['84818083', '84818084', '84818093']],
+    ['thép cuộn cán nóng', ['72083990', '72083700', '72083600', '72083800', '72083910', '72081000', '72082500']],
+    ['hot rolled coil', ['72083990', '72083700', '72083600', '72083800', '72081000', '72082500', '72082600']],
+    ['thép cuộn cán nguội', ['72099090', '72092890', '72092790', '72091790', '72091810', '72091500']],
+    ['thép hình H', ['72163190', '72163390', '72161000', '72163290', '72163311']],
+    ['van giảm áp', ['84811011', '84811019', '84811021', '84811022', '84811091', '84811099']],
+    ['tủ plc', ['85371012', '85371030', '85371019']],
+    ['bảng điều khiển plc', ['85371012', '85371030', '85371019']],
+    ['dcs panel', ['85371011', '85371092']],
+    ['tủ trung thế 22kv', ['85372011', '85372021', '85372019', '85372029', '85372090']],
+    ['bàn nâng thủy lực', ['84289090', '84289030', '84289020']],
+    ['scissor lift', ['84289090']],
+    ['forklift', ['84271000', '84272000', '84279000']],
+    ['thang cuốn', ['84284000', '84281031', '84281039', '84281040']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -92,11 +109,24 @@ console.log('\n== Mã bẫy phải bị loại HẲN, không phải tụt hạng
   const cooler = searchCandidates('quạt điều hòa hơi nước', { topCandidates: 50 });
   check('máy làm mát bay hơi không lẫn 8415', cooler.every((c) => !c.hsCode.startsWith('8415')));
   check('máy làm mát bay hơi không lẫn quạt 8414', cooler.every((c) => !c.hsCode.startsWith('8414')));
+
+  const pneu = searchCandidates('van điện từ khí nén', { topCandidates: 50 });
+  check('van khí nén không lẫn van bếp 84818030', pneu.every((c) => c.hsCode !== '84818030'));
+  check('van khí nén không lẫn van nhiên liệu xe 84818083', pneu.every((c) => !c.hsCode.startsWith('8481808')));
+  check('van khí nén không lẫn dụng cụ đo 9032', pneu.every((c) => !c.hsCode.startsWith('9032')));
+
+  const stove = searchCandidates('van bếp ga', { topCandidates: 50 });
+  check('van bếp không lẫn 848120', stove.every((c) => !c.hsCode.startsWith('848120')));
+  check('van bếp không lẫn bếp nguyên chiếc 7321', stove.every((c) => !c.hsCode.startsWith('7321')));
 }
 
 console.log('\n== Từ điển không được lan sang câu không liên quan ==');
 {
   // "inverter" ở đây là TÍNH NĂNG của máy lạnh, không phải bộ biến tần 8504.
+  const oil = lookupTradeTerms('dầu thủy lực 68');
+  check('dầu thủy lực không kích hoạt mục van 8481.20',
+    !(oil.matches || []).some((m) => m.entryId === 'van-khi-nen-thuy-luc'));
+
   const ac = lookupTradeTerms('máy điều hòa inverter 12000 BTU');
   check('không gợi ý 8504 cho điều hòa inverter', ac.matches.every((m) => m.entryId !== 'bien-tan-vfd'));
   check('nói rõ vì sao không áp dụng', ac.excluded.some((x) => x.entryId === 'bien-tan-vfd'));
@@ -168,6 +198,45 @@ console.log('\n== Không phá luồng cũ ==');
 
   const dup = searchCandidates('thép hợp kim', { topCandidates: 20 });
   check('không trả mã trùng lặp', new Set(dup.map((c) => c.hsCode)).size === dup.length);
+}
+
+console.log('\n== Phủ 100% mã lá nhóm đã nhận (heading-coverage) ==');
+{
+  const { readdirSync, existsSync, readFileSync } = require('fs');
+  const covDir = join(ROOT, 'data', 'heading-coverage');
+  check('có thư mục heading-coverage', existsSync(covDir));
+  const files = existsSync(covDir) ? readdirSync(covDir).filter((f) => f.endsWith('.json')) : [];
+  check('có ít nhất một nhóm đã khoá phủ', files.length >= 1, `hiện ${files.length}`);
+
+  const candHs = new Set();
+  for (const e of thesaurus.entries) for (const c of e.candidates) candHs.add(c.hs);
+
+  for (const f of files) {
+    const cov = JSON.parse(readFileSync(join(covDir, f), 'utf8'));
+    const heading = String(cov.heading || f.replace(/\.json$/, ''));
+    const leaves = Object.keys(taxData).filter((k) => /^\d{8}$/.test(k) && k.startsWith(heading)).sort();
+    const codeKeys = Object.keys(cov.codes || {}).sort();
+    check(`${heading}: leafCount khớp tax.json`, cov.leafCount === leaves.length, `${cov.leafCount} vs ${leaves.length}`);
+    check(`${heading}: codes[] đủ mọi lá`, codeKeys.join(',') === leaves.join(','));
+    check(`${heading}: coveredCount = leafCount`, cov.coveredCount === leaves.length);
+    check(`${heading}: missingHs rỗng`, Array.isArray(cov.missingHs) && cov.missingHs.length === 0);
+
+    const missCand = leaves.filter((hs) => !candHs.has(hs));
+    check(`${heading}: mọi lá có trong candidates[] trade-synonyms`, missCand.length === 0, missCand.slice(0, 8).join(','));
+
+    const missMap = leaves.filter((hs) => !(cov.codes?.[hs]?.synonymEntryIds || []).length);
+    check(`${heading}: mọi lá gắn synonymEntryIds`, missMap.length === 0, missMap.slice(0, 8).join(','));
+
+    const badId = [];
+    for (const hs of leaves) {
+      for (const id of cov.codes[hs].synonymEntryIds || []) {
+        const entry = thesaurus.entries.find((e) => e.id === id);
+        if (!entry) badId.push(`${hs}:${id}:missing-entry`);
+        else if (!(entry.candidates || []).some((c) => c.hs === hs)) badId.push(`${hs}:${id}:not-in-candidates`);
+      }
+    }
+    check(`${heading}: synonymEntryIds trỏ đúng mục có mã lá`, badId.length === 0, badId.slice(0, 8).join(','));
+  }
 }
 
 console.log('\n== Thống kê ==');
