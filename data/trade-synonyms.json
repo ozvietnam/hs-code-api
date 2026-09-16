@@ -1911,12 +1911,12 @@
         {
           "hs": "85371012",
           "whenVi": "- - - Bảng điều khiển có trang bị bộ xử lý lập trình (SEN) — mã 8537.10.12",
-          "confidence": "medium"
+          "confidence": "low"
         },
         {
           "hs": "85371030",
           "whenVi": "- - Bộ điều khiển logic có khả năng lập trình cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn — mã 8537.10.30",
-          "confidence": "medium"
+          "confidence": "low"
         },
         {
           "hs": "85371019",
@@ -1940,6 +1940,7 @@
       ],
       "askVi": [
         "Điện áp làm việc ≤1000V hay >1000V?",
+        "Biểu thuế gọi đích danh “bộ xử lý lập trình (SEN)” (.12) hay chỉ “loại khác” (.19)?",
         "Có phải PLC cho máy ép phun / khuôn ép nhựa không? (→ 8537.10.30)",
         "Là bảng hoàn chỉnh hay chỉ module PLC rời?"
       ],
@@ -2000,7 +2001,6 @@
       "titleVi": "Bảng phân phối / tủ điện / MCC / switchboard (≤1000V)",
       "terms": [
         "bảng phân phối",
-        "tủ điện",
         "tủ phân phối",
         "switchboard",
         "mcc",
@@ -2008,11 +2008,13 @@
         "distribution board",
         "distribution panel",
         "tủ mcc",
-        "bảng điện",
         "tủ điều khiển động cơ",
-        "panel điện",
-        "db board",
-        "electrical panel"
+        "electrical panel",
+        "tủ điện công nghiệp",
+        "tủ điện phân phối",
+        "bảng điện phân phối",
+        "electrical distribution panel",
+        "tủ điều khiển điện"
       ],
       "excludeIfAny": [
         "plc",
@@ -2020,9 +2022,15 @@
         ">1000",
         "trung thế",
         "cao thế",
-        "biến tần"
+        "biến tần",
+        "tụ điện",
+        "capacitor",
+        "bộ cấp nguồn",
+        "nguồn liên tục",
+        "ups",
+        "smps"
       ],
-      "excludeReasonVi": "PLC/DCS có mục riêng; biến tần là 8504; cao thế >1000V là 8537.20.",
+      "excludeReasonVi": "PLC/DCS có mục riêng; biến tần là 8504; cao thế >1000V là 8537.20. Không kích hoạt trên tụ điện/PSU (tụ điện ↔ tủ điện mất dấu).",
       "candidates": [
         {
           "hs": "85371020",
@@ -2223,8 +2231,6 @@
       "id": "bang-tai-cong-nghiep",
       "titleVi": "Băng tải / conveyor công nghiệp (không phải băng tải người)",
       "terms": [
-        "băng tải",
-        "bang tai",
         "conveyor",
         "belt conveyor",
         "screw conveyor",
@@ -2232,15 +2238,25 @@
         "băng chuyền",
         "máy băng tải",
         "pneumatic conveyor",
-        "băng tải khí nén"
+        "băng tải khí nén",
+        "hệ thống băng tải",
+        "băng tải công nghiệp",
+        "conveyor system",
+        "conveyor belt system"
       ],
       "excludeIfAny": [
         "người đi bộ",
         "escalator",
         "thang cuốn",
-        "xe nâng"
+        "xe nâng",
+        "dây đai",
+        "đai băng",
+        "belt only",
+        "phụ tùng băng tải",
+        "cao su băng tải",
+        "nhựa pvc xốp"
       ],
-      "excludeReasonVi": "Băng tải người/thang cuốn = 8428.40; xe nâng = 8427.",
+      "excludeReasonVi": "Dây đai/đai PVC là bộ phận (thường ch.39/40), không phải máy băng tải 8428. Băng tải người/thang cuốn = 8428.40; xe nâng = 8427.",
       "candidates": [
         {
           "hs": "84282010",
