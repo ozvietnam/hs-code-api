@@ -59,6 +59,12 @@ const paths = {
       description:
         'Trả thuế suất, đơn vị tính và cảnh báo quản lý chuyên ngành kèm liên kết văn bản pháp luật. ' +
         '⚠️ Thuế suất và chính sách thay đổi theo thông tư — luôn đối chiếu văn bản gốc còn hiệu lực khi khai báo.',
+      description:
+        'Ngoài thuế suất và cảnh báo chính sách, trả kèm `vatReduction` — bản đọc được bằng ' +
+        'máy của quyền giảm VAT theo NĐ 174/2025. `eligible: false` nghĩa là mã nằm trong phụ ' +
+        'lục loại trừ, vẫn phải khai ở mức `rate`; `noteVi` là nguyên văn lý do. Cùng với đó là ' +
+        '`breadcrumb` cho biết mã nằm ở đâu trong biểu thuế — cần thiết với các mã có tên chỉ là ' +
+        '"Loại khác". Lưu ý quy ước trường `taxVat` dạng "A/B": A là mức ĐANG áp dụng, B là mức còn lại.',
       params: [q('hs', 'Mã HS 8 số, vd 84137090', true)],
     }),
   },
@@ -66,6 +72,19 @@ const paths = {
     get: op({
       id: 'search', tags: ['Tra cứu'], auth: pub,
       summary: 'Tìm mã HS theo từ khoá hoặc mã một phần',
+      description:
+        'Tra được cả tên hàng theo cách người đi khai gọi, không chỉ lời văn biểu thuế. ' +
+        'Mỗi kết quả có thể kèm: `precedent` (cụm từ này đã được khai bao nhiêu lần trong ' +
+        'tờ khai đã thông quan, kèm mức tập trung), `tradeTerm` (mục từ điển tên thương mại ' +
+        'đã khớp — ĐỌC `appliesWhenVi` trước khi dùng, vì mã đúng thường phụ thuộc khổ, dạng ' +
+        'hoặc thành phần), `breadcrumb` (Phần → Chương → Nhóm → Phân nhóm; với mã tên là ' +
+        '"Loại khác" thì `scopeVi` mới là phạm vi thật và `excludesVi` là các mã anh em bị loại ' +
+        'trừ), và `vatReduction` (`eligible: false` nghĩa là KHÔNG được giảm VAT theo ' +
+        'NĐ 174/2025 — khai 8% sẽ bị truy thu). ' +
+        'Cấp response còn có `avoidedCodes` (mã đã bị loại khỏi kết quả vì là bẫy nhầm lẫn, ' +
+        'kèm lý do), `clarifyingQuestionsVi` (dữ kiện còn thiếu để chốt mã), `formWarning` ' +
+        '(hỏi nguyên liệu nhưng tiền lệ là thành phẩm) và `tradeTermNotApplied`. ' +
+        'Khi có `avoidedCodes` hoặc `clarifyingQuestionsVi`, hãy nói lại cho người dùng thay vì nuốt đi.',
       params: [q('q', 'Từ khoá tiếng Việt hoặc mã HS một phần', true), q('limit', 'Số kết quả tối đa (mặc định 10)')],
     }),
   },
