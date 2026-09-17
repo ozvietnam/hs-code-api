@@ -1,0 +1,63 @@
+{
+  "heading": "8405",
+  "titleVi": "Máy sản xuất khí (producer/water/acetylene…) và bộ phận",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Đây là MÁY sản xuất khí/hơi theo quy trình nước, hay chỉ là BỘ PHẬN của máy đó?",
+  "sourceVi": "Biểu thuế 2026 nhóm 84.05: 8405.10 máy sản xuất khí; 8405.90 bộ phận. Chú giải HS 84.05.",
+  "inputs": [
+    {
+      "attribute": "goodsKind",
+      "type": "enum",
+      "domain": [
+        "machine",
+        "parts"
+      ],
+      "labelVi": "Máy nguyên chiếc / bộ phận",
+      "questionVi": "Là máy sản xuất khí/hơi (nguyên chiếc) hay bộ phận/phụ tùng của máy đó?",
+      "detect": {
+        "machine": [
+          "máy sản xuất khí",
+          "máy tạo khí",
+          "máy axetylen",
+          "acetylene generator",
+          "producer gas generator",
+          "water gas generator",
+          "máy sản xuất hơi"
+        ],
+        "parts": [
+          "bộ phận",
+          "phụ tùng",
+          "parts of generator",
+          "linh kiện"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-machine",
+      "priority": 20,
+      "when": {
+        "goodsKind": "machine"
+      },
+      "hs": "84051000",
+      "gir": "GIR 6",
+      "reasonVi": "Máy sản xuất khí/hơi theo quy trình nước (kể cả axetylen) → 8405.10.00.",
+      "source": "Biểu thuế 2026 dòng 8405.10.00"
+    },
+    {
+      "id": "r-parts",
+      "priority": 10,
+      "when": {
+        "goodsKind": "parts"
+      },
+      "hs": "84059000",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của máy nhóm 84.05 → 8405.90.00.",
+      "source": "Biểu thuế 2026 dòng 8405.90.00"
+    }
+  ]
+}

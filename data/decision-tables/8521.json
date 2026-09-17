@@ -1,0 +1,177 @@
+{
+  "heading": "8521",
+  "titleVi": "Máy ghi hoặc tái tạo video",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Băng từ hay không băng từ? Dùng cho điện ảnh/phát thanh truyền hình (SEN) hay loại khác? Nếu không băng từ: hệ thống đọc laser quang học hay loại đọc khác? (cấu trúc ASEAN: 8521.90.1x laser / 8521.90.9x khác — điều kiện cha bị lược ở tên VN lá)",
+  "sourceVi": "Biểu thuế 2026 nhóm 85.21: 8521.10 loại băng từ; 8521.90 loại khác. Nhánh SEN vs loại khác ở mức 8 số. Phân nhánh 8521.90.1x/.9x theo thông lệ ASEAN (hệ thống đọc laser quang học vs khác) — ghi rõ vì tên VN lá lược mất điều kiện cha.",
+  "inputs": [
+    {
+      "attribute": "mediaType",
+      "type": "enum",
+      "domain": [
+        "magneticTape",
+        "other"
+      ],
+      "labelVi": "Băng từ / không băng từ",
+      "questionVi": "Máy ghi/tái tạo video loại băng từ (VHS/Betacam…) hay loại khác (ổ đĩa quang, ổ cứng, thẻ nhớ…)?",
+      "detect": {
+        "magneticTape": [
+          "băng từ",
+          "magnetic tape",
+          "vhs",
+          "betacam",
+          "video tape",
+          "cassette video"
+        ],
+        "other": [
+          "dvd",
+          "blu-ray",
+          "bluray",
+          "hdd recorder",
+          "dvr",
+          "ổ cứng ghi hình",
+          "đầu ghi dvd",
+          "đầu đĩa",
+          "đầu ghi hình hdd",
+          "optical disc recorder"
+        ]
+      }
+    },
+    {
+      "attribute": "broadcastUse",
+      "type": "enum",
+      "domain": [
+        "sen",
+        "other"
+      ],
+      "labelVi": "Dùng điện ảnh / phát thanh truyền hình",
+      "questionVi": "Loại dùng cho điện ảnh hoặc phát thanh truyền hình (SEN) hay loại dân dụng/khác?",
+      "detect": {
+        "sen": [
+          "điện ảnh",
+          "phát thanh truyền hình",
+          "broadcast",
+          "broadcasting",
+          "cinema",
+          "sen",
+          "studio"
+        ],
+        "other": [
+          "dân dụng",
+          "gia đình",
+          "home video",
+          "consumer"
+        ]
+      }
+    },
+    {
+      "attribute": "readingSystem",
+      "type": "enum",
+      "domain": [
+        "laserOptical",
+        "other"
+      ],
+      "labelVi": "Hệ thống đọc (chỉ khi không băng từ)",
+      "questionVi": "Máy dùng hệ thống đọc laser quang học (DVD/BD…) hay hệ thống đọc/ghi khác?",
+      "detect": {
+        "laserOptical": [
+          "laser",
+          "dvd",
+          "blu-ray",
+          "bluray",
+          "optical disc",
+          "đĩa quang"
+        ],
+        "other": [
+          "hdd",
+          "ssd",
+          "flash",
+          "thẻ nhớ",
+          "dvr hard disk",
+          "nvt"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-tape-sen",
+      "priority": 60,
+      "when": {
+        "mediaType": "magneticTape",
+        "broadcastUse": "sen"
+      },
+      "hs": "85211010",
+      "gir": "GIR 6",
+      "reasonVi": "Máy video băng từ, dùng điện ảnh/PTTT (SEN) → 8521.10.10.",
+      "source": "Biểu thuế 2026 dòng 8521.10.10"
+    },
+    {
+      "id": "r-tape-other",
+      "priority": 50,
+      "when": {
+        "mediaType": "magneticTape",
+        "broadcastUse": "other"
+      },
+      "hs": "85211090",
+      "gir": "GIR 6",
+      "reasonVi": "Máy video băng từ loại khác → 8521.10.90.",
+      "source": "Biểu thuế 2026 dòng 8521.10.90"
+    },
+    {
+      "id": "r-laser-sen",
+      "priority": 60,
+      "when": {
+        "mediaType": "other",
+        "readingSystem": "laserOptical",
+        "broadcastUse": "sen"
+      },
+      "hs": "85219011",
+      "gir": "GIR 6",
+      "reasonVi": "Không băng từ, đọc laser quang học, SEN → 8521.90.11.",
+      "source": "Biểu thuế 2026 dòng 8521.90.11; cấu trúc ASEAN 8521.90.1 laser"
+    },
+    {
+      "id": "r-laser-other",
+      "priority": 50,
+      "when": {
+        "mediaType": "other",
+        "readingSystem": "laserOptical",
+        "broadcastUse": "other"
+      },
+      "hs": "85219019",
+      "gir": "GIR 6",
+      "reasonVi": "Không băng từ, đọc laser quang học, loại khác → 8521.90.19.",
+      "source": "Biểu thuế 2026 dòng 8521.90.19"
+    },
+    {
+      "id": "r-other-sen",
+      "priority": 45,
+      "when": {
+        "mediaType": "other",
+        "readingSystem": "other",
+        "broadcastUse": "sen"
+      },
+      "hs": "85219091",
+      "gir": "GIR 6",
+      "reasonVi": "Không băng từ, không laser quang học, SEN → 8521.90.91.",
+      "source": "Biểu thuế 2026 dòng 8521.90.91"
+    },
+    {
+      "id": "r-other-other",
+      "priority": 35,
+      "when": {
+        "mediaType": "other",
+        "readingSystem": "other",
+        "broadcastUse": "other"
+      },
+      "hs": "85219099",
+      "gir": "GIR 6",
+      "reasonVi": "Không băng từ, không laser quang học, loại khác → 8521.90.99.",
+      "source": "Biểu thuế 2026 dòng 8521.90.99"
+    }
+  ]
+}

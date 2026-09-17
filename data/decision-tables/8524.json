@@ -1,0 +1,144 @@
+{
+  "heading": "8524",
+  "titleVi": "Mô-đun màn hình phẳng (LCD/OLED/khác), có hoặc không mạch điều khiển",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Công nghệ tấm (LCD / OLED / khác) và có gắn driver/mạch điều khiển hay chưa?",
+  "sourceVi": "Biểu thuế 2026 nhóm 85.24: 8524.11/.12/.19 không có driver; 8524.91/.92/.99 có driver/mạch điều khiển — theo LCD / OLED / khác.",
+  "inputs": [
+    {
+      "attribute": "panelTech",
+      "type": "enum",
+      "domain": [
+        "lcd",
+        "oled",
+        "other"
+      ],
+      "labelVi": "Công nghệ tấm",
+      "questionVi": "Mô-đun màn hình LCD (tinh thể lỏng), OLED, hay công nghệ khác (LED mini, microLED…)?",
+      "detect": {
+        "lcd": [
+          "lcd",
+          "tinh thể lỏng",
+          "liquid crystal",
+          "ips",
+          "tft lcd"
+        ],
+        "oled": [
+          "oled",
+          "amoled",
+          "đi-ốt phát quang hữu cơ",
+          "organic light-emitting"
+        ],
+        "other": [
+          "microled",
+          "mini led panel",
+          "qd-led module",
+          "plasma module"
+        ]
+      }
+    },
+    {
+      "attribute": "withDriver",
+      "type": "enum",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "labelVi": "Có driver / mạch điều khiển",
+      "questionVi": "Mô-đun đã gắn driver hoặc mạch điều khiển chưa?",
+      "detect": {
+        "yes": [
+          "có driver",
+          "with driver",
+          "kèm mạch điều khiển",
+          "có control circuit",
+          "driver board"
+        ],
+        "no": [
+          "không driver",
+          "without driver",
+          "bare panel",
+          "cell only",
+          "chưa gắn driver"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-lcd-no",
+      "priority": 50,
+      "when": {
+        "panelTech": "lcd",
+        "withDriver": "no"
+      },
+      "hs": "85241100",
+      "gir": "GIR 6",
+      "reasonVi": "Mô-đun LCD không driver → 8524.11.00.",
+      "source": "Biểu thuế 2026 dòng 8524.11.00"
+    },
+    {
+      "id": "r-oled-no",
+      "priority": 50,
+      "when": {
+        "panelTech": "oled",
+        "withDriver": "no"
+      },
+      "hs": "85241200",
+      "gir": "GIR 6",
+      "reasonVi": "Mô-đun OLED không driver → 8524.12.00.",
+      "source": "Biểu thuế 2026 dòng 8524.12.00"
+    },
+    {
+      "id": "r-other-no",
+      "priority": 40,
+      "when": {
+        "panelTech": "other",
+        "withDriver": "no"
+      },
+      "hs": "85241900",
+      "gir": "GIR 6",
+      "reasonVi": "Mô-đun khác LCD/OLED, không driver → 8524.19.00.",
+      "source": "Biểu thuế 2026 dòng 8524.19.00"
+    },
+    {
+      "id": "r-lcd-yes",
+      "priority": 50,
+      "when": {
+        "panelTech": "lcd",
+        "withDriver": "yes"
+      },
+      "hs": "85249100",
+      "gir": "GIR 6",
+      "reasonVi": "Mô-đun LCD có driver/mạch điều khiển → 8524.91.00.",
+      "source": "Biểu thuế 2026 dòng 8524.91.00"
+    },
+    {
+      "id": "r-oled-yes",
+      "priority": 50,
+      "when": {
+        "panelTech": "oled",
+        "withDriver": "yes"
+      },
+      "hs": "85249200",
+      "gir": "GIR 6",
+      "reasonVi": "Mô-đun OLED có driver/mạch điều khiển → 8524.92.00.",
+      "source": "Biểu thuế 2026 dòng 8524.92.00"
+    },
+    {
+      "id": "r-other-yes",
+      "priority": 40,
+      "when": {
+        "panelTech": "other",
+        "withDriver": "yes"
+      },
+      "hs": "85249900",
+      "gir": "GIR 6",
+      "reasonVi": "Mô-đun khác LCD/OLED, có driver → 8524.99.00.",
+      "source": "Biểu thuế 2026 dòng 8524.99.00"
+    }
+  ]
+}

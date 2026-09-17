@@ -1,0 +1,157 @@
+{
+  "heading": "8542",
+  "titleVi": "Mạch tích hợp điện tử và bộ phận",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Là IC nguyên chiếc (CPU/MCU, bộ nhớ, khuếch đại, IC khác) hay BỘ PHẬN của IC?",
+  "sourceVi": "Biểu thuế 2026 nhóm 85.42: 8542.31 processors/controllers; 8542.32 memories; 8542.33 amplifiers; 8542.39 other ICs; 8542.90 parts.",
+  "inputs": [
+    {
+      "attribute": "goodsKind",
+      "type": "enum",
+      "domain": [
+        "ic",
+        "parts"
+      ],
+      "labelVi": "IC / bộ phận",
+      "questionVi": "Là mạch tích hợp (chip/IC) nguyên chiếc hay bộ phận của mạch tích hợp?",
+      "detect": {
+        "ic": [
+          "integrated circuit",
+          "mạch tích hợp",
+          "microcontroller",
+          "mcu ",
+          " cpu",
+          "cpu ",
+          "dram",
+          "flash memory",
+          "op-amp",
+          "opamp",
+          "fpga",
+          " chip "
+        ],
+        "parts": [
+          "bộ phận ic",
+          "lead frame",
+          "đế chip",
+          "parts of integrated",
+          "vỏ ic",
+          "phụ tùng ic"
+        ]
+      }
+    },
+    {
+      "attribute": "icKind",
+      "type": "enum",
+      "domain": [
+        "processor",
+        "memory",
+        "amplifier",
+        "other"
+      ],
+      "labelVi": "Loại IC",
+      "questionVi": "IC là bộ xử lý/điều khiển (CPU/MCU), bộ nhớ, mạch khuếch đại, hay loại khác?",
+      "detect": {
+        "processor": [
+          "cpu",
+          "mcu",
+          "mpu",
+          "processor",
+          "controller",
+          "microcontroller",
+          "đơn vị xử lý",
+          "điều khiển"
+        ],
+        "memory": [
+          "memory",
+          "bộ nhớ",
+          "dram",
+          "sram",
+          "flash",
+          "eeprom",
+          "nand",
+          "nor flash",
+          "rom"
+        ],
+        "amplifier": [
+          "amplifier",
+          "khuếch đại",
+          "op-amp",
+          "opamp",
+          "audio amp"
+        ],
+        "other": [
+          "fpga",
+          "asic",
+          "interface ic",
+          "driver ic",
+          "pmic",
+          "analog ic"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-proc",
+      "priority": 50,
+      "when": {
+        "goodsKind": "ic",
+        "icKind": "processor"
+      },
+      "hs": "85423100",
+      "gir": "GIR 6",
+      "reasonVi": "IC bộ xử lý / điều khiển → 8542.31.00.",
+      "source": "Biểu thuế 2026 dòng 8542.31.00"
+    },
+    {
+      "id": "r-mem",
+      "priority": 50,
+      "when": {
+        "goodsKind": "ic",
+        "icKind": "memory"
+      },
+      "hs": "85423200",
+      "gir": "GIR 6",
+      "reasonVi": "IC bộ nhớ → 8542.32.00.",
+      "source": "Biểu thuế 2026 dòng 8542.32.00"
+    },
+    {
+      "id": "r-amp",
+      "priority": 50,
+      "when": {
+        "goodsKind": "ic",
+        "icKind": "amplifier"
+      },
+      "hs": "85423300",
+      "gir": "GIR 6",
+      "reasonVi": "IC mạch khuếch đại → 8542.33.00.",
+      "source": "Biểu thuế 2026 dòng 8542.33.00"
+    },
+    {
+      "id": "r-other-ic",
+      "priority": 40,
+      "when": {
+        "goodsKind": "ic",
+        "icKind": "other"
+      },
+      "hs": "85423900",
+      "gir": "GIR 6",
+      "reasonVi": "IC loại khác → 8542.39.00.",
+      "source": "Biểu thuế 2026 dòng 8542.39.00"
+    },
+    {
+      "id": "r-parts",
+      "priority": 20,
+      "when": {
+        "goodsKind": "parts"
+      },
+      "hs": "85429000",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của mạch tích hợp → 8542.90.00.",
+      "source": "Biểu thuế 2026 dòng 8542.90.00"
+    }
+  ]
+}

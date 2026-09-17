@@ -1,0 +1,102 @@
+{
+  "heading": "8534",
+  "titleVi": "Mạch in (printed circuits)",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Mạch in một mặt, hai mặt, nhiều lớp, hay cấu trúc khác?",
+  "sourceVi": "Biểu thuế 2026 nhóm 85.34: 8534.00.10 một mặt; .20 hai mặt; .30 nhiều lớp; .90 loại khác.",
+  "inputs": [
+    {
+      "attribute": "pcbLayers",
+      "type": "enum",
+      "domain": [
+        "single",
+        "double",
+        "multi",
+        "other"
+      ],
+      "labelVi": "Số mặt / lớp mạch in",
+      "questionVi": "Mạch in một mặt, hai mặt, nhiều lớp (multilayer), hay cấu trúc khác?",
+      "detect": {
+        "single": [
+          "một mặt",
+          "single side",
+          "single-sided",
+          "1 mặt",
+          "single layer"
+        ],
+        "double": [
+          "hai mặt",
+          "2 mặt",
+          "double side",
+          "double-sided",
+          "two sided"
+        ],
+        "multi": [
+          "nhiều lớp",
+          "multilayer",
+          "multi-layer",
+          "multi layer",
+          "4 lớp",
+          "6 lớp",
+          "8 lớp",
+          "10 lớp"
+        ],
+        "other": [
+          "flexible pcb",
+          "mạch mềm",
+          "rigid-flex",
+          "hdi khác"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-single",
+      "priority": 40,
+      "when": {
+        "pcbLayers": "single"
+      },
+      "hs": "85340010",
+      "gir": "GIR 6",
+      "reasonVi": "Mạch in một mặt → 8534.00.10.",
+      "source": "Biểu thuế 2026 dòng 8534.00.10"
+    },
+    {
+      "id": "r-double",
+      "priority": 40,
+      "when": {
+        "pcbLayers": "double"
+      },
+      "hs": "85340020",
+      "gir": "GIR 6",
+      "reasonVi": "Mạch in hai mặt → 8534.00.20.",
+      "source": "Biểu thuế 2026 dòng 8534.00.20"
+    },
+    {
+      "id": "r-multi",
+      "priority": 40,
+      "when": {
+        "pcbLayers": "multi"
+      },
+      "hs": "85340030",
+      "gir": "GIR 6",
+      "reasonVi": "Mạch in nhiều lớp → 8534.00.30.",
+      "source": "Biểu thuế 2026 dòng 8534.00.30"
+    },
+    {
+      "id": "r-other",
+      "priority": 10,
+      "when": {
+        "pcbLayers": "other"
+      },
+      "hs": "85340090",
+      "gir": "GIR 6",
+      "reasonVi": "Mạch in loại khác (không thuộc một/hai mặt/nhiều lớp kể trên) → 8534.00.90.",
+      "source": "Biểu thuế 2026 dòng 8534.00.90"
+    }
+  ]
+}

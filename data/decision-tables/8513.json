@@ -1,0 +1,169 @@
+{
+  "heading": "8513",
+  "titleVi": "Đèn điện xách tay tự có nguồn và bộ phận",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Là ĐÈN nguyên chiếc hay BỘ PHẬN? Nếu đèn: mũ thợ mỏ/thợ đá hay loại xách tay khác? Nếu bộ phận: của đèn mỏ, phản quang/cơ cấu đèn chớp, hay khác?",
+  "sourceVi": "Biểu thuế 2026 nhóm 85.13: 8513.10 đèn; 8513.90 bộ phận. Loại trừ đèn nhóm 85.12.",
+  "inputs": [
+    {
+      "attribute": "goodsKind",
+      "type": "enum",
+      "domain": [
+        "lamp",
+        "parts"
+      ],
+      "labelVi": "Đèn / bộ phận",
+      "questionVi": "Là đèn điện xách tay nguyên chiếc hay bộ phận/phụ tùng của đèn nhóm 85.13?",
+      "detect": {
+        "lamp": [
+          "đèn gắn mũ",
+          "đèn thợ mỏ",
+          "đèn thợ đá",
+          "đèn pin",
+          "đèn đội đầu",
+          "headlamp",
+          "flashlight",
+          "torch",
+          "portable lamp",
+          "đèn xách tay",
+          "đèn đeo đầu"
+        ],
+        "parts": [
+          "bộ phận đèn",
+          "phụ tùng đèn",
+          "phản quang",
+          "reflector",
+          "parts of lamp",
+          "vỏ đèn"
+        ]
+      }
+    },
+    {
+      "attribute": "lampType",
+      "type": "enum",
+      "domain": [
+        "miner",
+        "other"
+      ],
+      "labelVi": "Loại đèn",
+      "questionVi": "Đèn gắn mũ thợ mỏ / thợ khai thác đá, hay đèn xách tay khác (đèn pin, đội đầu thường…)?",
+      "detect": {
+        "miner": [
+          "thợ mỏ",
+          "mũ thợ mỏ",
+          "thợ đá",
+          "miner",
+          "mining lamp",
+          "cap lamp"
+        ],
+        "other": [
+          "đèn pin",
+          "flashlight",
+          "torch",
+          "camping",
+          "đèn đội đầu thể thao",
+          "headlamp led"
+        ]
+      }
+    },
+    {
+      "attribute": "partType",
+      "type": "enum",
+      "domain": [
+        "miner",
+        "flashReflector",
+        "other"
+      ],
+      "labelVi": "Loại bộ phận",
+      "questionVi": "Bộ phận của đèn mũ thợ mỏ/thợ đá; phản quang/cơ cấu đèn chớp bằng plastic; hay bộ phận khác?",
+      "detect": {
+        "miner": [
+          "thợ mỏ",
+          "mũ thợ mỏ",
+          "thợ đá",
+          "miner",
+          "cap lamp"
+        ],
+        "flashReflector": [
+          "phản quang",
+          "reflector",
+          "đèn chớp",
+          "flash",
+          "gạt công tắc",
+          "slider"
+        ],
+        "other": [
+          "ắc quy đèn",
+          "bóng đèn pin",
+          "switch đèn",
+          "vỏ đèn"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-lamp-miner",
+      "priority": 50,
+      "when": {
+        "goodsKind": "lamp",
+        "lampType": "miner"
+      },
+      "hs": "85131030",
+      "gir": "GIR 6",
+      "reasonVi": "Đèn gắn mũ thợ mỏ / thợ khai thác đá → 8513.10.30.",
+      "source": "Biểu thuế 2026 dòng 8513.10.30"
+    },
+    {
+      "id": "r-lamp-other",
+      "priority": 40,
+      "when": {
+        "goodsKind": "lamp",
+        "lampType": "other"
+      },
+      "hs": "85131090",
+      "gir": "GIR 6",
+      "reasonVi": "Đèn điện xách tay khác (không phải mũ thợ mỏ/thợ đá) → 8513.10.90.",
+      "source": "Biểu thuế 2026 dòng 8513.10.90"
+    },
+    {
+      "id": "r-part-miner",
+      "priority": 50,
+      "when": {
+        "goodsKind": "parts",
+        "partType": "miner"
+      },
+      "hs": "85139010",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của đèn mũ thợ mỏ/thợ đá → 8513.90.10.",
+      "source": "Biểu thuế 2026 dòng 8513.90.10"
+    },
+    {
+      "id": "r-part-flash",
+      "priority": 45,
+      "when": {
+        "goodsKind": "parts",
+        "partType": "flashReflector"
+      },
+      "hs": "85139030",
+      "gir": "GIR 6",
+      "reasonVi": "Phản quang đèn chớp / chi tiết trượt plastic công tắc đèn chớp → 8513.90.30.",
+      "source": "Biểu thuế 2026 dòng 8513.90.30"
+    },
+    {
+      "id": "r-part-other",
+      "priority": 30,
+      "when": {
+        "goodsKind": "parts",
+        "partType": "other"
+      },
+      "hs": "85139090",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác của đèn 85.13 → 8513.90.90.",
+      "source": "Biểu thuế 2026 dòng 8513.90.90"
+    }
+  ]
+}

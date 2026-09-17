@@ -1,0 +1,138 @@
+{
+  "heading": "8505",
+  "titleVi": "Nam châm điện / nam châm vĩnh cửu; khớp nối–ly hợp–phanh điện từ",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Nam châm vĩnh cửu (kim loại / khác); khớp nối–ly hợp–phanh điện từ; nam châm điện MRI; đầu nâng điện từ; hay nam châm điện/thiết bị giữ loại khác?",
+  "sourceVi": "Biểu thuế 2026 nhóm 85.05: 8505.11 kim loại; 8505.19 khác; 8505.20 khớp nối/ly hợp/phanh; 8505.90.10 MRI; .20 đầu nâng; .90 khác.",
+  "inputs": [
+    {
+      "attribute": "articleType",
+      "type": "enum",
+      "domain": [
+        "permMetal",
+        "permOther",
+        "coupling",
+        "mri",
+        "liftingHead",
+        "otherElectro"
+      ],
+      "labelVi": "Loại hàng 85.05",
+      "questionVi": "Nam châm vĩnh cửu bằng kim loại; nam châm vĩnh cửu khác; khớp nối/ly hợp/phanh điện từ; nam châm điện MRI; đầu nâng điện từ; hay nam châm điện/thiết bị giữ loại khác?",
+      "detect": {
+        "permMetal": [
+          "nam châm neodymium",
+          "nam châm đất hiếm",
+          "permanent magnet metal",
+          "nam châm vĩnh cửu kim loại",
+          "alnico",
+          "ferrite magnet kim loại"
+        ],
+        "permOther": [
+          "nam châm ferrite",
+          "nam châm ceramic",
+          "nam châm cao su",
+          "flexible magnet",
+          "nam châm nhựa"
+        ],
+        "coupling": [
+          "khớp nối điện từ",
+          "ly hợp điện từ",
+          "phanh điện từ",
+          "electromagnetic clutch",
+          "electromagnetic brake",
+          "magnetic coupling"
+        ],
+        "mri": [
+          "cộng hưởng từ",
+          "mri",
+          "magnetic resonance",
+          "nam châm mri"
+        ],
+        "liftingHead": [
+          "đầu nâng điện từ",
+          "lifting magnet",
+          "electromagnetic lifting",
+          "mâm từ nâng"
+        ],
+        "otherElectro": [
+          "holding magnet",
+          "thiết bị giữ điện từ",
+          "electromagnet giữ",
+          "nam châm điện giữ",
+          "electromagnetic holding"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-metal",
+      "priority": 50,
+      "when": {
+        "articleType": "permMetal"
+      },
+      "hs": "85051100",
+      "gir": "GIR 6",
+      "reasonVi": "Nam châm vĩnh cửu / sắp từ hóa — bằng kim loại → 8505.11.00.",
+      "source": "Biểu thuế 2026 dòng 8505.11.00"
+    },
+    {
+      "id": "r-perm-other",
+      "priority": 45,
+      "when": {
+        "articleType": "permOther"
+      },
+      "hs": "85051900",
+      "gir": "GIR 6",
+      "reasonVi": "Nam châm vĩnh cửu loại khác (không kim loại) → 8505.19.00.",
+      "source": "Biểu thuế 2026 dòng 8505.19.00"
+    },
+    {
+      "id": "r-coupling",
+      "priority": 50,
+      "when": {
+        "articleType": "coupling"
+      },
+      "hs": "85052000",
+      "gir": "GIR 6",
+      "reasonVi": "Khớp nối, ly hợp, phanh hoạt động bằng điện từ → 8505.20.00.",
+      "source": "Biểu thuế 2026 dòng 8505.20.00"
+    },
+    {
+      "id": "r-mri",
+      "priority": 50,
+      "when": {
+        "articleType": "mri"
+      },
+      "hs": "85059010",
+      "gir": "GIR 6",
+      "reasonVi": "Nam châm điện chủ yếu cho MRI (trừ 90.18) → 8505.90.10.",
+      "source": "Biểu thuế 2026 dòng 8505.90.10"
+    },
+    {
+      "id": "r-lift",
+      "priority": 50,
+      "when": {
+        "articleType": "liftingHead"
+      },
+      "hs": "85059020",
+      "gir": "GIR 6",
+      "reasonVi": "Đầu nâng điện từ → 8505.90.20.",
+      "source": "Biểu thuế 2026 dòng 8505.90.20"
+    },
+    {
+      "id": "r-other",
+      "priority": 20,
+      "when": {
+        "articleType": "otherElectro"
+      },
+      "hs": "85059090",
+      "gir": "GIR 6",
+      "reasonVi": "Nam châm điện / thiết bị giữ / bộ phận loại khác → 8505.90.90.",
+      "source": "Biểu thuế 2026 dòng 8505.90.90"
+    }
+  ]
+}
