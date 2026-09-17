@@ -16,7 +16,12 @@
  * thì mọi bản ghi đều có thể đổi → chạy đủ, ghi cache mới. Cache nằm ở
  * data/.bench-cache/ (gitignored) vì nó chứa mã thật của tờ khai giữ riêng.
  *
- *   npm run bench:delta                 # so với cache; chưa có cache thì chạy đủ (11 phút, một lần)
+ * "TRƯỚC" là gì: là kết quả của từ điển ĐÃ COMMIT (bản trong git HEAD), không
+ * phải lần chấm gần nhất. Agent sửa đi sửa lại mười lần thì cả mười lần đều so
+ * với mốc đã commit — không có chuyện "lần này giảm so với lần thử sai trước".
+ * Khi từ điển đang làm việc trùng bản HEAD, mốc được ghi lại từ lần chấm đó.
+ *
+ *   npm run bench:delta                 # so với mốc HEAD; chưa có cache thì chạy đủ (một lần)
  *   npm run bench:delta -- --full       # ép chạy đủ và ghi cache
  */
 import './test-isolate-data.mjs';
@@ -24,6 +29,7 @@ import { createHash } from 'crypto';
 import { readFileSync, existsSync, writeFileSync, mkdirSync, readdirSync } from 'fs';
 import { join } from 'path';
 import { createRequire } from 'module';
+import { execFileSync } from 'child_process';
 import { isHeldOut } from './build-hs-aliases.mjs';
 import { ROOT, THESAURUS_PATH, norm } from './dict-lib.mjs';
 
@@ -84,6 +90,14 @@ function snapshot(t) {
   return { context: sha(JSON.stringify(t.numericTermContext || [])), entries };
 }
 const snapNow = snapshot(thesaurus);
+const workingHash = sha(readFileSync(THESAURUS_PATH));
+let headHash = null;
+try {
+  headHash = sha(execFileSync('git', ['show', 'HEAD:data/trade-synonyms.json'], { cwd: ROOT, maxBuffer: 64 * 1024 * 1024 }));
+} catch {
+  headHash = null; // không có git — coi lần chấm gần nhất là mốc
+}
+const workingIsCommitted = headHash !== null && headHash === workingHash;
 
 /* ---------- chấm ---------- */
 function loadSearch() {
@@ -115,8 +129,10 @@ function totals(records) {
 
 const fp = codeFingerprint();
 let cache = existsSync(CACHE) ? JSON.parse(readFileSync(CACHE, 'utf8')) : null;
+// Mốc so sánh: bản đã commit (baseline) nếu có, không thì lần chấm gần nhất.
+const ref = cache?.baseline?.records?.length === items.length ? cache.baseline : cache;
 const cacheUsable =
-  cache && cache.fingerprint === fp && cache.records?.length === items.length && cache.snapshot?.context === snapNow.context;
+  cache && cache.fingerprint === fp && ref?.records?.length === items.length && ref?.snapshot?.context === snapNow.context;
 
 let mode;
 let records;
@@ -129,14 +145,14 @@ if (forceFull || !cacheUsable) {
   mode = forceFull ? 'ĐỦ (ép --full)' : cache ? 'ĐỦ (mã/data ngoài từ điển đã đổi → cache vô hiệu)' : 'ĐỦ (chưa có cache)';
   console.log(`\n=== bench:delta — chạy ${mode}, ${items.length} tờ khai ===`);
   records = items.map((it) => ({ truth: it.truth, top: scoreOne(searchCandidates, it) }));
-  if (cache && cache.fingerprint === fp) before = totals(cache.records);
+  if (cache && cache.fingerprint === fp) before = totals(ref.records);
 } else {
   // Mục nào đổi? Lấy HỢP các cụm cũ + mới của mục đó — câu chứa bất kỳ cụm nào là "bị chạm".
   const touchedTerms = new Set();
   const changed = [];
-  const ids = new Set([...Object.keys(cache.snapshot.entries), ...Object.keys(snapNow.entries)]);
+  const ids = new Set([...Object.keys(ref.snapshot.entries), ...Object.keys(snapNow.entries)]);
   for (const id of ids) {
-    const a = cache.snapshot.entries[id];
+    const a = ref.snapshot.entries[id];
     const b = snapNow.entries[id];
     if (a && b && a.hash === b.hash) continue;
     changed.push(`${id}${!a ? ' (mới)' : !b ? ' (xoá)' : ''}`);
@@ -152,19 +168,19 @@ if (forceFull || !cacheUsable) {
       }
     }
   }
-  mode = `DELTA — ${changed.length} mục đổi, ${affected.length}/${items.length} tờ khai bị chạm`;
+  mode = `DELTA so với ${ref === cache.baseline ? 'bản đã commit' : 'lần chấm trước'} — ${changed.length} mục đổi, ${affected.length}/${items.length} tờ khai bị chạm`;
   console.log(`\n=== bench:delta — ${mode} ===`);
   if (changed.length) console.log(`   mục: ${changed.join(', ')}`);
-  records = cache.records.map((r) => ({ ...r }));
-  before = totals(cache.records);
+  records = ref.records.map((r) => ({ ...r }));
+  before = totals(ref.records);
   for (const i of affected) records[i] = { truth: items[i].truth, top: scoreOne(searchCandidates, items[i]) };
-  const moved = affected.filter((i) => cache.records[i].top[0] !== records[i].top[0]);
+  const moved = affected.filter((i) => ref.records[i].top[0] !== records[i].top[0]);
   if (moved.length) {
     console.log(`   top-1 đổi ở ${moved.length} tờ khai:`);
     for (const i of moved.slice(0, 20)) {
       const ok = (h) => (h?.slice(0, 8) === items[i].truth ? '✓' : h?.slice(0, 4) === items[i].truth.slice(0, 4) ? '~' : '✗');
       console.log(
-        `     #${i} đúng ${items[i].truth}: ${cache.records[i].top[0] || '-'} ${ok(cache.records[i].top[0])} → ${records[i].top[0] || '-'} ${ok(records[i].top[0])}`
+        `     #${i} đúng ${items[i].truth}: ${ref.records[i].top[0] || '-'} ${ok(ref.records[i].top[0])} → ${records[i].top[0] || '-'} ${ok(records[i].top[0])}`
       );
     }
   }
@@ -192,7 +208,16 @@ for (const key of ['top1', 'top3']) {
 console.log(`\n(${Math.round((Date.now() - t0) / 100) / 10}s)`);
 
 mkdirSync(CACHE_DIR, { recursive: true });
-writeFileSync(CACHE, JSON.stringify({ updatedAt: new Date().toISOString(), fingerprint: fp, snapshot: snapNow, records }));
+const baseline = workingIsCommitted
+  ? { thesaurusHash: workingHash, snapshot: snapNow, records }
+  : cache?.fingerprint === fp && cache?.baseline
+    ? cache.baseline
+    : null;
+writeFileSync(
+  CACHE,
+  JSON.stringify({ updatedAt: new Date().toISOString(), fingerprint: fp, snapshot: snapNow, records, baseline })
+);
+if (workingIsCommitted) console.log('(từ điển trùng bản HEAD → ghi làm mốc so sánh)');
 
 if (regressed.length) {
   console.log(`\n❌ GIẢM so với lần chấm trước ở: ${regressed.join(', ')}. Mục của bạn đang đè lên tiền lệ thật.`);
