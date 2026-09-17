@@ -134,6 +134,17 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
   const ex = lookupTradeTerms('máy điều hòa inverter 12000 BTU').excluded[0];
   check('lý do nhắc đây là tính năng', /tính năng/i.test(ex?.reasonVi || ''));
 
+  // Cụm có dấu chỉ khớp câu có dấu khi ĐÚNG dấu. Ba ca thật tìm được khi
+  // nghiệm thu 7 nhóm đầu — holdout Oz không có câu nào như vậy nên không kêu.
+  const spruce = lookupTradeTerms('gỗ vân sam xẻ');
+  check('"gỗ vân sam" không dính van săm 8481', !spruce.matches.some((m) => m.entryId === 'van-sam'));
+  const withWater = lookupTradeTerms('chất cô đặc pha với nước');
+  check('"với nước" không dính vòi nước', !withWater.matches.some((m) => m.entryId === 'voi-nuoc'));
+  const capacitor = lookupTradeTerms('tụ điện 400V');
+  check('"tụ điện" không dính tủ điện 8537', !capacitor.matches.some((m) => m.entryId === 'bang-phan-phoi-dien'));
+  check('gõ có dấu đúng dấu vẫn khớp', lookupTradeTerms('van săm xe máy').matches.some((m) => m.entryId === 'van-sam'));
+  check('gõ KHÔNG dấu vẫn khớp bỏ dấu', lookupTradeTerms('van sam xe may').matches.some((m) => m.entryId === 'van-sam'));
+
   // Mác thép dạng số trần không được dính vào câu đếm số lượng.
   const count = lookupTradeTerms('mua 2311 cái bút bi');
   check('"2311 cái bút bi" không dính mác thép 2311', count.matches.length === 0);
@@ -224,12 +235,13 @@ console.log('\n== Phủ 100% mã lá nhóm đã nhận (heading-coverage) ==');
     const missCand = leaves.filter((hs) => !candHs.has(hs));
     check(`${heading}: mọi lá có trong candidates[] trade-synonyms`, missCand.length === 0, missCand.slice(0, 8).join(','));
 
-    const missMap = leaves.filter((hs) => !(cov.codes?.[hs]?.synonymEntryIds || []).length);
+    const idsOf = (hs) => { const v = cov.codes?.[hs]; return Array.isArray(v) ? v : v?.synonymEntryIds || []; };
+    const missMap = leaves.filter((hs) => !idsOf(hs).length);
     check(`${heading}: mọi lá gắn synonymEntryIds`, missMap.length === 0, missMap.slice(0, 8).join(','));
 
     const badId = [];
     for (const hs of leaves) {
-      for (const id of cov.codes[hs].synonymEntryIds || []) {
+      for (const id of idsOf(hs)) {
         const entry = thesaurus.entries.find((e) => e.id === id);
         if (!entry) badId.push(`${hs}:${id}:missing-entry`);
         else if (!(entry.candidates || []).some((c) => c.hs === hs)) badId.push(`${hs}:${id}:not-in-candidates`);
@@ -237,6 +249,22 @@ console.log('\n== Phủ 100% mã lá nhóm đã nhận (heading-coverage) ==');
     }
     check(`${heading}: synonymEntryIds trỏ đúng mục có mã lá`, badId.length === 0, badId.slice(0, 8).join(','));
   }
+}
+
+console.log('\n== Sổ tiến độ khớp biên bản nghiệm thu ==');
+{
+  const { existsSync, readFileSync, readdirSync } = require('fs');
+  const progPath = join(ROOT, 'data', 'dictionary-progress.json');
+  const covDir = join(ROOT, 'data', 'heading-coverage');
+  check('có data/dictionary-progress.json', existsSync(progPath));
+  const prog = existsSync(progPath) ? JSON.parse(readFileSync(progPath, 'utf8')) : { headings: {} };
+  const doneNoFile = Object.entries(prog.headings || {})
+    .filter(([h, v]) => v.status === 'done' && !existsSync(join(covDir, `${h}.json`)))
+    .map(([h]) => h);
+  check('nhóm done nào cũng có file heading-coverage', doneNoFile.length === 0, doneNoFile.join(', '));
+  const files = existsSync(covDir) ? readdirSync(covDir).filter((f) => /^\d{4}\.json$/.test(f)).map((f) => f.slice(0, 4)) : [];
+  const fileNotDone = files.filter((h) => prog.headings?.[h]?.status !== 'done');
+  check('file heading-coverage nào cũng được ghi done trong sổ', fileNotDone.length === 0, fileNotDone.join(', '));
 }
 
 console.log('\n== Thống kê ==');
