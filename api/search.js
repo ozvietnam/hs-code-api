@@ -78,8 +78,19 @@ module.exports = function handler(req, res) {
 
   const limitNum = Math.min(parseInt(limit, 10) || 20, 50);
   const onlyCS = cs_only === '1' || cs_only === 'true';
+  // Dữ kiện tường minh cho bảng quyết định: ?facts={"thicknessMm":2,"form":"coil"}.
+  // Câu hỏi ở clarifyingQuestionsVi nói cần thuộc tính nào; ERP trả lời bằng đúng tên đó.
+  let facts = null;
+  if (req.query.facts) {
+    try {
+      const parsedFacts = JSON.parse(String(req.query.facts));
+      if (parsedFacts && typeof parsedFacts === 'object' && !Array.isArray(parsedFacts)) facts = parsedFacts;
+    } catch {
+      return res.status(400).json({ error: 'facts phải là JSON object, vd facts={"thicknessMm":2}' });
+    }
+  }
   const started = Date.now();
-  const rawCandidates = searchCandidates(q, { topCandidates: limitNum, csOnly: onlyCS });
+  const rawCandidates = searchCandidates(q, { topCandidates: limitNum, csOnly: onlyCS, facts });
   // Chương 98 là mã ưu đãi riêng, không phải kết luận phân loại — loại khỏi kết
   // quả trừ khi người dùng chủ động hỏi (gõ "98..." hoặc includeChapter98=1).
   const ch98 = filterChapter98(rawCandidates, {
@@ -130,6 +141,8 @@ module.exports = function handler(req, res) {
         sourceVi: item.tradeMatch.sourceVi,
       };
     }
+    // Lá do bảng quyết định chốt bằng thuộc tính (xem `decisions` ở cấp phản hồi).
+    if (item.decision) mapped.decision = item.decision;
 
     // Chuỗi phân cấp: với 25,7% mã tên đúng bằng "Loại khác", dòng kết quả tự
     // nó vô nghĩa. Breadcrumb cho người tra thấy mã nằm ở đâu trong biểu thuế.
@@ -168,7 +181,15 @@ module.exports = function handler(req, res) {
   const avoided = rawCandidates.avoidedByTradeRules || [];
   const tradeMatches = rawCandidates.tradeTermMatches || [];
   const tradeExcluded = rawCandidates.tradeTermExcluded || [];
-  const askVi = [...new Set(tradeMatches.flatMap((m) => m.askVi || []))];
+  const decisions = rawCandidates.decisions || [];
+  // Câu hỏi gạn: từ từ điển (askVi) + từ bảng quyết định (dữ kiện còn thiếu). Bảng
+  // hỏi đúng thuộc tính đang chặn việc chốt lá, kèm tên thuộc tính để ERP trả lời.
+  const askVi = [
+    ...new Set([
+      ...decisions.flatMap((d) => (d.missingFacts || []).map((m) => m.questionVi)),
+      ...tradeMatches.flatMap((m) => m.askVi || []),
+    ]),
+  ];
 
   return res.status(200).json({
     keyword: q,
@@ -196,6 +217,21 @@ module.exports = function handler(req, res) {
         }
       : {}),
     ...(askVi.length ? { clarifyingQuestionsVi: askVi } : {}),
+    ...(decisions.length
+      ? {
+          decisions: decisions.map((d) => ({
+            heading: d.heading,
+            titleVi: d.titleVi,
+            status: d.status,
+            ...(d.hs ? { hsCode: d.hs, ruleId: d.ruleId, reasonVi: d.reasonVi, source: d.source } : {}),
+            tableVerified: d.tableVerified,
+            basis: d.tableVerified ? 'RULE_TABLE' : 'HEURISTIC',
+            narrowed: d.narrowed,
+            missingFacts: d.missingFacts,
+            factsUsed: d.factsUsed,
+          })),
+        }
+      : {}),
     ...(tradeExcluded.length
       ? {
           tradeTermNotApplied: tradeExcluded.map((x) => ({

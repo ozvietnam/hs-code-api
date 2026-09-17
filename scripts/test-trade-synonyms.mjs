@@ -43,9 +43,16 @@ function check(name, cond, detail = '') {
 
 console.log('\n== Mọi mã trong từ điển phải có thật trong biểu thuế hiện hành ==');
 {
+  // hs 8 số phải là lá có thật; hs 4/6 số (ứng viên cấp nhóm) phải có ít nhất một lá.
+  const leafKeys = Object.keys(taxData).filter((k) => /^\d{8}$/.test(k));
   const dead = [];
-  for (const e of thesaurus.entries) for (const c of e.candidates) if (!taxData[c.hs]) dead.push(`${e.id}:${c.hs}`);
-  check('không có mã chết', dead.length === 0, dead.join(', '));
+  for (const e of thesaurus.entries)
+    for (const c of e.candidates) {
+      const hs = String(c.hs);
+      const alive = hs.length === 8 ? Boolean(taxData[hs]) : [4, 6].includes(hs.length) && leafKeys.some((k) => k.startsWith(hs));
+      if (!alive) dead.push(`${e.id}:${hs}`);
+    }
+  check('không có mã chết (8 số phải là lá; 4/6 số phải có lá)', dead.length === 0, dead.join(', '));
   const noSource = thesaurus.entries.filter((e) => !e.sourceVi).map((e) => e.id);
   check('mục nào cũng có dẫn chứng sourceVi', noSource.length === 0, noSource.join(', '));
   const badConf = [];
@@ -211,60 +218,15 @@ console.log('\n== Không phá luồng cũ ==');
   check('không trả mã trùng lặp', new Set(dup.map((c) => c.hsCode)).size === dup.length);
 }
 
-console.log('\n== Phủ 100% mã lá nhóm đã nhận (heading-coverage) ==');
+console.log('\n== Ứng viên cấp nhóm: cộng điểm cho lá khớp lời văn, không bơm N lá điểm bằng nhau ==');
 {
-  const { readdirSync, existsSync, readFileSync } = require('fs');
-  const covDir = join(ROOT, 'data', 'heading-coverage');
-  check('có thư mục heading-coverage', existsSync(covDir));
-  const files = existsSync(covDir) ? readdirSync(covDir).filter((f) => f.endsWith('.json')) : [];
-  check('có ít nhất một nhóm đã khoá phủ', files.length >= 1, `hiện ${files.length}`);
-
-  const candHs = new Set();
-  for (const e of thesaurus.entries) for (const c of e.candidates) candHs.add(c.hs);
-
-  for (const f of files) {
-    const cov = JSON.parse(readFileSync(join(covDir, f), 'utf8'));
-    const heading = String(cov.heading || f.replace(/\.json$/, ''));
-    const leaves = Object.keys(taxData).filter((k) => /^\d{8}$/.test(k) && k.startsWith(heading)).sort();
-    const codeKeys = Object.keys(cov.codes || {}).sort();
-    check(`${heading}: leafCount khớp tax.json`, cov.leafCount === leaves.length, `${cov.leafCount} vs ${leaves.length}`);
-    check(`${heading}: codes[] đủ mọi lá`, codeKeys.join(',') === leaves.join(','));
-    check(`${heading}: coveredCount = leafCount`, cov.coveredCount === leaves.length);
-    check(`${heading}: missingHs rỗng`, Array.isArray(cov.missingHs) && cov.missingHs.length === 0);
-
-    const missCand = leaves.filter((hs) => !candHs.has(hs));
-    check(`${heading}: mọi lá có trong candidates[] trade-synonyms`, missCand.length === 0, missCand.slice(0, 8).join(','));
-
-    const idsOf = (hs) => { const v = cov.codes?.[hs]; return Array.isArray(v) ? v : v?.synonymEntryIds || []; };
-    const missMap = leaves.filter((hs) => !idsOf(hs).length);
-    check(`${heading}: mọi lá gắn synonymEntryIds`, missMap.length === 0, missMap.slice(0, 8).join(','));
-
-    const badId = [];
-    for (const hs of leaves) {
-      for (const id of idsOf(hs)) {
-        const entry = thesaurus.entries.find((e) => e.id === id);
-        if (!entry) badId.push(`${hs}:${id}:missing-entry`);
-        else if (!(entry.candidates || []).some((c) => c.hs === hs)) badId.push(`${hs}:${id}:not-in-candidates`);
-      }
-    }
-    check(`${heading}: synonymEntryIds trỏ đúng mục có mã lá`, badId.length === 0, badId.slice(0, 8).join(','));
-  }
-}
-
-console.log('\n== Sổ tiến độ khớp biên bản nghiệm thu ==');
-{
-  const { existsSync, readFileSync, readdirSync } = require('fs');
-  const progPath = join(ROOT, 'data', 'dictionary-progress.json');
-  const covDir = join(ROOT, 'data', 'heading-coverage');
-  check('có data/dictionary-progress.json', existsSync(progPath));
-  const prog = existsSync(progPath) ? JSON.parse(readFileSync(progPath, 'utf8')) : { headings: {} };
-  const doneNoFile = Object.entries(prog.headings || {})
-    .filter(([h, v]) => v.status === 'done' && !existsSync(join(covDir, `${h}.json`)))
-    .map(([h]) => h);
-  check('nhóm done nào cũng có file heading-coverage', doneNoFile.length === 0, doneNoFile.join(', '));
-  const files = existsSync(covDir) ? readdirSync(covDir).filter((f) => /^\d{4}\.json$/.test(f)).map((f) => f.slice(0, 4)) : [];
-  const fileNotDone = files.filter((h) => prog.headings?.[h]?.status !== 'done');
-  check('file heading-coverage nào cũng được ghi done trong sổ', fileNotDone.length === 0, fileNotDone.join(', '));
+  // Chuẩn 2026-09-17: tên gọi chỉ tới nhóm; lá do bảng quyết định chọn.
+  const m = lookupTradeTerms('industrial valve dn50').matches.find((x) => x.entryId === 'van-848180-phu');
+  check('mục nhánh 8481.80 nay là ứng viên cấp nhóm', Boolean(m) && m.candidates.some((c) => c.prefix));
+  const r = searchCandidates('industrial valve dn50', { topCandidates: 20 });
+  const scores = r.filter((c) => c.hsCode.startsWith('848180')).map((c) => c.score);
+  check('không còn 16 mã cùng một điểm', new Set(scores).size > 1 || scores.length <= 3, `điểm: ${[...new Set(scores)].join(',')}`);
+  check('vẫn dẫn về nhóm 8481.80', r.length > 0 && r[0].hsCode.startsWith('8481'));
 }
 
 console.log('\n== Thống kê ==');

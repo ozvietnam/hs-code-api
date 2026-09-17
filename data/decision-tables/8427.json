@@ -1,0 +1,63 @@
+{
+  "heading": "8427",
+  "titleVi": "Xe nâng hàng và xe công tác có thiết bị nâng hoặc xếp dỡ",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Xe có TỰ HÀNH không (có động cơ đẩy xe đi), và nếu tự hành thì chạy bằng mô tơ điện hay động cơ khác?",
+  "sourceVi": "Biểu thuế 2026 nhóm 84.27: 8427.10 xe tự hành chạy bằng mô tơ điện; 8427.20 xe tự hành khác; 8427.90 các loại xe khác (không tự hành). Chú giải HS nhóm 84.27: xe nâng tay (hand pallet truck) không tự hành thuộc 8427.90.",
+  "inputs": [
+    {
+      "attribute": "selfPropelled",
+      "type": "enum",
+      "domain": ["yes", "no"],
+      "labelVi": "Tự hành",
+      "questionVi": "Xe có tự hành không — có động cơ đẩy xe di chuyển (điện/diesel/gas), hay chỉ đẩy/kéo tay?",
+      "detect": {
+        "yes": ["tự hành", "self-propelled", "self propelled", "xe nâng điện", "forklift điện", "electric forklift", "diesel", "ngồi lái", "đứng lái", "reach truck", "xe nâng dầu", "xe nâng gas", "counterbalance"],
+        "no": ["xe nâng tay", "hand pallet", "pallet tay", "đẩy tay", "kéo tay", "manual pallet", "thủ công", "không tự hành", "hand stacker", "xe nâng tay cao", "not self-propelled"]
+      }
+    },
+    {
+      "attribute": "driveType",
+      "type": "enum",
+      "domain": ["electric", "other"],
+      "labelVi": "Nguồn động lực",
+      "questionVi": "Xe chạy bằng mô tơ điện (ắc quy/pin) hay động cơ đốt trong (diesel/xăng/gas LPG)?",
+      "detect": {
+        "electric": ["điện", "electric", "ắc quy", "battery", "pin lithium", "lithium"],
+        "other": ["diesel", "dầu", "xăng", "gas", "lpg", "động cơ đốt trong", "petrol", "gasoline"]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-electric",
+      "priority": 20,
+      "when": { "selfPropelled": "yes", "driveType": "electric" },
+      "hs": "84271000",
+      "gir": "GIR 6",
+      "reasonVi": "Xe tự hành, chạy bằng mô tơ điện → 8427.10.00.",
+      "source": "Biểu thuế 2026 dòng 8427.10.00"
+    },
+    {
+      "id": "r-other-engine",
+      "priority": 15,
+      "when": { "selfPropelled": "yes", "driveType": "other" },
+      "hs": "84272000",
+      "gir": "GIR 6",
+      "reasonVi": "Xe tự hành nhưng không chạy bằng mô tơ điện (diesel/xăng/gas) → 8427.20.00.",
+      "source": "Biểu thuế 2026 dòng 8427.20.00"
+    },
+    {
+      "id": "r-not-self-propelled",
+      "priority": 10,
+      "when": { "selfPropelled": "no" },
+      "hs": "84279000",
+      "gir": "GIR 6",
+      "reasonVi": "Không tự hành (xe nâng tay, stacker đẩy tay) → 8427.90.00.",
+      "source": "Biểu thuế 2026 dòng 8427.90.00; Chú giải HS 84.27"
+    }
+  ]
+}
