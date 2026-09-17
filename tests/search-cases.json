@@ -1,36 +1,225 @@
 [
-  { "id": "hs-prefix", "query": "8517", "minResults": 1 },
-  { "id": "vietnamese-phone", "query": "điện thoại", "minResults": 3 },
-  { "id": "iphone-en", "query": "iPhone", "minResults": 1, "topHsPrefix": "85" },
-  { "id": "macbook-en", "query": "MacBook Pro M3", "minResults": 1, "topHsPrefix": "84" },
-  { "id": "washer-brand", "query": "máy giặt Toshiba 8kg", "minResults": 1, "topHsPrefix": "84" },
-  { "id": "fridge-vn", "query": "tủ lạnh", "minResults": 3, "topHsPrefix": "84" },
-  { "id": "side-by-side", "query": "tủ lạnh side-by-side", "minResults": 1, "topHsPrefix": "84" },
-  { "id": "samsung-tv", "query": "Samsung TV 55 inch", "minResults": 1, "topHsPrefix": "85" },
-  { "id": "pump-vn", "query": "máy bơm nước", "minResults": 1, "topHsPrefix": "84" },
-  { "id": "laptop-en", "query": "laptop Dell", "minResults": 1, "topHsPrefix": "84" },
-  { "id": "aircon", "query": "máy điều hòa Daikin", "minResults": 1, "topHsPrefix": "84" },
-  { "id": "motorcycle", "query": "xe máy Honda", "minResults": 1 },
-  { "id": "steel", "query": "thép không gỉ", "minResults": 1, "topHsPrefix": "72" },
-  { "id": "plastic", "query": "ống nhựa PVC", "minResults": 1 },
-  { "id": "shoes", "query": "giày thể thao Nike", "minResults": 1 },
-  { "id": "glossary-inverter", "query": "máy giặt LG 8kg Inverter", "minResults": 1, "topHsPrefix": "84" },
-  { "id": "glossary-unlocked", "query": "smartphone iPhone 15 Pro unlocked", "minResults": 1, "topHsPrefix": "85" },
-  { "id": "valve-pneumatic-vi", "query": "van điện từ khí nén", "minResults": 1, "topHsPrefix": "8481" },
-  { "id": "valve-solenoid-en", "query": "solenoid valve pneumatic", "minResults": 1, "topHsPrefix": "84812" },
-  { "id": "valve-stove", "query": "van bếp ga", "minResults": 1, "topHsPrefix": "84818030" },
-  { "id": "valve-fuel-cutoff", "query": "van ngắt nhiên liệu xe", "minResults": 1, "topHsPrefix": "848180" },
-  { "id": "valve-pressure-reducing", "query": "van giảm áp", "minResults": 1, "topHsPrefix": "848110" },
-  { "id": "hrc-vi", "query": "thép cuộn cán nóng", "minResults": 1, "topHsPrefix": "7208" },
-  { "id": "crc-vi", "query": "thép cuộn cán nguội", "minResults": 1, "topHsPrefix": "7209" },
-  { "id": "h-beam-vi", "query": "thép hình H", "minResults": 1, "topHsPrefix": "7216" },
-  { "id": "hr-plate-vi", "query": "thép tấm cán nóng", "minResults": 1, "topHsPrefix": "7208" },
-  { "id": "plc-cabinet-vi", "query": "tủ plc", "minResults": 1, "topHsPrefix": "853710" },
-  { "id": "dcs-panel-en", "query": "dcs panel", "minResults": 1, "topHsPrefix": "853710" },
-  { "id": "mv-switchgear-vi", "query": "tủ trung thế 22kv", "minResults": 1, "topHsPrefix": "853720" },
-  { "id": "mcc-vi", "query": "tủ mcc", "minResults": 1, "topHsPrefix": "8537" },
-  { "id": "lift-table-mech", "query": "bàn nâng thủy lực", "minResults": 1, "topHsPrefix": "842890" },
-  { "id": "forklift-en", "query": "forklift", "minResults": 1, "topHsPrefix": "8427" },
-  { "id": "escalator-vi", "query": "thang cuốn", "minResults": 1, "topHsPrefix": "8428" },
-  { "id": "conveyor-vi", "query": "máy băng tải", "minResults": 1, "topHsPrefix": "8428" }
+  {
+    "id": "hs-prefix",
+    "query": "8517",
+    "minResults": 1
+  },
+  {
+    "id": "vietnamese-phone",
+    "query": "điện thoại",
+    "minResults": 3
+  },
+  {
+    "id": "iphone-en",
+    "query": "iPhone",
+    "minResults": 1,
+    "topHsPrefix": "85"
+  },
+  {
+    "id": "macbook-en",
+    "query": "MacBook Pro M3",
+    "minResults": 1,
+    "topHsPrefix": "84"
+  },
+  {
+    "id": "washer-brand",
+    "query": "máy giặt Toshiba 8kg",
+    "minResults": 1,
+    "topHsPrefix": "84"
+  },
+  {
+    "id": "fridge-vn",
+    "query": "tủ lạnh",
+    "minResults": 3,
+    "topHsPrefix": "84"
+  },
+  {
+    "id": "side-by-side",
+    "query": "tủ lạnh side-by-side",
+    "minResults": 1,
+    "topHsPrefix": "84"
+  },
+  {
+    "id": "samsung-tv",
+    "query": "Samsung TV 55 inch",
+    "minResults": 1,
+    "topHsPrefix": "85"
+  },
+  {
+    "id": "pump-vn",
+    "query": "máy bơm nước",
+    "minResults": 1,
+    "topHsPrefix": "84"
+  },
+  {
+    "id": "laptop-en",
+    "query": "laptop Dell",
+    "minResults": 1,
+    "topHsPrefix": "84"
+  },
+  {
+    "id": "aircon",
+    "query": "máy điều hòa Daikin",
+    "minResults": 1,
+    "topHsPrefix": "84"
+  },
+  {
+    "id": "motorcycle",
+    "query": "xe máy Honda",
+    "minResults": 1
+  },
+  {
+    "id": "steel",
+    "query": "thép không gỉ",
+    "minResults": 1,
+    "topHsPrefix": "72"
+  },
+  {
+    "id": "plastic",
+    "query": "ống nhựa PVC",
+    "minResults": 1
+  },
+  {
+    "id": "shoes",
+    "query": "giày thể thao Nike",
+    "minResults": 1
+  },
+  {
+    "id": "glossary-inverter",
+    "query": "máy giặt LG 8kg Inverter",
+    "minResults": 1,
+    "topHsPrefix": "84"
+  },
+  {
+    "id": "glossary-unlocked",
+    "query": "smartphone iPhone 15 Pro unlocked",
+    "minResults": 1,
+    "topHsPrefix": "85"
+  },
+  {
+    "id": "valve-pneumatic-vi",
+    "query": "van điện từ khí nén",
+    "minResults": 1,
+    "topHsPrefix": "8481"
+  },
+  {
+    "id": "valve-solenoid-en",
+    "query": "solenoid valve pneumatic",
+    "minResults": 1,
+    "topHsPrefix": "84812"
+  },
+  {
+    "id": "valve-stove",
+    "query": "van bếp ga",
+    "minResults": 1,
+    "topHsPrefix": "84818030"
+  },
+  {
+    "id": "valve-fuel-cutoff",
+    "query": "van ngắt nhiên liệu xe",
+    "minResults": 1,
+    "topHsPrefix": "848180"
+  },
+  {
+    "id": "valve-pressure-reducing",
+    "query": "van giảm áp",
+    "minResults": 1,
+    "topHsPrefix": "848110"
+  },
+  {
+    "id": "hrc-vi",
+    "query": "thép cuộn cán nóng",
+    "minResults": 1,
+    "topHsPrefix": "7208"
+  },
+  {
+    "id": "crc-vi",
+    "query": "thép cuộn cán nguội",
+    "minResults": 1,
+    "topHsPrefix": "7209"
+  },
+  {
+    "id": "h-beam-vi",
+    "query": "thép hình H",
+    "minResults": 1,
+    "topHsPrefix": "7216"
+  },
+  {
+    "id": "hr-plate-vi",
+    "query": "thép tấm cán nóng",
+    "minResults": 1,
+    "topHsPrefix": "7208"
+  },
+  {
+    "id": "plc-cabinet-vi",
+    "query": "tủ plc",
+    "minResults": 1,
+    "topHsPrefix": "853710"
+  },
+  {
+    "id": "dcs-panel-en",
+    "query": "dcs panel",
+    "minResults": 1,
+    "topHsPrefix": "853710"
+  },
+  {
+    "id": "mv-switchgear-vi",
+    "query": "tủ trung thế 22kv",
+    "minResults": 1,
+    "topHsPrefix": "853720"
+  },
+  {
+    "id": "mcc-vi",
+    "query": "tủ mcc",
+    "minResults": 1,
+    "topHsPrefix": "8537"
+  },
+  {
+    "id": "lift-table-mech",
+    "query": "bàn nâng thủy lực",
+    "minResults": 1,
+    "topHsPrefix": "842890"
+  },
+  {
+    "id": "forklift-en",
+    "query": "forklift",
+    "minResults": 1,
+    "topHsPrefix": "8427"
+  },
+  {
+    "id": "escalator-vi",
+    "query": "thang cuốn",
+    "minResults": 1,
+    "topHsPrefix": "8428"
+  },
+  {
+    "id": "conveyor-vi",
+    "query": "máy băng tải",
+    "minResults": 1,
+    "topHsPrefix": "8428"
+  },
+  {
+    "id": "lift-table-specs",
+    "query": "xe bàn nâng thủy lực 500kg cao 1.5m",
+    "minResults": 1,
+    "topHsPrefix": "8428"
+  },
+  {
+    "id": "hydraulic-oil-kept",
+    "query": "dầu thủy lực",
+    "minResults": 1,
+    "topHsPrefix": "27"
+  },
+  {
+    "id": "hydraulic-lime-kept",
+    "query": "vôi thủy lực",
+    "minResults": 1,
+    "topHsPrefix": "2522"
+  },
+  {
+    "id": "pneumatic-cylinder-alias",
+    "query": "xi lanh khí nén",
+    "minResults": 1,
+    "topHsPrefix": "8412"
+  }
 ]

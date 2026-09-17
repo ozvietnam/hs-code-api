@@ -124,16 +124,20 @@ try {
   }
   assert('không xuất corpus sản phẩm (chờ rà quyền L-4)', !v1.includes('products') && !existsSync(join(out, 'v1', 'products.json')));
 
-  // Shape phải khớp API: so file tĩnh với chính hàm mà api/tax.js gọi.
-  const { mapTaxLookup } = require('../lib/tax-mapper.js');
+  // Shape phải khớp API: so file tĩnh với CHÍNH hàm mà api/tax.js gọi.
+  // Từng lệch: bản tĩnh chép tay phần làm giàu, api/tax.js thêm vatReduction +
+  // breadcrumb mà bản tĩnh không có, không test nào kêu. Nay so bằng đúng tập
+  // khoá — thêm trường cho API mà quên bản tĩnh là đỏ ngay.
+  const { buildTaxLookup } = require('../lib/tax-lookup.js');
   const { taxData } = require('../lib/data.js');
   const sampleHs = Object.keys(taxData).filter((h) => h.startsWith('01')).sort()[0];
   const staticDoc = JSON.parse(readFileSync(join(out, 'v1', 'code', `${sampleHs}.json`), 'utf8'));
-  const apiDoc = mapTaxLookup(sampleHs);
-  assert(`file tĩnh ${sampleHs} khớp shape API`, staticDoc.hsCode === apiDoc.hsCode && staticDoc.nameVi === apiDoc.nameVi, {
-    staticKeys: Object.keys(staticDoc).length,
-    apiKeys: Object.keys(apiDoc).length,
-  });
+  const apiDoc = buildTaxLookup(sampleHs);
+  const sk = Object.keys(staticDoc).sort().join(',');
+  const ak = Object.keys(apiDoc).sort().join(',');
+  assert(`file tĩnh ${sampleHs} có đúng tập trường như API`, sk === ak, { staticKeys: sk, apiKeys: ak });
+  assert('file tĩnh mang vatReduction (NĐ 174/2025)', 'vatReduction' in staticDoc && typeof staticDoc.vatReduction.eligible !== 'undefined');
+  assert('file tĩnh mang breadcrumb', 'breadcrumb' in staticDoc && Array.isArray(staticDoc.breadcrumb.levels));
   assert('file tĩnh dùng camelCase như hợp đồng ERP', 'nameVi' in staticDoc && !('vn' in staticDoc));
 
   // Chuỗi chú giải gom theo nhóm 4 số, tra được bằng mã.

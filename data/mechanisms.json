@@ -1,0 +1,20 @@
+{
+  "version": "2026-09",
+  "noteVi": "Từ điển CƠ CẤU / NGUYÊN LÝ vận hành (thủy lực, khí nén, cắt kéo…). Vì sao tách riêng: 'thủy lực' trong 'bàn nâng thủy lực' là TÍNH CHẤT của cái bàn nâng, không phải mặt hàng — nhưng tầng tìm kiếm từng khớp nó như từ khoá thường và trả về 'Vôi thủy lực' 2522, 'Xi măng thủy lực' 2523, 'Dầu phanh thủy lực' 2710. Ghi nhận là cơ cấu rồi GỠ khỏi câu trước khi so từ khoá thì danh từ lõi 'bàn nâng' mới được tìm. Mỗi mục: terms (cụm người ta gõ, bỏ dấu cũng khớp), canonical (tên chuẩn), keepIfAlone (nếu gỡ xong câu rỗng thì giữ — vd 'xi lanh thủy lực' thì 'xi lanh' còn lại vẫn đủ; nhưng 'dầu thủy lực' là mặt hàng, phải giữ 'thủy lực').",
+  "entries": [
+    { "canonical": "thủy lực", "driveType": "hydraulic", "terms": ["thủy lực", "thuỷ lực", "hydraulic"], "keepWhenHeadNounIs": ["dầu", "vôi", "xi măng", "chất lỏng", "nhớt"] },
+    { "canonical": "khí nén", "driveType": "pneumatic", "terms": ["khí nén", "pneumatic", "hơi nén"], "keepWhenHeadNounIs": ["máy nén", "bình", "ống"] },
+    { "canonical": "điện", "driveType": "electric", "terms": ["chạy điện", "bằng điện", "động cơ điện", "electric", "mô tơ điện"], "keepWhenHeadNounIs": ["dây", "cáp", "công tơ", "đồng hồ"] },
+    { "canonical": "cắt kéo", "driveType": null, "terms": ["cắt kéo", "kiểu cắt kéo", "ziczac", "zigzag", "scissor"], "keepWhenHeadNounIs": ["kéo"] },
+    { "canonical": "trục vít", "driveType": null, "terms": ["trục vít", "vít tải", "screw"], "keepWhenHeadNounIs": ["vít", "bu lông"] },
+    { "canonical": "ly tâm", "driveType": null, "terms": ["ly tâm", "li tâm", "centrifugal"], "keepWhenHeadNounIs": ["máy ly tâm"] },
+    { "canonical": "tự hành", "driveType": null, "mobility": "self-propelled", "terms": ["tự hành", "self-propelled", "tự đi"], "keepWhenHeadNounIs": [] },
+    { "canonical": "đẩy tay", "driveType": "manual", "mobility": "manual", "terms": ["đẩy tay", "kéo tay", "bằng tay", "thủ công", "quay tay", "manual", "hand pallet"], "keepWhenHeadNounIs": ["găng", "dụng cụ"] },
+    { "canonical": "bánh răng", "driveType": null, "terms": ["bánh răng", "hộp số", "gear"], "keepWhenHeadNounIs": ["bánh răng", "hộp số"] },
+    { "canonical": "băng tải", "driveType": null, "terms": ["kiểu băng tải", "dạng băng tải", "belt"], "keepWhenHeadNounIs": ["băng tải", "dây đai"] },
+    { "canonical": "chân không", "driveType": null, "terms": ["hút chân không", "bằng chân không", "vacuum"], "keepWhenHeadNounIs": ["bình", "phích", "máy hút", "bơm"] },
+    { "canonical": "siêu âm", "driveType": null, "terms": ["siêu âm", "ultrasonic"], "keepWhenHeadNounIs": ["máy siêu âm", "đầu dò"] },
+    { "canonical": "laser", "driveType": null, "terms": ["laser", "la-de"], "keepWhenHeadNounIs": ["máy laser", "đèn"] },
+    { "canonical": "cảm ứng", "driveType": null, "terms": ["cảm ứng", "induction", "cảm ứng từ"], "keepWhenHeadNounIs": ["bếp", "màn hình", "cảm biến"] }
+  ]
+}

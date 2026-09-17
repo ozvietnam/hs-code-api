@@ -1,0 +1,187 @@
+{
+  "noteVi": "Ca kiểm bảng quyết định. Mỗi ca: nhóm + câu người gõ (text) và/hoặc dữ kiện tường minh (facts) → expect: hs (RESOLVED) hoặc ask (INSUFFICIENT, thuộc tính phải hỏi). Mọi lá của bảng nên có ít nhất một ca chốt ra nó — dict:check kiểm.",
+  "cases": [
+    {
+      "id": "8427-electric-text",
+      "heading": "8427",
+      "text": "xe nâng điện tự hành 2 tấn ngồi lái",
+      "expectHs": "84271000"
+    },
+    {
+      "id": "8427-diesel-text",
+      "heading": "8427",
+      "text": "xe nâng dầu diesel 3 tấn",
+      "expectHs": "84272000"
+    },
+    {
+      "id": "8427-hand-pallet",
+      "heading": "8427",
+      "text": "xe nâng tay 2.5 tấn",
+      "expectHs": "84279000"
+    },
+    {
+      "id": "8427-forklift-ask-drive",
+      "heading": "8427",
+      "text": "forklift tự hành 1.5 tấn",
+      "expectAsk": [
+        "driveType"
+      ]
+    },
+    {
+      "id": "8427-facts-only",
+      "heading": "8427",
+      "text": "xe nâng",
+      "facts": {
+        "selfPropelled": "yes",
+        "driveType": "other"
+      },
+      "expectHs": "84272000"
+    },
+    {
+      "id": "8427-unknown-asks-self",
+      "heading": "8427",
+      "text": "xe nâng 2 tấn",
+      "expectAsk": [
+        "selfPropelled"
+      ]
+    },
+    {
+      "id": "7209-coil-3",
+      "heading": "7209",
+      "text": "thép cuộn cán nguội dày 3mm",
+      "expectHs": "72091500"
+    },
+    {
+      "id": "7209-coil-1-3-narrow",
+      "heading": "7209",
+      "text": "thép cuộn cán nguội dày 2mm khổ 1200mm",
+      "expectHs": "72091610"
+    },
+    {
+      "id": "7209-coil-1-3-wide",
+      "heading": "7209",
+      "text": "crc dày 1.5mm rộng 1500mm",
+      "expectHs": "72091690"
+    },
+    {
+      "id": "7209-coil-1-3-ask-width",
+      "heading": "7209",
+      "text": "thép cuộn cán nguội dày 2mm",
+      "expectAsk": [
+        "widthMm"
+      ]
+    },
+    {
+      "id": "7209-coil-05-1-narrow-ly",
+      "heading": "7209",
+      "text": "tôn cuộn cán nguội dày 0,8 ly khổ 1200mm",
+      "expectHs": "72091710"
+    },
+    {
+      "id": "7209-coil-05-1-boundary-1250",
+      "heading": "7209",
+      "text": "thép cuộn cán nguội dày 1mm rộng 1250mm",
+      "expectHs": "72091710"
+    },
+    {
+      "id": "7209-coil-05-1-wide",
+      "heading": "7209",
+      "text": "thép cuộn cán nguội dày 0.6mm khổ 1500mm",
+      "expectHs": "72091790"
+    },
+    {
+      "id": "7209-coil-thin-tmbp",
+      "heading": "7209",
+      "text": "tôn đen TMBP dạng cuộn dày 0.2mm",
+      "expectHs": "72091810"
+    },
+    {
+      "id": "7209-coil-thin-lowc",
+      "heading": "7209",
+      "text": "thép cuộn cán nguội dày 0.15mm",
+      "facts": {
+        "carbonPct": 0.08
+      },
+      "expectHs": "72091891"
+    },
+    {
+      "id": "7209-coil-thin-ask-carbon",
+      "heading": "7209",
+      "text": "thép cuộn cán nguội dày 0.15mm",
+      "expectAsk": [
+        "carbonPct"
+      ]
+    },
+    {
+      "id": "7209-coil-thin-other",
+      "heading": "7209",
+      "text": "thép cuộn cán nguội dày 0.3mm",
+      "expectHs": "72091899"
+    },
+    {
+      "id": "7209-flat-3",
+      "heading": "7209",
+      "text": "thép tấm cán nguội dày 4mm",
+      "expectHs": "72092500"
+    },
+    {
+      "id": "7209-flat-1-3-narrow",
+      "heading": "7209",
+      "text": "thép tấm cán nguội dày 2mm khổ 1000mm",
+      "expectHs": "72092610"
+    },
+    {
+      "id": "7209-flat-1-3-wide",
+      "heading": "7209",
+      "text": "thép tấm cán nguội dày 2mm rộng 1500mm",
+      "expectHs": "72092690"
+    },
+    {
+      "id": "7209-flat-05-1-narrow",
+      "heading": "7209",
+      "text": "tấm thép cán nguội dày 0.7mm khổ 1219mm",
+      "expectHs": "72092710"
+    },
+    {
+      "id": "7209-flat-05-1-wide",
+      "heading": "7209",
+      "text": "tấm thép cán nguội dày 0.7mm khổ 1500mm",
+      "expectHs": "72092790"
+    },
+    {
+      "id": "7209-flat-thin-lowc",
+      "heading": "7209",
+      "text": "tấm cán nguội dày 0.12mm",
+      "facts": {
+        "carbonPct": 0.05
+      },
+      "expectHs": "72092810"
+    },
+    {
+      "id": "7209-flat-thin-other",
+      "heading": "7209",
+      "text": "tấm cán nguội dày 0.4mm",
+      "expectHs": "72092890"
+    },
+    {
+      "id": "7209-corrugated",
+      "heading": "7209",
+      "text": "tôn cán nguội dạng lượn sóng",
+      "expectHs": "72099010"
+    },
+    {
+      "id": "7209-perforated",
+      "heading": "7209",
+      "text": "tấm thép cán nguội đục lỗ dày 1mm",
+      "expectHs": "72099090"
+    },
+    {
+      "id": "7209-ask-form",
+      "heading": "7209",
+      "text": "thép cán nguội dày 2mm khổ 1000",
+      "expectAsk": [
+        "form"
+      ]
+    }
+  ]
+}

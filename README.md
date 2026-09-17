@@ -154,6 +154,8 @@ Tax/search responses use camelCase fields expected by `erp-xnk` client:
 tới. Ba lớp xử lý: ngữ cảnh dòng dư (`data/hs-context.json`), từ điển tên
 thương mại do người soạn (`data/trade-synonyms.json`), và cảnh báo VAT theo
 NĐ 174/2025. Chi tiết + cách thêm mục mới: [`docs/trade-synonyms.md`](docs/trade-synonyms.md).
+Tên gọi đưa hàng tới nhóm 4 số; xuống lá 8 số do **bảng quyết định theo thuộc tính** (`data/decision-tables/<nhóm>.json`, `lib/decision-tables.js`): chốt được lá thì trả `decisions[]` kèm luật + căn cứ, thiếu dữ kiện thì trả `missingFacts[]` / `clarifyingQuestionsVi` và nhận `facts` để chốt. Vòng lặp giao agent viết bảng đi hết cuốn biểu thuế (`npm run dict:queue` → `dict:table` → `dict:check`): [`docs/huong-dan-agent-mo-rong-tu-dien.md`](docs/huong-dan-agent-mo-rong-tu-dien.md).
+Câu hỏi được bóc thành danh từ lõi + cơ cấu + thông số trước khi tìm (`lib/query-parse.js`, `data/mechanisms.json`) — "bàn nâng thủy lực" không còn ra "vôi thủy lực".
 
 ```bash
 npm run test:trade-synonyms

@@ -15,6 +15,8 @@ const { getProducts, isLoaiKhac } = require('../lib/loai-khac-products');
 const { captureError } = require('../lib/error-monitor');
 // Nguồn chân lý duy nhất cho trích dẫn GIR — mọi nhãn phải có căn cứ + bằng chứng.
 const { determineGir, DISCLAIMER_VI } = require('../lib/gir');
+const { resolveHeading, toResolverShape } = require('../lib/decision-tables');
+const { parseCommodityQuery } = require('../lib/query-parse');
 // Cảnh báo thiên vị mã cụ thể — KHÔNG tự đổi đáp án, chỉ nêu để người khai quyết.
 const { checkResidualPreference } = require('../lib/residual-guard');
 const { applyLearnedCorrections } = require('../lib/learned-corrections');
@@ -176,11 +178,31 @@ module.exports = async function handler(req, res) {
       wasOverridden: false,
     });
 
+    // Bảng quyết định theo nhóm: tên/chức năng đưa tới nhóm, THUỘC TÍNH chốt lá.
+    // Xét các nhóm trong top gợi ý; thiếu dữ kiện thì trả missingFacts để ERP /
+    // người dùng bổ sung TRƯỚC khi chốt 8 số — không đoán.
+    const facts = body?.facts && typeof body.facts === 'object' && !Array.isArray(body.facts) ? body.facts : {};
+    const parsedDesc = parseCommodityQuery(description);
+    const decisionHeadings = [];
+    for (const sg of precedentRanked.suggestions || []) {
+      const h = String(sg.hsCode || '').slice(0, 4);
+      if (/^\d{4}$/.test(h) && !decisionHeadings.includes(h)) decisionHeadings.push(h);
+      if (decisionHeadings.length >= 3) break;
+    }
+    const decisions = decisionHeadings
+      .map((h) => resolveHeading(h, { text: description, parsed: parsedDesc, facts }))
+      .filter((d) => d.status !== 'NO_TABLE');
+    const topHeading = String(precedentRanked.suggestions?.[0]?.hsCode || '').slice(0, 4);
+    const topDecision = decisions.find((d) => d.heading === topHeading) || null;
+    const missingFacts = [...new Map(decisions.flatMap((d) => d.missingFacts || []).map((m) => [m.attribute, m])).values()];
+
     // Trích dẫn GIR: chỉ phát ra khi có căn cứ kiểm chứng được (xem lib/gir.js).
+    // Bảng chưa verified đi qua gir.js thành HEURISTIC, verified mới là RULE_TABLE.
     const girVerdict = determineGir({
       description,
       candidates: precedentRanked.suggestions,
       pickedHs: precedentRanked.suggestions?.[0]?.hsCode || null,
+      resolver: toResolverShape(topDecision),
       isSet: detectSet(description),
       precedentDrove: Boolean(precedentRanked.girPrecedentRule),
       llmGir: precedentRanked.suggestions?.[0]?.gir || null,
@@ -201,10 +223,20 @@ module.exports = async function handler(req, res) {
     const correctedSuggestions = applyLearnedCorrections(suggestions);
 
     // Attach product examples for "Loại khác" codes
-    const enrichedSuggestions = correctedSuggestions.map(s => {
+    let enrichedSuggestions = correctedSuggestions.map(s => {
       if (!isLoaiKhac(s.hsCode)) return s;
       return { ...s, productExamples: getProducts(s.hsCode, 5) };
     });
+
+    // Bảng ĐÃ VERIFIED chốt được lá trong nhóm đang dẫn đầu → lá đó lên đầu (ghi
+    // rõ decidedByTable). Bảng chưa verified chỉ tư vấn, không đổi thứ tự.
+    if (topDecision?.status === 'RESOLVED' && topDecision.tableVerified && enrichedSuggestions[0]?.hsCode !== topDecision.hs) {
+      const idx = enrichedSuggestions.findIndex((sg) => sg.hsCode === topDecision.hs);
+      const picked = idx >= 0
+        ? enrichedSuggestions.splice(idx, 1)[0]
+        : { hsCode: topDecision.hs, confidence: enrichedSuggestions[0]?.confidence ?? null, reason: topDecision.reasonVi };
+      enrichedSuggestions = [{ ...picked, decidedByTable: { heading: topDecision.heading, ruleId: topDecision.ruleId, reasonVi: topDecision.reasonVi } }, ...enrichedSuggestions];
+    }
 
     // B4: shared knowledge — conflicts + explanatory note cho mã top (cùng layer với /classify)
     const top1Hs = enrichedSuggestions[0]?.hsCode;
@@ -234,6 +266,23 @@ module.exports = async function handler(req, res) {
       ...(residualAdvisory ? { residualAdvisory } : {}),
       // Checklist dữ kiện theo chương — trước đây bị đặt nhầm tên girRulesApplied.
       chapterGuidance: audit.chapterGuidance,
+      // Bảng quyết định theo nhóm + dữ kiện còn thiếu để chốt lá 8 số.
+      ...(decisions.length
+        ? {
+            decisions: decisions.map((d) => ({
+              heading: d.heading,
+              titleVi: d.titleVi,
+              status: d.status,
+              ...(d.hs ? { hsCode: d.hs, ruleId: d.ruleId, reasonVi: d.reasonVi, source: d.source } : {}),
+              tableVerified: d.tableVerified,
+              basis: d.tableVerified ? 'RULE_TABLE' : 'HEURISTIC',
+              narrowed: d.narrowed,
+              missingFacts: d.missingFacts,
+              factsUsed: d.factsUsed,
+            })),
+          }
+        : {}),
+      ...(missingFacts.length ? { missingFacts } : {}),
       antiPatternWarnings: [
         ...audit.antiPatternWarnings,
         ...historyAdjusted.warnings,

@@ -84,8 +84,16 @@ const paths = {
         'Cấp response còn có `avoidedCodes` (mã đã bị loại khỏi kết quả vì là bẫy nhầm lẫn, ' +
         'kèm lý do), `clarifyingQuestionsVi` (dữ kiện còn thiếu để chốt mã), `formWarning` ' +
         '(hỏi nguyên liệu nhưng tiền lệ là thành phẩm) và `tradeTermNotApplied`. ' +
-        'Khi có `avoidedCodes` hoặc `clarifyingQuestionsVi`, hãy nói lại cho người dùng thay vì nuốt đi.',
-      params: [q('q', 'Từ khoá tiếng Việt hoặc mã HS một phần', true), q('limit', 'Số kết quả tối đa (mặc định 10)')],
+        'Khi có `avoidedCodes` hoặc `clarifyingQuestionsVi`, hãy nói lại cho người dùng thay vì nuốt đi. ' +
+        'Tên gọi chỉ đưa tới nhóm 4 số; lá 8 số do BẢNG QUYẾT ĐỊNH theo thuộc tính chốt: `decisions[]` ' +
+        '(mỗi nhóm có bảng: `status` RESOLVED/INSUFFICIENT, `hsCode` + `ruleId` + `reasonVi` + `source` khi chốt ' +
+        'được, `missingFacts[]` là thuộc tính còn thiếu kèm `questionVi`, `basis` RULE_TABLE chỉ khi bảng đã ' +
+        'verified). Kết quả do bảng chốt có `decision` và đứng đầu. Trả lời câu hỏi bằng `facts` để chốt.',
+      params: [
+        q('q', 'Từ khoá tiếng Việt hoặc mã HS một phần', true),
+        q('limit', 'Số kết quả tối đa (mặc định 10)'),
+        q('facts', 'JSON object dữ kiện tường minh theo tên thuộc tính trong `missingFacts`, vd {"thicknessMm":2,"form":"coil"}'),
+      ],
     }),
   },
   '/api/notes': {
@@ -117,6 +125,9 @@ const paths = {
         'Body: `{"description": "tên hàng"}`. Trả `suggestions[]`, `girRulesApplied[]` (mỗi mục có `basis`: ' +
         'RULE_TABLE/DETERMINISTIC là căn cứ chắc, HEURISTIC/LLM_ASSERTED phải kiểm chứng lại), ' +
         '`girDisclaimer`, `rankingSignals[]` (kỹ thuật, không có giá trị pháp lý) và `chapterGuidance[]`. ' +
+        'Kèm `decisions[]` (bảng quyết định theo thuộc tính cho các nhóm trong top gợi ý) và `missingFacts[]` — ' +
+        'thuộc tính còn thiếu để chốt lá 8 số; ERP/người dùng trả lời bằng body `facts: {...}` rồi gọi lại. ' +
+        'Bảng đã verified chốt được lá thì lá đó lên đầu với `decidedByTable`; chưa verified chỉ tư vấn. ' +
         'Cần token vì mỗi lượt gọi tốn chi phí LLM.',
     }),
   },

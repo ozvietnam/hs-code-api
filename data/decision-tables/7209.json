@@ -1,0 +1,92 @@
+{
+  "heading": "7209",
+  "titleVi": "Sắt/thép không hợp kim cán phẳng, rộng ≥ 600 mm, cán nguội, chưa phủ/mạ/tráng",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Dạng cuộn hay tấm? Chiều dày bao nhiêu mm? Khổ rộng có quá 1.250 mm không? Nếu mỏng dưới 0,5 mm: có phải tôn đen tráng thiếc (TMBP) và carbon dưới 0,6 % không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 72.09: 7209.15–.18 dạng cuộn, chưa gia công quá mức cán nguội, tách theo chiều dày (≥3 / >1–<3 / 0,5–1 / <0,5 mm); 7209.25–.28 không ở dạng cuộn, cùng ngưỡng dày; dòng 8 số tách thêm khổ ≤1.250 mm, TMBP (7209.18.10) và carbon <0,6 % + dày ≤0,17 mm (7209.18.91 / 7209.28.10); 7209.90 loại khác (đã gia công thêm: .10 dạng lượn sóng). Chú giải Chương 72 mục 1(k) định nghĩa sản phẩm cán phẳng.",
+  "inputs": [
+    {
+      "attribute": "form",
+      "type": "enum",
+      "domain": ["coil", "flat"],
+      "labelVi": "Dạng cuộn / tấm",
+      "questionVi": "Hàng ở dạng CUỘN hay đã cắt thành TẤM/kiện?",
+      "detect": {
+        "coil": ["cuộn", "coil", "coils", "crc", "cold rolled coil"],
+        "flat": ["tấm", "sheet", "sheets", "plate", "kiện", "cắt tấm", "tờ"]
+      }
+    },
+    {
+      "attribute": "thicknessMm",
+      "type": "number",
+      "unit": "mm",
+      "fromSpec": "thickness",
+      "labelVi": "Chiều dày (mm)",
+      "questionVi": "Chiều dày bao nhiêu mm? (các ngưỡng: ≥3 / trên 1 đến dưới 3 / 0,5 đến 1 / dưới 0,5)"
+    },
+    {
+      "attribute": "widthMm",
+      "type": "number",
+      "unit": "mm",
+      "fromSpec": "width",
+      "labelVi": "Chiều rộng (mm)",
+      "questionVi": "Khổ rộng bao nhiêu mm? (ngưỡng 1.250 mm; dưới 600 mm thì không thuộc 72.09)"
+    },
+    {
+      "attribute": "tmbp",
+      "type": "enum",
+      "domain": ["yes", "no"],
+      "assumeIfUnknown": "no",
+      "labelVi": "Tôn đen tráng thiếc (TMBP)",
+      "questionVi": "Có phải tấm thép đen cán để tráng thiếc (tin-mill blackplate, TMBP) không?",
+      "detect": {
+        "yes": ["tmbp", "tin mill blackplate", "tin-mill blackplate", "blackplate", "tôn đen tráng thiếc", "tôn đen"],
+        "no": []
+      }
+    },
+    {
+      "attribute": "carbonPct",
+      "type": "number",
+      "unit": "%",
+      "labelVi": "Hàm lượng carbon (%)",
+      "questionVi": "Hàm lượng carbon theo khối lượng bao nhiêu %? (ngưỡng 0,6 %)"
+    },
+    {
+      "attribute": "furtherWorked",
+      "type": "enum",
+      "domain": ["none", "corrugated", "other"],
+      "assumeIfUnknown": "none",
+      "labelVi": "Gia công thêm sau cán nguội",
+      "questionVi": "Sau cán nguội có gia công thêm không (lượn sóng, đục lỗ, dập nổi…)?",
+      "detect": {
+        "none": [],
+        "corrugated": ["lượn sóng", "corrugated", "tôn sóng", "dạng sóng"],
+        "other": ["đục lỗ", "perforated", "dập nổi", "embossed", "xẻ rãnh"]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    { "id": "w-corrugated", "priority": 90, "when": { "furtherWorked": "corrugated" }, "hs": "72099010", "gir": "GIR 6", "reasonVi": "Đã gia công thêm thành dạng lượn sóng → 7209.90.10.", "source": "Biểu thuế 2026 dòng 7209.90.10" },
+    { "id": "w-other", "priority": 85, "when": { "furtherWorked": "other" }, "hs": "72099090", "gir": "GIR 6", "reasonVi": "Đã gia công thêm sau cán nguội (không phải lượn sóng) → 7209.90.90.", "source": "Biểu thuế 2026 dòng 7209.90.90" },
+
+    { "id": "c-3", "priority": 60, "when": { "furtherWorked": "none", "form": "coil", "thicknessMm": { "gte": 3 } }, "hs": "72091500", "gir": "GIR 6", "reasonVi": "Cuộn, dày ≥ 3 mm → 7209.15.00.", "source": "Biểu thuế 2026 dòng 7209.15.00" },
+    { "id": "c-1-3-narrow", "priority": 60, "when": { "furtherWorked": "none", "form": "coil", "thicknessMm": { "gt": 1, "lt": 3 }, "widthMm": { "lte": 1250 } }, "hs": "72091610", "gir": "GIR 6", "reasonVi": "Cuộn, dày trên 1 đến dưới 3 mm, khổ ≤ 1.250 mm → 7209.16.10.", "source": "Biểu thuế 2026 dòng 7209.16.10" },
+    { "id": "c-1-3-wide", "priority": 50, "when": { "furtherWorked": "none", "form": "coil", "thicknessMm": { "gt": 1, "lt": 3 } }, "hs": "72091690", "gir": "GIR 6", "reasonVi": "Cuộn, dày trên 1 đến dưới 3 mm, khổ trên 1.250 mm → 7209.16.90.", "source": "Biểu thuế 2026 dòng 7209.16.90" },
+    { "id": "c-05-1-narrow", "priority": 60, "when": { "furtherWorked": "none", "form": "coil", "thicknessMm": { "gte": 0.5, "lte": 1 }, "widthMm": { "lte": 1250 } }, "hs": "72091710", "gir": "GIR 6", "reasonVi": "Cuộn, dày 0,5–1 mm, khổ ≤ 1.250 mm → 7209.17.10.", "source": "Biểu thuế 2026 dòng 7209.17.10" },
+    { "id": "c-05-1-wide", "priority": 50, "when": { "furtherWorked": "none", "form": "coil", "thicknessMm": { "gte": 0.5, "lte": 1 } }, "hs": "72091790", "gir": "GIR 6", "reasonVi": "Cuộn, dày 0,5–1 mm, khổ trên 1.250 mm → 7209.17.90.", "source": "Biểu thuế 2026 dòng 7209.17.90" },
+    { "id": "c-thin-tmbp", "priority": 60, "when": { "furtherWorked": "none", "form": "coil", "thicknessMm": { "lt": 0.5 }, "tmbp": "yes" }, "hs": "72091810", "gir": "GIR 6", "reasonVi": "Cuộn, dày dưới 0,5 mm, là tôn đen tráng thiếc (TMBP) → 7209.18.10.", "source": "Biểu thuế 2026 dòng 7209.18.10" },
+    { "id": "c-thin-lowc", "priority": 55, "when": { "furtherWorked": "none", "form": "coil", "thicknessMm": { "lte": 0.17 }, "tmbp": "no", "carbonPct": { "lt": 0.6 } }, "hs": "72091891", "gir": "GIR 6", "reasonVi": "Cuộn, dày ≤ 0,17 mm, carbon dưới 0,6 %, không phải TMBP → 7209.18.91.", "source": "Biểu thuế 2026 dòng 7209.18.91" },
+    { "id": "c-thin-other", "priority": 50, "when": { "furtherWorked": "none", "form": "coil", "thicknessMm": { "lt": 0.5 }, "tmbp": "no" }, "hs": "72091899", "gir": "GIR 6", "reasonVi": "Cuộn, dày dưới 0,5 mm, không TMBP, không thoả carbon <0,6 % + dày ≤0,17 mm → 7209.18.99.", "source": "Biểu thuế 2026 dòng 7209.18.99" },
+
+    { "id": "f-3", "priority": 60, "when": { "furtherWorked": "none", "form": "flat", "thicknessMm": { "gte": 3 } }, "hs": "72092500", "gir": "GIR 6", "reasonVi": "Tấm (không cuộn), dày ≥ 3 mm → 7209.25.00.", "source": "Biểu thuế 2026 dòng 7209.25.00" },
+    { "id": "f-1-3-narrow", "priority": 60, "when": { "furtherWorked": "none", "form": "flat", "thicknessMm": { "gt": 1, "lt": 3 }, "widthMm": { "lte": 1250 } }, "hs": "72092610", "gir": "GIR 6", "reasonVi": "Tấm, dày trên 1 đến dưới 3 mm, khổ ≤ 1.250 mm → 7209.26.10.", "source": "Biểu thuế 2026 dòng 7209.26.10" },
+    { "id": "f-1-3-wide", "priority": 50, "when": { "furtherWorked": "none", "form": "flat", "thicknessMm": { "gt": 1, "lt": 3 } }, "hs": "72092690", "gir": "GIR 6", "reasonVi": "Tấm, dày trên 1 đến dưới 3 mm, khổ trên 1.250 mm → 7209.26.90.", "source": "Biểu thuế 2026 dòng 7209.26.90" },
+    { "id": "f-05-1-narrow", "priority": 60, "when": { "furtherWorked": "none", "form": "flat", "thicknessMm": { "gte": 0.5, "lte": 1 }, "widthMm": { "lte": 1250 } }, "hs": "72092710", "gir": "GIR 6", "reasonVi": "Tấm, dày 0,5–1 mm, khổ ≤ 1.250 mm → 7209.27.10.", "source": "Biểu thuế 2026 dòng 7209.27.10" },
+    { "id": "f-05-1-wide", "priority": 50, "when": { "furtherWorked": "none", "form": "flat", "thicknessMm": { "gte": 0.5, "lte": 1 } }, "hs": "72092790", "gir": "GIR 6", "reasonVi": "Tấm, dày 0,5–1 mm, khổ trên 1.250 mm → 7209.27.90.", "source": "Biểu thuế 2026 dòng 7209.27.90" },
+    { "id": "f-thin-lowc", "priority": 55, "when": { "furtherWorked": "none", "form": "flat", "thicknessMm": { "lte": 0.17 }, "carbonPct": { "lt": 0.6 } }, "hs": "72092810", "gir": "GIR 6", "reasonVi": "Tấm, dày ≤ 0,17 mm, carbon dưới 0,6 % → 7209.28.10.", "source": "Biểu thuế 2026 dòng 7209.28.10" },
+    { "id": "f-thin-other", "priority": 50, "when": { "furtherWorked": "none", "form": "flat", "thicknessMm": { "lt": 0.5 } }, "hs": "72092890", "gir": "GIR 6", "reasonVi": "Tấm, dày dưới 0,5 mm, không thoả carbon <0,6 % + dày ≤0,17 mm → 7209.28.90.", "source": "Biểu thuế 2026 dòng 7209.28.90" }
+  ]
+}
