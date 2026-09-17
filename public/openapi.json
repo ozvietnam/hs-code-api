@@ -112,7 +112,7 @@
       "get": {
         "operationId": "search",
         "summary": "Tìm mã HS theo từ khoá hoặc mã một phần",
-        "description": "Tra được cả tên hàng theo cách người đi khai gọi, không chỉ lời văn biểu thuế. Mỗi kết quả có thể kèm: `precedent` (cụm từ này đã được khai bao nhiêu lần trong tờ khai đã thông quan, kèm mức tập trung), `tradeTerm` (mục từ điển tên thương mại đã khớp — ĐỌC `appliesWhenVi` trước khi dùng, vì mã đúng thường phụ thuộc khổ, dạng hoặc thành phần), `breadcrumb` (Phần → Chương → Nhóm → Phân nhóm; với mã tên là \"Loại khác\" thì `scopeVi` mới là phạm vi thật và `excludesVi` là các mã anh em bị loại trừ), và `vatReduction` (`eligible: false` nghĩa là KHÔNG được giảm VAT theo NĐ 174/2025 — khai 8% sẽ bị truy thu). Cấp response còn có `avoidedCodes` (mã đã bị loại khỏi kết quả vì là bẫy nhầm lẫn, kèm lý do), `clarifyingQuestionsVi` (dữ kiện còn thiếu để chốt mã), `formWarning` (hỏi nguyên liệu nhưng tiền lệ là thành phẩm) và `tradeTermNotApplied`. Khi có `avoidedCodes` hoặc `clarifyingQuestionsVi`, hãy nói lại cho người dùng thay vì nuốt đi.",
+        "description": "Tra được cả tên hàng theo cách người đi khai gọi, không chỉ lời văn biểu thuế. Mỗi kết quả có thể kèm: `precedent` (cụm từ này đã được khai bao nhiêu lần trong tờ khai đã thông quan, kèm mức tập trung), `tradeTerm` (mục từ điển tên thương mại đã khớp — ĐỌC `appliesWhenVi` trước khi dùng, vì mã đúng thường phụ thuộc khổ, dạng hoặc thành phần), `breadcrumb` (Phần → Chương → Nhóm → Phân nhóm; với mã tên là \"Loại khác\" thì `scopeVi` mới là phạm vi thật và `excludesVi` là các mã anh em bị loại trừ), và `vatReduction` (`eligible: false` nghĩa là KHÔNG được giảm VAT theo NĐ 174/2025 — khai 8% sẽ bị truy thu). Cấp response còn có `avoidedCodes` (mã đã bị loại khỏi kết quả vì là bẫy nhầm lẫn, kèm lý do), `clarifyingQuestionsVi` (dữ kiện còn thiếu để chốt mã), `formWarning` (hỏi nguyên liệu nhưng tiền lệ là thành phẩm) và `tradeTermNotApplied`. Khi có `avoidedCodes` hoặc `clarifyingQuestionsVi`, hãy nói lại cho người dùng thay vì nuốt đi. Tên gọi chỉ đưa tới nhóm 4 số; lá 8 số do BẢNG QUYẾT ĐỊNH theo thuộc tính chốt: `decisions[]` (mỗi nhóm có bảng: `status` RESOLVED/INSUFFICIENT, `hsCode` + `ruleId` + `reasonVi` + `source` khi chốt được, `missingFacts[]` là thuộc tính còn thiếu kèm `questionVi`, `basis` RULE_TABLE chỉ khi bảng đã verified). Kết quả do bảng chốt có `decision` và đứng đầu. Trả lời câu hỏi bằng `facts` để chốt.",
         "tags": [
           "Tra cứu"
         ],
@@ -132,6 +132,15 @@
             "in": "query",
             "required": false,
             "description": "Số kết quả tối đa (mặc định 10)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "facts",
+            "in": "query",
+            "required": false,
+            "description": "JSON object dữ kiện tường minh theo tên thuộc tính trong `missingFacts`, vd {\"thicknessMm\":2,\"form\":\"coil\"}",
             "schema": {
               "type": "string"
             }
@@ -266,7 +275,7 @@
       "post": {
         "operationId": "suggest",
         "summary": "Gợi ý mã HS bằng AI, kèm audit trail GIR có căn cứ",
-        "description": "Body: `{\"description\": \"tên hàng\"}`. Trả `suggestions[]`, `girRulesApplied[]` (mỗi mục có `basis`: RULE_TABLE/DETERMINISTIC là căn cứ chắc, HEURISTIC/LLM_ASSERTED phải kiểm chứng lại), `girDisclaimer`, `rankingSignals[]` (kỹ thuật, không có giá trị pháp lý) và `chapterGuidance[]`. Cần token vì mỗi lượt gọi tốn chi phí LLM.",
+        "description": "Body: `{\"description\": \"tên hàng\"}`. Trả `suggestions[]`, `girRulesApplied[]` (mỗi mục có `basis`: RULE_TABLE/DETERMINISTIC là căn cứ chắc, HEURISTIC/LLM_ASSERTED phải kiểm chứng lại), `girDisclaimer`, `rankingSignals[]` (kỹ thuật, không có giá trị pháp lý) và `chapterGuidance[]`. Kèm `decisions[]` (bảng quyết định theo thuộc tính cho các nhóm trong top gợi ý) và `missingFacts[]` — thuộc tính còn thiếu để chốt lá 8 số; ERP/người dùng trả lời bằng body `facts: {...}` rồi gọi lại. Bảng đã verified chốt được lá thì lá đó lên đầu với `decidedByTable`; chưa verified chỉ tư vấn. Cần token vì mỗi lượt gọi tốn chi phí LLM.",
         "tags": [
           "AI"
         ],
@@ -773,7 +782,7 @@
   },
   "x-generated": {
     "by": "scripts/build-openapi.mjs",
-    "at": "2026-09-16",
+    "at": "2026-09-17",
     "note": "Sinh tự động từ lib/public-access.js — đừng sửa tay, sửa nguồn rồi chạy npm run build."
   }
 }

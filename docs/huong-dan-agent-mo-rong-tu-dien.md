@@ -1,272 +1,239 @@
-# Hướng dẫn vòng lặp mở rộng từ điển — đi hết cuốn biểu thuế theo nhóm 4 số
+# Hướng dẫn vòng lặp: bảng quyết định theo nhóm 4 số — đi hết cuốn biểu thuế
 
-Tài liệu này viết cho **một agent nhận một nhóm HS 4 số** (`8481`, `7208`, `8536`…)
-để soạn từ điển tên thương mại, và cho **CEO tạo vòng lặp** giao việc liên tục.
-Bản v2 (2026-09-17) thay bản v1 sau khi nghiệm thu 7 nhóm đầu: giữ chuẩn
-"phủ 100% lá", thêm **hàng đợi cả biểu thuế**, **một lệnh nghiệm thu**, và
-**benchmark tính bằng giây** để không ai còn lý do cắt bớt.
+Bản v3 (2026-09-17), CEO chốt: **tên gọi / chức năng / công dụng đưa hàng tới
+NHÓM 4 số; từ 6 xuống 8 số do THUỘC TÍNH quyết định.** Không ai gõ tên hàng
+khác nhau cho 84818021 và 84818022 — cái tách chúng là Ø cửa nạp. Vì thế đơn
+vị việc của agent đổi từ "từ điển tên phủ 100 % lá" (bản v2, đã nghiệm thu:
+106 dòng chép tên biểu thuế, mục 16 mã điểm bằng nhau) sang **một bảng quyết
+định cho một nhóm**: thuộc tính nào tách nhóm, giá trị nào về lá nào, thiếu dữ
+kiện nào thì hỏi. Từ điển tên thu về cấp nhóm.
 
-Đọc hết trước khi sửa file nào. Mọi luật ở đây đều có test hoặc lệnh khoá —
-làm sai là đỏ, không nhận.
+Đọc hết trước khi sửa file nào. Mọi luật đều có test hoặc lệnh khoá.
 
 ---
 
 ## 0. Một màn hình — vòng lặp cho một nhóm
 
 ```bash
-npm run dict:queue                          # 1. xem hàng đợi, lấy nhóm ĐẦU TIÊN còn open đúng tầng được giao
-npm run dict:queue -- --claim=8536 --by=<tên-agent>      # 2. nhận (sổ tiến độ khoá, agent khác không nhận trùng)
-node -e "..."                               # 3. đọc lá của nhóm + phạm vi dòng dư (mục 3)
-#   soạn mục vào data/trade-synonyms.json  # 4. theo mục 4–5; ≥1 ca/mục vào tests/search-cases.json
-npm run dict:check -- 8536                  # 5. MỘT lệnh nghiệm thu: schema, phủ 100%, lint, ca search, benchmark delta
-npm run dict:coverage -- 8536               # 6. sinh biên bản data/heading-coverage/8536.json (chỉ ghi khi 100%)
-npm run dict:queue -- --done=8536 --by=<tên-agent> --commit=<sha>   # 7. chốt sổ
-git add -A && git commit -m "feat(data): phủ 100% lá nhóm 8536 — <tên hàng chính> (#34)"
+npm run dict:queue                                   # 1. lấy nhóm ĐẦU TIÊN còn open đúng tầng được giao
+npm run dict:queue -- --claim=8536 --by=<tên-agent>  # 2. nhận; sổ tiến độ khoá, không ai nhận trùng
+npm run dict:table -- 8536                           # 3. đọc MỌI lá (cột EN giữ điều kiện dòng cha mà tiếng Việt lược mất)
+npm run dict:table -- 8536 --init                    # 4. sinh khung data/decision-tables/8536.json
+#   viết bảng (mục 3) + ca kiểm vào tests/decision-cases.json (mục 4)
+#   nếu tên chợ chưa dẫn về nhóm: thêm mục từ điển CẤP NHÓM (mục 5)
+npm run dict:table -- 8536 --try "câu người gõ"      # 5. chạy thử từng câu
+npm run dict:check -- 8536                           # 6. MỘT lệnh nghiệm thu (5 bước)
+npm run dict:queue -- --done=8536 --by=<tên-agent> --commit=<sha>   # 7. chốt sổ (tự từ chối nếu bảng chưa phủ hết lá)
+git add -A && git commit -m "feat(data): bảng quyết định nhóm 8536 — <tên hàng chính> (#34)"
 ```
 
-Rồi đẩy nhánh `dict/8536`, mở PR draft, ghi **một dòng** lên Issue #34
-(nhóm · số lá · số mục · kết quả `dict:check`). Xong. Không nhận nhóm thứ hai
-trong cùng lượt trừ khi vòng lặp bảo làm tiếp.
-
-Bước 5 mà đỏ thì **không có bước 6–7**. Bước 6 tự từ chối ghi nếu chưa 100%.
-Bước 7 tự từ chối nếu chưa có biên bản. Ba khoá này là cố ý.
+Đẩy nhánh `dict/8536`, mở PR draft, một dòng lên Issue #34. Xong. Không nhận
+nhóm thứ hai trong cùng lượt.
 
 ---
 
-## 1. Mục tiêu, thước đo, và thứ KHÔNG phải thước đo
+## 1. Mục tiêu và thước đo
 
-**Mục tiêu cuối:** người đi khai gõ tên hàng *theo cách họ gọi* (Alibaba, báo
-giá, tiếng lóng nghề) và ra đúng mã 8 số, kể cả ở ngành Oz chưa từng nhập.
+**Mục tiêu:** hỏi đúng dữ kiện, chốt đúng lá. Người khai đưa tên hàng + vài
+thông số; hệ thống về đúng nhóm, rồi hoặc chốt lá 8 số kèm luật + căn cứ, hoặc
+hỏi đúng thuộc tính còn thiếu. Không đoán.
 
-**Thước đo tiến độ** (in ở đầu `dict:queue`): số lá đã phủ / 11.414 lá
-(không tính ch.98), và số nhóm `done` trong `data/dictionary-progress.json`.
-Tới 2026-09-17: 162 lá, 7 nhóm.
+**Thước đo tiến độ** (đầu `dict:queue`): số lá có bảng quyết định / 11.414 lá
+(không tính ch.98). Tới 2026-09-17: 20 lá, 2 bảng mẫu (8427, 7209).
 
-**Thước đo chất lượng:** số ca trong `tests/search-cases.json` gõ tên thương
-mại thật mà ra đúng nhóm. Mỗi mục mới phải góp ít nhất một ca.
+**Thước đo chất lượng:** `tests/decision-cases.json` — mọi lá của bảng có ca
+chốt ra nó, và có ca "thiếu dữ kiện thì hỏi".
 
-**Benchmark holdout 763 tờ khai Oz KHÔNG phải thước đo tiến độ.** Nó là
-*phanh*: chứng minh mục mới không đè lên tiền lệ thật. Từ điển chương 72
-không thể làm số này tăng (Oz có 1 tờ khai chương 72) và không được làm nó
-giảm. Đừng khoe benchmark tăng, đừng vặn mục để cứu 0,1%.
+**Benchmark holdout 763 tờ khai Oz là PHANH, không phải thước đo tiến độ:**
+bảng mới không được đè lên tiền lệ thật. `bench:delta` chạy vài giây.
 
 ---
 
-## 2. Hàng đợi cả biểu thuế — lấy việc ở đâu, làm cái nào trước
+## 2. Hàng đợi — lấy nhóm nào trước
 
-`npm run dict:queue` xếp **1.269 nhóm 4 số** theo chỗ từ điển tay đang thiếu
-nhất. Mỗi cột đều in ra để ai cũng kiểm được:
+`npm run dict:queue` xếp 1.269 nhóm theo: `lỗi` (tờ khai thật đoán sai),
+`oz`/`ozlá%` (Oz làm nhiều mà alias phủ mỏng), `dư%` (tỉ lệ dòng "Loại khác"),
+`lá`. Tầng **A** 230 nhóm làm trước; **B** 799; **C** 199 (ch.01–24, sau
+cùng); **X** 41 (ch.98, bỏ). Cột `từđiển ✓` = nhóm đã có mục từ điển từ đợt
+2026-09-16, chỉ còn thiếu bảng — nhận nhóm này nhanh hơn vì lá đã được đọc.
 
-| Cột | Nghĩa | Vì sao xếp hạng |
-|---|---|---|
-| `lỗi` | tờ khai thật bị đoán sai trong nhóm (`conflict-worklist.json`) | lỗi đã xảy ra là lý do mạnh nhất |
-| `oz` / `ozlá%` | số tờ khai Oz rơi vào nhóm / tỉ lệ lá đã có alias | Oz làm nhiều mà alias phủ mỏng → gõ tên thật ra mã cụt |
-| `dư%` | tỉ lệ dòng "Loại khác" | nhóm toàn dòng dư thì lời văn biểu thuế câm |
-| `lá` | số mã 8 số | to hơn thì đáng hơn một chút, chỉ một chút |
-
-**Tầng** quyết định làm lúc nào:
-
-- **A** — có lỗi thật, hoặc Oz nhiều mà phủ mỏng, hoặc ≥50% dòng dư. **Làm trước.** 230 nhóm.
-- **B** — công nghiệp ch.25–96 chưa có tín hiệu đặc biệt. 799 nhóm.
-- **C** — ch.01–24 nông sản/thực phẩm: tên biểu thuế đã là tên chợ, Oz không có tờ khai. Làm sau cùng. 199 nhóm.
-- **X** — ch.98 phụ lục ưu đãi đặc biệt, không tra bằng tên hàng. **Bỏ.** 41 nhóm.
-
-Agent lấy **nhóm đầu tiên còn `open`** trong tầng được giao. Không tự chọn
-nhóm "quen"; không nhận hai nhóm một lúc; không nhận nhóm đang `claimed` của
-người khác (`--release` chỉ khi CEO xác nhận họ đã bỏ).
-
-`--write` ghi `data/dictionary-queue.json` để agent không cần tính lại; file
-này sinh ra được, sinh lại sau mỗi vòng.
+Agent lấy **nhóm đầu tiên còn open** trong tầng được giao. Không tự chọn nhóm
+quen, không nhận hai nhóm, không nhận nhóm `claimed` của người khác.
 
 ---
 
-## 3. Ba từ điển, và cái nào là của bạn
+## 3. Viết bảng quyết định — đây là việc chính
 
-| File | Bản chất | Ai sửa |
-|---|---|---|
-| `data/hs-aliases.json` | **Đào tự động** từ tờ khai Oz (`npm run data:build-aliases`) | **KHÔNG sửa tay.** |
-| `data/trade-synonyms.json` | **Soạn tay**: tên thương mại → ứng viên mã, mã bẫy, câu hỏi gạn | **Việc của bạn** |
-| `data/mechanisms.json` | **Soạn tay**: cơ cấu (thủy lực, khí nén…) gỡ khỏi câu trước khi tìm | Chỉ khi nhóm có cơ cấu mới |
+Bảng ở `data/decision-tables/<nhóm>.json`. Xem hai bảng mẫu: `8427.json`
+(thuộc tính phân loại) và `7209.json` (ngưỡng số, 17 lá, 6 thuộc tính).
 
-Từ điển tay mà sai thì **sai có hệ thống** — luật khắt khe là cố ý.
-
-Đọc lá và phạm vi thật của dòng dư **bằng chính data trong repo**, không từ trí nhớ:
-```bash
-node -e "const t=require('./data/tax.json'); for(const k of Object.keys(t).filter(k=>k.startsWith('8536'))) console.log(k,'|',t[k].vn)"
-node -e "const c=require('./data/hs-context.json').context; console.log(c['85369099'])"
-node -e "const {breadcrumbOf}=require('./lib/hs-breadcrumb.js'); console.log(breadcrumbOf('85369099'))"
-```
-
----
-
-## 4. Soạn mục — quy trình 6 bước
-
-### Bước 1 — Liệt kê cách người ta GÕ, không phải cách biểu thuế VIẾT
-Nguồn: tên trên Alibaba/1688/Shopee, báo giá, tên dân buôn gọi miệng, tiếng
-Anh thương mại, mác/ký hiệu. **Mỗi cụm phải là thứ người thật gõ vào ô tìm.**
-Không cần thêm biến thể không dấu (`van sam`) — bộ khớp tự bỏ dấu khi câu
-hỏi không dấu; thêm vào chỉ tốn chỗ.
-
-### Bước 2 — Tra mã bằng CHÍNH biểu thuế trong repo (lệnh ở mục 3)
-Mã không có trong `tax.json` là mã chết — test chặn.
-
-### Bước 3 — Tìm MÃ BẪY
-```bash
-node -e "const {searchCandidates}=require('./lib/search-utils.js'); console.log(searchCandidates('CỤM CỦA BẠN',{topCandidates:5}).map(c=>c.hsCode+' '+c.nameVi))"
-```
-Cái gì sai mà **nghe khớp** — đó là bẫy → `avoid` + `whyVi` giải thích bằng
-bản chất hàng. Mục không có `avoid` lẫn `excludeIfAny` bị lint nhắc: bước
-này chưa làm.
-
-### Bước 4 — Viết mục đúng schema
 ```json
 {
-  "id": "ban-nang-thuy-luc",
-  "titleVi": "Bàn nâng / xe bàn nâng thủy lực (lift table)",
-  "terms": ["bàn nâng", "xe bàn nâng", "lift table", "scissor lift"],
-  "excludeIfAny": ["xe nâng hàng", "forklift"],
-  "excludeReasonVi": "Xe nâng càng thuộc 8427 theo nhóm riêng — không phải bàn nâng.",
-  "candidates": [
-    { "hs": "84289090", "whenVi": "Không tự hành, nâng bằng thủy lực/cắt kéo, không phải thang máy hay băng tải", "confidence": "medium" },
-    { "hs": "84289030", "whenVi": "Chỉ khi là thiết bị đẩy/lật goòng mỏ — hiếm với bàn nâng", "confidence": "low" }
+  "heading": "8427",
+  "titleVi": "Xe nâng hàng và xe công tác có thiết bị nâng",
+  "verified": false,
+  "essenceTestVi": "Xe có TỰ HÀNH không, và nếu tự hành thì chạy bằng mô tơ điện hay động cơ khác?",
+  "sourceVi": "Biểu thuế 2026 nhóm 84.27 …; Chú giải HS 84.27 …",
+  "inputs": [
+    { "attribute": "selfPropelled", "type": "enum", "domain": ["yes", "no"],
+      "questionVi": "Xe có tự hành không — có động cơ đẩy xe đi, hay chỉ đẩy/kéo tay?",
+      "detect": { "yes": ["tự hành", "xe nâng điện", "diesel"], "no": ["xe nâng tay", "hand pallet"] } },
+    { "attribute": "thicknessMm", "type": "number", "unit": "mm", "fromSpec": "thickness",
+      "questionVi": "Chiều dày bao nhiêu mm?" }
   ],
-  "avoid": [{ "prefix": "2522", "whyVi": "'Vôi thủy lực' chỉ trùng chữ — vật liệu xây dựng, không phải máy." }],
-  "askVi": ["Có tự hành không? (có → xem 8427)", "Tải trọng và chiều cao nâng?"],
-  "gir": "1",
-  "basis": "RULE_TABLE",
-  "sourceVi": "Biểu thuế 2026 nhóm 8428; mã dư 84289090 vì không thuộc phân nhóm kể tên."
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    { "id": "r-electric", "priority": 20, "when": { "selfPropelled": "yes", "driveType": "electric" },
+      "hs": "84271000", "gir": "GIR 6", "reasonVi": "Tự hành, mô tơ điện → 8427.10.00", "source": "Biểu thuế 2026 dòng 8427.10.00" }
+  ]
 }
 ```
 
-**Bốn luật bắt buộc** (`test-trade-synonyms` chặn):
-1. Mọi `candidates[].hs` tồn tại trong `tax.json`.
-2. Có `sourceVi` dẫn nguyên văn biểu thuế / chú giải.
-3. `confidence` ∈ `high|medium|low`; **`high` chỉ khi biểu thuế gọi đích danh mặt hàng.**
-4. Mỗi ứng viên có `whenVi`.
+### 3.1 Cách máy đọc bảng — hiểu cái này trước khi viết luật
+- Một luật **khả dĩ** khi không điều kiện nào bị dữ kiện đã biết bác bỏ; **khớp**
+  khi mọi điều kiện được thoả.
+- Máy lấy luật khả dĩ có `priority` cao nhất. Khớp → **RESOLVED**. Chưa khớp vì
+  thiếu dữ kiện → **INSUFFICIENT**, hỏi đúng dữ kiện đó.
+- Vì thế luật "Loại khác" để `priority` thấp và điều kiện ít; nó chỉ thắng khi
+  các nhánh cụ thể đã bị dữ kiện loại. Không có chuyện người dùng chưa nói gì
+  mà rơi vào "Loại khác".
+- Điều kiện số: `{ "gte": 3 }`, `{ "gt": 1, "lt": 3 }`, `{ "lte": 0.17 }`.
+  Điều kiện enum: chuỗi trong `domain`.
 
-**Bốn luật chất lượng** (`dict:check` lint — nhóm mới thì là lỗi, nhóm cũ thì cảnh báo):
+### 3.2 Thuộc tính (`inputs`)
+- **Đặt tên theo bản chất**, camelCase, tái dùng tên đã có trong
+  `data/attributes.json` khi trùng nghĩa (`voltage`, `engineCapacity`,
+  `steelGrade`…). Tên số kèm đơn vị: `thicknessMm`, `widthMm`, `carbonPct`.
+- `questionVi` là câu **người khai tự trả lời được**, nêu ngưỡng nếu có:
+  *"Chiều dày bao nhiêu mm? (ngưỡng ≥3 / 1–3 / 0,5–1 / <0,5)"*.
+- Enum: `detect` là cụm nhận diện trong câu, theo giá trị. Hai giá trị cùng
+  xuất hiện → máy coi là chưa biết và hỏi (đúng: "cuộn tấm" là mâu thuẫn).
+- Số: `fromSpec` nối với parser (`thickness`, `width`, `height`, `diameter`,
+  `capacity`, `power`, `voltage`, `volume`, `weight`…); "dày 0,8 ly" hiểu là
+  0,8 mm. Thiếu `fromSpec` thì chỉ chốt được khi hỏi — lint nhắc.
+- `assumeIfUnknown`: cho nhánh **hiếm** (TMBP, đã gia công thêm) để không hỏi
+  mọi người về thứ 99 % không gặp. Dùng dè sẻn, ghi rõ trong `sourceVi`.
 
-5. **`whenVi` là ĐIỀU KIỆN người khai tự trả lời được, không chép tên dòng.**
-   Người tra đã thấy tên dòng biểu thuế; chép lại là zero thông tin. Sai:
-   `"- - - Loại khác — mã 7216.32.90"`. Đúng: `"Cao ≥80 mm, cánh dày hơn thân, không phải I-beam tiêu chuẩn"`.
-   Nghiệm thu 7 nhóm đầu: **106 ứng viên** chép tên dòng — đó là "phủ 100%"
-   bằng cách dán, không phải bằng cách hiểu.
-6. **Cụm có dấu không được trùng chữ-bỏ-dấu với dòng khác nghĩa.** `tủ điện` ↔
-   `tụ điện`, `van săm` ↔ `vân sam` (gỗ), `vòi nước` ↔ `với nước`. Bộ khớp nay
-   bắt đúng dấu khi câu có dấu, nhưng câu không dấu vẫn có thể dính — lint
-   liệt kê dòng va chạm; đổi cụm dài hơn hoặc thêm `excludeIfAny`.
-7. **Một mục ≤ 12 ứng viên.** Mục 16–22 ứng viên điểm bằng nhau là
-   "túi rác": người tra nhận 16 mã và câu hỏi *"Ø bao nhiêu?"*. Tách theo
-   **tên thương mại thật** (thép hình H / U / I / L / V là năm tên chợ khác
-   nhau → năm mục), mỗi mục ít lá, `whenVi` sắc.
-8. **Nhiều ứng viên thì tối đa một `high`.**
+### 3.3 Luật (`rules`)
+- Mỗi lá của nhóm có ít nhất một luật `hs` = lá đó. Test khoá.
+- `reasonVi` viết như một dòng giải trình với Hải quan; `source` là dòng biểu
+  thuế / chú giải cụ thể. `gir` mặc định `GIR 6` (phân nhóm trong nhóm).
+- Đọc **cột EN** trong `dict:table`: tiếng Việt của dòng lá bị lược mất điều
+  kiện dòng cha (*"- - Chiều dày từ 3 mm trở lên"* không nói là cuộn hay tấm;
+  EN nói *"in coils … cold-rolled … thickness of 3mm or more"*).
+- `verified` để `false`. CEO duyệt bảng thì bật `true` + `verifiedBy/At`. Chưa
+  verified, trích dẫn ra người dùng là `HEURISTIC`; verified mới là
+  `RULE_TABLE` và `/api/suggest` mới được đưa lá bảng chốt lên đầu.
 
-**Lá tách theo Ø / độ dày / carbon / khối lượng** (kiểu 8481.80, 7208) vẫn
-phải nằm trong `candidates` của mục có tên thương mại đúng — với `whenVi` là
-*điều kiện số* (`"Ø trong ≤ 2,5 cm"`) và `askVi` hỏi đúng số đó. Không tạo
-mục "nhánh còn lại" với cụm chung chung (`van công nghiệp`) chỉ để đủ 100%.
+### 3.4 Bốn luật bắt buộc (test chặn) + ba luật chất lượng (lint)
+1. Mọi `rules[].hs` là lá 8 số có thật, thuộc nhóm.
+2. Mọi thuộc tính trong `when` đã khai ở `inputs`; enum trong `domain`; số có điều kiện so sánh.
+3. Mọi lá có đường tới.
+4. `essenceTestVi`, `sourceVi`, mọi `questionVi`, mọi `reasonVi` có mặt.
+5. (lint) Enum không có `detect` cho một giá trị → chỉ chốt được khi hỏi.
+6. (lint) Số không có `fromSpec` → chỉ chốt được khi hỏi.
+7. (lint) Luật thiếu `source`.
 
-### Bước 5 — Cơ cấu (chỉ khi cần)
-Cụm chỉ **cơ cấu** làm nhiễu ("thủy lực" kéo về vôi) → `data/mechanisms.json`,
-bắt buộc `keepWhenHeadNounIs` (danh từ đi cùng thì cơ cấu là *tên hàng*:
-"dầu thủy lực"). `test-query-parse` canh.
+---
 
-### Bước 6 — Ca search
-Mỗi mục ≥1 ca, câu là **cụm người thật gõ**, kỳ vọng theo prefix nhóm:
+## 4. Ca kiểm — `tests/decision-cases.json`
+
 ```json
-{ "id": "lift-table-mech", "query": "bàn nâng thủy lực", "minResults": 1, "topHsPrefix": "8428" }
+{ "id": "7209-coil-1-3-narrow", "heading": "7209", "text": "thép cuộn cán nguội dày 2mm khổ 1200mm", "expectHs": "72091610" },
+{ "id": "7209-coil-1-3-ask-width", "heading": "7209", "text": "thép cuộn cán nguội dày 2mm", "expectAsk": ["widthMm"] },
+{ "id": "8427-facts-only", "heading": "8427", "text": "xe nâng", "facts": { "selfPropelled": "yes", "driveType": "other" }, "expectHs": "84272000" }
 ```
-Lint kiểm: mục nào không có ca nào chứa cụm của nó → nhắc.
+- **Mọi lá** có ít nhất một ca `expectHs` chốt ra nó (test khoá).
+- Ít nhất một ca `expectAsk` — chứng minh bảng hỏi đúng thứ đang thiếu.
+- `text` là câu người thật gõ; `facts` là câu trả lời ERP/người dùng đưa.
 
 ---
 
-## 5. `dict:check` — cửa nghiệm thu duy nhất
+## 5. Từ điển tên — chỉ khi tên chợ chưa dẫn về nhóm
+
+`data/trade-synonyms.json` giữ nguyên schema, nhưng **`candidates[].hs` nay
+được là 4 hoặc 6 số**: tên gọi chỉ tới nhóm; lá do bảng chốt.
+```json
+{ "id": "xe-nang-forklift", "terms": ["xe nâng", "forklift", "xe nâng hàng"],
+  "candidates": [{ "hs": "8427", "whenVi": "Xe nâng có thiết bị nâng/xếp dỡ; tự hành hay không do bảng 8427 chốt", "confidence": "medium" }],
+  "avoid": [{ "prefix": "8428", "whyVi": "Bàn nâng / thang máy là 8428, không phải xe nâng" }],
+  "sourceVi": "Biểu thuế 2026 nhóm 84.27" }
+```
+- Ứng viên cấp nhóm **cộng điểm cho lá đã khớp lời văn** trong nhóm; không
+  bơm N lá điểm bằng nhau. Mục cũ có >8 ứng viên lá → lint nhắc đổi sang cấp nhóm.
+- Vẫn bắt buộc: mã bẫy (`avoid` / `excludeIfAny`), `sourceVi`, ≥1 ca trong
+  `tests/search-cases.json` gõ tên chợ về đúng nhóm.
+- Cụm có dấu khớp đúng dấu khi câu có dấu (đã sửa ở lib sau ca "gỗ vân sam" →
+  van săm); câu không dấu vẫn có thể va chạm — lint liệt kê.
+- Không thêm biến thể không dấu; không đặt `high` cho mục nhiều ứng viên.
+
+---
+
+## 6. `dict:check` — cửa nghiệm thu duy nhất
 
 ```
-[1] schema, mã chết, phanh          test-trade-synonyms
-[2] phủ 100% lá                     liệt kê từng mã còn thiếu kèm tên dòng
-[3] lint chất lượng                 luật 5–8 ở trên + "chưa nghĩ mã bẫy"
-[4] ca search                       mục nào chưa có ca + test-search
-[5] benchmark holdout DELTA         chính xác, vài giây
+[1] test-decision-tables + test-trade-synonyms   cấu trúc, mã chết, phanh
+[2] bảng của nhóm                                có, hợp lệ, mọi lá có đường tới
+[3] lint                                         bảng (5–7 ở mục 3.4) + mục từ điển chạm nhóm
+[4] ca kiểm                                      mọi lá có ca; có ca hỏi; ca search về nhóm
+[5] bench:delta                                  không mức nào giảm so với bản đã commit
 ```
-
-**Vì sao benchmark giờ tính bằng giây và không còn cớ `--limit`:** một mục
-từ điển chỉ tác động lên câu **chứa** một cụm của nó. Bản ghi không chứa cụm
-nào của mục vừa đổi thì kết quả *không thể* đổi — `bench:delta` lấy lại từ
-cache, chỉ chấm lại bản ghi bị chạm. Đây là đúng tuyệt đối, không phải xấp xỉ.
-Khi `lib/`, `tax.json`, alias, `mechanisms.json` đổi thì cache tự vô hiệu và
-chạy đủ 763 (11 phút, một lần). Cache ở `data/.bench-cache/` (gitignored).
-
-Trước đây commit `5fcb947` chốt bằng `--limit=200`; tập con 300 từng cho
-kết luận ngược tập đủ. Từ nay `--limit` không có trong quy trình.
-
-Nhóm **đã `done`** chạy `dict:check` chỉ nhận cảnh báo ở [3] — nợ cũ được
-ghi nhận, không chặn người sau. Nhóm **mới** thì [3] là điều kiện nhận.
+Nhóm mới: lint là điều kiện nhận. Nhóm đã `done`: lint chỉ cảnh báo.
+`--no-bench` chỉ để soạn dở; không commit khi chưa chạy đủ.
 
 ---
 
-## 6. Những điều KHÔNG được làm
+## 7. Không được làm
 
-- Không chốt mã từ trí nhớ; mọi mã đối chiếu `tax.json`, phạm vi đối chiếu `hs-context.json`.
-- Không sửa `data/hs-aliases.json`, `data/heading-coverage/*.json`, `data/dictionary-queue.json` tay — đều là output script.
-- Không gắn nhãn GIR ngoài `lib/gir.js`; trường `gir` trong mục chỉ là gợi ý.
-- Không đặt `high` cho mục nhiều ứng viên; bảng tay nhận "chưa chắc" thì alias tiền lệ thật mới được thắng ("biến tần": 6/6 tờ khai Oz khai 85044040, mã thật thắng).
-- Không thêm tên khách, tên công ty, số tờ khai — ba từ điển là công khai (CC BY-SA).
-- Không đẩy thẳng `main` khi `dict:check` đỏ. Không cắt benchmark.
-- Không "hoàn thành" nhóm bằng mục túi rác — 100% lá là *hệ quả* của việc hiểu nhóm, không phải mục tiêu tự thân.
-
----
-
-## 7. Giao nộp và ghi sổ
-
-- Nhánh `dict/<nhóm>` từ `main` mới nhất. Một nhóm một PR draft. Tiêu đề
-  `feat(data): phủ 100% lá nhóm <nhóm> — <tên hàng chính> (#34)`.
-- Body PR dán nguyên khối tổng kết của `dict:check` (dòng ✅/⚠/✗) và bảng
-  `bench:delta`. Không cần bảng số dài.
-- `data/dictionary-progress.json` là **sổ tiến độ** — nguồn sự thật cho hàng
-  đợi và cho test (`done` mà thiếu biên bản → đỏ). Issue #34 là nhật ký người
-  đọc: một dòng mỗi nhóm.
-- CEO (hoặc agent nghiệm thu) chạy lại `npm run dict:check -- <nhóm>` trên
-  nhánh, xanh thì merge. Merge xong: `npm run dict:queue -- --write` để hàng
-  đợi cập nhật.
+- Không chốt mã từ trí nhớ; mọi luật đối chiếu `data/tax.json` (`dict:table` in đủ VN + EN).
+- Không viết luật `when: {}` ở priority cao để "phủ cho xong" — đó là chốt bừa; test ca hỏi sẽ bắt.
+- Không sửa `data/hs-aliases.json`, `data/dictionary-queue.json` tay.
+- Không gắn nhãn GIR ngoài `lib/gir.js`; không tự bật `verified`.
+- Không thêm tên khách, tên công ty, số tờ khai.
+- Không cắt benchmark; không đẩy `main` khi `dict:check` đỏ.
 
 ---
 
-## 8. Mẫu prompt cho vòng lặp (CEO dán cho agent, mỗi lượt một nhóm)
+## 8. Giao nộp và ghi sổ
 
-> Bạn đang trong vòng lặp mở rộng từ điển `hs-code-api`. Đọc
-> `docs/huong-dan-agent-mo-rong-tu-dien.md` (bản v2) trước khi làm gì.
+- Nhánh `dict/<nhóm>` từ `main` mới nhất, một nhóm một PR draft, tiêu đề
+  `feat(data): bảng quyết định nhóm <nhóm> — <tên hàng chính> (#34)`.
+- Body PR: khối tổng kết `dict:check` + bảng `bench:delta`.
+- `data/dictionary-progress.json` là sổ tiến độ (test khoá `done` ⇔ có bảng phủ
+  hết lá). Issue #34 là nhật ký: một dòng mỗi nhóm.
+- CEO chạy lại `dict:check`, đọc bảng, bật `verified` nếu duyệt nội dung,
+  merge. Sau merge: `npm run dict:queue -- --write`.
+
+---
+
+## 9. Mẫu prompt cho vòng lặp (CEO dán cho agent, mỗi lượt một nhóm)
+
+> Bạn đang trong vòng lặp bảng quyết định `hs-code-api`. Đọc
+> `docs/huong-dan-agent-mo-rong-tu-dien.md` (v3) trước khi làm gì.
 > 1. `git fetch origin main && git checkout -B dict/next origin/main`
-> 2. `npm run dict:queue` — lấy nhóm **đầu tiên còn open ở tầng A** (hết A thì B).
->    `npm run dict:queue -- --claim=<nhóm> --by=<tên-bạn>` rồi đổi tên nhánh thành `dict/<nhóm>`.
-> 3. Soạn mục theo mục 4 của hướng dẫn: tên chợ thật, mã bẫy, `whenVi` là điều
->    kiện, ≤12 ứng viên/mục, ≥1 ca search/mục.
-> 4. `npm run dict:check -- <nhóm>` tới khi ✅ không cảnh báo. Không dùng `--no-bench` để chốt.
-> 5. `npm run dict:coverage -- <nhóm>` → `npm run dict:queue -- --done=<nhóm> --by=<tên-bạn> --commit=<sha>`.
-> 6. Commit, push nhánh, mở PR draft dán khối tổng kết `dict:check`; ghi một dòng lên Issue #34.
-> 7. Dừng. Không nhận nhóm thứ hai. Nếu nhóm bất khả thi (biểu thuế tách thuần
->    theo số, không có tên thương mại nào) thì `--release` và ghi lý do lên Issue #34 — đó cũng là kết quả.
-
-Hai agent chạy song song là an toàn: `--claim` khoá nhóm trong sổ; nhánh
-tách nhau; `trade-synonyms.json` chỉ conflict nếu hai bên sửa cùng mục (id
-trùng) — lint mã chết + test id trùng bắt khi merge.
+> 2. `npm run dict:queue` — lấy nhóm **đầu tiên còn open ở tầng A** (hết A thì B);
+>    `--claim=<nhóm> --by=<tên-bạn>`; đổi tên nhánh thành `dict/<nhóm>`.
+> 3. `npm run dict:table -- <nhóm>` đọc mọi lá (cả cột EN). Trả lời câu hỏi bản
+>    chất: thuộc tính nào tách nhóm này? Rồi `--init` và viết bảng theo mục 3.
+> 4. Viết ca kiểm (mục 4): mọi lá một ca, thêm ca hỏi. `--try` từng câu.
+> 5. Tên chợ chưa về nhóm thì thêm mục từ điển cấp nhóm (mục 5) + ca search.
+> 6. `npm run dict:check -- <nhóm>` tới ✅. Không chốt bằng `--no-bench`.
+> 7. `--done`, commit, push nhánh, PR draft dán khối `dict:check`, một dòng Issue #34. Dừng.
+> 8. Nhóm không có thuộc tính tách rõ (biểu thuế chỉ liệt kê tên mặt hàng) thì
+>    bảng vẫn viết được: mỗi lá một luật với thuộc tính `articleType` enum + detect
+>    cụm tên. Nhóm thật sự bất khả thi → `--release` + lý do lên Issue #34.
 
 ---
 
-## 9. Nợ đã ghi nhận sau 7 nhóm đầu (2026-09-17) — ai rảnh thì trả
+## 10. Đầu vào từ ERP — chuẩn hồ sơ tối thiểu
 
-`npm run dict:check -- <nhóm>` liệt kê. Tóm tắt:
-- 106 ứng viên `whenVi` chép tên dòng (7208: 20, 8428: 21, 7216: 18, 8537: 16, 7209: 15, 8481: 13, 8427: 3).
-- Ba mục túi rác: `van-848180-phu` (16 lá), `thep-hinh-u-i-h` (22), `thep-cuon-can-nong` (17) — tách theo tên chợ.
-- 13/34 mục chưa có ca search gõ đúng cụm của nó.
-- Ba cụm va chạm dấu đã chặn ở tầng lib (`van săm`/`vân sam`, `vòi nước`/`với nước`, `vòi đồng`/`với động cơ`); vẫn nên đổi cụm dài hơn để câu không dấu cũng an toàn.
+`/api/search?q=…&facts={"thicknessMm":2,"form":"coil"}` và `/api/suggest`
+body `facts: {…}` nhận dữ kiện tường minh theo đúng tên thuộc tính trong
+`missingFacts[]`. Quy trình ERP: gọi lần một → đọc `missingFacts` → hỏi người
+khai đúng câu `questionVi` → gọi lại với `facts`. Chốt 8 số khi
+`decisions[].status === "RESOLVED"`; `basis: RULE_TABLE` chỉ khi bảng đã verified.
 
-## 10. Việc chưa làm, cố ý để sau
-
-- **Parser chọn lá theo thông số.** `lib/query-parse.js` đã bóc `dày 3mm`,
-  `cao 300mm` nhưng chưa bóc `i200`, `dn50`, `Ø25`; và `candidates` chưa có
-  trường điều kiện số để máy chọn. Khi có, các nhóm tách theo Ø/độ dày tự
-  phân giải thay vì hỏi. Đây là bước làm cho 8481.80/7208/7216 đúng thật.
-- **Đào câu hỏi thật từ log tra cứu** trên server nhà → nạp vào hàng đợi (cột
-  "người dùng hỏi mà không ra"). Log không nằm trong repo.
-- **Nguồn tờ khai ngoài Oz** cho ch.72–81, 28–29: từ điển tay không thay được thống kê.
+## 11. Nợ và việc sau
+- 5 nhóm có từ điển từ 2026-09-16 (8481, 7208, 7216, 8428, 8537) chưa có bảng — trong hàng đợi, cột `từđiển ✓`.
+- Parser chưa bóc `dn50`, `i200`, `Ø25`, `%C`; bảng cần các thuộc tính đó thì tạm hỏi.
+- Đào câu hỏi thật từ log server nhà → nạp hàng đợi.

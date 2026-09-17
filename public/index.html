@@ -324,6 +324,7 @@
       <h3>Hai thứ quan trọng hơn cả việc trả đúng mã</h3>
       <p><strong>Mã bẫy bị loại HẲN, và nói rõ vì sao.</strong> Hỏi <em>"tấm thép làm khuôn nhựa"</em> mà hệ thống trả về bộ khuôn nhóm 8480 thì người khai rất dễ gật — tên hàng nghe khớp hoàn toàn, trong khi một bên là nguyên liệu còn bên kia là thành phẩm. Những mã như vậy bị loại khỏi kết quả và trả riêng ở <code>avoidedCodes</code> kèm lý do. Loại công khai, không giấu.</p>
       <p><strong>Chưa đủ căn cứ thì hỏi, không chốt bừa.</strong> Nhiều tên thương mại ứng với vài mã, phân biệt nhau bằng khổ rộng, dạng gia công hay thành phần hoá học. Khi đó hệ thống trả nhiều ứng viên kèm điều kiện áp dụng và <code>clarifyingQuestionsVi</code> — dữ kiện còn thiếu để chốt. Một mã sai mà tự tin tốn tiền hơn một câu hỏi.</p>
+      <p><strong>Tên gọi đưa tới nhóm 4 số; lá 8 số do thuộc tính quyết định.</strong> Với nhóm đã có bảng quyết định, <code>decisions[]</code> hoặc chốt lá kèm luật và căn cứ biểu thuế, hoặc trả <code>missingFacts[]</code> — đúng thuộc tính còn thiếu (chiều dày, khổ rộng, tự hành hay không…) để hỏi người khai; trả lời bằng <code>facts</code> là chốt được.</p>
       <p class="ep-note">Ba lớp có thể mâu thuẫn nhau, và đó là thông tin chứ không phải lỗi. Với <em>biến tần</em>, bảng soạn tay đề xuất một mã nhưng tiền lệ tờ khai lại chỉ sang mã khác — cả hai căn cứ đều hiện ra để người tra tự quyết.</p>
     </div>
   </div>

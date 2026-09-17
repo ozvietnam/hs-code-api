@@ -19,6 +19,13 @@ Dự án cộng đồng, mã nguồn MIT và dữ liệu CC BY-SA 4.0. Dùng l�
   nhầm lẫn đã biết (kèm lý do); `clarifyingQuestionsVi` là dữ kiện còn thiếu để
   chốt mã. Nuốt hai trường này đi là biến một câu trả lời thận trọng thành một
   câu trả lời tự tin mà sai.
+- **Tên gọi chỉ đưa tới nhóm 4 số; lá 8 số do thuộc tính quyết định.** `/api/search`
+  và `/api/suggest` trả `decisions[]`: với nhóm đã có bảng quyết định, `status`
+  RESOLVED kèm `hsCode`, `ruleId`, `reasonVi`, `source`; hoặc INSUFFICIENT kèm
+  `missingFacts[]` — đúng thuộc tính còn thiếu và `questionVi` để hỏi người dùng.
+  Hỏi xong thì gọi lại với `facts` (`?facts={"thicknessMm":2}` hoặc body
+  `facts`). `basis: RULE_TABLE` chỉ khi bảng đã được kiểm chứng; HEURISTIC thì
+  trình bày như một gợi ý có căn cứ, không phải kết luận.
 - **`vatReduction.eligible === false` nghĩa là KHÔNG được giảm VAT** theo
   NĐ 174/2025/NĐ-CP — 1.561 mã thuộc phụ lục loại trừ (sắt thép cán nóng, một số
   hoá chất). Khai 8% cho nhóm này là bị truy thu cộng phạt chậm nộp. Quy ước

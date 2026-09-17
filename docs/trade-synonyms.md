@@ -62,11 +62,12 @@ biệt…") kéo 908 dòng dư vào mọi truy vấn dài.
 
 ## 2. Thêm một mục vào từ điển tên thương mại
 
-> **Giao cho agent khác làm theo nhóm 4 số?** Đưa họ
+> **Từ 2026-09-17 từ điển tên chỉ cần đưa hàng tới NHÓM** (`candidates[].hs` được
+> là 4/6 số); xuống lá 8 số là việc của bảng quyết định theo thuộc tính
+> (`data/decision-tables/`, `lib/decision-tables.js`). Giao agent viết bảng theo
 > [`docs/huong-dan-agent-mo-rong-tu-dien.md`](huong-dan-agent-mo-rong-tu-dien.md) —
-> hàng đợi cả biểu thuế (`npm run dict:queue`), một lệnh nghiệm thu
-> (`npm run dict:check -- <nhóm>`), benchmark delta tính bằng giây, mẫu prompt
-> cho vòng lặp. Mục này chỉ là tóm tắt.
+> hàng đợi cả biểu thuế (`npm run dict:queue`), khung + chạy thử (`dict:table`),
+> một lệnh nghiệm thu (`dict:check`), benchmark delta tính bằng giây.
 
 `data/trade-synonyms.json`. Một mục tối thiểu:
 
