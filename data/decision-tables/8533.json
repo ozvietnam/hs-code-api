@@ -1,0 +1,65 @@
+{
+  "heading": "8533",
+  "titleVi": "Điện trở (kể cả biến trở/chiết áp), trừ điện trở sưởi",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Bộ phận hay điện trở hoàn chỉnh? Cố định than cacbon (dán hay khác), cố định khác (≤20 W / >20 W), dây quấn biến đổi (≤20 W / >20 W), hay biến đổi loại khác?",
+  "sourceVi": "Biểu thuế 2026 nhóm 85.33: 8533.10 than cacbon; 8533.21/.29 cố định khác theo 20 W; 8533.31/.39 dây quấn biến đổi; 8533.40 biến đổi khác; 8533.90 bộ phận.",
+  "inputs": [
+    {
+      "attribute": "goodsRole",
+      "type": "enum",
+      "domain": ["resistor", "parts"],
+      "labelVi": "Điện trở / bộ phận",
+      "questionVi": "Là điện trở/biến trở hoàn chỉnh hay bộ phận của điện trở nhóm 85.33?",
+      "detect": {
+        "resistor": ["điện trở", "resistor", "biến trở", "potentiometer", "rheostat"],
+        "parts": ["bộ phận điện trở", "parts resistor"]
+      }
+    },
+    {
+      "attribute": "resistorClass",
+      "type": "enum",
+      "domain": ["fixedCarbon", "fixedOther", "wirewoundVariable", "variableOther"],
+      "labelVi": "Nhóm kỹ thuật",
+      "questionVi": "Cố định than cacbon; cố định loại khác; biến đổi dây quấn; hay biến đổi loại khác?",
+      "detect": {
+        "fixedCarbon": ["than cacbon", "carbon resistor", "carbon film"],
+        "fixedOther": ["điện trở cố định", "fixed resistor", "metal film", "metal oxide"],
+        "wirewoundVariable": ["wirewound variable", "wirewound potentiometer", "wirewound rheostat"],
+        "variableOther": ["chiết áp trượt", "slide potentiometer", "variable resistor"]
+      }
+    },
+    {
+      "attribute": "carbonMount",
+      "type": "enum",
+      "domain": ["chip", "other"],
+      "labelVi": "Điện trở dán / khác",
+      "questionVi": "Điện trở than cacbon dán (chip/SMD) hay dạng khác?",
+      "detect": {
+        "chip": ["điện trở dán", "chip resistor", "smd resistor"],
+        "other": ["axial resistor", "through hole carbon"]
+      }
+    },
+    {
+      "attribute": "powerW",
+      "type": "number",
+      "unit": "W",
+      "fromSpec": "power",
+      "labelVi": "Công suất danh định (W)",
+      "questionVi": "Công suất danh định bao nhiêu W? (ngưỡng 20 W)"
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    { "id": "r-parts", "priority": 55, "when": { "goodsRole": "parts" }, "hs": "85339000", "gir": "GIR 6", "reasonVi": "Bộ phận điện trở → 8533.90.00.", "source": "Biểu thuế 2026 dòng 8533.90.00" },
+    { "id": "r-carbon-chip", "priority": 50, "when": { "goodsRole": "resistor", "resistorClass": "fixedCarbon", "carbonMount": "chip" }, "hs": "85331010", "gir": "GIR 6", "reasonVi": "Điện trở than cacbon dán → 8533.10.10.", "source": "Biểu thuế 2026 dòng 8533.10.10" },
+    { "id": "r-carbon-other", "priority": 45, "when": { "goodsRole": "resistor", "resistorClass": "fixedCarbon", "carbonMount": "other" }, "hs": "85331090", "gir": "GIR 6", "reasonVi": "Điện trở than cacbon loại khác → 8533.10.90.", "source": "Biểu thuế 2026 dòng 8533.10.90" },
+    { "id": "r-fixed-le20", "priority": 50, "when": { "goodsRole": "resistor", "resistorClass": "fixedOther", "powerW": { "lte": 20 } }, "hs": "85332100", "gir": "GIR 6", "reasonVi": "Điện trở cố định khác, ≤ 20 W → 8533.21.00.", "source": "Biểu thuế 2026 dòng 8533.21.00" },
+    { "id": "r-fixed-gt20", "priority": 50, "when": { "goodsRole": "resistor", "resistorClass": "fixedOther", "powerW": { "gt": 20 } }, "hs": "85332900", "gir": "GIR 6", "reasonVi": "Điện trở cố định khác, > 20 W → 8533.29.00.", "source": "Biểu thuế 2026 dòng 8533.29.00" },
+    { "id": "r-wire-le20", "priority": 50, "when": { "goodsRole": "resistor", "resistorClass": "wirewoundVariable", "powerW": { "lte": 20 } }, "hs": "85333100", "gir": "GIR 6", "reasonVi": "Biến trở dây quấn, ≤ 20 W → 8533.31.00.", "source": "Biểu thuế 2026 dòng 8533.31.00" },
+    { "id": "r-wire-gt20", "priority": 50, "when": { "goodsRole": "resistor", "resistorClass": "wirewoundVariable", "powerW": { "gt": 20 } }, "hs": "85333900", "gir": "GIR 6", "reasonVi": "Biến trở dây quấn, > 20 W → 8533.39.00.", "source": "Biểu thuế 2026 dòng 8533.39.00" },
+    { "id": "r-variable-other", "priority": 40, "when": { "goodsRole": "resistor", "resistorClass": "variableOther" }, "hs": "85334000", "gir": "GIR 6", "reasonVi": "Điện trở biến đổi khác → 8533.40.00.", "source": "Biểu thuế 2026 dòng 8533.40.00" }
+  ]
+}

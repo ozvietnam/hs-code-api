@@ -1,0 +1,41 @@
+{
+  "heading": "8522",
+  "titleVi": "Bộ phận/phụ kiện thiết bị ghi/tái tạo âm thanh–video (8519/8521)",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Pick-up cartridge; PCB trả lời điện thoại/âm thanh điện ảnh; cơ băng/đĩa; đầu từ; hay bộ phận của thiết bị ghi âm, trả lời điện thoại, 8519.81/8521?",
+  "sourceVi": "Biểu thuế 2026 nhóm 85.22: 8522.10 pick-up; 8522.90 các nhánh PCB, cơ cấu, đầu từ, bộ phận theo máy mẹ.",
+  "inputs": [
+    {
+      "attribute": "partKind",
+      "type": "enum",
+      "domain": ["pickUpCartridge", "pcbTelephoneAnswering", "pcbSoundCinema", "tapeDiskMechanism", "magneticHead", "partsSoundRepro", "partsTelephoneAnswering", "parts851981Or8521", "partsOther"],
+      "labelVi": "Loại bộ phận 85.22",
+      "questionVi": "Pick-up; PCB trả lời điện thoại; PCB âm thanh điện ảnh; cơ băng/đĩa; đầu từ; bộ phận ghi âm; bộ phận trả lời điện thoại; bộ phận 8519.81/8521; hay khác?",
+      "detect": {
+        "pickUpCartridge": ["pick-up cartridge", "pickup cartridge", "phono cartridge", "đầu kim"],
+        "pcbTelephoneAnswering": ["pcb answering machine", "mạch in máy trả lời điện thoại"],
+        "pcbSoundCinema": ["mạch in ghi âm điện ảnh", "cinema sound reproducing pcb"],
+        "tapeDiskMechanism": ["tape mechanism", "compact disc mechanism", "cơ ghi băng"],
+        "magneticHead": ["đầu từ", "magnetic head", "video head"],
+        "partsSoundRepro": ["parts sound reproducing", "bộ phận máy ghi âm"],
+        "partsTelephoneAnswering": ["answering machine parts", "bộ phận máy trả lời điện thoại"],
+        "parts851981Or8521": ["8519.81", "8521", "parts video recorder"],
+        "partsOther": ["parts 8522 other", "bộ phận 8522 khác"]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    { "id": "r-pickup", "priority": 55, "when": { "partKind": "pickUpCartridge" }, "hs": "85221000", "gir": "GIR 6", "reasonVi": "Cụm pick-up cartridge → 8522.10.00.", "source": "Biểu thuế 2026 dòng 8522.10.00" },
+    { "id": "r-pcb-answering", "priority": 50, "when": { "partKind": "pcbTelephoneAnswering" }, "hs": "85229020", "gir": "GIR 6", "reasonVi": "PCB máy trả lời điện thoại → 8522.90.20.", "source": "Biểu thuế 2026 dòng 8522.90.20" },
+    { "id": "r-pcb-cinema", "priority": 50, "when": { "partKind": "pcbSoundCinema" }, "hs": "85229030", "gir": "GIR 6", "reasonVi": "PCB ghi/tái tạo âm thanh điện ảnh → 8522.90.30.", "source": "Biểu thuế 2026 dòng 8522.90.30" },
+    { "id": "r-mechanism", "priority": 50, "when": { "partKind": "tapeDiskMechanism" }, "hs": "85229040", "gir": "GIR 6", "reasonVi": "Cơ ghi/đọc băng hoặc đĩa → 8522.90.40.", "source": "Biểu thuế 2026 dòng 8522.90.40" },
+    { "id": "r-magnetic-head", "priority": 50, "when": { "partKind": "magneticHead" }, "hs": "85229050", "gir": "GIR 6", "reasonVi": "Đầu từ tính → 8522.90.50.", "source": "Biểu thuế 2026 dòng 8522.90.50" },
+    { "id": "r-parts-sound", "priority": 45, "when": { "partKind": "partsSoundRepro" }, "hs": "85229091", "gir": "GIR 6", "reasonVi": "Bộ phận thiết bị ghi/tái tạo âm thanh → 8522.90.91.", "source": "Biểu thuế 2026 dòng 8522.90.91" },
+    { "id": "r-parts-answering", "priority": 45, "when": { "partKind": "partsTelephoneAnswering" }, "hs": "85229092", "gir": "GIR 6", "reasonVi": "Bộ phận máy trả lời điện thoại → 8522.90.92.", "source": "Biểu thuế 2026 dòng 8522.90.92" },
+    { "id": "r-parts-8521", "priority": 45, "when": { "partKind": "parts851981Or8521" }, "hs": "85229093", "gir": "GIR 6", "reasonVi": "Bộ phận 8519.81 hoặc 8521 → 8522.90.93.", "source": "Biểu thuế 2026 dòng 8522.90.93" },
+    { "id": "r-parts-other", "priority": 10, "when": { "partKind": "partsOther" }, "hs": "85229099", "gir": "GIR 6", "reasonVi": "Bộ phận 85.22 loại khác → 8522.90.99.", "source": "Biểu thuế 2026 dòng 8522.90.99" }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "heading": "8532",
+  "titleVi": "Tụ điện cố định, biến đổi và bộ phận",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Tụ nguồn 50/60 Hz ≥0,5 kvar; tụ cố định tantan/nhôm/gốm/giấy; tụ cố định khác; tụ biến đổi; hay bộ phận?",
+  "sourceVi": "Biểu thuế 2026 nhóm 85.32: 8532.10 tụ nguồn; 8532.21–8532.29 tụ cố định; 8532.30 biến đổi; 8532.90 bộ phận.",
+  "inputs": [
+    {
+      "attribute": "capKind",
+      "type": "enum",
+      "domain": ["power50Hz", "tantalum", "aluminiumElectrolytic", "ceramicSingle", "ceramicMulti", "paperPlastic", "fixedOther", "variablePreset", "parts"],
+      "labelVi": "Loại tụ / bộ phận",
+      "questionVi": "Tụ nguồn 50/60 Hz; tantan; nhôm; gốm một/nhiều lớp; giấy/plastic; tụ cố định khác; tụ biến đổi; hay bộ phận?",
+      "detect": {
+        "power50Hz": ["tụ nguồn", "power capacitor", "50/60 hz", "kvar", "reactive power"],
+        "tantalum": ["tụ tantan", "tantalum capacitor"],
+        "aluminiumElectrolytic": ["tụ nhôm", "aluminium electrolytic", "electrolytic capacitor"],
+        "ceramicSingle": ["tụ gốm một lớp", "ceramic single layer"],
+        "ceramicMulti": ["tụ gốm nhiều lớp", "mlcc", "multilayer ceramic"],
+        "paperPlastic": ["tụ giấy", "film capacitor", "paper capacitor"],
+        "fixedOther": ["tụ cố định khác", "supercap", "super capacitor"],
+        "variablePreset": ["tụ biến đổi", "trimmer capacitor", "variable capacitor"],
+        "parts": ["bộ phận tụ điện", "capacitor parts"]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    { "id": "r-power", "priority": 55, "when": { "capKind": "power50Hz" }, "hs": "85321000", "gir": "GIR 6", "reasonVi": "Tụ nguồn 50/60 Hz, ≥ 0,5 kvar → 8532.10.00.", "source": "Biểu thuế 2026 dòng 8532.10.00" },
+    { "id": "r-tantalum", "priority": 50, "when": { "capKind": "tantalum" }, "hs": "85322100", "gir": "GIR 6", "reasonVi": "Tụ cố định tantan → 8532.21.00.", "source": "Biểu thuế 2026 dòng 8532.21.00" },
+    { "id": "r-alu", "priority": 50, "when": { "capKind": "aluminiumElectrolytic" }, "hs": "85322200", "gir": "GIR 6", "reasonVi": "Tụ nhôm điện phân → 8532.22.00.", "source": "Biểu thuế 2026 dòng 8532.22.00" },
+    { "id": "r-cer-single", "priority": 50, "when": { "capKind": "ceramicSingle" }, "hs": "85322300", "gir": "GIR 6", "reasonVi": "Tụ gốm một lớp → 8532.23.00.", "source": "Biểu thuế 2026 dòng 8532.23.00" },
+    { "id": "r-cer-multi", "priority": 50, "when": { "capKind": "ceramicMulti" }, "hs": "85322400", "gir": "GIR 6", "reasonVi": "Tụ gốm nhiều lớp → 8532.24.00.", "source": "Biểu thuế 2026 dòng 8532.24.00" },
+    { "id": "r-paper", "priority": 50, "when": { "capKind": "paperPlastic" }, "hs": "85322500", "gir": "GIR 6", "reasonVi": "Tụ giấy hoặc plastic → 8532.25.00.", "source": "Biểu thuế 2026 dòng 8532.25.00" },
+    { "id": "r-fixed-other", "priority": 10, "when": { "capKind": "fixedOther" }, "hs": "85322900", "gir": "GIR 6", "reasonVi": "Tụ cố định loại khác → 8532.29.00.", "source": "Biểu thuế 2026 dòng 8532.29.00" },
+    { "id": "r-variable", "priority": 50, "when": { "capKind": "variablePreset" }, "hs": "85323000", "gir": "GIR 6", "reasonVi": "Tụ biến đổi/preset → 8532.30.00.", "source": "Biểu thuế 2026 dòng 8532.30.00" },
+    { "id": "r-parts", "priority": 55, "when": { "capKind": "parts" }, "hs": "85329000", "gir": "GIR 6", "reasonVi": "Bộ phận tụ điện → 8532.90.00.", "source": "Biểu thuế 2026 dòng 8532.90.00" }
+  ]
+}
