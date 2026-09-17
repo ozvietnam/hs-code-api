@@ -1,0 +1,357 @@
+{
+  "heading": "8428",
+  "titleVi": "Máy nâng, chuyền, bốc xếp tải — thang máy, băng tải, thang cuốn, teleferic, robot (trừ 8425–8427)",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Thang máy/tời nâng, băng tải khí nén, băng tải/chuyền liên tục (hầm mỏ, gầu, đai, khác), thang cuốn, teleferic, robot công nghiệp, hay thiết bị 84.28 khác (xử lý PCB, đẩy xe goòng mỏ)?",
+  "sourceVi": "Biểu thuế 2026 nhóm 84.28: 8428.10 thang máy/tời nâng; 8428.20 pneumatic; 8428.31–39 chuyền liên tục hàng; 8428.40 thang cuốn; 8428.60 teleferic; 8428.70 robot công nghiệp; 8428.90 khác (.20 PCB, .30 mỏ, .90 còn lại).",
+  "inputs": [
+    {
+      "attribute": "equipmentFamily",
+      "type": "enum",
+      "domain": [
+        "liftSkip",
+        "pneumatic",
+        "continuous",
+        "escalatorWalkway",
+        "telefericSkiLift",
+        "industrialRobot",
+        "other84289"
+      ],
+      "labelVi": "Nhóm thiết bị 84.28",
+      "questionVi": "Thang máy/tời nâng; băng tải khí nén; băng tải/chuyền liên tục hàng; thang cuốn/băng tải người; teleferic/cáp treo; robot công nghiệp; hay thiết bị 84.28 khác?",
+      "detect": {
+        "liftSkip": [
+          "thang máy",
+          "elevator",
+          "lift",
+          "skip hoist",
+          "tời nâng",
+          "thang máy chở người",
+          "thang máy hàng"
+        ],
+        "pneumatic": [
+          "băng tải khí nén",
+          "pneumatic conveyor",
+          "pneumatic elevator",
+          "khí nén vận chuyển"
+        ],
+        "continuous": [
+          "băng tải",
+          "conveyor",
+          "belt conveyor",
+          "bucket elevator",
+          "gầu nâng liên tục",
+          "roller conveyor",
+          "screw conveyor"
+        ],
+        "escalatorWalkway": [
+          "thang cuốn",
+          "escalator",
+          "moving walkway",
+          "băng tải người đi bộ",
+          "travelator"
+        ],
+        "telefericSkiLift": [
+          "cáp treo",
+          "teleferic",
+          "chair lift",
+          "ski lift",
+          "ghế treo",
+          "funicular"
+        ],
+        "industrialRobot": [
+          "robot công nghiệp",
+          "industrial robot",
+          "cánh tay robot",
+          "robot arm"
+        ],
+        "other84289": [
+          "mạch in tự động",
+          "pcb handler",
+          "xe goòng mỏ",
+          "mine wagon pusher"
+        ]
+      }
+    },
+    {
+      "attribute": "liftKind",
+      "type": "enum",
+      "domain": ["passenger", "goodsOther", "skipHoistBucket"],
+      "labelVi": "Loại thang/tời",
+      "questionVi": "Thang máy chở người; thang/tời hàng loại khác; hay tời nâng kiểu gầu/thùng kíp?",
+      "detect": {
+        "passenger": [
+          "chở người",
+          "passenger elevator",
+          "thang máy chở người",
+          "passenger lift"
+        ],
+        "goodsOther": [
+          "thang máy hàng",
+          "freight elevator",
+          "goods lift",
+          "cargo lift"
+        ],
+        "skipHoistBucket": [
+          "gầu nâng",
+          "skip hoist",
+          "thùng kíp",
+          "bucket hoist shaft"
+        ]
+      }
+    },
+    {
+      "attribute": "continuousType",
+      "type": "enum",
+      "domain": ["underground", "bucket", "belt", "otherMechanism"],
+      "labelVi": "Kiểu chuyền liên tục",
+      "questionVi": "Thiết kế riêng cho hầm mỏ/lòng đất; gầu (bucket); đai (belt); hay cơ cấu liên tục khác (screw, roller…)?",
+      "detect": {
+        "underground": [
+          "hầm mỏ",
+          "underground",
+          "lòng đất",
+          "mine shaft conveyor"
+        ],
+        "bucket": [
+          "bucket conveyor",
+          "bucket elevator",
+          "gầu nâng",
+          "elevator bucket"
+        ],
+        "belt": [
+          "belt conveyor",
+          "băng tải đai",
+          "băng tải cao su",
+          "conveyor belt"
+        ],
+        "otherMechanism": [
+          "screw conveyor",
+          "roller conveyor",
+          "chain conveyor",
+          "vibrating conveyor",
+          "băng tải xoắn"
+        ]
+      }
+    },
+    {
+      "attribute": "agUse",
+      "type": "enum",
+      "domain": ["yes", "no"],
+      "labelVi": "Dùng trong nông nghiệp",
+      "questionVi": "Thiết bị có thiết kế/chủ yếu dùng trong nông nghiệp không?",
+      "detect": {
+        "yes": [
+          "nông nghiệp",
+          "agricultural",
+          "farm use",
+          "trang trại",
+          "lúa gạo",
+          "thu hoạch"
+        ],
+        "no": [
+          "công nghiệp",
+          "industrial",
+          "nhà máy",
+          "kho bãi"
+        ]
+      }
+    },
+    {
+      "attribute": "misc84289Kind",
+      "type": "enum",
+      "domain": ["pcbSemiconductor", "mineWagonGear", "other"],
+      "labelVi": "Loại thiết bị 84.28.90",
+      "questionVi": "Máy tự động xử lý/kẹp tấm mạch in; thiết bị đẩy/lật xe goòng mỏ; hay loại khác?",
+      "detect": {
+        "pcbSemiconductor": [
+          "mạch in",
+          "pcb",
+          "tấm mạch",
+          "wire bond handler",
+          "semiconductor handler"
+        ],
+        "mineWagonGear": [
+          "xe goòng",
+          "mine wagon",
+          "hầm mỏ đẩy xe",
+          "lật toa xe",
+          "wagon pusher"
+        ],
+        "other": [
+          "thiết bị nâng khác",
+          "8428.90 other",
+          "lift table",
+          "bàn nâng"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-lift-passenger",
+      "priority": 60,
+      "when": { "equipmentFamily": "liftSkip", "liftKind": "passenger" },
+      "hs": "84281031",
+      "gir": "GIR 6",
+      "reasonVi": "Thang máy/tời nâng để chở người → 8428.10.31.",
+      "source": "Biểu thuế 2026 dòng 8428.10.31"
+    },
+    {
+      "id": "r-lift-goods",
+      "priority": 60,
+      "when": { "equipmentFamily": "liftSkip", "liftKind": "goodsOther" },
+      "hs": "84281039",
+      "gir": "GIR 6",
+      "reasonVi": "Thang máy/tời nâng hàng loại khác (không chở người) → 8428.10.39.",
+      "source": "Biểu thuế 2026 dòng 8428.10.39"
+    },
+    {
+      "id": "r-lift-skip-bucket",
+      "priority": 60,
+      "when": { "equipmentFamily": "liftSkip", "liftKind": "skipHoistBucket" },
+      "hs": "84281040",
+      "gir": "GIR 6",
+      "reasonVi": "Tời nâng kiểu gầu/thùng kíp → 8428.10.40.",
+      "source": "Biểu thuế 2026 dòng 8428.10.40"
+    },
+    {
+      "id": "r-pneumatic-ag",
+      "priority": 60,
+      "when": { "equipmentFamily": "pneumatic", "agUse": "yes" },
+      "hs": "84282010",
+      "gir": "GIR 6",
+      "reasonVi": "Băng tải/thang khí nén dùng trong nông nghiệp → 8428.20.10.",
+      "source": "Biểu thuế 2026 dòng 8428.20.10"
+    },
+    {
+      "id": "r-pneumatic-other",
+      "priority": 55,
+      "when": { "equipmentFamily": "pneumatic", "agUse": "no" },
+      "hs": "84282090",
+      "gir": "GIR 6",
+      "reasonVi": "Băng tải/thang khí nén loại khác → 8428.20.90.",
+      "source": "Biểu thuế 2026 dòng 8428.20.90"
+    },
+    {
+      "id": "r-cont-underground",
+      "priority": 65,
+      "when": { "equipmentFamily": "continuous", "continuousType": "underground" },
+      "hs": "84283100",
+      "gir": "GIR 6",
+      "reasonVi": "Chuyền liên tục thiết kế riêng cho dùng dưới lòng đất/hầm mỏ → 8428.31.00.",
+      "source": "Biểu thuế 2026 dòng 8428.31.00"
+    },
+    {
+      "id": "r-cont-bucket-ag",
+      "priority": 60,
+      "when": { "equipmentFamily": "continuous", "continuousType": "bucket", "agUse": "yes" },
+      "hs": "84283210",
+      "gir": "GIR 6",
+      "reasonVi": "Chuyền gầu liên tục, dùng nông nghiệp → 8428.32.10.",
+      "source": "Biểu thuế 2026 dòng 8428.32.10"
+    },
+    {
+      "id": "r-cont-bucket-other",
+      "priority": 55,
+      "when": { "equipmentFamily": "continuous", "continuousType": "bucket", "agUse": "no" },
+      "hs": "84283290",
+      "gir": "GIR 6",
+      "reasonVi": "Chuyền gầu liên tục loại khác → 8428.32.90.",
+      "source": "Biểu thuế 2026 dòng 8428.32.90"
+    },
+    {
+      "id": "r-cont-belt-ag",
+      "priority": 60,
+      "when": { "equipmentFamily": "continuous", "continuousType": "belt", "agUse": "yes" },
+      "hs": "84283310",
+      "gir": "GIR 6",
+      "reasonVi": "Băng tải đai liên tục, dùng nông nghiệp → 8428.33.10.",
+      "source": "Biểu thuế 2026 dòng 8428.33.10"
+    },
+    {
+      "id": "r-cont-belt-other",
+      "priority": 55,
+      "when": { "equipmentFamily": "continuous", "continuousType": "belt", "agUse": "no" },
+      "hs": "84283390",
+      "gir": "GIR 6",
+      "reasonVi": "Băng tải đai liên tục loại khác → 8428.33.90.",
+      "source": "Biểu thuế 2026 dòng 8428.33.90"
+    },
+    {
+      "id": "r-cont-other-ag",
+      "priority": 60,
+      "when": { "equipmentFamily": "continuous", "continuousType": "otherMechanism", "agUse": "yes" },
+      "hs": "84283910",
+      "gir": "GIR 6",
+      "reasonVi": "Chuyền liên tục cơ cấu khác, dùng nông nghiệp → 8428.39.10.",
+      "source": "Biểu thuế 2026 dòng 8428.39.10"
+    },
+    {
+      "id": "r-cont-other-nec",
+      "priority": 55,
+      "when": { "equipmentFamily": "continuous", "continuousType": "otherMechanism", "agUse": "no" },
+      "hs": "84283990",
+      "gir": "GIR 6",
+      "reasonVi": "Chuyền liên tục cơ cấu khác loại khác → 8428.39.90.",
+      "source": "Biểu thuế 2026 dòng 8428.39.90"
+    },
+    {
+      "id": "r-escalator",
+      "priority": 60,
+      "when": { "equipmentFamily": "escalatorWalkway" },
+      "hs": "84284000",
+      "gir": "GIR 6",
+      "reasonVi": "Thang cuốn hoặc băng tải tự động cho người đi bộ → 8428.40.00.",
+      "source": "Biểu thuế 2026 dòng 8428.40.00"
+    },
+    {
+      "id": "r-teleferic",
+      "priority": 60,
+      "when": { "equipmentFamily": "telefericSkiLift" },
+      "hs": "84286000",
+      "gir": "GIR 6",
+      "reasonVi": "Teleferic, ghế treo, cơ cấu kéo trượt tuyết/đường sắt leo núi → 8428.60.00.",
+      "source": "Biểu thuế 2026 dòng 8428.60.00"
+    },
+    {
+      "id": "r-robot",
+      "priority": 60,
+      "when": { "equipmentFamily": "industrialRobot" },
+      "hs": "84287000",
+      "gir": "GIR 6",
+      "reasonVi": "Robot công nghiệp → 8428.70.00.",
+      "source": "Biểu thuế 2026 dòng 8428.70.00"
+    },
+    {
+      "id": "r-misc-pcb",
+      "priority": 60,
+      "when": { "equipmentFamily": "other84289", "misc84289Kind": "pcbSemiconductor" },
+      "hs": "84289020",
+      "gir": "GIR 6",
+      "reasonVi": "Máy tự động dịch chuyển/xử lý/kẹp tấm mạch in → 8428.90.20.",
+      "source": "Biểu thuế 2026 dòng 8428.90.20"
+    },
+    {
+      "id": "r-misc-mine-wagon",
+      "priority": 60,
+      "when": { "equipmentFamily": "other84289", "misc84289Kind": "mineWagonGear" },
+      "hs": "84289030",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị đẩy/lật xe goòng trong hầm mỏ → 8428.90.30.",
+      "source": "Biểu thuế 2026 dòng 8428.90.30"
+    },
+    {
+      "id": "r-misc-other",
+      "priority": 45,
+      "when": { "equipmentFamily": "other84289", "misc84289Kind": "other" },
+      "hs": "84289090",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị nâng/chuyền 84.28 loại khác → 8428.90.90.",
+      "source": "Biểu thuế 2026 dòng 8428.90.90"
+    }
+  ]
+}
