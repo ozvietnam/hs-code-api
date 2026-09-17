@@ -1,0 +1,287 @@
+{
+  "heading": "8538",
+  "titleVi": "Bộ phận dùng cho thiết bị điện nhóm 8535, 8536 và 8537",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Bộ phận của tủ/bảng 8537 (≤1000 V hay >1000 V; PLC bán dẫn, vô tuyến, khác) hay bộ phận chung 8535/8536/8537 (≤1000 V theo mã 8536/8537 liên quan; >1000 V → 8538.90.20)?",
+  "sourceVi": "Biểu thuế 2026 nhóm 85.38: 8538.10 bộ phận của hàng 8537 (.11/.12/.19 ≤1000 V; .21/.22/.29 >1000 V); 8538.90 bộ phận khác (.11–.19 ≤1000 V theo mã thiết bị gốc; .20 điện áp trên 1000 V).",
+  "inputs": [
+    {
+      "attribute": "partScope",
+      "type": "enum",
+      "domain": [
+        "for8537Assemblies",
+        "for8535_8536_8537General"
+      ],
+      "labelVi": "Phạm vi bộ phận",
+      "questionVi": "Bộ phận của bảng/tủ/thiết bị lắp ráp nhóm 8537; hay bộ phận chung cho thiết bị 8535/8536/8537?",
+      "detect": {
+        "for8537Assemblies": [
+          "8537",
+          "tủ điện",
+          "switchboard part",
+          "panel part",
+          "cabinet part 8537",
+          "bảng điều khiển bộ phận"
+        ],
+        "for8535_8536_8537General": [
+          "8535",
+          "8536",
+          "contactor part",
+          "relay part",
+          "fuse part hv",
+          "bộ phận aptomat",
+          "8538.90"
+        ]
+      }
+    },
+    {
+      "attribute": "partVoltage",
+      "type": "enum",
+      "domain": [
+        "lte1000v",
+        "gt1000v"
+      ],
+      "labelVi": "Điện áp thiết bị gốc",
+      "questionVi": "Bộ phận dùng cho thiết bị điện áp không quá 1000 V hay trên 1000 V?",
+      "detect": {
+        "lte1000v": [
+          "hạ thế",
+          "low voltage",
+          "380v",
+          "400v",
+          "1000v",
+          "≤1000v",
+          "mcc part"
+        ],
+        "gt1000v": [
+          "cao thế",
+          "trung thế",
+          "high voltage",
+          "22kv",
+          "35kv",
+          ">1000v",
+          "trên 1000v"
+        ]
+      }
+    },
+    {
+      "attribute": "part8537Kind",
+      "type": "enum",
+      "domain": [
+        "semiFabPlc",
+        "radio",
+        "other8537"
+      ],
+      "labelVi": "Loại bộ phận tủ 8537",
+      "questionVi": "Bộ phận PLC/logic cho máy tự động bán dẫn (dịch chuyển/kẹp khuôn); dùng thiết bị vô tuyến; hay bộ phận tủ 8537 khác?",
+      "detect": {
+        "semiFabPlc": [
+          "bán dẫn",
+          "semiconductor",
+          "plc logic",
+          "kẹp khuôn",
+          "mold handler",
+          "wafer handler part"
+        ],
+        "radio": [
+          "vô tuyến",
+          "radio",
+          "rf equipment",
+          "transmitter part"
+        ],
+        "other8537": [
+          "tủ điện khác",
+          "8537 part other",
+          "panel component other"
+        ]
+      }
+    },
+    {
+      "attribute": "generalPartTarget",
+      "type": "enum",
+      "domain": [
+        "for853669_853690",
+        "for853650Connectors",
+        "for85371020Dist",
+        "otherGeneral"
+      ],
+      "labelVi": "Bộ phận 8538.90 (≤1000 V)",
+      "questionVi": "Của 8536.69.10/8536.90.12/.19; của 8536.50.51/.59/8536.69.32/.39; của 8537.10.20; hay loại khác?",
+      "detect": {
+        "for853669_853690": [
+          "8536.69.10",
+          "8536.90.12",
+          "8536.90.19",
+          "relay socket",
+          "contactor auxiliary"
+        ],
+        "for853650Connectors": [
+          "8536.50.51",
+          "8536.50.59",
+          "8536.69.32",
+          "8536.69.39",
+          "connector part",
+          "đầu nối bộ phận"
+        ],
+        "for85371020Dist": [
+          "8537.10.20",
+          "bảng phân phối",
+          "distribution board part",
+          "pdu part"
+        ],
+        "otherGeneral": [
+          "bộ phận khác",
+          "8538.90.19",
+          "general electrical part"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-8537-lv-semi",
+      "priority": 65,
+      "when": {
+        "partScope": "for8537Assemblies",
+        "partVoltage": "lte1000v",
+        "part8537Kind": "semiFabPlc"
+      },
+      "hs": "85381011",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, bộ phận PLC/logic cho máy tự động bán dẫn (tủ 8537) → 8538.10.11.",
+      "source": "Biểu thuế 2026 dòng 8538.10.11"
+    },
+    {
+      "id": "r-8537-lv-radio",
+      "priority": 65,
+      "when": {
+        "partScope": "for8537Assemblies",
+        "partVoltage": "lte1000v",
+        "part8537Kind": "radio"
+      },
+      "hs": "85381012",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, bộ phận tủ 8537 dùng trong thiết bị vô tuyến → 8538.10.12.",
+      "source": "Biểu thuế 2026 dòng 8538.10.12"
+    },
+    {
+      "id": "r-8537-lv-other",
+      "priority": 12,
+      "when": {
+        "partScope": "for8537Assemblies",
+        "partVoltage": "lte1000v",
+        "part8537Kind": "other8537"
+      },
+      "hs": "85381019",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, bộ phận tủ 8537 loại khác → 8538.10.19.",
+      "source": "Biểu thuế 2026 dòng 8538.10.19"
+    },
+    {
+      "id": "r-8537-hv-semi",
+      "priority": 65,
+      "when": {
+        "partScope": "for8537Assemblies",
+        "partVoltage": "gt1000v",
+        "part8537Kind": "semiFabPlc"
+      },
+      "hs": "85381021",
+      "gir": "GIR 6",
+      "reasonVi": "Trên 1000 V, bộ phận PLC/logic bán dẫn (tủ 8537) → 8538.10.21.",
+      "source": "Biểu thuế 2026 dòng 8538.10.21"
+    },
+    {
+      "id": "r-8537-hv-radio",
+      "priority": 65,
+      "when": {
+        "partScope": "for8537Assemblies",
+        "partVoltage": "gt1000v",
+        "part8537Kind": "radio"
+      },
+      "hs": "85381022",
+      "gir": "GIR 6",
+      "reasonVi": "Trên 1000 V, bộ phận tủ 8537 cho vô tuyến → 8538.10.22.",
+      "source": "Biểu thuế 2026 dòng 8538.10.22"
+    },
+    {
+      "id": "r-8537-hv-other",
+      "priority": 12,
+      "when": {
+        "partScope": "for8537Assemblies",
+        "partVoltage": "gt1000v",
+        "part8537Kind": "other8537"
+      },
+      "hs": "85381029",
+      "gir": "GIR 6",
+      "reasonVi": "Trên 1000 V, bộ phận tủ 8537 loại khác → 8538.10.29.",
+      "source": "Biểu thuế 2026 dòng 8538.10.29"
+    },
+    {
+      "id": "r-gen-lv-853669",
+      "priority": 62,
+      "when": {
+        "partScope": "for8535_8536_8537General",
+        "partVoltage": "lte1000v",
+        "generalPartTarget": "for853669_853690"
+      },
+      "hs": "85389011",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, bộ phận của 8536.69.10/8536.90.12/.19 → 8538.90.11.",
+      "source": "Biểu thuế 2026 dòng 8538.90.11"
+    },
+    {
+      "id": "r-gen-lv-853650",
+      "priority": 62,
+      "when": {
+        "partScope": "for8535_8536_8537General",
+        "partVoltage": "lte1000v",
+        "generalPartTarget": "for853650Connectors"
+      },
+      "hs": "85389012",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, bộ phận của 8536.50.51/.59/8536.69.32/.39 → 8538.90.12.",
+      "source": "Biểu thuế 2026 dòng 8538.90.12"
+    },
+    {
+      "id": "r-gen-lv-85371020",
+      "priority": 62,
+      "when": {
+        "partScope": "for8535_8536_8537General",
+        "partVoltage": "lte1000v",
+        "generalPartTarget": "for85371020Dist"
+      },
+      "hs": "85389013",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, bộ phận của bảng phân phối 8537.10.20 → 8538.90.13.",
+      "source": "Biểu thuế 2026 dòng 8538.90.13"
+    },
+    {
+      "id": "r-gen-lv-other",
+      "priority": 10,
+      "when": {
+        "partScope": "for8535_8536_8537General",
+        "partVoltage": "lte1000v",
+        "generalPartTarget": "otherGeneral"
+      },
+      "hs": "85389019",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, bộ phận 8535/8536/8537 loại khác → 8538.90.19.",
+      "source": "Biểu thuế 2026 dòng 8538.90.19"
+    },
+    {
+      "id": "r-gen-hv",
+      "priority": 58,
+      "when": {
+        "partScope": "for8535_8536_8537General",
+        "partVoltage": "gt1000v"
+      },
+      "hs": "85389020",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận dùng cho thiết bị điện áp trên 1000 V → 8538.90.20.",
+      "source": "Biểu thuế 2026 dòng 8538.90.20"
+    }
+  ]
+}

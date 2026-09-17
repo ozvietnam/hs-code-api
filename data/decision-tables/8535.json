@@ -1,0 +1,376 @@
+{
+  "heading": "8535",
+  "titleVi": "Thiết bị điện đóng cắt, bảo vệ, nối mạch — điện áp trên 1000 V",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Cầu chì; aptomat (dưới 72,5 kV: hộp đúc/ELCB/khác; từ 72,5 kV: ELCB/khác); công tắc cách ly/đóng cắt (dưới 36 kV, khác, từ 66 kV, loại khác); chống sét/khống chế/triệt xung; hay thiết bị khác (đầu nối MBA, công tắc đảo chiều khởi động động cơ, khác)?",
+  "sourceVi": "Biểu thuế 2026 nhóm 85.35 (điện áp >1000 V): 8535.10 cầu chì; 8535.21 aptomat <72,5 kV; 8535.29 aptomat ≥72,5 kV; 8535.30 công tắc cách ly/đóng cắt; 8535.40 chống sét/khống chế/triệt xung; 8535.90 khác (.10 đầu nối/chuyển nấc MBA; .20 change-over khởi động động cơ; .90 khác).",
+  "inputs": [
+    {
+      "attribute": "apparatusKind",
+      "type": "enum",
+      "domain": [
+        "fuse",
+        "circuitBreaker",
+        "isolatorSwitch",
+        "surgeProtection",
+        "other8535"
+      ],
+      "labelVi": "Loại thiết bị",
+      "questionVi": "Cầu chì; aptomat (MCB/MCCB); công tắc cách ly hoặc đóng cắt; chống sét/khống chế/triệt xung; hay thiết bị 85.35 khác?",
+      "detect": {
+        "fuse": [
+          "cầu chì",
+          "fuse",
+          "high voltage fuse",
+          "sứ cầu chì"
+        ],
+        "circuitBreaker": [
+          "aptomat",
+          "circuit breaker",
+          "acb",
+          "mccb",
+          "bộ ngắt mạch",
+          "elcb",
+          "rcd"
+        ],
+        "isolatorSwitch": [
+          "công tắc cách ly",
+          "disconnector",
+          "isolator",
+          "load break switch",
+          "công tắc đóng cắt",
+          "make-and-break"
+        ],
+        "surgeProtection": [
+          "chống sét",
+          "lightning arrester",
+          "surge suppressor",
+          "bộ khống chế điện áp",
+          "triệt xung"
+        ],
+        "other8535": [
+          "8535.90",
+          "đầu nối máy biến áp",
+          "change-over switch",
+          "thiết bị cao thế khác"
+        ]
+      }
+    },
+    {
+      "attribute": "breakerVoltageClass",
+      "type": "enum",
+      "domain": [
+        "below72_5kV",
+        "72_5kVOrMore"
+      ],
+      "labelVi": "Cấp điện áp aptomat",
+      "questionVi": "Aptomat dùng dưới 72,5 kV hay từ 72,5 kV trở lên?",
+      "detect": {
+        "below72_5kV": [
+          "dưới 72.5",
+          "22kv breaker",
+          "35kv",
+          "<72.5kv",
+          "medium voltage breaker"
+        ],
+        "72_5kVOrMore": [
+          "72.5kv",
+          "110kv",
+          "220kv",
+          "≥72.5",
+          "high voltage breaker"
+        ]
+      }
+    },
+    {
+      "attribute": "breakerKind",
+      "type": "enum",
+      "domain": [
+        "mouldedCase",
+        "elcb",
+        "otherBreaker"
+      ],
+      "labelVi": "Loại aptomat (<72,5 kV)",
+      "questionVi": "Loại hộp đúc (moulded case); ELCB/chống dòng rò; hay aptomat khác?",
+      "detect": {
+        "mouldedCase": [
+          "hộp đúc",
+          "moulded case",
+          "mccb molded",
+          "vỏ nhựa đúc"
+        ],
+        "elcb": [
+          "elcb",
+          "rcd",
+          "chống dòng rò",
+          "earth leakage",
+          "gfci hv"
+        ],
+        "otherBreaker": [
+          "acb",
+          "aptomat khác",
+          "vacuum breaker",
+          "sf6 breaker"
+        ]
+      }
+    },
+    {
+      "attribute": "breaker72Elcb",
+      "type": "enum",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "labelVi": "ELCB ≥72,5 kV",
+      "questionVi": "Aptomat từ 72,5 kV trở lên có phải bộ ngắt chống dòng rò (ELCB) không?",
+      "detect": {
+        "yes": [
+          "elcb",
+          "chống dòng rò",
+          "earth leakage 72"
+        ],
+        "no": [
+          "aptomat thường",
+          "breaker other 110kv"
+        ]
+      }
+    },
+    {
+      "attribute": "switchKind",
+      "type": "enum",
+      "domain": [
+        "disconnectUnder36kV",
+        "otherDisconnect",
+        "for66kVOrMore",
+        "otherSwitch"
+      ],
+      "labelVi": "Công tắc cách ly/đóng cắt",
+      "questionVi": "Thiết bị ngắt dưới 36 kV; công tắc cách ly/đóng cắt khác; dùng từ 66 kV trở lên; hay loại khác?",
+      "detect": {
+        "disconnectUnder36kV": [
+          "dưới 36 kv",
+          "22kv switch",
+          "disconnector 35kv"
+        ],
+        "otherDisconnect": [
+          "cách ly khác",
+          "isolator other",
+          "load switch other"
+        ],
+        "for66kVOrMore": [
+          "66 kv",
+          "110kv switch",
+          "từ 66 kv",
+          "high voltage disconnector"
+        ],
+        "otherSwitch": [
+          "công tắc khác",
+          "switch other 8535.30"
+        ]
+      }
+    },
+    {
+      "attribute": "other8535Kind",
+      "type": "enum",
+      "domain": [
+        "transformerTapSwitch",
+        "motorChangeOver",
+        "otherNec"
+      ],
+      "labelVi": "Thiết bị 8535.90",
+      "questionVi": "Đầu nối/chuyển nấc cho MBA phân phối hoặc nguồn; công tắc đảo chiều khởi động động cơ; hay loại khác?",
+      "detect": {
+        "transformerTapSwitch": [
+          "máy biến áp",
+          "transformer tap",
+          "bộ chuyển nấc",
+          "on-load tap changer",
+          "sen transformer"
+        ],
+        "motorChangeOver": [
+          "change-over",
+          "đảo chiều",
+          "khởi động động cơ",
+          "motor starter switch hv"
+        ],
+        "otherNec": [
+          "8535.90.90",
+          "thiết bị cao thế khác",
+          "other hv apparatus"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-fuse",
+      "priority": 60,
+      "when": { "apparatusKind": "fuse" },
+      "hs": "85351000",
+      "gir": "GIR 6",
+      "reasonVi": "Cầu chì điện áp trên 1000 V → 8535.10.00.",
+      "source": "Biểu thuế 2026 dòng 8535.10.00"
+    },
+    {
+      "id": "r-cb-moulded",
+      "priority": 58,
+      "when": {
+        "apparatusKind": "circuitBreaker",
+        "breakerVoltageClass": "below72_5kV",
+        "breakerKind": "mouldedCase"
+      },
+      "hs": "85352110",
+      "gir": "GIR 6",
+      "reasonVi": "Aptomat <72,5 kV, loại hộp đúc → 8535.21.10.",
+      "source": "Biểu thuế 2026 dòng 8535.21.10"
+    },
+    {
+      "id": "r-cb-elcb-lv",
+      "priority": 58,
+      "when": {
+        "apparatusKind": "circuitBreaker",
+        "breakerVoltageClass": "below72_5kV",
+        "breakerKind": "elcb"
+      },
+      "hs": "85352120",
+      "gir": "GIR 6",
+      "reasonVi": "Aptomat <72,5 kV, ELCB/chống dòng rò → 8535.21.20.",
+      "source": "Biểu thuế 2026 dòng 8535.21.20"
+    },
+    {
+      "id": "r-cb-other-lv",
+      "priority": 12,
+      "when": {
+        "apparatusKind": "circuitBreaker",
+        "breakerVoltageClass": "below72_5kV",
+        "breakerKind": "otherBreaker"
+      },
+      "hs": "85352190",
+      "gir": "GIR 6",
+      "reasonVi": "Aptomat <72,5 kV, loại khác → 8535.21.90.",
+      "source": "Biểu thuế 2026 dòng 8535.21.90"
+    },
+    {
+      "id": "r-cb-elcb-hv",
+      "priority": 58,
+      "when": {
+        "apparatusKind": "circuitBreaker",
+        "breakerVoltageClass": "72_5kVOrMore",
+        "breaker72Elcb": "yes"
+      },
+      "hs": "85352910",
+      "gir": "GIR 6",
+      "reasonVi": "Aptomat ≥72,5 kV, ELCB → 8535.29.10.",
+      "source": "Biểu thuế 2026 dòng 8535.29.10"
+    },
+    {
+      "id": "r-cb-other-hv",
+      "priority": 12,
+      "when": {
+        "apparatusKind": "circuitBreaker",
+        "breakerVoltageClass": "72_5kVOrMore",
+        "breaker72Elcb": "no"
+      },
+      "hs": "85352990",
+      "gir": "GIR 6",
+      "reasonVi": "Aptomat ≥72,5 kV, loại khác → 8535.29.90.",
+      "source": "Biểu thuế 2026 dòng 8535.29.90"
+    },
+    {
+      "id": "r-sw-under36",
+      "priority": 56,
+      "when": {
+        "apparatusKind": "isolatorSwitch",
+        "switchKind": "disconnectUnder36kV"
+      },
+      "hs": "85353011",
+      "gir": "GIR 6",
+      "reasonVi": "Công tắc cách ly/đóng cắt, thiết bị ngắt dưới 36 kV → 8535.30.11.",
+      "source": "Biểu thuế 2026 dòng 8535.30.11"
+    },
+    {
+      "id": "r-sw-disc-other",
+      "priority": 14,
+      "when": {
+        "apparatusKind": "isolatorSwitch",
+        "switchKind": "otherDisconnect"
+      },
+      "hs": "85353019",
+      "gir": "GIR 6",
+      "reasonVi": "Công tắc cách ly/đóng cắt loại khác (không thuộc dưới 36 kV như trên) → 8535.30.19.",
+      "source": "Biểu thuế 2026 dòng 8535.30.19"
+    },
+    {
+      "id": "r-sw-66kv",
+      "priority": 56,
+      "when": {
+        "apparatusKind": "isolatorSwitch",
+        "switchKind": "for66kVOrMore"
+      },
+      "hs": "85353020",
+      "gir": "GIR 6",
+      "reasonVi": "Công tắc dùng cho điện áp từ 66 kV trở lên → 8535.30.20.",
+      "source": "Biểu thuế 2026 dòng 8535.30.20"
+    },
+    {
+      "id": "r-sw-other",
+      "priority": 10,
+      "when": {
+        "apparatusKind": "isolatorSwitch",
+        "switchKind": "otherSwitch"
+      },
+      "hs": "85353090",
+      "gir": "GIR 6",
+      "reasonVi": "Công tắc cách ly/đóng cắt loại khác → 8535.30.90.",
+      "source": "Biểu thuế 2026 dòng 8535.30.90"
+    },
+    {
+      "id": "r-surge",
+      "priority": 60,
+      "when": { "apparatusKind": "surgeProtection" },
+      "hs": "85354000",
+      "gir": "GIR 6",
+      "reasonVi": "Chống sét, khống chế điện áp, triệt xung → 8535.40.00.",
+      "source": "Biểu thuế 2026 dòng 8535.40.00"
+    },
+    {
+      "id": "r-other-tap",
+      "priority": 55,
+      "when": {
+        "apparatusKind": "other8535",
+        "other8535Kind": "transformerTapSwitch"
+      },
+      "hs": "85359010",
+      "gir": "GIR 6",
+      "reasonVi": "Đầu nối lắp ráp và bộ chuyển nấc cho MBA phân phối/nguồn → 8535.90.10.",
+      "source": "Biểu thuế 2026 dòng 8535.90.10"
+    },
+    {
+      "id": "r-other-motor",
+      "priority": 55,
+      "when": {
+        "apparatusKind": "other8535",
+        "other8535Kind": "motorChangeOver"
+      },
+      "hs": "85359020",
+      "gir": "GIR 6",
+      "reasonVi": "Công tắc đảo chiều khởi động động cơ điện → 8535.90.20.",
+      "source": "Biểu thuế 2026 dòng 8535.90.20"
+    },
+    {
+      "id": "r-other-nec",
+      "priority": 10,
+      "when": {
+        "apparatusKind": "other8535",
+        "other8535Kind": "otherNec"
+      },
+      "hs": "85359090",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị 85.35 loại khác → 8535.90.90.",
+      "source": "Biểu thuế 2026 dòng 8535.90.90"
+    }
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "heading": "8480",
+  "titleVi": "Hộp khuôn đúc, đế khuôn, mẫu khuôn và khuôn đúc (kim loại, thủy tinh, khoáng vật, cao su, plastic)",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Là hộp khuôn đúc kim loại, đế khuôn, mẫu khuôn (đồng hay khác), khuôn kim loại/carbide (phun-nén hay khác), khuôn thủy tinh, khuôn khoáng vật, hay khuôn cao su/plastic (phun-nén hay khác; có phải khuôn đế giày/dép không)?",
+  "sourceVi": "Biểu thuế 2026 nhóm 84.80: 8480.10 hộp khuôn đúc; 8480.20 đế khuôn; 8480.30 mẫu khuôn (.10 đồng, .90 khác); 8480.40 khuôn kim loại/carbide (.10 phun/nén, .90 khác); 8480.50 thủy tinh; 8480.60 khoáng vật; 8480.71/.79 khuôn cao su/plastic (phun/nén hay khác; .10 đế giày/dép, .90 khác).",
+  "inputs": [
+    {
+      "attribute": "mouldKind",
+      "type": "enum",
+      "domain": [
+        "foundryBox",
+        "mouldBase",
+        "pattern",
+        "metalMould",
+        "glassMould",
+        "mineralMould",
+        "rubberPlasticMould"
+      ],
+      "labelVi": "Loại khuôn / phụ kiện khuôn",
+      "questionVi": "Hộp khuôn đúc kim loại; đế khuôn; mẫu khuôn; khuôn kim loại/carbide; khuôn thủy tinh; khuôn khoáng vật; hay khuôn cao su hoặc plastic?",
+      "detect": {
+        "foundryBox": [
+          "hộp khuôn",
+          "foundry box",
+          "moulding box",
+          "hộp đúc cát",
+          "flask"
+        ],
+        "mouldBase": [
+          "đế khuôn",
+          "mould base",
+          "mold base",
+          "khuôn đế"
+        ],
+        "pattern": [
+          "mẫu khuôn",
+          "moulding pattern",
+          "pattern plate",
+          "model pattern"
+        ],
+        "metalMould": [
+          "khuôn kim loại",
+          "khuôn thép",
+          "metal mould",
+          "metal mold",
+          "carbide mould",
+          "khuôn carbide",
+          "die casting mould metal"
+        ],
+        "glassMould": [
+          "khuôn thủy tinh",
+          "glass mould",
+          "glass mold",
+          "bottle mould glass"
+        ],
+        "mineralMould": [
+          "khuôn khoáng",
+          "khuôn gốm",
+          "mineral mould",
+          "ceramic mould"
+        ],
+        "rubberPlasticMould": [
+          "khuôn nhựa",
+          "khuôn plastic",
+          "khuôn cao su",
+          "injection mould plastic",
+          "rubber mould",
+          "silicone mould"
+        ]
+      }
+    },
+    {
+      "attribute": "patternMaterial",
+      "type": "enum",
+      "domain": [
+        "copper",
+        "other"
+      ],
+      "labelVi": "Vật liệu mẫu khuôn",
+      "questionVi": "Mẫu khuôn làm bằng đồng hay vật liệu khác?",
+      "detect": {
+        "copper": [
+          "đồng",
+          "copper pattern",
+          "mẫu đồng"
+        ],
+        "other": [
+          "nhôm",
+          "gỗ",
+          "nhựa",
+          "pattern other",
+          "mẫu khuôn khác"
+        ]
+      }
+    },
+    {
+      "attribute": "metalMouldProcess",
+      "type": "enum",
+      "domain": [
+        "injectionOrCompression",
+        "other"
+      ],
+      "labelVi": "Công nghệ khuôn kim loại",
+      "questionVi": "Khuôn kim loại/carbide loại phun hoặc nén (ép), hay loại khác (đúc khuôn thỏi, dập…)?",
+      "detect": {
+        "injectionOrCompression": [
+          "phun",
+          "nén",
+          "injection",
+          "compression",
+          "die casting injection"
+        ],
+        "other": [
+          "đúc khuôn thỏi",
+          "forging die",
+          "khuôn dập",
+          "metal mould other"
+        ]
+      }
+    },
+    {
+      "attribute": "rubberPlasticProcess",
+      "type": "enum",
+      "domain": [
+        "injectionOrCompression",
+        "other"
+      ],
+      "labelVi": "Công nghệ khuôn cao su/plastic",
+      "questionVi": "Khuôn cao su hoặc plastic loại phun hoặc nén, hay loại khác?",
+      "detect": {
+        "injectionOrCompression": [
+          "phun nhựa",
+          "ép nén",
+          "injection mold",
+          "compression mould",
+          "blow mould injection"
+        ],
+        "other": [
+          "thổi",
+          "blow mould only",
+          "transfer mould",
+          "khuôn nhựa khác"
+        ]
+      }
+    },
+    {
+      "attribute": "shoeSoleMould",
+      "type": "enum",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "labelVi": "Khuôn đế giày/dép",
+      "questionVi": "Có phải khuôn chuyên làm đế giày hoặc dép không?",
+      "detect": {
+        "yes": [
+          "đế giày",
+          "đế dép",
+          "shoe sole",
+          "footwear sole mould",
+          "outsole mold"
+        ],
+        "no": [
+          "không phải đế giày",
+          "general plastic mould",
+          "khuôn linh kiện"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-foundry-box",
+      "priority": 60,
+      "when": { "mouldKind": "foundryBox" },
+      "hs": "84801000",
+      "gir": "GIR 6",
+      "reasonVi": "Hộp khuôn đúc kim loại (foundry) → 8480.10.00.",
+      "source": "Biểu thuế 2026 dòng 8480.10.00"
+    },
+    {
+      "id": "r-mould-base",
+      "priority": 60,
+      "when": { "mouldKind": "mouldBase" },
+      "hs": "84802000",
+      "gir": "GIR 6",
+      "reasonVi": "Đế khuôn (mould base) → 8480.20.00.",
+      "source": "Biểu thuế 2026 dòng 8480.20.00"
+    },
+    {
+      "id": "r-pattern-copper",
+      "priority": 55,
+      "when": { "mouldKind": "pattern", "patternMaterial": "copper" },
+      "hs": "84803010",
+      "gir": "GIR 6",
+      "reasonVi": "Mẫu khuôn bằng đồng → 8480.30.10.",
+      "source": "Biểu thuế 2026 dòng 8480.30.10"
+    },
+    {
+      "id": "r-pattern-other",
+      "priority": 15,
+      "when": { "mouldKind": "pattern", "patternMaterial": "other" },
+      "hs": "84803090",
+      "gir": "GIR 6",
+      "reasonVi": "Mẫu khuôn vật liệu khác (không đồng) → 8480.30.90.",
+      "source": "Biểu thuế 2026 dòng 8480.30.90"
+    },
+    {
+      "id": "r-metal-injection",
+      "priority": 55,
+      "when": { "mouldKind": "metalMould", "metalMouldProcess": "injectionOrCompression" },
+      "hs": "84804100",
+      "gir": "GIR 6",
+      "reasonVi": "Khuôn kim loại/carbide loại phun hoặc nén → 8480.41.00.",
+      "source": "Biểu thuế 2026 dòng 8480.41.00"
+    },
+    {
+      "id": "r-metal-other",
+      "priority": 15,
+      "when": { "mouldKind": "metalMould", "metalMouldProcess": "other" },
+      "hs": "84804900",
+      "gir": "GIR 6",
+      "reasonVi": "Khuôn kim loại/carbide loại khác → 8480.49.00.",
+      "source": "Biểu thuế 2026 dòng 8480.49.00"
+    },
+    {
+      "id": "r-glass",
+      "priority": 60,
+      "when": { "mouldKind": "glassMould" },
+      "hs": "84805000",
+      "gir": "GIR 6",
+      "reasonVi": "Khuôn đúc thủy tinh → 8480.50.00.",
+      "source": "Biểu thuế 2026 dòng 8480.50.00"
+    },
+    {
+      "id": "r-mineral",
+      "priority": 60,
+      "when": { "mouldKind": "mineralMould" },
+      "hs": "84806000",
+      "gir": "GIR 6",
+      "reasonVi": "Khuôn đúc khoáng vật → 8480.60.00.",
+      "source": "Biểu thuế 2026 dòng 8480.60.00"
+    },
+    {
+      "id": "r-rp-inject-shoe",
+      "priority": 58,
+      "when": {
+        "mouldKind": "rubberPlasticMould",
+        "rubberPlasticProcess": "injectionOrCompression",
+        "shoeSoleMould": "yes"
+      },
+      "hs": "84807110",
+      "gir": "GIR 6",
+      "reasonVi": "Khuôn cao su/plastic phun hoặc nén, làm đế giày/dép → 8480.71.10.",
+      "source": "Biểu thuế 2026 dòng 8480.71.10"
+    },
+    {
+      "id": "r-rp-inject-other",
+      "priority": 20,
+      "when": {
+        "mouldKind": "rubberPlasticMould",
+        "rubberPlasticProcess": "injectionOrCompression",
+        "shoeSoleMould": "no"
+      },
+      "hs": "84807190",
+      "gir": "GIR 6",
+      "reasonVi": "Khuôn cao su/plastic phun hoặc nén, không phải đế giày/dép → 8480.71.90.",
+      "source": "Biểu thuế 2026 dòng 8480.71.90"
+    },
+    {
+      "id": "r-rp-other-shoe",
+      "priority": 58,
+      "when": {
+        "mouldKind": "rubberPlasticMould",
+        "rubberPlasticProcess": "other",
+        "shoeSoleMould": "yes"
+      },
+      "hs": "84807910",
+      "gir": "GIR 6",
+      "reasonVi": "Khuôn cao su/plastic loại khác phun/nén, làm đế giày/dép → 8480.79.10.",
+      "source": "Biểu thuế 2026 dòng 8480.79.10"
+    },
+    {
+      "id": "r-rp-other-nec",
+      "priority": 10,
+      "when": {
+        "mouldKind": "rubberPlasticMould",
+        "rubberPlasticProcess": "other",
+        "shoeSoleMould": "no"
+      },
+      "hs": "84807990",
+      "gir": "GIR 6",
+      "reasonVi": "Khuôn cao su/plastic loại khác, không phải đế giày/dép → 8480.79.90.",
+      "source": "Biểu thuế 2026 dòng 8480.79.90"
+    }
+  ]
+}

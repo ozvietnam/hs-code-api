@@ -2,16 +2,6 @@
   "version": 1,
   "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → done. `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
-    "7208": {
-      "status": "dictionary",
-      "doneAt": "2026-09-16",
-      "by": "cursor-agent",
-      "commit": "6b5513d",
-      "leafCount": 24,
-      "entries": 2,
-      "table": false,
-      "noteVi": "Từ điển tên đã có (cursor-agent 2026-09-16); còn thiếu bảng quyết định theo thuộc tính."
-    },
     "7209": {
       "status": "done",
       "doneAt": "2026-09-17",
@@ -39,16 +29,20 @@
     "8420": {
       "status": "done",
       "doneAt": "2026-09-17",
-      "by": "cursor-agent",
-      "commit": "21341f3",
-      "leafCount": 7
+      "by": "cursor-agent-b2",
+      "commit": "pending",
+      "leafCount": 7,
+      "table": true,
+      "rules": 7
     },
     "8422": {
       "status": "done",
       "doneAt": "2026-09-17",
-      "by": "cursor-agent",
-      "commit": "21341f3",
-      "leafCount": 7
+      "by": "cursor-agent-b2",
+      "commit": "pending",
+      "leafCount": 7,
+      "table": true,
+      "rules": 7
     },
     "8427": {
       "status": "done",
@@ -66,12 +60,42 @@
       "table": true,
       "rules": 18
     },
+    "8452": {
+      "status": "done",
+      "doneAt": "2026-09-17",
+      "by": "cursor-agent-b3",
+      "commit": "pending",
+      "leafCount": 10
+    },
+    "8466": {
+      "status": "done",
+      "doneAt": "2026-09-17",
+      "by": "cursor-agent-b3",
+      "commit": "pending",
+      "leafCount": 11
+    },
+    "8467": {
+      "status": "done",
+      "doneAt": "2026-09-17",
+      "by": "cursor-agent-b3",
+      "commit": "pending",
+      "leafCount": 12
+    },
     "8473": {
       "status": "done",
       "doneAt": "2026-09-17",
-      "by": "cursor-agent",
-      "commit": "21341f3",
-      "leafCount": 7
+      "by": "cursor-agent-b2",
+      "commit": "pending",
+      "leafCount": 7,
+      "table": true,
+      "rules": 7
+    },
+    "8480": {
+      "status": "done",
+      "doneAt": "2026-09-17",
+      "by": "cursor-agent-b3",
+      "commit": "pending",
+      "leafCount": 12
     },
     "8481": {
       "status": "dictionary",
@@ -86,9 +110,11 @@
     "8482": {
       "status": "done",
       "doneAt": "2026-09-17",
-      "by": "cursor-agent",
-      "commit": "21341f3",
-      "leafCount": 8
+      "by": "cursor-agent-b2",
+      "commit": "pending",
+      "leafCount": 8,
+      "table": true,
+      "rules": 8
     },
     "8505": {
       "status": "done",
@@ -111,6 +137,13 @@
       "commit": "pending",
       "leafCount": 5
     },
+    "8514": {
+      "status": "done",
+      "doneAt": "2026-09-17",
+      "by": "cursor-agent-b3",
+      "commit": "pending",
+      "leafCount": 13
+    },
     "8521": {
       "status": "done",
       "doneAt": "2026-09-17",
@@ -132,6 +165,13 @@
       "commit": "pending",
       "leafCount": 4
     },
+    "8535": {
+      "status": "done",
+      "doneAt": "2026-09-17",
+      "by": "cursor-agent-b3",
+      "commit": "pending",
+      "leafCount": 14
+    },
     "8537": {
       "status": "done",
       "doneAt": "2026-09-17",
@@ -140,6 +180,20 @@
       "leafCount": 15,
       "table": true,
       "rules": 16
+    },
+    "8538": {
+      "status": "done",
+      "doneAt": "2026-09-17",
+      "by": "cursor-agent-b3",
+      "commit": "pending",
+      "leafCount": 11
+    },
+    "8541": {
+      "status": "done",
+      "doneAt": "2026-09-17",
+      "by": "cursor-agent-b3",
+      "commit": "pending",
+      "leafCount": 12
     },
     "8542": {
       "status": "done",

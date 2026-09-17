@@ -1,0 +1,340 @@
+{
+  "heading": "8467",
+  "titleVi": "Dụng cụ cầm tay (khí nén, thủy lực, mô-tơ điện hoặc không điện tích hợp) và bộ phận",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Là dụng cụ nguyên chiếc hay bộ phận? Nguồn: khí nén (quay hay khác), mô-tơ điện tích hợp (khoan/cưa/khác), cưa xích mô-tơ không điện, thủy lực/khác? Bộ phận: của cưa xích (cơ điện/khác), khí nén, hay dụng cụ điện 8467.21–29 / khác?",
+  "sourceVi": "Biểu thuế 2026 nhóm 84.67: 8467.11/.19 khí nén; 8467.21/.22/.29 điện; 8467.81/.89 không điện; 8467.91 bộ phận cưa xích; 8467.92 khí nén; 8467.99 bộ phận khác.",
+  "inputs": [
+    {
+      "attribute": "goodsKind",
+      "type": "enum",
+      "domain": [
+        "completeTool",
+        "parts"
+      ],
+      "labelVi": "Dụng cụ / bộ phận",
+      "questionVi": "Là dụng cụ cầm tay nguyên chiếc hay bộ phận/phụ tùng của dụng cụ nhóm 84.67?",
+      "detect": {
+        "completeTool": [
+          "máy khoan",
+          "máy cưa",
+          "impact wrench",
+          "grinder",
+          "dụng cụ cầm tay",
+          "hand tool",
+          "power tool",
+          "cưa xích",
+          "chain saw"
+        ],
+        "parts": [
+          "bộ phận",
+          "phụ tùng",
+          "spare part",
+          "replacement part",
+          "parts of tools"
+        ]
+      }
+    },
+    {
+      "attribute": "powerKind",
+      "type": "enum",
+      "domain": [
+        "pneumatic",
+        "electricMotor",
+        "hydraulicOrOtherNonElectric"
+      ],
+      "labelVi": "Nguồn động lực",
+      "questionVi": "Khí nén; mô-tơ điện tích hợp trong dụng cụ; hay thủy lực / mô-tơ không điện khác (kể cả cưa xích)?",
+      "detect": {
+        "pneumatic": [
+          "khí nén",
+          "pneumatic",
+          "air tool",
+          " súng bắn đinh khí"
+        ],
+        "electricMotor": [
+          "điện",
+          "electric",
+          "cordless",
+          "pin lithium",
+          "mô-tơ điện",
+          "18v drill"
+        ],
+        "hydraulicOrOtherNonElectric": [
+          "thủy lực",
+          "hydraulic",
+          "cưa xích xăng",
+          "chain saw petrol",
+          "two-stroke",
+          "non-electric motor"
+        ]
+      }
+    },
+    {
+      "attribute": "pneumaticKind",
+      "type": "enum",
+      "domain": [
+        "rotary",
+        "other"
+      ],
+      "labelVi": "Dụng cụ khí nén",
+      "questionVi": "Dạng quay (kể cả quay–va đập) hay loại khí nén khác?",
+      "detect": {
+        "rotary": [
+          "quay",
+          "rotary",
+          "grinder pneumatic",
+          "impact rotary",
+          "combined rotary-percussion"
+        ],
+        "other": [
+          "búa khí",
+          "rivet gun",
+          "stapler pneumatic",
+          "khí nén khác"
+        ]
+      }
+    },
+    {
+      "attribute": "electricToolKind",
+      "type": "enum",
+      "domain": [
+        "drill",
+        "saw",
+        "other"
+      ],
+      "labelVi": "Loại dụng cụ điện",
+      "questionVi": "Khoan các loại; cưa; hay dụng cụ điện khác (mài, vặn vít, phay cầm tay…)?",
+      "detect": {
+        "drill": [
+          "khoan",
+          "drill",
+          "driver drill",
+          "hammer drill electric"
+        ],
+        "saw": [
+          "cưa",
+          "saw",
+          "jigsaw",
+          "circular saw",
+          "reciprocating saw"
+        ],
+        "other": [
+          "máy mài",
+          "grinder electric",
+          "sander",
+          "impact driver",
+          "multitool"
+        ]
+      }
+    },
+    {
+      "attribute": "nonElectricKind",
+      "type": "enum",
+      "domain": [
+        "chainSaw",
+        "other"
+      ],
+      "labelVi": "Dụng cụ không điện",
+      "questionVi": "Cưa xích hay dụng cụ thủy lực / mô-tơ không điện khác?",
+      "detect": {
+        "chainSaw": [
+          "cưa xích",
+          "chain saw",
+          "chainsaw"
+        ],
+        "other": [
+          "thủy lực cầm tay",
+          "hydraulic cutter",
+          "petrol trimmer",
+          "non-electric other"
+        ]
+      }
+    },
+    {
+      "attribute": "partLine",
+      "type": "enum",
+      "domain": ["chainSaw", "pneumatic", "electric8467", "otherParts"],
+      "labelVi": "Dòng bộ phận",
+      "questionVi": "Bộ phận cưa xích; dụng cụ khí nén; dụng cụ điện 8467.21–29; hay bộ phận khác?",
+      "detect": {
+        "chainSaw": ["bộ phận cưa xích", "chainsaw spare", "chain saw part"],
+        "pneumatic": ["bộ phận khí nén", "pneumatic tool parts"],
+        "electric8467": ["phụ tùng máy khoan", "drill part 8467", "saw part electric tool"],
+        "otherParts": ["bộ phận dụng cụ cầm tay khác", "hydraulic tool part"]
+      }
+    },
+    {
+      "attribute": "chainSawPartKind",
+      "type": "enum",
+      "domain": [
+        "electromechanical",
+        "other"
+      ],
+      "labelVi": "Bộ phận cưa xích",
+      "questionVi": "Bộ phận cưa xích loại cơ điện (mô-tơ, stator…) hay loại khác (xích, thanh, vỏ…)?",
+      "detect": {
+        "electromechanical": [
+          "stator",
+          "rotor",
+          "mô-tơ cưa xích",
+          "electromechanical",
+          "cơ điện"
+        ],
+        "other": [
+          "xích cưa",
+          "guide bar",
+          "vỏ máy",
+          "chain saw part other"
+        ]
+      }
+    },
+    {
+      "attribute": "otherPartTarget",
+      "type": "enum",
+      "domain": [
+        "electricDrillSawOther",
+        "otherNec"
+      ],
+      "labelVi": "Bộ phận dụng cụ khác",
+      "questionVi": "Bộ phận của khoan/cưa/dụng cụ điện 8467.21–29; hay bộ phận khác (thủy lực, cưa xích đã xét riêng…)?",
+      "detect": {
+        "electricDrillSawOther": [
+          "8467.21",
+          "8467.22",
+          "8467.29",
+          "drill part",
+          "saw part",
+          "phụ tùng máy khoan",
+          "phụ tùng cưa điện"
+        ],
+        "otherNec": [
+          "hydraulic tool part",
+          "bộ phận khác",
+          "parts other"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-pneu-rotary",
+      "priority": 55,
+      "when": { "goodsKind": "completeTool", "powerKind": "pneumatic", "pneumaticKind": "rotary" },
+      "hs": "84671100",
+      "gir": "GIR 6",
+      "reasonVi": "Dụng cụ khí nén dạng quay (kể cả quay–va đập) → 8467.11.00.",
+      "source": "Biểu thuế 2026 dòng 8467.11.00"
+    },
+    {
+      "id": "r-pneu-other",
+      "priority": 15,
+      "when": { "goodsKind": "completeTool", "powerKind": "pneumatic", "pneumaticKind": "other" },
+      "hs": "84671900",
+      "gir": "GIR 6",
+      "reasonVi": "Dụng cụ khí nén loại khác → 8467.19.00.",
+      "source": "Biểu thuế 2026 dòng 8467.19.00"
+    },
+    {
+      "id": "r-elec-drill",
+      "priority": 55,
+      "when": { "goodsKind": "completeTool", "powerKind": "electricMotor", "electricToolKind": "drill" },
+      "hs": "84672100",
+      "gir": "GIR 6",
+      "reasonVi": "Dụng cụ điện — khoan các loại → 8467.21.00.",
+      "source": "Biểu thuế 2026 dòng 8467.21.00"
+    },
+    {
+      "id": "r-elec-saw",
+      "priority": 55,
+      "when": { "goodsKind": "completeTool", "powerKind": "electricMotor", "electricToolKind": "saw" },
+      "hs": "84672200",
+      "gir": "GIR 6",
+      "reasonVi": "Dụng cụ điện — cưa → 8467.22.00.",
+      "source": "Biểu thuế 2026 dòng 8467.22.00"
+    },
+    {
+      "id": "r-elec-other",
+      "priority": 15,
+      "when": { "goodsKind": "completeTool", "powerKind": "electricMotor", "electricToolKind": "other" },
+      "hs": "84672900",
+      "gir": "GIR 6",
+      "reasonVi": "Dụng cụ điện loại khác (không khoan/cưa) → 8467.29.00.",
+      "source": "Biểu thuế 2026 dòng 8467.29.00"
+    },
+    {
+      "id": "r-chain-saw",
+      "priority": 55,
+      "when": {
+        "goodsKind": "completeTool",
+        "powerKind": "hydraulicOrOtherNonElectric",
+        "nonElectricKind": "chainSaw"
+      },
+      "hs": "84678100",
+      "gir": "GIR 6",
+      "reasonVi": "Cưa xích mô-tơ không điện tích hợp → 8467.81.00.",
+      "source": "Biểu thuế 2026 dòng 8467.81.00"
+    },
+    {
+      "id": "r-non-elec-other",
+      "priority": 15,
+      "when": {
+        "goodsKind": "completeTool",
+        "powerKind": "hydraulicOrOtherNonElectric",
+        "nonElectricKind": "other"
+      },
+      "hs": "84678900",
+      "gir": "GIR 6",
+      "reasonVi": "Dụng cụ thủy lực hoặc mô-tơ không điện khác (trừ cưa xích) → 8467.89.00.",
+      "source": "Biểu thuế 2026 dòng 8467.89.00"
+    },
+    {
+      "id": "r-part-chain-elec",
+      "priority": 55,
+      "when": { "goodsKind": "parts", "partLine": "chainSaw", "chainSawPartKind": "electromechanical" },
+      "hs": "84679110",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận cưa xích loại cơ điện → 8467.91.10.",
+      "source": "Biểu thuế 2026 dòng 8467.91.10"
+    },
+    {
+      "id": "r-part-chain-other",
+      "priority": 54,
+      "when": { "goodsKind": "parts", "partLine": "chainSaw", "chainSawPartKind": "other" },
+      "hs": "84679190",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận cưa xích loại khác → 8467.91.90.",
+      "source": "Biểu thuế 2026 dòng 8467.91.90"
+    },
+    {
+      "id": "r-part-pneumatic",
+      "priority": 60,
+      "when": { "goodsKind": "parts", "partLine": "pneumatic" },
+      "hs": "84679200",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của dụng cụ khí nén → 8467.92.00.",
+      "source": "Biểu thuế 2026 dòng 8467.92.00"
+    },
+    {
+      "id": "r-part-elec-tools",
+      "priority": 60,
+      "when": { "goodsKind": "parts", "partLine": "electric8467" },
+      "hs": "84679910",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của dụng cụ 8467.21/22/29 (khoan, cưa, điện khác) → 8467.99.10.",
+      "source": "Biểu thuế 2026 dòng 8467.99.10"
+    },
+    {
+      "id": "r-part-other-nec",
+      "priority": 60,
+      "when": { "goodsKind": "parts", "partLine": "otherParts" },
+      "hs": "84679990",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác của dụng cụ 84.67 → 8467.99.90.",
+      "source": "Biểu thuế 2026 dòng 8467.99.90"
+    }
+  ]
+}

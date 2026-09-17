@@ -1,0 +1,263 @@
+{
+  "heading": "8466",
+  "titleVi": "Phụ tùng, phụ kiện máy công cụ 8456–8465 (giá dao, giá phôi, đầu chia độ…)",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Giá dao/kẹp dao tự mở, giá phôi, đầu chia độ/phụ kiện chuyên dùng, phụ tùng cho máy 84.64/84.65/84.62–63, hay phụ tùng 8466 khác — có thuộc danh sách máy PCB/bán dẫn, máy 8456.50, hay máy liệt kê cho giá dao/giá phôi không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 84.66: 8466.10 giá dao (.10 máy liệt kê, .90 khác); 8466.20 giá phôi (.10/.90); 8466.30 đầu chia độ; 8466.91 cho 84.64; 8466.92 cho 84.65; 8466.93 khác (.30 PCB/8517/8471, .40 8456.50, .90 khác); 8466.94 cho 84.62/84.63.",
+  "inputs": [
+    {
+      "attribute": "accessoryKind",
+      "type": "enum",
+      "domain": [
+        "toolHolder",
+        "workHolder",
+        "dividingHead",
+        "for8464",
+        "for8465",
+        "nec8466",
+        "for8462or8463"
+      ],
+      "labelVi": "Loại phụ kiện / phụ tùng",
+      "questionVi": "Giá dao/kẹp dao; giá phôi; đầu chia độ hoặc phụ kiện chuyên dùng; dùng cho máy 84.64; 84.65; 84.62/84.63; hay phụ tùng 8466 còn lại?",
+      "detect": {
+        "toolHolder": [
+          "giá dao",
+          "tool holder",
+          "collet chuck",
+          "kẹp dao",
+          "self-opening diehead",
+          "đầu kẹp mũi khoan"
+        ],
+        "workHolder": [
+          "giá phôi",
+          "work holder",
+          "fixture",
+          "bàn kẹp phôi",
+          "vise for machine"
+        ],
+        "dividingHead": [
+          "đầu chia độ",
+          "dividing head",
+          "index head",
+          "rotary table dividing"
+        ],
+        "for8464": [
+          "84.64",
+          "8464",
+          "máy cưa công cụ",
+          "sawing machine part"
+        ],
+        "for8465": [
+          "84.65",
+          "8465",
+          "máy mài công cụ",
+          "tool grinding machine"
+        ],
+        "for8462or8463": [
+          "84.62",
+          "84.63",
+          "8462",
+          "8463",
+          "máy dập",
+          "máy uốn",
+          "press brake part"
+        ],
+        "nec8466": [
+          "phụ tùng máy công cụ",
+          "8466",
+          "machine tool accessory other",
+          "spindle unit"
+        ]
+      }
+    },
+    {
+      "attribute": "listedMachineToolSet",
+      "type": "enum",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "labelVi": "Máy trong danh sách biểu thuế",
+      "questionVi": "Phụ kiện có dùng chủ yếu cho máy thuộc các phân nhóm 8456.40.10, 8456.90.20, 8460.31.10, 8465.91.10, 8465.92.10, 8465.95.10 hoặc 8465.99.50 không?",
+      "detect": {
+        "yes": [
+          "8456.40.10",
+          "8456.90.20",
+          "8460.31.10",
+          "8465.91.10",
+          "8465.92.10",
+          "8465.95.10",
+          "8465.99.50",
+          "edm machine",
+          "wire cut accessory listed"
+        ],
+        "no": [
+          "máy khác",
+          "general cnc",
+          "không thuộc danh sách"
+        ]
+      }
+    },
+    {
+      "attribute": "nec8466Target",
+      "type": "enum",
+      "domain": [
+        "pcbSemi8471_8517",
+        "for845650",
+        "otherNec"
+      ],
+      "labelVi": "Phụ tùng 8466.93",
+      "questionVi": "Dùng sản xuất mạch in/8517/8471 hoặc máy liệt kê PCB; dùng cho máy 8456.50; hay phụ tùng 8466 khác?",
+      "detect": {
+        "pcbSemi8471_8517": [
+          "mạch in",
+          "pcb",
+          "8471",
+          "8517",
+          "bán dẫn",
+          "semiconductor fab",
+          "8456.11",
+          "8457.10",
+          "8458.91",
+          "wire bonder"
+        ],
+        "for845650": [
+          "8456.50",
+          "8456.50.00",
+          "laser machining",
+          "máy laser công cụ"
+        ],
+        "otherNec": [
+          "phụ tùng khác",
+          "8466.93.90",
+          "general machine tool part"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-tool-listed",
+      "priority": 58,
+      "when": {
+        "accessoryKind": "toolHolder",
+        "listedMachineToolSet": "yes"
+      },
+      "hs": "84661010",
+      "gir": "GIR 6",
+      "reasonVi": "Giá dao/kẹp dao dùng cho máy thuộc danh sách biểu thuế → 8466.10.10.",
+      "source": "Biểu thuế 2026 dòng 8466.10.10"
+    },
+    {
+      "id": "r-tool-other",
+      "priority": 12,
+      "when": {
+        "accessoryKind": "toolHolder",
+        "listedMachineToolSet": "no"
+      },
+      "hs": "84661090",
+      "gir": "GIR 6",
+      "reasonVi": "Giá dao/kẹp dao loại khác → 8466.10.90.",
+      "source": "Biểu thuế 2026 dòng 8466.10.90"
+    },
+    {
+      "id": "r-work-listed",
+      "priority": 58,
+      "when": {
+        "accessoryKind": "workHolder",
+        "listedMachineToolSet": "yes"
+      },
+      "hs": "84662010",
+      "gir": "GIR 6",
+      "reasonVi": "Giá phôi dùng cho máy thuộc danh sách biểu thuế → 8466.20.10.",
+      "source": "Biểu thuế 2026 dòng 8466.20.10"
+    },
+    {
+      "id": "r-work-other",
+      "priority": 12,
+      "when": {
+        "accessoryKind": "workHolder",
+        "listedMachineToolSet": "no"
+      },
+      "hs": "84662090",
+      "gir": "GIR 6",
+      "reasonVi": "Giá phôi loại khác → 8466.20.90.",
+      "source": "Biểu thuế 2026 dòng 8466.20.90"
+    },
+    {
+      "id": "r-dividing",
+      "priority": 60,
+      "when": { "accessoryKind": "dividingHead" },
+      "hs": "84663000",
+      "gir": "GIR 6",
+      "reasonVi": "Đầu chia độ và phụ kiện chuyên dùng khác → 8466.30.00.",
+      "source": "Biểu thuế 2026 dòng 8466.30.00"
+    },
+    {
+      "id": "r-for-8464",
+      "priority": 55,
+      "when": { "accessoryKind": "for8464" },
+      "hs": "84669100",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ tùng dùng cho máy nhóm 84.64 → 8466.91.00.",
+      "source": "Biểu thuế 2026 dòng 8466.91.00"
+    },
+    {
+      "id": "r-for-8465",
+      "priority": 55,
+      "when": { "accessoryKind": "for8465" },
+      "hs": "84669200",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ tùng dùng cho máy nhóm 84.65 → 8466.92.00.",
+      "source": "Biểu thuế 2026 dòng 8466.92.00"
+    },
+    {
+      "id": "r-nec-pcb",
+      "priority": 54,
+      "when": {
+        "accessoryKind": "nec8466",
+        "nec8466Target": "pcbSemi8471_8517"
+      },
+      "hs": "84669330",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ tùng 8466 dùng cho máy PCB/bán dẫn/8471/8517 theo danh mục biểu thuế → 8466.93.30.",
+      "source": "Biểu thuế 2026 dòng 8466.93.30"
+    },
+    {
+      "id": "r-nec-845650",
+      "priority": 54,
+      "when": {
+        "accessoryKind": "nec8466",
+        "nec8466Target": "for845650"
+      },
+      "hs": "84669340",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ tùng dùng cho máy phân nhóm 8456.50.00 → 8466.93.40.",
+      "source": "Biểu thuế 2026 dòng 8466.93.40"
+    },
+    {
+      "id": "r-nec-other",
+      "priority": 10,
+      "when": {
+        "accessoryKind": "nec8466",
+        "nec8466Target": "otherNec"
+      },
+      "hs": "84669390",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ tùng 8466 loại khác → 8466.93.90.",
+      "source": "Biểu thuế 2026 dòng 8466.93.90"
+    },
+    {
+      "id": "r-for-8462-8463",
+      "priority": 55,
+      "when": { "accessoryKind": "for8462or8463" },
+      "hs": "84669400",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ tùng dùng cho máy nhóm 84.62 hoặc 84.63 → 8466.94.00.",
+      "source": "Biểu thuế 2026 dòng 8466.94.00"
+    }
+  ]
+}

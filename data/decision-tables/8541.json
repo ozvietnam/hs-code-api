@@ -1,0 +1,256 @@
+{
+  "heading": "8541",
+  "titleVi": "Thiết bị bán dẫn (đi-ốt, transistor, tế bào quang điện, LED…) và bộ phận",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Là đi-ốt thường, transistor (tiêu tán <1 W hay ≥1 W), thyristor/diac/triac, thiết bị cảm quang (LED, tế bào quang điện lẻ/mô-đun, transducer bán dẫn, cảm quang khác), tinh thể áp điện lắp ráp, hay bộ phận?",
+  "sourceVi": "Biểu thuế 2026 nhóm 85.41: 8541.10 đi-ốt (trừ cảm quang/LED); 8541.21/.29 transistor; 8541.30 thyristor; 8541.41–8541.59 thiết bị cảm quang; 8541.60 tinh thể áp điện; 8541.90 bộ phận.",
+  "inputs": [
+    {
+      "attribute": "deviceKind",
+      "type": "enum",
+      "domain": [
+        "diode",
+        "transistor",
+        "thyristor",
+        "photosensitive",
+        "piezoCrystal",
+        "parts"
+      ],
+      "labelVi": "Loại thiết bị",
+      "questionVi": "Đi-ốt thường; transistor; thyristor/diac/triac; thiết bị bán dẫn cảm quang; tinh thể áp điện đã lắp ráp; hay bộ phận của các thiết bị này?",
+      "detect": {
+        "diode": [
+          "đi-ốt",
+          "diode",
+          "rectifier diode",
+          "zener",
+          "schottky",
+          "pin diode"
+        ],
+        "transistor": [
+          "transistor",
+          "bjt",
+          "mosfet",
+          "igbt",
+          "fet",
+          "bipolar"
+        ],
+        "thyristor": [
+          "thyristor",
+          "triac",
+          "diac",
+          "scr"
+        ],
+        "photosensitive": [
+          "led",
+          "photodiode",
+          "photovoltaic",
+          "solar cell",
+          "cảm quang",
+          "photosensitive",
+          "optocoupler",
+          "phototransistor"
+        ],
+        "piezoCrystal": [
+          "tinh thể áp điện",
+          "piezo",
+          "quartz crystal mounted",
+          "thạch anh lắp ráp"
+        ],
+        "parts": [
+          "bộ phận bán dẫn",
+          "lead frame",
+          "parts of diode",
+          "parts of transistor",
+          "vỏ transistor"
+        ]
+      }
+    },
+    {
+      "attribute": "transistorDissipationW",
+      "type": "number",
+      "unit": "W",
+      "fromSpec": "power",
+      "labelVi": "Công suất tiêu tán transistor (W)",
+      "questionVi": "Tỷ lệ tiêu tán năng lượng của transistor bao nhiêu W? (ngưỡng 1 W: dưới 1 W → 8541.21, từ 1 W trở lên → 8541.29)"
+    },
+    {
+      "attribute": "photosensitiveKind",
+      "type": "enum",
+      "domain": [
+        "led",
+        "pvCellBare",
+        "pvModuleOrPanel",
+        "semiconductorTransducer",
+        "otherPhoto",
+        "generalNec"
+      ],
+      "labelVi": "Loại thiết bị cảm quang",
+      "questionVi": "LED; tế bào quang điện chưa lắp mô-đun; tế bào đã lắp mô-đun/bảng; transducer bán dẫn; hay thiết bị cảm quang khác?",
+      "detect": {
+        "led": [
+          "led",
+          "light emitting diode",
+          "đi-ốt phát quang",
+          "oled chip",
+          "smd led"
+        ],
+        "pvCellBare": [
+          "tế bào quang điện",
+          "solar cell",
+          "photovoltaic cell",
+          "chưa lắp mô-đun",
+          "bare cell",
+          "wafer solar"
+        ],
+        "pvModuleOrPanel": [
+          "mô-đun quang điện",
+          "solar panel",
+          "pv module",
+          "đã lắp thành bảng",
+          "pv panel assembled"
+        ],
+        "semiconductorTransducer": [
+          "transducer",
+          "cảm biến bán dẫn",
+          "semiconductor transducer",
+          "mems sensor chip"
+        ],
+        "otherPhoto": [
+          "photodiode",
+          "phototransistor",
+          "optocoupler",
+          "photo sensor other",
+          "cảm quang khác"
+        ],
+        "generalNec": [
+          "photosensitive nec",
+          "semiconductor photosensitive other",
+          "cảm quang bán dẫn loại khác"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-diode",
+      "priority": 55,
+      "when": { "deviceKind": "diode" },
+      "hs": "85411000",
+      "gir": "GIR 6",
+      "reasonVi": "Đi-ốt, trừ đi-ốt cảm quang hoặc LED → 8541.10.00.",
+      "source": "Biểu thuế 2026 dòng 8541.10.00"
+    },
+    {
+      "id": "r-transistor-lt1w",
+      "priority": 52,
+      "when": { "deviceKind": "transistor", "transistorDissipationW": { "lt": 1 } },
+      "hs": "85412100",
+      "gir": "GIR 6",
+      "reasonVi": "Transistor (không cảm quang), tiêu tán dưới 1 W → 8541.21.00.",
+      "source": "Biểu thuế 2026 dòng 8541.21.00"
+    },
+    {
+      "id": "r-transistor-gte1w",
+      "priority": 52,
+      "when": { "deviceKind": "transistor", "transistorDissipationW": { "gte": 1 } },
+      "hs": "85412900",
+      "gir": "GIR 6",
+      "reasonVi": "Transistor (không cảm quang), tiêu tán từ 1 W trở lên → 8541.29.00.",
+      "source": "Biểu thuế 2026 dòng 8541.29.00"
+    },
+    {
+      "id": "r-transistor-fallback",
+      "priority": 18,
+      "when": { "deviceKind": "transistor" },
+      "hs": "85412900",
+      "gir": "GIR 6",
+      "reasonVi": "Transistor, chưa xác định công suất tiêu tán — mặc định nhóm từ 1 W trở lên → 8541.29.00.",
+      "source": "Biểu thuế 2026 dòng 8541.29.00"
+    },
+    {
+      "id": "r-thyristor",
+      "priority": 55,
+      "when": { "deviceKind": "thyristor" },
+      "hs": "85413000",
+      "gir": "GIR 6",
+      "reasonVi": "Thyristor, diac, triac (trừ cảm quang) → 8541.30.00.",
+      "source": "Biểu thuế 2026 dòng 8541.30.00"
+    },
+    {
+      "id": "r-led",
+      "priority": 58,
+      "when": { "deviceKind": "photosensitive", "photosensitiveKind": "led" },
+      "hs": "85414100",
+      "gir": "GIR 6",
+      "reasonVi": "Đi-ốt phát quang (LED) → 8541.41.00.",
+      "source": "Biểu thuế 2026 dòng 8541.41.00"
+    },
+    {
+      "id": "r-pv-bare",
+      "priority": 58,
+      "when": { "deviceKind": "photosensitive", "photosensitiveKind": "pvCellBare" },
+      "hs": "85414200",
+      "gir": "GIR 6",
+      "reasonVi": "Tế bào quang điện chưa lắp mô-đun/bảng → 8541.42.00.",
+      "source": "Biểu thuế 2026 dòng 8541.42.00"
+    },
+    {
+      "id": "r-pv-module",
+      "priority": 58,
+      "when": { "deviceKind": "photosensitive", "photosensitiveKind": "pvModuleOrPanel" },
+      "hs": "85414300",
+      "gir": "GIR 6",
+      "reasonVi": "Tế bào quang điện đã lắp mô-đun hoặc bảng → 8541.43.00.",
+      "source": "Biểu thuế 2026 dòng 8541.43.00"
+    },
+    {
+      "id": "r-photo-transducer",
+      "priority": 56,
+      "when": { "deviceKind": "photosensitive", "photosensitiveKind": "semiconductorTransducer" },
+      "hs": "85415100",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị chuyển đổi/cảm biến dựa trên bán dẫn (cảm quang) → 8541.51.00.",
+      "source": "Biểu thuế 2026 dòng 8541.51.00"
+    },
+    {
+      "id": "r-photo-other",
+      "priority": 15,
+      "when": { "deviceKind": "photosensitive", "photosensitiveKind": "otherPhoto" },
+      "hs": "85414900",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị cảm quang khác (không LED, không PV như trên) → 8541.49.00.",
+      "source": "Biểu thuế 2026 dòng 8541.49.00"
+    },
+    {
+      "id": "r-photo-nec",
+      "priority": 12,
+      "when": { "deviceKind": "photosensitive", "photosensitiveKind": "generalNec" },
+      "hs": "85415900",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị cảm quang bán dẫn loại khác trong nhóm 85.41 → 8541.59.00.",
+      "source": "Biểu thuế 2026 dòng 8541.59.00"
+    },
+    {
+      "id": "r-piezo",
+      "priority": 55,
+      "when": { "deviceKind": "piezoCrystal" },
+      "hs": "85416000",
+      "gir": "GIR 6",
+      "reasonVi": "Tinh thể áp điện đã lắp ráp → 8541.60.00.",
+      "source": "Biểu thuế 2026 dòng 8541.60.00"
+    },
+    {
+      "id": "r-parts",
+      "priority": 20,
+      "when": { "deviceKind": "parts" },
+      "hs": "85419000",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của thiết bị bán dẫn nhóm 85.41 → 8541.90.00.",
+      "source": "Biểu thuế 2026 dòng 8541.90.00"
+    }
+  ]
+}
