@@ -78,6 +78,11 @@ function codeFingerprint() {
     const p = join(ROOT, 'data', f);
     if (existsSync(p)) h.update(f).update(readFileSync(p));
   }
+  // Bảng quyết định đổi kết quả tìm kiếm (lá được chốt lên đầu) → tính vào vân tay.
+  const tablesDir = join(ROOT, 'data', 'decision-tables');
+  if (existsSync(tablesDir)) {
+    for (const f of readdirSync(tablesDir).filter((x) => x.endsWith('.json')).sort()) h.update(f).update(readFileSync(join(tablesDir, f)));
+  }
   h.update('gold').update(readFileSync(GOLD));
   return h.digest('hex');
 }

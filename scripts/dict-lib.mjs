@@ -1,5 +1,5 @@
 /**
- * Hàm dùng chung cho bộ công cụ vòng lặp từ điển (dict:queue / dict:coverage /
+ * Hàm dùng chung cho bộ công cụ vòng lặp bảng quyết định (dict:queue / dict:table /
  * dict:check / bench:delta). Chỉ đọc, không ghi — việc ghi nằm ở từng script.
  *
  * Quy ước một "nhóm" là mã 4 số (8481). Lá = mọi mã 8 số trong data/tax.json
@@ -15,7 +15,6 @@ export const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 export const PROGRESS_PATH = join(ROOT, 'data', 'dictionary-progress.json');
 export const QUEUE_PATH = join(ROOT, 'data', 'dictionary-queue.json');
-export const COVERAGE_DIR = join(ROOT, 'data', 'heading-coverage');
 export const THESAURUS_PATH = join(ROOT, 'data', 'trade-synonyms.json');
 
 export function loadTax() {
@@ -57,43 +56,6 @@ export function headingTitle(heading, tax) {
   const b = breadcrumbOf(leaf);
   const lvl = (b?.levels || []).find((l) => l.startsWith(`Nhóm ${heading}:`));
   return lvl ? lvl.replace(`Nhóm ${heading}: `, '') : '';
-}
-
-/**
- * Tính độ phủ của một nhóm: mỗi lá ánh xạ tới các mục từ điển có lá đó trong
- * candidates[]. Đây là toàn bộ nội dung "biên bản nghiệm thu" — mọi thứ khác
- * (tên dòng, tiếng Anh) đã có trong tax.json, không chép lại.
- */
-export function coverageOf(heading, tax, thesaurus) {
-  const leaves = leavesOf(tax, heading);
-  const codes = {};
-  for (const hs of leaves) codes[hs] = [];
-  const entryIds = new Set();
-  for (const e of thesaurus.entries) {
-    for (const c of e.candidates || []) {
-      if (codes[c.hs] && !codes[c.hs].includes(e.id)) {
-        codes[c.hs].push(e.id);
-        entryIds.add(e.id);
-      }
-    }
-  }
-  const missingHs = leaves.filter((hs) => codes[hs].length === 0);
-  return {
-    heading,
-    titleEn: headingTitle(heading, tax),
-    leafCount: leaves.length,
-    coveredCount: leaves.length - missingHs.length,
-    missingHs,
-    synonymEntryIds: [...entryIds].sort(),
-    codes,
-  };
-}
-
-/** Đọc file heading-coverage — chấp nhận cả dạng cũ (codes[hs].synonymEntryIds) lẫn dạng gọn (codes[hs] = [...]). */
-export function coverageEntryIds(cov, hs) {
-  const v = cov?.codes?.[hs];
-  if (Array.isArray(v)) return v;
-  return v?.synonymEntryIds || [];
 }
 
 /** Bỏ dấu + hạ chữ thường, cùng quy tắc với lib/trade-synonyms.js. */

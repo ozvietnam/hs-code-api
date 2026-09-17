@@ -1,62 +1,76 @@
 {
   "version": 1,
-  "noteVi": "Sổ tiến độ vòng lặp từ điển theo nhóm 4 số. Nguồn sự thật cho dict:queue (nhóm nào còn trống) và test (nhóm done phải có data/heading-coverage/<nhóm>.json). Cập nhật bằng scripts/dict-queue.mjs --claim / --done, không sửa tay.",
+  "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → done. `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
     "7208": {
-      "status": "done",
+      "status": "dictionary",
       "doneAt": "2026-09-16",
       "by": "cursor-agent",
       "commit": "6b5513d",
       "leafCount": 24,
-      "entries": 2
+      "entries": 2,
+      "table": false,
+      "noteVi": "Từ điển tên đã có (cursor-agent 2026-09-16); còn thiếu bảng quyết định theo thuộc tính."
     },
     "7209": {
       "status": "done",
-      "doneAt": "2026-09-16",
-      "by": "cursor-agent",
-      "commit": "6b5513d",
+      "doneAt": "2026-09-17",
+      "by": "claude",
+      "commit": null,
       "leafCount": 17,
-      "entries": 2
+      "entries": 2,
+      "table": true,
+      "noteVi": "Bảng quyết định mẫu (ngưỡng số); mục từ điển do cursor-agent 2026-09-16."
     },
     "7216": {
-      "status": "done",
+      "status": "dictionary",
       "doneAt": "2026-09-16",
       "by": "cursor-agent",
       "commit": "6b5513d",
       "leafCount": 22,
-      "entries": 1
+      "entries": 1,
+      "table": false,
+      "noteVi": "Từ điển tên đã có (cursor-agent 2026-09-16); còn thiếu bảng quyết định theo thuộc tính."
     },
     "8427": {
       "status": "done",
-      "doneAt": "2026-09-16",
-      "by": "cursor-agent",
-      "commit": "af4c5a0",
+      "doneAt": "2026-09-17",
+      "by": "claude",
+      "commit": null,
       "leafCount": 3,
-      "entries": 1
+      "entries": 1,
+      "table": true,
+      "noteVi": "Bảng quyết định mẫu (phân loại/enum); mục từ điển do cursor-agent 2026-09-16."
     },
     "8428": {
-      "status": "done",
+      "status": "dictionary",
       "doneAt": "2026-09-16",
       "by": "cursor-agent",
       "commit": "af4c5a0",
       "leafCount": 18,
-      "entries": 5
+      "entries": 5,
+      "table": false,
+      "noteVi": "Từ điển tên đã có (cursor-agent 2026-09-16); còn thiếu bảng quyết định theo thuộc tính."
     },
     "8481": {
-      "status": "done",
+      "status": "dictionary",
       "doneAt": "2026-09-16",
       "by": "cursor-agent",
       "commit": "4d384dd",
       "leafCount": 63,
-      "entries": 14
+      "entries": 14,
+      "table": false,
+      "noteVi": "Từ điển tên đã có (cursor-agent 2026-09-16); còn thiếu bảng quyết định theo thuộc tính."
     },
     "8537": {
-      "status": "done",
+      "status": "dictionary",
       "doneAt": "2026-09-16",
       "by": "cursor-agent",
       "commit": "af4c5a0",
       "leafCount": 15,
-      "entries": 4
+      "entries": 4,
+      "table": false,
+      "noteVi": "Từ điển tên đã có (cursor-agent 2026-09-16); còn thiếu bảng quyết định theo thuộc tính."
     }
   }
 }

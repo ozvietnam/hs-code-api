@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 /**
- * Hàng đợi cả cuốn biểu thuế cho vòng lặp từ điển — 1.269 nhóm 4 số, xếp theo
- * chỗ nào từ điển tay ĐANG THIẾU NHẤT, không phải theo thứ tự chương.
+ * Hàng đợi cả cuốn biểu thuế cho vòng lặp BẢNG QUYẾT ĐỊNH theo nhóm 4 số —
+ * 1.269 nhóm, xếp theo chỗ nào đang thiếu nhất, không phải theo thứ tự chương.
+ * Đơn vị việc (CEO chốt 2026-09-17): một bảng quyết định theo thuộc tính cho
+ * một nhóm (data/decision-tables/<nhóm>.json) + mục từ điển tên ở cấp nhóm.
  *
  *   npm run dict:queue                      # 30 nhóm đầu còn trống
  *   npm run dict:queue -- --top=100
@@ -32,8 +34,8 @@ import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { createRequire } from 'module';
 import {
-  ROOT, PROGRESS_PATH, QUEUE_PATH, COVERAGE_DIR, allHeadings, coverageOf, headingTitle, isHeading, leavesOf,
-  loadProgress, loadTax, loadThesaurus, today,
+  ROOT, PROGRESS_PATH, QUEUE_PATH, allHeadings, headingTitle, isHeading, leavesOf,
+  loadProgress, loadTax, today,
 } from './dict-lib.mjs';
 
 const require = createRequire(import.meta.url);
@@ -44,6 +46,7 @@ const opt = (name, fallback = null) => {
 };
 
 const tax = loadTax();
+const dt = require(join(ROOT, 'lib', 'decision-tables.js'));
 const progress = loadProgress();
 progress.headings = progress.headings || {};
 
@@ -75,18 +78,18 @@ if (claim || done || release) {
     saveProgress();
     console.log(`✓ ${h} nhận bởi ${progress.headings[h].by} — ${progress.headings[h].leafCount} lá.`);
   } else if (done) {
-    const cov = coverageOf(h, tax, loadThesaurus());
-    const file = join(COVERAGE_DIR, `${h}.json`);
-    if (cov.missingHs.length || !existsSync(file)) {
-      console.error(`${h} chưa đủ điều kiện done: thiếu ${cov.missingHs.length} lá, file biên bản ${existsSync(file) ? 'có' : 'CHƯA có'}. Chạy dict:check trước.`);
+    const cov = dt.tableCoverage(h, tax);
+    const errors = cov.hasTable ? dt.validateTable(dt.loadTable(h), tax) : ['chưa có bảng'];
+    if (!cov.hasTable || cov.missingHs.length || errors.length) {
+      console.error(`${h} chưa đủ điều kiện done: bảng ${cov.hasTable ? 'có' : 'CHƯA có'}, ${cov.missingHs.length} lá chưa có đường tới, ${errors.length} lỗi cấu trúc. Chạy dict:check trước.`);
       process.exit(1);
     }
     progress.headings[h] = {
       status: 'done', doneAt: today(), by: opt('by', cur.by || 'unknown'), commit: opt('commit', cur.commit || null),
-      leafCount: cov.leafCount, entries: cov.synonymEntryIds.length,
+      leafCount: cov.leaves.length, table: true, rules: dt.loadTable(h).rules.length,
     };
     saveProgress();
-    console.log(`✓ ${h} done — ${cov.leafCount} lá, ${cov.synonymEntryIds.length} mục.`);
+    console.log(`✓ ${h} done — ${cov.leaves.length} lá, ${dt.loadTable(h).rules.length} luật.`);
   } else {
     delete progress.headings[h];
     saveProgress();
@@ -154,18 +157,19 @@ rows.sort((a, b) => b.score - a.score || a.heading.localeCompare(b.heading));
 
 const chapter = opt('chapter');
 const top = Number(opt('top', 30));
-const shown = rows.filter((r) => r.status === 'open' && r.tier !== 'X' && (!chapter || r.heading.startsWith(String(chapter).padStart(2, '0'))));
+const OPEN = new Set(['open', 'dictionary']);
+const shown = rows.filter((r) => OPEN.has(r.status) && r.tier !== 'X' && (!chapter || r.heading.startsWith(String(chapter).padStart(2, '0'))));
 
 const doneN = rows.filter((r) => r.status === 'done').length;
 const claimedN = rows.filter((r) => r.status === 'claimed').length;
 const byTier = {};
 for (const r of rows) byTier[r.tier] = (byTier[r.tier] || 0) + 1;
 console.log(`\n=== Hàng đợi từ điển — ${rows.length} nhóm 4 số · done ${doneN} · đang nhận ${claimedN} · tầng A ${byTier.A || 0} / B ${byTier.B || 0} / C ${byTier.C || 0} / bỏ ${byTier.X || 0} ===`);
-console.log(`Lá đã phủ: ${rows.filter((r) => r.status === 'done').reduce((s, r) => s + r.leaf, 0)} / ${rows.filter((r) => r.tier !== 'X').reduce((s, r) => s + r.leaf, 0)} (không tính ch.98)\n`);
-console.log('nhóm  tầng điểm   lá  dư%  oz   ozlá%  lỗi  lý do');
+console.log(`Lá có bảng quyết định: ${rows.filter((r) => r.status === 'done').reduce((s, r) => s + r.leaf, 0)} / ${rows.filter((r) => r.tier !== 'X').reduce((s, r) => s + r.leaf, 0)} (không tính ch.98) · nhóm mới có từ điển, chưa có bảng: ${rows.filter((r) => r.status === 'dictionary').length}\n`);
+console.log('nhóm  tầng điểm   lá  dư%  oz   ozlá%  lỗi  từđiển  lý do');
 for (const r of shown.slice(0, top)) {
   console.log(
-    `${r.heading}  ${r.tier}   ${String(r.score).padStart(5)}  ${String(r.leaf).padStart(3)}  ${String(Math.round(r.residualRatio * 100)).padStart(3)}  ${String(r.ozCount).padStart(4)}  ${String(Math.round(r.ozLeafRatio * 100)).padStart(4)}  ${String(r.err).padStart(3)}  ${r.whyVi}`
+    `${r.heading}  ${r.tier}   ${String(r.score).padStart(5)}  ${String(r.leaf).padStart(3)}  ${String(Math.round(r.residualRatio * 100)).padStart(3)}  ${String(r.ozCount).padStart(4)}  ${String(Math.round(r.ozLeafRatio * 100)).padStart(4)}  ${String(r.err).padStart(3)}  ${r.status === 'dictionary' ? '  ✓   ' : '      '}  ${r.whyVi}`
   );
 }
 if (shown.length > top) console.log(`… còn ${shown.length - top} nhóm nữa (--top=${shown.length}).`);
