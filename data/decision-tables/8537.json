@@ -1,0 +1,370 @@
+{
+  "heading": "8537",
+  "titleVi": "Bảng, tấm panel, bàn điều khiển, tủ điện có thiết bị 8535/8536 để điều khiển hoặc phân phối điện",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Điện áp tủ ≤1000 V hay >1000 V? Nếu hạ thế: bảng điều khiển (DCS/PLC/gia dụng), bảng phân phối IT/viễn thông, PLC bán dẫn, bộ khuếch đại động cơ 24–120 VDC/300–500 A, hay tổ hợp khác (vô tuyến/quạt/DCS)? Nếu cao áp: điều khiển hay phân phối, có thiết bị ngắt ≥66 kV không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 85.37: 8537.10 ≤1000 V (8537.10.11–.19 bảng điều khiển; .20 phân phối 84.71/85.17/85.25; .30 PLC bán dẫn; .40 điều khiển động cơ 24–120 VDC & 300–500 A; .91/.92/.99 khác); 8537.20 >1000 V (8537.20.11/.19 điều khiển; .21/.29 phân phối; .90 loại khác). Chú giải 8537: bảng/tủ lắp thiết bị 8535/8536.",
+  "inputs": [
+    {
+      "attribute": "panelVoltage",
+      "type": "enum",
+      "domain": ["lte1000v", "gt1000v"],
+      "labelVi": "Điện áp tủ/bảng",
+      "questionVi": "Tủ/bảng dùng ở điện áp không quá 1000 V (hạ thế) hay trên 1000 V (trung/cao thế)?",
+      "detect": {
+        "lte1000v": [
+          "hạ thế",
+          "low voltage",
+          "380v",
+          "400v",
+          "690v",
+          "1000v",
+          "mcc",
+          "tủ điện công nghiệp 380",
+          "lv switchboard",
+          "≤1000v"
+        ],
+        "gt1000v": [
+          "cao thế",
+          "trung thế",
+          "high voltage",
+          "mv switchgear",
+          "22kv",
+          "35kv",
+          "66kv",
+          ">1000v",
+          "trên 1000v",
+          "tủ trung thế"
+        ]
+      }
+    },
+    {
+      "attribute": "lvPanelClass",
+      "type": "enum",
+      "domain": [
+        "controlBoard",
+        "distributionItTelecom",
+        "plcSemiconductorFab",
+        "motorDriveHighCurrent",
+        "otherAssembly"
+      ],
+      "labelVi": "Chức năng tủ hạ thế",
+      "questionVi": "Bảng điều khiển; bảng phân phối cho máy tính/viễn thông; PLC cho máy tự động bán dẫn; bộ điều khiển động cơ công suất lớn; hay tổ hợp/tủ khác?",
+      "detect": {
+        "controlBoard": [
+          "bảng điều khiển",
+          "control panel",
+          "control board",
+          "tủ điều khiển",
+          "plc panel",
+          "dcs panel"
+        ],
+        "distributionItTelecom": [
+          "bảng phân phối",
+          "distribution board",
+          "pdu",
+          "tủ phân phối",
+          "rack power",
+          "8471",
+          "8517",
+          "8525"
+        ],
+        "plcSemiconductorFab": [
+          "plc bán dẫn",
+          "semiconductor fab",
+          "khuôn ép",
+          "mold handler plc",
+          "8537.10.30",
+          "wafer handler control"
+        ],
+        "motorDriveHighCurrent": [
+          "bộ điều khiển động cơ",
+          "motor controller panel",
+          "300a",
+          "500a",
+          "120vdc drive cabinet"
+        ],
+        "otherAssembly": [
+          "tủ điện lắp ráp",
+          "electrical assembly",
+          "switchboard other",
+          "tủ quạt",
+          "tủ vô tuyến"
+        ]
+      }
+    },
+    {
+      "attribute": "controlBoardRole",
+      "type": "enum",
+      "domain": ["dcsDistributed", "plcWithProcessor", "applianceHvacWhiteGoods", "otherControl"],
+      "labelVi": "Loại bảng điều khiển",
+      "questionVi": "DCS phân tán; có bộ xử lý lập trình (PLC); cho điều hòa/tủ lạnh/máy giặt/đồ gia dụng; hay bảng điều khiển khác?",
+      "detect": {
+        "dcsDistributed": ["dcs", "distributed control", "hệ thống điều khiển phân tán", "scada panel"],
+        "plcWithProcessor": ["plc", "programmable logic", "bộ xử lý lập trình", "cpu module panel"],
+        "applianceHvacWhiteGoods": [
+          "điều hòa",
+          "tủ lạnh",
+          "máy giặt",
+          "8415",
+          "8418",
+          "8450",
+          "8508",
+          "8509",
+          "8516",
+          "white goods panel"
+        ],
+        "otherControl": ["bảng điều khiển khác", "control panel other"]
+      }
+    },
+    {
+      "attribute": "otherAssemblyUse",
+      "type": "enum",
+      "domain": ["radioOrElectricFan", "dcsDistributed", "otherNec"],
+      "labelVi": "Công dụng tủ lắp ráp khác",
+      "questionVi": "Dùng trong thiết bị vô tuyến hoặc quạt điện; cho hệ thống điều khiển phân tán (DCS); hay loại khác?",
+      "detect": {
+        "radioOrElectricFan": ["vô tuyến", "radio", "quạt điện", "fan panel", "rf cabinet"],
+        "dcsDistributed": ["dcs", "distributed control system", "điều khiển phân tán"],
+        "otherNec": ["tủ điện khác", "switchboard nec", "panel other"]
+      }
+    },
+    {
+      "attribute": "outputVoltageVdc",
+      "type": "number",
+      "unit": "VDC",
+      "fromSpec": "voltage",
+      "labelVi": "Điện áp đầu ra (VDC)",
+      "questionVi": "Điện áp đầu ra của bộ điều khiển động cơ bao nhiêu VDC? (ngưỡng 24–120 VDC cho 8537.10.40)"
+    },
+    {
+      "attribute": "outputCurrentA",
+      "type": "number",
+      "unit": "A",
+      "fromSpec": "current",
+      "labelVi": "Dòng đầu ra (A)",
+      "questionVi": "Cường độ dòng điện đầu ra bao nhiêu A? (ngưỡng 300–500 A cho 8537.10.40)"
+    },
+    {
+      "attribute": "hvPanelFunction",
+      "type": "enum",
+      "domain": ["control", "distribution", "otherHv"],
+      "labelVi": "Chức năng tủ cao áp",
+      "questionVi": "Tủ/bảng cao áp chủ yếu để điều khiển hay phân phối điện, hay loại khác?",
+      "detect": {
+        "control": ["tủ điều khiển cao áp", "hv control panel", "control switchgear"],
+        "distribution": ["tủ phân phối cao áp", "hv distribution", "distribution switchgear"],
+        "otherHv": ["tủ cao áp khác", "hv panel other"]
+      }
+    },
+    {
+      "attribute": "incorporates66kvSwitchgear",
+      "type": "enum",
+      "domain": ["yes", "no"],
+      "labelVi": "Thiết bị ngắt ≥66 kV",
+      "questionVi": "Tủ có gắn thiết bị điện để ngắt, nối hoặc bảo vệ mạch có điện áp từ 66 kV trở lên không?",
+      "detect": {
+        "yes": ["66kv", "66 kv", "110kv", "220kv", "≥66", "từ 66 kv"],
+        "no": ["dưới 66kv", "22kv only", "35kv", "không có 66kv"]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-lv-dist-it",
+      "priority": 70,
+      "when": { "panelVoltage": "lte1000v", "lvPanelClass": "distributionItTelecom" },
+      "hs": "85371020",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, bảng phân phối chủ yếu cho 84.71/85.17/85.25 → 8537.10.20.",
+      "source": "Biểu thuế 2026 dòng 8537.10.20"
+    },
+    {
+      "id": "r-lv-plc-semi",
+      "priority": 70,
+      "when": { "panelVoltage": "lte1000v", "lvPanelClass": "plcSemiconductorFab" },
+      "hs": "85371030",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, PLC cho máy tự động dịch chuyển/kẹp khuôn bán dẫn → 8537.10.30.",
+      "source": "Biểu thuế 2026 dòng 8537.10.30"
+    },
+    {
+      "id": "r-lv-motor-drive",
+      "priority": 68,
+      "when": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "motorDriveHighCurrent",
+        "outputVoltageVdc": { "gte": 24, "lte": 120 },
+        "outputCurrentA": { "gte": 300, "lte": 500 }
+      },
+      "hs": "85371040",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, bộ điều khiển động cơ đầu ra 24–120 VDC và 300–500 A → 8537.10.40.",
+      "source": "Biểu thuế 2026 dòng 8537.10.40"
+    },
+    {
+      "id": "r-lv-ctrl-dcs",
+      "priority": 65,
+      "when": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "controlBoard",
+        "controlBoardRole": "dcsDistributed"
+      },
+      "hs": "85371011",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, bảng điều khiển cho hệ thống điều khiển phân tán (DCS) → 8537.10.11.",
+      "source": "Biểu thuế 2026 dòng 8537.10.11"
+    },
+    {
+      "id": "r-lv-ctrl-plc",
+      "priority": 65,
+      "when": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "controlBoard",
+        "controlBoardRole": "plcWithProcessor"
+      },
+      "hs": "85371012",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, bảng điều khiển có bộ xử lý lập trình (PLC) → 8537.10.12.",
+      "source": "Biểu thuế 2026 dòng 8537.10.12"
+    },
+    {
+      "id": "r-lv-ctrl-appliance",
+      "priority": 65,
+      "when": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "controlBoard",
+        "controlBoardRole": "applianceHvacWhiteGoods"
+      },
+      "hs": "85371013",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, bảng điều khiển cho điều hòa/tủ lạnh/máy giặt/đồ gia dụng (84.15, 84.18, 84.50, 85.08, 85.09, 85.16) → 8537.10.13.",
+      "source": "Biểu thuế 2026 dòng 8537.10.13"
+    },
+    {
+      "id": "r-lv-ctrl-other",
+      "priority": 45,
+      "when": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "controlBoard",
+        "controlBoardRole": "otherControl"
+      },
+      "hs": "85371019",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, bảng điều khiển loại khác → 8537.10.19.",
+      "source": "Biểu thuế 2026 dòng 8537.10.19"
+    },
+    {
+      "id": "r-lv-other-radio",
+      "priority": 65,
+      "when": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "otherAssembly",
+        "otherAssemblyUse": "radioOrElectricFan"
+      },
+      "hs": "85371091",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, tổ hợp dùng trong thiết bị vô tuyến hoặc quạt điện → 8537.10.91.",
+      "source": "Biểu thuế 2026 dòng 8537.10.91"
+    },
+    {
+      "id": "r-lv-other-dcs",
+      "priority": 65,
+      "when": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "otherAssembly",
+        "otherAssemblyUse": "dcsDistributed"
+      },
+      "hs": "85371092",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, tổ hợp phù hợp hệ thống điều khiển phân tán → 8537.10.92.",
+      "source": "Biểu thuế 2026 dòng 8537.10.92"
+    },
+    {
+      "id": "r-lv-other-nec",
+      "priority": 40,
+      "when": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "otherAssembly",
+        "otherAssemblyUse": "otherNec"
+      },
+      "hs": "85371099",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, tổ hợp/tủ lắp ráp loại khác → 8537.10.99.",
+      "source": "Biểu thuế 2026 dòng 8537.10.99"
+    },
+    {
+      "id": "r-lv-motor-fallback",
+      "priority": 42,
+      "when": { "panelVoltage": "lte1000v", "lvPanelClass": "motorDriveHighCurrent" },
+      "hs": "85371099",
+      "gir": "GIR 6",
+      "reasonVi": "Hạ thế, bộ điều khiển động cơ nhưng không nằm ngưỡng 24–120 VDC và 300–500 A → 8537.10.99.",
+      "source": "Biểu thuế 2026 dòng 8537.10.99"
+    },
+    {
+      "id": "r-hv-ctrl-66kv",
+      "priority": 70,
+      "when": {
+        "panelVoltage": "gt1000v",
+        "hvPanelFunction": "control",
+        "incorporates66kvSwitchgear": "yes"
+      },
+      "hs": "85372011",
+      "gir": "GIR 6",
+      "reasonVi": "Cao áp, bảng điều khiển gắn thiết bị ngắt/nối/bảo vệ ≥66 kV → 8537.20.11.",
+      "source": "Biểu thuế 2026 dòng 8537.20.11"
+    },
+    {
+      "id": "r-hv-ctrl-other",
+      "priority": 50,
+      "when": {
+        "panelVoltage": "gt1000v",
+        "hvPanelFunction": "control",
+        "incorporates66kvSwitchgear": "no"
+      },
+      "hs": "85372019",
+      "gir": "GIR 6",
+      "reasonVi": "Cao áp, bảng điều khiển không gắn thiết bị ≥66 kV → 8537.20.19.",
+      "source": "Biểu thuế 2026 dòng 8537.20.19"
+    },
+    {
+      "id": "r-hv-dist-66kv",
+      "priority": 70,
+      "when": {
+        "panelVoltage": "gt1000v",
+        "hvPanelFunction": "distribution",
+        "incorporates66kvSwitchgear": "yes"
+      },
+      "hs": "85372021",
+      "gir": "GIR 6",
+      "reasonVi": "Cao áp, bảng phân phối gắn thiết bị ngắt/nối/bảo vệ ≥66 kV → 8537.20.21.",
+      "source": "Biểu thuế 2026 dòng 8537.20.21"
+    },
+    {
+      "id": "r-hv-dist-other",
+      "priority": 50,
+      "when": {
+        "panelVoltage": "gt1000v",
+        "hvPanelFunction": "distribution",
+        "incorporates66kvSwitchgear": "no"
+      },
+      "hs": "85372029",
+      "gir": "GIR 6",
+      "reasonVi": "Cao áp, bảng phân phối không gắn thiết bị ≥66 kV → 8537.20.29.",
+      "source": "Biểu thuế 2026 dòng 8537.20.29"
+    },
+    {
+      "id": "r-hv-other",
+      "priority": 40,
+      "when": { "panelVoltage": "gt1000v", "hvPanelFunction": "otherHv" },
+      "hs": "85372090",
+      "gir": "GIR 6",
+      "reasonVi": "Cao áp, tủ/bảng loại khác → 8537.20.90.",
+      "source": "Biểu thuế 2026 dòng 8537.20.90"
+    }
+  ]
+}

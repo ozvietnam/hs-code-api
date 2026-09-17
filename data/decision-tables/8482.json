@@ -1,0 +1,154 @@
+{
+  "heading": "8482",
+  "titleVi": "Ổ bi và ổ đũa; bộ phận",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Ổ bi cầu, ổ đũa côn/cầu/kim/trụ, ổ kết hợp hay loại khác — hay chỉ bộ phận (bi/kim/đũa hay phần khác)?",
+  "sourceVi": "Biểu thuế 2026 nhóm 84.82: 8482.10 ổ bi; 8482.20–8482.50 các ổ đũa; 8482.80 loại khác; 8482.91 bi/kim/đũa; 8482.99 bộ phận khác.",
+  "inputs": [
+    {
+      "attribute": "bearingKind",
+      "type": "enum",
+      "domain": [
+        "ball",
+        "taperedRoller",
+        "sphericalRoller",
+        "needleRoller",
+        "cylindricalRoller",
+        "otherCombined",
+        "partsRollingElements",
+        "partsOther"
+      ],
+      "labelVi": "Loại ổ / bộ phận",
+      "questionVi": "Ổ bi; ổ đũa côn; ổ đũa cầu; ổ đũa kim; ổ đũa trụ; ổ kết hợp/loại khác; hay bộ phận (bi/kim/đũa riêng hay phần khác)?",
+      "detect": {
+        "ball": [
+          "ổ bi",
+          "ball bearing",
+          "deep groove",
+          "vòng bi"
+        ],
+        "taperedRoller": [
+          "ổ đũa côn",
+          "tapered roller",
+          "cone bearing",
+          "đũa côn"
+        ],
+        "sphericalRoller": [
+          "ổ đũa cầu",
+          "spherical roller",
+          "self-aligning roller"
+        ],
+        "needleRoller": [
+          "ổ đũa kim",
+          "needle roller",
+          "needle bearing"
+        ],
+        "cylindricalRoller": [
+          "ổ đũa trụ",
+          "cylindrical roller",
+          "đũa trụ"
+        ],
+        "otherCombined": [
+          "ổ kết hợp",
+          "combined ball/roller",
+          "linear bearing",
+          "ổ đũa khác"
+        ],
+        "partsRollingElements": [
+          "bi vòng",
+          "đũa lăn",
+          "balls needles rollers",
+          "rolling elements",
+          "bộ bi",
+          "cage và đũa"
+        ],
+        "partsOther": [
+          "vòng trong",
+          "vòng ngoài",
+          "inner ring",
+          "outer ring",
+          "bearing cage",
+          "bộ phận ổ bi",
+          "parts bearing"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-ball",
+      "priority": 50,
+      "when": { "bearingKind": "ball" },
+      "hs": "84821000",
+      "gir": "GIR 6",
+      "reasonVi": "Ổ bi → 8482.10.00.",
+      "source": "Biểu thuế 2026 dòng 8482.10.00"
+    },
+    {
+      "id": "r-tapered",
+      "priority": 50,
+      "when": { "bearingKind": "taperedRoller" },
+      "hs": "84822000",
+      "gir": "GIR 6",
+      "reasonVi": "Ổ đũa côn (kể cả cụm vành côn) → 8482.20.00.",
+      "source": "Biểu thuế 2026 dòng 8482.20.00"
+    },
+    {
+      "id": "r-spherical",
+      "priority": 50,
+      "when": { "bearingKind": "sphericalRoller" },
+      "hs": "84823000",
+      "gir": "GIR 6",
+      "reasonVi": "Ổ đũa cầu → 8482.30.00.",
+      "source": "Biểu thuế 2026 dòng 8482.30.00"
+    },
+    {
+      "id": "r-needle",
+      "priority": 50,
+      "when": { "bearingKind": "needleRoller" },
+      "hs": "84824000",
+      "gir": "GIR 6",
+      "reasonVi": "Ổ đũa kim (kể cả lồng và cụm đũa kim) → 8482.40.00.",
+      "source": "Biểu thuế 2026 dòng 8482.40.00"
+    },
+    {
+      "id": "r-cylindrical",
+      "priority": 50,
+      "when": { "bearingKind": "cylindricalRoller" },
+      "hs": "84825000",
+      "gir": "GIR 6",
+      "reasonVi": "Ổ đũa trụ khác → 8482.50.00.",
+      "source": "Biểu thuế 2026 dòng 8482.50.00"
+    },
+    {
+      "id": "r-other-bearing",
+      "priority": 40,
+      "when": { "bearingKind": "otherCombined" },
+      "hs": "84828000",
+      "gir": "GIR 6",
+      "reasonVi": "Ổ đũa loại khác / kết hợp bi–đũa → 8482.80.00.",
+      "source": "Biểu thuế 2026 dòng 8482.80.00"
+    },
+    {
+      "id": "r-parts-elements",
+      "priority": 45,
+      "when": { "bearingKind": "partsRollingElements" },
+      "hs": "84829100",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận: bi, kim, đũa lăn → 8482.91.00.",
+      "source": "Biểu thuế 2026 dòng 8482.91.00"
+    },
+    {
+      "id": "r-parts-other",
+      "priority": 10,
+      "when": { "bearingKind": "partsOther" },
+      "hs": "84829900",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận ổ đũa loại khác (không phải bi/kim/đũa) → 8482.99.00.",
+      "source": "Biểu thuế 2026 dòng 8482.99.00"
+    }
+  ]
+}

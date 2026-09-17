@@ -1,0 +1,188 @@
+{
+  "heading": "8473",
+  "titleVi": "Bộ phận và phụ kiện máy nhóm 84.70–84.72 (trừ bao/hộp đựng)",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Phụ kiện dùng cho máy tính/bàn tính điện tử 8470, máy xử lý dữ liệu 8471, máy văn phòng 8472, hay bộ phận dùng chung cho nhiều loại máy — và nếu thuộc 8471 thì có phải tấm mạch in đã lắp ráp không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 84.73: 8473.21 máy tính điện tử 8470.10/.21/.29; 8473.29 máy 8470.30/.50/.90; 8473.30 cho 8471 (10 PCB lắp ráp); 8473.40 cho 8472; 8473.50 dùng chung (10 cho 8471).",
+  "inputs": [
+    {
+      "attribute": "hostMachine",
+      "type": "enum",
+      "domain": [
+        "calcElectronic",
+        "calcOther",
+        "adp8471",
+        "office8472",
+        "multiUse"
+      ],
+      "labelVi": "Máy mẹ (8470/8471/8472)",
+      "questionVi": "Bộ phận dùng cho máy tính/bàn tính điện tử (8470.10/.21/.29), máy tính khác 8470, máy xử lý dữ liệu 8471, máy văn phòng 8472, hay phụ kiện dùng chung nhiều loại máy 8470–8472?",
+      "detect": {
+        "calcElectronic": [
+          "8470.10",
+          "8470.21",
+          "8470.29",
+          "máy tính điện tử",
+          "electronic calculating",
+          "pocket calculator parts",
+          "bàn tính điện tử"
+        ],
+        "calcOther": [
+          "8470.30",
+          "8470.50",
+          "8470.90",
+          "accounting machine",
+          "postage-franking",
+          "ticket-issuing",
+          "máy tính cơ"
+        ],
+        "adp8471": [
+          "8471",
+          "máy tính",
+          "computer parts",
+          "laptop parts",
+          "pc parts",
+          "máy xử lý dữ liệu",
+          "automatic data processing"
+        ],
+        "office8472": [
+          "8472",
+          "máy văn phòng",
+          "office machine parts",
+          "duplicator parts",
+          "addressing machine"
+        ],
+        "multiUse": [
+          "dùng chung",
+          "equally suitable",
+          "8470 đến 8472",
+          "8470-8472",
+          "multi-machine"
+        ]
+      }
+    },
+    {
+      "attribute": "partForm",
+      "type": "enum",
+      "domain": [
+        "assembledPcb",
+        "other"
+      ],
+      "labelVi": "Tấm mạch in lắp ráp / phụ kiện khác",
+      "questionVi": "Là tấm mạch in đã lắp ráp (assembled PCB) hay bộ phận/phụ kiện khác?",
+      "detect": {
+        "assembledPcb": [
+          "mạch in đã lắp ráp",
+          "assembled pcb",
+          "populated pcb",
+          "pcb lắp linh kiện",
+          "mainboard",
+          "bo mạch chủ lắp ráp"
+        ],
+        "other": [
+          "bộ phận khác",
+          "phụ kiện khác",
+          "keyboard",
+          "bàn phím",
+          "ổ cứng",
+          "hdd",
+          "ram",
+          "adapter",
+          "cáp nguồn"
+        ]
+      }
+    },
+    {
+      "attribute": "multi8471Fit",
+      "type": "enum",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "labelVi": "Thích hợp cho máy 8471",
+      "questionVi": "Phụ kiện dùng chung có thích hợp dùng cho máy thuộc nhóm 84.71 (máy tính/ADP) không?",
+      "detect": {
+        "yes": [
+          "cho máy tính",
+          "for adp",
+          "for computers",
+          "8471",
+          "máy 8471"
+        ],
+        "no": [
+          "không cho máy tính",
+          "8470 only",
+          "8472 only"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-calc-electronic",
+      "priority": 50,
+      "when": { "hostMachine": "calcElectronic" },
+      "hs": "84732100",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện máy tính/bàn tính điện tử 8470.10/.21/.29 → 8473.21.00.",
+      "source": "Biểu thuế 2026 dòng 8473.21.00"
+    },
+    {
+      "id": "r-calc-other",
+      "priority": 50,
+      "when": { "hostMachine": "calcOther" },
+      "hs": "84732900",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện máy 8470.30/.50/.90 (loại khác) → 8473.29.00.",
+      "source": "Biểu thuế 2026 dòng 8473.29.00"
+    },
+    {
+      "id": "r-8471-pcb",
+      "priority": 50,
+      "when": { "hostMachine": "adp8471", "partForm": "assembledPcb" },
+      "hs": "84733010",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm mạch in đã lắp ráp của máy 8471 → 8473.30.10.",
+      "source": "Biểu thuế 2026 dòng 8473.30.10"
+    },
+    {
+      "id": "r-8471-other",
+      "priority": 40,
+      "when": { "hostMachine": "adp8471", "partForm": "other" },
+      "hs": "84733090",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện khác (không phải PCB lắp ráp) của máy 8471 → 8473.30.90.",
+      "source": "Biểu thuế 2026 dòng 8473.30.90"
+    },
+    {
+      "id": "r-8472",
+      "priority": 50,
+      "when": { "hostMachine": "office8472" },
+      "hs": "84734000",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận/phụ kiện máy nhóm 84.72 → 8473.40.00.",
+      "source": "Biểu thuế 2026 dòng 8473.40.00"
+    },
+    {
+      "id": "r-multi-8471",
+      "priority": 45,
+      "when": { "hostMachine": "multiUse", "multi8471Fit": "yes" },
+      "hs": "84735010",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện dùng chung, thích hợp cho máy 8471 → 8473.50.10.",
+      "source": "Biểu thuế 2026 dòng 8473.50.10"
+    },
+    {
+      "id": "r-multi-other",
+      "priority": 10,
+      "when": { "hostMachine": "multiUse", "multi8471Fit": "no" },
+      "hs": "84735090",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện dùng chung 8470–8472, không thuộc nhánh 8471 → 8473.50.90.",
+      "source": "Biểu thuế 2026 dòng 8473.50.90"
+    }
+  ]
+}

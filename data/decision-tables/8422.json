@@ -1,0 +1,143 @@
+{
+  "heading": "8422",
+  "titleVi": "Máy rửa bát; máy làm sạch/đóng gói chai lọ; bộ phận",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Máy rửa bát gia đình hay công nghiệp? Máy làm sạch/khô chai, rót/đóng nắp/dán nhãn, đóng gói/bọc màng — hay bộ phận (của máy rửa bát gia đình hay loại khác)?",
+  "sourceVi": "Biểu thuế 2026 nhóm 84.22: 8422.11 rửa bát gia đình; 8422.19 rửa bát khác; 8422.20 làm sạch/khô; 8422.30 rót/đóng; 8422.40 đóng gói; 8422.90 bộ phận.",
+  "inputs": [
+    {
+      "attribute": "machineKind",
+      "type": "enum",
+      "domain": [
+        "dishwasherHousehold",
+        "dishwasherOther",
+        "cleanDryContainers",
+        "fillSealLabel",
+        "packWrap",
+        "parts842211",
+        "partsOther"
+      ],
+      "labelVi": "Loại máy / bộ phận 84.22",
+      "questionVi": "Máy rửa bát gia đình; rửa bát công nghiệp; làm sạch/khô chai lọ; rót/đóng nắp/dán nhãn; đóng gói/bọc màng co; bộ phận máy rửa bát gia đình; hay bộ phận loại khác?",
+      "detect": {
+        "dishwasherHousehold": [
+          "máy rửa bát gia đình",
+          "dishwasher household",
+          "household dishwashing",
+          "rửa bát dân dụng"
+        ],
+        "dishwasherOther": [
+          "máy rửa bát công nghiệp",
+          "industrial dishwasher",
+          "dishwasher commercial",
+          "rửa bát nhà hàng"
+        ],
+        "cleanDryContainers": [
+          "làm sạch chai",
+          "làm khô chai",
+          "bottle washer",
+          "bottle cleaning",
+          "rửa chai lọ",
+          "container cleaning"
+        ],
+        "fillSealLabel": [
+          "máy rót",
+          "đóng nắp",
+          "capsuling",
+          "dán nhãn",
+          "filling machine",
+          "sealing machine",
+          "labelling machine",
+          "đóng kín chai"
+        ],
+        "packWrap": [
+          "đóng gói",
+          "bao gói",
+          "bọc màng co",
+          "shrink wrap",
+          "packing machine",
+          "wrapping machine"
+        ],
+        "parts842211": [
+          "bộ phận máy rửa bát gia đình",
+          "parts dishwasher household",
+          "8422.11 parts"
+        ],
+        "partsOther": [
+          "bộ phận máy đóng gói",
+          "parts 8422",
+          "phụ tùng máy rót",
+          "linh kiện máy rửa bát công nghiệp"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-dw-home",
+      "priority": 50,
+      "when": { "machineKind": "dishwasherHousehold" },
+      "hs": "84221100",
+      "gir": "GIR 6",
+      "reasonVi": "Máy rửa bát loại gia đình → 8422.11.00.",
+      "source": "Biểu thuế 2026 dòng 8422.11.00"
+    },
+    {
+      "id": "r-dw-other",
+      "priority": 50,
+      "when": { "machineKind": "dishwasherOther" },
+      "hs": "84221900",
+      "gir": "GIR 6",
+      "reasonVi": "Máy rửa bát loại khác (không gia đình) → 8422.19.00.",
+      "source": "Biểu thuế 2026 dòng 8422.19.00"
+    },
+    {
+      "id": "r-clean-dry",
+      "priority": 50,
+      "when": { "machineKind": "cleanDryContainers" },
+      "hs": "84222000",
+      "gir": "GIR 6",
+      "reasonVi": "Máy làm sạch hoặc làm khô chai/lọ → 8422.20.00.",
+      "source": "Biểu thuế 2026 dòng 8422.20.00"
+    },
+    {
+      "id": "r-fill-seal",
+      "priority": 50,
+      "when": { "machineKind": "fillSealLabel" },
+      "hs": "84223000",
+      "gir": "GIR 6",
+      "reasonVi": "Máy rót/đóng kín/đóng nắp/dán nhãn → 8422.30.00.",
+      "source": "Biểu thuế 2026 dòng 8422.30.00"
+    },
+    {
+      "id": "r-pack-wrap",
+      "priority": 50,
+      "when": { "machineKind": "packWrap" },
+      "hs": "84224000",
+      "gir": "GIR 6",
+      "reasonVi": "Máy đóng gói/bao gói (kể cả bọc màng co) → 8422.40.00.",
+      "source": "Biểu thuế 2026 dòng 8422.40.00"
+    },
+    {
+      "id": "r-parts-home",
+      "priority": 45,
+      "when": { "machineKind": "parts842211" },
+      "hs": "84229010",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận máy rửa bát thuộc 8422.11 → 8422.90.10.",
+      "source": "Biểu thuế 2026 dòng 8422.90.10"
+    },
+    {
+      "id": "r-parts-other",
+      "priority": 10,
+      "when": { "machineKind": "partsOther" },
+      "hs": "84229090",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận máy 84.22 loại khác → 8422.90.90.",
+      "source": "Biểu thuế 2026 dòng 8422.90.90"
+    }
+  ]
+}

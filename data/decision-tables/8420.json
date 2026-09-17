@@ -1,0 +1,173 @@
+{
+  "heading": "8420",
+  "titleVi": "Máy cán/ép (không phải kim loại hay thủy tinh) và trục/bộ phận",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Máy nguyên chiếc (sản xuất tấm nền PCB, máy là/vắt gia đình, hay loại khác) hay bộ phận — trục cán hay bộ phận khác — và có phải dùng cho máy sản xuất tấm nền mạch in không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 84.20: 8420.10.10 tấm nền PCB; .20 máy là/vắt gia đình; .90 máy khác; 8420.91 trục; 8420.99 bộ phận khác trục.",
+  "inputs": [
+    {
+      "attribute": "goodsKind",
+      "type": "enum",
+      "domain": ["machine", "part"],
+      "labelVi": "Máy / bộ phận",
+      "questionVi": "Là máy cán/ép nguyên chiếc hay bộ phận (trục cán hoặc linh kiện khác) của máy đó?",
+      "detect": {
+        "machine": [
+          "máy cán",
+          "calendering machine",
+          "rolling machine",
+          "máy ép",
+          "máy là",
+          "máy vắt"
+        ],
+        "part": [
+          "bộ phận",
+          "phụ tùng",
+          "trục cán",
+          "cylinder",
+          "parts 8420",
+          "linh kiện máy cán"
+        ]
+      }
+    },
+    {
+      "attribute": "machineUse",
+      "type": "enum",
+      "domain": ["pcbSubstrate", "householdLaundry", "other"],
+      "labelVi": "Công dụng máy",
+      "questionVi": "Máy chủ yếu để sản xuất tấm nền mạch in; máy là/vắt gia đình; hay loại cán/ép khác?",
+      "detect": {
+        "pcbSubstrate": [
+          "tấm nền mạch in",
+          "pcb substrate",
+          "mạch in",
+          "copper clad",
+          "laminate pcb"
+        ],
+        "householdLaundry": [
+          "máy là gia đình",
+          "máy vắt gia đình",
+          "household ironing",
+          "wringer",
+          "mangle household"
+        ],
+        "other": [
+          "máy cán nhựa",
+          "máy cán vải",
+          "rubber calender",
+          "textile calender"
+        ]
+      }
+    },
+    {
+      "attribute": "partKind",
+      "type": "enum",
+      "domain": ["cylinder", "other"],
+      "labelVi": "Trục cán / bộ phận khác",
+      "questionVi": "Bộ phận là trục (cylinder) cho máy cán hay bộ phận khác (không phải trục)?",
+      "detect": {
+        "cylinder": [
+          "trục cán",
+          "cylinder",
+          "roll",
+          "trục ép"
+        ],
+        "other": [
+          "bộ phận khác",
+          "khung máy",
+          "bearing housing",
+          "linh kiện không phải trục"
+        ]
+      }
+    },
+    {
+      "attribute": "forPcbMachine",
+      "type": "enum",
+      "domain": ["yes", "no"],
+      "labelVi": "Dùng cho máy 8420.10.10",
+      "questionVi": "Bộ phận dùng cho máy cán sản xuất tấm nền mạch in (8420.10.10) hay cho máy cán loại khác?",
+      "detect": {
+        "yes": [
+          "8420.10.10",
+          "tấm nền mạch in",
+          "pcb calender",
+          "for pcb substrate machine"
+        ],
+        "no": [
+          "máy cán vải",
+          "máy là",
+          "8420.10.20",
+          "8420.10.90"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-machine-pcb",
+      "priority": 50,
+      "when": { "goodsKind": "machine", "machineUse": "pcbSubstrate" },
+      "hs": "84201010",
+      "gir": "GIR 6",
+      "reasonVi": "Máy cán chủ yếu sản xuất tấm nền/mạch in → 8420.10.10.",
+      "source": "Biểu thuế 2026 dòng 8420.10.10"
+    },
+    {
+      "id": "r-machine-laundry",
+      "priority": 50,
+      "when": { "goodsKind": "machine", "machineUse": "householdLaundry" },
+      "hs": "84201020",
+      "gir": "GIR 6",
+      "reasonVi": "Máy là hoặc máy vắt gia đình → 8420.10.20.",
+      "source": "Biểu thuế 2026 dòng 8420.10.20"
+    },
+    {
+      "id": "r-machine-other",
+      "priority": 40,
+      "when": { "goodsKind": "machine", "machineUse": "other" },
+      "hs": "84201090",
+      "gir": "GIR 6",
+      "reasonVi": "Máy cán/ép loại khác (không PCB/gia đình) → 8420.10.90.",
+      "source": "Biểu thuế 2026 dòng 8420.10.90"
+    },
+    {
+      "id": "r-cylinder-pcb",
+      "priority": 50,
+      "when": { "goodsKind": "part", "partKind": "cylinder", "forPcbMachine": "yes" },
+      "hs": "84209110",
+      "gir": "GIR 6",
+      "reasonVi": "Trục cán của máy 8420.10.10 → 8420.91.10.",
+      "source": "Biểu thuế 2026 dòng 8420.91.10"
+    },
+    {
+      "id": "r-cylinder-other",
+      "priority": 40,
+      "when": { "goodsKind": "part", "partKind": "cylinder", "forPcbMachine": "no" },
+      "hs": "84209190",
+      "gir": "GIR 6",
+      "reasonVi": "Trục cán loại khác → 8420.91.90.",
+      "source": "Biểu thuế 2026 dòng 8420.91.90"
+    },
+    {
+      "id": "r-part-pcb",
+      "priority": 50,
+      "when": { "goodsKind": "part", "partKind": "other", "forPcbMachine": "yes" },
+      "hs": "84209910",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận (không trục) của máy 8420.10.10 → 8420.99.10.",
+      "source": "Biểu thuế 2026 dòng 8420.99.10"
+    },
+    {
+      "id": "r-part-other",
+      "priority": 10,
+      "when": { "goodsKind": "part", "partKind": "other", "forPcbMachine": "no" },
+      "hs": "84209990",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận (không trục) loại khác → 8420.99.90.",
+      "source": "Biểu thuế 2026 dòng 8420.99.90"
+    }
+  ]
+}
