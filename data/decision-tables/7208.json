@@ -1,0 +1,123 @@
+{
+  "heading": "7208",
+  "titleVi": "Sắt/thép không hợp kim cán phẳng, rộng ≥ 600 mm, cán nóng, chưa phủ/mạ/tráng",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Dạng cuộn hay đã cắt thành tấm? Có hình dập nổi trên bề mặt không? Bề mặt đã tẩy gỉ (pickled) hay chưa? Chiều dày bao nhiêu mm? Nếu mỏng: carbon từ 0,6 % trở lên không? Có phải thép siêu dẻo/dập sâu không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 72.08: 7208.10 cuộn, có hình dập nổi; 7208.25–.27 cuộn, không dập nổi, đã tẩy gỉ (pickled), tách theo chiều dày ≥ 4,75 / 3–< 4,75 / < 3 mm, 7208.27 tách thêm carbon ≥ 0,6 % (→ .11/.91) vs loại khác (→ .19/.99); 7208.36–.39 cuộn, không dập nổi, CHƯA tẩy gỉ, tách theo chiều dày > 10 / 4,75–10 / 3–< 4,75 / < 3 mm, 7208.39 tách theo carbon + dày + (đặc biệt 7208.39.40 dày > 2 mm + độ bền kéo ≤ 550 MPa + khổ ≤ 1.250 mm — nhận qua cụm 'siêu dẻo'/'dập sâu'); 7208.40 không cuộn, có dập nổi; 7208.51–.54 không cuộn, không dập nổi, cùng ngưỡng dày, 7208.54 tách carbon < 0,6 % + dày ≤ 0,17 mm; 7208.90 đã gia công thêm (lượn sóng / carbon < 0,6 % + dày ≤ 0,17 mm / loại khác). Phân biệt 7208.27.11 vs .91 và 7208.27.19 vs .99 theo cách xử lý bề mặt/cán thêm (WCO Explanatory Notes nhóm 72.08); khi người khai không chỉ rõ carbon, mặc định carbon thấp (.19/.99/.10/.20). Chú giải Chương 72 mục 1(k) định nghĩa sản phẩm cán phẳng.",
+  "inputs": [
+    {
+      "attribute": "form",
+      "type": "enum",
+      "domain": ["coil", "not-coil"],
+      "labelVi": "Dạng cuộn / không cuộn",
+      "questionVi": "Hàng ở dạng CUỘN hay đã cắt thành TẤM (cuộn đã xả ra/kiện)?",
+      "detect": {
+        "coil": ["cuộn", "coil", "coils", "hrc", "hot rolled coil"],
+        "not-coil": ["tấm", "sheet", "sheets", "plate", "kiện", "cắt tấm", "không cuộn", "phẳng"]
+      }
+    },
+    {
+      "attribute": "patternInRelief",
+      "type": "enum",
+      "domain": ["yes", "no"],
+      "assumeIfUnknown": "no",
+      "labelVi": "Hình dập nổi trên bề mặt",
+      "questionVi": "Trên bề mặt tấm có hình dập nổi (checker plate / tear drop plate) không?",
+      "detect": {
+        "yes": ["dập nổi", "gân nổi", "gân", "checker", "checkered", "tear drop", "pattern in relief", "tôn gân"],
+        "no": []
+      }
+    },
+    {
+      "attribute": "pickled",
+      "type": "enum",
+      "domain": ["yes", "no"],
+      "assumeIfUnknown": "no",
+      "labelVi": "Đã tẩy gỉ (pickled) hay chưa",
+      "questionVi": "Bề mặt đã tẩy gỉ bằng axít (pickled) chưa? Thường hàng xuất từ Trung Quốc về Việt Nam hay gặp dạng chưa tẩy gỉ (còn vảy cán).",
+      "detect": {
+        "yes": ["pickled", "tẩy gỉ", "đã tẩy", "pickle", "acid cleaned"],
+        "no": ["chưa tẩy gỉ", "unpickled", "mill scale", "còn vảy cán", "no pickle"]
+      }
+    },
+    {
+      "attribute": "thicknessMm",
+      "type": "number",
+      "unit": "mm",
+      "fromSpec": "thickness",
+      "labelVi": "Chiều dày (mm)",
+      "questionVi": "Chiều dày bao nhiêu mm? (các ngưỡng: ≥ 4,75 / 3 đến < 4,75 / < 3 mm; nếu mỏng hơn 1,5 mm hay 0,17 mm sẽ còn hỏi tiếp carbon)"
+    },
+    {
+      "attribute": "carbonBand",
+      "type": "enum",
+      "domain": ["high", "low"],
+      "assumeIfUnknown": "low",
+      "labelVi": "Hàm lượng carbon (≥ / < 0,6 %)",
+      "questionVi": "Hàm lượng carbon theo khối lượng từ 0,6 % trở lên không?",
+      "detect": {
+        "high": ["carbon cao", "high carbon", "carbon từ 0,6", "carbon từ 0.6", "carbon >= 0.6", "carbon ≥ 0,6", "hàm lượng carbon cao", "c cao"],
+        "low": ["carbon thấp", "low carbon", "carbon dưới 0,6", "carbon dưới 0.6", "carbon < 0.6", "hàm lượng carbon thấp"]
+      }
+    },
+    {
+      "attribute": "deepDrawing",
+      "type": "enum",
+      "domain": ["yes", "no"],
+      "assumeIfUnknown": "no",
+      "labelVi": "Thép siêu dẻo / dập sâu (7208.39.40)",
+      "questionVi": "Có phải thép siêu dẻo dùng dập sâu (độ bền kéo ≤ 550 MPa, khổ ≤ 1.250 mm) không?",
+      "detect": {
+        "yes": ["siêu dẻo", "dập sâu", "deep drawing", "ddq", "drawing quality", "độ bền kéo thấp"],
+        "no": []
+      }
+    },
+    {
+      "attribute": "furtherWorked",
+      "type": "enum",
+      "domain": ["none", "corrugated", "other"],
+      "assumeIfUnknown": "none",
+      "labelVi": "Gia công thêm sau cán nóng",
+      "questionVi": "Sau cán nóng có gia công thêm không (lượn sóng, đục lỗ, dập nổi khác, xẻ rãnh…)?",
+      "detect": {
+        "none": [],
+        "corrugated": ["lượn sóng", "corrugated", "tôn sóng", "dạng sóng"],
+        "other": ["đục lỗ", "perforated", "xẻ rãnh", "slit", "dập nổi khác"]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    { "id": "w-coil-pattern", "priority": 95, "when": { "form": "coil", "patternInRelief": "yes" }, "hs": "72081000", "gir": "GIR 6", "reasonVi": "Cuộn, có hình dập nổi trên bề mặt → 7208.10.00.", "source": "Biểu thuế 2026 dòng 7208.10.00" },
+    { "id": "w-notcoil-pattern", "priority": 95, "when": { "form": "not-coil", "patternInRelief": "yes" }, "hs": "72084000", "gir": "GIR 6", "reasonVi": "Không cuộn, có hình dập nổi trên bề mặt → 7208.40.00.", "source": "Biểu thuế 2026 dòng 7208.40.00" },
+
+    { "id": "w-corrugated", "priority": 90, "when": { "furtherWorked": "corrugated" }, "hs": "72089010", "gir": "GIR 6", "reasonVi": "Đã gia công thêm thành dạng lượn sóng → 7208.90.10.", "source": "Biểu thuế 2026 dòng 7208.90.10" },
+
+    { "id": "p-coil-ge-475", "priority": 80, "when": { "form": "coil", "patternInRelief": "no", "pickled": "yes", "thicknessMm": { "gte": 4.75 } }, "hs": "72082500", "gir": "GIR 6", "reasonVi": "Cuộn, đã tẩy gỉ, dày ≥ 4,75 mm → 7208.25.00.", "source": "Biểu thuế 2026 dòng 7208.25.00" },
+    { "id": "p-coil-3-475", "priority": 80, "when": { "form": "coil", "patternInRelief": "no", "pickled": "yes", "thicknessMm": { "gte": 3, "lt": 4.75 } }, "hs": "72082600", "gir": "GIR 6", "reasonVi": "Cuộn, đã tẩy gỉ, dày 3 đến < 4,75 mm → 7208.26.00.", "source": "Biểu thuế 2026 dòng 7208.26.00" },
+    { "id": "p-coil-lt-3-highc", "priority": 75, "when": { "form": "coil", "patternInRelief": "no", "pickled": "yes", "thicknessMm": { "lt": 3 }, "furtherWorked": "none", "carbonBand": "high" }, "hs": "72082711", "gir": "GIR 6", "reasonVi": "Cuộn, đã tẩy gỉ, dày < 3 mm, carbon ≥ 0,6 %, không gia công đặc biệt → 7208.27.11.", "source": "Biểu thuế 2026 dòng 7208.27.11" },
+    { "id": "p-coil-lt-3", "priority": 70, "when": { "form": "coil", "patternInRelief": "no", "pickled": "yes", "thicknessMm": { "lt": 3 }, "furtherWorked": "none", "carbonBand": "low" }, "hs": "72082719", "gir": "GIR 6", "reasonVi": "Cuộn, đã tẩy gỉ, dày < 3 mm, carbon < 0,6 % (mặc định khi không nói), không gia công đặc biệt → 7208.27.19.", "source": "Biểu thuế 2026 dòng 7208.27.19" },
+    { "id": "p-coil-lt-3-highc-special", "priority": 75, "when": { "form": "coil", "patternInRelief": "no", "pickled": "yes", "thicknessMm": { "lt": 3 }, "furtherWorked": "other", "carbonBand": "high" }, "hs": "72082791", "gir": "GIR 6", "reasonVi": "Cuộn, đã tẩy gỉ, dày < 3 mm, carbon ≥ 0,6 %, có xử lý bề mặt/cán thêm → 7208.27.91.", "source": "Biểu thuế 2026 dòng 7208.27.91" },
+    { "id": "p-coil-lt-3-special", "priority": 65, "when": { "form": "coil", "patternInRelief": "no", "pickled": "yes", "thicknessMm": { "lt": 3 }, "furtherWorked": "other", "carbonBand": "low" }, "hs": "72082799", "gir": "GIR 6", "reasonVi": "Cuộn, đã tẩy gỉ, dày < 3 mm, carbon < 0,6 % (mặc định), có xử lý bề mặt/cán thêm → 7208.27.99.", "source": "Biểu thuế 2026 dòng 7208.27.99" },
+
+    { "id": "n-coil-gt-10", "priority": 80, "when": { "form": "coil", "patternInRelief": "no", "pickled": "no", "thicknessMm": { "gt": 10 } }, "hs": "72083600", "gir": "GIR 6", "reasonVi": "Cuộn, chưa tẩy gỉ, dày > 10 mm → 7208.36.00.", "source": "Biểu thuế 2026 dòng 7208.36.00" },
+    { "id": "n-coil-475-10", "priority": 80, "when": { "form": "coil", "patternInRelief": "no", "pickled": "no", "thicknessMm": { "gte": 4.75, "lte": 10 } }, "hs": "72083700", "gir": "GIR 6", "reasonVi": "Cuộn, chưa tẩy gỉ, dày 4,75–10 mm → 7208.37.00.", "source": "Biểu thuế 2026 dòng 7208.37.00" },
+    { "id": "n-coil-3-475", "priority": 80, "when": { "form": "coil", "patternInRelief": "no", "pickled": "no", "thicknessMm": { "gte": 3, "lt": 4.75 } }, "hs": "72083800", "gir": "GIR 6", "reasonVi": "Cuộn, chưa tẩy gỉ, dày 3 đến < 4,75 mm → 7208.38.00.", "source": "Biểu thuế 2026 dòng 7208.38.00" },
+    { "id": "n-coil-deep-drawing", "priority": 78, "when": { "form": "coil", "patternInRelief": "no", "pickled": "no", "thicknessMm": { "gt": 2 }, "deepDrawing": "yes" }, "hs": "72083940", "gir": "GIR 6", "reasonVi": "Cuộn, chưa tẩy gỉ, dày > 2 mm, thép siêu dẻo/dập sâu (độ bền kéo ≤ 550 MPa, khổ ≤ 1.250 mm theo biểu thuế) → 7208.39.40.", "source": "Biểu thuế 2026 dòng 7208.39.40" },
+    { "id": "n-coil-lt-3-highc", "priority": 75, "when": { "form": "coil", "patternInRelief": "no", "pickled": "no", "thicknessMm": { "lte": 1.5 }, "carbonBand": "high" }, "hs": "72083930", "gir": "GIR 6", "reasonVi": "Cuộn, chưa tẩy gỉ, dày ≤ 1,5 mm, carbon ≥ 0,6 % → 7208.39.30.", "source": "Biểu thuế 2026 dòng 7208.39.30" },
+    { "id": "n-coil-lt-3-017-15", "priority": 70, "when": { "form": "coil", "patternInRelief": "no", "pickled": "no", "thicknessMm": { "gt": 0.17, "lte": 1.5 }, "carbonBand": "low" }, "hs": "72083920", "gir": "GIR 6", "reasonVi": "Cuộn, chưa tẩy gỉ, dày 0,17–1,5 mm, carbon < 0,6 % (mặc định) → 7208.39.20.", "source": "Biểu thuế 2026 dòng 7208.39.20" },
+    { "id": "n-coil-lt-3-no-lt017", "priority": 70, "when": { "form": "coil", "patternInRelief": "no", "pickled": "no", "thicknessMm": { "lte": 0.17 }, "carbonBand": "low" }, "hs": "72083910", "gir": "GIR 6", "reasonVi": "Cuộn, chưa tẩy gỉ, dày ≤ 0,17 mm, carbon < 0,6 % (mặc định) → 7208.39.10.", "source": "Biểu thuế 2026 dòng 7208.39.10" },
+    { "id": "n-coil-lt-3-other", "priority": 55, "when": { "form": "coil", "patternInRelief": "no", "pickled": "no", "thicknessMm": { "lt": 3 } }, "hs": "72083990", "gir": "GIR 6", "reasonVi": "Cuộn, chưa tẩy gỉ, dày < 3 mm, không thuộc .10/.20/.30/.40 → 7208.39.90 (loại khác; vd dày 1,5–3 mm khi không siêu dẻo).", "source": "Biểu thuế 2026 dòng 7208.39.90" },
+
+    { "id": "np-gt-10", "priority": 70, "when": { "form": "not-coil", "patternInRelief": "no", "pickled": "no", "thicknessMm": { "gt": 10 } }, "hs": "72085100", "gir": "GIR 6", "reasonVi": "Không cuộn, không tẩy gỉ, dày > 10 mm → 7208.51.00.", "source": "Biểu thuế 2026 dòng 7208.51.00" },
+    { "id": "np-475-10", "priority": 70, "when": { "form": "not-coil", "patternInRelief": "no", "pickled": "no", "thicknessMm": { "gte": 4.75, "lte": 10 } }, "hs": "72085200", "gir": "GIR 6", "reasonVi": "Không cuộn, không tẩy gỉ, dày 4,75–10 mm → 7208.52.00.", "source": "Biểu thuế 2026 dòng 7208.52.00" },
+    { "id": "np-3-475", "priority": 70, "when": { "form": "not-coil", "patternInRelief": "no", "pickled": "no", "thicknessMm": { "gte": 3, "lt": 4.75 } }, "hs": "72085300", "gir": "GIR 6", "reasonVi": "Không cuộn, không tẩy gỉ, dày 3 đến < 4,75 mm → 7208.53.00.", "source": "Biểu thuế 2026 dòng 7208.53.00" },
+    { "id": "np-lt-3-lowc", "priority": 65, "when": { "form": "not-coil", "patternInRelief": "no", "pickled": "no", "thicknessMm": { "lte": 0.17 }, "carbonBand": "low" }, "hs": "72085410", "gir": "GIR 6", "reasonVi": "Không cuộn, không tẩy gỉ, dày ≤ 0,17 mm, carbon < 0,6 % (mặc định) → 7208.54.10.", "source": "Biểu thuế 2026 dòng 7208.54.10" },
+    { "id": "np-lt-3-other", "priority": 50, "when": { "form": "not-coil", "patternInRelief": "no", "pickled": "no", "thicknessMm": { "gt": 0.17, "lt": 3 } }, "hs": "72085490", "gir": "GIR 6", "reasonVi": "Không cuộn, không tẩy gỉ, dày 0,17 đến < 3 mm → 7208.54.90 (mặc định).", "source": "Biểu thuế 2026 dòng 7208.54.90" },
+
+    { "id": "other-worked-thin", "priority": 90, "when": { "furtherWorked": "other", "thicknessMm": { "lte": 0.17 }, "form": "not-coil", "carbonBand": "low" }, "hs": "72089020", "gir": "GIR 6", "reasonVi": "Không cuộn, đã gia công thêm (không lượn sóng), dày ≤ 0,17 mm, carbon < 0,6 % → 7208.90.20.", "source": "Biểu thuế 2026 dòng 7208.90.20" },
+    { "id": "other-worked", "priority": 85, "when": { "furtherWorked": "other", "form": "not-coil" }, "hs": "72089090", "gir": "GIR 6", "reasonVi": "Không cuộn, đã gia công thêm (không lượn sóng) → 7208.90.90.", "source": "Biểu thuế 2026 dòng 7208.90.90" }
+  ]
+}
