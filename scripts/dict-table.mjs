@@ -4,6 +4,7 @@
  *
  *   node scripts/dict-table.mjs 8536           # tình trạng: có bảng chưa, lá nào chưa có đường tới; in mọi lá kèm lời văn để soạn
  *   node scripts/dict-table.mjs 8536 --init    # sinh khung data/decision-tables/8536.json (không ghi đè file đã có)
+ *   node scripts/dict-table.mjs 8536 --oz                          # ĐỀ BÀI: tên hàng thật trong tờ khai Oz của nhóm + bảng hiện chốt được gì
  *   node scripts/dict-table.mjs 8536 --try "câu người gõ"          # chạy thử bảng với một câu
  *   node scripts/dict-table.mjs 8536 --try "câu" --facts '{"a":1}'  # kèm dữ kiện tường minh
  *
@@ -70,6 +71,20 @@ if (argv.includes('--init')) {
   mkdirSync(join(ROOT, 'data', 'decision-tables'), { recursive: true });
   writeFileSync(file, `${JSON.stringify(skeleton, null, 2)}\n`);
   console.log(`✓ đã sinh khung ${file.replace(ROOT + '/', '')} — xoá hai input ví dụ, khai đúng thuộc tính, viết luật cho MỌI lá bên dưới.`);
+}
+
+if (argv.includes('--oz')) {
+  const aliases = require(join(ROOT, 'data', 'hs-aliases.json')).aliases || [];
+  const phrases = aliases.filter((a) => String(a.hsCode).startsWith(heading)).sort((a, b) => b.count - a.count);
+  console.log(`\n== ${heading} — ${phrases.length} cụm tờ khai Oz (đề bài cho detect) ==`);
+  if (!phrases.length) console.log('   Oz không có tờ khai nhóm này → cửa nghiệm thu dùng ca câu chữ (≥ 60 % lá).');
+  dt._reset();
+  for (const a of phrases) {
+    const r = dt.resolveHeading(heading, { text: a.phrase, parsed: parseCommodityQuery(a.phrase) });
+    const verdict = r.status === 'RESOLVED' ? (r.hs === a.hsCode ? `✓ ${r.hs}` : `✗ bảng ${r.hs} ≠ Oz`) : r.status === 'NO_TABLE' ? '(chưa có bảng)' : `? hỏi ${(r.missingFacts || []).map((m) => m.attribute).join('/')}`;
+    console.log(`   ${String(a.count).padStart(4)}×  ${a.phrase.padEnd(34)} Oz ${a.hsCode}  ${verdict}`);
+  }
+  process.exit(0);
 }
 
 const tryIdx = argv.indexOf('--try');
