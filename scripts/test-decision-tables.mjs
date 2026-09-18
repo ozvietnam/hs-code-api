@@ -64,8 +64,10 @@ console.log('\n== Cách đánh giá: chưa biết thì hỏi, không chốt bừ
   const r4 = dt.resolveHeading('7209', { text: 'thép cuộn cán nguội dày 0,8 ly khổ 1200mm', parsed: parseCommodityQuery('thép cuộn cán nguội dày 0,8 ly khổ 1200mm') });
   check('"0,8 ly" hiểu là 0,8 mm → 72091710', r4.status === 'RESOLVED' && r4.hs === '72091710');
 
-  const r5 = dt.resolveHeading('7209', { text: 'thép cuộn tấm cán nguội dày 2mm khổ 1000' , parsed: parseCommodityQuery('thép cuộn tấm cán nguội dày 2mm khổ 1000') });
-  check('cuộn lẫn tấm cùng xuất hiện → mâu thuẫn → hỏi dạng', r5.status === 'INSUFFICIENT' && r5.missingFacts.some((m) => m.attribute === 'form'));
+  const r5 = dt.resolveHeading('7209', { text: 'steel coils sheet cold rolled dày 2mm khổ 1000', parsed: parseCommodityQuery('steel coils sheet cold rolled dày 2mm khổ 1000') });
+  check('hai cụm dài bằng nhau cùng xuất hiện (coils / sheet) → mâu thuẫn → hỏi dạng', r5.status === 'INSUFFICIENT' && r5.missingFacts.some((m) => m.attribute === 'form'));
+  const r5b = dt.resolveHeading('7209', { text: 'thép cuộn cán nguội dạng tấm dày 2mm khổ 1000mm', parsed: parseCommodityQuery('thép cuộn cán nguội dạng tấm dày 2mm khổ 1000mm') });
+  check('cụm dài hơn thắng cụm ngắn ("cuộn" 4 > "tấm" 3 → cuộn), không hỏi', r5b.status === 'RESOLVED' && r5b.hs === '72091610');
 
   check('nhóm không có bảng → NO_TABLE, không ném lỗi', dt.resolveHeading('9999', { text: 'x' }).status === 'NO_TABLE');
 
@@ -97,6 +99,26 @@ console.log('\n== tests/decision-cases.json ==');
   }
 }
 
+console.log('\n== Cửa nghiệm thu bằng dữ liệu thật (tờ khai Oz / ca câu chữ) ==');
+{
+  const aliases = require(join(ROOT, 'data', 'hs-aliases.json')).aliases || [];
+  const cases = JSON.parse(readFileSync(join(ROOT, 'tests', 'decision-cases.json'), 'utf8')).cases;
+  const progPath = join(ROOT, 'data', 'dictionary-progress.json');
+  const prog = existsSync(progPath) ? JSON.parse(readFileSync(progPath, 'utf8')) : { headings: {} };
+  for (const h of headings) {
+    const g = dt.acceptanceGate(h, { aliases, cases, taxData, parse: parseCommodityQuery });
+    const isDone = prog.headings?.[h]?.status === 'done';
+    const label = `${h} [${g.mode}] ${g.resolved}/${g.n || g.leaves} (${Math.round(g.ratio * 100)}%)${g.disagree?.length ? ` lệch tiền lệ ${g.disagree.length}` : ''}`;
+    if (isDone) check(`${label} — done phải qua cửa`, g.pass, g.thresholdVi);
+    else console.log(`  · ${label} — ${g.pass ? 'qua' : 'chưa qua'} (${prog.headings?.[h]?.status || 'không trong sổ'})`);
+  }
+  // Ca kiểm không được là "echo luật": text kiểu "kiểm r-x" + facts đủ để chốt.
+  // Bảng nháp (draft) được mang nợ này; bảng done thì không.
+  const doneSet = new Set(Object.entries(prog.headings || {}).filter(([, v]) => v.status === 'done').map(([h]) => h));
+  const echo = cases.filter((c) => doneSet.has(c.heading) && /^kiểm\s|^kiem\s|^test\s/i.test(String(c.text || '')) && c.facts && Object.keys(c.facts).length);
+  check('nhóm done không có ca "echo luật" (text "kiểm r-x" + facts)', echo.length === 0, echo.slice(0, 5).map((c) => c.id).join(', '));
+}
+
 console.log('\n== Sổ tiến độ ⇔ bảng ==');
 {
   const progPath = join(ROOT, 'data', 'dictionary-progress.json');
@@ -106,8 +128,8 @@ console.log('\n== Sổ tiến độ ⇔ bảng ==');
     .filter(([h, v]) => v.status === 'done' && !headings.includes(h))
     .map(([h]) => h);
   check('nhóm done nào cũng có bảng quyết định', doneNoTable.length === 0, doneNoTable.join(', '));
-  const tableNotDone = headings.filter((h) => prog.headings?.[h]?.status !== 'done');
-  check('bảng nào cũng được ghi done trong sổ', tableNotDone.length === 0, tableNotDone.join(', '));
+  const tableUnlisted = headings.filter((h) => !['done', 'draft', 'claimed'].includes(prog.headings?.[h]?.status));
+  check('bảng nào cũng có trong sổ (done / draft / claimed)', tableUnlisted.length === 0, tableUnlisted.join(', '));
 }
 
 if (failed) {
