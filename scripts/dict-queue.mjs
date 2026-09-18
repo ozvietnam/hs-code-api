@@ -84,6 +84,19 @@ if (claim || done || release) {
       console.error(`${h} chưa đủ điều kiện done: bảng ${cov.hasTable ? 'có' : 'CHƯA có'}, ${cov.missingHs.length} lá chưa có đường tới, ${errors.length} lỗi cấu trúc. Chạy dict:check trước.`);
       process.exit(1);
     }
+    const { parseCommodityQuery } = require(join(ROOT, 'lib', 'query-parse.js'));
+    const gate = dt.acceptanceGate(h, {
+      aliases: require(join(ROOT, 'data', 'hs-aliases.json')).aliases || [],
+      cases: JSON.parse(readFileSync(join(ROOT, 'tests', 'decision-cases.json'), 'utf8')).cases,
+      taxData: tax,
+      parse: parseCommodityQuery,
+    });
+    if (!gate.pass) {
+      progress.headings[h] = { ...cur, status: 'draft', draftAt: today(), by: opt('by', cur.by || 'unknown'), leafCount: cov.leaves.length, table: true, gateVi: `${gate.mode}: ${gate.resolved}/${gate.n || gate.leaves}` };
+      saveProgress();
+      console.error(`${h} chưa qua cửa dữ liệu thật (${gate.mode}: chốt ${gate.resolved}/${gate.n || gate.leaves}, cần ${gate.thresholdVi}). Ghi là draft. Xem: npm run dict:table -- ${h} --oz`);
+      process.exit(1);
+    }
     progress.headings[h] = {
       status: 'done', doneAt: today(), by: opt('by', cur.by || 'unknown'), commit: opt('commit', cur.commit || null),
       leafCount: cov.leaves.length, table: true, rules: dt.loadTable(h).rules.length,
@@ -157,7 +170,7 @@ rows.sort((a, b) => b.score - a.score || a.heading.localeCompare(b.heading));
 
 const chapter = opt('chapter');
 const top = Number(opt('top', 30));
-const OPEN = new Set(['open', 'dictionary']);
+const OPEN = new Set(['open', 'dictionary', 'draft']);
 const shown = rows.filter((r) => OPEN.has(r.status) && r.tier !== 'X' && (!chapter || r.heading.startsWith(String(chapter).padStart(2, '0'))));
 
 const doneN = rows.filter((r) => r.status === 'done').length;
@@ -165,11 +178,11 @@ const claimedN = rows.filter((r) => r.status === 'claimed').length;
 const byTier = {};
 for (const r of rows) byTier[r.tier] = (byTier[r.tier] || 0) + 1;
 console.log(`\n=== Hàng đợi từ điển — ${rows.length} nhóm 4 số · done ${doneN} · đang nhận ${claimedN} · tầng A ${byTier.A || 0} / B ${byTier.B || 0} / C ${byTier.C || 0} / bỏ ${byTier.X || 0} ===`);
-console.log(`Lá có bảng quyết định: ${rows.filter((r) => r.status === 'done').reduce((s, r) => s + r.leaf, 0)} / ${rows.filter((r) => r.tier !== 'X').reduce((s, r) => s + r.leaf, 0)} (không tính ch.98) · nhóm mới có từ điển, chưa có bảng: ${rows.filter((r) => r.status === 'dictionary').length}\n`);
-console.log('nhóm  tầng điểm   lá  dư%  oz   ozlá%  lỗi  từđiển  lý do');
+console.log(`Lá có bảng ĐÃ QUA cửa dữ liệu thật: ${rows.filter((r) => r.status === 'done').reduce((s, r) => s + r.leaf, 0)} / ${rows.filter((r) => r.tier !== 'X').reduce((s, r) => s + r.leaf, 0)} (không tính ch.98) · bảng nháp chưa qua cửa: ${rows.filter((r) => r.status === 'draft').length} · mới có từ điển: ${rows.filter((r) => r.status === 'dictionary').length}\n`);
+console.log('nhóm  tầng điểm   lá  dư%  oz   ozlá%  lỗi  từđiển  lý do   (nháp = có bảng nhưng chưa qua cửa dữ liệu thật)');
 for (const r of shown.slice(0, top)) {
   console.log(
-    `${r.heading}  ${r.tier}   ${String(r.score).padStart(5)}  ${String(r.leaf).padStart(3)}  ${String(Math.round(r.residualRatio * 100)).padStart(3)}  ${String(r.ozCount).padStart(4)}  ${String(Math.round(r.ozLeafRatio * 100)).padStart(4)}  ${String(r.err).padStart(3)}  ${r.status === 'dictionary' ? '  ✓   ' : '      '}  ${r.whyVi}`
+    `${r.heading}  ${r.tier}   ${String(r.score).padStart(5)}  ${String(r.leaf).padStart(3)}  ${String(Math.round(r.residualRatio * 100)).padStart(3)}  ${String(r.ozCount).padStart(4)}  ${String(Math.round(r.ozLeafRatio * 100)).padStart(4)}  ${String(r.err).padStart(3)}  ${r.status === 'dictionary' ? '  ✓   ' : r.status === 'draft' ? ' nháp ' : '      '}  ${r.whyVi}`
   );
 }
 if (shown.length > top) console.log(`… còn ${shown.length - top} nhóm nữa (--top=${shown.length}).`);

@@ -1,6 +1,6 @@
 # Hướng dẫn vòng lặp: bảng quyết định theo nhóm 4 số — đi hết cuốn biểu thuế
 
-Bản v3 (2026-09-17), CEO chốt: **tên gọi / chức năng / công dụng đưa hàng tới
+Bản v3.1 (2026-09-18; mục 3.5 thêm sau nghiệm thu 26 bảng đầu), CEO chốt: **tên gọi / chức năng / công dụng đưa hàng tới
 NHÓM 4 số; từ 6 xuống 8 số do THUỘC TÍNH quyết định.** Không ai gõ tên hàng
 khác nhau cho 84818021 và 84818022 — cái tách chúng là Ø cửa nạp. Vì thế đơn
 vị việc của agent đổi từ "từ điển tên phủ 100 % lá" (bản v2, đã nghiệm thu:
@@ -18,6 +18,7 @@ kiện nào thì hỏi. Từ điển tên thu về cấp nhóm.
 npm run dict:queue                                   # 1. lấy nhóm ĐẦU TIÊN còn open đúng tầng được giao
 npm run dict:queue -- --claim=8536 --by=<tên-agent>  # 2. nhận; sổ tiến độ khoá, không ai nhận trùng
 npm run dict:table -- 8536                           # 3. đọc MỌI lá (cột EN giữ điều kiện dòng cha mà tiếng Việt lược mất)
+npm run dict:table -- 8536 --oz                      # 3b. đề bài: tên hàng THẬT trong tờ khai Oz của nhóm, kèm số lần
 npm run dict:table -- 8536 --init                    # 4. sinh khung data/decision-tables/8536.json
 #   viết bảng (mục 3) + ca kiểm vào tests/decision-cases.json (mục 4)
 #   nếu tên chợ chưa dẫn về nhóm: thêm mục từ điển CẤP NHÓM (mục 5)
@@ -136,6 +137,37 @@ Bảng ở `data/decision-tables/<nhóm>.json`. Xem hai bảng mẫu: `8427.json
 
 ---
 
+## 3.5 Nhận diện TRƯỚC, luật SAU — bài học 26 bảng đầu (2026-09-18)
+
+26 bảng nộp trong một buổi, `npm test` xanh, `dict:check` xanh. Đem **305 tên
+hàng thật** trong tờ khai Oz của chính các nhóm đó vào: bảng chốt được **3**.
+`xi lanh khí nén` (158 tờ khai) bị hỏi lại *"hàng là gì?"*. Bảng chép đúng cấu
+trúc biểu thuế nhưng không NHẬN RA hàng — với người khai thì bằng không có.
+
+Nguyên nhân: `detect` chép lời văn biểu thuế; ca kiểm viết kiểu
+`"text": "kiểm r-x", "facts": {...}` — bảng tự nói với chính nó. Vì thế:
+
+- **Viết `detect` từ cách người ta gõ**: tên chợ, viết tắt, không dấu, tiếng
+  Anh thương mại (`xi lanh` / `xy lanh` / `xilanh` / `cylinder` / `ben`), không
+  phải "chuyển động tịnh tiến". Lệnh `npm run dict:table -- <nhóm> --oz` in
+  các cụm tờ khai Oz của nhóm kèm số lần — **đó là đề bài**.
+- **Ca kiểm bằng câu chữ**: `text` là câu người thật gõ, không `facts`. Ca có
+  `facts` chỉ để kiểm nhánh hiếm không có tên riêng; **không được tính** vào
+  phủ lá. Ca `"text": "kiểm r-x"` bị test coi là không có ca.
+- **`preferOnConflict`** cho thuộc tính "nguyên chiếc / bộ phận": *"đầu lắc xi
+  lanh khí nén"* chứa cả cụm xi lanh lẫn cụm bộ phận → khai
+  `"preferOnConflict": "parts"` để cụm bộ phận thắng, không hỏi lại.
+- **`assumeIfUnknown`** cho nhánh hiếm (bộ phận của động cơ phản lực) để câu
+  thường không bị hỏi thứ 99 % không gặp.
+
+**Cửa nghiệm thu bằng dữ liệu thật** (`dict:check` bước [4b], test khoá cho
+nhóm `done`):
+- Nhóm có ≥ 3 cụm tờ khai Oz: bảng phải **chốt ≥ 50 %** cụm, và không chốt
+  lệch tiền lệ tập trung (share ≥ 0,8, ≥ 3 tờ khai).
+- Nhóm Oz không có tờ khai: ca **chỉ bằng câu chữ** phải chốt đúng **≥ 60 %
+  số lá**.
+Không qua cửa thì trạng thái là `draft` (bảng nháp), không phải `done`.
+
 ## 4. Ca kiểm — `tests/decision-cases.json`
 
 ```json
@@ -146,6 +178,7 @@ Bảng ở `data/decision-tables/<nhóm>.json`. Xem hai bảng mẫu: `8427.json
 - **Mọi lá** có ít nhất một ca `expectHs` chốt ra nó (test khoá).
 - Ít nhất một ca `expectAsk` — chứng minh bảng hỏi đúng thứ đang thiếu.
 - `text` là câu người thật gõ; `facts` là câu trả lời ERP/người dùng đưa.
+  **Cửa nghiệm thu chỉ đếm ca không có `facts`.** Xem mục 3.5.
 
 ---
 
@@ -176,6 +209,7 @@ Bảng ở `data/decision-tables/<nhóm>.json`. Xem hai bảng mẫu: `8427.json
 [2] bảng của nhóm                                có, hợp lệ, mọi lá có đường tới
 [3] lint                                         bảng (5–7 ở mục 3.4) + mục từ điển chạm nhóm
 [4] ca kiểm                                      mọi lá có ca; có ca hỏi; ca search về nhóm
+[4b] dữ liệu thật                                cụm tờ khai Oz của nhóm chốt ≥ 50 % (hoặc ca câu chữ ≥ 60 % lá)
 [5] bench:delta                                  không mức nào giảm so với bản đã commit
 ```
 Nhóm mới: lint là điều kiện nhận. Nhóm đã `done`: lint chỉ cảnh báo.

@@ -10,52 +10,280 @@
     {
       "attribute": "goodsKind",
       "type": "enum",
-      "domain": ["engine", "parts"],
+      "domain": [
+        "engine",
+        "parts"
+      ],
       "labelVi": "Động cơ / bộ phận",
-      "questionVi": "Là động cơ/mô tơ nguyên chiếc hay bộ phận của động cơ nhóm 84.12?",
+      "questionVi": "Hàng là xi lanh / động cơ / mô tơ nguyên chiếc, hay là BỘ PHẬN của chúng (đầu lắc, ống lót, phớt, piston…)?",
       "detect": {
-        "engine": ["động cơ", "engine", "motor", "mô tơ", "xi lanh thủy lực", "pneumatic motor"],
-        "parts": ["bộ phận động cơ", "parts engine 8412", "phụ tùng xi lanh", "linh kiện mô tơ khí nén"]
-      }
+        "engine": [
+          "động cơ",
+          "engine",
+          "motor",
+          "mô tơ",
+          "xi lanh",
+          "xy lanh",
+          "xilanh",
+          "xylanh",
+          "cylinder",
+          "ben",
+          "bầu phanh",
+          "actuator"
+        ],
+        "parts": [
+          "bộ phận",
+          "phụ tùng",
+          "linh kiện",
+          "đầu lắc",
+          "ống lót",
+          "phớt",
+          "gioăng",
+          "seal kit",
+          "piston",
+          "cần piston",
+          "ty xi lanh",
+          "đầu nối xi lanh",
+          "bộ kít sửa",
+          "repair kit",
+          "parts"
+        ]
+      },
+      "preferOnConflict": "parts"
     },
     {
       "attribute": "engineType",
       "type": "enum",
-      "domain": ["reaction", "hydraulicLinear", "hydraulicOther", "pneumaticLinear", "pneumaticOther", "otherEngine"],
+      "domain": [
+        "reaction",
+        "hydraulicLinear",
+        "hydraulicOther",
+        "pneumaticLinear",
+        "pneumaticOther",
+        "otherEngine"
+      ],
       "labelVi": "Loại động cơ",
-      "questionVi": "Phản lực; thủy lực tịnh tiến (xi lanh); thủy lực quay/khác; khí nén tịnh tiến; khí nén khác; hay loại khác?",
+      "questionVi": "Xi lanh/động cơ chạy bằng gì: khí nén hay thủy lực, và chuyển động tịnh tiến (xi lanh) hay quay (motor)? Hay động cơ phản lực / điện / gió?",
       "detect": {
-        "reaction": ["phản lực", "reaction engine", "rocket engine", "pulse jet"],
-        "hydraulicLinear": ["xi lanh thủy lực", "hydraulic cylinder", "linear hydraulic"],
-        "hydraulicOther": ["motor thủy lực", "hydraulic motor", "quay thủy lực"],
-        "pneumaticLinear": ["xi lanh khí nén", "pneumatic cylinder", "linear pneumatic"],
-        "pneumaticOther": ["motor khí nén", "pneumatic motor", "mô tơ khí nén quay"],
-        "otherEngine": ["động cơ khí", "spring motor", "động cơ khác 8412"]
+        "reaction": [
+          "phản lực",
+          "reaction engine",
+          "rocket engine",
+          "pulse jet",
+          "động cơ tên lửa"
+        ],
+        "hydraulicLinear": [
+          "xi lanh thủy lực",
+          "xi lanh thủy",
+          "xy lanh thủy lực",
+          "xilanh thủy lực",
+          "ben thủy lực",
+          "ben dầu",
+          "xi lanh dầu",
+          "hydraulic cylinder",
+          "hydraulic ram"
+        ],
+        "hydraulicOther": [
+          "motor thủy lực",
+          "mô tơ thủy lực",
+          "động cơ thủy lực",
+          "hydraulic motor",
+          "bầu phanh thủy lực",
+          "quay thủy lực"
+        ],
+        "pneumaticLinear": [
+          "xi lanh khí nén",
+          "xi lanh khí",
+          "xy lanh khí nén",
+          "xy lanh khí",
+          "xilanh khí nén",
+          "xilanh khí",
+          "xylanh khí nén",
+          "xylanh khí",
+          "xilanh vuông",
+          "xi lanh vuông",
+          "xi lanh mini",
+          "xy lanh mini",
+          "pneumatic cylinder",
+          "air cylinder",
+          "xi lanh kẹp",
+          "xi lanh trượt",
+          "ben khí",
+          "ben hơi",
+          "xi lanh hơi"
+        ],
+        "pneumaticOther": [
+          "motor khí nén",
+          "mô tơ khí nén",
+          "động cơ khí nén",
+          "air motor",
+          "pneumatic motor",
+          "mô tơ hơi"
+        ],
+        "otherEngine": [
+          "xy lanh điện",
+          "xi lanh điện",
+          "electric cylinder",
+          "actuator điện",
+          "electric actuator",
+          "động cơ gió",
+          "wind engine",
+          "động cơ lò xo",
+          "spring motor"
+        ]
       }
     },
     {
       "attribute": "partsFor",
       "type": "enum",
-      "domain": ["reaction841210", "steamTurbineSet", "other"],
+      "domain": [
+        "reaction841210",
+        "steamTurbineSet",
+        "other"
+      ],
       "labelVi": "Bộ phận của loại máy nào",
-      "questionVi": "Bộ phận của động cơ phản lực 8412.10; của động cơ/mô tơ dùng tổ máy hơi nước/hơi khác gắn nồi hơi; hay loại khác?",
+      "questionVi": "Bộ phận này của động cơ phản lực, của tổ máy động lực hơi nước, hay của xi lanh/mô tơ thủy lực–khí nén thường?",
       "detect": {
-        "reaction841210": ["8412.10", "phản lực", "reaction engine parts"],
-        "steamTurbineSet": ["tổ máy hơi nước", "steam turbine set", "nồi hơi gắn"],
-        "other": ["bộ phận xi lanh", "hydraulic parts", "pneumatic parts other"]
-      }
+        "reaction841210": [
+          "động cơ phản lực",
+          "reaction engine",
+          "rocket"
+        ],
+        "steamTurbineSet": [
+          "tổ máy hơi nước",
+          "steam turbine",
+          "tua bin hơi",
+          "nồi hơi"
+        ],
+        "other": [
+          "xi lanh",
+          "xy lanh",
+          "xilanh",
+          "xylanh",
+          "cylinder",
+          "thủy lực",
+          "khí nén",
+          "mô tơ",
+          "motor",
+          "piston",
+          "phớt",
+          "gioăng",
+          "ống lót",
+          "đầu lắc"
+        ]
+      },
+      "assumeIfUnknown": "other"
     }
   ],
   "hitPolicy": "PRIORITY",
   "rules": [
-    { "id": "r-reaction", "priority": 50, "when": { "goodsKind": "engine", "engineType": "reaction" }, "hs": "84121000", "gir": "GIR 6", "reasonVi": "Động cơ phản lực (trừ tua bin phản lực) → 8412.10.00.", "source": "Biểu thuế 2026 dòng 8412.10.00" },
-    { "id": "r-hyd-linear", "priority": 50, "when": { "goodsKind": "engine", "engineType": "hydraulicLinear" }, "hs": "84122100", "gir": "GIR 6", "reasonVi": "Động cơ/mô tơ thủy lực tịnh tiến → 8412.21.00.", "source": "Biểu thuế 2026 dòng 8412.21.00" },
-    { "id": "r-hyd-other", "priority": 45, "when": { "goodsKind": "engine", "engineType": "hydraulicOther" }, "hs": "84122900", "gir": "GIR 6", "reasonVi": "Động cơ/mô tơ thủy lực loại khác → 8412.29.00.", "source": "Biểu thuế 2026 dòng 8412.29.00" },
-    { "id": "r-pneu-linear", "priority": 50, "when": { "goodsKind": "engine", "engineType": "pneumaticLinear" }, "hs": "84123100", "gir": "GIR 6", "reasonVi": "Động cơ/mô tơ khí nén tịnh tiến → 8412.31.00.", "source": "Biểu thuế 2026 dòng 8412.31.00" },
-    { "id": "r-pneu-other", "priority": 45, "when": { "goodsKind": "engine", "engineType": "pneumaticOther" }, "hs": "84123900", "gir": "GIR 6", "reasonVi": "Động cơ/mô tơ khí nén loại khác → 8412.39.00.", "source": "Biểu thuế 2026 dòng 8412.39.00" },
-    { "id": "r-engine-other", "priority": 40, "when": { "goodsKind": "engine", "engineType": "otherEngine" }, "hs": "84128000", "gir": "GIR 6", "reasonVi": "Động cơ/mô tơ loại khác thuộc 84.12 → 8412.80.00.", "source": "Biểu thuế 2026 dòng 8412.80.00" },
-    { "id": "r-parts-reaction", "priority": 50, "when": { "goodsKind": "parts", "partsFor": "reaction841210" }, "hs": "84129010", "gir": "GIR 6", "reasonVi": "Bộ phận động cơ phản lực 8412.10 → 8412.90.10.", "source": "Biểu thuế 2026 dòng 8412.90.10" },
-    { "id": "r-parts-steam", "priority": 50, "when": { "goodsKind": "parts", "partsFor": "steamTurbineSet" }, "hs": "84129020", "gir": "GIR 6", "reasonVi": "Bộ phận dùng tổ máy hơi nước/hơi khác → 8412.90.20.", "source": "Biểu thuế 2026 dòng 8412.90.20" },
-    { "id": "r-parts-other", "priority": 10, "when": { "goodsKind": "parts", "partsFor": "other" }, "hs": "84129090", "gir": "GIR 6", "reasonVi": "Bộ phận động cơ 84.12 loại khác → 8412.90.90.", "source": "Biểu thuế 2026 dòng 8412.90.90" }
+    {
+      "id": "r-reaction",
+      "priority": 50,
+      "when": {
+        "goodsKind": "engine",
+        "engineType": "reaction"
+      },
+      "hs": "84121000",
+      "gir": "GIR 6",
+      "reasonVi": "Động cơ phản lực (trừ tua bin phản lực) → 8412.10.00.",
+      "source": "Biểu thuế 2026 dòng 8412.10.00"
+    },
+    {
+      "id": "r-hyd-linear",
+      "priority": 50,
+      "when": {
+        "goodsKind": "engine",
+        "engineType": "hydraulicLinear"
+      },
+      "hs": "84122100",
+      "gir": "GIR 6",
+      "reasonVi": "Động cơ/mô tơ thủy lực tịnh tiến → 8412.21.00.",
+      "source": "Biểu thuế 2026 dòng 8412.21.00"
+    },
+    {
+      "id": "r-hyd-other",
+      "priority": 45,
+      "when": {
+        "goodsKind": "engine",
+        "engineType": "hydraulicOther"
+      },
+      "hs": "84122900",
+      "gir": "GIR 6",
+      "reasonVi": "Động cơ/mô tơ thủy lực loại khác → 8412.29.00.",
+      "source": "Biểu thuế 2026 dòng 8412.29.00"
+    },
+    {
+      "id": "r-pneu-linear",
+      "priority": 50,
+      "when": {
+        "goodsKind": "engine",
+        "engineType": "pneumaticLinear"
+      },
+      "hs": "84123100",
+      "gir": "GIR 6",
+      "reasonVi": "Động cơ/mô tơ khí nén tịnh tiến → 8412.31.00.",
+      "source": "Biểu thuế 2026 dòng 8412.31.00"
+    },
+    {
+      "id": "r-pneu-other",
+      "priority": 45,
+      "when": {
+        "goodsKind": "engine",
+        "engineType": "pneumaticOther"
+      },
+      "hs": "84123900",
+      "gir": "GIR 6",
+      "reasonVi": "Động cơ/mô tơ khí nén loại khác → 8412.39.00.",
+      "source": "Biểu thuế 2026 dòng 8412.39.00"
+    },
+    {
+      "id": "r-engine-other",
+      "priority": 40,
+      "when": {
+        "goodsKind": "engine",
+        "engineType": "otherEngine"
+      },
+      "hs": "84128000",
+      "gir": "GIR 6",
+      "reasonVi": "Động cơ/mô tơ loại khác thuộc 84.12 → 8412.80.00.",
+      "source": "Biểu thuế 2026 dòng 8412.80.00"
+    },
+    {
+      "id": "r-parts-reaction",
+      "priority": 50,
+      "when": {
+        "goodsKind": "parts",
+        "partsFor": "reaction841210"
+      },
+      "hs": "84129010",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận động cơ phản lực 8412.10 → 8412.90.10.",
+      "source": "Biểu thuế 2026 dòng 8412.90.10"
+    },
+    {
+      "id": "r-parts-steam",
+      "priority": 50,
+      "when": {
+        "goodsKind": "parts",
+        "partsFor": "steamTurbineSet"
+      },
+      "hs": "84129020",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận dùng tổ máy hơi nước/hơi khác → 8412.90.20.",
+      "source": "Biểu thuế 2026 dòng 8412.90.20"
+    },
+    {
+      "id": "r-parts-other",
+      "priority": 10,
+      "when": {
+        "goodsKind": "parts",
+        "partsFor": "other"
+      },
+      "hs": "84129090",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận động cơ 84.12 loại khác → 8412.90.90.",
+      "source": "Biểu thuế 2026 dòng 8412.90.90"
+    }
   ]
 }
