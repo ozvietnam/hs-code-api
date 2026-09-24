@@ -109,5 +109,17 @@ if (report?.results?.length) {
   assert('benchmark: chương 98 từng gây lỗi đáng kể (lý do bộ lọc tồn tại)', pred98 > 0, { pred98 });
 }
 
+// Dữ liệu: cột "mã hàng tương ứng" từng bị đổ vào dvt (dvt = "03061500").
+{
+  const { taxData } = require('../lib/data.js');
+  const { mapTaxLookup } = require('../lib/tax-mapper.js');
+  const rows98 = Object.values(taxData).filter((r) => r.hs.startsWith('98'));
+  const codeInUnit = rows98.filter((r) => /^\d{4,8}$/.test(String(r.dvt || '').trim())).map((r) => r.hs);
+  assert('chương 98: không dòng nào có mã HS nằm trong cột đơn vị tính', codeInUnit.length === 0, codeInUnit.slice(0, 5));
+  assert('chương 98: mọi dòng có trường ma_tuong_ung', rows98.every((r) => 'ma_tuong_ung' in r));
+  const t = mapTaxLookup('98041500');
+  assert('chương 98: /api/tax trả mappedHs + ĐVT thật', t.unitVi === 'kg' && t.mappedHs?.hsCode === '03061500', { unitVi: t.unitVi, mappedHs: t.mappedHs?.hsCode });
+}
+
 console.log(`\n${passed}/${passed + failed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);
