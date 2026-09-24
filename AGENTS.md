@@ -138,6 +138,18 @@ Hai trường khác **không phải** căn cứ pháp lý, đừng trình bày n
 `rankingSignals[]` (tín hiệu xếp hạng kỹ thuật) và `chapterGuidance[]` (checklist
 dữ kiện theo chương).
 
+**Ba cái bẫy khi đọc kết quả:**
+
+- **Thuế ACFTA:** đừng đọc số đầu của `taxAcfta`. `"0 (-CN)"` nghĩa là hàng
+  xuất xứ Trung Quốc **không** được 0%. Đọc `taxAcftaChina.eligible` hoặc
+  `acfta.forOrigin` (`/api/tax?hs=...&origin=CN`); `eligible: false` → áp MFN.
+- **`degraded: true` / `engine: "deterministic"`:** AI không chạy được hoặc mọi
+  mã AI đưa ra đều bị loại vì không có trong biểu thuế. Gợi ý chỉ là thứ tự tìm
+  kiếm, `confidence: null`. Nói rõ với người dùng là cần chuyên viên chọn.
+- **`confidence` không phải xác suất đúng.** Chưa hiệu chuẩn — đừng nói "92% chắc
+  chắn". Có `missingFacts[]` thì hỏi người dùng từng `questionVi`, rồi gọi lại
+  với `facts`.
+
 ---
 
 ## 5. Độ chính xác thật — hãy trung thực với người dùng
