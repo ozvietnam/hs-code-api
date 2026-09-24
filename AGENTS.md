@@ -65,6 +65,8 @@ qua GitHub Issue.
 | Văn bản pháp luật (108) | `data/legal-docs.json` |
 | Mã loại hình XNK | `data/customs-types.json` |
 | Sản phẩm ví dụ cho mã "Loại khác" | `data/loai-khac-products.jsonl` |
+| **Nguồn gốc từng tệp dữ liệu** | `data/SOURCES.json` |
+| **Hạn đối chiếu / độ mới dữ liệu** | `data/data-freshness.json` |
 
 ### Cách C — Đọc qua GitHub khi bị chặn ở domain
 
