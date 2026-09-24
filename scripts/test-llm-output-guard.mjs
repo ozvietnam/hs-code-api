@@ -78,6 +78,13 @@ check('classify: giữ 8 số có thật, kẹp confidence', vc.results[0]?.hs =
 check('classify: 8 số không có thật → hạ về 6 số', vc.results.some((r) => r.hs === '841370' && r.downgradedFrom === '84137050' && r.confidence <= 70), vc.results);
 check('classify: 6 số không có thật bị loại', !vc.results.some((r) => r.hs === '841399'));
 
+// ── Prompt classify: không cắt cứng 10 mã/nhóm ──
+const { codesForPrompt } = require('../lib/classify');
+const cp = codesForPrompt('8413', 'máy bơm nước ly tâm');
+check('classify prompt: nhóm 8413 (43 mã) đưa đủ, có 84137019', cp.omitted === 0 && cp.codes.some((c) => c.hs === '84137019'), { n: cp.codes.length, omitted: cp.omitted });
+const big = codesForPrompt('8703', 'xe ô tô điện chở người 5 chỗ');
+check('classify prompt: nhóm rất lớn bị lược nhưng ≤45 và báo số lược', big.codes.length <= 45 && big.omitted > 0);
+
 // ── Handler ──
 function mockRes() {
   return { _s: 0, _j: null, setHeader() {}, status(c) { this._s = c; return this; }, json(p) { this._j = p; return this; }, end() { return this; } };
