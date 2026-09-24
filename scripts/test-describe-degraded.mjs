@@ -19,6 +19,14 @@ gemini.geminiGenerateJson = async () => {
   return { json: { declaration: { tenHang: 'Sản phẩm test' } }, model: 'gemini-2.5-flash' };
 };
 
+// Chuỗi fallback (Hermes/MiniMax/OpenRouter) khi không có Gemini.
+const llmTier = require('../lib/llm-tier');
+let fallbackMode = 'fail';
+llmTier.callLLMJson = async () => {
+  if (fallbackMode === 'fail') throw Object.assign(new Error('no fallback provider'), { code: 'NO_PROVIDER' });
+  return { json: { declaration: { tenHang: 'Sản phẩm fallback' } }, model: 'minimax-test', provider: 'minimax' };
+};
+
 const handler = require('../api/describe.js');
 const { taxData } = require('../lib/data');
 const HS = Object.keys(taxData)[0];
@@ -61,10 +69,21 @@ check('ok: llmError=null', r3._j?.llmError === null);
 check('ok: llmModel set', typeof r3._j?.llmModel === 'string');
 check('ok: KHÔNG có warning degraded', !hasWarn(r3, 'DESCRIPTION_DEGRADED'));
 
-// 4. Chưa cấu hình Gemini → 503 rõ ràng (giữ nguyên hành vi cũ)
+// 4. Chưa cấu hình Gemini, có provider fallback → dùng fallback, không degraded
 mode = 'notconfig';
+fallbackMode = 'ok';
 const r4 = await call({ hsCode: HS, productName: 'Bơm test' });
-check('notconfig: status 503 rõ ràng', r4._s === 503);
+check('notconfig+fallback: status 200', r4._s === 200);
+check('notconfig+fallback: dùng model fallback', r4._j?.llmModel === 'minimax-test');
+check('notconfig+fallback: degraded=false', r4._j?.degraded === false);
+
+// 5. Không có provider nào → vẫn 200 + bản khai dựng sẵn, degraded (không 503)
+fallbackMode = 'fail';
+const r5 = await call({ hsCode: HS, productName: 'Bơm test' });
+check('no-provider: status 200 (không 503)', r5._s === 200);
+check('no-provider: degraded=true', r5._j?.degraded === true);
+check('no-provider: vẫn có declaration', !!r5._j?.declaration);
+check('no-provider: có warning DESCRIPTION_DEGRADED', hasWarn(r5, 'DESCRIPTION_DEGRADED'));
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

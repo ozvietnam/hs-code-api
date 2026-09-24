@@ -49,7 +49,7 @@ const paths = {
       summary: 'Kiểm tra dịch vụ + trạng thái LLM',
       description:
         'Trả 200 khi đủ cả 3 điều kiện: có dữ liệu biểu thuế, có token cấu hình, và còn ít nhất một nhà cung cấp LLM. ' +
-        'Thiếu LLM thì trả 503 kèm `checks.llm.note` — /api/suggest và /api/describe sẽ lỗi.',
+        'Thiếu LLM thì trả 503 kèm `checks.llm.note` — /api/suggest và /api/describe chỉ chạy chế độ không AI (degraded).',
     }),
   },
   '/api/tax': {

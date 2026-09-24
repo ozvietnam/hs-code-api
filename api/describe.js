@@ -3,6 +3,8 @@ const { setCors, handleOptions } = require('../lib/cors');
 const { getTaxRecord, normalizeHs } = require('../lib/data');
 const { mapTaxRecord } = require('../lib/tax-mapper');
 const { geminiGenerateJson } = require('../lib/gemini');
+// Gọi qua module (không destructure) để test mock được chuỗi fallback.
+const llmTier = require('../lib/llm-tier');
 const { SYSTEM_PROMPT, buildChapterFieldsPrompt } = require('../lib/customs-prompt');
 const { composeWithMeta } = require('../lib/describe-compose');
 const { validateDeclaration, normalizeDeclaration } = require('../lib/declaration-validator');
@@ -75,21 +77,30 @@ module.exports = async function handler(req, res) {
       },
     };
 
+    const chapterHint = buildChapterFieldsPrompt(hsCode.slice(0, 2), hsCode);
+    const systemPrompt = SYSTEM_PROMPT + chapterHint;
+    const userPrompt = JSON.stringify(payload, null, 2);
     try {
-      const chapterHint = buildChapterFieldsPrompt(hsCode.slice(0, 2), hsCode);
-      const { json, model } = await geminiGenerateJson({
-        systemPrompt: SYSTEM_PROMPT + chapterHint,
-        userPrompt: JSON.stringify(payload, null, 2),
-        modelEnv: 'GEMINI_DESCRIBE_MODEL',
-        defaultModel: 'gemini-2.5-flash',
-      });
-      llmModel = model;
-      declaration = normalizeDeclaration(json, context);
+      let result;
+      try {
+        result = await geminiGenerateJson({
+          systemPrompt,
+          userPrompt,
+          modelEnv: 'GEMINI_DESCRIBE_MODEL',
+          defaultModel: 'gemini-2.5-flash',
+        });
+      } catch (geminiError) {
+        // Không có Gemini → đi chuỗi fallback (Hermes → MiniMax → OpenRouter)
+        // như /api/suggest, thay vì chết 503. Lỗi khác giữ nguyên đường degraded.
+        if (geminiError.code !== 'GEMINI_NOT_CONFIGURED') throw geminiError;
+        result = await llmTier.callLLMJson(systemPrompt, userPrompt, { tier: 'standard', timeoutMs: 45000 });
+      }
+      llmModel = result.model;
+      declaration = normalizeDeclaration(result.json, context);
     } catch (error) {
       captureError(error, { endpoint: 'describe', hsCode });
-      if (error.code === 'GEMINI_NOT_CONFIGURED') {
-        return res.status(503).json({ error: 'Gemini is not configured', detail: error.message });
-      }
+      // Hết provider vẫn trả bản khai dựng từ dữ kiện người dùng (degraded),
+      // KHÔNG 503 — mô hình/ERP phía trên vẫn có khung để làm việc tiếp.
       declaration = normalizeDeclaration(
         {
           declaration: {
