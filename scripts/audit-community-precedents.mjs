@@ -37,8 +37,8 @@ const existing = JSON.parse(readFileSync(join(root, 'data/precedents.json'), 'ut
 const existingByRef = new Map();
 for (const [hs, list] of Object.entries(existing)) for (const p of list || []) {
   const k = String(p.tbTchqNumber || '').replace(/\s+/g, '');
-  if (!existingByRef.has(k)) existingByRef.set(k, new Set());
-  existingByRef.get(k).add(hs);
+  if (!existingByRef.has(k)) existingByRef.set(k, new Map());
+  existingByRef.get(k).set(hs, p.year || null);
 }
 
 const REF_RE = /^\d{1,6}\/(TB-TCHQ|TB-CHQ|TCHQ-TXNK|CHQ-NVTHQ|TCHQ-GSQL|TXNK-PL|TB-CTHQ|CHQ-TXNK)$/i;
@@ -77,8 +77,11 @@ for (const file of listFiles(dir)) {
       if (m && !ref.startsWith(m[1] + '/')) warns.push(`${at}: url nói ${m[1]} nhưng reference là ${ref}`);
     }
     if (r.date && !/^\d{4}-\d{2}-\d{2}$/.test(String(r.source?.issuedDate || ''))) {}
+    // Số hiệu TB-TCHQ đánh lại từ đầu mỗi năm → chỉ nghi ngờ khi cùng năm (hoặc không rõ năm)
     if (existingByRef.has(ref) && !existingByRef.get(ref).has(hs)) {
-      warns.push(`${at}: ${ref} đã có trong precedents.json với mã ${[...existingByRef.get(ref)].join(',')} — bản mới ghi ${hs} (có thể thông báo nhiều mặt hàng, cần xem)`);
+      const year = Number(String(r.source?.issuedDate || '').slice(0, 4)) || null;
+      const sameYear = [...existingByRef.get(ref).values()].some((y) => !y || !year || y === year);
+      if (sameYear) warns.push(`${at}: ${ref} đã có trong precedents.json với mã ${[...existingByRef.get(ref).keys()].join(',')} — bản mới ghi ${hs} (cùng năm hoặc không rõ năm, cần xem)`);
     }
     if (/(công ty|cong ty|co\.,? ?ltd|tnhh|jsc|corporation|mã số thuế|mst[:\s]|tờ khai số)/i.test(`${r.description} ${r.reasonVi}`)) {
       problems.push(`${at}: có dấu hiệu tên doanh nghiệp/MST/số tờ khai`);
