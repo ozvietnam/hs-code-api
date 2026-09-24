@@ -2,6 +2,19 @@ const { requireAuthUnlessPublic } = require('../lib/public-access');
 const { setCors, handleOptions } = require('../lib/cors');
 const { notesData, normalizeHs } = require('../lib/data');
 const { buildNoteChain } = require('../lib/gir-notes');
+const fs = require('fs');
+const { dataReadPath } = require('../lib/data-paths');
+
+// notes.json thiếu 9 chương (50, 52, 53, 75, 76, 78, 79, 80, 81). Chương 75–80
+// có chú giải trong chu-giai-chuong.json → dùng làm nguồn dự phòng thay vì 404.
+let _cgc = null;
+function chuGiaiChuong(chapNum) {
+  if (!_cgc) {
+    try { _cgc = JSON.parse(fs.readFileSync(dataReadPath('chu-giai-chuong.json'), 'utf8')); } catch { _cgc = {}; }
+  }
+  const e = _cgc[String(chapNum).padStart(2, '0')];
+  return e && String(e.chuong || '').trim() ? String(e.chuong) : null;
+}
 
 module.exports = function handler(req, res) {
   setCors(res);
@@ -53,10 +66,12 @@ module.exports = function handler(req, res) {
     });
   }
 
-  if (!notesData[chapNum]) {
+  const fallback = notesData[chapNum] ? null : chuGiaiChuong(chapNum);
+  if (!notesData[chapNum] && !fallback) {
     return res.status(404).json({
       found: false,
-      message: `No notes for chapter ${chapNum}`,
+      chapter: parseInt(chapNum, 10),
+      message: `Dữ liệu không có chú giải chương ${chapNum} (có thể biểu gốc không có chú giải chương này — đối chiếu Danh mục TT 31/2022/TT-BTC).`,
     });
   }
 
@@ -66,8 +81,10 @@ module.exports = function handler(req, res) {
     found: true,
     chapter: parseInt(chapNum, 10),
     hsCode,
-    content: notesData[chapNum],
+    content: notesData[chapNum] || fallback,
     chain,
-    source: 'Danh mục HHDM XNK Việt Nam - TT31/2022/TT-BTC',
+    source: notesData[chapNum]
+      ? 'Danh mục HHDM XNK Việt Nam - TT31/2022/TT-BTC'
+      : 'Danh mục HHDM XNK Việt Nam - TT31/2022/TT-BTC (data/chu-giai-chuong.json)',
   });
 };
