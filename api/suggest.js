@@ -280,6 +280,27 @@ module.exports = async function handler(req, res) {
       enrichedSuggestions = [{ ...picked, decidedByTable: { heading: topDecision.heading, ruleId: topDecision.ruleId, reasonVi: topDecision.reasonVi } }, ...enrichedSuggestions];
     }
 
+    // 52% đáp án thật là mã "Loại khác" nhưng hệ thống hay chọn mã cụ thể. Guard
+    // chỉ CẢNH BÁO (không đổi top-1), nhưng mã residual được đề xuất phải có mặt
+    // trong danh sách để người khai chọn được: chèn vào vị trí cuối (không đụng
+    // top-1) nếu chưa có.
+    if (
+      residualAdvisory?.suggestedHs &&
+      topReranked > 1 &&
+      taxData[residualAdvisory.suggestedHs] &&
+      !enrichedSuggestions.some((sg) => sg.hsCode === residualAdvisory.suggestedHs)
+    ) {
+      const added = withExamples({
+        hsCode: residualAdvisory.suggestedHs,
+        nameVi: taxData[residualAdvisory.suggestedHs].vn || null,
+        confidence: null,
+        reasoning: residualAdvisory.reasonVi,
+        addedByResidualGuard: true,
+      }, 5);
+      if (enrichedSuggestions.length < topReranked) enrichedSuggestions.push(added);
+      else if (enrichedSuggestions.length > 1) enrichedSuggestions[enrichedSuggestions.length - 1] = added;
+    }
+
     // B4: shared knowledge — conflicts + explanatory note cho mã top (cùng layer với /classify)
     const top1Hs = enrichedSuggestions[0]?.hsCode;
     const explanatoryNote  = top1Hs ? getNoteSummaryForHs(top1Hs) : null;

@@ -13,9 +13,11 @@ process.env.HS_API_TOKEN = 'test-token';
 const llmTier = require('../lib/llm-tier');
 let mode = 'fake';
 let pickFrom = [];
+let fixedPick = null;
 llmTier.callLLMJson = async (system) => {
   // Bước đề xuất nhóm 4 số trong retrieve-candidates — không cần cho test này.
   if (!/chọn tối đa 3 mã|suggestions/i.test(system)) return { json: { headings: [] }, model: 'mock' };
+  if (mode === 'fixed') return { json: { suggestions: [{ hsCode: fixedPick, confidence: 80, reasoning: 'x' }] }, model: 'mock' };
   if (mode === 'throw') throw Object.assign(new Error('rate limit'), { status: 429 });
   if (mode === 'fake') {
     return { json: { suggestions: [
@@ -126,6 +128,22 @@ const r4 = await call({ description: 'máy bơm nước ly tâm dùng điện' }
 check('cache: cùng câu hỏi → cached', r4._j?.cached === true);
 const r5 = await call({ description: 'máy bơm nước ly tâm dùng điện', facts: { power: 'electric' } });
 check('cache: có facts → không dùng bản cache cũ', r5._j?.cached !== true);
+
+// Residual guard: mã "Loại khác" được đề xuất phải có trong danh sách, top-1 giữ nguyên.
+mode = 'fixed';
+const r6desc = 'máy bơm nước gia đình';
+const ev6 = (await call({ description: r6desc, options: { topReranked: 1 } }))._j?.evidence?.map((e) => e.hsCode) || [];
+fixedPick = ev6.find((h) => h === '84137011') || ev6.find((h) => h.startsWith('841370')) || ev6[0];
+const r6 = await call({ description: `${r6desc} `, options: { topReranked: 3 } });
+const adv = r6._j?.residualAdvisory;
+if (adv?.suggestedHs) {
+  const codes6 = r6._j.suggestions.map((x) => x.hsCode);
+  check('residual: mã Loại khác đề xuất có trong gợi ý', codes6.includes(adv.suggestedHs), { codes6, adv: adv.suggestedHs });
+  check('residual: top-1 giữ nguyên mã LLM chọn', codes6[0] === fixedPick, { codes6, fixedPick });
+  check('residual: mục chèn có cờ addedByResidualGuard', r6._j.suggestions.some((x) => x.addedByResidualGuard && x.hsCode === adv.suggestedHs));
+} else {
+  check('residual: guard phải kích hoạt cho ca này', false, { fixedPick, ev6 });
+}
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
