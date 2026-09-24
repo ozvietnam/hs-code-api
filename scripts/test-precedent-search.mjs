@@ -37,6 +37,14 @@ const t3 = top('thép cuộn cán nguội');
 assert('thép cuộn cán nguội → 7209', t3 && t3.hs.startsWith('7209'), JSON.stringify(t3));
 const t4 = top('nhãn nhựa tự dính đã in');
 assert('nhãn nhựa tự dính đã in → 3919', t4 && t4.hs.startsWith('3919'), JSON.stringify(t4));
+const t7 = top('Rơ le điện từ, hiệu Omron, model MY2N 5V, hàng mới 100%');
+assert('nhãn hiệu + model + khuôn mẫu tờ khai không kéo tụt dưới ngưỡng cộng điểm: rơ le điện từ Omron MY2N 5V → 85364990 ≥ 0,5', t7 && t7.hs === '85364990' && t7.sim >= 0.5, JSON.stringify(t7));
+const { stripDeclarationBoilerplate } = require('../lib/precedent-search.js');
+assert('bỏ khuôn mẫu tờ khai nhưng giữ "tín hiệu"', stripDeclarationBoilerplate('Cáp tín hiệu, hiệu Omron, model X1, xuất xứ Trung Quốc, hàng mới 100%') === 'Cáp tín hiệu, Omron, X1, Trung Quốc,', JSON.stringify(stripDeclarationBoilerplate('Cáp tín hiệu, hiệu Omron, model X1, xuất xứ Trung Quốc, hàng mới 100%')));
+const t9 = top('thép cuộn cán nguội SPCC Posco 1.2mm x 1219mm');
+assert('thép cuộn cán nguội SPCC Posco 1.2mm → 7209 ≥ 0,5', t9 && t9.hs.startsWith('7209') && t9.sim >= 0.5, JSON.stringify(t9));
+const t8 = searchPrecedents('Airtac SC50x100', { topK: 1 });
+assert('câu hỏi toàn nhãn hiệu/model không khớp tiền lệ nào', !t8.length || t8[0].similarity === 0, JSON.stringify(t8.map((m) => [m.finalHsCode, m.similarity])));
 const t5 = top('xi lanh thủy lực');
 assert('xi lanh thủy lực: không có tiền lệ tên khớp → điểm < 0,7 (không chạm trần)', t5 && t5.sim < 0.7, JSON.stringify(t5));
 const t6 = searchPrecedents('máy bơm Pentax', { topK: 3 });
@@ -44,6 +52,8 @@ assert('máy bơm Pentax: không có tiền lệ nào ≥ 0,5 (không được c
 const { applyPrecedentBoost } = require('../lib/precedent-search.js');
 const boosted = applyPrecedentBoost([{ hsCode: '85364990', confidence: 50 }, { hsCode: '85365099', confidence: 55 }], 'rơ le điện từ 5V');
 assert('applyPrecedentBoost cộng điểm cho 85364990 và ghi girPrecedentRule', boosted.girPrecedentRule === 'GIR-4' && boosted.suggestions[0].hsCode === '85364990', JSON.stringify(boosted.suggestions));
+const noCand = applyPrecedentBoost([{ hsCode: '85365099', confidence: 55 }], 'máy bơm Pentax');
+assert('có tiền lệ ≥ 0,5 nhưng không ứng viên nào mang mã đó → không gắn GIR-4, danh sách giữ nguyên', noCand.girPrecedentRule === null && noCand.suggestions.length === 1, JSON.stringify(noCand));
 const weak = applyPrecedentBoost([{ hsCode: '34039912', confidence: 50 }], 'máy bơm Pentax');
 assert('khớp yếu (< 0,5) không cộng điểm', weak.girPrecedentRule === null, JSON.stringify(weak));
 
