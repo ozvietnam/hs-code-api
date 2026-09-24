@@ -27,34 +27,85 @@
           "ổ bi",
           "ball bearing",
           "deep groove",
-          "vòng bi"
+          "vòng bi",
+          "bạc đạn",
+          "bac dan",
+          "vòng bi cầu",
+          "ổ bi cầu",
+          "6205",
+          "6204",
+          "6203",
+          "608zz",
+          "6001",
+          "6301",
+          "deep groove ball",
+          "ổ bi đỡ",
+          "ổ bi chặn",
+          "thrust ball",
+          "bearing 6",
+          "linear bearing",
+          "bạc đạn trượt tuyến tính",
+          "lm8uu",
+          "lmk",
+          "ổ trượt tuyến tính",
+          "vòng bi trượt",
+          "ball bushing",
+          "bạc đạn trượt"
         ],
         "taperedRoller": [
           "ổ đũa côn",
           "tapered roller",
           "cone bearing",
-          "đũa côn"
+          "đũa côn",
+          "bạc đạn côn",
+          "vòng bi côn",
+          "30205",
+          "32008",
+          "tapered roller bearing",
+          "ổ côn"
         ],
         "sphericalRoller": [
           "ổ đũa cầu",
           "spherical roller",
-          "self-aligning roller"
+          "self-aligning roller",
+          "vòng bi tang trống",
+          "bạc đạn tang trống",
+          "22210",
+          "22212",
+          "spherical roller bearing",
+          "ổ tang trống"
         ],
         "needleRoller": [
           "ổ đũa kim",
           "needle roller",
-          "needle bearing"
+          "needle bearing",
+          "vòng bi kim",
+          "bạc đạn kim",
+          "hk1210",
+          "nk",
+          "needle roller bearing",
+          "ổ kim"
         ],
         "cylindricalRoller": [
           "ổ đũa trụ",
           "cylindrical roller",
-          "đũa trụ"
+          "đũa trụ",
+          "vòng bi trụ",
+          "bạc đạn đũa trụ",
+          "nu205",
+          "n205",
+          "cylindrical roller bearing",
+          "ổ đũa hình trụ"
         ],
         "otherCombined": [
           "ổ kết hợp",
           "combined ball/roller",
-          "linear bearing",
-          "ổ đũa khác"
+          "ổ đũa khác",
+          "vòng bi kết hợp",
+          "ổ bi kết hợp",
+          "ổ bi kết hợp đũa",
+          "combined ball roller",
+          "vòng bi kết hợp bi đũa"
         ],
         "partsRollingElements": [
           "bi vòng",
@@ -62,7 +113,13 @@
           "balls needles rollers",
           "rolling elements",
           "bộ bi",
-          "cage và đũa"
+          "cage và đũa",
+          "bi thép",
+          "viên bi thép",
+          "bi tròn thép",
+          "kim lăn",
+          "steel balls",
+          "rollers"
         ],
         "partsOther": [
           "vòng trong",
@@ -71,9 +128,16 @@
           "outer ring",
           "bearing cage",
           "bộ phận ổ bi",
-          "parts bearing"
+          "parts bearing",
+          "lồng bi",
+          "cage vòng bi",
+          "vòng cách",
+          "phớt vòng bi",
+          "phụ tùng vòng bi",
+          "bộ phận vòng bi"
         ]
-      }
+      },
+      "preferOnConflict": "partsOther"
     }
   ],
   "hitPolicy": "PRIORITY",
@@ -81,7 +145,9 @@
     {
       "id": "r-ball",
       "priority": 50,
-      "when": { "bearingKind": "ball" },
+      "when": {
+        "bearingKind": "ball"
+      },
       "hs": "84821000",
       "gir": "GIR 6",
       "reasonVi": "Ổ bi → 8482.10.00.",
@@ -90,7 +156,9 @@
     {
       "id": "r-tapered",
       "priority": 50,
-      "when": { "bearingKind": "taperedRoller" },
+      "when": {
+        "bearingKind": "taperedRoller"
+      },
       "hs": "84822000",
       "gir": "GIR 6",
       "reasonVi": "Ổ đũa côn (kể cả cụm vành côn) → 8482.20.00.",
@@ -99,7 +167,9 @@
     {
       "id": "r-spherical",
       "priority": 50,
-      "when": { "bearingKind": "sphericalRoller" },
+      "when": {
+        "bearingKind": "sphericalRoller"
+      },
       "hs": "84823000",
       "gir": "GIR 6",
       "reasonVi": "Ổ đũa cầu → 8482.30.00.",
@@ -108,7 +178,9 @@
     {
       "id": "r-needle",
       "priority": 50,
-      "when": { "bearingKind": "needleRoller" },
+      "when": {
+        "bearingKind": "needleRoller"
+      },
       "hs": "84824000",
       "gir": "GIR 6",
       "reasonVi": "Ổ đũa kim (kể cả lồng và cụm đũa kim) → 8482.40.00.",
@@ -117,7 +189,9 @@
     {
       "id": "r-cylindrical",
       "priority": 50,
-      "when": { "bearingKind": "cylindricalRoller" },
+      "when": {
+        "bearingKind": "cylindricalRoller"
+      },
       "hs": "84825000",
       "gir": "GIR 6",
       "reasonVi": "Ổ đũa trụ khác → 8482.50.00.",
@@ -126,7 +200,9 @@
     {
       "id": "r-other-bearing",
       "priority": 40,
-      "when": { "bearingKind": "otherCombined" },
+      "when": {
+        "bearingKind": "otherCombined"
+      },
       "hs": "84828000",
       "gir": "GIR 6",
       "reasonVi": "Ổ đũa loại khác / kết hợp bi–đũa → 8482.80.00.",
@@ -135,7 +211,9 @@
     {
       "id": "r-parts-elements",
       "priority": 45,
-      "when": { "bearingKind": "partsRollingElements" },
+      "when": {
+        "bearingKind": "partsRollingElements"
+      },
       "hs": "84829100",
       "gir": "GIR 6",
       "reasonVi": "Bộ phận: bi, kim, đũa lăn → 8482.91.00.",
@@ -144,7 +222,9 @@
     {
       "id": "r-parts-other",
       "priority": 10,
-      "when": { "bearingKind": "partsOther" },
+      "when": {
+        "bearingKind": "partsOther"
+      },
       "hs": "84829900",
       "gir": "GIR 6",
       "reasonVi": "Bộ phận ổ đũa loại khác (không phải bi/kim/đũa) → 8482.99.00.",

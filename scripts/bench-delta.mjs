@@ -71,7 +71,8 @@ function codeFingerprint() {
   for (const f of libFiles) {
     const src = readFileSync(join(libDir, f), 'utf8');
     h.update(f).update(src);
-    for (const m of src.matchAll(/['"`]([\w.-]+\.json)['"`]/g)) dataFiles.add(m[1]);
+    // bắt cả require('../data/x.json') — trước đây dấu '/' làm lọt 3 tệp từ điển
+    for (const m of src.matchAll(/['"`](?:[\w./-]*\/)?([\w.-]+\.json)['"`]/g)) dataFiles.add(m[1]);
   }
   dataFiles.delete('trade-synonyms.json');
   for (const f of [...dataFiles].sort()) {

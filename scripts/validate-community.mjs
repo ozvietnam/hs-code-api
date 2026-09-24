@@ -51,7 +51,14 @@ function scanPrivacy(file, value, path) {
 
 function walkStrings(file, node, path = '') {
   if (node === null || node === undefined) return;
-  if (typeof node === 'string') return scanPrivacy(file, node, path || '(gốc)');
+  if (typeof node === 'string') {
+    // source.url: id bài viết trong đường dẫn (vd .../articles/16000067953) không
+    // phải MST/số tờ khai — chỉ bỏ qua các mẫu THUẦN SỐ trong url, mẫu chữ vẫn quét.
+    if (/(^|\.)source\.url$/.test(path) && /^https?:\/\//.test(node)) {
+      return scanPrivacy(file, node.replace(/\d{6,}/g, (d) => 'x'.repeat(d.length)), path);
+    }
+    return scanPrivacy(file, node, path || '(gốc)');
+  }
   if (Array.isArray(node)) return node.forEach((v, i) => walkStrings(file, v, `${path}[${i}]`));
   if (typeof node === 'object') {
     for (const [k, v] of Object.entries(node)) walkStrings(file, v, path ? `${path}.${k}` : k);
