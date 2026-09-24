@@ -12,7 +12,7 @@ module.exports = function handler(req, res) {
   }
   if (requireAuthUnlessPublic(req, res, { endpoint: 'tax' })) return;
 
-  const { hs } = req.query;
+  const { hs, origin } = req.query;
   if (!hs) {
     return res.status(400).json({
       error: 'Missing hs parameter',
@@ -20,7 +20,7 @@ module.exports = function handler(req, res) {
     });
   }
 
-  const result = buildTaxLookup(hs);
+  const result = buildTaxLookup(hs, origin ? { origin } : undefined);
   if (!result.found) {
     return res.status(404).json(result);
   }
