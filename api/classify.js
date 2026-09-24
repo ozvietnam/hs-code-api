@@ -1,7 +1,7 @@
 // POST /api/classify — áp mã HS theo phương pháp hs-code-vn (Pha 2).
 // Body: { tenHang|name, chatLieu|material, congDung|purpose, chucNang?, nameZh?, specs? }
 //   (đến từ OrderItem ERP: name, customerDescription→congDung, nameZh, ...)
-// Trả: { results:[{hs, confidence, reason, gir, tbTchq?}], missing:[], candidates, ms }
+// Trả: { results:[{hs, confidence, reason, tbTchq?}], girRulesApplied:[], missing:[], candidates, ms }
 
 const { requireAuth } = require('../lib/auth');
 const { setCors, handleOptions } = require('../lib/cors');

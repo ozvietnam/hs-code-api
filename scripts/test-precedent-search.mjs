@@ -51,11 +51,11 @@ const t6 = searchPrecedents('máy bơm Pentax', { topK: 3 });
 assert('máy bơm Pentax: không có tiền lệ nào ≥ 0,5 (không được cộng điểm)', t6.every((m) => m.similarity < 0.5), JSON.stringify(t6.map((m) => [m.finalHsCode, m.similarity])));
 const { applyPrecedentBoost } = require('../lib/precedent-search.js');
 const boosted = applyPrecedentBoost([{ hsCode: '85364990', confidence: 50 }, { hsCode: '85365099', confidence: 55 }], 'rơ le điện từ 5V');
-assert('applyPrecedentBoost cộng điểm cho 85364990 và ghi girPrecedentRule', boosted.girPrecedentRule === 'GIR-4' && boosted.suggestions[0].hsCode === '85364990', JSON.stringify(boosted.suggestions));
+assert('applyPrecedentBoost cộng điểm cho 85364990 và đánh dấu precedentDrove', boosted.precedentDrove === true && boosted.suggestions[0].hsCode === '85364990', JSON.stringify(boosted.suggestions));
 const noCand = applyPrecedentBoost([{ hsCode: '85365099', confidence: 55 }], 'máy bơm Pentax');
-assert('có tiền lệ ≥ 0,5 nhưng không ứng viên nào mang mã đó → không gắn GIR-4, danh sách giữ nguyên', noCand.girPrecedentRule === null && noCand.suggestions.length === 1, JSON.stringify(noCand));
+assert('có tiền lệ ≥ 0,5 nhưng không ứng viên nào mang mã đó → không gắn GIR-4, danh sách giữ nguyên', noCand.precedentDrove === false && noCand.suggestions.length === 1, JSON.stringify(noCand));
 const weak = applyPrecedentBoost([{ hsCode: '34039912', confidence: 50 }], 'máy bơm Pentax');
-assert('khớp yếu (< 0,5) không cộng điểm', weak.girPrecedentRule === null, JSON.stringify(weak));
+assert('khớp yếu (< 0,5) không cộng điểm', weak.precedentDrove === false, JSON.stringify(weak));
 
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);

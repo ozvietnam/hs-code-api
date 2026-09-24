@@ -3,6 +3,7 @@ const path = require('path');
 const crypto = require('crypto');
 const { requireAuth } = require('../lib/auth');
 const { setCors, handleOptions } = require('../lib/cors');
+const { taxData } = require('../lib/data');
 const {
   listFeedback,
   reviewFeedback,
@@ -126,12 +127,21 @@ module.exports = function handler(req, res) {
     return res.status(400).json({ error: 'feedbackType is required' });
   }
 
+  // Mã sửa lại phải có thật — feedback sai mã sẽ dạy hệ thống sai.
+  const corrected = body?.correctedHsCode ? String(body.correctedHsCode).replace(/\D/g, '') : null;
+  if (corrected && !taxData[corrected]) {
+    return res.status(400).json({
+      error: `correctedHsCode ${body.correctedHsCode} không có trong biểu thuế (cần mã 8 số hợp lệ)`,
+      code: 'INVALID_HS_CODE',
+    });
+  }
+
   const feedbackId = `fb_${crypto.randomBytes(8).toString('hex')}`;
   const record = {
     feedbackId,
     feedbackType,
     hsCodeAtTime: body?.hsCodeAtTime || null,
-    correctedHsCode: body?.correctedHsCode || null,
+    correctedHsCode: corrected,
     productName: body?.productName || null,
     directorNote: body?.directorNote || null,
     orderCode: body?.orderCode || null,
@@ -147,6 +157,19 @@ module.exports = function handler(req, res) {
     persisted = true;
   } catch (error) {
     console.warn('feedback persist failed:', error.message);
+  }
+
+  // Trước đây trả 200 {ok:true, persisted:false} → ERP tưởng đã lưu trong khi
+  // trên Vercel (FS read-only) mọi feedback đều mất. Nay báo lỗi thật + trả lại
+  // bản ghi để phía gọi tự giữ và gửi lại khi có kho lưu bền.
+  if (!persisted) {
+    return res.status(503).json({
+      ok: false,
+      code: 'FEEDBACK_NOT_PERSISTED',
+      error: 'Máy chủ chưa có kho lưu bền cho feedback — bản ghi CHƯA được lưu.',
+      retryable: false,
+      record,
+    });
   }
 
   return res.status(200).json({

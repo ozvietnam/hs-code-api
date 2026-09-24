@@ -1,0 +1,39 @@
+{
+  "_comment": "Hạn đối chiếu của từng nguồn dữ liệu. Khi đã kiểm tra nguồn chính thống mà KHÔNG có thay đổi, cập nhật lastCheckedAt + checkedBy. Khi có văn bản mới, cập nhật dữ liệu rồi mới cập nhật ngày. lib/data-freshness.js đọc file này cho /api/health và scripts/check-freshness.mjs (workflow hằng tuần).",
+  "sources": {
+    "tariff": {
+      "labelVi": "Biểu thuế XNK (data/tax.json)",
+      "effectiveDate": "2026-01-01",
+      "lastCheckedAt": "2026-05-27",
+      "checkEveryDays": 30,
+      "howToCheckVi": "Tra văn bản sửa đổi, bổ sung Nghị định biểu thuế XNK ưu đãi và các Nghị định biểu thuế FTA ban hành sau lastCheckedAt (congbao.chinhphu.vn, customs.gov.vn)."
+    },
+    "vatReduction": {
+      "labelVi": "Giảm thuế GTGT 10% → 8%",
+      "legalBasis": "174/2025/NĐ-CP",
+      "validUntil": "2026-12-31",
+      "lastCheckedAt": "2026-07-02",
+      "checkEveryDays": 30,
+      "warnBeforeDays": 60,
+      "howToCheckVi": "Kiểm tra văn bản gia hạn/thay thế chính sách giảm GTGT. Hết hạn mà không gia hạn → các dòng '8/10' phải về 10%."
+    },
+    "precedents": {
+      "labelVi": "Tiền lệ phân loại TB-TCHQ (data/precedents.json)",
+      "lastCheckedAt": "2026-09-24",
+      "checkEveryDays": 30,
+      "howToCheckVi": "Rà thông báo kết quả phân loại mới trên customs.gov.vn, bổ sung vào precedents.json, remap mã theo biểu hiện hành."
+    },
+    "legalDocs": {
+      "labelVi": "Văn bản pháp luật chính sách (data/legal-docs.json)",
+      "lastCheckedAt": "2026-07-02",
+      "checkEveryDays": 60,
+      "howToCheckVi": "Kiểm tra hiệu lực/thay thế của các văn bản trong legal-docs.json; cập nhật status, replacedBy."
+    },
+    "ministries": {
+      "labelVi": "Danh mục bộ ngành (data/ministries-vn.json)",
+      "lastCheckedAt": "2026-09-24",
+      "checkEveryDays": 180,
+      "howToCheckVi": "Đối chiếu cơ cấu tổ chức Chính phủ hiện hành."
+    }
+  }
+}

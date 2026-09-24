@@ -62,7 +62,8 @@ const fire = checkResidualPreference({
 });
 assert('BẬT khi mô tả không nêu điều kiện của mã cụ thể', Boolean(fire), fire);
 assert('đề xuất mã residual', fire && isResidual(fire.suggestedHs));
-assert('trích dẫn GIR 3(a)', fire?.girRule === 'GIR 3(a)');
+// Cảnh báo residual là tín hiệu heuristic, KHÔNG được tự gắn nhãn GIR (rule #6).
+assert('không tự gắn nhãn GIR', fire && !('girRule' in fire));
 assert('nêu rõ lý do', (fire?.reasonVi || '').length > 50);
 assert('kèm bằng chứng điều kiện nào chưa khớp', Array.isArray(fire?.evidence?.requiredTerms) && fire.evidence.requiredTerms.length > 0);
 assert('matchRatio = 0 khi không khớp gì', fire?.evidence?.matchRatio === 0, fire?.evidence);

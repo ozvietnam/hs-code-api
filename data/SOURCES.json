@@ -1,0 +1,281 @@
+{
+  "_comment": "Nguồn gốc từng tệp trong data/ (AGENTS.md: luôn dẫn nguồn). kind: MASTER=dữ liệu gốc, DERIVED=dựng lại được bằng builtBy, CURATED=soạn tay, REFERENCE=danh mục chuẩn, REPORT/WORKLIST/RUNTIME_LOG/CONFIG/STUB/SAMPLE/MIXED. scripts/test-data-sources.mjs đỏ khi thêm tệp mới mà chưa khai ở đây.",
+  "files": {
+    "SOURCES.json": {
+      "kind": "CONFIG",
+      "descriptionVi": "Tệp này — nguồn gốc từng tệp dữ liệu"
+    },
+    "accuracy-latest.json": {
+      "kind": "REPORT",
+      "descriptionVi": "Độ chính xác pipeline (n=57, 2026-07-07)",
+      "builtBy": "scripts/accuracy-benchmark.mjs"
+    },
+    "accuracy-report-2026-05-28.json": {
+      "kind": "REPORT",
+      "descriptionVi": "Báo cáo benchmark 200 mẫu (có mô tả hàng) — xem mục D13 báo cáo phê bình",
+      "builtBy": "scripts/accuracy-benchmark.mjs"
+    },
+    "alias-benchmark-latest.json": {
+      "kind": "REPORT",
+      "descriptionVi": "Mốc độ chính xác tầng tìm kiếm trên tập giữ riêng — CI so với mốc này",
+      "builtBy": "scripts/benchmark-alias-holdout.mjs"
+    },
+    "anti-patterns.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Mẫu mô tả mơ hồ bị Hải quan bác (CV 5189/TCHQ-GSQL, CV 755/TCHQ-GSQL)"
+    },
+    "attributes.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Registry thuộc tính dùng chung cho bảng quyết định / checklist"
+    },
+    "audit-log.jsonl": {
+      "kind": "RUNTIME_LOG",
+      "descriptionVi": "Nhật ký sửa dữ liệu qua admin",
+      "builtBy": "lib/admin-update.js"
+    },
+    "brand-product-map.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Nhãn hiệu → loại hàng",
+      "builtBy": "scripts/build-trademark-seed.mjs"
+    },
+    "chapter-declaration-fields.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Catalog trường khai báo TT 39/2018 theo chương"
+    },
+    "chapter-specific-rules.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Thuộc tính bắt buộc theo chương"
+    },
+    "chu-giai-chuong.json": {
+      "kind": "MASTER",
+      "descriptionVi": "Chú giải chương/phần — thu hoạch từ KG",
+      "builtBy": "scripts/harvest-chu-giai.mjs"
+    },
+    "chu-giai-heading.json": {
+      "kind": "MASTER",
+      "descriptionVi": "Chú giải nhóm 4 số (1.269 nhóm) — thu hoạch từ KG + làm giàu điểm phân biệt",
+      "builtBy": "scripts/harvest-chu-giai.mjs"
+    },
+    "conflict-tables.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Bảng quyết định cho cụm mã dễ nhầm (4 bảng, đã verify)"
+    },
+    "conflict-worklist.json": {
+      "kind": "WORKLIST",
+      "descriptionVi": "Hàng đợi cụm mã cần làm bảng quyết định",
+      "builtBy": "scripts/build-conflict-worklist.mjs"
+    },
+    "conflicts.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Cụm mã dễ nhầm",
+      "builtBy": "scripts/enrich-conflicts.mjs"
+    },
+    "confusion-pairs.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Từ điển mâu thuẫn HS: mặt hàng DN hay khai mã A, Hải quan hay ấn định mã B — 50 mục từ tài liệu CEO + 170 cặp nhóm ngành",
+      "builtBy": "scripts/build-confusion-pairs.mjs"
+    },
+    "customs-types.json": {
+      "kind": "MASTER",
+      "descriptionVi": "Mã loại hình XNK — QĐ 1357/QĐ-TCHQ"
+    },
+    "data-freshness.json": {
+      "kind": "CONFIG",
+      "descriptionVi": "Hạn đối chiếu từng nguồn dữ liệu",
+      "builtBy": "scripts/check-freshness.mjs"
+    },
+    "data-quality-report.json": {
+      "kind": "REPORT",
+      "descriptionVi": "Báo cáo chất lượng dữ liệu",
+      "builtBy": "scripts/data-quality-report.mjs"
+    },
+    "dictionary-progress.json": {
+      "kind": "WORKLIST",
+      "descriptionVi": "Sổ tiến độ vòng lặp từ điển"
+    },
+    "dictionary-queue.json": {
+      "kind": "WORKLIST",
+      "descriptionVi": "Hàng đợi mở rộng từ điển / bảng quyết định",
+      "builtBy": "scripts/dict-queue.mjs"
+    },
+    "english-product-map.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Tên hàng tiếng Anh → HS — CHƯA GHI NHẬN — cần bổ sung nguồn gốc"
+    },
+    "error-log.jsonl": {
+      "kind": "RUNTIME_LOG",
+      "descriptionVi": "Nhật ký lỗi",
+      "builtBy": "lib/error-monitor.js"
+    },
+    "explanatory-notes.json": {
+      "kind": "MASTER",
+      "descriptionVi": "Chú giải chi tiết (EN) — CHƯA GHI NHẬN — cần bổ sung nguồn gốc"
+    },
+    "feedback.jsonl": {
+      "kind": "RUNTIME_LOG",
+      "descriptionVi": "Feedback giám đốc (trống — production chưa có kho lưu bền)",
+      "builtBy": "lib/feedback-store.js"
+    },
+    "glossary-xnk.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Thuật ngữ XNK Việt–Anh–Trung"
+    },
+    "heading-declaration-fields.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Checklist trường khai báo theo nhóm 4 số",
+      "builtBy": "scripts/build-heading-declaration-fields.mjs"
+    },
+    "hs-aliases.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Alias tên hàng → mã, đào từ tờ khai Oz (trừ tập giữ riêng 15%)",
+      "builtBy": "scripts/build-hs-aliases.mjs"
+    },
+    "hs-context.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Ngữ cảnh mã HS cho tìm kiếm",
+      "builtBy": "scripts/build-hs-context.mjs"
+    },
+    "hs-declaration-mine-queue.json": {
+      "kind": "WORKLIST",
+      "descriptionVi": "Hàng đợi override cần rà tay",
+      "builtBy": "scripts/mine-hs-declaration-overrides.mjs"
+    },
+    "hs-declaration-overrides.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Override trường khai báo cho mã 8 số (chuyên gia + đào từ tờ khai Oz)",
+      "builtBy": "scripts/mine-hs-declaration-overrides.mjs"
+    },
+    "hs-sections.json": {
+      "kind": "REFERENCE",
+      "descriptionVi": "Tên 21 phần của Danh mục HS"
+    },
+    "iso-3166-vn.json": {
+      "kind": "REFERENCE",
+      "descriptionVi": "Mã quốc gia ISO 3166 tên tiếng Việt"
+    },
+    "legacy-knowledge.sample.json": {
+      "kind": "SAMPLE",
+      "descriptionVi": "Mẫu định dạng tri thức cũ để import",
+      "builtBy": "scripts/merge-legacy-knowledge.mjs"
+    },
+    "legal-doc-titles.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Tiêu đề văn bản đã kiểm chứng thủ công",
+      "builtBy": "scripts/apply-verified-titles.mjs"
+    },
+    "legal-docs.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Chỉ mục văn bản pháp luật trích từ cột chính sách của tax.json (108 mục, 70 đã verify tiêu đề)",
+      "builtBy": "scripts/extract-legal-refs.mjs"
+    },
+    "legal-notes-enriched.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Chú giải pháp lý đã làm giàu — CHƯA GHI NHẬN — cần bổ sung nguồn gốc"
+    },
+    "loai-khac-corpus.jsonl": {
+      "kind": "DERIVED",
+      "descriptionVi": "Corpus mô tả mã Loại khác",
+      "builtBy": "scripts/gen-loai-khac-corpus.mjs"
+    },
+    "loai-khac-enriched.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Chú thích mã Loại khác sinh bằng LLM",
+      "builtBy": "scripts/generate-loai-khac-notes.mjs"
+    },
+    "loai-khac-index.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Chỉ mục điều kiện anh em cho mã Loại khác",
+      "builtBy": "scripts/merge-loai-khac.mjs"
+    },
+    "loai-khac-products-stats.json": {
+      "kind": "REPORT",
+      "descriptionVi": "Thống kê độ phủ ví dụ Loại khác",
+      "builtBy": "scripts/loai-khac-products-stats.mjs"
+    },
+    "loai-khac-products.jsonl": {
+      "kind": "MIXED",
+      "descriptionVi": "Ví dụ hàng cho mã Loại khác: oz-gold (thật) + rule/rule-fallback (máy sinh)",
+      "builtBy": "scripts/gen-loai-khac-products-rule.mjs"
+    },
+    "mechanisms.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Cơ chế hoạt động máy móc — CHƯA GHI NHẬN — cần bổ sung nguồn gốc"
+    },
+    "ministries-vn.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Bộ ngành quản lý chuyên ngành — đã cập nhật sáp nhập 01/03/2025 (NQ 176/2025/QH15)"
+    },
+    "mixture-rules.json": {
+      "kind": "STUB",
+      "descriptionVi": "Quy tắc hỗn hợp cho GIR 2(b) — CHƯA có dữ liệu"
+    },
+    "nice-hs-map.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Nhóm Nice (nhãn hiệu) ↔ chương HS",
+      "builtBy": "scripts/build-trademark-seed.mjs"
+    },
+    "notes.json": {
+      "kind": "MASTER",
+      "descriptionVi": "Chú giải chương (song ngữ, bóc từ PDF) — Danh mục TT 31/2022/TT-BTC; thiếu chương 50,52,53,75,76,78–81"
+    },
+    "oz-declarations.meta.json": {
+      "kind": "REPORT",
+      "descriptionVi": "Thống kê tập tờ khai Oz (dữ liệu gốc ở data/oz-export, gitignored)"
+    },
+    "oz-gold-final.jsonl": {
+      "kind": "MASTER",
+      "descriptionVi": "Tờ khai thật của Oz đã khử trùng (mô tả hàng + mã đã khai) — nhãn = mã Oz đã khai, chưa phải phán quyết HQ",
+      "builtBy": "scripts/dedup-oz-gold.mjs"
+    },
+    "pattern-promotions.jsonl": {
+      "kind": "RUNTIME_LOG",
+      "descriptionVi": "Correction đã duyệt",
+      "builtBy": "lib/feedback-store.js"
+    },
+    "policy-procedures.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Quy trình kiểm tra chuyên ngành theo loại chính sách"
+    },
+    "precedents.json": {
+      "kind": "MASTER",
+      "descriptionVi": "Thông báo kết quả phân loại TB-TCHQ (2.912 bản ghi, 1.012 mã, 2007–2026) — nguồn tb_tchq_index.json + data/community/tb-tchq/* (luatvietnam, quét toàn văn); hạn đối chiếu ở data-freshness.json",
+      "builtBy": "scripts/merge-community.mjs"
+    },
+    "search.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Chỉ mục tìm kiếm dựng từ tax.json",
+      "builtBy": "scripts/build-search-index.mjs"
+    },
+    "tax-enriched.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Chính sách quản lý bóc từ cột cs của tax.json bằng LLM (MiniMax/Gemini/Hermes), CHƯA có người duyệt",
+      "builtBy": "scripts/enrich-policies.mjs"
+    },
+    "tax.json": {
+      "kind": "MASTER",
+      "descriptionVi": "Biểu thuế XNK 8 số (11.871 mã) — hiệu lực 2026-01-01; nguồn tệp gốc CHƯA GHI NHẬN — cần bổ sung nguồn gốc. Sửa qua scripts/sync-tariff.mjs; hạn đối chiếu ở data-freshness.json",
+      "builtBy": "scripts/sync-tariff.mjs"
+    },
+    "trade-synonyms.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Từ đồng nghĩa thương mại → nhóm HS (35 mục)"
+    },
+    "trademark-watch.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Nhãn hiệu cần cảnh báo SHTT",
+      "builtBy": "scripts/ingest-trademark-watch.mjs"
+    },
+    "units-tchq.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Đơn vị tính TCHQ (20 mã) — CHƯA đủ danh mục"
+    },
+    "vn-product-synonyms.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Từ đồng nghĩa tên hàng tiếng Việt — CHƯA GHI NHẬN — cần bổ sung nguồn gốc"
+    },
+    "wco-hs-international.csv": {
+      "kind": "REFERENCE",
+      "descriptionVi": "Danh mục HS 6 số quốc tế (EN) — dùng bổ sung tên tiếng Anh"
+    }
+  }
+}

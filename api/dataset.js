@@ -12,7 +12,7 @@ const { buildChaptersIndex } = require('../lib/chapters-index');
 const { kgStatsPayload } = require('../lib/kg-stats');
 const { readAuditLog } = require('../lib/admin-update');
 const { buildKpiDashboard } = require('../lib/ml-log');
-const { getProducts, isLoaiKhac, getCodeStats, getStatsSummary } = require('../lib/loai-khac-products');
+const { getProducts, getGeneratedProducts, isLoaiKhac, getCodeStats, getStatsSummary } = require('../lib/loai-khac-products');
 const { getAccuracyStats } = require('../lib/learned-corrections');
 const { readErrorLog } = require('../lib/error-monitor');
 const { getProcedureByCode, listProcedures, getProcedures } = require('../lib/policy-procedures');
@@ -311,7 +311,9 @@ module.exports = async function handler(req, res) {
           potential: stats?.potential ?? null,
           canMine: stats?.canMine ?? null,
           total: products.length,
+          // products = tên hàng thật từ tờ khai; generatedProducts = câu máy sinh, CHƯA kiểm chứng.
           products,
+          generatedProducts: getGeneratedProducts(hsCode, limit),
         });
       }
 
@@ -325,6 +327,7 @@ module.exports = async function handler(req, res) {
           potential: stats?.potential ?? null,
           canMine: stats?.canMine ?? null,
           products: getProducts(hsCode, limit),
+          generatedProducts: getGeneratedProducts(hsCode, limit),
         };
       });
       return res.status(200).json({ total: results.length, results });

@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-07-02T05:45:37.633Z",
+  "generatedAt": "2026-09-24T16:30:54.988Z",
   "stats": {
     "taxRows": 11871,
     "rowsWithPolicy": 7928,
     "enrichedRows": 7928,
     "enrichedCoveragePct": 100,
     "severityDistribution": {
-      "MEDIUM": 4234,
-      "HIGH": 1749,
-      "LOW": 1636,
-      "CRITICAL": 309
+      "MEDIUM": 4230,
+      "HIGH": 1753,
+      "LOW": 1637,
+      "CRITICAL": 308
     },
     "categoriesWithErrors": 0,
-    "categoriesWithWarnings": 1
+    "categoriesWithWarnings": 0
   },
   "findings": {
     "hsFormatInvalid": {
@@ -30,8 +30,18 @@
     "unitEmptyCh98": {
       "severity": "info",
       "description": "Đơn vị tính trống ở chương 98 (đúng quy ước — theo mã gốc tương ứng)",
-      "count": 3,
+      "count": 13,
       "samples": [
+        "98110010",
+        "98110090",
+        "98190000",
+        "98200000",
+        "98221000",
+        "98222000",
+        "98223000",
+        "98224000",
+        "98225000",
+        "98229000",
         "98493810",
         "98493890",
         "98494321"
@@ -437,29 +447,8 @@
     "enrichedStaleText": {
       "severity": "warn",
       "description": "Policy text đã đổi so với lúc enrich (cần re-enrich)",
-      "count": 28,
-      "samples": [
-        "28111910",
-        "38245000",
-        "44071300",
-        "44072110",
-        "44181100",
-        "44183000",
-        "44191100",
-        "49119990",
-        "52079000",
-        "58011090",
-        "61033100",
-        "61033200",
-        "61178020",
-        "62160091",
-        "62160092",
-        "72069000",
-        "73181290",
-        "76051100",
-        "85161019",
-        "87044219"
-      ]
+      "count": 0,
+      "samples": []
     },
     "enrichedUnknownIssuer": {
       "severity": "info",

@@ -22,7 +22,15 @@ const BASE = 'https://hs-kb.uythacnhapkhau.com';
 const bearer = [{ bearerAuth: [] }];
 const pub = []; // mảng rỗng = không cần xác thực
 
-function op({ id, summary, description, params = [], auth, tags }) {
+const json = (schema) => ({ content: { 'application/json': { schema } } });
+const errRef = { $ref: '#/components/schemas/Error' };
+
+/**
+ * requestBody / response / errors: schema cụ thể để agent (kể cả mô hình nhỏ)
+ * gọi tool đúng tham số và đọc đúng trường. Trước đây mọi response chỉ là
+ * {type: object} và POST không có requestBody.
+ */
+function op({ id, summary, description, params = [], auth, tags, requestBody, response, errors = {} }) {
   return {
     operationId: id,
     summary,
@@ -30,13 +38,214 @@ function op({ id, summary, description, params = [], auth, tags }) {
     tags,
     security: auth,
     parameters: params,
+    ...(requestBody ? { requestBody: { required: true, ...json(requestBody) } } : {}),
     responses: {
-      200: { description: 'Thành công', content: { 'application/json': { schema: { type: 'object' } } } },
-      ...(auth === pub ? {} : { 401: { description: 'Thiếu hoặc sai Bearer token' } }),
-      500: { description: 'Lỗi máy chủ' },
+      200: { description: 'Thành công', ...json(response || { type: 'object' }) },
+      ...Object.fromEntries(Object.entries(errors).map(([code, d]) => [code, { description: d, ...json(errRef) }])),
+      ...(auth === pub ? {} : { 401: { description: 'Thiếu hoặc sai Bearer token', ...json(errRef) } }),
+      500: { description: 'Lỗi máy chủ', ...json(errRef) },
     },
   };
 }
+
+const str = (description, extra = {}) => ({ type: 'string', description, ...extra });
+const nullable = (schema) => ({ ...schema, type: [schema.type, 'null'] });
+
+const SCHEMAS = {
+  Error: {
+    type: 'object',
+    properties: {
+      error: str('Thông điệp lỗi'),
+      code: str('Mã lỗi ổn định (nếu có), vd INVALID_HS_CODE, FEEDBACK_NOT_PERSISTED'),
+      retryable: { type: 'boolean', description: 'true = lỗi tạm thời, gọi lại sau' },
+      detail: str('Chi tiết kỹ thuật'),
+    },
+  },
+  AcftaForOrigin: {
+    type: 'object',
+    description: 'Mức ACFTA áp cho nước xuất xứ. eligible=false → áp MFN; null → biểu gốc có nhiều mức, tra dòng 10 số.',
+    properties: {
+      origin: str('Mã ISO-2'),
+      eligible: { type: ['boolean', 'null'] },
+      rate: { type: ['number', 'null'] },
+      higherThanMfn: { type: 'boolean', description: 'ACFTA cao hơn MFN — nên khai MFN' },
+      noteVi: str('Giải thích để đọc cho người dùng'),
+    },
+  },
+  MissingFact: {
+    type: 'object',
+    properties: {
+      attribute: str('Tên khoá dùng trong facts'),
+      questionVi: str('Câu hỏi để hỏi người dùng'),
+      type: { type: 'string', enum: ['enum', 'number'] },
+      unit: str('Đơn vị khi type=number'),
+      optionsVi: {
+        type: 'array',
+        items: { type: 'object', properties: { index: { type: 'integer' }, value: { type: 'string' }, labelVi: { type: 'string' } } },
+        description: 'Lựa chọn hợp lệ. Trả lời bằng value, index hoặc labelVi đều được.',
+      },
+    },
+  },
+  GirDetermination: {
+    type: 'object',
+    properties: {
+      rule: str('Quy tắc, vd "GIR 6"'),
+      basis: { type: 'string', enum: ['RULE_TABLE', 'DETERMINISTIC', 'HEURISTIC', 'LLM_ASSERTED'] },
+      reasonVi: str('Lý do'),
+      evidence: { type: 'object' },
+      source: str('Nguồn'),
+    },
+  },
+  Suggestion: {
+    type: 'object',
+    properties: {
+      hsCode: str('Mã 8 số — luôn có trong biểu thuế'),
+      nameVi: str('Tên trong biểu thuế'),
+      confidence: { type: ['number', 'null'], description: 'Điểm mô hình tự khai, CHƯA hiệu chuẩn — không phải xác suất. null ở chế độ deterministic.' },
+      reasoning: str('Lý do; số hiệu văn bản chưa kiểm chứng được gắn "[chưa kiểm chứng]"'),
+      unverifiedCitations: { type: 'array', items: { type: 'string' } },
+      productExamples: { type: 'array', items: { type: 'string' }, description: 'Tên hàng THẬT từ tờ khai (mã Loại khác)' },
+      productExamplesGenerated: { type: 'array', items: { type: 'string' }, description: 'Câu máy sinh, chưa kiểm chứng' },
+      addedByResidualGuard: { type: 'boolean', description: 'Mã Loại khác do hệ thống chèn thêm để cân nhắc' },
+      taxAcftaChina: { $ref: '#/components/schemas/AcftaForOrigin' },
+    },
+  },
+};
+
+const SUGGEST_REQUEST = {
+  type: 'object',
+  properties: {
+    description: str('Tên hàng + chất liệu + công dụng + thông số (≥ 3 ký tự)', { minLength: 3 }),
+    facts: {
+      type: 'object',
+      additionalProperties: true,
+      description: 'Trả lời missingFacts: {<attribute>: <value | index | labelVi | số>}',
+    },
+    options: {
+      type: 'object',
+      properties: {
+        topReranked: { type: 'integer', minimum: 1, maximum: 5, default: 3 },
+        topCandidates: { type: 'integer', minimum: 3, maximum: 20, default: 10 },
+      },
+    },
+    items: {
+      type: 'array', maxItems: 20,
+      description: 'Chế độ batch: [{id, description}] — thay cho description',
+      items: { type: 'object', properties: { id: { type: 'string' }, description: { type: 'string' } } },
+    },
+  },
+};
+
+const SUGGEST_RESPONSE = {
+  type: 'object',
+  properties: {
+    status: { type: 'string', enum: ['NO_CANDIDATES', 'NEED_FACTS', 'NEEDS_EXPERT', 'RESOLVED_BY_TABLE', 'REVIEW'], description: 'Đọc trước tiên' },
+    nextAction: {
+      type: 'object',
+      description: 'Việc agent cần làm tiếp',
+      properties: {
+        type: { type: 'string', enum: ['REPHRASE', 'ASK_USER', 'HUMAN_REVIEW', 'USER_CONFIRM'] },
+        questions: { type: 'array', items: { $ref: '#/components/schemas/MissingFact' } },
+        then: { type: 'object', description: 'Lời gọi tiếp theo (endpoint + body mẫu)' },
+        optionsHs: { type: 'array', items: { type: 'string' } },
+        reasonVi: { type: 'string' },
+      },
+    },
+    suggestions: { type: 'array', items: { $ref: '#/components/schemas/Suggestion' } },
+    engine: { type: 'string', enum: ['llm', 'deterministic'] },
+    degraded: { type: 'boolean' },
+    llmRejectedCodes: { type: 'array', items: { type: 'object', properties: { hsCode: { type: 'string' }, reason: { type: 'string' } } } },
+    missingFacts: { type: 'array', items: { $ref: '#/components/schemas/MissingFact' } },
+    rejectedFacts: { type: 'array', items: { type: 'object' } },
+    decisions: { type: 'array', items: { type: 'object' } },
+    girRulesApplied: { type: 'array', items: { $ref: '#/components/schemas/GirDetermination' } },
+    residualAdvisory: { type: 'object' },
+    antiPatternWarnings: { type: 'array', items: { type: 'object' } },
+    confusionWarning: { type: ['object', 'null'] },
+    confusionAlerts: { type: 'array', items: { type: 'object' }, description: 'Từ điển mâu thuẫn HS: DN hay khai A, Hải quan hay ấn định B' },
+  },
+};
+
+const TAX_RESPONSE = {
+  type: 'object',
+  properties: {
+    found: { type: 'boolean' },
+    hsCode: str('Mã 8 số'),
+    nameVi: str('Tên trong biểu thuế'),
+    unitVi: str('Đơn vị tính'),
+    taxNkPreferential: str('Thuế NK ưu đãi (MFN), %'),
+    taxNkTt: str('Thuế NK thông thường, %'),
+    taxAcfta: str('Chuỗi ACFTA nguyên văn — ĐỪNG đọc số đầu, dùng acfta.forOrigin'),
+    taxAcftaChina: { $ref: '#/components/schemas/AcftaForOrigin' },
+    acfta: {
+      type: 'object',
+      properties: {
+        raw: { type: 'string' }, rate: { type: ['number', 'null'] }, available: { type: ['boolean', 'null'] },
+        excludedCountries: { type: 'array', items: { type: 'string' } }, needsReview: { type: 'boolean' },
+        forOrigin: { $ref: '#/components/schemas/AcftaForOrigin' },
+      },
+    },
+    taxVat: str('"A/B": A là mức ĐANG áp'),
+    vatReduction: { type: 'object', description: 'eligible, rate, validUntil, noteVi, legalBasis' },
+    tariffQuota: { type: 'object', description: 'Chỉ có với mặt hàng hạn ngạch: mfnInQuota, mfnOutQuota, noteVi' },
+    policyByHs: nullable(str('Chính sách quản lý nguyên văn')),
+    policyStatus: { type: 'string', enum: ['RECORDED', 'NOT_RECORDED'], description: 'NOT_RECORDED ≠ không có chính sách — đọc policyNoteVi' },
+    policyNoteVi: str('Cảnh báo khi dữ liệu chính sách trống'),
+    mappedHs: { type: 'object', description: 'Chương 98: mã hàng tương ứng tại Mục I' },
+    tariff: { type: 'object', description: 'effectiveDate, lastCheckedAt, freshness (OK/DUE/...), noteVi' },
+    breadcrumb: { type: 'object' },
+  },
+};
+
+const DESCRIBE_REQUEST = {
+  type: 'object',
+  required: ['hsCode'],
+  properties: {
+    hsCode: str('Mã HS 8 số (có trong biểu thuế)'),
+    productName: str('Tên hàng'),
+    brand: str('Nhãn hiệu'),
+    model: str('Model / ký hiệu'),
+    origin: str('Xuất xứ'),
+    material: str('Chất liệu / thành phần'),
+    condition: str('Tình trạng, vd "Mới 100%"'),
+    technicalSpec: str('Thông số kỹ thuật'),
+    purpose: str('Công dụng'),
+    customerDescription: str('Mô tả gốc của khách'),
+  },
+};
+
+const DESCRIBE_RESPONSE = {
+  type: 'object',
+  properties: {
+    declaration: { type: 'object', description: 'Các trường khai báo có cấu trúc (TT 39/2018)' },
+    customsDescription: str('Mô tả ≤ 200 ký tự để dán ECUS'),
+    compliance: {
+      type: 'object',
+      properties: {
+        score: { type: 'number' },
+        level: { type: 'string', enum: ['EXCELLENT', 'GOOD', 'ACCEPTABLE', 'WEAK', 'REJECT'] },
+        warnings: { type: 'array', items: { type: 'object', properties: { code: { type: 'string' }, severity: { type: 'string' }, message: { type: 'string' }, suggestion: { type: 'string' } } } },
+        passesCustomsAudit: { type: 'boolean' },
+      },
+    },
+    degraded: { type: 'boolean', description: 'true = bản khai dựng không qua AI, cần người sửa' },
+    llmError: { type: ['object', 'null'] },
+  },
+};
+
+const CLASSIFY_REQUEST = {
+  type: 'object',
+  required: ['tenHang'],
+  properties: {
+    tenHang: str('Tên hàng (≥ 2 ký tự)'),
+    chatLieu: str('Chất liệu'),
+    congDung: str('Công dụng'),
+    chucNang: str('Chức năng'),
+    specs: str('Thông số'),
+    nameZh: str('Tên tiếng Trung'),
+    tier: { type: 'string', enum: ['standard', 'premium'] },
+  },
+};
 
 const q = (name, description, required = false) => ({
   name, in: 'query', required, description, schema: { type: 'string' },
@@ -49,7 +258,7 @@ const paths = {
       summary: 'Kiểm tra dịch vụ + trạng thái LLM',
       description:
         'Trả 200 khi đủ cả 3 điều kiện: có dữ liệu biểu thuế, có token cấu hình, và còn ít nhất một nhà cung cấp LLM. ' +
-        'Thiếu LLM thì trả 503 kèm `checks.llm.note` — /api/suggest và /api/describe sẽ lỗi.',
+        'Thiếu LLM thì trả 503 kèm `checks.llm.note` — /api/suggest và /api/describe chỉ chạy chế độ không AI (degraded).',
     }),
   },
   '/api/tax': {
@@ -58,14 +267,16 @@ const paths = {
       summary: 'Tra thuế NK/ACFTA/VAT + cảnh báo chính sách theo mã HS',
       description:
         'Trả thuế suất, đơn vị tính và cảnh báo quản lý chuyên ngành kèm liên kết văn bản pháp luật. ' +
-        '⚠️ Thuế suất và chính sách thay đổi theo thông tư — luôn đối chiếu văn bản gốc còn hiệu lực khi khai báo.',
-      description:
+        '⚠️ Thuế suất và chính sách thay đổi theo thông tư — luôn đối chiếu văn bản gốc còn hiệu lực khi khai báo. ' +
+        'ACFTA: dùng `acfta.forOrigin` (theo `?origin=`, mặc định CN) — chuỗi "0 (-CN)" nghĩa là hàng Trung Quốc KHÔNG được 0%. ' +
         'Ngoài thuế suất và cảnh báo chính sách, trả kèm `vatReduction` — bản đọc được bằng ' +
         'máy của quyền giảm VAT theo NĐ 174/2025. `eligible: false` nghĩa là mã nằm trong phụ ' +
         'lục loại trừ, vẫn phải khai ở mức `rate`; `noteVi` là nguyên văn lý do. Cùng với đó là ' +
         '`breadcrumb` cho biết mã nằm ở đâu trong biểu thuế — cần thiết với các mã có tên chỉ là ' +
         '"Loại khác". Lưu ý quy ước trường `taxVat` dạng "A/B": A là mức ĐANG áp dụng, B là mức còn lại.',
-      params: [q('hs', 'Mã HS 8 số, vd 84137090', true)],
+      params: [q('hs', 'Mã HS 8 số, vd 84137090', true), q('origin', 'Nước xuất xứ ISO-2 để tính ACFTA (mặc định CN)')],
+      response: TAX_RESPONSE,
+      errors: { 400: 'Thiếu tham số hs', 404: 'Mã không có trong biểu thuế (kèm relatedHsCodes)' },
     }),
   },
   '/api/search': {
@@ -129,7 +340,13 @@ const paths = {
         'thuộc tính còn thiếu để chốt lá 8 số; ERP/người dùng trả lời bằng body `facts: {...}` rồi gọi lại. ' +
         'Bảng đã verified chốt được lá thì lá đó lên đầu với `decidedByTable`; chưa verified chỉ tư vấn. ' +
         'Kèm `confusionAlerts[]` từ từ điển mâu thuẫn HS (xem /api/confusion-pairs). ' +
-        'Cần token vì mỗi lượt gọi tốn chi phí LLM.',
+        'Cần token vì mỗi lượt gọi tốn chi phí LLM. ' +
+        'ĐỌC `status` + `nextAction` TRƯỚC: NEED_FACTS → hỏi người dùng rồi gọi lại với `facts`; ' +
+        'NEEDS_EXPERT → AI không chạy được, cần chuyên viên; REVIEW → người dùng chọn/xác nhận. ' +
+        'Không có trạng thái tự chốt: `confidence` chưa hiệu chuẩn.',
+      requestBody: SUGGEST_REQUEST,
+      response: SUGGEST_RESPONSE,
+      errors: { 400: 'Thiếu description (≥ 3 ký tự) hoặc JSON sai' },
     }),
   },
   '/api/describe': {
@@ -139,12 +356,36 @@ const paths = {
       description:
         'Khi LLM lỗi, trả `degraded: true` + `llmError{code,message,retryable}` + cảnh báo ' +
         '`DESCRIPTION_DEGRADED` — mô tả khi đó là bản dự phòng thô, không được coi là đạt chuẩn.',
+      requestBody: DESCRIBE_REQUEST,
+      response: DESCRIBE_RESPONSE,
+      errors: { 400: 'Thiếu hsCode', 404: 'Mã không có trong biểu thuế' },
     }),
   },
   '/api/classify': {
     post: op({
       id: 'classify', tags: ['AI'], auth: bearer,
       summary: 'Phân loại có cây quyết định + bảng phân giải cụm mã dễ nhầm',
+      description: 'Trả `results[]` (mã 8 hoặc 6 số — 6 số nghĩa là còn thiếu dữ kiện, xem `missing[]`), ' +
+        '`girRulesApplied[]` (có `basis`), `llmRejectedCodes` khi AI trả mã không có trong biểu thuế.',
+      requestBody: CLASSIFY_REQUEST,
+      errors: { 400: 'Thiếu tenHang', 502: 'Lỗi phân loại' },
+    }),
+  },
+  '/api/feedback': {
+    post: op({
+      id: 'feedback', tags: ['AI'], auth: bearer,
+      summary: 'Ghi nhận giám đốc sửa mã HS',
+      description: 'Phải kiểm tra `ok: true`. 503 FEEDBACK_NOT_PERSISTED = CHƯA lưu được — giữ `record` và gửi lại sau.',
+      requestBody: {
+        type: 'object', required: ['feedbackType'],
+        properties: {
+          feedbackType: str('vd "correction"'), productName: str('Tên hàng'),
+          hsCodeAtTime: str('Mã AI đã gợi ý'), correctedHsCode: str('Mã đúng (8 số, có trong biểu thuế)'),
+          directorNote: str('Ghi chú'), orderCode: str('Mã đơn'),
+        },
+      },
+      response: { type: 'object', properties: { ok: { type: 'boolean' }, feedbackId: { type: 'string' }, persisted: { type: 'boolean' } } },
+      errors: { 400: 'Thiếu feedbackType hoặc correctedHsCode không hợp lệ (INVALID_HS_CODE)', 503: 'FEEDBACK_NOT_PERSISTED — bản ghi chưa được lưu' },
     }),
   },
   '/api/confusion-pairs': {
@@ -233,6 +474,7 @@ const spec = {
     securitySchemes: {
       bearerAuth: { type: 'http', scheme: 'bearer', description: 'HS_API_TOKEN' },
     },
+    schemas: SCHEMAS,
   },
   paths,
   'x-generated': {

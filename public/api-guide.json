@@ -155,9 +155,9 @@
       "auth": "bearer",
       "summary": "Ghi nhận chỉnh sửa của giám đốc",
       "when": "Giám đốc sửa mã HS AI gợi sai — gửi feedback để hệ thống học và giảm lỗi lặp lại.",
-      "request": "curl -X POST https://hs-kb.uythacnhapkhau.com/api/feedback \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"description\": \"Máy bơm nước Pentax 1.5HP\",\n    \"suggestedHs\": \"84137090\",\n    \"correctHs\": \"84135040\",\n    \"reason\": \"Bơm piston, không phải ly tâm\"\n  }'",
-      "response": "{\n  \"ok\": true,\n  \"feedbackId\": \"fb_20260707_abc\",\n  \"learned\": true\n}",
-      "tip": "Feedback được dùng trong learnedPenalty của /api/suggest — mã từng bị sửa sẽ bị trừ điểm."
+      "request": "curl -X POST https://hs-kb.uythacnhapkhau.com/api/feedback \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"feedbackType\": \"correction\",\n    \"productName\": \"Máy bơm nước Pentax 1.5HP\",\n    \"hsCodeAtTime\": \"84137090\",\n    \"correctedHsCode\": \"84135040\",\n    \"directorNote\": \"Bơm piston, không phải ly tâm\"\n  }'",
+      "response": "{\n  \"ok\": true,\n  \"feedbackId\": \"fb_1a2b3c4d5e6f7a8b\",\n  \"persisted\": true\n}\n// Máy chủ không lưu được → HTTP 503 {\"ok\": false, \"code\": \"FEEDBACK_NOT_PERSISTED\", \"record\": {...}}\n// correctedHsCode không có trong biểu thuế → HTTP 400 {\"code\": \"INVALID_HS_CODE\"}",
+      "tip": "Phải kiểm tra ok=true. 503 FEEDBACK_NOT_PERSISTED nghĩa là bản ghi CHƯA được lưu — giữ lại record và gửi lại sau."
     },
     {
       "id": "kg_stats",

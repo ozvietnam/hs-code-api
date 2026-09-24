@@ -9,13 +9,20 @@
  * Quy trình:
  *   1. Parse nguồn mới → normalize sang schema tax.json (hs, vn, en, dvt, mfn, vat, acfta, cs, ...)
  *   2. Diff với tax.json hiện tại → báo cáo thay đổi
- *   3. --apply: ghi tax.json mới + snapshot version tự động
+ *   3. --apply: ghi tax.json mới + snapshot version tự động (qua lib/tariff-mutations,
+ *      tôn trọng HS_DATA_DIR — rule bất biến #8)
  *   4. --dry-run (mặc định): chỉ báo cáo, không ghi
+ *
+ * An toàn dữ liệu (xem lib/tariff-sync.js):
+ *   · Chỉ ghi đè trường mà nguồn CÓ cột/khoá — trường khác giữ nguyên.
+ *   · Chỉ nhận mã đúng 8 số (không đệm mã 6 số thành mã giả).
+ *   · Mã vắng mặt trong nguồn KHÔNG bị xoá, trừ khi thêm --allow-remove.
  *
  * Usage:
  *   node scripts/sync-tariff.mjs --source=data/tchq-export-2026.json --dry-run
  *   node scripts/sync-tariff.mjs --source=data/tchq-export-2026.json --apply
  *   node scripts/sync-tariff.mjs --source=data/new-tariff.xlsx --apply --sheet="Biểu thuế"
+ *   node scripts/sync-tariff.mjs --source=full-2027.json --apply --allow-remove --label=v2027-01-01
  *
  * Schema JSON nguồn (TCHQ export format):
  * [
@@ -26,12 +33,17 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.join(__dirname, '..');
-const TAX_PATH = path.join(ROOT, 'data', 'tax.json');
-const VERSIONS_DIR = path.join(ROOT, 'data', 'versions');
+const require = createRequire(import.meta.url);
+const {
+  recordFromJsonRow,
+  detectXlsxColumns,
+  recordFromXlsxRow,
+  computeDiff,
+  mergeTariff,
+} = require('../lib/tariff-sync.js');
+const { dataReadPath } = require('../lib/data-paths.js');
 
 // ── Argument parsing ─────────────────────────────────────────────────────────
 
@@ -44,61 +56,35 @@ const hasFlag = (name) => args.includes(`--${name}`);
 
 const source = getArg('source');
 const isDryRun = !hasFlag('apply');
+const allowRemove = hasFlag('allow-remove');
 const sheetName = getArg('sheet') || 'Biểu thuế';
+const label = getArg('label') || '';
 
 if (!source) {
-  console.error('Usage: node scripts/sync-tariff.mjs --source=<file.json|file.xlsx> [--apply] [--sheet=name]');
+  console.error('Usage: node scripts/sync-tariff.mjs --source=<file.json|file.xlsx> [--apply] [--allow-remove] [--sheet=name] [--label=v2027-01-01]');
   console.error('');
   console.error('Modes:');
   console.error('  --dry-run (default)  Show diff report, do not write');
   console.error('  --apply              Write tax.json + create version snapshot');
+  console.error('  --allow-remove       Also DELETE codes absent from source (only for a FULL tariff file)');
   process.exit(1);
 }
 
-// ── Schema helpers ────────────────────────────────────────────────────────────
-
-/** Normalize HS code: strip dots, pad to 8 digits. */
-function normalizeHs(raw) {
-  const s = String(raw || '').replace(/\D/g, '');
-  return s.length >= 6 ? s.slice(0, 8).padEnd(8, '0') : null;
-}
-
-/** Parse a number that may contain % or commas. */
-function parseRate(raw) {
-  if (raw == null || raw === '') return '';
-  return String(raw).replace(/\s/g, '').trim();
-}
-
-// ── JSON source parser ────────────────────────────────────────────────────────
+// ── Parsers ──────────────────────────────────────────────────────────────────
 
 function parseJsonSource(filePath) {
   const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
   const records = Array.isArray(content) ? content : Object.values(content);
   const result = {};
   let skipped = 0;
-
   for (const row of records) {
-    const hs = normalizeHs(row.hs || row.hsCode || row['Mã HS']);
-    if (!hs) { skipped++; continue; }
-    result[hs] = {
-      hs,
-      vn: String(row.vn || row.nameVi || row['Mô tả tiếng Việt'] || '').trim(),
-      en: String(row.en || row.nameEn || row['Mô tả tiếng Anh'] || '').trim(),
-      dvt: String(row.dvt || row.unit || row['Đơn vị'] || '').trim(),
-      mfn: parseRate(row.mfn || row['Thuế MFN'] || row['MFN']),
-      vat: parseRate(row.vat || row['Thuế VAT'] || row['VAT']),
-      acfta: parseRate(row.acfta || row['Thuế ACFTA'] || row['ACFTA']),
-      tt: parseRate(row.tt || row['Thuế xuất khẩu'] || ''),
-      bvmt: parseRate(row.bvmt || row['Thuế BVMT'] || ''),
-      cs: String(row.cs || row.policy || row['Chính sách'] || '').trim(),
-    };
+    const rec = recordFromJsonRow(row);
+    if (!rec) { skipped++; continue; }
+    result[rec.hs] = rec;
   }
-
-  console.log(`Parsed JSON: ${Object.keys(result).length} mã HS (${skipped} dòng bỏ qua)`);
+  console.log(`Parsed JSON: ${Object.keys(result).length} mã HS (${skipped} dòng bỏ qua — không đúng 8 số)`);
   return result;
 }
-
-// ── XLSX source parser ────────────────────────────────────────────────────────
 
 async function parseXlsxSource(filePath, sheet) {
   let XLSX;
@@ -111,109 +97,26 @@ async function parseXlsxSource(filePath, sheet) {
   const workbook = XLSX.readFile(filePath);
   const sheetNames = workbook.SheetNames;
   console.log(`Sheets available: ${sheetNames.join(', ')}`);
-
   const targetSheet = sheetNames.find(n => n === sheet) || sheetNames[0];
   console.log(`Using sheet: ${targetSheet}`);
 
   const rows = XLSX.utils.sheet_to_json(workbook.Sheets[targetSheet], { defval: '' });
-  const result = {};
-  let skipped = 0;
-
-  // Auto-detect header mapping
-  const firstRow = rows[0] || {};
-  const keys = Object.keys(firstRow);
-  const findKey = (...candidates) => keys.find(k => candidates.some(c => k.toLowerCase().includes(c.toLowerCase()))) || null;
-
-  const hsKey   = findKey('HS', 'Mã HS', 'mã');
-  const vnKey   = findKey('Mô tả', 'Tiếng Việt', 'nameVi');
-  const enKey   = findKey('English', 'Tiếng Anh', 'nameEn');
-  const dvtKey  = findKey('Đơn vị', 'DVT', 'Unit');
-  const mfnKey  = findKey('MFN', 'Thông thường', 'Most');
-  const vatKey  = findKey('VAT', 'Giá trị gia tăng');
-  const acftaKey = findKey('ACFTA', 'ASEAN-China', 'Trung Quốc');
-  const csKey   = findKey('Chính sách', 'CS', 'Policy', 'Điều kiện');
-
-  console.log('Header mapping:', { hsKey, vnKey, mfnKey, vatKey, acftaKey });
-
-  if (!hsKey) {
+  const cols = detectXlsxColumns(Object.keys(rows[0] || {}));
+  console.log('Header mapping (chỉ các trường này bị ghi đè):', cols);
+  if (!cols.hs) {
     console.error('ERROR: Cannot find HS code column. Please check sheet headers.');
     process.exit(1);
   }
 
+  const result = {};
+  let skipped = 0;
   for (const row of rows) {
-    const hs = normalizeHs(row[hsKey]);
-    if (!hs) { skipped++; continue; }
-    result[hs] = {
-      hs,
-      vn: vnKey ? String(row[vnKey]).trim() : '',
-      en: enKey ? String(row[enKey]).trim() : '',
-      dvt: dvtKey ? String(row[dvtKey]).trim() : '',
-      mfn: parseRate(mfnKey ? row[mfnKey] : ''),
-      vat: parseRate(vatKey ? row[vatKey] : ''),
-      acfta: parseRate(acftaKey ? row[acftaKey] : ''),
-      tt: '', bvmt: '',
-      cs: csKey ? String(row[csKey]).trim() : '',
-    };
+    const rec = recordFromXlsxRow(row, cols);
+    if (!rec) { skipped++; continue; }
+    result[rec.hs] = rec;
   }
-
-  console.log(`Parsed XLSX: ${Object.keys(result).length} mã HS (${skipped} dòng bỏ qua)`);
+  console.log(`Parsed XLSX: ${Object.keys(result).length} mã HS (${skipped} dòng bỏ qua — không đúng 8 số)`);
   return result;
-}
-
-// ── Diff ─────────────────────────────────────────────────────────────────────
-
-function computeDiff(current, incoming) {
-  const added = [], removed = [], changed = [];
-  const FIELDS = ['vn', 'mfn', 'vat', 'acfta', 'cs', 'dvt'];
-
-  for (const hs of Object.keys(incoming)) {
-    if (!current[hs]) { added.push(hs); continue; }
-    const diffs = FIELDS.filter(f => {
-      const a = String(current[hs][f] || '').trim();
-      const b = String(incoming[hs][f] || '').trim();
-      return a !== b;
-    });
-    if (diffs.length) changed.push({ hs, fields: diffs,
-      before: Object.fromEntries(FIELDS.map(f => [f, current[hs][f]])),
-      after:  Object.fromEntries(FIELDS.map(f => [f, incoming[hs][f]])),
-    });
-  }
-
-  for (const hs of Object.keys(current)) {
-    if (!incoming[hs]) removed.push(hs);
-  }
-
-  return { added, removed, changed };
-}
-
-// ── Snapshot ─────────────────────────────────────────────────────────────────
-
-function createSnapshot(newData, diff) {
-  fs.mkdirSync(VERSIONS_DIR, { recursive: true });
-  const indexPath = path.join(VERSIONS_DIR, 'index.json');
-  let index = { versions: [], current: null };
-  if (fs.existsSync(indexPath)) {
-    try { index = JSON.parse(fs.readFileSync(indexPath, 'utf8')); } catch { /* use default */ }
-  }
-
-  const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
-  const versionId = `v${ts}`;
-  const snapshotPath = path.join(VERSIONS_DIR, `${versionId}.json`);
-
-  fs.writeFileSync(snapshotPath, JSON.stringify(newData, null, 0));
-  index.versions.push({
-    id: versionId,
-    createdAt: new Date().toISOString(),
-    source: path.basename(source),
-    codes: Object.keys(newData).length,
-    added: diff.added.length,
-    removed: diff.removed.length,
-    changed: diff.changed.length,
-  });
-  index.current = versionId;
-  fs.writeFileSync(indexPath, JSON.stringify(index, null, 2));
-  console.log(`\nSnapshot: ${snapshotPath}`);
-  return versionId;
 }
 
 // ── Main ─────────────────────────────────────────────────────────────────────
@@ -227,7 +130,6 @@ async function main() {
     process.exit(1);
   }
 
-  // Parse source
   const ext = path.extname(source).toLowerCase();
   const incoming = ext === '.xlsx' || ext === '.xls'
     ? await parseXlsxSource(source, sheetName)
@@ -238,16 +140,14 @@ async function main() {
     process.exit(1);
   }
 
-  // Load current
-  const current = JSON.parse(fs.readFileSync(TAX_PATH, 'utf8'));
+  const current = JSON.parse(fs.readFileSync(dataReadPath('tax.json'), 'utf8'));
   console.log(`Current: ${Object.keys(current).length} mã HS`);
   console.log(`Incoming: ${Object.keys(incoming).length} mã HS`);
 
-  // Diff
   const diff = computeDiff(current, incoming);
   console.log(`\n=== DIFF ===`);
   console.log(`  Thêm mới:   ${diff.added.length} mã`);
-  console.log(`  Xóa bỏ:     ${diff.removed.length} mã`);
+  console.log(`  Vắng trong nguồn: ${diff.removed.length} mã ${allowRemove ? '(SẼ XOÁ — --allow-remove)' : '(giữ nguyên)'}`);
   console.log(`  Thay đổi:   ${diff.changed.length} mã`);
 
   if (diff.changed.length > 0) {
@@ -259,14 +159,12 @@ async function main() {
       }
     }
   }
-
   if (diff.added.length > 0) {
     console.log('\nTop 10 mã thêm mới:', diff.added.slice(0, 10).join(', '));
   }
-
   if (diff.removed.length > 0) {
-    console.log('\nTop 10 mã xóa bỏ:', diff.removed.slice(0, 10).join(', '));
-    console.warn('\n⚠️  Cảnh báo: xóa mã HS có thể ảnh hưởng ERP. Kiểm tra kỹ trước khi --apply.');
+    console.log('\nTop 10 mã vắng trong nguồn:', diff.removed.slice(0, 10).join(', '));
+    if (allowRemove) console.warn('\n⚠️  --allow-remove: các mã này sẽ bị XOÁ. Chỉ dùng khi nguồn là biểu thuế ĐẦY ĐỦ.');
   }
 
   if (isDryRun) {
@@ -274,25 +172,17 @@ async function main() {
     return;
   }
 
-  // Apply
-  console.log('\nGhi tax.json...');
-  // Merge: incoming overrides current, existing fields preserved if incoming missing
-  const merged = { ...current };
-  for (const [hs, rec] of Object.entries(incoming)) {
-    merged[hs] = { ...current[hs], ...rec };
-  }
-  for (const hs of diff.removed) {
-    delete merged[hs];
-  }
-
-  fs.writeFileSync(TAX_PATH, JSON.stringify(merged, null, 0));
-  const kb = (fs.statSync(TAX_PATH).size / 1024).toFixed(0);
-  console.log(`tax.json ghi xong: ${Object.keys(merged).length} mã (${kb}KB)`);
-
-  const versionId = createSnapshot(merged, diff);
-  console.log(`Version: ${versionId}`);
+  const { merged, removed } = mergeTariff(current, incoming, { allowRemove });
+  const { uploadTariffMap } = require('../lib/tariff-mutations.js');
+  const out = uploadTariffMap(merged, {
+    label: label || `sync-${new Date().toISOString().slice(0, 10)}`,
+    setCurrent: true,
+    replaceLive: true,
+    source: `sync-tariff: ${path.basename(source)} (+${diff.added.length} / ~${diff.changed.length} / -${removed})`,
+  });
+  console.log(`tax.json ghi xong: ${out.rowCount} mã — version ${out.entry.id}`);
   console.log('\n✅ Đồng bộ hoàn tất. Chạy git diff data/tax.json để xem chi tiết.');
-  console.log('   Commit: git add data/tax.json data/versions/ && git commit -m "data(tariff): sync biểu thuế <nguồn> (+N mã)"');
+  console.log('   Nhớ rebuild dữ liệu dẫn xuất: node scripts/build-search-index.mjs (search.json), tax-enriched... trước khi commit.');
 }
 
 main().catch(err => { console.error('FATAL:', err.message); process.exit(1); });

@@ -48,3 +48,19 @@ console.log(`conflicts.json: ${Object.keys(conflicts).length} entries, all popul
 console.log('\nShared layer WIRED in both /suggest (api/suggest.js) and /classify (lib/classify.js):');
 console.log('  ✓ explanatoryNote: getNoteSummaryForHs(top.hs)');
 console.log('  ✓ confusionWarning: conflictsDb()[top.hs]');
+
+// Trước đây script chỉ in, không kiểm gì (pass++ vô điều kiện). Nay kiểm THẬT
+// mã nguồn cả hai endpoint có gắn tầng tri thức dùng chung.
+const failures = [];
+const suggestSrc = fs.readFileSync(path.join(ROOT, 'api', 'suggest.js'), 'utf8');
+const classifySrc = fs.readFileSync(path.join(ROOT, 'lib', 'classify.js'), 'utf8');
+for (const [name, src] of [['api/suggest.js', suggestSrc], ['lib/classify.js', classifySrc]]) {
+  if (!/getNoteSummaryForHs\(/.test(src)) failures.push(`${name} không gọi getNoteSummaryForHs`);
+  if (!/confusionWarning/.test(src)) failures.push(`${name} không trả confusionWarning`);
+  if (!/explanatoryNote/.test(src)) failures.push(`${name} không trả explanatoryNote`);
+}
+if (!Object.values(conflicts).every((v) => v.confusedWith?.length > 0)) failures.push('conflicts.json có mục rỗng confusedWith');
+if (noteFound === 0) failures.push('không mẫu nào có explanatory note — index hỏng?');
+for (const f of failures) console.log('FAIL', f);
+console.log(failures.length ? `\n${failures.length} FAIL` : '\nPARITY OK');
+process.exit(failures.length ? 1 : 0);

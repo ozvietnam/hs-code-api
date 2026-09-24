@@ -19,6 +19,8 @@ import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { pathToFileURL } from 'url';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const GOLD = join(ROOT, 'data', 'oz-gold-final.jsonl');
@@ -34,29 +36,11 @@ const OUT = join(ROOT, 'data', 'hs-aliases.json');
  * Nên một phần bản ghi bị LOẠI khỏi alias, dành riêng để chấm. Chia theo băm
  * của (mã + tên hàng) nên ổn định qua mọi lần chạy: cùng seed thì cùng tập.
  */
-const DEFAULT_HOLDOUT_RATIO = 0.15;
-const DEFAULT_HOLDOUT_SEED = 42;
-
-/** FNV-1a 32-bit — nhỏ, không phụ thuộc thư viện, đủ tản đều để chia tập. */
-function hash32(str, seed) {
-  let h = (2166136261 ^ seed) >>> 0;
-  for (let i = 0; i < str.length; i++) {
-    h ^= str.charCodeAt(i);
-    h = Math.imul(h, 16777619) >>> 0;
-  }
-  return h >>> 0;
-}
-
-/** Khoá ổn định của một bản ghi gold — không phụ thuộc thứ tự dòng trong file. */
-export function holdoutKey(record) {
-  return `${String(record.hsCode).replace(/\D/g, '')}|${String(record.tenHang || '').toLowerCase().trim()}`;
-}
-
-/** Bản ghi này có thuộc tập giữ riêng không? */
-export function isHeldOut(record, ratio = DEFAULT_HOLDOUT_RATIO, seed = DEFAULT_HOLDOUT_SEED) {
-  if (ratio <= 0) return false;
-  return hash32(holdoutKey(record), seed) % 10000 < Math.round(ratio * 10000);
-}
+// Logic chia tập nằm ở lib/holdout.js (dùng chung với bộ tìm tiền lệ khi chấm điểm).
+const holdoutLib = require('../lib/holdout.js');
+const { DEFAULT_HOLDOUT_RATIO, DEFAULT_HOLDOUT_SEED } = holdoutLib;
+export const holdoutKey = holdoutLib.holdoutKey;
+export const isHeldOut = holdoutLib.isHeldOut;
 
 /** Bỏ dấu + hạ chữ thường — cùng quy tắc với lib/search-utils.js. */
 function norm(s) {

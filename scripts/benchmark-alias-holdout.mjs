@@ -35,6 +35,10 @@ const numArg = (name, fallback) => {
 };
 const limit = numArg('limit', 0); // 0 = chấm toàn bộ tập giữ riêng
 const writeOut = argv.includes('--write');
+// --gate: so với mốc đã commit (data/alias-benchmark-latest.json), đỏ khi tụt
+// quá GATE_TOLERANCE điểm % ở top-1/top-3 mức 4 và 8 số. Dùng trong CI.
+const gate = argv.includes('--gate');
+const GATE_TOLERANCE = numArg('tolerance', 1.0);
 
 if (!existsSync(GOLD)) {
   console.error('Không thấy data/oz-gold-final.jsonl — không chấm được.');
@@ -136,6 +140,31 @@ if (regressed.length) {
   console.log(`\n⚠ Alias làm GIẢM top-1 ở mức: ${regressed.map((d) => `${d} số`).join(', ')}`);
 } else {
   console.log('\n✓ Alias không làm giảm top-1 ở bất kỳ mức nào.');
+}
+
+if (gate) {
+  const basePath = join(ROOT, 'data', 'alias-benchmark-latest.json');
+  const base = existsSync(basePath) ? JSON.parse(readFileSync(basePath, 'utf8')).withAliases : null;
+  if (!base) {
+    console.log('\n[gate] Không có mốc alias-benchmark-latest.json — bỏ qua.');
+  } else {
+    const drops = [];
+    for (const key of ['top1', 'top3']) {
+      for (const d of [4, 8]) {
+        const was = base[key]?.[d];
+        const now = after[key][d];
+        if (was != null && now < was - GATE_TOLERANCE) drops.push(`${key} ${d} số: ${was}% → ${now}%`);
+      }
+    }
+    if (drops.length) {
+      console.log(`\n✗ [gate] Độ chính xác tụt quá ${GATE_TOLERANCE} điểm % so với mốc:`);
+      for (const x of drops) console.log(`   ${x}`);
+      console.log('   Sửa lỗi, hoặc nếu thay đổi là có chủ đích: chạy --write và commit mốc mới kèm giải thích.');
+      process.exitCode = 1;
+    } else {
+      console.log(`\n✓ [gate] Không tụt quá ${GATE_TOLERANCE} điểm % so với mốc.`);
+    }
+  }
 }
 
 if (writeOut) {

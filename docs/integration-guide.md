@@ -97,11 +97,22 @@ ERP nên hiển thị `basis` ngay cạnh mỗi trích dẫn — người khai p
 chắc, chỗ nào cần tự xác minh trước khi ký tờ khai.
 
 **Lưu ý ERP:**
-- `confidence ≥ 85`: tự động điền mã, chỉ cần user confirm
-- `confidence 70–84`: highlight để user review
-- `confidence < 70`: yêu cầu user chọn tay
+- **KHÔNG tự động điền mã theo `confidence`.** `confidence` là con số mô hình AI
+  tự khai cộng điểm thưởng, CHƯA hiệu chuẩn: trên 200 tờ khai thật, nhóm 90–99
+  điểm chỉ đúng 16%. Luôn hiển thị 3 gợi ý và để người khai chọn/xác nhận.
+- `engine: "deterministic"` + `degraded: true`: AI lỗi hoặc mọi mã AI trả đều
+  bị loại — gợi ý là thứ tự tìm kiếm, `confidence: null`. Bắt buộc người có
+  chuyên môn chọn.
+- `llmRejectedCodes[]`: mã AI trả nhưng không có trong biểu thuế / ngoài danh
+  sách ứng viên — đã bị loại, chỉ để minh bạch.
+- `status` + `nextAction`: đọc trước tiên — `NEED_FACTS` / `REVIEW` /
+  `RESOLVED_BY_TABLE` / `NEEDS_EXPERT` / `NO_CANDIDATES` (xem AGENTS.md mục 4).
+  `rejectedFacts[]`: câu trả lời không quy đổi được, kèm `optionsVi` để hỏi lại.
+- `missingFacts[]`: hỏi người dùng đúng các câu `questionVi`, rồi gọi lại
+  `/api/suggest` với cùng `description` + `facts: { <attribute>: <giá trị> }`.
 - `cached: true`: kết quả từ cache, `ms` ~0
-- `productExamples[]`: chỉ có cho mã "Loại khác" — dùng để user nhận biết đúng nhóm hàng
+- `productExamples[]`: chỉ có cho mã "Loại khác" — tên hàng THẬT từ tờ khai (có thể rỗng).
+  `productExamplesGenerated[]`: câu máy sinh, chưa kiểm chứng — hiển thị kèm nhãn "ví dụ tham khảo"
 - `learnedPenalty`: có nghĩa là AI từng gợi sai mã này, đã trừ điểm tự động
 
 ---
@@ -146,35 +157,48 @@ curl -X POST https://.../api/suggest \
 
 ## 3. Tra thuế cho mã HS
 
-### `GET /api/tax?hs=<code>`
+### `GET /api/tax?hs=<code>[&origin=CN]`
 
 ```bash
-curl -H "Authorization: Bearer $TOKEN" \
-  "https://.../api/tax?hs=84137090"
+curl "https://.../api/tax?hs=10019911&origin=CN"
 ```
 
-**Response:**
+**Response (rút gọn):**
 ```json
 {
   "found": true,
-  "hsCode": "84137090",
-  "nameVi": "Bơm chất lỏng khác, loại khác",
-  "unitVi": "cái",
-  "taxNkMfn": 10,
-  "taxNkAcfta": 0,
-  "taxVat": 10,
-  "taxBvmt": null,
-  "taxXkTt": 0,
-  "policyByHs": "Kiểm tra chất lượng (32/2023/TT-BKHCN)",
-  "hasPolicyWarning": true,
-  "warnings": ["Cần chứng nhận hợp quy trước khi thông quan"]
+  "hsCode": "10019911",
+  "nameVi": "- - - - Meslin (SEN)",
+  "unitVi": "kg",
+  "taxNkTt": "5",
+  "taxNkPreferential": "0",
+  "taxAcfta": "0 (-CN)",
+  "taxAcftaChina": { "origin": "CN", "eligible": false, "rate": null,
+                     "noteVi": "Hàng xuất xứ CN KHÔNG được hưởng mức ACFTA 0% (\"0 (-CN)\") — áp MFN." },
+  "taxVat": "*/5/8/10",
+  "acfta": {
+    "raw": "0 (-CN)", "available": true, "rate": 0, "excludedCountries": ["CN"],
+    "needsReview": false,
+    "forOrigin": { "origin": "CN", "eligible": false, "rate": null, "noteVi": "..." }
+  },
+  "policyByHs": "Kiểm dịch thực vật (01/2024/TT-BNNPTNT M9)",
+  "hasPolicyWarning": true
 }
 ```
 
 **Lưu ý:**
+- **ĐỪNG đọc số đầu của `taxAcfta`.** Chuỗi `"0 (-CN)"` nghĩa là nước trong
+  ngoặc KHÔNG được hưởng mức đó — 510 dòng loại trừ đích danh Trung Quốc. Dùng
+  `acfta.forOrigin` (theo `?origin=`, mặc định `CN`) hoặc `taxAcftaChina`:
+  - `eligible: false` → áp MFN (`taxNkPreferential`), không dùng C/O mẫu E
+  - `eligible: null` → biểu gốc có nhiều mức cho mã này, tra dòng 10 số trước khi khai
+  - `higherThanMfn: true` → ACFTA cao hơn MFN, nên khai MFN
+- `taxAcftaChina` cũng có trong kết quả `/api/search` và `/api/suggest`.
+- Mã chương 98 có thêm `mappedHs` — mã hàng tương ứng tại Mục I; VAT, chính
+  sách và tên tiếng Anh theo mã đó.
 - Response được cache `public, max-age=86400` — ERP có thể giữ kết quả 24h
 - `hasPolicyWarning: true` → hiển thị cảnh báo cho NV kế toán
-- `policyByHs` → raw text policy, dùng để tra chi tiết ở `/api/tax-enriched` (xem mục 4)
+- `policyByHs` → raw text policy; bản đã phân tích nằm ở trường `warnings` (mục 4)
 
 ---
 
@@ -353,11 +377,14 @@ Người dùng nhập tên hàng
         ↓
 POST /api/suggest { description }
         ↓
-  confidence ≥ 85?
-  ├─ YES → Tự điền hsCode, hiển thị confirm button
-  └─ NO  → Hiển thị dropdown 3 gợi ý, user chọn
+  missingFacts có?
+  ├─ YES → hỏi user các câu questionVi → gọi lại với facts{}
+  └─ NO  → Hiển thị 3 gợi ý (kèm basis, cảnh báo), user chọn + xác nhận
+           (degraded=true → đánh dấu "chưa qua AI", bắt buộc chuyên viên duyệt)
         ↓
 GET /api/tax?hs=<code>
+  ├─ acfta.forOrigin.eligible = false? (VD "0 (-CN)": hàng TQ KHÔNG được ACFTA)
+  │     └─ Áp MFN, không dùng C/O mẫu E
   ├─ hasPolicyWarning = true?
   │     └─ Hiển thị banner cảnh báo + warnings[].summary
   │         severity=HIGH → block, yêu cầu upload giấy phép
@@ -378,8 +405,8 @@ GET /api/tax?hs=<code>
 | `400` | Thiếu param | Fix request |
 | `401` | Sai/thiếu token | Check env `HS_API_TOKEN` |
 | `404` | Mã HS không tồn tại | Báo user mã không hợp lệ |
-| `503` | Gemini API chưa cấu hình | Liên hệ admin |
-| `502` | Suggest/describe lỗi tạm thời | Retry sau 3s (max 2 lần) |
+| `200` + `degraded: true` | AI lỗi/không cấu hình — suggest trả gợi ý theo tìm kiếm, describe trả bản khai dựng từ dữ kiện nhập | Dùng được nhưng bắt buộc người duyệt; gọi lại sau để có kết quả AI |
+| `502` / `503` | Lỗi ngoài dự kiến | Retry sau 3s (max 2 lần) |
 
 **Retry pattern cho ERP:**
 ```javascript
@@ -414,7 +441,8 @@ async function suggestWithRetry(description, maxRetries = 2) {
 
 ```bash
 HS_API_TOKEN=<secret>          # Bearer token cho ERP
-GEMINI_API_KEY=<key>           # Bắt buộc cho /api/suggest và /api/describe
+GEMINI_API_KEY=<key>           # Nên có; thiếu thì suggest/describe dùng chuỗi fallback bên dưới
+MINIMAX_API_KEY=<key>          # Fallback LLM (prod đang dùng)
 OPENROUTER_API_KEY=<key>       # Fallback LLM khi Gemini lỗi (nên có)
 SENTRY_DSN=<dsn>               # Optional error monitoring
 HS_MATCH_PUBLIC=false          # true = /api/match không cần token
