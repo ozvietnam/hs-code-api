@@ -28,7 +28,7 @@ Một dịch vụ **API tra cứu HS code + thuế + chính sách** cho hệ th�
 | **Chính sách đã bóc tách (AI)** | 7,928 mã (100%) | Cảnh báo giấy phép / kiểm tra / hạn ngạch khi NK |
 | **Văn bản pháp luật** | 108 văn bản đánh index, **30 đã verify tiêu đề thật (= 99% lượt trích dẫn)** | Trả tên + link văn bản gốc thay vì chỉ mã |
 | **Chú giải chương/nhóm** | 87 chương | Hỗ trợ phân loại đúng (quy tắc GIR) |
-| **Tiền lệ TB-TCHQ** | 1.011 mã HS · 2.912 thông báo (2015–2026) | Dẫn chứng cách Hải quan đã phân loại; thu thập từ nguồn công khai, mỗi bản ghi kèm url |
+| **Tiền lệ TB-TCHQ** | 1.078 mã HS · 3.028 thông báo (2013–2026) | Dẫn chứng cách Hải quan đã phân loại; thu thập từ nguồn công khai, mỗi bản ghi kèm url |
 | **Cảnh báo dễ nhầm** | 57 mã HS | Chống nhầm mã |
 | **Từ điển mâu thuẫn HS** | 319 mặt hàng (220 ch.84/85/90 từ Grok + 99 ch.39–96 dựng từ tiền lệ) | DN hay khai mã A, Hải quan hay ấn định mã B + tiêu chí phân biệt; `confusionAlerts[]` trong suggest/search |
 | **Tờ khai cũ của Oz** | 10,283 tờ (dữ liệu riêng tư) | AI học từ lịch sử thực tế của công ty |
