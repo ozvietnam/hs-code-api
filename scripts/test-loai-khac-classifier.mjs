@@ -105,3 +105,7 @@ if (failedCases.length > 0) {
 }
 console.log('='.repeat(70));
 console.log('\nChạy với --verbose để xem đầy đủ reasoning chain cho tất cả cases');
+
+// Trước đây script chỉ in kết quả, không bao giờ làm đỏ `npm test`.
+// PARTIAL được chấp nhận (đã biết); FAIL thì phải đỏ.
+process.exit(failed > 0 ? 1 : 0);

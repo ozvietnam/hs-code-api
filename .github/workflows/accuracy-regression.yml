@@ -1,0 +1,20 @@
+name: Accuracy regression (no LLM)
+
+# Chấm tầng tìm kiếm deterministic trên tập giữ riêng (763 tờ khai) — không
+# cần key LLM. Đỏ khi top-1/top-3 ở mức 4 hoặc 8 số tụt quá 1 điểm % so với
+# mốc data/alias-benchmark-latest.json. Mất ~8 phút nên chạy riêng.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/benchmark-alias-holdout.mjs --gate
