@@ -22,7 +22,8 @@ const { checkResidualPreference } = require('../lib/residual-guard');
 const { applyLearnedCorrections } = require('../lib/learned-corrections');
 const { getSuggestCache, setSuggestCache } = require('../lib/suggest-cache');
 const { getPrompt } = require('../lib/prompt-version');
-const { conflictsData } = require('../lib/data');
+const { conflictsData, taxData } = require('../lib/data');
+const { sanitizeLlmSuggestions, deterministicSuggestions } = require('../lib/llm-output-guard');
 
 function conflictsDb() {
   return conflictsData;
@@ -84,7 +85,9 @@ module.exports = async function handler(req, res) {
   const topCandidates = Math.min(Math.max(parseInt(body?.options?.topCandidates, 10) || 10, 3), 20);
   const topReranked = Math.min(Math.max(parseInt(body?.options?.topReranked, 10) || 3, 1), 5);
 
-  const cached = getSuggestCache(description, topReranked);
+  const facts = body?.facts && typeof body.facts === 'object' && !Array.isArray(body.facts) ? body.facts : {};
+
+  const cached = getSuggestCache(description, topReranked, { facts });
   if (cached) {
     res.setHeader('Cache-Control', 'private, max-age=300');
     return res.status(200).json({ ...cached, cached: true });
@@ -140,12 +143,29 @@ module.exports = async function handler(req, res) {
 
     // callLLMJson: Gemini → OpenRouter fallback (see lib/llm-tier.js)
     const { promptText, variant: promptVariant, promptVersion } = getPrompt(FALLBACK_PROMPT);
-    const { json, model } = await callLLMJson(promptText, userPrompt, {
-      tier: 'premium',
-      timeoutMs: 30000,
-    });
+    let json = null;
+    let model = null;
+    let llmError = null;
+    try {
+      ({ json, model } = await callLLMJson(promptText, userPrompt, {
+        tier: 'premium',
+        timeoutMs: 30000,
+      }));
+    } catch (error) {
+      // LLM lỗi / chưa cấu hình KHÔNG được vứt các ứng viên đã tìm được —
+      // trả kết quả deterministic, đánh dấu degraded để ERP biết mà xử lý.
+      captureError(error, { endpoint: 'suggest', stage: 'llm', description: description.slice(0, 80) });
+      llmError = { code: error.code || 'LLM_FAILED', message: String(error.message || '').slice(0, 200) };
+    }
 
-    const rawSuggestions = (json.suggestions || []).slice(0, topReranked);
+    // LLM chỉ được CHỌN trong ứng viên — mã bịa / ngoài biểu thuế bị loại.
+    const guarded = sanitizeLlmSuggestions(json?.suggestions, { evidence, taxData, limit: topReranked });
+    let engine = 'llm';
+    let rawSuggestions = guarded.suggestions;
+    if (!rawSuggestions.length) {
+      engine = 'deterministic';
+      rawSuggestions = deterministicSuggestions(evidence, { taxData, limit: topReranked });
+    }
     const girRanked = applyGirRules(rawSuggestions, description);
     const precedentRanked = applyPrecedentBoost(girRanked.suggestions, description);
     const ozSearchItems = ozPrecedents.length
@@ -181,7 +201,6 @@ module.exports = async function handler(req, res) {
     // Bảng quyết định theo nhóm: tên/chức năng đưa tới nhóm, THUỘC TÍNH chốt lá.
     // Xét các nhóm trong top gợi ý; thiếu dữ kiện thì trả missingFacts để ERP /
     // người dùng bổ sung TRƯỚC khi chốt 8 số — không đoán.
-    const facts = body?.facts && typeof body.facts === 'object' && !Array.isArray(body.facts) ? body.facts : {};
     const parsedDesc = parseCommodityQuery(description);
     const decisionHeadings = [];
     for (const sg of precedentRanked.suggestions || []) {
@@ -224,8 +243,10 @@ module.exports = async function handler(req, res) {
 
     // Attach product examples for "Loại khác" codes
     let enrichedSuggestions = correctedSuggestions.map(s => {
-      if (!isLoaiKhac(s.hsCode)) return s;
-      return { ...s, productExamples: getProducts(s.hsCode, 5) };
+      // Chế độ deterministic: điểm tìm kiếm + boost KHÔNG phải xác suất đúng.
+      const base = engine === 'deterministic' ? { ...s, confidence: null } : s;
+      if (!isLoaiKhac(base.hsCode)) return base;
+      return { ...base, productExamples: getProducts(base.hsCode, 5) };
     });
 
     // Bảng ĐÃ VERIFIED chốt được lá trong nhóm đang dẫn đầu → lá đó lên đầu (ghi
@@ -303,11 +324,18 @@ module.exports = async function handler(req, res) {
       llmModel: model,
       promptVersion,
       promptVariant,
+      // engine=deterministic: LLM lỗi hoặc mọi mã LLM trả đều bị loại. Kết quả là
+      // thứ tự tìm kiếm, confidence=null — BẮT BUỘC người có chuyên môn xác nhận.
+      engine,
+      degraded: engine !== 'llm',
+      ...(guarded.rejected.length ? { llmRejectedCodes: guarded.rejected } : {}),
+      ...(llmError ? { llmError } : {}),
       ms: Date.now() - started,
     };
 
-    // Store in LRU cache for repeated identical queries
-    setSuggestCache(description, topReranked, responsePayload);
+    // Store in LRU cache for repeated identical queries — không cache bản
+    // degraded để lần gọi sau còn thử lại LLM.
+    if (engine === 'llm') setSuggestCache(description, topReranked, responsePayload, { facts });
 
     // Private cache 5 min — same product queried repeatedly in ERP session
     res.setHeader('Cache-Control', 'private, max-age=300');
@@ -350,7 +378,7 @@ async function handleBatch(req, res, body, started) {
     const itemStart = Date.now();
     try {
       // Check cache first
-      const cached = getSuggestCache(item.description, topReranked);
+      const cached = getSuggestCache(item.description, topReranked, { mode: 'batch' });
       if (cached) {
         return { id: item.id, cached: true, ms: 0, ...cached };
       }
@@ -374,13 +402,26 @@ async function handleBatch(req, res, body, started) {
       }, null, 2);
 
       const { promptText: batchPrompt } = getPrompt(FALLBACK_PROMPT);
-      const { json, model } = await callLLMJson(batchPrompt, userPrompt, { tier: 'premium', timeoutMs: 25000 });
-      const rawSuggestions = (json.suggestions || []).slice(0, topReranked);
+      let json = null;
+      let model = null;
+      let llmError = null;
+      try {
+        ({ json, model } = await callLLMJson(batchPrompt, userPrompt, { tier: 'premium', timeoutMs: 25000 }));
+      } catch (error) {
+        captureError(error, { endpoint: 'suggest/batch', stage: 'llm', itemId: item.id });
+        llmError = { code: error.code || 'LLM_FAILED', message: String(error.message || '').slice(0, 200) };
+      }
+      const guarded = sanitizeLlmSuggestions(json?.suggestions, { evidence, taxData, limit: topReranked });
+      const engine = guarded.suggestions.length ? 'llm' : 'deterministic';
+      const rawSuggestions = engine === 'llm'
+        ? guarded.suggestions
+        : deterministicSuggestions(evidence, { taxData, limit: topReranked });
       const girRanked = applyGirRules(rawSuggestions, item.description);
       const precedentRanked = applyPrecedentBoost(girRanked.suggestions, item.description);
       const suggestions = precedentRanked.suggestions.map(s => {
-        if (!isLoaiKhac(s.hsCode)) return s;
-        return { ...s, productExamples: getProducts(s.hsCode, 3) };
+        const base = engine === 'deterministic' ? { ...s, confidence: null } : s;
+        if (!isLoaiKhac(base.hsCode)) return base;
+        return { ...base, productExamples: getProducts(base.hsCode, 3) };
       });
 
       const batchGir = determineGir({
@@ -399,9 +440,15 @@ async function handleBatch(req, res, body, started) {
         girDisclaimer: batchGir.disclaimer,
         chapterGuidance: audit.chapterGuidance,
         llmModel: model,
+        engine,
+        degraded: engine !== 'llm',
+        ...(guarded.rejected.length ? { llmRejectedCodes: guarded.rejected } : {}),
+        ...(llmError ? { llmError } : {}),
         ms: Date.now() - itemStart,
       };
-      setSuggestCache(item.description, topReranked, { suggestions: result.suggestions, evidence: result.evidence, girRulesApplied: result.girRulesApplied, llmModel: model });
+      if (engine === 'llm') {
+        setSuggestCache(item.description, topReranked, { suggestions: result.suggestions, evidence: result.evidence, girRulesApplied: result.girRulesApplied, llmModel: model, engine }, { mode: 'batch' });
+      }
       return result;
     } catch (err) {
       captureError(err, { endpoint: 'suggest/batch', itemId: item.id, description: item.description.slice(0, 80) });
