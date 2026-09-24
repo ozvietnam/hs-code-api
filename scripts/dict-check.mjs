@@ -9,6 +9,7 @@
  *   [2] bảng của nhóm: có, hợp lệ, mọi lá có đường tới
  *   [3] lint chất lượng bảng + mục từ điển chạm nhóm
  *   [4] tests/decision-cases.json: mọi lá có ca chốt ra nó; ca search cho mục từ điển
+ *   [4b] DỮ LIỆU THẬT: cụm tờ khai Oz của nhóm chốt ≥ 50 % (không Oz: ca câu chữ ≥ 60 % lá)
  *   [5] benchmark holdout delta
  *
  *   npm run dict:check -- 8536
@@ -141,6 +142,28 @@ console.log('\n[4] Ca kiểm');
   if (!inHeading.length) warn('chưa có ca search nào (tests/search-cases.json) gõ tên hàng về nhóm này');
   else ok(`${inHeading.length} ca search về nhóm`);
   run('test-search', ['scripts/test-search.mjs']);
+}
+
+console.log('\n[4b] Dữ liệu thật — tên hàng trong tờ khai Oz / ca câu chữ');
+if (table) {
+  const aliases = require(join(ROOT, 'data', 'hs-aliases.json')).aliases || [];
+  const allCases = JSON.parse(readFileSync(join(ROOT, 'tests', 'decision-cases.json'), 'utf8')).cases;
+  const g = dt.acceptanceGate(heading, { aliases, cases: allCases, taxData: tax, parse: parseCommodityQuery });
+  const line = g.mode === 'oz'
+    ? `chốt ${g.resolved}/${g.n} cụm tờ khai Oz (${Math.round(g.ratio * 100)}%)${g.disagree.length ? `, LỆCH tiền lệ ${g.disagree.length}` : ''}`
+    : `ca câu chữ (không facts) chốt đúng ${g.resolved}/${g.leaves} lá (${Math.round(g.ratio * 100)}%)`;
+  if (g.pass) ok(`${line} — ${g.thresholdVi}`);
+  else {
+    bad(`${line} — cần: ${g.thresholdVi}`);
+    if (g.mode === 'oz') {
+      for (const u of g.unresolved.slice(0, 8)) console.log(`      ${String(u.count).padStart(4)}×  ${u.phrase.padEnd(32)} → hỏi ${u.ask.join('/')}`);
+      for (const d of g.disagree.slice(0, 5)) console.log(`      LỆCH  ${d.phrase}: bảng ${d.table} / Oz ${d.oz} ×${d.count}`);
+      console.log(`      (npm run dict:table -- ${heading} --oz để xem đủ)`);
+    } else {
+      for (const w of g.wrong.slice(0, 5)) console.log(`      ${w.id}: "${w.text}" → ${w.got}`);
+      if (g.missingLeaves.length) console.log(`      lá chưa có ca câu chữ chốt ra: ${g.missingLeaves.slice(0, 10).join(', ')}`);
+    }
+  }
 }
 
 if (!argv.includes('--no-bench')) {

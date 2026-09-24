@@ -627,7 +627,7 @@
       "post": {
         "operationId": "suggest",
         "summary": "Gợi ý mã HS bằng AI, kèm audit trail GIR có căn cứ",
-        "description": "Body: `{\"description\": \"tên hàng\"}`. Trả `suggestions[]`, `girRulesApplied[]` (mỗi mục có `basis`: RULE_TABLE/DETERMINISTIC là căn cứ chắc, HEURISTIC/LLM_ASSERTED phải kiểm chứng lại), `girDisclaimer`, `rankingSignals[]` (kỹ thuật, không có giá trị pháp lý) và `chapterGuidance[]`. Kèm `decisions[]` (bảng quyết định theo thuộc tính cho các nhóm trong top gợi ý) và `missingFacts[]` — thuộc tính còn thiếu để chốt lá 8 số; ERP/người dùng trả lời bằng body `facts: {...}` rồi gọi lại. Bảng đã verified chốt được lá thì lá đó lên đầu với `decidedByTable`; chưa verified chỉ tư vấn. Cần token vì mỗi lượt gọi tốn chi phí LLM. ĐỌC `status` + `nextAction` TRƯỚC: NEED_FACTS → hỏi người dùng rồi gọi lại với `facts`; NEEDS_EXPERT → AI không chạy được, cần chuyên viên; REVIEW → người dùng chọn/xác nhận. Không có trạng thái tự chốt: `confidence` chưa hiệu chuẩn.",
+        "description": "Body: `{\"description\": \"tên hàng\"}`. Trả `suggestions[]`, `girRulesApplied[]` (mỗi mục có `basis`: RULE_TABLE/DETERMINISTIC là căn cứ chắc, HEURISTIC/LLM_ASSERTED phải kiểm chứng lại), `girDisclaimer`, `rankingSignals[]` (kỹ thuật, không có giá trị pháp lý) và `chapterGuidance[]`. Kèm `decisions[]` (bảng quyết định theo thuộc tính cho các nhóm trong top gợi ý) và `missingFacts[]` — thuộc tính còn thiếu để chốt lá 8 số; ERP/người dùng trả lời bằng body `facts: {...}` rồi gọi lại. Bảng đã verified chốt được lá thì lá đó lên đầu với `decidedByTable`; chưa verified chỉ tư vấn. Kèm `confusionAlerts[]` từ từ điển mâu thuẫn HS (xem /api/confusion-pairs). Cần token vì mỗi lượt gọi tốn chi phí LLM. ĐỌC `status` + `nextAction` TRƯỚC: NEED_FACTS → hỏi người dùng rồi gọi lại với `facts`; NEEDS_EXPERT → AI không chạy được, cần chuyên viên; REVIEW → người dùng chọn/xác nhận. Không có trạng thái tự chốt: `confidence` chưa hiệu chuẩn.",
         "tags": [
           "AI"
         ],
@@ -813,6 +813,13 @@
                         "object",
                         "null"
                       ]
+                    },
+                    "confusionAlerts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      },
+                      "description": "Từ điển mâu thuẫn HS: DN hay khai A, Hải quan hay ấn định B"
                     }
                   }
                 }
@@ -1257,6 +1264,82 @@
           },
           "503": {
             "description": "FEEDBACK_NOT_PERSISTED — bản ghi chưa được lưu",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/confusion-pairs": {
+      "get": {
+        "operationId": "confusionPairs",
+        "summary": "Từ điển mâu thuẫn HS: mặt hàng DN hay khai mã A, Hải quan hay ấn định mã B, kèm tiêu chí phân biệt",
+        "description": "Rewrite tới /api/dataset?resource=confusion_pairs. `q=` nhận diện theo tên hàng, `hs=` tra theo mã (mã đúng hoặc mã hay khai sai), `id=` một mục (MT-049…). Không tham số → thống kê + danh sách. Cùng dữ liệu này, `/api/suggest` và `/api/search` trả `confusionAlerts[]` (HIGH khi gợi ý đầu rơi vào mã DN hay khai sai; CHECK khi tên hàng khớp mục; INFO khi chỉ trùng mã). Nguồn CEO + Grok, các mục `verified:false` cho tới khi duyệt — cần token.",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "description": "Tên hàng",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Mã HS 4/6/8 số",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "description": "Mã mục, vd MT-049",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Thiếu hoặc sai Bearer token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ",
             "content": {
               "application/json": {
                 "schema": {

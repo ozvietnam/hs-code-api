@@ -11,6 +11,7 @@ const { vatReductionOf } = require('../lib/vat-reduction');
 const { matchProducts } = require('../lib/product-match');
 const { appendAccess } = require('../lib/access-log');
 const { filterChapter98 } = require('../lib/chapter98');
+const { confusionAlertsFor } = require('../lib/confusion-pairs');
 
 function parseBody(req) {
   let body = req.body;
@@ -191,10 +192,14 @@ module.exports = function handler(req, res) {
     ]),
   ];
 
+  // Từ điển mâu thuẫn: tên hàng khớp mặt hàng hay bị ấn định lại → tiêu chí phân biệt.
+  const confusionAlerts = confusionAlertsFor(q, results.slice(0, 5).map((r) => r.hsCode));
+
   return res.status(200).json({
     keyword: q,
     total: results.length,
     results,
+    ...(confusionAlerts.length ? { confusionAlerts } : {}),
     ...(formWarning ? { formWarning } : {}),
     ...(parsedQuery
       ? {

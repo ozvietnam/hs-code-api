@@ -1,13 +1,14 @@
 {
   "version": 1,
-  "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → done. `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
+  "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → draft (có bảng, chưa qua cửa dữ liệu thật) → done (qua cửa). `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
     "7209": {
       "status": "done",
       "doneAt": "2026-09-17",
       "by": "claude",
       "commit": "pending",
-      "leafCount": 17
+      "leafCount": 17,
+      "gateVi": "text: 15/16 (88%)"
     },
     "7216": {
       "status": "dictionary",
@@ -20,11 +21,14 @@
       "noteVi": "Từ điển tên đã có (cursor-agent 2026-09-16); còn thiếu bảng quyết định theo thuộc tính."
     },
     "8405": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent",
       "commit": "pending",
-      "leafCount": 2
+      "leafCount": 2,
+      "gateVi": "text: 1/1 (50%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8405 --oz"
     },
     "8412": {
       "status": "done",
@@ -33,78 +37,104 @@
       "commit": "d28d5a7",
       "leafCount": 9,
       "table": true,
-      "rules": 9
+      "rules": 9,
+      "gateVi": "oz: 22/25 (88%)"
     },
     "8420": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent-b2",
       "commit": "pending",
       "leafCount": 7,
       "table": true,
-      "rules": 7
+      "rules": 7,
+      "gateVi": "oz: 0/4 (0%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8420 --oz"
     },
     "8422": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent-b2",
       "commit": "pending",
       "leafCount": 7,
       "table": true,
-      "rules": 7
+      "rules": 7,
+      "gateVi": "oz: 3/13 (23%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8422 --oz"
     },
     "8427": {
       "status": "done",
       "doneAt": "2026-09-17",
       "by": "claude",
       "commit": "pending",
-      "leafCount": 3
+      "leafCount": 3,
+      "gateVi": "text: 3/3 (100%)"
     },
     "8428": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent-b4",
       "commit": "pending",
       "leafCount": 18,
       "table": true,
-      "rules": 18
+      "rules": 18,
+      "gateVi": "text: 0/18 (0%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8428 --oz"
     },
     "8452": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent-b3",
       "commit": "1737da2",
-      "leafCount": 10
+      "leafCount": 10,
+      "gateVi": "oz: 0/15 (0%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8452 --oz"
     },
     "8466": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent-b3",
       "commit": "1737da2",
-      "leafCount": 11
+      "leafCount": 11,
+      "gateVi": "oz: 0/11 (0%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8466 --oz"
     },
     "8467": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent-b3",
       "commit": "1737da2",
-      "leafCount": 12
+      "leafCount": 12,
+      "gateVi": "oz: 0/10 (0%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8467 --oz"
     },
     "8473": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent-b2",
       "commit": "pending",
       "leafCount": 7,
       "table": true,
-      "rules": 7
+      "rules": 7,
+      "gateVi": "oz: 1/10 (10%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8473 --oz"
     },
     "8480": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent-b3",
       "commit": "1737da2",
-      "leafCount": 12
+      "leafCount": 12,
+      "gateVi": "oz: 0/4 (0%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8480 --oz"
     },
     "8481": {
       "status": "dictionary",
@@ -123,120 +153,164 @@
       "commit": "pending",
       "leafCount": 8,
       "table": true,
-      "rules": 8
+      "rules": 8,
+      "gateVi": "oz: 4/4 (100%)"
     },
     "8505": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent",
       "commit": "pending",
-      "leafCount": 6
+      "leafCount": 6,
+      "gateVi": "oz: 1/12 (8%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8505 --oz"
     },
     "8509": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent",
       "commit": "pending",
-      "leafCount": 6
+      "leafCount": 6,
+      "gateVi": "oz: 5/13 (38%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8509 --oz"
     },
     "8513": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent",
       "commit": "pending",
-      "leafCount": 5
+      "leafCount": 5,
+      "gateVi": "oz: 3/14 (21%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8513 --oz"
     },
     "8514": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent-b3",
       "commit": "1737da2",
-      "leafCount": 13
+      "leafCount": 13,
+      "gateVi": "oz: 0/3 (0%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8514 --oz"
     },
     "8521": {
       "status": "done",
       "doneAt": "2026-09-17",
       "by": "cursor-agent",
       "commit": "pending",
-      "leafCount": 6
+      "leafCount": 6,
+      "gateVi": "text: 6/6 (100%)"
     },
     "8522": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent-b2",
       "commit": "d28d5a7",
       "leafCount": 9,
       "table": true,
-      "rules": 9
+      "rules": 9,
+      "gateVi": "text: 0/9 (0%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8522 --oz"
     },
     "8524": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent",
       "commit": "pending",
-      "leafCount": 6
+      "leafCount": 6,
+      "gateVi": "oz: 0/8 (0%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8524 --oz"
     },
     "8532": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent-b2",
       "commit": "d28d5a7",
       "leafCount": 9,
       "table": true,
-      "rules": 9
+      "rules": 9,
+      "gateVi": "oz: 3/12 (25%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8532 --oz"
     },
     "8533": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent-b2",
       "commit": "d28d5a7",
       "leafCount": 8,
       "table": true,
-      "rules": 8
+      "rules": 8,
+      "gateVi": "oz: 0/11 (0%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8533 --oz"
     },
     "8534": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent",
       "commit": "pending",
-      "leafCount": 4
+      "leafCount": 4,
+      "gateVi": "oz: 0/11 (0%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8534 --oz"
     },
     "8535": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent-b3",
       "commit": "1737da2",
-      "leafCount": 14
+      "leafCount": 14,
+      "gateVi": "text: 0/14 (0%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8535 --oz"
     },
     "8537": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent-b4",
       "commit": "21341f3",
       "leafCount": 15,
       "table": true,
-      "rules": 16
+      "rules": 16,
+      "gateVi": "oz: 0/56 (0%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8537 --oz"
     },
     "8538": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent-b3",
       "commit": "1737da2",
-      "leafCount": 11
+      "leafCount": 11,
+      "gateVi": "oz: 0/20 (0%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8538 --oz"
     },
     "8541": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent-b3",
       "commit": "1737da2",
-      "leafCount": 12
+      "leafCount": 12,
+      "gateVi": "oz: 11/26 (42%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8541 --oz"
     },
     "8542": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-09-17",
       "by": "cursor-agent",
       "commit": "pending",
-      "leafCount": 5
+      "leafCount": 5,
+      "gateVi": "oz: 0/22 (0%)",
+      "draftAt": "2026-09-18",
+      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8542 --oz"
     }
   }
 }

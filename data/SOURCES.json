@@ -70,6 +70,11 @@
       "descriptionVi": "Cụm mã dễ nhầm",
       "builtBy": "scripts/enrich-conflicts.mjs"
     },
+    "confusion-pairs.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Từ điển mâu thuẫn HS: mặt hàng DN hay khai mã A, Hải quan hay ấn định mã B — 50 mục từ tài liệu CEO + 170 cặp nhóm ngành",
+      "builtBy": "scripts/build-confusion-pairs.mjs"
+    },
     "customs-types.json": {
       "kind": "MASTER",
       "descriptionVi": "Mã loại hình XNK — QĐ 1357/QĐ-TCHQ"
@@ -233,8 +238,8 @@
     },
     "precedents.json": {
       "kind": "MASTER",
-      "descriptionVi": "Thông báo kết quả phân loại TB-TCHQ (529 bản, 2022–2025) — nguồn tb_tchq_index.json; hạn đối chiếu ở data-freshness.json",
-      "builtBy": "scripts/import-legacy.mjs"
+      "descriptionVi": "Thông báo kết quả phân loại TB-TCHQ (2.912 bản ghi, 1.012 mã, 2007–2026) — nguồn tb_tchq_index.json + data/community/tb-tchq/* (luatvietnam, quét toàn văn); hạn đối chiếu ở data-freshness.json",
+      "builtBy": "scripts/merge-community.mjs"
     },
     "search.json": {
       "kind": "DERIVED",

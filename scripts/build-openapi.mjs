@@ -162,6 +162,7 @@ const SUGGEST_RESPONSE = {
     residualAdvisory: { type: 'object' },
     antiPatternWarnings: { type: 'array', items: { type: 'object' } },
     confusionWarning: { type: ['object', 'null'] },
+    confusionAlerts: { type: 'array', items: { type: 'object' }, description: 'Từ điển mâu thuẫn HS: DN hay khai A, Hải quan hay ấn định B' },
   },
 };
 
@@ -338,6 +339,7 @@ const paths = {
         'Kèm `decisions[]` (bảng quyết định theo thuộc tính cho các nhóm trong top gợi ý) và `missingFacts[]` — ' +
         'thuộc tính còn thiếu để chốt lá 8 số; ERP/người dùng trả lời bằng body `facts: {...}` rồi gọi lại. ' +
         'Bảng đã verified chốt được lá thì lá đó lên đầu với `decidedByTable`; chưa verified chỉ tư vấn. ' +
+        'Kèm `confusionAlerts[]` từ từ điển mâu thuẫn HS (xem /api/confusion-pairs). ' +
         'Cần token vì mỗi lượt gọi tốn chi phí LLM. ' +
         'ĐỌC `status` + `nextAction` TRƯỚC: NEED_FACTS → hỏi người dùng rồi gọi lại với `facts`; ' +
         'NEEDS_EXPERT → AI không chạy được, cần chuyên viên; REVIEW → người dùng chọn/xác nhận. ' +
@@ -384,6 +386,19 @@ const paths = {
       },
       response: { type: 'object', properties: { ok: { type: 'boolean' }, feedbackId: { type: 'string' }, persisted: { type: 'boolean' } } },
       errors: { 400: 'Thiếu feedbackType hoặc correctedHsCode không hợp lệ (INVALID_HS_CODE)', 503: 'FEEDBACK_NOT_PERSISTED — bản ghi chưa được lưu' },
+    }),
+  },
+  '/api/confusion-pairs': {
+    get: op({
+      id: 'confusionPairs', tags: ['Tra cứu'], auth: bearer,
+      summary: 'Từ điển mâu thuẫn HS: mặt hàng DN hay khai mã A, Hải quan hay ấn định mã B, kèm tiêu chí phân biệt',
+      description:
+        'Rewrite tới /api/dataset?resource=confusion_pairs. `q=` nhận diện theo tên hàng, `hs=` tra theo mã ' +
+        '(mã đúng hoặc mã hay khai sai), `id=` một mục (MT-049…). Không tham số → thống kê + danh sách. ' +
+        'Cùng dữ liệu này, `/api/suggest` và `/api/search` trả `confusionAlerts[]` (HIGH khi gợi ý đầu rơi vào ' +
+        'mã DN hay khai sai; CHECK khi tên hàng khớp mục; INFO khi chỉ trùng mã). Nguồn CEO + Grok, các mục ' +
+        '`verified:false` cho tới khi duyệt — cần token.',
+      params: [q('q', 'Tên hàng'), q('hs', 'Mã HS 4/6/8 số'), q('id', 'Mã mục, vd MT-049')],
     }),
   },
 };

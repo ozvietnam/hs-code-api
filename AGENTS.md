@@ -59,7 +59,7 @@ qua GitHub Issue.
 | Chú giải chương (87) | `data/notes.json` |
 | **Chú giải nhóm 4 số (1.269 — phủ 100%)** | `data/chu-giai-heading.json` |
 | Chú giải chi tiết WCO | `data/explanatory-notes.json` |
-| Tiền lệ TB-TCHQ (242 mã) | `data/precedents.json` |
+| Tiền lệ TB-TCHQ (1.012 mã) | `data/precedents.json` |
 | Cảnh báo mã dễ nhầm (66) | `data/conflicts.json` |
 | **Bảng quyết định phân giải** | `data/conflict-tables.json` |
 | Văn bản pháp luật (108) | `data/legal-docs.json` |

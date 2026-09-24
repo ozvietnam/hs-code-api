@@ -39,6 +39,7 @@ function withExamples(s, limit) {
     ...(generated.length ? { productExamplesGenerated: generated } : {}),
   };
 }
+const { confusionAlertsFor } = require('../lib/confusion-pairs');
 
 function conflictsDb() {
   return conflictsData;
@@ -235,6 +236,9 @@ module.exports = async function handler(req, res) {
     const topDecision = decisions.find((d) => d.heading === topHeading) || null;
     const missingFacts = [...new Map(decisions.flatMap((d) => d.missingFacts || []).map((m) => [m.attribute, m])).values()];
     const rejectedFacts = [...new Map(decisions.flatMap((d) => d.rejectedFacts || []).map((r) => [r.attribute, r])).values()];
+    // Từ điển mâu thuẫn: tên hàng trong mô tả khớp mặt hàng "DN hay khai A, Hải quan
+    // hay ấn định B" → trả tiêu chí phân biệt; HIGH khi gợi ý đầu rơi đúng mã A.
+    const confusionAlerts = confusionAlertsFor(description, (precedentRanked.suggestions || []).map((sg) => sg.hsCode));
 
     // Trích dẫn GIR: chỉ phát ra khi có căn cứ kiểm chứng được (xem lib/gir.js).
     // Bảng chưa verified đi qua gir.js thành HEURISTIC, verified mới là RULE_TABLE.
@@ -351,6 +355,7 @@ module.exports = async function handler(req, res) {
         : {}),
       ...(missingFacts.length ? { missingFacts } : {}),
       ...(rejectedFacts.length ? { rejectedFacts } : {}),
+      ...(confusionAlerts.length ? { confusionAlerts } : {}),
       antiPatternWarnings: [
         ...audit.antiPatternWarnings,
         ...historyAdjusted.warnings,

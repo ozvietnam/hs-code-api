@@ -1,6 +1,7 @@
 const { requireAuthUnlessPublic } = require('../lib/public-access');
 const { setCors, handleOptions } = require('../lib/cors');
 const { taxData, precedentsData, conflictsData, normalizeHs } = require('../lib/data');
+const confusionPairs = require('../lib/confusion-pairs');
 const { buildAdminOverview } = require('../lib/admin-overview');
 const { getDocByCode, listDocs } = require('../lib/legal-docs');
 const { searchPrecedents } = require('../lib/precedent-search');
@@ -121,6 +122,26 @@ module.exports = async function handler(req, res) {
         total: items.length,
         items,
       });
+    }
+
+    if (resource === 'confusion_pairs') {
+      // Từ điển mâu thuẫn HS (CEO + Grok). KÍN cho tới khi các mục được duyệt (verified).
+      const { hs, q, id } = req.query;
+      if (id) {
+        const entry = confusionPairs.getEntry(id);
+        return entry ? res.status(200).json({ found: true, entry }) : res.status(404).json({ found: false, id });
+      }
+      const text = String(q || '').trim();
+      if (text.length >= 3) {
+        const hits = confusionPairs.matchByText(text).map((h) => ({ ...confusionPairs.getEntry(h.entry.id), matchedAlias: h.matchedAlias }));
+        const alerts = hs ? confusionPairs.confusionAlertsFor(text, [hs]) : [];
+        return res.status(200).json({ found: hits.length > 0, query: text, total: hits.length, entries: hits, ...(hs ? { alerts } : {}) });
+      }
+      if (hs) {
+        const hits = confusionPairs.matchByHs(hs).map((h) => ({ ...confusionPairs.getEntry(h.entry.id), side: h.side, matchedPrefix: h.prefix }));
+        return res.status(200).json({ found: hits.length > 0, hsCode: String(hs), total: hits.length, entries: hits });
+      }
+      return res.status(200).json({ ...confusionPairs.stats(), entries: confusionPairs.listEntries() });
     }
 
     if (resource === 'admin_overview') {
