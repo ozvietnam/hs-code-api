@@ -30,6 +30,7 @@ Một dịch vụ **API tra cứu HS code + thuế + chính sách** cho hệ th�
 | **Chú giải chương/nhóm** | 87 chương | Hỗ trợ phân loại đúng (quy tắc GIR) |
 | **Tiền lệ TB-TCHQ** | 1.011 mã HS · 2.912 thông báo (2015–2026) | Dẫn chứng cách Hải quan đã phân loại; thu thập từ nguồn công khai, mỗi bản ghi kèm url |
 | **Cảnh báo dễ nhầm** | 57 mã HS | Chống nhầm mã |
+| **Từ điển mâu thuẫn HS** | 200 mặt hàng (ch.84/85/90) | DN hay khai mã A, Hải quan hay ấn định mã B + tiêu chí phân biệt; `confusionAlerts[]` trong suggest/search |
 | **Tờ khai cũ của Oz** | 10,283 tờ (dữ liệu riêng tư) | AI học từ lịch sử thực tế của công ty |
 | **Bộ ngành quản lý** | 14 bộ | Ánh xạ mã HS → cơ quan cấp phép |
 
@@ -56,7 +57,7 @@ Authorization: Bearer <HS_API_TOKEN>
 | Sinh mô tả khai báo | `POST /api/describe` |
 | **Tra văn bản pháp luật** | `GET /api/legal-docs` · `GET /api/legal-docs/:code` |
 | Chú giải chương | `GET /api/notes?chapter=39` |
-| Tiền lệ / cảnh báo nhầm | `GET /api/precedents?hs=` · `GET /api/conflicts?hs=` |
+| Tiền lệ / cảnh báo nhầm | `GET /api/precedents?hs=` · `GET /api/conflicts?hs=` · `GET /api/confusion-pairs?q=` |
 
 Ví dụ:
 ```bash

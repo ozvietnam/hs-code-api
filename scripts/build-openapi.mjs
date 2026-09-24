@@ -128,6 +128,7 @@ const paths = {
         'Kèm `decisions[]` (bảng quyết định theo thuộc tính cho các nhóm trong top gợi ý) và `missingFacts[]` — ' +
         'thuộc tính còn thiếu để chốt lá 8 số; ERP/người dùng trả lời bằng body `facts: {...}` rồi gọi lại. ' +
         'Bảng đã verified chốt được lá thì lá đó lên đầu với `decidedByTable`; chưa verified chỉ tư vấn. ' +
+        'Kèm `confusionAlerts[]` từ từ điển mâu thuẫn HS (xem /api/confusion-pairs). ' +
         'Cần token vì mỗi lượt gọi tốn chi phí LLM.',
     }),
   },
@@ -144,6 +145,19 @@ const paths = {
     post: op({
       id: 'classify', tags: ['AI'], auth: bearer,
       summary: 'Phân loại có cây quyết định + bảng phân giải cụm mã dễ nhầm',
+    }),
+  },
+  '/api/confusion-pairs': {
+    get: op({
+      id: 'confusionPairs', tags: ['Tra cứu'], auth: bearer,
+      summary: 'Từ điển mâu thuẫn HS: mặt hàng DN hay khai mã A, Hải quan hay ấn định mã B, kèm tiêu chí phân biệt',
+      description:
+        'Rewrite tới /api/dataset?resource=confusion_pairs. `q=` nhận diện theo tên hàng, `hs=` tra theo mã ' +
+        '(mã đúng hoặc mã hay khai sai), `id=` một mục (MT-049…). Không tham số → thống kê + danh sách. ' +
+        'Cùng dữ liệu này, `/api/suggest` và `/api/search` trả `confusionAlerts[]` (HIGH khi gợi ý đầu rơi vào ' +
+        'mã DN hay khai sai; CHECK khi tên hàng khớp mục; INFO khi chỉ trùng mã). Nguồn CEO + Grok, các mục ' +
+        '`verified:false` cho tới khi duyệt — cần token.',
+      params: [q('q', 'Tên hàng'), q('hs', 'Mã HS 4/6/8 số'), q('id', 'Mã mục, vd MT-049')],
     }),
   },
 };

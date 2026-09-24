@@ -1,0 +1,3913 @@
+{
+  "version": "2026-09-24",
+  "noteVi": "Từ điển mâu thuẫn HS: mặt hàng doanh nghiệp hay khai mã A, Hải quan hay ấn định mã B, kèm tiêu chí phân biệt. CEO soạn cùng Grok (Drive: HS_Mau_Thuan_Reports_2026/MASTER_Tu_Dien_Mau_Thuan_HS_System, TU_DIEN_MAU_THUAN_HS_MOT_FILE.md), nhập bằng scripts/build-confusion-pairs.mjs. Mọi mục verified:false cho tới khi CEO duyệt; mục oldTariff:true có mã theo biểu thuế cũ, cần đối chiếu. Trường girRule chỉ là trích dẫn của nguồn, KHÔNG phải determination — mọi trích dẫn GIR chính thức đi qua lib/gir.js.",
+  "sources": [
+    "grok-mt: 50 báo cáo chi tiết MT-001…MT-050 (08/2026–09/2026)",
+    "grok-deep: 150 cặp theo 11 nhóm ngành (Tu_Dien_Mau_Thuan_HS_Master_RAG.csv, 19/08/2026)"
+  ],
+  "groups": {
+    "cam-bien-do-luong": "Cảm biến & đo lường",
+    "motor-drive-servo": "Motor / drive / servo / biến tần",
+    "board-module-hmi": "Board / module / HMI / màn hình",
+    "bom-van-may-nen": "Bơm / van / máy nén",
+    "robot-agv": "Robot / AGV / máy tự động",
+    "dien-cong-tac-nguon": "Điện: công tắc / contactor / nguồn / cáp / LED / camera",
+    "may-cong-cu": "Máy công cụ (ch.84)",
+    "thiet-bi-quang": "Thiết bị quang (ch.90)",
+    "may-in": "Máy in & in ấn",
+    "thiet-bi-nhiet": "Thiết bị nhiệt: làm nóng / làm lạnh",
+    "may-dong-goi": "Máy đóng gói",
+    "khac": "Khác"
+  },
+  "entries": [
+    {
+      "id": "MT-001",
+      "origin": "grok-mt",
+      "group": "board-module-hmi",
+      "nameVi": "Màn hình cảm ứng công nghiệp / HMI / Controller Touch Screen",
+      "nameEn": "Industrial touch screen / HMI / controller touch screen",
+      "aliases": [
+        "màn hình cảm ứng công nghiệp",
+        "màn hình cảm ứng",
+        "màn hình hmi",
+        "controller touch screen",
+        "touch screen công nghiệp",
+        "industrial touch screen",
+        "industrial monitor",
+        "màn hình điều khiển",
+        "màn hình cảm ứng máy ép nhựa"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8537.10",
+        "8528.52",
+        "8528.59"
+      ],
+      "declaredHs": [
+        "8471.60"
+      ],
+      "essenceTestVi": "Có bộ xử lý lập trình / board điều khiển gắn vào hệ thống điều khiển, hay chỉ hiển thị + cảm ứng đơn giản (unit input/output thuần của máy ADP)?",
+      "rules": [
+        {
+          "ifVi": "chỉ hiển thị + cảm ứng đơn giản",
+          "hs": "8528"
+        },
+        {
+          "ifVi": "tích hợp board điều khiển + dùng cho hệ thống điều khiển phân tán",
+          "hs": "8537.10.11"
+        },
+        {
+          "ifVi": "tích hợp board điều khiển + có bộ xử lý lập trình / dùng cho PLC",
+          "hs": "8537.10.12"
+        },
+        {
+          "ifVi": "unit input/output thuần của ADP machine, đáp ứng Note 5 Chương 84",
+          "hs": "8471.60"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'industrial monitor' hoặc 'HMI', DN coi là unit input-output dùng cho máy tính công nghiệp / PLC / hệ thống ADP nên khai 8471; Hải quan nhìn cấu tạo thực tế (màn hình + board điều khiển, chức năng chính là điều khiển hệ thống) ấn định 8537",
+      "deliberateVi": null,
+      "girRule": null,
+      "legalBasisVi": "Chú giải Chương 84 loại trừ máy thuộc Chương 85; Chú giải 1(m) Chương 85; Note 5 Chương 84; CV 6966/TCHQ-TXNK 26/11/2018; Thông tư 31/2022/TT-BTC",
+      "sourceRefs": [
+        {
+          "type": "CV",
+          "reference": "6966/TCHQ-TXNK",
+          "date": "2018-11-26"
+        },
+        {
+          "type": "TT",
+          "reference": "31/2022/TT-BTC",
+          "date": null
+        }
+      ],
+      "warningVi": "Khai 8471 cho touch screen công nghiệp → rủi ro cao bị bác mã sang 8537",
+      "relatedIds": [
+        "MT-014",
+        "MT-030",
+        "MT-023"
+      ],
+      "examples": [
+        "KCG057QV1DB-G760"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-002",
+      "origin": "grok-mt",
+      "group": "robot-agv",
+      "nameVi": "Robot hút bụi gia dụng / thông minh",
+      "nameEn": "Robot vacuum cleaner / robot vacuum",
+      "aliases": [
+        "robot hút bụi",
+        "robot hút bụi gia dụng",
+        "robot hút bụi thông minh",
+        "robot lau nhà",
+        "robot hút bụi lau nhà",
+        "máy hút bụi robot",
+        "robot vacuum",
+        "robot vacuum cleaner",
+        "robotic vacuum"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8508.11.00"
+      ],
+      "declaredHs": [
+        "8508.19.90",
+        "8479.50"
+      ],
+      "essenceTestVi": "Máy hút bụi gia dụng có động cơ điện gắn liền (công suất ≤1500W, túi/thùng ≤20 lít) hay robot công nghiệp đa năng có end-effector?",
+      "rules": [
+        {
+          "ifVi": "robot hút bụi + lau nhà đồng thời (chức năng chính vẫn là hút bụi)",
+          "hs": "8508"
+        },
+        {
+          "ifVi": "robot công nghiệp chuyên dụng, không phải hút bụi gia dụng, có end-effector đa năng",
+          "hs": "8479.50"
+        },
+        {
+          "ifVi": "model công suất >1500W hoặc thùng >20 lít",
+          "hs": "8508.19"
+        }
+      ],
+      "whyMisdeclaredVi": "Tên thương mại 'robot' + tính năng AI/mapping khiến DN khai 8479, trong khi Hải quan áp dụng nghiêm ngặt tiêu chí công suất + dung tích + chức năng hút",
+      "deliberateVi": "Khai 8508.19.90 (loại khác) để hưởng thuế thấp hơn",
+      "girRule": null,
+      "legalBasisVi": "Chú giải HS nhóm 85.08 (chỉ áp dụng máy hút bụi có động cơ điện gắn liền; 'thông minh / AI / mapping' không đủ để nhảy chương); CV 2578/TCHQ-TXNK 2019; Thông tư 31/2022/TT-BTC",
+      "sourceRefs": [
+        {
+          "type": "CV",
+          "reference": "2578/TCHQ-TXNK",
+          "date": "2019"
+        },
+        {
+          "type": "TT",
+          "reference": "31/2022/TT-BTC",
+          "date": null
+        }
+      ],
+      "warningVi": "Khai 8479.50 cho robot hút bụi gia dụng → gần như chắc chắn bị bác",
+      "relatedIds": [
+        "MT-003",
+        "MT-013",
+        "MT-021"
+      ],
+      "examples": [
+        "Roomba",
+        "Xiaomi",
+        "Ecovacs"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-003",
+      "origin": "grok-mt",
+      "group": "robot-agv",
+      "nameVi": "Robot làm sạch bể bơi",
+      "nameEn": "Pool cleaning robot / robotic pool cleaner",
+      "aliases": [
+        "robot làm sạch bể bơi",
+        "robot bể bơi",
+        "robot hút bể bơi",
+        "robot hút bể",
+        "robot vệ sinh hồ bơi",
+        "robot hồ bơi",
+        "pool cleaning robot",
+        "pool cleaner robot",
+        "robotic pool cleaner"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8421.21.22"
+      ],
+      "declaredHs": [
+        "8508",
+        "8479"
+      ],
+      "essenceTestVi": "Hoạt động dưới nước + lọc tuần hoàn nước qua hộp lọc (công suất lọc >500 lít/giờ) hay chỉ hút cặn khô / trên cạn bằng dòng khí?",
+      "rules": [
+        {
+          "ifVi": "chỉ hút cặn khô / trên cạn",
+          "hs": "8508"
+        },
+        {
+          "ifVi": "hoạt động dưới nước + lọc tuần hoàn + công suất lọc >500 lít/giờ",
+          "hs": "8421.21.22"
+        }
+      ],
+      "whyMisdeclaredVi": "Từ 'robot' + 'hút cặn' + hình dáng robot khiến cả DN lẫn một số công chức nghĩ đến 8508 hoặc 8479, bỏ qua chức năng lọc nước là chủ đạo",
+      "deliberateVi": null,
+      "girRule": null,
+      "legalBasisVi": "Chú giải nhóm 84.21 (máy lọc / tinh chế nước) vs 85.08 (máy hút bụi); CV 9381/CHQ-NVTHQ 17/06/2025; Thông tư 31/2022/TT-BTC",
+      "sourceRefs": [
+        {
+          "type": "CV",
+          "reference": "9381/CHQ-NVTHQ",
+          "date": "2025-06-17"
+        },
+        {
+          "type": "TT",
+          "reference": "31/2022/TT-BTC",
+          "date": null
+        }
+      ],
+      "warningVi": "Khai 8508 cho robot bể bơi → rủi ro cao bị chuyển sang 8421 (thường thuế khác)",
+      "relatedIds": [
+        "MT-002",
+        "MT-013"
+      ],
+      "examples": [
+        "Maytronics Dolphin X40 Plus",
+        "Maytronics Dolphin M400",
+        "Maytronics Dolphin Liberty 400",
+        "Maytronics Dolphin M550",
+        "Maytronics Dolphin M600",
+        "Maytronics Dolphin M700"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-004",
+      "origin": "grok-mt",
+      "group": "khac",
+      "nameVi": "Hệ thống cửa cuốn / đóng mở cửa tự động",
+      "nameEn": "Rolling shutter / automatic door system / door operator",
+      "aliases": [
+        "cửa cuốn tự động",
+        "hệ thống cửa cuốn",
+        "hệ thống đóng mở cửa tự động",
+        "thiết bị đóng mở cửa tự động",
+        "motor cửa cuốn",
+        "mô tơ cửa cuốn",
+        "bộ tời cửa cuốn",
+        "automatic shutter",
+        "rolling shutter motor",
+        "door operator",
+        "automatic door system"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8501",
+        "8425",
+        "8479"
+      ],
+      "declaredHs": [
+        "8501",
+        "8479"
+      ],
+      "essenceTestVi": "Chỉ là động cơ + điều khiển từ xa, hay hệ tời nâng/hạ có truyền động hoàn chỉnh, hay hệ thống cơ khí đồng bộ đầy đủ có chức năng riêng biệt?",
+      "rules": [
+        {
+          "ifVi": "chỉ động cơ điện + bộ điều khiển / remote",
+          "hs": "8501"
+        },
+        {
+          "ifVi": "hệ tời ngang/dọc chạy bằng động cơ điện, có ray, bánh răng, dây, hệ dẫn động hoàn chỉnh đáp ứng mô tả 8425",
+          "hs": "8425"
+        },
+        {
+          "ifVi": "hệ thống cơ khí đồng bộ đầy đủ (động cơ + truyền động + phụ trợ, nhập đồng bộ), chức năng riêng biệt chưa được chi tiết ở nhóm khác",
+          "hs": "8479"
+        }
+      ],
+      "whyMisdeclaredVi": "DN khai chung 'thiết bị đóng mở cửa tự động' mà không mô tả chi tiết cấu tạo (có hệ tời hay không, nhập đồng bộ hay rời) → Hải quan phải lấy mẫu / phân tích hoặc yêu cầu bổ sung tài liệu kỹ thuật",
+      "deliberateVi": null,
+      "girRule": null,
+      "legalBasisVi": "Chú giải Phần XVI + Chú giải 2 (bộ phận vs máy hoàn chỉnh; máy liên hợp); CV 2765/HQHCM-TXNK 23/09/2020; các CV TCHQ 6207/2015, 458/2012, 08/2015",
+      "sourceRefs": [
+        {
+          "type": "CV",
+          "reference": "2765/HQHCM-TXNK",
+          "date": "2020-09-23"
+        },
+        {
+          "type": "CV",
+          "reference": "6207 (TCHQ)",
+          "date": "2015"
+        },
+        {
+          "type": "CV",
+          "reference": "458 (TCHQ)",
+          "date": "2012"
+        },
+        {
+          "type": "CV",
+          "reference": "08 (TCHQ)",
+          "date": "2015"
+        }
+      ],
+      "warningVi": "Khai 8501 cho hệ thống đầy đủ dễ bị bác; khai 8479 khi chỉ có motor cũng rủi ro. Bắt buộc kèm catalogue chi tiết cấu tạo + ảnh + mô tả rõ có hệ tời hay không",
+      "relatedIds": [
+        "MT-025"
+      ],
+      "examples": [],
+      "verified": false
+    },
+    {
+      "id": "MT-005",
+      "origin": "grok-mt",
+      "group": "khac",
+      "nameVi": "Thiết bị đeo tay thông minh (Smartwatch)",
+      "nameEn": "Smartwatch / smart wearable",
+      "aliases": [
+        "smartwatch",
+        "smart watch",
+        "đồng hồ thông minh",
+        "đồng hồ đeo tay thông minh",
+        "thiết bị đeo tay thông minh",
+        "vòng đeo tay thông minh",
+        "smart band",
+        "wearable"
+      ],
+      "chapters": [
+        "85",
+        "91"
+      ],
+      "correctHs": [
+        "8517"
+      ],
+      "declaredHs": [
+        "9102",
+        "8517.62"
+      ],
+      "essenceTestVi": "Có khả năng ghép đôi Bluetooth với thiết bị chủ và chức năng chính là thu/phát dữ liệu, hay chỉ đo thời gian + vài cảm biến cơ bản không kết nối?",
+      "rules": [
+        {
+          "ifVi": "chỉ đo thời gian + cảm biến cơ bản, không kết nối Bluetooth/smartphone",
+          "hs": "9102"
+        },
+        {
+          "ifVi": "có khả năng ghép đôi + nhận thông báo + app + truyền dữ liệu",
+          "hs": "8517"
+        },
+        {
+          "ifVi": "mô đun cảm ứng điện dung (touch panel) không có màn hình hiển thị",
+          "hs": "8538.90.19"
+        }
+      ],
+      "whyMisdeclaredVi": "Hình dáng 'đồng hồ' khiến khai 9102; 'có màn hình cảm ứng' dễ khiến nghĩ sang 8528 (màn hình), bỏ qua bản chất truyền thông tin và hoạt động phụ thuộc thiết bị chủ",
+      "deliberateVi": null,
+      "girRule": null,
+      "legalBasisVi": "Chú giải nhóm 85.17 vs 91.02 (chức năng chính truyền dữ liệu + kết nối thiết bị chủ quyết định, không phải hình dáng); CV 1447/TCHQ-TXNK 04/04/2024; TB 4814/TB-TCHQ 2024",
+      "sourceRefs": [
+        {
+          "type": "CV",
+          "reference": "1447/TCHQ-TXNK",
+          "date": "2024-04-04"
+        },
+        {
+          "type": "TB-TCHQ",
+          "reference": "4814/TB-TCHQ",
+          "date": "2024"
+        }
+      ],
+      "warningVi": "Khai 9102 cho smartwatch có Bluetooth → rủi ro cao bị chuyển sang 8517",
+      "relatedIds": [],
+      "examples": [
+        "FX0104001 (mô đun cảm ứng điện dung dùng cho máy in/photocopy)"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-006",
+      "origin": "grok-mt",
+      "group": "cam-bien-do-luong",
+      "nameVi": "Load cell / Cảm biến lực",
+      "nameEn": "Load cell / force sensor",
+      "aliases": [
+        "load cell",
+        "loadcell",
+        "cảm biến lực",
+        "cảm biến trọng lượng",
+        "cảm biến tải trọng",
+        "cảm biến cân",
+        "load cell cân điện tử",
+        "force sensor",
+        "weighing sensor"
+      ],
+      "chapters": [
+        "84",
+        "90"
+      ],
+      "correctHs": [
+        "9031.80"
+      ],
+      "declaredHs": [
+        "8423"
+      ],
+      "essenceTestVi": "Load cell rời là thiết bị đo lường độc lập, hay gắn sẵn trong máy cân hoàn chỉnh nhập đồng bộ (theo máy chính)?",
+      "rules": [
+        {
+          "ifVi": "load cell rời, có đầu ra tín hiệu điện, dùng cho nhiều loại cân",
+          "hs": "9031.80"
+        },
+        {
+          "ifVi": "load cell + indicator + khung cân hoàn chỉnh (nhập đồng bộ)",
+          "hs": "8423"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'for weighing scale'; DN coi là bộ phận của máy cân nên khai 8423",
+      "deliberateVi": null,
+      "girRule": null,
+      "legalBasisVi": "Chú giải nhóm 90.31 (measuring or checking instruments n.e.s.); Note về parts của máy cân 8423 (chỉ khi đáp ứng điều kiện bộ phận)",
+      "sourceRefs": [],
+      "warningVi": "Khai 8423 cho load cell nhập rời → thường bị đưa về 9031.80 (thiết bị đo lường độc lập)",
+      "relatedIds": [
+        "MT-007",
+        "MT-008",
+        "MT-050"
+      ],
+      "examples": [],
+      "verified": false
+    },
+    {
+      "id": "MT-007",
+      "origin": "grok-mt",
+      "group": "cam-bien-do-luong",
+      "nameVi": "Cảm biến áp suất",
+      "nameEn": "Pressure sensor / pressure transmitter",
+      "aliases": [
+        "cảm biến áp suất",
+        "cảm biến áp lực",
+        "cảm biến áp suất khí",
+        "cảm biến áp suất thủy lực",
+        "pressure sensor",
+        "pressure transmitter",
+        "pressure switch",
+        "công tắc áp suất"
+      ],
+      "chapters": [
+        "90"
+      ],
+      "correctHs": [
+        "9026.20",
+        "9026.80"
+      ],
+      "declaredHs": [
+        "9032"
+      ],
+      "essenceTestVi": "Chỉ đo và xuất tín hiệu áp suất (measuring) hay có relay / setpoint / on-off control tích hợp (regulating/controlling)?",
+      "rules": [
+        {
+          "ifVi": "pressure transmitter thuần túy: chỉ xuất tín hiệu analog/digital, không có logic điều khiển bên trong",
+          "hs": "9026.20"
+        },
+        {
+          "ifVi": "pressure switch có setpoint / relay / on-off control tích hợp",
+          "hs": "9032"
+        }
+      ],
+      "whyMisdeclaredVi": "DN khai 9032 vì 'dùng trong hệ thống tự động hóa / PLC / điều khiển'",
+      "deliberateVi": null,
+      "girRule": null,
+      "legalBasisVi": "Chú giải 90.26 (instruments for measuring or checking pressure) vs 90.32 (automatic regulating or controlling instruments) — ranh giới regulating/controlling vs measuring",
+      "sourceRefs": [],
+      "warningVi": "Khai 9032 cho cảm biến áp suất chỉ đo → rủi ro bị ấn định 9026",
+      "relatedIds": [
+        "MT-009",
+        "MT-006",
+        "MT-046",
+        "MT-023"
+      ],
+      "examples": [],
+      "verified": false
+    },
+    {
+      "id": "MT-008",
+      "origin": "grok-mt",
+      "group": "cam-bien-do-luong",
+      "nameVi": "Rotary Encoder / Bộ mã hóa vòng quay",
+      "nameEn": "Rotary encoder (incremental / absolute)",
+      "aliases": [
+        "rotary encoder",
+        "encoder",
+        "bộ mã hóa vòng quay",
+        "bộ mã hóa xoay",
+        "encoder vòng quay",
+        "incremental encoder",
+        "absolute encoder",
+        "encoder tăng dần",
+        "encoder tuyệt đối",
+        "encoder servo"
+      ],
+      "chapters": [
+        "85",
+        "90"
+      ],
+      "correctHs": [
+        "8543.70.90"
+      ],
+      "declaredHs": [
+        "9029"
+      ],
+      "essenceTestVi": "Tạo tín hiệu điện (xung A/B/Z) cho hệ thống điều khiển, hay thiết bị hoàn chỉnh chỉ để đo và hiển thị tốc độ vòng quay (tachometer)?",
+      "rules": [
+        {
+          "ifVi": "encoder thuần tín hiệu (A/B/Z pulse) dùng cho servo/PLC",
+          "hs": "8543.70.90"
+        },
+        {
+          "ifVi": "thiết bị hoàn chỉnh chỉ để đo và hiển thị tốc độ vòng quay",
+          "hs": "9029"
+        }
+      ],
+      "whyMisdeclaredVi": "Tên 'encoder' + 'tốc độ / đếm vòng quay' khiến DN khai 9029",
+      "deliberateVi": null,
+      "girRule": null,
+      "legalBasisVi": "CV 271/TCHQ-TXNK 10/01/2019; Chú giải 85.43 (máy điện có chức năng riêng n.e.s.) vs 90.29 (máy đếm vòng quay / speed indicators)",
+      "sourceRefs": [
+        {
+          "type": "CV",
+          "reference": "271/TCHQ-TXNK",
+          "date": "2019-01-10"
+        }
+      ],
+      "warningVi": "Khai 9029 cho encoder tín hiệu → rủi ro bị ấn định 8543.70.90 theo CV 271/TCHQ-TXNK",
+      "relatedIds": [
+        "MT-019",
+        "MT-050",
+        "MT-006"
+      ],
+      "examples": [
+        "EC21C series",
+        "EC35C series"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-009",
+      "origin": "grok-mt",
+      "group": "cam-bien-do-luong",
+      "nameVi": "Cảm biến lưu lượng",
+      "nameEn": "Flow sensor",
+      "aliases": [
+        "cảm biến lưu lượng",
+        "cảm biến đo lưu lượng",
+        "flow sensor",
+        "flow transmitter",
+        "flow meter"
+      ],
+      "chapters": [
+        "90"
+      ],
+      "correctHs": [
+        "9026.10",
+        "9026.80",
+        "9032"
+      ],
+      "declaredHs": [
+        "9026",
+        "9032"
+      ],
+      "essenceTestVi": null,
+      "rules": [],
+      "whyMisdeclaredVi": null,
+      "deliberateVi": null,
+      "girRule": null,
+      "legalBasisVi": null,
+      "sourceRefs": [],
+      "warningVi": null,
+      "relatedIds": [
+        "MT-007",
+        "MT-046"
+      ],
+      "examples": [],
+      "verified": false
+    },
+    {
+      "id": "MT-010",
+      "origin": "grok-mt",
+      "group": "cam-bien-do-luong",
+      "nameVi": "Cảm biến quang / tiệm cận công nghiệp (chung)",
+      "nameEn": "Industrial optical / proximity sensor (general)",
+      "aliases": [
+        "cảm biến quang",
+        "cảm biến quang công nghiệp",
+        "cảm biến tiệm cận",
+        "cảm biến tiệm cận công nghiệp",
+        "optical sensor",
+        "proximity sensor"
+      ],
+      "chapters": [
+        "85",
+        "90"
+      ],
+      "correctHs": [
+        "8541",
+        "8536.50",
+        "9031"
+      ],
+      "declaredHs": [
+        "8541.40",
+        "8536",
+        "8537"
+      ],
+      "essenceTestVi": null,
+      "rules": [],
+      "whyMisdeclaredVi": null,
+      "deliberateVi": null,
+      "girRule": null,
+      "legalBasisVi": null,
+      "sourceRefs": [],
+      "warningVi": null,
+      "relatedIds": [
+        "MT-028",
+        "MT-031",
+        "MT-035",
+        "MT-036",
+        "MT-015",
+        "MT-019"
+      ],
+      "examples": [],
+      "oldTariff": true,
+      "oldTariffCodes": [
+        "8541.40"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-011",
+      "origin": "grok-mt",
+      "group": "motor-drive-servo",
+      "nameVi": "Hệ thống AC Servo Motor & Drive (nhập đồng bộ)",
+      "nameEn": "AC servo motor & drive system (matched set)",
+      "aliases": [
+        "hệ thống servo",
+        "bộ servo",
+        "bộ servo đồng bộ",
+        "servo system",
+        "ac servo system",
+        "ac servo motor & drive",
+        "servo motor và drive",
+        "động cơ servo kèm bộ điều khiển",
+        "động cơ servo ac",
+        "motion control system"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8501.51",
+        "8501.52"
+      ],
+      "declaredHs": [
+        "8537.10.99",
+        "8501",
+        "8504.40"
+      ],
+      "essenceTestVi": "Motor + drive được thiết kế cặp đôi, nhập đồng bộ (theo động cơ chính) hay nhập rời từng phần (drive riêng / motor riêng)?",
+      "rules": [
+        {
+          "ifVi": "chỉ nhập drive riêng (static converter)",
+          "hs": "8504.40"
+        },
+        {
+          "ifVi": "chỉ nhập drive riêng, mức tích hợp điều khiển số cao",
+          "hs": "8537.10"
+        },
+        {
+          "ifVi": "chỉ nhập motor riêng (theo công suất)",
+          "hs": null,
+          "hsOptions": [
+            "8501.51",
+            "8501.52"
+          ]
+        },
+        {
+          "ifVi": "nhập đồng bộ motor + drive được thiết kế cặp đôi (theo Note 3/4 + CV thực tế)",
+          "hs": "8501"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Servo System / Motion Control System'; drive nhìn giống panel điều khiển → DN khai 8537 hoặc tách 8501 (motor) + 8504.40 (drive)",
+      "deliberateVi": null,
+      "girRule": "Note 3/4 Section XVI; GIR 3(b) nếu có PLC tích hợp sâu",
+      "legalBasisVi": "Note 3/4 Section XVI (máy kết hợp phân loại theo chức năng chính); Chú giải 85.01 (động cơ có thiết bị điều khiển gắn liền khi thiết kế đồng bộ); CV 3681/HQHCM-TXNK 01/12/2017",
+      "sourceRefs": [
+        {
+          "type": "CV",
+          "reference": "3681/HQHCM-TXNK",
+          "date": "2017-12-01"
+        }
+      ],
+      "warningVi": "Khai 8537 cho bộ servo đồng bộ → rủi ro cao bị ấn định lại 8501 + truy thu",
+      "relatedIds": [
+        "MT-027",
+        "MT-012",
+        "MT-025",
+        "MT-026",
+        "MT-032",
+        "MT-033"
+      ],
+      "examples": [
+        "Panasonic",
+        "DMM",
+        "Delta",
+        "Yaskawa",
+        "Mitsubishi"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-012",
+      "origin": "grok-mt",
+      "group": "motor-drive-servo",
+      "nameVi": "Biến tần (VFD / Frequency Inverter)",
+      "nameEn": "Variable frequency drive (VFD) / frequency inverter / static converter",
+      "aliases": [
+        "biến tần",
+        "bộ biến tần",
+        "variable frequency drive",
+        "frequency inverter",
+        "inverter biến tần",
+        "ac drive",
+        "bộ điều khiển tốc độ động cơ",
+        "inverter control unit",
+        "drive panel"
+      ],
+      "chapters": [
+        "85"
+      ],
+      "correctHs": [
+        "8504.40.40",
+        "8504.40.90"
+      ],
+      "declaredHs": [
+        "8537.10"
+      ],
+      "essenceTestVi": "VFD standalone chỉ biến đổi tần số (static converter) hay đã lắp sẵn trong tủ điều khiển hoàn chỉnh cùng contactor / PLC / HMI / MCB?",
+      "rules": [
+        {
+          "ifVi": "VFD standalone, chức năng chính biến đổi tần số",
+          "hs": "8504.40"
+        },
+        {
+          "ifVi": "VFD lắp sẵn trong tủ/panel hoàn chỉnh với contactor, PLC, HMI, MCB… (essential character là tủ điều khiển)",
+          "hs": "8537"
+        },
+        {
+          "ifVi": "chỉ là soft-starter đơn giản",
+          "hs": null,
+          "hsOptions": [
+            "8537",
+            "8536"
+          ],
+          "hsNoteVi": "8537 / 8536 (tùy cấu tạo)"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Inverter Control Unit / Drive Panel'; VFD có mạch điều khiển + HMI nhỏ nên DN coi là 'bộ điều khiển' / control panel",
+      "deliberateVi": null,
+      "girRule": "GIR 3(b) + Note 3 Section XVI (khi lắp trong tủ)",
+      "legalBasisVi": "Chú giải 85.04 (static converters, inverters); Chú giải 85.37 (bảng lắp ≥2 thiết bị 8535/8536); Note Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8537 cho VFD đơn lẻ → rủi ro bị ấn định 8504 + chênh lệch thuế / pháp lý",
+      "relatedIds": [
+        "MT-020",
+        "MT-022",
+        "MT-017",
+        "MT-048",
+        "MT-011",
+        "MT-027"
+      ],
+      "examples": [
+        "ABB ACS580",
+        "Schneider ATV",
+        "Delta VFD",
+        "Siemens SINAMICS"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-013",
+      "origin": "grok-mt",
+      "group": "robot-agv",
+      "nameVi": "Robot tự hành AGV",
+      "nameEn": "Automated Guided Vehicle (AGV) / Autonomous Mobile Robot (AMR)",
+      "aliases": [
+        "robot agv",
+        "xe agv",
+        "xe tự hành agv",
+        "robot tự hành",
+        "robot vận chuyển tự hành",
+        "xe tự hành vận chuyển hàng",
+        "automated guided vehicle",
+        "autonomous mobile robot",
+        "mobile robot"
+      ],
+      "chapters": [
+        "84",
+        "85",
+        "87"
+      ],
+      "correctHs": [
+        "8428.70.00"
+      ],
+      "declaredHs": [
+        "8479.50",
+        "8479.89",
+        "8709",
+        "8501"
+      ],
+      "essenceTestVi": "Chức năng chính là nâng hạ / di chuyển / xếp dỡ hàng (handling) hay máy gia công/lắp ráp có chức năng riêng, hay chỉ là xe công nghiệp / khung xe + động cơ?",
+      "rules": [
+        {
+          "ifVi": "AGV thuần túy di chuyển + nâng hạ hàng",
+          "hs": "8428.70"
+        },
+        {
+          "ifVi": "AGV tích hợp thêm chức năng gia công / lắp ráp phức tạp",
+          "hs": "8479"
+        },
+        {
+          "ifVi": "chỉ là khung xe + động cơ, không có hệ thống dẫn hướng tự động hoàn chỉnh",
+          "hs": null,
+          "hsOptions": [
+            "8709",
+            "8501"
+          ]
+        },
+        {
+          "ifVi": "AMR có AI navigation mạnh nhưng chức năng chính vẫn là handling",
+          "hs": "8428"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Mobile Robot / AMR / AGV System' — AGV vừa là 'robot' vừa là 'xe' → DN khai 8479 (robot công nghiệp) hoặc 8709 (xe tự hành)",
+      "deliberateVi": null,
+      "girRule": "GIR 3(b) (khi tích hợp chức năng gia công / lắp ráp)",
+      "legalBasisVi": "Chú giải nhóm 84.28 (industrial robots dùng cho handling); Note Section XVI; TB 1538/TB-TCHQ 05/04/2023",
+      "sourceRefs": [
+        {
+          "type": "TB-TCHQ",
+          "reference": "1538/TB-TCHQ",
+          "date": "2023-04-05"
+        }
+      ],
+      "warningVi": "Khai 8479 hoặc 8709 cho AGV điển hình → rủi ro bị ấn định 8428.70 theo Thông báo 1538",
+      "relatedIds": [
+        "MT-021",
+        "MT-002",
+        "MT-003"
+      ],
+      "examples": [
+        "LGD-TRAY-AGV-5F (RTC Technology)"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-014",
+      "origin": "grok-mt",
+      "group": "board-module-hmi",
+      "nameVi": "PLC / Bộ điều khiển logic lập trình",
+      "nameEn": "Programmable Logic Controller (PLC)",
+      "aliases": [
+        "bộ điều khiển plc",
+        "bộ điều khiển logic lập trình",
+        "bộ điều khiển lập trình",
+        "bộ điều khiển logic khả trình",
+        "programmable logic controller",
+        "programmable controller",
+        "cpu plc",
+        "module plc",
+        "soft plc"
+      ],
+      "chapters": [
+        "84",
+        "85",
+        "90"
+      ],
+      "correctHs": [
+        "8537.10.12",
+        "8537.10.19",
+        "8537.10.30"
+      ],
+      "declaredHs": [
+        "8471.50",
+        "8471.80",
+        "9032.89"
+      ],
+      "essenceTestVi": "Logic controller chuyên dụng có module I/O công nghiệp, hay máy xử lý dữ liệu tự động đáp ứng Note 5 Ch.84, hay thiết bị điều chỉnh tự động theo đại lượng đo (nhiệt độ, áp suất)?",
+      "rules": [
+        {
+          "ifVi": "PLC thuần túy logic control, điện áp ≤1000V, dùng điều khiển máy móc",
+          "hs": null,
+          "hsOptions": [
+            "8537.10.12",
+            "8537.10.19"
+          ]
+        },
+        {
+          "ifVi": "PLC chuyên dụng cho thiết bị bán dẫn (wafer handling…)",
+          "hs": "8537.10.30"
+        },
+        {
+          "ifVi": "thiết bị chỉ đo + điều khiển theo thông số vật lý (PID controller thuần)",
+          "hs": "9032"
+        },
+        {
+          "ifVi": "máy tính công nghiệp (IPC) chạy Windows/Linux dùng như controller, đáp ứng Note 5 Ch.84",
+          "hs": "8471"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Industrial PC / Soft PLC / Programmable Controller'; PLC có CPU mạnh → nhầm 8471 (máy tính công nghiệp); có chức năng regulating → nhầm 9032 (điều khiển quá trình)",
+      "deliberateVi": null,
+      "girRule": null,
+      "legalBasisVi": "Chú giải 85.37 (8537.10.12 bảng điều khiển có bộ xử lý lập trình; 8537.10.30 PLC cho máy bán dẫn); Note 5 Chương 84; Chú giải 90.32; Note Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8471 hoặc 9032 cho PLC điển hình → rủi ro cao bị ấn định 8537",
+      "relatedIds": [
+        "MT-001",
+        "MT-030",
+        "MT-033",
+        "MT-023",
+        "MT-027"
+      ],
+      "examples": [
+        "Siemens S7-1200",
+        "Siemens S7-1500",
+        "Mitsubishi FX series",
+        "Mitsubishi Q series",
+        "Omron CJ",
+        "Omron CP",
+        "Allen-Bradley CompactLogix"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-015",
+      "origin": "grok-mt",
+      "group": "thiet-bi-quang",
+      "nameVi": "Camera công nghiệp / Machine Vision Camera",
+      "nameEn": "Industrial camera / machine vision camera / smart camera",
+      "aliases": [
+        "camera công nghiệp",
+        "camera machine vision",
+        "camera thị giác máy",
+        "camera kiểm tra sản phẩm",
+        "machine vision camera",
+        "industrial camera",
+        "smart camera",
+        "vision sensor",
+        "inspection camera",
+        "vision camera"
+      ],
+      "chapters": [
+        "85",
+        "90"
+      ],
+      "correctHs": [
+        "8525.80.40",
+        "8525.80.39",
+        "9031"
+      ],
+      "declaredHs": [
+        "9031.49",
+        "9031.80",
+        "8525.80.39"
+      ],
+      "essenceTestVi": "Camera chỉ thu/truyền hoặc ghi hình ảnh, hay hệ thống đo lường / kiểm tra quang học hoàn chỉnh mà chức năng chính là đo?",
+      "rules": [
+        {
+          "ifVi": "camera chỉ thu và truyền tín hiệu hình ảnh (không lưu trữ nội bộ)",
+          "hs": "8525.80.40"
+        },
+        {
+          "ifVi": "camera có khả năng ghi hình ảnh tĩnh/động nội bộ",
+          "hs": "8525.80.39"
+        },
+        {
+          "ifVi": "camera ghi hình dùng cho broadcasting",
+          "hs": "8525.80.31"
+        },
+        {
+          "ifVi": "hệ thống machine vision hoàn chỉnh (camera + controller + phần mềm đo lường chuyên dụng, chức năng chính là đo/kiểm tra)",
+          "hs": null,
+          "hsOptions": [
+            "9031.49",
+            "9031.80"
+          ]
+        },
+        {
+          "ifVi": "smart camera tích hợp xử lý mạnh như ADP machine (Note 5 Ch.84)",
+          "hs": "8471"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Vision Sensor / Smart Camera / Inspection Camera' khiến DN khai 9031 (thiết bị đo lường / kiểm tra), trong khi cấu tạo cơ bản vẫn là camera thuộc 8525",
+      "deliberateVi": null,
+      "girRule": "GIR 3(b) (hệ thống vision hoàn chỉnh)",
+      "legalBasisVi": "CV 1582/TCHQ-TXNK 05/05/2022 (phân loại camera theo khả năng ghi hình nội bộ hay chỉ truyền tín hiệu); Chú giải 85.25 & 90.31",
+      "sourceRefs": [
+        {
+          "type": "CV",
+          "reference": "1582/TCHQ-TXNK",
+          "date": "2022-05-05"
+        }
+      ],
+      "warningVi": "Khai 9031 cho camera vision đơn lẻ → rủi ro bị ấn định 8525 theo CV 1582",
+      "relatedIds": [
+        "MT-010",
+        "MT-019"
+      ],
+      "examples": [
+        "Basler",
+        "Cognex In-Sight",
+        "Keyence",
+        "Teledyne DALSA",
+        "Hikvision industrial series"
+      ],
+      "oldTariff": true,
+      "oldTariffCodes": [
+        "8525.80.40",
+        "8525.80.39",
+        "8525.80.31"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-016",
+      "origin": "grok-mt",
+      "group": "may-cong-cu",
+      "nameVi": "Máy cắt laser kim loại CNC",
+      "nameEn": "Fiber laser cutting machine / CNC laser cutter (metal)",
+      "aliases": [
+        "máy cắt laser",
+        "máy cắt laser kim loại",
+        "máy cắt laser cnc",
+        "máy cắt laser fiber",
+        "máy cắt laser tấm",
+        "máy cắt kim loại tấm bằng laser",
+        "fiber laser cutting machine",
+        "laser cutting machine",
+        "laser cutter metal",
+        "cnc laser cutter"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8456.11"
+      ],
+      "declaredHs": [
+        "8515.80",
+        "8479.89",
+        "8479.50"
+      ],
+      "essenceTestVi": "Chức năng chính là cắt / bóc tách vật liệu bằng laser theo chương trình CNC (máy công cụ) hay hàn laser?",
+      "rules": [
+        {
+          "ifVi": "máy chỉ cắt (cutting) kim loại bằng laser theo chương trình CNC",
+          "hs": "8456.11"
+        },
+        {
+          "ifVi": "máy chủ yếu hàn laser (laser welding)",
+          "hs": "8515.80"
+        },
+        {
+          "ifVi": "máy đa năng cắt + hàn, chức năng chính rõ là cắt",
+          "hs": "8456"
+        },
+        {
+          "ifVi": "hệ thống robot laser di động (mobile laser)",
+          "hs": null,
+          "hsOptions": [
+            "8479",
+            "8428"
+          ],
+          "hsNoteVi": "8479 / 8428 (tùy cấu tạo)"
+        },
+        {
+          "ifVi": "máy laser dùng cho phi kim (gỗ, acrylic)",
+          "hs": "8456",
+          "hsNoteVi": "8456 (phân nhóm khác)"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue nước ngoài ghi 'Laser Machine / Laser System' hoặc 'Laser Cutting & Welding System' không phân biệt cutting vs welding; máy tích hợp robot → nhầm 8479",
+      "deliberateVi": "Khai 8515 để tránh một số kiểm tra chuyên ngành hoặc thuế khác",
+      "girRule": "GIR 3(b) / Note 4 Section XVI (máy đa năng cắt + hàn)",
+      "legalBasisVi": "Chú giải 84.56 (máy công cụ gia công vật liệu bằng laser / photon beam) vs 85.15 (máy hàn laser); Note 3/4 Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8515 hoặc 8479 cho máy cắt laser tấm kim loại → rủi ro cao bị ấn định 8456.11 + truy thu",
+      "relatedIds": [
+        "MT-024",
+        "MT-029",
+        "MT-034",
+        "MT-044",
+        "MT-018"
+      ],
+      "examples": [
+        "Trumpf",
+        "Bystronic",
+        "Amada",
+        "Bodor",
+        "Raycus"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-017",
+      "origin": "grok-mt",
+      "group": "dien-cong-tac-nguon",
+      "nameVi": "Bộ lưu điện UPS",
+      "nameEn": "Uninterruptible Power Supply (UPS)",
+      "aliases": [
+        "bộ lưu điện",
+        "bộ lưu điện ups",
+        "bộ lưu điện không gián đoạn",
+        "bộ cấp điện liên tục",
+        "uninterruptible power supply",
+        "online ups",
+        "offline ups",
+        "line-interactive ups"
+      ],
+      "chapters": [
+        "85"
+      ],
+      "correctHs": [
+        "8504.40.11",
+        "8504.40.19",
+        "8504.40.90"
+      ],
+      "declaredHs": [
+        "8504.31",
+        "8537.10",
+        "8504.40.90"
+      ],
+      "essenceTestVi": "Máy biến đổi tĩnh có chức năng chuyển đổi tức thời khi mất điện (UPS), hay biến áp, hay tủ phân phối có nhiều thiết bị đóng cắt?",
+      "rules": [
+        {
+          "ifVi": "UPS hoàn chỉnh (inverter + battery tích hợp hoặc thiết kế đồng bộ)",
+          "hs": "8504.40"
+        },
+        {
+          "ifVi": "chỉ nhập bộ biến đổi tĩnh (inverter) không có chức năng UPS",
+          "hs": null,
+          "hsOptions": [
+            "8504.40.40",
+            "8504.40.90"
+          ]
+        },
+        {
+          "ifVi": "tủ điện có UPS + nhiều thiết bị đóng cắt, phân phối (essential character là control/distribution)",
+          "hs": "8537.10"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Power Conditioning System / Online Double Conversion' khiến DN khai 8537; UPS online công nghiệp lớn có tủ pin riêng dễ bị khai tách",
+      "deliberateVi": "Một số DN khai 8504.31 (máy biến áp) để hưởng thuế khác",
+      "girRule": "Note 3/4 Section XVI (khi nằm trong tủ phân phối)",
+      "legalBasisVi": "Chú giải 85.04 (8504.40 static converters, UPS là ví dụ điển hình; không thuộc 8504.31 transformers); TB 3330/TB-TCHQ & 3331/TB-TCHQ 11/08/2022",
+      "sourceRefs": [
+        {
+          "type": "TB-TCHQ",
+          "reference": "3330/TB-TCHQ",
+          "date": "2022-08-11"
+        },
+        {
+          "type": "TB-TCHQ",
+          "reference": "3331/TB-TCHQ",
+          "date": "2022-08-11"
+        }
+      ],
+      "warningVi": "Khai 8504.31 hoặc 8537 cho UPS tiêu chuẩn → rủi ro bị ấn định lại 8504.40 theo TB 3330/3331",
+      "relatedIds": [
+        "MT-012",
+        "MT-022",
+        "MT-048",
+        "MT-020"
+      ],
+      "examples": [
+        "APC",
+        "Eaton",
+        "Schneider"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-018",
+      "origin": "grok-mt",
+      "group": "may-in",
+      "nameVi": "Máy in 3D / Additive Manufacturing",
+      "nameEn": "3D printer / additive manufacturing machine (FDM, SLA, SLS, SLM)",
+      "aliases": [
+        "máy in 3d",
+        "máy in 3d nhựa",
+        "máy in 3d resin",
+        "máy in 3d kim loại",
+        "máy sản xuất bồi đắp",
+        "3d printer",
+        "metal 3d printer",
+        "additive manufacturing machine",
+        "máy slm",
+        "máy sls",
+        "máy fdm",
+        "laser sintering machine"
+      ],
+      "chapters": [
+        "84"
+      ],
+      "correctHs": [
+        "8485",
+        "8477.80",
+        "8477.59"
+      ],
+      "declaredHs": [
+        "8456.11",
+        "8479.50",
+        "8479.89",
+        "8443"
+      ],
+      "essenceTestVi": "Máy bồi đắp lớp (additive) theo mô hình số, hay máy bóc tách vật liệu bằng laser (subtractive) / máy gia công plastic đùn-đúc truyền thống?",
+      "rules": [
+        {
+          "ifVi": "máy bồi đắp lớp (additive) theo mô hình 3D, bất kỳ vật liệu (HS 2022 trở đi)",
+          "hs": "8485"
+        },
+        {
+          "ifVi": "máy gia công plastic bằng đùn/đúc truyền thống không mang tính additive",
+          "hs": "8477"
+        },
+        {
+          "ifVi": "máy laser cắt/khắc (subtractive)",
+          "hs": "8456"
+        },
+        {
+          "ifVi": "máy in 3D kim loại công suất lớn dùng electron beam",
+          "hs": "8485"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi '3D Printer / Metal 3D Printer / Laser Sintering' khiến DN khai 8456 (máy SLM dùng laser) hoặc 8479; một số khai 8443 vì tên 'printer'; máy FDM nhựa dễ nhầm 8477",
+      "deliberateVi": null,
+      "girRule": "GIR 3(b) (máy hybrid additive + subtractive)",
+      "legalBasisVi": "Chú giải HS 2022 nhóm 84.85 (machines for additive manufacturing); nhóm 84.77; Note Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8456 hoặc 8479 cho máy in 3D → rủi ro bị ấn định 8485/8477 + truy thu",
+      "relatedIds": [
+        "MT-016",
+        "MT-024"
+      ],
+      "examples": [
+        "Creality",
+        "Ultimaker",
+        "EOS",
+        "SLM Solutions",
+        "Desktop Metal"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-019",
+      "origin": "grok-mt",
+      "group": "cam-bien-do-luong",
+      "nameVi": "Cảm biến khoảng cách / dịch chuyển laser",
+      "nameEn": "Laser displacement sensor / laser distance sensor",
+      "aliases": [
+        "cảm biến khoảng cách laser",
+        "cảm biến dịch chuyển laser",
+        "cảm biến đo khoảng cách laser",
+        "cảm biến laser đo khoảng cách",
+        "cảm biến đo độ dày laser",
+        "laser displacement sensor",
+        "laser distance sensor",
+        "laser sensor",
+        "laser rangefinder industrial",
+        "laser measurement sensor"
+      ],
+      "chapters": [
+        "85",
+        "90"
+      ],
+      "correctHs": [
+        "9031.49",
+        "9031.80"
+      ],
+      "declaredHs": [
+        "9013.20",
+        "8543.70",
+        "9032"
+      ],
+      "essenceTestVi": "Thiết bị hoàn chỉnh có chức năng đo (xuất giá trị khoảng cách / dịch chuyển), hay chỉ là nguồn laser / cụm điện tử không mang tính đo lường?",
+      "rules": [
+        {
+          "ifVi": "thiết bị hoàn chỉnh dùng để đo khoảng cách / dịch chuyển (có scale, output đo lường)",
+          "hs": null,
+          "hsOptions": [
+            "9031.49",
+            "9031.80"
+          ]
+        },
+        {
+          "ifVi": "chỉ là module laser nguồn (laser source) không có chức năng đo",
+          "hs": "9013.20"
+        },
+        {
+          "ifVi": "sensor tích hợp sâu vào hệ thống điều khiển tự động (essential character là regulating)",
+          "hs": "9032"
+        },
+        {
+          "ifVi": "chỉ là electronic assembly không mang tính measuring",
+          "hs": "8543.70"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Laser Sensor / Laser Head / Optical Sensor' khiến DN khai 9013 hoặc 8543; một số khai 9032 vì dùng trong closed-loop control",
+      "deliberateVi": null,
+      "girRule": null,
+      "legalBasisVi": "Chú giải 90.31 (optical measuring / checking instruments) vs 90.13 (lasers trừ laser diodes, optical appliances) vs 85.43",
+      "sourceRefs": [],
+      "warningVi": "Khai 9013 hoặc 8543 cho laser displacement sensor hoàn chỉnh → rủi ro bị ấn định 9031",
+      "relatedIds": [
+        "MT-008",
+        "MT-010",
+        "MT-015",
+        "MT-031",
+        "MT-035"
+      ],
+      "examples": [
+        "Keyence",
+        "SICK",
+        "Omron",
+        "Micro-Epsilon",
+        "Banner"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-020",
+      "origin": "grok-mt",
+      "group": "motor-drive-servo",
+      "nameVi": "Bộ khởi động mềm (Soft Starter)",
+      "nameEn": "Soft starter / motor soft starter",
+      "aliases": [
+        "soft starter",
+        "softstarter",
+        "bộ khởi động mềm",
+        "khởi động mềm",
+        "bộ khởi động mềm động cơ",
+        "khởi động mềm động cơ",
+        "motor soft starter"
+      ],
+      "chapters": [
+        "85"
+      ],
+      "correctHs": [
+        "8504.40.90"
+      ],
+      "declaredHs": [
+        "8537.10",
+        "8504.40.40"
+      ],
+      "essenceTestVi": "Thiết bị độc lập biến đổi tĩnh kiểm soát khởi động (thyristor), hay đã lắp thành panel điều khiển hoàn chỉnh có nhiều thiết bị đóng cắt / PLC?",
+      "rules": [
+        {
+          "ifVi": "soft starter độc lập (standalone), chức năng chính kiểm soát khởi động bằng biến đổi tĩnh",
+          "hs": "8504.40.90"
+        },
+        {
+          "ifVi": "soft starter tích hợp sẵn trong tủ điều khiển hoàn chỉnh có nhiều thiết bị đóng cắt, PLC…",
+          "hs": "8537.10"
+        },
+        {
+          "ifVi": "chỉ là board điều khiển mềm không có phần công suất",
+          "hs": null,
+          "hsOptions": [
+            "8537",
+            "8543"
+          ]
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Motor Soft Starter / Motor Control'; có bypass contactor + relay bảo vệ nhìn giống panel điều khiển → DN khai 8537; một số khai 8504.40.40 (inverter) vì nhầm với VFD",
+      "deliberateVi": null,
+      "girRule": "Note 3/4 Section XVI (khi trong tủ điều khiển)",
+      "legalBasisVi": "Chú giải 85.04 (static converters; thiết bị điều khiển điện áp / dòng bằng thyristor) vs 85.37 (bảng lắp ≥2 thiết bị 8535/8536)",
+      "sourceRefs": [],
+      "warningVi": "Khai 8537 cho soft starter standalone → có thể bị ấn định lại 8504.40.90; ngược lại khai 8504 cho tủ tích hợp phức tạp cũng rủi ro",
+      "relatedIds": [
+        "MT-012",
+        "MT-014",
+        "MT-022",
+        "MT-038",
+        "MT-048"
+      ],
+      "examples": [
+        "Schneider Altistart (ATS)",
+        "ABB PSTX",
+        "Siemens Sirius"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-021",
+      "origin": "grok-mt",
+      "group": "robot-agv",
+      "nameVi": "Cánh tay robot công nghiệp / Cobot",
+      "nameEn": "Articulated industrial robot / industrial robot arm / collaborative robot (cobot)",
+      "aliases": [
+        "cánh tay robot",
+        "cánh tay robot công nghiệp",
+        "robot công nghiệp",
+        "tay máy công nghiệp",
+        "robot 6 trục",
+        "robot cộng tác",
+        "articulated robot",
+        "industrial robot arm",
+        "industrial robot",
+        "robotic arm",
+        "cobot",
+        "collaborative robot"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8479.50.00",
+        "8428.70.00"
+      ],
+      "declaredHs": [
+        "8479.50",
+        "8428.70",
+        "8515"
+      ],
+      "essenceTestVi": "Robot đa năng lập trình lại được nhiều nhiệm vụ (lắp ráp, hàn, kiểm tra…) hay chức năng chính chỉ là nâng hạ / xếp dỡ / handling vật liệu?",
+      "rules": [
+        {
+          "ifVi": "robot đa năng, lập trình được, thay đổi nhiệm vụ (lắp ráp, hàn, kiểm tra…)",
+          "hs": "8479.50.00"
+        },
+        {
+          "ifVi": "chức năng chính rõ ràng chỉ là nâng hạ / xếp dỡ / handling vật liệu trong nhà máy",
+          "hs": "8428.70.00"
+        },
+        {
+          "ifVi": "cell hàn robot (robot + nguồn hàn tích hợp cố định), essential character là máy hàn",
+          "hs": "8515"
+        },
+        {
+          "ifVi": "cobot (collaborative) có cảm biến lực / an toàn cao",
+          "hs": "8479.50"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue nước ngoài ghi chung 'Robot' / 'Robotic Arm' / 'Industrial Robot'; DN thấy 'handling' khai 8428, cell hàn khai 8515; cobot có cảm biến an toàn dễ bị hiểu là thiết bị an toàn hoặc AGV-like",
+      "deliberateVi": "Khai 8428.70 hoặc 8515 để hưởng thuế / kiểm tra chuyên ngành khác",
+      "girRule": "GIR 3(b) / Note 4 Section XVI (cell hàn robot)",
+      "legalBasisVi": "Chú giải 8479.50 (industrial robots n.e.s.) & 8428.70 (robot công nghiệp nâng hạ, giữ, xếp dỡ hàng); Note 3/4 Section XVI; AHTN 2022",
+      "sourceRefs": [],
+      "warningVi": "Khai 8428.70 hoặc 8515 cho robot arm đa năng → rủi ro ấn định 8479.50 + truy thu; ngược lại khai 8479 cho pure handling robot cũng rủi ro",
+      "relatedIds": [
+        "MT-013",
+        "MT-002",
+        "MT-003",
+        "MT-029",
+        "MT-040"
+      ],
+      "examples": [
+        "Fanuc LR Mate",
+        "ABB IRB",
+        "Universal Robots UR5",
+        "Universal Robots UR10",
+        "KUKA LBR",
+        "Yaskawa Motoman"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-022",
+      "origin": "grok-mt",
+      "group": "dien-cong-tac-nguon",
+      "nameVi": "Bộ nguồn chuyển mạch công nghiệp (SMPS)",
+      "nameEn": "Switching mode power supply (SMPS) / industrial power supply / AC-DC converter",
+      "aliases": [
+        "bộ nguồn chuyển mạch",
+        "nguồn chuyển mạch",
+        "bộ nguồn công nghiệp",
+        "bộ nguồn tổ ong",
+        "nguồn 24v công nghiệp",
+        "bộ nguồn din-rail",
+        "smps",
+        "switching power supply",
+        "switching mode power supply",
+        "industrial power supply",
+        "power supply module",
+        "ac-dc converter"
+      ],
+      "chapters": [
+        "85"
+      ],
+      "correctHs": [
+        "8504.40.90",
+        "8504.40.11",
+        "8504.40.19"
+      ],
+      "declaredHs": [
+        "8537.10",
+        "8504.40.90"
+      ],
+      "essenceTestVi": "Bộ biến đổi nguồn độc lập (static converter), hay bảng đã lắp nhiều thiết bị điều khiển / phân phối điện?",
+      "rules": [
+        {
+          "ifVi": "SMPS độc lập, chức năng chính biến đổi / cung cấp nguồn ổn định",
+          "hs": "8504.40.90"
+        },
+        {
+          "ifVi": "đã lắp thành bảng điều khiển hoàn chỉnh có nhiều thiết bị đóng ngắt / điều khiển",
+          "hs": "8537.10"
+        },
+        {
+          "ifVi": "UPS có pin dự phòng (xem MT-017)",
+          "hs": null,
+          "hsOptions": [
+            "8504.40.11",
+            "8504.40.19"
+          ]
+        },
+        {
+          "ifVi": "nguồn tuyến tính (linear power supply)",
+          "hs": "8504"
+        },
+        {
+          "ifVi": "module nguồn DIN-rail có thêm fuse / terminal block đơn giản (essential character vẫn là converter)",
+          "hs": "8504"
+        },
+        {
+          "ifVi": "nguồn LED driver chuyên dụng",
+          "hs": null,
+          "hsOptions": [
+            "8504",
+            "8539"
+          ],
+          "hsNoteVi": "8504 / 8539 (tùy)"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Power Supply Module / Power Supply for Control Panel'; SMPS gắn sẵn trong tủ điện hoặc có thêm relay / terminal → DN khai 8537",
+      "deliberateVi": "Khai 8537 để hưởng thuế hoặc quản lý khác; hoặc khai 8504.40 cho cả tủ điện hoàn chỉnh",
+      "girRule": "Note 2/4 Section XVI",
+      "legalBasisVi": "Chú giải 85.04 (static converters gồm switching power supplies) & 85.37 (bảng lắp ≥2 thiết bị 8535/8536); Note 2/4 Section XVI; tham chiếu logic TB 3330/3331 (UPS)",
+      "sourceRefs": [],
+      "warningVi": "Khai 8537.10 cho SMPS độc lập → rủi ro cao bị ấn định 8504.40 + truy thu",
+      "relatedIds": [
+        "MT-017",
+        "MT-012",
+        "MT-020",
+        "MT-043",
+        "MT-048"
+      ],
+      "examples": [
+        "Mean Well LRS series",
+        "Mean Well RSP series",
+        "TDK-Lambda",
+        "Omron S8 series",
+        "Delta PMT",
+        "Cosel"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-023",
+      "origin": "grok-mt",
+      "group": "thiet-bi-nhiet",
+      "nameVi": "Bộ điều khiển nhiệt độ (PID Temperature Controller)",
+      "nameEn": "Temperature controller / PID controller / digital temperature controller",
+      "aliases": [
+        "bộ điều khiển nhiệt độ",
+        "bộ điều khiển nhiệt",
+        "bộ khống chế nhiệt độ",
+        "đồng hồ điều khiển nhiệt độ",
+        "điều khiển nhiệt độ pid",
+        "bộ điều khiển nhiệt độ kỹ thuật số",
+        "temperature controller",
+        "pid temperature controller",
+        "pid controller",
+        "digital temperature controller"
+      ],
+      "chapters": [
+        "84",
+        "85",
+        "90"
+      ],
+      "correctHs": [
+        "9032.89"
+      ],
+      "declaredHs": [
+        "8537.10",
+        "8471",
+        "9025"
+      ],
+      "essenceTestVi": "Có setpoint + thuật toán điều khiển (PID / on-off) và xuất tín hiệu điều khiển tự động, hay chỉ đo / hiển thị nhiệt độ, hay bảng đóng ngắt điện thuần?",
+      "rules": [
+        {
+          "ifVi": "có chức năng automatic regulating / controlling theo setpoint nhiệt độ (PID, on-off…)",
+          "hs": "9032.89"
+        },
+        {
+          "ifVi": "chỉ là bảng phân phối / đóng ngắt điện không có logic regulating theo đại lượng đo",
+          "hs": "8537.10"
+        },
+        {
+          "ifVi": "chỉ đo / hiển thị nhiệt độ, không xuất tín hiệu điều khiển",
+          "hs": "9025.19"
+        },
+        {
+          "ifVi": "temperature transmitter chỉ xuất tín hiệu 4-20mA (không regulating)",
+          "hs": null,
+          "hsOptions": [
+            "9025",
+            "9031"
+          ]
+        },
+        {
+          "ifVi": "controller đa vòng (multi-loop)",
+          "hs": "9032"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Digital Temperature Controller' / 'Panel Mount Controller'; có relay output hoặc RS485 và dùng điện <1000V → DN ưu tiên 8537 (control panel) hoặc 8471 (digital controller)",
+      "deliberateVi": "Khai 9025 (nhiệt kế) để thuế thấp hơn",
+      "girRule": "Note 3 Section XVI",
+      "legalBasisVi": "Chú giải 90.32 (automatic regulating instruments theo nhiệt độ, áp suất…) vs 85.37 vs 90.25 (nhiệt kế); Note 3 Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8537.10 hoặc 9025 cho temperature controller có regulating → rủi ro ấn định 9032.89 + truy thu",
+      "relatedIds": [
+        "MT-041",
+        "MT-007",
+        "MT-014",
+        "MT-001",
+        "MT-033"
+      ],
+      "examples": [
+        "Omron E5CC",
+        "Omron E5CN",
+        "Autonics TK series",
+        "Autonics TC series",
+        "Delta DTA",
+        "Delta DTB",
+        "RKC CB series",
+        "Honeywell"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-024",
+      "origin": "grok-mt",
+      "group": "may-cong-cu",
+      "nameVi": "Máy khắc / đánh dấu laser",
+      "nameEn": "Laser marking machine / laser marker / laser engraver",
+      "aliases": [
+        "máy khắc laser",
+        "máy đánh dấu laser",
+        "máy khắc laser fiber",
+        "máy khắc laser co2",
+        "máy khắc laser mini",
+        "laser marker",
+        "laser marking machine",
+        "laser engraver",
+        "fiber laser marker",
+        "uv laser marker",
+        "laser etching machine"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8456.12",
+        "8456.11"
+      ],
+      "declaredHs": [
+        "8515.80",
+        "8479.89"
+      ],
+      "essenceTestVi": "Máy công cụ dùng laser bóc tách vật liệu (khắc / đánh dấu nông hay cắt xuyên) hay máy hàn laser?",
+      "rules": [
+        {
+          "ifVi": "máy dùng laser để khắc / đánh dấu (marking / engraving) vật liệu theo chương trình",
+          "hs": "8456.12"
+        },
+        {
+          "ifVi": "máy chủ yếu hàn laser (laser welding)",
+          "hs": "8515.80"
+        },
+        {
+          "ifVi": "máy cắt xuyên tấm kim loại CNC (xem MT-016)",
+          "hs": "8456.11"
+        },
+        {
+          "ifVi": "máy laser đa năng cắt + khắc, chức năng chính rõ là khắc nông",
+          "hs": "8456"
+        },
+        {
+          "ifVi": "máy khắc laser cầm tay / portable",
+          "hs": null,
+          "hsOptions": [
+            "8467",
+            "8456"
+          ],
+          "hsNoteVi": "8467 / 8456 (tùy)"
+        },
+        {
+          "ifVi": "máy khắc chỉ dùng cho phi kim (gỗ, acrylic)",
+          "hs": "8456"
+        },
+        {
+          "ifVi": "máy in laser (toner)",
+          "hs": "8443"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Laser Machine / Laser System / Laser Processing Machine'; độ sâu khắc nông dễ bị hiểu là không phải 'removal of material' → DN khai 8515 hoặc 8479",
+      "deliberateVi": "Khai 8515 hoặc 8479 để tránh một số kiểm tra chuyên ngành máy công cụ",
+      "girRule": "GIR 3(b) (máy đa năng cắt + khắc)",
+      "legalBasisVi": "Chú giải 84.56 (máy công cụ laser / photon bóc tách vật liệu: cutting, engraving, marking) vs 85.15 (hàn laser); Note 3/4 Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8515.80 hoặc 8479 cho máy khắc laser → rủi ro cao bị ấn định 8456 + truy thu",
+      "relatedIds": [
+        "MT-016",
+        "MT-029",
+        "MT-018"
+      ],
+      "examples": [
+        "Trumpf",
+        "Han's Laser",
+        "Raycus",
+        "Epilog"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-025",
+      "origin": "grok-mt",
+      "group": "motor-drive-servo",
+      "nameVi": "Linear Actuator điện / Electric Cylinder",
+      "nameEn": "Electric linear actuator / electric cylinder / servo linear actuator",
+      "aliases": [
+        "linear actuator điện",
+        "linear actuator",
+        "electric linear actuator",
+        "electric cylinder",
+        "xi lanh điện",
+        "xy lanh điện",
+        "servo linear actuator",
+        "rod actuator",
+        "bộ truyền động tuyến tính điện",
+        "cơ cấu chấp hành tuyến tính điện",
+        "trục vít me điện"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8501.31",
+        "8501.32",
+        "8479.89"
+      ],
+      "declaredHs": [
+        "8501",
+        "8479.89",
+        "8466"
+      ],
+      "essenceTestVi": "Essential character còn là động cơ điện có gắn cơ cấu tuyến tính, hay đã thành máy hoàn chỉnh có chức năng riêng (linear motion machine)?",
+      "rules": [
+        {
+          "ifVi": "bản chất là động cơ điện có gắn cơ cấu biến đổi sang chuyển động thẳng, vẫn giữ tính chất motor (tùy công suất)",
+          "hs": null,
+          "hsOptions": [
+            "8501.31",
+            "8501.32"
+          ]
+        },
+        {
+          "ifVi": "thiết kế và trình bày như máy hoàn chỉnh có chức năng riêng (linear motion machine), không còn tính chất motor thuần",
+          "hs": "8479.89"
+        },
+        {
+          "ifVi": "chỉ là bộ phận chuyên dùng cho máy công cụ cụ thể",
+          "hs": "8466"
+        },
+        {
+          "ifVi": "tích hợp driver / controller hoàn chỉnh thành hệ thống servo linear (Note 3/4, essential character)",
+          "hs": null,
+          "hsOptions": [
+            "8501",
+            "8537"
+          ],
+          "hsNoteVi": "8501 / 8537 (tùy)"
+        },
+        {
+          "ifVi": "rodless actuator, guided actuator có thanh dẫn hướng phức tạp",
+          "hs": "8479"
+        },
+        {
+          "ifVi": "actuator thủy lực / khí nén",
+          "hs": "8412"
+        },
+        {
+          "ifVi": "micro actuator y tế",
+          "hs": null,
+          "hsNoteVi": "90"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Electric Actuator / Linear Motor / Electric Cylinder / Servo Actuator' không rõ; actuator có servo + driver tích hợp hoặc cảm biến vị trí → DN khai 8479 hoặc 8537; actuator đơn giản coi là motor",
+      "deliberateVi": "Khai 8479 để thuế 0% hoặc khai 8501 cho dễ",
+      "girRule": "Note 2/3/4 Section XVI (essential character)",
+      "legalBasisVi": "Chú giải 85.01 (động cơ có hộp số / cơ cấu truyền động gắn liền nếu không làm mất tính chất động cơ) & 84.79; Note 2/3/4 Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8479.89 hoặc 8466 cho linear actuator bản chất motor → rủi ro ấn định 8501; ngược lại khai 8501 cho hệ thống phức tạp cũng có rủi ro",
+      "relatedIds": [
+        "MT-049",
+        "MT-011",
+        "MT-004",
+        "MT-026",
+        "MT-032"
+      ],
+      "examples": [
+        "IAI RCP series",
+        "IAI RCS series",
+        "SMC LEY",
+        "SMC LEF",
+        "Festo DNCE",
+        "Thomson Electrak",
+        "Hiwin LAS",
+        "Parker"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-026",
+      "origin": "grok-mt",
+      "group": "motor-drive-servo",
+      "nameVi": "Động cơ bước",
+      "nameEn": "Stepper Motor / Stepping Motor",
+      "aliases": [
+        "động cơ bước",
+        "motor bước",
+        "động cơ step",
+        "stepper motor",
+        "stepping motor",
+        "step motor",
+        "hybrid stepper",
+        "hybrid stepper motor",
+        "closed-loop stepper",
+        "closed-loop stepper motor"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8501.10.21",
+        "8501.10.29",
+        "8501.10.51",
+        "8501.10.59",
+        "8501.31"
+      ],
+      "declaredHs": [
+        "8501.10",
+        "8501.20",
+        "8501.31",
+        "8479.89",
+        "8537.10"
+      ],
+      "essenceTestVi": "Bản chất còn là động cơ điện bước thuần (phân nhóm theo công suất, DC/AC) hay đã thành hệ thống điều khiển hoàn chỉnh kèm driver?",
+      "rules": [
+        {
+          "ifVi": "bản chất là động cơ điện bước (không có chức năng máy hoàn chỉnh) — phân nhóm tùy công suất (≤37.5W hay >37.5W)",
+          "hs": null,
+          "hsOptions": [
+            "8501.10",
+            "8501.31"
+          ]
+        },
+        {
+          "ifVi": "đi kèm driver/controller thành bộ hoàn chỉnh và essential character là hệ thống điều khiển (nhưng thường vẫn ưu tiên 8501 nếu motor là phần chính)",
+          "hs": "8537.10"
+        },
+        {
+          "ifVi": "chỉ là bộ phận chuyên dùng cho máy cụ thể (CNC, máy in) và đáp ứng Note 2 Section XVI (hiếm)",
+          "hs": null,
+          "hsOptions": [
+            "8466",
+            "8473"
+          ]
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Stepper Motor / Stepping Motor / Hybrid Stepper / Closed-loop Stepper'; DN coi là motor điện thông thường hoặc máy n.e.s.; stepper có driver tích hợp thành 'stepper driver unit' nên khai 8537.10",
+      "deliberateVi": "Khai 8479.89 để hưởng thuế 0%; khai sai công suất để vào nhóm thuế thấp hơn",
+      "girRule": "GIR 1",
+      "legalBasisVi": "Chú giải 8501; phân nhóm 8501.10 'Stepper motors' (AHTN); Note 2 Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8479.89 hoặc 8537.10 cho stepper thuần → rủi ro ấn định 8501; khai sai công suất để né nhóm thuế cao",
+      "relatedIds": [
+        "MT-011",
+        "MT-025",
+        "MT-032"
+      ],
+      "examples": [
+        "Leadshine 57HS",
+        "Oriental Motor PKP",
+        "Sanyo Denki SanMotion",
+        "Shinano STP"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-027",
+      "origin": "grok-mt",
+      "group": "motor-drive-servo",
+      "nameVi": "Bộ điều khiển Servo / Servo Drive (standalone)",
+      "nameEn": "Servo Drive / Servo Amplifier / Servo Controller (standalone)",
+      "aliases": [
+        "bộ điều khiển servo",
+        "bộ khuếch đại servo",
+        "driver servo",
+        "servo drive",
+        "servo driver",
+        "servo amplifier",
+        "servo controller"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8537.10.12",
+        "8537.10.19",
+        "8537.10.30",
+        "8504.40.90"
+      ],
+      "declaredHs": [
+        "8537.10",
+        "8504.40.90",
+        "8471.50"
+      ],
+      "essenceTestVi": "Drive là board/panel lắp ≥2 thiết bị 85.35/85.36 để điều khiển điện (8537.10) hay chức năng chính là biến đổi điện cấp nguồn cho motor (8504.40)? Có đóng gói cùng motor không?",
+      "rules": [
+        {
+          "ifVi": "cấu tạo là board/panel lắp nhiều thiết bị điều khiển điện (có công tắc, relay, mạch điều khiển)",
+          "hs": "8537.10"
+        },
+        {
+          "ifVi": "chức năng chính là biến đổi điện (AC-DC, DC-AC) để cấp nguồn cho motor và không đủ tiêu chí panel",
+          "hs": "8504.40.90"
+        },
+        {
+          "ifVi": "đi kèm motor thành hệ thống đồng bộ (theo CV 3681/HQHCM-TXNK 2017)",
+          "hs": null,
+          "hsOptions": [
+            "8501.51",
+            "8501.52"
+          ]
+        },
+        {
+          "ifVi": "có CPU lập trình phức tạp như PLC (xem xét tùy Note)",
+          "hs": null,
+          "hsOptions": [
+            "8471",
+            "8537"
+          ]
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Servo Drive / Servo Amplifier / Servo Controller'; DN coi là tủ điều khiển hoặc bộ biến đổi; servo drive có thể vừa là converter vừa là control panel nên essential character quyết định",
+      "deliberateVi": "Khai 8504 để thuế thấp hơn hoặc 8537 để dễ thông quan",
+      "girRule": "GIR 1 + Note 3 Section XVI",
+      "legalBasisVi": "Chú giải 8537 & 8504; Note 3/4 Section XVI; CV 3681/HQHCM-TXNK 2017 (hệ thống đồng bộ)",
+      "sourceRefs": [
+        {
+          "type": "CV",
+          "reference": "3681/HQHCM-TXNK",
+          "date": "2017"
+        }
+      ],
+      "warningVi": "Khai 8504.40 cho drive bản chất control panel → rủi ro ấn định 8537 (và ngược lại); khi mua kèm motor phải xem xét hệ thống đồng bộ (8501.51/52)",
+      "relatedIds": [
+        "MT-011",
+        "MT-012",
+        "MT-020",
+        "MT-022",
+        "MT-033"
+      ],
+      "examples": [
+        "Yaskawa SGDV/SGD7",
+        "Mitsubishi MR-J4/MR-JE",
+        "Panasonic Minas A6",
+        "Delta ASDA-A2",
+        "Siemens SINAMICS"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-028",
+      "origin": "grok-mt",
+      "group": "cam-bien-do-luong",
+      "nameVi": "Cảm biến tiệm cận cảm ứng",
+      "nameEn": "Inductive Proximity Sensor / Proximity Switch",
+      "aliases": [
+        "cảm biến tiệm cận cảm ứng",
+        "cảm biến tiệm cận điện cảm",
+        "cảm biến tiệm cận kim loại",
+        "cảm biến tiệm cận",
+        "công tắc tiệm cận",
+        "inductive proximity sensor",
+        "inductive sensor",
+        "proximity switch",
+        "inductive proximity switch"
+      ],
+      "chapters": [
+        "85",
+        "90"
+      ],
+      "correctHs": [
+        "8536.50",
+        "9031.80",
+        "8543.70"
+      ],
+      "declaredHs": [
+        "8536.50",
+        "8541.40",
+        "9031.80",
+        "8537.10"
+      ],
+      "essenceTestVi": "Đầu ra on/off thuần túy (công tắc – 8536.50) hay có tín hiệu đo lường/analog đo khoảng cách (dụng cụ đo – 9031.80)? Nguyên lý inductive / capacitive / optical / ultrasonic?",
+      "rules": [
+        {
+          "ifVi": "chức năng chính là switching (on/off khi phát hiện vật) và không đo lường định lượng",
+          "hs": "8536.50"
+        },
+        {
+          "ifVi": "có khả năng đo khoảng cách hoặc cung cấp tín hiệu đo lường",
+          "hs": "9031.80"
+        },
+        {
+          "ifVi": "là photo-electric / optical proximity",
+          "hs": null,
+          "hsOptions": [
+            "8541.40",
+            "9031"
+          ]
+        },
+        {
+          "ifVi": "tích hợp trong panel điều khiển (Note 2 Section XVI ưu tiên theo máy chính)",
+          "hs": "8537"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Proximity Sensor / Inductive Sensor / Proximity Switch'; DN coi là công tắc điện hoặc cảm biến đo",
+      "deliberateVi": "Khai 9031 để thuế thấp hoặc 8536 cho dễ",
+      "girRule": null,
+      "legalBasisVi": "Chú giải 8536 & 9031; Note 2 Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 9031.80 cho sensor pure switching → rủi ro ấn định 8536.50; ngược lại cũng có rủi ro tùy hải quan",
+      "relatedIds": [
+        "MT-006",
+        "MT-007",
+        "MT-008",
+        "MT-009",
+        "MT-010",
+        "MT-019",
+        "MT-031",
+        "MT-035",
+        "MT-036"
+      ],
+      "examples": [
+        "Omron E2E/E2B",
+        "Sick IME/IMB",
+        "Pepperl+Fuchs NBB/NBN",
+        "Autonics PR"
+      ],
+      "oldTariff": true,
+      "oldTariffCodes": [
+        "8541.40"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-029",
+      "origin": "grok-mt",
+      "group": "may-cong-cu",
+      "nameVi": "Máy hàn laser",
+      "nameEn": "Laser Welding Machine / Fiber Laser Welder / Handheld Laser Welder",
+      "aliases": [
+        "máy hàn laser",
+        "máy hàn laser cầm tay",
+        "máy hàn laser fiber",
+        "máy hàn laser sợi quang",
+        "laser welding machine",
+        "laser welder",
+        "fiber laser welder",
+        "fiber laser welding machine",
+        "handheld laser welder",
+        "handheld laser welding machine"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8515.21",
+        "8515.29",
+        "8515.80",
+        "8456.11"
+      ],
+      "declaredHs": [
+        "8515.80",
+        "8479.89",
+        "8456.11"
+      ],
+      "essenceTestVi": "Công dụng chính là hàn – nối kim loại bằng nung chảy (8515) hay cắt/khắc – loại bỏ vật liệu bằng laser (8456.11)?",
+      "rules": [
+        {
+          "ifVi": "công dụng chính và thiết kế là hàn (welding – nối kim loại bằng nung chảy)",
+          "hs": "8515"
+        },
+        {
+          "ifVi": "công dụng chính là cắt, khắc, gia công loại bỏ vật liệu bằng laser",
+          "hs": "8456.11"
+        },
+        {
+          "ifVi": "máy đa chức năng (hàn + cắt) — GIR 3(b) theo essential character hoặc GIR 3(c)",
+          "hs": null
+        },
+        {
+          "ifVi": "tích hợp robot/cánh tay — xem Note 3 Section XVI và so sánh với 8479.50 / 8428",
+          "hs": null
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Laser Welding Machine / Fiber Laser Welder / Handheld Laser Welder'; DN coi là máy hàn điện hoặc máy laser gia công; laser vừa có thể hàn (nối) vừa cắt (loại bỏ)",
+      "deliberateVi": "Khai 8456 để thuế thấp hơn",
+      "girRule": "GIR 1; máy đa chức năng: GIR 3(b) / GIR 3(c)",
+      "legalBasisVi": "Chú giải 8515 & 8456; Note 3 Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8456.11 cho máy thiết kế hàn → rủi ro ấn định 8515; khai 8515 cho máy cắt laser cũng rủi ro",
+      "relatedIds": [
+        "MT-016",
+        "MT-024",
+        "MT-034",
+        "MT-040"
+      ],
+      "examples": [
+        "IPG LightWELD",
+        "Trumpf TruLaser Weld",
+        "Han's Laser handheld",
+        "Raycus fiber welder",
+        "JPT fiber welder"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-030",
+      "origin": "grok-mt",
+      "group": "board-module-hmi",
+      "nameVi": "Máy tính công nghiệp / Industrial Panel PC / Embedded Computer",
+      "nameEn": "Industrial PC / Industrial Panel PC / Embedded Computer / Box PC / Fanless PC",
+      "aliases": [
+        "máy tính công nghiệp",
+        "máy tính nhúng",
+        "máy tính công nghiệp màn hình cảm ứng",
+        "industrial pc",
+        "industrial panel pc",
+        "panel pc",
+        "embedded computer",
+        "embedded pc",
+        "box pc",
+        "fanless pc",
+        "hmi pc",
+        "hmi computer"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8471.41",
+        "8471.49",
+        "8471.50",
+        "8537.10"
+      ],
+      "declaredHs": [
+        "8471.41",
+        "8471.49",
+        "8471.50",
+        "8537.10",
+        "8528"
+      ],
+      "essenceTestVi": "Đáp ứng định nghĩa máy xử lý dữ liệu tự động ADP theo Note 5 Section XVI (có CPU + OS đầy đủ, chạy chương trình) hay chỉ là panel điều khiển điện lắp thiết bị 85.35/85.36?",
+      "rules": [
+        {
+          "ifVi": "đáp ứng định nghĩa ADP machine (Note 5 Section XVI): có thể chạy chương trình, xử lý dữ liệu, lưu trữ",
+          "hs": null,
+          "hsOptions": [
+            "8471.41",
+            "8471.49",
+            "8471.50"
+          ]
+        },
+        {
+          "ifVi": "bản chất là panel/board lắp thiết bị 85.35/85.36 dùng để điều khiển điện, không đủ tiêu chí ADP",
+          "hs": "8537.10"
+        },
+        {
+          "ifVi": "chỉ là màn hình cảm ứng công nghiệp không có CPU xử lý độc lập (liên quan MT-001)",
+          "hs": null,
+          "hsOptions": [
+            "8528",
+            "8537"
+          ]
+        },
+        {
+          "ifVi": "tích hợp PLC mạnh — so sánh với MT-014 (PLC)",
+          "hs": null
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Industrial PC / Panel PC / Embedded Computer / HMI PC'; DN coi là máy tính hoặc tủ điều khiển; Panel PC vừa là máy tính vừa là HMI/control",
+      "deliberateVi": "Khai 8471 để thuế 0% hoặc 8537 cho dễ thông quan tùy chính sách",
+      "girRule": "GIR 1 + Note 5 Section XVI",
+      "legalBasisVi": "Chú giải 8471 & 8537; Note 5 Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8537.10 cho Panel PC bản chất ADP → rủi ro ấn định 8471; khai 8471 cho HMI thuần cũng có rủi ro",
+      "relatedIds": [
+        "MT-001",
+        "MT-014",
+        "MT-033"
+      ],
+      "examples": [
+        "Advantech PPC/UNO",
+        "Siemens SIMATIC IPC",
+        "Beckhoff C69xx",
+        "Axiomtek GOT",
+        "Nexcom NISE"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-031",
+      "origin": "grok-mt",
+      "group": "cam-bien-do-luong",
+      "nameVi": "Cảm biến quang điện",
+      "nameEn": "Photoelectric Sensor / Optical Proximity Sensor / Through-beam / Retro-reflective / Diffuse Sensor",
+      "aliases": [
+        "cảm biến quang điện",
+        "cảm biến quang",
+        "cảm biến tiệm cận quang",
+        "cảm biến quang thu phát",
+        "cảm biến quang phản xạ gương",
+        "cảm biến quang khuếch tán",
+        "photoelectric sensor",
+        "photo sensor",
+        "photoelectric proximity sensor",
+        "optical proximity sensor",
+        "optical sensor",
+        "through-beam sensor",
+        "retro-reflective sensor",
+        "diffuse sensor",
+        "diffuse reflective sensor"
+      ],
+      "chapters": [
+        "85",
+        "90"
+      ],
+      "correctHs": [
+        "8536.50",
+        "9031.80"
+      ],
+      "declaredHs": [
+        "8541.40",
+        "9031.80",
+        "9031.49",
+        "8536.50"
+      ],
+      "essenceTestVi": "Công tắc tiệm cận quang (on/off, phát hiện hiện diện – 8536.50) hay dụng cụ đo khoảng cách/cường độ ánh sáng có đầu ra analog (9031)? Hay chỉ là linh kiện bán dẫn cảm quang thuần (8541.40)?",
+      "rules": [
+        {
+          "ifVi": "bản chất là công tắc tiệm cận quang (on/off, digital output, phát hiện hiện diện)",
+          "hs": "8536.50"
+        },
+        {
+          "ifVi": "có chức năng đo khoảng cách / cường độ ánh sáng chính xác, đầu ra analog hoặc dùng trong hệ thống measuring",
+          "hs": null,
+          "hsOptions": [
+            "9031.80",
+            "9031.49"
+          ]
+        },
+        {
+          "ifVi": "chỉ là linh kiện bán dẫn cảm quang thuần (không có mạch khuếch đại/xử lý hoàn chỉnh)",
+          "hs": "8541.40"
+        },
+        {
+          "ifVi": "tích hợp vào board điều khiển lớn — Note 2 Section XVI theo máy chính",
+          "hs": null
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Photoelectric Sensor / Optical Sensor / Laser Sensor'; DN thấy 'photo' và 'semiconductor' nên khai 8541.40; cảm biến có mạch xử lý tích hợp + đầu ra digital dễ bị hiểu là switch (8536) hoặc measuring (9031)",
+      "deliberateVi": "Khai 8541.40 để thuế thấp hoặc khai 9031 để tránh một số kiểm tra",
+      "girRule": null,
+      "legalBasisVi": "Chú giải 8536, 8541, 9031; Note 2 Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8541.40 cho cảm biến hoàn chỉnh có mạch xử lý → rủi ro ấn định 8536.50 hoặc 9031 + truy thu; khai sai giữa switch và measuring cũng dễ bị bác",
+      "relatedIds": [
+        "MT-010",
+        "MT-019",
+        "MT-028",
+        "MT-035",
+        "MT-036"
+      ],
+      "examples": [
+        "Omron E3Z/E3S",
+        "Keyence LV/LR",
+        "Sick WTT/WLL",
+        "Banner QS18",
+        "Autonics BJ/BR"
+      ],
+      "oldTariff": true,
+      "oldTariffCodes": [
+        "8541.40"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-032",
+      "origin": "grok-mt",
+      "group": "motor-drive-servo",
+      "nameVi": "Động cơ không chổi than BLDC",
+      "nameEn": "Brushless DC Motor / BLDC Motor",
+      "aliases": [
+        "động cơ bldc",
+        "động cơ không chổi than",
+        "motor không chổi than",
+        "động cơ dc không chổi than",
+        "động cơ brushless",
+        "bldc motor",
+        "brushless dc motor",
+        "brushless motor",
+        "outrunner motor",
+        "inrunner motor",
+        "electronic commutation motor",
+        "ec motor"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8501.10.21",
+        "8501.10.29",
+        "8501.10.51",
+        "8501.10.59",
+        "8501.31",
+        "8501.32"
+      ],
+      "declaredHs": [
+        "8501.10",
+        "8501.31",
+        "8501.32",
+        "8479.89",
+        "8501.20"
+      ],
+      "essenceTestVi": "Bản chất còn là động cơ điện DC thuần (phân nhóm theo công suất đầu ra) hay đã thành hệ thống điều khiển hoàn chỉnh kèm driver/ESC?",
+      "rules": [
+        {
+          "ifVi": "bản chất là động cơ điện BLDC thuần (không có chức năng máy hoàn chỉnh) — phân nhóm tùy công suất",
+          "hs": null,
+          "hsOptions": [
+            "8501.10",
+            "8501.31",
+            "8501.32"
+          ]
+        },
+        {
+          "ifVi": "đi kèm driver/ESC thành bộ hoàn chỉnh và essential character là hệ thống điều khiển (nhưng thường vẫn ưu tiên 8501 nếu motor là phần chính)",
+          "hs": null,
+          "hsOptions": [
+            "8537.10",
+            "8504.40"
+          ]
+        },
+        {
+          "ifVi": "chỉ là bộ phận chuyên dùng cho máy cụ thể (quạt, drone, CNC) và đáp ứng Note 2 Section XVI — theo máy chính (hiếm khi áp dụng cho motor độc lập)",
+          "hs": null
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'BLDC Motor / Brushless Motor / Outrunner / Inrunner / BLDC Servo'; DN khai theo công suất sai hoặc coi là máy n.e.s.; BLDC có Hall sensor/encoder dễ bị hiểu là servo; BLDC + driver thành 'BLDC drive unit' bị khai 8537/8504",
+      "deliberateVi": "Khai sai công suất để vào nhóm thuế thấp; khai 8479.89 để thuế 0%",
+      "girRule": "GIR 1",
+      "legalBasisVi": "Chú giải 8501; Note 2 Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8479.89 hoặc 8537 cho BLDC thuần → rủi ro ấn định 8501; khai sai công suất để né nhóm thuế cao hơn rất phổ biến (HQ ấn định theo công suất thực tế đo được)",
+      "relatedIds": [
+        "MT-011",
+        "MT-025",
+        "MT-026"
+      ],
+      "examples": [
+        "Maxon EC",
+        "Nidec BLDC",
+        "Oriental Motor BLH/BLV",
+        "T-motor U/Power"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-033",
+      "origin": "grok-mt",
+      "group": "board-module-hmi",
+      "nameVi": "Bộ điều khiển chuyển động (Motion Controller)",
+      "nameEn": "Motion Controller / CNC Motion Controller / Multi-axis Controller / Trajectory Controller",
+      "aliases": [
+        "bộ điều khiển chuyển động",
+        "bộ điều khiển đa trục",
+        "bộ điều khiển cnc",
+        "card điều khiển chuyển động",
+        "motion controller",
+        "cnc controller",
+        "cnc motion controller",
+        "multi-axis controller",
+        "multi axis motion controller",
+        "trajectory controller",
+        "motion control card"
+      ],
+      "chapters": [
+        "84",
+        "85",
+        "90"
+      ],
+      "correctHs": [
+        "8537.10.12",
+        "8537.10.19",
+        "8537.10.30",
+        "9032.89"
+      ],
+      "declaredHs": [
+        "8471.50",
+        "8471.70",
+        "9032.89",
+        "8537.10"
+      ],
+      "essenceTestVi": "Bảng điều khiển điện chuyên dụng cho chuyển động (8537.10) hay máy xử lý dữ liệu đa năng theo Note 5 Section XVI (8471) / thiết bị điều chỉnh tự động theo nghĩa 90.32 (9032.89)?",
+      "rules": [
+        {
+          "ifVi": "bản chất là bảng/panel điều khiển điện chuyên dụng cho chuyển động (không phải máy tính đa năng)",
+          "hs": "8537.10"
+        },
+        {
+          "ifVi": "đáp ứng đầy đủ định nghĩa máy xử lý dữ liệu tự động (ADP) theo Note 5 Section XVI và chú giải 8471",
+          "hs": "8471"
+        },
+        {
+          "ifVi": "chức năng chính là automatic regulating/controlling theo nghĩa 90.32 (ví dụ PID đa vòng phức tạp độc lập)",
+          "hs": "9032.89"
+        },
+        {
+          "ifVi": "là một phần của hệ thống CNC hoàn chỉnh — Note 3/4 Section XVI theo máy chính",
+          "hs": null,
+          "hsOptions": [
+            "8458",
+            "8459",
+            "8460"
+          ]
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Motion Controller / CNC Controller / Multi-axis Controller / EtherCAT Master'; DN coi là máy tính công nghiệp (có CPU mạnh + phần mềm lập trình) hoặc thiết bị regulating (có feedback closed-loop)",
+      "deliberateVi": "Khai 8471 để hưởng ưu đãi máy tính hoặc 9032 để thuế/kiểm tra khác",
+      "girRule": "GIR 1 + Note 3/4/5 Section XVI",
+      "legalBasisVi": "Chú giải 8537, 8471, 9032; Note 3/4/5 Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8471 cho motion controller chuyên dụng → rủi ro ấn định 8537; khai 9032 khi không đủ điều kiện regulating cũng dễ bị bác",
+      "relatedIds": [
+        "MT-014",
+        "MT-023",
+        "MT-027",
+        "MT-030"
+      ],
+      "examples": [
+        "Delta ASDA-M / DMC",
+        "Mitsubishi QD77 / Q173",
+        "Siemens SINUMERIK / SIMOTION",
+        "Beckhoff TwinCAT",
+        "Galil DMC",
+        "Leadshine DMC"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-034",
+      "origin": "grok-mt",
+      "group": "may-cong-cu",
+      "nameVi": "Máy cắt plasma",
+      "nameEn": "Plasma Cutting Machine / CNC Plasma Cutter / Plasma Arc Cutting Machine",
+      "aliases": [
+        "máy cắt plasma",
+        "máy cắt plasma cnc",
+        "máy cắt kim loại plasma",
+        "máy cắt plasma cầm tay",
+        "plasma cutting machine",
+        "plasma cutter",
+        "cnc plasma cutter",
+        "cnc plasma cutting machine",
+        "plasma arc cutting machine"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8456.90",
+        "8456",
+        "8515.80"
+      ],
+      "declaredHs": [
+        "8515.80",
+        "8479.89",
+        "8456.90"
+      ],
+      "essenceTestVi": "Máy công cụ loại bỏ vật liệu bằng plasma arc (có bàn, CNC – 8456) hay thiết bị plasma cầm tay / hàn-cắt điện thuần túy không mang tính machine-tool (8515.80)?",
+      "rules": [
+        {
+          "ifVi": "máy cắt plasma dạng machine-tool (có bàn, CNC, loại bỏ vật liệu theo quỹ đạo)",
+          "hs": "8456.90"
+        },
+        {
+          "ifVi": "thiết bị plasma cầm tay hoặc nghiêng về hàn/cắt điện thuần túy không mang tính machine-tool",
+          "hs": "8515.80"
+        },
+        {
+          "ifVi": "tổ hợp máy (plasma + bàn CNC + hút khói + controller) — Note 3/4 Section XVI theo chức năng chính (thường là máy cắt)",
+          "hs": "8456"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi chung 'Plasma Cutting Machine / CNC Plasma Cutter / Plasma Arc Cutting'; DN thấy 'plasma arc' gần với hàn điện nên khai 8515; máy cầm tay nhỏ dễ bị hiểu là 8515",
+      "deliberateVi": "Khai 8515.80 hoặc 8479.89 để hưởng thuế thấp hơn hoặc tránh kiểm tra máy móc cũ",
+      "girRule": "GIR 1 + Note 3/4 Section XVI",
+      "legalBasisVi": "Chú giải 8456 (plasma arc processes) & 8515; Note 3/4 Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8515.80 hoặc 8479 cho máy cắt plasma CNC → rủi ro ấn định 8456 + truy thu; cần tách rõ với laser cutting (MT-016)",
+      "relatedIds": [
+        "MT-016",
+        "MT-024",
+        "MT-029",
+        "MT-040"
+      ],
+      "examples": [
+        "Hypertherm Powermax / XPR",
+        "Kjellberg HiFocus",
+        "ESAB Cutmaster",
+        "CNC plasma 1325/1530"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-035",
+      "origin": "grok-mt",
+      "group": "cam-bien-do-luong",
+      "nameVi": "Cảm biến siêu âm",
+      "nameEn": "Ultrasonic Sensor / Ultrasonic Proximity Sensor / Ultrasonic Level Sensor / Ultrasonic Distance Sensor",
+      "aliases": [
+        "cảm biến siêu âm",
+        "cảm biến tiệm cận siêu âm",
+        "cảm biến khoảng cách siêu âm",
+        "cảm biến mức siêu âm",
+        "cảm biến đo mức siêu âm",
+        "ultrasonic sensor",
+        "ultrasonic proximity sensor",
+        "ultrasonic level sensor",
+        "ultrasonic distance sensor",
+        "ultrasonic level transmitter"
+      ],
+      "chapters": [
+        "85",
+        "90"
+      ],
+      "correctHs": [
+        "8536.50",
+        "9031.80"
+      ],
+      "declaredHs": [
+        "9031.80",
+        "9031.49",
+        "8536.50",
+        "8543.70"
+      ],
+      "essenceTestVi": "Công tắc tiệm cận siêu âm (on/off, phát hiện hiện diện – 8536.50) hay dụng cụ đo khoảng cách/mức liên tục có đầu ra analog (9031)?",
+      "rules": [
+        {
+          "ifVi": "bản chất là công tắc tiệm cận siêu âm (on/off, phát hiện hiện diện)",
+          "hs": "8536.50"
+        },
+        {
+          "ifVi": "chức năng chính là đo khoảng cách / đo mức liên tục, đầu ra analog hoặc dùng trong hệ thống measuring",
+          "hs": null,
+          "hsOptions": [
+            "9031.80",
+            "9031.49"
+          ]
+        },
+        {
+          "ifVi": "không thuộc 8536 hoặc 9031 rõ ràng và có chức năng riêng",
+          "hs": "8543.70"
+        },
+        {
+          "ifVi": "tích hợp vào hệ thống lớn hơn — Note 2 Section XVI theo máy chính",
+          "hs": null
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi chung 'Ultrasonic Sensor / Ultrasonic Level Transmitter / Ultrasonic Proximity'; DN coi là thiết bị đo lường hoặc máy điện n.e.s.; HQ nhìn vào đầu ra và độ chính xác đo",
+      "deliberateVi": "Khai 9031 cho loại switch thuần hoặc khai 8543 để tránh một số nhóm",
+      "girRule": null,
+      "legalBasisVi": "Chú giải 8536, 9031, 8543; Note 2 Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 9031 cho cảm biến siêu âm chỉ on/off → rủi ro ấn định 8536.50; khai 8543 khi đã có nhóm cụ thể cũng dễ bị bác",
+      "relatedIds": [
+        "MT-010",
+        "MT-019",
+        "MT-028",
+        "MT-031",
+        "MT-046"
+      ],
+      "examples": [
+        "Pepperl+Fuchs UC/UB",
+        "Sick UM30/UM18",
+        "Banner QT50/T30",
+        "Omron E4C/E4A",
+        "IFM UG",
+        "Autonics UJ/UD"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-036",
+      "origin": "grok-mt",
+      "group": "cam-bien-do-luong",
+      "nameVi": "Cảm biến từ (Reed / Hall)",
+      "nameEn": "Magnetic Sensor / Reed Sensor / Hall Effect Proximity Sensor / Magnetic Proximity Sensor",
+      "aliases": [
+        "cảm biến từ",
+        "cảm biến từ tính",
+        "cảm biến tiệm cận từ",
+        "cảm biến reed",
+        "cảm biến hall",
+        "cảm biến từ xi lanh khí nén",
+        "cảm biến vị trí piston",
+        "magnetic sensor",
+        "magnetic proximity sensor",
+        "reed sensor",
+        "reed switch sensor",
+        "hall sensor",
+        "hall effect sensor",
+        "hall effect proximity sensor"
+      ],
+      "chapters": [
+        "85",
+        "90"
+      ],
+      "correctHs": [
+        "8536.50",
+        "8536.50.61"
+      ],
+      "declaredHs": [
+        "9031.80",
+        "9031.49",
+        "8541.40",
+        "8536.50"
+      ],
+      "essenceTestVi": "Công tắc tiệm cận từ (on/off, phát hiện hiện diện/vị trí piston – 8536.50) hay dụng cụ đo cường độ từ trường/khoảng cách có đầu ra analog (9031.80)?",
+      "rules": [
+        {
+          "ifVi": "bản chất là công tắc tiệm cận từ (on/off, digital output, phát hiện hiện diện/vị trí piston) — theo TB 3387/TB-TCHQ 2024",
+          "hs": "8536.50"
+        },
+        {
+          "ifVi": "có chức năng đo cường độ từ trường / khoảng cách chính xác, đầu ra analog hoặc dùng trong hệ thống measuring",
+          "hs": "9031.80"
+        },
+        {
+          "ifVi": "chỉ là linh kiện Hall element / reed switch thuần (không có mạch khuếch đại/xử lý hoàn chỉnh)",
+          "hs": "8541"
+        },
+        {
+          "ifVi": "tích hợp vào board điều khiển lớn — Note 2 Section XVI theo máy chính",
+          "hs": null
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Magnetic Sensor / Hall Sensor / Position Sensor'; DN thấy 'sensor' nên khai 9031, thấy Hall element nên khai 8541",
+      "deliberateVi": "Khai 9031 để tránh một số kiểm tra hoặc khai 8541 vì thuế có thể thấp hơn ở một số thời điểm",
+      "girRule": "GIR 1",
+      "legalBasisVi": "TB 3387/TB-TCHQ 11/07/2024 (Airtac CS1U020 → 8536.50.61); Chú giải 8536, 9031, 8541; Note 2 Section XVI",
+      "sourceRefs": [
+        {
+          "type": "TB-TCHQ",
+          "reference": "3387/TB-TCHQ",
+          "date": "2024-07-11"
+        }
+      ],
+      "warningVi": "Khai 9031.80 hoặc 8541.40 cho cảm biến từ pure switch có mạch xử lý → rủi ro ấn định 8536.50 theo TB 3387 + truy thu; cần xem kỹ datasheet đầu ra và công dụng thực tế",
+      "relatedIds": [
+        "MT-010",
+        "MT-028",
+        "MT-031",
+        "MT-035",
+        "MT-049"
+      ],
+      "examples": [
+        "Airtac CS1U (CS1U020)",
+        "SMC D-M9",
+        "Festo SMT/SME",
+        "Omron E2E-X",
+        "Sick MM"
+      ],
+      "oldTariff": true,
+      "oldTariffCodes": [
+        "8541.40"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-037",
+      "origin": "grok-mt",
+      "group": "dien-cong-tac-nguon",
+      "nameVi": "Rơ-le trạng thái rắn (SSR)",
+      "nameEn": "Solid State Relay (SSR) / Semiconductor Relay",
+      "aliases": [
+        "rơ le trạng thái rắn",
+        "rơ-le trạng thái rắn",
+        "relay trạng thái rắn",
+        "rơ le bán dẫn",
+        "relay bán dẫn",
+        "solid state relay",
+        "ssr relay",
+        "semiconductor relay"
+      ],
+      "chapters": [
+        "85"
+      ],
+      "correctHs": [
+        "8536.41",
+        "8536.49",
+        "8536.41.91",
+        "8536.49.90"
+      ],
+      "declaredHs": [
+        "8541.40",
+        "8541.50",
+        "8536.50",
+        "8537.10"
+      ],
+      "essenceTestVi": "Rơ-le hoàn chỉnh có cách ly + chức năng chuyển mạch dùng như relay (8536.41/49) hay chỉ linh kiện bán dẫn thuần triac/thyristor/MOSFET (8541)?",
+      "rules": [
+        {
+          "ifVi": "bản chất là rơ-le trạng thái rắn hoàn chỉnh (có isolation, switching function, dùng như relay), điện áp ≤60V",
+          "hs": "8536.41"
+        },
+        {
+          "ifVi": "rơ-le trạng thái rắn hoàn chỉnh, loại khác (điện áp >60V)",
+          "hs": "8536.49"
+        },
+        {
+          "ifVi": "chỉ là triac / thyristor / MOSFET module thuần không có mạch điều khiển/isolation hoàn chỉnh",
+          "hs": "8541"
+        },
+        {
+          "ifVi": "tích hợp sẵn vào board/panel điều khiển lớn (có nhiều thiết bị 8535/8536) — Note 2 Section XVI",
+          "hs": "8537.10"
+        },
+        {
+          "ifVi": "dùng cho bảo vệ mạch (overcurrent, residual) — hiếm với SSR chuẩn",
+          "hs": "8536.30"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Solid State Relay / Semiconductor Relay'; DN nhìn thấy triac/MOSFET nên khai theo linh kiện bán dẫn (8541), hoặc khai 8536.50 vì nghĩ là 'switch'",
+      "deliberateVi": "Khai 8541 để hưởng thuế thấp hơn hoặc tránh kiểm tra chuyên ngành ở một số thời điểm",
+      "girRule": "GIR 1",
+      "legalBasisVi": "Chú giải 8536 (relays, semiconductor or electro-magnetic); AHTN 8536.41 / 8536.49; Note 2 Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8541 cho SSR hoàn chỉnh có mạch isolation và switching → rủi ro ấn định 8536.41/49 + truy thu; xem datasheet chức năng và điện áp để chọn đúng phân nhóm 41 hay 49",
+      "relatedIds": [
+        "MT-038",
+        "MT-020",
+        "MT-043"
+      ],
+      "examples": [
+        "Crydom D1D / HA / GN",
+        "Omron G3NA / G3PA",
+        "Schneider SSR",
+        "FOTEK SSR-40DA"
+      ],
+      "oldTariff": true,
+      "oldTariffCodes": [
+        "8541.40",
+        "8541.50"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-038",
+      "origin": "grok-mt",
+      "group": "dien-cong-tac-nguon",
+      "nameVi": "Contactor điện từ",
+      "nameEn": "Electromagnetic Contactor / Magnetic Contactor / Motor Contactor",
+      "aliases": [
+        "contactor điện từ",
+        "công tắc tơ",
+        "khởi động từ",
+        "contactor",
+        "magnetic contactor",
+        "electromagnetic contactor",
+        "motor contactor",
+        "ac contactor",
+        "dc contactor"
+      ],
+      "chapters": [
+        "85"
+      ],
+      "correctHs": [
+        "8536.49",
+        "8536.50",
+        "8536.49.90",
+        "8536.50.99"
+      ],
+      "declaredHs": [
+        "8536.50",
+        "8537.10",
+        "8504.40"
+      ],
+      "essenceTestVi": "Contactor đơn lẻ đóng/ngắt mạch tải (8536.49/50) hay đã lắp sẵn vào board/panel có nhiều thiết bị 8535/8536 (8537.10) / tích hợp thành motor starter?",
+      "rules": [
+        {
+          "ifVi": "contactor đơn lẻ (standalone), chức năng chính đóng/ngắt mạch tải — tùy cách hiểu 'relay' vs 'switch' của đơn vị phân loại",
+          "hs": null,
+          "hsOptions": [
+            "8536.49",
+            "8536.50"
+          ]
+        },
+        {
+          "ifVi": "contactor + thermal overload relay tích hợp thành motor starter hoàn chỉnh",
+          "hs": null,
+          "hsOptions": [
+            "8536",
+            "8504.40",
+            "8537"
+          ]
+        },
+        {
+          "ifVi": "được lắp sẵn vào tủ/board điều khiển có nhiều thiết bị — Note 2 Section XVI",
+          "hs": "8537.10"
+        },
+        {
+          "ifVi": "chỉ là cuộn coil hoặc tiếp điểm thay thế (parts)",
+          "hs": null,
+          "hsOptions": [
+            "8536",
+            "8503"
+          ],
+          "hsNoteVi": "8536 (parts) / 8503"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Contactor / Magnetic Contactor / Motor Contactor'; DN coi là switch thông thường (8536.50) hoặc khai theo hệ thống khởi động mềm (8504) khi thấy dùng cho khởi động động cơ; kèm thermal overload thì khai như motor starter",
+      "deliberateVi": null,
+      "girRule": "GIR 1",
+      "legalBasisVi": "Chú giải 8536; AHTN 8536.49 / 8536.50; Note 2 Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8504.40 hoặc 8537.10 cho contactor đơn lẻ → rủi ro ấn định 8536.49/50 + truy thu; cần xem rõ cấu tạo (có phải board hoàn chỉnh không) và datasheet",
+      "relatedIds": [
+        "MT-037",
+        "MT-020",
+        "MT-042"
+      ],
+      "examples": [
+        "Schneider LC1D / TeSys",
+        "ABB AF",
+        "Siemens Sirius 3RT",
+        "LS MC",
+        "Chint NXC"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-039",
+      "origin": "grok-mt",
+      "group": "cam-bien-do-luong",
+      "nameVi": "Cảm biến dòng điện",
+      "nameEn": "Current Sensor / Current Transducer / Hall Current Sensor / Current Transformer Sensor",
+      "aliases": [
+        "cảm biến dòng điện",
+        "cảm biến dòng",
+        "bộ chuyển đổi dòng điện",
+        "biến dòng đo lường",
+        "cảm biến dòng hall",
+        "current sensor",
+        "current transducer",
+        "hall current sensor",
+        "current transformer sensor",
+        "ct sensor",
+        "rogowski coil"
+      ],
+      "chapters": [
+        "85",
+        "90"
+      ],
+      "correctHs": [
+        "9030.33",
+        "9030.39",
+        "9031.80"
+      ],
+      "declaredHs": [
+        "8504.90",
+        "8504.50",
+        "8536.50",
+        "8542"
+      ],
+      "essenceTestVi": "Dụng cụ đo dòng điện hoàn chỉnh có mạch xử lý + đầu ra tín hiệu độc lập (9030/9031) hay chỉ là bộ phận dành riêng cho static converter / cuộn cảm / biến dòng thuần (8504)?",
+      "rules": [
+        {
+          "ifVi": "cảm biến dòng hoàn chỉnh, chức năng chính là đo/kiểm tra dòng điện, có tín hiệu đầu ra độc lập",
+          "hs": null,
+          "hsOptions": [
+            "9030.33",
+            "9030.39"
+          ],
+          "hsNoteVi": "9030.33 / 9030.39 (hoặc 9031.80 nếu không fit 9030)"
+        },
+        {
+          "ifVi": "chỉ là current transformer (CT) kiểu đo lường thuần (không có mạch điện tử xử lý)",
+          "hs": null,
+          "hsOptions": [
+            "8504.31",
+            "8504.50"
+          ]
+        },
+        {
+          "ifVi": "là bộ phận dành riêng/chủ yếu cho static converter / UPS / inverter cụ thể và không có chức năng đo độc lập",
+          "hs": "8504.90"
+        },
+        {
+          "ifVi": "tích hợp vào board điều khiển lớn — Note 2 Section XVI theo máy chính",
+          "hs": null
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Current Sensor for Inverter / UPS / VFD / Servo'; DN coi là phụ tùng biến tần/UPS (8504.90) vì thường dùng kèm, hoặc khai 8504.50 vì có lõi từ",
+      "deliberateVi": null,
+      "girRule": "GIR 1",
+      "legalBasisVi": "Chú giải 9030, 9031, 8504; Note 2 Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8504.90 hoặc 8504.50 cho current sensor đo độc lập hoàn chỉnh → rủi ro ấn định 9030.33/39 hoặc 9031.80 + truy thu; cần datasheet chức năng đo và ứng dụng thực tế",
+      "relatedIds": [
+        "MT-006",
+        "MT-007",
+        "MT-041",
+        "MT-045"
+      ],
+      "examples": [
+        "LEM LA / LT / HASS",
+        "Honeywell CSLA",
+        "Allegro ACS",
+        "Tamura L01/L03",
+        "Acrel AKH-0.66"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-040",
+      "origin": "grok-mt",
+      "group": "may-cong-cu",
+      "nameVi": "Máy hàn hồ quang (MMA / MIG / MAG / TIG)",
+      "nameEn": "Electric Arc Welding Machine (MMA / MIG / MAG / TIG) / Inverter Welder",
+      "aliases": [
+        "máy hàn hồ quang",
+        "máy hàn điện",
+        "máy hàn que",
+        "máy hàn mig",
+        "máy hàn mig mag",
+        "máy hàn tig",
+        "máy hàn inverter",
+        "máy hàn điện tử",
+        "arc welding machine",
+        "electric arc welding machine",
+        "mma welder",
+        "mig welder",
+        "mig mag welder",
+        "tig welder",
+        "inverter welder",
+        "inverter welding machine",
+        "stick welder",
+        "multi-process welder"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8515.31",
+        "8515.39",
+        "8515.31.00",
+        "8515.39.10",
+        "8515.39.90"
+      ],
+      "declaredHs": [
+        "8515.80",
+        "8456.90",
+        "8479.89"
+      ],
+      "essenceTestVi": "Máy hàn hồ quang – nối kim loại (8515.31/39) hay máy cắt plasma/laser – loại bỏ vật liệu (8456)? Tự động/bán tự động hay thủ công?",
+      "rules": [
+        {
+          "ifVi": "máy hàn hồ quang (MMA/MIG/MAG/TIG), chức năng chính là hàn kim loại, loại tự động/bán tự động",
+          "hs": "8515.31"
+        },
+        {
+          "ifVi": "máy hàn hồ quang loại khác (kể cả 8515.39.10 AC transformer type)",
+          "hs": "8515.39"
+        },
+        {
+          "ifVi": "máy cắt plasma thuần (không có chức năng hàn hồ quang chính) — xem MT-034",
+          "hs": null,
+          "hsOptions": [
+            "8456.90",
+            "8515.80"
+          ]
+        },
+        {
+          "ifVi": "máy hàn laser / electron beam / ultrasonic",
+          "hs": null,
+          "hsOptions": [
+            "8515",
+            "8456"
+          ],
+          "hsNoteVi": "8515 (phân nhóm khác) / 8456"
+        },
+        {
+          "ifVi": "máy hàn điện trở (resistance welding)",
+          "hs": null,
+          "hsOptions": [
+            "8515.21",
+            "8515.29"
+          ]
+        },
+        {
+          "ifVi": "máy hàn hồ quang có chức năng cắt plasma phụ — vẫn 8515 nếu essential character là hàn",
+          "hs": "8515"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Welding Machine / Inverter Welder / Welding & Cutting Machine / Multi-function Welder'; DN nhầm với máy cắt plasma/laser hoặc khai 8515.80 khi máy có inverter hoặc chức năng phụ",
+      "deliberateVi": null,
+      "girRule": "GIR 1",
+      "legalBasisVi": "Chú giải 8515 (arc welding, including plasma arc, whether or not capable of cutting); AHTN 8515.31 / 8515.39",
+      "sourceRefs": [],
+      "warningVi": "Khai 8456.90 hoặc 8515.80 cho máy hàn hồ quang chính → rủi ro ấn định 8515.31/39 + truy thu; cần xem rõ chức năng chính trên catalogue và thực tế sử dụng",
+      "relatedIds": [
+        "MT-016",
+        "MT-029",
+        "MT-034",
+        "MT-044"
+      ],
+      "examples": [
+        "ESAB Rebel / Warrior",
+        "Lincoln Powertec / Invertec",
+        "Fronius TransSteel",
+        "Jasic ARC / MIG",
+        "Riland"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-041",
+      "origin": "grok-mt",
+      "group": "cam-bien-do-luong",
+      "nameVi": "Cảm biến nhiệt độ (Thermocouple / RTD / PT100)",
+      "nameEn": "Temperature Sensor / Thermocouple / RTD / PT100 / Thermistor / Temperature Probe",
+      "aliases": [
+        "cảm biến nhiệt độ",
+        "cảm biến nhiệt",
+        "đầu dò nhiệt độ",
+        "cặp nhiệt điện",
+        "can nhiệt",
+        "nhiệt điện trở",
+        "pt100",
+        "pt1000",
+        "thermocouple",
+        "temperature sensor",
+        "temperature probe",
+        "thermistor",
+        "ntc thermistor",
+        "ptc thermistor",
+        "type k thermocouple",
+        "temperature transmitter"
+      ],
+      "chapters": [
+        "85",
+        "90"
+      ],
+      "correctHs": [
+        "9025.19",
+        "9031.80"
+      ],
+      "declaredHs": [
+        "9032.89",
+        "8541.40",
+        "8543.70",
+        "9031.80"
+      ],
+      "essenceTestVi": "Cảm biến chỉ đo nhiệt độ và xuất tín hiệu (9025.19) hay thiết bị tự động điều khiển biến số – PID có feedback loop (9032.89)?",
+      "rules": [
+        {
+          "ifVi": "cảm biến nhiệt độ thuần túy (thermocouple / RTD / thermistor) chỉ đo và xuất tín hiệu",
+          "hs": "9025.19"
+        },
+        {
+          "ifVi": "thiết bị đo/kiểm tra có chức năng measuring chuyên dụng, không thuộc 9025 cụ thể",
+          "hs": "9031.80"
+        },
+        {
+          "ifVi": "bộ điều khiển nhiệt độ tự động (PID controller có feedback loop) — xem MT-023",
+          "hs": "9032.89"
+        },
+        {
+          "ifVi": "phần tử bán dẫn trần (bare thermistor / semiconductor transducer không có chức năng đo hoàn chỉnh)",
+          "hs": "8541"
+        },
+        {
+          "ifVi": "cảm biến kèm transmitter gắn liền (4-20mA) — vẫn ưu tiên 9025/9031 nếu essential character là đo",
+          "hs": null,
+          "hsOptions": [
+            "9025",
+            "9031"
+          ]
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Temperature Sensor / Transmitter / Probe / Sensor for Control System / Smart Temperature Sensor'; DN nhầm với bộ điều khiển PID hoặc linh kiện điện tử khi cảm biến có electronics tích hợp",
+      "deliberateVi": null,
+      "girRule": "GIR 1 + Note 1(m) Section XVI",
+      "legalBasisVi": "Chú giải 9025; Note 2 Chapter 90; Note 1(m) Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 9032 hoặc 8541/8543 cho cảm biến đo thuần → rủi ro ấn định 9025.19/9031.80 + truy thu; cần xem rõ catalogue và datasheet chức năng chính",
+      "relatedIds": [
+        "MT-023",
+        "MT-007",
+        "MT-039",
+        "MT-047"
+      ],
+      "examples": [
+        "Omega Type K probe",
+        "Siemens SITRANS TS",
+        "Endress+Hauser iTHERM",
+        "Omron E52"
+      ],
+      "oldTariff": true,
+      "oldTariffCodes": [
+        "8541.40"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-042",
+      "origin": "grok-mt",
+      "group": "bom-van-may-nen",
+      "nameVi": "Van điện từ",
+      "nameEn": "Solenoid Valve / Electromagnetic Valve / Pneumatic Solenoid Valve / Directional Control Valve",
+      "aliases": [
+        "van điện từ",
+        "van solenoid",
+        "van điện từ khí nén",
+        "van điện từ thủy lực",
+        "van đảo chiều điện từ",
+        "van điều khiển hướng",
+        "van điện từ 5/2",
+        "van điện từ 3/2",
+        "solenoid valve",
+        "electromagnetic valve",
+        "pneumatic solenoid valve",
+        "directional control valve",
+        "magnetic valve",
+        "electro-pneumatic valve",
+        "coil valve",
+        "proportional solenoid valve"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8481.20",
+        "8481.80",
+        "8481.20.90",
+        "8481.80.99"
+      ],
+      "declaredHs": [
+        "8536.50",
+        "8537.10",
+        "8505"
+      ],
+      "essenceTestVi": "Van hoàn chỉnh có thân van điều khiển dòng chất lưu khí nén/thủy lực (8481) hay chỉ thiết bị điện đóng ngắt mạch / cuộn solenoid rời (8536.50 / 8505)?",
+      "rules": [
+        {
+          "ifVi": "van điện từ hoàn chỉnh dùng điều khiển dòng chảy khí/lỏng cho truyền động khí nén/thủy lực",
+          "hs": "8481.20"
+        },
+        {
+          "ifVi": "van điện từ hoàn chỉnh loại khác",
+          "hs": "8481.80"
+        },
+        {
+          "ifVi": "chỉ cuộn coil / solenoid riêng lẻ",
+          "hs": "8505"
+        },
+        {
+          "ifVi": "thiết bị đóng ngắt mạch điện thuần (không có van chất lưu)",
+          "hs": "8536.50"
+        },
+        {
+          "ifVi": "van điều khiển nhiệt (thermostatically controlled) hoặc van tỷ lệ (proportional solenoid valve)",
+          "hs": "8481"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Solenoid Valve / Electromagnetic Valve / Coil Valve / Solenoid Switch Valve / Electromagnetic Control Valve'; DN tập trung vào phần coil điện nên nhầm với thiết bị đóng ngắt điện hoặc nam châm điện",
+      "deliberateVi": null,
+      "girRule": "GIR 1",
+      "legalBasisVi": "Chú giải 8481 (van điều khiển bằng điện từ dùng cho đường ống/truyền động); Note Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8536.50 hoặc 8505 cho van solenoid hoàn chỉnh → rủi ro ấn định 8481.20/80 + truy thu; cần xem rõ catalogue và chức năng chính là điều khiển dòng chảy",
+      "relatedIds": [
+        "MT-037",
+        "MT-038",
+        "MT-020",
+        "MT-049"
+      ],
+      "examples": [
+        "SMC SY/VQ",
+        "Festo VUVG",
+        "Parker Lucifer",
+        "Airtac 4V210"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-043",
+      "origin": "grok-mt",
+      "group": "dien-cong-tac-nguon",
+      "nameVi": "Bộ lọc nhiễu EMI/EMC",
+      "nameEn": "EMI Filter / EMC Filter / Noise Filter / Power Line Filter / Common Mode Choke",
+      "aliases": [
+        "bộ lọc nhiễu",
+        "bộ lọc nhiễu emi",
+        "bộ lọc emc",
+        "bộ lọc nguồn",
+        "lọc nhiễu nguồn",
+        "cuộn lọc nhiễu",
+        "emi filter",
+        "emc filter",
+        "emi emc filter",
+        "noise filter",
+        "power line filter",
+        "line filter",
+        "common mode choke",
+        "noise suppression filter"
+      ],
+      "chapters": [
+        "85"
+      ],
+      "correctHs": [
+        "8504.50",
+        "8504.40",
+        "8504.90"
+      ],
+      "declaredHs": [
+        "8543.70",
+        "8536.30",
+        "8504.90"
+      ],
+      "essenceTestVi": "Cấu tạo chính là cuộn cảm/choke + tụ lọc nhiễu nguồn (8504.50/90) hay thiết bị điện có chức năng riêng phức tạp không thuộc 8504 (8543.70) / thiết bị bảo vệ mạch (8536.30)?",
+      "rules": [
+        {
+          "ifVi": "bộ lọc EMI chủ yếu là inductor / common-mode choke hoặc tổ hợp inductor-capacitor dùng lọc nhiễu nguồn",
+          "hs": null,
+          "hsOptions": [
+            "8504.50",
+            "8504.90"
+          ]
+        },
+        {
+          "ifVi": "thiết bị lọc có chức năng riêng phức tạp, không thuộc 8504 cụ thể",
+          "hs": "8543.70"
+        },
+        {
+          "ifVi": "thiết bị bảo vệ mạch (surge / overcurrent)",
+          "hs": "8536.30"
+        },
+        {
+          "ifVi": "phần của static converter / SMPS",
+          "hs": "8504.90"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'EMI Filter / EMC Filter / Noise Suppression Filter / Active EMI Filter'; DN coi là apparatus có individual function lọc nhiễu (8543) hoặc thiết bị bảo vệ mạch (8536.30)",
+      "deliberateVi": null,
+      "girRule": "GIR 1",
+      "legalBasisVi": "Chú giải 8504 (inductors, static converters); Chú giải 8543 (residual heading)",
+      "sourceRefs": [],
+      "warningVi": "Khai 8543.70 cho bộ lọc EMI tiêu chuẩn → rủi ro ấn định 8504.50/90 + truy thu; cần xem datasheet cấu tạo (choke + X/Y capacitors)",
+      "relatedIds": [
+        "MT-022",
+        "MT-020",
+        "MT-037",
+        "MT-038",
+        "MT-012"
+      ],
+      "examples": [
+        "Schaffner FN",
+        "TDK B841xx",
+        "EPCOS B84113",
+        "Cosel NAC / NAP"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-044",
+      "origin": "grok-mt",
+      "group": "may-cong-cu",
+      "nameVi": "Máy cắt dây EDM",
+      "nameEn": "Wire Cut EDM / Wire Electrical Discharge Machine / CNC Wire EDM / Molybdenum Wire Cutting Machine",
+      "aliases": [
+        "máy cắt dây edm",
+        "máy cắt dây",
+        "máy cắt dây cnc",
+        "máy cắt dây molipden",
+        "máy cắt dây đồng",
+        "máy gia công tia lửa điện",
+        "máy edm",
+        "máy xung điện",
+        "wire cut edm",
+        "wire edm",
+        "wire cut machine",
+        "wire cutting machine",
+        "wire electrical discharge machine",
+        "cnc wire edm",
+        "edm machine",
+        "molybdenum wire cutting machine"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8456.30",
+        "8456.30.00"
+      ],
+      "declaredHs": [
+        "8479.89",
+        "8456.90",
+        "8515.80"
+      ],
+      "essenceTestVi": "Máy công cụ gia công bằng phóng điện electro-discharge (8456.30) hay máy có chức năng riêng / máy hàn-cắt khác (8479.89 / 8515)?",
+      "rules": [
+        {
+          "ifVi": "máy cắt dây EDM (wire electro-discharge) dùng gia công bằng phóng điện",
+          "hs": "8456.30"
+        },
+        {
+          "ifVi": "máy EDM sinker / die-sinking (không dùng dây)",
+          "hs": "8456.30"
+        },
+        {
+          "ifVi": "máy cắt laser / plasma / ultrasonic",
+          "hs": null,
+          "hsOptions": [
+            "8456.11",
+            "8456.90",
+            "8456.20"
+          ]
+        },
+        {
+          "ifVi": "máy hàn điện",
+          "hs": "8515"
+        },
+        {
+          "ifVi": "máy tháo rời (CKD) — phân loại theo máy hoàn chỉnh theo GIR 2(a)",
+          "hs": "8456.30"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Wire Cut Machine / EDM Machine / CNC Wire Cutting / Precision Cutting Machine'; DN coi là máy chức năng riêng (8479) hoặc máy hàn/cắt khác",
+      "deliberateVi": null,
+      "girRule": "GIR 1; hàng tháo rời CKD: GIR 2(a)",
+      "legalBasisVi": "Chú giải 8456 (electro-discharge processes); AHTN 8456.30",
+      "sourceRefs": [],
+      "warningVi": "Khai 8479.89 hoặc 8456.90 cho máy cắt dây EDM → rủi ro ấn định 8456.30 + truy thu; cần xem rõ nguyên lý hoạt động trên catalogue",
+      "relatedIds": [
+        "MT-016",
+        "MT-029",
+        "MT-034",
+        "MT-040"
+      ],
+      "examples": [
+        "Sodick AQ / AL",
+        "Mitsubishi MV / FA",
+        "Fanuc ROBOCUT",
+        "Makino U"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-045",
+      "origin": "grok-mt",
+      "group": "cam-bien-do-luong",
+      "nameVi": "Cảm biến độ rung / Accelerometer",
+      "nameEn": "Vibration Sensor / Accelerometer / Vibration Transducer",
+      "aliases": [
+        "cảm biến độ rung",
+        "cảm biến rung",
+        "cảm biến rung động",
+        "cảm biến gia tốc",
+        "gia tốc kế",
+        "vibration sensor",
+        "accelerometer",
+        "vibration transducer",
+        "piezoelectric accelerometer",
+        "mems accelerometer",
+        "iepe sensor",
+        "vibration probe"
+      ],
+      "chapters": [
+        "85",
+        "90"
+      ],
+      "correctHs": [
+        "9031.80"
+      ],
+      "declaredHs": [
+        "8541.40",
+        "8541.51",
+        "8543.70",
+        "9032.89"
+      ],
+      "essenceTestVi": "Cảm biến đo/kiểm tra rung hoàn chỉnh (9031.80) hay chỉ phần tử bán dẫn trần / thiết bị điện có chức năng riêng (8541 / 8543)?",
+      "rules": [
+        {
+          "ifVi": "cảm biến độ rung / accelerometer hoàn chỉnh dùng đo/kiểm tra rung động",
+          "hs": "9031.80"
+        },
+        {
+          "ifVi": "phần tử bán dẫn trần (bare MEMS die / semiconductor transducer không có chức năng đo hoàn chỉnh)",
+          "hs": "8541.51"
+        },
+        {
+          "ifVi": "thiết bị điều khiển tự động dựa trên rung (automatic regulating)",
+          "hs": "9032"
+        },
+        {
+          "ifVi": "thiết bị điện có chức năng riêng không thuộc measuring",
+          "hs": "8543.70"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'MEMS Accelerometer / Vibration Transducer / Piezo Sensor / Smart Vibration Sensor'; DN nhấn mạnh phần tử bán dẫn nên khai 8541, hoặc nhầm với thiết bị điều khiển",
+      "deliberateVi": null,
+      "girRule": "GIR 1 + Note 1(m) Section XVI",
+      "legalBasisVi": "Chú giải 9031 (apparatus for measuring or detecting vibrations); Note 1(m) Section XVI; Note 2 Chapter 90",
+      "sourceRefs": [],
+      "warningVi": "Khai 8541 hoặc 8543 cho cảm biến rung hoàn chỉnh → rủi ro ấn định 9031.80 + truy thu; cần xem rõ datasheet chức năng measuring",
+      "relatedIds": [
+        "MT-028",
+        "MT-031",
+        "MT-035",
+        "MT-036",
+        "MT-039",
+        "MT-050"
+      ],
+      "examples": [
+        "PCB 352C",
+        "SKF CMSS",
+        "IFM VSE / VSA",
+        "Siemens SIPLUS",
+        "Omron D7F"
+      ],
+      "oldTariff": true,
+      "oldTariffCodes": [
+        "8541.40"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-046",
+      "origin": "grok-mt",
+      "group": "cam-bien-do-luong",
+      "nameVi": "Cảm biến mức / Level Transmitter",
+      "nameEn": "Level Sensor / Level Transmitter / Level Gauge / Level Switch (Ultrasonic / Radar / Capacitive)",
+      "aliases": [
+        "cảm biến mức",
+        "cảm biến mức nước",
+        "cảm biến mức chất lỏng",
+        "cảm biến báo mức",
+        "công tắc mức",
+        "cảm biến mức radar",
+        "cảm biến mức điện dung",
+        "level sensor",
+        "level transmitter",
+        "level gauge",
+        "level switch",
+        "radar level sensor",
+        "radar level transmitter",
+        "guided wave radar",
+        "capacitive level sensor",
+        "ultrasonic level"
+      ],
+      "chapters": [
+        "85",
+        "90"
+      ],
+      "correctHs": [
+        "9026.10",
+        "9026.80",
+        "9031.80"
+      ],
+      "declaredHs": [
+        "9032.89",
+        "8536.50",
+        "8543.70",
+        "9031.80"
+      ],
+      "essenceTestVi": "Chỉ đo/kiểm tra mức và xuất tín hiệu (9026) hay tự động điều khiển duy trì mức (9032.89) / chỉ là công tắc mức on-off không đo giá trị (8536.50)?",
+      "rules": [
+        {
+          "ifVi": "cảm biến mức thuần túy chỉ đo/kiểm tra mức chất lỏng và xuất tín hiệu",
+          "hs": "9026.10"
+        },
+        {
+          "ifVi": "cảm biến mức thuần túy cho biến số khác",
+          "hs": "9026.80"
+        },
+        {
+          "ifVi": "thiết bị đo/kiểm tra có chức năng measuring chuyên dụng, không thuộc 9026 cụ thể",
+          "hs": "9031.80"
+        },
+        {
+          "ifVi": "bộ điều khiển mức tự động (có feedback loop duy trì mức mong muốn)",
+          "hs": "9032.89"
+        },
+        {
+          "ifVi": "chỉ là level switch đơn giản (on/off, không đo giá trị)",
+          "hs": "8536.50"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Level Switch / Level Controller / Smart Level Sensor / Transmitter for Control / IO-Link Level Sensor'; DN nhầm với thiết bị điều khiển tự động hoặc công tắc điện khi có electronics tích hợp hoặc relay output",
+      "deliberateVi": null,
+      "girRule": "GIR 1 + Note 1(m) Section XVI",
+      "legalBasisVi": "Chú giải 9026; Note 2 Chapter 90; Note 1(m) Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 9032 hoặc 8536.50 cho cảm biến đo mức thuần → rủi ro ấn định 9026.10/9031.80 + truy thu; cần xem datasheet chức năng chính (measuring vs switching vs controlling)",
+      "relatedIds": [
+        "MT-007",
+        "MT-009",
+        "MT-035",
+        "MT-023"
+      ],
+      "examples": [
+        "Endress+Hauser Micropilot",
+        "Siemens SITRANS LR",
+        "VEGA VEGAPULS",
+        "IFM LR",
+        "Sick UM30"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-047",
+      "origin": "grok-mt",
+      "group": "cam-bien-do-luong",
+      "nameVi": "Cảm biến khí / Gas Detector",
+      "nameEn": "Gas Sensor / Gas Detector / Toxic Gas Sensor / Combustible Gas Sensor / Gas Analyser Module",
+      "aliases": [
+        "cảm biến khí",
+        "cảm biến khí gas",
+        "đầu dò khí",
+        "máy dò khí",
+        "thiết bị phát hiện khí",
+        "cảm biến khí độc",
+        "cảm biến khí cháy",
+        "cảm biến co2",
+        "gas sensor",
+        "gas detector",
+        "gas detector module",
+        "toxic gas sensor",
+        "combustible gas sensor",
+        "gas analyser",
+        "gas analyzer",
+        "mos gas sensor",
+        "electrochemical gas sensor"
+      ],
+      "chapters": [
+        "85",
+        "90"
+      ],
+      "correctHs": [
+        "9027.10",
+        "9031.80"
+      ],
+      "declaredHs": [
+        "9031.80",
+        "8541.40",
+        "8543.70",
+        "9032.89"
+      ],
+      "essenceTestVi": "Thiết bị phân tích/phát hiện khí hoặc khói (9027.10) hay dụng cụ đo chung (9031.80) / phần tử bán dẫn trần không có chức năng phân tích hoàn chỉnh (8541)?",
+      "rules": [
+        {
+          "ifVi": "thiết bị phân tích/phát hiện khí hoặc khói (gas or smoke analysis apparatus), kể cả portable multi-gas detector",
+          "hs": "9027.10"
+        },
+        {
+          "ifVi": "cảm biến đo/kiểm tra có chức năng measuring chuyên dụng, không thuộc 9027 cụ thể",
+          "hs": "9031.80"
+        },
+        {
+          "ifVi": "bộ điều khiển tự động dựa trên nồng độ khí (có feedback loop)",
+          "hs": "9032.89"
+        },
+        {
+          "ifVi": "phần tử bán dẫn trần (bare MOS / electrochemical cell không có chức năng phân tích hoàn chỉnh)",
+          "hs": "8541"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Semiconductor Gas Sensor / MOS Gas Sensor Module / Smart Gas Sensor / IoT Gas Detector Module'; DN khai 8541 khi chỉ là sensing element hoặc 9031 khi coi là measuring chung",
+      "deliberateVi": null,
+      "girRule": "GIR 1 + Note 1(m) Section XVI",
+      "legalBasisVi": "Chú giải 9027 (gas or smoke analysis apparatus); Note 2 Chapter 90; Note 1(m) Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8541/8543 hoặc 9031 cho gas analysis apparatus → rủi ro ấn định 9027.10 + truy thu; cần xem datasheet (gas-specific analysis vs general measuring)",
+      "relatedIds": [
+        "MT-041",
+        "MT-007",
+        "MT-045"
+      ],
+      "examples": [
+        "Honeywell Sensepoint",
+        "Dräger Polytron",
+        "Figaro TGS",
+        "Sensirion SCD",
+        "City Technology 4-series"
+      ],
+      "oldTariff": true,
+      "oldTariffCodes": [
+        "8541.40"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-048",
+      "origin": "grok-mt",
+      "group": "dien-cong-tac-nguon",
+      "nameVi": "Bộ biến tần năng lượng mặt trời (Solar / PV Inverter)",
+      "nameEn": "Solar Inverter / PV Inverter / Photovoltaic Inverter / Grid-tie Inverter / Hybrid Inverter / String Inverter",
+      "aliases": [
+        "bộ biến tần năng lượng mặt trời",
+        "biến tần năng lượng mặt trời",
+        "inverter năng lượng mặt trời",
+        "inverter điện mặt trời",
+        "biến tần hòa lưới",
+        "inverter hòa lưới",
+        "inverter hybrid",
+        "biến tần pv",
+        "solar inverter",
+        "pv inverter",
+        "photovoltaic inverter",
+        "grid-tie inverter",
+        "grid tie inverter",
+        "hybrid inverter",
+        "string inverter",
+        "microinverter",
+        "off-grid inverter"
+      ],
+      "chapters": [
+        "85"
+      ],
+      "correctHs": [
+        "8504.40",
+        "8504.40.90"
+      ],
+      "declaredHs": [
+        "8537.10",
+        "8501",
+        "8504.40.90"
+      ],
+      "essenceTestVi": "Chức năng chính là biến đổi tĩnh DC→AC (static converter – 8504.40) hay board/panel điều khiển-phân phối điện lắp ≥2 thiết bị 8535/8536 (8537.10)?",
+      "rules": [
+        {
+          "ifVi": "bộ biến tần PV standalone (chuyển DC-AC, có hoặc không MPPT)",
+          "hs": "8504.40"
+        },
+        {
+          "ifVi": "tủ/board điều khiển điện được lắp nhiều thiết bị 8535/8536 (không phải converter chính)",
+          "hs": "8537.10"
+        },
+        {
+          "ifVi": "máy phát điện hoặc motor (không áp dụng cho inverter)",
+          "hs": "8501"
+        },
+        {
+          "ifVi": "hệ thống composite (inverter + battery + controller nhập chung) — Note 3/4 Section XVI theo essential character (thường vẫn 8504 nếu inverter là chính)",
+          "hs": "8504"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Solar Inverter / PV Controller / Hybrid System Controller / Smart Hybrid Inverter with EMS / PV System Controller'; DN nhầm với tủ điều khiển (khi có monitoring board tích hợp) hoặc máy phát",
+      "deliberateVi": null,
+      "girRule": "GIR 1 + Note 3/4 Section XVI",
+      "legalBasisVi": "Chú giải 8504 (static converters); Note 1(m), Note 3/4/5 Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 8537.10 cho PV inverter standalone → rủi ro ấn định 8504.40 + truy thu; cần xem datasheet (power conversion vs pure control); phân biệt với VFD (MT-012) và Soft Starter (MT-020)",
+      "relatedIds": [
+        "MT-012",
+        "MT-017",
+        "MT-020",
+        "MT-022"
+      ],
+      "examples": [
+        "Huawei SUN2000",
+        "Sungrow SG",
+        "SMA Sunny Boy",
+        "Growatt MIN",
+        "GoodWe GW"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-049",
+      "origin": "grok-mt",
+      "group": "bom-van-may-nen",
+      "nameVi": "Xi lanh khí nén",
+      "nameEn": "Pneumatic Cylinder / Air Cylinder / Pneumatic Actuator / Linear Pneumatic Actuator / Rotary Pneumatic Actuator",
+      "aliases": [
+        "xi lanh khí nén",
+        "xy lanh khí nén",
+        "xilanh khí nén",
+        "xi lanh khí",
+        "xi lanh xoay khí nén",
+        "xi lanh compact",
+        "xi lanh không trục",
+        "pneumatic cylinder",
+        "air cylinder",
+        "pneumatic actuator",
+        "linear pneumatic actuator",
+        "rotary pneumatic actuator",
+        "rodless cylinder",
+        "compact cylinder",
+        "guided cylinder"
+      ],
+      "chapters": [
+        "84",
+        "85"
+      ],
+      "correctHs": [
+        "8412.31",
+        "8412.39"
+      ],
+      "declaredHs": [
+        "8481.20",
+        "8481.80",
+        "8479.89",
+        "8501"
+      ],
+      "essenceTestVi": "Hàng tạo chuyển động từ khí nén (pneumatic power engine/motor – 8412) hay điều khiển dòng chảy (van – 8481)? Khí nén hay điện? Linear hay rotary?",
+      "rules": [
+        {
+          "ifVi": "xi lanh khí nén tạo chuyển động tuyến tính (linear acting pneumatic power engine/motor)",
+          "hs": "8412.31"
+        },
+        {
+          "ifVi": "rotary pneumatic actuator",
+          "hs": "8412.39"
+        },
+        {
+          "ifVi": "van điều khiển khí nén (solenoid valve, directional valve) — xem MT-042",
+          "hs": "8481"
+        },
+        {
+          "ifVi": "máy có chức năng riêng biệt (không phải engine/motor thuần)",
+          "hs": "8479.89"
+        },
+        {
+          "ifVi": "actuator điện (electric cylinder) — xem MT-025",
+          "hs": null,
+          "hsOptions": [
+            "8501",
+            "8479"
+          ]
+        },
+        {
+          "ifVi": "xi lanh kèm van tích hợp (valve island) — theo essential character hoặc Note 3 Section XVI",
+          "hs": null
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Pneumatic Actuator / Cylinder Actuator / Pneumatic Valve Actuator / Rotary Pneumatic Actuator for Ball Valve'; DN nhầm với van điều khiển (khai 8481 khi xi lanh dùng để điều khiển van) hoặc máy có chức năng riêng / động cơ điện",
+      "deliberateVi": null,
+      "girRule": "GIR 1",
+      "legalBasisVi": "Chú giải 8412 (pneumatic power engines and motors, linear acting); Note 1(m) Section XVI; Note 3 Section XVI (valve island)",
+      "sourceRefs": [],
+      "warningVi": "Khai 8481 hoặc 8479 cho xi lanh khí nén thuần → rủi ro ấn định 8412.31/8412.39 + truy thu; cần xem rõ datasheet (power conversion from compressed air to linear motion)",
+      "relatedIds": [
+        "MT-042",
+        "MT-025",
+        "MT-038",
+        "MT-036"
+      ],
+      "examples": [
+        "SMC CQ2/CP96",
+        "Festo DSNU/DSBC",
+        "Airtac SC/SA",
+        "Parker P1D"
+      ],
+      "verified": false
+    },
+    {
+      "id": "MT-050",
+      "origin": "grok-mt",
+      "group": "cam-bien-do-luong",
+      "nameVi": "Cảm biến mô-men xoắn",
+      "nameEn": "Torque Sensor / Torque Transducer / Torque Meter / Rotary Torque Sensor / Reaction Torque Sensor",
+      "aliases": [
+        "cảm biến mô-men xoắn",
+        "cảm biến mô men xoắn",
+        "cảm biến momen xoắn",
+        "cảm biến lực xoắn",
+        "đầu đo mô-men xoắn",
+        "torque sensor",
+        "torque transducer",
+        "torque meter",
+        "rotary torque sensor",
+        "reaction torque sensor",
+        "in-line torque sensor",
+        "flange torque sensor"
+      ],
+      "chapters": [
+        "84",
+        "85",
+        "90"
+      ],
+      "correctHs": [
+        "9031.80",
+        "9031.49"
+      ],
+      "declaredHs": [
+        "9029.20",
+        "8543.70",
+        "9031.80",
+        "8423"
+      ],
+      "essenceTestVi": "Đo mô-men lực xoắn (dụng cụ đo – 9031.80) hay đếm vòng quay/chỉ tốc độ (9029.20) / cân – load cell đo lực thẳng (8423)?",
+      "rules": [
+        {
+          "ifVi": "cảm biến/transducer đo mô-men xoắn (torque measuring instrument)",
+          "hs": "9031.80"
+        },
+        {
+          "ifVi": "optical torque sensor",
+          "hs": "9031.49"
+        },
+        {
+          "ifVi": "bộ đếm vòng quay / speed indicator thuần túy — xem MT-008",
+          "hs": "9029.20"
+        },
+        {
+          "ifVi": "cân / load cell đo lực thẳng — xem MT-006",
+          "hs": null,
+          "hsOptions": [
+            "8423",
+            "9031.80"
+          ]
+        },
+        {
+          "ifVi": "phần tử bán dẫn/transducer trần không có chức năng đo hoàn chỉnh",
+          "hs": null,
+          "hsOptions": [
+            "8541",
+            "8543"
+          ]
+        },
+        {
+          "ifVi": "torque sensor kèm speed measurement — vẫn ưu tiên 9031 nếu essential character là đo torque",
+          "hs": "9031.80"
+        }
+      ],
+      "whyMisdeclaredVi": "Catalogue ghi 'Torque Meter with Speed Output / Rotary Torque Transducer / Smart Torque Sensor with CAN / EtherCAT'; DN khai 9029 khi có tín hiệu tốc độ kèm theo, 8543 khi có electronics phức tạp, hoặc nhầm với cân",
+      "deliberateVi": null,
+      "girRule": "GIR 1 + Note 1(m) Section XVI",
+      "legalBasisVi": "Chú giải 9031 (force/torque measuring); Note 2 Chapter 90; Note 1(m) Section XVI",
+      "sourceRefs": [],
+      "warningVi": "Khai 9029 hoặc 8543 cho torque measuring → rủi ro ấn định 9031.80 + truy thu; cần xem datasheet (torque measurement vs revolution counting)",
+      "relatedIds": [
+        "MT-006",
+        "MT-008",
+        "MT-045"
+      ],
+      "examples": [
+        "HBM T40/T12",
+        "Futek TRA",
+        "Interface T1",
+        "Kistler 4503",
+        "Magtrol TM"
+      ],
+      "verified": false
+    }
+  ]
+}

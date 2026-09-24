@@ -45,6 +45,7 @@ openssl rand -hex 32
 | `/api/notes?chapter=` | GET | Yes | Chapter notes |
 | `/api/conflicts?hs=` | GET | Yes | HS conflict/risk details |
 | `/api/precedents?hs=` | GET | Yes | TB-TCHQ precedent list by HS |
+| `/api/confusion-pairs?q=\|hs=\|id=` | GET | Yes | Từ điển mâu thuẫn HS: mặt hàng DN hay khai mã A, HQ hay ấn định mã B + tiêu chí phân biệt (rewrite → `/api/dataset?resource=confusion_pairs`); `/api/suggest` và `/api/search` trả `confusionAlerts[]` |
 | `/api/suggest` | POST | Yes | AI HS suggestions (Gemini) |
 | `/api/describe` | POST | Yes | AI customs description (Gemini) — auto-fit 200 ký tự ECUS, xuất xứ + tình trạng luôn ở cuối; trả `descriptionMeta {length, truncated, dropped, fullText}`. Khi LLM lỗi: **không fail-silent** — trả `degraded:true` + `llmError {code,message,retryable}` + warning `DESCRIPTION_DEGRADED` (mô tả là fallback context thô) |
 | `/api/feedback` | POST | Yes | Capture director override feedback |
