@@ -31,7 +31,7 @@ const prefixes = new Set();
 for (const k of Object.keys(taxData)) if (/^\d{8}$/.test(k)) { prefixes.add(k.slice(0, 4)); prefixes.add(k.slice(0, 6)); prefixes.add(k); }
 
 console.log('\n== Cấu trúc ==');
-check('có ≥ 50 mục', doc.entries.length >= 50, String(doc.entries.length));
+check('có ≥ 200 mục', doc.entries.length >= 200, String(doc.entries.length));
 const ids = doc.entries.map((e) => e.id);
 check('id duy nhất', new Set(ids).size === ids.length);
 const missing = doc.entries.filter((e) => !e.nameVi || !e.aliases?.length || (!e.correctHs?.length && !e.legalBasisVi));
@@ -93,6 +93,10 @@ check('cảnh báo mang tiêu chí phân biệt + mã hai phía', high[0] && hig
 const info = cp.confusionAlertsFor('thiết bị không tên', ['84798939']);
 check('chỉ trùng mã DN hay khai (không khớp tên) → INFO, ≤ 3', info.every((a) => a.severity === 'INFO') && info.length <= 3, JSON.stringify(info.map((a) => a.id)));
 check('không cảnh báo khi không khớp gì', cp.confusionAlertsFor('cà phê rang xay', ['09012120']).length === 0);
+const dup = cp.confusionAlertsFor('robot hút bụi Xiaomi', ['85081100']);
+check('mục MT và mục nhóm ngành cùng mặt hàng gộp thành một cảnh báo (alsoIds)', dup.filter((a) => a.matchedBy === 'text').length === 1 && (dup[0].alsoIds || []).length >= 1, JSON.stringify(dup.map((a) => [a.id, a.alsoIds])));
+const review = doc.entries.filter((e) => e.needsReview);
+check('mục nguồn ghi đáng ngờ có needsReview + reviewNoteVi', review.length >= 5 && review.every((e) => e.reviewNoteVi), review.map((e) => e.id).join(' '));
 
 console.log('\n== GIR ==');
 const sample = cp.getEntry('MT-049');

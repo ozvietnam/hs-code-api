@@ -44,6 +44,18 @@ function normCode(code) {
   return { dotted, digits, alive: prefixes.has(digits) };
 }
 
+// Ghi chú rà soát cho các mục nguồn ghi đáng ngờ — giữ nguyên dữ liệu nguồn, chỉ gắn cờ.
+const REVIEW_NOTES = {
+  'IN-01': 'Nguồn gán 8443.11 = offset sheet-fed; biểu thuế hiện hành 8443.11 là offset in cuộn (reel-fed), 8443.12 là sheet-fed văn phòng (khổ ≤ 22×36 cm), 8443.13 là offset khác. Cần sửa mã trước khi duyệt.',
+  'IN-02': 'Nguồn gán 8443.12 = offset web-fed; biểu thuế hiện hành 8443.11 mới là reel-fed. Cần sửa mã trước khi duyệt.',
+  'IN-11': 'Nguồn gán 8443.13 = in ống đồng (gravure); biểu thuế hiện hành gravure là 8443.17. Cần sửa mã trước khi duyệt.',
+  'BV-12': 'Mã 8481 vừa ở mã đúng vừa ở mã hay nhầm (nguồn: actuator đi kèm van thì theo van). Cần CEO chốt điều kiện.',
+  'RB-12': 'Mã 8709 vừa ở mã đúng vừa ở mã hay nhầm (nguồn: tuỳ phần di chuyển hay cánh tay là chính). Cần CEO chốt điều kiện.',
+  'TN-11': 'Mã 8516.50 vừa ở mã đúng vừa ở mã hay nhầm (lò vi sóng gia dụng vs công nghiệp). Cần CEO chốt ngưỡng.',
+  'DG-17': 'Mã 8423 vừa ở mã đúng vừa ở mã hay nhầm (cân + đóng gói: Note 4 Section XVI hay GIR 3(b)). Cần CEO chốt.',
+  'RB-04': 'Mã 8421.21.22 theo CV 9381/CHQ-NVTHQ 2025 — đối chiếu lá hiện hành trước khi duyệt.',
+};
+
 const byId = new Map();
 const problems = [];
 let dropped = 0;
@@ -105,6 +117,7 @@ for (const file of inputs) {
       relatedIds: (raw.relatedIds || []).map((x) => String(x).toUpperCase()),
       examples: raw.examples || [],
       ...(deadCodes.length ? { oldTariff: true, oldTariffCodes: [...new Set(deadCodes)] } : {}),
+      ...(REVIEW_NOTES[id] ? { needsReview: true, reviewNoteVi: REVIEW_NOTES[id] } : {}),
       verified: Boolean(raw.verified),
     };
     byId.set(id, entry);
