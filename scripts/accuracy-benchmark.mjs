@@ -18,6 +18,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -53,17 +54,34 @@ function mulberry32(a) {
   };
 }
 
-// Load declarations
-const declPath = join(ROOT, 'data', 'oz-declarations.jsonl');
-if (!existsSync(declPath)) {
-  console.error('Missing data/oz-declarations.jsonl — run import first');
-  process.exit(1);
-}
+// Nguồn mẫu chấm:
+//   --source=gold-holdout (mặc định): TẬP GIỮ RIÊNG của data/oz-gold-final.jsonl
+//     — đã commit nên ai cũng chạy lại được; kho tiền lệ bỏ tập này khi chấm
+//     (HS_EVAL_EXCLUDE_HOLDOUT=1) nên không có chuyện mẫu tự tìm thấy đáp án.
+//   --source=declarations: data/oz-declarations.jsonl (riêng tư, gitignored) —
+//     CẢNH BÁO: mẫu có thể trùng kho tiền lệ → điểm bị thổi phồng.
+const sourceArg = args.find((a) => a.startsWith('--source='));
+const source = sourceArg ? sourceArg.split('=')[1] : 'gold-holdout';
+process.env.HS_EVAL_EXCLUDE_HOLDOUT = '1';
 
-const lines = readFileSync(declPath, 'utf8').split('\n').filter(Boolean);
-const declarations = lines.map((l) => {
-  try { return JSON.parse(l); } catch { return null; }
-}).filter(Boolean);
+let declarations;
+if (source === 'declarations') {
+  const declPath = join(ROOT, 'data', 'oz-declarations.jsonl');
+  if (!existsSync(declPath)) {
+    console.error('Missing data/oz-declarations.jsonl — run import first, hoặc dùng --source=gold-holdout');
+    process.exit(1);
+  }
+  console.warn('⚠ --source=declarations: mẫu có thể trùng kho tiền lệ oz-gold → điểm có thể bị thổi phồng.');
+  declarations = readFileSync(declPath, 'utf8').split('\n').filter(Boolean).map((l) => {
+    try { return JSON.parse(l); } catch { return null; }
+  }).filter(Boolean);
+} else {
+  const { isHeldOut } = createRequire(import.meta.url)('../lib/holdout.js');
+  declarations = readFileSync(join(ROOT, 'data', 'oz-gold-final.jsonl'), 'utf8').split('\n').filter(Boolean)
+    .map((l) => { try { return JSON.parse(l); } catch { return null; } })
+    .filter((g) => g && isHeldOut(g))
+    .map((g) => ({ hsCode: g.hsCode, productName: g.sampleDesc || g.tenHang }));
+}
 
 console.log(`Loaded ${declarations.length} declarations`);
 
@@ -83,6 +101,14 @@ console.log(`Chapters: ${byChapter.size}`);
 
 // Stratified sampling
 const rng = mulberry32(seed);
+// Fisher–Yates — sort(() => rng() - 0.5) cho phân phối lệch.
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
 const sampleSize = Math.min(limit, declarations.length);
 
 const allocation = [...byChapter.entries()].map(([ch, items]) => ({
@@ -106,10 +132,10 @@ if (diff !== 0) {
 
 const sampled = [];
 for (const alloc of allocation) {
-  const shuffled = [...byChapter.get(alloc.chapter)].sort(() => rng() - 0.5);
+  const shuffled = shuffle([...byChapter.get(alloc.chapter)]);
   sampled.push(...shuffled.slice(0, alloc.allocated));
 }
-sampled.sort(() => rng() - 0.5);
+shuffle(sampled);
 
 console.log(`Sampling: ${sampled.length} records from ${allocation.length} chapters`);
 
@@ -157,7 +183,9 @@ if (!searchOnly) {
   }
 }
 
-const SYSTEM_PROMPT = `Bạn là chuyên gia phân loại hàng hóa hải quan Việt Nam.
+// Dùng ĐÚNG prompt production (data/prompts active) — benchmark phải đo cái đang chạy.
+const { getPrompt } = createRequire(import.meta.url)('../lib/prompt-version.js');
+const LEGACY_PROMPT = `Bạn là chuyên gia phân loại hàng hóa hải quan Việt Nam.
 Cho mô tả hàng hóa và danh sách mã HS candidate, hãy chọn tối đa 3 mã phù hợp nhất.
 Chỉ trả JSON đúng schema:
 {
@@ -166,6 +194,8 @@ Chỉ trả JSON đúng schema:
   ]
 }
 Không thêm text ngoài JSON.`;
+const { promptText: SYSTEM_PROMPT, promptVersion } = getPrompt(LEGACY_PROMPT);
+console.log(`Prompt: ${promptVersion}`);
 
 async function retryGemini(fn, maxRetries = 3) {
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
