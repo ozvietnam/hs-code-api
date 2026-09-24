@@ -111,7 +111,8 @@ chắc, chỗ nào cần tự xác minh trước khi ký tờ khai.
 - `missingFacts[]`: hỏi người dùng đúng các câu `questionVi`, rồi gọi lại
   `/api/suggest` với cùng `description` + `facts: { <attribute>: <giá trị> }`.
 - `cached: true`: kết quả từ cache, `ms` ~0
-- `productExamples[]`: chỉ có cho mã "Loại khác" — dùng để user nhận biết đúng nhóm hàng
+- `productExamples[]`: chỉ có cho mã "Loại khác" — tên hàng THẬT từ tờ khai (có thể rỗng).
+  `productExamplesGenerated[]`: câu máy sinh, chưa kiểm chứng — hiển thị kèm nhãn "ví dụ tham khảo"
 - `learnedPenalty`: có nghĩa là AI từng gợi sai mã này, đã trừ điểm tự động
 
 ---

@@ -11,7 +11,7 @@ const { applyHistoricalSignals } = require('../lib/suggest-confidence');
 const { appendSuggestLog } = require('../lib/ml-log');
 // B4: shared knowledge layer — cùng conflicts/explanatory-notes với /api/classify
 const { getNoteSummaryForHs } = require('../lib/explanatory-notes-index');
-const { getProducts, isLoaiKhac } = require('../lib/loai-khac-products');
+const { getProducts, getGeneratedProducts, isLoaiKhac } = require('../lib/loai-khac-products');
 const { captureError } = require('../lib/error-monitor');
 // Nguồn chân lý duy nhất cho trích dẫn GIR — mọi nhãn phải có căn cứ + bằng chứng.
 const { determineGir, DISCLAIMER_VI } = require('../lib/gir');
@@ -25,6 +25,20 @@ const { getPrompt } = require('../lib/prompt-version');
 const { buildSuggestStatus } = require('../lib/suggest-status');
 const { conflictsData, taxData } = require('../lib/data');
 const { sanitizeLlmSuggestions, deterministicSuggestions } = require('../lib/llm-output-guard');
+
+/**
+ * productExamples = tên hàng THẬT từ tờ khai; productExamplesGenerated = câu máy
+ * sinh, chưa kiểm chứng (chỉ gửi khi không có hàng thật).
+ */
+function withExamples(s, limit) {
+  const real = getProducts(s.hsCode, limit);
+  const generated = real.length ? [] : getGeneratedProducts(s.hsCode, limit);
+  return {
+    ...s,
+    productExamples: real,
+    ...(generated.length ? { productExamplesGenerated: generated } : {}),
+  };
+}
 
 function conflictsDb() {
   return conflictsData;
@@ -253,7 +267,7 @@ module.exports = async function handler(req, res) {
       // Chế độ deterministic: điểm tìm kiếm + boost KHÔNG phải xác suất đúng.
       const base = engine === 'deterministic' ? { ...s, confidence: null } : s;
       if (!isLoaiKhac(base.hsCode)) return base;
-      return { ...base, productExamples: getProducts(base.hsCode, 5) };
+      return withExamples(base, 5);
     });
 
     // Bảng ĐÃ VERIFIED chốt được lá trong nhóm đang dẫn đầu → lá đó lên đầu (ghi
@@ -436,7 +450,7 @@ async function handleBatch(req, res, body, started) {
       const suggestions = precedentRanked.suggestions.map(s => {
         const base = engine === 'deterministic' ? { ...s, confidence: null } : s;
         if (!isLoaiKhac(base.hsCode)) return base;
-        return { ...base, productExamples: getProducts(base.hsCode, 3) };
+        return withExamples(base, 3);
       });
 
       const batchGir = determineGir({

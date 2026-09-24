@@ -154,6 +154,12 @@ GET /api/products?stats=1
 
 Khi `/api/suggest` gợi ý mã HS "Loại khác", response tự động đính kèm `productExamples`:
 
+> **Nguồn ví dụ:** `productExamples` / `products` CHỈ gồm tên hàng thật từ tờ khai
+> (nguồn `oz-gold`, phủ 458/3.383 mã). Mã chưa có hàng thật thì trả
+> `productExamplesGenerated` / `generatedProducts` — câu do máy sinh từ luật phân
+> nhóm, **chưa kiểm chứng**, có thể sai (VD ô tô chở người gắn vào 87045129 — nhóm
+> xe chở hàng). Đừng trình bày chúng như hàng đã từng khai.
+
 ```
 POST /api/suggest
 Authorization: Bearer <token>
