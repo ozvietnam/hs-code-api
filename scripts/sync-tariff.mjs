@@ -182,7 +182,7 @@ async function main() {
   });
   console.log(`tax.json ghi xong: ${out.rowCount} mã — version ${out.entry.id}`);
   console.log('\n✅ Đồng bộ hoàn tất. Chạy git diff data/tax.json để xem chi tiết.');
-  console.log('   Nhớ rebuild dữ liệu dẫn xuất (search.json, tax-enriched...) trước khi commit.');
+  console.log('   Nhớ rebuild dữ liệu dẫn xuất: node scripts/build-search-index.mjs (search.json), tax-enriched... trước khi commit.');
 }
 
 main().catch(err => { console.error('FATAL:', err.message); process.exit(1); });
