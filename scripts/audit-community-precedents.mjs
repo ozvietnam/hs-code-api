@@ -89,11 +89,11 @@ for (const file of listFiles(dir)) {
 // Cùng số hiệu + cùng mô tả (chuẩn hoá) nhưng khác mã
 const byRefDesc = new Map();
 for (const r of all) {
-  const k = `${r.ref}|${String(r.desc || '').toLowerCase().replace(/\s+/g, ' ').slice(0, 60)}`;
+  const k = `${r.ref}|${String(r.desc || '').toLowerCase().replace(/\s+/g, ' ')}`;
   if (!byRefDesc.has(k)) byRefDesc.set(k, new Set());
   byRefDesc.get(k).add(r.hs);
 }
-for (const [k, set] of byRefDesc) if (set.size > 1) problems.push(`cùng số hiệu+mô tả nhưng ${set.size} mã: ${k} → ${[...set].join(',')}`);
+for (const [k, set] of byRefDesc) if (set.size > 1) problems.push(`cùng số hiệu+mô tả nhưng ${set.size} mã: ${k.slice(0, 90)} → ${[...set].join(',')}`);
 
 // Mô tả lặp nguyên văn ở nhiều mã
 const byDesc = new Map();

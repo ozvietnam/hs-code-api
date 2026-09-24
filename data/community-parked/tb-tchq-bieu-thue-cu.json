@@ -1,0 +1,296 @@
+{
+  "kind": "precedent",
+  "contributor": {
+    "name": "agent-tbtchq-toan-van",
+    "github": "ozvietnam"
+  },
+  "license": "CC-BY-SA-4.0",
+  "submittedAt": "2026-09-24",
+  "note": "ĐỂ RIÊNG, CHƯA GỘP: mã kết luận theo biểu thuế cũ (2017/2022), không còn là lá trong data/tax.json hiện hành. Cần CEO đối chiếu sang mã mới rồi mới chuyển vào data/community/tb-tchq/. Thư mục này nằm ngoài data/community nên validate/merge không quét.",
+  "records": [
+    {
+      "hsCode": "85258040",
+      "description": "Camera quan sát (camera giám sát, CCTV) loại chụp hình ảnh, chuyển đổi thành tín hiệu điện tử và phát như hình ảnh video đến thiết bị bên ngoài để lưu giữ, điều khiển, hiển thị; KHÔNG có khả năng ghi hình ảnh bên trong camera (không khe cắm thẻ nhớ, không bộ nhớ ghi hình) — camera truyền hình",
+      "source": {
+        "type": "TB-TCHQ",
+        "reference": "1582/TCHQ-TXNK",
+        "issuedDate": "2022-05-05",
+        "url": "https://thuvienxuatnhapkhau.com/cong-van-1582-tchq-txnk-nam-2022-phan-loai-mat-hang-camera.html"
+      },
+      "attributes": {
+        "khaNangGhiHinh": false
+      },
+      "reasonVi": "Hướng dẫn thống nhất phân loại camera (tham khảo Chú giải chi tiết HS 2017 nhóm 85.25): camera chỉ chụp hình, chuyển thành tín hiệu điện tử và phát ra thiết bị ngoài để lưu/hiển thị, không có bất kỳ khả năng ghi hình bên trong thì thuộc 8525.80.40 'Camera truyền hình'. Khai camera quan sát không ghi hình vào 8525.80.39/8525.80.59 là sai.",
+      "confusedWith": [
+        "85258039",
+        "85258059"
+      ]
+    },
+    {
+      "hsCode": "85258039",
+      "description": "Camera ghi hình ảnh (video camera recorder) loại chụp hình ảnh, chuyển đổi thành tín hiệu điện tử và ghi lại trong camera dưới dạng ảnh tĩnh hoặc động lên thiết bị lưu trữ bên trong hoặc phương tiện lưu trữ khác (thẻ nhớ, băng từ...), không dùng trong lĩnh vực phát thanh",
+      "source": {
+        "type": "TB-TCHQ",
+        "reference": "1582/TCHQ-TXNK",
+        "issuedDate": "2022-05-05",
+        "url": "https://thuvienxuatnhapkhau.com/cong-van-1582-tchq-txnk-nam-2022-phan-loai-mat-hang-camera.html"
+      },
+      "attributes": {
+        "khaNangGhiHinh": true,
+        "linhVucPhatThanh": false
+      },
+      "reasonVi": "Camera có khả năng ghi hình ảnh trong máy (có ADC, cổng ra gửi ảnh tới máy xử lý dữ liệu/TV, hoặc cổng vào để ghi file): nếu dùng cho lĩnh vực phát thanh (broadcasting) thuộc 8525.80.31; camera ghi hình ảnh khác thuộc 8525.80.39; camera kỹ thuật số DSLR thuộc 8525.80.51; camera kỹ thuật số khác 8525.80.59.",
+      "confusedWith": [
+        "85258040",
+        "85258031",
+        "85258059"
+      ]
+    },
+    {
+      "hsCode": "85258059",
+      "description": "Camera kỹ thuật số khác (digital camera) có khả năng ghi hình ảnh tĩnh/động lên bộ nhớ trong hoặc phương tiện lưu trữ, không phải loại phản xạ ống kính đơn kỹ thuật số (DSLR), không phải camera truyền hình",
+      "source": {
+        "type": "TB-TCHQ",
+        "reference": "1582/TCHQ-TXNK",
+        "issuedDate": "2022-05-05",
+        "url": "https://thuvienxuatnhapkhau.com/cong-van-1582-tchq-txnk-nam-2022-phan-loai-mat-hang-camera.html"
+      },
+      "attributes": {
+        "khaNangGhiHinh": true,
+        "kieuDSLR": false
+      },
+      "reasonVi": "Theo hướng dẫn phân loại camera của Tổng cục Hải quan: camera kỹ thuật số ghi hình ảnh, loại DSLR thuộc 8525.80.51, loại khác thuộc 8525.80.59; camera không ghi hình thuộc 8525.80.40.",
+      "confusedWith": [
+        "85258051",
+        "85258040"
+      ]
+    },
+    {
+      "hsCode": "85258040",
+      "description": "Thiết bị liên lạc ngoài cửa (door station, chuông cửa có camera) bản chất là camera giám sát có chức năng đàm thoại: nút bấm kích hoạt cuộc gọi tới thiết bị trong nhà, camera, loa và mic, cổng RS485, đầu đọc thẻ từ mở cửa, có thể có cảnh báo cảm biến từ cửa và báo động giả mạo",
+      "source": {
+        "type": "TB-TCHQ",
+        "reference": "1601/TCHQ-TXNK",
+        "issuedDate": "2022-05-06",
+        "url": "https://thuvienxuatnhapkhau.com/cong-van-1601-tchq-txnk-nam-2022-phan-loai-thiet-bi-lien-lac-trong-nha-va-ngoai-cua.html"
+      },
+      "attributes": {
+        "khaNangGhiHinh": false,
+        "damThoai": true
+      },
+      "reasonVi": "Thiết bị ngoài cửa có bản chất là camera giám sát có đàm thoại, không ghi hình → nhóm 85.25, phân nhóm 8525.80, mã 8525.80.40 'Camera truyền hình' (Danh mục theo TT 65/2017/TT-BTC).",
+      "confusedWith": [
+        "85176259"
+      ]
+    },
+    {
+      "hsCode": "84798939",
+      "description": "Thiết bị chống bó cứng phanh thủy lực dùng trong hệ thống ABS (Anti-lock Brake System, ABS hydraulic unit/modulator) gồm bơm thủy lực, van điện từ, bảng mạch điều khiển đã lập trình, chưa gắn cảm biến, hoạt động bằng điện, điều khiển bơm dầu và đóng/mở van điều tiết áp suất dầu phanh cho xe có động cơ",
+      "source": {
+        "type": "TB-TCHQ",
+        "reference": "3609/TCHQ-TXNK",
+        "issuedDate": "2022-08-30",
+        "url": "https://thuvienxuatnhapkhau.com/cong-van-3609-tchq-txnk-nam-2022-v-v-phan-loai-hang-hoa-dung-trong-he-thong-abs-va-he-thong-esp-esc.html"
+      },
+      "attributes": {
+        "heThong": "ABS",
+        "hoatDongBangDien": true
+      },
+      "reasonVi": "Thiết bị cơ khí có chức năng riêng biệt (điều khiển bơm và van thủy lực để chống bó cứng phanh), là trang bị an toàn tùy chọn — hệ thống phanh vẫn hoạt động khi không có ABS → nhóm 84.79 máy và thiết bị cơ khí có chức năng riêng biệt, phân nhóm 8479.89, loại khác hoạt động bằng điện, mã 8479.89.39 (TT 65/2017/TT-BTC).",
+      "confusedWith": [
+        "87083090"
+      ]
+    },
+    {
+      "hsCode": "94019039",
+      "description": "Bản lề ghế lái xe ô tô bằng kim loại (seat recliner hinge) hoạt động như tay điều chỉnh độ ngả tựa lưng ghế, một phần bắt vào tựa lưng, một phần bắt vào đệm ngồi, hoạt động cơ khí, thiết kế chỉ dùng cho ghế xe ô tô",
+      "source": {
+        "type": "TB-TCHQ",
+        "reference": "4115/TCHQ-TXNK",
+        "issuedDate": "2021-08-19",
+        "url": "https://thuvienxuatnhapkhau.com/cong-van-4115-tchq-txnk-nam-2021-phan-loai-ban-le-ghe-o-to.html"
+      },
+      "attributes": {
+        "chatLieu": "kim loại",
+        "dungCho": "ghế xe ô tô"
+      },
+      "reasonVi": "Được xác định là bộ phận của ghế xe ô tô → nhóm 94.01 ghế ngồi và bộ phận, phân nhóm 9401.90 bộ phận, mã 9401.90.39; không phân loại vào 83.02 (bản lề kim loại cơ sở).",
+      "confusedWith": [
+        "83021000"
+      ]
+    },
+    {
+      "hsCode": "38249099",
+      "description": "Chất thụ động hóa niken (EC9000A) — dung dịch hóa chất có chứa antimony pentoxide và các chất hữu cơ khác, dùng làm chất thụ động hóa kim loại",
+      "source": {
+        "type": "TB-TCHQ",
+        "reference": "4949/TB-TCHQ",
+        "issuedDate": "2015-06-01",
+        "url": "https://thuvienxuatnhapkhau.com/phan-tich-phan-loai-dung-dich-hoa-chat-co-chua-antimony-pentoxide-va-cac-chat-huu-co-khac-dung-lam-chat-thu-dong-hoa-kim-loai.html"
+      },
+      "attributes": {
+        "dang": "dung dịch",
+        "thanhPhanChinh": "antimony pentoxide"
+      },
+      "reasonVi": "Kết quả phân tích 96/TB-PTPL (Đà Nẵng): dung dịch hóa chất chứa antimony pentoxide và chất hữu cơ khác, chế phẩm hóa học chưa chi tiết ở nơi khác → nhóm 38.24, mã 3824.90.99 (Danh mục TT 156/2011/TT-BTC)."
+    },
+    {
+      "hsCode": "35030019",
+      "description": "Keo có nguồn gốc từ động vật (animal glue / hide glue, keo da), ký hiệu K314F, dùng làm keo dán trong ngành in",
+      "source": {
+        "type": "TB-TCHQ",
+        "reference": "5047/TB-TCHQ",
+        "issuedDate": "2015-06-03",
+        "url": "https://thuvienxuatnhapkhau.com/phan-tich-phan-loai-keo-co-nguon-goc-tu-dong-vat-animal-glue-hide-glue.html"
+      },
+      "attributes": {
+        "nguonGoc": "động vật"
+      },
+      "reasonVi": "Kết quả phân tích 987/TB-PTPLHCM: keo có nguồn gốc động vật → nhóm 35.03 gelatin và các chất keo khác có nguồn gốc động vật, phân nhóm keo, mã 3503.00.19 loại khác.",
+      "confusedWith": [
+        "35069100"
+      ]
+    },
+    {
+      "hsCode": "39031929",
+      "description": "Hạt nhựa polystyren nguyên sinh dạng hạt (GPPS, general purpose polystyrene grade GP 550N), dùng sản xuất màng",
+      "source": {
+        "type": "TB-TCHQ",
+        "reference": "5011/TB-TCHQ",
+        "issuedDate": "2015-06-02",
+        "url": "https://thuvienxuatnhapkhau.com/phan-tich-phan-loai-polystyren-nguyen-sinh-dang-hat.html"
+      },
+      "attributes": {
+        "polymer": "polystyren",
+        "dang": "hạt"
+      },
+      "reasonVi": "Kết quả phân tích 444/TB-PTPL: polystyren nguyên sinh dạng hạt → nhóm 39.03 polyme từ styren dạng nguyên sinh, phân nhóm 3903.19 loại khác, dạng hạt, mã 3903.19.29.",
+      "confusedWith": [
+        "39031100"
+      ]
+    },
+    {
+      "hsCode": "72165010",
+      "description": "Thép góc không hợp kim JIS G3101 SS400 cán nóng (hot rolled angle steel), kích thước 70x70x6 mm, dài 12 m, chiều cao dưới 80 mm, chưa gia công quá mức cán nóng",
+      "source": {
+        "type": "TB-TCHQ",
+        "reference": "5010/TB-TCHQ",
+        "issuedDate": "2015-06-02",
+        "url": "https://thuvienxuatnhapkhau.com/phan-tich-phan-loai-thep-khong-hop-kim-dang-goc-chieu-cao-duoi-80mm-can-nong.html"
+      },
+      "attributes": {
+        "macThep": "SS400",
+        "kichThuoc": "70x70x6 mm",
+        "chieuCao": "dưới 80 mm"
+      },
+      "reasonVi": "Kết quả phân tích 128/TB1-CNHP: thép không hợp kim dạng góc, cán nóng, chiều cao dưới 80 mm → nhóm 72.16, phân nhóm 7216.50 góc khuôn hình khác không gia công quá mức cán nóng, mã 7216.50.10 có chiều cao dưới 80 mm.",
+      "confusedWith": [
+        "72162110",
+        "72165090"
+      ]
+    },
+    {
+      "hsCode": "38123000",
+      "description": "Hạt phụ gia Cesa light 7103P (VN01) — chất ổn định cho plastic có thành phần chính là amine, axit hữu cơ trong chất mang polyetylen (masterbatch chống tia UV), dùng trong dệt lưới đánh cá",
+      "source": {
+        "type": "TB-TCHQ",
+        "reference": "4938/TB-TCHQ",
+        "issuedDate": "2015-06-01",
+        "url": "https://thuvienxuatnhapkhau.com/thong-bao-ket-qua-phan-loai-doi-voi-hat-phu-gia-cesa-light-7103p-vn01.html"
+      },
+      "attributes": {
+        "chatMang": "polyetylen",
+        "congDung": "ổn định plastic"
+      },
+      "reasonVi": "Kết quả phân tích 928/TB-PTPLHCM: chất ổn định cho plastic (amine, axit hữu cơ trong chất mang PE) → nhóm 38.12, mã 3812.30.00 chế phẩm chống oxy hóa và hợp chất khác làm ổn định cao su hay plastic; không phải hạt nhựa PE 39.01.",
+      "confusedWith": [
+        "39019090",
+        "32069090"
+      ]
+    },
+    {
+      "hsCode": "38249099",
+      "description": "Gói chống ẩm Desiccant (silica gel) — chế phẩm chống ẩm có thành phần chính là silicagel đã có chất chỉ thị màu, dạng hạt, đóng gói 5 g/túi",
+      "source": {
+        "type": "TB-TCHQ",
+        "reference": "4934/TB-TCHQ",
+        "issuedDate": "2015-06-01",
+        "url": "https://thuvienxuatnhapkhau.com/thong-bao-ve-ket-qua-phan-loai-goi-chong-am-desiccant-silica-gel.html"
+      },
+      "attributes": {
+        "thanhPhanChinh": "silica gel có chất chỉ thị màu",
+        "dongGoi": "túi 5 g"
+      },
+      "reasonVi": "Kết quả phân tích 86/TB1-CNHP: silica gel đã có chất chỉ thị màu là chế phẩm hóa học (không phải silic dioxit tinh khiết 2811.22.10) → nhóm 38.24, phân nhóm 3824.90, mã 3824.90.99.",
+      "confusedWith": [
+        "28112210"
+      ]
+    },
+    {
+      "hsCode": "85258039",
+      "description": "Matrice 30 Series (M30T). — Camera tích hợp trên Drone dùng để chụp ảnh, quay phim khảo sát.",
+      "source": {
+        "type": "TB-TCHQ",
+        "reference": "1443/TB-TCHQ",
+        "url": "https://luatvietnam.vn/xuat-nhap-khau/thong-bao-1443-tb-tchq-2022-ket-qua-xac-dinh-truoc-ma-so-matrice-30-series-294497-d6.html",
+        "issuedDate": "2022-04-22"
+      },
+      "reasonVi": "thuộc nhóm 85.25 \"Thiết bị phát dùng cho phát thanh sóng vô tuyến hoặc truyền hình, có hoặc không gắn với thiết bị thu hoặc ghi hoặc tái tạo âm thanh; camera truyền hình, camera kỹ thuật số và camera ghi hình ảnh \", phân nhóm 8525.80 \"- Camera truyền hình, camera kỹ thuật số và camera ghì hình ảnh\", phân nhóm \" - - Camera ghi hình ảnh\", mã số 8525.80.39 \"- - - Loại khác\" tại Danh mục hàng hóa xuất khẩu, nhập khẩu Việt Nam."
+    },
+    {
+      "hsCode": "85258059",
+      "description": "Camera ảnh nhiệt bước sóng dài. Đầu thu hồng ngoại, thấu kính hồng ngoại, bo mạch xử lý tín hiệu.. Đo phổ, bức xạ nhiệt hồng ngoại cho các yêu cầu dải nhiệt độ cần đo lớn và độ chính xác cao. + Trọng lượng ~ 4.5 kg, kích thước (240 x 110 x 90)mm",
+      "source": {
+        "type": "TB-TCHQ",
+        "reference": "238/TB-TCHQ",
+        "url": "https://luatvietnam.vn/xuat-nhap-khau/thong-bao-238-tb-tchq-2022-xac-dinh-truoc-ma-so-camera-anh-nhiet-buoc-song-dai-294656-d6.html",
+        "issuedDate": "2022-01-19"
+      },
+      "reasonVi": "thuộc nhóm 85.25 \"Thiết bị phát dùng cho phát thanh sóng vô tuyến hoặc truyền hình, có hoặc không gắn với thiết bị thu hoặc ghi hoặc tái tạo âm thanh; camera truyền hình, camera kỹ thuật so và camera ghi hình ảnh\", phân nhóm 8525.80 \" - Camera truyền hình, camera kỹ thuật số và camera ghi hình ảnh \", phân nhóm \" - Camera kỹ thuật số khác\", mã số 8525.80.59 \"- - - Loại khác\" tại Danh mục hàng hóa xuất khẩu, nhập khẩu Việt Nam."
+    },
+    {
+      "hsCode": "85143090",
+      "description": "Lò nung chảy thủy tinh bằng điện hoàn toàn (electric glass melting furnace), tháo rời để vận chuyển, công suất 27-36 tấn/ngày",
+      "source": {
+        "type": "TB-TCHQ",
+        "reference": "1906/TB-TCHQ",
+        "issuedDate": "2018-04-10",
+        "url": "https://bikipxuatnhapkhau.vn/thong-bao-1906-tb-tchq-hscode-lo-nung-chay-thuy-tinh-bang-dien/"
+      },
+      "attributes": {
+        "loaiLo": "lò nung chảy thủy tinh",
+        "nguonNhiet": "điện",
+        "congSuat": "27-36 tấn/ngày",
+        "tachTuTep": "ch85a.json"
+      },
+      "girRule": "GIR 1",
+      "reasonVi": "Trang nguồn chỉ có tiêu đề thông báo (số hiệu, ngày, tên hàng, mã 8514.30.90) kèm file tải về, không có toàn văn. Lò nung chảy thủy tinh dùng điện trong công nghiệp, không phải lò điện trở hay lò cảm ứng/điện môi: phân nhóm 8514.30 (lò luyện, nung khác), mã 8514.30.90.",
+      "confusedWith": [
+        "85141900",
+        "85142090"
+      ]
+    },
+    {
+      "hsCode": "85177021",
+      "description": "Cụm linh kiện gấp mở màn hình điện thoại di động (Assy Hinge - Folding Module) cho điện thoại màn hình gập SM-F926U, mã GH98-46781A: khung kim loại đỡ trái/phải, bánh răng, khớp nối, trục hãm, lò xo, vòng đệm; 11,1 g, kích thước 47,12 x 29,80 x 3,74 mm",
+      "source": {
+        "type": "TB-TCHQ",
+        "reference": "4386/TB-TCHQ",
+        "issuedDate": "2021-09-13",
+        "url": "https://caselaw.vn/van-ban-phap-luat/401397-thong-bao-so-4386-tb-tchq-ngay-13-09-2021-cua-tong-cuc-hai-quan-ve-ket-qua-xac-dinh-truoc-ma-so"
+      },
+      "attributes": {
+        "boPhanCua": "điện thoại di động",
+        "chatLieu": "kim loại",
+        "trongLuong": "11,1g",
+        "tachTuTep": "ch85a.json"
+      },
+      "girRule": "GIR 1",
+      "reasonVi": "Cụm bản lề gấp mở chuyên dùng cho điện thoại di động màn hình gập là bộ phận của thiết bị nhóm 85.17: phân nhóm 8517.70 (bộ phận), mã 8517.70.21 (của điện thoại di động). Không phân loại vào bản lề kim loại nhóm 83.02.",
+      "confusedWith": [
+        "83021000",
+        "85177029"
+      ]
+    }
+  ]
+}
