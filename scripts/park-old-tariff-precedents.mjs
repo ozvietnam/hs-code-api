@@ -5,7 +5,7 @@
  * data/community-parked/tb-tchq-bieu-thue-cu.json — nằm ngoài data/community nên
  * validate/merge không quét. CEO đối chiếu sang mã mới rồi mới đưa về.
  *
- *   node scripts/park-old-tariff-precedents.mjs [--dry-run]
+ *   node scripts/park-old-tariff-precedents.mjs [--dry-run] [--file ch84a.json]
  */
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
@@ -13,6 +13,8 @@ import { fileURLToPath } from 'url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DRY = process.argv.includes('--dry-run');
+const onlyIdx = process.argv.indexOf('--file');
+const ONLY = onlyIdx >= 0 ? process.argv[onlyIdx + 1] : null; // chỉ xử lý một tệp (khi tệp khác đang được agent ghi)
 const tax = JSON.parse(readFileSync(join(root, 'data/tax.json'), 'utf8'));
 const srcDir = join(root, 'data/community/tb-tchq');
 const parkedPath = join(root, 'data/community-parked/tb-tchq-bieu-thue-cu.json');
@@ -32,6 +34,7 @@ const seen = new Set(parked.records.map((r) => `${r.hsCode}::${r.source?.referen
 let moved = 0;
 for (const name of readdirSync(srcDir)) {
   if (!name.endsWith('.json')) continue;
+  if (ONLY && name !== ONLY) continue;
   const file = join(srcDir, name);
   const doc = JSON.parse(readFileSync(file, 'utf8'));
   if (doc.kind !== 'precedent') continue;

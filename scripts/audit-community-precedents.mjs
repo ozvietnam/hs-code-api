@@ -21,7 +21,8 @@ import { fileURLToPath } from 'url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
 const argValue = (f, d) => { const i = args.indexOf(f); return i >= 0 && args[i + 1] ? args[i + 1] : d; };
-const dir = join(root, argValue('--dir', 'data/community/tb-tchq'));
+const dirArg = argValue('--dir', 'data/community/tb-tchq');
+const dir = dirArg.startsWith('/') ? dirArg : join(root, dirArg);
 const fetchN = Number(argValue('--fetch', '0'));
 
 const tax = JSON.parse(readFileSync(join(root, 'data/tax.json'), 'utf8'));
