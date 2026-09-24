@@ -1,0 +1,18 @@
+name: Data freshness
+
+# Hằng tuần kiểm hạn đối chiếu dữ liệu (biểu thuế, giảm VAT, tiền lệ, văn bản).
+# Job đỏ = có nguồn quá hạn — xem log để biết cần kiểm tra gì.
+on:
+  schedule:
+    - cron: '0 1 * * 1'   # 08:00 giờ VN thứ Hai
+  workflow_dispatch:
+
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/check-freshness.mjs
