@@ -87,6 +87,13 @@ for (const file of inputs) {
       else if (/\(/.test(rawHs)) out.hsNoteVi = rawHs;
       return out;
     }).filter((r) => r.ifVi);
+    // Agent đợt 5 đã thay mã cũ bằng mã hiện hành và ghi mã cũ vào hsNoteVi
+    // ("9405.10.90 → 9405.11/19") → nhặt lại các mã cũ đó cho oldTariffCodes.
+    const noteDeadCodes = [];
+    for (const c of [...(raw.oldTariffCodes || []), ...(String(raw.hsNoteVi || '').match(/\d{4}\.\d{2}(?:\.\d{2})?/g) || [])]) {
+      const n = normCode(c);
+      if (n && !n.alive) noteDeadCodes.push(n.dotted);
+    }
     const aliasesIn = [...new Set((raw.aliases || []).map((a) => String(a).trim().toLowerCase()).filter(Boolean))];
     const aliases = aliasesIn.filter((a) => {
       const f = fold(a);
@@ -116,7 +123,12 @@ for (const file of inputs) {
       warningVi: raw.warningVi || null,
       relatedIds: (raw.relatedIds || []).map((x) => String(x).toUpperCase()),
       examples: raw.examples || [],
-      ...(deadCodes.length ? { oldTariff: true, oldTariffCodes: [...new Set(deadCodes)] } : {}),
+      // Đợt 5 (agent-evidence): ghi chú mã cũ / tiền lệ trái chiều, và căn cứ của
+      // declaredHs (evidence = văn bản nêu mã khai; declared-name = suy từ tên hàng
+      // DN khai trong thông báo; inferred = suy luận từ chú giải) để CEO duyệt.
+      ...(raw.hsNoteVi ? { hsNoteVi: raw.hsNoteVi } : {}),
+      ...(raw.declaredSource ? { declaredHsBasis: raw.declaredSource } : {}),
+      ...(deadCodes.length || raw.oldTariff ? { oldTariff: true, oldTariffCodes: [...new Set([...deadCodes, ...noteDeadCodes])] } : {}),
       ...(REVIEW_NOTES[id] ? { needsReview: true, reviewNoteVi: REVIEW_NOTES[id] } : {}),
       verified: Boolean(raw.verified),
     };
@@ -137,6 +149,15 @@ const groups = {
   'may-in': 'Máy in & in ấn',
   'thiet-bi-nhiet': 'Thiết bị nhiệt: làm nóng / làm lạnh',
   'may-dong-goi': 'Máy đóng gói',
+  // Đợt 5 — agent dựng từ bằng chứng TB-TCHQ/công văn (origin agent-evidence)
+  'nhua-cao-su': 'Nhựa / cao su (ch.39–40)',
+  'go-giay': 'Gỗ / giấy (ch.44, 48)',
+  'det-may-giay-dep': 'Dệt may / giày dép (ch.50–64)',
+  'noi-that-do-choi': 'Nội thất / đèn / đồ chơi (ch.94–96)',
+  'kim-khi': 'Kim khí (ch.72–83)',
+  'phu-tung-xe': 'Phụ tùng xe (ch.87 và mã bị đẩy ra)',
+  'thuy-tinh-gom': 'Thủy tinh / gốm / đá (ch.68–70)',
+  'dien-dan-dung': 'Điện dân dụng (ch.84–85)',
   khac: 'Khác',
 };
 const out = {
@@ -146,7 +167,11 @@ const out = {
     'CEO soạn cùng Grok (Drive: HS_Mau_Thuan_Reports_2026/MASTER_Tu_Dien_Mau_Thuan_HS_System, TU_DIEN_MAU_THUAN_HS_MOT_FILE.md), ' +
     'nhập bằng scripts/build-confusion-pairs.mjs. Mọi mục verified:false cho tới khi CEO duyệt; mục oldTariff:true có mã theo biểu thuế cũ, cần đối chiếu. ' +
     'Trường girRule chỉ là trích dẫn của nguồn, KHÔNG phải determination — mọi trích dẫn GIR chính thức đi qua lib/gir.js.',
-  sources: ['grok-mt: 50 báo cáo chi tiết MT-001…MT-050 (08/2026–09/2026)', 'grok-deep: 150 cặp theo 11 nhóm ngành (Tu_Dien_Mau_Thuan_HS_Master_RAG.csv, 19/08/2026)'],
+  sources: [
+    'grok-mt: 50 báo cáo chi tiết MT-001…MT-050 (08/2026–09/2026)',
+    'grok-deep: 150 cặp theo 11 nhóm ngành (Tu_Dien_Mau_Thuan_HS_Master_RAG.csv, 19/08/2026)',
+    'agent-evidence: 99 mục ch.39–96 dựng từ tiền lệ TB-TCHQ/công văn TCHQ-TXNK trong kho + nguồn công khai (24/09/2026); declaredHsBasis cho biết mã DN khai là bằng chứng hay suy luận',
+  ],
   groups,
   entries,
 };
