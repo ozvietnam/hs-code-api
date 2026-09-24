@@ -122,7 +122,7 @@ Tax/search responses use camelCase fields expected by `erp-xnk` client:
 - `data/notes.json` — chapter notes
 - `data/tax-enriched.json` — optional Gemini-enriched policy structure (see below)
 - `data/explanatory-notes.json` — Level 2 explanatory notes by HS (from legacy import)
-- `data/precedents.json` — Level 4 TB-TCHQ precedents by HS (from legacy import)
+- `data/precedents.json` — TB-TCHQ precedents by HS: 2.912 notices / 1.011 codes (legacy import + `data/community/tb-tchq/` merged via `npm run data:merge-community`; audit with `node scripts/audit-community-precedents.mjs`)
 - `data/conflicts.json` — Level 5 conflict/risk hints by HS (from legacy import)
 - `data/feedback.jsonl` — feedback events (append-only; may not persist on serverless cold paths)
 - `data/versions/index.json` — tariff version catalog (`current` + metadata)
