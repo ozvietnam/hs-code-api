@@ -95,7 +95,16 @@ function dedupKey(hs, rec) {
   const ref = String(rec?.source?.reference || rec?.tbTchqNumber || rec?.description || '')
     .toUpperCase()
     .replace(/\s+/g, '');
-  return `${hs}::${ref}`;
+  // Một thông báo có thể kết luận nhiều mặt hàng về cùng một mã → thêm đoạn đầu
+  // mô tả (chuẩn hoá) vào khoá, kẻo mặt hàng thứ hai bị coi là trùng.
+  const desc = String(rec?.description || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+    .slice(0, 40);
+  return `${hs}::${ref}::${desc}`;
 }
 
 function existingKeys(precedents) {
