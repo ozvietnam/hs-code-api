@@ -138,6 +138,16 @@ Hai trường khác **không phải** căn cứ pháp lý, đừng trình bày n
 `rankingSignals[]` (tín hiệu xếp hạng kỹ thuật) và `chapterGuidance[]` (checklist
 dữ kiện theo chương).
 
+**`/api/suggest` trả sẵn `status` + `nextAction` — làm theo đúng nó:**
+
+| `status` | Làm gì |
+|---|---|
+| `NEED_FACTS` | Hỏi người dùng từng câu trong `nextAction.questions` (có `optionsVi` thì đưa lựa chọn). Gọi lại `/api/suggest` với cùng `description` + `facts` như `nextAction.then.body`. Trả lời bằng `value`, số `index` hay nhãn tiếng Việt đều được. |
+| `REVIEW` | Trình bày các gợi ý + lý do + cảnh báo, để người dùng chọn và xác nhận. |
+| `RESOLVED_BY_TABLE` | Bảng quyết định đã kiểm chứng chốt mã — vẫn để người dùng xác nhận. |
+| `NEEDS_EXPERT` | AI không chạy được; gợi ý chỉ theo tìm kiếm. Nói rõ cần chuyên viên. |
+| `NO_CANDIDATES` | Xin người dùng mô tả rõ hơn (tên thông dụng, chất liệu, công dụng). |
+
 **Ba cái bẫy khi đọc kết quả:**
 
 - **Thuế ACFTA:** đừng đọc số đầu của `taxAcfta`. `"0 (-CN)"` nghĩa là hàng

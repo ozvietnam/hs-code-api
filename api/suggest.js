@@ -22,6 +22,7 @@ const { checkResidualPreference } = require('../lib/residual-guard');
 const { applyLearnedCorrections } = require('../lib/learned-corrections');
 const { getSuggestCache, setSuggestCache } = require('../lib/suggest-cache');
 const { getPrompt } = require('../lib/prompt-version');
+const { buildSuggestStatus } = require('../lib/suggest-status');
 const { conflictsData, taxData } = require('../lib/data');
 const { sanitizeLlmSuggestions, deterministicSuggestions } = require('../lib/llm-output-guard');
 
@@ -109,6 +110,7 @@ module.exports = async function handler(req, res) {
       wasOverridden: false,
     });
     return res.status(200).json({
+      ...buildSuggestStatus({ description, suggestions: [] }),
       suggestions: [],
       evidence: [],
       evidenceTrace: [],
@@ -218,6 +220,7 @@ module.exports = async function handler(req, res) {
     const topHeading = String(precedentRanked.suggestions?.[0]?.hsCode || '').slice(0, 4);
     const topDecision = decisions.find((d) => d.heading === topHeading) || null;
     const missingFacts = [...new Map(decisions.flatMap((d) => d.missingFacts || []).map((m) => [m.attribute, m])).values()];
+    const rejectedFacts = [...new Map(decisions.flatMap((d) => d.rejectedFacts || []).map((r) => [r.attribute, r])).values()];
 
     // Trích dẫn GIR: chỉ phát ra khi có căn cứ kiểm chứng được (xem lib/gir.js).
     // Bảng chưa verified đi qua gir.js thành HEURISTIC, verified mới là RULE_TABLE.
@@ -272,6 +275,10 @@ module.exports = async function handler(req, res) {
       : null;
 
     const responsePayload = {
+      // Đọc trường này TRƯỚC: agent chỉ cần làm theo nextAction.
+      ...buildSuggestStatus({
+        description, suggestions: enrichedSuggestions, engine, missingFacts, rejectedFacts, facts, topDecision,
+      }),
       suggestions: enrichedSuggestions,
       rankingSignals,
       precedentMatches: precedentRanked.precedentMatches?.slice(0, 3) || [],
@@ -308,6 +315,7 @@ module.exports = async function handler(req, res) {
           }
         : {}),
       ...(missingFacts.length ? { missingFacts } : {}),
+      ...(rejectedFacts.length ? { rejectedFacts } : {}),
       antiPatternWarnings: [
         ...audit.antiPatternWarnings,
         ...historyAdjusted.warnings,

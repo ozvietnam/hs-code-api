@@ -105,6 +105,9 @@ chắc, chỗ nào cần tự xác minh trước khi ký tờ khai.
   chuyên môn chọn.
 - `llmRejectedCodes[]`: mã AI trả nhưng không có trong biểu thuế / ngoài danh
   sách ứng viên — đã bị loại, chỉ để minh bạch.
+- `status` + `nextAction`: đọc trước tiên — `NEED_FACTS` / `REVIEW` /
+  `RESOLVED_BY_TABLE` / `NEEDS_EXPERT` / `NO_CANDIDATES` (xem AGENTS.md mục 4).
+  `rejectedFacts[]`: câu trả lời không quy đổi được, kèm `optionsVi` để hỏi lại.
 - `missingFacts[]`: hỏi người dùng đúng các câu `questionVi`, rồi gọi lại
   `/api/suggest` với cùng `description` + `facts: { <attribute>: <giá trị> }`.
 - `cached: true`: kết quả từ cache, `ms` ~0
