@@ -4,7 +4,8 @@
 ấn định mã B, kèm **tiêu chí phân biệt** (câu hỏi "A hay B?"), luật "nếu… thì…",
 lý do hay nhầm (vô ý / cố ý), căn cứ pháp lý và số công văn/thông báo nếu có.
 Trọng tâm chương 84 – 85 – 90 (máy móc, điện, đo lường) — nơi Oz và khách hay bị
-ấn định lại nhất.
+ấn định lại nhất; đợt 5 (24/09/2026) mở rộng sang nhựa, gỗ, giấy, dệt may, giày
+dép, kim khí, phụ tùng xe, thủy tinh/gốm, điện dân dụng (319 mục).
 
 **Nguồn:** CEO soạn cùng Grok, 07–09/2026, lưu trên Google Drive:
 `HS_Mau_Thuan_Reports_2026/MASTER_Tu_Dien_Mau_Thuan_HS_System` (50 báo cáo
@@ -61,7 +62,30 @@ rồi nói hàng này hay bị kéo về đâu và câu hỏi nào phân định
 
 Nhóm (`group`): `cam-bien-do-luong`, `motor-drive-servo`, `board-module-hmi`,
 `bom-van-may-nen`, `robot-agv`, `dien-cong-tac-nguon`, `may-cong-cu`,
-`thiet-bi-quang`, `may-in`, `thiet-bi-nhiet`, `may-dong-goi`, `khac`.
+`thiet-bi-quang`, `may-in`, `thiet-bi-nhiet`, `may-dong-goi`, `khac`; đợt 5
+thêm `nhua-cao-su`, `go-giay`, `det-may-giay-dep`, `noi-that-do-choi`,
+`kim-khi`, `phu-tung-xe`, `thuy-tinh-gom`, `dien-dan-dung`.
+
+## Đợt 5 — 99 mục `origin: "agent-evidence"` (ch.39–96)
+
+Không lấy từ Drive mà do agent dựng **từ bằng chứng**: mỗi mục có ít nhất một
+`sourceRefs` là TB-TCHQ / công văn TCHQ-TXNK trong kho `data/precedents.json`
+hoặc mở được trên web (kèm `url`). Hai trường thêm để CEO duyệt:
+
+- `declaredHsBasis`: `evidence` (văn bản nêu mã DN khai / `confusedWith`),
+  `declared-name` (suy từ tên hàng DN khai in trong thông báo — "vải dệt kim
+  tráng keo" thực ra là dệt thoi), `inferred` (suy luận từ chú giải; đã nói rõ
+  trong `whyMisdeclaredVi`). Mục cụm kim khí không có trường này thì coi là
+  hỗn hợp (14 mục evidence theo báo cáo agent).
+- `hsNoteVi`: mã biểu cũ đã đổi sang mã hiện hành, và **tiền lệ trái chiều**
+  cho cùng mặt hàng (túi trữ sữa 3924 vs 3923; giấy lọc túi trà 5603 vs 4823;
+  xe điện sân golf 8709 vs 8704; phốt NOK 4016 vs 8484; sạc điện thoại
+  8504.40.90 vs 8504.40.19; nắp bồn cầu điện tử 8516.10 vs 8516.79). Đây là
+  chỗ CEO cần chốt trước khi bật `verified`.
+
+Không dựng được vì thiếu bằng chứng công khai: giày dép hoàn chỉnh 6402–6404,
+nệm 9404, đồ chơi 9503 (ngoài xe tập đi), bút/khóa kéo/chổi, bồn rửa 7324, bếp
+gas 7321, khóa 8301, sứ vệ sinh 6910–6912, đá mài 6804, gương 7009, săm 4013.
 
 ## Kiểm
 
