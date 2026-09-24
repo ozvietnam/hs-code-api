@@ -160,7 +160,10 @@ module.exports = async function handler(req, res) {
     }
 
     // LLM chỉ được CHỌN trong ứng viên — mã bịa / ngoài biểu thuế bị loại.
-    const guarded = sanitizeLlmSuggestions(json?.suggestions, { evidence, taxData, limit: topReranked });
+    const guarded = sanitizeLlmSuggestions(json?.suggestions, {
+      evidence, taxData, limit: topReranked,
+      contextText: evidence.map((e) => e.policyByHs || '').join('\n'),
+    });
     let engine = 'llm';
     let rawSuggestions = guarded.suggestions;
     if (!rawSuggestions.length) {
@@ -412,7 +415,10 @@ async function handleBatch(req, res, body, started) {
         captureError(error, { endpoint: 'suggest/batch', stage: 'llm', itemId: item.id });
         llmError = { code: error.code || 'LLM_FAILED', message: String(error.message || '').slice(0, 200) };
       }
-      const guarded = sanitizeLlmSuggestions(json?.suggestions, { evidence, taxData, limit: topReranked });
+      const guarded = sanitizeLlmSuggestions(json?.suggestions, {
+      evidence, taxData, limit: topReranked,
+      contextText: evidence.map((e) => e.policyByHs || '').join('\n'),
+    });
       const engine = guarded.suggestions.length ? 'llm' : 'deterministic';
       const rawSuggestions = engine === 'llm'
         ? guarded.suggestions

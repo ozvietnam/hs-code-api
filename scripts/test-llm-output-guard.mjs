@@ -54,6 +54,15 @@ check('unit: bỏ girRulesApplied LLM tự gắn', !('girRulesApplied' in g.sugg
 const d = deterministicSuggestions(ev, { taxData, limit: 3 });
 check('unit: deterministic confidence=null', d.length === 2 && d.every((s) => s.confidence === null));
 
+// ── Trích dẫn văn bản LLM tự viết ──
+const { auditCitations } = require('../lib/citation-guard');
+const ac = auditCitations('Theo TT 31/2022/TT-BTC và 01/2024/TT-BNNPTNT; 99/2099/NĐ-CP', 'ctx 99/2099/NĐ-CP');
+check('citation: số hiệu không có trong chỉ mục → gắn nhãn', ac.text.includes('31/2022/TT-BTC [chưa kiểm chứng]'), ac.text);
+check('citation: có trong legal-docs → giữ nguyên', !ac.text.includes('01/2024/TT-BNNPTNT [chưa'));
+check('citation: có trong dữ liệu đưa LLM → giữ nguyên', !ac.text.includes('99/2099/NĐ-CP [chưa'));
+const gc = sanitizeLlmSuggestions([{ hsCode: '84137011', reasoning: 'Căn cứ 77/2031/TT-BTC' }], { evidence: ev, taxData });
+check('citation: suggest trả unverifiedCitations', gc.suggestions[0].unverifiedCitations?.[0] === '77/2031/TT-BTC', gc.suggestions[0]);
+
 // ── /api/classify: validateClassifyResults ──
 const { validateClassifyResults } = require('../lib/classify');
 const vc = validateClassifyResults([
