@@ -1,0 +1,11 @@
+[Unit]
+Description=hs-agent lịch freshness (thứ Hai 07:30 giờ VN)
+
+[Timer]
+OnCalendar=Mon *-*-* 07:30:00 Asia/Ho_Chi_Minh
+Persistent=true
+RandomizedDelaySec=300
+Unit=hs-agent@freshness.service
+
+[Install]
+WantedBy=timers.target

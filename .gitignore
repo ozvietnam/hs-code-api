@@ -30,9 +30,9 @@ data/accuracy-report-*.json
 !.env.example
 
 # Oz internal declarations — PRIVATE, do not commit
-data/oz-export/*.xlsx
-data/oz-export/*.csv
-data/oz-export/*.jsonl
+# Chặn MỌI tệp trong oz-export (xlsx, xls, csv, json, pdf…), chỉ giữ README.
+data/oz-export/*
+!data/oz-export/README.md
 data/oz-declarations.jsonl
 .vercel
 
@@ -62,3 +62,6 @@ lib/__*.js
 
 # bench:delta cache — chứa mã thật của tờ khai giữ riêng, sinh lại được
 data/.bench-cache/
+
+# Phụ thuộc npm (npm ci)
+node_modules/
