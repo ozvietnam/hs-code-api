@@ -43,7 +43,7 @@ export function reviewFlags(enriched, taxRow) {
   if (/giay phep/.test(t) && w.requiresLicense === false) flags.push('LICENSE_MISSED');
   // "QSD cấp/cấm NK" (08/2023/TT-BCT PL1) = hàng ĐÃ QUA SỬ DỤNG bị CẤM nhập — LLM
   // hay hiểu thành "cần giấy phép NK" cho cả hàng mới. Lỗi hệ thống, cờ riêng.
-  if (/qsd ca[pm] nk/.test(t) && w.requiresLicense === true && !/giay phep/.test(t)) flags.push('USED_GOODS_BAN_READ_AS_LICENSE');
+  if (/qsd ca[pm] nk/.test(t) && w.requiresLicense === true && !w.usedGoodsImportBan && !/giay phep/.test(t)) flags.push('USED_GOODS_BAN_READ_AS_LICENSE');
   if (/kiem dich/.test(t) && w.requiresQuarantine === false) flags.push('QUARANTINE_MISSED');
   // "đã được cắt giảm kiểm tra chuyên ngành" là BỎ kiểm tra — không tính.
   const inspectText = t.replace(/cat giam kiem tra[^;)]*/g, '');

@@ -14,6 +14,8 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
+const { applyPolicyRules } = createRequire(import.meta.url)('../lib/policy-rules.js');
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
@@ -47,6 +49,7 @@ Mỗi phần tử phải có dạng:
 
 Few-shot:
 - Nếu có "giấy phép" → requiresLicense true, licenseTypes có thể gồm "NK" hoặc "XK".
+- "QSD cấp NK" / "QSD cấm NK" = hàng ĐÃ QUA SỬ DỤNG bị CẤM nhập khẩu — KHÔNG phải giấy phép: requiresLicense false (nếu không có chữ "giấy phép"), hàng mới không bị cấm.
 - "kiểm dịch" → requiresQuarantine true.
 - "kiểm tra chất lượng", "CR", "hợp quy" → requiresInspection true.
 - "mật mã dân sự", kiểm soát CNTT → dualUseControl true nếu phù hợp.
@@ -104,7 +107,8 @@ function validateWarnings(w, rawText) {
     severity: SEVERITIES.has(w.severity) ? w.severity : 'MEDIUM',
     rawText: w.rawText != null ? String(w.rawText) : String(rawText || ''),
   };
-  return out;
+  // Luật tất định sửa lỗi hệ thống của LLM (vd "QSD cấp NK" ≠ cần giấy phép).
+  return applyPolicyRules(out).warnings;
 }
 
 async function geminiBatch(items, model, apiKey) {
