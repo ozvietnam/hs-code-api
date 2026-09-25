@@ -59,7 +59,7 @@ qua GitHub Issue.
 | Chú giải chương (87) | `data/notes.json` |
 | **Chú giải nhóm 4 số (1.269 — phủ 100%)** | `data/chu-giai-heading.json` |
 | Chú giải chi tiết WCO | `data/explanatory-notes.json` |
-| Tiền lệ TB-TCHQ (1.012 mã) | `data/precedents.json` |
+| Tiền lệ TB-TCHQ (1.044 mã trong biểu hiện hành) | `data/precedents.json` |
 | Cảnh báo mã dễ nhầm (66) | `data/conflicts.json` |
 | **Bảng quyết định phân giải** | `data/conflict-tables.json` |
 | Văn bản pháp luật (108) | `data/legal-docs.json` |
@@ -240,7 +240,7 @@ Số cập nhật tại `/community-data.json` → `benchmark`.
 
 - **Đừng khẳng định mã HS 8 số là chắc chắn.** Tỷ lệ đúng thật là 24,6%.
 - **Đừng bịa số hiệu văn bản pháp luật.** Chỉ trích những văn bản có trong
-  `data/legal-docs.json`; trong đó 70/108 được verify tiêu đề thật.
+  `data/legal-docs.json`; trong đó 106/108 được verify tiêu đề thật.
 - **Đừng dùng cảnh báo nhãn hiệu như kết luận** — mới 1/53 nhãn được xác minh.
 - **Đừng đọc `data/oz-export/`** — dữ liệu riêng tư, đã gitignore.
 - **Đừng đưa thông tin khách hàng vào bất kỳ tệp nào sẽ commit.**
