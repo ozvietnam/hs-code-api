@@ -20,7 +20,13 @@ export function configuredProviders(tier = 'standard') {
   return loadProviders().filter((p) => p.key && p.baseUrl && (!p.tiers || p.tiers.includes(tier)));
 }
 
-function parseJsonLoose(text) {
+/** Thân trả lời OpenAI-compatible. Một số router (9Router) gắn thêm "data: [DONE]" sau JSON cả khi không stream. */
+export function parseBody(raw) {
+  const s = String(raw || '').replace(/\s*(data:\s*\[DONE\]\s*)+$/, '').trim();
+  try { return JSON.parse(s); } catch { return {}; }
+}
+
+export function parseJsonLoose(text) {
   const s = String(text || '').replace(/<think>[\s\S]*?<\/think>/g, '').trim();
   try { return JSON.parse(s); } catch { /* thử cắt khối */ }
   const m = s.match(/```(?:json)?\s*([\s\S]*?)```/) || s.match(/(\{[\s\S]*\})/);
@@ -52,7 +58,7 @@ export async function callJson(system, user, { tier = 'standard', budget, maxTok
         }),
         signal: ctl.signal,
       });
-      const body = await res.json().catch(() => ({}));
+      const body = parseBody(await res.text().catch(() => ''));
       const tokens = body?.usage?.total_tokens || 0;
       if (!res.ok) {
         ledger.record(p.name, { tokens, ok: false, rateLimited: res.status === 429 });
@@ -70,6 +76,8 @@ export async function callJson(system, user, { tier = 'standard', budget, maxTok
     }
   }
   const err = new Error(errors.length ? `không provider nào trả lời — ${errors.join('; ')}` : 'không có khóa LLM nào trong /etc/hs-agent/env');
-  err.code = errors.length ? 'LLM_ALL_FAILED' : 'LLM_NOT_CONFIGURED';
+  // Provider trả lời được nhưng nội dung không ra JSON → lỗi của RIÊNG văn bản này (thử lại lần sau), không phải hết provider.
+  const onlyBadJson = errors.length && errors.every((x) => /không trả JSON|JSON/.test(x));
+  err.code = !errors.length ? 'LLM_NOT_CONFIGURED' : onlyBadJson ? 'LLM_BAD_JSON' : 'LLM_ALL_FAILED';
   throw err;
 }
