@@ -1,10 +1,82 @@
 {
   "noteVi": "Thứ tự thử = thứ tự mảng. Free trước, trả phí (sàn) cuối để job nào cũng xong được. Trần ngày đặt ~80% hạn mức công bố; chỉnh theo gói thật. Khóa đọc từ /etc/hs-agent/env qua keyEnv — KHÔNG ghi khóa vào tệp này.",
   "providers": [
-    { "name": "hermes", "keyEnv": "HERMES_API_KEY", "baseUrlEnv": "HERMES_BASE_URL", "baseUrl": "", "modelEnv": "HERMES_MODEL", "model": "reasoning", "tiers": ["standard", "premium"], "dailyRequests": 2000 },
-    { "name": "groq", "keyEnv": "GROQ_API_KEY", "baseUrl": "https://api.groq.com/openai/v1", "modelEnv": "GROQ_MODEL", "model": "llama-3.3-70b-versatile", "tiers": ["standard"], "dailyRequests": 800, "jsonMode": true },
-    { "name": "gemini", "keyEnv": "GEMINI_API_KEY", "baseUrl": "https://generativelanguage.googleapis.com/v1beta/openai", "modelEnv": "GEMINI_MODEL", "model": "gemini-2.5-flash", "tiers": ["standard", "premium"], "dailyRequests": 200 },
-    { "name": "openrouter", "keyEnv": "OPENROUTER_API_KEY", "baseUrl": "https://openrouter.ai/api/v1", "modelEnv": "OPENROUTER_MODEL", "model": "openrouter/free", "tiers": ["standard"], "dailyRequests": 40, "extraHeaders": { "X-Title": "hs-code-api agent" } },
-    { "name": "minimax", "keyEnv": "MINIMAX_API_KEY", "baseUrl": "https://api.minimax.io/v1", "modelEnv": "MINIMAX_MODEL", "model": "MiniMax-M2.7", "tiers": ["standard", "premium"], "dailyRequests": 1500 }
+    {
+      "name": "ozrouter",
+      "keyEnv": "OZROUTER_API_KEY",
+      "baseUrlEnv": "OZROUTER_BASE_URL",
+      "baseUrl": "http://192.168.1.125:20128/v1",
+      "modelEnv": "OZROUTER_MODEL",
+      "model": "minimax/MiniMax-M2.7",
+      "tiers": [
+        "standard",
+        "premium"
+      ],
+      "dailyRequests": 1500,
+      "noteVi": "9Router trong LAN của OZ (không tốn phí theo lượt). Cần một API key RIÊNG tên hsagent tạo trong bảng 9Router — không dùng chung key của agent khác. M2.7 đã thử tool-call/JSON ổn trên VPS 201; MiniMax-M3 qua router trả 400 cho tool-call nên không đặt làm mặc định."
+    },
+    {
+      "name": "hermes",
+      "keyEnv": "HERMES_API_KEY",
+      "baseUrlEnv": "HERMES_BASE_URL",
+      "baseUrl": "",
+      "modelEnv": "HERMES_MODEL",
+      "model": "reasoning",
+      "tiers": [
+        "standard",
+        "premium"
+      ],
+      "dailyRequests": 2000
+    },
+    {
+      "name": "groq",
+      "keyEnv": "GROQ_API_KEY",
+      "baseUrl": "https://api.groq.com/openai/v1",
+      "modelEnv": "GROQ_MODEL",
+      "model": "llama-3.3-70b-versatile",
+      "tiers": [
+        "standard"
+      ],
+      "dailyRequests": 800,
+      "jsonMode": true
+    },
+    {
+      "name": "gemini",
+      "keyEnv": "GEMINI_API_KEY",
+      "baseUrl": "https://generativelanguage.googleapis.com/v1beta/openai",
+      "modelEnv": "GEMINI_MODEL",
+      "model": "gemini-2.5-flash",
+      "tiers": [
+        "standard",
+        "premium"
+      ],
+      "dailyRequests": 200
+    },
+    {
+      "name": "openrouter",
+      "keyEnv": "OPENROUTER_API_KEY",
+      "baseUrl": "https://openrouter.ai/api/v1",
+      "modelEnv": "OPENROUTER_MODEL",
+      "model": "openrouter/free",
+      "tiers": [
+        "standard"
+      ],
+      "dailyRequests": 40,
+      "extraHeaders": {
+        "X-Title": "hs-code-api agent"
+      }
+    },
+    {
+      "name": "minimax",
+      "keyEnv": "MINIMAX_API_KEY",
+      "baseUrl": "https://api.minimax.io/v1",
+      "modelEnv": "MINIMAX_MODEL",
+      "model": "MiniMax-M2.7",
+      "tiers": [
+        "standard",
+        "premium"
+      ],
+      "dailyRequests": 1500
+    }
   ]
 }

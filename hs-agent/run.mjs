@@ -16,6 +16,7 @@ const JOBS = {
   'bench-night': './jobs/bench-night.mjs',
   freshness: './jobs/freshness.mjs',
   digest: './jobs/digest.mjs',
+  watchdog: './jobs/watchdog.mjs',
 };
 
 const [job, ...rest] = process.argv.slice(2);
@@ -72,8 +73,10 @@ log.info(`xong: ${run.status} · ${run.seconds}s · dùng ${JSON.stringify(budge
 for (const l of run.lines || []) log.info(`  ${l}`);
 
 // Lỗi 3 lần liên tiếp → báo ngay, không chờ digest (§2.7).
-const recent = runs.filter((r) => r.job === job).slice(-3);
-if (!dryRun && recent.length === 3 && recent.every((r) => r.status === 'error')) {
+// Chỉ báo ĐÚNG lần lỗi thứ 3 (lần 4, 5… im — quản đốc nhắc lại mỗi 24h): không có sổ đã-báo thì cảnh báo tự lặp.
+const recent = runs.filter((r) => r.job === job && !r.dryRun).slice(-4);
+const last3 = recent.slice(-3);
+if (!dryRun && last3.length === 3 && last3.every((r) => r.status === 'error') && !(recent.length === 4 && recent[0].status === 'error')) {
   await sendTelegram(`⚠️ hs-agent: job ${job} lỗi 3 lần liên tiếp.\n${(run.lines || []).join('\n')}\nLog: ${log.file}`);
 }
 process.exit(run.status === 'error' ? 1 : 0);
