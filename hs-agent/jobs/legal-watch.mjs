@@ -11,6 +11,7 @@ import { load, save } from '../lib/store.mjs';
 import { writeReport } from '../lib/notify.mjs';
 import { today } from '../lib/log.mjs';
 import { REPO } from '../lib/paths.mjs';
+import { BudgetExceeded } from '../lib/budget.mjs';
 import { scrub } from '../lib/extract.mjs';
 
 export default async function legalWatch({ cfg, log, budget }) {
@@ -20,10 +21,14 @@ export default async function legalWatch({ cfg, log, budget }) {
   log.info(`chỉ mục số hiệu đã có: ${refs.size}`);
   const bootstrap = !seen.bootstrapped;
   const maxPages = bootstrap ? cfg.bootstrapPagesPerFolder : cfg.maxPagesPerFolder;
+  if (bootstrap && cfg.bootstrapFetch) budget.limits.fetch = cfg.bootstrapFetch;
+  let stoppedEarly = null;
   const cutoff = new Date(Date.now() - (cfg.lookbackDays || 1100) * 86400000).toISOString().slice(0, 10);
   const fresh = { classification: [], 'trade-remedy': [], regulation: [], other: 0 };
   const queuedIds = new Set(queue.items.map((i) => i.id));
 
+  // Chạm trần ngân sách/thời gian giữa chừng: dừng quét nhưng VẪN lưu những gì đã thấy.
+  try {
   for (const folder of cfg.folders) {
     for (let page = 1; page <= maxPages; page += 1) {
       budget.checkTime();
@@ -55,6 +60,11 @@ export default async function legalWatch({ cfg, log, budget }) {
       if (!newOnPage && !bootstrap) break; // đã bắt kịp phần đã thấy
     }
   }
+  } catch (e) {
+    if (!(e instanceof BudgetExceeded)) throw e;
+    stoppedEarly = e.message;
+    log.warn(`dừng quét sớm: ${e.message} — lưu phần đã thấy, lần sau quét tiếp`);
+  }
 
   // Quyết định phòng vệ thương mại: rút mã HS từ toàn văn (trang tĩnh → dùng cache).
   for (const e of fresh['trade-remedy'].slice(0, cfg.fetchRemedyText || 10)) {
@@ -67,7 +77,8 @@ export default async function legalWatch({ cfg, log, budget }) {
     }
   }
 
-  seen.bootstrapped = true;
+  // Chỉ coi là đã quét đầu xong khi không bị cắt ngang; bị cắt thì lần sau đi sâu tiếp.
+  if (!stoppedEarly) seen.bootstrapped = true;
   save('vbpl-seen', seen);
   save('queue', queue);
   const pending = queue.items.filter((i) => i.state === 'new' || i.state === 'retry').length;
@@ -97,6 +108,7 @@ export default async function legalWatch({ cfg, log, budget }) {
     lines: [
       `Phân loại mới ${fresh.classification.length} (chưa có trong kho ${newClass}) · phòng vệ TM ${fresh['trade-remedy'].length} · quy định ${fresh.regulation.length} · khác ${fresh.other}`,
       `Hàng đợi J2: ${pending} · báo cáo ${reportPath}`,
+      ...(stoppedEarly ? [`Dừng quét sớm (${stoppedEarly}); phần còn lại quét ở lần sau.`] : []),
     ],
     counts: { classification: fresh.classification.length, newClassification: newClass, remedy: fresh['trade-remedy'].length, regulation: fresh.regulation.length, queue: pending },
     highlights: [...fresh['trade-remedy'], ...fresh.regulation, ...fresh.classification.filter((e) => !e.known)].slice(0, 12).map((e) => scrub(`${e.ref || ''} ${parseTitle(e.title).subject}`)),
