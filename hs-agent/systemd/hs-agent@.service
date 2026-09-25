@@ -1,0 +1,29 @@
+# Một job của agent tự hành hs-code-api. %i = tên job (legal-watch, precedent-extract,
+# bench-night, freshness, digest). Cài bằng hs-agent/scripts/install.sh.
+[Unit]
+Description=hs-agent job %i
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=hsagent
+Group=hsagent
+EnvironmentFile=/etc/hs-agent/env
+Environment=HS_AGENT_HOME=/srv/hs-agent HS_REPO=/srv/hs-code-api HS_RAW=/srv/hs-raw HS_PRIVATE=/srv/hs-private NODE_ENV=production
+WorkingDirectory=/srv/hs-code-api
+# Luôn chạy code harness mới nhất của main (main được bảo vệ → chỉ đổi qua PR đã duyệt).
+# Kéo thất bại (mạng, key) thì vẫn chạy bằng bản đang có — dấu '-' bỏ qua lỗi.
+ExecStartPre=-/usr/bin/git -C /srv/hs-code-api pull --ff-only --quiet
+ExecStart=/usr/bin/node /srv/hs-code-api/hs-agent/run.mjs %i
+TimeoutStartSec=3h
+Nice=10
+IOSchedulingClass=idle
+# Hàng rào: chỉ ghi được vào các thư mục của agent.
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/srv/hs-agent /srv/hs-raw /srv/hs-code-api -/home/hsagent/.ssh -/home/hsagent/.cache -/home/hsagent/.npm -/home/hsagent/.config
+ReadOnlyPaths=-/srv/hs-private
+MemoryMax=4G

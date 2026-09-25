@@ -24,6 +24,8 @@ vercel env add HS_MATCH_PUBLIC production       # optional: "true" = /api/match 
 vercel env add CORS_ORIGINS production          # optional comma list; defaults include ERP + localhost
 ```
 
+Agent tự hành trên VPS riêng (xin cấp máy + thiết kế harness, bàn giao cho dev quản trị server): **[docs/vps-agent-tu-hanh.md](docs/vps-agent-tu-hanh.md)**. Dựng 4 endpoint LLM trên server nhà: [docs/server-nha.md](docs/server-nha.md).
+
 Local fallback LLM (OpenRouter free models): copy [`.env.example`](.env.example) → `.env`, set `OPENROUTER_API_KEY`, then `npm run openrouter:ping`. See **[docs/openrouter.md](docs/openrouter.md)**.
 
 \* When `HS_MATCH_PUBLIC=true`, `/api/match` skips Bearer auth (for server-to-server ERP). Other routes still require `HS_API_TOKEN`.
