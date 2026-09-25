@@ -21,8 +21,11 @@ echo "4. Test"
 chk "npm test xanh (chạy bằng hsagent)" "sudo -u hsagent bash -c 'cd /srv/hs-code-api && npm test --silent'"
 echo "5. Bí mật (chỉ tên)"
 chk "/etc/hs-agent/env chmod 600" "[ \"\$(sudo stat -c %a /etc/hs-agent/env)\" = 600 ]"
-KEYS=$(sudo grep -oE '^[A-Z_][A-Z0-9_]*=' /etc/hs-agent/env | tr -d '=' | tr '\n' ' ')
-echo "    khóa có: ${KEYS:-(trống)}"
+# Chỉ tính khóa CÓ giá trị — dòng "GROQ_API_KEY=" để trống không phải là có khóa.
+KEYS=$(sudo awk -F= '/^[A-Z_][A-Z0-9_]*=/{v=substr($0, index($0,"=")+1); gsub(/["\047 ]/,"",v); if (length(v)) printf "%s ", $1}' /etc/hs-agent/env)
+EMPTY=$(sudo awk -F= '/^[A-Z_][A-Z0-9_]*=/{v=substr($0, index($0,"=")+1); gsub(/["\047 ]/,"",v); if (!length(v)) printf "%s ", $1}' /etc/hs-agent/env)
+echo "    khóa có giá trị: ${KEYS:-(không có)}"
+[ -n "$EMPTY" ] && echo "    khai nhưng TRỐNG: $EMPTY"
 for k in HS_API_TOKEN GITHUB_TOKEN; do chk "có $k" "echo ' $KEYS ' | grep -q ' $k '"; done
 if echo " $KEYS " | grep -qE ' (HERMES|GROQ|GEMINI|OPENROUTER|MINIMAX)_API_KEY '; then pass "có ít nhất một khóa LLM"; else fail "chưa có khóa LLM nào (J2 sẽ chờ)"; fi
 if echo " $KEYS " | grep -q ' TELEGRAM_BOT_TOKEN ' && echo " $KEYS " | grep -q ' TELEGRAM_CHAT_ID '; then pass "Telegram"; else fail "chưa có Telegram (digest chỉ ghi tệp)"; fi
