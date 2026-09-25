@@ -1,0 +1,11 @@
+[Unit]
+Description=hs-agent lịch digest (hằng ngày 08:00 giờ VN)
+
+[Timer]
+OnCalendar=*-*-* 08:00:00 Asia/Ho_Chi_Minh
+Persistent=true
+RandomizedDelaySec=60
+Unit=hs-agent@digest.service
+
+[Install]
+WantedBy=timers.target

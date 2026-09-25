@@ -1,0 +1,11 @@
+[Unit]
+Description=hs-agent lịch legal-watch (hằng ngày 06:30 giờ VN)
+
+[Timer]
+OnCalendar=*-*-* 06:30:00 Asia/Ho_Chi_Minh
+Persistent=true
+RandomizedDelaySec=300
+Unit=hs-agent@legal-watch.service
+
+[Install]
+WantedBy=timers.target

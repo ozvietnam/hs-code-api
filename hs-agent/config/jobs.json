@@ -1,0 +1,36 @@
+{
+  "noteVi": "Ngân sách mỗi lần chạy (§2.1 nguyên tắc 6). fetch = số lượt tải mạng (trang trong kho thô không tính), llm = số lệnh gọi LLM, minutes = trần thời gian.",
+  "jobs": {
+    "legal-watch": {
+      "budget": { "fetch": 80, "llm": 0, "minutes": 30 },
+      "folders": [
+        { "id": "16000033322", "nameVi": "Thuế xuất nhập khẩu" },
+        { "id": "16000033316", "nameVi": "Chế độ, chính sách hải quan" },
+        { "id": "16000033317", "nameVi": "Thủ tục hải quan" },
+        { "id": "16000033323", "nameVi": "Lĩnh vực hải quan khác" },
+        { "id": "16000033324", "nameVi": "Công thương" }
+      ],
+      "maxPagesPerFolder": 3,
+      "bootstrapPagesPerFolder": 15,
+      "lookbackDays": 1100,
+      "fetchRemedyText": 10
+    },
+    "precedent-extract": {
+      "budget": { "fetch": 40, "llm": 40, "minutes": 60 },
+      "maxDocsPerRun": 15,
+      "maxAttemptsPerDoc": 3,
+      "writeAllow": ["data/community/tb-tchq/agent-*.json", "data/community/tb-tchq/*.json", "data/community-parked/*.json", "data/precedents.json", "AGENTS.md", "public/llms.txt"]
+    },
+    "bench-night": {
+      "budget": { "fetch": 0, "llm": 0, "minutes": 60 },
+      "alertDropPoints": 0.5
+    },
+    "freshness": {
+      "budget": { "fetch": 0, "llm": 0, "minutes": 10 }
+    },
+    "digest": {
+      "budget": { "fetch": 0, "llm": 0, "minutes": 5 },
+      "logRetentionDays": 90
+    }
+  }
+}

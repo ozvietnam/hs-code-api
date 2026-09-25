@@ -1,0 +1,11 @@
+[Unit]
+Description=hs-agent lịch precedent-extract (hằng ngày 07:00 giờ VN, sau legal-watch)
+
+[Timer]
+OnCalendar=*-*-* 07:00:00 Asia/Ho_Chi_Minh
+Persistent=true
+RandomizedDelaySec=300
+Unit=hs-agent@precedent-extract.service
+
+[Install]
+WantedBy=timers.target
