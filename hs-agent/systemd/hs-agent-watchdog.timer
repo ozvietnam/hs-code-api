@@ -1,0 +1,11 @@
+[Unit]
+Description=hs-agent quản đốc (mỗi giờ, phút 17)
+
+[Timer]
+OnCalendar=*-*-* *:17:00
+Persistent=true
+RandomizedDelaySec=120
+Unit=hs-agent@watchdog.service
+
+[Install]
+WantedBy=timers.target

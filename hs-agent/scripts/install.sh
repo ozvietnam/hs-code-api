@@ -6,7 +6,7 @@
 set -euo pipefail
 APP=/srv/hs-code-api/hs-agent
 UNIT_DIR=/etc/systemd/system
-JOBS="legal-watch precedent-extract bench-night freshness digest"
+JOBS="legal-watch precedent-extract bench-night freshness digest watchdog"
 
 [ "$(id -u)" -eq 0 ] || { echo "Cần sudo."; exit 1; }
 id hsagent >/dev/null 2>&1 || { echo "Thiếu user hsagent (§1.2)."; exit 1; }

@@ -21,6 +21,7 @@ hướng dẫn vận hành. Chỉ dùng Node ≥ 22, không có dependency ngoà
 | `bench-night` (J3) | 02:00 hằng đêm | không | `npm test` + `bench-delta --full` trên `main`; mức nào giảm > 0,5 điểm so với trung vị 7 lần trước → Telegram ngay. |
 | `freshness` (J5) | 07:30 thứ Hai | không | `scripts/check-freshness.mjs`. |
 | `digest` | 08:00 hằng ngày | không | Tóm tắt 24 giờ: job, hàng đợi, PR agent đang chờ, token theo provider. Gửi Telegram nếu có khóa, luôn ghi tệp. Dọn log > 90 ngày. |
+| `watchdog` (quản đốc) | mỗi giờ, phút 17 | không | Đọc sổ của chính harness: job im quá hạn (critical, báo cả giờ yên), job kẹt cùng trạng thái ≥ 36 giờ, hàng đợi cũ, thiếu khóa/kênh. Ghi `reports/can-nguoi.md` (việc · ai phải làm · bằng chứng); Telegram chỉ khi vấn đề MỚI hoặc sau 24 giờ (sổ đã-báo). Xem `TO-CHUC.md`. |
 
 ## Cài trên VPS
 
@@ -30,7 +31,7 @@ sudo -u hsagent git -C /srv/hs-code-api pull --ff-only
 sudo bash /srv/hs-code-api/hs-agent/scripts/install.sh           # cài unit, chưa bật lịch
 sudo systemctl start hs-agent@legal-watch.service                 # chạy tay thử
 journalctl -u hs-agent@legal-watch -n 60 --no-pager
-sudo bash /srv/hs-code-api/hs-agent/scripts/install.sh --enable  # bật 5 timer
+sudo bash /srv/hs-code-api/hs-agent/scripts/install.sh --enable  # bật 6 timer (kể cả quản đốc)
 bash /srv/hs-code-api/hs-agent/scripts/selfcheck.sh               # checklist §1.4
 ```
 

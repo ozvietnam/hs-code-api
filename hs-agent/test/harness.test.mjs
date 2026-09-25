@@ -11,6 +11,7 @@ import { tmpdir } from 'os';
 import { execFileSync } from 'child_process';
 import { join } from 'path';
 import { parseBench } from '../jobs/bench-night.mjs';
+import { findIssues, reconcile, ownerOf } from '../jobs/watchdog.mjs';
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 let pass = 0;
@@ -101,6 +102,40 @@ t('classifyChanges: tệp mới ngoài vùng → bỏ qua, không commit', cc.ig
 const benchOut = `--- Top-1 ---\n  Đúng chương (2 số)         -    39.7%        -\n  Đúng nhóm  (4 số)          -    22.1%        -\n  Đúng phân nhóm (6 số)      -    15.1%        -\n  Đúng đủ mã (8 số)          -    10.4%        -\n--- Top-3 ---\n  Đúng chương (2 số)     54.0%    54.4%    +0.4\n  Đúng nhóm  (4 số)          -    30.1%        -\n  Đúng phân nhóm (6 số)      -    22.8%        -\n  Đúng đủ mã (8 số)          -    15.7%        -`;
 const pb = parseBench(benchOut);
 t('parseBench: đọc 4 mức × 2, lấy cột "sau"', pb && pb.top1[0] === 39.7 && pb.top3[0] === 54.4 && pb.top3[3] === 15.7, JSON.stringify(pb));
+
+
+// --- quản đốc (§2.10): im lặng, kẹt, sổ đã-báo, giờ yên
+{
+  const HH = 3600 * 1000;
+  const now = Date.parse('2026-09-25T10:00:00Z');
+  const cfgW = { expectHours: { 'legal-watch': 26, digest: 26 }, stuckHours: 36, _llmCount: 0 };
+  const runsW = [
+    { job: 'legal-watch', status: 'ok', startedAt: new Date(now - 30 * HH).toISOString() },
+    { job: 'digest', status: 'ok', startedAt: new Date(now - 2 * HH).toISOString() },
+    { job: 'precedent-extract', status: 'waiting', startedAt: new Date(now - 50 * HH).toISOString(), lines: ['chưa có khóa LLM'] },
+    { job: 'precedent-extract', status: 'waiting', startedAt: new Date(now - 2 * HH).toISOString(), lines: ['chưa có khóa LLM'] },
+  ];
+  const envW = { TELEGRAM_BOT_TOKEN: 'x', TELEGRAM_CHAT_ID: 'y', GITHUB_TOKEN: 'z' };
+  const iss = findIssues({ runs: runsW, queue: { items: [] }, env: envW, cfg: { ...cfgW, expectHours: { ...cfgW.expectHours, 'precedent-extract': 26 } }, now });
+  t('quản đốc: job quá hạn → im (critical)', iss.some((i) => i.key === 'silent:legal-watch' && i.level === 'critical'), JSON.stringify(iss.map((i) => i.key)));
+  t('quản đốc: job còn hạn → không báo im', !iss.some((i) => i.key === 'silent:digest'));
+  t('quản đốc: kẹt "waiting" 48 giờ vì khóa → chủ là CEO', iss.some((i) => i.key === 'stuck:precedent-extract:waiting' && i.owner.startsWith('CEO')));
+  t('quản đốc: thiếu khóa LLM → cfg:no-llm', iss.some((i) => i.key === 'cfg:no-llm'));
+  t('quản đốc: có kênh → không báo no-channel', !iss.some((i) => i.key === 'cfg:no-channel'));
+  const r1 = reconcile({ issues: {} }, iss, { now });
+  t('sổ đã-báo: lần đầu báo hết', r1.toSend.length === iss.length);
+  const r2 = reconcile(r1.book, iss, { now: now + HH });
+  t('sổ đã-báo: 1 giờ sau KHÔNG báo lại (chống lặp)', r2.toSend.length === 0, String(r2.toSend.length));
+  const r3 = reconcile(r2.book, iss, { now: now + 25 * HH });
+  t('sổ đã-báo: sau 24 giờ nhắc lại', r3.toSend.length === iss.length);
+  const r4 = reconcile({ issues: {} }, iss, { now, quiet: true });
+  t('giờ yên: chỉ critical được gửi', r4.toSend.every((i) => i.level === 'critical') && r4.toSend.length >= 1);
+  const r5 = reconcile(r3.book, iss.filter((i) => i.key !== 'silent:legal-watch'), { now: now + 26 * HH });
+  t('sổ đã-báo: vấn đề hết thì ghi "đã hết"', r5.book.resolved.includes('silent:legal-watch'));
+  const iss2 = findIssues({ runs: [{ job: 'freshness', status: 'stale', startedAt: new Date(now - HH).toISOString(), lines: ['[DUE] Biểu thuế XNK'] }], queue: { items: [] }, env: envW, cfg: { expectHours: { freshness: 170 }, _llmCount: 1 }, now });
+  t('quản đốc: freshness "stale" báo ngay, chủ là dev dữ liệu', iss2.some((i) => i.key === 'stuck:freshness:stale' && i.owner.startsWith('dev dữ liệu')), JSON.stringify(iss2));
+  t('ownerOf: freshness → dev dữ liệu', ownerOf('freshness', 'stale', 'Biểu thuế').startsWith('dev dữ liệu'));
+}
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
