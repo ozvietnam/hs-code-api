@@ -1,0 +1,33 @@
+{
+  "updatedAt": "2026-09-25T00:13:42.582Z",
+  "method": "Gọi handler /api/suggest thật trên tập giữ riêng oz-gold (HS_EVAL_EXCLUDE_HOLDOUT=1 — kho tiền lệ bỏ tập này). none = không có AI nào (sàn cho mô hình yếu nhất); live = chuỗi provider đang cấu hình.",
+  "limit": null,
+  "results": [
+    {
+      "mode": "none",
+      "samples": 763,
+      "top1": {
+        "2": 56.2,
+        "4": 37.9,
+        "6": 18.6,
+        "8": 8.7
+      },
+      "top3": {
+        "2": 58.7,
+        "4": 40.6,
+        "6": 25,
+        "8": 14.2
+      },
+      "invalidCodeRate": 0,
+      "degradedRate": 100,
+      "llmErrorRate": 100,
+      "httpErrors": 0,
+      "status": {
+        "NEEDS_EXPERT": 702,
+        "NEED_FACTS": 61
+      },
+      "avgMs": 499,
+      "wallSec": 381
+    }
+  ]
+}

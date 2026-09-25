@@ -222,6 +222,11 @@ Nghĩa là: hệ thống **định hướng tốt** tới chương và nhóm, nh
 để người có chuyên môn chốt**. Đừng nói với người dùng rằng mã 8 số là chắc chắn.
 Số cập nhật tại `/community-data.json` → `benchmark`.
 
+**Khi KHÔNG có AI nào** (mọi provider lỗi → `degraded: true`, engine deterministic), đo
+trên 763 tờ khai giữ riêng (`npm run bench:matrix`, 2026-09-25): đúng nhóm 4 số top-1
+37,9% · top-3 40,6%; đúng đủ 8 số top-1 8,7% · top-3 14,2%; **0% mã bịa**. Gặp
+`degraded: true` thì chỉ trình bày như danh sách để chuyên viên chọn, không như đáp án.
+
 ---
 
 ## 6. Việc khác ngoài tra mã
