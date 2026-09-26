@@ -14,7 +14,8 @@ const ICON = { ok: '✅', idle: '💤', waiting: '⏳', stale: '🟡', regressio
 
 export default async function digest({ cfg, dryRun }) {
   const since = Date.now() - 24 * 3600 * 1000;
-  const runs = load('runs', []).filter((r) => Date.parse(r.startedAt) >= since && r.job !== 'digest');
+  // quản đốc chạy mỗi giờ — 24 dòng giống nhau làm digest khó đọc; mục "Việc chờ người" bên dưới đã tóm nó.
+  const runs = load('runs', []).filter((r) => Date.parse(r.startedAt) >= since && r.job !== 'digest' && r.job !== 'watchdog');
   const queue = load('queue', { items: [] }).items;
   const ledger = load('ledger', { providers: {}, history: [] });
   const byState = queue.reduce((a, i) => ((a[i.state] = (a[i.state] || 0) + 1), a), {});
