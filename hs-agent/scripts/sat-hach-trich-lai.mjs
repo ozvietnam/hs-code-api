@@ -12,6 +12,8 @@ const REPO_DIR    = '/srv/hs-code-api';
 const REPORT_DIR  = '/srv/hs-agent/reports/sat-hach';
 const RAW_DIR     = '/tmp/hs-sat-hach-raw';
 const COUNT       = 30;
+const CHI_ARG = process.argv.includes('--chi')
+  ? process.argv[process.argv.indexOf('--chi') + 1]?.split(',').map(Number) : null;
 
 // ── LLM config — từ ~/.hermes/config.yaml (không đọc /etc/hs-agent/env) ──
 const LLM_CFG = {
@@ -102,7 +104,7 @@ function scrub(s) {
 function codeAppears(code, text) {
   const d = String(code || '').replace(/\D/g, '');
   if (![4, 6, 8, 10].includes(d.length)) return false;
-  const parts = d.length === 4 ? [d] : d.length === 6 ? [d.slice(0, 4), d.slice(4)] : [d.slice(0, 4), d.slice(4, 6), d.slice(6)];
+  const parts = d.length === 4 ? [d] : d.length === 6 ? [d.slice(0, 4), d.slice(4)] : d.length === 8 ? [d.slice(0, 4), d.slice(4, 6), d.slice(6)] : [d.slice(0, 4), d.slice(4, 6), d.slice(6, 8), d.slice(8)];
   const re = new RegExp(`(?<!\\d)${parts.join('[.\\s]?')}(?!\\d)`);
   return re.test(String(text || ''));
 }
@@ -162,7 +164,7 @@ function buildUserPrompt({ title, text }) {
 
 // ── Load dữ liệu ──────────────────────────────────────────────────────────
 const tvData = JSON.parse(readFileSync(join(REPO_DIR, 'data/community/tb-tchq/toan-van.json'), 'utf8'));
-const sample  = tvData.records.slice(0, COUNT);
+const sample  = CHI_ARG ? CHI_ARG.map(n => tvData.records[n - 1]) : tvData.records.slice(0, COUNT);
 console.error(`[sat-hach] toan-van: ${tvData.records.length} records, sát hạch ${sample.length} bản ghi`);
 
 // ── Chạy ──────────────────────────────────────────────────────────────────
