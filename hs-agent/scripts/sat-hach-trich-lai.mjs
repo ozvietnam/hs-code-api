@@ -101,7 +101,7 @@ function scrub(s) {
 }
 function codeAppears(code, text) {
   const d = String(code || '').replace(/\D/g, '');
-  if (![4, 6, 8].includes(d.length)) return false;
+  if (![4, 6, 8, 10].includes(d.length)) return false;
   const parts = d.length === 4 ? [d] : d.length === 6 ? [d.slice(0, 4), d.slice(4)] : [d.slice(0, 4), d.slice(4, 6), d.slice(6)];
   const re = new RegExp(`(?<!\\d)${parts.join('[.\\s]?')}(?!\\d)`);
   return re.test(String(text || ''));
@@ -119,7 +119,7 @@ async function verifyRecords(llmJson, { text, ref, date, url }) {
   for (const r of Array.isArray(llmJson.records) ? llmJson.records : []) {
     const hsCode = String(r.hsCode || '').replace(/\D/g, '');
     const why = (w) => rejected.push({ hsCode, why: w });
-    if (![4, 6, 8].includes(hsCode.length)) { why('mã không phải 4/6/8 số'); continue; }
+    if (![4, 6, 8, 10].includes(hsCode.length)) { why('mã không phải 4/6/8 số'); continue; }
     if (!codeAppears(hsCode, text)) { why('mã không xuất hiện nguyên văn trong toàn văn'); continue; }
     let description = scrub(r.description);
     if (description.length < 20) { why('mô tả quá ngắn sau khi lọc'); continue; }
@@ -204,7 +204,7 @@ for (let i = 0; i < sample.length; i++) {
     if (v && v.records && v.records.length > 0) {
       for (const r of v.records) {
         const e8 = String(expectedHs).replace(/\D/g, '');
-        const x8 = String(r.hsCode || '').replace(/\D/g, '');
+        const x8 = String(r.hsCode || '').replace(/\D/g, '').slice(0, 8); // chấp nhận 10 số (VN), so với 8 số đáp án
         if (e8 === x8) { matched = true; extractedHs = r.hsCode; break; }
         if (e8.length >= 4 && x8.length >= 4 && e8.slice(0,4) === x8.slice(0,4)) matched4 = true;
       }
