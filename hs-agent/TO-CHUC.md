@@ -39,3 +39,14 @@ chủ thể, sổ, cửa và trường học làm cho máy **bền**. Tệp này
 - Còn thiếu: khóa 9Router riêng (`hsgd`) để nó nghĩ được; bot Telegram để nó nói được với người.
 - Trước khi được mở PR dữ liệu của riêng mình: **sát hạch** — trích lại ≥ 30 tiền lệ đã có trong kho (biết đáp án),
   khớp mã HS ≥ 95 %, 0 lỗi lọc riêng tư (§2.10 điểm 5).
+
+### Sát hạch trích lại (kết quả 27/09)
+
+- **Mẫu 1–30 (verify afe26b4):** 26/30 khớp 8 số (87%). Trên n=28 đáp án đủ 8 số → 26/28 = **93%** (chưa đạt ngưỡng ≥95%).
+  - **#28, #29:** LLM trả 10 số `2517410000`/`2517490000`; text gốc có `2517.41.00.10`/`2517.49.00.10`. `codeAppears(10-số)` → false vì regex 10 số tách thành 4 phần `2517·41·00·00` nhưng text chỉ có 3 phần tách bằng `.` (`2517·41·00·10`). → **Lỗi logic verify**, không phải LLM sai.
+  - **#9:** đáp án kho chỉ 4 số `3919` — lỗi dữ liệu kho.
+  - **#5:** error (abort timeout LLM).
+- **Mẫu mới (thutucxuatnhapkhau.vn):** 9/9 URL → trả login page (cần đăng nhập); #31 (thuvienxuatnhapkhau.com) → 404.
+- **Kho tb-tchq:** 272/312 (87%) nguồn luatvietnam.vn cần login → không sát hạch được từ máy. 31 thuvienxuatnhapkhau.com (công khai). 9 thutucxuatnhapkhau.vn (cần login).
+- **Cần dev dữ liệu:** lưu toàn văn vào kho để mở rộng sát hạch.
+- **Điều kiện mở PR:** CHƯA ĐẠT (26/28 < 27/28).
