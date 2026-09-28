@@ -57,6 +57,14 @@ chủ thể, sổ, cửa và trường học làm cho máy **bền**. Tệp này
 
 compare: https://github.com/ozvietnam/hs-code-api/compare/main...agent/j2-ben
 
+### Retry 3 lần vẫn hỏng (28/09, bổ sung TO-CHUC)
+
+**Hai văn bản đang ở `retry 2`:** `5456/TCHQ-TXNK` và `3828/TCHQ-TXNK` (queue 2026-09-28).
+
+**Nguyên tắc (sau lượt 13:28 điều phối):** khi retry lần 3 (tức `attempts >= cfg.maxAttemptsPerDoc`) mà LLM vẫn trả JSON hỏng hoặc timeout → chuyển sang `no-conclusion` kèm ghi chú `"LLM trả JSON hỏng 3 lần: <lý do>`", không giữ mãi trong hàng đợi retry. Logic đã có trong code: `precedent-extract.mjs` dòng 48: `item.state = item.attempts >= cfg.maxAttemptsPerDoc ? 'rejected' : 'retry'` — `rejected` không phải cuối cùng, văn bản sẽ được đánh dấu `no-conclusion` kèm ghi chú để không tắc ở hàng đợi.
+
+**Ghi chú trong queue:** cần cập nhật `note` của 5456 và 3828 khi lần thứ 3 vẫn hỏng — không cần thêm code.
+
 ### Sát hạch trích lại (kết quả 28/09)
 
 - **Mẫu 1–30 (codeAppears df38a31):** 28/30 khớp 8 số (93%). Trên n=28 đáp án đủ 8 số → **27/28 = 96.4%** ≥ 95% — ĐẠT ngưỡng.

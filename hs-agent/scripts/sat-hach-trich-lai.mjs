@@ -6,6 +6,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join } from 'path';
 import { createHash } from 'crypto';
+import { codeAppears } from '../lib/extract.mjs';
 
 // ── Cấu hình ──────────────────────────────────────────────────────────────
 const REPO_DIR    = '/srv/hs-code-api';
@@ -100,13 +101,6 @@ const fold = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0
 const COMPANY_RE = /\b(c[ôo]ng ty|cty|tnhh|c[ổo] ph[ầa]n|co\.?,? ?ltd|corporation|jsc)\b[^,.;:()]*/giu;
 function scrub(s) {
   return String(s || '').replace(COMPANY_RE, '').replace(/\s{2,}/g, ' ').replace(/\s+([,.;:])/g, '$1').trim();
-}
-function codeAppears(code, text) {
-  const d = String(code || '').replace(/\D/g, '');
-  if (![4, 6, 8, 10].includes(d.length)) return false;
-  const parts = d.length === 4 ? [d] : d.length === 6 ? [d.slice(0, 4), d.slice(4)] : d.length === 8 ? [d.slice(0, 4), d.slice(4, 6), d.slice(6)] : [d.slice(0, 4), d.slice(4, 6), d.slice(6, 8), d.slice(8)];
-  const re = new RegExp(`(?<!\\d)${parts.join('[.\\s]?')}(?!\\d)`);
-  return re.test(String(text || ''));
 }
 function coverage(description, text) {
   const hay = fold(text);
