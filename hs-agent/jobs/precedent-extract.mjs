@@ -32,11 +32,10 @@ export default async function precedentExtract({ cfg, log, budget, dryRun }) {
       budget.checkTime();
       item.attempts = (item.attempts || 0) + 1;
       try {
-        consecutiveErrors = 0; // reset on each document attempt
         const { html } = await fetchPage(item.url, { budget });
         const text = articleText(html);
         if (text.length < 300) throw new Error('toàn văn quá ngắn');
-        const { json, provider } = await callJson(SYSTEM_PROMPT, buildUserPrompt({ title: item.title, text }), { budget, tier: 'standard' });
+        const { json, provider } = await callJson(SYSTEM_PROMPT, buildUserPrompt({ title: item.title, text }), { budget, tier: 'standard', maxTokens: cfg.llmMaxTokens || 8000 });
         const v = verifyRecords(json, { text, ref: item.ref, date: item.date, url: item.url, repoDir: dir });
         item.provider = provider;
         consecutiveErrors = 0; // success

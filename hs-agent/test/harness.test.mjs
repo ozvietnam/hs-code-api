@@ -68,6 +68,9 @@ t('verifyRecords: không kết luận → 0 bản ghi', verifyRecords({ coKetLua
 const leak = verifyRecords({ coKetLuan: true, records: [{ hsCode: '85044090', description: 'Thiết bị sạc không dây MagSafe Charger mạch nghịch lưu cuộn dây phát MST 0101234567', reasonVi: '' }] }, { text: `${text} 0101234567`, ref: 'x', url: 'https://a.b/1', repoDir: repo });
 t('verifyRecords: dính MST → bỏ', leak.records.length === 0 && /riêng tư/.test(leak.rejected[0]?.why || ''), JSON.stringify(leak));
 
+const v10 = verifyRecords({ coKetLuan: true, records: [{ hsCode: '2517.41.00.10', description: 'Bột đá cẩm thạch trắng calcium carbonate nghiền mịn dùng làm chất độn', reasonVi: '' }] }, { text: 'Mặt hàng bột đá cẩm thạch trắng calcium carbonate nghiền mịn dùng làm chất độn thuộc mã 2517.41.00.10', ref: 'x', url: 'https://a.b/1', repoDir: repo });
+t('verifyRecords: mã 10 số (dòng thống kê cũ) → ghi 8 số hợp schema', v10.records.length === 1 && v10.records[0].hsCode === '25174100', JSON.stringify(v10));
+
 // --- ngân sách, vùng ghi, nhánh
 const b = createRunBudget({ fetch: 2 });
 b.spend('fetch'); b.spend('fetch');
