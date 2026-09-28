@@ -62,4 +62,20 @@ thời gian; Hermes chỉ nhận lượt khi Gemini lỗi thật, hết hạn m�
 
 ## 6. Số đo
 
-_Điền sau khi phép đo trên `vps-hsagent` chạy xong._
+Đo 28/09 trên `vps-hsagent`: `node scripts/bench-matrix.mjs --models=none,live --limit=100`
+(code `main` 7c50b60, 100 tờ khai đầu của tập giữ riêng oz-gold, kho tiền lệ bỏ tập này).
+`live` = chỉ có Hermes (cổng chuyển tiếp sang `MiniMax-M2.7`), không có khóa Gemini.
+
+| Chế độ | 4 số top-1 | 4 số top-3 | 8 số top-1 | 8 số top-3 | Mã bịa (đã chặn) | Lỗi LLM | Thời gian/lượt |
+|---|---|---|---|---|---|---|---|
+| Không AI (sàn) | 43 % | 45 % | 8 % | 14 % | 0 % | 100 % | 0,75 s |
+| Hermes | **58 %** | **61 %** | **22 %** | **29 %** | 2 % | 16 % | **37 s** |
+
+Đọc số:
+
+- Hermes hơn sàn không-AI **+15 điểm ở 4 số, +14 điểm ở 8 số**: đáng làm dự phòng.
+- **Chậm: trung bình 37 giây/lượt**, 16 % lượt quá hạn 30 giây và rơi về kết quả không-AI.
+  Không dùng làm đường chính cho ERP (người dùng bấm và chờ).
+- Mã bịa 2 % đều bị `sanitizeLlmSuggestions` loại trước khi trả ra.
+- **Chưa có số Gemini cùng tập**: con số Gemini cũ (57 mẫu, 07/2026) đo trên tập rò rỉ nên không so
+  được. Muốn so công bằng phải chạy lệnh trên với khóa Gemini (trên VPS hoặc máy dev).
