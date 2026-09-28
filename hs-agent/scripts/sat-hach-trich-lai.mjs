@@ -245,7 +245,9 @@ console.error(`[sat-hach] khớp 4 số (chưa đủ 8): ${exact4}/${sample.leng
 
 // ── Ghi báo cáo ───────────────────────────────────────────────────────────
 mkdirSync(REPORT_DIR, { recursive: true });
-const today = new Date(new Date().getTime() + 7 * 3600 * 1000).toISOString().slice(0, 10);
+const now      = new Date(new Date().getTime() + 7 * 3600 * 1000);
+const today    = now.toISOString().slice(0, 10);
+const hhmm     = now.toISOString().slice(11, 16).replace(':', '');
 const lines = [];
 lines.push(`# Sát hạch trích lại — ${today}`);
 lines.push(`Nguồn: 30 bản ghi đầu \`data/community/tb-tchq/toan-van.json\` (đã có trong kho, biết đáp án).`);
@@ -281,7 +283,7 @@ for (const r of results) {
 lines.push('');
 lines.push(`_Script: \`hs-agent/scripts/sat-hach-trich-lai.mjs\` — chạy lúc ${new Date().toISOString()}_`);
 
-const reportPath = join(REPORT_DIR, `${today}.md`);
+const reportPath = join(REPORT_DIR, `${today}-${hhmm}.md`);
 writeFileSync(reportPath, lines.join('\n') + '\n');
 console.error(`[sat-hach] Báo cáo: ${reportPath}`);
 
