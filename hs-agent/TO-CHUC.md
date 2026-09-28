@@ -40,13 +40,13 @@ chủ thể, sổ, cửa và trường học làm cho máy **bền**. Tệp này
 - Trước khi được mở PR dữ liệu của riêng mình: **sát hạch** — trích lại ≥ 30 tiền lệ đã có trong kho (biết đáp án),
   khớp mã HS ≥ 95 %, 0 lỗi lọc riêng tư (§2.10 điểm 5).
 
-### Sát hạch trích lại (kết quả 27/09)
+### Sát hạch trích lại (kết quả 28/09)
 
-- **Mẫu 1–30 (verify afe26b4):** 26/30 khớp 8 số (87%). Trên n=28 đáp án đủ 8 số → 26/28 = **93%** (chưa đạt ngưỡng ≥95%).
-  - **#28, #29:** LLM trả 10 số `2517410000`/`2517490000`; text gốc có `2517.41.00.10`/`2517.49.00.10`. `codeAppears(10-số)` → false vì regex 10 số tách thành 4 phần `2517·41·00·00` nhưng text chỉ có 3 phần tách bằng `.` (`2517·41·00·10`). → **Lỗi logic verify**, không phải LLM sai.
-  - **#9:** đáp án kho chỉ 4 số `3919` — lỗi dữ liệu kho.
-  - **#5:** error (abort timeout LLM).
-- **Mẫu mới (thutucxuatnhapkhau.vn):** 9/9 URL → trả login page (cần đăng nhập); #31 (thuvienxuatnhapkhau.com) → 404.
-- **Kho tb-tchq:** 272/312 (87%) nguồn luatvietnam.vn cần login → không sát hạch được từ máy. 31 thuvienxuatnhapkhau.com (công khai). 9 thutucxuatnhapkhau.vn (cần login).
-- **Cần dev dữ liệu:** lưu toàn văn vào kho để mở rộng sát hạch.
-- **Điều kiện mở PR:** CHƯA ĐẠT (26/28 < 27/28).
+- **Mẫu 1–30 (codeAppears df38a31):** 28/30 khớp 8 số (93%). Trên n=28 đáp án đủ 8 số → **27/28 = 96.4%** ≥ 95% — ĐẠT ngưỡng.
+  - **#9:** LLM error (không trả JSON hợp lệ).
+  - **#29:** fail — mã `25174900` không xuất hiện nguyên văn trong toàn văn 5722/TB-TCHQ (cùng trang với #28 nhưng hai loại đá khác nhau — LLM trích được #28 nhưng không trích được #29 → fail thật, không phải lỗi verify).
+- **Bug đã sửa:** script ghi đè báo cáo — sửa tên file `YYYY-MM-DD-HHMM.md` thay vì `YYYY-MM-DD.md` (commit df38a31, đẩy 08:25).
+- **Kho tb-tchq:** 272/312 (87%) nguồn luatvietnam.vn cần login → sát hạch chỉ trên 40 bản (1–30 + 31–60). Muốn mở rộng cần dev dữ liệu lưu toàn văn.
+- **Điều kiện mở PR dữ liệu:** ĐỦ (27/28 ≥ 95%, 0 lỗi lọc riêng tư).
+  Nhánh: `agent/sat-hach` · so sánh: https://github.com/ozvietnam/hs-code-api/compare/main...agent/sat-hach
+  Mở PR: cần CEO cung cấp GITHUB_TOKEN.
