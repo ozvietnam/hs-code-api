@@ -37,7 +37,7 @@ export function parseJsonLoose(text) {
 /**
  * @returns {Promise<{json:any, provider:string, model:string}>}
  */
-export async function callJson(system, user, { tier = 'standard', budget, maxTokens = 3000, timeoutMs = 90000 } = {}) {
+export async function callJson(system, user, { tier = 'standard', budget, maxTokens = 3000, timeoutMs = 180000 } = {}) {
   const ledger = providerLedger();
   const errors = [];
   for (const p of configuredProviders(tier)) {
@@ -76,8 +76,8 @@ export async function callJson(system, user, { tier = 'standard', budget, maxTok
     }
   }
   const err = new Error(errors.length ? `không provider nào trả lời — ${errors.join('; ')}` : 'không có khóa LLM nào trong /etc/hs-agent/env');
-  // Provider trả lời được nhưng nội dung không ra JSON → lỗi của RIÊNG văn bản này (thử lại lần sau), không phải hết provider.
-  const onlyBadJson = errors.length && errors.every((x) => /không trả JSON|JSON/.test(x));
-  err.code = !errors.length ? 'LLM_NOT_CONFIGURED' : onlyBadJson ? 'LLM_BAD_JSON' : 'LLM_ALL_FAILED';
+  // Provider trả lời được nhưng nội dung không ra JSON hoặc timeout → lỗi của RIÊNG văn bản này (thử lại lần sau), không phải hết provider.
+  const onlyBadContent = errors.length && errors.every((x) => /không trả JSON|JSON|timeout/.test(x));
+  err.code = !errors.length ? 'LLM_NOT_CONFIGURED' : onlyBadContent ? 'LLM_BAD_JSON' : 'LLM_ALL_FAILED';
   throw err;
 }

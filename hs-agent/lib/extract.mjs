@@ -26,8 +26,11 @@ const fold = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0
 
 export function codeAppears(code, text) {
   const d = String(code || '').replace(/\D/g, '');
-  if (![4, 6, 8].includes(d.length)) return false;
-  const parts = d.length === 4 ? [d] : d.length === 6 ? [d.slice(0, 4), d.slice(4)] : [d.slice(0, 4), d.slice(4, 6), d.slice(6)];
+  if (![4, 6, 8, 10].includes(d.length)) return false;
+  const parts = d.length === 4 ? [d] :
+                d.length === 6 ? [d.slice(0, 4), d.slice(4)] :
+                d.length === 8 ? [d.slice(0, 4), d.slice(4, 6), d.slice(6)] :
+                [d.slice(0, 4), d.slice(4, 6), d.slice(6, 8), d.slice(8)];
   const re = new RegExp(`(?<![\\d])${parts.join('[.\\s]?')}(?![\\d])`);
   return re.test(String(text || ''));
 }
@@ -58,7 +61,7 @@ export function verifyRecords(llmJson, { text, ref, date, url, repoDir }) {
   for (const r of Array.isArray(llmJson.records) ? llmJson.records : []) {
     const hsCode = String(r.hsCode || '').replace(/\D/g, '');
     const why = (w) => rejected.push({ hsCode, why: w });
-    if (![4, 6, 8].includes(hsCode.length)) { why('mã không phải 4/6/8 số'); continue; }
+    if (![4, 6, 8, 10].includes(hsCode.length)) { why('mã không phải 4/6/8/10 số'); continue; }
     if (!codeAppears(hsCode, text)) { why('mã không xuất hiện nguyên văn trong toàn văn'); continue; }
     let description = scrub(r.description);
     if (description.length < 20) { why('mô tả quá ngắn sau khi lọc'); continue; }
