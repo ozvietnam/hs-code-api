@@ -12,6 +12,7 @@ import { execFileSync } from 'child_process';
 import { join } from 'path';
 import { parseBench } from '../jobs/bench-night.mjs';
 import { findIssues, reconcile, ownerOf } from '../jobs/watchdog.mjs';
+import { parseBody, parseJsonLoose } from '../lib/llm.mjs';
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 let pass = 0;
@@ -136,6 +137,13 @@ t('parseBench: đọc 4 mức × 2, lấy cột "sau"', pb && pb.top1[0] === 39.
   t('quản đốc: freshness "stale" báo ngay, chủ là dev dữ liệu', iss2.some((i) => i.key === 'stuck:freshness:stale' && i.owner.startsWith('dev dữ liệu')), JSON.stringify(iss2));
   t('ownerOf: freshness → dev dữ liệu', ownerOf('freshness', 'stale', 'Biểu thuế').startsWith('dev dữ liệu'));
 }
+
+
+// --- LLM: router gắn "data: [DONE]" sau JSON không stream (9Router) — trước đây làm J2 báo "LLM không trả JSON"
+t('parseBody: bỏ đuôi data: [DONE]', parseBody('{"choices":[{"message":{"content":"x"}}]}\ndata: [DONE]\n\n').choices[0].message.content === 'x');
+t('parseBody: JSON thường vẫn đọc được', parseBody('{"a":1}').a === 1);
+t('parseBody: rác → {}', Object.keys(parseBody('<html>')).length === 0);
+t('parseJsonLoose: bỏ <think>, đọc khối ```json', parseJsonLoose('<think>nghĩ {x}</think>\n```json\n{"coKetLuan":false}\n```').coKetLuan === false);
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

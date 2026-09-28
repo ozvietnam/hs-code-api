@@ -65,7 +65,8 @@ export default async function precedentExtract({ cfg, log, budget, dryRun }) {
       }
     }
   } finally {
-    save('queue', queue);
+    // dry-run không được đổi sổ: nếu lưu, văn bản đã 'extracted' trong lượt thử sẽ không bao giờ được trích thật (bãi tập 25/09).
+    if (!dryRun) save('queue', queue);
   }
 
   if (!records.length) {
