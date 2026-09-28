@@ -40,6 +40,23 @@ chủ thể, sổ, cửa và trường học làm cho máy **bền**. Tệp này
 - Trước khi được mở PR dữ liệu của riêng mình: **sát hạch** — trích lại ≥ 30 tiền lệ đã có trong kho (biết đáp án),
   khớp mã HS ≥ 95 %, 0 lỗi lọc riêng tư (§2.10 điểm 5).
 
+### J2 chết 3 ngày — gốc + sửa (28/09)
+
+**Gốc (26–28/09):**
+- 26 & 27/09: `hermes: Expected ',' or ']' … in JSON` — MiniMax trả JSON hỏng → `LLM_BAD_JSON` ném như `LLM_ALL_FAILED` → `break` cả lượt.
+- 28/09 07:05: `hermes: timeout` (90s) — cầu 201 mất 167 s cho văn bản dài → `timeout` không vào `LLM_BAD_JSON` → vẫn `LLM_ALL_FAILED` → `break`.
+- Hậu quả: 0 bản ghi mới 3 ngày, 28 văn bản chờ.
+
+**Sửa (`agent/j2-ben` 2723f30 — đã merge vào `agent/sat-hach`):**
+1. `llm.mjs`: `timeoutMs` 90 000 → 180 000 ms.
+2. `llm.mjs`: `LLM_BAD_JSON` nhận cả lỗi chứa `timeout` (thay vì chỉ JSON hỏng).
+3. `precedent-extract.mjs`: `LLM_BAD_JSON` xử như lỗi **văn bản đơn lẻ** → `retry` (đi tiếp), không `break` cả lượt; chỉ `break` khi ≥3 lỗi liên tiếp.
+4. `extract.mjs`: `codeAppears` nhận mã 10 số VN (`2517.41.00.10`), tách `[4,2,2,2]`; `verifyRecords` chấp nhận 10 số.
+
+**Còn chờ:** GITHUB_TOKEN (mở PR dữ liệu), OZROUTER_API_KEY (J2 chạy thật).
+
+compare: https://github.com/ozvietnam/hs-code-api/compare/main...agent/j2-ben
+
 ### Sát hạch trích lại (kết quả 28/09)
 
 - **Mẫu 1–30 (codeAppears df38a31):** 28/30 khớp 8 số (93%). Trên n=28 đáp án đủ 8 số → **27/28 = 96.4%** ≥ 95% — ĐẠT ngưỡng.
