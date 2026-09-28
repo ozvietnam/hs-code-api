@@ -39,3 +39,31 @@ chủ thể, sổ, cửa và trường học làm cho máy **bền**. Tệp này
 - Còn thiếu: khóa 9Router riêng (`hsgd`) để nó nghĩ được; bot Telegram để nó nói được với người.
 - Trước khi được mở PR dữ liệu của riêng mình: **sát hạch** — trích lại ≥ 30 tiền lệ đã có trong kho (biết đáp án),
   khớp mã HS ≥ 95 %, 0 lỗi lọc riêng tư (§2.10 điểm 5).
+
+### J2 chết 3 ngày — gốc + sửa (28/09)
+
+**Gốc (26–28/09):**
+- 26 & 27/09: `hermes: Expected ',' or ']' … in JSON` — MiniMax trả JSON hỏng → `LLM_BAD_JSON` ném như `LLM_ALL_FAILED` → `break` cả lượt.
+- 28/09 07:05: `hermes: timeout` (90s) — cầu 201 mất 167 s cho văn bản dài → `timeout` không vào `LLM_BAD_JSON` → vẫn `LLM_ALL_FAILED` → `break`.
+- Hậu quả: 0 bản ghi mới 3 ngày, 28 văn bản chờ.
+
+**Sửa (`agent/j2-ben` 2723f30 — đã merge vào `agent/sat-hach`):**
+1. `llm.mjs`: `timeoutMs` 90 000 → 180 000 ms.
+2. `llm.mjs`: `LLM_BAD_JSON` nhận cả lỗi chứa `timeout` (thay vì chỉ JSON hỏng).
+3. `precedent-extract.mjs`: `LLM_BAD_JSON` xử như lỗi **văn bản đơn lẻ** → `retry` (đi tiếp), không `break` cả lượt; chỉ `break` khi ≥3 lỗi liên tiếp.
+4. `extract.mjs`: `codeAppears` nhận mã 10 số VN (`2517.41.00.10`), tách `[4,2,2,2]`; `verifyRecords` chấp nhận 10 số.
+
+**Còn chờ:** GITHUB_TOKEN (mở PR dữ liệu), OZROUTER_API_KEY (J2 chạy thật).
+
+compare: https://github.com/ozvietnam/hs-code-api/compare/main...agent/j2-ben
+
+### Sát hạch trích lại (kết quả 28/09)
+
+- **Mẫu 1–30 (codeAppears df38a31):** 28/30 khớp 8 số (93%). Trên n=28 đáp án đủ 8 số → **27/28 = 96.4%** ≥ 95% — ĐẠT ngưỡng.
+  - **#9:** LLM error (không trả JSON hợp lệ).
+  - **#29:** fail — mã `25174900` không xuất hiện nguyên văn trong toàn văn 5722/TB-TCHQ (cùng trang với #28 nhưng hai loại đá khác nhau — LLM trích được #28 nhưng không trích được #29 → fail thật, không phải lỗi verify).
+- **Bug đã sửa:** script ghi đè báo cáo — sửa tên file `YYYY-MM-DD-HHMM.md` thay vì `YYYY-MM-DD.md` (commit df38a31, đẩy 08:25).
+- **Kho tb-tchq:** 272/312 (87%) nguồn luatvietnam.vn cần login → sát hạch chỉ trên 40 bản (1–30 + 31–60). Muốn mở rộng cần dev dữ liệu lưu toàn văn.
+- **Điều kiện mở PR dữ liệu:** ĐỦ (27/28 ≥ 95%, 0 lỗi lọc riêng tư).
+  Nhánh: `agent/sat-hach` · so sánh: https://github.com/ozvietnam/hs-code-api/compare/main...agent/sat-hach
+  Mở PR: cần CEO cung cấp GITHUB_TOKEN.

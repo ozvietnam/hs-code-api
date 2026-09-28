@@ -26,6 +26,7 @@ export default async function precedentExtract({ cfg, log, budget, dryRun }) {
   const { dir, branch } = prepareWorktree('precedent-extract');
   const records = [];
   const docLines = [];
+  let consecutiveErrors = 0;
   try {
     for (const item of todo) {
       budget.checkTime();
@@ -34,9 +35,10 @@ export default async function precedentExtract({ cfg, log, budget, dryRun }) {
         const { html } = await fetchPage(item.url, { budget });
         const text = articleText(html);
         if (text.length < 300) throw new Error('toàn văn quá ngắn');
-        const { json, provider } = await callJson(SYSTEM_PROMPT, buildUserPrompt({ title: item.title, text }), { budget, tier: 'standard' });
+        const { json, provider } = await callJson(SYSTEM_PROMPT, buildUserPrompt({ title: item.title, text }), { budget, tier: 'standard', maxTokens: cfg.llmMaxTokens || 8000 });
         const v = verifyRecords(json, { text, ref: item.ref, date: item.date, url: item.url, repoDir: dir });
         item.provider = provider;
+        consecutiveErrors = 0; // success
         if (v.noConclusion) {
           item.state = 'no-conclusion';
           item.note = String(v.noConclusion).slice(0, 200);
@@ -59,13 +61,21 @@ export default async function precedentExtract({ cfg, log, budget, dryRun }) {
           docLines.push(`- dừng sớm: ${e.message.slice(0, 160)}`);
           break;
         }
+        // per-document error (bao gồm JSON hỏng / timeout của một văn bản)
+        consecutiveErrors++;
+        if (consecutiveErrors >= 3) {
+          item.attempts -= 1;
+          docLines.push(`- dừng sớm: 3 lỗi liên tiếp — ${e.message.slice(0, 160)}`);
+          break;
+        }
         item.state = item.attempts >= cfg.maxAttemptsPerDoc ? 'rejected' : 'retry';
         item.note = e.message.slice(0, 200);
         docLines.push(`- ${item.ref}: lỗi ${item.note}`);
       }
     }
   } finally {
-    save('queue', queue);
+    // dry-run không được đổi sổ: nếu lưu, văn bản đã 'extracted' trong lượt thử sẽ không bao giờ được trích thật (bãi tập 25/09).
+    if (!dryRun) save('queue', queue);
   }
 
   if (!records.length) {

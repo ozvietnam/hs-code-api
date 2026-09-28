@@ -26,8 +26,11 @@ const fold = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0
 
 export function codeAppears(code, text) {
   const d = String(code || '').replace(/\D/g, '');
-  if (![4, 6, 8].includes(d.length)) return false;
-  const parts = d.length === 4 ? [d] : d.length === 6 ? [d.slice(0, 4), d.slice(4)] : [d.slice(0, 4), d.slice(4, 6), d.slice(6)];
+  if (![4, 6, 8, 10].includes(d.length)) return false;
+  const parts = d.length === 4 ? [d] :
+                d.length === 6 ? [d.slice(0, 4), d.slice(4)] :
+                d.length === 8 ? [d.slice(0, 4), d.slice(4, 6), d.slice(6)] :
+                [d.slice(0, 4), d.slice(4, 6), d.slice(6, 8), d.slice(8)];
   const re = new RegExp(`(?<![\\d])${parts.join('[.\\s]?')}(?![\\d])`);
   return re.test(String(text || ''));
 }
@@ -58,8 +61,11 @@ export function verifyRecords(llmJson, { text, ref, date, url, repoDir }) {
   for (const r of Array.isArray(llmJson.records) ? llmJson.records : []) {
     const hsCode = String(r.hsCode || '').replace(/\D/g, '');
     const why = (w) => rejected.push({ hsCode, why: w });
-    if (![4, 6, 8].includes(hsCode.length)) { why('mã không phải 4/6/8 số'); continue; }
+    if (![4, 6, 8, 10].includes(hsCode.length)) { why('mã không phải 4/6/8/10 số'); continue; }
     if (!codeAppears(hsCode, text)) { why('mã không xuất hiện nguyên văn trong toàn văn'); continue; }
+    // Mã 10 số (dòng thống kê cũ, vd 2517.41.00.10) đã kiểm nguyên văn ở trên → ghi 8 số:
+    // schema cộng đồng chỉ nhận 4/6/8, để 10 số là cửa validate-community đỏ cả lượt.
+    const code = hsCode.length === 10 ? hsCode.slice(0, 8) : hsCode;
     let description = scrub(r.description);
     if (description.length < 20) { why('mô tả quá ngắn sau khi lọc'); continue; }
     if (description.length > 480) description = description.slice(0, 477) + '…';
@@ -68,12 +74,12 @@ export function verifyRecords(llmJson, { text, ref, date, url, repoDir }) {
     let reasonVi = scrub(r.reasonVi);
     if (r.conditionVi) reasonVi = `${reasonVi} Điều kiện: ${scrub(r.conditionVi)}`.trim();
     const rec = {
-      hsCode,
+      hsCode: code,
       description,
       source: { type: 'TB-TCHQ', reference: ref, ...(date ? { issuedDate: date } : {}), url },
       ...(reasonVi ? { reasonVi: reasonVi.slice(0, 1000) } : {}),
       ...(r.girRule && /^GIR\s?[1-6]/i.test(r.girRule) ? { girRule: String(r.girRule).slice(0, 20) } : {}),
-      confusedWith: [...new Set((r.confusedWith || []).map((c) => String(c).replace(/\D/g, '')).filter((c) => c.length === 8 && c !== hsCode && codeAppears(c, text)))],
+      confusedWith: [...new Set((r.confusedWith || []).map((c) => String(c).replace(/\D/g, '')).filter((c) => c.length === 8 && c !== code && codeAppears(c, text)))],
     };
     const hits = scanObject(rec).filter((h) => h.hard !== false);
     if (hits.length) { why(`lọc riêng tư: ${hits.map((h) => `${h.path} ${h.what}`).slice(0, 2).join('; ')}`); continue; }

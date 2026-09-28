@@ -12,6 +12,7 @@ import { execFileSync } from 'child_process';
 import { join } from 'path';
 import { parseBench } from '../jobs/bench-night.mjs';
 import { findIssues, reconcile, ownerOf } from '../jobs/watchdog.mjs';
+import { parseBody, parseJsonLoose } from '../lib/llm.mjs';
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 let pass = 0;
@@ -66,6 +67,9 @@ t('verifyRecords: số hiệu/ngày/url từ nguồn', v.records[0].source.refer
 t('verifyRecords: không kết luận → 0 bản ghi', verifyRecords({ coKetLuan: false, lyDoKhongKetLuan: 'không đủ cơ sở', records: [] }, { text, ref: 'x', repoDir: repo }).noConclusion === 'không đủ cơ sở');
 const leak = verifyRecords({ coKetLuan: true, records: [{ hsCode: '85044090', description: 'Thiết bị sạc không dây MagSafe Charger mạch nghịch lưu cuộn dây phát MST 0101234567', reasonVi: '' }] }, { text: `${text} 0101234567`, ref: 'x', url: 'https://a.b/1', repoDir: repo });
 t('verifyRecords: dính MST → bỏ', leak.records.length === 0 && /riêng tư/.test(leak.rejected[0]?.why || ''), JSON.stringify(leak));
+
+const v10 = verifyRecords({ coKetLuan: true, records: [{ hsCode: '2517.41.00.10', description: 'Bột đá cẩm thạch trắng calcium carbonate nghiền mịn dùng làm chất độn', reasonVi: '' }] }, { text: 'Mặt hàng bột đá cẩm thạch trắng calcium carbonate nghiền mịn dùng làm chất độn thuộc mã 2517.41.00.10', ref: 'x', url: 'https://a.b/1', repoDir: repo });
+t('verifyRecords: mã 10 số (dòng thống kê cũ) → ghi 8 số hợp schema', v10.records.length === 1 && v10.records[0].hsCode === '25174100', JSON.stringify(v10));
 
 // --- ngân sách, vùng ghi, nhánh
 const b = createRunBudget({ fetch: 2 });
@@ -136,6 +140,13 @@ t('parseBench: đọc 4 mức × 2, lấy cột "sau"', pb && pb.top1[0] === 39.
   t('quản đốc: freshness "stale" báo ngay, chủ là dev dữ liệu', iss2.some((i) => i.key === 'stuck:freshness:stale' && i.owner.startsWith('dev dữ liệu')), JSON.stringify(iss2));
   t('ownerOf: freshness → dev dữ liệu', ownerOf('freshness', 'stale', 'Biểu thuế').startsWith('dev dữ liệu'));
 }
+
+
+// --- LLM: router gắn "data: [DONE]" sau JSON không stream (9Router) — trước đây làm J2 báo "LLM không trả JSON"
+t('parseBody: bỏ đuôi data: [DONE]', parseBody('{"choices":[{"message":{"content":"x"}}]}\ndata: [DONE]\n\n').choices[0].message.content === 'x');
+t('parseBody: JSON thường vẫn đọc được', parseBody('{"a":1}').a === 1);
+t('parseBody: rác → {}', Object.keys(parseBody('<html>')).length === 0);
+t('parseJsonLoose: bỏ <think>, đọc khối ```json', parseJsonLoose('<think>nghĩ {x}</think>\n```json\n{"coKetLuan":false}\n```').coKetLuan === false);
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
