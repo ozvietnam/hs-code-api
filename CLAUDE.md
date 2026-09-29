@@ -23,7 +23,10 @@ Service HTTP API cho ERP `erp-xnk` gọi sang để:
   `MINIMAX_API_KEY`; local dev dùng OpenRouter free — `docs/openrouter.md`,
   `npm run openrouter:ping`
 - Auth: Bearer token (`HS_API_TOKEN` env)
-- Deploy: Vercel project `hs-code-api`
+- Deploy: Vercel project `hs-code-api` (domain prod `hs-kb.uythacnhapkhau.com` qua Cloudflare)
+- **Nguồn sự thật là GitHub `ozvietnam/hs-code-api`** (CEO chốt 29/09/2026). Gitea của
+  hệ thống quản lý đơn (ERP) chỉ tự đồng bộ từ GitHub để lấy data về dùng — muốn sửa
+  gì thì sửa trên GitHub, KHÔNG sửa trên Gitea.
 
 ## Cấu trúc dự án
 
