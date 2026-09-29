@@ -27,7 +27,9 @@ const get = (p, opts) => fetch(base + p, opts);
 try {
   const h = await get('/api/health');
   const hj = await h.json();
-  check('GET /api/health 200', h.status === 200 && hj.status, JSON.stringify(hj).slice(0, 100));
+  // Health tự trả 503 khi "degraded" (CI không có khoá LLM, dữ liệu có thể bị đánh dấu cũ):
+  // server chỉ cần chuyển nguyên trạng thái và JSON của handler.
+  check('GET /api/health: server chạy handler, giữ mã trạng thái', [200, 503].includes(h.status) && hj.service === 'hs-code-api', `${h.status} ${JSON.stringify(hj).slice(0, 100)}`);
 
   const llms = await get('/llms.txt');
   check('/llms.txt: file tĩnh + header từ vercel.json', llms.status === 200 && /text\/plain/.test(llms.headers.get('content-type')) && llms.headers.get('access-control-allow-origin') === '*');
