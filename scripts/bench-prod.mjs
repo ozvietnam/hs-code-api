@@ -32,6 +32,15 @@ const CONFIDENT = Number(arg('confident', 70));
 const TOKEN = process.env.HS_API_TOKEN;
 if (!TOKEN) { console.error('Thiếu HS_API_TOKEN'); process.exit(1); }
 
+// Bản xem thử Vercel có bảo vệ đăng nhập: VERCEL_SHARE=<mã _vercel_share> (tạo bằng
+// công cụ Vercel, hết hạn sau 23 giờ) → đổi lấy cookie rồi gửi kèm mọi lượt gọi.
+let cookie = '';
+if (process.env.VERCEL_SHARE) {
+  const r = await fetch(`${URL_BASE}/?_vercel_share=${process.env.VERCEL_SHARE}`, { redirect: 'manual' });
+  cookie = (r.headers.getSetCookie?.() || [r.headers.get('set-cookie') || '']).map((c) => c.split(';')[0]).filter(Boolean).join('; ');
+  if (!cookie) { console.error('Không lấy được cookie từ VERCEL_SHARE'); process.exit(1); }
+}
+
 let items = readFileSync(join(ROOT, INPUT), 'utf8').trim().split('\n').map((l) => JSON.parse(l))
   .map((r) => ({ desc: String(r[FIELD] || '').trim(), truth: String(r.hsCode).replace(/\D/g, '') }))
   .filter((it) => it.desc && it.truth.length === 8);
@@ -55,7 +64,7 @@ async function worker() {
     try {
       const r = await fetch(`${URL_BASE}/api/suggest`, {
         method: 'POST',
-        headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' },
+        headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json', ...(cookie ? { Cookie: cookie } : {}) },
         body: JSON.stringify({ description: it.desc }),
       });
       totalMs += Date.now() - t0;
