@@ -302,7 +302,24 @@
       "labelVi": "Công suất tiêu tán transistor (W)",
       "questionVi": "Tỷ lệ tiêu tán năng lượng của transistor bao nhiêu W? (ngưỡng 1 W: dưới 1 W → 8541.21, từ 1 W trở lên → 8541.29)",
       "domain": null,
-      "_detect": {}
+      "_detect": {},
+      "detect": {
+        "lt_1W": [
+          "bong ban dan tu truong",
+          "bong ban dan tu truong tranzito",
+          "transistor từ trường",
+          "transistor low power",
+          "transistor <1W",
+          "transistor nhỏ"
+        ],
+        "gte_1W": [
+          "transistor công suất",
+          "power transistor",
+          "transistor lớn",
+          "high power transistor",
+          "transistor >1W"
+        ]
+      }
     },
     {
       "attribute": "photosensitiveKind",
@@ -344,7 +361,10 @@
           "transducer",
           "cảm biến bán dẫn",
           "semiconductor transducer",
-          "mems sensor chip"
+          "mems sensor chip",
+          "cam bien quang dien",
+          "cảm biến quang điện",
+          "cam bien quang"
         ],
         "otherPhoto": [
           "photodiode",
