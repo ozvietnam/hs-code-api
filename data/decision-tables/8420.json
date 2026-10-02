@@ -209,10 +209,76 @@
     }
   ],
   "inputAttributes": [
+    "forPcbMachine",
     "goodsKind",
     "machineUse",
-    "partKind",
-    "forPcbMachine"
+    "partKind"
   ],
-  "essenceVi": "loại hàng+công dụng máy+loại linh kiện+pcb"
+  "essenceVi": "loại hàng+công dụng máy+loại linh kiện+pcb",
+  "attributes": {
+    "forPcbMachine": {
+      "type": "enum",
+      "domain": [
+        "no",
+        "yes"
+      ],
+      "detect": {
+        "no": [
+          "no"
+        ],
+        "yes": [
+          "yes"
+        ]
+      }
+    },
+    "goodsKind": {
+      "type": "enum",
+      "domain": [
+        "machine",
+        "part"
+      ],
+      "detect": {
+        "machine": [
+          "machine"
+        ],
+        "part": [
+          "part"
+        ]
+      }
+    },
+    "machineUse": {
+      "type": "enum",
+      "domain": [
+        "householdLaundry",
+        "other",
+        "pcbSubstrate"
+      ],
+      "detect": {
+        "householdLaundry": [
+          "householdLaundry"
+        ],
+        "other": [
+          "other"
+        ],
+        "pcbSubstrate": [
+          "pcbSubstrate"
+        ]
+      }
+    },
+    "partKind": {
+      "type": "enum",
+      "domain": [
+        "cylinder",
+        "other"
+      ],
+      "detect": {
+        "cylinder": [
+          "cylinder"
+        ],
+        "other": [
+          "other"
+        ]
+      }
+    }
+  }
 }
