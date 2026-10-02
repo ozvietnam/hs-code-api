@@ -816,5 +816,200 @@
   "essenceTestVi": "Ống dẫn (line pipe), ống tròn, ống không tròn hay ống khác? Hàn gì, thép gì? Đường kính ngoài, vách mỏng/dày, áp lực cao?",
   "sourceVi": "Biểu thuế 2026 nhóm 7306: 73061x ống dẫn (theo phương pháp hàn); 73062x ống dẫn không gỉ; 73063x ống tròn hàn (theo đường kính ngoài, vách); 73064x ống tròn không gỉ; 73065x ống tròn hợp kim; 73066x ống không tròn; 73069x ống khác. Chú giải 7306: ống có mối hàn dọc/xoắn.",
   "verified": false,
-  "noteVi": "Draft 38 mã / 11 attrs / 38 rules — tier-A score=22.5 | Nguồn: Biểu thuế 2026"
+  "noteVi": "Draft 38 mã / 11 attrs / 38 rules — tier-A score=22.5 | Nguồn: Biểu thuế 2026",
+  "attributes": {
+    "crossSection": {
+      "type": "enum",
+      "domain": [
+        "other_profile",
+        "square_rectangular"
+      ],
+      "detect": {
+        "other_profile": [
+          "other",
+          "profile"
+        ],
+        "square_rectangular": [
+          "square",
+          "rectangular"
+        ]
+      }
+    },
+    "innerDia": {
+      "type": "enum",
+      "domain": [
+        "large"
+      ],
+      "detect": {
+        "large": [
+          "large"
+        ]
+      }
+    },
+    "kind": {
+      "type": "enum",
+      "domain": [
+        "line_pipe",
+        "pipe_circular",
+        "pipe_noncircular",
+        "pipe_other"
+      ],
+      "detect": {
+        "line_pipe": [
+          "line",
+          "pipe"
+        ],
+        "pipe_circular": [
+          "pipe",
+          "circular"
+        ],
+        "pipe_noncircular": [
+          "pipe",
+          "noncircular"
+        ],
+        "pipe_other": [
+          "pipe",
+          "other"
+        ]
+      }
+    },
+    "nickelHigh": {
+      "type": "enum",
+      "domain": [
+        "True"
+      ],
+      "detect": {
+        "True": [
+          "True"
+        ]
+      }
+    },
+    "outerDia": {
+      "type": "enum",
+      "domain": [
+        "any",
+        "large",
+        "medium",
+        "medium_large",
+        "small"
+      ],
+      "detect": {
+        "any": [
+          "any"
+        ],
+        "large": [
+          "large"
+        ],
+        "medium": [
+          "medium"
+        ],
+        "medium_large": [
+          "medium",
+          "large"
+        ],
+        "small": [
+          "small"
+        ]
+      }
+    },
+    "outerDiaOver105mm": {
+      "type": "enum",
+      "domain": [
+        "True"
+      ],
+      "detect": {
+        "True": [
+          "True"
+        ]
+      }
+    },
+    "pressureHigh": {
+      "type": "enum",
+      "domain": [
+        "False",
+        "True"
+      ],
+      "detect": {
+        "False": [
+          "False"
+        ],
+        "True": [
+          "True"
+        ]
+      }
+    },
+    "steel": {
+      "type": "enum",
+      "domain": [
+        "alloy",
+        "other",
+        "stainless"
+      ],
+      "detect": {
+        "alloy": [
+          "alloy"
+        ],
+        "other": [
+          "other"
+        ],
+        "stainless": [
+          "stainless"
+        ]
+      }
+    },
+    "wallThin": {
+      "type": "enum",
+      "domain": [
+        "False",
+        "True"
+      ],
+      "detect": {
+        "False": [
+          "False"
+        ],
+        "True": [
+          "True"
+        ]
+      }
+    },
+    "welding": {
+      "type": "enum",
+      "domain": [
+        "erw",
+        "other_weld",
+        "saw_spiral",
+        "welded"
+      ],
+      "detect": {
+        "erw": [
+          "erw"
+        ],
+        "other_weld": [
+          "other",
+          "weld"
+        ],
+        "saw_spiral": [
+          "saw",
+          "spiral"
+        ],
+        "welded": [
+          "welded"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "crossSection",
+    "innerDia",
+    "kind",
+    "nickelHigh",
+    "outerDia",
+    "outerDiaOver105mm",
+    "pressureHigh",
+    "steel",
+    "wallThin",
+    "welding"
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceVi": "crossSection; innerDia; kind; nickelHigh; outerDia; outerDiaOver105mm; pressureHigh; steel; wallThin; welding"
 }
