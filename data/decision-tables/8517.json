@@ -1,0 +1,405 @@
+{
+  "heading": "8517",
+  "titleVi": "Điện thoại, điện thoại thông minh và thiết bị viễn thông khác; bộ phận",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "deviceKind",
+      "type": "enum",
+      "domain": [
+        "cordless_phone",
+        "smartphone",
+        "cellular_phone",
+        "other_telephone",
+        "base_station",
+        "network_equipment",
+        "other_telecom_device",
+        "antenna",
+        "parts"
+      ],
+      "labelVi": "Loại thiết bị viễn thông",
+      "questionVi": "Thiết bị viễn thông thuộc loại nào: điện thoại cố định/cordless, điện thoại thông minh (smartphone), điện thoại di động tế bào, thiết bị mạng (switch/router/modem), trạm gốc (base station), ăng ten, bộ phận (parts), hay thiết bị viễn thông khác?"
+    },
+    {
+      "attribute": "specificApp",
+      "type": "enum",
+      "domain": [
+        "conference_interpretation",
+        "switching",
+        "modem",
+        "concentrator_multiplexer",
+        "router_gateway",
+        "other_data_equipment",
+        "wlan_access_point",
+        "interpretation_system",
+        "other_telecom_transmitter",
+        "other_radio_transmission",
+        "radio_line",
+        "other_radio_line",
+        "pager",
+        "satellite",
+        "other_telecom_device",
+        null
+      ],
+      "labelVi": "Ứng dụng cụ thể / loại mạng",
+      "questionVi": "Thiết bị dùng cho mục đích gì: chuyển mạch (switching), modem, router/gateway, bộ điều khiển/adaptor, thiết bị mạng nội bộ không dây (WLAN), truyền dẫn vô tuyến, vệ tinh, pager, hội nghị nhiều thứ tiếng, hay ứng dụng khác?"
+    },
+    {
+      "attribute": "partType",
+      "type": "enum",
+      "domain": [
+        "router_gateway_parts",
+        "cell_phone_parts",
+        "other_phone_parts",
+        "wired_phone_parts",
+        "radio_phone_parts",
+        "other_telecom_parts",
+        "wired_equipment_parts",
+        "radio_transmission_parts",
+        "other_parts",
+        null
+      ],
+      "labelVi": "Loại bộ phận (khi deviceKind = parts)",
+      "questionVi": "Bộ phận thuộc loại thiết bị nào: của điện thoại di động, của router/adaptor, của thiết bị hữu tuyến, của truyền dẫn vô tuyến, hay loại khác?"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "deviceKind": "cordless_phone"
+      },
+      "hs": "85171100",
+      "reasonVi": "GIR 6 — bộ điện thoại hữu tuyến với điện thoại cầm tay không dây (cordless phone), 8517.11",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "deviceKind": "smartphone"
+      },
+      "hs": "85171300",
+      "reasonVi": "GIR 6 — điện thoại thông minh (smartphone), 8517.13",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "deviceKind": "cellular_phone"
+      },
+      "hs": "85171400",
+      "reasonVi": "GIR 6 — điện thoại di động tế bào hoặc mạng không dây khác, 8517.14",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_telephone"
+      },
+      "hs": "85171800",
+      "reasonVi": "GIR 6 — điện thoại loại khác, 8517.18",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "deviceKind": "base_station"
+      },
+      "hs": "85176100",
+      "reasonVi": "GIR 6 — thiết bị trạm gốc (base station), 8517.61",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "deviceKind": "network_equipment",
+        "specificApp": "conference_interpretation"
+      },
+      "hs": "85176210",
+      "reasonVi": "GIR 6 — thiết bị phát và thu sóng vô tuyến dùng cho hội nghị nhiều thứ tiếng, 8517.62.10",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "deviceKind": "network_equipment",
+        "specificApp": "switching"
+      },
+      "hs": "85176230",
+      "reasonVi": "GIR 6 — thiết bị chuyển mạch điện báo hoặc điện thoại, 8517.62.30",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "deviceKind": "network_equipment",
+        "specificApp": "modem"
+      },
+      "hs": "85176241",
+      "reasonVi": "GIR 6 — bộ điều chế/giải điều chế (modems), 8517.62.41",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "deviceKind": "network_equipment",
+        "specificApp": "concentrator_multiplexer"
+      },
+      "hs": "85176242",
+      "reasonVi": "GIR 6 — bộ tập trung hoặc bộ dồn kênh, 8517.62.42",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "deviceKind": "network_equipment",
+        "specificApp": "router_gateway"
+      },
+      "hs": "85176243",
+      "reasonVi": "GIR 6 — bộ điều khiển, bộ thích ứng, cổng nối, cầu nối, bộ định tuyến, 8517.62.43",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "deviceKind": "network_equipment",
+        "specificApp": "other_data_equipment"
+      },
+      "hs": "85176249",
+      "reasonVi": "GIR 6 — bộ điều khiển/adaptor loại khác, 8517.62.49",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "deviceKind": "network_equipment",
+        "specificApp": "wlan_access_point"
+      },
+      "hs": "85176251",
+      "reasonVi": "GIR 6 — thiết bị mạng nội bộ không dây (WLAN access point), 8517.62.51",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "deviceKind": "network_equipment",
+        "specificApp": "interpretation_system"
+      },
+      "hs": "85176252",
+      "reasonVi": "GIR 6 — thiết bị phát và thu dùng cho phiên dịch trực tiếp, 8517.62.52",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "deviceKind": "network_equipment",
+        "specificApp": "other_telecom_transmitter"
+      },
+      "hs": "85176253",
+      "reasonVi": "GIR 6 — thiết bị phát khác dùng cho điện báo/điện thoại, 8517.62.53",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "deviceKind": "network_equipment",
+        "specificApp": "other_radio_transmission"
+      },
+      "hs": "85176259",
+      "reasonVi": "GIR 6 — thiết bị phát vô tuyến khác cho điện thoại loại khác, 8517.62.59",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "deviceKind": "network_equipment",
+        "specificApp": "radio_line"
+      },
+      "hs": "85176261",
+      "reasonVi": "GIR 6 — thiết bị truyền dẫn điện thoại bằng sóng vô tuyến, 8517.62.61",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-17",
+      "priority": 0,
+      "when": {
+        "deviceKind": "network_equipment",
+        "specificApp": "other_radio_line"
+      },
+      "hs": "85176269",
+      "reasonVi": "GIR 6 — thiết bị truyền dẫn vô tuyến loại khác, 8517.62.69",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-18",
+      "priority": 0,
+      "when": {
+        "deviceKind": "network_equipment",
+        "specificApp": "pager"
+      },
+      "hs": "85176291",
+      "reasonVi": "GIR 6 — thiết bị thu xách tay để gọi/báo hiệu/nhắn tin (pager), 8517.62.91",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-19",
+      "priority": 0,
+      "when": {
+        "deviceKind": "network_equipment",
+        "specificApp": "satellite"
+      },
+      "hs": "85176292",
+      "reasonVi": "GIR 6 — thiết bị truyền dẫn vệ tinh cho điện thoại, 8517.62.92 (MFN 10%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-20",
+      "priority": 0,
+      "when": {
+        "deviceKind": "network_equipment",
+        "specificApp": "other_telecom_device"
+      },
+      "hs": "85176299",
+      "reasonVi": "GIR 6 — thiết bị viễn thông khác loại, 8517.62.99",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-21",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_telecom_device"
+      },
+      "hs": "85176900",
+      "reasonVi": "GIR 6 — thiết bị viễn thông loại khác, 8517.69",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-22",
+      "priority": 0,
+      "when": {
+        "deviceKind": "antenna"
+      },
+      "hs": "85177100",
+      "reasonVi": "GIR 6 — ăng ten và bộ phản xạ của ăng ten, 8517.71",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-23",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "partType": "router_gateway_parts"
+      },
+      "hs": "85177910",
+      "reasonVi": "GIR 6 — bộ phận của bộ điều khiển/adaptor/router, 8517.79.10",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-24",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "partType": "cell_phone_parts"
+      },
+      "hs": "85177921",
+      "reasonVi": "GIR 6 — bộ phận của điện thoại di động, 8517.79.21",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-25",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "partType": "other_phone_parts"
+      },
+      "hs": "85177929",
+      "reasonVi": "GIR 6 — bộ phận điện thoại loại khác, 8517.79.29",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-26",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "partType": "wired_phone_parts"
+      },
+      "hs": "85177931",
+      "reasonVi": "GIR 6 — bộ phận điện thoại/điện báo hữu tuyến, 8517.79.31",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-27",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "partType": "radio_phone_parts"
+      },
+      "hs": "85177932",
+      "reasonVi": "GIR 6 — bộ phận điện thoại truyền vô tuyến (MFN 3%), 8517.79.32",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-28",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "partType": "other_telecom_parts"
+      },
+      "hs": "85177939",
+      "reasonVi": "GIR 6 — bộ phận viễn thông loại khác, 8517.79.39",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-29",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "partType": "wired_equipment_parts"
+      },
+      "hs": "85177991",
+      "reasonVi": "GIR 6 — bộ phận thiết bị hữu tuyến, 8517.79.91",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-30",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "partType": "radio_transmission_parts"
+      },
+      "hs": "85177992",
+      "reasonVi": "GIR 6 — bộ phận truyền dẫn vô tuyến (MFN 5%), 8517.79.92",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-31",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "partType": "other_parts"
+      },
+      "hs": "85177999",
+      "reasonVi": "GIR 6 — bộ phận viễn thông khác, 8517.79.99",
+      "source": "Biểu thuế 2026"
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceTestVi": "deviceKind (9 giá trị) + specificApp (15 giá trị) + partType (9 giá trị) — 3 thuộc tính phân biệt 31 mã 8 số trong nhóm 8517. Phân loại chính: thiết bị đầu cuối (cordless/smartphone/cellular/other telephone) vs thiết bị mạng (base station/radio/network equipment) vs ăng ten vs bộ phận. Phân loại phụ: ứng dụng cụ thể (switching/modem/router/wlan/satellite/pager/conference) hoặc loại bộ phận (cell phone/router/wired/radio). Thuế MFN: hầu hết 0%, ngoại trừ 85176292 (10%), 85177932 (3%), 85177992 (5%).",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 8517 (Thông tư 65/2024/TT-BTC)."
+}
