@@ -102,3 +102,23 @@ Our 17 target HS codes:
 - Root cause: holdout only has {truth, top} — no description for table resolution
 
 **Next priority: 8536 and 3926** — highest oz-gold volume with draft tables needing test cases.
+
+## 8536 deep analysis (06:10 03/10)
+
+**Key findings:**
+1. 52 entries cover all 17 wrong-case GTs ✓
+2. `extractFacts` on oz-gold (196 records, full text):
+   - Function detected: 73% (143/196)
+   - CurrentRating detected: 1% (2/196) — **root cause identified**
+   - SpecialApp detected: 6% (11/196)
+3. **0/196 resolve correctly** — ALL 63 rules require `currentRating` (enum, mandatory)
+4. Oz-gold data:
+   - Ampere in SPECS field: **93%** (182/196 records)
+   - Ampere in tenHang field: **2%** (3/196)
+5. Root cause: `extractFacts` reads `text` but `ampere` is in `specs` field (93% coverage)
+6. Architecture gap: `currentRating` is enum type, but `specs` parser only runs for `number` type inputs
+
+**Potential fixes (dev scope):**
+1. Add number-type `currentRatingAmpere` with `fromSpec` parsing → auto-detect from specs
+2. Extend `extractFacts` to read `specs` for enum attributes → backward compatible
+3. Add rules for junctionBlock/switch/plug WITHOUT `currentRating` → resolution for common cases
