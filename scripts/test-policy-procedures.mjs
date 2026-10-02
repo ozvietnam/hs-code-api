@@ -177,5 +177,26 @@ _cgKeys.forEach(k => {
   }
 });
 
+// 2026-10-02: getProcedures() with usedGoodsImportBan flag
+const { getProcedures } = require('../lib/policy-procedures.js');
+const te = require('../data/tax-enriched.json');
+
+const usedBanEntry = Object.entries(te).find(([, e]) => e?.warnings?.usedGoodsImportBan);
+if (usedBanEntry) {
+  const [code, entry] = usedBanEntry;
+  const procs = getProcedures(entry.warnings);
+  check(`getProcedures(usedGoodsImportBan=true) returns cam-nk for ${code}`,
+    procs.length > 0 && procs.some(p => p.code === 'cam-nk'),
+    procs.map(p => p.code));
+}
+
+// getProcedures should NOT add cam-nk twice (seen set)
+if (usedBanEntry) {
+  const [, entry] = usedBanEntry;
+  const procs = getProcedures(entry.warnings);
+  const camCount = procs.filter(p => p.code === 'cam-nk').length;
+  check(`cam-nk not duplicated in getProcedures result`, camCount === 1, camCount);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
