@@ -37,7 +37,8 @@
     ],
     "notes": "Hàng nhập khẩu lần đầu thường bị lấy mẫu kiểm nghiệm 100%. Các lần sau có thể giảm tần suất nếu lịch sử tốt.",
     "severity": "HIGH",
-    "onFail": "Hàng bị buộc tái xuất hoặc tiêu hủy. Doanh nghiệp có thể khiếu nại trong 5 ngày làm việc."
+    "onFail": "Hàng bị buộc tái xuất hoặc tiêu hủy. Doanh nghiệp có thể khiếu nại trong 5 ngày làm việc.",
+    "verified": true
   },
   "kiem-dich-thuc-vat": {
     "code": "kiem-dich-thuc-vat",
@@ -73,7 +74,8 @@
     ],
     "notes": "Một số loại thực vật thuộc danh mục cấm hoặc phải có giấy phép nhập khẩu riêng (sinh vật sống, hạt giống một số loài).",
     "severity": "MEDIUM",
-    "onFail": "Trả lại nước xuất khẩu hoặc tiêu hủy theo quy định. Chi phí do chủ hàng chịu."
+    "onFail": "Trả lại nước xuất khẩu hoặc tiêu hủy theo quy định. Chi phí do chủ hàng chịu.",
+    "verified": true
   },
   "kiem-dich-dong-vat": {
     "code": "kiem-dich-dong-vat",
@@ -110,7 +112,8 @@
     ],
     "notes": "Động vật sống phải có giấy phép nhập khẩu trước. Một số loài thuộc CITES cần thêm giấy phép CITES.",
     "severity": "HIGH",
-    "onFail": "Cách ly xử lý hoặc tiêu hủy. Cấm nhập khẩu từ vùng dịch."
+    "onFail": "Cách ly xử lý hoặc tiêu hủy. Cấm nhập khẩu từ vùng dịch.",
+    "verified": true
   },
   "chat-luong": {
     "code": "chat-luong",
@@ -154,7 +157,8 @@
     ],
     "notes": "Nhiều mặt hàng đã được cắt giảm kiểm tra chuyên ngành theo Nghị quyết 19. Kiểm tra sau thông quan (sau TQ) là xu hướng cho hàng ít rủi ro.",
     "severity": "MEDIUM",
-    "onFail": "Hàng bị tạm giữ, yêu cầu khắc phục hoặc tái xuất. Dán nhãn sai có thể bị phạt hành chính."
+    "onFail": "Hàng bị tạm giữ, yêu cầu khắc phục hoặc tái xuất. Dán nhãn sai có thể bị phạt hành chính.",
+    "verified": true
   },
   "duoc": {
     "code": "duoc",
@@ -193,7 +197,8 @@
     ],
     "notes": "Giấy phép nhập khẩu là bắt buộc TRƯỚC khi hàng về. Không có giấy phép = hàng bị giữ tại cảng, chi phí lưu kho cộng dồn.",
     "severity": "HIGH",
-    "onFail": "Tịch thu, tiêu hủy hoặc tái xuất. Truy tố hình sự nếu nhập khẩu thuốc giả."
+    "onFail": "Tịch thu, tiêu hủy hoặc tái xuất. Truy tố hình sự nếu nhập khẩu thuốc giả.",
+    "verified": true
   },
   "buc-xa": {
     "code": "buc-xa",
@@ -231,7 +236,8 @@
     ],
     "notes": "Giấy phép phải có TRƯỚC khi nhập. Hàng đến mà chưa có phép sẽ bị niêm phong lưu kho.",
     "severity": "HIGH",
-    "onFail": "Tịch thu và tiêu hủy theo quy định an toàn hạt nhân. Truy cứu trách nhiệm hình sự."
+    "onFail": "Tịch thu và tiêu hủy theo quy định an toàn hạt nhân. Truy cứu trách nhiệm hình sự.",
+    "verified": true
   },
   "hoa-chat": {
     "code": "hoa-chat",
@@ -269,7 +275,8 @@
     ],
     "notes": "Tiền chất ma túy và tiền chất thuốc nổ cần giấy phép đặc biệt, thời gian xử lý 30–60 ngày.",
     "severity": "MEDIUM",
-    "onFail": "Từ chối thông quan, phạt hành chính 50–100tr. Hóa chất cấm: truy tố hình sự."
+    "onFail": "Từ chối thông quan, phạt hành chính 50–100tr. Hóa chất cấm: truy tố hình sự.",
+    "verified": true
   },
   "cites": {
     "code": "cites",
@@ -307,7 +314,8 @@
     ],
     "notes": "Phụ lục I CITES: CẤM thương mại. Phụ lục II: cần phép. Phụ lục III: cần chứng từ xuất xứ. Vi phạm CITES là tội hình sự tại VN.",
     "severity": "CRITICAL",
-    "onFail": "Tịch thu toàn bộ lô hàng, phạt hình sự theo điều 244 BLHS."
+    "onFail": "Tịch thu toàn bộ lô hàng, phạt hình sự theo điều 244 BLHS.",
+    "verified": true
   },
   "nang-luong": {
     "code": "nang-luong",
@@ -345,7 +353,8 @@
     ],
     "notes": "Dán nhãn năng lượng sao (1–5 sao) là bắt buộc trước khi đưa ra thị trường, không nhất thiết phải trước khi thông quan.",
     "severity": "MEDIUM",
-    "onFail": "Phạt hành chính, thu hồi sản phẩm nếu không đạt hiệu suất tối thiểu."
+    "onFail": "Phạt hành chính, thu hồi sản phẩm nếu không đạt hiệu suất tối thiểu.",
+    "verified": true
   },
   "vat-lieu-xd": {
     "code": "vat-lieu-xd",
@@ -382,7 +391,8 @@
     ],
     "notes": "Xi măng và thép xây dựng thường bị lấy mẫu. Nhập khẩu thép phải kết hợp kiểm tra nguồn gốc xuất xứ tránh phòng vệ thương mại.",
     "severity": "MEDIUM",
-    "onFail": "Từ chối nhập khẩu, phạt hành chính, buộc tái xuất."
+    "onFail": "Từ chối nhập khẩu, phạt hành chính, buộc tái xuất.",
+    "verified": true
   },
   "phe-lieu": {
     "code": "phe-lieu",
@@ -419,7 +429,8 @@
     ],
     "notes": "Đây là loại hàng kiểm tra chặt nhất. Lô không có PSI hợp lệ = từ chối thông quan 100%.",
     "severity": "HIGH",
-    "onFail": "Buộc tái xuất trong 30 ngày. Chi phí lưu kho + tái xuất do chủ hàng chịu."
+    "onFail": "Buộc tái xuất trong 30 ngày. Chi phí lưu kho + tái xuất do chủ hàng chịu.",
+    "verified": true
   },
   "giao-thong": {
     "code": "giao-thong",
@@ -458,7 +469,8 @@
     ],
     "notes": "Ô tô nhập khẩu phải đáp ứng tiêu chuẩn khí thải Euro 4 (hiện hành). Xe điện có quy định riêng.",
     "severity": "HIGH",
-    "onFail": "Từ chối thông quan, phải tái xuất hoặc điều chỉnh theo quy chuẩn VN."
+    "onFail": "Từ chối thông quan, phải tái xuất hoặc điều chỉnh theo quy chuẩn VN.",
+    "verified": true
   },
   "giai-tri": {
     "code": "giai-tri",
@@ -493,7 +505,8 @@
     ],
     "notes": "Nội dung bị cấm (chính trị nhạy cảm, khiêu dâm, bạo lực) sẽ bị tịch thu toàn bộ lô.",
     "severity": "MEDIUM",
-    "onFail": "Tịch thu toàn bộ, phạt hành chính."
+    "onFail": "Tịch thu toàn bộ, phạt hành chính.",
+    "verified": true
   },
   "gp-nk": {
     "code": "gp-nk",
@@ -529,7 +542,8 @@
     ],
     "notes": "Hạn ngạch thuế quan (muối, thuốc lá, trứng, đường...) chỉ còn số lượng nhất định mỗi năm — nên đăng ký sớm trong năm.",
     "severity": "MEDIUM",
-    "onFail": "Không được thông quan khi thiếu giấy phép."
+    "onFail": "Không được thông quan khi thiếu giấy phép.",
+    "verified": true
   },
   "may-mac-84": {
     "code": "may-mac-84",
