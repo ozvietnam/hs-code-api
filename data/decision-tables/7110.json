@@ -17,10 +17,28 @@
       "labelVi": "Loại kim loại quý",
       "questionVi": "Hàng thuộc loại kim loại quý nào?",
       "detect": {
-        "platinum": ["platinum", "bạch kim", "pt"],
-        "palladium": ["palladium", "padium", "pd"],
-        "rhodium": ["rhodium", "rh"],
-        "iridium_osmium_ruthenium": ["iridium", "osmium", "ruthenium", "ir", "os", "ru"]
+        "platinum": [
+          "platinum",
+          "bạch kim",
+          "pt"
+        ],
+        "palladium": [
+          "palladium",
+          "padium",
+          "pd"
+        ],
+        "rhodium": [
+          "rhodium",
+          "rh"
+        ],
+        "iridium_osmium_ruthenium": [
+          "iridium",
+          "osmium",
+          "ruthenium",
+          "ir",
+          "os",
+          "ru"
+        ]
       }
     },
     {
@@ -33,8 +51,17 @@
       "labelVi": "Dạng vật chất",
       "questionVi": "Hàng ở dạng thỏi, thanh đúc, bột hay dạng khác?",
       "detect": {
-        "ingot_powder": ["thỏi", "thanh đúc", "bột", "ingot", "powder"],
-        "other": ["dạng khác", "khác"]
+        "ingot_powder": [
+          "thỏi",
+          "thanh đúc",
+          "bột",
+          "ingot",
+          "powder"
+        ],
+        "other": [
+          "dạng khác",
+          "khác"
+        ]
       }
     }
   ],
@@ -172,5 +199,55 @@
       "reasonVi": "GIR 6 — iridium/osmium/ruthenium loại khác, Biểu thuế 2026 → 71104900 (MFN 1%)",
       "source": "Biểu thuế NK VN 2026, nhóm 7110"
     }
-  ]
+  ],
+  "inputAttributes": [
+    "metalType",
+    "formType"
+  ],
+  "attributes": {
+    "metalType": {
+      "detect": {
+        "platinum": [
+          "platinum",
+          "bạch kim",
+          "pt"
+        ],
+        "palladium": [
+          "palladium",
+          "padium",
+          "pd"
+        ],
+        "rhodium": [
+          "rhodium",
+          "rh"
+        ],
+        "iridium_osmium_ruthenium": [
+          "iridium",
+          "osmium",
+          "ruthenium",
+          "ir",
+          "os",
+          "ru"
+        ]
+      },
+      "type": "enum"
+    },
+    "formType": {
+      "detect": {
+        "ingot_powder": [
+          "thỏi",
+          "thanh đúc",
+          "bột",
+          "ingot",
+          "powder"
+        ],
+        "other": [
+          "dạng khác",
+          "khác"
+        ]
+      },
+      "type": "enum"
+    }
+  },
+  "essenceVi": "metalType × formType"
 }
