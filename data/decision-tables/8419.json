@@ -1,55 +1,8 @@
 {
   "heading": "8419",
   "description": "Machinery, plant (not domestic), or laboratory equipment; electrically heated or not, for treatment of materials by process involving change of temperature; instantaneous or non electric storage water heaters",
-  "attributes": [
-    {
-      "id": "processType",
-      "descriptionVi": "Loại quá trình xử lý",
-      "values": {
-        "waterHeating": "Đun nước nóng (841911/919)",
-        "solarHeating": "Năng lượng mặt trời (841912)",
-        "sterilizing": "Khử trùng y tế (841920)",
-        "drying": "Sấy nông nghiệp/gỗ (841933)",
-        "evaporating": "Làm bay hơi (841934)",
-        "airConditioningCooling": "Làm mát tháp/thông gió (841935)",
-        "heatTreatment": "Xử lý nhiệt vật liệu (841939/989)",
-        "distilling": "Chưng cất/cô quay (841940)",
-        "heatExchanging": "Trao đổi nhiệt (841950)",
-        "liquefying": "Hóa lỏng khí (841960)",
-        "foodBeverage": "Thực phẩm/đồ uống (841981)",
-        "parts": "Phụ tùng (841990)"
-      }
-    },
-    {
-      "id": "powerSource",
-      "descriptionVi": "Nguồn năng lượng",
-      "values": {
-        "electric": "Hoạt động bằng điện",
-        "nonElectric": "Không hoạt động bằng điện"
-      }
-    },
-    {
-      "id": "application",
-      "descriptionVi": "Ứng dụng",
-      "values": {
-        "household": "Gia đình",
-        "agricultural": "Nông nghiệp, gỗ, bột giấy",
-        "medical": "Y tế, phẫu thuật, phòng thí nghiệm",
-        "industrial": "Công nghiệp",
-        "general": "Loại khác"
-      }
-    },
-    {
-      "id": "specialMaterial",
-      "descriptionVi": "Vật liệu/loại đặc biệt",
-      "values": {
-        "fluoropolymer": "Ống fluoropolyme",
-        "filmManufacturing": "Sản xuất tấm mạch",
-        "gasWater": "Nước nóng bằng ga",
-        "none": "Không có"
-      }
-    }
-  ],
+  "sourceVi": "Bảng quyết định do giám đốc Hermes-211 xây dựng từ phân tích biểu thuế VN 2024 và chú giải WCO, 02/10/2026.",
+  "verified": false,
   "rules": [
     {
       "id": "8419-r001",
@@ -500,12 +453,11 @@
       }
     }
   ],
-  "verified": false,
-  "essenceTestVi": "Với thiết bị xử lý nhiệt (đun nước, sấy, sát trùng, chưng cất, trao đổi nhiệt, làm mát, hóa lỏng…): xác định (1) loại quá trình xử lý nhiệt, (2) nguồn năng lượng, (3) lĩnh vực ứng dụng.",
-  "sourceVi": "Bảng quyết định do giám đốc Hermes-211 xây dựng từ phân tích biểu thuế VN 2024 và chú giải WCO, 02/10/2026.",
   "inputs": [
     {
       "attribute": "processType",
+      "labelVi": "Loại quá trình xử lý",
+      "questionVi": "processType?",
       "type": "enum",
       "domain": [
         "waterHeating",
@@ -520,22 +472,22 @@
         "liquefying",
         "foodBeverage",
         "parts"
-      ],
-      "labelVi": "processType",
-      "questionVi": "processType?"
+      ]
     },
     {
       "attribute": "powerSource",
+      "labelVi": "Nguồn năng lượng",
+      "questionVi": "powerSource?",
       "type": "enum",
       "domain": [
         "electric",
         "nonElectric"
-      ],
-      "labelVi": "powerSource",
-      "questionVi": "powerSource?"
+      ]
     },
     {
       "attribute": "application",
+      "labelVi": "Ứng dụng",
+      "questionVi": "application?",
       "type": "enum",
       "domain": [
         "household",
@@ -543,21 +495,21 @@
         "medical",
         "industrial",
         "general"
-      ],
-      "labelVi": "application",
-      "questionVi": "application?"
+      ]
     },
     {
       "attribute": "specialMaterial",
+      "labelVi": "Vật liệu/loại đặc biệt",
+      "questionVi": "specialMaterial?",
       "type": "enum",
       "domain": [
         "fluoropolymer",
         "filmManufacturing",
         "gasWater",
         "none"
-      ],
-      "labelVi": "specialMaterial",
-      "questionVi": "specialMaterial?"
+      ]
     }
-  ]
+  ],
+  "essenceTestVi": "Với thiết bị xử lý nhiệt (đun nước, sấy, sát trùng, chưng cất, trao đổi nhiệt, làm mát, hóa lỏng…): xác định (1) loại quá trình xử lý nhiệt, (2) nguồn năng lượng, (3) lĩnh vực ứng dụng.",
+  "essenceVi": "Với thiết bị xử lý nhiệt (đun nước, sấy, sát trùng, chưng cất, trao đổi nhiệt, làm mát, hóa lỏng…): xác định (1) loại quá trình xử lý nhiệt, (2) nguồn năng lượng, (3) lĩnh vực ứng dụng."
 }

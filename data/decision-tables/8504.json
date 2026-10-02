@@ -1,78 +1,8 @@
 {
   "heading": "8504",
   "description": "Electric transformers, static converters (e.g. rectifiers) and inductors",
-  "attributes": [
-    {
-      "id": "productType",
-      "descriptionVi": "Loại sản phẩm",
-      "values": {
-        "ballast": "Chấn lưu (cho đèn phóng/ống phóng)",
-        "transformer_le1kVA": "Biến áp ≤1kVA (850431)",
-        "transformer_1to16kVA": "Biến áp 1-16kVA (850432)",
-        "transformer_16to630kVA": "Biến áp 16-630kVA (850433)",
-        "transformer_gt630kVA": "Biến áp >630kVA (850434)",
-        "transformer_gt1kVA": "Biến áp >1kVA phân phối (850421-850423)",
-        "staticConverter": "Bộ chỉnh lưu / UPS / nghịch lưu (850440)",
-        "inductor": "Cuộn cảm (850450)",
-        "parts": "Phụ tùng (850490)"
-      }
-    },
-    {
-      "id": "senMarked",
-      "descriptionVi": "Có nhãn SEN (thiết bị điện cao áp)",
-      "values": {
-        "sen": "Có SEN",
-        "nonSen": "Không SEN / không áp dụng"
-      }
-    },
-    {
-      "id": "powerkVA",
-      "descriptionVi": "Công suất danh định (kVA)",
-      "values": {
-        "le1": "≤1 kVA",
-        "gt1le10": ">1 đến 10 kVA",
-        "gt10le15": ">10 đến 15 kVA",
-        "gt15le20": ">15 đến 20 kVA",
-        "gt20le30": ">20 đến 30 kVA",
-        "gt30": ">30 kVA",
-        "le2500": "≤2.500 kVA",
-        "gt2500le10000": ">2.500 đến 10.000 kVA",
-        "gt10000": ">10.000 kVA",
-        "unspecified": "Không phân loại theo kVA"
-      }
-    },
-    {
-      "id": "voltageClass",
-      "descriptionVi": "Cấp điện áp (kV)",
-      "values": {
-        "lt1": "<1 kV",
-        "ge1lt66": "1-66 kV",
-        "ge66lt110": "66-110 kV",
-        "ge110": "≥110 kV",
-        "unspecified": "Không quy định"
-      }
-    },
-    {
-      "id": "specialType",
-      "descriptionVi": "Loại đặc biệt / ứng dụng riêng",
-      "values": {
-        "currentTransformer": "Máy biến dòng (CT)",
-        "freqScan": "Biến áp quét về (tần số quét ngược)",
-        "ifTransformer": "Biến áp trung tần (>3 MHz)",
-        "toys": "Đồ chơi / mô hình thu nhỏ",
-        "stepUpDown": "Biến áp tăng/giảm tấc, điều chỉnh trượt",
-        "adapter": "Biến áp thích ứng",
-        "dryExplosionProof": "Biến áp khô phòng nổ",
-        "batteryCharger": "Máy nạp ắc qui >100kVA",
-        "ups": "Bộ nguồn liên tục (UPS)",
-        "rectifier": "Bộ chỉnh lưu khác",
-        "inverter": "Bộ nghịch lưu",
-        "chipInductor": "Cuộn cảm con chip",
-        "dataProcInductor": "Cuộn cảm cho bộ nguồn thiết bị xử lý dữ liệu/viễn thông",
-        "none": "Không có loại đặc biệt"
-      }
-    }
-  ],
+  "sourceVi": "Bảng quyết định do giám đốc Hermes-211 xây dựng từ phân tích biểu thuế VN 2024 và chú giải WCO, 02/10/2026.",
+  "verified": false,
   "rules": [
     {
       "id": "8504-r001",
@@ -1183,12 +1113,11 @@
       "source": "hermes-211-8504"
     }
   ],
-  "verified": false,
-  "essenceTestVi": "Với máy biến áp, bộ chỉnh lưu, cuộn cảm: xác định (1) loại sản phẩm (biến áp theo công suất/kV, UPS, cuộn cảm, phụ tùng), (2) có nhãn SEN không, (3) công suất kVA, (4) cấp điện áp, (5) loại đặc biệt.",
-  "sourceVi": "Bảng quyết định do giám đốc Hermes-211 xây dựng từ phân tích biểu thuế VN 2024 và chú giải WCO, 02/10/2026.",
   "inputs": [
     {
       "attribute": "productType",
+      "labelVi": "Loại sản phẩm",
+      "questionVi": "Đây là loại sản phẩm điện nào?",
       "type": "enum",
       "domain": [
         "ballast",
@@ -1200,169 +1129,22 @@
         "staticConverter",
         "inductor",
         "parts"
-      ],
-      "labelVi": "Loại sản phẩm",
-      "questionVi": "Đây là loại sản phẩm điện nào?",
-      "detect": {
-        "ballast": [
-          "chấn lưu",
-          "ballast",
-          "balast",
-          "đèn phóng điện",
-          "ống phóng"
-        ],
-        "staticConverter": [
-          "UPS",
-          "nghịch lưu",
-          "inverter",
-          "chỉnh lưu",
-          "bộ nguồn",
-          "converter",
-          "rectifier"
-        ],
-        "inductor": [
-          "cuộn cảm",
-          "inductor"
-        ],
-        "parts": [
-          "phụ tùng",
-          "bộ phận",
-          "parts of",
-          "của máy"
-        ]
-      },
-      "_detect": {
-        "ballast": [
-          {
-            "raw": "chấn lưu",
-            "dia": true,
-            "key": "chấn lưu",
-            "folded": "chan luu"
-          },
-          {
-            "raw": "ballast",
-            "dia": false,
-            "key": "ballast",
-            "folded": "ballast"
-          },
-          {
-            "raw": "balast",
-            "dia": false,
-            "key": "balast",
-            "folded": "balast"
-          },
-          {
-            "raw": "đèn phóng điện",
-            "dia": true,
-            "key": "đèn phóng điện",
-            "folded": "den phong dien"
-          },
-          {
-            "raw": "ống phóng",
-            "dia": true,
-            "key": "ống phóng",
-            "folded": "ong phong"
-          }
-        ],
-        "staticConverter": [
-          {
-            "raw": "UPS",
-            "dia": false,
-            "key": "ups",
-            "folded": "ups"
-          },
-          {
-            "raw": "nghịch lưu",
-            "dia": true,
-            "key": "nghịch lưu",
-            "folded": "nghich luu"
-          },
-          {
-            "raw": "inverter",
-            "dia": false,
-            "key": "inverter",
-            "folded": "inverter"
-          },
-          {
-            "raw": "chỉnh lưu",
-            "dia": true,
-            "key": "chỉnh lưu",
-            "folded": "chinh luu"
-          },
-          {
-            "raw": "bộ nguồn",
-            "dia": true,
-            "key": "bộ nguồn",
-            "folded": "bo nguon"
-          },
-          {
-            "raw": "converter",
-            "dia": false,
-            "key": "converter",
-            "folded": "converter"
-          },
-          {
-            "raw": "rectifier",
-            "dia": false,
-            "key": "rectifier",
-            "folded": "rectifier"
-          }
-        ],
-        "inductor": [
-          {
-            "raw": "cuộn cảm",
-            "dia": true,
-            "key": "cuộn cảm",
-            "folded": "cuon cam"
-          },
-          {
-            "raw": "inductor",
-            "dia": false,
-            "key": "inductor",
-            "folded": "inductor"
-          }
-        ],
-        "parts": [
-          {
-            "raw": "phụ tùng",
-            "dia": true,
-            "key": "phụ tùng",
-            "folded": "phu tung"
-          },
-          {
-            "raw": "bộ phận",
-            "dia": true,
-            "key": "bộ phận",
-            "folded": "bo phan"
-          },
-          {
-            "raw": "parts of",
-            "dia": false,
-            "key": "parts of",
-            "folded": "parts of"
-          },
-          {
-            "raw": "của máy",
-            "dia": true,
-            "key": "của máy",
-            "folded": "cua may"
-          }
-        ]
-      }
+      ]
     },
     {
       "attribute": "senMarked",
+      "labelVi": "Có nhãn SEN (thiết bị điện cao áp)",
+      "questionVi": "Thiết bị có nhãn SEN không?",
       "type": "enum",
       "domain": [
         "sen",
         "nonSen"
-      ],
-      "labelVi": "Có nhãn SEN",
-      "questionVi": "Thiết bị có nhãn SEN không?",
-      "_detect": {}
+      ]
     },
     {
       "attribute": "powerkVA",
+      "labelVi": "Công suất danh định (kVA)",
+      "questionVi": "Công suất danh định bao nhiêu kVA?",
       "type": "enum",
       "domain": [
         "le1",
@@ -1375,13 +1157,12 @@
         "gt2500le10000",
         "gt10000",
         "unspecified"
-      ],
-      "labelVi": "Công suất (kVA)",
-      "questionVi": "Công suất danh định bao nhiêu kVA?",
-      "_detect": {}
+      ]
     },
     {
       "attribute": "voltageClass",
+      "labelVi": "Cấp điện áp (kV)",
+      "questionVi": "Điện áp làm việc bao nhiêu kV?",
       "type": "enum",
       "domain": [
         "lt1",
@@ -1389,13 +1170,12 @@
         "ge66lt110",
         "ge110",
         "unspecified"
-      ],
-      "labelVi": "Cấp điện áp",
-      "questionVi": "Điện áp làm việc bao nhiêu kV?",
-      "_detect": {}
+      ]
     },
     {
       "attribute": "specialType",
+      "labelVi": "Loại đặc biệt / ứng dụng riêng",
+      "questionVi": "Có loại đặc biệt nào không?",
       "type": "enum",
       "domain": [
         "currentTransformer",
@@ -1412,11 +1192,9 @@
         "chipInductor",
         "dataProcInductor",
         "none"
-      ],
-      "labelVi": "Loại đặc biệt",
-      "questionVi": "Có loại đặc biệt nào không?",
-      "_detect": {}
+      ]
     }
   ],
-  "hitPolicy": "PRIORITY"
+  "essenceTestVi": "Với máy biến áp, bộ chỉnh lưu, cuộn cảm: xác định (1) loại sản phẩm (biến áp theo công suất/kV, UPS, cuộn cảm, phụ tùng), (2) có nhãn SEN không, (3) công suất kVA, (4) cấp điện áp, (5) loại đặc biệt.",
+  "essenceVi": "Với máy biến áp, bộ chỉnh lưu, cuộn cảm: xác định (1) loại sản phẩm (biến áp theo công suất/kV, UPS, cuộn cảm, phụ tùng), (2) có nhãn SEN không, (3) công suất kVA, (4) cấp điện áp, (5) loại đặc biệt."
 }

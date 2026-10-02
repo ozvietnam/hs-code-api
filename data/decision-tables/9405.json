@@ -1,79 +1,8 @@
 {
   "heading": "9405",
   "description": "Luminaires and light fittings; including searchlights, spotlights and parts thereof, n.e.c.; illuminated signs, name-plates and the like, having permanently fixed light source and parts thereof n.e.c. or included",
-  "attributes": [
-    {
-      "id": "lightingTech",
-      "descriptionVi": "Công nghệ chiếu sáng",
-      "values": {
-        "led": "LED (đi-ốt phát quang)",
-        "fluorescent": "Đèn huỳnh quang",
-        "incandescent": "Đèn sợi đốt / halogen",
-        "solar": "Quang điện (pin mặt trời)",
-        "any": "Bất kỳ loại nào"
-      }
-    },
-    {
-      "id": "mounting",
-      "descriptionVi": "Vị trí/loại lắp đặt",
-      "values": {
-        "surgical": "Đèn phòng mổ",
-        "spotlight": "Đèn rọi (spotlight)",
-        "floodlight": "Đèn pha (floodlight)",
-        "signalAviation": "Tín hiệu hàng không / sân bay",
-        "publicRoad": "Chiếu sáng đường phố, nơi công cộng",
-        "roadSign": "Biển báo giao thông, đường bộ",
-        "signIlluminated": "Biển chiếu sáng, biển tên đường",
-        "militaryFlood": "Đèn bão, đèn thợ mỏ",
-        "householdAppliance": "Đèn báo hiệu thiết bị gia dụng (85.16)",
-        "religious": "Nghi lễ tôn giáo (đồng)",
-        "general": "Chiếu sáng thông thường khác"
-      }
-    },
-    {
-      "id": "electric",
-      "descriptionVi": "Có điện",
-      "values": {
-        "electric": "Có nguồn sáng điện",
-        "nonElectric": "Không điện (nến, đèn dầu)"
-      }
-    },
-    {
-      "id": "material",
-      "descriptionVi": "Vật liệu chính của phần thân/vỏ",
-      "values": {
-        "plastic": "Nhựa",
-        "metal": "Kim loại",
-        "glass": "Thủy tinh/gốm/sứ",
-        "textile": "Vải/dệt",
-        "copper": "Đồng (nghi lễ tôn giáo)",
-        "other": "Loại khác"
-      }
-    },
-    {
-      "id": "partType",
-      "descriptionVi": "Loại bộ phận (chỉ dùng khi productKind=parts)",
-      "values": {
-        "surgicalLamp": "Dùng cho đèn phòng mổ",
-        "spotlightPart": "Dùng cho đèn rọi",
-        "globeBowl": "Chao đèn hình cầu/thông phong",
-        "floodlightPart": "Dùng cho đèn pha",
-        "textileShade": "Chụp đèn bằng vải",
-        "otherShade": "Chụp đèn bằng vật liệu khác",
-        "ceramicMetalPart": "Bằng gốm, sứ hoặc kim loại",
-        "generalPart": "Bộ phận khác"
-      }
-    },
-    {
-      "id": "productKind",
-      "descriptionVi": "Loại sản phẩm",
-      "values": {
-        "lamp": "Đèn chiếu sáng hoàn chỉnh",
-        "sign": "Biển chiếu sáng, biển tên",
-        "parts": "Phụ tùng"
-      }
-    }
-  ],
+  "sourceVi": "Bảng quyết định do giám đốc Hermes-211 xây dựng từ phân tích biểu thuế VN 2024 và chú giải WCO, 02/10/2026.",
+  "verified": false,
   "rules": [
     {
       "id": "9405-r001",
@@ -972,23 +901,22 @@
       }
     }
   ],
-  "verified": false,
-  "essenceTestVi": "Với đèn chiếu sáng và bộ phận: xác định (1) loại sản phẩm (đèn hoàn chỉnh, biển chiếu sáng, phụ tùng), (2) công nghệ chiếu sáng (LED, huỳnh quang, sợi đốt, nến…), (3) vị trí lắp đặt, (4) có điện hay không, (5) vật liệu chính.",
-  "sourceVi": "Bảng quyết định do giám đốc Hermes-211 xây dựng từ phân tích biểu thuế VN 2024 và chú giải WCO, 02/10/2026.",
   "inputs": [
     {
       "attribute": "productKind",
+      "labelVi": "Loại sản phẩm",
+      "questionVi": "productKind?",
       "type": "enum",
       "domain": [
         "lamp",
         "sign",
         "parts"
-      ],
-      "labelVi": "productKind",
-      "questionVi": "productKind?"
+      ]
     },
     {
       "attribute": "lightingTech",
+      "labelVi": "Công nghệ chiếu sáng",
+      "questionVi": "lightingTech?",
       "type": "enum",
       "domain": [
         "led",
@@ -996,12 +924,12 @@
         "incandescent",
         "solar",
         "any"
-      ],
-      "labelVi": "lightingTech",
-      "questionVi": "lightingTech?"
+      ]
     },
     {
       "attribute": "mounting",
+      "labelVi": "Vị trí/loại lắp đặt",
+      "questionVi": "mounting?",
       "type": "enum",
       "domain": [
         "surgical",
@@ -1015,22 +943,22 @@
         "householdAppliance",
         "religious",
         "general"
-      ],
-      "labelVi": "mounting",
-      "questionVi": "mounting?"
+      ]
     },
     {
       "attribute": "electric",
+      "labelVi": "Có điện",
+      "questionVi": "electric?",
       "type": "enum",
       "domain": [
         "electric",
         "nonElectric"
-      ],
-      "labelVi": "electric",
-      "questionVi": "electric?"
+      ]
     },
     {
       "attribute": "material",
+      "labelVi": "Vật liệu chính của phần thân/vỏ",
+      "questionVi": "material?",
       "type": "enum",
       "domain": [
         "plastic",
@@ -1039,12 +967,12 @@
         "textile",
         "copper",
         "other"
-      ],
-      "labelVi": "material",
-      "questionVi": "material?"
+      ]
     },
     {
       "attribute": "partType",
+      "labelVi": "Loại bộ phận (chỉ dùng khi productKind=parts)",
+      "questionVi": "partType?",
       "type": "enum",
       "domain": [
         "surgicalLamp",
@@ -1055,9 +983,9 @@
         "otherShade",
         "ceramicMetalPart",
         "generalPart"
-      ],
-      "labelVi": "partType",
-      "questionVi": "partType?"
+      ]
     }
-  ]
+  ],
+  "essenceTestVi": "Với đèn chiếu sáng và bộ phận: xác định (1) loại sản phẩm (đèn hoàn chỉnh, biển chiếu sáng, phụ tùng), (2) công nghệ chiếu sáng (LED, huỳnh quang, sợi đốt, nến…), (3) vị trí lắp đặt, (4) có điện hay không, (5) vật liệu chính.",
+  "essenceVi": "Với đèn chiếu sáng và bộ phận: xác định (1) loại sản phẩm (đèn hoàn chỉnh, biển chiếu sáng, phụ tùng), (2) công nghệ chiếu sáng (LED, huỳnh quang, sợi đốt, nến…), (3) vị trí lắp đặt, (4) có điện hay không, (5) vật liệu chính."
 }

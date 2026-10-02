@@ -1,49 +1,8 @@
 {
   "heading": "8536",
   "description": "Electrical apparatus for switching, protecting electrical circuits, for making connections to or in electrical circuits, for a voltage not exceeding 1000 volts; connectors for optical fibres, optical fibre bundles or cables",
-  "attributes": [
-    {
-      "id": "function",
-      "descriptionVi": "Loại thiết bị",
-      "values": {
-        "fuse": "Cầu chì (fuse)",
-        "circuitBreaker": "Cầu dao tự động (automatic circuit breaker)",
-        "surgeProtection": "Thiết bị chống sét, chống quá dòng khác",
-        "relayLe60V": "Rơ le điện áp ≤ 60V",
-        "relayGt60V": "Rơ le điện áp > 60V",
-        "switch": "Công tắc điện",
-        "lampholder": "Đế đèn",
-        "plug": "Phích cắm, ổ cắm điện",
-        "fiberConnector": "Đầu nối cáp quang",
-        "junctionBlock": "Bộ đấu nối dây, kẹp pin, phiến đầu nối"
-      }
-    },
-    {
-      "id": "currentRating",
-      "descriptionVi": "Dòng điện định mức (ampere)",
-      "values": {
-        "lt16A": "Dưới 16A (< 16A)",
-        "a16to32": "Từ 16A đến 32A",
-        "a32to1000": "Trên 32A đến 1.000A",
-        "unspecified": "Không quy định cụ thể"
-      }
-    },
-    {
-      "id": "specialApp",
-      "descriptionVi": "Ứng dụng đặc biệt hoặc vật liệu",
-      "values": {
-        "fan": "Quạt điện (ứng dụng quạt)",
-        "radio": "Thiết bị sóng vô tuyến",
-        "sen": "Xe có động cơ (SEN)",
-        "riceCooker": "Nồi cơm điện, lò nướng",
-        "telephone": "Điện thoại, viễn thông",
-        "motorStarter": "Khởi động động cơ điện, đảo chiều quay",
-        "ceramic": "Bằng gốm",
-        "copper": "Bằng đồng",
-        "none": "Không có ứng dụng đặc biệt"
-      }
-    }
-  ],
+  "sourceVi": "Bảng quyết định do giám đốc Hermes-211 xây dựng từ phân tích biểu thuế VN 2024 và chú giải WCO, 02/10/2026.",
+  "verified": false,
   "rules": [
     {
       "id": "8536-r001",
@@ -865,12 +824,11 @@
       }
     }
   ],
-  "verified": false,
-  "essenceTestVi": "Với thiết bị đóng cắt, bảo vệ, đấu nối mạch điện ≤1000V: xác định (1) chức năng (cầu chì, CB, rơ le, công tắc, phích cắm…), (2) dòng định mức (A), (3) ứng dụng/vật liệu đặc biệt.",
-  "sourceVi": "Bảng quyết định do giám đốc Hermes-211 xây dựng từ phân tích biểu thuế VN 2024 và chú giải WCO, 02/10/2026.",
   "inputs": [
     {
       "attribute": "function",
+      "labelVi": "Loại thiết bị",
+      "questionVi": "function?",
       "type": "enum",
       "domain": [
         "fuse",
@@ -883,24 +841,24 @@
         "plug",
         "fiberConnector",
         "junctionBlock"
-      ],
-      "labelVi": "function",
-      "questionVi": "function?"
+      ]
     },
     {
       "attribute": "currentRating",
+      "labelVi": "Dòng điện định mức (ampere)",
+      "questionVi": "currentRating?",
       "type": "enum",
       "domain": [
         "lt16A",
         "a16to32",
         "a32to1000",
         "unspecified"
-      ],
-      "labelVi": "currentRating",
-      "questionVi": "currentRating?"
+      ]
     },
     {
       "attribute": "specialApp",
+      "labelVi": "Ứng dụng đặc biệt hoặc vật liệu",
+      "questionVi": "specialApp?",
       "type": "enum",
       "domain": [
         "fan",
@@ -912,9 +870,9 @@
         "ceramic",
         "copper",
         "none"
-      ],
-      "labelVi": "specialApp",
-      "questionVi": "specialApp?"
+      ]
     }
-  ]
+  ],
+  "essenceTestVi": "Với thiết bị đóng cắt, bảo vệ, đấu nối mạch điện ≤1000V: xác định (1) chức năng (cầu chì, CB, rơ le, công tắc, phích cắm…), (2) dòng định mức (A), (3) ứng dụng/vật liệu đặc biệt.",
+  "essenceVi": "Với thiết bị đóng cắt, bảo vệ, đấu nối mạch điện ≤1000V: xác định (1) chức năng (cầu chì, CB, rơ le, công tắc, phích cắm…), (2) dòng định mức (A), (3) ứng dụng/vật liệu đặc biệt."
 }
