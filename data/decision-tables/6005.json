@@ -16,10 +16,30 @@
       "labelVi": "Loại sợi",
       "questionVi": "Vải dệt kim dọc bằng sợi gì: sợi tổng hợp (polyester, nylon, etc.), sợi nhân tạo (viscose), lông cừu/lông động vật mịn, vải theo chú giải đặc biệt Chương 60, hay loại khác?",
       "detect": {
-        "synthetic": ["sợi tổng hợp", "polyester", "nylon", "sợi PE", "sợi PP", "synthetic"],
-        "artificial": ["sợi nhân tạo", "viscose", "rayon", "sợi visco"],
-        "wool": ["lông cừu", "lông động vật", "len", "wool"],
-        "other": ["sợi khác", "vải dệt kim"]
+        "synthetic": [
+          "sợi tổng hợp",
+          "polyester",
+          "nylon",
+          "sợi PE",
+          "sợi PP",
+          "synthetic"
+        ],
+        "artificial": [
+          "sợi nhân tạo",
+          "viscose",
+          "rayon",
+          "sợi visco"
+        ],
+        "wool": [
+          "lông cừu",
+          "lông động vật",
+          "len",
+          "wool"
+        ],
+        "other": [
+          "sợi khác",
+          "vải dệt kim"
+        ]
       }
     },
     {
@@ -34,10 +54,27 @@
       "labelVi": "Trạng thái nhuộm/màu",
       "questionVi": "Vải đã qua xử lý nhuộm/màu: chưa tẩy trắng hoặc đã tẩy trắng, đã nhuộm, sợi nhiều màu (yarn-dyed), hay đã in?",
       "detect": {
-        "unbleached_bleached": ["chưa nhuộm", "trắng", "chưa tẩy", "bleached"],
-        "dyed": ["đã nhuộm", "nhuộm", "dyed"],
-        "yarn_dyed": ["sợi nhiều màu", "yarn dyed", "nhiều màu sợi"],
-        "printed": ["đã in", "in hoa", "printed"]
+        "unbleached_bleached": [
+          "chưa nhuộm",
+          "trắng",
+          "chưa tẩy",
+          "bleached"
+        ],
+        "dyed": [
+          "đã nhuộm",
+          "nhuộm",
+          "dyed"
+        ],
+        "yarn_dyed": [
+          "sợi nhiều màu",
+          "yarn dyed",
+          "nhiều màu sợi"
+        ],
+        "printed": [
+          "đã in",
+          "in hoa",
+          "printed"
+        ]
       }
     },
     {
@@ -50,7 +87,10 @@
       "labelVi": "Có phải sợi PBT không",
       "questionVi": "Vải có phải là sợi polybutyleneterephthalat (PBT) không?",
       "detect": {
-        "true": ["PBT", "polybutylene"],
+        "true": [
+          "PBT",
+          "polybutylene"
+        ],
         "false": []
       }
     },
@@ -299,5 +339,83 @@
   ],
   "hitPolicy": "PRIORITY",
   "essenceTestVi": "fiberType (5: synthetic/artificial/wool/special_note/other) + dyeingState (4: unbleached/dyed/yarn_dyed/printed) + isPBT + pbtSubType — phân biệt 19 mã 8 số trong nhóm 6005. Tất cả MFN 12%.",
-  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 6005 (Thông tư 65/2024/TT-BTC)."
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 6005 (Thông tư 65/2024/TT-BTC).",
+  "inputAttributes": [
+    "fiberType",
+    "dyeingState",
+    "isPBT",
+    "pbtSubType"
+  ],
+  "attributes": {
+    "fiberType": {
+      "detect": {
+        "synthetic": [
+          "sợi tổng hợp",
+          "polyester",
+          "nylon",
+          "sợi PE",
+          "sợi PP",
+          "synthetic"
+        ],
+        "artificial": [
+          "sợi nhân tạo",
+          "viscose",
+          "rayon",
+          "sợi visco"
+        ],
+        "wool": [
+          "lông cừu",
+          "lông động vật",
+          "len",
+          "wool"
+        ],
+        "other": [
+          "sợi khác",
+          "vải dệt kim"
+        ]
+      },
+      "type": "enum"
+    },
+    "dyeingState": {
+      "detect": {
+        "unbleached_bleached": [
+          "chưa nhuộm",
+          "trắng",
+          "chưa tẩy",
+          "bleached"
+        ],
+        "dyed": [
+          "đã nhuộm",
+          "nhuộm",
+          "dyed"
+        ],
+        "yarn_dyed": [
+          "sợi nhiều màu",
+          "yarn dyed",
+          "nhiều màu sợi"
+        ],
+        "printed": [
+          "đã in",
+          "in hoa",
+          "printed"
+        ]
+      },
+      "type": "enum"
+    },
+    "isPBT": {
+      "detect": {
+        "true": [
+          "PBT",
+          "polybutylene"
+        ],
+        "false": []
+      },
+      "type": "enum"
+    },
+    "pbtSubType": {
+      "detect": {},
+      "type": "enum"
+    }
+  },
+  "essenceVi": "fiberType × dyeingState × isPBT × pbtSubType"
 }
