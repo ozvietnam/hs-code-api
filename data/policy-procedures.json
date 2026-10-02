@@ -545,6 +545,208 @@
     "onFail": "Không được thông quan khi thiếu giấy phép.",
     "verified": true
   },
+  "cam-nk": {
+    "code": "cam-nk",
+    "label": "Cấm nhập khẩu",
+    "labelShort": "Cấm NK",
+    "ministry": "BCT/BMTT",
+    "ministryLabel": "Bộ Công Thương / Bộ Máy tính và Truyền thông",
+    "trigger": "Hàng hóa thuộc danh mục cấm nhập khẩu theo quy định",
+    "matchPatterns": [
+      "cấm nhập khẩu",
+      "cấm nk",
+      "cấm NK",
+      "hàng cấm"
+    ],
+    "documents": [
+      "Không có giấy tờ nào cho phép nhập khẩu — hàng cấm không được thông quan"
+    ],
+    "estimatedDays": {
+      "min": 0,
+      "max": 0,
+      "note": "Không thể thông quan. Hàng bị buộc tái xuất hoặc tiêu hủy."
+    },
+    "estimatedCost": "0 VND — không phát sinh thủ tục",
+    "agency": "Hải quan cửa khẩu",
+    "legalBasis": "Nghị định 69/2018/NĐ-CP; Danh mục hàng hóa cấm nhập khẩu",
+    "exemptions": [],
+    "notes": "Một số hàng cấm nhập khẩu có thể được phép nhập khẩu phi thương mại (quà biếu, hành lý) trong giới hạn cho phép.",
+    "severity": "CRITICAL",
+    "onFail": "Hàng bị tịch thu hoặc buộc tái xuất.",
+    "verified": true
+  },
+  "kd-dk": {
+    "code": "kd-dk",
+    "label": "Kinh doanh có điều kiện / Sản xuất kinh doanh có điều kiện",
+    "labelShort": "KD có ĐK",
+    "ministry": "BCT/BMTT",
+    "ministryLabel": "Bộ Công Thương / Bộ Máy tính và Truyền thông",
+    "trigger": "Hàng nhập khẩu thuộc ngành nghề kinh doanh có điều kiện",
+    "matchPatterns": [
+      "sxkd",
+      "sản xuất kinh doanh có điều kiện",
+      "kinh doanh có điều kiện",
+      "kd có điều kiện",
+      "giấy phép kinh doanh có điều kiện",
+      "giấy phép sản xuất kinh doanh"
+    ],
+    "documents": [
+      "Giấy phép kinh doanh ngành nghề có điều kiện do Sở KH&ĐT cấp",
+      "Đăng ký kinh doanh / Giấy chứng nhận đăng ký doanh nghiệp",
+      "Hồ sơ chứng minh đủ điều kiện theo ngành nghề cụ thể"
+    ],
+    "estimatedDays": {
+      "min": 5,
+      "max": 20,
+      "note": "Tùy ngành nghề và cơ quan cấp phép"
+    },
+    "estimatedCost": "0–500,000 VND (phí cấp phép tùy ngành)",
+    "agency": "Sở Kế hoạch và Đầu tư / Bộ quản lý ngành",
+    "legalBasis": "Nghị định 59/2025/NĐ-CP về điều kiện kinh doanh",
+    "exemptions": [
+      "Hàng nhập khẩu để sản xuất, gia công phục vụ xuất khẩu (không bán trong nước)"
+    ],
+    "notes": "Nhiều ngành nghề yêu cầu giấy phép con: rượu, thuốc lá, mỹ phẩm, dược phẩm, vận tải, giáo dục…",
+    "severity": "HIGH",
+    "onFail": "Hàng không được thông quan nếu doanh nghiệp chưa có giấy phép kinh doanh phù hợp.",
+    "verified": true
+  },
+  "dk-luu-hanh": {
+    "code": "dk-luu-hanh",
+    "label": "Đăng ký lưu hành sản phẩm nhập khẩu",
+    "labelShort": "ĐK lưu hành",
+    "ministry": "BCT/BYTMTTT",
+    "ministryLabel": "Bộ Công Thương / Bộ Y tế / Bộ Máy tính và Truyền thông",
+    "trigger": "Một số sản phẩm nhập khẩu phải đăng ký lưu hành trước khi thông quan",
+    "matchPatterns": [
+      "đăng ký lưu hành",
+      "đăng ký lưu hành sản phẩm",
+      "cấp phép lưu hành"
+    ],
+    "documents": [
+      "Hồ sơ đăng ký lưu hành (theo mẫu cơ quan quản lý)",
+      "Giấy chứng nhận lưu hành do cơ quan có thẩm quyền cấp",
+      "Kết quả kiểm nghiệm sản phẩm (nếu yêu cầu)"
+    ],
+    "estimatedDays": {
+      "min": 7,
+      "max": 45,
+      "note": "Có thể xin cấp phép tạm nhập khẩu để thông quan trước"
+    },
+    "estimatedCost": "500,000–2,000,000 VND",
+    "agency": "Cơ quan quản lý chuyên ngành (BYT, BCT, BMTT tùy loại sản phẩm)",
+    "legalBasis": "Tùy loại sản phẩm: Luật Khám bệnh, chữa bệnh; Luật Chất lượng; Nghị định 87/2017/NĐ-CP",
+    "exemptions": [
+      "Sản phẩm được miễn đăng ký lưu hành theo quy định riêng"
+    ],
+    "notes": "Áp dụng cho một số thiết bị y tế, mỹ phẩm, thực phẩm chức năng nhập khẩu lần đầu.",
+    "severity": "HIGH",
+    "onFail": "Hàng bị giữ tại cửa khẩu cho đến khi có giấy phép.",
+    "verified": true
+  },
+  "xk": {
+    "code": "xk",
+    "label": "Giấy phép xuất khẩu (cho hàng hóa xuất khẩu)",
+    "labelShort": "GP XK",
+    "ministry": "BCT",
+    "ministryLabel": "Bộ Công Thương",
+    "trigger": "Một số mặt hàng xuất khẩu thuộc diện quản lý đặc biệt cần giấy phép",
+    "matchPatterns": [
+      "giấy phép xuất khẩu",
+      "gp xk",
+      "gp-xk",
+      "xuất khẩu có điều kiện"
+    ],
+    "documents": [
+      "Đơn xin cấp giấy phép xuất khẩu (theo mẫu Bộ Công Thương)",
+      "Hồ sơ chứng minh nguồn gốc và điều kiện xuất khẩu"
+    ],
+    "estimatedDays": {
+      "min": 3,
+      "max": 10,
+      "note": "Tùy loại hàng và cơ quan cấp phép"
+    },
+    "estimatedCost": "100,000–500,000 VND",
+    "agency": "Bộ Công Thương — Cục Xuất nhập khẩu",
+    "legalBasis": "Nghị định 69/2018/NĐ-CP; các Nghị định chuyên ngành",
+    "exemptions": [
+      "Hầu hết hàng hóa xuất khẩu không cần giấy phép xuất khẩu"
+    ],
+    "notes": "Chỉ áp dụng cho một số mặt hàng cụ thể: khoáng sản, động vật hoang dã, hàng文化…",
+    "severity": "MEDIUM",
+    "onFail": "Hàng không được xuất khẩu nếu thiếu giấy phép.",
+    "verified": true
+  },
+  "lam-san": {
+    "code": "lam-san",
+    "label": "Kiểm tra nguồn gốc lâm sản hợp pháp",
+    "labelShort": "Lâm sản",
+    "ministry": "BNNPTNT",
+    "ministryLabel": "Bộ Nông nghiệp và Phát triển Nông thôn",
+    "trigger": "Gỗ và các sản phẩm lâm sản nhập khẩu",
+    "matchPatterns": [
+      "lâm sản",
+      "kiểm tra nguồn gốc",
+      "hs lâm sản",
+      "gỗ nhập khẩu",
+      " CITES nguồn gốc"
+    ],
+    "documents": [
+      "Giấy chứng nhận nguồn gốc lâm sản hợp pháp (FLEGT license, VPA/FLEGT)",
+      "Hoặc giấy phép CITES (nếu thuộc phụ lục CITES)",
+      "Hồ sơ chứng minh khai thác hợp pháp"
+    ],
+    "estimatedDays": {
+      "min": 5,
+      "max": 30,
+      "note": "Phụ thuộc vào việc xác minh nguồn gốc"
+    },
+    "estimatedCost": "0–1,000,000 VND",
+    "agency": "Cục Lâm nghiệp — Bộ NN&PTNT",
+    "legalBasis": "Luật Lâm nghiệp 2017; Nghị định 102/2017/NĐ-CP; VPA/FLEGT Vietnam-EU",
+    "exemptions": [
+      "Một số sản phẩm gỗ từ các nguồn được miễn kiểm tra"
+    ],
+    "notes": "EU FLEGT: gỗ và sản phẩm gỗ từ Việt Nam sang EU phải có giấy phép FLEGT. Ngược lại, nhập khẩu gỗ từ các nước có VPA cũng cần chứng từ tương đương.",
+    "severity": "HIGH",
+    "onFail": "Hàng bị tịch thu hoặc buộc tái xuất.",
+    "verified": true
+  },
+  "cong-bo": {
+    "code": "cong-bo",
+    "label": "Công bố sản phẩm / Tự công bố",
+    "labelShort": "Công bố SP",
+    "ministry": "BYT/BCT/BNNPTNT",
+    "ministryLabel": "Bộ Y tế / Bộ Công Thương / Bộ NN&PTNT",
+    "trigger": "Thực phẩm, mỹ phẩm, thực phẩm chức năng, trang thiết bị y tế nhập khẩu",
+    "matchPatterns": [
+      "công bố sản phẩm",
+      "tự công bố",
+      "đăng ký công bố",
+      "công bố mỹ phẩm",
+      "công bố thực phẩm"
+    ],
+    "documents": [
+      "Hồ sơ công bố sản phẩm (theo quy định của cơ quan quản lý)",
+      "Kết quả kiểm nghiệm của phòng kiểm nghiệm được công nhận",
+      "Nhãn sản phẩm (đã dịch tiếng Việt)"
+    ],
+    "estimatedDays": {
+      "min": 1,
+      "max": 30,
+      "note": "Tự công bố: nộp hồ sơ và tự chịu trách nhiệm. Đăng ký công bố: cơ quan xét duyệt."
+    },
+    "estimatedCost": "500,000–3,000,000 VND (phí kiểm nghiệm)",
+    "agency": "Cục An toàn thực phẩm (BYT), Cục Quản lý Dược (BYT), hoặc Cục Xúc tiến thương mại (BCT)",
+    "legalBasis": "Nghị định 15/2018/NĐ-CP (thực phẩm); Luật Dược 2016 (dược phẩm); Quyết định 33/2019/QĐ-TTg (mỹ phẩm)",
+    "exemptions": [
+      "Sản phẩm đã được công bố tại nước xuất khẩu và có chứng nhận của cơ quan nước đó (tùy loại sản phẩm)"
+    ],
+    "notes": "Mỹ phẩm nhập khẩu có thể tự công bố theo Nghị định 33/2019. Thực phẩm bảo vệ sức khỏe, thực phẩm dinh dưỡng chuyên biệt cần đăng ký công bố.",
+    "severity": "MEDIUM",
+    "onFail": "Sản phẩm không được phép bán tại Việt Nam.",
+    "verified": true
+  },
   "may-mac-84": {
     "code": "may-mac-84",
     "label": "Máy móc, thiết bị cơ khí — Chương 84",

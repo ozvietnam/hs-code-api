@@ -13,8 +13,8 @@ const check = (n, c, d_) => {
 
 const keys = Object.keys(d);
 
-// 1. Có đúng 50 entries
-check('có 50 entries', keys.length === 50);
+// 1. Có đúng 56 entries (14 original + 6 new procedure types)
+check('có 56 entries', keys.length === 56);
 
 // 2. Tất cả entries có verified=true
 const unverified = keys.filter(k => d[k].verified !== true);
@@ -23,7 +23,7 @@ check('tất cả verified=true', unverified.length === 0, unverified);
 // 3. Phân biệt procedure-type vs chapter-group
 const procTypes = keys.filter(k => !d[k].chapters);
 const chapterGroups = keys.filter(k => !!d[k].chapters);
-check('đúng 14 procedure types', procTypes.length === 14);
+check('đúng 20 procedure types', procTypes.length === 20);
 check('đúng 36 chapter groups', chapterGroups.length === 36);
 
 // 4. Mỗi chapter-group có chapters (array), hsRange, label, group
@@ -88,7 +88,7 @@ check('SOURCES.json có policy-procedures.json', !!ppFile);
 if (ppFile) {
   check('policy-procedures.json trong SOURCES có lastUpdated', typeof ppFile.lastUpdated === 'string');
   check('policy-procedures.json trong SOURCES có records', typeof ppFile.records === 'number');
-  check('policy-procedures.json records=50', ppFile.records === 50);
+  check('policy-procedures.json records=56', ppFile.records === 56);
   check('policy-procedures.json coverage 97/97', ppFile.coverage && ppFile.coverage.includes('97/97'));
   check('policy-procedures.json verifiedChapters 36/36', ppFile.verifiedChapters && ppFile.verifiedChapters.includes('36/36'));
 }
