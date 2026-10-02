@@ -1,0 +1,843 @@
+{
+  "heading": "9405",
+  "titleVi": "Đèn và bộ đèn — bảng quyết định đầy đủ 56 lá",
+  "generatedAt": "2026-10-02",
+  "generatedBy": "hermes-211",
+  "inputs": [
+    {
+      "attribute": "electric",
+      "type": "enum",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "labelVi": "Có điện không",
+      "questionVi": "Đèn có cắm điện (đèn điện) hay không (đèn dầu/nến/khí)?",
+      "descriptionVi": "Có điện (đèn điện) hay không (đèn dầu/nến/khí)",
+      "detect": {
+        "yes": [
+          "đèn điện",
+          "LED",
+          "đèn LED",
+          "electric luminaire",
+          "cắm điện"
+        ],
+        "no": [
+          "đèn dầu",
+          "đèn nến",
+          "đèn khí",
+          "đèn ga",
+          "không điện",
+          "gas lamp",
+          "oil lamp"
+        ]
+      }
+    },
+    {
+      "attribute": "led",
+      "type": "enum",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "labelVi": "Nguồn sáng LED",
+      "questionVi": "Nguồn sáng là LED hay sợi đốt/huỳnh quang/HID?",
+      "descriptionVi": "Nguồn sáng LED hay không (sợi đốt/huỳnh quang/HID)",
+      "detect": {
+        "yes": [
+          "LED",
+          "đi-ốt phát quang",
+          "đèn LED"
+        ],
+        "no": [
+          "sợi đốt",
+          "bóng đèn",
+          "huỳnh quang",
+          "fluorescent",
+          "halogen",
+          "HID"
+        ]
+      }
+    },
+    {
+      "attribute": "solarPV",
+      "type": "enum",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "labelVi": "Năng lượng mặt trời",
+      "questionVi": "Có dùng pin mặt trời (quang điện) không?",
+      "descriptionVi": "Dùng pin mặt trời (quang điện) hay nguồn thường",
+      "detect": {
+        "yes": [
+          "năng lượng mặt trời",
+          "solar",
+          "pin mặt trời",
+          "quang điện"
+        ],
+        "no": [
+          "không solar",
+          "điện lưới",
+          "ac power"
+        ]
+      }
+    },
+    {
+      "attribute": "application",
+      "type": "enum",
+      "domain": [
+        "surgical",
+        "flood",
+        "airport",
+        "street",
+        "outdoor",
+        "sign",
+        "mining",
+        "stringLight",
+        "fluorescent"
+      ],
+      "labelVi": "Loại ứng dụng",
+      "questionVi": "Đèn dùng để làm gì? (phòng mổ / đèn rọi / tín hiệu sân bay / đường phố / chiếu ngoài trời / biển báo / thợ mỏ / dây đèn trang trí)",
+      "descriptionVi": "Ứng dụng: surgical=phòng mổ, flood=đèn rọi, airport=tín hiệu sân bay, street=đường phố, outdoor=chiếu ngoài, sign=biển báo, mining=thợ mỏ, stringLight=dây đèn LED",
+      "detect": {
+        "surgical": [
+          "phòng mổ",
+          "đèn phòng mổ",
+          "surgical lamp",
+          "operating light"
+        ],
+        "flood": [
+          "đèn rọi",
+          "đèn chiếu",
+          "flood light",
+          "spot light",
+          "đèn pha rọi"
+        ],
+        "airport": [
+          "tín hiệu sân bay",
+          "đèn sân bay",
+          "airport light"
+        ],
+        "street": [
+          "đường phố",
+          "công cộng",
+          "đèn đường",
+          "street light",
+          "public lighting"
+        ],
+        "outdoor": [
+          "chiếu ngoài",
+          "ngoài trời",
+          "outdoor",
+          "exterior lighting"
+        ],
+        "sign": [
+          "biển báo",
+          "biển cảnh báo",
+          "đèn báo hiệu",
+          "sign board",
+          "traffic sign"
+        ],
+        "mining": [
+          "thợ mỏ",
+          "thợ khai thác đá",
+          "mining lamp",
+          "headlamp"
+        ],
+        "stringLight": [
+          "dây đèn",
+          "đèn trang trí",
+          "đèn giáng sinh",
+          "string light",
+          "Christmas light",
+          "LED string"
+        ],
+        "fluorescent": [
+          "huỳnh quang",
+          "fluorescent"
+        ]
+      }
+    },
+    {
+      "attribute": "material",
+      "type": "enum",
+      "domain": [
+        "plastic",
+        "metal",
+        "ceramic",
+        "textile",
+        "religious",
+        "gas"
+      ],
+      "labelVi": "Chất liệu chính",
+      "questionVi": "Chất liệu chính là gì? (plastic / kim loại / gốm-sứ / vật liệu dệt / đồng nghi lễ / khí đốt)",
+      "descriptionVi": "Chất liệu: plastic, metal, ceramic, textile, religious=đồng nghi lễ tôn giáo, gas=không điện",
+      "detect": {
+        "plastic": [
+          "plastic",
+          "nhựa",
+          "polymer"
+        ],
+        "metal": [
+          "kim loại",
+          "thép",
+          "nhôm",
+          "inox",
+          "sắt",
+          "metal"
+        ],
+        "ceramic": [
+          "gốm",
+          "sứ",
+          "ceramic"
+        ],
+        "textile": [
+          "dệt",
+          "vải",
+          "textile"
+        ],
+        "religious": [
+          "đồng nghi lễ",
+          "đồng đạo",
+          "tôn giáo",
+          "copper",
+          "religious"
+        ],
+        "gas": [
+          "khí đốt",
+          "ga",
+          "gas lamp"
+        ]
+      }
+    },
+    {
+      "attribute": "material2",
+      "type": "enum",
+      "domain": [
+        "glass",
+        "other"
+      ],
+      "labelVi": "Chất liệu phụ (chao đèn)",
+      "questionVi": "Chao đèn làm bằng gì? (thủy tinh / khác)",
+      "descriptionVi": "Chất liệu phụ: glass=thủy tinh / other=khác",
+      "detect": {
+        "glass": [
+          "thủy tinh",
+          "kính",
+          "glass",
+          "chao đèn"
+        ],
+        "other": [
+          "nhựa",
+          "kim loại"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "FIRST",
+  "rules": [
+    {
+      "id": "r01",
+      "priority": 100,
+      "when": {
+        "electric": "yes",
+        "led": "yes",
+        "application": "surgical"
+      },
+      "hs": "94051110",
+      "reasonVi": "Đèn bàn/tường/trần điện LED, phòng mổ"
+    },
+    {
+      "id": "r02",
+      "priority": 95,
+      "when": {
+        "electric": "yes",
+        "led": "yes",
+        "application": "flood"
+      },
+      "hs": "94051191",
+      "reasonVi": "Đèn bàn/tường/trần điện LED, đèn rọi"
+    },
+    {
+      "id": "r03",
+      "priority": 90,
+      "when": {
+        "electric": "yes",
+        "led": "yes"
+      },
+      "hs": "94051199",
+      "reasonVi": "Đèn bàn/tường/trần điện LED, loại khác"
+    },
+    {
+      "id": "r04",
+      "priority": 100,
+      "when": {
+        "electric": "yes",
+        "led": "no",
+        "application": "surgical"
+      },
+      "hs": "94051910",
+      "reasonVi": "Đèn bàn/tường/trần điện, phòng mổ"
+    },
+    {
+      "id": "r05",
+      "priority": 95,
+      "when": {
+        "electric": "yes",
+        "led": "no",
+        "application": "flood"
+      },
+      "hs": "94051991",
+      "reasonVi": "Đèn bàn/tường/trần điện, đèn rọi"
+    },
+    {
+      "id": "r06",
+      "priority": 92,
+      "when": {
+        "electric": "yes",
+        "led": "no",
+        "application": "fluorescent"
+      },
+      "hs": "94051992",
+      "reasonVi": "Đèn gắn bóng huỳnh quang"
+    },
+    {
+      "id": "r07",
+      "priority": 85,
+      "when": {
+        "electric": "yes",
+        "led": "no"
+      },
+      "hs": "94051999",
+      "reasonVi": "Đèn bàn/tường/trần điện, loại khác"
+    },
+    {
+      "id": "r08",
+      "priority": 100,
+      "when": {
+        "electric": "no",
+        "application": "surgical",
+        "material": "metal"
+      },
+      "hs": "94052110",
+      "reasonVi": "Đèn không điện kim loại, phòng mổ"
+    },
+    {
+      "id": "r09",
+      "priority": 95,
+      "when": {
+        "electric": "no",
+        "application": "surgical",
+        "material": "gas"
+      },
+      "hs": "94052910",
+      "reasonVi": "Đèn không điện khí đốt, phòng mổ"
+    },
+    {
+      "id": "r10",
+      "priority": 90,
+      "when": {
+        "electric": "no",
+        "material": "metal"
+      },
+      "hs": "94052190",
+      "reasonVi": "Đèn không điện kim loại, loại khác"
+    },
+    {
+      "id": "r11",
+      "priority": 85,
+      "when": {
+        "electric": "no",
+        "material": "gas"
+      },
+      "hs": "94052990",
+      "reasonVi": "Đèn không điện khí đốt, loại khác"
+    },
+    {
+      "id": "r12",
+      "priority": 100,
+      "when": {
+        "electric": "yes",
+        "led": "yes",
+        "application": "stringLight"
+      },
+      "hs": "94053100",
+      "reasonVi": "Dây đèn LED trang trí"
+    },
+    {
+      "id": "r13",
+      "priority": 90,
+      "when": {
+        "electric": "yes",
+        "led": "yes"
+      },
+      "hs": "94053900",
+      "reasonVi": "Đèn LED loại khác"
+    },
+    {
+      "id": "r14",
+      "priority": 100,
+      "when": {
+        "electric": "yes",
+        "led": "yes",
+        "solarPV": "yes",
+        "application": "flood"
+      },
+      "hs": "94054120",
+      "reasonVi": "Đèn rọi LED năng lượng mặt trời"
+    },
+    {
+      "id": "r15",
+      "priority": 98,
+      "when": {
+        "electric": "yes",
+        "led": "yes",
+        "solarPV": "yes",
+        "application": "airport"
+      },
+      "hs": "94054130",
+      "reasonVi": "Đèn tín hiệu sân bay, LED solar"
+    },
+    {
+      "id": "r16",
+      "priority": 96,
+      "when": {
+        "electric": "yes",
+        "led": "yes",
+        "solarPV": "yes",
+        "application": "street"
+      },
+      "hs": "94054140",
+      "reasonVi": "Đèn đường phố LED solar"
+    },
+    {
+      "id": "r17",
+      "priority": 94,
+      "when": {
+        "electric": "yes",
+        "led": "yes",
+        "solarPV": "yes",
+        "application": "outdoor"
+      },
+      "hs": "94054190",
+      "reasonVi": "Đèn chiếu ngoài LED solar"
+    },
+    {
+      "id": "r18",
+      "priority": 90,
+      "when": {
+        "electric": "yes",
+        "led": "yes",
+        "solarPV": "yes"
+      },
+      "hs": "94054110",
+      "reasonVi": "Đèn pha LED solar"
+    },
+    {
+      "id": "r19",
+      "priority": 100,
+      "when": {
+        "electric": "yes",
+        "led": "no",
+        "solarPV": "no",
+        "application": "surgical"
+      },
+      "hs": "94054210",
+      "reasonVi": "Đèn pha"
+    },
+    {
+      "id": "r20",
+      "priority": 95,
+      "when": {
+        "electric": "yes",
+        "led": "no",
+        "solarPV": "no",
+        "application": "flood"
+      },
+      "hs": "94054220",
+      "reasonVi": "Đèn rọi khác"
+    },
+    {
+      "id": "r21",
+      "priority": 92,
+      "when": {
+        "electric": "yes",
+        "led": "no",
+        "solarPV": "no",
+        "application": "airport"
+      },
+      "hs": "94054230",
+      "reasonVi": "Đèn tín hiệu sân bay"
+    },
+    {
+      "id": "r22",
+      "priority": 88,
+      "when": {
+        "electric": "yes",
+        "led": "no",
+        "solarPV": "no",
+        "application": "sign"
+      },
+      "hs": "94054240",
+      "reasonVi": "Đèn báo hiệu gia dụng"
+    },
+    {
+      "id": "r23",
+      "priority": 85,
+      "when": {
+        "electric": "yes",
+        "led": "no",
+        "solarPV": "no",
+        "application": "street"
+      },
+      "hs": "94054250",
+      "reasonVi": "Đèn đường phố"
+    },
+    {
+      "id": "r24",
+      "priority": 82,
+      "when": {
+        "electric": "yes",
+        "led": "no",
+        "solarPV": "no",
+        "application": "outdoor"
+      },
+      "hs": "94054260",
+      "reasonVi": "Đèn chiếu ngoài khác"
+    },
+    {
+      "id": "r25",
+      "priority": 80,
+      "when": {
+        "electric": "yes",
+        "led": "no",
+        "solarPV": "no"
+      },
+      "hs": "94054290",
+      "reasonVi": "Loại khác, không LED"
+    },
+    {
+      "id": "r26",
+      "priority": 100,
+      "when": {
+        "electric": "yes",
+        "led": "no",
+        "solarPV": "no",
+        "application": "surgical",
+        "material": "metal"
+      },
+      "hs": "94054910",
+      "reasonVi": "Đèn pha kim loại"
+    },
+    {
+      "id": "r27",
+      "priority": 95,
+      "when": {
+        "electric": "yes",
+        "led": "no",
+        "solarPV": "no",
+        "application": "flood",
+        "material": "metal"
+      },
+      "hs": "94054920",
+      "reasonVi": "Đèn rọi kim loại"
+    },
+    {
+      "id": "r28",
+      "priority": 92,
+      "when": {
+        "electric": "yes",
+        "led": "no",
+        "solarPV": "no",
+        "application": "airport",
+        "material": "metal"
+      },
+      "hs": "94054930",
+      "reasonVi": "Đèn tín hiệu sân bay kim loại"
+    },
+    {
+      "id": "r29",
+      "priority": 88,
+      "when": {
+        "electric": "yes",
+        "led": "no",
+        "solarPV": "no",
+        "application": "sign",
+        "material": "metal"
+      },
+      "hs": "94054940",
+      "reasonVi": "Đèn báo hiệu kim loại"
+    },
+    {
+      "id": "r30",
+      "priority": 85,
+      "when": {
+        "electric": "yes",
+        "led": "no",
+        "solarPV": "no",
+        "application": "street",
+        "material": "metal"
+      },
+      "hs": "94054950",
+      "reasonVi": "Đèn đường phố kim loại"
+    },
+    {
+      "id": "r31",
+      "priority": 82,
+      "when": {
+        "electric": "yes",
+        "led": "no",
+        "solarPV": "no",
+        "application": "outdoor",
+        "material": "metal"
+      },
+      "hs": "94054960",
+      "reasonVi": "Đèn chiếu ngoài kim loại"
+    },
+    {
+      "id": "r32",
+      "priority": 80,
+      "when": {
+        "electric": "yes",
+        "led": "no",
+        "solarPV": "no",
+        "material": "metal"
+      },
+      "hs": "94054990",
+      "reasonVi": "Loại khác kim loại"
+    },
+    {
+      "id": "r33",
+      "priority": 100,
+      "when": {
+        "electric": "no",
+        "material": "religious"
+      },
+      "hs": "94055011",
+      "reasonVi": "Đèn bằng đồng, nghi lễ tôn giáo"
+    },
+    {
+      "id": "r34",
+      "priority": 95,
+      "when": {
+        "electric": "no",
+        "material": "metal"
+      },
+      "hs": "94055019",
+      "reasonVi": "Loại khác bằng kim loại"
+    },
+    {
+      "id": "r35",
+      "priority": 90,
+      "when": {
+        "electric": "no",
+        "application": "mining"
+      },
+      "hs": "94055050",
+      "reasonVi": "Đèn thợ mỏ và thợ khai thác đá"
+    },
+    {
+      "id": "r36",
+      "priority": 85,
+      "when": {
+        "electric": "no",
+        "application": "outdoor"
+      },
+      "hs": "94055040",
+      "reasonVi": "Đèn bão"
+    },
+    {
+      "id": "r37",
+      "priority": 80,
+      "when": {
+        "electric": "no"
+      },
+      "hs": "94055090",
+      "reasonVi": "Loại khác, không điện"
+    },
+    {
+      "id": "r38",
+      "priority": 100,
+      "when": {
+        "application": "sign",
+        "electric": "yes"
+      },
+      "hs": "94056110",
+      "reasonVi": "Biển cảnh báo, điện"
+    },
+    {
+      "id": "r39",
+      "priority": 90,
+      "when": {
+        "application": "sign",
+        "electric": "yes"
+      },
+      "hs": "94056190",
+      "reasonVi": "Biển loại khác, điện"
+    },
+    {
+      "id": "r40",
+      "priority": 90,
+      "when": {
+        "application": "sign",
+        "electric": "no"
+      },
+      "hs": "94056910",
+      "reasonVi": "Biển cảnh báo, không điện"
+    },
+    {
+      "id": "r41",
+      "priority": 80,
+      "when": {
+        "application": "sign",
+        "electric": "no"
+      },
+      "hs": "94056990",
+      "reasonVi": "Biển loại khác, không điện"
+    },
+    {
+      "id": "r42",
+      "priority": 100,
+      "when": {
+        "material": "plastic",
+        "application": "surgical"
+      },
+      "hs": "94059110",
+      "reasonVi": "Bộ phận plastic, đèn phòng mổ"
+    },
+    {
+      "id": "r43",
+      "priority": 95,
+      "when": {
+        "material": "plastic",
+        "application": "flood"
+      },
+      "hs": "94059120",
+      "reasonVi": "Bộ phận plastic, đèn rọi"
+    },
+    {
+      "id": "r44",
+      "priority": 90,
+      "when": {
+        "material": "plastic",
+        "application": "flood",
+        "material2": "glass"
+      },
+      "hs": "94059140",
+      "reasonVi": "Chao đèn hình cầu/thông phong"
+    },
+    {
+      "id": "r45",
+      "priority": 88,
+      "when": {
+        "material": "plastic",
+        "application": "surgical",
+        "material2": "other"
+      },
+      "hs": "94059150",
+      "reasonVi": "Bộ phận plastic, đèn pha"
+    },
+    {
+      "id": "r46",
+      "priority": 80,
+      "when": {
+        "material": "plastic"
+      },
+      "hs": "94059190",
+      "reasonVi": "Bộ phận plastic, loại khác"
+    },
+    {
+      "id": "r47",
+      "priority": 100,
+      "when": {
+        "material": "metal",
+        "application": "surgical"
+      },
+      "hs": "94059210",
+      "reasonVi": "Bộ phận kim loại, đèn phòng mổ"
+    },
+    {
+      "id": "r48",
+      "priority": 95,
+      "when": {
+        "material": "metal",
+        "application": "flood"
+      },
+      "hs": "94059220",
+      "reasonVi": "Bộ phận kim loại, đèn rọi"
+    },
+    {
+      "id": "r49",
+      "priority": 90,
+      "when": {
+        "material": "metal",
+        "application": "surgical"
+      },
+      "hs": "94059230",
+      "reasonVi": "Bộ phận kim loại, đèn pha"
+    },
+    {
+      "id": "r50",
+      "priority": 80,
+      "when": {
+        "material": "metal"
+      },
+      "hs": "94059290",
+      "reasonVi": "Bộ phận kim loại, loại khác"
+    },
+    {
+      "id": "r51",
+      "priority": 90,
+      "when": {
+        "material": "textile"
+      },
+      "hs": "94059910",
+      "reasonVi": "Chụp đèn vật liệu dệt"
+    },
+    {
+      "id": "r52",
+      "priority": 88,
+      "when": {
+        "material": "ceramic"
+      },
+      "hs": "94059920",
+      "reasonVi": "Chụp đèn gốm/sứ"
+    },
+    {
+      "id": "r53",
+      "priority": 86,
+      "when": {
+        "material": "religious"
+      },
+      "hs": "94059930",
+      "reasonVi": "Của đèn 9405.50.11 hoặc 9405.50.19"
+    },
+    {
+      "id": "r54",
+      "priority": 84,
+      "when": {
+        "material": "metal",
+        "application": "flood"
+      },
+      "hs": "94059940",
+      "reasonVi": "Dùng cho đèn pha hoặc đèn rọi"
+    },
+    {
+      "id": "r55",
+      "priority": 82,
+      "when": {
+        "material": "metal"
+      },
+      "hs": "94059950",
+      "reasonVi": "Loại khác bằng gốm, sứ hoặc kim loại"
+    },
+    {
+      "id": "r56",
+      "priority": 80,
+      "when": {},
+      "hs": "94059990",
+      "reasonVi": "Loại khác"
+    }
+  ]
+}
