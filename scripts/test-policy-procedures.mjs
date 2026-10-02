@@ -13,8 +13,8 @@ const check = (n, c, d_) => {
 
 const keys = Object.keys(d);
 
-// 1. Có đúng 56 entries (14 original + 6 new procedure types)
-check('có 56 entries', keys.length === 56);
+// 1. Có đúng 57 entries (14 original + 6 new procedure types + chuong-98)
+check('có 57 entries', keys.length === 57);
 
 // 2. Tất cả entries có verified=true
 const unverified = keys.filter(k => d[k].verified !== true);
@@ -24,7 +24,7 @@ check('tất cả verified=true', unverified.length === 0, unverified);
 const procTypes = keys.filter(k => !d[k].chapters);
 const chapterGroups = keys.filter(k => !!d[k].chapters);
 check('đúng 20 procedure types', procTypes.length === 20);
-check('đúng 36 chapter groups', chapterGroups.length === 36);
+check('đúng 37 chapter groups', chapterGroups.length === 37);
 
 // 4. Mỗi chapter-group có chapters (array), hsRange, label, group
 chapterGroups.forEach(k => {
@@ -88,14 +88,14 @@ check('SOURCES.json có policy-procedures.json', !!ppFile);
 if (ppFile) {
   check('policy-procedures.json trong SOURCES có lastUpdated', typeof ppFile.lastUpdated === 'string');
   check('policy-procedures.json trong SOURCES có records', typeof ppFile.records === 'number');
-  check('policy-procedures.json records=56', ppFile.records === 56);
+  check('policy-procedures.json records=57', ppFile.records === 57);
   check('policy-procedures.json coverage 97/97', ppFile.coverage && ppFile.coverage.includes('97/97'));
-  check('policy-procedures.json verifiedChapters 36/36', ppFile.verifiedChapters && ppFile.verifiedChapters.includes('36/36'));
+  check('policy-procedures.json verifiedChapters 37/37', ppFile.verifiedChapters && ppFile.verifiedChapters.includes('37/37'));
 }
 
 // 12. verifiedChapters count khớp thực tế (parse from string like "36/36")
 const vChapters = chapterGroups.filter(k => d[k].verified === true).length;
-check(`verifiedChapters count khớp thực tế (${vChapters})`, vChapters === 36);
+check(`verifiedChapters count khớp thực tế (${vChapters})`, vChapters === 37);
 
 // 13. normalizeType handles abbreviations and top license types
 const { getProcedures, getProcedureByCode, listProcedures, normalizeType } = require('../lib/policy-procedures.js');
