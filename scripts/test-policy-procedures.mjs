@@ -98,7 +98,7 @@ const vChapters = chapterGroups.filter(k => d[k].verified === true).length;
 check(`verifiedChapters count khớp thực tế (${vChapters})`, vChapters === 36);
 
 // 13. normalizeType handles abbreviations and top license types
-const { normalizeType } = require('../lib/policy-procedures.js');
+const { getProcedures, getProcedureByCode, listProcedures, normalizeType } = require('../lib/policy-procedures.js');
 const abbrevTests = [
   ['NK', 'gp-nk'],
   ['XK', 'xk'],
@@ -178,7 +178,6 @@ _cgKeys.forEach(k => {
 });
 
 // 2026-10-02: getProcedures() with usedGoodsImportBan flag
-const { getProcedures } = require('../lib/policy-procedures.js');
 const te = require('../data/tax-enriched.json');
 
 const usedBanEntry = Object.entries(te).find(([, e]) => e?.warnings?.usedGoodsImportBan);
@@ -235,6 +234,19 @@ if (usedBanEntry) {
   check(`getProcedures(warnings) without hsCode still returns cam-nk`,
     procs.some(p => p.code === 'cam-nk'));
 }
+
+// 2026-10-02: listProcedures() should return only 20 procedure types, not 36 chapter-groups
+const allListed = listProcedures();
+check('listProcedures() returns exactly 20 entries', allListed.length === 20, `got ${allListed.length}`);
+check('listProcedures() has no chapter-group entries (no chapters field)', allListed.every(e => !e.chapters), allListed.filter(e => e.chapters).map(e => e.code));
+check('listProcedures() includes cam-nk, attp, chat-luong', ['cam-nk','attp','chat-luong'].every(c => allListed.some(p => p.code === c)));
+
+// 2026-10-02: getProcedureByCode returns procedure type (not chapter-group)
+const camNK = getProcedureByCode('cam-nk');
+check('getProcedureByCode(cam-nk) returns cam-nk', camNK?.code === 'cam-nk');
+check('getProcedureByCode(cam-nk) has exemptions', Array.isArray(camNK?.exemptions) && camNK.exemptions.length > 0);
+const mayMac84 = getProcedureByCode('may-mac-84');
+check('getProcedureByCode(may-mac-84) is a chapter-group (has chapters)', !!mayMac84?.chapters);
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
