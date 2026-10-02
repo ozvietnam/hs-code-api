@@ -18,8 +18,19 @@
       "labelVi": "Hàm lượng sợi đàn hồi",
       "questionVi": "Hàm lượng sợi đàn hồi (elastomeric yarn) chiếm bao nhiêu % khối lượng? Nhóm 6004.10 có hàm lượng sợi đàn hồi ≤ 20%; 6004.90 là loại khác.",
       "detect": {
-        "le20": ["không quá 20%", "≤20%", "20%", "hàm lượng sợi đàn hồi không quá", "≤ 20%", "elastomeric"],
-        "gt20": ["trên 20%", ">20%", "hàm lượng sợi đàn hồi trên"]
+        "le20": [
+          "không quá 20%",
+          "≤20%",
+          "20%",
+          "hàm lượng sợi đàn hồi không quá",
+          "≤ 20%",
+          "elastomeric"
+        ],
+        "gt20": [
+          "trên 20%",
+          ">20%",
+          "hàm lượng sợi đàn hồi trên"
+        ]
       }
     }
   ],
@@ -28,7 +39,9 @@
     {
       "id": "6004-r001",
       "priority": 80,
-      "when": { "elasticFiberContent": "le20" },
+      "when": {
+        "elasticFiberContent": "le20"
+      },
       "hs": "60041010",
       "gir": "GIR 6",
       "reasonVi": "Vải dệt kim có hàm lượng sợi đàn hồi không quá 20% khối lượng → 6004.10.10.",
@@ -37,7 +50,9 @@
     {
       "id": "6004-r002",
       "priority": 75,
-      "when": { "elasticFiberContent": "gt20" },
+      "when": {
+        "elasticFiberContent": "gt20"
+      },
       "hs": "60041090",
       "gir": "GIR 6",
       "reasonVi": "Vải dệt kim có hàm lượng sợi đàn hồi trên 20% khối lượng → 6004.10.90.",
@@ -46,11 +61,37 @@
     {
       "id": "6004-r003",
       "priority": 60,
-      "when": { "elasticFiberContent": "na" },
+      "when": {
+        "elasticFiberContent": "na"
+      },
       "hs": "60049000",
       "gir": "GIR 6",
       "reasonVi": "Vải dệt kim có luồn cao su, loại khác → 6004.90.00 (residual).",
       "source": "Biểu thuế 2026 dòng 6004.90.00"
     }
-  ]
+  ],
+  "inputAttributes": [
+    "elasticFiberContent"
+  ],
+  "attributes": {
+    "elasticFiberContent": {
+      "detect": {
+        "le20": [
+          "không quá 20%",
+          "≤20%",
+          "20%",
+          "hàm lượng sợi đàn hồi không quá",
+          "≤ 20%",
+          "elastomeric"
+        ],
+        "gt20": [
+          "trên 20%",
+          ">20%",
+          "hàm lượng sợi đàn hồi trên"
+        ]
+      },
+      "type": "enum"
+    }
+  },
+  "essenceVi": "elasticFiberContent"
 }
