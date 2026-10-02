@@ -1,0 +1,329 @@
+{
+  "heading": "4202",
+  "titleVi": "Vali, cặp tài liệu, túi xách tay và các loại vật chứa tương tự; vật dụng thường để mang theo trong túi hoặc người",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "containerKind",
+      "type": "enum",
+      "domain": [
+        "briefcase",
+        "handbag",
+        "pocket_article",
+        "other_container"
+      ],
+      "labelVi": "Loại đồ chứa / mang theo",
+      "questionVi": "Sản phẩm thuộc loại nào: cặp tài liệu/vali (briefcase/trunk/suitcase), túi xách tay (handbag), vật dụng mang theo trong túi (pocket article), hay vật chứa/khác?"
+    },
+    {
+      "attribute": "outerMaterial",
+      "type": "enum",
+      "domain": [
+        "leather",
+        "sen",
+        "other_synthetic",
+        "paper",
+        "plastic_sheet",
+        "textile",
+        "other_material"
+      ],
+      "labelVi": "Chất liệu mặt ngoài",
+      "questionVi": "Mặt ngoài bằng gì: da thuộc (leather), sợi lưu hóa (SEN), plastic dạng tấm, vật liệu dệt, bìa, hay vật liệu khác?"
+    },
+    {
+      "attribute": "sizeLimit",
+      "type": "enum",
+      "domain": [
+        "within_limit",
+        "over_limit",
+        "not_applicable"
+      ],
+      "labelVi": "Kích thước giới hạn 56x45x25cm",
+      "questionVi": "Có kích thước tối đa 56cm x 45cm x 25cm không (chỉ áp dụng cho cặp tài liệu vali)?: Có (within_limit) / Không (over_limit) / Không áp dụng (not_applicable)"
+    },
+    {
+      "attribute": "specificKind",
+      "type": "enum",
+      "domain": [
+        "bowling_bag",
+        "toilet_bag",
+        "other_bag",
+        "general"
+      ],
+      "labelVi": "Loại cụ thể (khi containerKind = other_container)",
+      "questionVi": "Vật chứa cụ thể là gì: túi đựng đồ Bowling, túi đựng vệ sinh cá nhân, túi đựng khác, hay loại chung?"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "containerKind": "briefcase",
+        "outerMaterial": "leather",
+        "sizeLimit": "within_limit"
+      },
+      "hs": "42021110",
+      "reasonVi": "GIR 6 — cặp tài liệu có kích thước ≤56x45x25cm, 4202.11.10 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "containerKind": "briefcase",
+        "outerMaterial": "leather",
+        "sizeLimit": "over_limit"
+      },
+      "hs": "42021190",
+      "reasonVi": "GIR 6 — cặp tài liệu loại khác, 4202.11.90 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "containerKind": "briefcase",
+        "outerMaterial": "sen",
+        "sizeLimit": "within_limit"
+      },
+      "hs": "42021211",
+      "reasonVi": "GIR 6 — cặp mặt ngoài bằng sợi lưu hóa (SEN) ≤56x45x25cm, 4202.12.11 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "containerKind": "briefcase",
+        "outerMaterial": "sen",
+        "sizeLimit": "over_limit"
+      },
+      "hs": "42021219",
+      "reasonVi": "GIR 6 — cặp SEN loại khác, 4202.12.19 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "containerKind": "briefcase",
+        "outerMaterial": "other_synthetic",
+        "sizeLimit": "within_limit"
+      },
+      "hs": "42021291",
+      "reasonVi": "GIR 6 — cặp mặt ngoài sợi lưu hóa khác ≤56x45x25cm, 4202.12.91 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "containerKind": "briefcase",
+        "outerMaterial": "other_synthetic",
+        "sizeLimit": "over_limit"
+      },
+      "hs": "42021299",
+      "reasonVi": "GIR 6 — cặp loại khác, 4202.12.99 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "containerKind": "briefcase",
+        "outerMaterial": "paper"
+      },
+      "hs": "42021920",
+      "reasonVi": "GIR 6 — cặp mặt ngoài bằng bìa, 4202.19.20 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "containerKind": "briefcase",
+        "outerMaterial": "other_material"
+      },
+      "hs": "42021990",
+      "reasonVi": "GIR 6 — cặp mặt ngoài bằng vật liệu khác, 4202.19.90 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "containerKind": "handbag",
+        "outerMaterial": "leather"
+      },
+      "hs": "42022100",
+      "reasonVi": "GIR 6 — túi xách tay mặt ngoài bằng da, 4202.21 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "containerKind": "handbag",
+        "outerMaterial": "plastic_sheet"
+      },
+      "hs": "42022210",
+      "reasonVi": "GIR 6 — túi xách tay mặt ngoài bằng tấm plastic, 4202.22.10 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "containerKind": "handbag",
+        "outerMaterial": "textile"
+      },
+      "hs": "42022220",
+      "reasonVi": "GIR 6 — túi xách tay mặt ngoài bằng vật liệu dệt, 4202.22.20 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "containerKind": "handbag",
+        "outerMaterial": "other_material"
+      },
+      "hs": "42022900",
+      "reasonVi": "GIR 6 — túi xách tay loại khác, 4202.29 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "containerKind": "pocket_article",
+        "outerMaterial": "leather"
+      },
+      "hs": "42023100",
+      "reasonVi": "GIR 6 — vật dụng mang theo mặt ngoài bằng da, 4202.31 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "containerKind": "pocket_article",
+        "outerMaterial": "plastic_sheet"
+      },
+      "hs": "42023200",
+      "reasonVi": "GIR 6 — vật dụng mang theo mặt ngoài bằng plastic hoặc dệt, 4202.32 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "containerKind": "pocket_article",
+        "outerMaterial": "other_material"
+      },
+      "hs": "42023900",
+      "reasonVi": "GIR 6 — vật dụng mang theo loại khác, 4202.39 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "containerKind": "other_container",
+        "outerMaterial": "leather",
+        "specificKind": "bowling_bag"
+      },
+      "hs": "42029111",
+      "reasonVi": "GIR 6 — túi đựng đồ Bowling bằng da, 4202.91.11 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-17",
+      "priority": 0,
+      "when": {
+        "containerKind": "other_container",
+        "outerMaterial": "leather",
+        "specificKind": "other_bag"
+      },
+      "hs": "42029119",
+      "reasonVi": "GIR 6 — túi đựng khác bằng da, 4202.91.19 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-18",
+      "priority": 0,
+      "when": {
+        "containerKind": "other_container",
+        "outerMaterial": "leather",
+        "specificKind": "general"
+      },
+      "hs": "42029190",
+      "reasonVi": "GIR 6 — vật chứa khác bằng da, 4202.91.90 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-19",
+      "priority": 0,
+      "when": {
+        "containerKind": "other_container",
+        "outerMaterial": "plastic_sheet",
+        "specificKind": "toilet_bag"
+      },
+      "hs": "42029210",
+      "reasonVi": "GIR 6 — túi đựng vệ sinh cá nhân bằng plastic, 4202.92.10 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-20",
+      "priority": 0,
+      "when": {
+        "containerKind": "other_container",
+        "outerMaterial": "plastic_sheet",
+        "specificKind": "bowling_bag"
+      },
+      "hs": "42029220",
+      "reasonVi": "GIR 6 — túi đựng đồ Bowling bằng plastic, 4202.92.20 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-21",
+      "priority": 0,
+      "when": {
+        "containerKind": "other_container",
+        "outerMaterial": "plastic_sheet",
+        "specificKind": "other_bag"
+      },
+      "hs": "42029290",
+      "reasonVi": "GIR 6 — túi đựng khác bằng plastic, 4202.92.90 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-22",
+      "priority": 0,
+      "when": {
+        "containerKind": "other_container",
+        "outerMaterial": "sen",
+        "specificKind": "general"
+      },
+      "hs": "42029910",
+      "reasonVi": "GIR 6 — vật chứa khác mặt ngoài SEN hoặc bìa, 4202.99.10 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-23",
+      "priority": 0,
+      "when": {
+        "containerKind": "other_container",
+        "outerMaterial": "other_material",
+        "specificKind": "general"
+      },
+      "hs": "42029990",
+      "reasonVi": "GIR 6 — vật chứa khác bằng vật liệu khác, 4202.99.90 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceTestVi": "containerKind (4 giá trị: briefcase/handbag/pocket_article/other_container) + outerMaterial (7 giá trị) + sizeLimit (3) + specificKind (4) — phân biệt 23 mã 8 số trong nhóm 4202. Thuộc tính rìa: sizeLimit chỉ áp cho briefcase; specificKind chỉ áp cho other_container. Tất cả MFN 25%.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 4202 (Thông tư 65/2024/TT-BTC)."
+}
