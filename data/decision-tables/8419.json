@@ -1,0 +1,445 @@
+{
+  "heading": "8419",
+  "titleVi": "Machinery, plant (not domestic), or laboratory equipment; electrically heated or not, for treatment of materials by process involving change of temperature; instantaneous or non electric storage water heaters",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "—",
+  "sourceVi": "",
+  "inputs": [
+    {
+      "attribute": "processType",
+      "type": "enum",
+      "domain": [
+        "waterHeating",
+        "solarHeating",
+        "sterilizing",
+        "drying",
+        "evaporating",
+        "airConditioningCooling",
+        "heatTreatment",
+        "distilling",
+        "heatExchanging",
+        "liquefying",
+        "foodBeverage",
+        "parts"
+      ]
+    },
+    {
+      "attribute": "powerSource",
+      "type": "enum",
+      "domain": [
+        "electric",
+        "nonElectric"
+      ]
+    },
+    {
+      "attribute": "application",
+      "type": "enum",
+      "domain": [
+        "household",
+        "agricultural",
+        "medical",
+        "industrial",
+        "general"
+      ]
+    },
+    {
+      "attribute": "specialMaterial",
+      "type": "enum",
+      "domain": [
+        "fluoropolymer",
+        "filmManufacturing",
+        "gasWater",
+        "none"
+      ]
+    }
+  ],
+  "hitPolicy": "FIRST",
+  "rules": [
+    {
+      "id": "r1",
+      "priority": 50,
+      "when": {
+        "processType": "waterHeating",
+        "powerSource": "nonElectric",
+        "application": "household",
+        "specialMaterial": "none"
+      },
+      "hs": "84191110",
+      "reasonVi": ""
+    },
+    {
+      "id": "r2",
+      "priority": 50,
+      "when": {
+        "processType": "waterHeating",
+        "powerSource": "nonElectric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84191190",
+      "reasonVi": ""
+    },
+    {
+      "id": "r3",
+      "priority": 50,
+      "when": {
+        "processType": "solarHeating",
+        "powerSource": "nonElectric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84191200",
+      "reasonVi": ""
+    },
+    {
+      "id": "r4",
+      "priority": 50,
+      "when": {
+        "processType": "waterHeating",
+        "powerSource": "electric",
+        "application": "household",
+        "specialMaterial": "none"
+      },
+      "hs": "84191910",
+      "reasonVi": ""
+    },
+    {
+      "id": "r5",
+      "priority": 50,
+      "when": {
+        "processType": "waterHeating",
+        "powerSource": "electric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84191990",
+      "reasonVi": ""
+    },
+    {
+      "id": "r6",
+      "priority": 50,
+      "when": {
+        "processType": "sterilizing",
+        "powerSource": "nonElectric",
+        "application": "medical",
+        "specialMaterial": "none"
+      },
+      "hs": "84192000",
+      "reasonVi": ""
+    },
+    {
+      "id": "r7",
+      "priority": 50,
+      "when": {
+        "processType": "drying",
+        "powerSource": "nonElectric",
+        "application": "agricultural",
+        "specialMaterial": "none"
+      },
+      "hs": "84193310",
+      "reasonVi": ""
+    },
+    {
+      "id": "r8",
+      "priority": 50,
+      "when": {
+        "processType": "drying",
+        "powerSource": "nonElectric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84193390",
+      "reasonVi": ""
+    },
+    {
+      "id": "r9",
+      "priority": 50,
+      "when": {
+        "processType": "evaporating",
+        "powerSource": "nonElectric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84193410",
+      "reasonVi": ""
+    },
+    {
+      "id": "r10",
+      "priority": 50,
+      "when": {
+        "processType": "evaporating",
+        "powerSource": "electric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84193420",
+      "reasonVi": ""
+    },
+    {
+      "id": "r11",
+      "priority": 50,
+      "when": {
+        "processType": "evaporating",
+        "powerSource": "nonElectric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84193490",
+      "reasonVi": ""
+    },
+    {
+      "id": "r12",
+      "priority": 50,
+      "when": {
+        "processType": "airConditioningCooling",
+        "powerSource": "electric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84193510",
+      "reasonVi": ""
+    },
+    {
+      "id": "r13",
+      "priority": 50,
+      "when": {
+        "processType": "airConditioningCooling",
+        "powerSource": "nonElectric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84193520",
+      "reasonVi": ""
+    },
+    {
+      "id": "r14",
+      "priority": 50,
+      "when": {
+        "processType": "heatTreatment",
+        "powerSource": "electric",
+        "application": "industrial",
+        "specialMaterial": "filmManufacturing"
+      },
+      "hs": "84193930",
+      "reasonVi": ""
+    },
+    {
+      "id": "r15",
+      "priority": 50,
+      "when": {
+        "processType": "heatTreatment",
+        "powerSource": "electric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84193990",
+      "reasonVi": ""
+    },
+    {
+      "id": "r16",
+      "priority": 50,
+      "when": {
+        "processType": "distilling",
+        "powerSource": "electric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84194010",
+      "reasonVi": ""
+    },
+    {
+      "id": "r17",
+      "priority": 50,
+      "when": {
+        "processType": "distilling",
+        "powerSource": "nonElectric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84194020",
+      "reasonVi": ""
+    },
+    {
+      "id": "r18",
+      "priority": 50,
+      "when": {
+        "processType": "heatExchanging",
+        "powerSource": "nonElectric",
+        "application": "general",
+        "specialMaterial": "fluoropolymer"
+      },
+      "hs": "84195020",
+      "reasonVi": ""
+    },
+    {
+      "id": "r19",
+      "priority": 50,
+      "when": {
+        "processType": "heatExchanging",
+        "powerSource": "electric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84195091",
+      "reasonVi": ""
+    },
+    {
+      "id": "r20",
+      "priority": 50,
+      "when": {
+        "processType": "heatExchanging",
+        "powerSource": "nonElectric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84195092",
+      "reasonVi": ""
+    },
+    {
+      "id": "r21",
+      "priority": 50,
+      "when": {
+        "processType": "heatExchanging",
+        "powerSource": "nonElectric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84195010",
+      "reasonVi": ""
+    },
+    {
+      "id": "r22",
+      "priority": 50,
+      "when": {
+        "processType": "liquefying",
+        "powerSource": "nonElectric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84196000",
+      "reasonVi": ""
+    },
+    {
+      "id": "r23",
+      "priority": 50,
+      "when": {
+        "processType": "foodBeverage",
+        "powerSource": "electric",
+        "application": "industrial",
+        "specialMaterial": "none"
+      },
+      "hs": "84198110",
+      "reasonVi": ""
+    },
+    {
+      "id": "r24",
+      "priority": 50,
+      "when": {
+        "processType": "foodBeverage",
+        "powerSource": "nonElectric",
+        "application": "industrial",
+        "specialMaterial": "none"
+      },
+      "hs": "84198120",
+      "reasonVi": ""
+    },
+    {
+      "id": "r25",
+      "priority": 50,
+      "when": {
+        "processType": "heatTreatment",
+        "powerSource": "electric",
+        "application": "industrial",
+        "specialMaterial": "filmManufacturing"
+      },
+      "hs": "84198913",
+      "reasonVi": ""
+    },
+    {
+      "id": "r26",
+      "priority": 50,
+      "when": {
+        "processType": "heatTreatment",
+        "powerSource": "electric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84198919",
+      "reasonVi": ""
+    },
+    {
+      "id": "r27",
+      "priority": 50,
+      "when": {
+        "processType": "heatTreatment",
+        "powerSource": "nonElectric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84198920",
+      "reasonVi": ""
+    },
+    {
+      "id": "r28",
+      "priority": 50,
+      "when": {
+        "processType": "parts",
+        "powerSource": "electric",
+        "application": "industrial",
+        "specialMaterial": "filmManufacturing"
+      },
+      "hs": "84199012",
+      "reasonVi": ""
+    },
+    {
+      "id": "r29",
+      "priority": 50,
+      "when": {
+        "processType": "parts",
+        "powerSource": "nonElectric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84199013",
+      "reasonVi": ""
+    },
+    {
+      "id": "r30",
+      "priority": 50,
+      "when": {
+        "processType": "parts",
+        "powerSource": "nonElectric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84199019",
+      "reasonVi": ""
+    },
+    {
+      "id": "r31",
+      "priority": 50,
+      "when": {
+        "processType": "parts",
+        "powerSource": "nonElectric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84199022",
+      "reasonVi": ""
+    },
+    {
+      "id": "r32",
+      "priority": 50,
+      "when": {
+        "processType": "parts",
+        "powerSource": "nonElectric",
+        "application": "general",
+        "specialMaterial": "none"
+      },
+      "hs": "84199029",
+      "reasonVi": ""
+    }
+  ]
+}

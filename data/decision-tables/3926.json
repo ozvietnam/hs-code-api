@@ -1,0 +1,557 @@
+{
+  "heading": "3926",
+  "titleVi": "Articles of plastics and articles of other materials of heading no. 3901 to 3914, n.e.c. in chapter 39",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Mục đích sử dụng + SEN + loại bảo hộ → mã 8 số. 27 lá, 3 thuộc tính.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN) + Ghi chú SEN.",
+  "inputs": [
+    {
+      "attribute": "intendedUse",
+      "type": "enum",
+      "domain": [
+        "office_school",
+        "clothing",
+        "furniture_coachwork",
+        "decoration",
+        "fishing",
+        "handfan",
+        "industrial_mold",
+        "industrial_conveyor",
+        "industrial_other",
+        "medical_dental",
+        "food_poultry",
+        "religious",
+        "safety",
+        "other"
+      ],
+      "labelVi": "Mục đích sử dụng",
+      "questionVi": "Sản phẩm plastic này dùng cho mục đích gì: văn phòng/trường học, quần áo/phụ trợ may mặc, đồ nội thất/thân xe, trang trí, lưới đánh cá, quạt tay, khuôn/dụng cụ công nghiệp, băng tải/curoa, công nghiệp khác, y tế/nha khoa, thực phẩm/chăn nuôi, tôn giáo, bảo hộ/lao động, hay khác?",
+      "detect": {
+        "office_school": [
+          "văn phòng",
+          "trường học",
+          "học sinh",
+          "bút",
+          "thước",
+          "tập",
+          "đánh dấu sách",
+          "thân bút",
+          "chặn giấy",
+          "dao dọc giấy"
+        ],
+        "clothing": [
+          "găng tay",
+          "tạp dề",
+          "yếm",
+          "lót",
+          "đệm",
+          "sản phẩm may mặc",
+          "đồ phụ trợ của quần áo",
+          "áo mưa",
+          "mũ trùm đầu"
+        ],
+        "furniture_coachwork": [
+          "nội thất",
+          "thân xe",
+          "coachwork",
+          "lắp vào"
+        ],
+        "decoration": [
+          "tượng",
+          "trang trí"
+        ],
+        "fishing": [
+          "lưới đánh cá",
+          "phao"
+        ],
+        "handfan": [
+          "quạt",
+          "màn che"
+        ],
+        "industrial_mold": [
+          "khuôn",
+          "phom"
+        ],
+        "industrial_conveyor": [
+          "băng truyền",
+          "băng tải",
+          "dây curoa",
+          "đai truyền"
+        ],
+        "industrial_other": [
+          "móc",
+          "khóa",
+          "kíp nổ",
+          "ngòi nổ",
+          "dụng cụ"
+        ],
+        "medical_dental": [
+          "răng",
+          "nha",
+          "thuốc",
+          "viên nhộng"
+        ],
+        "food_poultry": [
+          "gia cầm",
+          "ngũ cốc"
+        ],
+        "religious": [
+          "cầu nguyện",
+          "tôn giáo"
+        ],
+        "safety": [
+          "bảo hộ",
+          "bảo vệ",
+          "cứu sinh",
+          "cháy",
+          "hoá chất",
+          "phóng xạ",
+          "lát chắn",
+          "cảnh sát",
+          "hàn"
+        ]
+      }
+    },
+    {
+      "attribute": "senFlag",
+      "type": "boolean",
+      "labelVi": "Có ghi chú SEN?",
+      "questionVi": "Sản phẩm này có ghi chú SEN (hàng sản xuất trong nước được ưu đãi đặc biệt) không?",
+      "detect": {
+        "true": [
+          "(SEN)",
+          "SEN"
+        ],
+        "false": []
+      }
+    },
+    {
+      "attribute": "safetyType",
+      "type": "enum",
+      "domain": [
+        "none",
+        "chemical_fire",
+        "fall_protection",
+        "police_military"
+      ],
+      "labelVi": "Loại bảo hộ",
+      "questionVi": "Sản phẩm có tính năng bảo hộ đặc biệt nào: chống hoá chất/phóng xạ/cháy, chống rơi ngã, dùng cho cảnh sát/quân đội, hay không có?",
+      "detect": {
+        "chemical_fire": [
+          "hoá chất",
+          "phóng xạ",
+          "chống cháy",
+          "bảo hộ"
+        ],
+        "fall_protection": [
+          "cứu sinh",
+          "rơi từ trên cao",
+          "ngã"
+        ],
+        "police_military": [
+          "cảnh sát",
+          "quân đội",
+          "lát chắn",
+          "mặt nạ bảo hộ"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "FIRST",
+  "rules": [
+    {
+      "id": "r1",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "office_school",
+          "senFlag": false,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.10."
+      },
+      "hs": "39261000",
+      "reasonVi": "Đồ dùng trong văn phòng hoặc trường học bằng plastic → 3926.10."
+    },
+    {
+      "id": "r2",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "clothing",
+          "senFlag": true,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.20.10."
+      },
+      "hs": "39262010",
+      "reasonVi": "Găng tay, tạp dề, yếm cho trẻ em — có SEN → 3926.20.10."
+    },
+    {
+      "id": "r3",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "clothing",
+          "senFlag": true,
+          "safetyType": "police_military"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.20.20."
+      },
+      "hs": "39262020",
+      "reasonVi": "Miếng đệm và miếng bảo vệ vai cho trẻ em — có SEN → 3926.20.20."
+    },
+    {
+      "id": "r4",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "clothing",
+          "senFlag": false,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.20.30."
+      },
+      "hs": "39262030",
+      "reasonVi": "Miếng lót, đệm khác cho sản phẩm may mặc hoặc đồ phụ trợ quần áo → 3926.20.30."
+    },
+    {
+      "id": "r5",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "clothing",
+          "senFlag": false,
+          "safetyType": "chemical_fire"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.20.60."
+      },
+      "hs": "39262060",
+      "reasonVi": "Hàng may mặc chống hoá chất, phóng xạ hoặc chống cháy → 3926.20.60."
+    },
+    {
+      "id": "r6",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "clothing",
+          "senFlag": false,
+          "safetyType": "fall_protection"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.20.90."
+      },
+      "hs": "39262090",
+      "reasonVi": "Đệm cứu sinh chống rơi từ trên cao → 3926.20.90."
+    },
+    {
+      "id": "r7",
+      "priority": 40,
+      "when": {
+        "when": {
+          "intendedUse": "clothing",
+          "senFlag": false,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.20.90."
+      },
+      "hs": "39262090",
+      "reasonVi": "Loại khác trong nhóm quần áo/phụ trợ may mặc → 3926.20.90."
+    },
+    {
+      "id": "r8",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "furniture_coachwork",
+          "senFlag": false,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.30."
+      },
+      "hs": "39263000",
+      "reasonVi": "Phụ kiện lắp vào đồ nội thất, thân xe (coachwork) → 3926.30."
+    },
+    {
+      "id": "r9",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "decoration",
+          "senFlag": false,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.40."
+      },
+      "hs": "39264000",
+      "reasonVi": "Tượng nhỏ và đồ trang trí khác bằng plastic → 3926.40."
+    },
+    {
+      "id": "r10",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "fishing",
+          "senFlag": false,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.10."
+      },
+      "hs": "39269010",
+      "reasonVi": "Phao cho lưới đánh cá → 3926.90.10."
+    },
+    {
+      "id": "r11",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "handfan",
+          "senFlag": false,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.20."
+      },
+      "hs": "39269020",
+      "reasonVi": "Quạt và màn che kéo bằng tay, khung và tay cầm, quai → 3926.90.20."
+    },
+    {
+      "id": "r12",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "industrial_mold",
+          "senFlag": false,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.32."
+      },
+      "hs": "39269032",
+      "reasonVi": "Khuôn plastic lấy dấu răng → 3926.90.32."
+    },
+    {
+      "id": "r13",
+      "priority": 40,
+      "when": {
+        "when": {
+          "intendedUse": "industrial_mold",
+          "senFlag": false,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.39."
+      },
+      "hs": "39269039",
+      "reasonVi": "Loại khuôn khác (phom giày → riêng) → 3926.90.39."
+    },
+    {
+      "id": "r14",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "safety",
+          "senFlag": false,
+          "safetyType": "police_military"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.41."
+      },
+      "hs": "39269041",
+      "reasonVi": "Lá chắn bảo vệ của cảnh sát → 3926.90.41."
+    },
+    {
+      "id": "r15",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "safety",
+          "senFlag": true,
+          "safetyType": "chemical_fire"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.42."
+      },
+      "hs": "39269042",
+      "reasonVi": "Mặt nạ bảo hộ dùng khi hàn — có SEN → 3926.90.42."
+    },
+    {
+      "id": "r16",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "safety",
+          "senFlag": false,
+          "safetyType": "fall_protection"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.44."
+      },
+      "hs": "39269044",
+      "reasonVi": "Đệm cứu sinh dùng bảo vệ người rơi từ trên cao → 3926.90.44."
+    },
+    {
+      "id": "r17",
+      "priority": 40,
+      "when": {
+        "when": {
+          "intendedUse": "safety",
+          "senFlag": false,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.49."
+      },
+      "hs": "39269049",
+      "reasonVi": "Loại bảo hộ khác → 3926.90.49."
+    },
+    {
+      "id": "r18",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "industrial_conveyor",
+          "senFlag": false,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.53."
+      },
+      "hs": "39269053",
+      "reasonVi": "Băng truyền, băng tải, đai truyền bằng plastic → 3926.90.53."
+    },
+    {
+      "id": "r19",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "industrial_other",
+          "senFlag": true,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.55."
+      },
+      "hs": "39269055",
+      "reasonVi": "Móc hình chữ J hoặc khối chùm cho ngòi nổ, kíp nổ — có SEN → 3926.90.55."
+    },
+    {
+      "id": "r20",
+      "priority": 40,
+      "when": {
+        "when": {
+          "intendedUse": "industrial_other",
+          "senFlag": false,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.59."
+      },
+      "hs": "39269059",
+      "reasonVi": "Loại công nghiệp khác không thuộc 3926.90.53/55 → 3926.90.59."
+    },
+    {
+      "id": "r21",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "food_poultry",
+          "senFlag": false,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.60."
+      },
+      "hs": "39269060",
+      "reasonVi": "Dụng cụ cho gia cầm ăn → 3926.90.60."
+    },
+    {
+      "id": "r22",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "industrial_mold",
+          "senFlag": false,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.81."
+      },
+      "hs": "39269081",
+      "reasonVi": "Khuôn (phom) giày → 3926.90.81."
+    },
+    {
+      "id": "r23",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "religious",
+          "senFlag": true,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.82."
+      },
+      "hs": "39269082",
+      "reasonVi": "Chuỗi hạt cầu nguyện — có SEN → 3926.90.82."
+    },
+    {
+      "id": "r24",
+      "priority": 40,
+      "when": {
+        "when": {
+          "intendedUse": "other",
+          "senFlag": false,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.89."
+      },
+      "hs": "39269089",
+      "reasonVi": "Loại khác không thuộc các nhóm trên → 3926.90.89."
+    },
+    {
+      "id": "r25",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "food_poultry",
+          "senFlag": true,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.91."
+      },
+      "hs": "39269091",
+      "reasonVi": "Đồ dùng để chứa ngũ cốc — có SEN → 3926.90.91."
+    },
+    {
+      "id": "r26",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "medical_dental",
+          "senFlag": false,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.92."
+      },
+      "hs": "39269092",
+      "reasonVi": "Vỏ viên nhộng loại dùng để làm thuốc → 3926.90.92."
+    },
+    {
+      "id": "r27",
+      "priority": 50,
+      "when": {
+        "when": {
+          "intendedUse": "industrial_other",
+          "senFlag": true,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.93."
+      },
+      "hs": "39269093",
+      "reasonVi": "Khóa, khóa điều chỉnh, móc treo và nút chặn dây — có SEN → 3926.90.93."
+    },
+    {
+      "id": "r28",
+      "priority": 40,
+      "when": {
+        "when": {
+          "intendedUse": "other",
+          "senFlag": false,
+          "safetyType": "none"
+        },
+        "source": "Biểu thuế 2026 dòng 3926.90.99."
+      },
+      "hs": "39269099",
+      "reasonVi": "Loại khác không thuộc các nhóm trên → 3926.90.99."
+    }
+  ]
+}

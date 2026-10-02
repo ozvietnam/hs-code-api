@@ -327,15 +327,14 @@
     },
     "8537": {
       "status": "draft",
-      "doneAt": "2026-09-17",
-      "by": "cursor-agent-b4",
-      "commit": "21341f3",
+      "doneAt": "2026-10-03",
+      "by": "hermes/lan-C-accuracy-v2",
+      "commit": "pending",
       "leafCount": 15,
       "table": true,
-      "rules": 16,
-      "gateVi": "oz: 0/56 (0%)",
-      "draftAt": "2026-09-18",
-      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8537 --oz"
+      "rules": 15,
+      "draftAt": "2026-10-03",
+      "noteVi": "Bảng quyết định từ nhánh hermes/decision-8537 (15 rules, 4 attrs: voltageClass/appType/senMarked/specialApp, 100% leaf cover). Chưa verify."
     },
     "8538": {
       "status": "draft",
@@ -399,6 +398,50 @@
       "rules": 63,
       "draftAt": "2026-10-03",
       "noteVi": "Bảng quyết định cho 8536 (thiết bị đóng cắt, bảo vệ, nối mạch điện ≤1000V). 63 rules phủ 63/63 lá. 3 inputs: function(10 loại), currentRating(4 mức), specialApp(9 ứng dụng). Chưa có test cases — verified=false."
+    },
+    "3926": {
+      "status": "draft",
+      "doneAt": "2026-10-03",
+      "by": "hermes/lan-C-accuracy-v2",
+      "commit": "pending",
+      "leafCount": 27,
+      "table": true,
+      "rules": 28,
+      "draftAt": "2026-10-03",
+      "noteVi": "Bảng quyết định từ nhánh hermes/decision-3926 (28 rules, 3 attrs: intendedUse/senFlag/safetyType, 27 lá). Chưa verify — verified=false."
+    },
+    "8419": {
+      "status": "draft",
+      "doneAt": "2026-10-03",
+      "by": "hermes/lan-C-accuracy-v2",
+      "commit": "pending",
+      "leafCount": 32,
+      "table": true,
+      "rules": 32,
+      "draftAt": "2026-10-03",
+      "noteVi": "Bảng quyết định từ nhánh hermes/decision-8419 (32 rules, 4 attrs: processType/powerSource/application/specialMaterial, 100% leaf cover). Chưa verify."
+    },
+    "8443": {
+      "status": "draft",
+      "doneAt": "2026-10-03",
+      "by": "hermes/lan-C-accuracy-v2",
+      "commit": "pending",
+      "leafCount": 36,
+      "table": true,
+      "rules": 36,
+      "draftAt": "2026-10-03",
+      "noteVi": "Bảng quyết định từ nhánh hermes/decision-8443 (36 rules, 5 attrs: printTech/completeOrParts/feedType/color/digitalKind, 100% leaf cover). Chưa verify."
+    },
+    "9405": {
+      "status": "draft",
+      "doneAt": "2026-10-03",
+      "by": "hermes/lan-C-accuracy-v2",
+      "commit": "pending",
+      "leafCount": 56,
+      "table": true,
+      "rules": 56,
+      "draftAt": "2026-10-03",
+      "noteVi": "Bảng quyết định từ nhánh hermes/decision-9405 (56 rules, 6 attrs: lightingTech/mounting/electric/material/partType/productKind, 100% leaf cover). Chưa verify."
     }
   }
 }
