@@ -472,7 +472,137 @@
         "liquefying",
         "foodBeverage",
         "parts"
-      ]
+      ],
+      "detect": {
+        "waterHeating": [
+          "nồi cơm điện",
+          "bình đun nước",
+          "ấm đun nước",
+          "nồi nấu",
+          "bếp từ",
+          "nồi cơm",
+          "nồi nướng",
+          "lò nướng",
+          "bếp điện",
+          "xúp điện",
+          "tủ nấu cơm",
+          "hâm nóng",
+          "đun nước nóng",
+          "water heater",
+          "nồi cơm điện cơ"
+        ],
+        "solarHeating": [
+          "điện mặt trời",
+          "năng lượng mặt trời",
+          "đun nước nóng mặt trời",
+          "bình năng lượng",
+          "bình nóng mặt trời",
+          "solar heater",
+          "máy nước nóng"
+        ],
+        "sterilizing": [
+          "nồi hấp",
+          "tủ hấp y tế",
+          "máy tiệt trùng",
+          "tủ tiệt trùng",
+          "khử trùng",
+          "sterilizer",
+          "autoclave",
+          "nồi hấp tiệt trùng",
+          "tủ sấy tiệt trùng"
+        ],
+        "drying": [
+          "máy sấy",
+          "tủ sấy",
+          "bạt phơi",
+          "sấy nông sản",
+          "máy sấy nhiệt",
+          "sấy",
+          "dryer",
+          "máy làm khô",
+          "sấy bột",
+          "sấy gỗ"
+        ],
+        "evaporating": [
+          "máy bốc hơi",
+          "bốc hơi",
+          "làm bay hơi",
+          "evaporator",
+          "thiết bị bay hơi"
+        ],
+        "airConditioningCooling": [
+          "máy lạnh",
+          "điều hòa",
+          "quạt hơi nước",
+          "làm mát",
+          "cooling",
+          "máy làm lạnh",
+          "tháp giải nhiệt",
+          "quạt hơi nước",
+          "hơi nước làm mát"
+        ],
+        "heatTreatment": [
+          "lò nhiệt",
+          "máy nhiệt luyện",
+          "tôi thép",
+          "ủ",
+          "làm nguội",
+          "heat treatment",
+          "máy gia nhiệt",
+          "thiết bị nhiệt",
+          "lò nung"
+        ],
+        "distilling": [
+          "chưng cất",
+          "cất",
+          "lọc nước",
+          "máy chưng",
+          "distiller",
+          "thiết bị chưng cất",
+          "nồi chưng",
+          "chưng luyện"
+        ],
+        "heatExchanging": [
+          "bộ trao đổi nhiệt",
+          "thiết bị trao đổi nhiệt",
+          "tháp làm mát",
+          "bộ làm lạnh",
+          "heat exchanger",
+          "radiator",
+          "dàn nóng",
+          "dàn lạnh",
+          "bộ tản nhiệt"
+        ],
+        "liquefying": [
+          "máy hóa lỏng",
+          "làm lỏng khí",
+          "liquefying"
+        ],
+        "foodBeverage": [
+          "tủ hấp",
+          "nồi hấp cơm",
+          "tủ nấu",
+          "máy nấu",
+          "bếp công nghiệp",
+          "nồi nấu công nghiệp",
+          "tủ hấp cơm",
+          "tủ hấp bún",
+          "tủ hấp giò",
+          "máy hấp",
+          "steamer",
+          "máy làm bánh",
+          "máy chế biến thực phẩm",
+          "chế biến thực phẩm",
+          "thực phẩm"
+        ],
+        "parts": [
+          "bộ phận",
+          "phụ tùng",
+          "linh kiện",
+          "bộ phận máy",
+          "parts"
+        ]
+      }
     },
     {
       "attribute": "powerSource",
@@ -482,7 +612,33 @@
       "domain": [
         "electric",
         "nonElectric"
-      ]
+      ],
+      "detect": {
+        "electric": [
+          "điện",
+          "điện tử",
+          "220v",
+          "electric",
+          "bằng điện",
+          "chạy điện",
+          "cắm điện",
+          "sử dụng điện"
+        ],
+        "nonElectric": [
+          "ga",
+          "gas",
+          "dầu",
+          "không điện",
+          "nhiên liệu",
+          "than",
+          "củi",
+          "đốt",
+          "non-electric",
+          "không dùng điện",
+          "bếp ga",
+          "bếp dầu"
+        ]
+      }
     },
     {
       "attribute": "application",
@@ -495,7 +651,54 @@
         "medical",
         "industrial",
         "general"
-      ]
+      ],
+      "detect": {
+        "household": [
+          "gia đình",
+          "gia dụng",
+          "sinh hoạt",
+          "household",
+          "cá nhân",
+          "gia đình",
+          "dùng trong nhà"
+        ],
+        "agricultural": [
+          "nông nghiệp",
+          "nông trại",
+          "trồng trọt",
+          "chăn nuôi",
+          "agricultural",
+          "trồng",
+          "sản xuất nông nghiệp",
+          "máy nông"
+        ],
+        "medical": [
+          "y tế",
+          "bệnh viện",
+          "phẫu thuật",
+          "thẩm mỹ",
+          "medical",
+          "phòng khám",
+          "bác sĩ",
+          "thuốc",
+          "thiết bị y",
+          "spa"
+        ],
+        "industrial": [
+          "công nghiệp",
+          "industrial",
+          "nhà máy",
+          "sản xuất",
+          "xưởng",
+          "phân bón",
+          "giấy",
+          "thực phẩm công nghiệp",
+          "cơ khí",
+          "xay xát",
+          "chế biến"
+        ],
+        "general": []
+      }
     },
     {
       "attribute": "specialMaterial",
@@ -507,7 +710,29 @@
         "filmManufacturing",
         "gasWater",
         "none"
-      ]
+      ],
+      "detect": {
+        "fluoropolymer": [
+          "fluoropolymer",
+          "fluoro",
+          "ptfe",
+          "teflon",
+          "ống fluoropolymer"
+        ],
+        "filmManufacturing": [
+          "màng",
+          "film",
+          "sản xuất màng",
+          "màng nhựa",
+          "film manufacturing"
+        ],
+        "gasWater": [
+          "nước ga",
+          "gas water",
+          "nước có ga"
+        ],
+        "none": []
+      }
     }
   ],
   "essenceTestVi": "Với thiết bị xử lý nhiệt (đun nước, sấy, sát trùng, chưng cất, trao đổi nhiệt, làm mát, hóa lỏng…): xác định (1) loại quá trình xử lý nhiệt, (2) nguồn năng lượng, (3) lĩnh vực ứng dụng.",

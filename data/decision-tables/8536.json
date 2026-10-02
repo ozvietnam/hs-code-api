@@ -841,7 +841,151 @@
         "plug",
         "fiberConnector",
         "junctionBlock"
-      ]
+      ],
+      "detect": {
+        "circuitBreaker": [
+          "cầu dao",
+          "aptomat",
+          "mcb",
+          "mccb",
+          "rcb",
+          "rccb",
+          "bộ ngắt mạch",
+          "circuit breaker",
+          "máy cắt",
+          "dao cắt",
+          "cb",
+          "bộ ngắt",
+          "aptomat 3 pha",
+          "aptomat 1 pha",
+          "bộ ngắt điện",
+          "bảo vệ quá dòng",
+          "overcurrent"
+        ],
+        "relayGt60V": [
+          "rơ le",
+          "role",
+          "relay",
+          "rơ le trung gian",
+          "rơ le thời gian",
+          "rơ le bảo vệ",
+          "relay 220v",
+          "relay điện",
+          "rơ le điều khiển",
+          "timer relay",
+          "relay trung gian"
+        ],
+        "relayLe60V": [
+          "rơ le 5v",
+          "rơ le 12v",
+          "rơ le 24v",
+          "rơ le 5VDC",
+          "rơ le 12VDC",
+          "rơ le 24VDC",
+          "relay low voltage",
+          "rơ le công suất nhỏ"
+        ],
+        "switch": [
+          "công tắc",
+          "nút nhấn",
+          "nut nhan",
+          "công tắc điện",
+          "công tắc cơ",
+          "công tắc bấm",
+          "công tắc xoay",
+          "switch",
+          "công tắc đảo chiều",
+          "công tắc hành trình",
+          "công tắclimit",
+          "công tắc toggle",
+          "công tắc rotary",
+          "công tắc ổn định",
+          "contactor",
+          "contactor 1p",
+          "contactor 2p",
+          "contact 3p"
+        ],
+        "fuse": [
+          "cầu chì",
+          "fuse",
+          "cầu chì thủy tinh",
+          "cầu chì sứ",
+          "cầu chì ống",
+          "bảo vệ cầu chì"
+        ],
+        "lampholder": [
+          "đuôi đèn",
+          "chuôi đèn",
+          "đui đèn",
+          "đèn",
+          "lampholder",
+          "đuôi bóng",
+          "đuôi cắm đèn"
+        ],
+        "plug": [
+          "o cắm",
+          "ổ cắm",
+          "phích cắm",
+          "phích cắm điện",
+          "jack cắm",
+          "đầu cắm",
+          "plug",
+          "ổ cắm điện",
+          "phích cắm 3 chấu",
+          "ổ cắm 3 chấu",
+          "jack",
+          "giắc cắm",
+          "cắm điện",
+          "bộ phích cắm",
+          "dây cắm",
+          "adapter"
+        ],
+        "junctionBlock": [
+          "đầu nối",
+          "đầu cáp",
+          "đầu nối dây",
+          "đầu cos",
+          "terminal",
+          "bloc đầu nối",
+          "đầu nối điện",
+          "đầu rào",
+          "cầu điểm",
+          "đầu nối ống",
+          "đầu nối cáp",
+          "cable gland",
+          "đầu bịt",
+          "mục đầu nối",
+          "ống luồn dây",
+          "hộp đấu dây",
+          "bộ đấu dây",
+          "đầu nối bằng nhựa",
+          "đầu nối kim loại",
+          "đầu nối điện công nghiệp",
+          "đầu nối 3 chân",
+          "đầu nối 4 chân"
+        ],
+        "surgeProtection": [
+          "chống sét",
+          "bảo vệ sét",
+          "bộ chống sét",
+          "surge",
+          "spd",
+          "chống xung",
+          "bộ hạn chế xung",
+          "bảo vệ xung",
+          "chống quá áp",
+          "bộ chống quá áp"
+        ],
+        "fiberConnector": [
+          "đầu nối quang",
+          "đầu cắm quang",
+          "cổng quang",
+          "fiber connector",
+          "đầu nối fiber",
+          "adapter quang",
+          "patch cord quang"
+        ]
+      }
     },
     {
       "attribute": "currentRating",
@@ -853,7 +997,64 @@
         "a16to32",
         "a32to1000",
         "unspecified"
-      ]
+      ],
+      "detect": {
+        "lt16A": [
+          "6a",
+          "10a",
+          "10A",
+          "16a",
+          "16A",
+          "dưới 16A",
+          "nhỏ hơn 16A",
+          "cường độ thấp",
+          "amp nhỏ",
+          "loại nhỏ",
+          "lt16a",
+          "lt 16a"
+        ],
+        "a16to32": [
+          "20a",
+          "20A",
+          "25a",
+          "25A",
+          "32a",
+          "32A",
+          "16a đến 32a",
+          "16A-32A",
+          "trung bình",
+          "amp trung bình",
+          "cường độ trung bình",
+          "a16to32"
+        ],
+        "a32to1000": [
+          "40a",
+          "40A",
+          "63a",
+          "63A",
+          "100a",
+          "100A",
+          "150a",
+          "150A",
+          "200a",
+          "200A",
+          "250a",
+          "250A",
+          "400a",
+          "400A",
+          "630a",
+          "630A",
+          "1000a",
+          "1000A",
+          "trên 32A",
+          "lớn",
+          "amp lớn",
+          "cường độ cao",
+          "a32to1000",
+          "3 pha"
+        ],
+        "unspecified": []
+      }
     },
     {
       "attribute": "specialApp",
@@ -870,7 +1071,77 @@
         "ceramic",
         "copper",
         "none"
-      ]
+      ],
+      "detect": {
+        "fan": [
+          "quạt",
+          "quạt điện",
+          "quạt máy",
+          "fan",
+          "quạt thông gió"
+        ],
+        "radio": [
+          "radio",
+          "đài",
+          "phát thanh",
+          "máy phát thanh",
+          "wifi",
+          "bluetooth",
+          "vô tuyến"
+        ],
+        "sen": [
+          "sen",
+          "sên",
+          "trục trơn",
+          "trục sên"
+        ],
+        "riceCooker": [
+          "nồi cơm",
+          "nồi cơm điện",
+          "cơm điện",
+          "nấu cơm",
+          "nồi nấu cơm",
+          "nồi cơm điện tử",
+          "nồi cơm gas",
+          "bếp điện",
+          "bếp ga"
+        ],
+        "telephone": [
+          "điện thoại",
+          "telephone",
+          "điện thoại bàn",
+          "tổng đài",
+          "điện thoại di động",
+          "smartphone"
+        ],
+        "motorStarter": [
+          "khởi động",
+          "khởi động động cơ",
+          "motor starter",
+          "mở máy",
+          "động cơ khởi động",
+          "starter",
+          "khởi động mềm",
+          "soft starter",
+          "biến tần khởi động"
+        ],
+        "ceramic": [
+          "gốm",
+          "sứ",
+          "ceramic",
+          "đầu nối gốm",
+          "cách điện sứ"
+        ],
+        "copper": [
+          "đồng",
+          "đầu nối đồng",
+          "cable đồng",
+          "dây đồng",
+          "copper",
+          "cáp đồng"
+        ],
+        "none": []
+      }
     }
   ],
   "essenceTestVi": "Với thiết bị đóng cắt, bảo vệ, đấu nối mạch điện ≤1000V: xác định (1) chức năng (cầu chì, CB, rơ le, công tắc, phích cắm…), (2) dòng định mức (A), (3) ứng dụng/vật liệu đặc biệt.",

@@ -1129,7 +1129,156 @@
         "staticConverter",
         "inductor",
         "parts"
-      ]
+      ],
+      "detect": {
+        "ballast": [
+          "chấn lưu",
+          "ballast",
+          "máng đèn",
+          "balắt",
+          "chấn lưu đèn",
+          "bộ chấn lưu",
+          "máng đèn huỳnh quang",
+          "balast"
+        ],
+        "transformer_le1kVA": [
+          "biến áp nhỏ",
+          "biến áp dưới 1kva",
+          "biến áp 1kva",
+          "máy biến áp nhỏ",
+          "máy biến thế",
+          "biến thế",
+          "biến áp",
+          "transformer",
+          "biến áp cách ly",
+          "biến áp 220v",
+          "biến áp 12v",
+          "biến áp 24v",
+          "biến áp USB",
+          "biến áp 5v",
+          "biến áp nguồn",
+          "biến áp 1 chiều",
+          "biến áp xung",
+          "biến áp cấp nguồn",
+          "biến áp trung thế nhỏ",
+          "máy biến áp đo lường",
+          "máy biến dòng",
+          "biến dòng"
+        ],
+        "transformer_1to16kVA": [
+          "biến áp 1kva",
+          "biến áp 2kva",
+          "biến áp 3kva",
+          "biến áp 5kva",
+          "biến áp 10kva",
+          "biến áp 15kva",
+          "biến áp 16kva",
+          "biến áp trung bình",
+          "biến áp công suất trung bình",
+          "biến áp 1-16kva",
+          "máy biến áp 1kva",
+          "máy biến áp 5kva",
+          "máy biến áp 10kva",
+          "máy biến áp 16kva"
+        ],
+        "transformer_16to630kVA": [
+          "biến áp 20kva",
+          "biến áp 25kva",
+          "biến áp 30kva",
+          "biến áp 50kva",
+          "biến áp 75kva",
+          "biến áp 100kva",
+          "biến áp 150kva",
+          "biến áp 200kva",
+          "biến áp 250kva",
+          "biến áp 300kva",
+          "biến áp 400kva",
+          "biến áp 500kva",
+          "biến áp 630kva",
+          "biến áp công suất lớn",
+          "biến áp trạm",
+          "biến áp phân phối",
+          "biến áp hạ thế",
+          "máy biến áp 100kva",
+          "máy biến áp 250kva",
+          "máy biến áp 500kva"
+        ],
+        "transformer_gt630kVA": [
+          "biến áp 750kva",
+          "biến áp 1000kva",
+          "biến áp 1250kva",
+          "biến áp 1500kva",
+          "biến áp 2000kva",
+          "biến áp 2500kva",
+          "biến áp 3000kva",
+          "biến áp 5000kva",
+          "biến áp công suất rất lớn",
+          "biến áp trạm biến áp lớn",
+          "biến áp điện lực",
+          "biến áp 750kva trở lên"
+        ],
+        "staticConverter": [
+          "bộ nguồn",
+          "bộ chuyển đổi nguồn",
+          "bộ đổi nguồn",
+          "bộ nạp",
+          "bộ sạc",
+          "bộ sạc pin",
+          "bộ chuyển đổi",
+          "bộ chế biến nguồn",
+          "static converter",
+          "inverter",
+          "rectifier",
+          "bộ biến tần",
+          "bộ chỉnh lưu",
+          "bộ nguồn xung",
+          "bộ nguồn tổ ong",
+          "bộ nguồn máy tính",
+          "bộ nguồn ATX",
+          "bộ nguồn CCTV",
+          "bộ nguồn công nghiệp",
+          "bộ nguồn 24v",
+          "bộ nguồn 12v",
+          "bộ nguồn 5v",
+          "bộ nguồn chính",
+          "bộ cấp nguồn",
+          "bộ phân phối điện",
+          "charge controller",
+          "bộ điều khiển sạc",
+          "mppt",
+          "bộ sạc năng lượng mặt trời",
+          "bộ chuyển đổi DC DC",
+          "bộ chuyển đổi AC DC",
+          "bộ chuyển đổi DC AC"
+        ],
+        "inductor": [
+          "cuộn cảm",
+          "cuộn kháng",
+          "cuộn cảm lõi",
+          "cuộn cảm xuyên lỗ",
+          "cuộn cảm dán",
+          "cuộn cảm công suất",
+          "cuộn cảm lọc",
+          "cuộn kháng lọc",
+          "inductor",
+          "reactor",
+          "reactor lọc",
+          "cuộn lọc",
+          "cuộn cảm 100uh",
+          "cuộn cảm 10mh",
+          "cuộn cảm smd",
+          "cuộn cảm điện tử"
+        ],
+        "parts": [
+          "bộ phận biến áp",
+          "phụ tùng biến áp",
+          "lõi biến áp",
+          "cuộn dây biến áp",
+          "parts transformer",
+          "bộ phận nguồn",
+          "phụ kiện biến áp"
+        ]
+      }
     },
     {
       "attribute": "senMarked",
@@ -1139,7 +1288,19 @@
       "domain": [
         "sen",
         "nonSen"
-      ]
+      ],
+      "detect": {
+        "sen": [
+          "sen",
+          "sên",
+          "có sen",
+          "thanh sen",
+          "trục sen",
+          "cốt sen",
+          "bạc sen"
+        ],
+        "nonSen": []
+      }
     },
     {
       "attribute": "powerkVA",
@@ -1157,7 +1318,103 @@
         "gt2500le10000",
         "gt10000",
         "unspecified"
-      ]
+      ],
+      "detect": {
+        "le1": [
+          "0.1kva",
+          "0.5kva",
+          "1kva",
+          "dưới 1kva",
+          "nhỏ hơn 1kva",
+          "≤1kva",
+          "công suất nhỏ",
+          "công suất dưới 1kva",
+          "1 KVA",
+          "0.5 KVA",
+          "0.25 KVA",
+          "100VA",
+          "500VA"
+        ],
+        "gt1le10": [
+          "2kva",
+          "3kva",
+          "4kva",
+          "5kva",
+          "6kva",
+          "7kva",
+          "8kva",
+          "9kva",
+          "10kva",
+          "1-10kva",
+          "1kva đến 10kva",
+          "công suất trung bình",
+          "trung bình"
+        ],
+        "gt10le15": [
+          "11kva",
+          "12kva",
+          "13kva",
+          "14kva",
+          "15kva",
+          "10-15kva"
+        ],
+        "gt15le20": [
+          "16kva",
+          "17kva",
+          "18kva",
+          "19kva",
+          "20kva",
+          "15-20kva"
+        ],
+        "gt20le30": [
+          "25kva",
+          "30kva",
+          "20-30kva",
+          "25 KVA",
+          "30 KVA"
+        ],
+        "gt30": [
+          "40kva",
+          "50kva",
+          "63kva",
+          "75kva",
+          "100kva",
+          "150kva",
+          "200kva",
+          "250kva",
+          "315kva",
+          "400kva",
+          "500kva",
+          "630kva",
+          "750kva",
+          "1000kva",
+          "trên 30kva",
+          "lớn hơn 30kva",
+          "công suất lớn"
+        ],
+        "le2500": [
+          "2500kva",
+          "dưới 2500kva"
+        ],
+        "gt2500le10000": [
+          "3000kva",
+          "4000kva",
+          "5000kva",
+          "6000kva",
+          "7500kva",
+          "8000kva",
+          "10000kva",
+          "2500-10000kva"
+        ],
+        "gt10000": [
+          "15000kva",
+          "20000kva",
+          "25000kva",
+          "30000kva",
+          "trên 10000kva"
+        ],
+        "unspecified": []
+      }
     },
     {
       "attribute": "voltageClass",
@@ -1170,7 +1427,65 @@
         "ge66lt110",
         "ge110",
         "unspecified"
-      ]
+      ],
+      "detect": {
+        "lt1": [
+          "dưới 1v",
+          "1v",
+          "2v",
+          "3v",
+          "5v",
+          "12v",
+          "24v",
+          "48v",
+          "điện thế thấp",
+          "low voltage",
+          "điện 1 chiều",
+          "dc"
+        ],
+        "ge1lt66": [
+          "220v",
+          "380v",
+          "400v",
+          "415v",
+          "440v",
+          "460v",
+          "480v",
+          "660v",
+          "điện hạ thế",
+          "hạ thế",
+          "trung thế thấp",
+          "điện 3 pha 380v",
+          "điện 3 pha 220v",
+          "220 VAC",
+          "380 VAC"
+        ],
+        "ge66lt110": [
+          "6.6kv",
+          "10kv",
+          "11kv",
+          "22kv",
+          "33kv",
+          "35kv",
+          "trung thế",
+          "điện trung thế",
+          "medium voltage"
+        ],
+        "ge110": [
+          "110kv",
+          "220kv",
+          "330kv",
+          "500kv",
+          "cao thế",
+          "điện cao áp",
+          "cao thế",
+          "high voltage",
+          "điện lưới",
+          "110 kV",
+          "220 kV"
+        ],
+        "unspecified": []
+      }
     },
     {
       "attribute": "specialType",
@@ -1192,7 +1507,156 @@
         "chipInductor",
         "dataProcInductor",
         "none"
-      ]
+      ],
+      "detect": {
+        "currentTransformer": [
+          "biến dòng",
+          "máy biến dòng",
+          "biến dòng đo lường",
+          "CT",
+          "biến dòng bảo vệ",
+          "current transformer"
+        ],
+        "freqScan": [
+          "tần số",
+          "quét tần",
+          "biến áp tần số",
+          "frequency scanning"
+        ],
+        "ifTransformer": [
+          "IF",
+          "trung tần",
+          "biến áp IF",
+          "intermediate frequency",
+          "biến áp trung tần",
+          "IF transformer"
+        ],
+        "toys": [
+          "đồ chơi",
+          "toy",
+          "đồ chơi trẻ em",
+          "đồ chơi điện"
+        ],
+        "stepUpDown": [
+          "tăng giảm",
+          "tăng áp",
+          "giảm áp",
+          "step up",
+          "step down",
+          "tăng giảm áp",
+          "biến áp tăng giảm"
+        ],
+        "adapter": [
+          "adapter",
+          "bộ chuyển",
+          "đầu chuyển",
+          "usb adapter",
+          "adapter sạc",
+          "sạc điện thoại",
+          "sạc nhanh",
+          "sạc không dây",
+          "củ sạc",
+          "bộ sạc",
+          "bộ sạc điện thoại",
+          "củ sạc điện thoại",
+          "sạc iphone",
+          "sạc samsung",
+          "sạc laptop",
+          "sạc pin",
+          "bộ sạc pin",
+          "bộ nạp pin",
+          "bộ chuyển đổi adapter",
+          "adapter 5v",
+          "adapter 12v"
+        ],
+        "dryExplosionProof": [
+          "chống nổ",
+          "chống cháy nổ",
+          "nổ",
+          "an toàn nổ",
+          "dry type explosion",
+          "thiết bị chống nổ",
+          "vỏ chống nổ"
+        ],
+        "batteryCharger": [
+          "sạc pin",
+          "sạc acquy",
+          "sạc ắc quy",
+          "battery charger",
+          "bộ sạc acquy",
+          "bộ nạp điện",
+          "sạc bình acquy",
+          "máy sạc pin",
+          "sạc pin dự phòng",
+          "sạc dự phòng",
+          "pin dự phòng",
+          "máy sạc",
+          "bộ sạc",
+          "sạc xe điện",
+          "sạc xe máy điện",
+          "sạc ô tô",
+          "bộ sạc ô tô",
+          "trạm sạc",
+          "tau sac",
+          "tau sạc"
+        ],
+        "ups": [
+          "ups",
+          "bộ lưu điện",
+          "bộ lưu điện dự phòng",
+          "backup power",
+          "uninterruptible",
+          "bộ không间断",
+          "lưu điện",
+          "nguồn dự phòng",
+          "ups 1kva",
+          "ups 2kva",
+          "ups 3kva",
+          "ups 10kva"
+        ],
+        "rectifier": [
+          "chỉnh lưu",
+          "bộ chỉnh lưu",
+          "rectifier",
+          "bộ biến đổi chỉnh lưu",
+          "chỉnh lưu cầu",
+          "chỉnh lưu diode",
+          "chỉnh lưu SCR",
+          "bộ chuyển đổi AC DC",
+          "bộ biến đổi chỉnh lưu"
+        ],
+        "inverter": [
+          "biến tần",
+          "inverter",
+          "bộ biến tần",
+          "biến tần 1 pha",
+          "biến tần 3 pha",
+          "biến tần solar",
+          "biến tần năng lượng mặt trời",
+          "inverter solar",
+          "biến tần VFD",
+          "biến tần điều khiển tốc độ",
+          "biến tần công nghiệp",
+          "biến tần máy bơm",
+          "inverter điện mặt trời",
+          "inverter 5kw",
+          "inverter 10kw"
+        ],
+        "chipInductor": [
+          "cuộn cảm chip",
+          "cuộn cảm dán",
+          "inductor chip",
+          "smd inductor",
+          "cuộn cảm smd",
+          "cuộn dây chip"
+        ],
+        "dataProcInductor": [
+          "cuộn cảm xử lý dữ liệu",
+          "cuộn cảm máy tính",
+          "cuộn cảm viễn thông"
+        ],
+        "none": []
+      }
     }
   ],
   "essenceTestVi": "Với máy biến áp, bộ chỉnh lưu, cuộn cảm: xác định (1) loại sản phẩm (biến áp theo công suất/kV, UPS, cuộn cảm, phụ tùng), (2) có nhãn SEN không, (3) công suất kVA, (4) cấp điện áp, (5) loại đặc biệt.",
