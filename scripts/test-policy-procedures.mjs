@@ -198,5 +198,43 @@ if (usedBanEntry) {
   check(`cam-nk not duplicated in getProcedures result`, camCount === 1, camCount);
 }
 
+// 2026-10-02: chapter-group fallback — HS with empty warnings but chapter has procedures
+// 13019030 has no inspectionTypes/licenseTypes but chapter 13 → da-thuc-vat-13 → chat-luong
+const emptyWarnEntry = te['13019030'];
+if (emptyWarnEntry) {
+  const procs = getProcedures(emptyWarnEntry.warnings, '13019030');
+  check(`chapter-group fallback: 13019030 (ch13, no warnings) → chat-luong`,
+    procs.length > 0 && procs.some(p => p.code === 'chat-luong'),
+    procs.map(p => p.code));
+  const chatLuong = procs.find(p => p.code === 'chat-luong');
+  check(`chapter-group fallback matchedRaw = 'chapter-group:13'`,
+    chatLuong?.matchedRaw === 'chapter-group:13',
+    chatLuong?.matchedRaw);
+}
+
+// 2026-10-02: chapter-group fallback — HS with explicit warnings should NOT be overridden
+const hsWithWarn = Object.entries(te).find(([, e]) =>
+  e?.warnings?.inspectionTypes?.length > 0 && !e?.warnings?.usedGoodsImportBan
+);
+if (hsWithWarn) {
+  const [hs, entry] = hsWithWarn;
+  const procsBefore = getProcedures(entry.warnings, hs);
+  // Remove any usedGoodsImportBan effect
+  const entryNoBan = { ...entry, warnings: { ...entry.warnings, usedGoodsImportBan: false } };
+  const procsAfter = getProcedures(entryNoBan.warnings, hs);
+  const sameCodes = procsBefore.map(p => p.code).sort().join(',') ===
+                    procsAfter.filter(p => !p.matchedRaw?.startsWith('chapter-group')).map(p => p.code).sort().join(',');
+  check(`chapter-group fallback: explicit warnings NOT overridden for ${hs}`,
+    sameCodes, { before: procsBefore.map(p => p.code), after: procsAfter.map(p => p.code) });
+}
+
+// 2026-10-02: getProcedures without hsCode param still works (backward compat)
+if (usedBanEntry) {
+  const [, entry] = usedBanEntry;
+  const procs = getProcedures(entry.warnings);
+  check(`getProcedures(warnings) without hsCode still returns cam-nk`,
+    procs.some(p => p.code === 'cam-nk'));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

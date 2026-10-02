@@ -267,7 +267,7 @@ module.exports = async function handler(req, res) {
       // ?hs=10011100 → procedures applicable to this HS code
       if (hs) {
         const enriched = getEnrichedForHs(hs);
-        const procedures = enriched?.warnings ? getProcedures(enriched.warnings) : [];
+        const procedures = enriched?.warnings ? getProcedures(enriched.warnings, hs) : [];
         res.setHeader('Cache-Control', 'public, max-age=86400');
         return res.status(200).json({ hsCode: String(hs).replace(/\D/g,'').slice(0,8), total: procedures.length, procedures });
       }
