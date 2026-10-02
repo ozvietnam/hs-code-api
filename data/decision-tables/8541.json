@@ -27,7 +27,20 @@
           "rectifier diode",
           "zener",
           "schottky",
-          "pin diode"
+          "pin diode",
+          "đi ốt",
+          "điốt",
+          "đi ốt dán",
+          "điốt dán",
+          "điốt chỉnh lưu",
+          "đi-ốt ổn áp",
+          "đi-ốt zener",
+          "điốt zener",
+          "đi-ốt phát quang",
+          "điốt phát quang",
+          "điốt ổn áp",
+          "đi-ốt chỉnh lưu",
+          "điốt cầu"
         ],
         "transistor": [
           "transistor",
@@ -35,7 +48,14 @@
           "mosfet",
           "igbt",
           "fet",
-          "bipolar"
+          "bipolar",
+          "tranzito",
+          "bóng bán dẫn",
+          "tran-zito",
+          "tranzitor",
+          "bóng transistor",
+          "mosfet",
+          "igbt"
         ],
         "thyristor": [
           "thyristor",
@@ -51,7 +71,13 @@
           "cảm quang",
           "photosensitive",
           "optocoupler",
-          "phototransistor"
+          "phototransistor",
+          "cảm biến quang",
+          "cảm biến",
+          "điốt phát quang",
+          "tấm pin mặt trời",
+          "pin mặt trời",
+          "đi-ốt phát quang"
         ],
         "piezoCrystal": [
           "tinh thể áp điện",
@@ -138,7 +164,9 @@
     {
       "id": "r-diode",
       "priority": 55,
-      "when": { "deviceKind": "diode" },
+      "when": {
+        "deviceKind": "diode"
+      },
       "hs": "85411000",
       "gir": "GIR 6",
       "reasonVi": "Đi-ốt, trừ đi-ốt cảm quang hoặc LED → 8541.10.00.",
@@ -147,7 +175,12 @@
     {
       "id": "r-transistor-lt1w",
       "priority": 52,
-      "when": { "deviceKind": "transistor", "transistorDissipationW": { "lt": 1 } },
+      "when": {
+        "deviceKind": "transistor",
+        "transistorDissipationW": {
+          "lt": 1
+        }
+      },
       "hs": "85412100",
       "gir": "GIR 6",
       "reasonVi": "Transistor (không cảm quang), tiêu tán dưới 1 W → 8541.21.00.",
@@ -156,7 +189,12 @@
     {
       "id": "r-transistor-gte1w",
       "priority": 52,
-      "when": { "deviceKind": "transistor", "transistorDissipationW": { "gte": 1 } },
+      "when": {
+        "deviceKind": "transistor",
+        "transistorDissipationW": {
+          "gte": 1
+        }
+      },
       "hs": "85412900",
       "gir": "GIR 6",
       "reasonVi": "Transistor (không cảm quang), tiêu tán từ 1 W trở lên → 8541.29.00.",
@@ -165,7 +203,9 @@
     {
       "id": "r-transistor-fallback",
       "priority": 18,
-      "when": { "deviceKind": "transistor" },
+      "when": {
+        "deviceKind": "transistor"
+      },
       "hs": "85412900",
       "gir": "GIR 6",
       "reasonVi": "Transistor, chưa xác định công suất tiêu tán — mặc định nhóm từ 1 W trở lên → 8541.29.00.",
@@ -174,7 +214,9 @@
     {
       "id": "r-thyristor",
       "priority": 55,
-      "when": { "deviceKind": "thyristor" },
+      "when": {
+        "deviceKind": "thyristor"
+      },
       "hs": "85413000",
       "gir": "GIR 6",
       "reasonVi": "Thyristor, diac, triac (trừ cảm quang) → 8541.30.00.",
@@ -183,7 +225,10 @@
     {
       "id": "r-led",
       "priority": 58,
-      "when": { "deviceKind": "photosensitive", "photosensitiveKind": "led" },
+      "when": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "led"
+      },
       "hs": "85414100",
       "gir": "GIR 6",
       "reasonVi": "Đi-ốt phát quang (LED) → 8541.41.00.",
@@ -192,7 +237,10 @@
     {
       "id": "r-pv-bare",
       "priority": 58,
-      "when": { "deviceKind": "photosensitive", "photosensitiveKind": "pvCellBare" },
+      "when": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "pvCellBare"
+      },
       "hs": "85414200",
       "gir": "GIR 6",
       "reasonVi": "Tế bào quang điện chưa lắp mô-đun/bảng → 8541.42.00.",
@@ -201,7 +249,10 @@
     {
       "id": "r-pv-module",
       "priority": 58,
-      "when": { "deviceKind": "photosensitive", "photosensitiveKind": "pvModuleOrPanel" },
+      "when": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "pvModuleOrPanel"
+      },
       "hs": "85414300",
       "gir": "GIR 6",
       "reasonVi": "Tế bào quang điện đã lắp mô-đun hoặc bảng → 8541.43.00.",
@@ -210,7 +261,10 @@
     {
       "id": "r-photo-transducer",
       "priority": 56,
-      "when": { "deviceKind": "photosensitive", "photosensitiveKind": "semiconductorTransducer" },
+      "when": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "semiconductorTransducer"
+      },
       "hs": "85415100",
       "gir": "GIR 6",
       "reasonVi": "Thiết bị chuyển đổi/cảm biến dựa trên bán dẫn (cảm quang) → 8541.51.00.",
@@ -219,7 +273,10 @@
     {
       "id": "r-photo-other",
       "priority": 15,
-      "when": { "deviceKind": "photosensitive", "photosensitiveKind": "otherPhoto" },
+      "when": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "otherPhoto"
+      },
       "hs": "85414900",
       "gir": "GIR 6",
       "reasonVi": "Thiết bị cảm quang khác (không LED, không PV như trên) → 8541.49.00.",
@@ -228,7 +285,10 @@
     {
       "id": "r-photo-nec",
       "priority": 12,
-      "when": { "deviceKind": "photosensitive", "photosensitiveKind": "generalNec" },
+      "when": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "generalNec"
+      },
       "hs": "85415900",
       "gir": "GIR 6",
       "reasonVi": "Thiết bị cảm quang bán dẫn loại khác trong nhóm 85.41 → 8541.59.00.",
@@ -237,7 +297,9 @@
     {
       "id": "r-piezo",
       "priority": 55,
-      "when": { "deviceKind": "piezoCrystal" },
+      "when": {
+        "deviceKind": "piezoCrystal"
+      },
       "hs": "85416000",
       "gir": "GIR 6",
       "reasonVi": "Tinh thể áp điện đã lắp ráp → 8541.60.00.",
@@ -246,7 +308,9 @@
     {
       "id": "r-parts",
       "priority": 20,
-      "when": { "deviceKind": "parts" },
+      "when": {
+        "deviceKind": "parts"
+      },
       "hs": "85419000",
       "gir": "GIR 6",
       "reasonVi": "Bộ phận của thiết bị bán dẫn nhóm 85.41 → 8541.90.00.",
