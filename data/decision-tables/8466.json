@@ -190,7 +190,9 @@
     {
       "id": "r-dividing",
       "priority": 60,
-      "when": { "accessoryKind": "dividingHead" },
+      "when": {
+        "accessoryKind": "dividingHead"
+      },
       "hs": "84663000",
       "gir": "GIR 6",
       "reasonVi": "Đầu chia độ và phụ kiện chuyên dùng khác → 8466.30.00.",
@@ -199,7 +201,9 @@
     {
       "id": "r-for-8464",
       "priority": 55,
-      "when": { "accessoryKind": "for8464" },
+      "when": {
+        "accessoryKind": "for8464"
+      },
       "hs": "84669100",
       "gir": "GIR 6",
       "reasonVi": "Phụ tùng dùng cho máy nhóm 84.64 → 8466.91.00.",
@@ -208,7 +212,9 @@
     {
       "id": "r-for-8465",
       "priority": 55,
-      "when": { "accessoryKind": "for8465" },
+      "when": {
+        "accessoryKind": "for8465"
+      },
       "hs": "84669200",
       "gir": "GIR 6",
       "reasonVi": "Phụ tùng dùng cho máy nhóm 84.65 → 8466.92.00.",
@@ -253,11 +259,19 @@
     {
       "id": "r-for-8462-8463",
       "priority": 55,
-      "when": { "accessoryKind": "for8462or8463" },
+      "when": {
+        "accessoryKind": "for8462or8463"
+      },
       "hs": "84669400",
       "gir": "GIR 6",
       "reasonVi": "Phụ tùng dùng cho máy nhóm 84.62 hoặc 84.63 → 8466.94.00.",
       "source": "Biểu thuế 2026 dòng 8466.94.00"
     }
-  ]
+  ],
+  "inputAttributes": [
+    "accessoryKind",
+    "listedMachineToolSet",
+    "nec8466Target"
+  ],
+  "essenceVi": "phụ kiện+máy+mục đích"
 }

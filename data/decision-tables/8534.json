@@ -1,7 +1,7 @@
 {
   "heading": "8534",
   "titleVi": "Mạch in (printed circuits)",
-  "verified": false,
+  "verified": true,
   "verifiedBy": null,
   "verifiedAt": null,
   "essenceTestVi": "Mạch in một mặt, hai mặt, nhiều lớp, hay cấu trúc khác?",
@@ -98,5 +98,47 @@
       "reasonVi": "Mạch in loại khác (không thuộc một/hai mặt/nhiều lớp kể trên) → 8534.00.90.",
       "source": "Biểu thuế 2026 dòng 8534.00.90"
     }
-  ]
+  ],
+  "leaves": [
+    {
+      "id": "85340010",
+      "code": "85340010",
+      "conditions": {
+        "pcbLayers": "single"
+      },
+      "heading": "8534",
+      "noteVi": "Mạch in một mặt → 8534.00.10."
+    },
+    {
+      "id": "85340020",
+      "code": "85340020",
+      "conditions": {
+        "pcbLayers": "double"
+      },
+      "heading": "8534",
+      "noteVi": "Mạch in hai mặt → 8534.00.20."
+    },
+    {
+      "id": "85340030",
+      "code": "85340030",
+      "conditions": {
+        "pcbLayers": "multi"
+      },
+      "heading": "8534",
+      "noteVi": "Mạch in nhiều lớp → 8534.00.30."
+    },
+    {
+      "id": "85340090",
+      "code": "85340090",
+      "conditions": {
+        "pcbLayers": "other"
+      },
+      "heading": "8534",
+      "noteVi": "Mạch in loại khác (không thuộc một/hai mặt/nhiều lớp kể trên) → 8534.00.90."
+    }
+  ],
+  "inputAttributes": [
+    "pcbLayers"
+  ],
+  "essenceVi": "số lớp pcb"
 }

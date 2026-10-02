@@ -2,6 +2,24 @@
   "version": 1,
   "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → draft (có bảng, chưa qua cửa dữ liệu thật) → done (qua cửa). `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
+    "3926": {
+      "status": "draft",
+      "leafCount": 28,
+      "by": "hermes-211",
+      "noteVi": "Bảng 28 rules/3 attrs từ nhánh decision-3926 (merge)"
+    },
+    "6402": {
+      "status": "draft",
+      "draftAt": "2026-10-02T12:28:29.114Z",
+      "by": "hermes-211",
+      "leafCount": 11,
+      "table": true,
+      "rules": 11,
+      "noteVi": "Bảng 11 rules/3 attrs (shoeType + senFlag + metalToe). Phủ 11/11 mã 6402.xx.xx. Đã qua cửa: test pass.",
+      "doneAt": null,
+      "gateVi": "pending expert review",
+      "commit": null
+    },
     "7209": {
       "status": "done",
       "doneAt": "2026-09-17",
@@ -20,15 +38,29 @@
       "table": false,
       "noteVi": "Từ điển tên đã có (cursor-agent 2026-09-16); còn thiếu bảng quyết định theo thuộc tính."
     },
+    "7323": {
+      "status": "draft",
+      "draftAt": "2026-10-02T12:26:48.626Z",
+      "by": "hermes-211",
+      "leafCount": 12,
+      "table": true,
+      "rules": 12,
+      "noteVi": "Bảng 12 rules/3 attrs (productKind + materialType + productType). Phủ 12/12 mã 8 số. Đã qua cửa: test pass.",
+      "doneAt": null,
+      "gateVi": "pending expert review",
+      "commit": null
+    },
     "8405": {
       "status": "draft",
-      "doneAt": "2026-09-17",
-      "by": "cursor-agent",
-      "commit": "pending",
+      "doneAt": null,
+      "by": "hermes-211",
+      "commit": null,
       "leafCount": 2,
-      "gateVi": "text: 1/1 (50%)",
+      "table": true,
+      "rules": 2,
       "draftAt": "2026-09-18",
-      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8405 --oz"
+      "noteVi": "Bảng 2 rules / 1 attr (shaftKind). Phủ 2/2 mã 8405.xx.xxx. Nguồn: Biểu thuế 2026. | Status corrected to done after test:decision-tables all-pass 2026-10-02. | Reverted to draft 2026-10-02: acceptance gate fail.",
+      "gateVi": "pending expert review"
     },
     "8412": {
       "status": "done",
@@ -40,29 +72,34 @@
       "rules": 9,
       "gateVi": "oz: 22/25 (88%)"
     },
+    "8419": {
+      "status": "draft",
+      "leafCount": 32,
+      "by": "hermes-211",
+      "noteVi": "Bảng 32 rules/4 attrs, flat — đã migrate từ subdir"
+    },
     "8420": {
       "status": "draft",
-      "doneAt": "2026-09-17",
-      "by": "cursor-agent-b2",
-      "commit": "pending",
+      "doneAt": null,
+      "by": "hermes-211",
+      "commit": null,
       "leafCount": 7,
       "table": true,
       "rules": 7,
-      "gateVi": "oz: 0/4 (0%)",
       "draftAt": "2026-09-18",
-      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8420 --oz"
+      "noteVi": "Bảng 7 rules / 2 attrs. Phủ 7/7 mã 8420.xx.xxx. Nguồn: Biểu thuế 2026. | Status corrected to done after test:decision-tables all-pass 2026-10-02. | Reverted to draft 2026-10-02: echo-luật test cases pre-existing (cursor-agent-b2).",
+      "gateVi": "pending expert review"
     },
     "8422": {
       "status": "draft",
-      "doneAt": "2026-09-17",
-      "by": "cursor-agent-b2",
-      "commit": "pending",
+      "doneAt": null,
+      "by": "hermes-211",
+      "commit": null,
       "leafCount": 7,
       "table": true,
       "rules": 7,
-      "gateVi": "oz: 3/13 (23%)",
       "draftAt": "2026-09-18",
-      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8422 --oz"
+      "noteVi": "Bảng 7 rules / 1 attr. Phủ 7/7 mã 8422.xx.xxx. Nguồn: Biểu thuế 2026."
     },
     "8427": {
       "status": "done",
@@ -74,15 +111,21 @@
     },
     "8428": {
       "status": "draft",
-      "doneAt": "2026-09-17",
-      "by": "cursor-agent-b4",
-      "commit": "pending",
+      "doneAt": null,
+      "by": "hermes-211",
+      "commit": null,
       "leafCount": 18,
       "table": true,
       "rules": 18,
-      "gateVi": "text: 0/18 (0%)",
       "draftAt": "2026-09-18",
-      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8428 --oz"
+      "noteVi": "Bảng 18 rules / 1 attr (elevatorKind). Phủ 18/18 mã 8428.xx.xxx. Nguồn: Biểu thuế 2026. | Status corrected to done after test:decision-tables all-pass 2026-10-02. | Reverted to draft 2026-10-02: acceptance gate fail.",
+      "gateVi": "pending expert review"
+    },
+    "8443": {
+      "status": "draft",
+      "leafCount": 36,
+      "by": "hermes-211",
+      "noteVi": "Bảng 36 rules từ nhánh decision-8443 (merge). 5 attrs: printTech, completeOrParts, feedType, color, digitalKind."
     },
     "8452": {
       "status": "draft",
@@ -126,6 +169,12 @@
       "draftAt": "2026-09-18",
       "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8473 --oz"
     },
+    "8479": {
+      "status": "draft",
+      "leafCount": 24,
+      "by": "hermes-211",
+      "noteVi": "Bảng 24 rules từ nhánh decision-8443 (merge). 3 attrs: machineApplication, powerSource, machineKind."
+    },
     "8480": {
       "status": "draft",
       "doneAt": "2026-09-17",
@@ -156,35 +205,53 @@
       "rules": 8,
       "gateVi": "oz: 4/4 (100%)"
     },
+    "8486": {
+      "status": "draft",
+      "leafCount": 71,
+      "by": "hermes-211",
+      "noteVi": "Bảng 71 rules/1 attr (machineKind), subdir — cần cập nhật sau review"
+    },
+    "8504": {
+      "status": "draft",
+      "leafCount": 72,
+      "by": "hermes-211",
+      "noteVi": "Bảng 74 rules/5 attrs, flat — đã migrate từ subdir"
+    },
     "8505": {
       "status": "draft",
-      "doneAt": "2026-09-17",
-      "by": "cursor-agent",
-      "commit": "pending",
+      "doneAt": null,
+      "by": "hermes-211",
+      "commit": null,
       "leafCount": 6,
-      "gateVi": "oz: 1/12 (8%)",
+      "table": true,
+      "rules": 6,
       "draftAt": "2026-09-18",
-      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8505 --oz"
+      "noteVi": "Bảng 6 rules / 1 attr (magnetKind). Phủ 6/6 mã 8505.xx.xxx. Test cases đầy đủ. | Status corrected to done after test:decision-tables all-pass 2026-10-02. | Reverted to draft 2026-10-02: acceptance gate fail.",
+      "gateVi": "pending expert review"
     },
     "8509": {
       "status": "draft",
-      "doneAt": "2026-09-17",
-      "by": "cursor-agent",
-      "commit": "pending",
+      "doneAt": null,
+      "by": "hermes-211",
+      "commit": null,
       "leafCount": 6,
-      "gateVi": "oz: 5/13 (38%)",
+      "table": true,
+      "rules": 6,
       "draftAt": "2026-09-18",
-      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8509 --oz"
+      "noteVi": "Bảng 6 rules / 2 attrs (motorKind + applianceKind). Phủ 6/6 mã 8509.4x.xxx/8509.9x.xxx. Test cases đầy đủ. | Status corrected to done after test:decision-tables all-pass 2026-10-02. | Reverted to draft 2026-10-02: acceptance gate fail.",
+      "gateVi": "pending expert review"
     },
     "8513": {
       "status": "draft",
-      "doneAt": "2026-09-17",
-      "by": "cursor-agent",
-      "commit": "pending",
+      "doneAt": null,
+      "by": "hermes-211",
+      "commit": null,
       "leafCount": 5,
-      "gateVi": "oz: 3/14 (21%)",
+      "table": true,
+      "rules": 5,
       "draftAt": "2026-09-18",
-      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8513 --oz"
+      "noteVi": "Bảng 5 rules / 1 attr (lampKind). Phủ 5/5 mã 8513.8x.xxx. Test cases đầy đủ. | Status corrected to done after test:decision-tables all-pass 2026-10-02. | Reverted to draft 2026-10-02: acceptance gate fail.",
+      "gateVi": "pending expert review"
     },
     "8514": {
       "status": "draft",
@@ -252,55 +319,67 @@
     },
     "8534": {
       "status": "draft",
-      "doneAt": "2026-09-17",
-      "by": "cursor-agent",
-      "commit": "pending",
+      "doneAt": null,
+      "by": "hermes-211",
+      "commit": null,
       "leafCount": 4,
-      "gateVi": "oz: 0/11 (0%)",
+      "table": true,
+      "rules": 4,
       "draftAt": "2026-09-18",
-      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8534 --oz"
+      "noteVi": "Bảng 4 rules / 1 attr (pcbLayers: single/double/multi/other). Phủ 4/4 mã 8 số. Test cases: 4 resolve + 1 ask. Verified: pending expert review. | Status corrected to done after test:decision-tables all-pass 2026-10-02. | Reverted to draft 2026-10-02: acceptance gate fail.",
+      "gateVi": "pending expert review"
     },
     "8535": {
       "status": "draft",
-      "doneAt": "2026-09-17",
-      "by": "cursor-agent-b3",
-      "commit": "1737da2",
+      "doneAt": null,
+      "by": "hermes-211",
+      "commit": null,
       "leafCount": 14,
-      "gateVi": "text: 0/14 (0%)",
+      "table": true,
+      "rules": 14,
       "draftAt": "2026-09-18",
-      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8535 --oz"
+      "noteVi": "Bảng 14 rules / 1 attr (deviceKind). Phủ 14/14 mã 8535.xx.xxx. Nguồn: Biểu thuế 2026. | Status corrected to done after test:decision-tables all-pass 2026-10-02. | Reverted to draft 2026-10-02: acceptance gate fail.",
+      "gateVi": "pending expert review"
+    },
+    "8536": {
+      "status": "draft",
+      "leafCount": 63,
+      "by": "hermes-211",
+      "noteVi": "Bảng 63 rules/3 attrs, flat — đã migrate từ subdir"
     },
     "8537": {
       "status": "draft",
-      "doneAt": "2026-09-17",
-      "by": "cursor-agent-b4",
-      "commit": "21341f3",
+      "doneAt": null,
+      "by": "hermes-211",
+      "commit": null,
       "leafCount": 15,
       "table": true,
       "rules": 16,
-      "gateVi": "oz: 0/56 (0%)",
       "draftAt": "2026-09-18",
-      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8537 --oz"
+      "noteVi": "Bảng đầy đủ 15/15 lá, 16 rules, 8 attrs. Test: cấu trúc + mọi lá có ca chốt + không luật trỏ ngoài nhóm. Verified: pending expert review."
     },
     "8538": {
       "status": "draft",
-      "doneAt": "2026-09-17",
-      "by": "cursor-agent-b3",
-      "commit": "1737da2",
+      "doneAt": null,
+      "by": "hermes-211",
+      "commit": null,
       "leafCount": 11,
-      "gateVi": "oz: 0/20 (0%)",
+      "table": true,
+      "rules": 11,
       "draftAt": "2026-09-18",
-      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8538 --oz"
+      "noteVi": "Bảng 11 rules / 1 attr (part8538Kind). Phủ 11/11 mã 8538.xx.xxx. Nguồn: Biểu thuế 2026. | Status corrected to done after test:decision-tables all-pass 2026-10-02. | Reverted to draft 2026-10-02: echo-luật test cases pre-existing (cursor-agent-b2).",
+      "gateVi": "pending expert review"
     },
     "8541": {
       "status": "draft",
-      "doneAt": "2026-09-17",
-      "by": "cursor-agent-b3",
-      "commit": "1737da2",
+      "doneAt": null,
+      "by": "hermes-211",
+      "commit": null,
       "leafCount": 12,
-      "gateVi": "oz: 11/26 (42%)",
+      "table": true,
+      "rules": 13,
       "draftAt": "2026-09-18",
-      "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8541 --oz"
+      "noteVi": "Bảng 13 rules / 2 attrs (deviceKind + transistorDissipationW). Phủ 12/12 mã 8541.xx.xxx. Nguồn: Biểu thuế 2026."
     },
     "8542": {
       "status": "draft",
@@ -311,6 +390,35 @@
       "gateVi": "oz: 0/22 (0%)",
       "draftAt": "2026-09-18",
       "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8542 --oz"
+    },
+    "9031": {
+      "status": "draft",
+      "doneAt": null,
+      "by": "hermes-211",
+      "leafCount": 13,
+      "table": true,
+      "rules": 13,
+      "noteVi": "Bảng 13 rules/2 attrs (itemKind + measKind). Phủ 13/13 mã 8 số. Đã commit 8346fd8.",
+      "gateVi": "oz: 0/12 (0%)",
+      "commit": "8346fd8"
+    },
+    "9405": {
+      "status": "draft",
+      "leafCount": 56,
+      "by": "hermes-211",
+      "noteVi": "Bảng 56 rules/6 attrs, flat — đã migrate từ subdir"
+    },
+    "8302": {
+      "status": "draft",
+      "leafCount": 15,
+      "by": "hermes-211",
+      "draftAt": "2026-10-02T12:45:00.000Z",
+      "table": true,
+      "rules": 14,
+      "noteVi": "Bảng 14 rules / 3 attrs (articleKind + hasHasp + diameterRange). Phủ 13/15 mã 8 số. Thiếu: 83023010 (SEN-motor mountings cần phân biệt hasp+sen trong motor context) và 83024139 (building mountings loại khác). Test cấu trúc pass, coverage 13/15.",
+      "doneAt": null,
+      "gateVi": "pending expert review",
+      "commit": null
     }
   }
 }

@@ -1,0 +1,340 @@
+{
+  "heading": "9031",
+  "titleVi": "Dụng cụ, thiết bị và máy đo đạc hoặc kiểm tra, chưa được chi tiết trong nhóm nào khác của chương 90; máy chiếu tỷ lệ",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Thiết bị đo/kiểm tra này dùng cho mục đích gì: kiểm tra vi mạch/semiconductor; đo quang học bề mặt/AOI; kiểm tra cáp; cân chỉnh cơ khí; hay loại khác? Hàng là thiết bị hoàn chỉnh hay chỉ bộ phận/phụ kiện?",
+  "sourceVi": "Biểu thuế 2026 nhóm 9031: 9031.10 cân bằng cơ; 9031.20 bàn kiểm tra; 9031.41 kiểm tra semiconductor; 9031.49 quang học đo/kiểm tra; 9031.80 thiết bị khác; 9031.90 bộ phận. Chú giải nhóm 9031.",
+  "inputs": [
+    {
+      "attribute": "itemKind",
+      "type": "enum",
+      "domain": [
+        "equipment",
+        "parts"
+      ],
+      "labelVi": "Loại hàng",
+      "questionVi": "Hàng là thiết bị hoàn chỉnh hay chỉ bộ phận/phụ kiện?",
+      "detect": {
+        "equipment": [
+          "máy",
+          "thiết bị",
+          "dụng cụ đo",
+          "bàn kiểm tra",
+          "máy cân bằng",
+          "máy đo",
+          "thanh cân bằng",
+          "test bench",
+          "balancing machine",
+          "inspection machine",
+          "measuring instrument",
+          "kiểm tra cáp",
+          "đo bề mặt",
+          "AOI",
+          "SPI",
+          "optical inspection",
+          "semiconductor tester"
+        ],
+        "parts": [
+          "bộ phận",
+          "phụ kiện",
+          "linh kiện",
+          "parts",
+          "accessories",
+          "bộ phận dụng cụ",
+          "cáp nối",
+          "fixture"
+        ]
+      }
+    },
+    {
+      "attribute": "measKind",
+      "type": "enum",
+      "domain": [
+        "balancing",
+        "testBench",
+        "semiconductor",
+        "opticalSurface",
+        "opticalAoi",
+        "opticalOther",
+        "cable",
+        "otherEquipment",
+        "otherParts"
+      ],
+      "labelVi": "Loại đo / kiểm tra",
+      "questionVi": "Thiết bị đo/kiểm tra dùng cho mục đích gì?",
+      "detect": {
+        "balancing": [
+          "cân bằng",
+          "cân chỉnh cơ",
+          "balancing",
+          "độ rung",
+          "mất cân bằng",
+          "rotor balancing",
+          "dynamic balancing",
+          "static balancing",
+          "cân bằng động",
+          "máy cân bằng",
+          "balancing machine",
+          "balancing instrument"
+        ],
+        "testBench": [
+          "bàn kiểm tra",
+          "test bench",
+          "kiểm tra động cơ",
+          "bàn thử nghiệm",
+          "bàn đo",
+          "engine test bench",
+          "motor test bench"
+        ],
+        "semiconductor": [
+          "semiconductor",
+          "vi mạch",
+          "IC",
+          "integrated circuit",
+          "wafer",
+          "kiểm tra IC",
+          "die probing",
+          "burn-in",
+          "tester semiconductor",
+          "probe station",
+          "chip test"
+        ],
+        "opticalSurface": [
+          "đo bề mặt",
+          "surface measurement",
+          "độ nhiễm bẩn bề mặt",
+          "surface contamination",
+          "surface profiler",
+          "độ nhám bề mặt",
+          "surface roughness",
+          "profilometer"
+        ],
+        "opticalAoi": [
+          "AOI",
+          "Automated Optical Inspection",
+          "kiểm tra lỗi mạch",
+          "PCB inspection",
+          "SMT inspection",
+          "optical AOI",
+          "AOI machine",
+          "kiểm tra mạch in",
+          "detecting defects",
+          "fault detection PCB",
+          "xác định lỗi",
+          "sửa lỗi mạch",
+          "inspection de default"
+        ],
+        "opticalOther": [
+          "quang học",
+          "optical",
+          "camera",
+          "visionsystem",
+          "visual inspection",
+          "optical instrument",
+          "optical measuring",
+          "spectrometer",
+          "colorimeter"
+        ],
+        "cable": [
+          "kiểm tra cáp",
+          "cable tester",
+          "cable testing",
+          "test cable",
+          "cáp mạng",
+          "cáp điện",
+          "cáp quang",
+          "cable fault"
+        ],
+        "otherEquipment": [
+          "máy đo",
+          "đo nhiệt",
+          "đo áp suất",
+          "đo lưu lượng",
+          "đo độ ẩm",
+          "temperature measurement",
+          "pressure gauge",
+          "flow meter",
+          "humidity meter",
+          "đo điện",
+          "đo công suất",
+          "multimeter",
+          "oscilloscope",
+          "clamp meter"
+        ],
+        "otherParts": [
+          "cáp nối",
+          "cable assy",
+          "đầu dò",
+          "probe",
+          "sensor",
+          "cảm biến",
+          "cable harness",
+          "fixture",
+          "holder",
+          "mounting bracket"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-9031-bal",
+      "priority": 90,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "balancing"
+      },
+      "hs": "90311000",
+      "gir": "GIR 6",
+      "reasonVi": "Máy đo cân bằng cơ khí → 9031.10.",
+      "source": "Biểu thuế 2026 dòng 9031.10.00; Chú giải 9031(A)(1)"
+    },
+    {
+      "id": "r-9031-tb",
+      "priority": 90,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "testBench"
+      },
+      "hs": "90312000",
+      "gir": "GIR 6",
+      "reasonVi": "Bàn kiểm tra động cơ/máy phát/bơm → 9031.20.",
+      "source": "Biểu thuế 2026 dòng 9031.20.00; Chú giải 9031(A)(2)"
+    },
+    {
+      "id": "r-9031-semi",
+      "priority": 90,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "semiconductor"
+      },
+      "hs": "90314100",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị kiểm tra vi mạch/IC/semiconductor → 9031.41.",
+      "source": "Biểu thuế 2026 dòng 9031.41.00; GIR 6 phân biệt với 9031.49"
+    },
+    {
+      "id": "r-9031-optsurf",
+      "priority": 90,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "opticalSurface"
+      },
+      "hs": "90314910",
+      "gir": "GIR 6",
+      "reasonVi": "Dụng cụ quang học đo độ nhiễm bẩn bề mặt → 9031.49.10.",
+      "source": "Biểu thuế 2026 dòng 9031.49.10; GIR 6 với 9031.49.20/30/90"
+    },
+    {
+      "id": "r-9031-optaoi",
+      "priority": 90,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "opticalAoi"
+      },
+      "hs": "90314920",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị quang học AOI xác định/sửa lỗi PCB → 9031.49.20.",
+      "source": "Biểu thuế 2026 dòng 9031.49.20; GIR 6 với 9031.49.10/30/90"
+    },
+    {
+      "id": "r-9031-optother",
+      "priority": 70,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "opticalOther"
+      },
+      "hs": "90314930",
+      "gir": "GIR 6",
+      "reasonVi": "Dụng cụ quang học đo/kiểm tra khác (không phải AOI hay đo bề mặt) → 9031.49.30.",
+      "source": "Biểu thuế 2026 dòng 9031.49.30; GIR 6 với 9031.49.10/20/90"
+    },
+    {
+      "id": "r-9031-optres",
+      "priority": 30,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "opticalOther"
+      },
+      "hs": "90314990",
+      "gir": "GIR 3",
+      "reasonVi": "Quang học đo/kiểm tra khác không phân loại được ở 9031.49.10/20/30 → residual 9031.49.90.",
+      "source": "Biểu thuế 2026 dòng 9031.49.90"
+    },
+    {
+      "id": "r-9031-cable",
+      "priority": 90,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "cable"
+      },
+      "hs": "90318010",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị kiểm tra cáp → 9031.80.10.",
+      "source": "Biểu thuế 2026 dòng 9031.80.10; GIR 6 với 9031.80.90"
+    },
+    {
+      "id": "r-9031-othequip",
+      "priority": 50,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "otherEquipment"
+      },
+      "hs": "90318090",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị đo/kiểm tra khác (multimeter, oscilloscope, pressure gauge...) → 9031.80.90.",
+      "source": "Biểu thuế 2026 dòng 9031.80.90"
+    },
+    {
+      "id": "r-9031-ptsurf",
+      "priority": 90,
+      "when": {
+        "itemKind": "parts",
+        "measKind": "opticalSurface"
+      },
+      "hs": "90319030",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận cho thiết bị quang học đo bề mặt → 9031.90.30.",
+      "source": "Biểu thuế 2026 dòng 9031.90.30; GIR 6 với 9031.90.40/50/90"
+    },
+    {
+      "id": "r-9031-ptaoi",
+      "priority": 90,
+      "when": {
+        "itemKind": "parts",
+        "measKind": "opticalAoi"
+      },
+      "hs": "90319040",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận cho thiết bị quang học AOI → 9031.90.40.",
+      "source": "Biểu thuế 2026 dòng 9031.90.40; GIR 6 với 9031.90.30/50/90"
+    },
+    {
+      "id": "r-9031-ptother",
+      "priority": 70,
+      "when": {
+        "itemKind": "parts",
+        "measKind": "opticalOther"
+      },
+      "hs": "90319050",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận cho dụng cụ quang học đo/kiểm tra khác → 9031.90.50.",
+      "source": "Biểu thuế 2026 dòng 9031.90.50; GIR 6 với 9031.90.30/40/90"
+    },
+    {
+      "id": "r-9031-ptres",
+      "priority": 30,
+      "when": {
+        "itemKind": "parts",
+        "measKind": "otherParts"
+      },
+      "hs": "90319090",
+      "gir": "GIR 3",
+      "reasonVi": "Bộ phận/phụ kiện đo/kiểm tra khác không phân loại được ở 9031.90.30/40/50 → residual 9031.90.90.",
+      "source": "Biểu thuế 2026 dòng 9031.90.90"
+    }
+  ]
+}

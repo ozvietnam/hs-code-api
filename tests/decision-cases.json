@@ -2569,6 +2569,321 @@
       "heading": "8482",
       "text": "vòng bi kết hợp bi đũa",
       "expectHs": "84828000"
+    },
+    {
+      "id": "8504-ballast",
+      "heading": "8504",
+      "text": "chấn lưu cho đèn phóng điện",
+      "expectHs": "85041000",
+      "facts": {
+        "productType": "ballast",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-ups-sen",
+      "heading": "8504",
+      "text": "bộ nguồn liên tục UPS có nhãn SEN",
+      "expectHs": "85044011",
+      "facts": {
+        "productType": "staticConverter",
+        "senMarked": "sen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "ups"
+      }
+    },
+    {
+      "id": "8504-inverter",
+      "heading": "8504",
+      "text": "bộ nghịch lưu điện",
+      "expectHs": "85044040",
+      "facts": {
+        "productType": "staticConverter",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "inverter"
+      }
+    },
+    {
+      "id": "8504-transformer-110kv",
+      "heading": "8504",
+      "text": "biến áp 5kVA điện áp 110kV",
+      "expectHs": "85042111",
+      "facts": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "ge110",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-inductor-chip",
+      "heading": "8504",
+      "text": "cuộn cảm con chip SEN",
+      "expectHs": "85045020",
+      "facts": {
+        "productType": "inductor",
+        "senMarked": "sen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "chipInductor"
+      }
+    },
+    {
+      "id": "8504-transformer-dry-explosion",
+      "heading": "8504",
+      "text": "biến áp khô phòng nổ 1000kVA",
+      "expectHs": "85043426",
+      "facts": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "dryExplosionProof"
+      }
+    },
+    {
+      "id": "8486-semiconductorWafer",
+      "heading": "8486",
+      "text": "Thiết bị làm nóng nhanh tấm bán dẫn mỏng (RTP)",
+      "facts": {
+        "machineKind": "semiconductorWafer"
+      },
+      "expectHs": "84861010"
+    },
+    {
+      "id": "8486-semiconductorDevice",
+      "heading": "8486",
+      "text": "Thiết bị kết tủa khí hóa (CVD) sản xuất IC",
+      "facts": {
+        "machineKind": "semiconductorDevice"
+      },
+      "expectHs": "84862011"
+    },
+    {
+      "id": "8486-flatPanel",
+      "heading": "8486",
+      "text": "Thiết bị khắc axit khô lên tấm nền màn hình dẹt",
+      "facts": {
+        "machineKind": "flatPanel"
+      },
+      "expectHs": "84863010"
+    },
+    {
+      "id": "8486-maskReticleAssembly",
+      "heading": "8486",
+      "text": "Máy phay ion (ion milling) cho màn và lưới quang bán dẫn",
+      "facts": {
+        "machineKind": "maskReticleAssembly"
+      },
+      "expectHs": "84864010"
+    },
+    {
+      "id": "8486-parts",
+      "heading": "8486",
+      "text": "Bộ phận của thiết bị nung nhanh máy sản xuất bán dẫn",
+      "facts": {
+        "machineKind": "parts"
+      },
+      "expectHs": "84869011"
+    },
+    {
+      "id": "test-9031-90311000",
+      "heading": "9031",
+      "text": "máy cân bằng động cơ điện 500kg",
+      "facts": {
+        "itemKind": "equipment",
+        "measKind": "balancing"
+      },
+      "expectHs": "90311000"
+    },
+    {
+      "id": "test-9031-90312000",
+      "heading": "9031",
+      "text": "bàn kiểm tra động cơ diesel 50 mã lực",
+      "facts": {
+        "itemKind": "equipment",
+        "measKind": "testBench"
+      },
+      "expectHs": "90312000"
+    },
+    {
+      "id": "test-9031-90314100",
+      "heading": "9031",
+      "text": "máy kiểm tra vi mạch IC trong nhà máy chip",
+      "facts": {
+        "itemKind": "equipment",
+        "measKind": "semiconductor"
+      },
+      "expectHs": "90314100"
+    },
+    {
+      "id": "test-9031-90314910",
+      "heading": "9031",
+      "text": "máy đo bề mặt quang học 3D trong phòng sạch",
+      "facts": {
+        "itemKind": "equipment",
+        "measKind": "opticalSurface"
+      },
+      "expectHs": "90314910"
+    },
+    {
+      "id": "test-9031-90314920",
+      "heading": "9031",
+      "text": "máy AOI kiểm tra board mạch in tự động",
+      "facts": {
+        "itemKind": "equipment",
+        "measKind": "opticalAoi"
+      },
+      "expectHs": "90314920"
+    },
+    {
+      "id": "test-9031-90314990",
+      "heading": "9031",
+      "text": "thiết bị đo chiều dài cáp công nghiệp 100m",
+      "facts": {
+        "itemKind": "equipment",
+        "measKind": "cable"
+      },
+      "expectHs": "90318010"
+    },
+    {
+      "id": "test-9031-90319090",
+      "heading": "9031",
+      "text": "bộ phận máy đo điện tử dùng chung",
+      "facts": {
+        "itemKind": "parts",
+        "measKind": "otherParts"
+      },
+      "expectHs": "90319090"
+    },
+    {
+      "id": "test-8534-85340010",
+      "heading": "8534",
+      "text": "mạch in một mặt PCB đơn cho điện tử tiêu dùng",
+      "facts": {
+        "pcbLayers": "single"
+      },
+      "expectHs": "85340010"
+    },
+    {
+      "id": "test-8534-85340020",
+      "heading": "8534",
+      "text": "mạch in hai mặt PCB đôi cho điện thoại thông minh",
+      "facts": {
+        "pcbLayers": "double"
+      },
+      "expectHs": "85340020"
+    },
+    {
+      "id": "test-8534-85340030",
+      "heading": "8534",
+      "text": "mạch in nhiều lớp 8 layer cho máy chủ",
+      "facts": {
+        "pcbLayers": "multi"
+      },
+      "expectHs": "85340030"
+    },
+    {
+      "id": "test-8534-85340090",
+      "heading": "8534",
+      "text": "mạch in loại khác không xác định số lớp",
+      "facts": {
+        "pcbLayers": "other"
+      },
+      "expectHs": "85340090"
+    },
+    {
+      "id": "test-8541-diode",
+      "heading": "8541",
+      "text": "đi-ốt chỉnh lưu 5A 1000V",
+      "facts": {
+        "deviceKind": "diode"
+      },
+      "expectHs": "85411000"
+    },
+    {
+      "id": "test-8541-zener",
+      "heading": "8541",
+      "text": "zener diode 12V 1W",
+      "facts": {
+        "deviceKind": "diode"
+      },
+      "expectHs": "85411000"
+    },
+    {
+      "id": "test-8541-led",
+      "heading": "8541",
+      "text": "đèn LED 5mm đỏ tròn",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "led"
+      },
+      "expectHs": "85414100"
+    },
+    {
+      "id": "test-8541-solarcell",
+      "heading": "8541",
+      "text": "tế bào quang điện chưa lắp mô-đun 100W",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "pvCellBare"
+      },
+      "expectHs": "85414200"
+    },
+    {
+      "id": "test-8541-solarpanel",
+      "heading": "8541",
+      "text": "tấm pin năng lượng mặt trời 300W đã lắp mô-đun",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "pvModuleOrPanel"
+      },
+      "expectHs": "85414300"
+    },
+    {
+      "id": "test-8541-transducer",
+      "heading": "8541",
+      "text": "cảm biến bán dẫn MEMS áp suất công nghiệp",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "semiconductorTransducer"
+      },
+      "expectHs": "85415100"
+    },
+    {
+      "id": "test-8541-optocoupler",
+      "heading": "8541",
+      "text": "optocoupler PC817 cách ly tín hiệu",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "otherPhoto"
+      },
+      "expectHs": "85414900"
+    },
+    {
+      "id": "test-8541-piezo",
+      "heading": "8541",
+      "text": "tinh thể thạch anh áp điện đã lắp ráp 8MHz",
+      "facts": {
+        "deviceKind": "piezoCrystal"
+      },
+      "expectHs": "85416000"
+    },
+    {
+      "id": "test-8541-parts",
+      "heading": "8541",
+      "text": "bộ phận bán dẫn cho diode",
+      "facts": {
+        "deviceKind": "parts"
+      },
+      "expectHs": "85419000"
     }
   ]
 }
