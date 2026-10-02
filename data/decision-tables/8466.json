@@ -273,5 +273,91 @@
     "listedMachineToolSet",
     "nec8466Target"
   ],
-  "essenceVi": "phụ kiện+máy+mục đích"
+  "essenceVi": "phụ kiện+máy+mục đích",
+  "attributes": {
+    "accessoryKind": {
+      "type": "enum",
+      "labelVi": "accessoryKind",
+      "domain": [
+        "dividingHead",
+        "for8462or8463",
+        "for8464",
+        "for8465",
+        "nec8466",
+        "toolHolder",
+        "workHolder"
+      ],
+      "detect": {
+        "dividingHead": [
+          "dividinghead",
+          "dividinghead"
+        ],
+        "for8462or8463": [
+          "for8462or8463",
+          "for8462or8463"
+        ],
+        "for8464": [
+          "for8464",
+          "for8464"
+        ],
+        "for8465": [
+          "for8465",
+          "for8465"
+        ],
+        "nec8466": [
+          "nec8466",
+          "nec8466"
+        ],
+        "toolHolder": [
+          "toolholder",
+          "toolholder"
+        ],
+        "workHolder": [
+          "workholder",
+          "workholder"
+        ]
+      }
+    },
+    "listedMachineToolSet": {
+      "type": "enum",
+      "labelVi": "listedMachineToolSet",
+      "domain": [
+        "no",
+        "yes"
+      ],
+      "detect": {
+        "no": [
+          "no",
+          "no"
+        ],
+        "yes": [
+          "yes",
+          "yes"
+        ]
+      }
+    },
+    "nec8466Target": {
+      "type": "enum",
+      "labelVi": "nec8466Target",
+      "domain": [
+        "for845650",
+        "otherNec",
+        "pcbSemi8471_8517"
+      ],
+      "detect": {
+        "for845650": [
+          "for845650",
+          "for845650"
+        ],
+        "otherNec": [
+          "othernec",
+          "othernec"
+        ],
+        "pcbSemi8471_8517": [
+          "pcbsemi8471_8517",
+          "pcbsemi8471 8517"
+        ]
+      }
+    }
+  }
 }

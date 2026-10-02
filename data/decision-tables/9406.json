@@ -15,8 +15,15 @@
       "labelVi": "Có phải nhà trồng cây có gắn thiết bị cơ khí/nhiệt không",
       "questionVi": "Công trình là nhà trồng cây có gắn thiết bị cơ khí hoặc nhiệt không?",
       "detect": {
-        "yes": ["nhà trồng cây", "greenhouse", "nhà kính"],
-        "no": ["công trình khác", "nhà tiền chế"]
+        "yes": [
+          "nhà trồng cây",
+          "greenhouse",
+          "nhà kính"
+        ],
+        "no": [
+          "công trình khác",
+          "nhà tiền chế"
+        ]
       }
     },
     {
@@ -29,8 +36,14 @@
       "labelVi": "Có phải lắp ghép (prefabricated) không",
       "questionVi": "Công trình có phải loại lắp ghép (prefab) không?",
       "detect": {
-        "yes": ["lắp ghép", "prefab", "tiền chế"],
-        "no": ["lắp tại chỗ"]
+        "yes": [
+          "lắp ghép",
+          "prefab",
+          "tiền chế"
+        ],
+        "no": [
+          "lắp tại chỗ"
+        ]
       }
     },
     {
@@ -46,15 +59,33 @@
       "labelVi": "Vật liệu chính",
       "questionVi": "Vật liệu chính của công trình là gì?",
       "detect": {
-        "metal_steel": ["sắt", "thép", "metal", "steel"],
-        "plastic": ["plastic", "nhựa"],
-        "aluminum": ["nhôm", "aluminum"],
-        "cement_concrete": ["xi măng", "bê tông", "cement", "concrete"],
-        "other": ["vật liệu khác"]
+        "metal_steel": [
+          "sắt",
+          "thép",
+          "metal",
+          "steel"
+        ],
+        "plastic": [
+          "plastic",
+          "nhựa"
+        ],
+        "aluminum": [
+          "nhôm",
+          "aluminum"
+        ],
+        "cement_concrete": [
+          "xi măng",
+          "bê tông",
+          "cement",
+          "concrete"
+        ],
+        "other": [
+          "vật liệu khác"
+        ]
       }
     }
   ],
-  "hitPolicy": "FIRST",
+  "hitPolicy": "PRIORITY",
   "rules": [
     {
       "id": "r-01",
@@ -248,5 +279,82 @@
       "reasonVi": "GIR 6 — công trình khác bằng vật liệu khác, Biểu thuế 2026 → 94069090",
       "source": "Biểu thuế NK VN 2026, nhóm 9406"
     }
-  ]
+  ],
+  "inputAttributes": [
+    "isGreenhouse",
+    "prefabKind",
+    "primaryMaterial"
+  ],
+  "attributes": {
+    "isGreenhouse": {
+      "type": "enum",
+      "labelVi": "isGreenhouse",
+      "domain": [
+        "no",
+        "yes"
+      ],
+      "detect": {
+        "no": [
+          "no",
+          "no"
+        ],
+        "yes": [
+          "yes",
+          "yes"
+        ]
+      }
+    },
+    "prefabKind": {
+      "type": "enum",
+      "labelVi": "prefabKind",
+      "domain": [
+        "no",
+        "yes"
+      ],
+      "detect": {
+        "no": [
+          "no",
+          "no"
+        ],
+        "yes": [
+          "yes",
+          "yes"
+        ]
+      }
+    },
+    "primaryMaterial": {
+      "type": "enum",
+      "labelVi": "primaryMaterial",
+      "domain": [
+        "aluminum",
+        "cement_concrete",
+        "metal_steel",
+        "other",
+        "plastic"
+      ],
+      "detect": {
+        "aluminum": [
+          "aluminum",
+          "aluminum"
+        ],
+        "cement_concrete": [
+          "cement_concrete",
+          "cement concrete"
+        ],
+        "metal_steel": [
+          "metal_steel",
+          "metal steel"
+        ],
+        "other": [
+          "other",
+          "other"
+        ],
+        "plastic": [
+          "plastic",
+          "plastic"
+        ]
+      }
+    }
+  },
+  "essenceVi": "isGreenhouse + prefabKind + primaryMaterial"
 }

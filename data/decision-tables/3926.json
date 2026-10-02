@@ -159,7 +159,7 @@
       }
     }
   ],
-  "hitPolicy": "FIRST",
+  "hitPolicy": "PRIORITY",
   "rules": [
     {
       "id": "r1",
@@ -497,5 +497,137 @@
       "reasonVi": "Loại khác không thuộc các nhóm trên → 3926.90.99.",
       "source": "Biểu thuế 2026 dòng 3926.90.99."
     }
-  ]
+  ],
+  "inputAttributes": [
+    "intendedUse",
+    "safetyType",
+    "senFlag"
+  ],
+  "attributes": {
+    "intendedUse": {
+      "type": "enum",
+      "labelVi": "intendedUse",
+      "domain": [
+        "clothing",
+        "decoration",
+        "fishing",
+        "food_poultry",
+        "furniture_coachwork",
+        "handfan",
+        "industrial_conveyor",
+        "industrial_mold",
+        "industrial_other",
+        "medical_dental",
+        "office_school",
+        "other",
+        "religious",
+        "safety"
+      ],
+      "detect": {
+        "clothing": [
+          "clothing",
+          "clothing"
+        ],
+        "decoration": [
+          "decoration",
+          "decoration"
+        ],
+        "fishing": [
+          "fishing",
+          "fishing"
+        ],
+        "food_poultry": [
+          "food_poultry",
+          "food poultry"
+        ],
+        "furniture_coachwork": [
+          "furniture_coachwork",
+          "furniture coachwork"
+        ],
+        "handfan": [
+          "handfan",
+          "handfan"
+        ],
+        "industrial_conveyor": [
+          "industrial_conveyor",
+          "industrial conveyor"
+        ],
+        "industrial_mold": [
+          "industrial_mold",
+          "industrial mold"
+        ],
+        "industrial_other": [
+          "industrial_other",
+          "industrial other"
+        ],
+        "medical_dental": [
+          "medical_dental",
+          "medical dental"
+        ],
+        "office_school": [
+          "office_school",
+          "office school"
+        ],
+        "other": [
+          "other",
+          "other"
+        ],
+        "religious": [
+          "religious",
+          "religious"
+        ],
+        "safety": [
+          "safety",
+          "safety"
+        ]
+      }
+    },
+    "safetyType": {
+      "type": "enum",
+      "labelVi": "safetyType",
+      "domain": [
+        "chemical_fire",
+        "fall_protection",
+        "none",
+        "police_military"
+      ],
+      "detect": {
+        "chemical_fire": [
+          "chemical_fire",
+          "chemical fire"
+        ],
+        "fall_protection": [
+          "fall_protection",
+          "fall protection"
+        ],
+        "none": [
+          "none",
+          "none"
+        ],
+        "police_military": [
+          "police_military",
+          "police military"
+        ]
+      }
+    },
+    "senFlag": {
+      "type": "enum",
+      "labelVi": "senFlag",
+      "domain": [
+        "False",
+        "True"
+      ],
+      "detect": {
+        "False": [
+          "false",
+          "false"
+        ],
+        "True": [
+          "true",
+          "true"
+        ]
+      }
+    }
+  },
+  "essenceVi": "intendedUse + safetyType + senFlag"
 }

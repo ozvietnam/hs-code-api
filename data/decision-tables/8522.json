@@ -173,5 +173,60 @@
   "inputAttributes": [
     "partKind"
   ],
-  "essenceVi": "loại linh kiện"
+  "essenceVi": "loại linh kiện",
+  "attributes": {
+    "partKind": {
+      "type": "enum",
+      "labelVi": "partKind",
+      "domain": [
+        "magneticHead",
+        "parts851981Or8521",
+        "partsOther",
+        "partsSoundRepro",
+        "partsTelephoneAnswering",
+        "pcbSoundCinema",
+        "pcbTelephoneAnswering",
+        "pickUpCartridge",
+        "tapeDiskMechanism"
+      ],
+      "detect": {
+        "magneticHead": [
+          "magnetichead",
+          "magnetichead"
+        ],
+        "parts851981Or8521": [
+          "parts851981or8521",
+          "parts851981or8521"
+        ],
+        "partsOther": [
+          "partsother",
+          "partsother"
+        ],
+        "partsSoundRepro": [
+          "partssoundrepro",
+          "partssoundrepro"
+        ],
+        "partsTelephoneAnswering": [
+          "partstelephoneanswering",
+          "partstelephoneanswering"
+        ],
+        "pcbSoundCinema": [
+          "pcbsoundcinema",
+          "pcbsoundcinema"
+        ],
+        "pcbTelephoneAnswering": [
+          "pcbtelephoneanswering",
+          "pcbtelephoneanswering"
+        ],
+        "pickUpCartridge": [
+          "pickupcartridge",
+          "pickupcartridge"
+        ],
+        "tapeDiskMechanism": [
+          "tapediskmechanism",
+          "tapediskmechanism"
+        ]
+      }
+    }
+  }
 }

@@ -145,5 +145,48 @@
     "panelTech",
     "withDriver"
   ],
-  "essenceVi": "công nghệ panel+có driver"
+  "essenceVi": "công nghệ panel+có driver",
+  "attributes": {
+    "panelTech": {
+      "type": "enum",
+      "labelVi": "panelTech",
+      "domain": [
+        "lcd",
+        "oled",
+        "other"
+      ],
+      "detect": {
+        "lcd": [
+          "lcd",
+          "lcd"
+        ],
+        "oled": [
+          "oled",
+          "oled"
+        ],
+        "other": [
+          "other",
+          "other"
+        ]
+      }
+    },
+    "withDriver": {
+      "type": "enum",
+      "labelVi": "withDriver",
+      "domain": [
+        "no",
+        "yes"
+      ],
+      "detect": {
+        "no": [
+          "no",
+          "no"
+        ],
+        "yes": [
+          "yes",
+          "yes"
+        ]
+      }
+    }
+  }
 }

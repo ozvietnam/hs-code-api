@@ -296,5 +296,89 @@
     "transistorDissipationW",
     "photosensitiveKind"
   ],
-  "essenceVi": "loại linh kiện+công suất transistor+quang điện"
+  "essenceVi": "loại linh kiện+công suất transistor+quang điện",
+  "attributes": {
+    "deviceKind": {
+      "type": "enum",
+      "labelVi": "deviceKind",
+      "domain": [
+        "diode",
+        "parts",
+        "photosensitive",
+        "piezoCrystal",
+        "thyristor",
+        "transistor"
+      ],
+      "detect": {
+        "diode": [
+          "diode",
+          "diode"
+        ],
+        "parts": [
+          "parts",
+          "parts"
+        ],
+        "photosensitive": [
+          "photosensitive",
+          "photosensitive"
+        ],
+        "piezoCrystal": [
+          "piezocrystal",
+          "piezocrystal"
+        ],
+        "thyristor": [
+          "thyristor",
+          "thyristor"
+        ],
+        "transistor": [
+          "transistor",
+          "transistor"
+        ]
+      }
+    },
+    "transistorDissipationW": {
+      "type": "number",
+      "labelVi": "transistorDissipationW",
+      "unit": null,
+      "fromSpec": null
+    },
+    "photosensitiveKind": {
+      "type": "enum",
+      "labelVi": "photosensitiveKind",
+      "domain": [
+        "generalNec",
+        "led",
+        "otherPhoto",
+        "pvCellBare",
+        "pvModuleOrPanel",
+        "semiconductorTransducer"
+      ],
+      "detect": {
+        "generalNec": [
+          "generalnec",
+          "generalnec"
+        ],
+        "led": [
+          "led",
+          "led"
+        ],
+        "otherPhoto": [
+          "otherphoto",
+          "otherphoto"
+        ],
+        "pvCellBare": [
+          "pvcellbare",
+          "pvcellbare"
+        ],
+        "pvModuleOrPanel": [
+          "pvmoduleorpanel",
+          "pvmoduleorpanel"
+        ],
+        "semiconductorTransducer": [
+          "semiconductortransducer",
+          "semiconductortransducer"
+        ]
+      }
+    }
+  }
 }

@@ -22,17 +22,54 @@
       "labelVi": "Loại thiết bị đo/kiểm",
       "questionVi": "Dụng cụ đo/kiểm thuộc loại nào: đo bức xạ ion hóa, máy hiện sóng, máy đo đa năng, dụng cụ đo điện (vôn kế/ampe kế/điện trở), thiết bị viễn thông, máy kiểm tra vi mạch, dụng cụ kiểm tra panel, hay bộ phận (parts)?",
       "detect": {
-        "oscilloscope": ["máy hiện sóng", "oscilloscope", "dao động kế"],
-        "multimeter": ["máy đo đa năng", "multimeter", "đồng hồ đo"],
-        "electrical_test": ["vôn kế", "ampe kế", "điện trở kế", "máy đo điện"],
-        "telecom_test": ["máy đo viễn thông", "test viễn thông"],
-        "ic_tester": ["máy kiểm tra IC", "máy kiểm tra vi mạch", "IC tester"],
-        "panel_tester": ["máy kiểm tra panel", "panel tester"],
-        "ionizing_radiation": ["đo bức xạ ion hóa", "máy đo bức xạ"],
-        "other_with_recording": ["thiết bị đo có ghi", "đo có recording"],
-        "other_no_recording": ["thiết bị đo không ghi"],
-        "other_test_device": ["dụng cụ đo", "thiết bị kiểm tra"],
-        "parts": ["bộ phận đo", "parts"]
+        "oscilloscope": [
+          "máy hiện sóng",
+          "oscilloscope",
+          "dao động kế"
+        ],
+        "multimeter": [
+          "máy đo đa năng",
+          "multimeter",
+          "đồng hồ đo"
+        ],
+        "electrical_test": [
+          "vôn kế",
+          "ampe kế",
+          "điện trở kế",
+          "máy đo điện"
+        ],
+        "telecom_test": [
+          "máy đo viễn thông",
+          "test viễn thông"
+        ],
+        "ic_tester": [
+          "máy kiểm tra IC",
+          "máy kiểm tra vi mạch",
+          "IC tester"
+        ],
+        "panel_tester": [
+          "máy kiểm tra panel",
+          "panel tester"
+        ],
+        "ionizing_radiation": [
+          "đo bức xạ ion hóa",
+          "máy đo bức xạ"
+        ],
+        "other_with_recording": [
+          "thiết bị đo có ghi",
+          "đo có recording"
+        ],
+        "other_no_recording": [
+          "thiết bị đo không ghi"
+        ],
+        "other_test_device": [
+          "dụng cụ đo",
+          "thiết bị kiểm tra"
+        ],
+        "parts": [
+          "bộ phận đo",
+          "parts"
+        ]
       }
     },
     {
@@ -45,8 +82,15 @@
       "labelVi": "Có thiết bị ghi",
       "questionVi": "Dụng cụ có gắn thiết bị ghi (recording) không?",
       "detect": {
-        "true": ["có ghi", "có recording", "có bộ ghi"],
-        "false": ["không ghi", "không recording"]
+        "true": [
+          "có ghi",
+          "có recording",
+          "có bộ ghi"
+        ],
+        "false": [
+          "không ghi",
+          "không recording"
+        ]
       }
     },
     {
@@ -65,9 +109,20 @@
       "labelVi": "Loại cụ thể (khi measurementType = electrical_test / other)",
       "questionVi": "Dụng cụ đo loại cụ thể nào: điện áp/dòng điện, trở kháng có cảnh báo, ampe/vôn kế xe, điện trở khác, hay loại khác?",
       "detect": {
-        "voltage_current": ["vôn kế", "ampe kế", "đo điện áp", "đo dòng"],
-        "impedance_alarm": ["trở kháng có cảnh báo"],
-        "automotive": ["ampe kế xe", "vôn kế xe", "ô tô"],
+        "voltage_current": [
+          "vôn kế",
+          "ampe kế",
+          "đo điện áp",
+          "đo dòng"
+        ],
+        "impedance_alarm": [
+          "trở kháng có cảnh báo"
+        ],
+        "automotive": [
+          "ampe kế xe",
+          "vôn kế xe",
+          "ô tô"
+        ],
         "other_resistance": [],
         "other_electrical": []
       }
@@ -83,7 +138,11 @@
       "labelVi": "Loại vi mạch (khi measurementType = ic_tester)",
       "questionVi": "Máy kiểm tra vi mạch loại nào: vi mạch tích hợp (IC) hay loại khác?",
       "detect": {
-        "integrated_circuit": ["vi mạch tích hợp", "IC", "integrated circuit"],
+        "integrated_circuit": [
+          "vi mạch tích hợp",
+          "IC",
+          "integrated circuit"
+        ],
         "other_ic": []
       }
     },
@@ -98,7 +157,11 @@
       "labelVi": "Loại panel (khi measurementType = panel_tester)",
       "questionVi": "Dụng cụ kiểm tra tấm mạch: mạch in (PCB) hay loại khác?",
       "detect": {
-        "pcb": ["PCB", "mạch in", "board"],
+        "pcb": [
+          "PCB",
+          "mạch in",
+          "board"
+        ],
         "other_panel": []
       }
     },
@@ -115,8 +178,13 @@
       "labelVi": "Loại bộ phận (khi measurementType = parts)",
       "questionVi": "Bộ phận thuộc loại nào: mạch in đã lắp ráp, bộ phận quang học, bộ phận đo khác, hay loại chung?",
       "detect": {
-        "pcb_assembled": ["mạch in đã lắp", "PCB lắp ráp"],
-        "optical_parts": ["bộ phận quang học"],
+        "pcb_assembled": [
+          "mạch in đã lắp",
+          "PCB lắp ráp"
+        ],
+        "optical_parts": [
+          "bộ phận quang học"
+        ],
         "other_test_parts": [],
         "generic_parts": []
       }
@@ -351,5 +419,194 @@
   ],
   "hitPolicy": "PRIORITY",
   "essenceTestVi": "measurementType (11 giá trị) + hasRecording (True/False) + specificKind (8 giá trị) — phân biệt 21 mã 8 số trong nhóm 9030. Tất cả MFN 0%. Phân loại chính: loại thiết bị đo (ionizing/oscilloscope/multimeter/electrical/telecom/IC/panel/other). Phân loại phụ: có ghi hay không, loại cụ thể của dụng cụ đo điện.",
-  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 9030 (Thông tư 65/2024/TT-BTC)."
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 9030 (Thông tư 65/2024/TT-BTC).",
+  "inputAttributes": [
+    "hasRecording",
+    "icKind",
+    "measurementType",
+    "panelKind",
+    "partType",
+    "specificKind"
+  ],
+  "attributes": {
+    "hasRecording": {
+      "type": "enum",
+      "labelVi": "hasRecording",
+      "domain": [
+        "False",
+        "True"
+      ],
+      "detect": {
+        "False": [
+          "false",
+          "false"
+        ],
+        "True": [
+          "true",
+          "true"
+        ]
+      }
+    },
+    "icKind": {
+      "type": "enum",
+      "labelVi": "icKind",
+      "domain": [
+        "integrated_circuit",
+        "other_ic"
+      ],
+      "detect": {
+        "integrated_circuit": [
+          "integrated_circuit",
+          "integrated circuit"
+        ],
+        "other_ic": [
+          "other_ic",
+          "other ic"
+        ]
+      }
+    },
+    "measurementType": {
+      "type": "enum",
+      "labelVi": "measurementType",
+      "domain": [
+        "electrical_test",
+        "ic_tester",
+        "ionizing_radiation",
+        "multimeter",
+        "oscilloscope",
+        "other_no_recording",
+        "other_test_device",
+        "other_with_recording",
+        "panel_tester",
+        "parts",
+        "telecom_test"
+      ],
+      "detect": {
+        "electrical_test": [
+          "electrical_test",
+          "electrical test"
+        ],
+        "ic_tester": [
+          "ic_tester",
+          "ic tester"
+        ],
+        "ionizing_radiation": [
+          "ionizing_radiation",
+          "ionizing radiation"
+        ],
+        "multimeter": [
+          "multimeter",
+          "multimeter"
+        ],
+        "oscilloscope": [
+          "oscilloscope",
+          "oscilloscope"
+        ],
+        "other_no_recording": [
+          "other_no_recording",
+          "other no recording"
+        ],
+        "other_test_device": [
+          "other_test_device",
+          "other test device"
+        ],
+        "other_with_recording": [
+          "other_with_recording",
+          "other with recording"
+        ],
+        "panel_tester": [
+          "panel_tester",
+          "panel tester"
+        ],
+        "parts": [
+          "parts",
+          "parts"
+        ],
+        "telecom_test": [
+          "telecom_test",
+          "telecom test"
+        ]
+      }
+    },
+    "panelKind": {
+      "type": "enum",
+      "labelVi": "panelKind",
+      "domain": [
+        "other_panel",
+        "pcb"
+      ],
+      "detect": {
+        "other_panel": [
+          "other_panel",
+          "other panel"
+        ],
+        "pcb": [
+          "pcb",
+          "pcb"
+        ]
+      }
+    },
+    "partType": {
+      "type": "enum",
+      "labelVi": "partType",
+      "domain": [
+        "generic_parts",
+        "optical_parts",
+        "other_test_parts",
+        "pcb_assembled"
+      ],
+      "detect": {
+        "generic_parts": [
+          "generic_parts",
+          "generic parts"
+        ],
+        "optical_parts": [
+          "optical_parts",
+          "optical parts"
+        ],
+        "other_test_parts": [
+          "other_test_parts",
+          "other test parts"
+        ],
+        "pcb_assembled": [
+          "pcb_assembled",
+          "pcb assembled"
+        ]
+      }
+    },
+    "specificKind": {
+      "type": "enum",
+      "labelVi": "specificKind",
+      "domain": [
+        "automotive",
+        "impedance_alarm",
+        "other_electrical",
+        "other_resistance",
+        "voltage_current"
+      ],
+      "detect": {
+        "automotive": [
+          "automotive",
+          "automotive"
+        ],
+        "impedance_alarm": [
+          "impedance_alarm",
+          "impedance alarm"
+        ],
+        "other_electrical": [
+          "other_electrical",
+          "other electrical"
+        ],
+        "other_resistance": [
+          "other_resistance",
+          "other resistance"
+        ],
+        "voltage_current": [
+          "voltage_current",
+          "voltage current"
+        ]
+      }
+    }
+  },
+  "essenceVi": "hasRecording + icKind + measurementType + panelKind + partType..."
 }

@@ -325,5 +325,122 @@
     "rubberPlasticProcess",
     "shoeSoleMould"
   ],
-  "essenceVi": "loại khuôn+vật liệu+mai cưa+nhựa+đế giày"
+  "essenceVi": "loại khuôn+vật liệu+mai cưa+nhựa+đế giày",
+  "attributes": {
+    "mouldKind": {
+      "type": "enum",
+      "labelVi": "mouldKind",
+      "domain": [
+        "foundryBox",
+        "glassMould",
+        "metalMould",
+        "mineralMould",
+        "mouldBase",
+        "pattern",
+        "rubberPlasticMould"
+      ],
+      "detect": {
+        "foundryBox": [
+          "foundrybox",
+          "foundrybox"
+        ],
+        "glassMould": [
+          "glassmould",
+          "glassmould"
+        ],
+        "metalMould": [
+          "metalmould",
+          "metalmould"
+        ],
+        "mineralMould": [
+          "mineralmould",
+          "mineralmould"
+        ],
+        "mouldBase": [
+          "mouldbase",
+          "mouldbase"
+        ],
+        "pattern": [
+          "pattern",
+          "pattern"
+        ],
+        "rubberPlasticMould": [
+          "rubberplasticmould",
+          "rubberplasticmould"
+        ]
+      }
+    },
+    "patternMaterial": {
+      "type": "enum",
+      "labelVi": "patternMaterial",
+      "domain": [
+        "copper",
+        "other"
+      ],
+      "detect": {
+        "copper": [
+          "copper",
+          "copper"
+        ],
+        "other": [
+          "other",
+          "other"
+        ]
+      }
+    },
+    "metalMouldProcess": {
+      "type": "enum",
+      "labelVi": "metalMouldProcess",
+      "domain": [
+        "injectionOrCompression",
+        "other"
+      ],
+      "detect": {
+        "injectionOrCompression": [
+          "injectionorcompression",
+          "injectionorcompression"
+        ],
+        "other": [
+          "other",
+          "other"
+        ]
+      }
+    },
+    "rubberPlasticProcess": {
+      "type": "enum",
+      "labelVi": "rubberPlasticProcess",
+      "domain": [
+        "injectionOrCompression",
+        "other"
+      ],
+      "detect": {
+        "injectionOrCompression": [
+          "injectionorcompression",
+          "injectionorcompression"
+        ],
+        "other": [
+          "other",
+          "other"
+        ]
+      }
+    },
+    "shoeSoleMould": {
+      "type": "enum",
+      "labelVi": "shoeSoleMould",
+      "domain": [
+        "no",
+        "yes"
+      ],
+      "detect": {
+        "no": [
+          "no",
+          "no"
+        ],
+        "yes": [
+          "yes",
+          "yes"
+        ]
+      }
+    }
+  }
 }

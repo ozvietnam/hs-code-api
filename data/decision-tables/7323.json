@@ -386,5 +386,71 @@
   "essenceVi": "loại sản phẩm + loại vật liệu + kiểu sản phẩm",
   "generatedAt": "2026-10-02T12:34:10.231Z",
   "verifiedBy": "hermes-211",
-  "verifiedAt": "2026-10-02T20:16:11.643Z"
+  "verifiedAt": "2026-10-02T20:16:11.643Z",
+  "attributes": {
+    "productKind": {
+      "type": "enum",
+      "labelVi": "productKind",
+      "domain": [
+        "kitchenware",
+        "scrubbingPad"
+      ],
+      "detect": {
+        "kitchenware": [
+          "kitchenware",
+          "kitchenware"
+        ],
+        "scrubbingPad": [
+          "scrubbingpad",
+          "scrubbingpad"
+        ]
+      }
+    },
+    "materialType": {
+      "type": "enum",
+      "labelVi": "materialType",
+      "domain": [
+        "castIronEnamelled",
+        "castIronPlain",
+        "steelEnamelled",
+        "steelPlain"
+      ],
+      "detect": {
+        "castIronEnamelled": [
+          "castironenamelled",
+          "castironenamelled"
+        ],
+        "castIronPlain": [
+          "castironplain",
+          "castironplain"
+        ],
+        "steelEnamelled": [
+          "steelenamelled",
+          "steelenamelled"
+        ],
+        "steelPlain": [
+          "steelplain",
+          "steelplain"
+        ]
+      }
+    },
+    "productType": {
+      "type": "enum",
+      "labelVi": "productType",
+      "domain": [
+        "ashtray",
+        "kitchenware"
+      ],
+      "detect": {
+        "ashtray": [
+          "ashtray",
+          "ashtray"
+        ],
+        "kitchenware": [
+          "kitchenware",
+          "kitchenware"
+        ]
+      }
+    }
+  }
 }

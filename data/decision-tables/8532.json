@@ -176,5 +176,60 @@
   "inputAttributes": [
     "capKind"
   ],
-  "essenceVi": "loại tụ điện"
+  "essenceVi": "loại tụ điện",
+  "attributes": {
+    "capKind": {
+      "type": "enum",
+      "labelVi": "capKind",
+      "domain": [
+        "aluminiumElectrolytic",
+        "ceramicMulti",
+        "ceramicSingle",
+        "fixedOther",
+        "paperPlastic",
+        "parts",
+        "power50Hz",
+        "tantalum",
+        "variablePreset"
+      ],
+      "detect": {
+        "aluminiumElectrolytic": [
+          "aluminiumelectrolytic",
+          "aluminiumelectrolytic"
+        ],
+        "ceramicMulti": [
+          "ceramicmulti",
+          "ceramicmulti"
+        ],
+        "ceramicSingle": [
+          "ceramicsingle",
+          "ceramicsingle"
+        ],
+        "fixedOther": [
+          "fixedother",
+          "fixedother"
+        ],
+        "paperPlastic": [
+          "paperplastic",
+          "paperplastic"
+        ],
+        "parts": [
+          "parts",
+          "parts"
+        ],
+        "power50Hz": [
+          "power50hz",
+          "power50hz"
+        ],
+        "tantalum": [
+          "tantalum",
+          "tantalum"
+        ],
+        "variablePreset": [
+          "variablepreset",
+          "variablepreset"
+        ]
+      }
+    }
+  }
 }

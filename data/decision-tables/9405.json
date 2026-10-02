@@ -1871,5 +1871,239 @@
     }
   ],
   "essenceTestVi": "Với đèn chiếu sáng và bộ phận: xác định (1) loại sản phẩm (đèn hoàn chỉnh, biển chiếu sáng, phụ tùng), (2) công nghệ chiếu sáng (LED, huỳnh quang, sợi đốt, nến…), (3) vị trí lắp đặt, (4) có điện hay không, (5) vật liệu chính.",
-  "essenceVi": "Với đèn chiếu sáng và bộ phận: xác định (1) loại sản phẩm (đèn hoàn chỉnh, biển chiếu sáng, phụ tùng), (2) công nghệ chiếu sáng (LED, huỳnh quang, sợi đốt, nến…), (3) vị trí lắp đặt, (4) có điện hay không, (5) vật liệu chính."
+  "essenceVi": "electric + lightingTech + material + mounting + partType...",
+  "inputAttributes": [
+    "electric",
+    "lightingTech",
+    "material",
+    "mounting",
+    "partType",
+    "productKind"
+  ],
+  "attributes": {
+    "electric": {
+      "type": "enum",
+      "labelVi": "electric",
+      "domain": [
+        "electric",
+        "nonElectric"
+      ],
+      "detect": {
+        "electric": [
+          "electric",
+          "electric"
+        ],
+        "nonElectric": [
+          "nonelectric",
+          "nonelectric"
+        ]
+      }
+    },
+    "lightingTech": {
+      "type": "enum",
+      "labelVi": "lightingTech",
+      "domain": [
+        "any",
+        "fluorescent",
+        "incandescent",
+        "led",
+        "solar"
+      ],
+      "detect": {
+        "any": [
+          "any",
+          "any"
+        ],
+        "fluorescent": [
+          "fluorescent",
+          "fluorescent"
+        ],
+        "incandescent": [
+          "incandescent",
+          "incandescent"
+        ],
+        "led": [
+          "led",
+          "led"
+        ],
+        "solar": [
+          "solar",
+          "solar"
+        ]
+      }
+    },
+    "material": {
+      "type": "enum",
+      "labelVi": "material",
+      "domain": [
+        "copper",
+        "glass",
+        "metal",
+        "other",
+        "plastic",
+        "textile"
+      ],
+      "detect": {
+        "copper": [
+          "copper",
+          "copper"
+        ],
+        "glass": [
+          "glass",
+          "glass"
+        ],
+        "metal": [
+          "metal",
+          "metal"
+        ],
+        "other": [
+          "other",
+          "other"
+        ],
+        "plastic": [
+          "plastic",
+          "plastic"
+        ],
+        "textile": [
+          "textile",
+          "textile"
+        ]
+      }
+    },
+    "mounting": {
+      "type": "enum",
+      "labelVi": "mounting",
+      "domain": [
+        "floodlight",
+        "general",
+        "householdAppliance",
+        "militaryFlood",
+        "publicRoad",
+        "religious",
+        "roadSign",
+        "signIlluminated",
+        "signalAviation",
+        "spotlight",
+        "surgical"
+      ],
+      "detect": {
+        "floodlight": [
+          "floodlight",
+          "floodlight"
+        ],
+        "general": [
+          "general",
+          "general"
+        ],
+        "householdAppliance": [
+          "householdappliance",
+          "householdappliance"
+        ],
+        "militaryFlood": [
+          "militaryflood",
+          "militaryflood"
+        ],
+        "publicRoad": [
+          "publicroad",
+          "publicroad"
+        ],
+        "religious": [
+          "religious",
+          "religious"
+        ],
+        "roadSign": [
+          "roadsign",
+          "roadsign"
+        ],
+        "signIlluminated": [
+          "signilluminated",
+          "signilluminated"
+        ],
+        "signalAviation": [
+          "signalaviation",
+          "signalaviation"
+        ],
+        "spotlight": [
+          "spotlight",
+          "spotlight"
+        ],
+        "surgical": [
+          "surgical",
+          "surgical"
+        ]
+      }
+    },
+    "partType": {
+      "type": "enum",
+      "labelVi": "partType",
+      "domain": [
+        "ceramicMetalPart",
+        "floodlightPart",
+        "generalPart",
+        "globeBowl",
+        "otherShade",
+        "spotlightPart",
+        "surgicalLamp",
+        "textileShade"
+      ],
+      "detect": {
+        "ceramicMetalPart": [
+          "ceramicmetalpart",
+          "ceramicmetalpart"
+        ],
+        "floodlightPart": [
+          "floodlightpart",
+          "floodlightpart"
+        ],
+        "generalPart": [
+          "generalpart",
+          "generalpart"
+        ],
+        "globeBowl": [
+          "globebowl",
+          "globebowl"
+        ],
+        "otherShade": [
+          "othershade",
+          "othershade"
+        ],
+        "spotlightPart": [
+          "spotlightpart",
+          "spotlightpart"
+        ],
+        "surgicalLamp": [
+          "surgicallamp",
+          "surgicallamp"
+        ],
+        "textileShade": [
+          "textileshade",
+          "textileshade"
+        ]
+      }
+    },
+    "productKind": {
+      "type": "enum",
+      "labelVi": "productKind",
+      "domain": [
+        "lamp",
+        "parts",
+        "sign"
+      ],
+      "detect": {
+        "lamp": [
+          "lamp",
+          "lamp"
+        ],
+        "parts": [
+          "parts",
+          "parts"
+        ],
+        "sign": [
+          "sign",
+          "sign"
+        ]
+      }
+    }
+  },
+  "hitPolicy": "PRIORITY"
 }

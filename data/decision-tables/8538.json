@@ -290,5 +290,94 @@
     "part8537Kind",
     "generalPartTarget"
   ],
-  "essenceVi": "phạm vi+điện áp+loại linh kiện 8537+mục đích"
+  "essenceVi": "phạm vi+điện áp+loại linh kiện 8537+mục đích",
+  "attributes": {
+    "partScope": {
+      "type": "enum",
+      "labelVi": "partScope",
+      "domain": [
+        "for8535_8536_8537General",
+        "for8537Assemblies"
+      ],
+      "detect": {
+        "for8535_8536_8537General": [
+          "for8535_8536_8537general",
+          "for8535 8536 8537general"
+        ],
+        "for8537Assemblies": [
+          "for8537assemblies",
+          "for8537assemblies"
+        ]
+      }
+    },
+    "partVoltage": {
+      "type": "enum",
+      "labelVi": "partVoltage",
+      "domain": [
+        "gt1000v",
+        "lte1000v"
+      ],
+      "detect": {
+        "gt1000v": [
+          "gt1000v",
+          "gt1000v"
+        ],
+        "lte1000v": [
+          "lte1000v",
+          "lte1000v"
+        ]
+      }
+    },
+    "part8537Kind": {
+      "type": "enum",
+      "labelVi": "part8537Kind",
+      "domain": [
+        "other8537",
+        "radio",
+        "semiFabPlc"
+      ],
+      "detect": {
+        "other8537": [
+          "other8537",
+          "other8537"
+        ],
+        "radio": [
+          "radio",
+          "radio"
+        ],
+        "semiFabPlc": [
+          "semifabplc",
+          "semifabplc"
+        ]
+      }
+    },
+    "generalPartTarget": {
+      "type": "enum",
+      "labelVi": "generalPartTarget",
+      "domain": [
+        "for853650Connectors",
+        "for853669_853690",
+        "for85371020Dist",
+        "otherGeneral"
+      ],
+      "detect": {
+        "for853650Connectors": [
+          "for853650connectors",
+          "for853650connectors"
+        ],
+        "for853669_853690": [
+          "for853669_853690",
+          "for853669 853690"
+        ],
+        "for85371020Dist": [
+          "for85371020dist",
+          "for85371020dist"
+        ],
+        "otherGeneral": [
+          "othergeneral",
+          "othergeneral"
+        ]
+      }
+    }
+  }
 }

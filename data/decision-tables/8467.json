@@ -402,5 +402,153 @@
     "partLine",
     "chainSawPartKind"
   ],
-  "essenceVi": "loại hàng+năng lượng+khi nén+dụng cụ điện+thủ công+linh kiện+cưa xích"
+  "essenceVi": "loại hàng+năng lượng+khi nén+dụng cụ điện+thủ công+linh kiện+cưa xích",
+  "attributes": {
+    "goodsKind": {
+      "type": "enum",
+      "labelVi": "goodsKind",
+      "domain": [
+        "completeTool",
+        "parts"
+      ],
+      "detect": {
+        "completeTool": [
+          "completetool",
+          "completetool"
+        ],
+        "parts": [
+          "parts",
+          "parts"
+        ]
+      }
+    },
+    "powerKind": {
+      "type": "enum",
+      "labelVi": "powerKind",
+      "domain": [
+        "electricMotor",
+        "hydraulicOrOtherNonElectric",
+        "pneumatic"
+      ],
+      "detect": {
+        "electricMotor": [
+          "electricmotor",
+          "electricmotor"
+        ],
+        "hydraulicOrOtherNonElectric": [
+          "hydraulicorothernonelectric",
+          "hydraulicorothernonelectric"
+        ],
+        "pneumatic": [
+          "pneumatic",
+          "pneumatic"
+        ]
+      }
+    },
+    "pneumaticKind": {
+      "type": "enum",
+      "labelVi": "pneumaticKind",
+      "domain": [
+        "other",
+        "rotary"
+      ],
+      "detect": {
+        "other": [
+          "other",
+          "other"
+        ],
+        "rotary": [
+          "rotary",
+          "rotary"
+        ]
+      }
+    },
+    "electricToolKind": {
+      "type": "enum",
+      "labelVi": "electricToolKind",
+      "domain": [
+        "drill",
+        "other",
+        "saw"
+      ],
+      "detect": {
+        "drill": [
+          "drill",
+          "drill"
+        ],
+        "other": [
+          "other",
+          "other"
+        ],
+        "saw": [
+          "saw",
+          "saw"
+        ]
+      }
+    },
+    "nonElectricKind": {
+      "type": "enum",
+      "labelVi": "nonElectricKind",
+      "domain": [
+        "chainSaw",
+        "other"
+      ],
+      "detect": {
+        "chainSaw": [
+          "chainsaw",
+          "chainsaw"
+        ],
+        "other": [
+          "other",
+          "other"
+        ]
+      }
+    },
+    "partLine": {
+      "type": "enum",
+      "labelVi": "partLine",
+      "domain": [
+        "chainSaw",
+        "electric8467",
+        "otherParts",
+        "pneumatic"
+      ],
+      "detect": {
+        "chainSaw": [
+          "chainsaw",
+          "chainsaw"
+        ],
+        "electric8467": [
+          "electric8467",
+          "electric8467"
+        ],
+        "otherParts": [
+          "otherparts",
+          "otherparts"
+        ],
+        "pneumatic": [
+          "pneumatic",
+          "pneumatic"
+        ]
+      }
+    },
+    "chainSawPartKind": {
+      "type": "enum",
+      "labelVi": "chainSawPartKind",
+      "domain": [
+        "electromechanical",
+        "other"
+      ],
+      "detect": {
+        "electromechanical": [
+          "electromechanical",
+          "electromechanical"
+        ],
+        "other": [
+          "other",
+          "other"
+        ]
+      }
+    }
+  }
 }

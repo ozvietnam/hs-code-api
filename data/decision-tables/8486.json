@@ -853,5 +853,44 @@
       "reasonVi": "Loại khác bộ phận nhóm 8486.40 → 8486.90.49.",
       "source": "Biểu thuế 2026 dòng 8486.90.49"
     }
-  ]
+  ],
+  "inputAttributes": [
+    "machineKind"
+  ],
+  "attributes": {
+    "machineKind": {
+      "type": "enum",
+      "labelVi": "machineKind",
+      "domain": [
+        "flatPanel",
+        "maskReticleAssembly",
+        "parts",
+        "semiconductorDevice",
+        "semiconductorWafer"
+      ],
+      "detect": {
+        "flatPanel": [
+          "flatpanel",
+          "flatpanel"
+        ],
+        "maskReticleAssembly": [
+          "maskreticleassembly",
+          "maskreticleassembly"
+        ],
+        "parts": [
+          "parts",
+          "parts"
+        ],
+        "semiconductorDevice": [
+          "semiconductordevice",
+          "semiconductordevice"
+        ],
+        "semiconductorWafer": [
+          "semiconductorwafer",
+          "semiconductorwafer"
+        ]
+      }
+    }
+  },
+  "essenceVi": "machineKind"
 }

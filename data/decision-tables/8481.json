@@ -1169,5 +1169,294 @@
   "verified": true,
   "noteVi": "Draft 63 mã / 7 attrs / 63 rules — tier-A score=33.6 | Nguồn: Biểu thuế 2026",
   "verifiedBy": "hermes-211",
-  "verifiedAt": "2026-10-02T20:16:11.653Z"
+  "verifiedAt": "2026-10-02T20:16:11.653Z",
+  "inputAttributes": [
+    "boreSize",
+    "controlType",
+    "material",
+    "partKind",
+    "specificKind",
+    "valveKind",
+    "weightClass"
+  ],
+  "attributes": {
+    "boreSize": {
+      "type": "enum",
+      "labelVi": "boreSize",
+      "domain": [
+        "any",
+        "extra_large",
+        "large",
+        "medium",
+        "other",
+        "small",
+        "tiny"
+      ],
+      "detect": {
+        "any": [
+          "any",
+          "any"
+        ],
+        "extra_large": [
+          "extra_large",
+          "extra large"
+        ],
+        "large": [
+          "large",
+          "large"
+        ],
+        "medium": [
+          "medium",
+          "medium"
+        ],
+        "other": [
+          "other",
+          "other"
+        ],
+        "small": [
+          "small",
+          "small"
+        ],
+        "tiny": [
+          "tiny",
+          "tiny"
+        ]
+      }
+    },
+    "controlType": {
+      "type": "enum",
+      "labelVi": "controlType",
+      "domain": [
+        "manual_gate",
+        "manual_other",
+        "other",
+        "tap_cock"
+      ],
+      "detect": {
+        "manual_gate": [
+          "manual_gate",
+          "manual gate"
+        ],
+        "manual_other": [
+          "manual_other",
+          "manual other"
+        ],
+        "other": [
+          "other",
+          "other"
+        ],
+        "tap_cock": [
+          "tap_cock",
+          "tap cock"
+        ]
+      }
+    },
+    "material": {
+      "type": "enum",
+      "labelVi": "material",
+      "domain": [
+        "cast_iron",
+        "copper",
+        "copper_or_plastic",
+        "iron_steel",
+        "lpg",
+        "metal",
+        "other",
+        "other_metal",
+        "plastic",
+        "stainless_steel"
+      ],
+      "detect": {
+        "cast_iron": [
+          "cast_iron",
+          "cast iron"
+        ],
+        "copper": [
+          "copper",
+          "copper"
+        ],
+        "copper_or_plastic": [
+          "copper_or_plastic",
+          "copper or plastic"
+        ],
+        "iron_steel": [
+          "iron_steel",
+          "iron steel"
+        ],
+        "lpg": [
+          "lpg",
+          "lpg"
+        ],
+        "metal": [
+          "metal",
+          "metal"
+        ],
+        "other": [
+          "other",
+          "other"
+        ],
+        "other_metal": [
+          "other_metal",
+          "other metal"
+        ],
+        "plastic": [
+          "plastic",
+          "plastic"
+        ],
+        "stainless_steel": [
+          "stainless_steel",
+          "stainless steel"
+        ]
+      }
+    },
+    "partKind": {
+      "type": "enum",
+      "labelVi": "partKind",
+      "domain": [
+        "body_cylinder",
+        "body_faucet",
+        "body_other",
+        "valve_body",
+        "valve_parts"
+      ],
+      "detect": {
+        "body_cylinder": [
+          "body_cylinder",
+          "body cylinder"
+        ],
+        "body_faucet": [
+          "body_faucet",
+          "body faucet"
+        ],
+        "body_other": [
+          "body_other",
+          "body other"
+        ],
+        "valve_body": [
+          "valve_body",
+          "valve body"
+        ],
+        "valve_parts": [
+          "valve_parts",
+          "valve parts"
+        ]
+      }
+    },
+    "specificKind": {
+      "type": "enum",
+      "labelVi": "specificKind",
+      "domain": [
+        "ball_gate",
+        "faucet_copper",
+        "faucet_other",
+        "fuel_vehicle",
+        "gas_cooking",
+        "household_tap",
+        "solenoid_heating",
+        "solenoid_other",
+        "solenoid_sen",
+        "solenoid_small",
+        "solenoid_water",
+        "tap_cock"
+      ],
+      "detect": {
+        "ball_gate": [
+          "ball_gate",
+          "ball gate"
+        ],
+        "faucet_copper": [
+          "faucet_copper",
+          "faucet copper"
+        ],
+        "faucet_other": [
+          "faucet_other",
+          "faucet other"
+        ],
+        "fuel_vehicle": [
+          "fuel_vehicle",
+          "fuel vehicle"
+        ],
+        "gas_cooking": [
+          "gas_cooking",
+          "gas cooking"
+        ],
+        "household_tap": [
+          "household_tap",
+          "household tap"
+        ],
+        "solenoid_heating": [
+          "solenoid_heating",
+          "solenoid heating"
+        ],
+        "solenoid_other": [
+          "solenoid_other",
+          "solenoid other"
+        ],
+        "solenoid_sen": [
+          "solenoid_sen",
+          "solenoid sen"
+        ],
+        "solenoid_small": [
+          "solenoid_small",
+          "solenoid small"
+        ],
+        "solenoid_water": [
+          "solenoid_water",
+          "solenoid water"
+        ],
+        "tap_cock": [
+          "tap_cock",
+          "tap cock"
+        ]
+      }
+    },
+    "valveKind": {
+      "type": "enum",
+      "labelVi": "valveKind",
+      "domain": [
+        "check",
+        "oleohydraulic",
+        "other",
+        "pressure_reducing",
+        "safety"
+      ],
+      "detect": {
+        "check": [
+          "check",
+          "check"
+        ],
+        "oleohydraulic": [
+          "oleohydraulic",
+          "oleohydraulic"
+        ],
+        "other": [
+          "other",
+          "other"
+        ],
+        "pressure_reducing": [
+          "pressure_reducing",
+          "pressure reducing"
+        ],
+        "safety": [
+          "safety",
+          "safety"
+        ]
+      }
+    },
+    "weightClass": {
+      "type": "enum",
+      "labelVi": "weightClass",
+      "domain": [
+        "light"
+      ],
+      "detect": {
+        "light": [
+          "light",
+          "light"
+        ]
+      }
+    }
+  },
+  "hitPolicy": "PRIORITY",
+  "essenceVi": "boreSize + controlType + material + partKind + specificKind..."
 }

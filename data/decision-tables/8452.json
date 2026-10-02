@@ -270,5 +270,89 @@
     "machineAuto",
     "partType"
   ],
-  "essenceVi": "loại hàng+công dụng+tự động+loại linh kiện"
+  "essenceVi": "loại hàng+công dụng+tự động+loại linh kiện",
+  "attributes": {
+    "goodsKind": {
+      "type": "enum",
+      "labelVi": "goodsKind",
+      "domain": [
+        "needles",
+        "partsAccessories",
+        "sewingMachine"
+      ],
+      "detect": {
+        "needles": [
+          "needles",
+          "needles"
+        ],
+        "partsAccessories": [
+          "partsaccessories",
+          "partsaccessories"
+        ],
+        "sewingMachine": [
+          "sewingmachine",
+          "sewingmachine"
+        ]
+      }
+    },
+    "useType": {
+      "type": "enum",
+      "labelVi": "useType",
+      "domain": [
+        "household",
+        "industrial"
+      ],
+      "detect": {
+        "household": [
+          "household",
+          "household"
+        ],
+        "industrial": [
+          "industrial",
+          "industrial"
+        ]
+      }
+    },
+    "machineAuto": {
+      "type": "enum",
+      "labelVi": "machineAuto",
+      "domain": [
+        "automatic",
+        "other"
+      ],
+      "detect": {
+        "automatic": [
+          "automatic",
+          "automatic"
+        ],
+        "other": [
+          "other",
+          "other"
+        ]
+      }
+    },
+    "partType": {
+      "type": "enum",
+      "labelVi": "partType",
+      "domain": [
+        "bodyStand",
+        "furniture",
+        "otherParts"
+      ],
+      "detect": {
+        "bodyStand": [
+          "bodystand",
+          "bodystand"
+        ],
+        "furniture": [
+          "furniture",
+          "furniture"
+        ],
+        "otherParts": [
+          "otherparts",
+          "otherparts"
+        ]
+      }
+    }
+  }
 }

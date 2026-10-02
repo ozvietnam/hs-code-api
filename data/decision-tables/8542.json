@@ -158,5 +158,53 @@
     "goodsKind",
     "icKind"
   ],
-  "essenceVi": "loại hàng+loại ic"
+  "essenceVi": "loại hàng+loại ic",
+  "attributes": {
+    "goodsKind": {
+      "type": "enum",
+      "labelVi": "goodsKind",
+      "domain": [
+        "ic",
+        "parts"
+      ],
+      "detect": {
+        "ic": [
+          "ic",
+          "ic"
+        ],
+        "parts": [
+          "parts",
+          "parts"
+        ]
+      }
+    },
+    "icKind": {
+      "type": "enum",
+      "labelVi": "icKind",
+      "domain": [
+        "amplifier",
+        "memory",
+        "other",
+        "processor"
+      ],
+      "detect": {
+        "amplifier": [
+          "amplifier",
+          "amplifier"
+        ],
+        "memory": [
+          "memory",
+          "memory"
+        ],
+        "other": [
+          "other",
+          "other"
+        ],
+        "processor": [
+          "processor",
+          "processor"
+        ]
+      }
+    }
+  }
 }

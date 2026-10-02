@@ -736,7 +736,158 @@
     }
   ],
   "essenceTestVi": "Với thiết bị xử lý nhiệt (đun nước, sấy, sát trùng, chưng cất, trao đổi nhiệt, làm mát, hóa lỏng…): xác định (1) loại quá trình xử lý nhiệt, (2) nguồn năng lượng, (3) lĩnh vực ứng dụng.",
-  "essenceVi": "Với thiết bị xử lý nhiệt (đun nước, sấy, sát trùng, chưng cất, trao đổi nhiệt, làm mát, hóa lỏng…): xác định (1) loại quá trình xử lý nhiệt, (2) nguồn năng lượng, (3) lĩnh vực ứng dụng.",
+  "essenceVi": "application + powerSource + processType + specialMaterial",
   "verifiedBy": "hermes-211",
-  "verifiedAt": "2026-10-02T20:16:11.651Z"
+  "verifiedAt": "2026-10-02T20:16:11.651Z",
+  "inputAttributes": [
+    "application",
+    "powerSource",
+    "processType",
+    "specialMaterial"
+  ],
+  "attributes": {
+    "application": {
+      "type": "enum",
+      "labelVi": "application",
+      "domain": [
+        "agricultural",
+        "general",
+        "household",
+        "industrial",
+        "medical"
+      ],
+      "detect": {
+        "agricultural": [
+          "agricultural",
+          "agricultural"
+        ],
+        "general": [
+          "general",
+          "general"
+        ],
+        "household": [
+          "household",
+          "household"
+        ],
+        "industrial": [
+          "industrial",
+          "industrial"
+        ],
+        "medical": [
+          "medical",
+          "medical"
+        ]
+      }
+    },
+    "powerSource": {
+      "type": "enum",
+      "labelVi": "powerSource",
+      "domain": [
+        "electric",
+        "nonElectric"
+      ],
+      "detect": {
+        "electric": [
+          "electric",
+          "electric"
+        ],
+        "nonElectric": [
+          "nonelectric",
+          "nonelectric"
+        ]
+      }
+    },
+    "processType": {
+      "type": "enum",
+      "labelVi": "processType",
+      "domain": [
+        "airConditioningCooling",
+        "distilling",
+        "drying",
+        "evaporating",
+        "foodBeverage",
+        "heatExchanging",
+        "heatTreatment",
+        "liquefying",
+        "parts",
+        "solarHeating",
+        "sterilizing",
+        "waterHeating"
+      ],
+      "detect": {
+        "airConditioningCooling": [
+          "airconditioningcooling",
+          "airconditioningcooling"
+        ],
+        "distilling": [
+          "distilling",
+          "distilling"
+        ],
+        "drying": [
+          "drying",
+          "drying"
+        ],
+        "evaporating": [
+          "evaporating",
+          "evaporating"
+        ],
+        "foodBeverage": [
+          "foodbeverage",
+          "foodbeverage"
+        ],
+        "heatExchanging": [
+          "heatexchanging",
+          "heatexchanging"
+        ],
+        "heatTreatment": [
+          "heattreatment",
+          "heattreatment"
+        ],
+        "liquefying": [
+          "liquefying",
+          "liquefying"
+        ],
+        "parts": [
+          "parts",
+          "parts"
+        ],
+        "solarHeating": [
+          "solarheating",
+          "solarheating"
+        ],
+        "sterilizing": [
+          "sterilizing",
+          "sterilizing"
+        ],
+        "waterHeating": [
+          "waterheating",
+          "waterheating"
+        ]
+      }
+    },
+    "specialMaterial": {
+      "type": "enum",
+      "labelVi": "specialMaterial",
+      "domain": [
+        "filmManufacturing",
+        "fluoropolymer",
+        "none"
+      ],
+      "detect": {
+        "filmManufacturing": [
+          "filmmanufacturing",
+          "filmmanufacturing"
+        ],
+        "fluoropolymer": [
+          "fluoropolymer",
+          "fluoropolymer"
+        ],
+        "none": [
+          "none",
+          "none"
+        ]
+      }
+    }
+  },
+  "hitPolicy": "PRIORITY"
 }

@@ -20,15 +20,54 @@
       "labelVi": "Loại bộ phận / phụ kiện xe đạp",
       "questionVi": "Phụ tùng xe đạp thuộc loại nào: bộ phận chung, xe lăn, khung/cổ, vành, moayơ, phanh, cọc/yên, pedal/cranks, hay phụ kiện khác?",
       "detect": {
-        "bicycle_part": ["xe đạp", "phụ tùng xe đạp", "bicycle part"],
-        "brake": ["phanh xe đạp", "brake", "tay phanh", "đĩa phanh"],
-        "frame_steering": ["khung xe đạp", "cổ xe", "ghi đông", "frame steering"],
-        "hub_freewheel": ["moayơ", "hub", "freewheel", "trục bánh"],
-        "invalid_carriage": ["xe lăn", "xe lăn cho người", "invalid carriage"],
-        "other_accessory": ["phụ kiện xe đạp", "accessory xe đạp"],
-        "pedal_crank": ["pedal xe đạp", "crank", "crank arm"],
-        "seat_post": ["cọc yên", "yên xe đạp", "seat post", "cọc yên"],
-        "wheel_rim": ["vành xe đạp", "rim", "nan hoa"]
+        "bicycle_part": [
+          "xe đạp",
+          "phụ tùng xe đạp",
+          "bicycle part"
+        ],
+        "brake": [
+          "phanh xe đạp",
+          "brake",
+          "tay phanh",
+          "đĩa phanh"
+        ],
+        "frame_steering": [
+          "khung xe đạp",
+          "cổ xe",
+          "ghi đông",
+          "frame steering"
+        ],
+        "hub_freewheel": [
+          "moayơ",
+          "hub",
+          "freewheel",
+          "trục bánh"
+        ],
+        "invalid_carriage": [
+          "xe lăn",
+          "xe lăn cho người",
+          "invalid carriage"
+        ],
+        "other_accessory": [
+          "phụ kiện xe đạp",
+          "accessory xe đạp"
+        ],
+        "pedal_crank": [
+          "pedal xe đạp",
+          "crank",
+          "crank arm"
+        ],
+        "seat_post": [
+          "cọc yên",
+          "yên xe đạp",
+          "seat post",
+          "cọc yên"
+        ],
+        "wheel_rim": [
+          "vành xe đạp",
+          "rim",
+          "nan hoa"
+        ]
       }
     },
     {
@@ -388,5 +427,72 @@
     }
   ],
   "essenceTestVi": "Loại bộ phận (partKind) + Mã hiệu (specCode) → mã 8 số. 30 lá, 2 thuộc tính.",
-  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN)."
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN).",
+  "inputAttributes": [
+    "partKind",
+    "specCode"
+  ],
+  "attributes": {
+    "partKind": {
+      "type": "enum",
+      "labelVi": "partKind",
+      "domain": [
+        "bicycle_part",
+        "brake",
+        "frame_steering",
+        "hub_freewheel",
+        "invalid_carriage",
+        "other_accessory",
+        "pedal_crank",
+        "seat_post",
+        "wheel_rim"
+      ],
+      "detect": {
+        "bicycle_part": [
+          "bicycle_part",
+          "bicycle part"
+        ],
+        "brake": [
+          "brake",
+          "brake"
+        ],
+        "frame_steering": [
+          "frame_steering",
+          "frame steering"
+        ],
+        "hub_freewheel": [
+          "hub_freewheel",
+          "hub freewheel"
+        ],
+        "invalid_carriage": [
+          "invalid_carriage",
+          "invalid carriage"
+        ],
+        "other_accessory": [
+          "other_accessory",
+          "other accessory"
+        ],
+        "pedal_crank": [
+          "pedal_crank",
+          "pedal crank"
+        ],
+        "seat_post": [
+          "seat_post",
+          "seat post"
+        ],
+        "wheel_rim": [
+          "wheel_rim",
+          "wheel rim"
+        ]
+      }
+    },
+    "specCode": {
+      "type": "number",
+      "labelVi": "specCode",
+      "unit": null,
+      "fromSpec": null
+    }
+  },
+  "hitPolicy": "PRIORITY",
+  "essenceVi": "partKind + specCode"
 }

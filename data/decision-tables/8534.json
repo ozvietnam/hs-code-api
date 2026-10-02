@@ -140,5 +140,35 @@
   "inputAttributes": [
     "pcbLayers"
   ],
-  "essenceVi": "số lớp pcb"
+  "essenceVi": "số lớp pcb",
+  "attributes": {
+    "pcbLayers": {
+      "type": "enum",
+      "labelVi": "pcbLayers",
+      "domain": [
+        "double",
+        "multi",
+        "other",
+        "single"
+      ],
+      "detect": {
+        "double": [
+          "double",
+          "double"
+        ],
+        "multi": [
+          "multi",
+          "multi"
+        ],
+        "other": [
+          "other",
+          "other"
+        ],
+        "single": [
+          "single",
+          "single"
+        ]
+      }
+    }
+  }
 }

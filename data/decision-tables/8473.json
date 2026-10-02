@@ -208,5 +208,76 @@
     "partForm",
     "multi8471Fit"
   ],
-  "essenceVi": "máy chủ+dạng linh kiện+lắp nhiều"
+  "essenceVi": "máy chủ+dạng linh kiện+lắp nhiều",
+  "attributes": {
+    "hostMachine": {
+      "type": "enum",
+      "labelVi": "hostMachine",
+      "domain": [
+        "adp8471",
+        "calcElectronic",
+        "calcOther",
+        "multiUse",
+        "office8472"
+      ],
+      "detect": {
+        "adp8471": [
+          "adp8471",
+          "adp8471"
+        ],
+        "calcElectronic": [
+          "calcelectronic",
+          "calcelectronic"
+        ],
+        "calcOther": [
+          "calcother",
+          "calcother"
+        ],
+        "multiUse": [
+          "multiuse",
+          "multiuse"
+        ],
+        "office8472": [
+          "office8472",
+          "office8472"
+        ]
+      }
+    },
+    "partForm": {
+      "type": "enum",
+      "labelVi": "partForm",
+      "domain": [
+        "assembledPcb",
+        "other"
+      ],
+      "detect": {
+        "assembledPcb": [
+          "assembledpcb",
+          "assembledpcb"
+        ],
+        "other": [
+          "other",
+          "other"
+        ]
+      }
+    },
+    "multi8471Fit": {
+      "type": "enum",
+      "labelVi": "multi8471Fit",
+      "domain": [
+        "no",
+        "yes"
+      ],
+      "detect": {
+        "no": [
+          "no",
+          "no"
+        ],
+        "yes": [
+          "yes",
+          "yes"
+        ]
+      }
+    }
+  }
 }

@@ -385,5 +385,150 @@
     "switchKind",
     "other8535Kind"
   ],
-  "essenceVi": "loại thiết bị+điện áp+cầu dao+elcb+công tắc+khác"
+  "essenceVi": "loại thiết bị+điện áp+cầu dao+elcb+công tắc+khác",
+  "attributes": {
+    "apparatusKind": {
+      "type": "enum",
+      "labelVi": "apparatusKind",
+      "domain": [
+        "circuitBreaker",
+        "fuse",
+        "isolatorSwitch",
+        "other8535",
+        "surgeProtection"
+      ],
+      "detect": {
+        "circuitBreaker": [
+          "circuitbreaker",
+          "circuitbreaker"
+        ],
+        "fuse": [
+          "fuse",
+          "fuse"
+        ],
+        "isolatorSwitch": [
+          "isolatorswitch",
+          "isolatorswitch"
+        ],
+        "other8535": [
+          "other8535",
+          "other8535"
+        ],
+        "surgeProtection": [
+          "surgeprotection",
+          "surgeprotection"
+        ]
+      }
+    },
+    "breakerVoltageClass": {
+      "type": "enum",
+      "labelVi": "breakerVoltageClass",
+      "domain": [
+        "72_5kVOrMore",
+        "below72_5kV"
+      ],
+      "detect": {
+        "72_5kVOrMore": [
+          "72_5kvormore",
+          "72 5kvormore"
+        ],
+        "below72_5kV": [
+          "below72_5kv",
+          "below72 5kv"
+        ]
+      }
+    },
+    "breakerKind": {
+      "type": "enum",
+      "labelVi": "breakerKind",
+      "domain": [
+        "elcb",
+        "mouldedCase",
+        "otherBreaker"
+      ],
+      "detect": {
+        "elcb": [
+          "elcb",
+          "elcb"
+        ],
+        "mouldedCase": [
+          "mouldedcase",
+          "mouldedcase"
+        ],
+        "otherBreaker": [
+          "otherbreaker",
+          "otherbreaker"
+        ]
+      }
+    },
+    "breaker72Elcb": {
+      "type": "enum",
+      "labelVi": "breaker72Elcb",
+      "domain": [
+        "no",
+        "yes"
+      ],
+      "detect": {
+        "no": [
+          "no",
+          "no"
+        ],
+        "yes": [
+          "yes",
+          "yes"
+        ]
+      }
+    },
+    "switchKind": {
+      "type": "enum",
+      "labelVi": "switchKind",
+      "domain": [
+        "disconnectUnder36kV",
+        "for66kVOrMore",
+        "otherDisconnect",
+        "otherSwitch"
+      ],
+      "detect": {
+        "disconnectUnder36kV": [
+          "disconnectunder36kv",
+          "disconnectunder36kv"
+        ],
+        "for66kVOrMore": [
+          "for66kvormore",
+          "for66kvormore"
+        ],
+        "otherDisconnect": [
+          "otherdisconnect",
+          "otherdisconnect"
+        ],
+        "otherSwitch": [
+          "otherswitch",
+          "otherswitch"
+        ]
+      }
+    },
+    "other8535Kind": {
+      "type": "enum",
+      "labelVi": "other8535Kind",
+      "domain": [
+        "motorChangeOver",
+        "otherNec",
+        "transformerTapSwitch"
+      ],
+      "detect": {
+        "motorChangeOver": [
+          "motorchangeover",
+          "motorchangeover"
+        ],
+        "otherNec": [
+          "othernec",
+          "othernec"
+        ],
+        "transformerTapSwitch": [
+          "transformertapswitch",
+          "transformertapswitch"
+        ]
+      }
+    }
+  }
 }

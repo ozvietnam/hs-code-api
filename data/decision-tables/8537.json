@@ -464,5 +464,162 @@
     "hvPanelFunction",
     "incorporates66kvSwitchgear"
   ],
-  "essenceVi": "điện áp panel+tủ hạ thế+điện áp ra+dòng ra+vai trò board+ld khác+hàm tủ cao+tích hợp 66kv"
+  "essenceVi": "điện áp panel+tủ hạ thế+điện áp ra+dòng ra+vai trò board+ld khác+hàm tủ cao+tích hợp 66kv",
+  "attributes": {
+    "panelVoltage": {
+      "type": "enum",
+      "labelVi": "panelVoltage",
+      "domain": [
+        "gt1000v",
+        "lte1000v"
+      ],
+      "detect": {
+        "gt1000v": [
+          "gt1000v",
+          "gt1000v"
+        ],
+        "lte1000v": [
+          "lte1000v",
+          "lte1000v"
+        ]
+      }
+    },
+    "lvPanelClass": {
+      "type": "enum",
+      "labelVi": "lvPanelClass",
+      "domain": [
+        "controlBoard",
+        "distributionItTelecom",
+        "motorDriveHighCurrent",
+        "otherAssembly",
+        "plcSemiconductorFab"
+      ],
+      "detect": {
+        "controlBoard": [
+          "controlboard",
+          "controlboard"
+        ],
+        "distributionItTelecom": [
+          "distributionittelecom",
+          "distributionittelecom"
+        ],
+        "motorDriveHighCurrent": [
+          "motordrivehighcurrent",
+          "motordrivehighcurrent"
+        ],
+        "otherAssembly": [
+          "otherassembly",
+          "otherassembly"
+        ],
+        "plcSemiconductorFab": [
+          "plcsemiconductorfab",
+          "plcsemiconductorfab"
+        ]
+      }
+    },
+    "outputVoltageVdc": {
+      "type": "number",
+      "labelVi": "outputVoltageVdc",
+      "unit": "VDC",
+      "fromSpec": "voltage"
+    },
+    "outputCurrentA": {
+      "type": "number",
+      "labelVi": "outputCurrentA",
+      "unit": "A",
+      "fromSpec": "current"
+    },
+    "controlBoardRole": {
+      "type": "enum",
+      "labelVi": "controlBoardRole",
+      "domain": [
+        "applianceHvacWhiteGoods",
+        "dcsDistributed",
+        "otherControl",
+        "plcWithProcessor"
+      ],
+      "detect": {
+        "applianceHvacWhiteGoods": [
+          "appliancehvacwhitegoods",
+          "appliancehvacwhitegoods"
+        ],
+        "dcsDistributed": [
+          "dcsdistributed",
+          "dcsdistributed"
+        ],
+        "otherControl": [
+          "othercontrol",
+          "othercontrol"
+        ],
+        "plcWithProcessor": [
+          "plcwithprocessor",
+          "plcwithprocessor"
+        ]
+      }
+    },
+    "otherAssemblyUse": {
+      "type": "enum",
+      "labelVi": "otherAssemblyUse",
+      "domain": [
+        "dcsDistributed",
+        "otherNec",
+        "radioOrElectricFan"
+      ],
+      "detect": {
+        "dcsDistributed": [
+          "dcsdistributed",
+          "dcsdistributed"
+        ],
+        "otherNec": [
+          "othernec",
+          "othernec"
+        ],
+        "radioOrElectricFan": [
+          "radioorelectricfan",
+          "radioorelectricfan"
+        ]
+      }
+    },
+    "hvPanelFunction": {
+      "type": "enum",
+      "labelVi": "hvPanelFunction",
+      "domain": [
+        "control",
+        "distribution",
+        "otherHv"
+      ],
+      "detect": {
+        "control": [
+          "control",
+          "control"
+        ],
+        "distribution": [
+          "distribution",
+          "distribution"
+        ],
+        "otherHv": [
+          "otherhv",
+          "otherhv"
+        ]
+      }
+    },
+    "incorporates66kvSwitchgear": {
+      "type": "enum",
+      "labelVi": "incorporates66kvSwitchgear",
+      "domain": [
+        "no",
+        "yes"
+      ],
+      "detect": {
+        "no": [
+          "no",
+          "no"
+        ],
+        "yes": [
+          "yes",
+          "yes"
+        ]
+      }
+    }
+  }
 }

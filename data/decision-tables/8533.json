@@ -213,5 +213,77 @@
     "carbonMount",
     "powerW"
   ],
-  "essenceVi": "vai trò+loại điện trở+lắp carbon+công suất"
+  "essenceVi": "vai trò+loại điện trở+lắp carbon+công suất",
+  "attributes": {
+    "goodsRole": {
+      "type": "enum",
+      "labelVi": "goodsRole",
+      "domain": [
+        "parts",
+        "resistor"
+      ],
+      "detect": {
+        "parts": [
+          "parts",
+          "parts"
+        ],
+        "resistor": [
+          "resistor",
+          "resistor"
+        ]
+      }
+    },
+    "resistorClass": {
+      "type": "enum",
+      "labelVi": "resistorClass",
+      "domain": [
+        "fixedCarbon",
+        "fixedOther",
+        "variableOther",
+        "wirewoundVariable"
+      ],
+      "detect": {
+        "fixedCarbon": [
+          "fixedcarbon",
+          "fixedcarbon"
+        ],
+        "fixedOther": [
+          "fixedother",
+          "fixedother"
+        ],
+        "variableOther": [
+          "variableother",
+          "variableother"
+        ],
+        "wirewoundVariable": [
+          "wirewoundvariable",
+          "wirewoundvariable"
+        ]
+      }
+    },
+    "carbonMount": {
+      "type": "enum",
+      "labelVi": "carbonMount",
+      "domain": [
+        "chip",
+        "other"
+      ],
+      "detect": {
+        "chip": [
+          "chip",
+          "chip"
+        ],
+        "other": [
+          "other",
+          "other"
+        ]
+      }
+    },
+    "powerW": {
+      "type": "number",
+      "labelVi": "powerW",
+      "unit": null,
+      "fromSpec": null
+    }
+  }
 }

@@ -1145,5 +1145,152 @@
     }
   ],
   "essenceTestVi": "Với thiết bị đóng cắt, bảo vệ, đấu nối mạch điện ≤1000V: xác định (1) chức năng (cầu chì, CB, rơ le, công tắc, phích cắm…), (2) dòng định mức (A), (3) ứng dụng/vật liệu đặc biệt.",
-  "essenceVi": "Với thiết bị đóng cắt, bảo vệ, đấu nối mạch điện ≤1000V: xác định (1) chức năng (cầu chì, CB, rơ le, công tắc, phích cắm…), (2) dòng định mức (A), (3) ứng dụng/vật liệu đặc biệt."
+  "essenceVi": "currentRating + function + specialApp",
+  "inputAttributes": [
+    "currentRating",
+    "function",
+    "specialApp"
+  ],
+  "attributes": {
+    "currentRating": {
+      "type": "enum",
+      "labelVi": "currentRating",
+      "domain": [
+        "a16to32",
+        "a32to1000",
+        "lt16A",
+        "unspecified"
+      ],
+      "detect": {
+        "a16to32": [
+          "a16to32",
+          "a16to32"
+        ],
+        "a32to1000": [
+          "a32to1000",
+          "a32to1000"
+        ],
+        "lt16A": [
+          "lt16a",
+          "lt16a"
+        ],
+        "unspecified": [
+          "unspecified",
+          "unspecified"
+        ]
+      }
+    },
+    "function": {
+      "type": "enum",
+      "labelVi": "function",
+      "domain": [
+        "circuitBreaker",
+        "fiberConnector",
+        "fuse",
+        "junctionBlock",
+        "lampholder",
+        "plug",
+        "relayGt60V",
+        "relayLe60V",
+        "surgeProtection",
+        "switch"
+      ],
+      "detect": {
+        "circuitBreaker": [
+          "circuitbreaker",
+          "circuitbreaker"
+        ],
+        "fiberConnector": [
+          "fiberconnector",
+          "fiberconnector"
+        ],
+        "fuse": [
+          "fuse",
+          "fuse"
+        ],
+        "junctionBlock": [
+          "junctionblock",
+          "junctionblock"
+        ],
+        "lampholder": [
+          "lampholder",
+          "lampholder"
+        ],
+        "plug": [
+          "plug",
+          "plug"
+        ],
+        "relayGt60V": [
+          "relaygt60v",
+          "relaygt60v"
+        ],
+        "relayLe60V": [
+          "relayle60v",
+          "relayle60v"
+        ],
+        "surgeProtection": [
+          "surgeprotection",
+          "surgeprotection"
+        ],
+        "switch": [
+          "switch",
+          "switch"
+        ]
+      }
+    },
+    "specialApp": {
+      "type": "enum",
+      "labelVi": "specialApp",
+      "domain": [
+        "ceramic",
+        "copper",
+        "fan",
+        "motorStarter",
+        "none",
+        "radio",
+        "riceCooker",
+        "sen",
+        "telephone"
+      ],
+      "detect": {
+        "ceramic": [
+          "ceramic",
+          "ceramic"
+        ],
+        "copper": [
+          "copper",
+          "copper"
+        ],
+        "fan": [
+          "fan",
+          "fan"
+        ],
+        "motorStarter": [
+          "motorstarter",
+          "motorstarter"
+        ],
+        "none": [
+          "none",
+          "none"
+        ],
+        "radio": [
+          "radio",
+          "radio"
+        ],
+        "riceCooker": [
+          "ricecooker",
+          "ricecooker"
+        ],
+        "sen": [
+          "sen",
+          "sen"
+        ],
+        "telephone": [
+          "telephone",
+          "telephone"
+        ]
+      }
+    }
+  },
+  "hitPolicy": "PRIORITY"
 }
