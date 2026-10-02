@@ -7,7 +7,7 @@ const { applyGirRules } = require('../lib/gir-engine');
 const { applyPrecedentBoost, detectSet } = require('../lib/precedent-search');
 const { translateToVi, getBrandHint } = require('../lib/glossary');
 const { understandQuery } = require('../lib/query-understand');
-const { checkSubheading } = require('../lib/subheading-check');
+const { checkSubheading, checkPolarity } = require('../lib/subheading-check');
 const { originAssessment } = require('../lib/origin-hints');
 const { removeDiacritics } = require('../lib/search-utils');
 const { searchOzByKeyword } = require('../lib/oz-precedent-search');
@@ -348,6 +348,32 @@ module.exports = async function handler(req, res) {
       }
     }
 
+    // Mâu thuẫn có/không ("Đồ uống KHÔNG CÓ GA" cho hàng "có ga"): mã đầu sai chắc chắn,
+    // đẩy xuống cuối, đưa mã không mâu thuẫn lên đầu và bắt chuyên viên xác nhận.
+    // Đo trên 5.058 tờ khai thật không bắt nhầm mã đúng nào (lib/subheading-check.js).
+    let polarityAdvisory = null;
+    const head = enrichedSuggestions[0];
+    if (head && !head.decidedByTable) {
+      const pol = checkPolarity(head.hsCode, matchText);
+      if (!pol.ok) {
+        const okIdx = enrichedSuggestions.findIndex((sg, i) => i > 0 && checkPolarity(sg.hsCode, matchText).ok);
+        let promoted = okIdx > 0 ? enrichedSuggestions.splice(okIdx, 1)[0] : null;
+        if (!promoted && pol.alternative && taxData[pol.alternative]) {
+          promoted = withExamples({
+            hsCode: pol.alternative,
+            nameVi: taxData[pol.alternative].vn || null,
+            confidence: null,
+            reasoning: pol.reasonVi,
+            addedByPolarityCheck: true,
+          }, 5);
+        }
+        const demoted = { ...enrichedSuggestions.shift(), polarityConflict: pol.conflicts };
+        const cap = Math.max(topReranked, 2);
+        enrichedSuggestions = [...(promoted ? [promoted] : []), ...enrichedSuggestions].slice(0, cap - 1).concat(demoted);
+        polarityAdvisory = { ...pol, promotedHs: promoted?.hsCode || null };
+      }
+    }
+
     // B4: shared knowledge — conflicts + explanatory note cho mã top (cùng layer với /classify)
     const top1Hs = enrichedSuggestions[0]?.hsCode;
     const explanatoryNote  = top1Hs ? getNoteSummaryForHs(top1Hs) : null;
@@ -361,6 +387,7 @@ module.exports = async function handler(req, res) {
       ...buildSuggestStatus({
         description, suggestions: enrichedSuggestions, engine, missingFacts, rejectedFacts, facts, topDecision,
         topConfidence: engine === 'llm' ? enrichedSuggestions[0]?.confidence ?? null : null,
+        featureConflict: polarityAdvisory,
       }),
       suggestions: enrichedSuggestions,
       rankingSignals,
@@ -403,6 +430,14 @@ module.exports = async function handler(req, res) {
       antiPatternWarnings: [
         ...audit.antiPatternWarnings,
         ...historyAdjusted.warnings,
+        ...(polarityAdvisory
+          ? [{
+              id: 'feature-polarity-conflict',
+              description: polarityAdvisory.reasonVi
+                + (polarityAdvisory.promotedHs ? ` Đã đưa ${polarityAdvisory.promotedHs} lên đầu, mã mâu thuẫn xuống cuối.` : ''),
+              fix: 'Chuyên viên xác nhận đặc tính (vd có ga hay không) rồi chọn mã.',
+            }]
+          : []),
         ...(subheadingAdvisory
           ? [{
               id: subheadingAdvisory.autoSwapped ? 'subheading-self-contradiction' : 'subheading-unsupported',
@@ -447,7 +482,7 @@ module.exports = async function handler(req, res) {
     // degraded để lần gọi sau còn thử lại LLM.
     // Không cache kết quả AI tự nhận không chắc — lần gọi sau còn cơ hội đúng
     // (trước đây mã cocaine cho Coca-Cola được cache và trả lại suốt 24 giờ).
-    if (engine === 'llm' && Number(enrichedSuggestions[0]?.confidence) >= LOW_CONFIDENCE) {
+    if (engine === 'llm' && !polarityAdvisory && Number(enrichedSuggestions[0]?.confidence) >= LOW_CONFIDENCE) {
       setSuggestCache(description, topReranked, responsePayload, { facts });
     }
 
