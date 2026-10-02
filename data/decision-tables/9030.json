@@ -1,0 +1,317 @@
+{
+  "heading": "9030",
+  "titleVi": "Dụng cụ và thiết bị đo lường, kiểm tra, hoặc chẩn đoán",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "measurementType",
+      "type": "enum",
+      "domain": [
+        "ionizing_radiation",
+        "oscilloscope",
+        "multimeter",
+        "electrical_test",
+        "other_with_recording",
+        "telecom_test",
+        "ic_tester",
+        "panel_tester",
+        "other_no_recording",
+        "other_test_device",
+        "parts"
+      ],
+      "labelVi": "Loại thiết bị đo/kiểm",
+      "questionVi": "Dụng cụ đo/kiểm thuộc loại nào: đo bức xạ ion hóa, máy hiện sóng, máy đo đa năng, dụng cụ đo điện (vôn kế/ampe kế/điện trở), thiết bị viễn thông, máy kiểm tra vi mạch, dụng cụ kiểm tra panel, hay bộ phận (parts)?"
+    },
+    {
+      "attribute": "hasRecording",
+      "type": "enum",
+      "domain": [
+        true,
+        false
+      ],
+      "labelVi": "Có thiết bị ghi",
+      "questionVi": "Dụng cụ có gắn thiết bị ghi (recording) không?"
+    },
+    {
+      "attribute": "specificKind",
+      "type": "enum",
+      "domain": [
+        "voltage_current",
+        "impedance_alarm",
+        "automotive",
+        "other_resistance",
+        "other_electrical",
+        "other_with_rec",
+        "other_no_rec",
+        null
+      ],
+      "labelVi": "Loại cụ thể (khi measurementType = electrical_test / other)",
+      "questionVi": "Dụng cụ đo loại cụ thể nào: điện áp/dòng điện, trở kháng có cảnh báo, ampe/vôn kế xe, điện trở khác, hay loại khác?"
+    },
+    {
+      "attribute": "icKind",
+      "type": "enum",
+      "domain": [
+        "integrated_circuit",
+        "other_ic",
+        null
+      ],
+      "labelVi": "Loại vi mạch (khi measurementType = ic_tester)",
+      "questionVi": "Máy kiểm tra vi mạch loại nào: vi mạch tích hợp (IC) hay loại khác?"
+    },
+    {
+      "attribute": "panelKind",
+      "type": "enum",
+      "domain": [
+        "pcb",
+        "other_panel",
+        null
+      ],
+      "labelVi": "Loại panel (khi measurementType = panel_tester)",
+      "questionVi": "Dụng cụ kiểm tra tấm mạch: mạch in (PCB) hay loại khác?"
+    },
+    {
+      "attribute": "partType",
+      "type": "enum",
+      "domain": [
+        "pcb_assembled",
+        "optical_parts",
+        "other_test_parts",
+        "generic_parts",
+        null
+      ],
+      "labelVi": "Loại bộ phận (khi measurementType = parts)",
+      "questionVi": "Bộ phận thuộc loại nào: mạch in đã lắp ráp, bộ phận quang học, bộ phận đo khác, hay loại chung?"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "measurementType": "ionizing_radiation"
+      },
+      "hs": "90301000",
+      "reasonVi": "GIR 6 — dụng cụ đo bức xạ ion hóa, 9030.10 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "measurementType": "oscilloscope"
+      },
+      "hs": "90302000",
+      "reasonVi": "GIR 6 — máy hiện sóng và máy ghi dao động, 9030.20 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "measurementType": "multimeter",
+        "hasRecording": false
+      },
+      "hs": "90303100",
+      "reasonVi": "GIR 6 — máy đo đa năng không bao gồm thiết bị ghi, 9030.31 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "measurementType": "multimeter",
+        "hasRecording": true
+      },
+      "hs": "90303200",
+      "reasonVi": "GIR 6 — máy đo đa năng bao gồm thiết bị ghi, 9030.32 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "measurementType": "electrical_test",
+        "specificKind": "voltage_current"
+      },
+      "hs": "90303310",
+      "reasonVi": "GIR 6 — dụng cụ đo điện áp, dòng điện, 9030.33.10 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "measurementType": "electrical_test",
+        "specificKind": "impedance_alarm"
+      },
+      "hs": "90303320",
+      "reasonVi": "GIR 6 — dụng cụ đo trở kháng có cảnh báo, 9030.33.20 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "measurementType": "electrical_test",
+        "specificKind": "automotive"
+      },
+      "hs": "90303330",
+      "reasonVi": "GIR 6 — ampe kế và vôn kế dùng cho xe có động cơ, 9030.33.30 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "measurementType": "electrical_test",
+        "specificKind": "other_resistance"
+      },
+      "hs": "90303340",
+      "reasonVi": "GIR 6 — dụng cụ đo điện trở khác, 9030.33.40 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "measurementType": "electrical_test",
+        "specificKind": "other_electrical"
+      },
+      "hs": "90303390",
+      "reasonVi": "GIR 6 — dụng cụ đo điện loại khác, 9030.33.90 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "measurementType": "other_with_recording"
+      },
+      "hs": "90303900",
+      "reasonVi": "GIR 6 — dụng cụ đo loại khác có gắn thiết bị ghi, 9030.39 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "measurementType": "telecom_test"
+      },
+      "hs": "90304000",
+      "reasonVi": "GIR 6 — thiết bị chuyên dụng viễn thông, 9030.40 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "measurementType": "ic_tester",
+        "icKind": "integrated_circuit"
+      },
+      "hs": "90308210",
+      "reasonVi": "GIR 6 — máy kiểm tra vi mạch tích hợp, 9030.82.10 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "measurementType": "ic_tester",
+        "icKind": "other_ic"
+      },
+      "hs": "90308290",
+      "reasonVi": "GIR 6 — máy kiểm tra vi mạch loại khác, 9030.82.90 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "measurementType": "panel_tester",
+        "panelKind": "pcb"
+      },
+      "hs": "90308410",
+      "reasonVi": "GIR 6 — dụng cụ đo tấm mạch in, 9030.84.10 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "measurementType": "panel_tester",
+        "panelKind": "other_panel"
+      },
+      "hs": "90308490",
+      "reasonVi": "GIR 6 — dụng cụ kiểm tra panel loại khác, 9030.84.90 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "measurementType": "other_no_recording"
+      },
+      "hs": "90308910",
+      "reasonVi": "GIR 6 — dụng cụ đo không kèm thiết bị ghi, 9030.89.10 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-17",
+      "priority": 0,
+      "when": {
+        "measurementType": "other_test_device"
+      },
+      "hs": "90308990",
+      "reasonVi": "GIR 6 — dụng cụ đo loại khác, 9030.89.90 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-18",
+      "priority": 0,
+      "when": {
+        "measurementType": "parts",
+        "partType": "pcb_assembled"
+      },
+      "hs": "90309010",
+      "reasonVi": "GIR 6 — bộ phận mạch in đã lắp ráp, 9030.90.10 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-19",
+      "priority": 0,
+      "when": {
+        "measurementType": "parts",
+        "partType": "optical_parts"
+      },
+      "hs": "90309030",
+      "reasonVi": "GIR 6 — bộ phận dụng cụ quang học đo, 9030.90.30 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-20",
+      "priority": 0,
+      "when": {
+        "measurementType": "parts",
+        "partType": "other_test_parts"
+      },
+      "hs": "90309040",
+      "reasonVi": "GIR 6 — bộ phận dụng cụ đo khác, 9030.90.40 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-21",
+      "priority": 0,
+      "when": {
+        "measurementType": "parts",
+        "partType": "generic_parts"
+      },
+      "hs": "90309090",
+      "reasonVi": "GIR 6 — bộ phận đo kiểm loại khác, 9030.90.90 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceTestVi": "measurementType (11 giá trị) + hasRecording (True/False) + specificKind (8 giá trị) — phân biệt 21 mã 8 số trong nhóm 9030. Tất cả MFN 0%. Phân loại chính: loại thiết bị đo (ionizing/oscilloscope/multimeter/electrical/telecom/IC/panel/other). Phân loại phụ: có ghi hay không, loại cụ thể của dụng cụ đo điện.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 9030 (Thông tư 65/2024/TT-BTC)."
+}

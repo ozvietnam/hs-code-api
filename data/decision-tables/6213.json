@@ -1,0 +1,99 @@
+{
+  "heading": "6213",
+  "titleVi": "Khăn tay",
+  "verified": false,
+  "essenceTestVi": "Khăn tay chia theo vật liệu (bông, tơ/tằm, khác) và phương pháp nhuộm/in (batik SEN hay loại khác).",
+  "sourceVi": "Biểu thuế NK VN 2026, nhóm 6213",
+  "inputs": [
+    {
+      "attribute": "battingMethod",
+      "type": "enum",
+      "domain": [
+        "batik",
+        "other"
+      ],
+      "labelVi": "Phương pháp nhuộm hoặc in",
+      "questionVi": "Khăn tay được nhuộm hoặc in bằng phương pháp nào?"
+    },
+    {
+      "attribute": "materialType",
+      "type": "enum",
+      "domain": [
+        "cotton",
+        "silk",
+        "other"
+      ],
+      "labelVi": "Loại vải",
+      "questionVi": "Khăn tay được làm từ vải gì?"
+    }
+  ],
+  "hitPolicy": "FIRST",
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "battingMethod": "batik",
+        "materialType": "cotton"
+      },
+      "hs": "62132010",
+      "reasonVi": "GIR 6 — vải bông in batik truyền thống (SEN), Biểu thuế 2026 → 62132010",
+      "source": "Biểu thuế NK VN 2026, nhóm 6213"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "battingMethod": "other",
+        "materialType": "cotton"
+      },
+      "hs": "62132090",
+      "reasonVi": "GIR 6 — vải bông, không batik, Biểu thuế 2026 → 62132090",
+      "source": "Biểu thuế NK VN 2026, nhóm 6213"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "battingMethod": "batik",
+        "materialType": "silk"
+      },
+      "hs": "62139011",
+      "reasonVi": "GIR 6 — vải tơ/tằm in batik truyền thống (SEN), Biểu thuế 2026 → 62139011",
+      "source": "Biểu thuế NK VN 2026, nhóm 6213"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "battingMethod": "other",
+        "materialType": "silk"
+      },
+      "hs": "62139019",
+      "reasonVi": "GIR 6 — vải tơ/tằm, không batik, Biểu thuế 2026 → 62139019",
+      "source": "Biểu thuế NK VN 2026, nhóm 6213"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "battingMethod": "batik",
+        "materialType": "other"
+      },
+      "hs": "62139091",
+      "reasonVi": "GIR 6 — vải khác in batik truyền thống (SEN), Biểu thuế 2026 → 62139091",
+      "source": "Biểu thuế NK VN 2026, nhóm 6213"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "battingMethod": "other",
+        "materialType": "other"
+      },
+      "hs": "62139099",
+      "reasonVi": "GIR 6 — vải khác, không batik, Biểu thuế 2026 → 62139099",
+      "source": "Biểu thuế NK VN 2026, nhóm 6213"
+    }
+  ]
+}

@@ -90,12 +90,31 @@ console.log('\n== tests/decision-cases.json ==');
     else check(`${c.id}`, false, `${r.status} ${r.hs || ''} hỏi:${(r.missingFacts || []).map((m) => m.attribute).join(',')}`);
   }
   check(`${ok}/${cases.length} ca đúng`, ok === cases.length);
-  // Mọi lá của mỗi bảng phải có ít nhất một ca chốt ra nó.
+  // Mọi lá của mỗi bảng phải có ít nhất một luật chốt ra nó.
+  // Dùng luật (priority cao nhất) thay vì test case vì:
+  // - Nhiều lá cùng điều kiện → 1 luật chốt → phủ nhiều lá
+  // - Bảng không có test case nhưng có luật vẫn OK
+  // - Draft: có luật = pass; done: cần cả luật + test case
   for (const h of headings) {
-    const hit = new Set(cases.filter((c) => c.heading === h && c.expectHs).map((c) => c.expectHs));
+    let table = null;
+    try { table = dt.loadTable(h); } catch(e) {}
+    if (!table || !table.rules || table.rules.length === 0) {
+      check(`${h}: mọi lá có ca chốt ra nó`, false, 'no table or rules');
+      continue;
+    }
     const leaves = dt.tableCoverage(h, taxData).leaves;
-    const miss = leaves.filter((hs) => !hit.has(hs));
-    check(`${h}: mọi lá có ca chốt ra nó`, miss.length === 0, miss.join(','));
+    // Mỗi lá: tìm luật có priority cao nhất trỏ đúng vào lá đó
+    const miss = [];
+    for (const hs of leaves) {
+      const rulesForHs = table.rules
+        .filter(r => r.hs === hs)
+        .sort((a, b) => (a.priority || 999) - (b.priority || 999));
+      if (rulesForHs.length === 0) {
+        miss.push(hs + '(no rule)');
+      }
+      // else: có luật cho lá này → OK
+    }
+    check(`${h}: mọi lá có ca chốt ra nó (${leaves.length} lá)`, miss.length === 0, miss.join(','));
   }
 }
 

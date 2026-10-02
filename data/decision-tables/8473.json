@@ -124,7 +124,9 @@
     {
       "id": "r-calc-electronic",
       "priority": 50,
-      "when": { "hostMachine": "calcElectronic" },
+      "when": {
+        "hostMachine": "calcElectronic"
+      },
       "hs": "84732100",
       "gir": "GIR 6",
       "reasonVi": "Phụ kiện máy tính/bàn tính điện tử 8470.10/.21/.29 → 8473.21.00.",
@@ -133,7 +135,9 @@
     {
       "id": "r-calc-other",
       "priority": 50,
-      "when": { "hostMachine": "calcOther" },
+      "when": {
+        "hostMachine": "calcOther"
+      },
       "hs": "84732900",
       "gir": "GIR 6",
       "reasonVi": "Phụ kiện máy 8470.30/.50/.90 (loại khác) → 8473.29.00.",
@@ -142,7 +146,10 @@
     {
       "id": "r-8471-pcb",
       "priority": 50,
-      "when": { "hostMachine": "adp8471", "partForm": "assembledPcb" },
+      "when": {
+        "hostMachine": "adp8471",
+        "partForm": "assembledPcb"
+      },
       "hs": "84733010",
       "gir": "GIR 6",
       "reasonVi": "Tấm mạch in đã lắp ráp của máy 8471 → 8473.30.10.",
@@ -151,7 +158,10 @@
     {
       "id": "r-8471-other",
       "priority": 40,
-      "when": { "hostMachine": "adp8471", "partForm": "other" },
+      "when": {
+        "hostMachine": "adp8471",
+        "partForm": "other"
+      },
       "hs": "84733090",
       "gir": "GIR 6",
       "reasonVi": "Phụ kiện khác (không phải PCB lắp ráp) của máy 8471 → 8473.30.90.",
@@ -160,7 +170,9 @@
     {
       "id": "r-8472",
       "priority": 50,
-      "when": { "hostMachine": "office8472" },
+      "when": {
+        "hostMachine": "office8472"
+      },
       "hs": "84734000",
       "gir": "GIR 6",
       "reasonVi": "Bộ phận/phụ kiện máy nhóm 84.72 → 8473.40.00.",
@@ -169,7 +181,10 @@
     {
       "id": "r-multi-8471",
       "priority": 45,
-      "when": { "hostMachine": "multiUse", "multi8471Fit": "yes" },
+      "when": {
+        "hostMachine": "multiUse",
+        "multi8471Fit": "yes"
+      },
       "hs": "84735010",
       "gir": "GIR 6",
       "reasonVi": "Phụ kiện dùng chung, thích hợp cho máy 8471 → 8473.50.10.",
@@ -178,11 +193,20 @@
     {
       "id": "r-multi-other",
       "priority": 10,
-      "when": { "hostMachine": "multiUse", "multi8471Fit": "no" },
+      "when": {
+        "hostMachine": "multiUse",
+        "multi8471Fit": "no"
+      },
       "hs": "84735090",
       "gir": "GIR 6",
       "reasonVi": "Phụ kiện dùng chung 8470–8472, không thuộc nhánh 8471 → 8473.50.90.",
       "source": "Biểu thuế 2026 dòng 8473.50.90"
     }
-  ]
+  ],
+  "inputAttributes": [
+    "hostMachine",
+    "partForm",
+    "multi8471Fit"
+  ],
+  "essenceVi": "máy chủ+dạng linh kiện+lắp nhiều"
 }

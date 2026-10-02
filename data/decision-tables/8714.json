@@ -1,0 +1,381 @@
+{
+  "heading": "8714",
+  "titleVi": "Xe đạp và xe lăn, không có động cơ; bộ phận và phụ kiện",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "partKind",
+      "type": "enum",
+      "domain": [
+        "bicycle_part",
+        "brake",
+        "frame_steering",
+        "hub_freewheel",
+        "invalid_carriage",
+        "other_accessory",
+        "pedal_crank",
+        "seat_post",
+        "wheel_rim"
+      ],
+      "labelVi": "Loại bộ phận / phụ kiện xe đạp",
+      "questionVi": "Phụ tùng xe đạp thuộc loại nào: bộ phận chung, xe lăn, khung/cổ, vành, moayơ, phanh, cọc/yên, pedal/cranks, hay phụ kiện khác?"
+    },
+    {
+      "attribute": "specCode",
+      "type": "enum",
+      "domain": [
+        "10",
+        "11",
+        "12",
+        "19",
+        "20",
+        "30",
+        "40",
+        "50",
+        "60",
+        "70",
+        "90",
+        "91",
+        "93",
+        "94",
+        "99"
+      ],
+      "labelVi": "Mã hiệu kỹ thuật",
+      "questionVi": "Mã hiệu kỹ thuật (2 chữ số cuối)?"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "partKind": "bicycle_part",
+        "specCode": "10"
+      },
+      "hs": "87141010",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại bicycle_part, Biểu thuế 2026 nhóm 871410 → 87141010",
+      "source": "Biểu thuế NK VN 2026, nhóm 871410"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "partKind": "bicycle_part",
+        "specCode": "20"
+      },
+      "hs": "87141020",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại bicycle_part, Biểu thuế 2026 nhóm 871410 → 87141020",
+      "source": "Biểu thuế NK VN 2026, nhóm 871410"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "partKind": "bicycle_part",
+        "specCode": "30"
+      },
+      "hs": "87141030",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại bicycle_part, Biểu thuế 2026 nhóm 871410 → 87141030",
+      "source": "Biểu thuế NK VN 2026, nhóm 871410"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "partKind": "bicycle_part",
+        "specCode": "40"
+      },
+      "hs": "87141040",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại bicycle_part, Biểu thuế 2026 nhóm 871410 → 87141040",
+      "source": "Biểu thuế NK VN 2026, nhóm 871410"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "partKind": "bicycle_part",
+        "specCode": "50"
+      },
+      "hs": "87141050",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại bicycle_part, Biểu thuế 2026 nhóm 871410 → 87141050",
+      "source": "Biểu thuế NK VN 2026, nhóm 871410"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "partKind": "bicycle_part",
+        "specCode": "60"
+      },
+      "hs": "87141060",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại bicycle_part, Biểu thuế 2026 nhóm 871410 → 87141060",
+      "source": "Biểu thuế NK VN 2026, nhóm 871410"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "partKind": "bicycle_part",
+        "specCode": "70"
+      },
+      "hs": "87141070",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại bicycle_part, Biểu thuế 2026 nhóm 871410 → 87141070",
+      "source": "Biểu thuế NK VN 2026, nhóm 871410"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "partKind": "bicycle_part",
+        "specCode": "90"
+      },
+      "hs": "87141090",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại bicycle_part, Biểu thuế 2026 nhóm 871410 → 87141090",
+      "source": "Biểu thuế NK VN 2026, nhóm 871410"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "partKind": "invalid_carriage",
+        "specCode": "11"
+      },
+      "hs": "87142011",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại invalid_carriage, Biểu thuế 2026 nhóm 871420 → 87142011",
+      "source": "Biểu thuế NK VN 2026, nhóm 871420"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "partKind": "invalid_carriage",
+        "specCode": "12"
+      },
+      "hs": "87142012",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại invalid_carriage, Biểu thuế 2026 nhóm 871420 → 87142012",
+      "source": "Biểu thuế NK VN 2026, nhóm 871420"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "partKind": "invalid_carriage",
+        "specCode": "19"
+      },
+      "hs": "87142019",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại invalid_carriage, Biểu thuế 2026 nhóm 871420 → 87142019",
+      "source": "Biểu thuế NK VN 2026, nhóm 871420"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "partKind": "invalid_carriage",
+        "specCode": "90"
+      },
+      "hs": "87142090",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại invalid_carriage, Biểu thuế 2026 nhóm 871420 → 87142090",
+      "source": "Biểu thuế NK VN 2026, nhóm 871420"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "partKind": "frame_steering",
+        "specCode": "10"
+      },
+      "hs": "87149110",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại frame_steering, Biểu thuế 2026 nhóm 871491 → 87149110",
+      "source": "Biểu thuế NK VN 2026, nhóm 871491"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "partKind": "frame_steering",
+        "specCode": "91"
+      },
+      "hs": "87149191",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại frame_steering, Biểu thuế 2026 nhóm 871491 → 87149191",
+      "source": "Biểu thuế NK VN 2026, nhóm 871491"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "partKind": "frame_steering",
+        "specCode": "99"
+      },
+      "hs": "87149199",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại frame_steering, Biểu thuế 2026 nhóm 871491 → 87149199",
+      "source": "Biểu thuế NK VN 2026, nhóm 871491"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "partKind": "wheel_rim",
+        "specCode": "10"
+      },
+      "hs": "87149210",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại wheel_rim, Biểu thuế 2026 nhóm 871492 → 87149210",
+      "source": "Biểu thuế NK VN 2026, nhóm 871492"
+    },
+    {
+      "id": "r-17",
+      "priority": 0,
+      "when": {
+        "partKind": "wheel_rim",
+        "specCode": "90"
+      },
+      "hs": "87149290",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại wheel_rim, Biểu thuế 2026 nhóm 871492 → 87149290",
+      "source": "Biểu thuế NK VN 2026, nhóm 871492"
+    },
+    {
+      "id": "r-18",
+      "priority": 0,
+      "when": {
+        "partKind": "hub_freewheel",
+        "specCode": "10"
+      },
+      "hs": "87149310",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại hub_freewheel, Biểu thuế 2026 nhóm 871493 → 87149310",
+      "source": "Biểu thuế NK VN 2026, nhóm 871493"
+    },
+    {
+      "id": "r-19",
+      "priority": 0,
+      "when": {
+        "partKind": "hub_freewheel",
+        "specCode": "90"
+      },
+      "hs": "87149390",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại hub_freewheel, Biểu thuế 2026 nhóm 871493 → 87149390",
+      "source": "Biểu thuế NK VN 2026, nhóm 871493"
+    },
+    {
+      "id": "r-20",
+      "priority": 0,
+      "when": {
+        "partKind": "brake",
+        "specCode": "10"
+      },
+      "hs": "87149410",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại brake, Biểu thuế 2026 nhóm 871494 → 87149410",
+      "source": "Biểu thuế NK VN 2026, nhóm 871494"
+    },
+    {
+      "id": "r-21",
+      "priority": 0,
+      "when": {
+        "partKind": "brake",
+        "specCode": "90"
+      },
+      "hs": "87149490",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại brake, Biểu thuế 2026 nhóm 871494 → 87149490",
+      "source": "Biểu thuế NK VN 2026, nhóm 871494"
+    },
+    {
+      "id": "r-22",
+      "priority": 0,
+      "when": {
+        "partKind": "seat_post",
+        "specCode": "10"
+      },
+      "hs": "87149510",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại seat_post, Biểu thuế 2026 nhóm 871495 → 87149510",
+      "source": "Biểu thuế NK VN 2026, nhóm 871495"
+    },
+    {
+      "id": "r-23",
+      "priority": 0,
+      "when": {
+        "partKind": "seat_post",
+        "specCode": "90"
+      },
+      "hs": "87149590",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại seat_post, Biểu thuế 2026 nhóm 871495 → 87149590",
+      "source": "Biểu thuế NK VN 2026, nhóm 871495"
+    },
+    {
+      "id": "r-24",
+      "priority": 0,
+      "when": {
+        "partKind": "pedal_crank",
+        "specCode": "10"
+      },
+      "hs": "87149610",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại pedal_crank, Biểu thuế 2026 nhóm 871496 → 87149610",
+      "source": "Biểu thuế NK VN 2026, nhóm 871496"
+    },
+    {
+      "id": "r-25",
+      "priority": 0,
+      "when": {
+        "partKind": "pedal_crank",
+        "specCode": "90"
+      },
+      "hs": "87149690",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại pedal_crank, Biểu thuế 2026 nhóm 871496 → 87149690",
+      "source": "Biểu thuế NK VN 2026, nhóm 871496"
+    },
+    {
+      "id": "r-26",
+      "priority": 0,
+      "when": {
+        "partKind": "other_accessory",
+        "specCode": "11"
+      },
+      "hs": "87149911",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại other_accessory, Biểu thuế 2026 nhóm 871499 → 87149911",
+      "source": "Biểu thuế NK VN 2026, nhóm 871499"
+    },
+    {
+      "id": "r-27",
+      "priority": 0,
+      "when": {
+        "partKind": "other_accessory",
+        "specCode": "12"
+      },
+      "hs": "87149912",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại other_accessory, Biểu thuế 2026 nhóm 871499 → 87149912",
+      "source": "Biểu thuế NK VN 2026, nhóm 871499"
+    },
+    {
+      "id": "r-28",
+      "priority": 0,
+      "when": {
+        "partKind": "other_accessory",
+        "specCode": "91"
+      },
+      "hs": "87149991",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại other_accessory, Biểu thuế 2026 nhóm 871499 → 87149991",
+      "source": "Biểu thuế NK VN 2026, nhóm 871499"
+    },
+    {
+      "id": "r-29",
+      "priority": 0,
+      "when": {
+        "partKind": "other_accessory",
+        "specCode": "93"
+      },
+      "hs": "87149993",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại other_accessory, Biểu thuế 2026 nhóm 871499 → 87149993",
+      "source": "Biểu thuế NK VN 2026, nhóm 871499"
+    },
+    {
+      "id": "r-30",
+      "priority": 0,
+      "when": {
+        "partKind": "other_accessory",
+        "specCode": "94"
+      },
+      "hs": "87149994",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại other_accessory, Biểu thuế 2026 nhóm 871499 → 87149994",
+      "source": "Biểu thuế NK VN 2026, nhóm 871499"
+    }
+  ],
+  "essenceTestVi": "Loại bộ phận (partKind) + Mã hiệu (specCode) → mã 8 số. 30 lá, 2 thuộc tính.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN)."
+}

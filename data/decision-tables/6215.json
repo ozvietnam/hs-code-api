@@ -1,0 +1,99 @@
+{
+  "heading": "6215",
+  "titleVi": "Cà vạt, nơ, caravat và các loại tương tự",
+  "verified": false,
+  "essenceTestVi": "Cà vạt và caravat chia theo vật liệu (bông/sợi thực vật, tơ, sợi nhân tạo) và phương pháp nhuộm/in (batik truyền thống SEN hay loại khác).",
+  "sourceVi": "Biểu thuế NK VN 2026, nhóm 6215",
+  "inputs": [
+    {
+      "attribute": "dyeingMethod",
+      "type": "enum",
+      "domain": [
+        "batik",
+        "other"
+      ],
+      "labelVi": "Phương pháp nhuộm hoặc in",
+      "questionVi": "Cà vạt được nhuộm hoặc in bằng phương pháp nào?"
+    },
+    {
+      "attribute": "materialType",
+      "type": "enum",
+      "domain": [
+        "cotton_vegetable",
+        "silk",
+        "man_made"
+      ],
+      "labelVi": "Loại vải",
+      "questionVi": "Cà vạt được làm từ vải gì: bông/sợi thực vật, tơ tằm, hay sợi nhân tạo?"
+    }
+  ],
+  "hitPolicy": "FIRST",
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "dyeingMethod": "batik",
+        "materialType": "cotton_vegetable"
+      },
+      "hs": "62151010",
+      "reasonVi": "GIR 6 — vải bông/sợi thực vật in batik truyền thống, Biểu thuế 2026 → 62151010 (SEN)",
+      "source": "Biểu thuế NK VN 2026, nhóm 6215"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "dyeingMethod": "batik",
+        "materialType": "silk"
+      },
+      "hs": "62152010",
+      "reasonVi": "GIR 6 — vải tơ lụa in batik truyền thống, Biểu thuế 2026 → 62152010 (SEN)",
+      "source": "Biểu thuế NK VN 2026, nhóm 6215"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "dyeingMethod": "batik",
+        "materialType": "man_made"
+      },
+      "hs": "62159010",
+      "reasonVi": "GIR 6 — vải sợi nhân tạo in batik truyền thống, Biểu thuế 2026 → 62159010 (SEN)",
+      "source": "Biểu thuế NK VN 2026, nhóm 6215"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "dyeingMethod": "other",
+        "materialType": "cotton_vegetable"
+      },
+      "hs": "62151090",
+      "reasonVi": "GIR 6 — vải bông/sợi thực vật, không phải batik, Biểu thuế 2026 → 62151090",
+      "source": "Biểu thuế NK VN 2026, nhóm 6215"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "dyeingMethod": "other",
+        "materialType": "silk"
+      },
+      "hs": "62152090",
+      "reasonVi": "GIR 6 — vải tơ lụa, không phải batik, Biểu thuế 2026 → 62152090",
+      "source": "Biểu thuế NK VN 2026, nhóm 6215"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "dyeingMethod": "other",
+        "materialType": "man_made"
+      },
+      "hs": "62159090",
+      "reasonVi": "GIR 6 — vải sợi nhân tạo, không phải batik, Biểu thuế 2026 → 62159090",
+      "source": "Biểu thuế NK VN 2026, nhóm 6215"
+    }
+  ]
+}

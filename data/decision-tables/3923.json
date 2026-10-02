@@ -1,0 +1,218 @@
+{
+  "heading": "3923",
+  "titleVi": "Sản phẩm từ plastic khác, chưa được phân loại ở nơi khác trong chương 39",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "productKind",
+      "type": "enum",
+      "domain": [
+        "carboy_bottle_jug",
+        "other_article",
+        "resin_container",
+        "sack_bag_other",
+        "sack_bag_plastic",
+        "spool_cylinder",
+        "stopper_lid_cap"
+      ],
+      "labelVi": "Loại sản phẩm plastic",
+      "questionVi": "Sản phẩm plastic thuộc loại nào: thùng/chai/bình nhựa, túi khóa, ống/cunidad, nút/lid, hay sản phẩm khác?"
+    },
+    {
+      "attribute": "specCode",
+      "type": "enum",
+      "domain": [
+        "00",
+        "10",
+        "11",
+        "19",
+        "20",
+        "90",
+        "91",
+        "99"
+      ],
+      "labelVi": "Mã hiệu kỹ thuật",
+      "questionVi": "Mã hiệu kỹ thuật (2 chữ số cuối)?"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "productKind": "resin_container",
+        "specCode": "10"
+      },
+      "hs": "39231010",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại resin_container, Biểu thuế 2026 nhóm 392310 → 39231010",
+      "source": "Biểu thuế NK VN 2026, nhóm 392310"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "productKind": "resin_container",
+        "specCode": "20"
+      },
+      "hs": "39231020",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại resin_container, Biểu thuế 2026 nhóm 392310 → 39231020",
+      "source": "Biểu thuế NK VN 2026, nhóm 392310"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "productKind": "resin_container",
+        "specCode": "90"
+      },
+      "hs": "39231090",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại resin_container, Biểu thuế 2026 nhóm 392310 → 39231090",
+      "source": "Biểu thuế NK VN 2026, nhóm 392310"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "productKind": "sack_bag_plastic",
+        "specCode": "11"
+      },
+      "hs": "39232111",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại sack_bag_plastic, Biểu thuế 2026 nhóm 392321 → 39232111",
+      "source": "Biểu thuế NK VN 2026, nhóm 392321"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "productKind": "sack_bag_plastic",
+        "specCode": "19"
+      },
+      "hs": "39232119",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại sack_bag_plastic, Biểu thuế 2026 nhóm 392321 → 39232119",
+      "source": "Biểu thuế NK VN 2026, nhóm 392321"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "productKind": "sack_bag_plastic",
+        "specCode": "91"
+      },
+      "hs": "39232191",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại sack_bag_plastic, Biểu thuế 2026 nhóm 392321 → 39232191",
+      "source": "Biểu thuế NK VN 2026, nhóm 392321"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "productKind": "sack_bag_plastic",
+        "specCode": "99"
+      },
+      "hs": "39232199",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại sack_bag_plastic, Biểu thuế 2026 nhóm 392321 → 39232199",
+      "source": "Biểu thuế NK VN 2026, nhóm 392321"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "productKind": "sack_bag_other",
+        "specCode": "10"
+      },
+      "hs": "39232910",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại sack_bag_other, Biểu thuế 2026 nhóm 392329 → 39232910",
+      "source": "Biểu thuế NK VN 2026, nhóm 392329"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "productKind": "sack_bag_other",
+        "specCode": "90"
+      },
+      "hs": "39232990",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại sack_bag_other, Biểu thuế 2026 nhóm 392329 → 39232990",
+      "source": "Biểu thuế NK VN 2026, nhóm 392329"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "productKind": "carboy_bottle_jug",
+        "specCode": "20"
+      },
+      "hs": "39233020",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại carboy_bottle_jug, Biểu thuế 2026 nhóm 392330 → 39233020",
+      "source": "Biểu thuế NK VN 2026, nhóm 392330"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "productKind": "carboy_bottle_jug",
+        "specCode": "90"
+      },
+      "hs": "39233090",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại carboy_bottle_jug, Biểu thuế 2026 nhóm 392330 → 39233090",
+      "source": "Biểu thuế NK VN 2026, nhóm 392330"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "productKind": "spool_cylinder",
+        "specCode": "10"
+      },
+      "hs": "39234010",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại spool_cylinder, Biểu thuế 2026 nhóm 392340 → 39234010",
+      "source": "Biểu thuế NK VN 2026, nhóm 392340"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "productKind": "spool_cylinder",
+        "specCode": "90"
+      },
+      "hs": "39234090",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại spool_cylinder, Biểu thuế 2026 nhóm 392340 → 39234090",
+      "source": "Biểu thuế NK VN 2026, nhóm 392340"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "productKind": "stopper_lid_cap",
+        "specCode": "00"
+      },
+      "hs": "39235000",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại stopper_lid_cap, Biểu thuế 2026 nhóm 392350 → 39235000",
+      "source": "Biểu thuế NK VN 2026, nhóm 392350"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "productKind": "other_article",
+        "specCode": "10"
+      },
+      "hs": "39239010",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại other_article, Biểu thuế 2026 nhóm 392390 → 39239010",
+      "source": "Biểu thuế NK VN 2026, nhóm 392390"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "productKind": "other_article",
+        "specCode": "90"
+      },
+      "hs": "39239090",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại other_article, Biểu thuế 2026 nhóm 392390 → 39239090",
+      "source": "Biểu thuế NK VN 2026, nhóm 392390"
+    }
+  ],
+  "essenceTestVi": "Loại sản phẩm (productKind) + Mã hiệu (specCode) → mã 8 số. 16 lá, 2 thuộc tính.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN)."
+}

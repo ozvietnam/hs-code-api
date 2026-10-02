@@ -10,7 +10,10 @@
     {
       "attribute": "goodsKind",
       "type": "enum",
-      "domain": ["machine", "part"],
+      "domain": [
+        "machine",
+        "part"
+      ],
       "labelVi": "Máy / bộ phận",
       "questionVi": "Là máy cán/ép nguyên chiếc hay bộ phận (trục cán hoặc linh kiện khác) của máy đó?",
       "detect": {
@@ -35,7 +38,11 @@
     {
       "attribute": "machineUse",
       "type": "enum",
-      "domain": ["pcbSubstrate", "householdLaundry", "other"],
+      "domain": [
+        "pcbSubstrate",
+        "householdLaundry",
+        "other"
+      ],
       "labelVi": "Công dụng máy",
       "questionVi": "Máy chủ yếu để sản xuất tấm nền mạch in; máy là/vắt gia đình; hay loại cán/ép khác?",
       "detect": {
@@ -64,7 +71,10 @@
     {
       "attribute": "partKind",
       "type": "enum",
-      "domain": ["cylinder", "other"],
+      "domain": [
+        "cylinder",
+        "other"
+      ],
       "labelVi": "Trục cán / bộ phận khác",
       "questionVi": "Bộ phận là trục (cylinder) cho máy cán hay bộ phận khác (không phải trục)?",
       "detect": {
@@ -85,7 +95,10 @@
     {
       "attribute": "forPcbMachine",
       "type": "enum",
-      "domain": ["yes", "no"],
+      "domain": [
+        "yes",
+        "no"
+      ],
       "labelVi": "Dùng cho máy 8420.10.10",
       "questionVi": "Bộ phận dùng cho máy cán sản xuất tấm nền mạch in (8420.10.10) hay cho máy cán loại khác?",
       "detect": {
@@ -109,7 +122,10 @@
     {
       "id": "r-machine-pcb",
       "priority": 50,
-      "when": { "goodsKind": "machine", "machineUse": "pcbSubstrate" },
+      "when": {
+        "goodsKind": "machine",
+        "machineUse": "pcbSubstrate"
+      },
       "hs": "84201010",
       "gir": "GIR 6",
       "reasonVi": "Máy cán chủ yếu sản xuất tấm nền/mạch in → 8420.10.10.",
@@ -118,7 +134,10 @@
     {
       "id": "r-machine-laundry",
       "priority": 50,
-      "when": { "goodsKind": "machine", "machineUse": "householdLaundry" },
+      "when": {
+        "goodsKind": "machine",
+        "machineUse": "householdLaundry"
+      },
       "hs": "84201020",
       "gir": "GIR 6",
       "reasonVi": "Máy là hoặc máy vắt gia đình → 8420.10.20.",
@@ -127,7 +146,10 @@
     {
       "id": "r-machine-other",
       "priority": 40,
-      "when": { "goodsKind": "machine", "machineUse": "other" },
+      "when": {
+        "goodsKind": "machine",
+        "machineUse": "other"
+      },
       "hs": "84201090",
       "gir": "GIR 6",
       "reasonVi": "Máy cán/ép loại khác (không PCB/gia đình) → 8420.10.90.",
@@ -136,7 +158,11 @@
     {
       "id": "r-cylinder-pcb",
       "priority": 50,
-      "when": { "goodsKind": "part", "partKind": "cylinder", "forPcbMachine": "yes" },
+      "when": {
+        "goodsKind": "part",
+        "partKind": "cylinder",
+        "forPcbMachine": "yes"
+      },
       "hs": "84209110",
       "gir": "GIR 6",
       "reasonVi": "Trục cán của máy 8420.10.10 → 8420.91.10.",
@@ -145,7 +171,11 @@
     {
       "id": "r-cylinder-other",
       "priority": 40,
-      "when": { "goodsKind": "part", "partKind": "cylinder", "forPcbMachine": "no" },
+      "when": {
+        "goodsKind": "part",
+        "partKind": "cylinder",
+        "forPcbMachine": "no"
+      },
       "hs": "84209190",
       "gir": "GIR 6",
       "reasonVi": "Trục cán loại khác → 8420.91.90.",
@@ -154,7 +184,11 @@
     {
       "id": "r-part-pcb",
       "priority": 50,
-      "when": { "goodsKind": "part", "partKind": "other", "forPcbMachine": "yes" },
+      "when": {
+        "goodsKind": "part",
+        "partKind": "other",
+        "forPcbMachine": "yes"
+      },
       "hs": "84209910",
       "gir": "GIR 6",
       "reasonVi": "Bộ phận (không trục) của máy 8420.10.10 → 8420.99.10.",
@@ -163,11 +197,22 @@
     {
       "id": "r-part-other",
       "priority": 10,
-      "when": { "goodsKind": "part", "partKind": "other", "forPcbMachine": "no" },
+      "when": {
+        "goodsKind": "part",
+        "partKind": "other",
+        "forPcbMachine": "no"
+      },
       "hs": "84209990",
       "gir": "GIR 6",
       "reasonVi": "Bộ phận (không trục) loại khác → 8420.99.90.",
       "source": "Biểu thuế 2026 dòng 8420.99.90"
     }
-  ]
+  ],
+  "inputAttributes": [
+    "goodsKind",
+    "machineUse",
+    "partKind",
+    "forPcbMachine"
+  ],
+  "essenceVi": "loại hàng+công dụng máy+loại linh kiện+pcb"
 }

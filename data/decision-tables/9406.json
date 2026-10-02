@@ -1,0 +1,237 @@
+{
+  "heading": "9406",
+  "titleVi": "Nhà tiền chế và các công trình xây dựng đã lắp ráp",
+  "verified": false,
+  "essenceTestVi": "Nhà tiền chế: nhà trồng cây (greenhouse) có gắn thiết bị cơ khí/nhiệt; công trình khác chia theo vật liệu (sắt/thép, plastic, nhôm, xi măng/bê tông/đá nhân tạo, khác).",
+  "sourceVi": "Biểu thuế NK VN 2026, nhóm 9406",
+  "inputs": [
+    {
+      "attribute": "isGreenhouse",
+      "type": "enum",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "labelVi": "Có phải nhà trồng cây có gắn thiết bị cơ khí/nhiệt không",
+      "questionVi": "Công trình là nhà trồng cây có gắn thiết bị cơ khí hoặc nhiệt không?"
+    },
+    {
+      "attribute": "prefabKind",
+      "type": "enum",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "labelVi": "Có phải lắp ghép (prefabricated) không",
+      "questionVi": "Công trình có phải loại lắp ghép (prefab) không?"
+    },
+    {
+      "attribute": "primaryMaterial",
+      "type": "enum",
+      "domain": [
+        "metal_steel",
+        "plastic",
+        "aluminum",
+        "cement_concrete",
+        "other"
+      ],
+      "labelVi": "Vật liệu chính",
+      "questionVi": "Vật liệu chính của công trình là gì?"
+    }
+  ],
+  "hitPolicy": "FIRST",
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "no",
+        "primaryMaterial": "metal_steel"
+      },
+      "hs": "94061010",
+      "reasonVi": "GIR 6 — nhà trồng cây gắn thiết bị cơ khí, bằng sắt/thép, Biểu thuế 2026 → 94061010",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "no",
+        "primaryMaterial": "plastic"
+      },
+      "hs": "94061090",
+      "reasonVi": "GIR 6 — nhà trồng cây gắn thiết bị cơ khí, bằng plastic, Biểu thuế 2026 → 94061090",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "no",
+        "primaryMaterial": "aluminum"
+      },
+      "hs": "94061090",
+      "reasonVi": "GIR 6 — nhà trồng cây gắn thiết bị cơ khí, bằng nhôm, Biểu thuế 2026 → 94061090",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "no",
+        "primaryMaterial": "cement_concrete"
+      },
+      "hs": "94061090",
+      "reasonVi": "GIR 6 — nhà trồng cây gắn thiết bị cơ khí, bằng xi măng, Biểu thuế 2026 → 94061090",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "no",
+        "primaryMaterial": "other"
+      },
+      "hs": "94061090",
+      "reasonVi": "GIR 6 — nhà trồng cây gắn thiết bị cơ khí, bằng vật liệu khác, Biểu thuế 2026 → 94061090",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "yes",
+        "primaryMaterial": "metal_steel"
+      },
+      "hs": "94062010",
+      "reasonVi": "GIR 6 — nhà trồng cây lắp ghép gắn thiết bị cơ khí, bằng sắt/thép, Biểu thuế 2026 → 94062010",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "yes",
+        "primaryMaterial": "plastic"
+      },
+      "hs": "94062090",
+      "reasonVi": "GIR 6 — nhà trồng cây lắp ghép gắn thiết bị cơ khí, bằng plastic, Biểu thuế 2026 → 94062090",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "yes",
+        "primaryMaterial": "aluminum"
+      },
+      "hs": "94062090",
+      "reasonVi": "GIR 6 — nhà trồng cây lắp ghép gắn thiết bị cơ khí, bằng nhôm, Biểu thuế 2026 → 94062090",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "yes",
+        "primaryMaterial": "other"
+      },
+      "hs": "94062090",
+      "reasonVi": "GIR 6 — nhà trồng cây lắp ghép gắn thiết bị cơ khí, vật liệu khác, Biểu thuế 2026 → 94062090",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "no",
+        "prefabKind": "no",
+        "primaryMaterial": "metal_steel"
+      },
+      "hs": "94069030",
+      "reasonVi": "GIR 6 — công trình khác bằng sắt/thép, Biểu thuế 2026 → 94069030",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "no",
+        "prefabKind": "no",
+        "primaryMaterial": "plastic"
+      },
+      "hs": "94069012",
+      "reasonVi": "GIR 6 — công trình khác bằng plastic, Biểu thuế 2026 → 94069012",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "no",
+        "prefabKind": "no",
+        "primaryMaterial": "aluminum"
+      },
+      "hs": "94069020",
+      "reasonVi": "GIR 6 — công trình khác bằng nhôm, Biểu thuế 2026 → 94069020",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "no",
+        "prefabKind": "no",
+        "primaryMaterial": "cement_concrete"
+      },
+      "hs": "94069040",
+      "reasonVi": "GIR 6 — công trình khác bằng xi măng/bê tông, Biểu thuế 2026 → 94069040",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "no",
+        "prefabKind": "no",
+        "primaryMaterial": "other"
+      },
+      "hs": "94069019",
+      "reasonVi": "GIR 6 — công trình khác bằng vật liệu khác, Biểu thuế 2026 → 94069019",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "no",
+        "prefabKind": "no",
+        "primaryMaterial": "metal_steel"
+      },
+      "hs": "94069011",
+      "reasonVi": "GIR 6 — công trình khác bằng sắt/thép (khác loại), Biểu thuế 2026 → 94069011",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "no",
+        "prefabKind": "no",
+        "primaryMaterial": "other"
+      },
+      "hs": "94069090",
+      "reasonVi": "GIR 6 — công trình khác bằng vật liệu khác, Biểu thuế 2026 → 94069090",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    }
+  ]
+}

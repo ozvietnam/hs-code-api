@@ -1,0 +1,368 @@
+{
+  "heading": "8418",
+  "titleVi": "Tủ lạnh, tủ kết đông và thiết bị làm lạnh khác; bơm nhiệt",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "applianceKind",
+      "type": "enum",
+      "domain": [
+        "chest_freezer",
+        "combined_ref_freezer",
+        "heat_pump",
+        "household_other_type",
+        "household_refrigerator",
+        "other_cooling_cabinet",
+        "other_refrigerating_machine",
+        "parts_frame",
+        "parts_other",
+        "upright_freezer"
+      ],
+      "labelVi": "Loại thiết bị làm lạnh",
+      "questionVi": "Thiết bị làm lạnh thuộc loại nào: tủ lạnh-tủ đông kết hợp, tủ lạnh gia đình kiểu nén, tủ lạnh kiểu hấp thụ/thermoelectric, tủ đông nằm ngang (chest), tủ đông đứng (upright), tủ trưng bày/y tế/đồ uống, bơm nhiệt, máy làm lạnh khác, bộ phận khung/vỏ, hay bộ phận khác?"
+    },
+    {
+      "attribute": "capacityOrType",
+      "type": "enum",
+      "domain": [
+        "absorption_thermoelectric",
+        "beverage_food",
+        "cold_other",
+        "cold_storage",
+        "condenser",
+        "dairy_fishery",
+        "display_case",
+        "evaporator",
+        "large_over_200L",
+        "medical_lab",
+        "medical_other",
+        "other_cabinet",
+        "other_machine",
+        "other_parts",
+        "small_le_200L",
+        "standard",
+        "vol_150_200L",
+        "vol_200_250L",
+        "vol_250_300L",
+        "vol_300_400L",
+        "vol_le_150L",
+        "vol_over_400L",
+        "water_ice"
+      ],
+      "labelVi": "Dung tích / loại cụ thể",
+      "questionVi": "Dung tích (nếu là tủ lạnh/tủ đông) hoặc loại cụ thể (y tế, đồ uống, máy làm đá, bộ phận...) là gì?"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_le_150L"
+      },
+      "hs": "84181031",
+      "reasonVi": "GIR 6 — tủ lạnh-tủ đông kết hợp kiểu nén, Biểu thuế 2026 nhóm 8418.10 → 84181031",
+      "source": "Biểu thuế NK VN 2026, nhóm 841810"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_150_200L"
+      },
+      "hs": "84181032",
+      "reasonVi": "GIR 6 — tủ lạnh-tủ đông kết hợp kiểu nén, Biểu thuế 2026 nhóm 8418.10 → 84181032",
+      "source": "Biểu thuế NK VN 2026, nhóm 841810"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_200_250L"
+      },
+      "hs": "84181039",
+      "reasonVi": "GIR 6 — tủ lạnh-tủ đông kết hợp kiểu nén, Biểu thuế 2026 nhóm 8418.10 → 84181039",
+      "source": "Biểu thuế NK VN 2026, nhóm 841810"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_250_300L"
+      },
+      "hs": "84181040",
+      "reasonVi": "GIR 6 — tủ lạnh-tủ đông kết hợp kiểu nén, Biểu thuế 2026 nhóm 8418.10 → 84181040",
+      "source": "Biểu thuế NK VN 2026, nhóm 841810"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_300_400L"
+      },
+      "hs": "84181091",
+      "reasonVi": "GIR 6 — tủ lạnh-tủ đông kết hợp kiểu nén, Biểu thuế 2026 nhóm 8418.10 → 84181091",
+      "source": "Biểu thuế NK VN 2026, nhóm 841810"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_over_400L"
+      },
+      "hs": "84181099",
+      "reasonVi": "GIR 6 — tủ lạnh-tủ đông kết hợp kiểu nén, Biểu thuế 2026 nhóm 8418.10 → 84181099",
+      "source": "Biểu thuế NK VN 2026, nhóm 841810"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "applianceKind": "household_refrigerator",
+        "capacityOrType": "small_le_200L"
+      },
+      "hs": "84182110",
+      "reasonVi": "GIR 6 — tủ lạnh gia đình kiểu nén, Biểu thuế 2026 nhóm 8418.21 → 84182110",
+      "source": "Biểu thuế NK VN 2026, nhóm 841821"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "applianceKind": "household_refrigerator",
+        "capacityOrType": "large_over_200L"
+      },
+      "hs": "84182190",
+      "reasonVi": "GIR 6 — tủ lạnh gia đình kiểu nén, Biểu thuế 2026 nhóm 8418.21 → 84182190",
+      "source": "Biểu thuế NK VN 2026, nhóm 841821"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "applianceKind": "household_other_type",
+        "capacityOrType": "absorption_thermoelectric"
+      },
+      "hs": "84182900",
+      "reasonVi": "GIR 6 — tủ lạnh gia đình kiểu hấp thụ/thermoelectric, Biểu thuế 2026 nhóm 8418.29 → 84182900",
+      "source": "Biểu thuế NK VN 2026, nhóm 841829"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "applianceKind": "chest_freezer",
+        "capacityOrType": "small_le_200L"
+      },
+      "hs": "84183010",
+      "reasonVi": "GIR 6 — tủ đông nằm ngang (chest freezer) kiểu nén, Biểu thuế 2026 nhóm 8418.30 → 84183010",
+      "source": "Biểu thuế NK VN 2026, nhóm 841830"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "applianceKind": "chest_freezer",
+        "capacityOrType": "large_over_200L"
+      },
+      "hs": "84183090",
+      "reasonVi": "GIR 6 — tủ đông nằm ngang (chest freezer) kiểu nén, Biểu thuế 2026 nhóm 8418.30 → 84183090",
+      "source": "Biểu thuế NK VN 2026, nhóm 841830"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "applianceKind": "upright_freezer",
+        "capacityOrType": "small_le_200L"
+      },
+      "hs": "84184010",
+      "reasonVi": "GIR 6 — tủ đông đứng (upright freezer) kiểu nén, Biểu thuế 2026 nhóm 8418.40 → 84184010",
+      "source": "Biểu thuế NK VN 2026, nhóm 841840"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "applianceKind": "upright_freezer",
+        "capacityOrType": "large_over_200L"
+      },
+      "hs": "84184090",
+      "reasonVi": "GIR 6 — tủ đông đứng (upright freezer) kiểu nén, Biểu thuế 2026 nhóm 8418.40 → 84184090",
+      "source": "Biểu thuế NK VN 2026, nhóm 841840"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_cooling_cabinet",
+        "capacityOrType": "medical_lab"
+      },
+      "hs": "84185011",
+      "reasonVi": "GIR 6 — tủ trưng bày/y tế/đồ uống, Biểu thuế 2026 nhóm 8418.50 → 84185011",
+      "source": "Biểu thuế NK VN 2026, nhóm 841850"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_cooling_cabinet",
+        "capacityOrType": "medical_other"
+      },
+      "hs": "84185019",
+      "reasonVi": "GIR 6 — tủ trưng bày/y tế/đồ uống, Biểu thuế 2026 nhóm 8418.50 → 84185019",
+      "source": "Biểu thuế NK VN 2026, nhóm 841850"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_cooling_cabinet",
+        "capacityOrType": "beverage_food"
+      },
+      "hs": "84185091",
+      "reasonVi": "GIR 6 — tủ trưng bày/y tế/đồ uống, Biểu thuế 2026 nhóm 8418.50 → 84185091",
+      "source": "Biểu thuế NK VN 2026, nhóm 841850"
+    },
+    {
+      "id": "r-17",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_cooling_cabinet",
+        "capacityOrType": "other_cabinet"
+      },
+      "hs": "84185099",
+      "reasonVi": "GIR 6 — tủ trưng bày/y tế/đồ uống, Biểu thuế 2026 nhóm 8418.50 → 84185099",
+      "source": "Biểu thuế NK VN 2026, nhóm 841850"
+    },
+    {
+      "id": "r-18",
+      "priority": 0,
+      "when": {
+        "applianceKind": "heat_pump",
+        "capacityOrType": "standard"
+      },
+      "hs": "84186100",
+      "reasonVi": "GIR 6 — bơm nhiệt kiểu nén, Biểu thuế 2026 nhóm 8418.61 → 84186100",
+      "source": "Biểu thuế NK VN 2026, nhóm 841861"
+    },
+    {
+      "id": "r-19",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "water_ice"
+      },
+      "hs": "84186910",
+      "reasonVi": "GIR 6 — máy làm lạnh/đồ uống/đá, Biểu thuế 2026 nhóm 8418.69 → 84186910",
+      "source": "Biểu thuế NK VN 2026, nhóm 841869"
+    },
+    {
+      "id": "r-20",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "cold_storage"
+      },
+      "hs": "84186930",
+      "reasonVi": "GIR 6 — máy làm lạnh/đồ uống/đá, Biểu thuế 2026 nhóm 8418.69 → 84186930",
+      "source": "Biểu thuế NK VN 2026, nhóm 841869"
+    },
+    {
+      "id": "r-21",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "dairy_fishery"
+      },
+      "hs": "84186941",
+      "reasonVi": "GIR 6 — máy làm lạnh/đồ uống/đá, Biểu thuế 2026 nhóm 8418.69 → 84186941",
+      "source": "Biểu thuế NK VN 2026, nhóm 841869"
+    },
+    {
+      "id": "r-22",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "cold_other"
+      },
+      "hs": "84186949",
+      "reasonVi": "GIR 6 — máy làm lạnh/đồ uống/đá, Biểu thuế 2026 nhóm 8418.69 → 84186949",
+      "source": "Biểu thuế NK VN 2026, nhóm 841869"
+    },
+    {
+      "id": "r-23",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "display_case"
+      },
+      "hs": "84186950",
+      "reasonVi": "GIR 6 — máy làm lạnh/đồ uống/đá, Biểu thuế 2026 nhóm 8418.69 → 84186950",
+      "source": "Biểu thuế NK VN 2026, nhóm 841869"
+    },
+    {
+      "id": "r-24",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "other_machine"
+      },
+      "hs": "84186990",
+      "reasonVi": "GIR 6 — máy làm lạnh/đồ uống/đá, Biểu thuế 2026 nhóm 8418.69 → 84186990",
+      "source": "Biểu thuế NK VN 2026, nhóm 841869"
+    },
+    {
+      "id": "r-25",
+      "priority": 0,
+      "when": {
+        "applianceKind": "parts_frame",
+        "capacityOrType": "standard"
+      },
+      "hs": "84189100",
+      "reasonVi": "GIR 6 — bộ phận khung/vỏ cho tủ lạnh, Biểu thuế 2026 nhóm 8418.91 → 84189100",
+      "source": "Biểu thuế NK VN 2026, nhóm 841891"
+    },
+    {
+      "id": "r-26",
+      "priority": 0,
+      "when": {
+        "applianceKind": "parts_other",
+        "capacityOrType": "evaporator"
+      },
+      "hs": "84189910",
+      "reasonVi": "GIR 6 — bộ phận khác cho thiết bị làm lạnh, Biểu thuế 2026 nhóm 8418.99 → 84189910",
+      "source": "Biểu thuế NK VN 2026, nhóm 841899"
+    },
+    {
+      "id": "r-27",
+      "priority": 0,
+      "when": {
+        "applianceKind": "parts_other",
+        "capacityOrType": "condenser"
+      },
+      "hs": "84189940",
+      "reasonVi": "GIR 6 — bộ phận khác cho thiết bị làm lạnh, Biểu thuế 2026 nhóm 8418.99 → 84189940",
+      "source": "Biểu thuế NK VN 2026, nhóm 841899"
+    },
+    {
+      "id": "r-28",
+      "priority": 0,
+      "when": {
+        "applianceKind": "parts_other",
+        "capacityOrType": "other_parts"
+      },
+      "hs": "84189990",
+      "reasonVi": "GIR 6 — bộ phận khác cho thiết bị làm lạnh, Biểu thuế 2026 nhóm 8418.99 → 84189990",
+      "source": "Biểu thuế NK VN 2026, nhóm 841899"
+    }
+  ],
+  "essenceTestVi": "Loại thiết bị (applianceKind) + Dung tích/loại cụ thể (capacityOrType) → mã 8 số. 28 lá, 2 thuộc tính.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN)."
+}

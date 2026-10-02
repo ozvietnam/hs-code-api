@@ -1,0 +1,1108 @@
+{
+  "heading": "8501",
+  "inputs": [
+    {
+      "attribute": "motorKind",
+      "type": "enum",
+      "domain": [
+        "dc",
+        "universal",
+        "ac_single",
+        "ac_multi",
+        "ac_generator",
+        "generator_set"
+      ],
+      "labelVi": "Loại máy/motor",
+      "questionVi": "Động cơ loại gì: DC (một chiều), universal (AC/DC), AC một pha, AC đa pha, máy phát AC (alternator), hay máy phát điện (generator set)?",
+      "detect": {
+        "dc": [
+          "một chiều",
+          "dc",
+          "động cơ dc",
+          "động cơ một chiều"
+        ],
+        "universal": [
+          "universal",
+          "vạn năng",
+          "ac/dc"
+        ],
+        "ac_single": [
+          "một pha",
+          "single phase",
+          "ac một pha"
+        ],
+        "ac_multi": [
+          "đa pha",
+          "multi phase",
+          "ba pha",
+          "three phase"
+        ],
+        "ac_generator": [
+          "máy phát điện",
+          "alternator",
+          "ac generator"
+        ],
+        "generator_set": [
+          "máy phát điện",
+          "generator set",
+          "gen-set"
+        ]
+      }
+    },
+    {
+      "attribute": "powerRange",
+      "type": "enum",
+      "domain": [
+        "≤5W",
+        ">5W",
+        "≤50W",
+        "≤750W",
+        "0.75-75kW",
+        "750W-37.5kW",
+        "37.5-75kW",
+        ">75kW",
+        "0.75-75kW",
+        "75-375kW",
+        ">375kW",
+        "750W-75kW"
+      ],
+      "labelVi": "Công suất",
+      "questionVi": "Công suất motor là bao nhiêu: ≤5W, ≤50W, ≤750W, 0,75-75kW, 75-375kW, 37,5-75kW, hay trên 75kW?",
+      "detect": {
+        "≤5W": [
+          "5 W",
+          "≤5W",
+          "không quá 5 W",
+          "dưới 5W"
+        ],
+        ">5W": [
+          "trên 5 W",
+          ">5W"
+        ],
+        "≤50W": [
+          "50 W",
+          "≤50W",
+          "không quá 50 W"
+        ],
+        "≤750W": [
+          "750 W",
+          "750W",
+          "không quá 750 W",
+          "≤750W"
+        ],
+        "0.75-75kW": [
+          "0,75",
+          "75kW",
+          "37,5 kW",
+          "trên 750W"
+        ],
+        "750W-37.5kW": [
+          "37,5 kW",
+          "75kW",
+          "750W",
+          "trên 750W"
+        ],
+        "37.5-75kW": [
+          "37,5 kW",
+          "75kW",
+          "trên 37,5 kW"
+        ],
+        ">75kW": [
+          "75 kW",
+          "trên 75kW",
+          "trên 75 kW"
+        ],
+        "75-375kW": [
+          "75 kW",
+          "375 kW",
+          "75-375",
+          "trên 75 kW"
+        ],
+        ">375kW": [
+          "375 kW",
+          "trên 375kW",
+          "375kW"
+        ]
+      }
+    },
+    {
+      "attribute": "powerKva",
+      "type": "enum",
+      "domain": [
+        "≤12.5kVA",
+        ">12.5kVA",
+        "75-150kVA",
+        "150-375kVA",
+        "375-750kVA",
+        ">750kVA",
+        "≤75kVA",
+        "75-375kVA"
+      ],
+      "labelVi": "Công suất máy phát (kVA)",
+      "questionVi": "Công suất máy phát: ≤12,5 kVA, >12,5 kVA, 75-150 kVA, 150-375 kVA, 375-750 kVA, hay >750 kVA?",
+      "detect": {
+        "≤12.5kVA": [
+          "12,5 kVA",
+          "không quá 12,5 kVA"
+        ],
+        ">12.5kVA": [
+          "trên 12,5 kVA"
+        ],
+        "75-150kVA": [
+          "75 kVA",
+          "150 kVA",
+          "75-150"
+        ],
+        "150-375kVA": [
+          "150 kVA",
+          "375 kVA",
+          "150-375"
+        ],
+        "375-750kVA": [
+          "375 kVA",
+          "750 kVA",
+          "375-750"
+        ],
+        ">750kVA": [
+          "750 kVA",
+          "trên 750 kVA"
+        ],
+        "≤75kVA": [
+          "75 kVA",
+          "không quá 75 kVA",
+          "75-375"
+        ]
+      }
+    },
+    {
+      "attribute": "applianceGroup",
+      "type": "enum",
+      "domain": [
+        "household_acs",
+        "vehicle",
+        "other",
+        "household_acs_full",
+        "household_limited",
+        "other_mfn5",
+        "generator"
+      ],
+      "labelVi": "Nhóm hàng áp dụng",
+      "questionVi": "Motor dùng cho hàng hóa nào: nhóm 84.15/84.18/84.50/85.09/85.16 (điều hòa/tủ lạnh/máy giặt), xe Chương 87, máy phát điện, hay loại khác?",
+      "detect": {
+        "household_acs": [
+          "84.15",
+          "84.18",
+          "84.50",
+          "85.09",
+          "85.16",
+          "điều hòa",
+          "tủ lạnh",
+          "máy giặt",
+          "hàng hóa thuộc nhóm"
+        ],
+        "household_acs_full": [
+          "84.15",
+          "84.18",
+          "84.50",
+          "85.09",
+          "85.16"
+        ],
+        "household_limited": [
+          "84.15",
+          "84.18",
+          "84.50"
+        ],
+        "vehicle": [
+          "87",
+          "xe",
+          "chương 87",
+          "xe của chương"
+        ],
+        "other": [
+          "khác",
+          "loại khác"
+        ],
+        "other_mfn5": [
+          "khác",
+          "loại khác"
+        ],
+        "generator": [
+          "máy phát điện"
+        ]
+      }
+    },
+    {
+      "attribute": "hasGenSet",
+      "type": "enum",
+      "domain": [
+        "true",
+        "false"
+      ],
+      "labelVi": "Là máy phát điện",
+      "questionVi": "Có phải máy phát điện (generator) không?",
+      "detect": {
+        "true": [
+          "máy phát điện",
+          "generator"
+        ],
+        "false": [
+          "động cơ",
+          "khác"
+        ]
+      }
+    },
+    {
+      "attribute": "senFlag",
+      "type": "enum",
+      "domain": [
+        "true",
+        "false"
+      ],
+      "labelVi": "Động cơ hướng trục (SEN)",
+      "questionVi": "Có phải động cơ hướng trục (stepper/encoder motor) không?",
+      "detect": {
+        "true": [
+          "hướng trục",
+          "sen"
+        ],
+        "false": [
+          "khác"
+        ]
+      }
+    },
+    {
+      "attribute": "isGenerator",
+      "type": "enum",
+      "domain": [
+        "true",
+        "false"
+      ],
+      "labelVi": "Máy phát điện",
+      "questionVi": "Có phải máy phát điện (generator) không?",
+      "detect": {
+        "true": [
+          "máy phát điện",
+          "generator"
+        ],
+        "false": [
+          "khác"
+        ]
+      }
+    },
+    {
+      "attribute": "isSolar",
+      "type": "enum",
+      "domain": [
+        "true",
+        "false"
+      ],
+      "labelVi": "Động cơ DC quang điện",
+      "questionVi": "Có phải động cơ DC quang điện (solar DC motor) không?",
+      "detect": {
+        "true": [
+          "quang điện",
+          "solar",
+          "pin mặt trời"
+        ],
+        "false": [
+          "khác"
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r85011021",
+      "priority": 100,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "≤5W",
+        "applianceGroup": "household_acs"
+      },
+      "hs": "85011021",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 → 85011021",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85011022",
+      "priority": 99,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "≤5W",
+        "applianceGroup": "other",
+        "senFlag": false
+      },
+      "hs": "85011022",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại khác, công suất không quá 5 W → 85011022",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85011029",
+      "priority": 98,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": ">5W",
+        "applianceGroup": "other",
+        "senFlag": false
+      },
+      "hs": "85011029",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại khác → 85011029",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85011030",
+      "priority": 97,
+      "when": {
+        "motorKind": "dc",
+        "applianceGroup": "other",
+        "senFlag": true
+      },
+      "hs": "85011030",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Động cơ hướng trục (SEN) → 85011030",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85011041",
+      "priority": 96,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "≤5W",
+        "applianceGroup": "household_acs"
+      },
+      "hs": "85011041",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 → 85011041",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85011049",
+      "priority": 95,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "≤5W",
+        "applianceGroup": "other",
+        "senFlag": false
+      },
+      "hs": "85011049",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại khác → 85011049",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85011051",
+      "priority": 94,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": ">5W",
+        "applianceGroup": "household_acs"
+      },
+      "hs": "85011051",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 → 85011051",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85011059",
+      "priority": 93,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": ">5W",
+        "applianceGroup": "other",
+        "senFlag": false
+      },
+      "hs": "85011059",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại khác → 85011059",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85011060",
+      "priority": 92,
+      "when": {
+        "motorKind": "dc",
+        "applianceGroup": "other",
+        "senFlag": true
+      },
+      "hs": "85011060",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Động cơ hướng trục (SEN) → 85011060",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85011091",
+      "priority": 91,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": ">5W",
+        "applianceGroup": "household_acs"
+      },
+      "hs": "85011091",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 → 85011091",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85011099",
+      "priority": 90,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": ">5W",
+        "applianceGroup": "other",
+        "senFlag": false
+      },
+      "hs": "85011099",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại khác → 85011099",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85012012",
+      "priority": 89,
+      "when": {
+        "motorKind": "universal",
+        "applianceGroup": "household_acs"
+      },
+      "hs": "85012012",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 → 85012012",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85012019",
+      "priority": 88,
+      "when": {
+        "motorKind": "universal",
+        "applianceGroup": "other"
+      },
+      "hs": "85012019",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 85012019",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85012021",
+      "priority": 87,
+      "when": {
+        "motorKind": "universal",
+        "applianceGroup": "household_acs"
+      },
+      "hs": "85012021",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 → 85012021",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85012029",
+      "priority": 86,
+      "when": {
+        "motorKind": "universal",
+        "applianceGroup": "other"
+      },
+      "hs": "85012029",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 85012029",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85013130",
+      "priority": 85,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "0.75-75kW",
+        "applianceGroup": "household_acs"
+      },
+      "hs": "85013130",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 → 85013130",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85013160",
+      "priority": 84,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "0.75-75kW",
+        "applianceGroup": "vehicle"
+      },
+      "hs": "85013160",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Động cơ dùng cho xe của Chương 87 → 85013160",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85013170",
+      "priority": 83,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "0.75-75kW",
+        "applianceGroup": "other"
+      },
+      "hs": "85013170",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Động cơ khác → 85013170",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85013180",
+      "priority": 82,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "0.75-75kW",
+        "applianceGroup": "other",
+        "isGenerator": true
+      },
+      "hs": "85013180",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Máy phát điện → 85013180",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85013221",
+      "priority": 81,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "75-375kW",
+        "applianceGroup": "household_acs_full",
+        "hasGenSet": false
+      },
+      "hs": "85013221",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 → 85013221",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85013224",
+      "priority": 80,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "75-375kW",
+        "applianceGroup": "vehicle",
+        "hasGenSet": false
+      },
+      "hs": "85013224",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Động cơ dùng cho xe của Chương 87 → 85013224",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85013225",
+      "priority": 79,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "75-375kW",
+        "applianceGroup": "other",
+        "hasGenSet": false
+      },
+      "hs": "85013225",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Động cơ khác → 85013225",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85013226",
+      "priority": 78,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "75-375kW",
+        "applianceGroup": "other",
+        "hasGenSet": true
+      },
+      "hs": "85013226",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Máy phát điện → 85013226",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85013231",
+      "priority": 77,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "75-375kW",
+        "applianceGroup": "household_limited",
+        "hasGenSet": false
+      },
+      "hs": "85013231",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50 → 85013231",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85013232",
+      "priority": 76,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "75-375kW",
+        "applianceGroup": "other_mfn5",
+        "hasGenSet": false
+      },
+      "hs": "85013232",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Động cơ khác → 85013232",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85013233",
+      "priority": 75,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "75-375kW",
+        "applianceGroup": "generator",
+        "hasGenSet": true
+      },
+      "hs": "85013233",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Máy phát điện → 85013233",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85013390",
+      "priority": 73,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": ">375kW",
+        "applianceGroup": "other"
+      },
+      "hs": "85013390",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 85013390",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85013400",
+      "priority": 72,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": ">375kW",
+        "applianceGroup": "other"
+      },
+      "hs": "85013400",
+      "gir": "GIR 6",
+      "reasonVi": "- - Công suất trên 375 kW → 85013400",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85014011",
+      "priority": 71,
+      "when": {
+        "motorKind": "ac_single",
+        "applianceGroup": "household_acs"
+      },
+      "hs": "85014011",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 → 85014011",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85014019",
+      "priority": 70,
+      "when": {
+        "motorKind": "ac_single",
+        "applianceGroup": "other"
+      },
+      "hs": "85014019",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 85014019",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85014021",
+      "priority": 69,
+      "when": {
+        "motorKind": "ac_single",
+        "applianceGroup": "household_acs"
+      },
+      "hs": "85014021",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 → 85014021",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85014029",
+      "priority": 68,
+      "when": {
+        "motorKind": "ac_single",
+        "applianceGroup": "other"
+      },
+      "hs": "85014029",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 85014029",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85015111",
+      "priority": 67,
+      "when": {
+        "motorKind": "ac_multi",
+        "powerRange": "≤750W",
+        "applianceGroup": "household_acs"
+      },
+      "hs": "85015111",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 → 85015111",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85015119",
+      "priority": 66,
+      "when": {
+        "motorKind": "ac_multi",
+        "powerRange": "≤750W",
+        "applianceGroup": "other"
+      },
+      "hs": "85015119",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 85015119",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85015211",
+      "priority": 65,
+      "when": {
+        "motorKind": "ac_multi",
+        "powerRange": "750W-75kW",
+        "applianceGroup": "household_acs"
+      },
+      "hs": "85015211",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 → 85015211",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85015212",
+      "priority": 64,
+      "when": {
+        "motorKind": "ac_multi",
+        "powerRange": "≤750W",
+        "applianceGroup": "vehicle"
+      },
+      "hs": "85015212",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại dùng cho xe của Chương 87 → 85015212",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85015219",
+      "priority": 63,
+      "when": {
+        "motorKind": "ac_multi",
+        "powerRange": "≤750W",
+        "applianceGroup": "other"
+      },
+      "hs": "85015219",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại khác → 85015219",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85015221",
+      "priority": 62,
+      "when": {
+        "motorKind": "ac_multi",
+        "powerRange": "75-375kW",
+        "applianceGroup": "household_acs"
+      },
+      "hs": "85015221",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 → 85015221",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85015222",
+      "priority": 61,
+      "when": {
+        "motorKind": "ac_multi",
+        "powerRange": "75-375kW",
+        "applianceGroup": "vehicle"
+      },
+      "hs": "85015222",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại dùng cho xe của Chương 87 → 85015222",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85015229",
+      "priority": 60,
+      "when": {
+        "motorKind": "ac_multi",
+        "powerRange": "75-375kW",
+        "applianceGroup": "other"
+      },
+      "hs": "85015229",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại khác → 85015229",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85015231",
+      "priority": 59,
+      "when": {
+        "motorKind": "ac_multi",
+        "powerRange": ">375kW",
+        "applianceGroup": "household_acs"
+      },
+      "hs": "85015231",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50 → 85015231",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85015232",
+      "priority": 58,
+      "when": {
+        "motorKind": "ac_multi",
+        "powerRange": ">375kW",
+        "applianceGroup": "vehicle"
+      },
+      "hs": "85015232",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại dùng cho xe của Chương 87 → 85015232",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85015239",
+      "priority": 57,
+      "when": {
+        "motorKind": "ac_multi",
+        "powerRange": ">375kW",
+        "applianceGroup": "other"
+      },
+      "hs": "85015239",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại khác → 85015239",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85013310",
+      "priority": 56,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": ">375kW",
+        "applianceGroup": "vehicle"
+      },
+      "hs": "85013310",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại dùng cho xe của Chương 87 → 85013310",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85015310",
+      "priority": 53,
+      "when": {
+        "motorKind": "ac_multi",
+        "powerRange": ">375kW",
+        "applianceGroup": "vehicle"
+      },
+      "hs": "85015310",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại dùng cho xe của Chương 87 → 85015310",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85015390",
+      "priority": 52,
+      "when": {
+        "motorKind": "ac_multi",
+        "powerRange": ">375kW",
+        "applianceGroup": "other"
+      },
+      "hs": "85015390",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 85015390",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85016110",
+      "priority": 51,
+      "when": {
+        "motorKind": "ac_generator",
+        "powerKva": "≤12.5kVA"
+      },
+      "hs": "85016110",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Công suất không quá 12,5 kVA → 85016110",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85016120",
+      "priority": 50,
+      "when": {
+        "motorKind": "ac_generator",
+        "powerKva": ">12.5kVA"
+      },
+      "hs": "85016120",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Công suất trên 12,5 kVA → 85016120",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85016210",
+      "priority": 49,
+      "when": {
+        "motorKind": "ac_generator",
+        "powerKva": "75-150kVA"
+      },
+      "hs": "85016210",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Công suất trên 75 kVA nhưng không quá 150 kVA → 85016210",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85016220",
+      "priority": 48,
+      "when": {
+        "motorKind": "ac_generator",
+        "powerKva": "150-375kVA"
+      },
+      "hs": "85016220",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Công suất trên 150 kVA nhưng không quá 375 kVA → 85016220",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85016300",
+      "priority": 47,
+      "when": {
+        "motorKind": "ac_generator",
+        "powerKva": "375-750kVA"
+      },
+      "hs": "85016300",
+      "gir": "GIR 6",
+      "reasonVi": "- - Công suất trên 375 kVA nhưng không quá 750 kVA → 85016300",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85016400",
+      "priority": 46,
+      "when": {
+        "motorKind": "ac_generator",
+        "powerKva": ">750kVA"
+      },
+      "hs": "85016400",
+      "gir": "GIR 6",
+      "reasonVi": "- - Công suất trên 750 kVA → 85016400",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85017100",
+      "priority": 45,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "≤50W",
+        "isSolar": true
+      },
+      "hs": "85017100",
+      "gir": "GIR 6",
+      "reasonVi": "- - Công suất không quá 50 W → 85017100",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85017210",
+      "priority": 44,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "≤750W",
+        "isSolar": true
+      },
+      "hs": "85017210",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Công suất không quá 750 W → 85017210",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85017220",
+      "priority": 43,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "750W-37.5kW",
+        "isSolar": true
+      },
+      "hs": "85017220",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Công suất trên 750 W nhưng không quá 37,5 kW → 85017220",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85017230",
+      "priority": 42,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": "37.5-75kW",
+        "isSolar": true
+      },
+      "hs": "85017230",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Công suất trên 37,5 kW nhưng không quá 75 kW → 85017230",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85017240",
+      "priority": 41,
+      "when": {
+        "motorKind": "dc",
+        "powerRange": ">75kW",
+        "isSolar": true
+      },
+      "hs": "85017240",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Công suất trên 75 kW → 85017240",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85018010",
+      "priority": 40,
+      "when": {
+        "motorKind": "generator_set",
+        "powerKva": "≤75kVA"
+      },
+      "hs": "85018010",
+      "gir": "GIR 6",
+      "reasonVi": "- - Công suất không quá 75 kVA → 85018010",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85018020",
+      "priority": 39,
+      "when": {
+        "motorKind": "generator_set",
+        "powerKva": "75-375kVA"
+      },
+      "hs": "85018020",
+      "gir": "GIR 6",
+      "reasonVi": "- - Công suất trên 75 kVA nhưng không quá 375 kVA → 85018020",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85018030",
+      "priority": 38,
+      "when": {
+        "motorKind": "generator_set",
+        "powerKva": "375-750kVA"
+      },
+      "hs": "85018030",
+      "gir": "GIR 6",
+      "reasonVi": "- - Công suất trên 375 kVA nhưng không quá 750 kVA → 85018030",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r85018040",
+      "priority": 37,
+      "when": {
+        "motorKind": "generator_set",
+        "powerKva": ">750kVA"
+      },
+      "hs": "85018040",
+      "gir": "GIR 6",
+      "reasonVi": "- - Công suất trên 750 kVA → 85018040",
+      "source": "Biểu thuế 2026"
+    }
+  ],
+  "status": "draft",
+  "essenceTestVi": "Motor DC/AC một chiều/AC một pha/AC đa pha/máy phát AC/generator set? Công suất? Dùng cho điều hòa/tủ lạnh (84.15/85.09/85.16), xe (Chương 87), hay loại khác? Có phải SEN (hướng trục)?",
+  "sourceVi": "Biểu thuế 2026 nhóm 8501: 850110 DC ≤37.5W (SEN/household/other); 850120 universal AC/DC; 850131-134 DC 0.75-375kW (theo công suất + ứng dụng); 850140 AC một pha; 850151-153 AC đa pha (theo công suất + ứng dụng); 850161-164 máy phát AC (theo kVA); 850171-172 DC quang điện; 850180 máy phát điện.",
+  "verified": false,
+  "noteVi": "Draft 61 mã / 8 attrs / 64 rules — tier-A score=22.4 | Nguồn: Biểu thuế 2026"
+}
