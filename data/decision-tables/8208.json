@@ -16,11 +16,41 @@
       "labelVi": "Ứng dụng của lưỡi cắt",
       "questionVi": "Lưỡi cắt dùng để gia công gì: kim loại, gỗ, dụng cụ nhà bếp/máy thực phẩm công nghiệp, máy nông nghiệp/làm vườn, hay ứng dụng khác?",
       "detect": {
-        "metalworking": ["lưỡi cắt kim loại", "dao phay", "lưỡi cắt máy tiện", "lưỡi cắt CNC", "lưỡi máy gia công kim loại", "cutter metal"],
-        "woodworking": ["lưỡi cắt gỗ", "lưỡi cưa", "lưỡi bào", "dao cắt gỗ", "lưỡi máy bào", "cutter wood"],
-        "kitchen_industrial": ["lưỡi cắt nhà bếp", "lưỡi máy thực phẩm", "lưỡi máy công nghiệp", "dao cắt công nghiệp", "lưỡi máy cắt thịt"],
-        "agriculture": ["lưỡi cắt nông nghiệp", "lưỡi máy nông nghiệp", "lưỡi cắt cây", "lưỡi cắt cỏ", "lưỡi máy làm vườn"],
-        "other": ["lưỡi cắt", "dao cắt", "cutter"]
+        "metalworking": [
+          "lưỡi cắt kim loại",
+          "dao phay",
+          "lưỡi cắt máy tiện",
+          "lưỡi cắt CNC",
+          "lưỡi máy gia công kim loại",
+          "cutter metal"
+        ],
+        "woodworking": [
+          "lưỡi cắt gỗ",
+          "lưỡi cưa",
+          "lưỡi bào",
+          "dao cắt gỗ",
+          "lưỡi máy bào",
+          "cutter wood"
+        ],
+        "kitchen_industrial": [
+          "lưỡi cắt nhà bếp",
+          "lưỡi máy thực phẩm",
+          "lưỡi máy công nghiệp",
+          "dao cắt công nghiệp",
+          "lưỡi máy cắt thịt"
+        ],
+        "agriculture": [
+          "lưỡi cắt nông nghiệp",
+          "lưỡi máy nông nghiệp",
+          "lưỡi cắt cây",
+          "lưỡi cắt cỏ",
+          "lưỡi máy làm vườn"
+        ],
+        "other": [
+          "lưỡi cắt",
+          "dao cắt",
+          "cutter"
+        ]
       }
     }
   ],
@@ -78,5 +108,39 @@
   ],
   "hitPolicy": "PRIORITY",
   "essenceTestVi": "toolApplication (5 giá trị) — phân biệt 5 mã 8 số trong nhóm 8208. GIAO: ứng dụng cắt (kim loại/gỗ/nhà bếp/nông nghiệp/khác). MFN: hầu hết 0%, ngoại trừ 82083000 (20%).",
-  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 8208 (Thông tư 65/2024/TT-BTC)."
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 8208 (Thông tư 65/2024/TT-BTC).",
+  "attributes": {
+    "toolApplication": {
+      "type": "enum",
+      "domain": [
+        "agriculture",
+        "kitchen_industrial",
+        "metalworking",
+        "other",
+        "woodworking"
+      ],
+      "detect": {
+        "agriculture": [
+          "agriculture"
+        ],
+        "kitchen_industrial": [
+          "kitchen",
+          "industrial"
+        ],
+        "metalworking": [
+          "metalworking"
+        ],
+        "other": [
+          "other"
+        ],
+        "woodworking": [
+          "woodworking"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "toolApplication"
+  ],
+  "essenceVi": "toolApplication"
 }
