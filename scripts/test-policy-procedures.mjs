@@ -315,5 +315,30 @@ if (camNkEntry) {
   check(`getProcedures(usedGoodsImportBan) resolves to cam-nk`, procs.some(p => p.code === 'cam-nk'), procs.map(p=>p.code));
 }
 
+// 2026-10-03 (B): chapter-group fallback — chuong-77 WCO Reserved returns empty
+const ch77Procs = getProcedures({}, '77000000');
+check('getProcedures(chuong-77 WCO Reserved) returns empty array', ch77Procs.length === 0, ch77Procs.map(p=>p.code));
+
+// 2026-10-03 (B): chapter-group fallback — ch13 empty warnings → da-thuc-vat-13 → chat-luong
+const ch13Procs = getProcedures({}, '13019030');
+check('getProcedures(ch13 empty warnings) returns chapter-group procedure',
+  ch13Procs.length > 0 && ch13Procs.some(p => p.code === 'chat-luong'), ch13Procs.map(p=>p.code));
+check('chapter-group fallback matchedRaw = chapter-group:13',
+  ch13Procs.find(p=>p.code==='chat-luong')?.matchedRaw === 'chapter-group:13',
+  ch13Procs.find(p=>p.code==='chat-luong')?.matchedRaw);
+
+// 2026-10-03 (B): usedGoodsImportBan alone (no inspectionTypes) still resolves to cam-nk
+const banOnlyProcs = getProcedures({ usedGoodsImportBan: true }, '39181011');
+check('getProcedures({usedGoodsImportBan:true}) without inspectionTypes → cam-nk',
+  banOnlyProcs.some(p => p.code === 'cam-nk'), banOnlyProcs.map(p=>p.code));
+
+// 2026-10-03 (B): listProcedures returns exactly 20 entries (no chapter-groups)
+const allListed2 = listProcedures();
+check('listProcedures() returns exactly 20 entries', allListed2.length === 20, `got ${allListed2.length}`);
+check('listProcedures() has no chapter-group entries (no chapters field)',
+  allListed2.every(e => !e.chapters), allListed2.filter(e=>e.chapters).map(e=>e.code));
+check('listProcedures() includes cam-nk, gp-nk, attp, chat-luong',
+  ['cam-nk','gp-nk','attp','chat-luong'].every(c => allListed2.some(p=>p.code===c)));
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
