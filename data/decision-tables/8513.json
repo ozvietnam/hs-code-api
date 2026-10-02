@@ -171,5 +171,56 @@
     "lampType",
     "partType"
   ],
-  "essenceVi": "loại hàng+loại đèn+loại linh kiện"
+  "essenceVi": "loại hàng+loại đèn+loại linh kiện",
+  "attributes": {
+    "goodsKind": {
+      "type": "enum",
+      "domain": [
+        "lamp",
+        "parts"
+      ],
+      "detect": {
+        "lamp": [
+          "lamp"
+        ],
+        "parts": [
+          "parts"
+        ]
+      }
+    },
+    "lampType": {
+      "type": "enum",
+      "domain": [
+        "miner",
+        "other"
+      ],
+      "detect": {
+        "miner": [
+          "miner"
+        ],
+        "other": [
+          "other"
+        ]
+      }
+    },
+    "partType": {
+      "type": "enum",
+      "domain": [
+        "flashReflector",
+        "miner",
+        "other"
+      ],
+      "detect": {
+        "flashReflector": [
+          "flashReflector"
+        ],
+        "miner": [
+          "miner"
+        ],
+        "other": [
+          "other"
+        ]
+      }
+    }
+  }
 }
