@@ -2702,7 +2702,280 @@
       "gir": "1",
       "basis": "RULE_TABLE",
       "sourceVi": "Biểu thuế 2026 mã 96200030: 'Bằng sắt và thép' cho chân giá đỡ. Nhóm 9620 phủ đồ chưa phân loại ở nơi khác."
+    },
+    {
+      "id": "mach-in-pcb-1-lop",
+      "titleVi": "Mạch in PCB một mặt (1 lớp)",
+      "terms": [
+        "mạch in 1 lớp",
+        "mạch in một mặt",
+        "pcb 1 lớp",
+        "pcb một mặt",
+        "bảng mạch in một mặt",
+        "mạch in led một mặt",
+        "pcb single layer",
+        "mạch in pcb 1 lớp nhôm+nhựa",
+        "mạch in một mặt led",
+        "pcb 1 mặt",
+        "pcb a05 1 lớp"
+      ],
+      "excludeIfAny": [
+        "nhiều mặt",
+        "hai mặt",
+        "đa lớp",
+        "multilayer",
+        "2 mặt",
+        "nhiều lớp"
+      ],
+      "excludeReasonVi": "PCB nhiều mặt/hai mặt/đa lớp → 8534.00.20 hoặc 8534.00.30, không phải 8534.00.10.",
+      "candidates": [
+        {
+          "hs": "85340010",
+          "whenVi": "PCB một mặt (1 lớp mạch)",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8534002",
+          "whyVi": "85340020 = PCB hai mặt, không phải một mặt."
+        },
+        {
+          "prefix": "8534003",
+          "whyVi": "85340030 = PCB đa lớp, không phải một mặt."
+        },
+        {
+          "prefix": "8534009",
+          "whyVi": "85340090 = PCB loại khác, dành cho loại không thuộc 1/2/nhiều lớp."
+        }
+      ],
+      "askVi": [
+        "Mạch in một mặt, hai mặt, hay nhiều lớp (multilayer)? (ranh giới 85340010 / 85340020 / 85340030)",
+        "Có ghi rõ số lớp mạch (1 lớp, 2 lớp, multilayer)?"
+      ],
+      "gir": "6",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 dòng 8534.00.10; Bảng quyết định data/decision-tables/8534.json — thuộc tính pcbLayers=single."
+    },
+    {
+      "id": "thanh-rang-truyen-dong",
+      "titleVi": "Thanh răng — bộ phận truyền động cơ khí (8483.90.19)",
+      "terms": [
+        "thanh răng",
+        "bánh răng",
+        "thanh răng truyền động",
+        "gear rack",
+        "thanh răng máy công nghiệp",
+        "bộ phận trục truyền động",
+        "thanh răng cơ khí",
+        "848390",
+        "thanh răng động cơ",
+        "thanh răng máy",
+        "rack gear"
+      ],
+      "excludeIfAny": [
+        "khuôn",
+        "mold",
+        "đùn",
+        "extrusion"
+      ],
+      "excludeReasonVi": "Thanh răng là bộ phận truyền động cơ khí thuộc 8483. Không phải khuôn đúc (8480).",
+      "candidates": [
+        {
+          "hs": "84839019",
+          "whenVi": "Thanh răng rời, bộ phận trục truyền động máy công nghiệp (không phải hoàn chỉnh)",
+          "confidence": "high"
+        },
+        {
+          "hs": "84834030",
+          "whenVi": "Thanh răng làm thành một khối với trục (bánh răng-trục)",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8480",
+          "whyVi": "Nhóm 8480 là KHUÔN ĐÚC / KHUÔN ÉP — thanh răng không phải khuôn."
+        },
+        {
+          "prefix": "8466",
+          "whyVi": "Nhóm 8466 là BỘ PHẬN MÁY DỤNG CỤ — thanh răng là bộ phận truyền động thuộc 8483."
+        }
+      ],
+      "askVi": [
+        "Thanh răng có phải là bộ phận của khuôn đúc không? (nếu có → 8480)",
+        "Thanh răng có hàn cố định thành một khối với trục không? (nếu có → 84834030)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 8483; Chú giải nhóm 8483 phân biệt bộ phận máy (8483) với dụng cụ (8466) và khuôn (8480)."
+    },
+    {
+      "id": "long-mi-gia-synthetic",
+      "titleVi": "Lông mi giả — vật liệu tổng hợp nhân tạo (67.04)",
+      "terms": [
+        "lông mi giả",
+        "mi giả",
+        "lông mi nhân tạo",
+        "lông mi tổng hợp",
+        "lông mi giả vật liệu dệt",
+        "mi giả silicone",
+        "lông mi strips",
+        "fake eyelashes",
+        "lông mi giả 3D",
+        "mi giả mắt",
+        "lông mi strip",
+        "lông mi cluster"
+      ],
+      "excludeIfAny": [
+        "người",
+        "động vật",
+        "tóc",
+        "hair human",
+        "real hair",
+        "tóc người"
+      ],
+      "excludeReasonVi": "Lông mi giả bằng tóc người hoặc lông động vật → 6703. Lông mi bằng vật liệu tổng hợp → 6704.",
+      "candidates": [
+        {
+          "hs": "67041900",
+          "whenVi": "Lông mi giả bằng vật liệu dệt tổng hợp nhân tạo (sợi tổng hợp, silicone, vải)",
+          "confidence": "high"
+        },
+        {
+          "hs": "67042000",
+          "whenVi": "Lông mi giả bằng len, bông (vật liệu sợi tự nhiên)",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "6703",
+          "whyVi": "6703 = lông tóc người, lông động vật. Lông mi giả tổng hợp không thuộc 6703."
+        }
+      ],
+      "askVi": [
+        "Lông mi giả làm bằng chất liệu gì? (tóc người/động vật → 6703; sợi tổng hợp/silicone/vải → 6704)",
+        "Có phải lông mi bằng lông thật (người hoặc động vật)?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 6704; Chú giải nhóm 67 phân biệt 6703 (lông thật) với 6704 (lông/tóc nhân tạo)."
+    },
+    {
+      "id": "giay-vai-canvas",
+      "titleVi": "Giày vải canvas (không phải bảo hộ, đế cao su/TPU)",
+      "terms": [
+        "giày canvas",
+        "giày vải",
+        "vải canvas",
+        "giày vải canvas",
+        "canvas shoes",
+        "dép canvas",
+        "giày textile",
+        "giày vải thể thao",
+        "giày vải casual",
+        "sneaker vải",
+        "dép vải",
+        "giày vải không phải bảo hộ",
+        "giày canvas cao su"
+      ],
+      "excludeIfAny": [
+        "bảo hộ",
+        "bảo vệ",
+        "safety",
+        " protective",
+        "leather upper",
+        "da lộn"
+      ],
+      "excludeReasonVi": "Giày canvas thuộc 6405. Giày bảo hộ (mũi thép, đế da) → 6403. Giày da/simili → 6403/6404.",
+      "candidates": [
+        {
+          "hs": "64059000",
+          "whenVi": "Giày/dép có mặt trên bằng vải, đế cao su/TPU/plastic (không phải da, không phải bảo hộ)",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "6403",
+          "whyVi": "6403 = giày BẢO HỘ có mũi thép hoặc đế da. Giày canvas thường không phải bảo hộ."
+        },
+        {
+          "prefix": "6404",
+          "whyVi": "6404 = giày có đế塑料 (PVC/EVA) nhưng mặt trên vải → 6405 mới đúng cho mặt trên vải."
+        },
+        {
+          "prefix": "6401",
+          "whyVi": "6401 = dép nhựa (chủ yếu là nhựa). Giày canvas có mặt trên vải → 6405."
+        }
+      ],
+      "askVi": [
+        "Giày có phải giày BẢO HỘ (mũi thép, đế da, chống điện)? (nếu có → 6403)",
+        "Mặt trên giày là vải hay da/simili? (vải → 6405; da/simili → 6403/6404)",
+        "Đế giày là cao su, TPU, hay plastic? (câu này xác nhận 6405 vs 6404)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 6405; Chú giải nhóm 64 phân biệt 6403 (bảo hộ/da), 6404 (plastic/rubber), 6405 (vải/textile)."
+    },
+    {
+      "id": "pu-gia-da-xop",
+      "titleVi": "Tấm nhựa PU giả da xốp — vật liệu plastic 39.21",
+      "terms": [
+        "pu giả da",
+        "giả da pu",
+        "da pu",
+        "tấm pu giả da",
+        "nhựa pu",
+        "pu synthetic leather",
+        "fake leather pu",
+        "pu foam sheet",
+        "tấm giả da pu",
+        "da tổng hợp pu",
+        "pu giả da xốp",
+        "vật liệu giả da pu",
+        "pu leather sheet",
+        "tấm pu nhựa giả da",
+        "giả da xốp nhựa"
+      ],
+      "excludeIfAny": [
+        "da thật",
+        "da động vật",
+        "leather genuine",
+        "giấy",
+        "paper"
+      ],
+      "excludeReasonVi": "PU giả da là PLASTIC 39.21, không phải da thật (42) hay giấy (48).",
+      "candidates": [
+        {
+          "hs": "39211399",
+          "whenVi": "Tấm/lamina nhựa PU (polyurethane) dạng giả da xốp, tấm phẳng",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "4807",
+          "whyVi": "4807 = giấy/tấm bìa (paper). PU giả da là PLASTIC, không phải giấy."
+        },
+        {
+          "prefix": "4818",
+          "whyVi": "4818 = giấy lau (paper). PU giả da là PLASTIC."
+        },
+        {
+          "prefix": "3920",
+          "whyVi": "3920 = plastic plates/sheets NON-cellular (không xốp). 3921 = plastic plates xốp/giả da. PU giả da thường xốp → 3921."
+        }
+      ],
+      "askVi": [
+        "Tấm PU có bề mặt trơn/phẳng hay có cấu trúc tổ ong (cellular)? (tổ ong → 3921; phẳng → 3920 hoặc 3921 tùy xốp)",
+        "Mô tả là \"giả da\" → chất liệu là plastic (PU) hay da thật? (plastic → 3921; da → 42)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 3921; Chú giải nhóm 39 phân biệt plastic xốp/giả da (3921) với giấy (48) và plastic phẳng không xốp (3920)."
     }
   ],
-  "updatedAt": "2026-10-02T17:50:00.000Z"
+  "updatedAt": "2026-10-02"
 }
