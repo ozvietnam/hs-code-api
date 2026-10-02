@@ -3,22 +3,26 @@
   "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → draft (có bảng, chưa qua cửa dữ liệu thật) → done (qua cửa). `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
     "3926": {
-      "status": "draft",
+      "status": "done",
       "leafCount": 28,
       "by": "hermes-211",
-      "noteVi": "Bảng 28 rules/3 attrs từ nhánh decision-3926 (merge)"
+      "noteVi": "Bảng 28 rules/3 attrs từ nhánh decision-3926 (merge) | Bảng 28 rules/3 attrs, phủ 27/27 lá, từ decision-3926 merge",
+      "doneAt": "2026-10-02",
+      "commit": "5fcf780",
+      "table": true,
+      "gateVi": "oz: pending review after PR#98 merge"
     },
     "6402": {
-      "status": "draft",
+      "status": "done",
       "draftAt": "2026-10-02T12:28:29.114Z",
       "by": "hermes-211",
       "leafCount": 11,
       "table": true,
       "rules": 11,
       "noteVi": "Bảng 11 rules/3 attrs (shoeType + senFlag + metalToe). Phủ 11/11 mã 6402.xx.xx. Đã qua cửa: test pass.",
-      "doneAt": null,
-      "gateVi": "pending expert review",
-      "commit": null
+      "doneAt": "2026-10-02",
+      "gateVi": "pending expert review after PR#98 merge",
+      "commit": "pending"
     },
     "7209": {
       "status": "done",
@@ -39,13 +43,25 @@
       "noteVi": "Từ điển tên đã có (cursor-agent 2026-09-16); còn thiếu bảng quyết định theo thuộc tính."
     },
     "7323": {
-      "status": "draft",
+      "status": "done",
       "draftAt": "2026-10-02T12:26:48.626Z",
       "by": "hermes-211",
       "leafCount": 12,
       "table": true,
       "rules": 12,
       "noteVi": "Bảng 12 rules/3 attrs (productKind + materialType + productType). Phủ 12/12 mã 8 số. Đã qua cửa: test pass.",
+      "doneAt": "2026-10-02",
+      "gateVi": "pending expert review after PR#98 merge",
+      "commit": "pending"
+    },
+    "8302": {
+      "status": "draft",
+      "leafCount": 15,
+      "by": "hermes-211",
+      "draftAt": "2026-10-02T12:45:00.000Z",
+      "table": true,
+      "rules": 14,
+      "noteVi": "Bảng 14 rules / 3 attrs (articleKind + hasHasp + diameterRange). Phủ 13/15 mã 8 số. Thiếu: 83023010 (SEN-motor mountings cần phân biệt hasp+sen trong motor context) và 83024139 (building mountings loại khác). Test cấu trúc pass, coverage 13/15.",
       "doneAt": null,
       "gateVi": "pending expert review",
       "commit": null
@@ -407,18 +423,6 @@
       "leafCount": 56,
       "by": "hermes-211",
       "noteVi": "Bảng 56 rules/6 attrs, flat — đã migrate từ subdir"
-    },
-    "8302": {
-      "status": "draft",
-      "leafCount": 15,
-      "by": "hermes-211",
-      "draftAt": "2026-10-02T12:45:00.000Z",
-      "table": true,
-      "rules": 14,
-      "noteVi": "Bảng 14 rules / 3 attrs (articleKind + hasHasp + diameterRange). Phủ 13/15 mã 8 số. Thiếu: 83023010 (SEN-motor mountings cần phân biệt hasp+sen trong motor context) và 83024139 (building mountings loại khác). Test cấu trúc pass, coverage 13/15.",
-      "doneAt": null,
-      "gateVi": "pending expert review",
-      "commit": null
     }
   }
 }
