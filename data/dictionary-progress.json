@@ -2,6 +2,26 @@
   "version": 1,
   "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → draft (có bảng, chưa qua cửa dữ liệu thật) → done (qua cửa). `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
+    "3923": {
+      "status": "claimed",
+      "doneAt": null,
+      "by": "hermes-211",
+      "leafCount": 16,
+      "table": false,
+      "rules": 0,
+      "draftAt": "2026-10-02T14:40:00.000Z",
+      "noteVi": "Queue score=26.3, tier=A, residual=0.5."
+    },
+    "3924": {
+      "status": "claimed",
+      "doneAt": null,
+      "by": "hermes-211",
+      "leafCount": 7,
+      "table": false,
+      "rules": 0,
+      "draftAt": "2026-10-02T14:40:00.000Z",
+      "noteVi": "Queue score=24.6, tier=A, residual=0.29."
+    },
     "3926": {
       "status": "draft",
       "leafCount": 28,
@@ -11,6 +31,26 @@
       "commit": "5fcf780",
       "table": true,
       "gateVi": "oz/text below acceptance gate — pending expert review"
+    },
+    "4202": {
+      "status": "claimed",
+      "doneAt": null,
+      "by": "hermes-211",
+      "leafCount": 23,
+      "table": false,
+      "rules": 0,
+      "draftAt": "2026-10-02T14:40:00.000Z",
+      "noteVi": "Queue score=24.7, tier=A, residual=0.43."
+    },
+    "6005": {
+      "status": "claimed",
+      "doneAt": null,
+      "by": "hermes-211",
+      "leafCount": 19,
+      "table": false,
+      "rules": 0,
+      "draftAt": "2026-10-02T14:40:00.000Z",
+      "noteVi": "Queue score=24.5, tier=A, residual=0.26."
     },
     "6402": {
       "status": "draft",
@@ -42,6 +82,26 @@
       "table": false,
       "noteVi": "Từ điển tên đã có (cursor-agent 2026-09-16); còn thiếu bảng quyết định theo thuộc tính."
     },
+    "7306": {
+      "status": "claimed",
+      "doneAt": null,
+      "by": "hermes-211",
+      "leafCount": 38,
+      "table": false,
+      "rules": 0,
+      "draftAt": "2026-10-02T14:40:00.000Z",
+      "noteVi": "Queue score=22.5, tier=A, residual=0.45."
+    },
+    "7318": {
+      "status": "claimed",
+      "doneAt": null,
+      "by": "hermes-211",
+      "leafCount": 19,
+      "table": false,
+      "rules": 0,
+      "draftAt": "2026-10-02T14:40:00.000Z",
+      "noteVi": "Queue score=25.8, tier=A, residual=0.37."
+    },
     "7323": {
       "status": "draft",
       "draftAt": "2026-10-02T12:26:48.626Z",
@@ -53,6 +113,26 @@
       "doneAt": null,
       "gateVi": "oz/text below acceptance gate — pending expert review",
       "commit": "pending"
+    },
+    "7326": {
+      "status": "claimed",
+      "doneAt": null,
+      "by": "hermes-211",
+      "leafCount": 13,
+      "table": false,
+      "rules": 0,
+      "draftAt": "2026-10-02T14:40:00.000Z",
+      "noteVi": "Queue score=27.5, tier=A, residual=0.23."
+    },
+    "8208": {
+      "status": "claimed",
+      "doneAt": null,
+      "by": "hermes-211",
+      "leafCount": 5,
+      "table": false,
+      "rules": 0,
+      "draftAt": "2026-10-02T14:40:00.000Z",
+      "noteVi": "Queue score=23.6, tier=A, residual=0.2."
     },
     "8302": {
       "status": "draft",
@@ -78,6 +158,16 @@
       "noteVi": "Bảng 2 rules / 1 attr (shaftKind). Phủ 2/2 mã 8405.xx.xxx. Nguồn: Biểu thuế 2026. | Status corrected to done after test:decision-tables all-pass 2026-10-02. | Reverted to draft 2026-10-02: acceptance gate fail.",
       "gateVi": "pending expert review"
     },
+    "8409": {
+      "status": "claimed",
+      "doneAt": null,
+      "by": "hermes-211",
+      "leafCount": 106,
+      "table": false,
+      "rules": 0,
+      "draftAt": "2026-10-02T14:40:00.000Z",
+      "noteVi": "Queue score=24.0, tier=A, residual=0.13."
+    },
     "8412": {
       "status": "done",
       "doneAt": "2026-09-17",
@@ -87,6 +177,16 @@
       "table": true,
       "rules": 9,
       "gateVi": "oz: 22/25 (88%)"
+    },
+    "8418": {
+      "status": "claimed",
+      "doneAt": null,
+      "by": "hermes-211",
+      "leafCount": 28,
+      "table": false,
+      "rules": 0,
+      "draftAt": "2026-10-02T14:40:00.000Z",
+      "noteVi": "Queue score=29.7, tier=A, residual=0.43."
     },
     "8419": {
       "status": "draft",
@@ -279,6 +379,26 @@
       "draftAt": "2026-09-18",
       "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8514 --oz"
     },
+    "8517": {
+      "status": "claimed",
+      "doneAt": null,
+      "by": "hermes-211",
+      "leafCount": 31,
+      "table": false,
+      "rules": 0,
+      "draftAt": "2026-10-02T14:40:00.000Z",
+      "noteVi": "Queue score=26.1, tier=A, residual=0.29."
+    },
+    "8518": {
+      "status": "claimed",
+      "doneAt": null,
+      "by": "hermes-211",
+      "leafCount": 27,
+      "table": false,
+      "rules": 0,
+      "draftAt": "2026-10-02T14:40:00.000Z",
+      "noteVi": "Queue score=26.8, tier=A, residual=0.41."
+    },
     "8521": {
       "status": "done",
       "doneAt": "2026-09-17",
@@ -409,6 +529,36 @@
       "noteVi": "Bảng 5 rules/2 attrs, phủ 5/5 lá.",
       "table": true,
       "rules": 5
+    },
+    "8543": {
+      "status": "claimed",
+      "doneAt": null,
+      "by": "hermes-211",
+      "leafCount": 19,
+      "table": false,
+      "rules": 0,
+      "draftAt": "2026-10-02T14:40:00.000Z",
+      "noteVi": "Queue score=26.8, tier=A, residual=0.21."
+    },
+    "8714": {
+      "status": "claimed",
+      "doneAt": null,
+      "by": "hermes-211",
+      "leafCount": 30,
+      "table": false,
+      "rules": 0,
+      "draftAt": "2026-10-02T14:40:00.000Z",
+      "noteVi": "Queue score=26.3, tier=A, residual=0.3."
+    },
+    "9030": {
+      "status": "claimed",
+      "doneAt": null,
+      "by": "hermes-211",
+      "leafCount": 21,
+      "table": false,
+      "rules": 0,
+      "draftAt": "2026-10-02T14:40:00.000Z",
+      "noteVi": "Queue score=24.8, tier=A, residual=0.29."
     },
     "9031": {
       "status": "draft",
