@@ -418,8 +418,90 @@ const DATASET_META = {
   data_quality: ['Báo cáo chất lượng dữ liệu — gồm cả điểm yếu', '/api/data-quality'],
 };
 
+// policy_procedures cần 2 param: hs + code → viết tay, không qua loop chung
+if (PUBLIC_DATASET_RESOURCES.has('policy_procedures')) {
+  paths['/api/policy-procedures'] = {
+    get: op({
+      id: 'dataset_policy_procedures', tags: ['Tra cứu'], auth: pub,
+      summary: 'Thủ tục kiểm tra chuyên ngành',
+      description: 'Danh sách thủ tục kiểm tra chuyên ngành, giấy phép và cấm nhập khẩu áp dụng cho một mã HS. ' +
+        'Không có xuất xứ → dùng hàng không có cờ ưu đãi CN. ' +
+        'So sánh với /api/tax để biết thuế suất và cảnh báo phòng vệ thương mại cụ thể. ' +
+        'Các thủ tục này bổ sung cho chính sách, không thay thế.',
+      params: [
+        q('hs', 'Mã HS 8 số — trả danh sách thủ tục áp dụng cho mã này, hoặc {} nếu không có cờ chính sách nào', false),
+      ],
+      response: {
+        type: 'object',
+        properties: {
+          hsCode: str('Mã HS đã tra (8 số)'),
+          total: { type: 'integer', description: 'Số thủ tục trả về' },
+          procedures: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                code: str('Mã thủ tục — dùng làm tham số code='),
+                label: str('Tên đầy đủ'),
+                labelShort: str('Tên viết tắt'),
+                ministry: str('Bộ ngành quản lý, vd BKHCN/BCT'),
+                ministryLabel: str('Tên đầy đủ các bộ'),
+                trigger: str('Điều kiện kích hoạt thủ tục'),
+                matchPatterns: { type: 'array', items: { type: 'string' }, description: 'Các chuỗi kích hoạt trong văn bản pháp luật' },
+                documents: { type: 'array', items: { type: 'string' } },
+                estimatedDays: {
+                  type: 'object',
+                  properties: {
+                    min: { type: 'integer' },
+                    max: { type: 'integer' },
+                    note: str('Ghi chú về thời gian'),
+                  },
+                },
+                estimatedCost: str('Chi phí ước tính'),
+                agency: str('Cơ quan thực hiện'),
+                legalBasis: str('Căn cứ pháp luật'),
+                exemptions: { type: 'array', items: { type: 'string' }, description: 'Trường hợp miễn' },
+              },
+            },
+          },
+        },
+      },
+    }),
+  };
+  paths['/api/policy-procedures/:code'] = {
+    get: op({
+      id: 'dataset_policy_procedures_code', tags: ['Tra cứu'], auth: pub,
+      summary: 'Chi tiết một thủ tục',
+      description: 'Trả thông tin đầy đủ của một thủ tục kiểm tra chuyên ngành.',
+      params: [q('code', 'Mã thủ tục, ví dụ attp, chat-luong, cam-nk', true)],
+      response: {
+        type: 'object',
+        properties: {
+          found: { type: 'boolean' },
+          code: str('Mã thủ tục'),
+          label: str('Tên đầy đủ'),
+          labelShort: str('Tên viết tắt'),
+          ministry: str('Bộ ngành'),
+          trigger: str('Điều kiện kích hoạt'),
+          matchPatterns: { type: 'array', items: { type: 'string' } },
+          documents: { type: 'array', items: { type: 'string' } },
+          estimatedDays: {
+            type: 'object',
+            properties: { min: { type: 'integer' }, max: { type: 'integer' }, note: str('Ghi chú') },
+          },
+          estimatedCost: str('Chi phí'),
+          agency: str('Cơ quan'),
+          legalBasis: str('Căn cứ'),
+          exemptions: { type: 'array', items: { type: 'string' } },
+        },
+      },
+    }),
+  };
+}
+
 for (const [resource, [summary, prettyPath]] of Object.entries(DATASET_META)) {
   if (!PUBLIC_DATASET_RESOURCES.has(resource)) continue; // bám sát allowlist
+  if (resource === 'policy_procedures') continue; // đã viết tay ở trên
   paths[prettyPath] = {
     get: op({
       id: `dataset_${resource}`, tags: ['Tra cứu'], auth: pub, summary,

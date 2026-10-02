@@ -1351,6 +1351,253 @@
         }
       }
     },
+    "/api/policy-procedures": {
+      "get": {
+        "operationId": "dataset_policy_procedures",
+        "summary": "Thủ tục kiểm tra chuyên ngành",
+        "description": "Danh sách thủ tục kiểm tra chuyên ngành, giấy phép và cấm nhập khẩu áp dụng cho một mã HS. Không có xuất xứ → dùng hàng không có cờ ưu đãi CN. So sánh với /api/tax để biết thuế suất và cảnh báo phòng vệ thương mại cụ thể. Các thủ tục này bổ sung cho chính sách, không thay thế.",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Mã HS 8 số — trả danh sách thủ tục áp dụng cho mã này, hoặc {} nếu không có cờ chính sách nào",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "hsCode": {
+                      "type": "string",
+                      "description": "Mã HS đã tra (8 số)"
+                    },
+                    "total": {
+                      "type": "integer",
+                      "description": "Số thủ tục trả về"
+                    },
+                    "procedures": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string",
+                            "description": "Mã thủ tục — dùng làm tham số code="
+                          },
+                          "label": {
+                            "type": "string",
+                            "description": "Tên đầy đủ"
+                          },
+                          "labelShort": {
+                            "type": "string",
+                            "description": "Tên viết tắt"
+                          },
+                          "ministry": {
+                            "type": "string",
+                            "description": "Bộ ngành quản lý, vd BKHCN/BCT"
+                          },
+                          "ministryLabel": {
+                            "type": "string",
+                            "description": "Tên đầy đủ các bộ"
+                          },
+                          "trigger": {
+                            "type": "string",
+                            "description": "Điều kiện kích hoạt thủ tục"
+                          },
+                          "matchPatterns": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Các chuỗi kích hoạt trong văn bản pháp luật"
+                          },
+                          "documents": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "estimatedDays": {
+                            "type": "object",
+                            "properties": {
+                              "min": {
+                                "type": "integer"
+                              },
+                              "max": {
+                                "type": "integer"
+                              },
+                              "note": {
+                                "type": "string",
+                                "description": "Ghi chú về thời gian"
+                              }
+                            }
+                          },
+                          "estimatedCost": {
+                            "type": "string",
+                            "description": "Chi phí ước tính"
+                          },
+                          "agency": {
+                            "type": "string",
+                            "description": "Cơ quan thực hiện"
+                          },
+                          "legalBasis": {
+                            "type": "string",
+                            "description": "Căn cứ pháp luật"
+                          },
+                          "exemptions": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Trường hợp miễn"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/policy-procedures/:code": {
+      "get": {
+        "operationId": "dataset_policy_procedures_code",
+        "summary": "Chi tiết một thủ tục",
+        "description": "Trả thông tin đầy đủ của một thủ tục kiểm tra chuyên ngành.",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "required": true,
+            "description": "Mã thủ tục, ví dụ attp, chat-luong, cam-nk",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "found": {
+                      "type": "boolean"
+                    },
+                    "code": {
+                      "type": "string",
+                      "description": "Mã thủ tục"
+                    },
+                    "label": {
+                      "type": "string",
+                      "description": "Tên đầy đủ"
+                    },
+                    "labelShort": {
+                      "type": "string",
+                      "description": "Tên viết tắt"
+                    },
+                    "ministry": {
+                      "type": "string",
+                      "description": "Bộ ngành"
+                    },
+                    "trigger": {
+                      "type": "string",
+                      "description": "Điều kiện kích hoạt"
+                    },
+                    "matchPatterns": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "documents": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "estimatedDays": {
+                      "type": "object",
+                      "properties": {
+                        "min": {
+                          "type": "integer"
+                        },
+                        "max": {
+                          "type": "integer"
+                        },
+                        "note": {
+                          "type": "string",
+                          "description": "Ghi chú"
+                        }
+                      }
+                    },
+                    "estimatedCost": {
+                      "type": "string",
+                      "description": "Chi phí"
+                    },
+                    "agency": {
+                      "type": "string",
+                      "description": "Cơ quan"
+                    },
+                    "legalBasis": {
+                      "type": "string",
+                      "description": "Căn cứ"
+                    },
+                    "exemptions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/kg_stats": {
       "get": {
         "operationId": "dataset_kg_stats",
@@ -1659,50 +1906,6 @@
         }
       }
     },
-    "/api/policy-procedures": {
-      "get": {
-        "operationId": "dataset_policy_procedures",
-        "summary": "Thủ tục kiểm tra chuyên ngành",
-        "description": "Rewrite tới /api/dataset?resource=policy_procedures",
-        "tags": [
-          "Tra cứu"
-        ],
-        "security": [],
-        "parameters": [
-          {
-            "name": "hs",
-            "in": "query",
-            "required": false,
-            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Thành công",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Lỗi máy chủ",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/products": {
       "get": {
         "operationId": "dataset_products",
@@ -1838,7 +2041,7 @@
   },
   "x-generated": {
     "by": "scripts/build-openapi.mjs",
-    "at": "2026-09-24",
+    "at": "2026-10-02",
     "note": "Sinh tự động từ lib/public-access.js — đừng sửa tay, sửa nguồn rồi chạy npm run build."
   }
 }
