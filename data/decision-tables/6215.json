@@ -15,8 +15,16 @@
       "labelVi": "Phương pháp nhuộm hoặc in",
       "questionVi": "Cà vạt được nhuộm hoặc in bằng phương pháp nào?",
       "detect": {
-        "batik": ["batik", "in batik", "nhuộm batik"],
-        "other": ["không batik", "nhuộm thường", "in thường"]
+        "batik": [
+          "batik",
+          "in batik",
+          "nhuộm batik"
+        ],
+        "other": [
+          "không batik",
+          "nhuộm thường",
+          "in thường"
+        ]
       }
     },
     {
@@ -30,9 +38,24 @@
       "labelVi": "Loại vải",
       "questionVi": "Cà vạt được làm từ vải gì: bông/sợi thực vật, tơ tằm, hay sợi nhân tạo?",
       "detect": {
-        "cotton_vegetable": ["bông", "sợi thực vật", "cotton", "vải bông"],
-        "silk": ["tơ", "tằm", "lụa", "silk"],
-        "man_made": ["sợi nhân tạo", "viscose", "polyester", "sợi tổng hợp"]
+        "cotton_vegetable": [
+          "bông",
+          "sợi thực vật",
+          "cotton",
+          "vải bông"
+        ],
+        "silk": [
+          "tơ",
+          "tằm",
+          "lụa",
+          "silk"
+        ],
+        "man_made": [
+          "sợi nhân tạo",
+          "viscose",
+          "polyester",
+          "sợi tổng hợp"
+        ]
       }
     }
   ],
@@ -104,5 +127,50 @@
       "reasonVi": "GIR 6 — vải sợi nhân tạo, không phải batik, Biểu thuế 2026 → 62159090",
       "source": "Biểu thuế NK VN 2026, nhóm 6215"
     }
-  ]
+  ],
+  "inputAttributes": [
+    "dyeingMethod",
+    "materialType"
+  ],
+  "attributes": {
+    "dyeingMethod": {
+      "detect": {
+        "batik": [
+          "batik",
+          "in batik",
+          "nhuộm batik"
+        ],
+        "other": [
+          "không batik",
+          "nhuộm thường",
+          "in thường"
+        ]
+      },
+      "type": "enum"
+    },
+    "materialType": {
+      "detect": {
+        "cotton_vegetable": [
+          "bông",
+          "sợi thực vật",
+          "cotton",
+          "vải bông"
+        ],
+        "silk": [
+          "tơ",
+          "tằm",
+          "lụa",
+          "silk"
+        ],
+        "man_made": [
+          "sợi nhân tạo",
+          "viscose",
+          "polyester",
+          "sợi tổng hợp"
+        ]
+      },
+      "type": "enum"
+    }
+  },
+  "essenceVi": "dyeingMethod × materialType"
 }
