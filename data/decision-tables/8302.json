@@ -360,5 +360,117 @@
       "reasonVi": "Cơ cấu đóng cửa tự động (Automatic door closures) → 8302.60.",
       "source": "Biểu thuế 2026 dòng 8302.60.00"
     }
-  ]
+  ],
+  "attributes": {
+    "articleKind": {
+      "type": "enum",
+      "domain": [
+        "building_mounting",
+        "castor_wheel",
+        "door_closure",
+        "furniture_mounting",
+        "hat_rack_bracket",
+        "hinge",
+        "motor_mounting",
+        "other_mounting",
+        "saddle_mounting"
+      ],
+      "detect": {
+        "building_mounting": [
+          "building",
+          "mounting"
+        ],
+        "castor_wheel": [
+          "castor",
+          "wheel"
+        ],
+        "door_closure": [
+          "door",
+          "closure"
+        ],
+        "furniture_mounting": [
+          "furniture",
+          "mounting"
+        ],
+        "hat_rack_bracket": [
+          "hat",
+          "rack",
+          "bracket"
+        ],
+        "hinge": [
+          "hinge"
+        ],
+        "motor_mounting": [
+          "motor",
+          "mounting"
+        ],
+        "other_mounting": [
+          "other",
+          "mounting"
+        ],
+        "saddle_mounting": [
+          "saddle",
+          "mounting"
+        ]
+      }
+    },
+    "buildingSubKind": {
+      "type": "enum",
+      "domain": [
+        "general",
+        "hinge_type"
+      ],
+      "detect": {
+        "general": [
+          "general"
+        ],
+        "hinge_type": [
+          "hinge",
+          "type"
+        ]
+      }
+    },
+    "diameterRange": {
+      "type": "enum",
+      "domain": [
+        "gt100mm",
+        "le100mm",
+        "not_applicable"
+      ],
+      "detect": {
+        "gt100mm": [
+          "gt100mm"
+        ],
+        "le100mm": [
+          "le100mm"
+        ],
+        "not_applicable": [
+          "not",
+          "applicable"
+        ]
+      }
+    },
+    "hasHasp": {
+      "type": "enum",
+      "domain": [
+        "False",
+        "True"
+      ],
+      "detect": {
+        "False": [
+          "False"
+        ],
+        "True": [
+          "True"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "articleKind",
+    "buildingSubKind",
+    "diameterRange",
+    "hasHasp"
+  ],
+  "essenceVi": "articleKind; buildingSubKind; diameterRange; hasHasp"
 }
