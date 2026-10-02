@@ -15,8 +15,17 @@
       "labelVi": "Phương pháp nhuộm hoặc in",
       "questionVi": "Khăn tay được nhuộm hoặc in bằng phương pháp nào?",
       "detect": {
-        "batik": ["batik", "in batik", "nhuộm batik", "khăn batik"],
-        "other": ["không batik", "khăn thường", "khăn vải thường"]
+        "batik": [
+          "batik",
+          "in batik",
+          "nhuộm batik",
+          "khăn batik"
+        ],
+        "other": [
+          "không batik",
+          "khăn thường",
+          "khăn vải thường"
+        ]
       }
     },
     {
@@ -30,9 +39,21 @@
       "labelVi": "Loại vải",
       "questionVi": "Khăn tay được làm từ vải gì?",
       "detect": {
-        "cotton": ["bông", "cotton", "vải bông"],
-        "silk": ["tơ", "tằm", "silk", "lụa"],
-        "other": ["vải khác", "khác"]
+        "cotton": [
+          "bông",
+          "cotton",
+          "vải bông"
+        ],
+        "silk": [
+          "tơ",
+          "tằm",
+          "silk",
+          "lụa"
+        ],
+        "other": [
+          "vải khác",
+          "khác"
+        ]
       }
     }
   ],
@@ -104,5 +125,48 @@
       "reasonVi": "GIR 6 — vải khác, không batik, Biểu thuế 2026 → 62139099",
       "source": "Biểu thuế NK VN 2026, nhóm 6213"
     }
-  ]
+  ],
+  "inputAttributes": [
+    "battingMethod",
+    "materialType"
+  ],
+  "attributes": {
+    "battingMethod": {
+      "detect": {
+        "batik": [
+          "batik",
+          "in batik",
+          "nhuộm batik",
+          "khăn batik"
+        ],
+        "other": [
+          "không batik",
+          "khăn thường",
+          "khăn vải thường"
+        ]
+      },
+      "type": "enum"
+    },
+    "materialType": {
+      "detect": {
+        "cotton": [
+          "bông",
+          "cotton",
+          "vải bông"
+        ],
+        "silk": [
+          "tơ",
+          "tằm",
+          "silk",
+          "lụa"
+        ],
+        "other": [
+          "vải khác",
+          "khác"
+        ]
+      },
+      "type": "enum"
+    }
+  },
+  "essenceVi": "battingMethod × materialType"
 }
