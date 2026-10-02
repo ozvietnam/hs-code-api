@@ -1,0 +1,125 @@
+{
+  "heading": "3924",
+  "titleVi": "Đồ nhựa gia dụng và đồ vệ sinh y tế bằng plastic",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "articleKind",
+      "type": "enum",
+      "domain": [
+        "tableware",
+        "medical_hygiene",
+        "other_household"
+      ],
+      "labelVi": "Loại đồ gia dụng nhựa",
+      "questionVi": "Đồ nhựa gia dụng thuộc loại nào: đồ ăn uống (bát, đĩa, ly, bình trẻ em), đồ y tế/vệ sinh (bô, máy hút sữa), hay đồ gia dụng nhựa khác?"
+    },
+    {
+      "attribute": "material",
+      "type": "enum",
+      "domain": [
+        "melamine",
+        "other_plastic"
+      ],
+      "labelVi": "Chất liệu nhựa",
+      "questionVi": "Đồ nhựa làm từ gì: melamin, hay loại nhựa khác (PVC, PP, PE, v.v.)?"
+    },
+    {
+      "attribute": "specificKind",
+      "type": "enum",
+      "domain": [
+        "children_feeding",
+        "other_tableware",
+        "bedpan_urinal",
+        "nursing",
+        "breast_pump",
+        "other"
+      ],
+      "labelVi": "Loại cụ thể",
+      "questionVi": "Sản phẩm cụ thể là gì: bình trẻ em, bô giường bệnh, máy hút sữa, miếng ngực, hay loại khác?"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "articleKind": "tableware",
+        "material": "melamine"
+      },
+      "hs": "39241010",
+      "reasonVi": "GIR 6 — đồ nhựa gia dụng từ melamin, 3924.10.10 (MFN 22%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "articleKind": "tableware",
+        "material": "other_plastic",
+        "specificKind": "children_feeding"
+      },
+      "hs": "39241091",
+      "reasonVi": "GIR 6 — bình cho trẻ em ăn, 3924.10.91 (MFN 22%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "articleKind": "tableware",
+        "material": "other_plastic",
+        "specificKind": "other_tableware"
+      },
+      "hs": "39241099",
+      "reasonVi": "GIR 6 — đồ nhựa gia dụng ăn uống loại khác, 3924.10.99 (MFN 22%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "articleKind": "medical_hygiene",
+        "specificKind": "bedpan_urinal"
+      },
+      "hs": "39249010",
+      "reasonVi": "GIR 6 — bô để giường bệnh, bô đi tiểu, 3924.90.10 (MFN 22%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "articleKind": "medical_hygiene",
+        "specificKind": "nursing"
+      },
+      "hs": "39249020",
+      "reasonVi": "GIR 6 — miếng tạo dáng núm vú, miếng bảo vệ đầu ngực, núm trợ ti, phễu vắt, 3924.90.20 (MFN 22%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "articleKind": "medical_hygiene",
+        "specificKind": "breast_pump"
+      },
+      "hs": "39249030",
+      "reasonVi": "GIR 6 — bộ câu sữa (máy hút sữa), 3924.90.30 (MFN 22%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "articleKind": "other_household"
+      },
+      "hs": "39249090",
+      "reasonVi": "GIR 6 — đồ nhựa gia dụng khác, 3924.90.90 (MFN 22%)",
+      "source": "Biểu thuế 2026"
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceTestVi": "articleKind (3 giá trị: tableware / medical_hygiene / other_household) + material (melamine / other_plastic) + specificKind (6 giá trị) → phân biệt 7 mã 8 số trong nhóm 3924. Tất cả MFN 22%.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 3924 (Thông tư 65/2024/TT-BTC)."
+}
