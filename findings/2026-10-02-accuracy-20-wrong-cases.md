@@ -51,8 +51,23 @@ Các cụm từ hoàn toàn vắng mặt trong `data/trade-synonyms.json`:
 - "dây rút nhựa", "dây buộc hàng" → 39269099
 - "chân giá đỡ điện thoại", "tripod điện thoại" → 96200030
 
-## Hành động tiếp theo
+## Kết quả sau khi thêm 5 entries (02/10)
 
-1. **Ưu tiên 1**: Thêm 12 mục vào `data/trade-synonyms.json` (từ điển) cho các cụm vắng mặt trên.
-2. **Ưu tiên 2**: Tạo bảng quyết định cho 6 nhóm HS còn nhầm (OLED module, PCB, dép/giày, xy lanh, xích/nhông).
-3. **Ưu tiên 3**: Với 2 ca mô tả mơ hồ, đây là vấn đề nguồn dữ liệu — cần hỏi người dùng thêm thuộc tính.
+**Bench-delta --full (763 tờ khai): delta = 0**
+Nguyên nhân: 5 entries mới (85340010, 84839019, 67041900, 64059000, 39211399) không nằm trong holdout ratio=0.15 (chỉ 45/5156 records). Smoke test 5/5 đúng 8 số ✓.
+
+**Số benchmark (bench-delta cache, 763 tờ khai):**
+- 4 số top1 = 26.0% · top3 = 34.2%
+- 8 số top1 = 14.5% · top3 = 19.8%
+
+**Những gì đã làm:**
+1. Thêm 5 entries cho 5 nhóm hoàn toàn vắng mặt: mach-in-pcb-1-lop→85340010, thanh-rang-truyen-dong→84839019, long-mi-gia-synthetic→67041900, giay-vai-canvas→64059000, pu-gia-da-xop→39211399
+2. Sửa pu-gia-da-xop: bỏ 39219099 vì không là leaf trong biểu thuế
+3. Self-reject CI guard: 0/52 tự loại đúng mã ✓
+4. Push nhánh: hermes/lan-C-accuracy-v2 @ 66f9557
+
+**Còn lại (root cause cơ chế):**
+- Nguyên nhân A (5 ca): loại khác chiếm top1 → cần cơ chế loại "loại khác" khi có trade-synonym entry cùng nhóm
+- Nguyên nhân B (2 ca): 85340010/85340020 đánh bại nhau → cần decision table 8534 (pcbLayers attr đã có trong decision-tables/8534.json)
+
+**PR:** nhánh hermes/lan-C-accuracy-v2 đã push lên origin. Cần dev mở PR draft.
