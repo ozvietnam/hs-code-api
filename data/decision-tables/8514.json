@@ -306,10 +306,88 @@
     }
   ],
   "inputAttributes": [
-    "goodsKind",
     "furnaceHeating",
-    "resistanceKind",
-    "pcbRelated"
+    "goodsKind",
+    "pcbRelated",
+    "resistanceKind"
   ],
-  "essenceVi": "loại hàng+lò sưởi+điện trở+liên quan pcb"
+  "essenceVi": "loại hàng+lò sưởi+điện trở+liên quan pcb",
+  "attributes": {
+    "furnaceHeating": {
+      "type": "enum",
+      "domain": [
+        "electronBeam",
+        "inductionDielectric",
+        "otherTechnology",
+        "plasmaVacuumArc",
+        "resistance"
+      ],
+      "detect": {
+        "electronBeam": [
+          "electronBeam"
+        ],
+        "inductionDielectric": [
+          "inductionDielectric"
+        ],
+        "otherTechnology": [
+          "otherTechnology"
+        ],
+        "plasmaVacuumArc": [
+          "plasmaVacuumArc"
+        ],
+        "resistance": [
+          "resistance"
+        ]
+      }
+    },
+    "goodsKind": {
+      "type": "enum",
+      "domain": [
+        "furnaceOven",
+        "inductionHeatingEquipment",
+        "parts"
+      ],
+      "detect": {
+        "furnaceOven": [
+          "furnaceOven"
+        ],
+        "inductionHeatingEquipment": [
+          "inductionHeatingEquipment"
+        ],
+        "parts": [
+          "parts"
+        ]
+      }
+    },
+    "pcbRelated": {
+      "type": "enum",
+      "domain": [
+        "no",
+        "yes"
+      ],
+      "detect": {
+        "no": [
+          "no"
+        ],
+        "yes": [
+          "yes"
+        ]
+      }
+    },
+    "resistanceKind": {
+      "type": "enum",
+      "domain": [
+        "hotIsostaticPress",
+        "otherResistance"
+      ],
+      "detect": {
+        "hotIsostaticPress": [
+          "hotIsostaticPress"
+        ],
+        "otherResistance": [
+          "otherResistance"
+        ]
+      }
+    }
+  }
 }
