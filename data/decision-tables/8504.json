@@ -1660,5 +1660,215 @@
     }
   ],
   "essenceTestVi": "Với máy biến áp, bộ chỉnh lưu, cuộn cảm: xác định (1) loại sản phẩm (biến áp theo công suất/kV, UPS, cuộn cảm, phụ tùng), (2) có nhãn SEN không, (3) công suất kVA, (4) cấp điện áp, (5) loại đặc biệt.",
-  "essenceVi": "Với máy biến áp, bộ chỉnh lưu, cuộn cảm: xác định (1) loại sản phẩm (biến áp theo công suất/kV, UPS, cuộn cảm, phụ tùng), (2) có nhãn SEN không, (3) công suất kVA, (4) cấp điện áp, (5) loại đặc biệt."
+  "essenceVi": "Với máy biến áp, bộ chỉnh lưu, cuộn cảm: xác định (1) loại sản phẩm (biến áp theo công suất/kV, UPS, cuộn cảm, phụ tùng), (2) có nhãn SEN không, (3) công suất kVA, (4) cấp điện áp, (5) loại đặc biệt.",
+  "attributes": {
+    "powerkVA": {
+      "type": "enum",
+      "domain": [
+        "gt10000",
+        "gt10le15",
+        "gt15le20",
+        "gt1le10",
+        "gt20le30",
+        "gt2500le10000",
+        "gt30",
+        "le1",
+        "le2500",
+        "unspecified"
+      ],
+      "detect": {
+        "gt10000": [
+          "gt10000"
+        ],
+        "gt10le15": [
+          "gt10le15"
+        ],
+        "gt15le20": [
+          "gt15le20"
+        ],
+        "gt1le10": [
+          "gt1le10"
+        ],
+        "gt20le30": [
+          "gt20le30"
+        ],
+        "gt2500le10000": [
+          "gt2500le10000"
+        ],
+        "gt30": [
+          "gt30"
+        ],
+        "le1": [
+          "le1"
+        ],
+        "le2500": [
+          "le2500"
+        ],
+        "unspecified": [
+          "unspecified"
+        ]
+      }
+    },
+    "productType": {
+      "type": "enum",
+      "domain": [
+        "ballast",
+        "inductor",
+        "parts",
+        "staticConverter",
+        "transformer_16to630kVA",
+        "transformer_1to16kVA",
+        "transformer_gt1kVA",
+        "transformer_gt630kVA",
+        "transformer_le1kVA"
+      ],
+      "detect": {
+        "ballast": [
+          "ballast"
+        ],
+        "inductor": [
+          "inductor"
+        ],
+        "parts": [
+          "parts"
+        ],
+        "staticConverter": [
+          "staticConverter"
+        ],
+        "transformer_16to630kVA": [
+          "transformer",
+          "16to630kVA"
+        ],
+        "transformer_1to16kVA": [
+          "transformer",
+          "1to16kVA"
+        ],
+        "transformer_gt1kVA": [
+          "transformer",
+          "gt1kVA"
+        ],
+        "transformer_gt630kVA": [
+          "transformer",
+          "gt630kVA"
+        ],
+        "transformer_le1kVA": [
+          "transformer",
+          "le1kVA"
+        ]
+      }
+    },
+    "senMarked": {
+      "type": "enum",
+      "domain": [
+        "nonSen",
+        "sen"
+      ],
+      "detect": {
+        "nonSen": [
+          "nonSen"
+        ],
+        "sen": [
+          "sen"
+        ]
+      }
+    },
+    "specialType": {
+      "type": "enum",
+      "domain": [
+        "adapter",
+        "batteryCharger",
+        "chipInductor",
+        "currentTransformer",
+        "dataProcInductor",
+        "dryExplosionProof",
+        "freqScan",
+        "ifTransformer",
+        "inverter",
+        "none",
+        "rectifier",
+        "stepUpDown",
+        "toys",
+        "ups"
+      ],
+      "detect": {
+        "adapter": [
+          "adapter"
+        ],
+        "batteryCharger": [
+          "batteryCharger"
+        ],
+        "chipInductor": [
+          "chipInductor"
+        ],
+        "currentTransformer": [
+          "currentTransformer"
+        ],
+        "dataProcInductor": [
+          "dataProcInductor"
+        ],
+        "dryExplosionProof": [
+          "dryExplosionProof"
+        ],
+        "freqScan": [
+          "freqScan"
+        ],
+        "ifTransformer": [
+          "ifTransformer"
+        ],
+        "inverter": [
+          "inverter"
+        ],
+        "none": [
+          "none"
+        ],
+        "rectifier": [
+          "rectifier"
+        ],
+        "stepUpDown": [
+          "stepUpDown"
+        ],
+        "toys": [
+          "toys"
+        ],
+        "ups": [
+          "ups"
+        ]
+      }
+    },
+    "voltageClass": {
+      "type": "enum",
+      "domain": [
+        "ge110",
+        "ge1lt66",
+        "ge66lt110",
+        "lt1",
+        "unspecified"
+      ],
+      "detect": {
+        "ge110": [
+          "ge110"
+        ],
+        "ge1lt66": [
+          "ge1lt66"
+        ],
+        "ge66lt110": [
+          "ge66lt110"
+        ],
+        "lt1": [
+          "lt1"
+        ],
+        "unspecified": [
+          "unspecified"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "powerkVA",
+    "productType",
+    "senMarked",
+    "specialType",
+    "voltageClass"
+  ],
+  "hitPolicy": "PRIORITY"
 }
