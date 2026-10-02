@@ -167,5 +167,15 @@ _cgKeys.forEach(k => {
   }), `invalid: ${JSON.stringify(exs)}`);
 });
 
+// 2026-10-02: chapter-groups must have non-empty description and hsExamples
+_cgKeys.forEach(k => {
+  const v = d[k];
+  check(`chapter-group ${k} has description`, v.description && v.description.length > 10, v.description || '(empty)');
+  // chuong-77 WCO reserved intentionally has no examples; skip the >=2 check
+  if (k !== 'chuong-77') {
+    check(`chapter-group ${k} has hsExamples[]`, Array.isArray(v.hsExamples) && v.hsExamples.length >= 2, v.hsExamples);
+  }
+});
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
