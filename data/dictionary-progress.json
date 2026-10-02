@@ -2,6 +2,12 @@
   "version": 1,
   "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → draft (có bảng, chưa qua cửa dữ liệu thật) → done (qua cửa). `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
+    "3926": {
+      "status": "draft",
+      "leafCount": 28,
+      "by": "hermes-211",
+      "noteVi": "Bảng 28 rules/3 attrs từ nhánh decision-3926 (merge)"
+    },
     "7209": {
       "status": "done",
       "doneAt": "2026-09-17",
@@ -42,6 +48,12 @@
       "rules": 9,
       "gateVi": "oz: 22/25 (88%)"
     },
+    "8419": {
+      "status": "draft",
+      "leafCount": 32,
+      "by": "hermes-211",
+      "noteVi": "Bảng 32 rules/4 attrs, subdir — cần cập nhật sau review"
+    },
     "8420": {
       "status": "done",
       "doneAt": "2026-10-02",
@@ -55,14 +67,13 @@
       "noteVi": "Bảng 7 rules / 2 attrs. Phủ 7/7 mã 8420.xx.xxx. Nguồn: Biểu thuế 2026."
     },
     "8422": {
-      "status": "done",
-      "doneAt": "2026-10-02",
+      "status": "draft",
+      "doneAt": null,
       "by": "hermes-211",
-      "commit": "pending-hermes-211",
+      "commit": null,
       "leafCount": 7,
       "table": true,
       "rules": 7,
-      "gateVi": "structure-valid + rules-complete + source-verified",
       "draftAt": "2026-09-18",
       "noteVi": "Bảng 7 rules / 1 attr. Phủ 7/7 mã 8422.xx.xxx. Nguồn: Biểu thuế 2026."
     },
@@ -85,6 +96,12 @@
       "gateVi": "structure-valid + rules-complete + source-verified",
       "draftAt": "2026-09-18",
       "noteVi": "Bảng 18 rules / 1 attr (elevatorKind). Phủ 18/18 mã 8428.xx.xxx. Nguồn: Biểu thuế 2026."
+    },
+    "8443": {
+      "status": "draft",
+      "leafCount": 36,
+      "by": "hermes-211",
+      "noteVi": "Bảng 36 rules từ nhánh decision-8443 (merge). 5 attrs: printTech, completeOrParts, feedType, color, digitalKind."
     },
     "8452": {
       "status": "draft",
@@ -128,6 +145,12 @@
       "draftAt": "2026-09-18",
       "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8473 --oz"
     },
+    "8479": {
+      "status": "draft",
+      "leafCount": 24,
+      "by": "hermes-211",
+      "noteVi": "Bảng 24 rules từ nhánh decision-8443 (merge). 3 attrs: machineApplication, powerSource, machineKind."
+    },
     "8480": {
       "status": "draft",
       "doneAt": "2026-09-17",
@@ -157,6 +180,18 @@
       "table": true,
       "rules": 8,
       "gateVi": "oz: 4/4 (100%)"
+    },
+    "8486": {
+      "status": "draft",
+      "leafCount": 71,
+      "by": "hermes-211",
+      "noteVi": "Bảng 71 rules/1 attr (machineKind), subdir — cần cập nhật sau review"
+    },
+    "8504": {
+      "status": "draft",
+      "leafCount": 72,
+      "by": "hermes-211",
+      "noteVi": "Bảng 72-74 rules/5 attrs, subdir — cần cập nhật sau review"
     },
     "8505": {
       "status": "done",
@@ -282,6 +317,12 @@
       "draftAt": "2026-09-18",
       "noteVi": "Bảng 14 rules / 1 attr (deviceKind). Phủ 14/14 mã 8535.xx.xxx. Nguồn: Biểu thuế 2026."
     },
+    "8536": {
+      "status": "draft",
+      "leafCount": 63,
+      "by": "hermes-211",
+      "noteVi": "Bảng 63 rules/3 attrs, subdir — cần cập nhật sau review"
+    },
     "8537": {
       "status": "done",
       "doneAt": "2026-10-02",
@@ -334,53 +375,11 @@
       "by": "hermes-211",
       "leafCount": 13
     },
-    "3926": {
-      "status": "draft",
-      "leafCount": 28,
-      "by": "hermes-211",
-      "noteVi": "Bảng 28 rules/3 attrs từ nhánh decision-3926 (merge)"
-    },
-    "8419": {
-      "status": "draft",
-      "leafCount": 32,
-      "by": "hermes-211",
-      "noteVi": "Bảng 32 rules/4 attrs, subdir — cần cập nhật sau review"
-    },
-    "8486": {
-      "status": "draft",
-      "leafCount": 71,
-      "by": "hermes-211",
-      "noteVi": "Bảng 71 rules/1 attr (machineKind), subdir — cần cập nhật sau review"
-    },
-    "8504": {
-      "status": "draft",
-      "leafCount": 72,
-      "by": "hermes-211",
-      "noteVi": "Bảng 72-74 rules/5 attrs, subdir — cần cập nhật sau review"
-    },
-    "8536": {
-      "status": "draft",
-      "leafCount": 63,
-      "by": "hermes-211",
-      "noteVi": "Bảng 63 rules/3 attrs, subdir — cần cập nhật sau review"
-    },
     "9405": {
       "status": "draft",
       "leafCount": 56,
       "by": "hermes-211",
       "noteVi": "Bảng 56 rules/5 attrs, subdir — cần cập nhật sau review"
-    },
-    "8443": {
-      "status": "draft",
-      "leafCount": 36,
-      "by": "hermes-211",
-      "noteVi": "Bảng 36 rules từ nhánh decision-8443 (merge). 5 attrs: printTech, completeOrParts, feedType, color, digitalKind."
-    },
-    "8479": {
-      "status": "draft",
-      "leafCount": 24,
-      "by": "hermes-211",
-      "noteVi": "Bảng 24 rules từ nhánh decision-8443 (merge). 3 attrs: machineApplication, powerSource, machineKind."
     }
   }
 }
