@@ -2762,6 +2762,128 @@
         "measKind": "otherParts"
       },
       "expectHs": "90319090"
+    },
+    {
+      "id": "test-8534-85340010",
+      "heading": "8534",
+      "text": "mạch in một mặt PCB đơn cho điện tử tiêu dùng",
+      "facts": {
+        "pcbLayers": "single"
+      },
+      "expectHs": "85340010"
+    },
+    {
+      "id": "test-8534-85340020",
+      "heading": "8534",
+      "text": "mạch in hai mặt PCB đôi cho điện thoại thông minh",
+      "facts": {
+        "pcbLayers": "double"
+      },
+      "expectHs": "85340020"
+    },
+    {
+      "id": "test-8534-85340030",
+      "heading": "8534",
+      "text": "mạch in nhiều lớp 8 layer cho máy chủ",
+      "facts": {
+        "pcbLayers": "multi"
+      },
+      "expectHs": "85340030"
+    },
+    {
+      "id": "test-8534-85340090",
+      "heading": "8534",
+      "text": "mạch in loại khác không xác định số lớp",
+      "facts": {
+        "pcbLayers": "other"
+      },
+      "expectHs": "85340090"
+    },
+    {
+      "id": "test-8541-diode",
+      "heading": "8541",
+      "text": "đi-ốt chỉnh lưu 5A 1000V",
+      "facts": {
+        "deviceKind": "diode"
+      },
+      "expectHs": "85411000"
+    },
+    {
+      "id": "test-8541-zener",
+      "heading": "8541",
+      "text": "zener diode 12V 1W",
+      "facts": {
+        "deviceKind": "diode"
+      },
+      "expectHs": "85411000"
+    },
+    {
+      "id": "test-8541-led",
+      "heading": "8541",
+      "text": "đèn LED 5mm đỏ tròn",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "led"
+      },
+      "expectHs": "85414100"
+    },
+    {
+      "id": "test-8541-solarcell",
+      "heading": "8541",
+      "text": "tế bào quang điện chưa lắp mô-đun 100W",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "pvCellBare"
+      },
+      "expectHs": "85414200"
+    },
+    {
+      "id": "test-8541-solarpanel",
+      "heading": "8541",
+      "text": "tấm pin năng lượng mặt trời 300W đã lắp mô-đun",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "pvModuleOrPanel"
+      },
+      "expectHs": "85414300"
+    },
+    {
+      "id": "test-8541-transducer",
+      "heading": "8541",
+      "text": "cảm biến bán dẫn MEMS áp suất công nghiệp",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "semiconductorTransducer"
+      },
+      "expectHs": "85415100"
+    },
+    {
+      "id": "test-8541-optocoupler",
+      "heading": "8541",
+      "text": "optocoupler PC817 cách ly tín hiệu",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "otherPhoto"
+      },
+      "expectHs": "85414900"
+    },
+    {
+      "id": "test-8541-piezo",
+      "heading": "8541",
+      "text": "tinh thể thạch anh áp điện đã lắp ráp 8MHz",
+      "facts": {
+        "deviceKind": "piezoCrystal"
+      },
+      "expectHs": "85416000"
+    },
+    {
+      "id": "test-8541-parts",
+      "heading": "8541",
+      "text": "bộ phận bán dẫn cho diode",
+      "facts": {
+        "deviceKind": "parts"
+      },
+      "expectHs": "85419000"
     }
   ]
 }
