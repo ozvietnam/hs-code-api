@@ -10,11 +10,11 @@
         "synthetic",
         "artificial",
         "wool",
-        "special",
+        "special_chapter_note",
         "other"
       ],
       "labelVi": "Loại sợi",
-      "questionVi": "Vải dệt kim dọc bằng sợi gì: sợi tổng hợp (polyester, nylon, etc.), sợi nhân tạo (viscose), lông cừu/lông động vật mịn, vải theo chú giải đặc biệt, hay loại khác?"
+      "questionVi": "Vải dệt kim dọc bằng sợi gì: sợi tổng hợp (polyester, nylon, etc.), sợi nhân tạo (viscose), lông cừu/lông động vật mịn, vải theo chú giải đặc biệt Chương 60, hay loại khác?"
     },
     {
       "attribute": "dyeingState",
@@ -26,7 +26,7 @@
         "printed"
       ],
       "labelVi": "Trạng thái nhuộm/màu",
-      "questionVi": "Vải đã qua xử lý nhuộm/màu như thế nào: chưa tẩy trắng hoặc đã tẩy trắng, đã nhuộm, sợi nhiều màu (yarn-dyed), hay đã in?"
+      "questionVi": "Vải đã qua xử lý nhuộm/màu: chưa tẩy trắng hoặc đã tẩy trắng, đã nhuộm, sợi nhiều màu (yarn-dyed), hay đã in?"
     },
     {
       "attribute": "isPBT",
@@ -35,7 +35,7 @@
         true,
         false
       ],
-      "labelVi": "Có phải sợi PBT (polybutyleneterephthalat) không",
+      "labelVi": "Có phải sợi PBT không",
       "questionVi": "Vải có phải là sợi polybutyleneterephthalat (PBT) không?"
     },
     {
@@ -59,7 +59,7 @@
         "isPBT": false
       },
       "hs": "60052100",
-      "reasonVi": "GIR 6 — vải dệt kim dọc bằng sợi tổng hợp, chưa/hơi tẩy trắng, 6005.21 (MFN 12%)",
+      "reasonVi": "GIR 6 — vải dệt kim dọc sợi tổng hợp, chưa/hơi tẩy trắng, 6005.21 (MFN 12%)",
       "source": "Biểu thuế 2026"
     },
     {
@@ -83,7 +83,7 @@
         "isPBT": false
       },
       "hs": "60052300",
-      "reasonVi": "GIR 6 — vải dệt kim dọc sợi tổng hợp từ sợi nhiều màu, 6005.23 (MFN 12%)",
+      "reasonVi": "GIR 6 — vải dệt kim dọc sợi tổng hợp sợi nhiều màu, 6005.23 (MFN 12%)",
       "source": "Biểu thuế 2026"
     },
     {
@@ -102,9 +102,7 @@
       "id": "r-05",
       "priority": 0,
       "when": {
-        "fiberType": "special",
-        "dyeingState": "any",
-        "isPBT": false
+        "fiberType": "special_chapter_note"
       },
       "hs": "60053500",
       "reasonVi": "GIR 6 — vải dệt kim dọc theo chú giải phân nhóm 1 Chương 60, 6005.35 (MFN 12%)",
@@ -120,7 +118,7 @@
         "pbtSubType": "polyester_pbt"
       },
       "hs": "60053610",
-      "reasonVi": "GIR 6 — vải dệt kim PBT polyester+polybutyleneterephthalat, chưa tẩy trắng, 6005.36.10 (MFN 12%)",
+      "reasonVi": "GIR 6 — vải PBT polyester+polybutyleneterephthalat, chưa tẩy trắng, 6005.36.10 (MFN 12%)",
       "source": "Biểu thuế 2026"
     },
     {
@@ -133,7 +131,7 @@
         "pbtSubType": "other_pbt"
       },
       "hs": "60053690",
-      "reasonVi": "GIR 6 — vải dệt kim PBT loại khác, chưa tẩy trắng, 6005.36.90 (MFN 12%)",
+      "reasonVi": "GIR 6 — vải PBT loại khác, chưa tẩy trắng, 6005.36.90 (MFN 12%)",
       "source": "Biểu thuế 2026"
     },
     {
@@ -146,7 +144,7 @@
         "pbtSubType": "polyester_pbt"
       },
       "hs": "60053710",
-      "reasonVi": "GIR 6 — vải dệt kim PBT polyester+polybutyleneterephthalat, đã nhuộm, 6005.37.10 (MFN 12%)",
+      "reasonVi": "GIR 6 — vải PBT polyester+polybutyleneterephthalat, đã nhuộm, 6005.37.10 (MFN 12%)",
       "source": "Biểu thuế 2026"
     },
     {
@@ -159,7 +157,7 @@
         "pbtSubType": "other_pbt"
       },
       "hs": "60053790",
-      "reasonVi": "GIR 6 — vải dệt kim PBT loại khác, đã nhuộm, 6005.37.90 (MFN 12%)",
+      "reasonVi": "GIR 6 — vải PBT loại khác, đã nhuộm, 6005.37.90 (MFN 12%)",
       "source": "Biểu thuế 2026"
     },
     {
@@ -172,7 +170,7 @@
         "pbtSubType": "polyester_pbt"
       },
       "hs": "60053810",
-      "reasonVi": "GIR 6 — vải dệt kim PBT polyester+polybutyleneterephthalat, sợi nhiều màu, 6005.38.10 (MFN 12%)",
+      "reasonVi": "GIR 6 — vải PBT polyester+polybutyleneterephthalat, sợi nhiều màu, 6005.38.10 (MFN 12%)",
       "source": "Biểu thuế 2026"
     },
     {
@@ -185,7 +183,7 @@
         "pbtSubType": "other_pbt"
       },
       "hs": "60053890",
-      "reasonVi": "GIR 6 — vải dệt kim PBT loại khác, sợi nhiều màu, 6005.38.90 (MFN 12%)",
+      "reasonVi": "GIR 6 — vải PBT loại khác, sợi nhiều màu, 6005.38.90 (MFN 12%)",
       "source": "Biểu thuế 2026"
     },
     {
@@ -198,7 +196,7 @@
         "pbtSubType": "polyester_pbt"
       },
       "hs": "60053910",
-      "reasonVi": "GIR 6 — vải dệt kim PBT polyester+polybutyleneterephthalat, đã in, 6005.39.10 (MFN 12%)",
+      "reasonVi": "GIR 6 — vải PBT polyester+polybutyleneterephthalat, đã in, 6005.39.10 (MFN 12%)",
       "source": "Biểu thuế 2026"
     },
     {
@@ -211,7 +209,7 @@
         "pbtSubType": "other_pbt"
       },
       "hs": "60053990",
-      "reasonVi": "GIR 6 — vải dệt kim PBT loại khác, đã in, 6005.39.90 (MFN 12%)",
+      "reasonVi": "GIR 6 — vải PBT loại khác, đã in, 6005.39.90 (MFN 12%)",
       "source": "Biểu thuế 2026"
     },
     {
@@ -223,7 +221,7 @@
         "isPBT": false
       },
       "hs": "60054100",
-      "reasonVi": "GIR 6 — vải dệt kim dọc bằng sợi nhân tạo, chưa/hơi tẩy trắng, 6005.41 (MFN 12%)",
+      "reasonVi": "GIR 6 — vải dệt kim dọc sợi nhân tạo, chưa/hơi tẩy trắng, 6005.41 (MFN 12%)",
       "source": "Biểu thuế 2026"
     },
     {
@@ -247,7 +245,7 @@
         "isPBT": false
       },
       "hs": "60054300",
-      "reasonVi": "GIR 6 — vải dệt kim dọc sợi nhân tạo từ sợi nhiều màu, 6005.43 (MFN 12%)",
+      "reasonVi": "GIR 6 — vải dệt kim dọc sợi nhân tạo sợi nhiều màu, 6005.43 (MFN 12%)",
       "source": "Biểu thuế 2026"
     },
     {
@@ -266,21 +264,17 @@
       "id": "r-18",
       "priority": 0,
       "when": {
-        "fiberType": "wool",
-        "dyeingState": "any",
-        "isPBT": false
+        "fiberType": "wool"
       },
       "hs": "60059010",
-      "reasonVi": "GIR 6 — vải dệt kim dọc bằng lông cừu hoặc lông động vật loại mịn, 6005.90.10 (MFN 12%)",
+      "reasonVi": "GIR 6 — vải dệt kim dọc bằng lông cừu hoặc lông động vật mịn, 6005.90.10 (MFN 12%)",
       "source": "Biểu thuế 2026"
     },
     {
       "id": "r-19",
       "priority": 0,
       "when": {
-        "fiberType": "other",
-        "dyeingState": "any",
-        "isPBT": false
+        "fiberType": "other"
       },
       "hs": "60059090",
       "reasonVi": "GIR 6 — vải dệt kim dọc loại khác, 6005.90.90 (MFN 12%)",
@@ -288,6 +282,6 @@
     }
   ],
   "hitPolicy": "PRIORITY",
-  "essenceTestVi": "fiberType (5 giá trị: synthetic/artificial/wool/special/other) + dyeingState (4) + isPBT (True/False) + pbtSubType (2, chỉ khi isPBT=True) — phân biệt 19 mã 8 số trong nhóm 6005. Tất cả MFN 12%.",
+  "essenceTestVi": "fiberType (5: synthetic/artificial/wool/special_note/other) + dyeingState (4: unbleached/dyed/yarn_dyed/printed) + isPBT + pbtSubType — phân biệt 19 mã 8 số trong nhóm 6005. Tất cả MFN 12%.",
   "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 6005 (Thông tư 65/2024/TT-BTC)."
 }
