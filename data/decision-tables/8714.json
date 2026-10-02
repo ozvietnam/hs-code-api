@@ -77,7 +77,12 @@
         "seat",
         "handlebar",
         "forkSuspension",
-        "other"
+        "other",
+        "spoke_nipple",
+        "muffler",
+        "spoke_nipple_screw",
+        "bottom_bracket",
+        "crankshaft"
       ],
       "labelVi": "Loại bộ phận",
       "questionVi": "Bộ phận thuộc nhóm nào: khung/càng, bánh xe, phanh, truyền động, yên, tay lái, giảm xóc, hay khác?",
@@ -160,6 +165,37 @@
           "loại khác",
           "parts",
           "accessories"
+        ],
+        "spoke_nipple": [
+          "đầu nipple",
+          "nipple nan hoa",
+          "nipple xe đạp",
+          "spoke nipple",
+          "đầu bắt nan hoa"
+        ],
+        "muffler": [
+          "giảm thanh",
+          "muffler",
+          "bộ giảm thanh",
+          "ống xả",
+          "giam thanh"
+        ],
+        "spoke_nipple_screw": [
+          "ốc bắt đầu nan hoa",
+          "ốc nan hoa",
+          "spoke nipple screw"
+        ],
+        "bottom_bracket": [
+          "trục c-rank",
+          "bottom bracket",
+          "trục giữa xe đạp",
+          "crankset axle"
+        ],
+        "crankshaft": [
+          "trục khuỷu",
+          "crankshaft",
+          "crank arm set",
+          "bộ tay đề"
         ]
       }
     },
@@ -333,6 +369,335 @@
       "gir": "GIR 1",
       "reasonVi": "Tay lái, cọc lái, chắn bùn, tấm phản quang, giá đỡ, cáp điều khiển → 8714.99.91 (SEN).",
       "source": "Biểu thuế 2026 dòng 8714.99.91"
+    },
+    {
+      "id": "r-bicycle-frame",
+      "priority": 50,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "frame"
+      },
+      "hs": "87149110",
+      "gir": "GIR 1",
+      "reasonVi": "Khung xe đạp (bicycle frame) → 871491. Khung là bộ phận chính của xe đạp, không phải khung xe mô tô.",
+      "sourceVi": "Biểu thuế 2026 mã 87149110"
+    },
+    {
+      "id": "r-bicycle-fork",
+      "priority": 50,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "forkSuspension"
+      },
+      "hs": "87149210",
+      "gir": "GIR 1",
+      "reasonVi": "Càng trước xe đạp (bicycle fork) → 871492. Càng xe đạp thuộc nhóm bánh xe và nan hoa.",
+      "sourceVi": "Biểu thuế 2026 mã 87149210"
+    },
+    {
+      "id": "r-bicycle-wheel",
+      "priority": 50,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "wheel"
+      },
+      "hs": "87149390",
+      "gir": "GIR 1",
+      "reasonVi": "Bánh xe đạp (bicycle wheel assembly) → 871493.",
+      "sourceVi": "Biểu thuế 2026 mã 87149390"
+    },
+    {
+      "id": "r-bicycle-brake",
+      "priority": 50,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "brake"
+      },
+      "hs": "87149490",
+      "gir": "GIR 1",
+      "reasonVi": "Phanh xe đạp → 871494.",
+      "sourceVi": "Biểu thuế 2026 mã 87149490"
+    },
+    {
+      "id": "r-bicycle-seat",
+      "priority": 50,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "seat"
+      },
+      "hs": "87149590",
+      "gir": "GIR 1",
+      "reasonVi": "Yên xe đạp → 871495.",
+      "sourceVi": "Biểu thuế 2026 mã 87149590"
+    },
+    {
+      "id": "r-bicycle-pedal",
+      "priority": 50,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "other"
+      },
+      "hs": "87149690",
+      "gir": "GIR 1",
+      "reasonVi": "Pedal xe đạp / tay đề → 871496.",
+      "sourceVi": "Biểu thuế 2026 mã 87149690"
+    },
+    {
+      "id": "r-bicycle-handlebar",
+      "priority": 50,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "handlebar"
+      },
+      "hs": "87149991",
+      "gir": "GIR 1",
+      "reasonVi": "Tay lái xe đạp → 87149991.",
+      "sourceVi": "Biểu thuế 2026 mã 87149991"
+    },
+    {
+      "id": "r-spoke-nipple-screw",
+      "priority": 50,
+      "when": {
+        "vehicleType": "motorcycle",
+        "partKind": "spoke_nipple_screw"
+      },
+      "hs": "87141020",
+      "gir": "GIR 1",
+      "reasonVi": "Ốc bắt đầu nan hoa xe mô tô → 87141020. Phụ tùng xe mô tô gắn cố định.",
+      "sourceVi": "Biểu thuế 2026 mã 87141020"
+    },
+    {
+      "id": "r-muffler-motorcycle",
+      "priority": 50,
+      "when": {
+        "vehicleType": "motorcycle",
+        "partKind": "muffler"
+      },
+      "hs": "87141070",
+      "gir": "GIR 1",
+      "reasonVi": "Giảm thanh (muffler) xe mô tô → 87141070.",
+      "sourceVi": "Biểu thuế 2026 mã 87141070"
+    },
+    {
+      "id": "r-wheelchair-wheel-75-100",
+      "priority": 45,
+      "when": {
+        "vehicleType": "wheelchair",
+        "partKind": "wheel",
+        "forVehicle": "wheelchair"
+      },
+      "hs": "87142011",
+      "gir": "GIR 1",
+      "reasonVi": "Bánh xe lăn đường kính 75-100mm → 87142011.",
+      "sourceVi": "Biểu thuế 2026 mã 87142011"
+    },
+    {
+      "id": "r-wheelchair-wheel-100-250",
+      "priority": 45,
+      "when": {
+        "vehicleType": "wheelchair",
+        "partKind": "wheel"
+      },
+      "hs": "87142012",
+      "gir": "GIR 1",
+      "reasonVi": "Bánh xe lăn đường kính 100-250mm → 87142012.",
+      "sourceVi": "Biểu thuế 2026 mã 87142012"
+    },
+    {
+      "id": "r-wheelchair-other",
+      "priority": 40,
+      "when": {
+        "vehicleType": "wheelchair",
+        "partKind": "other"
+      },
+      "hs": "87142090",
+      "gir": "GIR 1",
+      "reasonVi": "Bộ phận xe lăn loại khác → 87142090.",
+      "sourceVi": "Biểu thuế 2026 mã 87142090"
+    },
+    {
+      "id": "r-bicycle-frame-parts",
+      "priority": 50,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "frame"
+      },
+      "hs": "87149199",
+      "gir": "GIR 1",
+      "reasonVi": "Bộ phận càng xe đạp (không phải SEN) → 87149199.",
+      "sourceVi": "Biểu thuế 2026 mã 87149199"
+    },
+    {
+      "id": "r-bicycle-fork-other",
+      "priority": 50,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "forkSuspension"
+      },
+      "hs": "87149290",
+      "gir": "GIR 1",
+      "reasonVi": "Càng xe đạp (không phải SEN) → 87149290.",
+      "sourceVi": "Biểu thuế 2026 mã 87149290"
+    },
+    {
+      "id": "r-bicycle-wheel-other",
+      "priority": 50,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "wheel"
+      },
+      "hs": "87149390",
+      "gir": "GIR 1",
+      "reasonVi": "Bánh xe đạp (không phải SEN) → 87149390.",
+      "sourceVi": "Biểu thuế 2026 mã 87149390"
+    },
+    {
+      "id": "r-bicycle-brake-other",
+      "priority": 50,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "brake"
+      },
+      "hs": "87149490",
+      "gir": "GIR 1",
+      "reasonVi": "Phanh xe đạp (không phải SEN) → 87149490.",
+      "sourceVi": "Biểu thuế 2026 mã 87149490"
+    },
+    {
+      "id": "r-bicycle-seat-other",
+      "priority": 50,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "seat"
+      },
+      "hs": "87149590",
+      "gir": "GIR 1",
+      "reasonVi": "Yên xe đạp (không phải SEN) → 87149590.",
+      "sourceVi": "Biểu thuế 2026 mã 87149590"
+    },
+    {
+      "id": "r-bicycle-crankshaft",
+      "priority": 50,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "crankshaft"
+      },
+      "hs": "87149690",
+      "gir": "GIR 1",
+      "reasonVi": "Trục khuỷu xe đạp (crankshaft/bottom bracket) → 87149690.",
+      "sourceVi": "Biểu thuế 2026 mã 87149690"
+    },
+    {
+      "id": "r-bicycle-bottom-bracket",
+      "priority": 50,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "bottom_bracket"
+      },
+      "hs": "87149690",
+      "gir": "GIR 1",
+      "reasonVi": "Trục giữa xe đạp (bottom bracket) → 87149690.",
+      "sourceVi": "Biểu thuế 2026 mã 87149690"
+    },
+    {
+      "id": "r-bicycle-spoke-nipple",
+      "priority": 50,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "spoke_nipple"
+      },
+      "hs": "87149993",
+      "gir": "GIR 1",
+      "reasonVi": "Nipple nan hoa xe đạp → 87149993.",
+      "sourceVi": "Biểu thuế 2026 mã 87149993"
+    },
+    {
+      "id": "r-bicycle-spoke-nipple-screw",
+      "priority": 50,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "spoke_nipple_screw"
+      },
+      "hs": "87149993",
+      "gir": "GIR 1",
+      "reasonVi": "Ốc bắt đầu nan hoa xe đạp → 87149993.",
+      "sourceVi": "Biểu thuế 2026 mã 87149993"
+    },
+    {
+      "id": "r-bicycle-sen-wheel",
+      "priority": 55,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "wheel",
+        "forVehicle": "8714bicycle"
+      },
+      "hs": "87149310",
+      "gir": "GIR 1",
+      "reasonVi": "Bánh xe đạp loại SEN → 87149310.",
+      "sourceVi": "Biểu thuế 2026 mã 87149310"
+    },
+    {
+      "id": "r-bicycle-sen-brake",
+      "priority": 55,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "brake",
+        "forVehicle": "8714bicycle"
+      },
+      "hs": "87149410",
+      "gir": "GIR 1",
+      "reasonVi": "Phanh xe đạp loại SEN → 87149410.",
+      "sourceVi": "Biểu thuế 2026 mã 87149410"
+    },
+    {
+      "id": "r-bicycle-sen-seat",
+      "priority": 55,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "seat",
+        "forVehicle": "8714bicycle"
+      },
+      "hs": "87149510",
+      "gir": "GIR 1",
+      "reasonVi": "Yên xe đạp loại SEN → 87149510.",
+      "sourceVi": "Biểu thuế 2026 mã 87149510"
+    },
+    {
+      "id": "r-bicycle-sen-crankshaft",
+      "priority": 55,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "crankshaft",
+        "forVehicle": "8714bicycle"
+      },
+      "hs": "87149610",
+      "gir": "GIR 1",
+      "reasonVi": "Trục khuỷu xe đạp loại SEN → 87149610.",
+      "sourceVi": "Biểu thuế 2026 mã 87149610"
+    },
+    {
+      "id": "r-motorcycle-handlebar",
+      "priority": 50,
+      "when": {
+        "vehicleType": "motorcycle",
+        "partKind": "handlebar"
+      },
+      "hs": "87141090",
+      "gir": "GIR 1",
+      "reasonVi": "Tay lái xe mô tô → 87141090 (loại khác).",
+      "sourceVi": "Biểu thuế 2026 mã 87141090"
+    },
+    {
+      "id": "r-bicycle-chain-sprocket",
+      "priority": 50,
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "transmission"
+      },
+      "hs": "87149994",
+      "gir": "GIR 1",
+      "reasonVi": "Bánh xích và trục khuỷu xe đạp → 87149994.",
+      "sourceVi": "Biểu thuế 2026 mã 87149994"
     }
   ]
 }
