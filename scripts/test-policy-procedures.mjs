@@ -114,6 +114,11 @@ const abbrevTests = [
   ['ATKT', 'chat-luong'],
   ['CL', 'chat-luong'],
   ['KTCN chất lượng SP HH nhóm 2', 'chat-luong'],
+  ['Hạn chế sản xuất, kinh doanh', 'kd-dk'],
+  ['Hạn chế kinh doanh', 'kd-dk'],
+  ['Cấm', 'cam-nk'],
+  ['Giấy phép kinh doanh XNK', 'gp-nk'],
+  ['Giấy phép kinh doanh xuất khẩu, nhập khẩu xăng dầu', 'gp-nk'],
 ];
 abbrevTests.forEach(([input, expected]) => {
   const got = normalizeType(input);
