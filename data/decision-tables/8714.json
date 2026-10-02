@@ -10,7 +10,12 @@
     {
       "attribute": "vehicleType",
       "type": "enum",
-      "domain": ["bicycle", "motorcycle", "wheelchair", "otherVehicle"],
+      "domain": [
+        "bicycle",
+        "motorcycle",
+        "wheelchair",
+        "otherVehicle"
+      ],
       "labelVi": "Loại phương tiện",
       "questionVi": "Bộ phận dùng cho xe đạp, xe mô tô/xe gắn máy, xe lăn y tế, hay phương tiện khác?",
       "detect": {
@@ -64,7 +69,16 @@
     {
       "attribute": "partKind",
       "type": "enum",
-      "domain": ["frame", "wheel", "brake", "transmission", "seat", "handlebar", "forkSuspension", "other"],
+      "domain": [
+        "frame",
+        "wheel",
+        "brake",
+        "transmission",
+        "seat",
+        "handlebar",
+        "forkSuspension",
+        "other"
+      ],
       "labelVi": "Loại bộ phận",
       "questionVi": "Bộ phận thuộc nhóm nào: khung/càng, bánh xe, phanh, truyền động, yên, tay lái, giảm xóc, hay khác?",
       "detect": {
@@ -152,7 +166,12 @@
     {
       "attribute": "forVehicle",
       "type": "enum",
-      "domain": ["8711", "8714motocycle", "8714bicycle", "8714wheelchair"],
+      "domain": [
+        "8711",
+        "8714motocycle",
+        "8714bicycle",
+        "8714wheelchair"
+      ],
       "labelVi": "Mã nhóm xe",
       "questionVi": "Xe mô tô/xe gắn máy thuộc nhóm 8711 (xe có động cơ, xi-lanh > 50cc), hay bộ phận chung cho 8714?",
       "detect": {
@@ -190,7 +209,9 @@
     {
       "id": "r-wheelchair-8714",
       "priority": 95,
-      "when": { "vehicleType": "wheelchair" },
+      "when": {
+        "vehicleType": "wheelchair"
+      },
       "hs": "87142019",
       "gir": "GIR 1",
       "reasonVi": "Xe lăn y tế → 8714.20 (loại khác, đường kính > 100mm).",
@@ -199,7 +220,10 @@
     {
       "id": "r-motorcycle-transmission-8714",
       "priority": 85,
-      "when": { "vehicleType": "motorcycle", "partKind": "transmission" },
+      "when": {
+        "vehicleType": "motorcycle",
+        "partKind": "transmission"
+      },
       "hs": "87141040",
       "gir": "GIR 1",
       "reasonVi": "Bánh răng, hộp số, ly hợp và thiết bị truyền động khác của xe mô tô/xe gắn máy → 8714.10.40. Đĩa xích và nhông (sprocket) xe mô tô thuộc đây.",
@@ -208,7 +232,10 @@
     {
       "id": "r-motorcycle-seat",
       "priority": 80,
-      "when": { "vehicleType": "motorcycle", "partKind": "seat" },
+      "when": {
+        "vehicleType": "motorcycle",
+        "partKind": "seat"
+      },
       "hs": "87141010",
       "gir": "GIR 1",
       "reasonVi": "Yên xe mô tô / xe gắn máy → 8714.10.10.",
@@ -217,7 +244,10 @@
     {
       "id": "r-motorcycle-wheel",
       "priority": 80,
-      "when": { "vehicleType": "motorcycle", "partKind": "wheel" },
+      "when": {
+        "vehicleType": "motorcycle",
+        "partKind": "wheel"
+      },
       "hs": "87141050",
       "gir": "GIR 1",
       "reasonVi": "Vành bánh xe mô tô / xe gắn máy → 8714.10.50.",
@@ -226,7 +256,10 @@
     {
       "id": "r-motorcycle-brake",
       "priority": 80,
-      "when": { "vehicleType": "motorcycle", "partKind": "brake" },
+      "when": {
+        "vehicleType": "motorcycle",
+        "partKind": "brake"
+      },
       "hs": "87141060",
       "gir": "GIR 1",
       "reasonVi": "Phanh và bộ phận của chúng cho xe mô tô / xe gắn máy → 8714.10.60.",
@@ -235,7 +268,10 @@
     {
       "id": "r-motorcycle-frame",
       "priority": 80,
-      "when": { "vehicleType": "motorcycle", "partKind": "frame" },
+      "when": {
+        "vehicleType": "motorcycle",
+        "partKind": "frame"
+      },
       "hs": "87141030",
       "gir": "GIR 1",
       "reasonVi": "Khung và càng xe kể cả càng xe cơ cấu ống lồng, giảm xóc → 8714.10.30.",
@@ -244,7 +280,10 @@
     {
       "id": "r-motorcycle-other",
       "priority": 70,
-      "when": { "vehicleType": "motorcycle", "partKind": "other" },
+      "when": {
+        "vehicleType": "motorcycle",
+        "partKind": "other"
+      },
       "hs": "87141090",
       "gir": "GIR 1",
       "reasonVi": "Bộ phận và phụ kiện xe mô tô, loại khác → 8714.10.90. 'Bộ đĩa xích và nhông' xe mô tô đã được tách riêng trong 8714.10.40.",
@@ -253,7 +292,9 @@
     {
       "id": "r-motorcycle-other-specific",
       "priority": 75,
-      "when": { "vehicleType": "motorcycle" },
+      "when": {
+        "vehicleType": "motorcycle"
+      },
       "hs": "87141090",
       "gir": "GIR 1",
       "reasonVi": "Bộ phận xe mô tô không rõ loại → 8714.10.90 (loại khác).",
@@ -262,7 +303,10 @@
     {
       "id": "r-bicycle-sprocket-chain",
       "priority": 80,
-      "when": { "vehicleType": "bicycle", "partKind": "transmission" },
+      "when": {
+        "vehicleType": "bicycle",
+        "partKind": "transmission"
+      },
       "hs": "87149912",
       "gir": "GIR 1",
       "reasonVi": "Bánh xích và trục khuỷu xe đạp → 8714.99.12 (SEN - có bảo hộ).",
@@ -271,7 +315,9 @@
     {
       "id": "r-default-motorcycle",
       "priority": 50,
-      "when": { "vehicleType": "motorcycle" },
+      "when": {
+        "vehicleType": "motorcycle"
+      },
       "hs": "87141090",
       "gir": "GIR 1",
       "reasonVi": "Bộ phận xe mô tô, loại khác → 8714.10.90.",
@@ -280,7 +326,9 @@
     {
       "id": "r-default-bicycle",
       "priority": 50,
-      "when": { "vehicleType": "bicycle" },
+      "when": {
+        "vehicleType": "bicycle"
+      },
       "hs": "87149991",
       "gir": "GIR 1",
       "reasonVi": "Tay lái, cọc lái, chắn bùn, tấm phản quang, giá đỡ, cáp điều khiển → 8714.99.91 (SEN).",
