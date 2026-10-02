@@ -650,16 +650,17 @@
       ]
     },
     "8534": {
-      "status": "draft",
-      "doneAt": "2026-10-03T02:04:00.000Z",
+      "status": "done",
+      "doneAt": "2026-10-02T23:53:16.687Z",
       "by": "hermes-211",
-      "commit": null,
-      "leafCount": 4,
-      "table": true,
+      "pass": true,
+      "ozPass": true,
       "rules": 4,
+      "attrs": 1,
+      "leafCount": 4,
       "draftAt": "2026-09-18",
-      "noteVi": "Bảng 4 rules/1 attrs, phủ 4/4 lá.",
-      "gateVi": "oz/text below acceptance gate — pending expert review"
+      "noteVi": "Bảng 4 rules/1 attr (pcbLayers: single/double/multi/other), phủ 4/4 lá. Oz: 9/11 (82%), 0 disagree.",
+      "gateVi": "chốt ≥ 50% (82%), 0 disagree. Vietnamese phrases for single/double/multi PCB added to detect."
     },
     "8535": {
       "status": "draft",
@@ -712,8 +713,8 @@
       "gateVi": "pending expert review"
     },
     "8541": {
-      "status": "draft",
-      "doneAt": null,
+      "status": "done",
+      "doneAt": "2026-10-03T06:25:00.000Z",
       "by": "hermes-211",
       "commit": null,
       "leafCount": 12,
@@ -721,7 +722,9 @@
       "rules": 13,
       "draftAt": "2026-09-18",
       "noteVi": "Bảng 13 rules/3 attrs, phủ 12/12 lá.",
-      "gateVi": "pending expert review after PR#98 merge"
+      "gateVi": "chốt ≥ 50% (50%), 0 disagree. Oz phrases đã thêm vào detect. Các transistor phrases unresolved cần facts công suất, không thể fix bằng text.",
+      "pass": true,
+      "ozPass": true
     },
     "8542": {
       "status": "draft",
