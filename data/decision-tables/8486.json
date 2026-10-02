@@ -1,0 +1,964 @@
+{
+  "heading": "8486",
+  "titleVi": "Machines and apparatus of a kind used solely or principally for the manufacture of semiconductor boules or wafers, semiconductor devices, electronic integrated circuits or flat panel displays; machines & apparatus specified in note 11 (C) to this Chapter",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Máy thiết bị dùng để chế tạo bán dẫn (màng mỏng/tấm bán dẫn/sản phẩm bán dẫn/màn hình phẳng/vật liệu quang điện)? Quy trình/hệ thống nào?",
+  "sourceVi": "Biểu thuế 2026 nhóm 84.86: 848610 thiết bị tấm bán dẫn mỏng; 848620 thiết bị linh kiện bán dẫn/mạch tích hợp; 848630 thiết bị màn hình phẳng; 848640 thiết bị mặt nạ/mạch bán dẫn; 848690 bộ phận/phụ tùng.",
+  "inputs": [
+    {
+      "attribute": "manufacturedProduct",
+      "type": "enum",
+      "domain": [
+        "semiconductor",
+        "ic",
+        "display",
+        "mask",
+        "parts"
+      ],
+      "labelVi": "Sản phẩm được chế tạo",
+      "questionVi": "Máy này dùng để chế tạo loại sản phẩm nào: tấm bán dẫn mỏng (wafer), linh kiện bán dẫn/mạch tích hợp (IC), màn hình phẳng (FPD), mặt nạ/reticle/linh kiện gắn, hay là bộ phận/phụ tùng?",
+      "detect": {
+        "semiconductor": [
+          "tấm bán dẫn",
+          "wafer",
+          "boules",
+          "làm nóng nhanh",
+          "làm khô ly tâm",
+          "cắt khối",
+          "mài đánh bóng",
+          "kéo khối",
+          "thiết bị làm nóng",
+          "làm phát triển",
+          "848610"
+        ],
+        "ic": [
+          "linh kiện bán dẫn",
+          "mạch tích hợp",
+          "electronic integrated",
+          "thiết bị kết tủa",
+          "cấy ghép ion",
+          "khắc axit",
+          "lò sấy",
+          "lò luyện",
+          "hiệu chỉnh vị trí",
+          "in trực tiếp",
+          "máy cắt laser",
+          "máy uốn",
+          "bóc tách",
+          "848620"
+        ],
+        "display": [
+          "màn hình phẳng",
+          "flat panel",
+          "tấm nền",
+          "khắc axit ướt",
+          "tạo lớp phủ",
+          "làm sạch tấm nền",
+          "848630"
+        ],
+        "mask": [
+          "mặt nạ",
+          "reticle",
+          "lắp ráp",
+          "gắn khuôn",
+          "nối băng",
+          "nối dây",
+          "bọc nhựa",
+          "khuôn để sản xuất",
+          "kính hiển vi",
+          "tạo mẫu",
+          "848640"
+        ],
+        "parts": [
+          "bộ phận",
+          "phụ tùng",
+          "kẹp dụng cụ",
+          "đầu cắt",
+          "848690"
+        ]
+      }
+    },
+    {
+      "attribute": "processStep",
+      "type": "enum",
+      "domain": [
+        "deposition",
+        "etching",
+        "lithography",
+        "implantation",
+        "thermal",
+        "dicing",
+        "assembly",
+        "inspection",
+        "other"
+      ],
+      "labelVi": "Bước quy trình",
+      "questionVi": "Máy thực hiện bước quy trình nào: kết tủa/bay hơi, khắc, in/quang khắc, cấy ghép ion, xử lý nhiệt, cắt/gắp, lắp ráp, kiểm tra, hay khác?",
+      "detect": {
+        "deposition": [
+          "kết tủa",
+          "bay hơi",
+          "phun phủ",
+          "lớp phủ nhũ tương",
+          "epitaxi",
+          "điện phân",
+          "84862011",
+          "84862012",
+          "84862013",
+          "84862091"
+        ],
+        "etching": [
+          "khắc axit",
+          "tẩy rửa",
+          "làm sạch",
+          "hiện ảnh",
+          "84862031",
+          "84862032",
+          "84862033",
+          "84863010",
+          "84863020"
+        ],
+        "lithography": [
+          "in trực tiếp",
+          "thiết bị hiệu chỉnh",
+          "bước và lặp lại",
+          "khắc vạch",
+          "84862041",
+          "84862042",
+          "84862051"
+        ],
+        "implantation": [
+          "cấy ghép ion",
+          "84862021"
+        ],
+        "thermal": [
+          "lò sấy",
+          "lò luyện",
+          "điện trở",
+          "hiệu ứng cảm ứng",
+          "84862093",
+          "84862094"
+        ],
+        "dicing": [
+          "cắt laser",
+          "cắt khối",
+          "bóc tách",
+          "làm sạch",
+          "84861030",
+          "84861040",
+          "84862091",
+          "84862095"
+        ],
+        "assembly": [
+          "gắn khuôn",
+          "nối băng",
+          "nối dây",
+          "bọc nhựa",
+          "dịch chuyển",
+          "84864020",
+          "84864070",
+          "84862095"
+        ],
+        "inspection": [
+          "kính hiển vi",
+          "84864040",
+          "84864050",
+          "84864060"
+        ],
+        "other": [
+          "loại khác",
+          "84861090",
+          "84862099",
+          "84863090",
+          "84864090"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r1",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "semiconductor",
+        "processStep": "thermal"
+      },
+      "hs": "84861010",
+      "reasonVi": "Thiết bị làm nóng nhanh tấm bán dẫn mỏng → 8486.10.10.",
+      "source": "Biểu thuế 2026 dòng 8486.10.10."
+    },
+    {
+      "id": "r2",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "semiconductor",
+        "processStep": "other"
+      },
+      "hs": "84861020",
+      "reasonVi": "Máy làm khô bằng phương pháp quay ly tâm để chế tạo tấm bán dẫn mỏng → 8486.10.20.",
+      "source": "Biểu thuế 2026 dòng 8486.10.20."
+    },
+    {
+      "id": "r3",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "semiconductor",
+        "processStep": "dicing"
+      },
+      "hs": "84861030",
+      "reasonVi": "Máy công cụ để gia công mọi vật liệu bằng cách bóc tách vật liệu → 8486.10.30.",
+      "source": "Biểu thuế 2026 dòng 8486.10.30."
+    },
+    {
+      "id": "r4",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "semiconductor",
+        "processStep": "dicing"
+      },
+      "hs": "84861040",
+      "reasonVi": "Máy và thiết bị để cắt khối bán dẫn đơn tinh thể thành các lớp → 8486.10.40.",
+      "source": "Biểu thuế 2026 dòng 8486.10.40."
+    },
+    {
+      "id": "r5",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "semiconductor",
+        "processStep": "other"
+      },
+      "hs": "84861050",
+      "reasonVi": "Máy mài, đánh bóng và phủ dùng trong chế tạo tấm bán dẫn mỏng → 8486.10.50.",
+      "source": "Biểu thuế 2026 dòng 8486.10.50."
+    },
+    {
+      "id": "r6",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "semiconductor",
+        "processStep": "thermal"
+      },
+      "hs": "84861060",
+      "reasonVi": "Thiết bị làm phát triển hoặc kéo khối bán dẫn đơn tinh thể → 8486.10.60.",
+      "source": "Biểu thuế 2026 dòng 8486.10.60."
+    },
+    {
+      "id": "r7",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "semiconductor",
+        "processStep": "other"
+      },
+      "hs": "84861090",
+      "reasonVi": "Loại khác → 8486.10.90.",
+      "source": "Biểu thuế 2026 dòng 8486.10.90."
+    },
+    {
+      "id": "r8",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "deposition"
+      },
+      "hs": "84862011",
+      "reasonVi": "Thiết bị kết tủa khí hóa dùng cho ngành sản xuất bán dẫn → 8486.20.11.",
+      "source": "Biểu thuế 2026 dòng 8486.20.11."
+    },
+    {
+      "id": "r9",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "deposition"
+      },
+      "hs": "84862012",
+      "reasonVi": "Máy kết tủa epitaxi dùng cho các tấm bán dẫn mỏng; thiết bị để tạo kết tủa vật lý bằng phương pháp phun phủ lên các tấm bán dẫn mỏng → 8486.20.12.",
+      "source": "Biểu thuế 2026 dòng 8486.20.12."
+    },
+    {
+      "id": "r10",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "deposition"
+      },
+      "hs": "84862013",
+      "reasonVi": "Thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ lên các tấm bán dẫn mỏng → 8486.20.13.",
+      "source": "Biểu thuế 2026 dòng 8486.20.13."
+    },
+    {
+      "id": "r11",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "deposition"
+      },
+      "hs": "84862019",
+      "reasonVi": "Loại khác → 8486.20.19.",
+      "source": "Biểu thuế 2026 dòng 8486.20.19."
+    },
+    {
+      "id": "r12",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "implantation"
+      },
+      "hs": "84862021",
+      "reasonVi": "Máy cấy ghép ion cho quá trình xử lý vật liệu bán dẫn → 8486.20.21.",
+      "source": "Biểu thuế 2026 dòng 8486.20.21."
+    },
+    {
+      "id": "r13",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "implantation"
+      },
+      "hs": "84862029",
+      "reasonVi": "Loại khác → 8486.20.29.",
+      "source": "Biểu thuế 2026 dòng 8486.20.29."
+    },
+    {
+      "id": "r14",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "etching"
+      },
+      "hs": "84862031",
+      "reasonVi": "Máy dùng tia sáng để làm sạch và tẩy rửa chất bẩn bám trên các đế → 8486.20.31.",
+      "source": "Biểu thuế 2026 dòng 8486.20.31."
+    },
+    {
+      "id": "r15",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "lithography"
+      },
+      "hs": "84862032",
+      "reasonVi": "Thiết bị sử dụng cho các bản mẫu khắc khô trên vật liệu bán dẫn → 8486.20.32.",
+      "source": "Biểu thuế 2026 dòng 8486.20.32."
+    },
+    {
+      "id": "r16",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "etching"
+      },
+      "hs": "84862033",
+      "reasonVi": "Thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn → 8486.20.33.",
+      "source": "Biểu thuế 2026 dòng 8486.20.33."
+    },
+    {
+      "id": "r17",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "etching"
+      },
+      "hs": "84862039",
+      "reasonVi": "Loại khác → 8486.20.39.",
+      "source": "Biểu thuế 2026 dòng 8486.20.39."
+    },
+    {
+      "id": "r18",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "lithography"
+      },
+      "hs": "84862041",
+      "reasonVi": "Thiết bị in trực tiếp lên tấm bán dẫn mỏng → 8486.20.41.",
+      "source": "Biểu thuế 2026 dòng 8486.20.41."
+    },
+    {
+      "id": "r19",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "lithography"
+      },
+      "hs": "84862042",
+      "reasonVi": "Thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại → 8486.20.42.",
+      "source": "Biểu thuế 2026 dòng 8486.20.42."
+    },
+    {
+      "id": "r20",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "lithography"
+      },
+      "hs": "84862049",
+      "reasonVi": "Loại khác → 8486.20.49.",
+      "source": "Biểu thuế 2026 dòng 8486.20.49."
+    },
+    {
+      "id": "r21",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "lithography"
+      },
+      "hs": "84862051",
+      "reasonVi": "Thiết bị khắc để đánh dấu hoặc khắc vạch lên các tấm bán dẫn mỏng → 8486.20.51.",
+      "source": "Biểu thuế 2026 dòng 8486.20.51."
+    },
+    {
+      "id": "r22",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "lithography"
+      },
+      "hs": "84862059",
+      "reasonVi": "Loại khác → 8486.20.59.",
+      "source": "Biểu thuế 2026 dòng 8486.20.59."
+    },
+    {
+      "id": "r23",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "dicing"
+      },
+      "hs": "84862091",
+      "reasonVi": "Máy cắt laser để cắt các đường tiếp xúc bằng các chùm tia laser trên các tấm bán dẫn mỏng → 8486.20.91.",
+      "source": "Biểu thuế 2026 dòng 8486.20.91."
+    },
+    {
+      "id": "r24",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "assembly"
+      },
+      "hs": "84862092",
+      "reasonVi": "Máy uốn, gấp và làm thẳng các đầu chân dẫn điện của bán dẫn → 8486.20.92.",
+      "source": "Biểu thuế 2026 dòng 8486.20.92."
+    },
+    {
+      "id": "r25",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "thermal"
+      },
+      "hs": "84862093",
+      "reasonVi": "Lò sấy và lò luyện dùng điện trở sử dụng trong sản xuất linh kiện bán dẫn → 8486.20.93.",
+      "source": "Biểu thuế 2026 dòng 8486.20.93."
+    },
+    {
+      "id": "r26",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "thermal"
+      },
+      "hs": "84862094",
+      "reasonVi": "Lò sấy và lò luyện hoạt động bằng hiệu ứng cảm ứng điện hoặc điện môi trong sản xuất linh kiện bán dẫn → 8486.20.94.",
+      "source": "Biểu thuế 2026 dòng 8486.20.94."
+    },
+    {
+      "id": "r27",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "assembly"
+      },
+      "hs": "84862095",
+      "reasonVi": "Máy tự động dịch chuyển hoặc bóc tách các linh kiện hoặc phần tiếp xúc → 8486.20.95.",
+      "source": "Biểu thuế 2026 dòng 8486.20.95."
+    },
+    {
+      "id": "r28",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "ic",
+        "processStep": "other"
+      },
+      "hs": "84862099",
+      "reasonVi": "Loại khác → 8486.20.99.",
+      "source": "Biểu thuế 2026 dòng 8486.20.99."
+    },
+    {
+      "id": "r29",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "display",
+        "processStep": "etching"
+      },
+      "hs": "84863010",
+      "reasonVi": "Thiết bị khắc axit bằng phương pháp khô lên tấm nền của màn hình dẹt → 8486.30.10.",
+      "source": "Biểu thuế 2026 dòng 8486.30.10."
+    },
+    {
+      "id": "r30",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "display",
+        "processStep": "etching"
+      },
+      "hs": "84863020",
+      "reasonVi": "Thiết bị khắc axit bằng phương pháp ướt, hiện ảnh, tẩy rửa hoặc làm sạch tấm nền của màn hình dẹt → 8486.30.20.",
+      "source": "Biểu thuế 2026 dòng 8486.30.20."
+    },
+    {
+      "id": "r31",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "display",
+        "processStep": "deposition"
+      },
+      "hs": "84863030",
+      "reasonVi": "Thiết bị kết tủa và bay hơi dùng để sản xuất màn hình dẹt → 8486.30.30.",
+      "source": "Biểu thuế 2026 dòng 8486.30.30."
+    },
+    {
+      "id": "r32",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "display",
+        "processStep": "other"
+      },
+      "hs": "84863090",
+      "reasonVi": "Loại khác → 8486.30.90.",
+      "source": "Biểu thuế 2026 dòng 8486.30.90."
+    },
+    {
+      "id": "r33",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "mask",
+        "processStep": "lithography"
+      },
+      "hs": "84864010",
+      "reasonVi": "Máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn hình và mặt nạ → 8486.40.10.",
+      "source": "Biểu thuế 2026 dòng 8486.40.10."
+    },
+    {
+      "id": "r34",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "mask",
+        "processStep": "assembly"
+      },
+      "hs": "84864020",
+      "reasonVi": "Thiết bị gắn khuôn, nối băng tự động, nối dây và bọc nhựa để lắp ráp các linh kiện bán dẫn → 8486.40.20.",
+      "source": "Biểu thuế 2026 dòng 8486.40.20."
+    },
+    {
+      "id": "r35",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "mask",
+        "processStep": "assembly"
+      },
+      "hs": "84864030",
+      "reasonVi": "Khuôn để sản xuất linh kiện bán dẫn → 8486.40.30.",
+      "source": "Biểu thuế 2026 dòng 8486.40.30."
+    },
+    {
+      "id": "r36",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "mask",
+        "processStep": "inspection"
+      },
+      "hs": "84864040",
+      "reasonVi": "Kính hiển vi quang học soi nổi được lắp với thiết bị chuyên dùng để kẹp giữ các tấm bán dẫn mỏng → 8486.40.40.",
+      "source": "Biểu thuế 2026 dòng 8486.40.40."
+    },
+    {
+      "id": "r37",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "mask",
+        "processStep": "inspection"
+      },
+      "hs": "84864050",
+      "reasonVi": "Kính hiển vi chụp ảnh được lắp với thiết bị chuyên dùng để kẹp giữ các tấm bán dẫn mỏng → 8486.40.50.",
+      "source": "Biểu thuế 2026 dòng 8486.40.50."
+    },
+    {
+      "id": "r38",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "mask",
+        "processStep": "inspection"
+      },
+      "hs": "84864060",
+      "reasonVi": "Kính hiển vi điện tử được lắp với thiết bị chuyên dùng để kẹp giữ các tấm bán dẫn mỏng → 8486.40.60.",
+      "source": "Biểu thuế 2026 dòng 8486.40.60."
+    },
+    {
+      "id": "r39",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "mask",
+        "processStep": "assembly"
+      },
+      "hs": "84864070",
+      "reasonVi": "Thiết bị tạo mẫu dùng cho quá trình tạo màn (khuôn in) hoặc lưới quang → 8486.40.70.",
+      "source": "Biểu thuế 2026 dòng 8486.40.70."
+    },
+    {
+      "id": "r40",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "mask",
+        "processStep": "other"
+      },
+      "hs": "84864090",
+      "reasonVi": "Loại khác → 8486.40.90.",
+      "source": "Biểu thuế 2026 dòng 8486.40.90."
+    },
+    {
+      "id": "r41",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "thermal"
+      },
+      "hs": "84869011",
+      "reasonVi": "Bộ phận của thiết bị nung nóng nhanh tấm bán dẫn mỏng → 8486.90.11.",
+      "source": "Biểu thuế 2026 dòng 8486.90.11."
+    },
+    {
+      "id": "r42",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "other"
+      },
+      "hs": "84869012",
+      "reasonVi": "Bộ phận của thiết bị làm khô bằng phương pháp quay dùng cho quá trình sản xuất tấm bán dẫn mỏng → 8486.90.12.",
+      "source": "Biểu thuế 2026 dòng 8486.90.12."
+    },
+    {
+      "id": "r43",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "dicing"
+      },
+      "hs": "84869013",
+      "reasonVi": "Bộ phận của máy công cụ để gia công mọi vật liệu bằng cách bóc tách vật liệu của nhóm 8486 → 8486.90.13.",
+      "source": "Biểu thuế 2026 dòng 8486.90.13."
+    },
+    {
+      "id": "r44",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "other"
+      },
+      "hs": "84869014",
+      "reasonVi": "Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm → 8486.90.14.",
+      "source": "Biểu thuế 2026 dòng 8486.90.14."
+    },
+    {
+      "id": "r45",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "other"
+      },
+      "hs": "84869015",
+      "reasonVi": "Loại khác → 8486.90.15.",
+      "source": "Biểu thuế 2026 dòng 8486.90.15."
+    },
+    {
+      "id": "r46",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "other"
+      },
+      "hs": "84869016",
+      "reasonVi": "Bộ phận của máy mài, đánh bóng và mài rà dùng cho quá trình sản xuất tấm bán dẫn mỏng → 8486.90.16.",
+      "source": "Biểu thuế 2026 dòng 8486.90.16."
+    },
+    {
+      "id": "r47",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "thermal"
+      },
+      "hs": "84869017",
+      "reasonVi": "Bộ phận của thiết bị làm phát triển hoặc kéo dài khối bán dẫn đơn tinh thể → 8486.90.17.",
+      "source": "Biểu thuế 2026 dòng 8486.90.17."
+    },
+    {
+      "id": "r48",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "other"
+      },
+      "hs": "84869019",
+      "reasonVi": "Loại khác → 8486.90.19.",
+      "source": "Biểu thuế 2026 dòng 8486.90.19."
+    },
+    {
+      "id": "r49",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "deposition"
+      },
+      "hs": "84869021",
+      "reasonVi": "Bộ phận của thiết bị kết tủa và bay hơi dùng cho sản xuất bán dẫn → 8486.90.21.",
+      "source": "Biểu thuế 2026 dòng 8486.90.21."
+    },
+    {
+      "id": "r50",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "deposition"
+      },
+      "hs": "84869022",
+      "reasonVi": "Bộ phận của máy kết tủa epitaxi dùng cho các tấm bán dẫn mỏng; của thiết bị để tạo kết tủa vật lý bằng phương pháp phun phủ lên các tấm bán dẫn mỏng → 8486.90.22.",
+      "source": "Biểu thuế 2026 dòng 8486.90.22."
+    },
+    {
+      "id": "r51",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "etching"
+      },
+      "hs": "84869023",
+      "reasonVi": "Bộ phận của máy cấy ghép ion cho quá trình xử lý vật liệu bán dẫn; của thiết bị khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn → 8486.90.23.",
+      "source": "Biểu thuế 2026 dòng 8486.90.23."
+    },
+    {
+      "id": "r52",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "other"
+      },
+      "hs": "84869024",
+      "reasonVi": "Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm → 8486.90.24.",
+      "source": "Biểu thuế 2026 dòng 8486.90.24."
+    },
+    {
+      "id": "r53",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "other"
+      },
+      "hs": "84869025",
+      "reasonVi": "Loại khác → 8486.90.25.",
+      "source": "Biểu thuế 2026 dòng 8486.90.25."
+    },
+    {
+      "id": "r54",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "other"
+      },
+      "hs": "84869026",
+      "reasonVi": "Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm → 8486.90.26.",
+      "source": "Biểu thuế 2026 dòng 8486.90.26."
+    },
+    {
+      "id": "r55",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "other"
+      },
+      "hs": "84869027",
+      "reasonVi": "Loại khác → 8486.90.27.",
+      "source": "Biểu thuế 2026 dòng 8486.90.27."
+    },
+    {
+      "id": "r56",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "thermal"
+      },
+      "hs": "84869028",
+      "reasonVi": "Bộ phận của lò sấy và lò luyện dùng điện trở sử dụng trong sản xuất linh kiện bán dẫn → 8486.90.28.",
+      "source": "Biểu thuế 2026 dòng 8486.90.28."
+    },
+    {
+      "id": "r57",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "other"
+      },
+      "hs": "84869029",
+      "reasonVi": "Loại khác → 8486.90.29.",
+      "source": "Biểu thuế 2026 dòng 8486.90.29."
+    },
+    {
+      "id": "r58",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "etching"
+      },
+      "hs": "84869031",
+      "reasonVi": "Bộ phận của thiết bị để khắc axit bằng phương pháp khô lên các tấm nền của màn hình dẹt → 8486.90.31.",
+      "source": "Biểu thuế 2026 dòng 8486.90.31."
+    },
+    {
+      "id": "r59",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "other"
+      },
+      "hs": "84869032",
+      "reasonVi": "Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm → 8486.90.32.",
+      "source": "Biểu thuế 2026 dòng 8486.90.32."
+    },
+    {
+      "id": "r60",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "other"
+      },
+      "hs": "84869033",
+      "reasonVi": "Loại khác → 8486.90.33.",
+      "source": "Biểu thuế 2026 dòng 8486.90.33."
+    },
+    {
+      "id": "r61",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "deposition"
+      },
+      "hs": "84869034",
+      "reasonVi": "Bộ phận của thiết bị kết tủa và bay hơi dùng để sản xuất màn hình dẹt → 8486.90.34.",
+      "source": "Biểu thuế 2026 dòng 8486.90.34."
+    },
+    {
+      "id": "r62",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "deposition"
+      },
+      "hs": "84869035",
+      "reasonVi": "Bộ phận của thiết bị để tạo lớp phủ nhũ tương cảm quang lên tấm nền của màn hình dẹt → 8486.90.35.",
+      "source": "Biểu thuế 2026 dòng 8486.90.35."
+    },
+    {
+      "id": "r63",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "deposition"
+      },
+      "hs": "84869036",
+      "reasonVi": "Bộ phận của thiết bị để tạo kết tủa vật lý lên các đế của màn hình dẹt → 8486.90.36.",
+      "source": "Biểu thuế 2026 dòng 8486.90.36."
+    },
+    {
+      "id": "r64",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "other"
+      },
+      "hs": "84869039",
+      "reasonVi": "Loại khác → 8486.90.39.",
+      "source": "Biểu thuế 2026 dòng 8486.90.39."
+    },
+    {
+      "id": "r65",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "lithography"
+      },
+      "hs": "84869041",
+      "reasonVi": "Bộ phận của máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn hình và mặt nạ → 8486.90.41.",
+      "source": "Biểu thuế 2026 dòng 8486.90.41."
+    },
+    {
+      "id": "r66",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "assembly"
+      },
+      "hs": "84869042",
+      "reasonVi": "Bộ phận của thiết bị gắn khuôn, nối băng tự động, nối dây và bọc nhựa để lắp ráp các linh kiện bán dẫn → 8486.90.42.",
+      "source": "Biểu thuế 2026 dòng 8486.90.42."
+    },
+    {
+      "id": "r67",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "assembly"
+      },
+      "hs": "84869043",
+      "reasonVi": "Bộ phận của máy tự động để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng → 8486.90.43.",
+      "source": "Biểu thuế 2026 dòng 8486.90.43."
+    },
+    {
+      "id": "r68",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "inspection"
+      },
+      "hs": "84869044",
+      "reasonVi": "Bộ phận của kính hiển vi quang học soi nổi và kính hiển vi chụp ảnh được lắp với thiết bị chuyên dùng để kẹp giữ các tấm bán dẫn mỏng → 8486.90.44.",
+      "source": "Biểu thuế 2026 dòng 8486.90.44."
+    },
+    {
+      "id": "r69",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "inspection"
+      },
+      "hs": "84869045",
+      "reasonVi": "Bộ phận của kính hiển vi điện tử được lắp với thiết bị chuyên dùng để kẹp giữ các tấm bán dẫn mỏng → 8486.90.45.",
+      "source": "Biểu thuế 2026 dòng 8486.90.45."
+    },
+    {
+      "id": "r70",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "assembly"
+      },
+      "hs": "84869046",
+      "reasonVi": "Bộ phận của thiết bị tạo mẫu dùng cho quá trình tạo màn (khuôn in) hoặc lưới quang → 8486.90.46.",
+      "source": "Biểu thuế 2026 dòng 8486.90.46."
+    },
+    {
+      "id": "r71",
+      "priority": 50,
+      "when": {
+        "manufacturedProduct": "parts",
+        "processStep": "other"
+      },
+      "hs": "84869049",
+      "reasonVi": "Loại khác → 8486.90.49.",
+      "source": "Biểu thuế 2026 dòng 8486.90.49."
+    }
+  ]
+}
