@@ -2884,6 +2884,74 @@
         "deviceKind": "parts"
       },
       "expectHs": "85419000"
+    },
+    {
+      "id": "6004-knit-le20-explicit",
+      "heading": "6004",
+      "text": "vải dệt kim có sợi đàn hồi không quá 20% khối lượng",
+      "expectHs": "60041010"
+    },
+    {
+      "id": "6004-knit-gt20-explicit",
+      "heading": "6004",
+      "text": "vải dệt kim có sợi đàn hồi trên 20% khối lượng",
+      "expectHs": "60041090"
+    },
+    {
+      "id": "6004-knit-20pct-ask",
+      "heading": "6004",
+      "text": "vải dệt kim có sợi đàn hồi 20%",
+      "expectAsk": [
+        "elasticFiberContent"
+      ]
+    },
+    {
+      "id": "6004-knit-unk-ask",
+      "heading": "6004",
+      "text": "vải dệt kim có cao su",
+      "expectAsk": [
+        "elasticFiberContent"
+      ]
+    },
+    {
+      "id": "4008-cellular-lined-ok",
+      "heading": "4008",
+      "text": "tấm cao su xốp có lớp vải dệt lưu hóa",
+      "expectHs": "40081110"
+    },
+    {
+      "id": "4008-cellular-plain-ok",
+      "heading": "4008",
+      "text": "tấm cao su xốp không tráng lưu hóa",
+      "expectHs": "40081120"
+    },
+    {
+      "id": "4008-cellular-strip-ok",
+      "heading": "4008",
+      "text": "dải cao su xốp lưu hóa loại khác",
+      "expectHs": "40081900"
+    },
+    {
+      "id": "4008-noncellular-shoe-ok",
+      "heading": "4008",
+      "text": "đế giày tấm cao su đặc lưu hóa",
+      "expectHs": "40082140"
+    },
+    {
+      "id": "4008-cellular-ask",
+      "heading": "4008",
+      "text": "tấm cao su xốp lưu hóa",
+      "expectAsk": [
+        "specialFeature"
+      ]
+    },
+    {
+      "id": "4008-noncellular-ask",
+      "heading": "4008",
+      "text": "tấm cao su lưu hóa",
+      "expectAsk": [
+        "materialType"
+      ]
     }
   ]
 }
