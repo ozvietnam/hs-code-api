@@ -15,8 +15,17 @@
       "labelVi": "Phương pháp nhuộm hoặc in batik",
       "questionVi": "Vải len chải có được nhuộm hoặc in bằng phương pháp batik truyền thống không?",
       "detect": {
-        "batik": ["batik", "in batik", "nhuộm batik", "vải batik"],
-        "other": ["không batik", "vải len thường", "vải nhuộm thường"]
+        "batik": [
+          "batik",
+          "in batik",
+          "nhuộm batik",
+          "vải batik"
+        ],
+        "other": [
+          "không batik",
+          "vải len thường",
+          "vải nhuộm thường"
+        ]
       }
     },
     {
@@ -112,5 +121,32 @@
       "reasonVi": "GIR 6 — vải len loại khác, Biểu thuế 2026 → 51129000",
       "source": "Biểu thuế NK VN 2026, nhóm 5112"
     }
-  ]
+  ],
+  "inputAttributes": [
+    "battingMethod",
+    "materialType"
+  ],
+  "attributes": {
+    "battingMethod": {
+      "detect": {
+        "batik": [
+          "batik",
+          "in batik",
+          "nhuộm batik",
+          "vải batik"
+        ],
+        "other": [
+          "không batik",
+          "vải len thường",
+          "vải nhuộm thường"
+        ]
+      },
+      "type": "enum"
+    },
+    "materialType": {
+      "detect": {},
+      "type": "enum"
+    }
+  },
+  "essenceVi": "battingMethod × materialType"
 }
