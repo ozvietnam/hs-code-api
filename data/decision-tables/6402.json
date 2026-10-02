@@ -1,0 +1,327 @@
+{
+  "heading": "6402",
+  "titleVi": "Giày dép cao su; ủng và giày ống",
+  "verified": false,
+  "essenceTestVi": "Giày trượt tuyết/đấu vật, giày có đai chốt cài, giày lặn, hay giày khác? Có SEN không? Mũi kim loại không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 64.02",
+  "inputs": [
+    {
+      "attribute": "shoeType",
+      "type": "enum",
+      "labelVi": "Loại giày",
+      "questionVi": "Loại giày: trượt tuyết, đấu vật, có đai chốt cài, giày lặn, hay giày khác?",
+      "domain": [
+        "skiSnowboard",
+        "wrestling",
+        "strap",
+        "diving",
+        "other"
+      ],
+      "detect": {
+        "skiSnowboard": [
+          "ống trượt tuyết",
+          "trượt tuyết",
+          "snowboard",
+          "ski boot"
+        ],
+        "wrestling": [
+          "đấu vật",
+          "wrestling shoe",
+          "giày đấu vật"
+        ],
+        "strap": [
+          "đai",
+          "dây gắn",
+          "chốt cài",
+          "strap",
+          "64022000"
+        ],
+        "diving": [
+          "lặn",
+          "diving boot",
+          "giày lặn"
+        ],
+        "other": [
+          "6402"
+        ]
+      }
+    },
+    {
+      "attribute": "senFlag",
+      "type": "enum",
+      "labelVi": "SEN",
+      "questionVi": "Có đánh dấu SEN (Sensitive) không?",
+      "domain": [
+        "sen",
+        "nonSen"
+      ],
+      "detect": {
+        "sen": [
+          "SEN",
+          "sensitive",
+          "mũi bảo vệ không phải kim loại",
+          "not metal"
+        ],
+        "nonSen": []
+      }
+    },
+    {
+      "attribute": "metalToe",
+      "type": "enum",
+      "labelVi": "Mũi kim loại",
+      "questionVi": "Mũi giày có gắn kim loại để bảo vệ không?",
+      "domain": [
+        "metalToe",
+        "nonMetalToe"
+      ],
+      "detect": {
+        "metalToe": [
+          "mũi kim loại",
+          "kim loại bảo vệ",
+          "metal toe cap",
+          "metal toe"
+        ],
+        "nonMetalToe": []
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-ski",
+      "priority": 50,
+      "when": {
+        "shoeType": "skiSnowboard"
+      },
+      "hs": "64021200",
+      "gir": "GIR 6",
+      "reasonVi": "Giày ống trượt tuyết, giày trượt băng đồng → 6402.12.00",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-wrestle",
+      "priority": 50,
+      "when": {
+        "shoeType": "wrestling"
+      },
+      "hs": "64021910",
+      "gir": "GIR 6",
+      "reasonVi": "Giày, dép cho đấu vật → 6402.19.10",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-other-wrestle",
+      "priority": 50,
+      "when": {
+        "shoeType": "other",
+        "metalToe": "metalToe"
+      },
+      "hs": "64021990",
+      "gir": "GIR 6",
+      "reasonVi": "Giày dép loại khác (không phải trượt tuyết/đấu vật) → 6402.19.90",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-strap",
+      "priority": 50,
+      "when": {
+        "shoeType": "strap"
+      },
+      "hs": "64022000",
+      "gir": "GIR 6",
+      "reasonVi": "Giày, dép có đai hoặc dây gắn mũi giày với đế bằng chốt cài → 6402.20.00",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-diving-sen",
+      "priority": 40,
+      "when": {
+        "shoeType": "diving",
+        "senFlag": "sen"
+      },
+      "hs": "64029110",
+      "gir": "GIR 6",
+      "reasonVi": "Giày lặn → 6402.91.10",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-diving-metaltoe",
+      "priority": 40,
+      "when": {
+        "shoeType": "diving",
+        "metalToe": "metalToe"
+      },
+      "hs": "64029191",
+      "gir": "GIR 6",
+      "reasonVi": "Giày lặn có mũi kim loại → 6402.91.91",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-diving-sen-nometal",
+      "priority": 40,
+      "when": {
+        "shoeType": "diving",
+        "senFlag": "sen",
+        "metalToe": "nonMetalToe"
+      },
+      "hs": "64029192",
+      "gir": "GIR 6",
+      "reasonVi": "Giày lặn có mũi bảo vệ không phải kim loại (SEN) → 6402.91.92",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-diving-other",
+      "priority": 40,
+      "when": {
+        "shoeType": "diving"
+      },
+      "hs": "64029199",
+      "gir": "GIR 6",
+      "reasonVi": "Giày lặn loại khác → 6402.91.99",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-other-metaltoe",
+      "priority": 10,
+      "when": {
+        "shoeType": "other",
+        "metalToe": "metalToe"
+      },
+      "hs": "64029910",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác có mũi kim loại → 6402.99.10",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-other-sen",
+      "priority": 10,
+      "when": {
+        "shoeType": "other",
+        "senFlag": "sen"
+      },
+      "hs": "64029920",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác có SEN → 6402.99.20",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-other",
+      "priority": 10,
+      "when": {
+        "shoeType": "other"
+      },
+      "hs": "64029990",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác (không SEN, không mũi kim loại) → 6402.99.90",
+      "source": "Biểu thuế 2026"
+    }
+  ],
+  "leaves": [
+    {
+      "id": "64021200",
+      "code": "64021200",
+      "conditions": {
+        "shoeType": "skiSnowboard"
+      },
+      "heading": "6402",
+      "noteVi": "Giày ống trượt tuyết, giày trượt băng đồng → 6402.12.00"
+    },
+    {
+      "id": "64021910",
+      "code": "64021910",
+      "conditions": {
+        "shoeType": "wrestling"
+      },
+      "heading": "6402",
+      "noteVi": "Giày, dép cho đấu vật → 6402.19.10"
+    },
+    {
+      "id": "64021990",
+      "code": "64021990",
+      "conditions": {
+        "shoeType": "other",
+        "metalToe": "metalToe"
+      },
+      "heading": "6402",
+      "noteVi": "Giày dép loại khác (không phải trượt tuyết/đấu vật) → 6402.19.90"
+    },
+    {
+      "id": "64022000",
+      "code": "64022000",
+      "conditions": {
+        "shoeType": "strap"
+      },
+      "heading": "6402",
+      "noteVi": "Giày, dép có đai hoặc dây gắn mũi giày với đế bằng chốt cài → 6402.20.00"
+    },
+    {
+      "id": "64029110",
+      "code": "64029110",
+      "conditions": {
+        "shoeType": "diving",
+        "senFlag": "sen"
+      },
+      "heading": "6402",
+      "noteVi": "Giày lặn → 6402.91.10"
+    },
+    {
+      "id": "64029191",
+      "code": "64029191",
+      "conditions": {
+        "shoeType": "diving",
+        "metalToe": "metalToe"
+      },
+      "heading": "6402",
+      "noteVi": "Giày lặn có mũi kim loại → 6402.91.91"
+    },
+    {
+      "id": "64029192",
+      "code": "64029192",
+      "conditions": {
+        "shoeType": "diving",
+        "senFlag": "sen",
+        "metalToe": "nonMetalToe"
+      },
+      "heading": "6402",
+      "noteVi": "Giày lặn có mũi bảo vệ không phải kim loại (SEN) → 6402.91.92"
+    },
+    {
+      "id": "64029199",
+      "code": "64029199",
+      "conditions": {
+        "shoeType": "diving"
+      },
+      "heading": "6402",
+      "noteVi": "Giày lặn loại khác → 6402.91.99"
+    },
+    {
+      "id": "64029910",
+      "code": "64029910",
+      "conditions": {
+        "shoeType": "other",
+        "metalToe": "metalToe"
+      },
+      "heading": "6402",
+      "noteVi": "Loại khác có mũi kim loại → 6402.99.10"
+    },
+    {
+      "id": "64029920",
+      "code": "64029920",
+      "conditions": {
+        "shoeType": "other",
+        "senFlag": "sen"
+      },
+      "heading": "6402",
+      "noteVi": "Loại khác có SEN → 6402.99.20"
+    },
+    {
+      "id": "64029990",
+      "code": "64029990",
+      "conditions": {
+        "shoeType": "other"
+      },
+      "heading": "6402",
+      "noteVi": "Loại khác (không SEN, không mũi kim loại) → 6402.99.90"
+    }
+  ]
+}
