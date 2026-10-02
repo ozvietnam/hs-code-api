@@ -2438,10 +2438,6 @@
         {
           "prefix": "8504",
           "whyVi": "Nhóm 8504 là bộ chuyển đổi điện (adapter/sạc). Cáp sạc là dây dẫn, không phải thiết bị chuyển đổi."
-        },
-        {
-          "prefix": "8544",
-          "whyVi": "Nhóm 8544.40 là dây dẫn có điện trở ≤ 1000V — cáp sạc < 60V thuộc 8544.41."
         }
       ],
       "askVi": [
@@ -2475,12 +2471,6 @@
           "hs": "85044019",
           "whenVi": "Bộ sạc (adapter) cho điện thoại và thiết bị viễn thông, công suất thấp — biến áp và tụ điện đã lắp thành bộ sạc",
           "confidence": "high"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "8504",
-          "whyVi": "Nhóm 8504.40 là thiết bị chuyển đổi điện nói chung. Bộ sạc điện thoại là mặt hàng được gọi tên riêng trong biểu thuế."
         }
       ],
       "askVi": [],
@@ -2616,6 +2606,74 @@
       "sourceVi": "Biểu thuế 2026 mã 39269099: 'Loại khác' cho đồ nhựa. Chú giải Chương 39 phủ các sản phẩm nhựa gia dụng và công nghiệp."
     },
     {
+      "id": "module-man-hinh-oled",
+      "titleVi": "Mô-đun màn hình OLED điện thoại",
+      "terms": [
+        "mô-đun màn hình OLED",
+        "OLED module điện thoại",
+        "module màn hình OLED",
+        "màn hình OLED điện thoại",
+        "tấm OLED điện thoại",
+        "OLED panel điện thoại",
+        "OLED display module",
+        "màn hình AMOLED điện thoại"
+      ],
+      "candidates": [
+        {
+          "hs": "85241200",
+          "whenVi": "Bằng đi-ốt phát quang hữu cơ (OLED) — mô-đun màn hình điện thoại thuộc nhóm 8524.12",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8471",
+          "whyVi": "Nhóm 8471 là máy tính và thiết bị xử lý dữ liệu. Mô-đun màn hình không phải máy tính."
+        },
+        {
+          "prefix": "8544",
+          "whyVi": "Nhóm 8544 là dây dẫn điện. Mô-đun OLED không phải dây dẫn."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 85241200: 'Bằng đi-ốt phát quang hữu cơ (OLED)' cho mô-đun màn hình điện thoại. Nhóm 8524 phủ linh kiện điện tử."
+    },
+    {
+      "id": "dia-xich-nhong-xe-mo-to",
+      "titleVi": "Bộ đĩa xích và nhông (sprocket) xe mô tô",
+      "terms": [
+        "bộ đĩa xích",
+        "đĩa xích xe máy",
+        "nhông xe máy",
+        "nhông xích",
+        "bộ nhông đĩa",
+        "đĩa xích và nhông",
+        "sprocket xe máy",
+        "bộ truyền xích xe máy",
+        "xích và nhông xe mô tô",
+        "drive sprocket motorcycle"
+      ],
+      "candidates": [
+        {
+          "hs": "87141090",
+          "whenVi": "Bộ phận và phụ kiện xe mô tô, loại khác — đĩa xích và nhông xe mô tô thuộc nhóm 8714.10",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8483",
+          "whyVi": "Nhóm 8483 là bộ truyền động cơ khí. Đĩa xích và nhông xe mô tô thuộc 8714 (phương tiện)."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 87141090: 'Loại khác' cho bộ phận xe mô tô. Đĩa xích và nhông là bộ phận xe mô tô, không thuộc 8483 (bộ truyền động chung)."
+    },
+    {
       "id": "chan-gia-do-dien-thoai",
       "titleVi": "Chân giá đỡ / tripod điện thoại",
       "terms": [
@@ -2652,5 +2710,5 @@
       "sourceVi": "Biểu thuế 2026 mã 96200030: 'Bằng sắt và thép' cho chân giá đỡ. Nhóm 9620 phủ đồ chưa phân loại ở nơi khác."
     }
   ],
-  "updatedAt": "2026-10-02T17:24:00.000Z"
+  "updatedAt": "2026-10-02T17:50:00.000Z"
 }
