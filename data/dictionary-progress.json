@@ -3,7 +3,7 @@
   "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → draft (có bảng, chưa qua cửa dữ liệu thật) → done (qua cửa). `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
     "3923": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T02:01:00.000Z",
       "by": "hermes-211",
       "table": true,
@@ -14,7 +14,7 @@
       "noteVi": "Bảng 16 rules/2 attrs (productKind + specCode), phủ 16/16 lá 8 số. Nguồn: Biểu thuế 2026."
     },
     "3924": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T02:01:00.000Z",
       "by": "hermes-211",
       "leafCount": 7,
@@ -34,8 +34,37 @@
       "table": true,
       "gateVi": "oz/text below acceptance gate — pending expert review"
     },
+    "4008": {
+      "status": "draft",
+      "doneAt": null,
+      "by": "hermes-211",
+      "table": true,
+      "leafCount": 10,
+      "ruleCount": 10,
+      "attrs": [
+        "materialType",
+        "productShape",
+        "specialFeature"
+      ],
+      "noteVi": "Bảng 10 rules / 3 attrs / 10/10 leaves. MFN=3%. Score=10.1 tier=A."
+    },
+    "4016": {
+      "status": "draft",
+      "doneAt": null,
+      "by": "hermes-211",
+      "table": true,
+      "leafCount": 33,
+      "ruleCount": 33,
+      "attrs": [
+        "articleForm",
+        "vehicleKind",
+        "senFlag",
+        "materialForm"
+      ],
+      "noteVi": "Bảng hoàn chỉnh 33 rules / 4 attrs / 33/33 leaves. Biểu thuế 2026."
+    },
     "4202": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T02:02:00.000Z",
       "by": "hermes-211",
       "leafCount": 23,
@@ -44,6 +73,20 @@
       "draftAt": "2026-10-02T15:46:00.000Z",
       "gateVi": "pending expert review after PR#98 merge",
       "noteVi": "Bảng 23 rules/4 attrs (containerKind + outerMaterial + sizeLimit + specificKind), phủ 23/23 mã 8 số. Nguồn: Biểu thuế 2026."
+    },
+    "4412": {
+      "status": "draft",
+      "doneAt": null,
+      "by": "hermes-211",
+      "table": true,
+      "leafCount": 16,
+      "ruleCount": 16,
+      "attrs": [
+        "productKind",
+        "outerPlySpecies",
+        "isTeak"
+      ],
+      "noteVi": "Bảng hoàn chỉnh 16 rules / 3 attrs / 16/16 leaves. MFN=5%. Biểu thuế 2026."
     },
     "5112": {
       "status": "draft",
@@ -54,8 +97,20 @@
       "ruleCount": 7,
       "noteVi": "Draft by Hermes-211 lane A, ca 23:39 02/10"
     },
+    "6004": {
+      "status": "draft",
+      "doneAt": null,
+      "by": "hermes-211",
+      "table": true,
+      "leafCount": 3,
+      "ruleCount": 3,
+      "attrs": [
+        "elasticFiberContent"
+      ],
+      "noteVi": "Bảng 3 rules / 1 attr / 3/3 leaves. MFN=12%. Score=14.6 tier=A."
+    },
     "6005": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T02:03:00.000Z",
       "by": "hermes-211",
       "leafCount": 19,
@@ -134,7 +189,7 @@
       "noteVi": "Bảng hoàn chỉnh 38 rules/11 attrs/38/38 leaves. Nguồn: Biểu thuế 2026. Đã qua test: ALL TESTS PASSED."
     },
     "7318": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T01:52:00.000Z",
       "by": "hermes-211",
       "leafCount": 19,
@@ -157,7 +212,7 @@
       "commit": "pending"
     },
     "7326": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T01:53:00.000Z",
       "by": "hermes-211",
       "table": true,
@@ -168,7 +223,7 @@
       "noteVi": "Bảng 13 rules/2 attrs (articleGroup + articleSubType), phủ 13/13 lá 8 số. Nguồn: Biểu thuế 2026."
     },
     "8208": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T01:54:00.000Z",
       "by": "hermes-211",
       "leafCount": 5,
@@ -190,8 +245,22 @@
       "gateVi": "oz/text below acceptance gate — pending expert review",
       "commit": null
     },
+    "8311": {
+      "status": "draft",
+      "doneAt": null,
+      "by": "hermes-211",
+      "table": true,
+      "leafCount": 10,
+      "ruleCount": 10,
+      "attrs": [
+        "productKind",
+        "processType",
+        "productForm"
+      ],
+      "noteVi": "Bảng hoàn chỉnh 10 rules / 3 attrs / 10/10 leaves. MFN 2-25%. Score=10.5 tier=A residualRatio=0.6."
+    },
     "8405": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T02:05:00.000Z",
       "by": "hermes-211",
       "commit": null,
@@ -223,7 +292,7 @@
       "gateVi": "oz: 22/25 (88%)"
     },
     "8418": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T01:55:00.000Z",
       "by": "hermes-211",
       "table": true,
@@ -240,7 +309,7 @@
       "noteVi": "Bảng 32 rules/4 attrs, flat — đã migrate từ subdir"
     },
     "8420": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T02:05:00.000Z",
       "by": "hermes-211",
       "commit": null,
@@ -271,7 +340,7 @@
       "gateVi": "text: 3/3 (100%)"
     },
     "8428": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T02:05:00.000Z",
       "by": "hermes-211",
       "commit": null,
@@ -391,7 +460,7 @@
       "noteVi": "Bảng 74 rules/5 attrs, flat — đã migrate từ subdir"
     },
     "8505": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T02:05:00.000Z",
       "by": "hermes-211",
       "commit": null,
@@ -403,7 +472,7 @@
       "gateVi": "pending expert review"
     },
     "8509": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T02:05:00.000Z",
       "by": "hermes-211",
       "commit": null,
@@ -415,7 +484,7 @@
       "gateVi": "pending expert review"
     },
     "8513": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T02:05:00.000Z",
       "by": "hermes-211",
       "commit": null,
@@ -437,7 +506,7 @@
       "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8514 --oz"
     },
     "8517": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T01:56:00.000Z",
       "by": "hermes-211",
       "leafCount": 31,
@@ -448,7 +517,7 @@
       "noteVi": "Bảng 31 rules/3 attrs (deviceKind + specificApp + partType), phủ 31/31 mã 8 số. Nguồn: Biểu thuế 2026."
     },
     "8518": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T01:57:00.000Z",
       "by": "hermes-211",
       "table": true,
@@ -513,7 +582,7 @@
       "noteVi": "Bảng 8 rules/4 attrs, phủ 8/8 lá."
     },
     "8534": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T02:04:00.000Z",
       "by": "hermes-211",
       "commit": null,
@@ -543,7 +612,7 @@
       "noteVi": "Bảng 63 rules/3 attrs, flat — đã migrate từ subdir"
     },
     "8537": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T02:05:00.000Z",
       "by": "hermes-211",
       "commit": null,
@@ -554,7 +623,7 @@
       "noteVi": "Bảng đầy đủ 15/15 lá, 16 rules, 8 attrs. Test: cấu trúc + mọi lá có ca chốt + không luật trỏ ngoài nhóm. Verified: pending expert review."
     },
     "8538": {
-      "status": "done",
+      "status": "draft",
       "doneAt": "2026-10-03T02:05:00.000Z",
       "by": "hermes-211",
       "commit": null,
@@ -651,75 +720,6 @@
       "leafCount": 11,
       "ruleCount": 16,
       "noteVi": "Draft by Hermes-211 lane A, ca 23:49 02/10"
-    },
-    "4016": {
-      "status": "draft",
-      "doneAt": null,
-      "by": "hermes-211",
-      "table": true,
-      "leafCount": 33,
-      "ruleCount": 33,
-      "attrs": [
-        "articleForm",
-        "vehicleKind",
-        "senFlag",
-        "materialForm"
-      ],
-      "noteVi": "Bảng hoàn chỉnh 33 rules / 4 attrs / 33/33 leaves. Biểu thuế 2026."
-    },
-    "4412": {
-      "status": "draft",
-      "doneAt": null,
-      "by": "hermes-211",
-      "table": true,
-      "leafCount": 16,
-      "ruleCount": 16,
-      "attrs": [
-        "productKind",
-        "outerPlySpecies",
-        "isTeak"
-      ],
-      "noteVi": "Bảng hoàn chỉnh 16 rules / 3 attrs / 16/16 leaves. MFN=5%. Biểu thuế 2026."
-    },
-    "8311": {
-      "status": "draft",
-      "doneAt": null,
-      "by": "hermes-211",
-      "table": true,
-      "leafCount": 10,
-      "ruleCount": 10,
-      "attrs": [
-        "productKind",
-        "processType",
-        "productForm"
-      ],
-      "noteVi": "Bảng hoàn chỉnh 10 rules / 3 attrs / 10/10 leaves. MFN 2-25%. Score=10.5 tier=A residualRatio=0.6."
-    },
-    "6004": {
-      "status": "draft",
-      "doneAt": null,
-      "by": "hermes-211",
-      "table": true,
-      "leafCount": 3,
-      "ruleCount": 3,
-      "attrs": [
-        "elasticFiberContent"
-      ],
-      "noteVi": "Bảng 3 rules / 1 attr / 3/3 leaves. MFN=12%. Score=14.6 tier=A."
-    },
-    "4008": {
-      "status": "draft",
-      "doneAt": null,
-      "by": "hermes-211",
-      "table": true,
-      "leafCount": 10,
-      "ruleCount": 10,
-      "attrs": [
-        "materialType",
-        "productShape",
-        "specialFeature"
-      ],
-      "noteVi": "Bảng 10 rules / 3 attrs / 10/10 leaves. MFN=3%. Score=10.1 tier=A."
     }
   }
 }
