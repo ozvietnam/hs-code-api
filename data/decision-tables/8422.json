@@ -157,5 +157,42 @@
   "inputAttributes": [
     "machineKind"
   ],
-  "essenceVi": "loại máy"
+  "essenceVi": "loại máy",
+  "attributes": {
+    "machineKind": {
+      "type": "enum",
+      "domain": [
+        "cleanDryContainers",
+        "dishwasherHousehold",
+        "dishwasherOther",
+        "fillSealLabel",
+        "packWrap",
+        "parts842211",
+        "partsOther"
+      ],
+      "detect": {
+        "cleanDryContainers": [
+          "cleanDryContainers"
+        ],
+        "dishwasherHousehold": [
+          "dishwasherHousehold"
+        ],
+        "dishwasherOther": [
+          "dishwasherOther"
+        ],
+        "fillSealLabel": [
+          "fillSealLabel"
+        ],
+        "packWrap": [
+          "packWrap"
+        ],
+        "parts842211": [
+          "parts842211"
+        ],
+        "partsOther": [
+          "partsOther"
+        ]
+      }
+    }
+  }
 }
