@@ -10,8 +10,14 @@ const agents = fs.readFileSync('AGENTS.md', 'utf8');
 const llms = fs.readFileSync('public/llms.txt', 'utf8');
 const conflicts = Object.keys(JSON.parse(fs.readFileSync('data/conflicts.json', 'utf8'))).length;
 const legal = JSON.parse(fs.readFileSync('data/legal-docs.json', 'utf8'));
-const docs = Object.keys(legal.documents).length;
-const verified = legal.verifiedTitles;
+// legal-docs.json is flat {code: doc} — normalize
+const docs = legal.documents && Object.keys(legal.documents).length > 0
+  ? Object.keys(legal.documents).length
+  : Object.keys(legal).length;
+// verifiedTitles was a top-level count; now computed from verified flag on each doc
+const verified = docs > 0
+  ? (legal.documents ? Object.values(legal.documents) : Object.values(legal)).filter((d) => d.verified).length
+  : 0;
 const rows = Object.keys(JSON.parse(fs.readFileSync('data/tax.json', 'utf8'))).length;
 const fmt = (n) => n.toLocaleString('de-DE'); // 11.871
 const precRaw = JSON.parse(fs.readFileSync('data/precedents.json', 'utf8'));

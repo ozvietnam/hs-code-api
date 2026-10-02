@@ -38,7 +38,8 @@ const titlesPath = join(root, 'data', 'legal-doc-titles.json');
 const idx = JSON.parse(readFileSync(idxPath, 'utf8'));
 const titlesRaw = JSON.parse(readFileSync(titlesPath, 'utf8'));
 const titles = titlesRaw.titles || titlesRaw;
-const documents = idx.documents || {};
+// legal-docs.json is flat {code: doc} — normalize to {documents}
+const documents = idx.documents && Object.keys(idx.documents).length > 0 ? idx.documents : idx;
 
 const require = createRequire(join(root, 'package.json'));
 const { aliasKeys, parseDocCode } = require('./lib/legal-docs.js');
