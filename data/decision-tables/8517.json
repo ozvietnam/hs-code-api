@@ -20,15 +20,63 @@
       "labelVi": "Loại thiết bị viễn thông",
       "questionVi": "Thiết bị viễn thông thuộc loại nào: điện thoại cố định/cordless, điện thoại thông minh (smartphone), điện thoại di động tế bào, thiết bị mạng (switch/router/modem), trạm gốc (base station), ăng ten, bộ phận (parts), hay thiết bị viễn thông khác?",
       "detect": {
-        "smartphone": ["điện thoại thông minh", "smartphone", "điện thoại intel", "điện thoại iphone", "điện thoại samsung"],
-        "cellular_phone": ["điện thoại di động", "điện thoại di động", "điện thoại di động", "điện thoại di động"],
-        "cordless_phone": ["điện thoại cordless", "điện thoại không dây", "điện thoại bàn không dây"],
-        "base_station": ["trạm gốc", "base station", "trạm phát sóng", "trạm BTS"],
-        "network_equipment": ["switch", "router", "modem", "thiết bị mạng", "network equipment", "bộ chuyển mạch", "access point", "AP wifi"],
-        "antenna": ["ăng ten", "antenna", "anten", "đầu thu phát"],
-        "parts": ["bộ phận", "parts", "linh kiện viễn thông", "phụ tùng viễn thông"],
-        "other_telephone": ["điện thoại", "telephone", "điện thoại cố định", "điện thoại bàn"],
-        "other_telecom_device": ["thiết bị viễn thông", "viễn thông", "telecom device"]
+        "smartphone": [
+          "điện thoại thông minh",
+          "smartphone",
+          "điện thoại intel",
+          "điện thoại iphone",
+          "điện thoại samsung"
+        ],
+        "cellular_phone": [
+          "điện thoại di động",
+          "điện thoại di động",
+          "điện thoại di động",
+          "điện thoại di động"
+        ],
+        "cordless_phone": [
+          "điện thoại cordless",
+          "điện thoại không dây",
+          "điện thoại bàn không dây"
+        ],
+        "base_station": [
+          "trạm gốc",
+          "base station",
+          "trạm phát sóng",
+          "trạm BTS"
+        ],
+        "network_equipment": [
+          "switch",
+          "router",
+          "modem",
+          "thiết bị mạng",
+          "network equipment",
+          "bộ chuyển mạch",
+          "access point",
+          "AP wifi"
+        ],
+        "antenna": [
+          "ăng ten",
+          "antenna",
+          "anten",
+          "đầu thu phát"
+        ],
+        "parts": [
+          "bộ phận",
+          "parts",
+          "linh kiện viễn thông",
+          "phụ tùng viễn thông"
+        ],
+        "other_telephone": [
+          "điện thoại",
+          "telephone",
+          "điện thoại cố định",
+          "điện thoại bàn"
+        ],
+        "other_telecom_device": [
+          "thiết bị viễn thông",
+          "viễn thông",
+          "telecom device"
+        ]
       }
     },
     {
@@ -55,12 +103,32 @@
       "labelVi": "Ứng dụng cụ thể / loại mạng",
       "questionVi": "Thiết bị dùng cho mục đích gì: chuyển mạch (switching), modem, router/gateway, bộ điều khiển/adaptor, thiết bị mạng nội bộ không dây (WLAN), truyền dẫn vô tuyến, vệ tinh, pager, hội nghị nhiều thứ tiếng, hay ứng dụng khác?",
       "detect": {
-        "switching": ["switch", "chuyển mạch", "switching"],
-        "modem": ["modem"],
-        "router_gateway": ["router", "gateway"],
-        "wlan_access_point": ["access point", "AP wifi", "wifi AP", "WLAN"],
-        "satellite": ["vệ tinh", "satellite"],
-        "pager": ["pager", "máy báo"],
+        "switching": [
+          "switch",
+          "chuyển mạch",
+          "switching"
+        ],
+        "modem": [
+          "modem"
+        ],
+        "router_gateway": [
+          "router",
+          "gateway"
+        ],
+        "wlan_access_point": [
+          "access point",
+          "AP wifi",
+          "wifi AP",
+          "WLAN"
+        ],
+        "satellite": [
+          "vệ tinh",
+          "satellite"
+        ],
+        "pager": [
+          "pager",
+          "máy báo"
+        ],
         "other_telecom_device": []
       }
     },
@@ -421,5 +489,207 @@
   ],
   "hitPolicy": "PRIORITY",
   "essenceTestVi": "deviceKind (9 giá trị) + specificApp (15 giá trị) + partType (9 giá trị) — 3 thuộc tính phân biệt 31 mã 8 số trong nhóm 8517. Phân loại chính: thiết bị đầu cuối (cordless/smartphone/cellular/other telephone) vs thiết bị mạng (base station/radio/network equipment) vs ăng ten vs bộ phận. Phân loại phụ: ứng dụng cụ thể (switching/modem/router/wlan/satellite/pager/conference) hoặc loại bộ phận (cell phone/router/wired/radio). Thuế MFN: hầu hết 0%, ngoại trừ 85176292 (10%), 85177932 (3%), 85177992 (5%).",
-  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 8517 (Thông tư 65/2024/TT-BTC)."
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 8517 (Thông tư 65/2024/TT-BTC).",
+  "attributes": {
+    "deviceKind": {
+      "type": "enum",
+      "domain": [
+        "antenna",
+        "base_station",
+        "cellular_phone",
+        "cordless_phone",
+        "network_equipment",
+        "other_telecom_device",
+        "other_telephone",
+        "parts",
+        "smartphone"
+      ],
+      "detect": {
+        "antenna": [
+          "antenna"
+        ],
+        "base_station": [
+          "base",
+          "station"
+        ],
+        "cellular_phone": [
+          "cellular",
+          "phone"
+        ],
+        "cordless_phone": [
+          "cordless",
+          "phone"
+        ],
+        "network_equipment": [
+          "network",
+          "equipment"
+        ],
+        "other_telecom_device": [
+          "other",
+          "telecom",
+          "device"
+        ],
+        "other_telephone": [
+          "other",
+          "telephone"
+        ],
+        "parts": [
+          "parts"
+        ],
+        "smartphone": [
+          "smartphone"
+        ]
+      }
+    },
+    "partType": {
+      "type": "enum",
+      "domain": [
+        "cell_phone_parts",
+        "other_parts",
+        "other_phone_parts",
+        "other_telecom_parts",
+        "radio_phone_parts",
+        "radio_transmission_parts",
+        "router_gateway_parts",
+        "wired_equipment_parts",
+        "wired_phone_parts"
+      ],
+      "detect": {
+        "cell_phone_parts": [
+          "cell",
+          "phone",
+          "parts"
+        ],
+        "other_parts": [
+          "other",
+          "parts"
+        ],
+        "other_phone_parts": [
+          "other",
+          "phone",
+          "parts"
+        ],
+        "other_telecom_parts": [
+          "other",
+          "telecom",
+          "parts"
+        ],
+        "radio_phone_parts": [
+          "radio",
+          "phone",
+          "parts"
+        ],
+        "radio_transmission_parts": [
+          "radio",
+          "transmission",
+          "parts"
+        ],
+        "router_gateway_parts": [
+          "router",
+          "gateway",
+          "parts"
+        ],
+        "wired_equipment_parts": [
+          "wired",
+          "equipment",
+          "parts"
+        ],
+        "wired_phone_parts": [
+          "wired",
+          "phone",
+          "parts"
+        ]
+      }
+    },
+    "specificApp": {
+      "type": "enum",
+      "domain": [
+        "concentrator_multiplexer",
+        "conference_interpretation",
+        "interpretation_system",
+        "modem",
+        "other_data_equipment",
+        "other_radio_line",
+        "other_radio_transmission",
+        "other_telecom_device",
+        "other_telecom_transmitter",
+        "pager",
+        "radio_line",
+        "router_gateway",
+        "satellite",
+        "switching",
+        "wlan_access_point"
+      ],
+      "detect": {
+        "concentrator_multiplexer": [
+          "concentrator",
+          "multiplexer"
+        ],
+        "conference_interpretation": [
+          "conference",
+          "interpretation"
+        ],
+        "interpretation_system": [
+          "interpretation",
+          "system"
+        ],
+        "modem": [
+          "modem"
+        ],
+        "other_data_equipment": [
+          "other",
+          "data",
+          "equipment"
+        ],
+        "other_radio_line": [
+          "other",
+          "radio",
+          "line"
+        ],
+        "other_radio_transmission": [
+          "other",
+          "radio",
+          "transmission"
+        ],
+        "other_telecom_device": [
+          "other",
+          "telecom",
+          "device"
+        ],
+        "other_telecom_transmitter": [
+          "other",
+          "telecom",
+          "transmitter"
+        ],
+        "pager": [
+          "pager"
+        ],
+        "radio_line": [
+          "radio",
+          "line"
+        ],
+        "router_gateway": [
+          "router",
+          "gateway"
+        ],
+        "satellite": [
+          "satellite"
+        ],
+        "switching": [
+          "switching"
+        ],
+        "wlan_access_point": [
+          "wlan",
+          "access",
+          "point"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "deviceKind",
+    "partType",
+    "specificApp"
+  ],
+  "essenceVi": "deviceKind; partType; specificApp"
 }
