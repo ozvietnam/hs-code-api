@@ -255,7 +255,7 @@ check('getProcedureByCode(may-mac-84) is a chapter-group (has chapters)', !!mayM
 // 2026-10-02: chapter-groups now have exemptions derived from procedure types
 check('chapter-group may-mac-84 has exemptions', Array.isArray(mayMac84?.exemptions) && mayMac84.exemptions.length > 0);
 check('chapter-group dong-vat-01 has exemptions', Array.isArray(getProcedureByCode('dong-vat-01')?.exemptions));
-check('chapter-group chuong-77 has no exemptions (WCO reserved)', getProcedureByCode('chuong-77')?.exemptions === undefined);
+check('chapter-group chuong-77 has exemptions (empty array — WCO reserved)', Array.isArray(getProcedureByCode('chuong-77')?.exemptions));
 
 // Verify exemptions count matches merged procedure-type exemptions
 const mayMacExemptions = new Set(mayMac84?.exemptions || []);
