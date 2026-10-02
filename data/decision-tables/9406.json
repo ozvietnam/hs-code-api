@@ -18,11 +18,50 @@
         "yes": [
           "nhà trồng cây",
           "greenhouse",
-          "nhà kính"
+          "nhà kính",
+          "Bộ nhà chòi bằng thép",
+          "Bộ nhà chòi lắp ghép",
+          "Bộ nhà chòi thép sơn tĩnh điện"
         ],
         "no": [
           "công trình khác",
           "nhà tiền chế"
+        ]
+      },
+      "_detect": {
+        "yes": [
+          {
+            "raw": "nhà trồng cây",
+            "dia": true,
+            "key": "nhà trồng cây",
+            "folded": "nha trong cay"
+          },
+          {
+            "raw": "greenhouse",
+            "dia": false,
+            "key": "greenhouse",
+            "folded": "greenhouse"
+          },
+          {
+            "raw": "nhà kính",
+            "dia": true,
+            "key": "nhà kính",
+            "folded": "nha kinh"
+          }
+        ],
+        "no": [
+          {
+            "raw": "công trình khác",
+            "dia": true,
+            "key": "công trình khác",
+            "folded": "cong trinh khac"
+          },
+          {
+            "raw": "nhà tiền chế",
+            "dia": true,
+            "key": "nhà tiền chế",
+            "folded": "nha tien che"
+          }
         ]
       }
     },
@@ -43,6 +82,36 @@
         ],
         "no": [
           "lắp tại chỗ"
+        ]
+      },
+      "_detect": {
+        "yes": [
+          {
+            "raw": "lắp ghép",
+            "dia": true,
+            "key": "lắp ghép",
+            "folded": "lap ghep"
+          },
+          {
+            "raw": "prefab",
+            "dia": false,
+            "key": "prefab",
+            "folded": "prefab"
+          },
+          {
+            "raw": "tiền chế",
+            "dia": true,
+            "key": "tiền chế",
+            "folded": "tien che"
+          }
+        ],
+        "no": [
+          {
+            "raw": "lắp tại chỗ",
+            "dia": true,
+            "key": "lắp tại chỗ",
+            "folded": "lap tai cho"
+          }
         ]
       }
     },
@@ -81,6 +150,96 @@
         ],
         "other": [
           "vật liệu khác"
+        ]
+      },
+      "_detect": {
+        "metal_steel": [
+          {
+            "raw": "sắt",
+            "dia": true,
+            "key": "sắt",
+            "folded": "sat"
+          },
+          {
+            "raw": "thép",
+            "dia": true,
+            "key": "thép",
+            "folded": "thep"
+          },
+          {
+            "raw": "metal",
+            "dia": false,
+            "key": "metal",
+            "folded": "metal"
+          },
+          {
+            "raw": "steel",
+            "dia": false,
+            "key": "steel",
+            "folded": "steel"
+          }
+        ],
+        "plastic": [
+          {
+            "raw": "plastic",
+            "dia": false,
+            "key": "plastic",
+            "folded": "plastic"
+          },
+          {
+            "raw": "nhựa",
+            "dia": true,
+            "key": "nhựa",
+            "folded": "nhua"
+          }
+        ],
+        "aluminum": [
+          {
+            "raw": "nhôm",
+            "dia": true,
+            "key": "nhôm",
+            "folded": "nhom"
+          },
+          {
+            "raw": "aluminum",
+            "dia": false,
+            "key": "aluminum",
+            "folded": "aluminum"
+          }
+        ],
+        "cement_concrete": [
+          {
+            "raw": "xi măng",
+            "dia": true,
+            "key": "xi măng",
+            "folded": "xi mang"
+          },
+          {
+            "raw": "bê tông",
+            "dia": true,
+            "key": "bê tông",
+            "folded": "be tong"
+          },
+          {
+            "raw": "cement",
+            "dia": false,
+            "key": "cement",
+            "folded": "cement"
+          },
+          {
+            "raw": "concrete",
+            "dia": false,
+            "key": "concrete",
+            "folded": "concrete"
+          }
+        ],
+        "other": [
+          {
+            "raw": "vật liệu khác",
+            "dia": true,
+            "key": "vật liệu khác",
+            "folded": "vat lieu khac"
+          }
         ]
       }
     }

@@ -24,7 +24,10 @@
           "furnace",
           "oven industrial",
           "lò luyện",
-          "kiln electric"
+          "kiln electric",
+          "Tủ ủ bột",
+          "Tủ gia nhiệt công nghiệp",
+          "Lò hấp nướng bánh công nghiệp"
         ],
         "inductionHeatingEquipment": [
           "cảm ứng",
@@ -38,6 +41,104 @@
           "furnace part",
           "heating element spare",
           "8514.90"
+        ]
+      },
+      "_detect": {
+        "furnaceOven": [
+          {
+            "raw": "lò nung",
+            "dia": true,
+            "key": "lò nung",
+            "folded": "lo nung"
+          },
+          {
+            "raw": "lò sấy",
+            "dia": true,
+            "key": "lò sấy",
+            "folded": "lo say"
+          },
+          {
+            "raw": "furnace",
+            "dia": false,
+            "key": "furnace",
+            "folded": "furnace"
+          },
+          {
+            "raw": "oven industrial",
+            "dia": false,
+            "key": "oven industrial",
+            "folded": "oven industrial"
+          },
+          {
+            "raw": "lò luyện",
+            "dia": true,
+            "key": "lò luyện",
+            "folded": "lo luyen"
+          },
+          {
+            "raw": "kiln electric",
+            "dia": false,
+            "key": "kiln electric",
+            "folded": "kiln electric"
+          }
+        ],
+        "inductionHeatingEquipment": [
+          {
+            "raw": "cảm ứng",
+            "dia": true,
+            "key": "cảm ứng",
+            "folded": "cam ung"
+          },
+          {
+            "raw": "induction heater",
+            "dia": false,
+            "key": "induction heater",
+            "folded": "induction heater"
+          },
+          {
+            "raw": "tổn hao điện môi",
+            "dia": true,
+            "key": "tổn hao điện môi",
+            "folded": "ton hao dien moi"
+          },
+          {
+            "raw": "dielectric heating",
+            "dia": false,
+            "key": "dielectric heating",
+            "folded": "dielectric heating"
+          },
+          {
+            "raw": "induction coil equipment",
+            "dia": false,
+            "key": "induction coil equipment",
+            "folded": "induction coil equipment"
+          }
+        ],
+        "parts": [
+          {
+            "raw": "bộ phận lò",
+            "dia": true,
+            "key": "bộ phận lò",
+            "folded": "bo phan lo"
+          },
+          {
+            "raw": "furnace part",
+            "dia": false,
+            "key": "furnace part",
+            "folded": "furnace part"
+          },
+          {
+            "raw": "heating element spare",
+            "dia": false,
+            "key": "heating element spare",
+            "folded": "heating element spare"
+          },
+          {
+            "raw": "8514.90",
+            "dia": false,
+            "key": "8514.90",
+            "folded": "8514.90"
+          }
         ]
       }
     },
@@ -82,7 +183,140 @@
         "otherTechnology": [
           "lò khác",
           "furnace other technology",
-          "infrared furnace"
+          "infrared furnace",
+          "Lò sấy công nghiệp"
+        ]
+      },
+      "_detect": {
+        "resistance": [
+          {
+            "raw": "điện trở",
+            "dia": true,
+            "key": "điện trở",
+            "folded": "dien tro"
+          },
+          {
+            "raw": "resistance heated",
+            "dia": false,
+            "key": "resistance heated",
+            "folded": "resistance heated"
+          },
+          {
+            "raw": "lò điện trở",
+            "dia": true,
+            "key": "lò điện trở",
+            "folded": "lo dien tro"
+          },
+          {
+            "raw": "hip",
+            "dia": false,
+            "key": "hip",
+            "folded": "hip"
+          },
+          {
+            "raw": "hot isostatic",
+            "dia": false,
+            "key": "hot isostatic",
+            "folded": "hot isostatic"
+          }
+        ],
+        "inductionDielectric": [
+          {
+            "raw": "cảm ứng",
+            "dia": true,
+            "key": "cảm ứng",
+            "folded": "cam ung"
+          },
+          {
+            "raw": "induction furnace",
+            "dia": false,
+            "key": "induction furnace",
+            "folded": "induction furnace"
+          },
+          {
+            "raw": "microwave furnace",
+            "dia": false,
+            "key": "microwave furnace",
+            "folded": "microwave furnace"
+          },
+          {
+            "raw": "điện môi",
+            "dia": true,
+            "key": "điện môi",
+            "folded": "dien moi"
+          },
+          {
+            "raw": "dielectric loss",
+            "dia": false,
+            "key": "dielectric loss",
+            "folded": "dielectric loss"
+          }
+        ],
+        "electronBeam": [
+          {
+            "raw": "tia electron",
+            "dia": false,
+            "key": "tia electron",
+            "folded": "tia electron"
+          },
+          {
+            "raw": "electron beam",
+            "dia": false,
+            "key": "electron beam",
+            "folded": "electron beam"
+          },
+          {
+            "raw": "eb furnace",
+            "dia": false,
+            "key": "eb furnace",
+            "folded": "eb furnace"
+          }
+        ],
+        "plasmaVacuumArc": [
+          {
+            "raw": "plasma",
+            "dia": false,
+            "key": "plasma",
+            "folded": "plasma"
+          },
+          {
+            "raw": "hồ quang chân không",
+            "dia": true,
+            "key": "hồ quang chân không",
+            "folded": "ho quang chan khong"
+          },
+          {
+            "raw": "vacuum arc",
+            "dia": false,
+            "key": "vacuum arc",
+            "folded": "vacuum arc"
+          },
+          {
+            "raw": "plasma furnace",
+            "dia": false,
+            "key": "plasma furnace",
+            "folded": "plasma furnace"
+          }
+        ],
+        "otherTechnology": [
+          {
+            "raw": "lò khác",
+            "dia": true,
+            "key": "lò khác",
+            "folded": "lo khac"
+          },
+          {
+            "raw": "furnace other technology",
+            "dia": false,
+            "key": "furnace other technology",
+            "folded": "furnace other technology"
+          },
+          {
+            "raw": "infrared furnace",
+            "dia": false,
+            "key": "infrared furnace",
+            "folded": "infrared furnace"
+          }
         ]
       }
     },
@@ -107,6 +341,60 @@
           "box furnace",
           "tube furnace resistance",
           "lò điện trở khác"
+        ]
+      },
+      "_detect": {
+        "hotIsostaticPress": [
+          {
+            "raw": "hip",
+            "dia": false,
+            "key": "hip",
+            "folded": "hip"
+          },
+          {
+            "raw": "hot isostatic",
+            "dia": false,
+            "key": "hot isostatic",
+            "folded": "hot isostatic"
+          },
+          {
+            "raw": "đẳng tĩnh",
+            "dia": true,
+            "key": "đẳng tĩnh",
+            "folded": "dang tinh"
+          },
+          {
+            "raw": "isostatic press furnace",
+            "dia": false,
+            "key": "isostatic press furnace",
+            "folded": "isostatic press furnace"
+          }
+        ],
+        "otherResistance": [
+          {
+            "raw": "lò hơi",
+            "dia": true,
+            "key": "lò hơi",
+            "folded": "lo hoi"
+          },
+          {
+            "raw": "box furnace",
+            "dia": false,
+            "key": "box furnace",
+            "folded": "box furnace"
+          },
+          {
+            "raw": "tube furnace resistance",
+            "dia": false,
+            "key": "tube furnace resistance",
+            "folded": "tube furnace resistance"
+          },
+          {
+            "raw": "lò điện trở khác",
+            "dia": true,
+            "key": "lò điện trở khác",
+            "folded": "lo dien tro khac"
+          }
         ]
       }
     },
@@ -133,6 +421,72 @@
           "không pcb",
           "general industrial furnace",
           "lò luyện kim"
+        ]
+      },
+      "_detect": {
+        "yes": [
+          {
+            "raw": "mạch in",
+            "dia": true,
+            "key": "mạch in",
+            "folded": "mach in"
+          },
+          {
+            "raw": "pcb",
+            "dia": false,
+            "key": "pcb",
+            "folded": "pcb"
+          },
+          {
+            "raw": "tấm mạch",
+            "dia": true,
+            "key": "tấm mạch",
+            "folded": "tam mach"
+          },
+          {
+            "raw": "printed circuit board",
+            "dia": false,
+            "key": "printed circuit board",
+            "folded": "printed circuit board"
+          },
+          {
+            "raw": "laminate pcb",
+            "dia": false,
+            "key": "laminate pcb",
+            "folded": "laminate pcb"
+          },
+          {
+            "raw": "8514.20.20",
+            "dia": false,
+            "key": "8514.20.20",
+            "folded": "8514.20.20"
+          },
+          {
+            "raw": "8514.31.10",
+            "dia": false,
+            "key": "8514.31.10",
+            "folded": "8514.31.10"
+          }
+        ],
+        "no": [
+          {
+            "raw": "không pcb",
+            "dia": true,
+            "key": "không pcb",
+            "folded": "khong pcb"
+          },
+          {
+            "raw": "general industrial furnace",
+            "dia": false,
+            "key": "general industrial furnace",
+            "folded": "general industrial furnace"
+          },
+          {
+            "raw": "lò luyện kim",
+            "dia": true,
+            "key": "lò luyện kim",
+            "folded": "lo luyen kim"
+          }
         ]
       }
     }

@@ -26,7 +26,22 @@
           "hand tool",
           "power tool",
           "cưa xích",
-          "chain saw"
+          "chain saw",
+          "Búa khoan khí ép",
+          "Máy đánh bóng kim loại cầm tay",
+          "Máy mài cầm tay",
+          "Súng bắn đinh cầm tay",
+          "Súng bơm keo cầm tay",
+          "Máy bắn đinh cầm tay",
+          "Thiết bị khắc mã laser cầm tay",
+          "Máy vặn vít cầm tay",
+          "Búa rung khí nén",
+          "Lá nhíp (Cánh phíp)",
+          "Cơ cấu khoá choòng",
+          "Choòng khoan đá",
+          "Máy đục đá khí nén",
+          "Búa khoan cầm tay (dạng quay)",
+          "Chân ben"
         ],
         "parts": [
           "bộ phận",
@@ -34,6 +49,96 @@
           "spare part",
           "replacement part",
           "parts of tools"
+        ]
+      },
+      "_detect": {
+        "completeTool": [
+          {
+            "raw": "máy khoan",
+            "dia": true,
+            "key": "máy khoan",
+            "folded": "may khoan"
+          },
+          {
+            "raw": "máy cưa",
+            "dia": true,
+            "key": "máy cưa",
+            "folded": "may cua"
+          },
+          {
+            "raw": "impact wrench",
+            "dia": false,
+            "key": "impact wrench",
+            "folded": "impact wrench"
+          },
+          {
+            "raw": "grinder",
+            "dia": false,
+            "key": "grinder",
+            "folded": "grinder"
+          },
+          {
+            "raw": "dụng cụ cầm tay",
+            "dia": true,
+            "key": "dụng cụ cầm tay",
+            "folded": "dung cu cam tay"
+          },
+          {
+            "raw": "hand tool",
+            "dia": false,
+            "key": "hand tool",
+            "folded": "hand tool"
+          },
+          {
+            "raw": "power tool",
+            "dia": false,
+            "key": "power tool",
+            "folded": "power tool"
+          },
+          {
+            "raw": "cưa xích",
+            "dia": true,
+            "key": "cưa xích",
+            "folded": "cua xich"
+          },
+          {
+            "raw": "chain saw",
+            "dia": false,
+            "key": "chain saw",
+            "folded": "chain saw"
+          }
+        ],
+        "parts": [
+          {
+            "raw": "bộ phận",
+            "dia": true,
+            "key": "bộ phận",
+            "folded": "bo phan"
+          },
+          {
+            "raw": "phụ tùng",
+            "dia": true,
+            "key": "phụ tùng",
+            "folded": "phu tung"
+          },
+          {
+            "raw": "spare part",
+            "dia": false,
+            "key": "spare part",
+            "folded": "spare part"
+          },
+          {
+            "raw": "replacement part",
+            "dia": false,
+            "key": "replacement part",
+            "folded": "replacement part"
+          },
+          {
+            "raw": "parts of tools",
+            "dia": false,
+            "key": "parts of tools",
+            "folded": "parts of tools"
+          }
         ]
       }
     },
@@ -60,7 +165,9 @@
           "cordless",
           "pin lithium",
           "mô-tơ điện",
-          "18v drill"
+          "18v drill",
+          "Máy cưa xích",
+          "Máy khoan cầm tay"
         ],
         "hydraulicOrOtherNonElectric": [
           "thủy lực",
@@ -69,6 +176,110 @@
           "chain saw petrol",
           "two-stroke",
           "non-electric motor"
+        ]
+      },
+      "_detect": {
+        "pneumatic": [
+          {
+            "raw": "khí nén",
+            "dia": true,
+            "key": "khí nén",
+            "folded": "khi nen"
+          },
+          {
+            "raw": "pneumatic",
+            "dia": false,
+            "key": "pneumatic",
+            "folded": "pneumatic"
+          },
+          {
+            "raw": "air tool",
+            "dia": false,
+            "key": "air tool",
+            "folded": "air tool"
+          },
+          {
+            "raw": " súng bắn đinh khí",
+            "dia": true,
+            "key": "súng bắn đinh khí",
+            "folded": "sung ban dinh khi"
+          }
+        ],
+        "electricMotor": [
+          {
+            "raw": "điện",
+            "dia": true,
+            "key": "điện",
+            "folded": "dien"
+          },
+          {
+            "raw": "electric",
+            "dia": false,
+            "key": "electric",
+            "folded": "electric"
+          },
+          {
+            "raw": "cordless",
+            "dia": false,
+            "key": "cordless",
+            "folded": "cordless"
+          },
+          {
+            "raw": "pin lithium",
+            "dia": false,
+            "key": "pin lithium",
+            "folded": "pin lithium"
+          },
+          {
+            "raw": "mô-tơ điện",
+            "dia": true,
+            "key": "mô tơ điện",
+            "folded": "mo to dien"
+          },
+          {
+            "raw": "18v drill",
+            "dia": false,
+            "key": "18v drill",
+            "folded": "18v drill"
+          }
+        ],
+        "hydraulicOrOtherNonElectric": [
+          {
+            "raw": "thủy lực",
+            "dia": true,
+            "key": "thủy lực",
+            "folded": "thuy luc"
+          },
+          {
+            "raw": "hydraulic",
+            "dia": false,
+            "key": "hydraulic",
+            "folded": "hydraulic"
+          },
+          {
+            "raw": "cưa xích xăng",
+            "dia": true,
+            "key": "cưa xích xăng",
+            "folded": "cua xich xang"
+          },
+          {
+            "raw": "chain saw petrol",
+            "dia": false,
+            "key": "chain saw petrol",
+            "folded": "chain saw petrol"
+          },
+          {
+            "raw": "two-stroke",
+            "dia": false,
+            "key": "two stroke",
+            "folded": "two stroke"
+          },
+          {
+            "raw": "non-electric motor",
+            "dia": false,
+            "key": "non electric motor",
+            "folded": "non electric motor"
+          }
         ]
       }
     },
@@ -94,6 +305,66 @@
           "rivet gun",
           "stapler pneumatic",
           "khí nén khác"
+        ]
+      },
+      "_detect": {
+        "rotary": [
+          {
+            "raw": "quay",
+            "dia": false,
+            "key": "quay",
+            "folded": "quay"
+          },
+          {
+            "raw": "rotary",
+            "dia": false,
+            "key": "rotary",
+            "folded": "rotary"
+          },
+          {
+            "raw": "grinder pneumatic",
+            "dia": false,
+            "key": "grinder pneumatic",
+            "folded": "grinder pneumatic"
+          },
+          {
+            "raw": "impact rotary",
+            "dia": false,
+            "key": "impact rotary",
+            "folded": "impact rotary"
+          },
+          {
+            "raw": "combined rotary-percussion",
+            "dia": false,
+            "key": "combined rotary percussion",
+            "folded": "combined rotary percussion"
+          }
+        ],
+        "other": [
+          {
+            "raw": "búa khí",
+            "dia": true,
+            "key": "búa khí",
+            "folded": "bua khi"
+          },
+          {
+            "raw": "rivet gun",
+            "dia": false,
+            "key": "rivet gun",
+            "folded": "rivet gun"
+          },
+          {
+            "raw": "stapler pneumatic",
+            "dia": false,
+            "key": "stapler pneumatic",
+            "folded": "stapler pneumatic"
+          },
+          {
+            "raw": "khí nén khác",
+            "dia": true,
+            "key": "khí nén khác",
+            "folded": "khi nen khac"
+          }
         ]
       }
     },
@@ -128,6 +399,98 @@
           "impact driver",
           "multitool"
         ]
+      },
+      "_detect": {
+        "drill": [
+          {
+            "raw": "khoan",
+            "dia": false,
+            "key": "khoan",
+            "folded": "khoan"
+          },
+          {
+            "raw": "drill",
+            "dia": false,
+            "key": "drill",
+            "folded": "drill"
+          },
+          {
+            "raw": "driver drill",
+            "dia": false,
+            "key": "driver drill",
+            "folded": "driver drill"
+          },
+          {
+            "raw": "hammer drill electric",
+            "dia": false,
+            "key": "hammer drill electric",
+            "folded": "hammer drill electric"
+          }
+        ],
+        "saw": [
+          {
+            "raw": "cưa",
+            "dia": true,
+            "key": "cưa",
+            "folded": "cua"
+          },
+          {
+            "raw": "saw",
+            "dia": false,
+            "key": "saw",
+            "folded": "saw"
+          },
+          {
+            "raw": "jigsaw",
+            "dia": false,
+            "key": "jigsaw",
+            "folded": "jigsaw"
+          },
+          {
+            "raw": "circular saw",
+            "dia": false,
+            "key": "circular saw",
+            "folded": "circular saw"
+          },
+          {
+            "raw": "reciprocating saw",
+            "dia": false,
+            "key": "reciprocating saw",
+            "folded": "reciprocating saw"
+          }
+        ],
+        "other": [
+          {
+            "raw": "máy mài",
+            "dia": true,
+            "key": "máy mài",
+            "folded": "may mai"
+          },
+          {
+            "raw": "grinder electric",
+            "dia": false,
+            "key": "grinder electric",
+            "folded": "grinder electric"
+          },
+          {
+            "raw": "sander",
+            "dia": false,
+            "key": "sander",
+            "folded": "sander"
+          },
+          {
+            "raw": "impact driver",
+            "dia": false,
+            "key": "impact driver",
+            "folded": "impact driver"
+          },
+          {
+            "raw": "multitool",
+            "dia": false,
+            "key": "multitool",
+            "folded": "multitool"
+          }
+        ]
       }
     },
     {
@@ -150,6 +513,54 @@
           "hydraulic cutter",
           "petrol trimmer",
           "non-electric other"
+        ]
+      },
+      "_detect": {
+        "chainSaw": [
+          {
+            "raw": "cưa xích",
+            "dia": true,
+            "key": "cưa xích",
+            "folded": "cua xich"
+          },
+          {
+            "raw": "chain saw",
+            "dia": false,
+            "key": "chain saw",
+            "folded": "chain saw"
+          },
+          {
+            "raw": "chainsaw",
+            "dia": false,
+            "key": "chainsaw",
+            "folded": "chainsaw"
+          }
+        ],
+        "other": [
+          {
+            "raw": "thủy lực cầm tay",
+            "dia": true,
+            "key": "thủy lực cầm tay",
+            "folded": "thuy luc cam tay"
+          },
+          {
+            "raw": "hydraulic cutter",
+            "dia": false,
+            "key": "hydraulic cutter",
+            "folded": "hydraulic cutter"
+          },
+          {
+            "raw": "petrol trimmer",
+            "dia": false,
+            "key": "petrol trimmer",
+            "folded": "petrol trimmer"
+          },
+          {
+            "raw": "non-electric other",
+            "dia": false,
+            "key": "non electric other",
+            "folded": "non electric other"
+          }
         ]
       }
     },
@@ -183,6 +594,76 @@
           "bộ phận dụng cụ cầm tay khác",
           "hydraulic tool part"
         ]
+      },
+      "_detect": {
+        "chainSaw": [
+          {
+            "raw": "bộ phận cưa xích",
+            "dia": true,
+            "key": "bộ phận cưa xích",
+            "folded": "bo phan cua xich"
+          },
+          {
+            "raw": "chainsaw spare",
+            "dia": false,
+            "key": "chainsaw spare",
+            "folded": "chainsaw spare"
+          },
+          {
+            "raw": "chain saw part",
+            "dia": false,
+            "key": "chain saw part",
+            "folded": "chain saw part"
+          }
+        ],
+        "pneumatic": [
+          {
+            "raw": "bộ phận khí nén",
+            "dia": true,
+            "key": "bộ phận khí nén",
+            "folded": "bo phan khi nen"
+          },
+          {
+            "raw": "pneumatic tool parts",
+            "dia": false,
+            "key": "pneumatic tool parts",
+            "folded": "pneumatic tool parts"
+          }
+        ],
+        "electric8467": [
+          {
+            "raw": "phụ tùng máy khoan",
+            "dia": true,
+            "key": "phụ tùng máy khoan",
+            "folded": "phu tung may khoan"
+          },
+          {
+            "raw": "drill part 8467",
+            "dia": false,
+            "key": "drill part 8467",
+            "folded": "drill part 8467"
+          },
+          {
+            "raw": "saw part electric tool",
+            "dia": false,
+            "key": "saw part electric tool",
+            "folded": "saw part electric tool"
+          }
+        ],
+        "otherParts": [
+          {
+            "raw": "bộ phận dụng cụ cầm tay khác",
+            "dia": true,
+            "key": "bộ phận dụng cụ cầm tay khác",
+            "folded": "bo phan dung cu cam tay khac"
+          },
+          {
+            "raw": "hydraulic tool part",
+            "dia": false,
+            "key": "hydraulic tool part",
+            "folded": "hydraulic tool part"
+          }
+        ]
       }
     },
     {
@@ -207,6 +688,66 @@
           "guide bar",
           "vỏ máy",
           "chain saw part other"
+        ]
+      },
+      "_detect": {
+        "electromechanical": [
+          {
+            "raw": "stator",
+            "dia": false,
+            "key": "stator",
+            "folded": "stator"
+          },
+          {
+            "raw": "rotor",
+            "dia": false,
+            "key": "rotor",
+            "folded": "rotor"
+          },
+          {
+            "raw": "mô-tơ cưa xích",
+            "dia": true,
+            "key": "mô tơ cưa xích",
+            "folded": "mo to cua xich"
+          },
+          {
+            "raw": "electromechanical",
+            "dia": false,
+            "key": "electromechanical",
+            "folded": "electromechanical"
+          },
+          {
+            "raw": "cơ điện",
+            "dia": true,
+            "key": "cơ điện",
+            "folded": "co dien"
+          }
+        ],
+        "other": [
+          {
+            "raw": "xích cưa",
+            "dia": true,
+            "key": "xích cưa",
+            "folded": "xich cua"
+          },
+          {
+            "raw": "guide bar",
+            "dia": false,
+            "key": "guide bar",
+            "folded": "guide bar"
+          },
+          {
+            "raw": "vỏ máy",
+            "dia": true,
+            "key": "vỏ máy",
+            "folded": "vo may"
+          },
+          {
+            "raw": "chain saw part other",
+            "dia": false,
+            "key": "chain saw part other",
+            "folded": "chain saw part other"
+          }
         ]
       }
     },
@@ -233,6 +774,72 @@
           "hydraulic tool part",
           "bộ phận khác",
           "parts other"
+        ]
+      },
+      "_detect": {
+        "electricDrillSawOther": [
+          {
+            "raw": "8467.21",
+            "dia": false,
+            "key": "8467.21",
+            "folded": "8467.21"
+          },
+          {
+            "raw": "8467.22",
+            "dia": false,
+            "key": "8467.22",
+            "folded": "8467.22"
+          },
+          {
+            "raw": "8467.29",
+            "dia": false,
+            "key": "8467.29",
+            "folded": "8467.29"
+          },
+          {
+            "raw": "drill part",
+            "dia": false,
+            "key": "drill part",
+            "folded": "drill part"
+          },
+          {
+            "raw": "saw part",
+            "dia": false,
+            "key": "saw part",
+            "folded": "saw part"
+          },
+          {
+            "raw": "phụ tùng máy khoan",
+            "dia": true,
+            "key": "phụ tùng máy khoan",
+            "folded": "phu tung may khoan"
+          },
+          {
+            "raw": "phụ tùng cưa điện",
+            "dia": true,
+            "key": "phụ tùng cưa điện",
+            "folded": "phu tung cua dien"
+          }
+        ],
+        "otherNec": [
+          {
+            "raw": "hydraulic tool part",
+            "dia": false,
+            "key": "hydraulic tool part",
+            "folded": "hydraulic tool part"
+          },
+          {
+            "raw": "bộ phận khác",
+            "dia": true,
+            "key": "bộ phận khác",
+            "folded": "bo phan khac"
+          },
+          {
+            "raw": "parts other",
+            "dia": false,
+            "key": "parts other",
+            "folded": "parts other"
+          }
         ]
       }
     }

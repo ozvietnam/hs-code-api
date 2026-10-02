@@ -29,7 +29,13 @@
           "power capacitor",
           "50/60 hz",
           "kvar",
-          "reactive power"
+          "reactive power",
+          "Tụ điện nhôm cắm",
+          "Tụ điện điện phân",
+          "Tụ điện film",
+          "Tụ hoá nhôm chân dán smd",
+          "Tụ gốm cắm",
+          "Tụ điện cố định thân nhôm"
         ],
         "tantalum": [
           "tụ tantan",
@@ -67,6 +73,182 @@
         "parts": [
           "bộ phận tụ điện",
           "capacitor parts"
+        ]
+      },
+      "_detect": {
+        "power50Hz": [
+          {
+            "raw": "tụ nguồn",
+            "dia": true,
+            "key": "tụ nguồn",
+            "folded": "tu nguon"
+          },
+          {
+            "raw": "power capacitor",
+            "dia": false,
+            "key": "power capacitor",
+            "folded": "power capacitor"
+          },
+          {
+            "raw": "50/60 hz",
+            "dia": false,
+            "key": "50 60 hz",
+            "folded": "50 60 hz"
+          },
+          {
+            "raw": "kvar",
+            "dia": false,
+            "key": "kvar",
+            "folded": "kvar"
+          },
+          {
+            "raw": "reactive power",
+            "dia": false,
+            "key": "reactive power",
+            "folded": "reactive power"
+          }
+        ],
+        "tantalum": [
+          {
+            "raw": "tụ tantan",
+            "dia": true,
+            "key": "tụ tantan",
+            "folded": "tu tantan"
+          },
+          {
+            "raw": "tantalum capacitor",
+            "dia": false,
+            "key": "tantalum capacitor",
+            "folded": "tantalum capacitor"
+          }
+        ],
+        "aluminiumElectrolytic": [
+          {
+            "raw": "tụ nhôm",
+            "dia": true,
+            "key": "tụ nhôm",
+            "folded": "tu nhom"
+          },
+          {
+            "raw": "aluminium electrolytic",
+            "dia": false,
+            "key": "aluminium electrolytic",
+            "folded": "aluminium electrolytic"
+          },
+          {
+            "raw": "electrolytic capacitor",
+            "dia": false,
+            "key": "electrolytic capacitor",
+            "folded": "electrolytic capacitor"
+          }
+        ],
+        "ceramicSingle": [
+          {
+            "raw": "tụ gốm một lớp",
+            "dia": true,
+            "key": "tụ gốm một lớp",
+            "folded": "tu gom mot lop"
+          },
+          {
+            "raw": "ceramic single layer",
+            "dia": false,
+            "key": "ceramic single layer",
+            "folded": "ceramic single layer"
+          }
+        ],
+        "ceramicMulti": [
+          {
+            "raw": "tụ gốm nhiều lớp",
+            "dia": true,
+            "key": "tụ gốm nhiều lớp",
+            "folded": "tu gom nhieu lop"
+          },
+          {
+            "raw": "mlcc",
+            "dia": false,
+            "key": "mlcc",
+            "folded": "mlcc"
+          },
+          {
+            "raw": "multilayer ceramic",
+            "dia": false,
+            "key": "multilayer ceramic",
+            "folded": "multilayer ceramic"
+          }
+        ],
+        "paperPlastic": [
+          {
+            "raw": "tụ giấy",
+            "dia": true,
+            "key": "tụ giấy",
+            "folded": "tu giay"
+          },
+          {
+            "raw": "film capacitor",
+            "dia": false,
+            "key": "film capacitor",
+            "folded": "film capacitor"
+          },
+          {
+            "raw": "paper capacitor",
+            "dia": false,
+            "key": "paper capacitor",
+            "folded": "paper capacitor"
+          }
+        ],
+        "fixedOther": [
+          {
+            "raw": "tụ cố định khác",
+            "dia": true,
+            "key": "tụ cố định khác",
+            "folded": "tu co dinh khac"
+          },
+          {
+            "raw": "supercap",
+            "dia": false,
+            "key": "supercap",
+            "folded": "supercap"
+          },
+          {
+            "raw": "super capacitor",
+            "dia": false,
+            "key": "super capacitor",
+            "folded": "super capacitor"
+          }
+        ],
+        "variablePreset": [
+          {
+            "raw": "tụ biến đổi",
+            "dia": true,
+            "key": "tụ biến đổi",
+            "folded": "tu bien doi"
+          },
+          {
+            "raw": "trimmer capacitor",
+            "dia": false,
+            "key": "trimmer capacitor",
+            "folded": "trimmer capacitor"
+          },
+          {
+            "raw": "variable capacitor",
+            "dia": false,
+            "key": "variable capacitor",
+            "folded": "variable capacitor"
+          }
+        ],
+        "parts": [
+          {
+            "raw": "bộ phận tụ điện",
+            "dia": true,
+            "key": "bộ phận tụ điện",
+            "folded": "bo phan tu dien"
+          },
+          {
+            "raw": "capacitor parts",
+            "dia": false,
+            "key": "capacitor parts",
+            "folded": "capacitor parts"
+          }
         ]
       }
     }

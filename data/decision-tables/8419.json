@@ -489,7 +489,9 @@
           "hâm nóng",
           "đun nước nóng",
           "water heater",
-          "nồi cơm điện cơ"
+          "nồi cơm điện cơ",
+          "Máy khò nhiệt",
+          "Máy chiên công nghiệp"
         ],
         "solarHeating": [
           "điện mặt trời",
@@ -602,6 +604,656 @@
           "bộ phận máy",
           "parts"
         ]
+      },
+      "_detect": {
+        "waterHeating": [
+          {
+            "raw": "nồi cơm điện",
+            "dia": true,
+            "key": "nồi cơm điện",
+            "folded": "noi com dien"
+          },
+          {
+            "raw": "bình đun nước",
+            "dia": true,
+            "key": "bình đun nước",
+            "folded": "binh dun nuoc"
+          },
+          {
+            "raw": "ấm đun nước",
+            "dia": true,
+            "key": "ấm đun nước",
+            "folded": "am dun nuoc"
+          },
+          {
+            "raw": "nồi nấu",
+            "dia": true,
+            "key": "nồi nấu",
+            "folded": "noi nau"
+          },
+          {
+            "raw": "bếp từ",
+            "dia": true,
+            "key": "bếp từ",
+            "folded": "bep tu"
+          },
+          {
+            "raw": "nồi cơm",
+            "dia": true,
+            "key": "nồi cơm",
+            "folded": "noi com"
+          },
+          {
+            "raw": "nồi nướng",
+            "dia": true,
+            "key": "nồi nướng",
+            "folded": "noi nuong"
+          },
+          {
+            "raw": "lò nướng",
+            "dia": true,
+            "key": "lò nướng",
+            "folded": "lo nuong"
+          },
+          {
+            "raw": "bếp điện",
+            "dia": true,
+            "key": "bếp điện",
+            "folded": "bep dien"
+          },
+          {
+            "raw": "xúp điện",
+            "dia": true,
+            "key": "xúp điện",
+            "folded": "xup dien"
+          },
+          {
+            "raw": "tủ nấu cơm",
+            "dia": true,
+            "key": "tủ nấu cơm",
+            "folded": "tu nau com"
+          },
+          {
+            "raw": "hâm nóng",
+            "dia": true,
+            "key": "hâm nóng",
+            "folded": "ham nong"
+          },
+          {
+            "raw": "đun nước nóng",
+            "dia": true,
+            "key": "đun nước nóng",
+            "folded": "dun nuoc nong"
+          },
+          {
+            "raw": "water heater",
+            "dia": false,
+            "key": "water heater",
+            "folded": "water heater"
+          },
+          {
+            "raw": "nồi cơm điện cơ",
+            "dia": true,
+            "key": "nồi cơm điện cơ",
+            "folded": "noi com dien co"
+          }
+        ],
+        "solarHeating": [
+          {
+            "raw": "điện mặt trời",
+            "dia": true,
+            "key": "điện mặt trời",
+            "folded": "dien mat troi"
+          },
+          {
+            "raw": "năng lượng mặt trời",
+            "dia": true,
+            "key": "năng lượng mặt trời",
+            "folded": "nang luong mat troi"
+          },
+          {
+            "raw": "đun nước nóng mặt trời",
+            "dia": true,
+            "key": "đun nước nóng mặt trời",
+            "folded": "dun nuoc nong mat troi"
+          },
+          {
+            "raw": "bình năng lượng",
+            "dia": true,
+            "key": "bình năng lượng",
+            "folded": "binh nang luong"
+          },
+          {
+            "raw": "bình nóng mặt trời",
+            "dia": true,
+            "key": "bình nóng mặt trời",
+            "folded": "binh nong mat troi"
+          },
+          {
+            "raw": "solar heater",
+            "dia": false,
+            "key": "solar heater",
+            "folded": "solar heater"
+          },
+          {
+            "raw": "máy nước nóng",
+            "dia": true,
+            "key": "máy nước nóng",
+            "folded": "may nuoc nong"
+          }
+        ],
+        "sterilizing": [
+          {
+            "raw": "nồi hấp",
+            "dia": true,
+            "key": "nồi hấp",
+            "folded": "noi hap"
+          },
+          {
+            "raw": "tủ hấp y tế",
+            "dia": true,
+            "key": "tủ hấp y tế",
+            "folded": "tu hap y te"
+          },
+          {
+            "raw": "máy tiệt trùng",
+            "dia": true,
+            "key": "máy tiệt trùng",
+            "folded": "may tiet trung"
+          },
+          {
+            "raw": "tủ tiệt trùng",
+            "dia": true,
+            "key": "tủ tiệt trùng",
+            "folded": "tu tiet trung"
+          },
+          {
+            "raw": "khử trùng",
+            "dia": true,
+            "key": "khử trùng",
+            "folded": "khu trung"
+          },
+          {
+            "raw": "sterilizer",
+            "dia": false,
+            "key": "sterilizer",
+            "folded": "sterilizer"
+          },
+          {
+            "raw": "autoclave",
+            "dia": false,
+            "key": "autoclave",
+            "folded": "autoclave"
+          },
+          {
+            "raw": "nồi hấp tiệt trùng",
+            "dia": true,
+            "key": "nồi hấp tiệt trùng",
+            "folded": "noi hap tiet trung"
+          },
+          {
+            "raw": "tủ sấy tiệt trùng",
+            "dia": true,
+            "key": "tủ sấy tiệt trùng",
+            "folded": "tu say tiet trung"
+          }
+        ],
+        "drying": [
+          {
+            "raw": "máy sấy",
+            "dia": true,
+            "key": "máy sấy",
+            "folded": "may say"
+          },
+          {
+            "raw": "tủ sấy",
+            "dia": true,
+            "key": "tủ sấy",
+            "folded": "tu say"
+          },
+          {
+            "raw": "bạt phơi",
+            "dia": true,
+            "key": "bạt phơi",
+            "folded": "bat phoi"
+          },
+          {
+            "raw": "sấy nông sản",
+            "dia": true,
+            "key": "sấy nông sản",
+            "folded": "say nong san"
+          },
+          {
+            "raw": "máy sấy nhiệt",
+            "dia": true,
+            "key": "máy sấy nhiệt",
+            "folded": "may say nhiet"
+          },
+          {
+            "raw": "sấy",
+            "dia": true,
+            "key": "sấy",
+            "folded": "say"
+          },
+          {
+            "raw": "dryer",
+            "dia": false,
+            "key": "dryer",
+            "folded": "dryer"
+          },
+          {
+            "raw": "máy làm khô",
+            "dia": true,
+            "key": "máy làm khô",
+            "folded": "may lam kho"
+          },
+          {
+            "raw": "sấy bột",
+            "dia": true,
+            "key": "sấy bột",
+            "folded": "say bot"
+          },
+          {
+            "raw": "sấy gỗ",
+            "dia": true,
+            "key": "sấy gỗ",
+            "folded": "say go"
+          }
+        ],
+        "evaporating": [
+          {
+            "raw": "máy bốc hơi",
+            "dia": true,
+            "key": "máy bốc hơi",
+            "folded": "may boc hoi"
+          },
+          {
+            "raw": "bốc hơi",
+            "dia": true,
+            "key": "bốc hơi",
+            "folded": "boc hoi"
+          },
+          {
+            "raw": "làm bay hơi",
+            "dia": true,
+            "key": "làm bay hơi",
+            "folded": "lam bay hoi"
+          },
+          {
+            "raw": "evaporator",
+            "dia": false,
+            "key": "evaporator",
+            "folded": "evaporator"
+          },
+          {
+            "raw": "thiết bị bay hơi",
+            "dia": true,
+            "key": "thiết bị bay hơi",
+            "folded": "thiet bi bay hoi"
+          }
+        ],
+        "airConditioningCooling": [
+          {
+            "raw": "máy lạnh",
+            "dia": true,
+            "key": "máy lạnh",
+            "folded": "may lanh"
+          },
+          {
+            "raw": "điều hòa",
+            "dia": true,
+            "key": "điều hòa",
+            "folded": "dieu hoa"
+          },
+          {
+            "raw": "quạt hơi nước",
+            "dia": true,
+            "key": "quạt hơi nước",
+            "folded": "quat hoi nuoc"
+          },
+          {
+            "raw": "làm mát",
+            "dia": true,
+            "key": "làm mát",
+            "folded": "lam mat"
+          },
+          {
+            "raw": "cooling",
+            "dia": false,
+            "key": "cooling",
+            "folded": "cooling"
+          },
+          {
+            "raw": "máy làm lạnh",
+            "dia": true,
+            "key": "máy làm lạnh",
+            "folded": "may lam lanh"
+          },
+          {
+            "raw": "tháp giải nhiệt",
+            "dia": true,
+            "key": "tháp giải nhiệt",
+            "folded": "thap giai nhiet"
+          },
+          {
+            "raw": "quạt hơi nước",
+            "dia": true,
+            "key": "quạt hơi nước",
+            "folded": "quat hoi nuoc"
+          },
+          {
+            "raw": "hơi nước làm mát",
+            "dia": true,
+            "key": "hơi nước làm mát",
+            "folded": "hoi nuoc lam mat"
+          }
+        ],
+        "heatTreatment": [
+          {
+            "raw": "lò nhiệt",
+            "dia": true,
+            "key": "lò nhiệt",
+            "folded": "lo nhiet"
+          },
+          {
+            "raw": "máy nhiệt luyện",
+            "dia": true,
+            "key": "máy nhiệt luyện",
+            "folded": "may nhiet luyen"
+          },
+          {
+            "raw": "tôi thép",
+            "dia": true,
+            "key": "tôi thép",
+            "folded": "toi thep"
+          },
+          {
+            "raw": "ủ",
+            "dia": true,
+            "key": "ủ",
+            "folded": "u"
+          },
+          {
+            "raw": "làm nguội",
+            "dia": true,
+            "key": "làm nguội",
+            "folded": "lam nguoi"
+          },
+          {
+            "raw": "heat treatment",
+            "dia": false,
+            "key": "heat treatment",
+            "folded": "heat treatment"
+          },
+          {
+            "raw": "máy gia nhiệt",
+            "dia": true,
+            "key": "máy gia nhiệt",
+            "folded": "may gia nhiet"
+          },
+          {
+            "raw": "thiết bị nhiệt",
+            "dia": true,
+            "key": "thiết bị nhiệt",
+            "folded": "thiet bi nhiet"
+          },
+          {
+            "raw": "lò nung",
+            "dia": true,
+            "key": "lò nung",
+            "folded": "lo nung"
+          }
+        ],
+        "distilling": [
+          {
+            "raw": "chưng cất",
+            "dia": true,
+            "key": "chưng cất",
+            "folded": "chung cat"
+          },
+          {
+            "raw": "cất",
+            "dia": true,
+            "key": "cất",
+            "folded": "cat"
+          },
+          {
+            "raw": "lọc nước",
+            "dia": true,
+            "key": "lọc nước",
+            "folded": "loc nuoc"
+          },
+          {
+            "raw": "máy chưng",
+            "dia": true,
+            "key": "máy chưng",
+            "folded": "may chung"
+          },
+          {
+            "raw": "distiller",
+            "dia": false,
+            "key": "distiller",
+            "folded": "distiller"
+          },
+          {
+            "raw": "thiết bị chưng cất",
+            "dia": true,
+            "key": "thiết bị chưng cất",
+            "folded": "thiet bi chung cat"
+          },
+          {
+            "raw": "nồi chưng",
+            "dia": true,
+            "key": "nồi chưng",
+            "folded": "noi chung"
+          },
+          {
+            "raw": "chưng luyện",
+            "dia": true,
+            "key": "chưng luyện",
+            "folded": "chung luyen"
+          }
+        ],
+        "heatExchanging": [
+          {
+            "raw": "bộ trao đổi nhiệt",
+            "dia": true,
+            "key": "bộ trao đổi nhiệt",
+            "folded": "bo trao doi nhiet"
+          },
+          {
+            "raw": "thiết bị trao đổi nhiệt",
+            "dia": true,
+            "key": "thiết bị trao đổi nhiệt",
+            "folded": "thiet bi trao doi nhiet"
+          },
+          {
+            "raw": "tháp làm mát",
+            "dia": true,
+            "key": "tháp làm mát",
+            "folded": "thap lam mat"
+          },
+          {
+            "raw": "bộ làm lạnh",
+            "dia": true,
+            "key": "bộ làm lạnh",
+            "folded": "bo lam lanh"
+          },
+          {
+            "raw": "heat exchanger",
+            "dia": false,
+            "key": "heat exchanger",
+            "folded": "heat exchanger"
+          },
+          {
+            "raw": "radiator",
+            "dia": false,
+            "key": "radiator",
+            "folded": "radiator"
+          },
+          {
+            "raw": "dàn nóng",
+            "dia": true,
+            "key": "dàn nóng",
+            "folded": "dan nong"
+          },
+          {
+            "raw": "dàn lạnh",
+            "dia": true,
+            "key": "dàn lạnh",
+            "folded": "dan lanh"
+          },
+          {
+            "raw": "bộ tản nhiệt",
+            "dia": true,
+            "key": "bộ tản nhiệt",
+            "folded": "bo tan nhiet"
+          }
+        ],
+        "liquefying": [
+          {
+            "raw": "máy hóa lỏng",
+            "dia": true,
+            "key": "máy hóa lỏng",
+            "folded": "may hoa long"
+          },
+          {
+            "raw": "làm lỏng khí",
+            "dia": true,
+            "key": "làm lỏng khí",
+            "folded": "lam long khi"
+          },
+          {
+            "raw": "liquefying",
+            "dia": false,
+            "key": "liquefying",
+            "folded": "liquefying"
+          }
+        ],
+        "foodBeverage": [
+          {
+            "raw": "tủ hấp",
+            "dia": true,
+            "key": "tủ hấp",
+            "folded": "tu hap"
+          },
+          {
+            "raw": "nồi hấp cơm",
+            "dia": true,
+            "key": "nồi hấp cơm",
+            "folded": "noi hap com"
+          },
+          {
+            "raw": "tủ nấu",
+            "dia": true,
+            "key": "tủ nấu",
+            "folded": "tu nau"
+          },
+          {
+            "raw": "máy nấu",
+            "dia": true,
+            "key": "máy nấu",
+            "folded": "may nau"
+          },
+          {
+            "raw": "bếp công nghiệp",
+            "dia": true,
+            "key": "bếp công nghiệp",
+            "folded": "bep cong nghiep"
+          },
+          {
+            "raw": "nồi nấu công nghiệp",
+            "dia": true,
+            "key": "nồi nấu công nghiệp",
+            "folded": "noi nau cong nghiep"
+          },
+          {
+            "raw": "tủ hấp cơm",
+            "dia": true,
+            "key": "tủ hấp cơm",
+            "folded": "tu hap com"
+          },
+          {
+            "raw": "tủ hấp bún",
+            "dia": true,
+            "key": "tủ hấp bún",
+            "folded": "tu hap bun"
+          },
+          {
+            "raw": "tủ hấp giò",
+            "dia": true,
+            "key": "tủ hấp giò",
+            "folded": "tu hap gio"
+          },
+          {
+            "raw": "máy hấp",
+            "dia": true,
+            "key": "máy hấp",
+            "folded": "may hap"
+          },
+          {
+            "raw": "steamer",
+            "dia": false,
+            "key": "steamer",
+            "folded": "steamer"
+          },
+          {
+            "raw": "máy làm bánh",
+            "dia": true,
+            "key": "máy làm bánh",
+            "folded": "may lam banh"
+          },
+          {
+            "raw": "máy chế biến thực phẩm",
+            "dia": true,
+            "key": "máy chế biến thực phẩm",
+            "folded": "may che bien thuc pham"
+          },
+          {
+            "raw": "chế biến thực phẩm",
+            "dia": true,
+            "key": "chế biến thực phẩm",
+            "folded": "che bien thuc pham"
+          },
+          {
+            "raw": "thực phẩm",
+            "dia": true,
+            "key": "thực phẩm",
+            "folded": "thuc pham"
+          }
+        ],
+        "parts": [
+          {
+            "raw": "bộ phận",
+            "dia": true,
+            "key": "bộ phận",
+            "folded": "bo phan"
+          },
+          {
+            "raw": "phụ tùng",
+            "dia": true,
+            "key": "phụ tùng",
+            "folded": "phu tung"
+          },
+          {
+            "raw": "linh kiện",
+            "dia": true,
+            "key": "linh kiện",
+            "folded": "linh kien"
+          },
+          {
+            "raw": "bộ phận máy",
+            "dia": true,
+            "key": "bộ phận máy",
+            "folded": "bo phan may"
+          },
+          {
+            "raw": "parts",
+            "dia": false,
+            "key": "parts",
+            "folded": "parts"
+          }
+        ]
       }
     },
     {
@@ -636,7 +1288,142 @@
           "non-electric",
           "không dùng điện",
           "bếp ga",
-          "bếp dầu"
+          "bếp dầu",
+          "Tủ hấp cơm hẹn giờ 6 khay",
+          "Tủ hấp cơm hẹn giờ 12 khay",
+          "Tủ hấp cơm hẹn giờ công nghiệp",
+          "Bộ trao đổi nhiệt",
+          "Máy sấy khí",
+          "Máy sấy keo",
+          "Tủ hấp bánh trưng bày",
+          "Tủ hấp thực phẩm",
+          "Máy sấy nhựa"
+        ]
+      },
+      "_detect": {
+        "electric": [
+          {
+            "raw": "điện",
+            "dia": true,
+            "key": "điện",
+            "folded": "dien"
+          },
+          {
+            "raw": "điện tử",
+            "dia": true,
+            "key": "điện tử",
+            "folded": "dien tu"
+          },
+          {
+            "raw": "220v",
+            "dia": false,
+            "key": "220v",
+            "folded": "220v"
+          },
+          {
+            "raw": "electric",
+            "dia": false,
+            "key": "electric",
+            "folded": "electric"
+          },
+          {
+            "raw": "bằng điện",
+            "dia": true,
+            "key": "bằng điện",
+            "folded": "bang dien"
+          },
+          {
+            "raw": "chạy điện",
+            "dia": true,
+            "key": "chạy điện",
+            "folded": "chay dien"
+          },
+          {
+            "raw": "cắm điện",
+            "dia": true,
+            "key": "cắm điện",
+            "folded": "cam dien"
+          },
+          {
+            "raw": "sử dụng điện",
+            "dia": true,
+            "key": "sử dụng điện",
+            "folded": "su dung dien"
+          }
+        ],
+        "nonElectric": [
+          {
+            "raw": "ga",
+            "dia": false,
+            "key": "ga",
+            "folded": "ga"
+          },
+          {
+            "raw": "gas",
+            "dia": false,
+            "key": "gas",
+            "folded": "gas"
+          },
+          {
+            "raw": "dầu",
+            "dia": true,
+            "key": "dầu",
+            "folded": "dau"
+          },
+          {
+            "raw": "không điện",
+            "dia": true,
+            "key": "không điện",
+            "folded": "khong dien"
+          },
+          {
+            "raw": "nhiên liệu",
+            "dia": true,
+            "key": "nhiên liệu",
+            "folded": "nhien lieu"
+          },
+          {
+            "raw": "than",
+            "dia": false,
+            "key": "than",
+            "folded": "than"
+          },
+          {
+            "raw": "củi",
+            "dia": true,
+            "key": "củi",
+            "folded": "cui"
+          },
+          {
+            "raw": "đốt",
+            "dia": true,
+            "key": "đốt",
+            "folded": "dot"
+          },
+          {
+            "raw": "non-electric",
+            "dia": false,
+            "key": "non electric",
+            "folded": "non electric"
+          },
+          {
+            "raw": "không dùng điện",
+            "dia": true,
+            "key": "không dùng điện",
+            "folded": "khong dung dien"
+          },
+          {
+            "raw": "bếp ga",
+            "dia": true,
+            "key": "bếp ga",
+            "folded": "bep ga"
+          },
+          {
+            "raw": "bếp dầu",
+            "dia": true,
+            "key": "bếp dầu",
+            "folded": "bep dau"
+          }
         ]
       }
     },
@@ -697,6 +1484,235 @@
           "xay xát",
           "chế biến"
         ],
+        "general": [
+          "Tủ hấp cơm điện"
+        ]
+      },
+      "_detect": {
+        "household": [
+          {
+            "raw": "gia đình",
+            "dia": true,
+            "key": "gia đình",
+            "folded": "gia dinh"
+          },
+          {
+            "raw": "gia dụng",
+            "dia": true,
+            "key": "gia dụng",
+            "folded": "gia dung"
+          },
+          {
+            "raw": "sinh hoạt",
+            "dia": true,
+            "key": "sinh hoạt",
+            "folded": "sinh hoat"
+          },
+          {
+            "raw": "household",
+            "dia": false,
+            "key": "household",
+            "folded": "household"
+          },
+          {
+            "raw": "cá nhân",
+            "dia": true,
+            "key": "cá nhân",
+            "folded": "ca nhan"
+          },
+          {
+            "raw": "gia đình",
+            "dia": true,
+            "key": "gia đình",
+            "folded": "gia dinh"
+          },
+          {
+            "raw": "dùng trong nhà",
+            "dia": true,
+            "key": "dùng trong nhà",
+            "folded": "dung trong nha"
+          }
+        ],
+        "agricultural": [
+          {
+            "raw": "nông nghiệp",
+            "dia": true,
+            "key": "nông nghiệp",
+            "folded": "nong nghiep"
+          },
+          {
+            "raw": "nông trại",
+            "dia": true,
+            "key": "nông trại",
+            "folded": "nong trai"
+          },
+          {
+            "raw": "trồng trọt",
+            "dia": true,
+            "key": "trồng trọt",
+            "folded": "trong trot"
+          },
+          {
+            "raw": "chăn nuôi",
+            "dia": true,
+            "key": "chăn nuôi",
+            "folded": "chan nuoi"
+          },
+          {
+            "raw": "agricultural",
+            "dia": false,
+            "key": "agricultural",
+            "folded": "agricultural"
+          },
+          {
+            "raw": "trồng",
+            "dia": true,
+            "key": "trồng",
+            "folded": "trong"
+          },
+          {
+            "raw": "sản xuất nông nghiệp",
+            "dia": true,
+            "key": "sản xuất nông nghiệp",
+            "folded": "san xuat nong nghiep"
+          },
+          {
+            "raw": "máy nông",
+            "dia": true,
+            "key": "máy nông",
+            "folded": "may nong"
+          }
+        ],
+        "medical": [
+          {
+            "raw": "y tế",
+            "dia": true,
+            "key": "y tế",
+            "folded": "y te"
+          },
+          {
+            "raw": "bệnh viện",
+            "dia": true,
+            "key": "bệnh viện",
+            "folded": "benh vien"
+          },
+          {
+            "raw": "phẫu thuật",
+            "dia": true,
+            "key": "phẫu thuật",
+            "folded": "phau thuat"
+          },
+          {
+            "raw": "thẩm mỹ",
+            "dia": true,
+            "key": "thẩm mỹ",
+            "folded": "tham my"
+          },
+          {
+            "raw": "medical",
+            "dia": false,
+            "key": "medical",
+            "folded": "medical"
+          },
+          {
+            "raw": "phòng khám",
+            "dia": true,
+            "key": "phòng khám",
+            "folded": "phong kham"
+          },
+          {
+            "raw": "bác sĩ",
+            "dia": true,
+            "key": "bác sĩ",
+            "folded": "bac si"
+          },
+          {
+            "raw": "thuốc",
+            "dia": true,
+            "key": "thuốc",
+            "folded": "thuoc"
+          },
+          {
+            "raw": "thiết bị y",
+            "dia": true,
+            "key": "thiết bị y",
+            "folded": "thiet bi y"
+          },
+          {
+            "raw": "spa",
+            "dia": false,
+            "key": "spa",
+            "folded": "spa"
+          }
+        ],
+        "industrial": [
+          {
+            "raw": "công nghiệp",
+            "dia": true,
+            "key": "công nghiệp",
+            "folded": "cong nghiep"
+          },
+          {
+            "raw": "industrial",
+            "dia": false,
+            "key": "industrial",
+            "folded": "industrial"
+          },
+          {
+            "raw": "nhà máy",
+            "dia": true,
+            "key": "nhà máy",
+            "folded": "nha may"
+          },
+          {
+            "raw": "sản xuất",
+            "dia": true,
+            "key": "sản xuất",
+            "folded": "san xuat"
+          },
+          {
+            "raw": "xưởng",
+            "dia": true,
+            "key": "xưởng",
+            "folded": "xuong"
+          },
+          {
+            "raw": "phân bón",
+            "dia": true,
+            "key": "phân bón",
+            "folded": "phan bon"
+          },
+          {
+            "raw": "giấy",
+            "dia": true,
+            "key": "giấy",
+            "folded": "giay"
+          },
+          {
+            "raw": "thực phẩm công nghiệp",
+            "dia": true,
+            "key": "thực phẩm công nghiệp",
+            "folded": "thuc pham cong nghiep"
+          },
+          {
+            "raw": "cơ khí",
+            "dia": true,
+            "key": "cơ khí",
+            "folded": "co khi"
+          },
+          {
+            "raw": "xay xát",
+            "dia": true,
+            "key": "xay xát",
+            "folded": "xay xat"
+          },
+          {
+            "raw": "chế biến",
+            "dia": true,
+            "key": "chế biến",
+            "folded": "che bien"
+          }
+        ],
         "general": []
       }
     },
@@ -730,6 +1746,93 @@
           "nước ga",
           "gas water",
           "nước có ga"
+        ],
+        "none": []
+      },
+      "_detect": {
+        "fluoropolymer": [
+          {
+            "raw": "fluoropolymer",
+            "dia": false,
+            "key": "fluoropolymer",
+            "folded": "fluoropolymer"
+          },
+          {
+            "raw": "fluoro",
+            "dia": false,
+            "key": "fluoro",
+            "folded": "fluoro"
+          },
+          {
+            "raw": "ptfe",
+            "dia": false,
+            "key": "ptfe",
+            "folded": "ptfe"
+          },
+          {
+            "raw": "teflon",
+            "dia": false,
+            "key": "teflon",
+            "folded": "teflon"
+          },
+          {
+            "raw": "ống fluoropolymer",
+            "dia": true,
+            "key": "ống fluoropolymer",
+            "folded": "ong fluoropolymer"
+          }
+        ],
+        "filmManufacturing": [
+          {
+            "raw": "màng",
+            "dia": true,
+            "key": "màng",
+            "folded": "mang"
+          },
+          {
+            "raw": "film",
+            "dia": false,
+            "key": "film",
+            "folded": "film"
+          },
+          {
+            "raw": "sản xuất màng",
+            "dia": true,
+            "key": "sản xuất màng",
+            "folded": "san xuat mang"
+          },
+          {
+            "raw": "màng nhựa",
+            "dia": true,
+            "key": "màng nhựa",
+            "folded": "mang nhua"
+          },
+          {
+            "raw": "film manufacturing",
+            "dia": false,
+            "key": "film manufacturing",
+            "folded": "film manufacturing"
+          }
+        ],
+        "gasWater": [
+          {
+            "raw": "nước ga",
+            "dia": true,
+            "key": "nước ga",
+            "folded": "nuoc ga"
+          },
+          {
+            "raw": "gas water",
+            "dia": false,
+            "key": "gas water",
+            "folded": "gas water"
+          },
+          {
+            "raw": "nước có ga",
+            "dia": true,
+            "key": "nước có ga",
+            "folded": "nuoc co ga"
+          }
         ],
         "none": []
       }

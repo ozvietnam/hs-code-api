@@ -24,12 +24,77 @@
           "20%",
           "hàm lượng sợi đàn hồi không quá",
           "≤ 20%",
-          "elastomeric"
+          "elastomeric",
+          "Vải dệt kim (vải thun)",
+          "Vải gió dệt kim",
+          "Vải dệt kim cuộn",
+          "Vải dệt kim sợi ngang",
+          "Vải gió (vải dệt kim đã tẩy)"
         ],
         "gt20": [
           "trên 20%",
           ">20%",
           "hàm lượng sợi đàn hồi trên"
+        ]
+      },
+      "_detect": {
+        "le20": [
+          {
+            "raw": "không quá 20%",
+            "dia": true,
+            "key": "không quá 20",
+            "folded": "khong qua 20"
+          },
+          {
+            "raw": "≤20%",
+            "dia": false,
+            "key": "20",
+            "folded": "20"
+          },
+          {
+            "raw": "20%",
+            "dia": false,
+            "key": "20",
+            "folded": "20"
+          },
+          {
+            "raw": "hàm lượng sợi đàn hồi không quá",
+            "dia": true,
+            "key": "hàm lượng sợi đàn hồi không quá",
+            "folded": "ham luong soi dan hoi khong qua"
+          },
+          {
+            "raw": "≤ 20%",
+            "dia": false,
+            "key": "20",
+            "folded": "20"
+          },
+          {
+            "raw": "elastomeric",
+            "dia": false,
+            "key": "elastomeric",
+            "folded": "elastomeric"
+          }
+        ],
+        "gt20": [
+          {
+            "raw": "trên 20%",
+            "dia": true,
+            "key": "trên 20",
+            "folded": "tren 20"
+          },
+          {
+            "raw": ">20%",
+            "dia": false,
+            "key": "20",
+            "folded": "20"
+          },
+          {
+            "raw": "hàm lượng sợi đàn hồi trên",
+            "dia": true,
+            "key": "hàm lượng sợi đàn hồi trên",
+            "folded": "ham luong soi dan hoi tren"
+          }
         ]
       }
     }

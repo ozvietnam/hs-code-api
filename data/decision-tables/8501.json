@@ -19,7 +19,38 @@
           "một chiều",
           "dc",
           "động cơ dc",
-          "động cơ một chiều"
+          "động cơ một chiều",
+          "Động cơ servo",
+          "Động cơ bước 1 chiều",
+          "Bộ motor đóng/mở cửa tự động",
+          "Động cơ điện xoay chiều",
+          "Hộp điện máy vắt sổ",
+          "Động cơ rèm cửa điện",
+          "Mô tơ bước 1 chiều",
+          "Mô tơ quay ống Anilox",
+          "Bộ motor đóng mở cửa tự động",
+          "Mô tơ điện Servo",
+          "Động cơ giảm tốc",
+          "Bộ mô tơ máy ziczac máy khâu",
+          "Động cơ xoay chiều 3 pha",
+          "Mô tơ xoay chiều",
+          "Động cơ bước kèm hộp số",
+          "Mô tơ giảm tốc",
+          "Động cơ xoay chiều 1 pha",
+          "Động cơ bàn chải chà",
+          "Động cơ rung",
+          "Bộ động cơ xe máy điện",
+          "Bộ động cơ xe đạp điện",
+          "Mô tơ ga máy xúc",
+          "Động cơ gắn liền hợp giảm tốc",
+          "Động cơ rêu trần",
+          "Mô tơ chỉnh mực máy in offset",
+          "Động cơ rèm vải",
+          "Động cơ rèm sáo dọc",
+          "Động cơ trục chính máy một kim",
+          "Motor máy",
+          "Động cơ rèm sân khấu",
+          "Động cơ liền hộp giảm tốc"
         ],
         "universal": [
           "universal",
@@ -47,6 +78,140 @@
           "generator set",
           "gen-set"
         ]
+      },
+      "_detect": {
+        "dc": [
+          {
+            "raw": "một chiều",
+            "dia": true,
+            "key": "một chiều",
+            "folded": "mot chieu"
+          },
+          {
+            "raw": "dc",
+            "dia": false,
+            "key": "dc",
+            "folded": "dc"
+          },
+          {
+            "raw": "động cơ dc",
+            "dia": true,
+            "key": "động cơ dc",
+            "folded": "dong co dc"
+          },
+          {
+            "raw": "động cơ một chiều",
+            "dia": true,
+            "key": "động cơ một chiều",
+            "folded": "dong co mot chieu"
+          }
+        ],
+        "universal": [
+          {
+            "raw": "universal",
+            "dia": false,
+            "key": "universal",
+            "folded": "universal"
+          },
+          {
+            "raw": "vạn năng",
+            "dia": true,
+            "key": "vạn năng",
+            "folded": "van nang"
+          },
+          {
+            "raw": "ac/dc",
+            "dia": false,
+            "key": "ac dc",
+            "folded": "ac dc"
+          }
+        ],
+        "ac_single": [
+          {
+            "raw": "một pha",
+            "dia": true,
+            "key": "một pha",
+            "folded": "mot pha"
+          },
+          {
+            "raw": "single phase",
+            "dia": false,
+            "key": "single phase",
+            "folded": "single phase"
+          },
+          {
+            "raw": "ac một pha",
+            "dia": true,
+            "key": "ac một pha",
+            "folded": "ac mot pha"
+          }
+        ],
+        "ac_multi": [
+          {
+            "raw": "đa pha",
+            "dia": true,
+            "key": "đa pha",
+            "folded": "da pha"
+          },
+          {
+            "raw": "multi phase",
+            "dia": false,
+            "key": "multi phase",
+            "folded": "multi phase"
+          },
+          {
+            "raw": "ba pha",
+            "dia": false,
+            "key": "ba pha",
+            "folded": "ba pha"
+          },
+          {
+            "raw": "three phase",
+            "dia": false,
+            "key": "three phase",
+            "folded": "three phase"
+          }
+        ],
+        "ac_generator": [
+          {
+            "raw": "máy phát điện",
+            "dia": true,
+            "key": "máy phát điện",
+            "folded": "may phat dien"
+          },
+          {
+            "raw": "alternator",
+            "dia": false,
+            "key": "alternator",
+            "folded": "alternator"
+          },
+          {
+            "raw": "ac generator",
+            "dia": false,
+            "key": "ac generator",
+            "folded": "ac generator"
+          }
+        ],
+        "generator_set": [
+          {
+            "raw": "máy phát điện",
+            "dia": true,
+            "key": "máy phát điện",
+            "folded": "may phat dien"
+          },
+          {
+            "raw": "generator set",
+            "dia": false,
+            "key": "generator set",
+            "folded": "generator set"
+          },
+          {
+            "raw": "gen-set",
+            "dia": false,
+            "key": "gen set",
+            "folded": "gen set"
+          }
+        ]
       }
     },
     {
@@ -73,7 +238,14 @@
           "5 W",
           "≤5W",
           "không quá 5 W",
-          "dưới 5W"
+          "dưới 5W",
+          "Bộ động cơ điện một chiều",
+          "Động cơ bước một chiều 2 pha",
+          "Động cơ DC",
+          "Động cơ điện xoay chiều đa pha",
+          "Động cơ một chiều",
+          "Motor điện một chiều",
+          "Mô tơ bước một chiều"
         ],
         ">5W": [
           "trên 5 W",
@@ -123,6 +295,232 @@
           "trên 375kW",
           "375kW"
         ]
+      },
+      "_detect": {
+        "≤5W": [
+          {
+            "raw": "5 W",
+            "dia": false,
+            "key": "5 w",
+            "folded": "5 w"
+          },
+          {
+            "raw": "≤5W",
+            "dia": false,
+            "key": "5w",
+            "folded": "5w"
+          },
+          {
+            "raw": "không quá 5 W",
+            "dia": true,
+            "key": "không quá 5 w",
+            "folded": "khong qua 5 w"
+          },
+          {
+            "raw": "dưới 5W",
+            "dia": true,
+            "key": "dưới 5w",
+            "folded": "duoi 5w"
+          }
+        ],
+        ">5W": [
+          {
+            "raw": "trên 5 W",
+            "dia": true,
+            "key": "trên 5 w",
+            "folded": "tren 5 w"
+          },
+          {
+            "raw": ">5W",
+            "dia": false,
+            "key": "5w",
+            "folded": "5w"
+          }
+        ],
+        "≤50W": [
+          {
+            "raw": "50 W",
+            "dia": false,
+            "key": "50 w",
+            "folded": "50 w"
+          },
+          {
+            "raw": "≤50W",
+            "dia": false,
+            "key": "50w",
+            "folded": "50w"
+          },
+          {
+            "raw": "không quá 50 W",
+            "dia": true,
+            "key": "không quá 50 w",
+            "folded": "khong qua 50 w"
+          }
+        ],
+        "≤750W": [
+          {
+            "raw": "750 W",
+            "dia": false,
+            "key": "750 w",
+            "folded": "750 w"
+          },
+          {
+            "raw": "750W",
+            "dia": false,
+            "key": "750w",
+            "folded": "750w"
+          },
+          {
+            "raw": "không quá 750 W",
+            "dia": true,
+            "key": "không quá 750 w",
+            "folded": "khong qua 750 w"
+          },
+          {
+            "raw": "≤750W",
+            "dia": false,
+            "key": "750w",
+            "folded": "750w"
+          }
+        ],
+        "0.75-75kW": [
+          {
+            "raw": "0,75",
+            "dia": false,
+            "key": "0,75",
+            "folded": "0,75"
+          },
+          {
+            "raw": "75kW",
+            "dia": false,
+            "key": "75kw",
+            "folded": "75kw"
+          },
+          {
+            "raw": "37,5 kW",
+            "dia": false,
+            "key": "37,5 kw",
+            "folded": "37,5 kw"
+          },
+          {
+            "raw": "trên 750W",
+            "dia": true,
+            "key": "trên 750w",
+            "folded": "tren 750w"
+          }
+        ],
+        "750W-37.5kW": [
+          {
+            "raw": "37,5 kW",
+            "dia": false,
+            "key": "37,5 kw",
+            "folded": "37,5 kw"
+          },
+          {
+            "raw": "75kW",
+            "dia": false,
+            "key": "75kw",
+            "folded": "75kw"
+          },
+          {
+            "raw": "750W",
+            "dia": false,
+            "key": "750w",
+            "folded": "750w"
+          },
+          {
+            "raw": "trên 750W",
+            "dia": true,
+            "key": "trên 750w",
+            "folded": "tren 750w"
+          }
+        ],
+        "37.5-75kW": [
+          {
+            "raw": "37,5 kW",
+            "dia": false,
+            "key": "37,5 kw",
+            "folded": "37,5 kw"
+          },
+          {
+            "raw": "75kW",
+            "dia": false,
+            "key": "75kw",
+            "folded": "75kw"
+          },
+          {
+            "raw": "trên 37,5 kW",
+            "dia": true,
+            "key": "trên 37,5 kw",
+            "folded": "tren 37,5 kw"
+          }
+        ],
+        ">75kW": [
+          {
+            "raw": "75 kW",
+            "dia": false,
+            "key": "75 kw",
+            "folded": "75 kw"
+          },
+          {
+            "raw": "trên 75kW",
+            "dia": true,
+            "key": "trên 75kw",
+            "folded": "tren 75kw"
+          },
+          {
+            "raw": "trên 75 kW",
+            "dia": true,
+            "key": "trên 75 kw",
+            "folded": "tren 75 kw"
+          }
+        ],
+        "75-375kW": [
+          {
+            "raw": "75 kW",
+            "dia": false,
+            "key": "75 kw",
+            "folded": "75 kw"
+          },
+          {
+            "raw": "375 kW",
+            "dia": false,
+            "key": "375 kw",
+            "folded": "375 kw"
+          },
+          {
+            "raw": "75-375",
+            "dia": false,
+            "key": "75 375",
+            "folded": "75 375"
+          },
+          {
+            "raw": "trên 75 kW",
+            "dia": true,
+            "key": "trên 75 kw",
+            "folded": "tren 75 kw"
+          }
+        ],
+        ">375kW": [
+          {
+            "raw": "375 kW",
+            "dia": false,
+            "key": "375 kw",
+            "folded": "375 kw"
+          },
+          {
+            "raw": "trên 375kW",
+            "dia": true,
+            "key": "trên 375kw",
+            "folded": "tren 375kw"
+          },
+          {
+            "raw": "375kW",
+            "dia": false,
+            "key": "375kw",
+            "folded": "375kw"
+          }
+        ]
       }
     },
     {
@@ -171,6 +569,124 @@
           "75 kVA",
           "không quá 75 kVA",
           "75-375"
+        ]
+      },
+      "_detect": {
+        "≤12.5kVA": [
+          {
+            "raw": "12,5 kVA",
+            "dia": false,
+            "key": "12,5 kva",
+            "folded": "12,5 kva"
+          },
+          {
+            "raw": "không quá 12,5 kVA",
+            "dia": true,
+            "key": "không quá 12,5 kva",
+            "folded": "khong qua 12,5 kva"
+          }
+        ],
+        ">12.5kVA": [
+          {
+            "raw": "trên 12,5 kVA",
+            "dia": true,
+            "key": "trên 12,5 kva",
+            "folded": "tren 12,5 kva"
+          }
+        ],
+        "75-150kVA": [
+          {
+            "raw": "75 kVA",
+            "dia": false,
+            "key": "75 kva",
+            "folded": "75 kva"
+          },
+          {
+            "raw": "150 kVA",
+            "dia": false,
+            "key": "150 kva",
+            "folded": "150 kva"
+          },
+          {
+            "raw": "75-150",
+            "dia": false,
+            "key": "75 150",
+            "folded": "75 150"
+          }
+        ],
+        "150-375kVA": [
+          {
+            "raw": "150 kVA",
+            "dia": false,
+            "key": "150 kva",
+            "folded": "150 kva"
+          },
+          {
+            "raw": "375 kVA",
+            "dia": false,
+            "key": "375 kva",
+            "folded": "375 kva"
+          },
+          {
+            "raw": "150-375",
+            "dia": false,
+            "key": "150 375",
+            "folded": "150 375"
+          }
+        ],
+        "375-750kVA": [
+          {
+            "raw": "375 kVA",
+            "dia": false,
+            "key": "375 kva",
+            "folded": "375 kva"
+          },
+          {
+            "raw": "750 kVA",
+            "dia": false,
+            "key": "750 kva",
+            "folded": "750 kva"
+          },
+          {
+            "raw": "375-750",
+            "dia": false,
+            "key": "375 750",
+            "folded": "375 750"
+          }
+        ],
+        ">750kVA": [
+          {
+            "raw": "750 kVA",
+            "dia": false,
+            "key": "750 kva",
+            "folded": "750 kva"
+          },
+          {
+            "raw": "trên 750 kVA",
+            "dia": true,
+            "key": "trên 750 kva",
+            "folded": "tren 750 kva"
+          }
+        ],
+        "≤75kVA": [
+          {
+            "raw": "75 kVA",
+            "dia": false,
+            "key": "75 kva",
+            "folded": "75 kva"
+          },
+          {
+            "raw": "không quá 75 kVA",
+            "dia": true,
+            "key": "không quá 75 kva",
+            "folded": "khong qua 75 kva"
+          },
+          {
+            "raw": "75-375",
+            "dia": false,
+            "key": "75 375",
+            "folded": "75 375"
+          }
         ]
       }
     },
@@ -229,6 +745,178 @@
         "generator": [
           "máy phát điện"
         ]
+      },
+      "_detect": {
+        "household_acs": [
+          {
+            "raw": "84.15",
+            "dia": false,
+            "key": "84.15",
+            "folded": "84.15"
+          },
+          {
+            "raw": "84.18",
+            "dia": false,
+            "key": "84.18",
+            "folded": "84.18"
+          },
+          {
+            "raw": "84.50",
+            "dia": false,
+            "key": "84.50",
+            "folded": "84.50"
+          },
+          {
+            "raw": "85.09",
+            "dia": false,
+            "key": "85.09",
+            "folded": "85.09"
+          },
+          {
+            "raw": "85.16",
+            "dia": false,
+            "key": "85.16",
+            "folded": "85.16"
+          },
+          {
+            "raw": "điều hòa",
+            "dia": true,
+            "key": "điều hòa",
+            "folded": "dieu hoa"
+          },
+          {
+            "raw": "tủ lạnh",
+            "dia": true,
+            "key": "tủ lạnh",
+            "folded": "tu lanh"
+          },
+          {
+            "raw": "máy giặt",
+            "dia": true,
+            "key": "máy giặt",
+            "folded": "may giat"
+          },
+          {
+            "raw": "hàng hóa thuộc nhóm",
+            "dia": true,
+            "key": "hàng hóa thuộc nhóm",
+            "folded": "hang hoa thuoc nhom"
+          }
+        ],
+        "household_acs_full": [
+          {
+            "raw": "84.15",
+            "dia": false,
+            "key": "84.15",
+            "folded": "84.15"
+          },
+          {
+            "raw": "84.18",
+            "dia": false,
+            "key": "84.18",
+            "folded": "84.18"
+          },
+          {
+            "raw": "84.50",
+            "dia": false,
+            "key": "84.50",
+            "folded": "84.50"
+          },
+          {
+            "raw": "85.09",
+            "dia": false,
+            "key": "85.09",
+            "folded": "85.09"
+          },
+          {
+            "raw": "85.16",
+            "dia": false,
+            "key": "85.16",
+            "folded": "85.16"
+          }
+        ],
+        "household_limited": [
+          {
+            "raw": "84.15",
+            "dia": false,
+            "key": "84.15",
+            "folded": "84.15"
+          },
+          {
+            "raw": "84.18",
+            "dia": false,
+            "key": "84.18",
+            "folded": "84.18"
+          },
+          {
+            "raw": "84.50",
+            "dia": false,
+            "key": "84.50",
+            "folded": "84.50"
+          }
+        ],
+        "vehicle": [
+          {
+            "raw": "87",
+            "dia": false,
+            "key": "87",
+            "folded": "87"
+          },
+          {
+            "raw": "xe",
+            "dia": false,
+            "key": "xe",
+            "folded": "xe"
+          },
+          {
+            "raw": "chương 87",
+            "dia": true,
+            "key": "chương 87",
+            "folded": "chuong 87"
+          },
+          {
+            "raw": "xe của chương",
+            "dia": true,
+            "key": "xe của chương",
+            "folded": "xe cua chuong"
+          }
+        ],
+        "other": [
+          {
+            "raw": "khác",
+            "dia": true,
+            "key": "khác",
+            "folded": "khac"
+          },
+          {
+            "raw": "loại khác",
+            "dia": true,
+            "key": "loại khác",
+            "folded": "loai khac"
+          }
+        ],
+        "other_mfn5": [
+          {
+            "raw": "khác",
+            "dia": true,
+            "key": "khác",
+            "folded": "khac"
+          },
+          {
+            "raw": "loại khác",
+            "dia": true,
+            "key": "loại khác",
+            "folded": "loai khac"
+          }
+        ],
+        "generator": [
+          {
+            "raw": "máy phát điện",
+            "dia": true,
+            "key": "máy phát điện",
+            "folded": "may phat dien"
+          }
+        ]
       }
     },
     {
@@ -249,6 +937,36 @@
           "động cơ",
           "khác"
         ]
+      },
+      "_detect": {
+        "true": [
+          {
+            "raw": "máy phát điện",
+            "dia": true,
+            "key": "máy phát điện",
+            "folded": "may phat dien"
+          },
+          {
+            "raw": "generator",
+            "dia": false,
+            "key": "generator",
+            "folded": "generator"
+          }
+        ],
+        "false": [
+          {
+            "raw": "động cơ",
+            "dia": true,
+            "key": "động cơ",
+            "folded": "dong co"
+          },
+          {
+            "raw": "khác",
+            "dia": true,
+            "key": "khác",
+            "folded": "khac"
+          }
+        ]
       }
     },
     {
@@ -267,6 +985,30 @@
         ],
         "false": [
           "khác"
+        ]
+      },
+      "_detect": {
+        "true": [
+          {
+            "raw": "hướng trục",
+            "dia": true,
+            "key": "hướng trục",
+            "folded": "huong truc"
+          },
+          {
+            "raw": "sen",
+            "dia": false,
+            "key": "sen",
+            "folded": "sen"
+          }
+        ],
+        "false": [
+          {
+            "raw": "khác",
+            "dia": true,
+            "key": "khác",
+            "folded": "khac"
+          }
         ]
       }
     },
@@ -287,6 +1029,30 @@
         "false": [
           "khác"
         ]
+      },
+      "_detect": {
+        "true": [
+          {
+            "raw": "máy phát điện",
+            "dia": true,
+            "key": "máy phát điện",
+            "folded": "may phat dien"
+          },
+          {
+            "raw": "generator",
+            "dia": false,
+            "key": "generator",
+            "folded": "generator"
+          }
+        ],
+        "false": [
+          {
+            "raw": "khác",
+            "dia": true,
+            "key": "khác",
+            "folded": "khac"
+          }
+        ]
       }
     },
     {
@@ -306,6 +1072,36 @@
         ],
         "false": [
           "khác"
+        ]
+      },
+      "_detect": {
+        "true": [
+          {
+            "raw": "quang điện",
+            "dia": true,
+            "key": "quang điện",
+            "folded": "quang dien"
+          },
+          {
+            "raw": "solar",
+            "dia": false,
+            "key": "solar",
+            "folded": "solar"
+          },
+          {
+            "raw": "pin mặt trời",
+            "dia": true,
+            "key": "pin mặt trời",
+            "folded": "pin mat troi"
+          }
+        ],
+        "false": [
+          {
+            "raw": "khác",
+            "dia": true,
+            "key": "khác",
+            "folded": "khac"
+          }
         ]
       }
     }

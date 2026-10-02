@@ -28,6 +28,54 @@
           "bộ phận điện trở",
           "parts resistor"
         ]
+      },
+      "_detect": {
+        "resistor": [
+          {
+            "raw": "điện trở",
+            "dia": true,
+            "key": "điện trở",
+            "folded": "dien tro"
+          },
+          {
+            "raw": "resistor",
+            "dia": false,
+            "key": "resistor",
+            "folded": "resistor"
+          },
+          {
+            "raw": "biến trở",
+            "dia": true,
+            "key": "biến trở",
+            "folded": "bien tro"
+          },
+          {
+            "raw": "potentiometer",
+            "dia": false,
+            "key": "potentiometer",
+            "folded": "potentiometer"
+          },
+          {
+            "raw": "rheostat",
+            "dia": false,
+            "key": "rheostat",
+            "folded": "rheostat"
+          }
+        ],
+        "parts": [
+          {
+            "raw": "bộ phận điện trở",
+            "dia": true,
+            "key": "bộ phận điện trở",
+            "folded": "bo phan dien tro"
+          },
+          {
+            "raw": "parts resistor",
+            "dia": false,
+            "key": "parts resistor",
+            "folded": "parts resistor"
+          }
+        ]
       }
     },
     {
@@ -51,7 +99,11 @@
           "điện trở cố định",
           "fixed resistor",
           "metal film",
-          "metal oxide"
+          "metal oxide",
+          "Điện trở dán",
+          "Điện trở nhiệt NTC",
+          "Điện trở màng kim loại",
+          "Điện trở cầu chì cắm"
         ],
         "wirewoundVariable": [
           "wirewound variable",
@@ -62,6 +114,94 @@
           "chiết áp trượt",
           "slide potentiometer",
           "variable resistor"
+        ]
+      },
+      "_detect": {
+        "fixedCarbon": [
+          {
+            "raw": "than cacbon",
+            "dia": false,
+            "key": "than cacbon",
+            "folded": "than cacbon"
+          },
+          {
+            "raw": "carbon resistor",
+            "dia": false,
+            "key": "carbon resistor",
+            "folded": "carbon resistor"
+          },
+          {
+            "raw": "carbon film",
+            "dia": false,
+            "key": "carbon film",
+            "folded": "carbon film"
+          }
+        ],
+        "fixedOther": [
+          {
+            "raw": "điện trở cố định",
+            "dia": true,
+            "key": "điện trở cố định",
+            "folded": "dien tro co dinh"
+          },
+          {
+            "raw": "fixed resistor",
+            "dia": false,
+            "key": "fixed resistor",
+            "folded": "fixed resistor"
+          },
+          {
+            "raw": "metal film",
+            "dia": false,
+            "key": "metal film",
+            "folded": "metal film"
+          },
+          {
+            "raw": "metal oxide",
+            "dia": false,
+            "key": "metal oxide",
+            "folded": "metal oxide"
+          }
+        ],
+        "wirewoundVariable": [
+          {
+            "raw": "wirewound variable",
+            "dia": false,
+            "key": "wirewound variable",
+            "folded": "wirewound variable"
+          },
+          {
+            "raw": "wirewound potentiometer",
+            "dia": false,
+            "key": "wirewound potentiometer",
+            "folded": "wirewound potentiometer"
+          },
+          {
+            "raw": "wirewound rheostat",
+            "dia": false,
+            "key": "wirewound rheostat",
+            "folded": "wirewound rheostat"
+          }
+        ],
+        "variableOther": [
+          {
+            "raw": "chiết áp trượt",
+            "dia": true,
+            "key": "chiết áp trượt",
+            "folded": "chiet ap truot"
+          },
+          {
+            "raw": "slide potentiometer",
+            "dia": false,
+            "key": "slide potentiometer",
+            "folded": "slide potentiometer"
+          },
+          {
+            "raw": "variable resistor",
+            "dia": false,
+            "key": "variable resistor",
+            "folded": "variable resistor"
+          }
         ]
       }
     },
@@ -84,6 +224,42 @@
           "axial resistor",
           "through hole carbon"
         ]
+      },
+      "_detect": {
+        "chip": [
+          {
+            "raw": "điện trở dán",
+            "dia": true,
+            "key": "điện trở dán",
+            "folded": "dien tro dan"
+          },
+          {
+            "raw": "chip resistor",
+            "dia": false,
+            "key": "chip resistor",
+            "folded": "chip resistor"
+          },
+          {
+            "raw": "smd resistor",
+            "dia": false,
+            "key": "smd resistor",
+            "folded": "smd resistor"
+          }
+        ],
+        "other": [
+          {
+            "raw": "axial resistor",
+            "dia": false,
+            "key": "axial resistor",
+            "folded": "axial resistor"
+          },
+          {
+            "raw": "through hole carbon",
+            "dia": false,
+            "key": "through hole carbon",
+            "folded": "through hole carbon"
+          }
+        ]
       }
     },
     {
@@ -92,7 +268,9 @@
       "unit": "W",
       "fromSpec": "power",
       "labelVi": "Công suất danh định (W)",
-      "questionVi": "Công suất danh định bao nhiêu W? (ngưỡng 20 W)"
+      "questionVi": "Công suất danh định bao nhiêu W? (ngưỡng 20 W)",
+      "domain": null,
+      "_detect": {}
     }
   ],
   "hitPolicy": "PRIORITY",

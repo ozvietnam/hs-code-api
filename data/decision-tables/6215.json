@@ -23,7 +23,50 @@
         "other": [
           "không batik",
           "nhuộm thường",
-          "in thường"
+          "in thường",
+          "Cà vạt"
+        ]
+      },
+      "_detect": {
+        "batik": [
+          {
+            "raw": "batik",
+            "dia": false,
+            "key": "batik",
+            "folded": "batik"
+          },
+          {
+            "raw": "in batik",
+            "dia": false,
+            "key": "in batik",
+            "folded": "in batik"
+          },
+          {
+            "raw": "nhuộm batik",
+            "dia": true,
+            "key": "nhuộm batik",
+            "folded": "nhuom batik"
+          }
+        ],
+        "other": [
+          {
+            "raw": "không batik",
+            "dia": true,
+            "key": "không batik",
+            "folded": "khong batik"
+          },
+          {
+            "raw": "nhuộm thường",
+            "dia": true,
+            "key": "nhuộm thường",
+            "folded": "nhuom thuong"
+          },
+          {
+            "raw": "in thường",
+            "dia": true,
+            "key": "in thường",
+            "folded": "in thuong"
+          }
         ]
       }
     },
@@ -55,6 +98,86 @@
           "viscose",
           "polyester",
           "sợi tổng hợp"
+        ]
+      },
+      "_detect": {
+        "cotton_vegetable": [
+          {
+            "raw": "bông",
+            "dia": true,
+            "key": "bông",
+            "folded": "bong"
+          },
+          {
+            "raw": "sợi thực vật",
+            "dia": true,
+            "key": "sợi thực vật",
+            "folded": "soi thuc vat"
+          },
+          {
+            "raw": "cotton",
+            "dia": false,
+            "key": "cotton",
+            "folded": "cotton"
+          },
+          {
+            "raw": "vải bông",
+            "dia": true,
+            "key": "vải bông",
+            "folded": "vai bong"
+          }
+        ],
+        "silk": [
+          {
+            "raw": "tơ",
+            "dia": true,
+            "key": "tơ",
+            "folded": "to"
+          },
+          {
+            "raw": "tằm",
+            "dia": true,
+            "key": "tằm",
+            "folded": "tam"
+          },
+          {
+            "raw": "lụa",
+            "dia": true,
+            "key": "lụa",
+            "folded": "lua"
+          },
+          {
+            "raw": "silk",
+            "dia": false,
+            "key": "silk",
+            "folded": "silk"
+          }
+        ],
+        "man_made": [
+          {
+            "raw": "sợi nhân tạo",
+            "dia": true,
+            "key": "sợi nhân tạo",
+            "folded": "soi nhan tao"
+          },
+          {
+            "raw": "viscose",
+            "dia": false,
+            "key": "viscose",
+            "folded": "viscose"
+          },
+          {
+            "raw": "polyester",
+            "dia": false,
+            "key": "polyester",
+            "folded": "polyester"
+          },
+          {
+            "raw": "sợi tổng hợp",
+            "dia": true,
+            "key": "sợi tổng hợp",
+            "folded": "soi tong hop"
+          }
         ]
       }
     }

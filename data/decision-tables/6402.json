@@ -42,7 +42,149 @@
           "giày lặn"
         ],
         "other": [
-          "6402"
+          "6402",
+          "Dép nhựa PVC",
+          "Giày nam",
+          "Dép xăng đan",
+          "Dép guốc nữ",
+          "Giày trẻ em",
+          "Dép nam",
+          "Dép sục nữ",
+          "Dép guốc cao gót nữ",
+          "Dép lê đế xuồng",
+          "Giày sục nữ",
+          "Dép xuồng nữ",
+          "Giày bệt",
+          "Giày vải thời trang",
+          "Giày nữ",
+          "Giày lười PVC",
+          "Giày oxford",
+          "Giày cao gót nữ",
+          "Giày người lớn",
+          "Dép lê xỏ ngón",
+          "Dép lê xuồng",
+          "Dép sandal",
+          "Dép sục người lớn",
+          "Giày nhựa trong suốt",
+          "Dép đi trong nhà",
+          "Giày lười nam",
+          "Dép xỏ ngón nữ",
+          "Dép quai hậu trẻ em",
+          "Dép lê lưới",
+          "Dép guốc trong",
+          "Dép nữ",
+          "Dép lê nữ",
+          "Dép guốc đá",
+          "Dép sục trẻ em",
+          "Dép guốc hoa cao gót nữ"
+        ]
+      },
+      "_detect": {
+        "skiSnowboard": [
+          {
+            "raw": "ống trượt tuyết",
+            "dia": true,
+            "key": "ống trượt tuyết",
+            "folded": "ong truot tuyet"
+          },
+          {
+            "raw": "trượt tuyết",
+            "dia": true,
+            "key": "trượt tuyết",
+            "folded": "truot tuyet"
+          },
+          {
+            "raw": "snowboard",
+            "dia": false,
+            "key": "snowboard",
+            "folded": "snowboard"
+          },
+          {
+            "raw": "ski boot",
+            "dia": false,
+            "key": "ski boot",
+            "folded": "ski boot"
+          }
+        ],
+        "wrestling": [
+          {
+            "raw": "đấu vật",
+            "dia": true,
+            "key": "đấu vật",
+            "folded": "dau vat"
+          },
+          {
+            "raw": "wrestling shoe",
+            "dia": false,
+            "key": "wrestling shoe",
+            "folded": "wrestling shoe"
+          },
+          {
+            "raw": "giày đấu vật",
+            "dia": true,
+            "key": "giày đấu vật",
+            "folded": "giay dau vat"
+          }
+        ],
+        "strap": [
+          {
+            "raw": "đai",
+            "dia": true,
+            "key": "đai",
+            "folded": "dai"
+          },
+          {
+            "raw": "dây gắn",
+            "dia": true,
+            "key": "dây gắn",
+            "folded": "day gan"
+          },
+          {
+            "raw": "chốt cài",
+            "dia": true,
+            "key": "chốt cài",
+            "folded": "chot cai"
+          },
+          {
+            "raw": "strap",
+            "dia": false,
+            "key": "strap",
+            "folded": "strap"
+          },
+          {
+            "raw": "64022000",
+            "dia": false,
+            "key": "64022000",
+            "folded": "64022000"
+          }
+        ],
+        "diving": [
+          {
+            "raw": "lặn",
+            "dia": true,
+            "key": "lặn",
+            "folded": "lan"
+          },
+          {
+            "raw": "diving boot",
+            "dia": false,
+            "key": "diving boot",
+            "folded": "diving boot"
+          },
+          {
+            "raw": "giày lặn",
+            "dia": true,
+            "key": "giày lặn",
+            "folded": "giay lan"
+          }
+        ],
+        "other": [
+          {
+            "raw": "6402",
+            "dia": false,
+            "key": "6402",
+            "folded": "6402"
+          }
         ]
       }
     },
@@ -63,6 +205,35 @@
           "not metal"
         ],
         "nonSen": []
+      },
+      "_detect": {
+        "sen": [
+          {
+            "raw": "SEN",
+            "dia": false,
+            "key": "sen",
+            "folded": "sen"
+          },
+          {
+            "raw": "sensitive",
+            "dia": false,
+            "key": "sensitive",
+            "folded": "sensitive"
+          },
+          {
+            "raw": "mũi bảo vệ không phải kim loại",
+            "dia": true,
+            "key": "mũi bảo vệ không phải kim loại",
+            "folded": "mui bao ve khong phai kim loai"
+          },
+          {
+            "raw": "not metal",
+            "dia": false,
+            "key": "not metal",
+            "folded": "not metal"
+          }
+        ],
+        "nonSen": []
       }
     },
     {
@@ -80,6 +251,35 @@
           "kim loại bảo vệ",
           "metal toe cap",
           "metal toe"
+        ],
+        "nonMetalToe": []
+      },
+      "_detect": {
+        "metalToe": [
+          {
+            "raw": "mũi kim loại",
+            "dia": true,
+            "key": "mũi kim loại",
+            "folded": "mui kim loai"
+          },
+          {
+            "raw": "kim loại bảo vệ",
+            "dia": true,
+            "key": "kim loại bảo vệ",
+            "folded": "kim loai bao ve"
+          },
+          {
+            "raw": "metal toe cap",
+            "dia": false,
+            "key": "metal toe cap",
+            "folded": "metal toe cap"
+          },
+          {
+            "raw": "metal toe",
+            "dia": false,
+            "key": "metal toe",
+            "folded": "metal toe"
+          }
         ],
         "nonMetalToe": []
       }

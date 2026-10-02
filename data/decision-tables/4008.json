@@ -20,12 +20,57 @@
         "cellular": [
           "cellular",
           "xốp",
-          "foam"
+          "foam",
+          "Tấm lót chuột máy tính",
+          "Dải viền nẹp cao su lưu hóa",
+          "Tấm lót sàn"
         ],
         "nonCellular": [
           "non-cellular",
           "đặc",
           "compact"
+        ]
+      },
+      "_detect": {
+        "cellular": [
+          {
+            "raw": "cellular",
+            "dia": false,
+            "key": "cellular",
+            "folded": "cellular"
+          },
+          {
+            "raw": "xốp",
+            "dia": true,
+            "key": "xốp",
+            "folded": "xop"
+          },
+          {
+            "raw": "foam",
+            "dia": false,
+            "key": "foam",
+            "folded": "foam"
+          }
+        ],
+        "nonCellular": [
+          {
+            "raw": "non-cellular",
+            "dia": false,
+            "key": "non cellular",
+            "folded": "non cellular"
+          },
+          {
+            "raw": "đặc",
+            "dia": true,
+            "key": "đặc",
+            "folded": "dac"
+          },
+          {
+            "raw": "compact",
+            "dia": false,
+            "key": "compact",
+            "folded": "compact"
+          }
         ]
       }
     },
@@ -58,7 +103,116 @@
           "rod",
           "profile",
           "khác",
-          "loại khác"
+          "loại khác",
+          "Xốp bọc góc bàn"
+        ]
+      },
+      "_detect": {
+        "plateSheetStrip": [
+          {
+            "raw": "tấm",
+            "dia": true,
+            "key": "tấm",
+            "folded": "tam"
+          },
+          {
+            "raw": "lá",
+            "dia": true,
+            "key": "lá",
+            "folded": "la"
+          },
+          {
+            "raw": "dải",
+            "dia": true,
+            "key": "dải",
+            "folded": "dai"
+          },
+          {
+            "raw": "plate",
+            "dia": false,
+            "key": "plate",
+            "folded": "plate"
+          },
+          {
+            "raw": "sheet",
+            "dia": false,
+            "key": "sheet",
+            "folded": "sheet"
+          },
+          {
+            "raw": "strip",
+            "dia": false,
+            "key": "strip",
+            "folded": "strip"
+          },
+          {
+            "raw": "miếng",
+            "dia": true,
+            "key": "miếng",
+            "folded": "mieng"
+          },
+          {
+            "raw": "tấm ghép",
+            "dia": true,
+            "key": "tấm ghép",
+            "folded": "tam ghep"
+          },
+          {
+            "raw": "lát nền",
+            "dia": true,
+            "key": "lát nền",
+            "folded": "lat nen"
+          },
+          {
+            "raw": "ốp tường",
+            "dia": true,
+            "key": "ốp tường",
+            "folded": "op tuong"
+          }
+        ],
+        "otherShape": [
+          {
+            "raw": "que",
+            "dia": false,
+            "key": "que",
+            "folded": "que"
+          },
+          {
+            "raw": "hình",
+            "dia": true,
+            "key": "hình",
+            "folded": "hinh"
+          },
+          {
+            "raw": "profil",
+            "dia": false,
+            "key": "profil",
+            "folded": "profil"
+          },
+          {
+            "raw": "rod",
+            "dia": false,
+            "key": "rod",
+            "folded": "rod"
+          },
+          {
+            "raw": "profile",
+            "dia": false,
+            "key": "profile",
+            "folded": "profile"
+          },
+          {
+            "raw": "khác",
+            "dia": true,
+            "key": "khác",
+            "folded": "khac"
+          },
+          {
+            "raw": "loại khác",
+            "dia": true,
+            "key": "loại khác",
+            "folded": "loai khac"
+          }
         ]
       }
     },
@@ -94,6 +248,94 @@
           "không",
           "loại khác",
           "bình thường"
+        ]
+      },
+      "_detect": {
+        "fabricLined": [
+          {
+            "raw": "lót vải dệt",
+            "dia": true,
+            "key": "lót vải dệt",
+            "folded": "lot vai det"
+          },
+          {
+            "raw": "vải dệt",
+            "dia": true,
+            "key": "vải dệt",
+            "folded": "vai det"
+          },
+          {
+            "raw": "dày trên 5 mm",
+            "dia": true,
+            "key": "dày trên 5 mm",
+            "folded": "day tren 5 mm"
+          },
+          {
+            "raw": "chiều dày trên 5 mm",
+            "dia": true,
+            "key": "chiều dày trên 5 mm",
+            "folded": "chieu day tren 5 mm"
+          }
+        ],
+        "senWaterStop": [
+          {
+            "raw": "băng chắn nước",
+            "dia": true,
+            "key": "băng chắn nước",
+            "folded": "bang chan nuoc"
+          },
+          {
+            "raw": "SEN",
+            "dia": false,
+            "key": "sen",
+            "folded": "sen"
+          },
+          {
+            "raw": "chắn nước",
+            "dia": true,
+            "key": "chắn nước",
+            "folded": "chan nuoc"
+          }
+        ],
+        "shoeSole": [
+          {
+            "raw": "đế giày",
+            "dia": true,
+            "key": "đế giày",
+            "folded": "de giay"
+          },
+          {
+            "raw": "tờ cao su dùng làm đế giày",
+            "dia": true,
+            "key": "tờ cao su dùng làm đế giày",
+            "folded": "to cao su dung lam de giay"
+          },
+          {
+            "raw": "shoe sole",
+            "dia": false,
+            "key": "shoe sole",
+            "folded": "shoe sole"
+          }
+        ],
+        "none": [
+          {
+            "raw": "không",
+            "dia": true,
+            "key": "không",
+            "folded": "khong"
+          },
+          {
+            "raw": "loại khác",
+            "dia": true,
+            "key": "loại khác",
+            "folded": "loai khac"
+          },
+          {
+            "raw": "bình thường",
+            "dia": true,
+            "key": "bình thường",
+            "folded": "binh thuong"
+          }
         ]
       }
     }
