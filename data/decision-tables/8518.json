@@ -1,0 +1,341 @@
+{
+  "heading": "8518",
+  "titleVi": "Micro, loa, tai nghe, bộ tăng âm và bộ phận",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "deviceKind",
+      "type": "enum",
+      "domain": [
+        "audio_amplifier",
+        "headphone_headset",
+        "microphone",
+        "parts_accessories",
+        "sound_amplifier",
+        "speaker_enclosure",
+        "speaker_multiple",
+        "speaker_other"
+      ],
+      "labelVi": "Loại thiết bị âm thanh",
+      "questionVi": "Thiết bị âm thanh thuộc loại nào: microphone, loa thùng, loa nhiều dải, loa không vỏ, tai nghe, amplifier, bộ khuếch đại âm thanh, hay bộ phận/phụ kiện?"
+    },
+    {
+      "attribute": "specCode",
+      "type": "enum",
+      "domain": [
+        "10",
+        "11",
+        "19",
+        "20",
+        "30",
+        "40",
+        "51",
+        "59",
+        "90"
+      ],
+      "labelVi": "Mã hiệu kỹ thuật",
+      "questionVi": "Mã hiệu kỹ thuật cụ thể (2 chữ số cuối của mã HS)?"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "deviceKind": "microphone",
+        "specCode": "11"
+      },
+      "hs": "85181011",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại microphone, Biểu thuế 2026 nhóm 851810 → 85181011",
+      "source": "Biểu thuế NK VN 2026, nhóm 851810"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "deviceKind": "microphone",
+        "specCode": "19"
+      },
+      "hs": "85181019",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại microphone, Biểu thuế 2026 nhóm 851810 → 85181019",
+      "source": "Biểu thuế NK VN 2026, nhóm 851810"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "deviceKind": "microphone",
+        "specCode": "90"
+      },
+      "hs": "85181090",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại microphone, Biểu thuế 2026 nhóm 851810 → 85181090",
+      "source": "Biểu thuế NK VN 2026, nhóm 851810"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "deviceKind": "speaker_enclosure",
+        "specCode": "10"
+      },
+      "hs": "85182110",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại speaker_enclosure, Biểu thuế 2026 nhóm 851821 → 85182110",
+      "source": "Biểu thuế NK VN 2026, nhóm 851821"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "deviceKind": "speaker_enclosure",
+        "specCode": "90"
+      },
+      "hs": "85182190",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại speaker_enclosure, Biểu thuế 2026 nhóm 851821 → 85182190",
+      "source": "Biểu thuế NK VN 2026, nhóm 851821"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "deviceKind": "speaker_multiple",
+        "specCode": "10"
+      },
+      "hs": "85182210",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại speaker_multiple, Biểu thuế 2026 nhóm 851822 → 85182210",
+      "source": "Biểu thuế NK VN 2026, nhóm 851822"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "deviceKind": "speaker_multiple",
+        "specCode": "90"
+      },
+      "hs": "85182290",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại speaker_multiple, Biểu thuế 2026 nhóm 851822 → 85182290",
+      "source": "Biểu thuế NK VN 2026, nhóm 851822"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "deviceKind": "speaker_other",
+        "specCode": "20"
+      },
+      "hs": "85182920",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại speaker_other, Biểu thuế 2026 nhóm 851829 → 85182920",
+      "source": "Biểu thuế NK VN 2026, nhóm 851829"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "deviceKind": "speaker_other",
+        "specCode": "90"
+      },
+      "hs": "85182990",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại speaker_other, Biểu thuế 2026 nhóm 851829 → 85182990",
+      "source": "Biểu thuế NK VN 2026, nhóm 851829"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "deviceKind": "headphone_headset",
+        "specCode": "10"
+      },
+      "hs": "85183010",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại headphone_headset, Biểu thuế 2026 nhóm 851830 → 85183010",
+      "source": "Biểu thuế NK VN 2026, nhóm 851830"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "deviceKind": "headphone_headset",
+        "specCode": "20"
+      },
+      "hs": "85183020",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại headphone_headset, Biểu thuế 2026 nhóm 851830 → 85183020",
+      "source": "Biểu thuế NK VN 2026, nhóm 851830"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "deviceKind": "headphone_headset",
+        "specCode": "40"
+      },
+      "hs": "85183040",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại headphone_headset, Biểu thuế 2026 nhóm 851830 → 85183040",
+      "source": "Biểu thuế NK VN 2026, nhóm 851830"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "deviceKind": "headphone_headset",
+        "specCode": "51"
+      },
+      "hs": "85183051",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại headphone_headset, Biểu thuế 2026 nhóm 851830 → 85183051",
+      "source": "Biểu thuế NK VN 2026, nhóm 851830"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "deviceKind": "headphone_headset",
+        "specCode": "59"
+      },
+      "hs": "85183059",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại headphone_headset, Biểu thuế 2026 nhóm 851830 → 85183059",
+      "source": "Biểu thuế NK VN 2026, nhóm 851830"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "deviceKind": "headphone_headset",
+        "specCode": "90"
+      },
+      "hs": "85183090",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại headphone_headset, Biểu thuế 2026 nhóm 851830 → 85183090",
+      "source": "Biểu thuế NK VN 2026, nhóm 851830"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "deviceKind": "audio_amplifier",
+        "specCode": "20"
+      },
+      "hs": "85184020",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại audio_amplifier, Biểu thuế 2026 nhóm 851840 → 85184020",
+      "source": "Biểu thuế NK VN 2026, nhóm 851840"
+    },
+    {
+      "id": "r-17",
+      "priority": 0,
+      "when": {
+        "deviceKind": "audio_amplifier",
+        "specCode": "30"
+      },
+      "hs": "85184030",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại audio_amplifier, Biểu thuế 2026 nhóm 851840 → 85184030",
+      "source": "Biểu thuế NK VN 2026, nhóm 851840"
+    },
+    {
+      "id": "r-18",
+      "priority": 0,
+      "when": {
+        "deviceKind": "audio_amplifier",
+        "specCode": "40"
+      },
+      "hs": "85184040",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại audio_amplifier, Biểu thuế 2026 nhóm 851840 → 85184040",
+      "source": "Biểu thuế NK VN 2026, nhóm 851840"
+    },
+    {
+      "id": "r-19",
+      "priority": 0,
+      "when": {
+        "deviceKind": "audio_amplifier",
+        "specCode": "90"
+      },
+      "hs": "85184090",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại audio_amplifier, Biểu thuế 2026 nhóm 851840 → 85184090",
+      "source": "Biểu thuế NK VN 2026, nhóm 851840"
+    },
+    {
+      "id": "r-20",
+      "priority": 0,
+      "when": {
+        "deviceKind": "sound_amplifier",
+        "specCode": "10"
+      },
+      "hs": "85185010",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại sound_amplifier, Biểu thuế 2026 nhóm 851850 → 85185010",
+      "source": "Biểu thuế NK VN 2026, nhóm 851850"
+    },
+    {
+      "id": "r-21",
+      "priority": 0,
+      "when": {
+        "deviceKind": "sound_amplifier",
+        "specCode": "20"
+      },
+      "hs": "85185020",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại sound_amplifier, Biểu thuế 2026 nhóm 851850 → 85185020",
+      "source": "Biểu thuế NK VN 2026, nhóm 851850"
+    },
+    {
+      "id": "r-22",
+      "priority": 0,
+      "when": {
+        "deviceKind": "sound_amplifier",
+        "specCode": "90"
+      },
+      "hs": "85185090",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại sound_amplifier, Biểu thuế 2026 nhóm 851850 → 85185090",
+      "source": "Biểu thuế NK VN 2026, nhóm 851850"
+    },
+    {
+      "id": "r-23",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts_accessories",
+        "specCode": "10"
+      },
+      "hs": "85189010",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại parts_accessories, Biểu thuế 2026 nhóm 851890 → 85189010",
+      "source": "Biểu thuế NK VN 2026, nhóm 851890"
+    },
+    {
+      "id": "r-24",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts_accessories",
+        "specCode": "20"
+      },
+      "hs": "85189020",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại parts_accessories, Biểu thuế 2026 nhóm 851890 → 85189020",
+      "source": "Biểu thuế NK VN 2026, nhóm 851890"
+    },
+    {
+      "id": "r-25",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts_accessories",
+        "specCode": "30"
+      },
+      "hs": "85189030",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại parts_accessories, Biểu thuế 2026 nhóm 851890 → 85189030",
+      "source": "Biểu thuế NK VN 2026, nhóm 851890"
+    },
+    {
+      "id": "r-26",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts_accessories",
+        "specCode": "40"
+      },
+      "hs": "85189040",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại parts_accessories, Biểu thuế 2026 nhóm 851890 → 85189040",
+      "source": "Biểu thuế NK VN 2026, nhóm 851890"
+    },
+    {
+      "id": "r-27",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts_accessories",
+        "specCode": "90"
+      },
+      "hs": "85189090",
+      "reasonVi": "GIR 6 — thiết bị âm thanh loại parts_accessories, Biểu thuế 2026 nhóm 851890 → 85189090",
+      "source": "Biểu thuế NK VN 2026, nhóm 851890"
+    }
+  ],
+  "essenceTestVi": "Loại thiết bị (deviceKind) + Mã hiệu kỹ thuật (specCode) → mã 8 số. 27 lá, 2 thuộc tính.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN)."
+}
