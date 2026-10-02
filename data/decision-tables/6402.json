@@ -330,5 +330,62 @@
     "senFlag"
   ],
   "essenceVi": "loại giày + mũi kim loại + cờ nhạy cảm",
-  "generatedAt": "2026-10-02T12:34:10.224Z"
+  "generatedAt": "2026-10-02T12:34:10.224Z",
+  "attributes": {
+    "shoeType": {
+      "detect": {
+        "skiSnowboard": [
+          "ống trượt tuyết",
+          "trượt tuyết",
+          "snowboard",
+          "ski boot"
+        ],
+        "wrestling": [
+          "đấu vật",
+          "wrestling shoe",
+          "giày đấu vật"
+        ],
+        "strap": [
+          "đai",
+          "dây gắn",
+          "chốt cài",
+          "strap",
+          "64022000"
+        ],
+        "diving": [
+          "lặn",
+          "diving boot",
+          "giày lặn"
+        ],
+        "other": [
+          "6402"
+        ]
+      },
+      "type": "enum"
+    },
+    "metalToe": {
+      "detect": {
+        "metalToe": [
+          "mũi kim loại",
+          "kim loại bảo vệ",
+          "metal toe cap",
+          "metal toe"
+        ],
+        "nonMetalToe": []
+      },
+      "type": "enum"
+    },
+    "senFlag": {
+      "detect": {
+        "sen": [
+          "SEN",
+          "sensitive",
+          "mũi bảo vệ không phải kim loại",
+          "not metal"
+        ],
+        "nonSen": []
+      },
+      "type": "enum"
+    }
+  }
 }
