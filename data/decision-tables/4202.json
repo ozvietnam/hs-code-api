@@ -15,10 +15,44 @@
       "labelVi": "Loại đồ chứa / mang theo",
       "questionVi": "Sản phẩm thuộc loại nào: cặp tài liệu/vali (briefcase/trunk/suitcase), túi xách tay (handbag), vật dụng mang theo trong túi (pocket article), hay vật chứa/khác?",
       "detect": {
-        "briefcase": ["cặp tài liệu", "vali", "va li", "suitcase", "trunk", "briefcase", "cặp", "vali du lịch", "hộp du lịch"],
-        "handbag": ["túi xách", "túi xách tay", "handbag", "túi đeo", "túi nam", "túi nữ", "túi clutch"],
-        "pocket_article": ["ví", "bóp", "khăn tay", "vật dụng túi", "pocket", "ví tiền", "ví da", "key case", "hộp thuốc"],
-        "other_container": ["túi", "bao", "bịch", "túi đựng", "vali du lịch"]
+        "briefcase": [
+          "cặp tài liệu",
+          "vali",
+          "va li",
+          "suitcase",
+          "trunk",
+          "briefcase",
+          "cặp",
+          "vali du lịch",
+          "hộp du lịch"
+        ],
+        "handbag": [
+          "túi xách",
+          "túi xách tay",
+          "handbag",
+          "túi đeo",
+          "túi nam",
+          "túi nữ",
+          "túi clutch"
+        ],
+        "pocket_article": [
+          "ví",
+          "bóp",
+          "khăn tay",
+          "vật dụng túi",
+          "pocket",
+          "ví tiền",
+          "ví da",
+          "key case",
+          "hộp thuốc"
+        ],
+        "other_container": [
+          "túi",
+          "bao",
+          "bịch",
+          "túi đựng",
+          "vali du lịch"
+        ]
       }
     },
     {
@@ -331,5 +365,69 @@
   ],
   "hitPolicy": "PRIORITY",
   "essenceTestVi": "containerKind (4 giá trị: briefcase/handbag/pocket_article/other_container) + outerMaterial (7 giá trị) + sizeLimit (3) + specificKind (4) — phân biệt 23 mã 8 số trong nhóm 4202. Thuộc tính rìa: sizeLimit chỉ áp cho briefcase; specificKind chỉ áp cho other_container. Tất cả MFN 25%.",
-  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 4202 (Thông tư 65/2024/TT-BTC)."
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 4202 (Thông tư 65/2024/TT-BTC).",
+  "inputAttributes": [
+    "containerKind",
+    "outerMaterial",
+    "sizeLimit",
+    "specificKind"
+  ],
+  "attributes": {
+    "containerKind": {
+      "detect": {
+        "briefcase": [
+          "cặp tài liệu",
+          "vali",
+          "va li",
+          "suitcase",
+          "trunk",
+          "briefcase",
+          "cặp",
+          "vali du lịch",
+          "hộp du lịch"
+        ],
+        "handbag": [
+          "túi xách",
+          "túi xách tay",
+          "handbag",
+          "túi đeo",
+          "túi nam",
+          "túi nữ",
+          "túi clutch"
+        ],
+        "pocket_article": [
+          "ví",
+          "bóp",
+          "khăn tay",
+          "vật dụng túi",
+          "pocket",
+          "ví tiền",
+          "ví da",
+          "key case",
+          "hộp thuốc"
+        ],
+        "other_container": [
+          "túi",
+          "bao",
+          "bịch",
+          "túi đựng",
+          "vali du lịch"
+        ]
+      },
+      "type": "enum"
+    },
+    "outerMaterial": {
+      "detect": {},
+      "type": "enum"
+    },
+    "sizeLimit": {
+      "detect": {},
+      "type": "enum"
+    },
+    "specificKind": {
+      "detect": {},
+      "type": "enum"
+    }
+  },
+  "essenceVi": "containerKind × outerMaterial × sizeLimit × specificKind"
 }
