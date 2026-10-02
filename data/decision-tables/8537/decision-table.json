@@ -1,0 +1,152 @@
+{
+  "heading": "8537",
+  "description": "Boards, panels, consoles, desks, cabinets and other bases, equipped with two or more apparatus of heading 8535 or 8536, for electric control or the distribution of electricity",
+  "attributes": [
+    {
+      "id": "voltageClass",
+      "descriptionVi": "Cấp điện áp",
+      "values": {
+        "le1000V": "≤ 1.000V (8537.10)",
+        "gt1000V": "> 1.000V (8537.20)"
+      }
+    },
+    {
+      "id": "appType",
+      "descriptionVi": "Loại thiết bị điều khiển",
+      "values": {
+        "plc": "PLC / bộ xử lý lập trình (85371030)",
+        "motorController": "Bộ điều khiển động cơ (85371040)",
+        "controlPanel": "Bảng điều khiển điện (85371011/12/13/19)",
+        "distributionBoard": "Bảng phân phối (85371020)",
+        "protectionUnit": "Thiết bị đóng cắt/bảo vệ mạch (853720)",
+        "other": "Loại khác"
+      }
+    },
+    {
+      "id": "senMarked",
+      "descriptionVi": "Nhãn SEN",
+      "values": {
+        "sen": "Có SEN",
+        "nonSen": "Không SEN"
+      }
+    },
+    {
+      "id": "specialApp",
+      "descriptionVi": "Ứng dụng đặc biệt",
+      "values": {
+        "radio": "Thiết bị sóng vô tuyến, quạt điện",
+        "distributedControl": "Hệ thống điều khiển phân tán",
+        "digitalControl": "Có bộ xử lý lập trình số",
+        "motorControlDC": "Điều khiển động cơ DC 24-120V",
+        "none": "Không có"
+      }
+    }
+  ],
+  "rules": [
+    {
+      "voltageClass": "le1000V",
+      "appType": "controlPanel",
+      "senMarked": "nonSen",
+      "specialApp": "none",
+      "hsCode": "85371011"
+    },
+    {
+      "voltageClass": "le1000V",
+      "appType": "plc",
+      "senMarked": "sen",
+      "specialApp": "digitalControl",
+      "hsCode": "85371012"
+    },
+    {
+      "voltageClass": "le1000V",
+      "appType": "controlPanel",
+      "senMarked": "sen",
+      "specialApp": "none",
+      "hsCode": "85371013"
+    },
+    {
+      "voltageClass": "le1000V",
+      "appType": "controlPanel",
+      "senMarked": "nonSen",
+      "specialApp": "none",
+      "hsCode": "85371019"
+    },
+    {
+      "voltageClass": "le1000V",
+      "appType": "distributionBoard",
+      "senMarked": "nonSen",
+      "specialApp": "none",
+      "hsCode": "85371020"
+    },
+    {
+      "voltageClass": "le1000V",
+      "appType": "plc",
+      "senMarked": "nonSen",
+      "specialApp": "digitalControl",
+      "hsCode": "85371030"
+    },
+    {
+      "voltageClass": "le1000V",
+      "appType": "motorController",
+      "senMarked": "nonSen",
+      "specialApp": "motorControlDC",
+      "hsCode": "85371040"
+    },
+    {
+      "voltageClass": "le1000V",
+      "appType": "controlPanel",
+      "senMarked": "nonSen",
+      "specialApp": "radio",
+      "hsCode": "85371091"
+    },
+    {
+      "voltageClass": "le1000V",
+      "appType": "controlPanel",
+      "senMarked": "nonSen",
+      "specialApp": "distributedControl",
+      "hsCode": "85371092"
+    },
+    {
+      "voltageClass": "le1000V",
+      "appType": "controlPanel",
+      "senMarked": "nonSen",
+      "specialApp": "none",
+      "hsCode": "85371099"
+    },
+    {
+      "voltageClass": "gt1000V",
+      "appType": "protectionUnit",
+      "senMarked": "sen",
+      "specialApp": "none",
+      "hsCode": "85372011"
+    },
+    {
+      "voltageClass": "gt1000V",
+      "appType": "protectionUnit",
+      "senMarked": "nonSen",
+      "specialApp": "none",
+      "hsCode": "85372019"
+    },
+    {
+      "voltageClass": "gt1000V",
+      "appType": "protectionUnit",
+      "senMarked": "sen",
+      "specialApp": "none",
+      "hsCode": "85372021"
+    },
+    {
+      "voltageClass": "gt1000V",
+      "appType": "protectionUnit",
+      "senMarked": "nonSen",
+      "specialApp": "none",
+      "hsCode": "85372029"
+    },
+    {
+      "voltageClass": "gt1000V",
+      "appType": "other",
+      "senMarked": "nonSen",
+      "specialApp": "none",
+      "hsCode": "85372090"
+    }
+  ]
+}
