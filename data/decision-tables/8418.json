@@ -1,0 +1,340 @@
+{
+  "heading": "8418",
+  "titleVi": "Tủ lạnh, tủ kết đông và thiết bị làm lạnh khác; bơm nhiệt",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "applianceKind",
+      "type": "enum",
+      "domain": [
+        "chest_freezer",
+        "combined_ref_freezer",
+        "heat_pump",
+        "household_other_type",
+        "household_refrigerator",
+        "other_cooling_cabinet",
+        "other_refrigerating_machine",
+        "parts_frame",
+        "parts_other",
+        "upright_freezer"
+      ],
+      "labelVi": "Loại thiết bị làm lạnh",
+      "questionVi": "Thiết bị làm lạnh thuộc loại nào: tủ lạnh-tủ đông kết hợp, tủ lạnh gia đình kiểu nén, tủ lạnh kiểu hấp thụ/thermoelectric, tủ đông nằm ngang (chest), tủ đông đứng (upright), tủ trưng bày/y tế/đồ uống, bơm nhiệt, máy làm lạnh khác, bộ phận khung/vỏ, hay bộ phận khác?"
+    },
+    {
+      "attribute": "capacityOrType",
+      "type": "enum",
+      "domain": [
+        "absorption_thermoelectric",
+        "beverage_food",
+        "cold_other",
+        "cold_storage",
+        "condenser",
+        "dairy_fishery",
+        "display_case",
+        "evaporator",
+        "large_over_200L",
+        "medical_lab",
+        "medical_other",
+        "other_cabinet",
+        "other_machine",
+        "other_parts",
+        "small_le_200L",
+        "standard",
+        "vol_150_200L",
+        "vol_200_250L",
+        "vol_250_300L",
+        "vol_300_400L",
+        "vol_le_150L",
+        "vol_over_400L",
+        "water_ice"
+      ],
+      "labelVi": "Dung tích / loại cụ thể",
+      "questionVi": "Dung tích (nếu là tủ lạnh/tủ đông) hoặc loại cụ thể (y tế, đồ uống, máy làm đá, bộ phận...) là gì?"
+    }
+  ],
+  "rules": [
+    {
+      "hs": "84181031",
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_le_150L"
+      },
+      "then": {
+        "hs": "84181031"
+      }
+    },
+    {
+      "hs": "84181032",
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_150_200L"
+      },
+      "then": {
+        "hs": "84181032"
+      }
+    },
+    {
+      "hs": "84181039",
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_200_250L"
+      },
+      "then": {
+        "hs": "84181039"
+      }
+    },
+    {
+      "hs": "84181040",
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_250_300L"
+      },
+      "then": {
+        "hs": "84181040"
+      }
+    },
+    {
+      "hs": "84181091",
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_300_400L"
+      },
+      "then": {
+        "hs": "84181091"
+      }
+    },
+    {
+      "hs": "84181099",
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_over_400L"
+      },
+      "then": {
+        "hs": "84181099"
+      }
+    },
+    {
+      "hs": "84182110",
+      "when": {
+        "applianceKind": "household_refrigerator",
+        "capacityOrType": "small_le_200L"
+      },
+      "then": {
+        "hs": "84182110"
+      }
+    },
+    {
+      "hs": "84182190",
+      "when": {
+        "applianceKind": "household_refrigerator",
+        "capacityOrType": "large_over_200L"
+      },
+      "then": {
+        "hs": "84182190"
+      }
+    },
+    {
+      "hs": "84182900",
+      "when": {
+        "applianceKind": "household_other_type",
+        "capacityOrType": "absorption_thermoelectric"
+      },
+      "then": {
+        "hs": "84182900"
+      }
+    },
+    {
+      "hs": "84183010",
+      "when": {
+        "applianceKind": "chest_freezer",
+        "capacityOrType": "small_le_200L"
+      },
+      "then": {
+        "hs": "84183010"
+      }
+    },
+    {
+      "hs": "84183090",
+      "when": {
+        "applianceKind": "chest_freezer",
+        "capacityOrType": "large_over_200L"
+      },
+      "then": {
+        "hs": "84183090"
+      }
+    },
+    {
+      "hs": "84184010",
+      "when": {
+        "applianceKind": "upright_freezer",
+        "capacityOrType": "small_le_200L"
+      },
+      "then": {
+        "hs": "84184010"
+      }
+    },
+    {
+      "hs": "84184090",
+      "when": {
+        "applianceKind": "upright_freezer",
+        "capacityOrType": "large_over_200L"
+      },
+      "then": {
+        "hs": "84184090"
+      }
+    },
+    {
+      "hs": "84185011",
+      "when": {
+        "applianceKind": "other_cooling_cabinet",
+        "capacityOrType": "medical_lab"
+      },
+      "then": {
+        "hs": "84185011"
+      }
+    },
+    {
+      "hs": "84185019",
+      "when": {
+        "applianceKind": "other_cooling_cabinet",
+        "capacityOrType": "medical_other"
+      },
+      "then": {
+        "hs": "84185019"
+      }
+    },
+    {
+      "hs": "84185091",
+      "when": {
+        "applianceKind": "other_cooling_cabinet",
+        "capacityOrType": "beverage_food"
+      },
+      "then": {
+        "hs": "84185091"
+      }
+    },
+    {
+      "hs": "84185099",
+      "when": {
+        "applianceKind": "other_cooling_cabinet",
+        "capacityOrType": "other_cabinet"
+      },
+      "then": {
+        "hs": "84185099"
+      }
+    },
+    {
+      "hs": "84186100",
+      "when": {
+        "applianceKind": "heat_pump",
+        "capacityOrType": "standard"
+      },
+      "then": {
+        "hs": "84186100"
+      }
+    },
+    {
+      "hs": "84186910",
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "water_ice"
+      },
+      "then": {
+        "hs": "84186910"
+      }
+    },
+    {
+      "hs": "84186930",
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "cold_storage"
+      },
+      "then": {
+        "hs": "84186930"
+      }
+    },
+    {
+      "hs": "84186941",
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "dairy_fishery"
+      },
+      "then": {
+        "hs": "84186941"
+      }
+    },
+    {
+      "hs": "84186949",
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "cold_other"
+      },
+      "then": {
+        "hs": "84186949"
+      }
+    },
+    {
+      "hs": "84186950",
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "display_case"
+      },
+      "then": {
+        "hs": "84186950"
+      }
+    },
+    {
+      "hs": "84186990",
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "other_machine"
+      },
+      "then": {
+        "hs": "84186990"
+      }
+    },
+    {
+      "hs": "84189100",
+      "when": {
+        "applianceKind": "parts_frame",
+        "capacityOrType": "standard"
+      },
+      "then": {
+        "hs": "84189100"
+      }
+    },
+    {
+      "hs": "84189910",
+      "when": {
+        "applianceKind": "parts_other",
+        "capacityOrType": "evaporator"
+      },
+      "then": {
+        "hs": "84189910"
+      }
+    },
+    {
+      "hs": "84189940",
+      "when": {
+        "applianceKind": "parts_other",
+        "capacityOrType": "condenser"
+      },
+      "then": {
+        "hs": "84189940"
+      }
+    },
+    {
+      "hs": "84189990",
+      "when": {
+        "applianceKind": "parts_other",
+        "capacityOrType": "other_parts"
+      },
+      "then": {
+        "hs": "84189990"
+      }
+    }
+  ],
+  "essenceTestVi": "Loại thiết bị (applianceKind) + Dung tích/loại cụ thể (capacityOrType) → mã 8 số. 28 lá, 2 thuộc tính.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN)."
+}
