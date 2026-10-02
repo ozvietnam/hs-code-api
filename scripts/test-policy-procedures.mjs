@@ -127,6 +127,27 @@ const abbrevTests = [
   ['Hậu kiểm sau TQ', 'chat-luong'],
   ['Cắt giảm kiểm tra chuyên ngành', 'chat-luong'],
   ['Kiểm tra chuyên ngành (cắt giảm)', 'chat-luong'],
+  // NEW from 2026-10-02 18:xx second round — remaining nulls
+  ['NK có điều kiện', 'kd-dk'],
+  ['NK hạn chế', 'kd-dk'],
+  ['Hạn chế SX KD', 'kd-dk'],
+  ['Giấy phép kinh doanh hạn chế', 'kd-dk'],
+  ['Kinh doanh hạn chế', 'kd-dk'],
+  ['Sản xuất, kinh doanh hạn chế', 'kd-dk'],
+  ['Hạn chế KD', 'kd-dk'],
+  ['Nhập khẩu chất cấm sử dụng', 'cam-nk'],
+  ['Giấy phép TNTX', 'xk'],
+  ['Chỉ định', 'kd-dk'],
+  ['CR', 'chat-luong'],
+  ['Chuyên ngành', 'chat-luong'],
+  ['An toàn', 'chat-luong'],
+  ['Đã cắt giảm', 'chat-luong'],
+  ['Chứng nhận trước thông quan', 'chat-luong'],
+  ['Chứng nhận trước khi thông quan', 'chat-luong'],
+  ['Chứng nhận trước thông quan cho hàng hóa nhập khẩu', 'chat-luong'],
+  ['KTNN về CL khi NK', 'chat-luong'],
+  ['Kiểm tra tiêu chuẩn khoáng sản', 'chat-luong'],
+  ['Kiểm tra hàng hóa có khả năng gây mất an toàn', 'chat-luong'],
 ];
 abbrevTests.forEach(([input, expected]) => {
   const got = normalizeType(input);
