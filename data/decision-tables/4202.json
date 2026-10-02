@@ -51,7 +51,209 @@
           "bao",
           "bịch",
           "túi đựng",
-          "vali du lịch"
+          "vali du lịch",
+          "Ba lô đeo vai",
+          "Hộp đựng tai nghe",
+          "Hộp đựng rượu vang",
+          "Ba lô thời trang",
+          "Balo",
+          "Dây đai đeo đồ nghề",
+          "Bìa da đựng tài liệu A4",
+          "Dụng cụ cài hông",
+          "Hộp đựng đồ",
+          "Valy có bánh xe",
+          "Giỏ đựng quà tặng",
+          "Ba lô du lịch"
+        ]
+      },
+      "_detect": {
+        "briefcase": [
+          {
+            "raw": "cặp tài liệu",
+            "dia": true,
+            "key": "cặp tài liệu",
+            "folded": "cap tai lieu"
+          },
+          {
+            "raw": "vali",
+            "dia": false,
+            "key": "vali",
+            "folded": "vali"
+          },
+          {
+            "raw": "va li",
+            "dia": false,
+            "key": "va li",
+            "folded": "va li"
+          },
+          {
+            "raw": "suitcase",
+            "dia": false,
+            "key": "suitcase",
+            "folded": "suitcase"
+          },
+          {
+            "raw": "trunk",
+            "dia": false,
+            "key": "trunk",
+            "folded": "trunk"
+          },
+          {
+            "raw": "briefcase",
+            "dia": false,
+            "key": "briefcase",
+            "folded": "briefcase"
+          },
+          {
+            "raw": "cặp",
+            "dia": true,
+            "key": "cặp",
+            "folded": "cap"
+          },
+          {
+            "raw": "vali du lịch",
+            "dia": true,
+            "key": "vali du lịch",
+            "folded": "vali du lich"
+          },
+          {
+            "raw": "hộp du lịch",
+            "dia": true,
+            "key": "hộp du lịch",
+            "folded": "hop du lich"
+          }
+        ],
+        "handbag": [
+          {
+            "raw": "túi xách",
+            "dia": true,
+            "key": "túi xách",
+            "folded": "tui xach"
+          },
+          {
+            "raw": "túi xách tay",
+            "dia": true,
+            "key": "túi xách tay",
+            "folded": "tui xach tay"
+          },
+          {
+            "raw": "handbag",
+            "dia": false,
+            "key": "handbag",
+            "folded": "handbag"
+          },
+          {
+            "raw": "túi đeo",
+            "dia": true,
+            "key": "túi đeo",
+            "folded": "tui deo"
+          },
+          {
+            "raw": "túi nam",
+            "dia": true,
+            "key": "túi nam",
+            "folded": "tui nam"
+          },
+          {
+            "raw": "túi nữ",
+            "dia": true,
+            "key": "túi nữ",
+            "folded": "tui nu"
+          },
+          {
+            "raw": "túi clutch",
+            "dia": true,
+            "key": "túi clutch",
+            "folded": "tui clutch"
+          }
+        ],
+        "pocket_article": [
+          {
+            "raw": "ví",
+            "dia": true,
+            "key": "ví",
+            "folded": "vi"
+          },
+          {
+            "raw": "bóp",
+            "dia": true,
+            "key": "bóp",
+            "folded": "bop"
+          },
+          {
+            "raw": "khăn tay",
+            "dia": true,
+            "key": "khăn tay",
+            "folded": "khan tay"
+          },
+          {
+            "raw": "vật dụng túi",
+            "dia": true,
+            "key": "vật dụng túi",
+            "folded": "vat dung tui"
+          },
+          {
+            "raw": "pocket",
+            "dia": false,
+            "key": "pocket",
+            "folded": "pocket"
+          },
+          {
+            "raw": "ví tiền",
+            "dia": true,
+            "key": "ví tiền",
+            "folded": "vi tien"
+          },
+          {
+            "raw": "ví da",
+            "dia": true,
+            "key": "ví da",
+            "folded": "vi da"
+          },
+          {
+            "raw": "key case",
+            "dia": false,
+            "key": "key case",
+            "folded": "key case"
+          },
+          {
+            "raw": "hộp thuốc",
+            "dia": true,
+            "key": "hộp thuốc",
+            "folded": "hop thuoc"
+          }
+        ],
+        "other_container": [
+          {
+            "raw": "túi",
+            "dia": true,
+            "key": "túi",
+            "folded": "tui"
+          },
+          {
+            "raw": "bao",
+            "dia": false,
+            "key": "bao",
+            "folded": "bao"
+          },
+          {
+            "raw": "bịch",
+            "dia": true,
+            "key": "bịch",
+            "folded": "bich"
+          },
+          {
+            "raw": "túi đựng",
+            "dia": true,
+            "key": "túi đựng",
+            "folded": "tui dung"
+          },
+          {
+            "raw": "vali du lịch",
+            "dia": true,
+            "key": "vali du lịch",
+            "folded": "vali du lich"
+          }
         ]
       }
     },
@@ -68,7 +270,8 @@
         "other_material"
       ],
       "labelVi": "Chất liệu mặt ngoài",
-      "questionVi": "Mặt ngoài bằng gì: da thuộc (leather), sợi lưu hóa (SEN), plastic dạng tấm, vật liệu dệt, bìa, hay vật liệu khác?"
+      "questionVi": "Mặt ngoài bằng gì: da thuộc (leather), sợi lưu hóa (SEN), plastic dạng tấm, vật liệu dệt, bìa, hay vật liệu khác?",
+      "_detect": {}
     },
     {
       "attribute": "sizeLimit",
@@ -79,7 +282,8 @@
         "not_applicable"
       ],
       "labelVi": "Kích thước giới hạn 56x45x25cm",
-      "questionVi": "Có kích thước tối đa 56cm x 45cm x 25cm không (chỉ áp dụng cho cặp tài liệu vali)?: Có (within_limit) / Không (over_limit) / Không áp dụng (not_applicable)"
+      "questionVi": "Có kích thước tối đa 56cm x 45cm x 25cm không (chỉ áp dụng cho cặp tài liệu vali)?: Có (within_limit) / Không (over_limit) / Không áp dụng (not_applicable)",
+      "_detect": {}
     },
     {
       "attribute": "specificKind",
@@ -91,7 +295,8 @@
         "general"
       ],
       "labelVi": "Loại cụ thể (khi containerKind = other_container)",
-      "questionVi": "Vật chứa cụ thể là gì: túi đựng đồ Bowling, túi đựng vệ sinh cá nhân, túi đựng khác, hay loại chung?"
+      "questionVi": "Vật chứa cụ thể là gì: túi đựng đồ Bowling, túi đựng vệ sinh cá nhân, túi đựng khác, hay loại chung?",
+      "_detect": {}
     }
   ],
   "rules": [

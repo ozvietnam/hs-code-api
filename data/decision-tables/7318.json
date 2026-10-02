@@ -34,7 +34,17 @@
           "đinh vít",
           "đinh ốc",
           "vít thường",
-          "screw"
+          "screw",
+          "Đinh hàn",
+          "Bu lông ren suốt",
+          "Ốc hãm đầu dây cấp nước",
+          "Bu lông khớp nối",
+          "Bu lông thân",
+          "Múp nối thủy lực",
+          "Bu lông chữ E",
+          "Bu lông ren lửng",
+          "Miếng đệm",
+          "Ốc thăng bằng"
         ],
         "hook_ring_nail": [
           "đinh móc",
@@ -89,6 +99,284 @@
           "cơ khí khác",
           "fastener"
         ]
+      },
+      "_detect": {
+        "square_head_screw": [
+          {
+            "raw": "vít đầu vuông",
+            "dia": true,
+            "key": "vít đầu vuông",
+            "folded": "vit dau vuong"
+          },
+          {
+            "raw": "bu lông đầu vuông",
+            "dia": true,
+            "key": "bu lông đầu vuông",
+            "folded": "bu long dau vuong"
+          },
+          {
+            "raw": "đai ốc",
+            "dia": true,
+            "key": "đai ốc",
+            "folded": "dai oc"
+          },
+          {
+            "raw": "bulong",
+            "dia": false,
+            "key": "bulong",
+            "folded": "bulong"
+          }
+        ],
+        "other_screw": [
+          {
+            "raw": "vít",
+            "dia": true,
+            "key": "vít",
+            "folded": "vit"
+          },
+          {
+            "raw": "đinh vít",
+            "dia": true,
+            "key": "đinh vít",
+            "folded": "dinh vit"
+          },
+          {
+            "raw": "đinh ốc",
+            "dia": true,
+            "key": "đinh ốc",
+            "folded": "dinh oc"
+          },
+          {
+            "raw": "vít thường",
+            "dia": true,
+            "key": "vít thường",
+            "folded": "vit thuong"
+          },
+          {
+            "raw": "screw",
+            "dia": false,
+            "key": "screw",
+            "folded": "screw"
+          }
+        ],
+        "hook_ring_nail": [
+          {
+            "raw": "đinh móc",
+            "dia": true,
+            "key": "đinh móc",
+            "folded": "dinh moc"
+          },
+          {
+            "raw": "đinh vòng",
+            "dia": true,
+            "key": "đinh vòng",
+            "folded": "dinh vong"
+          },
+          {
+            "raw": "đinh hook",
+            "dia": true,
+            "key": "đinh hook",
+            "folded": "dinh hook"
+          },
+          {
+            "raw": "móc",
+            "dia": true,
+            "key": "móc",
+            "folded": "moc"
+          },
+          {
+            "raw": "vòng",
+            "dia": true,
+            "key": "vòng",
+            "folded": "vong"
+          }
+        ],
+        "self_tapping_screw": [
+          {
+            "raw": "vít tự tarô",
+            "dia": true,
+            "key": "vít tự tarô",
+            "folded": "vit tu taro"
+          },
+          {
+            "raw": "vít tự khoan",
+            "dia": true,
+            "key": "vít tự khoan",
+            "folded": "vit tu khoan"
+          },
+          {
+            "raw": "đinh vít tự tarô",
+            "dia": true,
+            "key": "đinh vít tự tarô",
+            "folded": "dinh vit tu taro"
+          }
+        ],
+        "bolt_with_nut": [
+          {
+            "raw": "bu lông có đai ốc",
+            "dia": true,
+            "key": "bu lông có đai ốc",
+            "folded": "bu long co dai oc"
+          },
+          {
+            "raw": "bolt nut",
+            "dia": false,
+            "key": "bolt nut",
+            "folded": "bolt nut"
+          },
+          {
+            "raw": "buloong",
+            "dia": false,
+            "key": "buloong",
+            "folded": "buloong"
+          }
+        ],
+        "nut": [
+          {
+            "raw": "đai ốc",
+            "dia": true,
+            "key": "đai ốc",
+            "folded": "dai oc"
+          },
+          {
+            "raw": "éc",
+            "dia": true,
+            "key": "éc",
+            "folded": "ec"
+          },
+          {
+            "raw": "e cu",
+            "dia": false,
+            "key": "e cu",
+            "folded": "e cu"
+          },
+          {
+            "raw": "nut",
+            "dia": false,
+            "key": "nut",
+            "folded": "nut"
+          }
+        ],
+        "other_bolt_rivet": [
+          {
+            "raw": "đinh tán",
+            "dia": true,
+            "key": "đinh tán",
+            "folded": "dinh tan"
+          },
+          {
+            "raw": "rivet",
+            "dia": false,
+            "key": "rivet",
+            "folded": "rivet"
+          },
+          {
+            "raw": "chốt",
+            "dia": true,
+            "key": "chốt",
+            "folded": "chot"
+          }
+        ],
+        "spring_lock_washer": [
+          {
+            "raw": "vòng đệm lò xo",
+            "dia": true,
+            "key": "vòng đệm lò xo",
+            "folded": "vong dem lo xo"
+          },
+          {
+            "raw": "vòng hãm lò xo",
+            "dia": true,
+            "key": "vòng hãm lò xo",
+            "folded": "vong ham lo xo"
+          },
+          {
+            "raw": "washer spring",
+            "dia": false,
+            "key": "washer spring",
+            "folded": "washer spring"
+          }
+        ],
+        "other_washer": [
+          {
+            "raw": "vòng đệm",
+            "dia": true,
+            "key": "vòng đệm",
+            "folded": "vong dem"
+          },
+          {
+            "raw": "vòng lá",
+            "dia": true,
+            "key": "vòng lá",
+            "folded": "vong la"
+          },
+          {
+            "raw": "washer",
+            "dia": false,
+            "key": "washer",
+            "folded": "washer"
+          }
+        ],
+        "cotter_pin": [
+          {
+            "raw": "chốt hãm",
+            "dia": true,
+            "key": "chốt hãm",
+            "folded": "chot ham"
+          },
+          {
+            "raw": "cotter pin",
+            "dia": false,
+            "key": "cotter pin",
+            "folded": "cotter pin"
+          },
+          {
+            "raw": "chốt cố định",
+            "dia": true,
+            "key": "chốt cố định",
+            "folded": "chot co dinh"
+          }
+        ],
+        "spring_position_pin": [
+          {
+            "raw": "chốt định vị lò xo",
+            "dia": true,
+            "key": "chốt định vị lò xo",
+            "folded": "chot dinh vi lo xo"
+          },
+          {
+            "raw": "pin lò xo",
+            "dia": true,
+            "key": "pin lò xo",
+            "folded": "pin lo xo"
+          },
+          {
+            "raw": "position pin",
+            "dia": false,
+            "key": "position pin",
+            "folded": "position pin"
+          }
+        ],
+        "other_fastener": [
+          {
+            "raw": "kim loại gia công cơ khí",
+            "dia": true,
+            "key": "kim loại gia công cơ khí",
+            "folded": "kim loai gia cong co khi"
+          },
+          {
+            "raw": "cơ khí khác",
+            "dia": true,
+            "key": "cơ khí khác",
+            "folded": "co khi khac"
+          },
+          {
+            "raw": "fastener",
+            "dia": false,
+            "key": "fastener",
+            "folded": "fastener"
+          }
+        ]
       }
     },
     {
@@ -100,7 +388,8 @@
         "not_applicable"
       ],
       "labelVi": "Đường kính ngoài của thân (mm)",
-      "questionVi": "Đường kính ngoài của thân sản phẩm: không quá 16mm, trên 16mm, hay không áp dụng (đinh móc, vòng đệm, chốt định vị)?"
+      "questionVi": "Đường kính ngoài của thân sản phẩm: không quá 16mm, trên 16mm, hay không áp dụng (đinh móc, vòng đệm, chốt định vị)?",
+      "_detect": {}
     }
   ],
   "rules": [
