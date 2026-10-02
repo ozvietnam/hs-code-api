@@ -14,9 +14,37 @@
       "labelVi": "Loại đồ gia dụng nhựa",
       "questionVi": "Đồ nhựa gia dụng thuộc loại nào: đồ ăn uống (bát, đĩa, ly, bình trẻ em), đồ y tế/vệ sinh (bô, máy hút sữa), hay đồ gia dụng nhựa khác?",
       "detect": {
-        "tableware": ["bát", "đĩa", "ly", "chén", "tô", "cốc", "đũa nhựa", "muỗng nhựa", "hộp cơm", "tupperware", "bình trẻ em", "bình sữa", "dĩa nhựa", "bàn chải đánh răng nhựa"],
-        "medical_hygiene": ["bô", "bô giường", "bô tiểu", "máy hút sữa", "núm vú giả", "phễu vắt sữa", "miếng lót sữa", "dụng cụ y tế nhựa"],
-        "other_household": ["đồ gia dụng nhựa", "vật dụng nhựa", "đồ nhựa gia đình"]
+        "tableware": [
+          "bát",
+          "đĩa",
+          "ly",
+          "chén",
+          "tô",
+          "cốc",
+          "đũa nhựa",
+          "muỗng nhựa",
+          "hộp cơm",
+          "tupperware",
+          "bình trẻ em",
+          "bình sữa",
+          "dĩa nhựa",
+          "bàn chải đánh răng nhựa"
+        ],
+        "medical_hygiene": [
+          "bô",
+          "bô giường",
+          "bô tiểu",
+          "máy hút sữa",
+          "núm vú giả",
+          "phễu vắt sữa",
+          "miếng lót sữa",
+          "dụng cụ y tế nhựa"
+        ],
+        "other_household": [
+          "đồ gia dụng nhựa",
+          "vật dụng nhựa",
+          "đồ nhựa gia đình"
+        ]
       }
     },
     {
@@ -29,8 +57,21 @@
       "labelVi": "Chất liệu nhựa",
       "questionVi": "Đồ nhựa làm từ gì: melamin, hay loại nhựa khác (PVC, PP, PE, v.v.)?",
       "detect": {
-        "melamine": ["melamine", "mê-la-min", "chén melamin", "bát melamin"],
-        "other_plastic": ["nhựa", "PVC", "PP", "PE", "ABS", "nylon", "plastic"]
+        "melamine": [
+          "melamine",
+          "mê-la-min",
+          "chén melamin",
+          "bát melamin"
+        ],
+        "other_plastic": [
+          "nhựa",
+          "PVC",
+          "PP",
+          "PE",
+          "ABS",
+          "nylon",
+          "plastic"
+        ]
       }
     },
     {
@@ -47,11 +88,38 @@
       "labelVi": "Loại cụ thể",
       "questionVi": "Sản phẩm cụ thể là gì: bình trẻ em, bô giường bệnh, máy hút sữa, miếng ngực, hay loại khác?",
       "detect": {
-        "children_feeding": ["bình trẻ em", "bình sữa", "bình nước trẻ", "bình cho bé", "sữa bình"],
-        "other_tableware": ["đĩa", "chén", "tô", "muỗng", "đũa", "ly", "cốc"],
-        "bedpan_urinal": ["bô", "bô giường", "bô tiểu", "urinal"],
-        "nursing": ["núm vú", "núm vú giả", "miếng tạo dáng"],
-        "breast_pump": ["máy hút sữa", "vắt sữa", "máy vắt sữa"],
+        "children_feeding": [
+          "bình trẻ em",
+          "bình sữa",
+          "bình nước trẻ",
+          "bình cho bé",
+          "sữa bình"
+        ],
+        "other_tableware": [
+          "đĩa",
+          "chén",
+          "tô",
+          "muỗng",
+          "đũa",
+          "ly",
+          "cốc"
+        ],
+        "bedpan_urinal": [
+          "bô",
+          "bô giường",
+          "bô tiểu",
+          "urinal"
+        ],
+        "nursing": [
+          "núm vú",
+          "núm vú giả",
+          "miếng tạo dáng"
+        ],
+        "breast_pump": [
+          "máy hút sữa",
+          "vắt sữa",
+          "máy vắt sữa"
+        ],
         "other": []
       }
     }
@@ -138,5 +206,107 @@
   ],
   "hitPolicy": "PRIORITY",
   "essenceTestVi": "articleKind (3 giá trị: tableware / medical_hygiene / other_household) + material (melamine / other_plastic) + specificKind (6 giá trị) → phân biệt 7 mã 8 số trong nhóm 3924. Tất cả MFN 22%.",
-  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 3924 (Thông tư 65/2024/TT-BTC)."
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 3924 (Thông tư 65/2024/TT-BTC).",
+  "inputAttributes": [
+    "articleKind",
+    "material",
+    "specificKind"
+  ],
+  "attributes": {
+    "articleKind": {
+      "detect": {
+        "tableware": [
+          "bát",
+          "đĩa",
+          "ly",
+          "chén",
+          "tô",
+          "cốc",
+          "đũa nhựa",
+          "muỗng nhựa",
+          "hộp cơm",
+          "tupperware",
+          "bình trẻ em",
+          "bình sữa",
+          "dĩa nhựa",
+          "bàn chải đánh răng nhựa"
+        ],
+        "medical_hygiene": [
+          "bô",
+          "bô giường",
+          "bô tiểu",
+          "máy hút sữa",
+          "núm vú giả",
+          "phễu vắt sữa",
+          "miếng lót sữa",
+          "dụng cụ y tế nhựa"
+        ],
+        "other_household": [
+          "đồ gia dụng nhựa",
+          "vật dụng nhựa",
+          "đồ nhựa gia đình"
+        ]
+      },
+      "type": "enum"
+    },
+    "material": {
+      "detect": {
+        "melamine": [
+          "melamine",
+          "mê-la-min",
+          "chén melamin",
+          "bát melamin"
+        ],
+        "other_plastic": [
+          "nhựa",
+          "PVC",
+          "PP",
+          "PE",
+          "ABS",
+          "nylon",
+          "plastic"
+        ]
+      },
+      "type": "enum"
+    },
+    "specificKind": {
+      "detect": {
+        "children_feeding": [
+          "bình trẻ em",
+          "bình sữa",
+          "bình nước trẻ",
+          "bình cho bé",
+          "sữa bình"
+        ],
+        "other_tableware": [
+          "đĩa",
+          "chén",
+          "tô",
+          "muỗng",
+          "đũa",
+          "ly",
+          "cốc"
+        ],
+        "bedpan_urinal": [
+          "bô",
+          "bô giường",
+          "bô tiểu",
+          "urinal"
+        ],
+        "nursing": [
+          "núm vú",
+          "núm vú giả",
+          "miếng tạo dáng"
+        ],
+        "breast_pump": [
+          "máy hút sữa",
+          "vắt sữa",
+          "máy vắt sữa"
+        ],
+        "other": []
+      },
+      "type": "enum"
+    }
+  },
+  "essenceVi": "articleKind × material × specificKind"
 }
