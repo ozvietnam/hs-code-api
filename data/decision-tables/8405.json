@@ -63,5 +63,22 @@
   "inputAttributes": [
     "goodsKind"
   ],
-  "essenceVi": "loại hàng"
+  "essenceVi": "loại hàng",
+  "attributes": {
+    "goodsKind": {
+      "type": "enum",
+      "domain": [
+        "machine",
+        "parts"
+      ],
+      "detect": {
+        "machine": [
+          "machine"
+        ],
+        "parts": [
+          "parts"
+        ]
+      }
+    }
+  }
 }
