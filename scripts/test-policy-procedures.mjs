@@ -119,6 +119,14 @@ const abbrevTests = [
   ['Cấm', 'cam-nk'],
   ['Giấy phép kinh doanh XNK', 'gp-nk'],
   ['Giấy phép kinh doanh xuất khẩu, nhập khẩu xăng dầu', 'gp-nk'],
+  // NEW from 2026-10-02 gap analysis
+  ['Kiểm tra chuyên ngành', 'chat-luong'],
+  ['Chứng nhận bảo vệ môi trường', 'chat-luong'],
+  ['Kiểm tra nhà nước về đo lường', 'chat-luong'],
+  ['CNHQ', 'chat-luong'],
+  ['Hậu kiểm sau TQ', 'chat-luong'],
+  ['Cắt giảm kiểm tra chuyên ngành', 'chat-luong'],
+  ['Kiểm tra chuyên ngành (cắt giảm)', 'chat-luong'],
 ];
 abbrevTests.forEach(([input, expected]) => {
   const got = normalizeType(input);
