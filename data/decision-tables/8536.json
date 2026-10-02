@@ -828,7 +828,7 @@
     {
       "attribute": "function",
       "labelVi": "Loại thiết bị",
-      "questionVi": "function?",
+      "questionVi": "Loại thiết bị là gì?",
       "type": "enum",
       "domain": [
         "fuse",
@@ -841,24 +841,125 @@
         "plug",
         "fiberConnector",
         "junctionBlock"
-      ]
+      ],
+      "detect": {
+        "fuse": [
+          "cầu chì",
+          "fuse",
+          "cầu chì gắn mạch in",
+          "fuse gắn mạch in"
+        ],
+        "circuitBreaker": [
+          "aptomat",
+          "mcb",
+          "mccb",
+          "cb",
+          "bộ át tô mát",
+          "bộ át",
+          "cầu dao",
+          "circuit breaker",
+          "bộ ngắt mạch"
+        ],
+        "surgeProtection": [
+          "chống sét",
+          "bộ chống sét",
+          "surge protection",
+          "bảo vệ sét",
+          "chống surge"
+        ],
+        "relayLe60V": [
+          "rơ le",
+          "relay",
+          "rôle",
+          "rơ le trung gian",
+          "rơ le 5v",
+          "rơ le 12v",
+          "rơ le 24v"
+        ],
+        "relayGt60V": [
+          "rơ le cao áp",
+          "rơ le >60v",
+          "rơ le 220v"
+        ],
+        "switch": [
+          "công tắc",
+          "switch",
+          "át tô mát",
+          "nút bấm",
+          "bộ đóng cắt",
+          "công tắc đóng ngắt",
+          "màn hình kết hợp công tắc"
+        ],
+        "lampholder": [
+          "đui đèn",
+          "chụp đèn",
+          "cầu đèn",
+          "đui xoáy",
+          "đui gài"
+        ],
+        "plug": [
+          "phích cắm",
+          "ổ cắm",
+          "jack",
+          "cắm điện",
+          "phích",
+          "cắm usb"
+        ],
+        "fiberConnector": [
+          "connector quang",
+          "đầu nối quang",
+          "fiber connector",
+          "đầu cáp quang",
+          "adapter quang"
+        ],
+        "junctionBlock": [
+          "đầu nối",
+          "đầu kết nối",
+          "kết nối dây",
+          "cầu đấu",
+          "hộp nối",
+          "terminal block",
+          "đầu cầu",
+          "đầu nối dây điện",
+          "đầu nối nhựa",
+          "đầu nối bo mạch",
+          "đầu nối dạng dẹt"
+        ]
+      }
     },
     {
       "attribute": "currentRating",
       "labelVi": "Dòng điện định mức (ampere)",
-      "questionVi": "currentRating?",
+      "questionVi": "Dòng điện định mức bao nhiêu Ampere?",
       "type": "enum",
       "domain": [
         "lt16A",
         "a16to32",
         "a32to1000",
         "unspecified"
-      ]
+      ],
+      "detect": {
+        "lt16A": [
+          "1a", "2a", "3a", "5a", "6a", "10a", "15a",
+          "1a-", "2a-", "3a-", "5a-", "6a-", "10a-", "15a-",
+          "dưới 16a", "nhỏ hơn 16a", "16a trở xuống"
+        ],
+        "a16to32": [
+          "16a", "20a", "25a", "30a", "32a",
+          "16a-", "20a-", "25a-", "30a-", "32a-",
+          "trên 16a", "từ 16a đến 32a", "16a đến 32a"
+        ],
+        "a32to1000": [
+          "40a", "50a", "63a", "80a", "100a", "150a", "200a", "250a", "400a", "630a", "1000a",
+          "40a-", "50a-", "63a-", "80a-", "100a-",
+          "trên 32a", "lớn hơn 32a"
+        ]
+      }
     },
     {
       "attribute": "specialApp",
       "labelVi": "Ứng dụng đặc biệt hoặc vật liệu",
-      "questionVi": "specialApp?",
+      "questionVi": "Ứng dụng hoặc vật liệu đặc biệt là gì?",
       "type": "enum",
       "domain": [
         "fan",
@@ -870,7 +971,54 @@
         "ceramic",
         "copper",
         "none"
-      ]
+      ],
+      "detect": {
+        "fan": [
+          "quạt",
+          "fan"
+        ],
+        "radio": [
+          "radio",
+          "âm thanh",
+          "loa",
+          "amplifier"
+        ],
+        "sen": [
+          "sen",
+          "y tế",
+          "bệnh viện",
+          "thiết bị y tế",
+          "dược phẩm",
+          "medical"
+        ],
+        "riceCooker": [
+          "nồi cơm",
+          "rice cooker",
+          "nồi điện",
+          "nồi nấu cơm"
+        ],
+        "telephone": [
+          "điện thoại",
+          "telephone",
+          "đtddd",
+          "smartphone"
+        ],
+        "motorStarter": [
+          "khởi động",
+          "motor starter",
+          "khởi động động cơ",
+          "bộ khởi động"
+        ],
+        "ceramic": [
+          "gốm",
+          "sứ",
+          "ceramic"
+        ],
+        "copper": [
+          "đồng",
+          "copper"
+        ]
+      }
     }
   ],
   "essenceTestVi": "Với thiết bị đóng cắt, bảo vệ, đấu nối mạch điện ≤1000V: xác định (1) chức năng (cầu chì, CB, rơ le, công tắc, phích cắm…), (2) dòng định mức (A), (3) ứng dụng/vật liệu đặc biệt.",
