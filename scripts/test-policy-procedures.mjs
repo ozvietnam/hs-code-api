@@ -36,10 +36,13 @@ chapterGroups.forEach(k => {
   check(`chapter-group ${k} có code`, typeof e.code === 'string' && e.code.length > 0);
 });
 
-// 5. Mỗi chapter-group có procedures[] (rỗng [] chỉ chấp nhận cho chuong-77 WCO-reserved)
+// 5. Mỗi chapter-group có procedures[] (rỗng [] hoặc null chỉ chấp nhận cho chuong-77 WCO-reserved)
 const noProc = chapterGroups.filter(k => {
   const p = d[k].procedures;
-  return !p || (!Array.isArray(p) ? true : p.length === 0 && k !== 'chuong-77');
+  if (k === 'chuong-77') return false; // WCO reserved, no procedures
+  if (p === null || p === undefined) return true; // must have array
+  if (!Array.isArray(p)) return true;
+  return p.length === 0; // empty array not allowed (except chuong-77)
 });
 check('mọi chapter-group có procedures[] (trừ chuong-77 WCO reserved)', noProc.length === 0, noProc);
 
@@ -154,17 +157,19 @@ abbrevTests.forEach(([input, expected]) => {
   check(`normalizeType(${JSON.stringify(input)}) = ${expected}`, got === expected, `got: ${got}`);
 });
 
-// 2026-10-02: hsExamples must be valid 8-digit codes from tax.json
+// 2026-10-02: hsExamples must be valid 8-digit codes from tax.json (chuong-77 has null — skip)
 const taxDb = require('../data/tax.json');
 const taxKeysValid = new Set(Object.keys(taxDb));
 const _cgKeys = Object.keys(d).filter(k => !d[k].ministry && d[k].chapters);
 _cgKeys.forEach(k => {
-  const exs = d[k].hsExamples || [];
-  check(`chapter-group ${k} hsExamples[] are valid codes`, exs.every(ex => {
+  const exs = d[k].hsExamples;
+  if (exs === null) return; // chuong-77 WCO reserved, intentionally null
+  const exArr = exs || [];
+  check(`chapter-group ${k} hsExamples[] are valid codes`, exArr.every(ex => {
     if (ex.length === 8) return taxKeysValid.has(ex);
     if (ex.length === 6) return [...taxKeysValid].some(t => t.startsWith(ex));
     return false;
-  }), `invalid: ${JSON.stringify(exs)}`);
+  }), `invalid: ${JSON.stringify(exArr)}`);
 });
 
 // 2026-10-02: chapter-groups must have non-empty description and hsExamples
@@ -172,9 +177,8 @@ _cgKeys.forEach(k => {
   const v = d[k];
   check(`chapter-group ${k} has description`, v.description && v.description.length > 10, v.description || '(empty)');
   // chuong-77 WCO reserved intentionally has no examples; skip the >=2 check
-  if (k !== 'chuong-77') {
-    check(`chapter-group ${k} has hsExamples[]`, Array.isArray(v.hsExamples) && v.hsExamples.length >= 2, v.hsExamples);
-  }
+  if (k === 'chuong-77') return;
+  check(`chapter-group ${k} has hsExamples[]`, Array.isArray(v.hsExamples) && v.hsExamples !== null && v.hsExamples.length >= 2, v.hsExamples);
 });
 
 // 2026-10-02: getProcedures() with usedGoodsImportBan flag
