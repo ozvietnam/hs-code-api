@@ -1,0 +1,75 @@
+{
+  "heading": "8208",
+  "titleVi": "Lưỡi cắt và các bộ phận cắt, dùng cho dụng cụ cầm tay hoặc máy móc",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "toolApplication",
+      "type": "enum",
+      "domain": [
+        "metalworking",
+        "woodworking",
+        "kitchen_industrial",
+        "agriculture",
+        "other"
+      ],
+      "labelVi": "Ứng dụng của lưỡi cắt",
+      "questionVi": "Lưỡi cắt dùng để gia công gì: kim loại, gỗ, dụng cụ nhà bếp/máy thực phẩm công nghiệp, máy nông nghiệp/làm vườn, hay ứng dụng khác?"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "toolApplication": "metalworking"
+      },
+      "hs": "82081000",
+      "reasonVi": "GIR 6 — lưỡi cắt để gia công kim loại, 8208.10 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "toolApplication": "woodworking"
+      },
+      "hs": "82082000",
+      "reasonVi": "GIR 6 — lưỡi cắt để gia công gỗ, 8208.20 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "toolApplication": "kitchen_industrial"
+      },
+      "hs": "82083000",
+      "reasonVi": "GIR 6 — lưỡi dùng cho dụng cụ nhà bếp hoặc máy công nghiệp thực phẩm, 8208.30 (MFN 20%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "toolApplication": "agriculture"
+      },
+      "hs": "82084000",
+      "reasonVi": "GIR 6 — lưỡi dùng cho máy nông nghiệp, làm vườn, lâm nghiệp, 8208.40 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "toolApplication": "other"
+      },
+      "hs": "82089000",
+      "reasonVi": "GIR 6 — lưỡi cắt loại khác, 8208.90 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceTestVi": "toolApplication (5 giá trị) — phân biệt 5 mã 8 số trong nhóm 8208. GIAO: ứng dụng cắt (kim loại/gỗ/nhà bếp/nông nghiệp/khác). MFN: hầu hết 0%, ngoại trừ 82083000 (20%).",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 8208 (Thông tư 65/2024/TT-BTC)."
+}
