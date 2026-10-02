@@ -15,10 +15,31 @@
       "labelVi": "Nhóm sản phẩm sắt/thép",
       "questionVi": "Sản phẩm sắt/thép thuộc nhóm nào: bi nghiền, dây sắt/thép, hay sản phẩm sắt/thép khác?",
       "detect": {
-        "grinding_ball": ["bi nghiền", "bi thép nghiền", "grinding ball", "bi mài"],
-        "wire_articles": ["dây sắt", "dây thép", "lưới sắt", "wire mesh", "đai sắt"],
-        "other_articles": ["sắt", "thép", "gang", "iron", "steel"],
-        "other_single": ["sản phẩm sắt", "đồ sắt", "sắt thép khác"]
+        "grinding_ball": [
+          "bi nghiền",
+          "bi thép nghiền",
+          "grinding ball",
+          "bi mài"
+        ],
+        "wire_articles": [
+          "dây sắt",
+          "dây thép",
+          "lưới sắt",
+          "wire mesh",
+          "đai sắt"
+        ],
+        "other_articles": [
+          "sắt",
+          "thép",
+          "gang",
+          "iron",
+          "steel"
+        ],
+        "other_single": [
+          "sản phẩm sắt",
+          "đồ sắt",
+          "sắt thép khác"
+        ]
       }
     },
     {
@@ -41,15 +62,44 @@
       "labelVi": "Loại cụ thể",
       "questionVi": "Sản phẩm cụ thể là gì: lồng gia cầm, bẫy chuột, rèm, bánh lái tàu, đèn Bunsen, móng ngựa, hộp thuốc lá, hay loại khác?",
       "detect": {
-        "blind": ["rèm sắt", "lưới sắt", "màn chắn"],
-        "bunsen_burner": ["đèn bunsen", "bunsen"],
-        "cigarette_box": ["hộp thuốc lá", "g Ashtray"],
-        "horseshoe_hook": ["móng ngựa", "móc ngựa"],
-        "mouse_trap": ["bẫy chuột", "bẫy cống"],
-        "poultry_cage": ["lồng gia cầm", "lồng gà", "lồng chim"],
-        "rubber_tray": ["khay cao su", "rubber tray"],
-        "ship_rudder": ["bánh lái tàu", "lái tàu"],
-        "stainless_clip": ["clip không gỉ", "stainless clip"],
+        "blind": [
+          "rèm sắt",
+          "lưới sắt",
+          "màn chắn"
+        ],
+        "bunsen_burner": [
+          "đèn bunsen",
+          "bunsen"
+        ],
+        "cigarette_box": [
+          "hộp thuốc lá",
+          "g Ashtray"
+        ],
+        "horseshoe_hook": [
+          "móng ngựa",
+          "móc ngựa"
+        ],
+        "mouse_trap": [
+          "bẫy chuột",
+          "bẫy cống"
+        ],
+        "poultry_cage": [
+          "lồng gia cầm",
+          "lồng gà",
+          "lồng chim"
+        ],
+        "rubber_tray": [
+          "khay cao su",
+          "rubber tray"
+        ],
+        "ship_rudder": [
+          "bánh lái tàu",
+          "lái tàu"
+        ],
+        "stainless_clip": [
+          "clip không gỉ",
+          "stainless clip"
+        ],
         "other_article": [],
         "other_wire": [],
         "standard": []
@@ -202,5 +252,105 @@
     }
   ],
   "essenceTestVi": "Nhóm sản phẩm (articleGroup) + Loại cụ thể (articleSubType) → mã 8 số. 13 lá, 2 thuộc tính.",
-  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN)."
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN).",
+  "attributes": {
+    "articleGroup": {
+      "type": "enum",
+      "domain": [
+        "grinding_ball",
+        "other_articles",
+        "other_single",
+        "wire_articles"
+      ],
+      "detect": {
+        "grinding_ball": [
+          "grinding",
+          "ball"
+        ],
+        "other_articles": [
+          "other",
+          "articles"
+        ],
+        "other_single": [
+          "other",
+          "single"
+        ],
+        "wire_articles": [
+          "wire",
+          "articles"
+        ]
+      }
+    },
+    "articleSubType": {
+      "type": "enum",
+      "domain": [
+        "blind",
+        "bunsen_burner",
+        "cigarette_box",
+        "horseshoe_hook",
+        "mouse_trap",
+        "other_article",
+        "other_wire",
+        "poultry_cage",
+        "rubber_tray",
+        "ship_rudder",
+        "stainless_clip",
+        "standard"
+      ],
+      "detect": {
+        "blind": [
+          "blind"
+        ],
+        "bunsen_burner": [
+          "bunsen",
+          "burner"
+        ],
+        "cigarette_box": [
+          "cigarette",
+          "box"
+        ],
+        "horseshoe_hook": [
+          "horseshoe",
+          "hook"
+        ],
+        "mouse_trap": [
+          "mouse",
+          "trap"
+        ],
+        "other_article": [
+          "other",
+          "article"
+        ],
+        "other_wire": [
+          "other",
+          "wire"
+        ],
+        "poultry_cage": [
+          "poultry",
+          "cage"
+        ],
+        "rubber_tray": [
+          "rubber",
+          "tray"
+        ],
+        "ship_rudder": [
+          "ship",
+          "rudder"
+        ],
+        "stainless_clip": [
+          "stainless",
+          "clip"
+        ],
+        "standard": [
+          "standard"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "articleGroup",
+    "articleSubType"
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceVi": "articleGroup; articleSubType"
 }
