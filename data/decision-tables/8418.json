@@ -21,16 +21,65 @@
       "labelVi": "Loại thiết bị làm lạnh",
       "questionVi": "Thiết bị làm lạnh thuộc loại nào: tủ lạnh-tủ đông kết hợp, tủ lạnh gia đình kiểu nén, tủ lạnh kiểu hấp thụ/thermoelectric, tủ đông nằm ngang (chest), tủ đông đứng (upright), tủ trưng bày/y tế/đồ uống, bơm nhiệt, máy làm lạnh khác, bộ phận khung/vỏ, hay bộ phận khác?",
       "detect": {
-        "chest_freezer": ["tủ đông nằm", "tủ đông ngang", "freezer chest", "chest freezer", "tủ cấp đông"],
-        "combined_ref_freezer": ["tủ lạnh kết hợp", "tủ lạnh đông", "tủ 2 cửa", "combined refrigerator"],
-        "heat_pump": ["bơm nhiệt", "heat pump", "máy bơm nhiệt", "h pump"],
-        "household_other_type": ["tủ lạnh gia đình", "tủ lạnh mini", "tủ lạnh car", "refrigerator household"],
-        "household_refrigerator": ["tủ lạnh", "tủ lạnh nén", "refrigerator", "fridge", "tủ mát"],
-        "other_cooling_cabinet": ["tủ làm lạnh", "tủ bảo quản", "tủ trưng bày", "cooling cabinet", "tủ y tế"],
-        "other_refrigerating_machine": ["máy làm lạnh", "máy制冷", "refrigerating machine"],
-        "parts_frame": ["vỏ tủ lạnh", "khung tủ", "frame chiller"],
-        "parts_other": ["bộ phận tủ lạnh", "linh kiện tủ lạnh", "parts refrigerator"],
-        "upright_freezer": ["tủ đông đứng", "tủ đông vertical", "upright freezer"]
+        "chest_freezer": [
+          "tủ đông nằm",
+          "tủ đông ngang",
+          "freezer chest",
+          "chest freezer",
+          "tủ cấp đông"
+        ],
+        "combined_ref_freezer": [
+          "tủ lạnh kết hợp",
+          "tủ lạnh đông",
+          "tủ 2 cửa",
+          "combined refrigerator"
+        ],
+        "heat_pump": [
+          "bơm nhiệt",
+          "heat pump",
+          "máy bơm nhiệt",
+          "h pump"
+        ],
+        "household_other_type": [
+          "tủ lạnh gia đình",
+          "tủ lạnh mini",
+          "tủ lạnh car",
+          "refrigerator household"
+        ],
+        "household_refrigerator": [
+          "tủ lạnh",
+          "tủ lạnh nén",
+          "refrigerator",
+          "fridge",
+          "tủ mát"
+        ],
+        "other_cooling_cabinet": [
+          "tủ làm lạnh",
+          "tủ bảo quản",
+          "tủ trưng bày",
+          "cooling cabinet",
+          "tủ y tế"
+        ],
+        "other_refrigerating_machine": [
+          "máy làm lạnh",
+          "máy制冷",
+          "refrigerating machine"
+        ],
+        "parts_frame": [
+          "vỏ tủ lạnh",
+          "khung tủ",
+          "frame chiller"
+        ],
+        "parts_other": [
+          "bộ phận tủ lạnh",
+          "linh kiện tủ lạnh",
+          "parts refrigerator"
+        ],
+        "upright_freezer": [
+          "tủ đông đứng",
+          "tủ đông vertical",
+          "upright freezer"
+        ]
       }
     },
     {
@@ -376,5 +425,201 @@
     }
   ],
   "essenceTestVi": "Loại thiết bị (applianceKind) + Dung tích/loại cụ thể (capacityOrType) → mã 8 số. 28 lá, 2 thuộc tính.",
-  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN)."
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN).",
+  "attributes": {
+    "applianceKind": {
+      "type": "enum",
+      "domain": [
+        "chest_freezer",
+        "combined_ref_freezer",
+        "heat_pump",
+        "household_other_type",
+        "household_refrigerator",
+        "other_cooling_cabinet",
+        "other_refrigerating_machine",
+        "parts_frame",
+        "parts_other",
+        "upright_freezer"
+      ],
+      "detect": {
+        "chest_freezer": [
+          "chest",
+          "freezer"
+        ],
+        "combined_ref_freezer": [
+          "combined",
+          "ref",
+          "freezer"
+        ],
+        "heat_pump": [
+          "heat",
+          "pump"
+        ],
+        "household_other_type": [
+          "household",
+          "other",
+          "type"
+        ],
+        "household_refrigerator": [
+          "household",
+          "refrigerator"
+        ],
+        "other_cooling_cabinet": [
+          "other",
+          "cooling",
+          "cabinet"
+        ],
+        "other_refrigerating_machine": [
+          "other",
+          "refrigerating",
+          "machine"
+        ],
+        "parts_frame": [
+          "parts",
+          "frame"
+        ],
+        "parts_other": [
+          "parts",
+          "other"
+        ],
+        "upright_freezer": [
+          "upright",
+          "freezer"
+        ]
+      }
+    },
+    "capacityOrType": {
+      "type": "enum",
+      "domain": [
+        "absorption_thermoelectric",
+        "beverage_food",
+        "cold_other",
+        "cold_storage",
+        "condenser",
+        "dairy_fishery",
+        "display_case",
+        "evaporator",
+        "large_over_200L",
+        "medical_lab",
+        "medical_other",
+        "other_cabinet",
+        "other_machine",
+        "other_parts",
+        "small_le_200L",
+        "standard",
+        "vol_150_200L",
+        "vol_200_250L",
+        "vol_250_300L",
+        "vol_300_400L",
+        "vol_le_150L",
+        "vol_over_400L",
+        "water_ice"
+      ],
+      "detect": {
+        "absorption_thermoelectric": [
+          "absorption",
+          "thermoelectric"
+        ],
+        "beverage_food": [
+          "beverage",
+          "food"
+        ],
+        "cold_other": [
+          "cold",
+          "other"
+        ],
+        "cold_storage": [
+          "cold",
+          "storage"
+        ],
+        "condenser": [
+          "condenser"
+        ],
+        "dairy_fishery": [
+          "dairy",
+          "fishery"
+        ],
+        "display_case": [
+          "display",
+          "case"
+        ],
+        "evaporator": [
+          "evaporator"
+        ],
+        "large_over_200L": [
+          "large",
+          "over",
+          "200L"
+        ],
+        "medical_lab": [
+          "medical",
+          "lab"
+        ],
+        "medical_other": [
+          "medical",
+          "other"
+        ],
+        "other_cabinet": [
+          "other",
+          "cabinet"
+        ],
+        "other_machine": [
+          "other",
+          "machine"
+        ],
+        "other_parts": [
+          "other",
+          "parts"
+        ],
+        "small_le_200L": [
+          "small",
+          "le",
+          "200L"
+        ],
+        "standard": [
+          "standard"
+        ],
+        "vol_150_200L": [
+          "vol",
+          "150",
+          "200L"
+        ],
+        "vol_200_250L": [
+          "vol",
+          "200",
+          "250L"
+        ],
+        "vol_250_300L": [
+          "vol",
+          "250",
+          "300L"
+        ],
+        "vol_300_400L": [
+          "vol",
+          "300",
+          "400L"
+        ],
+        "vol_le_150L": [
+          "vol",
+          "le",
+          "150L"
+        ],
+        "vol_over_400L": [
+          "vol",
+          "over",
+          "400L"
+        ],
+        "water_ice": [
+          "water",
+          "ice"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "applianceKind",
+    "capacityOrType"
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceVi": "applianceKind; capacityOrType"
 }
