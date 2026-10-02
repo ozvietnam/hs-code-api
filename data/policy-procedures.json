@@ -3,8 +3,8 @@
     "code": "attp",
     "label": "Kiểm tra an toàn thực phẩm",
     "labelShort": "ATTP",
-    "ministry": "BYT/BCT/BNNPTNT",
-    "ministryLabel": "Bộ Y tế / Bộ Công Thương / Bộ NN&PTNT (tùy loại hàng)",
+    "ministry": "BYT/BCT/BNNMT",
+    "ministryLabel": "Bộ Y tế / Bộ Công Thương / Bộ Nông nghiệp và Môi trường (BNNPTNT sáp nhập vào BNNMT từ 01/03/2025)",
     "trigger": "Hàng thực phẩm, đồ uống, phụ gia, bao bì tiếp xúc thực phẩm",
     "matchPatterns": [
       "attp",
@@ -29,7 +29,7 @@
       "note": "Nhanh nếu hàng đã có lịch sử nhập khẩu tốt; chậm nếu lần đầu hoặc bị lấy mẫu kiểm nghiệm"
     },
     "estimatedCost": "500,000–3,000,000 VND/lô (phí kiểm nghiệm nếu lấy mẫu: 500K–5tr tùy chỉ tiêu)",
-    "agency": "Chi cục An toàn vệ sinh thực phẩm (BYT); hoặc Cục An toàn thực phẩm; hoặc Chi cục Quản lý chất lượng nông lâm thủy sản (BNNPTNT)",
+    "agency": "Chi cục An toàn vệ sinh thực phẩm (BYT); hoặc Cục An toàn thực phẩm; hoặc Chi cục Quản lý chất lượng nông lâm thủy sản (BNNMT — BNNPTNT sáp nhập)",
     "legalBasis": "Luật An toàn thực phẩm 2010; Nghị định 15/2018/NĐ-CP; TT 48/2015/TT-BYT",
     "exemptions": [
       "Hàng là quà biếu, phi thương mại số lượng nhỏ",
@@ -45,8 +45,8 @@
     "code": "kiem-dich-thuc-vat",
     "label": "Kiểm dịch thực vật",
     "labelShort": "KDTV",
-    "ministry": "BNNPTNT",
-    "ministryLabel": "Bộ Nông nghiệp và Phát triển Nông thôn — Cục Bảo vệ Thực vật",
+    "ministry": "BNNMT",
+    "ministryLabel": "Bộ Nông nghiệp và Môi trường — Cục Bảo vệ Thực vật (BNNPTNT sáp nhập vào BNNMT từ 01/03/2025)",
     "trigger": "Thực vật, sản phẩm thực vật, đất, giá thể, gỗ, tre, rơm...",
     "matchPatterns": [
       "kiểm dịch thực vật",
@@ -83,8 +83,8 @@
     "code": "kiem-dich-dong-vat",
     "label": "Kiểm dịch động vật / thủy sản",
     "labelShort": "KDĐV",
-    "ministry": "BNNPTNT",
-    "ministryLabel": "Bộ Nông nghiệp — Cục Thú y / Cục Thủy sản",
+    "ministry": "BNNMT",
+    "ministryLabel": "Bộ Nông nghiệp và Môi trường — Cục Thú y / Cục Thủy sản (BNNPTNT sáp nhập vào BNNMT từ 01/03/2025)",
     "trigger": "Động vật sống, sản phẩm động vật, thủy sản, thịt, trứng, sữa, mật ong...",
     "matchPatterns": [
       "kiểm dịch động vật",
@@ -122,8 +122,8 @@
     "code": "chat-luong",
     "label": "Kiểm tra chất lượng nhà nước (Hàng hóa nhóm 2)",
     "labelShort": "KTCL",
-    "ministry": "BKHCN / BCT / BGTVT / BXD",
-    "ministryLabel": "Bộ Khoa học Công nghệ / Bộ Công Thương / Bộ GTVT / Bộ Xây dựng (tùy sản phẩm)",
+    "ministry": "BKHCN / BCT / BXD",
+    "ministryLabel": "Bộ Khoa học và Công nghệ / Bộ Công Thương / Bộ Xây dựng (BGTVT sáp nhập vào BXD từ 01/03/2025 — BKHCN giữ nguyên vì tiếp quản BTTTT)",
     "trigger": "Hàng hóa nhóm 2 (sản phẩm có khả năng gây mất an toàn): điện-điện tử, máy móc, vật liệu xây dựng, đồ chơi trẻ em, mũ bảo hiểm, thiết bị điện...",
     "matchPatterns": [
       "chất lượng",
@@ -289,8 +289,8 @@
     "code": "cites",
     "label": "Giấy phép CITES — Kiểm soát động thực vật hoang dã",
     "labelShort": "CITES",
-    "ministry": "BNNPTNT / BTNMT",
-    "ministryLabel": "Bộ NN&PTNT (động vật) / Bộ TN&MT (thực vật quý hiếm)",
+    "ministry": "BNNMT",
+    "ministryLabel": "Bộ Nông nghiệp và Môi trường (BNNPTNT+BTNMT sáp nhập vào BNNMT từ 01/03/2025)",
     "trigger": "Động vật hoang dã, sản phẩm từ động vật hoang dã (da, ngà, sừng, vảy), gỗ quý, lan rừng, san hô",
     "matchPatterns": [
       "cites",
@@ -314,7 +314,7 @@
       "note": "Giấy phép CITES VN cần 14–30 ngày để được cấp. Không thể làm nhanh."
     },
     "estimatedCost": "200,000–500,000 VND (phí cấp phép CITES VN)",
-    "agency": "Cơ quan quản lý CITES VN (Cục Kiểm lâm — BNNPTNT cho động vật; BTNMT cho thực vật)",
+    "agency": "Cơ quan quản lý CITES VN (Cục Lâm nghiệp — BNNMT cho động vật hoang dã; Cục Bảo tồn thiên nhiên và Động vật hoang dã — BNNMT cho thực vật hoang dã)",
     "legalBasis": "Công ước CITES; Nghị định 06/2019/NĐ-CP; Nghị định 84/2021/NĐ-CP",
     "exemptions": [
       "Hàng mẫu vật khoa học với số lượng nhỏ và đúng thủ tục"
@@ -408,8 +408,8 @@
     "code": "phe-lieu",
     "label": "Kiểm tra điều kiện nhập khẩu phế liệu",
     "labelShort": "Phế liệu",
-    "ministry": "BTNMT",
-    "ministryLabel": "Bộ Tài nguyên và Môi trường — Tổng cục Môi trường",
+    "ministry": "BNNMT",
+    "ministryLabel": "Bộ Tài nguyên và Môi trường — Tổng cục Môi trường (BTNMT sáp nhập vào BNNMT từ 01/03/2025)",
     "trigger": "Phế liệu sắt thép, phế liệu nhựa, phế liệu giấy, phế liệu kim loại màu dùng làm nguyên liệu sản xuất",
     "matchPatterns": [
       "phế liệu",
@@ -422,7 +422,7 @@
     "documents": [
       "Giấy xác nhận đủ điều kiện nhập khẩu phế liệu (Tổng cục Môi trường cấp — hiệu lực 2 năm)",
       "Hợp đồng với đơn vị xử lý phế liệu",
-      "Kết quả kiểm tra phế liệu trước khi xếp hàng (Pre-shipment Inspection — PSI) từ đơn vị được BTNMT chỉ định",
+      "Kết quả kiểm tra phế liệu trước khi xếp hàng (Pre-shipment Inspection — PSI) từ đơn vị được BNNMT chỉ định",
       "Invoice + Packing List + Vận đơn",
       "Chứng thư giám định chất lượng phế liệu"
     ],
@@ -447,8 +447,8 @@
     "code": "giao-thong",
     "label": "Kiểm tra an toàn kỹ thuật phương tiện / thiết bị giao thông",
     "labelShort": "GTVT",
-    "ministry": "BGTVT",
-    "ministryLabel": "Bộ Giao thông Vận tải — Cục Đăng kiểm VN",
+    "ministry": "BXD",
+    "ministryLabel": "Bộ Xây dựng — Cục Đăng kiểm VN (BGTVT sáp nhập vào BXD từ 01/03/2025)",
     "trigger": "Xe ô tô, xe máy, xe tải, phụ tùng ô tô xe máy, tàu thủy, thiết bị đường sắt, phương tiện thủy",
     "matchPatterns": [
       "đăng kiểm",
@@ -700,8 +700,8 @@
     "code": "lam-san",
     "label": "Kiểm tra nguồn gốc lâm sản hợp pháp",
     "labelShort": "Lâm sản",
-    "ministry": "BNNPTNT",
-    "ministryLabel": "Bộ Nông nghiệp và Phát triển Nông thôn",
+    "ministry": "BNNMT",
+    "ministryLabel": "Bộ Nông nghiệp và Môi trường — Cục Lâm nghiệp (BNNPTNT sáp nhập vào BNNMT từ 01/03/2025)",
     "trigger": "Gỗ và các sản phẩm lâm sản nhập khẩu",
     "matchPatterns": [
       "lâm sản",
@@ -736,8 +736,8 @@
     "code": "cong-bo",
     "label": "Công bố sản phẩm / Tự công bố",
     "labelShort": "Công bố SP",
-    "ministry": "BYT/BCT/BNNPTNT",
-    "ministryLabel": "Bộ Y tế / Bộ Công Thương / Bộ NN&PTNT",
+    "ministry": "BYT/BCT/BNNMT",
+    "ministryLabel": "Bộ Y tế / Bộ Công Thương / Bộ Nông nghiệp và Môi trường (BNNPTNT sáp nhập vào BNNMT từ 01/03/2025)",
     "trigger": "Thực phẩm, mỹ phẩm, thực phẩm chức năng, trang thiết bị y tế nhập khẩu",
     "matchPatterns": [
       "công bố sản phẩm",
@@ -1135,7 +1135,7 @@
       "phe-lieu": "Luật BVMT 2020; NĐ 08/2022/NĐ-CP; QĐ 28/2020/QĐ-TTg"
     },
     "verified": true,
-    "notes": "Sắt thép, nhôm, đồng, kẽm, chì, thiếc (72-76) kiểm tra chất lượng. Phế liệu kim loại bắt buộc PSI và giấy xác nhận BTNMT."
+    "notes": "Sắt thép, nhôm, đồng, kẽm, chì, thiếc (72-76) kiểm tra chất lượng. Phế liệu kim loại bắt buộc PSI và giấy xác nhận BNNMT (BTNMT sáp nhập)."
   },
   "phuong-tien-86-89": {
     "code": "phuong-tien-86-89",
