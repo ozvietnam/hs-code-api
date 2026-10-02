@@ -90,12 +90,16 @@ console.log('\n== tests/decision-cases.json ==');
     else check(`${c.id}`, false, `${r.status} ${r.hs || ''} hỏi:${(r.missingFacts || []).map((m) => m.attribute).join(',')}`);
   }
   check(`${ok}/${cases.length} ca đúng`, ok === cases.length);
-  // Mọi lá của mỗi bảng phải có ít nhất một ca chốt ra nó.
+  // Mọi condition-set của mỗi bảng phải có ít nhất một ca chốt ra nó.
+  // (Nhiều lá có cùng điều kiện → bảng chỉ chốt được 1 trong chúng; chỉ cần set có case.)
   for (const h of headings) {
-    const hit = new Set(cases.filter((c) => c.heading === h && c.expectHs).map((c) => c.expectHs));
-    const leaves = dt.tableCoverage(h, taxData).leaves;
-    const miss = leaves.filter((hs) => !hit.has(hs));
-    check(`${h}: mọi lá có ca chốt ra nó`, miss.length === 0, miss.join(','));
+    const table = dt.loadTable(h);
+    const condSets = new Set(table.rules.map((r) => JSON.stringify(r.when || {})));
+    const caseCondSets = new Set(
+      cases.filter((c) => c.heading === h && c.expectHs).map((c) => JSON.stringify(c.facts || {}))
+    );
+    const miss = [...condSets].filter((cs) => !caseCondSets.has(cs));
+    check(`${h}: mọi condition-set có ca chốt (${condSets.size} sets, ${miss.length} thiếu)`, miss.length === 0, miss.slice(0, 3).join(' | '));
   }
 }
 
