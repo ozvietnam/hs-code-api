@@ -2,6 +2,15 @@
   "version": 1,
   "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → draft (có bảng, chưa qua cửa dữ liệu thật) → done (qua cửa). `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
+    "3926": {
+      "status": "draft",
+      "doneAt": "2026-10-02",
+      "by": "hermes-211",
+      "commit": "b368952",
+      "leafCount": 27,
+      "pr": 94,
+      "noteVi": "Bảng đầy đủ 27 lá / 28 rules, 3 thuộc tính (intendedUse + senFlag + safetyType). Chưa qua Oz gate."
+    },
     "7209": {
       "status": "done",
       "doneAt": "2026-09-17",
