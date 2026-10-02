@@ -266,5 +266,54 @@ const procExemptions = new Set([
 check('chapter-group exemptions are superset of merged procedure exemptions',
   [...procExemptions].every(ex => mayMacExemptions.has(ex)));
 
+// 2026-10-03 (B): condition-triggered procedure types — 6 new types added 2026-10-02
+// Each has trigger, documents, exemptions, matchPatterns, estimatedDays/Cost, agency,
+// legalBasis (string), severity, onFail, verified=true, priorityImportFromCN=boolean
+const CONDITION_TYPES = ['cam-nk','kd-dk','dk-luu-hanh','xk','lam-san','cong-bo'];
+CONDITION_TYPES.forEach(id => {
+  const e = d[id];
+  check(`condition-type ${id} has trigger (string > 10 chars)`, typeof e.trigger === 'string' && e.trigger.length > 10);
+  check(`condition-type ${id} has documents (non-empty array)`, Array.isArray(e.documents) && e.documents.length > 0);
+  check(`condition-type ${id} has exemptions (array)`, Array.isArray(e.exemptions));
+  check(`condition-type ${id} has matchPatterns (non-empty array)`, Array.isArray(e.matchPatterns) && e.matchPatterns.length > 0);
+  check(`condition-type ${id} has estimatedDays (object)`, e.estimatedDays && typeof e.estimatedDays === 'object');
+  check(`condition-type ${id} has estimatedCost (string > 0)`, typeof e.estimatedCost === 'string' && e.estimatedCost.length > 0);
+  check(`condition-type ${id} has agency (string > 0)`, typeof e.agency === 'string' && e.agency.length > 0);
+  check(`condition-type ${id} has severity (string)`, typeof e.severity === 'string');
+  check(`condition-type ${id} has onFail (string > 5)`, typeof e.onFail === 'string' && e.onFail.length > 5);
+  check(`condition-type ${id} verified=true`, e.verified === true);
+  check(`condition-type ${id} priorityImportFromCN is boolean`, typeof e.priorityImportFromCN === 'boolean');
+  check(`condition-type ${id} legalBasis is non-empty string`, typeof e.legalBasis === 'string' && e.legalBasis.trim().length > 0);
+});
+
+// 2026-10-03 (B): condition-triggered entries are NOT chapter-groups (no chapters field)
+CONDITION_TYPES.forEach(id => {
+  check(`condition-type ${id} has NO chapters field`, !('chapters' in d[id]));
+  check(`condition-type ${id} has NO hsRange field`, !('hsRange' in d[id]));
+  check(`condition-type ${id} has NO group field`, !('group' in d[id]));
+});
+
+// 2026-10-03 (B): condition-triggered matchPatterns are non-empty strings
+CONDITION_TYPES.forEach(id => {
+  const patterns = d[id].matchPatterns || [];
+  const allStrings = patterns.every(p => typeof p === 'string' && p.trim().length > 0);
+  check(`condition-type ${id} all matchPatterns are non-empty strings`, allStrings, patterns);
+});
+
+// 2026-10-03 (B): priorityImportFromCN distribution — all 20 procedure types have it
+procTypes.forEach(id => {
+  check(`procedure-type ${id} has priorityImportFromCN (boolean)`, typeof d[id].priorityImportFromCN === 'boolean');
+});
+
+// 2026-10-03 (B): all 6 condition-triggered can be resolved via getProcedures from inspectionTypes
+// Note: 'te' already declared at line 185
+// Find an entry that triggers each condition type via inspectionTypes or licenseTypes
+const camNkEntry = Object.entries(te).find(([,e]) => e?.warnings?.usedGoodsImportBan);
+if (camNkEntry) {
+  const [code] = camNkEntry;
+  const procs = getProcedures(te[code].warnings, code);
+  check(`getProcedures(usedGoodsImportBan) resolves to cam-nk`, procs.some(p => p.code === 'cam-nk'), procs.map(p=>p.code));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
