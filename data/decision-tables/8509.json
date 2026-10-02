@@ -186,9 +186,64 @@
     }
   ],
   "inputAttributes": [
-    "goodsKind",
     "applianceType",
+    "goodsKind",
     "partOf"
   ],
-  "essenceVi": "loại hàng+loại thiết bị+thuộc về"
+  "essenceVi": "loại hàng+loại thiết bị+thuộc về",
+  "attributes": {
+    "applianceType": {
+      "type": "enum",
+      "domain": [
+        "floorPolisher",
+        "foodPrep",
+        "other",
+        "wasteDisposer"
+      ],
+      "detect": {
+        "floorPolisher": [
+          "floorPolisher"
+        ],
+        "foodPrep": [
+          "foodPrep"
+        ],
+        "other": [
+          "other"
+        ],
+        "wasteDisposer": [
+          "wasteDisposer"
+        ]
+      }
+    },
+    "goodsKind": {
+      "type": "enum",
+      "domain": [
+        "appliance",
+        "parts"
+      ],
+      "detect": {
+        "appliance": [
+          "appliance"
+        ],
+        "parts": [
+          "parts"
+        ]
+      }
+    },
+    "partOf": {
+      "type": "enum",
+      "domain": [
+        "floorPolisher",
+        "other"
+      ],
+      "detect": {
+        "floorPolisher": [
+          "floorPolisher"
+        ],
+        "other": [
+          "other"
+        ]
+      }
+    }
+  }
 }
