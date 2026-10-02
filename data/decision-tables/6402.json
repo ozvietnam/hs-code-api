@@ -361,7 +361,14 @@
           "6402"
         ]
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "diving",
+        "other",
+        "skiSnowboard",
+        "strap",
+        "wrestling"
+      ]
     },
     "metalToe": {
       "detect": {
@@ -373,7 +380,11 @@
         ],
         "nonMetalToe": []
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "metalToe",
+        "nonMetalToe"
+      ]
     },
     "senFlag": {
       "detect": {
@@ -385,7 +396,11 @@
         ],
         "nonSen": []
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "nonSen",
+        "sen"
+      ]
     }
   }
 }

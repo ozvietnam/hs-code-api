@@ -374,7 +374,13 @@
           "vải dệt kim"
         ]
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "artificial",
+        "other",
+        "synthetic",
+        "wool"
+      ]
     },
     "dyeingState": {
       "detect": {
@@ -400,7 +406,13 @@
           "printed"
         ]
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "dyed",
+        "printed",
+        "unbleached_bleached",
+        "yarn_dyed"
+      ]
     },
     "isPBT": {
       "detect": {
@@ -410,7 +422,11 @@
         ],
         "false": []
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "false",
+        "true"
+      ]
     },
     "pbtSubType": {
       "detect": {},

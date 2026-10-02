@@ -650,7 +650,17 @@
           "n.e.c."
         ]
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "boatFender",
+        "clothingAccessory",
+        "eraser",
+        "floorMat",
+        "gasket",
+        "inflatable",
+        "otherArticle",
+        "vehiclePart"
+      ]
     },
     "materialForm": {
       "detect": {
@@ -665,7 +675,11 @@
           "compact"
         ]
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "cellular",
+        "nonCellular"
+      ]
     },
     "senFlag": {
       "detect": {
@@ -673,7 +687,10 @@
           "SEN"
         ]
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "sen"
+      ]
     },
     "vehicleKind": {
       "detect": {
@@ -703,7 +720,12 @@
           "máy kéo"
         ]
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "bicycle",
+        "motorVehicle",
+        "otherVehicle"
+      ]
     }
   },
   "essenceVi": "articleForm × materialForm × senFlag × vehicleKind"

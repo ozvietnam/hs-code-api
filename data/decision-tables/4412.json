@@ -345,7 +345,13 @@
           "n.e.c."
         ]
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "blockboard",
+        "lvl",
+        "plywood",
+        "plywoodSpecified"
+      ]
     },
     "outerPlySpecies": {
       "detect": {
@@ -382,7 +388,14 @@
           "fir"
         ]
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "bamboo",
+        "coniferous",
+        "nonConiferousDetailed",
+        "nonConiferousOther",
+        "tropical"
+      ]
     },
     "isTeak": {
       "detect": {
@@ -392,7 +405,10 @@
           "Tectona grandis"
         ]
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "teak"
+      ]
     }
   },
   "essenceVi": "productKind × outerPlySpecies × isTeak"

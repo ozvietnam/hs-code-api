@@ -247,7 +247,12 @@
           "đồ nhựa gia đình"
         ]
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "medical_hygiene",
+        "other_household",
+        "tableware"
+      ]
     },
     "material": {
       "detect": {
@@ -267,7 +272,11 @@
           "plastic"
         ]
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "melamine",
+        "other_plastic"
+      ]
     },
     "specificKind": {
       "detect": {
@@ -305,7 +314,15 @@
         ],
         "other": []
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "bedpan_urinal",
+        "breast_pump",
+        "children_feeding",
+        "nursing",
+        "other",
+        "other_tableware"
+      ]
     }
   },
   "essenceVi": "articleKind × material × specificKind"

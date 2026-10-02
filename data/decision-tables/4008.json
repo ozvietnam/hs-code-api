@@ -246,7 +246,11 @@
           "compact"
         ]
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "cellular",
+        "nonCellular"
+      ]
     },
     "productShape": {
       "detect": {
@@ -272,7 +276,11 @@
           "loại khác"
         ]
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "otherShape",
+        "plateSheetStrip"
+      ]
     },
     "specialFeature": {
       "detect": {
@@ -298,7 +306,13 @@
           "bình thường"
         ]
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "fabricLined",
+        "none",
+        "senWaterStop",
+        "shoeSole"
+      ]
     }
   },
   "essenceVi": "materialType × productShape × specialFeature"

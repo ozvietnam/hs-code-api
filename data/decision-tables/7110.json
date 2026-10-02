@@ -230,7 +230,13 @@
           "ru"
         ]
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "iridium_osmium_ruthenium",
+        "palladium",
+        "platinum",
+        "rhodium"
+      ]
     },
     "formType": {
       "detect": {
@@ -246,7 +252,11 @@
           "khác"
         ]
       },
-      "type": "enum"
+      "type": "enum",
+      "domain": [
+        "ingot_powder",
+        "other"
+      ]
     }
   },
   "essenceVi": "metalType × formType"
