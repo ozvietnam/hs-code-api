@@ -4,6 +4,7 @@ const { taxData, precedentsData, conflictsData, normalizeHs } = require('../lib/
 const confusionPairs = require('../lib/confusion-pairs');
 const { buildAdminOverview } = require('../lib/admin-overview');
 const { getDocByCode, listDocs } = require('../lib/legal-docs');
+const { legalDocsInfo } = require('../lib/data-freshness');
 const { searchPrecedents } = require('../lib/precedent-search');
 const { searchOzByHs, searchOzByKeyword } = require('../lib/oz-precedent-search');
 const { listMinistries, getMinistriesByChapter } = require('../lib/ministries');
@@ -220,7 +221,8 @@ module.exports = async function handler(req, res) {
       if (!doc) {
         return res.status(404).json({ found: false, code, message: 'Legal document not in catalog' });
       }
-      return res.status(200).json({ found: true, ...doc });
+      const info = legalDocsInfo();
+      return res.status(200).json({ found: true, ...doc, _freshness: info });
     }
 
     if (resource === 'kpi') {
