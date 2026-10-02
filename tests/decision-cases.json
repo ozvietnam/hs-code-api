@@ -3098,6 +3098,243 @@
       },
       "expectHs": "96200090",
       "noteVi": "default: vật liệu không phải plastic/steel/aluminum/carbon/wood -> 9620.00.90"
+    },
+    {
+      "id": "8714-motorcycle-spoke-nipple",
+      "heading": "8714",
+      "text": "ốc bắt đầu nan hoa xe máy",
+      "facts": {
+        "vehicleType": "motorcycle",
+        "partKind": "spoke_nipple"
+      },
+      "expectHs": "87141020",
+      "noteVi": "coverage: 87141020 not in partKind domain"
+    },
+    {
+      "id": "8714-motorcycle-muffler",
+      "heading": "8714",
+      "text": "giảm thanh xe máy",
+      "facts": {
+        "vehicleType": "motorcycle",
+        "partKind": "muffler"
+      },
+      "expectHs": "87141070",
+      "noteVi": "coverage: 87141070 not in partKind domain"
+    },
+    {
+      "id": "8714-wheelchair-wheel-80mm",
+      "heading": "8714",
+      "text": "bánh xe lăn y tế đường kính 80mm",
+      "facts": {
+        "vehicleType": "wheelchair",
+        "wheelDiameter": "75-100mm"
+      },
+      "expectHs": "87142011",
+      "noteVi": "coverage: 87142011 — wheelchair wheel diameter attr missing"
+    },
+    {
+      "id": "8714-wheelchair-wheel-120mm",
+      "heading": "8714",
+      "text": "bánh xe lăn y tế đường kính 120mm",
+      "facts": {
+        "vehicleType": "wheelchair",
+        "wheelDiameter": ">100mm"
+      },
+      "expectHs": "87142012",
+      "noteVi": "coverage: 87142012 — wheelchair wheel diameter attr missing"
+    },
+    {
+      "id": "8714-wheelchair-other",
+      "heading": "8714",
+      "text": "tay lái xe lăn y tế",
+      "facts": {
+        "vehicleType": "wheelchair",
+        "partKind": "handle"
+      },
+      "expectHs": "87142090",
+      "noteVi": "coverage: 87142090 — wheelchair non-wheel parts missing"
+    },
+    {
+      "id": "8714-bicycle-fork-sen",
+      "heading": "8714",
+      "text": "càng xe đạp điện SEN",
+      "facts": {
+        "vehicleType": "bicycle",
+        "forVehicle": "8712.00.20",
+        "partKind": "fork"
+      },
+      "expectHs": "87149110",
+      "noteVi": "coverage: 87149110 — forVehicle attr needed"
+    },
+    {
+      "id": "8714-bicycle-fork-part",
+      "heading": "8714",
+      "text": "bộ phận càng xe đạp",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "fork"
+      },
+      "expectHs": "87149191",
+      "noteVi": "coverage: 87149191 missing"
+    },
+    {
+      "id": "8714-bicycle-frame",
+      "heading": "8714",
+      "text": "khung xe đạp",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "frame"
+      },
+      "expectHs": "87149199",
+      "noteVi": "coverage: 87149199 — bicycle frame parts missing"
+    },
+    {
+      "id": "8714-bicycle-rim-sen",
+      "heading": "8714",
+      "text": "vành xe đạp điện SEN",
+      "facts": {
+        "vehicleType": "bicycle",
+        "forVehicle": "8712.00.20",
+        "partKind": "wheel"
+      },
+      "expectHs": "87149210",
+      "noteVi": "coverage: 87149210 — forVehicle attr needed"
+    },
+    {
+      "id": "8714-bicycle-rim",
+      "heading": "8714",
+      "text": "vành xe đạp thường",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "wheel"
+      },
+      "expectHs": "87149290",
+      "noteVi": "coverage: 87149290 — bicycle wheel rim not distinguished"
+    },
+    {
+      "id": "8714-bicycle-hub-sen",
+      "heading": "8714",
+      "text": "bánh đà xe đạp điện SEN",
+      "facts": {
+        "vehicleType": "bicycle",
+        "forVehicle": "8712.00.20",
+        "partKind": "transmission"
+      },
+      "expectHs": "87149310",
+      "noteVi": "coverage: 87149310 — forVehicle attr needed"
+    },
+    {
+      "id": "8714-bicycle-hub",
+      "heading": "8714",
+      "text": "bánh đà xe đạp",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "transmission"
+      },
+      "expectHs": "87149390",
+      "noteVi": "coverage: 87149390 missing"
+    },
+    {
+      "id": "8714-bicycle-brake-sen",
+      "heading": "8714",
+      "text": "phanh xe đạp điện SEN",
+      "facts": {
+        "vehicleType": "bicycle",
+        "forVehicle": "8712.00.20",
+        "partKind": "brake"
+      },
+      "expectHs": "87149410",
+      "noteVi": "coverage: 87149410 — forVehicle attr needed"
+    },
+    {
+      "id": "8714-bicycle-brake",
+      "heading": "8714",
+      "text": "phanh xe đạp thường",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "brake"
+      },
+      "expectHs": "87149490",
+      "noteVi": "coverage: 87149490 — bicycle brake not distinguished"
+    },
+    {
+      "id": "8714-bicycle-saddle-sen",
+      "heading": "8714",
+      "text": "yên xe đạp điện SEN",
+      "facts": {
+        "vehicleType": "bicycle",
+        "forVehicle": "8712.00.20",
+        "partKind": "seat"
+      },
+      "expectHs": "87149510",
+      "noteVi": "coverage: 87149510 — forVehicle attr needed"
+    },
+    {
+      "id": "8714-bicycle-saddle",
+      "heading": "8714",
+      "text": "yên xe đạp",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "seat"
+      },
+      "expectHs": "87149590",
+      "noteVi": "coverage: 87149590 missing"
+    },
+    {
+      "id": "8714-bicycle-bottombracket-sen",
+      "heading": "8714",
+      "text": "trục giữa xe đạp điện SEN",
+      "facts": {
+        "vehicleType": "bicycle",
+        "forVehicle": "8712.00.20",
+        "partKind": "bottom_bracket"
+      },
+      "expectHs": "87149610",
+      "noteVi": "coverage: 87149610 — forVehicle attr needed"
+    },
+    {
+      "id": "8714-bicycle-bottombracket",
+      "heading": "8714",
+      "text": "trục giữa xe đạp",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "bottom_bracket"
+      },
+      "expectHs": "87149690",
+      "noteVi": "coverage: 87149690 missing"
+    },
+    {
+      "id": "8714-bicycle-spoke-nipple",
+      "heading": "8714",
+      "text": "ốc bắt đầu nan hoa xe đạp",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "spoke_nipple"
+      },
+      "expectHs": "87149993",
+      "noteVi": "coverage: 87149993 missing"
+    },
+    {
+      "id": "8714-bicycle-crankshaft",
+      "heading": "8714",
+      "text": "trục khuỷu bánh xích xe đạp",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "crankshaft"
+      },
+      "expectHs": "87149994",
+      "noteVi": "coverage: 87149994 missing"
+    },
+    {
+      "id": "8714-bicycle-handlebar-detailed",
+      "heading": "8714",
+      "text": "tay lái xe đạp nhôm",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "handlebar"
+      },
+      "expectHs": "87149911",
+      "noteVi": "coverage: 87149911 documented"
     }
   ]
 }
