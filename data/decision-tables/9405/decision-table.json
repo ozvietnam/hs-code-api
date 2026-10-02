@@ -1,0 +1,583 @@
+{
+  "heading": "9405",
+  "description": "Luminaires and light fittings; including searchlights, spotlights and parts thereof, n.e.c.; illuminated signs, name-plates and the like, having permanently fixed light source and parts thereof n.e.c. or included",
+  "attributes": [
+    {
+      "id": "lightingTech",
+      "descriptionVi": "Công nghệ chiếu sáng",
+      "values": {
+        "led": "LED (đi-ốt phát quang)",
+        "fluorescent": "Đèn huỳnh quang",
+        "incandescent": "Đèn sợi đốt / halogen",
+        "solar": "Quang điện (pin mặt trời)",
+        "any": "Bất kỳ loại nào"
+      }
+    },
+    {
+      "id": "mounting",
+      "descriptionVi": "Vị trí/loại lắp đặt",
+      "values": {
+        "surgical": "Đèn phòng mổ",
+        "spotlight": "Đèn rọi (spotlight)",
+        "floodlight": "Đèn pha (floodlight)",
+        "signalAviation": "Tín hiệu hàng không / sân bay",
+        "publicRoad": "Chiếu sáng đường phố, nơi công cộng",
+        "roadSign": "Biển báo giao thông, đường bộ",
+        "signIlluminated": "Biển chiếu sáng, biển tên đường",
+        "militaryFlood": "Đèn bão, đèn thợ mỏ",
+        "householdAppliance": "Đèn báo hiệu thiết bị gia dụng (85.16)",
+        "religious": "Nghi lễ tôn giáo (đồng)",
+        "general": "Chiếu sáng thông thường khác"
+      }
+    },
+    {
+      "id": "electric",
+      "descriptionVi": "Có điện",
+      "values": {
+        "electric": "Có nguồn sáng điện",
+        "nonElectric": "Không điện (nến, đèn dầu)"
+      }
+    },
+    {
+      "id": "material",
+      "descriptionVi": "Vật liệu chính của phần thân/vỏ",
+      "values": {
+        "plastic": "Nhựa",
+        "metal": "Kim loại",
+        "glass": "Thủy tinh/gốm/sứ",
+        "textile": "Vải/dệt",
+        "copper": "Đồng (nghi lễ tôn giáo)",
+        "other": "Loại khác"
+      }
+    },
+    {
+      "id": "partType",
+      "descriptionVi": "Loại bộ phận (chỉ dùng khi productKind=parts)",
+      "values": {
+        "surgicalLamp": "Dùng cho đèn phòng mổ",
+        "spotlightPart": "Dùng cho đèn rọi",
+        "globeBowl": "Chao đèn hình cầu/thông phong",
+        "floodlightPart": "Dùng cho đèn pha",
+        "textileShade": "Chụp đèn bằng vải",
+        "otherShade": "Chụp đèn bằng vật liệu khác",
+        "ceramicMetalPart": "Bằng gốm, sứ hoặc kim loại",
+        "generalPart": "Bộ phận khác"
+      }
+    },
+    {
+      "id": "productKind",
+      "descriptionVi": "Loại sản phẩm",
+      "values": {
+        "lamp": "Đèn chiếu sáng hoàn chỉnh",
+        "sign": "Biển chiếu sáng, biển tên",
+        "parts": "Phụ tùng"
+      }
+    }
+  ],
+  "rules": [
+    {
+      "productKind": "lamp",
+      "lightingTech": "led",
+      "mounting": "surgical",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94051110"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "led",
+      "mounting": "spotlight",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94051191"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "led",
+      "mounting": "general",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94051199"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "fluorescent",
+      "mounting": "surgical",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94051910"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "incandescent",
+      "mounting": "spotlight",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94051991"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "fluorescent",
+      "mounting": "general",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94051992"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "any",
+      "mounting": "general",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94051999"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "led",
+      "mounting": "surgical",
+      "electric": "electric",
+      "material": "metal",
+      "partType": "generalPart",
+      "hsCode": "94052110"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "any",
+      "mounting": "surgical",
+      "electric": "electric",
+      "material": "metal",
+      "partType": "generalPart",
+      "hsCode": "94052190"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "led",
+      "mounting": "surgical",
+      "electric": "electric",
+      "material": "other",
+      "partType": "generalPart",
+      "hsCode": "94052910"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "any",
+      "mounting": "surgical",
+      "electric": "electric",
+      "material": "other",
+      "partType": "generalPart",
+      "hsCode": "94052990"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "led",
+      "mounting": "general",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94053100"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "any",
+      "mounting": "general",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94053900"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "solar",
+      "mounting": "floodlight",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054110"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "solar",
+      "mounting": "spotlight",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054120"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "solar",
+      "mounting": "signalAviation",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054130"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "solar",
+      "mounting": "publicRoad",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054140"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "solar",
+      "mounting": "general",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054190"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "led",
+      "mounting": "floodlight",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054210"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "led",
+      "mounting": "spotlight",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054220"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "led",
+      "mounting": "signalAviation",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054230"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "led",
+      "mounting": "householdAppliance",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054240"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "led",
+      "mounting": "publicRoad",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054250"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "led",
+      "mounting": "general",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054260"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "any",
+      "mounting": "floodlight",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054290"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "any",
+      "mounting": "floodlight",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054910"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "any",
+      "mounting": "spotlight",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054920"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "any",
+      "mounting": "signalAviation",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054930"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "any",
+      "mounting": "householdAppliance",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054940"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "any",
+      "mounting": "publicRoad",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054950"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "any",
+      "mounting": "general",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054960"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "any",
+      "mounting": "general",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94054990"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "any",
+      "mounting": "religious",
+      "electric": "nonElectric",
+      "material": "copper",
+      "partType": "generalPart",
+      "hsCode": "94055011"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "any",
+      "mounting": "religious",
+      "electric": "nonElectric",
+      "material": "other",
+      "partType": "generalPart",
+      "hsCode": "94055019"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "any",
+      "mounting": "militaryFlood",
+      "electric": "nonElectric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94055040"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "any",
+      "mounting": "militaryFlood",
+      "electric": "nonElectric",
+      "material": "metal",
+      "partType": "generalPart",
+      "hsCode": "94055050"
+    },
+    {
+      "productKind": "lamp",
+      "lightingTech": "any",
+      "mounting": "general",
+      "electric": "nonElectric",
+      "material": "other",
+      "partType": "generalPart",
+      "hsCode": "94055090"
+    },
+    {
+      "productKind": "sign",
+      "lightingTech": "led",
+      "mounting": "roadSign",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94056110"
+    },
+    {
+      "productKind": "sign",
+      "lightingTech": "led",
+      "mounting": "signIlluminated",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94056190"
+    },
+    {
+      "productKind": "sign",
+      "lightingTech": "any",
+      "mounting": "roadSign",
+      "electric": "electric",
+      "material": "other",
+      "partType": "generalPart",
+      "hsCode": "94056910"
+    },
+    {
+      "productKind": "sign",
+      "lightingTech": "any",
+      "mounting": "signIlluminated",
+      "electric": "electric",
+      "material": "other",
+      "partType": "generalPart",
+      "hsCode": "94056990"
+    },
+    {
+      "productKind": "parts",
+      "lightingTech": "any",
+      "mounting": "surgical",
+      "electric": "electric",
+      "material": "glass",
+      "partType": "surgicalLamp",
+      "hsCode": "94059110"
+    },
+    {
+      "productKind": "parts",
+      "lightingTech": "any",
+      "mounting": "spotlight",
+      "electric": "electric",
+      "material": "glass",
+      "partType": "spotlightPart",
+      "hsCode": "94059120"
+    },
+    {
+      "productKind": "parts",
+      "lightingTech": "any",
+      "mounting": "general",
+      "electric": "electric",
+      "material": "glass",
+      "partType": "globeBowl",
+      "hsCode": "94059140"
+    },
+    {
+      "productKind": "parts",
+      "lightingTech": "any",
+      "mounting": "floodlight",
+      "electric": "electric",
+      "material": "glass",
+      "partType": "floodlightPart",
+      "hsCode": "94059150"
+    },
+    {
+      "productKind": "parts",
+      "lightingTech": "any",
+      "mounting": "general",
+      "electric": "electric",
+      "material": "glass",
+      "partType": "generalPart",
+      "hsCode": "94059190"
+    },
+    {
+      "productKind": "parts",
+      "lightingTech": "any",
+      "mounting": "surgical",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "surgicalLamp",
+      "hsCode": "94059210"
+    },
+    {
+      "productKind": "parts",
+      "lightingTech": "any",
+      "mounting": "spotlight",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "spotlightPart",
+      "hsCode": "94059220"
+    },
+    {
+      "productKind": "parts",
+      "lightingTech": "any",
+      "mounting": "floodlight",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "floodlightPart",
+      "hsCode": "94059230"
+    },
+    {
+      "productKind": "parts",
+      "lightingTech": "any",
+      "mounting": "general",
+      "electric": "electric",
+      "material": "plastic",
+      "partType": "generalPart",
+      "hsCode": "94059290"
+    },
+    {
+      "productKind": "parts",
+      "lightingTech": "any",
+      "mounting": "general",
+      "electric": "electric",
+      "material": "textile",
+      "partType": "textileShade",
+      "hsCode": "94059910"
+    },
+    {
+      "productKind": "parts",
+      "lightingTech": "any",
+      "mounting": "general",
+      "electric": "electric",
+      "material": "other",
+      "partType": "otherShade",
+      "hsCode": "94059920"
+    },
+    {
+      "productKind": "parts",
+      "lightingTech": "any",
+      "mounting": "religious",
+      "electric": "nonElectric",
+      "material": "copper",
+      "partType": "generalPart",
+      "hsCode": "94059930"
+    },
+    {
+      "productKind": "parts",
+      "lightingTech": "any",
+      "mounting": "floodlight",
+      "electric": "electric",
+      "material": "metal",
+      "partType": "floodlightPart",
+      "hsCode": "94059940"
+    },
+    {
+      "productKind": "parts",
+      "lightingTech": "any",
+      "mounting": "general",
+      "electric": "electric",
+      "material": "glass",
+      "partType": "ceramicMetalPart",
+      "hsCode": "94059950"
+    },
+    {
+      "productKind": "parts",
+      "lightingTech": "any",
+      "mounting": "general",
+      "electric": "electric",
+      "material": "other",
+      "partType": "generalPart",
+      "hsCode": "94059990"
+    }
+  ]
+}
