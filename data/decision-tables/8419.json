@@ -1,0 +1,597 @@
+{
+  "heading": "8419",
+  "titleVi": "Máy, thiết bị và dụng cụ (không thuộc các nhóm khác), làm bằng phương pháp nhiệt; máy làm bay hơi; thiết bị xử lý nhiệt; đun nước nóng; nồi hấp; bộ trao đổi nhiệt; tháp làm mát; bộ phận",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Thiết bị nhiệt này dùng cho mục đích gì: đun nước nóng (máy nước nóng, năng lượng mặt trời), hấp tiệt trùng, sấy, trao đổi nhiệt/làm mát, hóa lỏng khí, xử lý thực phẩm, hay chỉ bộ phận? Có chạy điện không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 8419: 8419.11 đun nước nóng ga; 8419.12 năng lượng mặt trời; 8419.20 khử trùng; 8419.33–8419.35 sấy; 8419.39–8419.50 xử lý nhiệt khác; 8419.60 hóa lỏng; 8419.81–8419.89 thực phẩm; 8419.90 parts.",
+  "inputs": [
+    {
+      "attribute": "processKind",
+      "type": "enum",
+      "domain": [
+        "instantHeater",
+        "solarWater",
+        "sterilizing",
+        "dryingAgri",
+        "dryingOther",
+        "heatExchange",
+        "coolingTower",
+        "liquefaction",
+        "foodProcessing",
+        "evaporator",
+        "parts"
+      ],
+      "labelVi": "Loại quá trình / mục đích",
+      "questionVi": "Thiết bị nhiệt này dùng cho mục đích gì?",
+      "detect": {
+        "instantHeater": [
+          "đun nước nóng",
+          "nước nóng",
+          "máy nước nóng",
+          "đun nước nóng bằng ga",
+          "water heater",
+          "instant water heater",
+          "gas water heater",
+          "bình nước nóng",
+          "nồi nấu nước",
+          "nước nóng tức thì"
+        ],
+        "solarWater": [
+          "năng lượng mặt trời",
+          "đun nước nóng năng lượng mặt trời",
+          "solar water heater",
+          "solar collector",
+          "máy nước nóng mặt trời",
+          "bình nước nóng mặt trời",
+          "điện mặt trời nước nóng"
+        ],
+        "sterilizing": [
+          "khử trùng",
+          "tiệt trùng",
+          "sterilizing",
+          "autoclave",
+          "nồi hấp",
+          "hấp tiệt trùng",
+          "sterilizer",
+          "disinfect"
+        ],
+        "dryingAgri": [
+          "sấy nông sản",
+          "sấy gỗ",
+          "sấy bột giấy",
+          "drying machine agricultural",
+          "dryer agricultural",
+          "sấy nông nghiệp",
+          "grain dryer",
+          "crop dryer"
+        ],
+        "dryingOther": [
+          "sấy",
+          "drying",
+          "dryer",
+          "oven",
+          "lò sấy",
+          "sấy công nghiệp",
+          "dryer industrial",
+          "lò sấy thực phẩm"
+        ],
+        "heatExchange": [
+          "trao đổi nhiệt",
+          "heat exchanger",
+          "bộ trao đổi nhiệt",
+          "thiết bị ngưng tụ",
+          "condenser",
+          "evaporator",
+          "thiết bị bay hơi",
+          "heat recovery",
+          "hồi nhiệt"
+        ],
+        "coolingTower": [
+          "tháp làm mát",
+          "cooling tower",
+          "cooling tower fill",
+          "bộ phận tháp làm mát"
+        ],
+        "liquefaction": [
+          "hóa lỏng không khí",
+          "liquefaction",
+          "hóa lỏng khí",
+          "air liquefaction",
+          "gas liquefaction"
+        ],
+        "foodProcessing": [
+          "nấu",
+          "rán",
+          "chiên",
+          "hấp thực phẩm",
+          "food processing",
+          "cooking",
+          "frying",
+          "máy chế biến thực phẩm",
+          "food steamer",
+          "industrial cooking",
+          "sterilizing food",
+          "thiết bị chế biến thực phẩm"
+        ],
+        "evaporator": [
+          "thiết bị bay hơi",
+          "evaporator",
+          "làm bay hơi"
+        ],
+        "parts": [
+          "bộ phận",
+          "parts",
+          "vỏ",
+          "bộ phận 8419",
+          "tấm tản nhiệt 8419"
+        ]
+      }
+    },
+    {
+      "attribute": "powerSource",
+      "type": "enum",
+      "domain": [
+        "electric",
+        "nonElectric",
+        "any"
+      ],
+      "labelVi": "Nguồn năng lượng",
+      "questionVi": "Thiết bị chạy bằng điện hay không điện (ga, diesel,...)",
+      "detect": {
+        "electric": [
+          "điện",
+          "electric",
+          "220V",
+          "380V",
+          "AC",
+          "DC"
+        ],
+        "nonElectric": [
+          "ga",
+          "gas",
+          "than",
+          "diesel",
+          "nhiên liệu",
+          "không điện"
+        ],
+        "any": []
+      }
+    },
+    {
+      "attribute": "application",
+      "type": "enum",
+      "domain": [
+        "household",
+        "industrial",
+        "medical",
+        "any"
+      ],
+      "labelVi": "Lĩnh vực / quy mô",
+      "questionVi": "Thiết bị dùng trong gia đình, y tế, hay công nghiệp?",
+      "detect": {
+        "household": [
+          "gia đình",
+          "household",
+          "sinh hoạt",
+          "home use"
+        ],
+        "medical": [
+          "y tế",
+          "phẫu thuật",
+          "medical",
+          "hospital",
+          "clinic",
+          "thí nghiệm y khoa"
+        ],
+        "industrial": [
+          "công nghiệp",
+          "industrial",
+          "nhà máy",
+          "factory",
+          "xí nghiệp"
+        ],
+        "any": []
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-8419-instant-gas",
+      "priority": 90,
+      "when": {
+        "processKind": "instantHeater",
+        "powerSource": "nonElectric"
+      },
+      "hs": "84191110",
+      "gir": "GIR 6",
+      "reasonVi": "Đun nước nóng bằng ga, loại dùng trong gia đình → 8419.11.10.",
+      "source": "Biểu thuế 2026 dòng 8419.11.10; GIR 6 với 8419.11.90"
+    },
+    {
+      "id": "r-8419-instant-gas-other",
+      "priority": 70,
+      "when": {
+        "processKind": "instantHeater",
+        "powerSource": "nonElectric"
+      },
+      "hs": "84191190",
+      "gir": "GIR 6",
+      "reasonVi": "Đun nước nóng bằng ga, loại công nghiệp/không phải gia đình → 8419.11.90.",
+      "source": "Biểu thuế 2026 dòng 8419.11.90"
+    },
+    {
+      "id": "r-8419-solar",
+      "priority": 90,
+      "when": {
+        "processKind": "solarWater"
+      },
+      "hs": "84191200",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị đun nước nóng bằng năng lượng mặt trời → 8419.12.",
+      "source": "Biểu thuế 2026 dòng 8419.12.00; GIR 6 tách với 8419.11"
+    },
+    {
+      "id": "r-8419-sterilize-med",
+      "priority": 90,
+      "when": {
+        "processKind": "sterilizing",
+        "application": "medical"
+      },
+      "hs": "84192000",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị khử trùng y tế/phẫu thuật → 8419.20.",
+      "source": "Biểu thuế 2026 dòng 8419.20.00"
+    },
+    {
+      "id": "r-8419-sterilize-ind",
+      "priority": 70,
+      "when": {
+        "processKind": "sterilizing",
+        "application": "industrial"
+      },
+      "hs": "84192000",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị khử trùng công nghiệp → 8419.20.",
+      "source": "Biểu thuế 2026 dòng 8419.20.00"
+    },
+    {
+      "id": "r-8419-dry-agri",
+      "priority": 90,
+      "when": {
+        "processKind": "dryingAgri"
+      },
+      "hs": "84193310",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị sấy nông nghiệp/gỗ/bột giấy → 8419.33.",
+      "source": "Biểu thuế 2026 dòng 8419.33.10; GIR 6 với 8419.33.90"
+    },
+    {
+      "id": "r-8419-dry-agri-other",
+      "priority": 70,
+      "when": {
+        "processKind": "dryingOther"
+      },
+      "hs": "84193390",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị sấy công nghiệp khác → 8419.33.90.",
+      "source": "Biểu thuế 2026 dòng 8419.33.90"
+    },
+    {
+      "id": "r-8419-heatEx",
+      "priority": 90,
+      "when": {
+        "processKind": "heatExchange"
+      },
+      "hs": "84195010",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ trao đổi nhiệt, fluoropolymers → 8419.50.10.",
+      "source": "Biểu thuế 2026 dòng 8419.50.10; GIR 6 với 8419.50.91/92"
+    },
+    {
+      "id": "r-8419-heatEx-elec",
+      "priority": 80,
+      "when": {
+        "processKind": "heatExchange",
+        "powerSource": "electric"
+      },
+      "hs": "84195091",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ trao đổi nhiệt hoạt động bằng điện → 8419.50.91.",
+      "source": "Biểu thuế 2026 dòng 8419.50.91"
+    },
+    {
+      "id": "r-8419-cooling-tower",
+      "priority": 90,
+      "when": {
+        "processKind": "coolingTower"
+      },
+      "hs": "84195010",
+      "gir": "GIR 6",
+      "reasonVi": "Tháp làm mát → 8419.50.10.",
+      "source": "Biểu thuế 2026 dòng 8419.50.10 (tháp làm mát ghi trong chú giải nhóm)"
+    },
+    {
+      "id": "r-8419-liquefy",
+      "priority": 90,
+      "when": {
+        "processKind": "liquefaction"
+      },
+      "hs": "84196000",
+      "gir": "GIR 6",
+      "reasonVi": "Máy hóa lỏng không khí hoặc các loại khí → 8419.60.",
+      "source": "Biểu thuế 2026 dòng 8419.60.00; Chú giải nhóm 8419"
+    },
+    {
+      "id": "r-8419-food-cook-elec",
+      "priority": 90,
+      "when": {
+        "processKind": "foodProcessing",
+        "powerSource": "electric"
+      },
+      "hs": "84198110",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị chế biến thực phẩm bằng điện → 8419.81.10.",
+      "source": "Biểu thuế 2026 dòng 8419.81.10; GIR 6 với 8419.81.20"
+    },
+    {
+      "id": "r-8419-food-cook-non",
+      "priority": 90,
+      "when": {
+        "processKind": "foodProcessing",
+        "powerSource": "nonElectric"
+      },
+      "hs": "84198120",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị chế biến thực phẩm không điện → 8419.81.20.",
+      "source": "Biểu thuế 2026 dòng 8419.81.20"
+    },
+    {
+      "id": "r-8419-evap",
+      "priority": 80,
+      "when": {
+        "processKind": "evaporator"
+      },
+      "hs": "84193930",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị bay hơi (evaporator) → 8419.39.30.",
+      "source": "Biểu thuế 2026 dòng 8419.39.30"
+    },
+    {
+      "id": "r-8419-heat-other-elec",
+      "priority": 70,
+      "when": {
+        "processKind": "dryingOther",
+        "powerSource": "electric"
+      },
+      "hs": "84198913",
+      "gir": "GIR 6",
+      "reasonVi": "Máy xử lý vật liệu bằng gia nhiệt, điện → 8419.89.13.",
+      "source": "Biểu thuế 2026 dòng 8419.89.13"
+    },
+    {
+      "id": "r-8419-parts-cooling-tower",
+      "priority": 90,
+      "when": {
+        "processKind": "parts",
+        "application": "industrial"
+      },
+      "hs": "84199012",
+      "gir": "GIR 6",
+      "reasonVi": "Vỏ của tháp làm mát → 8419.90.12.",
+      "source": "Biểu thuế 2026 dòng 8419.90.12"
+    },
+    {
+      "id": "r-8419-parts-water-heater",
+      "priority": 90,
+      "when": {
+        "processKind": "parts"
+      },
+      "hs": "84199022",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận cho thiết bị đun nước nóng bằng ga → 8419.90.22.",
+      "source": "Biểu thuế 2026 dòng 8419.90.22"
+    },
+    {
+      "id": "r-8419-parts-heat",
+      "priority": 50,
+      "when": {
+        "processKind": "parts"
+      },
+      "hs": "84199019",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận thiết bị xử lý nhiệt công nghiệp → 8419.90.19.",
+      "source": "Biểu thuế 2026 dòng 8419.90.19"
+    },
+    {
+      "id": "r-8419-instant-elec-house",
+      "priority": 90,
+      "when": {
+        "processKind": "instantHeater",
+        "powerSource": "electric",
+        "application": "household"
+      },
+      "hs": "84191910",
+      "gir": "GIR 6",
+      "reasonVi": "Đun nước nóng nhanh bằng điện, dùng trong gia đình → 8419.19.10.",
+      "source": "Biểu thuế 2026 dòng 8419.19.10"
+    },
+    {
+      "id": "r-8419-instant-elec-other",
+      "priority": 70,
+      "when": {
+        "processKind": "instantHeater",
+        "powerSource": "electric",
+        "application": "industrial"
+      },
+      "hs": "84191990",
+      "gir": "GIR 6",
+      "reasonVi": "Đun nước nóng nhanh bằng điện, loại công nghiệp → 8419.19.90.",
+      "source": "Biểu thuế 2026 dòng 8419.19.90"
+    },
+    {
+      "id": "r-8419-evap-elec",
+      "priority": 90,
+      "when": {
+        "processKind": "evaporator",
+        "powerSource": "electric"
+      },
+      "hs": "84193410",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị làm bay hơi hoạt động bằng điện → 8419.34.10.",
+      "source": "Biểu thuế 2026 dòng 8419.34.10; GIR 6 với 8419.34.20/90"
+    },
+    {
+      "id": "r-8419-evap-non-elec",
+      "priority": 80,
+      "when": {
+        "processKind": "evaporator",
+        "powerSource": "nonElectric"
+      },
+      "hs": "84193420",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị làm bay hơi không điện → 8419.34.20.",
+      "source": "Biểu thuế 2026 dòng 8419.34.20"
+    },
+    {
+      "id": "r-8419-evap2-elec",
+      "priority": 90,
+      "when": {
+        "processKind": "evaporator",
+        "powerSource": "electric"
+      },
+      "hs": "84193510",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị làm bay hơi (8419.35) hoạt động bằng điện → 8419.35.10.",
+      "source": "Biểu thuế 2026 dòng 8419.35.10"
+    },
+    {
+      "id": "r-8419-evap2-non",
+      "priority": 80,
+      "when": {
+        "processKind": "evaporator",
+        "powerSource": "nonElectric"
+      },
+      "hs": "84193520",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị làm bay hơi (8419.35) không điện → 8419.35.20.",
+      "source": "Biểu thuế 2026 dòng 8419.35.20"
+    },
+    {
+      "id": "r-8419-dry-residual",
+      "priority": 30,
+      "when": {
+        "processKind": "dryingOther"
+      },
+      "hs": "84193990",
+      "gir": "GIR 3",
+      "reasonVi": "Máy sấy/hơi công nghiệp loại khác → 8419.39.90 (residual).",
+      "source": "Biểu thuế 2026 dòng 8419.39.90"
+    },
+    {
+      "id": "r-8419-distill-elec",
+      "priority": 90,
+      "when": {
+        "processKind": "heatExchange",
+        "powerSource": "electric"
+      },
+      "hs": "84194010",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị bay hơi/chưng cất hoạt động bằng điện → 8419.40.10.",
+      "source": "Biểu thuế 2026 dòng 8419.40.10; GIR 6 với 8419.40.20"
+    },
+    {
+      "id": "r-8419-distill-non",
+      "priority": 80,
+      "when": {
+        "processKind": "heatExchange",
+        "powerSource": "nonElectric"
+      },
+      "hs": "84194020",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị bay hơi/chưng cất không điện → 8419.40.20.",
+      "source": "Biểu thuế 2026 dòng 8419.40.20"
+    },
+    {
+      "id": "r-8419-heatex-non-fluoro",
+      "priority": 70,
+      "when": {
+        "processKind": "heatExchange"
+      },
+      "hs": "84195020",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ trao đổi nhiệt không làm bằng ống fluoropolyme → 8419.50.20.",
+      "source": "Biểu thuế 2026 dòng 8419.50.20; GIR 6 với 8419.50.10/91/92"
+    },
+    {
+      "id": "r-8419-heatex-non-fluoro-elec",
+      "priority": 60,
+      "when": {
+        "processKind": "heatExchange",
+        "powerSource": "electric"
+      },
+      "hs": "84195092",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ trao đổi nhiệt không fluoropolyme, hoạt động bằng điện → 8419.50.92.",
+      "source": "Biểu thuế 2026 dòng 8419.50.92"
+    },
+    {
+      "id": "r-8419-heat-residual",
+      "priority": 30,
+      "when": {
+        "processKind": "dryingOther"
+      },
+      "hs": "84198919",
+      "gir": "GIR 3",
+      "reasonVi": "Máy xử lý nhiệt loại khác → 8419.89.19 (residual).",
+      "source": "Biểu thuế 2026 dòng 8419.89.19"
+    },
+    {
+      "id": "r-8419-heat-non-elec",
+      "priority": 40,
+      "when": {
+        "processKind": "dryingOther",
+        "powerSource": "nonElectric"
+      },
+      "hs": "84198920",
+      "gir": "GIR 6",
+      "reasonVi": "Máy xử lý nhiệt không điện → 8419.89.20.",
+      "source": "Biểu thuế 2026 dòng 8419.89.20"
+    },
+    {
+      "id": "r-8419-parts-tower-shell",
+      "priority": 90,
+      "when": {
+        "processKind": "parts"
+      },
+      "hs": "84199013",
+      "gir": "GIR 6",
+      "reasonVi": "Vỏ của tháp làm mát → 8419.90.13.",
+      "source": "Biểu thuế 2026 dòng 8419.90.13"
+    },
+    {
+      "id": "r-8419-parts-residual",
+      "priority": 30,
+      "when": {
+        "processKind": "parts"
+      },
+      "hs": "84199029",
+      "gir": "GIR 3",
+      "reasonVi": "Bộ phận thiết bị nhiệt loại khác → 8419.90.29 (residual).",
+      "source": "Biểu thuế 2026 dòng 8419.90.29"
+    },
+    {
+      "id": "r-8419-evap-residual",
+      "priority": 20,
+      "when": {
+        "processKind": "evaporator"
+      },
+      "hs": "84193490",
+      "gir": "GIR 3",
+      "reasonVi": "Thiết bị làm bay hơi loại khác → 8419.34.90 (residual).",
+      "source": "Biểu thuế 2026 dòng 8419.34.90"
+    }
+  ]
+}

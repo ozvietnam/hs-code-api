@@ -1,0 +1,296 @@
+{
+  "heading": 8504,
+  "titleVi": "Máy biến điện, máy biến áp, bộ chỉnh lưu và bộ nghịch lưu điện; cuộn cảm và cuộn cảm chặn",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Hàng là máy biến áp (công suất bao nhiêu kVA, có SEN không), bộ nguồn UPS/charger/inverter, cuộn cảm, hay chỉ bộ phận?",
+  "sourceVi": "Biểu thuế 2026 nhóm 8504: 8504.10 chấn lưu; 8504.21-8504.34 máy biến áp; 8504.40-8504.50 static converters; 8504.90 parts. Chú giải nhóm 8504 + sen notes (CV 1810/TCHQ-TXNK 2024).",
+  "inputs": [
+    {
+      "attribute": "prodKind",
+      "type": "enum",
+      "domain": [
+        "ballast",
+        "transformer",
+        "staticConverter",
+        "inductor",
+        "parts"
+      ],
+      "labelVi": "Loại sản phẩm",
+      "questionVi": "Hàng là loại gì: chấn lưu (đèn), máy biến áp, bộ nguồn UPS/inverter/charger, cuộn cảm, hay bộ phận?",
+      "detect": {
+        "ballast": [
+          "chấn lưu",
+          "ballast",
+          "đèn phóng",
+          "ống phóng",
+          "discharge lamp ballast"
+        ],
+        "transformer": [
+          "máy biến áp",
+          "máy biến điện",
+          "transformer",
+          "biến áp",
+          "power transformer",
+          "distribution transformer",
+          "step-up",
+          "step-down",
+          "biến áp tăng giảm",
+          "kVA",
+          "công suất"
+        ],
+        "staticConverter": [
+          "UPS",
+          "nguồn",
+          "inverter",
+          "nghịch lưu",
+          "charger",
+          "nạp ắcqui",
+          "bộ nguồn",
+          "power supply",
+          "static converter",
+          "rectifier",
+          "chỉnh lưu",
+          "AC/DC",
+          "DC/AC"
+        ],
+        "inductor": [
+          "cuộn cảm",
+          "inductor",
+          "cuộn cảm chặn",
+          "reactor",
+          "choke",
+          "solenoid",
+          "cuộn dây cảm"
+        ],
+        "parts": [
+          "bộ phận",
+          "parts",
+          "mạch in đã lắp ráp",
+          "tấm tản nhiệt",
+          "ống tản nhiệt",
+          "pcb",
+          "printed circuit"
+        ]
+      }
+    },
+    {
+      "attribute": "powerKva",
+      "type": "number",
+      "unit": "kVA",
+      "labelVi": "Công suất (kVA)",
+      "questionVi": "Công suất danh định bao nhiêu kVA?",
+      "detect": {}
+    },
+    {
+      "attribute": "senKind",
+      "type": "enum",
+      "domain": [
+        "sen",
+        "nonSen"
+      ],
+      "labelVi": "SEN (biến áp thích ứng)",
+      "questionVi": "Có phải biến áp thích ứng (SEN — tự ngẫu ngâm dầu điều chỉnh điện áp theo nấc)?",
+      "detect": {
+        "sen": [
+          "SEN",
+          "biến áp thích ứng",
+          "tự ngẫu",
+          "biến áp tự ngẫu",
+          "điều chỉnh điện áp theo nấc",
+          "oil-immersed",
+          "tap changer",
+          "step voltage regulator"
+        ],
+        "nonSen": []
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-850410",
+      "priority": 90,
+      "when": {
+        "prodKind": "ballast"
+      },
+      "hs": "85041000",
+      "gir": "GIR 6",
+      "reasonVi": "Chấn lưu cho đèn phóng hoặc ống phóng → 8504.10.",
+      "source": "Biểu thuế 2026 dòng 8504.10.00"
+    },
+    {
+      "id": "r-850421-sen",
+      "priority": 90,
+      "when": {
+        "prodKind": "transformer",
+        "powerKva": {
+          "_le": 16,
+          "_gt": 1
+        },
+        "senKind": "sen"
+      },
+      "hs": "85042119",
+      "gir": "GIR 6",
+      "reasonVi": "Máy biến áp SEN công suất > 1kVA và ≤ 16kVA → 8504.21.19.",
+      "source": "Biểu thuế 2026 dòng 8504.21.19; SEN notes"
+    },
+    {
+      "id": "r-850421-meas",
+      "priority": 90,
+      "when": {
+        "prodKind": "transformer",
+        "powerKva": {
+          "_le": 16,
+          "_gt": 1
+        },
+        "senKind": "nonSen"
+      },
+      "hs": "85042111",
+      "gir": "GIR 6",
+      "reasonVi": "Máy biến đổi đo lường SEN công suất > 1kVA và ≤ 16kVA → 8504.21.11.",
+      "source": "Biểu thuế 2026 dòng 8504.21.11"
+    },
+    {
+      "id": "r-850422-sen-hv66",
+      "priority": 90,
+      "when": {
+        "prodKind": "transformer",
+        "powerKva": {
+          "_gt": 16
+        },
+        "senKind": "sen",
+        "_voltage": {
+          "_gte": 66
+        }
+      },
+      "hs": "85042219",
+      "gir": "GIR 6",
+      "reasonVi": "Máy biến áp SEN > 16kVA, điện áp ≥ 66kV → 8504.22.19.",
+      "source": "Biểu thuế 2026 dòng 8504.22.19; SEN notes"
+    },
+    {
+      "id": "r-850422-sen-hv110",
+      "priority": 90,
+      "when": {
+        "prodKind": "transformer",
+        "powerKva": {
+          "_gt": 16
+        },
+        "senKind": "sen",
+        "_voltage": {
+          "_gte": 110
+        }
+      },
+      "hs": "85042219",
+      "gir": "GIR 6",
+      "reasonVi": "Máy biến áp SEN > 16kVA, điện áp ≥ 110kV → 8504.22.19.",
+      "source": "Biểu thuế 2026 dòng 8504.22.19; SEN notes"
+    },
+    {
+      "id": "r-850422-nonsen-110",
+      "priority": 90,
+      "when": {
+        "prodKind": "transformer",
+        "powerKva": {
+          "_gt": 16
+        },
+        "senKind": "nonSen"
+      },
+      "hs": "85042292",
+      "gir": "GIR 6",
+      "reasonVi": "Máy biến áp phân phối ≥ 110kV, > 16kVA → 8504.22.92.",
+      "source": "Biểu thuế 2026 dòng 8504.22.92"
+    },
+    {
+      "id": "r-850423",
+      "priority": 90,
+      "when": {
+        "prodKind": "transformer",
+        "powerKva": {
+          "_le": 15000,
+          "_gt": 16
+        }
+      },
+      "hs": "85042310",
+      "gir": "GIR 6",
+      "reasonVi": "Máy biến áp công suất ≤ 15.000kVA → 8504.23.",
+      "source": "Biểu thuế 2026 dòng 8504.23.10; Phân biệt với 8504.24"
+    },
+    {
+      "id": "r-850431-sen",
+      "priority": 90,
+      "when": {
+        "prodKind": "transformer",
+        "powerKva": {
+          "_le": 1
+        },
+        "senKind": "sen"
+      },
+      "hs": "85043199",
+      "gir": "GIR 6",
+      "reasonVi": "Máy biến áp SEN công suất ≤ 1kVA → 8504.31.99.",
+      "source": "Biểu thuế 2026 dòng 8504.31.99"
+    },
+    {
+      "id": "r-850431-non-sen",
+      "priority": 70,
+      "when": {
+        "prodKind": "transformer",
+        "powerKva": {
+          "_le": 1
+        },
+        "senKind": "nonSen"
+      },
+      "hs": "85043199",
+      "gir": "GIR 6",
+      "reasonVi": "Máy biến áp ≤ 1kVA, không phải SEN → 8504.31.99 (loại khác).",
+      "source": "Biểu thuế 2026 dòng 8504.31.99"
+    },
+    {
+      "id": "r-850440-ups",
+      "priority": 90,
+      "when": {
+        "prodKind": "staticConverter"
+      },
+      "hs": "85044011",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ nguồn UPS → 8504.40.11.",
+      "source": "Biểu thuế 2026 dòng 8504.40.11"
+    },
+    {
+      "id": "r-850450-chip",
+      "priority": 90,
+      "when": {
+        "prodKind": "inductor"
+      },
+      "hs": "85045020",
+      "gir": "GIR 6",
+      "reasonVi": "Cuộn cảm kiểu con chip → 8504.50.20.",
+      "source": "Biểu thuế 2026 dòng 8504.50.20; GIR 6 với 8504.50.93/94/95"
+    },
+    {
+      "id": "r-850490-ballast-asm",
+      "priority": 90,
+      "when": {
+        "prodKind": "parts"
+      },
+      "hs": "85049010",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận cho chấn lưu 8504.10 → 8504.90.10.",
+      "source": "Biểu thuế 2026 dòng 8504.90.10"
+    },
+    {
+      "id": "r-850490-pcb",
+      "priority": 90,
+      "when": {
+        "prodKind": "parts"
+      },
+      "hs": "85049020",
+      "gir": "GIR 6",
+      "reasonVi": "Mạch in đã lắp ráp cho UPS/static converter → 8504.90.20.",
+      "source": "Biểu thuế 2026 dòng 8504.90.20"
+    }
+  ]
+}
