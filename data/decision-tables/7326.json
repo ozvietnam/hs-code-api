@@ -1,0 +1,186 @@
+{
+  "heading": "7326",
+  "titleVi": "Các sản phẩm sắt hoặc thép khác chưa được phân vào nhóm nào khác",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "articleGroup",
+      "type": "enum",
+      "domain": [
+        "grinding_ball",
+        "other_articles",
+        "other_single",
+        "wire_articles"
+      ],
+      "labelVi": "Nhóm sản phẩm sắt/thép",
+      "questionVi": "Sản phẩm sắt/thép thuộc nhóm nào: bi nghiền, dây sắt/thép, hay sản phẩm sắt/thép khác?"
+    },
+    {
+      "attribute": "articleSubType",
+      "type": "enum",
+      "domain": [
+        "blind",
+        "bunsen_burner",
+        "cigarette_box",
+        "horseshoe_hook",
+        "mouse_trap",
+        "other_article",
+        "other_wire",
+        "poultry_cage",
+        "rubber_tray",
+        "ship_rudder",
+        "stainless_clip",
+        "standard"
+      ],
+      "labelVi": "Loại cụ thể",
+      "questionVi": "Sản phẩm cụ thể là gì: lồng gia cầm, bẫy chuột, rèm, bánh lái tàu, đèn Bunsen, móng ngựa, hộp thuốc lá, hay loại khác?"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "articleGroup": "grinding_ball",
+        "articleSubType": "standard"
+      },
+      "hs": "73261100",
+      "reasonVi": "GIR 6 — bi nghiền và hàng hóa tương tự dùng cho máy nghiền, Biểu thuế 2026 nhóm 7326.11 / standard → 73261100",
+      "source": "Biểu thuế NK VN 2026, nhóm 732611"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "articleGroup": "other_single",
+        "articleSubType": "standard"
+      },
+      "hs": "73261900",
+      "reasonVi": "GIR 6 — các sản phẩm sắt/thép khác (loại đơn lẻ), Biểu thuế 2026 nhóm 7326.19 / standard → 73261900",
+      "source": "Biểu thuế NK VN 2026, nhóm 732619"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "articleGroup": "wire_articles",
+        "articleSubType": "poultry_cage"
+      },
+      "hs": "73262050",
+      "reasonVi": "GIR 6 — các sản phẩm từ dây sắt/thép, Biểu thuế 2026 nhóm 7326.20 / poultry_cage → 73262050",
+      "source": "Biểu thuế NK VN 2026, nhóm 732620"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "articleGroup": "wire_articles",
+        "articleSubType": "mouse_trap"
+      },
+      "hs": "73262060",
+      "reasonVi": "GIR 6 — các sản phẩm từ dây sắt/thép, Biểu thuế 2026 nhóm 7326.20 / mouse_trap → 73262060",
+      "source": "Biểu thuế NK VN 2026, nhóm 732620"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "articleGroup": "wire_articles",
+        "articleSubType": "blind"
+      },
+      "hs": "73262070",
+      "reasonVi": "GIR 6 — các sản phẩm từ dây sắt/thép, Biểu thuế 2026 nhóm 7326.20 / blind → 73262070",
+      "source": "Biểu thuế NK VN 2026, nhóm 732620"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "articleGroup": "wire_articles",
+        "articleSubType": "other_wire"
+      },
+      "hs": "73262090",
+      "reasonVi": "GIR 6 — các sản phẩm từ dây sắt/thép, Biểu thuế 2026 nhóm 7326.20 / other_wire → 73262090",
+      "source": "Biểu thuế NK VN 2026, nhóm 732620"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "articleGroup": "other_articles",
+        "articleSubType": "ship_rudder"
+      },
+      "hs": "73269010",
+      "reasonVi": "GIR 6 — các sản phẩm sắt/thép khác chưa phân loại, Biểu thuế 2026 nhóm 7326.90 / ship_rudder → 73269010",
+      "source": "Biểu thuế NK VN 2026, nhóm 732690"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "articleGroup": "other_articles",
+        "articleSubType": "rubber_tray"
+      },
+      "hs": "73269020",
+      "reasonVi": "GIR 6 — các sản phẩm sắt/thép khác chưa phân loại, Biểu thuế 2026 nhóm 7326.90 / rubber_tray → 73269020",
+      "source": "Biểu thuế NK VN 2026, nhóm 732690"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "articleGroup": "other_articles",
+        "articleSubType": "stainless_clip"
+      },
+      "hs": "73269030",
+      "reasonVi": "GIR 6 — các sản phẩm sắt/thép khác chưa phân loại, Biểu thuế 2026 nhóm 7326.90 / stainless_clip → 73269030",
+      "source": "Biểu thuế NK VN 2026, nhóm 732690"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "articleGroup": "other_articles",
+        "articleSubType": "bunsen_burner"
+      },
+      "hs": "73269060",
+      "reasonVi": "GIR 6 — các sản phẩm sắt/thép khác chưa phân loại, Biểu thuế 2026 nhóm 7326.90 / bunsen_burner → 73269060",
+      "source": "Biểu thuế NK VN 2026, nhóm 732690"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "articleGroup": "other_articles",
+        "articleSubType": "horseshoe_hook"
+      },
+      "hs": "73269070",
+      "reasonVi": "GIR 6 — các sản phẩm sắt/thép khác chưa phân loại, Biểu thuế 2026 nhóm 7326.90 / horseshoe_hook → 73269070",
+      "source": "Biểu thuế NK VN 2026, nhóm 732690"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "articleGroup": "other_articles",
+        "articleSubType": "cigarette_box"
+      },
+      "hs": "73269091",
+      "reasonVi": "GIR 6 — các sản phẩm sắt/thép khác chưa phân loại, Biểu thuế 2026 nhóm 7326.90 / cigarette_box → 73269091",
+      "source": "Biểu thuế NK VN 2026, nhóm 732690"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      },
+      "hs": "73269099",
+      "reasonVi": "GIR 6 — các sản phẩm sắt/thép khác chưa phân loại, Biểu thuế 2026 nhóm 7326.90 / other_article → 73269099",
+      "source": "Biểu thuế NK VN 2026, nhóm 732690"
+    }
+  ],
+  "essenceTestVi": "Nhóm sản phẩm (articleGroup) + Loại cụ thể (articleSubType) → mã 8 số. 13 lá, 2 thuộc tính.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN)."
+}
