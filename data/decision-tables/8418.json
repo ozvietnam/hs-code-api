@@ -19,7 +19,19 @@
         "upright_freezer"
       ],
       "labelVi": "Loại thiết bị làm lạnh",
-      "questionVi": "Thiết bị làm lạnh thuộc loại nào: tủ lạnh-tủ đông kết hợp, tủ lạnh gia đình kiểu nén, tủ lạnh kiểu hấp thụ/thermoelectric, tủ đông nằm ngang (chest), tủ đông đứng (upright), tủ trưng bày/y tế/đồ uống, bơm nhiệt, máy làm lạnh khác, bộ phận khung/vỏ, hay bộ phận khác?"
+      "questionVi": "Thiết bị làm lạnh thuộc loại nào: tủ lạnh-tủ đông kết hợp, tủ lạnh gia đình kiểu nén, tủ lạnh kiểu hấp thụ/thermoelectric, tủ đông nằm ngang (chest), tủ đông đứng (upright), tủ trưng bày/y tế/đồ uống, bơm nhiệt, máy làm lạnh khác, bộ phận khung/vỏ, hay bộ phận khác?",
+      "detect": {
+        "chest_freezer": ["tủ đông nằm", "tủ đông ngang", "freezer chest", "chest freezer", "tủ cấp đông"],
+        "combined_ref_freezer": ["tủ lạnh kết hợp", "tủ lạnh đông", "tủ 2 cửa", "combined refrigerator"],
+        "heat_pump": ["bơm nhiệt", "heat pump", "máy bơm nhiệt", "h pump"],
+        "household_other_type": ["tủ lạnh gia đình", "tủ lạnh mini", "tủ lạnh car", "refrigerator household"],
+        "household_refrigerator": ["tủ lạnh", "tủ lạnh nén", "refrigerator", "fridge", "tủ mát"],
+        "other_cooling_cabinet": ["tủ làm lạnh", "tủ bảo quản", "tủ trưng bày", "cooling cabinet", "tủ y tế"],
+        "other_refrigerating_machine": ["máy làm lạnh", "máy制冷", "refrigerating machine"],
+        "parts_frame": ["vỏ tủ lạnh", "khung tủ", "frame chiller"],
+        "parts_other": ["bộ phận tủ lạnh", "linh kiện tủ lạnh", "parts refrigerator"],
+        "upright_freezer": ["tủ đông đứng", "tủ đông vertical", "upright freezer"]
+      }
     },
     {
       "attribute": "capacityOrType",

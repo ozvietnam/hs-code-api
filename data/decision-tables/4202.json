@@ -13,7 +13,13 @@
         "other_container"
       ],
       "labelVi": "Loại đồ chứa / mang theo",
-      "questionVi": "Sản phẩm thuộc loại nào: cặp tài liệu/vali (briefcase/trunk/suitcase), túi xách tay (handbag), vật dụng mang theo trong túi (pocket article), hay vật chứa/khác?"
+      "questionVi": "Sản phẩm thuộc loại nào: cặp tài liệu/vali (briefcase/trunk/suitcase), túi xách tay (handbag), vật dụng mang theo trong túi (pocket article), hay vật chứa/khác?",
+      "detect": {
+        "briefcase": ["cặp tài liệu", "vali", "va li", "suitcase", "trunk", "briefcase", "cặp", "vali du lịch", "hộp du lịch"],
+        "handbag": ["túi xách", "túi xách tay", "handbag", "túi đeo", "túi nam", "túi nữ", "túi clutch"],
+        "pocket_article": ["ví", "bóp", "khăn tay", "vật dụng túi", "pocket", "ví tiền", "ví da", "key case", "hộp thuốc"],
+        "other_container": ["túi", "bao", "bịch", "túi đựng", "vali du lịch"]
+      }
     },
     {
       "attribute": "outerMaterial",

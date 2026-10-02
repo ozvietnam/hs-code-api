@@ -18,7 +18,18 @@
         "wheel_rim"
       ],
       "labelVi": "Loại bộ phận / phụ kiện xe đạp",
-      "questionVi": "Phụ tùng xe đạp thuộc loại nào: bộ phận chung, xe lăn, khung/cổ, vành, moayơ, phanh, cọc/yên, pedal/cranks, hay phụ kiện khác?"
+      "questionVi": "Phụ tùng xe đạp thuộc loại nào: bộ phận chung, xe lăn, khung/cổ, vành, moayơ, phanh, cọc/yên, pedal/cranks, hay phụ kiện khác?",
+      "detect": {
+        "bicycle_part": ["xe đạp", "phụ tùng xe đạp", "bicycle part"],
+        "brake": ["phanh xe đạp", "brake", "tay phanh", "đĩa phanh"],
+        "frame_steering": ["khung xe đạp", "cổ xe", "ghi đông", "frame steering"],
+        "hub_freewheel": ["moayơ", "hub", "freewheel", "trục bánh"],
+        "invalid_carriage": ["xe lăn", "xe lăn cho người", "invalid carriage"],
+        "other_accessory": ["phụ kiện xe đạp", "accessory xe đạp"],
+        "pedal_crank": ["pedal xe đạp", "crank", "crank arm"],
+        "seat_post": ["cọc yên", "yên xe đạp", "seat post", "cọc yên"],
+        "wheel_rim": ["vành xe đạp", "rim", "nan hoa"]
+      }
     },
     {
       "attribute": "specCode",

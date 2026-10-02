@@ -17,7 +17,17 @@
         "speaker_other"
       ],
       "labelVi": "Loại thiết bị âm thanh",
-      "questionVi": "Thiết bị âm thanh thuộc loại nào: microphone, loa thùng, loa nhiều dải, loa không vỏ, tai nghe, amplifier, bộ khuếch đại âm thanh, hay bộ phận/phụ kiện?"
+      "questionVi": "Thiết bị âm thanh thuộc loại nào: microphone, loa thùng, loa nhiều dải, loa không vỏ, tai nghe, amplifier, bộ khuếch đại âm thanh, hay bộ phận/phụ kiện?",
+      "detect": {
+        "microphone": ["micro", "microphone", "mic", "micrô", "máy thu", "bộ thu thanh"],
+        "speaker_enclosure": ["loa thùng", "loa có vỏ", "speaker enclosure", "loa bookshelf"],
+        "speaker_multiple": ["loa nhiều dải", "loa 3 đường", "loa 2 đường", "loa nhiều loa"],
+        "speaker_other": ["loa", "loa không vỏ", "loa bluetooth", "loa di động", "loa máy tính"],
+        "headphone_headset": ["tai nghe", "headphone", "headset", "tai nghe không dây", "tai phone", "loa trong tai"],
+        "audio_amplifier": ["amplifier", "ampli", "bộ khuếch đại", "ampli công suất"],
+        "sound_amplifier": ["bộ khuếch đại âm", "amplifier âm thanh"],
+        "parts_accessories": ["phụ kiện loa", "bộ phận loa", "parts speaker"]
+      }
     },
     {
       "attribute": "specCode",

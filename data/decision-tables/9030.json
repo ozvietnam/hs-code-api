@@ -20,7 +20,20 @@
         "parts"
       ],
       "labelVi": "Loại thiết bị đo/kiểm",
-      "questionVi": "Dụng cụ đo/kiểm thuộc loại nào: đo bức xạ ion hóa, máy hiện sóng, máy đo đa năng, dụng cụ đo điện (vôn kế/ampe kế/điện trở), thiết bị viễn thông, máy kiểm tra vi mạch, dụng cụ kiểm tra panel, hay bộ phận (parts)?"
+      "questionVi": "Dụng cụ đo/kiểm thuộc loại nào: đo bức xạ ion hóa, máy hiện sóng, máy đo đa năng, dụng cụ đo điện (vôn kế/ampe kế/điện trở), thiết bị viễn thông, máy kiểm tra vi mạch, dụng cụ kiểm tra panel, hay bộ phận (parts)?",
+      "detect": {
+        "oscilloscope": ["máy hiện sóng", "oscilloscope", "dao động kế"],
+        "multimeter": ["máy đo đa năng", "multimeter", "đồng hồ đo"],
+        "electrical_test": ["vôn kế", "ampe kế", "điện trở kế", "máy đo điện"],
+        "telecom_test": ["máy đo viễn thông", "test viễn thông"],
+        "ic_tester": ["máy kiểm tra IC", "máy kiểm tra vi mạch", "IC tester"],
+        "panel_tester": ["máy kiểm tra panel", "panel tester"],
+        "ionizing_radiation": ["đo bức xạ ion hóa", "máy đo bức xạ"],
+        "other_with_recording": ["thiết bị đo có ghi", "đo có recording"],
+        "other_no_recording": ["thiết bị đo không ghi"],
+        "other_test_device": ["dụng cụ đo", "thiết bị kiểm tra"],
+        "parts": ["bộ phận đo", "parts"]
+      }
     },
     {
       "attribute": "hasRecording",
@@ -30,7 +43,11 @@
         false
       ],
       "labelVi": "Có thiết bị ghi",
-      "questionVi": "Dụng cụ có gắn thiết bị ghi (recording) không?"
+      "questionVi": "Dụng cụ có gắn thiết bị ghi (recording) không?",
+      "detect": {
+        "true": ["có ghi", "có recording", "có bộ ghi"],
+        "false": ["không ghi", "không recording"]
+      }
     },
     {
       "attribute": "specificKind",
@@ -46,7 +63,14 @@
         null
       ],
       "labelVi": "Loại cụ thể (khi measurementType = electrical_test / other)",
-      "questionVi": "Dụng cụ đo loại cụ thể nào: điện áp/dòng điện, trở kháng có cảnh báo, ampe/vôn kế xe, điện trở khác, hay loại khác?"
+      "questionVi": "Dụng cụ đo loại cụ thể nào: điện áp/dòng điện, trở kháng có cảnh báo, ampe/vôn kế xe, điện trở khác, hay loại khác?",
+      "detect": {
+        "voltage_current": ["vôn kế", "ampe kế", "đo điện áp", "đo dòng"],
+        "impedance_alarm": ["trở kháng có cảnh báo"],
+        "automotive": ["ampe kế xe", "vôn kế xe", "ô tô"],
+        "other_resistance": [],
+        "other_electrical": []
+      }
     },
     {
       "attribute": "icKind",
@@ -57,7 +81,11 @@
         null
       ],
       "labelVi": "Loại vi mạch (khi measurementType = ic_tester)",
-      "questionVi": "Máy kiểm tra vi mạch loại nào: vi mạch tích hợp (IC) hay loại khác?"
+      "questionVi": "Máy kiểm tra vi mạch loại nào: vi mạch tích hợp (IC) hay loại khác?",
+      "detect": {
+        "integrated_circuit": ["vi mạch tích hợp", "IC", "integrated circuit"],
+        "other_ic": []
+      }
     },
     {
       "attribute": "panelKind",
@@ -68,7 +96,11 @@
         null
       ],
       "labelVi": "Loại panel (khi measurementType = panel_tester)",
-      "questionVi": "Dụng cụ kiểm tra tấm mạch: mạch in (PCB) hay loại khác?"
+      "questionVi": "Dụng cụ kiểm tra tấm mạch: mạch in (PCB) hay loại khác?",
+      "detect": {
+        "pcb": ["PCB", "mạch in", "board"],
+        "other_panel": []
+      }
     },
     {
       "attribute": "partType",
@@ -81,7 +113,13 @@
         null
       ],
       "labelVi": "Loại bộ phận (khi measurementType = parts)",
-      "questionVi": "Bộ phận thuộc loại nào: mạch in đã lắp ráp, bộ phận quang học, bộ phận đo khác, hay loại chung?"
+      "questionVi": "Bộ phận thuộc loại nào: mạch in đã lắp ráp, bộ phận quang học, bộ phận đo khác, hay loại chung?",
+      "detect": {
+        "pcb_assembled": ["mạch in đã lắp", "PCB lắp ráp"],
+        "optical_parts": ["bộ phận quang học"],
+        "other_test_parts": [],
+        "generic_parts": []
+      }
     }
   ],
   "rules": [

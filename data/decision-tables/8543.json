@@ -15,7 +15,15 @@
         "signal_generator"
       ],
       "labelVi": "Loại thiết bị điện",
-      "questionVi": "Thiết bị điện thuộc loại nào: máy gia tốc hạt, máy phát tín hiệu, thiết bị mạ/điện phân, thiết bị thuốc lá điện tử, các thiết bị điện khác, hay bộ phận?"
+      "questionVi": "Thiết bị điện thuộc loại nào: máy gia tốc hạt, máy phát tín hiệu, thiết bị mạ/điện phân, thiết bị thuốc lá điện tử, các thiết bị điện khác, hay bộ phận?",
+      "detect": {
+        "e_cigarette_device": ["thuốc lá điện tử", "e-cigarette", "vape", "máy hút thuốc điện tử"],
+        "electroplating_machine": ["máy mạ", "máy điện phân", "electroplating", "máy xi mạ"],
+        "particle_accelerator": ["máy gia tốc hạt", "particle accelerator", "máy gia tốc"],
+        "signal_generator": ["máy phát tín hiệu", "signal generator"],
+        "parts": ["bộ phận", "parts", "linh kiện điện"],
+        "other_electrical_device": ["thiết bị điện", "máy điện", "đồ điện"]
+      }
     },
     {
       "attribute": "specCode",

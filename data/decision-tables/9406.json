@@ -13,7 +13,11 @@
         "no"
       ],
       "labelVi": "Có phải nhà trồng cây có gắn thiết bị cơ khí/nhiệt không",
-      "questionVi": "Công trình là nhà trồng cây có gắn thiết bị cơ khí hoặc nhiệt không?"
+      "questionVi": "Công trình là nhà trồng cây có gắn thiết bị cơ khí hoặc nhiệt không?",
+      "detect": {
+        "yes": ["nhà trồng cây", "greenhouse", "nhà kính"],
+        "no": ["công trình khác", "nhà tiền chế"]
+      }
     },
     {
       "attribute": "prefabKind",
@@ -23,7 +27,11 @@
         "no"
       ],
       "labelVi": "Có phải lắp ghép (prefabricated) không",
-      "questionVi": "Công trình có phải loại lắp ghép (prefab) không?"
+      "questionVi": "Công trình có phải loại lắp ghép (prefab) không?",
+      "detect": {
+        "yes": ["lắp ghép", "prefab", "tiền chế"],
+        "no": ["lắp tại chỗ"]
+      }
     },
     {
       "attribute": "primaryMaterial",
@@ -36,7 +44,14 @@
         "other"
       ],
       "labelVi": "Vật liệu chính",
-      "questionVi": "Vật liệu chính của công trình là gì?"
+      "questionVi": "Vật liệu chính của công trình là gì?",
+      "detect": {
+        "metal_steel": ["sắt", "thép", "metal", "steel"],
+        "plastic": ["plastic", "nhựa"],
+        "aluminum": ["nhôm", "aluminum"],
+        "cement_concrete": ["xi măng", "bê tông", "cement", "concrete"],
+        "other": ["vật liệu khác"]
+      }
     }
   ],
   "hitPolicy": "FIRST",

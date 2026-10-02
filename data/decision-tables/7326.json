@@ -13,7 +13,13 @@
         "wire_articles"
       ],
       "labelVi": "Nhóm sản phẩm sắt/thép",
-      "questionVi": "Sản phẩm sắt/thép thuộc nhóm nào: bi nghiền, dây sắt/thép, hay sản phẩm sắt/thép khác?"
+      "questionVi": "Sản phẩm sắt/thép thuộc nhóm nào: bi nghiền, dây sắt/thép, hay sản phẩm sắt/thép khác?",
+      "detect": {
+        "grinding_ball": ["bi nghiền", "bi thép nghiền", "grinding ball", "bi mài"],
+        "wire_articles": ["dây sắt", "dây thép", "lưới sắt", "wire mesh", "đai sắt"],
+        "other_articles": ["sắt", "thép", "gang", "iron", "steel"],
+        "other_single": ["sản phẩm sắt", "đồ sắt", "sắt thép khác"]
+      }
     },
     {
       "attribute": "articleSubType",
@@ -33,7 +39,21 @@
         "standard"
       ],
       "labelVi": "Loại cụ thể",
-      "questionVi": "Sản phẩm cụ thể là gì: lồng gia cầm, bẫy chuột, rèm, bánh lái tàu, đèn Bunsen, móng ngựa, hộp thuốc lá, hay loại khác?"
+      "questionVi": "Sản phẩm cụ thể là gì: lồng gia cầm, bẫy chuột, rèm, bánh lái tàu, đèn Bunsen, móng ngựa, hộp thuốc lá, hay loại khác?",
+      "detect": {
+        "blind": ["rèm sắt", "lưới sắt", "màn chắn"],
+        "bunsen_burner": ["đèn bunsen", "bunsen"],
+        "cigarette_box": ["hộp thuốc lá", "g Ashtray"],
+        "horseshoe_hook": ["móng ngựa", "móc ngựa"],
+        "mouse_trap": ["bẫy chuột", "bẫy cống"],
+        "poultry_cage": ["lồng gia cầm", "lồng gà", "lồng chim"],
+        "rubber_tray": ["khay cao su", "rubber tray"],
+        "ship_rudder": ["bánh lái tàu", "lái tàu"],
+        "stainless_clip": ["clip không gỉ", "stainless clip"],
+        "other_article": [],
+        "other_wire": [],
+        "standard": []
+      }
     }
   ],
   "rules": [

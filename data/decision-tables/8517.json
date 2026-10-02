@@ -18,7 +18,18 @@
         "parts"
       ],
       "labelVi": "Loại thiết bị viễn thông",
-      "questionVi": "Thiết bị viễn thông thuộc loại nào: điện thoại cố định/cordless, điện thoại thông minh (smartphone), điện thoại di động tế bào, thiết bị mạng (switch/router/modem), trạm gốc (base station), ăng ten, bộ phận (parts), hay thiết bị viễn thông khác?"
+      "questionVi": "Thiết bị viễn thông thuộc loại nào: điện thoại cố định/cordless, điện thoại thông minh (smartphone), điện thoại di động tế bào, thiết bị mạng (switch/router/modem), trạm gốc (base station), ăng ten, bộ phận (parts), hay thiết bị viễn thông khác?",
+      "detect": {
+        "smartphone": ["điện thoại thông minh", "smartphone", "điện thoại intel", "điện thoại iphone", "điện thoại samsung"],
+        "cellular_phone": ["điện thoại di động", "điện thoại di động", "điện thoại di động", "điện thoại di động"],
+        "cordless_phone": ["điện thoại cordless", "điện thoại không dây", "điện thoại bàn không dây"],
+        "base_station": ["trạm gốc", "base station", "trạm phát sóng", "trạm BTS"],
+        "network_equipment": ["switch", "router", "modem", "thiết bị mạng", "network equipment", "bộ chuyển mạch", "access point", "AP wifi"],
+        "antenna": ["ăng ten", "antenna", "anten", "đầu thu phát"],
+        "parts": ["bộ phận", "parts", "linh kiện viễn thông", "phụ tùng viễn thông"],
+        "other_telephone": ["điện thoại", "telephone", "điện thoại cố định", "điện thoại bàn"],
+        "other_telecom_device": ["thiết bị viễn thông", "viễn thông", "telecom device"]
+      }
     },
     {
       "attribute": "specificApp",
@@ -42,7 +53,16 @@
         null
       ],
       "labelVi": "Ứng dụng cụ thể / loại mạng",
-      "questionVi": "Thiết bị dùng cho mục đích gì: chuyển mạch (switching), modem, router/gateway, bộ điều khiển/adaptor, thiết bị mạng nội bộ không dây (WLAN), truyền dẫn vô tuyến, vệ tinh, pager, hội nghị nhiều thứ tiếng, hay ứng dụng khác?"
+      "questionVi": "Thiết bị dùng cho mục đích gì: chuyển mạch (switching), modem, router/gateway, bộ điều khiển/adaptor, thiết bị mạng nội bộ không dây (WLAN), truyền dẫn vô tuyến, vệ tinh, pager, hội nghị nhiều thứ tiếng, hay ứng dụng khác?",
+      "detect": {
+        "switching": ["switch", "chuyển mạch", "switching"],
+        "modem": ["modem"],
+        "router_gateway": ["router", "gateway"],
+        "wlan_access_point": ["access point", "AP wifi", "wifi AP", "WLAN"],
+        "satellite": ["vệ tinh", "satellite"],
+        "pager": ["pager", "máy báo"],
+        "other_telecom_device": []
+      }
     },
     {
       "attribute": "partType",

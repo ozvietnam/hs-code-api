@@ -12,7 +12,12 @@
         "other_household"
       ],
       "labelVi": "Loại đồ gia dụng nhựa",
-      "questionVi": "Đồ nhựa gia dụng thuộc loại nào: đồ ăn uống (bát, đĩa, ly, bình trẻ em), đồ y tế/vệ sinh (bô, máy hút sữa), hay đồ gia dụng nhựa khác?"
+      "questionVi": "Đồ nhựa gia dụng thuộc loại nào: đồ ăn uống (bát, đĩa, ly, bình trẻ em), đồ y tế/vệ sinh (bô, máy hút sữa), hay đồ gia dụng nhựa khác?",
+      "detect": {
+        "tableware": ["bát", "đĩa", "ly", "chén", "tô", "cốc", "đũa nhựa", "muỗng nhựa", "hộp cơm", "tupperware", "bình trẻ em", "bình sữa", "dĩa nhựa", "bàn chải đánh răng nhựa"],
+        "medical_hygiene": ["bô", "bô giường", "bô tiểu", "máy hút sữa", "núm vú giả", "phễu vắt sữa", "miếng lót sữa", "dụng cụ y tế nhựa"],
+        "other_household": ["đồ gia dụng nhựa", "vật dụng nhựa", "đồ nhựa gia đình"]
+      }
     },
     {
       "attribute": "material",
@@ -22,7 +27,11 @@
         "other_plastic"
       ],
       "labelVi": "Chất liệu nhựa",
-      "questionVi": "Đồ nhựa làm từ gì: melamin, hay loại nhựa khác (PVC, PP, PE, v.v.)?"
+      "questionVi": "Đồ nhựa làm từ gì: melamin, hay loại nhựa khác (PVC, PP, PE, v.v.)?",
+      "detect": {
+        "melamine": ["melamine", "mê-la-min", "chén melamin", "bát melamin"],
+        "other_plastic": ["nhựa", "PVC", "PP", "PE", "ABS", "nylon", "plastic"]
+      }
     },
     {
       "attribute": "specificKind",
@@ -36,7 +45,15 @@
         "other"
       ],
       "labelVi": "Loại cụ thể",
-      "questionVi": "Sản phẩm cụ thể là gì: bình trẻ em, bô giường bệnh, máy hút sữa, miếng ngực, hay loại khác?"
+      "questionVi": "Sản phẩm cụ thể là gì: bình trẻ em, bô giường bệnh, máy hút sữa, miếng ngực, hay loại khác?",
+      "detect": {
+        "children_feeding": ["bình trẻ em", "bình sữa", "bình nước trẻ", "bình cho bé", "sữa bình"],
+        "other_tableware": ["đĩa", "chén", "tô", "muỗng", "đũa", "ly", "cốc"],
+        "bedpan_urinal": ["bô", "bô giường", "bô tiểu", "urinal"],
+        "nursing": ["núm vú", "núm vú giả", "miếng tạo dáng"],
+        "breast_pump": ["máy hút sữa", "vắt sữa", "máy vắt sữa"],
+        "other": []
+      }
     }
   ],
   "rules": [

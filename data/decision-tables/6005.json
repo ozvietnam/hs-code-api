@@ -14,7 +14,13 @@
         "other"
       ],
       "labelVi": "Loại sợi",
-      "questionVi": "Vải dệt kim dọc bằng sợi gì: sợi tổng hợp (polyester, nylon, etc.), sợi nhân tạo (viscose), lông cừu/lông động vật mịn, vải theo chú giải đặc biệt Chương 60, hay loại khác?"
+      "questionVi": "Vải dệt kim dọc bằng sợi gì: sợi tổng hợp (polyester, nylon, etc.), sợi nhân tạo (viscose), lông cừu/lông động vật mịn, vải theo chú giải đặc biệt Chương 60, hay loại khác?",
+      "detect": {
+        "synthetic": ["sợi tổng hợp", "polyester", "nylon", "sợi PE", "sợi PP", "synthetic"],
+        "artificial": ["sợi nhân tạo", "viscose", "rayon", "sợi visco"],
+        "wool": ["lông cừu", "lông động vật", "len", "wool"],
+        "other": ["sợi khác", "vải dệt kim"]
+      }
     },
     {
       "attribute": "dyeingState",
@@ -26,7 +32,13 @@
         "printed"
       ],
       "labelVi": "Trạng thái nhuộm/màu",
-      "questionVi": "Vải đã qua xử lý nhuộm/màu: chưa tẩy trắng hoặc đã tẩy trắng, đã nhuộm, sợi nhiều màu (yarn-dyed), hay đã in?"
+      "questionVi": "Vải đã qua xử lý nhuộm/màu: chưa tẩy trắng hoặc đã tẩy trắng, đã nhuộm, sợi nhiều màu (yarn-dyed), hay đã in?",
+      "detect": {
+        "unbleached_bleached": ["chưa nhuộm", "trắng", "chưa tẩy", "bleached"],
+        "dyed": ["đã nhuộm", "nhuộm", "dyed"],
+        "yarn_dyed": ["sợi nhiều màu", "yarn dyed", "nhiều màu sợi"],
+        "printed": ["đã in", "in hoa", "printed"]
+      }
     },
     {
       "attribute": "isPBT",
@@ -36,7 +48,11 @@
         false
       ],
       "labelVi": "Có phải sợi PBT không",
-      "questionVi": "Vải có phải là sợi polybutyleneterephthalat (PBT) không?"
+      "questionVi": "Vải có phải là sợi polybutyleneterephthalat (PBT) không?",
+      "detect": {
+        "true": ["PBT", "polybutylene"],
+        "false": []
+      }
     },
     {
       "attribute": "pbtSubType",

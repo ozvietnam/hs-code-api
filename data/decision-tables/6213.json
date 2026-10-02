@@ -13,7 +13,11 @@
         "other"
       ],
       "labelVi": "Phương pháp nhuộm hoặc in",
-      "questionVi": "Khăn tay được nhuộm hoặc in bằng phương pháp nào?"
+      "questionVi": "Khăn tay được nhuộm hoặc in bằng phương pháp nào?",
+      "detect": {
+        "batik": ["batik", "in batik", "nhuộm batik", "khăn batik"],
+        "other": ["không batik", "khăn thường", "khăn vải thường"]
+      }
     },
     {
       "attribute": "materialType",
@@ -24,7 +28,12 @@
         "other"
       ],
       "labelVi": "Loại vải",
-      "questionVi": "Khăn tay được làm từ vải gì?"
+      "questionVi": "Khăn tay được làm từ vải gì?",
+      "detect": {
+        "cotton": ["bông", "cotton", "vải bông"],
+        "silk": ["tơ", "tằm", "silk", "lụa"],
+        "other": ["vải khác", "khác"]
+      }
     }
   ],
   "hitPolicy": "FIRST",

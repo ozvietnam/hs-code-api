@@ -13,7 +13,11 @@
         "other"
       ],
       "labelVi": "Phương pháp nhuộm hoặc in",
-      "questionVi": "Cà vạt được nhuộm hoặc in bằng phương pháp nào?"
+      "questionVi": "Cà vạt được nhuộm hoặc in bằng phương pháp nào?",
+      "detect": {
+        "batik": ["batik", "in batik", "nhuộm batik"],
+        "other": ["không batik", "nhuộm thường", "in thường"]
+      }
     },
     {
       "attribute": "materialType",
@@ -24,7 +28,12 @@
         "man_made"
       ],
       "labelVi": "Loại vải",
-      "questionVi": "Cà vạt được làm từ vải gì: bông/sợi thực vật, tơ tằm, hay sợi nhân tạo?"
+      "questionVi": "Cà vạt được làm từ vải gì: bông/sợi thực vật, tơ tằm, hay sợi nhân tạo?",
+      "detect": {
+        "cotton_vegetable": ["bông", "sợi thực vật", "cotton", "vải bông"],
+        "silk": ["tơ", "tằm", "lụa", "silk"],
+        "man_made": ["sợi nhân tạo", "viscose", "polyester", "sợi tổng hợp"]
+      }
     }
   ],
   "hitPolicy": "FIRST",

@@ -15,7 +15,13 @@
         "iridium_osmium_ruthenium"
       ],
       "labelVi": "Loại kim loại quý",
-      "questionVi": "Hàng thuộc loại kim loại quý nào?"
+      "questionVi": "Hàng thuộc loại kim loại quý nào?",
+      "detect": {
+        "platinum": ["platinum", "bạch kim", "pt"],
+        "palladium": ["palladium", "padium", "pd"],
+        "rhodium": ["rhodium", "rh"],
+        "iridium_osmium_ruthenium": ["iridium", "osmium", "ruthenium", "ir", "os", "ru"]
+      }
     },
     {
       "attribute": "formType",
@@ -25,7 +31,11 @@
         "other"
       ],
       "labelVi": "Dạng vật chất",
-      "questionVi": "Hàng ở dạng thỏi, thanh đúc, bột hay dạng khác?"
+      "questionVi": "Hàng ở dạng thỏi, thanh đúc, bột hay dạng khác?",
+      "detect": {
+        "ingot_powder": ["thỏi", "thanh đúc", "bột", "ingot", "powder"],
+        "other": ["dạng khác", "khác"]
+      }
     }
   ],
   "hitPolicy": "FIRST",

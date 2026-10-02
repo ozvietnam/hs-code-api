@@ -21,7 +21,21 @@
         "other_fastener"
       ],
       "labelVi": "Loại kim loại gia công cơ khí ( fastener )",
-      "questionVi": "Sản phẩm thuộc loại kim loại gia công cơ khí nào: vít đầu vuông, đinh vít thường, đinh móc/vòng, đinh vít tự tarô, bu lông có đai ốc, đai ốc, vòng đệm lò xo/hãm, vòng đệm khác, chốt hãm/chốt định vị, hay loại khác?"
+      "questionVi": "Sản phẩm thuộc loại kim loại gia công cơ khí nào: vít đầu vuông, đinh vít thường, đinh móc/vòng, đinh vít tự tarô, bu lông có đai ốc, đai ốc, vòng đệm lò xo/hãm, vòng đệm khác, chốt hãm/chốt định vị, hay loại khác?",
+      "detect": {
+        "square_head_screw": ["vít đầu vuông", "bu lông đầu vuông", "đai ốc", "bulong"],
+        "other_screw": ["vít", "đinh vít", "đinh ốc", "vít thường", "screw"],
+        "hook_ring_nail": ["đinh móc", "đinh vòng", "đinh hook", "móc", "vòng"],
+        "self_tapping_screw": ["vít tự tarô", "vít tự khoan", "đinh vít tự tarô"],
+        "bolt_with_nut": ["bu lông có đai ốc", "bolt nut", "buloong"],
+        "nut": ["đai ốc", "éc", "e cu", "nut"],
+        "other_bolt_rivet": ["đinh tán", "rivet", "chốt"],
+        "spring_lock_washer": ["vòng đệm lò xo", "vòng hãm lò xo", "washer spring"],
+        "other_washer": ["vòng đệm", "vòng lá", "washer"],
+        "cotter_pin": ["chốt hãm", "cotter pin", "chốt cố định"],
+        "spring_position_pin": ["chốt định vị lò xo", "pin lò xo", "position pin"],
+        "other_fastener": ["kim loại gia công cơ khí", "cơ khí khác", "fastener"]
+      }
     },
     {
       "attribute": "diameter",
