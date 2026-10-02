@@ -1,4 +1,5 @@
 const { requireAuth } = require('../lib/auth');
+const { understandQuery } = require('../lib/query-understand');
 const { setCors, handleOptions } = require('../lib/cors');
 const { getTaxRecord, normalizeHs } = require('../lib/data');
 const { mapTaxRecord } = require('../lib/tax-mapper');
@@ -42,15 +43,23 @@ module.exports = async function handler(req, res) {
   }
 
   const mapped = mapTaxRecord(tariff);
+  // Tên hàng tiếng Trung (tiêu đề Taobao) → tên hàng tiếng Việt trước khi soạn mô
+  // tả; bản gốc giữ lại để kiểm xuất xứ (vd 墨西哥 → hàng Mexico, không phải TQ).
+  const rawName = String(body?.productName || '').trim();
+  const understood = rawName ? await understandQuery(rawName) : { applied: false, facts: null };
   const context = {
-    productName: body?.productName || mapped.nameVi,
-    brand: body?.brand || null,
+    productName: understood.applied
+      ? [understood.facts.tenHangVi, understood.facts.quyCach].filter(Boolean).join(', ')
+      : (body?.productName || mapped.nameVi),
+    sourceText: [rawName, body?.customerDescription].filter(Boolean).join(' | ') || null,
+    detectedOrigin: understood.facts?.noiSanXuat || null,
+    brand: body?.brand || understood.facts?.thuongHieu || null,
     model: body?.model || null,
     origin: body?.origin || null,
-    material: body?.material || null,
+    material: body?.material || understood.facts?.chatLieu || null,
     condition: body?.condition || null,
     technicalSpec: body?.technicalSpec || null,
-    purpose: body?.purpose || null,
+    purpose: body?.purpose || understood.facts?.congDung || null,
     customerDescription: body?.customerDescription || null,
     unitVi: mapped.unitVi,
     tariffNameVi: mapped.nameVi,
