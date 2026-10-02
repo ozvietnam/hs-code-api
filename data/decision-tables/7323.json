@@ -1,0 +1,381 @@
+{
+  "heading": "7323",
+  "titleVi": "Bùi nhùi bằng sắt hoặc thép; miếng cọ nồi và cọ rửa, găng tay và các loại tương tự; đồ dùng nhà bếp, gạt tàn thuốc lá bằng sắt, thép, gang",
+  "verified": false,
+  "essenceTestVi": "Sản phẩm là bùi nhùi/cọ rửa, hay đồ gia dụng nhà bếp? Gang đúc hay sắt/thép? Có tráng men hay không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 73.23",
+  "inputs": [
+    {
+      "attribute": "productKind",
+      "type": "enum",
+      "labelVi": "Loại sản phẩm",
+      "questionVi": "Sản phẩm này là gì?",
+      "domain": [
+        "scrubbingPad",
+        "kitchenware"
+      ],
+      "detect": {
+        "scrubbingPad": [
+          "bùi nhùi",
+          "miếng cọ nồi",
+          "miếng cọ rửa",
+          "găng tay rửa bát",
+          "scrub pad",
+          "scouring pad",
+          "steel wool",
+          "copper wool"
+        ],
+        "kitchenware": [
+          "đồ dùng nhà bếp",
+          "nồi",
+          "chảo",
+          "bình",
+          "ấm",
+          "gạt tàn",
+          "ashtray"
+        ]
+      }
+    },
+    {
+      "attribute": "materialType",
+      "type": "enum",
+      "labelVi": "Vật liệu và tình trạng",
+      "questionVi": "Vật liệu: gang đúc, sắt/thép tráng men, hay sắt/thép không tráng men?",
+      "domain": [
+        "castIronEnamelled",
+        "castIronPlain",
+        "steelEnamelled",
+        "steelPlain"
+      ],
+      "detect": {
+        "castIronEnamelled": [
+          "gang đúc",
+          "cast iron",
+          "gang",
+          "enamelled"
+        ],
+        "castIronPlain": [
+          "gang đúc",
+          "cast iron",
+          "gang"
+        ],
+        "steelEnamelled": [
+          "sắt",
+          "thép",
+          "steel",
+          "tráng men",
+          "enamelled",
+          "men"
+        ],
+        "steelPlain": [
+          "sắt",
+          "thép",
+          "steel",
+          "không tráng men",
+          "không men",
+          "not enamelled"
+        ]
+      }
+    },
+    {
+      "attribute": "productType",
+      "type": "enum",
+      "labelVi": "Loại đồ gia dụng",
+      "questionVi": "Loại: đồ dùng nhà bếp hay gạt tàn thuốc lá?",
+      "domain": [
+        "kitchenware",
+        "ashtray"
+      ],
+      "detect": {
+        "kitchenware": [
+          "đồ dùng nhà bếp",
+          "nhà bếp",
+          "kitchen"
+        ],
+        "ashtray": [
+          "gạt tàn",
+          "ashtray"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-10",
+      "priority": 50,
+      "when": {
+        "productKind": "scrubbingPad"
+      },
+      "hs": "73231000",
+      "gir": "GIR 6",
+      "reasonVi": "Bùi nhùi, miếng cọ nồi và cọ rửa bằng sắt hoặc thép → 7323.10.00",
+      "source": "Biểu thuế 2026 dòng 7323.10.00"
+    },
+    {
+      "id": "r-91-kitchenware",
+      "priority": 40,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "castIronPlain",
+        "productType": "kitchenware"
+      },
+      "hs": "73239110",
+      "gir": "GIR 6",
+      "reasonVi": "Đồ dùng nhà bếp bằng gang đúc, chưa tráng men → 7323.91.10",
+      "source": "Biểu thuế 2026 dòng 7323.91.10"
+    },
+    {
+      "id": "r-91-ashtray",
+      "priority": 40,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "castIronPlain",
+        "productType": "ashtray"
+      },
+      "hs": "73239120",
+      "gir": "GIR 6",
+      "reasonVi": "Gạt tàn thuốc lá bằng gang đúc, chưa tráng men → 7323.91.20",
+      "source": "Biểu thuế 2026 dòng 7323.91.20"
+    },
+    {
+      "id": "r-91-other",
+      "priority": 40,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "castIronPlain"
+      },
+      "hs": "73239190",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác bằng gang đúc, chưa tráng men → 7323.91.90",
+      "source": "Biểu thuế 2026 dòng 7323.91.90"
+    },
+    {
+      "id": "r-92",
+      "priority": 40,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "castIronEnamelled"
+      },
+      "hs": "73239200",
+      "gir": "GIR 6",
+      "reasonVi": "Đồ dùng bằng gang đúc, đã tráng men → 7323.92.00",
+      "source": "Biểu thuế 2026 dòng 7323.92.00"
+    },
+    {
+      "id": "r-93-kitchenware",
+      "priority": 30,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled",
+        "productType": "kitchenware"
+      },
+      "hs": "73239310",
+      "gir": "GIR 6",
+      "reasonVi": "Đồ dùng nhà bếp bằng sắt hoặc thép, đã tráng men → 7323.93.10",
+      "source": "Biểu thuế 2026 dòng 7323.93.10"
+    },
+    {
+      "id": "r-93-ashtray",
+      "priority": 30,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled",
+        "productType": "ashtray"
+      },
+      "hs": "73239320",
+      "gir": "GIR 6",
+      "reasonVi": "Gạt tàn thuốc lá bằng sắt hoặc thép, đã tráng men → 7323.93.20",
+      "source": "Biểu thuế 2026 dòng 7323.93.20"
+    },
+    {
+      "id": "r-93-other",
+      "priority": 30,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled"
+      },
+      "hs": "73239390",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác bằng sắt hoặc thép, đã tráng men → 7323.93.90",
+      "source": "Biểu thuế 2026 dòng 7323.93.90"
+    },
+    {
+      "id": "r-94",
+      "priority": 20,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled"
+      },
+      "hs": "73239400",
+      "gir": "GIR 6",
+      "reasonVi": "Bằng sắt hoặc thép, đã tráng men (không phải gang) → 7323.94.00",
+      "source": "Biểu thuế 2026 dòng 7323.94.00"
+    },
+    {
+      "id": "r-99-kitchenware",
+      "priority": 10,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "steelPlain",
+        "productType": "kitchenware"
+      },
+      "hs": "73239910",
+      "gir": "GIR 6",
+      "reasonVi": "Đồ dùng nhà bếp bằng sắt hoặc thép, chưa tráng men → 7323.99.10",
+      "source": "Biểu thuế 2026 dòng 7323.99.10"
+    },
+    {
+      "id": "r-99-ashtray",
+      "priority": 10,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "steelPlain",
+        "productType": "ashtray"
+      },
+      "hs": "73239920",
+      "gir": "GIR 6",
+      "reasonVi": "Gạt tàn thuốc lá bằng sắt hoặc thép, chưa tráng men → 7323.99.20",
+      "source": "Biểu thuế 2026 dòng 7323.99.20"
+    },
+    {
+      "id": "r-99-other",
+      "priority": 10,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "steelPlain"
+      },
+      "hs": "73239990",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác bằng sắt hoặc thép, chưa tráng men → 7323.99.90",
+      "source": "Biểu thuế 2026 dòng 7323.99.90"
+    }
+  ],
+  "leaves": [
+    {
+      "id": "73231000",
+      "code": "73231000",
+      "conditions": {
+        "productKind": "scrubbingPad"
+      },
+      "heading": "7323",
+      "noteVi": "Bùi nhùi, miếng cọ nồi và cọ rửa bằng sắt hoặc thép → 7323.10.00"
+    },
+    {
+      "id": "73239110",
+      "code": "73239110",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "castIronPlain",
+        "productType": "kitchenware"
+      },
+      "heading": "7323",
+      "noteVi": "Đồ dùng nhà bếp bằng gang đúc, chưa tráng men → 7323.91.10"
+    },
+    {
+      "id": "73239120",
+      "code": "73239120",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "castIronPlain",
+        "productType": "ashtray"
+      },
+      "heading": "7323",
+      "noteVi": "Gạt tàn thuốc lá bằng gang đúc, chưa tráng men → 7323.91.20"
+    },
+    {
+      "id": "73239190",
+      "code": "73239190",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "castIronPlain"
+      },
+      "heading": "7323",
+      "noteVi": "Loại khác bằng gang đúc, chưa tráng men → 7323.91.90"
+    },
+    {
+      "id": "73239200",
+      "code": "73239200",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "castIronEnamelled"
+      },
+      "heading": "7323",
+      "noteVi": "Đồ dùng bằng gang đúc, đã tráng men → 7323.92.00"
+    },
+    {
+      "id": "73239310",
+      "code": "73239310",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled",
+        "productType": "kitchenware"
+      },
+      "heading": "7323",
+      "noteVi": "Đồ dùng nhà bếp bằng sắt hoặc thép, đã tráng men → 7323.93.10"
+    },
+    {
+      "id": "73239320",
+      "code": "73239320",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled",
+        "productType": "ashtray"
+      },
+      "heading": "7323",
+      "noteVi": "Gạt tàn thuốc lá bằng sắt hoặc thép, đã tráng men → 7323.93.20"
+    },
+    {
+      "id": "73239390",
+      "code": "73239390",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled"
+      },
+      "heading": "7323",
+      "noteVi": "Loại khác bằng sắt hoặc thép, đã tráng men → 7323.93.90"
+    },
+    {
+      "id": "73239400",
+      "code": "73239400",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled"
+      },
+      "heading": "7323",
+      "noteVi": "Bằng sắt hoặc thép, đã tráng men (không phải gang) → 7323.94.00"
+    },
+    {
+      "id": "73239910",
+      "code": "73239910",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "steelPlain",
+        "productType": "kitchenware"
+      },
+      "heading": "7323",
+      "noteVi": "Đồ dùng nhà bếp bằng sắt hoặc thép, chưa tráng men → 7323.99.10"
+    },
+    {
+      "id": "73239920",
+      "code": "73239920",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "steelPlain",
+        "productType": "ashtray"
+      },
+      "heading": "7323",
+      "noteVi": "Gạt tàn thuốc lá bằng sắt hoặc thép, chưa tráng men → 7323.99.20"
+    },
+    {
+      "id": "73239990",
+      "code": "73239990",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "steelPlain"
+      },
+      "heading": "7323",
+      "noteVi": "Loại khác bằng sắt hoặc thép, chưa tráng men → 7323.99.90"
+    }
+  ]
+}
