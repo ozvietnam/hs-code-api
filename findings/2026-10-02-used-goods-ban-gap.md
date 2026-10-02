@@ -17,8 +17,22 @@ if (warnings.usedGoodsImportBan && !seen.has('cam-nk')) {
 ```
 
 Result: 1,805 usedGoodsImportBan entries → 1,805 with cam-nk procedure.
-dualUseControl null gap (97 entries) also resolved — all co-occurred with usedGoodsImportBan.  
 **Affects:** /api/policy-procedures endpoint
+
+## Addendum: dualUseControl (2026-10-02 B-lan-B)
+
+Initial analysis (step 25) flagged "123 dualUseControl entries with no procedure."  
+This was a **false positive**: it was measured against the deployed API code (old),
+not the worktree branch which already has NK→gp-nk and XK→xk patterns.
+
+Verification (worktree, all 226 dualUseControl entries):
+- has inspectionTypes: 103 → all return procedures (chat-luong, buc-xa, etc.)
+- only usedGoodsImportBan: 97 → cam-nk from usedGoodsImportBan fix above
+- only NK/XK license: 26 → gp-nk, xk from normalizeType abbreviations
+- requiresQuarantine only: 6 → kiem-dich-thuc-vat from requiresQuarantine special case
+
+**All 226 dualUseControl entries return ≥1 procedure with current branch code.**  
+No additional fix required for dualUseControl itself.
 
 ## Problem
 
