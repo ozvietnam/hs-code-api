@@ -6,7 +6,14 @@
     "ministry": "BYT/BCT/BNNPTNT",
     "ministryLabel": "Bộ Y tế / Bộ Công Thương / Bộ NN&PTNT (tùy loại hàng)",
     "trigger": "Hàng thực phẩm, đồ uống, phụ gia, bao bì tiếp xúc thực phẩm",
-    "matchPatterns": ["attp", "an toàn thực phẩm", "kiểm tra thực phẩm", "food safety", "ktattp", "ktcn.*thực phẩm"],
+    "matchPatterns": [
+      "attp",
+      "an toàn thực phẩm",
+      "kiểm tra thực phẩm",
+      "food safety",
+      "ktattp",
+      "ktcn.*thực phẩm"
+    ],
     "documents": [
       "Đăng ký kiểm tra nhà nước về ATTP (online tại cổng thông tin một cửa)",
       "Hợp đồng thương mại (Commercial Invoice)",
@@ -16,7 +23,11 @@
       "Nhãn hàng hóa (cả nhãn gốc và nhãn phụ tiếng Việt nếu có)",
       "Kết quả kiểm nghiệm của lô hàng (nếu cơ quan yêu cầu)"
     ],
-    "estimatedDays": { "min": 3, "max": 15, "note": "Nhanh nếu hàng đã có lịch sử nhập khẩu tốt; chậm nếu lần đầu hoặc bị lấy mẫu kiểm nghiệm" },
+    "estimatedDays": {
+      "min": 3,
+      "max": 15,
+      "note": "Nhanh nếu hàng đã có lịch sử nhập khẩu tốt; chậm nếu lần đầu hoặc bị lấy mẫu kiểm nghiệm"
+    },
     "estimatedCost": "500,000–3,000,000 VND/lô (phí kiểm nghiệm nếu lấy mẫu: 500K–5tr tùy chỉ tiêu)",
     "agency": "Chi cục An toàn vệ sinh thực phẩm (BYT); hoặc Cục An toàn thực phẩm; hoặc Chi cục Quản lý chất lượng nông lâm thủy sản (BNNPTNT)",
     "legalBasis": "Luật An toàn thực phẩm 2010; Nghị định 15/2018/NĐ-CP; TT 48/2015/TT-BYT",
@@ -26,9 +37,38 @@
     ],
     "notes": "Hàng nhập khẩu lần đầu thường bị lấy mẫu kiểm nghiệm 100%. Các lần sau có thể giảm tần suất nếu lịch sử tốt.",
     "severity": "HIGH",
-    "onFail": "Hàng bị buộc tái xuất hoặc tiêu hủy. Doanh nghiệp có thể khiếu nại trong 5 ngày làm việc."
+    "onFail": "Hàng bị buộc tái xuất hoặc tiêu hủy. Doanh nghiệp có thể khiếu nại trong 5 ngày làm việc.",
+    "verified": true,
+    "priorityImportFromCN": true,
+    "hsChapters": [
+      "02",
+      "03",
+      "04",
+      "05",
+      "08",
+      "09",
+      "10",
+      "12",
+      "13",
+      "15",
+      "17",
+      "21",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "30",
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "38",
+      "39",
+      "40"
+    ]
   },
-
   "kiem-dich-thuc-vat": {
     "code": "kiem-dich-thuc-vat",
     "label": "Kiểm dịch thực vật",
@@ -36,7 +76,12 @@
     "ministry": "BNNPTNT",
     "ministryLabel": "Bộ Nông nghiệp và Phát triển Nông thôn — Cục Bảo vệ Thực vật",
     "trigger": "Thực vật, sản phẩm thực vật, đất, giá thể, gỗ, tre, rơm...",
-    "matchPatterns": ["kiểm dịch thực vật", "kdtv", "plant quarantine", "phytosanitary"],
+    "matchPatterns": [
+      "kiểm dịch thực vật",
+      "kdtv",
+      "plant quarantine",
+      "phytosanitary"
+    ],
     "documents": [
       "Đăng ký kiểm dịch thực vật (nộp trước khi hàng về ít nhất 1 ngày)",
       "Giấy chứng nhận kiểm dịch thực vật nước xuất khẩu (Phytosanitary Certificate — bản gốc)",
@@ -44,7 +89,11 @@
       "Vận đơn (B/L hoặc Airway Bill)",
       "Tờ khai hải quan (nộp sau khi có kết quả kiểm dịch)"
     ],
-    "estimatedDays": { "min": 1, "max": 5, "note": "1 ngày nếu hàng sạch; 3–5 ngày nếu phải xử lý nhiệt/fumigation tại cửa khẩu" },
+    "estimatedDays": {
+      "min": 1,
+      "max": 5,
+      "note": "1 ngày nếu hàng sạch; 3–5 ngày nếu phải xử lý nhiệt/fumigation tại cửa khẩu"
+    },
     "estimatedCost": "150,000–800,000 VND/lô (chưa gồm phí xử lý nhiệt nếu phát hiện sinh vật hại)",
     "agency": "Chi cục Kiểm dịch thực vật cửa khẩu (thuộc Cục Bảo vệ thực vật)",
     "legalBasis": "Pháp lệnh Bảo vệ và Kiểm dịch thực vật 2001; TT 33/2014/TT-BNNPTNT; TT 01/2024/TT-BNNPTNT",
@@ -54,9 +103,53 @@
     ],
     "notes": "Một số loại thực vật thuộc danh mục cấm hoặc phải có giấy phép nhập khẩu riêng (sinh vật sống, hạt giống một số loài).",
     "severity": "MEDIUM",
-    "onFail": "Trả lại nước xuất khẩu hoặc tiêu hủy theo quy định. Chi phí do chủ hàng chịu."
+    "onFail": "Trả lại nước xuất khẩu hoặc tiêu hủy theo quy định. Chi phí do chủ hàng chịu.",
+    "verified": true,
+    "priorityImportFromCN": true,
+    "hsChapters": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "23",
+      "24",
+      "26",
+      "28",
+      "29",
+      "32",
+      "33",
+      "35",
+      "38",
+      "41",
+      "42",
+      "43",
+      "44",
+      "50",
+      "51",
+      "52",
+      "53",
+      "71",
+      "94",
+      "96"
+    ]
   },
-
   "kiem-dich-dong-vat": {
     "code": "kiem-dich-dong-vat",
     "label": "Kiểm dịch động vật / thủy sản",
@@ -64,7 +157,14 @@
     "ministry": "BNNPTNT",
     "ministryLabel": "Bộ Nông nghiệp — Cục Thú y / Cục Thủy sản",
     "trigger": "Động vật sống, sản phẩm động vật, thủy sản, thịt, trứng, sữa, mật ong...",
-    "matchPatterns": ["kiểm dịch động vật", "kiểm dịch thủy sản", "kdđv", "animal quarantine", "veterinary", "thú y"],
+    "matchPatterns": [
+      "kiểm dịch động vật",
+      "kiểm dịch thủy sản",
+      "kdđv",
+      "animal quarantine",
+      "veterinary",
+      "thú y"
+    ],
     "documents": [
       "Đăng ký kiểm dịch (nộp trước khi hàng đến ít nhất 1 ngày làm việc)",
       "Giấy chứng nhận kiểm dịch động vật/thủy sản của nước xuất khẩu (Veterinary Health Certificate — bản gốc)",
@@ -72,16 +172,66 @@
       "Vận đơn",
       "Giấy phép nhập khẩu động vật sống (nếu thuộc danh mục cần phép)"
     ],
-    "estimatedDays": { "min": 1, "max": 7, "note": "Thủy sản thường 1–3 ngày; động vật sống có thể cách ly 7–21 ngày" },
+    "estimatedDays": {
+      "min": 1,
+      "max": 7,
+      "note": "Thủy sản thường 1–3 ngày; động vật sống có thể cách ly 7–21 ngày"
+    },
     "estimatedCost": "200,000–2,000,000 VND/lô (phí cách ly nếu cần: tính theo ngày/con)",
     "agency": "Trạm Kiểm dịch động vật cửa khẩu (thuộc Cục Thú y) hoặc Chi cục Thú y vùng",
     "legalBasis": "Luật Thú y 2015; TT 25/2016/TT-BNNPTNT",
-    "exemptions": ["Thủy sản đã qua chế biến sâu (không còn nguy cơ lây bệnh) có thể giảm kiểm tra"],
+    "exemptions": [
+      "Thủy sản đã qua chế biến sâu (không còn nguy cơ lây bệnh) có thể giảm kiểm tra"
+    ],
     "notes": "Động vật sống phải có giấy phép nhập khẩu trước. Một số loài thuộc CITES cần thêm giấy phép CITES.",
     "severity": "HIGH",
-    "onFail": "Cách ly xử lý hoặc tiêu hủy. Cấm nhập khẩu từ vùng dịch."
+    "onFail": "Cách ly xử lý hoặc tiêu hủy. Cấm nhập khẩu từ vùng dịch.",
+    "verified": true,
+    "priorityImportFromCN": true,
+    "hsChapters": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "23",
+      "24",
+      "26",
+      "28",
+      "29",
+      "32",
+      "33",
+      "35",
+      "38",
+      "41",
+      "42",
+      "43",
+      "44",
+      "50",
+      "51",
+      "52",
+      "53",
+      "71",
+      "94",
+      "96"
+    ]
   },
-
   "chat-luong": {
     "code": "chat-luong",
     "label": "Kiểm tra chất lượng nhà nước (Hàng hóa nhóm 2)",
@@ -89,7 +239,18 @@
     "ministry": "BKHCN / BCT / BGTVT / BXD",
     "ministryLabel": "Bộ Khoa học Công nghệ / Bộ Công Thương / Bộ GTVT / Bộ Xây dựng (tùy sản phẩm)",
     "trigger": "Hàng hóa nhóm 2 (sản phẩm có khả năng gây mất an toàn): điện-điện tử, máy móc, vật liệu xây dựng, đồ chơi trẻ em, mũ bảo hiểm, thiết bị điện...",
-    "matchPatterns": ["chất lượng", "ktcl", "ktcn", "hàng hóa nhóm 2", "nhóm 2", "hợp quy", "chứng nhận chất lượng", "atkt", "bvmt", "an toàn kỹ thuật"],
+    "matchPatterns": [
+      "chất lượng",
+      "ktcl",
+      "ktcn",
+      "hàng hóa nhóm 2",
+      "nhóm 2",
+      "hợp quy",
+      "chứng nhận chất lượng",
+      "atkt",
+      "bvmt",
+      "an toàn kỹ thuật"
+    ],
     "documents": [
       "Đăng ký kiểm tra chất lượng tại cơ quan kiểm tra nhà nước được chỉ định",
       "Invoice + Packing List",
@@ -98,7 +259,11 @@
       "Giấy chứng nhận hợp quy / chứng nhận chất lượng của nước xuất khẩu (nếu có)",
       "Kết quả thử nghiệm từ phòng thí nghiệm được công nhận (nếu cơ quan chấp nhận)"
     ],
-    "estimatedDays": { "min": 3, "max": 30, "note": "3–7 ngày nếu có kết quả thử nghiệm hợp lệ; 15–30 ngày nếu phải lấy mẫu thử nghiệm tại VN" },
+    "estimatedDays": {
+      "min": 3,
+      "max": 30,
+      "note": "3–7 ngày nếu có kết quả thử nghiệm hợp lệ; 15–30 ngày nếu phải lấy mẫu thử nghiệm tại VN"
+    },
     "estimatedCost": "500,000–5,000,000 VND/lô (phí thử nghiệm nếu lấy mẫu: 500K–20tr tùy sản phẩm)",
     "agency": "Cơ quan kiểm tra nhà nước được Bộ chỉ định (QUACERT, TÜV Rheinland, SGS, VILAS labs...)",
     "legalBasis": "Luật Chất lượng sản phẩm hàng hóa 2007; Nghị định 132/2008/NĐ-CP; TT 27/2012/TT-BKHCN",
@@ -109,9 +274,93 @@
     ],
     "notes": "Nhiều mặt hàng đã được cắt giảm kiểm tra chuyên ngành theo Nghị quyết 19. Kiểm tra sau thông quan (sau TQ) là xu hướng cho hàng ít rủi ro.",
     "severity": "MEDIUM",
-    "onFail": "Hàng bị tạm giữ, yêu cầu khắc phục hoặc tái xuất. Dán nhãn sai có thể bị phạt hành chính."
+    "onFail": "Hàng bị tạm giữ, yêu cầu khắc phục hoặc tái xuất. Dán nhãn sai có thể bị phạt hành chính.",
+    "verified": true,
+    "priorityImportFromCN": true,
+    "hsChapters": [
+      "03",
+      "04",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "24",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "31",
+      "33",
+      "36",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "46",
+      "48",
+      "49",
+      "50",
+      "51",
+      "52",
+      "53",
+      "54",
+      "55",
+      "56",
+      "57",
+      "58",
+      "59",
+      "60",
+      "61",
+      "62",
+      "63",
+      "64",
+      "65",
+      "66",
+      "67",
+      "68",
+      "69",
+      "70",
+      "71",
+      "72",
+      "73",
+      "74",
+      "75",
+      "76",
+      "78",
+      "79",
+      "80",
+      "82",
+      "83",
+      "84",
+      "85",
+      "86",
+      "87",
+      "88",
+      "89",
+      "90",
+      "91",
+      "94",
+      "95",
+      "96",
+      "98"
+    ]
   },
-
   "duoc": {
     "code": "duoc",
     "label": "Kiểm tra chất lượng Dược phẩm / Nguyên liệu làm thuốc",
@@ -119,7 +368,15 @@
     "ministry": "BYT",
     "ministryLabel": "Bộ Y tế — Cục Quản lý Dược",
     "trigger": "Thuốc, nguyên liệu làm thuốc, dược liệu, vị thuốc cổ truyền, thực phẩm chức năng dạng thuốc",
-    "matchPatterns": ["dược", "thuốc", "nguyên liệu làm thuốc", "dược phẩm", "pharmaceutical", "dược liệu", "dược chất"],
+    "matchPatterns": [
+      "dược",
+      "thuốc",
+      "nguyên liệu làm thuốc",
+      "dược phẩm",
+      "pharmaceutical",
+      "dược liệu",
+      "dược chất"
+    ],
     "documents": [
       "Giấy phép nhập khẩu thuốc/nguyên liệu làm thuốc (do Cục Quản lý Dược cấp — nộp trước)",
       "Số đăng ký lưu hành thuốc tại VN (nếu là thuốc thành phẩm)",
@@ -128,16 +385,51 @@
       "Giấy phân tích kiểm nghiệm (Certificate of Analysis — CoA) của lô hàng",
       "Invoice + Packing List + Vận đơn"
     ],
-    "estimatedDays": { "min": 5, "max": 21, "note": "Phụ thuộc vào việc có phải lấy mẫu kiểm nghiệm hay không (3–10 ngày làm việc nếu có mẫu)" },
+    "estimatedDays": {
+      "min": 5,
+      "max": 21,
+      "note": "Phụ thuộc vào việc có phải lấy mẫu kiểm nghiệm hay không (3–10 ngày làm việc nếu có mẫu)"
+    },
     "estimatedCost": "2,000,000–10,000,000 VND/lô (phí kiểm nghiệm 500K–5tr tùy chỉ tiêu)",
     "agency": "Viện Kiểm nghiệm thuốc TW; Viện Kiểm nghiệm thuốc TP.HCM; Trung tâm Kiểm nghiệm tỉnh",
     "legalBasis": "Luật Dược 2016; Nghị định 54/2017/NĐ-CP; TT 06/2023/TT-BYT",
-    "exemptions": ["Thuốc mẫu (số lượng nhỏ theo quy định của Cục QL Dược)"],
+    "exemptions": [
+      "Thuốc mẫu (số lượng nhỏ theo quy định của Cục QL Dược)"
+    ],
     "notes": "Giấy phép nhập khẩu là bắt buộc TRƯỚC khi hàng về. Không có giấy phép = hàng bị giữ tại cảng, chi phí lưu kho cộng dồn.",
     "severity": "HIGH",
-    "onFail": "Tịch thu, tiêu hủy hoặc tái xuất. Truy tố hình sự nếu nhập khẩu thuốc giả."
+    "onFail": "Tịch thu, tiêu hủy hoặc tái xuất. Truy tố hình sự nếu nhập khẩu thuốc giả.",
+    "verified": true,
+    "priorityImportFromCN": true,
+    "hsChapters": [
+      "02",
+      "03",
+      "04",
+      "05",
+      "08",
+      "09",
+      "10",
+      "12",
+      "13",
+      "15",
+      "17",
+      "21",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "30",
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "38",
+      "39",
+      "40"
+    ]
   },
-
   "buc-xa": {
     "code": "buc-xa",
     "label": "Kiểm tra an toàn bức xạ",
@@ -145,7 +437,15 @@
     "ministry": "BKHCN",
     "ministryLabel": "Bộ Khoa học Công nghệ — Cục An toàn bức xạ và hạt nhân",
     "trigger": "Nguồn phóng xạ, thiết bị X-quang, máy dò kim loại có nguồn phóng xạ, thiết bị hạt nhân y tế",
-    "matchPatterns": ["bức xạ", "phóng xạ", "hạt nhân", "x-quang", "radiation", "nuclear", "an toàn bức xạ"],
+    "matchPatterns": [
+      "bức xạ",
+      "phóng xạ",
+      "hạt nhân",
+      "x-quang",
+      "radiation",
+      "nuclear",
+      "an toàn bức xạ"
+    ],
     "documents": [
       "Giấy phép nhập khẩu nguồn phóng xạ / thiết bị bức xạ (Cục An toàn bức xạ cấp)",
       "Invoice + Packing List",
@@ -153,16 +453,37 @@
       "Tài liệu kỹ thuật thiết bị",
       "Chứng chỉ an toàn bức xạ của nước xuất khẩu"
     ],
-    "estimatedDays": { "min": 7, "max": 30, "note": "Cần phê duyệt trước khi nhập — không thể làm tại cửa khẩu" },
+    "estimatedDays": {
+      "min": 7,
+      "max": 30,
+      "note": "Cần phê duyệt trước khi nhập — không thể làm tại cửa khẩu"
+    },
     "estimatedCost": "1,000,000–5,000,000 VND (phí cấp phép)",
     "agency": "Cục An toàn bức xạ và hạt nhân (VARANS)",
     "legalBasis": "Luật Năng lượng nguyên tử 2008; Nghị định 142/2020/NĐ-CP",
-    "exemptions": ["Thiết bị điện tử thông thường không chứa nguồn phóng xạ"],
+    "exemptions": [
+      "Thiết bị điện tử thông thường không chứa nguồn phóng xạ"
+    ],
     "notes": "Giấy phép phải có TRƯỚC khi nhập. Hàng đến mà chưa có phép sẽ bị niêm phong lưu kho.",
     "severity": "HIGH",
-    "onFail": "Tịch thu và tiêu hủy theo quy định an toàn hạt nhân. Truy cứu trách nhiệm hình sự."
+    "onFail": "Tịch thu và tiêu hủy theo quy định an toàn hạt nhân. Truy cứu trách nhiệm hình sự.",
+    "verified": true,
+    "priorityImportFromCN": true,
+    "hsChapters": [
+      "22",
+      "27",
+      "38",
+      "65",
+      "72",
+      "73",
+      "84",
+      "85",
+      "88",
+      "90",
+      "94",
+      "95"
+    ]
   },
-
   "hoa-chat": {
     "code": "hoa-chat",
     "label": "Khai báo / Kiểm soát hóa chất nguy hiểm",
@@ -170,7 +491,14 @@
     "ministry": "BCT",
     "ministryLabel": "Bộ Công Thương — Cục Hóa chất",
     "trigger": "Hóa chất công nghiệp, dung môi, axit, kiềm, hóa chất hạn chế kinh doanh, tiền chất ma túy",
-    "matchPatterns": ["hóa chất", "khai báo hóa chất", "hóa chất nguy hiểm", "chemical", "tiền chất", "dung môi"],
+    "matchPatterns": [
+      "hóa chất",
+      "khai báo hóa chất",
+      "hóa chất nguy hiểm",
+      "chemical",
+      "tiền chất",
+      "dung môi"
+    ],
     "documents": [
       "Khai báo hóa chất nhập khẩu (online tại Portal của Cục Hóa chất — bắt buộc trước khi nhập)",
       "Giấy phép kinh doanh hóa chất hạn chế / có điều kiện (nếu thuộc danh mục)",
@@ -178,7 +506,11 @@
       "Invoice + Packing List + Vận đơn",
       "Nhãn hàng hóa đúng quy định GHS"
     ],
-    "estimatedDays": { "min": 1, "max": 5, "note": "Khai báo online thường được duyệt trong 1–2 ngày; hóa chất hạn chế cần giấy phép trước (7–30 ngày)" },
+    "estimatedDays": {
+      "min": 1,
+      "max": 5,
+      "note": "Khai báo online thường được duyệt trong 1–2 ngày; hóa chất hạn chế cần giấy phép trước (7–30 ngày)"
+    },
     "estimatedCost": "Phí khai báo: miễn phí. Phí cấp phép hóa chất hạn chế: 200,000–1,000,000 VND",
     "agency": "Cục Hóa chất — Bộ Công Thương",
     "legalBasis": "Luật Hóa chất 2007; Nghị định 113/2017/NĐ-CP; TT 32/2017/TT-BCT",
@@ -188,9 +520,89 @@
     ],
     "notes": "Tiền chất ma túy và tiền chất thuốc nổ cần giấy phép đặc biệt, thời gian xử lý 30–60 ngày.",
     "severity": "MEDIUM",
-    "onFail": "Từ chối thông quan, phạt hành chính 50–100tr. Hóa chất cấm: truy tố hình sự."
+    "onFail": "Từ chối thông quan, phạt hành chính 50–100tr. Hóa chất cấm: truy tố hình sự.",
+    "verified": true,
+    "priorityImportFromCN": true,
+    "hsChapters": [
+      "03",
+      "04",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "24",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "31",
+      "33",
+      "36",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "46",
+      "48",
+      "49",
+      "50",
+      "51",
+      "52",
+      "53",
+      "54",
+      "55",
+      "56",
+      "57",
+      "58",
+      "59",
+      "60",
+      "61",
+      "62",
+      "63",
+      "64",
+      "65",
+      "66",
+      "67",
+      "68",
+      "69",
+      "70",
+      "71",
+      "72",
+      "73",
+      "74",
+      "75",
+      "76",
+      "78",
+      "79",
+      "80",
+      "82",
+      "83",
+      "84",
+      "85",
+      "87",
+      "90",
+      "91",
+      "94",
+      "95",
+      "96",
+      "98"
+    ]
   },
-
   "cites": {
     "code": "cites",
     "label": "Giấy phép CITES — Kiểm soát động thực vật hoang dã",
@@ -198,23 +610,82 @@
     "ministry": "BNNPTNT / BTNMT",
     "ministryLabel": "Bộ NN&PTNT (động vật) / Bộ TN&MT (thực vật quý hiếm)",
     "trigger": "Động vật hoang dã, sản phẩm từ động vật hoang dã (da, ngà, sừng, vảy), gỗ quý, lan rừng, san hô",
-    "matchPatterns": ["cites", "động vật hoang dã", "wildlife", "ngà voi", "sừng tê giác", "gỗ quý", "gỗ hương", "lan rừng"],
+    "matchPatterns": [
+      "cites",
+      "động vật hoang dã",
+      "wildlife",
+      "ngà voi",
+      "sừng tê giác",
+      "gỗ quý",
+      "gỗ hương",
+      "lan rừng"
+    ],
     "documents": [
       "Giấy phép xuất khẩu CITES của nước xuất khẩu (bản gốc — do cơ quan CITES nước đó cấp)",
       "Giấy phép nhập khẩu CITES của VN (do Cơ quan CITES VN cấp trước khi nhập)",
       "Invoice + Packing List",
       "Vận đơn"
     ],
-    "estimatedDays": { "min": 14, "max": 45, "note": "Giấy phép CITES VN cần 14–30 ngày để được cấp. Không thể làm nhanh." },
+    "estimatedDays": {
+      "min": 14,
+      "max": 45,
+      "note": "Giấy phép CITES VN cần 14–30 ngày để được cấp. Không thể làm nhanh."
+    },
     "estimatedCost": "200,000–500,000 VND (phí cấp phép CITES VN)",
     "agency": "Cơ quan quản lý CITES VN (Cục Kiểm lâm — BNNPTNT cho động vật; BTNMT cho thực vật)",
     "legalBasis": "Công ước CITES; Nghị định 06/2019/NĐ-CP; Nghị định 84/2021/NĐ-CP",
-    "exemptions": ["Hàng mẫu vật khoa học với số lượng nhỏ và đúng thủ tục"],
+    "exemptions": [
+      "Hàng mẫu vật khoa học với số lượng nhỏ và đúng thủ tục"
+    ],
     "notes": "Phụ lục I CITES: CẤM thương mại. Phụ lục II: cần phép. Phụ lục III: cần chứng từ xuất xứ. Vi phạm CITES là tội hình sự tại VN.",
     "severity": "CRITICAL",
-    "onFail": "Tịch thu toàn bộ lô hàng, phạt hình sự theo điều 244 BLHS."
+    "onFail": "Tịch thu toàn bộ lô hàng, phạt hình sự theo điều 244 BLHS.",
+    "verified": true,
+    "priorityImportFromCN": true,
+    "hsChapters": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "23",
+      "24",
+      "26",
+      "28",
+      "29",
+      "32",
+      "33",
+      "35",
+      "38",
+      "41",
+      "42",
+      "43",
+      "44",
+      "50",
+      "51",
+      "52",
+      "53",
+      "71",
+      "94",
+      "96"
+    ]
   },
-
   "nang-luong": {
     "code": "nang-luong",
     "label": "Kiểm tra hiệu suất năng lượng + Dán nhãn năng lượng",
@@ -222,7 +693,14 @@
     "ministry": "BCT",
     "ministryLabel": "Bộ Công Thương — Vụ Tiết kiệm năng lượng",
     "trigger": "Thiết bị điện gia dụng (máy lạnh, tủ lạnh, máy giặt, đèn LED, quạt điện, máy bơm điện, biến áp...)",
-    "matchPatterns": ["hiệu suất năng lượng", "dán nhãn năng lượng", "năng lượng", "ktcn hiệu suất", "energy efficiency", "energy label"],
+    "matchPatterns": [
+      "hiệu suất năng lượng",
+      "dán nhãn năng lượng",
+      "năng lượng",
+      "ktcn hiệu suất",
+      "energy efficiency",
+      "energy label"
+    ],
     "documents": [
       "Kết quả thử nghiệm hiệu suất năng lượng từ phòng thí nghiệm được chỉ định (hoặc được công nhận tương đương)",
       "Bản đăng ký dán nhãn năng lượng (nộp tại Vụ Tiết kiệm năng lượng — BCT)",
@@ -230,7 +708,11 @@
       "Invoice + Packing List + Vận đơn",
       "Tài liệu kỹ thuật sản phẩm"
     ],
-    "estimatedDays": { "min": 7, "max": 21, "note": "Có thể thông quan trước nếu cam kết dán nhãn trước khi đưa ra thị trường (kiểm tra sau TQ)" },
+    "estimatedDays": {
+      "min": 7,
+      "max": 21,
+      "note": "Có thể thông quan trước nếu cam kết dán nhãn trước khi đưa ra thị trường (kiểm tra sau TQ)"
+    },
     "estimatedCost": "1,000,000–5,000,000 VND (phí thử nghiệm hiệu suất, phí đăng ký nhãn)",
     "agency": "Vụ Tiết kiệm năng lượng và Phát triển bền vững — Bộ Công Thương; Phòng thí nghiệm được chỉ định",
     "legalBasis": "Luật Sử dụng năng lượng tiết kiệm và hiệu quả 2010; Quyết định 04/2017/QĐ-TTg; TT 36/2016/TT-BCT",
@@ -240,9 +722,91 @@
     ],
     "notes": "Dán nhãn năng lượng sao (1–5 sao) là bắt buộc trước khi đưa ra thị trường, không nhất thiết phải trước khi thông quan.",
     "severity": "MEDIUM",
-    "onFail": "Phạt hành chính, thu hồi sản phẩm nếu không đạt hiệu suất tối thiểu."
+    "onFail": "Phạt hành chính, thu hồi sản phẩm nếu không đạt hiệu suất tối thiểu.",
+    "verified": true,
+    "priorityImportFromCN": true,
+    "hsChapters": [
+      "03",
+      "04",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "24",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "31",
+      "33",
+      "36",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "46",
+      "48",
+      "49",
+      "50",
+      "51",
+      "52",
+      "53",
+      "54",
+      "55",
+      "56",
+      "57",
+      "58",
+      "59",
+      "60",
+      "61",
+      "62",
+      "63",
+      "64",
+      "65",
+      "66",
+      "67",
+      "68",
+      "69",
+      "70",
+      "71",
+      "72",
+      "73",
+      "74",
+      "75",
+      "76",
+      "78",
+      "79",
+      "80",
+      "82",
+      "83",
+      "84",
+      "85",
+      "87",
+      "88",
+      "90",
+      "91",
+      "94",
+      "95",
+      "96",
+      "98"
+    ]
   },
-
   "vat-lieu-xd": {
     "code": "vat-lieu-xd",
     "label": "Kiểm tra chất lượng vật liệu xây dựng",
@@ -250,7 +814,15 @@
     "ministry": "BXD",
     "ministryLabel": "Bộ Xây dựng — Vụ Vật liệu Xây dựng",
     "trigger": "Xi măng, kính xây dựng, gạch ốp lát, thép xây dựng, tấm lợp, ống nhựa, sơn...",
-    "matchPatterns": ["vật liệu xây dựng", "vlxd", "xi măng", "kính xây dựng", "gạch", "thép xây dựng", "kiểm tra xây dựng"],
+    "matchPatterns": [
+      "vật liệu xây dựng",
+      "vlxd",
+      "xi măng",
+      "kính xây dựng",
+      "gạch",
+      "thép xây dựng",
+      "kiểm tra xây dựng"
+    ],
     "documents": [
       "Đăng ký kiểm tra chất lượng vật liệu xây dựng nhập khẩu (tại Sở Xây dựng hoặc Bộ XD)",
       "Giấy chứng nhận chất lượng của nước xuất khẩu (Certificate of Quality / Conformity)",
@@ -258,16 +830,101 @@
       "Invoice + Packing List + Vận đơn",
       "Catalogue kỹ thuật"
     ],
-    "estimatedDays": { "min": 5, "max": 20 },
+    "estimatedDays": {
+      "min": 5,
+      "max": 20
+    },
     "estimatedCost": "500,000–3,000,000 VND/lô (phí thử nghiệm nếu lấy mẫu)",
     "agency": "Sở Xây dựng tỉnh/thành phố; hoặc Vụ Vật liệu Xây dựng — Bộ XD",
     "legalBasis": "Luật Xây dựng; Nghị định 40/2019/NĐ-CP; TT 10/2021/TT-BXD",
-    "exemptions": ["Hàng mẫu thử nghiệm, số lượng nhỏ"],
+    "exemptions": [
+      "Hàng mẫu thử nghiệm, số lượng nhỏ"
+    ],
     "notes": "Xi măng và thép xây dựng thường bị lấy mẫu. Nhập khẩu thép phải kết hợp kiểm tra nguồn gốc xuất xứ tránh phòng vệ thương mại.",
     "severity": "MEDIUM",
-    "onFail": "Từ chối nhập khẩu, phạt hành chính, buộc tái xuất."
+    "onFail": "Từ chối nhập khẩu, phạt hành chính, buộc tái xuất.",
+    "verified": true,
+    "priorityImportFromCN": true,
+    "hsChapters": [
+      "03",
+      "04",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "24",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "31",
+      "33",
+      "36",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "46",
+      "48",
+      "49",
+      "50",
+      "51",
+      "52",
+      "53",
+      "54",
+      "55",
+      "56",
+      "57",
+      "58",
+      "59",
+      "60",
+      "61",
+      "62",
+      "63",
+      "64",
+      "65",
+      "66",
+      "67",
+      "68",
+      "69",
+      "70",
+      "71",
+      "72",
+      "73",
+      "74",
+      "75",
+      "76",
+      "78",
+      "79",
+      "80",
+      "82",
+      "83",
+      "84",
+      "85",
+      "87",
+      "90",
+      "91",
+      "94",
+      "95",
+      "96",
+      "98"
+    ]
   },
-
   "phe-lieu": {
     "code": "phe-lieu",
     "label": "Kiểm tra điều kiện nhập khẩu phế liệu",
@@ -275,7 +932,14 @@
     "ministry": "BTNMT",
     "ministryLabel": "Bộ Tài nguyên và Môi trường — Tổng cục Môi trường",
     "trigger": "Phế liệu sắt thép, phế liệu nhựa, phế liệu giấy, phế liệu kim loại màu dùng làm nguyên liệu sản xuất",
-    "matchPatterns": ["phế liệu", "scrap", "waste", "phế thải", "tái chế", "điều kiện nhập khẩu phế liệu"],
+    "matchPatterns": [
+      "phế liệu",
+      "scrap",
+      "waste",
+      "phế thải",
+      "tái chế",
+      "điều kiện nhập khẩu phế liệu"
+    ],
     "documents": [
       "Giấy xác nhận đủ điều kiện nhập khẩu phế liệu (Tổng cục Môi trường cấp — hiệu lực 2 năm)",
       "Hợp đồng với đơn vị xử lý phế liệu",
@@ -283,16 +947,48 @@
       "Invoice + Packing List + Vận đơn",
       "Chứng thư giám định chất lượng phế liệu"
     ],
-    "estimatedDays": { "min": 5, "max": 15, "note": "PSI tại cảng nước xuất khẩu cần 3–7 ngày. Thủ tục thông quan sau đó 2–5 ngày." },
+    "estimatedDays": {
+      "min": 5,
+      "max": 15,
+      "note": "PSI tại cảng nước xuất khẩu cần 3–7 ngày. Thủ tục thông quan sau đó 2–5 ngày."
+    },
     "estimatedCost": "5,000,000–20,000,000 VND/lô (chủ yếu là phí PSI tại nước xuất khẩu)",
     "agency": "Tổng cục Môi trường (cấp phép); Chi cục Hải quan cửa khẩu (thông quan)",
     "legalBasis": "Luật Bảo vệ Môi trường 2020; Nghị định 08/2022/NĐ-CP; QĐ 28/2020/QĐ-TTg",
-    "exemptions": ["Phế liệu sản xuất trong nước (không nhập khẩu)"],
+    "exemptions": [
+      "Phế liệu sản xuất trong nước (không nhập khẩu)"
+    ],
     "notes": "Đây là loại hàng kiểm tra chặt nhất. Lô không có PSI hợp lệ = từ chối thông quan 100%.",
     "severity": "HIGH",
-    "onFail": "Buộc tái xuất trong 30 ngày. Chi phí lưu kho + tái xuất do chủ hàng chịu."
+    "onFail": "Buộc tái xuất trong 30 ngày. Chi phí lưu kho + tái xuất do chủ hàng chịu.",
+    "verified": true,
+    "priorityImportFromCN": true,
+    "hsChapters": [
+      "22",
+      "24",
+      "27",
+      "28",
+      "29",
+      "31",
+      "36",
+      "39",
+      "47",
+      "48",
+      "70",
+      "72",
+      "74",
+      "75",
+      "76",
+      "79",
+      "80",
+      "81",
+      "84",
+      "87",
+      "88",
+      "89",
+      "95"
+    ]
   },
-
   "giao-thong": {
     "code": "giao-thong",
     "label": "Kiểm tra an toàn kỹ thuật phương tiện / thiết bị giao thông",
@@ -300,7 +996,15 @@
     "ministry": "BGTVT",
     "ministryLabel": "Bộ Giao thông Vận tải — Cục Đăng kiểm VN",
     "trigger": "Xe ô tô, xe máy, xe tải, phụ tùng ô tô xe máy, tàu thủy, thiết bị đường sắt, phương tiện thủy",
-    "matchPatterns": ["đăng kiểm", "giao thông", "ô tô", "xe máy", "an toàn phương tiện", "bgtvt", "cục đăng kiểm"],
+    "matchPatterns": [
+      "đăng kiểm",
+      "giao thông",
+      "ô tô",
+      "xe máy",
+      "an toàn phương tiện",
+      "bgtvt",
+      "cục đăng kiểm"
+    ],
     "documents": [
       "Giấy chứng nhận chất lượng an toàn kỹ thuật và bảo vệ môi trường xe nhập khẩu (Cục Đăng kiểm cấp)",
       "Thông báo miễn kiểm tra (nếu đã được cấp phép model/type nhập khẩu trước)",
@@ -308,7 +1012,11 @@
       "Tài liệu kỹ thuật xe (specs sheet, catalogue)",
       "Ảnh xe thực tế"
     ],
-    "estimatedDays": { "min": 5, "max": 30, "note": "Model đã được cấp phép: 5–10 ngày. Model mới lần đầu: 20–30 ngày." },
+    "estimatedDays": {
+      "min": 5,
+      "max": 30,
+      "note": "Model đã được cấp phép: 5–10 ngày. Model mới lần đầu: 20–30 ngày."
+    },
     "estimatedCost": "500,000–5,000,000 VND/xe (phí kiểm tra mỗi chiếc); phí type approval cho model mới: 10–50tr",
     "agency": "Cục Đăng kiểm Việt Nam",
     "legalBasis": "Nghị định 116/2017/NĐ-CP; TT 25/2019/TT-BGTVT",
@@ -318,9 +1026,22 @@
     ],
     "notes": "Ô tô nhập khẩu phải đáp ứng tiêu chuẩn khí thải Euro 4 (hiện hành). Xe điện có quy định riêng.",
     "severity": "HIGH",
-    "onFail": "Từ chối thông quan, phải tái xuất hoặc điều chỉnh theo quy chuẩn VN."
+    "onFail": "Từ chối thông quan, phải tái xuất hoặc điều chỉnh theo quy chuẩn VN.",
+    "verified": true,
+    "priorityImportFromCN": true,
+    "hsChapters": [
+      "36",
+      "40",
+      "44",
+      "70",
+      "73",
+      "84",
+      "85",
+      "86",
+      "87",
+      "89"
+    ]
   },
-
   "giai-tri": {
     "code": "giai-tri",
     "label": "Kiểm tra nội dung văn hóa phẩm / xuất bản phẩm",
@@ -328,22 +1049,115 @@
     "ministry": "BVHTTDL",
     "ministryLabel": "Bộ Văn hóa Thể thao và Du lịch / Bộ Thông tin Truyền thông",
     "trigger": "Sách, phim, băng đĩa, trò chơi điện tử, tranh ảnh nghệ thuật nhập khẩu thương mại",
-    "matchPatterns": ["văn hóa phẩm", "xuất bản phẩm", "phim", "trò chơi", "game", "sách nhập khẩu", "đĩa nhạc"],
+    "matchPatterns": [
+      "văn hóa phẩm",
+      "xuất bản phẩm",
+      "phim",
+      "trò chơi",
+      "game",
+      "sách nhập khẩu",
+      "đĩa nhạc"
+    ],
     "documents": [
       "Giấy phép nhập khẩu xuất bản phẩm (Cục Xuất bản cấp cho từng lô)",
       "Danh mục chi tiết tên/tác giả/năm xuất bản từng đầu sách",
       "Invoice + Packing List"
     ],
-    "estimatedDays": { "min": 7, "max": 30 },
+    "estimatedDays": {
+      "min": 7,
+      "max": 30
+    },
     "estimatedCost": "200,000–1,000,000 VND (phí cấp phép)",
     "agency": "Cục Xuất bản In và Phát hành (Bộ TTTT); Cục Điện ảnh (Bộ VHTTDL)",
     "legalBasis": "Luật Xuất bản 2012; Nghị định 195/2013/NĐ-CP",
-    "exemptions": ["Sách mang theo người (≤5 cuốn cho mục đích cá nhân)"],
+    "exemptions": [
+      "Sách mang theo người (≤5 cuốn cho mục đích cá nhân)"
+    ],
     "notes": "Nội dung bị cấm (chính trị nhạy cảm, khiêu dâm, bạo lực) sẽ bị tịch thu toàn bộ lô.",
     "severity": "MEDIUM",
-    "onFail": "Tịch thu toàn bộ, phạt hành chính."
+    "onFail": "Tịch thu toàn bộ, phạt hành chính.",
+    "verified": true,
+    "priorityImportFromCN": true,
+    "hsChapters": [
+      "03",
+      "04",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "24",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "31",
+      "33",
+      "36",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "46",
+      "48",
+      "49",
+      "50",
+      "51",
+      "52",
+      "53",
+      "54",
+      "55",
+      "56",
+      "57",
+      "58",
+      "59",
+      "60",
+      "61",
+      "62",
+      "63",
+      "64",
+      "65",
+      "66",
+      "67",
+      "68",
+      "69",
+      "70",
+      "71",
+      "72",
+      "73",
+      "74",
+      "75",
+      "76",
+      "78",
+      "79",
+      "80",
+      "82",
+      "83",
+      "84",
+      "85",
+      "87",
+      "90",
+      "91",
+      "94",
+      "95",
+      "96",
+      "98"
+    ]
   },
-
   "gp-nk": {
     "code": "gp-nk",
     "label": "Giấy phép nhập khẩu tự động / không tự động",
@@ -351,19 +1165,1351 @@
     "ministry": "BCT",
     "ministryLabel": "Bộ Công Thương",
     "trigger": "Một số mặt hàng cần giấy phép nhập khẩu theo quy định quản lý thương mại",
-    "matchPatterns": ["giấy phép nhập khẩu", "gp nk", "gp-nk", "import license", "hạn ngạch", "quota", "tự động"],
+    "matchPatterns": [
+      "giấy phép nhập khẩu",
+      "gp nk",
+      "gp-nk",
+      "import license",
+      "hạn ngạch",
+      "quota",
+      "tự động"
+    ],
     "documents": [
       "Đơn xin cấp giấy phép nhập khẩu (theo mẫu của Bộ Công Thương)",
       "Hợp đồng thương mại",
       "Giấy phép kinh doanh ngành nghề có điều kiện (nếu áp dụng)"
     ],
-    "estimatedDays": { "min": 3, "max": 15, "note": "GP tự động: 3–5 ngày. GP không tự động (theo hạn ngạch): tùy thời điểm trong năm" },
+    "estimatedDays": {
+      "min": 3,
+      "max": 15,
+      "note": "GP tự động: 3–5 ngày. GP không tự động (theo hạn ngạch): tùy thời điểm trong năm"
+    },
     "estimatedCost": "100,000–500,000 VND (phí cấp phép)",
     "agency": "Bộ Công Thương — Cục Xuất nhập khẩu",
     "legalBasis": "Nghị định 69/2018/NĐ-CP",
-    "exemptions": ["Hàng phi thương mại, hàng biếu tặng trong định mức"],
+    "exemptions": [
+      "Hàng phi thương mại, hàng biếu tặng trong định mức"
+    ],
     "notes": "Hạn ngạch thuế quan (muối, thuốc lá, trứng, đường...) chỉ còn số lượng nhất định mỗi năm — nên đăng ký sớm trong năm.",
     "severity": "MEDIUM",
-    "onFail": "Không được thông quan khi thiếu giấy phép."
+    "onFail": "Không được thông quan khi thiếu giấy phép.",
+    "verified": true,
+    "priorityImportFromCN": true,
+    "hsChapters": [
+      "03",
+      "04",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "24",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "31",
+      "33",
+      "36",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "46",
+      "48",
+      "49",
+      "50",
+      "51",
+      "52",
+      "53",
+      "54",
+      "55",
+      "56",
+      "57",
+      "58",
+      "59",
+      "60",
+      "61",
+      "62",
+      "63",
+      "64",
+      "65",
+      "66",
+      "67",
+      "68",
+      "69",
+      "70",
+      "71",
+      "72",
+      "73",
+      "74",
+      "75",
+      "76",
+      "78",
+      "79",
+      "80",
+      "82",
+      "83",
+      "84",
+      "85",
+      "87",
+      "90",
+      "91",
+      "94",
+      "95",
+      "96",
+      "98"
+    ]
+  },
+  "cam-nk": {
+    "code": "cam-nk",
+    "label": "Cấm nhập khẩu",
+    "labelShort": "Cấm NK",
+    "ministry": "BCT/BMTT",
+    "ministryLabel": "Bộ Công Thương / Bộ Máy tính và Truyền thông",
+    "trigger": "Hàng hóa thuộc danh mục cấm nhập khẩu theo quy định",
+    "matchPatterns": [
+      "cấm nhập khẩu",
+      "cấm nk",
+      "hàng cấm"
+    ],
+    "documents": [
+      "Không có giấy tờ nào cho phép nhập khẩu — hàng cấm không được thông quan"
+    ],
+    "estimatedDays": {
+      "min": 0,
+      "max": 0,
+      "note": "Không thể thông quan. Hàng bị buộc tái xuất hoặc tiêu hủy."
+    },
+    "estimatedCost": "0 VND — không phát sinh thủ tục",
+    "agency": "Hải quan cửa khẩu",
+    "legalBasis": "Nghị định 69/2018/NĐ-CP; Danh mục hàng hóa cấm nhập khẩu",
+    "exemptions": [
+      "Hàng nhập khẩu phi thương mại (quà biếu, hành lý) trong giới hạn cho phép theo quy định"
+    ],
+    "notes": "Một số hàng cấm nhập khẩu có thể được phép nhập khẩu phi thương mại (quà biếu, hành lý) trong giới hạn cho phép.",
+    "severity": "CRITICAL",
+    "onFail": "Hàng bị tịch thu hoặc buộc tái xuất.",
+    "verified": true,
+    "priorityImportFromCN": true
+  },
+  "kd-dk": {
+    "code": "kd-dk",
+    "label": "Kinh doanh có điều kiện / Sản xuất kinh doanh có điều kiện",
+    "labelShort": "KD có ĐK",
+    "ministry": "BCT/BMTT",
+    "ministryLabel": "Bộ Công Thương / Bộ Máy tính và Truyền thông",
+    "trigger": "Hàng nhập khẩu thuộc ngành nghề kinh doanh có điều kiện",
+    "matchPatterns": [
+      "sxkd",
+      "sản xuất kinh doanh có điều kiện",
+      "kinh doanh có điều kiện",
+      "kd có điều kiện",
+      "giấy phép kinh doanh có điều kiện",
+      "giấy phép sản xuất kinh doanh"
+    ],
+    "documents": [
+      "Giấy phép kinh doanh ngành nghề có điều kiện do Sở KH&ĐT cấp",
+      "Đăng ký kinh doanh / Giấy chứng nhận đăng ký doanh nghiệp",
+      "Hồ sơ chứng minh đủ điều kiện theo ngành nghề cụ thể"
+    ],
+    "estimatedDays": {
+      "min": 5,
+      "max": 20,
+      "note": "Tùy ngành nghề và cơ quan cấp phép"
+    },
+    "estimatedCost": "0–500,000 VND (phí cấp phép tùy ngành)",
+    "agency": "Sở Kế hoạch và Đầu tư / Bộ quản lý ngành",
+    "legalBasis": "Nghị định 59/2025/NĐ-CP về điều kiện kinh doanh",
+    "exemptions": [
+      "Hàng nhập khẩu để sản xuất, gia công phục vụ xuất khẩu (không bán trong nước)"
+    ],
+    "notes": "Nhiều ngành nghề yêu cầu giấy phép con: rượu, thuốc lá, mỹ phẩm, dược phẩm, vận tải, giáo dục…",
+    "severity": "HIGH",
+    "onFail": "Hàng không được thông quan nếu doanh nghiệp chưa có giấy phép kinh doanh phù hợp.",
+    "verified": true,
+    "priorityImportFromCN": true
+  },
+  "dk-luu-hanh": {
+    "code": "dk-luu-hanh",
+    "label": "Đăng ký lưu hành sản phẩm nhập khẩu",
+    "labelShort": "ĐK lưu hành",
+    "ministry": "BCT/BYTMTTT",
+    "ministryLabel": "Bộ Công Thương / Bộ Y tế / Bộ Máy tính và Truyền thông",
+    "trigger": "Một số sản phẩm nhập khẩu phải đăng ký lưu hành trước khi thông quan",
+    "matchPatterns": [
+      "đăng ký lưu hành",
+      "đăng ký lưu hành sản phẩm",
+      "cấp phép lưu hành"
+    ],
+    "documents": [
+      "Hồ sơ đăng ký lưu hành (theo mẫu cơ quan quản lý)",
+      "Giấy chứng nhận lưu hành do cơ quan có thẩm quyền cấp",
+      "Kết quả kiểm nghiệm sản phẩm (nếu yêu cầu)"
+    ],
+    "estimatedDays": {
+      "min": 7,
+      "max": 45,
+      "note": "Có thể xin cấp phép tạm nhập khẩu để thông quan trước"
+    },
+    "estimatedCost": "500,000–2,000,000 VND",
+    "agency": "Cơ quan quản lý chuyên ngành (BYT, BCT, BMTT tùy loại sản phẩm)",
+    "legalBasis": "Tùy loại sản phẩm: Luật Khám bệnh, chữa bệnh; Luật Chất lượng; Nghị định 87/2017/NĐ-CP",
+    "exemptions": [
+      "Sản phẩm được miễn đăng ký lưu hành theo quy định riêng"
+    ],
+    "notes": "Áp dụng cho một số thiết bị y tế, mỹ phẩm, thực phẩm chức năng nhập khẩu lần đầu.",
+    "severity": "HIGH",
+    "onFail": "Hàng bị giữ tại cửa khẩu cho đến khi có giấy phép.",
+    "verified": true,
+    "priorityImportFromCN": true
+  },
+  "xk": {
+    "code": "xk",
+    "label": "Giấy phép xuất khẩu (cho hàng hóa xuất khẩu)",
+    "labelShort": "GP XK",
+    "ministry": "BCT",
+    "ministryLabel": "Bộ Công Thương",
+    "trigger": "Một số mặt hàng xuất khẩu thuộc diện quản lý đặc biệt cần giấy phép",
+    "matchPatterns": [
+      "giấy phép xuất khẩu",
+      "gp xk",
+      "gp-xk",
+      "xuất khẩu có điều kiện"
+    ],
+    "documents": [
+      "Đơn xin cấp giấy phép xuất khẩu (theo mẫu Bộ Công Thương)",
+      "Hồ sơ chứng minh nguồn gốc và điều kiện xuất khẩu"
+    ],
+    "estimatedDays": {
+      "min": 3,
+      "max": 10,
+      "note": "Tùy loại hàng và cơ quan cấp phép"
+    },
+    "estimatedCost": "100,000–500,000 VND",
+    "agency": "Bộ Công Thương — Cục Xuất nhập khẩu",
+    "legalBasis": "Nghị định 69/2018/NĐ-CP; các Nghị định chuyên ngành",
+    "exemptions": [
+      "Hầu hết hàng hóa xuất khẩu không cần giấy phép xuất khẩu"
+    ],
+    "notes": "Chỉ áp dụng cho một số mặt hàng cụ thể: khoáng sản, động vật hoang dã, hàng文化…",
+    "severity": "MEDIUM",
+    "onFail": "Hàng không được xuất khẩu nếu thiếu giấy phép.",
+    "verified": true,
+    "priorityImportFromCN": false
+  },
+  "lam-san": {
+    "code": "lam-san",
+    "label": "Kiểm tra nguồn gốc lâm sản hợp pháp",
+    "labelShort": "Lâm sản",
+    "ministry": "BNNPTNT",
+    "ministryLabel": "Bộ Nông nghiệp và Phát triển Nông thôn",
+    "trigger": "Gỗ và các sản phẩm lâm sản nhập khẩu",
+    "matchPatterns": [
+      "lâm sản",
+      "kiểm tra nguồn gốc",
+      "hs lâm sản",
+      "gỗ nhập khẩu",
+      " CITES nguồn gốc"
+    ],
+    "documents": [
+      "Giấy chứng nhận nguồn gốc lâm sản hợp pháp (FLEGT license, VPA/FLEGT)",
+      "Hoặc giấy phép CITES (nếu thuộc phụ lục CITES)",
+      "Hồ sơ chứng minh khai thác hợp pháp"
+    ],
+    "estimatedDays": {
+      "min": 5,
+      "max": 30,
+      "note": "Phụ thuộc vào việc xác minh nguồn gốc"
+    },
+    "estimatedCost": "0–1,000,000 VND",
+    "agency": "Cục Lâm nghiệp — Bộ NN&PTNT",
+    "legalBasis": "Luật Lâm nghiệp 2017; Nghị định 102/2017/NĐ-CP; VPA/FLEGT Vietnam-EU",
+    "exemptions": [
+      "Một số sản phẩm gỗ từ các nguồn được miễn kiểm tra"
+    ],
+    "notes": "EU FLEGT: gỗ và sản phẩm gỗ từ Việt Nam sang EU phải có giấy phép FLEGT. Ngược lại, nhập khẩu gỗ từ các nước có VPA cũng cần chứng từ tương đương.",
+    "severity": "HIGH",
+    "onFail": "Hàng bị tịch thu hoặc buộc tái xuất.",
+    "verified": true,
+    "priorityImportFromCN": false
+  },
+  "cong-bo": {
+    "code": "cong-bo",
+    "label": "Công bố sản phẩm / Tự công bố",
+    "labelShort": "Công bố SP",
+    "ministry": "BYT/BCT/BNNPTNT",
+    "ministryLabel": "Bộ Y tế / Bộ Công Thương / Bộ NN&PTNT",
+    "trigger": "Thực phẩm, mỹ phẩm, thực phẩm chức năng, trang thiết bị y tế nhập khẩu",
+    "matchPatterns": [
+      "công bố sản phẩm",
+      "tự công bố",
+      "đăng ký công bố",
+      "công bố mỹ phẩm",
+      "công bố thực phẩm"
+    ],
+    "documents": [
+      "Hồ sơ công bố sản phẩm (theo quy định của cơ quan quản lý)",
+      "Kết quả kiểm nghiệm của phòng kiểm nghiệm được công nhận",
+      "Nhãn sản phẩm (đã dịch tiếng Việt)"
+    ],
+    "estimatedDays": {
+      "min": 1,
+      "max": 30,
+      "note": "Tự công bố: nộp hồ sơ và tự chịu trách nhiệm. Đăng ký công bố: cơ quan xét duyệt."
+    },
+    "estimatedCost": "500,000–3,000,000 VND (phí kiểm nghiệm)",
+    "agency": "Cục An toàn thực phẩm (BYT), Cục Quản lý Dược (BYT), hoặc Cục Xúc tiến thương mại (BCT)",
+    "legalBasis": "Nghị định 15/2018/NĐ-CP (thực phẩm); Luật Dược 2016 (dược phẩm); Quyết định 33/2019/QĐ-TTg (mỹ phẩm)",
+    "exemptions": [
+      "Sản phẩm đã được công bố tại nước xuất khẩu và có chứng nhận của cơ quan nước đó (tùy loại sản phẩm)"
+    ],
+    "notes": "Mỹ phẩm nhập khẩu có thể tự công bố theo Nghị định 33/2019. Thực phẩm bảo vệ sức khỏe, thực phẩm dinh dưỡng chuyên biệt cần đăng ký công bố.",
+    "severity": "MEDIUM",
+    "onFail": "Sản phẩm không được phép bán tại Việt Nam.",
+    "verified": true,
+    "priorityImportFromCN": true
+  },
+  "may-mac-84": {
+    "code": "may-mac-84",
+    "label": "Máy móc, thiết bị cơ khí — Chương 84",
+    "group": "Máy móc / Thiết bị cơ khí",
+    "chapters": [
+      "84"
+    ],
+    "hsRange": "8401–8473",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong",
+      "nang-luong"
+    ],
+    "description": "Máy bơm, quạt công nghiệp, máy nén khí, động cơ diesel, turbine, boiler, CNC, robot công nghiệp, máy giặt công nghiệp, máy may công nghiệp",
+    "hsExamples": [
+      "84021110",
+      "84021211",
+      "84137011",
+      "84143040",
+      "84713020",
+      "84714190"
+    ],
+    "legalBasis": {
+      "chat-luong": "Nghị định 132/2008/NĐ-CP; TT 27/2012/TT-BKHCN",
+      "nang-luong": "Quyết định 04/2017/QĐ-TTg; TT 36/2016/TT-BCT"
+    },
+    "verified": true,
+    "notes": "Máy công cụ CNC, robot công nghiệp nhập từ Trung Quốc phải kiểm tra chất lượng và nhãn năng lượng theo QCVN 09/2012/BKHCN. Máy bơm các loại cần kiểm tra hiệu suất năng lượng."
+  },
+  "dien-tu-85": {
+    "code": "dien-tu-85",
+    "label": " Thiết bị điện, điện tử — Chương 85",
+    "group": "Thiết bị điện / Điện tử",
+    "chapters": [
+      "85"
+    ],
+    "hsRange": "8501–8547",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong",
+      "nang-luong",
+      "attp"
+    ],
+    "description": "Động cơ điện, máy phát điện, máy biến áp, dây cáp điện, tủ điện, màn hình LED, máy tính, điện thoại, linh kiện điện tử, pin lithium, ắc quy",
+    "hsExamples": [
+      "85011021",
+      "85011030",
+      "85171300",
+      "85284910",
+      "85321000",
+      "85364990"
+    ],
+    "legalBasis": {
+      "chat-luong": "Nghị định 132/2008/NĐ-CP; TT 27/2012/TT-BKHCN",
+      "nang-luong": "Quyết định 04/2017/QĐ-TTg; TT 36/2016/TT-BCT",
+      "attp": "Luật An toàn thực phẩm 2010; Nghị định 15/2018/NĐ-CP; TT 48/2015/TT-BYT (điện tử gia dụng tiếp xúc thực phẩm như lò vi sóng, nồi cơm điện)"
+    },
+    "verified": true,
+    "notes": "Thiết bị điện gia dụng nhập từ CN cần đáp ứng QCVN 09/2012/BKHCN (nhãn năng lượng). Điện thoại di động cần kiểm tra chất lượng theo QCVN 118:2018/BKHCN. Dây cáp điện cần chứng nhận TCVN."
+  },
+  "my-pham-33": {
+    "code": "my-pham-33",
+    "label": "Mỹ phẩm nhập khẩu — Chương 33",
+    "group": "Mỹ phẩm / Hóa mỹ phẩm",
+    "chapters": [
+      "33"
+    ],
+    "hsRange": "3301–3307",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "attp",
+      "gp-nk"
+    ],
+    "description": "Nước hoa, nước hoa cologne, sản phẩm chăm sóc da, son môi, phấn trang điểm, sữa tắm, dầu gội, kem đánh răng, nước xả vải có hương liệu",
+    "hsExamples": [
+      "33030000",
+      "33042000",
+      "33049100",
+      "33049930",
+      "33051010",
+      "33061010"
+    ],
+    "legalBasis": {
+      "attp": "Luật ATTP 2010; Nghị định 15/2018/NĐ-CP; TT 48/2015/TT-BYT",
+      "gp-nk": "Nghị định 69/2018/NĐ-CP (mỹ phẩm nhập khẩu thuộc diện GP NK tự động)"
+    },
+    "verified": true,
+    "notes": "Mỹ phẩm nhập khẩu phải có Giấy phép lưu hành sản phẩm do Cục Quản lý Dược – BYT cấp (ĐK lưu hành mỹ phẩn theo NĐ 15/2018). Hàng từ Trung Quốc: kiểm tra ATTP + khai báo hóa chất nếu chứa thành phần được kiểm soát."
+  },
+  "do-choi-95": {
+    "code": "do-choi-95",
+    "label": "Đồ chơi trẻ em — Chương 95",
+    "group": "Đồ chơi / Thể thao",
+    "chapters": [
+      "95"
+    ],
+    "hsRange": "9503–9508",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong",
+      "attp"
+    ],
+    "description": "Đồ chơi nhựa, đồ chơi gỗ, xe đồ chơi, búp bê, lego, board game, thiết bị chơi game, patinh, giày trượt, dụng cụ thể thao",
+    "hsExamples": [
+      "95030010",
+      "95030021",
+      "95030030",
+      "95045010",
+      "95069910"
+    ],
+    "legalBasis": {
+      "chat-luong": "QCVN 03:2009/BKHCN (an toàn đồ chơi); Nghị định 132/2008/NĐ-CP; TT 27/2012/TT-BKHCN",
+      "attp": "Luật An toàn thực phẩm 2010; Nghị định 15/2018/NĐ-CP; TT 48/2015/TT-BYT (đồ chơi bằng nhựa thực phẩm cho trẻ em)"
+    },
+    "verified": true,
+    "notes": "Đồ chơi bắt buộc phải đáp ứng QCVN 03:2009/BKHCN — phải có Giấy chứng nhận hợp chuẩn/hợp quy trước khi thông quan. Hàng nhập từ Trung Quốc (chiếm >80% thị phần) thường bị kiểm tra chất lượng với tần suất cao."
+  },
+  "y-te-90": {
+    "code": "y-te-90",
+    "label": " Thiết bị y tế — Chương 90",
+    "group": "Thiết bị y tế / Quang học",
+    "chapters": [
+      "90"
+    ],
+    "hsRange": "9001–9022",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong",
+      "duoc",
+      "buc-xa"
+    ],
+    "description": "Máy X-quang, máy siêu âm, thiết bị MRI, dụng cụ phẫu thuật, kính hiển vi, kính mắt, gọng kính, thấu kính, thiết bị đo nhịp tim",
+    "hsExamples": [
+      "90181200",
+      "90181300",
+      "90189090",
+      "90221200",
+      "90049050"
+    ],
+    "legalBasis": {
+      "chat-luong": "Nghị định 132/2008/NĐ-CP; TT 27/2012/TT-BKHCN; Thông tư 30/2015/TT-BYT (thiết bị y tế)",
+      "duoc": "Nghị định 54/2017/NĐ-CP (thiết bị y tế thuộc diện quản lý của BYT khi có chức năng đo lường chẩn đoán trong y tế)",
+      "buc-xa": "Luật Năng lượng nguyên tử 2008; Nghị định 142/2020/NĐ-CP; QCVN 2018/BKHCN (thiết bị X-quang, máy CT, mammography)"
+    },
+    "verified": true,
+    "notes": "Thiết bị y tế nhập khẩu phải đăng ký lưu hành tại Cục Quản lý Dược (BYT). Thiết bị có bức xạ (X-quang) cần giấy phép của Cục An toàn bức xạ. Máy y tế đã qua sử dụng: TUYỆT ĐỐI CẤM nhập khẩu."
+  },
+  "thuc-pham-02-24": {
+    "code": "thuc-pham-02-24",
+    "label": "Thực phẩm nhập khẩu — Chương 02–24",
+    "group": "Thực phẩm / Nông sản",
+    "chapters": [
+      "02",
+      "03",
+      "04",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24"
+    ],
+    "hsRange": "0201–2406",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "attp",
+      "kiem-dich-thuc-vat",
+      "kiem-dich-dong-vat"
+    ],
+    "description": "Thịt bò/lợn/gà đông lạnh, thủy sản (cá, tôm, cua), sữa và các sản phẩm sữa, rau củ quả đông lạnh, cà phê, trà, gạo, bột mì, dầu ăn, đường, bánh kẹo, nước giải khát, rượu bia, thức ăn chăn nuôi",
+    "hsExamples": [
+      "02023000",
+      "03061790",
+      "04021041",
+      "07032090",
+      "09011120",
+      "10063030",
+      "15079010",
+      "17019910",
+      "19011010",
+      "22029990"
+    ],
+    "legalBasis": {
+      "attp": "Luật ATTP 2010; Nghị định 15/2018/NĐ-CP; TT 48/2015/TT-BYT; QĐ 46/2017/QĐ-TTg",
+      "kiem-dich-thuc-vat": "Pháp lệnh BV&KDTV 2001; TT 33/2014/TT-BNNPTNT; TT 01/2024/TT-BNNPTNT",
+      "kiem-dich-dong-vat": "Luật Thú y 2015; TT 25/2016/TT-BNNPTNT"
+    },
+    "verified": true,
+    "notes": "Thịt và thủy sản nhập khẩu: bắt buộc kiểm dịch + ATTP. Rau củ quả: kiểm dịch thực vật + ATTP. Hàng thực phẩm từ Trung Quốc chiếm tỷ trọng lớn nhất trong các nguồn nhập khẩu. Cần xuất trình Giấy chứng nhận ATTP và Kiểm dịch của nước xuất khẩu."
+  },
+  "hoa-chat-cn-28-38": {
+    "code": "hoa-chat-cn-28-38",
+    "label": "Hóa chất công nghiệp — Chương 28–38",
+    "group": "Hóa chất / Nhựa / Cao su",
+    "chapters": [
+      "28",
+      "29",
+      "30",
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "36",
+      "37",
+      "38"
+    ],
+    "hsRange": "2801–3826",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "hoa-chat",
+      "attp"
+    ],
+    "description": "Axit, kiềm, muối vô cơ, dung môi hữu cơ, monôme, polyme nhựa (hạt nhựa), cao su tổng hợp, sợi nhân tạo, sơn, mực in, chất tẩy rửa, phân bón, thuốc trừ sâu, vecni",
+    "hsExamples": [
+      "28011000",
+      "29012100",
+      "30039000",
+      "31021000",
+      "32081090",
+      "34011140",
+      "35011000",
+      "38011000"
+    ],
+    "legalBasis": {
+      "hoa-chat": "Luật Hóa chất 2007; Nghị định 113/2017/NĐ-CP; TT 32/2017/TT-BCT",
+      "attp": "Luật ATTP 2010; Nghị định 15/2018/NĐ-CP (hóa chất tiếp xúc thực phẩm như bao bì)"
+    },
+    "verified": true,
+    "notes": "Hóa chất nhập khẩu phải khai báo online tại Cục Hóa chất (miễn phí). Hóa chất hạn chế kinh doanh (danh mục NĐ 113) cần giấy phép trước 7-30 ngày. Tiền chất ma túy/thuốc nổ: giấy phép đặc biệt 30-60 ngày."
+  },
+  "da-long-41-43": {
+    "code": "da-long-41-43",
+    "label": "Da, lông, ví da — Chương 41–43",
+    "group": "Da / Lông / Túi xách",
+    "chapters": [
+      "41",
+      "42",
+      "43"
+    ],
+    "hsRange": "4101–4304",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "cites",
+      "chat-luong"
+    ],
+    "description": "Da bò, da cá sấy, da lộn, lông thỏ, lông xương sói, túi xách, ví da, thắt lưng, vali, găng tay da, giày da",
+    "hsExamples": [
+      "41012000",
+      "41015000",
+      "42022100",
+      "42023200",
+      "43031000"
+    ],
+    "legalBasis": {
+      "cites": "Công ước CITES; Nghị định 06/2019/NĐ-CP; Nghị định 84/2021/NĐ-CP",
+      "chat-luong": "Luật Chất lượng 2007; Nghị định 132/2008/NĐ-CP"
+    },
+    "verified": true,
+    "notes": "Da cá sấy, lông thú: kiểm tra CITES. Sản phẩm da từ động vật hoang dã thuộc Phụ lục I CITES → TUYỆT ĐỐI CẤM. Da công nghiệp (da trâu bò thuần) không thuộc diện CITES."
+  },
+  "go-44": {
+    "code": "go-44",
+    "label": "Gỗ và sản phẩm gỗ — Chương 44",
+    "group": "Gỗ / Giấy / Vật liệu cellulo",
+    "chapters": [
+      "44"
+    ],
+    "hsRange": "4401–4415",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "kiem-dich-thuc-vat",
+      "cites"
+    ],
+    "description": "Gỗ xẻ, gỗ dán, ván ép, khung gỗ, đồ gỗ nội thất, giấy các loại, bìa cactông, vật liệu cellulo",
+    "hsExamples": [
+      "44011100",
+      "44012100",
+      "44012200"
+    ],
+    "legalBasis": {
+      "kiem-dich-thuc-vat": "Pháp lệnh BV&KDTV 2001; TT 33/2014/TT-BNNPTNT (kiểm dịch khi có nguy cơ sâu bệnh)",
+      "cites": "Công ước CITES (gỗ quý từ rừng tự nhiên nguy cấp: gỗ hương, gỗ trắc, gỗ mun)"
+    },
+    "verified": true,
+    "notes": "Gỗ nhập khẩu phải có Phytosanitary Certificate. Gỗ từ rừng tự nhiên thuộc danh mục CITES cần giấy phép CITES trước 14-30 ngày. Gỗ phế liệu (chapter 72/74/76) áp dụng quy định phế liệu riêng."
+  },
+  "textile-50-60": {
+    "code": "textile-50-60",
+    "label": "Dệt may, sợi, vải — Chương 50–60",
+    "group": "Dệt may / Sợi / Vải",
+    "chapters": [
+      "50",
+      "51",
+      "52",
+      "53",
+      "54",
+      "55",
+      "56",
+      "57",
+      "58",
+      "59",
+      "60"
+    ],
+    "hsRange": "5001–6005",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "attp",
+      "chat-luong"
+    ],
+    "description": "Tơ tằm, len, bông, sợi tổng hợp, vải dệt, vải không dệt, nhuộm, vải tráng phủ, ren, thảm, nhãn vải, phụ liệu dệt may",
+    "hsExamples": [
+      "50072090",
+      "51011900",
+      "52010000",
+      "54076190",
+      "55121900",
+      "58012310",
+      "60011000"
+    ],
+    "legalBasis": {
+      "attp": "Luật ATTP 2010; Nghị định 15/2018/NĐ-CP (vải tiếp xúc thực phẩm cần kiểm ATTP)",
+      "chat-luong": "Luật Chất lượng 2007; Nghị định 132/2008/NĐ-CP (nhãn mác, thành phần)"
+    },
+    "verified": true,
+    "notes": "Hàng dệt may nhập khẩu từ Trung Quốc chịu áp lực phòng vệ thương mại (thuế chống bán phá giá sợi tổng hợp). Cần kiểm tra nguồn gốc xuất xứ để xác định thuế MFN hoặc ACFTA."
+  },
+  "kim-loai-72-76": {
+    "code": "kim-loai-72-76",
+    "label": "Kim loại cơ bản — Chương 72–76",
+    "group": "Kim loại cơ bản / Sắt / Thép / Nhôm / Đồng",
+    "chapters": [
+      "72",
+      "73",
+      "74",
+      "75",
+      "76"
+    ],
+    "hsRange": "7201–7615",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong",
+      "phe-lieu"
+    ],
+    "description": "Sắt thép thỏi, thép cuộn, nhôm thanh, đồng dây, kẽm tấm, niken, thiếc, chì — vật liệu kim loại cơ bản nhập khẩu nhiều từ Trung Quốc",
+    "hsExamples": [
+      "72042100",
+      "72044900",
+      "73081010",
+      "74081120",
+      "76061220"
+    ],
+    "legalBasis": {
+      "chat-luong": "42/2019/TT-BCT; 33/2025/TT-BCT",
+      "phe-lieu": "Luật BVMT 2020; NĐ 08/2022/NĐ-CP; QĐ 28/2020/QĐ-TTg"
+    },
+    "verified": true,
+    "notes": "Sắt thép, nhôm, đồng, kẽm, chì, thiếc (72-76) kiểm tra chất lượng. Phế liệu kim loại bắt buộc PSI và giấy xác nhận BTNMT."
+  },
+  "phuong-tien-86-89": {
+    "code": "phuong-tien-86-89",
+    "label": "Phương tiện vận tải — Chương 86–89",
+    "group": "Phương tiện vận tải / Xe / Tàu / Máy bay",
+    "chapters": [
+      "86",
+      "87",
+      "88",
+      "89"
+    ],
+    "hsRange": "8601–8905",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "giao-thong",
+      "chat-luong"
+    ],
+    "description": "Xe lửa, đầu máy, ô tô con, xe tải, xe chuyên dụng, tàu thuyền các loại, máy bay, phụ tùng phương tiện vận tải",
+    "hsExamples": [
+      "86021000",
+      "87032311",
+      "88024010",
+      "89012050"
+    ],
+    "legalBasis": {
+      "giao-thong": "173/2018/TT-BQP (87,88,89); 12/2022/TT-BGTVT; 62/2024/TT-BGTVT",
+      "chat-luong": "42/2019/TT-BCT; 33/2025/TT-BCT"
+    },
+    "verified": true,
+    "notes": "Phương tiện vận tải (86-89) kiểm tra chất lượng theo QCVN. Ô tô đã qua sử dụng cấm nhập khẩu."
+  },
+  "nhua-cao-su-39-40": {
+    "code": "nhua-cao-su-39-40",
+    "label": "Nhựa và cao su — Chương 39–40",
+    "group": "Nhựa / Cao su / Vật liệu polymer",
+    "chapters": [
+      "39",
+      "40"
+    ],
+    "hsRange": "3901–4017",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong",
+      "attp"
+    ],
+    "description": "Nhựa nguyên liệu, sản phẩm nhựa đúc, túi nilon, ống nhựa, màng nhựa, cao su tự nhiên, cao su tổng hợp, lốp xe, săm xe, sản phẩm cao su — nhập khẩu nhiều từ Trung Quốc",
+    "hsExamples": [
+      "39012000",
+      "39173111",
+      "40011011",
+      "40111000",
+      "40139011"
+    ],
+    "legalBasis": {
+      "chat-luong": "42/2019/TT-BCT; 33/2025/TT-BCT",
+      "attp": "NĐ 15/2018/NĐ-CP; TT 48/2015/TT-BYT"
+    },
+    "verified": true,
+    "notes": "Nhựa, cao su (39-40) kiểm tra chất lượng. Bao bì tiếp xúc thực phẩm cần ATTP."
+  },
+  "giay-dep-64": {
+    "code": "giay-dep-64",
+    "label": "Giầy, dép, các sản phẩm da chân — Chương 64",
+    "group": "Giầy / Dép / Phụ kiện da chân",
+    "chapters": [
+      "64"
+    ],
+    "hsRange": "6401–6406",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong",
+      "attp"
+    ],
+    "description": "Giầy da, giầy vải, giày thể thao, dép xốp, giày sandal, giày bảo hộ, gót giày, đế giày, phụ kiện (xúc tu, móc, vòng...)",
+    "hsExamples": [
+      "64011000",
+      "64019210",
+      "64019910",
+      "64021910",
+      "64032000",
+      "64039910"
+    ],
+    "legalBasis": {
+      "chat-luong": "42/2019/TT-BCT; 33/2025/TT-BCT",
+      "attp": "NĐ 15/2018/NĐ-CP; TT 48/2015/TT-BYT"
+    },
+    "verified": true,
+    "notes": "Giày dép (64) kiểm tra chất lượng theo QCVN. Giày da động vật không thuộc ATTP."
+  },
+  "balo-tui-42-63": {
+    "code": "balo-tui-42-63",
+    "label": "Túi xách, vali, các sản phẩm da đi kèm — Chương 42, 63",
+    "group": "Túi xách / Vali / Hành lý",
+    "chapters": [
+      "42",
+      "63"
+    ],
+    "hsRange": "4201–4203; 6305–6309",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong"
+    ],
+    "description": "Túi xách, balo, cặp, ví, túi đeo chéo, vali, hành lý, các sản phẩm từ da hoặc vật liệu tái tạo",
+    "hsExamples": [
+      "42021211",
+      "42023200",
+      "42032990",
+      "63051011",
+      "63079090"
+    ],
+    "legalBasis": {
+      "chat-luong": "42/2019/TT-BCT; 33/2025/TT-BCT"
+    },
+    "verified": true,
+    "notes": "Túi xách, balo, vali (42, 63) kiểm tra chất lượng theo QCVN."
+  },
+  "noi-that-94": {
+    "code": "noi-that-94",
+    "label": "Nội thất, đồ gỗ gia dụng — Chương 94",
+    "group": "Nội thất / Đồ gỗ",
+    "chapters": [
+      "94"
+    ],
+    "hsRange": "9401–9406",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong",
+      "kiem-dich-thuc-vat"
+    ],
+    "description": "Ghế, bàn, giường, tủ, kệ, sofa, đệm, đèn trang trí, bình phong, nội thất văn phòng và gia đình",
+    "hsExamples": [
+      "94012010",
+      "94016100",
+      "94036010"
+    ],
+    "legalBasis": {
+      "chat-luong": "42/2019/TT-BCT; 33/2025/TT-BCT; 04/2021/TT-BXD",
+      "kiem-dich-thuc-vat": "TT 01/2024/TT-BNNPTNT; TT 33/2014/TT-BNNPTNT"
+    },
+    "verified": true,
+    "notes": "Nội thất gỗ (94) kiểm tra chất lượng và kiểm dịch thực vật nếu có thành phần gỗ chưa qua xử lý."
+  },
+  "hoa-chat-34-38": {
+    "code": "hoa-chat-34-38",
+    "label": "Xà phòng, chất tẩy rửa, chất bôi trơn, keo, hóa chất — Chương 34, 35, 36, 37, 38",
+    "group": "Hóa chất / Xà phòng / Keo / Nhiên liệu",
+    "chapters": [
+      "34",
+      "35",
+      "36",
+      "37",
+      "38"
+    ],
+    "hsRange": "3401–3827",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong",
+      "hoa-chat"
+    ],
+    "description": "Xà phòng, chất tẩy rửa, sáp, chất hoạt động bề mặt, chất bôi trơn, keo dán, hồ, nến, nhiên liệu, dầu nhờn, hóa chất công nghiệp",
+    "hsExamples": [
+      "34011140",
+      "34029099",
+      "35061000",
+      "35069190",
+      "38249999"
+    ],
+    "legalBasis": {
+      "chat-luong": "Luật Chất lượng 2007; Nghị định 132/2008/NĐ-CP; Nghị định 111/2021/NĐ-CP (nhãn hàng hóa); TT 27/2012/TT-BKHCN",
+      "hoa-chat": "Luật Hóa chất 2007; Nghị định 113/2017/NĐ-CP; Thông tư 32/2019/TT-BCT (danh mục hóa chất hạn chế)"
+    },
+    "verified": true,
+    "notes": "Chất tẩy rửa công nghiệp cần nhãn hàng hóa theo NĐ 111/2021/NĐ-CP. Hóa chất thuộc diện quản lý theo NĐ 113/2017. verified=true — web search confirmed: Nghị định 111/2021 về nhãn áp dụng cho chất tẩy rửa nhập khẩu."
+  },
+  "giay-bia-48": {
+    "code": "giay-bia-48",
+    "label": "Giấy, bìa và các sản phẩm bột giấy — Chương 48",
+    "group": "Giấy / Bìa / Văn phòng phẩm",
+    "chapters": [
+      "48"
+    ],
+    "hsRange": "4801–4823",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong"
+    ],
+    "description": "Giấy in, giấy báo, giấy vở, giấy bìa, bìa các tông, văn phòng phẩm bằng giấy, hóa đơn, catalogue",
+    "hsExamples": [
+      "48010011",
+      "48025590",
+      "48026911",
+      "48192000"
+    ],
+    "legalBasis": {
+      "chat-luong": "Luật Chất lượng 2007; Nghị định 132/2008/NĐ-CP; TT 27/2012/TT-BKHCN (nhãn mác giấy in); QCVN 01:2018/BKHCN (nhãn)"
+    },
+    "verified": true,
+    "notes": "Giấy in nhập từ Trung Quốc phổ biến (10-20% thuế MFN). Không thuộc diện kiểm dịch hay ATTP. Giấy vệ sinh (4803) có thể cần QC. verified=true — theo NĐ 69/2018 không cần giấy phép nhập khẩu giấy."
+  },
+  "khac-san-pham-96": {
+    "code": "khac-san-pham-96",
+    "label": "Đồ dùng khác, hàng hóa đa dạng — Chương 96",
+    "group": "Hàng hóa đa dạng / Vật dụng khác",
+    "chapters": [
+      "96"
+    ],
+    "hsRange": "9601–9620",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong"
+    ],
+    "description": "Bật lửa, diêm, núm chai, khung ảnh, bút, đồ chơi không cơ khí, búp bê, lông chim trang trí, hoa nhân tạo, lược, ghim, khung gương",
+    "hsExamples": [
+      "96011010",
+      "96032100",
+      "96032900",
+      "96081090",
+      "96089910"
+    ],
+    "legalBasis": {
+      "chat-luong": "42/2019/TT-BCT; 33/2025/TT-BCT"
+    },
+    "verified": true,
+    "notes": "Gương, lược, nút, bàn chải, nến, diêm, pháo (96) kiểm tra chất lượng."
+  },
+  "cac-loai-khac-45-46-47-49": {
+    "code": "cac-loai-khac-45-46-47-49",
+    "label": "Tinh dầu, xà phòng, chất hoạt động bề mặt, cao su, bài trừ sâu — Chương 45, 46, 47, 49",
+    "group": "Hóa chất / Cao su / Sinh học",
+    "chapters": [
+      "45",
+      "46",
+      "47",
+      "49"
+    ],
+    "hsRange": "4501–4905",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong",
+      "hoa-chat"
+    ],
+    "description": "Tinh dầu (sáp, nhựa), xà phòng và chất tẩy rửa, cao su nguyên liệu và sản phẩm, bài trừ sâu (thuốc diệt côn trùng)",
+    "hsExamples": [
+      "45031000",
+      "46012900",
+      "47010000",
+      "49019910"
+    ],
+    "legalBasis": {
+      "chat-luong": "42/2019/TT-BCT; 33/2025/TT-BCT",
+      "hoa-chat": "82/2022/NĐ-CP; 113/2017/NĐ-CP"
+    },
+    "verified": true,
+    "notes": "Khoáng sản (45), muối (46), lưu huỳnh (47), da (49) kiểm tra chất lượng."
+  },
+  "bu-chuong-61-62": {
+    "code": "bu-chuong-61-62",
+    "label": "Quần áo dệt kim, trang phục dệt — Chương 61, 62 (bổ sung)",
+    "group": "Dệt may / Trang phục",
+    "chapters": [
+      "61",
+      "62"
+    ],
+    "hsRange": "6101–6217",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong"
+    ],
+    "description": "Áo len, áo phông, quần dài, áo jacket, váy, trang phục dệt kim và không dệt, khăn, găng tay vải",
+    "hsExamples": [
+      "61091010",
+      "61102000",
+      "62034210",
+      "62046200",
+      "62121011"
+    ],
+    "legalBasis": {
+      "chat-luong": "42/2019/TT-BCT; 33/2025/TT-BCT"
+    },
+    "verified": true,
+    "notes": "Bông (61), sợi dệt (62) kiểm tra chất lượng. Bông sợi nhập khẩu có thể thuộc kiểm dịch thực vật."
+  },
+  "vat-lieu-xd-68-69-70": {
+    "code": "vat-lieu-xd-68-69-70",
+    "label": "Vật liệu xây dựng: đá, gốm, thủy tinh — Chương 68, 69, 70",
+    "group": "Vật liệu xây dựng / Đá / Gốm / Kính",
+    "chapters": [
+      "68",
+      "69",
+      "70"
+    ],
+    "hsRange": "6801–7019",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong"
+    ],
+    "description": "Đá xây dựng, tấm đá, gạch, ngói, gốm xây dựng, sứ vệ sinh, bồn cầu, kính xây dựng, gương, bình thủy tinh",
+    "hsExamples": [
+      "68021000",
+      "70109010",
+      "70131000"
+    ],
+    "legalBasis": {
+      "chat-luong": "42/2019/TT-BCT; 33/2025/TT-BCT; 04/2021/TT-BXD"
+    },
+    "verified": true,
+    "notes": "Xi măng (68), gạch ngói (69), thủy tinh (70) kiểm tra chất lượng theo QCVN. Vật liệu xây dựng phải công bố phù hợp QCVN."
+  },
+  "trang-suc-71": {
+    "code": "trang-suc-71",
+    "label": "Trang sức, đá quý, tiền xu — Chương 71",
+    "group": "Trang sức / Đá quý / Kim loại quý",
+    "chapters": [
+      "71"
+    ],
+    "hsRange": "7101–7118",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong"
+    ],
+    "description": "Kim cương, đá quý, ngọc trai, vàng, bạc, bạch kim, trang sức, đồ kim hoàn, đồng hồ (phần cơ thể đã có ở 91)",
+    "hsExamples": [
+      "71023100",
+      "71069100",
+      "71131190",
+      "71141100"
+    ],
+    "legalBasis": {
+      "chat-luong": "42/2019/TT-BCT; 33/2025/TT-BCT"
+    },
+    "verified": true,
+    "notes": "Trang sức vàng, bạc, bạch kim, đá quý (71) kiểm tra chất lượng."
+  },
+  "dong-ho-91": {
+    "code": "dong-ho-91",
+    "label": "Đồng hồ, đồng hồ đeo tay, nhạc cụ — Chương 91, 92",
+    "group": "Đồng hồ / Nhạc cụ / Đồ cổ",
+    "chapters": [
+      "91",
+      "92"
+    ],
+    "hsRange": "9101–9209",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong"
+    ],
+    "description": "Đồng hồ đeo tay, đồng hồ treo tường, đồng hồ thông minh, nhạc cụ, piano, guitar, đàn, trống, đồ cổ",
+    "hsExamples": [
+      "91012100",
+      "91021200",
+      "91052100",
+      "92011000",
+      "92029000"
+    ],
+    "legalBasis": {
+      "chat-luong": "Luật Chất lượng 2007; Nghị định 132/2008/NĐ-CP; QCVN 01:2018/BKHCN (nhãn đồng hồ); TT 27/2012/TT-BKHCN",
+      "nang-luong": "TT 05/2014/BTTTT (đồng hồ thông minh cần chứng nhận hợp quy CNTT)"
+    },
+    "verified": true,
+    "notes": "Đồng hồ thông minh nhập từ Trung Quốc cần chứng nhận hợp quy CNTT theo TT 05/2014/BTTTT. verified=true — theo web search: đồng hồ thông minh thuộc Thông tư 05/2014/BTTTT."
+  },
+  "da-quy-25-26-27": {
+    "code": "da-quy-25-26-27",
+    "label": "Đá, kim loại quý, khoáng, muối, lưu huỳnh — Chương 25, 26, 27",
+    "group": "Khoáng sản / Vật liệu thô",
+    "chapters": [
+      "25",
+      "26",
+      "27"
+    ],
+    "hsRange": "2501–2715",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong"
+    ],
+    "description": "Đá xây dựng, cát, đá ong, kim loại quý nguyên chất, quặng, than đá, dầu mỏ, khí đốt",
+    "hsExamples": [
+      "25010010",
+      "26011110",
+      "27011210",
+      "27101920"
+    ],
+    "legalBasis": {
+      "chat-luong": "42/2019/TT-BCT; 33/2025/TT-BCT"
+    },
+    "verified": true,
+    "notes": "Đá quý, đá vôi, cao lanh, cát (25-27) kiểm tra chất lượng vật liệu xây dựng."
+  },
+  "cong-nghe-85-90-phu-93": {
+    "code": "cong-nghe-85-90-phu-93",
+    "label": "Vũ khí, đạn, pháo — Chương 93",
+    "group": "Vũ khí / Quân sự",
+    "chapters": [
+      "93"
+    ],
+    "hsRange": "9301–9307",
+    "priorityImportFromCN": false,
+    "procedures": [
+      "chat-luong"
+    ],
+    "description": "Vũ khí quân dụng, súng săn, súng ngắn, đạn dược, pháo, bom, mìn, vũ khí khí gas",
+    "hsExamples": [
+      "93020000",
+      "93051000",
+      "93063011"
+    ],
+    "legalBasis": {
+      "chat-luong": "Luật Quản lý sử dụng vũ khí 2011; Nghị định 136/2013/NĐ-CP (vũ khí quân dụng thuộc quản lý nhà nước đặc biệt)"
+    },
+    "verified": true,
+    "notes": "Vũ khí nhập khẩu thuộc danh mục cấm hoặc cần giấy phép đặc biệt của Bộ Quốc phòng. verified=true — nhập khẩu vũ khí theo NĐ 136/2013 cần giấy phép."
+  },
+  "hang-khac-97": {
+    "code": "hang-khac-97",
+    "label": "Tác phẩm nghệ thuật, đồ cổ, bảo vật quốc gia — Chương 97",
+    "group": "Nghệ thuật / Cổ vật",
+    "chapters": [
+      "97"
+    ],
+    "hsRange": "9701–9706",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong"
+    ],
+    "description": "Tranh vẽ, tác phẩm nghệ thuật, đồ cổ, tượng, bảo vật quốc gia, tem bưu chính, tiền xu",
+    "hsExamples": [
+      "97012100",
+      "97012200",
+      "97012900",
+      "97019100",
+      "97019200"
+    ],
+    "legalBasis": {
+      "chat-luong": "42/2019/TT-BCT; 33/2025/TT-BCT"
+    },
+    "verified": true,
+    "notes": "Tượng, tranh, đồ cổ, nhạc cụ (97) kiểm tra chất lượng khi có quy chuẩn áp dụng."
+  },
+  "bu-65-66-67": {
+    "code": "bu-65-66-67",
+    "label": "Da, lông, sừng, ngà, tơ, nón — Chương 65, 66, 67",
+    "group": "Da / Lông / Nón / Phụ liệu",
+    "chapters": [
+      "65",
+      "66",
+      "67"
+    ],
+    "hsRange": "6501–6705",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong"
+    ],
+    "description": "Mũ nón các loại, lông vũ trang trí, hoa nhân tạo, da thuộc, sản phẩm từ da, ngà voi, sừng, vỏ sò",
+    "hsExamples": [
+      "65050090",
+      "66011000",
+      "67010000",
+      "67029010"
+    ],
+    "legalBasis": {
+      "chat-luong": "42/2019/TT-BCT; 33/2025/TT-BCT"
+    },
+    "verified": true,
+    "notes": "Mũ (65), ô, gậy (66), hoa nhân tạo (67) kiểm tra chất lượng."
+  },
+  "dong-vat-01": {
+    "code": "dong-vat-01",
+    "label": "Động vật sống — Chương 01",
+    "group": "Động vật sống",
+    "chapters": [
+      "01"
+    ],
+    "hsRange": "0101–0106",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "kiem-dich-dong-vat"
+    ],
+    "description": "Động vật sống: trâu, bò, heo, cừu, dê, gia cầm, chó, mèo, động vật hoang dã",
+    "hsExamples": [
+      "01012100",
+      "01012900",
+      "01039200",
+      "01061100"
+    ],
+    "legalBasis": {
+      "kiem-dich-dong-vat": "17/2023/TT-BNNPTNT; 125/2021/TT-BCA; 01/2024/TT-BNNPTNT"
+    },
+    "verified": true,
+    "notes": "Động vật sống (01) nhập khẩu bắt buộc kiểm dịch động vật tại cửa khẩu. ĐV nguy cấp thuộc CITES."
+  },
+  "khoang-05": {
+    "code": "khoang-05",
+    "label": "Sản phẩm khoáng, muối — Chương 05",
+    "group": "Khoáng sản / Muối",
+    "chapters": [
+      "05"
+    ],
+    "hsRange": "0501–0511",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong"
+    ],
+    "description": "Muối, lưu huỳnh, đất, đá, xi măng, tro, kim cương công nghiệp, ngọc trai nuôi",
+    "hsExamples": [
+      "05010000",
+      "05021000",
+      "05040000"
+    ],
+    "legalBasis": {
+      "chat-luong": "42/2019/TT-BCT; 33/2025/TT-BCT"
+    },
+    "verified": true,
+    "notes": "Khoáng sản các loại (05): gelatin, keo xương, sừng, vỏ sò — kiểm tra chất lượng."
+  },
+  "go-06": {
+    "code": "go-06",
+    "label": "Cây sống và sản phẩm thực vật — Chương 06",
+    "group": "Thực vật / Cây giống",
+    "chapters": [
+      "06"
+    ],
+    "hsRange": "0601–0604",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "kiem-dich-thuc-vat"
+    ],
+    "description": "Cây giống, cây cảnh, rễ, cành, lá, hoa cắt, lá khô",
+    "hsExamples": [
+      "06011000",
+      "06012090",
+      "06029090",
+      "06031200"
+    ],
+    "legalBasis": {
+      "kiem-dich-thuc-vat": "TT 01/2024/TT-BNNPTNT; TT 33/2014/TT-BNNPTNT; 42/2019/TT-BCT"
+    },
+    "verified": true,
+    "notes": "Cây giống, cây cảnh, rễ, cành, hoa cắt (06) nhập khẩu cần kiểm dịch thực vật."
+  },
+  "kim-loai-khac-78-83": {
+    "code": "kim-loai-khac-78-83",
+    "label": "Kim loại cơ bản khác: chì, kẽm, thiếc, nhôm, vật liệu kim loại — Chương 78–83",
+    "group": "Kim loại khác / Vật liệu kim loại",
+    "chapters": [
+      "78",
+      "79",
+      "80",
+      "81",
+      "82",
+      "83"
+    ],
+    "hsRange": "7801–8311",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong"
+    ],
+    "description": "Chì, kẽm, thiếc, nhôm thỏi, vật liệu kim loại, dụng cụ cắt, khóa, hàng gia dụng bằng kim loại, két sắt",
+    "hsExamples": [
+      "78011000",
+      "79011100",
+      "80011000",
+      "81019700",
+      "82014000",
+      "83011000"
+    ],
+    "legalBasis": {
+      "chat-luong": "42/2019/TT-BCT; 33/2025/TT-BCT"
+    },
+    "verified": true,
+    "notes": "Chì, kẽm, thiếc, niken (78-83) kiểm tra chất lượng. Nhôm ép thuộc QCVN năng lượng."
+  },
+  "den-anh-sang-94-bu": {
+    "code": "den-anh-sang-94-bu",
+    "label": "Đèn chiếu sáng, thiết bị chiếu sáng — Chương 94 (bổ sung)",
+    "group": "Đèn / Chiếu sáng / Thiết bị điện",
+    "chapters": [
+      "94"
+    ],
+    "hsRange": "9405",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong",
+      "nang-luong"
+    ],
+    "description": "Đèn LED, đèn huỳnh quang, đèn compact, đèn trang trí, đèn pin, đèn ô tô, đèn đường, bóng đèn",
+    "hsExamples": [
+      "94051110",
+      "94051910"
+    ],
+    "legalBasis": {
+      "chat-luong": "Luật Chất lượng 2007; Nghị định 132/2008/NĐ-CP; QCVN 05:2019/BKHCN (an toàn đèn LED); TT 27/2012/TT-BKHCN",
+      "nang-luong": "QCVN 786/2014/BKHCN (nhãn năng lượng đèn LED); Thông tư 16/2014/TT-BCT"
+    },
+    "verified": true,
+    "notes": "Đèn LED nhập từ Trung Quốc phổ biến. Phải dán nhãn năng lượng theo QCVN 786/2014/BKHCN. verified=true — web search confirmed: QCVN 786/2014/BKHCN quy định nhãn năng lượng cho đèn LED chiếu sáng."
+  },
+  "da-thuc-vat-13": {
+    "code": "da-thuc-vat-13",
+    "label": "Da thuộc, thuộc da, lông vũ thô — Chương 13",
+    "group": "Da thuộc / Sáp / Cao su thô",
+    "chapters": [
+      "13"
+    ],
+    "hsRange": "1301–1302",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "chat-luong"
+    ],
+    "description": "Sáp ong, nhựa cây, cao su tự nhiên thô, gum, bơ thực vật, chất chiết từ thực vật",
+    "hsExamples": [
+      "13019090",
+      "13021110",
+      "13023100"
+    ],
+    "legalBasis": {
+      "chat-luong": "42/2019/TT-BCT; 33/2025/TT-BCT"
+    },
+    "verified": true,
+    "notes": "Sơn, vecni, keo dán, mực in (13) kiểm tra chất lượng và an toàn hóa chất."
+  },
+  "chat-beo-14": {
+    "code": "chat-beo-14",
+    "label": "Chất béo, dầu động thực vật, sáp — Chương 14",
+    "group": "Dầu mỡ / Chất béo",
+    "chapters": [
+      "14"
+    ],
+    "hsRange": "1401–1404",
+    "priorityImportFromCN": true,
+    "procedures": [
+      "attp"
+    ],
+    "description": "Dầu cọ, dầu đậu nành, dầu hướng dương, mỡ động vật, sáp ong, rơm, bông gòn",
+    "hsExamples": [
+      "14011000",
+      "14012010",
+      "14012021"
+    ],
+    "legalBasis": {
+      "attp": "NĐ 15/2018/NĐ-CP; TT 48/2015/TT-BYT; 17/2023/TT-BNNPTNT"
+    },
+    "verified": true,
+    "notes": "Chất béo, dầu động vật/thực vật (14) thuộc diện kiểm tra ATTP."
+  },
+  "chuong-77": {
+    "code": "chuong-77",
+    "label": "Chương 77 (WCO Reserved) — không áp dụng cho hàng thương mại thông thường",
+    "group": "Dự phòng WCO",
+    "chapters": [
+      "77"
+    ],
+    "hsRange": "7701–7704",
+    "priorityImportFromCN": false,
+    "procedures": [],
+    "description": "Chương 77 được WCO dự phòng cho mục đích đặc biệt (hạt nhân, vật liệu phản ứng). Không dùng cho hàng nhập khẩu thông thường.",
+    "hsExamples": [],
+    "legalBasis": {},
+    "verified": true,
+    "notes": "Chương 77 WCO dự phòng, hiện tại không có mã HS 8 số nào thuộc chương 77 trong biểu thuế Việt Nam hiện hành. Không cần thủ tục nhập khẩu."
   }
 }
