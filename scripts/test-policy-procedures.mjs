@@ -248,5 +248,19 @@ check('getProcedureByCode(cam-nk) has exemptions', Array.isArray(camNK?.exemptio
 const mayMac84 = getProcedureByCode('may-mac-84');
 check('getProcedureByCode(may-mac-84) is a chapter-group (has chapters)', !!mayMac84?.chapters);
 
+// 2026-10-02: chapter-groups now have exemptions derived from procedure types
+check('chapter-group may-mac-84 has exemptions', Array.isArray(mayMac84?.exemptions) && mayMac84.exemptions.length > 0);
+check('chapter-group dong-vat-01 has exemptions', Array.isArray(getProcedureByCode('dong-vat-01')?.exemptions));
+check('chapter-group chuong-77 has no exemptions (WCO reserved)', getProcedureByCode('chuong-77')?.exemptions === undefined);
+
+// Verify exemptions count matches merged procedure-type exemptions
+const mayMacExemptions = new Set(mayMac84?.exemptions || []);
+const procExemptions = new Set([
+  ...(d['chat-luong']?.exemptions || []),
+  ...(d['nang-luong']?.exemptions || []),
+]);
+check('chapter-group exemptions are superset of merged procedure exemptions',
+  [...procExemptions].every(ex => mayMacExemptions.has(ex)));
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
