@@ -3,14 +3,15 @@
   "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → draft (có bảng, chưa qua cửa dữ liệu thật) → done (qua cửa). `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
     "3923": {
-      "status": "claimed",
+      "status": "draft",
       "doneAt": null,
       "by": "hermes-211",
+      "table": true,
       "leafCount": 16,
-      "table": false,
-      "rules": 0,
-      "draftAt": "2026-10-02T14:40:00.000Z",
-      "noteVi": "Queue score=26.3, tier=A, residual=0.5."
+      "rules": 16,
+      "draftAt": "2026-10-02T15:20:00.000Z",
+      "gateVi": "pending expert review after PR#98 merge",
+      "noteVi": "Bảng 16 rules/2 attrs (productKind + specCode), phủ 16/16 lá 8 số. Nguồn: Biểu thuế 2026."
     },
     "3924": {
       "status": "claimed",
