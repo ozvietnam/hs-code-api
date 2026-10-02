@@ -3066,6 +3066,38 @@
       "heading": "9620",
       "text": "then khóa làm bằng nhựa plastic",
       "expectHs": "96200010"
+    },
+    {
+      "id": "6402-safety-other-pvc",
+      "heading": "6402",
+      "text": "giày bảo hộ nhựa không có mũi thép loại thường",
+      "facts": {
+        "footwearKind": "safety",
+        "upperMaterial": "plastic"
+      },
+      "expectHs": "64029110",
+      "noteVi": "safety: bảo hộ nhựa có mũi thép -> 6402.91.10 (r-safety priority 80 > r-safety-other 75)"
+    },
+    {
+      "id": "8714-bicycle-handlebar",
+      "heading": "8714",
+      "text": "tay lái xe đạp nhôm",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "other"
+      },
+      "expectHs": "87149991",
+      "noteVi": "default-bicycle: tay lái, cọc lái, chắn bùn, giá đỡ, cáp điều khiển xe đạp -> 8714.99.91"
+    },
+    {
+      "id": "9620-default-other-material",
+      "heading": "9620",
+      "text": "chân giá đỡ máy ảnh bằng kim loại tổ hợp",
+      "facts": {
+        "material": "other"
+      },
+      "expectHs": "96200090",
+      "noteVi": "default: vật liệu không phải plastic/steel/aluminum/carbon/wood -> 9620.00.90"
     }
   ]
 }
