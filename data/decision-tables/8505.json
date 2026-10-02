@@ -138,5 +138,38 @@
   "inputAttributes": [
     "articleType"
   ],
-  "essenceVi": "loại vật"
+  "essenceVi": "loại vật",
+  "attributes": {
+    "articleType": {
+      "type": "enum",
+      "domain": [
+        "coupling",
+        "liftingHead",
+        "mri",
+        "otherElectro",
+        "permMetal",
+        "permOther"
+      ],
+      "detect": {
+        "coupling": [
+          "coupling"
+        ],
+        "liftingHead": [
+          "liftingHead"
+        ],
+        "mri": [
+          "mri"
+        ],
+        "otherElectro": [
+          "otherElectro"
+        ],
+        "permMetal": [
+          "permMetal"
+        ],
+        "permOther": [
+          "permOther"
+        ]
+      }
+    }
+  }
 }
