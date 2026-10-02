@@ -51,8 +51,16 @@ chapterGroups.forEach(k => {
 });
 
 // 7. Mỗi chapter-group có legalBasis (object, có thể rỗng {})
-const noLB = chapterGroups.filter(k => !d[k].legalBasis || typeof d[k].legalBasis !== 'object');
-check('mọi chapter-group có legalBasis', noLB.length === 0, noLB);
+// NOTE: legalBasis là text tự nhiên, không nhất thiết khớp mã legal-docs.json.
+// Chương 77 (WCO Reserved) và các nhóm không thuộc diện quản lý → legalBasis={} là acceptable.
+const noLB = chapterGroups.filter(k => {
+  if (k === 'chuong-77') return false; // WCO reserved, intentionally empty
+  const lb = d[k].legalBasis;
+  if (!lb || typeof lb !== 'object') return true;
+  const vals = Object.values(lb).filter(v => v && String(v).trim().length > 0);
+  return vals.length === 0;
+});
+check('mọi chapter-group có legalBasis (text không rỗng, trừ chuong-77 WCO)', noLB.length === 0, noLB);
 
 // 8. priorityImportFromCN là boolean hoặc không có (default false)
 chapterGroups.forEach(k => {
