@@ -1,0 +1,427 @@
+{
+  "heading": "8536",
+  "description": "Electrical apparatus for switching, protecting electrical circuits, for making connections to or in electrical circuits, for a voltage not exceeding 1000 volts; connectors for optical fibres, optical fibre bundles or cables",
+  "attributes": [
+    {
+      "id": "function",
+      "descriptionVi": "Loại thiết bị",
+      "values": {
+        "fuse": "Cầu chì (fuse)",
+        "circuitBreaker": "Cầu dao tự động (automatic circuit breaker)",
+        "surgeProtection": "Thiết bị chống sét, chống quá dòng khác",
+        "relayLe60V": "Rơ le điện áp ≤ 60V",
+        "relayGt60V": "Rơ le điện áp > 60V",
+        "switch": "Công tắc điện",
+        "lampholder": "Đế đèn",
+        "plug": "Phích cắm, ổ cắm điện",
+        "fiberConnector": "Đầu nối cáp quang",
+        "junctionBlock": "Bộ đấu nối dây, kẹp pin, phiến đầu nối"
+      }
+    },
+    {
+      "id": "currentRating",
+      "descriptionVi": "Dòng điện định mức (ampere)",
+      "values": {
+        "lt16A": "Dưới 16A (< 16A)",
+        "a16to32": "Từ 16A đến 32A",
+        "a32to1000": "Trên 32A đến 1.000A",
+        "unspecified": "Không quy định cụ thể"
+      }
+    },
+    {
+      "id": "specialApp",
+      "descriptionVi": "Ứng dụng đặc biệt hoặc vật liệu",
+      "values": {
+        "fan": "Quạt điện (ứng dụng quạt)",
+        "radio": "Thiết bị sóng vô tuyến",
+        "sen": "Xe có động cơ (SEN)",
+        "riceCooker": "Nồi cơm điện, lò nướng",
+        "telephone": "Điện thoại, viễn thông",
+        "motorStarter": "Khởi động động cơ điện, đảo chiều quay",
+        "ceramic": "Bằng gốm",
+        "copper": "Bằng đồng",
+        "none": "Không có ứng dụng đặc biệt"
+      }
+    }
+  ],
+  "rules": [
+    {
+      "function": "fuse",
+      "currentRating": "lt16A",
+      "specialApp": "fan",
+      "hsCode": "85361011"
+    },
+    {
+      "function": "fuse",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85361012"
+    },
+    {
+      "function": "fuse",
+      "currentRating": "unspecified",
+      "specialApp": "sen",
+      "hsCode": "85361013"
+    },
+    {
+      "function": "fuse",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85361019"
+    },
+    {
+      "function": "fuse",
+      "currentRating": "lt16A",
+      "specialApp": "fan",
+      "hsCode": "85361091"
+    },
+    {
+      "function": "fuse",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85361092"
+    },
+    {
+      "function": "fuse",
+      "currentRating": "unspecified",
+      "specialApp": "sen",
+      "hsCode": "85361093"
+    },
+    {
+      "function": "fuse",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85361099"
+    },
+    {
+      "function": "circuitBreaker",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85362011"
+    },
+    {
+      "function": "circuitBreaker",
+      "currentRating": "a16to32",
+      "specialApp": "none",
+      "hsCode": "85362012"
+    },
+    {
+      "function": "circuitBreaker",
+      "currentRating": "a32to1000",
+      "specialApp": "none",
+      "hsCode": "85362013"
+    },
+    {
+      "function": "circuitBreaker",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85362019"
+    },
+    {
+      "function": "circuitBreaker",
+      "currentRating": "unspecified",
+      "specialApp": "riceCooker",
+      "hsCode": "85362020"
+    },
+    {
+      "function": "circuitBreaker",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85362091"
+    },
+    {
+      "function": "circuitBreaker",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85362099"
+    },
+    {
+      "function": "surgeProtection",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85363010"
+    },
+    {
+      "function": "surgeProtection",
+      "currentRating": "lt16A",
+      "specialApp": "radio",
+      "hsCode": "85363020"
+    },
+    {
+      "function": "surgeProtection",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85363090"
+    },
+    {
+      "function": "relayLe60V",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85364110"
+    },
+    {
+      "function": "relayLe60V",
+      "currentRating": "lt16A",
+      "specialApp": "radio",
+      "hsCode": "85364120"
+    },
+    {
+      "function": "relayLe60V",
+      "currentRating": "lt16A",
+      "specialApp": "fan",
+      "hsCode": "85364130"
+    },
+    {
+      "function": "relayLe60V",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85364140"
+    },
+    {
+      "function": "relayLe60V",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85364191"
+    },
+    {
+      "function": "relayLe60V",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85364199"
+    },
+    {
+      "function": "relayGt60V",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85364910"
+    },
+    {
+      "function": "relayGt60V",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85364990"
+    },
+    {
+      "function": "switch",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85365020"
+    },
+    {
+      "function": "switch",
+      "currentRating": "lt16A",
+      "specialApp": "radio",
+      "hsCode": "85365032"
+    },
+    {
+      "function": "switch",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85365033"
+    },
+    {
+      "function": "switch",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85365039"
+    },
+    {
+      "function": "switch",
+      "currentRating": "lt16A",
+      "specialApp": "riceCooker",
+      "hsCode": "85365040"
+    },
+    {
+      "function": "switch",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85365051"
+    },
+    {
+      "function": "switch",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85365059"
+    },
+    {
+      "function": "switch",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85365061"
+    },
+    {
+      "function": "switch",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85365069"
+    },
+    {
+      "function": "switch",
+      "currentRating": "unspecified",
+      "specialApp": "motorStarter",
+      "hsCode": "85365095"
+    },
+    {
+      "function": "switch",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85365096"
+    },
+    {
+      "function": "switch",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85365099"
+    },
+    {
+      "function": "lampholder",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85366111"
+    },
+    {
+      "function": "lampholder",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85366119"
+    },
+    {
+      "function": "lampholder",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85366191"
+    },
+    {
+      "function": "lampholder",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85366199"
+    },
+    {
+      "function": "plug",
+      "currentRating": "unspecified",
+      "specialApp": "telephone",
+      "hsCode": "85366910"
+    },
+    {
+      "function": "plug",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85366923"
+    },
+    {
+      "function": "plug",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85366924"
+    },
+    {
+      "function": "plug",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85366929"
+    },
+    {
+      "function": "plug",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85366932"
+    },
+    {
+      "function": "plug",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85366939"
+    },
+    {
+      "function": "plug",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85366992"
+    },
+    {
+      "function": "plug",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85366999"
+    },
+    {
+      "function": "fiberConnector",
+      "currentRating": "unspecified",
+      "specialApp": "ceramic",
+      "hsCode": "85367010"
+    },
+    {
+      "function": "fiberConnector",
+      "currentRating": "unspecified",
+      "specialApp": "copper",
+      "hsCode": "85367020"
+    },
+    {
+      "function": "fiberConnector",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85367090"
+    },
+    {
+      "function": "junctionBlock",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85369012"
+    },
+    {
+      "function": "junctionBlock",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85369019"
+    },
+    {
+      "function": "junctionBlock",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85369022"
+    },
+    {
+      "function": "junctionBlock",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85369029"
+    },
+    {
+      "function": "junctionBlock",
+      "currentRating": "lt16A",
+      "specialApp": "none",
+      "hsCode": "85369032"
+    },
+    {
+      "function": "junctionBlock",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85369039"
+    },
+    {
+      "function": "junctionBlock",
+      "currentRating": "unspecified",
+      "specialApp": "sen",
+      "hsCode": "85369040"
+    },
+    {
+      "function": "junctionBlock",
+      "currentRating": "unspecified",
+      "specialApp": "telephone",
+      "hsCode": "85369093"
+    },
+    {
+      "function": "junctionBlock",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85369094"
+    },
+    {
+      "function": "junctionBlock",
+      "currentRating": "unspecified",
+      "specialApp": "none",
+      "hsCode": "85369099"
+    }
+  ]
+}
