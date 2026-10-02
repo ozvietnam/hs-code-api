@@ -1,0 +1,166 @@
+{
+  "heading": "7110",
+  "titleVi": "Platinum và các kim loại quý nhóm platinum",
+  "verified": false,
+  "essenceTestVi": "Kim loại quý nhóm platinum (platinum, palladium, rhodium, iridium/osmium/ruthenium) chia theo dạng vật chất (thỏi/thanh/bột vs loại khác).",
+  "sourceVi": "Biểu thuế NK VN 2026, nhóm 7110",
+  "inputs": [
+    {
+      "attribute": "metalType",
+      "type": "enum",
+      "domain": [
+        "platinum",
+        "palladium",
+        "rhodium",
+        "iridium_osmium_ruthenium"
+      ],
+      "labelVi": "Loại kim loại quý",
+      "questionVi": "Hàng thuộc loại kim loại quý nào?"
+    },
+    {
+      "attribute": "formType",
+      "type": "enum",
+      "domain": [
+        "ingot_powder",
+        "other"
+      ],
+      "labelVi": "Dạng vật chất",
+      "questionVi": "Hàng ở dạng thỏi, thanh đúc, bột hay dạng khác?"
+    }
+  ],
+  "hitPolicy": "FIRST",
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "metalType": "platinum",
+        "formType": "ingot_powder"
+      },
+      "hs": "71101110",
+      "reasonVi": "GIR 6 — platinum dạng thỏi/thanh/bột, Biểu thuế 2026 → 71101110 (MFN 1%)",
+      "source": "Biểu thuế NK VN 2026, nhóm 7110"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "metalType": "platinum",
+        "formType": "other"
+      },
+      "hs": "71101190",
+      "reasonVi": "GIR 6 — platinum dạng khác, Biểu thuế 2026 → 71101190 (MFN 1%)",
+      "source": "Biểu thuế NK VN 2026, nhóm 7110"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "metalType": "platinum",
+        "formType": "other"
+      },
+      "hs": "71101900",
+      "reasonVi": "GIR 6 — platinum loại khác, Biểu thuế 2026 → 71101900 (MFN 1%)",
+      "source": "Biểu thuế NK VN 2026, nhóm 7110"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "metalType": "palladium",
+        "formType": "ingot_powder"
+      },
+      "hs": "71102110",
+      "reasonVi": "GIR 6 — palladium dạng thỏi/thanh/bột, Biểu thuế 2026 → 71102110 (MFN 1%)",
+      "source": "Biểu thuế NK VN 2026, nhóm 7110"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "metalType": "palladium",
+        "formType": "other"
+      },
+      "hs": "71102190",
+      "reasonVi": "GIR 6 — palladium dạng khác, Biểu thuế 2026 → 71102190 (MFN 1%)",
+      "source": "Biểu thuế NK VN 2026, nhóm 7110"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "metalType": "palladium",
+        "formType": "other"
+      },
+      "hs": "71102900",
+      "reasonVi": "GIR 6 — palladium loại khác, Biểu thuế 2026 → 71102900 (MFN 1%)",
+      "source": "Biểu thuế NK VN 2026, nhóm 7110"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "metalType": "rhodium",
+        "formType": "ingot_powder"
+      },
+      "hs": "71103110",
+      "reasonVi": "GIR 6 — rhodium dạng thỏi/thanh/bột, Biểu thuế 2026 → 71103110 (MFN 1%)",
+      "source": "Biểu thuế NK VN 2026, nhóm 7110"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "metalType": "rhodium",
+        "formType": "other"
+      },
+      "hs": "71103190",
+      "reasonVi": "GIR 6 — rhodium dạng khác, Biểu thuế 2026 → 71103190 (MFN 1%)",
+      "source": "Biểu thuế NK VN 2026, nhóm 7110"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "metalType": "rhodium",
+        "formType": "other"
+      },
+      "hs": "71103900",
+      "reasonVi": "GIR 6 — rhodium loại khác, Biểu thuế 2026 → 71103900 (MFN 1%)",
+      "source": "Biểu thuế NK VN 2026, nhóm 7110"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "metalType": "iridium_osmium_ruthenium",
+        "formType": "ingot_powder"
+      },
+      "hs": "71104110",
+      "reasonVi": "GIR 6 — iridium/osmium/ruthenium dạng thỏi/thanh/bột, Biểu thuế 2026 → 71104110 (MFN 1%)",
+      "source": "Biểu thuế NK VN 2026, nhóm 7110"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "metalType": "iridium_osmium_ruthenium",
+        "formType": "other"
+      },
+      "hs": "71104190",
+      "reasonVi": "GIR 6 — iridium/osmium/ruthenium dạng khác, Biểu thuế 2026 → 71104190 (MFN 1%)",
+      "source": "Biểu thuế NK VN 2026, nhóm 7110"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "metalType": "iridium_osmium_ruthenium",
+        "formType": "other"
+      },
+      "hs": "71104900",
+      "reasonVi": "GIR 6 — iridium/osmium/ruthenium loại khác, Biểu thuế 2026 → 71104900 (MFN 1%)",
+      "source": "Biểu thuế NK VN 2026, nhóm 7110"
+    }
+  ]
+}
