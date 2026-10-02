@@ -18,6 +18,7 @@
  *
  *   node scripts/bench-matrix.mjs --models=none --limit=200
  *   node scripts/bench-matrix.mjs --models=none,live --write
+ *   node scripts/bench-matrix.mjs --models=none --input=data/bench/erp-titles-synth.jsonl --field=titleZh
  */
 import { readFileSync, writeFileSync } from 'fs';
 import { dirname, join } from 'path';
@@ -33,6 +34,8 @@ const arg = (name, fallback) => {
   return hit ? hit.split('=').slice(1).join('=') : fallback;
 };
 const DEPTHS = [2, 4, 6, 8];
+const INPUT = arg('input', null);
+const FIELD = arg('field', 'titleZh');
 
 // ── Tiến trình con: chạy MỘT chế độ, in JSON kết quả ra stdout ──────────────
 if (arg('child-mode', null)) {
@@ -59,11 +62,19 @@ async function runChild(mode, limit) {
   console.warn = () => {};
 
   const handler = require('../api/suggest.js');
-  const gold = readFileSync(join(ROOT, 'data', 'oz-gold-final.jsonl'), 'utf8').trim().split('\n').map((l) => JSON.parse(l));
-  let items = gold
-    .filter((g) => isHeldOut(g))
-    .map((g) => ({ desc: String(g.sampleDesc || g.tenHang || '').trim(), truth: String(g.hsCode).replace(/\D/g, '') }))
-    .filter((it) => it.desc.length >= 20 && it.truth.length === 8);
+  let items;
+  if (INPUT) {
+    // Bộ đo ngoài (vd data/bench/erp-titles-synth.jsonl — tiêu đề Taobao như ERP gửi).
+    items = readFileSync(join(ROOT, INPUT), 'utf8').trim().split('\n').map((l) => JSON.parse(l))
+      .map((r) => ({ desc: String(r[FIELD] || '').trim(), truth: String(r.hsCode).replace(/\D/g, '') }))
+      .filter((it) => it.desc && it.truth.length === 8);
+  } else {
+    const gold = readFileSync(join(ROOT, 'data', 'oz-gold-final.jsonl'), 'utf8').trim().split('\n').map((l) => JSON.parse(l));
+    items = gold
+      .filter((g) => isHeldOut(g))
+      .map((g) => ({ desc: String(g.sampleDesc || g.tenHang || '').trim(), truth: String(g.hsCode).replace(/\D/g, '') }))
+      .filter((it) => it.desc.length >= 20 && it.truth.length === 8);
+  }
   if (limit > 0) items = items.slice(0, limit);
 
   const hit = { top1: {}, top3: {} };
@@ -127,7 +138,8 @@ for (const mode of models) {
     process.exit(1);
   }
   const t0 = Date.now();
-  const r = spawnSync(process.execPath, [fileURLToPath(import.meta.url), `--child-mode=${mode}`, `--limit=${limit}`], {
+  const passArgs = argv.filter((a) => a.startsWith('--input=') || a.startsWith('--field='));
+  const r = spawnSync(process.execPath, [fileURLToPath(import.meta.url), `--child-mode=${mode}`, `--limit=${limit}`, ...passArgs], {
     cwd: ROOT, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024, env: process.env,
   });
   const line = (r.stdout || '').trim().split('\n').filter((l) => l.startsWith('{')).pop();
@@ -149,10 +161,12 @@ for (const r of results) {
 for (const r of results) console.log(`\n[${r.mode}] status: ${JSON.stringify(r.status)} · lỗi HTTP: ${r.httpErrors} · llmError: ${r.llmErrorRate}%`);
 
 if (argv.includes('--write')) {
-  const out = join(ROOT, 'data', 'bench-matrix-latest.json');
+  const out = join(ROOT, 'data', INPUT ? 'bench-matrix-erp-latest.json' : 'bench-matrix-latest.json');
   writeFileSync(out, `${JSON.stringify({
     updatedAt: new Date().toISOString(),
-    method: 'Gọi handler /api/suggest thật trên tập giữ riêng oz-gold (HS_EVAL_EXCLUDE_HOLDOUT=1 — kho tiền lệ bỏ tập này). none = không có AI nào (sàn cho mô hình yếu nhất); live = chuỗi provider đang cấu hình.',
+    method: INPUT
+      ? `Gọi handler /api/suggest thật trên ${INPUT} (trường ${FIELD}), sinh từ tập giữ riêng oz-gold (HS_EVAL_EXCLUDE_HOLDOUT=1). none = không AI; live = chuỗi provider đang cấu hình.`
+      : 'Gọi handler /api/suggest thật trên tập giữ riêng oz-gold (HS_EVAL_EXCLUDE_HOLDOUT=1 — kho tiền lệ bỏ tập này). none = không có AI nào (sàn cho mô hình yếu nhất); live = chuỗi provider đang cấu hình.',
     limit: limit || null,
     results,
   }, null, 2)}\n`);
