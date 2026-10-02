@@ -1,0 +1,247 @@
+{
+  "heading": "7318",
+  "titleVi": "Kim loại gia công cơ khí; ốc, bu lông, đai ốc, đinh vít, chốt hãm và các kim loại gia công cơ khí khác; bộ phận",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "fastenerKind",
+      "type": "enum",
+      "domain": [
+        "square_head_screw",
+        "other_screw",
+        "hook_ring_nail",
+        "self_tapping_screw",
+        "bolt_with_nut",
+        "nut",
+        "other_bolt_rivet",
+        "spring_lock_washer",
+        "other_washer",
+        "cotter_pin",
+        "spring_position_pin",
+        "other_fastener"
+      ],
+      "labelVi": "Loại kim loại gia công cơ khí ( fastener )",
+      "questionVi": "Sản phẩm thuộc loại kim loại gia công cơ khí nào: vít đầu vuông, đinh vít thường, đinh móc/vòng, đinh vít tự tarô, bu lông có đai ốc, đai ốc, vòng đệm lò xo/hãm, vòng đệm khác, chốt hãm/chốt định vị, hay loại khác?"
+    },
+    {
+      "attribute": "diameter",
+      "type": "enum",
+      "domain": [
+        "le_16mm",
+        "over_16mm",
+        "not_applicable"
+      ],
+      "labelVi": "Đường kính ngoài của thân (mm)",
+      "questionVi": "Đường kính ngoài của thân sản phẩm: không quá 16mm, trên 16mm, hay không áp dụng (đinh móc, vòng đệm, chốt định vị)?"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "square_head_screw"
+      },
+      "hs": "73181100",
+      "reasonVi": "GIR 6 — vít đầu vuông, 7318.11 (MFN 5%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "other_screw",
+        "diameter": "le_16mm"
+      },
+      "hs": "73181210",
+      "reasonVi": "GIR 6 — đinh vít khác, đường kính ≤16mm, 7318.12.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "other_screw",
+        "diameter": "over_16mm"
+      },
+      "hs": "73181290",
+      "reasonVi": "GIR 6 — đinh vít khác, đường kính >16mm, 7318.12.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "hook_ring_nail"
+      },
+      "hs": "73181300",
+      "reasonVi": "GIR 6 — đinh móc và đinh vòng, 7318.13 (MFN 10%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "self_tapping_screw",
+        "diameter": "le_16mm"
+      },
+      "hs": "73181410",
+      "reasonVi": "GIR 6 — đinh vít tự tarô, đường kính ≤16mm, 7318.14.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "self_tapping_screw",
+        "diameter": "over_16mm"
+      },
+      "hs": "73181490",
+      "reasonVi": "GIR 6 — đinh vít tự tarô, đường kính >16mm, 7318.14.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "bolt_with_nut",
+        "diameter": "le_16mm"
+      },
+      "hs": "73181510",
+      "reasonVi": "GIR 6 — bu lông có đai ốc, đường kính ≤16mm, 7318.15.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "bolt_with_nut",
+        "diameter": "over_16mm"
+      },
+      "hs": "73181590",
+      "reasonVi": "GIR 6 — bu lông có đai ốc, đường kính >16mm, 7318.15.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "nut",
+        "diameter": "le_16mm"
+      },
+      "hs": "73181610",
+      "reasonVi": "GIR 6 — đai ốc, đường kính ≤16mm, 7318.16.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "nut",
+        "diameter": "over_16mm"
+      },
+      "hs": "73181690",
+      "reasonVi": "GIR 6 — đai ốc, đường kính >16mm, 7318.16.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "other_bolt_rivet",
+        "diameter": "le_16mm"
+      },
+      "hs": "73181910",
+      "reasonVi": "GIR 6 — đinh vít/bu lông/rivet khác, đường kính ≤16mm, 7318.19.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "other_bolt_rivet",
+        "diameter": "over_16mm"
+      },
+      "hs": "73181990",
+      "reasonVi": "GIR 6 — đinh vít/bu lông/rivet khác, đường kính >16mm, 7318.19.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "spring_lock_washer"
+      },
+      "hs": "73182100",
+      "reasonVi": "GIR 6 — vòng đệm lò xo và vòng đệm hãm, 7318.21 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "other_washer"
+      },
+      "hs": "73182200",
+      "reasonVi": "GIR 6 — vòng đệm khác, 7318.22 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "cotter_pin",
+        "diameter": "le_16mm"
+      },
+      "hs": "73182310",
+      "reasonVi": "GIR 6 — chốt hãm, đường kính ≤16mm, 7318.23.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "cotter_pin",
+        "diameter": "over_16mm"
+      },
+      "hs": "73182390",
+      "reasonVi": "GIR 6 — chốt hãm, đường kính >16mm, 7318.23.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-17",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "spring_position_pin"
+      },
+      "hs": "73182400",
+      "reasonVi": "GIR 6 — chốt hãm và chốt định vị, 7318.24 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-18",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "other_fastener",
+        "diameter": "le_16mm"
+      },
+      "hs": "73182910",
+      "reasonVi": "GIR 6 — đinh ốc khác, đường kính ≤16mm, 7318.29.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-19",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "other_fastener",
+        "diameter": "over_16mm"
+      },
+      "hs": "73182990",
+      "reasonVi": "GIR 6 — đinh ốc khác, đường kính >16mm, 7318.29.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceTestVi": "fastenerKind (12 giá trị) + diameter (2 giá trị: ≤16mm / >16mm, hoặc N/A) → phân biệt 19 mã 8 số trong nhóm 7318. Đường kính là thuộc tính rìa: một số loại (vít đầu vuông, đinh móc, vòng đệm, chốt định vị) không phân biệt đường kính → diameter = not_applicable. MFN: hầu hết 12%, ngoại trừ 731811 (5%).",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 7318 (Thông tư 65/2024/TT-BTC)."
+}
