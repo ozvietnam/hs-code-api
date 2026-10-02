@@ -428,11 +428,124 @@
     }
   ],
   "inputAttributes": [
-    "equipmentFamily",
-    "liftKind",
     "agUse",
     "continuousType",
+    "equipmentFamily",
+    "liftKind",
     "misc84289Kind"
   ],
-  "essenceVi": "thiết bị+thang/máy+nông nghiệp+liên tục+khác"
+  "essenceVi": "thiết bị+thang/máy+nông nghiệp+liên tục+khác",
+  "attributes": {
+    "agUse": {
+      "type": "enum",
+      "domain": [
+        "no",
+        "yes"
+      ],
+      "detect": {
+        "no": [
+          "no"
+        ],
+        "yes": [
+          "yes"
+        ]
+      }
+    },
+    "continuousType": {
+      "type": "enum",
+      "domain": [
+        "belt",
+        "bucket",
+        "otherMechanism",
+        "underground"
+      ],
+      "detect": {
+        "belt": [
+          "belt"
+        ],
+        "bucket": [
+          "bucket"
+        ],
+        "otherMechanism": [
+          "otherMechanism"
+        ],
+        "underground": [
+          "underground"
+        ]
+      }
+    },
+    "equipmentFamily": {
+      "type": "enum",
+      "domain": [
+        "continuous",
+        "escalatorWalkway",
+        "industrialRobot",
+        "liftSkip",
+        "other84289",
+        "pneumatic",
+        "telefericSkiLift"
+      ],
+      "detect": {
+        "continuous": [
+          "continuous"
+        ],
+        "escalatorWalkway": [
+          "escalatorWalkway"
+        ],
+        "industrialRobot": [
+          "industrialRobot"
+        ],
+        "liftSkip": [
+          "liftSkip"
+        ],
+        "other84289": [
+          "other84289"
+        ],
+        "pneumatic": [
+          "pneumatic"
+        ],
+        "telefericSkiLift": [
+          "telefericSkiLift"
+        ]
+      }
+    },
+    "liftKind": {
+      "type": "enum",
+      "domain": [
+        "goodsOther",
+        "passenger",
+        "skipHoistBucket"
+      ],
+      "detect": {
+        "goodsOther": [
+          "goodsOther"
+        ],
+        "passenger": [
+          "passenger"
+        ],
+        "skipHoistBucket": [
+          "skipHoistBucket"
+        ]
+      }
+    },
+    "misc84289Kind": {
+      "type": "enum",
+      "domain": [
+        "mineWagonGear",
+        "other",
+        "pcbSemiconductor"
+      ],
+      "detect": {
+        "mineWagonGear": [
+          "mineWagonGear"
+        ],
+        "other": [
+          "other"
+        ],
+        "pcbSemiconductor": [
+          "pcbSemiconductor"
+        ]
+      }
+    }
+  }
 }
