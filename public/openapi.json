@@ -383,6 +383,153 @@
                       "type": "string",
                       "description": "Cảnh báo khi dữ liệu chính sách trống"
                     },
+                    "policyProcedures": {
+                      "type": "array",
+                      "description": "Thủ tục kiểm tra chuyên ngành, giấy phép và cấm nhập khẩu — cùng cấu trúc với /api/policy-procedures",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string",
+                            "description": "Mã thủ tục"
+                          },
+                          "label": {
+                            "type": "string",
+                            "description": "Tên đầy đủ"
+                          },
+                          "labelShort": {
+                            "type": "string",
+                            "description": "Tên viết tắt"
+                          },
+                          "ministry": {
+                            "type": "string",
+                            "description": "Bộ ngành quản lý"
+                          },
+                          "trigger": {
+                            "type": "string",
+                            "description": "Điều kiện kích hoạt"
+                          },
+                          "matchPatterns": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "documents": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "estimatedDays": {
+                            "type": "object",
+                            "description": "min, max, note"
+                          },
+                          "estimatedCost": {
+                            "type": "string",
+                            "description": "Chi phí ước tính"
+                          },
+                          "agency": {
+                            "type": "string",
+                            "description": "Cơ quan thực hiện"
+                          },
+                          "legalBasis": {
+                            "type": "string",
+                            "description": "Căn cứ pháp luật"
+                          },
+                          "exemptions": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "severity": {
+                            "type": "string",
+                            "enum": [
+                              "CRITICAL",
+                              "HIGH",
+                              "MEDIUM",
+                              "LOW"
+                            ]
+                          },
+                          "onFail": {
+                            "type": "string",
+                            "description": "Hậu quả khi không đạt"
+                          },
+                          "notes": {
+                            "type": "string",
+                            "description": "Ghi chú thêm"
+                          },
+                          "verified": {
+                            "type": "boolean"
+                          },
+                          "priorityImportFromCN": {
+                            "type": "boolean"
+                          },
+                          "matchedRaw": {
+                            "type": "string",
+                            "description": "Chuỗi gốc kích hoạt"
+                          }
+                        }
+                      }
+                    },
+                    "hasPolicyWarning": {
+                      "type": "boolean",
+                      "description": "Có cảnh báo chính sách (cấm NK, kiểm tra chuyên ngành, giấy phép)"
+                    },
+                    "warnings": {
+                      "type": "object",
+                      "description": "Các cờ chính sách: requiresLicense, licenseTypes[], requiresInspection, inspectionTypes[], requiresQuarantine, dualUseControl, usedGoodsImportBan, ministries[], summary"
+                    },
+                    "ministries": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Danh sách bộ quản lý chuyên ngành"
+                    },
+                    "taxBvmt": {
+                      "type": "string",
+                      "description": "Thuế BVMT (%)"
+                    },
+                    "taxVatReduction": {
+                      "type": "null",
+                      "description": "Luôn null (NĐ 174/2025 đã áp dụng trong vatReduction)"
+                    },
+                    "treeLevel": {
+                      "type": "string",
+                      "enum": [
+                        "NATIONAL"
+                      ],
+                      "description": "Cấp biểu thuế — hiện chỉ quốc gia"
+                    },
+                    "indentationLevel": {
+                      "type": "integer",
+                      "description": "Cấp lùi trong biểu thuế (subheading)"
+                    },
+                    "parentSubheadingCode": {
+                      "type": "string",
+                      "nullable": true,
+                      "description": "Mã nhóm cha (6 số)"
+                    },
+                    "siblingHsCodes": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Các mã cùng nhóm 6 số"
+                    },
+                    "nameEn": {
+                      "type": "string",
+                      "description": "Tên tiếng Anh"
+                    },
+                    "discriminatingFeatures": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Các đặc điểm phân biệt trong nhóm"
+                    },
                     "mappedHs": {
                       "type": "object",
                       "description": "Chương 98: mã hàng tương ứng tại Mục I"
