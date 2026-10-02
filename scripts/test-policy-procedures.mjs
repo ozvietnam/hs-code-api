@@ -154,5 +154,18 @@ abbrevTests.forEach(([input, expected]) => {
   check(`normalizeType(${JSON.stringify(input)}) = ${expected}`, got === expected, `got: ${got}`);
 });
 
+// 2026-10-02: hsExamples must be valid 8-digit codes from tax.json
+const taxDb = require('../data/tax.json');
+const taxKeysValid = new Set(Object.keys(taxDb));
+const _cgKeys = Object.keys(d).filter(k => !d[k].ministry && d[k].chapters);
+_cgKeys.forEach(k => {
+  const exs = d[k].hsExamples || [];
+  check(`chapter-group ${k} hsExamples[] are valid codes`, exs.every(ex => {
+    if (ex.length === 8) return taxKeysValid.has(ex);
+    if (ex.length === 6) return [...taxKeysValid].some(t => t.startsWith(ex));
+    return false;
+  }), `invalid: ${JSON.stringify(exs)}`);
+});
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
