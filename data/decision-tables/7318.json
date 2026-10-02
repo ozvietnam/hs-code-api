@@ -23,18 +23,72 @@
       "labelVi": "Loại kim loại gia công cơ khí ( fastener )",
       "questionVi": "Sản phẩm thuộc loại kim loại gia công cơ khí nào: vít đầu vuông, đinh vít thường, đinh móc/vòng, đinh vít tự tarô, bu lông có đai ốc, đai ốc, vòng đệm lò xo/hãm, vòng đệm khác, chốt hãm/chốt định vị, hay loại khác?",
       "detect": {
-        "square_head_screw": ["vít đầu vuông", "bu lông đầu vuông", "đai ốc", "bulong"],
-        "other_screw": ["vít", "đinh vít", "đinh ốc", "vít thường", "screw"],
-        "hook_ring_nail": ["đinh móc", "đinh vòng", "đinh hook", "móc", "vòng"],
-        "self_tapping_screw": ["vít tự tarô", "vít tự khoan", "đinh vít tự tarô"],
-        "bolt_with_nut": ["bu lông có đai ốc", "bolt nut", "buloong"],
-        "nut": ["đai ốc", "éc", "e cu", "nut"],
-        "other_bolt_rivet": ["đinh tán", "rivet", "chốt"],
-        "spring_lock_washer": ["vòng đệm lò xo", "vòng hãm lò xo", "washer spring"],
-        "other_washer": ["vòng đệm", "vòng lá", "washer"],
-        "cotter_pin": ["chốt hãm", "cotter pin", "chốt cố định"],
-        "spring_position_pin": ["chốt định vị lò xo", "pin lò xo", "position pin"],
-        "other_fastener": ["kim loại gia công cơ khí", "cơ khí khác", "fastener"]
+        "square_head_screw": [
+          "vít đầu vuông",
+          "bu lông đầu vuông",
+          "đai ốc",
+          "bulong"
+        ],
+        "other_screw": [
+          "vít",
+          "đinh vít",
+          "đinh ốc",
+          "vít thường",
+          "screw"
+        ],
+        "hook_ring_nail": [
+          "đinh móc",
+          "đinh vòng",
+          "đinh hook",
+          "móc",
+          "vòng"
+        ],
+        "self_tapping_screw": [
+          "vít tự tarô",
+          "vít tự khoan",
+          "đinh vít tự tarô"
+        ],
+        "bolt_with_nut": [
+          "bu lông có đai ốc",
+          "bolt nut",
+          "buloong"
+        ],
+        "nut": [
+          "đai ốc",
+          "éc",
+          "e cu",
+          "nut"
+        ],
+        "other_bolt_rivet": [
+          "đinh tán",
+          "rivet",
+          "chốt"
+        ],
+        "spring_lock_washer": [
+          "vòng đệm lò xo",
+          "vòng hãm lò xo",
+          "washer spring"
+        ],
+        "other_washer": [
+          "vòng đệm",
+          "vòng lá",
+          "washer"
+        ],
+        "cotter_pin": [
+          "chốt hãm",
+          "cotter pin",
+          "chốt cố định"
+        ],
+        "spring_position_pin": [
+          "chốt định vị lò xo",
+          "pin lò xo",
+          "position pin"
+        ],
+        "other_fastener": [
+          "kim loại gia công cơ khí",
+          "cơ khí khác",
+          "fastener"
+        ]
       }
     },
     {
@@ -257,5 +311,102 @@
   ],
   "hitPolicy": "PRIORITY",
   "essenceTestVi": "fastenerKind (12 giá trị) + diameter (2 giá trị: ≤16mm / >16mm, hoặc N/A) → phân biệt 19 mã 8 số trong nhóm 7318. Đường kính là thuộc tính rìa: một số loại (vít đầu vuông, đinh móc, vòng đệm, chốt định vị) không phân biệt đường kính → diameter = not_applicable. MFN: hầu hết 12%, ngoại trừ 731811 (5%).",
-  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 7318 (Thông tư 65/2024/TT-BTC)."
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 7318 (Thông tư 65/2024/TT-BTC).",
+  "attributes": {
+    "diameter": {
+      "type": "enum",
+      "domain": [
+        "le_16mm",
+        "over_16mm"
+      ],
+      "detect": {
+        "le_16mm": [
+          "le",
+          "16mm"
+        ],
+        "over_16mm": [
+          "over",
+          "16mm"
+        ]
+      }
+    },
+    "fastenerKind": {
+      "type": "enum",
+      "domain": [
+        "bolt_with_nut",
+        "cotter_pin",
+        "hook_ring_nail",
+        "nut",
+        "other_bolt_rivet",
+        "other_fastener",
+        "other_screw",
+        "other_washer",
+        "self_tapping_screw",
+        "spring_lock_washer",
+        "spring_position_pin",
+        "square_head_screw"
+      ],
+      "detect": {
+        "bolt_with_nut": [
+          "bolt",
+          "with",
+          "nut"
+        ],
+        "cotter_pin": [
+          "cotter",
+          "pin"
+        ],
+        "hook_ring_nail": [
+          "hook",
+          "ring",
+          "nail"
+        ],
+        "nut": [
+          "nut"
+        ],
+        "other_bolt_rivet": [
+          "other",
+          "bolt",
+          "rivet"
+        ],
+        "other_fastener": [
+          "other",
+          "fastener"
+        ],
+        "other_screw": [
+          "other",
+          "screw"
+        ],
+        "other_washer": [
+          "other",
+          "washer"
+        ],
+        "self_tapping_screw": [
+          "self",
+          "tapping",
+          "screw"
+        ],
+        "spring_lock_washer": [
+          "spring",
+          "lock",
+          "washer"
+        ],
+        "spring_position_pin": [
+          "spring",
+          "position",
+          "pin"
+        ],
+        "square_head_screw": [
+          "square",
+          "head",
+          "screw"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "diameter",
+    "fastenerKind"
+  ],
+  "essenceVi": "diameter; fastenerKind"
 }
