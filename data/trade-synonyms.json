@@ -2295,6 +2295,361 @@
       "gir": "1",
       "basis": "RULE_TABLE",
       "sourceVi": "Biểu thuế VN 8428.60, 8428.90.20, 8428.90.30."
+    },
+    {
+      "id": "kinh-cuong-luc-man-hinh-dien-thoai",
+      "titleVi": "Kính cường lực / kính tôi bảo vệ màn hình điện thoại",
+      "terms": [
+        "kính cường lực",
+        "kính cường lực bảo vệ màn hình",
+        "kính cường lực điện thoại",
+        "kính bảo vệ màn hình",
+        "tempered glass",
+        "screen protector",
+        "kính tôi cường lực",
+        "kính cường lực full HD",
+        "kính cường lực 4 lớp",
+        "kính cường lực KZHDIP001"
+      ],
+      "excludeIfAny": [
+        "kính cường lực ô tô",
+        "kính cường lực máy tính bảng",
+        "kính cường lực đồng hồ"
+      ],
+      "candidates": [
+        {
+          "hs": "70072990",
+          "whenVi": "Kính tôi hoặc kính dán cường lực, đã hoặc chưa định hình, loại khác — phủ màn hình điện thoại di động",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8544",
+          "whyVi": "Nhóm 8544 là cáp và dây dẫn điện. Kính cường lực không phải sản phẩm dẫn điện."
+        },
+        {
+          "prefix": "8486",
+          "whyVi": "Nhóm 8486 là máy sản xuất bán dẫn. Kính cường lực điện thoại không phải máy."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 70072990 ghi đúng 'Loại khác' cho kính tôi/cường lực. Chú giải nhóm 7007 phân biệt kính tôi cường lực với kính thông thường. Công văn TB-TCHQ phân loại kính bảo vệ màn hình điện thoại thuộc 7007."
+    },
+    {
+      "id": "day-cau-ca-nylon",
+      "titleVi": "Dây câu cá / dây trục câu nylon",
+      "terms": [
+        "dây câu cá",
+        "dây trục câu",
+        "dây câu nylon",
+        "dây câu máy",
+        "trục câu cá",
+        "fishing line",
+        "dây câu lụa",
+        "dây câu Nhật",
+        "dây câu cá lụa",
+        "DC-30"
+      ],
+      "candidates": [
+        {
+          "hs": "95079000",
+          "whenVi": "Dây câu cá, cần câu, lưới đánh cá và các loại đồ tắm, lặn khác — dây nylon và sợi tổng hợp",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "5402",
+          "whyVi": "Nhóm 5402 là sợi filament tổng hợp nguyên chất, chưa thành sản phẩm câu cá."
+        },
+        {
+          "prefix": "5404",
+          "whyVi": "Nhóm 5404 là sợi mono细细, dùng trong công nghiệp, không phải dây câu."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 95079000: 'Dây câu, cần câu và lưới đánh cá; các loại đồ tắm, lặn khác'. Chương 95 phủ đồ thể thao và câu cá."
+    },
+    {
+      "id": "dep-nhua-PVC",
+      "titleVi": "Dép nhựa PVC đi trong/ngoài nhà",
+      "terms": [
+        "dép nhựa",
+        "dép PVC",
+        "dép nhựa PVC",
+        "dép đi trong nhà",
+        "dép đi ngoài nhà",
+        "dép nhựa xốp",
+        "dép flip-flop",
+        "dép lào",
+        "dép hoa",
+        "sandals PVC"
+      ],
+      "candidates": [
+        {
+          "hs": "64029990",
+          "whenVi": "Giày, dép và các loại tương tự, bằng nhựa, phần upper và đế bằng nhựa PVC, không phủ polymerexpand",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "6403",
+          "whyVi": "Nhóm 6403 là giày có đế bằng cao su, da, hoặc tổng hợp — dép PVC không thuộc đây."
+        },
+        {
+          "prefix": "6401",
+          "whyVi": "Nhóm 6401 là giày chống nước/đi mưa — dép PVC thường không phải giày chống nước."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 64029990: 'Loại khác' cho giày/dép bằng nhựa. Chú giải nhóm 6402 phân biệt theo vật liệu phần upper."
+    },
+    {
+      "id": "cap-sac-Type-C",
+      "titleVi": "Cáp sạc / cáp Type-C điện thoại",
+      "terms": [
+        "cáp sạc",
+        "cáp Type C",
+        "cáp Type-C",
+        "cáp sạc Type C",
+        "cáp sạc USB-C",
+        "cáp sạc điện thoại",
+        "dây sạc Type C",
+        "USB-C cable",
+        "cáp C to C 65W",
+        "Type C to C cable"
+      ],
+      "candidates": [
+        {
+          "hs": "85444299",
+          "whenVi": "Dây dẫn, đã lắp đầu nối, loại khác, cho điện hoặc từ điện, chiều dài ≤ 60V — cáp sạc và truyền dữ liệu điện thoại",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8504",
+          "whyVi": "Nhóm 8504 là bộ chuyển đổi điện (adapter/sạc). Cáp sạc là dây dẫn, không phải thiết bị chuyển đổi."
+        },
+        {
+          "prefix": "8544",
+          "whyVi": "Nhóm 8544.40 là dây dẫn có điện trở ≤ 1000V — cáp sạc < 60V thuộc 8544.41."
+        }
+      ],
+      "askVi": [
+        "Điện áp bao nhiêu volt? (≤ 60V → 8544.41 / > 60V → 8544.42)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 85444299: 'Loại khác' dây dẫn đã lắp đầu nối cho điện. Phân nhóm 8544.41 cho ≤ 60V. Không thuộc 8504 (adapter) vì không chuyển đổi điện áp.",
+      "excludeIfAny": [
+        "bộ sạc",
+        "củ sạc"
+      ]
+    },
+    {
+      "id": "bo-sac-dien-thoai",
+      "titleVi": "Bộ sạc / củ sạc điện thoại",
+      "terms": [
+        "bộ sạc",
+        "củ sạc",
+        "bộ sạc điện thoại",
+        "adapter sạc",
+        "charger",
+        "power adapter",
+        "sạc 20W",
+        "sạc 5W",
+        "sạc nhanh",
+        "charging brick"
+      ],
+      "candidates": [
+        {
+          "hs": "85044019",
+          "whenVi": "Bộ sạc (adapter) cho điện thoại và thiết bị viễn thông, công suất thấp — biến áp và tụ điện đã lắp thành bộ sạc",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8504",
+          "whyVi": "Nhóm 8504.40 là thiết bị chuyển đổi điện nói chung. Bộ sạc điện thoại là mặt hàng được gọi tên riêng trong biểu thuế."
+        }
+      ],
+      "askVi": [],
+      "gir": "3a",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 85044019: 'Bộ sạc điện thoại, loại khác'. Biểu thuế ghi tên riêng nên ưu tiên GIR 3(a)."
+    },
+    {
+      "id": "giay-nen-lot-nuong",
+      "titleVi": "Giấy nến lót nướng bánh không thấm dầu",
+      "terms": [
+        "giấy nến",
+        "giấy nến lót nướng",
+        "giấy lót nướng bánh",
+        "giấy nướng bánh",
+        "baking paper",
+        "parchment paper",
+        "giấy chống dính",
+        "giấy wax",
+        "wax paper"
+      ],
+      "candidates": [
+        {
+          "hs": "48236900",
+          "whenVi": "Giấy và tấm bìa, đã làm thành hình, loại khác — giấy nến lót nướng không thấm dầu",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "4805",
+          "whyVi": "Nhóm 4805 là giấy không tráng, chưa làm thành hình. Giấy nến đã định hình thuộc 4823."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 48236900: 'Loại khác' cho giấy và tấm bìa đã làm thành hình. Chú giải nhóm 4823 phủ giấy làm thành hình gia dụng."
+    },
+    {
+      "id": "xy-lanh-khi-nen",
+      "titleVi": "Xy lanh khí nén / xi lanh khí nén tịnh tiến",
+      "terms": [
+        "xy lanh khí nén",
+        "xi lanh khí nén",
+        "xy lanh hơi",
+        "xylanh khí nén",
+        "pneumatic cylinder",
+        "air cylinder",
+        "SDA12x10B",
+        "xy lanh tịnh tiến",
+        "cylinder bore"
+      ],
+      "candidates": [
+        {
+          "hs": "84123100",
+          "whenVi": "Xy lanh khí nén, xy lanh thủy lực, chuyển động tịnh tiến — bộ phận truyền động khí nén cho máy công nghiệp và tự động hóa",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "7604",
+          "whyVi": "Nhóm 7604 là nhôm thanh/que. Xy lanh khí nén là sản phẩm cơ khí phức tạp, không phải nhôm thô."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 84123100: 'Chuyển động tịnh tiến (xi lanh)' cho xy lanh khí/thủy lực. Chú giải nhóm 8412 phủ bộ phận động cơ và truyền động."
+    },
+    {
+      "id": "giay-lua-lau-chui",
+      "titleVi": "Giấy lụa / giấy lau chùi một lần",
+      "terms": [
+        "giấy lụa",
+        "giấy lau chùi",
+        "giấy lau một lần",
+        "khăn giấy lau",
+        "giấy rút",
+        "facial tissue",
+        "paper towel",
+        "wet tissue",
+        "giấy lụa 1500 tờ"
+      ],
+      "candidates": [
+        {
+          "hs": "48182000",
+          "whenVi": "Khăn tay, giấy lụa lau chùi hoặc lau mặt, khăn lau — giấy lau một lần, chưa tẩm hóa chất",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "5609",
+          "whyVi": "Nhóm 5609 là vật liệu dệt có tên riêng hoặc dạng cuộn — giấy lụa không phải vải."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 48182000: 'Khăn tay, giấy lụa lau chùi hoặc lau mặt và khăn lau'. Chương 48 phủ giấy và các sản phẩm giấy."
+    },
+    {
+      "id": "day-rut-nhua",
+      "titleVi": "Dây rút nhựa / dây buộc hàng",
+      "terms": [
+        "dây rút nhựa",
+        "dây buộc hàng",
+        "dây rút",
+        "dây nhựa buộc",
+        "cable tie",
+        "zip tie",
+        "dây rút 28cm",
+        "dây rút 0.07×28cm"
+      ],
+      "candidates": [
+        {
+          "hs": "39269099",
+          "whenVi": "Đồ nhựa các loại, chưa ghi ở nơi khác — dây rút nhựa dùng buộc hàng và quản lý cáp",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "4805",
+          "whyVi": "Nhóm 4805 là giấy và bìa. Dây rút nhựa không phải giấy."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 39269099: 'Loại khác' cho đồ nhựa. Chú giải Chương 39 phủ các sản phẩm nhựa gia dụng và công nghiệp."
+    },
+    {
+      "id": "chan-gia-do-dien-thoai",
+      "titleVi": "Chân giá đỡ / tripod điện thoại",
+      "terms": [
+        "chân giá đỡ điện thoại",
+        "tripod điện thoại",
+        "chân đỡ điện thoại",
+        "giá đỡ điện thoại",
+        "phone holder",
+        "phone tripod",
+        "chân máy ảnh điện thoại",
+        "tripod stand",
+        "3 chân điện thoại"
+      ],
+      "candidates": [
+        {
+          "hs": "96200030",
+          "whenVi": "Chân giá đỡ, giá đỡ bằng sắt và thép — chân máy ảnh, chân giá đỡ điện thoại, chân hình trụ 3 chân",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8543",
+          "whyVi": "Nhóm 8543 là máy điện có tên riêng. Chân giá đỡ không phải máy điện."
+        },
+        {
+          "prefix": "8517",
+          "whyVi": "Nhóm 8517 là điện thoại và thiết bị viễn thông. Chân giá đỡ không phải thiết bị viễn thông."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 96200030: 'Bằng sắt và thép' cho chân giá đỡ. Nhóm 9620 phủ đồ chưa phân loại ở nơi khác."
     }
   ],
   "updatedAt": "2026-09-16"
