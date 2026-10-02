@@ -1,0 +1,382 @@
+{
+  "heading": "4016",
+  "titleVi": "Sản phẩm khác bằng cao su lưu hoá (không phải cao su cứng), chưa được phân loại ở nơi khác trong chương 40",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Câu hỏi bản chất: hàng bằng cao su lưu hoá này có hình dạng/tính chất gì và dùng vào việc gì? Nhóm 4016 là residual — chỉ dùng khi không thuộc các nhóm 4013 (lốp), 4014 (y tế), 4015 (giày dép).",
+  "sourceVi": "Biểu thuế VN 2026 nhóm 40.16 và chú giải Chương 40. Phân loại theo hình thức sản phẩm (dạng/tính chất) và công dụng cuối cùng.",
+  "inputs": [
+    {
+      "attribute": "articleForm",
+      "type": "enum",
+      "domain": [
+        "clothingAccessory",
+        "floorMat",
+        "eraser",
+        "gasket",
+        "boatFender",
+        "inflatable",
+        "vehiclePart",
+        "otherArticle"
+      ],
+      "labelVi": "Dạng sản phẩm cao su",
+      "questionVi": "Sản phẩm cao su lưu hoá này có dạng hình thù và công dụng gì? (lót/đệm quần áo; tấm lát sàn; đầu tẩy; gioăng/đệm; đệm chống va tàu; sản phẩm bơm hơi; bộ phận xe; hay dạng khác?)",
+      "detect": {
+        "clothingAccessory": ["lót đệm quần áo", "lót đệm cho sản phẩm may mặc", "tấm ghép ốp tường", "lát nền", "ốp tường", "clothing", "lining", "pad"],
+        "floorMat": ["tấm đệm", "đệm mat", "lát sàn", "tấm rời ghép", "floor covering", "floor mat", "lót đường ray", "rail pad"],
+        "eraser": ["đầu tẩy", "eraser", "tẩy"],
+        "gasket": ["gioăng", "đệm", "vành khung tròn", "cách điện", "gasket", "seal", "washer", "insulating", "miếng đệm"],
+        "boatFender": ["đệm chống va", "tàu thuyền", "ụ tàu", "boat fender", "dock fender"],
+        "inflatable": ["bơm hơi", "inflatable"],
+        "vehiclePart": ["bộ phận xe", "chắn bùn", "viền kính", "phụ kiện xe", "phụ kiện xe đạp", "bộ phận xe đạp", "dù xoay", "bicycle", "xe đạp", "xe có động cơ", "vehicle part"],
+        "otherArticle": ["dải cao su", "khăn trải bàn", "trục lăn", "cốt làm lốp", "xây dựng", "loại khác", "n.e.c."]
+      }
+    },
+    {
+      "attribute": "vehicleKind",
+      "type": "enum",
+      "domain": [
+        "bicycle",
+        "motorVehicle",
+        "otherVehicle",
+        "na"
+      ],
+      "labelVi": "Loại xe cho bộ phận",
+      "questionVi": "Bộ phận/đệm này dùng cho loại xe nào? (xe đạp; xe có động cơ (ô tô, tải); hay xe khác (xe nâng, máy kéo)?)",
+      "detect": {
+        "bicycle": ["xe đạp", "bicycle", "SEN"],
+        "motorVehicle": ["xe thuộc nhóm 87.02", "xe thuộc nhóm 87.03", "xe thuộc nhóm 87.04", "xe thuộc nhóm 87.05", "xe có động cơ", "ô tô", "tải", "xe 87.11"],
+        "otherVehicle": ["xe thuộc nhóm 87.09", "xe thuộc nhóm 87.13", "xe thuộc nhóm 87.15", "xe thuộc nhóm 87.16", "dù xoay", "88.04", "xe nâng", "máy kéo"]
+      }
+    },
+    {
+      "attribute": "senFlag",
+      "type": "enum",
+      "domain": [
+        "sen",
+        "nonSen"
+      ],
+      "labelVi": "Hàng SEN (tự động điều chỉnh)",
+      "questionVi": "Hàng này có ghi chú SEN (Self-Adjusting) trong biểu thuế không? SEN = hàng tự động điều chỉnh, thuế suất thường thấp hơn.",
+      "detect": {
+        "sen": ["SEN"]
+      }
+    },
+    {
+      "attribute": "materialForm",
+      "type": "enum",
+      "domain": [
+        "cellular",
+        "nonCellular",
+        "na"
+      ],
+      "labelVi": "Dạng xốp/cellular hay đặc",
+      "questionVi": "Cao su này dạng xốp (cellular/foam) hay đặc (non-cellular)? Chương 40 tách cellular và non-cellular thành 2 dòng khác nhau.",
+      "detect": {
+        "cellular": ["xốp", "cellular", "foam"],
+        "nonCellular": ["non-cellular", "đặc", "compact"]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "4016-r001",
+      "priority": 90,
+      "when": { "articleForm": "clothingAccessory", "materialForm": "nonCellular" },
+      "hs": "40161010",
+      "gir": "GIR 6 / Note 2(b) to Chapter 40",
+      "reasonVi": "Sản phẩm cao su lưu hoá dạng lót/đệm cho sản phẩm may mặc hoặc đồ phụ trợ quần áo, dạng đặc → 4016.10.10.",
+      "source": "Biểu thuế 2026 dòng 4016.10.10"
+    },
+    {
+      "id": "4016-r002",
+      "priority": 90,
+      "when": { "articleForm": "clothingAccessory", "materialForm": "nonCellular" },
+      "hs": "40161020",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm, miếng ghép bằng cao su lưu hoá để lát nền và ốp tường → 4016.10.20.",
+      "source": "Biểu thuế 2026 dòng 4016.10.20"
+    },
+    {
+      "id": "4016-r003",
+      "priority": 85,
+      "when": { "articleForm": "clothingAccessory", "materialForm": "nonCellular" },
+      "hs": "40161090",
+      "gir": "GIR 6",
+      "reasonVi": "Sản phẩm cao su lưu hoá dạng lót/đệm quần áo khác (loại khác) → 4016.10.90.",
+      "source": "Biểu thuế 2026 dòng 4016.10.90"
+    },
+    {
+      "id": "4016-r004",
+      "priority": 80,
+      "when": { "articleForm": "floorMat", "materialForm": "nonCellular" },
+      "hs": "40169110",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm, đệm (mat) bằng cao su lưu hoá đặc, dùng lát sàn → 4016.91.10.",
+      "source": "Biểu thuế 2026 dòng 4016.91.10"
+    },
+    {
+      "id": "4016-r005",
+      "priority": 80,
+      "when": { "articleForm": "floorMat", "materialForm": "nonCellular" },
+      "hs": "40169120",
+      "gir": "GIR 6",
+      "reasonVi": "Dạng tấm rời để ghép bằng cao su lưu hoá đặc → 4016.91.20.",
+      "source": "Biểu thuế 2026 dòng 4016.91.20"
+    },
+    {
+      "id": "4016-r006",
+      "priority": 75,
+      "when": { "articleForm": "floorMat", "materialForm": "nonCellular" },
+      "hs": "40169190",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm đệm/sàn bằng cao su lưu hoá đặc, loại khác → 4016.91.90.",
+      "source": "Biểu thuế 2026 dòng 4016.91.90"
+    },
+    {
+      "id": "4016-r007",
+      "priority": 80,
+      "when": { "articleForm": "eraser" },
+      "hs": "40169210",
+      "gir": "GIR 6",
+      "reasonVi": "Đầu tẩy (eraser tips) bằng cao su lưu hoá → 4016.92.10.",
+      "source": "Biểu thuế 2026 dòng 4016.92.10"
+    },
+    {
+      "id": "4016-r008",
+      "priority": 75,
+      "when": { "articleForm": "eraser" },
+      "hs": "40169290",
+      "gir": "GIR 6",
+      "reasonVi": "Sản phẩm tẩy bằng cao su lưu hoá, loại khác → 4016.92.90.",
+      "source": "Biểu thuế 2026 dòng 4016.92.90"
+    },
+    {
+      "id": "4016-r009",
+      "priority": 90,
+      "when": { "articleForm": "gasket", "materialForm": "nonCellular", "senFlag": "sen" },
+      "hs": "40169310",
+      "gir": "GIR 6",
+      "reasonVi": "Gioăng/đệm cách điện dùng cho các chân tụ điện, SEN (tự động điều chỉnh), thuế 3% → 4016.93.10.",
+      "source": "Biểu thuế 2026 dòng 4016.93.10 (ghi chú SEN)"
+    },
+    {
+      "id": "4016-r010",
+      "priority": 90,
+      "when": { "articleForm": "gasket", "materialForm": "nonCellular" },
+      "hs": "40169320",
+      "gir": "GIR 6",
+      "reasonVi": "Miếng đệm và vành khung tròn dùng cho xe có động cơ, cao su lưu hoá đặc → 4016.93.20.",
+      "source": "Biểu thuế 2026 dòng 4016.93.20"
+    },
+    {
+      "id": "4016-r011",
+      "priority": 85,
+      "when": { "articleForm": "gasket", "materialForm": "nonCellular" },
+      "hs": "40169390",
+      "gir": "GIR 6",
+      "reasonVi": "Gioăng/đệm/vanh khung tròn bằng cao su lưu hoá đặc, loại khác → 4016.93.90.",
+      "source": "Biểu thuế 2026 dòng 4016.93.90"
+    },
+    {
+      "id": "4016-r012",
+      "priority": 80,
+      "when": { "articleForm": "boatFender" },
+      "hs": "40169400",
+      "gir": "GIR 6",
+      "reasonVi": "Đệm chống va cho tàu thuyền hoặc ụ tàu, có hoặc không bơm hơi → 4016.94.00.",
+      "source": "Biểu thuế 2026 dòng 4016.94.00"
+    },
+    {
+      "id": "4016-r013",
+      "priority": 80,
+      "when": { "articleForm": "inflatable" },
+      "hs": "40169500",
+      "gir": "GIR 6",
+      "reasonVi": "Sản phẩm có thể bơm hơi khác bằng cao su lưu hoá (trừ đệm chống va tàu) → 4016.95.00.",
+      "source": "Biểu thuế 2026 dòng 4016.95.00"
+    },
+    {
+      "id": "4016-r014",
+      "priority": 70,
+      "when": { "articleForm": "vehiclePart", "vehicleKind": "motorVehicle" },
+      "hs": "40169911",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận/đệm cao su lưu hoá cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05 (ô tô, tải), trừ viền kính cửa → 4016.99.11.",
+      "source": "Biểu thuế 2026 dòng 4016.99.11"
+    },
+    {
+      "id": "4016-r015",
+      "priority": 70,
+      "when": { "articleForm": "vehiclePart", "vehicleKind": "motorVehicle" },
+      "hs": "40169912",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận/đệm cao su lưu hoá cho xe thuộc nhóm 87.11 (xe mô tô hai bánh) → 4016.99.12.",
+      "source": "Biểu thuế 2026 dòng 4016.99.12"
+    },
+    {
+      "id": "4016-r016",
+      "priority": 70,
+      "when": { "articleForm": "vehiclePart", "vehicleKind": "motorVehicle" },
+      "hs": "40169913",
+      "gir": "GIR 6",
+      "reasonVi": "Viền cao su quanh kính cửa dùng cho xe có động cơ → 4016.99.13.",
+      "source": "Biểu thuế 2026 dòng 4016.99.13"
+    },
+    {
+      "id": "4016-r017",
+      "priority": 70,
+      "when": { "articleForm": "vehiclePart", "vehicleKind": "otherVehicle" },
+      "hs": "40169915",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận/đệm cao su cho xe thuộc nhóm 87.09, 87.13, 87.15 hoặc 87.16 → 4016.99.15.",
+      "source": "Biểu thuế 2026 dòng 4016.99.15"
+    },
+    {
+      "id": "4016-r018",
+      "priority": 75,
+      "when": { "articleForm": "vehiclePart", "vehicleKind": "bicycle", "senFlag": "sen" },
+      "hs": "40169916",
+      "gir": "GIR 6",
+      "reasonVi": "Chắn bùn xe đạp, SEN (tự động điều chỉnh), thuế 25% → 4016.99.16.",
+      "source": "Biểu thuế 2026 dòng 4016.99.16 (ghi chú SEN)"
+    },
+    {
+      "id": "4016-r019",
+      "priority": 75,
+      "when": { "articleForm": "vehiclePart", "vehicleKind": "bicycle", "senFlag": "sen" },
+      "hs": "40169917",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của xe đạp, SEN (tự động điều chỉnh), thuế 25% → 4016.99.17.",
+      "source": "Biểu thuế 2026 dòng 4016.99.17 (ghi chú SEN)"
+    },
+    {
+      "id": "4016-r020",
+      "priority": 75,
+      "when": { "articleForm": "vehiclePart", "vehicleKind": "bicycle", "senFlag": "sen" },
+      "hs": "40169918",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện khác của xe đạp, SEN (tự động điều chỉnh), thuế 25% → 4016.99.18.",
+      "source": "Biểu thuế 2026 dòng 4016.99.18 (ghi chú SEN)"
+    },
+    {
+      "id": "4016-r021",
+      "priority": 65,
+      "when": { "articleForm": "vehiclePart", "vehicleKind": "bicycle" },
+      "hs": "40169919",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận/phụ kiện khác của xe đạp, không SEN → 4016.99.19 (thuế 5%).",
+      "source": "Biểu thuế 2026 dòng 4016.99.19"
+    },
+    {
+      "id": "4016-r022",
+      "priority": 65,
+      "when": { "articleForm": "vehiclePart", "vehicleKind": "otherVehicle" },
+      "hs": "40169920",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận và phụ kiện của dù xoay thuộc nhóm 88.04 → 4016.99.20.",
+      "source": "Biểu thuế 2026 dòng 4016.99.20"
+    },
+    {
+      "id": "4016-r023",
+      "priority": 65,
+      "when": { "articleForm": "otherArticle" },
+      "hs": "40169930",
+      "gir": "GIR 6",
+      "reasonVi": "Dải cao su lưu hoá → 4016.99.30.",
+      "source": "Biểu thuế 2026 dòng 4016.99.30"
+    },
+    {
+      "id": "4016-r024",
+      "priority": 65,
+      "when": { "articleForm": "floorMat", "materialForm": "nonCellular" },
+      "hs": "40169940",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm, miếng rời ghép với nhau để ốp tường → 4016.99.40.",
+      "source": "Biểu thuế 2026 dòng 4016.99.40"
+    },
+    {
+      "id": "4016-r025",
+      "priority": 70,
+      "when": { "articleForm": "otherArticle", "materialForm": "nonCellular", "senFlag": "sen" },
+      "hs": "40169951",
+      "gir": "GIR 6",
+      "reasonVi": "Trục lăn cao su SEN (tự động điều chỉnh), thuế 3% → 4016.99.51.",
+      "source": "Biểu thuế 2026 dòng 4016.99.51 (ghi chú SEN)"
+    },
+    {
+      "id": "4016-r026",
+      "priority": 70,
+      "when": { "articleForm": "otherArticle", "materialForm": "nonCellular", "senFlag": "sen" },
+      "hs": "40169952",
+      "gir": "GIR 6",
+      "reasonVi": "Cốt làm lốp (Tyre mould bladders), SEN, thuế 3% → 4016.99.52.",
+      "source": "Biểu thuế 2026 dòng 4016.99.52 (ghi chú SEN)"
+    },
+    {
+      "id": "4016-r027",
+      "priority": 70,
+      "when": { "articleForm": "otherArticle", "materialForm": "nonCellular", "senFlag": "sen" },
+      "hs": "40169953",
+      "gir": "GIR 6",
+      "reasonVi": "Nắp chụp cách điện, SEN, thuế 3% → 4016.99.53.",
+      "source": "Biểu thuế 2026 dòng 4016.99.53 (ghi chú SEN)"
+    },
+    {
+      "id": "4016-r028",
+      "priority": 65,
+      "when": { "articleForm": "otherArticle", "materialForm": "nonCellular" },
+      "hs": "40169954",
+      "gir": "GIR 6",
+      "reasonVi": "Vòng và vỏ bọc bằng cao su sử dụng cho hệ thống dây điện → 4016.99.54.",
+      "source": "Biểu thuế 2026 dòng 4016.99.54"
+    },
+    {
+      "id": "4016-r029",
+      "priority": 65,
+      "when": { "articleForm": "otherArticle", "materialForm": "nonCellular", "senFlag": "sen" },
+      "hs": "40169959",
+      "gir": "GIR 6",
+      "reasonVi": "Sản phẩm cao su lưu hoá SEN khác, thuế 3% → 4016.99.59.",
+      "source": "Biểu thuế 2026 dòng 4016.99.59 (ghi chú SEN)"
+    },
+    {
+      "id": "4016-r030",
+      "priority": 65,
+      "when": { "articleForm": "floorMat", "materialForm": "nonCellular" },
+      "hs": "40169960",
+      "gir": "GIR 6",
+      "reasonVi": "Lót đường ray (rail pad) bằng cao su lưu hoá → 4016.99.60.",
+      "source": "Biểu thuế 2026 dòng 4016.99.60"
+    },
+    {
+      "id": "4016-r031",
+      "priority": 65,
+      "when": { "articleForm": "otherArticle" },
+      "hs": "40169970",
+      "gir": "GIR 6",
+      "reasonVi": "Sản phẩm cao su lưu hoá chịu lực xây dựng kể cả lực cầu → 4016.99.70.",
+      "source": "Biểu thuế 2026 dòng 4016.99.70"
+    },
+    {
+      "id": "4016-r032",
+      "priority": 65,
+      "when": { "articleForm": "otherArticle" },
+      "hs": "40169991",
+      "gir": "GIR 6",
+      "reasonVi": "Khăn trải bàn bằng cao su lưu hoá → 4016.99.91 (thuế 20%).",
+      "source": "Biểu thuế 2026 dòng 4016.99.91"
+    },
+    {
+      "id": "4016-r033",
+      "priority": 60,
+      "when": { "articleForm": "otherArticle" },
+      "hs": "40169999",
+      "gir": "GIR 6",
+      "reasonVi": "Sản phẩm khác bằng cao su lưu hoá, chưa phân loại — residual → 4016.99.99.",
+      "source": "Biểu thuế 2026 dòng 4016.99.99"
+    }
+  ]
+}
