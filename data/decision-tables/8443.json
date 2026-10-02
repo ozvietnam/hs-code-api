@@ -10,27 +10,51 @@
   "attributes": {
     "printTech": {
       "type": "enum",
-      "domain": ["offset_letterpress", "digital_copy", "multifunction"],
+      "domain": [
+        "offset_letterpress",
+        "digital_copy",
+        "multifunction"
+      ],
       "labelVi": "Công nghệ in / loại máy"
     },
     "completeOrParts": {
       "type": "enum",
-      "domain": ["complete", "parts"],
+      "domain": [
+        "complete",
+        "parts"
+      ],
       "labelVi": "Máy hoàn chỉnh hay bộ phận"
     },
     "feedType": {
       "type": "enum",
-      "domain": ["reel", "sheet", "other"],
+      "domain": [
+        "reel",
+        "sheet",
+        "other"
+      ],
       "labelVi": "Nạp giấy cuộn hay tờ"
     },
     "color": {
       "type": "enum",
-      "domain": ["color", "mono", "any"],
+      "domain": [
+        "color",
+        "mono",
+        "any"
+      ],
       "labelVi": "Màu hay đen trắng"
     },
     "digitalKind": {
       "type": "enum",
-      "domain": ["printer", "copier", "fax", "plotter", "screen_print", "inkjet", "electrostatic", "other_digital"],
+      "domain": [
+        "printer",
+        "copier",
+        "fax",
+        "plotter",
+        "screen_print",
+        "inkjet",
+        "electrostatic",
+        "other_digital"
+      ],
       "labelVi": "Loại máy số cụ thể"
     }
   },
@@ -38,65 +62,195 @@
     {
       "attribute": "printTech",
       "type": "enum",
-      "domain": ["offset_letterpress", "digital_copy", "multifunction"],
+      "domain": [
+        "offset_letterpress",
+        "digital_copy",
+        "multifunction"
+      ],
       "labelVi": "Công nghệ in / loại máy",
       "questionVi": "Máy in offset/letterpress (dùng bản in dạng trục/tờ); máy in kỹ thuật số (laser/inkjet) hay máy photocopy? Hay máy đa chức năng (in+copy+scan+fax)?",
       "detect": {
-        "offset_letterpress": ["máy in offset", "offset printing", "letterpress", "in flexo", "gravure printing", "máy in ống đồng", "máy in flexo", "in ống đồng"],
-        "digital_copy": ["máy in laser", "máy photocopy", "máy fax", "máy in phun", "inkjet", "electrostatic", "plain paper copier", "máy vẽ", "plotter"],
-        "multifunction": ["máy in đa chức năng", "multifunction", "máy in copy scan fax", "printer copier scanner", "all-in-one", "đa chức năng"]
+        "offset_letterpress": [
+          "máy in offset",
+          "offset printing",
+          "letterpress",
+          "in flexo",
+          "gravure printing",
+          "máy in ống đồng",
+          "máy in flexo",
+          "in ống đồng"
+        ],
+        "digital_copy": [
+          "máy in laser",
+          "máy photocopy",
+          "máy fax",
+          "máy in phun",
+          "inkjet",
+          "electrostatic",
+          "plain paper copier",
+          "máy vẽ",
+          "plotter"
+        ],
+        "multifunction": [
+          "máy in đa chức năng",
+          "multifunction",
+          "máy in copy scan fax",
+          "printer copier scanner",
+          "all-in-one",
+          "đa chức năng"
+        ]
       }
     },
     {
       "attribute": "completeOrParts",
       "type": "enum",
-      "domain": ["complete", "parts"],
+      "domain": [
+        "complete",
+        "parts"
+      ],
       "labelVi": "Máy hoàn chỉnh hay bộ phận",
       "questionVi": "Đây là máy hoàn chỉnh hay chỉ là bộ phận/phụ kiện (hộp mực, trục cấp giấy, bộ phận khác)?",
       "detect": {
-        "complete": ["máy", "machine", "printer", "copier", "fax", "scanner"],
-        "parts": ["bộ phận", "parts", "accessories", "hộp mực", "trục", "cylinder", "roller"]
+        "complete": [
+          "máy",
+          "machine",
+          "printer",
+          "copier",
+          "fax",
+          "scanner"
+        ],
+        "parts": [
+          "bộ phận",
+          "parts",
+          "accessories",
+          "hộp mực",
+          "trục",
+          "cylinder",
+          "roller"
+        ]
       }
     },
     {
       "attribute": "feedType",
       "type": "enum",
-      "domain": ["reel", "sheet", "other"],
+      "domain": [
+        "reel",
+        "sheet",
+        "other"
+      ],
       "labelVi": "Nạp giấy cuộn hay tờ",
       "questionVi": "Máy nạp giấy bằng cuộn (reel/roll) hay bằng tờ (sheet-fed)?",
       "detect": {
-        "reel": ["cuộn", "reel", "roll-fed", "in cuộn"],
-        "sheet": ["tờ", "sheet", "sheet-fed", "in tờ", "office type"],
-        "other": ["khác", "n.e.c.", "loại khác", "other"]
+        "reel": [
+          "cuộn",
+          "reel",
+          "roll-fed",
+          "in cuộn"
+        ],
+        "sheet": [
+          "tờ",
+          "sheet",
+          "sheet-fed",
+          "in tờ",
+          "office type"
+        ],
+        "other": [
+          "khác",
+          "n.e.c.",
+          "loại khác",
+          "other"
+        ]
       }
     },
     {
       "attribute": "color",
       "type": "enum",
-      "domain": ["color", "mono", "any"],
+      "domain": [
+        "color",
+        "mono",
+        "any"
+      ],
       "labelVi": "Màu hay đen trắng",
       "questionVi": "Máy màu hay đen trắng (monochrome)?",
       "detect": {
-        "color": ["màu", "color", "loại màu", "colour"],
-        "mono": ["đen trắng", "mono", "black", "trắng đen"],
-        "any": ["bất kỳ", "loại khác", "other", "n.e.c."]
+        "color": [
+          "màu",
+          "color",
+          "loại màu",
+          "colour"
+        ],
+        "mono": [
+          "đen trắng",
+          "mono",
+          "black",
+          "trắng đen"
+        ],
+        "any": [
+          "bất kỳ",
+          "loại khác",
+          "other",
+          "n.e.c."
+        ]
       }
     },
     {
       "attribute": "digitalKind",
       "type": "enum",
-      "domain": ["printer", "copier", "fax", "plotter", "screen_print", "inkjet", "electrostatic", "other_digital"],
+      "domain": [
+        "printer",
+        "copier",
+        "fax",
+        "plotter",
+        "screen_print",
+        "inkjet",
+        "electrostatic",
+        "other_digital"
+      ],
       "labelVi": "Loại máy số cụ thể",
       "questionVi": "Máy in laser, máy photocopy, máy fax, máy vẽ (plotter), máy in phun, hay loại khác?",
       "detect": {
-        "printer": ["máy in laser", "single function printer", "máy in", "laser printer"],
-        "copier": ["máy photocopy", "photocopier", "plain paper", "electrostatic copier"],
-        "fax": ["máy fax", "facsimile"],
-        "plotter": ["máy vẽ", "plotter", "vẽ kỹ thuật"],
-        "screen_print": ["in lưới", "screen printing", "rotogravure", "màn hình"],
-        "inkjet": ["máy in phun", "inkjet", "phun mực"],
-        "electrostatic": ["tĩnh điện", "electrostatic", "photocopy tĩnh điện"],
-        "other_digital": ["loại khác", "other digital", "n.e.c."]
+        "printer": [
+          "máy in laser",
+          "single function printer",
+          "máy in",
+          "laser printer"
+        ],
+        "copier": [
+          "máy photocopy",
+          "photocopier",
+          "plain paper",
+          "electrostatic copier"
+        ],
+        "fax": [
+          "máy fax",
+          "facsimile"
+        ],
+        "plotter": [
+          "máy vẽ",
+          "plotter",
+          "vẽ kỹ thuật"
+        ],
+        "screen_print": [
+          "in lưới",
+          "screen printing",
+          "rotogravure",
+          "màn hình"
+        ],
+        "inkjet": [
+          "máy in phun",
+          "inkjet",
+          "phun mực"
+        ],
+        "electrostatic": [
+          "tĩnh điện",
+          "electrostatic",
+          "photocopy tĩnh điện"
+        ],
+        "other_digital": [
+          "loại khác",
+          "other digital",
+          "n.e.c."
+        ]
       }
     }
   ],
@@ -104,7 +258,10 @@
     {
       "id": "r-parts-offset-8442",
       "priority": 95,
-      "when": {"printTech": "offset_letterpress", "completeOrParts": "parts"},
+      "when": {
+        "printTech": "offset_letterpress",
+        "completeOrParts": "parts"
+      },
       "hs": "84439100",
       "gir": "GIR 6 / Note to 8443",
       "reasonVi": "Bộ phận và phụ kiện của máy in offset/letterpress/flexo/gravure sử dụng bộ phận in từ nhóm 84.42 → 8443.91.00.",
@@ -113,7 +270,11 @@
     {
       "id": "r-parts-screen-print",
       "priority": 94,
-      "when": {"printTech": "digital_copy", "completeOrParts": "parts", "digitalKind": "screen_print"},
+      "when": {
+        "printTech": "digital_copy",
+        "completeOrParts": "parts",
+        "digitalKind": "screen_print"
+      },
       "hs": "84439910",
       "gir": "GIR 6",
       "reasonVi": "Bộ phận của máy in lưới/màn hình (rotogravure) → 8443.99.10.",
@@ -122,7 +283,10 @@
     {
       "id": "r-parts-ink-cartridge",
       "priority": 93,
-      "when": {"completeOrParts": "parts", "digitalKind": "inkjet"},
+      "when": {
+        "completeOrParts": "parts",
+        "digitalKind": "inkjet"
+      },
       "hs": "84439920",
       "gir": "GIR 6",
       "reasonVi": "Hộp mực in đã có mực in → 8443.99.20. Chỉ dành cho hộp mực, không phải máy in.",
@@ -131,7 +295,11 @@
     {
       "id": "r-parts-paper-feed",
       "priority": 92,
-      "when": {"printTech": "digital_copy", "completeOrParts": "parts", "digitalKind": "other_digital"},
+      "when": {
+        "printTech": "digital_copy",
+        "completeOrParts": "parts",
+        "digitalKind": "other_digital"
+      },
       "hs": "84439930",
       "gir": "GIR 6",
       "reasonVi": "Bộ phận cung cấp giấy và bộ phận sắp xếp giấy của máy in/sao chụp → 8443.99.30.",
@@ -140,7 +308,9 @@
     {
       "id": "r-parts-other",
       "priority": 91,
-      "when": {"completeOrParts": "parts"},
+      "when": {
+        "completeOrParts": "parts"
+      },
       "hs": "84439990",
       "gir": "GIR 6",
       "reasonVi": "Bộ phận và phụ kiện khác của máy in/sao chụp → 8443.99.90.",
@@ -149,7 +319,11 @@
     {
       "id": "r-offset-reel",
       "priority": 80,
-      "when": {"printTech": "offset_letterpress", "feedType": "reel", "completeOrParts": "complete"},
+      "when": {
+        "printTech": "offset_letterpress",
+        "feedType": "reel",
+        "completeOrParts": "complete"
+      },
       "hs": "84431100",
       "gir": "GIR 6",
       "reasonVi": "Máy in offset nạp cuộn (reel-fed) → 8443.11.00.",
@@ -158,7 +332,11 @@
     {
       "id": "r-offset-sheet-office",
       "priority": 79,
-      "when": {"printTech": "offset_letterpress", "feedType": "sheet", "completeOrParts": "complete"},
+      "when": {
+        "printTech": "offset_letterpress",
+        "feedType": "sheet",
+        "completeOrParts": "complete"
+      },
       "hs": "84431200",
       "gir": "GIR 6",
       "reasonVi": "Máy in offset nạp tờ, loại dùng trong văn phòng → 8443.12.00.",
@@ -167,7 +345,11 @@
     {
       "id": "r-offset-other",
       "priority": 78,
-      "when": {"printTech": "offset_letterpress", "feedType": "other", "completeOrParts": "complete"},
+      "when": {
+        "printTech": "offset_letterpress",
+        "feedType": "other",
+        "completeOrParts": "complete"
+      },
       "hs": "84431300",
       "gir": "GIR 6",
       "reasonVi": "Máy in offset các loại khác → 8443.13.00.",
@@ -176,7 +358,12 @@
     {
       "id": "r-letterpress-reel",
       "priority": 77,
-      "when": {"printTech": "offset_letterpress", "feedType": "reel", "completeOrParts": "complete", "digitalKind": "other_digital"},
+      "when": {
+        "printTech": "offset_letterpress",
+        "feedType": "reel",
+        "completeOrParts": "complete",
+        "digitalKind": "other_digital"
+      },
       "hs": "84431400",
       "gir": "GIR 6",
       "reasonVi": "Máy in letterpress nạp cuộn (trừ loại dùng in bản in 8442) → 8443.14.00.",
@@ -185,7 +372,11 @@
     {
       "id": "r-letterpress-other",
       "priority": 76,
-      "when": {"printTech": "offset_letterpress", "feedType": "other", "completeOrParts": "complete"},
+      "when": {
+        "printTech": "offset_letterpress",
+        "feedType": "other",
+        "completeOrParts": "complete"
+      },
       "hs": "84431500",
       "gir": "GIR 6",
       "reasonVi": "Máy in letterpress các loại khác (nạp tờ, loại khác) → 8443.15.00.",
@@ -194,7 +385,11 @@
     {
       "id": "r-flexo",
       "priority": 75,
-      "when": {"printTech": "offset_letterpress", "completeOrParts": "complete", "digitalKind": "screen_print"},
+      "when": {
+        "printTech": "offset_letterpress",
+        "completeOrParts": "complete",
+        "digitalKind": "screen_print"
+      },
       "hs": "84431600",
       "gir": "GIR 6",
       "reasonVi": "Máy in flexo (in flexographic) → 8443.16.00.",
@@ -203,7 +398,11 @@
     {
       "id": "r-gravure",
       "priority": 74,
-      "when": {"printTech": "offset_letterpress", "completeOrParts": "complete", "digitalKind": "other_digital"},
+      "when": {
+        "printTech": "offset_letterpress",
+        "completeOrParts": "complete",
+        "digitalKind": "other_digital"
+      },
       "hs": "84431700",
       "gir": "GIR 6",
       "reasonVi": "Máy in ống đồng (gravure) → 8443.17.00.",
@@ -212,7 +411,10 @@
     {
       "id": "r-offset-other-complete",
       "priority": 73,
-      "when": {"printTech": "offset_letterpress", "completeOrParts": "complete"},
+      "when": {
+        "printTech": "offset_letterpress",
+        "completeOrParts": "complete"
+      },
       "hs": "84431900",
       "gir": "GIR 6",
       "reasonVi": "Máy in khác dùng bộ phận in của nhóm 84.42 → 8443.19.00.",
@@ -221,7 +423,11 @@
     {
       "id": "r-mfp-net-color",
       "priority": 70,
-      "when": {"printTech": "multifunction", "color": "color", "completeOrParts": "complete"},
+      "when": {
+        "printTech": "multifunction",
+        "color": "color",
+        "completeOrParts": "complete"
+      },
       "hs": "84433111",
       "gir": "GIR 6",
       "reasonVi": "Máy in/photocopy/scan/fax đa chức năng, nối mạng, màu → 8443.31.11.",
@@ -230,7 +436,11 @@
     {
       "id": "r-mfp-net-mono",
       "priority": 69,
-      "when": {"printTech": "multifunction", "color": "mono", "completeOrParts": "complete"},
+      "when": {
+        "printTech": "multifunction",
+        "color": "mono",
+        "completeOrParts": "complete"
+      },
       "hs": "84433119",
       "gir": "GIR 6",
       "reasonVi": "Máy in/photocopy/scan/fax đa chức năng, nối mạng, đen trắng → 8443.31.19.",
@@ -239,7 +449,12 @@
     {
       "id": "r-mfp-color-nonet",
       "priority": 68,
-      "when": {"printTech": "multifunction", "color": "color", "completeOrParts": "complete", "digitalKind": "printer"},
+      "when": {
+        "printTech": "multifunction",
+        "color": "color",
+        "completeOrParts": "complete",
+        "digitalKind": "printer"
+      },
       "hs": "84433121",
       "gir": "GIR 6",
       "reasonVi": "Máy in/photocopy/scan/fax đa chức năng, màu, không nối mạng → 8443.31.21.",
@@ -248,7 +463,12 @@
     {
       "id": "r-mfp-mono-nonet",
       "priority": 67,
-      "when": {"printTech": "multifunction", "color": "mono", "completeOrParts": "complete", "digitalKind": "printer"},
+      "when": {
+        "printTech": "multifunction",
+        "color": "mono",
+        "completeOrParts": "complete",
+        "digitalKind": "printer"
+      },
       "hs": "84433129",
       "gir": "GIR 6",
       "reasonVi": "Máy in/photocopy/scan/fax đa chức năng, đen trắng, không nối mạng → 8443.31.29.",
@@ -257,7 +477,11 @@
     {
       "id": "r-mfp-cipher-color",
       "priority": 66,
-      "when": {"printTech": "multifunction", "completeOrParts": "complete", "digitalKind": "other_digital"},
+      "when": {
+        "printTech": "multifunction",
+        "completeOrParts": "complete",
+        "digitalKind": "other_digital"
+      },
       "hs": "84433131",
       "gir": "GIR 6",
       "reasonVi": "Máy in/photocopy/scan/fax đa chức năng, màu, liên quan mật mã (sản xuất theo contract) → 8443.31.31.",
@@ -266,7 +490,11 @@
     {
       "id": "r-mfp-cipher-mono",
       "priority": 65,
-      "when": {"printTech": "multifunction", "completeOrParts": "complete", "digitalKind": "copier"},
+      "when": {
+        "printTech": "multifunction",
+        "completeOrParts": "complete",
+        "digitalKind": "copier"
+      },
       "hs": "84433139",
       "gir": "GIR 6",
       "reasonVi": "Máy in/photocopy/scan/fax đa chức năng, đen trắng, liên quan mật mã → 8443.31.39.",
@@ -275,7 +503,11 @@
     {
       "id": "r-mfp-combo-color",
       "priority": 64,
-      "when": {"printTech": "multifunction", "completeOrParts": "complete", "color": "color"},
+      "when": {
+        "printTech": "multifunction",
+        "completeOrParts": "complete",
+        "color": "color"
+      },
       "hs": "84433191",
       "gir": "GIR 6",
       "reasonVi": "Máy in kết hợp photocopy scan fax, đa chức năng, màu → 8443.31.91.",
@@ -284,7 +516,11 @@
     {
       "id": "r-mfp-combo-mono",
       "priority": 63,
-      "when": {"printTech": "multifunction", "completeOrParts": "complete", "color": "mono"},
+      "when": {
+        "printTech": "multifunction",
+        "completeOrParts": "complete",
+        "color": "mono"
+      },
       "hs": "84433199",
       "gir": "GIR 6",
       "reasonVi": "Máy in kết hợp photocopy scan fax, đa chức năng, đen trắng → 8443.31.99.",
@@ -293,7 +529,13 @@
     {
       "id": "r-sf-printer-net-color",
       "priority": 60,
-      "when": {"printTech": "digital_copy", "completeOrParts": "complete", "digitalKind": "printer", "color": "color", "feedType": "other"},
+      "when": {
+        "printTech": "digital_copy",
+        "completeOrParts": "complete",
+        "digitalKind": "printer",
+        "color": "color",
+        "feedType": "other"
+      },
       "hs": "84433211",
       "gir": "GIR 6",
       "reasonVi": "Máy in đơn chức năng, nối mạng tự động, màu → 8443.32.11.",
@@ -302,7 +544,13 @@
     {
       "id": "r-sf-printer-net-mono",
       "priority": 59,
-      "when": {"printTech": "digital_copy", "completeOrParts": "complete", "digitalKind": "printer", "color": "mono", "feedType": "other"},
+      "when": {
+        "printTech": "digital_copy",
+        "completeOrParts": "complete",
+        "digitalKind": "printer",
+        "color": "mono",
+        "feedType": "other"
+      },
       "hs": "84433219",
       "gir": "GIR 6",
       "reasonVi": "Máy in đơn chức năng, nối mạng tự động, đen trắng → 8443.32.19.",
@@ -311,7 +559,12 @@
     {
       "id": "r-sf-printer-nonet-color",
       "priority": 58,
-      "when": {"printTech": "digital_copy", "completeOrParts": "complete", "digitalKind": "printer", "color": "color"},
+      "when": {
+        "printTech": "digital_copy",
+        "completeOrParts": "complete",
+        "digitalKind": "printer",
+        "color": "color"
+      },
       "hs": "84433221",
       "gir": "GIR 6",
       "reasonVi": "Máy in đơn chức năng, không nối mạng tự động, màu → 8443.32.21.",
@@ -320,7 +573,12 @@
     {
       "id": "r-sf-printer-nonet-mono",
       "priority": 57,
-      "when": {"printTech": "digital_copy", "completeOrParts": "complete", "digitalKind": "printer", "color": "mono"},
+      "when": {
+        "printTech": "digital_copy",
+        "completeOrParts": "complete",
+        "digitalKind": "printer",
+        "color": "mono"
+      },
       "hs": "84433229",
       "gir": "GIR 6",
       "reasonVi": "Máy in đơn chức năng, không nối mạng tự động, đen trắng → 8443.32.29.",
@@ -329,7 +587,13 @@
     {
       "id": "r-sf-printer-color-2",
       "priority": 56,
-      "when": {"printTech": "digital_copy", "completeOrParts": "complete", "digitalKind": "printer", "color": "color", "feedType": "reel"},
+      "when": {
+        "printTech": "digital_copy",
+        "completeOrParts": "complete",
+        "digitalKind": "printer",
+        "color": "color",
+        "feedType": "reel"
+      },
       "hs": "84433231",
       "gir": "GIR 6",
       "reasonVi": "Máy in laser, đơn chức năng, màu → 8443.32.31.",
@@ -338,7 +602,13 @@
     {
       "id": "r-sf-printer-mono-2",
       "priority": 55,
-      "when": {"printTech": "digital_copy", "completeOrParts": "complete", "digitalKind": "printer", "color": "mono", "feedType": "reel"},
+      "when": {
+        "printTech": "digital_copy",
+        "completeOrParts": "complete",
+        "digitalKind": "printer",
+        "color": "mono",
+        "feedType": "reel"
+      },
       "hs": "84433239",
       "gir": "GIR 6",
       "reasonVi": "Máy in laser, đơn chức năng, đen trắng → 8443.32.39.",
@@ -347,7 +617,11 @@
     {
       "id": "r-fax",
       "priority": 54,
-      "when": {"printTech": "digital_copy", "completeOrParts": "complete", "digitalKind": "fax"},
+      "when": {
+        "printTech": "digital_copy",
+        "completeOrParts": "complete",
+        "digitalKind": "fax"
+      },
       "hs": "84433240",
       "gir": "GIR 6",
       "reasonVi": "Máy fax → 8443.32.40.",
@@ -356,7 +630,11 @@
     {
       "id": "r-screen-print",
       "priority": 53,
-      "when": {"printTech": "digital_copy", "completeOrParts": "complete", "digitalKind": "screen_print"},
+      "when": {
+        "printTech": "digital_copy",
+        "completeOrParts": "complete",
+        "digitalKind": "screen_print"
+      },
       "hs": "84433250",
       "gir": "GIR 6",
       "reasonVi": "Máy in kiểu lưới dùng sản xuất tấm mạ → 8443.32.50.",
@@ -365,7 +643,11 @@
     {
       "id": "r-plotter",
       "priority": 52,
-      "when": {"printTech": "digital_copy", "completeOrParts": "complete", "digitalKind": "plotter"},
+      "when": {
+        "printTech": "digital_copy",
+        "completeOrParts": "complete",
+        "digitalKind": "plotter"
+      },
       "hs": "84433260",
       "gir": "GIR 6",
       "reasonVi": "Máy vẽ (plotter) → 8443.32.60.",
@@ -374,7 +656,11 @@
     {
       "id": "r-sf-other",
       "priority": 51,
-      "when": {"printTech": "digital_copy", "completeOrParts": "complete", "digitalKind": "other_digital"},
+      "when": {
+        "printTech": "digital_copy",
+        "completeOrParts": "complete",
+        "digitalKind": "other_digital"
+      },
       "hs": "84433290",
       "gir": "GIR 6",
       "reasonVi": "Máy in/sao chụp đơn chức năng loại khác → 8443.32.90.",
@@ -383,7 +669,12 @@
     {
       "id": "r-electrostatic-plain",
       "priority": 50,
-      "when": {"printTech": "digital_copy", "completeOrParts": "complete", "digitalKind": "electrostatic", "color": "mono"},
+      "when": {
+        "printTech": "digital_copy",
+        "completeOrParts": "complete",
+        "digitalKind": "electrostatic",
+        "color": "mono"
+      },
       "hs": "84433910",
       "gir": "GIR 6",
       "reasonVi": "Máy photocopy tĩnh điện, hoạt động bằng phương pháp trực tiếp → 8443.39.10.",
@@ -392,7 +683,12 @@
     {
       "id": "r-electrostatic-special",
       "priority": 49,
-      "when": {"printTech": "digital_copy", "completeOrParts": "complete", "digitalKind": "electrostatic", "color": "color"},
+      "when": {
+        "printTech": "digital_copy",
+        "completeOrParts": "complete",
+        "digitalKind": "electrostatic",
+        "color": "color"
+      },
       "hs": "84433920",
       "gir": "GIR 6",
       "reasonVi": "Máy photocopy tĩnh điện hoạt động bằng phương pháp gián tiếp (special) → 8443.39.20.",
@@ -401,7 +697,12 @@
     {
       "id": "r-optical-copier",
       "priority": 48,
-      "when": {"printTech": "digital_copy", "completeOrParts": "complete", "digitalKind": "copier", "color": "any"},
+      "when": {
+        "printTech": "digital_copy",
+        "completeOrParts": "complete",
+        "digitalKind": "copier",
+        "color": "any"
+      },
       "hs": "84433930",
       "gir": "GIR 6",
       "reasonVi": "Máy photocopy khác kết hợp hệ thống quang học → 8443.39.30.",
@@ -410,7 +711,11 @@
     {
       "id": "r-inkjet",
       "priority": 47,
-      "when": {"printTech": "digital_copy", "completeOrParts": "complete", "digitalKind": "inkjet"},
+      "when": {
+        "printTech": "digital_copy",
+        "completeOrParts": "complete",
+        "digitalKind": "inkjet"
+      },
       "hs": "84433940",
       "gir": "GIR 6",
       "reasonVi": "Máy in phun → 8443.39.40.",
@@ -419,11 +724,22 @@
     {
       "id": "r-other-digital-complete",
       "priority": 46,
-      "when": {"printTech": "digital_copy", "completeOrParts": "complete"},
+      "when": {
+        "printTech": "digital_copy",
+        "completeOrParts": "complete"
+      },
       "hs": "84433990",
       "gir": "GIR 6",
       "reasonVi": "Máy in/sao chụp/photocopy loại khác → 8443.39.90.",
       "source": "Biểu thuế 2026 dòng 8443.39.90"
     }
-  ]
+  ],
+  "inputAttributes": [
+    "printTech",
+    "completeOrParts",
+    "digitalKind",
+    "feedType",
+    "color"
+  ],
+  "essenceVi": "công nghệ in+hoàn/chỉ+kỹ thuật số+nạp giấy+màu"
 }
