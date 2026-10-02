@@ -1,0 +1,71 @@
+{
+  "heading": "8302",
+  "titleVi": "Cấu kiện kim loại cơ bản: bản lề, bánh xe đẩy, phụ kiện xe có động cơ, phụ kiện kiến trúc, phụ kiện đồ gỗ, phụ kiện yên cương, giá đỡ, cơ cấu đóng cửa tự động",
+  "titleEn": "Base metal mountings, fittings, hinges, castors, hat-racks, brackets, automatic door closures",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Loại cấu kiện + bánh xe đường kính (cho castor) + hasp/loại thường (cho phụ kiện nhà cửa/đồ gỗ/khác) → mã 8 số. 15 lá, 3 thuộc tính.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN). 8302.30 (xe có động cơ) cùng mã dù có Hasps hay không.",
+  "inputs": [
+    {
+      "attribute": "articleKind",
+      "type": "enum",
+      "domain": ["hinge", "castor_wheel", "motor_mounting", "building_mounting", "furniture_mounting", "saddle_mounting", "other_mounting", "hat_rack_bracket", "door_closure"],
+      "labelVi": "Loại cấu kiện kim loại",
+      "questionVi": "Cấu kiện kim loại này thuộc loại nào: bản lề (hinge), bánh xe đẩy (castor), phụ kiện xe có động cơ, phụ kiện kiến trúc (nhà cửa), phụ kiện đồ gỗ, phụ kiện yên cương (saddle), phụ kiện khác, giá đỡ (mũ/mắc), hay cơ cấu đóng cửa tự động?",
+      "detect": {
+        "hinge": ["hinges", "bản lề", "bản lề cửa", "door hinge", "butt hinge"],
+        "castor_wheel": ["castors", "bánh xe", "bánh đẩy", "wheel with mounting", "bánh xe đẩy có giá"],
+        "motor_mounting": ["motor vehicle", "xe có động cơ", "xe máy", "ô tô", "phụ kiện xe"],
+        "building_mounting": ["suitable for buildings", "nhà cửa", "cửa sổ", "window", "blind", "shutter", "phụ kiện cửa sổ", "phụ kiện kiến trúc"],
+        "furniture_mounting": ["suitable for furniture", "đồ gỗ", "tủ", "bàn", "ghế", "giá đỡ đồ gỗ"],
+        "saddle_mounting": ["saddle", "yên cương", "yên ngựa"],
+        "other_mounting": ["mountings", "fittings", "khác nhà và đồ gỗ", "không phải nhà cửa và đồ gỗ"],
+        "hat_rack_bracket": ["hat-rack", "hat-peg", "bracket", "giá đỡ", "mắc mũ", "giá để mũ", "chân giá đỡ", "giá cố định"],
+        "door_closure": ["automatic door closure", "cơ cấu đóng cửa", "door closer", "cơ cấu đóng cửa tự động"]
+      }
+    },
+    {
+      "attribute": "hasHasp",
+      "type": "boolean",
+      "labelVi": "Có phải bản lề để móc khóa (Hasps) không?",
+      "questionVi": "Sản phẩm có phải là bản lề để móc khóa (Hasps) — loại có móc khóa bằng kim loại lắp vào cửa không?",
+      "detect": {
+        "true": ["hasps", "bản lề để móc khóa", "móc khóa", "hasp and ring"],
+        "false": ["không phải hasp", "loại khác", "không có móc khóa", "thường"]
+      },
+      "noteVi": "Hasps chỉ tách mã cho 8302.41 và 8302.49. Mã 8302.30 (xe có động cơ) không phân biệt Hasps."
+    },
+    {
+      "attribute": "diameterRange",
+      "type": "enum",
+      "domain": ["gt100mm", "le100mm", "not_applicable"],
+      "labelVi": "Đường kính bánh xe (cho castor)",
+      "questionVi": "Bánh xe có đường kính (bao gồm lốp) trên 100 mm không?",
+      "detect": {
+        "gt100mm": ["over 100 mm", "trên 100 mm", "trên 100", "over 100"],
+        "le100mm": ["không quá 100 mm", "≤ 100 mm", "not exceeding 100", "dưới 100 mm"],
+        "not_applicable": ["không áp", "n/a", "không rõ"]
+      },
+      "noteVi": "Chỉ áp cho bánh xe (8302.20). 8302.20.10 nếu > 100 mm; 8302.20.90 nếu ≤ 100 mm."
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {"id": "r01", "priority": 10, "when": {"articleKind": "hinge"}, "hs": "83021000", "reasonVi": "Bản lề tổng quát (Hinges) — vào 8302.10.", "source": "Biểu thuế 2026 dòng 8302.10.00"},
+    {"id": "r02", "priority": 10, "when": {"articleKind": "castor_wheel", "diameterRange": "gt100mm"}, "hs": "83022010", "reasonVi": "Bánh xe đẩy đường kính > 100 mm → 8302.20.10.", "source": "Biểu thuế 2026 dòng 8302.20.10"},
+    {"id": "r03", "priority": 10, "when": {"articleKind": "castor_wheel", "diameterRange": "le100mm"}, "hs": "83022090", "reasonVi": "Bánh xe đẩy đường kính ≤ 100 mm hoặc không rõ → 8302.20.90.", "source": "Biểu thuế 2026 dòng 8302.20.90"},
+    {"id": "r04", "priority": 10, "when": {"articleKind": "castor_wheel", "diameterRange": "not_applicable"}, "hs": "83022090", "reasonVi": "Bánh xe không rõ đường kính → mặc định 8302.20.90 (loại khác).", "source": "Biểu thuế 2026 dòng 8302.20.90"},
+    {"id": "r05", "priority": 10, "when": {"articleKind": "motor_mounting"}, "hs": "83023090", "reasonVi": "Phụ kiện xe có động cơ — 8302.30 cùng mã dù có Hasps hay không (cùng thuế 30% MFN).", "source": "Biểu thuế 2026 dòng 8302.30.90"},
+    {"id": "r06", "priority": 11, "when": {"articleKind": "building_mounting", "hasHasp": true}, "hs": "83024131", "reasonVi": "Phụ kiện nhà cửa loại Hasps (SEN) → 8302.41.31.", "source": "Biểu thuế 2026 dòng 8302.41.31"},
+    {"id": "r07", "priority": 10, "when": {"articleKind": "building_mounting", "hasHasp": false}, "hs": "83024190", "reasonVi": "Phụ kiện nhà cửa loại thường → 8302.41.90 (loại khác).", "source": "Biểu thuế 2026 dòng 8302.41.90"},
+    {"id": "r08", "priority": 11, "when": {"articleKind": "furniture_mounting", "hasHasp": true}, "hs": "83024220", "reasonVi": "Phụ kiện đồ gỗ loại Hasps (SEN) → 8302.42.20.", "source": "Biểu thuế 2026 dòng 8302.42.20"},
+    {"id": "r09", "priority": 10, "when": {"articleKind": "furniture_mounting", "hasHasp": false}, "hs": "83024290", "reasonVi": "Phụ kiện đồ gỗ loại thường → 8302.42.90 (loại khác).", "source": "Biểu thuế 2026 dòng 8302.42.90"},
+    {"id": "r10", "priority": 10, "when": {"articleKind": "saddle_mounting"}, "hs": "83024910", "reasonVi": "Phụ kiện phù hợp cho yên cương (saddle) → 8302.49.10.", "source": "Biểu thuế 2026 dòng 8302.49.10"},
+    {"id": "r11", "priority": 11, "when": {"articleKind": "other_mounting", "hasHasp": true}, "hs": "83024991", "reasonVi": "Phụ kiện khác (không nhà/đồ gỗ) loại Hasps (SEN) → 8302.49.91.", "source": "Biểu thuế 2026 dòng 8302.49.91"},
+    {"id": "r12", "priority": 10, "when": {"articleKind": "other_mounting", "hasHasp": false}, "hs": "83024999", "reasonVi": "Phụ kiện khác (không nhà/đồ gỗ/yên cương) → 8302.49.99.", "source": "Biểu thuế 2026 dòng 8302.49.99"},
+    {"id": "r13", "priority": 10, "when": {"articleKind": "hat_rack_bracket"}, "hs": "83025000", "reasonVi": "Giá để mũ, mắc mũ, chân giá đỡ và các loại giá cố định tương tự → 8302.50.", "source": "Biểu thuế 2026 dòng 8302.50.00"},
+    {"id": "r14", "priority": 10, "when": {"articleKind": "door_closure"}, "hs": "83026000", "reasonVi": "Cơ cấu đóng cửa tự động (Automatic door closures) → 8302.60.", "source": "Biểu thuế 2026 dòng 8302.60.00"}
+  ]
+}
