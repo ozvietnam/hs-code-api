@@ -1,0 +1,755 @@
+{
+  "heading": "8443",
+  "titleVi": "Máy in; máy photocopy, máy fax và máy tương tự, có hoặc không kết hợp chức năng; bộ phận và phụ kiện",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Máy này là bộ phận/máy in công nghiệp (dùng cylinders)/máy văn phòng đa chức năng/máy in đơn chức năng? Công nghệ in hoặc chức năng chính là gì? Có kết nối mạng/máy tính không?",
+  "sourceVi": "Biểu thuế NK 2026 nhóm 84.43; Luatvietnam 8443.11-8443.99.",
+  "inputs": [
+    {
+      "attribute": "machineType",
+      "type": "enum",
+      "domain": [
+        "parts",
+        "completePrintingMachine",
+        "multiFunction",
+        "singleFunction",
+        "accessories"
+      ],
+      "labelVi": "Loại máy",
+      "questionVi": "Máy này thuộc loại nào: bộ phận, máy in công nghiệp, đa chức năng, đơn chức năng, hay phụ kiện?",
+      "detect": {
+        "parts": [
+          "bộ phận máy in",
+          "parts of printing",
+          "844391"
+        ],
+        "completePrintingMachine": [
+          "máy in offset",
+          "printing machinery",
+          "844311",
+          "844312",
+          "844313",
+          "844314",
+          "844315",
+          "844316",
+          "844317",
+          "844319"
+        ],
+        "multiFunction": [
+          "kết hợp",
+          "multifunction",
+          "printer-copy",
+          "print-copy",
+          "844331"
+        ],
+        "singleFunction": [
+          "máy in",
+          "máy photocopy",
+          "máy fax",
+          "printer",
+          "copier",
+          "844332",
+          "844339"
+        ],
+        "accessories": [
+          "hộp mực",
+          "bộ phận cung cấp giấy",
+          "844399"
+        ]
+      }
+    },
+    {
+      "attribute": "printingTechnology",
+      "type": "enum",
+      "domain": [
+        "offsetReel",
+        "offsetSheet",
+        "offsetOther",
+        "letterpressReel",
+        "letterpressOther",
+        "flexo",
+        "gravure",
+        "other",
+        "notApplicable"
+      ],
+      "labelVi": "Công nghệ in",
+      "questionVi": "Công nghệ in: offset cuộn/tờ/khác, letterpress, flexo, ống đồng (gravure), hay khác?",
+      "detect": {
+        "offsetReel": [
+          "offset cuộn",
+          "roll-fed offset",
+          "844311"
+        ],
+        "offsetSheet": [
+          "offset tờ",
+          "sheet-fed offset",
+          "office type",
+          "844312"
+        ],
+        "offsetOther": [
+          "offset",
+          "844313"
+        ],
+        "letterpressReel": [
+          "letterpress cuộn",
+          "letterpress reel-fed",
+          "844314"
+        ],
+        "letterpressOther": [
+          "letterpress",
+          "844315"
+        ],
+        "flexo": [
+          "flexo",
+          "flexographic",
+          "844316"
+        ],
+        "gravure": [
+          "ống đồng",
+          "gravure",
+          "844317"
+        ],
+        "other": [
+          "screen",
+          "pad",
+          "other printing",
+          "844319"
+        ],
+        "notApplicable": [
+          "photocopy",
+          "fax",
+          "printer",
+          "inkjet",
+          "laser"
+        ]
+      }
+    },
+    {
+      "attribute": "networkCapable",
+      "type": "enum",
+      "domain": [
+        "yes",
+        "no",
+        "notApplicable"
+      ],
+      "labelVi": "Kết nối mạng/máy tính",
+      "questionVi": "Máy có thể kết nối với máy tính hoặc mạng (Wi-Fi/Ethernet/USB) không?",
+      "detect": {
+        "yes": [
+          "wifi",
+          "wi-fi",
+          "ethernet",
+          "network",
+          "kết nối mạng",
+          "kết nối máy tính",
+          "USB host",
+          "ADP",
+          "844331",
+          "844332"
+        ],
+        "no": [
+          "không kết nối",
+          "not network",
+          "office",
+          "standalone",
+          "844339"
+        ],
+        "notApplicable": [
+          "bộ phận",
+          "parts",
+          "phụ kiện",
+          "accessories",
+          "844391",
+          "844399"
+        ]
+      }
+    },
+    {
+      "attribute": "functionType",
+      "type": "enum",
+      "domain": [
+        "printCopyFax",
+        "printCopy",
+        "printCopyScanFax",
+        "printerOnly",
+        "copierOnly",
+        "faxOnly",
+        "plotter",
+        "inkjet",
+        "laser",
+        "dotMatrix",
+        "electrostaticDirect",
+        "electrostaticIndirect",
+        "optical",
+        "other",
+        "notApplicable"
+      ],
+      "labelVi": "Chức năng/chủng loại",
+      "questionVi": "Chức năng chính hoặc chủng loại cụ thể của máy là gì?",
+      "detect": {
+        "printCopyFax": [
+          "print-copy-fax",
+          "print and copy and fax",
+          "844331"
+        ],
+        "printCopy": [
+          "print-copy",
+          "photocopier combined",
+          "84433111",
+          "84433119"
+        ],
+        "printCopyScanFax": [
+          "print-copy-scan-fax",
+          "84433191"
+        ],
+        "printerOnly": [
+          "printer only",
+          "single function printer",
+          "84433290"
+        ],
+        "copierOnly": [
+          "photocopier",
+          "copy machine",
+          "electrostatic",
+          "optical",
+          "844339"
+        ],
+        "faxOnly": [
+          "fax",
+          "facsimile",
+          "84433240"
+        ],
+        "plotter": [
+          "plotter",
+          "máy vẽ",
+          "84433250",
+          "84433260"
+        ],
+        "inkjet": [
+          "inkjet",
+          "máy in phun",
+          "84433221",
+          "84433229",
+          "84433940"
+        ],
+        "laser": [
+          "laser",
+          "máy in laser",
+          "84433231",
+          "84433239"
+        ],
+        "dotMatrix": [
+          "dot matrix",
+          "kim",
+          "needle printer",
+          "84433211",
+          "84433219"
+        ],
+        "electrostaticDirect": [
+          "electrostatic direct",
+          "tĩnh điện trực tiếp",
+          "84433910"
+        ],
+        "electrostaticIndirect": [
+          "electrostatic indirect",
+          "tĩnh điện gián tiếp",
+          "84433920"
+        ],
+        "optical": [
+          "optical",
+          "quang học",
+          "84433930"
+        ],
+        "other": [
+          "other",
+          "loại khác",
+          "n.e.c."
+        ],
+        "notApplicable": [
+          "parts",
+          "accessories",
+          "bộ phận",
+          "phụ kiện"
+        ]
+      }
+    },
+    {
+      "attribute": "colorType",
+      "type": "enum",
+      "domain": [
+        "color",
+        "monochrome",
+        "notApplicable"
+      ],
+      "labelVi": "Màu/đơn sắc",
+      "questionVi": "Máy là loại màu hay đơn sắc (trắng đen)?",
+      "detect": {
+        "color": [
+          "màu",
+          "color",
+          "colour"
+        ],
+        "monochrome": [
+          "đơn sắc",
+          "đen trắng",
+          "monochrome",
+          "black and white",
+          "trắng đen",
+          "loại khác"
+        ],
+        "notApplicable": [
+          "parts",
+          "accessories",
+          "bộ phận",
+          "phụ kiện",
+          "other"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "FIRST",
+  "rules": [
+    {
+      "id": "r1",
+      "priority": 50,
+      "when": {
+        "machineType": "parts"
+      },
+      "hs": "84439100",
+      "reasonVi": "Bộ phận và phụ kiện của máy in sử dụng các bộ phận in nhóm 8443 → 8443.91.",
+      "source": "Biểu thuế 2026 dòng 8443.91."
+    },
+    {
+      "id": "r2",
+      "priority": 50,
+      "when": {
+        "machineType": "accessories",
+        "functionType": "inkjet"
+      },
+      "hs": "84439920",
+      "reasonVi": "Hộp mực in đã có mực in → 8443.99.20.",
+      "source": "Biểu thuế 2026 dòng 8443.99.20."
+    },
+    {
+      "id": "r3",
+      "priority": 50,
+      "when": {
+        "machineType": "accessories",
+        "functionType": "plotter"
+      },
+      "hs": "84439910",
+      "reasonVi": "Bộ phận của máy in kiểu lưới dùng để sản xuất tấm mạch in → 8443.99.10.",
+      "source": "Biểu thuế 2026 dòng 8443.99.10."
+    },
+    {
+      "id": "r4",
+      "priority": 50,
+      "when": {
+        "machineType": "accessories",
+        "functionType": "printerOnly"
+      },
+      "hs": "84439990",
+      "reasonVi": "Bộ phận khác của máy in → 8443.99.90.",
+      "source": "Biểu thuế 2026 dòng 8443.99.90."
+    },
+    {
+      "id": "r5",
+      "priority": 50,
+      "when": {
+        "machineType": "accessories",
+        "functionType": "notApplicable"
+      },
+      "hs": "84439990",
+      "reasonVi": "Phụ kiện và bộ phận khác của máy in → 8443.99.90.",
+      "source": "Biểu thuế 2026 dòng 8443.99.90."
+    },
+    {
+      "id": "r6",
+      "priority": 50,
+      "when": {
+        "machineType": "accessories",
+        "functionType": "copierOnly"
+      },
+      "hs": "84439930",
+      "reasonVi": "Bộ phận cung cấp giấy và bộ phận sắp xếp giấy → 8443.99.30.",
+      "source": "Biểu thuế 2026 dòng 8443.99.30."
+    },
+    {
+      "id": "r10",
+      "priority": 50,
+      "when": {
+        "machineType": "completePrintingMachine",
+        "printingTechnology": "offsetReel"
+      },
+      "hs": "84431100",
+      "reasonVi": "Máy in offset, in cuộn → 8443.11.",
+      "source": "Biểu thuế 2026 dòng 8443.11."
+    },
+    {
+      "id": "r11",
+      "priority": 50,
+      "when": {
+        "machineType": "completePrintingMachine",
+        "printingTechnology": "offsetSheet"
+      },
+      "hs": "84431200",
+      "reasonVi": "Máy in offset, in tờ, loại văn phòng (≤22×36cm) → 8443.12.",
+      "source": "Biểu thuế 2026 dòng 8443.12."
+    },
+    {
+      "id": "r12",
+      "priority": 50,
+      "when": {
+        "machineType": "completePrintingMachine",
+        "printingTechnology": "offsetOther"
+      },
+      "hs": "84431300",
+      "reasonVi": "Máy in offset, loại khác → 8443.13.",
+      "source": "Biểu thuế 2026 dòng 8443.13."
+    },
+    {
+      "id": "r13",
+      "priority": 50,
+      "when": {
+        "machineType": "completePrintingMachine",
+        "printingTechnology": "letterpressReel"
+      },
+      "hs": "84431400",
+      "reasonVi": "Máy in letterpress, in cuộn (trừ flexo) → 8443.14.",
+      "source": "Biểu thuế 2026 dòng 8443.14."
+    },
+    {
+      "id": "r14",
+      "priority": 50,
+      "when": {
+        "machineType": "completePrintingMachine",
+        "printingTechnology": "letterpressOther"
+      },
+      "hs": "84431500",
+      "reasonVi": "Máy in letterpress, trừ loại cuộn (trừ flexo) → 8443.15.",
+      "source": "Biểu thuế 2026 dòng 8443.15."
+    },
+    {
+      "id": "r15",
+      "priority": 50,
+      "when": {
+        "machineType": "completePrintingMachine",
+        "printingTechnology": "flexo"
+      },
+      "hs": "84431600",
+      "reasonVi": "Máy in flexo (in lụa/flexographic) → 8443.16.",
+      "source": "Biểu thuế 2026 dòng 8443.16."
+    },
+    {
+      "id": "r16",
+      "priority": 50,
+      "when": {
+        "machineType": "completePrintingMachine",
+        "printingTechnology": "gravure"
+      },
+      "hs": "84431700",
+      "reasonVi": "Máy in ống đồng (gravure) → 8443.17.",
+      "source": "Biểu thuế 2026 dòng 8443.17."
+    },
+    {
+      "id": "r17",
+      "priority": 10,
+      "when": {
+        "machineType": "completePrintingMachine",
+        "printingTechnology": "other"
+      },
+      "hs": "84431900",
+      "reasonVi": "Máy in khác (screen, pad, other) không thuộc 8443.11-17 → 8443.19.",
+      "source": "Biểu thuế 2026 dòng 8443.19."
+    },
+    {
+      "id": "r20",
+      "priority": 50,
+      "when": {
+        "machineType": "multiFunction",
+        "networkCapable": "yes",
+        "functionType": "printCopyScanFax"
+      },
+      "hs": "84433191",
+      "reasonVi": "Máy kết hợp in-copy-scan-fax, kết nối mạng/máy tính → 8443.31.91.",
+      "source": "Biểu thuế 2026 dòng 8443.31.91."
+    },
+    {
+      "id": "r21a",
+      "priority": 50,
+      "when": {
+        "machineType": "multiFunction",
+        "networkCapable": "yes",
+        "functionType": "printCopyFax",
+        "colorType": "color"
+      },
+      "hs": "84433131",
+      "reasonVi": "Máy kết hợp in-copy-fax màu, kết nối mạng → 8443.31.31.",
+      "source": "Biểu thuế 2026 dòng 8443.31.31."
+    },
+    {
+      "id": "r21b",
+      "priority": 50,
+      "when": {
+        "machineType": "multiFunction",
+        "networkCapable": "yes",
+        "functionType": "printCopyFax",
+        "colorType": "monochrome"
+      },
+      "hs": "84433139",
+      "reasonVi": "Máy kết hợp in-copy-fax đơn sắc, kết nối mạng → 8443.31.39.",
+      "source": "Biểu thuế 2026 dòng 8443.31.39."
+    },
+    {
+      "id": "r22a",
+      "priority": 50,
+      "when": {
+        "machineType": "multiFunction",
+        "networkCapable": "yes",
+        "functionType": "printCopy",
+        "colorType": "color"
+      },
+      "hs": "84433111",
+      "reasonVi": "Máy kết hợp in-copy màu, kết nối mạng → 8443.31.11.",
+      "source": "Biểu thuế 2026 dòng 8443.31.11."
+    },
+    {
+      "id": "r22b",
+      "priority": 50,
+      "when": {
+        "machineType": "multiFunction",
+        "networkCapable": "yes",
+        "functionType": "printCopy",
+        "colorType": "monochrome"
+      },
+      "hs": "84433119",
+      "reasonVi": "Máy kết hợp in-copy đơn sắc, kết nối mạng → 8443.31.19.",
+      "source": "Biểu thuế 2026 dòng 8443.31.19."
+    },
+    {
+      "id": "r22c",
+      "priority": 50,
+      "when": {
+        "machineType": "multiFunction",
+        "networkCapable": "yes",
+        "functionType": "printCopy",
+        "colorType": "color"
+      },
+      "hs": "84433121",
+      "reasonVi": "Máy kết hợp in-copy laser màu, kết nối mạng → 8443.31.21.",
+      "source": "Biểu thuế 2026 dòng 8443.31.21."
+    },
+    {
+      "id": "r22d",
+      "priority": 50,
+      "when": {
+        "machineType": "multiFunction",
+        "networkCapable": "yes",
+        "functionType": "printCopy",
+        "colorType": "monochrome"
+      },
+      "hs": "84433129",
+      "reasonVi": "Máy kết hợp in-copy laser đơn sắc, kết nối mạng → 8443.31.29.",
+      "source": "Biểu thuế 2026 dòng 8443.31.29."
+    },
+    {
+      "id": "r23",
+      "priority": 10,
+      "when": {
+        "machineType": "multiFunction",
+        "networkCapable": "yes"
+      },
+      "hs": "84433199",
+      "reasonVi": "Máy kết hợp chức năng khác, kết nối mạng/máy tính → 8443.31.99.",
+      "source": "Biểu thuế 2026 dòng 8443.31.99."
+    },
+    {
+      "id": "r30a",
+      "priority": 50,
+      "when": {
+        "machineType": "singleFunction",
+        "networkCapable": "yes",
+        "functionType": "plotter",
+        "colorType": "notApplicable"
+      },
+      "hs": "84433260",
+      "reasonVi": "Máy vẽ (plotter), kết nối mạng → 8443.32.60.",
+      "source": "Biểu thuế 2026 dòng 8443.32.60."
+    },
+    {
+      "id": "r30b",
+      "priority": 50,
+      "when": {
+        "machineType": "singleFunction",
+        "networkCapable": "yes",
+        "functionType": "plotter"
+      },
+      "hs": "84433250",
+      "reasonVi": "Máy in kiểu lưới dùng để sản xuất tấm mạch in (PCB plotter), kết nối mạng → 8443.32.50.",
+      "source": "Biểu thuế 2026 dòng 8443.32.50."
+    },
+    {
+      "id": "r31a",
+      "priority": 50,
+      "when": {
+        "machineType": "singleFunction",
+        "networkCapable": "yes",
+        "functionType": "dotMatrix",
+        "colorType": "color"
+      },
+      "hs": "84433211",
+      "reasonVi": "Máy in kim màu, kết nối mạng → 8443.32.11.",
+      "source": "Biểu thuế 2026 dòng 8443.32.11."
+    },
+    {
+      "id": "r31b",
+      "priority": 50,
+      "when": {
+        "machineType": "singleFunction",
+        "networkCapable": "yes",
+        "functionType": "dotMatrix",
+        "colorType": "monochrome"
+      },
+      "hs": "84433219",
+      "reasonVi": "Máy in kim đơn sắc, kết nối mạng → 8443.32.19.",
+      "source": "Biểu thuế 2026 dòng 8443.32.19."
+    },
+    {
+      "id": "r32a",
+      "priority": 50,
+      "when": {
+        "machineType": "singleFunction",
+        "networkCapable": "yes",
+        "functionType": "inkjet",
+        "colorType": "color"
+      },
+      "hs": "84433221",
+      "reasonVi": "Máy in phun màu, kết nối mạng → 8443.32.21.",
+      "source": "Biểu thuế 2026 dòng 8443.32.21."
+    },
+    {
+      "id": "r32b",
+      "priority": 50,
+      "when": {
+        "machineType": "singleFunction",
+        "networkCapable": "yes",
+        "functionType": "inkjet",
+        "colorType": "monochrome"
+      },
+      "hs": "84433229",
+      "reasonVi": "Máy in phun đơn sắc, kết nối mạng → 8443.32.29.",
+      "source": "Biểu thuế 2026 dòng 8443.32.29."
+    },
+    {
+      "id": "r33a",
+      "priority": 50,
+      "when": {
+        "machineType": "singleFunction",
+        "networkCapable": "yes",
+        "functionType": "laser",
+        "colorType": "color"
+      },
+      "hs": "84433231",
+      "reasonVi": "Máy in laser màu, kết nối mạng → 8443.32.31.",
+      "source": "Biểu thuế 2026 dòng 8443.32.31."
+    },
+    {
+      "id": "r33b",
+      "priority": 50,
+      "when": {
+        "machineType": "singleFunction",
+        "networkCapable": "yes",
+        "functionType": "laser",
+        "colorType": "monochrome"
+      },
+      "hs": "84433239",
+      "reasonVi": "Máy in laser đơn sắc, kết nối mạng → 8443.32.39.",
+      "source": "Biểu thuế 2026 dòng 8443.32.39."
+    },
+    {
+      "id": "r34",
+      "priority": 50,
+      "when": {
+        "machineType": "singleFunction",
+        "networkCapable": "yes",
+        "functionType": "faxOnly"
+      },
+      "hs": "84433240",
+      "reasonVi": "Máy fax, kết nối mạng → 8443.32.40.",
+      "source": "Biểu thuế 2026 dòng 8443.32.40."
+    },
+    {
+      "id": "r35",
+      "priority": 10,
+      "when": {
+        "machineType": "singleFunction",
+        "networkCapable": "yes",
+        "functionType": "printerOnly"
+      },
+      "hs": "84433290",
+      "reasonVi": "Máy in/photo đơn chức năng khác, kết nối mạng → 8443.32.90.",
+      "source": "Biểu thuế 2026 dòng 8443.32.90."
+    },
+    {
+      "id": "r40a",
+      "priority": 50,
+      "when": {
+        "machineType": "singleFunction",
+        "networkCapable": "no",
+        "functionType": "electrostaticDirect"
+      },
+      "hs": "84433910",
+      "reasonVi": "Máy photocopy tĩnh điện trực tiếp, không kết nối mạng → 8443.39.10.",
+      "source": "Biểu thuế 2026 dòng 8443.39.10."
+    },
+    {
+      "id": "r40b",
+      "priority": 50,
+      "when": {
+        "machineType": "singleFunction",
+        "networkCapable": "no",
+        "functionType": "electrostaticIndirect"
+      },
+      "hs": "84433920",
+      "reasonVi": "Máy photocopy tĩnh điện gián tiếp, không kết nối mạng → 8443.39.20 (thuế 10%).",
+      "source": "Biểu thuế 2026 dòng 8443.39.20."
+    },
+    {
+      "id": "r41",
+      "priority": 50,
+      "when": {
+        "machineType": "singleFunction",
+        "networkCapable": "no",
+        "functionType": "optical"
+      },
+      "hs": "84433930",
+      "reasonVi": "Máy photocopy quang học, không kết nối mạng → 8443.39.30.",
+      "source": "Biểu thuế 2026 dòng 8443.39.30."
+    },
+    {
+      "id": "r42",
+      "priority": 50,
+      "when": {
+        "machineType": "singleFunction",
+        "networkCapable": "no",
+        "functionType": "inkjet"
+      },
+      "hs": "84433940",
+      "reasonVi": "Máy in phun, không kết nối mạng → 8443.39.40.",
+      "source": "Biểu thuế 2026 dòng 8443.39.40."
+    },
+    {
+      "id": "r43",
+      "priority": 10,
+      "when": {
+        "machineType": "singleFunction",
+        "networkCapable": "no"
+      },
+      "hs": "84433990",
+      "reasonVi": "Máy in/coppy đơn chức năng khác, không kết nối mạng → 8443.39.90.",
+      "source": "Biểu thuế 2026 dòng 8443.39.90."
+    }
+  ]
+}
