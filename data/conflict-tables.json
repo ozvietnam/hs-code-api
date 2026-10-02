@@ -1,24 +1,37 @@
 {
-  "version": "2026-07",
+  "version": "2026-10-02",
   "tables": {
     "CF-storage-vs-converter": {
       "titleVi": "Ắc quy / sạc dự phòng vs Bộ nạp vs Pin sơ cấp",
       "verified": true,
       "verifiedBy": "ozvietnam",
       "verifiedAt": "2026-07",
-      "members": ["85076033", "85076090", "85065000", "85044090"],
+      "members": [
+        "85076033",
+        "85076090",
+        "85065000",
+        "85044090"
+      ],
       "essenceTestVi": "Hàng LƯU TRỮ điện để xả sau, hay chỉ BIẾN ĐỔI điện tức thời?",
       "inputs": [
-        { "attribute": "energyFunction" },
-        { "attribute": "rechargeable" },
-        { "attribute": "endUse" }
+        {
+          "attribute": "energyFunction"
+        },
+        {
+          "attribute": "rechargeable"
+        },
+        {
+          "attribute": "endUse"
+        }
       ],
       "hitPolicy": "PRIORITY",
       "rules": [
         {
           "id": "r1",
           "priority": 40,
-          "when": { "energyFunction": "convert" },
+          "when": {
+            "energyFunction": "convert"
+          },
           "hs": "85044090",
           "gir": "GIR 1",
           "evidence": "hard",
@@ -28,7 +41,10 @@
         {
           "id": "r2",
           "priority": 30,
-          "when": { "energyFunction": "store", "rechargeable": "no" },
+          "when": {
+            "energyFunction": "store",
+            "rechargeable": "no"
+          },
           "hs": "85065000",
           "gir": "GIR 1",
           "evidence": "hard",
@@ -38,7 +54,11 @@
         {
           "id": "r3",
           "priority": 20,
-          "when": { "energyFunction": "store", "rechargeable": "yes", "endUse": "ev" },
+          "when": {
+            "energyFunction": "store",
+            "rechargeable": "yes",
+            "endUse": "ev"
+          },
           "hs": "85076033",
           "gir": "GIR 1+6",
           "evidence": "hard",
@@ -48,7 +68,11 @@
         {
           "id": "r4",
           "priority": 10,
-          "when": { "energyFunction": "store", "rechargeable": "yes", "endUse": "electronics" },
+          "when": {
+            "energyFunction": "store",
+            "rechargeable": "yes",
+            "endUse": "electronics"
+          },
           "hs": "85076090",
           "gir": "GIR 3(b)",
           "evidence": "hard",
@@ -62,15 +86,24 @@
       "verified": true,
       "verifiedBy": "ozvietnam",
       "verifiedAt": "2026-07",
-      "members": ["61091010", "62041100"],
+      "members": [
+        "61091010",
+        "62041100"
+      ],
       "essenceTestVi": "Hàng dệt kim hay dệt thoi?",
-      "inputs": [{ "attribute": "fabricConstruction" }],
+      "inputs": [
+        {
+          "attribute": "fabricConstruction"
+        }
+      ],
       "hitPolicy": "UNIQUE",
       "rules": [
         {
           "id": "t1",
           "priority": 10,
-          "when": { "fabricConstruction": "knit" },
+          "when": {
+            "fabricConstruction": "knit"
+          },
           "hs": "61091010",
           "gir": "GIR 1",
           "evidence": "hard",
@@ -80,7 +113,9 @@
         {
           "id": "t2",
           "priority": 10,
-          "when": { "fabricConstruction": "woven" },
+          "when": {
+            "fabricConstruction": "woven"
+          },
           "hs": "62041100",
           "gir": "GIR 1",
           "evidence": "hard",
@@ -94,18 +129,29 @@
       "verified": true,
       "verifiedBy": "ozvietnam",
       "verifiedAt": "2026-07",
-      "members": ["19011010", "19011020", "19011099", "19019099"],
+      "members": [
+        "19011010",
+        "19011020",
+        "19011099",
+        "19019099"
+      ],
       "essenceTestVi": "Nguồn gốc chế phẩm và đối tượng sử dụng (trẻ sơ sinh hay không)?",
       "inputs": [
-        { "attribute": "productBase" },
-        { "attribute": "infantFormula" }
+        {
+          "attribute": "productBase"
+        },
+        {
+          "attribute": "infantFormula"
+        }
       ],
       "hitPolicy": "PRIORITY",
       "rules": [
         {
           "id": "d1",
           "priority": 40,
-          "when": { "productBase": "malt" },
+          "when": {
+            "productBase": "malt"
+          },
           "hs": "19011010",
           "gir": "GIR 1",
           "evidence": "hard",
@@ -115,7 +161,10 @@
         {
           "id": "d2",
           "priority": 30,
-          "when": { "productBase": "milk", "infantFormula": "yes" },
+          "when": {
+            "productBase": "milk",
+            "infantFormula": "yes"
+          },
           "hs": "19011020",
           "gir": "GIR 1",
           "evidence": "hard",
@@ -125,7 +174,10 @@
         {
           "id": "d3",
           "priority": 20,
-          "when": { "productBase": "milk", "infantFormula": "no" },
+          "when": {
+            "productBase": "milk",
+            "infantFormula": "no"
+          },
           "hs": "19011099",
           "gir": "GIR 1",
           "evidence": "hard",
@@ -135,7 +187,9 @@
         {
           "id": "d4",
           "priority": 10,
-          "when": { "productBase": "starch" },
+          "when": {
+            "productBase": "starch"
+          },
           "hs": "19019099",
           "gir": "GIR 1",
           "evidence": "hard",
@@ -149,15 +203,26 @@
       "verified": true,
       "verifiedBy": "ozvietnam",
       "verifiedAt": "2026-09",
-      "members": ["84812090", "84818083", "84818084", "84818030"],
+      "members": [
+        "84812090",
+        "84818083",
+        "84818084",
+        "84818030"
+      ],
       "essenceTestVi": "Van dùng trong mạch truyền động khí nén/thủy lực, hay van chuyên dụng nhiên liệu xe / bếp ga?",
-      "inputs": [{ "attribute": "valveCircuit" }],
+      "inputs": [
+        {
+          "attribute": "valveCircuit"
+        }
+      ],
       "hitPolicy": "UNIQUE",
       "rules": [
         {
           "id": "v1",
           "priority": 30,
-          "when": { "valveCircuit": "pneumaticHydraulic" },
+          "when": {
+            "valveCircuit": "pneumaticHydraulic"
+          },
           "hs": "84812090",
           "gir": "GIR 1",
           "evidence": "hard",
@@ -167,7 +232,9 @@
         {
           "id": "v2",
           "priority": 20,
-          "when": { "valveCircuit": "vehicleFuel" },
+          "when": {
+            "valveCircuit": "vehicleFuel"
+          },
           "hs": "84818083",
           "gir": "GIR 1",
           "evidence": "hard",
@@ -177,7 +244,9 @@
         {
           "id": "v3",
           "priority": 10,
-          "when": { "valveCircuit": "stove" },
+          "when": {
+            "valveCircuit": "stove"
+          },
           "hs": "84818030",
           "gir": "GIR 1",
           "evidence": "hard",
