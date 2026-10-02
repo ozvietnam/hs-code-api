@@ -1,0 +1,654 @@
+{
+  "heading": "8504",
+  "description": "Electric transformers, static converters (e.g. rectifiers) and inductors",
+  "attributes": [
+    {
+      "id": "productType",
+      "descriptionVi": "Loại sản phẩm",
+      "values": {
+        "ballast": "Chấn lưu (cho đèn phóng/ống phóng)",
+        "transformer_le1kVA": "Biến áp ≤1kVA (850431)",
+        "transformer_1to16kVA": "Biến áp 1-16kVA (850432)",
+        "transformer_16to630kVA": "Biến áp 16-630kVA (850433)",
+        "transformer_gt630kVA": "Biến áp >630kVA (850434)",
+        "transformer_gt1kVA": "Biến áp >1kVA phân phối (850421-850423)",
+        "staticConverter": "Bộ chỉnh lưu / UPS / nghịch lưu (850440)",
+        "inductor": "Cuộn cảm (850450)",
+        "parts": "Phụ tùng (850490)"
+      }
+    },
+    {
+      "id": "senMarked",
+      "descriptionVi": "Có nhãn SEN (thiết bị điện cao áp)",
+      "values": {
+        "sen": "Có SEN",
+        "nonSen": "Không SEN / không áp dụng"
+      }
+    },
+    {
+      "id": "powerkVA",
+      "descriptionVi": "Công suất danh định (kVA)",
+      "values": {
+        "le1": "≤1 kVA",
+        "gt1le10": ">1 đến 10 kVA",
+        "gt10le15": ">10 đến 15 kVA",
+        "gt15le20": ">15 đến 20 kVA",
+        "gt20le30": ">20 đến 30 kVA",
+        "gt30": ">30 kVA",
+        "le2500": "≤2.500 kVA",
+        "gt2500le10000": ">2.500 đến 10.000 kVA",
+        "gt10000": ">10.000 kVA",
+        "unspecified": "Không phân loại theo kVA"
+      }
+    },
+    {
+      "id": "voltageClass",
+      "descriptionVi": "Cấp điện áp (kV)",
+      "values": {
+        "lt1": "<1 kV",
+        "ge1lt66": "1-66 kV",
+        "ge66lt110": "66-110 kV",
+        "ge110": "≥110 kV",
+        "unspecified": "Không quy định"
+      }
+    },
+    {
+      "id": "specialType",
+      "descriptionVi": "Loại đặc biệt / ứng dụng riêng",
+      "values": {
+        "currentTransformer": "Máy biến dòng (CT)",
+        "freqScan": "Biến áp quét về (tần số quét ngược)",
+        "ifTransformer": "Biến áp trung tần (>3 MHz)",
+        "toys": "Đồ chơi / mô hình thu nhỏ",
+        "stepUpDown": "Biến áp tăng/giảm tấc, điều chỉnh trượt",
+        "adapter": "Biến áp thích ứng",
+        "dryExplosionProof": "Biến áp khô phòng nổ",
+        "batteryCharger": "Máy nạp ắc qui >100kVA",
+        "ups": "Bộ nguồn liên tục (UPS)",
+        "rectifier": "Bộ chỉnh lưu khác",
+        "inverter": "Bộ nghịch lưu",
+        "chipInductor": "Cuộn cảm con chip",
+        "dataProcInductor": "Cuộn cảm cho bộ nguồn thiết bị xử lý dữ liệu/viễn thông",
+        "none": "Không có loại đặc biệt"
+      }
+    }
+  ],
+  "rules": [
+    {
+      "productType": "ballast",
+      "senMarked": "nonSen",
+      "powerkVA": "unspecified",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85041000"
+    },
+    {
+      "productType": "transformer_gt1kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt1le10",
+      "voltageClass": "ge110",
+      "specialType": "none",
+      "hsCode": "85042111"
+    },
+    {
+      "productType": "transformer_gt1kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt1le10",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85042119"
+    },
+    {
+      "productType": "transformer_gt1kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt10le15",
+      "voltageClass": "ge110",
+      "specialType": "none",
+      "hsCode": "85042192"
+    },
+    {
+      "productType": "transformer_gt1kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt10le15",
+      "voltageClass": "ge66lt110",
+      "specialType": "none",
+      "hsCode": "85042193"
+    },
+    {
+      "productType": "transformer_gt1kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt1le10",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85042199"
+    },
+    {
+      "productType": "transformer_gt1kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "ge66lt110",
+      "specialType": "none",
+      "hsCode": "85042211"
+    },
+    {
+      "productType": "transformer_gt1kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85042219"
+    },
+    {
+      "productType": "transformer_gt1kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "ge110",
+      "specialType": "none",
+      "hsCode": "85042292"
+    },
+    {
+      "productType": "transformer_gt1kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "ge66lt110",
+      "specialType": "none",
+      "hsCode": "85042293"
+    },
+    {
+      "productType": "transformer_gt1kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85042299"
+    },
+    {
+      "productType": "transformer_gt1kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "le2500",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85042310"
+    },
+    {
+      "productType": "transformer_gt1kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85042321"
+    },
+    {
+      "productType": "transformer_gt1kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt20le30",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85042322"
+    },
+    {
+      "productType": "transformer_gt1kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt30",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85042329"
+    },
+    {
+      "productType": "transformer_le1kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "le1",
+      "voltageClass": "ge110",
+      "specialType": "none",
+      "hsCode": "85043111"
+    },
+    {
+      "productType": "transformer_le1kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "le1",
+      "voltageClass": "ge66lt110",
+      "specialType": "none",
+      "hsCode": "85043112"
+    },
+    {
+      "productType": "transformer_le1kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "le1",
+      "voltageClass": "ge1lt66",
+      "specialType": "none",
+      "hsCode": "85043113"
+    },
+    {
+      "productType": "transformer_le1kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "le1",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85043119"
+    },
+    {
+      "productType": "transformer_le1kVA",
+      "senMarked": "sen",
+      "powerkVA": "le1",
+      "voltageClass": "lt1",
+      "specialType": "currentTransformer",
+      "hsCode": "85043121"
+    },
+    {
+      "productType": "transformer_le1kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "le1",
+      "voltageClass": "unspecified",
+      "specialType": "currentTransformer",
+      "hsCode": "85043122"
+    },
+    {
+      "productType": "transformer_le1kVA",
+      "senMarked": "sen",
+      "powerkVA": "le1",
+      "voltageClass": "ge66lt110",
+      "specialType": "none",
+      "hsCode": "85043123"
+    },
+    {
+      "productType": "transformer_le1kVA",
+      "senMarked": "sen",
+      "powerkVA": "le1",
+      "voltageClass": "ge1lt66",
+      "specialType": "none",
+      "hsCode": "85043124"
+    },
+    {
+      "productType": "transformer_le1kVA",
+      "senMarked": "sen",
+      "powerkVA": "le1",
+      "voltageClass": "unspecified",
+      "specialType": "freqScan",
+      "hsCode": "85043130"
+    },
+    {
+      "productType": "transformer_le1kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "le1",
+      "voltageClass": "unspecified",
+      "specialType": "ifTransformer",
+      "hsCode": "85043140"
+    },
+    {
+      "productType": "transformer_le1kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "le1",
+      "voltageClass": "unspecified",
+      "specialType": "toys",
+      "hsCode": "85043191"
+    },
+    {
+      "productType": "transformer_le1kVA",
+      "senMarked": "sen",
+      "powerkVA": "le1",
+      "voltageClass": "unspecified",
+      "specialType": "adapter",
+      "hsCode": "85043192"
+    },
+    {
+      "productType": "transformer_le1kVA",
+      "senMarked": "sen",
+      "powerkVA": "le1",
+      "voltageClass": "unspecified",
+      "specialType": "stepUpDown",
+      "hsCode": "85043193"
+    },
+    {
+      "productType": "transformer_le1kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "le1",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85043199"
+    },
+    {
+      "productType": "transformer_1to16kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt1le10",
+      "voltageClass": "unspecified",
+      "specialType": "adapter",
+      "hsCode": "85043211"
+    },
+    {
+      "productType": "transformer_1to16kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt1le10",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85043219"
+    },
+    {
+      "productType": "transformer_1to16kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt1le10",
+      "voltageClass": "unspecified",
+      "specialType": "toys",
+      "hsCode": "85043220"
+    },
+    {
+      "productType": "transformer_1to16kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt1le10",
+      "voltageClass": "unspecified",
+      "specialType": "ifTransformer",
+      "hsCode": "85043230"
+    },
+    {
+      "productType": "transformer_1to16kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt10le15",
+      "voltageClass": "unspecified",
+      "specialType": "adapter",
+      "hsCode": "85043241"
+    },
+    {
+      "productType": "transformer_1to16kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt10le15",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85043249"
+    },
+    {
+      "productType": "transformer_1to16kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "unspecified",
+      "specialType": "adapter",
+      "hsCode": "85043251"
+    },
+    {
+      "productType": "transformer_1to16kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85043259"
+    },
+    {
+      "productType": "transformer_16to630kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "unspecified",
+      "specialType": "adapter",
+      "hsCode": "85043311"
+    },
+    {
+      "productType": "transformer_16to630kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85043319"
+    },
+    {
+      "productType": "transformer_16to630kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "unspecified",
+      "specialType": "adapter",
+      "hsCode": "85043391"
+    },
+    {
+      "productType": "transformer_16to630kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85043399"
+    },
+    {
+      "productType": "transformer_gt630kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "unspecified",
+      "specialType": "adapter",
+      "hsCode": "85043411"
+    },
+    {
+      "productType": "transformer_gt630kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "unspecified",
+      "specialType": "dryExplosionProof",
+      "hsCode": "85043412"
+    },
+    {
+      "productType": "transformer_gt630kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85043413"
+    },
+    {
+      "productType": "transformer_gt630kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "unspecified",
+      "specialType": "adapter",
+      "hsCode": "85043414"
+    },
+    {
+      "productType": "transformer_gt630kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "unspecified",
+      "specialType": "dryExplosionProof",
+      "hsCode": "85043415"
+    },
+    {
+      "productType": "transformer_gt630kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt15le20",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85043419"
+    },
+    {
+      "productType": "transformer_gt630kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt30",
+      "voltageClass": "unspecified",
+      "specialType": "adapter",
+      "hsCode": "85043422"
+    },
+    {
+      "productType": "transformer_gt630kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt30",
+      "voltageClass": "unspecified",
+      "specialType": "dryExplosionProof",
+      "hsCode": "85043423"
+    },
+    {
+      "productType": "transformer_gt630kVA",
+      "senMarked": "sen",
+      "powerkVA": "gt30",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85043424"
+    },
+    {
+      "productType": "transformer_gt630kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt30",
+      "voltageClass": "unspecified",
+      "specialType": "adapter",
+      "hsCode": "85043425"
+    },
+    {
+      "productType": "transformer_gt630kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt30",
+      "voltageClass": "unspecified",
+      "specialType": "dryExplosionProof",
+      "hsCode": "85043426"
+    },
+    {
+      "productType": "transformer_gt630kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "gt30",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85043429"
+    },
+    {
+      "productType": "staticConverter",
+      "senMarked": "sen",
+      "powerkVA": "unspecified",
+      "voltageClass": "unspecified",
+      "specialType": "ups",
+      "hsCode": "85044011"
+    },
+    {
+      "productType": "staticConverter",
+      "senMarked": "nonSen",
+      "powerkVA": "unspecified",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85044019"
+    },
+    {
+      "productType": "staticConverter",
+      "senMarked": "nonSen",
+      "powerkVA": "gt10000",
+      "voltageClass": "unspecified",
+      "specialType": "batteryCharger",
+      "hsCode": "85044020"
+    },
+    {
+      "productType": "staticConverter",
+      "senMarked": "nonSen",
+      "powerkVA": "unspecified",
+      "voltageClass": "unspecified",
+      "specialType": "rectifier",
+      "hsCode": "85044030"
+    },
+    {
+      "productType": "staticConverter",
+      "senMarked": "nonSen",
+      "powerkVA": "unspecified",
+      "voltageClass": "unspecified",
+      "specialType": "inverter",
+      "hsCode": "85044040"
+    },
+    {
+      "productType": "staticConverter",
+      "senMarked": "nonSen",
+      "powerkVA": "unspecified",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85044090"
+    },
+    {
+      "productType": "inductor",
+      "senMarked": "nonSen",
+      "powerkVA": "unspecified",
+      "voltageClass": "unspecified",
+      "specialType": "dataProcInductor",
+      "hsCode": "85045010"
+    },
+    {
+      "productType": "inductor",
+      "senMarked": "sen",
+      "powerkVA": "unspecified",
+      "voltageClass": "unspecified",
+      "specialType": "chipInductor",
+      "hsCode": "85045020"
+    },
+    {
+      "productType": "inductor",
+      "senMarked": "nonSen",
+      "powerkVA": "le2500",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85045093"
+    },
+    {
+      "productType": "inductor",
+      "senMarked": "nonSen",
+      "powerkVA": "gt2500le10000",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85045094"
+    },
+    {
+      "productType": "inductor",
+      "senMarked": "nonSen",
+      "powerkVA": "gt10000",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85045095"
+    },
+    {
+      "productType": "parts",
+      "senMarked": "nonSen",
+      "powerkVA": "unspecified",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85049010"
+    },
+    {
+      "productType": "parts",
+      "senMarked": "nonSen",
+      "powerkVA": "unspecified",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85049020"
+    },
+    {
+      "productType": "parts",
+      "senMarked": "nonSen",
+      "powerkVA": "unspecified",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85049031"
+    },
+    {
+      "productType": "parts",
+      "senMarked": "nonSen",
+      "powerkVA": "unspecified",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85049039"
+    },
+    {
+      "productType": "parts",
+      "senMarked": "nonSen",
+      "powerkVA": "unspecified",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85049041"
+    },
+    {
+      "productType": "parts",
+      "senMarked": "nonSen",
+      "powerkVA": "unspecified",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85049049"
+    },
+    {
+      "productType": "parts",
+      "senMarked": "nonSen",
+      "powerkVA": "unspecified",
+      "voltageClass": "unspecified",
+      "specialType": "none",
+      "hsCode": "85049090"
+    },
+    {
+      "productType": "transformer_le1kVA",
+      "senMarked": "nonSen",
+      "powerkVA": "le1",
+      "voltageClass": "unspecified",
+      "specialType": "currentTransformer",
+      "hsCode": "85043129"
+    }
+  ]
+}
