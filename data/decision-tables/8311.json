@@ -19,10 +19,36 @@
       "labelVi": "Loại sản phẩm hàn",
       "questionVi": "Sản phẩm này thuộc loại nào: điện cực phủ (coated electrode); dây lõi (cored wire); que hoặc dây thanh (rods/wire); hay sản phẩm khác?",
       "detect": {
-        "coatedElectrode": ["điện cực", "electrode", "coated electrode", "hàn hồ quang", "arc welding"],
-        "coredWire": ["dây lõi", "cored wire", "hàn hồ quang", "arc welding", "dây hàn"],
-        "rodOrWire": ["que", "rods", "hàn ngọn lửa", "brazing", "soldering", "hàn brazing"],
-        "otherArticle": ["dây", "plate", "cable", "khác", "loại khác", "n.e.c."]
+        "coatedElectrode": [
+          "điện cực",
+          "electrode",
+          "coated electrode",
+          "hàn hồ quang",
+          "arc welding"
+        ],
+        "coredWire": [
+          "dây lõi",
+          "cored wire",
+          "hàn hồ quang",
+          "arc welding",
+          "dây hàn"
+        ],
+        "rodOrWire": [
+          "que",
+          "rods",
+          "hàn ngọn lửa",
+          "brazing",
+          "soldering",
+          "hàn brazing"
+        ],
+        "otherArticle": [
+          "dây",
+          "plate",
+          "cable",
+          "khác",
+          "loại khác",
+          "n.e.c."
+        ]
       }
     },
     {
@@ -36,9 +62,27 @@
       "labelVi": "Loại quá trình hàn",
       "questionVi": "Dùng cho quá trình nào: hàn hồ quang điện (arc welding); hàn/brazing bằng ngọn lửa (flame); hay quá trình khác?",
       "detect": {
-        "arcWelding": ["hồ quang", "arc welding", "electric arc", "hàn điện", "hàn hồ quang"],
-        "flameWelding": ["ngọn lửa", "flame", "brazing", "soldering", "hàn ngọn lửa", "hàn brazing", "hàn thiếc"],
-        "other": ["phun kim loại", "spraying", "khác"]
+        "arcWelding": [
+          "hồ quang",
+          "arc welding",
+          "electric arc",
+          "hàn điện",
+          "hàn hồ quang"
+        ],
+        "flameWelding": [
+          "ngọn lửa",
+          "flame",
+          "brazing",
+          "soldering",
+          "hàn ngọn lửa",
+          "hàn brazing",
+          "hàn thiếc"
+        ],
+        "other": [
+          "phun kim loại",
+          "spraying",
+          "khác"
+        ]
       }
     },
     {
@@ -51,8 +95,20 @@
       "labelVi": "Dạng sản phẩm",
       "questionVi": "Sản phẩm có dạng cuộn (reel/roll) hay dạng khác (que thẳng, tấm)?",
       "detect": {
-        "reel": ["cuộn", "reel", "roll", "dạng cuộn"],
-        "other": ["loại khác", "khác", "dạng khác", "que", "thanh", "tấm"]
+        "reel": [
+          "cuộn",
+          "reel",
+          "roll",
+          "dạng cuộn"
+        ],
+        "other": [
+          "loại khác",
+          "khác",
+          "dạng khác",
+          "que",
+          "thanh",
+          "tấm"
+        ]
       }
     }
   ],
@@ -61,7 +117,11 @@
     {
       "id": "8311-r001",
       "priority": 90,
-      "when": { "productKind": "coatedElectrode", "processType": "arcWelding", "productForm": "reel" },
+      "when": {
+        "productKind": "coatedElectrode",
+        "processType": "arcWelding",
+        "productForm": "reel"
+      },
       "hs": "83111010",
       "gir": "GIR 6",
       "reasonVi": "Điện cực phủ bằng kim loại cơ bản cho hàn hồ quang điện, dạng cuộn → 8311.10.10 (thuế 25%).",
@@ -70,7 +130,11 @@
     {
       "id": "8311-r002",
       "priority": 85,
-      "when": { "productKind": "coatedElectrode", "processType": "arcWelding", "productForm": "other" },
+      "when": {
+        "productKind": "coatedElectrode",
+        "processType": "arcWelding",
+        "productForm": "other"
+      },
       "hs": "83111090",
       "gir": "GIR 6",
       "reasonVi": "Điện cực phủ bằng kim loại cơ bản cho hàn hồ quang điện, dạng khác → 8311.10.90 (thuế 25%).",
@@ -79,7 +143,11 @@
     {
       "id": "8311-r003",
       "priority": 90,
-      "when": { "productKind": "coredWire", "processType": "arcWelding", "productForm": "reel" },
+      "when": {
+        "productKind": "coredWire",
+        "processType": "arcWelding",
+        "productForm": "reel"
+      },
       "hs": "83112021",
       "gir": "GIR 6",
       "reasonVi": "Dây lõi bằng kim loại cơ bản cho hàn hồ quang điện, dạng cuộn → 8311.20.21 (thuế 2%).",
@@ -88,7 +156,11 @@
     {
       "id": "8311-r004",
       "priority": 85,
-      "when": { "productKind": "coredWire", "processType": "arcWelding", "productForm": "other" },
+      "when": {
+        "productKind": "coredWire",
+        "processType": "arcWelding",
+        "productForm": "other"
+      },
       "hs": "83112029",
       "gir": "GIR 6",
       "reasonVi": "Dây lõi bằng kim loại cơ bản cho hàn hồ quang điện, dạng khác → 8311.20.29 (thuế 2%).",
@@ -97,7 +169,11 @@
     {
       "id": "8311-r005",
       "priority": 80,
-      "when": { "productKind": "coredWire", "processType": "arcWelding", "productForm": "other" },
+      "when": {
+        "productKind": "coredWire",
+        "processType": "arcWelding",
+        "productForm": "other"
+      },
       "hs": "83112090",
       "gir": "GIR 6",
       "reasonVi": "Dây lõi bằng kim loại cơ bản cho hàn hồ quang điện, loại khác → 8311.20.90 (thuế 25%).",
@@ -106,7 +182,11 @@
     {
       "id": "8311-r006",
       "priority": 90,
-      "when": { "productKind": "rodOrWire", "processType": "flameWelding", "productForm": "reel" },
+      "when": {
+        "productKind": "rodOrWire",
+        "processType": "flameWelding",
+        "productForm": "reel"
+      },
       "hs": "83113021",
       "gir": "GIR 6",
       "reasonVi": "Que và dây phủ bằng kim loại cơ bản cho hàn ngọn lửa (brazing), dạng cuộn → 8311.30.21 (thuế 2%).",
@@ -115,7 +195,11 @@
     {
       "id": "8311-r007",
       "priority": 85,
-      "when": { "productKind": "rodOrWire", "processType": "flameWelding", "productForm": "other" },
+      "when": {
+        "productKind": "rodOrWire",
+        "processType": "flameWelding",
+        "productForm": "other"
+      },
       "hs": "83113029",
       "gir": "GIR 6",
       "reasonVi": "Que và dây phủ bằng kim loại cơ bản cho hàn ngọn lửa (brazing), dạng khác → 8311.30.29 (thuế 2%).",
@@ -124,7 +208,11 @@
     {
       "id": "8311-r008",
       "priority": 85,
-      "when": { "productKind": "rodOrWire", "processType": "flameWelding", "productForm": "reel" },
+      "when": {
+        "productKind": "rodOrWire",
+        "processType": "flameWelding",
+        "productForm": "reel"
+      },
       "hs": "83113091",
       "gir": "GIR 6",
       "reasonVi": "Que và dây thanh bằng kim loại cơ bản cho hàn/brazing ngọn lửa, dạng cuộn → 8311.30.91 (thuế 15%).",
@@ -133,7 +221,11 @@
     {
       "id": "8311-r009",
       "priority": 80,
-      "when": { "productKind": "rodOrWire", "processType": "flameWelding", "productForm": "other" },
+      "when": {
+        "productKind": "rodOrWire",
+        "processType": "flameWelding",
+        "productForm": "other"
+      },
       "hs": "83113099",
       "gir": "GIR 6",
       "reasonVi": "Que và dây thanh bằng kim loại cơ bản cho hàn/brazing ngọn lửa, dạng khác → 8311.30.99 (thuế 15%).",
@@ -142,11 +234,74 @@
     {
       "id": "8311-r010",
       "priority": 70,
-      "when": { "productKind": "otherArticle" },
+      "when": {
+        "productKind": "otherArticle"
+      },
       "hs": "83119000",
       "gir": "GIR 6",
       "reasonVi": "Dây, que, ống, tấm, điện cực bằng kim loại cơ bản hoặc carbide kim loại, loại khác → 8311.90.00 (thuế 25%).",
       "source": "Biểu thuế 2026 dòng 8311.90.00"
     }
-  ]
+  ],
+  "attributes": {
+    "processType": {
+      "type": "enum",
+      "domain": [
+        "arcWelding",
+        "flameWelding"
+      ],
+      "detect": {
+        "arcWelding": [
+          "arcWelding"
+        ],
+        "flameWelding": [
+          "flameWelding"
+        ]
+      }
+    },
+    "productForm": {
+      "type": "enum",
+      "domain": [
+        "other",
+        "reel"
+      ],
+      "detect": {
+        "other": [
+          "other"
+        ],
+        "reel": [
+          "reel"
+        ]
+      }
+    },
+    "productKind": {
+      "type": "enum",
+      "domain": [
+        "coatedElectrode",
+        "coredWire",
+        "otherArticle",
+        "rodOrWire"
+      ],
+      "detect": {
+        "coatedElectrode": [
+          "coatedElectrode"
+        ],
+        "coredWire": [
+          "coredWire"
+        ],
+        "otherArticle": [
+          "otherArticle"
+        ],
+        "rodOrWire": [
+          "rodOrWire"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "processType",
+    "productForm",
+    "productKind"
+  ],
+  "essenceVi": "processType; productForm; productKind"
 }
