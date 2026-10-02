@@ -97,5 +97,28 @@ if (ppFile) {
 const vChapters = chapterGroups.filter(k => d[k].verified === true).length;
 check(`verifiedChapters count khớp thực tế (${vChapters})`, vChapters === 36);
 
+// 13. normalizeType handles abbreviations and top license types
+const { normalizeType } = require('../lib/policy-procedures.js');
+const abbrevTests = [
+  ['NK', 'gp-nk'],
+  ['XK', 'xk'],
+  ['SXKD', 'kd-dk'],
+  ['KD có điều kiện', 'kd-dk'],
+  ['Giấy phép NK', 'gp-nk'],
+  ['Cấm NK', 'cam-nk'],
+  ['Hạn ngạch thuế quan', 'gp-nk'],
+  ['Đăng ký lưu hành', 'dk-luu-hanh'],
+  ['Giấy phép kinh doanh có điều kiện', 'kd-dk'],
+  ['Sản xuất kinh doanh có điều kiện', 'kd-dk'],
+  ['BVMT', 'chat-luong'],
+  ['ATKT', 'chat-luong'],
+  ['CL', 'chat-luong'],
+  ['KTCN chất lượng SP HH nhóm 2', 'chat-luong'],
+];
+abbrevTests.forEach(([input, expected]) => {
+  const got = normalizeType(input);
+  check(`normalizeType(${JSON.stringify(input)}) = ${expected}`, got === expected, `got: ${got}`);
+});
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
