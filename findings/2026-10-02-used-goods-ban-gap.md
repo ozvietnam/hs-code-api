@@ -2,7 +2,22 @@
 
 **Date:** 2026-10-02  
 **Severity:** MEDIUM  
-**Status:** Open  
+**Status:** FIXED 2026-10-02 18:52 (commit 1865cfd)
+
+## Resolution
+
+Added `usedGoodsImportBan` handling to `getProcedures()` in `lib/policy-procedures.js`:
+
+```js
+// Special: used goods import ban → cam-nk
+if (warnings.usedGoodsImportBan && !seen.has('cam-nk')) {
+  const proc = db['cam-nk'];
+  if (proc) results.push({ ...proc, matchedRaw: 'usedGoodsImportBan' });
+}
+```
+
+Result: 1,805 usedGoodsImportBan entries → 1,805 with cam-nk procedure.
+dualUseControl null gap (97 entries) also resolved — all co-occurred with usedGoodsImportBan.  
 **Affects:** /api/policy-procedures endpoint
 
 ## Problem
