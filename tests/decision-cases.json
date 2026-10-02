@@ -2574,71 +2574,123 @@
       "id": "8504-ballast",
       "heading": "8504",
       "text": "chấn lưu cho đèn phóng điện",
-      "expectHs": "85041000"
+      "expectHs": "85041000",
+      "facts": {
+        "productType": "ballast",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
     },
     {
       "id": "8504-ups-sen",
       "heading": "8504",
       "text": "bộ nguồn liên tục UPS có nhãn SEN",
-      "expectHs": "85044011"
+      "expectHs": "85044011",
+      "facts": {
+        "productType": "staticConverter",
+        "senMarked": "sen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "ups"
+      }
     },
     {
       "id": "8504-inverter",
       "heading": "8504",
       "text": "bộ nghịch lưu điện",
-      "expectHs": "85044040"
+      "expectHs": "85044040",
+      "facts": {
+        "productType": "staticConverter",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "inverter"
+      }
     },
     {
       "id": "8504-transformer-110kv",
       "heading": "8504",
       "text": "biến áp 5kVA điện áp 110kV",
-      "expectHs": "85042111"
+      "expectHs": "85042111",
+      "facts": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "ge110",
+        "specialType": "none"
+      }
     },
     {
       "id": "8504-inductor-chip",
       "heading": "8504",
       "text": "cuộn cảm con chip SEN",
-      "expectHs": "85045020"
+      "expectHs": "85045020",
+      "facts": {
+        "productType": "inductor",
+        "senMarked": "sen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "chipInductor"
+      }
     },
     {
       "id": "8504-transformer-dry-explosion",
       "heading": "8504",
       "text": "biến áp khô phòng nổ 1000kVA",
-      "expectHs": "85043426"
+      "expectHs": "85043426",
+      "facts": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "dryExplosionProof"
+      }
     },
     {
       "id": "8486-semiconductorWafer",
       "heading": "8486",
       "text": "Thiết bị làm nóng nhanh tấm bán dẫn mỏng (RTP)",
-      "facts": {"machineKind": "semiconductorWafer"},
+      "facts": {
+        "machineKind": "semiconductorWafer"
+      },
       "expectHs": "84861010"
     },
     {
       "id": "8486-semiconductorDevice",
       "heading": "8486",
       "text": "Thiết bị kết tủa khí hóa (CVD) sản xuất IC",
-      "facts": {"machineKind": "semiconductorDevice"},
+      "facts": {
+        "machineKind": "semiconductorDevice"
+      },
       "expectHs": "84862011"
     },
     {
       "id": "8486-flatPanel",
       "heading": "8486",
       "text": "Thiết bị khắc axit khô lên tấm nền màn hình dẹt",
-      "facts": {"machineKind": "flatPanel"},
+      "facts": {
+        "machineKind": "flatPanel"
+      },
       "expectHs": "84863010"
     },
     {
       "id": "8486-maskReticleAssembly",
       "heading": "8486",
       "text": "Máy phay ion (ion milling) cho màn và lưới quang bán dẫn",
-      "facts": {"machineKind": "maskReticleAssembly"},
+      "facts": {
+        "machineKind": "maskReticleAssembly"
+      },
       "expectHs": "84864010"
     },
     {
       "id": "8486-parts",
       "heading": "8486",
       "text": "Bộ phận của thiết bị nung nhanh máy sản xuất bán dẫn",
-      "facts": {"machineKind": "parts"},
+      "facts": {
+        "machineKind": "parts"
+      },
       "expectHs": "84869011"
     }
   ]
