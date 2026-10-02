@@ -1104,5 +1104,236 @@
   "essenceTestVi": "Motor DC/AC một chiều/AC một pha/AC đa pha/máy phát AC/generator set? Công suất? Dùng cho điều hòa/tủ lạnh (84.15/85.09/85.16), xe (Chương 87), hay loại khác? Có phải SEN (hướng trục)?",
   "sourceVi": "Biểu thuế 2026 nhóm 8501: 850110 DC ≤37.5W (SEN/household/other); 850120 universal AC/DC; 850131-134 DC 0.75-375kW (theo công suất + ứng dụng); 850140 AC một pha; 850151-153 AC đa pha (theo công suất + ứng dụng); 850161-164 máy phát AC (theo kVA); 850171-172 DC quang điện; 850180 máy phát điện.",
   "verified": false,
-  "noteVi": "Draft 61 mã / 8 attrs / 64 rules — tier-A score=22.4 | Nguồn: Biểu thuế 2026"
+  "noteVi": "Draft 61 mã / 8 attrs / 64 rules — tier-A score=22.4 | Nguồn: Biểu thuế 2026",
+  "attributes": {
+    "applianceGroup": {
+      "type": "enum",
+      "domain": [
+        "generator",
+        "household_acs",
+        "household_acs_full",
+        "household_limited",
+        "other",
+        "other_mfn5",
+        "vehicle"
+      ],
+      "detect": {
+        "generator": [
+          "generator"
+        ],
+        "household_acs": [
+          "household",
+          "acs"
+        ],
+        "household_acs_full": [
+          "household",
+          "acs",
+          "full"
+        ],
+        "household_limited": [
+          "household",
+          "limited"
+        ],
+        "other": [
+          "other"
+        ],
+        "other_mfn5": [
+          "other",
+          "mfn5"
+        ],
+        "vehicle": [
+          "vehicle"
+        ]
+      }
+    },
+    "hasGenSet": {
+      "type": "enum",
+      "domain": [
+        "False",
+        "True"
+      ],
+      "detect": {
+        "False": [
+          "False"
+        ],
+        "True": [
+          "True"
+        ]
+      }
+    },
+    "isGenerator": {
+      "type": "enum",
+      "domain": [
+        "True"
+      ],
+      "detect": {
+        "True": [
+          "True"
+        ]
+      }
+    },
+    "isSolar": {
+      "type": "enum",
+      "domain": [
+        "True"
+      ],
+      "detect": {
+        "True": [
+          "True"
+        ]
+      }
+    },
+    "motorKind": {
+      "type": "enum",
+      "domain": [
+        "ac_generator",
+        "ac_multi",
+        "ac_single",
+        "dc",
+        "generator_set",
+        "universal"
+      ],
+      "detect": {
+        "ac_generator": [
+          "ac",
+          "generator"
+        ],
+        "ac_multi": [
+          "ac",
+          "multi"
+        ],
+        "ac_single": [
+          "ac",
+          "single"
+        ],
+        "dc": [
+          "dc"
+        ],
+        "generator_set": [
+          "generator",
+          "set"
+        ],
+        "universal": [
+          "universal"
+        ]
+      }
+    },
+    "powerKva": {
+      "type": "enum",
+      "domain": [
+        "150-375kVA",
+        "375-750kVA",
+        "75-150kVA",
+        "75-375kVA",
+        ">12.5kVA",
+        ">750kVA",
+        "≤12.5kVA",
+        "≤75kVA"
+      ],
+      "detect": {
+        "150-375kVA": [
+          "150-375kVA"
+        ],
+        "375-750kVA": [
+          "375-750kVA"
+        ],
+        "75-150kVA": [
+          "75-150kVA"
+        ],
+        "75-375kVA": [
+          "75-375kVA"
+        ],
+        ">12.5kVA": [
+          ">12.5kVA"
+        ],
+        ">750kVA": [
+          ">750kVA"
+        ],
+        "≤12.5kVA": [
+          "≤12.5kVA"
+        ],
+        "≤75kVA": [
+          "≤75kVA"
+        ]
+      }
+    },
+    "powerRange": {
+      "type": "enum",
+      "domain": [
+        "0.75-75kW",
+        "37.5-75kW",
+        "75-375kW",
+        "750W-37.5kW",
+        "750W-75kW",
+        ">375kW",
+        ">5W",
+        ">75kW",
+        "≤50W",
+        "≤5W",
+        "≤750W"
+      ],
+      "detect": {
+        "0.75-75kW": [
+          "0.75-75kW"
+        ],
+        "37.5-75kW": [
+          "37.5-75kW"
+        ],
+        "75-375kW": [
+          "75-375kW"
+        ],
+        "750W-37.5kW": [
+          "750W-37.5kW"
+        ],
+        "750W-75kW": [
+          "750W-75kW"
+        ],
+        ">375kW": [
+          ">375kW"
+        ],
+        ">5W": [
+          ">5W"
+        ],
+        ">75kW": [
+          ">75kW"
+        ],
+        "≤50W": [
+          "≤50W"
+        ],
+        "≤5W": [
+          "≤5W"
+        ],
+        "≤750W": [
+          "≤750W"
+        ]
+      }
+    },
+    "senFlag": {
+      "type": "enum",
+      "domain": [
+        "False",
+        "True"
+      ],
+      "detect": {
+        "False": [
+          "False"
+        ],
+        "True": [
+          "True"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "applianceGroup",
+    "hasGenSet",
+    "isGenerator",
+    "isSolar",
+    "motorKind",
+    "powerKva",
+    "powerRange",
+    "senFlag"
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceVi": "applianceGroup; hasGenSet; isGenerator; isSolar; motorKind; powerKva; powerRange; senFlag"
 }
