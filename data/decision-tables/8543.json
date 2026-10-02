@@ -1,0 +1,254 @@
+{
+  "heading": "8543",
+  "titleVi": "Máy móc, thiết bị và bộ phận điện khác, chưa được phân loại ở nơi khác",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "deviceKind",
+      "type": "enum",
+      "domain": [
+        "e_cigarette_device",
+        "electroplating_machine",
+        "other_electrical_device",
+        "particle_accelerator",
+        "parts",
+        "signal_generator"
+      ],
+      "labelVi": "Loại thiết bị điện",
+      "questionVi": "Thiết bị điện thuộc loại nào: máy gia tốc hạt, máy phát tín hiệu, thiết bị mạ/điện phân, thiết bị thuốc lá điện tử, các thiết bị điện khác, hay bộ phận?"
+    },
+    {
+      "attribute": "specCode",
+      "type": "enum",
+      "domain": [
+        "00",
+        "10",
+        "20",
+        "21",
+        "29",
+        "30",
+        "40",
+        "50",
+        "60",
+        "90",
+        "91",
+        "99"
+      ],
+      "labelVi": "Mã hiệu kỹ thuật",
+      "questionVi": "Mã hiệu kỹ thuật (2 chữ số cuối)?"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "deviceKind": "particle_accelerator",
+        "specCode": "00"
+      },
+      "hs": "85431000",
+      "reasonVi": "GIR 6 — thiết bị điện loại particle_accelerator, Biểu thuế 2026 nhóm 854310 → 85431000",
+      "source": "Biểu thuế NK VN 2026, nhóm 854310"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "deviceKind": "signal_generator",
+        "specCode": "00"
+      },
+      "hs": "85432000",
+      "reasonVi": "GIR 6 — thiết bị điện loại signal_generator, Biểu thuế 2026 nhóm 854320 → 85432000",
+      "source": "Biểu thuế NK VN 2026, nhóm 854320"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "deviceKind": "electroplating_machine",
+        "specCode": "20"
+      },
+      "hs": "85433020",
+      "reasonVi": "GIR 6 — thiết bị điện loại electroplating_machine, Biểu thuế 2026 nhóm 854330 → 85433020",
+      "source": "Biểu thuế NK VN 2026, nhóm 854330"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "deviceKind": "electroplating_machine",
+        "specCode": "91"
+      },
+      "hs": "85433091",
+      "reasonVi": "GIR 6 — thiết bị điện loại electroplating_machine, Biểu thuế 2026 nhóm 854330 → 85433091",
+      "source": "Biểu thuế NK VN 2026, nhóm 854330"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "deviceKind": "electroplating_machine",
+        "specCode": "99"
+      },
+      "hs": "85433099",
+      "reasonVi": "GIR 6 — thiết bị điện loại electroplating_machine, Biểu thuế 2026 nhóm 854330 → 85433099",
+      "source": "Biểu thuế NK VN 2026, nhóm 854330"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "deviceKind": "e_cigarette_device",
+        "specCode": "00"
+      },
+      "hs": "85434000",
+      "reasonVi": "GIR 6 — thiết bị điện loại e_cigarette_device, Biểu thuế 2026 nhóm 854340 → 85434000",
+      "source": "Biểu thuế NK VN 2026, nhóm 854340"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_electrical_device",
+        "specCode": "10"
+      },
+      "hs": "85437010",
+      "reasonVi": "GIR 6 — thiết bị điện loại other_electrical_device, Biểu thuế 2026 nhóm 854370 → 85437010",
+      "source": "Biểu thuế NK VN 2026, nhóm 854370"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_electrical_device",
+        "specCode": "21"
+      },
+      "hs": "85437021",
+      "reasonVi": "GIR 6 — thiết bị điện loại other_electrical_device, Biểu thuế 2026 nhóm 854370 → 85437021",
+      "source": "Biểu thuế NK VN 2026, nhóm 854370"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_electrical_device",
+        "specCode": "29"
+      },
+      "hs": "85437029",
+      "reasonVi": "GIR 6 — thiết bị điện loại other_electrical_device, Biểu thuế 2026 nhóm 854370 → 85437029",
+      "source": "Biểu thuế NK VN 2026, nhóm 854370"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_electrical_device",
+        "specCode": "30"
+      },
+      "hs": "85437030",
+      "reasonVi": "GIR 6 — thiết bị điện loại other_electrical_device, Biểu thuế 2026 nhóm 854370 → 85437030",
+      "source": "Biểu thuế NK VN 2026, nhóm 854370"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_electrical_device",
+        "specCode": "40"
+      },
+      "hs": "85437040",
+      "reasonVi": "GIR 6 — thiết bị điện loại other_electrical_device, Biểu thuế 2026 nhóm 854370 → 85437040",
+      "source": "Biểu thuế NK VN 2026, nhóm 854370"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_electrical_device",
+        "specCode": "50"
+      },
+      "hs": "85437050",
+      "reasonVi": "GIR 6 — thiết bị điện loại other_electrical_device, Biểu thuế 2026 nhóm 854370 → 85437050",
+      "source": "Biểu thuế NK VN 2026, nhóm 854370"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_electrical_device",
+        "specCode": "60"
+      },
+      "hs": "85437060",
+      "reasonVi": "GIR 6 — thiết bị điện loại other_electrical_device, Biểu thuế 2026 nhóm 854370 → 85437060",
+      "source": "Biểu thuế NK VN 2026, nhóm 854370"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_electrical_device",
+        "specCode": "90"
+      },
+      "hs": "85437090",
+      "reasonVi": "GIR 6 — thiết bị điện loại other_electrical_device, Biểu thuế 2026 nhóm 854370 → 85437090",
+      "source": "Biểu thuế NK VN 2026, nhóm 854370"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "specCode": "10"
+      },
+      "hs": "85439010",
+      "reasonVi": "GIR 6 — thiết bị điện loại parts, Biểu thuế 2026 nhóm 854390 → 85439010",
+      "source": "Biểu thuế NK VN 2026, nhóm 854390"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "specCode": "20"
+      },
+      "hs": "85439020",
+      "reasonVi": "GIR 6 — thiết bị điện loại parts, Biểu thuế 2026 nhóm 854390 → 85439020",
+      "source": "Biểu thuế NK VN 2026, nhóm 854390"
+    },
+    {
+      "id": "r-17",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "specCode": "30"
+      },
+      "hs": "85439030",
+      "reasonVi": "GIR 6 — thiết bị điện loại parts, Biểu thuế 2026 nhóm 854390 → 85439030",
+      "source": "Biểu thuế NK VN 2026, nhóm 854390"
+    },
+    {
+      "id": "r-18",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "specCode": "40"
+      },
+      "hs": "85439040",
+      "reasonVi": "GIR 6 — thiết bị điện loại parts, Biểu thuế 2026 nhóm 854390 → 85439040",
+      "source": "Biểu thuế NK VN 2026, nhóm 854390"
+    },
+    {
+      "id": "r-19",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "specCode": "90"
+      },
+      "hs": "85439090",
+      "reasonVi": "GIR 6 — thiết bị điện loại parts, Biểu thuế 2026 nhóm 854390 → 85439090",
+      "source": "Biểu thuế NK VN 2026, nhóm 854390"
+    }
+  ],
+  "essenceTestVi": "Loại thiết bị (deviceKind) + Mã hiệu kỹ thuật (specCode) → mã 8 số. 19 lá, 2 thuộc tính.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN)."
+}
