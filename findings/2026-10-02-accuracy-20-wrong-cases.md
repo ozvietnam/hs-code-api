@@ -71,3 +71,34 @@ Nguyên nhân: 5 entries mới (85340010, 84839019, 67041900, 64059000, 39211399
 - Nguyên nhân B (2 ca): 85340010/85340020 đánh bại nhau → cần decision table 8534 (pcbLayers attr đã có trong decision-tables/8534.json)
 
 **PR:** nhánh hermes/lan-C-accuracy-v2 đã push lên origin. Cần dev mở PR draft.
+
+## Oz-gold opportunity analysis (03/10)
+
+**Key insight: delta=0 because our 17 target HS codes cover only 8.4% of wrong records in holdout**
+
+Our 17 target HS codes:
+- 572 oz-gold records / 5156 total (11.1%)
+- 55 wrong records in holdout / 651 total wrong (8.4%)
+- If all fixed: +7.2 percentage points overall (14.7% → 21.9%)
+
+**Oz-gold top-volume groups (biggest opportunity):**
+| Group | oz-gold records | % | decision-table |
+|-------|----------------|---|----------------|
+| 3926  | 333            | 6.5% | origin/hermes/decision-3926 |
+| 8536  | 196            | 3.8% | 63 rules, draft, 0 test cases |
+| 8481  | 179            | 3.5% | no table |
+| 8504  | 153            | 3.0% | 72 rules, draft, 2 test cases |
+| 8537  | 133            | 2.6% | no table |
+| 8544  | 122            | 2.4% | 6 rules, draft, 0 test cases |
+| 8483  | 93             | 1.8% | 9 rules, draft, 0 test cases |
+| 6402  | 74             | 1.4% | 13 rules, draft, 0 test cases |
+
+**Top 4 groups = 861 records = 16.7% of oz-gold.**
+
+**Note on 8714 dia xích:**
+- Entry `dia-xich-nhong-xe-mo-to` exists (candidates=87141090, avoid=8483) ✓
+- 8714 table has rules: partKind=transmission → 87141040, partKind=other → 87141090
+- Holdout record (GT=87141090, top1 wrong) has no description → table can't activate
+- Root cause: holdout only has {truth, top} — no description for table resolution
+
+**Next priority: 8536 and 3926** — highest oz-gold volume with draft tables needing test cases.
