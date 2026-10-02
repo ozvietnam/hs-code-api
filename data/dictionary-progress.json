@@ -2,6 +2,50 @@
   "version": 1,
   "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → draft (có bảng, chưa qua cửa dữ liệu thật) → done (qua cửa). `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
+    "6402": {
+      "status": "draft",
+      "doneAt": "2026-10-02",
+      "by": "hermes/lan-C-accuracy-v2",
+      "commit": "pending",
+      "leafCount": 10,
+      "table": true,
+      "rules": 6,
+      "draftAt": "2026-10-02",
+      "noteVi": "Bảng quyết định tạo mới cho nhóm 6402 (giày/dép nhựa PVC). Phân biệt upper nhựa→6402 vs upper vải→6405. Khớp entry dep-nhua-PVC→64029990."
+    },
+    "8483": {
+      "status": "draft",
+      "doneAt": "2026-10-02",
+      "by": "hermes/lan-C-accuracy-v2",
+      "commit": "pending",
+      "leafCount": 11,
+      "table": true,
+      "rules": 9,
+      "draftAt": "2026-10-02",
+      "noteVi": "Bảng quyết định tạo mới cho nhóm 8483 (bộ truyền động cơ khí). Phân biệt 8483 (máy) vs 8714 (xe mô tô). Khớp entry thanh-rang-truyen-dong→84839019."
+    },
+    "8544": {
+      "status": "draft",
+      "doneAt": "2026-10-02",
+      "by": "hermes/lan-C-accuracy-v2",
+      "commit": "pending",
+      "leafCount": 17,
+      "table": true,
+      "rules": 6,
+      "draftAt": "2026-10-02",
+      "noteVi": "Bảng quyết định tạo mới cho nhóm 8544 (dây dẫn có cách điện). Phân biệt có đầu nối (cáp sạc USB→8544.42) vs không đầu nối. Khớp entry cap-sac-Type-C→85444299."
+    },
+    "8714": {
+      "status": "draft",
+      "doneAt": "2026-10-02",
+      "by": "hermes/lan-C-accuracy-v2",
+      "commit": "pending",
+      "leafCount": 13,
+      "table": true,
+      "rules": 11,
+      "draftAt": "2026-10-02",
+      "noteVi": "Bảng quyết định tạo mới cho nhóm 8714 (bộ phận xe mô tô). Phân biệt bộ phận xe mô tô (8714.10) vs xe đạp (8714.99). Khớp entry dia-xich-nhong-xe-mo-to→87141040."
+    },
     "7209": {
       "status": "done",
       "doneAt": "2026-09-17",

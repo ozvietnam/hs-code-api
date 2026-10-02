@@ -1,0 +1,169 @@
+{
+  "heading": "8544",
+  "titleVi": "Dây dẫn điện có cách điện; cáp optic fiber; ống dẫn sóng điện",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Dây/cáp có đầu nối (fitted with connectors) hay không? Nếu có → nhóm 8544.42; nếu không → phân biệt theo vật liệu cách điện và đường kính lõi. Dây sạc USB-C/lightning/microUSB cho điện thoại thường thuộc 8544.42 (có đầu nối).",
+  "sourceVi": "Biểu thuế 2026 nhóm 8544: 8544.11/.19 dây điện; 8544.20 cáp điện; 8544.30 dây đánh lửa; 8544.42 dây/cáp có đầu nối; 8544.41–.49 dây/cáp không đầu nối. Cáp sạc USB-C cho điện thoại có đầu nối USB → 8544.42.",
+  "inputs": [
+    {
+      "attribute": "hasConnector",
+      "type": "enum",
+      "domain": ["yes", "no"],
+      "labelVi": "Có đầu nối / đầu cáp",
+      "questionVi": "Dây/cáp có ĐẦU NỐI ( USB, lightning, USB-C, jack audio, đầu cáp nối… ) ở một hoặc hai đầu không?",
+      "detect": {
+        "yes": [
+          "cáp sạc",
+          "dây sạc",
+          "usb-c",
+          "usb type-c",
+          "lightning",
+          "micro usb",
+          "usb cable",
+          "đầu cáp",
+          "đầu nối",
+          "cáp có đầu",
+          "cáp sạc nhanh",
+          "dây sạc nhanh",
+          "charging cable",
+          "data cable",
+          "cáp truyền dữ liệu",
+          "cáp hdmi",
+          "hdmi cable",
+          "dây hdmi",
+          "cáp mạng",
+          "ethernet cable",
+          "rj45"
+        ],
+        "no": [
+          "dây điện",
+          "dây cáp ngầm",
+          "cáp điện thoại",
+          "cáp ngầm",
+          "dây đơn có vỏ",
+          "cáp quang",
+          "fiber optic"
+        ]
+      }
+    },
+    {
+      "attribute": "cableKind",
+      "type": "enum",
+      "domain": ["ignition", "coaxial", "other"],
+      "labelVi": "Loại cáp đặc biệt",
+      "questionVi": "Dây đánh lửa (cho động cơ), cáp đồng trục, hay cáp/dây dẫn thông thường?",
+      "detect": {
+        "ignition": [
+          "đánh lửa",
+          "ignition wire",
+          "dây bugi",
+          "spark plug wire",
+          "dây cao thế"
+        ],
+        "coaxial": [
+          "đồng trục",
+          "coaxial",
+          "trục chung",
+          "cáp truyền hình",
+          "antenna cable"
+        ],
+        "other": [
+          "cáp điện",
+          "dây dẫn",
+          "power cable",
+          "signal cable",
+          "cáp tín hiệu"
+        ]
+      }
+    },
+    {
+      "attribute": "insulationMaterial",
+      "type": "enum",
+      "domain": ["rubber", "plastic", "paper", "other"],
+      "labelVi": "Vật liệu cách điện",
+      "questionVi": "Vỏ cách điện bằng cao su, plastic (PVC), giấy, hay vật liệu khác?",
+      "detect": {
+        "rubber": [
+          "cách điện bằng cao su",
+          "rubber insulated",
+          "vỏ cao su"
+        ],
+        "plastic": [
+          "cách điện bằng plastic",
+          "cách điện bằng pvc",
+          "plastic insulated",
+          "pvc insulated",
+          "vỏ plastic",
+          "vỏ pvc"
+        ],
+        "paper": [
+          "cách điện bằng giấy",
+          "paper insulated"
+        ],
+        "other": [
+          "khác",
+          "other insulation"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-ignition",
+      "priority": 90,
+      "when": { "cableKind": "ignition" },
+      "hs": "85443012",
+      "gir": "GIR 1",
+      "reasonVi": "Dây đánh lửa có cách điện → 8543.00 (dây đánh lửa).",
+      "source": "Biểu thuế 2026 dòng 8543.00"
+    },
+    {
+      "id": "r-has-connector",
+      "priority": 80,
+      "when": { "hasConnector": "yes" },
+      "hs": "85444299",
+      "gir": "GIR 1",
+      "reasonVi": "Dây/cáp có đầu nối (USB-C, lightning, microUSB, jack…) → nhóm 8544.42 (cáp có đầu nối), loại khác. Ví dụ: cáp sạc USB-C 65W điện thoại → 8544.42.99.",
+      "source": "Biểu thuế 2026 dòng 8544.42.99"
+    },
+    {
+      "id": "r-coaxial",
+      "priority": 70,
+      "when": { "cableKind": "coaxial" },
+      "hs": "85442019",
+      "gir": "GIR 1",
+      "reasonVi": "Cáp đồng trục có cách điện → 8544.20 (loại khác).",
+      "source": "Biểu thuế 2026 dòng 8544.20"
+    },
+    {
+      "id": "r-wire-rubber",
+      "priority": 60,
+      "when": { "hasConnector": "no", "cableKind": "other", "insulationMaterial": "rubber" },
+      "hs": "85441190",
+      "gir": "GIR 1",
+      "reasonVi": "Dây dẫn có cách điện bằng cao su, không có đầu nối, không phải cáp đặc biệt → 8544.11 (loại khác).",
+      "source": "Biểu thuế 2026 dòng 8544.11.90"
+    },
+    {
+      "id": "r-wire-plastic",
+      "priority": 50,
+      "when": { "hasConnector": "no", "cableKind": "other", "insulationMaterial": "plastic" },
+      "hs": "85444949",
+      "gir": "GIR 1",
+      "reasonVi": "Dây dẫn có cách điện bằng plastic (PVC), không có đầu nối → 8544.49 (loại khác cách điện plastic).",
+      "source": "Biểu thuế 2026 dòng 8544.49.49"
+    },
+    {
+      "id": "r-default-no-connector",
+      "priority": 10,
+      "when": { "hasConnector": "no", "cableKind": "other" },
+      "hs": "85444949",
+      "gir": "GIR 1",
+      "reasonVi": "Dây/cáp dẫn điện không có đầu nối, không phải cáp đặc biệt → 8544.49 (loại khác cách điện plastic, đường kính > 0.51mm).",
+      "source": "Biểu thuế 2026 dòng 8544.49.49"
+    }
+  ]
+}
