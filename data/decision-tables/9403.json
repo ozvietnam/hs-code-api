@@ -1,0 +1,468 @@
+{
+  "heading": "9403",
+  "titleVi": "Đồ nội thất khác (không phải ghế ngồi 9401 hay giường 9402)",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Câu hỏi bản chất: vật liệu chính là gì? Có phải tủ hút hơi độc (SEN) không? Nếu bằng gỗ: dùng trong phòng nào (văn phòng / nhà bếp / phòng ngủ / khác)? Nếu bằng nhựa: có phải xe tập đi cho trẻ em không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 94.03. Căn cứ GIR 1, 3, 6. Chú giải nhóm 94: đồ nội thất có cấu tạo được thiết kế để đặt đứng / treo / gắn tường.",
+  "inputs": [
+    {
+      "attribute": "senFlag",
+      "type": "enum",
+      "labelVi": "Tủ hút hơi độc (SEN)",
+      "questionVi": "Hàng có phải là tủ hút hơi độc (fume hood /SEN) không?",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "detect": {
+        "yes": [
+          "tủ hút hơi",
+          "tủ hút mùi",
+          "tủ hút độc",
+          "sen",
+          "fume hood",
+          "hood"
+        ],
+        "no": []
+      }
+    },
+    {
+      "attribute": "productKind",
+      "type": "enum",
+      "labelVi": "Loại sản phẩm đặc biệt",
+      "questionVi": "Hàng có phải xe tập đi cho trẻ em không? Có phải bộ phận (chân, mặt, phụ kiện) không?",
+      "domain": [
+        "childWalker",
+        "parts",
+        "other"
+      ],
+      "detect": {
+        "childWalker": [
+          "xe tập đi",
+          "walker",
+          "xe tập đi cho trẻ em"
+        ],
+        "parts": [
+          "bộ phận",
+          "chân bàn",
+          "mặt bàn",
+          "tấm ốp",
+          "phụ kiện",
+          "parts"
+        ],
+        "other": []
+      }
+    },
+    {
+      "attribute": "materialKind",
+      "type": "enum",
+      "labelVi": "Vật liệu chính",
+      "questionVi": "Vật liệu chính của đồ nội thất là gì: kim loại / gỗ / nhựa / tre / song, mây / hay vật liệu khác?",
+      "domain": [
+        "metal",
+        "wood",
+        "plastic",
+        "bamboo",
+        "rattan",
+        "other"
+      ],
+      "detect": {
+        "metal": [
+          "sắt",
+          "thép",
+          "inox",
+          "gang",
+          "kim loại",
+          "nhôm",
+          "hợp kim",
+          "metal",
+          "iron",
+          "steel"
+        ],
+        "wood": [
+          "gỗ",
+          "mdf",
+          "plywood",
+          "ván ép",
+          "gỗ dán",
+          "gỗ công nghiệp",
+          "gỗ thông",
+          "wood",
+          "timber"
+        ],
+        "plastic": [
+          "nhựa",
+          "pp",
+          "abs",
+          "plastic",
+          "polymer"
+        ],
+        "bamboo": [
+          "tre",
+          "bamboo",
+          "nội thất tre"
+        ],
+        "rattan": [
+          "song",
+          "mây",
+          "rattan",
+          "đan"
+        ],
+        "other": [
+          "đá",
+          "bột đá",
+          "vải",
+          "bông",
+          "sợi"
+        ]
+      }
+    },
+    {
+      "attribute": "roomUse",
+      "type": "enum",
+      "labelVi": "Không gian sử dụng (gỗ)",
+      "questionVi": "Nếu bằng gỗ: dùng trong không gian nào: văn phòng / nhà bếp / phòng ngủ / phòng khách hoặc khác?",
+      "domain": [
+        "office",
+        "kitchen",
+        "bedroom",
+        "other"
+      ],
+      "detect": {
+        "office": [
+          "văn phòng",
+          "làm việc",
+          "trang trí văn phòng",
+          "office"
+        ],
+        "kitchen": [
+          "nhà bếp",
+          "bếp",
+          "phòng bếp",
+          "kitchen"
+        ],
+        "bedroom": [
+          "phòng ngủ",
+          "ngủ",
+          "giường",
+          "tủ áo",
+          "tủ quần áo",
+          "giường ngủ",
+          "bàn học",
+          "bedroom"
+        ],
+        "other": [
+          "phòng khách",
+          "trang trí",
+          "tivi",
+          "trưng bày",
+          "bar",
+          "quầy bar",
+          "living room",
+          "khách"
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "9403-r01",
+      "priority": 50,
+      "hs": "94032010",
+      "reasonVi": "SEN bằng kim loại → 94032010",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "senFlag": "yes",
+        "materialKind": "metal"
+      }
+    },
+    {
+      "id": "9403-r02",
+      "priority": 50,
+      "hs": "94036010",
+      "reasonVi": "SEN bằng gỗ → 94036010",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "senFlag": "yes",
+        "materialKind": "wood"
+      }
+    },
+    {
+      "id": "9403-r03",
+      "priority": 50,
+      "hs": "94037020",
+      "reasonVi": "SEN bằng nhựa → 94037020",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "senFlag": "yes",
+        "materialKind": "plastic"
+      }
+    },
+    {
+      "id": "9403-r04",
+      "priority": 50,
+      "hs": "94038910",
+      "reasonVi": "SEN bằng vật liệu khác → 94038910",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "senFlag": "yes",
+        "materialKind": "other"
+      }
+    },
+    {
+      "id": "9403-r05b",
+      "priority": 50,
+      "hs": "94038910",
+      "reasonVi": "SEN bằng tre → 94038910",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "senFlag": "yes",
+        "materialKind": "bamboo"
+      }
+    },
+    {
+      "id": "9403-r05c",
+      "priority": 50,
+      "hs": "94038910",
+      "reasonVi": "SEN bằng song/mây → 94038910",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "senFlag": "yes",
+        "materialKind": "rattan"
+      }
+    },
+    {
+      "id": "9403-r05",
+      "priority": 50,
+      "hs": "94038910",
+      "reasonVi": "SEN bằng tre → 94038910",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "senFlag": "yes",
+        "materialKind": "bamboo"
+      }
+    },
+    {
+      "id": "9403-r06",
+      "priority": 80,
+      "hs": "94037010",
+      "reasonVi": "Xe tập đi cho trẻ em → 94037010",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "productKind": "childWalker"
+      }
+    },
+    {
+      "id": "9403-r07",
+      "priority": 80,
+      "hs": "94039100",
+      "reasonVi": "Bộ phận bằng gỗ → 94039100",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "productKind": "parts",
+        "materialKind": "wood"
+      }
+    },
+    {
+      "id": "9403-r08",
+      "priority": 80,
+      "hs": "94039990",
+      "reasonVi": "Bộ phận bằng kim loại → 94039990",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "productKind": "parts",
+        "materialKind": "metal"
+      }
+    },
+    {
+      "id": "9403-r09",
+      "priority": 80,
+      "hs": "94039910",
+      "reasonVi": "Bộ phận bằng nhựa (của 94037010) → 94039910",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "productKind": "parts",
+        "materialKind": "plastic"
+      }
+    },
+    {
+      "id": "9403-r10",
+      "priority": 80,
+      "hs": "94039990",
+      "reasonVi": "Bộ phận bằng vật liệu khác → 94039990",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "productKind": "parts",
+        "materialKind": "other"
+      }
+    },
+    {
+      "id": "9403-r11b",
+      "priority": 80,
+      "hs": "94039990",
+      "reasonVi": "Bộ phận bằng tre → 94039990",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "productKind": "parts",
+        "materialKind": "bamboo"
+      }
+    },
+    {
+      "id": "9403-r11c",
+      "priority": 80,
+      "hs": "94039990",
+      "reasonVi": "Bộ phận bằng song/mây → 94039990",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "productKind": "parts",
+        "materialKind": "rattan"
+      }
+    },
+    {
+      "id": "9403-r11",
+      "priority": 80,
+      "hs": "94038910",
+      "reasonVi": "Bộ phận bằng song/mây → 94039990",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "productKind": "parts",
+        "materialKind": "rattan"
+      }
+    },
+    {
+      "id": "9403-r12",
+      "priority": 30,
+      "hs": "94031000",
+      "reasonVi": "Đồ nội thất kim loại dùng trong văn phòng → 94031000",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "materialKind": "metal",
+        "roomUse": "office"
+      }
+    },
+    {
+      "id": "9403-r13",
+      "priority": 30,
+      "hs": "94032090",
+      "reasonVi": "Đồ nội thất kim loại loại khác (kệ, bàn xếp, giường xếp, tủ trưng bày) → 94032090",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "materialKind": "metal",
+        "roomUse": "other"
+      }
+    },
+    {
+      "id": "9403-r14",
+      "priority": 30,
+      "hs": "94033000",
+      "reasonVi": "Đồ nội thất gỗ dùng trong văn phòng → 94033000",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "materialKind": "wood",
+        "roomUse": "office"
+      }
+    },
+    {
+      "id": "9403-r15",
+      "priority": 30,
+      "hs": "94034000",
+      "reasonVi": "Đồ nội thất gỗ dùng trong nhà bếp → 94034000",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "materialKind": "wood",
+        "roomUse": "kitchen"
+      }
+    },
+    {
+      "id": "9403-r16",
+      "priority": 30,
+      "hs": "94035000",
+      "reasonVi": "Đồ nội thất gỗ dùng trong phòng ngủ (giường, tủ áo, bàn học, kệ) → 94035000",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "materialKind": "wood",
+        "roomUse": "bedroom"
+      }
+    },
+    {
+      "id": "9403-r17",
+      "priority": 30,
+      "hs": "94036090",
+      "reasonVi": "Đồ nội thất gỗ dùng trong phòng khách / trưng bày / các không gian khác → 94036090",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "materialKind": "wood",
+        "roomUse": "other"
+      }
+    },
+    {
+      "id": "9403-r18",
+      "priority": 30,
+      "hs": "94037090",
+      "reasonVi": "Đồ nội thất nhựa loại khác (tủ nhựa, bàn bar nhựa) → 94037090",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "materialKind": "plastic"
+      }
+    },
+    {
+      "id": "9403-r19",
+      "priority": 30,
+      "hs": "94038200",
+      "reasonVi": "Đồ nội thất bằng tre → 94038200",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "materialKind": "bamboo"
+      }
+    },
+    {
+      "id": "9403-r20",
+      "priority": 30,
+      "hs": "94038300",
+      "reasonVi": "Đồ nội thất bằng song hoặc mây → 94038300",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "materialKind": "rattan"
+      }
+    },
+    {
+      "id": "9403-r21",
+      "priority": 30,
+      "hs": "94038990",
+      "reasonVi": "Đồ nội thất bằng vật liệu khác (đá nhân tạo, bàn trà bằng đá, khung sắt+mặt đá) → 94038990",
+      "source": "hermes-211-9403",
+      "gir": "GIR 1",
+      "when": {
+        "materialKind": "other",
+        "senFlag": "no",
+        "productKind": "other"
+      }
+    }
+  ]
+}
