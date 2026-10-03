@@ -5,13 +5,6 @@
     "cases": 0,
     "notes": ""
   },
-  "9603": {
-    "status": "draft",
-    "rules": 18,
-    "leaves": 11,
-    "ozCases": 29,
-    "source": "oz-gold 32 entries + biểu thuế"
-  },
   "version": 1,
   "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → draft (có bảng, chưa qua cửa dữ liệu thật) → done (qua cửa). `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
@@ -1002,6 +995,13 @@
       ],
       "gateVi": "pending expert review — 47 oz entries, 9 rules",
       "noteVi": "Bảng 9 rules / 2 attrs (productKind + material), phủ 9 lá 8 số. Nguồn: oz-gold + biểu thuế 2026."
+    },
+    "9603": {
+      "status": "draft",
+      "rules": 18,
+      "leaves": 11,
+      "ozCases": 29,
+      "source": "oz-gold 32 entries + biểu thuế"
     }
   }
 }
