@@ -5,6 +5,13 @@
     "cases": 0,
     "notes": ""
   },
+  "9603": {
+    "status": "draft",
+    "rules": 18,
+    "leaves": 11,
+    "ozCases": 29,
+    "source": "oz-gold 32 entries + biểu thuế"
+  },
   "version": 1,
   "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → draft (có bảng, chưa qua cửa dữ liệu thật) → done (qua cửa). `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
@@ -358,6 +365,22 @@
       "rules": 9,
       "gateVi": "oz: 22/25 (88%)"
     },
+    "8413": {
+      "status": "draft",
+      "by": "hermes-211",
+      "table": true,
+      "leafCount": 19,
+      "ruleCount": 21,
+      "draftAt": "2026-10-03T16:00:00.000Z",
+      "attrs": [
+        "pumpMechanism",
+        "pumpApplication",
+        "hasMeasuringDevice",
+        "isSubmerged"
+      ],
+      "noteVi": "Bảng 21 rules / 4 attrs (pumpMechanism+pumpApplication+hasMeasuringDevice+isSubmerged). Phủ 19/43 lá 8 số. Nguồn: oz-gold + biểu thuế 2026.",
+      "gateVi": "pending expert review — 60 oz entries, 21 rules"
+    },
     "8414": {
       "status": "draft",
       "table": true,
@@ -408,6 +431,20 @@
       "gateVi": "chốt ≥ 50% (50%), 0 disagree.",
       "pass": true,
       "ozPass": true
+    },
+    "8421": {
+      "status": "draft",
+      "by": "hermes-211",
+      "table": true,
+      "leafCount": 0,
+      "ruleCount": 12,
+      "draftAt": "2026-10-03T16:00:00.000Z",
+      "attrs": [
+        "filterKind",
+        "application"
+      ],
+      "noteVi": "Bảng 12 rules / 2 attrs (filterKind+application). Phủ filter leaves. Nguồn: oz-gold + biểu thuế 2026.",
+      "gateVi": "pending expert review — 65 oz entries, 12 rules"
     },
     "8422": {
       "status": "draft",
@@ -949,36 +986,6 @@
       "doneAt": "2026-10-03",
       "by": "hermes-211",
       "note": "oz 56% (22/39), toyKind enum, 15 leaves covered"
-    },
-    "8413": {
-      "status": "draft",
-      "by": "hermes-211",
-      "table": true,
-      "leafCount": 19,
-      "ruleCount": 21,
-      "draftAt": "2026-10-03T16:00:00.000Z",
-      "attrs": [
-        "pumpMechanism",
-        "pumpApplication",
-        "hasMeasuringDevice",
-        "isSubmerged"
-      ],
-      "noteVi": "Bảng 21 rules / 4 attrs (pumpMechanism+pumpApplication+hasMeasuringDevice+isSubmerged). Phủ 19/43 lá 8 số. Nguồn: oz-gold + biểu thuế 2026.",
-      "gateVi": "pending expert review — 60 oz entries, 21 rules"
-    },
-    "8421": {
-      "status": "draft",
-      "by": "hermes-211",
-      "table": true,
-      "leafCount": 0,
-      "ruleCount": 12,
-      "draftAt": "2026-10-03T16:00:00.000Z",
-      "attrs": [
-        "filterKind",
-        "application"
-      ],
-      "noteVi": "Bảng 12 rules / 2 attrs (filterKind+application). Phủ filter leaves. Nguồn: oz-gold + biểu thuế 2026.",
-      "gateVi": "pending expert review — 65 oz entries, 12 rules"
     },
     "9615": {
       "status": "draft",
