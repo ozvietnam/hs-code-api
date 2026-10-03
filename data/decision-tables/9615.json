@@ -1,0 +1,357 @@
+{
+  "heading": "9615",
+  "titleVi": "Lược, kẹp tóc, guốc chải tóc và các đồ gắn tóc tương tự; dụng cụ cuốn tóc và lô cuốn tóc, đinh sừng và các đồ tương tự",
+  "verified": false,
+  "essenceTestVi": "CÂU HỎI BẢN CHẤT: sản phẩm gì: lược (comb), kẹp tóc (hairpin/clips), dây buộc tóc (hair tie), băng đô (headband), hay lô uốn tóc (hair curler)? Vật liệu chính là gì?",
+  "sourceVi": "Biểu thuế 2026 nhóm 96.15. Căn cứ GIR 1, 3, 4, 6.",
+  "inputs": [
+    {
+      "attribute": "productKind",
+      "type": "enum",
+      "labelVi": "Loại sản phẩm",
+      "questionVi": "Sản phẩm là gì: lược (comb), kẹp tóc (hairpin/clip), dây buộc tóc (hair tie), băng đô (headband), hay lô uốn tóc (hair curler)?",
+      "domain": [
+        "comb",
+        "hairpin",
+        "hair_tie",
+        "headband",
+        "hair_curler",
+        "other"
+      ],
+      "detect": {
+        "comb": [
+          "lược",
+          "lược chải",
+          "lược nhuộm",
+          "lược massage",
+          "lược cầm tay",
+          "lược ngọc",
+          "lược loang",
+          "lược chải lông",
+          "lược chải tóc",
+          "lược hai đầu",
+          "lược một đầu",
+          "comb",
+          "hair comb"
+        ],
+        "hairpin": [
+          "kẹp tóc",
+          "ghim cài tóc",
+          "ghim tóc",
+          "cặp tóc",
+          "cặp trang trí",
+          "kẹp tách tóc",
+          "hair clip",
+          "hairpin",
+          "bờm trang trí tóc",
+          "bờm tóc",
+          "lô uốn tóc (nhựa)"
+        ],
+        "hair_tie": [
+          "dây buộc tóc",
+          "dây buộc trang trí",
+          "chun buộc tóc",
+          "băng đô tóc",
+          "dây buộc",
+          "buộc tóc"
+        ],
+        "headband": [
+          "băng đô",
+          "băng đô tóc",
+          "nơ tóc",
+          "headband"
+        ],
+        "hair_curler": [
+          "lô uốn tóc",
+          "lô cuốn tóc",
+          "lô uốn",
+          "uốn tóc",
+          "hair curler",
+          "curler"
+        ],
+        "other": [
+          "đồ gắn tóc",
+          "trang trí tóc",
+          "hair accessory"
+        ]
+      }
+    },
+    {
+      "attribute": "material",
+      "type": "enum",
+      "labelVi": "Vật liệu chính",
+      "questionVi": "Vật liệu chính là gì: nhựa/plastic, kim loại (sắt/thép/đồng), hay vải/dệt?",
+      "domain": [
+        "plastic",
+        "metal",
+        "fabric"
+      ],
+      "detect": {
+        "plastic": [
+          "nhựa",
+          "PVC",
+          "ABS",
+          "PP",
+          "nylon",
+          "plastic",
+          "cao su lưu hóa"
+        ],
+        "metal": [
+          "sắt",
+          "thép",
+          "đồng",
+          "hợp kim",
+          "kim loại",
+          "metal",
+          "iron"
+        ],
+        "fabric": [
+          "vải",
+          "dệt",
+          "sợi tổng hợp",
+          "vải dệt kim",
+          "sợi"
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "9615-r01",
+      "priority": 1,
+      "hs": "96151130",
+      "reasonVi": "GIR 6: productKind=comb + material=plastic — lược nhựa",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "comb",
+        "material": "plastic"
+      }
+    },
+    {
+      "id": "9615-r02",
+      "priority": 2,
+      "hs": "96151120",
+      "reasonVi": "GIR 6: productKind=comb + material=metal — lược kim loại",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "comb",
+        "material": "metal"
+      }
+    },
+    {
+      "id": "9615-r03",
+      "priority": 3,
+      "hs": "96151900",
+      "reasonVi": "GIR 6: productKind=comb + material=fabric — lược vải / loại khác",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "comb",
+        "material": "fabric"
+      }
+    },
+    {
+      "id": "9615-r04",
+      "priority": 4,
+      "hs": "96159013",
+      "reasonVi": "GIR 6: productKind=hairpin + material=plastic — kẹp tóc nhựa",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "hairpin",
+        "material": "plastic"
+      }
+    },
+    {
+      "id": "9615-r05",
+      "priority": 5,
+      "hs": "96159012",
+      "reasonVi": "GIR 6: productKind=hairpin + material=metal — kẹp tóc kim loại",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "hairpin",
+        "material": "metal"
+      }
+    },
+    {
+      "id": "9615-r06",
+      "priority": 6,
+      "hs": "96159099",
+      "reasonVi": "GIR 6: productKind=hair_tie hoặc headband — dây buộc tóc, băng đô, bờm tóc",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "hair_tie"
+      }
+    },
+    {
+      "id": "9615-r07",
+      "priority": 7,
+      "hs": "96159093",
+      "reasonVi": "GIR 6: productKind=hair_curler — lô uốn tóc bằng nhựa",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "hair_curler",
+        "material": "plastic"
+      }
+    },
+    {
+      "id": "9615-r08",
+      "priority": 8,
+      "hs": "96159092",
+      "reasonVi": "GIR 6: productKind=hairpin + material=fabric — kẹp tóc vải / loại khác",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "hairpin",
+        "material": "fabric"
+      }
+    },
+    {
+      "id": "9615-r09",
+      "priority": 9,
+      "hs": "96159099",
+      "reasonVi": "GIR 6: productKind=headband — băng đô",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "headband"
+      }
+    },
+    {
+      "id": "9615-r11",
+      "priority": 11,
+      "hs": "96159019",
+      "reasonVi": "GIR 6: kẹp tóc kim loại khác",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "hairpin",
+        "material": "metal"
+      }
+    },
+    {
+      "id": "9615-r12",
+      "priority": 12,
+      "hs": "96159091",
+      "reasonVi": "GIR 6: sản phẩm gắn tóc khác bằng plastic",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "other",
+        "material": "plastic"
+      }
+    },
+    {
+      "id": "9615-r13",
+      "priority": 13,
+      "hs": "96159099",
+      "reasonVi": "GIR 6: dây buộc tóc vải / băng đô vải / loại khác",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "hair_tie",
+        "material": "fabric"
+      }
+    },
+    {
+      "id": "9615-r14",
+      "priority": 14,
+      "hs": "96159099",
+      "reasonVi": "GIR 6: dây buộc tóc kim loại / loại khác",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "hair_tie",
+        "material": "metal"
+      }
+    },
+    {
+      "id": "9615-r10",
+      "priority": 10,
+      "hs": "96159011",
+      "reasonVi": "GIR 6: kẹp tóc kim loại thường (sắt/thép than)",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "hairpin",
+        "material": "metal"
+      }
+    },
+    {
+      "id": "9615-r20",
+      "priority": 20,
+      "hs": "96159021",
+      "reasonVi": "GIR 6: băng đô bằng plastic",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "headband",
+        "material": "plastic"
+      }
+    },
+    {
+      "id": "9615-r21",
+      "priority": 21,
+      "hs": "96159022",
+      "reasonVi": "GIR 6: băng đô bằng vải dệt kim",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "headband",
+        "material": "fabric"
+      }
+    },
+    {
+      "id": "9615-r22",
+      "priority": 22,
+      "hs": "96159023",
+      "reasonVi": "GIR 6: băng đô bằng kim loại",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "headband",
+        "material": "metal"
+      }
+    },
+    {
+      "id": "9615-r23",
+      "priority": 23,
+      "hs": "96159029",
+      "reasonVi": "GIR 6: băng đô bằng vật liệu khác",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "headband"
+      }
+    },
+    {
+      "id": "9615-r24",
+      "priority": 24,
+      "hs": "96159019",
+      "reasonVi": "GIR 6: đồ gắn tóc khác bằng kim loại",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "other",
+        "material": "metal"
+      }
+    },
+    {
+      "id": "9615-r25",
+      "priority": 25,
+      "hs": "96159091",
+      "reasonVi": "GIR 6: đồ gắn tóc khác bằng plastic",
+      "source": "hermes-211-9615",
+      "gir": "GIR 6",
+      "when": {
+        "productKind": "other",
+        "material": "plastic"
+      }
+    }
+  ]
+}
