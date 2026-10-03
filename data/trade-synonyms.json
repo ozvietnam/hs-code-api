@@ -3182,7 +3182,202 @@
         "xylanh"
       ],
       "sourceVi": "Biểu thuế 2026 nhóm 7326; thực tiễn phân loại hải quan."
+    },
+    {
+      "id": "giay-chung-nhan-co-phieu",
+      "titleVi": "Giấy chứng nhận / cổ phiếu / giấy tờ chứng từ (Chương 49)",
+      "terms": [
+        "giấy chứng nhận",
+        "cổ phiếu",
+        "cổ phần",
+        "chứng chỉ",
+        "giấy chứng nhận cổ phần",
+        "cổ phiếu công ty",
+        "giấy tờ chứng từ",
+        "chứng chỉ cổ phần",
+        "giấy phép kinh doanh",
+        "đăng ký kinh doanh",
+        "giấy chứng nhận đầu tư",
+        "certificate of incorporation",
+        "stock certificate"
+      ],
+      "candidates": [
+        {
+          "hs": "49070010",
+          "whenVi": "Tiền giấy (tiền giấy các loại)",
+          "confidence": "high"
+        },
+        {
+          "hs": "49070090",
+          "whenVi": "Các loại giấy có giá trị tương đương tiền (tín phiếu, trái phiếu, hối phiếu, thẻ ngân hàng…)",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "4907",
+          "whyVi": "4907 là mã giấy tờ có giá trị (cổ phiếu, chứng chỉ tiền tệ) — không phải hàng vật chất. Khi mô tả hàng là vật chất (nhựa, sắt, vải, thủy tinh…) thì 4907 phải bị loại."
+        }
+      ],
+      "askVi": [
+        "Hàng này có phải giấy tờ có giá trị như cổ phiếu, chứng chỉ tiền tệ, tiền giấy không? (có → 4907; không → mô tả lại vật chất hàng)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Chú giải Chương 49: 'Các loại giấy có giá trị như tiền giấy, cổ phiếu, tín phiếu, hối phiếu' thuộc 4907. Hàng vật chất không thuộc Chương 49."
+    },
+    {
+      "id": "bo-phan-may-semiconductor",
+      "titleVi": "Bộ phận máy sản xuất semiconductor / IC",
+      "terms": [
+        "bộ phận máy semiconductor",
+        "bộ phận ic",
+        "bộ phận chip",
+        "linh kiện semiconductor",
+        "bộ phận máy in 3d",
+        "bộ phận máy gắn chip",
+        "wafer processing parts",
+        "ic manufacturing parts",
+        "bộ phận máy sản xuất ic",
+        "bộ phận máy đóng gói ic",
+        "bộ phận thiết bị bán dẫn",
+        "bộ phận dụng cụ bán dẫn"
+      ],
+      "candidates": [
+        {
+          "hs": "84864020",
+          "whenVi": "Các bộ phận máy sản xuất / gia công semiconductor, mạch tích hợp (IC), đóng gói chip — chỉ dùng TRONG nhà máy bán dẫn, KHÔNG phải sản phẩm tiêu dùng",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8486",
+          "whyVi": "8486 chỉ dành cho bộ phận thuộc MÁY SẢN XUẤT semiconductor. Hàng tiêu dùng (xe máy điện, dây cáp điện, đồ nhựa gia dụng) không thuộc 8486."
+        }
+      ],
+      "askVi": [
+        "Hàng này có phải bộ phận DÙNG TRONG máy sản xuất semiconductor / IC không? (có → 84864020; không → mô tả lại hàng)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 8486: chỉ phạm vi máy và thiết bị sản xuất semiconductor. Hàng tiêu dùng không thuộc nhóm này."
+    },
+    {
+      "id": "vai-det-kim-tong-hop",
+      "titleVi": "Vải dệt kim tổng hợp / vải kỹ thuật",
+      "terms": [
+        "vải dệt kim",
+        "vải dệt tổng hợp",
+        "vải kỹ thuật",
+        "vải công nghiệp dệt",
+        "fabric synthetic",
+        "knitted fabric synthetic",
+        "vải microfiber"
+      ],
+      "candidates": [
+        {
+          "hs": "59111000",
+          "whenVi": "Vải dệt kim từ sợi tổng hợp, đã hoặc chưa tráng / phủ — dùng làm lớp lọc hoặc lớp đệm trong máy",
+          "confidence": "high"
+        },
+        {
+          "hs": "60012100",
+          "whenVi": "Vải dệt kim từ sợi nhân tạo, có xù, vòng tròn hoặc phẳng",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "5911",
+          "whyVi": "5911 là vải kỹ thuật dệt kim dùng TRONG máy (lọc, đệm). Sản phẩm may mặc tiêu dùng (mũ, túi, quần áo) không thuộc 5911."
+        }
+      ],
+      "askVi": [
+        "Hàng này có phải vải dùng TRONG máy (lọc, đệm, lớp lót công nghiệp) không? (có → 5911; không → mô tả sản phẩm may mặc tiêu dùng)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 5911: vải dệt kim dùng làm lớp lọc, đệm trong máy. Sản phẩm tiêu dùng thuộc nhóm 61/62 (quần áo) hoặc 63 (sản phẩm dệt khác)."
+    },
+    {
+      "id": "may-in-3d",
+      "titleVi": "Máy in 3D / bộ phận máy in 3D",
+      "terms": [
+        "máy in 3d",
+        "máy in ba chiều",
+        "bộ phận máy in 3d",
+        "bộ phận máy in ba chiều",
+        "3d printer parts",
+        "bộ phận máy tạo hình 3d",
+        "trục vitme máy in 3d",
+        "thanh trượt máy in 3d",
+        "bàn máy in 3d",
+        "đầu máy in 3d",
+        "hotend máy in 3d"
+      ],
+      "candidates": [
+        {
+          "hs": "84856000",
+          "whenVi": "Máy in 3D (tạo hình bằng các phương pháp: lắng ghép, gia công bột, quang hóa…)",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "9818",
+          "whyVi": "9818 là mã catch-all cho bộ phận máy KHÔNG phân loại được ở nơi khác trong Biểu thuế. Chỉ dùng khi không có nhóm cụ thể cho hàng đó."
+        }
+      ],
+      "askVi": [
+        "Hàng này có phải bộ phận máy in 3D không? Hay là bộ phận của máy khác? (máy in 3D → 8485; máy khác → mô tả máy gì)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 8485: các máy tạo hình 3 chiều. Nhóm 9818 chỉ cho bộ phận không phân loại được nơi khác."
+    },
+    {
+      "id": "giay-in-cac-loai",
+      "titleVi": "Giấy in / giấy văn phòng / giấy in các loại",
+      "terms": [
+        "giấy in",
+        "giấy văn phòng",
+        "giấy in ấn",
+        "giấy photo",
+        "giấy a4",
+        "giấy a5",
+        "giấy carton",
+        "giấy kraft"
+      ],
+      "candidates": [
+        {
+          "hs": "48025590",
+          "whenVi": "Giấy không tráng khổ ≥ 435mm x 297mm, định lượng 40-150g/m², bán thành phẩm",
+          "confidence": "high"
+        },
+        {
+          "hs": "48101910",
+          "whenVi": "Giấy coated tráng cao láng khổ A4, định lượng 150-350g/m²",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "4810",
+          "whyVi": "4810 là giấy. Hàng không phải giấy (nhôm, cao su, nhựa) không thuộc 4810."
+        },
+        {
+          "prefix": "4802",
+          "whyVi": "4802 là giấy nguyên liệu. Sản phẩm hoàn chỉnh (thùng, hộp) không phải giấy nguyên liệu."
+        }
+      ],
+      "askVi": [
+        "Hàng này có phải GIẤY (tờ, cuộn, tấm) không? (có → 4802/4810; không → mô tả chất liệu hàng)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 4802-4810: phạm vi giấy. Hàng không phải giấy (kim loại, nhựa, cao su) không thuộc các nhóm này."
     }
   ],
-  "updatedAt": "2026-10-03T00:35:46.963Z"
+  "updatedAt": "2026-10-03"
 }
