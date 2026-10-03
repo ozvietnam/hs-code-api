@@ -1,5 +1,7 @@
 
 
+→ ca 21:06 03/10: **Xác nhận tình trạng cuối lượt — KHÔNG CÒN VIỆC LÀN C LÀM ĐƯỢC** ✓ · HEAD=901576bf (71 commits ahead origin/main, +2 so với 20:30) ✓ · PR #97: 71 commits, mergeable=true ✓ · npm test: 2 pre-existing failures (dev HS scope) ✓ · check-self-reject: 0 ✓ · hybrid top1=22.1% ✓ · oz-to-cases 8481: 0 added/117 unresolved (NO_TABLE — cần bảng 8481) ✓ · oz-to-cases 8501/8413/8414/4016/8421: tất cả NO_TABLE ✓ · 321 chapters oz-gold không có bảng quyết định ✓ · GEMINI_API_KEY=0 → full-pipeline không đo được ✓ · Việc còn lại: PR #97 merge (dev/CEO), tất cả bảng quyết định còn thiếu + heading selection context filter = dev HS ✓
+
 → ca 20:30 03/10: **Xác nhận tình trạng cuối lượt** ✓ · HEAD=07b9462 (docs checkpoint), 69 commits ahead origin/main ✓ · PR #97: 69 commits, mergeable=true, state=open ✓ · npm test: 2 pre-existing failures (72099090/72163190 steel shape=dev HS scope) ✓ · check-self-reject: 0 ✓ · accuracy-latest: hybrid 95-mẫu top1=21/95=22.1%, top3=28/95=29.5% ✓ · search-only 95-mẫu top1=7/95=7.4%, top3=14/95=14.7% ✓ · GEMINI_API_KEY=0 → full-pipeline không đo được ✓ · Việc còn lại: (1) PR #97 merge (dev/CEO); (2) 3926 table redesign (dev HS); (3) heading selection context filter (dev HS); (4) 6402/8483/8544/8537 table redesign (dev HS) ✓
 
 **NGUYÊN NHÂN PHÂN LOẠI (cập nhật 03/10 20:30):**
@@ -465,3 +467,21 @@ Số: 4s=26.0%·34.1% · 8s=14.7%·19.8% · delta=0 (entries mới không trong 
 **Phương án tiếp theo tốt hơn:** (1) PR #97 cần dev/CEO merge qua GitHub UI (gh CLI không có trên máy); (2) 3926 oz-to-cases: 333 entries ALL WRONG → bảng cần intendedUse sub-values redesign → dev HS; (3) heading selection context filter (84091000/401x) → dev HS.
 
 **Tự làm hay đề xuất:** Đề xuất dev/CEO — gh merge PR #97 (67 commits, mergeable=true, 0 self-reject). **Làn C: 67 commits, hybrid 22.1%, PR #97 sẵn. Không còn fix thuộc làn C trong phạm vi độ chính xác. Tất cả còn lại = dev HS scope.**
+
+→ ca 21:04 03/10: **Thêm mach-in-pcb-2-lop entry — PCB 2 lớp → 85340020** ✓ · Phân tích: 85340020 (PCB 2 lớp) có 3 trường hợp trong 95-mẫu, trước đó chưa có trade-synonym entry cho 85340020 ✓ · keyword-only: 3/3 đúng ✓ · hybrid: 1/3 đúng (2 sai → 85340010 vì oz-precedent scoring override) ✓ · Nguyên nhân 2/3 sai trong hybrid: oz-precedent semantic search override trade-synonym correct answer — dev HS scope ✓ · Thêm entry mach-in-pcb-2-lop: 22 terms cho "2 lớp PCB", candidate=85340020, avoid 8534001/8534003/8534009 ✓ · npm test:trade-synonyms 63 entries pass ✓ · check-self-reject: 0 ✓ · npm test: 2 pre-existing failures unchanged ✓ · hybrid 95-mẫu: top1=21/95=22.1% (unchanged), top3=30.5% (+1 từ 29.5%) ✓ · keyword: top1=10.5% ✓ · commit 901576b push ✓ · **71 commits ahead origin/main** ✓ · push origin hermes/lan-C-accuracy-v2 ✓
+
+**NGUYÊN NHÂN PHÂN LOẠI (cập nhật 03/10 21:04):**
+- **85340020 (PCB 2 lớp)**: entry mach-in-pcb-2-lop đã thêm — keyword-only đúng 3/3, hybrid đúng 1/3 vì oz-precedent override (dev HS scope)
+- **2 remaining 85340020 hybrid errors**: oz-precedent scoring > trade-synonym — cần oz-precedent context filter (dev HS scope)
+- **90319030 (2x)**: heading-layer candidate không có oz-precedent support → dev HS
+- **84091000 (7x)**: LLM heading 8409 chosen for non-engine queries → dev HS
+- **6402/8483/8544/8537**: table design cần domain attrs → dev HS
+- 2 pre-existing test failures: dev HS scope (steel shape)
+
+**KẾT LUỢT — 03/10/2026 21:04 VN:**
+
+**Đã làm:** Thêm mach-in-pcb-2-lop entry ✓ · 63 entries ✓ · keyword top1=10.5% ✓ · hybrid top1=22.1%, top3=30.5% ✓ · 2 pre-existing failures ✓ · check-self-reject: 0 ✓ · commit 901576b push ✓ · 71 commits ahead ✓
+
+**Phương án tiếp theo tốt hơn:** (1) PR hermes/lan-C-accuracy-v2 (71 commits, 0 self-reject, 63 trade-synonym entries) cần dev/CEO merge qua GitHub UI (gh không có); (2) 85340020 remaining 2/3 hybrid errors = oz-precedent scoring override → dev HS cần context filter trong oz-precedent scoring; (3) heading selection context filter (84091000 + 90319030 + 401x) → dev HS; (4) 6402/8483/8544/8537 table redesign → dev HS; (5) GEMINI_API_KEY cần để đo full-pipeline delta.
+
+**Tự làm hay đề xuất:** Đề xuất dev/CEO — merge PR hermes/lan-C-accuracy-v2 (71 commits, 0 self-reject). Đề xuất dev HS — oz-precedent context filter cho 85340020, heading selection context filter cho 84091000/90319030/401x, table redesign 6402/8483/8544/8537. **Làn C: 71 commits, 63 trade-synonym entries, hybrid 22.1%, top3 30.5%. Không còn fix thuộc làn C trong phạm vi độ chính xác. Tất cả còn lại = dev HS scope hoặc cần merge + GEMINI_API_KEY.**
