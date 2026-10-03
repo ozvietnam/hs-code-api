@@ -1,39 +1,205 @@
 {
   "heading": "6403",
-  "titleVi": "Footwear; with outer soles of rubber, plastics, leather or composition leather and uppers of leather",
+  "titleVi": "Giày; đế ngoài bằng cao su, nhựa, da thuộc hoặc da thuộc composite và mũ giày bằng da thuộc",
   "verified": false,
   "verifiedBy": null,
   "verifiedAt": null,
-  "essenceTestVi": "CÂU HỎI BẢN CHẤT: thuộc tính nào tách nhóm này thành các lá? (điền)",
-  "sourceVi": "Biểu thuế 2026 nhóm 6403 + chú giải chương/nhóm (điền nguyên văn căn cứ)",
+  "essenceTestVi": "CÂU HỎI BẢN CHẤT: giày có cổ cao quá mắt cá chân không? Đế ngoài bằng gì? Mũ giày bằng gì?",
+  "sourceVi": "Chú giải nhóm 6403 + Biểu thuế 2026. Căn cứ GIR 1, 3, 4, 6.",
   "inputs": [
     {
-      "attribute": "VÍ_DỤ_enum",
+      "attribute": "bootType",
       "type": "enum",
       "domain": [
-        "a",
-        "b"
+        "boot",
+        "non_boot"
       ],
-      "labelVi": "Nhãn hiển thị",
-      "questionVi": "Câu hỏi người khai tự trả lời được?",
+      "labelVi": "Loại giày",
+      "questionVi": "Giày có cổ cao quá mắt cá chân (boot/bốt) hay không?",
       "detect": {
-        "a": [
-          "cụm nhận ra a"
+        "boot": [
+          "boot",
+          "bốt",
+          "bốt nữ",
+          "bốt cổ cao",
+          "giày boot",
+          "giày cao cổ",
+          "cổ cao quá mắt cá chân",
+          "cổ cao trên mắt cá chân",
+          "ankle boot",
+          "cao cổ quá mắt cá chân"
         ],
-        "b": [
-          "cụm nhận ra b"
+        "non_boot": [
+          "giày",
+          "dép",
+          "sandals",
+          "dét",
+          "loại khác"
         ]
       }
     },
     {
-      "attribute": "VÍ_DỤ_soMm",
-      "type": "number",
-      "unit": "mm",
-      "fromSpec": "thickness",
-      "labelVi": "Chiều dày (mm)",
-      "questionVi": "Chiều dày bao nhiêu mm?"
+      "attribute": "outerSole",
+      "type": "enum",
+      "domain": [
+        "rubber_plastics",
+        "leather_composition"
+      ],
+      "labelVi": "Chất liệu đế ngoài",
+      "questionVi": "Đế ngoài giày bằng cao su, nhựa hay bằng da thuộc/composite?",
+      "detect": {
+        "rubber_plastics": [
+          "đế cao su",
+          "đế nhựa",
+          "đế bằng cao su",
+          "đế bằng nhựa",
+          "đế plastic",
+          "đế bằng plastic",
+          "rubber sole",
+          "plastic sole",
+          "pu sole"
+        ],
+        "leather_composition": [
+          "đế da",
+          "đế bằng da",
+          "leather sole",
+          "composition leather sole"
+        ]
+      }
+    },
+    {
+      "attribute": "upperMaterial",
+      "type": "enum",
+      "domain": [
+        "leather",
+        "non_leather"
+      ],
+      "labelVi": "Chất liệu mũ giày",
+      "questionVi": "Mũ giày (phần trên) bằng da thuộc hay bằng vật liệu khác (PU, vải, nhựa…)?",
+      "detect": {
+        "leather": [
+          "da bò",
+          "da thuộc",
+          "mũ giày da",
+          "upper leather",
+          "da tổng hợp",
+          "pu (da pu)",
+          "da pu"
+        ],
+        "non_leather": [
+          "pu",
+          "vải",
+          "nhựa",
+          "mesh",
+          "polyester",
+          "nylon",
+          "canvas",
+          "non-leather upper"
+        ]
+      }
+    },
+    {
+      "attribute": "sportUse",
+      "type": "enum",
+      "domain": [
+        "sport",
+        "non_sport"
+      ],
+      "labelVi": "Loại sử dụng",
+      "questionVi": "Giày có phải loại chuyên dụng cho thể thao (tennis, bowling, cử tạ, đấu vật…) không?",
+      "detect": {
+        "sport": [
+          "thể thao",
+          "tennis",
+          "bowling",
+          "cử tạ",
+          "đấu vật",
+          "gym",
+          "basketball",
+          "running",
+          "sports",
+          "athletic"
+        ],
+        "non_sport": [
+          "thời trang",
+          "casual",
+          "bảo hộ",
+          "bình thường",
+          "thường ngày"
+        ]
+      }
     }
   ],
   "hitPolicy": "PRIORITY",
-  "rules": []
+  "rules": [
+    {
+      "id": "6403_boot_rubber_leather",
+      "when": {
+        "bootType": "boot",
+        "outerSole": "rubber_plastics"
+      },
+      "hs": "64039190",
+      "reasonVi": "Giày boot cổ cao quá mắt cá chân, đế cao su hoặc nhựa → phân nhóm 640391 (loại khác, đế rubber/plastics)"
+    },
+    {
+      "id": "6403_boot_leather_soles",
+      "when": {
+        "bootType": "boot",
+        "outerSole": "leather_composition"
+      },
+      "hs": "64039990",
+      "reasonVi": "Giày boot cổ cao quá mắt cá chân, đế da/composite → phân nhóm 640399 (loại khác)"
+    },
+    {
+      "id": "6403_nonboot_sport_rubber",
+      "when": {
+        "bootType": "non_boot",
+        "sportUse": "sport",
+        "outerSole": "rubber_plastics"
+      },
+      "hs": "64031930",
+      "reasonVi": "Giày thể thao, đế cao su/nhựa → 6403 (dùng trong đấu vật, cử tạ, thể dục thể hình)"
+    },
+    {
+      "id": "6403_nonboot_sport_leather",
+      "when": {
+        "bootType": "non_boot",
+        "sportUse": "sport",
+        "outerSole": "leather_composition"
+      },
+      "hs": "64031990",
+      "reasonVi": "Giày thể thao đế da/composite → 6403 loại khác"
+    },
+    {
+      "id": "6403_nonboot_fashion_leather_upper",
+      "when": {
+        "bootType": "non_boot",
+        "sportUse": "non_sport",
+        "outerSole": "rubber_plastics",
+        "upperMaterial": "leather"
+      },
+      "hs": "64039990",
+      "reasonVi": "Giày thời trang, đế cao su/nhựa, mũ da → 640399 (loại khác, đế rubber/plastics, uppers leather)"
+    },
+    {
+      "id": "6403_nonboot_fashion_rubber_upper",
+      "when": {
+        "bootType": "non_boot",
+        "sportUse": "non_sport",
+        "outerSole": "rubber_plastics",
+        "upperMaterial": "non_leather"
+      },
+      "hs": "64039990",
+      "reasonVi": "Giày thời trang, đế cao su/nhựa, mũ không da → 640399 (loại khác)"
+    },
+    {
+      "id": "6403_nonboot_leather_sole",
+      "when": {
+        "bootType": "non_boot",
+        "outerSole": "leather_composition"
+      },
+      "hs": "64039990",
+      "reasonVi": "Giày đế da/composite → 640399 (loại khác)"
+    }
+  ]
 }
