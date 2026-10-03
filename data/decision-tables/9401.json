@@ -1,0 +1,281 @@
+{
+  "heading": "9401",
+  "titleVi": "Ghế ngồi, ghế dùng trong phương tiện vận tải, ghế tháo rời, ghế xếp, ghế BIẾN ĐỔI",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "CÂU HỎI BẢN CHẤT: ghế dùng cho phương tiện (ô tô/tàu) hay ghế thường? Có đệm (đã nhồi) không? Khung gỗ hay kim loại? Dùng cho đối tượng nào?",
+  "sourceVi": "Biểu thuế 2026 nhóm 94.01. Căn cứ GIR 1, 3, 4, 6.",
+  "inputs": [
+    {
+      "attribute": "seatKind",
+      "type": "enum",
+      "labelVi": "Loại ghế",
+      "questionVi": "Ghế thuộc loại nào: ghế ô tô/tàu (vehicle), ghế đã nhồi đệm (upholstered), ghế khung kim loại (metal frame), ghế gỗ (wooden), hay ghế khác (other)?",
+      "domain": [
+        "vehicle",
+        "upholstered",
+        "metal_frame",
+        "wooden",
+        "other_seat"
+      ],
+      "detect": {
+        "vehicle": [
+          "ghế ô tô",
+          "ghế xe",
+          "ô tô",
+          "xe 7 chỗ",
+          "ghế tàu",
+          "xe thuộc 87",
+          "vehicle seat",
+          "ghế phương tiện"
+        ],
+        "upholstered": [
+          "ghế sofa",
+          "ghế đệm",
+          "ghế nhồi",
+          "ghế đôn",
+          "ghế bar",
+          "ghế thư giãn",
+          "ghế bập bênh",
+          "ghế quầy bar",
+          "ghế ngồi bàn ăn",
+          "ghế ngồi làm việc",
+          "ghế ăn",
+          "upholstered",
+          "ghế nội thất",
+          "ghế ngồi làm việc"
+        ],
+        "metal_frame": [
+          "ghế khung kim loại",
+          "ghế gấp",
+          "ghế xếp",
+          "ghế dã ngoại",
+          "ghế quay",
+          "ghế ngồi trẻ em",
+          "ghế mầm non",
+          "ghế nội thất"
+        ],
+        "wooden": [
+          "ghế gỗ",
+          "ghế khung gỗ",
+          "ghế nằm",
+          "ghế kê chân"
+        ],
+        "other_seat": [
+          "ghế",
+          "ghế ngồi",
+          "ghế nằm tắm",
+          "ghế rửa xe",
+          "ghế công thái học",
+          "ghế thanh",
+          "ghế nhựa"
+        ]
+      }
+    },
+    {
+      "attribute": "frameKind",
+      "type": "enum",
+      "labelVi": "Loại khung",
+      "questionVi": "Khung ghế bằng gỗ, kim loại, hay nhựa?",
+      "domain": [
+        "wooden",
+        "metal",
+        "plastic",
+        "unknown"
+      ],
+      "detect": {
+        "wooden": [
+          "gỗ",
+          "gỗ dán",
+          "gỗ công nghiệp",
+          "gỗ cao su",
+          "gỗ tạp",
+          "tre",
+          "mây",
+          "song"
+        ],
+        "metal": [
+          "thép",
+          "sắt",
+          "kim loại",
+          "hợp kim",
+          "inox",
+          "nhôm",
+          "khung kim loại",
+          "khung thép"
+        ],
+        "plastic": [
+          "nhựa",
+          "nhựa tổng hợp",
+          "nhựa PVC",
+          "nhựa đúc",
+          "nhựa nguyên khối",
+          "plastic"
+        ],
+        "unknown": [
+          "da",
+          "vải",
+          "lưới"
+        ]
+      }
+    },
+    {
+      "attribute": "hasPadding",
+      "type": "boolean",
+      "labelVi": "Có đệm đã nhồi",
+      "questionVi": "Ghế có đệm đã nhồi (mút, bông, da) không?",
+      "domain": [
+        "true",
+        "false"
+      ],
+      "detect": {
+        "true": [
+          "đệm",
+          "nhồi bông",
+          "mút",
+          "đệm mút",
+          "bọc nỉ",
+          "bọc vải",
+          "da thuộc",
+          "sponge",
+          "nhồi đệm",
+          "đệm ngồi"
+        ],
+        "false": [
+          "nhựa",
+          "gỗ",
+          "kim loại",
+          "khung",
+          "thép",
+          "inox",
+          "nhôm",
+          "không đệm",
+          "không mút",
+          "nhựa tổng hợp",
+          "nhựa PVC",
+          "nhựa đúc"
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "9401-r01",
+      "priority": 1,
+      "hs": "94012010",
+      "reasonVi": "Phân loại 94012010 theo GIR 6: seatKind=vehicle — ghế ô tô (loại dùng cho xe thuộc nhóm 87.02/87.03/87.04)",
+      "source": "hermes-211-9401",
+      "gir": "GIR 6",
+      "when": {
+        "seatKind": "vehicle"
+      }
+    },
+    {
+      "id": "9401-r02",
+      "priority": 2,
+      "hs": "94016100",
+      "reasonVi": "Phân loại 94016100 theo GIR 6: seatKind=upholstered, hasPadding=true, frameKind=wooden — ghế đã nhồi đệm, khung gỗ",
+      "source": "hermes-211-9401",
+      "gir": "GIR 6",
+      "when": {
+        "seatKind": "upholstered",
+        "hasPadding": "true",
+        "frameKind": "wooden"
+      }
+    },
+    {
+      "id": "9401-r03",
+      "priority": 3,
+      "hs": "94017100",
+      "reasonVi": "Phân loại 94017100 theo GIR 6: seatKind=upholstered, hasPadding=true, frameKind=metal — ghế đã nhồi đệm, khung kim loại",
+      "source": "hermes-211-9401",
+      "gir": "GIR 6",
+      "when": {
+        "seatKind": "upholstered",
+        "hasPadding": "true",
+        "frameKind": "metal"
+      }
+    },
+    {
+      "id": "9401-r10",
+      "priority": 10,
+      "hs": "94016100",
+      "reasonVi": "Phân loại 94016100 theo GIR 6: seatKind=upholstered, hasPadding=true, frameKind=unknown — ghế đã nhồi đệm, khung gỗ (mặc định)",
+      "source": "hermes-211-9401",
+      "gir": "GIR 6",
+      "assumeIfUnknown": "frameKind",
+      "when": {
+        "seatKind": "upholstered",
+        "hasPadding": "true"
+      }
+    },
+    {
+      "id": "9401-r04",
+      "priority": 4,
+      "hs": "94017990",
+      "reasonVi": "Phân loại 94017990 theo GIR 6: seatKind=metal_frame — ghế khung kim loại (không nhồi đệm)",
+      "source": "hermes-211-9401",
+      "gir": "GIR 6",
+      "when": {
+        "seatKind": "metal_frame"
+      }
+    },
+    {
+      "id": "9401-r05",
+      "priority": 5,
+      "hs": "94018000",
+      "reasonVi": "Phân loại 94018000 theo GIR 6: seatKind=other_seat — ghế khác (nhựa, không thuộc 94012010-94017990)",
+      "source": "hermes-211-9401",
+      "gir": "GIR 6",
+      "when": {
+        "seatKind": "other_seat"
+      }
+    },
+    {
+      "id": "9401-r06",
+      "priority": 6,
+      "hs": "94013900",
+      "reasonVi": "Phân loại 94013900 theo GIR 6: frameKind=metal, seatKind=other_seat — ghế kim loại khác (ghế quay, ghế lái tàu...)",
+      "source": "hermes-211-9401",
+      "gir": "GIR 6",
+      "when": {
+        "frameKind": "metal",
+        "seatKind": "other_seat"
+      }
+    },
+    {
+      "id": "9401-r07",
+      "priority": 7,
+      "hs": "94016990",
+      "reasonVi": "Phân loại 94016990 theo GIR 6: seatKind=wooden — ghế gỗ không nhồi đệm",
+      "source": "hermes-211-9401",
+      "gir": "GIR 6",
+      "when": {
+        "seatKind": "wooden"
+      }
+    },
+    {
+      "id": "9401-r08",
+      "priority": 8,
+      "hs": "94013900",
+      "reasonVi": "Phân loại 94013900 theo GIR 6: seatKind=upholstered (ghế lái tàu) — ghế lái tàu khung kim loại",
+      "source": "hermes-211-9401",
+      "gir": "GIR 6",
+      "when": {
+        "seatKind": "other_seat"
+      }
+    },
+    {
+      "id": "9401-r09",
+      "priority": 9,
+      "hs": "94019929",
+      "reasonVi": "Phân loại 94019929 theo GIR 6: phụ kiện ghế ô tô",
+      "source": "hermes-211-9401",
+      "gir": "GIR 6",
+      "when": {
+        "seatKind": "vehicle"
+      }
+    }
+  ]
+}

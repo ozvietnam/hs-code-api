@@ -1,4 +1,10 @@
 {
+  "8414": {
+    "state": "draft",
+    "branch": "hermes/decision-8414",
+    "cases": 0,
+    "notes": ""
+  },
   "version": 1,
   "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → draft (có bảng, chưa qua cửa dữ liệu thật) → done (qua cửa). `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
@@ -351,6 +357,21 @@
       "table": true,
       "rules": 9,
       "gateVi": "oz: 22/25 (88%)"
+    },
+    "8414": {
+      "status": "draft",
+      "table": true,
+      "branch": "hermes/decision-8414",
+      "doneAt": null,
+      "draftAt": "2026-10-03T16:00:00.000Z",
+      "by": "hermes-211",
+      "attrs": [
+        "deviceKind",
+        "hasElectric",
+        "application"
+      ],
+      "gateVi": "pending expert review — 56 oz entries",
+      "noteVi": "Bảng 14 rules / 3 attrs, phủ các lá thuộc 8414. Nguồn: oz-gold + biểu thuế 2026."
     },
     "8418": {
       "status": "draft",
@@ -840,6 +861,25 @@
       "gateVi": "pending expert review after PR#98 merge",
       "noteVi": "Bảng 30 rules/2 attrs (partKind + specCode), phủ 30/30 lá 8 số. Nguồn: Biểu thuế 2026."
     },
+    "9026": {
+      "status": "draft",
+      "table": true,
+      "branch": "hermes/decision-9026",
+      "doneAt": null,
+      "draftAt": "2026-10-03T16:00:00.000Z",
+      "by": "hermes-211",
+      "leafCount": 8,
+      "ruleCount": 8,
+      "attrs": [
+        "measKind",
+        "isAutomotive",
+        "hasElectric",
+        "isRegulator",
+        "isGauge"
+      ],
+      "gateVi": "pending expert review — 45 oz entries, 8 rules, 0 verified",
+      "noteVi": "Bảng 8 rules / 5 attrs (measKind + isAutomotive + hasElectric + isRegulator + isGauge), phủ 8 lá 8 số. Nguồn: oz-gold + biểu thuế 2026."
+    },
     "9030": {
       "status": "done",
       "doneAt": "2026-10-03T06:05:00.000Z",
@@ -864,6 +904,21 @@
       "noteVi": "Bảng 13 rules/2 attrs (itemKind + measKind). Phủ 13/13 mã 8 số. Đã commit 8346fd8.",
       "gateVi": "oz: 0/12 (0%)",
       "commit": "8346fd8"
+    },
+    "9401": {
+      "status": "draft",
+      "table": true,
+      "branch": "hermes/decision-9401",
+      "doneAt": null,
+      "draftAt": "2026-10-03T16:00:00.000Z",
+      "by": "hermes-211",
+      "attrs": [
+        "seatKind",
+        "frameKind",
+        "hasPadding"
+      ],
+      "gateVi": "pending expert review — 57 oz entries",
+      "noteVi": "Bảng 12 rules / 3 attrs (seatKind+frameKind+hasPadding). Nguồn: oz-gold + biểu thuế 2026."
     },
     "9405": {
       "status": "draft",

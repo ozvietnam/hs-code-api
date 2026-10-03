@@ -1,0 +1,231 @@
+{
+  "heading": "9026",
+  "titleVi": "Dụng cụ đo hoặc kiểm tra lưu lượng, mức, áp suất chất lỏng và chất khí",
+  "verified": false,
+  "essenceTestVi": "CÂU HỎI BẢN CHẤT: thiết bị đo loại gì: áp suất (pressure), lưu lượng (flow), nồng độ khí (gas concentration)? Dùng cho ô tô/máy xúc không? Có điện không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 90.26. Căn cứ GIR 1, 3, 4, 6.",
+  "inputs": [
+    {
+      "attribute": "measKind",
+      "type": "enum",
+      "labelVi": "Loại đo",
+      "questionVi": "Thiết bị đo gì: áp suất (pressure), lưu lượng (flow), hay nồng độ khí (gas concentration)?",
+      "domain": [
+        "pressure",
+        "flow",
+        "gas_concentration"
+      ]
+    },
+    {
+      "attribute": "isAutomotive",
+      "type": "boolean",
+      "labelVi": "Dùng cho ô tô/máy xúc",
+      "questionVi": "Thiết bị có phải là bộ phận của xe có động cơ (ô tô, máy xúc, xe máy) không?",
+      "domain": [
+        "true",
+        "false"
+      ],
+      "detect": {
+        "true": [
+          "ô tô",
+          "xe hơi",
+          "xe máy",
+          "máy xúc",
+          "ô-tô",
+          "automotive",
+          "dầu thủy lực",
+          "thủy lực",
+          "áp suất nhớt",
+          "áp suất dầu",
+          "cảm biến áp suất nhớt",
+          "dùng cho máy xúc",
+          "dùng cho xe",
+          "bộ phận ô tô",
+          "bộ phận máy xúc",
+          "hydraulic"
+        ],
+        "false": [
+          "công nghiệp",
+          "nhà máy",
+          "xí nghiệp",
+          "lò hơi",
+          "máy sản xuất",
+          "PCB",
+          "bản mạch"
+        ]
+      }
+    },
+    {
+      "attribute": "hasElectric",
+      "type": "boolean",
+      "labelVi": "Có điện",
+      "questionVi": "Thiết bị có hoạt động bằng điện không?",
+      "domain": [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "attribute": "isRegulator",
+      "type": "boolean",
+      "labelVi": "Bộ điều áp / giảm áp",
+      "questionVi": "Thiết bị có phải là bộ điều chỉnh hay giảm áp suất (không dùng điện) không?",
+      "domain": [
+        "true",
+        "false"
+      ],
+      "detect": {
+        "true": [
+          "điều áp",
+          "giảm áp",
+          "hạ áp",
+          "bộ điều áp",
+          "bộ giảm áp",
+          "đồng hồ đo áp suất khí Oxy",
+          "bình khí nén",
+          "áp kế lò nung",
+          "bộ điều áp dòng",
+          "điều chỉnh áp suất"
+        ],
+        "false": [
+          "cảm biến",
+          "bộ chuyển đổi",
+          "transmitter",
+          "sensor",
+          "transducer"
+        ]
+      }
+    },
+    {
+      "attribute": "isGauge",
+      "type": "boolean",
+      "labelVi": "Đồng hồ/áp kế đo trực tiếp",
+      "questionVi": "Thiết bị có phải là đồng hồ đo áp suất hoặc áp kế (đọc trực tiếp, không điện tử) không?",
+      "domain": [
+        "true",
+        "false"
+      ],
+      "detect": {
+        "true": [
+          "đồng hồ áp suất",
+          "áp kế",
+          "dial gauge",
+          "đồng hồ đo áp lực",
+          "đồng hồ đo áp suất",
+          "áp kế lò",
+          "chỉ báo áp suất",
+          "đồng hồ áp lực",
+          "đồng hồ đo áp suất nước",
+          "mặt đồng hồ",
+          "đồng hồ cơ"
+        ],
+        "false": [
+          "cảm biến",
+          "bộ chuyển đổi",
+          "điện tử",
+          "số",
+          "digital",
+          "LCD"
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "9026-r01",
+      "priority": 1,
+      "hs": "90262050",
+      "reasonVi": "GIR 6: measKind=pressure + isAutomotive=true — cảm biến áp suất dùng cho xe có động cơ (ô tô/máy xúc/dầu thủy lực)",
+      "source": "hermes-211-9026",
+      "gir": "GIR 6",
+      "when": {
+        "measKind": "pressure",
+        "isAutomotive": "true"
+      }
+    },
+    {
+      "id": "9026-r02",
+      "priority": 2,
+      "hs": "90261050",
+      "reasonVi": "GIR 6: measKind=flow + isAutomotive=true — cảm biến lưu lượng dùng cho xe có động cơ",
+      "source": "hermes-211-9026",
+      "gir": "GIR 6",
+      "when": {
+        "measKind": "flow",
+        "isAutomotive": "true"
+      }
+    },
+    {
+      "id": "9026-r03",
+      "priority": 3,
+      "hs": "90262090",
+      "reasonVi": "GIR 6: measKind=pressure + isRegulator=true — bộ điều áp / giảm áp dùng cho hệ thống khí nén, nước",
+      "source": "hermes-211-9026",
+      "gir": "GIR 6",
+      "when": {
+        "measKind": "pressure",
+        "isRegulator": "true"
+      }
+    },
+    {
+      "id": "9026-r04",
+      "priority": 4,
+      "hs": "90262050",
+      "reasonVi": "GIR 6: measKind=pressure + isAutomotive=false + hasElectric=true — cảm biến áp suất công nghiệp điện tử (dùng PLC, 4-20mA)",
+      "source": "hermes-211-9026",
+      "gir": "GIR 6",
+      "when": {
+        "measKind": "pressure",
+        "isAutomotive": "false",
+        "hasElectric": "true"
+      }
+    },
+    {
+      "id": "9026-r05",
+      "priority": 5,
+      "hs": "90262090",
+      "reasonVi": "GIR 6: measKind=pressure — đồng hồ/cảm biến áp suất công nghiệp, loại khác",
+      "source": "hermes-211-9026",
+      "gir": "GIR 6",
+      "when": {
+        "measKind": "pressure"
+      }
+    },
+    {
+      "id": "9026-r06",
+      "priority": 6,
+      "hs": "90261090",
+      "reasonVi": "GIR 6: measKind=flow — cảm biến lưu lượng công nghiệp",
+      "source": "hermes-211-9026",
+      "gir": "GIR 6",
+      "when": {
+        "measKind": "flow"
+      }
+    },
+    {
+      "id": "9026-r07",
+      "priority": 7,
+      "hs": "90268000",
+      "reasonVi": "GIR 6: measKind=gas_concentration — cảm biến đo nồng độ khí (oxy, CO2, khí thải)",
+      "source": "hermes-211-9026",
+      "gir": "GIR 6",
+      "when": {
+        "measKind": "gas_concentration"
+      }
+    },
+    {
+      "id": "9026-r08",
+      "priority": 8,
+      "hs": "90269000",
+      "reasonVi": "GIR 6: bộ phận của thiết bị đo nhóm 9026",
+      "source": "hermes-211-9026",
+      "gir": "GIR 6",
+      "when": {
+        "measKind": "pressure",
+        "isAutomotive": "false",
+        "hasElectric": "false",
+        "isRegulator": "false"
+      }
+    }
+  ]
+}
