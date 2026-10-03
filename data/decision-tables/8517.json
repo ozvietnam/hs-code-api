@@ -72,7 +72,18 @@
           "điện thoại",
           "telephone",
           "điện thoại cố định",
-          "điện thoại bàn"
+          "điện thoại bàn",
+          "Modul mở rộng điều khiển PLC",
+          "Module kết nối internet",
+          "Bộ gộp HDMI 4 vào 1 ra",
+          "Tấm phản quang",
+          "Thiết bị nhận bluetooth",
+          "Bộ chia USB 7in1",
+          "Module đầu ra",
+          "Module truyền thông",
+          "Cổng PCI mở rộng",
+          "Dây cáp nguồn volume",
+          "Cụm sạc"
         ],
         "other_telecom_device": [
           "thiết bị viễn thông",
@@ -187,28 +198,16 @@
         ],
         "network_equipment": [
           {
-            "raw": "switch",
+            "raw": "network",
             "dia": false,
-            "key": "switch",
-            "folded": "switch"
+            "key": "network",
+            "folded": "network"
           },
           {
-            "raw": "router",
+            "raw": "equipment",
             "dia": false,
-            "key": "router",
-            "folded": "router"
-          },
-          {
-            "raw": "modem",
-            "dia": false,
-            "key": "modem",
-            "folded": "modem"
-          },
-          {
-            "raw": "thiết bị mạng",
-            "dia": true,
-            "key": "thiết bị mạng",
-            "folded": "thiet bi mang"
+            "key": "equipment",
+            "folded": "equipment"
           },
           {
             "raw": "network equipment",
@@ -229,10 +228,34 @@
             "folded": "access point"
           },
           {
-            "raw": "AP wifi",
+            "raw": "ap wifi",
             "dia": false,
             "key": "ap wifi",
             "folded": "ap wifi"
+          },
+          {
+            "raw": "bộ chuyển đổi tín hiệu",
+            "dia": true,
+            "key": "bộ chuyển đổi tín hiệu",
+            "folded": "bo chuyen doi tin hieu"
+          },
+          {
+            "raw": "thiết bị chuyển mạch poe",
+            "dia": true,
+            "key": "thiết bị chuyển mạch poe",
+            "folded": "thiet bi chuyen mach poe"
+          },
+          {
+            "raw": "bộ chia usb đa cổng",
+            "dia": true,
+            "key": "bộ chia usb đa cổng",
+            "folded": "bo chia usb da cong"
+          },
+          {
+            "raw": "bộ chia tín hiệu video",
+            "dia": true,
+            "key": "bộ chia tín hiệu video",
+            "folded": "bo chia tin hieu video"
           }
         ],
         "antenna": [
@@ -311,96 +334,6 @@
             "dia": true,
             "key": "điện thoại bàn",
             "folded": "dien thoai ban"
-          },
-          {
-            "raw": "Bộ chuyển đổi tín hiệu",
-            "dia": true,
-            "key": "bộ chuyển đổi tín hiệu",
-            "folded": "bo chuyen doi tin hieu"
-          },
-          {
-            "raw": "Thiết bị chuyển mạch POE",
-            "dia": true,
-            "key": "thiết bị chuyển mạch poe",
-            "folded": "thiet bi chuyen mach poe"
-          },
-          {
-            "raw": "Modul mở rộng điều khiển PLC",
-            "dia": true,
-            "key": "modul mở rộng điều khiển plc",
-            "folded": "modul mo rong dieu khien plc"
-          },
-          {
-            "raw": "Bộ chia USB đa cổng",
-            "dia": true,
-            "key": "bộ chia usb đa cổng",
-            "folded": "bo chia usb da cong"
-          },
-          {
-            "raw": "Bộ chia tín hiệu Video",
-            "dia": true,
-            "key": "bộ chia tín hiệu video",
-            "folded": "bo chia tin hieu video"
-          },
-          {
-            "raw": "Module kết nối internet",
-            "dia": true,
-            "key": "module kết nối internet",
-            "folded": "module ket noi internet"
-          },
-          {
-            "raw": "Bộ gộp HDMI 4 vào 1 ra",
-            "dia": true,
-            "key": "bộ gộp hdmi 4 vào 1 ra",
-            "folded": "bo gop hdmi 4 vao 1 ra"
-          },
-          {
-            "raw": "Tấm phản quang",
-            "dia": true,
-            "key": "tấm phản quang",
-            "folded": "tam phan quang"
-          },
-          {
-            "raw": "Thiết bị nhận bluetooth",
-            "dia": true,
-            "key": "thiết bị nhận bluetooth",
-            "folded": "thiet bi nhan bluetooth"
-          },
-          {
-            "raw": "Bộ chia USB 7in1",
-            "dia": true,
-            "key": "bộ chia usb 7in1",
-            "folded": "bo chia usb 7in1"
-          },
-          {
-            "raw": "Module đầu ra",
-            "dia": true,
-            "key": "module đầu ra",
-            "folded": "module dau ra"
-          },
-          {
-            "raw": "Module truyền thông",
-            "dia": true,
-            "key": "module truyền thông",
-            "folded": "module truyen thong"
-          },
-          {
-            "raw": "Cổng PCI mở rộng",
-            "dia": true,
-            "key": "cổng pci mở rộng",
-            "folded": "cong pci mo rong"
-          },
-          {
-            "raw": "Dây cáp nguồn volume",
-            "dia": true,
-            "key": "dây cáp nguồn volume",
-            "folded": "day cap nguon volume"
-          },
-          {
-            "raw": "Cụm sạc",
-            "dia": true,
-            "key": "cụm sạc",
-            "folded": "cum sac"
           }
         ],
         "other_telecom_device": [
@@ -588,7 +521,64 @@
             "folded": "may bao"
           }
         ],
-        "other_telecom_device": []
+        "other_telecom_device": [
+          {
+            "raw": "thiết bị viễn thông",
+            "dia": true,
+            "key": "thiết bị viễn thông",
+            "folded": "thiet bi vien thong"
+          },
+          {
+            "raw": "viễn thông",
+            "dia": true,
+            "key": "viễn thông",
+            "folded": "vien thong"
+          },
+          {
+            "raw": "telecom device",
+            "dia": false,
+            "key": "telecom device",
+            "folded": "telecom device"
+          },
+          {
+            "raw": "bộ chuyển đổi tín hiệu",
+            "dia": true,
+            "key": "bộ chuyển đổi tín hiệu",
+            "folded": "bo chuyen doi tin hieu"
+          },
+          {
+            "raw": "bộ chia tín hiệu",
+            "dia": true,
+            "key": "bộ chia tín hiệu",
+            "folded": "bo chia tin hieu"
+          },
+          {
+            "raw": "thiết bị chuyển mạch",
+            "dia": true,
+            "key": "thiết bị chuyển mạch",
+            "folded": "thiet bi chuyen mach"
+          }
+        ],
+        "other_telecom_transmitter": [
+          {
+            "raw": "bộ phát sóng",
+            "dia": true,
+            "key": "bộ phát sóng",
+            "folded": "bo phat song"
+          },
+          {
+            "raw": "bộ truyền dẫn",
+            "dia": true,
+            "key": "bộ truyền dẫn",
+            "folded": "bo truyen dan"
+          },
+          {
+            "raw": "thiết bị phát",
+            "dia": true,
+            "key": "thiết bị phát",
+            "folded": "thiet bi phat"
+          }
+        ]
       }
     },
     {

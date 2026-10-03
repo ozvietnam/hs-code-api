@@ -118,6 +118,12 @@
             "dia": false,
             "key": "pin diode",
             "folded": "pin diode"
+          },
+          {
+            "raw": "diode quang",
+            "dia": false,
+            "key": "diode quang",
+            "folded": "diode quang"
           }
         ],
         "transistor": [
@@ -156,6 +162,30 @@
             "dia": false,
             "key": "bipolar",
             "folded": "bipolar"
+          },
+          {
+            "raw": "bong ban dan tu truong",
+            "dia": false,
+            "key": "bong ban dan tu truong",
+            "folded": "bong ban dan tu truong"
+          },
+          {
+            "raw": "bong ban dan tu",
+            "dia": false,
+            "key": "bong ban dan tu",
+            "folded": "bong ban dan tu"
+          },
+          {
+            "raw": "bong ban",
+            "dia": false,
+            "key": "bong ban",
+            "folded": "bong ban"
+          },
+          {
+            "raw": "bong ban dan",
+            "dia": false,
+            "key": "bong ban dan",
+            "folded": "bong ban dan"
           }
         ],
         "thyristor": [
@@ -232,6 +262,60 @@
             "dia": false,
             "key": "phototransistor",
             "folded": "phototransistor"
+          },
+          {
+            "raw": "Cảm biến quang điện",
+            "dia": true,
+            "key": "cảm biến quang điện",
+            "folded": "cam bien quang dien"
+          },
+          {
+            "raw": "Điốt chỉnh lưu",
+            "dia": true,
+            "key": "điốt chỉnh lưu",
+            "folded": "diot chinh luu"
+          },
+          {
+            "raw": "Tấm pin mặt trời",
+            "dia": true,
+            "key": "tấm pin mặt trời",
+            "folded": "tam pin mat troi"
+          },
+          {
+            "raw": "Thiết bị bán dẫn",
+            "dia": true,
+            "key": "thiết bị bán dẫn",
+            "folded": "thiet bi ban dan"
+          },
+          {
+            "raw": "Tranzito lưỡng cực",
+            "dia": true,
+            "key": "tranzito lưỡng cực",
+            "folded": "tranzito luong cuc"
+          },
+          {
+            "raw": "Bóng bán dẫn SMD",
+            "dia": true,
+            "key": "bóng bán dẫn smd",
+            "folded": "bong ban dan smd"
+          },
+          {
+            "raw": "Bộ ghép quang",
+            "dia": true,
+            "key": "bộ ghép quang",
+            "folded": "bo ghep quang"
+          },
+          {
+            "raw": "cam bien quang dien",
+            "dia": false,
+            "key": "cam bien quang dien",
+            "folded": "cam bien quang dien"
+          },
+          {
+            "raw": "cam bien quang",
+            "dia": false,
+            "key": "cam bien quang",
+            "folded": "cam bien quang"
           }
         ],
         "piezoCrystal": [
@@ -302,7 +386,78 @@
       "labelVi": "Công suất tiêu tán transistor (W)",
       "questionVi": "Tỷ lệ tiêu tán năng lượng của transistor bao nhiêu W? (ngưỡng 1 W: dưới 1 W → 8541.21, từ 1 W trở lên → 8541.29)",
       "domain": null,
-      "_detect": {},
+      "_detect": {
+        "lt_1W": [
+          {
+            "raw": "bong ban dan tu truong",
+            "dia": false,
+            "key": "bong ban dan tu truong",
+            "folded": "bong ban dan tu truong"
+          },
+          {
+            "raw": "bong ban dan tu truong tranzito",
+            "dia": false,
+            "key": "bong ban dan tu truong tranzito",
+            "folded": "bong ban dan tu truong tranzito"
+          },
+          {
+            "raw": "transistor từ trường",
+            "dia": true,
+            "key": "transistor từ trường",
+            "folded": "transistor tu truong"
+          },
+          {
+            "raw": "transistor low power",
+            "dia": false,
+            "key": "transistor low power",
+            "folded": "transistor low power"
+          },
+          {
+            "raw": "transistor <1W",
+            "dia": false,
+            "key": "transistor 1w",
+            "folded": "transistor 1w"
+          },
+          {
+            "raw": "transistor nhỏ",
+            "dia": true,
+            "key": "transistor nhỏ",
+            "folded": "transistor nho"
+          }
+        ],
+        "gte_1W": [
+          {
+            "raw": "transistor công suất",
+            "dia": true,
+            "key": "transistor công suất",
+            "folded": "transistor cong suat"
+          },
+          {
+            "raw": "power transistor",
+            "dia": false,
+            "key": "power transistor",
+            "folded": "power transistor"
+          },
+          {
+            "raw": "transistor lớn",
+            "dia": true,
+            "key": "transistor lớn",
+            "folded": "transistor lon"
+          },
+          {
+            "raw": "high power transistor",
+            "dia": false,
+            "key": "high power transistor",
+            "folded": "high power transistor"
+          },
+          {
+            "raw": "transistor >1W",
+            "dia": false,
+            "key": "transistor 1w",
+            "folded": "transistor 1w"
+          }
+        ]
+      },
       "detect": {
         "lt_1W": [
           "bong ban dan tu truong",
@@ -310,7 +465,8 @@
           "transistor từ trường",
           "transistor low power",
           "transistor <1W",
-          "transistor nhỏ"
+          "transistor nhỏ",
+          "Transistor bóng bán dẫn"
         ],
         "gte_1W": [
           "transistor công suất",
@@ -371,7 +527,13 @@
           "phototransistor",
           "optocoupler",
           "photo sensor other",
-          "cảm quang khác"
+          "cảm quang khác",
+          "Điốt chỉnh lưu",
+          "Tấm pin mặt trời",
+          "Thiết bị bán dẫn",
+          "Tranzito lưỡng cực",
+          "Bóng bán dẫn SMD",
+          "Bộ ghép quang"
         ],
         "generalNec": [
           "photosensitive nec",
@@ -506,6 +668,24 @@
             "dia": false,
             "key": "mems sensor chip",
             "folded": "mems sensor chip"
+          },
+          {
+            "raw": "cam bien quang dien",
+            "dia": false,
+            "key": "cam bien quang dien",
+            "folded": "cam bien quang dien"
+          },
+          {
+            "raw": "cảm biến quang điện",
+            "dia": true,
+            "key": "cảm biến quang điện",
+            "folded": "cam bien quang dien"
+          },
+          {
+            "raw": "cam bien quang",
+            "dia": false,
+            "key": "cam bien quang",
+            "folded": "cam bien quang"
           }
         ],
         "otherPhoto": [
