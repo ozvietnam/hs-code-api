@@ -1,0 +1,114 @@
+{
+  "heading": "8424",
+  "titleVi": "Máy móc, thiết bị phun, xịt, rải chất lỏng hoặc bột (84.24)",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "subKind",
+      "type": "enum",
+      "labelVi": "Loại sản phẩm",
+      "questionVi": "Sản phẩm thuộc loại nào: súng phun/xịt, máy phun hoàn chỉnh, máy phun cát/hơi, thiết bị phun nông nghiệp, thiết bị tưới, hay bộ phận?",
+      "domain": [
+        "sprayGun",
+        "completeSprayer",
+        "sandblaster",
+        "agriculturalSpray",
+        "irrigation",
+        "otherSpray",
+        "parts"
+      ],
+      "detect": {
+        "sprayGun": [
+          "súng xịt", "súng phun", "súng bắn", "vòi phun", "béc phun", "đầu phun", "súng xịt hơi", "súng bắn keo"
+        ],
+        "completeSprayer": [
+          "máy phun rửa xe", "máy phun cát", "máy bơm mỡ", "máy hơi nước", "máy phun"
+        ],
+        "sandblaster": [
+          "phun cát", "hơi nước sương", "áp lực cao", "phun hat", "may hat"
+        ],
+        "agriculturalSpray": [
+          "phun thuốc", "phun phân", "nông nghiệp", "thuốc trừ", "phun kẽm"
+        ],
+        "irrigation": [
+          "tưới tiêu", "tưới cây", "làm vườn", "béc tưới", "đầu tưới", "phun nước tưới"
+        ],
+        "otherSpray": [
+          "xịt nước", "phun nước", "bình xịt", "vệ sinh"
+        ],
+        "parts": [
+          "đầu chụp", "đệm", "béc", "con lăn", "thanh ray", "chân", "hộp số", "đầu béc", "giá xoay", "thanh ray", "chân đồng", "hộp số"
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r01",
+      "priority": 90,
+      "when": { "subKind": "sprayGun" },
+      "hs": "84242029",
+      "reasonVi": "Súng xịt/xịt rửa xe — loại khác (không điện) → 84242029",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r02",
+      "priority": 85,
+      "when": { "subKind": "sandblaster" },
+      "hs": "84243000",
+      "reasonVi": "Máy phun cát/hơi nước/sương mù → 84243000",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r03",
+      "priority": 85,
+      "when": { "subKind": "irrigation" },
+      "hs": "84248230",
+      "reasonVi": "Béc phun tưới nông nghiệp — không điện → 84248230",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r04",
+      "priority": 80,
+      "when": { "subKind": "agriculturalSpray" },
+      "hs": "84242019",
+      "reasonVi": "Thiết bị phun nông nghiệp — loại khác, không điện → 84242019",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r05",
+      "priority": 80,
+      "when": { "subKind": "completeSprayer" },
+      "hs": "84248990",
+      "reasonVi": "Máy phun/xịt hoàn chỉnh — loại khác, không điện → 84248990",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r06",
+      "priority": 80,
+      "when": { "subKind": "otherSpray" },
+      "hs": "84248990",
+      "reasonVi": "Bình xịt/xịt nước — loại khác → 84248990",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r07",
+      "priority": 90,
+      "when": { "subKind": "parts" },
+      "hs": "84249029",
+      "reasonVi": "Bộ phận súng phun/xịt — loại khác → 84249029",
+      "source": "Biểu thuế NK VN 2026"
+    }
+  ],
+  "sourceVi": "Biểu thuế NK VN 2026 (31 mã 8 số). Oz-gold 33 entries.",
+  "essenceTestVi": "Súng phun, máy phun cát, béc phun tưới nông nghiệp, bộ phận — phân biệt theo subKind (loại sản phẩm).",
+  "leaves": {},
+  "hitPolicy": "FIRST",
+  "attributes": {
+    "subKind": {
+      "type": "enum",
+      "labelVi": "Loại sản phẩm",
+      "domain": ["sprayGun", "completeSprayer", "sandblaster", "agriculturalSpray", "irrigation", "otherSpray", "parts"]
+    }
+  }
+}
