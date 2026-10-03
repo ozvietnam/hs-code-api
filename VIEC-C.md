@@ -8,3 +8,7 @@
 **Phương án tiếp theo tốt hơn:** (1) 8544 INSUFFICIENT: table needs cableKind detection from "sạc nhanh"/"USB-C"/"lightning" signals → dev HS add cableKind detection; (2) 3926 table MISSING: need to create decision table for 3926 (many plastic goods) → dev HS; (3) oz-to-cases bug: tool calls heading=3926 but table 3926 doesn't exist → oz entries all go NO_TABLE → need to verify table exists before testing.
 
 **Tự làm hay đề xuất:** Đề xuất dev HS — tạo decision table 3926 (phủ nhựa gia dụng/công nghiệp); thêm cableKind detection cho 8544 (USB-C→data, lightning→data, sạc→charging). **Làn C: 65 commits, hybrid 22.1%, PR #97 sẵn. oz-to-cases bugs found (heading mismatch). Còn: 3926 table (dev HS), 8544 cableKind (dev HS), PR merge (dev/CEO).**
+
+---
+
+→ ca 20:35 03/10: **Bench + oz-to-cases + oz-gold analysis (session C)** ✓ · hybrid 95-mẫu: top1=21/95=**22.1%**, top3=28/95=**29.5%** (search-only cand=hybrid) ✓ · Ch85=17 errors (PCB 2 lớp chưa detect được → 85340020 mis→85340010), Ch84=12 (heading-layer wrong), Ch39=7 (table missing) ✓ · oz-to-cases 8534: 9 ADDED (PCB single/double layer patterns) ✓ · oz-to-cases 3926: 0 ADDED/195 WRONG (table missing → dev HS) ✓ · oz-to-cases 8536: 0 ADDED/80 WRONG (table needs voltageClass/appType domain → dev HS) ✓ · PR #97: 68 commits, mergeable=true ✓ · npm test: 2 pre-existing failures (72099090/72163190 steel shape=dev HS) ✓ · check-self-reject: 0 ✓ · 9 test cases 8534 PCB added ✓ · commit c6ed880 push ✓
