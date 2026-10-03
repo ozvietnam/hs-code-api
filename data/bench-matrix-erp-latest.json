@@ -1,0 +1,34 @@
+{
+  "updatedAt": "2026-10-03T09:19:53.523Z",
+  "method": "Gọi handler /api/suggest thật trên data/bench/erp-titles-synth.jsonl (trường titleZh), sinh từ tập giữ riêng oz-gold (HS_EVAL_EXCLUDE_HOLDOUT=1). none = không AI; live = chuỗi provider đang cấu hình.",
+  "limit": 150,
+  "results": [
+    {
+      "mode": "live",
+      "samples": 150,
+      "top1": {
+        "2": 20.7,
+        "4": 10,
+        "6": 2,
+        "8": 0
+      },
+      "top3": {
+        "2": 21.3,
+        "4": 10,
+        "6": 2,
+        "8": 2
+      },
+      "invalidCodeRate": 0,
+      "degradedRate": 70.7,
+      "llmErrorRate": 70.7,
+      "httpErrors": 0,
+      "status": {
+        "NEEDS_EXPERT": 41,
+        "NO_CANDIDATES": 44,
+        "NEED_FACTS": 65
+      },
+      "avgMs": 162,
+      "wallSec": 25
+    }
+  ]
+}
