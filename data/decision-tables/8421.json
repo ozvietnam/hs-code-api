@@ -1,0 +1,238 @@
+{
+  "heading": "8421",
+  "titleVi": "Máy và thiết bị lọc hoặc làm sạch chất lỏng; bộ lọc khí",
+  "verified": false,
+  "sourceVi": "Biểu thuế NK VN 2026 nhóm 84.21",
+  "essenceTestVi": "Phân biệt bộ lọc theo loại (dầu, gió, nước, không khí) và ứng dụng (động cơ đốt trong, công nghiệp, gia dụng).",
+  "inputs": [
+    {
+      "attribute": "filterKind",
+      "type": "enum",
+      "labelVi": "Loại bộ lọc",
+      "questionVi": "Bộ lọc thuộc loại nào: lọc dầu, lọc gió/không khí, lọc nước, hay ly tâm?",
+      "domain": [
+        "oil_filter",
+        "air_filter",
+        "water_filter",
+        "centrifuge",
+        "other"
+      ],
+      "detect": {
+        "oil_filter": [
+          "lọc dầu",
+          "lọc tách dầu",
+          "bộ lọc dầu",
+          "lõi lọc dầu",
+          "lọc dầu thủy lực",
+          "lọc dầu hộp số",
+          "lọc dầu phanh",
+          "lõi lọc dầu"
+        ],
+        "air_filter": [
+          "lọc gió",
+          "bộ lọc khí",
+          "lọc khí nén",
+          "bầu lọc khí than",
+          "bộ lọc khí nén",
+          "lọc gió động cơ",
+          "lọc gió thô",
+          "lọc gió tinh",
+          "lọc gió trong",
+          "lọc gió ngoài",
+          "bộ lọc khí đôi",
+          "máy lọc không khí"
+        ],
+        "water_filter": [
+          "lọc nước",
+          "màng lọc",
+          "lõi lọc nước",
+          "vỏ lọc nước",
+          "bộ bầu lọc nước",
+          "màng RO",
+          "màng lọc UF",
+          "màng siêu lọc",
+          "lõi lọc thay thế"
+        ],
+        "centrifuge": [
+          "ly tâm",
+          "máy quay ly tâm"
+        ],
+        "other": [
+          "lọc",
+          "bộ lọc",
+          "bộ lọc khí đôi kết hợp"
+        ]
+      }
+    },
+    {
+      "attribute": "application",
+      "type": "enum",
+      "labelVi": "Ứng dụng",
+      "questionVi": "Bộ lọc dùng cho loại máy nào: động cơ đốt trong (ô tô, xe máy), công nghiệp, hay gia dụng?",
+      "domain": [
+        "engine",
+        "industrial",
+        "household"
+      ],
+      "detect": {
+        "engine": [
+          "động cơ",
+          "ô tô",
+          "xe máy",
+          "xe đạp điện",
+          "hộp số",
+          "phanh",
+          "thủy lực"
+        ],
+        "industrial": [
+          "công nghiệp",
+          "giếng khoan",
+          "lò nung",
+          "máy móc",
+          "dây chuyền"
+        ],
+        "household": [
+          "gia dụng",
+          "sinh hoạt",
+          "RO",
+          "lọc nước gia đình"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "FIRST",
+  "attributes": {
+    "filterKind": "Loại bộ lọc",
+    "application": "Ứng dụng"
+  },
+  "rules": [
+    {
+      "id": "r01",
+      "priority": 10,
+      "when": {
+        "filterKind": "centrifuge"
+      },
+      "hs": "84211990",
+      "reasonVi": "Máy ly tâm → 84211990",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r02",
+      "priority": 9,
+      "when": {
+        "filterKind": "oil_filter",
+        "application": "engine"
+      },
+      "hs": "84212300",
+      "reasonVi": "Lọc dầu cho động cơ → 84212300",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r03",
+      "priority": 8,
+      "when": {
+        "filterKind": "oil_filter",
+        "application": "industrial"
+      },
+      "hs": "84212950",
+      "reasonVi": "Lọc dầu công nghiệp → 84212950",
+      "source": "Biểu thuế NK 2026"
+    },
+    {
+      "id": "r04",
+      "priority": 9,
+      "when": {
+        "filterKind": "air_filter",
+        "application": "engine"
+      },
+      "hs": "84213100",
+      "reasonVi": "Lọc gió động cơ đốt trong → 84213100",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r05",
+      "priority": 8,
+      "when": {
+        "filterKind": "air_filter",
+        "application": "industrial"
+      },
+      "hs": "84213920",
+      "reasonVi": "Máy lọc không khí công nghiệp → 84213920",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r06",
+      "priority": 8,
+      "when": {
+        "filterKind": "air_filter",
+        "application": "household"
+      },
+      "hs": "84213990",
+      "reasonVi": "Bộ lọc khí gia dụng → 84213990",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r07",
+      "priority": 8,
+      "when": {
+        "filterKind": "water_filter",
+        "application": "household"
+      },
+      "hs": "84212111",
+      "reasonVi": "Máy lọc nước gia dụng (RO/UF) → 84212111",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r08",
+      "priority": 8,
+      "when": {
+        "filterKind": "water_filter",
+        "application": "industrial"
+      },
+      "hs": "84212190",
+      "reasonVi": "Máy lọc nước công nghiệp → 84212190",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r09",
+      "priority": 10,
+      "when": {
+        "filterKind": "oil_filter"
+      },
+      "hs": "84212300",
+      "reasonVi": "Lọc dầu → 84212300",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r10",
+      "priority": 10,
+      "when": {
+        "filterKind": "air_filter"
+      },
+      "hs": "84213100",
+      "reasonVi": "Lọc gió → 84213100",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r11",
+      "priority": 10,
+      "when": {
+        "filterKind": "water_filter"
+      },
+      "hs": "84212111",
+      "reasonVi": "Lọc nước → 84212111",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r12",
+      "priority": 10,
+      "when": {
+        "filterKind": "other"
+      },
+      "hs": "84219999",
+      "reasonVi": "Bộ lọc khác → 84219999",
+      "source": "Biểu thuế NK VN 2026"
+    }
+  ],
+  "leaves": {}
+}
