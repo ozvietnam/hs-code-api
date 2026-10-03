@@ -1,0 +1,142 @@
+{
+  "heading": "9026",
+  "titleVi": "Dụng cụ đo hoặc kiểm tra lưu lượng, mức, áp suất chất lỏng và chất khí",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "CÂU HỎI BẢN CHẤT: thiết bị đo loại gì: áp suất (pressure), lưu lượng (flow), nồng độ khí (gas concentration)? Có điện không? Dùng cho ô tô không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 90.26. Căn cứ GIR 1, 3, 4, 6.",
+  "inputs": [
+    {
+      "attribute": "measKind",
+      "type": "enum",
+      "labelVi": "Loại đo",
+      "questionVi": "Thiết bị đo gì: áp suất (pressure), lưu lượng (flow), hay nồng độ khí (gas concentration)?",
+      "domain": [
+        "pressure",
+        "flow",
+        "gas_concentration"
+      ],
+      "detect": {
+        "pressure": [
+          "áp suất",
+          "áp lực",
+          "chênh áp",
+          "cảm biến áp suất",
+          "đồng hồ áp suất",
+          "bộ điều áp",
+          "bộ chuyển đổi áp suất",
+          "bộ đo chênh lệch áp",
+          "áp kế",
+          "pressure",
+          "MPa",
+          "kPa",
+          "PSI",
+          "bar"
+        ],
+        "flow": [
+          "lưu lượng",
+          "đo lưu lượng",
+          "cảm biến lưu lượng",
+          "flow"
+        ],
+        "gas_concentration": [
+          "nồng độ oxy",
+          "nồng độ CO2",
+          "đồng hồ đo nồng độ",
+          "khí thải",
+          "gas concentration",
+          "PPM"
+        ]
+      }
+    },
+    {
+      "attribute": "hasElectric",
+      "type": "boolean",
+      "labelVi": "Có điện",
+      "questionVi": "Thiết bị có hoạt động bằng điện không?",
+      "domain": [
+        "true",
+        "false"
+      ],
+      "detect": {
+        "true": [
+          "VDC",
+          "VAC",
+          "24V",
+          "12V",
+          "220V",
+          "4-20mA",
+          "điện",
+          "điện áp",
+          "electric",
+          "mA"
+        ],
+        "false": [
+          "không dùng điện",
+          "không hoạt động bằng điện",
+          "cơ",
+          "không điện"
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "9026-r01",
+      "priority": 1,
+      "hs": "90262050",
+      "reasonVi": "Phân loại 90262050 theo GIR 6: measKind=pressure, hasElectric=true — cảm biến áp suất dùng cho xe có động cơ (ô tô/máy xúc)",
+      "source": "hermes-211-9026",
+      "gir": "GIR 6",
+      "when": {
+        "measKind": "pressure",
+        "hasElectric": "true"
+      }
+    },
+    {
+      "id": "9026-r02",
+      "priority": 2,
+      "hs": "90262090",
+      "reasonVi": "Phân loại 90262090 theo GIR 6: measKind=pressure — đồng hồ/cảm biến áp suất, loại khác",
+      "source": "hermes-211-9026",
+      "gir": "GIR 6",
+      "when": {
+        "measKind": "pressure"
+      }
+    },
+    {
+      "id": "9026-r03",
+      "priority": 3,
+      "hs": "90261090",
+      "reasonVi": "Phân loại 90261090 theo GIR 6: measKind=flow — cảm biến lưu lượng, loại khác",
+      "source": "hermes-211-9026",
+      "gir": "GIR 6",
+      "when": {
+        "measKind": "flow"
+      }
+    },
+    {
+      "id": "9026-r04",
+      "priority": 4,
+      "hs": "90268000",
+      "reasonVi": "Phân loại 90268000 theo GIR 6: measKind=gas_concentration — cảm biến đo nồng độ khí (oxy, CO2...)",
+      "source": "hermes-211-9026",
+      "gir": "GIR 6",
+      "when": {
+        "measKind": "gas_concentration"
+      }
+    },
+    {
+      "id": "9026-r05",
+      "priority": 5,
+      "hs": "90269000",
+      "reasonVi": "Phân loại 90269000 theo GIR 6: bộ phận của thiết bị đo 9026",
+      "source": "hermes-211-9026",
+      "gir": "GIR 6",
+      "when": {
+        "measKind": "pressure"
+      }
+    }
+  ]
+}
