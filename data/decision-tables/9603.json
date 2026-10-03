@@ -1,0 +1,261 @@
+{
+  "heading": "9603",
+  "inputs": [
+    {
+      "attribute": "brushKind",
+      "type": "enum",
+      "domain": [
+        "toothbrush",
+        "toothbrush_other",
+        "shaving_brush",
+        "hair_brush",
+        "cosmetic_brush",
+        "paint_brush",
+        "broom_sweep",
+        "brush_parts",
+        "industrial_brush",
+        "other_brush"
+      ],
+      "labelVi": "Loại chổi/bàn chải",
+      "questionVi": "Hàng là loại chổi/bàn chải nào?",
+      "detect": {
+        "toothbrush": [
+          "bàn chải đánh răng",
+          "bàn chải răng",
+          "đánh răng"
+        ],
+        "toothbrush_other": [
+          "bàn chải",
+          "chải răng",
+          "hàm răng",
+          "răng giả"
+        ],
+        "shaving_brush": [
+          "bàn chải xoa xà phòng",
+          "cạo râu",
+          "xà phòng cạo"
+        ],
+        "hair_brush": [
+          "bàn chải tóc",
+          "chải tóc",
+          "lược",
+          "bàn chải lông"
+        ],
+        "cosmetic_brush": [
+          "cọ trang điểm",
+          "cọ vẽ",
+          "mỹ phẩm",
+          "trang điểm",
+          "son môi",
+          "phấn"
+        ],
+        "paint_brush": [
+          "cọ lăn sơn",
+          "lăn sơn",
+          "cọ sơn",
+          "lăn sơn mini"
+        ],
+        "broom_sweep": [
+          "chổi quét",
+          "bàn chải quét sàn",
+          "bàn chải cọ sàn",
+          "thanh gạt nước",
+          "cây lăn bụi",
+          "chổi cọ",
+          "cọ cầm tay",
+          "cọ lông"
+        ],
+        "brush_parts": [
+          "đầu mút",
+          "cán chổi",
+          "cán bàn chải",
+          "bộ phận chổi",
+          "đầu chải"
+        ],
+        "industrial_brush": [
+          "bàn chải cọ lốp",
+          "bàn chải lông máy",
+          "bánh chải cước",
+          "bàn chải công nghiệp",
+          "bàn chải máy",
+          "cọ lốp"
+        ],
+        "other_brush": [
+          "chổi",
+          "bàn chải",
+          "cọ",
+          "lăn",
+          "gạt"
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r1",
+      "hs": "96031010",
+      "attrs": {
+        "brushKind": "broom_sweep"
+      },
+      "reasonVi": "Cành nhỏ buộc lại, chổi quét",
+      "priority": 80
+    },
+    {
+      "id": "r2",
+      "hs": "96032100",
+      "attrs": {
+        "brushKind": "toothbrush"
+      },
+      "reasonVi": "Bàn chải đánh răng",
+      "priority": 90
+    },
+    {
+      "id": "r3",
+      "hs": "96032100",
+      "attrs": {
+        "brushKind": "toothbrush_other"
+      },
+      "reasonVi": "Bàn chải đánh răng khác",
+      "priority": 90
+    },
+    {
+      "id": "r4",
+      "hs": "96032900",
+      "attrs": {
+        "brushKind": "shaving_brush"
+      },
+      "reasonVi": "Bàn chải cạo râu",
+      "priority": 90
+    },
+    {
+      "id": "r5",
+      "hs": "96032900",
+      "attrs": {
+        "brushKind": "hair_brush"
+      },
+      "reasonVi": "Bàn chải tóc, lược",
+      "priority": 90
+    },
+    {
+      "id": "r6",
+      "hs": "96033000",
+      "attrs": {
+        "brushKind": "cosmetic_brush"
+      },
+      "reasonVi": "Cọ trang điểm, cọ vẽ",
+      "priority": 90
+    },
+    {
+      "id": "r7",
+      "hs": "96034000",
+      "attrs": {
+        "brushKind": "paint_brush"
+      },
+      "reasonVi": "Cọ lăn sơn, lăn sơn mini",
+      "priority": 90
+    },
+    {
+      "id": "r8",
+      "hs": "96035000",
+      "attrs": {
+        "brushKind": "industrial_brush"
+      },
+      "reasonVi": "Bàn chải máy công nghiệp, bánh chải cước",
+      "priority": 90
+    },
+    {
+      "id": "r9",
+      "hs": "96035000",
+      "attrs": {
+        "brushKind": "broom_sweep"
+      },
+      "reasonVi": "Bàn chải công nghiệp dạng chổi quét",
+      "priority": 70
+    },
+    {
+      "id": "r10",
+      "hs": "96039040",
+      "attrs": {
+        "brushKind": "industrial_brush"
+      },
+      "reasonVi": "Bàn chải cọ lốp xe",
+      "priority": 80
+    },
+    {
+      "id": "r11",
+      "hs": "96039090",
+      "attrs": {
+        "brushKind": "other_brush"
+      },
+      "reasonVi": "Chổi, bàn chải, cọ các loại khác",
+      "priority": 90
+    },
+    {
+      "id": "r12",
+      "hs": "96039090",
+      "attrs": {
+        "brushKind": "brush_parts"
+      },
+      "reasonVi": "Đầu mút, cán chổi, bộ phận chổi",
+      "priority": 90
+    },
+    {
+      "id": "r13",
+      "hs": "96039090",
+      "attrs": {
+        "brushKind": "broom_sweep"
+      },
+      "reasonVi": "Chổi quét, thanh gạt nước, cây lăn bụi",
+      "priority": 60
+    },
+    {
+      "id": "r14",
+      "hs": "96039090",
+      "attrs": {
+        "brushKind": "cosmetic_brush"
+      },
+      "reasonVi": "Cọ trang điểm, cọ vẽ",
+      "priority": 70
+    },
+    {
+      "id": "r15",
+      "hs": "96039090",
+      "attrs": {
+        "brushKind": "paint_brush"
+      },
+      "reasonVi": "Cọ lăn sơn",
+      "priority": 70
+    },
+    {
+      "id": "r16",
+      "hs": "96031020",
+      "attrs": {
+        "brushKind": "toothbrush_other"
+      },
+      "reasonVi": "Bàn chải đánh răng khác (không điện)",
+      "priority": 85
+    },
+    {
+      "id": "r17",
+      "hs": "96039010",
+      "attrs": {
+        "brushKind": "industrial_brush"
+      },
+      "reasonVi": "Bộ phận bàn chải dùng cho phương tiện",
+      "priority": 90
+    },
+    {
+      "id": "r18",
+      "hs": "96039020",
+      "attrs": {
+        "brushKind": "industrial_brush"
+      },
+      "reasonVi": "Bộ phận bàn chải công nghiệp khác",
+      "priority": 90
+    }
+  ],
+  "verified": false,
+  "contributor": "hermes-211",
+  "sourceVi": "Biểu thuế VN + oz-gold 32 entries",
+  "essenceTestVi": "Hàng là bàn chải đánh răng, bàn chải tóc, cọ trang điểm, cọ lăn sơn, chổi quét, bàn chải công nghiệp hay đồ khác trong nhóm 9603?"
+}
