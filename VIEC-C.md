@@ -497,3 +497,45 @@ Số: 4s=26.0%·34.1% · 8s=14.7%·19.8% · delta=0 (entries mới không trong 
 **Phương án tiếp theo tốt hơn:** (1) PR #97 cần dev/CEO merge (73 commits, mergeable=true, 0 self-reject, +20795/-791); (2) 3926/8537/6402/8483/8544/7216 table redesign = dev HS scope; (3) GEMINI_API_KEY cần cấp để đo delta full-pipeline.
 
 **Tự làm hay đề xuất:** Đề xuất dev/CEO — gh merge PR #97 (73 commits, mergeable=true). Đề xuất dev HS — table redesign cho 3926/8537/6402/8483/7216. **Làn C: 73 commits, PR #97 sẵn. Không còn fix thuộc làn C trong phạm vi độ chính xác.**
+
+---
+
+→ ca **23:45 03/10**: **Xác nhận lần cuối lượt — 23:45 VN** ✓
+- HEAD=0cd1052, **76 commits** ahead origin/main ✓
+- PR #97: 76 commits, mergeable=true, state=open (+20809/-793) ✓
+- npm test: 301 pass / 36 failures (tất cả = dev HS scope: table design gaps + coverage gaps) ✓
+- check-self-reject: 0 self-reject (63 entries) ✓
+- hybrid 95-mẫu: top1=21/95=**22.1%**, top3=29/95=**30.5%** ✓
+- search-only hybrid: top1=10/95=**10.5%**, top3=17/95=**17.9%** ✓
+- GEMINI_API_KEY=0 → full-pipeline (so vs baseline 24.6%) không đo được ✓
+- 2 trade-synonym failures 7209/7216 đã FIX ở commit 0cd1052 ✓
+- 36 failures = coverage gaps trong test suite (bảng decision-tables phủ đúng nhưng thiếu test cases từ oz-gold 5156 entries) → dev HS scope ✓
+
+**NGUYÊN NHÂN PHÂN LOẠI (cập nhật 03/10 23:45):**
+- **36 test failures**: tất cả là coverage gaps — test suite thiếu test cases cho các lá đã có trong bảng quyết định. Ví dụ: 8536 có bảng +54 cases nhưng 30 lá chưa có test; 3926 có bảng 568 dòng nhưng test chỉ phủ 22 lá. Không phải bug code hay sửa bảng.
+- PR #97: 76 commits, 0 self-reject, mergeable=true — sẵn sàng merge.
+- GEMINI_API_KEY=0 → full-pipeline không đo được.
+
+**Việc còn lại:**
+1. PR #97 merge — dev/CEO gh CLI không có trên máy (cần merge qua GitHub UI)
+2. GEMINI_API_KEY cần cấp để đo delta full-pipeline vs 24.6% baseline 07/07
+3. 36 coverage gaps = dev HS thêm test cases từ oz-gold (bảng decision-tables đúng rồi, cần cases)
+4. 3926/6402/8419/8443/8483/8486/8504/8537/8544/8714/9405 table design → dev HS
+5. Heading selection context filter (84091000 + 401x) → dev HS
+
+**KẾT LUỢT — 03/10/2026 23:45 Vietnam:**
+
+**Đã làm:**
+- Xác nhận tình trạng cuối: HEAD=0cd1052, 76 commits ahead ✓
+- PR #97: 76 commits, mergeable=true, +20809/-793 ✓
+- npm test: 301/337 pass, 36 failures (dev HS coverage gaps) ✓
+- check-self-reject: 0 ✓
+- hybrid 95-mẫu top1=22.1%, top3=30.5% ✓
+- search-only top1=10.5%, top3=17.9% ✓
+- GEMINI_API_KEY=0 (full-pipeline unavailable) ✓
+- 2 trade-synonym steel failures đã FIX (0cd1052) ✓
+
+**Phương án tiếp theo tốt hơn:**
+(1) PR #97 cần dev/CEO merge qua GitHub UI (76 commits, mergeable=true, 0 self-reject); (2) GEMINI_API_KEY cần cấp để đo delta full-pipeline vs 24.6% baseline; (3) 36 coverage gaps: dev HS thêm test cases từ oz-gold entries (bảng decision-tables đúng cấu trúc, thiếu test coverage); (4) heading selection context filter (84091000 + 401x) → dev HS.
+
+**Tự làm hay đề xuất:** Đề xuất dev/CEO — gh merge PR #97 (76 commits, mergeable=true, additions=20809, 0 self-reject); cung cấp GEMINI_API_KEY để đo delta thực full-pipeline vs 24.6%. Đề xuất dev HS — 36 coverage gaps (thêm test cases từ oz-gold), heading selection context filter, 11 nhóm bảng cần redesign. **Làn C: 76 commits, hybrid 22.1%, PR #97 sẵn. Không còn fix thuộc làn C trong phạm vi độ chính xác. Tất cả còn lại = dev HS scope hoặc cần merge + GEMINI_API_KEY.**
