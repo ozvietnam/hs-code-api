@@ -1,0 +1,239 @@
+{
+  "heading": "6402",
+  "titleVi": "Giày, dép bằng nhựa; ủng; sandal bằng plastic",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "6402 = giày/dép bằng nhựa (PVC) hoàn toàn hoặc upper bằng nhựa. Phân biệt: (1) ủng (6402.12); (2) giày/dép nhựa có đinh/miếng đế (6402.19); (3) dép xỏ ngón nhựa (6402.20); (4) bảo hộ nhựa (6402.91); (5) loại khác nhựa (6402.99). Upper vải/canvas + đế nhựa → nhóm 6405 (không phải 6402).",
+  "sourceVi": "Biểu thuế 2026 nhóm 6402: 6402.12 ủng; 6402.19 giày/dép nhựa có đinh; 6402.20 dép xỏ ngón; 6402.91 giày bảo hộ nhựa; 6402.99 loại khác. Chú giải nhóm 6402 vs 6403/6404/6405: 6402 = upper bằng nhựa; 6403 = upper da; 6404 = upper vải + đế cao su; 6405 = upper vải + đế khác.",
+  "inputs": [
+    {
+      "attribute": "footwearKind",
+      "type": "enum",
+      "domain": [
+        "boot",
+        "withCleat",
+        "sandal",
+        "safety",
+        "other"
+      ],
+      "labelVi": "Loại giày/dép nhựa",
+      "questionVi": "Giày/dép nhựa loại gì: ủng, có đinh/miếng đế, dép xỏ ngón (sandal), giày bảo hộ, hay loại khác?",
+      "detect": {
+        "boot": [
+          "ủng",
+          "boot",
+          "dép ống",
+          "galosh",
+          "rain boot",
+          "bốt",
+          "dép ủng"
+        ],
+        "withCleat": [
+          "có đinh",
+          "gắn đinh",
+          "có miếng đế",
+          "cleated",
+          "đinh",
+          "miếng đế"
+        ],
+        "sandal": [
+          "dép xỏ ngón",
+          "sandal",
+          "dép lào",
+          "dép hoa",
+          "dép flip-flop",
+          "dép tổ ong",
+          "dép nhựa xỏ ngón"
+        ],
+        "safety": [
+          "giày bảo hộ nhựa",
+          "safety boot plastic",
+          "ủng bảo hộ nhựa",
+          "giày lội nước nhựa"
+        ],
+        "other": [
+          "loại khác",
+          "dép nhựa",
+          "giày nhựa",
+          "PVC",
+          "nhựa PVC"
+        ]
+      }
+    },
+    {
+      "attribute": "upperMaterial",
+      "type": "enum",
+      "domain": [
+        "plastic",
+        "rubber"
+      ],
+      "labelVi": "Vật liệu upper",
+      "questionVi": "Phần upper bằng nhựa hoàn toàn hay có vật liệu khác?",
+      "detect": {
+        "plastic": [
+          "nhựa",
+          "PVC",
+          "plastic",
+          "TPU",
+          "EVA foam"
+        ],
+        "rubber": [
+          "cao su",
+          "rubber"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-boot",
+      "priority": 90,
+      "when": {
+        "footwearKind": "boot",
+        "upperMaterial": "plastic"
+      },
+      "hs": "64021200",
+      "gir": "GIR 1",
+      "reasonVi": "Ủng bằng nhựa → 6402.12.00.",
+      "source": "Biểu thuế 2026 dòng 6402.12.00"
+    },
+    {
+      "id": "r-with-cleat",
+      "priority": 85,
+      "when": {
+        "footwearKind": "withCleat",
+        "upperMaterial": "plastic"
+      },
+      "hs": "64021910",
+      "gir": "GIR 1",
+      "reasonVi": "Giày/dép nhựa có đinh hoặc gắn miếng đế → 6402.19.10.",
+      "source": "Biểu thuế 2026 dòng 6402.19.10"
+    },
+    {
+      "id": "r-sandal",
+      "priority": 80,
+      "when": {
+        "footwearKind": "sandal",
+        "upperMaterial": "plastic"
+      },
+      "hs": "64022000",
+      "gir": "GIR 1",
+      "reasonVi": "Dép xỏ ngón bằng nhựa (sandal flip-flop) → 6402.20.00.",
+      "source": "Biểu thuế 2026 dòng 6402.20.00"
+    },
+    {
+      "id": "r-safety",
+      "priority": 80,
+      "when": {
+        "footwearKind": "safety",
+        "upperMaterial": "plastic"
+      },
+      "hs": "64029110",
+      "gir": "GIR 1",
+      "reasonVi": "Giày bảo hộ bằng nhựa (có mũi gắn kim loại bảo vệ) → 6402.91.10.",
+      "source": "Biểu thuế 2026 dòng 6402.91.10"
+    },
+    {
+      "id": "r-safety-other",
+      "priority": 75,
+      "when": {
+        "footwearKind": "safety",
+        "upperMaterial": "plastic"
+      },
+      "hs": "64029191",
+      "gir": "GIR 1",
+      "reasonVi": "Giày bảo hộ bằng nhựa (loại khác) → 6402.91.91.",
+      "source": "Biểu thuế 2026 dòng 6402.91.91"
+    },
+    {
+      "id": "r-pvc-sandal-slipper",
+      "priority": 90,
+      "when": {
+        "upperMaterial": "plastic",
+        "footwearKind": "other"
+      },
+      "hs": "64029990",
+      "gir": "GIR 1",
+      "reasonVi": "Dép nhựa PVC đi trong/ngoài nhà → 6402.99.90 (loại khác). Đây là tấm/piece plastic PVC, không phải giày vải.",
+      "source": "Biểu thuế 2026 dòng 6402.99.90; entry dep-nhua-PVC→64029990"
+    },
+    {
+      "id": "r-default-6402",
+      "priority": 50,
+      "when": {
+        "upperMaterial": "plastic"
+      },
+      "hs": "64029990",
+      "gir": "GIR 1",
+      "reasonVi": "Giày/dép bằng nhựa, loại khác → 6402.99.90.",
+      "source": "Biểu thuế 2026 dòng 6402.99.90"
+    },
+    {
+      "id": "6402-rubber-boot",
+      "when": {
+        "footwearKind": "boot",
+        "upperMaterial": "rubber"
+      },
+      "hs": "64029990",
+      "priority": 10,
+      "gir": "GIR 6",
+      "reasonVi": "Giày ủng cao su → 6402.99.090 (loại khác, upper cao su)."
+    },
+    {
+      "id": "6402-rubber-cleated",
+      "when": {
+        "footwearKind": "withCleat",
+        "upperMaterial": "rubber"
+      },
+      "hs": "64029990",
+      "priority": 10,
+      "gir": "GIR 6",
+      "reasonVi": "Giày/dép có đinh gắn đế bằng cao su → 6402.99.090."
+    },
+    {
+      "id": "6402-rubber-sandal",
+      "when": {
+        "footwearKind": "sandal",
+        "upperMaterial": "rubber"
+      },
+      "hs": "64029990",
+      "priority": 10,
+      "gir": "GIR 6",
+      "reasonVi": "Dép xỏ ngón/sandal cao su → 6402.99.090."
+    },
+    {
+      "id": "6402-rubber-safety",
+      "when": {
+        "footwearKind": "safety",
+        "upperMaterial": "rubber"
+      },
+      "hs": "64029990",
+      "priority": 10,
+      "gir": "GIR 6",
+      "reasonVi": "Giày bảo hộ nhựa rubber upper → 6402.99.090 (loại khác)."
+    },
+    {
+      "id": "6402-rubber-other",
+      "when": {
+        "footwearKind": "other",
+        "upperMaterial": "rubber"
+      },
+      "hs": "64029990",
+      "priority": 10,
+      "gir": "GIR 6",
+      "reasonVi": "Giày/dép cao su loại khác → 6402.99.090."
+    },
+    {
+      "id": "6402-rubber-default",
+      "when": {
+        "upperMaterial": "rubber"
+      },
+      "hs": "64029990",
+      "priority": 5,
+      "gir": "GIR 6",
+      "reasonVi": "Upper cao su → 6402.99.090 (default cao su)."
+    }
+  ]
+}

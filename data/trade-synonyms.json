@@ -2295,7 +2295,1125 @@
       "gir": "1",
       "basis": "RULE_TABLE",
       "sourceVi": "Biểu thuế VN 8428.60, 8428.90.20, 8428.90.30."
+    },
+    {
+      "id": "kinh-cuong-luc-man-hinh-dien-thoai",
+      "titleVi": "Kính cường lực / kính tôi bảo vệ màn hình điện thoại",
+      "terms": [
+        "kính cường lực",
+        "kính cường lực bảo vệ màn hình",
+        "kính cường lực điện thoại",
+        "kính bảo vệ màn hình",
+        "tempered glass",
+        "screen protector",
+        "kính tôi cường lực",
+        "kính cường lực full HD",
+        "kính cường lực 4 lớp",
+        "kính cường lực KZHDIP001"
+      ],
+      "excludeIfAny": [
+        "kính cường lực ô tô",
+        "kính cường lực máy tính bảng",
+        "kính cường lực đồng hồ"
+      ],
+      "candidates": [
+        {
+          "hs": "70072990",
+          "whenVi": "Kính tôi hoặc kính dán cường lực, đã hoặc chưa định hình, loại khác — phủ màn hình điện thoại di động",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8544",
+          "whyVi": "Nhóm 8544 là cáp và dây dẫn điện. Kính cường lực không phải sản phẩm dẫn điện."
+        },
+        {
+          "prefix": "8486",
+          "whyVi": "Nhóm 8486 là máy sản xuất bán dẫn. Kính cường lực điện thoại không phải máy."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 70072990 ghi đúng 'Loại khác' cho kính tôi/cường lực. Chú giải nhóm 7007 phân biệt kính tôi cường lực với kính thông thường. Công văn TB-TCHQ phân loại kính bảo vệ màn hình điện thoại thuộc 7007."
+    },
+    {
+      "id": "day-cau-ca-nylon",
+      "titleVi": "Dây câu cá / dây trục câu nylon",
+      "terms": [
+        "dây câu cá",
+        "dây trục câu",
+        "dây câu nylon",
+        "dây câu máy",
+        "trục câu cá",
+        "fishing line",
+        "dây câu lụa",
+        "dây câu Nhật",
+        "dây câu cá lụa",
+        "DC-30"
+      ],
+      "candidates": [
+        {
+          "hs": "95079000",
+          "whenVi": "Dây câu cá, cần câu, lưới đánh cá và các loại đồ tắm, lặn khác — dây nylon và sợi tổng hợp",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "5402",
+          "whyVi": "Nhóm 5402 là sợi filament tổng hợp nguyên chất, chưa thành sản phẩm câu cá."
+        },
+        {
+          "prefix": "5404",
+          "whyVi": "Nhóm 5404 là sợi mono细细, dùng trong công nghiệp, không phải dây câu."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 95079000: 'Dây câu, cần câu và lưới đánh cá; các loại đồ tắm, lặn khác'. Chương 95 phủ đồ thể thao và câu cá."
+    },
+    {
+      "id": "dep-nhua-PVC",
+      "titleVi": "Dép nhựa PVC xỏ ngón / flip-flop / hoàn toàn nhựa",
+      "terms": [
+        "dép nhựa",
+        "dép đi trong nhà",
+        "dép đi ngoài nhà",
+        "dép nhựa xốp",
+        "dép flip-flop",
+        "dép lào",
+        "dép hoa",
+        "dép tổ ong",
+        "dép PVC xỏ ngón",
+        "dép PVC flip-flop",
+        "dép PVC hoàn toàn nhựa",
+        "dép tổ ong PVC",
+        "dép lào PVC"
+      ],
+      "candidates": [
+        {
+          "hs": "64029990",
+          "whenVi": "Giày, dép và các loại tương tự, bằng nhựa, phần upper và đế bằng nhựa PVC, không phủ polymerexpand",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "6403",
+          "whyVi": "Nhóm 6403 là giày có đế bằng cao su, da, hoặc tổng hợp — dép PVC không thuộc đây."
+        },
+        {
+          "prefix": "6401",
+          "whyVi": "Nhóm 6401 là giày chống nước/đi mưa — dép PVC thường không phải giày chống nước."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 64029990: 'Loại khác' cho giày/dép bằng nhựa. Chú giải nhóm 6402 phân biệt theo vật liệu phần upper."
+    },
+    {
+      "id": "cap-sac-Type-C",
+      "titleVi": "Cáp sạc / cáp Type-C điện thoại",
+      "terms": [
+        "cáp sạc",
+        "cáp Type C",
+        "cáp Type-C",
+        "cáp sạc Type C",
+        "cáp sạc USB-C",
+        "cáp sạc điện thoại",
+        "dây sạc Type C",
+        "USB-C cable",
+        "cáp C to C 65W",
+        "Type C to C cable"
+      ],
+      "candidates": [
+        {
+          "hs": "85444299",
+          "whenVi": "Dây dẫn, đã lắp đầu nối, loại khác, cho điện hoặc từ điện, chiều dài ≤ 60V — cáp sạc và truyền dữ liệu điện thoại",
+          "confidence": "high"
+        }
+      ],
+      "askVi": [
+        "Điện áp bao nhiêu volt? (≤ 60V → 8544.41 / > 60V → 8544.42)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 85444299: 'Loại khác' dây dẫn đã lắp đầu nối cho điện. Phân nhóm 8544.41 cho ≤ 60V. Không thuộc 8504 (adapter) vì không chuyển đổi điện áp.",
+      "excludeIfAny": [
+        "bộ sạc",
+        "củ sạc"
+      ]
+    },
+    {
+      "id": "bo-sac-dien-thoai",
+      "titleVi": "Bộ sạc / củ sạc điện thoại",
+      "terms": [
+        "bộ sạc",
+        "củ sạc",
+        "bộ sạc điện thoại",
+        "adapter sạc",
+        "charger",
+        "power adapter",
+        "sạc 20W",
+        "sạc 5W",
+        "sạc nhanh",
+        "charging brick"
+      ],
+      "candidates": [
+        {
+          "hs": "85044019",
+          "whenVi": "Bộ sạc (adapter) cho điện thoại và thiết bị viễn thông, công suất thấp — biến áp và tụ điện đã lắp thành bộ sạc",
+          "confidence": "high"
+        }
+      ],
+      "askVi": [],
+      "gir": "3a",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 85044019: 'Bộ sạc điện thoại, loại khác'. Biểu thuế ghi tên riêng nên ưu tiên GIR 3(a)."
+    },
+    {
+      "id": "giay-nen-lot-nuong",
+      "titleVi": "Giấy nến lót nướng bánh không thấm dầu",
+      "terms": [
+        "giấy nến",
+        "giấy nến lót nướng",
+        "giấy lót nướng bánh",
+        "giấy nướng bánh",
+        "baking paper",
+        "parchment paper",
+        "giấy chống dính",
+        "giấy wax",
+        "wax paper"
+      ],
+      "candidates": [
+        {
+          "hs": "48236900",
+          "whenVi": "Giấy và tấm bìa, đã làm thành hình, loại khác — giấy nến lót nướng không thấm dầu",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "4805",
+          "whyVi": "Nhóm 4805 là giấy không tráng, chưa làm thành hình. Giấy nến đã định hình thuộc 4823."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 48236900: 'Loại khác' cho giấy và tấm bìa đã làm thành hình. Chú giải nhóm 4823 phủ giấy làm thành hình gia dụng."
+    },
+    {
+      "id": "xy-lanh-khi-nen",
+      "titleVi": "Xy lanh khí nén / xi lanh khí nén tịnh tiến",
+      "terms": [
+        "xy lanh khí nén",
+        "xi lanh khí nén",
+        "xy lanh hơi",
+        "xylanh khí nén",
+        "pneumatic cylinder",
+        "air cylinder",
+        "SDA12x10B",
+        "xy lanh tịnh tiến",
+        "cylinder bore"
+      ],
+      "candidates": [
+        {
+          "hs": "84123100",
+          "whenVi": "Xy lanh khí nén, xy lanh thủy lực, chuyển động tịnh tiến — bộ phận truyền động khí nén cho máy công nghiệp và tự động hóa",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "7604",
+          "whyVi": "Nhóm 7604 là nhôm thanh/que. Xy lanh khí nén là sản phẩm cơ khí phức tạp, không phải nhôm thô."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 84123100: 'Chuyển động tịnh tiến (xi lanh)' cho xy lanh khí/thủy lực. Chú giải nhóm 8412 phủ bộ phận động cơ và truyền động."
+    },
+    {
+      "id": "giay-lua-lau-chui",
+      "titleVi": "Giấy lụa / giấy lau chùi một lần",
+      "terms": [
+        "giấy lụa",
+        "giấy lau chùi",
+        "giấy lau một lần",
+        "khăn giấy lau",
+        "giấy rút",
+        "facial tissue",
+        "paper towel",
+        "wet tissue",
+        "giấy lụa 1500 tờ"
+      ],
+      "candidates": [
+        {
+          "hs": "48182000",
+          "whenVi": "Khăn tay, giấy lụa lau chùi hoặc lau mặt, khăn lau — giấy lau một lần, chưa tẩm hóa chất",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "5609",
+          "whyVi": "Nhóm 5609 là vật liệu dệt có tên riêng hoặc dạng cuộn — giấy lụa không phải vải."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 48182000: 'Khăn tay, giấy lụa lau chùi hoặc lau mặt và khăn lau'. Chương 48 phủ giấy và các sản phẩm giấy."
+    },
+    {
+      "id": "day-rut-nhua",
+      "titleVi": "Dây rút nhựa / dây buộc hàng",
+      "terms": [
+        "dây rút nhựa",
+        "dây buộc hàng",
+        "dây rút",
+        "dây nhựa buộc",
+        "cable tie",
+        "zip tie",
+        "dây rút 28cm",
+        "dây rút 0.07×28cm"
+      ],
+      "candidates": [
+        {
+          "hs": "39269099",
+          "whenVi": "Đồ nhựa các loại, chưa ghi ở nơi khác — dây rút nhựa dùng buộc hàng và quản lý cáp",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "4805",
+          "whyVi": "Nhóm 4805 là giấy và bìa. Dây rút nhựa không phải giấy."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 39269099: 'Loại khác' cho đồ nhựa. Chú giải Chương 39 phủ các sản phẩm nhựa gia dụng và công nghiệp."
+    },
+    {
+      "id": "module-man-hinh-oled",
+      "titleVi": "Mô-đun màn hình OLED điện thoại",
+      "terms": [
+        "mô-đun màn hình OLED",
+        "OLED module điện thoại",
+        "module màn hình OLED",
+        "màn hình OLED điện thoại",
+        "tấm OLED điện thoại",
+        "OLED panel điện thoại",
+        "OLED display module",
+        "màn hình AMOLED điện thoại"
+      ],
+      "candidates": [
+        {
+          "hs": "85241200",
+          "whenVi": "Bằng đi-ốt phát quang hữu cơ (OLED) — mô-đun màn hình điện thoại thuộc nhóm 8524.12",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8471",
+          "whyVi": "Nhóm 8471 là máy tính và thiết bị xử lý dữ liệu. Mô-đun màn hình không phải máy tính."
+        },
+        {
+          "prefix": "8544",
+          "whyVi": "Nhóm 8544 là dây dẫn điện. Mô-đun OLED không phải dây dẫn."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 85241200: 'Bằng đi-ốt phát quang hữu cơ (OLED)' cho mô-đun màn hình điện thoại. Nhóm 8524 phủ linh kiện điện tử."
+    },
+    {
+      "id": "dia-xich-nhong-xe-mo-to",
+      "titleVi": "Bộ đĩa xích và nhông (sprocket) xe mô tô",
+      "terms": [
+        "bộ đĩa xích",
+        "đĩa xích xe máy",
+        "nhông xe máy",
+        "nhông xích",
+        "bộ nhông đĩa",
+        "đĩa xích và nhông",
+        "sprocket xe máy",
+        "bộ truyền xích xe máy",
+        "xích và nhông xe mô tô",
+        "drive sprocket motorcycle"
+      ],
+      "candidates": [
+        {
+          "hs": "87141090",
+          "whenVi": "Bộ phận và phụ kiện xe mô tô, loại khác — đĩa xích và nhông xe mô tô thuộc nhóm 8714.10",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8483",
+          "whyVi": "Nhóm 8483 là bộ truyền động cơ khí. Đĩa xích và nhông xe mô tô thuộc 8714 (phương tiện)."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 87141090: 'Loại khác' cho bộ phận xe mô tô. Đĩa xích và nhông là bộ phận xe mô tô, không thuộc 8483 (bộ truyền động chung)."
+    },
+    {
+      "id": "chan-gia-do-dien-thoai",
+      "titleVi": "Chân giá đỡ / tripod điện thoại",
+      "terms": [
+        "chân giá đỡ điện thoại",
+        "tripod điện thoại",
+        "chân đỡ điện thoại",
+        "giá đỡ điện thoại",
+        "phone holder",
+        "phone tripod",
+        "chân máy ảnh điện thoại",
+        "tripod stand",
+        "3 chân điện thoại"
+      ],
+      "candidates": [
+        {
+          "hs": "96200030",
+          "whenVi": "Chân giá đỡ, giá đỡ bằng sắt và thép — chân máy ảnh, chân giá đỡ điện thoại, chân hình trụ 3 chân",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8543",
+          "whyVi": "Nhóm 8543 là máy điện có tên riêng. Chân giá đỡ không phải máy điện."
+        },
+        {
+          "prefix": "8517",
+          "whyVi": "Nhóm 8517 là điện thoại và thiết bị viễn thông. Chân giá đỡ không phải thiết bị viễn thông."
+        }
+      ],
+      "askVi": [],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 mã 96200030: 'Bằng sắt và thép' cho chân giá đỡ. Nhóm 9620 phủ đồ chưa phân loại ở nơi khác."
+    },
+    {
+      "id": "mach-in-pcb-1-lop",
+      "titleVi": "Mạch in PCB một mặt (1 lớp)",
+      "terms": [
+        "mạch in 1 lớp",
+        "mạch in một mặt",
+        "pcb 1 lớp",
+        "pcb một mặt",
+        "bảng mạch in một mặt",
+        "mạch in led một mặt",
+        "pcb led 1 lớp",
+        "mạch in led 1 lớp",
+        "pcb led một lớp",
+        "pcb single layer",
+        "mạch in pcb 1 lớp nhôm+nhựa",
+        "mạch in một mặt led",
+        "pcb 1 mặt",
+        "pcb a05 1 lớp"
+      ],
+      "excludeIfAny": [
+        "nhiều mặt",
+        "hai mặt",
+        "đa lớp",
+        "multilayer",
+        "2 mặt",
+        "nhiều lớp"
+      ],
+      "excludeReasonVi": "PCB nhiều mặt/hai mặt/đa lớp → 8534.00.20 hoặc 8534.00.30, không phải 8534.00.10.",
+      "candidates": [
+        {
+          "hs": "85340010",
+          "whenVi": "PCB một mặt (1 lớp mạch)",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8534002",
+          "whyVi": "85340020 = PCB hai mặt, không phải một mặt."
+        },
+        {
+          "prefix": "8534003",
+          "whyVi": "85340030 = PCB đa lớp, không phải một mặt."
+        },
+        {
+          "prefix": "8534009",
+          "whyVi": "85340090 = PCB loại khác, dành cho loại không thuộc 1/2/nhiều lớp."
+        }
+      ],
+      "askVi": [
+        "Mạch in một mặt, hai mặt, hay nhiều lớp (multilayer)? (ranh giới 85340010 / 85340020 / 85340030)",
+        "Có ghi rõ số lớp mạch (1 lớp, 2 lớp, multilayer)?"
+      ],
+      "gir": "6",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 dòng 8534.00.10; Bảng quyết định data/decision-tables/8534.json — thuộc tính pcbLayers=single."
+    },
+    {
+      "id": "thanh-rang-truyen-dong",
+      "titleVi": "Thanh răng — bộ phận truyền động cơ khí (8483.90.19)",
+      "terms": [
+        "thanh răng",
+        "bánh răng",
+        "thanh răng truyền động",
+        "thanh răng trục truyền",
+        "gear rack",
+        "thanh răng máy công nghiệp",
+        "bộ phận trục truyền động",
+        "thanh răng cơ khí",
+        "848390",
+        "thanh răng động cơ",
+        "thanh răng máy",
+        "rack gear"
+      ],
+      "excludeIfAny": [
+        "khuôn",
+        "mold",
+        "đùn",
+        "extrusion"
+      ],
+      "excludeReasonVi": "Thanh răng là bộ phận truyền động cơ khí thuộc 8483. Không phải khuôn đúc (8480).",
+      "candidates": [
+        {
+          "hs": "84839019",
+          "whenVi": "Thanh răng rời, bộ phận trục truyền động máy công nghiệp (không phải hoàn chỉnh)",
+          "confidence": "high"
+        },
+        {
+          "hs": "84834030",
+          "whenVi": "Thanh răng làm thành một khối với trục (bánh răng-trục)",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8480",
+          "whyVi": "Nhóm 8480 là KHUÔN ĐÚC / KHUÔN ÉP — thanh răng không phải khuôn."
+        },
+        {
+          "prefix": "8466",
+          "whyVi": "Nhóm 8466 là BỘ PHẬN MÁY DỤNG CỤ — thanh răng là bộ phận truyền động thuộc 8483."
+        }
+      ],
+      "askVi": [
+        "Thanh răng có phải là bộ phận của khuôn đúc không? (nếu có → 8480)",
+        "Thanh răng có hàn cố định thành một khối với trục không? (nếu có → 84834030)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 8483; Chú giải nhóm 8483 phân biệt bộ phận máy (8483) với dụng cụ (8466) và khuôn (8480)."
+    },
+    {
+      "id": "long-mi-gia-synthetic",
+      "titleVi": "Lông mi giả — vật liệu tổng hợp nhân tạo (67.04)",
+      "terms": [
+        "lông mi giả",
+        "mi giả",
+        "lông mi nhân tạo",
+        "lông mi tổng hợp",
+        "lông mi giả vật liệu dệt",
+        "mi giả silicone",
+        "lông mi strips",
+        "fake eyelashes",
+        "lông mi giả 3D",
+        "mi giả mắt",
+        "lông mi strip",
+        "lông mi cluster"
+      ],
+      "excludeIfAny": [
+        "người",
+        "động vật",
+        "tóc",
+        "hair human",
+        "real hair",
+        "tóc người"
+      ],
+      "excludeReasonVi": "Lông mi giả bằng tóc người hoặc lông động vật → 6703. Lông mi bằng vật liệu tổng hợp → 6704.",
+      "candidates": [
+        {
+          "hs": "67041900",
+          "whenVi": "Lông mi giả bằng vật liệu dệt tổng hợp nhân tạo (sợi tổng hợp, silicone, vải)",
+          "confidence": "high"
+        },
+        {
+          "hs": "67042000",
+          "whenVi": "Lông mi giả bằng len, bông (vật liệu sợi tự nhiên)",
+          "confidence": "low"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "6703",
+          "whyVi": "6703 = lông tóc người, lông động vật. Lông mi giả tổng hợp không thuộc 6703."
+        }
+      ],
+      "askVi": [
+        "Lông mi giả làm bằng chất liệu gì? (tóc người/động vật → 6703; sợi tổng hợp/silicone/vải → 6704)",
+        "Có phải lông mi bằng lông thật (người hoặc động vật)?"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 6704; Chú giải nhóm 67 phân biệt 6703 (lông thật) với 6704 (lông/tóc nhân tạo)."
+    },
+    {
+      "id": "giay-vai-canvas",
+      "titleVi": "Giày vải canvas (không phải bảo hộ, đế cao su/TPU)",
+      "terms": [
+        "giày canvas",
+        "giày vải",
+        "vải canvas",
+        "giày vải canvas",
+        "canvas shoes",
+        "dép canvas",
+        "giày textile",
+        "giày vải thể thao",
+        "giày vải casual",
+        "sneaker vải",
+        "dép vải",
+        "giày vải không phải bảo hộ",
+        "giày canvas cao su"
+      ],
+      "excludeIfAny": [
+        "bảo hộ",
+        "bảo vệ",
+        "safety",
+        " protective",
+        "leather upper",
+        "da lộn"
+      ],
+      "excludeReasonVi": "Giày canvas thuộc 6405. Giày bảo hộ (mũi thép, đế da) → 6403. Giày da/simili → 6403/6404.",
+      "candidates": [
+        {
+          "hs": "64059000",
+          "whenVi": "Giày/dép có mặt trên bằng vải, đế cao su/TPU/plastic (không phải da, không phải bảo hộ)",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "6403",
+          "whyVi": "6403 = giày BẢO HỘ có mũi thép hoặc đế da. Giày canvas thường không phải bảo hộ."
+        },
+        {
+          "prefix": "6404",
+          "whyVi": "6404 = giày có đế塑料 (PVC/EVA) nhưng mặt trên vải → 6405 mới đúng cho mặt trên vải."
+        },
+        {
+          "prefix": "6401",
+          "whyVi": "6401 = dép nhựa (chủ yếu là nhựa). Giày canvas có mặt trên vải → 6405."
+        }
+      ],
+      "askVi": [
+        "Giày có phải giày BẢO HỘ (mũi thép, đế da, chống điện)? (nếu có → 6403)",
+        "Mặt trên giày là vải hay da/simili? (vải → 6405; da/simili → 6403/6404)",
+        "Đế giày là cao su, TPU, hay plastic? (câu này xác nhận 6405 vs 6404)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 6405; Chú giải nhóm 64 phân biệt 6403 (bảo hộ/da), 6404 (plastic/rubber), 6405 (vải/textile)."
+    },
+    {
+      "id": "pu-gia-da-xop",
+      "titleVi": "Tấm nhựa PU giả da xốp — vật liệu plastic 39.21",
+      "terms": [
+        "pu giả da",
+        "giả da pu",
+        "da pu",
+        "tấm pu giả da",
+        "nhựa pu",
+        "pu synthetic leather",
+        "fake leather pu",
+        "pu foam sheet",
+        "tấm giả da pu",
+        "da tổng hợp pu",
+        "pu giả da xốp",
+        "vật liệu giả da pu",
+        "pu leather sheet",
+        "tấm pu nhựa giả da",
+        "giả da xốp nhựa"
+      ],
+      "excludeIfAny": [
+        "da thật",
+        "da động vật",
+        "leather genuine",
+        "giấy",
+        "paper"
+      ],
+      "excludeReasonVi": "PU giả da là PLASTIC 39.21, không phải da thật (42) hay giấy (48).",
+      "candidates": [
+        {
+          "hs": "39211399",
+          "whenVi": "Tấm/lamina nhựa PU (polyurethane) dạng giả da xốp, tấm phẳng",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "4807",
+          "whyVi": "4807 = giấy/tấm bìa (paper). PU giả da là PLASTIC, không phải giấy."
+        },
+        {
+          "prefix": "4818",
+          "whyVi": "4818 = giấy lau (paper). PU giả da là PLASTIC."
+        },
+        {
+          "prefix": "3920",
+          "whyVi": "3920 = plastic plates/sheets NON-cellular (không xốp). 3921 = plastic plates xốp/giả da. PU giả da thường xốp → 3921."
+        }
+      ],
+      "askVi": [
+        "Tấm PU có bề mặt trơn/phẳng hay có cấu trúc tổ ong (cellular)? (tổ ong → 3921; phẳng → 3920 hoặc 3921 tùy xốp)",
+        "Mô tả là \"giả da\" → chất liệu là plastic (PU) hay da thật? (plastic → 3921; da → 42)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 3921; Chú giải nhóm 39 phân biệt plastic xốp/giả da (3921) với giấy (48) và plastic phẳng không xốp (3920)."
+    },
+    {
+      "id": "do-gia-dung-inox",
+      "titleVi": "Đồ gia dụng nấu ăn bằng thép không gỉ (xoong/nồi/chảo/khay)",
+      "terms": [
+        "đồ gia dụng bằng thép không gỉ",
+        "xoong inox",
+        "nồi inox",
+        "chảo inox",
+        "khay inox",
+        "tô inox",
+        "đũa inox",
+        "muỗng inox",
+        "vá inox",
+        "rổ inox",
+        "giá để nồi bát bằng inox",
+        "giá úp bát đĩa",
+        "khuôn làm bánh bằng inox",
+        "nồi áp suất",
+        "chảo không dính",
+        "đồ dùng nhà bếp bằng inox",
+        "inox 304",
+        "inox 201"
+      ],
+      "candidates": [
+        {
+          "hs": "73239310",
+          "whenVi": "Đồ gia dụng nấu ăn bằng thép không gỉ, không có nguồn nhiệt riêng",
+          "confidence": "high"
+        },
+        {
+          "hs": "73269099",
+          "whenVi": "Đồ gia dụng khác bằng thép không gỉ hoặc sắt mạ",
+          "confidence": "medium"
+        }
+      ],
+      "excludeIfAny": [
+        "dây cáp",
+        "ống nước",
+        "van",
+        "khuôn nhựa",
+        "thép tấm",
+        "thép cuộn",
+        "thang",
+        "con lăn",
+        "bánh răng"
+      ],
+      "sourceVi": "Biểu thuế 2026 nhóm 7323/7326; thực tiễn phân loại hải quan."
+    },
+    {
+      "id": "gioang-ron-cao-su-luu-hoa",
+      "titleVi": "Đệm làm kín, gioăng, phớt cao su lưu hóa công nghiệp",
+      "terms": [
+        "gioăng cao su lưu hóa",
+        "vòng đệm cao su",
+        "phớt cơ khí bơm",
+        "đệm làm kín",
+        "gioăng làm kín",
+        "phớt xi lanh",
+        "gioăng phớt",
+        "phớt cao su",
+        "gioăng chịu nhiệt",
+        "vòng đệm chắn bụi",
+        "phớt dầu thủy lực",
+        "phớt khí nén",
+        "cao su lưu hóa",
+        "bộ gioăng phớt",
+        "ron cao su"
+      ],
+      "candidates": [
+        {
+          "hs": "40169390",
+          "whenVi": "Đệm, gioăng, phớt bằng cao su lưu hóa, dùng cho máy móc, bơm, xylanh, van",
+          "confidence": "high"
+        }
+      ],
+      "excludeIfAny": [
+        "ống cao su",
+        "bạc lót cao su",
+        "sợi cao su",
+        "tấm cao su",
+        "đế giày",
+        "lốp",
+        "săm"
+      ],
+      "sourceVi": "Biểu thuế 2026 nhóm 4016; thực tiễn phân loại hải quan."
+    },
+    {
+      "id": "may-do-kiem-tra-khac",
+      "titleVi": "Máy đo, dụng cụ kiểm tra khác (không điện tử)",
+      "terms": [
+        "máy đo độ",
+        "dụng cụ đo",
+        "thước đo",
+        "cân kỹ thuật",
+        "đồng hồ đo áp suất",
+        "thiết bị kiểm tra",
+        "máy kiểm tra",
+        "dụng cụ kiểm tra",
+        "máy đo nhiệt",
+        "máy đo pH"
+      ],
+      "candidates": [
+        {
+          "hs": "90318090",
+          "whenVi": "Máy đo, thiết bị kiểm tra, dụng cụ đo khác, không điện tử",
+          "confidence": "high"
+        }
+      ],
+      "excludeIfAny": [
+        "máy tính",
+        "điện thoại",
+        "camera",
+        "máy in",
+        "van",
+        "bơm"
+      ],
+      "sourceVi": "Biểu thuế 2026 nhóm 9031; thực tiễn phân loại hải quan."
+    },
+    {
+      "id": "do-nhua-gia-dung-khac",
+      "titleVi": "Đồ nhựa gia dụng khác (hộp/rổ/khay/chậu plastic)",
+      "terms": [
+        "hộp nhựa đựng đồ",
+        "rổ nhựa",
+        "khay nhựa",
+        "chậu nhựa",
+        "xô nhựa",
+        "đồ nhựa gia dụng",
+        "hộp đựng thực phẩm nhựa",
+        "giá để đồ nhựa",
+        "kệ nhựa",
+        "tủ nhựa",
+        "hộp đựng dụng cụ nhựa"
+      ],
+      "candidates": [
+        {
+          "hs": "39249090",
+          "whenVi": "Đồ gia dụng bằng plastic khác, không sấy, không nấu, không chiếu sáng",
+          "confidence": "high"
+        }
+      ],
+      "excludeIfAny": [
+        "ống nhựa",
+        "tấm nhựa",
+        "màng nhựa",
+        "bình nhựa",
+        "ly nhựa",
+        "đũa nhựa",
+        "hạt nhựa",
+        "khuôn nhựa"
+      ],
+      "sourceVi": "Biểu thuế 2026 nhóm 3924; thực tiễn phân loại hải quan."
+    },
+    {
+      "id": "san-pham-sat-thep-khac",
+      "titleVi": "Sản phẩm bằng sắt/thép khác (thang/kẹp/giá/khung)",
+      "terms": [
+        "thang thép",
+        "thang rút",
+        "thang gấp",
+        "kẹp sắt",
+        "kẹp thép",
+        "giá đỡ sắt",
+        "khung sắt",
+        "hộp sắt",
+        "thanh trượt sắt",
+        "con lăn sắt",
+        "tay cần sắt",
+        "bộ phận máy bằng sắt",
+        "đầu kẹp",
+        "chốt sắt",
+        "móc sắt",
+        "giá đỡ điện thoại sắt",
+        "giá đỡ laptop sắt",
+        "thanh truyền tải"
+      ],
+      "candidates": [
+        {
+          "hs": "73269099",
+          "whenVi": "Sản phẩm bằng sắt hoặc thép khác, chưa được ghi nhận ở nhóm trên",
+          "confidence": "medium"
+        }
+      ],
+      "excludeIfAny": [
+        "xoong",
+        "nồi",
+        "chảo",
+        "khay",
+        "inox",
+        "thép tấm",
+        "thép cuộn",
+        "ống nước",
+        "van",
+        "bánh răng",
+        "thanh răng",
+        "trục",
+        "xylanh"
+      ],
+      "sourceVi": "Biểu thuế 2026 nhóm 7326; thực tiễn phân loại hải quan."
+    },
+    {
+      "id": "giay-chung-nhan-co-phieu",
+      "titleVi": "Giấy chứng nhận / cổ phiếu / giấy tờ chứng từ (Chương 49)",
+      "terms": [
+        "giấy chứng nhận",
+        "cổ phiếu",
+        "cổ phần",
+        "chứng chỉ",
+        "giấy chứng nhận cổ phần",
+        "cổ phiếu công ty",
+        "giấy tờ chứng từ",
+        "chứng chỉ cổ phần",
+        "giấy phép kinh doanh",
+        "đăng ký kinh doanh",
+        "giấy chứng nhận đầu tư",
+        "certificate of incorporation",
+        "stock certificate"
+      ],
+      "candidates": [
+        {
+          "hs": "49070010",
+          "whenVi": "Tiền giấy (tiền giấy các loại)",
+          "confidence": "high"
+        },
+        {
+          "hs": "49070090",
+          "whenVi": "Các loại giấy có giá trị tương đương tiền (tín phiếu, trái phiếu, hối phiếu, thẻ ngân hàng…)",
+          "confidence": "high"
+        }
+      ],
+      "askVi": [
+        "Hàng này có phải giấy tờ có giá trị như cổ phiếu, chứng chỉ tiền tệ, tiền giấy không? (có → 4907; không → mô tả lại vật chất hàng)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Chú giải Chương 49: 'Các loại giấy có giá trị như tiền giấy, cổ phiếu, tín phiếu, hối phiếu' thuộc 4907. Hàng vật chất không thuộc Chương 49."
+    },
+    {
+      "id": "bo-phan-may-semiconductor",
+      "titleVi": "Bộ phận máy sản xuất semiconductor / IC",
+      "terms": [
+        "bộ phận máy semiconductor",
+        "bộ phận ic",
+        "bộ phận chip",
+        "linh kiện semiconductor",
+        "bộ phận máy in 3d",
+        "bộ phận máy gắn chip",
+        "wafer processing parts",
+        "ic manufacturing parts",
+        "bộ phận máy sản xuất ic",
+        "bộ phận máy đóng gói ic",
+        "bộ phận thiết bị bán dẫn",
+        "bộ phận dụng cụ bán dẫn"
+      ],
+      "candidates": [
+        {
+          "hs": "84864020",
+          "whenVi": "Các bộ phận máy sản xuất / gia công semiconductor, mạch tích hợp (IC), đóng gói chip — chỉ dùng TRONG nhà máy bán dẫn, KHÔNG phải sản phẩm tiêu dùng",
+          "confidence": "high"
+        }
+      ],
+      "askVi": [
+        "Hàng này có phải bộ phận DÙNG TRONG máy sản xuất semiconductor / IC không? (có → 84864020; không → mô tả lại hàng)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 8486: chỉ phạm vi máy và thiết bị sản xuất semiconductor. Hàng tiêu dùng không thuộc nhóm này."
+    },
+    {
+      "id": "vai-det-kim-tong-hop",
+      "titleVi": "Vải dệt kim tổng hợp / vải kỹ thuật",
+      "terms": [
+        "vải dệt kim",
+        "vải dệt tổng hợp",
+        "vải kỹ thuật",
+        "vải công nghiệp dệt",
+        "fabric synthetic",
+        "knitted fabric synthetic",
+        "vải microfiber"
+      ],
+      "candidates": [
+        {
+          "hs": "59111000",
+          "whenVi": "Vải dệt kim từ sợi tổng hợp, đã hoặc chưa tráng / phủ — dùng làm lớp lọc hoặc lớp đệm trong máy",
+          "confidence": "high"
+        },
+        {
+          "hs": "60012100",
+          "whenVi": "Vải dệt kim từ sợi nhân tạo, có xù, vòng tròn hoặc phẳng",
+          "confidence": "medium"
+        }
+      ],
+      "askVi": [
+        "Hàng này có phải vải dùng TRONG máy (lọc, đệm, lớp lót công nghiệp) không? (có → 5911; không → mô tả sản phẩm may mặc tiêu dùng)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 5911: vải dệt kim dùng làm lớp lọc, đệm trong máy. Sản phẩm tiêu dùng thuộc nhóm 61/62 (quần áo) hoặc 63 (sản phẩm dệt khác)."
+    },
+    {
+      "id": "may-in-3d",
+      "titleVi": "Máy in 3D / bộ phận máy in 3D",
+      "terms": [
+        "máy in 3d",
+        "máy in ba chiều",
+        "bộ phận máy in 3d",
+        "bộ phận máy in ba chiều",
+        "3d printer parts",
+        "bộ phận máy tạo hình 3d",
+        "trục vitme máy in 3d",
+        "thanh trượt máy in 3d",
+        "bàn máy in 3d",
+        "đầu máy in 3d",
+        "hotend máy in 3d"
+      ],
+      "candidates": [
+        {
+          "hs": "84858000",
+          "whenVi": "Máy in 3D (tạo hình bằng các phương pháp: lắng ghép, gia công bột, quang hóa…)",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "9818",
+          "whyVi": "9818 là mã catch-all cho bộ phận máy KHÔNG phân loại được ở nơi khác trong Biểu thuế. Chỉ dùng khi không có nhóm cụ thể cho hàng đó."
+        }
+      ],
+      "askVi": [
+        "Hàng này có phải bộ phận máy in 3D không? Hay là bộ phận của máy khác? (máy in 3D → 8485; máy khác → mô tả máy gì)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 8485: các máy tạo hình 3 chiều. Nhóm 9818 chỉ cho bộ phận không phân loại được nơi khác."
+    },
+    {
+      "id": "giay-in-cac-loai",
+      "titleVi": "Giấy in / giấy văn phòng / giấy in các loại",
+      "terms": [
+        "giấy in",
+        "giấy văn phòng",
+        "giấy in ấn",
+        "giấy photo",
+        "giấy a4",
+        "giấy a5",
+        "giấy carton",
+        "giấy kraft"
+      ],
+      "candidates": [
+        {
+          "hs": "48025590",
+          "whenVi": "Giấy không tráng khổ ≥ 435mm x 297mm, định lượng 40-150g/m², bán thành phẩm",
+          "confidence": "high"
+        },
+        {
+          "hs": "48101910",
+          "whenVi": "Giấy coated tráng cao láng khổ A4, định lượng 150-350g/m²",
+          "confidence": "high"
+        }
+      ],
+      "askVi": [
+        "Hàng này có phải GIẤY (tờ, cuộn, tấm) không? (có → 4802/4810; không → mô tả chất liệu hàng)"
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 nhóm 4802-4810: phạm vi giấy. Hàng không phải giấy (kim loại, nhựa, cao su) không thuộc các nhóm này."
+    },
+    {
+      "id": "mach-in-pcb-2-lop",
+      "titleVi": "Mạch in PCB hai lớp (2 lớp)",
+      "terms": [
+        "mạch in 2 lớp",
+        "mạch in hai lớp",
+        "pcb 2 lớp",
+        "pcb hai lớp",
+        "bảng mạch in 2 lớp",
+        "mạch in pcb 2 lớp",
+        "pcb 2lop",
+        "pcb 2 lop",
+        "pcb đa sắc 2 lớp",
+        "mạch in 2 lớp fr4",
+        "pcb 2 lớp fr4",
+        "pcb nhôm 2 lớp",
+        "mạch in 2 lớp nhôm",
+        "pcb 2 lớp nhôm ms110w",
+        "pcb ms110w 2 lớp",
+        "mạch in 2 lớp đa sắc",
+        "pcb đa sắc",
+        "pcb ms110w",
+        "pcb fr4 2 lớp",
+        "mạch in 2 lớp ốp trần",
+        "pcb ốp trần 2 lớp",
+        "pcb ốp trần tròn 2 lớp"
+      ],
+      "excludeIfAny": [
+        "1 lớp",
+        "một lớp",
+        "single layer",
+        "đa lớp",
+        "multilayer",
+        "nhiều lớp"
+      ],
+      "excludeReasonVi": "PCB một lớp → 8534.00.10; PCB đa lớp (multilayer) → 8534.00.30; chỉ 8534.00.20 khi đúng 2 lớp.",
+      "candidates": [
+        {
+          "hs": "85340020",
+          "whenVi": "PCB hai lớp (2 lớp mạch)",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8534001",
+          "whyVi": "85340010 = PCB một mặt/một lớp, không phải hai lớp."
+        },
+        {
+          "prefix": "8534003",
+          "whyVi": "85340030 = PCB đa lớp (multilayer), không phải hai lớp."
+        },
+        {
+          "prefix": "8534009",
+          "whyVi": "85340090 = PCB loại khác, không phải hai lớp."
+        }
+      ],
+      "askVi": [
+        "Mạch in một lớp, hai lớp, hay đa lớp (multilayer)? (ranh giới 85340010 / 85340020 / 85340030)"
+      ],
+      "gir": "6",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 dòng 8534.00.20; Bảng quyết định data/decision-tables/8534.json — thuộc tính pcbLayers=double."
     }
   ],
-  "updatedAt": "2026-09-16"
+  "updatedAt": "2026-10-03"
 }

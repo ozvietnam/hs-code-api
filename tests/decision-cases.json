@@ -231,6 +231,24 @@
       "expectHs": "85340090"
     },
     {
+      "id": "8534-2-lop-pcb",
+      "heading": "8534",
+      "text": "Mạch in 2 lớp PCB đa sắc 4-7W",
+      "facts": {
+        "pcbLayers": "double"
+      },
+      "expectHs": "85340020"
+    },
+    {
+      "id": "8534-2-lop-aluminum-pcb",
+      "heading": "8534",
+      "text": "Mạch in 2 lớp PCB nhôm MSL10W",
+      "facts": {
+        "pcbLayers": "double"
+      },
+      "expectHs": "85340020"
+    },
+    {
       "id": "8534-ask",
       "heading": "8534",
       "text": "mạch in pcb",
@@ -277,7 +295,7 @@
       "heading": "8513",
       "text": "đèn điện xách tay",
       "expectAsk": [
-        "goodsKind"
+        "lampType"
       ]
     },
     {
@@ -325,6 +343,9 @@
       "id": "8509-blender",
       "heading": "8509",
       "text": "máy xay sinh tố blender",
+      "facts": {
+        "goodsKind": "appliance"
+      },
       "expectHs": "85094000"
     },
     {
@@ -2569,6 +2590,2585 @@
       "heading": "8482",
       "text": "vòng bi kết hợp bi đũa",
       "expectHs": "84828000"
+    },
+    {
+      "id": "6402-boot-pvc",
+      "heading": "6402",
+      "text": "ủng nhựa PVC đi mưa",
+      "expectHs": "64021200",
+      "facts": {
+        "footwearKind": "boot",
+        "upperMaterial": "plastic"
+      }
+    },
+    {
+      "id": "6402-cleated-pvc",
+      "heading": "6402",
+      "text": "giày nhựa có đinh đi bộ",
+      "facts": {
+        "footwearKind": "withCleat",
+        "upperMaterial": "plastic"
+      },
+      "expectHs": "64021910"
+    },
+    {
+      "id": "6402-sandal-pvc",
+      "heading": "6402",
+      "text": "dép xỏ ngón flip-flop nhựa",
+      "expectHs": "64022000"
+    },
+    {
+      "id": "6402-safety-pvc",
+      "heading": "6402",
+      "text": "giày bảo hộ nhựa mũi thép",
+      "facts": {
+        "footwearKind": "safety",
+        "upperMaterial": "plastic"
+      },
+      "expectHs": "64029110"
+    },
+    {
+      "id": "6402-slipper-pvc",
+      "heading": "6402",
+      "text": "dép nhựa PVC đi trong nhà",
+      "expectHs": "64029990"
+    },
+    {
+      "id": "8483-shaft-machine",
+      "heading": "8483",
+      "text": "trục truyền động máy CNC",
+      "facts": {
+        "goodsKind": "transmission",
+        "transmissionKind": "shaft",
+        "forVehicle": "machine"
+      },
+      "expectHs": "84831090"
+    },
+    {
+      "id": "8483-gear-machine",
+      "heading": "8483",
+      "text": "bánh răng máy công nghiệp",
+      "facts": {
+        "goodsKind": "transmission",
+        "transmissionKind": "gear",
+        "forVehicle": "machine"
+      },
+      "expectHs": "84834090"
+    },
+    {
+      "id": "8483-gearbox-machine",
+      "heading": "8483",
+      "text": "hộp số máy tiện",
+      "facts": {
+        "goodsKind": "transmission",
+        "transmissionKind": "gearbox",
+        "forVehicle": "machine"
+      },
+      "expectHs": "84834090"
+    },
+    {
+      "id": "8483-clutch-machine",
+      "heading": "8483",
+      "text": "ly hợp máy phay",
+      "facts": {
+        "goodsKind": "transmission",
+        "transmissionKind": "clutch",
+        "forVehicle": "machine"
+      },
+      "expectHs": "84836000"
+    },
+    {
+      "id": "8483-pulley",
+      "heading": "8483",
+      "text": "bánh đà máy",
+      "facts": {
+        "goodsKind": "transmission",
+        "transmissionKind": "pulley",
+        "forVehicle": "machine"
+      },
+      "expectHs": "84835000"
+    },
+    {
+      "id": "8483-bearing",
+      "heading": "8483",
+      "text": "vòng bi máy",
+      "facts": {
+        "goodsKind": "bearing"
+      },
+      "expectHs": "84832090"
+    },
+    {
+      "id": "8483-vehicle-reject",
+      "heading": "8483",
+      "text": "thanh răng xe máy",
+      "facts": {
+        "goodsKind": "transmission",
+        "transmissionKind": "gear",
+        "forVehicle": "vehicle"
+      },
+      "expectHs": "84839099"
+    },
+    {
+      "id": "8544-usbc-cable",
+      "heading": "8544",
+      "text": "cáp sạc USB-C điện thoại 65W",
+      "facts": {
+        "hasConnector": "yes",
+        "cableKind": "other"
+      },
+      "expectHs": "85444299"
+    },
+    {
+      "id": "8544-lightning-cable",
+      "heading": "8544",
+      "text": "dây sạc lightning iPhone",
+      "facts": {
+        "hasConnector": "yes",
+        "cableKind": "other"
+      },
+      "expectHs": "85444299"
+    },
+    {
+      "id": "8544-power-wire",
+      "heading": "8544",
+      "text": "dây điện bọc PVC 2 lõi",
+      "facts": {
+        "hasConnector": "no",
+        "cableKind": "other",
+        "insulationMaterial": "plastic"
+      },
+      "expectHs": "85444949"
+    },
+    {
+      "id": "8544-coaxial",
+      "heading": "8544",
+      "text": "cáp truyền hình đồng trục",
+      "facts": {
+        "cableKind": "coaxial",
+        "hasConnector": "no"
+      },
+      "expectHs": "85442019"
+    },
+    {
+      "id": "8544-ignition",
+      "heading": "8544",
+      "text": "dây đánh lửa ô tô",
+      "facts": {
+        "cableKind": "ignition"
+      },
+      "expectHs": "85443012"
+    },
+    {
+      "id": "8714-motorcycle-sprocket",
+      "heading": "8714",
+      "text": "đĩa xích xe máy Honda",
+      "facts": {
+        "vehicleType": "motorcycle",
+        "partKind": "transmission"
+      },
+      "expectHs": "87141040"
+    },
+    {
+      "id": "8714-motorcycle-seat",
+      "heading": "8714",
+      "text": "yên xe máy Yamaha",
+      "facts": {
+        "vehicleType": "motorcycle",
+        "partKind": "seat"
+      },
+      "expectHs": "87141010"
+    },
+    {
+      "id": "8714-motorcycle-wheel",
+      "heading": "8714",
+      "text": "vành xe máy SH",
+      "facts": {
+        "vehicleType": "motorcycle",
+        "partKind": "wheel"
+      },
+      "expectHs": "87141050"
+    },
+    {
+      "id": "8714-motorcycle-brake",
+      "heading": "8714",
+      "text": "phanh xe máy Wave",
+      "facts": {
+        "vehicleType": "motorcycle",
+        "partKind": "brake"
+      },
+      "expectHs": "87141060"
+    },
+    {
+      "id": "8714-motorcycle-frame",
+      "heading": "8714",
+      "text": "càng xe máy Dream",
+      "facts": {
+        "vehicleType": "motorcycle",
+        "partKind": "frame"
+      },
+      "expectHs": "87141030"
+    },
+    {
+      "id": "8714-motorcycle-other",
+      "heading": "8714",
+      "text": "bộ phận xe mô tô loại khác",
+      "facts": {
+        "vehicleType": "motorcycle",
+        "partKind": "other"
+      },
+      "expectHs": "87141090"
+    },
+    {
+      "id": "8714-bicycle-sprocket",
+      "heading": "8714",
+      "text": "bánh xích xe đạp",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "transmission"
+      },
+      "expectHs": "87149912"
+    },
+    {
+      "id": "8714-wheelchair",
+      "heading": "8714",
+      "text": "xe lăn y tế",
+      "facts": {
+        "vehicleType": "wheelchair"
+      },
+      "expectHs": "87142019"
+    },
+    {
+      "id": "9620-plastic",
+      "heading": "9620",
+      "text": "chân giá đỡ điện thoại nhựa",
+      "expectHs": "96200010"
+    },
+    {
+      "id": "9620-steel",
+      "heading": "9620",
+      "text": "chân giá đỡ 3 chân sắt mạ",
+      "expectHs": "96200030"
+    },
+    {
+      "id": "9620-aluminum",
+      "heading": "9620",
+      "text": "tripod máy ảnh nhôm",
+      "expectHs": "96200040"
+    },
+    {
+      "id": "9620-carbon",
+      "heading": "9620",
+      "text": "chân máy ảnh carbon",
+      "expectHs": "96200020"
+    },
+    {
+      "id": "9620-wood",
+      "heading": "9620",
+      "text": "chân giá đỡ gỗ",
+      "expectHs": "96200050"
+    },
+    {
+      "id": "8483-vehicle-gear-xe-may",
+      "heading": "8483",
+      "text": "bánh răng xe máy",
+      "facts": {
+        "goodsKind": "transmission",
+        "transmissionKind": "gear",
+        "forVehicle": "vehicle"
+      },
+      "expectHs": "84839099"
+    },
+    {
+      "id": "8483-shaft-crank",
+      "heading": "8483",
+      "text": "trục khuỷu máy công nghiệp",
+      "facts": {
+        "goodsKind": "transmission",
+        "transmissionKind": "shaft",
+        "forVehicle": "machine"
+      },
+      "expectHs": "84831090"
+    },
+    {
+      "id": "8483-bearing-ball",
+      "heading": "8483",
+      "text": "vòng bi máy CNC",
+      "facts": {
+        "goodsKind": "bearing"
+      },
+      "expectHs": "84832090"
+    },
+    {
+      "id": "8483-clutch",
+      "heading": "8483",
+      "text": "ly hợp máy tiện",
+      "facts": {
+        "goodsKind": "transmission",
+        "transmissionKind": "clutch",
+        "forVehicle": "machine"
+      },
+      "expectHs": "84836000"
+    },
+    {
+      "id": "8483-pulley",
+      "heading": "8483",
+      "text": "ròng rọc máy",
+      "facts": {
+        "goodsKind": "transmission",
+        "transmissionKind": "pulley",
+        "forVehicle": "machine"
+      },
+      "expectHs": "84835000"
+    },
+    {
+      "id": "8483-gear-unknown-context",
+      "heading": "8483",
+      "text": "bánh răng máy",
+      "facts": {
+        "goodsKind": "transmission",
+        "transmissionKind": "gear",
+        "forVehicle": "machine"
+      },
+      "expectHs": "84834090"
+    },
+    {
+      "id": "8483-gearbox-reducer",
+      "heading": "8483",
+      "text": "bộ giảm tốc máy CNC",
+      "facts": {
+        "goodsKind": "transmission",
+        "transmissionKind": "gearbox",
+        "forVehicle": "machine"
+      },
+      "expectHs": "84834090"
+    },
+    {
+      "id": "8483-default-truyen-dong",
+      "heading": "8483",
+      "text": "bộ truyền động cơ khí cho máy",
+      "facts": {
+        "goodsKind": "transmission",
+        "forVehicle": "machine"
+      },
+      "expectHs": "84834090"
+    },
+    {
+      "id": "8544-ignition-dau-loa",
+      "heading": "8544",
+      "text": "dây đánh lửa xe máy",
+      "facts": {
+        "cableKind": "ignition"
+      },
+      "expectHs": "85443012"
+    },
+    {
+      "id": "8544-connector-usb-c",
+      "heading": "8544",
+      "text": "cáp USB-C sạc nhanh 65W",
+      "facts": {
+        "hasConnector": "yes",
+        "cableKind": "other"
+      },
+      "expectHs": "85444299"
+    },
+    {
+      "id": "8544-wire-rubber",
+      "heading": "8544",
+      "text": "dây điện bọc cao su 3 lõi",
+      "facts": {
+        "hasConnector": "no",
+        "cableKind": "other",
+        "insulationMaterial": "rubber"
+      },
+      "expectHs": "85441190"
+    },
+    {
+      "id": "8544-wire-pvc",
+      "heading": "8544",
+      "text": "dây cáp bọc PVC không đầu nối",
+      "facts": {
+        "hasConnector": "no",
+        "cableKind": "other",
+        "insulationMaterial": "plastic"
+      },
+      "expectHs": "85444949"
+    },
+    {
+      "id": "6402-boot-pvc-ung",
+      "heading": "6402",
+      "text": "ủng nhựa PVC đi mưa",
+      "facts": {
+        "footwearKind": "boot",
+        "upperMaterial": "plastic"
+      },
+      "expectHs": "64021200"
+    },
+    {
+      "id": "6402-cleated-pvc",
+      "heading": "6402",
+      "text": "giày nhựa có đinh",
+      "facts": {
+        "footwearKind": "withCleat",
+        "upperMaterial": "plastic"
+      },
+      "expectHs": "64021910"
+    },
+    {
+      "id": "6402-sandal-pvc",
+      "heading": "6402",
+      "text": "dép flip-flop nhựa",
+      "facts": {
+        "footwearKind": "sandal",
+        "upperMaterial": "plastic"
+      },
+      "expectHs": "64022000"
+    },
+    {
+      "id": "6402-safety-mui-kinh",
+      "heading": "6402",
+      "text": "giày bảo hộ nhựa mũi thép",
+      "facts": {
+        "footwearKind": "safety",
+        "upperMaterial": "plastic"
+      },
+      "expectHs": "64029110"
+    },
+    {
+      "id": "6402-other-pvc-dep-nhua",
+      "heading": "6402",
+      "text": "dép nhựa PVC hoàn toàn đi trong nhà",
+      "facts": {
+        "footwearKind": "other",
+        "upperMaterial": "plastic"
+      },
+      "expectHs": "64029990"
+    },
+    {
+      "id": "6402-default-plastic",
+      "heading": "6402",
+      "text": "giày nhựa generic",
+      "facts": {
+        "upperMaterial": "plastic"
+      },
+      "expectHs": "64029990"
+    },
+    {
+      "id": "9620-monopi-nhua",
+      "heading": "9620",
+      "text": "lược nhựa",
+      "expectHs": "96200010"
+    },
+    {
+      "id": "9620-chen-nhua",
+      "heading": "9620",
+      "text": "chén nhựa",
+      "expectHs": "96200010"
+    },
+    {
+      "id": "9620-tripod-sat",
+      "heading": "9620",
+      "text": "chân giá đỡ 3 chân sắt",
+      "expectHs": "96200030"
+    },
+    {
+      "id": "9620-tripod-nhom",
+      "heading": "9620",
+      "text": "chân tripod máy ảnh nhôm",
+      "expectHs": "96200040"
+    },
+    {
+      "id": "9620-key-blank-sat",
+      "heading": "9620",
+      "text": "then khóa làm bằng sắt",
+      "expectHs": "96200030"
+    },
+    {
+      "id": "9620-key-blank-nhua",
+      "heading": "9620",
+      "text": "then khóa làm bằng nhựa plastic",
+      "expectHs": "96200010"
+    },
+    {
+      "id": "6402-safety-other-pvc",
+      "heading": "6402",
+      "text": "giày bảo hộ nhựa không có mũi thép loại thường",
+      "facts": {
+        "footwearKind": "safety",
+        "upperMaterial": "plastic"
+      },
+      "expectHs": "64029110",
+      "noteVi": "safety: bảo hộ nhựa có mũi thép -> 6402.91.10 (r-safety priority 80 > r-safety-other 75)"
+    },
+    {
+      "id": "8714-bicycle-handlebar",
+      "heading": "8714",
+      "text": "tay lái xe đạp nhôm",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "other"
+      },
+      "expectHs": "87149991",
+      "noteVi": "default-bicycle: tay lái, cọc lái, chắn bùn, giá đỡ, cáp điều khiển xe đạp -> 8714.99.91"
+    },
+    {
+      "id": "9620-default-other-material",
+      "heading": "9620",
+      "text": "chân giá đỡ máy ảnh bằng kim loại tổ hợp",
+      "facts": {
+        "material": "other"
+      },
+      "expectHs": "96200090",
+      "noteVi": "default: vật liệu không phải plastic/steel/aluminum/carbon/wood -> 9620.00.90"
+    },
+    {
+      "id": "8714-bicycle-brake-sen",
+      "heading": "8714",
+      "text": "phanh xe đạp điện SEN",
+      "facts": {
+        "vehicleType": "bicycle",
+        "forVehicle": "8712.00.20",
+        "partKind": "brake"
+      },
+      "expectHs": "87149410",
+      "noteVi": "coverage: 87149410 — forVehicle attr needed"
+    },
+    {
+      "id": "8714-bicycle-saddle-sen",
+      "heading": "8714",
+      "text": "yên xe đạp điện SEN",
+      "facts": {
+        "vehicleType": "bicycle",
+        "forVehicle": "8712.00.20",
+        "partKind": "seat"
+      },
+      "expectHs": "87149510",
+      "noteVi": "coverage: 87149510 — forVehicle attr needed"
+    },
+    {
+      "id": "8714-bicycle-handlebar-detailed",
+      "heading": "8714",
+      "text": "tay lái xe đạp nhôm",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "handlebar"
+      },
+      "expectHs": "87149911",
+      "noteVi": "coverage: 87149911 documented"
+    },
+    {
+      "id": "8544-has-connector",
+      "heading": "8544",
+      "text": "cáp sạc USB-C điện thoại 65W",
+      "facts": {
+        "hasConnector": "yes",
+        "cableKind": "other",
+        "insulationMaterial": "plastic"
+      },
+      "expectHs": "85444299"
+    },
+    {
+      "id": "8544-ignition-wire",
+      "heading": "8544",
+      "text": "dây đánh lửa xe máy",
+      "facts": {
+        "cableKind": "ignition",
+        "hasConnector": "no"
+      },
+      "expectHs": "85443012"
+    },
+    {
+      "id": "8544-coaxial",
+      "heading": "8544",
+      "text": "cáp đồng trục truyền hình",
+      "facts": {
+        "cableKind": "coaxial",
+        "hasConnector": "no"
+      },
+      "expectHs": "85442019"
+    },
+    {
+      "id": "8544-wire-rubber",
+      "heading": "8544",
+      "text": "dây điện cách điện cao su 2.5mm2",
+      "facts": {
+        "hasConnector": "no",
+        "cableKind": "other",
+        "insulationMaterial": "rubber"
+      },
+      "expectHs": "85441190"
+    },
+    {
+      "id": "8544-wire-plastic",
+      "heading": "8544",
+      "text": "dây điện PVC 1.5mm2",
+      "facts": {
+        "hasConnector": "no",
+        "cableKind": "other",
+        "insulationMaterial": "plastic"
+      },
+      "expectHs": "85444949"
+    },
+    {
+      "id": "8486-wafer-fab",
+      "heading": "8486",
+      "text": "máy mài đánh bóng wafer bán dẫn",
+      "facts": {
+        "machineKind": "semiconductorWafer"
+      },
+      "expectHs": "84861010"
+    },
+    {
+      "id": "8486-ic-manufacturing",
+      "heading": "8486",
+      "text": "lò sấy bán dẫn IC chip",
+      "facts": {
+        "machineKind": "semiconductorDevice"
+      },
+      "expectHs": "84862011"
+    },
+    {
+      "id": "8486-flat-panel",
+      "heading": "8486",
+      "text": "màn hình LCD 55 inch tấm nền",
+      "facts": {
+        "machineKind": "flatPanel"
+      },
+      "expectHs": "84863010"
+    },
+    {
+      "id": "8486-mask-reticle",
+      "heading": "8486",
+      "text": "khuôn in bán dẫn mask reticle",
+      "facts": {
+        "machineKind": "maskReticleAssembly"
+      },
+      "expectHs": "84864010"
+    },
+    {
+      "id": "8486-parts",
+      "heading": "8486",
+      "text": "bộ phận máy sản xuất chip",
+      "facts": {
+        "machineKind": "parts"
+      },
+      "expectHs": "84869011"
+    },
+    {
+      "id": "8504-ballast",
+      "heading": "8504",
+      "text": "chấn lưu đèn huỳnh quang",
+      "facts": {
+        "productType": "ballast",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85041000"
+    },
+    {
+      "id": "8504-transformer-parts",
+      "heading": "8504",
+      "text": "bộ phận máy biến áp",
+      "facts": {
+        "productType": "parts",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85049010"
+    },
+    {
+      "id": "8536-fuse-lt16a-fan",
+      "heading": "8536",
+      "text": "cầu chì dưới 16A loại quạt",
+      "facts": {
+        "function": "fuse",
+        "currentRating": "lt16A",
+        "specialApp": "fan"
+      },
+      "expectHs": "85361091"
+    },
+    {
+      "id": "8536-fuse-lt16a-none",
+      "heading": "8536",
+      "text": "cầu chì dưới 16A",
+      "facts": {
+        "function": "fuse",
+        "currentRating": "lt16A",
+        "specialApp": "none"
+      },
+      "expectHs": "85361092"
+    },
+    {
+      "id": "8536-fuse-unspecified-sen",
+      "heading": "8536",
+      "text": "cầu chì không rõ loại bếp từ",
+      "facts": {
+        "function": "fuse",
+        "currentRating": "unspecified",
+        "specialApp": "sen"
+      },
+      "expectHs": "85361093"
+    },
+    {
+      "id": "8536-fuse-unspecified-none",
+      "heading": "8536",
+      "text": "cầu chì không rõ",
+      "facts": {
+        "function": "fuse",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      },
+      "expectHs": "85361099"
+    },
+    {
+      "id": "8536-circuitbreaker-lt16a-none",
+      "heading": "8536",
+      "text": "aptomat (CB) dưới 16A",
+      "facts": {
+        "function": "circuitBreaker",
+        "currentRating": "lt16A",
+        "specialApp": "none"
+      },
+      "expectHs": "85362091"
+    },
+    {
+      "id": "8536-circuitbreaker-a16to32-none",
+      "heading": "8536",
+      "text": "aptomat (CB) 16A đến 32A",
+      "facts": {
+        "function": "circuitBreaker",
+        "currentRating": "a16to32",
+        "specialApp": "none"
+      },
+      "expectHs": "85362012"
+    },
+    {
+      "id": "8536-circuitbreaker-a32to1000-none",
+      "heading": "8536",
+      "text": "aptomat (CB) 32A đến 1000A",
+      "facts": {
+        "function": "circuitBreaker",
+        "currentRating": "a32to1000",
+        "specialApp": "none"
+      },
+      "expectHs": "85362013"
+    },
+    {
+      "id": "8536-circuitbreaker-unspecified-none",
+      "heading": "8536",
+      "text": "aptomat (CB) không rõ",
+      "facts": {
+        "function": "circuitBreaker",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      },
+      "expectHs": "85362099"
+    },
+    {
+      "id": "8536-circuitbreaker-unspecified-ricecooker",
+      "heading": "8536",
+      "text": "aptomat (CB) không rõ loại nồi cơm",
+      "facts": {
+        "function": "circuitBreaker",
+        "currentRating": "unspecified",
+        "specialApp": "riceCooker"
+      },
+      "expectHs": "85362020"
+    },
+    {
+      "id": "8536-surgeprotection-unspecified-none",
+      "heading": "8536",
+      "text": "chống sét lan không rõ",
+      "facts": {
+        "function": "surgeProtection",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      },
+      "expectHs": "85363090"
+    },
+    {
+      "id": "8536-surgeprotection-lt16a-radio",
+      "heading": "8536",
+      "text": "chống sét lan dưới 16A loại radio",
+      "facts": {
+        "function": "surgeProtection",
+        "currentRating": "lt16A",
+        "specialApp": "radio"
+      },
+      "expectHs": "85363020"
+    },
+    {
+      "id": "8536-relayle60v-lt16a-none",
+      "heading": "8536",
+      "text": "rơ le ≤60V dưới 16A",
+      "facts": {
+        "function": "relayLe60V",
+        "currentRating": "lt16A",
+        "specialApp": "none"
+      },
+      "expectHs": "85364140"
+    },
+    {
+      "id": "8536-relayle60v-lt16a-radio",
+      "heading": "8536",
+      "text": "rơ le ≤60V dưới 16A loại radio",
+      "facts": {
+        "function": "relayLe60V",
+        "currentRating": "lt16A",
+        "specialApp": "radio"
+      },
+      "expectHs": "85364120"
+    },
+    {
+      "id": "8536-relayle60v-lt16a-fan",
+      "heading": "8536",
+      "text": "rơ le ≤60V dưới 16A loại quạt",
+      "facts": {
+        "function": "relayLe60V",
+        "currentRating": "lt16A",
+        "specialApp": "fan"
+      },
+      "expectHs": "85364130"
+    },
+    {
+      "id": "8536-relayle60v-unspecified-none",
+      "heading": "8536",
+      "text": "rơ le ≤60V không rõ",
+      "facts": {
+        "function": "relayLe60V",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      },
+      "expectHs": "85364199"
+    },
+    {
+      "id": "8536-relaygt60v-lt16a-none",
+      "heading": "8536",
+      "text": "rơ le >60V dưới 16A",
+      "facts": {
+        "function": "relayGt60V",
+        "currentRating": "lt16A",
+        "specialApp": "none"
+      },
+      "expectHs": "85364910"
+    },
+    {
+      "id": "8536-relaygt60v-unspecified-none",
+      "heading": "8536",
+      "text": "rơ le >60V không rõ",
+      "facts": {
+        "function": "relayGt60V",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      },
+      "expectHs": "85364990"
+    },
+    {
+      "id": "8536-switch-lt16a-none",
+      "heading": "8536",
+      "text": "công tắc dưới 16A",
+      "facts": {
+        "function": "switch",
+        "currentRating": "lt16A",
+        "specialApp": "none"
+      },
+      "expectHs": "85365096"
+    },
+    {
+      "id": "8536-switch-lt16a-radio",
+      "heading": "8536",
+      "text": "công tắc dưới 16A loại radio",
+      "facts": {
+        "function": "switch",
+        "currentRating": "lt16A",
+        "specialApp": "radio"
+      },
+      "expectHs": "85365032"
+    },
+    {
+      "id": "8536-switch-unspecified-none",
+      "heading": "8536",
+      "text": "công tắc không rõ",
+      "facts": {
+        "function": "switch",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      },
+      "expectHs": "85365099"
+    },
+    {
+      "id": "8536-switch-lt16a-ricecooker",
+      "heading": "8536",
+      "text": "công tắc dưới 16A loại nồi cơm",
+      "facts": {
+        "function": "switch",
+        "currentRating": "lt16A",
+        "specialApp": "riceCooker"
+      },
+      "expectHs": "85365040"
+    },
+    {
+      "id": "8536-switch-unspecified-motorstarter",
+      "heading": "8536",
+      "text": "công tắc không rõ loại khởi động motor",
+      "facts": {
+        "function": "switch",
+        "currentRating": "unspecified",
+        "specialApp": "motorStarter"
+      },
+      "expectHs": "85365095"
+    },
+    {
+      "id": "8536-lampholder-lt16a-none",
+      "heading": "8536",
+      "text": "đui đèn dưới 16A",
+      "facts": {
+        "function": "lampholder",
+        "currentRating": "lt16A",
+        "specialApp": "none"
+      },
+      "expectHs": "85366191"
+    },
+    {
+      "id": "8536-lampholder-unspecified-none",
+      "heading": "8536",
+      "text": "đui đèn không rõ",
+      "facts": {
+        "function": "lampholder",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      },
+      "expectHs": "85366199"
+    },
+    {
+      "id": "8536-plug-unspecified-telephone",
+      "heading": "8536",
+      "text": "phích cắm không rõ loại điện thoại",
+      "facts": {
+        "function": "plug",
+        "currentRating": "unspecified",
+        "specialApp": "telephone"
+      },
+      "expectHs": "85366910"
+    },
+    {
+      "id": "8536-plug-lt16a-none",
+      "heading": "8536",
+      "text": "phích cắm dưới 16A",
+      "facts": {
+        "function": "plug",
+        "currentRating": "lt16A",
+        "specialApp": "none"
+      },
+      "expectHs": "85366992"
+    },
+    {
+      "id": "8536-plug-unspecified-none",
+      "heading": "8536",
+      "text": "phích cắm không rõ",
+      "facts": {
+        "function": "plug",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      },
+      "expectHs": "85366999"
+    },
+    {
+      "id": "8536-fiberconnector-unspecified-ceramic",
+      "heading": "8536",
+      "text": "đầu nối cáp quang không rõ loại gốm",
+      "facts": {
+        "function": "fiberConnector",
+        "currentRating": "unspecified",
+        "specialApp": "ceramic"
+      },
+      "expectHs": "85367010"
+    },
+    {
+      "id": "8536-fiberconnector-unspecified-copper",
+      "heading": "8536",
+      "text": "đầu nối cáp quang không rõ loại đồng",
+      "facts": {
+        "function": "fiberConnector",
+        "currentRating": "unspecified",
+        "specialApp": "copper"
+      },
+      "expectHs": "85367020"
+    },
+    {
+      "id": "8536-fiberconnector-unspecified-none",
+      "heading": "8536",
+      "text": "đầu nối cáp quang không rõ",
+      "facts": {
+        "function": "fiberConnector",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      },
+      "expectHs": "85367090"
+    },
+    {
+      "id": "8536-junctionblock-lt16a-none",
+      "heading": "8536",
+      "text": "hộp nối dây dưới 16A",
+      "facts": {
+        "function": "junctionBlock",
+        "currentRating": "lt16A",
+        "specialApp": "none"
+      },
+      "expectHs": "85369032"
+    },
+    {
+      "id": "8536-junctionblock-unspecified-none",
+      "heading": "8536",
+      "text": "hộp nối dây không rõ",
+      "facts": {
+        "function": "junctionBlock",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      },
+      "expectHs": "85369099"
+    },
+    {
+      "id": "8536-junctionblock-unspecified-sen",
+      "heading": "8536",
+      "text": "hộp nối dây không rõ loại bếp từ",
+      "facts": {
+        "function": "junctionBlock",
+        "currentRating": "unspecified",
+        "specialApp": "sen"
+      },
+      "expectHs": "85369040"
+    },
+    {
+      "id": "8536-junctionblock-unspecified-telephone",
+      "heading": "8536",
+      "text": "hộp nối dây không rõ loại điện thoại",
+      "facts": {
+        "function": "junctionBlock",
+        "currentRating": "unspecified",
+        "specialApp": "telephone"
+      },
+      "expectHs": "85369093"
+    },
+    {
+      "id": "8536-oz-phich-cam-dien",
+      "heading": "8536",
+      "text": "Phích cắm điện",
+      "expectHs": "85366999",
+      "facts": {
+        "function": "plug",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-o-cam-dien",
+      "heading": "8536",
+      "text": "Ổ cắm điện",
+      "expectHs": "85366999",
+      "facts": {
+        "function": "plug",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-dau-noi-day-dien",
+      "heading": "8536",
+      "text": "Đầu nối dây điện",
+      "expectHs": "85369099",
+      "facts": {
+        "function": "junctionBlock",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-phich-o-cam-cong-nghiep",
+      "heading": "8536",
+      "text": "Phích ổ cắm công nghiệp",
+      "expectHs": "85366999",
+      "facts": {
+        "function": "plug",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-cong-tac-the-tu-khach-san",
+      "heading": "8536",
+      "text": "Công tắc thẻ từ khách sạn",
+      "expectHs": "85365099",
+      "facts": {
+        "function": "switch",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-ro-le-trung-gian",
+      "heading": "8536",
+      "text": "Rơ le trung gian",
+      "expectHs": "85364199",
+      "facts": {
+        "function": "relayLe60V",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-cau-dau-day-dien",
+      "heading": "8536",
+      "text": "Cầu đấu dây điện",
+      "expectHs": "85369099",
+      "facts": {
+        "function": "junctionBlock",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-cong-tac-dong-ngat-mach",
+      "heading": "8536",
+      "text": "Công tắc đóng ngắt mạch",
+      "expectHs": "85365099",
+      "facts": {
+        "function": "switch",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-cong-tac-ban-dap",
+      "heading": "8536",
+      "text": "Công tắc bàn đạp",
+      "expectHs": "85365099",
+      "facts": {
+        "function": "switch",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-cong-tac-trai",
+      "heading": "8536",
+      "text": "Công tắc trái",
+      "expectHs": "85365099",
+      "facts": {
+        "function": "switch",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-cong-tac-dien",
+      "heading": "8536",
+      "text": "Công tắc điện",
+      "expectHs": "85365099",
+      "facts": {
+        "function": "switch",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-ro-le",
+      "heading": "8536",
+      "text": "Rơ le",
+      "expectHs": "85364199",
+      "facts": {
+        "function": "relayLe60V",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-ro-le-ban-dan",
+      "heading": "8536",
+      "text": "Rơ le bán dẫn",
+      "expectHs": "85364199",
+      "facts": {
+        "function": "relayLe60V",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-o-cam-da-nang",
+      "heading": "8536",
+      "text": "Ổ cắm đa năng",
+      "expectHs": "85366999",
+      "facts": {
+        "function": "plug",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-bo-o-cam-dien",
+      "heading": "8536",
+      "text": "Bộ ổ cắm điện",
+      "expectHs": "85366999",
+      "facts": {
+        "function": "plug",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-bo-o-cam-cong-nghiep",
+      "heading": "8536",
+      "text": "Bộ ổ cắm công nghiệp",
+      "expectHs": "85366999",
+      "facts": {
+        "function": "plug",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-cong-tac-muc",
+      "heading": "8536",
+      "text": "Công tắc mức",
+      "expectHs": "85365099",
+      "facts": {
+        "function": "switch",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-ro-le-trang-thai-ran",
+      "heading": "8536",
+      "text": "Rơ le trạng thái rắn",
+      "expectHs": "85364199",
+      "facts": {
+        "function": "relayLe60V",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-aptomat-3p-20a",
+      "heading": "8536",
+      "text": "Aptomat 3P 20A",
+      "expectHs": "85362012",
+      "facts": {
+        "function": "circuitBreaker",
+        "currentRating": "a16to32",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-ro-le-nhiet",
+      "heading": "8536",
+      "text": "Rơ le nhiệt",
+      "expectHs": "85364199",
+      "facts": {
+        "function": "relayLe60V",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-cong-tac-chuyen-mach-3-vi-tri",
+      "heading": "8536",
+      "text": "Công tắc chuyển mạch 3 vị trí",
+      "expectHs": "85365099",
+      "facts": {
+        "function": "switch",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-cong-tac-ap-suat",
+      "heading": "8536",
+      "text": "Công tắc áp suất",
+      "expectHs": "85365099",
+      "facts": {
+        "function": "switch",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-ro-le-thoi-gian",
+      "heading": "8536",
+      "text": "Rơ le thời gian",
+      "expectHs": "85364199",
+      "facts": {
+        "function": "relayLe60V",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-ro-le-bao-ve-dong-co-ky-thuat-so",
+      "heading": "8536",
+      "text": "Rơ le bảo vệ động cơ kỹ thuật số",
+      "expectHs": "85364199",
+      "facts": {
+        "function": "relayLe60V",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "8536-oz-nut-bam-star",
+      "heading": "8536",
+      "text": "Nút bấm star",
+      "expectHs": "85365099",
+      "facts": {
+        "function": "switch",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      }
+    },
+    {
+      "id": "3926-oz-day-curoa",
+      "heading": "3926",
+      "text": "Dây Curoa",
+      "expectHs": "39269053",
+      "facts": {
+        "intendedUse": "industrial_conveyor",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-tuong-nhua-trang-tri",
+      "heading": "3926",
+      "text": "Tượng nhựa trang trí",
+      "expectHs": "39264000",
+      "facts": {
+        "intendedUse": "decoration",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-tuong-nhua",
+      "heading": "3926",
+      "text": "Tượng nhựa",
+      "expectHs": "39264000",
+      "facts": {
+        "intendedUse": "decoration",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-goi-do",
+      "heading": "3926",
+      "text": "Gối đỡ",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-hinh-trang-tri",
+      "heading": "3926",
+      "text": "Hình trang trí",
+      "expectHs": "39264000",
+      "facts": {
+        "intendedUse": "decoration",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-hat-nhua-trang-tri",
+      "heading": "3926",
+      "text": "Hạt nhựa trang trí",
+      "expectHs": "39264000",
+      "facts": {
+        "intendedUse": "decoration",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-khay-cam-but",
+      "heading": "3926",
+      "text": "Khay cắm bút",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-quat-cam-tay",
+      "heading": "3926",
+      "text": "Quạt cầm tay",
+      "expectHs": "39269020",
+      "facts": {
+        "intendedUse": "handfan",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-phot-may-nen-khi",
+      "heading": "3926",
+      "text": "Phớt máy nén khí",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-bang-tai-pcb",
+      "heading": "3926",
+      "text": "Băng tải PCB",
+      "expectHs": "39269053",
+      "facts": {
+        "intendedUse": "industrial_conveyor",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-do-trang-tri-de-ban",
+      "heading": "3926",
+      "text": "Đồ trang trí để bàn",
+      "expectHs": "39264000",
+      "facts": {
+        "intendedUse": "decoration",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-qua-cau-nhua-trang-tri",
+      "heading": "3926",
+      "text": "Quả cầu nhựa trang trí",
+      "expectHs": "39264000",
+      "facts": {
+        "intendedUse": "decoration",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-con-lan-pva",
+      "heading": "3926",
+      "text": "Con lăn PVA",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-xich-nhua",
+      "heading": "3926",
+      "text": "Xích nhựa",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-do-trang-tri-de-ban-hinh-meo-than-tai",
+      "heading": "3926",
+      "text": "Đồ trang trí để bàn hình mèo thần tài",
+      "expectHs": "39264000",
+      "facts": {
+        "intendedUse": "decoration",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-goi-do-con-lan",
+      "heading": "3926",
+      "text": "Gối đỡ con lăn",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-khop-noi-bang-nhua",
+      "heading": "3926",
+      "text": "Khớp nối bằng nhựa",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-con-lan-con-bang-nhua-pu",
+      "heading": "3926",
+      "text": "Con lăn côn bằng nhựa PU",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-do-trang-tri-hinh-quat",
+      "heading": "3926",
+      "text": "đồ trang trí hình quạt",
+      "expectHs": "39264000",
+      "facts": {
+        "intendedUse": "decoration",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-mieng-chan-giay",
+      "heading": "3926",
+      "text": "Miếng chặn giấy",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-de-van-thao-tac",
+      "heading": "3926",
+      "text": "Đế van thao tác",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-bo-gioang-phot",
+      "heading": "3926",
+      "text": "Bộ gioăng phớt",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-nut-bit",
+      "heading": "3926",
+      "text": "Nút bịt",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-giam-chan",
+      "heading": "3926",
+      "text": "Giảm chấn",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-giam-thanh-khi-nen",
+      "heading": "3926",
+      "text": "Giảm thanh khí nén",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-con-lan",
+      "heading": "3926",
+      "text": "Con lăn",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-bang-tai-nhua",
+      "heading": "3926",
+      "text": "Băng tải nhựa",
+      "expectHs": "39269053",
+      "facts": {
+        "intendedUse": "industrial_conveyor",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-con-lan-truyen-dong",
+      "heading": "3926",
+      "text": "Con lăn truyền động",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-mo-trang-tri",
+      "heading": "3926",
+      "text": "Mõ trang trí",
+      "expectHs": "39264000",
+      "facts": {
+        "intendedUse": "decoration",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-day-curoa-rang-xich",
+      "heading": "3926",
+      "text": "Dây curoa răng xích",
+      "expectHs": "39269053",
+      "facts": {
+        "intendedUse": "industrial_conveyor",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-phot-chong-nen-dz-q2-coi-sung",
+      "heading": "3926",
+      "text": "Phớt chống nén DZ-Q2 (Cối súng)",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-moc-treo-cap-dien",
+      "heading": "3926",
+      "text": "Móc treo cáp điện",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-bang-tai",
+      "heading": "3926",
+      "text": "Băng tải",
+      "expectHs": "39269053",
+      "facts": {
+        "intendedUse": "industrial_conveyor",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-goi-do-nhua",
+      "heading": "3926",
+      "text": "Gối đỡ nhựa",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-goi-do-nhua-pa",
+      "heading": "3926",
+      "text": "Gối đỡ nhựa PA",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-chot-chan-nhua-pa",
+      "heading": "3926",
+      "text": "Chốt chặn nhựa PA",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-con-lan-bot-pu",
+      "heading": "3926",
+      "text": "Con lăn bọt PU",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-con-lan-nhua-pva",
+      "heading": "3926",
+      "text": "Con lăn nhựa PVA",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-chot-nhua",
+      "heading": "3926",
+      "text": "Chốt nhựa",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-chot-ham-nhua",
+      "heading": "3926",
+      "text": "Chốt hãm nhựa",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-gau-tai-nhua",
+      "heading": "3926",
+      "text": "Gầu tải nhựa",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-pheu-loc-hoa-chat",
+      "heading": "3926",
+      "text": "Phễu lọc hóa chất",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-do-trang-tri-de-ban-hinh-than-tai-may-ma",
+      "heading": "3926",
+      "text": "Đồ trang trí để bàn hình thần tài may mắn",
+      "expectHs": "39264000",
+      "facts": {
+        "intendedUse": "decoration",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-tui-tai-loc-trang-tri-ngay-tet",
+      "heading": "3926",
+      "text": "Túi tài lộc trang trí ngày Tết",
+      "expectHs": "39264000",
+      "facts": {
+        "intendedUse": "decoration",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-heo-tiet-kiem-dung-tien-trang-tri",
+      "heading": "3926",
+      "text": "Heo tiết kiệm đựng tiền trang trí",
+      "expectHs": "39264000",
+      "facts": {
+        "intendedUse": "decoration",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-phot-dan-huong-xi-lanh-khi-nen",
+      "heading": "3926",
+      "text": "Phớt dẫn hướng xi lanh khí nén",
+      "expectHs": "39269059",
+      "facts": {
+        "intendedUse": "industrial_other",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-bang-tai-vai-nhua-nilon-phu-nhua-pu",
+      "heading": "3926",
+      "text": "Băng tải vải nhựa nilon phủ nhựa PU",
+      "expectHs": "39269053",
+      "facts": {
+        "intendedUse": "industrial_conveyor",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-day-dai-bang-tai-boc-xop",
+      "heading": "3926",
+      "text": "Dây đai băng tải bọc xốp",
+      "expectHs": "39269053",
+      "facts": {
+        "intendedUse": "industrial_conveyor",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-day-dai-bang-tai-pvc-xop",
+      "heading": "3926",
+      "text": "Dây đai băng tải PVC xốp",
+      "expectHs": "39269053",
+      "facts": {
+        "intendedUse": "industrial_conveyor",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "6402-oz-dep-nhua-pvc",
+      "heading": "6402",
+      "text": "Dép nhựa PVC",
+      "expectHs": "64029990",
+      "facts": {
+        "footwearKind": "other",
+        "upperMaterial": "plastic"
+      }
+    },
+    {
+      "id": "6402-oz-dep-nhua",
+      "heading": "6402",
+      "text": "Dép nhựa",
+      "expectHs": "64029990",
+      "facts": {
+        "footwearKind": "other",
+        "upperMaterial": "plastic"
+      }
+    },
+    {
+      "id": "6402-oz-giay-luoi-pvc",
+      "heading": "6402",
+      "text": "Giày lười PVC",
+      "expectHs": "64029990",
+      "facts": {
+        "footwearKind": "other",
+        "upperMaterial": "plastic"
+      }
+    },
+    {
+      "id": "6402-oz-giay-nhua-trong-suot",
+      "heading": "6402",
+      "text": "Giày nhựa trong suốt",
+      "expectHs": "64029990",
+      "facts": {
+        "footwearKind": "other",
+        "upperMaterial": "plastic"
+      }
+    },
+    {
+      "id": "8443-oz-may-in-phun-den-trang",
+      "heading": "8443",
+      "text": "Máy in phun đen trắng",
+      "expectHs": "84433940",
+      "facts": {
+        "printTech": "digital_copy",
+        "completeOrParts": "complete",
+        "color": "mono",
+        "digitalKind": "inkjet"
+      }
+    },
+    {
+      "id": "8443-oz-may-in-phun",
+      "heading": "8443",
+      "text": "Máy in phun",
+      "expectHs": "84433940",
+      "facts": {
+        "printTech": "digital_copy",
+        "completeOrParts": "complete",
+        "digitalKind": "inkjet"
+      }
+    },
+    {
+      "id": "8714-oz-ma-phanh-dia-xe-may",
+      "heading": "8714",
+      "text": "Má phanh đĩa xe máy",
+      "expectHs": "87141060",
+      "facts": {
+        "vehicleType": "motorcycle",
+        "partKind": "brake",
+        "forVehicle": "8711"
+      }
+    },
+    {
+      "id": "8714-oz-thanh-giang-tay-lai-xe-may",
+      "heading": "8714",
+      "text": "Thanh giằng tay lái xe máy",
+      "expectHs": "87141090",
+      "facts": {
+        "vehicleType": "motorcycle",
+        "partKind": "handlebar",
+        "forVehicle": "8711"
+      }
+    },
+    {
+      "id": "8714-oz-mieng-nhua-op-den-hau-xe-may",
+      "heading": "8714",
+      "text": "Miếng nhựa ốp đèn hậu xe máy",
+      "expectHs": "87141030",
+      "facts": {
+        "vehicleType": "motorcycle",
+        "partKind": "frame",
+        "forVehicle": "8711"
+      }
+    },
+    {
+      "id": "8714-oz-bua-con",
+      "heading": "8714",
+      "text": "Búa côn",
+      "expectHs": "87141040",
+      "facts": {
+        "vehicleType": "motorcycle",
+        "partKind": "transmission",
+        "forVehicle": "8711"
+      }
+    },
+    {
+      "id": "8714-oz-bo-dia-xich-nhong-xe-moto",
+      "heading": "8714",
+      "text": "Bộ đĩa xích và nhông xe mô tô",
+      "expectHs": "87141090",
+      "facts": {
+        "vehicleType": "motorcycle",
+        "partKind": "other",
+        "forVehicle": "8711"
+      }
+    },
+    {
+      "id": "8714-oz-cang-xe-dap-dien",
+      "heading": "8714",
+      "text": "Càng xe đạp điện",
+      "expectHs": "87149199",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "frame",
+        "forVehicle": "8714bicycle"
+      }
+    },
+    {
+      "id": "8714-oz-vanh-banh-truoc",
+      "heading": "8714",
+      "text": "Vành bánh trước",
+      "expectHs": "87149290",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "wheel",
+        "forVehicle": "8714bicycle"
+      }
+    },
+    {
+      "id": "8714-oz-bat-phanh-truoc",
+      "heading": "8714",
+      "text": "Bát phanh trước",
+      "expectHs": "87149490",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "brake",
+        "forVehicle": "8714bicycle"
+      }
+    },
+    {
+      "id": "8714-oz-dia-xich",
+      "heading": "8714",
+      "text": "Đĩa xích",
+      "expectHs": "87149690",
+      "facts": {
+        "vehicleType": "bicycle",
+        "partKind": "transmission",
+        "forVehicle": "8714bicycle"
+      }
+    },
+    {
+      "id": "3926-oz-vo-the-ngang-du-tem",
+      "heading": "3926",
+      "text": "Vỏ thẻ ngang đủ tem",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-bao-dung-the-nhua",
+      "heading": "3926",
+      "text": "Bao đựng thẻ nhựa",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-vo-the-dung-du-tem",
+      "heading": "3926",
+      "text": "Vỏ thẻ đứng đủ tem",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-bao-dung-the-co-day-deo",
+      "heading": "3926",
+      "text": "Bao đựng thẻ có dây đeo",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-bo-day-deo-the-va-bao-dung-the-nhua",
+      "heading": "3926",
+      "text": "Bộ dây đeo thẻ và bao đựng thẻ nhựa",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-bia-nhua",
+      "heading": "3926",
+      "text": "Bìa nhựa",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-khay-dung-tai-lieu",
+      "heading": "3926",
+      "text": "Khay đựng tài liệu",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-hop-ngan-nhua-dung-ho-so",
+      "heading": "3926",
+      "text": "Hộp ngăn nhựa đựng hồ sơ",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-kep-tai-lieu-file",
+      "heading": "3926",
+      "text": "Kẹp tài liệu File",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-kep-tai-lieu",
+      "heading": "3926",
+      "text": "Kẹp tài liệu",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-kep-giay",
+      "heading": "3926",
+      "text": "Kẹp giấy",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-hop-dung-giay-to",
+      "heading": "3926",
+      "text": "Hộp đựng giấy tờ",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-khay-nhua-de-tai-lieu",
+      "heading": "3926",
+      "text": "Khay nhựa để tài liệu",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-hop-dung-but",
+      "heading": "3926",
+      "text": "Hộp đựng bút",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-hop-dung-but-chi",
+      "heading": "3926",
+      "text": "Hộp đựng bút chì",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-tui-dung-tai-lieu-van-phong",
+      "heading": "3926",
+      "text": "Túi đựng tài liệu văn phòng",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-kep-dung-tai-lieu",
+      "heading": "3926",
+      "text": "Kẹp đựng tài liệu",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-kep-tai-lieu-trinh-ky",
+      "heading": "3926",
+      "text": "Kẹp tài liệu trình ký",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "3926-oz-tui-dung-tai-lieu",
+      "heading": "3926",
+      "text": "Túi đựng tài liệu",
+      "expectHs": "39261000",
+      "facts": {
+        "intendedUse": "office_school",
+        "senFlag": false,
+        "safetyType": "none"
+      }
+    },
+    {
+      "id": "8534-oz-mach-in-pcb-led",
+      "heading": "8534",
+      "text": "Mạch in PCB LED",
+      "expectHs": "85340010",
+      "facts": {
+        "pcbLayers": "single"
+      }
+    },
+    {
+      "id": "8534-oz-mach-in-pcb-nhom",
+      "heading": "8534",
+      "text": "Mạch in PCB nhôm",
+      "expectHs": "85340010",
+      "facts": {
+        "pcbLayers": "single"
+      }
+    },
+    {
+      "id": "8534-oz-mach-in-2-lop-pcb",
+      "heading": "8534",
+      "text": "Mạch in 2 lớp PCB",
+      "expectHs": "85340020",
+      "facts": {
+        "pcbLayers": "double"
+      }
+    },
+    {
+      "id": "8534-oz-mach-in-mot-lop-pcb",
+      "heading": "8534",
+      "text": "Mạch in một lớp PCB",
+      "expectHs": "85340010",
+      "facts": {
+        "pcbLayers": "single"
+      }
+    },
+    {
+      "id": "8534-oz-mach-in-pcb",
+      "heading": "8534",
+      "text": "Mạch in PCB",
+      "expectHs": "85340010",
+      "facts": {
+        "pcbLayers": "single"
+      }
+    },
+    {
+      "id": "8534-oz-mach-in-pcb-mot-lop",
+      "heading": "8534",
+      "text": "Mạch in PCB một lớp",
+      "expectHs": "85340010",
+      "facts": {
+        "pcbLayers": "single"
+      }
+    },
+    {
+      "id": "8534-oz-mach-in-2-lop-pcb-nhom",
+      "heading": "8534",
+      "text": "Mạch in 2 lớp PCB nhôm",
+      "expectHs": "85340020",
+      "facts": {
+        "pcbLayers": "double"
+      }
+    },
+    {
+      "id": "8534-oz-mach-in-2-lop-pcb-drv-m66",
+      "heading": "8534",
+      "text": "Mạch in 2 lớp PCB-DRV-M66",
+      "expectHs": "85340020",
+      "facts": {
+        "pcbLayers": "double"
+      }
+    },
+    {
+      "id": "8534-oz-mach-in",
+      "heading": "8534",
+      "text": "Mạch in",
+      "expectHs": "85340010",
+      "facts": {
+        "pcbLayers": "single"
+      }
+    },
+    {
+      "id": "8505-oz-cuon-phanh-dien-tu",
+      "heading": "8505",
+      "text": "Cuộn phanh điện từ",
+      "expectHs": "85052000",
+      "facts": {
+        "articleType": "coupling"
+      }
+    },
+    {
+      "id": "8505-oz-phanh-dien-tu",
+      "heading": "8505",
+      "text": "Phanh điện từ",
+      "expectHs": "85052000",
+      "facts": {
+        "articleType": "coupling"
+      }
+    },
+    {
+      "id": "8513-oz-den-pin",
+      "heading": "8513",
+      "text": "Đèn pin",
+      "expectHs": "85131090",
+      "facts": {
+        "goodsKind": "lamp",
+        "lampType": "other"
+      }
+    },
+    {
+      "id": "8513-oz-den-pin-laser-cam-tay",
+      "heading": "8513",
+      "text": "Đèn pin laser cầm tay",
+      "expectHs": "85131090",
+      "facts": {
+        "goodsKind": "lamp",
+        "lampType": "other"
+      }
+    },
+    {
+      "id": "8513-oz-den-pin-led-mini",
+      "heading": "8513",
+      "text": "Đèn pin LED mini",
+      "expectHs": "85131090",
+      "facts": {
+        "goodsKind": "lamp",
+        "lampType": "other"
+      }
+    },
+    {
+      "id": "8513-oz-den-pin-cam-tay",
+      "heading": "8513",
+      "text": "Đèn pin cầm tay",
+      "expectHs": "85131090",
+      "facts": {
+        "goodsKind": "lamp",
+        "lampType": "other"
+      }
+    },
+    {
+      "id": "8513-oz-den-pin-deo-dau",
+      "heading": "8513",
+      "text": "Đèn pin đeo đầu",
+      "expectHs": "85131090",
+      "facts": {
+        "goodsKind": "lamp",
+        "lampType": "other"
+      }
+    },
+    {
+      "id": "8532-oz-tu-gom-nhieu-lop-tu-dien-dan",
+      "heading": "8532",
+      "text": "Tụ gốm nhiều lớp (Tụ điện dán)",
+      "expectHs": "85322400",
+      "facts": {
+        "capKind": "ceramicMulti"
+      }
+    },
+    {
+      "id": "8532-oz-tu-gom-nhieu-lop",
+      "heading": "8532",
+      "text": "Tụ gốm nhiều lớp",
+      "expectHs": "85322400",
+      "facts": {
+        "capKind": "ceramicMulti"
+      }
+    },
+    {
+      "id": "8532-oz-tu-nhom-dan",
+      "heading": "8532",
+      "text": "Tụ nhôm dán",
+      "expectHs": "85322200",
+      "facts": {
+        "capKind": "aluminiumElectrolytic"
+      }
+    },
+    {
+      "id": "8535-oz-cau-chi-cam",
+      "heading": "8535",
+      "text": "Cầu chì cắm",
+      "expectHs": "85351000",
+      "facts": {
+        "apparatusKind": "fuse"
+      }
+    },
+    {
+      "id": "8535-oz-cau-chi-hop",
+      "heading": "8535",
+      "text": "Cầu chì hộp",
+      "expectHs": "85351000",
+      "facts": {
+        "apparatusKind": "fuse"
+      }
+    },
+    {
+      "id": "8541-oz-di-ot-dan",
+      "heading": "8541",
+      "text": "Đi ốt dán",
+      "expectHs": "85411000",
+      "facts": {
+        "deviceKind": "diode"
+      }
+    },
+    {
+      "id": "8541-oz-led-7-thanh",
+      "heading": "8541",
+      "text": "Led 7 thanh",
+      "expectHs": "85414100",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "led"
+      }
+    },
+    {
+      "id": "8541-oz-diot-chinh-luu",
+      "heading": "8541",
+      "text": "Điốt chỉnh lưu",
+      "expectHs": "85411000",
+      "facts": {
+        "deviceKind": "diode"
+      }
+    },
+    {
+      "id": "8541-oz-di-ot-chinh-luu",
+      "heading": "8541",
+      "text": "Đi ốt chỉnh lưu",
+      "expectHs": "85411000",
+      "facts": {
+        "deviceKind": "diode"
+      }
+    },
+    {
+      "id": "8541-oz-di-ot-dan-chinh-luu-cau",
+      "heading": "8541",
+      "text": "Đi ốt dán chỉnh lưu cầu",
+      "expectHs": "85411000",
+      "facts": {
+        "deviceKind": "diode"
+      }
+    },
+    {
+      "id": "8541-oz-di-ot-cau-chinh-luu",
+      "heading": "8541",
+      "text": "Đi ốt cầu chỉnh lưu",
+      "expectHs": "85411000",
+      "facts": {
+        "deviceKind": "diode"
+      }
+    },
+    {
+      "id": "8541-oz-di-ot-on-ap",
+      "heading": "8541",
+      "text": "Đi-ốt ổn áp",
+      "expectHs": "85411000",
+      "facts": {
+        "deviceKind": "diode"
+      }
+    },
+    {
+      "id": "8541-oz-di-ot-chuyen-mach",
+      "heading": "8541",
+      "text": "Đi-ốt chuyển mạch",
+      "expectHs": "85411000",
+      "facts": {
+        "deviceKind": "diode"
+      }
+    },
+    {
+      "id": "8541-oz-di-ot-chinh-luu-phanh-tu",
+      "heading": "8541",
+      "text": "Đi ốt chỉnh lưu phanh từ",
+      "expectHs": "85411000",
+      "facts": {
+        "deviceKind": "diode"
+      }
+    },
+    {
+      "id": "8541-oz-di-ot-cam",
+      "heading": "8541",
+      "text": "Đi ốt cắm",
+      "expectHs": "85411000",
+      "facts": {
+        "deviceKind": "diode"
+      }
+    },
+    {
+      "id": "8541-oz-man-hinh-led-7-doan",
+      "heading": "8541",
+      "text": "Màn hình LED 7 đoạn",
+      "expectHs": "85414100",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "led"
+      }
+    },
+    {
+      "id": "8541-oz-di-ot-schottky",
+      "heading": "8541",
+      "text": "Đi ốt Schottky",
+      "expectHs": "85411000",
+      "facts": {
+        "deviceKind": "diode"
+      }
+    },
+    {
+      "id": "8541-oz-di-ot-dan-zener",
+      "heading": "8541",
+      "text": "Đi ốt dán Zener",
+      "expectHs": "85411000",
+      "facts": {
+        "deviceKind": "diode"
+      }
+    },
+    {
+      "id": "8541-oz-di-ot-cau-vuong",
+      "heading": "8541",
+      "text": "Đi ốt cầu vuông",
+      "expectHs": "85411000",
+      "facts": {
+        "deviceKind": "diode"
+      }
+    },
+    {
+      "id": "8542-oz-chip-vi-dieu-khien",
+      "heading": "8542",
+      "text": "Chíp vi điều khiển",
+      "expectHs": "85423100",
+      "facts": {
+        "goodsKind": "ic",
+        "icKind": "processor"
+      }
     }
   ]
 }

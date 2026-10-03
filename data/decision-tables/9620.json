@@ -1,0 +1,119 @@
+{
+  "heading": "9620",
+  "titleVi": "Chân máy ảnh, chân giá đỡ và các loại tương tự; đế máy ảnh, đế giá đỡ",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Chân giá đỡ (tripod) và đế giá đỡ phân loại theo VẬT LIỆU chế tạo: plastic → 9620.00.10; carbon/graphit → 9620.00.20; sắt/thép → 9620.00.30; nhôm → 9620.00.40; gỗ → 9620.00.50; loại khác → 9620.00.90. Không phân biệt theo công dụng (máy ảnh, điện thoại, đèn…) — cùng vật liệu thì cùng mã.",
+  "sourceVi": "Biểu thuế 2026 nhóm 9620: 9620.00.10 plastic; 9620.00.20 carbon/graphit; 9620.00.30 sắt/thép; 9620.00.40 nhôm; 9620.00.50 gỗ; 9620.00.90 loại khác. Không phân biệt giữa tripod máy ảnh, tripod điện thoại, chân giá đỡ đèn.",
+  "inputs": [
+    {
+      "attribute": "material",
+      "type": "enum",
+      "domain": ["plastic", "carbon", "steel", "aluminum", "wood", "other"],
+      "labelVi": "Vật liệu chế tạo",
+      "questionVi": "Chân giá đỡ / đế giá đỡ làm bằng vật liệu gì?",
+      "detect": {
+        "plastic": [
+          "nhựa",
+          "plastic",
+          "PVC",
+          "ABS",
+          "tripod nhựa",
+          "chân nhựa",
+          "giá nhựa"
+        ],
+        "carbon": [
+          "carbon",
+          "graphit",
+          "graphite",
+          "than graphit"
+        ],
+        "steel": [
+          "sắt",
+          "thép",
+          "steel",
+          "iron",
+          "sắt mạ",
+          "thép mạ",
+          "mạ",
+          "sắt và thép",
+          "SS"
+        ],
+        "aluminum": [
+          "nhôm",
+          "aluminum",
+          "aluminium"
+        ],
+        "wood": [
+          "gỗ",
+          "wood",
+          "wooden"
+        ],
+        "other": [
+          "loại khác",
+          "khác",
+          "mixed material",
+          "hợp kim"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-plastic",
+      "priority": 90,
+      "when": { "material": "plastic" },
+      "hs": "96200010",
+      "gir": "GIR 1",
+      "reasonVi": "Chân giá đỡ / đế bằng plastic → 9620.00.10. Ví dụ: chân giá đỡ điện thoại bằng nhựa → 9620.00.10.",
+      "source": "Biểu thuế 2026 dòng 9620.00.10"
+    },
+    {
+      "id": "r-carbon",
+      "priority": 90,
+      "when": { "material": "carbon" },
+      "hs": "96200020",
+      "gir": "GIR 1",
+      "reasonVi": "Chân giá đỡ bằng carbon và graphit → 9620.00.20.",
+      "source": "Biểu thuế 2026 dòng 9620.00.20"
+    },
+    {
+      "id": "r-steel",
+      "priority": 90,
+      "when": { "material": "steel" },
+      "hs": "96200030",
+      "gir": "GIR 1",
+      "reasonVi": "Chân giá đỡ / đế bằng sắt và thép → 9620.00.30. Ví dụ: chân giá đỡ điện thoại 3 chân sắt mạ → 9620.00.30.",
+      "source": "Biểu thuế 2026 dòng 9620.00.30; entry chan-gia-do-dien-thoai→96200030"
+    },
+    {
+      "id": "r-aluminum",
+      "priority": 90,
+      "when": { "material": "aluminum" },
+      "hs": "96200040",
+      "gir": "GIR 1",
+      "reasonVi": "Chân giá đỡ bằng nhôm → 9620.00.40.",
+      "source": "Biểu thuế 2026 dòng 9620.00.40"
+    },
+    {
+      "id": "r-wood",
+      "priority": 90,
+      "when": { "material": "wood" },
+      "hs": "96200050",
+      "gir": "GIR 1",
+      "reasonVi": "Chân giá đỡ bằng gỗ → 9620.00.50.",
+      "source": "Biểu thuế 2026 dòng 9620.00.50"
+    },
+    {
+      "id": "r-default",
+      "priority": 50,
+      "when": { "material": "other" },
+      "hs": "96200090",
+      "gir": "GIR 1",
+      "reasonVi": "Chân giá đỡ / đế bằng loại khác → 9620.00.90.",
+      "source": "Biểu thuế 2026 dòng 9620.00.90"
+    }
+  ]
+}

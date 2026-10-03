@@ -1,0 +1,857 @@
+{
+  "heading": "8486",
+  "titleVi": "Máy và thiết bị sản xuất bán dẫn, IC, màn hình dẹt",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Máy này thuộc giai đoạn nào: làm tấm bán dẫn mỏng (8486.10), thiết bị bán dẫn/IC (8486.20), màn hình dẹt (8486.30), màn/lưới quang (8486.40), hay chỉ là bộ phận (8486.90)?",
+  "sourceVi": "Biểu thuế 2026 nhóm 84.86: 8486.10-8486.90. Chú giải HS Chương 84 Note 11(C) và các chú giải nhóm.",
+  "inputs": [
+    {
+      "attribute": "machineKind",
+      "type": "enum",
+      "domain": [
+        "semiconductorWafer",
+        "semiconductorDevice",
+        "flatPanel",
+        "maskReticleAssembly",
+        "parts"
+      ],
+      "labelVi": "Loại máy / giai đoạn sản xuất",
+      "questionVi": "Máy thuộc giai đoạn nào trong quy trình sản xuất bán dẫn/màn hình?",
+      "detect": {
+        "semiconductorWafer": [
+          "tấm bán dẫn mỏng",
+          "wafer",
+          "boules",
+          "thiết bị làm nóng nhanh",
+          "máy làm khô quay",
+          "máy cắt wafer",
+          "máy mài đánh bóng bán dẫn",
+          "thiết bị kéo tinh thể",
+          "semiconductor boule",
+          "semiconductor wafer fabrication"
+        ],
+        "semiconductorDevice": [
+          "thiết bị bán dẫn",
+          "IC",
+          "integrated circuit",
+          "chip",
+          "máy cấy ghép ion",
+          "lò sấy bán dẫn",
+          "thiết bị khắc",
+          "thiết bị in trực tiếp",
+          "semiconductor device manufacturing"
+        ],
+        "flatPanel": [
+          "màn hình dẹt",
+          "flat panel display",
+          "LCD",
+          "OLED màn hình",
+          "tấm nền màn hình"
+        ],
+        "maskReticleAssembly": [
+          "khuôn in",
+          "lưới quang",
+          "màn và lưới quang",
+          "kính hiển vi bán dẫn",
+          "lắp ráp bán dẫn",
+          "mask",
+          "reticle",
+          "die bond",
+          "wire bond"
+        ],
+        "parts": [
+          "bộ phận",
+          "phụ tùng",
+          "parts of",
+          "của máy"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-84861010",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorWafer"
+      },
+      "hs": "84861010",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị làm nóng nhanh tấm bán dẫn mỏng (RTP) → 8486.10.10.",
+      "source": "Biểu thuế 2026 dòng 8486.10.10"
+    },
+    {
+      "id": "r-84861020",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorWafer"
+      },
+      "hs": "84861020",
+      "gir": "GIR 6",
+      "reasonVi": "Máy làm khô bằng phương pháp quay ly tâm → 8486.10.20.",
+      "source": "Biểu thuế 2026 dòng 8486.10.20"
+    },
+    {
+      "id": "r-84861030",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorWafer"
+      },
+      "hs": "84861030",
+      "gir": "GIR 6",
+      "reasonVi": "Máy công cụ bóc tách bằng tia laser/ánh sáng → 8486.10.30.",
+      "source": "Biểu thuế 2026 dòng 8486.10.30"
+    },
+    {
+      "id": "r-84861040",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorWafer"
+      },
+      "hs": "84861040",
+      "gir": "GIR 6",
+      "reasonVi": "Máy cắt khối bán dẫn thành lớp / cưa chip → 8486.10.40.",
+      "source": "Biểu thuế 2026 dòng 8486.10.40"
+    },
+    {
+      "id": "r-84861050",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorWafer"
+      },
+      "hs": "84861050",
+      "gir": "GIR 6",
+      "reasonVi": "Máy mài, đánh bóng và phủ → 8486.10.50.",
+      "source": "Biểu thuế 2026 dòng 8486.10.50"
+    },
+    {
+      "id": "r-84861060",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorWafer"
+      },
+      "hs": "84861060",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị làm phát triển hoặc kéo khối bán dẫn đơn tinh thể → 8486.10.60.",
+      "source": "Biểu thuế 2026 dòng 8486.10.60"
+    },
+    {
+      "id": "r-84861090",
+      "priority": 5,
+      "when": {
+        "machineKind": "semiconductorWafer"
+      },
+      "hs": "84861090",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác máy gia công tấm bán dẫn mỏng → 8486.10.90.",
+      "source": "Biểu thuế 2026 dòng 8486.10.90"
+    },
+    {
+      "id": "r-84862011",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862011",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị kết tủa khí hóa (CVD) → 8486.20.11.",
+      "source": "Biểu thuế 2026 dòng 8486.20.11"
+    },
+    {
+      "id": "r-84862012",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862012",
+      "gir": "GIR 6",
+      "reasonVi": "Máy kết tủa epitaxi (EPI) → 8486.20.12.",
+      "source": "Biểu thuế 2026 dòng 8486.20.12"
+    },
+    {
+      "id": "r-84862013",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862013",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị tạo kết tủa vật lý bằng phun phủ (PVD) → 8486.20.13.",
+      "source": "Biểu thuế 2026 dòng 8486.20.13"
+    },
+    {
+      "id": "r-84862019",
+      "priority": 5,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862019",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác thiết bị lắng đọng cho bán dẫn → 8486.20.19.",
+      "source": "Biểu thuế 2026 dòng 8486.20.19"
+    },
+    {
+      "id": "r-84862021",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862021",
+      "gir": "GIR 6",
+      "reasonVi": "Máy cấy ghép ion → 8486.20.21.",
+      "source": "Biểu thuế 2026 dòng 8486.20.21"
+    },
+    {
+      "id": "r-84862029",
+      "priority": 5,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862029",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác thiết bị xử lý vật liệu bán dẫn → 8486.20.29.",
+      "source": "Biểu thuế 2026 dòng 8486.20.29"
+    },
+    {
+      "id": "r-84862031",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862031",
+      "gir": "GIR 6",
+      "reasonVi": "Máy dùng tia sáng làm sạch photoresist → 8486.20.31.",
+      "source": "Biểu thuế 2026 dòng 8486.20.31"
+    },
+    {
+      "id": "r-84862032",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862032",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị khắc khô cho bản mẫu → 8486.20.32.",
+      "source": "Biểu thuế 2026 dòng 8486.20.32"
+    },
+    {
+      "id": "r-84862033",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862033",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị khắc ướt / hiện ảnh / tẩy rửa → 8486.20.33.",
+      "source": "Biểu thuế 2026 dòng 8486.20.33"
+    },
+    {
+      "id": "r-84862039",
+      "priority": 5,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862039",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác thiết bị khắc/làm sạch → 8486.20.39.",
+      "source": "Biểu thuế 2026 dòng 8486.20.39"
+    },
+    {
+      "id": "r-84862041",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862041",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị in trực tiếp lên tấm bán dẫn → 8486.20.41.",
+      "source": "Biểu thuế 2026 dòng 8486.20.41"
+    },
+    {
+      "id": "r-84862042",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862042",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị hiệu chỉnh vị trí mẫu theo bước → 8486.20.42.",
+      "source": "Biểu thuế 2026 dòng 8486.20.42"
+    },
+    {
+      "id": "r-84862049",
+      "priority": 5,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862049",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác thiết bị in/hiệu chỉnh → 8486.20.49.",
+      "source": "Biểu thuế 2026 dòng 8486.20.49"
+    },
+    {
+      "id": "r-84862051",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862051",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị khắc để đánh dấu/vạch → 8486.20.51.",
+      "source": "Biểu thuế 2026 dòng 8486.20.51"
+    },
+    {
+      "id": "r-84862059",
+      "priority": 5,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862059",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác thiết bị khắc → 8486.20.59.",
+      "source": "Biểu thuế 2026 dòng 8486.20.59"
+    },
+    {
+      "id": "r-84862091",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862091",
+      "gir": "GIR 6",
+      "reasonVi": "Máy cắt laser đầu chân dẫn → 8486.20.91.",
+      "source": "Biểu thuế 2026 dòng 8486.20.91"
+    },
+    {
+      "id": "r-84862092",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862092",
+      "gir": "GIR 6",
+      "reasonVi": "Máy uốn/gấp/thẳng đầu chân dẫn → 8486.20.92.",
+      "source": "Biểu thuế 2026 dòng 8486.20.92"
+    },
+    {
+      "id": "r-84862093",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862093",
+      "gir": "GIR 6",
+      "reasonVi": "Lò sấy/luyện điện trở → 8486.20.93.",
+      "source": "Biểu thuế 2026 dòng 8486.20.93"
+    },
+    {
+      "id": "r-84862094",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862094",
+      "gir": "GIR 6",
+      "reasonVi": "Lò sấy/luyện cảm ứng/điện môi → 8486.20.94.",
+      "source": "Biểu thuế 2026 dòng 8486.20.94"
+    },
+    {
+      "id": "r-84862095",
+      "priority": 20,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862095",
+      "gir": "GIR 6",
+      "reasonVi": "Máy tự động dịch chuyển/bóc tách linh kiện → 8486.20.95.",
+      "source": "Biểu thuế 2026 dòng 8486.20.95"
+    },
+    {
+      "id": "r-84862099",
+      "priority": 5,
+      "when": {
+        "machineKind": "semiconductorDevice"
+      },
+      "hs": "84862099",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác thiết bị gia nhiệt/lắp ráp bán dẫn → 8486.20.99.",
+      "source": "Biểu thuế 2026 dòng 8486.20.99"
+    },
+    {
+      "id": "r-84863010",
+      "priority": 20,
+      "when": {
+        "machineKind": "flatPanel"
+      },
+      "hs": "84863010",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị khắc axit khô lên tấm nền màn hình → 8486.30.10.",
+      "source": "Biểu thuế 2026 dòng 8486.30.10"
+    },
+    {
+      "id": "r-84863020",
+      "priority": 20,
+      "when": {
+        "machineKind": "flatPanel"
+      },
+      "hs": "84863020",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị khắc ướt/hiện ảnh/tẩy rửa màn hình → 8486.30.20.",
+      "source": "Biểu thuế 2026 dòng 8486.30.20"
+    },
+    {
+      "id": "r-84863030",
+      "priority": 20,
+      "when": {
+        "machineKind": "flatPanel"
+      },
+      "hs": "84863030",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị kết tủa/bay hơi màn hình dẹt → 8486.30.30.",
+      "source": "Biểu thuế 2026 dòng 8486.30.30"
+    },
+    {
+      "id": "r-84863090",
+      "priority": 5,
+      "when": {
+        "machineKind": "flatPanel"
+      },
+      "hs": "84863090",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác máy sản xuất màn hình dẹt → 8486.30.90.",
+      "source": "Biểu thuế 2026 dòng 8486.30.90"
+    },
+    {
+      "id": "r-84864010",
+      "priority": 20,
+      "when": {
+        "machineKind": "maskReticleAssembly"
+      },
+      "hs": "84864010",
+      "gir": "GIR 6",
+      "reasonVi": "Máy phay ion (ion milling) cho màn/lưới quang → 8486.40.10.",
+      "source": "Biểu thuế 2026 dòng 8486.40.10"
+    },
+    {
+      "id": "r-84864020",
+      "priority": 20,
+      "when": {
+        "machineKind": "maskReticleAssembly"
+      },
+      "hs": "84864020",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị gắn khuôn/nối dây/bọc nhựa → 8486.40.20.",
+      "source": "Biểu thuế 2026 dòng 8486.40.20"
+    },
+    {
+      "id": "r-84864030",
+      "priority": 20,
+      "when": {
+        "machineKind": "maskReticleAssembly"
+      },
+      "hs": "84864030",
+      "gir": "GIR 6",
+      "reasonVi": "Khuôn để sản xuất linh kiện bán dẫn → 8486.40.30.",
+      "source": "Biểu thuế 2026 dòng 8486.40.30"
+    },
+    {
+      "id": "r-84864040",
+      "priority": 20,
+      "when": {
+        "machineKind": "maskReticleAssembly"
+      },
+      "hs": "84864040",
+      "gir": "GIR 6",
+      "reasonVi": "Kính hiển vi quang học soi nổi chuyên dùng → 8486.40.40.",
+      "source": "Biểu thuế 2026 dòng 8486.40.40"
+    },
+    {
+      "id": "r-84864050",
+      "priority": 20,
+      "when": {
+        "machineKind": "maskReticleAssembly"
+      },
+      "hs": "84864050",
+      "gir": "GIR 6",
+      "reasonVi": "Kính hiển vi chụp ảnh chuyên dùng → 8486.40.50.",
+      "source": "Biểu thuế 2026 dòng 8486.40.50"
+    },
+    {
+      "id": "r-84864060",
+      "priority": 20,
+      "when": {
+        "machineKind": "maskReticleAssembly"
+      },
+      "hs": "84864060",
+      "gir": "GIR 6",
+      "reasonVi": "Kính hiển vi điện tử chuyên dùng → 8486.40.60.",
+      "source": "Biểu thuế 2026 dòng 8486.40.60"
+    },
+    {
+      "id": "r-84864070",
+      "priority": 20,
+      "when": {
+        "machineKind": "maskReticleAssembly"
+      },
+      "hs": "84864070",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị tạo mẫu (khuôn in/lưới quang) → 8486.40.70.",
+      "source": "Biểu thuế 2026 dòng 8486.40.70"
+    },
+    {
+      "id": "r-84864090",
+      "priority": 5,
+      "when": {
+        "machineKind": "maskReticleAssembly"
+      },
+      "hs": "84864090",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác máy màn/lưới quang/lắp ráp → 8486.40.90.",
+      "source": "Biểu thuế 2026 dòng 8486.40.90"
+    },
+    {
+      "id": "r-84869011",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869011",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của thiết bị nung nhanh → 8486.90.11.",
+      "source": "Biểu thuế 2026 dòng 8486.90.11"
+    },
+    {
+      "id": "r-84869012",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869012",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của máy làm khô quay → 8486.90.12.",
+      "source": "Biểu thuế 2026 dòng 8486.90.12"
+    },
+    {
+      "id": "r-84869013",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869013",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của máy công cụ laser → 8486.90.13.",
+      "source": "Biểu thuế 2026 dòng 8486.90.13"
+    },
+    {
+      "id": "r-84869014",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869014",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận kẹp dụng cụ/đầu cắt ren tự mở → 8486.90.14.",
+      "source": "Biểu thuế 2026 dòng 8486.90.14"
+    },
+    {
+      "id": "r-84869015",
+      "priority": 5,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869015",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác bộ phận nhóm 8486.10 → 8486.90.15.",
+      "source": "Biểu thuế 2026 dòng 8486.90.15"
+    },
+    {
+      "id": "r-84869016",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869016",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của máy mài/đánh bóng → 8486.90.16.",
+      "source": "Biểu thuế 2026 dòng 8486.90.16"
+    },
+    {
+      "id": "r-84869017",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869017",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của thiết bị kéo tinh thể → 8486.90.17.",
+      "source": "Biểu thuế 2026 dòng 8486.90.17"
+    },
+    {
+      "id": "r-84869019",
+      "priority": 5,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869019",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác bộ phận nhóm 8486.10 → 8486.90.19.",
+      "source": "Biểu thuế 2026 dòng 8486.90.19"
+    },
+    {
+      "id": "r-84869021",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869021",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của thiết bị kết tủa/bay hơi → 8486.90.21.",
+      "source": "Biểu thuế 2026 dòng 8486.90.21"
+    },
+    {
+      "id": "r-84869022",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869022",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của máy kết tủa epitaxi → 8486.90.22.",
+      "source": "Biểu thuế 2026 dòng 8486.90.22"
+    },
+    {
+      "id": "r-84869023",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869023",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của máy cấy ghép ion → 8486.90.23.",
+      "source": "Biểu thuế 2026 dòng 8486.90.23"
+    },
+    {
+      "id": "r-84869024",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869024",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận kẹp dụng cụ/đầu cắt ren tự mở → 8486.90.24.",
+      "source": "Biểu thuế 2026 dòng 8486.90.24"
+    },
+    {
+      "id": "r-84869025",
+      "priority": 5,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869025",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác bộ phận nhóm 8486.20 → 8486.90.25.",
+      "source": "Biểu thuế 2026 dòng 8486.90.25"
+    },
+    {
+      "id": "r-84869026",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869026",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận kẹp dụng cụ/đầu cắt ren tự mở → 8486.90.26.",
+      "source": "Biểu thuế 2026 dòng 8486.90.26"
+    },
+    {
+      "id": "r-84869027",
+      "priority": 5,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869027",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác bộ phận nhóm 8486.20 → 8486.90.27.",
+      "source": "Biểu thuế 2026 dòng 8486.90.27"
+    },
+    {
+      "id": "r-84869028",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869028",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của lò sấy/luyện điện trở → 8486.90.28.",
+      "source": "Biểu thuế 2026 dòng 8486.90.28"
+    },
+    {
+      "id": "r-84869029",
+      "priority": 5,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869029",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác bộ phận nhóm 8486.20 → 8486.90.29.",
+      "source": "Biểu thuế 2026 dòng 8486.90.29"
+    },
+    {
+      "id": "r-84869031",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869031",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của thiết bị khắc axit khô → 8486.90.31.",
+      "source": "Biểu thuế 2026 dòng 8486.90.31"
+    },
+    {
+      "id": "r-84869032",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869032",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận kẹp dụng cụ → 8486.90.32.",
+      "source": "Biểu thuế 2026 dòng 8486.90.32"
+    },
+    {
+      "id": "r-84869033",
+      "priority": 5,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869033",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác bộ phận nhóm 8486.30 → 8486.90.33.",
+      "source": "Biểu thuế 2026 dòng 8486.90.33"
+    },
+    {
+      "id": "r-84869034",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869034",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của thiết bị kết tủa/bay hơi màn hình → 8486.90.34.",
+      "source": "Biểu thuế 2026 dòng 8486.90.34"
+    },
+    {
+      "id": "r-84869035",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869035",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của thiết bị tạo lớp phủ nhũ tương → 8486.90.35.",
+      "source": "Biểu thuế 2026 dòng 8486.90.35"
+    },
+    {
+      "id": "r-84869036",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869036",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của thiết bị tạo kết tủa vật lý (PVD) → 8486.90.36.",
+      "source": "Biểu thuế 2026 dòng 8486.90.36"
+    },
+    {
+      "id": "r-84869039",
+      "priority": 5,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869039",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác bộ phận nhóm 8486.30 → 8486.90.39.",
+      "source": "Biểu thuế 2026 dòng 8486.90.39"
+    },
+    {
+      "id": "r-84869041",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869041",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của máy phay ion → 8486.90.41.",
+      "source": "Biểu thuế 2026 dòng 8486.90.41"
+    },
+    {
+      "id": "r-84869042",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869042",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của thiết bị gắn khuôn/nối dây → 8486.90.42.",
+      "source": "Biểu thuế 2026 dòng 8486.90.42"
+    },
+    {
+      "id": "r-84869043",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869043",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của máy tự động dịch chuyển/bóc tách → 8486.90.43.",
+      "source": "Biểu thuế 2026 dòng 8486.90.43"
+    },
+    {
+      "id": "r-84869044",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869044",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của kính hiển vi quang học → 8486.90.44.",
+      "source": "Biểu thuế 2026 dòng 8486.90.44"
+    },
+    {
+      "id": "r-84869045",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869045",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của kính hiển vi điện tử → 8486.90.45.",
+      "source": "Biểu thuế 2026 dòng 8486.90.45"
+    },
+    {
+      "id": "r-84869046",
+      "priority": 20,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869046",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của thiết bị tạo mẫu → 8486.90.46.",
+      "source": "Biểu thuế 2026 dòng 8486.90.46"
+    },
+    {
+      "id": "r-84869049",
+      "priority": 5,
+      "when": {
+        "machineKind": "parts"
+      },
+      "hs": "84869049",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác bộ phận nhóm 8486.40 → 8486.90.49.",
+      "source": "Biểu thuế 2026 dòng 8486.90.49"
+    }
+  ]
+}

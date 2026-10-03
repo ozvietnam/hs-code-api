@@ -1,0 +1,869 @@
+{
+  "heading": "9405",
+  "titleVi": "Luminaires and light fittings; including searchlights, spotlights and parts thereof, n.e.c.; illuminated signs, name-plates and the like, having permanently fixed light source and parts thereof n.e.c. or included",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "—",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 nhóm 9405.",
+  "inputs": [
+    {
+      "attribute": "lightingTech",
+      "type": "enum",
+      "domain": [
+        "led",
+        "fluorescent",
+        "incandescent",
+        "solar",
+        "any"
+      ]
+    },
+    {
+      "attribute": "mounting",
+      "type": "enum",
+      "domain": [
+        "surgical",
+        "spotlight",
+        "floodlight",
+        "signalAviation",
+        "publicRoad",
+        "roadSign",
+        "signIlluminated",
+        "militaryFlood",
+        "householdAppliance",
+        "religious",
+        "general"
+      ]
+    },
+    {
+      "attribute": "electric",
+      "type": "enum",
+      "domain": [
+        "electric",
+        "nonElectric"
+      ]
+    },
+    {
+      "attribute": "material",
+      "type": "enum",
+      "domain": [
+        "plastic",
+        "metal",
+        "glass",
+        "textile",
+        "copper",
+        "other"
+      ]
+    },
+    {
+      "attribute": "partType",
+      "type": "enum",
+      "domain": [
+        "surgicalLamp",
+        "spotlightPart",
+        "globeBowl",
+        "floodlightPart",
+        "textileShade",
+        "otherShade",
+        "ceramicMetalPart",
+        "generalPart"
+      ]
+    },
+    {
+      "attribute": "productKind",
+      "type": "enum",
+      "domain": [
+        "lamp",
+        "sign",
+        "parts"
+      ]
+    }
+  ],
+  "hitPolicy": "FIRST",
+  "rules": [
+    {
+      "id": "r1",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "led",
+        "mounting": "surgical",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94051110",
+      "reasonVi": "productKind=lamp / lightingTech=led / mounting=surgical / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r2",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "led",
+        "mounting": "spotlight",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94051191",
+      "reasonVi": "productKind=lamp / lightingTech=led / mounting=spotlight / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r3",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "led",
+        "mounting": "general",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94051199",
+      "reasonVi": "productKind=lamp / lightingTech=led / mounting=general / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r4",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "fluorescent",
+        "mounting": "surgical",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94051910",
+      "reasonVi": "productKind=lamp / lightingTech=fluorescent / mounting=surgical / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r5",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "incandescent",
+        "mounting": "spotlight",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94051991",
+      "reasonVi": "productKind=lamp / lightingTech=incandescent / mounting=spotlight / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r6",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "fluorescent",
+        "mounting": "general",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94051992",
+      "reasonVi": "productKind=lamp / lightingTech=fluorescent / mounting=general / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r7",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "any",
+        "mounting": "general",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94051999",
+      "reasonVi": "productKind=lamp / lightingTech=any / mounting=general / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r8",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "led",
+        "mounting": "surgical",
+        "electric": "electric",
+        "material": "metal",
+        "partType": "generalPart"
+      },
+      "hs": "94052110",
+      "reasonVi": "productKind=lamp / lightingTech=led / mounting=surgical / electric=electric / material=metal / partType=generalPart"
+    },
+    {
+      "id": "r9",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "any",
+        "mounting": "surgical",
+        "electric": "electric",
+        "material": "metal",
+        "partType": "generalPart"
+      },
+      "hs": "94052190",
+      "reasonVi": "productKind=lamp / lightingTech=any / mounting=surgical / electric=electric / material=metal / partType=generalPart"
+    },
+    {
+      "id": "r10",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "led",
+        "mounting": "surgical",
+        "electric": "electric",
+        "material": "other",
+        "partType": "generalPart"
+      },
+      "hs": "94052910",
+      "reasonVi": "productKind=lamp / lightingTech=led / mounting=surgical / electric=electric / material=other / partType=generalPart"
+    },
+    {
+      "id": "r11",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "any",
+        "mounting": "surgical",
+        "electric": "electric",
+        "material": "other",
+        "partType": "generalPart"
+      },
+      "hs": "94052990",
+      "reasonVi": "productKind=lamp / lightingTech=any / mounting=surgical / electric=electric / material=other / partType=generalPart"
+    },
+    {
+      "id": "r12",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "led",
+        "mounting": "general",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94053100",
+      "reasonVi": "productKind=lamp / lightingTech=led / mounting=general / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r13",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "any",
+        "mounting": "general",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94053900",
+      "reasonVi": "productKind=lamp / lightingTech=any / mounting=general / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r14",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "solar",
+        "mounting": "floodlight",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054110",
+      "reasonVi": "productKind=lamp / lightingTech=solar / mounting=floodlight / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r15",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "solar",
+        "mounting": "spotlight",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054120",
+      "reasonVi": "productKind=lamp / lightingTech=solar / mounting=spotlight / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r16",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "solar",
+        "mounting": "signalAviation",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054130",
+      "reasonVi": "productKind=lamp / lightingTech=solar / mounting=signalAviation / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r17",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "solar",
+        "mounting": "publicRoad",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054140",
+      "reasonVi": "productKind=lamp / lightingTech=solar / mounting=publicRoad / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r18",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "solar",
+        "mounting": "general",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054190",
+      "reasonVi": "productKind=lamp / lightingTech=solar / mounting=general / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r19",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "led",
+        "mounting": "floodlight",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054210",
+      "reasonVi": "productKind=lamp / lightingTech=led / mounting=floodlight / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r20",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "led",
+        "mounting": "spotlight",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054220",
+      "reasonVi": "productKind=lamp / lightingTech=led / mounting=spotlight / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r21",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "led",
+        "mounting": "signalAviation",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054230",
+      "reasonVi": "productKind=lamp / lightingTech=led / mounting=signalAviation / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r22",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "led",
+        "mounting": "householdAppliance",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054240",
+      "reasonVi": "productKind=lamp / lightingTech=led / mounting=householdAppliance / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r23",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "led",
+        "mounting": "publicRoad",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054250",
+      "reasonVi": "productKind=lamp / lightingTech=led / mounting=publicRoad / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r24",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "led",
+        "mounting": "general",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054260",
+      "reasonVi": "productKind=lamp / lightingTech=led / mounting=general / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r25",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "any",
+        "mounting": "floodlight",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054290",
+      "reasonVi": "productKind=lamp / lightingTech=any / mounting=floodlight / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r26",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "any",
+        "mounting": "floodlight",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054910",
+      "reasonVi": "productKind=lamp / lightingTech=any / mounting=floodlight / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r27",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "any",
+        "mounting": "spotlight",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054920",
+      "reasonVi": "productKind=lamp / lightingTech=any / mounting=spotlight / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r28",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "any",
+        "mounting": "signalAviation",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054930",
+      "reasonVi": "productKind=lamp / lightingTech=any / mounting=signalAviation / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r29",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "any",
+        "mounting": "householdAppliance",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054940",
+      "reasonVi": "productKind=lamp / lightingTech=any / mounting=householdAppliance / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r30",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "any",
+        "mounting": "publicRoad",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054950",
+      "reasonVi": "productKind=lamp / lightingTech=any / mounting=publicRoad / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r31",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "any",
+        "mounting": "general",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054960",
+      "reasonVi": "productKind=lamp / lightingTech=any / mounting=general / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r32",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "any",
+        "mounting": "general",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94054990",
+      "reasonVi": "productKind=lamp / lightingTech=any / mounting=general / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r33",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "any",
+        "mounting": "religious",
+        "electric": "nonElectric",
+        "material": "copper",
+        "partType": "generalPart"
+      },
+      "hs": "94055011",
+      "reasonVi": "productKind=lamp / lightingTech=any / mounting=religious / electric=nonElectric / material=copper / partType=generalPart"
+    },
+    {
+      "id": "r34",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "any",
+        "mounting": "religious",
+        "electric": "nonElectric",
+        "material": "other",
+        "partType": "generalPart"
+      },
+      "hs": "94055019",
+      "reasonVi": "productKind=lamp / lightingTech=any / mounting=religious / electric=nonElectric / material=other / partType=generalPart"
+    },
+    {
+      "id": "r35",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "any",
+        "mounting": "militaryFlood",
+        "electric": "nonElectric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94055040",
+      "reasonVi": "productKind=lamp / lightingTech=any / mounting=militaryFlood / electric=nonElectric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r36",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "any",
+        "mounting": "militaryFlood",
+        "electric": "nonElectric",
+        "material": "metal",
+        "partType": "generalPart"
+      },
+      "hs": "94055050",
+      "reasonVi": "productKind=lamp / lightingTech=any / mounting=militaryFlood / electric=nonElectric / material=metal / partType=generalPart"
+    },
+    {
+      "id": "r37",
+      "priority": 50,
+      "when": {
+        "productKind": "lamp",
+        "lightingTech": "any",
+        "mounting": "general",
+        "electric": "nonElectric",
+        "material": "other",
+        "partType": "generalPart"
+      },
+      "hs": "94055090",
+      "reasonVi": "productKind=lamp / lightingTech=any / mounting=general / electric=nonElectric / material=other / partType=generalPart"
+    },
+    {
+      "id": "r38",
+      "priority": 50,
+      "when": {
+        "productKind": "sign",
+        "lightingTech": "led",
+        "mounting": "roadSign",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94056110",
+      "reasonVi": "productKind=sign / lightingTech=led / mounting=roadSign / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r39",
+      "priority": 50,
+      "when": {
+        "productKind": "sign",
+        "lightingTech": "led",
+        "mounting": "signIlluminated",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94056190",
+      "reasonVi": "productKind=sign / lightingTech=led / mounting=signIlluminated / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r40",
+      "priority": 50,
+      "when": {
+        "productKind": "sign",
+        "lightingTech": "any",
+        "mounting": "roadSign",
+        "electric": "electric",
+        "material": "other",
+        "partType": "generalPart"
+      },
+      "hs": "94056910",
+      "reasonVi": "productKind=sign / lightingTech=any / mounting=roadSign / electric=electric / material=other / partType=generalPart"
+    },
+    {
+      "id": "r41",
+      "priority": 50,
+      "when": {
+        "productKind": "sign",
+        "lightingTech": "any",
+        "mounting": "signIlluminated",
+        "electric": "electric",
+        "material": "other",
+        "partType": "generalPart"
+      },
+      "hs": "94056990",
+      "reasonVi": "productKind=sign / lightingTech=any / mounting=signIlluminated / electric=electric / material=other / partType=generalPart"
+    },
+    {
+      "id": "r42",
+      "priority": 50,
+      "when": {
+        "productKind": "parts",
+        "lightingTech": "any",
+        "mounting": "surgical",
+        "electric": "electric",
+        "material": "glass",
+        "partType": "surgicalLamp"
+      },
+      "hs": "94059110",
+      "reasonVi": "productKind=parts / lightingTech=any / mounting=surgical / electric=electric / material=glass / partType=surgicalLamp"
+    },
+    {
+      "id": "r43",
+      "priority": 50,
+      "when": {
+        "productKind": "parts",
+        "lightingTech": "any",
+        "mounting": "spotlight",
+        "electric": "electric",
+        "material": "glass",
+        "partType": "spotlightPart"
+      },
+      "hs": "94059120",
+      "reasonVi": "productKind=parts / lightingTech=any / mounting=spotlight / electric=electric / material=glass / partType=spotlightPart"
+    },
+    {
+      "id": "r44",
+      "priority": 50,
+      "when": {
+        "productKind": "parts",
+        "lightingTech": "any",
+        "mounting": "general",
+        "electric": "electric",
+        "material": "glass",
+        "partType": "globeBowl"
+      },
+      "hs": "94059140",
+      "reasonVi": "productKind=parts / lightingTech=any / mounting=general / electric=electric / material=glass / partType=globeBowl"
+    },
+    {
+      "id": "r45",
+      "priority": 50,
+      "when": {
+        "productKind": "parts",
+        "lightingTech": "any",
+        "mounting": "floodlight",
+        "electric": "electric",
+        "material": "glass",
+        "partType": "floodlightPart"
+      },
+      "hs": "94059150",
+      "reasonVi": "productKind=parts / lightingTech=any / mounting=floodlight / electric=electric / material=glass / partType=floodlightPart"
+    },
+    {
+      "id": "r46",
+      "priority": 50,
+      "when": {
+        "productKind": "parts",
+        "lightingTech": "any",
+        "mounting": "general",
+        "electric": "electric",
+        "material": "glass",
+        "partType": "generalPart"
+      },
+      "hs": "94059190",
+      "reasonVi": "productKind=parts / lightingTech=any / mounting=general / electric=electric / material=glass / partType=generalPart"
+    },
+    {
+      "id": "r47",
+      "priority": 50,
+      "when": {
+        "productKind": "parts",
+        "lightingTech": "any",
+        "mounting": "surgical",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "surgicalLamp"
+      },
+      "hs": "94059210",
+      "reasonVi": "productKind=parts / lightingTech=any / mounting=surgical / electric=electric / material=plastic / partType=surgicalLamp"
+    },
+    {
+      "id": "r48",
+      "priority": 50,
+      "when": {
+        "productKind": "parts",
+        "lightingTech": "any",
+        "mounting": "spotlight",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "spotlightPart"
+      },
+      "hs": "94059220",
+      "reasonVi": "productKind=parts / lightingTech=any / mounting=spotlight / electric=electric / material=plastic / partType=spotlightPart"
+    },
+    {
+      "id": "r49",
+      "priority": 50,
+      "when": {
+        "productKind": "parts",
+        "lightingTech": "any",
+        "mounting": "floodlight",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "floodlightPart"
+      },
+      "hs": "94059230",
+      "reasonVi": "productKind=parts / lightingTech=any / mounting=floodlight / electric=electric / material=plastic / partType=floodlightPart"
+    },
+    {
+      "id": "r50",
+      "priority": 50,
+      "when": {
+        "productKind": "parts",
+        "lightingTech": "any",
+        "mounting": "general",
+        "electric": "electric",
+        "material": "plastic",
+        "partType": "generalPart"
+      },
+      "hs": "94059290",
+      "reasonVi": "productKind=parts / lightingTech=any / mounting=general / electric=electric / material=plastic / partType=generalPart"
+    },
+    {
+      "id": "r51",
+      "priority": 50,
+      "when": {
+        "productKind": "parts",
+        "lightingTech": "any",
+        "mounting": "general",
+        "electric": "electric",
+        "material": "textile",
+        "partType": "textileShade"
+      },
+      "hs": "94059910",
+      "reasonVi": "productKind=parts / lightingTech=any / mounting=general / electric=electric / material=textile / partType=textileShade"
+    },
+    {
+      "id": "r52",
+      "priority": 50,
+      "when": {
+        "productKind": "parts",
+        "lightingTech": "any",
+        "mounting": "general",
+        "electric": "electric",
+        "material": "other",
+        "partType": "otherShade"
+      },
+      "hs": "94059920",
+      "reasonVi": "productKind=parts / lightingTech=any / mounting=general / electric=electric / material=other / partType=otherShade"
+    },
+    {
+      "id": "r53",
+      "priority": 50,
+      "when": {
+        "productKind": "parts",
+        "lightingTech": "any",
+        "mounting": "religious",
+        "electric": "nonElectric",
+        "material": "copper",
+        "partType": "generalPart"
+      },
+      "hs": "94059930",
+      "reasonVi": "productKind=parts / lightingTech=any / mounting=religious / electric=nonElectric / material=copper / partType=generalPart"
+    },
+    {
+      "id": "r54",
+      "priority": 50,
+      "when": {
+        "productKind": "parts",
+        "lightingTech": "any",
+        "mounting": "floodlight",
+        "electric": "electric",
+        "material": "metal",
+        "partType": "floodlightPart"
+      },
+      "hs": "94059940",
+      "reasonVi": "productKind=parts / lightingTech=any / mounting=floodlight / electric=electric / material=metal / partType=floodlightPart"
+    },
+    {
+      "id": "r55",
+      "priority": 50,
+      "when": {
+        "productKind": "parts",
+        "lightingTech": "any",
+        "mounting": "general",
+        "electric": "electric",
+        "material": "glass",
+        "partType": "ceramicMetalPart"
+      },
+      "hs": "94059950",
+      "reasonVi": "productKind=parts / lightingTech=any / mounting=general / electric=electric / material=glass / partType=ceramicMetalPart"
+    },
+    {
+      "id": "r56",
+      "priority": 50,
+      "when": {
+        "productKind": "parts",
+        "lightingTech": "any",
+        "mounting": "general",
+        "electric": "electric",
+        "material": "other",
+        "partType": "generalPart"
+      },
+      "hs": "94059990",
+      "reasonVi": "productKind=parts / lightingTech=any / mounting=general / electric=electric / material=other / partType=generalPart"
+    }
+  ]
+}
