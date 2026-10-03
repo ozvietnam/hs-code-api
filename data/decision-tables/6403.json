@@ -1,0 +1,39 @@
+{
+  "heading": "6403",
+  "titleVi": "Footwear; with outer soles of rubber, plastics, leather or composition leather and uppers of leather",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "CÂU HỎI BẢN CHẤT: thuộc tính nào tách nhóm này thành các lá? (điền)",
+  "sourceVi": "Biểu thuế 2026 nhóm 6403 + chú giải chương/nhóm (điền nguyên văn căn cứ)",
+  "inputs": [
+    {
+      "attribute": "VÍ_DỤ_enum",
+      "type": "enum",
+      "domain": [
+        "a",
+        "b"
+      ],
+      "labelVi": "Nhãn hiển thị",
+      "questionVi": "Câu hỏi người khai tự trả lời được?",
+      "detect": {
+        "a": [
+          "cụm nhận ra a"
+        ],
+        "b": [
+          "cụm nhận ra b"
+        ]
+      }
+    },
+    {
+      "attribute": "VÍ_DỤ_soMm",
+      "type": "number",
+      "unit": "mm",
+      "fromSpec": "thickness",
+      "labelVi": "Chiều dày (mm)",
+      "questionVi": "Chiều dày bao nhiêu mm?"
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": []
+}
