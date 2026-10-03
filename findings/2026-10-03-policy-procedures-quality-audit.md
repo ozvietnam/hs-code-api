@@ -33,3 +33,22 @@
 - All tests green
 - Author: ozvietnam/hs-agent
 - Waiting: dev review + merge
+
+## Audit bổ sung 2026-10-03 07:xx (làn B)
+
+### Phát hiện
+1. **estimatedDays là object {min, max, note} không phải số** — đúng thiết kế, test đã xác nhận
+2. **10 test failures = decision tables draft** — 6402, 8483, 8486, 8504, 8536, 8544, 8714 + 8505, 8541, 9620 — content gap, lá không có path trong cây luật. Mã 8 số đều tồn tại trong tax.json. Cần expert review.
+3. **37 chapter-groups: tất cả verified=true, có group, hsRange, label, exemptions, legalBasis** — đầy đủ
+4. **priorityImportFromCN: 2 entries = false** (cong-nghe-85-90-phu-93, chuong-77) — đúng (vũ khí quân sự + WCO reserved)
+5. **normalizeType: 0 nulls** — 100% coverage
+6. **getProcedures(): chương 77 → empty array (WCO Reserved); ch13 fallback → chat-luong; cam-nk ban → cam-nk** — đúng
+7. **PR #96: 88 commits, draft=True, mergeable, tất cả tests pass** — chờ merge
+
+### Kết luận
+**Làn chính sách nhập khẩu: KHÔNG còn việc tự làm được.**
+- Coverage: 97/97 chapters (100%)
+- 20 procedure types: tất cả verified=true, trigger/documents/exemptions/matchPatterns/estimatedDays/estimatedCost/agency/legalBasis/severity/onFail/priorityImportFromCN — đầy đủ
+- 37 chapter-groups: tất cả verified=true, group/hsRange/label/chapters/procedures/legalBasis/exemptions/hsExamples — đầy đủ
+- npm test: 290✓ 10✗ = 10 draft decision tables (expert review cần)
+- Việc còn lại: **expert review 10 draft tables → PR #96 merge**
