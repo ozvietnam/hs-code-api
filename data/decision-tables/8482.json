@@ -230,5 +230,50 @@
       "reasonVi": "Bộ phận ổ đũa loại khác (không phải bi/kim/đũa) → 8482.99.00.",
       "source": "Biểu thuế 2026 dòng 8482.99.00"
     }
-  ]
+  ],
+  "attributes": {
+    "bearingKind": {
+      "type": "enum",
+      "domain": [
+        "ball",
+        "cylindricalRoller",
+        "needleRoller",
+        "otherCombined",
+        "partsOther",
+        "partsRollingElements",
+        "sphericalRoller",
+        "taperedRoller"
+      ],
+      "detect": {
+        "ball": [
+          "ball"
+        ],
+        "cylindricalRoller": [
+          "cylindricalRoller"
+        ],
+        "needleRoller": [
+          "needleRoller"
+        ],
+        "otherCombined": [
+          "otherCombined"
+        ],
+        "partsOther": [
+          "partsOther"
+        ],
+        "partsRollingElements": [
+          "partsRollingElements"
+        ],
+        "sphericalRoller": [
+          "sphericalRoller"
+        ],
+        "taperedRoller": [
+          "taperedRoller"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "bearingKind"
+  ],
+  "essenceVi": "bearingKind"
 }

@@ -1,0 +1,437 @@
+{
+  "heading": "6005",
+  "titleVi": "Vải dệt kim dọc (warp knit) bằng sợi nhân tạo hoặc sợi tổng hợp",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "fiberType",
+      "type": "enum",
+      "domain": [
+        "synthetic",
+        "artificial",
+        "wool",
+        "special_chapter_note",
+        "other"
+      ],
+      "labelVi": "Loại sợi",
+      "questionVi": "Vải dệt kim dọc bằng sợi gì: sợi tổng hợp (polyester, nylon, etc.), sợi nhân tạo (viscose), lông cừu/lông động vật mịn, vải theo chú giải đặc biệt Chương 60, hay loại khác?",
+      "detect": {
+        "synthetic": [
+          "sợi tổng hợp",
+          "polyester",
+          "nylon",
+          "sợi PE",
+          "sợi PP",
+          "synthetic"
+        ],
+        "artificial": [
+          "sợi nhân tạo",
+          "viscose",
+          "rayon",
+          "sợi visco"
+        ],
+        "wool": [
+          "lông cừu",
+          "lông động vật",
+          "len",
+          "wool"
+        ],
+        "other": [
+          "sợi khác",
+          "vải dệt kim"
+        ]
+      }
+    },
+    {
+      "attribute": "dyeingState",
+      "type": "enum",
+      "domain": [
+        "unbleached_bleached",
+        "dyed",
+        "yarn_dyed",
+        "printed"
+      ],
+      "labelVi": "Trạng thái nhuộm/màu",
+      "questionVi": "Vải đã qua xử lý nhuộm/màu: chưa tẩy trắng hoặc đã tẩy trắng, đã nhuộm, sợi nhiều màu (yarn-dyed), hay đã in?",
+      "detect": {
+        "unbleached_bleached": [
+          "chưa nhuộm",
+          "trắng",
+          "chưa tẩy",
+          "bleached"
+        ],
+        "dyed": [
+          "đã nhuộm",
+          "nhuộm",
+          "dyed"
+        ],
+        "yarn_dyed": [
+          "sợi nhiều màu",
+          "yarn dyed",
+          "nhiều màu sợi"
+        ],
+        "printed": [
+          "đã in",
+          "in hoa",
+          "printed"
+        ]
+      }
+    },
+    {
+      "attribute": "isPBT",
+      "type": "enum",
+      "domain": [
+        true,
+        false
+      ],
+      "labelVi": "Có phải sợi PBT không",
+      "questionVi": "Vải có phải là sợi polybutyleneterephthalat (PBT) không?",
+      "detect": {
+        "true": [
+          "PBT",
+          "polybutylene"
+        ],
+        "false": []
+      }
+    },
+    {
+      "attribute": "pbtSubType",
+      "type": "enum",
+      "domain": [
+        "polyester_pbt",
+        "other_pbt"
+      ],
+      "labelVi": "Loại PBT cụ thể (khi isPBT = true)",
+      "questionVi": "Sợi PBT cụ thể là: polyester+polybutyleneterephthalat, hay loại PBT khác?"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "fiberType": "synthetic",
+        "dyeingState": "unbleached_bleached",
+        "isPBT": false
+      },
+      "hs": "60052100",
+      "reasonVi": "GIR 6 — vải dệt kim dọc sợi tổng hợp, chưa/hơi tẩy trắng, 6005.21 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "fiberType": "synthetic",
+        "dyeingState": "dyed",
+        "isPBT": false
+      },
+      "hs": "60052200",
+      "reasonVi": "GIR 6 — vải dệt kim dọc sợi tổng hợp đã nhuộm, 6005.22 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "fiberType": "synthetic",
+        "dyeingState": "yarn_dyed",
+        "isPBT": false
+      },
+      "hs": "60052300",
+      "reasonVi": "GIR 6 — vải dệt kim dọc sợi tổng hợp sợi nhiều màu, 6005.23 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "fiberType": "synthetic",
+        "dyeingState": "printed",
+        "isPBT": false
+      },
+      "hs": "60052400",
+      "reasonVi": "GIR 6 — vải dệt kim dọc sợi tổng hợp đã in, 6005.24 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "fiberType": "special_chapter_note"
+      },
+      "hs": "60053500",
+      "reasonVi": "GIR 6 — vải dệt kim dọc theo chú giải phân nhóm 1 Chương 60, 6005.35 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "fiberType": "synthetic",
+        "dyeingState": "unbleached_bleached",
+        "isPBT": true,
+        "pbtSubType": "polyester_pbt"
+      },
+      "hs": "60053610",
+      "reasonVi": "GIR 6 — vải PBT polyester+polybutyleneterephthalat, chưa tẩy trắng, 6005.36.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "fiberType": "synthetic",
+        "dyeingState": "unbleached_bleached",
+        "isPBT": true,
+        "pbtSubType": "other_pbt"
+      },
+      "hs": "60053690",
+      "reasonVi": "GIR 6 — vải PBT loại khác, chưa tẩy trắng, 6005.36.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "fiberType": "synthetic",
+        "dyeingState": "dyed",
+        "isPBT": true,
+        "pbtSubType": "polyester_pbt"
+      },
+      "hs": "60053710",
+      "reasonVi": "GIR 6 — vải PBT polyester+polybutyleneterephthalat, đã nhuộm, 6005.37.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "fiberType": "synthetic",
+        "dyeingState": "dyed",
+        "isPBT": true,
+        "pbtSubType": "other_pbt"
+      },
+      "hs": "60053790",
+      "reasonVi": "GIR 6 — vải PBT loại khác, đã nhuộm, 6005.37.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "fiberType": "synthetic",
+        "dyeingState": "yarn_dyed",
+        "isPBT": true,
+        "pbtSubType": "polyester_pbt"
+      },
+      "hs": "60053810",
+      "reasonVi": "GIR 6 — vải PBT polyester+polybutyleneterephthalat, sợi nhiều màu, 6005.38.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "fiberType": "synthetic",
+        "dyeingState": "yarn_dyed",
+        "isPBT": true,
+        "pbtSubType": "other_pbt"
+      },
+      "hs": "60053890",
+      "reasonVi": "GIR 6 — vải PBT loại khác, sợi nhiều màu, 6005.38.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "fiberType": "synthetic",
+        "dyeingState": "printed",
+        "isPBT": true,
+        "pbtSubType": "polyester_pbt"
+      },
+      "hs": "60053910",
+      "reasonVi": "GIR 6 — vải PBT polyester+polybutyleneterephthalat, đã in, 6005.39.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "fiberType": "synthetic",
+        "dyeingState": "printed",
+        "isPBT": true,
+        "pbtSubType": "other_pbt"
+      },
+      "hs": "60053990",
+      "reasonVi": "GIR 6 — vải PBT loại khác, đã in, 6005.39.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "fiberType": "artificial",
+        "dyeingState": "unbleached_bleached",
+        "isPBT": false
+      },
+      "hs": "60054100",
+      "reasonVi": "GIR 6 — vải dệt kim dọc sợi nhân tạo, chưa/hơi tẩy trắng, 6005.41 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "fiberType": "artificial",
+        "dyeingState": "dyed",
+        "isPBT": false
+      },
+      "hs": "60054200",
+      "reasonVi": "GIR 6 — vải dệt kim dọc sợi nhân tạo đã nhuộm, 6005.42 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "fiberType": "artificial",
+        "dyeingState": "yarn_dyed",
+        "isPBT": false
+      },
+      "hs": "60054300",
+      "reasonVi": "GIR 6 — vải dệt kim dọc sợi nhân tạo sợi nhiều màu, 6005.43 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-17",
+      "priority": 0,
+      "when": {
+        "fiberType": "artificial",
+        "dyeingState": "printed",
+        "isPBT": false
+      },
+      "hs": "60054400",
+      "reasonVi": "GIR 6 — vải dệt kim dọc sợi nhân tạo đã in, 6005.44 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-18",
+      "priority": 0,
+      "when": {
+        "fiberType": "wool"
+      },
+      "hs": "60059010",
+      "reasonVi": "GIR 6 — vải dệt kim dọc bằng lông cừu hoặc lông động vật mịn, 6005.90.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-19",
+      "priority": 0,
+      "when": {
+        "fiberType": "other"
+      },
+      "hs": "60059090",
+      "reasonVi": "GIR 6 — vải dệt kim dọc loại khác, 6005.90.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceTestVi": "fiberType (5: synthetic/artificial/wool/special_note/other) + dyeingState (4: unbleached/dyed/yarn_dyed/printed) + isPBT + pbtSubType — phân biệt 19 mã 8 số trong nhóm 6005. Tất cả MFN 12%.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 6005 (Thông tư 65/2024/TT-BTC).",
+  "inputAttributes": [
+    "fiberType",
+    "dyeingState",
+    "isPBT",
+    "pbtSubType"
+  ],
+  "attributes": {
+    "fiberType": {
+      "detect": {
+        "synthetic": [
+          "sợi tổng hợp",
+          "polyester",
+          "nylon",
+          "sợi PE",
+          "sợi PP",
+          "synthetic"
+        ],
+        "artificial": [
+          "sợi nhân tạo",
+          "viscose",
+          "rayon",
+          "sợi visco"
+        ],
+        "wool": [
+          "lông cừu",
+          "lông động vật",
+          "len",
+          "wool"
+        ],
+        "other": [
+          "sợi khác",
+          "vải dệt kim"
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "artificial",
+        "other",
+        "synthetic",
+        "wool"
+      ]
+    },
+    "dyeingState": {
+      "detect": {
+        "unbleached_bleached": [
+          "chưa nhuộm",
+          "trắng",
+          "chưa tẩy",
+          "bleached"
+        ],
+        "dyed": [
+          "đã nhuộm",
+          "nhuộm",
+          "dyed"
+        ],
+        "yarn_dyed": [
+          "sợi nhiều màu",
+          "yarn dyed",
+          "nhiều màu sợi"
+        ],
+        "printed": [
+          "đã in",
+          "in hoa",
+          "printed"
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "dyed",
+        "printed",
+        "unbleached_bleached",
+        "yarn_dyed"
+      ]
+    },
+    "isPBT": {
+      "detect": {
+        "true": [
+          "PBT",
+          "polybutylene"
+        ],
+        "false": []
+      },
+      "type": "enum",
+      "domain": [
+        "false",
+        "true"
+      ]
+    },
+    "pbtSubType": {
+      "detect": {},
+      "type": "enum"
+    }
+  },
+  "essenceVi": "fiberType × dyeingState × isPBT × pbtSubType"
+}

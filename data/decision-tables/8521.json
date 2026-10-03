@@ -173,5 +173,58 @@
       "reasonVi": "Không băng từ, không laser quang học, loại khác → 8521.90.99.",
       "source": "Biểu thuế 2026 dòng 8521.90.99"
     }
-  ]
+  ],
+  "attributes": {
+    "broadcastUse": {
+      "type": "enum",
+      "domain": [
+        "other",
+        "sen"
+      ],
+      "detect": {
+        "other": [
+          "other"
+        ],
+        "sen": [
+          "sen"
+        ]
+      }
+    },
+    "mediaType": {
+      "type": "enum",
+      "domain": [
+        "magneticTape",
+        "other"
+      ],
+      "detect": {
+        "magneticTape": [
+          "magneticTape"
+        ],
+        "other": [
+          "other"
+        ]
+      }
+    },
+    "readingSystem": {
+      "type": "enum",
+      "domain": [
+        "laserOptical",
+        "other"
+      ],
+      "detect": {
+        "laserOptical": [
+          "laserOptical"
+        ],
+        "other": [
+          "other"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "broadcastUse",
+    "mediaType",
+    "readingSystem"
+  ],
+  "essenceVi": "broadcastUse; mediaType; readingSystem"
 }

@@ -1,0 +1,2057 @@
+{
+  "heading": "4016",
+  "titleVi": "Sản phẩm khác bằng cao su lưu hoá (không phải cao su cứng), chưa được phân loại ở nơi khác trong chương 40",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Câu hỏi bản chất: hàng bằng cao su lưu hoá này có hình dạng/tính chất gì và dùng vào việc gì? Nhóm 4016 là residual — chỉ dùng khi không thuộc các nhóm 4013 (lốp), 4014 (y tế), 4015 (giày dép).",
+  "sourceVi": "Biểu thuế VN 2026 nhóm 40.16 và chú giải Chương 40. Phân loại theo hình thức sản phẩm (dạng/tính chất) và công dụng cuối cùng.",
+  "inputs": [
+    {
+      "attribute": "articleForm",
+      "type": "enum",
+      "domain": [
+        "clothingAccessory",
+        "floorMat",
+        "eraser",
+        "gasket",
+        "boatFender",
+        "inflatable",
+        "vehiclePart",
+        "otherArticle"
+      ],
+      "labelVi": "Dạng sản phẩm cao su",
+      "questionVi": "Sản phẩm cao su lưu hoá này có dạng hình thù và công dụng gì? (lót/đệm quần áo; tấm lát sàn; đầu tẩy; gioăng/đệm; đệm chống va tàu; sản phẩm bơm hơi; bộ phận xe; hay dạng khác?)",
+      "detect": {
+        "clothingAccessory": [
+          "lót đệm quần áo",
+          "lót đệm cho sản phẩm may mặc",
+          "tấm ghép ốp tường",
+          "lát nền",
+          "ốp tường",
+          "clothing",
+          "lining",
+          "pad"
+        ],
+        "floorMat": [
+          "tấm đệm",
+          "đệm mat",
+          "lát sàn",
+          "tấm rời ghép",
+          "floor covering",
+          "floor mat",
+          "lót đường ray",
+          "rail pad"
+        ],
+        "eraser": [
+          "eraser"
+        ],
+        "gasket": [
+          "gioăng",
+          "đệm",
+          "vành khung tròn",
+          "cách điện",
+          "gasket",
+          "seal",
+          "washer",
+          "insulating",
+          "miếng đệm"
+        ],
+        "boatFender": [
+          "đệm chống va",
+          "tàu thuyền",
+          "ụ tàu",
+          "boat fender",
+          "dock fender"
+        ],
+        "inflatable": [
+          "bơm hơi",
+          "inflatable"
+        ],
+        "vehiclePart": [
+          "bộ phận xe",
+          "chắn bùn",
+          "viền kính",
+          "phụ kiện xe",
+          "phụ kiện xe đạp",
+          "bộ phận xe đạp",
+          "dù xoay",
+          "bicycle",
+          "xe đạp",
+          "xe có động cơ",
+          "vehicle part"
+        ],
+        "otherArticle": [
+          "đầu tẩy",
+          "tẩy",
+          "dải cao su",
+          "khăn trải bàn",
+          "trục lăn",
+          "cốt làm lốp",
+          "xây dựng",
+          "loại khác",
+          "n.e.c.",
+          "Phớt cơ khí bơm",
+          "Phớt cao su lưu hóa",
+          "Nắp cao su cửa xả quả nghiền",
+          "Cao su giảm chấn",
+          "Giắc hút chân không",
+          "Con lăn cao su",
+          "Núm hút chân không",
+          "Tấm lót chuột máy tính",
+          "Tấm cao su đỡ cáp",
+          "Giảm chấn cao su",
+          "Đế đánh bóng mềm",
+          "Ruột bình tích áp 25L",
+          "Miếng dán tản nhiệt",
+          "Thảm cao su chống tĩnh điện",
+          "Phớt cơ khí máy bơm",
+          "Phớt kích tăng xích máy xúc",
+          "Giác hút chân không",
+          "Nút chai thủy tinh",
+          "Nắp cao su cửa nạp quả nghiền",
+          "Ron bộ GX 160",
+          "Ron bộ GX 390",
+          "Dải viền nẹp cao su",
+          "Đĩa phân phối khí",
+          "Dây chun buộc tóc",
+          "Miếng chèn cao su lưu hóa",
+          "Gel làm sạch bụi bẩn bàn phím",
+          "Con lăn dính bụi",
+          "Bánh cao su mài cạnh",
+          "Màng bơm",
+          "Miếng lót chuột kê tay",
+          "Đế cao su chống rung",
+          "Phớt xi lanh",
+          "Phớt dầu thuỷ lực"
+        ]
+      },
+      "_detect": {
+        "clothingAccessory": [
+          {
+            "raw": "lót đệm quần áo",
+            "dia": true,
+            "key": "lót đệm quần áo",
+            "folded": "lot dem quan ao"
+          },
+          {
+            "raw": "lót đệm cho sản phẩm may mặc",
+            "dia": true,
+            "key": "lót đệm cho sản phẩm may mặc",
+            "folded": "lot dem cho san pham may mac"
+          },
+          {
+            "raw": "tấm ghép ốp tường",
+            "dia": true,
+            "key": "tấm ghép ốp tường",
+            "folded": "tam ghep op tuong"
+          },
+          {
+            "raw": "lát nền",
+            "dia": true,
+            "key": "lát nền",
+            "folded": "lat nen"
+          },
+          {
+            "raw": "ốp tường",
+            "dia": true,
+            "key": "ốp tường",
+            "folded": "op tuong"
+          },
+          {
+            "raw": "clothing",
+            "dia": false,
+            "key": "clothing",
+            "folded": "clothing"
+          },
+          {
+            "raw": "lining",
+            "dia": false,
+            "key": "lining",
+            "folded": "lining"
+          },
+          {
+            "raw": "pad",
+            "dia": false,
+            "key": "pad",
+            "folded": "pad"
+          }
+        ],
+        "floorMat": [
+          {
+            "raw": "tấm đệm",
+            "dia": true,
+            "key": "tấm đệm",
+            "folded": "tam dem"
+          },
+          {
+            "raw": "đệm mat",
+            "dia": true,
+            "key": "đệm mat",
+            "folded": "dem mat"
+          },
+          {
+            "raw": "lát sàn",
+            "dia": true,
+            "key": "lát sàn",
+            "folded": "lat san"
+          },
+          {
+            "raw": "tấm rời ghép",
+            "dia": true,
+            "key": "tấm rời ghép",
+            "folded": "tam roi ghep"
+          },
+          {
+            "raw": "floor covering",
+            "dia": false,
+            "key": "floor covering",
+            "folded": "floor covering"
+          },
+          {
+            "raw": "floor mat",
+            "dia": false,
+            "key": "floor mat",
+            "folded": "floor mat"
+          },
+          {
+            "raw": "lót đường ray",
+            "dia": true,
+            "key": "lót đường ray",
+            "folded": "lot duong ray"
+          },
+          {
+            "raw": "rail pad",
+            "dia": false,
+            "key": "rail pad",
+            "folded": "rail pad"
+          }
+        ],
+        "eraser": [
+          {
+            "raw": "eraser",
+            "dia": false,
+            "key": "eraser",
+            "folded": "eraser"
+          }
+        ],
+        "gasket": [
+          {
+            "raw": "gioăng",
+            "dia": true,
+            "key": "gioăng",
+            "folded": "gioang"
+          },
+          {
+            "raw": "đệm",
+            "dia": true,
+            "key": "đệm",
+            "folded": "dem"
+          },
+          {
+            "raw": "vành khung tròn",
+            "dia": true,
+            "key": "vành khung tròn",
+            "folded": "vanh khung tron"
+          },
+          {
+            "raw": "cách điện",
+            "dia": true,
+            "key": "cách điện",
+            "folded": "cach dien"
+          },
+          {
+            "raw": "gasket",
+            "dia": false,
+            "key": "gasket",
+            "folded": "gasket"
+          },
+          {
+            "raw": "seal",
+            "dia": false,
+            "key": "seal",
+            "folded": "seal"
+          },
+          {
+            "raw": "washer",
+            "dia": false,
+            "key": "washer",
+            "folded": "washer"
+          },
+          {
+            "raw": "insulating",
+            "dia": false,
+            "key": "insulating",
+            "folded": "insulating"
+          },
+          {
+            "raw": "miếng đệm",
+            "dia": true,
+            "key": "miếng đệm",
+            "folded": "mieng dem"
+          }
+        ],
+        "boatFender": [
+          {
+            "raw": "đệm chống va",
+            "dia": true,
+            "key": "đệm chống va",
+            "folded": "dem chong va"
+          },
+          {
+            "raw": "tàu thuyền",
+            "dia": true,
+            "key": "tàu thuyền",
+            "folded": "tau thuyen"
+          },
+          {
+            "raw": "ụ tàu",
+            "dia": true,
+            "key": "ụ tàu",
+            "folded": "u tau"
+          },
+          {
+            "raw": "boat fender",
+            "dia": false,
+            "key": "boat fender",
+            "folded": "boat fender"
+          },
+          {
+            "raw": "dock fender",
+            "dia": false,
+            "key": "dock fender",
+            "folded": "dock fender"
+          }
+        ],
+        "inflatable": [
+          {
+            "raw": "bơm hơi",
+            "dia": true,
+            "key": "bơm hơi",
+            "folded": "bom hoi"
+          },
+          {
+            "raw": "inflatable",
+            "dia": false,
+            "key": "inflatable",
+            "folded": "inflatable"
+          }
+        ],
+        "vehiclePart": [
+          {
+            "raw": "bộ phận xe",
+            "dia": true,
+            "key": "bộ phận xe",
+            "folded": "bo phan xe"
+          },
+          {
+            "raw": "chắn bùn",
+            "dia": true,
+            "key": "chắn bùn",
+            "folded": "chan bun"
+          },
+          {
+            "raw": "viền kính",
+            "dia": true,
+            "key": "viền kính",
+            "folded": "vien kinh"
+          },
+          {
+            "raw": "phụ kiện xe",
+            "dia": true,
+            "key": "phụ kiện xe",
+            "folded": "phu kien xe"
+          },
+          {
+            "raw": "phụ kiện xe đạp",
+            "dia": true,
+            "key": "phụ kiện xe đạp",
+            "folded": "phu kien xe dap"
+          },
+          {
+            "raw": "bộ phận xe đạp",
+            "dia": true,
+            "key": "bộ phận xe đạp",
+            "folded": "bo phan xe dap"
+          },
+          {
+            "raw": "dù xoay",
+            "dia": true,
+            "key": "dù xoay",
+            "folded": "du xoay"
+          },
+          {
+            "raw": "bicycle",
+            "dia": false,
+            "key": "bicycle",
+            "folded": "bicycle"
+          },
+          {
+            "raw": "xe đạp",
+            "dia": true,
+            "key": "xe đạp",
+            "folded": "xe dap"
+          },
+          {
+            "raw": "xe có động cơ",
+            "dia": true,
+            "key": "xe có động cơ",
+            "folded": "xe co dong co"
+          },
+          {
+            "raw": "vehicle part",
+            "dia": false,
+            "key": "vehicle part",
+            "folded": "vehicle part"
+          }
+        ],
+        "otherArticle": [
+          {
+            "raw": "đầu tẩy",
+            "dia": true,
+            "key": "đầu tẩy",
+            "folded": "dau tay"
+          },
+          {
+            "raw": "tẩy",
+            "dia": true,
+            "key": "tẩy",
+            "folded": "tay"
+          },
+          {
+            "raw": "dải cao su",
+            "dia": true,
+            "key": "dải cao su",
+            "folded": "dai cao su"
+          },
+          {
+            "raw": "khăn trải bàn",
+            "dia": true,
+            "key": "khăn trải bàn",
+            "folded": "khan trai ban"
+          },
+          {
+            "raw": "trục lăn",
+            "dia": true,
+            "key": "trục lăn",
+            "folded": "truc lan"
+          },
+          {
+            "raw": "cốt làm lốp",
+            "dia": true,
+            "key": "cốt làm lốp",
+            "folded": "cot lam lop"
+          },
+          {
+            "raw": "xây dựng",
+            "dia": true,
+            "key": "xây dựng",
+            "folded": "xay dung"
+          },
+          {
+            "raw": "loại khác",
+            "dia": true,
+            "key": "loại khác",
+            "folded": "loai khac"
+          },
+          {
+            "raw": "n.e.c.",
+            "dia": false,
+            "key": "n.e.c.",
+            "folded": "n.e.c."
+          },
+          {
+            "raw": "Phớt cơ khí bơm",
+            "dia": true,
+            "key": "phớt cơ khí bơm",
+            "folded": "phot co khi bom"
+          },
+          {
+            "raw": "Phớt cao su lưu hóa",
+            "dia": true,
+            "key": "phớt cao su lưu hóa",
+            "folded": "phot cao su luu hoa"
+          },
+          {
+            "raw": "Nắp cao su cửa xả quả nghiền",
+            "dia": true,
+            "key": "nắp cao su cửa xả quả nghiền",
+            "folded": "nap cao su cua xa qua nghien"
+          },
+          {
+            "raw": "Cao su giảm chấn",
+            "dia": true,
+            "key": "cao su giảm chấn",
+            "folded": "cao su giam chan"
+          },
+          {
+            "raw": "Giắc hút chân không",
+            "dia": true,
+            "key": "giắc hút chân không",
+            "folded": "giac hut chan khong"
+          },
+          {
+            "raw": "Con lăn cao su",
+            "dia": true,
+            "key": "con lăn cao su",
+            "folded": "con lan cao su"
+          },
+          {
+            "raw": "Núm hút chân không",
+            "dia": true,
+            "key": "núm hút chân không",
+            "folded": "num hut chan khong"
+          },
+          {
+            "raw": "Tấm lót chuột máy tính",
+            "dia": true,
+            "key": "tấm lót chuột máy tính",
+            "folded": "tam lot chuot may tinh"
+          },
+          {
+            "raw": "Tấm cao su đỡ cáp",
+            "dia": true,
+            "key": "tấm cao su đỡ cáp",
+            "folded": "tam cao su do cap"
+          },
+          {
+            "raw": "Giảm chấn cao su",
+            "dia": true,
+            "key": "giảm chấn cao su",
+            "folded": "giam chan cao su"
+          },
+          {
+            "raw": "Đế đánh bóng mềm",
+            "dia": true,
+            "key": "đế đánh bóng mềm",
+            "folded": "de danh bong mem"
+          },
+          {
+            "raw": "Ruột bình tích áp 25L",
+            "dia": true,
+            "key": "ruột bình tích áp 25l",
+            "folded": "ruot binh tich ap 25l"
+          },
+          {
+            "raw": "Miếng dán tản nhiệt",
+            "dia": true,
+            "key": "miếng dán tản nhiệt",
+            "folded": "mieng dan tan nhiet"
+          },
+          {
+            "raw": "Thảm cao su chống tĩnh điện",
+            "dia": true,
+            "key": "thảm cao su chống tĩnh điện",
+            "folded": "tham cao su chong tinh dien"
+          },
+          {
+            "raw": "Phớt cơ khí máy bơm",
+            "dia": true,
+            "key": "phớt cơ khí máy bơm",
+            "folded": "phot co khi may bom"
+          },
+          {
+            "raw": "Phớt kích tăng xích máy xúc",
+            "dia": true,
+            "key": "phớt kích tăng xích máy xúc",
+            "folded": "phot kich tang xich may xuc"
+          },
+          {
+            "raw": "Giác hút chân không",
+            "dia": true,
+            "key": "giác hút chân không",
+            "folded": "giac hut chan khong"
+          },
+          {
+            "raw": "Nút chai thủy tinh",
+            "dia": true,
+            "key": "nút chai thủy tinh",
+            "folded": "nut chai thuy tinh"
+          },
+          {
+            "raw": "Nắp cao su cửa nạp quả nghiền",
+            "dia": true,
+            "key": "nắp cao su cửa nạp quả nghiền",
+            "folded": "nap cao su cua nap qua nghien"
+          },
+          {
+            "raw": "Ron bộ GX 160",
+            "dia": true,
+            "key": "ron bộ gx 160",
+            "folded": "ron bo gx 160"
+          },
+          {
+            "raw": "Ron bộ GX 390",
+            "dia": true,
+            "key": "ron bộ gx 390",
+            "folded": "ron bo gx 390"
+          },
+          {
+            "raw": "Dải viền nẹp cao su",
+            "dia": true,
+            "key": "dải viền nẹp cao su",
+            "folded": "dai vien nep cao su"
+          },
+          {
+            "raw": "Đĩa phân phối khí",
+            "dia": true,
+            "key": "đĩa phân phối khí",
+            "folded": "dia phan phoi khi"
+          },
+          {
+            "raw": "Dây chun buộc tóc",
+            "dia": true,
+            "key": "dây chun buộc tóc",
+            "folded": "day chun buoc toc"
+          },
+          {
+            "raw": "Miếng chèn cao su lưu hóa",
+            "dia": true,
+            "key": "miếng chèn cao su lưu hóa",
+            "folded": "mieng chen cao su luu hoa"
+          },
+          {
+            "raw": "Gel làm sạch bụi bẩn bàn phím",
+            "dia": true,
+            "key": "gel làm sạch bụi bẩn bàn phím",
+            "folded": "gel lam sach bui ban ban phim"
+          },
+          {
+            "raw": "Con lăn dính bụi",
+            "dia": true,
+            "key": "con lăn dính bụi",
+            "folded": "con lan dinh bui"
+          },
+          {
+            "raw": "Bánh cao su mài cạnh",
+            "dia": true,
+            "key": "bánh cao su mài cạnh",
+            "folded": "banh cao su mai canh"
+          },
+          {
+            "raw": "Màng bơm",
+            "dia": true,
+            "key": "màng bơm",
+            "folded": "mang bom"
+          },
+          {
+            "raw": "Miếng lót chuột kê tay",
+            "dia": true,
+            "key": "miếng lót chuột kê tay",
+            "folded": "mieng lot chuot ke tay"
+          },
+          {
+            "raw": "Đế cao su chống rung",
+            "dia": true,
+            "key": "đế cao su chống rung",
+            "folded": "de cao su chong rung"
+          },
+          {
+            "raw": "Phớt xi lanh",
+            "dia": true,
+            "key": "phớt xi lanh",
+            "folded": "phot xi lanh"
+          },
+          {
+            "raw": "Phớt dầu thuỷ lực",
+            "dia": true,
+            "key": "phớt dầu thuỷ lực",
+            "folded": "phot dau thuy luc"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "vehicleKind",
+      "type": "enum",
+      "domain": [
+        "bicycle",
+        "motorVehicle",
+        "otherVehicle",
+        "na"
+      ],
+      "labelVi": "Loại xe cho bộ phận",
+      "questionVi": "Bộ phận/đệm này dùng cho loại xe nào? (xe đạp; xe có động cơ (ô tô, tải); hay xe khác (xe nâng, máy kéo)?)",
+      "detect": {
+        "bicycle": [
+          "xe đạp",
+          "bicycle",
+          "SEN"
+        ],
+        "motorVehicle": [
+          "xe thuộc nhóm 87.02",
+          "xe thuộc nhóm 87.03",
+          "xe thuộc nhóm 87.04",
+          "xe thuộc nhóm 87.05",
+          "xe có động cơ",
+          "ô tô",
+          "tải",
+          "xe 87.11"
+        ],
+        "otherVehicle": [
+          "xe thuộc nhóm 87.09",
+          "xe thuộc nhóm 87.13",
+          "xe thuộc nhóm 87.15",
+          "xe thuộc nhóm 87.16",
+          "dù xoay",
+          "88.04",
+          "xe nâng",
+          "máy kéo"
+        ],
+        "na": [
+          "nắp cao su cửa",
+          "cho xi lanh nâng cần máy xúc",
+          "nắp đậy miệng cống"
+        ]
+      },
+      "_detect": {
+        "bicycle": [
+          {
+            "raw": "xe đạp",
+            "dia": true,
+            "key": "xe đạp",
+            "folded": "xe dap"
+          },
+          {
+            "raw": "bicycle",
+            "dia": false,
+            "key": "bicycle",
+            "folded": "bicycle"
+          },
+          {
+            "raw": "SEN",
+            "dia": false,
+            "key": "sen",
+            "folded": "sen"
+          }
+        ],
+        "motorVehicle": [
+          {
+            "raw": "xe thuộc nhóm 87.02",
+            "dia": true,
+            "key": "xe thuộc nhóm 87.02",
+            "folded": "xe thuoc nhom 87.02"
+          },
+          {
+            "raw": "xe thuộc nhóm 87.03",
+            "dia": true,
+            "key": "xe thuộc nhóm 87.03",
+            "folded": "xe thuoc nhom 87.03"
+          },
+          {
+            "raw": "xe thuộc nhóm 87.04",
+            "dia": true,
+            "key": "xe thuộc nhóm 87.04",
+            "folded": "xe thuoc nhom 87.04"
+          },
+          {
+            "raw": "xe thuộc nhóm 87.05",
+            "dia": true,
+            "key": "xe thuộc nhóm 87.05",
+            "folded": "xe thuoc nhom 87.05"
+          },
+          {
+            "raw": "xe có động cơ",
+            "dia": true,
+            "key": "xe có động cơ",
+            "folded": "xe co dong co"
+          },
+          {
+            "raw": "ô tô",
+            "dia": true,
+            "key": "ô tô",
+            "folded": "o to"
+          },
+          {
+            "raw": "tải",
+            "dia": true,
+            "key": "tải",
+            "folded": "tai"
+          },
+          {
+            "raw": "xe 87.11",
+            "dia": false,
+            "key": "xe 87.11",
+            "folded": "xe 87.11"
+          }
+        ],
+        "otherVehicle": [
+          {
+            "raw": "xe thuộc nhóm 87.09",
+            "dia": true,
+            "key": "xe thuộc nhóm 87.09",
+            "folded": "xe thuoc nhom 87.09"
+          },
+          {
+            "raw": "xe thuộc nhóm 87.13",
+            "dia": true,
+            "key": "xe thuộc nhóm 87.13",
+            "folded": "xe thuoc nhom 87.13"
+          },
+          {
+            "raw": "xe thuộc nhóm 87.15",
+            "dia": true,
+            "key": "xe thuộc nhóm 87.15",
+            "folded": "xe thuoc nhom 87.15"
+          },
+          {
+            "raw": "xe thuộc nhóm 87.16",
+            "dia": true,
+            "key": "xe thuộc nhóm 87.16",
+            "folded": "xe thuoc nhom 87.16"
+          },
+          {
+            "raw": "dù xoay",
+            "dia": true,
+            "key": "dù xoay",
+            "folded": "du xoay"
+          },
+          {
+            "raw": "88.04",
+            "dia": false,
+            "key": "88.04",
+            "folded": "88.04"
+          },
+          {
+            "raw": "xe nâng",
+            "dia": true,
+            "key": "xe nâng",
+            "folded": "xe nang"
+          },
+          {
+            "raw": "máy kéo",
+            "dia": true,
+            "key": "máy kéo",
+            "folded": "may keo"
+          }
+        ],
+        "na": [
+          {
+            "raw": "nắp cao su cửa",
+            "dia": true,
+            "key": "nắp cao su cửa",
+            "folded": "nap cao su cua"
+          },
+          {
+            "raw": "cho xi lanh nâng cần máy xúc",
+            "dia": true,
+            "key": "cho xi lanh nâng cần máy xúc",
+            "folded": "cho xi lanh nang can may xuc"
+          },
+          {
+            "raw": "nắp đậy miệng cống",
+            "dia": true,
+            "key": "nắp đậy miệng cống",
+            "folded": "nap day mieng cong"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "senFlag",
+      "type": "enum",
+      "domain": [
+        "sen",
+        "nonSen"
+      ],
+      "labelVi": "Hàng SEN (tự động điều chỉnh)",
+      "questionVi": "Hàng này có ghi chú SEN (Self-Adjusting) trong biểu thuế không? SEN = hàng tự động điều chỉnh, thuế suất thường thấp hơn.",
+      "detect": {
+        "sen": [
+          "SEN",
+          "Vòng đệm cao su lưu hóa",
+          "Đệm làm kín (Gioăng)",
+          "Gioăng làm kín hình O",
+          "Gioăng bịt máy nén khí",
+          "Gioăng phớt chắn dầu",
+          "Gioăng phớt xi lanh",
+          "Gioăng máy nén khí",
+          "Gioăng nối máy nén khí",
+          "Gioăng bịt nước máy nén khí",
+          "Bộ gioăng phớt",
+          "Gioăng chịu nhiệt",
+          "Long đen (Vòng đệm)",
+          "Gioăng (Vòng đệm)",
+          "Gioăng (Miếng đệm)",
+          "Miếng đệm quay",
+          "Đệm cao su van khí",
+          "Gioăng cao su",
+          "Vòng đệm chắn bụi thuỷ lực",
+          "Gioăng O",
+          "Vòng đệm đế bi bơm màng",
+          "Phớt cơ khí bơm",
+          "Gôm tẩy bút chì",
+          "Phớt cao su lưu hóa",
+          "Cao su giảm chấn",
+          "Giắc hút chân không",
+          "Con lăn cao su",
+          "Núm hút chân không",
+          "Tấm lót chuột máy tính",
+          "Tấm cao su đỡ cáp",
+          "Giảm chấn cao su",
+          "Đế đánh bóng mềm",
+          "Ruột bình tích áp 25L",
+          "Miếng dán tản nhiệt",
+          "Thảm cao su chống tĩnh điện",
+          "Phớt cơ khí máy bơm",
+          "Phớt kích tăng xích máy xúc",
+          "Giác hút chân không",
+          "Nút chai thủy tinh",
+          "Ron bộ GX 160",
+          "Ron bộ GX 390",
+          "Dải viền nẹp cao su",
+          "Đĩa phân phối khí",
+          "Dây chun buộc tóc",
+          "Miếng chèn cao su lưu hóa",
+          "Gel làm sạch bụi bẩn bàn phím",
+          "Con lăn dính bụi",
+          "Bánh cao su mài cạnh",
+          "Màng bơm",
+          "Miếng lót chuột kê tay",
+          "Đế cao su chống rung",
+          "Phớt dầu thuỷ lực",
+          "Phớt xi lanh khí nén"
+        ]
+      },
+      "_detect": {
+        "sen": [
+          {
+            "raw": "SEN",
+            "dia": false,
+            "key": "sen",
+            "folded": "sen"
+          },
+          {
+            "raw": "Vòng đệm cao su lưu hóa",
+            "dia": true,
+            "key": "vòng đệm cao su lưu hóa",
+            "folded": "vong dem cao su luu hoa"
+          },
+          {
+            "raw": "Đệm làm kín (Gioăng)",
+            "dia": true,
+            "key": "đệm làm kín gioăng",
+            "folded": "dem lam kin gioang"
+          },
+          {
+            "raw": "Gioăng làm kín hình O",
+            "dia": true,
+            "key": "gioăng làm kín hình o",
+            "folded": "gioang lam kin hinh o"
+          },
+          {
+            "raw": "Gioăng bịt máy nén khí",
+            "dia": true,
+            "key": "gioăng bịt máy nén khí",
+            "folded": "gioang bit may nen khi"
+          },
+          {
+            "raw": "Gioăng phớt chắn dầu",
+            "dia": true,
+            "key": "gioăng phớt chắn dầu",
+            "folded": "gioang phot chan dau"
+          },
+          {
+            "raw": "Gioăng phớt xi lanh",
+            "dia": true,
+            "key": "gioăng phớt xi lanh",
+            "folded": "gioang phot xi lanh"
+          },
+          {
+            "raw": "Gioăng máy nén khí",
+            "dia": true,
+            "key": "gioăng máy nén khí",
+            "folded": "gioang may nen khi"
+          },
+          {
+            "raw": "Gioăng nối máy nén khí",
+            "dia": true,
+            "key": "gioăng nối máy nén khí",
+            "folded": "gioang noi may nen khi"
+          },
+          {
+            "raw": "Gioăng bịt nước máy nén khí",
+            "dia": true,
+            "key": "gioăng bịt nước máy nén khí",
+            "folded": "gioang bit nuoc may nen khi"
+          },
+          {
+            "raw": "Bộ gioăng phớt",
+            "dia": true,
+            "key": "bộ gioăng phớt",
+            "folded": "bo gioang phot"
+          },
+          {
+            "raw": "Gioăng chịu nhiệt",
+            "dia": true,
+            "key": "gioăng chịu nhiệt",
+            "folded": "gioang chiu nhiet"
+          },
+          {
+            "raw": "Long đen (Vòng đệm)",
+            "dia": true,
+            "key": "long đen vòng đệm",
+            "folded": "long den vong dem"
+          },
+          {
+            "raw": "Gioăng (Vòng đệm)",
+            "dia": true,
+            "key": "gioăng vòng đệm",
+            "folded": "gioang vong dem"
+          },
+          {
+            "raw": "Gioăng (Miếng đệm)",
+            "dia": true,
+            "key": "gioăng miếng đệm",
+            "folded": "gioang mieng dem"
+          },
+          {
+            "raw": "Miếng đệm quay",
+            "dia": true,
+            "key": "miếng đệm quay",
+            "folded": "mieng dem quay"
+          },
+          {
+            "raw": "Đệm cao su van khí",
+            "dia": true,
+            "key": "đệm cao su van khí",
+            "folded": "dem cao su van khi"
+          },
+          {
+            "raw": "Gioăng cao su",
+            "dia": true,
+            "key": "gioăng cao su",
+            "folded": "gioang cao su"
+          },
+          {
+            "raw": "Vòng đệm chắn bụi thuỷ lực",
+            "dia": true,
+            "key": "vòng đệm chắn bụi thuỷ lực",
+            "folded": "vong dem chan bui thuy luc"
+          },
+          {
+            "raw": "Gioăng O",
+            "dia": true,
+            "key": "gioăng o",
+            "folded": "gioang o"
+          },
+          {
+            "raw": "Vòng đệm đế bi bơm màng",
+            "dia": true,
+            "key": "vòng đệm đế bi bơm màng",
+            "folded": "vong dem de bi bom mang"
+          },
+          {
+            "raw": "Phớt cơ khí bơm",
+            "dia": true,
+            "key": "phớt cơ khí bơm",
+            "folded": "phot co khi bom"
+          },
+          {
+            "raw": "Gôm tẩy bút chì",
+            "dia": true,
+            "key": "gôm tẩy bút chì",
+            "folded": "gom tay but chi"
+          },
+          {
+            "raw": "Phớt cao su lưu hóa",
+            "dia": true,
+            "key": "phớt cao su lưu hóa",
+            "folded": "phot cao su luu hoa"
+          },
+          {
+            "raw": "Cao su giảm chấn",
+            "dia": true,
+            "key": "cao su giảm chấn",
+            "folded": "cao su giam chan"
+          },
+          {
+            "raw": "Giắc hút chân không",
+            "dia": true,
+            "key": "giắc hút chân không",
+            "folded": "giac hut chan khong"
+          },
+          {
+            "raw": "Con lăn cao su",
+            "dia": true,
+            "key": "con lăn cao su",
+            "folded": "con lan cao su"
+          },
+          {
+            "raw": "Núm hút chân không",
+            "dia": true,
+            "key": "núm hút chân không",
+            "folded": "num hut chan khong"
+          },
+          {
+            "raw": "Tấm lót chuột máy tính",
+            "dia": true,
+            "key": "tấm lót chuột máy tính",
+            "folded": "tam lot chuot may tinh"
+          },
+          {
+            "raw": "Tấm cao su đỡ cáp",
+            "dia": true,
+            "key": "tấm cao su đỡ cáp",
+            "folded": "tam cao su do cap"
+          },
+          {
+            "raw": "Giảm chấn cao su",
+            "dia": true,
+            "key": "giảm chấn cao su",
+            "folded": "giam chan cao su"
+          },
+          {
+            "raw": "Đế đánh bóng mềm",
+            "dia": true,
+            "key": "đế đánh bóng mềm",
+            "folded": "de danh bong mem"
+          },
+          {
+            "raw": "Ruột bình tích áp 25L",
+            "dia": true,
+            "key": "ruột bình tích áp 25l",
+            "folded": "ruot binh tich ap 25l"
+          },
+          {
+            "raw": "Miếng dán tản nhiệt",
+            "dia": true,
+            "key": "miếng dán tản nhiệt",
+            "folded": "mieng dan tan nhiet"
+          },
+          {
+            "raw": "Thảm cao su chống tĩnh điện",
+            "dia": true,
+            "key": "thảm cao su chống tĩnh điện",
+            "folded": "tham cao su chong tinh dien"
+          },
+          {
+            "raw": "Phớt cơ khí máy bơm",
+            "dia": true,
+            "key": "phớt cơ khí máy bơm",
+            "folded": "phot co khi may bom"
+          },
+          {
+            "raw": "Phớt kích tăng xích máy xúc",
+            "dia": true,
+            "key": "phớt kích tăng xích máy xúc",
+            "folded": "phot kich tang xich may xuc"
+          },
+          {
+            "raw": "Giác hút chân không",
+            "dia": true,
+            "key": "giác hút chân không",
+            "folded": "giac hut chan khong"
+          },
+          {
+            "raw": "Nút chai thủy tinh",
+            "dia": true,
+            "key": "nút chai thủy tinh",
+            "folded": "nut chai thuy tinh"
+          },
+          {
+            "raw": "Ron bộ GX 160",
+            "dia": true,
+            "key": "ron bộ gx 160",
+            "folded": "ron bo gx 160"
+          },
+          {
+            "raw": "Ron bộ GX 390",
+            "dia": true,
+            "key": "ron bộ gx 390",
+            "folded": "ron bo gx 390"
+          },
+          {
+            "raw": "Dải viền nẹp cao su",
+            "dia": true,
+            "key": "dải viền nẹp cao su",
+            "folded": "dai vien nep cao su"
+          },
+          {
+            "raw": "Đĩa phân phối khí",
+            "dia": true,
+            "key": "đĩa phân phối khí",
+            "folded": "dia phan phoi khi"
+          },
+          {
+            "raw": "Dây chun buộc tóc",
+            "dia": true,
+            "key": "dây chun buộc tóc",
+            "folded": "day chun buoc toc"
+          },
+          {
+            "raw": "Miếng chèn cao su lưu hóa",
+            "dia": true,
+            "key": "miếng chèn cao su lưu hóa",
+            "folded": "mieng chen cao su luu hoa"
+          },
+          {
+            "raw": "Gel làm sạch bụi bẩn bàn phím",
+            "dia": true,
+            "key": "gel làm sạch bụi bẩn bàn phím",
+            "folded": "gel lam sach bui ban ban phim"
+          },
+          {
+            "raw": "Con lăn dính bụi",
+            "dia": true,
+            "key": "con lăn dính bụi",
+            "folded": "con lan dinh bui"
+          },
+          {
+            "raw": "Bánh cao su mài cạnh",
+            "dia": true,
+            "key": "bánh cao su mài cạnh",
+            "folded": "banh cao su mai canh"
+          },
+          {
+            "raw": "Màng bơm",
+            "dia": true,
+            "key": "màng bơm",
+            "folded": "mang bom"
+          },
+          {
+            "raw": "Miếng lót chuột kê tay",
+            "dia": true,
+            "key": "miếng lót chuột kê tay",
+            "folded": "mieng lot chuot ke tay"
+          },
+          {
+            "raw": "Đế cao su chống rung",
+            "dia": true,
+            "key": "đế cao su chống rung",
+            "folded": "de cao su chong rung"
+          },
+          {
+            "raw": "Phớt dầu thuỷ lực",
+            "dia": true,
+            "key": "phớt dầu thuỷ lực",
+            "folded": "phot dau thuy luc"
+          },
+          {
+            "raw": "Phớt xi lanh khí nén",
+            "dia": true,
+            "key": "phớt xi lanh khí nén",
+            "folded": "phot xi lanh khi nen"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "materialForm",
+      "type": "enum",
+      "domain": [
+        "cellular",
+        "nonCellular",
+        "na"
+      ],
+      "labelVi": "Dạng xốp/cellular hay đặc",
+      "questionVi": "Cao su này dạng xốp (cellular/foam) hay đặc (non-cellular)? Chương 40 tách cellular và non-cellular thành 2 dòng khác nhau.",
+      "detect": {
+        "cellular": [
+          "xốp",
+          "cellular",
+          "foam",
+          "Vòng đệm cao su lưu hóa",
+          "Đệm làm kín (Gioăng)",
+          "Gioăng làm kín hình O",
+          "Gioăng bịt máy nén khí",
+          "Gioăng phớt chắn dầu",
+          "Gioăng phớt xi lanh",
+          "Gioăng máy nén khí",
+          "Gioăng nối máy nén khí",
+          "Gioăng bịt nước máy nén khí",
+          "Bộ gioăng phớt",
+          "Gioăng chịu nhiệt",
+          "Long đen (Vòng đệm)",
+          "Gioăng (Vòng đệm)",
+          "Gioăng (Miếng đệm)",
+          "Miếng đệm quay",
+          "Đệm cao su van khí",
+          "Gioăng cao su",
+          "Vòng đệm chắn bụi thuỷ lực",
+          "Gioăng O",
+          "Vòng đệm đế bi bơm màng",
+          "Phớt cơ khí bơm",
+          "Gôm tẩy bút chì",
+          "Phớt cao su lưu hóa",
+          "Cao su giảm chấn",
+          "Giắc hút chân không",
+          "Con lăn cao su",
+          "Núm hút chân không",
+          "Tấm lót chuột máy tính",
+          "Tấm cao su đỡ cáp",
+          "Giảm chấn cao su",
+          "Đế đánh bóng mềm",
+          "Ruột bình tích áp 25L",
+          "Miếng dán tản nhiệt",
+          "Thảm cao su chống tĩnh điện",
+          "Phớt cơ khí máy bơm",
+          "Phớt kích tăng xích máy xúc",
+          "Giác hút chân không",
+          "Nút chai thủy tinh",
+          "Ron bộ GX 160",
+          "Ron bộ GX 390",
+          "Dải viền nẹp cao su",
+          "Đĩa phân phối khí",
+          "Dây chun buộc tóc",
+          "Miếng chèn cao su lưu hóa",
+          "Gel làm sạch bụi bẩn bàn phím",
+          "Con lăn dính bụi",
+          "Bánh cao su mài cạnh",
+          "Màng bơm",
+          "Miếng lót chuột kê tay",
+          "Đế cao su chống rung",
+          "Phớt dầu thuỷ lực",
+          "Phớt xi lanh khí nén"
+        ],
+        "nonCellular": [
+          "non-cellular",
+          "đặc",
+          "compact"
+        ],
+        "na": [
+          "nắp cao su cửa",
+          "cho xi lanh nâng cần máy xúc",
+          "nắp đậy miệng cống"
+        ]
+      },
+      "_detect": {
+        "cellular": [
+          {
+            "raw": "xốp",
+            "dia": true,
+            "key": "xốp",
+            "folded": "xop"
+          },
+          {
+            "raw": "cellular",
+            "dia": false,
+            "key": "cellular",
+            "folded": "cellular"
+          },
+          {
+            "raw": "foam",
+            "dia": false,
+            "key": "foam",
+            "folded": "foam"
+          },
+          {
+            "raw": "Vòng đệm cao su lưu hóa",
+            "dia": true,
+            "key": "vòng đệm cao su lưu hóa",
+            "folded": "vong dem cao su luu hoa"
+          },
+          {
+            "raw": "Đệm làm kín (Gioăng)",
+            "dia": true,
+            "key": "đệm làm kín gioăng",
+            "folded": "dem lam kin gioang"
+          },
+          {
+            "raw": "Gioăng làm kín hình O",
+            "dia": true,
+            "key": "gioăng làm kín hình o",
+            "folded": "gioang lam kin hinh o"
+          },
+          {
+            "raw": "Gioăng bịt máy nén khí",
+            "dia": true,
+            "key": "gioăng bịt máy nén khí",
+            "folded": "gioang bit may nen khi"
+          },
+          {
+            "raw": "Gioăng phớt chắn dầu",
+            "dia": true,
+            "key": "gioăng phớt chắn dầu",
+            "folded": "gioang phot chan dau"
+          },
+          {
+            "raw": "Gioăng phớt xi lanh",
+            "dia": true,
+            "key": "gioăng phớt xi lanh",
+            "folded": "gioang phot xi lanh"
+          },
+          {
+            "raw": "Gioăng máy nén khí",
+            "dia": true,
+            "key": "gioăng máy nén khí",
+            "folded": "gioang may nen khi"
+          },
+          {
+            "raw": "Gioăng nối máy nén khí",
+            "dia": true,
+            "key": "gioăng nối máy nén khí",
+            "folded": "gioang noi may nen khi"
+          },
+          {
+            "raw": "Gioăng bịt nước máy nén khí",
+            "dia": true,
+            "key": "gioăng bịt nước máy nén khí",
+            "folded": "gioang bit nuoc may nen khi"
+          },
+          {
+            "raw": "Bộ gioăng phớt",
+            "dia": true,
+            "key": "bộ gioăng phớt",
+            "folded": "bo gioang phot"
+          },
+          {
+            "raw": "Gioăng chịu nhiệt",
+            "dia": true,
+            "key": "gioăng chịu nhiệt",
+            "folded": "gioang chiu nhiet"
+          },
+          {
+            "raw": "Long đen (Vòng đệm)",
+            "dia": true,
+            "key": "long đen vòng đệm",
+            "folded": "long den vong dem"
+          },
+          {
+            "raw": "Gioăng (Vòng đệm)",
+            "dia": true,
+            "key": "gioăng vòng đệm",
+            "folded": "gioang vong dem"
+          },
+          {
+            "raw": "Gioăng (Miếng đệm)",
+            "dia": true,
+            "key": "gioăng miếng đệm",
+            "folded": "gioang mieng dem"
+          },
+          {
+            "raw": "Miếng đệm quay",
+            "dia": true,
+            "key": "miếng đệm quay",
+            "folded": "mieng dem quay"
+          },
+          {
+            "raw": "Đệm cao su van khí",
+            "dia": true,
+            "key": "đệm cao su van khí",
+            "folded": "dem cao su van khi"
+          },
+          {
+            "raw": "Gioăng cao su",
+            "dia": true,
+            "key": "gioăng cao su",
+            "folded": "gioang cao su"
+          },
+          {
+            "raw": "Vòng đệm chắn bụi thuỷ lực",
+            "dia": true,
+            "key": "vòng đệm chắn bụi thuỷ lực",
+            "folded": "vong dem chan bui thuy luc"
+          },
+          {
+            "raw": "Gioăng O",
+            "dia": true,
+            "key": "gioăng o",
+            "folded": "gioang o"
+          },
+          {
+            "raw": "Vòng đệm đế bi bơm màng",
+            "dia": true,
+            "key": "vòng đệm đế bi bơm màng",
+            "folded": "vong dem de bi bom mang"
+          }
+        ],
+        "nonCellular": [
+          {
+            "raw": "non-cellular",
+            "dia": false,
+            "key": "non cellular",
+            "folded": "non cellular"
+          },
+          {
+            "raw": "đặc",
+            "dia": true,
+            "key": "đặc",
+            "folded": "dac"
+          },
+          {
+            "raw": "compact",
+            "dia": false,
+            "key": "compact",
+            "folded": "compact"
+          }
+        ],
+        "na": [
+          {
+            "raw": "nắp cao su cửa",
+            "dia": true,
+            "key": "nắp cao su cửa",
+            "folded": "nap cao su cua"
+          },
+          {
+            "raw": "cho xi lanh nâng cần máy xúc",
+            "dia": true,
+            "key": "cho xi lanh nâng cần máy xúc",
+            "folded": "cho xi lanh nang can may xuc"
+          },
+          {
+            "raw": "nắp đậy miệng cống",
+            "dia": true,
+            "key": "nắp đậy miệng cống",
+            "folded": "nap day mieng cong"
+          }
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "4016-r001",
+      "priority": 90,
+      "when": {
+        "articleForm": "clothingAccessory",
+        "materialForm": "nonCellular"
+      },
+      "hs": "40161010",
+      "gir": "GIR 6 / Note 2(b) to Chapter 40",
+      "reasonVi": "Sản phẩm cao su lưu hoá dạng lót/đệm cho sản phẩm may mặc hoặc đồ phụ trợ quần áo, dạng đặc → 4016.10.10.",
+      "source": "Biểu thuế 2026 dòng 4016.10.10"
+    },
+    {
+      "id": "4016-r002",
+      "priority": 90,
+      "when": {
+        "articleForm": "clothingAccessory",
+        "materialForm": "nonCellular"
+      },
+      "hs": "40161020",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm, miếng ghép bằng cao su lưu hoá để lát nền và ốp tường → 4016.10.20.",
+      "source": "Biểu thuế 2026 dòng 4016.10.20"
+    },
+    {
+      "id": "4016-r003",
+      "priority": 85,
+      "when": {
+        "articleForm": "clothingAccessory",
+        "materialForm": "nonCellular"
+      },
+      "hs": "40161090",
+      "gir": "GIR 6",
+      "reasonVi": "Sản phẩm cao su lưu hoá dạng lót/đệm quần áo khác (loại khác) → 4016.10.90.",
+      "source": "Biểu thuế 2026 dòng 4016.10.90"
+    },
+    {
+      "id": "4016-r004",
+      "priority": 80,
+      "when": {
+        "articleForm": "floorMat",
+        "materialForm": "nonCellular"
+      },
+      "hs": "40169110",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm, đệm (mat) bằng cao su lưu hoá đặc, dùng lát sàn → 4016.91.10.",
+      "source": "Biểu thuế 2026 dòng 4016.91.10"
+    },
+    {
+      "id": "4016-r005",
+      "priority": 80,
+      "when": {
+        "articleForm": "floorMat",
+        "materialForm": "nonCellular"
+      },
+      "hs": "40169120",
+      "gir": "GIR 6",
+      "reasonVi": "Dạng tấm rời để ghép bằng cao su lưu hoá đặc → 4016.91.20.",
+      "source": "Biểu thuế 2026 dòng 4016.91.20"
+    },
+    {
+      "id": "4016-r006",
+      "priority": 75,
+      "when": {
+        "articleForm": "floorMat",
+        "materialForm": "nonCellular"
+      },
+      "hs": "40169190",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm đệm/sàn bằng cao su lưu hoá đặc, loại khác → 4016.91.90.",
+      "source": "Biểu thuế 2026 dòng 4016.91.90"
+    },
+    {
+      "id": "4016-r007",
+      "priority": 80,
+      "when": {
+        "articleForm": "eraser"
+      },
+      "hs": "40169210",
+      "gir": "GIR 6",
+      "reasonVi": "Đầu tẩy (eraser tips) bằng cao su lưu hoá → 4016.92.10.",
+      "source": "Biểu thuế 2026 dòng 4016.92.10"
+    },
+    {
+      "id": "4016-r008",
+      "priority": 75,
+      "when": {
+        "articleForm": "eraser"
+      },
+      "hs": "40169290",
+      "gir": "GIR 6",
+      "reasonVi": "Sản phẩm tẩy bằng cao su lưu hoá, loại khác → 4016.92.90.",
+      "source": "Biểu thuế 2026 dòng 4016.92.90"
+    },
+    {
+      "id": "4016-r009",
+      "priority": 90,
+      "when": {
+        "articleForm": "gasket",
+        "materialForm": "nonCellular",
+        "senFlag": "sen"
+      },
+      "hs": "40169310",
+      "gir": "GIR 6",
+      "reasonVi": "Gioăng/đệm cách điện dùng cho các chân tụ điện, SEN (tự động điều chỉnh), thuế 3% → 4016.93.10.",
+      "source": "Biểu thuế 2026 dòng 4016.93.10 (ghi chú SEN)"
+    },
+    {
+      "id": "4016-r010",
+      "priority": 90,
+      "when": {
+        "articleForm": "gasket",
+        "materialForm": "nonCellular"
+      },
+      "hs": "40169320",
+      "gir": "GIR 6",
+      "reasonVi": "Miếng đệm và vành khung tròn dùng cho xe có động cơ, cao su lưu hoá đặc → 4016.93.20.",
+      "source": "Biểu thuế 2026 dòng 4016.93.20"
+    },
+    {
+      "id": "4016-r011",
+      "priority": 85,
+      "when": {
+        "articleForm": "gasket",
+        "materialForm": "nonCellular"
+      },
+      "hs": "40169390",
+      "gir": "GIR 6",
+      "reasonVi": "Gioăng/đệm/vanh khung tròn bằng cao su lưu hoá đặc, loại khác → 4016.93.90.",
+      "source": "Biểu thuế 2026 dòng 4016.93.90"
+    },
+    {
+      "id": "4016-r012",
+      "priority": 80,
+      "when": {
+        "articleForm": "boatFender"
+      },
+      "hs": "40169400",
+      "gir": "GIR 6",
+      "reasonVi": "Đệm chống va cho tàu thuyền hoặc ụ tàu, có hoặc không bơm hơi → 4016.94.00.",
+      "source": "Biểu thuế 2026 dòng 4016.94.00"
+    },
+    {
+      "id": "4016-r013",
+      "priority": 80,
+      "when": {
+        "articleForm": "inflatable"
+      },
+      "hs": "40169500",
+      "gir": "GIR 6",
+      "reasonVi": "Sản phẩm có thể bơm hơi khác bằng cao su lưu hoá (trừ đệm chống va tàu) → 4016.95.00.",
+      "source": "Biểu thuế 2026 dòng 4016.95.00"
+    },
+    {
+      "id": "4016-r014",
+      "priority": 70,
+      "when": {
+        "articleForm": "vehiclePart",
+        "vehicleKind": "motorVehicle"
+      },
+      "hs": "40169911",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận/đệm cao su lưu hoá cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05 (ô tô, tải), trừ viền kính cửa → 4016.99.11.",
+      "source": "Biểu thuế 2026 dòng 4016.99.11"
+    },
+    {
+      "id": "4016-r015",
+      "priority": 70,
+      "when": {
+        "articleForm": "vehiclePart",
+        "vehicleKind": "motorVehicle"
+      },
+      "hs": "40169912",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận/đệm cao su lưu hoá cho xe thuộc nhóm 87.11 (xe mô tô hai bánh) → 4016.99.12.",
+      "source": "Biểu thuế 2026 dòng 4016.99.12"
+    },
+    {
+      "id": "4016-r016",
+      "priority": 70,
+      "when": {
+        "articleForm": "vehiclePart",
+        "vehicleKind": "motorVehicle"
+      },
+      "hs": "40169913",
+      "gir": "GIR 6",
+      "reasonVi": "Viền cao su quanh kính cửa dùng cho xe có động cơ → 4016.99.13.",
+      "source": "Biểu thuế 2026 dòng 4016.99.13"
+    },
+    {
+      "id": "4016-r017",
+      "priority": 70,
+      "when": {
+        "articleForm": "vehiclePart",
+        "vehicleKind": "otherVehicle"
+      },
+      "hs": "40169915",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận/đệm cao su cho xe thuộc nhóm 87.09, 87.13, 87.15 hoặc 87.16 → 4016.99.15.",
+      "source": "Biểu thuế 2026 dòng 4016.99.15"
+    },
+    {
+      "id": "4016-r018",
+      "priority": 75,
+      "when": {
+        "articleForm": "vehiclePart",
+        "vehicleKind": "bicycle",
+        "senFlag": "sen"
+      },
+      "hs": "40169916",
+      "gir": "GIR 6",
+      "reasonVi": "Chắn bùn xe đạp, SEN (tự động điều chỉnh), thuế 25% → 4016.99.16.",
+      "source": "Biểu thuế 2026 dòng 4016.99.16 (ghi chú SEN)"
+    },
+    {
+      "id": "4016-r019",
+      "priority": 75,
+      "when": {
+        "articleForm": "vehiclePart",
+        "vehicleKind": "bicycle",
+        "senFlag": "sen"
+      },
+      "hs": "40169917",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của xe đạp, SEN (tự động điều chỉnh), thuế 25% → 4016.99.17.",
+      "source": "Biểu thuế 2026 dòng 4016.99.17 (ghi chú SEN)"
+    },
+    {
+      "id": "4016-r020",
+      "priority": 75,
+      "when": {
+        "articleForm": "vehiclePart",
+        "vehicleKind": "bicycle",
+        "senFlag": "sen"
+      },
+      "hs": "40169918",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện khác của xe đạp, SEN (tự động điều chỉnh), thuế 25% → 4016.99.18.",
+      "source": "Biểu thuế 2026 dòng 4016.99.18 (ghi chú SEN)"
+    },
+    {
+      "id": "4016-r021",
+      "priority": 65,
+      "when": {
+        "articleForm": "vehiclePart",
+        "vehicleKind": "bicycle"
+      },
+      "hs": "40169919",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận/phụ kiện khác của xe đạp, không SEN → 4016.99.19 (thuế 5%).",
+      "source": "Biểu thuế 2026 dòng 4016.99.19"
+    },
+    {
+      "id": "4016-r022",
+      "priority": 65,
+      "when": {
+        "articleForm": "vehiclePart",
+        "vehicleKind": "otherVehicle"
+      },
+      "hs": "40169920",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận và phụ kiện của dù xoay thuộc nhóm 88.04 → 4016.99.20.",
+      "source": "Biểu thuế 2026 dòng 4016.99.20"
+    },
+    {
+      "id": "4016-r023",
+      "priority": 65,
+      "when": {
+        "articleForm": "otherArticle"
+      },
+      "hs": "40169930",
+      "gir": "GIR 6",
+      "reasonVi": "Dải cao su lưu hoá → 4016.99.30.",
+      "source": "Biểu thuế 2026 dòng 4016.99.30"
+    },
+    {
+      "id": "4016-r024",
+      "priority": 65,
+      "when": {
+        "articleForm": "floorMat",
+        "materialForm": "nonCellular"
+      },
+      "hs": "40169940",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm, miếng rời ghép với nhau để ốp tường → 4016.99.40.",
+      "source": "Biểu thuế 2026 dòng 4016.99.40"
+    },
+    {
+      "id": "4016-r025",
+      "priority": 70,
+      "when": {
+        "articleForm": "otherArticle",
+        "materialForm": "nonCellular",
+        "senFlag": "sen"
+      },
+      "hs": "40169951",
+      "gir": "GIR 6",
+      "reasonVi": "Trục lăn cao su SEN (tự động điều chỉnh), thuế 3% → 4016.99.51.",
+      "source": "Biểu thuế 2026 dòng 4016.99.51 (ghi chú SEN)"
+    },
+    {
+      "id": "4016-r026",
+      "priority": 70,
+      "when": {
+        "articleForm": "otherArticle",
+        "materialForm": "nonCellular",
+        "senFlag": "sen"
+      },
+      "hs": "40169952",
+      "gir": "GIR 6",
+      "reasonVi": "Cốt làm lốp (Tyre mould bladders), SEN, thuế 3% → 4016.99.52.",
+      "source": "Biểu thuế 2026 dòng 4016.99.52 (ghi chú SEN)"
+    },
+    {
+      "id": "4016-r027",
+      "priority": 70,
+      "when": {
+        "articleForm": "otherArticle",
+        "materialForm": "nonCellular",
+        "senFlag": "sen"
+      },
+      "hs": "40169953",
+      "gir": "GIR 6",
+      "reasonVi": "Nắp chụp cách điện, SEN, thuế 3% → 4016.99.53.",
+      "source": "Biểu thuế 2026 dòng 4016.99.53 (ghi chú SEN)"
+    },
+    {
+      "id": "4016-r028",
+      "priority": 65,
+      "when": {
+        "articleForm": "otherArticle",
+        "materialForm": "nonCellular"
+      },
+      "hs": "40169954",
+      "gir": "GIR 6",
+      "reasonVi": "Vòng và vỏ bọc bằng cao su sử dụng cho hệ thống dây điện → 4016.99.54.",
+      "source": "Biểu thuế 2026 dòng 4016.99.54"
+    },
+    {
+      "id": "4016-r029",
+      "priority": 65,
+      "when": {
+        "articleForm": "otherArticle",
+        "materialForm": "nonCellular",
+        "senFlag": "sen"
+      },
+      "hs": "40169959",
+      "gir": "GIR 6",
+      "reasonVi": "Sản phẩm cao su lưu hoá SEN khác, thuế 3% → 4016.99.59.",
+      "source": "Biểu thuế 2026 dòng 4016.99.59 (ghi chú SEN)"
+    },
+    {
+      "id": "4016-r030",
+      "priority": 65,
+      "when": {
+        "articleForm": "floorMat",
+        "materialForm": "nonCellular"
+      },
+      "hs": "40169960",
+      "gir": "GIR 6",
+      "reasonVi": "Lót đường ray (rail pad) bằng cao su lưu hoá → 4016.99.60.",
+      "source": "Biểu thuế 2026 dòng 4016.99.60"
+    },
+    {
+      "id": "4016-r031",
+      "priority": 65,
+      "when": {
+        "articleForm": "otherArticle"
+      },
+      "hs": "40169970",
+      "gir": "GIR 6",
+      "reasonVi": "Sản phẩm cao su lưu hoá chịu lực xây dựng kể cả lực cầu → 4016.99.70.",
+      "source": "Biểu thuế 2026 dòng 4016.99.70"
+    },
+    {
+      "id": "4016-r032",
+      "priority": 65,
+      "when": {
+        "articleForm": "otherArticle"
+      },
+      "hs": "40169991",
+      "gir": "GIR 6",
+      "reasonVi": "Khăn trải bàn bằng cao su lưu hoá → 4016.99.91 (thuế 20%).",
+      "source": "Biểu thuế 2026 dòng 4016.99.91"
+    },
+    {
+      "id": "4016-r033",
+      "priority": 60,
+      "when": {
+        "articleForm": "otherArticle"
+      },
+      "hs": "40169999",
+      "gir": "GIR 6",
+      "reasonVi": "Sản phẩm khác bằng cao su lưu hoá, chưa phân loại — residual → 4016.99.99.",
+      "source": "Biểu thuế 2026 dòng 4016.99.99"
+    }
+  ],
+  "inputAttributes": [
+    "articleForm",
+    "materialForm",
+    "senFlag",
+    "vehicleKind"
+  ],
+  "attributes": {
+    "articleForm": {
+      "detect": {
+        "clothingAccessory": [
+          "lót đệm quần áo",
+          "lót đệm cho sản phẩm may mặc",
+          "tấm ghép ốp tường",
+          "lát nền",
+          "ốp tường",
+          "clothing",
+          "lining",
+          "pad"
+        ],
+        "floorMat": [
+          "tấm đệm",
+          "đệm mat",
+          "lát sàn",
+          "tấm rời ghép",
+          "floor covering",
+          "floor mat",
+          "lót đường ray",
+          "rail pad"
+        ],
+        "eraser": [
+          "eraser"
+        ],
+        "gasket": [
+          "gioăng",
+          "đệm",
+          "vành khung tròn",
+          "cách điện",
+          "gasket",
+          "seal",
+          "washer",
+          "insulating",
+          "miếng đệm"
+        ],
+        "boatFender": [
+          "đệm chống va",
+          "tàu thuyền",
+          "ụ tàu",
+          "boat fender",
+          "dock fender"
+        ],
+        "inflatable": [
+          "bơm hơi",
+          "inflatable"
+        ],
+        "vehiclePart": [
+          "bộ phận xe",
+          "chắn bùn",
+          "viền kính",
+          "phụ kiện xe",
+          "phụ kiện xe đạp",
+          "bộ phận xe đạp",
+          "dù xoay",
+          "bicycle",
+          "xe đạp",
+          "xe có động cơ",
+          "vehicle part"
+        ],
+        "otherArticle": [
+          "dải cao su",
+          "khăn trải bàn",
+          "trục lăn",
+          "cốt làm lốp",
+          "xây dựng",
+          "loại khác",
+          "n.e.c."
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "boatFender",
+        "clothingAccessory",
+        "eraser",
+        "floorMat",
+        "gasket",
+        "inflatable",
+        "otherArticle",
+        "vehiclePart"
+      ]
+    },
+    "materialForm": {
+      "detect": {
+        "cellular": [
+          "xốp",
+          "cellular",
+          "foam"
+        ],
+        "nonCellular": [
+          "non-cellular",
+          "đặc",
+          "compact"
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "cellular",
+        "nonCellular"
+      ]
+    },
+    "senFlag": {
+      "detect": {
+        "sen": [
+          "SEN"
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "sen"
+      ]
+    },
+    "vehicleKind": {
+      "detect": {
+        "bicycle": [
+          "xe đạp",
+          "bicycle",
+          "SEN"
+        ],
+        "motorVehicle": [
+          "xe thuộc nhóm 87.02",
+          "xe thuộc nhóm 87.03",
+          "xe thuộc nhóm 87.04",
+          "xe thuộc nhóm 87.05",
+          "xe có động cơ",
+          "ô tô",
+          "tải",
+          "xe 87.11"
+        ],
+        "otherVehicle": [
+          "xe thuộc nhóm 87.09",
+          "xe thuộc nhóm 87.13",
+          "xe thuộc nhóm 87.15",
+          "xe thuộc nhóm 87.16",
+          "dù xoay",
+          "88.04",
+          "xe nâng",
+          "máy kéo"
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "bicycle",
+        "motorVehicle",
+        "otherVehicle"
+      ]
+    }
+  },
+  "essenceVi": "articleForm × materialForm × senFlag × vehicleKind"
+}

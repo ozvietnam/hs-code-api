@@ -1,0 +1,462 @@
+{
+  "heading": "8208",
+  "titleVi": "Lưỡi cắt và các bộ phận cắt, dùng cho dụng cụ cầm tay hoặc máy móc",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "toolApplication",
+      "type": "enum",
+      "domain": [
+        "metalworking",
+        "woodworking",
+        "kitchen_industrial",
+        "agriculture",
+        "other"
+      ],
+      "labelVi": "Ứng dụng của lưỡi cắt",
+      "questionVi": "Lưỡi cắt dùng để gia công gì: kim loại, gỗ, dụng cụ nhà bếp/máy thực phẩm công nghiệp, máy nông nghiệp/làm vườn, hay ứng dụng khác?",
+      "detect": {
+        "metalworking": [
+          "lưỡi cắt kim loại",
+          "dao phay",
+          "lưỡi cắt máy tiện",
+          "lưỡi cắt CNC",
+          "lưỡi máy gia công kim loại",
+          "cutter metal",
+          "dao doa",
+          "manh dao",
+          "luoi cat",
+          "dao gia",
+          "luoi cat cnc",
+          "luoi cat kim loai",
+          "dao gia cong",
+          "dao cắt máy tự động",
+          "dao cat may tu dong",
+          "dao cắt máy",
+          "cắt máy tự động kim loại"
+        ],
+        "woodworking": [
+          "lưỡi cắt gỗ",
+          "lưỡi cưa",
+          "lưỡi bào",
+          "dao cắt gỗ",
+          "lưỡi máy bào",
+          "cutter wood",
+          "luoi cua",
+          "luoi bao",
+          "dao cat go"
+        ],
+        "kitchen_industrial": [
+          "lưỡi cắt nhà bếp",
+          "lưỡi máy thực phẩm",
+          "lưỡi máy công nghiệp",
+          "dao cắt công nghiệp",
+          "lưỡi máy cắt thịt",
+          "luoi cat thit",
+          "dao cat thit"
+        ],
+        "agriculture": [
+          "lưỡi cắt nông nghiệp",
+          "lưỡi máy nông nghiệp",
+          "lưỡi cắt cây",
+          "lưỡi cắt cỏ",
+          "lưỡi máy làm vườn"
+        ],
+        "other": [
+          "lưỡi cắt",
+          "dao cắt",
+          "cutter",
+          "dao cat",
+          "luoi cat",
+          "luoi cat khac",
+          "dao xen",
+          "Lưỡi phay",
+          "Dao trên máy xén giấy",
+          "Lưỡi dao máy thái thịt",
+          "Dao dưới máy vắt sổ",
+          "Dao đế máy xén giấy",
+          "Dao nhỏ",
+          "Dao to",
+          "Dao gạt keo Anilox",
+          "Dao chặt dây hàn",
+          "Lưỡi dao SK2",
+          "Mũi dao tiện",
+          "Lưỡi dao máy dập đầu cos",
+          "Mảnh cắt",
+          "Dao gạt keo lô"
+        ]
+      },
+      "_detect": {
+        "metalworking": [
+          {
+            "raw": "lưỡi cắt kim loại",
+            "dia": true,
+            "key": "lưỡi cắt kim loại",
+            "folded": "luoi cat kim loai"
+          },
+          {
+            "raw": "dao phay",
+            "dia": false,
+            "key": "dao phay",
+            "folded": "dao phay"
+          },
+          {
+            "raw": "lưỡi cắt máy tiện",
+            "dia": true,
+            "key": "lưỡi cắt máy tiện",
+            "folded": "luoi cat may tien"
+          },
+          {
+            "raw": "lưỡi cắt CNC",
+            "dia": true,
+            "key": "lưỡi cắt cnc",
+            "folded": "luoi cat cnc"
+          },
+          {
+            "raw": "lưỡi máy gia công kim loại",
+            "dia": true,
+            "key": "lưỡi máy gia công kim loại",
+            "folded": "luoi may gia cong kim loai"
+          },
+          {
+            "raw": "cutter metal",
+            "dia": false,
+            "key": "cutter metal",
+            "folded": "cutter metal"
+          },
+          {
+            "raw": "dao doa",
+            "dia": false,
+            "key": "dao doa",
+            "folded": "dao doa"
+          },
+          {
+            "raw": "manh dao",
+            "dia": false,
+            "key": "manh dao",
+            "folded": "manh dao"
+          },
+          {
+            "raw": "luoi cat",
+            "dia": false,
+            "key": "luoi cat",
+            "folded": "luoi cat"
+          },
+          {
+            "raw": "dao gia",
+            "dia": false,
+            "key": "dao gia",
+            "folded": "dao gia"
+          },
+          {
+            "raw": "luoi cat cnc",
+            "dia": false,
+            "key": "luoi cat cnc",
+            "folded": "luoi cat cnc"
+          },
+          {
+            "raw": "luoi cat kim loai",
+            "dia": false,
+            "key": "luoi cat kim loai",
+            "folded": "luoi cat kim loai"
+          },
+          {
+            "raw": "dao gia cong",
+            "dia": false,
+            "key": "dao gia cong",
+            "folded": "dao gia cong"
+          },
+          {
+            "raw": "dao cắt máy tự động",
+            "dia": true,
+            "key": "dao cắt máy tự động",
+            "folded": "dao cat may tu dong"
+          },
+          {
+            "raw": "dao cat may tu dong",
+            "dia": false,
+            "key": "dao cat may tu dong",
+            "folded": "dao cat may tu dong"
+          },
+          {
+            "raw": "dao cắt máy",
+            "dia": true,
+            "key": "dao cắt máy",
+            "folded": "dao cat may"
+          },
+          {
+            "raw": "cắt máy tự động kim loại",
+            "dia": true,
+            "key": "cắt máy tự động kim loại",
+            "folded": "cat may tu dong kim loai"
+          }
+        ],
+        "woodworking": [
+          {
+            "raw": "lưỡi cắt gỗ",
+            "dia": true,
+            "key": "lưỡi cắt gỗ",
+            "folded": "luoi cat go"
+          },
+          {
+            "raw": "lưỡi cưa",
+            "dia": true,
+            "key": "lưỡi cưa",
+            "folded": "luoi cua"
+          },
+          {
+            "raw": "lưỡi bào",
+            "dia": true,
+            "key": "lưỡi bào",
+            "folded": "luoi bao"
+          },
+          {
+            "raw": "dao cắt gỗ",
+            "dia": true,
+            "key": "dao cắt gỗ",
+            "folded": "dao cat go"
+          },
+          {
+            "raw": "lưỡi máy bào",
+            "dia": true,
+            "key": "lưỡi máy bào",
+            "folded": "luoi may bao"
+          },
+          {
+            "raw": "cutter wood",
+            "dia": false,
+            "key": "cutter wood",
+            "folded": "cutter wood"
+          },
+          {
+            "raw": "luoi cua",
+            "dia": false,
+            "key": "luoi cua",
+            "folded": "luoi cua"
+          },
+          {
+            "raw": "luoi bao",
+            "dia": false,
+            "key": "luoi bao",
+            "folded": "luoi bao"
+          },
+          {
+            "raw": "dao cat go",
+            "dia": false,
+            "key": "dao cat go",
+            "folded": "dao cat go"
+          }
+        ],
+        "kitchen_industrial": [
+          {
+            "raw": "lưỡi cắt nhà bếp",
+            "dia": true,
+            "key": "lưỡi cắt nhà bếp",
+            "folded": "luoi cat nha bep"
+          },
+          {
+            "raw": "lưỡi máy thực phẩm",
+            "dia": true,
+            "key": "lưỡi máy thực phẩm",
+            "folded": "luoi may thuc pham"
+          },
+          {
+            "raw": "lưỡi máy công nghiệp",
+            "dia": true,
+            "key": "lưỡi máy công nghiệp",
+            "folded": "luoi may cong nghiep"
+          },
+          {
+            "raw": "dao cắt công nghiệp",
+            "dia": true,
+            "key": "dao cắt công nghiệp",
+            "folded": "dao cat cong nghiep"
+          },
+          {
+            "raw": "lưỡi máy cắt thịt",
+            "dia": true,
+            "key": "lưỡi máy cắt thịt",
+            "folded": "luoi may cat thit"
+          },
+          {
+            "raw": "luoi cat thit",
+            "dia": false,
+            "key": "luoi cat thit",
+            "folded": "luoi cat thit"
+          },
+          {
+            "raw": "dao cat thit",
+            "dia": false,
+            "key": "dao cat thit",
+            "folded": "dao cat thit"
+          }
+        ],
+        "agriculture": [
+          {
+            "raw": "lưỡi cắt nông nghiệp",
+            "dia": true,
+            "key": "lưỡi cắt nông nghiệp",
+            "folded": "luoi cat nong nghiep"
+          },
+          {
+            "raw": "lưỡi máy nông nghiệp",
+            "dia": true,
+            "key": "lưỡi máy nông nghiệp",
+            "folded": "luoi may nong nghiep"
+          },
+          {
+            "raw": "lưỡi cắt cây",
+            "dia": true,
+            "key": "lưỡi cắt cây",
+            "folded": "luoi cat cay"
+          },
+          {
+            "raw": "lưỡi cắt cỏ",
+            "dia": true,
+            "key": "lưỡi cắt cỏ",
+            "folded": "luoi cat co"
+          },
+          {
+            "raw": "lưỡi máy làm vườn",
+            "dia": true,
+            "key": "lưỡi máy làm vườn",
+            "folded": "luoi may lam vuon"
+          }
+        ],
+        "other": [
+          {
+            "raw": "lưỡi cắt",
+            "dia": true,
+            "key": "lưỡi cắt",
+            "folded": "luoi cat"
+          },
+          {
+            "raw": "dao cắt",
+            "dia": true,
+            "key": "dao cắt",
+            "folded": "dao cat"
+          },
+          {
+            "raw": "cutter",
+            "dia": false,
+            "key": "cutter",
+            "folded": "cutter"
+          },
+          {
+            "raw": "dao cat",
+            "dia": false,
+            "key": "dao cat",
+            "folded": "dao cat"
+          },
+          {
+            "raw": "luoi cat",
+            "dia": false,
+            "key": "luoi cat",
+            "folded": "luoi cat"
+          },
+          {
+            "raw": "luoi cat khac",
+            "dia": false,
+            "key": "luoi cat khac",
+            "folded": "luoi cat khac"
+          },
+          {
+            "raw": "dao xen",
+            "dia": false,
+            "key": "dao xen",
+            "folded": "dao xen"
+          }
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "toolApplication": "metalworking"
+      },
+      "hs": "82081000",
+      "reasonVi": "GIR 6 — lưỡi cắt để gia công kim loại, 8208.10 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "toolApplication": "woodworking"
+      },
+      "hs": "82082000",
+      "reasonVi": "GIR 6 — lưỡi cắt để gia công gỗ, 8208.20 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "toolApplication": "kitchen_industrial"
+      },
+      "hs": "82083000",
+      "reasonVi": "GIR 6 — lưỡi dùng cho dụng cụ nhà bếp hoặc máy công nghiệp thực phẩm, 8208.30 (MFN 20%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "toolApplication": "agriculture"
+      },
+      "hs": "82084000",
+      "reasonVi": "GIR 6 — lưỡi dùng cho máy nông nghiệp, làm vườn, lâm nghiệp, 8208.40 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "toolApplication": "other"
+      },
+      "hs": "82089000",
+      "reasonVi": "GIR 6 — lưỡi cắt loại khác, 8208.90 (MFN 0%)",
+      "source": "Biểu thuế 2026"
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceTestVi": "toolApplication (5 giá trị) — phân biệt 5 mã 8 số trong nhóm 8208. GIAO: ứng dụng cắt (kim loại/gỗ/nhà bếp/nông nghiệp/khác). MFN: hầu hết 0%, ngoại trừ 82083000 (20%).",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 8208 (Thông tư 65/2024/TT-BTC).",
+  "attributes": {
+    "toolApplication": {
+      "type": "enum",
+      "domain": [
+        "agriculture",
+        "kitchen_industrial",
+        "metalworking",
+        "other",
+        "woodworking"
+      ],
+      "detect": {
+        "agriculture": [
+          "agriculture"
+        ],
+        "kitchen_industrial": [
+          "kitchen",
+          "industrial"
+        ],
+        "metalworking": [
+          "metalworking"
+        ],
+        "other": [
+          "other"
+        ],
+        "woodworking": [
+          "woodworking"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "toolApplication"
+  ],
+  "essenceVi": "toolApplication"
+}

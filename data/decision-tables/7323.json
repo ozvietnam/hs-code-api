@@ -1,0 +1,1119 @@
+{
+  "heading": "7323",
+  "titleVi": "Bùi nhùi bằng sắt hoặc thép; miếng cọ nồi và cọ rửa, găng tay và các loại tương tự; đồ dùng nhà bếp, gạt tàn thuốc lá bằng sắt, thép, gang",
+  "verified": true,
+  "essenceTestVi": "Sản phẩm là bùi nhùi/cọ rửa, hay đồ gia dụng nhà bếp? Gang đúc hay sắt/thép? Có tráng men hay không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 73.23",
+  "inputs": [
+    {
+      "attribute": "productKind",
+      "type": "enum",
+      "labelVi": "Loại sản phẩm",
+      "questionVi": "Sản phẩm này là gì?",
+      "domain": [
+        "scrubbingPad",
+        "kitchenware"
+      ],
+      "detect": {
+        "scrubbingPad": [
+          "bùi nhùi",
+          "miếng cọ nồi",
+          "miếng cọ rửa",
+          "găng tay rửa bát",
+          "scrub pad",
+          "scouring pad",
+          "steel wool",
+          "copper wool",
+          "cọ xoong"
+        ],
+        "kitchenware": [
+          "đồ dùng nhà bếp",
+          "nồi",
+          "chảo",
+          "bình",
+          "ấm",
+          "gạt tàn",
+          "ashtray",
+          "giá úp bát đĩa",
+          "giá treo dao thớt",
+          "giá đựng gia vị",
+          "giá để bát trong tủ bếp",
+          "giá úp bát 2 tầng",
+          "giá để bát đĩa",
+          "rack hong bánh",
+          "thùng gạo mặt kính",
+          "khuôn làm bánh",
+          "khay inox đựng cốc",
+          "khay nướng bánh",
+          "giá để đồ trong bếp",
+          "khay ăn",
+          "thùng rác",
+          "thùng đựng gạo mặt tráng gương",
+          "ray trượt",
+          "giá để đồ 6 tầng",
+          "giá đa năng nhà bếp",
+          "khay inox đựng bánh nướng",
+          "dụng cụ ép trái cây",
+          "bát ăn cho thú cưng",
+          "hộp đựng chè",
+          "lon đựng trà",
+          "dụng cụ lấy ráy tai",
+          "móc treo quần áo",
+          "khay đựng cốc",
+          "khay úp chén đĩa",
+          "kệ xếp gác chậu nhà bếp",
+          "bát inox",
+          "khay đựng cơm",
+          "cọ xoong",
+          "giá để nồi trong tủ bếp",
+          "giá để nồi tủ bếp",
+          "giá để xoong nồi",
+          "nồi áp suất",
+          "gạt tàn thuốc lá hình trụ",
+          "giá để nồi góc tủ bếp",
+          "nồi nấu bột",
+          "thương hiệu,nsx:yiwu dinghao kitchenware co., ltd.,hàng mới",
+          "kích thước:7,5x2,1x5cm,nsx:ying bao kitchenware co., ltd, không",
+          "hiệu,nsx: guangdong liyuan kitchenware co., ltd, mới"
+        ]
+      },
+      "_detect": {
+        "scrubbingPad": [
+          {
+            "raw": "bùi nhùi",
+            "dia": true,
+            "key": "bùi nhùi",
+            "folded": "bui nhui"
+          },
+          {
+            "raw": "miếng cọ nồi",
+            "dia": true,
+            "key": "miếng cọ nồi",
+            "folded": "mieng co noi"
+          },
+          {
+            "raw": "miếng cọ rửa",
+            "dia": true,
+            "key": "miếng cọ rửa",
+            "folded": "mieng co rua"
+          },
+          {
+            "raw": "găng tay rửa bát",
+            "dia": true,
+            "key": "găng tay rửa bát",
+            "folded": "gang tay rua bat"
+          },
+          {
+            "raw": "scrub pad",
+            "dia": false,
+            "key": "scrub pad",
+            "folded": "scrub pad"
+          },
+          {
+            "raw": "scouring pad",
+            "dia": false,
+            "key": "scouring pad",
+            "folded": "scouring pad"
+          },
+          {
+            "raw": "steel wool",
+            "dia": false,
+            "key": "steel wool",
+            "folded": "steel wool"
+          },
+          {
+            "raw": "copper wool",
+            "dia": false,
+            "key": "copper wool",
+            "folded": "copper wool"
+          },
+          {
+            "raw": "cọ xoong",
+            "dia": true,
+            "key": "cọ xoong",
+            "folded": "co xoong"
+          }
+        ],
+        "kitchenware": [
+          {
+            "raw": "đồ dùng nhà bếp",
+            "dia": true,
+            "key": "đồ dùng nhà bếp",
+            "folded": "do dung nha bep"
+          },
+          {
+            "raw": "nồi",
+            "dia": true,
+            "key": "nồi",
+            "folded": "noi"
+          },
+          {
+            "raw": "chảo",
+            "dia": true,
+            "key": "chảo",
+            "folded": "chao"
+          },
+          {
+            "raw": "bình",
+            "dia": true,
+            "key": "bình",
+            "folded": "binh"
+          },
+          {
+            "raw": "ấm",
+            "dia": true,
+            "key": "ấm",
+            "folded": "am"
+          },
+          {
+            "raw": "gạt tàn",
+            "dia": true,
+            "key": "gạt tàn",
+            "folded": "gat tan"
+          },
+          {
+            "raw": "ashtray",
+            "dia": false,
+            "key": "ashtray",
+            "folded": "ashtray"
+          },
+          {
+            "raw": "giá úp bát đĩa",
+            "dia": true,
+            "key": "giá úp bát đĩa",
+            "folded": "gia up bat dia"
+          },
+          {
+            "raw": "giá treo dao thớt",
+            "dia": true,
+            "key": "giá treo dao thớt",
+            "folded": "gia treo dao thot"
+          },
+          {
+            "raw": "giá đựng gia vị",
+            "dia": true,
+            "key": "giá đựng gia vị",
+            "folded": "gia dung gia vi"
+          },
+          {
+            "raw": "giá để bát trong tủ bếp",
+            "dia": true,
+            "key": "giá để bát trong tủ bếp",
+            "folded": "gia de bat trong tu bep"
+          },
+          {
+            "raw": "giá úp bát 2 tầng",
+            "dia": true,
+            "key": "giá úp bát 2 tầng",
+            "folded": "gia up bat 2 tang"
+          },
+          {
+            "raw": "giá để bát đĩa",
+            "dia": true,
+            "key": "giá để bát đĩa",
+            "folded": "gia de bat dia"
+          },
+          {
+            "raw": "rack hong bánh",
+            "dia": true,
+            "key": "rack hong bánh",
+            "folded": "rack hong banh"
+          },
+          {
+            "raw": "thùng gạo mặt kính",
+            "dia": true,
+            "key": "thùng gạo mặt kính",
+            "folded": "thung gao mat kinh"
+          },
+          {
+            "raw": "khuôn làm bánh",
+            "dia": true,
+            "key": "khuôn làm bánh",
+            "folded": "khuon lam banh"
+          },
+          {
+            "raw": "khay inox đựng cốc",
+            "dia": true,
+            "key": "khay inox đựng cốc",
+            "folded": "khay inox dung coc"
+          },
+          {
+            "raw": "khay nướng bánh",
+            "dia": true,
+            "key": "khay nướng bánh",
+            "folded": "khay nuong banh"
+          },
+          {
+            "raw": "giá để đồ trong bếp",
+            "dia": true,
+            "key": "giá để đồ trong bếp",
+            "folded": "gia de do trong bep"
+          },
+          {
+            "raw": "khay ăn",
+            "dia": true,
+            "key": "khay ăn",
+            "folded": "khay an"
+          },
+          {
+            "raw": "thùng rác",
+            "dia": true,
+            "key": "thùng rác",
+            "folded": "thung rac"
+          },
+          {
+            "raw": "thùng đựng gạo mặt tráng gương",
+            "dia": true,
+            "key": "thùng đựng gạo mặt tráng gương",
+            "folded": "thung dung gao mat trang guong"
+          },
+          {
+            "raw": "ray trượt",
+            "dia": true,
+            "key": "ray trượt",
+            "folded": "ray truot"
+          },
+          {
+            "raw": "giá để đồ 6 tầng",
+            "dia": true,
+            "key": "giá để đồ 6 tầng",
+            "folded": "gia de do 6 tang"
+          },
+          {
+            "raw": "giá đa năng nhà bếp",
+            "dia": true,
+            "key": "giá đa năng nhà bếp",
+            "folded": "gia da nang nha bep"
+          },
+          {
+            "raw": "khay inox đựng bánh nướng",
+            "dia": true,
+            "key": "khay inox đựng bánh nướng",
+            "folded": "khay inox dung banh nuong"
+          },
+          {
+            "raw": "dụng cụ ép trái cây",
+            "dia": true,
+            "key": "dụng cụ ép trái cây",
+            "folded": "dung cu ep trai cay"
+          },
+          {
+            "raw": "bát ăn cho thú cưng",
+            "dia": true,
+            "key": "bát ăn cho thú cưng",
+            "folded": "bat an cho thu cung"
+          },
+          {
+            "raw": "hộp đựng chè",
+            "dia": true,
+            "key": "hộp đựng chè",
+            "folded": "hop dung che"
+          },
+          {
+            "raw": "lon đựng trà",
+            "dia": true,
+            "key": "lon đựng trà",
+            "folded": "lon dung tra"
+          },
+          {
+            "raw": "dụng cụ lấy ráy tai",
+            "dia": true,
+            "key": "dụng cụ lấy ráy tai",
+            "folded": "dung cu lay ray tai"
+          },
+          {
+            "raw": "móc treo quần áo",
+            "dia": true,
+            "key": "móc treo quần áo",
+            "folded": "moc treo quan ao"
+          },
+          {
+            "raw": "khay đựng cốc",
+            "dia": true,
+            "key": "khay đựng cốc",
+            "folded": "khay dung coc"
+          },
+          {
+            "raw": "khay úp chén đĩa",
+            "dia": true,
+            "key": "khay úp chén đĩa",
+            "folded": "khay up chen dia"
+          },
+          {
+            "raw": "kệ xếp gác chậu nhà bếp",
+            "dia": true,
+            "key": "kệ xếp gác chậu nhà bếp",
+            "folded": "ke xep gac chau nha bep"
+          },
+          {
+            "raw": "bát inox",
+            "dia": true,
+            "key": "bát inox",
+            "folded": "bat inox"
+          },
+          {
+            "raw": "khay đựng cơm",
+            "dia": true,
+            "key": "khay đựng cơm",
+            "folded": "khay dung com"
+          },
+          {
+            "raw": "cọ xoong",
+            "dia": true,
+            "key": "cọ xoong",
+            "folded": "co xoong"
+          },
+          {
+            "raw": "giá để nồi trong tủ bếp",
+            "dia": true,
+            "key": "giá để nồi trong tủ bếp",
+            "folded": "gia de noi trong tu bep"
+          },
+          {
+            "raw": "giá để nồi tủ bếp",
+            "dia": true,
+            "key": "giá để nồi tủ bếp",
+            "folded": "gia de noi tu bep"
+          },
+          {
+            "raw": "giá để xoong nồi",
+            "dia": true,
+            "key": "giá để xoong nồi",
+            "folded": "gia de xoong noi"
+          },
+          {
+            "raw": "nồi áp suất",
+            "dia": true,
+            "key": "nồi áp suất",
+            "folded": "noi ap suat"
+          },
+          {
+            "raw": "gạt tàn thuốc lá hình trụ",
+            "dia": true,
+            "key": "gạt tàn thuốc lá hình trụ",
+            "folded": "gat tan thuoc la hinh tru"
+          },
+          {
+            "raw": "giá để nồi góc tủ bếp",
+            "dia": true,
+            "key": "giá để nồi góc tủ bếp",
+            "folded": "gia de noi goc tu bep"
+          },
+          {
+            "raw": "nồi nấu bột",
+            "dia": true,
+            "key": "nồi nấu bột",
+            "folded": "noi nau bot"
+          },
+          {
+            "raw": "thương hiệu,nsx:yiwu dinghao kitchenware co., ltd.,hàng mới",
+            "dia": true,
+            "key": "thương hiệu,nsx yiwu dinghao kitchenware co., ltd.,hàng mới",
+            "folded": "thuong hieu,nsx yiwu dinghao kitchenware co., ltd.,hang moi"
+          },
+          {
+            "raw": "kích thước:7,5x2,1x5cm,nsx:ying bao kitchenware co., ltd, không",
+            "dia": true,
+            "key": "kích thước 7,5x2,1x5cm,nsx ying bao kitchenware co., ltd, không",
+            "folded": "kich thuoc 7,5x2,1x5cm,nsx ying bao kitchenware co., ltd, khong"
+          },
+          {
+            "raw": "hiệu,nsx: guangdong liyuan kitchenware co., ltd, mới",
+            "dia": true,
+            "key": "hiệu,nsx guangdong liyuan kitchenware co., ltd, mới",
+            "folded": "hieu,nsx guangdong liyuan kitchenware co., ltd, moi"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "materialType",
+      "type": "enum",
+      "labelVi": "Vật liệu và tình trạng",
+      "questionVi": "Vật liệu: gang đúc, sắt/thép tráng men, hay sắt/thép không tráng men?",
+      "domain": [
+        "castIronEnamelled",
+        "castIronPlain",
+        "steelEnamelled",
+        "steelPlain"
+      ],
+      "detect": {
+        "castIronEnamelled": [
+          "gang đúc",
+          "cast iron",
+          "gang",
+          "enamelled"
+        ],
+        "castIronPlain": [
+          "gang đúc",
+          "cast iron",
+          "gang"
+        ],
+        "steelEnamelled": [
+          "sắt",
+          "thép",
+          "steel",
+          "tráng men",
+          "enamelled",
+          "men",
+          "Giá để nồi trong tủ bếp",
+          "Chảo",
+          "Giá để nồi tủ bếp",
+          "Giá để xoong nồi",
+          "Nồi áp suất",
+          "Gạt tàn thuốc lá hình trụ",
+          "Giá để nồi góc tủ bếp",
+          "Nồi nấu bột",
+          "Giá úp bát đĩa",
+          "Giá treo dao thớt",
+          "Giá đựng gia vị",
+          "Giá để bát trong tủ bếp",
+          "Giá úp bát 2 tầng",
+          "Giá để bát đĩa",
+          "Rack hong bánh",
+          "Thùng gạo mặt kính",
+          "Khuôn làm bánh",
+          "Khay Inox đựng cốc",
+          "Khay nướng bánh",
+          "Giá để đồ trong bếp",
+          "Khay ăn",
+          "Thùng rác",
+          "Thùng đựng gạo mặt tráng gương",
+          "Ray trượt",
+          "Giá để đồ 6 tầng",
+          "Giá đa năng nhà bếp",
+          "Khay inox đựng bánh nướng",
+          "Dụng cụ ép trái cây",
+          "Bát ăn cho thú cưng",
+          "Hộp đựng chè",
+          "Lon đựng trà",
+          "Dụng cụ lấy ráy tai",
+          "Móc treo quần áo",
+          "Khay đựng cốc",
+          "Khay úp chén đĩa",
+          "Kệ xếp gác chậu nhà bếp",
+          "Bát inox",
+          "Khay đựng cơm"
+        ],
+        "steelPlain": [
+          "sắt",
+          "thép",
+          "steel",
+          "không tráng men",
+          "không men",
+          "not enamelled"
+        ]
+      },
+      "_detect": {
+        "castIronEnamelled": [
+          {
+            "raw": "gang đúc",
+            "dia": true,
+            "key": "gang đúc",
+            "folded": "gang duc"
+          },
+          {
+            "raw": "cast iron",
+            "dia": false,
+            "key": "cast iron",
+            "folded": "cast iron"
+          },
+          {
+            "raw": "gang",
+            "dia": false,
+            "key": "gang",
+            "folded": "gang"
+          },
+          {
+            "raw": "enamelled",
+            "dia": false,
+            "key": "enamelled",
+            "folded": "enamelled"
+          }
+        ],
+        "castIronPlain": [
+          {
+            "raw": "gang đúc",
+            "dia": true,
+            "key": "gang đúc",
+            "folded": "gang duc"
+          },
+          {
+            "raw": "cast iron",
+            "dia": false,
+            "key": "cast iron",
+            "folded": "cast iron"
+          },
+          {
+            "raw": "gang",
+            "dia": false,
+            "key": "gang",
+            "folded": "gang"
+          }
+        ],
+        "steelEnamelled": [
+          {
+            "raw": "sắt",
+            "dia": true,
+            "key": "sắt",
+            "folded": "sat"
+          },
+          {
+            "raw": "thép",
+            "dia": true,
+            "key": "thép",
+            "folded": "thep"
+          },
+          {
+            "raw": "steel",
+            "dia": false,
+            "key": "steel",
+            "folded": "steel"
+          },
+          {
+            "raw": "tráng men",
+            "dia": true,
+            "key": "tráng men",
+            "folded": "trang men"
+          },
+          {
+            "raw": "enamelled",
+            "dia": false,
+            "key": "enamelled",
+            "folded": "enamelled"
+          },
+          {
+            "raw": "men",
+            "dia": false,
+            "key": "men",
+            "folded": "men"
+          },
+          {
+            "raw": "Giá để nồi trong tủ bếp",
+            "dia": true,
+            "key": "giá để nồi trong tủ bếp",
+            "folded": "gia de noi trong tu bep"
+          },
+          {
+            "raw": "Chảo",
+            "dia": true,
+            "key": "chảo",
+            "folded": "chao"
+          },
+          {
+            "raw": "Giá để nồi tủ bếp",
+            "dia": true,
+            "key": "giá để nồi tủ bếp",
+            "folded": "gia de noi tu bep"
+          },
+          {
+            "raw": "Giá để xoong nồi",
+            "dia": true,
+            "key": "giá để xoong nồi",
+            "folded": "gia de xoong noi"
+          },
+          {
+            "raw": "Nồi áp suất",
+            "dia": true,
+            "key": "nồi áp suất",
+            "folded": "noi ap suat"
+          },
+          {
+            "raw": "Gạt tàn thuốc lá hình trụ",
+            "dia": true,
+            "key": "gạt tàn thuốc lá hình trụ",
+            "folded": "gat tan thuoc la hinh tru"
+          },
+          {
+            "raw": "Giá để nồi góc tủ bếp",
+            "dia": true,
+            "key": "giá để nồi góc tủ bếp",
+            "folded": "gia de noi goc tu bep"
+          },
+          {
+            "raw": "Nồi nấu bột",
+            "dia": true,
+            "key": "nồi nấu bột",
+            "folded": "noi nau bot"
+          }
+        ],
+        "steelPlain": [
+          {
+            "raw": "sắt",
+            "dia": true,
+            "key": "sắt",
+            "folded": "sat"
+          },
+          {
+            "raw": "thép",
+            "dia": true,
+            "key": "thép",
+            "folded": "thep"
+          },
+          {
+            "raw": "steel",
+            "dia": false,
+            "key": "steel",
+            "folded": "steel"
+          },
+          {
+            "raw": "không tráng men",
+            "dia": true,
+            "key": "không tráng men",
+            "folded": "khong trang men"
+          },
+          {
+            "raw": "không men",
+            "dia": true,
+            "key": "không men",
+            "folded": "khong men"
+          },
+          {
+            "raw": "not enamelled",
+            "dia": false,
+            "key": "not enamelled",
+            "folded": "not enamelled"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "productType",
+      "type": "enum",
+      "labelVi": "Loại đồ gia dụng",
+      "questionVi": "Loại: đồ dùng nhà bếp hay gạt tàn thuốc lá?",
+      "domain": [
+        "kitchenware",
+        "ashtray"
+      ],
+      "detect": {
+        "kitchenware": [
+          "đồ dùng nhà bếp",
+          "nhà bếp",
+          "kitchen",
+          "Chảo gang tráng men",
+          "thương hiệu,nsx:yiwu dinghao kitchenware co., ltd.,hàng mới",
+          "kích thước:7,5x2,1x5cm,nsx:ying bao kitchenware co., ltd, không",
+          "hiệu,nsx: guangdong liyuan kitchenware co., ltd, mới",
+          "Giá để nồi trong tủ bếp",
+          "Giá để nồi tủ bếp",
+          "Giá để xoong nồi",
+          "Nồi áp suất",
+          "Giá để nồi góc tủ bếp",
+          "Nồi nấu bột",
+          "Chảo inox"
+        ],
+        "ashtray": [
+          "gạt tàn",
+          "ashtray"
+        ]
+      },
+      "_detect": {
+        "kitchenware": [
+          {
+            "raw": "đồ dùng nhà bếp",
+            "dia": true,
+            "key": "đồ dùng nhà bếp",
+            "folded": "do dung nha bep"
+          },
+          {
+            "raw": "nhà bếp",
+            "dia": true,
+            "key": "nhà bếp",
+            "folded": "nha bep"
+          },
+          {
+            "raw": "kitchen",
+            "dia": false,
+            "key": "kitchen",
+            "folded": "kitchen"
+          },
+          {
+            "raw": "Chảo gang tráng men",
+            "dia": true,
+            "key": "chảo gang tráng men",
+            "folded": "chao gang trang men"
+          },
+          {
+            "raw": "thương hiệu,nsx:yiwu dinghao kitchenware co., ltd.,hàng mới",
+            "dia": true,
+            "key": "thương hiệu,nsx yiwu dinghao kitchenware co., ltd.,hàng mới",
+            "folded": "thuong hieu,nsx yiwu dinghao kitchenware co., ltd.,hang moi"
+          },
+          {
+            "raw": "kích thước:7,5x2,1x5cm,nsx:ying bao kitchenware co., ltd, không",
+            "dia": true,
+            "key": "kích thước 7,5x2,1x5cm,nsx ying bao kitchenware co., ltd, không",
+            "folded": "kich thuoc 7,5x2,1x5cm,nsx ying bao kitchenware co., ltd, khong"
+          },
+          {
+            "raw": "hiệu,nsx: guangdong liyuan kitchenware co., ltd, mới",
+            "dia": true,
+            "key": "hiệu,nsx guangdong liyuan kitchenware co., ltd, mới",
+            "folded": "hieu,nsx guangdong liyuan kitchenware co., ltd, moi"
+          }
+        ],
+        "ashtray": [
+          {
+            "raw": "gạt tàn",
+            "dia": true,
+            "key": "gạt tàn",
+            "folded": "gat tan"
+          },
+          {
+            "raw": "ashtray",
+            "dia": false,
+            "key": "ashtray",
+            "folded": "ashtray"
+          }
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-10",
+      "priority": 50,
+      "when": {
+        "productKind": "scrubbingPad"
+      },
+      "hs": "73231000",
+      "gir": "GIR 6",
+      "reasonVi": "Bùi nhùi, miếng cọ nồi và cọ rửa bằng sắt hoặc thép → 7323.10.00",
+      "source": "Biểu thuế 2026 dòng 7323.10.00"
+    },
+    {
+      "id": "r-91-kitchenware",
+      "priority": 40,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "castIronPlain",
+        "productType": "kitchenware"
+      },
+      "hs": "73239110",
+      "gir": "GIR 6",
+      "reasonVi": "Đồ dùng nhà bếp bằng gang đúc, chưa tráng men → 7323.91.10",
+      "source": "Biểu thuế 2026 dòng 7323.91.10"
+    },
+    {
+      "id": "r-91-ashtray",
+      "priority": 40,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "castIronPlain",
+        "productType": "ashtray"
+      },
+      "hs": "73239120",
+      "gir": "GIR 6",
+      "reasonVi": "Gạt tàn thuốc lá bằng gang đúc, chưa tráng men → 7323.91.20",
+      "source": "Biểu thuế 2026 dòng 7323.91.20"
+    },
+    {
+      "id": "r-91-other",
+      "priority": 40,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "castIronPlain"
+      },
+      "hs": "73239190",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác bằng gang đúc, chưa tráng men → 7323.91.90",
+      "source": "Biểu thuế 2026 dòng 7323.91.90"
+    },
+    {
+      "id": "r-92",
+      "priority": 40,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "castIronEnamelled"
+      },
+      "hs": "73239200",
+      "gir": "GIR 6",
+      "reasonVi": "Đồ dùng bằng gang đúc, đã tráng men → 7323.92.00",
+      "source": "Biểu thuế 2026 dòng 7323.92.00"
+    },
+    {
+      "id": "r-93-kitchenware",
+      "priority": 30,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled",
+        "productType": "kitchenware"
+      },
+      "hs": "73239310",
+      "gir": "GIR 6",
+      "reasonVi": "Đồ dùng nhà bếp bằng sắt hoặc thép, đã tráng men → 7323.93.10",
+      "source": "Biểu thuế 2026 dòng 7323.93.10"
+    },
+    {
+      "id": "r-93-ashtray",
+      "priority": 30,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled",
+        "productType": "ashtray"
+      },
+      "hs": "73239320",
+      "gir": "GIR 6",
+      "reasonVi": "Gạt tàn thuốc lá bằng sắt hoặc thép, đã tráng men → 7323.93.20",
+      "source": "Biểu thuế 2026 dòng 7323.93.20"
+    },
+    {
+      "id": "r-93-other",
+      "priority": 30,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled"
+      },
+      "hs": "73239390",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác bằng sắt hoặc thép, đã tráng men → 7323.93.90",
+      "source": "Biểu thuế 2026 dòng 7323.93.90"
+    },
+    {
+      "id": "r-94",
+      "priority": 20,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled"
+      },
+      "hs": "73239400",
+      "gir": "GIR 6",
+      "reasonVi": "Bằng sắt hoặc thép, đã tráng men (không phải gang) → 7323.94.00",
+      "source": "Biểu thuế 2026 dòng 7323.94.00"
+    },
+    {
+      "id": "r-99-kitchenware",
+      "priority": 10,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "steelPlain",
+        "productType": "kitchenware"
+      },
+      "hs": "73239910",
+      "gir": "GIR 6",
+      "reasonVi": "Đồ dùng nhà bếp bằng sắt hoặc thép, chưa tráng men → 7323.99.10",
+      "source": "Biểu thuế 2026 dòng 7323.99.10"
+    },
+    {
+      "id": "r-99-ashtray",
+      "priority": 10,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "steelPlain",
+        "productType": "ashtray"
+      },
+      "hs": "73239920",
+      "gir": "GIR 6",
+      "reasonVi": "Gạt tàn thuốc lá bằng sắt hoặc thép, chưa tráng men → 7323.99.20",
+      "source": "Biểu thuế 2026 dòng 7323.99.20"
+    },
+    {
+      "id": "r-99-other",
+      "priority": 10,
+      "when": {
+        "productKind": "kitchenware",
+        "materialType": "steelPlain"
+      },
+      "hs": "73239990",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác bằng sắt hoặc thép, chưa tráng men → 7323.99.90",
+      "source": "Biểu thuế 2026 dòng 7323.99.90"
+    }
+  ],
+  "leaves": [
+    {
+      "id": "73231000",
+      "code": "73231000",
+      "conditions": {
+        "productKind": "scrubbingPad"
+      },
+      "heading": "7323",
+      "noteVi": "Bùi nhùi, miếng cọ nồi và cọ rửa bằng sắt hoặc thép → 7323.10.00"
+    },
+    {
+      "id": "73239110",
+      "code": "73239110",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "castIronPlain",
+        "productType": "kitchenware"
+      },
+      "heading": "7323",
+      "noteVi": "Đồ dùng nhà bếp bằng gang đúc, chưa tráng men → 7323.91.10"
+    },
+    {
+      "id": "73239120",
+      "code": "73239120",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "castIronPlain",
+        "productType": "ashtray"
+      },
+      "heading": "7323",
+      "noteVi": "Gạt tàn thuốc lá bằng gang đúc, chưa tráng men → 7323.91.20"
+    },
+    {
+      "id": "73239190",
+      "code": "73239190",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "castIronPlain"
+      },
+      "heading": "7323",
+      "noteVi": "Loại khác bằng gang đúc, chưa tráng men → 7323.91.90"
+    },
+    {
+      "id": "73239200",
+      "code": "73239200",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "castIronEnamelled"
+      },
+      "heading": "7323",
+      "noteVi": "Đồ dùng bằng gang đúc, đã tráng men → 7323.92.00"
+    },
+    {
+      "id": "73239310",
+      "code": "73239310",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled",
+        "productType": "kitchenware"
+      },
+      "heading": "7323",
+      "noteVi": "Đồ dùng nhà bếp bằng sắt hoặc thép, đã tráng men → 7323.93.10"
+    },
+    {
+      "id": "73239320",
+      "code": "73239320",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled",
+        "productType": "ashtray"
+      },
+      "heading": "7323",
+      "noteVi": "Gạt tàn thuốc lá bằng sắt hoặc thép, đã tráng men → 7323.93.20"
+    },
+    {
+      "id": "73239390",
+      "code": "73239390",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled"
+      },
+      "heading": "7323",
+      "noteVi": "Loại khác bằng sắt hoặc thép, đã tráng men → 7323.93.90"
+    },
+    {
+      "id": "73239400",
+      "code": "73239400",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled"
+      },
+      "heading": "7323",
+      "noteVi": "Bằng sắt hoặc thép, đã tráng men (không phải gang) → 7323.94.00"
+    },
+    {
+      "id": "73239910",
+      "code": "73239910",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "steelPlain",
+        "productType": "kitchenware"
+      },
+      "heading": "7323",
+      "noteVi": "Đồ dùng nhà bếp bằng sắt hoặc thép, chưa tráng men → 7323.99.10"
+    },
+    {
+      "id": "73239920",
+      "code": "73239920",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "steelPlain",
+        "productType": "ashtray"
+      },
+      "heading": "7323",
+      "noteVi": "Gạt tàn thuốc lá bằng sắt hoặc thép, chưa tráng men → 7323.99.20"
+    },
+    {
+      "id": "73239990",
+      "code": "73239990",
+      "conditions": {
+        "productKind": "kitchenware",
+        "materialType": "steelPlain"
+      },
+      "heading": "7323",
+      "noteVi": "Loại khác bằng sắt hoặc thép, chưa tráng men → 7323.99.90"
+    }
+  ],
+  "inputAttributes": [
+    "productKind",
+    "materialType",
+    "productType"
+  ],
+  "essenceVi": "loại sản phẩm + loại vật liệu + kiểu sản phẩm",
+  "generatedAt": "2026-10-02T12:34:10.231Z",
+  "verifiedBy": "hermes-211",
+  "verifiedAt": "2026-10-02T20:16:11.643Z",
+  "attributes": {
+    "productKind": {
+      "type": "enum",
+      "labelVi": "productKind",
+      "domain": [
+        "kitchenware",
+        "scrubbingPad"
+      ],
+      "detect": {
+        "kitchenware": [
+          "kitchenware"
+        ],
+        "scrubbingPad": [
+          "scrubbingpad"
+        ]
+      }
+    },
+    "materialType": {
+      "type": "enum",
+      "labelVi": "materialType",
+      "domain": [
+        "castIronEnamelled",
+        "castIronPlain",
+        "steelEnamelled",
+        "steelPlain"
+      ],
+      "detect": {
+        "castIronEnamelled": [
+          "castironenamelled"
+        ],
+        "castIronPlain": [
+          "castironplain"
+        ],
+        "steelEnamelled": [
+          "steelenamelled"
+        ],
+        "steelPlain": [
+          "steelplain"
+        ]
+      }
+    },
+    "productType": {
+      "type": "enum",
+      "labelVi": "productType",
+      "domain": [
+        "ashtray",
+        "kitchenware"
+      ],
+      "detect": {
+        "ashtray": [
+          "ashtray"
+        ],
+        "kitchenware": [
+          "kitchenware"
+        ]
+      }
+    }
+  }
+}

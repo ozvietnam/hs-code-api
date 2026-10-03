@@ -1,0 +1,308 @@
+{
+  "heading": "6215",
+  "titleVi": "Cà vạt, nơ, caravat và các loại tương tự",
+  "verified": false,
+  "essenceTestVi": "Cà vạt và caravat chia theo vật liệu (bông/sợi thực vật, tơ, sợi nhân tạo) và phương pháp nhuộm/in (batik truyền thống SEN hay loại khác).",
+  "sourceVi": "Biểu thuế NK VN 2026, nhóm 6215",
+  "inputs": [
+    {
+      "attribute": "dyeingMethod",
+      "type": "enum",
+      "domain": [
+        "batik",
+        "other"
+      ],
+      "labelVi": "Phương pháp nhuộm hoặc in",
+      "questionVi": "Cà vạt được nhuộm hoặc in bằng phương pháp nào?",
+      "detect": {
+        "batik": [
+          "batik",
+          "in batik",
+          "nhuộm batik"
+        ],
+        "other": [
+          "không batik",
+          "nhuộm thường",
+          "in thường",
+          "Cà vạt"
+        ]
+      },
+      "_detect": {
+        "batik": [
+          {
+            "raw": "batik",
+            "dia": false,
+            "key": "batik",
+            "folded": "batik"
+          },
+          {
+            "raw": "in batik",
+            "dia": false,
+            "key": "in batik",
+            "folded": "in batik"
+          },
+          {
+            "raw": "nhuộm batik",
+            "dia": true,
+            "key": "nhuộm batik",
+            "folded": "nhuom batik"
+          }
+        ],
+        "other": [
+          {
+            "raw": "không batik",
+            "dia": true,
+            "key": "không batik",
+            "folded": "khong batik"
+          },
+          {
+            "raw": "nhuộm thường",
+            "dia": true,
+            "key": "nhuộm thường",
+            "folded": "nhuom thuong"
+          },
+          {
+            "raw": "in thường",
+            "dia": true,
+            "key": "in thường",
+            "folded": "in thuong"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "materialType",
+      "type": "enum",
+      "domain": [
+        "cotton_vegetable",
+        "silk",
+        "man_made"
+      ],
+      "labelVi": "Loại vải",
+      "questionVi": "Cà vạt được làm từ vải gì: bông/sợi thực vật, tơ tằm, hay sợi nhân tạo?",
+      "detect": {
+        "cotton_vegetable": [
+          "bông",
+          "sợi thực vật",
+          "cotton",
+          "vải bông"
+        ],
+        "silk": [
+          "tơ",
+          "tằm",
+          "lụa",
+          "silk"
+        ],
+        "man_made": [
+          "sợi nhân tạo",
+          "viscose",
+          "polyester",
+          "sợi tổng hợp"
+        ]
+      },
+      "_detect": {
+        "cotton_vegetable": [
+          {
+            "raw": "bông",
+            "dia": true,
+            "key": "bông",
+            "folded": "bong"
+          },
+          {
+            "raw": "sợi thực vật",
+            "dia": true,
+            "key": "sợi thực vật",
+            "folded": "soi thuc vat"
+          },
+          {
+            "raw": "cotton",
+            "dia": false,
+            "key": "cotton",
+            "folded": "cotton"
+          },
+          {
+            "raw": "vải bông",
+            "dia": true,
+            "key": "vải bông",
+            "folded": "vai bong"
+          }
+        ],
+        "silk": [
+          {
+            "raw": "tơ",
+            "dia": true,
+            "key": "tơ",
+            "folded": "to"
+          },
+          {
+            "raw": "tằm",
+            "dia": true,
+            "key": "tằm",
+            "folded": "tam"
+          },
+          {
+            "raw": "lụa",
+            "dia": true,
+            "key": "lụa",
+            "folded": "lua"
+          },
+          {
+            "raw": "silk",
+            "dia": false,
+            "key": "silk",
+            "folded": "silk"
+          }
+        ],
+        "man_made": [
+          {
+            "raw": "sợi nhân tạo",
+            "dia": true,
+            "key": "sợi nhân tạo",
+            "folded": "soi nhan tao"
+          },
+          {
+            "raw": "viscose",
+            "dia": false,
+            "key": "viscose",
+            "folded": "viscose"
+          },
+          {
+            "raw": "polyester",
+            "dia": false,
+            "key": "polyester",
+            "folded": "polyester"
+          },
+          {
+            "raw": "sợi tổng hợp",
+            "dia": true,
+            "key": "sợi tổng hợp",
+            "folded": "soi tong hop"
+          }
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "FIRST",
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "dyeingMethod": "batik",
+        "materialType": "cotton_vegetable"
+      },
+      "hs": "62151010",
+      "reasonVi": "GIR 6 — vải bông/sợi thực vật in batik truyền thống, Biểu thuế 2026 → 62151010 (SEN)",
+      "source": "Biểu thuế NK VN 2026, nhóm 6215"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "dyeingMethod": "batik",
+        "materialType": "silk"
+      },
+      "hs": "62152010",
+      "reasonVi": "GIR 6 — vải tơ lụa in batik truyền thống, Biểu thuế 2026 → 62152010 (SEN)",
+      "source": "Biểu thuế NK VN 2026, nhóm 6215"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "dyeingMethod": "batik",
+        "materialType": "man_made"
+      },
+      "hs": "62159010",
+      "reasonVi": "GIR 6 — vải sợi nhân tạo in batik truyền thống, Biểu thuế 2026 → 62159010 (SEN)",
+      "source": "Biểu thuế NK VN 2026, nhóm 6215"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "dyeingMethod": "other",
+        "materialType": "cotton_vegetable"
+      },
+      "hs": "62151090",
+      "reasonVi": "GIR 6 — vải bông/sợi thực vật, không phải batik, Biểu thuế 2026 → 62151090",
+      "source": "Biểu thuế NK VN 2026, nhóm 6215"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "dyeingMethod": "other",
+        "materialType": "silk"
+      },
+      "hs": "62152090",
+      "reasonVi": "GIR 6 — vải tơ lụa, không phải batik, Biểu thuế 2026 → 62152090",
+      "source": "Biểu thuế NK VN 2026, nhóm 6215"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "dyeingMethod": "other",
+        "materialType": "man_made"
+      },
+      "hs": "62159090",
+      "reasonVi": "GIR 6 — vải sợi nhân tạo, không phải batik, Biểu thuế 2026 → 62159090",
+      "source": "Biểu thuế NK VN 2026, nhóm 6215"
+    }
+  ],
+  "inputAttributes": [
+    "dyeingMethod",
+    "materialType"
+  ],
+  "attributes": {
+    "dyeingMethod": {
+      "detect": {
+        "batik": [
+          "batik",
+          "in batik",
+          "nhuộm batik"
+        ],
+        "other": [
+          "không batik",
+          "nhuộm thường",
+          "in thường"
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "batik",
+        "other"
+      ]
+    },
+    "materialType": {
+      "detect": {
+        "cotton_vegetable": [
+          "bông",
+          "sợi thực vật",
+          "cotton",
+          "vải bông"
+        ],
+        "silk": [
+          "tơ",
+          "tằm",
+          "lụa",
+          "silk"
+        ],
+        "man_made": [
+          "sợi nhân tạo",
+          "viscose",
+          "polyester",
+          "sợi tổng hợp"
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "cotton_vegetable",
+        "man_made",
+        "silk"
+      ]
+    }
+  },
+  "essenceVi": "dyeingMethod × materialType"
+}

@@ -1,0 +1,726 @@
+{
+  "heading": "4202",
+  "titleVi": "Vali, cặp tài liệu, túi xách tay và các loại vật chứa tương tự; vật dụng thường để mang theo trong túi hoặc người",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "containerKind",
+      "type": "enum",
+      "domain": [
+        "briefcase",
+        "handbag",
+        "pocket_article",
+        "other_container"
+      ],
+      "labelVi": "Loại đồ chứa / mang theo",
+      "questionVi": "Sản phẩm thuộc loại nào: cặp tài liệu/vali (briefcase/trunk/suitcase), túi xách tay (handbag), vật dụng mang theo trong túi (pocket article), hay vật chứa/khác?",
+      "detect": {
+        "briefcase": [
+          "cặp tài liệu",
+          "vali",
+          "va li",
+          "suitcase",
+          "trunk",
+          "briefcase",
+          "cặp",
+          "vali du lịch",
+          "hộp du lịch"
+        ],
+        "handbag": [
+          "túi xách",
+          "túi xách tay",
+          "handbag",
+          "túi đeo",
+          "túi nam",
+          "túi nữ",
+          "túi clutch"
+        ],
+        "pocket_article": [
+          "ví",
+          "bóp",
+          "khăn tay",
+          "vật dụng túi",
+          "pocket",
+          "ví tiền",
+          "ví da",
+          "key case",
+          "hộp thuốc"
+        ],
+        "other_container": [
+          "túi",
+          "bao",
+          "bịch",
+          "túi đựng",
+          "vali du lịch",
+          "Ba lô đeo vai",
+          "Hộp đựng tai nghe",
+          "Hộp đựng rượu vang",
+          "Ba lô thời trang",
+          "Balo",
+          "Dây đai đeo đồ nghề",
+          "Bìa da đựng tài liệu A4",
+          "Dụng cụ cài hông",
+          "Hộp đựng đồ",
+          "Valy có bánh xe",
+          "Giỏ đựng quà tặng",
+          "Ba lô du lịch"
+        ]
+      },
+      "_detect": {
+        "briefcase": [
+          {
+            "raw": "cặp tài liệu",
+            "dia": true,
+            "key": "cặp tài liệu",
+            "folded": "cap tai lieu"
+          },
+          {
+            "raw": "vali",
+            "dia": false,
+            "key": "vali",
+            "folded": "vali"
+          },
+          {
+            "raw": "va li",
+            "dia": false,
+            "key": "va li",
+            "folded": "va li"
+          },
+          {
+            "raw": "suitcase",
+            "dia": false,
+            "key": "suitcase",
+            "folded": "suitcase"
+          },
+          {
+            "raw": "trunk",
+            "dia": false,
+            "key": "trunk",
+            "folded": "trunk"
+          },
+          {
+            "raw": "briefcase",
+            "dia": false,
+            "key": "briefcase",
+            "folded": "briefcase"
+          },
+          {
+            "raw": "cặp",
+            "dia": true,
+            "key": "cặp",
+            "folded": "cap"
+          },
+          {
+            "raw": "vali du lịch",
+            "dia": true,
+            "key": "vali du lịch",
+            "folded": "vali du lich"
+          },
+          {
+            "raw": "hộp du lịch",
+            "dia": true,
+            "key": "hộp du lịch",
+            "folded": "hop du lich"
+          }
+        ],
+        "handbag": [
+          {
+            "raw": "túi xách",
+            "dia": true,
+            "key": "túi xách",
+            "folded": "tui xach"
+          },
+          {
+            "raw": "túi xách tay",
+            "dia": true,
+            "key": "túi xách tay",
+            "folded": "tui xach tay"
+          },
+          {
+            "raw": "handbag",
+            "dia": false,
+            "key": "handbag",
+            "folded": "handbag"
+          },
+          {
+            "raw": "túi đeo",
+            "dia": true,
+            "key": "túi đeo",
+            "folded": "tui deo"
+          },
+          {
+            "raw": "túi nam",
+            "dia": true,
+            "key": "túi nam",
+            "folded": "tui nam"
+          },
+          {
+            "raw": "túi nữ",
+            "dia": true,
+            "key": "túi nữ",
+            "folded": "tui nu"
+          },
+          {
+            "raw": "túi clutch",
+            "dia": true,
+            "key": "túi clutch",
+            "folded": "tui clutch"
+          }
+        ],
+        "pocket_article": [
+          {
+            "raw": "ví",
+            "dia": true,
+            "key": "ví",
+            "folded": "vi"
+          },
+          {
+            "raw": "bóp",
+            "dia": true,
+            "key": "bóp",
+            "folded": "bop"
+          },
+          {
+            "raw": "khăn tay",
+            "dia": true,
+            "key": "khăn tay",
+            "folded": "khan tay"
+          },
+          {
+            "raw": "vật dụng túi",
+            "dia": true,
+            "key": "vật dụng túi",
+            "folded": "vat dung tui"
+          },
+          {
+            "raw": "pocket",
+            "dia": false,
+            "key": "pocket",
+            "folded": "pocket"
+          },
+          {
+            "raw": "ví tiền",
+            "dia": true,
+            "key": "ví tiền",
+            "folded": "vi tien"
+          },
+          {
+            "raw": "ví da",
+            "dia": true,
+            "key": "ví da",
+            "folded": "vi da"
+          },
+          {
+            "raw": "key case",
+            "dia": false,
+            "key": "key case",
+            "folded": "key case"
+          },
+          {
+            "raw": "hộp thuốc",
+            "dia": true,
+            "key": "hộp thuốc",
+            "folded": "hop thuoc"
+          }
+        ],
+        "other_container": [
+          {
+            "raw": "túi",
+            "dia": true,
+            "key": "túi",
+            "folded": "tui"
+          },
+          {
+            "raw": "bao",
+            "dia": false,
+            "key": "bao",
+            "folded": "bao"
+          },
+          {
+            "raw": "bịch",
+            "dia": true,
+            "key": "bịch",
+            "folded": "bich"
+          },
+          {
+            "raw": "túi đựng",
+            "dia": true,
+            "key": "túi đựng",
+            "folded": "tui dung"
+          },
+          {
+            "raw": "vali du lịch",
+            "dia": true,
+            "key": "vali du lịch",
+            "folded": "vali du lich"
+          },
+          {
+            "raw": "Ba lô đeo vai",
+            "dia": true,
+            "key": "ba lô đeo vai",
+            "folded": "ba lo deo vai"
+          },
+          {
+            "raw": "Hộp đựng tai nghe",
+            "dia": true,
+            "key": "hộp đựng tai nghe",
+            "folded": "hop dung tai nghe"
+          },
+          {
+            "raw": "Hộp đựng rượu vang",
+            "dia": true,
+            "key": "hộp đựng rượu vang",
+            "folded": "hop dung ruou vang"
+          },
+          {
+            "raw": "Ba lô thời trang",
+            "dia": true,
+            "key": "ba lô thời trang",
+            "folded": "ba lo thoi trang"
+          },
+          {
+            "raw": "Balo",
+            "dia": false,
+            "key": "balo",
+            "folded": "balo"
+          },
+          {
+            "raw": "Dây đai đeo đồ nghề",
+            "dia": true,
+            "key": "dây đai đeo đồ nghề",
+            "folded": "day dai deo do nghe"
+          },
+          {
+            "raw": "Bìa da đựng tài liệu A4",
+            "dia": true,
+            "key": "bìa da đựng tài liệu a4",
+            "folded": "bia da dung tai lieu a4"
+          },
+          {
+            "raw": "Dụng cụ cài hông",
+            "dia": true,
+            "key": "dụng cụ cài hông",
+            "folded": "dung cu cai hong"
+          },
+          {
+            "raw": "Hộp đựng đồ",
+            "dia": true,
+            "key": "hộp đựng đồ",
+            "folded": "hop dung do"
+          },
+          {
+            "raw": "Valy có bánh xe",
+            "dia": true,
+            "key": "valy có bánh xe",
+            "folded": "valy co banh xe"
+          },
+          {
+            "raw": "Giỏ đựng quà tặng",
+            "dia": true,
+            "key": "giỏ đựng quà tặng",
+            "folded": "gio dung qua tang"
+          },
+          {
+            "raw": "Ba lô du lịch",
+            "dia": true,
+            "key": "ba lô du lịch",
+            "folded": "ba lo du lich"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "outerMaterial",
+      "type": "enum",
+      "domain": [
+        "leather",
+        "sen",
+        "other_synthetic",
+        "paper",
+        "plastic_sheet",
+        "textile",
+        "other_material"
+      ],
+      "labelVi": "Chất liệu mặt ngoài",
+      "questionVi": "Mặt ngoài bằng gì: da thuộc (leather), sợi lưu hóa (SEN), plastic dạng tấm, vật liệu dệt, bìa, hay vật liệu khác?",
+      "_detect": {},
+      "detect": {
+        "leather": [
+          "nsx: guangzhou deconn leather industry. mới 100%",
+          "nsx: guangzhou kashimu leather goods co., ltd,mới"
+        ],
+        "paper": [
+          "hiệu,nsx: yiwu xihe paper products factory, mới",
+          "nhân,không hiệu,nsx:yiwu xihe paper products factory, mới"
+        ]
+      }
+    },
+    {
+      "attribute": "sizeLimit",
+      "type": "enum",
+      "domain": [
+        "within_limit",
+        "over_limit",
+        "not_applicable"
+      ],
+      "labelVi": "Kích thước giới hạn 56x45x25cm",
+      "questionVi": "Có kích thước tối đa 56cm x 45cm x 25cm không (chỉ áp dụng cho cặp tài liệu vali)?: Có (within_limit) / Không (over_limit) / Không áp dụng (not_applicable)",
+      "_detect": {}
+    },
+    {
+      "attribute": "specificKind",
+      "type": "enum",
+      "domain": [
+        "bowling_bag",
+        "toilet_bag",
+        "other_bag",
+        "general"
+      ],
+      "labelVi": "Loại cụ thể (khi containerKind = other_container)",
+      "questionVi": "Vật chứa cụ thể là gì: túi đựng đồ Bowling, túi đựng vệ sinh cá nhân, túi đựng khác, hay loại chung?",
+      "_detect": {}
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "containerKind": "briefcase",
+        "outerMaterial": "leather",
+        "sizeLimit": "within_limit"
+      },
+      "hs": "42021110",
+      "reasonVi": "GIR 6 — cặp tài liệu có kích thước ≤56x45x25cm, 4202.11.10 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "containerKind": "briefcase",
+        "outerMaterial": "leather",
+        "sizeLimit": "over_limit"
+      },
+      "hs": "42021190",
+      "reasonVi": "GIR 6 — cặp tài liệu loại khác, 4202.11.90 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "containerKind": "briefcase",
+        "outerMaterial": "sen",
+        "sizeLimit": "within_limit"
+      },
+      "hs": "42021211",
+      "reasonVi": "GIR 6 — cặp mặt ngoài bằng sợi lưu hóa (SEN) ≤56x45x25cm, 4202.12.11 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "containerKind": "briefcase",
+        "outerMaterial": "sen",
+        "sizeLimit": "over_limit"
+      },
+      "hs": "42021219",
+      "reasonVi": "GIR 6 — cặp SEN loại khác, 4202.12.19 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "containerKind": "briefcase",
+        "outerMaterial": "other_synthetic",
+        "sizeLimit": "within_limit"
+      },
+      "hs": "42021291",
+      "reasonVi": "GIR 6 — cặp mặt ngoài sợi lưu hóa khác ≤56x45x25cm, 4202.12.91 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "containerKind": "briefcase",
+        "outerMaterial": "other_synthetic",
+        "sizeLimit": "over_limit"
+      },
+      "hs": "42021299",
+      "reasonVi": "GIR 6 — cặp loại khác, 4202.12.99 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "containerKind": "briefcase",
+        "outerMaterial": "paper"
+      },
+      "hs": "42021920",
+      "reasonVi": "GIR 6 — cặp mặt ngoài bằng bìa, 4202.19.20 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "containerKind": "briefcase",
+        "outerMaterial": "other_material"
+      },
+      "hs": "42021990",
+      "reasonVi": "GIR 6 — cặp mặt ngoài bằng vật liệu khác, 4202.19.90 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "containerKind": "handbag",
+        "outerMaterial": "leather"
+      },
+      "hs": "42022100",
+      "reasonVi": "GIR 6 — túi xách tay mặt ngoài bằng da, 4202.21 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "containerKind": "handbag",
+        "outerMaterial": "plastic_sheet"
+      },
+      "hs": "42022210",
+      "reasonVi": "GIR 6 — túi xách tay mặt ngoài bằng tấm plastic, 4202.22.10 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "containerKind": "handbag",
+        "outerMaterial": "textile"
+      },
+      "hs": "42022220",
+      "reasonVi": "GIR 6 — túi xách tay mặt ngoài bằng vật liệu dệt, 4202.22.20 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "containerKind": "handbag",
+        "outerMaterial": "other_material"
+      },
+      "hs": "42022900",
+      "reasonVi": "GIR 6 — túi xách tay loại khác, 4202.29 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "containerKind": "pocket_article",
+        "outerMaterial": "leather"
+      },
+      "hs": "42023100",
+      "reasonVi": "GIR 6 — vật dụng mang theo mặt ngoài bằng da, 4202.31 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "containerKind": "pocket_article",
+        "outerMaterial": "plastic_sheet"
+      },
+      "hs": "42023200",
+      "reasonVi": "GIR 6 — vật dụng mang theo mặt ngoài bằng plastic hoặc dệt, 4202.32 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "containerKind": "pocket_article",
+        "outerMaterial": "other_material"
+      },
+      "hs": "42023900",
+      "reasonVi": "GIR 6 — vật dụng mang theo loại khác, 4202.39 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "containerKind": "other_container",
+        "outerMaterial": "leather",
+        "specificKind": "bowling_bag"
+      },
+      "hs": "42029111",
+      "reasonVi": "GIR 6 — túi đựng đồ Bowling bằng da, 4202.91.11 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-17",
+      "priority": 0,
+      "when": {
+        "containerKind": "other_container",
+        "outerMaterial": "leather",
+        "specificKind": "other_bag"
+      },
+      "hs": "42029119",
+      "reasonVi": "GIR 6 — túi đựng khác bằng da, 4202.91.19 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-18",
+      "priority": 0,
+      "when": {
+        "containerKind": "other_container",
+        "outerMaterial": "leather",
+        "specificKind": "general"
+      },
+      "hs": "42029190",
+      "reasonVi": "GIR 6 — vật chứa khác bằng da, 4202.91.90 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-19",
+      "priority": 0,
+      "when": {
+        "containerKind": "other_container",
+        "outerMaterial": "plastic_sheet",
+        "specificKind": "toilet_bag"
+      },
+      "hs": "42029210",
+      "reasonVi": "GIR 6 — túi đựng vệ sinh cá nhân bằng plastic, 4202.92.10 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-20",
+      "priority": 0,
+      "when": {
+        "containerKind": "other_container",
+        "outerMaterial": "plastic_sheet",
+        "specificKind": "bowling_bag"
+      },
+      "hs": "42029220",
+      "reasonVi": "GIR 6 — túi đựng đồ Bowling bằng plastic, 4202.92.20 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-21",
+      "priority": 0,
+      "when": {
+        "containerKind": "other_container",
+        "outerMaterial": "plastic_sheet",
+        "specificKind": "other_bag"
+      },
+      "hs": "42029290",
+      "reasonVi": "GIR 6 — túi đựng khác bằng plastic, 4202.92.90 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-22",
+      "priority": 0,
+      "when": {
+        "containerKind": "other_container",
+        "outerMaterial": "sen",
+        "specificKind": "general"
+      },
+      "hs": "42029910",
+      "reasonVi": "GIR 6 — vật chứa khác mặt ngoài SEN hoặc bìa, 4202.99.10 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-23",
+      "priority": 0,
+      "when": {
+        "containerKind": "other_container",
+        "outerMaterial": "other_material",
+        "specificKind": "general"
+      },
+      "hs": "42029990",
+      "reasonVi": "GIR 6 — vật chứa khác bằng vật liệu khác, 4202.99.90 (MFN 25%)",
+      "source": "Biểu thuế 2026"
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceTestVi": "containerKind (4 giá trị: briefcase/handbag/pocket_article/other_container) + outerMaterial (7 giá trị) + sizeLimit (3) + specificKind (4) — phân biệt 23 mã 8 số trong nhóm 4202. Thuộc tính rìa: sizeLimit chỉ áp cho briefcase; specificKind chỉ áp cho other_container. Tất cả MFN 25%.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 4202 (Thông tư 65/2024/TT-BTC).",
+  "inputAttributes": [
+    "containerKind",
+    "outerMaterial",
+    "sizeLimit",
+    "specificKind"
+  ],
+  "attributes": {
+    "containerKind": {
+      "detect": {
+        "briefcase": [
+          "cặp tài liệu",
+          "vali",
+          "va li",
+          "suitcase",
+          "trunk",
+          "briefcase",
+          "cặp",
+          "vali du lịch",
+          "hộp du lịch"
+        ],
+        "handbag": [
+          "túi xách",
+          "túi xách tay",
+          "handbag",
+          "túi đeo",
+          "túi nam",
+          "túi nữ",
+          "túi clutch"
+        ],
+        "pocket_article": [
+          "ví",
+          "bóp",
+          "khăn tay",
+          "vật dụng túi",
+          "pocket",
+          "ví tiền",
+          "ví da",
+          "key case",
+          "hộp thuốc"
+        ],
+        "other_container": [
+          "túi",
+          "bao",
+          "bịch",
+          "túi đựng",
+          "vali du lịch"
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "briefcase",
+        "handbag",
+        "other_container",
+        "pocket_article"
+      ]
+    },
+    "outerMaterial": {
+      "detect": {},
+      "type": "enum"
+    },
+    "sizeLimit": {
+      "detect": {},
+      "type": "enum"
+    },
+    "specificKind": {
+      "detect": {},
+      "type": "enum"
+    }
+  },
+  "essenceVi": "containerKind × outerMaterial × sizeLimit × specificKind"
+}

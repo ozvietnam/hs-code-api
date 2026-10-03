@@ -1,0 +1,1261 @@
+{
+  "heading": "8714",
+  "titleVi": "Xe đạp và xe lăn, không có động cơ; bộ phận và phụ kiện",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "partKind",
+      "type": "enum",
+      "domain": [
+        "bicycle_part",
+        "brake",
+        "frame_steering",
+        "hub_freewheel",
+        "invalid_carriage",
+        "other_accessory",
+        "pedal_crank",
+        "seat_post",
+        "wheel_rim"
+      ],
+      "labelVi": "Loại bộ phận / phụ kiện xe đạp",
+      "questionVi": "Phụ tùng xe đạp thuộc loại nào: bộ phận chung, xe lăn, khung/cổ, vành, moayơ, phanh, cọc/yên, pedal/cranks, hay phụ kiện khác?",
+      "detect": {
+        "bicycle_part": [
+          "xe đạp",
+          "phụ tùng xe đạp",
+          "bicycle part"
+        ],
+        "brake": [
+          "phanh xe đạp",
+          "brake",
+          "tay phanh",
+          "đĩa phanh"
+        ],
+        "frame_steering": [
+          "khung xe đạp",
+          "cổ xe",
+          "ghi đông",
+          "frame steering"
+        ],
+        "hub_freewheel": [
+          "moayơ",
+          "hub",
+          "freewheel",
+          "trục bánh"
+        ],
+        "invalid_carriage": [
+          "xe lăn",
+          "xe lăn cho người",
+          "invalid carriage"
+        ],
+        "other_accessory": [
+          "phụ kiện xe đạp",
+          "accessory xe đạp",
+          "Má phanh đĩa xe máy",
+          "Vành bánh trước",
+          "Bộ đĩa xích và nhông xe mô tô",
+          "Đĩa xích sau (nhông) xe máy",
+          "Càng xe",
+          "Đĩa xích trước (nhông) xe máy",
+          "Bát phanh sau",
+          "Bát phanh trước",
+          "Miếng nhựa ốp đèn hậu xe máy",
+          "Chắn bùn xe máy",
+          "Búa côn",
+          "Chuông côn",
+          "Bộ côn",
+          "Kính chắn gió xe máy",
+          "Viền nhựa xe máy",
+          "Ốp viền đèn xe máy",
+          "Ốp giảm chấn cho xe máy",
+          "Ốp đậy gầm cho xe máy",
+          "Miếng chụp bugi cho xe máy",
+          "Ốp lọc gió cho xe máy",
+          "Trục giữa xe máy điện",
+          "Bộ tay ga xe máy điện",
+          "Thanh giằng tay lái xe máy",
+          "Gác chân sau xe máy điện",
+          "Tay nắm xe máy điện"
+        ],
+        "pedal_crank": [
+          "pedal xe đạp",
+          "crank",
+          "crank arm"
+        ],
+        "seat_post": [
+          "cọc yên",
+          "yên xe đạp",
+          "seat post",
+          "cọc yên"
+        ],
+        "wheel_rim": [
+          "vành xe đạp",
+          "rim",
+          "nan hoa"
+        ]
+      },
+      "_detect": {
+        "bicycle_part": [
+          {
+            "raw": "xe đạp",
+            "dia": true,
+            "key": "xe đạp",
+            "folded": "xe dap"
+          },
+          {
+            "raw": "phụ tùng xe đạp",
+            "dia": true,
+            "key": "phụ tùng xe đạp",
+            "folded": "phu tung xe dap"
+          },
+          {
+            "raw": "bicycle part",
+            "dia": false,
+            "key": "bicycle part",
+            "folded": "bicycle part"
+          }
+        ],
+        "brake": [
+          {
+            "raw": "phanh xe đạp",
+            "dia": true,
+            "key": "phanh xe đạp",
+            "folded": "phanh xe dap"
+          },
+          {
+            "raw": "brake",
+            "dia": false,
+            "key": "brake",
+            "folded": "brake"
+          },
+          {
+            "raw": "tay phanh",
+            "dia": false,
+            "key": "tay phanh",
+            "folded": "tay phanh"
+          },
+          {
+            "raw": "đĩa phanh",
+            "dia": true,
+            "key": "đĩa phanh",
+            "folded": "dia phanh"
+          }
+        ],
+        "frame_steering": [
+          {
+            "raw": "khung xe đạp",
+            "dia": true,
+            "key": "khung xe đạp",
+            "folded": "khung xe dap"
+          },
+          {
+            "raw": "cổ xe",
+            "dia": true,
+            "key": "cổ xe",
+            "folded": "co xe"
+          },
+          {
+            "raw": "ghi đông",
+            "dia": true,
+            "key": "ghi đông",
+            "folded": "ghi dong"
+          },
+          {
+            "raw": "frame steering",
+            "dia": false,
+            "key": "frame steering",
+            "folded": "frame steering"
+          }
+        ],
+        "hub_freewheel": [
+          {
+            "raw": "moayơ",
+            "dia": true,
+            "key": "moayơ",
+            "folded": "moayo"
+          },
+          {
+            "raw": "hub",
+            "dia": false,
+            "key": "hub",
+            "folded": "hub"
+          },
+          {
+            "raw": "freewheel",
+            "dia": false,
+            "key": "freewheel",
+            "folded": "freewheel"
+          },
+          {
+            "raw": "trục bánh",
+            "dia": true,
+            "key": "trục bánh",
+            "folded": "truc banh"
+          }
+        ],
+        "invalid_carriage": [
+          {
+            "raw": "xe lăn",
+            "dia": true,
+            "key": "xe lăn",
+            "folded": "xe lan"
+          },
+          {
+            "raw": "xe lăn cho người",
+            "dia": true,
+            "key": "xe lăn cho người",
+            "folded": "xe lan cho nguoi"
+          },
+          {
+            "raw": "invalid carriage",
+            "dia": false,
+            "key": "invalid carriage",
+            "folded": "invalid carriage"
+          }
+        ],
+        "other_accessory": [
+          {
+            "raw": "phụ kiện xe đạp",
+            "dia": true,
+            "key": "phụ kiện xe đạp",
+            "folded": "phu kien xe dap"
+          },
+          {
+            "raw": "accessory xe đạp",
+            "dia": true,
+            "key": "accessory xe đạp",
+            "folded": "accessory xe dap"
+          },
+          {
+            "raw": "Má phanh đĩa xe máy",
+            "dia": true,
+            "key": "má phanh đĩa xe máy",
+            "folded": "ma phanh dia xe may"
+          },
+          {
+            "raw": "Vành bánh trước",
+            "dia": true,
+            "key": "vành bánh trước",
+            "folded": "vanh banh truoc"
+          },
+          {
+            "raw": "Bộ đĩa xích và nhông xe mô tô",
+            "dia": true,
+            "key": "bộ đĩa xích và nhông xe mô tô",
+            "folded": "bo dia xich va nhong xe mo to"
+          },
+          {
+            "raw": "Đĩa xích sau (nhông) xe máy",
+            "dia": true,
+            "key": "đĩa xích sau nhông xe máy",
+            "folded": "dia xich sau nhong xe may"
+          },
+          {
+            "raw": "Càng xe",
+            "dia": true,
+            "key": "càng xe",
+            "folded": "cang xe"
+          },
+          {
+            "raw": "Đĩa xích trước (nhông) xe máy",
+            "dia": true,
+            "key": "đĩa xích trước nhông xe máy",
+            "folded": "dia xich truoc nhong xe may"
+          },
+          {
+            "raw": "Bát phanh sau",
+            "dia": true,
+            "key": "bát phanh sau",
+            "folded": "bat phanh sau"
+          },
+          {
+            "raw": "Bát phanh trước",
+            "dia": true,
+            "key": "bát phanh trước",
+            "folded": "bat phanh truoc"
+          },
+          {
+            "raw": "Miếng nhựa ốp đèn hậu xe máy",
+            "dia": true,
+            "key": "miếng nhựa ốp đèn hậu xe máy",
+            "folded": "mieng nhua op den hau xe may"
+          },
+          {
+            "raw": "Chắn bùn xe máy",
+            "dia": true,
+            "key": "chắn bùn xe máy",
+            "folded": "chan bun xe may"
+          },
+          {
+            "raw": "Búa côn",
+            "dia": true,
+            "key": "búa côn",
+            "folded": "bua con"
+          },
+          {
+            "raw": "Chuông côn",
+            "dia": true,
+            "key": "chuông côn",
+            "folded": "chuong con"
+          },
+          {
+            "raw": "Bộ côn",
+            "dia": true,
+            "key": "bộ côn",
+            "folded": "bo con"
+          },
+          {
+            "raw": "Kính chắn gió xe máy",
+            "dia": true,
+            "key": "kính chắn gió xe máy",
+            "folded": "kinh chan gio xe may"
+          },
+          {
+            "raw": "Viền nhựa xe máy",
+            "dia": true,
+            "key": "viền nhựa xe máy",
+            "folded": "vien nhua xe may"
+          },
+          {
+            "raw": "Ốp viền đèn xe máy",
+            "dia": true,
+            "key": "ốp viền đèn xe máy",
+            "folded": "op vien den xe may"
+          },
+          {
+            "raw": "Ốp giảm chấn cho xe máy",
+            "dia": true,
+            "key": "ốp giảm chấn cho xe máy",
+            "folded": "op giam chan cho xe may"
+          },
+          {
+            "raw": "Ốp đậy gầm cho xe máy",
+            "dia": true,
+            "key": "ốp đậy gầm cho xe máy",
+            "folded": "op day gam cho xe may"
+          },
+          {
+            "raw": "Miếng chụp bugi cho xe máy",
+            "dia": true,
+            "key": "miếng chụp bugi cho xe máy",
+            "folded": "mieng chup bugi cho xe may"
+          },
+          {
+            "raw": "Ốp lọc gió cho xe máy",
+            "dia": true,
+            "key": "ốp lọc gió cho xe máy",
+            "folded": "op loc gio cho xe may"
+          },
+          {
+            "raw": "Trục giữa xe máy điện",
+            "dia": true,
+            "key": "trục giữa xe máy điện",
+            "folded": "truc giua xe may dien"
+          },
+          {
+            "raw": "Bộ tay ga xe máy điện",
+            "dia": true,
+            "key": "bộ tay ga xe máy điện",
+            "folded": "bo tay ga xe may dien"
+          },
+          {
+            "raw": "Thanh giằng tay lái xe máy",
+            "dia": true,
+            "key": "thanh giằng tay lái xe máy",
+            "folded": "thanh giang tay lai xe may"
+          },
+          {
+            "raw": "Gác chân sau xe máy điện",
+            "dia": true,
+            "key": "gác chân sau xe máy điện",
+            "folded": "gac chan sau xe may dien"
+          },
+          {
+            "raw": "Tay nắm xe máy điện",
+            "dia": true,
+            "key": "tay nắm xe máy điện",
+            "folded": "tay nam xe may dien"
+          }
+        ],
+        "pedal_crank": [
+          {
+            "raw": "pedal xe đạp",
+            "dia": true,
+            "key": "pedal xe đạp",
+            "folded": "pedal xe dap"
+          },
+          {
+            "raw": "crank",
+            "dia": false,
+            "key": "crank",
+            "folded": "crank"
+          },
+          {
+            "raw": "crank arm",
+            "dia": false,
+            "key": "crank arm",
+            "folded": "crank arm"
+          }
+        ],
+        "seat_post": [
+          {
+            "raw": "cọc yên",
+            "dia": true,
+            "key": "cọc yên",
+            "folded": "coc yen"
+          },
+          {
+            "raw": "yên xe đạp",
+            "dia": true,
+            "key": "yên xe đạp",
+            "folded": "yen xe dap"
+          },
+          {
+            "raw": "seat post",
+            "dia": false,
+            "key": "seat post",
+            "folded": "seat post"
+          },
+          {
+            "raw": "cọc yên",
+            "dia": true,
+            "key": "cọc yên",
+            "folded": "coc yen"
+          }
+        ],
+        "wheel_rim": [
+          {
+            "raw": "vành xe đạp",
+            "dia": true,
+            "key": "vành xe đạp",
+            "folded": "vanh xe dap"
+          },
+          {
+            "raw": "rim",
+            "dia": false,
+            "key": "rim",
+            "folded": "rim"
+          },
+          {
+            "raw": "nan hoa",
+            "dia": false,
+            "key": "nan hoa",
+            "folded": "nan hoa"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "specCode",
+      "type": "enum",
+      "domain": [
+        "10",
+        "11",
+        "12",
+        "19",
+        "20",
+        "30",
+        "40",
+        "50",
+        "60",
+        "70",
+        "90",
+        "91",
+        "93",
+        "94",
+        "99"
+      ],
+      "labelVi": "Mã hiệu kỹ thuật",
+      "questionVi": "Mã hiệu kỹ thuật (2 chữ số cuối)?",
+      "_detect": {
+        "10": [
+          {
+            "raw": "cho xe ex150,abl mới,fu(w100),sh 150 sau,lead cũ,winner,rsx(w110),vario",
+            "dia": true,
+            "key": "cho xe ex150,abl mới,fu w100 ,sh 150 sau,lead cũ,winner,rsx w110 ,vario",
+            "folded": "cho xe ex150,abl moi,fu w100 ,sh 150 sau,lead cu,winner,rsx w110 ,vario"
+          },
+          {
+            "raw": "co.,ltd, hàng mới: 100%",
+            "dia": true,
+            "key": "co.,ltd, hàng mới 100",
+            "folded": "co.,ltd, hang moi 100"
+          },
+          {
+            "raw": "xe mô tô 100-110cc bộ đĩa xích",
+            "dia": true,
+            "key": "xe mô tô 100 110cc bộ đĩa xích",
+            "folded": "xe mo to 100 110cc bo dia xich"
+          },
+          {
+            "raw": "sắt, số loại: mt2.15x10, ký hiệu sản",
+            "dia": true,
+            "key": "sắt, số loại mt2.15x10, ký hiệu sản",
+            "folded": "sat, so loai mt2.15x10, ky hieu san"
+          },
+          {
+            "raw": "cho xe máy 110-115cc đĩa xích sau",
+            "dia": true,
+            "key": "cho xe máy 110 115cc đĩa xích sau",
+            "folded": "cho xe may 110 115cc dia xich sau"
+          },
+          {
+            "raw": "cho xe máy 110-115cc đĩa xích trước",
+            "dia": true,
+            "key": "cho xe máy 110 115cc đĩa xích trước",
+            "folded": "cho xe may 110 115cc dia xich truoc"
+          },
+          {
+            "raw": "vamicor. hàng mới 100%",
+            "dia": true,
+            "key": "vamicor. hàng mới 100",
+            "folded": "vamicor. hang moi 100"
+          },
+          {
+            "raw": "thép, kích thước: 110x20mm,ko hiệu, nsx: ningbo",
+            "dia": true,
+            "key": "thép, kích thước 110x20mm,ko hiệu, nsx ningbo",
+            "folded": "thep, kich thuoc 110x20mm,ko hieu, nsx ningbo"
+          },
+          {
+            "raw": "mtc co.,ltd. mới 100%",
+            "dia": true,
+            "key": "mtc co.,ltd. mới 100",
+            "folded": "mtc co.,ltd. moi 100"
+          },
+          {
+            "raw": "co., ltd. mới 100%",
+            "dia": true,
+            "key": "co., ltd. mới 100",
+            "folded": "co., ltd. moi 100"
+          },
+          {
+            "raw": "hiệu vamiocco, mới 100%",
+            "dia": true,
+            "key": "hiệu vamiocco, mới 100",
+            "folded": "hieu vamiocco, moi 100"
+          },
+          {
+            "raw": "liệu: nhựa, kt: 100 x70 x 26.2",
+            "dia": true,
+            "key": "liệu nhựa, kt 100 x70 x 26.2",
+            "folded": "lieu nhua, kt 100 x70 x 26.2"
+          },
+          {
+            "raw": "hiệu,nsx:yixin auto parts,mới 100%",
+            "dia": true,
+            "key": "hiệu,nsx yixin auto parts,mới 100",
+            "folded": "hieu,nsx yixin auto parts,moi 100"
+          },
+          {
+            "raw": "lndq, hàng mới 100%",
+            "dia": true,
+            "key": "lndq, hàng mới 100",
+            "folded": "lndq, hang moi 100"
+          },
+          {
+            "raw": "parts co., ltd,mới 100%",
+            "dia": true,
+            "key": "parts co., ltd,mới 100",
+            "folded": "parts co., ltd,moi 100"
+          },
+          {
+            "raw": "co., ltd, mới 100%",
+            "dia": true,
+            "key": "co., ltd, mới 100",
+            "folded": "co., ltd, moi 100"
+          },
+          {
+            "raw": "nhôm,1 cặp gồm 1 chiếc trái +",
+            "dia": true,
+            "key": "nhôm,1 cặp gồm 1 chiếc trái",
+            "folded": "nhom,1 cap gom 1 chiec trai"
+          },
+          {
+            "raw": "thép bọc nhựa, 1 bộ gồm 2",
+            "dia": true,
+            "key": "thép bọc nhựa, 1 bộ gồm 2",
+            "folded": "thep boc nhua, 1 bo gom 2"
+          }
+        ],
+        "11": [
+          {
+            "raw": "mới,fu(w100),sh 150 sau,lead cũ,winner,rsx(w110),vario 150,kt: dày 3mm,1",
+            "dia": true,
+            "key": "mới,fu w100 ,sh 150 sau,lead cũ,winner,rsx w110 ,vario 150,kt dày 3mm,1",
+            "folded": "moi,fu w100 ,sh 150 sau,lead cu,winner,rsx w110 ,vario 150,kt day 3mm,1"
+          },
+          {
+            "raw": "xe mô tô 100-110cc bộ đĩa xích",
+            "dia": true,
+            "key": "xe mô tô 100 110cc bộ đĩa xích",
+            "folded": "xe mo to 100 110cc bo dia xich"
+          },
+          {
+            "raw": "cho xe máy 110-115cc đĩa xích sau",
+            "dia": true,
+            "key": "cho xe máy 110 115cc đĩa xích sau",
+            "folded": "cho xe may 110 115cc dia xich sau"
+          },
+          {
+            "raw": "cho xe máy 110-115cc đĩa xích trước",
+            "dia": true,
+            "key": "cho xe máy 110 115cc đĩa xích trước",
+            "folded": "cho xe may 110 115cc dia xich truoc"
+          },
+          {
+            "raw": "thép, kích thước: 110x20mm,ko hiệu, nsx: ningbo",
+            "dia": true,
+            "key": "thép, kích thước 110x20mm,ko hiệu, nsx ningbo",
+            "folded": "thep, kich thuoc 110x20mm,ko hieu, nsx ningbo"
+          },
+          {
+            "raw": "kim,dùng cho xe airblade,dream,wave110,jupiter, hiệu vamiocco,mới 100%.",
+            "dia": true,
+            "key": "kim,dùng cho xe airblade,dream,wave110,jupiter, hiệu vamiocco,mới 100 .",
+            "folded": "kim,dung cho xe airblade,dream,wave110,jupiter, hieu vamiocco,moi 100 ."
+          },
+          {
+            "raw": "xe wave anpha,dream,wave s110,jupiter,hiệu vamiocco,mới 100%.",
+            "dia": true,
+            "key": "xe wave anpha,dream,wave s110,jupiter,hiệu vamiocco,mới 100 .",
+            "folded": "xe wave anpha,dream,wave s110,jupiter,hieu vamiocco,moi 100 ."
+          },
+          {
+            "raw": "mạ crom. kt: 11*6*5cm, không hiệu. nsx:guangxi",
+            "dia": true,
+            "key": "mạ crom. kt 11 6 5cm, không hiệu. nsx guangxi",
+            "folded": "ma crom. kt 11 6 5cm, khong hieu. nsx guangxi"
+          }
+        ],
+        "12": [
+          {
+            "raw": "hợp xe máy 2 bánh linh kiện",
+            "dia": true,
+            "key": "hợp xe máy 2 bánh linh kiện",
+            "folded": "hop xe may 2 banh linh kien"
+          },
+          {
+            "raw": "mạ crom. kt: 19*12*5cm, không hiệu. nsx:guangxi",
+            "dia": true,
+            "key": "mạ crom. kt 19 12 5cm, không hiệu. nsx guangxi",
+            "folded": "ma crom. kt 19 12 5cm, khong hieu. nsx guangxi"
+          },
+          {
+            "raw": "mạ crom. kt: 12*8*3cm, không hiệu. nsx:guangxi",
+            "dia": true,
+            "key": "mạ crom. kt 12 8 3cm, không hiệu. nsx guangxi",
+            "folded": "ma crom. kt 12 8 3cm, khong hieu. nsx guangxi"
+          },
+          {
+            "raw": "phải), điện áp: 12v, chất liệu: nhựa",
+            "dia": true,
+            "key": "phải , điện áp 12v, chất liệu nhựa",
+            "folded": "phai , dien ap 12v, chat lieu nhua"
+          }
+        ],
+        "19": [
+          {
+            "raw": "mạ crom. kt: 19*12*5cm, không hiệu. nsx:guangxi",
+            "dia": true,
+            "key": "mạ crom. kt 19 12 5cm, không hiệu. nsx guangxi",
+            "folded": "ma crom. kt 19 12 5cm, khong hieu. nsx guangxi"
+          }
+        ],
+        "20": [
+          {
+            "raw": "thép, kích thước: 110x20mm,ko hiệu, nsx: ningbo",
+            "dia": true,
+            "key": "thép, kích thước 110x20mm,ko hiệu, nsx ningbo",
+            "folded": "thep, kich thuoc 110x20mm,ko hieu, nsx ningbo"
+          },
+          {
+            "raw": "sắt, kích thước: 20x50mm, ko hiệu, nsx:",
+            "dia": true,
+            "key": "sắt, kích thước 20x50mm, ko hiệu, nsx",
+            "folded": "sat, kich thuoc 20x50mm, ko hieu, nsx"
+          }
+        ],
+        "30": [
+          {
+            "raw": "mạ crom. kt: 30*16*6cm, không hiệu. nsx:guangxi",
+            "dia": true,
+            "key": "mạ crom. kt 30 16 6cm, không hiệu. nsx guangxi",
+            "folded": "ma crom. kt 30 16 6cm, khong hieu. nsx guangxi"
+          }
+        ],
+        "40": [
+          {
+            "raw": "nhôm, kích thước: 380x140mm, ko hiệu, nsx:",
+            "dia": true,
+            "key": "nhôm, kích thước 380x140mm, ko hiệu, nsx",
+            "folded": "nhom, kich thuoc 380x140mm, ko hieu, nsx"
+          },
+          {
+            "raw": "nhôm, kích thước: 380x140mm, nsx: ningbo cixi",
+            "dia": true,
+            "key": "nhôm, kích thước 380x140mm, nsx ningbo cixi",
+            "folded": "nhom, kich thuoc 380x140mm, nsx ningbo cixi"
+          },
+          {
+            "raw": "liệu: sắt, đk: 140mm, nsx: ningbo cixi",
+            "dia": true,
+            "key": "liệu sắt, đk 140mm, nsx ningbo cixi",
+            "folded": "lieu sat, dk 140mm, nsx ningbo cixi"
+          }
+        ],
+        "50": [
+          {
+            "raw": "kim cho xe ex150,abl mới,fu(w100),sh 150 sau,lead",
+            "dia": true,
+            "key": "kim cho xe ex150,abl mới,fu w100 ,sh 150 sau,lead",
+            "folded": "kim cho xe ex150,abl moi,fu w100 ,sh 150 sau,lead"
+          },
+          {
+            "raw": "xích 36t(36 răng,đk 150mm) và 1cái nhông14t(14",
+            "dia": true,
+            "key": "xích 36t 36 răng,đk 150mm và 1cái nhông14t 14",
+            "folded": "xich 36t 36 rang,dk 150mm va 1cai nhong14t 14"
+          },
+          {
+            "raw": "sắt, kích thước: 20x50mm, ko hiệu, nsx:",
+            "dia": true,
+            "key": "sắt, kích thước 20x50mm, ko hiệu, nsx",
+            "folded": "sat, kich thuoc 20x50mm, ko hieu, nsx"
+          },
+          {
+            "raw": "bánh: viền nhựa kt:3*3*50cm, dùng để viền",
+            "dia": true,
+            "key": "bánh viền nhựa kt 3 3 50cm, dùng để viền",
+            "folded": "banh vien nhua kt 3 3 50cm, dung de vien"
+          },
+          {
+            "raw": "tùng xe máy 50cc thanh giằng tay",
+            "dia": true,
+            "key": "tùng xe máy 50cc thanh giằng tay",
+            "folded": "tung xe may 50cc thanh giang tay"
+          },
+          {
+            "raw": "đạp điện, dài: 60-150cm, chất liệu: thép",
+            "dia": true,
+            "key": "đạp điện, dài 60 150cm, chất liệu thép",
+            "folded": "dap dien, dai 60 150cm, chat lieu thep"
+          }
+        ],
+        "60": [
+          {
+            "raw": "đạp điện, dài: 60-150cm, chất liệu: thép",
+            "dia": true,
+            "key": "đạp điện, dài 60 150cm, chất liệu thép",
+            "folded": "dap dien, dai 60 150cm, chat lieu thep"
+          }
+        ],
+        "70": [
+          {
+            "raw": "nhựa, kt: 100 x70 x 26.2 mm.1",
+            "dia": true,
+            "key": "nhựa, kt 100 x70 x 26.2 mm.1",
+            "folded": "nhua, kt 100 x70 x 26.2 mm.1"
+          }
+        ]
+      },
+      "detect": {
+        "10": [
+          "cho xe ex150,abl mới,fu(w100),sh 150 sau,lead cũ,winner,rsx(w110),vario",
+          "co.,ltd, hàng mới: 100%",
+          "xe mô tô 100-110cc bộ đĩa xích",
+          "sắt, số loại: mt2.15x10, ký hiệu sản",
+          "cho xe máy 110-115cc đĩa xích sau",
+          "cho xe máy 110-115cc đĩa xích trước",
+          "vamicor. hàng mới 100%",
+          "thép, kích thước: 110x20mm,ko hiệu, nsx: ningbo",
+          "mtc co.,ltd. mới 100%",
+          "co., ltd. mới 100%",
+          "hiệu vamiocco, mới 100%",
+          "liệu: nhựa, kt: 100 x70 x 26.2",
+          "hiệu,nsx:yixin auto parts,mới 100%",
+          "lndq, hàng mới 100%",
+          "parts co., ltd,mới 100%",
+          "co., ltd, mới 100%",
+          "nhôm,1 cặp gồm 1 chiếc trái +",
+          "thép bọc nhựa, 1 bộ gồm 2",
+          "Má phanh đĩa xe máy",
+          "Vành bánh trước",
+          "Bộ đĩa xích và nhông xe mô tô",
+          "Đĩa xích sau (nhông) xe máy",
+          "Càng xe đạp điện",
+          "Đĩa xích trước (nhông) xe máy",
+          "Bát phanh sau",
+          "Bát phanh trước",
+          "Miếng nhựa ốp đèn hậu xe máy",
+          "Chắn bùn xe máy",
+          "Búa côn",
+          "Chuông côn",
+          "Bộ côn",
+          "Trục giữa xe đạp điện",
+          "Bộ bàn đạp xe đạp điện",
+          "Kính chắn gió xe máy",
+          "Viền nhựa xe máy",
+          "Ốp viền đèn xe máy",
+          "Ốp giảm chấn cho xe máy",
+          "Ốp đậy gầm cho xe máy",
+          "Miếng chụp bugi cho xe máy",
+          "Ốp lọc gió cho xe máy",
+          "Trục giữa xe máy điện",
+          "Cụm tay phanh xe máy điện",
+          "Cọc yên xe đạp điện",
+          "Bộ tay ga xe máy điện",
+          "Thanh giằng tay lái xe máy",
+          "Gác chân sau xe máy điện",
+          "Dây phanh xe đạp điện",
+          "Tay nắm xe máy điện"
+        ],
+        "11": [
+          "mới,fu(w100),sh 150 sau,lead cũ,winner,rsx(w110),vario 150,kt: dày 3mm,1",
+          "xe mô tô 100-110cc bộ đĩa xích",
+          "cho xe máy 110-115cc đĩa xích sau",
+          "cho xe máy 110-115cc đĩa xích trước",
+          "thép, kích thước: 110x20mm,ko hiệu, nsx: ningbo",
+          "kim,dùng cho xe airblade,dream,wave110,jupiter, hiệu vamiocco,mới 100%.",
+          "xe wave anpha,dream,wave s110,jupiter,hiệu vamiocco,mới 100%.",
+          "mạ crom. kt: 11*6*5cm, không hiệu. nsx:guangxi"
+        ],
+        "12": [
+          "hợp xe máy 2 bánh linh kiện",
+          "mạ crom. kt: 19*12*5cm, không hiệu. nsx:guangxi",
+          "mạ crom. kt: 12*8*3cm, không hiệu. nsx:guangxi",
+          "phải), điện áp: 12v, chất liệu: nhựa"
+        ],
+        "19": [
+          "mạ crom. kt: 19*12*5cm, không hiệu. nsx:guangxi"
+        ],
+        "20": [
+          "thép, kích thước: 110x20mm,ko hiệu, nsx: ningbo",
+          "sắt, kích thước: 20x50mm, ko hiệu, nsx:"
+        ],
+        "30": [
+          "mạ crom. kt: 30*16*6cm, không hiệu. nsx:guangxi"
+        ],
+        "40": [
+          "nhôm, kích thước: 380x140mm, ko hiệu, nsx:",
+          "nhôm, kích thước: 380x140mm, nsx: ningbo cixi",
+          "liệu: sắt, đk: 140mm, nsx: ningbo cixi"
+        ],
+        "50": [
+          "kim cho xe ex150,abl mới,fu(w100),sh 150 sau,lead",
+          "xích 36t(36 răng,đk 150mm) và 1cái nhông14t(14",
+          "sắt, kích thước: 20x50mm, ko hiệu, nsx:",
+          "bánh: viền nhựa kt:3*3*50cm, dùng để viền",
+          "tùng xe máy 50cc thanh giằng tay",
+          "đạp điện, dài: 60-150cm, chất liệu: thép"
+        ],
+        "60": [
+          "đạp điện, dài: 60-150cm, chất liệu: thép"
+        ],
+        "70": [
+          "nhựa, kt: 100 x70 x 26.2 mm.1"
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "partKind": "bicycle_part",
+        "specCode": "10"
+      },
+      "hs": "87141010",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại bicycle_part, Biểu thuế 2026 nhóm 871410 → 87141010",
+      "source": "Biểu thuế NK VN 2026, nhóm 871410"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "partKind": "bicycle_part",
+        "specCode": "20"
+      },
+      "hs": "87141020",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại bicycle_part, Biểu thuế 2026 nhóm 871410 → 87141020",
+      "source": "Biểu thuế NK VN 2026, nhóm 871410"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "partKind": "bicycle_part",
+        "specCode": "30"
+      },
+      "hs": "87141030",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại bicycle_part, Biểu thuế 2026 nhóm 871410 → 87141030",
+      "source": "Biểu thuế NK VN 2026, nhóm 871410"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "partKind": "bicycle_part",
+        "specCode": "40"
+      },
+      "hs": "87141040",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại bicycle_part, Biểu thuế 2026 nhóm 871410 → 87141040",
+      "source": "Biểu thuế NK VN 2026, nhóm 871410"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "partKind": "bicycle_part",
+        "specCode": "50"
+      },
+      "hs": "87141050",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại bicycle_part, Biểu thuế 2026 nhóm 871410 → 87141050",
+      "source": "Biểu thuế NK VN 2026, nhóm 871410"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "partKind": "bicycle_part",
+        "specCode": "60"
+      },
+      "hs": "87141060",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại bicycle_part, Biểu thuế 2026 nhóm 871410 → 87141060",
+      "source": "Biểu thuế NK VN 2026, nhóm 871410"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "partKind": "bicycle_part",
+        "specCode": "70"
+      },
+      "hs": "87141070",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại bicycle_part, Biểu thuế 2026 nhóm 871410 → 87141070",
+      "source": "Biểu thuế NK VN 2026, nhóm 871410"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "partKind": "bicycle_part",
+        "specCode": "90"
+      },
+      "hs": "87141090",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại bicycle_part, Biểu thuế 2026 nhóm 871410 → 87141090",
+      "source": "Biểu thuế NK VN 2026, nhóm 871410"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "partKind": "invalid_carriage",
+        "specCode": "11"
+      },
+      "hs": "87142011",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại invalid_carriage, Biểu thuế 2026 nhóm 871420 → 87142011",
+      "source": "Biểu thuế NK VN 2026, nhóm 871420"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "partKind": "invalid_carriage",
+        "specCode": "12"
+      },
+      "hs": "87142012",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại invalid_carriage, Biểu thuế 2026 nhóm 871420 → 87142012",
+      "source": "Biểu thuế NK VN 2026, nhóm 871420"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "partKind": "invalid_carriage",
+        "specCode": "19"
+      },
+      "hs": "87142019",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại invalid_carriage, Biểu thuế 2026 nhóm 871420 → 87142019",
+      "source": "Biểu thuế NK VN 2026, nhóm 871420"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "partKind": "invalid_carriage",
+        "specCode": "90"
+      },
+      "hs": "87142090",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại invalid_carriage, Biểu thuế 2026 nhóm 871420 → 87142090",
+      "source": "Biểu thuế NK VN 2026, nhóm 871420"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "partKind": "frame_steering",
+        "specCode": "10"
+      },
+      "hs": "87149110",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại frame_steering, Biểu thuế 2026 nhóm 871491 → 87149110",
+      "source": "Biểu thuế NK VN 2026, nhóm 871491"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "partKind": "frame_steering",
+        "specCode": "91"
+      },
+      "hs": "87149191",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại frame_steering, Biểu thuế 2026 nhóm 871491 → 87149191",
+      "source": "Biểu thuế NK VN 2026, nhóm 871491"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "partKind": "frame_steering",
+        "specCode": "99"
+      },
+      "hs": "87149199",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại frame_steering, Biểu thuế 2026 nhóm 871491 → 87149199",
+      "source": "Biểu thuế NK VN 2026, nhóm 871491"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "partKind": "wheel_rim",
+        "specCode": "10"
+      },
+      "hs": "87149210",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại wheel_rim, Biểu thuế 2026 nhóm 871492 → 87149210",
+      "source": "Biểu thuế NK VN 2026, nhóm 871492"
+    },
+    {
+      "id": "r-17",
+      "priority": 0,
+      "when": {
+        "partKind": "wheel_rim",
+        "specCode": "90"
+      },
+      "hs": "87149290",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại wheel_rim, Biểu thuế 2026 nhóm 871492 → 87149290",
+      "source": "Biểu thuế NK VN 2026, nhóm 871492"
+    },
+    {
+      "id": "r-18",
+      "priority": 0,
+      "when": {
+        "partKind": "hub_freewheel",
+        "specCode": "10"
+      },
+      "hs": "87149310",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại hub_freewheel, Biểu thuế 2026 nhóm 871493 → 87149310",
+      "source": "Biểu thuế NK VN 2026, nhóm 871493"
+    },
+    {
+      "id": "r-19",
+      "priority": 0,
+      "when": {
+        "partKind": "hub_freewheel",
+        "specCode": "90"
+      },
+      "hs": "87149390",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại hub_freewheel, Biểu thuế 2026 nhóm 871493 → 87149390",
+      "source": "Biểu thuế NK VN 2026, nhóm 871493"
+    },
+    {
+      "id": "r-20",
+      "priority": 0,
+      "when": {
+        "partKind": "brake",
+        "specCode": "10"
+      },
+      "hs": "87149410",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại brake, Biểu thuế 2026 nhóm 871494 → 87149410",
+      "source": "Biểu thuế NK VN 2026, nhóm 871494"
+    },
+    {
+      "id": "r-21",
+      "priority": 0,
+      "when": {
+        "partKind": "brake",
+        "specCode": "90"
+      },
+      "hs": "87149490",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại brake, Biểu thuế 2026 nhóm 871494 → 87149490",
+      "source": "Biểu thuế NK VN 2026, nhóm 871494"
+    },
+    {
+      "id": "r-22",
+      "priority": 0,
+      "when": {
+        "partKind": "seat_post",
+        "specCode": "10"
+      },
+      "hs": "87149510",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại seat_post, Biểu thuế 2026 nhóm 871495 → 87149510",
+      "source": "Biểu thuế NK VN 2026, nhóm 871495"
+    },
+    {
+      "id": "r-23",
+      "priority": 0,
+      "when": {
+        "partKind": "seat_post",
+        "specCode": "90"
+      },
+      "hs": "87149590",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại seat_post, Biểu thuế 2026 nhóm 871495 → 87149590",
+      "source": "Biểu thuế NK VN 2026, nhóm 871495"
+    },
+    {
+      "id": "r-24",
+      "priority": 0,
+      "when": {
+        "partKind": "pedal_crank",
+        "specCode": "10"
+      },
+      "hs": "87149610",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại pedal_crank, Biểu thuế 2026 nhóm 871496 → 87149610",
+      "source": "Biểu thuế NK VN 2026, nhóm 871496"
+    },
+    {
+      "id": "r-25",
+      "priority": 0,
+      "when": {
+        "partKind": "pedal_crank",
+        "specCode": "90"
+      },
+      "hs": "87149690",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại pedal_crank, Biểu thuế 2026 nhóm 871496 → 87149690",
+      "source": "Biểu thuế NK VN 2026, nhóm 871496"
+    },
+    {
+      "id": "r-26",
+      "priority": 0,
+      "when": {
+        "partKind": "other_accessory",
+        "specCode": "11"
+      },
+      "hs": "87149911",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại other_accessory, Biểu thuế 2026 nhóm 871499 → 87149911",
+      "source": "Biểu thuế NK VN 2026, nhóm 871499"
+    },
+    {
+      "id": "r-27",
+      "priority": 0,
+      "when": {
+        "partKind": "other_accessory",
+        "specCode": "12"
+      },
+      "hs": "87149912",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại other_accessory, Biểu thuế 2026 nhóm 871499 → 87149912",
+      "source": "Biểu thuế NK VN 2026, nhóm 871499"
+    },
+    {
+      "id": "r-28",
+      "priority": 0,
+      "when": {
+        "partKind": "other_accessory",
+        "specCode": "91"
+      },
+      "hs": "87149991",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại other_accessory, Biểu thuế 2026 nhóm 871499 → 87149991",
+      "source": "Biểu thuế NK VN 2026, nhóm 871499"
+    },
+    {
+      "id": "r-29",
+      "priority": 0,
+      "when": {
+        "partKind": "other_accessory",
+        "specCode": "93"
+      },
+      "hs": "87149993",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại other_accessory, Biểu thuế 2026 nhóm 871499 → 87149993",
+      "source": "Biểu thuế NK VN 2026, nhóm 871499"
+    },
+    {
+      "id": "r-30",
+      "priority": 0,
+      "when": {
+        "partKind": "other_accessory",
+        "specCode": "94"
+      },
+      "hs": "87149994",
+      "reasonVi": "GIR 6 — phụ tùng xe đạp loại other_accessory, Biểu thuế 2026 nhóm 871499 → 87149994",
+      "source": "Biểu thuế NK VN 2026, nhóm 871499"
+    }
+  ],
+  "essenceTestVi": "Loại bộ phận (partKind) + Mã hiệu (specCode) → mã 8 số. 30 lá, 2 thuộc tính.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN).",
+  "inputAttributes": [
+    "partKind",
+    "specCode"
+  ],
+  "attributes": {
+    "partKind": {
+      "type": "enum",
+      "labelVi": "partKind",
+      "domain": [
+        "bicycle_part",
+        "brake",
+        "frame_steering",
+        "hub_freewheel",
+        "invalid_carriage",
+        "other_accessory",
+        "pedal_crank",
+        "seat_post",
+        "wheel_rim"
+      ],
+      "detect": {
+        "bicycle_part": [
+          "bicycle_part",
+          "bicycle part"
+        ],
+        "brake": [
+          "brake"
+        ],
+        "frame_steering": [
+          "frame_steering",
+          "frame steering"
+        ],
+        "hub_freewheel": [
+          "hub_freewheel",
+          "hub freewheel"
+        ],
+        "invalid_carriage": [
+          "invalid_carriage",
+          "invalid carriage"
+        ],
+        "other_accessory": [
+          "other_accessory",
+          "other accessory"
+        ],
+        "pedal_crank": [
+          "pedal_crank",
+          "pedal crank"
+        ],
+        "seat_post": [
+          "seat_post",
+          "seat post"
+        ],
+        "wheel_rim": [
+          "wheel_rim",
+          "wheel rim"
+        ]
+      }
+    },
+    "specCode": {
+      "type": "number",
+      "labelVi": "specCode",
+      "unit": null,
+      "fromSpec": null
+    }
+  },
+  "hitPolicy": "PRIORITY",
+  "essenceVi": "partKind + specCode"
+}

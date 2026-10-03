@@ -10,7 +10,10 @@
     {
       "attribute": "goodsKind",
       "type": "enum",
-      "domain": ["machine", "part"],
+      "domain": [
+        "machine",
+        "part"
+      ],
       "labelVi": "Máy / bộ phận",
       "questionVi": "Là máy cán/ép nguyên chiếc hay bộ phận (trục cán hoặc linh kiện khác) của máy đó?",
       "detect": {
@@ -30,12 +33,94 @@
           "parts 8420",
           "linh kiện máy cán"
         ]
+      },
+      "_detect": {
+        "machine": [
+          {
+            "raw": "máy cán",
+            "dia": true,
+            "key": "máy cán",
+            "folded": "may can"
+          },
+          {
+            "raw": "calendering machine",
+            "dia": false,
+            "key": "calendering machine",
+            "folded": "calendering machine"
+          },
+          {
+            "raw": "rolling machine",
+            "dia": false,
+            "key": "rolling machine",
+            "folded": "rolling machine"
+          },
+          {
+            "raw": "máy ép",
+            "dia": true,
+            "key": "máy ép",
+            "folded": "may ep"
+          },
+          {
+            "raw": "máy là",
+            "dia": true,
+            "key": "máy là",
+            "folded": "may la"
+          },
+          {
+            "raw": "máy vắt",
+            "dia": true,
+            "key": "máy vắt",
+            "folded": "may vat"
+          }
+        ],
+        "part": [
+          {
+            "raw": "bộ phận",
+            "dia": true,
+            "key": "bộ phận",
+            "folded": "bo phan"
+          },
+          {
+            "raw": "phụ tùng",
+            "dia": true,
+            "key": "phụ tùng",
+            "folded": "phu tung"
+          },
+          {
+            "raw": "trục cán",
+            "dia": true,
+            "key": "trục cán",
+            "folded": "truc can"
+          },
+          {
+            "raw": "cylinder",
+            "dia": false,
+            "key": "cylinder",
+            "folded": "cylinder"
+          },
+          {
+            "raw": "parts 8420",
+            "dia": false,
+            "key": "parts 8420",
+            "folded": "parts 8420"
+          },
+          {
+            "raw": "linh kiện máy cán",
+            "dia": true,
+            "key": "linh kiện máy cán",
+            "folded": "linh kien may can"
+          }
+        ]
       }
     },
     {
       "attribute": "machineUse",
       "type": "enum",
-      "domain": ["pcbSubstrate", "householdLaundry", "other"],
+      "domain": [
+        "pcbSubstrate",
+        "householdLaundry",
+        "other"
+      ],
       "labelVi": "Công dụng máy",
       "questionVi": "Máy chủ yếu để sản xuất tấm nền mạch in; máy là/vắt gia đình; hay loại cán/ép khác?",
       "detect": {
@@ -57,14 +142,113 @@
           "máy cán nhựa",
           "máy cán vải",
           "rubber calender",
-          "textile calender"
+          "textile calender",
+          "Máy cán bột",
+          "Máy cán màng nhựa ép nhiệt",
+          "Máy cán màng tự động",
+          "Máy cán đế bánh"
+        ]
+      },
+      "_detect": {
+        "pcbSubstrate": [
+          {
+            "raw": "tấm nền mạch in",
+            "dia": true,
+            "key": "tấm nền mạch in",
+            "folded": "tam nen mach in"
+          },
+          {
+            "raw": "pcb substrate",
+            "dia": false,
+            "key": "pcb substrate",
+            "folded": "pcb substrate"
+          },
+          {
+            "raw": "mạch in",
+            "dia": true,
+            "key": "mạch in",
+            "folded": "mach in"
+          },
+          {
+            "raw": "copper clad",
+            "dia": false,
+            "key": "copper clad",
+            "folded": "copper clad"
+          },
+          {
+            "raw": "laminate pcb",
+            "dia": false,
+            "key": "laminate pcb",
+            "folded": "laminate pcb"
+          }
+        ],
+        "householdLaundry": [
+          {
+            "raw": "máy là gia đình",
+            "dia": true,
+            "key": "máy là gia đình",
+            "folded": "may la gia dinh"
+          },
+          {
+            "raw": "máy vắt gia đình",
+            "dia": true,
+            "key": "máy vắt gia đình",
+            "folded": "may vat gia dinh"
+          },
+          {
+            "raw": "household ironing",
+            "dia": false,
+            "key": "household ironing",
+            "folded": "household ironing"
+          },
+          {
+            "raw": "wringer",
+            "dia": false,
+            "key": "wringer",
+            "folded": "wringer"
+          },
+          {
+            "raw": "mangle household",
+            "dia": false,
+            "key": "mangle household",
+            "folded": "mangle household"
+          }
+        ],
+        "other": [
+          {
+            "raw": "máy cán nhựa",
+            "dia": true,
+            "key": "máy cán nhựa",
+            "folded": "may can nhua"
+          },
+          {
+            "raw": "máy cán vải",
+            "dia": true,
+            "key": "máy cán vải",
+            "folded": "may can vai"
+          },
+          {
+            "raw": "rubber calender",
+            "dia": false,
+            "key": "rubber calender",
+            "folded": "rubber calender"
+          },
+          {
+            "raw": "textile calender",
+            "dia": false,
+            "key": "textile calender",
+            "folded": "textile calender"
+          }
         ]
       }
     },
     {
       "attribute": "partKind",
       "type": "enum",
-      "domain": ["cylinder", "other"],
+      "domain": [
+        "cylinder",
+        "other"
+      ],
       "labelVi": "Trục cán / bộ phận khác",
       "questionVi": "Bộ phận là trục (cylinder) cho máy cán hay bộ phận khác (không phải trục)?",
       "detect": {
@@ -80,12 +264,69 @@
           "bearing housing",
           "linh kiện không phải trục"
         ]
+      },
+      "_detect": {
+        "cylinder": [
+          {
+            "raw": "trục cán",
+            "dia": true,
+            "key": "trục cán",
+            "folded": "truc can"
+          },
+          {
+            "raw": "cylinder",
+            "dia": false,
+            "key": "cylinder",
+            "folded": "cylinder"
+          },
+          {
+            "raw": "roll",
+            "dia": false,
+            "key": "roll",
+            "folded": "roll"
+          },
+          {
+            "raw": "trục ép",
+            "dia": true,
+            "key": "trục ép",
+            "folded": "truc ep"
+          }
+        ],
+        "other": [
+          {
+            "raw": "bộ phận khác",
+            "dia": true,
+            "key": "bộ phận khác",
+            "folded": "bo phan khac"
+          },
+          {
+            "raw": "khung máy",
+            "dia": true,
+            "key": "khung máy",
+            "folded": "khung may"
+          },
+          {
+            "raw": "bearing housing",
+            "dia": false,
+            "key": "bearing housing",
+            "folded": "bearing housing"
+          },
+          {
+            "raw": "linh kiện không phải trục",
+            "dia": true,
+            "key": "linh kiện không phải trục",
+            "folded": "linh kien khong phai truc"
+          }
+        ]
       }
     },
     {
       "attribute": "forPcbMachine",
       "type": "enum",
-      "domain": ["yes", "no"],
+      "domain": [
+        "yes",
+        "no"
+      ],
       "labelVi": "Dùng cho máy 8420.10.10",
       "questionVi": "Bộ phận dùng cho máy cán sản xuất tấm nền mạch in (8420.10.10) hay cho máy cán loại khác?",
       "detect": {
@@ -101,6 +342,60 @@
           "8420.10.20",
           "8420.10.90"
         ]
+      },
+      "_detect": {
+        "yes": [
+          {
+            "raw": "8420.10.10",
+            "dia": false,
+            "key": "8420.10.10",
+            "folded": "8420.10.10"
+          },
+          {
+            "raw": "tấm nền mạch in",
+            "dia": true,
+            "key": "tấm nền mạch in",
+            "folded": "tam nen mach in"
+          },
+          {
+            "raw": "pcb calender",
+            "dia": false,
+            "key": "pcb calender",
+            "folded": "pcb calender"
+          },
+          {
+            "raw": "for pcb substrate machine",
+            "dia": false,
+            "key": "for pcb substrate machine",
+            "folded": "for pcb substrate machine"
+          }
+        ],
+        "no": [
+          {
+            "raw": "máy cán vải",
+            "dia": true,
+            "key": "máy cán vải",
+            "folded": "may can vai"
+          },
+          {
+            "raw": "máy là",
+            "dia": true,
+            "key": "máy là",
+            "folded": "may la"
+          },
+          {
+            "raw": "8420.10.20",
+            "dia": false,
+            "key": "8420.10.20",
+            "folded": "8420.10.20"
+          },
+          {
+            "raw": "8420.10.90",
+            "dia": false,
+            "key": "8420.10.90",
+            "folded": "8420.10.90"
+          }
+        ]
       }
     }
   ],
@@ -109,7 +404,10 @@
     {
       "id": "r-machine-pcb",
       "priority": 50,
-      "when": { "goodsKind": "machine", "machineUse": "pcbSubstrate" },
+      "when": {
+        "goodsKind": "machine",
+        "machineUse": "pcbSubstrate"
+      },
       "hs": "84201010",
       "gir": "GIR 6",
       "reasonVi": "Máy cán chủ yếu sản xuất tấm nền/mạch in → 8420.10.10.",
@@ -118,7 +416,10 @@
     {
       "id": "r-machine-laundry",
       "priority": 50,
-      "when": { "goodsKind": "machine", "machineUse": "householdLaundry" },
+      "when": {
+        "goodsKind": "machine",
+        "machineUse": "householdLaundry"
+      },
       "hs": "84201020",
       "gir": "GIR 6",
       "reasonVi": "Máy là hoặc máy vắt gia đình → 8420.10.20.",
@@ -127,7 +428,10 @@
     {
       "id": "r-machine-other",
       "priority": 40,
-      "when": { "goodsKind": "machine", "machineUse": "other" },
+      "when": {
+        "goodsKind": "machine",
+        "machineUse": "other"
+      },
       "hs": "84201090",
       "gir": "GIR 6",
       "reasonVi": "Máy cán/ép loại khác (không PCB/gia đình) → 8420.10.90.",
@@ -136,7 +440,11 @@
     {
       "id": "r-cylinder-pcb",
       "priority": 50,
-      "when": { "goodsKind": "part", "partKind": "cylinder", "forPcbMachine": "yes" },
+      "when": {
+        "goodsKind": "part",
+        "partKind": "cylinder",
+        "forPcbMachine": "yes"
+      },
       "hs": "84209110",
       "gir": "GIR 6",
       "reasonVi": "Trục cán của máy 8420.10.10 → 8420.91.10.",
@@ -145,7 +453,11 @@
     {
       "id": "r-cylinder-other",
       "priority": 40,
-      "when": { "goodsKind": "part", "partKind": "cylinder", "forPcbMachine": "no" },
+      "when": {
+        "goodsKind": "part",
+        "partKind": "cylinder",
+        "forPcbMachine": "no"
+      },
       "hs": "84209190",
       "gir": "GIR 6",
       "reasonVi": "Trục cán loại khác → 8420.91.90.",
@@ -154,7 +466,11 @@
     {
       "id": "r-part-pcb",
       "priority": 50,
-      "when": { "goodsKind": "part", "partKind": "other", "forPcbMachine": "yes" },
+      "when": {
+        "goodsKind": "part",
+        "partKind": "other",
+        "forPcbMachine": "yes"
+      },
       "hs": "84209910",
       "gir": "GIR 6",
       "reasonVi": "Bộ phận (không trục) của máy 8420.10.10 → 8420.99.10.",
@@ -163,11 +479,88 @@
     {
       "id": "r-part-other",
       "priority": 10,
-      "when": { "goodsKind": "part", "partKind": "other", "forPcbMachine": "no" },
+      "when": {
+        "goodsKind": "part",
+        "partKind": "other",
+        "forPcbMachine": "no"
+      },
       "hs": "84209990",
       "gir": "GIR 6",
       "reasonVi": "Bộ phận (không trục) loại khác → 8420.99.90.",
       "source": "Biểu thuế 2026 dòng 8420.99.90"
     }
-  ]
+  ],
+  "inputAttributes": [
+    "forPcbMachine",
+    "goodsKind",
+    "machineUse",
+    "partKind"
+  ],
+  "essenceVi": "loại hàng+công dụng máy+loại linh kiện+pcb",
+  "attributes": {
+    "forPcbMachine": {
+      "type": "enum",
+      "domain": [
+        "no",
+        "yes"
+      ],
+      "detect": {
+        "no": [
+          "no"
+        ],
+        "yes": [
+          "yes"
+        ]
+      }
+    },
+    "goodsKind": {
+      "type": "enum",
+      "domain": [
+        "machine",
+        "part"
+      ],
+      "detect": {
+        "machine": [
+          "machine"
+        ],
+        "part": [
+          "part"
+        ]
+      }
+    },
+    "machineUse": {
+      "type": "enum",
+      "domain": [
+        "householdLaundry",
+        "other",
+        "pcbSubstrate"
+      ],
+      "detect": {
+        "householdLaundry": [
+          "householdLaundry"
+        ],
+        "other": [
+          "other"
+        ],
+        "pcbSubstrate": [
+          "pcbSubstrate"
+        ]
+      }
+    },
+    "partKind": {
+      "type": "enum",
+      "domain": [
+        "cylinder",
+        "other"
+      ],
+      "detect": {
+        "cylinder": [
+          "cylinder"
+        ],
+        "other": [
+          "other"
+        ]
+      }
+    }
+  }
 }

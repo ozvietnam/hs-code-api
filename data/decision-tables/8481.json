@@ -1,0 +1,3520 @@
+{
+  "heading": "8481",
+  "inputs": [
+    {
+      "attribute": "valveKind",
+      "type": "enum",
+      "domain": [
+        "pressure_reducing",
+        "oleohydraulic",
+        "check",
+        "safety",
+        "other"
+      ],
+      "labelVi": "Loại van",
+      "questionVi": "Van thuộc loại gì: van giảm áp (áp suất nước/máy nén), van thủy lực/khí nén (dầu mỡ), van cản (một chiều), van an toàn, hay van/cần/vòi khác?",
+      "detect": {
+        "pressure_reducing": [
+          "van giảm áp",
+          "pressure reducing",
+          "van cổng",
+          "van điều áp",
+          "áp suất"
+        ],
+        "oleohydraulic": [
+          "van thủy lực",
+          "van khí nén",
+          "oleohydraulic",
+          "thủy lực",
+          "pneumatic"
+        ],
+        "check": [
+          "van cản",
+          "van một chiều",
+          "check valve",
+          "van chặn"
+        ],
+        "safety": [
+          "van an toàn",
+          "safety valve",
+          "van xả áp"
+        ],
+        "other": [
+          "van",
+          "vòi",
+          "cần",
+          "cống",
+          "taps",
+          "cocks",
+          "valves",
+          "fitting",
+          "Bộ sen cây tắm",
+          "Bộ sen tắm",
+          "Bộ củ sen tắm",
+          "Xy lanh khí nén",
+          "Núm uống nước",
+          "Cuộn hút",
+          "Sen tắm âm tường",
+          "Bộ chân đỡ sen tắm",
+          "Bộ giác hút chân không",
+          "Bộ điều chỉnh áp",
+          "Ốp chân sen cây tắm",
+          "Bộ sen cây 2 đường nước",
+          "Màng cao su"
+        ]
+      },
+      "_detect": {
+        "pressure_reducing": [
+          {
+            "raw": "van giảm áp",
+            "dia": true,
+            "key": "van giảm áp",
+            "folded": "van giam ap"
+          },
+          {
+            "raw": "pressure reducing",
+            "dia": false,
+            "key": "pressure reducing",
+            "folded": "pressure reducing"
+          },
+          {
+            "raw": "van cổng",
+            "dia": true,
+            "key": "van cổng",
+            "folded": "van cong"
+          },
+          {
+            "raw": "van điều áp",
+            "dia": true,
+            "key": "van điều áp",
+            "folded": "van dieu ap"
+          },
+          {
+            "raw": "áp suất",
+            "dia": true,
+            "key": "áp suất",
+            "folded": "ap suat"
+          }
+        ],
+        "oleohydraulic": [
+          {
+            "raw": "van thủy lực",
+            "dia": true,
+            "key": "van thủy lực",
+            "folded": "van thuy luc"
+          },
+          {
+            "raw": "van khí nén",
+            "dia": true,
+            "key": "van khí nén",
+            "folded": "van khi nen"
+          },
+          {
+            "raw": "oleohydraulic",
+            "dia": false,
+            "key": "oleohydraulic",
+            "folded": "oleohydraulic"
+          },
+          {
+            "raw": "thủy lực",
+            "dia": true,
+            "key": "thủy lực",
+            "folded": "thuy luc"
+          },
+          {
+            "raw": "pneumatic",
+            "dia": false,
+            "key": "pneumatic",
+            "folded": "pneumatic"
+          }
+        ],
+        "check": [
+          {
+            "raw": "van cản",
+            "dia": true,
+            "key": "van cản",
+            "folded": "van can"
+          },
+          {
+            "raw": "van một chiều",
+            "dia": true,
+            "key": "van một chiều",
+            "folded": "van mot chieu"
+          },
+          {
+            "raw": "check valve",
+            "dia": false,
+            "key": "check valve",
+            "folded": "check valve"
+          },
+          {
+            "raw": "van chặn",
+            "dia": true,
+            "key": "van chặn",
+            "folded": "van chan"
+          }
+        ],
+        "safety": [
+          {
+            "raw": "van an toàn",
+            "dia": true,
+            "key": "van an toàn",
+            "folded": "van an toan"
+          },
+          {
+            "raw": "safety valve",
+            "dia": false,
+            "key": "safety valve",
+            "folded": "safety valve"
+          },
+          {
+            "raw": "van xả áp",
+            "dia": true,
+            "key": "van xả áp",
+            "folded": "van xa ap"
+          }
+        ],
+        "other": [
+          {
+            "raw": "van",
+            "dia": false,
+            "key": "van",
+            "folded": "van"
+          },
+          {
+            "raw": "vòi",
+            "dia": true,
+            "key": "vòi",
+            "folded": "voi"
+          },
+          {
+            "raw": "cần",
+            "dia": true,
+            "key": "cần",
+            "folded": "can"
+          },
+          {
+            "raw": "cống",
+            "dia": true,
+            "key": "cống",
+            "folded": "cong"
+          },
+          {
+            "raw": "taps",
+            "dia": false,
+            "key": "taps",
+            "folded": "taps"
+          },
+          {
+            "raw": "cocks",
+            "dia": false,
+            "key": "cocks",
+            "folded": "cocks"
+          },
+          {
+            "raw": "valves",
+            "dia": false,
+            "key": "valves",
+            "folded": "valves"
+          },
+          {
+            "raw": "fitting",
+            "dia": false,
+            "key": "fitting",
+            "folded": "fitting"
+          },
+          {
+            "raw": "Bộ sen cây tắm",
+            "dia": true,
+            "key": "bộ sen cây tắm",
+            "folded": "bo sen cay tam"
+          },
+          {
+            "raw": "Bộ sen tắm",
+            "dia": true,
+            "key": "bộ sen tắm",
+            "folded": "bo sen tam"
+          },
+          {
+            "raw": "Bộ củ sen tắm",
+            "dia": true,
+            "key": "bộ củ sen tắm",
+            "folded": "bo cu sen tam"
+          },
+          {
+            "raw": "Xy lanh khí nén",
+            "dia": true,
+            "key": "xy lanh khí nén",
+            "folded": "xy lanh khi nen"
+          },
+          {
+            "raw": "Núm uống nước",
+            "dia": true,
+            "key": "núm uống nước",
+            "folded": "num uong nuoc"
+          },
+          {
+            "raw": "Cuộn hút",
+            "dia": true,
+            "key": "cuộn hút",
+            "folded": "cuon hut"
+          },
+          {
+            "raw": "Sen tắm âm tường",
+            "dia": true,
+            "key": "sen tắm âm tường",
+            "folded": "sen tam am tuong"
+          },
+          {
+            "raw": "Bộ chân đỡ sen tắm",
+            "dia": true,
+            "key": "bộ chân đỡ sen tắm",
+            "folded": "bo chan do sen tam"
+          },
+          {
+            "raw": "Bộ giác hút chân không",
+            "dia": true,
+            "key": "bộ giác hút chân không",
+            "folded": "bo giac hut chan khong"
+          },
+          {
+            "raw": "Bộ điều chỉnh áp",
+            "dia": true,
+            "key": "bộ điều chỉnh áp",
+            "folded": "bo dieu chinh ap"
+          },
+          {
+            "raw": "Ốp chân sen cây tắm",
+            "dia": true,
+            "key": "ốp chân sen cây tắm",
+            "folded": "op chan sen cay tam"
+          },
+          {
+            "raw": "Bộ sen cây 2 đường nước",
+            "dia": true,
+            "key": "bộ sen cây 2 đường nước",
+            "folded": "bo sen cay 2 duong nuoc"
+          },
+          {
+            "raw": "Màng cao su",
+            "dia": true,
+            "key": "màng cao su",
+            "folded": "mang cao su"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "controlType",
+      "type": "enum",
+      "domain": [
+        "manual_gate",
+        "other",
+        "tap_cock",
+        "manual_other"
+      ],
+      "labelVi": "Kiểu điều khiển",
+      "questionVi": "Van điều khiển bằng tay (vặn, gạt, cổng) hay kiểu khác (điện từ, cơ, tự động)?",
+      "detect": {
+        "manual_gate": [
+          "van cổng",
+          "cổng van",
+          "gate valve",
+          "điều khiển bằng tay",
+          "bằng tay"
+        ],
+        "other": [
+          "khác",
+          "Van điện từ",
+          "Đế van điện",
+          "Van tiết lưu",
+          "Van tự động",
+          "Van đạp chân",
+          "Van điều chỉnh áp suất khí nén",
+          "Van điều áp khí nén",
+          "Van 5 cửa 5 tác dụng",
+          "Van xả cảm ứng tiểu nam",
+          "Van chân không",
+          "Van kiểm tra lửa",
+          "Van hình cầu",
+          "Van gạt tay",
+          "Đế van chia khí",
+          "Van 3 cửa 3 tác dụng",
+          "Van xả cảm ứng bồn tiểu nam",
+          "Van cảm ứng tiểu nam âm tường",
+          "Van điều khiển bằng khí nén",
+          "Van phao",
+          "Van bi chặn",
+          "Van bi vi sinh tay gạt",
+          "Van bướm vi sinh tay rút",
+          "Van nhiều ngả nâng hạ xy lanh",
+          "Van thao tác di chuyển",
+          "Cụm van đánh lửa bếp gas",
+          "Van hút chân không",
+          "Van khóa tay",
+          "Van lọc nước biển",
+          "Van xả nước tự động",
+          "Cụm van giao thế",
+          "Van cầu hơi chữ ngã",
+          "Tấm ngăn thân van",
+          "Van đảo chiều bơm màng khí nén",
+          "Van điện động",
+          "Van lọc bụi",
+          "Van phân phối điện từ khí nén",
+          "Van điện tuyến tính",
+          "Van chia khí điện từ 5/2",
+          "Van chia khí điện từ 5/3",
+          "Van giảm áp",
+          "Bộ ruột van trút tải",
+          "Van tay gạt đóng mở khí nén",
+          "Màng van nổ",
+          "Van đôi đạp chân khí nén",
+          "Van bi gạt ren",
+          "Van bi khí nén ba ngã",
+          "Bộ sen cây tắm",
+          "Bộ sen tắm",
+          "Bộ củ sen tắm",
+          "Xy lanh khí nén",
+          "Núm uống nước",
+          "Cuộn hút",
+          "Sen tắm âm tường",
+          "Bộ chân đỡ sen tắm",
+          "Bộ giác hút chân không",
+          "Bộ điều chỉnh áp",
+          "Ốp chân sen cây tắm",
+          "Bộ sen cây 2 đường nước",
+          "Màng cao su"
+        ],
+        "tap_cock": [
+          "vòi",
+          "cống",
+          "tap",
+          "cock",
+          "bằng đồng",
+          "bằng hợp kim"
+        ],
+        "manual_other": [
+          "van khác",
+          "bằng thép",
+          "thép không gỉ",
+          "niken",
+          "xử lý bề mặt"
+        ]
+      },
+      "_detect": {
+        "manual_gate": [
+          {
+            "raw": "van cổng",
+            "dia": true,
+            "key": "van cổng",
+            "folded": "van cong"
+          },
+          {
+            "raw": "cổng van",
+            "dia": true,
+            "key": "cổng van",
+            "folded": "cong van"
+          },
+          {
+            "raw": "gate valve",
+            "dia": false,
+            "key": "gate valve",
+            "folded": "gate valve"
+          },
+          {
+            "raw": "điều khiển bằng tay",
+            "dia": true,
+            "key": "điều khiển bằng tay",
+            "folded": "dieu khien bang tay"
+          },
+          {
+            "raw": "bằng tay",
+            "dia": true,
+            "key": "bằng tay",
+            "folded": "bang tay"
+          }
+        ],
+        "other": [
+          {
+            "raw": "khác",
+            "dia": true,
+            "key": "khác",
+            "folded": "khac"
+          },
+          {
+            "raw": "Van điện từ",
+            "dia": true,
+            "key": "van điện từ",
+            "folded": "van dien tu"
+          },
+          {
+            "raw": "Đế van điện",
+            "dia": true,
+            "key": "đế van điện",
+            "folded": "de van dien"
+          },
+          {
+            "raw": "Van tiết lưu",
+            "dia": true,
+            "key": "van tiết lưu",
+            "folded": "van tiet luu"
+          },
+          {
+            "raw": "Van tự động",
+            "dia": true,
+            "key": "van tự động",
+            "folded": "van tu dong"
+          },
+          {
+            "raw": "Van đạp chân",
+            "dia": true,
+            "key": "van đạp chân",
+            "folded": "van dap chan"
+          },
+          {
+            "raw": "Van điều chỉnh áp suất khí nén",
+            "dia": true,
+            "key": "van điều chỉnh áp suất khí nén",
+            "folded": "van dieu chinh ap suat khi nen"
+          },
+          {
+            "raw": "Van điều áp khí nén",
+            "dia": true,
+            "key": "van điều áp khí nén",
+            "folded": "van dieu ap khi nen"
+          },
+          {
+            "raw": "Van 5 cửa 5 tác dụng",
+            "dia": true,
+            "key": "van 5 cửa 5 tác dụng",
+            "folded": "van 5 cua 5 tac dung"
+          },
+          {
+            "raw": "Van xả cảm ứng tiểu nam",
+            "dia": true,
+            "key": "van xả cảm ứng tiểu nam",
+            "folded": "van xa cam ung tieu nam"
+          },
+          {
+            "raw": "Van chân không",
+            "dia": true,
+            "key": "van chân không",
+            "folded": "van chan khong"
+          },
+          {
+            "raw": "Van kiểm tra lửa",
+            "dia": true,
+            "key": "van kiểm tra lửa",
+            "folded": "van kiem tra lua"
+          },
+          {
+            "raw": "Van hình cầu",
+            "dia": true,
+            "key": "van hình cầu",
+            "folded": "van hinh cau"
+          },
+          {
+            "raw": "Van gạt tay",
+            "dia": true,
+            "key": "van gạt tay",
+            "folded": "van gat tay"
+          },
+          {
+            "raw": "Đế van chia khí",
+            "dia": true,
+            "key": "đế van chia khí",
+            "folded": "de van chia khi"
+          },
+          {
+            "raw": "Van 3 cửa 3 tác dụng",
+            "dia": true,
+            "key": "van 3 cửa 3 tác dụng",
+            "folded": "van 3 cua 3 tac dung"
+          },
+          {
+            "raw": "Van xả cảm ứng bồn tiểu nam",
+            "dia": true,
+            "key": "van xả cảm ứng bồn tiểu nam",
+            "folded": "van xa cam ung bon tieu nam"
+          },
+          {
+            "raw": "Van cảm ứng tiểu nam âm tường",
+            "dia": true,
+            "key": "van cảm ứng tiểu nam âm tường",
+            "folded": "van cam ung tieu nam am tuong"
+          },
+          {
+            "raw": "Van điều khiển bằng khí nén",
+            "dia": true,
+            "key": "van điều khiển bằng khí nén",
+            "folded": "van dieu khien bang khi nen"
+          },
+          {
+            "raw": "Van phao",
+            "dia": false,
+            "key": "van phao",
+            "folded": "van phao"
+          },
+          {
+            "raw": "Van bi chặn",
+            "dia": true,
+            "key": "van bi chặn",
+            "folded": "van bi chan"
+          },
+          {
+            "raw": "Van bi vi sinh tay gạt",
+            "dia": true,
+            "key": "van bi vi sinh tay gạt",
+            "folded": "van bi vi sinh tay gat"
+          },
+          {
+            "raw": "Van bướm vi sinh tay rút",
+            "dia": true,
+            "key": "van bướm vi sinh tay rút",
+            "folded": "van buom vi sinh tay rut"
+          },
+          {
+            "raw": "Van nhiều ngả nâng hạ xy lanh",
+            "dia": true,
+            "key": "van nhiều ngả nâng hạ xy lanh",
+            "folded": "van nhieu nga nang ha xy lanh"
+          },
+          {
+            "raw": "Van thao tác di chuyển",
+            "dia": true,
+            "key": "van thao tác di chuyển",
+            "folded": "van thao tac di chuyen"
+          },
+          {
+            "raw": "Cụm van đánh lửa bếp gas",
+            "dia": true,
+            "key": "cụm van đánh lửa bếp gas",
+            "folded": "cum van danh lua bep gas"
+          },
+          {
+            "raw": "Van hút chân không",
+            "dia": true,
+            "key": "van hút chân không",
+            "folded": "van hut chan khong"
+          },
+          {
+            "raw": "Van khóa tay",
+            "dia": true,
+            "key": "van khóa tay",
+            "folded": "van khoa tay"
+          },
+          {
+            "raw": "Van lọc nước biển",
+            "dia": true,
+            "key": "van lọc nước biển",
+            "folded": "van loc nuoc bien"
+          },
+          {
+            "raw": "Van xả nước tự động",
+            "dia": true,
+            "key": "van xả nước tự động",
+            "folded": "van xa nuoc tu dong"
+          },
+          {
+            "raw": "Cụm van giao thế",
+            "dia": true,
+            "key": "cụm van giao thế",
+            "folded": "cum van giao the"
+          },
+          {
+            "raw": "Van cầu hơi chữ ngã",
+            "dia": true,
+            "key": "van cầu hơi chữ ngã",
+            "folded": "van cau hoi chu nga"
+          },
+          {
+            "raw": "Tấm ngăn thân van",
+            "dia": true,
+            "key": "tấm ngăn thân van",
+            "folded": "tam ngan than van"
+          },
+          {
+            "raw": "Van đảo chiều bơm màng khí nén",
+            "dia": true,
+            "key": "van đảo chiều bơm màng khí nén",
+            "folded": "van dao chieu bom mang khi nen"
+          },
+          {
+            "raw": "Van điện động",
+            "dia": true,
+            "key": "van điện động",
+            "folded": "van dien dong"
+          },
+          {
+            "raw": "Van lọc bụi",
+            "dia": true,
+            "key": "van lọc bụi",
+            "folded": "van loc bui"
+          },
+          {
+            "raw": "Van phân phối điện từ khí nén",
+            "dia": true,
+            "key": "van phân phối điện từ khí nén",
+            "folded": "van phan phoi dien tu khi nen"
+          },
+          {
+            "raw": "Van điện tuyến tính",
+            "dia": true,
+            "key": "van điện tuyến tính",
+            "folded": "van dien tuyen tinh"
+          },
+          {
+            "raw": "Van chia khí điện từ 5/2",
+            "dia": true,
+            "key": "van chia khí điện từ 5 2",
+            "folded": "van chia khi dien tu 5 2"
+          },
+          {
+            "raw": "Van chia khí điện từ 5/3",
+            "dia": true,
+            "key": "van chia khí điện từ 5 3",
+            "folded": "van chia khi dien tu 5 3"
+          },
+          {
+            "raw": "Van giảm áp",
+            "dia": true,
+            "key": "van giảm áp",
+            "folded": "van giam ap"
+          },
+          {
+            "raw": "Bộ ruột van trút tải",
+            "dia": true,
+            "key": "bộ ruột van trút tải",
+            "folded": "bo ruot van trut tai"
+          },
+          {
+            "raw": "Van tay gạt đóng mở khí nén",
+            "dia": true,
+            "key": "van tay gạt đóng mở khí nén",
+            "folded": "van tay gat dong mo khi nen"
+          },
+          {
+            "raw": "Màng van nổ",
+            "dia": true,
+            "key": "màng van nổ",
+            "folded": "mang van no"
+          },
+          {
+            "raw": "Van đôi đạp chân khí nén",
+            "dia": true,
+            "key": "van đôi đạp chân khí nén",
+            "folded": "van doi dap chan khi nen"
+          },
+          {
+            "raw": "Van bi gạt ren",
+            "dia": true,
+            "key": "van bi gạt ren",
+            "folded": "van bi gat ren"
+          },
+          {
+            "raw": "Van bi khí nén ba ngã",
+            "dia": true,
+            "key": "van bi khí nén ba ngã",
+            "folded": "van bi khi nen ba nga"
+          },
+          {
+            "raw": "Bộ sen cây tắm",
+            "dia": true,
+            "key": "bộ sen cây tắm",
+            "folded": "bo sen cay tam"
+          },
+          {
+            "raw": "Bộ sen tắm",
+            "dia": true,
+            "key": "bộ sen tắm",
+            "folded": "bo sen tam"
+          },
+          {
+            "raw": "Bộ củ sen tắm",
+            "dia": true,
+            "key": "bộ củ sen tắm",
+            "folded": "bo cu sen tam"
+          },
+          {
+            "raw": "Xy lanh khí nén",
+            "dia": true,
+            "key": "xy lanh khí nén",
+            "folded": "xy lanh khi nen"
+          },
+          {
+            "raw": "Núm uống nước",
+            "dia": true,
+            "key": "núm uống nước",
+            "folded": "num uong nuoc"
+          },
+          {
+            "raw": "Cuộn hút",
+            "dia": true,
+            "key": "cuộn hút",
+            "folded": "cuon hut"
+          },
+          {
+            "raw": "Sen tắm âm tường",
+            "dia": true,
+            "key": "sen tắm âm tường",
+            "folded": "sen tam am tuong"
+          },
+          {
+            "raw": "Bộ chân đỡ sen tắm",
+            "dia": true,
+            "key": "bộ chân đỡ sen tắm",
+            "folded": "bo chan do sen tam"
+          },
+          {
+            "raw": "Bộ giác hút chân không",
+            "dia": true,
+            "key": "bộ giác hút chân không",
+            "folded": "bo giac hut chan khong"
+          },
+          {
+            "raw": "Bộ điều chỉnh áp",
+            "dia": true,
+            "key": "bộ điều chỉnh áp",
+            "folded": "bo dieu chinh ap"
+          },
+          {
+            "raw": "Ốp chân sen cây tắm",
+            "dia": true,
+            "key": "ốp chân sen cây tắm",
+            "folded": "op chan sen cay tam"
+          },
+          {
+            "raw": "Bộ sen cây 2 đường nước",
+            "dia": true,
+            "key": "bộ sen cây 2 đường nước",
+            "folded": "bo sen cay 2 duong nuoc"
+          },
+          {
+            "raw": "Màng cao su",
+            "dia": true,
+            "key": "màng cao su",
+            "folded": "mang cao su"
+          }
+        ],
+        "tap_cock": [
+          {
+            "raw": "vòi",
+            "dia": true,
+            "key": "vòi",
+            "folded": "voi"
+          },
+          {
+            "raw": "cống",
+            "dia": true,
+            "key": "cống",
+            "folded": "cong"
+          },
+          {
+            "raw": "tap",
+            "dia": false,
+            "key": "tap",
+            "folded": "tap"
+          },
+          {
+            "raw": "cock",
+            "dia": false,
+            "key": "cock",
+            "folded": "cock"
+          },
+          {
+            "raw": "bằng đồng",
+            "dia": true,
+            "key": "bằng đồng",
+            "folded": "bang dong"
+          },
+          {
+            "raw": "bằng hợp kim",
+            "dia": true,
+            "key": "bằng hợp kim",
+            "folded": "bang hop kim"
+          }
+        ],
+        "manual_other": [
+          {
+            "raw": "van khác",
+            "dia": true,
+            "key": "van khác",
+            "folded": "van khac"
+          },
+          {
+            "raw": "bằng thép",
+            "dia": true,
+            "key": "bằng thép",
+            "folded": "bang thep"
+          },
+          {
+            "raw": "thép không gỉ",
+            "dia": true,
+            "key": "thép không gỉ",
+            "folded": "thep khong gi"
+          },
+          {
+            "raw": "niken",
+            "dia": false,
+            "key": "niken",
+            "folded": "niken"
+          },
+          {
+            "raw": "xử lý bề mặt",
+            "dia": true,
+            "key": "xử lý bề mặt",
+            "folded": "xu ly be mat"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "boreSize",
+      "type": "enum",
+      "domain": [
+        "tiny",
+        "small",
+        "medium",
+        "large",
+        "extra_large",
+        "any",
+        "other"
+      ],
+      "labelVi": "Đường kính trong (cửa nạp/thoát)",
+      "questionVi": "Đường kính trong cửa nạp hoặc cửa thoát là bao nhiêu: dưới 1 cm, 1–2,5 cm, 2,5–5 cm, trên 5 cm, hay trên 40 cm?",
+      "detect": {
+        "tiny": [
+          "dưới 1 cm",
+          "dưới 1cm",
+          "không quá 1 cm"
+        ],
+        "small": [
+          "2,5 cm",
+          "1 cm",
+          "từ 1 cm",
+          "quá 2,5 cm",
+          "1cm"
+        ],
+        "medium": [
+          "5 cm"
+        ],
+        "large": [
+          "trên 5 cm",
+          "quá 40 cm",
+          "trên 40 cm",
+          "40 cm"
+        ],
+        "extra_large": [
+          "quá 40 cm",
+          "trên 40 cm"
+        ],
+        "any": [
+          "bất kỳ"
+        ],
+        "other": [
+          "loại khác",
+          "Bộ vòi chậu rửa lavabo",
+          "Vòi chậu rửa nhà bếp",
+          "Van thủy lực",
+          "Vòi phun",
+          "Chân vòi chậu lavabo",
+          "Bộ vòi Lavabo liền sen tắm",
+          "Vòi rửa bát",
+          "Vòi nước",
+          "Bộ vòi sen",
+          "Van một chiều máy nén khí",
+          "Van an toàn",
+          "Van chống lún thủy lực",
+          "Van xả áp",
+          "Van điện từ bơm thủy lực",
+          "Van gạt dùng bằng tay",
+          "Bộ vòi chậu lavabo",
+          "Tay gạt vòi sen",
+          "Van khí nén",
+          "Bộ vòi xịt vệ sinh bồn cầu",
+          "Củ sen nóng lạnh vòi sen tắm",
+          "Van điện từ khí nén",
+          "Đế van điện",
+          "Van tiết lưu",
+          "Van tự động",
+          "Van đạp chân",
+          "Van điều chỉnh áp suất khí nén",
+          "Van điều áp khí nén",
+          "Van 5 cửa 5 tác dụng",
+          "Van xả cảm ứng tiểu nam",
+          "Van chân không",
+          "Van kiểm tra lửa",
+          "Van hình cầu",
+          "Van gạt tay",
+          "Đế van chia khí",
+          "Van 3 cửa 3 tác dụng",
+          "Van xả cảm ứng bồn tiểu nam",
+          "Van cảm ứng tiểu nam âm tường",
+          "Van điều khiển bằng khí nén",
+          "Van điện từ điều khiển",
+          "Van phao",
+          "Van bi chặn",
+          "Van bi vi sinh tay gạt",
+          "Van bướm vi sinh tay rút",
+          "Van điện từ hơi nóng",
+          "Van nhiều ngả nâng hạ xy lanh",
+          "Van thao tác di chuyển",
+          "Van hút chân không",
+          "Van khóa tay",
+          "Van lọc nước biển",
+          "Van xả nước tự động",
+          "Cụm van giao thế",
+          "Van cầu hơi chữ ngã",
+          "Tấm ngăn thân van",
+          "Van đảo chiều bơm màng khí nén",
+          "Van điện động",
+          "Van lọc bụi",
+          "Van phân phối điện từ khí nén",
+          "Van điện tuyến tính",
+          "Van chia khí điện từ 5/2",
+          "Van chia khí điện từ 5/3",
+          "Van giảm áp",
+          "Bộ ruột van trút tải",
+          "Van tay gạt đóng mở khí nén",
+          "Màng van nổ",
+          "Van đôi đạp chân khí nén",
+          "Thân van điện từ",
+          "Van bi gạt ren",
+          "Jack cắm van điện từ",
+          "Van bi khí nén ba ngã",
+          "Bộ sen cây tắm",
+          "Bộ sen tắm",
+          "Bộ củ sen tắm",
+          "Xy lanh khí nén",
+          "Núm uống nước",
+          "Cuộn hút",
+          "Sen tắm âm tường",
+          "Bộ chân đỡ sen tắm",
+          "Bộ giác hút chân không",
+          "Bộ điều chỉnh áp",
+          "Ốp chân sen cây tắm",
+          "Bộ sen cây 2 đường nước",
+          "Màng cao su"
+        ]
+      },
+      "_detect": {
+        "tiny": [
+          {
+            "raw": "dưới 1 cm",
+            "dia": true,
+            "key": "dưới 1 cm",
+            "folded": "duoi 1 cm"
+          },
+          {
+            "raw": "dưới 1cm",
+            "dia": true,
+            "key": "dưới 1cm",
+            "folded": "duoi 1cm"
+          },
+          {
+            "raw": "không quá 1 cm",
+            "dia": true,
+            "key": "không quá 1 cm",
+            "folded": "khong qua 1 cm"
+          }
+        ],
+        "small": [
+          {
+            "raw": "2,5 cm",
+            "dia": false,
+            "key": "2,5 cm",
+            "folded": "2,5 cm"
+          },
+          {
+            "raw": "1 cm",
+            "dia": false,
+            "key": "1 cm",
+            "folded": "1 cm"
+          },
+          {
+            "raw": "từ 1 cm",
+            "dia": true,
+            "key": "từ 1 cm",
+            "folded": "tu 1 cm"
+          },
+          {
+            "raw": "quá 2,5 cm",
+            "dia": true,
+            "key": "quá 2,5 cm",
+            "folded": "qua 2,5 cm"
+          },
+          {
+            "raw": "1cm",
+            "dia": false,
+            "key": "1cm",
+            "folded": "1cm"
+          }
+        ],
+        "medium": [
+          {
+            "raw": "5 cm",
+            "dia": false,
+            "key": "5 cm",
+            "folded": "5 cm"
+          }
+        ],
+        "large": [
+          {
+            "raw": "trên 5 cm",
+            "dia": true,
+            "key": "trên 5 cm",
+            "folded": "tren 5 cm"
+          },
+          {
+            "raw": "quá 40 cm",
+            "dia": true,
+            "key": "quá 40 cm",
+            "folded": "qua 40 cm"
+          },
+          {
+            "raw": "trên 40 cm",
+            "dia": true,
+            "key": "trên 40 cm",
+            "folded": "tren 40 cm"
+          },
+          {
+            "raw": "40 cm",
+            "dia": false,
+            "key": "40 cm",
+            "folded": "40 cm"
+          }
+        ],
+        "extra_large": [
+          {
+            "raw": "quá 40 cm",
+            "dia": true,
+            "key": "quá 40 cm",
+            "folded": "qua 40 cm"
+          },
+          {
+            "raw": "trên 40 cm",
+            "dia": true,
+            "key": "trên 40 cm",
+            "folded": "tren 40 cm"
+          }
+        ],
+        "any": [
+          {
+            "raw": "bất kỳ",
+            "dia": true,
+            "key": "bất kỳ",
+            "folded": "bat ky"
+          }
+        ],
+        "other": [
+          {
+            "raw": "loại khác",
+            "dia": true,
+            "key": "loại khác",
+            "folded": "loai khac"
+          },
+          {
+            "raw": "Bộ vòi chậu rửa lavabo",
+            "dia": true,
+            "key": "bộ vòi chậu rửa lavabo",
+            "folded": "bo voi chau rua lavabo"
+          },
+          {
+            "raw": "Vòi chậu rửa nhà bếp",
+            "dia": true,
+            "key": "vòi chậu rửa nhà bếp",
+            "folded": "voi chau rua nha bep"
+          },
+          {
+            "raw": "Van thủy lực",
+            "dia": true,
+            "key": "van thủy lực",
+            "folded": "van thuy luc"
+          },
+          {
+            "raw": "Vòi phun",
+            "dia": true,
+            "key": "vòi phun",
+            "folded": "voi phun"
+          },
+          {
+            "raw": "Chân vòi chậu lavabo",
+            "dia": true,
+            "key": "chân vòi chậu lavabo",
+            "folded": "chan voi chau lavabo"
+          },
+          {
+            "raw": "Bộ vòi Lavabo liền sen tắm",
+            "dia": true,
+            "key": "bộ vòi lavabo liền sen tắm",
+            "folded": "bo voi lavabo lien sen tam"
+          },
+          {
+            "raw": "Vòi rửa bát",
+            "dia": true,
+            "key": "vòi rửa bát",
+            "folded": "voi rua bat"
+          },
+          {
+            "raw": "Vòi nước",
+            "dia": true,
+            "key": "vòi nước",
+            "folded": "voi nuoc"
+          },
+          {
+            "raw": "Bộ vòi sen",
+            "dia": true,
+            "key": "bộ vòi sen",
+            "folded": "bo voi sen"
+          },
+          {
+            "raw": "Van một chiều máy nén khí",
+            "dia": true,
+            "key": "van một chiều máy nén khí",
+            "folded": "van mot chieu may nen khi"
+          },
+          {
+            "raw": "Van an toàn",
+            "dia": true,
+            "key": "van an toàn",
+            "folded": "van an toan"
+          },
+          {
+            "raw": "Van chống lún thủy lực",
+            "dia": true,
+            "key": "van chống lún thủy lực",
+            "folded": "van chong lun thuy luc"
+          },
+          {
+            "raw": "Van xả áp",
+            "dia": true,
+            "key": "van xả áp",
+            "folded": "van xa ap"
+          },
+          {
+            "raw": "Van điện từ bơm thủy lực",
+            "dia": true,
+            "key": "van điện từ bơm thủy lực",
+            "folded": "van dien tu bom thuy luc"
+          },
+          {
+            "raw": "Van gạt dùng bằng tay",
+            "dia": true,
+            "key": "van gạt dùng bằng tay",
+            "folded": "van gat dung bang tay"
+          },
+          {
+            "raw": "Bộ vòi chậu lavabo",
+            "dia": true,
+            "key": "bộ vòi chậu lavabo",
+            "folded": "bo voi chau lavabo"
+          },
+          {
+            "raw": "Tay gạt vòi sen",
+            "dia": true,
+            "key": "tay gạt vòi sen",
+            "folded": "tay gat voi sen"
+          },
+          {
+            "raw": "Van khí nén",
+            "dia": true,
+            "key": "van khí nén",
+            "folded": "van khi nen"
+          },
+          {
+            "raw": "Bộ vòi xịt vệ sinh bồn cầu",
+            "dia": true,
+            "key": "bộ vòi xịt vệ sinh bồn cầu",
+            "folded": "bo voi xit ve sinh bon cau"
+          },
+          {
+            "raw": "Củ sen nóng lạnh vòi sen tắm",
+            "dia": true,
+            "key": "củ sen nóng lạnh vòi sen tắm",
+            "folded": "cu sen nong lanh voi sen tam"
+          },
+          {
+            "raw": "Van điện từ khí nén",
+            "dia": true,
+            "key": "van điện từ khí nén",
+            "folded": "van dien tu khi nen"
+          },
+          {
+            "raw": "Đế van điện",
+            "dia": true,
+            "key": "đế van điện",
+            "folded": "de van dien"
+          },
+          {
+            "raw": "Van tiết lưu",
+            "dia": true,
+            "key": "van tiết lưu",
+            "folded": "van tiet luu"
+          },
+          {
+            "raw": "Van tự động",
+            "dia": true,
+            "key": "van tự động",
+            "folded": "van tu dong"
+          },
+          {
+            "raw": "Van đạp chân",
+            "dia": true,
+            "key": "van đạp chân",
+            "folded": "van dap chan"
+          },
+          {
+            "raw": "Van điều chỉnh áp suất khí nén",
+            "dia": true,
+            "key": "van điều chỉnh áp suất khí nén",
+            "folded": "van dieu chinh ap suat khi nen"
+          },
+          {
+            "raw": "Van điều áp khí nén",
+            "dia": true,
+            "key": "van điều áp khí nén",
+            "folded": "van dieu ap khi nen"
+          },
+          {
+            "raw": "Van 5 cửa 5 tác dụng",
+            "dia": true,
+            "key": "van 5 cửa 5 tác dụng",
+            "folded": "van 5 cua 5 tac dung"
+          },
+          {
+            "raw": "Van xả cảm ứng tiểu nam",
+            "dia": true,
+            "key": "van xả cảm ứng tiểu nam",
+            "folded": "van xa cam ung tieu nam"
+          },
+          {
+            "raw": "Van chân không",
+            "dia": true,
+            "key": "van chân không",
+            "folded": "van chan khong"
+          },
+          {
+            "raw": "Van kiểm tra lửa",
+            "dia": true,
+            "key": "van kiểm tra lửa",
+            "folded": "van kiem tra lua"
+          },
+          {
+            "raw": "Van hình cầu",
+            "dia": true,
+            "key": "van hình cầu",
+            "folded": "van hinh cau"
+          },
+          {
+            "raw": "Van gạt tay",
+            "dia": true,
+            "key": "van gạt tay",
+            "folded": "van gat tay"
+          },
+          {
+            "raw": "Đế van chia khí",
+            "dia": true,
+            "key": "đế van chia khí",
+            "folded": "de van chia khi"
+          },
+          {
+            "raw": "Van 3 cửa 3 tác dụng",
+            "dia": true,
+            "key": "van 3 cửa 3 tác dụng",
+            "folded": "van 3 cua 3 tac dung"
+          },
+          {
+            "raw": "Van xả cảm ứng bồn tiểu nam",
+            "dia": true,
+            "key": "van xả cảm ứng bồn tiểu nam",
+            "folded": "van xa cam ung bon tieu nam"
+          },
+          {
+            "raw": "Van cảm ứng tiểu nam âm tường",
+            "dia": true,
+            "key": "van cảm ứng tiểu nam âm tường",
+            "folded": "van cam ung tieu nam am tuong"
+          },
+          {
+            "raw": "Van điều khiển bằng khí nén",
+            "dia": true,
+            "key": "van điều khiển bằng khí nén",
+            "folded": "van dieu khien bang khi nen"
+          },
+          {
+            "raw": "Van điện từ điều khiển",
+            "dia": true,
+            "key": "van điện từ điều khiển",
+            "folded": "van dien tu dieu khien"
+          },
+          {
+            "raw": "Van phao",
+            "dia": false,
+            "key": "van phao",
+            "folded": "van phao"
+          },
+          {
+            "raw": "Van bi chặn",
+            "dia": true,
+            "key": "van bi chặn",
+            "folded": "van bi chan"
+          },
+          {
+            "raw": "Van bi vi sinh tay gạt",
+            "dia": true,
+            "key": "van bi vi sinh tay gạt",
+            "folded": "van bi vi sinh tay gat"
+          },
+          {
+            "raw": "Van bướm vi sinh tay rút",
+            "dia": true,
+            "key": "van bướm vi sinh tay rút",
+            "folded": "van buom vi sinh tay rut"
+          },
+          {
+            "raw": "Van điện từ hơi nóng",
+            "dia": true,
+            "key": "van điện từ hơi nóng",
+            "folded": "van dien tu hoi nong"
+          },
+          {
+            "raw": "Van nhiều ngả nâng hạ xy lanh",
+            "dia": true,
+            "key": "van nhiều ngả nâng hạ xy lanh",
+            "folded": "van nhieu nga nang ha xy lanh"
+          },
+          {
+            "raw": "Van thao tác di chuyển",
+            "dia": true,
+            "key": "van thao tác di chuyển",
+            "folded": "van thao tac di chuyen"
+          },
+          {
+            "raw": "Van hút chân không",
+            "dia": true,
+            "key": "van hút chân không",
+            "folded": "van hut chan khong"
+          },
+          {
+            "raw": "Van khóa tay",
+            "dia": true,
+            "key": "van khóa tay",
+            "folded": "van khoa tay"
+          },
+          {
+            "raw": "Van lọc nước biển",
+            "dia": true,
+            "key": "van lọc nước biển",
+            "folded": "van loc nuoc bien"
+          },
+          {
+            "raw": "Van xả nước tự động",
+            "dia": true,
+            "key": "van xả nước tự động",
+            "folded": "van xa nuoc tu dong"
+          },
+          {
+            "raw": "Cụm van giao thế",
+            "dia": true,
+            "key": "cụm van giao thế",
+            "folded": "cum van giao the"
+          },
+          {
+            "raw": "Van cầu hơi chữ ngã",
+            "dia": true,
+            "key": "van cầu hơi chữ ngã",
+            "folded": "van cau hoi chu nga"
+          },
+          {
+            "raw": "Tấm ngăn thân van",
+            "dia": true,
+            "key": "tấm ngăn thân van",
+            "folded": "tam ngan than van"
+          },
+          {
+            "raw": "Van đảo chiều bơm màng khí nén",
+            "dia": true,
+            "key": "van đảo chiều bơm màng khí nén",
+            "folded": "van dao chieu bom mang khi nen"
+          },
+          {
+            "raw": "Van điện động",
+            "dia": true,
+            "key": "van điện động",
+            "folded": "van dien dong"
+          },
+          {
+            "raw": "Van lọc bụi",
+            "dia": true,
+            "key": "van lọc bụi",
+            "folded": "van loc bui"
+          },
+          {
+            "raw": "Van phân phối điện từ khí nén",
+            "dia": true,
+            "key": "van phân phối điện từ khí nén",
+            "folded": "van phan phoi dien tu khi nen"
+          },
+          {
+            "raw": "Van điện tuyến tính",
+            "dia": true,
+            "key": "van điện tuyến tính",
+            "folded": "van dien tuyen tinh"
+          },
+          {
+            "raw": "Van chia khí điện từ 5/2",
+            "dia": true,
+            "key": "van chia khí điện từ 5 2",
+            "folded": "van chia khi dien tu 5 2"
+          },
+          {
+            "raw": "Van chia khí điện từ 5/3",
+            "dia": true,
+            "key": "van chia khí điện từ 5 3",
+            "folded": "van chia khi dien tu 5 3"
+          },
+          {
+            "raw": "Van giảm áp",
+            "dia": true,
+            "key": "van giảm áp",
+            "folded": "van giam ap"
+          },
+          {
+            "raw": "Bộ ruột van trút tải",
+            "dia": true,
+            "key": "bộ ruột van trút tải",
+            "folded": "bo ruot van trut tai"
+          },
+          {
+            "raw": "Van tay gạt đóng mở khí nén",
+            "dia": true,
+            "key": "van tay gạt đóng mở khí nén",
+            "folded": "van tay gat dong mo khi nen"
+          },
+          {
+            "raw": "Màng van nổ",
+            "dia": true,
+            "key": "màng van nổ",
+            "folded": "mang van no"
+          },
+          {
+            "raw": "Van đôi đạp chân khí nén",
+            "dia": true,
+            "key": "van đôi đạp chân khí nén",
+            "folded": "van doi dap chan khi nen"
+          },
+          {
+            "raw": "Thân van điện từ",
+            "dia": true,
+            "key": "thân van điện từ",
+            "folded": "than van dien tu"
+          },
+          {
+            "raw": "Van bi gạt ren",
+            "dia": true,
+            "key": "van bi gạt ren",
+            "folded": "van bi gat ren"
+          },
+          {
+            "raw": "Jack cắm van điện từ",
+            "dia": true,
+            "key": "jack cắm van điện từ",
+            "folded": "jack cam van dien tu"
+          },
+          {
+            "raw": "Van bi khí nén ba ngã",
+            "dia": true,
+            "key": "van bi khí nén ba ngã",
+            "folded": "van bi khi nen ba nga"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "material",
+      "type": "enum",
+      "domain": [
+        "metal",
+        "other_metal",
+        "plastic",
+        "copper",
+        "copper_or_plastic",
+        "cast_iron",
+        "iron_steel",
+        "stainless_steel",
+        "lpg",
+        "other"
+      ],
+      "labelVi": "Vật liệu chế tạo",
+      "questionVi": "Van bằng vật liệu gì: đồng/hợp kim đồng, gang đúc, sắt/thép, nhựa (plastic), thép không gỉ, hay vật liệu khác?",
+      "detect": {
+        "copper": [
+          "đồng",
+          "hợp kim đồng"
+        ],
+        "plastic": [
+          "plastic",
+          "nhựa",
+          "bằng plastic"
+        ],
+        "cast_iron": [
+          "gang đúc"
+        ],
+        "iron_steel": [
+          "sắt",
+          "thép"
+        ],
+        "stainless_steel": [
+          "thép không gỉ",
+          "niken"
+        ],
+        "metal": [
+          "kim loại",
+          "bằng sắt"
+        ],
+        "other_metal": [
+          "vật liệu khác",
+          "loại khác",
+          "Bộ vòi chậu rửa lavabo",
+          "Vòi chậu rửa nhà bếp",
+          "Van thủy lực",
+          "Vòi phun",
+          "Chân vòi chậu lavabo",
+          "Bộ vòi Lavabo liền sen tắm",
+          "Vòi rửa bát",
+          "Bộ vòi sen",
+          "Van một chiều máy nén khí",
+          "Vòi nước nóng lạnh",
+          "Van an toàn",
+          "Van chống lún thủy lực",
+          "Van xả áp",
+          "Van điện từ bơm thủy lực",
+          "Van gạt dùng bằng tay",
+          "Bộ vòi chậu lavabo",
+          "Tay gạt vòi sen",
+          "Van khí nén",
+          "Bộ vòi xịt vệ sinh bồn cầu",
+          "Củ sen nóng lạnh vòi sen tắm",
+          "Van điện từ khí nén",
+          "Đế van điện",
+          "Van tiết lưu",
+          "Van tự động",
+          "Van đạp chân",
+          "Van điều chỉnh áp suất khí nén",
+          "Van điều áp khí nén",
+          "Van 5 cửa 5 tác dụng",
+          "Van xả cảm ứng tiểu nam",
+          "Van chân không",
+          "Van kiểm tra lửa",
+          "Van hình cầu",
+          "Van gạt tay",
+          "Đế van chia khí",
+          "Van 3 cửa 3 tác dụng",
+          "Van xả cảm ứng bồn tiểu nam",
+          "Van cảm ứng tiểu nam âm tường",
+          "Van điều khiển bằng khí nén",
+          "Van điện từ điều khiển",
+          "Van phao",
+          "Van bi chặn",
+          "Van bi vi sinh tay gạt",
+          "Van bướm vi sinh tay rút",
+          "Van điện từ hơi nóng",
+          "Van nhiều ngả nâng hạ xy lanh",
+          "Van thao tác di chuyển",
+          "Van hút chân không",
+          "Van khóa tay",
+          "Van lọc nước biển",
+          "Van xả nước tự động",
+          "Cụm van giao thế",
+          "Van cầu hơi chữ ngã",
+          "Tấm ngăn thân van",
+          "Van đảo chiều bơm màng khí nén",
+          "Van điện động",
+          "Van lọc bụi",
+          "Van phân phối điện từ khí nén",
+          "Van điện tuyến tính",
+          "Van chia khí điện từ 5/2",
+          "Van chia khí điện từ 5/3",
+          "Van giảm áp",
+          "Bộ ruột van trút tải",
+          "Van tay gạt đóng mở khí nén",
+          "Màng van nổ",
+          "Van đôi đạp chân khí nén",
+          "Thân van điện từ",
+          "Van bi gạt ren",
+          "Jack cắm van điện từ",
+          "Van bi khí nén ba ngã"
+        ],
+        "copper_or_plastic": [
+          "đồng",
+          "plastic"
+        ],
+        "lpg": [
+          "xi lanh",
+          "lpg"
+        ],
+        "other": [
+          "loại khác",
+          "khác"
+        ]
+      },
+      "_detect": {
+        "copper": [
+          {
+            "raw": "đồng",
+            "dia": true,
+            "key": "đồng",
+            "folded": "dong"
+          },
+          {
+            "raw": "hợp kim đồng",
+            "dia": true,
+            "key": "hợp kim đồng",
+            "folded": "hop kim dong"
+          }
+        ],
+        "plastic": [
+          {
+            "raw": "plastic",
+            "dia": false,
+            "key": "plastic",
+            "folded": "plastic"
+          },
+          {
+            "raw": "nhựa",
+            "dia": true,
+            "key": "nhựa",
+            "folded": "nhua"
+          },
+          {
+            "raw": "bằng plastic",
+            "dia": true,
+            "key": "bằng plastic",
+            "folded": "bang plastic"
+          }
+        ],
+        "cast_iron": [
+          {
+            "raw": "gang đúc",
+            "dia": true,
+            "key": "gang đúc",
+            "folded": "gang duc"
+          }
+        ],
+        "iron_steel": [
+          {
+            "raw": "sắt",
+            "dia": true,
+            "key": "sắt",
+            "folded": "sat"
+          },
+          {
+            "raw": "thép",
+            "dia": true,
+            "key": "thép",
+            "folded": "thep"
+          }
+        ],
+        "stainless_steel": [
+          {
+            "raw": "thép không gỉ",
+            "dia": true,
+            "key": "thép không gỉ",
+            "folded": "thep khong gi"
+          },
+          {
+            "raw": "niken",
+            "dia": false,
+            "key": "niken",
+            "folded": "niken"
+          }
+        ],
+        "metal": [
+          {
+            "raw": "kim loại",
+            "dia": true,
+            "key": "kim loại",
+            "folded": "kim loai"
+          },
+          {
+            "raw": "bằng sắt",
+            "dia": true,
+            "key": "bằng sắt",
+            "folded": "bang sat"
+          }
+        ],
+        "other_metal": [
+          {
+            "raw": "vật liệu khác",
+            "dia": true,
+            "key": "vật liệu khác",
+            "folded": "vat lieu khac"
+          },
+          {
+            "raw": "loại khác",
+            "dia": true,
+            "key": "loại khác",
+            "folded": "loai khac"
+          },
+          {
+            "raw": "Bộ vòi chậu rửa lavabo",
+            "dia": true,
+            "key": "bộ vòi chậu rửa lavabo",
+            "folded": "bo voi chau rua lavabo"
+          },
+          {
+            "raw": "Vòi chậu rửa nhà bếp",
+            "dia": true,
+            "key": "vòi chậu rửa nhà bếp",
+            "folded": "voi chau rua nha bep"
+          },
+          {
+            "raw": "Van thủy lực",
+            "dia": true,
+            "key": "van thủy lực",
+            "folded": "van thuy luc"
+          },
+          {
+            "raw": "Vòi phun",
+            "dia": true,
+            "key": "vòi phun",
+            "folded": "voi phun"
+          },
+          {
+            "raw": "Chân vòi chậu lavabo",
+            "dia": true,
+            "key": "chân vòi chậu lavabo",
+            "folded": "chan voi chau lavabo"
+          },
+          {
+            "raw": "Bộ vòi Lavabo liền sen tắm",
+            "dia": true,
+            "key": "bộ vòi lavabo liền sen tắm",
+            "folded": "bo voi lavabo lien sen tam"
+          },
+          {
+            "raw": "Vòi rửa bát",
+            "dia": true,
+            "key": "vòi rửa bát",
+            "folded": "voi rua bat"
+          },
+          {
+            "raw": "Bộ vòi sen",
+            "dia": true,
+            "key": "bộ vòi sen",
+            "folded": "bo voi sen"
+          },
+          {
+            "raw": "Van một chiều máy nén khí",
+            "dia": true,
+            "key": "van một chiều máy nén khí",
+            "folded": "van mot chieu may nen khi"
+          },
+          {
+            "raw": "Vòi nước nóng lạnh",
+            "dia": true,
+            "key": "vòi nước nóng lạnh",
+            "folded": "voi nuoc nong lanh"
+          },
+          {
+            "raw": "Van an toàn",
+            "dia": true,
+            "key": "van an toàn",
+            "folded": "van an toan"
+          },
+          {
+            "raw": "Van chống lún thủy lực",
+            "dia": true,
+            "key": "van chống lún thủy lực",
+            "folded": "van chong lun thuy luc"
+          },
+          {
+            "raw": "Van xả áp",
+            "dia": true,
+            "key": "van xả áp",
+            "folded": "van xa ap"
+          },
+          {
+            "raw": "Van điện từ bơm thủy lực",
+            "dia": true,
+            "key": "van điện từ bơm thủy lực",
+            "folded": "van dien tu bom thuy luc"
+          },
+          {
+            "raw": "Van gạt dùng bằng tay",
+            "dia": true,
+            "key": "van gạt dùng bằng tay",
+            "folded": "van gat dung bang tay"
+          },
+          {
+            "raw": "Bộ vòi chậu lavabo",
+            "dia": true,
+            "key": "bộ vòi chậu lavabo",
+            "folded": "bo voi chau lavabo"
+          },
+          {
+            "raw": "Tay gạt vòi sen",
+            "dia": true,
+            "key": "tay gạt vòi sen",
+            "folded": "tay gat voi sen"
+          },
+          {
+            "raw": "Van khí nén",
+            "dia": true,
+            "key": "van khí nén",
+            "folded": "van khi nen"
+          },
+          {
+            "raw": "Bộ vòi xịt vệ sinh bồn cầu",
+            "dia": true,
+            "key": "bộ vòi xịt vệ sinh bồn cầu",
+            "folded": "bo voi xit ve sinh bon cau"
+          },
+          {
+            "raw": "Củ sen nóng lạnh vòi sen tắm",
+            "dia": true,
+            "key": "củ sen nóng lạnh vòi sen tắm",
+            "folded": "cu sen nong lanh voi sen tam"
+          }
+        ],
+        "copper_or_plastic": [
+          {
+            "raw": "đồng",
+            "dia": true,
+            "key": "đồng",
+            "folded": "dong"
+          },
+          {
+            "raw": "plastic",
+            "dia": false,
+            "key": "plastic",
+            "folded": "plastic"
+          }
+        ],
+        "lpg": [
+          {
+            "raw": "xi lanh",
+            "dia": false,
+            "key": "xi lanh",
+            "folded": "xi lanh"
+          },
+          {
+            "raw": "lpg",
+            "dia": false,
+            "key": "lpg",
+            "folded": "lpg"
+          }
+        ],
+        "other": [
+          {
+            "raw": "loại khác",
+            "dia": true,
+            "key": "loại khác",
+            "folded": "loai khac"
+          },
+          {
+            "raw": "khác",
+            "dia": true,
+            "key": "khác",
+            "folded": "khac"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "specificKind",
+      "type": "enum",
+      "domain": [
+        "tap_cock",
+        "gas_cooking",
+        "household_tap",
+        "solenoid_water",
+        "solenoid_sen",
+        "solenoid_other",
+        "solenoid_small",
+        "solenoid_heating",
+        "ball_gate",
+        "fuel_vehicle",
+        "faucet_copper",
+        "faucet_other"
+      ],
+      "labelVi": "Công dụng đặc thù",
+      "questionVi": "Van dùng cho mục đích gì: vòi nước sinh hoạt, van gas bếp, van điện từ nước, van điện từ (SEN), van ngắt nhiên liệu xe, hay loại khác?",
+      "detect": {
+        "tap_cock": [
+          "vòi",
+          "cống",
+          "tap",
+          "cock"
+        ],
+        "gas_cooking": [
+          "bếp",
+          "lò nước",
+          "gas"
+        ],
+        "household_tap": [
+          "vòi gia đình",
+          "van gia đình"
+        ],
+        "solenoid_water": [
+          "van điện từ",
+          "solenoid"
+        ],
+        "solenoid_sen": [
+          "sen",
+          "điện từ"
+        ],
+        "solenoid_other": [
+          "van điện",
+          "solenoid khác",
+          "Van gạt dùng bằng tay"
+        ],
+        "solenoid_small": [
+          "van nước",
+          "van nhỏ"
+        ],
+        "solenoid_heating": [
+          "bình nóng lạnh",
+          "nước nóng"
+        ],
+        "ball_gate": [
+          "van cổng",
+          "cổng",
+          "ball"
+        ],
+        "fuel_vehicle": [
+          "ngắt nhiên liệu",
+          "xe",
+          "ô tô",
+          "nguyên liệu",
+          "87.02",
+          "87.03",
+          "87.04"
+        ],
+        "faucet_copper": [
+          "vòi đồng",
+          "hợp kim đồng"
+        ],
+        "faucet_other": [
+          "vòi khác",
+          "vòi loại khác"
+        ]
+      },
+      "_detect": {
+        "tap_cock": [
+          {
+            "raw": "vòi",
+            "dia": true,
+            "key": "vòi",
+            "folded": "voi"
+          },
+          {
+            "raw": "cống",
+            "dia": true,
+            "key": "cống",
+            "folded": "cong"
+          },
+          {
+            "raw": "tap",
+            "dia": false,
+            "key": "tap",
+            "folded": "tap"
+          },
+          {
+            "raw": "cock",
+            "dia": false,
+            "key": "cock",
+            "folded": "cock"
+          }
+        ],
+        "gas_cooking": [
+          {
+            "raw": "bếp",
+            "dia": true,
+            "key": "bếp",
+            "folded": "bep"
+          },
+          {
+            "raw": "lò nước",
+            "dia": true,
+            "key": "lò nước",
+            "folded": "lo nuoc"
+          },
+          {
+            "raw": "gas",
+            "dia": false,
+            "key": "gas",
+            "folded": "gas"
+          }
+        ],
+        "household_tap": [
+          {
+            "raw": "vòi gia đình",
+            "dia": true,
+            "key": "vòi gia đình",
+            "folded": "voi gia dinh"
+          },
+          {
+            "raw": "van gia đình",
+            "dia": true,
+            "key": "van gia đình",
+            "folded": "van gia dinh"
+          }
+        ],
+        "solenoid_water": [
+          {
+            "raw": "van điện từ",
+            "dia": true,
+            "key": "van điện từ",
+            "folded": "van dien tu"
+          },
+          {
+            "raw": "solenoid",
+            "dia": false,
+            "key": "solenoid",
+            "folded": "solenoid"
+          }
+        ],
+        "solenoid_sen": [
+          {
+            "raw": "sen",
+            "dia": false,
+            "key": "sen",
+            "folded": "sen"
+          },
+          {
+            "raw": "điện từ",
+            "dia": true,
+            "key": "điện từ",
+            "folded": "dien tu"
+          }
+        ],
+        "solenoid_other": [
+          {
+            "raw": "van điện",
+            "dia": true,
+            "key": "van điện",
+            "folded": "van dien"
+          },
+          {
+            "raw": "solenoid khác",
+            "dia": true,
+            "key": "solenoid khác",
+            "folded": "solenoid khac"
+          }
+        ],
+        "solenoid_small": [
+          {
+            "raw": "van nước",
+            "dia": true,
+            "key": "van nước",
+            "folded": "van nuoc"
+          },
+          {
+            "raw": "van nhỏ",
+            "dia": true,
+            "key": "van nhỏ",
+            "folded": "van nho"
+          }
+        ],
+        "solenoid_heating": [
+          {
+            "raw": "bình nóng lạnh",
+            "dia": true,
+            "key": "bình nóng lạnh",
+            "folded": "binh nong lanh"
+          },
+          {
+            "raw": "nước nóng",
+            "dia": true,
+            "key": "nước nóng",
+            "folded": "nuoc nong"
+          }
+        ],
+        "ball_gate": [
+          {
+            "raw": "van cổng",
+            "dia": true,
+            "key": "van cổng",
+            "folded": "van cong"
+          },
+          {
+            "raw": "cổng",
+            "dia": true,
+            "key": "cổng",
+            "folded": "cong"
+          },
+          {
+            "raw": "ball",
+            "dia": false,
+            "key": "ball",
+            "folded": "ball"
+          }
+        ],
+        "fuel_vehicle": [
+          {
+            "raw": "ngắt nhiên liệu",
+            "dia": true,
+            "key": "ngắt nhiên liệu",
+            "folded": "ngat nhien lieu"
+          },
+          {
+            "raw": "xe",
+            "dia": false,
+            "key": "xe",
+            "folded": "xe"
+          },
+          {
+            "raw": "ô tô",
+            "dia": true,
+            "key": "ô tô",
+            "folded": "o to"
+          },
+          {
+            "raw": "nguyên liệu",
+            "dia": true,
+            "key": "nguyên liệu",
+            "folded": "nguyen lieu"
+          },
+          {
+            "raw": "87.02",
+            "dia": false,
+            "key": "87.02",
+            "folded": "87.02"
+          },
+          {
+            "raw": "87.03",
+            "dia": false,
+            "key": "87.03",
+            "folded": "87.03"
+          },
+          {
+            "raw": "87.04",
+            "dia": false,
+            "key": "87.04",
+            "folded": "87.04"
+          }
+        ],
+        "faucet_copper": [
+          {
+            "raw": "vòi đồng",
+            "dia": true,
+            "key": "vòi đồng",
+            "folded": "voi dong"
+          },
+          {
+            "raw": "hợp kim đồng",
+            "dia": true,
+            "key": "hợp kim đồng",
+            "folded": "hop kim dong"
+          }
+        ],
+        "faucet_other": [
+          {
+            "raw": "vòi khác",
+            "dia": true,
+            "key": "vòi khác",
+            "folded": "voi khac"
+          },
+          {
+            "raw": "vòi loại khác",
+            "dia": true,
+            "key": "vòi loại khác",
+            "folded": "voi loai khac"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "partKind",
+      "type": "enum",
+      "domain": [
+        "valve_body",
+        "body_faucet",
+        "body_cylinder",
+        "body_other",
+        "valve_parts"
+      ],
+      "labelVi": "Loại bộ phận van",
+      "questionVi": "Bộ phận van thuộc loại gì: vỏ van cổng, thân vòi nước, thân xi lanh khí, thân loại khác, hay bộ phận van khác?",
+      "detect": {
+        "valve_body": [
+          "vỏ van",
+          "vỏ của van cổng",
+          "van cống"
+        ],
+        "body_faucet": [
+          "thân vòi nước",
+          "vòi nước"
+        ],
+        "body_cylinder": [
+          "thân xi lanh",
+          "xi lanh khí",
+          "lpg"
+        ],
+        "body_other": [
+          "thân loại khác",
+          "Vòi phun nhựa",
+          "Bộ vòi chậu rửa lavabo",
+          "Van thủy lực",
+          "Chân vòi chậu lavabo",
+          "Vòi rửa bát",
+          "Van một chiều máy nén khí",
+          "Van an toàn",
+          "Van chống lún thủy lực",
+          "Van xả áp",
+          "Van điện từ bơm thủy lực",
+          "Bộ vòi chậu lavabo",
+          "Van khí nén",
+          "Bộ vòi xịt vệ sinh bồn cầu"
+        ],
+        "valve_parts": [
+          "loại khác"
+        ]
+      },
+      "_detect": {
+        "valve_body": [
+          {
+            "raw": "vỏ van",
+            "dia": true,
+            "key": "vỏ van",
+            "folded": "vo van"
+          },
+          {
+            "raw": "vỏ của van cổng",
+            "dia": true,
+            "key": "vỏ của van cổng",
+            "folded": "vo cua van cong"
+          },
+          {
+            "raw": "van cống",
+            "dia": true,
+            "key": "van cống",
+            "folded": "van cong"
+          }
+        ],
+        "body_faucet": [
+          {
+            "raw": "thân vòi nước",
+            "dia": true,
+            "key": "thân vòi nước",
+            "folded": "than voi nuoc"
+          },
+          {
+            "raw": "vòi nước",
+            "dia": true,
+            "key": "vòi nước",
+            "folded": "voi nuoc"
+          }
+        ],
+        "body_cylinder": [
+          {
+            "raw": "thân xi lanh",
+            "dia": true,
+            "key": "thân xi lanh",
+            "folded": "than xi lanh"
+          },
+          {
+            "raw": "xi lanh khí",
+            "dia": true,
+            "key": "xi lanh khí",
+            "folded": "xi lanh khi"
+          },
+          {
+            "raw": "lpg",
+            "dia": false,
+            "key": "lpg",
+            "folded": "lpg"
+          }
+        ],
+        "body_other": [
+          {
+            "raw": "thân loại khác",
+            "dia": true,
+            "key": "thân loại khác",
+            "folded": "than loai khac"
+          },
+          {
+            "raw": "Vòi phun nhựa",
+            "dia": true,
+            "key": "vòi phun nhựa",
+            "folded": "voi phun nhua"
+          }
+        ],
+        "valve_parts": [
+          {
+            "raw": "loại khác",
+            "dia": true,
+            "key": "loại khác",
+            "folded": "loai khac"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "weightClass",
+      "type": "enum",
+      "domain": [
+        "light",
+        "heavy"
+      ],
+      "labelVi": "Khối lượng",
+      "questionVi": "Van nặng dưới 3 kg hay từ 3 kg trở lên?",
+      "detect": {
+        "light": [
+          "dưới 3 kg",
+          "khối lượng dưới 3 kg"
+        ],
+        "heavy": [
+          "từ 3 kg",
+          "trên 3 kg",
+          "nặng"
+        ]
+      },
+      "_detect": {
+        "light": [
+          {
+            "raw": "dưới 3 kg",
+            "dia": true,
+            "key": "dưới 3 kg",
+            "folded": "duoi 3 kg"
+          },
+          {
+            "raw": "khối lượng dưới 3 kg",
+            "dia": true,
+            "key": "khối lượng dưới 3 kg",
+            "folded": "khoi luong duoi 3 kg"
+          }
+        ],
+        "heavy": [
+          {
+            "raw": "từ 3 kg",
+            "dia": true,
+            "key": "từ 3 kg",
+            "folded": "tu 3 kg"
+          },
+          {
+            "raw": "trên 3 kg",
+            "dia": true,
+            "key": "trên 3 kg",
+            "folded": "tren 3 kg"
+          },
+          {
+            "raw": "nặng",
+            "dia": true,
+            "key": "nặng",
+            "folded": "nang"
+          }
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r84811011",
+      "priority": 100,
+      "when": {
+        "valveKind": "pressure_reducing",
+        "controlType": "manual_gate",
+        "boreSize": "large",
+        "material": "metal"
+      },
+      "hs": "84811011",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm → 84811011",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84811019",
+      "priority": 99,
+      "when": {
+        "valveKind": "pressure_reducing",
+        "controlType": "manual_gate",
+        "boreSize": "small",
+        "material": "metal"
+      },
+      "hs": "84811019",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 84811019",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84811021",
+      "priority": 98,
+      "when": {
+        "valveKind": "pressure_reducing",
+        "controlType": "other",
+        "boreSize": "small",
+        "material": "metal"
+      },
+      "hs": "84811021",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Có đường kính trong không quá 2,5 cm  → 84811021",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84811022",
+      "priority": 97,
+      "when": {
+        "valveKind": "pressure_reducing",
+        "controlType": "other",
+        "boreSize": "large",
+        "material": "metal"
+      },
+      "hs": "84811022",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Có đường kính trong trên 2,5 cm → 84811022",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84811091",
+      "priority": 96,
+      "when": {
+        "valveKind": "pressure_reducing",
+        "controlType": "other",
+        "boreSize": "small",
+        "material": "plastic"
+      },
+      "hs": "84811091",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm → 84811091",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84811099",
+      "priority": 95,
+      "when": {
+        "valveKind": "pressure_reducing",
+        "controlType": "other",
+        "boreSize": "other",
+        "material": "other"
+      },
+      "hs": "84811099",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 84811099",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84812011",
+      "priority": 94,
+      "when": {
+        "valveKind": "oleohydraulic",
+        "material": "iron_steel",
+        "boreSize": "any"
+      },
+      "hs": "84812011",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Bằng sắt hoặc thép → 84812011",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84812019",
+      "priority": 93,
+      "when": {
+        "valveKind": "oleohydraulic",
+        "material": "other",
+        "boreSize": "any"
+      },
+      "hs": "84812019",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 84812019",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84812020",
+      "priority": 92,
+      "when": {
+        "valveKind": "oleohydraulic",
+        "material": "copper_or_plastic",
+        "boreSize": "small"
+      },
+      "hs": "84812020",
+      "gir": "GIR 6",
+      "reasonVi": "- - Bằng đồng hoặc hợp kim đồng, có đường kính trong không quá 2,5 cm, hoặc bằng plastic, có đường kính trong từ 1 cm đến 2,5 cm → 84812020",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84812090",
+      "priority": 91,
+      "when": {
+        "valveKind": "oleohydraulic",
+        "material": "other",
+        "boreSize": "large"
+      },
+      "hs": "84812090",
+      "gir": "GIR 6",
+      "reasonVi": "- - Loại khác → 84812090",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84813010",
+      "priority": 90,
+      "when": {
+        "valveKind": "check",
+        "material": "cast_iron",
+        "boreSize": "large"
+      },
+      "hs": "84813010",
+      "gir": "GIR 6",
+      "reasonVi": "- - Van cản, bằng gang đúc, có đường kính trong cửa nạp từ 4 cm đến 60 cm → 84813010",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84813020",
+      "priority": 89,
+      "when": {
+        "valveKind": "check",
+        "material": "copper",
+        "boreSize": "small"
+      },
+      "hs": "84813020",
+      "gir": "GIR 6",
+      "reasonVi": "- - Bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống → 84813020",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84813040",
+      "priority": 88,
+      "when": {
+        "valveKind": "check",
+        "material": "plastic",
+        "boreSize": "small"
+      },
+      "hs": "84813040",
+      "gir": "GIR 6",
+      "reasonVi": "- - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm → 84813040",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84813090",
+      "priority": 87,
+      "when": {
+        "valveKind": "check",
+        "material": "other",
+        "boreSize": "other"
+      },
+      "hs": "84813090",
+      "gir": "GIR 6",
+      "reasonVi": "- - Loại khác → 84813090",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84814010",
+      "priority": 86,
+      "when": {
+        "valveKind": "safety",
+        "material": "copper",
+        "boreSize": "small"
+      },
+      "hs": "84814010",
+      "gir": "GIR 6",
+      "reasonVi": "- - Bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống → 84814010",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84814030",
+      "priority": 85,
+      "when": {
+        "valveKind": "safety",
+        "material": "plastic",
+        "boreSize": "small"
+      },
+      "hs": "84814030",
+      "gir": "GIR 6",
+      "reasonVi": "- - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm → 84814030",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84814090",
+      "priority": 84,
+      "when": {
+        "valveKind": "safety",
+        "material": "other",
+        "boreSize": "other"
+      },
+      "hs": "84814090",
+      "gir": "GIR 6",
+      "reasonVi": "- - Loại khác → 84814090",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818011",
+      "priority": 83,
+      "when": {
+        "valveKind": "other",
+        "material": "copper",
+        "boreSize": "medium",
+        "controlType": "tap_cock"
+      },
+      "hs": "84818011",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Bằng đồng hoặc hợp kim đồng → 84818011",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818012",
+      "priority": 82,
+      "when": {
+        "valveKind": "other",
+        "material": "other_metal",
+        "boreSize": "medium",
+        "controlType": "tap_cock"
+      },
+      "hs": "84818012",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Bằng vật liệu khác → 84818012",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818013",
+      "priority": 81,
+      "when": {
+        "valveKind": "other",
+        "material": "copper",
+        "boreSize": "medium",
+        "controlType": "tap_cock"
+      },
+      "hs": "84818013",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Bằng đồng hoặc hợp kim đồng → 84818013",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818014",
+      "priority": 80,
+      "when": {
+        "valveKind": "other",
+        "material": "other_metal",
+        "boreSize": "medium",
+        "controlType": "tap_cock"
+      },
+      "hs": "84818014",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Bằng vật liệu khác → 84818014",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818021",
+      "priority": 79,
+      "when": {
+        "valveKind": "other",
+        "boreSize": "small",
+        "specificKind": "tap_cock"
+      },
+      "hs": "84818021",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Có đường kính cửa nạp hoặc cửa thoát không quá 2,5 cm → 84818021",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818022",
+      "priority": 78,
+      "when": {
+        "valveKind": "other",
+        "boreSize": "large",
+        "specificKind": "tap_cock"
+      },
+      "hs": "84818022",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Có đường kính cửa nạp hoặc cửa thoát trên 2,5 cm → 84818022",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818030",
+      "priority": 77,
+      "when": {
+        "valveKind": "other",
+        "specificKind": "gas_cooking"
+      },
+      "hs": "84818030",
+      "gir": "GIR 6",
+      "reasonVi": "- - Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga → 84818030",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818041",
+      "priority": 76,
+      "when": {
+        "valveKind": "other",
+        "material": "plastic",
+        "specificKind": "household_tap"
+      },
+      "hs": "84818041",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm → 84818041",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818049",
+      "priority": 75,
+      "when": {
+        "valveKind": "other",
+        "material": "other_metal",
+        "specificKind": "household_tap"
+      },
+      "hs": "84818049",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 84818049",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818051",
+      "priority": 74,
+      "when": {
+        "valveKind": "other",
+        "material": "plastic",
+        "specificKind": "solenoid_water"
+      },
+      "hs": "84818051",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm → 84818051",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818059",
+      "priority": 73,
+      "when": {
+        "valveKind": "other",
+        "material": "other_metal",
+        "specificKind": "solenoid_water"
+      },
+      "hs": "84818059",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 84818059",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818061",
+      "priority": 72,
+      "when": {
+        "valveKind": "other",
+        "controlType": "manual_gate",
+        "boreSize": "large",
+        "material": "metal"
+      },
+      "hs": "84818061",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Van cổng điều khiển bằng tay có đường kính trong trên 5 cm nhưng không quá 40 cm → 84818061",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818062",
+      "priority": 71,
+      "when": {
+        "valveKind": "other",
+        "controlType": "manual_gate",
+        "boreSize": "large",
+        "material": "other_metal"
+      },
+      "hs": "84818062",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại khác → 84818062",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818063",
+      "priority": 70,
+      "when": {
+        "valveKind": "other",
+        "controlType": "manual_gate",
+        "boreSize": "medium",
+        "material": "other_metal"
+      },
+      "hs": "84818063",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 84818063",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818064",
+      "priority": 69,
+      "when": {
+        "valveKind": "other",
+        "controlType": "manual_gate",
+        "boreSize": "small",
+        "material": "plastic"
+      },
+      "hs": "84818064",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm (SEN) → 84818064",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818065",
+      "priority": 68,
+      "when": {
+        "valveKind": "other",
+        "controlType": "manual_gate",
+        "boreSize": "small",
+        "material": "other_metal"
+      },
+      "hs": "84818065",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác (SEN) → 84818065",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818066",
+      "priority": 67,
+      "when": {
+        "valveKind": "other",
+        "material": "plastic",
+        "specificKind": "solenoid_sen"
+      },
+      "hs": "84818066",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm  → 84818066",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818067",
+      "priority": 66,
+      "when": {
+        "valveKind": "other",
+        "material": "other_metal",
+        "specificKind": "solenoid_sen"
+      },
+      "hs": "84818067",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 84818067",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818071",
+      "priority": 65,
+      "when": {
+        "valveKind": "other",
+        "material": "plastic",
+        "specificKind": "solenoid_other"
+      },
+      "hs": "84818071",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm  → 84818071",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818072",
+      "priority": 64,
+      "when": {
+        "valveKind": "other",
+        "material": "other_metal",
+        "specificKind": "solenoid_other"
+      },
+      "hs": "84818072",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại khác → 84818072",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818073",
+      "priority": 63,
+      "when": {
+        "valveKind": "other",
+        "boreSize": "large",
+        "specificKind": "ball_gate"
+      },
+      "hs": "84818073",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Có đường kính trong cửa nạp và cửa thoát trên 5 cm nhưng không quá 40 cm → 84818073",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818074",
+      "priority": 62,
+      "when": {
+        "valveKind": "other",
+        "boreSize": "extra_large",
+        "specificKind": "ball_gate"
+      },
+      "hs": "84818074",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Có đường kính trong cửa nạp và cửa thoát trên 40 cm → 84818074",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818077",
+      "priority": 61,
+      "when": {
+        "valveKind": "other",
+        "boreSize": "small",
+        "specificKind": "solenoid_small"
+      },
+      "hs": "84818077",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Có đường kính trong cửa nạp và cửa thoát không quá 5 cm → 84818077",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818078",
+      "priority": 60,
+      "when": {
+        "valveKind": "other",
+        "material": "plastic",
+        "specificKind": "solenoid_small"
+      },
+      "hs": "84818078",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm  → 84818078",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818079",
+      "priority": 59,
+      "when": {
+        "valveKind": "other",
+        "material": "other_metal",
+        "specificKind": "solenoid_small"
+      },
+      "hs": "84818079",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại khác → 84818079",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818081",
+      "priority": 58,
+      "when": {
+        "valveKind": "other",
+        "material": "plastic",
+        "specificKind": "solenoid_heating"
+      },
+      "hs": "84818081",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm  → 84818081",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818082",
+      "priority": 57,
+      "when": {
+        "valveKind": "other",
+        "material": "other_metal",
+        "specificKind": "solenoid_heating"
+      },
+      "hs": "84818082",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại khác → 84818082",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818083",
+      "priority": 56,
+      "when": {
+        "valveKind": "other",
+        "specificKind": "fuel_vehicle",
+        "material": "plastic",
+        "boreSize": "tiny"
+      },
+      "hs": "84818083",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp dưới 1cm → 84818083",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818084",
+      "priority": 55,
+      "when": {
+        "valveKind": "other",
+        "specificKind": "fuel_vehicle",
+        "material": "plastic",
+        "boreSize": "small"
+      },
+      "hs": "84818084",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp từ 1cm đến 2,5 cm → 84818084",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818093",
+      "priority": 54,
+      "when": {
+        "valveKind": "other",
+        "specificKind": "fuel_vehicle",
+        "material": "other_metal"
+      },
+      "hs": "84818093",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Van ngắt nhiên liệu bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04 → 84818093",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818094",
+      "priority": 53,
+      "when": {
+        "valveKind": "other",
+        "specificKind": "fuel_vehicle",
+        "boreSize": "tiny"
+      },
+      "hs": "84818094",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Có đường kính trong cửa nạp dưới 1 cm  → 84818094",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818095",
+      "priority": 52,
+      "when": {
+        "valveKind": "other",
+        "specificKind": "fuel_vehicle",
+        "boreSize": "small"
+      },
+      "hs": "84818095",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Có đường kính trong cửa nạp từ 1 cm đến 2,5 cm → 84818095",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818096",
+      "priority": 51,
+      "when": {
+        "valveKind": "other",
+        "specificKind": "fuel_vehicle",
+        "boreSize": "large"
+      },
+      "hs": "84818096",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Có đường kính trong cửa nạp trên 2,5 cm → 84818096",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818097",
+      "priority": 50,
+      "when": {
+        "valveKind": "other",
+        "controlType": "manual_other",
+        "material": "stainless_steel",
+        "weightClass": "light"
+      },
+      "hs": "84818097",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác, điều khiển bằng tay, khối lượng dưới 3 kg, đã được xử lý bề mặt hoặc làm bằng thép không gỉ hoặc niken → 84818097",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818098",
+      "priority": 49,
+      "when": {
+        "valveKind": "other",
+        "controlType": "manual_other",
+        "material": "copper",
+        "specificKind": "faucet_copper"
+      },
+      "hs": "84818098",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Vòi nước bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống → 84818098",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84818099",
+      "priority": 48,
+      "when": {
+        "valveKind": "other",
+        "controlType": "manual_other",
+        "material": "other_metal",
+        "specificKind": "faucet_other"
+      },
+      "hs": "84818099",
+      "gir": "GIR 6",
+      "reasonVi": "- - - - Loại khác → 84818099",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84819010",
+      "priority": 47,
+      "when": {
+        "partKind": "valve_body",
+        "boreSize": "large"
+      },
+      "hs": "84819010",
+      "gir": "GIR 6",
+      "reasonVi": "- - Vỏ của van cổng hoặc van cống có đường kính trong cửa nạp hoặc cửa thoát trên 50 mm nhưng không quá 400 mm → 84819010",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84819021",
+      "priority": 46,
+      "when": {
+        "partKind": "body_faucet"
+      },
+      "hs": "84819021",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Thân, dùng cho vòi nước → 84819021",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84819022",
+      "priority": 45,
+      "when": {
+        "partKind": "body_cylinder",
+        "material": "lpg"
+      },
+      "hs": "84819022",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Thân, dùng cho van xi lanh khí dầu mỏ hoá lỏng (LPG)  → 84819022",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84819023",
+      "priority": 44,
+      "when": {
+        "partKind": "body_other",
+        "material": "metal"
+      },
+      "hs": "84819023",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Thân, loại khác → 84819023",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84819029",
+      "priority": 43,
+      "when": {
+        "partKind": "body_other",
+        "material": "other"
+      },
+      "hs": "84819029",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 84819029",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84819031",
+      "priority": 42,
+      "when": {
+        "partKind": "valve_parts",
+        "material": "copper"
+      },
+      "hs": "84819031",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Bằng đồng hoặc hợp kim đồng → 84819031",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84819039",
+      "priority": 41,
+      "when": {
+        "partKind": "valve_parts",
+        "material": "other_metal"
+      },
+      "hs": "84819039",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 84819039",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84819041",
+      "priority": 40,
+      "when": {
+        "partKind": "valve_parts",
+        "material": "copper"
+      },
+      "hs": "84819041",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Bằng đồng hoặc hợp kim đồng → 84819041",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84819049",
+      "priority": 39,
+      "when": {
+        "partKind": "valve_parts",
+        "material": "other_metal"
+      },
+      "hs": "84819049",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 84819049",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r84819090",
+      "priority": 38,
+      "when": {
+        "partKind": "valve_parts",
+        "material": "other"
+      },
+      "hs": "84819090",
+      "gir": "GIR 6",
+      "reasonVi": "- - Loại khác → 84819090",
+      "source": "Biểu thuế 2026"
+    }
+  ],
+  "status": "draft",
+  "essenceTestVi": "Van thuộc loại gì (giảm áp/thủy lực/cản/an toàn/khác)? Kiểu điều khiển, đường kính trong, vật liệu, công dụng đặc thù nào? Bộ phận van thì thuộc loại gì?",
+  "sourceVi": "Biểu thuế 2026 nhóm 8481: 848110 van giảm áp (theo đường kính, vật liệu, điều khiển tay); 848120 van thủy lực/khí nén; 848130 van cản; 848140 van an toàn; 848180 van/cần/vòi khác (36 mã theo vật liệu, đường kính, kiểu điện từ, gas, nhiên liệu xe); 848190 bộ phận. Chú giải 8481: van/vòi điều chỉnh dòng chất lỏng/khí.",
+  "verified": true,
+  "noteVi": "Draft 63 mã / 7 attrs / 63 rules — tier-A score=33.6 | Nguồn: Biểu thuế 2026",
+  "verifiedBy": "hermes-211",
+  "verifiedAt": "2026-10-02T20:16:11.653Z",
+  "inputAttributes": [
+    "boreSize",
+    "controlType",
+    "material",
+    "partKind",
+    "specificKind",
+    "valveKind",
+    "weightClass"
+  ],
+  "attributes": {
+    "boreSize": {
+      "type": "enum",
+      "labelVi": "boreSize",
+      "domain": [
+        "any",
+        "extra_large",
+        "large",
+        "medium",
+        "other",
+        "small",
+        "tiny"
+      ],
+      "detect": {
+        "any": [
+          "any"
+        ],
+        "extra_large": [
+          "extra_large",
+          "extra large"
+        ],
+        "large": [
+          "large"
+        ],
+        "medium": [
+          "medium"
+        ],
+        "other": [
+          "other"
+        ],
+        "small": [
+          "small"
+        ],
+        "tiny": [
+          "tiny"
+        ]
+      }
+    },
+    "controlType": {
+      "type": "enum",
+      "labelVi": "controlType",
+      "domain": [
+        "manual_gate",
+        "manual_other",
+        "other",
+        "tap_cock"
+      ],
+      "detect": {
+        "manual_gate": [
+          "manual_gate",
+          "manual gate"
+        ],
+        "manual_other": [
+          "manual_other",
+          "manual other"
+        ],
+        "other": [
+          "other"
+        ],
+        "tap_cock": [
+          "tap_cock",
+          "tap cock"
+        ]
+      }
+    },
+    "material": {
+      "type": "enum",
+      "labelVi": "material",
+      "domain": [
+        "cast_iron",
+        "copper",
+        "copper_or_plastic",
+        "iron_steel",
+        "lpg",
+        "metal",
+        "other",
+        "other_metal",
+        "plastic",
+        "stainless_steel"
+      ],
+      "detect": {
+        "cast_iron": [
+          "cast_iron",
+          "cast iron"
+        ],
+        "copper": [
+          "copper"
+        ],
+        "copper_or_plastic": [
+          "copper_or_plastic",
+          "copper or plastic"
+        ],
+        "iron_steel": [
+          "iron_steel",
+          "iron steel"
+        ],
+        "lpg": [
+          "lpg"
+        ],
+        "metal": [
+          "metal"
+        ],
+        "other": [
+          "other"
+        ],
+        "other_metal": [
+          "other_metal",
+          "other metal"
+        ],
+        "plastic": [
+          "plastic"
+        ],
+        "stainless_steel": [
+          "stainless_steel",
+          "stainless steel"
+        ]
+      }
+    },
+    "partKind": {
+      "type": "enum",
+      "labelVi": "partKind",
+      "domain": [
+        "body_cylinder",
+        "body_faucet",
+        "body_other",
+        "valve_body",
+        "valve_parts"
+      ],
+      "detect": {
+        "body_cylinder": [
+          "body_cylinder",
+          "body cylinder"
+        ],
+        "body_faucet": [
+          "body_faucet",
+          "body faucet"
+        ],
+        "body_other": [
+          "body_other",
+          "body other"
+        ],
+        "valve_body": [
+          "valve_body",
+          "valve body"
+        ],
+        "valve_parts": [
+          "valve_parts",
+          "valve parts"
+        ]
+      }
+    },
+    "specificKind": {
+      "type": "enum",
+      "labelVi": "specificKind",
+      "domain": [
+        "ball_gate",
+        "faucet_copper",
+        "faucet_other",
+        "fuel_vehicle",
+        "gas_cooking",
+        "household_tap",
+        "solenoid_heating",
+        "solenoid_other",
+        "solenoid_sen",
+        "solenoid_small",
+        "solenoid_water",
+        "tap_cock"
+      ],
+      "detect": {
+        "ball_gate": [
+          "ball_gate",
+          "ball gate"
+        ],
+        "faucet_copper": [
+          "faucet_copper",
+          "faucet copper"
+        ],
+        "faucet_other": [
+          "faucet_other",
+          "faucet other"
+        ],
+        "fuel_vehicle": [
+          "fuel_vehicle",
+          "fuel vehicle"
+        ],
+        "gas_cooking": [
+          "gas_cooking",
+          "gas cooking"
+        ],
+        "household_tap": [
+          "household_tap",
+          "household tap"
+        ],
+        "solenoid_heating": [
+          "solenoid_heating",
+          "solenoid heating"
+        ],
+        "solenoid_other": [
+          "solenoid_other",
+          "solenoid other"
+        ],
+        "solenoid_sen": [
+          "solenoid_sen",
+          "solenoid sen"
+        ],
+        "solenoid_small": [
+          "solenoid_small",
+          "solenoid small"
+        ],
+        "solenoid_water": [
+          "solenoid_water",
+          "solenoid water"
+        ],
+        "tap_cock": [
+          "tap_cock",
+          "tap cock"
+        ]
+      }
+    },
+    "valveKind": {
+      "type": "enum",
+      "labelVi": "valveKind",
+      "domain": [
+        "check",
+        "oleohydraulic",
+        "other",
+        "pressure_reducing",
+        "safety"
+      ],
+      "detect": {
+        "check": [
+          "check"
+        ],
+        "oleohydraulic": [
+          "oleohydraulic"
+        ],
+        "other": [
+          "other"
+        ],
+        "pressure_reducing": [
+          "pressure_reducing",
+          "pressure reducing"
+        ],
+        "safety": [
+          "safety"
+        ]
+      }
+    },
+    "weightClass": {
+      "type": "enum",
+      "labelVi": "weightClass",
+      "domain": [
+        "light"
+      ],
+      "detect": {
+        "light": [
+          "light"
+        ]
+      }
+    }
+  },
+  "hitPolicy": "PRIORITY",
+  "essenceVi": "boreSize + controlType + material + partKind + specificKind..."
+}

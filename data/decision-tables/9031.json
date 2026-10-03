@@ -1,0 +1,1694 @@
+{
+  "heading": "9031",
+  "titleVi": "Dụng cụ, thiết bị và máy đo đạc hoặc kiểm tra, chưa được chi tiết trong nhóm nào khác của chương 90; máy chiếu tỷ lệ",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Thiết bị đo/kiểm tra này dùng cho mục đích gì: kiểm tra vi mạch/semiconductor; đo quang học bề mặt/AOI; kiểm tra cáp; cân chỉnh cơ khí; hay loại khác? Hàng là thiết bị hoàn chỉnh hay chỉ bộ phận/phụ kiện?",
+  "sourceVi": "Biểu thuế 2026 nhóm 9031: 9031.10 cân bằng cơ; 9031.20 bàn kiểm tra; 9031.41 kiểm tra semiconductor; 9031.49 quang học đo/kiểm tra; 9031.80 thiết bị khác; 9031.90 bộ phận. Chú giải nhóm 9031.",
+  "inputs": [
+    {
+      "attribute": "itemKind",
+      "type": "enum",
+      "domain": [
+        "equipment",
+        "parts"
+      ],
+      "labelVi": "Loại hàng",
+      "questionVi": "Hàng là thiết bị hoàn chỉnh hay chỉ bộ phận/phụ kiện?",
+      "detect": {
+        "equipment": [
+          "máy",
+          "thiết bị",
+          "dụng cụ đo",
+          "bàn kiểm tra",
+          "máy cân bằng",
+          "máy đo",
+          "thanh cân bằng",
+          "test bench",
+          "balancing machine",
+          "inspection machine",
+          "measuring instrument",
+          "kiểm tra cáp",
+          "đo bề mặt",
+          "AOI",
+          "SPI",
+          "optical inspection",
+          "semiconductor tester",
+          "Cảm biến quang",
+          "Cảm biến tiệm cận",
+          "Cảm biến sợi quang",
+          "Cảm biến từ",
+          "Bộ khuếch đại sợi quang",
+          "Cảm biến hành trình xy lanh",
+          "Cảm biến hình ảnh",
+          "Cảm biến mưa 1 chiều",
+          "Cảm biến ánh sáng",
+          "Cảm biến vùng",
+          "Cảm biến lực",
+          "Cảm biến cảm ứng",
+          "Module cảm biến chuyển động",
+          "Cảm biến rung",
+          "Đồng hồ đo độ rung",
+          "Cảm biến đo khoảng cách",
+          "Cảm biến laser",
+          "Bộ giám sát tốc độ quay",
+          "Đầu dò",
+          "Breadboard cắm",
+          "Cảm biến xi lanh từ",
+          "Cảm biến vị trí xy lanh",
+          "Encoder",
+          "Cảm biến tiệm cậin",
+          "Cảm biến Hall",
+          "Bàn trượt vi chỉnh cơ khí",
+          "shenzhen yike automation equipment co.,ltd, mới 100%"
+        ],
+        "parts": [
+          "bộ phận",
+          "phụ kiện",
+          "linh kiện",
+          "parts",
+          "accessories",
+          "bộ phận dụng cụ",
+          "cáp nối",
+          "fixture"
+        ]
+      },
+      "_detect": {
+        "equipment": [
+          {
+            "raw": "máy",
+            "dia": true,
+            "key": "máy",
+            "folded": "may"
+          },
+          {
+            "raw": "thiết bị",
+            "dia": true,
+            "key": "thiết bị",
+            "folded": "thiet bi"
+          },
+          {
+            "raw": "dụng cụ đo",
+            "dia": true,
+            "key": "dụng cụ đo",
+            "folded": "dung cu do"
+          },
+          {
+            "raw": "bàn kiểm tra",
+            "dia": true,
+            "key": "bàn kiểm tra",
+            "folded": "ban kiem tra"
+          },
+          {
+            "raw": "máy cân bằng",
+            "dia": true,
+            "key": "máy cân bằng",
+            "folded": "may can bang"
+          },
+          {
+            "raw": "máy đo",
+            "dia": true,
+            "key": "máy đo",
+            "folded": "may do"
+          },
+          {
+            "raw": "thanh cân bằng",
+            "dia": true,
+            "key": "thanh cân bằng",
+            "folded": "thanh can bang"
+          },
+          {
+            "raw": "test bench",
+            "dia": false,
+            "key": "test bench",
+            "folded": "test bench"
+          },
+          {
+            "raw": "balancing machine",
+            "dia": false,
+            "key": "balancing machine",
+            "folded": "balancing machine"
+          },
+          {
+            "raw": "inspection machine",
+            "dia": false,
+            "key": "inspection machine",
+            "folded": "inspection machine"
+          },
+          {
+            "raw": "measuring instrument",
+            "dia": false,
+            "key": "measuring instrument",
+            "folded": "measuring instrument"
+          },
+          {
+            "raw": "kiểm tra cáp",
+            "dia": true,
+            "key": "kiểm tra cáp",
+            "folded": "kiem tra cap"
+          },
+          {
+            "raw": "đo bề mặt",
+            "dia": true,
+            "key": "đo bề mặt",
+            "folded": "do be mat"
+          },
+          {
+            "raw": "AOI",
+            "dia": false,
+            "key": "aoi",
+            "folded": "aoi"
+          },
+          {
+            "raw": "SPI",
+            "dia": false,
+            "key": "spi",
+            "folded": "spi"
+          },
+          {
+            "raw": "optical inspection",
+            "dia": false,
+            "key": "optical inspection",
+            "folded": "optical inspection"
+          },
+          {
+            "raw": "semiconductor tester",
+            "dia": false,
+            "key": "semiconductor tester",
+            "folded": "semiconductor tester"
+          },
+          {
+            "raw": "Cảm biến quang",
+            "dia": true,
+            "key": "cảm biến quang",
+            "folded": "cam bien quang"
+          },
+          {
+            "raw": "Cảm biến tiệm cận",
+            "dia": true,
+            "key": "cảm biến tiệm cận",
+            "folded": "cam bien tiem can"
+          },
+          {
+            "raw": "Cảm biến sợi quang",
+            "dia": true,
+            "key": "cảm biến sợi quang",
+            "folded": "cam bien soi quang"
+          },
+          {
+            "raw": "Cảm biến từ",
+            "dia": true,
+            "key": "cảm biến từ",
+            "folded": "cam bien tu"
+          },
+          {
+            "raw": "Bộ khuếch đại sợi quang",
+            "dia": true,
+            "key": "bộ khuếch đại sợi quang",
+            "folded": "bo khuech dai soi quang"
+          },
+          {
+            "raw": "Cảm biến hành trình xy lanh",
+            "dia": true,
+            "key": "cảm biến hành trình xy lanh",
+            "folded": "cam bien hanh trinh xy lanh"
+          },
+          {
+            "raw": "Cảm biến hình ảnh",
+            "dia": true,
+            "key": "cảm biến hình ảnh",
+            "folded": "cam bien hinh anh"
+          },
+          {
+            "raw": "Cảm biến mưa 1 chiều",
+            "dia": true,
+            "key": "cảm biến mưa 1 chiều",
+            "folded": "cam bien mua 1 chieu"
+          },
+          {
+            "raw": "Cảm biến ánh sáng",
+            "dia": true,
+            "key": "cảm biến ánh sáng",
+            "folded": "cam bien anh sang"
+          },
+          {
+            "raw": "Cảm biến vùng",
+            "dia": true,
+            "key": "cảm biến vùng",
+            "folded": "cam bien vung"
+          },
+          {
+            "raw": "Cảm biến lực",
+            "dia": true,
+            "key": "cảm biến lực",
+            "folded": "cam bien luc"
+          },
+          {
+            "raw": "Cảm biến cảm ứng",
+            "dia": true,
+            "key": "cảm biến cảm ứng",
+            "folded": "cam bien cam ung"
+          },
+          {
+            "raw": "Module cảm biến chuyển động",
+            "dia": true,
+            "key": "module cảm biến chuyển động",
+            "folded": "module cam bien chuyen dong"
+          },
+          {
+            "raw": "Cảm biến rung",
+            "dia": true,
+            "key": "cảm biến rung",
+            "folded": "cam bien rung"
+          },
+          {
+            "raw": "Đồng hồ đo độ rung",
+            "dia": true,
+            "key": "đồng hồ đo độ rung",
+            "folded": "dong ho do do rung"
+          },
+          {
+            "raw": "Cảm biến đo khoảng cách",
+            "dia": true,
+            "key": "cảm biến đo khoảng cách",
+            "folded": "cam bien do khoang cach"
+          },
+          {
+            "raw": "Cảm biến laser",
+            "dia": true,
+            "key": "cảm biến laser",
+            "folded": "cam bien laser"
+          },
+          {
+            "raw": "Bộ giám sát tốc độ quay",
+            "dia": true,
+            "key": "bộ giám sát tốc độ quay",
+            "folded": "bo giam sat toc do quay"
+          },
+          {
+            "raw": "Đầu dò",
+            "dia": true,
+            "key": "đầu dò",
+            "folded": "dau do"
+          },
+          {
+            "raw": "Breadboard cắm",
+            "dia": true,
+            "key": "breadboard cắm",
+            "folded": "breadboard cam"
+          },
+          {
+            "raw": "Cảm biến xi lanh từ",
+            "dia": true,
+            "key": "cảm biến xi lanh từ",
+            "folded": "cam bien xi lanh tu"
+          },
+          {
+            "raw": "Cảm biến vị trí xy lanh",
+            "dia": true,
+            "key": "cảm biến vị trí xy lanh",
+            "folded": "cam bien vi tri xy lanh"
+          },
+          {
+            "raw": "Encoder",
+            "dia": false,
+            "key": "encoder",
+            "folded": "encoder"
+          },
+          {
+            "raw": "Cảm biến tiệm cậin",
+            "dia": true,
+            "key": "cảm biến tiệm cậin",
+            "folded": "cam bien tiem cain"
+          },
+          {
+            "raw": "Cảm biến Hall",
+            "dia": true,
+            "key": "cảm biến hall",
+            "folded": "cam bien hall"
+          },
+          {
+            "raw": "Bàn trượt vi chỉnh cơ khí",
+            "dia": true,
+            "key": "bàn trượt vi chỉnh cơ khí",
+            "folded": "ban truot vi chinh co khi"
+          },
+          {
+            "raw": "shenzhen yike automation equipment co.,ltd, mới 100%",
+            "dia": true,
+            "key": "shenzhen yike automation equipment co.,ltd, mới 100",
+            "folded": "shenzhen yike automation equipment co.,ltd, moi 100"
+          },
+          {
+            "raw": "cảm biến quang nhựa",
+            "dia": false,
+            "key": "cảm biến quang nhựa",
+            "folded": "cam bien quang nhua"
+          },
+          {
+            "raw": "cảm biến quang nhựa phát",
+            "dia": false,
+            "key": "cảm biến quang nhựa phát",
+            "folded": "cam bien quang nhua phat"
+          },
+          {
+            "raw": "biến quang nhựa phát hiện",
+            "dia": false,
+            "key": "biến quang nhựa phát hiện",
+            "folded": "bien quang nhua phat hien"
+          },
+          {
+            "raw": "quang nhựa phát hiện vật",
+            "dia": false,
+            "key": "quang nhựa phát hiện vật",
+            "folded": "quang nhua phat hien vat"
+          },
+          {
+            "raw": "nhựa phát hiện vật thể",
+            "dia": false,
+            "key": "nhựa phát hiện vật thể",
+            "folded": "nhua phat hien vat the"
+          },
+          {
+            "raw": "phát hiện vật thể trong",
+            "dia": false,
+            "key": "phát hiện vật thể trong",
+            "folded": "phat hien vat the trong"
+          },
+          {
+            "raw": "hiện vật thể trong dây",
+            "dia": false,
+            "key": "hiện vật thể trong dây",
+            "folded": "hien vat the trong day"
+          },
+          {
+            "raw": "vật thể trong dây chuyền",
+            "dia": false,
+            "key": "vật thể trong dây chuyền",
+            "folded": "vat the trong day chuyen"
+          },
+          "cảm biến quang nhựa",
+          "cảm biến quang nhựa phát",
+          "biến quang nhựa phát hiện",
+          "quang nhựa phát hiện vật",
+          "nhựa phát hiện vật thể",
+          "phát hiện vật thể trong",
+          "hiện vật thể trong dây",
+          "vật thể trong dây chuyền",
+          "thể trong dây chuyền sản",
+          "trong dây chuyền sản xuất",
+          "dây chuyền sản xuất cảm",
+          "chuyền sản xuất cảm biến",
+          "sản xuất cảm biến quang.",
+          "xuất cảm biến quang. model:cx-442,",
+          "cảm biến quang. model:cx-442, kt:31*11*20mm,",
+          "biến quang. model:cx-442, kt:31*11*20mm, bằng"
+        ],
+        "parts": [
+          {
+            "raw": "bộ phận",
+            "dia": true,
+            "key": "bộ phận",
+            "folded": "bo phan"
+          },
+          {
+            "raw": "phụ kiện",
+            "dia": true,
+            "key": "phụ kiện",
+            "folded": "phu kien"
+          },
+          {
+            "raw": "linh kiện",
+            "dia": true,
+            "key": "linh kiện",
+            "folded": "linh kien"
+          },
+          {
+            "raw": "parts",
+            "dia": false,
+            "key": "parts",
+            "folded": "parts"
+          },
+          {
+            "raw": "accessories",
+            "dia": false,
+            "key": "accessories",
+            "folded": "accessories"
+          },
+          {
+            "raw": "bộ phận dụng cụ",
+            "dia": true,
+            "key": "bộ phận dụng cụ",
+            "folded": "bo phan dung cu"
+          },
+          {
+            "raw": "cáp nối",
+            "dia": true,
+            "key": "cáp nối",
+            "folded": "cap noi"
+          },
+          {
+            "raw": "fixture",
+            "dia": false,
+            "key": "fixture",
+            "folded": "fixture"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "measKind",
+      "type": "enum",
+      "domain": [
+        "balancing",
+        "testBench",
+        "semiconductor",
+        "opticalSurface",
+        "opticalAoi",
+        "opticalOther",
+        "cable",
+        "otherEquipment",
+        "otherParts"
+      ],
+      "labelVi": "Loại đo / kiểm tra",
+      "questionVi": "Thiết bị đo/kiểm tra dùng cho mục đích gì?",
+      "detect": {
+        "balancing": [
+          "cân bằng",
+          "cân chỉnh cơ",
+          "balancing",
+          "độ rung",
+          "mất cân bằng",
+          "rotor balancing",
+          "dynamic balancing",
+          "static balancing",
+          "cân bằng động",
+          "máy cân bằng",
+          "balancing machine",
+          "balancing instrument",
+          "dùng phát hiệu vật thể trong dây",
+          "cảm biến tiệm cận dùng cho máy",
+          "cảm biến tiệm cận nhựa + đồng",
+          "vật thể trên băng tải, máy gắn",
+          "áp 24vdc. bằng hợp kim nhôm không",
+          "cảm biến tiệm cận phát hiện vật",
+          "cảm biến tiệm cận cảm biến kim",
+          "của vật thể bằng linh kiện quang",
+          "của con lăn băng tải dùng trong",
+          "chất liệu bằng nhựa dùng cho máy",
+          "hợp kim nhôm không phải loại đúc.",
+          "cảm biến tiệm cận nhựa phát hiện",
+          "cảm biến tiệm cận giám sát tốc",
+          "hoạt động bằng nguồn 10-30 vdc dùng",
+          "soát tốc độ trong công nghiệp, nsx:turck(tianjin)sensor",
+          "8.5x4.5cm(bảng mạch thử nghiệm),được sử dụng để",
+          "cảm biến tiệm cận sắt + nhựa",
+          "thể chạy trên băng tải cảm biến",
+          "từ dùng trong băng tải sản xuất",
+          "cảm biến tiệm cận cảm biến trong",
+          "bằng nhựa pbt, dùng phát hiện vật",
+          "liệu bằng sắt, kt:10x10cm. hiệu sick, mới",
+          "biến cảm biến tiệm cận az16-12zvrk-m20. hãng",
+          "cảm biến tiệm cận phát hiện kim",
+          "a3144, loại tiệm cận từ tính, 3",
+          "cảm biến tiệm cận điện dung phát",
+          "trượt của con lăn băng tải dùng",
+          "thể trong máy in công nghiệp cảm",
+          "dán linh kiện, là bộ phận của",
+          "công tắc máy in cảm biến máy",
+          "lanh từ spd2000-l-at, dòng cấp nguồn: 4.3ma,",
+          "vòng quay máy in công nghiệp bộ"
+        ],
+        "testBench": [
+          "bàn kiểm tra",
+          "test bench",
+          "kiểm tra động cơ",
+          "bàn thử nghiệm",
+          "bàn đo",
+          "engine test bench",
+          "motor test bench",
+          "ở vị trí thu gọn, chính xác",
+          "điện,đa 12v,kt:32*14*14mm,không hiệu,nsx:dongguan bailing electronics co., ltd.,mới",
+          "biến hình ảnh thu nhận dữ liệu",
+          "thiết bị,đa:12v,kt:25*24*32mm,không hiệu,nsx:xintai microelectronics company,mới 100%",
+          "hiệu: schneider - mới 100%",
+          "đồng hồ đo độ",
+          "quang ll3-dt01-a, sợi quang đầu ren m3,",
+          "tra, lắp ráp bản mạch pcb cảm",
+          "thử nghiệm),được sử dụng để kiểm tra",
+          "điện áp 24vdc. mới 100%",
+          "biến, điện áp 24vdc. mới 100%.",
+          "quang fu-4fz-a là đầu sợi quang dùng",
+          "bàn trượt vi chỉnh",
+          "1 chiều,dùng để phát hiện mực nước,",
+          "khiển đóng/ngắt đèn tự động cảm biến",
+          "dùng để phát hiện vật thể trong",
+          "dùng để đo lực kéo - lực",
+          "rung cd-21-s - sử dụng: công dụng:",
+          "mạch điện thực tế trước khi hàn",
+          "kim loại đến gần khoảng cách phát",
+          "gx-304s-a-n-a, điện áp cấp dc 10-30 v,",
+          "k/c phát hiện: 100mm, là một thiết",
+          "hiện vật cản trên băng tải cảm"
+        ],
+        "semiconductor": [
+          "semiconductor",
+          "vi mạch",
+          "IC",
+          "integrated circuit",
+          "wafer",
+          "kiểm tra IC",
+          "die probing",
+          "burn-in",
+          "tester semiconductor",
+          "probe station",
+          "chip test",
+          "100%",
+          "phát hiện: 1m, là một thiết bị",
+          "biến tiệm cận gts211b-n-16 (đầu ra npn).",
+          "mới 100%",
+          "quang ex-13ea, chất liệu: nhựa pvc, đầu",
+          "trình xy lanh d-m9bv, điện áp: 24v,",
+          "i18h033. hãng wenglor. chất liệu nhựa +",
+          "dài dây dẫn 2m, ngõ ra npn,",
+          "hiện: 630mm, là một thiết bị sử",
+          "lanh khí nén d-m9bw chất liệu bằng",
+          "từ xi lanh d-a93, chất liệu bằng",
+          "nước, trời mưa, đặt ngoài trời cảm",
+          "hóa, chất liệu vỏ nhựa, kt:2x3cm. hiệu:",
+          "cảm biến mức chất rắn loại xoay",
+          "đồng hồ theo dõi",
+          "nghiệp, chất liệu vỏ bằng nhựa, kt:3x5cm,",
+          "dành cho máy dán linh kiện, là",
+          "hãng turck. chất liệu sắt + nhựa",
+          "tải, chất liệu: nhựa pvc, điện áp:",
+          "từ spd2000-l-at, dòng cấp nguồn: 4.3ma, điện",
+          "nghiệp) chất liệu bằng sắt, kt:10x10cm. hiệu",
+          "hãng schmersal. chất liệu nhựa + đồng",
+          "-15j/ks. hãng chiib. chất liệu nhựa +",
+          "quang cdr30x. hãng foteck. chất liệu nhựa",
+          "chất lỏng)trong dây chuyền tự động hóa,12-24",
+          "phát hiện sự hiện diện của vật",
+          "hiện sự hiện diện của vật thể,kohiệu,",
+          "cách phát hiện 10mm. model: hg-c1400, mới",
+          "để phát hiện sự hiện diện của",
+          "hóa, model: il-1000. kt:96*31*78mm. mới 100%",
+          "hiện vật thể ở vị trí thu",
+          "sự trượt của con lăn băng tải",
+          "cảm biến rung đo độ rung máy",
+          "cảm biến đo khoảng cách đo",
+          "cảm biến laser đo khoảng cách, độ",
+          "giám sát tốc độ quay nhựa abs",
+          "cảm biến quang đo khoảng cách và",
+          "bộ nhận diện độ chính xác feeder",
+          "co.,ltd, mới 100%",
+          "encoder đo tín hiệu, góc",
+          "trượt vi chỉnh cơ khí căn chỉnh"
+        ],
+        "opticalSurface": [
+          "đo bề mặt",
+          "surface measurement",
+          "độ nhiễm bẩn bề mặt",
+          "surface contamination",
+          "surface profiler",
+          "độ nhám bề mặt",
+          "surface roughness",
+          "profilometer",
+          "cảm biến quang nhựa phát hiện",
+          "cảm biến quang phát hiện sự",
+          "hiện vật khi chạy qua cảm biến",
+          "cảm biến sợi quang nhựa phát hiện",
+          "cảm biến quang phát hiện vật",
+          "cảm biến quang điện hợp kim",
+          "khuếch đại sợi quang nhựa khuếch đại",
+          "cảm biến quang nhựa pvc phát",
+          "khi bị vượt quá giám sát tốc",
+          "cảm biến quang thân nhựa công",
+          "cách.(cảm biến quang) dùng đo khoảng cách",
+          "độ cao trong quá trình kiểm tra,",
+          "cảm biến quang đo khoảng cách",
+          "oem, mới 100%",
+          "đầu dò hợp kim",
+          "hàng mới 100%",
+          "hiện 4mm, điện áp 24v, dòng điện",
+          "py-md3n, điện áp: 10-30vdc, khoảng cách phát",
+          "lanh d-m9bv, điện áp: 24v, dòng điện:",
+          "hiện 15mm, điện áp 12-24vdc, hiệu autonics,hàng",
+          "liền dây điện 1m, hãng lefircko,hàng mới",
+          "thành tín hiệu điện cho thiết bị",
+          "tự động, điện áp: 10v, kt: 4x4.6x22.8mm,",
+          "tự động, điện áp: 24vdc, dòng điện:",
+          "kích thước 2x3cm, điện áp 24v, nsx:",
+          "trên băng tải, điện áp: 24 vdc",
+          "điện áp: 5v,dùng trong băng tải sản",
+          "biến tiệm cận điện dung phát hiện",
+          "cảm biến quang nhựa",
+          "cảm biến tiệm cận",
+          "cảm biến quang phát",
+          "cảm biến sợi quang",
+          "cảm biến từ máy",
+          "cảm biến quang điện",
+          "cảm biến hành trình",
+          "cảm biến từ nhựa",
+          "cảm biến từ vị",
+          "bộ phận cảm biến ánh sáng",
+          "cảm biến hình ảnh",
+          "cảm biến từ xi",
+          "cảm biến vùng hợp",
+          "cảm biến lực đo",
+          "cảm biến mức chất",
+          "cảm biến quang cảm",
+          "cảm biến cảm ứng",
+          "module cảm biến chuyển động",
+          "cảm biến rung đo",
+          "cảm biến quang thân",
+          "độ quay(thiết bị đo tín hiệu, góc",
+          "động cơ thiết bị cẩu tháp encoder",
+          "dbs36e-s3ak02500,(thiết bị đo tín hiệu, góc quay,"
+        ],
+        "opticalAoi": [
+          "AOI",
+          "Automated Optical Inspection",
+          "kiểm tra lỗi mạch",
+          "PCB inspection",
+          "SMT inspection",
+          "optical AOI",
+          "AOI machine",
+          "kiểm tra mạch in",
+          "detecting defects",
+          "fault detection PCB",
+          "xác định lỗi",
+          "sửa lỗi mạch",
+          "inspection de default",
+          "k/c phát hiện: 1m, là một thiết",
+          "gts211b-n-16 (đầu ra npn). hãng haowei. chất",
+          "quang điện, dùng để phát hiện vật",
+          "nhựa, ngõ ra npn, dùng khuếch đại",
+          "pvc, đầu ra: npn, điện áp: 12-24v,",
+          "sợi quang. dùng để phát hiện vật",
+          "điện áp 24vdc. mới 100%.",
+          "2m, ngõ ra npn, dùng để phát",
+          "phát hiện: 630mm, là một thiết bị",
+          "quang điện,để chuyển đổi năng lượng ánh",
+          "để phát hiện độ sáng và điều",
+          "cảm biến vùng. mã hàng:na40-8. dùng để",
+          "trong hệ thống kiểm tra sản phẩm",
+          "khoảng cách để tránh va chạm trong",
+          "trong quá trình kiểm tra, lắp ráp",
+          "quay nhựa abs kiểm soát tốc độ",
+          "chính xác feeder kiểm tra, điều chỉnh",
+          "breadboard cắm nhựa kiểm tra mạch điện",
+          "lõi, đk lõi 0,1mm, dài 2m, vỏ",
+          "bộ mã hóa encoder sắt",
+          "cận pr18-8dn để phát hiện kim loại",
+          "cắm to-92 để phát hiện nam châm",
+          "15x10x20mm, k/c phát hiện: 100mm, là một",
+          "chỉnh cơ khí e-eic31-60-a, hành trình 25mm,",
+          "sáng 3p chuyển đổi photon thành tín",
+          "tốc độ phát hiện: 0.5-9.9 m /sec,",
+          "biến từ tính đo vị trí máy",
+          "mưa, đặt ở ngoài trời,đa:5v,kt:5.4*4.0*1.6mm,không hiệu,nsx:shenzhen jiatwei",
+          "null phát hiện độ sáng, điều khiển",
+          "cảm biến lực đo lực kéo -",
+          "ảnh, model a3a20mg8, độ phân giải 2.0mp,",
+          "giám sát tốc độ giám sát tốc",
+          "hóa encoder sắt đo tín hiệu góc",
+          "trong thiết bị đo lường, điều khiển,",
+          "cảm biến từ vị trí xy lanh",
+          "nhựa phát hiện vị trí piston trong",
+          "cảm biến vị trí xy lanh",
+          "cảm biến từ tính",
+          "cảm biến mưa 1",
+          "cảm biến ánh sáng",
+          "cảm biến đo khoảng",
+          "cảm biến laser đo",
+          "cảm biến quang đo",
+          "breadboard cắm nhựa kiểm tra",
+          "cảm biến xi lanh",
+          "cảm biến vị trí",
+          "cảm biến tiệm cậin",
+          "cảm biến hall phát"
+        ],
+        "opticalOther": [
+          "quang học",
+          "optical",
+          "camera",
+          "visionsystem",
+          "visual inspection",
+          "optical instrument",
+          "optical measuring",
+          "spectrometer",
+          "colorimeter",
+          "cảm biến sợi quang phát hiện vật",
+          "vật khi chạy qua cảm biến cảm",
+          "cho thiết bị quang điện bộ phận",
+          "mv-ce200-10gc-a model mv-ce200-10gc, nguồn 12-24v, dùng để",
+          "ngoài trời,đa:5v,kt:5.4*4.0*1.6mm,không hiệu,nsx:shenzhen jiatwei technology co., ltd,mới",
+          "tối đa 10a,không hiệu,nsx: shenzhen hesai technology",
+          "model s6005-10kg/b2003-a, dùng để đo lực kéo",
+          "cảm biến quang cảm biến quang",
+          "vdc . mới 100%.",
+          "- mới 100%",
+          "lanh dmsg-n020-a , chiều dài dây dẫn",
+          "cận gx-304s-a-n-a, điện áp cấp dc 10-30",
+          "cảm biến quang nhựa pbt phát",
+          "cảm biến quang nhựa + đồng",
+          "cảm biến sợi quang kết nối bộ",
+          "xác trong máy quang học và cnc",
+          "điện áp 24v, dùng cho máy công",
+          "trong nhà máy điện tử, dây chuyền",
+          "lực thành tín hiệu điện dùng trong",
+          "thước: 18x18x1mm, điện áp: 100-240vac, hiệu: autonics,",
+          "365x126mm, điện áp: 220vac 50/60hz, nsx: shanghai",
+          "xi măng. điện áp: 8 - 12vdc,",
+          "trong nhà máy điện tử cảm biến",
+          "trí linh kiện, điện áp 24v, hiệu"
+        ],
+        "cable": [
+          "kiểm tra cáp",
+          "cable tester",
+          "cable testing",
+          "test cable",
+          "cáp mạng",
+          "cáp điện",
+          "cáp quang",
+          "cable fault",
+          "4mm, điện áp 24v, dòng điện 0,3a,",
+          "qua cảm biến, điện áp 24vdc. mới",
+          "ex-11eb, điện áp 12-24 vdc,kt: 19*5*6mm, không",
+          "điện áp: 10-30vdc, khoảng cách phát hiện:",
+          "2m điện áp 24vdc. bằng hợp kim",
+          "npn, điện áp: 12-24v, chiều dài: 2",
+          "d-m9bv, điện áp: 24v, dòng điện: 10ma,",
+          "15mm, điện áp 12-24vdc, hiệu autonics,hàng mới",
+          "chạy qua cảm biến, điện áp 24vdc.",
+          "model: dh-iiia, đ.áp: ac220v/1a, tốc độ phát",
+          "động, điện áp: 10v, kt: 4x4.6x22.8mm, nsx:",
+          "động, điện áp: 24vdc, dòng điện: 5-40ma,",
+          "áp 24v, dùng cho máy công nghiệp,",
+          "nguồn cấp: 12-24v.bằng hợp kim nhôm không",
+          "18x18x1mm, điện áp: 100-240vac, hiệu: autonics, hàng",
+          "điện áp: 220vac 50/60hz, nsx: shanghai spes,",
+          "e32-dc200b4, điện áp: 12-24v, cảm biến khoảng",
+          "măng. điện áp: 8 - 12vdc, tốc",
+          "điện áp 12-24 vdc/1w,kt: 44*27*18mm. mới 100%",
+          "điện áp: 12-24vdc. công suất:1-2 w, khoảng",
+          "linh kiện, điện áp 24v, hiệu oem,",
+          "thước 2x3cm, điện áp 24v, nsx: prosensor,",
+          "băng tải, điện áp: 24 vdc .",
+          "điện áp: 12-24v, nsx jiangzun sihun co.,ltd,",
+          "dòng cấp nguồn: 4.3ma, điện áp: 5v,dùng",
+          "cẩu tháp)nguồn cấp: 24vdc -kt: d97x120 mm,",
+          "khi chạy qua cảm biến, điện áp",
+          "e-eic31-60-a, hành trình 25mm, 2 trục, kt",
+          "vật thể trong dây chuyền sản xuất",
+          "hiện vật thể, dây chuyền tự động",
+          "quang nhỏ, dây dài khoảng 2 m.",
+          "chiều dài dây dẫn 2m, ngõ ra",
+          "nối liền dây điện 1m, hãng lefircko,hàng",
+          "hiện lỗi trong dây chuyền sản xuất",
+          "máy điện tử, dây chuyền tự động",
+          "phụ kiện dây nguồn kết nối, dùng",
+          "kích thước : m30 -dây dài 2m.",
+          "loại 2 dây. hiệu: autonics - mới",
+          "kim loại trong dây chuyền tự động"
+        ],
+        "otherEquipment": [
+          "máy đo",
+          "đo nhiệt",
+          "đo áp suất",
+          "đo lưu lượng",
+          "đo độ ẩm",
+          "temperature measurement",
+          "pressure gauge",
+          "flow meter",
+          "humidity meter",
+          "đo điện",
+          "đo công suất",
+          "multimeter",
+          "oscilloscope",
+          "clamp meter",
+          "Máy dò trượt",
+          "Bộ khuếch đại sợi quang",
+          "Bộ giám sát tốc độ quay",
+          "Breadboard cắm",
+          "Encoder",
+          "Bàn trượt vi chỉnh cơ khí",
+          "bị sử dụng các linh kiện quang",
+          "áp 24vdc. mới 100%.",
+          "dùng để phát hiện sự hiện diện",
+          "npn, dùng để phát hiện vị trí",
+          "sử dụng các linh kiện quang điện",
+          "hiệu điện cho thiết bị quang điện",
+          "lỗi trong dây chuyền sản xuất, hiệu",
+          "dò trượt dùng để phát hiện sự",
+          "hiệu điện dùng trong thiết bị công",
+          "nối, dùng để thu nhận dữ liệu",
+          "vật lý trên thiết bị module cảm",
+          "độ, hành trình thiết bị khi bị",
+          "tốc độ quay(thiết bị đo tín hiệu,",
+          "kiểm tra mạch điện thực tế trước",
+          "cảm biến quang e-msmd61n-2m. dùng phát hiện",
+          "của động cơ thiết bị cẩu tháp",
+          "encoder dbs36e-s3ak02500,(thiết bị đo tín hiệu, góc",
+          "loại, dùng trong thiết bị đo lường,",
+          "thiết bị sử dụng các linh kiện",
+          "cận dùng cho máy công nghiệp cảm",
+          "trên băng tải, máy gắn nhanh, máy",
+          "cảm biến từ máy công nghiệp cảm",
+          "hiện vật thể, mã hiệu: e3z-r61 2m",
+          "khoảng 2 m. model: fu-5fz, dùng trong",
+          "máy dò trượt phát",
+          "nhựa dùng cho máy tự động cảm",
+          "xi lanh nhựa máy tự động cảm",
+          "đo vị trí máy công nghiệp cảm",
+          "thể trong nhà máy điện tử, dây",
+          "biến cảm ứng máy công nghiệp cảm",
+          "đo độ rung máy sàng rung trong",
+          "chạm trong nhà máy điện tử cảm",
+          "vật thể trong máy in công nghiệp",
+          "feeder dành cho máy dán linh kiện,",
+          "mở công tắc máy in cảm biến",
+          "chính xác trong máy quang học và"
+        ],
+        "otherParts": [
+          "cáp nối",
+          "cable assy",
+          "đầu dò",
+          "probe",
+          "sensor",
+          "cảm biến",
+          "cable harness",
+          "fixture",
+          "holder",
+          "mounting bracket"
+        ]
+      },
+      "_detect": {
+        "balancing": [
+          {
+            "raw": "cân bằng",
+            "dia": true,
+            "key": "cân bằng",
+            "folded": "can bang"
+          },
+          {
+            "raw": "cân chỉnh cơ",
+            "dia": true,
+            "key": "cân chỉnh cơ",
+            "folded": "can chinh co"
+          },
+          {
+            "raw": "balancing",
+            "dia": false,
+            "key": "balancing",
+            "folded": "balancing"
+          },
+          {
+            "raw": "độ rung",
+            "dia": true,
+            "key": "độ rung",
+            "folded": "do rung"
+          },
+          {
+            "raw": "mất cân bằng",
+            "dia": true,
+            "key": "mất cân bằng",
+            "folded": "mat can bang"
+          },
+          {
+            "raw": "rotor balancing",
+            "dia": false,
+            "key": "rotor balancing",
+            "folded": "rotor balancing"
+          },
+          {
+            "raw": "dynamic balancing",
+            "dia": false,
+            "key": "dynamic balancing",
+            "folded": "dynamic balancing"
+          },
+          {
+            "raw": "static balancing",
+            "dia": false,
+            "key": "static balancing",
+            "folded": "static balancing"
+          },
+          {
+            "raw": "cân bằng động",
+            "dia": true,
+            "key": "cân bằng động",
+            "folded": "can bang dong"
+          },
+          {
+            "raw": "máy cân bằng",
+            "dia": true,
+            "key": "máy cân bằng",
+            "folded": "may can bang"
+          },
+          {
+            "raw": "balancing machine",
+            "dia": false,
+            "key": "balancing machine",
+            "folded": "balancing machine"
+          },
+          {
+            "raw": "balancing instrument",
+            "dia": false,
+            "key": "balancing instrument",
+            "folded": "balancing instrument"
+          }
+        ],
+        "testBench": [
+          {
+            "raw": "bàn kiểm tra",
+            "dia": true,
+            "key": "bàn kiểm tra",
+            "folded": "ban kiem tra"
+          },
+          {
+            "raw": "test bench",
+            "dia": false,
+            "key": "test bench",
+            "folded": "test bench"
+          },
+          {
+            "raw": "kiểm tra động cơ",
+            "dia": true,
+            "key": "kiểm tra động cơ",
+            "folded": "kiem tra dong co"
+          },
+          {
+            "raw": "bàn thử nghiệm",
+            "dia": true,
+            "key": "bàn thử nghiệm",
+            "folded": "ban thu nghiem"
+          },
+          {
+            "raw": "bàn đo",
+            "dia": true,
+            "key": "bàn đo",
+            "folded": "ban do"
+          },
+          {
+            "raw": "engine test bench",
+            "dia": false,
+            "key": "engine test bench",
+            "folded": "engine test bench"
+          },
+          {
+            "raw": "motor test bench",
+            "dia": false,
+            "key": "motor test bench",
+            "folded": "motor test bench"
+          }
+        ],
+        "semiconductor": [
+          {
+            "raw": "semiconductor",
+            "dia": false,
+            "key": "semiconductor",
+            "folded": "semiconductor"
+          },
+          {
+            "raw": "vi mạch",
+            "dia": true,
+            "key": "vi mạch",
+            "folded": "vi mach"
+          },
+          {
+            "raw": "IC",
+            "dia": false,
+            "key": "ic",
+            "folded": "ic"
+          },
+          {
+            "raw": "integrated circuit",
+            "dia": false,
+            "key": "integrated circuit",
+            "folded": "integrated circuit"
+          },
+          {
+            "raw": "wafer",
+            "dia": false,
+            "key": "wafer",
+            "folded": "wafer"
+          },
+          {
+            "raw": "kiểm tra IC",
+            "dia": true,
+            "key": "kiểm tra ic",
+            "folded": "kiem tra ic"
+          },
+          {
+            "raw": "die probing",
+            "dia": false,
+            "key": "die probing",
+            "folded": "die probing"
+          },
+          {
+            "raw": "burn-in",
+            "dia": false,
+            "key": "burn in",
+            "folded": "burn in"
+          },
+          {
+            "raw": "tester semiconductor",
+            "dia": false,
+            "key": "tester semiconductor",
+            "folded": "tester semiconductor"
+          },
+          {
+            "raw": "probe station",
+            "dia": false,
+            "key": "probe station",
+            "folded": "probe station"
+          },
+          {
+            "raw": "chip test",
+            "dia": false,
+            "key": "chip test",
+            "folded": "chip test"
+          }
+        ],
+        "opticalSurface": [
+          {
+            "raw": "đo bề mặt",
+            "dia": true,
+            "key": "đo bề mặt",
+            "folded": "do be mat"
+          },
+          {
+            "raw": "surface measurement",
+            "dia": false,
+            "key": "surface measurement",
+            "folded": "surface measurement"
+          },
+          {
+            "raw": "độ nhiễm bẩn bề mặt",
+            "dia": true,
+            "key": "độ nhiễm bẩn bề mặt",
+            "folded": "do nhiem ban be mat"
+          },
+          {
+            "raw": "surface contamination",
+            "dia": false,
+            "key": "surface contamination",
+            "folded": "surface contamination"
+          },
+          {
+            "raw": "surface profiler",
+            "dia": false,
+            "key": "surface profiler",
+            "folded": "surface profiler"
+          },
+          {
+            "raw": "độ nhám bề mặt",
+            "dia": true,
+            "key": "độ nhám bề mặt",
+            "folded": "do nham be mat"
+          },
+          {
+            "raw": "surface roughness",
+            "dia": false,
+            "key": "surface roughness",
+            "folded": "surface roughness"
+          },
+          {
+            "raw": "profilometer",
+            "dia": false,
+            "key": "profilometer",
+            "folded": "profilometer"
+          }
+        ],
+        "opticalAoi": [
+          {
+            "raw": "AOI",
+            "dia": false,
+            "key": "aoi",
+            "folded": "aoi"
+          },
+          {
+            "raw": "Automated Optical Inspection",
+            "dia": false,
+            "key": "automated optical inspection",
+            "folded": "automated optical inspection"
+          },
+          {
+            "raw": "kiểm tra lỗi mạch",
+            "dia": true,
+            "key": "kiểm tra lỗi mạch",
+            "folded": "kiem tra loi mach"
+          },
+          {
+            "raw": "PCB inspection",
+            "dia": false,
+            "key": "pcb inspection",
+            "folded": "pcb inspection"
+          },
+          {
+            "raw": "SMT inspection",
+            "dia": false,
+            "key": "smt inspection",
+            "folded": "smt inspection"
+          },
+          {
+            "raw": "optical AOI",
+            "dia": false,
+            "key": "optical aoi",
+            "folded": "optical aoi"
+          },
+          {
+            "raw": "AOI machine",
+            "dia": false,
+            "key": "aoi machine",
+            "folded": "aoi machine"
+          },
+          {
+            "raw": "kiểm tra mạch in",
+            "dia": true,
+            "key": "kiểm tra mạch in",
+            "folded": "kiem tra mach in"
+          },
+          {
+            "raw": "detecting defects",
+            "dia": false,
+            "key": "detecting defects",
+            "folded": "detecting defects"
+          },
+          {
+            "raw": "fault detection PCB",
+            "dia": false,
+            "key": "fault detection pcb",
+            "folded": "fault detection pcb"
+          },
+          {
+            "raw": "xác định lỗi",
+            "dia": true,
+            "key": "xác định lỗi",
+            "folded": "xac dinh loi"
+          },
+          {
+            "raw": "sửa lỗi mạch",
+            "dia": true,
+            "key": "sửa lỗi mạch",
+            "folded": "sua loi mach"
+          },
+          {
+            "raw": "inspection de default",
+            "dia": false,
+            "key": "inspection de default",
+            "folded": "inspection de default"
+          }
+        ],
+        "opticalOther": [
+          {
+            "raw": "quang học",
+            "dia": true,
+            "key": "quang học",
+            "folded": "quang hoc"
+          },
+          {
+            "raw": "optical",
+            "dia": false,
+            "key": "optical",
+            "folded": "optical"
+          },
+          {
+            "raw": "camera",
+            "dia": false,
+            "key": "camera",
+            "folded": "camera"
+          },
+          {
+            "raw": "visionsystem",
+            "dia": false,
+            "key": "visionsystem",
+            "folded": "visionsystem"
+          },
+          {
+            "raw": "visual inspection",
+            "dia": false,
+            "key": "visual inspection",
+            "folded": "visual inspection"
+          },
+          {
+            "raw": "optical instrument",
+            "dia": false,
+            "key": "optical instrument",
+            "folded": "optical instrument"
+          },
+          {
+            "raw": "optical measuring",
+            "dia": false,
+            "key": "optical measuring",
+            "folded": "optical measuring"
+          },
+          {
+            "raw": "spectrometer",
+            "dia": false,
+            "key": "spectrometer",
+            "folded": "spectrometer"
+          },
+          {
+            "raw": "colorimeter",
+            "dia": false,
+            "key": "colorimeter",
+            "folded": "colorimeter"
+          }
+        ],
+        "cable": [
+          {
+            "raw": "kiểm tra cáp",
+            "dia": true,
+            "key": "kiểm tra cáp",
+            "folded": "kiem tra cap"
+          },
+          {
+            "raw": "cable tester",
+            "dia": false,
+            "key": "cable tester",
+            "folded": "cable tester"
+          },
+          {
+            "raw": "cable testing",
+            "dia": false,
+            "key": "cable testing",
+            "folded": "cable testing"
+          },
+          {
+            "raw": "test cable",
+            "dia": false,
+            "key": "test cable",
+            "folded": "test cable"
+          },
+          {
+            "raw": "cáp mạng",
+            "dia": true,
+            "key": "cáp mạng",
+            "folded": "cap mang"
+          },
+          {
+            "raw": "cáp điện",
+            "dia": true,
+            "key": "cáp điện",
+            "folded": "cap dien"
+          },
+          {
+            "raw": "cáp quang",
+            "dia": true,
+            "key": "cáp quang",
+            "folded": "cap quang"
+          },
+          {
+            "raw": "cable fault",
+            "dia": false,
+            "key": "cable fault",
+            "folded": "cable fault"
+          }
+        ],
+        "otherEquipment": [
+          {
+            "raw": "máy đo",
+            "dia": true,
+            "key": "máy đo",
+            "folded": "may do"
+          },
+          {
+            "raw": "đo nhiệt",
+            "dia": true,
+            "key": "đo nhiệt",
+            "folded": "do nhiet"
+          },
+          {
+            "raw": "đo áp suất",
+            "dia": true,
+            "key": "đo áp suất",
+            "folded": "do ap suat"
+          },
+          {
+            "raw": "đo lưu lượng",
+            "dia": true,
+            "key": "đo lưu lượng",
+            "folded": "do luu luong"
+          },
+          {
+            "raw": "đo độ ẩm",
+            "dia": true,
+            "key": "đo độ ẩm",
+            "folded": "do do am"
+          },
+          {
+            "raw": "temperature measurement",
+            "dia": false,
+            "key": "temperature measurement",
+            "folded": "temperature measurement"
+          },
+          {
+            "raw": "pressure gauge",
+            "dia": false,
+            "key": "pressure gauge",
+            "folded": "pressure gauge"
+          },
+          {
+            "raw": "flow meter",
+            "dia": false,
+            "key": "flow meter",
+            "folded": "flow meter"
+          },
+          {
+            "raw": "humidity meter",
+            "dia": false,
+            "key": "humidity meter",
+            "folded": "humidity meter"
+          },
+          {
+            "raw": "đo điện",
+            "dia": true,
+            "key": "đo điện",
+            "folded": "do dien"
+          },
+          {
+            "raw": "đo công suất",
+            "dia": true,
+            "key": "đo công suất",
+            "folded": "do cong suat"
+          },
+          {
+            "raw": "multimeter",
+            "dia": false,
+            "key": "multimeter",
+            "folded": "multimeter"
+          },
+          {
+            "raw": "oscilloscope",
+            "dia": false,
+            "key": "oscilloscope",
+            "folded": "oscilloscope"
+          },
+          {
+            "raw": "clamp meter",
+            "dia": false,
+            "key": "clamp meter",
+            "folded": "clamp meter"
+          },
+          {
+            "raw": "Máy dò trượt",
+            "dia": true,
+            "key": "máy dò trượt",
+            "folded": "may do truot"
+          }
+        ],
+        "otherParts": [
+          {
+            "raw": "cáp nối",
+            "dia": true,
+            "key": "cáp nối",
+            "folded": "cap noi"
+          },
+          {
+            "raw": "cable assy",
+            "dia": false,
+            "key": "cable assy",
+            "folded": "cable assy"
+          },
+          {
+            "raw": "đầu dò",
+            "dia": true,
+            "key": "đầu dò",
+            "folded": "dau do"
+          },
+          {
+            "raw": "probe",
+            "dia": false,
+            "key": "probe",
+            "folded": "probe"
+          },
+          {
+            "raw": "sensor",
+            "dia": false,
+            "key": "sensor",
+            "folded": "sensor"
+          },
+          {
+            "raw": "cảm biến",
+            "dia": true,
+            "key": "cảm biến",
+            "folded": "cam bien"
+          },
+          {
+            "raw": "cable harness",
+            "dia": false,
+            "key": "cable harness",
+            "folded": "cable harness"
+          },
+          {
+            "raw": "fixture",
+            "dia": false,
+            "key": "fixture",
+            "folded": "fixture"
+          },
+          {
+            "raw": "holder",
+            "dia": false,
+            "key": "holder",
+            "folded": "holder"
+          },
+          {
+            "raw": "mounting bracket",
+            "dia": false,
+            "key": "mounting bracket",
+            "folded": "mounting bracket"
+          }
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-9031-bal",
+      "priority": 90,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "balancing"
+      },
+      "hs": "90311000",
+      "gir": "GIR 6",
+      "reasonVi": "Máy đo cân bằng cơ khí → 9031.10.",
+      "source": "Biểu thuế 2026 dòng 9031.10.00; Chú giải 9031(A)(1)"
+    },
+    {
+      "id": "r-9031-tb",
+      "priority": 90,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "testBench"
+      },
+      "hs": "90312000",
+      "gir": "GIR 6",
+      "reasonVi": "Bàn kiểm tra động cơ/máy phát/bơm → 9031.20.",
+      "source": "Biểu thuế 2026 dòng 9031.20.00; Chú giải 9031(A)(2)"
+    },
+    {
+      "id": "r-9031-semi",
+      "priority": 90,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "semiconductor"
+      },
+      "hs": "90314100",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị kiểm tra vi mạch/IC/semiconductor → 9031.41.",
+      "source": "Biểu thuế 2026 dòng 9031.41.00; GIR 6 phân biệt với 9031.49"
+    },
+    {
+      "id": "r-9031-optsurf",
+      "priority": 90,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "opticalSurface"
+      },
+      "hs": "90314910",
+      "gir": "GIR 6",
+      "reasonVi": "Dụng cụ quang học đo độ nhiễm bẩn bề mặt → 9031.49.10.",
+      "source": "Biểu thuế 2026 dòng 9031.49.10; GIR 6 với 9031.49.20/30/90"
+    },
+    {
+      "id": "r-9031-optaoi",
+      "priority": 90,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "opticalAoi"
+      },
+      "hs": "90314920",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị quang học AOI xác định/sửa lỗi PCB → 9031.49.20.",
+      "source": "Biểu thuế 2026 dòng 9031.49.20; GIR 6 với 9031.49.10/30/90"
+    },
+    {
+      "id": "r-9031-optother",
+      "priority": 70,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "opticalOther"
+      },
+      "hs": "90314930",
+      "gir": "GIR 6",
+      "reasonVi": "Dụng cụ quang học đo/kiểm tra khác (không phải AOI hay đo bề mặt) → 9031.49.30.",
+      "source": "Biểu thuế 2026 dòng 9031.49.30; GIR 6 với 9031.49.10/20/90"
+    },
+    {
+      "id": "r-9031-optres",
+      "priority": 30,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "opticalOther"
+      },
+      "hs": "90314990",
+      "gir": "GIR 3",
+      "reasonVi": "Quang học đo/kiểm tra khác không phân loại được ở 9031.49.10/20/30 → residual 9031.49.90.",
+      "source": "Biểu thuế 2026 dòng 9031.49.90"
+    },
+    {
+      "id": "r-9031-cable",
+      "priority": 90,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "cable"
+      },
+      "hs": "90318010",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị kiểm tra cáp → 9031.80.10.",
+      "source": "Biểu thuế 2026 dòng 9031.80.10; GIR 6 với 9031.80.90"
+    },
+    {
+      "id": "r-9031-othequip",
+      "priority": 50,
+      "when": {
+        "itemKind": "equipment",
+        "measKind": "otherEquipment"
+      },
+      "hs": "90318090",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị đo/kiểm tra khác (multimeter, oscilloscope, pressure gauge...) → 9031.80.90.",
+      "source": "Biểu thuế 2026 dòng 9031.80.90"
+    },
+    {
+      "id": "r-9031-ptsurf",
+      "priority": 90,
+      "when": {
+        "itemKind": "parts",
+        "measKind": "opticalSurface"
+      },
+      "hs": "90319030",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận cho thiết bị quang học đo bề mặt → 9031.90.30.",
+      "source": "Biểu thuế 2026 dòng 9031.90.30; GIR 6 với 9031.90.40/50/90"
+    },
+    {
+      "id": "r-9031-ptaoi",
+      "priority": 90,
+      "when": {
+        "itemKind": "parts",
+        "measKind": "opticalAoi"
+      },
+      "hs": "90319040",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận cho thiết bị quang học AOI → 9031.90.40.",
+      "source": "Biểu thuế 2026 dòng 9031.90.40; GIR 6 với 9031.90.30/50/90"
+    },
+    {
+      "id": "r-9031-ptother",
+      "priority": 70,
+      "when": {
+        "itemKind": "parts",
+        "measKind": "opticalOther"
+      },
+      "hs": "90319050",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận cho dụng cụ quang học đo/kiểm tra khác → 9031.90.50.",
+      "source": "Biểu thuế 2026 dòng 9031.90.50; GIR 6 với 9031.90.30/40/90"
+    },
+    {
+      "id": "r-9031-ptres",
+      "priority": 30,
+      "when": {
+        "itemKind": "parts",
+        "measKind": "otherParts"
+      },
+      "hs": "90319090",
+      "gir": "GIR 3",
+      "reasonVi": "Bộ phận/phụ kiện đo/kiểm tra khác không phân loại được ở 9031.90.30/40/50 → residual 9031.90.90.",
+      "source": "Biểu thuế 2026 dòng 9031.90.90"
+    }
+  ],
+  "inputAttributes": [
+    "itemKind",
+    "measKind"
+  ],
+  "attributes": {
+    "itemKind": {
+      "type": "enum",
+      "labelVi": "itemKind",
+      "domain": [
+        "equipment",
+        "parts"
+      ],
+      "detect": {
+        "equipment": [
+          "equipment"
+        ],
+        "parts": [
+          "parts"
+        ]
+      }
+    },
+    "measKind": {
+      "type": "enum",
+      "labelVi": "measKind",
+      "domain": [
+        "balancing",
+        "cable",
+        "opticalAoi",
+        "opticalOther",
+        "opticalSurface",
+        "otherEquipment",
+        "otherParts",
+        "semiconductor",
+        "testBench"
+      ],
+      "detect": {
+        "balancing": [
+          "balancing"
+        ],
+        "cable": [
+          "cable"
+        ],
+        "opticalAoi": [
+          "opticalaoi"
+        ],
+        "opticalOther": [
+          "opticalother"
+        ],
+        "opticalSurface": [
+          "opticalsurface"
+        ],
+        "otherEquipment": [
+          "otherequipment"
+        ],
+        "otherParts": [
+          "otherparts"
+        ],
+        "semiconductor": [
+          "semiconductor"
+        ],
+        "testBench": [
+          "testbench"
+        ]
+      }
+    }
+  },
+  "essenceVi": "itemKind + measKind"
+}

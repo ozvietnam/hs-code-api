@@ -1,0 +1,236 @@
+{
+  "heading": "8483",
+  "titleVi": "Trục truyền động, bánh răng, hộp số, cơ cấu thay đổi tốc độ và bộ phận của chúng (84.83)",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "partKind",
+      "type": "enum",
+      "labelVi": "Loại bộ phận máy",
+      "questionVi": "Bộ phận thuộc loại nào: trục truyền động, ổ bi, ổ trượt, bánh răng/hộp số, puly/ròng rọc, ly hợp/khớp nối, hay bộ phận khác?",
+      "domain": [
+        "shaft",
+        "bearing_ball",
+        "bearing_plain",
+        "gearbox",
+        "pulley",
+        "clutch",
+        "coupling",
+        "other_part"
+      ],
+      "detect": {
+        "shaft": [
+          "trục",
+          "truyền động",
+          "cam",
+          "camshaft",
+          "crank",
+          "vít me",
+          "tay biên",
+          "thanh răng",
+          "trượt tuyến tính",
+          "trục truyền động",
+          "trục lăn",
+          "truyền động mềm",
+          "trục chuyển động",
+          "piston"
+        ],
+        "bearing_ball": [
+          "vòng bi đỡ",
+          "con lăn có vòng bi"
+        ],
+        "bearing_plain": [
+          "bạc",
+          "bạc đồng",
+          "gối đỡ",
+          "con trượt",
+          "ổ trượt",
+          "bạc biên",
+          "bạc spiden",
+          "cốc bi"
+        ],
+        "gearbox": [
+          "hộp số",
+          "hộp giảm tốc",
+          "hộp điều tốc",
+          "bộ truyền động tuyến tính",
+          "mô đun truyền động",
+          "cụm bánh răng",
+          "bánh răng",
+          "bánh răng nhựa",
+          "bánh răng hỗ trợ",
+          "cụm bánh răng",
+          "bánh răng trục vít",
+          "bánh răng tải",
+          "thanh dẫn hướng tuyến tính",
+          "bàn trượt trục vit me",
+          "bộ chia độ cam",
+          "bộ chống quay ngược",
+          "truyền động tuyến tính",
+          "mô đun truyền động",
+          "bộ dẫn hướng tuyến tính",
+          "bộ truyền động vít me"
+        ],
+        "pulley": [
+          "puli",
+          "puly",
+          "ròng rọc",
+          "pu ly",
+          "con lăn"
+        ],
+        "clutch": [
+          "ly hợp",
+          "clutch"
+        ],
+        "coupling": [
+          "khớp nối"
+        ],
+        "other_part": [
+          "bộ phận",
+          "cơ cấu",
+          "thanh bánh răng",
+          "bàn trượt chéo",
+          "bộ dẫn hướng",
+          "thanh bánh răng",
+          "nhông",
+          "cụm kích tăng"
+        ]
+      }
+    },
+    {
+      "attribute": "material",
+      "type": "enum",
+      "labelVi": "Chất liệu",
+      "questionVi": "Bộ phận làm bằng vật liệu gì?",
+      "domain": [
+        "steel",
+        "cast_iron",
+        "aluminum",
+        "copper",
+        "plastic",
+        "stainless_steel",
+        "other"
+      ],
+      "detect": {
+        "steel": [
+          "thép",
+          "sắt"
+        ],
+        "cast_iron": [
+          "gang"
+        ],
+        "aluminum": [
+          "nhôm",
+          "hợp kim nhôm"
+        ],
+        "copper": [
+          "đồng"
+        ],
+        "plastic": [
+          "nhựa",
+          "PP",
+          "PE",
+          "PA",
+          "PU",
+          "PTFE"
+        ],
+        "stainless_steel": [
+          "inox",
+          "thép không gỉ",
+          "thép mạ"
+        ],
+        "other": []
+      }
+    }
+  ],
+  "hitPolicy": "FIRST",
+  "attributes": {
+    "partKind": "Loại bộ phận",
+    "material": "Chất liệu"
+  },
+  "rules": [
+    {
+      "id": "r01",
+      "priority": 10,
+      "when": {
+        "partKind": "gearbox"
+      },
+      "hs": "84834090",
+      "reasonVi": "Hộp số/hộp giảm tốc → 84834090",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r02",
+      "priority": 10,
+      "when": {
+        "partKind": "pulley"
+      },
+      "hs": "84835000",
+      "reasonVi": "Puli, ròng rọc → 84835000",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r03",
+      "priority": 10,
+      "when": {
+        "partKind": "bearing_plain"
+      },
+      "hs": "84833090",
+      "reasonVi": "Ổ trượt (bạc đồng, gối đỡ, con trượt) → 84833090",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r04",
+      "priority": 10,
+      "when": {
+        "partKind": "bearing_ball"
+      },
+      "hs": "84832090",
+      "reasonVi": "Ổ bi/lăn → 84832090",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r05",
+      "priority": 10,
+      "when": {
+        "partKind": "shaft"
+      },
+      "hs": "84831090",
+      "reasonVi": "Trục truyền động → 84831090",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r06",
+      "priority": 10,
+      "when": {
+        "partKind": "coupling"
+      },
+      "hs": "84836000",
+      "reasonVi": "Khớp nối → 84836000",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r07",
+      "priority": 10,
+      "when": {
+        "partKind": "clutch"
+      },
+      "hs": "84836000",
+      "reasonVi": "Ly hợp → 84836000",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r08",
+      "priority": 10,
+      "when": {
+        "partKind": "other_part"
+      },
+      "hs": "84839099",
+      "reasonVi": "Bộ phận khác → 84839099",
+      "source": "Biểu thuế NK VN 2026"
+    }
+  ],
+  "leaves": {},
+  "sourceVi": "Biểu thuế NK VN 2026 nhóm 84.83",
+  "essenceTestVi": "Trục truyền động, bánh răng, hộp số, cơ cấu thay đổi tốc độ, bộ binh lực và bộ phận — phân biệt theo partKind (loại bộ phận) trước, vật liệu sau."
+}

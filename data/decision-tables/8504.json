@@ -1,0 +1,4913 @@
+{
+  "heading": "8504",
+  "description": "Electric transformers, static converters (e.g. rectifiers) and inductors",
+  "sourceVi": "Bảng quyết định do giám đốc Hermes-211 xây dựng từ phân tích biểu thuế VN 2024 và chú giải WCO, 02/10/2026.",
+  "verified": false,
+  "rules": [
+    {
+      "id": "8504-r001",
+      "priority": 1,
+      "hs": "85041000",
+      "reasonVi": "Phân loại 85041000 theo GIR 6: productType=ballast, senMarked=nonSen, powerkVA=unspecified, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "ballast",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r002",
+      "priority": 2,
+      "hs": "85042111",
+      "reasonVi": "Phân loại 85042111 theo GIR 6: productType=transformer_gt1kVA, senMarked=sen, powerkVA=gt1le10, voltageClass=ge110, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "ge110",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r003",
+      "priority": 3,
+      "hs": "85042119",
+      "reasonVi": "Phân loại 85042119 theo GIR 6: productType=transformer_gt1kVA, senMarked=sen, powerkVA=gt1le10, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r004",
+      "priority": 4,
+      "hs": "85042192",
+      "reasonVi": "Phân loại 85042192 theo GIR 6: productType=transformer_gt1kVA, senMarked=sen, powerkVA=gt10le15, voltageClass=ge110, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt10le15",
+        "voltageClass": "ge110",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r005",
+      "priority": 5,
+      "hs": "85042193",
+      "reasonVi": "Phân loại 85042193 theo GIR 6: productType=transformer_gt1kVA, senMarked=sen, powerkVA=gt10le15, voltageClass=ge66lt110, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt10le15",
+        "voltageClass": "ge66lt110",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r006",
+      "priority": 6,
+      "hs": "85042199",
+      "reasonVi": "Phân loại 85042199 theo GIR 6: productType=transformer_gt1kVA, senMarked=nonSen, powerkVA=gt1le10, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r007",
+      "priority": 7,
+      "hs": "85042211",
+      "reasonVi": "Phân loại 85042211 theo GIR 6: productType=transformer_gt1kVA, senMarked=sen, powerkVA=gt15le20, voltageClass=ge66lt110, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "ge66lt110",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r008",
+      "priority": 8,
+      "hs": "85042219",
+      "reasonVi": "Phân loại 85042219 theo GIR 6: productType=transformer_gt1kVA, senMarked=sen, powerkVA=gt15le20, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r009",
+      "priority": 9,
+      "hs": "85042292",
+      "reasonVi": "Phân loại 85042292 theo GIR 6: productType=transformer_gt1kVA, senMarked=sen, powerkVA=gt15le20, voltageClass=ge110, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "ge110",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r010",
+      "priority": 10,
+      "hs": "85042293",
+      "reasonVi": "Phân loại 85042293 theo GIR 6: productType=transformer_gt1kVA, senMarked=sen, powerkVA=gt15le20, voltageClass=ge66lt110, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "ge66lt110",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r011",
+      "priority": 11,
+      "hs": "85042299",
+      "reasonVi": "Phân loại 85042299 theo GIR 6: productType=transformer_gt1kVA, senMarked=nonSen, powerkVA=gt15le20, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r012",
+      "priority": 12,
+      "hs": "85042310",
+      "reasonVi": "Phân loại 85042310 theo GIR 6: productType=transformer_gt1kVA, senMarked=nonSen, powerkVA=le2500, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le2500",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r013",
+      "priority": 13,
+      "hs": "85042321",
+      "reasonVi": "Phân loại 85042321 theo GIR 6: productType=transformer_gt1kVA, senMarked=nonSen, powerkVA=gt15le20, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r014",
+      "priority": 14,
+      "hs": "85042322",
+      "reasonVi": "Phân loại 85042322 theo GIR 6: productType=transformer_gt1kVA, senMarked=nonSen, powerkVA=gt20le30, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt20le30",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r015",
+      "priority": 15,
+      "hs": "85042329",
+      "reasonVi": "Phân loại 85042329 theo GIR 6: productType=transformer_gt1kVA, senMarked=nonSen, powerkVA=gt30, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r016",
+      "priority": 16,
+      "hs": "85043111",
+      "reasonVi": "Phân loại 85043111 theo GIR 6: productType=transformer_le1kVA, senMarked=nonSen, powerkVA=le1, voltageClass=ge110, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "ge110",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r017",
+      "priority": 17,
+      "hs": "85043112",
+      "reasonVi": "Phân loại 85043112 theo GIR 6: productType=transformer_le1kVA, senMarked=nonSen, powerkVA=le1, voltageClass=ge66lt110, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "ge66lt110",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r018",
+      "priority": 18,
+      "hs": "85043113",
+      "reasonVi": "Phân loại 85043113 theo GIR 6: productType=transformer_le1kVA, senMarked=nonSen, powerkVA=le1, voltageClass=ge1lt66, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "ge1lt66",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r019",
+      "priority": 19,
+      "hs": "85043119",
+      "reasonVi": "Phân loại 85043119 theo GIR 6: productType=transformer_le1kVA, senMarked=nonSen, powerkVA=le1, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r020",
+      "priority": 20,
+      "hs": "85043121",
+      "reasonVi": "Phân loại 85043121 theo GIR 6: productType=transformer_le1kVA, senMarked=sen, powerkVA=le1, voltageClass=lt1, specialType=currentTransformer",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "lt1",
+        "specialType": "currentTransformer"
+      }
+    },
+    {
+      "id": "8504-r021",
+      "priority": 21,
+      "hs": "85043122",
+      "reasonVi": "Phân loại 85043122 theo GIR 6: productType=transformer_le1kVA, senMarked=nonSen, powerkVA=le1, voltageClass=unspecified, specialType=currentTransformer",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "currentTransformer"
+      }
+    },
+    {
+      "id": "8504-r022",
+      "priority": 22,
+      "hs": "85043123",
+      "reasonVi": "Phân loại 85043123 theo GIR 6: productType=transformer_le1kVA, senMarked=sen, powerkVA=le1, voltageClass=ge66lt110, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "ge66lt110",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r023",
+      "priority": 23,
+      "hs": "85043124",
+      "reasonVi": "Phân loại 85043124 theo GIR 6: productType=transformer_le1kVA, senMarked=sen, powerkVA=le1, voltageClass=ge1lt66, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "ge1lt66",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r024",
+      "priority": 24,
+      "hs": "85043130",
+      "reasonVi": "Phân loại 85043130 theo GIR 6: productType=transformer_le1kVA, senMarked=sen, powerkVA=le1, voltageClass=unspecified, specialType=freqScan",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "freqScan"
+      }
+    },
+    {
+      "id": "8504-r025",
+      "priority": 25,
+      "hs": "85043140",
+      "reasonVi": "Phân loại 85043140 theo GIR 6: productType=transformer_le1kVA, senMarked=nonSen, powerkVA=le1, voltageClass=unspecified, specialType=ifTransformer",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "ifTransformer"
+      }
+    },
+    {
+      "id": "8504-r026",
+      "priority": 26,
+      "hs": "85043191",
+      "reasonVi": "Phân loại 85043191 theo GIR 6: productType=transformer_le1kVA, senMarked=nonSen, powerkVA=le1, voltageClass=unspecified, specialType=toys",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "toys"
+      }
+    },
+    {
+      "id": "8504-r027",
+      "priority": 27,
+      "hs": "85043192",
+      "reasonVi": "Phân loại 85043192 theo GIR 6: productType=transformer_le1kVA, senMarked=sen, powerkVA=le1, voltageClass=unspecified, specialType=adapter",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      }
+    },
+    {
+      "id": "8504-r028",
+      "priority": 28,
+      "hs": "85043193",
+      "reasonVi": "Phân loại 85043193 theo GIR 6: productType=transformer_le1kVA, senMarked=sen, powerkVA=le1, voltageClass=unspecified, specialType=stepUpDown",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "stepUpDown"
+      }
+    },
+    {
+      "id": "8504-r029",
+      "priority": 29,
+      "hs": "85043199",
+      "reasonVi": "Phân loại 85043199 theo GIR 6: productType=transformer_le1kVA, senMarked=nonSen, powerkVA=le1, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r030",
+      "priority": 30,
+      "hs": "85043211",
+      "reasonVi": "Phân loại 85043211 theo GIR 6: productType=transformer_1to16kVA, senMarked=sen, powerkVA=gt1le10, voltageClass=unspecified, specialType=adapter",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      }
+    },
+    {
+      "id": "8504-r031",
+      "priority": 31,
+      "hs": "85043219",
+      "reasonVi": "Phân loại 85043219 theo GIR 6: productType=transformer_1to16kVA, senMarked=nonSen, powerkVA=gt1le10, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r032",
+      "priority": 32,
+      "hs": "85043220",
+      "reasonVi": "Phân loại 85043220 theo GIR 6: productType=transformer_1to16kVA, senMarked=nonSen, powerkVA=gt1le10, voltageClass=unspecified, specialType=toys",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "toys"
+      }
+    },
+    {
+      "id": "8504-r033",
+      "priority": 33,
+      "hs": "85043230",
+      "reasonVi": "Phân loại 85043230 theo GIR 6: productType=transformer_1to16kVA, senMarked=nonSen, powerkVA=gt1le10, voltageClass=unspecified, specialType=ifTransformer",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "ifTransformer"
+      }
+    },
+    {
+      "id": "8504-r034",
+      "priority": 34,
+      "hs": "85043241",
+      "reasonVi": "Phân loại 85043241 theo GIR 6: productType=transformer_1to16kVA, senMarked=sen, powerkVA=gt10le15, voltageClass=unspecified, specialType=adapter",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt10le15",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      }
+    },
+    {
+      "id": "8504-r035",
+      "priority": 35,
+      "hs": "85043249",
+      "reasonVi": "Phân loại 85043249 theo GIR 6: productType=transformer_1to16kVA, senMarked=nonSen, powerkVA=gt10le15, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt10le15",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r036",
+      "priority": 36,
+      "hs": "85043251",
+      "reasonVi": "Phân loại 85043251 theo GIR 6: productType=transformer_1to16kVA, senMarked=sen, powerkVA=gt15le20, voltageClass=unspecified, specialType=adapter",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      }
+    },
+    {
+      "id": "8504-r037",
+      "priority": 37,
+      "hs": "85043259",
+      "reasonVi": "Phân loại 85043259 theo GIR 6: productType=transformer_1to16kVA, senMarked=nonSen, powerkVA=gt15le20, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r038",
+      "priority": 38,
+      "hs": "85043311",
+      "reasonVi": "Phân loại 85043311 theo GIR 6: productType=transformer_16to630kVA, senMarked=sen, powerkVA=gt15le20, voltageClass=unspecified, specialType=adapter",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_16to630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      }
+    },
+    {
+      "id": "8504-r039",
+      "priority": 39,
+      "hs": "85043319",
+      "reasonVi": "Phân loại 85043319 theo GIR 6: productType=transformer_16to630kVA, senMarked=sen, powerkVA=gt15le20, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_16to630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r040",
+      "priority": 40,
+      "hs": "85043391",
+      "reasonVi": "Phân loại 85043391 theo GIR 6: productType=transformer_16to630kVA, senMarked=nonSen, powerkVA=gt15le20, voltageClass=unspecified, specialType=adapter",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_16to630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      }
+    },
+    {
+      "id": "8504-r041",
+      "priority": 41,
+      "hs": "85043399",
+      "reasonVi": "Phân loại 85043399 theo GIR 6: productType=transformer_16to630kVA, senMarked=nonSen, powerkVA=gt15le20, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_16to630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r042",
+      "priority": 42,
+      "hs": "85043411",
+      "reasonVi": "Phân loại 85043411 theo GIR 6: productType=transformer_gt630kVA, senMarked=sen, powerkVA=gt15le20, voltageClass=unspecified, specialType=adapter",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      }
+    },
+    {
+      "id": "8504-r043",
+      "priority": 43,
+      "hs": "85043412",
+      "reasonVi": "Phân loại 85043412 theo GIR 6: productType=transformer_gt630kVA, senMarked=sen, powerkVA=gt15le20, voltageClass=unspecified, specialType=dryExplosionProof",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "dryExplosionProof"
+      }
+    },
+    {
+      "id": "8504-r044",
+      "priority": 44,
+      "hs": "85043413",
+      "reasonVi": "Phân loại 85043413 theo GIR 6: productType=transformer_gt630kVA, senMarked=sen, powerkVA=gt15le20, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r045",
+      "priority": 45,
+      "hs": "85043414",
+      "reasonVi": "Phân loại 85043414 theo GIR 6: productType=transformer_gt630kVA, senMarked=nonSen, powerkVA=gt15le20, voltageClass=unspecified, specialType=adapter",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      }
+    },
+    {
+      "id": "8504-r046",
+      "priority": 46,
+      "hs": "85043415",
+      "reasonVi": "Phân loại 85043415 theo GIR 6: productType=transformer_gt630kVA, senMarked=nonSen, powerkVA=gt15le20, voltageClass=unspecified, specialType=dryExplosionProof",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "dryExplosionProof"
+      }
+    },
+    {
+      "id": "8504-r047",
+      "priority": 47,
+      "hs": "85043419",
+      "reasonVi": "Phân loại 85043419 theo GIR 6: productType=transformer_gt630kVA, senMarked=nonSen, powerkVA=gt15le20, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r048",
+      "priority": 48,
+      "hs": "85043422",
+      "reasonVi": "Phân loại 85043422 theo GIR 6: productType=transformer_gt630kVA, senMarked=sen, powerkVA=gt30, voltageClass=unspecified, specialType=adapter",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      }
+    },
+    {
+      "id": "8504-r049",
+      "priority": 49,
+      "hs": "85043423",
+      "reasonVi": "Phân loại 85043423 theo GIR 6: productType=transformer_gt630kVA, senMarked=sen, powerkVA=gt30, voltageClass=unspecified, specialType=dryExplosionProof",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "dryExplosionProof"
+      }
+    },
+    {
+      "id": "8504-r050",
+      "priority": 50,
+      "hs": "85043424",
+      "reasonVi": "Phân loại 85043424 theo GIR 6: productType=transformer_gt630kVA, senMarked=sen, powerkVA=gt30, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r051",
+      "priority": 51,
+      "hs": "85043425",
+      "reasonVi": "Phân loại 85043425 theo GIR 6: productType=transformer_gt630kVA, senMarked=nonSen, powerkVA=gt30, voltageClass=unspecified, specialType=adapter",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      }
+    },
+    {
+      "id": "8504-r052",
+      "priority": 52,
+      "hs": "85043426",
+      "reasonVi": "Phân loại 85043426 theo GIR 6: productType=transformer_gt630kVA, senMarked=nonSen, powerkVA=gt30, voltageClass=unspecified, specialType=dryExplosionProof",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "dryExplosionProof"
+      }
+    },
+    {
+      "id": "8504-r053",
+      "priority": 53,
+      "hs": "85043429",
+      "reasonVi": "Phân loại 85043429 theo GIR 6: productType=transformer_gt630kVA, senMarked=nonSen, powerkVA=gt30, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r054",
+      "priority": 54,
+      "hs": "85044011",
+      "reasonVi": "Phân loại 85044011 theo GIR 6: productType=staticConverter, senMarked=sen, powerkVA=unspecified, voltageClass=unspecified, specialType=ups",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "staticConverter",
+        "senMarked": "sen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "ups"
+      }
+    },
+    {
+      "id": "8504-r055",
+      "priority": 55,
+      "hs": "85044019",
+      "reasonVi": "Phân loại 85044019 theo GIR 6: productType=staticConverter, senMarked=nonSen, powerkVA=unspecified, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "staticConverter",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r056",
+      "priority": 56,
+      "hs": "85044020",
+      "reasonVi": "Phân loại 85044020 theo GIR 6: productType=staticConverter, senMarked=nonSen, powerkVA=gt10000, voltageClass=unspecified, specialType=batteryCharger",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "staticConverter",
+        "senMarked": "nonSen",
+        "powerkVA": "gt10000",
+        "voltageClass": "unspecified",
+        "specialType": "batteryCharger"
+      }
+    },
+    {
+      "id": "8504-r057",
+      "priority": 57,
+      "hs": "85044030",
+      "reasonVi": "Phân loại 85044030 theo GIR 6: productType=staticConverter, senMarked=nonSen, powerkVA=unspecified, voltageClass=unspecified, specialType=rectifier",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "staticConverter",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "rectifier"
+      }
+    },
+    {
+      "id": "8504-r058",
+      "priority": 58,
+      "hs": "85044040",
+      "reasonVi": "Phân loại 85044040 theo GIR 6: productType=staticConverter, senMarked=nonSen, powerkVA=unspecified, voltageClass=unspecified, specialType=inverter",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "staticConverter",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "inverter"
+      }
+    },
+    {
+      "id": "8504-r059",
+      "priority": 59,
+      "hs": "85044090",
+      "reasonVi": "Phân loại 85044090 theo GIR 6: productType=staticConverter, senMarked=nonSen, powerkVA=unspecified, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "staticConverter",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r060",
+      "priority": 60,
+      "hs": "85045010",
+      "reasonVi": "Phân loại 85045010 theo GIR 6: productType=inductor, senMarked=nonSen, powerkVA=unspecified, voltageClass=unspecified, specialType=dataProcInductor",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "inductor",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "dataProcInductor"
+      }
+    },
+    {
+      "id": "8504-r061",
+      "priority": 61,
+      "hs": "85045020",
+      "reasonVi": "Phân loại 85045020 theo GIR 6: productType=inductor, senMarked=sen, powerkVA=unspecified, voltageClass=unspecified, specialType=chipInductor",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "inductor",
+        "senMarked": "sen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "chipInductor"
+      }
+    },
+    {
+      "id": "8504-r062",
+      "priority": 62,
+      "hs": "85045093",
+      "reasonVi": "Phân loại 85045093 theo GIR 6: productType=inductor, senMarked=nonSen, powerkVA=le2500, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "inductor",
+        "senMarked": "nonSen",
+        "powerkVA": "le2500",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r063",
+      "priority": 63,
+      "hs": "85045094",
+      "reasonVi": "Phân loại 85045094 theo GIR 6: productType=inductor, senMarked=nonSen, powerkVA=gt2500le10000, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "inductor",
+        "senMarked": "nonSen",
+        "powerkVA": "gt2500le10000",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r064",
+      "priority": 64,
+      "hs": "85045095",
+      "reasonVi": "Phân loại 85045095 theo GIR 6: productType=inductor, senMarked=nonSen, powerkVA=gt10000, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "inductor",
+        "senMarked": "nonSen",
+        "powerkVA": "gt10000",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r065",
+      "priority": 65,
+      "hs": "85049010",
+      "reasonVi": "Phân loại 85049010 theo GIR 6: productType=parts, senMarked=nonSen, powerkVA=unspecified, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "parts",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r066",
+      "priority": 66,
+      "hs": "85049020",
+      "reasonVi": "Phân loại 85049020 theo GIR 6: productType=parts, senMarked=nonSen, powerkVA=unspecified, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "parts",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r067",
+      "priority": 67,
+      "hs": "85049031",
+      "reasonVi": "Phân loại 85049031 theo GIR 6: productType=parts, senMarked=nonSen, powerkVA=unspecified, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "parts",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r068",
+      "priority": 68,
+      "hs": "85049039",
+      "reasonVi": "Phân loại 85049039 theo GIR 6: productType=parts, senMarked=nonSen, powerkVA=unspecified, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "parts",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r069",
+      "priority": 69,
+      "hs": "85049041",
+      "reasonVi": "Phân loại 85049041 theo GIR 6: productType=parts, senMarked=nonSen, powerkVA=unspecified, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "parts",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r070",
+      "priority": 70,
+      "hs": "85049049",
+      "reasonVi": "Phân loại 85049049 theo GIR 6: productType=parts, senMarked=nonSen, powerkVA=unspecified, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "parts",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r071",
+      "priority": 71,
+      "hs": "85049090",
+      "reasonVi": "Phân loại 85049090 theo GIR 6: productType=parts, senMarked=nonSen, powerkVA=unspecified, voltageClass=unspecified, specialType=none",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "parts",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      }
+    },
+    {
+      "id": "8504-r072",
+      "priority": 72,
+      "hs": "85043129",
+      "reasonVi": "Phân loại 85043129 theo GIR 6: productType=transformer_le1kVA, senMarked=nonSen, powerkVA=le1, voltageClass=unspecified, specialType=currentTransformer",
+      "source": "hermes-211-8504",
+      "gir": "GIR 6",
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "currentTransformer"
+      }
+    },
+    {
+      "id": "8504-r073",
+      "priority": 73,
+      "hs": "85042111",
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "ge110",
+        "specialType": "none"
+      },
+      "reasonVi": "Phân loại 85042111 theo GIR 6: biến áp 1-16kVA, 110kV, không SEN",
+      "source": "hermes-211-8504"
+    },
+    {
+      "id": "8504-r074",
+      "priority": 74,
+      "hs": "85045020",
+      "when": {
+        "productType": "inductor",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "chipInductor"
+      },
+      "reasonVi": "Phân loại 85045020 theo GIR 6: cuộn cảm chip, không SEN",
+      "source": "hermes-211-8504"
+    }
+  ],
+  "inputs": [
+    {
+      "attribute": "productType",
+      "labelVi": "Loại sản phẩm",
+      "questionVi": "Đây là loại sản phẩm điện nào?",
+      "type": "enum",
+      "domain": [
+        "ballast",
+        "transformer_le1kVA",
+        "transformer_1to16kVA",
+        "transformer_16to630kVA",
+        "transformer_gt630kVA",
+        "transformer_gt1kVA",
+        "staticConverter",
+        "inductor",
+        "parts"
+      ],
+      "detect": {
+        "ballast": [
+          "chấn lưu",
+          "ballast",
+          "máng đèn",
+          "balắt",
+          "chấn lưu đèn",
+          "bộ chấn lưu",
+          "máng đèn huỳnh quang",
+          "balast"
+        ],
+        "transformer_le1kVA": [
+          "biến áp nhỏ",
+          "biến áp dưới 1kva",
+          "biến áp 1kva",
+          "máy biến áp nhỏ",
+          "máy biến thế",
+          "biến thế",
+          "biến áp",
+          "transformer",
+          "biến áp cách ly",
+          "biến áp 220v",
+          "biến áp 12v",
+          "biến áp 24v",
+          "biến áp USB",
+          "biến áp 5v",
+          "biến áp nguồn",
+          "biến áp 1 chiều",
+          "biến áp xung",
+          "biến áp cấp nguồn",
+          "biến áp trung thế nhỏ",
+          "máy biến áp đo lường",
+          "máy biến dòng",
+          "biến dòng"
+        ],
+        "transformer_1to16kVA": [
+          "biến áp 1kva",
+          "biến áp 2kva",
+          "biến áp 3kva",
+          "biến áp 5kva",
+          "biến áp 10kva",
+          "biến áp 15kva",
+          "biến áp 16kva",
+          "biến áp trung bình",
+          "biến áp công suất trung bình",
+          "biến áp 1-16kva",
+          "máy biến áp 1kva",
+          "máy biến áp 5kva",
+          "máy biến áp 10kva",
+          "máy biến áp 16kva"
+        ],
+        "transformer_16to630kVA": [
+          "biến áp 20kva",
+          "biến áp 25kva",
+          "biến áp 30kva",
+          "biến áp 50kva",
+          "biến áp 75kva",
+          "biến áp 100kva",
+          "biến áp 150kva",
+          "biến áp 200kva",
+          "biến áp 250kva",
+          "biến áp 300kva",
+          "biến áp 400kva",
+          "biến áp 500kva",
+          "biến áp 630kva",
+          "biến áp công suất lớn",
+          "biến áp trạm",
+          "biến áp phân phối",
+          "biến áp hạ thế",
+          "máy biến áp 100kva",
+          "máy biến áp 250kva",
+          "máy biến áp 500kva"
+        ],
+        "transformer_gt630kVA": [
+          "biến áp 750kva",
+          "biến áp 1000kva",
+          "biến áp 1250kva",
+          "biến áp 1500kva",
+          "biến áp 2000kva",
+          "biến áp 2500kva",
+          "biến áp 3000kva",
+          "biến áp 5000kva",
+          "biến áp công suất rất lớn",
+          "biến áp trạm biến áp lớn",
+          "biến áp điện lực",
+          "biến áp 750kva trở lên"
+        ],
+        "staticConverter": [
+          "bộ nguồn",
+          "bộ chuyển đổi nguồn",
+          "bộ đổi nguồn",
+          "bộ nạp",
+          "bộ sạc",
+          "bộ sạc pin",
+          "bộ chuyển đổi",
+          "bộ chế biến nguồn",
+          "static converter",
+          "inverter",
+          "rectifier",
+          "bộ biến tần",
+          "bộ chỉnh lưu",
+          "bộ nguồn xung",
+          "bộ nguồn tổ ong",
+          "bộ nguồn máy tính",
+          "bộ nguồn ATX",
+          "bộ nguồn CCTV",
+          "bộ nguồn công nghiệp",
+          "bộ nguồn 24v",
+          "bộ nguồn 12v",
+          "bộ nguồn 5v",
+          "bộ nguồn chính",
+          "bộ cấp nguồn",
+          "bộ phân phối điện",
+          "charge controller",
+          "bộ điều khiển sạc",
+          "mppt",
+          "bộ sạc năng lượng mặt trời",
+          "bộ chuyển đổi DC DC",
+          "bộ chuyển đổi AC DC",
+          "bộ chuyển đổi DC AC",
+          "Củ sạc điện thoại",
+          "Sạc pin xe điện",
+          "Củ sạc nhanh",
+          "Tẩu sạc ô tô",
+          "Đầu sạc",
+          "Nguồn máy vi tính để bàn",
+          "Bộ biến đổi nguồn",
+          "Tẩu sạc điện thoại",
+          "Bộ lưu điện",
+          "Tẩu sạc trên ô tô",
+          "Chỉnh lưu phanh điện từ",
+          "Biến tần (Bộ nghịch lưu)",
+          "Bộ điều chỉnh nguồn",
+          "Nguồn điện",
+          "Khởi động mềm ATS48C17Q",
+          "Mô đun nguồn",
+          "Mô-đun Power",
+          "Mô đun driver",
+          "Củ sạc Laptop",
+          "Máy nạp từ tính",
+          "Cục sạc pin",
+          "Máy nạp ắc quy đèn",
+          "Thiết bị hạ áp",
+          "Củ sạc loa liền dây",
+          "Nguồn máy tĩnh điện",
+          "Sạc xe máy điện",
+          "Mô-đun nguồn",
+          "Mô-đun feedback"
+        ],
+        "inductor": [
+          "cuộn cảm",
+          "cuộn kháng",
+          "cuộn cảm lõi",
+          "cuộn cảm xuyên lỗ",
+          "cuộn cảm dán",
+          "cuộn cảm công suất",
+          "cuộn cảm lọc",
+          "cuộn kháng lọc",
+          "inductor",
+          "reactor",
+          "reactor lọc",
+          "cuộn lọc",
+          "cuộn cảm 100uh",
+          "cuộn cảm 10mh",
+          "cuộn cảm smd",
+          "cuộn cảm điện tử"
+        ],
+        "parts": [
+          "bộ phận biến áp",
+          "phụ tùng biến áp",
+          "lõi biến áp",
+          "cuộn dây biến áp",
+          "parts transformer",
+          "bộ phận nguồn",
+          "phụ kiện biến áp"
+        ]
+      },
+      "_detect": {
+        "ballast": [
+          {
+            "raw": "chấn lưu",
+            "dia": true,
+            "key": "chấn lưu",
+            "folded": "chan luu"
+          },
+          {
+            "raw": "ballast",
+            "dia": false,
+            "key": "ballast",
+            "folded": "ballast"
+          },
+          {
+            "raw": "máng đèn",
+            "dia": true,
+            "key": "máng đèn",
+            "folded": "mang den"
+          },
+          {
+            "raw": "balắt",
+            "dia": true,
+            "key": "balắt",
+            "folded": "balat"
+          },
+          {
+            "raw": "chấn lưu đèn",
+            "dia": true,
+            "key": "chấn lưu đèn",
+            "folded": "chan luu den"
+          },
+          {
+            "raw": "bộ chấn lưu",
+            "dia": true,
+            "key": "bộ chấn lưu",
+            "folded": "bo chan luu"
+          },
+          {
+            "raw": "máng đèn huỳnh quang",
+            "dia": true,
+            "key": "máng đèn huỳnh quang",
+            "folded": "mang den huynh quang"
+          },
+          {
+            "raw": "balast",
+            "dia": false,
+            "key": "balast",
+            "folded": "balast"
+          }
+        ],
+        "transformer_le1kVA": [
+          {
+            "raw": "biến áp nhỏ",
+            "dia": true,
+            "key": "biến áp nhỏ",
+            "folded": "bien ap nho"
+          },
+          {
+            "raw": "biến áp dưới 1kva",
+            "dia": true,
+            "key": "biến áp dưới 1kva",
+            "folded": "bien ap duoi 1kva"
+          },
+          {
+            "raw": "biến áp 1kva",
+            "dia": true,
+            "key": "biến áp 1kva",
+            "folded": "bien ap 1kva"
+          },
+          {
+            "raw": "máy biến áp nhỏ",
+            "dia": true,
+            "key": "máy biến áp nhỏ",
+            "folded": "may bien ap nho"
+          },
+          {
+            "raw": "máy biến thế",
+            "dia": true,
+            "key": "máy biến thế",
+            "folded": "may bien the"
+          },
+          {
+            "raw": "biến thế",
+            "dia": true,
+            "key": "biến thế",
+            "folded": "bien the"
+          },
+          {
+            "raw": "biến áp",
+            "dia": true,
+            "key": "biến áp",
+            "folded": "bien ap"
+          },
+          {
+            "raw": "transformer",
+            "dia": false,
+            "key": "transformer",
+            "folded": "transformer"
+          },
+          {
+            "raw": "biến áp cách ly",
+            "dia": true,
+            "key": "biến áp cách ly",
+            "folded": "bien ap cach ly"
+          },
+          {
+            "raw": "biến áp 220v",
+            "dia": true,
+            "key": "biến áp 220v",
+            "folded": "bien ap 220v"
+          },
+          {
+            "raw": "biến áp 12v",
+            "dia": true,
+            "key": "biến áp 12v",
+            "folded": "bien ap 12v"
+          },
+          {
+            "raw": "biến áp 24v",
+            "dia": true,
+            "key": "biến áp 24v",
+            "folded": "bien ap 24v"
+          },
+          {
+            "raw": "biến áp USB",
+            "dia": true,
+            "key": "biến áp usb",
+            "folded": "bien ap usb"
+          },
+          {
+            "raw": "biến áp 5v",
+            "dia": true,
+            "key": "biến áp 5v",
+            "folded": "bien ap 5v"
+          },
+          {
+            "raw": "biến áp nguồn",
+            "dia": true,
+            "key": "biến áp nguồn",
+            "folded": "bien ap nguon"
+          },
+          {
+            "raw": "biến áp 1 chiều",
+            "dia": true,
+            "key": "biến áp 1 chiều",
+            "folded": "bien ap 1 chieu"
+          },
+          {
+            "raw": "biến áp xung",
+            "dia": true,
+            "key": "biến áp xung",
+            "folded": "bien ap xung"
+          },
+          {
+            "raw": "biến áp cấp nguồn",
+            "dia": true,
+            "key": "biến áp cấp nguồn",
+            "folded": "bien ap cap nguon"
+          },
+          {
+            "raw": "biến áp trung thế nhỏ",
+            "dia": true,
+            "key": "biến áp trung thế nhỏ",
+            "folded": "bien ap trung the nho"
+          },
+          {
+            "raw": "máy biến áp đo lường",
+            "dia": true,
+            "key": "máy biến áp đo lường",
+            "folded": "may bien ap do luong"
+          },
+          {
+            "raw": "máy biến dòng",
+            "dia": true,
+            "key": "máy biến dòng",
+            "folded": "may bien dong"
+          },
+          {
+            "raw": "biến dòng",
+            "dia": true,
+            "key": "biến dòng",
+            "folded": "bien dong"
+          }
+        ],
+        "transformer_1to16kVA": [
+          {
+            "raw": "biến áp 1kva",
+            "dia": true,
+            "key": "biến áp 1kva",
+            "folded": "bien ap 1kva"
+          },
+          {
+            "raw": "biến áp 2kva",
+            "dia": true,
+            "key": "biến áp 2kva",
+            "folded": "bien ap 2kva"
+          },
+          {
+            "raw": "biến áp 3kva",
+            "dia": true,
+            "key": "biến áp 3kva",
+            "folded": "bien ap 3kva"
+          },
+          {
+            "raw": "biến áp 5kva",
+            "dia": true,
+            "key": "biến áp 5kva",
+            "folded": "bien ap 5kva"
+          },
+          {
+            "raw": "biến áp 10kva",
+            "dia": true,
+            "key": "biến áp 10kva",
+            "folded": "bien ap 10kva"
+          },
+          {
+            "raw": "biến áp 15kva",
+            "dia": true,
+            "key": "biến áp 15kva",
+            "folded": "bien ap 15kva"
+          },
+          {
+            "raw": "biến áp 16kva",
+            "dia": true,
+            "key": "biến áp 16kva",
+            "folded": "bien ap 16kva"
+          },
+          {
+            "raw": "biến áp trung bình",
+            "dia": true,
+            "key": "biến áp trung bình",
+            "folded": "bien ap trung binh"
+          },
+          {
+            "raw": "biến áp công suất trung bình",
+            "dia": true,
+            "key": "biến áp công suất trung bình",
+            "folded": "bien ap cong suat trung binh"
+          },
+          {
+            "raw": "biến áp 1-16kva",
+            "dia": true,
+            "key": "biến áp 1 16kva",
+            "folded": "bien ap 1 16kva"
+          },
+          {
+            "raw": "máy biến áp 1kva",
+            "dia": true,
+            "key": "máy biến áp 1kva",
+            "folded": "may bien ap 1kva"
+          },
+          {
+            "raw": "máy biến áp 5kva",
+            "dia": true,
+            "key": "máy biến áp 5kva",
+            "folded": "may bien ap 5kva"
+          },
+          {
+            "raw": "máy biến áp 10kva",
+            "dia": true,
+            "key": "máy biến áp 10kva",
+            "folded": "may bien ap 10kva"
+          },
+          {
+            "raw": "máy biến áp 16kva",
+            "dia": true,
+            "key": "máy biến áp 16kva",
+            "folded": "may bien ap 16kva"
+          }
+        ],
+        "transformer_16to630kVA": [
+          {
+            "raw": "biến áp 20kva",
+            "dia": true,
+            "key": "biến áp 20kva",
+            "folded": "bien ap 20kva"
+          },
+          {
+            "raw": "biến áp 25kva",
+            "dia": true,
+            "key": "biến áp 25kva",
+            "folded": "bien ap 25kva"
+          },
+          {
+            "raw": "biến áp 30kva",
+            "dia": true,
+            "key": "biến áp 30kva",
+            "folded": "bien ap 30kva"
+          },
+          {
+            "raw": "biến áp 50kva",
+            "dia": true,
+            "key": "biến áp 50kva",
+            "folded": "bien ap 50kva"
+          },
+          {
+            "raw": "biến áp 75kva",
+            "dia": true,
+            "key": "biến áp 75kva",
+            "folded": "bien ap 75kva"
+          },
+          {
+            "raw": "biến áp 100kva",
+            "dia": true,
+            "key": "biến áp 100kva",
+            "folded": "bien ap 100kva"
+          },
+          {
+            "raw": "biến áp 150kva",
+            "dia": true,
+            "key": "biến áp 150kva",
+            "folded": "bien ap 150kva"
+          },
+          {
+            "raw": "biến áp 200kva",
+            "dia": true,
+            "key": "biến áp 200kva",
+            "folded": "bien ap 200kva"
+          },
+          {
+            "raw": "biến áp 250kva",
+            "dia": true,
+            "key": "biến áp 250kva",
+            "folded": "bien ap 250kva"
+          },
+          {
+            "raw": "biến áp 300kva",
+            "dia": true,
+            "key": "biến áp 300kva",
+            "folded": "bien ap 300kva"
+          },
+          {
+            "raw": "biến áp 400kva",
+            "dia": true,
+            "key": "biến áp 400kva",
+            "folded": "bien ap 400kva"
+          },
+          {
+            "raw": "biến áp 500kva",
+            "dia": true,
+            "key": "biến áp 500kva",
+            "folded": "bien ap 500kva"
+          },
+          {
+            "raw": "biến áp 630kva",
+            "dia": true,
+            "key": "biến áp 630kva",
+            "folded": "bien ap 630kva"
+          },
+          {
+            "raw": "biến áp công suất lớn",
+            "dia": true,
+            "key": "biến áp công suất lớn",
+            "folded": "bien ap cong suat lon"
+          },
+          {
+            "raw": "biến áp trạm",
+            "dia": true,
+            "key": "biến áp trạm",
+            "folded": "bien ap tram"
+          },
+          {
+            "raw": "biến áp phân phối",
+            "dia": true,
+            "key": "biến áp phân phối",
+            "folded": "bien ap phan phoi"
+          },
+          {
+            "raw": "biến áp hạ thế",
+            "dia": true,
+            "key": "biến áp hạ thế",
+            "folded": "bien ap ha the"
+          },
+          {
+            "raw": "máy biến áp 100kva",
+            "dia": true,
+            "key": "máy biến áp 100kva",
+            "folded": "may bien ap 100kva"
+          },
+          {
+            "raw": "máy biến áp 250kva",
+            "dia": true,
+            "key": "máy biến áp 250kva",
+            "folded": "may bien ap 250kva"
+          },
+          {
+            "raw": "máy biến áp 500kva",
+            "dia": true,
+            "key": "máy biến áp 500kva",
+            "folded": "may bien ap 500kva"
+          }
+        ],
+        "transformer_gt630kVA": [
+          {
+            "raw": "biến áp 750kva",
+            "dia": true,
+            "key": "biến áp 750kva",
+            "folded": "bien ap 750kva"
+          },
+          {
+            "raw": "biến áp 1000kva",
+            "dia": true,
+            "key": "biến áp 1000kva",
+            "folded": "bien ap 1000kva"
+          },
+          {
+            "raw": "biến áp 1250kva",
+            "dia": true,
+            "key": "biến áp 1250kva",
+            "folded": "bien ap 1250kva"
+          },
+          {
+            "raw": "biến áp 1500kva",
+            "dia": true,
+            "key": "biến áp 1500kva",
+            "folded": "bien ap 1500kva"
+          },
+          {
+            "raw": "biến áp 2000kva",
+            "dia": true,
+            "key": "biến áp 2000kva",
+            "folded": "bien ap 2000kva"
+          },
+          {
+            "raw": "biến áp 2500kva",
+            "dia": true,
+            "key": "biến áp 2500kva",
+            "folded": "bien ap 2500kva"
+          },
+          {
+            "raw": "biến áp 3000kva",
+            "dia": true,
+            "key": "biến áp 3000kva",
+            "folded": "bien ap 3000kva"
+          },
+          {
+            "raw": "biến áp 5000kva",
+            "dia": true,
+            "key": "biến áp 5000kva",
+            "folded": "bien ap 5000kva"
+          },
+          {
+            "raw": "biến áp công suất rất lớn",
+            "dia": true,
+            "key": "biến áp công suất rất lớn",
+            "folded": "bien ap cong suat rat lon"
+          },
+          {
+            "raw": "biến áp trạm biến áp lớn",
+            "dia": true,
+            "key": "biến áp trạm biến áp lớn",
+            "folded": "bien ap tram bien ap lon"
+          },
+          {
+            "raw": "biến áp điện lực",
+            "dia": true,
+            "key": "biến áp điện lực",
+            "folded": "bien ap dien luc"
+          },
+          {
+            "raw": "biến áp 750kva trở lên",
+            "dia": true,
+            "key": "biến áp 750kva trở lên",
+            "folded": "bien ap 750kva tro len"
+          }
+        ],
+        "staticConverter": [
+          {
+            "raw": "bộ nguồn",
+            "dia": true,
+            "key": "bộ nguồn",
+            "folded": "bo nguon"
+          },
+          {
+            "raw": "bộ chuyển đổi nguồn",
+            "dia": true,
+            "key": "bộ chuyển đổi nguồn",
+            "folded": "bo chuyen doi nguon"
+          },
+          {
+            "raw": "bộ đổi nguồn",
+            "dia": true,
+            "key": "bộ đổi nguồn",
+            "folded": "bo doi nguon"
+          },
+          {
+            "raw": "bộ nạp",
+            "dia": true,
+            "key": "bộ nạp",
+            "folded": "bo nap"
+          },
+          {
+            "raw": "bộ sạc",
+            "dia": true,
+            "key": "bộ sạc",
+            "folded": "bo sac"
+          },
+          {
+            "raw": "bộ sạc pin",
+            "dia": true,
+            "key": "bộ sạc pin",
+            "folded": "bo sac pin"
+          },
+          {
+            "raw": "bộ chuyển đổi",
+            "dia": true,
+            "key": "bộ chuyển đổi",
+            "folded": "bo chuyen doi"
+          },
+          {
+            "raw": "bộ chế biến nguồn",
+            "dia": true,
+            "key": "bộ chế biến nguồn",
+            "folded": "bo che bien nguon"
+          },
+          {
+            "raw": "static converter",
+            "dia": false,
+            "key": "static converter",
+            "folded": "static converter"
+          },
+          {
+            "raw": "inverter",
+            "dia": false,
+            "key": "inverter",
+            "folded": "inverter"
+          },
+          {
+            "raw": "rectifier",
+            "dia": false,
+            "key": "rectifier",
+            "folded": "rectifier"
+          },
+          {
+            "raw": "bộ biến tần",
+            "dia": true,
+            "key": "bộ biến tần",
+            "folded": "bo bien tan"
+          },
+          {
+            "raw": "bộ chỉnh lưu",
+            "dia": true,
+            "key": "bộ chỉnh lưu",
+            "folded": "bo chinh luu"
+          },
+          {
+            "raw": "bộ nguồn xung",
+            "dia": true,
+            "key": "bộ nguồn xung",
+            "folded": "bo nguon xung"
+          },
+          {
+            "raw": "bộ nguồn tổ ong",
+            "dia": true,
+            "key": "bộ nguồn tổ ong",
+            "folded": "bo nguon to ong"
+          },
+          {
+            "raw": "bộ nguồn máy tính",
+            "dia": true,
+            "key": "bộ nguồn máy tính",
+            "folded": "bo nguon may tinh"
+          },
+          {
+            "raw": "bộ nguồn ATX",
+            "dia": true,
+            "key": "bộ nguồn atx",
+            "folded": "bo nguon atx"
+          },
+          {
+            "raw": "bộ nguồn CCTV",
+            "dia": true,
+            "key": "bộ nguồn cctv",
+            "folded": "bo nguon cctv"
+          },
+          {
+            "raw": "bộ nguồn công nghiệp",
+            "dia": true,
+            "key": "bộ nguồn công nghiệp",
+            "folded": "bo nguon cong nghiep"
+          },
+          {
+            "raw": "bộ nguồn 24v",
+            "dia": true,
+            "key": "bộ nguồn 24v",
+            "folded": "bo nguon 24v"
+          },
+          {
+            "raw": "bộ nguồn 12v",
+            "dia": true,
+            "key": "bộ nguồn 12v",
+            "folded": "bo nguon 12v"
+          },
+          {
+            "raw": "bộ nguồn 5v",
+            "dia": true,
+            "key": "bộ nguồn 5v",
+            "folded": "bo nguon 5v"
+          },
+          {
+            "raw": "bộ nguồn chính",
+            "dia": true,
+            "key": "bộ nguồn chính",
+            "folded": "bo nguon chinh"
+          },
+          {
+            "raw": "bộ cấp nguồn",
+            "dia": true,
+            "key": "bộ cấp nguồn",
+            "folded": "bo cap nguon"
+          },
+          {
+            "raw": "bộ phân phối điện",
+            "dia": true,
+            "key": "bộ phân phối điện",
+            "folded": "bo phan phoi dien"
+          },
+          {
+            "raw": "charge controller",
+            "dia": false,
+            "key": "charge controller",
+            "folded": "charge controller"
+          },
+          {
+            "raw": "bộ điều khiển sạc",
+            "dia": true,
+            "key": "bộ điều khiển sạc",
+            "folded": "bo dieu khien sac"
+          },
+          {
+            "raw": "mppt",
+            "dia": false,
+            "key": "mppt",
+            "folded": "mppt"
+          },
+          {
+            "raw": "bộ sạc năng lượng mặt trời",
+            "dia": true,
+            "key": "bộ sạc năng lượng mặt trời",
+            "folded": "bo sac nang luong mat troi"
+          },
+          {
+            "raw": "bộ chuyển đổi DC DC",
+            "dia": true,
+            "key": "bộ chuyển đổi dc dc",
+            "folded": "bo chuyen doi dc dc"
+          },
+          {
+            "raw": "bộ chuyển đổi AC DC",
+            "dia": true,
+            "key": "bộ chuyển đổi ac dc",
+            "folded": "bo chuyen doi ac dc"
+          },
+          {
+            "raw": "bộ chuyển đổi DC AC",
+            "dia": true,
+            "key": "bộ chuyển đổi dc ac",
+            "folded": "bo chuyen doi dc ac"
+          },
+          {
+            "raw": "Củ sạc điện thoại",
+            "dia": true,
+            "key": "củ sạc điện thoại",
+            "folded": "cu sac dien thoai"
+          },
+          {
+            "raw": "Sạc pin xe điện",
+            "dia": true,
+            "key": "sạc pin xe điện",
+            "folded": "sac pin xe dien"
+          },
+          {
+            "raw": "Củ sạc nhanh",
+            "dia": true,
+            "key": "củ sạc nhanh",
+            "folded": "cu sac nhanh"
+          },
+          {
+            "raw": "Tẩu sạc ô tô",
+            "dia": true,
+            "key": "tẩu sạc ô tô",
+            "folded": "tau sac o to"
+          },
+          {
+            "raw": "Đầu sạc",
+            "dia": true,
+            "key": "đầu sạc",
+            "folded": "dau sac"
+          },
+          {
+            "raw": "Nguồn máy vi tính để bàn",
+            "dia": true,
+            "key": "nguồn máy vi tính để bàn",
+            "folded": "nguon may vi tinh de ban"
+          },
+          {
+            "raw": "Bộ biến đổi nguồn",
+            "dia": true,
+            "key": "bộ biến đổi nguồn",
+            "folded": "bo bien doi nguon"
+          },
+          {
+            "raw": "Tẩu sạc điện thoại",
+            "dia": true,
+            "key": "tẩu sạc điện thoại",
+            "folded": "tau sac dien thoai"
+          },
+          {
+            "raw": "Bộ lưu điện",
+            "dia": true,
+            "key": "bộ lưu điện",
+            "folded": "bo luu dien"
+          },
+          {
+            "raw": "Tẩu sạc trên ô tô",
+            "dia": true,
+            "key": "tẩu sạc trên ô tô",
+            "folded": "tau sac tren o to"
+          },
+          {
+            "raw": "Chỉnh lưu phanh điện từ",
+            "dia": true,
+            "key": "chỉnh lưu phanh điện từ",
+            "folded": "chinh luu phanh dien tu"
+          },
+          {
+            "raw": "Biến tần (Bộ nghịch lưu)",
+            "dia": true,
+            "key": "biến tần bộ nghịch lưu",
+            "folded": "bien tan bo nghich luu"
+          },
+          {
+            "raw": "Bộ điều chỉnh nguồn",
+            "dia": true,
+            "key": "bộ điều chỉnh nguồn",
+            "folded": "bo dieu chinh nguon"
+          },
+          {
+            "raw": "Nguồn điện",
+            "dia": true,
+            "key": "nguồn điện",
+            "folded": "nguon dien"
+          },
+          {
+            "raw": "Khởi động mềm ATS48C17Q",
+            "dia": true,
+            "key": "khởi động mềm ats48c17q",
+            "folded": "khoi dong mem ats48c17q"
+          },
+          {
+            "raw": "Mô đun nguồn",
+            "dia": true,
+            "key": "mô đun nguồn",
+            "folded": "mo dun nguon"
+          },
+          {
+            "raw": "Mô-đun Power",
+            "dia": true,
+            "key": "mô đun power",
+            "folded": "mo dun power"
+          },
+          {
+            "raw": "Mô đun driver",
+            "dia": true,
+            "key": "mô đun driver",
+            "folded": "mo dun driver"
+          },
+          {
+            "raw": "Củ sạc Laptop",
+            "dia": true,
+            "key": "củ sạc laptop",
+            "folded": "cu sac laptop"
+          },
+          {
+            "raw": "Máy nạp từ tính",
+            "dia": true,
+            "key": "máy nạp từ tính",
+            "folded": "may nap tu tinh"
+          },
+          {
+            "raw": "Cục sạc pin",
+            "dia": true,
+            "key": "cục sạc pin",
+            "folded": "cuc sac pin"
+          },
+          {
+            "raw": "Máy nạp ắc quy đèn",
+            "dia": true,
+            "key": "máy nạp ắc quy đèn",
+            "folded": "may nap ac quy den"
+          },
+          {
+            "raw": "Thiết bị hạ áp",
+            "dia": true,
+            "key": "thiết bị hạ áp",
+            "folded": "thiet bi ha ap"
+          },
+          {
+            "raw": "Củ sạc loa liền dây",
+            "dia": true,
+            "key": "củ sạc loa liền dây",
+            "folded": "cu sac loa lien day"
+          },
+          {
+            "raw": "Nguồn máy tĩnh điện",
+            "dia": true,
+            "key": "nguồn máy tĩnh điện",
+            "folded": "nguon may tinh dien"
+          },
+          {
+            "raw": "Sạc xe máy điện",
+            "dia": true,
+            "key": "sạc xe máy điện",
+            "folded": "sac xe may dien"
+          },
+          {
+            "raw": "Mô-đun nguồn",
+            "dia": true,
+            "key": "mô đun nguồn",
+            "folded": "mo dun nguon"
+          },
+          {
+            "raw": "Mô-đun feedback",
+            "dia": true,
+            "key": "mô đun feedback",
+            "folded": "mo dun feedback"
+          }
+        ],
+        "inductor": [
+          {
+            "raw": "cuộn cảm",
+            "dia": true,
+            "key": "cuộn cảm",
+            "folded": "cuon cam"
+          },
+          {
+            "raw": "cuộn kháng",
+            "dia": true,
+            "key": "cuộn kháng",
+            "folded": "cuon khang"
+          },
+          {
+            "raw": "cuộn cảm lõi",
+            "dia": true,
+            "key": "cuộn cảm lõi",
+            "folded": "cuon cam loi"
+          },
+          {
+            "raw": "cuộn cảm xuyên lỗ",
+            "dia": true,
+            "key": "cuộn cảm xuyên lỗ",
+            "folded": "cuon cam xuyen lo"
+          },
+          {
+            "raw": "cuộn cảm dán",
+            "dia": true,
+            "key": "cuộn cảm dán",
+            "folded": "cuon cam dan"
+          },
+          {
+            "raw": "cuộn cảm công suất",
+            "dia": true,
+            "key": "cuộn cảm công suất",
+            "folded": "cuon cam cong suat"
+          },
+          {
+            "raw": "cuộn cảm lọc",
+            "dia": true,
+            "key": "cuộn cảm lọc",
+            "folded": "cuon cam loc"
+          },
+          {
+            "raw": "cuộn kháng lọc",
+            "dia": true,
+            "key": "cuộn kháng lọc",
+            "folded": "cuon khang loc"
+          },
+          {
+            "raw": "inductor",
+            "dia": false,
+            "key": "inductor",
+            "folded": "inductor"
+          },
+          {
+            "raw": "reactor",
+            "dia": false,
+            "key": "reactor",
+            "folded": "reactor"
+          },
+          {
+            "raw": "reactor lọc",
+            "dia": true,
+            "key": "reactor lọc",
+            "folded": "reactor loc"
+          },
+          {
+            "raw": "cuộn lọc",
+            "dia": true,
+            "key": "cuộn lọc",
+            "folded": "cuon loc"
+          },
+          {
+            "raw": "cuộn cảm 100uh",
+            "dia": true,
+            "key": "cuộn cảm 100uh",
+            "folded": "cuon cam 100uh"
+          },
+          {
+            "raw": "cuộn cảm 10mh",
+            "dia": true,
+            "key": "cuộn cảm 10mh",
+            "folded": "cuon cam 10mh"
+          },
+          {
+            "raw": "cuộn cảm smd",
+            "dia": true,
+            "key": "cuộn cảm smd",
+            "folded": "cuon cam smd"
+          },
+          {
+            "raw": "cuộn cảm điện tử",
+            "dia": true,
+            "key": "cuộn cảm điện tử",
+            "folded": "cuon cam dien tu"
+          }
+        ],
+        "parts": [
+          {
+            "raw": "bộ phận biến áp",
+            "dia": true,
+            "key": "bộ phận biến áp",
+            "folded": "bo phan bien ap"
+          },
+          {
+            "raw": "phụ tùng biến áp",
+            "dia": true,
+            "key": "phụ tùng biến áp",
+            "folded": "phu tung bien ap"
+          },
+          {
+            "raw": "lõi biến áp",
+            "dia": true,
+            "key": "lõi biến áp",
+            "folded": "loi bien ap"
+          },
+          {
+            "raw": "cuộn dây biến áp",
+            "dia": true,
+            "key": "cuộn dây biến áp",
+            "folded": "cuon day bien ap"
+          },
+          {
+            "raw": "parts transformer",
+            "dia": false,
+            "key": "parts transformer",
+            "folded": "parts transformer"
+          },
+          {
+            "raw": "bộ phận nguồn",
+            "dia": true,
+            "key": "bộ phận nguồn",
+            "folded": "bo phan nguon"
+          },
+          {
+            "raw": "phụ kiện biến áp",
+            "dia": true,
+            "key": "phụ kiện biến áp",
+            "folded": "phu kien bien ap"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "senMarked",
+      "labelVi": "Có nhãn SEN (thiết bị điện cao áp)",
+      "questionVi": "Thiết bị có nhãn SEN không?",
+      "type": "enum",
+      "domain": [
+        "sen",
+        "nonSen"
+      ],
+      "detect": {
+        "sen": [
+          "sen",
+          "sên",
+          "có sen",
+          "thanh sen",
+          "trục sen",
+          "cốt sen",
+          "bạc sen",
+          "Bộ nguồn cấp điện",
+          "Bộ đổi nguồn",
+          "Máy biến áp cách ly",
+          "Cuộn cảm",
+          "Bộ nguồn pin cúc áo",
+          "Bộ nguồn LED",
+          "Bộ nguồn dạng tĩnh",
+          "Bộ cấp nguồn UPS",
+          "Bộ nguồn một chiều",
+          "Bộ nguồn cung cấp điện",
+          "Biến áp điều khiển",
+          "Bộ sạc",
+          "Biến dòng",
+          "Bộ phận máy biến áp di động",
+          "Bộ nguồn 1 chiều",
+          "Bộ cấp nguồn điện",
+          "Bộ nguồn điện",
+          "Bộ nguồn aptomat",
+          "Cuộn kháng aptomat",
+          "Bộ nạp ắc quy",
+          "Máy biến áp đo lường",
+          "Bộ nguồn phanh động cơ",
+          "Sạc pin xe điện",
+          "Tẩu sạc ô tô",
+          "Đầu sạc",
+          "Nguồn máy vi tính để bàn",
+          "Bộ biến đổi nguồn",
+          "Bộ lưu điện",
+          "Tẩu sạc trên ô tô",
+          "Chỉnh lưu phanh điện từ",
+          "Biến tần (Bộ nghịch lưu)",
+          "Bộ điều chỉnh nguồn",
+          "Khởi động mềm ATS48C17Q",
+          "Mô đun nguồn",
+          "Mô-đun Power",
+          "Mô đun driver",
+          "Máy nạp từ tính",
+          "Cục sạc pin",
+          "Máy nạp ắc quy đèn",
+          "Thiết bị hạ áp",
+          "Nguồn máy tĩnh điện",
+          "Sạc xe máy điện",
+          "Mô-đun nguồn",
+          "Mô-đun feedback"
+        ],
+        "nonSen": []
+      },
+      "_detect": {
+        "sen": [
+          {
+            "raw": "sen",
+            "dia": false,
+            "key": "sen",
+            "folded": "sen"
+          },
+          {
+            "raw": "sên",
+            "dia": true,
+            "key": "sên",
+            "folded": "sen"
+          },
+          {
+            "raw": "có sen",
+            "dia": true,
+            "key": "có sen",
+            "folded": "co sen"
+          },
+          {
+            "raw": "thanh sen",
+            "dia": false,
+            "key": "thanh sen",
+            "folded": "thanh sen"
+          },
+          {
+            "raw": "trục sen",
+            "dia": true,
+            "key": "trục sen",
+            "folded": "truc sen"
+          },
+          {
+            "raw": "cốt sen",
+            "dia": true,
+            "key": "cốt sen",
+            "folded": "cot sen"
+          },
+          {
+            "raw": "bạc sen",
+            "dia": true,
+            "key": "bạc sen",
+            "folded": "bac sen"
+          },
+          {
+            "raw": "Bộ nguồn cấp điện",
+            "dia": true,
+            "key": "bộ nguồn cấp điện",
+            "folded": "bo nguon cap dien"
+          },
+          {
+            "raw": "Bộ đổi nguồn",
+            "dia": true,
+            "key": "bộ đổi nguồn",
+            "folded": "bo doi nguon"
+          },
+          {
+            "raw": "Máy biến áp cách ly",
+            "dia": true,
+            "key": "máy biến áp cách ly",
+            "folded": "may bien ap cach ly"
+          },
+          {
+            "raw": "Cuộn cảm",
+            "dia": true,
+            "key": "cuộn cảm",
+            "folded": "cuon cam"
+          },
+          {
+            "raw": "Bộ nguồn pin cúc áo",
+            "dia": true,
+            "key": "bộ nguồn pin cúc áo",
+            "folded": "bo nguon pin cuc ao"
+          },
+          {
+            "raw": "Bộ nguồn LED",
+            "dia": true,
+            "key": "bộ nguồn led",
+            "folded": "bo nguon led"
+          },
+          {
+            "raw": "Bộ nguồn dạng tĩnh",
+            "dia": true,
+            "key": "bộ nguồn dạng tĩnh",
+            "folded": "bo nguon dang tinh"
+          },
+          {
+            "raw": "Bộ cấp nguồn UPS",
+            "dia": true,
+            "key": "bộ cấp nguồn ups",
+            "folded": "bo cap nguon ups"
+          },
+          {
+            "raw": "Bộ nguồn một chiều",
+            "dia": true,
+            "key": "bộ nguồn một chiều",
+            "folded": "bo nguon mot chieu"
+          },
+          {
+            "raw": "Bộ nguồn cung cấp điện",
+            "dia": true,
+            "key": "bộ nguồn cung cấp điện",
+            "folded": "bo nguon cung cap dien"
+          },
+          {
+            "raw": "Biến áp điều khiển",
+            "dia": true,
+            "key": "biến áp điều khiển",
+            "folded": "bien ap dieu khien"
+          },
+          {
+            "raw": "Bộ sạc",
+            "dia": true,
+            "key": "bộ sạc",
+            "folded": "bo sac"
+          },
+          {
+            "raw": "Biến dòng",
+            "dia": true,
+            "key": "biến dòng",
+            "folded": "bien dong"
+          },
+          {
+            "raw": "Bộ phận máy biến áp di động",
+            "dia": true,
+            "key": "bộ phận máy biến áp di động",
+            "folded": "bo phan may bien ap di dong"
+          },
+          {
+            "raw": "Bộ nguồn 1 chiều",
+            "dia": true,
+            "key": "bộ nguồn 1 chiều",
+            "folded": "bo nguon 1 chieu"
+          },
+          {
+            "raw": "Bộ cấp nguồn điện",
+            "dia": true,
+            "key": "bộ cấp nguồn điện",
+            "folded": "bo cap nguon dien"
+          },
+          {
+            "raw": "Bộ nguồn điện",
+            "dia": true,
+            "key": "bộ nguồn điện",
+            "folded": "bo nguon dien"
+          },
+          {
+            "raw": "Bộ nguồn aptomat",
+            "dia": true,
+            "key": "bộ nguồn aptomat",
+            "folded": "bo nguon aptomat"
+          },
+          {
+            "raw": "Cuộn kháng aptomat",
+            "dia": true,
+            "key": "cuộn kháng aptomat",
+            "folded": "cuon khang aptomat"
+          },
+          {
+            "raw": "Bộ nạp ắc quy",
+            "dia": true,
+            "key": "bộ nạp ắc quy",
+            "folded": "bo nap ac quy"
+          },
+          {
+            "raw": "Máy biến áp đo lường",
+            "dia": true,
+            "key": "máy biến áp đo lường",
+            "folded": "may bien ap do luong"
+          },
+          {
+            "raw": "Bộ nguồn phanh động cơ",
+            "dia": true,
+            "key": "bộ nguồn phanh động cơ",
+            "folded": "bo nguon phanh dong co"
+          },
+          {
+            "raw": "Sạc pin xe điện",
+            "dia": true,
+            "key": "sạc pin xe điện",
+            "folded": "sac pin xe dien"
+          },
+          {
+            "raw": "Tẩu sạc ô tô",
+            "dia": true,
+            "key": "tẩu sạc ô tô",
+            "folded": "tau sac o to"
+          },
+          {
+            "raw": "Đầu sạc",
+            "dia": true,
+            "key": "đầu sạc",
+            "folded": "dau sac"
+          },
+          {
+            "raw": "Nguồn máy vi tính để bàn",
+            "dia": true,
+            "key": "nguồn máy vi tính để bàn",
+            "folded": "nguon may vi tinh de ban"
+          },
+          {
+            "raw": "Bộ biến đổi nguồn",
+            "dia": true,
+            "key": "bộ biến đổi nguồn",
+            "folded": "bo bien doi nguon"
+          },
+          {
+            "raw": "Bộ lưu điện",
+            "dia": true,
+            "key": "bộ lưu điện",
+            "folded": "bo luu dien"
+          },
+          {
+            "raw": "Tẩu sạc trên ô tô",
+            "dia": true,
+            "key": "tẩu sạc trên ô tô",
+            "folded": "tau sac tren o to"
+          },
+          {
+            "raw": "Chỉnh lưu phanh điện từ",
+            "dia": true,
+            "key": "chỉnh lưu phanh điện từ",
+            "folded": "chinh luu phanh dien tu"
+          },
+          {
+            "raw": "Biến tần (Bộ nghịch lưu)",
+            "dia": true,
+            "key": "biến tần bộ nghịch lưu",
+            "folded": "bien tan bo nghich luu"
+          },
+          {
+            "raw": "Bộ điều chỉnh nguồn",
+            "dia": true,
+            "key": "bộ điều chỉnh nguồn",
+            "folded": "bo dieu chinh nguon"
+          },
+          {
+            "raw": "Khởi động mềm ATS48C17Q",
+            "dia": true,
+            "key": "khởi động mềm ats48c17q",
+            "folded": "khoi dong mem ats48c17q"
+          },
+          {
+            "raw": "Mô đun nguồn",
+            "dia": true,
+            "key": "mô đun nguồn",
+            "folded": "mo dun nguon"
+          },
+          {
+            "raw": "Mô-đun Power",
+            "dia": true,
+            "key": "mô đun power",
+            "folded": "mo dun power"
+          },
+          {
+            "raw": "Mô đun driver",
+            "dia": true,
+            "key": "mô đun driver",
+            "folded": "mo dun driver"
+          },
+          {
+            "raw": "Máy nạp từ tính",
+            "dia": true,
+            "key": "máy nạp từ tính",
+            "folded": "may nap tu tinh"
+          },
+          {
+            "raw": "Cục sạc pin",
+            "dia": true,
+            "key": "cục sạc pin",
+            "folded": "cuc sac pin"
+          },
+          {
+            "raw": "Máy nạp ắc quy đèn",
+            "dia": true,
+            "key": "máy nạp ắc quy đèn",
+            "folded": "may nap ac quy den"
+          },
+          {
+            "raw": "Thiết bị hạ áp",
+            "dia": true,
+            "key": "thiết bị hạ áp",
+            "folded": "thiet bi ha ap"
+          },
+          {
+            "raw": "Nguồn máy tĩnh điện",
+            "dia": true,
+            "key": "nguồn máy tĩnh điện",
+            "folded": "nguon may tinh dien"
+          },
+          {
+            "raw": "Sạc xe máy điện",
+            "dia": true,
+            "key": "sạc xe máy điện",
+            "folded": "sac xe may dien"
+          },
+          {
+            "raw": "Mô-đun nguồn",
+            "dia": true,
+            "key": "mô đun nguồn",
+            "folded": "mo dun nguon"
+          },
+          {
+            "raw": "Mô-đun feedback",
+            "dia": true,
+            "key": "mô đun feedback",
+            "folded": "mo dun feedback"
+          }
+        ],
+        "nonSen": []
+      }
+    },
+    {
+      "attribute": "powerkVA",
+      "labelVi": "Công suất danh định (kVA)",
+      "questionVi": "Công suất danh định bao nhiêu kVA?",
+      "type": "enum",
+      "domain": [
+        "le1",
+        "gt1le10",
+        "gt10le15",
+        "gt15le20",
+        "gt20le30",
+        "gt30",
+        "le2500",
+        "gt2500le10000",
+        "gt10000",
+        "unspecified"
+      ],
+      "detect": {
+        "le1": [
+          "0.1kva",
+          "0.5kva",
+          "1kva",
+          "dưới 1kva",
+          "nhỏ hơn 1kva",
+          "≤1kva",
+          "công suất nhỏ",
+          "công suất dưới 1kva",
+          "1 KVA",
+          "0.5 KVA",
+          "0.25 KVA",
+          "100VA",
+          "500VA"
+        ],
+        "gt1le10": [
+          "2kva",
+          "3kva",
+          "4kva",
+          "5kva",
+          "6kva",
+          "7kva",
+          "8kva",
+          "9kva",
+          "10kva",
+          "1-10kva",
+          "1kva đến 10kva",
+          "công suất trung bình",
+          "trung bình"
+        ],
+        "gt10le15": [
+          "11kva",
+          "12kva",
+          "13kva",
+          "14kva",
+          "15kva",
+          "10-15kva"
+        ],
+        "gt15le20": [
+          "16kva",
+          "17kva",
+          "18kva",
+          "19kva",
+          "20kva",
+          "15-20kva"
+        ],
+        "gt20le30": [
+          "25kva",
+          "30kva",
+          "20-30kva",
+          "25 KVA",
+          "30 KVA"
+        ],
+        "gt30": [
+          "40kva",
+          "50kva",
+          "63kva",
+          "75kva",
+          "100kva",
+          "150kva",
+          "200kva",
+          "250kva",
+          "315kva",
+          "400kva",
+          "500kva",
+          "630kva",
+          "750kva",
+          "1000kva",
+          "trên 30kva",
+          "lớn hơn 30kva",
+          "công suất lớn",
+          "Bộ nguồn cấp điện",
+          "Bộ đổi nguồn",
+          "Máy biến áp cách ly",
+          "Cuộn cảm",
+          "Bộ nguồn pin cúc áo",
+          "Bộ nguồn LED",
+          "Bộ nguồn dạng tĩnh",
+          "Bộ cấp nguồn UPS",
+          "Bộ nguồn một chiều",
+          "Bộ nguồn cung cấp điện",
+          "Biến áp điều khiển",
+          "Bộ sạc",
+          "Biến dòng",
+          "Bộ phận máy biến áp di động",
+          "Bộ nguồn 1 chiều",
+          "Bộ cấp nguồn điện",
+          "Bộ nguồn điện",
+          "Bộ nguồn aptomat",
+          "Cuộn kháng aptomat",
+          "Bộ nạp ắc quy",
+          "Máy biến áp đo lường",
+          "Bộ nguồn phanh động cơ",
+          "Sạc pin xe điện",
+          "Đầu sạc",
+          "Nguồn máy vi tính để bàn",
+          "Bộ biến đổi nguồn",
+          "Bộ lưu điện",
+          "Bộ điều chỉnh nguồn",
+          "Khởi động mềm ATS48C17Q",
+          "Mô đun nguồn",
+          "Mô-đun Power",
+          "Mô đun driver",
+          "Máy nạp từ tính",
+          "Cục sạc pin",
+          "Máy nạp ắc quy đèn",
+          "Thiết bị hạ áp",
+          "Nguồn máy tĩnh điện",
+          "Mô-đun nguồn",
+          "Mô-đun feedback"
+        ],
+        "le2500": [
+          "2500kva",
+          "dưới 2500kva"
+        ],
+        "gt2500le10000": [
+          "3000kva",
+          "4000kva",
+          "5000kva",
+          "6000kva",
+          "7500kva",
+          "8000kva",
+          "10000kva",
+          "2500-10000kva"
+        ],
+        "gt10000": [
+          "15000kva",
+          "20000kva",
+          "25000kva",
+          "30000kva",
+          "trên 10000kva"
+        ],
+        "unspecified": []
+      },
+      "_detect": {
+        "le1": [
+          {
+            "raw": "0.1kva",
+            "dia": false,
+            "key": "0.1kva",
+            "folded": "0.1kva"
+          },
+          {
+            "raw": "0.5kva",
+            "dia": false,
+            "key": "0.5kva",
+            "folded": "0.5kva"
+          },
+          {
+            "raw": "1kva",
+            "dia": false,
+            "key": "1kva",
+            "folded": "1kva"
+          },
+          {
+            "raw": "dưới 1kva",
+            "dia": true,
+            "key": "dưới 1kva",
+            "folded": "duoi 1kva"
+          },
+          {
+            "raw": "nhỏ hơn 1kva",
+            "dia": true,
+            "key": "nhỏ hơn 1kva",
+            "folded": "nho hon 1kva"
+          },
+          {
+            "raw": "≤1kva",
+            "dia": false,
+            "key": "1kva",
+            "folded": "1kva"
+          },
+          {
+            "raw": "công suất nhỏ",
+            "dia": true,
+            "key": "công suất nhỏ",
+            "folded": "cong suat nho"
+          },
+          {
+            "raw": "công suất dưới 1kva",
+            "dia": true,
+            "key": "công suất dưới 1kva",
+            "folded": "cong suat duoi 1kva"
+          },
+          {
+            "raw": "1 KVA",
+            "dia": false,
+            "key": "1 kva",
+            "folded": "1 kva"
+          },
+          {
+            "raw": "0.5 KVA",
+            "dia": false,
+            "key": "0.5 kva",
+            "folded": "0.5 kva"
+          },
+          {
+            "raw": "0.25 KVA",
+            "dia": false,
+            "key": "0.25 kva",
+            "folded": "0.25 kva"
+          },
+          {
+            "raw": "100VA",
+            "dia": false,
+            "key": "100va",
+            "folded": "100va"
+          },
+          {
+            "raw": "500VA",
+            "dia": false,
+            "key": "500va",
+            "folded": "500va"
+          }
+        ],
+        "gt1le10": [
+          {
+            "raw": "2kva",
+            "dia": false,
+            "key": "2kva",
+            "folded": "2kva"
+          },
+          {
+            "raw": "3kva",
+            "dia": false,
+            "key": "3kva",
+            "folded": "3kva"
+          },
+          {
+            "raw": "4kva",
+            "dia": false,
+            "key": "4kva",
+            "folded": "4kva"
+          },
+          {
+            "raw": "5kva",
+            "dia": false,
+            "key": "5kva",
+            "folded": "5kva"
+          },
+          {
+            "raw": "6kva",
+            "dia": false,
+            "key": "6kva",
+            "folded": "6kva"
+          },
+          {
+            "raw": "7kva",
+            "dia": false,
+            "key": "7kva",
+            "folded": "7kva"
+          },
+          {
+            "raw": "8kva",
+            "dia": false,
+            "key": "8kva",
+            "folded": "8kva"
+          },
+          {
+            "raw": "9kva",
+            "dia": false,
+            "key": "9kva",
+            "folded": "9kva"
+          },
+          {
+            "raw": "10kva",
+            "dia": false,
+            "key": "10kva",
+            "folded": "10kva"
+          },
+          {
+            "raw": "1-10kva",
+            "dia": false,
+            "key": "1 10kva",
+            "folded": "1 10kva"
+          },
+          {
+            "raw": "1kva đến 10kva",
+            "dia": true,
+            "key": "1kva đến 10kva",
+            "folded": "1kva den 10kva"
+          },
+          {
+            "raw": "công suất trung bình",
+            "dia": true,
+            "key": "công suất trung bình",
+            "folded": "cong suat trung binh"
+          },
+          {
+            "raw": "trung bình",
+            "dia": true,
+            "key": "trung bình",
+            "folded": "trung binh"
+          }
+        ],
+        "gt10le15": [
+          {
+            "raw": "11kva",
+            "dia": false,
+            "key": "11kva",
+            "folded": "11kva"
+          },
+          {
+            "raw": "12kva",
+            "dia": false,
+            "key": "12kva",
+            "folded": "12kva"
+          },
+          {
+            "raw": "13kva",
+            "dia": false,
+            "key": "13kva",
+            "folded": "13kva"
+          },
+          {
+            "raw": "14kva",
+            "dia": false,
+            "key": "14kva",
+            "folded": "14kva"
+          },
+          {
+            "raw": "15kva",
+            "dia": false,
+            "key": "15kva",
+            "folded": "15kva"
+          },
+          {
+            "raw": "10-15kva",
+            "dia": false,
+            "key": "10 15kva",
+            "folded": "10 15kva"
+          }
+        ],
+        "gt15le20": [
+          {
+            "raw": "16kva",
+            "dia": false,
+            "key": "16kva",
+            "folded": "16kva"
+          },
+          {
+            "raw": "17kva",
+            "dia": false,
+            "key": "17kva",
+            "folded": "17kva"
+          },
+          {
+            "raw": "18kva",
+            "dia": false,
+            "key": "18kva",
+            "folded": "18kva"
+          },
+          {
+            "raw": "19kva",
+            "dia": false,
+            "key": "19kva",
+            "folded": "19kva"
+          },
+          {
+            "raw": "20kva",
+            "dia": false,
+            "key": "20kva",
+            "folded": "20kva"
+          },
+          {
+            "raw": "15-20kva",
+            "dia": false,
+            "key": "15 20kva",
+            "folded": "15 20kva"
+          }
+        ],
+        "gt20le30": [
+          {
+            "raw": "25kva",
+            "dia": false,
+            "key": "25kva",
+            "folded": "25kva"
+          },
+          {
+            "raw": "30kva",
+            "dia": false,
+            "key": "30kva",
+            "folded": "30kva"
+          },
+          {
+            "raw": "20-30kva",
+            "dia": false,
+            "key": "20 30kva",
+            "folded": "20 30kva"
+          },
+          {
+            "raw": "25 KVA",
+            "dia": false,
+            "key": "25 kva",
+            "folded": "25 kva"
+          },
+          {
+            "raw": "30 KVA",
+            "dia": false,
+            "key": "30 kva",
+            "folded": "30 kva"
+          }
+        ],
+        "gt30": [
+          {
+            "raw": "40kva",
+            "dia": false,
+            "key": "40kva",
+            "folded": "40kva"
+          },
+          {
+            "raw": "50kva",
+            "dia": false,
+            "key": "50kva",
+            "folded": "50kva"
+          },
+          {
+            "raw": "63kva",
+            "dia": false,
+            "key": "63kva",
+            "folded": "63kva"
+          },
+          {
+            "raw": "75kva",
+            "dia": false,
+            "key": "75kva",
+            "folded": "75kva"
+          },
+          {
+            "raw": "100kva",
+            "dia": false,
+            "key": "100kva",
+            "folded": "100kva"
+          },
+          {
+            "raw": "150kva",
+            "dia": false,
+            "key": "150kva",
+            "folded": "150kva"
+          },
+          {
+            "raw": "200kva",
+            "dia": false,
+            "key": "200kva",
+            "folded": "200kva"
+          },
+          {
+            "raw": "250kva",
+            "dia": false,
+            "key": "250kva",
+            "folded": "250kva"
+          },
+          {
+            "raw": "315kva",
+            "dia": false,
+            "key": "315kva",
+            "folded": "315kva"
+          },
+          {
+            "raw": "400kva",
+            "dia": false,
+            "key": "400kva",
+            "folded": "400kva"
+          },
+          {
+            "raw": "500kva",
+            "dia": false,
+            "key": "500kva",
+            "folded": "500kva"
+          },
+          {
+            "raw": "630kva",
+            "dia": false,
+            "key": "630kva",
+            "folded": "630kva"
+          },
+          {
+            "raw": "750kva",
+            "dia": false,
+            "key": "750kva",
+            "folded": "750kva"
+          },
+          {
+            "raw": "1000kva",
+            "dia": false,
+            "key": "1000kva",
+            "folded": "1000kva"
+          },
+          {
+            "raw": "trên 30kva",
+            "dia": true,
+            "key": "trên 30kva",
+            "folded": "tren 30kva"
+          },
+          {
+            "raw": "lớn hơn 30kva",
+            "dia": true,
+            "key": "lớn hơn 30kva",
+            "folded": "lon hon 30kva"
+          },
+          {
+            "raw": "công suất lớn",
+            "dia": true,
+            "key": "công suất lớn",
+            "folded": "cong suat lon"
+          },
+          {
+            "raw": "Bộ nguồn cấp điện",
+            "dia": true,
+            "key": "bộ nguồn cấp điện",
+            "folded": "bo nguon cap dien"
+          },
+          {
+            "raw": "Bộ đổi nguồn",
+            "dia": true,
+            "key": "bộ đổi nguồn",
+            "folded": "bo doi nguon"
+          },
+          {
+            "raw": "Máy biến áp cách ly",
+            "dia": true,
+            "key": "máy biến áp cách ly",
+            "folded": "may bien ap cach ly"
+          },
+          {
+            "raw": "Cuộn cảm",
+            "dia": true,
+            "key": "cuộn cảm",
+            "folded": "cuon cam"
+          },
+          {
+            "raw": "Bộ nguồn pin cúc áo",
+            "dia": true,
+            "key": "bộ nguồn pin cúc áo",
+            "folded": "bo nguon pin cuc ao"
+          },
+          {
+            "raw": "Bộ nguồn LED",
+            "dia": true,
+            "key": "bộ nguồn led",
+            "folded": "bo nguon led"
+          },
+          {
+            "raw": "Bộ nguồn dạng tĩnh",
+            "dia": true,
+            "key": "bộ nguồn dạng tĩnh",
+            "folded": "bo nguon dang tinh"
+          },
+          {
+            "raw": "Bộ cấp nguồn UPS",
+            "dia": true,
+            "key": "bộ cấp nguồn ups",
+            "folded": "bo cap nguon ups"
+          },
+          {
+            "raw": "Bộ nguồn một chiều",
+            "dia": true,
+            "key": "bộ nguồn một chiều",
+            "folded": "bo nguon mot chieu"
+          },
+          {
+            "raw": "Bộ nguồn cung cấp điện",
+            "dia": true,
+            "key": "bộ nguồn cung cấp điện",
+            "folded": "bo nguon cung cap dien"
+          },
+          {
+            "raw": "Biến áp điều khiển",
+            "dia": true,
+            "key": "biến áp điều khiển",
+            "folded": "bien ap dieu khien"
+          },
+          {
+            "raw": "Bộ sạc",
+            "dia": true,
+            "key": "bộ sạc",
+            "folded": "bo sac"
+          },
+          {
+            "raw": "Biến dòng",
+            "dia": true,
+            "key": "biến dòng",
+            "folded": "bien dong"
+          },
+          {
+            "raw": "Bộ phận máy biến áp di động",
+            "dia": true,
+            "key": "bộ phận máy biến áp di động",
+            "folded": "bo phan may bien ap di dong"
+          },
+          {
+            "raw": "Bộ nguồn 1 chiều",
+            "dia": true,
+            "key": "bộ nguồn 1 chiều",
+            "folded": "bo nguon 1 chieu"
+          },
+          {
+            "raw": "Bộ cấp nguồn điện",
+            "dia": true,
+            "key": "bộ cấp nguồn điện",
+            "folded": "bo cap nguon dien"
+          },
+          {
+            "raw": "Bộ nguồn điện",
+            "dia": true,
+            "key": "bộ nguồn điện",
+            "folded": "bo nguon dien"
+          },
+          {
+            "raw": "Bộ nguồn aptomat",
+            "dia": true,
+            "key": "bộ nguồn aptomat",
+            "folded": "bo nguon aptomat"
+          },
+          {
+            "raw": "Cuộn kháng aptomat",
+            "dia": true,
+            "key": "cuộn kháng aptomat",
+            "folded": "cuon khang aptomat"
+          },
+          {
+            "raw": "Bộ nạp ắc quy",
+            "dia": true,
+            "key": "bộ nạp ắc quy",
+            "folded": "bo nap ac quy"
+          },
+          {
+            "raw": "Máy biến áp đo lường",
+            "dia": true,
+            "key": "máy biến áp đo lường",
+            "folded": "may bien ap do luong"
+          },
+          {
+            "raw": "Bộ nguồn phanh động cơ",
+            "dia": true,
+            "key": "bộ nguồn phanh động cơ",
+            "folded": "bo nguon phanh dong co"
+          }
+        ],
+        "le2500": [
+          {
+            "raw": "2500kva",
+            "dia": false,
+            "key": "2500kva",
+            "folded": "2500kva"
+          },
+          {
+            "raw": "dưới 2500kva",
+            "dia": true,
+            "key": "dưới 2500kva",
+            "folded": "duoi 2500kva"
+          }
+        ],
+        "gt2500le10000": [
+          {
+            "raw": "3000kva",
+            "dia": false,
+            "key": "3000kva",
+            "folded": "3000kva"
+          },
+          {
+            "raw": "4000kva",
+            "dia": false,
+            "key": "4000kva",
+            "folded": "4000kva"
+          },
+          {
+            "raw": "5000kva",
+            "dia": false,
+            "key": "5000kva",
+            "folded": "5000kva"
+          },
+          {
+            "raw": "6000kva",
+            "dia": false,
+            "key": "6000kva",
+            "folded": "6000kva"
+          },
+          {
+            "raw": "7500kva",
+            "dia": false,
+            "key": "7500kva",
+            "folded": "7500kva"
+          },
+          {
+            "raw": "8000kva",
+            "dia": false,
+            "key": "8000kva",
+            "folded": "8000kva"
+          },
+          {
+            "raw": "10000kva",
+            "dia": false,
+            "key": "10000kva",
+            "folded": "10000kva"
+          },
+          {
+            "raw": "2500-10000kva",
+            "dia": false,
+            "key": "2500 10000kva",
+            "folded": "2500 10000kva"
+          }
+        ],
+        "gt10000": [
+          {
+            "raw": "15000kva",
+            "dia": false,
+            "key": "15000kva",
+            "folded": "15000kva"
+          },
+          {
+            "raw": "20000kva",
+            "dia": false,
+            "key": "20000kva",
+            "folded": "20000kva"
+          },
+          {
+            "raw": "25000kva",
+            "dia": false,
+            "key": "25000kva",
+            "folded": "25000kva"
+          },
+          {
+            "raw": "30000kva",
+            "dia": false,
+            "key": "30000kva",
+            "folded": "30000kva"
+          },
+          {
+            "raw": "trên 10000kva",
+            "dia": true,
+            "key": "trên 10000kva",
+            "folded": "tren 10000kva"
+          }
+        ],
+        "unspecified": []
+      }
+    },
+    {
+      "attribute": "voltageClass",
+      "labelVi": "Cấp điện áp (kV)",
+      "questionVi": "Điện áp làm việc bao nhiêu kV?",
+      "type": "enum",
+      "domain": [
+        "lt1",
+        "ge1lt66",
+        "ge66lt110",
+        "ge110",
+        "unspecified"
+      ],
+      "detect": {
+        "lt1": [
+          "dưới 1v",
+          "1v",
+          "2v",
+          "3v",
+          "5v",
+          "12v",
+          "24v",
+          "48v",
+          "điện thế thấp",
+          "low voltage",
+          "điện 1 chiều",
+          "dc"
+        ],
+        "ge1lt66": [
+          "220v",
+          "380v",
+          "400v",
+          "415v",
+          "440v",
+          "460v",
+          "480v",
+          "660v",
+          "điện hạ thế",
+          "hạ thế",
+          "trung thế thấp",
+          "điện 3 pha 380v",
+          "điện 3 pha 220v",
+          "220 VAC",
+          "380 VAC"
+        ],
+        "ge66lt110": [
+          "6.6kv",
+          "10kv",
+          "11kv",
+          "22kv",
+          "33kv",
+          "35kv",
+          "trung thế",
+          "điện trung thế",
+          "medium voltage"
+        ],
+        "ge110": [
+          "110kv",
+          "220kv",
+          "330kv",
+          "500kv",
+          "cao thế",
+          "điện cao áp",
+          "cao thế",
+          "high voltage",
+          "điện lưới",
+          "110 kV",
+          "220 kV"
+        ],
+        "unspecified": []
+      },
+      "_detect": {
+        "lt1": [
+          {
+            "raw": "dưới 1v",
+            "dia": true,
+            "key": "dưới 1v",
+            "folded": "duoi 1v"
+          },
+          {
+            "raw": "1v",
+            "dia": false,
+            "key": "1v",
+            "folded": "1v"
+          },
+          {
+            "raw": "2v",
+            "dia": false,
+            "key": "2v",
+            "folded": "2v"
+          },
+          {
+            "raw": "3v",
+            "dia": false,
+            "key": "3v",
+            "folded": "3v"
+          },
+          {
+            "raw": "5v",
+            "dia": false,
+            "key": "5v",
+            "folded": "5v"
+          },
+          {
+            "raw": "12v",
+            "dia": false,
+            "key": "12v",
+            "folded": "12v"
+          },
+          {
+            "raw": "24v",
+            "dia": false,
+            "key": "24v",
+            "folded": "24v"
+          },
+          {
+            "raw": "48v",
+            "dia": false,
+            "key": "48v",
+            "folded": "48v"
+          },
+          {
+            "raw": "điện thế thấp",
+            "dia": true,
+            "key": "điện thế thấp",
+            "folded": "dien the thap"
+          },
+          {
+            "raw": "low voltage",
+            "dia": false,
+            "key": "low voltage",
+            "folded": "low voltage"
+          },
+          {
+            "raw": "điện 1 chiều",
+            "dia": true,
+            "key": "điện 1 chiều",
+            "folded": "dien 1 chieu"
+          },
+          {
+            "raw": "dc",
+            "dia": false,
+            "key": "dc",
+            "folded": "dc"
+          }
+        ],
+        "ge1lt66": [
+          {
+            "raw": "220v",
+            "dia": false,
+            "key": "220v",
+            "folded": "220v"
+          },
+          {
+            "raw": "380v",
+            "dia": false,
+            "key": "380v",
+            "folded": "380v"
+          },
+          {
+            "raw": "400v",
+            "dia": false,
+            "key": "400v",
+            "folded": "400v"
+          },
+          {
+            "raw": "415v",
+            "dia": false,
+            "key": "415v",
+            "folded": "415v"
+          },
+          {
+            "raw": "440v",
+            "dia": false,
+            "key": "440v",
+            "folded": "440v"
+          },
+          {
+            "raw": "460v",
+            "dia": false,
+            "key": "460v",
+            "folded": "460v"
+          },
+          {
+            "raw": "480v",
+            "dia": false,
+            "key": "480v",
+            "folded": "480v"
+          },
+          {
+            "raw": "660v",
+            "dia": false,
+            "key": "660v",
+            "folded": "660v"
+          },
+          {
+            "raw": "điện hạ thế",
+            "dia": true,
+            "key": "điện hạ thế",
+            "folded": "dien ha the"
+          },
+          {
+            "raw": "hạ thế",
+            "dia": true,
+            "key": "hạ thế",
+            "folded": "ha the"
+          },
+          {
+            "raw": "trung thế thấp",
+            "dia": true,
+            "key": "trung thế thấp",
+            "folded": "trung the thap"
+          },
+          {
+            "raw": "điện 3 pha 380v",
+            "dia": true,
+            "key": "điện 3 pha 380v",
+            "folded": "dien 3 pha 380v"
+          },
+          {
+            "raw": "điện 3 pha 220v",
+            "dia": true,
+            "key": "điện 3 pha 220v",
+            "folded": "dien 3 pha 220v"
+          },
+          {
+            "raw": "220 VAC",
+            "dia": false,
+            "key": "220 vac",
+            "folded": "220 vac"
+          },
+          {
+            "raw": "380 VAC",
+            "dia": false,
+            "key": "380 vac",
+            "folded": "380 vac"
+          }
+        ],
+        "ge66lt110": [
+          {
+            "raw": "6.6kv",
+            "dia": false,
+            "key": "6.6kv",
+            "folded": "6.6kv"
+          },
+          {
+            "raw": "10kv",
+            "dia": false,
+            "key": "10kv",
+            "folded": "10kv"
+          },
+          {
+            "raw": "11kv",
+            "dia": false,
+            "key": "11kv",
+            "folded": "11kv"
+          },
+          {
+            "raw": "22kv",
+            "dia": false,
+            "key": "22kv",
+            "folded": "22kv"
+          },
+          {
+            "raw": "33kv",
+            "dia": false,
+            "key": "33kv",
+            "folded": "33kv"
+          },
+          {
+            "raw": "35kv",
+            "dia": false,
+            "key": "35kv",
+            "folded": "35kv"
+          },
+          {
+            "raw": "trung thế",
+            "dia": true,
+            "key": "trung thế",
+            "folded": "trung the"
+          },
+          {
+            "raw": "điện trung thế",
+            "dia": true,
+            "key": "điện trung thế",
+            "folded": "dien trung the"
+          },
+          {
+            "raw": "medium voltage",
+            "dia": false,
+            "key": "medium voltage",
+            "folded": "medium voltage"
+          }
+        ],
+        "ge110": [
+          {
+            "raw": "110kv",
+            "dia": false,
+            "key": "110kv",
+            "folded": "110kv"
+          },
+          {
+            "raw": "220kv",
+            "dia": false,
+            "key": "220kv",
+            "folded": "220kv"
+          },
+          {
+            "raw": "330kv",
+            "dia": false,
+            "key": "330kv",
+            "folded": "330kv"
+          },
+          {
+            "raw": "500kv",
+            "dia": false,
+            "key": "500kv",
+            "folded": "500kv"
+          },
+          {
+            "raw": "cao thế",
+            "dia": true,
+            "key": "cao thế",
+            "folded": "cao the"
+          },
+          {
+            "raw": "điện cao áp",
+            "dia": true,
+            "key": "điện cao áp",
+            "folded": "dien cao ap"
+          },
+          {
+            "raw": "cao thế",
+            "dia": true,
+            "key": "cao thế",
+            "folded": "cao the"
+          },
+          {
+            "raw": "high voltage",
+            "dia": false,
+            "key": "high voltage",
+            "folded": "high voltage"
+          },
+          {
+            "raw": "điện lưới",
+            "dia": true,
+            "key": "điện lưới",
+            "folded": "dien luoi"
+          },
+          {
+            "raw": "110 kV",
+            "dia": false,
+            "key": "110 kv",
+            "folded": "110 kv"
+          },
+          {
+            "raw": "220 kV",
+            "dia": false,
+            "key": "220 kv",
+            "folded": "220 kv"
+          }
+        ],
+        "unspecified": []
+      }
+    },
+    {
+      "attribute": "specialType",
+      "labelVi": "Loại đặc biệt / ứng dụng riêng",
+      "questionVi": "Có loại đặc biệt nào không?",
+      "type": "enum",
+      "domain": [
+        "currentTransformer",
+        "freqScan",
+        "ifTransformer",
+        "toys",
+        "stepUpDown",
+        "adapter",
+        "dryExplosionProof",
+        "batteryCharger",
+        "ups",
+        "rectifier",
+        "inverter",
+        "chipInductor",
+        "dataProcInductor",
+        "none"
+      ],
+      "detect": {
+        "currentTransformer": [
+          "biến dòng",
+          "máy biến dòng",
+          "biến dòng đo lường",
+          "CT",
+          "biến dòng bảo vệ",
+          "current transformer"
+        ],
+        "freqScan": [
+          "tần số",
+          "quét tần",
+          "biến áp tần số",
+          "frequency scanning"
+        ],
+        "ifTransformer": [
+          "IF",
+          "trung tần",
+          "biến áp IF",
+          "intermediate frequency",
+          "biến áp trung tần",
+          "IF transformer"
+        ],
+        "toys": [
+          "đồ chơi",
+          "toy",
+          "đồ chơi trẻ em",
+          "đồ chơi điện"
+        ],
+        "stepUpDown": [
+          "tăng giảm",
+          "tăng áp",
+          "giảm áp",
+          "step up",
+          "step down",
+          "tăng giảm áp",
+          "biến áp tăng giảm"
+        ],
+        "adapter": [
+          "adapter",
+          "bộ chuyển",
+          "đầu chuyển",
+          "usb adapter",
+          "adapter sạc",
+          "sạc điện thoại",
+          "sạc nhanh",
+          "sạc không dây",
+          "củ sạc",
+          "bộ sạc",
+          "bộ sạc điện thoại",
+          "củ sạc điện thoại",
+          "sạc iphone",
+          "sạc samsung",
+          "sạc laptop",
+          "sạc pin",
+          "bộ sạc pin",
+          "bộ nạp pin",
+          "bộ chuyển đổi adapter",
+          "adapter 5v",
+          "adapter 12v"
+        ],
+        "dryExplosionProof": [
+          "chống nổ",
+          "chống cháy nổ",
+          "nổ",
+          "an toàn nổ",
+          "dry type explosion",
+          "thiết bị chống nổ",
+          "vỏ chống nổ"
+        ],
+        "batteryCharger": [
+          "sạc pin",
+          "sạc acquy",
+          "sạc ắc quy",
+          "battery charger",
+          "bộ sạc acquy",
+          "bộ nạp điện",
+          "sạc bình acquy",
+          "máy sạc pin",
+          "sạc pin dự phòng",
+          "sạc dự phòng",
+          "pin dự phòng",
+          "máy sạc",
+          "bộ sạc",
+          "sạc xe điện",
+          "sạc xe máy điện",
+          "sạc ô tô",
+          "bộ sạc ô tô",
+          "trạm sạc",
+          "tau sac",
+          "tau sạc"
+        ],
+        "ups": [
+          "ups",
+          "bộ lưu điện",
+          "bộ lưu điện dự phòng",
+          "backup power",
+          "uninterruptible",
+          "bộ không间断",
+          "lưu điện",
+          "nguồn dự phòng",
+          "ups 1kva",
+          "ups 2kva",
+          "ups 3kva",
+          "ups 10kva"
+        ],
+        "rectifier": [
+          "chỉnh lưu",
+          "bộ chỉnh lưu",
+          "rectifier",
+          "bộ biến đổi chỉnh lưu",
+          "chỉnh lưu cầu",
+          "chỉnh lưu diode",
+          "chỉnh lưu SCR",
+          "bộ chuyển đổi AC DC",
+          "bộ biến đổi chỉnh lưu"
+        ],
+        "inverter": [
+          "biến tần",
+          "inverter",
+          "bộ biến tần",
+          "biến tần 1 pha",
+          "biến tần 3 pha",
+          "biến tần solar",
+          "biến tần năng lượng mặt trời",
+          "inverter solar",
+          "biến tần VFD",
+          "biến tần điều khiển tốc độ",
+          "biến tần công nghiệp",
+          "biến tần máy bơm",
+          "inverter điện mặt trời",
+          "inverter 5kw",
+          "inverter 10kw"
+        ],
+        "chipInductor": [
+          "cuộn cảm chip",
+          "cuộn cảm dán",
+          "inductor chip",
+          "smd inductor",
+          "cuộn cảm smd",
+          "cuộn dây chip"
+        ],
+        "dataProcInductor": [
+          "cuộn cảm xử lý dữ liệu",
+          "cuộn cảm máy tính",
+          "cuộn cảm viễn thông"
+        ],
+        "none": []
+      },
+      "_detect": {
+        "currentTransformer": [
+          {
+            "raw": "biến dòng",
+            "dia": true,
+            "key": "biến dòng",
+            "folded": "bien dong"
+          },
+          {
+            "raw": "máy biến dòng",
+            "dia": true,
+            "key": "máy biến dòng",
+            "folded": "may bien dong"
+          },
+          {
+            "raw": "biến dòng đo lường",
+            "dia": true,
+            "key": "biến dòng đo lường",
+            "folded": "bien dong do luong"
+          },
+          {
+            "raw": "CT",
+            "dia": false,
+            "key": "ct",
+            "folded": "ct"
+          },
+          {
+            "raw": "biến dòng bảo vệ",
+            "dia": true,
+            "key": "biến dòng bảo vệ",
+            "folded": "bien dong bao ve"
+          },
+          {
+            "raw": "current transformer",
+            "dia": false,
+            "key": "current transformer",
+            "folded": "current transformer"
+          }
+        ],
+        "freqScan": [
+          {
+            "raw": "tần số",
+            "dia": true,
+            "key": "tần số",
+            "folded": "tan so"
+          },
+          {
+            "raw": "quét tần",
+            "dia": true,
+            "key": "quét tần",
+            "folded": "quet tan"
+          },
+          {
+            "raw": "biến áp tần số",
+            "dia": true,
+            "key": "biến áp tần số",
+            "folded": "bien ap tan so"
+          },
+          {
+            "raw": "frequency scanning",
+            "dia": false,
+            "key": "frequency scanning",
+            "folded": "frequency scanning"
+          }
+        ],
+        "ifTransformer": [
+          {
+            "raw": "IF",
+            "dia": false,
+            "key": "if",
+            "folded": "if"
+          },
+          {
+            "raw": "trung tần",
+            "dia": true,
+            "key": "trung tần",
+            "folded": "trung tan"
+          },
+          {
+            "raw": "biến áp IF",
+            "dia": true,
+            "key": "biến áp if",
+            "folded": "bien ap if"
+          },
+          {
+            "raw": "intermediate frequency",
+            "dia": false,
+            "key": "intermediate frequency",
+            "folded": "intermediate frequency"
+          },
+          {
+            "raw": "biến áp trung tần",
+            "dia": true,
+            "key": "biến áp trung tần",
+            "folded": "bien ap trung tan"
+          },
+          {
+            "raw": "IF transformer",
+            "dia": false,
+            "key": "if transformer",
+            "folded": "if transformer"
+          }
+        ],
+        "toys": [
+          {
+            "raw": "đồ chơi",
+            "dia": true,
+            "key": "đồ chơi",
+            "folded": "do choi"
+          },
+          {
+            "raw": "toy",
+            "dia": false,
+            "key": "toy",
+            "folded": "toy"
+          },
+          {
+            "raw": "đồ chơi trẻ em",
+            "dia": true,
+            "key": "đồ chơi trẻ em",
+            "folded": "do choi tre em"
+          },
+          {
+            "raw": "đồ chơi điện",
+            "dia": true,
+            "key": "đồ chơi điện",
+            "folded": "do choi dien"
+          }
+        ],
+        "stepUpDown": [
+          {
+            "raw": "tăng giảm",
+            "dia": true,
+            "key": "tăng giảm",
+            "folded": "tang giam"
+          },
+          {
+            "raw": "tăng áp",
+            "dia": true,
+            "key": "tăng áp",
+            "folded": "tang ap"
+          },
+          {
+            "raw": "giảm áp",
+            "dia": true,
+            "key": "giảm áp",
+            "folded": "giam ap"
+          },
+          {
+            "raw": "step up",
+            "dia": false,
+            "key": "step up",
+            "folded": "step up"
+          },
+          {
+            "raw": "step down",
+            "dia": false,
+            "key": "step down",
+            "folded": "step down"
+          },
+          {
+            "raw": "tăng giảm áp",
+            "dia": true,
+            "key": "tăng giảm áp",
+            "folded": "tang giam ap"
+          },
+          {
+            "raw": "biến áp tăng giảm",
+            "dia": true,
+            "key": "biến áp tăng giảm",
+            "folded": "bien ap tang giam"
+          }
+        ],
+        "adapter": [
+          {
+            "raw": "adapter",
+            "dia": false,
+            "key": "adapter",
+            "folded": "adapter"
+          },
+          {
+            "raw": "bộ chuyển",
+            "dia": true,
+            "key": "bộ chuyển",
+            "folded": "bo chuyen"
+          },
+          {
+            "raw": "đầu chuyển",
+            "dia": true,
+            "key": "đầu chuyển",
+            "folded": "dau chuyen"
+          },
+          {
+            "raw": "usb adapter",
+            "dia": false,
+            "key": "usb adapter",
+            "folded": "usb adapter"
+          },
+          {
+            "raw": "adapter sạc",
+            "dia": true,
+            "key": "adapter sạc",
+            "folded": "adapter sac"
+          },
+          {
+            "raw": "sạc điện thoại",
+            "dia": true,
+            "key": "sạc điện thoại",
+            "folded": "sac dien thoai"
+          },
+          {
+            "raw": "sạc nhanh",
+            "dia": true,
+            "key": "sạc nhanh",
+            "folded": "sac nhanh"
+          },
+          {
+            "raw": "sạc không dây",
+            "dia": true,
+            "key": "sạc không dây",
+            "folded": "sac khong day"
+          },
+          {
+            "raw": "củ sạc",
+            "dia": true,
+            "key": "củ sạc",
+            "folded": "cu sac"
+          },
+          {
+            "raw": "bộ sạc",
+            "dia": true,
+            "key": "bộ sạc",
+            "folded": "bo sac"
+          },
+          {
+            "raw": "bộ sạc điện thoại",
+            "dia": true,
+            "key": "bộ sạc điện thoại",
+            "folded": "bo sac dien thoai"
+          },
+          {
+            "raw": "củ sạc điện thoại",
+            "dia": true,
+            "key": "củ sạc điện thoại",
+            "folded": "cu sac dien thoai"
+          },
+          {
+            "raw": "sạc iphone",
+            "dia": true,
+            "key": "sạc iphone",
+            "folded": "sac iphone"
+          },
+          {
+            "raw": "sạc samsung",
+            "dia": true,
+            "key": "sạc samsung",
+            "folded": "sac samsung"
+          },
+          {
+            "raw": "sạc laptop",
+            "dia": true,
+            "key": "sạc laptop",
+            "folded": "sac laptop"
+          },
+          {
+            "raw": "sạc pin",
+            "dia": true,
+            "key": "sạc pin",
+            "folded": "sac pin"
+          },
+          {
+            "raw": "bộ sạc pin",
+            "dia": true,
+            "key": "bộ sạc pin",
+            "folded": "bo sac pin"
+          },
+          {
+            "raw": "bộ nạp pin",
+            "dia": true,
+            "key": "bộ nạp pin",
+            "folded": "bo nap pin"
+          },
+          {
+            "raw": "bộ chuyển đổi adapter",
+            "dia": true,
+            "key": "bộ chuyển đổi adapter",
+            "folded": "bo chuyen doi adapter"
+          },
+          {
+            "raw": "adapter 5v",
+            "dia": false,
+            "key": "adapter 5v",
+            "folded": "adapter 5v"
+          },
+          {
+            "raw": "adapter 12v",
+            "dia": false,
+            "key": "adapter 12v",
+            "folded": "adapter 12v"
+          }
+        ],
+        "dryExplosionProof": [
+          {
+            "raw": "chống nổ",
+            "dia": true,
+            "key": "chống nổ",
+            "folded": "chong no"
+          },
+          {
+            "raw": "chống cháy nổ",
+            "dia": true,
+            "key": "chống cháy nổ",
+            "folded": "chong chay no"
+          },
+          {
+            "raw": "nổ",
+            "dia": true,
+            "key": "nổ",
+            "folded": "no"
+          },
+          {
+            "raw": "an toàn nổ",
+            "dia": true,
+            "key": "an toàn nổ",
+            "folded": "an toan no"
+          },
+          {
+            "raw": "dry type explosion",
+            "dia": false,
+            "key": "dry type explosion",
+            "folded": "dry type explosion"
+          },
+          {
+            "raw": "thiết bị chống nổ",
+            "dia": true,
+            "key": "thiết bị chống nổ",
+            "folded": "thiet bi chong no"
+          },
+          {
+            "raw": "vỏ chống nổ",
+            "dia": true,
+            "key": "vỏ chống nổ",
+            "folded": "vo chong no"
+          }
+        ],
+        "batteryCharger": [
+          {
+            "raw": "sạc pin",
+            "dia": true,
+            "key": "sạc pin",
+            "folded": "sac pin"
+          },
+          {
+            "raw": "sạc acquy",
+            "dia": true,
+            "key": "sạc acquy",
+            "folded": "sac acquy"
+          },
+          {
+            "raw": "sạc ắc quy",
+            "dia": true,
+            "key": "sạc ắc quy",
+            "folded": "sac ac quy"
+          },
+          {
+            "raw": "battery charger",
+            "dia": false,
+            "key": "battery charger",
+            "folded": "battery charger"
+          },
+          {
+            "raw": "bộ sạc acquy",
+            "dia": true,
+            "key": "bộ sạc acquy",
+            "folded": "bo sac acquy"
+          },
+          {
+            "raw": "bộ nạp điện",
+            "dia": true,
+            "key": "bộ nạp điện",
+            "folded": "bo nap dien"
+          },
+          {
+            "raw": "sạc bình acquy",
+            "dia": true,
+            "key": "sạc bình acquy",
+            "folded": "sac binh acquy"
+          },
+          {
+            "raw": "máy sạc pin",
+            "dia": true,
+            "key": "máy sạc pin",
+            "folded": "may sac pin"
+          },
+          {
+            "raw": "sạc pin dự phòng",
+            "dia": true,
+            "key": "sạc pin dự phòng",
+            "folded": "sac pin du phong"
+          },
+          {
+            "raw": "sạc dự phòng",
+            "dia": true,
+            "key": "sạc dự phòng",
+            "folded": "sac du phong"
+          },
+          {
+            "raw": "pin dự phòng",
+            "dia": true,
+            "key": "pin dự phòng",
+            "folded": "pin du phong"
+          },
+          {
+            "raw": "máy sạc",
+            "dia": true,
+            "key": "máy sạc",
+            "folded": "may sac"
+          },
+          {
+            "raw": "bộ sạc",
+            "dia": true,
+            "key": "bộ sạc",
+            "folded": "bo sac"
+          },
+          {
+            "raw": "sạc xe điện",
+            "dia": true,
+            "key": "sạc xe điện",
+            "folded": "sac xe dien"
+          },
+          {
+            "raw": "sạc xe máy điện",
+            "dia": true,
+            "key": "sạc xe máy điện",
+            "folded": "sac xe may dien"
+          },
+          {
+            "raw": "sạc ô tô",
+            "dia": true,
+            "key": "sạc ô tô",
+            "folded": "sac o to"
+          },
+          {
+            "raw": "bộ sạc ô tô",
+            "dia": true,
+            "key": "bộ sạc ô tô",
+            "folded": "bo sac o to"
+          },
+          {
+            "raw": "trạm sạc",
+            "dia": true,
+            "key": "trạm sạc",
+            "folded": "tram sac"
+          },
+          {
+            "raw": "tau sac",
+            "dia": false,
+            "key": "tau sac",
+            "folded": "tau sac"
+          },
+          {
+            "raw": "tau sạc",
+            "dia": true,
+            "key": "tau sạc",
+            "folded": "tau sac"
+          }
+        ],
+        "ups": [
+          {
+            "raw": "ups",
+            "dia": false,
+            "key": "ups",
+            "folded": "ups"
+          },
+          {
+            "raw": "bộ lưu điện",
+            "dia": true,
+            "key": "bộ lưu điện",
+            "folded": "bo luu dien"
+          },
+          {
+            "raw": "bộ lưu điện dự phòng",
+            "dia": true,
+            "key": "bộ lưu điện dự phòng",
+            "folded": "bo luu dien du phong"
+          },
+          {
+            "raw": "backup power",
+            "dia": false,
+            "key": "backup power",
+            "folded": "backup power"
+          },
+          {
+            "raw": "uninterruptible",
+            "dia": false,
+            "key": "uninterruptible",
+            "folded": "uninterruptible"
+          },
+          {
+            "raw": "bộ không间断",
+            "dia": true,
+            "key": "bộ không间断",
+            "folded": "bo khong间断"
+          },
+          {
+            "raw": "lưu điện",
+            "dia": true,
+            "key": "lưu điện",
+            "folded": "luu dien"
+          },
+          {
+            "raw": "nguồn dự phòng",
+            "dia": true,
+            "key": "nguồn dự phòng",
+            "folded": "nguon du phong"
+          },
+          {
+            "raw": "ups 1kva",
+            "dia": false,
+            "key": "ups 1kva",
+            "folded": "ups 1kva"
+          },
+          {
+            "raw": "ups 2kva",
+            "dia": false,
+            "key": "ups 2kva",
+            "folded": "ups 2kva"
+          },
+          {
+            "raw": "ups 3kva",
+            "dia": false,
+            "key": "ups 3kva",
+            "folded": "ups 3kva"
+          },
+          {
+            "raw": "ups 10kva",
+            "dia": false,
+            "key": "ups 10kva",
+            "folded": "ups 10kva"
+          }
+        ],
+        "rectifier": [
+          {
+            "raw": "chỉnh lưu",
+            "dia": true,
+            "key": "chỉnh lưu",
+            "folded": "chinh luu"
+          },
+          {
+            "raw": "bộ chỉnh lưu",
+            "dia": true,
+            "key": "bộ chỉnh lưu",
+            "folded": "bo chinh luu"
+          },
+          {
+            "raw": "rectifier",
+            "dia": false,
+            "key": "rectifier",
+            "folded": "rectifier"
+          },
+          {
+            "raw": "bộ biến đổi chỉnh lưu",
+            "dia": true,
+            "key": "bộ biến đổi chỉnh lưu",
+            "folded": "bo bien doi chinh luu"
+          },
+          {
+            "raw": "chỉnh lưu cầu",
+            "dia": true,
+            "key": "chỉnh lưu cầu",
+            "folded": "chinh luu cau"
+          },
+          {
+            "raw": "chỉnh lưu diode",
+            "dia": true,
+            "key": "chỉnh lưu diode",
+            "folded": "chinh luu diode"
+          },
+          {
+            "raw": "chỉnh lưu SCR",
+            "dia": true,
+            "key": "chỉnh lưu scr",
+            "folded": "chinh luu scr"
+          },
+          {
+            "raw": "bộ chuyển đổi AC DC",
+            "dia": true,
+            "key": "bộ chuyển đổi ac dc",
+            "folded": "bo chuyen doi ac dc"
+          },
+          {
+            "raw": "bộ biến đổi chỉnh lưu",
+            "dia": true,
+            "key": "bộ biến đổi chỉnh lưu",
+            "folded": "bo bien doi chinh luu"
+          }
+        ],
+        "inverter": [
+          {
+            "raw": "biến tần",
+            "dia": true,
+            "key": "biến tần",
+            "folded": "bien tan"
+          },
+          {
+            "raw": "inverter",
+            "dia": false,
+            "key": "inverter",
+            "folded": "inverter"
+          },
+          {
+            "raw": "bộ biến tần",
+            "dia": true,
+            "key": "bộ biến tần",
+            "folded": "bo bien tan"
+          },
+          {
+            "raw": "biến tần 1 pha",
+            "dia": true,
+            "key": "biến tần 1 pha",
+            "folded": "bien tan 1 pha"
+          },
+          {
+            "raw": "biến tần 3 pha",
+            "dia": true,
+            "key": "biến tần 3 pha",
+            "folded": "bien tan 3 pha"
+          },
+          {
+            "raw": "biến tần solar",
+            "dia": true,
+            "key": "biến tần solar",
+            "folded": "bien tan solar"
+          },
+          {
+            "raw": "biến tần năng lượng mặt trời",
+            "dia": true,
+            "key": "biến tần năng lượng mặt trời",
+            "folded": "bien tan nang luong mat troi"
+          },
+          {
+            "raw": "inverter solar",
+            "dia": false,
+            "key": "inverter solar",
+            "folded": "inverter solar"
+          },
+          {
+            "raw": "biến tần VFD",
+            "dia": true,
+            "key": "biến tần vfd",
+            "folded": "bien tan vfd"
+          },
+          {
+            "raw": "biến tần điều khiển tốc độ",
+            "dia": true,
+            "key": "biến tần điều khiển tốc độ",
+            "folded": "bien tan dieu khien toc do"
+          },
+          {
+            "raw": "biến tần công nghiệp",
+            "dia": true,
+            "key": "biến tần công nghiệp",
+            "folded": "bien tan cong nghiep"
+          },
+          {
+            "raw": "biến tần máy bơm",
+            "dia": true,
+            "key": "biến tần máy bơm",
+            "folded": "bien tan may bom"
+          },
+          {
+            "raw": "inverter điện mặt trời",
+            "dia": true,
+            "key": "inverter điện mặt trời",
+            "folded": "inverter dien mat troi"
+          },
+          {
+            "raw": "inverter 5kw",
+            "dia": false,
+            "key": "inverter 5kw",
+            "folded": "inverter 5kw"
+          },
+          {
+            "raw": "inverter 10kw",
+            "dia": false,
+            "key": "inverter 10kw",
+            "folded": "inverter 10kw"
+          }
+        ],
+        "chipInductor": [
+          {
+            "raw": "cuộn cảm chip",
+            "dia": true,
+            "key": "cuộn cảm chip",
+            "folded": "cuon cam chip"
+          },
+          {
+            "raw": "cuộn cảm dán",
+            "dia": true,
+            "key": "cuộn cảm dán",
+            "folded": "cuon cam dan"
+          },
+          {
+            "raw": "inductor chip",
+            "dia": false,
+            "key": "inductor chip",
+            "folded": "inductor chip"
+          },
+          {
+            "raw": "smd inductor",
+            "dia": false,
+            "key": "smd inductor",
+            "folded": "smd inductor"
+          },
+          {
+            "raw": "cuộn cảm smd",
+            "dia": true,
+            "key": "cuộn cảm smd",
+            "folded": "cuon cam smd"
+          },
+          {
+            "raw": "cuộn dây chip",
+            "dia": true,
+            "key": "cuộn dây chip",
+            "folded": "cuon day chip"
+          }
+        ],
+        "dataProcInductor": [
+          {
+            "raw": "cuộn cảm xử lý dữ liệu",
+            "dia": true,
+            "key": "cuộn cảm xử lý dữ liệu",
+            "folded": "cuon cam xu ly du lieu"
+          },
+          {
+            "raw": "cuộn cảm máy tính",
+            "dia": true,
+            "key": "cuộn cảm máy tính",
+            "folded": "cuon cam may tinh"
+          },
+          {
+            "raw": "cuộn cảm viễn thông",
+            "dia": true,
+            "key": "cuộn cảm viễn thông",
+            "folded": "cuon cam vien thong"
+          }
+        ],
+        "none": []
+      }
+    }
+  ],
+  "essenceTestVi": "Với máy biến áp, bộ chỉnh lưu, cuộn cảm: xác định (1) loại sản phẩm (biến áp theo công suất/kV, UPS, cuộn cảm, phụ tùng), (2) có nhãn SEN không, (3) công suất kVA, (4) cấp điện áp, (5) loại đặc biệt.",
+  "essenceVi": "Với máy biến áp, bộ chỉnh lưu, cuộn cảm: xác định (1) loại sản phẩm (biến áp theo công suất/kV, UPS, cuộn cảm, phụ tùng), (2) có nhãn SEN không, (3) công suất kVA, (4) cấp điện áp, (5) loại đặc biệt.",
+  "attributes": {
+    "powerkVA": {
+      "type": "enum",
+      "domain": [
+        "gt10000",
+        "gt10le15",
+        "gt15le20",
+        "gt1le10",
+        "gt20le30",
+        "gt2500le10000",
+        "gt30",
+        "le1",
+        "le2500",
+        "unspecified"
+      ],
+      "detect": {
+        "gt10000": [
+          "gt10000"
+        ],
+        "gt10le15": [
+          "gt10le15"
+        ],
+        "gt15le20": [
+          "gt15le20"
+        ],
+        "gt1le10": [
+          "gt1le10"
+        ],
+        "gt20le30": [
+          "gt20le30"
+        ],
+        "gt2500le10000": [
+          "gt2500le10000"
+        ],
+        "gt30": [
+          "gt30"
+        ],
+        "le1": [
+          "le1"
+        ],
+        "le2500": [
+          "le2500"
+        ],
+        "unspecified": [
+          "unspecified"
+        ]
+      }
+    },
+    "productType": {
+      "type": "enum",
+      "domain": [
+        "ballast",
+        "inductor",
+        "parts",
+        "staticConverter",
+        "transformer_16to630kVA",
+        "transformer_1to16kVA",
+        "transformer_gt1kVA",
+        "transformer_gt630kVA",
+        "transformer_le1kVA"
+      ],
+      "detect": {
+        "ballast": [
+          "ballast"
+        ],
+        "inductor": [
+          "inductor"
+        ],
+        "parts": [
+          "parts"
+        ],
+        "staticConverter": [
+          "staticConverter"
+        ],
+        "transformer_16to630kVA": [
+          "transformer",
+          "16to630kVA"
+        ],
+        "transformer_1to16kVA": [
+          "transformer",
+          "1to16kVA"
+        ],
+        "transformer_gt1kVA": [
+          "transformer",
+          "gt1kVA"
+        ],
+        "transformer_gt630kVA": [
+          "transformer",
+          "gt630kVA"
+        ],
+        "transformer_le1kVA": [
+          "transformer",
+          "le1kVA"
+        ]
+      }
+    },
+    "senMarked": {
+      "type": "enum",
+      "domain": [
+        "nonSen",
+        "sen"
+      ],
+      "detect": {
+        "nonSen": [
+          "nonSen"
+        ],
+        "sen": [
+          "sen"
+        ]
+      }
+    },
+    "specialType": {
+      "type": "enum",
+      "domain": [
+        "adapter",
+        "batteryCharger",
+        "chipInductor",
+        "currentTransformer",
+        "dataProcInductor",
+        "dryExplosionProof",
+        "freqScan",
+        "ifTransformer",
+        "inverter",
+        "none",
+        "rectifier",
+        "stepUpDown",
+        "toys",
+        "ups"
+      ],
+      "detect": {
+        "adapter": [
+          "adapter"
+        ],
+        "batteryCharger": [
+          "batteryCharger"
+        ],
+        "chipInductor": [
+          "chipInductor"
+        ],
+        "currentTransformer": [
+          "currentTransformer"
+        ],
+        "dataProcInductor": [
+          "dataProcInductor"
+        ],
+        "dryExplosionProof": [
+          "dryExplosionProof"
+        ],
+        "freqScan": [
+          "freqScan"
+        ],
+        "ifTransformer": [
+          "ifTransformer"
+        ],
+        "inverter": [
+          "inverter"
+        ],
+        "none": [
+          "none"
+        ],
+        "rectifier": [
+          "rectifier"
+        ],
+        "stepUpDown": [
+          "stepUpDown"
+        ],
+        "toys": [
+          "toys"
+        ],
+        "ups": [
+          "ups"
+        ]
+      }
+    },
+    "voltageClass": {
+      "type": "enum",
+      "domain": [
+        "ge110",
+        "ge1lt66",
+        "ge66lt110",
+        "lt1",
+        "unspecified"
+      ],
+      "detect": {
+        "ge110": [
+          "ge110"
+        ],
+        "ge1lt66": [
+          "ge1lt66"
+        ],
+        "ge66lt110": [
+          "ge66lt110"
+        ],
+        "lt1": [
+          "lt1"
+        ],
+        "unspecified": [
+          "unspecified"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "powerkVA",
+    "productType",
+    "senMarked",
+    "specialType",
+    "voltageClass"
+  ],
+  "hitPolicy": "PRIORITY"
+}

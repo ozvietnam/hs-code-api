@@ -1,0 +1,512 @@
+{
+  "heading": "9406",
+  "titleVi": "Nhà tiền chế và các công trình xây dựng đã lắp ráp",
+  "verified": false,
+  "essenceTestVi": "Nhà tiền chế: nhà trồng cây (greenhouse) có gắn thiết bị cơ khí/nhiệt; công trình khác chia theo vật liệu (sắt/thép, plastic, nhôm, xi măng/bê tông/đá nhân tạo, khác).",
+  "sourceVi": "Biểu thuế NK VN 2026, nhóm 9406",
+  "inputs": [
+    {
+      "attribute": "isGreenhouse",
+      "type": "enum",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "labelVi": "Có phải nhà trồng cây có gắn thiết bị cơ khí/nhiệt không",
+      "questionVi": "Công trình là nhà trồng cây có gắn thiết bị cơ khí hoặc nhiệt không?",
+      "detect": {
+        "yes": [
+          "nhà trồng cây",
+          "greenhouse",
+          "nhà kính",
+          "Bộ nhà chòi bằng thép",
+          "Bộ nhà chòi lắp ghép",
+          "Bộ nhà chòi thép sơn tĩnh điện"
+        ],
+        "no": [
+          "công trình khác",
+          "nhà tiền chế"
+        ]
+      },
+      "_detect": {
+        "yes": [
+          {
+            "raw": "nhà trồng cây",
+            "dia": true,
+            "key": "nhà trồng cây",
+            "folded": "nha trong cay"
+          },
+          {
+            "raw": "greenhouse",
+            "dia": false,
+            "key": "greenhouse",
+            "folded": "greenhouse"
+          },
+          {
+            "raw": "nhà kính",
+            "dia": true,
+            "key": "nhà kính",
+            "folded": "nha kinh"
+          }
+        ],
+        "no": [
+          {
+            "raw": "công trình khác",
+            "dia": true,
+            "key": "công trình khác",
+            "folded": "cong trinh khac"
+          },
+          {
+            "raw": "nhà tiền chế",
+            "dia": true,
+            "key": "nhà tiền chế",
+            "folded": "nha tien che"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "prefabKind",
+      "type": "enum",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "labelVi": "Có phải lắp ghép (prefabricated) không",
+      "questionVi": "Công trình có phải loại lắp ghép (prefab) không?",
+      "detect": {
+        "yes": [
+          "lắp ghép",
+          "prefab",
+          "tiền chế"
+        ],
+        "no": [
+          "lắp tại chỗ"
+        ]
+      },
+      "_detect": {
+        "yes": [
+          {
+            "raw": "lắp ghép",
+            "dia": true,
+            "key": "lắp ghép",
+            "folded": "lap ghep"
+          },
+          {
+            "raw": "prefab",
+            "dia": false,
+            "key": "prefab",
+            "folded": "prefab"
+          },
+          {
+            "raw": "tiền chế",
+            "dia": true,
+            "key": "tiền chế",
+            "folded": "tien che"
+          }
+        ],
+        "no": [
+          {
+            "raw": "lắp tại chỗ",
+            "dia": true,
+            "key": "lắp tại chỗ",
+            "folded": "lap tai cho"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "primaryMaterial",
+      "type": "enum",
+      "domain": [
+        "metal_steel",
+        "plastic",
+        "aluminum",
+        "cement_concrete",
+        "other"
+      ],
+      "labelVi": "Vật liệu chính",
+      "questionVi": "Vật liệu chính của công trình là gì?",
+      "detect": {
+        "metal_steel": [
+          "sắt",
+          "thép",
+          "metal",
+          "steel"
+        ],
+        "plastic": [
+          "plastic",
+          "nhựa"
+        ],
+        "aluminum": [
+          "nhôm",
+          "aluminum"
+        ],
+        "cement_concrete": [
+          "xi măng",
+          "bê tông",
+          "cement",
+          "concrete"
+        ],
+        "other": [
+          "vật liệu khác"
+        ]
+      },
+      "_detect": {
+        "metal_steel": [
+          {
+            "raw": "sắt",
+            "dia": true,
+            "key": "sắt",
+            "folded": "sat"
+          },
+          {
+            "raw": "thép",
+            "dia": true,
+            "key": "thép",
+            "folded": "thep"
+          },
+          {
+            "raw": "metal",
+            "dia": false,
+            "key": "metal",
+            "folded": "metal"
+          },
+          {
+            "raw": "steel",
+            "dia": false,
+            "key": "steel",
+            "folded": "steel"
+          }
+        ],
+        "plastic": [
+          {
+            "raw": "plastic",
+            "dia": false,
+            "key": "plastic",
+            "folded": "plastic"
+          },
+          {
+            "raw": "nhựa",
+            "dia": true,
+            "key": "nhựa",
+            "folded": "nhua"
+          }
+        ],
+        "aluminum": [
+          {
+            "raw": "nhôm",
+            "dia": true,
+            "key": "nhôm",
+            "folded": "nhom"
+          },
+          {
+            "raw": "aluminum",
+            "dia": false,
+            "key": "aluminum",
+            "folded": "aluminum"
+          }
+        ],
+        "cement_concrete": [
+          {
+            "raw": "xi măng",
+            "dia": true,
+            "key": "xi măng",
+            "folded": "xi mang"
+          },
+          {
+            "raw": "bê tông",
+            "dia": true,
+            "key": "bê tông",
+            "folded": "be tong"
+          },
+          {
+            "raw": "cement",
+            "dia": false,
+            "key": "cement",
+            "folded": "cement"
+          },
+          {
+            "raw": "concrete",
+            "dia": false,
+            "key": "concrete",
+            "folded": "concrete"
+          }
+        ],
+        "other": [
+          {
+            "raw": "vật liệu khác",
+            "dia": true,
+            "key": "vật liệu khác",
+            "folded": "vat lieu khac"
+          }
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "no",
+        "primaryMaterial": "metal_steel"
+      },
+      "hs": "94061010",
+      "reasonVi": "GIR 6 — nhà trồng cây gắn thiết bị cơ khí, bằng sắt/thép, Biểu thuế 2026 → 94061010",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "no",
+        "primaryMaterial": "plastic"
+      },
+      "hs": "94061090",
+      "reasonVi": "GIR 6 — nhà trồng cây gắn thiết bị cơ khí, bằng plastic, Biểu thuế 2026 → 94061090",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "no",
+        "primaryMaterial": "aluminum"
+      },
+      "hs": "94061090",
+      "reasonVi": "GIR 6 — nhà trồng cây gắn thiết bị cơ khí, bằng nhôm, Biểu thuế 2026 → 94061090",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "no",
+        "primaryMaterial": "cement_concrete"
+      },
+      "hs": "94061090",
+      "reasonVi": "GIR 6 — nhà trồng cây gắn thiết bị cơ khí, bằng xi măng, Biểu thuế 2026 → 94061090",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "no",
+        "primaryMaterial": "other"
+      },
+      "hs": "94061090",
+      "reasonVi": "GIR 6 — nhà trồng cây gắn thiết bị cơ khí, bằng vật liệu khác, Biểu thuế 2026 → 94061090",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "yes",
+        "primaryMaterial": "metal_steel"
+      },
+      "hs": "94062010",
+      "reasonVi": "GIR 6 — nhà trồng cây lắp ghép gắn thiết bị cơ khí, bằng sắt/thép, Biểu thuế 2026 → 94062010",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "yes",
+        "primaryMaterial": "plastic"
+      },
+      "hs": "94062090",
+      "reasonVi": "GIR 6 — nhà trồng cây lắp ghép gắn thiết bị cơ khí, bằng plastic, Biểu thuế 2026 → 94062090",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "yes",
+        "primaryMaterial": "aluminum"
+      },
+      "hs": "94062090",
+      "reasonVi": "GIR 6 — nhà trồng cây lắp ghép gắn thiết bị cơ khí, bằng nhôm, Biểu thuế 2026 → 94062090",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "yes",
+        "prefabKind": "yes",
+        "primaryMaterial": "other"
+      },
+      "hs": "94062090",
+      "reasonVi": "GIR 6 — nhà trồng cây lắp ghép gắn thiết bị cơ khí, vật liệu khác, Biểu thuế 2026 → 94062090",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "no",
+        "prefabKind": "no",
+        "primaryMaterial": "metal_steel"
+      },
+      "hs": "94069030",
+      "reasonVi": "GIR 6 — công trình khác bằng sắt/thép, Biểu thuế 2026 → 94069030",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "no",
+        "prefabKind": "no",
+        "primaryMaterial": "plastic"
+      },
+      "hs": "94069012",
+      "reasonVi": "GIR 6 — công trình khác bằng plastic, Biểu thuế 2026 → 94069012",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "no",
+        "prefabKind": "no",
+        "primaryMaterial": "aluminum"
+      },
+      "hs": "94069020",
+      "reasonVi": "GIR 6 — công trình khác bằng nhôm, Biểu thuế 2026 → 94069020",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "no",
+        "prefabKind": "no",
+        "primaryMaterial": "cement_concrete"
+      },
+      "hs": "94069040",
+      "reasonVi": "GIR 6 — công trình khác bằng xi măng/bê tông, Biểu thuế 2026 → 94069040",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "no",
+        "prefabKind": "no",
+        "primaryMaterial": "other"
+      },
+      "hs": "94069019",
+      "reasonVi": "GIR 6 — công trình khác bằng vật liệu khác, Biểu thuế 2026 → 94069019",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "no",
+        "prefabKind": "no",
+        "primaryMaterial": "metal_steel"
+      },
+      "hs": "94069011",
+      "reasonVi": "GIR 6 — công trình khác bằng sắt/thép (khác loại), Biểu thuế 2026 → 94069011",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "isGreenhouse": "no",
+        "prefabKind": "no",
+        "primaryMaterial": "other"
+      },
+      "hs": "94069090",
+      "reasonVi": "GIR 6 — công trình khác bằng vật liệu khác, Biểu thuế 2026 → 94069090",
+      "source": "Biểu thuế NK VN 2026, nhóm 9406"
+    }
+  ],
+  "inputAttributes": [
+    "isGreenhouse",
+    "prefabKind",
+    "primaryMaterial"
+  ],
+  "attributes": {
+    "isGreenhouse": {
+      "type": "enum",
+      "labelVi": "isGreenhouse",
+      "domain": [
+        "no",
+        "yes"
+      ],
+      "detect": {
+        "no": [
+          "no"
+        ],
+        "yes": [
+          "yes"
+        ]
+      }
+    },
+    "prefabKind": {
+      "type": "enum",
+      "labelVi": "prefabKind",
+      "domain": [
+        "no",
+        "yes"
+      ],
+      "detect": {
+        "no": [
+          "no"
+        ],
+        "yes": [
+          "yes"
+        ]
+      }
+    },
+    "primaryMaterial": {
+      "type": "enum",
+      "labelVi": "primaryMaterial",
+      "domain": [
+        "aluminum",
+        "cement_concrete",
+        "metal_steel",
+        "other",
+        "plastic"
+      ],
+      "detect": {
+        "aluminum": [
+          "aluminum"
+        ],
+        "cement_concrete": [
+          "cement_concrete",
+          "cement concrete"
+        ],
+        "metal_steel": [
+          "metal_steel",
+          "metal steel"
+        ],
+        "other": [
+          "other"
+        ],
+        "plastic": [
+          "plastic"
+        ]
+      }
+    }
+  },
+  "essenceVi": "isGreenhouse + prefabKind + primaryMaterial"
+}

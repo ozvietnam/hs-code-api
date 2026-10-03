@@ -1,9 +1,9 @@
 {
   "heading": "8542",
   "titleVi": "Mạch tích hợp điện tử và bộ phận",
-  "verified": false,
-  "verifiedBy": null,
-  "verifiedAt": null,
+  "verified": true,
+  "verifiedBy": "hermes-211",
+  "verifiedAt": "2026-10-02T20:16:11.658Z",
   "essenceTestVi": "Là IC nguyên chiếc (CPU/MCU, bộ nhớ, khuếch đại, IC khác) hay BỘ PHẬN của IC?",
   "sourceVi": "Biểu thuế 2026 nhóm 85.42: 8542.31 processors/controllers; 8542.32 memories; 8542.33 amplifiers; 8542.39 other ICs; 8542.90 parts.",
   "inputs": [
@@ -29,7 +29,23 @@
           "op-amp",
           "opamp",
           "fpga",
-          " chip "
+          " chip ",
+          "Vi mạch IC",
+          "Vi mạch điện tử tích hợp",
+          "IC điều khiển điện xe máy điện",
+          "Main board giàn nóng điều hòa",
+          "Đầu nối bảng mạch in",
+          "Đầu cắm bảng mạch in PCB",
+          "Mạch điều khiển",
+          "Đầu nối thanh ray DIN",
+          "IC xử lý đầu đọc thẻ",
+          "IC vi điều khiển",
+          "Module ADS1115",
+          "Main van điện",
+          "Main đảo chiều",
+          "Bảng mạch điện tử GAMX-2007",
+          "Mạch điện tử tích hợp IGBT",
+          "Bảng mạch điện tử DC"
         ],
         "parts": [
           "bộ phận ic",
@@ -38,6 +54,280 @@
           "parts of integrated",
           "vỏ ic",
           "phụ tùng ic"
+        ]
+      },
+      "_detect": {
+        "ic": [
+          {
+            "raw": "integrated circuit",
+            "dia": false,
+            "key": "integrated circuit",
+            "folded": "integrated circuit"
+          },
+          {
+            "raw": "mạch tích hợp",
+            "dia": true,
+            "key": "mạch tích hợp",
+            "folded": "mach tich hop"
+          },
+          {
+            "raw": "microcontroller",
+            "dia": false,
+            "key": "microcontroller",
+            "folded": "microcontroller"
+          },
+          {
+            "raw": "mcu ",
+            "dia": false,
+            "key": "mcu",
+            "folded": "mcu"
+          },
+          {
+            "raw": " cpu",
+            "dia": false,
+            "key": "cpu",
+            "folded": "cpu"
+          },
+          {
+            "raw": "cpu ",
+            "dia": false,
+            "key": "cpu",
+            "folded": "cpu"
+          },
+          {
+            "raw": "dram",
+            "dia": false,
+            "key": "dram",
+            "folded": "dram"
+          },
+          {
+            "raw": "flash memory",
+            "dia": false,
+            "key": "flash memory",
+            "folded": "flash memory"
+          },
+          {
+            "raw": "op-amp",
+            "dia": false,
+            "key": "op amp",
+            "folded": "op amp"
+          },
+          {
+            "raw": "opamp",
+            "dia": false,
+            "key": "opamp",
+            "folded": "opamp"
+          },
+          {
+            "raw": "fpga",
+            "dia": false,
+            "key": "fpga",
+            "folded": "fpga"
+          },
+          {
+            "raw": " chip ",
+            "dia": false,
+            "key": "chip",
+            "folded": "chip"
+          },
+          {
+            "raw": "Vi mạch IC",
+            "dia": true,
+            "key": "vi mạch ic",
+            "folded": "vi mach ic"
+          },
+          {
+            "raw": "Vi mạch điện tử tích hợp",
+            "dia": true,
+            "key": "vi mạch điện tử tích hợp",
+            "folded": "vi mach dien tu tich hop"
+          },
+          {
+            "raw": "IC điều khiển điện xe máy điện",
+            "dia": true,
+            "key": "ic điều khiển điện xe máy điện",
+            "folded": "ic dieu khien dien xe may dien"
+          },
+          {
+            "raw": "Main board giàn nóng điều hòa",
+            "dia": true,
+            "key": "main board giàn nóng điều hòa",
+            "folded": "main board gian nong dieu hoa"
+          },
+          {
+            "raw": "Đầu nối bảng mạch in",
+            "dia": true,
+            "key": "đầu nối bảng mạch in",
+            "folded": "dau noi bang mach in"
+          },
+          {
+            "raw": "Đầu cắm bảng mạch in PCB",
+            "dia": true,
+            "key": "đầu cắm bảng mạch in pcb",
+            "folded": "dau cam bang mach in pcb"
+          },
+          {
+            "raw": "Mạch điều khiển",
+            "dia": true,
+            "key": "mạch điều khiển",
+            "folded": "mach dieu khien"
+          },
+          {
+            "raw": "Đầu nối thanh ray DIN",
+            "dia": true,
+            "key": "đầu nối thanh ray din",
+            "folded": "dau noi thanh ray din"
+          },
+          {
+            "raw": "IC xử lý đầu đọc thẻ",
+            "dia": true,
+            "key": "ic xử lý đầu đọc thẻ",
+            "folded": "ic xu ly dau doc the"
+          },
+          {
+            "raw": "IC vi điều khiển",
+            "dia": true,
+            "key": "ic vi điều khiển",
+            "folded": "ic vi dieu khien"
+          },
+          {
+            "raw": "Module ADS1115",
+            "dia": false,
+            "key": "module ads1115",
+            "folded": "module ads1115"
+          },
+          {
+            "raw": "Main van điện",
+            "dia": true,
+            "key": "main van điện",
+            "folded": "main van dien"
+          },
+          {
+            "raw": "Main đảo chiều",
+            "dia": true,
+            "key": "main đảo chiều",
+            "folded": "main dao chieu"
+          },
+          {
+            "raw": "Bảng mạch điện tử GAMX-2007",
+            "dia": true,
+            "key": "bảng mạch điện tử gamx 2007",
+            "folded": "bang mach dien tu gamx 2007"
+          },
+          {
+            "raw": "Mạch điện tử tích hợp IGBT",
+            "dia": true,
+            "key": "mạch điện tử tích hợp igbt",
+            "folded": "mach dien tu tich hop igbt"
+          },
+          {
+            "raw": "Bảng mạch điện tử DC",
+            "dia": true,
+            "key": "bảng mạch điện tử dc",
+            "folded": "bang mach dien tu dc"
+          },
+          {
+            "raw": "mạch nhựa chân",
+            "dia": false,
+            "key": "mạch nhựa chân",
+            "folded": "mach nhua chan"
+          },
+          {
+            "raw": "mạch nhựa chân kim",
+            "dia": false,
+            "key": "mạch nhựa chân kim",
+            "folded": "mach nhua chan kim"
+          },
+          {
+            "raw": "mạch nhựa chân kim loại",
+            "dia": false,
+            "key": "mạch nhựa chân kim loại",
+            "folded": "mach nhua chan kim loai"
+          },
+          {
+            "raw": "nhựa chân kim loại dùng",
+            "dia": false,
+            "key": "nhựa chân kim loại dùng",
+            "folded": "nhua chan kim loai dung"
+          },
+          {
+            "raw": "chân kim loại dùng trong",
+            "dia": false,
+            "key": "chân kim loại dùng trong",
+            "folded": "chan kim loai dung trong"
+          },
+          {
+            "raw": "kim loại dùng trong sản",
+            "dia": false,
+            "key": "kim loại dùng trong sản",
+            "folded": "kim loai dung trong san"
+          },
+          {
+            "raw": "loại dùng trong sản xuất",
+            "dia": false,
+            "key": "loại dùng trong sản xuất",
+            "folded": "loai dung trong san xuat"
+          },
+          {
+            "raw": "dùng trong sản xuất bảng",
+            "dia": false,
+            "key": "dùng trong sản xuất bảng",
+            "folded": "dung trong san xuat bang"
+          },
+          "mạch nhựa chân",
+          "mạch nhựa chân kim",
+          "mạch nhựa chân kim loại",
+          "nhựa chân kim loại dùng",
+          "chân kim loại dùng trong",
+          "kim loại dùng trong sản",
+          "loại dùng trong sản xuất",
+          "dùng trong sản xuất bảng",
+          "trong sản xuất bảng mạch",
+          "sản xuất bảng mạch mạch",
+          "xuất bảng mạch mạch esg544,",
+          "bảng mạch mạch esg544, (mạch",
+          "mạch mạch esg544, (mạch điện",
+          "mạch esg544, (mạch điện tích",
+          "esg544, (mạch điện tích hợp)",
+          "(mạch điện tích hợp) 40v,"
+        ],
+        "parts": [
+          {
+            "raw": "bộ phận ic",
+            "dia": true,
+            "key": "bộ phận ic",
+            "folded": "bo phan ic"
+          },
+          {
+            "raw": "lead frame",
+            "dia": false,
+            "key": "lead frame",
+            "folded": "lead frame"
+          },
+          {
+            "raw": "đế chip",
+            "dia": true,
+            "key": "đế chip",
+            "folded": "de chip"
+          },
+          {
+            "raw": "parts of integrated",
+            "dia": false,
+            "key": "parts of integrated",
+            "folded": "parts of integrated"
+          },
+          {
+            "raw": "vỏ ic",
+            "dia": true,
+            "key": "vỏ ic",
+            "folded": "vo ic"
+          },
+          {
+            "raw": "phụ tùng ic",
+            "dia": true,
+            "key": "phụ tùng ic",
+            "folded": "phu tung ic"
+          }
         ]
       }
     },
@@ -87,7 +377,205 @@
           "interface ic",
           "driver ic",
           "pmic",
-          "analog ic"
+          "analog ic",
+          "Còi chíp điện từ",
+          "Vi mạch IC",
+          "Vi mạch điện tử tích hợp",
+          "Main board giàn nóng điều hòa",
+          "Đầu nối bảng mạch in",
+          "Đầu cắm bảng mạch in PCB",
+          "Đầu nối thanh ray DIN",
+          "IC xử lý đầu đọc thẻ",
+          "Module ADS1115",
+          "Main van điện",
+          "Main đảo chiều",
+          "Bảng mạch điện tử GAMX-2007",
+          "Mạch điện tử tích hợp IGBT",
+          "Bảng mạch điện tử DC"
+        ]
+      },
+      "_detect": {
+        "processor": [
+          {
+            "raw": "cpu",
+            "dia": false,
+            "key": "cpu",
+            "folded": "cpu"
+          },
+          {
+            "raw": "mcu",
+            "dia": false,
+            "key": "mcu",
+            "folded": "mcu"
+          },
+          {
+            "raw": "mpu",
+            "dia": false,
+            "key": "mpu",
+            "folded": "mpu"
+          },
+          {
+            "raw": "processor",
+            "dia": false,
+            "key": "processor",
+            "folded": "processor"
+          },
+          {
+            "raw": "controller",
+            "dia": false,
+            "key": "controller",
+            "folded": "controller"
+          },
+          {
+            "raw": "microcontroller",
+            "dia": false,
+            "key": "microcontroller",
+            "folded": "microcontroller"
+          },
+          {
+            "raw": "đơn vị xử lý",
+            "dia": true,
+            "key": "đơn vị xử lý",
+            "folded": "don vi xu ly"
+          },
+          {
+            "raw": "điều khiển",
+            "dia": true,
+            "key": "điều khiển",
+            "folded": "dieu khien"
+          }
+        ],
+        "memory": [
+          {
+            "raw": "memory",
+            "dia": false,
+            "key": "memory",
+            "folded": "memory"
+          },
+          {
+            "raw": "bộ nhớ",
+            "dia": true,
+            "key": "bộ nhớ",
+            "folded": "bo nho"
+          },
+          {
+            "raw": "dram",
+            "dia": false,
+            "key": "dram",
+            "folded": "dram"
+          },
+          {
+            "raw": "sram",
+            "dia": false,
+            "key": "sram",
+            "folded": "sram"
+          },
+          {
+            "raw": "flash",
+            "dia": false,
+            "key": "flash",
+            "folded": "flash"
+          },
+          {
+            "raw": "eeprom",
+            "dia": false,
+            "key": "eeprom",
+            "folded": "eeprom"
+          },
+          {
+            "raw": "nand",
+            "dia": false,
+            "key": "nand",
+            "folded": "nand"
+          },
+          {
+            "raw": "nor flash",
+            "dia": false,
+            "key": "nor flash",
+            "folded": "nor flash"
+          },
+          {
+            "raw": "rom",
+            "dia": false,
+            "key": "rom",
+            "folded": "rom"
+          }
+        ],
+        "amplifier": [
+          {
+            "raw": "amplifier",
+            "dia": false,
+            "key": "amplifier",
+            "folded": "amplifier"
+          },
+          {
+            "raw": "khuếch đại",
+            "dia": true,
+            "key": "khuếch đại",
+            "folded": "khuech dai"
+          },
+          {
+            "raw": "op-amp",
+            "dia": false,
+            "key": "op amp",
+            "folded": "op amp"
+          },
+          {
+            "raw": "opamp",
+            "dia": false,
+            "key": "opamp",
+            "folded": "opamp"
+          },
+          {
+            "raw": "audio amp",
+            "dia": false,
+            "key": "audio amp",
+            "folded": "audio amp"
+          }
+        ],
+        "other": [
+          {
+            "raw": "fpga",
+            "dia": false,
+            "key": "fpga",
+            "folded": "fpga"
+          },
+          {
+            "raw": "asic",
+            "dia": false,
+            "key": "asic",
+            "folded": "asic"
+          },
+          {
+            "raw": "interface ic",
+            "dia": false,
+            "key": "interface ic",
+            "folded": "interface ic"
+          },
+          {
+            "raw": "driver ic",
+            "dia": false,
+            "key": "driver ic",
+            "folded": "driver ic"
+          },
+          {
+            "raw": "pmic",
+            "dia": false,
+            "key": "pmic",
+            "folded": "pmic"
+          },
+          {
+            "raw": "analog ic",
+            "dia": false,
+            "key": "analog ic",
+            "folded": "analog ic"
+          },
+          {
+            "raw": "Còi chíp điện từ",
+            "dia": true,
+            "key": "còi chíp điện từ",
+            "folded": "coi chip dien tu"
+          }
         ]
       }
     }
@@ -153,5 +641,52 @@
       "reasonVi": "Bộ phận của mạch tích hợp → 8542.90.00.",
       "source": "Biểu thuế 2026 dòng 8542.90.00"
     }
-  ]
+  ],
+  "inputAttributes": [
+    "goodsKind",
+    "icKind"
+  ],
+  "essenceVi": "loại hàng+loại ic",
+  "attributes": {
+    "goodsKind": {
+      "type": "enum",
+      "labelVi": "goodsKind",
+      "domain": [
+        "ic",
+        "parts"
+      ],
+      "detect": {
+        "ic": [
+          "ic"
+        ],
+        "parts": [
+          "parts"
+        ]
+      }
+    },
+    "icKind": {
+      "type": "enum",
+      "labelVi": "icKind",
+      "domain": [
+        "amplifier",
+        "memory",
+        "other",
+        "processor"
+      ],
+      "detect": {
+        "amplifier": [
+          "amplifier"
+        ],
+        "memory": [
+          "memory"
+        ],
+        "other": [
+          "other"
+        ],
+        "processor": [
+          "processor"
+        ]
+      }
+    }
+  }
 }

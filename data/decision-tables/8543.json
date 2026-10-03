@@ -1,0 +1,1250 @@
+{
+  "heading": "8543",
+  "titleVi": "Máy móc, thiết bị và bộ phận điện khác, chưa được phân loại ở nơi khác",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "deviceKind",
+      "type": "enum",
+      "domain": [
+        "e_cigarette_device",
+        "electroplating_machine",
+        "other_electrical_device",
+        "particle_accelerator",
+        "parts",
+        "signal_generator"
+      ],
+      "labelVi": "Loại thiết bị điện",
+      "questionVi": "Thiết bị điện thuộc loại nào: máy gia tốc hạt, máy phát tín hiệu, thiết bị mạ/điện phân, thiết bị thuốc lá điện tử, các thiết bị điện khác, hay bộ phận?",
+      "detect": {
+        "e_cigarette_device": [
+          "thuốc lá điện tử",
+          "e-cigarette",
+          "vape",
+          "máy hút thuốc điện tử"
+        ],
+        "electroplating_machine": [
+          "máy mạ",
+          "máy điện phân",
+          "electroplating",
+          "máy xi mạ"
+        ],
+        "particle_accelerator": [
+          "máy gia tốc hạt",
+          "particle accelerator",
+          "máy gia tốc"
+        ],
+        "signal_generator": [
+          "máy phát tín hiệu",
+          "signal generator"
+        ],
+        "parts": [
+          "bộ phận",
+          "parts",
+          "linh kiện điện"
+        ],
+        "other_electrical_device": [
+          "thiết bị điện",
+          "máy điện",
+          "đồ điện",
+          "Điều khiển rèm từ xa",
+          "Bộ lọc nguồn 3 pha",
+          "Bộ lọc nguồn 1 pha",
+          "Ống gia nhiệt",
+          "Máy tạo khói sân khấu",
+          "Máy tạo hiệu ứng bọt sân khấu",
+          "Máy phun CO2 tạo hiệu ứng khói",
+          "Bộ chia tín hiệu ánh sáng",
+          "Điều khiển rèm 1 kênh",
+          "Bàn trộn âm thanh mixer",
+          "Điều khiển tivi đa năng",
+          "Bộ khuếch đại mở rộng HDMI",
+          "Máy phun khói cầm tay",
+          "Bộ lọc nguồn điện",
+          "Máy hiệu ứng giả lửa",
+          "Máy phun khói sân khấu",
+          "Máy tạo khói lạnh",
+          "Máy thổi pháo giấy CO2",
+          "Máy sấy keo",
+          "Thiết bị tạo Ion",
+          "Bộ khử ion",
+          "Bộ cách ly tín hiệu",
+          "Bộ cách ly AIT 04/20",
+          "Điều khiển chụp ảnh từ xa",
+          "Cổng kết nối VGA15 đực",
+          "Cổng kết nối HDP15",
+          "Phát xung Encoder"
+        ]
+      },
+      "_detect": {
+        "e_cigarette_device": [
+          {
+            "raw": "thuốc lá điện tử",
+            "dia": true,
+            "key": "thuốc lá điện tử",
+            "folded": "thuoc la dien tu"
+          },
+          {
+            "raw": "e-cigarette",
+            "dia": false,
+            "key": "e cigarette",
+            "folded": "e cigarette"
+          },
+          {
+            "raw": "vape",
+            "dia": false,
+            "key": "vape",
+            "folded": "vape"
+          },
+          {
+            "raw": "máy hút thuốc điện tử",
+            "dia": true,
+            "key": "máy hút thuốc điện tử",
+            "folded": "may hut thuoc dien tu"
+          }
+        ],
+        "electroplating_machine": [
+          {
+            "raw": "máy mạ",
+            "dia": true,
+            "key": "máy mạ",
+            "folded": "may ma"
+          },
+          {
+            "raw": "máy điện phân",
+            "dia": true,
+            "key": "máy điện phân",
+            "folded": "may dien phan"
+          },
+          {
+            "raw": "electroplating",
+            "dia": false,
+            "key": "electroplating",
+            "folded": "electroplating"
+          },
+          {
+            "raw": "máy xi mạ",
+            "dia": true,
+            "key": "máy xi mạ",
+            "folded": "may xi ma"
+          }
+        ],
+        "particle_accelerator": [
+          {
+            "raw": "máy gia tốc hạt",
+            "dia": true,
+            "key": "máy gia tốc hạt",
+            "folded": "may gia toc hat"
+          },
+          {
+            "raw": "particle accelerator",
+            "dia": false,
+            "key": "particle accelerator",
+            "folded": "particle accelerator"
+          },
+          {
+            "raw": "máy gia tốc",
+            "dia": true,
+            "key": "máy gia tốc",
+            "folded": "may gia toc"
+          }
+        ],
+        "signal_generator": [
+          {
+            "raw": "máy phát tín hiệu",
+            "dia": true,
+            "key": "máy phát tín hiệu",
+            "folded": "may phat tin hieu"
+          },
+          {
+            "raw": "signal generator",
+            "dia": false,
+            "key": "signal generator",
+            "folded": "signal generator"
+          }
+        ],
+        "parts": [
+          {
+            "raw": "bộ phận",
+            "dia": true,
+            "key": "bộ phận",
+            "folded": "bo phan"
+          },
+          {
+            "raw": "parts",
+            "dia": false,
+            "key": "parts",
+            "folded": "parts"
+          },
+          {
+            "raw": "linh kiện điện",
+            "dia": true,
+            "key": "linh kiện điện",
+            "folded": "linh kien dien"
+          }
+        ],
+        "other_electrical_device": [
+          {
+            "raw": "thiết bị điện",
+            "dia": true,
+            "key": "thiết bị điện",
+            "folded": "thiet bi dien"
+          },
+          {
+            "raw": "máy điện",
+            "dia": true,
+            "key": "máy điện",
+            "folded": "may dien"
+          },
+          {
+            "raw": "đồ điện",
+            "dia": true,
+            "key": "đồ điện",
+            "folded": "do dien"
+          },
+          {
+            "raw": "Điều khiển rèm từ xa",
+            "dia": true,
+            "key": "điều khiển rèm từ xa",
+            "folded": "dieu khien rem tu xa"
+          },
+          {
+            "raw": "Bộ lọc nguồn 3 pha",
+            "dia": true,
+            "key": "bộ lọc nguồn 3 pha",
+            "folded": "bo loc nguon 3 pha"
+          },
+          {
+            "raw": "Bộ lọc nguồn 1 pha",
+            "dia": true,
+            "key": "bộ lọc nguồn 1 pha",
+            "folded": "bo loc nguon 1 pha"
+          },
+          {
+            "raw": "Ống gia nhiệt",
+            "dia": true,
+            "key": "ống gia nhiệt",
+            "folded": "ong gia nhiet"
+          },
+          {
+            "raw": "Máy tạo khói sân khấu",
+            "dia": true,
+            "key": "máy tạo khói sân khấu",
+            "folded": "may tao khoi san khau"
+          },
+          {
+            "raw": "Máy tạo hiệu ứng bọt sân khấu",
+            "dia": true,
+            "key": "máy tạo hiệu ứng bọt sân khấu",
+            "folded": "may tao hieu ung bot san khau"
+          },
+          {
+            "raw": "Máy phun CO2 tạo hiệu ứng khói",
+            "dia": true,
+            "key": "máy phun co2 tạo hiệu ứng khói",
+            "folded": "may phun co2 tao hieu ung khoi"
+          },
+          {
+            "raw": "Bộ chia tín hiệu ánh sáng",
+            "dia": true,
+            "key": "bộ chia tín hiệu ánh sáng",
+            "folded": "bo chia tin hieu anh sang"
+          },
+          {
+            "raw": "Điều khiển rèm 1 kênh",
+            "dia": true,
+            "key": "điều khiển rèm 1 kênh",
+            "folded": "dieu khien rem 1 kenh"
+          },
+          {
+            "raw": "Bàn trộn âm thanh mixer",
+            "dia": true,
+            "key": "bàn trộn âm thanh mixer",
+            "folded": "ban tron am thanh mixer"
+          },
+          {
+            "raw": "Điều khiển tivi đa năng",
+            "dia": true,
+            "key": "điều khiển tivi đa năng",
+            "folded": "dieu khien tivi da nang"
+          },
+          {
+            "raw": "Bộ khuếch đại mở rộng HDMI",
+            "dia": true,
+            "key": "bộ khuếch đại mở rộng hdmi",
+            "folded": "bo khuech dai mo rong hdmi"
+          },
+          {
+            "raw": "Máy phun khói cầm tay",
+            "dia": true,
+            "key": "máy phun khói cầm tay",
+            "folded": "may phun khoi cam tay"
+          },
+          {
+            "raw": "Bộ lọc nguồn điện",
+            "dia": true,
+            "key": "bộ lọc nguồn điện",
+            "folded": "bo loc nguon dien"
+          },
+          {
+            "raw": "Máy hiệu ứng giả lửa",
+            "dia": true,
+            "key": "máy hiệu ứng giả lửa",
+            "folded": "may hieu ung gia lua"
+          },
+          {
+            "raw": "Máy phun khói sân khấu",
+            "dia": true,
+            "key": "máy phun khói sân khấu",
+            "folded": "may phun khoi san khau"
+          },
+          {
+            "raw": "Máy tạo khói lạnh",
+            "dia": true,
+            "key": "máy tạo khói lạnh",
+            "folded": "may tao khoi lanh"
+          },
+          {
+            "raw": "Máy thổi pháo giấy CO2",
+            "dia": true,
+            "key": "máy thổi pháo giấy co2",
+            "folded": "may thoi phao giay co2"
+          },
+          {
+            "raw": "Máy sấy keo",
+            "dia": true,
+            "key": "máy sấy keo",
+            "folded": "may say keo"
+          },
+          {
+            "raw": "Thiết bị tạo Ion",
+            "dia": true,
+            "key": "thiết bị tạo ion",
+            "folded": "thiet bi tao ion"
+          },
+          {
+            "raw": "Bộ khử ion",
+            "dia": true,
+            "key": "bộ khử ion",
+            "folded": "bo khu ion"
+          },
+          {
+            "raw": "Bộ cách ly tín hiệu",
+            "dia": true,
+            "key": "bộ cách ly tín hiệu",
+            "folded": "bo cach ly tin hieu"
+          },
+          {
+            "raw": "Bộ cách ly AIT 04/20",
+            "dia": true,
+            "key": "bộ cách ly ait 04 20",
+            "folded": "bo cach ly ait 04 20"
+          },
+          {
+            "raw": "Điều khiển chụp ảnh từ xa",
+            "dia": true,
+            "key": "điều khiển chụp ảnh từ xa",
+            "folded": "dieu khien chup anh tu xa"
+          },
+          {
+            "raw": "Cổng kết nối VGA15 đực",
+            "dia": true,
+            "key": "cổng kết nối vga15 đực",
+            "folded": "cong ket noi vga15 duc"
+          },
+          {
+            "raw": "Cổng kết nối HDP15",
+            "dia": true,
+            "key": "cổng kết nối hdp15",
+            "folded": "cong ket noi hdp15"
+          },
+          {
+            "raw": "Phát xung Encoder",
+            "dia": true,
+            "key": "phát xung encoder",
+            "folded": "phat xung encoder"
+          },
+          {
+            "raw": "điều khiển rèm",
+            "dia": false,
+            "key": "điều khiển rèm",
+            "folded": "ieu khien rem"
+          },
+          {
+            "raw": "điều khiển rèm điều",
+            "dia": false,
+            "key": "điều khiển rèm điều",
+            "folded": "ieu khien rem ieu"
+          },
+          {
+            "raw": "điều khiển rèm điều khiển",
+            "dia": false,
+            "key": "điều khiển rèm điều khiển",
+            "folded": "ieu khien rem ieu khien"
+          },
+          {
+            "raw": "khiển rèm điều khiển rèm",
+            "dia": false,
+            "key": "khiển rèm điều khiển rèm",
+            "folded": "khien rem ieu khien rem"
+          },
+          {
+            "raw": "rèm điều khiển rèm động",
+            "dia": false,
+            "key": "rèm điều khiển rèm động",
+            "folded": "rem ieu khien rem ong"
+          },
+          {
+            "raw": "điều khiển rèm động điều",
+            "dia": false,
+            "key": "điều khiển rèm động điều",
+            "folded": "ieu khien rem ong ieu"
+          },
+          {
+            "raw": "khiển rèm động điều khiển",
+            "dia": false,
+            "key": "khiển rèm động điều khiển",
+            "folded": "khien rem ong ieu khien"
+          },
+          {
+            "raw": "rèm động điều khiển rèm",
+            "dia": false,
+            "key": "rèm động điều khiển rèm",
+            "folded": "rem ong ieu khien rem"
+          },
+          "điều khiển rèm",
+          "điều khiển rèm điều",
+          "điều khiển rèm điều khiển",
+          "khiển rèm điều khiển rèm",
+          "rèm điều khiển rèm động",
+          "điều khiển rèm động điều",
+          "khiển rèm động điều khiển",
+          "rèm động điều khiển rèm",
+          "động điều khiển rèm kênh",
+          "điều khiển rèm kênh sóng",
+          "khiển rèm kênh sóng hồng",
+          "rèm kênh sóng hồng ngoại,",
+          "kênh sóng hồng ngoại, dùng",
+          "sóng hồng ngoại, dùng điều",
+          "hồng ngoại, dùng điều khiển",
+          "ngoại, dùng điều khiển rèm"
+        ]
+      }
+    },
+    {
+      "attribute": "specCode",
+      "type": "enum",
+      "domain": [
+        "00",
+        "10",
+        "20",
+        "21",
+        "29",
+        "30",
+        "40",
+        "50",
+        "60",
+        "90",
+        "91",
+        "99"
+      ],
+      "labelVi": "Mã hiệu kỹ thuật",
+      "questionVi": "Mã hiệu kỹ thuật (2 chữ số cuối)?",
+      "_detect": {
+        "10": [
+          {
+            "raw": "co., ltd., mới 100%",
+            "dia": true,
+            "key": "co., ltd., mới 100",
+            "folded": "co., ltd., moi 100"
+          },
+          {
+            "raw": "thép, đồng,kt:98x95x84.5mm,hãng:canny well,mới 100%",
+            "dia": true,
+            "key": "thép, đồng,kt 98x95x84.5mm,hãng canny well,mới 100",
+            "folded": "thep, dong,kt 98x95x84.5mm,hang canny well,moi 100"
+          },
+          {
+            "raw": "bộ lọc nguồn 1 pha thép, đồng",
+            "dia": true,
+            "key": "bộ lọc nguồn 1 pha thép, đồng",
+            "folded": "bo loc nguon 1 pha thep, dong"
+          },
+          {
+            "raw": "nsx aiteda, mới 100%",
+            "dia": true,
+            "key": "nsx aiteda, mới 100",
+            "folded": "nsx aiteda, moi 100"
+          },
+          {
+            "raw": "technology co., ltd.,mới 100%",
+            "dia": true,
+            "key": "technology co., ltd.,mới 100",
+            "folded": "technology co., ltd.,moi 100"
+          },
+          {
+            "raw": "3000w.model: lcc-pmj01. ac: 110-240v/50-60hz.hiệu lccvn. dùng dung",
+            "dia": true,
+            "key": "3000w.model lcc pmj01. ac 110 240v 50 60hz.hiệu lccvn. dùng dung",
+            "folded": "3000w.model lcc pmj01. ac 110 240v 50 60hz.hieu lccvn. dung dung"
+          },
+          {
+            "raw": "model: lcc-co2-qz02, điện 110-240v/50-60hz, công suất 250w,",
+            "dia": true,
+            "key": "model lcc co2 qz02, điện 110 240v 50 60hz, công suất 250w,",
+            "folded": "model lcc co2 qz02, dien 110 240v 50 60hz, cong suat 250w,"
+          },
+          {
+            "raw": "hiệu ánh sáng, đa:100-240v,cs:60w,không sử dụng trong",
+            "dia": true,
+            "key": "hiệu ánh sáng, đa 100 240v,cs 60w,không sử dụng trong",
+            "folded": "hieu anh sang, da 100 240v,cs 60w,khong su dung trong"
+          },
+          {
+            "raw": "450w, điện áp: 110-220v/50-60hz. hiệu lcc lighting.",
+            "dia": true,
+            "key": "450w, điện áp 110 220v 50 60hz. hiệu lcc lighting.",
+            "folded": "450w, dien ap 110 220v 50 60hz. hieu lcc lighting."
+          },
+          {
+            "raw": "ánh sáng,kí hiệu yc-s8,kt:484*155*45mm,đa:100-240v,cs:10w,không hiệu,nsx:guangzhou yicai photoelectric",
+            "dia": true,
+            "key": "ánh sáng,kí hiệu yc s8,kt 484 155 45mm,đa 100 240v,cs 10w,không hiệu,nsx guangzhou yicai photoelectric",
+            "folded": "anh sang,ki hieu yc s8,kt 484 155 45mm,da 100 240v,cs 10w,khong hieu,nsx guangzhou yicai photoelectric"
+          }
+        ],
+        "20": [
+          {
+            "raw": "nguồn 1 pha 20a, model cw4e-20a-s, dùng",
+            "dia": true,
+            "key": "nguồn 1 pha 20a, model cw4e 20a s, dùng",
+            "folded": "nguon 1 pha 20a, model cw4e 20a s, dung"
+          },
+          {
+            "raw": "khói sân khấu,model:hm-ak-30,kt:530*270*160 mm,đa:220-240v,cs:3000w,hiệu hm lighting,nsx:guangdong hengmei",
+            "dia": true,
+            "key": "khói sân khấu,model hm ak 30,kt 530 270 160 mm,đa 220 240v,cs 3000w,hiệu hm lighting,nsx guangdong hengmei",
+            "folded": "khoi san khau,model hm ak 30,kt 530 270 160 mm,da 220 240v,cs 3000w,hieu hm lighting,nsx guangdong hengmei"
+          },
+          {
+            "raw": "450w, điện áp: 110-220v/50-60hz. hiệu lcc lighting.",
+            "dia": true,
+            "key": "450w, điện áp 110 220v 50 60hz. hiệu lcc lighting.",
+            "folded": "450w, dien ap 110 220v 50 60hz. hieu lcc lighting."
+          },
+          {
+            "raw": "lọc nguồn, model cw4e-20a-s, 1pha, điện áp",
+            "dia": true,
+            "key": "lọc nguồn, model cw4e 20a s, 1pha, điện áp",
+            "folded": "loc nguon, model cw4e 20a s, 1pha, dien ap"
+          },
+          {
+            "raw": "cơ chạy, điện 220v, bằng nhựa, kt:",
+            "dia": true,
+            "key": "cơ chạy, điện 220v, bằng nhựa, kt",
+            "folded": "co chay, dien 220v, bang nhua, kt"
+          },
+          {
+            "raw": "power: 1500w, ac: 110v-220v 50/60hz, mới 100%",
+            "dia": true,
+            "key": "power 1500w, ac 110v 220v 50 60hz, mới 100",
+            "folded": "power 1500w, ac 110v 220v 50 60hz, moi 100"
+          },
+          {
+            "raw": "bị, điện áp: 220v/50a, kích thước: 95x38x50mm,",
+            "dia": true,
+            "key": "bị, điện áp 220v 50a, kích thước 95x38x50mm,",
+            "folded": "bi, dien ap 220v 50a, kich thuoc 95x38x50mm,"
+          },
+          {
+            "raw": "phun sương,model yc-3000,kt:61*41*38cm,đa 110-220v,cs 1200w,không hiệu,nsx:guangzhou xuanliang",
+            "dia": true,
+            "key": "phun sương,model yc 3000,kt 61 41 38cm,đa 110 220v,cs 1200w,không hiệu,nsx guangzhou xuanliang",
+            "folded": "phun suong,model yc 3000,kt 61 41 38cm,da 110 220v,cs 1200w,khong hieu,nsx guangzhou xuanliang"
+          },
+          {
+            "raw": "cho sân khấu.power: 200w.model: lcc-phuoj05.điện áp 110v,",
+            "dia": true,
+            "key": "cho sân khấu.power 200w.model lcc phuoj05.điện áp 110v,",
+            "folded": "cho san khau.power 200w.model lcc phuoj05.dien ap 110v,"
+          },
+          {
+            "raw": "suất: 3000w, ac 220-240v ac/50-60hz, mới 100%",
+            "dia": true,
+            "key": "suất 3000w, ac 220 240v ac 50 60hz, mới 100",
+            "folded": "suat 3000w, ac 220 240v ac 50 60hz, moi 100"
+          }
+        ],
+        "30": [
+          {
+            "raw": "tự động, model: at3002h, nhà sản xuất",
+            "dia": true,
+            "key": "tự động, model at3002h, nhà sản xuất",
+            "folded": "tu dong, model at3002h, nha san xuat"
+          },
+          {
+            "raw": "tạo khói sân khấu,model:hm-ak-30,kt:530*270*160 mm,đa:220-240v,cs:3000w,hiệu hm lighting,nsx:guangdong",
+            "dia": true,
+            "key": "tạo khói sân khấu,model hm ak 30,kt 530 270 160 mm,đa 220 240v,cs 3000w,hiệu hm lighting,nsx guangdong",
+            "folded": "tao khoi san khau,model hm ak 30,kt 530 270 160 mm,da 220 240v,cs 3000w,hieu hm lighting,nsx guangdong"
+          },
+          {
+            "raw": "sân khấu(tạo bọt).power: 3000w.model: lcc-pmj01. ac: 110-240v/50-60hz.hiệu",
+            "dia": true,
+            "key": "sân khấu tạo bọt .power 3000w.model lcc pmj01. ac 110 240v 50 60hz.hiệu",
+            "folded": "san khau tao bot .power 3000w.model lcc pmj01. ac 110 240v 50 60hz.hieu"
+          },
+          {
+            "raw": "khấu phun sương,model yc-3000,kt:61*41*38cm,đa 110-220v,cs 1200w,không hiệu,nsx:guangzhou",
+            "dia": true,
+            "key": "khấu phun sương,model yc 3000,kt 61 41 38cm,đa 110 220v,cs 1200w,không hiệu,nsx guangzhou",
+            "folded": "khau phun suong,model yc 3000,kt 61 41 38cm,da 110 220v,cs 1200w,khong hieu,nsx guangzhou"
+          },
+          {
+            "raw": "lcc-ywj02. công suất: 3000w, ac 220-240v ac/50-60hz,",
+            "dia": true,
+            "key": "lcc ywj02. công suất 3000w, ac 220 240v ac 50 60hz,",
+            "folded": "lcc ywj02. cong suat 3000w, ac 220 240v ac 50 60hz,"
+          },
+          {
+            "raw": "công suất: 1000w, 100-230v/ 50hz, kích thước:",
+            "dia": true,
+            "key": "công suất 1000w, 100 230v 50hz, kích thước",
+            "folded": "cong suat 1000w, 100 230v 50hz, kich thuoc"
+          },
+          {
+            "raw": "sương) sân khấu, yc-3000,kt:70*37*31cm,đa:110v,cs:3000w,không hiệu,nsx:guangzhou yicai photoelectric",
+            "dia": true,
+            "key": "sương sân khấu, yc 3000,kt 70 37 31cm,đa 110v,cs 3000w,không hiệu,nsx guangzhou yicai photoelectric",
+            "folded": "suong san khau, yc 3000,kt 70 37 31cm,da 110v,cs 3000w,khong hieu,nsx guangzhou yicai photoelectric"
+          }
+        ],
+        "40": [
+          {
+            "raw": "nguồn 3 pha 40a, model cw12b-40a-s, dùng",
+            "dia": true,
+            "key": "nguồn 3 pha 40a, model cw12b 40a s, dùng",
+            "folded": "nguon 3 pha 40a, model cw12b 40a s, dung"
+          },
+          {
+            "raw": "khói sân khấu,model:hm-ak-30,kt:530*270*160 mm,đa:220-240v,cs:3000w,hiệu hm lighting,nsx:guangdong hengmei",
+            "dia": true,
+            "key": "khói sân khấu,model hm ak 30,kt 530 270 160 mm,đa 220 240v,cs 3000w,hiệu hm lighting,nsx guangdong hengmei",
+            "folded": "khoi san khau,model hm ak 30,kt 530 270 160 mm,da 220 240v,cs 3000w,hieu hm lighting,nsx guangdong hengmei"
+          },
+          {
+            "raw": "3000w.model: lcc-pmj01. ac: 110-240v/50-60hz.hiệu lccvn. dùng dung",
+            "dia": true,
+            "key": "3000w.model lcc pmj01. ac 110 240v 50 60hz.hiệu lccvn. dùng dung",
+            "folded": "3000w.model lcc pmj01. ac 110 240v 50 60hz.hieu lccvn. dung dung"
+          },
+          {
+            "raw": "model: lcc-co2-qz02, điện 110-240v/50-60hz, công suất 250w,",
+            "dia": true,
+            "key": "model lcc co2 qz02, điện 110 240v 50 60hz, công suất 250w,",
+            "folded": "model lcc co2 qz02, dien 110 240v 50 60hz, cong suat 250w,"
+          },
+          {
+            "raw": "hiệu ánh sáng, đa:100-240v,cs:60w,không sử dụng trong",
+            "dia": true,
+            "key": "hiệu ánh sáng, đa 100 240v,cs 60w,không sử dụng trong",
+            "folded": "hieu anh sang, da 100 240v,cs 60w,khong su dung trong"
+          },
+          {
+            "raw": "ánh sáng,kí hiệu yc-s8,kt:484*155*45mm,đa:100-240v,cs:10w,không hiệu,nsx:guangzhou yicai photoelectric",
+            "dia": true,
+            "key": "ánh sáng,kí hiệu yc s8,kt 484 155 45mm,đa 100 240v,cs 10w,không hiệu,nsx guangzhou yicai photoelectric",
+            "folded": "anh sang,ki hieu yc s8,kt 484 155 45mm,da 100 240v,cs 10w,khong hieu,nsx guangzhou yicai photoelectric"
+          },
+          {
+            "raw": "suất: 3000w, ac 220-240v ac/50-60hz, mới 100%",
+            "dia": true,
+            "key": "suất 3000w, ac 220 240v ac 50 60hz, mới 100",
+            "folded": "suat 3000w, ac 220 240v ac 50 60hz, moi 100"
+          },
+          {
+            "raw": "suất 20w, ac 100v-240v, 50-60hz. mới 100%",
+            "dia": true,
+            "key": "suất 20w, ac 100v 240v, 50 60hz. mới 100",
+            "folded": "suat 20w, ac 100v 240v, 50 60hz. moi 100"
+          },
+          {
+            "raw": "sân khấu, model: wl-sw4000 , công suất",
+            "dia": true,
+            "key": "sân khấu, model wl sw4000 , công suất",
+            "folded": "san khau, model wl sw4000 , cong suat"
+          }
+        ],
+        "50": [
+          {
+            "raw": "3000w.model: lcc-pmj01. ac: 110-240v/50-60hz.hiệu lccvn. dùng dung",
+            "dia": true,
+            "key": "3000w.model lcc pmj01. ac 110 240v 50 60hz.hiệu lccvn. dùng dung",
+            "folded": "3000w.model lcc pmj01. ac 110 240v 50 60hz.hieu lccvn. dung dung"
+          },
+          {
+            "raw": "model: lcc-co2-qz02, điện 110-240v/50-60hz, công suất 250w,",
+            "dia": true,
+            "key": "model lcc co2 qz02, điện 110 240v 50 60hz, công suất 250w,",
+            "folded": "model lcc co2 qz02, dien 110 240v 50 60hz, cong suat 250w,"
+          },
+          {
+            "raw": "sân khấu. mã:lcc-phj01; 450w, điện áp: 110-220v/50-60hz.",
+            "dia": true,
+            "key": "sân khấu. mã lcc phj01 450w, điện áp 110 220v 50 60hz.",
+            "folded": "san khau. ma lcc phj01 450w, dien ap 110 220v 50 60hz."
+          },
+          {
+            "raw": "chiều, kích thước 75x50x36mm, chất liệu sắt,",
+            "dia": true,
+            "key": "chiều, kích thước 75x50x36mm, chất liệu sắt,",
+            "folded": "chieu, kich thuoc 75x50x36mm, chat lieu sat,"
+          },
+          {
+            "raw": "model: lcc-sk12. power: 1500w, ac: 110v-220v 50/60hz,",
+            "dia": false,
+            "key": "model lcc sk12. power 1500w, ac 110v 220v 50 60hz,",
+            "folded": "model lcc sk12. power 1500w, ac 110v 220v 50 60hz,"
+          },
+          {
+            "raw": "bị, điện áp: 220v/50a, kích thước: 95x38x50mm,",
+            "dia": true,
+            "key": "bị, điện áp 220v 50a, kích thước 95x38x50mm,",
+            "folded": "bi, dien ap 220v 50a, kich thuoc 95x38x50mm,"
+          },
+          {
+            "raw": "lcc-phuoj05.điện áp 110v, 220v-250v 50/60hz. hiệu lccvn",
+            "dia": true,
+            "key": "lcc phuoj05.điện áp 110v, 220v 250v 50 60hz. hiệu lccvn",
+            "folded": "lcc phuoj05.dien ap 110v, 220v 250v 50 60hz. hieu lccvn"
+          },
+          {
+            "raw": "3000w, ac 220-240v ac/50-60hz, mới 100%",
+            "dia": true,
+            "key": "3000w, ac 220 240v ac 50 60hz, mới 100",
+            "folded": "3000w, ac 220 240v ac 50 60hz, moi 100"
+          },
+          {
+            "raw": "2000w. ac: 110v-220v 50/60hz. mới 100%",
+            "dia": true,
+            "key": "2000w. ac 110v 220v 50 60hz. mới 100",
+            "folded": "2000w. ac 110v 220v 50 60hz. moi 100"
+          },
+          {
+            "raw": "20w, ac 100v-240v, 50-60hz. mới 100%",
+            "dia": true,
+            "key": "20w, ac 100v 240v, 50 60hz. mới 100",
+            "folded": "20w, ac 100v 240v, 50 60hz. moi 100"
+          }
+        ],
+        "60": [
+          {
+            "raw": "tạo khói sân khấu,model:hm-ak-30,kt:530*270*160 mm,đa:220-240v,cs:3000w,hiệu hm lighting,nsx:guangdong",
+            "dia": true,
+            "key": "tạo khói sân khấu,model hm ak 30,kt 530 270 160 mm,đa 220 240v,cs 3000w,hiệu hm lighting,nsx guangdong",
+            "folded": "tao khoi san khau,model hm ak 30,kt 530 270 160 mm,da 220 240v,cs 3000w,hieu hm lighting,nsx guangdong"
+          },
+          {
+            "raw": "3000w.model: lcc-pmj01. ac: 110-240v/50-60hz.hiệu lccvn. dùng dung",
+            "dia": true,
+            "key": "3000w.model lcc pmj01. ac 110 240v 50 60hz.hiệu lccvn. dùng dung",
+            "folded": "3000w.model lcc pmj01. ac 110 240v 50 60hz.hieu lccvn. dung dung"
+          },
+          {
+            "raw": "model: lcc-co2-qz02, điện 110-240v/50-60hz, công suất 250w,",
+            "dia": true,
+            "key": "model lcc co2 qz02, điện 110 240v 50 60hz, công suất 250w,",
+            "folded": "model lcc co2 qz02, dien 110 240v 50 60hz, cong suat 250w,"
+          },
+          {
+            "raw": "hiệu ánh sáng, đa:100-240v,cs:60w,không sử dụng trong",
+            "dia": true,
+            "key": "hiệu ánh sáng, đa 100 240v,cs 60w,không sử dụng trong",
+            "folded": "hieu anh sang, da 100 240v,cs 60w,khong su dung trong"
+          },
+          {
+            "raw": "450w, điện áp: 110-220v/50-60hz. hiệu lcc lighting.",
+            "dia": true,
+            "key": "450w, điện áp 110 220v 50 60hz. hiệu lcc lighting.",
+            "folded": "450w, dien ap 110 220v 50 60hz. hieu lcc lighting."
+          },
+          {
+            "raw": "1500w, ac: 110v-220v 50/60hz, mới 100%",
+            "dia": true,
+            "key": "1500w, ac 110v 220v 50 60hz, mới 100",
+            "folded": "1500w, ac 110v 220v 50 60hz, moi 100"
+          },
+          {
+            "raw": "áp 110v, 220v-250v 50/60hz. hiệu lccvn",
+            "dia": true,
+            "key": "áp 110v, 220v 250v 50 60hz. hiệu lccvn",
+            "folded": "ap 110v, 220v 250v 50 60hz. hieu lccvn"
+          },
+          {
+            "raw": "3000w, ac 220-240v ac/50-60hz, mới 100%",
+            "dia": true,
+            "key": "3000w, ac 220 240v ac 50 60hz, mới 100",
+            "folded": "3000w, ac 220 240v ac 50 60hz, moi 100"
+          },
+          {
+            "raw": "2000w. ac: 110v-220v 50/60hz. mới 100%",
+            "dia": true,
+            "key": "2000w. ac 110v 220v 50 60hz. mới 100",
+            "folded": "2000w. ac 110v 220v 50 60hz. moi 100"
+          },
+          {
+            "raw": "20w, ac 100v-240v, 50-60hz. mới 100%",
+            "dia": true,
+            "key": "20w, ac 100v 240v, 50 60hz. mới 100",
+            "folded": "20w, ac 100v 240v, 50 60hz. moi 100"
+          }
+        ],
+        "90": [
+          {
+            "raw": "xoay chiều,c.liệu:thép, đồng,kt: 90x38x51mm, hãng canny well,",
+            "dia": true,
+            "key": "xoay chiều,c.liệu thép, đồng,kt 90x38x51mm, hãng canny well,",
+            "folded": "xoay chieu,c.lieu thep, dong,kt 90x38x51mm, hang canny well,"
+          }
+        ],
+        "00": [
+          {
+            "raw": "tự động, model: at3002h, nhà sản xuất",
+            "dia": true,
+            "key": "tự động, model at3002h, nhà sản xuất",
+            "folded": "tu dong, model at3002h, nha san xuat"
+          },
+          {
+            "raw": "thép, đồng,kt:98x95x84.5mm,hãng:canny well,mới 100%",
+            "dia": true,
+            "key": "thép, đồng,kt 98x95x84.5mm,hãng canny well,mới 100",
+            "folded": "thep, dong,kt 98x95x84.5mm,hang canny well,moi 100"
+          },
+          {
+            "raw": "canny well, mới 100%",
+            "dia": true,
+            "key": "canny well, mới 100",
+            "folded": "canny well, moi 100"
+          },
+          {
+            "raw": "d16x345, điện áp 380v/800w chất liệu thép,",
+            "dia": true,
+            "key": "d16x345, điện áp 380v 800w chất liệu thép,",
+            "folded": "d16x345, dien ap 380v 800w chat lieu thep,"
+          },
+          {
+            "raw": "khói sân khấu,model:hm-ak-30,kt:530*270*160 mm,đa:220-240v,cs:3000w,hiệu hm lighting,nsx:guangdong hengmei",
+            "dia": true,
+            "key": "khói sân khấu,model hm ak 30,kt 530 270 160 mm,đa 220 240v,cs 3000w,hiệu hm lighting,nsx guangdong hengmei",
+            "folded": "khoi san khau,model hm ak 30,kt 530 270 160 mm,da 220 240v,cs 3000w,hieu hm lighting,nsx guangdong hengmei"
+          },
+          {
+            "raw": "sân khấu(tạo bọt).power: 3000w.model: lcc-pmj01. ac: 110-240v/50-60hz.hiệu",
+            "dia": true,
+            "key": "sân khấu tạo bọt .power 3000w.model lcc pmj01. ac 110 240v 50 60hz.hiệu",
+            "folded": "san khau tao bot .power 3000w.model lcc pmj01. ac 110 240v 50 60hz.hieu"
+          },
+          {
+            "raw": "hiệu lccvn. mới 100%",
+            "dia": true,
+            "key": "hiệu lccvn. mới 100",
+            "folded": "hieu lccvn. moi 100"
+          },
+          {
+            "raw": "hiệu ánh sáng, đa:100-240v,cs:60w,không sử dụng trong",
+            "dia": true,
+            "key": "hiệu ánh sáng, đa 100 240v,cs 60w,không sử dụng trong",
+            "folded": "hieu anh sang, da 100 240v,cs 60w,khong su dung trong"
+          },
+          {
+            "raw": "lcc lighting. mới 100%",
+            "dia": true,
+            "key": "lcc lighting. mới 100",
+            "folded": "lcc lighting. moi 100"
+          },
+          {
+            "raw": "ánh sáng,kí hiệu yc-s8,kt:484*155*45mm,đa:100-240v,cs:10w,không hiệu,nsx:guangzhou yicai photoelectric",
+            "dia": true,
+            "key": "ánh sáng,kí hiệu yc s8,kt 484 155 45mm,đa 100 240v,cs 10w,không hiệu,nsx guangzhou yicai photoelectric",
+            "folded": "anh sang,ki hieu yc s8,kt 484 155 45mm,da 100 240v,cs 10w,khong hieu,nsx guangzhou yicai photoelectric"
+          }
+        ]
+      },
+      "detect": {
+        "10": [
+          "co., ltd., mới 100%",
+          "thép, đồng,kt:98x95x84.5mm,hãng:canny well,mới 100%",
+          "bộ lọc nguồn 1 pha thép, đồng",
+          "nsx aiteda, mới 100%",
+          "technology co., ltd.,mới 100%",
+          "3000w.model: lcc-pmj01. ac: 110-240v/50-60hz.hiệu lccvn. dùng dung",
+          "model: lcc-co2-qz02, điện 110-240v/50-60hz, công suất 250w,",
+          "hiệu ánh sáng, đa:100-240v,cs:60w,không sử dụng trong",
+          "450w, điện áp: 110-220v/50-60hz. hiệu lcc lighting.",
+          "ánh sáng,kí hiệu yc-s8,kt:484*155*45mm,đa:100-240v,cs:10w,không hiệu,nsx:guangzhou yicai photoelectric",
+          "Điều khiển rèm từ xa",
+          "Bộ lọc nguồn 3 pha",
+          "Ống gia nhiệt",
+          "Máy tạo khói sân khấu",
+          "Máy tạo hiệu ứng bọt sân khấu",
+          "Máy phun CO2 tạo hiệu ứng khói",
+          "Bộ chia tín hiệu ánh sáng",
+          "Điều khiển rèm 1 kênh",
+          "Bàn trộn âm thanh mixer",
+          "Điều khiển tivi đa năng",
+          "Bộ khuếch đại mở rộng HDMI",
+          "Máy phun khói cầm tay",
+          "Bộ lọc nguồn điện",
+          "Máy hiệu ứng giả lửa",
+          "Máy phun khói sân khấu",
+          "Máy tạo khói lạnh",
+          "Máy thổi pháo giấy CO2",
+          "Máy sấy keo",
+          "Thiết bị tạo Ion",
+          "Bộ khử ion",
+          "Bộ cách ly tín hiệu",
+          "Bộ cách ly AIT 04/20",
+          "Điều khiển chụp ảnh từ xa",
+          "Cổng kết nối VGA15 đực",
+          "Cổng kết nối HDP15",
+          "Phát xung Encoder"
+        ],
+        "20": [
+          "nguồn 1 pha 20a, model cw4e-20a-s, dùng",
+          "khói sân khấu,model:hm-ak-30,kt:530*270*160 mm,đa:220-240v,cs:3000w,hiệu hm lighting,nsx:guangdong hengmei",
+          "450w, điện áp: 110-220v/50-60hz. hiệu lcc lighting.",
+          "lọc nguồn, model cw4e-20a-s, 1pha, điện áp",
+          "cơ chạy, điện 220v, bằng nhựa, kt:",
+          "power: 1500w, ac: 110v-220v 50/60hz, mới 100%",
+          "bị, điện áp: 220v/50a, kích thước: 95x38x50mm,",
+          "phun sương,model yc-3000,kt:61*41*38cm,đa 110-220v,cs 1200w,không hiệu,nsx:guangzhou xuanliang",
+          "cho sân khấu.power: 200w.model: lcc-phuoj05.điện áp 110v,",
+          "suất: 3000w, ac 220-240v ac/50-60hz, mới 100%"
+        ],
+        "30": [
+          "tự động, model: at3002h, nhà sản xuất",
+          "tạo khói sân khấu,model:hm-ak-30,kt:530*270*160 mm,đa:220-240v,cs:3000w,hiệu hm lighting,nsx:guangdong",
+          "sân khấu(tạo bọt).power: 3000w.model: lcc-pmj01. ac: 110-240v/50-60hz.hiệu",
+          "khấu phun sương,model yc-3000,kt:61*41*38cm,đa 110-220v,cs 1200w,không hiệu,nsx:guangzhou",
+          "lcc-ywj02. công suất: 3000w, ac 220-240v ac/50-60hz,",
+          "công suất: 1000w, 100-230v/ 50hz, kích thước:",
+          "sương) sân khấu, yc-3000,kt:70*37*31cm,đa:110v,cs:3000w,không hiệu,nsx:guangzhou yicai photoelectric"
+        ],
+        "40": [
+          "nguồn 3 pha 40a, model cw12b-40a-s, dùng",
+          "khói sân khấu,model:hm-ak-30,kt:530*270*160 mm,đa:220-240v,cs:3000w,hiệu hm lighting,nsx:guangdong hengmei",
+          "3000w.model: lcc-pmj01. ac: 110-240v/50-60hz.hiệu lccvn. dùng dung",
+          "model: lcc-co2-qz02, điện 110-240v/50-60hz, công suất 250w,",
+          "hiệu ánh sáng, đa:100-240v,cs:60w,không sử dụng trong",
+          "ánh sáng,kí hiệu yc-s8,kt:484*155*45mm,đa:100-240v,cs:10w,không hiệu,nsx:guangzhou yicai photoelectric",
+          "suất: 3000w, ac 220-240v ac/50-60hz, mới 100%",
+          "suất 20w, ac 100v-240v, 50-60hz. mới 100%",
+          "sân khấu, model: wl-sw4000 , công suất"
+        ],
+        "50": [
+          "3000w.model: lcc-pmj01. ac: 110-240v/50-60hz.hiệu lccvn. dùng dung",
+          "model: lcc-co2-qz02, điện 110-240v/50-60hz, công suất 250w,",
+          "sân khấu. mã:lcc-phj01; 450w, điện áp: 110-220v/50-60hz.",
+          "chiều, kích thước 75x50x36mm, chất liệu sắt,",
+          "model: lcc-sk12. power: 1500w, ac: 110v-220v 50/60hz,",
+          "bị, điện áp: 220v/50a, kích thước: 95x38x50mm,",
+          "lcc-phuoj05.điện áp 110v, 220v-250v 50/60hz. hiệu lccvn",
+          "3000w, ac 220-240v ac/50-60hz, mới 100%",
+          "2000w. ac: 110v-220v 50/60hz. mới 100%",
+          "20w, ac 100v-240v, 50-60hz. mới 100%"
+        ],
+        "60": [
+          "tạo khói sân khấu,model:hm-ak-30,kt:530*270*160 mm,đa:220-240v,cs:3000w,hiệu hm lighting,nsx:guangdong",
+          "3000w.model: lcc-pmj01. ac: 110-240v/50-60hz.hiệu lccvn. dùng dung",
+          "model: lcc-co2-qz02, điện 110-240v/50-60hz, công suất 250w,",
+          "hiệu ánh sáng, đa:100-240v,cs:60w,không sử dụng trong",
+          "450w, điện áp: 110-220v/50-60hz. hiệu lcc lighting.",
+          "1500w, ac: 110v-220v 50/60hz, mới 100%",
+          "áp 110v, 220v-250v 50/60hz. hiệu lccvn",
+          "3000w, ac 220-240v ac/50-60hz, mới 100%",
+          "2000w. ac: 110v-220v 50/60hz. mới 100%",
+          "20w, ac 100v-240v, 50-60hz. mới 100%"
+        ],
+        "90": [
+          "xoay chiều,c.liệu:thép, đồng,kt: 90x38x51mm, hãng canny well,"
+        ],
+        "00": [
+          "tự động, model: at3002h, nhà sản xuất",
+          "thép, đồng,kt:98x95x84.5mm,hãng:canny well,mới 100%",
+          "canny well, mới 100%",
+          "d16x345, điện áp 380v/800w chất liệu thép,",
+          "khói sân khấu,model:hm-ak-30,kt:530*270*160 mm,đa:220-240v,cs:3000w,hiệu hm lighting,nsx:guangdong hengmei",
+          "sân khấu(tạo bọt).power: 3000w.model: lcc-pmj01. ac: 110-240v/50-60hz.hiệu",
+          "hiệu lccvn. mới 100%",
+          "hiệu ánh sáng, đa:100-240v,cs:60w,không sử dụng trong",
+          "lcc lighting. mới 100%",
+          "ánh sáng,kí hiệu yc-s8,kt:484*155*45mm,đa:100-240v,cs:10w,không hiệu,nsx:guangzhou yicai photoelectric"
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "deviceKind": "particle_accelerator",
+        "specCode": "00"
+      },
+      "hs": "85431000",
+      "reasonVi": "GIR 6 — thiết bị điện loại particle_accelerator, Biểu thuế 2026 nhóm 854310 → 85431000",
+      "source": "Biểu thuế NK VN 2026, nhóm 854310"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "deviceKind": "signal_generator",
+        "specCode": "00"
+      },
+      "hs": "85432000",
+      "reasonVi": "GIR 6 — thiết bị điện loại signal_generator, Biểu thuế 2026 nhóm 854320 → 85432000",
+      "source": "Biểu thuế NK VN 2026, nhóm 854320"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "deviceKind": "electroplating_machine",
+        "specCode": "20"
+      },
+      "hs": "85433020",
+      "reasonVi": "GIR 6 — thiết bị điện loại electroplating_machine, Biểu thuế 2026 nhóm 854330 → 85433020",
+      "source": "Biểu thuế NK VN 2026, nhóm 854330"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "deviceKind": "electroplating_machine",
+        "specCode": "91"
+      },
+      "hs": "85433091",
+      "reasonVi": "GIR 6 — thiết bị điện loại electroplating_machine, Biểu thuế 2026 nhóm 854330 → 85433091",
+      "source": "Biểu thuế NK VN 2026, nhóm 854330"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "deviceKind": "electroplating_machine",
+        "specCode": "99"
+      },
+      "hs": "85433099",
+      "reasonVi": "GIR 6 — thiết bị điện loại electroplating_machine, Biểu thuế 2026 nhóm 854330 → 85433099",
+      "source": "Biểu thuế NK VN 2026, nhóm 854330"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "deviceKind": "e_cigarette_device",
+        "specCode": "00"
+      },
+      "hs": "85434000",
+      "reasonVi": "GIR 6 — thiết bị điện loại e_cigarette_device, Biểu thuế 2026 nhóm 854340 → 85434000",
+      "source": "Biểu thuế NK VN 2026, nhóm 854340"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_electrical_device",
+        "specCode": "10"
+      },
+      "hs": "85437010",
+      "reasonVi": "GIR 6 — thiết bị điện loại other_electrical_device, Biểu thuế 2026 nhóm 854370 → 85437010",
+      "source": "Biểu thuế NK VN 2026, nhóm 854370"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_electrical_device",
+        "specCode": "21"
+      },
+      "hs": "85437021",
+      "reasonVi": "GIR 6 — thiết bị điện loại other_electrical_device, Biểu thuế 2026 nhóm 854370 → 85437021",
+      "source": "Biểu thuế NK VN 2026, nhóm 854370"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_electrical_device",
+        "specCode": "29"
+      },
+      "hs": "85437029",
+      "reasonVi": "GIR 6 — thiết bị điện loại other_electrical_device, Biểu thuế 2026 nhóm 854370 → 85437029",
+      "source": "Biểu thuế NK VN 2026, nhóm 854370"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_electrical_device",
+        "specCode": "30"
+      },
+      "hs": "85437030",
+      "reasonVi": "GIR 6 — thiết bị điện loại other_electrical_device, Biểu thuế 2026 nhóm 854370 → 85437030",
+      "source": "Biểu thuế NK VN 2026, nhóm 854370"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_electrical_device",
+        "specCode": "40"
+      },
+      "hs": "85437040",
+      "reasonVi": "GIR 6 — thiết bị điện loại other_electrical_device, Biểu thuế 2026 nhóm 854370 → 85437040",
+      "source": "Biểu thuế NK VN 2026, nhóm 854370"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_electrical_device",
+        "specCode": "50"
+      },
+      "hs": "85437050",
+      "reasonVi": "GIR 6 — thiết bị điện loại other_electrical_device, Biểu thuế 2026 nhóm 854370 → 85437050",
+      "source": "Biểu thuế NK VN 2026, nhóm 854370"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_electrical_device",
+        "specCode": "60"
+      },
+      "hs": "85437060",
+      "reasonVi": "GIR 6 — thiết bị điện loại other_electrical_device, Biểu thuế 2026 nhóm 854370 → 85437060",
+      "source": "Biểu thuế NK VN 2026, nhóm 854370"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "deviceKind": "other_electrical_device",
+        "specCode": "90"
+      },
+      "hs": "85437090",
+      "reasonVi": "GIR 6 — thiết bị điện loại other_electrical_device, Biểu thuế 2026 nhóm 854370 → 85437090",
+      "source": "Biểu thuế NK VN 2026, nhóm 854370"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "specCode": "10"
+      },
+      "hs": "85439010",
+      "reasonVi": "GIR 6 — thiết bị điện loại parts, Biểu thuế 2026 nhóm 854390 → 85439010",
+      "source": "Biểu thuế NK VN 2026, nhóm 854390"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "specCode": "20"
+      },
+      "hs": "85439020",
+      "reasonVi": "GIR 6 — thiết bị điện loại parts, Biểu thuế 2026 nhóm 854390 → 85439020",
+      "source": "Biểu thuế NK VN 2026, nhóm 854390"
+    },
+    {
+      "id": "r-17",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "specCode": "30"
+      },
+      "hs": "85439030",
+      "reasonVi": "GIR 6 — thiết bị điện loại parts, Biểu thuế 2026 nhóm 854390 → 85439030",
+      "source": "Biểu thuế NK VN 2026, nhóm 854390"
+    },
+    {
+      "id": "r-18",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "specCode": "40"
+      },
+      "hs": "85439040",
+      "reasonVi": "GIR 6 — thiết bị điện loại parts, Biểu thuế 2026 nhóm 854390 → 85439040",
+      "source": "Biểu thuế NK VN 2026, nhóm 854390"
+    },
+    {
+      "id": "r-19",
+      "priority": 0,
+      "when": {
+        "deviceKind": "parts",
+        "specCode": "90"
+      },
+      "hs": "85439090",
+      "reasonVi": "GIR 6 — thiết bị điện loại parts, Biểu thuế 2026 nhóm 854390 → 85439090",
+      "source": "Biểu thuế NK VN 2026, nhóm 854390"
+    }
+  ],
+  "essenceTestVi": "Loại thiết bị (deviceKind) + Mã hiệu kỹ thuật (specCode) → mã 8 số. 19 lá, 2 thuộc tính.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN).",
+  "inputAttributes": [
+    "deviceKind",
+    "specCode"
+  ],
+  "attributes": {
+    "deviceKind": {
+      "type": "enum",
+      "labelVi": "deviceKind",
+      "domain": [
+        "e_cigarette_device",
+        "electroplating_machine",
+        "other_electrical_device",
+        "particle_accelerator",
+        "parts",
+        "signal_generator"
+      ],
+      "detect": {
+        "e_cigarette_device": [
+          "e_cigarette_device",
+          "e cigarette device"
+        ],
+        "electroplating_machine": [
+          "electroplating_machine",
+          "electroplating machine"
+        ],
+        "other_electrical_device": [
+          "other_electrical_device",
+          "other electrical device"
+        ],
+        "particle_accelerator": [
+          "particle_accelerator",
+          "particle accelerator"
+        ],
+        "parts": [
+          "parts"
+        ],
+        "signal_generator": [
+          "signal_generator",
+          "signal generator"
+        ]
+      }
+    },
+    "specCode": {
+      "type": "number",
+      "labelVi": "specCode",
+      "unit": null,
+      "fromSpec": null
+    }
+  },
+  "hitPolicy": "PRIORITY",
+  "essenceVi": "deviceKind + specCode"
+}

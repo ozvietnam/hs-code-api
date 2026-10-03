@@ -1,0 +1,134 @@
+{
+  "heading": "6304",
+  "titleVi": "Vật phẩm trang trí nội thất (chăn, màn, khăn trải) — excluding heading 9404",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Sản phẩm là chăn (bedspread) hay vật phẩm trang trí khác? Vật liệu gì? Có dệt kim/móc không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 6304 + Chú giải nhóm 6304 (GIR 1 + 6)",
+  "inputs": [
+    {
+      "attribute": "furnishingKind",
+      "type": "enum",
+      "domain": ["bedspread_knitted", "bedspread_not_knitted", "bed_net", "mosquito_net_knitted", "other_knitted", "other_cotton", "other_synthetic", "other_textile"],
+      "labelVi": "Loại vật phẩm trang trí",
+      "questionVi": "Sản phẩm là gì: chăn đệm, màn, hay vật phẩm trang trí khác?",
+      "detect": {
+        "bedspread_knitted": ["chăn đệm dệt kim", "chăn dệt kim", "bedspread knitted", "chăn knitted", "mền dệt kim"],
+        "bedspread_not_knitted": ["chăn đệm không dệt kim", "chăn không dệt kim", "chăn vải", "chăn ga", "bedspread not knitted"],
+        "bed_net": ["màn ngủ", "màn giường", "bed net", "mùng", "màn"],
+        "mosquito_net_knitted": ["màn chống muỗi", "man chong muoi", "mùng chống muỗi", "màn muỗi", "mosquito net"],
+        "other_knitted": ["vật phẩm trang trí dệt kim", "khăn trải dệt kim", "gối dệt kim", "vật phẩm knitted"],
+        "other_cotton": ["vật phẩm trang trí bông", "khăn trải bông", "vải trải bông", "vật phẩm bông"],
+        "other_synthetic": ["vật phẩm trang trí sợi tổng hợp", "khăn trải sợi tổng hợp", "vật phẩm synthetic"],
+        "other_textile": ["vật phẩm trang trí vải khác", "khăn trải vải", "vật phẩm vải", "vật phẩm textile khác"]
+      }
+    },
+    {
+      "attribute": "material",
+      "type": "enum",
+      "domain": ["cotton", "synthetic", "other"],
+      "labelVi": "Chất liệu",
+      "questionVi": "Sản phẩm làm bằng chất liệu gì?",
+      "detect": {
+        "cotton": ["bông", "cotton", "vải bông"],
+        "synthetic": ["sợi tổng hợp", "polyester", "nylon", "synthetic", "tổng hợp"],
+        "other": ["len", "lụa", "vải khác", "textile khác", "không dệt"]
+      }
+    },
+    {
+      "attribute": "knitted",
+      "type": "enum",
+      "domain": ["yes", "no"],
+      "labelVi": "Dệt kim / móc",
+      "questionVi": "Sản phẩm có dệt kim hoặc móc không?",
+      "detect": {
+        "yes": ["dệt kim", "móc", "knitted", "crocheted", "đan"],
+        "no": ["không dệt kim", "woven", "dệt thoi", "vải"]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 20,
+      "when": { "furnishingKind": "bedspread_knitted" },
+      "hs": "63041100",
+      "reasonVi": "GIR 1 — chăn đệm dệt kim hoặc móc",
+      "source": "Biểu thuế 2026 nhóm 6304"
+    },
+    {
+      "id": "r-02",
+      "priority": 15,
+      "when": { "furnishingKind": "bedspread_not_knitted", "material": "cotton" },
+      "hs": "63041910",
+      "reasonVi": "GIR 6 — chăn đệm không dệt kim, từ bông",
+      "source": "Biểu thuế 2026 nhóm 6304"
+    },
+    {
+      "id": "r-03",
+      "priority": 15,
+      "when": { "furnishingKind": "bedspread_not_knitted", "material": "other" },
+      "hs": "63041920",
+      "reasonVi": "GIR 6 — chăn đệm không dệt kim, không dệt (vải không dệt)",
+      "source": "Biểu thuế 2026 nhóm 6304"
+    },
+    {
+      "id": "r-04",
+      "priority": 15,
+      "when": { "furnishingKind": "bedspread_not_knitted", "material": "synthetic" },
+      "hs": "63041990",
+      "reasonVi": "GIR 6 — chăn đệm không dệt kim, từ sợi tổng hợp",
+      "source": "Biểu thuế 2026 nhóm 6304"
+    },
+    {
+      "id": "r-05",
+      "priority": 20,
+      "when": { "furnishingKind": "bed_net" },
+      "hs": "63042000",
+      "reasonVi": "GIR 1 — màn ngủ được chi tiết tại Subheading Note 1",
+      "source": "Biểu thuế 2026 nhóm 6304"
+    },
+    {
+      "id": "r-06",
+      "priority": 20,
+      "when": { "furnishingKind": "mosquito_net_knitted" },
+      "hs": "63049110",
+      "reasonVi": "GIR 6 — màn chống muỗi dệt kim hoặc móc",
+      "source": "Biểu thuế 2026 nhóm 6304"
+    },
+    {
+      "id": "r-07",
+      "priority": 10,
+      "when": { "furnishingKind": "other_knitted" },
+      "hs": "63049190",
+      "reasonVi": "GIR 1 — vật phẩm trang trí dệt kim/móc khác",
+      "source": "Biểu thuế 2026 nhóm 6304"
+    },
+    {
+      "id": "r-08",
+      "priority": 8,
+      "when": { "furnishingKind": "other_cotton" },
+      "hs": "63049200",
+      "reasonVi": "GIR 6 — vật phẩm trang trí bông không dệt kim",
+      "source": "Biểu thuế 2026 nhóm 6304"
+    },
+    {
+      "id": "r-09",
+      "priority": 8,
+      "when": { "furnishingKind": "other_synthetic" },
+      "hs": "63049300",
+      "reasonVi": "GIR 6 — vật phẩm trang trí sợi tổng hợp không dệt kim",
+      "source": "Biểu thuế 2026 nhóm 6304"
+    },
+    {
+      "id": "r-10",
+      "priority": 5,
+      "when": { "furnishingKind": "other_textile" },
+      "hs": "63049900",
+      "reasonVi": "GIR 6 — vật phẩm trang trí vật liệu dệt khác không dệt kim",
+      "source": "Biểu thuế 2026 nhóm 6304"
+    }
+  ]
+}

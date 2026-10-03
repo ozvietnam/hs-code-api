@@ -1,0 +1,701 @@
+{
+  "heading": "7318",
+  "titleVi": "Kim loại gia công cơ khí; ốc, bu lông, đai ốc, đinh vít, chốt hãm và các kim loại gia công cơ khí khác; bộ phận",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "fastenerKind",
+      "type": "enum",
+      "domain": [
+        "square_head_screw",
+        "other_screw",
+        "hook_ring_nail",
+        "self_tapping_screw",
+        "bolt_with_nut",
+        "nut",
+        "other_bolt_rivet",
+        "spring_lock_washer",
+        "other_washer",
+        "cotter_pin",
+        "spring_position_pin",
+        "other_fastener"
+      ],
+      "labelVi": "Loại kim loại gia công cơ khí ( fastener )",
+      "questionVi": "Sản phẩm thuộc loại kim loại gia công cơ khí nào: vít đầu vuông, đinh vít thường, đinh móc/vòng, đinh vít tự tarô, bu lông có đai ốc, đai ốc, vòng đệm lò xo/hãm, vòng đệm khác, chốt hãm/chốt định vị, hay loại khác?",
+      "detect": {
+        "square_head_screw": [
+          "vít đầu vuông",
+          "bu lông đầu vuông",
+          "đai ốc",
+          "bulong"
+        ],
+        "other_screw": [
+          "vít",
+          "đinh vít",
+          "đinh ốc",
+          "vít thường",
+          "screw",
+          "Đinh hàn",
+          "Bu lông ren suốt",
+          "Ốc hãm đầu dây cấp nước",
+          "Bu lông khớp nối",
+          "Bu lông thân",
+          "Múp nối thủy lực",
+          "Bu lông chữ E",
+          "Bu lông ren lửng",
+          "Miếng đệm",
+          "Ốc thăng bằng"
+        ],
+        "hook_ring_nail": [
+          "đinh móc",
+          "đinh vòng",
+          "đinh hook",
+          "móc",
+          "vòng"
+        ],
+        "self_tapping_screw": [
+          "vít tự tarô",
+          "vít tự khoan",
+          "đinh vít tự tarô"
+        ],
+        "bolt_with_nut": [
+          "bu lông có đai ốc",
+          "bolt nut",
+          "buloong"
+        ],
+        "nut": [
+          "đai ốc",
+          "éc",
+          "e cu",
+          "nut"
+        ],
+        "other_bolt_rivet": [
+          "đinh tán",
+          "rivet",
+          "chốt"
+        ],
+        "spring_lock_washer": [
+          "vòng đệm lò xo",
+          "vòng hãm lò xo",
+          "washer spring"
+        ],
+        "other_washer": [
+          "vòng đệm",
+          "vòng lá",
+          "washer"
+        ],
+        "cotter_pin": [
+          "chốt hãm",
+          "cotter pin",
+          "chốt cố định"
+        ],
+        "spring_position_pin": [
+          "chốt định vị lò xo",
+          "pin lò xo",
+          "position pin"
+        ],
+        "other_fastener": [
+          "kim loại gia công cơ khí",
+          "cơ khí khác",
+          "fastener"
+        ]
+      },
+      "_detect": {
+        "square_head_screw": [
+          {
+            "raw": "vít đầu vuông",
+            "dia": true,
+            "key": "vít đầu vuông",
+            "folded": "vit dau vuong"
+          },
+          {
+            "raw": "bu lông đầu vuông",
+            "dia": true,
+            "key": "bu lông đầu vuông",
+            "folded": "bu long dau vuong"
+          },
+          {
+            "raw": "đai ốc",
+            "dia": true,
+            "key": "đai ốc",
+            "folded": "dai oc"
+          },
+          {
+            "raw": "bulong",
+            "dia": false,
+            "key": "bulong",
+            "folded": "bulong"
+          }
+        ],
+        "other_screw": [
+          {
+            "raw": "vít",
+            "dia": true,
+            "key": "vít",
+            "folded": "vit"
+          },
+          {
+            "raw": "đinh vít",
+            "dia": true,
+            "key": "đinh vít",
+            "folded": "dinh vit"
+          },
+          {
+            "raw": "đinh ốc",
+            "dia": true,
+            "key": "đinh ốc",
+            "folded": "dinh oc"
+          },
+          {
+            "raw": "vít thường",
+            "dia": true,
+            "key": "vít thường",
+            "folded": "vit thuong"
+          },
+          {
+            "raw": "screw",
+            "dia": false,
+            "key": "screw",
+            "folded": "screw"
+          }
+        ],
+        "hook_ring_nail": [
+          {
+            "raw": "đinh móc",
+            "dia": true,
+            "key": "đinh móc",
+            "folded": "dinh moc"
+          },
+          {
+            "raw": "đinh vòng",
+            "dia": true,
+            "key": "đinh vòng",
+            "folded": "dinh vong"
+          },
+          {
+            "raw": "đinh hook",
+            "dia": true,
+            "key": "đinh hook",
+            "folded": "dinh hook"
+          },
+          {
+            "raw": "móc",
+            "dia": true,
+            "key": "móc",
+            "folded": "moc"
+          },
+          {
+            "raw": "vòng",
+            "dia": true,
+            "key": "vòng",
+            "folded": "vong"
+          }
+        ],
+        "self_tapping_screw": [
+          {
+            "raw": "vít tự tarô",
+            "dia": true,
+            "key": "vít tự tarô",
+            "folded": "vit tu taro"
+          },
+          {
+            "raw": "vít tự khoan",
+            "dia": true,
+            "key": "vít tự khoan",
+            "folded": "vit tu khoan"
+          },
+          {
+            "raw": "đinh vít tự tarô",
+            "dia": true,
+            "key": "đinh vít tự tarô",
+            "folded": "dinh vit tu taro"
+          }
+        ],
+        "bolt_with_nut": [
+          {
+            "raw": "bu lông có đai ốc",
+            "dia": true,
+            "key": "bu lông có đai ốc",
+            "folded": "bu long co dai oc"
+          },
+          {
+            "raw": "bolt nut",
+            "dia": false,
+            "key": "bolt nut",
+            "folded": "bolt nut"
+          },
+          {
+            "raw": "buloong",
+            "dia": false,
+            "key": "buloong",
+            "folded": "buloong"
+          }
+        ],
+        "nut": [
+          {
+            "raw": "đai ốc",
+            "dia": true,
+            "key": "đai ốc",
+            "folded": "dai oc"
+          },
+          {
+            "raw": "éc",
+            "dia": true,
+            "key": "éc",
+            "folded": "ec"
+          },
+          {
+            "raw": "e cu",
+            "dia": false,
+            "key": "e cu",
+            "folded": "e cu"
+          },
+          {
+            "raw": "nut",
+            "dia": false,
+            "key": "nut",
+            "folded": "nut"
+          }
+        ],
+        "other_bolt_rivet": [
+          {
+            "raw": "đinh tán",
+            "dia": true,
+            "key": "đinh tán",
+            "folded": "dinh tan"
+          },
+          {
+            "raw": "rivet",
+            "dia": false,
+            "key": "rivet",
+            "folded": "rivet"
+          },
+          {
+            "raw": "chốt",
+            "dia": true,
+            "key": "chốt",
+            "folded": "chot"
+          }
+        ],
+        "spring_lock_washer": [
+          {
+            "raw": "vòng đệm lò xo",
+            "dia": true,
+            "key": "vòng đệm lò xo",
+            "folded": "vong dem lo xo"
+          },
+          {
+            "raw": "vòng hãm lò xo",
+            "dia": true,
+            "key": "vòng hãm lò xo",
+            "folded": "vong ham lo xo"
+          },
+          {
+            "raw": "washer spring",
+            "dia": false,
+            "key": "washer spring",
+            "folded": "washer spring"
+          }
+        ],
+        "other_washer": [
+          {
+            "raw": "vòng đệm",
+            "dia": true,
+            "key": "vòng đệm",
+            "folded": "vong dem"
+          },
+          {
+            "raw": "vòng lá",
+            "dia": true,
+            "key": "vòng lá",
+            "folded": "vong la"
+          },
+          {
+            "raw": "washer",
+            "dia": false,
+            "key": "washer",
+            "folded": "washer"
+          }
+        ],
+        "cotter_pin": [
+          {
+            "raw": "chốt hãm",
+            "dia": true,
+            "key": "chốt hãm",
+            "folded": "chot ham"
+          },
+          {
+            "raw": "cotter pin",
+            "dia": false,
+            "key": "cotter pin",
+            "folded": "cotter pin"
+          },
+          {
+            "raw": "chốt cố định",
+            "dia": true,
+            "key": "chốt cố định",
+            "folded": "chot co dinh"
+          }
+        ],
+        "spring_position_pin": [
+          {
+            "raw": "chốt định vị lò xo",
+            "dia": true,
+            "key": "chốt định vị lò xo",
+            "folded": "chot dinh vi lo xo"
+          },
+          {
+            "raw": "pin lò xo",
+            "dia": true,
+            "key": "pin lò xo",
+            "folded": "pin lo xo"
+          },
+          {
+            "raw": "position pin",
+            "dia": false,
+            "key": "position pin",
+            "folded": "position pin"
+          }
+        ],
+        "other_fastener": [
+          {
+            "raw": "kim loại gia công cơ khí",
+            "dia": true,
+            "key": "kim loại gia công cơ khí",
+            "folded": "kim loai gia cong co khi"
+          },
+          {
+            "raw": "cơ khí khác",
+            "dia": true,
+            "key": "cơ khí khác",
+            "folded": "co khi khac"
+          },
+          {
+            "raw": "fastener",
+            "dia": false,
+            "key": "fastener",
+            "folded": "fastener"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "diameter",
+      "type": "enum",
+      "domain": [
+        "le_16mm",
+        "over_16mm",
+        "not_applicable"
+      ],
+      "labelVi": "Đường kính ngoài của thân (mm)",
+      "questionVi": "Đường kính ngoài của thân sản phẩm: không quá 16mm, trên 16mm, hay không áp dụng (đinh móc, vòng đệm, chốt định vị)?",
+      "_detect": {}
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "square_head_screw"
+      },
+      "hs": "73181100",
+      "reasonVi": "GIR 6 — vít đầu vuông, 7318.11 (MFN 5%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "other_screw",
+        "diameter": "le_16mm"
+      },
+      "hs": "73181210",
+      "reasonVi": "GIR 6 — đinh vít khác, đường kính ≤16mm, 7318.12.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "other_screw",
+        "diameter": "over_16mm"
+      },
+      "hs": "73181290",
+      "reasonVi": "GIR 6 — đinh vít khác, đường kính >16mm, 7318.12.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "hook_ring_nail"
+      },
+      "hs": "73181300",
+      "reasonVi": "GIR 6 — đinh móc và đinh vòng, 7318.13 (MFN 10%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "self_tapping_screw",
+        "diameter": "le_16mm"
+      },
+      "hs": "73181410",
+      "reasonVi": "GIR 6 — đinh vít tự tarô, đường kính ≤16mm, 7318.14.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "self_tapping_screw",
+        "diameter": "over_16mm"
+      },
+      "hs": "73181490",
+      "reasonVi": "GIR 6 — đinh vít tự tarô, đường kính >16mm, 7318.14.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "bolt_with_nut",
+        "diameter": "le_16mm"
+      },
+      "hs": "73181510",
+      "reasonVi": "GIR 6 — bu lông có đai ốc, đường kính ≤16mm, 7318.15.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "bolt_with_nut",
+        "diameter": "over_16mm"
+      },
+      "hs": "73181590",
+      "reasonVi": "GIR 6 — bu lông có đai ốc, đường kính >16mm, 7318.15.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "nut",
+        "diameter": "le_16mm"
+      },
+      "hs": "73181610",
+      "reasonVi": "GIR 6 — đai ốc, đường kính ≤16mm, 7318.16.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "nut",
+        "diameter": "over_16mm"
+      },
+      "hs": "73181690",
+      "reasonVi": "GIR 6 — đai ốc, đường kính >16mm, 7318.16.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "other_bolt_rivet",
+        "diameter": "le_16mm"
+      },
+      "hs": "73181910",
+      "reasonVi": "GIR 6 — đinh vít/bu lông/rivet khác, đường kính ≤16mm, 7318.19.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "other_bolt_rivet",
+        "diameter": "over_16mm"
+      },
+      "hs": "73181990",
+      "reasonVi": "GIR 6 — đinh vít/bu lông/rivet khác, đường kính >16mm, 7318.19.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "spring_lock_washer"
+      },
+      "hs": "73182100",
+      "reasonVi": "GIR 6 — vòng đệm lò xo và vòng đệm hãm, 7318.21 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "other_washer"
+      },
+      "hs": "73182200",
+      "reasonVi": "GIR 6 — vòng đệm khác, 7318.22 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "cotter_pin",
+        "diameter": "le_16mm"
+      },
+      "hs": "73182310",
+      "reasonVi": "GIR 6 — chốt hãm, đường kính ≤16mm, 7318.23.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "cotter_pin",
+        "diameter": "over_16mm"
+      },
+      "hs": "73182390",
+      "reasonVi": "GIR 6 — chốt hãm, đường kính >16mm, 7318.23.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-17",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "spring_position_pin"
+      },
+      "hs": "73182400",
+      "reasonVi": "GIR 6 — chốt hãm và chốt định vị, 7318.24 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-18",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "other_fastener",
+        "diameter": "le_16mm"
+      },
+      "hs": "73182910",
+      "reasonVi": "GIR 6 — đinh ốc khác, đường kính ≤16mm, 7318.29.10 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-19",
+      "priority": 0,
+      "when": {
+        "fastenerKind": "other_fastener",
+        "diameter": "over_16mm"
+      },
+      "hs": "73182990",
+      "reasonVi": "GIR 6 — đinh ốc khác, đường kính >16mm, 7318.29.90 (MFN 12%)",
+      "source": "Biểu thuế 2026"
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceTestVi": "fastenerKind (12 giá trị) + diameter (2 giá trị: ≤16mm / >16mm, hoặc N/A) → phân biệt 19 mã 8 số trong nhóm 7318. Đường kính là thuộc tính rìa: một số loại (vít đầu vuông, đinh móc, vòng đệm, chốt định vị) không phân biệt đường kính → diameter = not_applicable. MFN: hầu hết 12%, ngoại trừ 731811 (5%).",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 7318 (Thông tư 65/2024/TT-BTC).",
+  "attributes": {
+    "diameter": {
+      "type": "enum",
+      "domain": [
+        "le_16mm",
+        "over_16mm"
+      ],
+      "detect": {
+        "le_16mm": [
+          "le",
+          "16mm"
+        ],
+        "over_16mm": [
+          "over",
+          "16mm"
+        ]
+      }
+    },
+    "fastenerKind": {
+      "type": "enum",
+      "domain": [
+        "bolt_with_nut",
+        "cotter_pin",
+        "hook_ring_nail",
+        "nut",
+        "other_bolt_rivet",
+        "other_fastener",
+        "other_screw",
+        "other_washer",
+        "self_tapping_screw",
+        "spring_lock_washer",
+        "spring_position_pin",
+        "square_head_screw"
+      ],
+      "detect": {
+        "bolt_with_nut": [
+          "bolt",
+          "with",
+          "nut"
+        ],
+        "cotter_pin": [
+          "cotter",
+          "pin"
+        ],
+        "hook_ring_nail": [
+          "hook",
+          "ring",
+          "nail"
+        ],
+        "nut": [
+          "nut"
+        ],
+        "other_bolt_rivet": [
+          "other",
+          "bolt",
+          "rivet"
+        ],
+        "other_fastener": [
+          "other",
+          "fastener"
+        ],
+        "other_screw": [
+          "other",
+          "screw"
+        ],
+        "other_washer": [
+          "other",
+          "washer"
+        ],
+        "self_tapping_screw": [
+          "self",
+          "tapping",
+          "screw"
+        ],
+        "spring_lock_washer": [
+          "spring",
+          "lock",
+          "washer"
+        ],
+        "spring_position_pin": [
+          "spring",
+          "position",
+          "pin"
+        ],
+        "square_head_screw": [
+          "square",
+          "head",
+          "screw"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "diameter",
+    "fastenerKind"
+  ],
+  "essenceVi": "diameter; fastenerKind"
+}
