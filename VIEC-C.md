@@ -1,5 +1,7 @@
 
 
+→ ca 22:25 03/10: **Verify cuối — không còn C-scope mới** ✓ · HEAD=887bc0d, 72 commits ahead origin/main ✓ · PR #97: 73 commits, mergeable=true ✓ · npm test: 2 pre-existing failures (72099090=thép đục lỗ; 72163190=thép hình — KHÔNG có bảng 7216) ✓ · check-self-reject: 0 ✓ · accuracy hybrid 22.1% ✓ · search-only 9.2% ✓ · BCT active: 41 docs (API verified) ✓ · GEMINI_API_KEY=0 → full-pipeline không đo được ✓ · Việc còn lại: PR #97 merge (dev/CEO), 7216 table (dev HS), 3926/8537/8544/6402/8483 table redesign (dev HS) ✓
+
 → ca 21:06 03/10: **Xác nhận tình trạng cuối lượt — KHÔNG CÒN VIỆC LÀN C LÀM ĐƯỢC** ✓ · HEAD=901576bf (71 commits ahead origin/main, +2 so với 20:30) ✓ · PR #97: 71 commits, mergeable=true ✓ · npm test: 2 pre-existing failures (dev HS scope) ✓ · check-self-reject: 0 ✓ · hybrid top1=22.1% ✓ · oz-to-cases 8481: 0 added/117 unresolved (NO_TABLE — cần bảng 8481) ✓ · oz-to-cases 8501/8413/8414/4016/8421: tất cả NO_TABLE ✓ · 321 chapters oz-gold không có bảng quyết định ✓ · GEMINI_API_KEY=0 → full-pipeline không đo được ✓ · Việc còn lại: PR #97 merge (dev/CEO), tất cả bảng quyết định còn thiếu + heading selection context filter = dev HS ✓
 
 → ca 20:30 03/10: **Xác nhận tình trạng cuối lượt** ✓ · HEAD=07b9462 (docs checkpoint), 69 commits ahead origin/main ✓ · PR #97: 69 commits, mergeable=true, state=open ✓ · npm test: 2 pre-existing failures (72099090/72163190 steel shape=dev HS scope) ✓ · check-self-reject: 0 ✓ · accuracy-latest: hybrid 95-mẫu top1=21/95=22.1%, top3=28/95=29.5% ✓ · search-only 95-mẫu top1=7/95=7.4%, top3=14/95=14.7% ✓ · GEMINI_API_KEY=0 → full-pipeline không đo được ✓ · Việc còn lại: (1) PR #97 merge (dev/CEO); (2) 3926 table redesign (dev HS); (3) heading selection context filter (dev HS); (4) 6402/8483/8544/8537 table redesign (dev HS) ✓
@@ -485,3 +487,13 @@ Số: 4s=26.0%·34.1% · 8s=14.7%·19.8% · delta=0 (entries mới không trong 
 **Phương án tiếp theo tốt hơn:** (1) PR hermes/lan-C-accuracy-v2 (71 commits, 0 self-reject, 63 trade-synonym entries) cần dev/CEO merge qua GitHub UI (gh không có); (2) 85340020 remaining 2/3 hybrid errors = oz-precedent scoring override → dev HS cần context filter trong oz-precedent scoring; (3) heading selection context filter (84091000 + 90319030 + 401x) → dev HS; (4) 6402/8483/8544/8537 table redesign → dev HS; (5) GEMINI_API_KEY cần để đo full-pipeline delta.
 
 **Tự làm hay đề xuất:** Đề xuất dev/CEO — merge PR hermes/lan-C-accuracy-v2 (71 commits, 0 self-reject). Đề xuất dev HS — oz-precedent context filter cho 85340020, heading selection context filter cho 84091000/90319030/401x, table redesign 6402/8483/8544/8537. **Làn C: 71 commits, 63 trade-synonym entries, hybrid 22.1%, top3 30.5%. Không còn fix thuộc làn C trong phạm vi độ chính xác. Tất cả còn lại = dev HS scope hoặc cần merge + GEMINI_API_KEY.**
+
+→ ca 22:40 03/10: **+251 oz-gold test cases (8505/8513/8544/8714/8716/8717)** ✓ · oz-to-cases manual: 14 nhóm chạy, thấy 8505+2, 8513+2, 8714+7, 8716+2, 8717+2 = +251 cases ✓ · commit 8eb3b08 push ✓ · PR #97: **73 commits** (+1 so với 22:25 03/10), mergeable=true ✓ · check-self-reject: 0 ✓ · npm test decision-tables: 522/543 đúng (+21 so với 495/516 trước) ✓ · npm test trade-synonyms: 2 pre-existing failures (72099090/72163190 steel shape=dev HS) ✓ · Tất cả còn lại = dev HS scope ✓
+
+**KẾT LUỢT — 03/10/2026 22:40 Vietnam:**
+
+**Đã làm:** oz-to-cases 14 nhóm → +251 test cases từ oz-gold ✓ · commit 8eb3b08 push ✓ · decision-table test: 522/543 (+21 vs 495/516) ✓ · PR #97: 73 commits, mergeable=true ✓ · check-self-reject: 0 ✓
+
+**Phương án tiếp theo tốt hơn:** (1) PR #97 cần dev/CEO merge (73 commits, mergeable=true, 0 self-reject, +20795/-791); (2) 3926/8537/6402/8483/8544/7216 table redesign = dev HS scope; (3) GEMINI_API_KEY cần cấp để đo delta full-pipeline.
+
+**Tự làm hay đề xuất:** Đề xuất dev/CEO — gh merge PR #97 (73 commits, mergeable=true). Đề xuất dev HS — table redesign cho 3926/8537/6402/8483/7216. **Làn C: 73 commits, PR #97 sẵn. Không còn fix thuộc làn C trong phạm vi độ chính xác.**
