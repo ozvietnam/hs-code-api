@@ -27869,6 +27869,799 @@
         "machineKind": "cpu_assembly"
       },
       "expectHs": "84798950"
+    },
+    {
+      "id": "8504-test-001",
+      "heading": "8504",
+      "text": "- Chấn lưu dùng cho đèn phóng hoặc ống phóng",
+      "facts": {
+        "productType": "ballast",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85041000"
+    },
+    {
+      "id": "8504-test-002",
+      "heading": "8504",
+      "text": "- - - - Máy biến đổi đo lường (1) loại công suất danh định không quá 1 kVA và đầu điện áp cao từ 110 kV trở lên (SEN)",
+      "facts": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "ge110",
+        "specialType": "none"
+      },
+      "expectHs": "85042111"
+    },
+    {
+      "id": "8504-test-003",
+      "heading": "8504",
+      "text": "- - - - Loại khác (SEN)",
+      "facts": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85042119"
+    },
+    {
+      "id": "8504-test-004",
+      "heading": "8504",
+      "text": "- - - - Có công suất danh định trên 10 kVA và đầu điện áp cao từ 110 kV trở lên (SEN)",
+      "facts": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt10le15",
+        "voltageClass": "ge110",
+        "specialType": "none"
+      },
+      "expectHs": "85042192"
+    },
+    {
+      "id": "8504-test-005",
+      "heading": "8504",
+      "text": "- - - - Có công suất danh định trên 10 kVA và đầu điện áp cao từ 66 kV trở lên, nhưng dưới 110 kV (SEN)",
+      "facts": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt10le15",
+        "voltageClass": "ge66lt110",
+        "specialType": "none"
+      },
+      "expectHs": "85042193"
+    },
+    {
+      "id": "8504-test-006",
+      "heading": "8504",
+      "text": "- - - - Loại khác",
+      "facts": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85042199"
+    },
+    {
+      "id": "8504-test-007",
+      "heading": "8504",
+      "text": "- - - - Loại khác (SEN)",
+      "facts": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85042219"
+    },
+    {
+      "id": "8504-test-008",
+      "heading": "8504",
+      "text": "- - - - Đầu điện áp cao từ 110 kV trở lên (SEN)",
+      "facts": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "ge110",
+        "specialType": "none"
+      },
+      "expectHs": "85042292"
+    },
+    {
+      "id": "8504-test-009",
+      "heading": "8504",
+      "text": "- - - - Đầu điện áp cao từ 66 kV trở lên, nhưng dưới 110 kV (SEN)",
+      "facts": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "ge66lt110",
+        "specialType": "none"
+      },
+      "expectHs": "85042293"
+    },
+    {
+      "id": "8504-test-010",
+      "heading": "8504",
+      "text": "- - - Có công suất danh định không quá 15.000 kVA",
+      "facts": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le2500",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85042310"
+    },
+    {
+      "id": "8504-test-011",
+      "heading": "8504",
+      "text": "- - - - Không quá 20.000 kVA",
+      "facts": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85042321"
+    },
+    {
+      "id": "8504-test-012",
+      "heading": "8504",
+      "text": "- - - - Trên 20.000 kVA nhưng không quá 30.000 kVA",
+      "facts": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt20le30",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85042322"
+    },
+    {
+      "id": "8504-test-013",
+      "heading": "8504",
+      "text": "- - - - Loại khác",
+      "facts": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85042329"
+    },
+    {
+      "id": "8504-test-014",
+      "heading": "8504",
+      "text": "- - - - Điện áp từ 110 kV trở lên",
+      "facts": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "ge110",
+        "specialType": "none"
+      },
+      "expectHs": "85043111"
+    },
+    {
+      "id": "8504-test-015",
+      "heading": "8504",
+      "text": "- - - - Điện áp từ 66 kV trở lên, nhưng dưới 110 kV",
+      "facts": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "ge66lt110",
+        "specialType": "none"
+      },
+      "expectHs": "85043112"
+    },
+    {
+      "id": "8504-test-016",
+      "heading": "8504",
+      "text": "- - - - Điện áp từ 1 kV trở lên, nhưng dưới 66 kV",
+      "facts": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "ge1lt66",
+        "specialType": "none"
+      },
+      "expectHs": "85043113"
+    },
+    {
+      "id": "8504-test-017",
+      "heading": "8504",
+      "text": "- - - - - Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV (SEN)",
+      "facts": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "lt1",
+        "specialType": "currentTransformer"
+      },
+      "expectHs": "85043121"
+    },
+    {
+      "id": "8504-test-018",
+      "heading": "8504",
+      "text": "- - - - Điện áp từ 66 kV trở lên, nhưng dưới 110 kV",
+      "facts": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "ge66lt110",
+        "specialType": "none"
+      },
+      "expectHs": "85043123"
+    },
+    {
+      "id": "8504-test-019",
+      "heading": "8504",
+      "text": "- - - - Điện áp từ 1 kV trở lên, nhưng dưới 66 kV",
+      "facts": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "ge1lt66",
+        "specialType": "none"
+      },
+      "expectHs": "85043124"
+    },
+    {
+      "id": "8504-test-020",
+      "heading": "8504",
+      "text": "- - - Máy biến áp quét về (biến áp tần số quét ngược) (SEN)",
+      "facts": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "freqScan"
+      },
+      "expectHs": "85043130"
+    },
+    {
+      "id": "8504-test-021",
+      "heading": "8504",
+      "text": "- - - Máy biến điện trung tần",
+      "facts": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "ifTransformer"
+      },
+      "expectHs": "85043140"
+    },
+    {
+      "id": "8504-test-022",
+      "heading": "8504",
+      "text": "- - - - Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự ",
+      "facts": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "toys"
+      },
+      "expectHs": "85043191"
+    },
+    {
+      "id": "8504-test-023",
+      "heading": "8504",
+      "text": "- - - - Biến áp thích ứng khác (SEN)",
+      "facts": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "expectHs": "85043192"
+    },
+    {
+      "id": "8504-test-024",
+      "heading": "8504",
+      "text": "- - - - Máy biến áp tăng/giảm từng nấc (Step up/down transformers); máy điều chỉnh điện áp trượt (slide regulators) (SEN)",
+      "facts": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "stepUpDown"
+      },
+      "expectHs": "85043193"
+    },
+    {
+      "id": "8504-test-025",
+      "heading": "8504",
+      "text": "- - - - Loại khác",
+      "facts": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85043199"
+    },
+    {
+      "id": "8504-test-026",
+      "heading": "8504",
+      "text": "- - - - Biến áp thích ứng (SEN)",
+      "facts": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "expectHs": "85043211"
+    },
+    {
+      "id": "8504-test-027",
+      "heading": "8504",
+      "text": "- - - - Loại khác",
+      "facts": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85043219"
+    },
+    {
+      "id": "8504-test-028",
+      "heading": "8504",
+      "text": "- - - Loại khác, sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự",
+      "facts": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "toys"
+      },
+      "expectHs": "85043220"
+    },
+    {
+      "id": "8504-test-029",
+      "heading": "8504",
+      "text": "- - - Loại khác, tần số tối thiểu 3 MHz",
+      "facts": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "ifTransformer"
+      },
+      "expectHs": "85043230"
+    },
+    {
+      "id": "8504-test-030",
+      "heading": "8504",
+      "text": "- - - - Biến áp thích ứng (SEN)",
+      "facts": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt10le15",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "expectHs": "85043241"
+    },
+    {
+      "id": "8504-test-031",
+      "heading": "8504",
+      "text": "- - - - Loại khác",
+      "facts": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt10le15",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85043249"
+    },
+    {
+      "id": "8504-test-032",
+      "heading": "8504",
+      "text": "- - - - Biến áp thích ứng (SEN)",
+      "facts": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "expectHs": "85043251"
+    },
+    {
+      "id": "8504-test-033",
+      "heading": "8504",
+      "text": "- - - - Loại khác",
+      "facts": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85043259"
+    },
+    {
+      "id": "8504-test-034",
+      "heading": "8504",
+      "text": "- - - - Biến áp thích ứng (SEN)",
+      "facts": {
+        "productType": "transformer_16to630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "expectHs": "85043311"
+    },
+    {
+      "id": "8504-test-035",
+      "heading": "8504",
+      "text": "- - - - Loại khác (SEN)",
+      "facts": {
+        "productType": "transformer_16to630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85043319"
+    },
+    {
+      "id": "8504-test-036",
+      "heading": "8504",
+      "text": "- - - - Biến áp thích ứng (SEN)",
+      "facts": {
+        "productType": "transformer_16to630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "expectHs": "85043391"
+    },
+    {
+      "id": "8504-test-037",
+      "heading": "8504",
+      "text": "- - - - Loại khác",
+      "facts": {
+        "productType": "transformer_16to630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85043399"
+    },
+    {
+      "id": "8504-test-038",
+      "heading": "8504",
+      "text": "- - - - - Biến áp thích ứng (SEN)",
+      "facts": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "expectHs": "85043411"
+    },
+    {
+      "id": "8504-test-039",
+      "heading": "8504",
+      "text": "- - - - - Máy biến áp loại khô phòng nổ (SEN)",
+      "facts": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "dryExplosionProof"
+      },
+      "expectHs": "85043412"
+    },
+    {
+      "id": "8504-test-040",
+      "heading": "8504",
+      "text": "- - - - - Loại khác (SEN)",
+      "facts": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85043413"
+    },
+    {
+      "id": "8504-test-041",
+      "heading": "8504",
+      "text": "- - - - - Biến áp thích ứng (SEN)",
+      "facts": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "expectHs": "85043414"
+    },
+    {
+      "id": "8504-test-042",
+      "heading": "8504",
+      "text": "- - - - - Máy biến áp loại khô phòng nổ ",
+      "facts": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "dryExplosionProof"
+      },
+      "expectHs": "85043415"
+    },
+    {
+      "id": "8504-test-043",
+      "heading": "8504",
+      "text": "- - - - - Loại khác",
+      "facts": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85043419"
+    },
+    {
+      "id": "8504-test-044",
+      "heading": "8504",
+      "text": "- - - - - Biến áp thích ứng (SEN)",
+      "facts": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "expectHs": "85043422"
+    },
+    {
+      "id": "8504-test-045",
+      "heading": "8504",
+      "text": "- - - - - Máy biến áp loại khô phòng nổ (SEN)",
+      "facts": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "dryExplosionProof"
+      },
+      "expectHs": "85043423"
+    },
+    {
+      "id": "8504-test-046",
+      "heading": "8504",
+      "text": "- - - - - Loại khác (SEN)",
+      "facts": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85043424"
+    },
+    {
+      "id": "8504-test-047",
+      "heading": "8504",
+      "text": "- - - - - Biến áp thích ứng (SEN)",
+      "facts": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "expectHs": "85043425"
+    },
+    {
+      "id": "8504-test-048",
+      "heading": "8504",
+      "text": "- - - - - Máy biến áp loại khô phòng nổ",
+      "facts": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "dryExplosionProof"
+      },
+      "expectHs": "85043426"
+    },
+    {
+      "id": "8504-test-049",
+      "heading": "8504",
+      "text": "- - - - - Loại khác",
+      "facts": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85043429"
+    },
+    {
+      "id": "8504-test-050",
+      "heading": "8504",
+      "text": "- - - Bộ nguồn cấp điện liên tục (UPS) (SEN)",
+      "facts": {
+        "productType": "staticConverter",
+        "senMarked": "sen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "ups"
+      },
+      "expectHs": "85044011"
+    },
+    {
+      "id": "8504-test-051",
+      "heading": "8504",
+      "text": "- - Máy nạp ắc qui, pin có công suất danh định trên 100 kVA",
+      "facts": {
+        "productType": "staticConverter",
+        "senMarked": "nonSen",
+        "powerkVA": "gt10000",
+        "voltageClass": "unspecified",
+        "specialType": "batteryCharger"
+      },
+      "expectHs": "85044020"
+    },
+    {
+      "id": "8504-test-052",
+      "heading": "8504",
+      "text": "- - Bộ chỉnh lưu khác",
+      "facts": {
+        "productType": "staticConverter",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "rectifier"
+      },
+      "expectHs": "85044030"
+    },
+    {
+      "id": "8504-test-053",
+      "heading": "8504",
+      "text": "- - Bộ nghịch lưu",
+      "facts": {
+        "productType": "staticConverter",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "inverter"
+      },
+      "expectHs": "85044040"
+    },
+    {
+      "id": "8504-test-054",
+      "heading": "8504",
+      "text": "- - Loại khác",
+      "facts": {
+        "productType": "staticConverter",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85044090"
+    },
+    {
+      "id": "8504-test-055",
+      "heading": "8504",
+      "text": "- - Cuộn cảm dùng cho bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông",
+      "facts": {
+        "productType": "inductor",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "dataProcInductor"
+      },
+      "expectHs": "85045010"
+    },
+    {
+      "id": "8504-test-056",
+      "heading": "8504",
+      "text": "- - Cuộn cảm cố định kiểu con chip (SEN)",
+      "facts": {
+        "productType": "inductor",
+        "senMarked": "sen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "chipInductor"
+      },
+      "expectHs": "85045020"
+    },
+    {
+      "id": "8504-test-057",
+      "heading": "8504",
+      "text": "- - - Có công suất danh định không quá 2.500 kVA",
+      "facts": {
+        "productType": "inductor",
+        "senMarked": "nonSen",
+        "powerkVA": "le2500",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85045093"
+    },
+    {
+      "id": "8504-test-058",
+      "heading": "8504",
+      "text": "- - - Có công suất danh định trên 2.500 kVA nhưng không quá 10.000 kVA",
+      "facts": {
+        "productType": "inductor",
+        "senMarked": "nonSen",
+        "powerkVA": "gt2500le10000",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85045094"
+    },
+    {
+      "id": "8504-test-059",
+      "heading": "8504",
+      "text": "- - - Có công suất danh định trên 10.000 kVA",
+      "facts": {
+        "productType": "inductor",
+        "senMarked": "nonSen",
+        "powerkVA": "gt10000",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85045095"
+    },
+    {
+      "id": "8504-test-060",
+      "heading": "8504",
+      "text": "- - Loại khác",
+      "facts": {
+        "productType": "parts",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "expectHs": "85049090"
+    },
+    {
+      "id": "8504-test-061",
+      "heading": "8504",
+      "text": "- - - - Loại khác",
+      "facts": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "currentTransformer"
+      },
+      "expectHs": "85043129"
     }
   ]
 }
