@@ -28,8 +28,6 @@
       ],
       "labelVi": "Mục đích sử dụng",
       "questionVi": "Sản phẩm plastic này dùng cho mục đích gì: văn phòng/trường học, quần áo/phụ trợ may mặc, đồ nội thất/thân xe, trang trí, lưới đánh cá, quạt tay, khuôn/dụng cụ công nghiệp, băng tải/curoa, công nghiệp khác, y tế/nha khoa, thực phẩm/chăn nuôi, tôn giáo, bảo hộ/lao động, hay khác?",
-      "preferOnConflict": "office_school",
-      "assumeIfUnknown": "industrial_other",
       "detect": {
         "office_school": [
           "văn phòng",
@@ -41,27 +39,7 @@
           "đánh dấu sách",
           "thân bút",
           "chặn giấy",
-          "dao dọc giấy",
-          "tài liệu",
-          "hồ sơ",
-          "giấy tờ",
-          "giấy",
-          "hộp đựng bút",
-          "khay đựng tài liệu",
-          "khay nhựa để tài liệu",
-          "hộp ngăn nhựa đựng hồ sơ",
-          "hộp đựng giấy tờ",
-          "kẹp tài liệu",
-          "kẹp giấy",
-          "kẹp đựng tài liệu",
-          "bao đựng thẻ",
-          "bao đựng thẻ nhựa",
-          "vỏ thẻ",
-          "bìa nhựa",
-          "túi đựng tài liệu",
-          "túi đựng tài liệu văn phòng",
-          "album đựng ảnh",
-          "bộ dây đeo thẻ"
+          "dao dọc giấy"
         ],
         "clothing": [
           "găng tay",
@@ -107,38 +85,7 @@
           "khóa",
           "kíp nổ",
           "ngòi nổ",
-          "dụng cụ",
-          "ốp điện thoại",
-          "vỏ ốp",
-          "ốp lưng",
-          "ốp máy tính",
-          "ốp laptop",
-          "gối đỡ",
-          "giá đỡ",
-          "kẹp điện thoại",
-          "kẹp tài liệu",
-          "kẹp",
-          "dây rút",
-          "đai cột",
-          "ống luồn",
-          "máng nước",
-          "vách ngăn",
-          "hộp đựng",
-          "khay nhựa",
-          "túi đựng",
-          "can nhựa",
-          "bình chứa",
-          "mặt nạ",
-          "mặt nạ chống bụi",
-          "con lăn",
-          "lăn",
-          "bánh lăn",
-          "cúp",
-          "cúp lưu niệm",
-          "gậy cổ vũ",
-          "trẻ em",
-          "chống thấm",
-          "chống nước"
+          "dụng cụ"
         ],
         "medical_dental": [
           "răng",
@@ -164,18 +111,6 @@
           "lát chắn",
           "cảnh sát",
           "hàn"
-        ],
-        "other": [
-          "đồ nhựa",
-          "sản phẩm nhựa",
-          "vật nhựa",
-          "hàng nhựa",
-          "đồ nhựa tổng hợp",
-          "nhựa tổng hợp",
-          "plastic",
-          "polymer",
-          "nhựa khác",
-          "đồ nhựa khác"
         ]
       }
     },
@@ -190,8 +125,7 @@
           "SEN"
         ],
         "false": []
-      },
-      "assumeIfUnknown": false
+      }
     },
     {
       "attribute": "safetyType",
@@ -222,8 +156,7 @@
           "lát chắn",
           "mặt nạ bảo hộ"
         ]
-      },
-      "assumeIfUnknown": "none"
+      }
     }
   ],
   "hitPolicy": "FIRST",
@@ -238,7 +171,7 @@
       },
       "hs": "39261000",
       "reasonVi": "Đồ dùng trong văn phòng hoặc trường học bằng plastic → 3926.10.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.10."
+      "source": "Biểu thuế 2026 dòng 3926.10."
     },
     {
       "id": "r2",
@@ -250,7 +183,7 @@
       },
       "hs": "39262010",
       "reasonVi": "Găng tay, tạp dề, yếm cho trẻ em — có SEN → 3926.20.10.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.20.10."
+      "source": "Biểu thuế 2026 dòng 3926.20.10."
     },
     {
       "id": "r3",
@@ -262,7 +195,7 @@
       },
       "hs": "39262020",
       "reasonVi": "Miếng đệm và miếng bảo vệ vai cho trẻ em — có SEN → 3926.20.20.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.20.20."
+      "source": "Biểu thuế 2026 dòng 3926.20.20."
     },
     {
       "id": "r4",
@@ -274,7 +207,7 @@
       },
       "hs": "39262030",
       "reasonVi": "Miếng lót, đệm khác cho sản phẩm may mặc hoặc đồ phụ trợ quần áo → 3926.20.30.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.20.30."
+      "source": "Biểu thuế 2026 dòng 3926.20.30."
     },
     {
       "id": "r5",
@@ -286,7 +219,7 @@
       },
       "hs": "39262060",
       "reasonVi": "Hàng may mặc chống hoá chất, phóng xạ hoặc chống cháy → 3926.20.60.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.20.60."
+      "source": "Biểu thuế 2026 dòng 3926.20.60."
     },
     {
       "id": "r6",
@@ -298,7 +231,7 @@
       },
       "hs": "39262090",
       "reasonVi": "Đệm cứu sinh chống rơi từ trên cao → 3926.20.90.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.20.90."
+      "source": "Biểu thuế 2026 dòng 3926.20.90."
     },
     {
       "id": "r7",
@@ -310,7 +243,7 @@
       },
       "hs": "39262090",
       "reasonVi": "Loại khác trong nhóm quần áo/phụ trợ may mặc → 3926.20.90.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.20.90."
+      "source": "Biểu thuế 2026 dòng 3926.20.90."
     },
     {
       "id": "r8",
@@ -322,7 +255,7 @@
       },
       "hs": "39263000",
       "reasonVi": "Phụ kiện lắp vào đồ nội thất, thân xe (coachwork) → 3926.30.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.30."
+      "source": "Biểu thuế 2026 dòng 3926.30."
     },
     {
       "id": "r9",
@@ -334,7 +267,7 @@
       },
       "hs": "39264000",
       "reasonVi": "Tượng nhỏ và đồ trang trí khác bằng plastic → 3926.40.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.40."
+      "source": "Biểu thuế 2026 dòng 3926.40."
     },
     {
       "id": "r10",
@@ -346,7 +279,7 @@
       },
       "hs": "39269010",
       "reasonVi": "Phao cho lưới đánh cá → 3926.90.10.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.10."
+      "source": "Biểu thuế 2026 dòng 3926.90.10."
     },
     {
       "id": "r11",
@@ -358,7 +291,7 @@
       },
       "hs": "39269020",
       "reasonVi": "Quạt và màn che kéo bằng tay, khung và tay cầm, quai → 3926.90.20.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.20."
+      "source": "Biểu thuế 2026 dòng 3926.90.20."
     },
     {
       "id": "r12",
@@ -370,7 +303,7 @@
       },
       "hs": "39269032",
       "reasonVi": "Khuôn plastic lấy dấu răng → 3926.90.32.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.32."
+      "source": "Biểu thuế 2026 dòng 3926.90.32."
     },
     {
       "id": "r13",
@@ -382,7 +315,7 @@
       },
       "hs": "39269039",
       "reasonVi": "Loại khuôn khác (phom giày → riêng) → 3926.90.39.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.39."
+      "source": "Biểu thuế 2026 dòng 3926.90.39."
     },
     {
       "id": "r14",
@@ -394,7 +327,7 @@
       },
       "hs": "39269041",
       "reasonVi": "Lá chắn bảo vệ của cảnh sát → 3926.90.41.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.41."
+      "source": "Biểu thuế 2026 dòng 3926.90.41."
     },
     {
       "id": "r15",
@@ -406,7 +339,7 @@
       },
       "hs": "39269042",
       "reasonVi": "Mặt nạ bảo hộ dùng khi hàn — có SEN → 3926.90.42.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.42."
+      "source": "Biểu thuế 2026 dòng 3926.90.42."
     },
     {
       "id": "r16",
@@ -418,7 +351,7 @@
       },
       "hs": "39269044",
       "reasonVi": "Đệm cứu sinh dùng bảo vệ người rơi từ trên cao → 3926.90.44.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.44."
+      "source": "Biểu thuế 2026 dòng 3926.90.44."
     },
     {
       "id": "r17",
@@ -430,7 +363,7 @@
       },
       "hs": "39269049",
       "reasonVi": "Loại bảo hộ khác → 3926.90.49.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.49."
+      "source": "Biểu thuế 2026 dòng 3926.90.49."
     },
     {
       "id": "r18",
@@ -442,7 +375,7 @@
       },
       "hs": "39269053",
       "reasonVi": "Băng truyền, băng tải, đai truyền bằng plastic → 3926.90.53.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.53."
+      "source": "Biểu thuế 2026 dòng 3926.90.53."
     },
     {
       "id": "r19",
@@ -454,7 +387,7 @@
       },
       "hs": "39269055",
       "reasonVi": "Móc hình chữ J hoặc khối chùm cho ngòi nổ, kíp nổ — có SEN → 3926.90.55.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.55."
+      "source": "Biểu thuế 2026 dòng 3926.90.55."
     },
     {
       "id": "r20",
@@ -466,7 +399,7 @@
       },
       "hs": "39269059",
       "reasonVi": "Loại công nghiệp khác không thuộc 3926.90.53/55 → 3926.90.59.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.59."
+      "source": "Biểu thuế 2026 dòng 3926.90.59."
     },
     {
       "id": "r21",
@@ -478,7 +411,7 @@
       },
       "hs": "39269060",
       "reasonVi": "Dụng cụ cho gia cầm ăn → 3926.90.60.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.60."
+      "source": "Biểu thuế 2026 dòng 3926.90.60."
     },
     {
       "id": "r22",
@@ -490,7 +423,7 @@
       },
       "hs": "39269081",
       "reasonVi": "Khuôn (phom) giày → 3926.90.81.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.81."
+      "source": "Biểu thuế 2026 dòng 3926.90.81."
     },
     {
       "id": "r23",
@@ -502,7 +435,7 @@
       },
       "hs": "39269082",
       "reasonVi": "Chuỗi hạt cầu nguyện — có SEN → 3926.90.82.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.82."
+      "source": "Biểu thuế 2026 dòng 3926.90.82."
     },
     {
       "id": "r24",
@@ -514,7 +447,7 @@
       },
       "hs": "39269089",
       "reasonVi": "Loại khác không thuộc các nhóm trên → 3926.90.89.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.89."
+      "source": "Biểu thuế 2026 dòng 3926.90.89."
     },
     {
       "id": "r25",
@@ -526,7 +459,7 @@
       },
       "hs": "39269091",
       "reasonVi": "Đồ dùng để chứa ngũ cốc — có SEN → 3926.90.91.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.91."
+      "source": "Biểu thuế 2026 dòng 3926.90.91."
     },
     {
       "id": "r26",
@@ -538,7 +471,7 @@
       },
       "hs": "39269092",
       "reasonVi": "Vỏ viên nhộng loại dùng để làm thuốc → 3926.90.92.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.92."
+      "source": "Biểu thuế 2026 dòng 3926.90.92."
     },
     {
       "id": "r27",
@@ -550,7 +483,7 @@
       },
       "hs": "39269093",
       "reasonVi": "Khóa, khóa điều chỉnh, móc treo và nút chặn dây — có SEN → 3926.90.93.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.93."
+      "source": "Biểu thuế 2026 dòng 3926.90.93."
     },
     {
       "id": "r28",
@@ -562,7 +495,7 @@
       },
       "hs": "39269099",
       "reasonVi": "Loại khác không thuộc các nhóm trên → 3926.90.99.",
-      "sourceVi": "Biểu thuế 2026 dòng 3926.90.99."
+      "source": "Biểu thuế 2026 dòng 3926.90.99."
     }
   ]
 }
