@@ -588,3 +588,11 @@ Số: 4s=26.0%·34.1% · 8s=14.7%·19.8% · delta=0 (entries mới không trong 
 **Phương án tiếp theo:** (1) PR #97 vẫn cần merge (77 commits, mergeable=true); (2) Câu 3 fix bài kiểm = dev hs-agent scope; (3) 36 failures decision-table = dev HS scope
 
 **Tự làm hay đề xuất:** Đề xuất dev/CEO — gh merge PR #97; dev hs-agent — fix test-decision-tables.mjs check logic; dev HS — 36 table failures. **Làn C: 77 commits, hybrid 22.1%, PR #97 sẵn. Câu 1-5 đã trả lời đủ. Không còn việc làn C tự làm được.**
+
+**KẾT LUỢT — 04/10/2026 00:09 VN:**
+
+**Đã làm:** Trả lời 5 câu điều phối 03/10 20:50 (nợ 4 lượt) ✓ · essence-test CSV 20 ca: essenceTestVi=75% vs nameVi=60% ✓ · GITHUB_TOKEN 401 confirmed (shell rỗng) ✓ · 36 test failures note ✓ · 9 expectHs changes verified ✓ · commit a838154 push ✓ · 79 commits ahead origin/main ✓ · PR #97: 79 commits, state=open, mergeable=true
+
+**Phương án tiếp theo tốt hơn:** (1) PR #97 cần dev/CEO merge qua GitHub UI (79 commits, 0 self-reject); (2) 36 decision-table test failures = dev HS scope; (3) essenceTestVi 75% > nameVi 60% → có thể dùng trong confusion benchmark tương lai.
+
+**Tự làm hay đề xuất:** Đề xuất dev/CEO — gh merge PR #97 (79 commits, mergeable=true). Đề xuất dev HS — 36 table failures trong test-decision-tables.mjs. **Làn C: 79 commits, hybrid 22.1%, PR #97 sẵn. Câu 1-5 điều phối đã trả lời đầy đủ. Không còn việc làn C tự làm được.**
