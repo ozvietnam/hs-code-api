@@ -1,0 +1,422 @@
+{
+  "heading": "8413",
+  "titleVi": "Bơm chất lỏng (máy bơm nước, bơm dầu, bơm màng, bơm định lượng, bơm ly tâm...)",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "CÂU HỎI BẢN CHẤT: Bơm loại gì (định lượng/piston tịnh tiến/bánh răng/ly tâm/màng/khí nén)? Ứng dụng gì (nước/dầu/hóa chất/bùn)? Có lắp thiết bị đo không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 84.13. Căn cứ GIR 1, 4, 6.",
+  "inputs": [
+    {
+      "attribute": "pumpMechanism",
+      "type": "enum",
+      "labelVi": "Cơ cấu bơm",
+      "questionVi": "Bơm hoạt động theo cơ cấu nào: định lượng (có lắp thiết bị đo), piston tịnh tiến, bánh răng, ly tâm, màng khí nén, hay bơm tay?",
+      "domain": [
+        "dosimetric",
+        "piston_reciprocating",
+        "gear_rotary",
+        "centrifugal",
+        "diaphragm_air",
+        "hand"
+      ],
+      "detect": {
+        "dosimetric": [
+          "bơm định lượng",
+          "định lượng",
+          "dosimetric",
+          "lắp thiết bị đo",
+          "áp suất",
+          "định lượng",
+          "đo lưu lượng"
+        ],
+        "piston_reciprocating": [
+          "piston",
+          "tịnh tiến",
+          "máy ép rác",
+          "thủy lực",
+          "dầu",
+          "máy tạo khói",
+          "reciprocating",
+          "buồng"
+        ],
+        "gear_rotary": [
+          "bánh răng",
+          "bánh răng cài",
+          "rotary",
+          "vít me",
+          "lobe"
+        ],
+        "centrifugal": [
+          "ly tâm",
+          "tăng áp",
+          "chìm",
+          "bể cá",
+          "bùn",
+          "hút đáy",
+          "bơm nước",
+          "centrifugal",
+          "bơm cao áp",
+          "bơm bùn"
+        ],
+        "diaphragm_air": [
+          "màng",
+          "khí nén",
+          "diaphragm",
+          "mini",
+          "bơm hóa chất",
+          "chất lỏng"
+        ],
+        "hand": [
+          "bơm tay",
+          "bằng tay",
+          "hút sữa",
+          "bóp",
+          "tay hút"
+        ]
+      }
+    },
+    {
+      "attribute": "pumpApplication",
+      "type": "enum",
+      "labelVi": "Ứng dụng/Môi trường",
+      "questionVi": "Bơm dùng cho môi trường gì: nước, dầu thủy lực, nhiên liệu, hóa chất, hay bùn?",
+      "domain": [
+        "water",
+        "hydraulic_oil",
+        "fuel",
+        "chemical",
+        "slurry",
+        "general"
+      ],
+      "detect": {
+        "water": [
+          "nước",
+          "bể cá",
+          "trao đổi",
+          "hòn non bộ",
+          "tưới tiêu"
+        ],
+        "hydraulic_oil": [
+          "dầu thủy lực",
+          "dầu",
+          "thủy lực",
+          "máy ép rác",
+          "máy tạo khói",
+          "máy xúc",
+          "máy dập",
+          "trạm bơm dầu"
+        ],
+        "fuel": [
+          "nhiên liệu",
+          "xăng",
+          "dầu nhiên liệu",
+          "bơm nhiên liệu"
+        ],
+        "chemical": [
+          "hóa chất",
+          "chất lỏng",
+          "bơm hóa chất"
+        ],
+        "slurry": [
+          "bùn",
+          "bẩn",
+          "xả dịch"
+        ],
+        "general": [
+          "bơm chất lỏng",
+          "chất lỏng"
+        ]
+      }
+    },
+    {
+      "attribute": "hasMeasuringDevice",
+      "type": "bool",
+      "labelVi": "Có lắp thiết bị đo",
+      "questionVi": "Bơm có lắp thiết bị đo lưu lượng/áp suất không?",
+      "detect": {
+        "true": [
+          "lắp thiết bị đo",
+          "có lắp thiết bị",
+          "đo lường",
+          "định lượng",
+          "áp suất",
+          "lưu lượng kèm"
+        ],
+        "false": [
+          "không lắp thiết bị đo",
+          "không kèm động cơ",
+          "không dùng điện",
+          "bằng tay"
+        ]
+      }
+    },
+    {
+      "attribute": "isSubmerged",
+      "type": "bool",
+      "labelVi": "Lắp đặt chìm",
+      "questionVi": "Bơm có được đặt chìm trong nước/chất bơm không?",
+      "detect": {
+        "true": [
+          "chìm",
+          "thả chìm",
+          "đặt chìm",
+          "bể cá",
+          "lắp chìm"
+        ],
+        "false": [
+          "không đặt chìm",
+          "đặt trên",
+          "bề mặt"
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "8413-r01",
+      "priority": 10,
+      "hs": "84131910",
+      "reasonVi": "Bơm định lượng có lắp thiết bị đo — phân loại 84131910 theo GIR 6.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 6",
+      "when": {
+        "pumpMechanism": "dosimetric",
+        "hasMeasuringDevice": true
+      }
+    },
+    {
+      "id": "8413-r02",
+      "priority": 9,
+      "hs": "84131920",
+      "reasonVi": "Bơm định lượng không có thiết bị đo — phân loại 84131920 theo GIR 6.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 6",
+      "when": {
+        "pumpMechanism": "dosimetric",
+        "hasMeasuringDevice": false
+      }
+    },
+    {
+      "id": "8413-r03",
+      "priority": 10,
+      "hs": "84132020",
+      "reasonVi": "Bơm hút sữa bằng tay — phân loại 84132020 theo GIR 1.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 1",
+      "when": {
+        "pumpMechanism": "hand",
+        "pumpApplication": "general"
+      }
+    },
+    {
+      "id": "8413-r04",
+      "priority": 9,
+      "hs": "84132090",
+      "reasonVi": "Bơm tay ứng dụng khác — phân loại 84132090 theo GIR 6.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 6",
+      "when": {
+        "pumpMechanism": "hand"
+      }
+    },
+    {
+      "id": "8413-r05",
+      "priority": 10,
+      "hs": "84133051",
+      "reasonVi": "Bơm nhiên liệu kiểu li tâm cho động cơ đốt trong — phân loại 84133051 theo GIR 6.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 6",
+      "when": {
+        "pumpApplication": "fuel"
+      }
+    },
+    {
+      "id": "8413-r06",
+      "priority": 9,
+      "hs": "84133090",
+      "reasonVi": "Bơm dầu bôi trơn/TH diesel cho động cơ — phân loại 84133090 theo GIR 6.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 6",
+      "when": {
+        "pumpApplication": "hydraulic_oil",
+        "pumpMechanism": "gear_rotary"
+      }
+    },
+    {
+      "id": "8413-r07",
+      "priority": 8,
+      "hs": "84135031",
+      "reasonVi": "Bơm màng khí nén mini dùng cho non-bồ non bộ — phân loại 84135031 theo GIR 6.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 6",
+      "when": {
+        "pumpMechanism": "diaphragm_air",
+        "pumpApplication": "water"
+      }
+    },
+    {
+      "id": "8413-r08",
+      "priority": 7,
+      "hs": "84135032",
+      "reasonVi": "Bơm dầu thủy lực nhiều xy-lanh cho máy xúc — phân loại 84135032 theo GIR 6.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 6",
+      "when": {
+        "pumpMechanism": "piston_reciprocating",
+        "pumpApplication": "hydraulic_oil"
+      }
+    },
+    {
+      "id": "8413-r09",
+      "priority": 7,
+      "hs": "84135090",
+      "reasonVi": "Bơm piston tịnh tiến dùng cho máy ép rác/máy tạo khói — phân loại 84135090 theo GIR 6.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 6",
+      "when": {
+        "pumpMechanism": "piston_reciprocating",
+        "pumpApplication": "hydraulic_oil"
+      }
+    },
+    {
+      "id": "8413-r10",
+      "priority": 6,
+      "hs": "84135090",
+      "reasonVi": "Bơm piston tịnh tiến ứng dụng khác — phân loại 84135090 theo GIR 6.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 6",
+      "when": {
+        "pumpMechanism": "piston_reciprocating"
+      }
+    },
+    {
+      "id": "8413-r11",
+      "priority": 8,
+      "hs": "84136031",
+      "reasonVi": "Bơm piston quay (rotary) — phân loại 84136031 theo GIR 6.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 6",
+      "when": {
+        "pumpMechanism": "gear_rotary",
+        "pumpApplication": "water"
+      }
+    },
+    {
+      "id": "8413-r12",
+      "priority": 8,
+      "hs": "84136090",
+      "reasonVi": "Bơm bánh răng bùn cho máy khoan — phân loại 84136090 theo GIR 6.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 6",
+      "when": {
+        "pumpMechanism": "gear_rotary",
+        "pumpApplication": "slurry"
+      }
+    },
+    {
+      "id": "8413-r13",
+      "priority": 10,
+      "hs": "84137031",
+      "reasonVi": "Bơm chìm ly tâm hút đáy bể cá — phân loại 84137031 theo GIR 6.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 6",
+      "when": {
+        "pumpMechanism": "centrifugal",
+        "isSubmerged": true,
+        "pumpApplication": "water"
+      }
+    },
+    {
+      "id": "8413-r14",
+      "priority": 9,
+      "hs": "84137042",
+      "reasonVi": "Bơm tăng áp ly tâm — phân loại 84137042 theo GIR 6.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 6",
+      "when": {
+        "pumpMechanism": "centrifugal",
+        "pumpApplication": "water"
+      }
+    },
+    {
+      "id": "8413-r15",
+      "priority": 8,
+      "hs": "84137091",
+      "reasonVi": "Bơm ly tâm dầu thủy lực cho máy dập bulong — phân loại 84137091 theo GIR 6.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 6",
+      "when": {
+        "pumpMechanism": "centrifugal",
+        "pumpApplication": "hydraulic_oil"
+      }
+    },
+    {
+      "id": "8413-r16",
+      "priority": 5,
+      "hs": "84137099",
+      "reasonVi": "Bơm ly tâm ứng dụng khác — phân loại 84137099 theo GIR 6.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 6",
+      "when": {
+        "pumpMechanism": "centrifugal"
+      }
+    },
+    {
+      "id": "8413-r17",
+      "priority": 9,
+      "hs": "84138119",
+      "reasonVi": "Bơm màng khí nén hoặc bơm hóa chất — phân loại 84138119 theo GIR 6.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 6",
+      "when": {
+        "pumpMechanism": "diaphragm_air"
+      }
+    },
+    {
+      "id": "8413-r18",
+      "priority": 8,
+      "hs": "84138119",
+      "reasonVi": "Bơm chất lỏng bằng màng — phân loại 84138119 theo GIR 6.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 6",
+      "when": {
+        "pumpMechanism": "diaphragm_air"
+      }
+    },
+    {
+      "id": "8413-r19",
+      "priority": 10,
+      "hs": "84139130",
+      "reasonVi": "Phớt bơm nước là bộ phận bơm ly tâm — phân loại 84139130 theo GIR 1.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 1",
+      "when": {
+        "pumpApplication": "water",
+        "pumpMechanism": "centrifugal"
+      }
+    },
+    {
+      "id": "8413-r20",
+      "priority": 10,
+      "hs": "84139140",
+      "reasonVi": "Đầu bơm ly tâm — phân loại 84139140 theo GIR 1.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 1",
+      "when": {
+        "pumpMechanism": "centrifugal"
+      }
+    },
+    {
+      "id": "8413-r21",
+      "priority": 9,
+      "hs": "84139190",
+      "reasonVi": "Bộ phận bơm màng khí nén — phân loại 84139190 theo GIR 1.",
+      "source": "hermes-211-8413",
+      "gir": "GIR 1",
+      "when": {
+        "pumpMechanism": "diaphragm_air"
+      }
+    }
+  ]
+}
