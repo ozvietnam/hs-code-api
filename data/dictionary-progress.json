@@ -8,6 +8,17 @@
   "version": 1,
   "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → draft (có bảng, chưa qua cửa dữ liệu thật) → done (qua cửa). `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
+    "3919": {
+      "status": "draft",
+      "doneAt": null,
+      "by": "hermes-211",
+      "table": true,
+      "leafCount": 3,
+      "rules": 4,
+      "draftAt": "2026-10-04T05:52:00.000Z",
+      "gateVi": "oz 83% (24/29) — qua gate; 3 ozDisagree",
+      "noteVi": "Bảng 4 rules / 1 attr (productKind). Oz: 24/29 resolved. Còn 7 mã chưa phủ."
+    },
     "3923": {
       "status": "draft",
       "doneAt": "2026-10-03T02:01:00.000Z",

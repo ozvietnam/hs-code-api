@@ -1,0 +1,73 @@
+{
+  "heading": "3919",
+  "titleVi": "Băng dính, nhãn và sản phẩm tự dính bằng plastic (39.19)",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "productKind",
+      "type": "enum",
+      "labelVi": "Loại sản phẩm tự dính",
+      "questionVi": "Sản phẩm tự dính thuộc loại nào: băng dính (dạng cuộn), miếng dán (dạng tấm/than), hay film cách nhiệt?",
+      "domain": ["tape", "patch", "filmInsulation", "other"],
+      "detect": {
+        "tape": [
+          "băng dính", "băng keo", "băng cách nhiệt", "băng PVC"
+        ],
+        "patch": [
+          "miếng dán", "nhãn", "miếng lót", "nhựa dán", "miếng dán chân vịt"
+        ],
+        "filmInsulation": [
+          "film cách nhiệt", "phim cách nhiệt", "tấm cách nhiệt", "film", "phim"
+        ],
+        "other": [
+          "dán", "tự dính"
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r01",
+      "priority": 90,
+      "when": { "productKind": "tape" },
+      "hs": "39191099",
+      "reasonVi": "Băng dính dạng cuộn — loại khác → 39191099",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r02",
+      "priority": 90,
+      "when": { "productKind": "patch" },
+      "hs": "39199010",
+      "reasonVi": "Miếng dán tự dính dạng tấm — từ PVC → 39199010",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r03",
+      "priority": 80,
+      "when": { "productKind": "filmInsulation" },
+      "hs": "39199099",
+      "reasonVi": "Film cách nhiệt tự dính → 39199099 (loại khác)",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r04",
+      "priority": 80,
+      "when": { "productKind": "other" },
+      "hs": "39191099",
+      "reasonVi": "Sản phẩm tự dính khác — dạng cuộn → 39191099",
+      "source": "Biểu thuế NK VN 2026"
+    }
+  ],
+  "sourceVi": "Biểu thuế NK VN 2026 (10 mã 8 số). Oz-gold 39 entries.",
+  "essenceTestVi": "Băng dính cuộn → 39191099; miếng dán tấm → 39199010; film cách nhiệt → 39199099.",
+  "leaves": {},
+  "hitPolicy": "FIRST",
+  "attributes": {
+    "productKind": {
+      "type": "enum",
+      "labelVi": "Loại sản phẩm tự dính",
+      "domain": ["tape", "patch", "filmInsulation", "other"]
+    }
+  }
+}
