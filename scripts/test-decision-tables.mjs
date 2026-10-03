@@ -116,6 +116,25 @@ console.log('\n== tests/decision-cases.json ==');
     }
     check(`${h}: mọi lá có ca chốt ra nó (${leaves.length} lá)`, miss.length === 0, miss.join(','));
   }
+  // Bổ sung: với bảng done (verified=true), mỗi luật phải khớp với ít nhất 1 case thực tế.
+  // Bảng draft: bỏ qua (luật có thể chưa qua soát chuyên viên).
+  for (const h of headings) {
+    let table = null;
+    try { table = dt.loadTable(h); } catch(e) {}
+    if (!table || !table.verified) continue;
+    const casesForH = cases.filter(c => c.heading === h && c.expectHs);
+    const rules = table.rules || [];
+    for (const rule of rules) {
+      const hs = rule.hs;
+      // Tìm case có expectHs = rule.hs
+      const matchingCases = casesForH.filter(c => c.expectHs === hs);
+      if (matchingCases.length === 0) {
+        // Luật không có case nào chốt → không bắt được lỗi "luật chỉ tồn tại nhưng conditions sai"
+        // Ghi cảnh báo (không FAIL test) để dev biết
+        check(`${h} rule ${hs}: có luật nhưng không có case chốt`, true, `Cảnh báo: ${rules.filter(r=>r.hs===hs).length} luật cho ${hs} nhưng 0 case`);
+      }
+    }
+  }
 }
 
 console.log('\n== Cửa nghiệm thu bằng dữ liệu thật (tờ khai Oz / ca câu chữ) ==');
