@@ -1,0 +1,248 @@
+{
+  "heading": "8413",
+  "titleVi": "Máy bơm chất lỏng; bộ phận của máy bơm",
+  "verified": false,
+  "sourceVi": "Biểu thuế NK VN 2026 nhóm 84.13",
+  "essenceTestVi": "Phân biệt máy bơm theo loại (định lượng, piston, ly tâm, bánh răng, màng) và ứng dụng (nước, dầu, hóa chất, thủy lực).",
+  "inputs": [
+    {
+      "attribute": "pumpKind",
+      "type": "enum",
+      "labelVi": "Loại bơm",
+      "questionVi": "Máy bơm thuộc loại nào: định lượng, piston, ly tâm, bánh răng, màng, bùn, hay khác?",
+      "domain": [
+        "metering",
+        "piston",
+        "centrifugal",
+        "gear",
+        "membrane",
+        "slurry",
+        "vacuum",
+        "other"
+      ],
+      "detect": {
+        "metering": [
+          "bơm định lượng",
+          "bơm hóa chất định lượng"
+        ],
+        "piston": [
+          "bơm piston",
+          "bơm dầu piston",
+          "bơm chuyển động tịnh tiến",
+          "bơm màng mini",
+          "bơm dầu thủy lực 3 buồng"
+        ],
+        "centrifugal": [
+          "bơm ly tâm",
+          "bơm chìm ly tâm",
+          "bơm bể cá",
+          "máy bơm ly tâm",
+          "bơm tăng áp",
+          "bơm cao áp ly tâm",
+          "máy bơm đường ống ly tâm",
+          "bơm nước piston quay"
+        ],
+        "gear": [
+          "bơm bánh răng thủy lực"
+        ],
+        "membrane": [
+          "bơm màng",
+          "bơm màng khí nén",
+          "màng bơm",
+          "bơm hóa chất",
+          "bơm màng mini"
+        ],
+        "slurry": [
+          "bơm bùn",
+          "bơm bùn thủy lực",
+          "bơm bùn chìm"
+        ],
+        "vacuum": [
+          "bơm chân không",
+          "tạo chân không"
+        ],
+        "other": [
+          "bơm",
+          "máy bơm",
+          "bơm tay",
+          "bơm hút"
+        ]
+      }
+    },
+    {
+      "attribute": "medium",
+      "type": "enum",
+      "labelVi": "Chất bơm",
+      "questionVi": "Bơm chất gì: nước, dầu, hóa chất, bùn?",
+      "domain": [
+        "water",
+        "oil",
+        "chemical",
+        "slurry",
+        "other"
+      ],
+      "detect": {
+        "water": [
+          "nước",
+          "bể cá"
+        ],
+        "oil": [
+          "dầu",
+          "nhiên liệu",
+          "thủy lực",
+          "dầu nhiên liệu"
+        ],
+        "chemical": [
+          "hóa chất"
+        ],
+        "slurry": [
+          "bùn"
+        ],
+        "other": []
+      }
+    }
+  ],
+  "hitPolicy": "FIRST",
+  "attributes": {
+    "pumpKind": "Loại bơm",
+    "medium": "Chất bơm"
+  },
+  "rules": [
+    {
+      "id": "r01",
+      "priority": 10,
+      "when": {
+        "pumpKind": "metering"
+      },
+      "hs": "84131910",
+      "reasonVi": "Bơm định lượng → 84131910",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r02",
+      "priority": 9,
+      "when": {
+        "pumpKind": "piston",
+        "medium": "oil"
+      },
+      "hs": "84135090",
+      "reasonVi": "Bơm piston dầu thủy lực → 84135090",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r03",
+      "priority": 9,
+      "when": {
+        "pumpKind": "piston",
+        "medium": "water"
+      },
+      "hs": "84135090",
+      "reasonVi": "Bơm piston nước → 84135090",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r04",
+      "priority": 9,
+      "when": {
+        "pumpKind": "gear"
+      },
+      "hs": "84136090",
+      "reasonVi": "Bơm bánh răng thủy lực → 84136090",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r05",
+      "priority": 9,
+      "when": {
+        "pumpKind": "centrifugal",
+        "medium": "water"
+      },
+      "hs": "84137042",
+      "reasonVi": "Bơm ly tâm nước → 84137042",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r06",
+      "priority": 9,
+      "when": {
+        "pumpKind": "centrifugal",
+        "medium": "oil"
+      },
+      "hs": "84137091",
+      "reasonVi": "Bơm ly tâm dầu → 84137091",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r07",
+      "priority": 9,
+      "when": {
+        "pumpKind": "membrane",
+        "medium": "chemical"
+      },
+      "hs": "84138119",
+      "reasonVi": "Bơm màng hóa chất → 84138119",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r08",
+      "priority": 5,
+      "when": {
+        "pumpKind": "other"
+      },
+      "hs": "84139190",
+      "reasonVi": "Bộ phận bơm → 84139190",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r09",
+      "priority": 1,
+      "when": {
+        "pumpKind": "centrifugal"
+      },
+      "hs": "84137042",
+      "reasonVi": "Bơm ly tâm → 84137042",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r10",
+      "priority": 1,
+      "when": {
+        "pumpKind": "piston"
+      },
+      "hs": "84135090",
+      "reasonVi": "Bơm piston → 84135090",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r11",
+      "priority": 1,
+      "when": {
+        "pumpKind": "membrane"
+      },
+      "hs": "84138119",
+      "reasonVi": "Bơm màng → 84138119",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r12",
+      "priority": 1,
+      "when": {
+        "pumpKind": "slurry"
+      },
+      "hs": "84136090",
+      "reasonVi": "Bơm bùn → 84136090",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r13",
+      "priority": 1,
+      "when": {
+        "pumpKind": "other"
+      },
+      "hs": "84139090",
+      "reasonVi": "Bơm khác → 84139090",
+      "source": "Biểu thuế NK VN 2026"
+    }
+  ],
+  "leaves": {}
+}
