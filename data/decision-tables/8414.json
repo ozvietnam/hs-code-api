@@ -8,50 +8,6 @@
   "sourceVi": "Biểu thuế 2026 nhóm 84.14. Căn cứ GIR 1, 3, 4, 6.",
   "inputs": [
     {
-      "attribute": "subKind",
-      "type": "enum",
-      "labelVi": "Môi trường lắp đặt",
-      "questionVi": "Lắp đặt trong/miêu tả nào: máy tính (computer), tủ điện/điều khiển (control cabinet), ô tô (automotive), hay môi trường khác?",
-      "domain": [
-        "computer",
-        "control_cabinet",
-        "automotive",
-        "other"
-      ],
-      "detect": {
-        "computer": [
-          "máy vi tính",
-          "máy tính",
-          "case máy",
-          "case",
-          "desktop computer"
-        ],
-        "control_cabinet": [
-          "tủ điện",
-          "tủ",
-          "biến tần",
-          "CNC",
-          "tủ điều khiển",
-          "bộ sạc",
-          "tủ điều hòa"
-        ],
-        "automotive": [
-          "ô tô",
-          "điều hòa ô tô",
-          "giàn nóng",
-          "ô-tô"
-        ],
-        "other": [
-          "nhà xưởng",
-          "nhà hàng",
-          "công nghiệp",
-          "hầm lò",
-          "phòng thí nghiệm",
-          "phòng"
-        ]
-      }
-    },
-    {
       "attribute": "deviceKind",
       "type": "enum",
       "labelVi": "Loại thiết bị",
@@ -86,7 +42,10 @@
           "hút khói",
           "làm mát",
           "tản nhiệt",
-          "thông gió"
+          "thông gió",
+          "quạt gió",
+          "quạt làm mát",
+          "hút"
         ],
         "vacuum_pump": [
           "máy bơm chân không",
@@ -103,7 +62,8 @@
           "bơm hơi",
           "bơm lốp",
           "máy bơm hơi",
-          "compressor"
+          "compressor",
+          "máy bơm không khí"
         ],
         "hood": [
           "máy hút mùi",
@@ -176,8 +136,7 @@
         "handheld": [
           "cầm tay",
           "xách tay",
-          "handheld",
-          "pin"
+          "handheld"
         ],
         "industrial": [
           "công nghiệp",
@@ -263,71 +222,31 @@
           "không bộ lọc"
         ]
       }
+    },
+    {
+      "attribute": "isSEN",
+      "type": "boolean",
+      "labelVi": "Thiết bị điện tử/SEN",
+      "questionVi": "Có phải thiết bị điện tử hoặc SEN không?",
+      "domain": [
+        "true",
+        "false"
+      ],
+      "detect": {
+        "true": [
+          "sen",
+          "SEN",
+          "điện tử",
+          "electronic"
+        ],
+        "false": []
+      }
     }
   ],
   "rules": [
     {
-      "id": "8414-r01",
-      "priority": 1,
-      "hs": "84145910",
-      "reasonVi": "Phân loại 84145910 theo GIR 6: deviceKind=fan, subKind=computer — quạt tản nhiệt lắp trong máy vi tính",
-      "source": "hermes-211-8414",
-      "gir": "GIR 6",
-      "when": {
-        "deviceKind": "fan",
-        "subKind": "computer"
-      }
-    },
-    {
-      "id": "8414-r11",
-      "priority": 11,
-      "hs": "84145949",
-      "reasonVi": "Phân loại 84145949 theo GIR 6: deviceKind=fan, subKind=control_cabinet — quạt tản nhiệt tủ điện/biến tần",
-      "source": "hermes-211-8414",
-      "gir": "GIR 6",
-      "when": {
-        "deviceKind": "fan",
-        "subKind": "control_cabinet"
-      }
-    },
-    {
-      "id": "8414-r12",
-      "priority": 12,
-      "hs": "84145949",
-      "reasonVi": "Phân loại 84145949 theo GIR 6: deviceKind=fan, subKind=automotive — quạt giàn nóng/điều hòa ô tô",
-      "source": "hermes-211-8414",
-      "gir": "GIR 6",
-      "when": {
-        "deviceKind": "fan",
-        "subKind": "automotive"
-      }
-    },
-    {
-      "id": "8414-r02",
-      "priority": 2,
-      "hs": "84146019",
-      "reasonVi": "Phân loại 84146019 theo GIR 6: deviceKind=hood — máy hút mùi/hút khói công nghiệp",
-      "source": "hermes-211-8414",
-      "gir": "GIR 6",
-      "when": {
-        "deviceKind": "hood"
-      }
-    },
-    {
-      "id": "8414-r03",
-      "priority": 3,
-      "hs": "84145941",
-      "reasonVi": "Phân loại 84145941 theo GIR 6: deviceKind=fan, mountKind=handheld — quạt cầm tay chạy bằng pin, có lưới bảo vệ",
-      "source": "hermes-211-8414",
-      "gir": "GIR 6",
-      "when": {
-        "deviceKind": "fan",
-        "mountKind": "handheld"
-      }
-    },
-    {
       "id": "8414-r04",
-      "priority": 4,
+      "priority": 1,
       "hs": "84145110",
       "reasonVi": "Phân loại 84145110 theo GIR 6: deviceKind=fan, mountKind=desktop — quạt bàn mini công suất nhỏ",
       "source": "hermes-211-8414",
@@ -338,65 +257,46 @@
       }
     },
     {
-      "id": "8414-r05",
-      "priority": 5,
-      "hs": "84141000",
-      "reasonVi": "Phân loại 84141000 theo GIR 6: deviceKind=vacuum_pump — máy bơm chân không",
-      "source": "hermes-211-8414",
-      "gir": "GIR 6",
-      "when": {
-        "deviceKind": "vacuum_pump"
-      }
-    },
-    {
-      "id": "8414-r06",
-      "priority": 6,
-      "hs": "84143040",
-      "reasonVi": "Phân loại 84143040 theo GIR 6: deviceKind=compressor — máy nén làm lạnh công suất > 21.10 kW",
-      "source": "hermes-211-8414",
-      "gir": "GIR 6",
-      "when": {
-        "deviceKind": "compressor"
-      }
-    },
-    {
-      "id": "8414-r07",
-      "priority": 7,
-      "hs": "84148050",
-      "reasonVi": "Phân loại 84148050 theo GIR 6: deviceKind=compressor — máy bơm không khí",
-      "source": "hermes-211-8414",
-      "gir": "GIR 6",
-      "when": {
-        "deviceKind": "compressor",
-        "powerSource": "pneumatic"
-      }
-    },
-    {
-      "id": "8414-r08",
-      "priority": 8,
-      "hs": "84149090",
-      "reasonVi": "Phân loại 84149090 theo GIR 6: deviceKind=parts — bộ phận máy bơm/máy nén",
-      "source": "hermes-211-8414",
-      "gir": "GIR 6",
-      "when": {
-        "deviceKind": "parts"
-      }
-    },
-    {
-      "id": "8414-r09",
-      "priority": 9,
-      "hs": "84145999",
-      "reasonVi": "Phân loại 84145999 theo GIR 6: deviceKind=fan, mountKind=wall — quạt gắn tường",
+      "id": "8414-r25",
+      "priority": 2,
+      "hs": "84145191",
+      "reasonVi": "Phân loại 84145191 theo GIR 6: deviceKind=fan, mountKind=desktop, hasFilter=true — quạt bàn có lưới bảo vệ",
       "source": "hermes-211-8414",
       "gir": "GIR 6",
       "when": {
         "deviceKind": "fan",
-        "mountKind": "wall"
+        "mountKind": "desktop",
+        "hasFilter": true
+      }
+    },
+    {
+      "id": "8414-r03a",
+      "priority": 3,
+      "hs": "84145941",
+      "reasonVi": "Phân loại 84145941 theo GIR 6: deviceKind=fan, mountKind=handheld, hasFilter=true — quạt cầm tay có lưới bảo vệ",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "fan",
+        "mountKind": "handheld",
+        "hasFilter": true
+      }
+    },
+    {
+      "id": "8414-r03b",
+      "priority": 4,
+      "hs": "84145941",
+      "reasonVi": "Phân loại 84145941 theo GIR 6: deviceKind=fan, mountKind=handheld — quạt cầm tay",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "fan",
+        "mountKind": "handheld"
       }
     },
     {
       "id": "8414-r10",
-      "priority": 10,
+      "priority": 5,
       "hs": "84145199",
       "reasonVi": "Phân loại 84145199 theo GIR 6: deviceKind=fan, mountKind=ceiling — quạt trần",
       "source": "hermes-211-8414",
@@ -407,10 +307,22 @@
       }
     },
     {
-      "id": "8414-r13",
-      "priority": 13,
+      "id": "8414-r09",
+      "priority": 6,
+      "hs": "84145999",
+      "reasonVi": "Phân loại 84145999 theo GIR 6: deviceKind=fan, mountKind=wall — quạt gắn tường",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "fan",
+        "mountKind": "wall"
+      }
+    },
+    {
+      "id": "8414-r13a",
+      "priority": 7,
       "hs": "84145930",
-      "reasonVi": "Phân loại 84145930 theo GIR 6: deviceKind=fan, mountKind=industrial, powerSource=AC — máy thổi khí công nghiệp (SEN)",
+      "reasonVi": "Phân loại 84145930 theo GIR 6: deviceKind=fan, mountKind=industrial, powerSource=AC — máy thổi khí công nghiệp AC",
       "source": "hermes-211-8414",
       "gir": "GIR 6",
       "when": {
@@ -420,8 +332,35 @@
       }
     },
     {
+      "id": "8414-r13b",
+      "priority": 8,
+      "hs": "84145930",
+      "reasonVi": "Phân loại 84145930 theo GIR 6: deviceKind=fan, mountKind=industrial, isSEN=true — máy thổi khí SEN",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "fan",
+        "mountKind": "industrial",
+        "isSEN": true
+      }
+    },
+    {
+      "id": "8414-r26",
+      "priority": 9,
+      "hs": "84145950",
+      "reasonVi": "Phân loại 84145950 theo GIR 6: deviceKind=fan, mountKind=industrial, isSEN=true, hasFilter=true — máy thổi khí SEN có lọc",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "fan",
+        "mountKind": "industrial",
+        "isSEN": true,
+        "hasFilter": true
+      }
+    },
+    {
       "id": "8414-r14",
-      "priority": 14,
+      "priority": 10,
       "hs": "84145949",
       "reasonVi": "Phân loại 84145949 theo GIR 6: deviceKind=fan, mountKind=industrial — quạt hút công nghiệp công suất > 125W",
       "source": "hermes-211-8414",
@@ -429,6 +368,158 @@
       "when": {
         "deviceKind": "fan",
         "mountKind": "industrial"
+      }
+    },
+    {
+      "id": "8414-r17",
+      "priority": 11,
+      "hs": "84145949",
+      "reasonVi": "Phân loại 84145949 theo GIR 6: deviceKind=fan, mountKind=embedded — quạt tản nhiệt tủ điện/biến tần/ô tô",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "fan",
+        "mountKind": "embedded"
+      }
+    },
+    {
+      "id": "8414-r02",
+      "priority": 12,
+      "hs": "84146019",
+      "reasonVi": "Phân loại 84146019 theo GIR 6: deviceKind=hood — máy hút mùi/hút khói công nghiệp",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "hood"
+      }
+    },
+    {
+      "id": "8414-r18",
+      "priority": 13,
+      "hs": "84146011",
+      "reasonVi": "Phân loại 84146011 theo GIR 6: deviceKind=hood, isSEN=true — tủ hút lọc không khí phòng thí nghiệm",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "hood",
+        "isSEN": true
+      }
+    },
+    {
+      "id": "8414-r19",
+      "priority": 14,
+      "hs": "84146091",
+      "reasonVi": "Phân loại 84146091 theo GIR 6: deviceKind=hood, mountKind=industrial — hood phù hợp dùng trong công nghiệp",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "hood",
+        "mountKind": "industrial"
+      }
+    },
+    {
+      "id": "8414-r27",
+      "priority": 15,
+      "hs": "84146099",
+      "reasonVi": "Phân loại 84146099 theo GIR 6: deviceKind=hood, hasFilter=true — hood có bộ lọc",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "hood",
+        "hasFilter": true
+      }
+    },
+    {
+      "id": "8414-r05",
+      "priority": 16,
+      "hs": "84141000",
+      "reasonVi": "Phân loại 84141000 theo GIR 6: deviceKind=vacuum_pump — máy bơm chân không",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "vacuum_pump"
+      }
+    },
+    {
+      "id": "8414-r06",
+      "priority": 17,
+      "hs": "84143040",
+      "reasonVi": "Phân loại 84143040 theo GIR 6: deviceKind=compressor — máy nén làm lạnh",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "compressor"
+      }
+    },
+    {
+      "id": "8414-r07",
+      "priority": 18,
+      "hs": "84148050",
+      "reasonVi": "Phân loại 84148050 theo GIR 6: deviceKind=compressor, powerSource=pneumatic — máy bơm không khí",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "compressor",
+        "powerSource": "pneumatic"
+      }
+    },
+    {
+      "id": "8414-r08",
+      "priority": 19,
+      "hs": "84149090",
+      "reasonVi": "Phân loại 84149090 theo GIR 6: deviceKind=parts — bộ phận máy bơm/máy nén",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "parts"
+      }
+    },
+    {
+      "id": "8414-r21",
+      "priority": 20,
+      "hs": "84149041",
+      "reasonVi": "Phân loại 84149041: deviceKind=parts, powerSource=AC — bộ phận máy hoạt động bằng điện",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "parts",
+        "powerSource": "AC"
+      }
+    },
+    {
+      "id": "8414-r22",
+      "priority": 21,
+      "hs": "84149042",
+      "reasonVi": "Phân loại 84149042: deviceKind=parts, powerSource=pneumatic — bộ phận máy không hoạt động bằng điện",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "parts",
+        "powerSource": "pneumatic"
+      }
+    },
+    {
+      "id": "8414-r23",
+      "priority": 22,
+      "hs": "84149022",
+      "reasonVi": "Phân loại 84149022: deviceKind=parts, isSEN=true — bộ phận máy thổi khí SEN",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "parts",
+        "isSEN": true
+      }
+    },
+    {
+      "id": "8414-r24",
+      "priority": 23,
+      "hs": "84149021",
+      "reasonVi": "Phân loại 84149021: deviceKind=parts, hasFilter=true — tấm lọc khí của hàng hóa thuộc nhóm 84.15, 84.18, 85.09, 85.16",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "parts",
+        "hasFilter": true
       }
     }
   ]
