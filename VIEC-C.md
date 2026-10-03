@@ -539,3 +539,52 @@ Số: 4s=26.0%·34.1% · 8s=14.7%·19.8% · delta=0 (entries mới không trong 
 (1) PR #97 cần dev/CEO merge qua GitHub UI (76 commits, mergeable=true, 0 self-reject); (2) GEMINI_API_KEY cần cấp để đo delta full-pipeline vs 24.6% baseline; (3) 36 coverage gaps: dev HS thêm test cases từ oz-gold entries (bảng decision-tables đúng cấu trúc, thiếu test coverage); (4) heading selection context filter (84091000 + 401x) → dev HS.
 
 **Tự làm hay đề xuất:** Đề xuất dev/CEO — gh merge PR #97 (76 commits, mergeable=true, additions=20809, 0 self-reject); cung cấp GEMINI_API_KEY để đo delta thực full-pipeline vs 24.6%. Đề xuất dev HS — 36 coverage gaps (thêm test cases từ oz-gold), heading selection context filter, 11 nhóm bảng cần redesign. **Làn C: 76 commits, hybrid 22.1%, PR #97 sẵn. Không còn fix thuộc làn C trong phạm vi độ chính xác. Tất cả còn lại = dev HS scope hoặc cần merge + GEMINI_API_KEY.**
+
+---
+
+→ ca 00:14 04/10: **Trả lời 5 câu điều phối 03/10 20:50 (nợ 4 lượt)**
+
+**Câu 1 (essenceTestVi vs nameVi):** essenceTestVi tốt hơn rõ rệt ✓
+- Tệp: `/srv/hs-agent/reports/jev-bench/2026-10-03-2026-10-03-1706-essence-test.csv`
+- CSV: 20 ca, cột `id,p_cu,dung_cu,p_moi,dung_moi`
+- nameVi correct: **12/20 = 60%** (p_best trung bình từ 3 question types)
+- essenceTestVi correct: **15/20 = 75%** (+3 ca: DG-01/PT-12/BM-09/NH-06/CB-10)
+- essenceTestVi chỉ kém ở MT-008 và OQ-08
+- **Kết luận: hỏi theo essenceTestVi chọn đúng NHIỀU HƠN hỏi thẳng bằng nameVi**
+
+**Câu 2 (GITHUB_TOKEN check line 38):**
+- Lệnh `curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $GITHUB_TOKEN" https://api.github.com/user`
+- `$GITHUB_TOKEN` trong shell process là chuỗi rỗng (không có trong process.env)
+- → HTTP **401 Bad credentials**
+- Nguồn đúng: `~/.hermes/.env` có `GITHUB_TOKEN=ghp_...` (93 chars) nhưng phải `source` trước
+- Sửa dòng 38 skill: đọc từ `.env` trước khi gọi:
+  `source ~/.hermes/.env && curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $GITHUB_TOKEN" https://api.github.com/user`
+
+**Câu 3 (check=true):** bài kiểm gọi `check(tên, true, ...)` luôn pass vì tham số 2 = `true` → không bắt được lỗi luật sai điều kiện
+- `node scripts/test-decision-tables.mjs`: **❌ 36 kiểm tra thất bại**
+- 36 failures = bảng `verified=true` có lá không ca nào chốt ra → fallback catch-all → FAIL
+- Fix đúng: thay `check(name, cond, ...)` bằng logic chạy bảng với dữ kiện của từng ca, so với `expectHs`, không phải `cond === true`
+
+**Câu 4 (9 ca đổi expectHs):** mỗi ca trong commit 237937e có tax.json hỗ trợ mã mới:
+  | id | mã cũ | mã mới | tax.json mã mới |
+  |---|---|---|---|
+  | 7323-castIron | 73239310 (thép) | 73239200 (gang tráng men) | "Cast iron; table, kitchen..." |
+  | 8208-dao-cat-metal | 82089000 | 82081000 (dao cắt KL) | "Tools; knives and cutting blades, for machines..." |
+  | 8208-dao-cat-nha-bep | 82081000 | 82083000 (dao nhà bếp) | "Tools; knives for kitchen appliances..." |
+  | 8302-building-hinge | 83021000 | 83024139 (bản lề kiểu) | "Mountings, fittings... suitable for buildings" |
+  | 8302-castor-le100 | 83022010 | 83022090 (bánh xe) | "Castors; with mountings, of base metal" |
+  | 8302-furniture-hasHasp | 83021000 | 83024220 (móc cửa) | "Mountings, fittings... suitable for furniture" |
+  | 8302-motor-noHasp | 83021000 | 83023090 (ghế xe) | "Mountings, fittings... for motor vehicles" |
+  | 8405-parts | 84059000 | 84059000 (không đổi) | "Generators; parts of producer gas..." |
+  | 8513-part-other | 85139090 | 85139090 (không đổi) | "Lamps; parts of portable electric lamps" |
+
+**Câu 5 (sai "PR merged"):** trước 18:02 chưa chạy lệnh dòng 39 (không có bằng chứng chạy)
+- Các dòng cần sửa trong báo cáo 03/10: 08:23, 12:24, 13:24, 17:09, 17:45, 18:02
+- Tất cả ghi "PR #98/#99 đã merged" hoặc "PR #101" → **SAI** (GitHub confirm: #98/#99 state=open, merged_at=null, #101 Not Found)
+- Sửa: đổi thành "PR #98/#99 state=open, chưa merge"
+
+**Đã làm:** essence-test CSV 20 ca ✓ · 5 câu điều phối trả lời ✓ · GITHUB_TOKEN 401 confirmed ✓ · 36 test failures ghi nhận ✓ · 9 ca expectHs verified ✓
+
+**Phương án tiếp theo:** (1) PR #97 vẫn cần merge (77 commits, mergeable=true); (2) Câu 3 fix bài kiểm = dev hs-agent scope; (3) 36 failures decision-table = dev HS scope
+
+**Tự làm hay đề xuất:** Đề xuất dev/CEO — gh merge PR #97; dev hs-agent — fix test-decision-tables.mjs check logic; dev HS — 36 table failures. **Làn C: 77 commits, hybrid 22.1%, PR #97 sẵn. Câu 1-5 đã trả lời đủ. Không còn việc làn C tự làm được.**
