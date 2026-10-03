@@ -3349,6 +3349,70 @@
       "gir": "1",
       "basis": "RULE_TABLE",
       "sourceVi": "Biểu thuế 2026 nhóm 4802-4810: phạm vi giấy. Hàng không phải giấy (kim loại, nhựa, cao su) không thuộc các nhóm này."
+    },
+    {
+      "id": "mach-in-pcb-2-lop",
+      "titleVi": "Mạch in PCB hai lớp (2 lớp)",
+      "terms": [
+        "mạch in 2 lớp",
+        "mạch in hai lớp",
+        "pcb 2 lớp",
+        "pcb hai lớp",
+        "bảng mạch in 2 lớp",
+        "mạch in pcb 2 lớp",
+        "pcb 2lop",
+        "pcb 2 lop",
+        "pcb đa sắc 2 lớp",
+        "mạch in 2 lớp fr4",
+        "pcb 2 lớp fr4",
+        "pcb nhôm 2 lớp",
+        "mạch in 2 lớp nhôm",
+        "pcb 2 lớp nhôm ms110w",
+        "pcb ms110w 2 lớp",
+        "mạch in 2 lớp đa sắc",
+        "pcb đa sắc",
+        "pcb ms110w",
+        "pcb fr4 2 lớp",
+        "mạch in 2 lớp ốp trần",
+        "pcb ốp trần 2 lớp",
+        "pcb ốp trần tròn 2 lớp"
+      ],
+      "excludeIfAny": [
+        "1 lớp",
+        "một lớp",
+        "single layer",
+        "đa lớp",
+        "multilayer",
+        "nhiều lớp"
+      ],
+      "excludeReasonVi": "PCB một lớp → 8534.00.10; PCB đa lớp (multilayer) → 8534.00.30; chỉ 8534.00.20 khi đúng 2 lớp.",
+      "candidates": [
+        {
+          "hs": "85340020",
+          "whenVi": "PCB hai lớp (2 lớp mạch)",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8534001",
+          "whyVi": "85340010 = PCB một mặt/một lớp, không phải hai lớp."
+        },
+        {
+          "prefix": "8534003",
+          "whyVi": "85340030 = PCB đa lớp (multilayer), không phải hai lớp."
+        },
+        {
+          "prefix": "8534009",
+          "whyVi": "85340090 = PCB loại khác, không phải hai lớp."
+        }
+      ],
+      "askVi": [
+        "Mạch in một lớp, hai lớp, hay đa lớp (multilayer)? (ranh giới 85340010 / 85340020 / 85340030)"
+      ],
+      "gir": "6",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 dòng 8534.00.20; Bảng quyết định data/decision-tables/8534.json — thuộc tính pcbLayers=double."
     }
   ],
   "updatedAt": "2026-10-03"
