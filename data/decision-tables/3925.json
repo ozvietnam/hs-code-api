@@ -1,0 +1,62 @@
+{
+  "heading": "3925",
+  "titleVi": "Sản phẩm khác bằng plastic (39.25)",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "productKind",
+      "type": "enum",
+      "labelVi": "Loại sản phẩm",
+      "questionVi": "Sản phẩm nhựa thuộc loại nào: cửa chớp/mành che, phụ kiện rèm, hay sản phẩm khác?",
+      "domain": ["shutterBlind", "blindAccessory", "other"],
+      "detect": {
+        "shutterBlind": [
+          "cửa chớp", "mành che", "rèm", "mành chớp", "lam chớp", "lá chớp", "màn cửa", "cửa sổ"
+        ],
+        "blindAccessory": [
+          "vòng nhựa", "lô cuốn", "hạt nhựa", "thanh rèm", "đuôi rèm", "ray rèm", "con lăn rèm", "móc rèm"
+        ],
+        "other": [
+          "ống dẫn", "máng nước", "tấm ốp", "vỏ bọc", "vách ngăn", "kẹp", "giá để", "miếng dán", "đế"
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r01",
+      "priority": 90,
+      "when": { "productKind": "shutterBlind" },
+      "hs": "39253000",
+      "reasonVi": "Cửa chớp, mành che, rèm cửa → 39253000",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r02",
+      "priority": 90,
+      "when": { "productKind": "blindAccessory" },
+      "hs": "39253000",
+      "reasonVi": "Phụ kiện rèm/mành (vòng, lô, hạt, thanh) → 39253000",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r03",
+      "priority": 80,
+      "when": { "productKind": "other" },
+      "hs": "39259000",
+      "reasonVi": "Sản phẩm nhựa khác → 39259000 (loại khác)",
+      "source": "Biểu thuế NK VN 2026"
+    }
+  ],
+  "sourceVi": "Biểu thuế NK VN 2026 (4 mã 8 số). Oz-gold 32 entries.",
+  "essenceTestVi": "Cửa chớp/mành che và phụ kiện → 39253000; sản phẩm nhựa khác → 39259000.",
+  "leaves": {},
+  "hitPolicy": "FIRST",
+  "attributes": {
+    "productKind": {
+      "type": "enum",
+      "labelVi": "Loại sản phẩm",
+      "domain": ["shutterBlind", "blindAccessory", "other"]
+    }
+  }
+}
