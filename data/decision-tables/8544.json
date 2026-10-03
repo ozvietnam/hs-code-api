@@ -1,0 +1,426 @@
+{
+  "heading": "8544",
+  "titleVi": "Dây dẫn điện, có vỏ bọc hoặc cách điện, dùng cho viễn thông hoặc cho điện có hiệu điện thế không quá 1000V",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "CÂU HỎI BẢN CHẤT: dây dẫn dùng cho viễn thông hay điện tử? Có đầu nối gắn sẵn không? Cáp dẹt hay tròn? Vật liệu cách điện? Đường kính lõi?",
+  "sourceVi": "Biểu thuế 2026 nhóm 85.44. Căn cứ GIR 1, 3, 4, 6.",
+  "inputs": [
+    {
+      "attribute": "cableKind",
+      "type": "enum",
+      "domain": [
+        "telecom",
+        "other"
+      ],
+      "labelVi": "Loại dây dẫn",
+      "questionVi": "Dây dẫn dùng cho viễn thông (điện thoại, truyền dữ liệu, tín hiệu) hay dùng cho mục đích khác (điều khiển, cảm biến, nguồn)?",
+      "detect": {
+        "telecom": [
+          "cáp dữ liệu",
+          "dây cáp dữ liệu",
+          "truyền dữ liệu",
+          "truyền tín hiệu",
+          "tín hiệu viễn thông",
+          "cáp mạng",
+          "cáp mạng gắn",
+          "dây cáp mạng",
+          "usb",
+          "hdmi",
+          "lvds",
+          "obd",
+          "rj45",
+          "ipx",
+          "sma",
+          "profibus",
+          "scsi",
+          "cat 5",
+          "cat 6",
+          "cat 7",
+          "cat 8",
+          "ethernet",
+          "internet",
+          "lan cable",
+          "cáp internet",
+          "cáp truyền hình",
+          "cáp av",
+          "cáp âm thanh",
+          "cáp audio",
+          "dây mạng",
+          "dây mạng gắn",
+          "dây mạng cat",
+          "cáp hdmi",
+          "dây hdmi",
+          "cáp dữ liệu dẹt",
+          "dây cáp tín hiệu",
+          "flat cable",
+          "cáp dẹt"
+        ],
+        "other": [
+          "nguồn",
+          "cấp nguồn",
+          "động cơ",
+          "servo",
+          "cảm biến",
+          "bóng đèn",
+          "led",
+          "cabinet",
+          "máy công nghiệp",
+          "bảng mạch",
+          "linh kiện",
+          "điều khiển",
+          "điện áp",
+          "dòng điện",
+          "năng lượng",
+          "pin",
+          "ắc quy",
+          "máy phát",
+          "máy biến áp"
+        ]
+      }
+    },
+    {
+      "attribute": "flatCable",
+      "type": "enum",
+      "domain": [
+        "flat",
+        "round"
+      ],
+      "labelVi": "Dạng cáp",
+      "questionVi": "Cáp dẹt (flat) hay tròn?",
+      "detect": {
+        "flat": [
+          "dẹt",
+          "flat",
+          "cáp dẹt",
+          "dây dẹt",
+          "dạng dẹt",
+          "flat cable"
+        ],
+        "round": [
+          "tròn",
+          "ống tròn",
+          "round"
+        ]
+      }
+    },
+    {
+      "attribute": "insulationMaterial",
+      "type": "enum",
+      "domain": [
+        "rubber_paper",
+        "plastic",
+        "other"
+      ],
+      "labelVi": "Vật liệu cách điện",
+      "questionVi": "Vỏ cách điện bằng cao su/giấy, plastic (PVC, nhựa), hay loại khác?",
+      "detect": {
+        "rubber_paper": [
+          "cao su",
+          "giấy",
+          "rubber",
+          "cách điện bằng cao su",
+          "cách điện bằng giấy"
+        ],
+        "plastic": [
+          "nhựa",
+          "pvc",
+          "plastic",
+          "cách điện bằng nhựa",
+          "cách điện bằng plastic",
+          "vỏ nhựa",
+          "bọc nhựa",
+          "lõi đồng cách điện plastic",
+          "lõi đồng cách điện bằng plastic",
+          "nhựa cách điện",
+          "cách điện plastic"
+        ],
+        "other": [
+          "sợi quang",
+          "quang",
+          "fiber",
+          "optical",
+          "aoc"
+        ]
+      }
+    },
+    {
+      "attribute": "hasConnector",
+      "type": "enum",
+      "domain": [
+        "with_connector",
+        "without_connector"
+      ],
+      "labelVi": "Đầu nối gắn sẵn",
+      "questionVi": "Cáp có đầu nối gắn sẵn (đã lắp đầu cắm/đầu nối) hay chưa?",
+      "detect": {
+        "with_connector": [
+          "đầu nối",
+          "đầu cắm",
+          "đã gắn",
+          "đã lắp",
+          "gắn sẵn",
+          "lắp sẵn",
+          "có đầu nối",
+          "cắm sẵn",
+          "đúc sẵn",
+          "đầu cắm",
+          "đầu usb",
+          "cổng usb",
+          "接头",
+          "接插件",
+          "接头已安装",
+          "đầu nối gắn sẵn",
+          "đã gắn đầu nối",
+          "đã lắp đầu nối",
+          "có đầu nối gắn sẵn",
+          "đầu cắm usb",
+          "đầu cắm rj45",
+          "đầu cắm hdmi",
+          "chân cắm",
+          "cổng cắm",
+          "đầu jack",
+          "đầu bông sen",
+          "đầu pin",
+          "phích cắm"
+        ],
+        "without_connector": [
+          "không đầu nối",
+          "chưa gắn",
+          "chưa có đầu nối",
+          "không có đầu nối",
+          "để rời",
+          "cuộn",
+          "tờ",
+          "sợi đơn",
+          "dây đơn"
+        ]
+      }
+    },
+    {
+      "attribute": "strandDiameter",
+      "type": "enum",
+      "domain": [
+        "le0_5mm",
+        "gt0_5mm_le5mm",
+        "gt5mm",
+        "unknown"
+      ],
+      "labelVi": "Đường kính lõi dẫn điện",
+      "questionVi": "Đường kính mỗi lõi dẫn điện không quá 0,5mm, trên 0,5mm đến 5mm, hay trên 5mm?",
+      "detect": {
+        "le0_5mm": [
+          "đường kính lõi 0,5mm",
+          "đường kính lõi dưới 0,5",
+          "đường kính lõi nhỏ hơn 0,5",
+          "đường kính không quá 0,5",
+          "dưới 0.5mm",
+          "đk lõi 0,2",
+          "đk lõi 0,3",
+          "đk lõi 0,4",
+          "đường kính lõi 0,2",
+          "đường kính lõi 0,3",
+          "đường kính lõi 0,4",
+          "đường kính mỗi lõi không quá",
+          "strand diameter 0.5mm",
+          "đường kính 0,5mm"
+        ],
+        "gt0_5mm_le5mm": [
+          "đường kính lõi 3,5mm",
+          "đường kính lõi 3mm",
+          "đường kính lõi 4mm",
+          "đường kính lõi 2mm",
+          "đường kính lõi 1mm",
+          "đường kính lõi 0,7",
+          "đường kính lõi 0,8",
+          "đường kính lõi 1,3mm",
+          "đường kính lõi 2,5mm",
+          "đk lõi 3.5",
+          "đk lõi 3mm",
+          "đk lõi 4mm",
+          "đk lõi 1mm",
+          "đk lõi 2mm",
+          "đk lõi 3.9mm",
+          "đường kính 3.5mm",
+          "đường kính 3mm",
+          "đường kính 4mm",
+          "đường kính 5mm",
+          "đường kính 0,5mm"
+        ],
+        "gt5mm": [
+          "đường kính lõi trên 5mm",
+          "đường kính lõi trên 5",
+          "đường kính lõi 6mm",
+          "đường kính lõi 10mm",
+          "đường kính lõi trên 22mm",
+          "trên 5mm đường kính",
+          "đk lõi 10mm",
+          "đường kính lõi 7mm"
+        ],
+        "unknown": [
+          "không xác định",
+          "không rõ",
+          "nhiều lõi",
+          "awg"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "8544_flat_telecom_rubber_paper",
+      "priority": 50,
+      "when": {
+        "cableKind": "telecom",
+        "flatCable": "flat",
+        "insulationMaterial": "rubber_paper"
+      },
+      "hs": "85444291",
+      "reasonVi": "Cáp dữ liệu dẹt cách điện bằng cao su hoặc giấy, có đầu nối → 85444291",
+      "source": "Biểu thuế 2026: 8544.42.91 — Cáp dữ liệu dẹt có hai sợi hoặc hơn, cách điện bằng cao su, plastic hoặc giấy"
+    },
+    {
+      "id": "8544_flat_telecom_plastic_le0_5",
+      "priority": 45,
+      "when": {
+        "cableKind": "telecom",
+        "flatCable": "flat",
+        "insulationMaterial": "plastic",
+        "strandDiameter": "le0_5mm"
+      },
+      "hs": "85444294",
+      "reasonVi": "Cáp dẹt cách điện bằng plastic, đường kính lõi ≤ 0,5mm → 85444294",
+      "source": "Biểu thuế 2026: 8544.42.94 — Cáp điện cách điện bằng plastic, mỗi lõi có đường kính không quá 0,5mm"
+    },
+    {
+      "id": "8544_flat_telecom_plastic_gt5",
+      "priority": 45,
+      "when": {
+        "cableKind": "telecom",
+        "flatCable": "flat",
+        "insulationMaterial": "plastic",
+        "strandDiameter": "gt5mm"
+      },
+      "hs": "85444295",
+      "reasonVi": "Cáp dẹt cách điện bằng plastic, đường kính lõi > 5mm → 85444295",
+      "source": "Biểu thuế 2026: 8544.42.95 — Cáp điện cách điện bằng plastic, mỗi lõi có đường kính trên 5mm"
+    },
+    {
+      "id": "8544_flat_telecom_plastic_0_5_5",
+      "priority": 45,
+      "when": {
+        "cableKind": "telecom",
+        "flatCable": "flat",
+        "insulationMaterial": "plastic",
+        "strandDiameter": "gt0_5mm_le5mm"
+      },
+      "hs": "85444296",
+      "reasonVi": "Cáp dẹt cách điện bằng plastic, đường kính lõi 0,5-5mm → 85444296",
+      "source": "Biểu thuế 2026: 8544.42.96 — Cáp điện cách điện bằng plastic khác"
+    },
+    {
+      "id": "8544_flat_telecom_plastic_unknown",
+      "priority": 40,
+      "when": {
+        "cableKind": "telecom",
+        "flatCable": "flat",
+        "insulationMaterial": "plastic",
+        "strandDiameter": "unknown"
+      },
+      "hs": "85444296",
+      "reasonVi": "Cáp dẹt cách điện bằng plastic, đường kính lõi không xác định → 85444296",
+      "source": "Biểu thuế 2026: 8544.42.96 — Cáp điện cách điện bằng plastic khác"
+    },
+    {
+      "id": "8544_round_telecom_optical",
+      "priority": 55,
+      "when": {
+        "cableKind": "telecom",
+        "flatCable": "round",
+        "insulationMaterial": "other"
+      },
+      "hs": "85444298",
+      "reasonVi": "Cáp tròn truyền dữ liệu dùng sợi quang (optical fiber) → 85444298",
+      "source": "Biểu thuế 2026: 8544.42.98 — Cáp dữ liệu dạng dẹt (khác loại 8544.42.91)"
+    },
+    {
+      "id": "8544_flat_telecom_rubber_paper_other",
+      "priority": 50,
+      "when": {
+        "cableKind": "other",
+        "flatCable": "flat",
+        "insulationMaterial": "rubber_paper"
+      },
+      "hs": "85444922",
+      "reasonVi": "Cáp dẹt cách điện bằng cao su/giấy, dùng khác viễn thông → 85444922",
+      "source": "Biểu thuế 2026: 8544.49.22 — Cáp điện cách điện bằng plastic, mỗi lõi có đường kính không quá 0,5mm"
+    },
+    {
+      "id": "8544_round_other_with_conn_plastic",
+      "priority": 30,
+      "when": {
+        "cableKind": "other",
+        "flatCable": "round",
+        "hasConnector": "with_connector",
+        "insulationMaterial": "plastic"
+      },
+      "hs": "85444299",
+      "reasonVi": "Dây dẫn điện tròn có đầu nối gắn sẵn, cách điện bằng plastic, dùng cho mục đích khác viễn thông → 85444299 (loại khác)",
+      "source": "Biểu thuế 2026: 8544.42.99 — Loại khác có đầu nối"
+    },
+    {
+      "id": "8544_round_other_no_conn_plastic",
+      "priority": 25,
+      "when": {
+        "cableKind": "other",
+        "flatCable": "round",
+        "hasConnector": "without_connector",
+        "insulationMaterial": "plastic"
+      },
+      "hs": "85444929",
+      "reasonVi": "Dây dẫn điện tròn không đầu nối, cách điện bằng plastic, dùng cho mục đích khác → 85444929 (loại khác)",
+      "source": "Biểu thuế 2026: 8544.49.29 — Loại khác, cách điện bằng cao su, plastic hoặc giấy"
+    },
+    {
+      "id": "8544_round_telecom_with_conn",
+      "priority": 35,
+      "when": {
+        "cableKind": "telecom",
+        "flatCable": "round",
+        "hasConnector": "with_connector"
+      },
+      "hs": "85444299",
+      "reasonVi": "Cáp tròn có đầu nối gắn sẵn, truyền dữ liệu/tín hiệu → 85444299 (loại khác)",
+      "source": "Biểu thuế 2026: 8544.42.99 — Loại khác có đầu nối"
+    },
+    {
+      "id": "8544_round_telecom_no_conn",
+      "priority": 32,
+      "when": {
+        "cableKind": "telecom",
+        "flatCable": "round",
+        "hasConnector": "without_connector"
+      },
+      "hs": "85444929",
+      "reasonVi": "Cáp tròn không đầu nối, truyền dữ liệu/tín hiệu → 85444929",
+      "source": "Biểu thuế 2026: 8544.49.29 — Loại khác, cách điện bằng cao su, plastic hoặc giấy"
+    },
+    {
+      "id": "8544_default",
+      "priority": 10,
+      "when": {},
+      "hs": "85444999",
+      "reasonVi": "Không xác định được → 85444999 (loại khác, không thuộc các trường hợp đặc biệt)",
+      "source": "Biểu thuế 2026: 8544.49.99 — Loại khác"
+    }
+  ],
+  "attributes": [
+    "cableKind",
+    "flatCable",
+    "insulationMaterial",
+    "hasConnector",
+    "strandDiameter"
+  ]
+}
