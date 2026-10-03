@@ -1,0 +1,113 @@
+{
+  "heading": "5911",
+  "titleVi": "Sản phẩm vải và các sản phẩm kỹ thuật dùng trong công nghiệp dệt; specified in note 7 to this chapter",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Sản phẩm có phủ/tráng/ép với cao su, da hoặc vật liệu khác không? Có phải vải rây sàng, vải lọc máy giấy, vải ép dầu, hoặc miếng đệm không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 5911 + Chú giải nhóm 5911 (GIR 1 + 6)",
+  "inputs": [
+    {
+      "attribute": "coatingMaterial",
+      "type": "enum",
+      "domain": ["rubber_or_leather", "other_material", "none"],
+      "labelVi": "Vật liệu phủ/tráng/ép",
+      "questionVi": "Vải có được phủ, tráng hoặc ép với cao su, da hoặc vật liệu khác không?",
+      "detect": {
+        "rubber_or_leather": ["vải dệt phớt tráng", "vải phủ cao su", "vải phủ da", "dệt phủ", "felt coated", "coated fabric", "phủ cao su", "tráng cao su"],
+        "other_material": ["vải ép nhựa", "laminated fabric", "vải laminated", "polymer coating"],
+        "none": ["vải không phủ", "vải thuần", "uncoated", "vải đơn thuần", "vải không tráng", "vải không phủ"]
+      }
+    },
+    {
+      "attribute": "technicalUse",
+      "type": "enum",
+      "domain": ["bolting_cloth", "paper_machine", "oil_press", "gasket", "other"],
+      "labelVi": "Công dụng kỹ thuật",
+      "questionVi": "Sản phẩm dùng cho mục đích kỹ thuật nào?",
+      "detect": {
+        "bolting_cloth": ["vải rây", "rây sàng", "bolting cloth", "lưới rây", "vải lọc sàng"],
+        "paper_machine": ["vải lọc máy giấy", "vải lọc bột giấy", "vải lọc công nghiệp giấy", "felt paper", "paper machine"],
+        "oil_press": ["vải lọc ép dầu", "ép dầu", "lọc dầu", "straining cloth oil", "vải ép", "bộ lọc dầu", "tấm vai ép lọc", "vai ép lọc", "khung ép lọc"],
+        "gasket": ["miếng đệm", "gioăng", "gasket", "đệm kỹ thuật", "miếng chèn", "pad gasket"],
+        "other": ["sản phẩm kỹ thuật", "bộ lọc công nghiệp", "filter cloth", "lọc bụi", "vải kỹ thuật", "đệm lọc"]
+      }
+    },
+    {
+      "attribute": "weightGSM",
+      "type": "number",
+      "unit": "g/m²",
+      "fromSpec": "weight",
+      "labelVi": "Định lượng (g/m²)",
+      "questionVi": "Định lượng vải là bao nhiêu g/m²?",
+      "condition": "technicalUse paper_machine"
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-03",
+      "priority": 10,
+      "when": { "technicalUse": "bolting_cloth" },
+      "hs": "59112000",
+      "reasonVi": "GIR 1 — vải rây sàng (bolting cloth) chuyên dùng",
+      "source": "Biểu thuế 2026 nhóm 5911"
+    },
+    {
+      "id": "r-04",
+      "priority": 10,
+      "when": { "technicalUse": "oil_press" },
+      "hs": "59114000",
+      "reasonVi": "GIR 1 — vải lọc dùng trong ép dầu hoặc loại tương tự (kể cả làm bằng tóc)",
+      "source": "Biểu thuế 2026 nhóm 5911"
+    },
+    {
+      "id": "r-04b",
+      "priority": 9,
+      "when": { "technicalUse": "paper_machine", "weightGSM": { "lt": 650 } },
+      "hs": "59113100",
+      "reasonVi": "GIR 6 — vải/felt dùng trong máy giấy, định lượng dưới 650 g/m²",
+      "source": "Biểu thuế 2026 nhóm 5911"
+    },
+    {
+      "id": "r-05",
+      "priority": 9,
+      "when": { "technicalUse": "paper_machine", "weightGSM": { "gte": 650 } },
+      "hs": "59113200",
+      "reasonVi": "GIR 6 — vải/felt dùng trong máy giấy, định lượng từ 650 g/m² trở lên",
+      "source": "Biểu thuế 2026 nhóm 5911"
+    },
+    {
+      "id": "r-07",
+      "priority": 8,
+      "when": { "technicalUse": "gasket" },
+      "hs": "59119010",
+      "reasonVi": "GIR 6 — miếng đệm và miếng chèn bằng vải kỹ thuật",
+      "source": "Biểu thuế 2026 nhóm 5911"
+    },
+    {
+      "id": "r-08",
+      "priority": 7,
+      "when": { "technicalUse": "other" },
+      "hs": "59119090",
+      "reasonVi": "Loại khác n.e.c. trong nhóm 5911",
+      "source": "Biểu thuế 2026 nhóm 5911"
+    },
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": { "coatingMaterial": "rubber_or_leather" },
+      "hs": "59111000",
+      "reasonVi": "GIR 1 — vải dệt/phớt tráng, phủ hoặc ép với cao su hoặc da",
+      "source": "Biểu thuế 2026 nhóm 5911"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": { "coatingMaterial": "other_material" },
+      "hs": "59111000",
+      "reasonVi": "GIR 1 — vải dệt/phớt tráng, phủ hoặc ép với vật liệu khác (nhựa, polymer)",
+      "source": "Biểu thuế 2026 nhóm 5911"
+    }
+  ]
+}
