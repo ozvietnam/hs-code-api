@@ -253,6 +253,78 @@
             "dia": true,
             "key": "vali du lịch",
             "folded": "vali du lich"
+          },
+          {
+            "raw": "Ba lô đeo vai",
+            "dia": true,
+            "key": "ba lô đeo vai",
+            "folded": "ba lo deo vai"
+          },
+          {
+            "raw": "Hộp đựng tai nghe",
+            "dia": true,
+            "key": "hộp đựng tai nghe",
+            "folded": "hop dung tai nghe"
+          },
+          {
+            "raw": "Hộp đựng rượu vang",
+            "dia": true,
+            "key": "hộp đựng rượu vang",
+            "folded": "hop dung ruou vang"
+          },
+          {
+            "raw": "Ba lô thời trang",
+            "dia": true,
+            "key": "ba lô thời trang",
+            "folded": "ba lo thoi trang"
+          },
+          {
+            "raw": "Balo",
+            "dia": false,
+            "key": "balo",
+            "folded": "balo"
+          },
+          {
+            "raw": "Dây đai đeo đồ nghề",
+            "dia": true,
+            "key": "dây đai đeo đồ nghề",
+            "folded": "day dai deo do nghe"
+          },
+          {
+            "raw": "Bìa da đựng tài liệu A4",
+            "dia": true,
+            "key": "bìa da đựng tài liệu a4",
+            "folded": "bia da dung tai lieu a4"
+          },
+          {
+            "raw": "Dụng cụ cài hông",
+            "dia": true,
+            "key": "dụng cụ cài hông",
+            "folded": "dung cu cai hong"
+          },
+          {
+            "raw": "Hộp đựng đồ",
+            "dia": true,
+            "key": "hộp đựng đồ",
+            "folded": "hop dung do"
+          },
+          {
+            "raw": "Valy có bánh xe",
+            "dia": true,
+            "key": "valy có bánh xe",
+            "folded": "valy co banh xe"
+          },
+          {
+            "raw": "Giỏ đựng quà tặng",
+            "dia": true,
+            "key": "giỏ đựng quà tặng",
+            "folded": "gio dung qua tang"
+          },
+          {
+            "raw": "Ba lô du lịch",
+            "dia": true,
+            "key": "ba lô du lịch",
+            "folded": "ba lo du lich"
           }
         ]
       }
@@ -271,7 +343,17 @@
       ],
       "labelVi": "Chất liệu mặt ngoài",
       "questionVi": "Mặt ngoài bằng gì: da thuộc (leather), sợi lưu hóa (SEN), plastic dạng tấm, vật liệu dệt, bìa, hay vật liệu khác?",
-      "_detect": {}
+      "_detect": {},
+      "detect": {
+        "leather": [
+          "nsx: guangzhou deconn leather industry. mới 100%",
+          "nsx: guangzhou kashimu leather goods co., ltd,mới"
+        ],
+        "paper": [
+          "hiệu,nsx: yiwu xihe paper products factory, mới",
+          "nhân,không hiệu,nsx:yiwu xihe paper products factory, mới"
+        ]
+      }
     },
     {
       "attribute": "sizeLimit",
