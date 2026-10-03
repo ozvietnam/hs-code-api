@@ -526,24 +526,140 @@
       "id": "8414-r28",
       "priority": 1,
       "hs": "84145910",
-      "reasonVi": "Phân loại 84145910: deviceKind=fan, tenHang chứa 'máy tính' hoặc 'case máy' — quạt tản nhiệt máy vi tính",
+      "reasonVi": "Phân loại 84145910 theo GIR 6: deviceKind=fan, mountKind=embedded — quạt tản nhiệt máy vi tính/gắn trong tủ điện",
       "source": "hermes-211-8414",
       "gir": "GIR 6",
       "when": {
-        "deviceKind": "fan"
+        "deviceKind": "fan",
+        "mountKind": "embedded"
       }
     },
     {
       "id": "8414-r29",
       "priority": 2,
       "hs": "84145930",
-      "reasonVi": "Phân loại 84145930: deviceKind=fan, tenHang chứa 'thổi bụi' hoặc 'thổi khí cao' — máy thổi khí công nghiệp",
+      "reasonVi": "Phân loại 84145930: deviceKind=fan, mountKind=handheld, powerSource=AC — máy thổi bụi cầm tay công nghiệp",
       "source": "hermes-211-8414",
       "gir": "GIR 6",
       "when": {
         "deviceKind": "fan",
         "mountKind": "handheld",
         "powerSource": "AC"
+      }
+    },
+    {
+      "id": "8414-r30",
+      "priority": 17,
+      "hs": "84142010",
+      "reasonVi": "Phân loại 84142010 theo GIR 6: deviceKind=vacuum_pump, isSEN=false — bơm tay chân không",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "vacuum_pump",
+        "isSEN": false
+      }
+    },
+    {
+      "id": "8414-r31",
+      "priority": 17,
+      "hs": "84142090",
+      "reasonVi": "Phân loại 84142090 theo GIR 6: deviceKind=vacuum_pump, isSEN=false — bơm chân không bằng tay/chân",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "vacuum_pump"
+      }
+    },
+    {
+      "id": "8414-r32",
+      "priority": 18,
+      "hs": "84143090",
+      "reasonVi": "Phân loại 84143090 theo GIR 6: deviceKind=compressor, application=refrigerating — máy nén dùng trong thiết bị làm lạnh",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "compressor"
+      }
+    },
+    {
+      "id": "8414-r33",
+      "priority": 18,
+      "hs": "84144000",
+      "reasonVi": "Phân loại 84144000 theo GIR 6: deviceKind=compressor, isSEN=false — máy nén khí gắn bánh xe kéo được",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "compressor",
+        "isSEN": false
+      }
+    },
+    {
+      "id": "8414-r34",
+      "priority": 10,
+      "hs": "84145949",
+      "reasonVi": "Phân loại 84145949 theo GIR 6: deviceKind=fan, mountKind=industrial — quạt công nghiệp n.e.c.",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "fan",
+        "mountKind": "industrial"
+      }
+    },
+    {
+      "id": "8414-r35",
+      "priority": 15,
+      "hs": "84146099",
+      "reasonVi": "Phân loại 84146099 theo GIR 6: deviceKind=hood — máy hút mùi/hút khói hộ gia đình",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "hood"
+      }
+    },
+    {
+      "id": "8414-r36",
+      "priority": 13,
+      "hs": "84146011",
+      "reasonVi": "Phân loại 84146011 theo GIR 6: deviceKind=hood, isSEN=true — tủ hút lọc khí phòng thí nghiệm an toàn sinh học",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "hood",
+        "isSEN": true
+      }
+    },
+    {
+      "id": "8414-r37",
+      "priority": 15,
+      "hs": "84146091",
+      "reasonVi": "Phân loại 84146091 theo GIR 6: deviceKind=hood, mountKind=industrial — hood công nghiệp",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "hood",
+        "mountKind": "industrial"
+      }
+    },
+    {
+      "id": "8414-r38",
+      "priority": 18,
+      "hs": "84148090",
+      "reasonVi": "Phân loại 84148090 theo GIR 6: deviceKind=compressor — máy nén khí/máy bơm khác n.e.c.",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "compressor"
+      }
+    },
+    {
+      "id": "8414-r39",
+      "priority": 19,
+      "hs": "84149090",
+      "reasonVi": "Phân loại 84149090 theo GIR 6: deviceKind=parts — bộ phận máy bơm/máy nén/quạt n.e.c.",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "parts"
       }
     }
   ]
