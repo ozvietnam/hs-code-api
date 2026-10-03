@@ -2658,21 +2658,83 @@
         "unspecified"
       ],
       "detect": {
+        "lt16A": [
+          "1a",
+          "2a",
+          "3a",
+          "4a",
+          "5a",
+          "6a",
+          "7a",
+          "8a",
+          "9a",
+          "10a",
+          "11a",
+          "12a",
+          "13a",
+          "14a",
+          "15a"
+        ],
         "a16to32": [
-          "a16to32",
-          "a16to32"
+          "16a",
+          "17a",
+          "18a",
+          "19a",
+          "20a",
+          "21a",
+          "22a",
+          "23a",
+          "24a",
+          "25a",
+          "26a",
+          "27a",
+          "28a",
+          "29a",
+          "30a",
+          "31a",
+          "32a"
         ],
         "a32to1000": [
-          "a32to1000",
-          "a32to1000"
-        ],
-        "lt16A": [
-          "lt16a",
-          "lt16a"
+          "33a",
+          "35a",
+          "40a",
+          "45a",
+          "50a",
+          "55a",
+          "60a",
+          "63a",
+          "65a",
+          "70a",
+          "75a",
+          "80a",
+          "90a",
+          "100a",
+          "110a",
+          "120a",
+          "125a",
+          "150a",
+          "160a",
+          "175a",
+          "200a",
+          "225a",
+          "250a",
+          "300a",
+          "350a",
+          "400a",
+          "450a",
+          "500a",
+          "600a",
+          "630a",
+          "700a",
+          "800a",
+          "1000a"
         ],
         "unspecified": [
-          "unspecified",
-          "unspecified"
+          "không có thông số",
+          "thường",
+          "tiêu chuẩn",
+          "generic",
+          "standard"
         ]
       }
     },
@@ -2700,7 +2762,10 @@
           "circuit breaker",
           "cb",
           "mcb",
-          "rcb"
+          "rcb",
+          "bộ ngắt mạch",
+          "thiết bị đóng cắt tự động",
+          "cb điện"
         ],
         "fiberConnector": [
           "fiberconnector",
@@ -2710,11 +2775,18 @@
           "fuse",
           "fuse",
           "cầu chì",
-          "fuze"
+          "fuze",
+          "cầu chì ống",
+          "cầu chì nhiệt",
+          "cầu chì gắn trên mạch"
         ],
         "junctionBlock": [
           "junctionblock",
-          "junctionblock"
+          "junctionblock",
+          "cọc đấu nối",
+          "đầu nối",
+          "cầu đấu",
+          "đầu kết nối"
         ],
         "lampholder": [
           "lampholder",
@@ -2728,7 +2800,8 @@
           "plug",
           "phích cắm",
           "ổ cắm",
-          "socket"
+          "socket",
+          "phích ổ cắm"
         ],
         "relayGt60V": [
           "relaygt60v",
@@ -2750,7 +2823,23 @@
           "switch",
           "switch",
           "công tắc",
-          "khóa điện"
+          "khóa điện",
+          "nút nhấn",
+          "tay dao",
+          "công tắc tự động",
+          "công tắc hành trình",
+          "công tắc cửa",
+          "công tắc dòng chảy"
+        ],
+        "relay": [
+          "rơ le",
+          "relay",
+          "rơ le bảo vệ",
+          "rơ le trung gian",
+          "rơ le bán dẫn",
+          "rơ le thời gian",
+          "contactor",
+          "khởi động từ"
         ]
       }
     },
@@ -2779,14 +2868,20 @@
         ],
         "fan": [
           "fan",
-          "fan"
+          "fan",
+          "quạt điện",
+          "quạt"
         ],
         "motorStarter": [
           "motorstarter",
           "motorstarter",
           "khởi động động cơ",
           "motor starter",
-          "mạch khởi động"
+          "mạch khởi động",
+          "khởi động từ",
+          "bộ khởi động",
+          "contactor chân không",
+          "công tắc tơ"
         ],
         "none": [
           "none",
@@ -2794,7 +2889,10 @@
           "thường",
           "tiêu chuẩn",
           "standard",
-          "generic"
+          "generic",
+          "thường",
+          "tiêu chuẩn",
+          "standard"
         ],
         "radio": [
           "radio",
