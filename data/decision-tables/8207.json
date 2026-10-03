@@ -1,0 +1,223 @@
+{
+  "heading": "8207",
+  "titleVi": "Dụng cụ có thể thay đổi để gá trên máy cầm tay hoặc máy công cụ (đục, khoan, tarô, phay, tiện...)",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Câu hỏi bản chất: dụng cụ dùng để làm gì? Khoan đá → 82071900. Khoan kim loại/gỗ/bê tông (không phải đá) → 82075000. Đèp/dập/đục → 82073000. Tarô ren → 82074000. Các loại khác → theo công dụng cụ thể.",
+  "sourceVi": "Biểu thuế 2026 nhóm 82.07. Ghi chú: 82075000 không gồm dụng cụ khoan đá (82071900).",
+  "inputs": [
+    {
+      "attribute": "applicationKind",
+      "type": "enum",
+      "labelVi": "Loại công dụng dụng cụ",
+      "questionVi": "Dụng cụ dùng để làm gì: khoan kim loại/gỗ/bê tông (không phải đá) / khoan đá / đèp dập đục lỗ / tarô ren / doa chuốt / phay / tiện / dụng cụ khác?",
+      "domain": [
+        "drill_metal",
+        "drill_stone",
+        "press_stamp",
+        "tap_thread",
+        "bore_broach",
+        "mill",
+        "turn",
+        "other_interchange"
+      ],
+      "detect": {
+        "drill_metal": [
+          "khoan kim loại",
+          "khoan bê tông",
+          "mũi khoan",
+          "khoan",
+          "drill",
+          "hợp kim thép",
+          "thép hợp kim",
+          "mũi khoan 2 cạnh",
+          "mũi khoan 4 cạnh"
+        ],
+        "drill_stone": [
+          "khoan đá",
+          "khoan đất",
+          "mũi khoan đá",
+          "cần khoan",
+          "khoan thăm dò",
+          "thăm dò đất đá",
+          "mũi khoan đất"
+        ],
+        "press_stamp": [
+          "đục",
+          "dập",
+          "đèp",
+          "ép",
+          "stamp",
+          "press",
+          "punch"
+        ],
+        "tap_thread": [
+          "taro",
+          "taro xoắn",
+          "ren",
+          "thread"
+        ],
+        "bore_broach": [
+          "doa",
+          "chuốt",
+          "bore",
+          "broach"
+        ],
+        "mill": [
+          "phay",
+          "mũi phay",
+          "mill"
+        ],
+        "turn": [
+          "tiện",
+          "tiện",
+          "turn",
+          "lathe"
+        ],
+        "other_interchange": [
+          "dụng cụ có thể thay đổi",
+          "đầu vít",
+          "đầu vòi",
+          "trục dao",
+          "bào",
+          "lắp máy khoan",
+          "hạt dao",
+          "củ dao",
+          "đầu mũi",
+          "tay bắt",
+          "phụ kiện"
+        ]
+      }
+    },
+    {
+      "attribute": "materialKind",
+      "type": "enum",
+      "labelVi": "Vật liệu làm việc",
+      "questionVi": "Dụng cụ làm bằng vật liệu gì: kim loại cứng (hợp kim, cacbon, cermet) hay vật liệu khác?",
+      "domain": [
+        "hard_metal",
+        "other_material"
+      ],
+      "detect": {
+        "hard_metal": [
+          "hợp kim",
+          "thép hợp kim",
+          "cacbon",
+          "cermet",
+          "hard metal",
+          "cemented carbide"
+        ],
+        "other_material": []
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "8207-r01",
+      "priority": 60,
+      "hs": "82075000",
+      "reasonVi": "Dụng cụ khoan kim loại/gỗ/bê tông (không phải đá) → 82075000",
+      "source": "hermes-211-8207",
+      "gir": "GIR 1",
+      "when": {
+        "applicationKind": "drill_metal"
+      }
+    },
+    {
+      "id": "8207-r02",
+      "priority": 60,
+      "hs": "82071900",
+      "reasonVi": "Dụng cụ khoan đá/khoan đất (thăm dò, xây dựng) → 82071900",
+      "source": "hermes-211-8207",
+      "gir": "GIR 1",
+      "when": {
+        "applicationKind": "drill_stone"
+      }
+    },
+    {
+      "id": "8207-r03",
+      "priority": 60,
+      "hs": "82073000",
+      "reasonVi": "Dụng cụ đèp/dập/đục lỗ → 82073000",
+      "source": "hermes-211-8207",
+      "gir": "GIR 1",
+      "when": {
+        "applicationKind": "press_stamp"
+      }
+    },
+    {
+      "id": "8207-r04",
+      "priority": 60,
+      "hs": "82074000",
+      "reasonVi": "Dụng cụ tarô ren → 82074000",
+      "source": "hermes-211-8207",
+      "gir": "GIR 1",
+      "when": {
+        "applicationKind": "tap_thread"
+      }
+    },
+    {
+      "id": "8207-r05",
+      "priority": 60,
+      "hs": "82076000",
+      "reasonVi": "Dụng cụ doa/chuốt → 82076000",
+      "source": "hermes-211-8207",
+      "gir": "GIR 1",
+      "when": {
+        "applicationKind": "bore_broach"
+      }
+    },
+    {
+      "id": "8207-r06",
+      "priority": 60,
+      "hs": "82077000",
+      "reasonVi": "Dụng cụ phay → 82077000",
+      "source": "hermes-211-8207",
+      "gir": "GIR 1",
+      "when": {
+        "applicationKind": "mill"
+      }
+    },
+    {
+      "id": "8207-r07",
+      "priority": 60,
+      "hs": "82078000",
+      "reasonVi": "Dụng cụ tiện → 82078000",
+      "source": "hermes-211-8207",
+      "gir": "GIR 1",
+      "when": {
+        "applicationKind": "turn"
+      }
+    },
+    {
+      "id": "8207-r08",
+      "priority": 30,
+      "hs": "82079000",
+      "reasonVi": "Dụng cụ có thể thay đổi khác (đầu vít, đầu vòi, trục dao...) → 82079000",
+      "source": "hermes-211-8207",
+      "gir": "GIR 1",
+      "when": {
+        "applicationKind": "other_interchange"
+      }
+    },
+    {
+      "id": "8207-r09",
+      "priority": 30,
+      "hs": "82072000",
+      "reasonVi": "Khuôn dùng để kéo hoặc ép đùn kim loại → 82072000",
+      "source": "hermes-211-8207",
+      "gir": "GIR 1",
+      "when": {}
+    },
+    {
+      "id": "8207-r10",
+      "priority": 30,
+      "hs": "82071300",
+      "reasonVi": "Dụng cụ có bộ phận làm việc bằng gốm kim loại (cermet) → 82071300",
+      "source": "hermes-211-8207",
+      "gir": "GIR 1",
+      "when": {}
+    }
+  ]
+}
