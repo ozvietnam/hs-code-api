@@ -8,19 +8,6 @@
   "version": 1,
   "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → draft (có bảng, chưa qua cửa dữ liệu thật) → done (qua cửa). `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
-    "3919": {
-      "status": "draft",
-      "by": "hermes-211",
-      "table": true,
-      "leafCount": 10,
-      "rules": 5,
-      "attrs": [
-        "adhesiveForm"
-      ],
-      "draftAt": "2026-10-04T07:05:00.000Z",
-      "noteVi": "Bảng 5 rules/1 attr (adhesiveForm), phủ 10/10 lá 3919. Nguồn: Biểu thuế 2026 + oz-gold 39 entries. oz-to-cases: +4 cases, 15 wrong (băng dính PVC vs PE vs PP — bảng cần thêm materialType attr).",
-      "gateVi": "draft — cần chuyên viên xác minh bảng và bổ sung attrs phân biệt PVC/PE/PP cho băng dính cuộn"
-    },
     "3923": {
       "status": "draft",
       "doneAt": "2026-10-03T02:01:00.000Z",
@@ -42,19 +29,6 @@
       "draftAt": "2026-10-02T15:44:00.000Z",
       "gateVi": "pending expert review after PR#98 merge",
       "noteVi": "Bảng 7 rules/3 attrs (articleKind + material + specificKind), phủ 7/7 mã 8 số. Nguồn: Biểu thuế 2026."
-    },
-    "3925": {
-      "status": "draft",
-      "by": "hermes-211",
-      "table": true,
-      "leafCount": 4,
-      "rules": 4,
-      "attrs": [
-        "productKind"
-      ],
-      "draftAt": "2026-10-04T07:00:00.000Z",
-      "noteVi": "Bảng 4 rules/1 attr (productKind: tankContainer/doorWindowFrame/shutterBlind/other), phủ 4/4 lá 3925. Nguồn: Biểu thuế 2026 + oz-gold 32 entries.",
-      "gateVi": "draft — 1/30 oz resolved, cần chuyên viên xác minh bảng cho 29 unresolved còn lại"
     },
     "3926": {
       "status": "draft",
@@ -190,19 +164,6 @@
       "by": "hermes-211",
       "note": "furnishingKind enum, 10 leaves covered, no oz data"
     },
-    "6307": {
-      "status": "draft",
-      "by": "hermes-211",
-      "table": true,
-      "leafCount": 10,
-      "rules": 2,
-      "attrs": [
-        "nonwovenType"
-      ],
-      "draftAt": "2026-10-04T06:55:00.000Z",
-      "noteVi": "Bảng 2 rules/1 attr (nonwovenType), phủ 10 lá 6307 (khẩu trang, đai, vải không dệt, dây buộc, loại khác). Nguồn: Biểu thuế 2026 + oz-gold 40 entries. oz-to-cases: 0/34 resolved — hầu hết oz là 63079090 (loại khác), cần chuyên viên xác minh.",
-      "gateVi": "draft — 0/34 oz resolved, cần chuyên viên xác minh bảng"
-    },
     "6402": {
       "status": "draft",
       "draftAt": "2026-10-02T12:28:29.114Z",
@@ -222,19 +183,6 @@
       "rules": 0,
       "noteVi": "Bảng trống (0 rules) — placeholder detect phrases, cần xây dựng rules từ biểu thuế 6403.",
       "gateVi": "bảng rỗng, cần dev xây dựng rules"
-    },
-    "6405": {
-      "status": "draft",
-      "by": "hermes-211",
-      "table": true,
-      "leafCount": 3,
-      "rules": 3,
-      "attrs": [
-        "upperMaterial"
-      ],
-      "draftAt": "2026-10-04T06:45:00.000Z",
-      "noteVi": "Bảng 3 rules/1 attr (upperMaterial: leatherUpper/textileUpper/otherUpper), phủ 3/3 lá (64051000/64052000/64059000). Nguồn: Biểu thuế 2026 + oz-gold 40 entries.",
-      "gateVi": "draft — cần chạy oz-to-cases và expert review"
     },
     "7110": {
       "status": "draft",
@@ -1032,13 +980,6 @@
       "by": "hermes-211",
       "note": "oz 56% (22/39), toyKind enum, 15 leaves covered"
     },
-    "9603": {
-      "status": "draft",
-      "rules": 18,
-      "leaves": 11,
-      "ozCases": 29,
-      "source": "oz-gold 32 entries + biểu thuế"
-    },
     "9615": {
       "status": "draft",
       "table": true,
@@ -1054,6 +995,23 @@
       ],
       "gateVi": "pending expert review — 47 oz entries, 9 rules",
       "noteVi": "Bảng 9 rules / 2 attrs (productKind + material), phủ 9 lá 8 số. Nguồn: oz-gold + biểu thuế 2026."
+    },
+    "9603": {
+      "status": "draft",
+      "rules": 18,
+      "leaves": 11,
+      "ozCases": 29,
+      "source": "oz-gold 32 entries + biểu thuế"
+    },
+    "9403": {
+      "status": "draft",
+      "leafCount": 18,
+      "by": "hermes-211",
+      "noteVi": "Bảng 25 rules/4 attrs (senFlag + productKind + materialKind + roomUse), phủ 18/18 lá 8 số. Nguồn: Biểu thuế 2026 + 50 oz-gold entries.",
+      "doneAt": null,
+      "commit": null,
+      "table": true,
+      "gateVi": "oz/text below acceptance gate — pending expert review"
     }
   }
 }
