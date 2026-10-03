@@ -2,54 +2,143 @@
   "noteVi": "Ca kiểm bảng quyết định. Mỗi ca: nhóm + câu người gõ (text) và/hoặc dữ kiện tường minh (facts) → expect: hs (RESOLVED) hoặc ask (INSUFFICIENT, thuộc tính phải hỏi). Mọi lá của bảng nên có ít nhất một ca chốt ra nó — dict:check kiểm.",
   "cases": [
     {
-      "id": "8427-electric-text",
-      "heading": "8427",
-      "text": "xe nâng điện tự hành 2 tấn ngồi lái",
-      "expectHs": "84271000"
-    },
-    {
-      "id": "8427-diesel-text",
-      "heading": "8427",
-      "text": "xe nâng dầu diesel 3 tấn",
-      "expectHs": "84272000"
-    },
-    {
-      "id": "8427-hand-pallet",
-      "heading": "8427",
-      "text": "xe nâng tay 2.5 tấn",
-      "expectHs": "84279000"
-    },
-    {
-      "id": "8427-forklift-ask-drive",
-      "heading": "8427",
-      "text": "forklift tự hành 1.5 tấn",
+      "id": "4008-cellular-ask",
+      "heading": "4008",
+      "text": "tấm cao su xốp lưu hóa",
       "expectAsk": [
-        "driveType"
+        "specialFeature"
       ]
     },
     {
-      "id": "8427-facts-only",
-      "heading": "8427",
-      "text": "xe nâng",
-      "facts": {
-        "selfPropelled": "yes",
-        "driveType": "other"
-      },
-      "expectHs": "84272000"
+      "id": "4008-cellular-lined-ok",
+      "heading": "4008",
+      "text": "tấm cao su xốp có lớp vải dệt lưu hóa",
+      "expectHs": "40081110"
     },
     {
-      "id": "8427-unknown-asks-self",
-      "heading": "8427",
-      "text": "xe nâng 2 tấn",
+      "id": "4008-cellular-plain-ok",
+      "heading": "4008",
+      "text": "tấm cao su xốp không tráng lưu hóa",
+      "expectHs": "40081120"
+    },
+    {
+      "id": "4008-cellular-strip-ok",
+      "heading": "4008",
+      "text": "dải cao su xốp lưu hóa loại khác",
+      "expectHs": "40081900"
+    },
+    {
+      "id": "4008-noncellular-ask",
+      "heading": "4008",
+      "text": "tấm cao su lưu hóa",
       "expectAsk": [
-        "selfPropelled"
+        "materialType"
       ]
     },
     {
-      "id": "7209-coil-3",
+      "id": "4008-noncellular-shoe-ok",
+      "heading": "4008",
+      "text": "đế giày tấm cao su đặc lưu hóa",
+      "expectHs": "40082140"
+    },
+    {
+      "id": "4412-blockboard-conifer",
+      "heading": "4412",
+      "text": "khối ván gỗ lá kim",
+      "expectHs": "44125900"
+    },
+    {
+      "id": "4412-lvl-teak",
+      "heading": "4412",
+      "text": "gỗ dán nhiều lớp LVL gỗ tếch",
+      "expectHs": "44124110"
+    },
+    {
+      "id": "4412-ply-bamboo",
+      "heading": "4412",
+      "text": "gỗ dán tre",
+      "expectAsk": [
+        "productKind"
+      ]
+    },
+    {
+      "id": "4412-ply-specified-teak",
+      "heading": "4412",
+      "text": "gỗ dán đặc biệt gỗ tếch",
+      "expectAsk": [
+        "productKind"
+      ]
+    },
+    {
+      "id": "4412-ply-tropical",
+      "heading": "4412",
+      "text": "gỗ dán có lớp gỗ nhiệt đới",
+      "expectAsk": [
+        "productKind",
+        "isTeak"
+      ]
+    },
+    {
+      "id": "6004-knit-20pct-ask",
+      "heading": "6004",
+      "text": "vải dệt kim có sợi đàn hồi 20%",
+      "expectAsk": [
+        "elasticFiberContent"
+      ]
+    },
+    {
+      "id": "6004-knit-gt20-explicit",
+      "heading": "6004",
+      "text": "vải dệt kim có sợi đàn hồi trên 20% khối lượng",
+      "expectHs": "60041090"
+    },
+    {
+      "id": "6004-knit-le20-explicit",
+      "heading": "6004",
+      "text": "vải dệt kim có sợi đàn hồi không quá 20% khối lượng",
+      "expectHs": "60041010"
+    },
+    {
+      "id": "6004-knit-unk-ask",
+      "heading": "6004",
+      "text": "vải dệt kim có cao su",
+      "expectAsk": [
+        "elasticFiberContent"
+      ]
+    },
+    {
+      "id": "7209-ask-form",
       "heading": "7209",
-      "text": "thép cuộn cán nguội dày 3mm",
-      "expectHs": "72091500"
+      "text": "thép cán nguội dày 2mm khổ 1000",
+      "expectAsk": [
+        "form"
+      ]
+    },
+    {
+      "id": "7209-coil-05-1-boundary-1250",
+      "heading": "7209",
+      "text": "thép cuộn cán nguội dày 1mm rộng 1250mm",
+      "expectHs": "72091710"
+    },
+    {
+      "id": "7209-coil-05-1-narrow-ly",
+      "heading": "7209",
+      "text": "tôn cuộn cán nguội dày 0,8 ly khổ 1200mm",
+      "expectHs": "72091710"
+    },
+    {
+      "id": "7209-coil-05-1-wide",
+      "heading": "7209",
+      "text": "thép cuộn cán nguội dày 0.6mm khổ 1500mm",
+      "expectHs": "72091790"
+    },
+    {
+      "id": "7209-coil-1-3-ask-width",
+      "heading": "7209",
+      "text": "thép cuộn cán nguội dày 2mm",
+      "expectAsk": [
+        "widthMm"
+      ]
     },
     {
       "id": "7209-coil-1-3-narrow",
@@ -64,36 +153,18 @@
       "expectHs": "72091690"
     },
     {
-      "id": "7209-coil-1-3-ask-width",
+      "id": "7209-coil-3",
       "heading": "7209",
-      "text": "thép cuộn cán nguội dày 2mm",
+      "text": "thép cuộn cán nguội dày 3mm",
+      "expectHs": "72091500"
+    },
+    {
+      "id": "7209-coil-thin-ask-carbon",
+      "heading": "7209",
+      "text": "thép cuộn cán nguội dày 0.15mm",
       "expectAsk": [
-        "widthMm"
+        "carbonPct"
       ]
-    },
-    {
-      "id": "7209-coil-05-1-narrow-ly",
-      "heading": "7209",
-      "text": "tôn cuộn cán nguội dày 0,8 ly khổ 1200mm",
-      "expectHs": "72091710"
-    },
-    {
-      "id": "7209-coil-05-1-boundary-1250",
-      "heading": "7209",
-      "text": "thép cuộn cán nguội dày 1mm rộng 1250mm",
-      "expectHs": "72091710"
-    },
-    {
-      "id": "7209-coil-05-1-wide",
-      "heading": "7209",
-      "text": "thép cuộn cán nguội dày 0.6mm khổ 1500mm",
-      "expectHs": "72091790"
-    },
-    {
-      "id": "7209-coil-thin-tmbp",
-      "heading": "7209",
-      "text": "tôn đen TMBP dạng cuộn dày 0.2mm",
-      "expectHs": "72091810"
     },
     {
       "id": "7209-coil-thin-lowc",
@@ -105,24 +176,34 @@
       "expectHs": "72091891"
     },
     {
-      "id": "7209-coil-thin-ask-carbon",
-      "heading": "7209",
-      "text": "thép cuộn cán nguội dày 0.15mm",
-      "expectAsk": [
-        "carbonPct"
-      ]
-    },
-    {
       "id": "7209-coil-thin-other",
       "heading": "7209",
       "text": "thép cuộn cán nguội dày 0.3mm",
       "expectHs": "72091899"
     },
     {
-      "id": "7209-flat-3",
+      "id": "7209-coil-thin-tmbp",
       "heading": "7209",
-      "text": "thép tấm cán nguội dày 4mm",
-      "expectHs": "72092500"
+      "text": "tôn đen TMBP dạng cuộn dày 0.2mm",
+      "expectHs": "72091810"
+    },
+    {
+      "id": "7209-corrugated",
+      "heading": "7209",
+      "text": "tôn cán nguội dạng lượn sóng",
+      "expectHs": "72099010"
+    },
+    {
+      "id": "7209-flat-05-1-narrow",
+      "heading": "7209",
+      "text": "tấm thép cán nguội dày 0.7mm khổ 1219mm",
+      "expectHs": "72092710"
+    },
+    {
+      "id": "7209-flat-05-1-wide",
+      "heading": "7209",
+      "text": "tấm thép cán nguội dày 0.7mm khổ 1500mm",
+      "expectHs": "72092790"
     },
     {
       "id": "7209-flat-1-3-narrow",
@@ -137,16 +218,10 @@
       "expectHs": "72092690"
     },
     {
-      "id": "7209-flat-05-1-narrow",
+      "id": "7209-flat-3",
       "heading": "7209",
-      "text": "tấm thép cán nguội dày 0.7mm khổ 1219mm",
-      "expectHs": "72092710"
-    },
-    {
-      "id": "7209-flat-05-1-wide",
-      "heading": "7209",
-      "text": "tấm thép cán nguội dày 0.7mm khổ 1500mm",
-      "expectHs": "72092790"
+      "text": "thép tấm cán nguội dày 4mm",
+      "expectHs": "72092500"
     },
     {
       "id": "7209-flat-thin-lowc",
@@ -164,23 +239,971 @@
       "expectHs": "72092890"
     },
     {
-      "id": "7209-corrugated",
-      "heading": "7209",
-      "text": "tôn cán nguội dạng lượn sóng",
-      "expectHs": "72099010"
-    },
-    {
       "id": "7209-perforated",
       "heading": "7209",
       "text": "tấm thép cán nguội đục lỗ dày 1mm",
       "expectHs": "72099090"
     },
     {
-      "id": "7209-ask-form",
-      "heading": "7209",
-      "text": "thép cán nguội dày 2mm khổ 1000",
+      "id": "7323-castIron-ashtray",
+      "heading": "7323",
+      "text": "gạt tàn thuốc lá bằng gang đúc trơn",
+      "facts": {
+        "productKind": "kitchenware",
+        "materialType": "castIronPlain",
+        "productType": "ashtray"
+      },
+      "expectHs": "73239120"
+    },
+    {
+      "id": "7323-castIron-enamelled",
+      "heading": "7323",
+      "text": "chảo gang tráng men dùng nhà bếp",
+      "facts": {
+        "productKind": "kitchenware",
+        "materialType": "castIronEnamelled"
+      },
+      "expectHs": "73239200"
+    },
+    {
+      "id": "7323-castIron-kitchenware",
+      "heading": "7323",
+      "text": "nồi gang đúc đáy dày dùng nhà bếp",
+      "facts": {
+        "productKind": "kitchenware",
+        "materialType": "castIronPlain",
+        "productType": "kitchenware"
+      },
+      "expectHs": "73239110"
+    },
+    {
+      "id": "7323-castIron-other",
+      "heading": "7323",
+      "text": "cái/hộp đựng bằng gang trơn không tráng men",
+      "facts": {
+        "productKind": "kitchenware",
+        "materialType": "castIronPlain"
+      },
       "expectAsk": [
-        "form"
+        "productType"
+      ]
+    },
+    {
+      "id": "7323-scrubbingPad",
+      "heading": "7323",
+      "text": "miếng cọ rửa bằng sắt không gỉ",
+      "facts": {
+        "productKind": "scrubbingPad"
+      },
+      "expectHs": "73231000"
+    },
+    {
+      "id": "7323-steel-wool",
+      "heading": "7323",
+      "text": "bùi nhùi sắt mịn dùng cọ rửa",
+      "facts": {
+        "productKind": "scrubbingPad"
+      },
+      "expectHs": "73231000"
+    },
+    {
+      "id": "7323-steelEnamelled-ashtray",
+      "heading": "7323",
+      "text": "gạt tàn bằng thép tráng men",
+      "facts": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled",
+        "productType": "ashtray"
+      },
+      "expectHs": "73239320"
+    },
+    {
+      "id": "7323-steelEnamelled-kitchenware",
+      "heading": "7323",
+      "text": "nồi sắt tráng men dùng nấu ăn",
+      "facts": {
+        "productKind": "kitchenware",
+        "materialType": "steelEnamelled",
+        "productType": "kitchenware"
+      },
+      "expectHs": "73239310"
+    },
+    {
+      "id": "7323-steelPlain-ashtray",
+      "heading": "7323",
+      "text": "gạt tàn thuốc lá bằng thép không tráng men",
+      "facts": {
+        "productKind": "kitchenware",
+        "materialType": "steelPlain",
+        "productType": "ashtray"
+      },
+      "expectHs": "73239920"
+    },
+    {
+      "id": "7323-steelPlain-kitchenware",
+      "heading": "7323",
+      "text": "đồ dùng nhà bếp bằng thép không tráng men",
+      "facts": {
+        "productKind": "kitchenware",
+        "materialType": "steelPlain",
+        "productType": "kitchenware"
+      },
+      "expectHs": "73239910"
+    },
+    {
+      "id": "7326-bi-lam-kin",
+      "heading": "7326",
+      "text": "Bi làm kín",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-bo-chia-gio-dieu-hoa",
+      "heading": "7326",
+      "text": "Bộ chia gió điều hòa",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-bo-phu-kien-ket-noi",
+      "heading": "7326",
+      "text": "Bộ phụ kiện kết nối",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-bo-phu-kien-rem-cua",
+      "heading": "7326",
+      "text": "Bộ phụ kiện rèm cửa",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-can-dao-bang-thep",
+      "heading": "7326",
+      "text": "Cán dao bằng thép",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-cay-kiem-tra-bop-tuo",
+      "heading": "7326",
+      "text": "Cây kiểm tra bộp tường",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-chot-con-lan",
+      "heading": "7326",
+      "text": "Chốt con lăn",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-con-lan-truyen-dong",
+      "heading": "7326",
+      "text": "Con lăn truyền động lò nung",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-dai-siet-ong-inox-t",
+      "heading": "7326",
+      "text": "Đai siết ống inox T-Bolt Clamp",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-dai-xiet-inox",
+      "heading": "7326",
+      "text": "Đai xiết inox",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-dau-doc-choong-khoan",
+      "heading": "7326",
+      "text": "Đầu đốc choòng khoan khí ép",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-dau-kep-cap",
+      "heading": "7326",
+      "text": "Đầu kẹp cáp",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-dau-kep-cos-day-cap",
+      "heading": "7326",
+      "text": "Đầu kẹp cos dây cáp",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-dau-noi-kep-khi",
+      "heading": "7326",
+      "text": "Đầu nối kẹp khí",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-dung-cu-kep-long-mi",
+      "heading": "7326",
+      "text": "Dụng cụ kẹp lông mi",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-dung-cu-lay-ray-tai",
+      "heading": "7326",
+      "text": "Dụng cụ lấy ráy tai",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-ga-kinh",
+      "heading": "7326",
+      "text": "Gá kính",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-gia-do-dai-day-gach",
+      "heading": "7326",
+      "text": "Giá đỡ đai đẩy gạch",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-gia-do-dien-thoai",
+      "heading": "7326",
+      "text": "Giá đỡ điện thoại",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-gia-do-dien-thoai-de",
+      "heading": "7326",
+      "text": "Giá đỡ điện thoại để bàn",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-gia-do-kep-dien-thoa",
+      "heading": "7326",
+      "text": "Giá đỡ kẹp điện thoại",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-gia-do-laptop",
+      "heading": "7326",
+      "text": "Giá đỡ laptop",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-gia-do-may-tinh",
+      "heading": "7326",
+      "text": "Giá đỡ máy tính",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-gia-do-may-tinh-xoay",
+      "heading": "7326",
+      "text": "Giá đỡ máy tính xoay 360 độ",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-gia-treo-rem-cuon",
+      "heading": "7326",
+      "text": "Giá treo rèm cuốn",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-giam-chan",
+      "heading": "7326",
+      "text": "Giảm chấn",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-hong-chia-gio-dieu-h",
+      "heading": "7326",
+      "text": "Họng chia gió điều hòa",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-hop-dung-camera",
+      "heading": "7326",
+      "text": "Hộp đựng camera",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-hop-dung-dung-cu-co",
+      "heading": "7326",
+      "text": "Hộp đựng dụng cụ cơ khí",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-ke-treo-phu-kien-rem",
+      "heading": "7326",
+      "text": "Ke treo phụ kiện rèm cửa",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-kep-bang-thep",
+      "heading": "7326",
+      "text": "Kẹp bằng thép",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-kep-chu-u",
+      "heading": "7326",
+      "text": "Kẹp chữ U",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-kep-khi",
+      "heading": "7326",
+      "text": "Kẹp khí",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-kep-mat-kep-mass-n",
+      "heading": "7326",
+      "text": "Kẹp mát (kẹp mass) nam châm",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-kep-tay-bam-co-lo-xo",
+      "heading": "7326",
+      "text": "Kẹp tay bấm có lò xo",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-khop-noi-robot-co-ph",
+      "heading": "7326",
+      "text": "Khớp nối robot có phanh",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-khung-vien-dien-thoa",
+      "heading": "7326",
+      "text": "Khung viền điện thoại",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-khuon-mau-hinh-thoi",
+      "heading": "7326",
+      "text": "Khuôn mẫu hình thoi",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-mang-lon",
+      "heading": "7326",
+      "text": "Máng lợn",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-mat-kep",
+      "heading": "7326",
+      "text": "Mặt kẹp",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-mat-na-keo-kem-han",
+      "heading": "7326",
+      "text": "Mặt nạ kéo kem hàn",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-ong-lot-chot-dinh-vi",
+      "heading": "7326",
+      "text": "Ống lót chốt định vị",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-op-ray-gia-de-noi-ba",
+      "heading": "7326",
+      "text": "Ốp ray giá để nồi bát đĩa",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-tai-kep-ong",
+      "heading": "7326",
+      "text": "Tai kẹp ống",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-tam-film-kiem-tra-cu",
+      "heading": "7326",
+      "text": "Tấm film kiểm tra cực nam châm",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-tang-day-cap",
+      "heading": "7326",
+      "text": "Tăng dây cáp",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-tay-xa-tai-cot-thuy",
+      "heading": "7326",
+      "text": "Tay xả tải cột thủy lực hầm lò",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-thang-thep-dang-gap",
+      "heading": "7326",
+      "text": "Thang thép dạng gấp chữ A",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-thang-thep-dang-rut",
+      "heading": "7326",
+      "text": "Thang thép dạng rút",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-thanh-gat-mang-cao",
+      "heading": "7326",
+      "text": "Thanh gạt máng cào",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-thanh-nep-tai-lieu",
+      "heading": "7326",
+      "text": "Thanh nẹp tài liệu",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-thanh-tron-son",
+      "heading": "7326",
+      "text": "Thanh trộn sơn",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-thanh-truot-dan-huon",
+      "heading": "7326",
+      "text": "Thanh trượt dẫn hướng",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-thanh-truot-tuyen-ti",
+      "heading": "7326",
+      "text": "Thanh trượt tuyến tính",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-thung-rac-co-nap",
+      "heading": "7326",
+      "text": "Thùng rác có nắp",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-thung-rac-co-nap-bap",
+      "heading": "7326",
+      "text": "Thùng rác có nắp bập bênh",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-thung-rac-dap-chan-n",
+      "heading": "7326",
+      "text": "Thùng rác đạp chân nắp tròn",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-thung-rac-de-sanh",
+      "heading": "7326",
+      "text": "Thùng rác để sảnh",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-truc-lan",
+      "heading": "7326",
+      "text": "Trục lăn",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-vien-bi-cau-mam-quay",
+      "heading": "7326",
+      "text": "Viên bi cầu mâm quay",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-vo-khung-bo-dieu-khi",
+      "heading": "7326",
+      "text": "Vỏ khung bộ điều khiển",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-vo-khung-can-dien-tu",
+      "heading": "7326",
+      "text": "Vỏ khung cân điện tử",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "7326-vo-khung-may-ipc",
+      "heading": "7326",
+      "text": "Vỏ khung máy IPC",
+      "expectHs": "73269099",
+      "facts": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      }
+    },
+    {
+      "id": "8208-dao-cat-metal",
+      "heading": "8208",
+      "text": "dao cắt kim loại máy tự động",
+      "facts": {
+        "toolApplication": "metalworking"
+      },
+      "expectHs": "82081000"
+    },
+    {
+      "id": "8208-dao-cat-nha-bep",
+      "heading": "8208",
+      "text": "dao cắt máy nhà bếp công nghiệp",
+      "facts": {
+        "toolApplication": "kitchen_industrial"
+      },
+      "expectHs": "82083000"
+    },
+    {
+      "id": "8208-dao-cat-nong-nghiep",
+      "heading": "8208",
+      "text": "lưỡi cắt máy nông nghiệp",
+      "facts": {
+        "toolApplication": "agriculture"
+      },
+      "expectHs": "82084000"
+    },
+    {
+      "id": "8208-luoi-cat",
+      "heading": "8208",
+      "text": "lưỡi cắt",
+      "expectAsk": [
+        "toolApplication"
+      ]
+    },
+    {
+      "id": "8208-luoi-cat-go",
+      "heading": "8208",
+      "text": "lưỡi cắt gỗ cho máy CNC",
+      "facts": {
+        "toolApplication": "woodworking"
+      },
+      "expectHs": "82082000"
+    },
+    {
+      "id": "8208-luoi-cat-kim-loai",
+      "heading": "8208",
+      "text": "lưỡi cắt kim loại để phay",
+      "facts": {
+        "toolApplication": "metalworking"
+      },
+      "expectHs": "82081000"
+    },
+    {
+      "id": "8302-building-general",
+      "heading": "8302",
+      "text": "thanh ray gắn tường không then",
+      "facts": {
+        "articleKind": "building_mounting",
+        "hasHasp": false,
+        "buildingSubKind": "general"
+      },
+      "expectHs": "83024190"
+    },
+    {
+      "id": "8302-building-hasHasp",
+      "heading": "8302",
+      "text": "bulông cửa nhôm có then cố định",
+      "facts": {
+        "articleKind": "building_mounting",
+        "hasHasp": true
+      },
+      "expectHs": "83024131"
+    },
+    {
+      "id": "8302-building-hinge",
+      "heading": "8302",
+      "text": "bản lề kiểu gắn tường cho cửa nhôm",
+      "facts": {
+        "articleKind": "building_mounting",
+        "hasHasp": false,
+        "buildingSubKind": "hinge_type"
+      },
+      "expectHs": "83024139"
+    },
+    {
+      "id": "8302-castor-gt100",
+      "heading": "8302",
+      "text": "bánh xe đẩy đường kính 150mm",
+      "facts": {
+        "articleKind": "castor_wheel",
+        "diameterRange": "gt100mm"
+      },
+      "expectHs": "83022010"
+    },
+    {
+      "id": "8302-castor-le100",
+      "heading": "8302",
+      "text": "bánh xe đẩy nhỏ đường kính 80mm",
+      "facts": {
+        "articleKind": "castor_wheel",
+        "diameterRange": "le100mm"
+      },
+      "expectHs": "83022090"
+    },
+    {
+      "id": "8302-door-closure",
+      "heading": "8302",
+      "text": "cơ cấu đóng cửa tự động",
+      "facts": {
+        "articleKind": "door_closure"
+      },
+      "expectHs": "83026000"
+    },
+    {
+      "id": "8302-furniture-hasHasp",
+      "heading": "8302",
+      "text": "bản lề tủ gỗ có then cố định",
+      "facts": {
+        "articleKind": "furniture_mounting",
+        "hasHasp": true
+      },
+      "expectHs": "83024220"
+    },
+    {
+      "id": "8302-furniture-noHasp",
+      "heading": "8302",
+      "text": "ray trượt ngăn kéo không then",
+      "facts": {
+        "articleKind": "furniture_mounting",
+        "hasHasp": false
+      },
+      "expectHs": "83024290"
+    },
+    {
+      "id": "8302-hat-rack",
+      "heading": "8302",
+      "text": "mắc áo bằng kim loại",
+      "facts": {
+        "articleKind": "hat_rack_bracket"
+      },
+      "expectHs": "83025000"
+    },
+    {
+      "id": "8302-hinge",
+      "heading": "8302",
+      "text": "bản lề cửa bằng thép",
+      "facts": {
+        "articleKind": "hinge"
+      },
+      "expectHs": "83021000"
+    },
+    {
+      "id": "8302-motor-hasHasp",
+      "heading": "8302",
+      "text": "bộ phận gắn động cơ xe máy có then cố định",
+      "facts": {
+        "articleKind": "motor_mounting",
+        "hasHasp": true
+      },
+      "expectHs": "83023010"
+    },
+    {
+      "id": "8302-motor-noHasp",
+      "heading": "8302",
+      "text": "giá đỡ động cơ xe không then",
+      "facts": {
+        "articleKind": "motor_mounting",
+        "hasHasp": false
+      },
+      "expectHs": "83023090"
+    },
+    {
+      "id": "8302-other-hasHasp",
+      "heading": "8302",
+      "text": "cơ cấu khác có then cố định",
+      "facts": {
+        "articleKind": "other_mounting",
+        "hasHasp": true
+      },
+      "expectHs": "83024991"
+    },
+    {
+      "id": "8302-other-noHasp",
+      "heading": "8302",
+      "text": "cơ cấu kim loại khác không then",
+      "facts": {
+        "articleKind": "other_mounting",
+        "hasHasp": false
+      },
+      "expectHs": "83024999"
+    },
+    {
+      "id": "8302-saddle",
+      "heading": "8302",
+      "text": "phụ kiện yên ngựa bằng kim loại",
+      "facts": {
+        "articleKind": "saddle_mounting"
+      },
+      "expectHs": "83024910"
+    },
+    {
+      "id": "8311-electrode-other-ok",
+      "heading": "8311",
+      "text": "que hàn điện cực cho hàn hồ quang",
+      "expectAsk": [
+        "productKind"
+      ]
+    },
+    {
+      "id": "8311-other-article-ok",
+      "heading": "8311",
+      "text": "điện cực các bon cho hàn",
+      "expectAsk": [
+        "processType",
+        "productForm"
+      ]
+    },
+    {
+      "id": "8405-ask",
+      "heading": "8405",
+      "text": "hàng nhóm 8405",
+      "expectAsk": [
+        "goodsKind"
       ]
     },
     {
@@ -199,461 +1222,420 @@
       "expectHs": "84059000"
     },
     {
-      "id": "8405-ask",
-      "heading": "8405",
-      "text": "hàng nhóm 8405",
+      "id": "8412-bare-cyl-ask",
+      "heading": "8412",
+      "text": "xi lanh 100mm",
+      "expectAsk": [
+        "engineType"
+      ]
+    },
+    {
+      "id": "8412-bau-phanh-thuy-luc",
+      "heading": "8412",
+      "text": "Bầu phanh thuỷ lực",
+      "facts": {
+        "goodsKind": "engine",
+        "partsFor": "other"
+      },
+      "expectAsk": [
+        "engineType"
+      ]
+    },
+    {
+      "id": "8412-bo-phan-dan-huong-xi",
+      "heading": "8412",
+      "text": "Bộ phận dẫn hướng xi lanh khí nén",
+      "expectHs": "84129090",
+      "facts": {
+        "goodsKind": "parts",
+        "engineType": "pneumaticLinear",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-bo-xi-lanh-ap-suat-k",
+      "heading": "8412",
+      "text": "Bộ xi lanh áp suất kết hợp van điện từ",
+      "facts": {
+        "goodsKind": "engine",
+        "partsFor": "other"
+      },
+      "expectAsk": [
+        "engineType"
+      ]
+    },
+    {
+      "id": "8412-dau-lac-xi-lanh-khi",
+      "heading": "8412",
+      "text": "Đầu lắc xi lanh khí nén",
+      "expectHs": "84129090",
+      "facts": {
+        "goodsKind": "parts",
+        "engineType": "pneumaticLinear",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-electric-cyl",
+      "heading": "8412",
+      "text": "xy lanh điện 24V hành trình 100mm",
+      "expectHs": "84128000"
+    },
+    {
+      "id": "8412-hyd-cyl",
+      "heading": "8412",
+      "text": "xi lanh thủy lực 2 chiều 50 tấn",
+      "expectHs": "84122100"
+    },
+    {
+      "id": "8412-hyd-motor",
+      "heading": "8412",
+      "text": "motor thủy lực orbital",
+      "expectHs": "84122900"
+    },
+    {
+      "id": "8412-motor-thuy-luc-di-ch",
+      "heading": "8412",
+      "text": "Motor thủy lực di chuyển",
+      "expectHs": "84122900",
+      "facts": {
+        "goodsKind": "engine",
+        "engineType": "hydraulicOther",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-ong-lot-xi-lanh-bom",
+      "heading": "8412",
+      "text": "Ống lót xi lanh bơm",
+      "expectHs": "84129090",
+      "facts": {
+        "goodsKind": "parts",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-part-cyl",
+      "heading": "8412",
+      "text": "đầu lắc xi lanh khí nén",
+      "expectHs": "84129090"
+    },
+    {
+      "id": "8412-part-reaction",
+      "heading": "8412",
+      "text": "bộ phận động cơ phản lực",
+      "expectHs": "84129010"
+    },
+    {
+      "id": "8412-part-seal",
+      "heading": "8412",
+      "text": "bộ phớt xi lanh thủy lực",
+      "expectHs": "84129090"
+    },
+    {
+      "id": "8412-part-steam",
+      "heading": "8412",
+      "text": "phụ tùng tua bin hơi nước tổ máy hơi nước",
+      "expectHs": "84129020"
+    },
+    {
+      "id": "8412-pneu-cyl",
+      "heading": "8412",
+      "text": "xi lanh khí nén SC63x100",
+      "expectHs": "84123100"
+    },
+    {
+      "id": "8412-pneu-cyl-nodia",
+      "heading": "8412",
+      "text": "xy lanh khi nen 2 dau",
+      "expectHs": "84123100"
+    },
+    {
+      "id": "8412-pneu-cyl-square",
+      "heading": "8412",
+      "text": "xilanh vuông khí nén",
+      "expectHs": "84123100"
+    },
+    {
+      "id": "8412-pneu-motor",
+      "heading": "8412",
+      "text": "mô tơ khí nén 1/4 HP",
+      "expectHs": "84123900"
+    },
+    {
+      "id": "8412-reaction",
+      "heading": "8412",
+      "text": "động cơ phản lực mô hình",
+      "expectHs": "84121000"
+    },
+    {
+      "id": "8412-xi-lanh-dien",
+      "heading": "8412",
+      "text": "Xi lanh điện",
+      "expectHs": "84128000",
+      "facts": {
+        "goodsKind": "engine",
+        "engineType": "otherEngine",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-xi-lanh-giam-chan",
+      "heading": "8412",
+      "text": "Xi lanh giảm chấn",
+      "facts": {
+        "goodsKind": "engine",
+        "partsFor": "other"
+      },
+      "expectAsk": [
+        "engineType"
+      ]
+    },
+    {
+      "id": "8412-xi-lanh-khi-nen",
+      "heading": "8412",
+      "text": "Xi lanh khí nén",
+      "expectHs": "84123100",
+      "facts": {
+        "goodsKind": "engine",
+        "engineType": "pneumaticLinear",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-xi-lanh-khi-nen-2-da",
+      "heading": "8412",
+      "text": "Xi lanh khí nén 2 đầu",
+      "expectHs": "84123100",
+      "facts": {
+        "goodsKind": "engine",
+        "engineType": "pneumaticLinear",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-xi-lanh-khi-nen-mini",
+      "heading": "8412",
+      "text": "Xi lanh khí nén mini",
+      "expectHs": "84123100",
+      "facts": {
+        "goodsKind": "engine",
+        "engineType": "pneumaticLinear",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-xi-lanh-khi-nen-vuon",
+      "heading": "8412",
+      "text": "Xi lanh khí nén vuông",
+      "expectHs": "84123100",
+      "facts": {
+        "goodsKind": "engine",
+        "engineType": "pneumaticLinear",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-xi-lanh-thuy-luc",
+      "heading": "8412",
+      "text": "Xi lanh thủy lực",
+      "expectHs": "84122100",
+      "facts": {
+        "goodsKind": "engine",
+        "engineType": "hydraulicLinear",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-xilanh-khi-nen",
+      "heading": "8412",
+      "text": "Xilanh khí nén",
+      "expectHs": "84123100",
+      "facts": {
+        "goodsKind": "engine",
+        "engineType": "pneumaticLinear",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-xilanh-tron-khi-nen",
+      "heading": "8412",
+      "text": "Xilanh tròn khí nén",
+      "facts": {
+        "goodsKind": "engine",
+        "partsFor": "other"
+      },
+      "expectAsk": [
+        "engineType"
+      ]
+    },
+    {
+      "id": "8412-xilanh-vuong-khi-nen",
+      "heading": "8412",
+      "text": "Xilanh vuông khí nén",
+      "expectHs": "84123100",
+      "facts": {
+        "goodsKind": "engine",
+        "engineType": "pneumaticLinear",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-xy-lanh-dan-huong-kh",
+      "heading": "8412",
+      "text": "Xy lanh dẫn hướng khí nén",
+      "facts": {
+        "goodsKind": "engine",
+        "partsFor": "other"
+      },
+      "expectAsk": [
+        "engineType"
+      ]
+    },
+    {
+      "id": "8412-xy-lanh-dien",
+      "heading": "8412",
+      "text": "Xy lanh điện",
+      "expectHs": "84128000",
+      "facts": {
+        "goodsKind": "engine",
+        "engineType": "otherEngine",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-xy-lanh-khi",
+      "heading": "8412",
+      "text": "Xy lanh khí",
+      "expectHs": "84123100",
+      "facts": {
+        "goodsKind": "engine",
+        "engineType": "pneumaticLinear",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-xy-lanh-khi-nen",
+      "heading": "8412",
+      "text": "Xy lanh khí nén",
+      "expectHs": "84123100",
+      "facts": {
+        "goodsKind": "engine",
+        "engineType": "pneumaticLinear",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-xy-lanh-khi-nen-ban",
+      "heading": "8412",
+      "text": "Xy lanh khí nén bàn trượt",
+      "expectHs": "84123100",
+      "facts": {
+        "goodsKind": "engine",
+        "engineType": "pneumaticLinear",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-xy-lanh-khi-nen-chuy",
+      "heading": "8412",
+      "text": "Xy lanh khí nén chuyển động tịnh tiến",
+      "expectHs": "84123100",
+      "facts": {
+        "goodsKind": "engine",
+        "engineType": "pneumaticLinear",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-xy-lanh-mini-khi-nen",
+      "heading": "8412",
+      "text": "Xy lanh mini khí nén",
+      "expectHs": "84123100",
+      "facts": {
+        "goodsKind": "engine",
+        "engineType": "pneumaticLinear",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8412-xylanh-khi-nen",
+      "heading": "8412",
+      "text": "Xylanh khí nén",
+      "expectHs": "84123100",
+      "facts": {
+        "goodsKind": "engine",
+        "engineType": "pneumaticLinear",
+        "partsFor": "other"
+      }
+    },
+    {
+      "id": "8420-ask",
+      "heading": "8420",
+      "text": "hàng nhóm 8420",
       "expectAsk": [
         "goodsKind"
       ]
     },
     {
-      "id": "8534-single",
-      "heading": "8534",
-      "text": "mạch in pcb một mặt",
-      "expectHs": "85340010"
-    },
-    {
-      "id": "8534-double",
-      "heading": "8534",
-      "text": "pcb hai mặt fr4",
-      "expectHs": "85340020"
-    },
-    {
-      "id": "8534-multi",
-      "heading": "8534",
-      "text": "mạch in multilayer 6 lớp",
-      "expectHs": "85340030"
-    },
-    {
-      "id": "8534-other",
-      "heading": "8534",
-      "text": "flexible pcb rigid-flex",
-      "expectHs": "85340090"
-    },
-    {
-      "id": "8534-ask",
-      "heading": "8534",
-      "text": "mạch in pcb",
-      "expectAsk": [
-        "pcbLayers"
-      ]
-    },
-    {
-      "id": "8513-miner",
-      "heading": "8513",
-      "text": "đèn gắn mũ thợ mỏ điện xách tay",
-      "expectHs": "85131030"
-    },
-    {
-      "id": "8513-flashlight",
-      "heading": "8513",
-      "text": "đèn pin led xách tay",
-      "expectHs": "85131090"
-    },
-    {
-      "id": "8513-part-miner",
-      "heading": "8513",
-      "text": "bộ phận đèn mũ thợ mỏ",
-      "expectHs": "85139010"
-    },
-    {
-      "id": "8513-part-flash",
-      "heading": "8513",
-      "text": "phản quang đèn chớp plastic",
-      "expectHs": "85139030"
-    },
-    {
-      "id": "8513-part-other",
-      "heading": "8513",
-      "text": "vỏ đèn pin phụ tùng",
+      "id": "8420-may-can-bot",
+      "heading": "8420",
+      "text": "Máy cán bột",
+      "expectHs": "84201090",
       "facts": {
-        "goodsKind": "parts",
-        "partType": "other"
-      },
-      "expectHs": "85139090"
+        "goodsKind": "machine",
+        "machineUse": "other"
+      }
     },
     {
-      "id": "8513-ask",
-      "heading": "8513",
-      "text": "đèn điện xách tay",
-      "expectAsk": [
-        "goodsKind"
-      ]
-    },
-    {
-      "id": "8542-cpu",
-      "heading": "8542",
-      "text": "ic cpu microcontroller mcu",
-      "expectHs": "85423100"
-    },
-    {
-      "id": "8542-dram",
-      "heading": "8542",
-      "text": "chip bộ nhớ dram",
-      "expectHs": "85423200"
-    },
-    {
-      "id": "8542-opamp",
-      "heading": "8542",
-      "text": "ic khuếch đại op-amp",
-      "expectHs": "85423300"
-    },
-    {
-      "id": "8542-fpga",
-      "heading": "8542",
-      "text": "ic fpga",
-      "expectHs": "85423900"
-    },
-    {
-      "id": "8542-parts",
-      "heading": "8542",
-      "text": "lead frame bộ phận ic",
+      "id": "8420-may-can-bot-my",
+      "heading": "8420",
+      "text": "Máy cán bột mỳ",
+      "expectHs": "84201090",
       "facts": {
-        "goodsKind": "parts"
-      },
-      "expectHs": "85429000"
+        "goodsKind": "machine",
+        "machineUse": "other"
+      }
     },
     {
-      "id": "8542-ask",
-      "heading": "8542",
-      "text": "mạch tích hợp",
-      "expectAsk": [
-        "icKind"
-      ]
-    },
-    {
-      "id": "8509-blender",
-      "heading": "8509",
-      "text": "máy xay sinh tố blender",
+      "id": "8420-may-can-bot-pizza",
+      "heading": "8420",
+      "text": "Máy cán bột pizza",
+      "expectHs": "84201090",
       "facts": {
-        "goodsKind": "appliance",
-        "applianceType": "foodPrep"
-      },
-      "expectHs": "85094000"
+        "goodsKind": "machine",
+        "machineUse": "other"
+      }
     },
     {
-      "id": "8509-floor",
-      "heading": "8509",
-      "text": "máy đánh bóng sàn nhà",
-      "expectHs": "85098010"
-    },
-    {
-      "id": "8509-waste",
-      "heading": "8509",
-      "text": "máy hủy rác bếp garbage disposal",
-      "expectHs": "85098020"
-    },
-    {
-      "id": "8509-other",
-      "heading": "8509",
-      "text": "máy đánh kem điện gia dụng",
-      "expectHs": "85098090"
-    },
-    {
-      "id": "8509-part-floor",
-      "heading": "8509",
-      "text": "phụ tùng máy đánh bóng sàn",
+      "id": "8420-may-can-de-banh",
+      "heading": "8420",
+      "text": "Máy cán đế bánh",
+      "expectHs": "84201090",
       "facts": {
-        "goodsKind": "parts",
-        "partOf": "floorPolisher"
-      },
-      "expectHs": "85099010"
+        "goodsKind": "machine",
+        "machineUse": "other"
+      }
     },
     {
-      "id": "8509-part-other",
-      "heading": "8509",
-      "text": "lưỡi xay phụ tùng máy xay",
+      "id": "8420-may-can-mang-nhua-ep",
+      "heading": "8420",
+      "text": "Máy cán màng nhựa ép nhiệt",
+      "expectHs": "84201090",
       "facts": {
-        "goodsKind": "parts",
-        "partOf": "other"
-      },
-      "expectHs": "85099090"
+        "goodsKind": "machine",
+        "machineUse": "other"
+      }
     },
     {
-      "id": "8509-ask",
-      "heading": "8509",
-      "text": "máy điện gia dụng mô tơ",
-      "expectAsk": [
-        "goodsKind"
-      ]
-    },
-    {
-      "id": "8505-neo",
-      "heading": "8505",
-      "text": "nam châm neodymium vĩnh cửu kim loại",
-      "expectHs": "85051100"
-    },
-    {
-      "id": "8505-ferrite",
-      "heading": "8505",
-      "text": "nam châm ferrite ceramic",
-      "expectHs": "85051900"
-    },
-    {
-      "id": "8505-clutch",
-      "heading": "8505",
-      "text": "ly hợp điện từ electromagnetic clutch",
-      "expectHs": "85052000"
-    },
-    {
-      "id": "8505-mri",
-      "heading": "8505",
-      "text": "nam châm điện dùng mri cộng hưởng từ",
-      "expectHs": "85059010"
-    },
-    {
-      "id": "8505-lift",
-      "heading": "8505",
-      "text": "đầu nâng điện từ lifting magnet",
-      "expectHs": "85059020"
-    },
-    {
-      "id": "8505-other",
-      "heading": "8505",
-      "text": "thiết bị giữ điện từ holding magnet",
-      "expectHs": "85059090"
-    },
-    {
-      "id": "8505-ask",
-      "heading": "8505",
-      "text": "nam châm",
-      "expectAsk": [
-        "articleType"
-      ]
-    },
-    {
-      "id": "8524-lcd-bare",
-      "heading": "8524",
-      "text": "mô-đun màn hình lcd không driver",
-      "expectHs": "85241100"
-    },
-    {
-      "id": "8524-oled-bare",
-      "heading": "8524",
-      "text": "panel oled without driver",
-      "expectHs": "85241200"
-    },
-    {
-      "id": "8524-other-bare",
-      "heading": "8524",
-      "text": "microled panel without driver",
-      "expectHs": "85241900"
-    },
-    {
-      "id": "8524-lcd-drv",
-      "heading": "8524",
-      "text": "mô-đun lcd có driver mạch điều khiển",
-      "expectHs": "85249100"
-    },
-    {
-      "id": "8524-oled-drv",
-      "heading": "8524",
-      "text": "amoled module with driver",
-      "expectHs": "85249200"
-    },
-    {
-      "id": "8524-other-drv",
-      "heading": "8524",
-      "text": "microled module with driver",
-      "expectHs": "85249900"
-    },
-    {
-      "id": "8524-ask",
-      "heading": "8524",
-      "text": "mô-đun màn hình phẳng",
-      "expectAsk": [
-        "panelTech"
-      ]
-    },
-    {
-      "id": "8521-tape-sen",
-      "heading": "8521",
-      "text": "máy ghi hình băng từ betacam broadcast studio",
-      "expectHs": "85211010"
-    },
-    {
-      "id": "8521-tape-home",
-      "heading": "8521",
-      "text": "đầu video vhs dân dụng magnetic tape",
-      "expectHs": "85211090"
-    },
-    {
-      "id": "8521-dvd-sen",
-      "heading": "8521",
-      "text": "đầu ghi dvd laser quang học dùng phát thanh truyền hình",
-      "expectHs": "85219011"
-    },
-    {
-      "id": "8521-dvd-home",
-      "heading": "8521",
-      "text": "đầu đĩa blu-ray laser dân dụng",
-      "expectHs": "85219019"
-    },
-    {
-      "id": "8521-hdd-sen",
-      "heading": "8521",
-      "text": "đầu ghi hình hdd dvr broadcast studio",
-      "expectHs": "85219091"
-    },
-    {
-      "id": "8521-hdd-home",
-      "heading": "8521",
-      "text": "đầu ghi hình hdd dvr gia đình",
-      "expectHs": "85219099"
-    },
-    {
-      "id": "8521-ask",
-      "heading": "8521",
-      "text": "máy ghi hình video",
-      "expectAsk": [
-        "mediaType"
-      ]
-    },
-    {
-      "id": "8473-f-84732100",
-      "heading": "8473",
-      "text": "kiểm r-calc-electronic",
+      "id": "8420-may-can-mang-tu-dong",
+      "heading": "8420",
+      "text": "Máy cán màng tự động",
+      "expectHs": "84201090",
       "facts": {
-        "hostMachine": "calcElectronic"
-      },
-      "expectHs": "84732100"
-    },
-    {
-      "id": "8473-f-84732900",
-      "heading": "8473",
-      "text": "kiểm r-calc-other",
-      "facts": {
-        "hostMachine": "calcOther"
-      },
-      "expectHs": "84732900"
-    },
-    {
-      "id": "8473-f-84733010",
-      "heading": "8473",
-      "text": "kiểm r-8471-pcb",
-      "facts": {
-        "hostMachine": "adp8471",
-        "partForm": "assembledPcb"
-      },
-      "expectHs": "84733010"
-    },
-    {
-      "id": "8473-f-84733090",
-      "heading": "8473",
-      "text": "kiểm r-8471-other",
-      "facts": {
-        "hostMachine": "adp8471",
-        "partForm": "other"
-      },
-      "expectHs": "84733090"
-    },
-    {
-      "id": "8473-f-84734000",
-      "heading": "8473",
-      "text": "kiểm r-8472",
-      "facts": {
-        "hostMachine": "office8472"
-      },
-      "expectHs": "84734000"
-    },
-    {
-      "id": "8473-f-84735010",
-      "heading": "8473",
-      "text": "kiểm r-multi-8471",
-      "facts": {
-        "hostMachine": "multiUse",
-        "multi8471Fit": "yes"
-      },
-      "expectHs": "84735010"
-    },
-    {
-      "id": "8473-f-84735090",
-      "heading": "8473",
-      "text": "kiểm r-multi-other",
-      "facts": {
-        "hostMachine": "multiUse",
-        "multi8471Fit": "no"
-      },
-      "expectHs": "84735090"
-    },
-    {
-      "id": "8473-ask",
-      "heading": "8473",
-      "text": "hàng nhóm 8473",
-      "expectAsk": [
-        "hostMachine"
-      ]
-    },
-    {
-      "id": "8422-f-84221100",
-      "heading": "8422",
-      "text": "kiểm r-dw-home",
-      "facts": {
-        "machineKind": "dishwasherHousehold"
-      },
-      "expectHs": "84221100"
-    },
-    {
-      "id": "8422-f-84221900",
-      "heading": "8422",
-      "text": "kiểm r-dw-other",
-      "facts": {
-        "machineKind": "dishwasherOther"
-      },
-      "expectHs": "84221900"
-    },
-    {
-      "id": "8422-f-84222000",
-      "heading": "8422",
-      "text": "kiểm r-clean-dry",
-      "facts": {
-        "machineKind": "cleanDryContainers"
-      },
-      "expectHs": "84222000"
-    },
-    {
-      "id": "8422-f-84223000",
-      "heading": "8422",
-      "text": "kiểm r-fill-seal",
-      "facts": {
-        "machineKind": "fillSealLabel"
-      },
-      "expectHs": "84223000"
-    },
-    {
-      "id": "8422-f-84224000",
-      "heading": "8422",
-      "text": "kiểm r-pack-wrap",
-      "facts": {
-        "machineKind": "packWrap"
-      },
-      "expectHs": "84224000"
-    },
-    {
-      "id": "8422-f-84229010",
-      "heading": "8422",
-      "text": "kiểm r-parts-home",
-      "facts": {
-        "machineKind": "parts842211"
-      },
-      "expectHs": "84229010"
-    },
-    {
-      "id": "8422-f-84229090",
-      "heading": "8422",
-      "text": "kiểm r-parts-other",
-      "facts": {
-        "machineKind": "partsOther"
-      },
-      "expectHs": "84229090"
-    },
-    {
-      "id": "8422-ask",
-      "heading": "8422",
-      "text": "hàng nhóm 8422",
-      "expectAsk": [
-        "machineKind"
-      ]
+        "goodsKind": "machine",
+        "machineUse": "other"
+      }
     },
     {
       "id": "8420-x-84201010",
@@ -730,453 +1712,126 @@
       "expectHs": "84209990"
     },
     {
-      "id": "8420-ask",
-      "heading": "8420",
-      "text": "hàng nhóm 8420",
+      "id": "8422-ask",
+      "heading": "8422",
+      "text": "hàng nhóm 8422",
       "expectAsk": [
-        "goodsKind"
+        "machineKind"
       ]
     },
     {
-      "id": "8532-x-85321000",
-      "heading": "8532",
-      "text": "tu dien 85321000 verify",
+      "id": "8422-f-84221100",
+      "heading": "8422",
+      "text": "kiểm r-dw-home",
       "facts": {
-        "capKind": "power50Hz"
+        "machineKind": "dishwasherHousehold"
       },
-      "expectHs": "85321000"
+      "expectHs": "84221100"
     },
     {
-      "id": "8532-x-85322100",
-      "heading": "8532",
-      "text": "tu dien 85322100 verify",
+      "id": "8422-f-84221900",
+      "heading": "8422",
+      "text": "kiểm r-dw-other",
       "facts": {
-        "capKind": "tantalum"
+        "machineKind": "dishwasherOther"
       },
-      "expectHs": "85322100"
+      "expectHs": "84221900"
     },
     {
-      "id": "8532-x-85322200",
-      "heading": "8532",
-      "text": "tu dien 85322200 verify",
+      "id": "8422-f-84222000",
+      "heading": "8422",
+      "text": "kiểm r-clean-dry",
       "facts": {
-        "capKind": "aluminiumElectrolytic"
+        "machineKind": "cleanDryContainers"
       },
-      "expectHs": "85322200"
+      "expectHs": "84222000"
     },
     {
-      "id": "8532-x-85322300",
-      "heading": "8532",
-      "text": "tu dien 85322300 verify",
+      "id": "8422-f-84223000",
+      "heading": "8422",
+      "text": "kiểm r-fill-seal",
       "facts": {
-        "capKind": "ceramicSingle"
+        "machineKind": "fillSealLabel"
       },
-      "expectHs": "85322300"
+      "expectHs": "84223000"
     },
     {
-      "id": "8532-x-85322400",
-      "heading": "8532",
-      "text": "tu dien 85322400 verify",
+      "id": "8422-f-84224000",
+      "heading": "8422",
+      "text": "kiểm r-pack-wrap",
       "facts": {
-        "capKind": "ceramicMulti"
+        "machineKind": "packWrap"
       },
-      "expectHs": "85322400"
+      "expectHs": "84224000"
     },
     {
-      "id": "8532-x-85322500",
-      "heading": "8532",
-      "text": "tu dien 85322500 verify",
+      "id": "8422-f-84229010",
+      "heading": "8422",
+      "text": "kiểm r-parts-home",
       "facts": {
-        "capKind": "paperPlastic"
+        "machineKind": "parts842211"
       },
-      "expectHs": "85322500"
+      "expectHs": "84229010"
     },
     {
-      "id": "8532-x-85322900",
-      "heading": "8532",
-      "text": "tu dien 85322900 verify",
-      "facts": {
-        "capKind": "fixedOther"
-      },
-      "expectHs": "85322900"
-    },
-    {
-      "id": "8532-x-85323000",
-      "heading": "8532",
-      "text": "tu dien 85323000 verify",
-      "facts": {
-        "capKind": "variablePreset"
-      },
-      "expectHs": "85323000"
-    },
-    {
-      "id": "8532-x-85329000",
-      "heading": "8532",
-      "text": "tu dien 85329000 verify",
-      "facts": {
-        "capKind": "parts"
-      },
-      "expectHs": "85329000"
-    },
-    {
-      "id": "8532-ask",
-      "heading": "8532",
-      "text": "hàng nhóm 8532",
-      "expectAsk": [
-        "capKind"
-      ]
-    },
-    {
-      "id": "8533-f-85339000",
-      "heading": "8533",
-      "text": "kiểm r-parts",
-      "facts": {
-        "goodsRole": "parts"
-      },
-      "expectHs": "85339000"
-    },
-    {
-      "id": "8533-f-85331010",
-      "heading": "8533",
-      "text": "kiểm r-carbon-chip",
-      "facts": {
-        "goodsRole": "resistor",
-        "resistorClass": "fixedCarbon",
-        "carbonMount": "chip"
-      },
-      "expectHs": "85331010"
-    },
-    {
-      "id": "8533-f-85331090",
-      "heading": "8533",
-      "text": "kiểm r-carbon-other",
-      "facts": {
-        "goodsRole": "resistor",
-        "resistorClass": "fixedCarbon",
-        "carbonMount": "other"
-      },
-      "expectHs": "85331090"
-    },
-    {
-      "id": "8533-f-85332100",
-      "heading": "8533",
-      "text": "kiểm r-fixed-le20",
-      "facts": {
-        "goodsRole": "resistor",
-        "resistorClass": "fixedOther",
-        "powerW": 20
-      },
-      "expectHs": "85332100"
-    },
-    {
-      "id": "8533-f-85332900",
-      "heading": "8533",
-      "text": "kiểm r-fixed-gt20",
-      "facts": {
-        "goodsRole": "resistor",
-        "resistorClass": "fixedOther",
-        "powerW": 20.01
-      },
-      "expectHs": "85332900"
-    },
-    {
-      "id": "8533-f-85333100",
-      "heading": "8533",
-      "text": "kiểm r-wire-le20",
-      "facts": {
-        "goodsRole": "resistor",
-        "resistorClass": "wirewoundVariable",
-        "powerW": 20
-      },
-      "expectHs": "85333100"
-    },
-    {
-      "id": "8533-f-85333900",
-      "heading": "8533",
-      "text": "kiểm r-wire-gt20",
-      "facts": {
-        "goodsRole": "resistor",
-        "resistorClass": "wirewoundVariable",
-        "powerW": 20.01
-      },
-      "expectHs": "85333900"
-    },
-    {
-      "id": "8533-f-85334000",
-      "heading": "8533",
-      "text": "kiểm r-variable-other",
-      "facts": {
-        "goodsRole": "resistor",
-        "resistorClass": "variableOther"
-      },
-      "expectHs": "85334000"
-    },
-    {
-      "id": "8533-ask",
-      "heading": "8533",
-      "text": "hàng nhóm 8533",
-      "expectAsk": [
-        "goodsRole"
-      ]
-    },
-    {
-      "id": "8522-f-85221000",
-      "heading": "8522",
-      "text": "kiểm r-pickup",
-      "facts": {
-        "partKind": "pickUpCartridge"
-      },
-      "expectHs": "85221000"
-    },
-    {
-      "id": "8522-f-85229020",
-      "heading": "8522",
-      "text": "kiểm r-pcb-answering",
-      "facts": {
-        "partKind": "pcbTelephoneAnswering"
-      },
-      "expectHs": "85229020"
-    },
-    {
-      "id": "8522-f-85229030",
-      "heading": "8522",
-      "text": "kiểm r-pcb-cinema",
-      "facts": {
-        "partKind": "pcbSoundCinema"
-      },
-      "expectHs": "85229030"
-    },
-    {
-      "id": "8522-f-85229040",
-      "heading": "8522",
-      "text": "kiểm r-mechanism",
-      "facts": {
-        "partKind": "tapeDiskMechanism"
-      },
-      "expectHs": "85229040"
-    },
-    {
-      "id": "8522-f-85229050",
-      "heading": "8522",
-      "text": "kiểm r-magnetic-head",
-      "facts": {
-        "partKind": "magneticHead"
-      },
-      "expectHs": "85229050"
-    },
-    {
-      "id": "8522-f-85229091",
-      "heading": "8522",
-      "text": "kiểm r-parts-sound",
-      "facts": {
-        "partKind": "partsSoundRepro"
-      },
-      "expectHs": "85229091"
-    },
-    {
-      "id": "8522-f-85229092",
-      "heading": "8522",
-      "text": "kiểm r-parts-answering",
-      "facts": {
-        "partKind": "partsTelephoneAnswering"
-      },
-      "expectHs": "85229092"
-    },
-    {
-      "id": "8522-f-85229093",
-      "heading": "8522",
-      "text": "kiểm r-parts-8521",
-      "facts": {
-        "partKind": "parts851981Or8521"
-      },
-      "expectHs": "85229093"
-    },
-    {
-      "id": "8522-f-85229099",
-      "heading": "8522",
+      "id": "8422-f-84229090",
+      "heading": "8422",
       "text": "kiểm r-parts-other",
       "facts": {
-        "partKind": "partsOther"
+        "machineKind": "partsOther"
       },
-      "expectHs": "85229099"
+      "expectHs": "84229090"
     },
     {
-      "id": "8522-ask",
-      "heading": "8522",
-      "text": "hàng nhóm 8522",
+      "id": "8427-diesel-text",
+      "heading": "8427",
+      "text": "xe nâng dầu diesel 3 tấn",
+      "expectHs": "84272000"
+    },
+    {
+      "id": "8427-electric-text",
+      "heading": "8427",
+      "text": "xe nâng điện tự hành 2 tấn ngồi lái",
+      "expectHs": "84271000"
+    },
+    {
+      "id": "8427-facts-only",
+      "heading": "8427",
+      "text": "xe nâng",
+      "facts": {
+        "selfPropelled": "yes",
+        "driveType": "other"
+      },
+      "expectHs": "84272000"
+    },
+    {
+      "id": "8427-forklift-ask-drive",
+      "heading": "8427",
+      "text": "forklift tự hành 1.5 tấn",
       "expectAsk": [
-        "partKind"
+        "driveType"
       ]
     },
     {
-      "id": "8537-f-85371020",
-      "heading": "8537",
-      "text": "kiểm r-lv-dist-it",
-      "facts": {
-        "panelVoltage": "lte1000v",
-        "lvPanelClass": "distributionItTelecom"
-      },
-      "expectHs": "85371020"
+      "id": "8427-hand-pallet",
+      "heading": "8427",
+      "text": "xe nâng tay 2.5 tấn",
+      "expectHs": "84279000"
     },
     {
-      "id": "8537-f-85371030",
-      "heading": "8537",
-      "text": "kiểm r-lv-plc-semi",
-      "facts": {
-        "panelVoltage": "lte1000v",
-        "lvPanelClass": "plcSemiconductorFab"
-      },
-      "expectHs": "85371030"
-    },
-    {
-      "id": "8537-f-85371040",
-      "heading": "8537",
-      "text": "kiểm r-lv-motor-drive",
-      "facts": {
-        "panelVoltage": "lte1000v",
-        "lvPanelClass": "motorDriveHighCurrent",
-        "outputVoltageVdc": 24,
-        "outputCurrentA": 300
-      },
-      "expectHs": "85371040"
-    },
-    {
-      "id": "8537-f-85371011",
-      "heading": "8537",
-      "text": "kiểm r-lv-ctrl-dcs",
-      "facts": {
-        "panelVoltage": "lte1000v",
-        "lvPanelClass": "controlBoard",
-        "controlBoardRole": "dcsDistributed"
-      },
-      "expectHs": "85371011"
-    },
-    {
-      "id": "8537-f-85371012",
-      "heading": "8537",
-      "text": "kiểm r-lv-ctrl-plc",
-      "facts": {
-        "panelVoltage": "lte1000v",
-        "lvPanelClass": "controlBoard",
-        "controlBoardRole": "plcWithProcessor"
-      },
-      "expectHs": "85371012"
-    },
-    {
-      "id": "8537-f-85371013",
-      "heading": "8537",
-      "text": "kiểm r-lv-ctrl-appliance",
-      "facts": {
-        "panelVoltage": "lte1000v",
-        "lvPanelClass": "controlBoard",
-        "controlBoardRole": "applianceHvacWhiteGoods"
-      },
-      "expectHs": "85371013"
-    },
-    {
-      "id": "8537-f-85371019",
-      "heading": "8537",
-      "text": "kiểm r-lv-ctrl-other",
-      "facts": {
-        "panelVoltage": "lte1000v",
-        "lvPanelClass": "controlBoard",
-        "controlBoardRole": "otherControl"
-      },
-      "expectHs": "85371019"
-    },
-    {
-      "id": "8537-f-85371091",
-      "heading": "8537",
-      "text": "kiểm r-lv-other-radio",
-      "facts": {
-        "panelVoltage": "lte1000v",
-        "lvPanelClass": "otherAssembly",
-        "otherAssemblyUse": "radioOrElectricFan"
-      },
-      "expectHs": "85371091"
-    },
-    {
-      "id": "8537-f-85371092",
-      "heading": "8537",
-      "text": "kiểm r-lv-other-dcs",
-      "facts": {
-        "panelVoltage": "lte1000v",
-        "lvPanelClass": "otherAssembly",
-        "otherAssemblyUse": "dcsDistributed"
-      },
-      "expectHs": "85371092"
-    },
-    {
-      "id": "8537-f-85371099",
-      "heading": "8537",
-      "text": "kiểm r-lv-other-nec",
-      "facts": {
-        "panelVoltage": "lte1000v",
-        "lvPanelClass": "otherAssembly",
-        "otherAssemblyUse": "otherNec"
-      },
-      "expectHs": "85371099"
-    },
-    {
-      "id": "8537-f-85372011",
-      "heading": "8537",
-      "text": "kiểm r-hv-ctrl-66kv",
-      "facts": {
-        "panelVoltage": "gt1000v",
-        "hvPanelFunction": "control",
-        "incorporates66kvSwitchgear": "yes"
-      },
-      "expectHs": "85372011"
-    },
-    {
-      "id": "8537-f-85372019",
-      "heading": "8537",
-      "text": "kiểm r-hv-ctrl-other",
-      "facts": {
-        "panelVoltage": "gt1000v",
-        "hvPanelFunction": "control",
-        "incorporates66kvSwitchgear": "no"
-      },
-      "expectHs": "85372019"
-    },
-    {
-      "id": "8537-f-85372021",
-      "heading": "8537",
-      "text": "kiểm r-hv-dist-66kv",
-      "facts": {
-        "panelVoltage": "gt1000v",
-        "hvPanelFunction": "distribution",
-        "incorporates66kvSwitchgear": "yes"
-      },
-      "expectHs": "85372021"
-    },
-    {
-      "id": "8537-f-85372029",
-      "heading": "8537",
-      "text": "kiểm r-hv-dist-other",
-      "facts": {
-        "panelVoltage": "gt1000v",
-        "hvPanelFunction": "distribution",
-        "incorporates66kvSwitchgear": "no"
-      },
-      "expectHs": "85372029"
-    },
-    {
-      "id": "8537-f-85372090",
-      "heading": "8537",
-      "text": "kiểm r-hv-other",
-      "facts": {
-        "panelVoltage": "gt1000v",
-        "hvPanelFunction": "otherHv"
-      },
-      "expectHs": "85372090"
-    },
-    {
-      "id": "8537-ask",
-      "heading": "8537",
-      "text": "hàng nhóm 8537",
+      "id": "8427-unknown-asks-self",
+      "heading": "8427",
+      "text": "xe nâng 2 tấn",
       "expectAsk": [
-        "panelVoltage"
+        "selfPropelled"
+      ]
+    },
+    {
+      "id": "8428-ask",
+      "heading": "8428",
+      "text": "hàng nhóm 8428",
+      "expectAsk": [
+        "equipmentFamily"
       ]
     },
     {
@@ -1363,12 +2018,15 @@
       "expectHs": "84289090"
     },
     {
-      "id": "8428-ask",
-      "heading": "8428",
-      "text": "hàng nhóm 8428",
-      "expectAsk": [
-        "equipmentFamily"
-      ]
+      "id": "8452-8452-auto",
+      "heading": "8452",
+      "text": "máy khâu nhập khẩu",
+      "facts": {
+        "goodsKind": "sewingMachine",
+        "useType": "industrial",
+        "machineAuto": "automatic"
+      },
+      "expectHs": "84522100"
     },
     {
       "id": "8452-8452-hh",
@@ -1379,17 +2037,6 @@
         "useType": "household"
       },
       "expectHs": "84521000"
-    },
-    {
-      "id": "8452-8452-auto",
-      "heading": "8452",
-      "text": "máy khâu nhập khẩu",
-      "facts": {
-        "goodsKind": "sewingMachine",
-        "useType": "industrial",
-        "machineAuto": "automatic"
-      },
-      "expectHs": "84522100"
     },
     {
       "id": "8452-8452-ind-o",
@@ -1486,6 +2133,80 @@
       ]
     },
     {
+      "id": "8466-ask",
+      "heading": "8466",
+      "text": "hàng hóa nhóm 8466",
+      "expectAsk": [
+        "nec8466Target"
+      ]
+    },
+    {
+      "id": "8466-r-dividing",
+      "heading": "8466",
+      "text": "hàng nhóm 8466",
+      "facts": {
+        "accessoryKind": "dividingHead"
+      },
+      "expectHs": "84663000"
+    },
+    {
+      "id": "8466-r-for-8462-8463",
+      "heading": "8466",
+      "text": "hàng nhóm 8466",
+      "facts": {
+        "accessoryKind": "for8462or8463"
+      },
+      "expectHs": "84669400"
+    },
+    {
+      "id": "8466-r-for-8464",
+      "heading": "8466",
+      "text": "hàng nhóm 8466",
+      "facts": {
+        "accessoryKind": "for8464"
+      },
+      "expectHs": "84669100"
+    },
+    {
+      "id": "8466-r-for-8465",
+      "heading": "8466",
+      "text": "hàng nhóm 8466",
+      "facts": {
+        "accessoryKind": "for8465"
+      },
+      "expectHs": "84669200"
+    },
+    {
+      "id": "8466-r-nec-845650",
+      "heading": "8466",
+      "text": "hàng nhóm 8466",
+      "facts": {
+        "accessoryKind": "nec8466",
+        "nec8466Target": "for845650"
+      },
+      "expectHs": "84669340"
+    },
+    {
+      "id": "8466-r-nec-other",
+      "heading": "8466",
+      "text": "hàng nhóm 8466",
+      "facts": {
+        "accessoryKind": "nec8466",
+        "nec8466Target": "otherNec"
+      },
+      "expectHs": "84669390"
+    },
+    {
+      "id": "8466-r-nec-pcb",
+      "heading": "8466",
+      "text": "hàng nhóm 8466",
+      "facts": {
+        "accessoryKind": "nec8466",
+        "nec8466Target": "pcbSemi8471_8517"
+      },
+      "expectHs": "84669330"
+    },
+    {
       "id": "8466-r-tool-listed",
       "heading": "8466",
       "text": "hàng nhóm 8466",
@@ -1526,208 +2247,6 @@
       "expectHs": "84662090"
     },
     {
-      "id": "8466-r-dividing",
-      "heading": "8466",
-      "text": "hàng nhóm 8466",
-      "facts": {
-        "accessoryKind": "dividingHead"
-      },
-      "expectHs": "84663000"
-    },
-    {
-      "id": "8466-r-for-8464",
-      "heading": "8466",
-      "text": "hàng nhóm 8466",
-      "facts": {
-        "accessoryKind": "for8464"
-      },
-      "expectHs": "84669100"
-    },
-    {
-      "id": "8466-r-for-8465",
-      "heading": "8466",
-      "text": "hàng nhóm 8466",
-      "facts": {
-        "accessoryKind": "for8465"
-      },
-      "expectHs": "84669200"
-    },
-    {
-      "id": "8466-r-nec-pcb",
-      "heading": "8466",
-      "text": "hàng nhóm 8466",
-      "facts": {
-        "accessoryKind": "nec8466",
-        "nec8466Target": "pcbSemi8471_8517"
-      },
-      "expectHs": "84669330"
-    },
-    {
-      "id": "8466-r-nec-845650",
-      "heading": "8466",
-      "text": "hàng nhóm 8466",
-      "facts": {
-        "accessoryKind": "nec8466",
-        "nec8466Target": "for845650"
-      },
-      "expectHs": "84669340"
-    },
-    {
-      "id": "8466-r-nec-other",
-      "heading": "8466",
-      "text": "hàng nhóm 8466",
-      "facts": {
-        "accessoryKind": "nec8466",
-        "nec8466Target": "otherNec"
-      },
-      "expectHs": "84669390"
-    },
-    {
-      "id": "8466-r-for-8462-8463",
-      "heading": "8466",
-      "text": "hàng nhóm 8466",
-      "facts": {
-        "accessoryKind": "for8462or8463"
-      },
-      "expectHs": "84669400"
-    },
-    {
-      "id": "8466-ask",
-      "heading": "8466",
-      "text": "hàng hóa nhóm 8466",
-      "expectAsk": [
-        "nec8466Target"
-      ]
-    },
-    {
-      "id": "8538-r-8537-lv-semi",
-      "heading": "8538",
-      "text": "hàng nhóm 8538",
-      "facts": {
-        "partScope": "for8537Assemblies",
-        "partVoltage": "lte1000v",
-        "part8537Kind": "semiFabPlc"
-      },
-      "expectHs": "85381011"
-    },
-    {
-      "id": "8538-r-8537-lv-radio",
-      "heading": "8538",
-      "text": "hàng nhóm 8538",
-      "facts": {
-        "partScope": "for8537Assemblies",
-        "partVoltage": "lte1000v",
-        "part8537Kind": "radio"
-      },
-      "expectHs": "85381012"
-    },
-    {
-      "id": "8538-r-8537-lv-other",
-      "heading": "8538",
-      "text": "hàng nhóm 8538",
-      "facts": {
-        "partScope": "for8537Assemblies",
-        "partVoltage": "lte1000v",
-        "part8537Kind": "other8537"
-      },
-      "expectHs": "85381019"
-    },
-    {
-      "id": "8538-r-8537-hv-semi",
-      "heading": "8538",
-      "text": "hàng nhóm 8538",
-      "facts": {
-        "partScope": "for8537Assemblies",
-        "partVoltage": "gt1000v",
-        "part8537Kind": "semiFabPlc"
-      },
-      "expectHs": "85381021"
-    },
-    {
-      "id": "8538-r-8537-hv-radio",
-      "heading": "8538",
-      "text": "hàng nhóm 8538",
-      "facts": {
-        "partScope": "for8537Assemblies",
-        "partVoltage": "gt1000v",
-        "part8537Kind": "radio"
-      },
-      "expectHs": "85381022"
-    },
-    {
-      "id": "8538-r-8537-hv-other",
-      "heading": "8538",
-      "text": "hàng nhóm 8538",
-      "facts": {
-        "partScope": "for8537Assemblies",
-        "partVoltage": "gt1000v",
-        "part8537Kind": "other8537"
-      },
-      "expectHs": "85381029"
-    },
-    {
-      "id": "8538-r-gen-lv-853669",
-      "heading": "8538",
-      "text": "hàng nhóm 8538",
-      "facts": {
-        "partScope": "for8535_8536_8537General",
-        "partVoltage": "lte1000v",
-        "generalPartTarget": "for853669_853690"
-      },
-      "expectHs": "85389011"
-    },
-    {
-      "id": "8538-r-gen-lv-853650",
-      "heading": "8538",
-      "text": "hàng nhóm 8538",
-      "facts": {
-        "partScope": "for8535_8536_8537General",
-        "partVoltage": "lte1000v",
-        "generalPartTarget": "for853650Connectors"
-      },
-      "expectHs": "85389012"
-    },
-    {
-      "id": "8538-r-gen-lv-85371020",
-      "heading": "8538",
-      "text": "hàng nhóm 8538",
-      "facts": {
-        "partScope": "for8535_8536_8537General",
-        "partVoltage": "lte1000v",
-        "generalPartTarget": "for85371020Dist"
-      },
-      "expectHs": "85389013"
-    },
-    {
-      "id": "8538-r-gen-lv-other",
-      "heading": "8538",
-      "text": "hàng nhóm 8538",
-      "facts": {
-        "partScope": "for8535_8536_8537General",
-        "partVoltage": "lte1000v",
-        "generalPartTarget": "otherGeneral"
-      },
-      "expectHs": "85389019"
-    },
-    {
-      "id": "8538-r-gen-hv",
-      "heading": "8538",
-      "text": "hàng nhóm 8538",
-      "facts": {
-        "partScope": "for8535_8536_8537General",
-        "partVoltage": "gt1000v"
-      },
-      "expectHs": "85389020"
-    },
-    {
-      "id": "8538-ask",
-      "heading": "8538",
-      "text": "hàng hóa nhóm 8538",
-      "expectAsk": [
-        "partScope"
-      ]
-    },
-    {
       "id": "8467-ask",
       "heading": "8467",
       "text": "hàng hóa nhóm 8467",
@@ -1736,587 +2255,15 @@
       ]
     },
     {
-      "id": "8480-r-foundry-box",
-      "heading": "8480",
-      "text": "hàng nhóm 8480",
-      "facts": {
-        "mouldKind": "foundryBox"
-      },
-      "expectHs": "84801000"
-    },
-    {
-      "id": "8480-r-mould-base",
-      "heading": "8480",
-      "text": "hàng nhóm 8480",
-      "facts": {
-        "mouldKind": "mouldBase"
-      },
-      "expectHs": "84802000"
-    },
-    {
-      "id": "8480-r-pattern-copper",
-      "heading": "8480",
-      "text": "hàng nhóm 8480",
-      "facts": {
-        "mouldKind": "pattern",
-        "patternMaterial": "copper"
-      },
-      "expectHs": "84803010"
-    },
-    {
-      "id": "8480-r-pattern-other",
-      "heading": "8480",
-      "text": "hàng nhóm 8480",
-      "facts": {
-        "mouldKind": "pattern",
-        "patternMaterial": "other"
-      },
-      "expectHs": "84803090"
-    },
-    {
-      "id": "8480-r-metal-injection",
-      "heading": "8480",
-      "text": "hàng nhóm 8480",
-      "facts": {
-        "mouldKind": "metalMould",
-        "metalMouldProcess": "injectionOrCompression"
-      },
-      "expectHs": "84804100"
-    },
-    {
-      "id": "8480-r-metal-other",
-      "heading": "8480",
-      "text": "hàng nhóm 8480",
-      "facts": {
-        "mouldKind": "metalMould",
-        "metalMouldProcess": "other"
-      },
-      "expectHs": "84804900"
-    },
-    {
-      "id": "8480-r-glass",
-      "heading": "8480",
-      "text": "hàng nhóm 8480",
-      "facts": {
-        "mouldKind": "glassMould"
-      },
-      "expectHs": "84805000"
-    },
-    {
-      "id": "8480-r-mineral",
-      "heading": "8480",
-      "text": "hàng nhóm 8480",
-      "facts": {
-        "mouldKind": "mineralMould"
-      },
-      "expectHs": "84806000"
-    },
-    {
-      "id": "8480-r-rp-inject-shoe",
-      "heading": "8480",
-      "text": "hàng nhóm 8480",
-      "facts": {
-        "mouldKind": "rubberPlasticMould",
-        "rubberPlasticProcess": "injectionOrCompression",
-        "shoeSoleMould": "yes"
-      },
-      "expectHs": "84807110"
-    },
-    {
-      "id": "8480-r-rp-inject-other",
-      "heading": "8480",
-      "text": "hàng nhóm 8480",
-      "facts": {
-        "mouldKind": "rubberPlasticMould",
-        "rubberPlasticProcess": "injectionOrCompression",
-        "shoeSoleMould": "no"
-      },
-      "expectHs": "84807190"
-    },
-    {
-      "id": "8480-r-rp-other-shoe",
-      "heading": "8480",
-      "text": "hàng nhóm 8480",
-      "facts": {
-        "mouldKind": "rubberPlasticMould",
-        "rubberPlasticProcess": "other",
-        "shoeSoleMould": "yes"
-      },
-      "expectHs": "84807910"
-    },
-    {
-      "id": "8480-r-rp-other-nec",
-      "heading": "8480",
-      "text": "hàng nhóm 8480",
-      "facts": {
-        "mouldKind": "rubberPlasticMould",
-        "rubberPlasticProcess": "other",
-        "shoeSoleMould": "no"
-      },
-      "expectHs": "84807990"
-    },
-    {
-      "id": "8480-ask",
-      "heading": "8480",
-      "text": "hàng hóa nhóm 8480",
-      "expectAsk": [
-        "mouldKind"
-      ]
-    },
-    {
-      "id": "8541-r-diode",
-      "heading": "8541",
-      "text": "hàng nhóm 8541",
-      "facts": {
-        "deviceKind": "diode"
-      },
-      "expectHs": "85411000"
-    },
-    {
-      "id": "8541-r-transistor-lt1w",
-      "heading": "8541",
-      "text": "hàng nhóm 8541",
-      "facts": {
-        "deviceKind": "transistor",
-        "transistorDissipationW": 0.5
-      },
-      "expectHs": "85412100"
-    },
-    {
-      "id": "8541-r-transistor-gte1w",
-      "heading": "8541",
-      "text": "hàng nhóm 8541",
-      "facts": {
-        "deviceKind": "transistor",
-        "transistorDissipationW": 5
-      },
-      "expectHs": "85412900"
-    },
-    {
-      "id": "8541-r-transistor-fallback",
-      "heading": "8541",
-      "text": "hàng nhóm 8541",
-      "facts": {
-        "deviceKind": "transistor"
-      },
-      "expectAsk": [
-        "transistorDissipationW"
-      ]
-    },
-    {
-      "id": "8541-r-thyristor",
-      "heading": "8541",
-      "text": "hàng nhóm 8541",
-      "facts": {
-        "deviceKind": "thyristor"
-      },
-      "expectHs": "85413000"
-    },
-    {
-      "id": "8541-r-led",
-      "heading": "8541",
-      "text": "hàng nhóm 8541",
-      "facts": {
-        "deviceKind": "photosensitive",
-        "photosensitiveKind": "led"
-      },
-      "expectHs": "85414100"
-    },
-    {
-      "id": "8541-r-pv-bare",
-      "heading": "8541",
-      "text": "hàng nhóm 8541",
-      "facts": {
-        "deviceKind": "photosensitive",
-        "photosensitiveKind": "pvCellBare"
-      },
-      "expectHs": "85414200"
-    },
-    {
-      "id": "8541-r-pv-module",
-      "heading": "8541",
-      "text": "hàng nhóm 8541",
-      "facts": {
-        "deviceKind": "photosensitive",
-        "photosensitiveKind": "pvModuleOrPanel"
-      },
-      "expectHs": "85414300"
-    },
-    {
-      "id": "8541-r-photo-transducer",
-      "heading": "8541",
-      "text": "hàng nhóm 8541",
-      "facts": {
-        "deviceKind": "photosensitive",
-        "photosensitiveKind": "semiconductorTransducer"
-      },
-      "expectHs": "85415100"
-    },
-    {
-      "id": "8541-r-photo-other",
-      "heading": "8541",
-      "text": "hàng nhóm 8541",
-      "facts": {
-        "deviceKind": "photosensitive",
-        "photosensitiveKind": "otherPhoto"
-      },
-      "expectHs": "85414900"
-    },
-    {
-      "id": "8541-r-photo-nec",
-      "heading": "8541",
-      "text": "hàng nhóm 8541",
-      "facts": {
-        "deviceKind": "photosensitive",
-        "photosensitiveKind": "generalNec"
-      },
-      "expectHs": "85415900"
-    },
-    {
-      "id": "8541-r-piezo",
-      "heading": "8541",
-      "text": "hàng nhóm 8541",
-      "facts": {
-        "deviceKind": "piezoCrystal"
-      },
-      "expectHs": "85416000"
-    },
-    {
-      "id": "8541-r-parts",
-      "heading": "8541",
-      "text": "hàng nhóm 8541",
-      "facts": {
-        "deviceKind": "parts"
-      },
-      "expectHs": "85419000"
-    },
-    {
-      "id": "8541-ask",
-      "heading": "8541",
-      "text": "hàng hóa nhóm 8541",
-      "expectAsk": [
-        "deviceKind"
-      ]
-    },
-    {
-      "id": "8514-r-res-hip",
-      "heading": "8514",
-      "text": "hàng nhóm 8514",
-      "facts": {
-        "goodsKind": "furnaceOven",
-        "furnaceHeating": "resistance",
-        "resistanceKind": "hotIsostaticPress"
-      },
-      "expectHs": "85141100"
-    },
-    {
-      "id": "8514-r-res-other",
-      "heading": "8514",
-      "text": "hàng nhóm 8514",
-      "facts": {
-        "goodsKind": "furnaceOven",
-        "furnaceHeating": "resistance",
-        "resistanceKind": "otherResistance"
-      },
-      "expectHs": "85141900"
-    },
-    {
-      "id": "8514-r-ind-pcb",
-      "heading": "8514",
-      "text": "hàng nhóm 8514",
-      "facts": {
-        "goodsKind": "furnaceOven",
-        "furnaceHeating": "inductionDielectric",
-        "pcbRelated": "yes"
-      },
-      "expectHs": "85142020"
-    },
-    {
-      "id": "8514-r-ind-other",
-      "heading": "8514",
-      "text": "hàng nhóm 8514",
-      "facts": {
-        "goodsKind": "furnaceOven",
-        "furnaceHeating": "inductionDielectric",
-        "pcbRelated": "no"
-      },
-      "expectHs": "85142090"
-    },
-    {
-      "id": "8514-r-ebeam-pcb",
-      "heading": "8514",
-      "text": "hàng nhóm 8514",
-      "facts": {
-        "goodsKind": "furnaceOven",
-        "furnaceHeating": "electronBeam",
-        "pcbRelated": "yes"
-      },
-      "expectHs": "85143110"
-    },
-    {
-      "id": "8514-r-ebeam-other",
-      "heading": "8514",
-      "text": "hàng nhóm 8514",
-      "facts": {
-        "goodsKind": "furnaceOven",
-        "furnaceHeating": "electronBeam",
-        "pcbRelated": "no"
-      },
-      "expectHs": "85143190"
-    },
-    {
-      "id": "8514-r-plasma-pcb",
-      "heading": "8514",
-      "text": "hàng nhóm 8514",
-      "facts": {
-        "goodsKind": "furnaceOven",
-        "furnaceHeating": "plasmaVacuumArc",
-        "pcbRelated": "yes"
-      },
-      "expectHs": "85143210"
-    },
-    {
-      "id": "8514-r-plasma-other",
-      "heading": "8514",
-      "text": "hàng nhóm 8514",
-      "facts": {
-        "goodsKind": "furnaceOven",
-        "furnaceHeating": "plasmaVacuumArc",
-        "pcbRelated": "no"
-      },
-      "expectHs": "85143290"
-    },
-    {
-      "id": "8514-r-tech-pcb",
-      "heading": "8514",
-      "text": "hàng nhóm 8514",
-      "facts": {
-        "goodsKind": "furnaceOven",
-        "furnaceHeating": "otherTechnology",
-        "pcbRelated": "yes"
-      },
-      "expectHs": "85143910"
-    },
-    {
-      "id": "8514-r-tech-other",
-      "heading": "8514",
-      "text": "hàng nhóm 8514",
-      "facts": {
-        "goodsKind": "furnaceOven",
-        "furnaceHeating": "otherTechnology",
-        "pcbRelated": "no"
-      },
-      "expectHs": "85143990"
-    },
-    {
-      "id": "8514-r-ind-equipment",
-      "heading": "8514",
-      "text": "hàng nhóm 8514",
-      "facts": {
-        "goodsKind": "inductionHeatingEquipment"
-      },
-      "expectHs": "85144000"
-    },
-    {
-      "id": "8514-r-part-pcb",
-      "heading": "8514",
-      "text": "hàng nhóm 8514",
-      "facts": {
-        "goodsKind": "parts",
-        "pcbRelated": "yes"
-      },
-      "expectHs": "85149020"
-    },
-    {
-      "id": "8514-r-part-other",
-      "heading": "8514",
-      "text": "hàng nhóm 8514",
-      "facts": {
-        "goodsKind": "parts",
-        "pcbRelated": "no"
-      },
-      "expectHs": "85149090"
-    },
-    {
-      "id": "8514-ask",
-      "heading": "8514",
-      "text": "hàng hóa nhóm 8514",
-      "expectAsk": [
-        "goodsKind"
-      ]
-    },
-    {
-      "id": "8535-r-fuse",
-      "heading": "8535",
-      "text": "hàng nhóm 8535",
-      "facts": {
-        "apparatusKind": "fuse"
-      },
-      "expectHs": "85351000"
-    },
-    {
-      "id": "8535-r-cb-moulded",
-      "heading": "8535",
-      "text": "hàng nhóm 8535",
-      "facts": {
-        "apparatusKind": "circuitBreaker",
-        "breakerVoltageClass": "below72_5kV",
-        "breakerKind": "mouldedCase"
-      },
-      "expectHs": "85352110"
-    },
-    {
-      "id": "8535-r-cb-elcb-lv",
-      "heading": "8535",
-      "text": "hàng nhóm 8535",
-      "facts": {
-        "apparatusKind": "circuitBreaker",
-        "breakerVoltageClass": "below72_5kV",
-        "breakerKind": "elcb"
-      },
-      "expectHs": "85352120"
-    },
-    {
-      "id": "8535-r-cb-other-lv",
-      "heading": "8535",
-      "text": "hàng nhóm 8535",
-      "facts": {
-        "apparatusKind": "circuitBreaker",
-        "breakerVoltageClass": "below72_5kV",
-        "breakerKind": "otherBreaker"
-      },
-      "expectHs": "85352190"
-    },
-    {
-      "id": "8535-r-cb-elcb-hv",
-      "heading": "8535",
-      "text": "hàng nhóm 8535",
-      "facts": {
-        "apparatusKind": "circuitBreaker",
-        "breakerVoltageClass": "72_5kVOrMore",
-        "breaker72Elcb": "yes"
-      },
-      "expectHs": "85352910"
-    },
-    {
-      "id": "8535-r-cb-other-hv",
-      "heading": "8535",
-      "text": "hàng nhóm 8535",
-      "facts": {
-        "apparatusKind": "circuitBreaker",
-        "breakerVoltageClass": "72_5kVOrMore",
-        "breaker72Elcb": "no"
-      },
-      "expectHs": "85352990"
-    },
-    {
-      "id": "8535-r-sw-under36",
-      "heading": "8535",
-      "text": "hàng nhóm 8535",
-      "facts": {
-        "apparatusKind": "isolatorSwitch",
-        "switchKind": "disconnectUnder36kV"
-      },
-      "expectHs": "85353011"
-    },
-    {
-      "id": "8535-r-sw-disc-other",
-      "heading": "8535",
-      "text": "hàng nhóm 8535",
-      "facts": {
-        "apparatusKind": "isolatorSwitch",
-        "switchKind": "otherDisconnect"
-      },
-      "expectHs": "85353019"
-    },
-    {
-      "id": "8535-r-sw-66kv",
-      "heading": "8535",
-      "text": "hàng nhóm 8535",
-      "facts": {
-        "apparatusKind": "isolatorSwitch",
-        "switchKind": "for66kVOrMore"
-      },
-      "expectHs": "85353020"
-    },
-    {
-      "id": "8535-r-sw-other",
-      "heading": "8535",
-      "text": "hàng nhóm 8535",
-      "facts": {
-        "apparatusKind": "isolatorSwitch",
-        "switchKind": "otherSwitch"
-      },
-      "expectHs": "85353090"
-    },
-    {
-      "id": "8535-r-surge",
-      "heading": "8535",
-      "text": "hàng nhóm 8535",
-      "facts": {
-        "apparatusKind": "surgeProtection"
-      },
-      "expectHs": "85354000"
-    },
-    {
-      "id": "8535-r-other-tap",
-      "heading": "8535",
-      "text": "hàng nhóm 8535",
-      "facts": {
-        "apparatusKind": "other8535",
-        "other8535Kind": "transformerTapSwitch"
-      },
-      "expectHs": "85359010"
-    },
-    {
-      "id": "8535-r-other-motor",
-      "heading": "8535",
-      "text": "hàng nhóm 8535",
-      "facts": {
-        "apparatusKind": "other8535",
-        "other8535Kind": "motorChangeOver"
-      },
-      "expectHs": "85359020"
-    },
-    {
-      "id": "8535-r-other-nec",
-      "heading": "8535",
-      "text": "hàng nhóm 8535",
-      "facts": {
-        "apparatusKind": "other8535",
-        "other8535Kind": "otherNec"
-      },
-      "expectHs": "85359090"
-    },
-    {
-      "id": "8535-ask",
-      "heading": "8535",
-      "text": "hàng hóa nhóm 8535",
-      "expectAsk": [
-        "apparatusKind"
-      ]
-    },
-    {
-      "id": "8467-r-pneu-rotary",
+      "id": "8467-r-chain-saw",
       "heading": "8467",
       "text": "nhập khẩu 8467",
       "facts": {
         "goodsKind": "completeTool",
-        "powerKind": "pneumatic",
-        "pneumaticKind": "rotary"
+        "powerKind": "hydraulicOrOtherNonElectric",
+        "nonElectricKind": "chainSaw"
       },
-      "expectHs": "84671100"
-    },
-    {
-      "id": "8467-r-pneu-other",
-      "heading": "8467",
-      "text": "nhập khẩu 8467",
-      "facts": {
-        "goodsKind": "completeTool",
-        "powerKind": "pneumatic",
-        "pneumaticKind": "other"
-      },
-      "expectHs": "84671900"
+      "expectHs": "84678100"
     },
     {
       "id": "8467-r-elec-drill",
@@ -2330,17 +2277,6 @@
       "expectHs": "84672100"
     },
     {
-      "id": "8467-r-elec-saw",
-      "heading": "8467",
-      "text": "nhập khẩu 8467",
-      "facts": {
-        "goodsKind": "completeTool",
-        "powerKind": "electricMotor",
-        "electricToolKind": "saw"
-      },
-      "expectHs": "84672200"
-    },
-    {
       "id": "8467-r-elec-other",
       "heading": "8467",
       "text": "nhập khẩu 8467",
@@ -2352,15 +2288,15 @@
       "expectHs": "84672900"
     },
     {
-      "id": "8467-r-chain-saw",
+      "id": "8467-r-elec-saw",
       "heading": "8467",
       "text": "nhập khẩu 8467",
       "facts": {
         "goodsKind": "completeTool",
-        "powerKind": "hydraulicOrOtherNonElectric",
-        "nonElectricKind": "chainSaw"
+        "powerKind": "electricMotor",
+        "electricToolKind": "saw"
       },
-      "expectHs": "84678100"
+      "expectHs": "84672200"
     },
     {
       "id": "8467-r-non-elec-other",
@@ -2396,16 +2332,6 @@
       "expectHs": "84679190"
     },
     {
-      "id": "8467-r-part-pneumatic",
-      "heading": "8467",
-      "text": "nhập khẩu 8467",
-      "facts": {
-        "goodsKind": "parts",
-        "partLine": "pneumatic"
-      },
-      "expectHs": "84679200"
-    },
-    {
       "id": "8467-r-part-elec-tools",
       "heading": "8467",
       "text": "nhập khẩu 8467",
@@ -2426,84 +2352,376 @@
       "expectHs": "84679990"
     },
     {
-      "id": "8412-pneu-cyl",
-      "heading": "8412",
-      "text": "xi lanh khí nén SC63x100",
-      "expectHs": "84123100"
+      "id": "8467-r-part-pneumatic",
+      "heading": "8467",
+      "text": "nhập khẩu 8467",
+      "facts": {
+        "goodsKind": "parts",
+        "partLine": "pneumatic"
+      },
+      "expectHs": "84679200"
     },
     {
-      "id": "8412-pneu-cyl-nodia",
-      "heading": "8412",
-      "text": "xy lanh khi nen 2 dau",
-      "expectHs": "84123100"
+      "id": "8467-r-pneu-other",
+      "heading": "8467",
+      "text": "nhập khẩu 8467",
+      "facts": {
+        "goodsKind": "completeTool",
+        "powerKind": "pneumatic",
+        "pneumaticKind": "other"
+      },
+      "expectHs": "84671900"
     },
     {
-      "id": "8412-pneu-cyl-square",
-      "heading": "8412",
-      "text": "xilanh vuông khí nén",
-      "expectHs": "84123100"
+      "id": "8467-r-pneu-rotary",
+      "heading": "8467",
+      "text": "nhập khẩu 8467",
+      "facts": {
+        "goodsKind": "completeTool",
+        "powerKind": "pneumatic",
+        "pneumaticKind": "rotary"
+      },
+      "expectHs": "84671100"
     },
     {
-      "id": "8412-hyd-cyl",
-      "heading": "8412",
-      "text": "xi lanh thủy lực 2 chiều 50 tấn",
-      "expectHs": "84122100"
-    },
-    {
-      "id": "8412-hyd-motor",
-      "heading": "8412",
-      "text": "motor thủy lực orbital",
-      "expectHs": "84122900"
-    },
-    {
-      "id": "8412-pneu-motor",
-      "heading": "8412",
-      "text": "mô tơ khí nén 1/4 HP",
-      "expectHs": "84123900"
-    },
-    {
-      "id": "8412-reaction",
-      "heading": "8412",
-      "text": "động cơ phản lực mô hình",
-      "expectHs": "84121000"
-    },
-    {
-      "id": "8412-electric-cyl",
-      "heading": "8412",
-      "text": "xy lanh điện 24V hành trình 100mm",
-      "expectHs": "84128000"
-    },
-    {
-      "id": "8412-part-cyl",
-      "heading": "8412",
-      "text": "đầu lắc xi lanh khí nén",
-      "expectHs": "84129090"
-    },
-    {
-      "id": "8412-part-seal",
-      "heading": "8412",
-      "text": "bộ phớt xi lanh thủy lực",
-      "expectHs": "84129090"
-    },
-    {
-      "id": "8412-part-reaction",
-      "heading": "8412",
-      "text": "bộ phận động cơ phản lực",
-      "expectHs": "84129010"
-    },
-    {
-      "id": "8412-part-steam",
-      "heading": "8412",
-      "text": "phụ tùng tua bin hơi nước tổ máy hơi nước",
-      "expectHs": "84129020"
-    },
-    {
-      "id": "8412-bare-cyl-ask",
-      "heading": "8412",
-      "text": "xi lanh 100mm",
+      "id": "8473-ask",
+      "heading": "8473",
+      "text": "hàng nhóm 8473",
       "expectAsk": [
-        "engineType"
+        "hostMachine"
       ]
+    },
+    {
+      "id": "8473-f-84732100",
+      "heading": "8473",
+      "text": "kiểm r-calc-electronic",
+      "facts": {
+        "hostMachine": "calcElectronic"
+      },
+      "expectHs": "84732100"
+    },
+    {
+      "id": "8473-f-84732900",
+      "heading": "8473",
+      "text": "kiểm r-calc-other",
+      "facts": {
+        "hostMachine": "calcOther"
+      },
+      "expectHs": "84732900"
+    },
+    {
+      "id": "8473-f-84733010",
+      "heading": "8473",
+      "text": "kiểm r-8471-pcb",
+      "facts": {
+        "hostMachine": "adp8471",
+        "partForm": "assembledPcb"
+      },
+      "expectHs": "84733010"
+    },
+    {
+      "id": "8473-f-84733090",
+      "heading": "8473",
+      "text": "kiểm r-8471-other",
+      "facts": {
+        "hostMachine": "adp8471",
+        "partForm": "other"
+      },
+      "expectHs": "84733090"
+    },
+    {
+      "id": "8473-f-84734000",
+      "heading": "8473",
+      "text": "kiểm r-8472",
+      "facts": {
+        "hostMachine": "office8472"
+      },
+      "expectHs": "84734000"
+    },
+    {
+      "id": "8473-f-84735010",
+      "heading": "8473",
+      "text": "kiểm r-multi-8471",
+      "facts": {
+        "hostMachine": "multiUse",
+        "multi8471Fit": "yes"
+      },
+      "expectHs": "84735010"
+    },
+    {
+      "id": "8473-f-84735090",
+      "heading": "8473",
+      "text": "kiểm r-multi-other",
+      "facts": {
+        "hostMachine": "multiUse",
+        "multi8471Fit": "no"
+      },
+      "expectHs": "84735090"
+    },
+    {
+      "id": "8480-ask",
+      "heading": "8480",
+      "text": "hàng hóa nhóm 8480",
+      "expectAsk": [
+        "mouldKind"
+      ]
+    },
+    {
+      "id": "8480-foundry-box",
+      "heading": "8480",
+      "text": "hộp khuôn đúc bằng thép",
+      "facts": {
+        "mouldKind": "foundryBox"
+      },
+      "expectHs": "84801000"
+    },
+    {
+      "id": "8480-glass",
+      "heading": "8480",
+      "text": "khuôn đúc thủy tinh",
+      "facts": {
+        "mouldKind": "glassMould"
+      },
+      "expectHs": "84805000"
+    },
+    {
+      "id": "8480-metal-inject",
+      "heading": "8480",
+      "text": "khuôn kim loại ép phun",
+      "facts": {
+        "mouldKind": "metalMould",
+        "metalMouldProcess": "injectionOrCompression"
+      },
+      "expectHs": "84804100"
+    },
+    {
+      "id": "8480-metal-other",
+      "heading": "8480",
+      "text": "khuôn kim loại đúc áp lực khác",
+      "facts": {
+        "mouldKind": "metalMould",
+        "metalMouldProcess": "other"
+      },
+      "expectHs": "84804900"
+    },
+    {
+      "id": "8480-mineral",
+      "heading": "8480",
+      "text": "khuôn đúc khoáng vật",
+      "facts": {
+        "mouldKind": "mineralMould"
+      },
+      "expectHs": "84806000"
+    },
+    {
+      "id": "8480-mould-base",
+      "heading": "8480",
+      "text": "đế khuôn bằng kim loại",
+      "facts": {
+        "mouldKind": "mouldBase"
+      },
+      "expectHs": "84802000"
+    },
+    {
+      "id": "8480-pattern-copper",
+      "heading": "8480",
+      "text": "mẫu khuôn bằng đồng",
+      "facts": {
+        "mouldKind": "pattern",
+        "patternMaterial": "copper"
+      },
+      "expectHs": "84803010"
+    },
+    {
+      "id": "8480-pattern-other",
+      "heading": "8480",
+      "text": "mẫu khuôn bằng gỗ",
+      "facts": {
+        "mouldKind": "pattern",
+        "patternMaterial": "other"
+      },
+      "expectHs": "84803090"
+    },
+    {
+      "id": "8480-r-foundry-box",
+      "heading": "8480",
+      "text": "hàng nhóm 8480",
+      "facts": {
+        "mouldKind": "foundryBox"
+      },
+      "expectHs": "84801000"
+    },
+    {
+      "id": "8480-r-glass",
+      "heading": "8480",
+      "text": "hàng nhóm 8480",
+      "facts": {
+        "mouldKind": "glassMould"
+      },
+      "expectHs": "84805000"
+    },
+    {
+      "id": "8480-r-metal-injection",
+      "heading": "8480",
+      "text": "hàng nhóm 8480",
+      "facts": {
+        "mouldKind": "metalMould",
+        "metalMouldProcess": "injectionOrCompression"
+      },
+      "expectHs": "84804100"
+    },
+    {
+      "id": "8480-r-metal-other",
+      "heading": "8480",
+      "text": "hàng nhóm 8480",
+      "facts": {
+        "mouldKind": "metalMould",
+        "metalMouldProcess": "other"
+      },
+      "expectHs": "84804900"
+    },
+    {
+      "id": "8480-r-mineral",
+      "heading": "8480",
+      "text": "hàng nhóm 8480",
+      "facts": {
+        "mouldKind": "mineralMould"
+      },
+      "expectHs": "84806000"
+    },
+    {
+      "id": "8480-r-mould-base",
+      "heading": "8480",
+      "text": "hàng nhóm 8480",
+      "facts": {
+        "mouldKind": "mouldBase"
+      },
+      "expectHs": "84802000"
+    },
+    {
+      "id": "8480-r-pattern-copper",
+      "heading": "8480",
+      "text": "hàng nhóm 8480",
+      "facts": {
+        "mouldKind": "pattern",
+        "patternMaterial": "copper"
+      },
+      "expectHs": "84803010"
+    },
+    {
+      "id": "8480-r-pattern-other",
+      "heading": "8480",
+      "text": "hàng nhóm 8480",
+      "facts": {
+        "mouldKind": "pattern",
+        "patternMaterial": "other"
+      },
+      "expectHs": "84803090"
+    },
+    {
+      "id": "8480-r-rp-inject-other",
+      "heading": "8480",
+      "text": "hàng nhóm 8480",
+      "facts": {
+        "mouldKind": "rubberPlasticMould",
+        "rubberPlasticProcess": "injectionOrCompression",
+        "shoeSoleMould": "no"
+      },
+      "expectHs": "84807190"
+    },
+    {
+      "id": "8480-r-rp-inject-shoe",
+      "heading": "8480",
+      "text": "hàng nhóm 8480",
+      "facts": {
+        "mouldKind": "rubberPlasticMould",
+        "rubberPlasticProcess": "injectionOrCompression",
+        "shoeSoleMould": "yes"
+      },
+      "expectHs": "84807110"
+    },
+    {
+      "id": "8480-r-rp-other-nec",
+      "heading": "8480",
+      "text": "hàng nhóm 8480",
+      "facts": {
+        "mouldKind": "rubberPlasticMould",
+        "rubberPlasticProcess": "other",
+        "shoeSoleMould": "no"
+      },
+      "expectHs": "84807990"
+    },
+    {
+      "id": "8480-r-rp-other-shoe",
+      "heading": "8480",
+      "text": "hàng nhóm 8480",
+      "facts": {
+        "mouldKind": "rubberPlasticMould",
+        "rubberPlasticProcess": "other",
+        "shoeSoleMould": "yes"
+      },
+      "expectHs": "84807910"
+    },
+    {
+      "id": "8480-rp-inject-other",
+      "heading": "8480",
+      "text": "khuôn ép phun nhựa không phải đế giày",
+      "facts": {
+        "mouldKind": "rubberPlasticMould",
+        "rubberPlasticProcess": "injectionOrCompression",
+        "shoeSoleMould": "no"
+      },
+      "expectHs": "84807190"
+    },
+    {
+      "id": "8480-rp-inject-shoe",
+      "heading": "8480",
+      "text": "khuôn ép phun cao su làm đế giày",
+      "facts": {
+        "mouldKind": "rubberPlasticMould",
+        "rubberPlasticProcess": "injectionOrCompression",
+        "shoeSoleMould": "yes"
+      },
+      "expectHs": "84807110"
+    },
+    {
+      "id": "8480-rp-other-nec",
+      "heading": "8480",
+      "text": "khuôn nén nhựa khác không phải đế giày",
+      "facts": {
+        "mouldKind": "rubberPlasticMould",
+        "rubberPlasticProcess": "other",
+        "shoeSoleMould": "no"
+      },
+      "expectHs": "84807990"
+    },
+    {
+      "id": "8480-rp-other-shoe",
+      "heading": "8480",
+      "text": "khuôn cao su nén khác làm đế giày",
+      "facts": {
+        "mouldKind": "rubberPlasticMould",
+        "rubberPlasticProcess": "other",
+        "shoeSoleMould": "yes"
+      },
+      "expectHs": "84807910"
+    },
+    {
+      "id": "8482-ask",
+      "heading": "8482",
+      "text": "ổ lăn máy công nghiệp",
+      "expectAsk": [
+        "bearingKind"
+      ]
+    },
+    {
+      "id": "8482-bac-dan-cam",
+      "heading": "8482",
+      "text": "Bạc đạn cam",
+      "expectHs": "84821000",
+      "facts": {
+        "bearingKind": "ball"
+      }
     },
     {
       "id": "8482-ball",
@@ -2518,22 +2736,31 @@
       "expectHs": "84821000"
     },
     {
-      "id": "8482-tapered",
+      "id": "8482-balls",
       "heading": "8482",
-      "text": "vòng bi côn 30205",
-      "expectHs": "84822000"
+      "text": "viên bi thép 6mm cho vòng bi",
+      "expectHs": "84829100"
     },
     {
-      "id": "8482-spherical",
+      "id": "8482-bi-thep",
       "heading": "8482",
-      "text": "vòng bi tang trống 22210",
-      "expectHs": "84823000"
+      "text": "Bi thép",
+      "expectHs": "84829100",
+      "facts": {
+        "bearingKind": "partsRollingElements"
+      }
     },
     {
-      "id": "8482-needle",
+      "id": "8482-cage",
       "heading": "8482",
-      "text": "vòng bi kim HK1210",
-      "expectHs": "84824000"
+      "text": "lồng bi vòng bi 6205",
+      "expectHs": "84829900"
+    },
+    {
+      "id": "8482-combined",
+      "heading": "8482",
+      "text": "vòng bi kết hợp bi đũa",
+      "expectHs": "84828000"
     },
     {
       "id": "8482-cylindrical",
@@ -2549,30 +2776,175 @@
       "noteVi": "Bạc trượt bi (linear ball bushing) là Ổ BI → 8482.10, đúng như 3 tờ khai Oz; bảng đầu xếp 8482.80 là sai — cửa dữ liệu thật bắt được."
     },
     {
-      "id": "8482-balls",
+      "id": "8482-needle",
       "heading": "8482",
-      "text": "viên bi thép 6mm cho vòng bi",
-      "expectHs": "84829100"
+      "text": "vòng bi kim HK1210",
+      "expectHs": "84824000"
     },
     {
-      "id": "8482-cage",
+      "id": "8482-spherical",
       "heading": "8482",
-      "text": "lồng bi vòng bi 6205",
-      "expectHs": "84829900"
+      "text": "vòng bi tang trống 22210",
+      "expectHs": "84823000"
     },
     {
-      "id": "8482-ask",
+      "id": "8482-tapered",
       "heading": "8482",
-      "text": "ổ lăn máy công nghiệp",
-      "expectAsk": [
-        "bearingKind"
-      ]
+      "text": "vòng bi côn 30205",
+      "expectHs": "84822000"
     },
     {
-      "id": "8482-combined",
+      "id": "8482-vong-bi",
       "heading": "8482",
-      "text": "vòng bi kết hợp bi đũa",
-      "expectHs": "84828000"
+      "text": "Vòng bi",
+      "expectHs": "84821000",
+      "facts": {
+        "bearingKind": "ball"
+      }
+    },
+    {
+      "id": "8482-vong-bi-bac-dan-bi-c",
+      "heading": "8482",
+      "text": "Vòng bi bạc đạn bi cầu",
+      "expectHs": "84821000",
+      "facts": {
+        "bearingKind": "ball"
+      }
+    },
+    {
+      "id": "8482-vong-bi-bat-phot-xe",
+      "heading": "8482",
+      "text": "Vòng bi bát phốt xe máy điện",
+      "expectHs": "84821000",
+      "facts": {
+        "bearingKind": "ball"
+      }
+    },
+    {
+      "id": "8482-vong-bi-cau",
+      "heading": "8482",
+      "text": "Vòng bi cầu",
+      "expectHs": "84821000",
+      "facts": {
+        "bearingKind": "ball"
+      }
+    },
+    {
+      "id": "8482-vong-bi-con-lan",
+      "heading": "8482",
+      "text": "Vòng bi con lăn",
+      "expectHs": "84821000",
+      "facts": {
+        "bearingKind": "ball"
+      }
+    },
+    {
+      "id": "8482-vong-bi-con-noi-xe-d",
+      "heading": "8482",
+      "text": "Vòng bi côn nồi xe đạp điện",
+      "expectHs": "84822000",
+      "facts": {
+        "bearingKind": "taperedRoller"
+      }
+    },
+    {
+      "id": "8482-vong-bi-o-bi",
+      "heading": "8482",
+      "text": "Vòng bi (ổ bi)",
+      "expectHs": "84821000",
+      "facts": {
+        "bearingKind": "ball"
+      }
+    },
+    {
+      "id": "8482-vong-bi-tiep-xuc",
+      "heading": "8482",
+      "text": "Vòng bi tiếp xúc",
+      "expectHs": "84821000",
+      "facts": {
+        "bearingKind": "ball"
+      }
+    },
+    {
+      "id": "8482-vong-bi-tiep-xuc-goc",
+      "heading": "8482",
+      "text": "Vòng bi tiếp xúc góc",
+      "expectHs": "84821000",
+      "facts": {
+        "bearingKind": "ball"
+      }
+    },
+    {
+      "id": "8482-vong-bi-truot",
+      "heading": "8482",
+      "text": "Vòng bi trượt",
+      "expectHs": "84821000",
+      "facts": {
+        "bearingKind": "ball"
+      }
+    },
+    {
+      "id": "8482-vong-bi-truot-khuyet",
+      "heading": "8482",
+      "text": "Vòng bi trượt khuyết",
+      "expectHs": "84821000",
+      "facts": {
+        "bearingKind": "ball"
+      }
+    },
+    {
+      "id": "8482-vong-bi-xoay-co-banh",
+      "heading": "8482",
+      "text": "Vòng bi xoay có bánh răng",
+      "expectHs": "84821000",
+      "facts": {
+        "bearingKind": "ball"
+      }
+    },
+    {
+      "id": "8486-flatPanel",
+      "heading": "8486",
+      "text": "Thiết bị khắc axit khô lên tấm nền màn hình dẹt",
+      "facts": {
+        "machineKind": "flatPanel"
+      },
+      "expectHs": "84863010"
+    },
+    {
+      "id": "8486-maskReticleAssembly",
+      "heading": "8486",
+      "text": "Máy phay ion (ion milling) cho màn và lưới quang bán dẫn",
+      "facts": {
+        "machineKind": "maskReticleAssembly"
+      },
+      "expectHs": "84864010"
+    },
+    {
+      "id": "8486-parts",
+      "heading": "8486",
+      "text": "Bộ phận của thiết bị nung nhanh máy sản xuất bán dẫn",
+      "facts": {
+        "machineKind": "parts"
+      },
+      "expectHs": "84869011"
+    },
+    {
+      "id": "8486-semiconductorDevice",
+      "heading": "8486",
+      "text": "Thiết bị kết tủa khí hóa (CVD) sản xuất IC",
+      "facts": {
+        "machineKind": "semiconductorDevice"
+      },
+      "expectHs": "84862011"
+    },
+    {
+      "id": "8486-semiconductorWafer",
+      "heading": "8486",
+      "text": "Thiết bị làm nóng nhanh tấm bán dẫn mỏng (RTP)",
+      "facts": {
+        "machineKind": "semiconductorWafer"
+      },
+      "expectHs": "84861010"
     },
     {
       "id": "8504-ballast",
@@ -2588,16 +2960,16 @@
       }
     },
     {
-      "id": "8504-ups-sen",
+      "id": "8504-inductor-chip",
       "heading": "8504",
-      "text": "bộ nguồn liên tục UPS có nhãn SEN",
-      "expectHs": "85044011",
+      "text": "cuộn cảm con chip SEN",
+      "expectHs": "85045020",
       "facts": {
-        "productType": "staticConverter",
+        "productType": "inductor",
         "senMarked": "sen",
         "powerkVA": "unspecified",
         "voltageClass": "unspecified",
-        "specialType": "ups"
+        "specialType": "chipInductor"
       }
     },
     {
@@ -2627,19 +2999,6 @@
       }
     },
     {
-      "id": "8504-inductor-chip",
-      "heading": "8504",
-      "text": "cuộn cảm con chip SEN",
-      "expectHs": "85045020",
-      "facts": {
-        "productType": "inductor",
-        "senMarked": "sen",
-        "powerkVA": "unspecified",
-        "voltageClass": "unspecified",
-        "specialType": "chipInductor"
-      }
-    },
-    {
       "id": "8504-transformer-dry-explosion",
       "heading": "8504",
       "text": "biến áp khô phòng nổ 1000kVA",
@@ -2653,49 +3012,2272 @@
       }
     },
     {
-      "id": "8486-semiconductorWafer",
-      "heading": "8486",
-      "text": "Thiết bị làm nóng nhanh tấm bán dẫn mỏng (RTP)",
+      "id": "8504-ups-sen",
+      "heading": "8504",
+      "text": "bộ nguồn liên tục UPS có nhãn SEN",
+      "expectHs": "85044011",
       "facts": {
-        "machineKind": "semiconductorWafer"
-      },
-      "expectHs": "84861010"
+        "productType": "staticConverter",
+        "senMarked": "sen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "ups"
+      }
     },
     {
-      "id": "8486-semiconductorDevice",
-      "heading": "8486",
-      "text": "Thiết bị kết tủa khí hóa (CVD) sản xuất IC",
-      "facts": {
-        "machineKind": "semiconductorDevice"
-      },
-      "expectHs": "84862011"
+      "id": "8505-ask",
+      "heading": "8505",
+      "text": "nam châm",
+      "expectAsk": [
+        "articleType"
+      ]
     },
     {
-      "id": "8486-flatPanel",
-      "heading": "8486",
-      "text": "Thiết bị khắc axit khô lên tấm nền màn hình dẹt",
-      "facts": {
-        "machineKind": "flatPanel"
-      },
-      "expectHs": "84863010"
+      "id": "8505-clutch",
+      "heading": "8505",
+      "text": "ly hợp điện từ electromagnetic clutch",
+      "expectHs": "85052000"
     },
     {
-      "id": "8486-maskReticleAssembly",
-      "heading": "8486",
-      "text": "Máy phay ion (ion milling) cho màn và lưới quang bán dẫn",
-      "facts": {
-        "machineKind": "maskReticleAssembly"
-      },
-      "expectHs": "84864010"
+      "id": "8505-ferrite",
+      "heading": "8505",
+      "text": "nam châm ferrite ceramic",
+      "expectHs": "85051900"
     },
     {
-      "id": "8486-parts",
-      "heading": "8486",
-      "text": "Bộ phận của thiết bị nung nhanh máy sản xuất bán dẫn",
+      "id": "8505-lift",
+      "heading": "8505",
+      "text": "đầu nâng điện từ lifting magnet",
+      "expectHs": "85059020"
+    },
+    {
+      "id": "8505-mri",
+      "heading": "8505",
+      "text": "nam châm điện dùng mri cộng hưởng từ",
+      "expectHs": "85059010"
+    },
+    {
+      "id": "8505-neo",
+      "heading": "8505",
+      "text": "nam châm neodymium vĩnh cửu kim loại",
+      "expectHs": "85051100"
+    },
+    {
+      "id": "8505-other",
+      "heading": "8505",
+      "text": "thiết bị giữ điện từ holding magnet",
+      "expectHs": "85059090"
+    },
+    {
+      "id": "8509-ask",
+      "heading": "8509",
+      "text": "máy điện gia dụng mô tơ",
+      "expectAsk": [
+        "goodsKind"
+      ]
+    },
+    {
+      "id": "8509-blender",
+      "heading": "8509",
+      "text": "máy xay sinh tố blender",
       "facts": {
-        "machineKind": "parts"
+        "goodsKind": "appliance",
+        "applianceType": "foodPrep"
       },
-      "expectHs": "84869011"
+      "expectHs": "85094000"
+    },
+    {
+      "id": "8509-floor",
+      "heading": "8509",
+      "text": "máy đánh bóng sàn nhà",
+      "expectHs": "85098010"
+    },
+    {
+      "id": "8509-other",
+      "heading": "8509",
+      "text": "máy đánh kem điện gia dụng",
+      "expectHs": "85098090"
+    },
+    {
+      "id": "8509-part-floor",
+      "heading": "8509",
+      "text": "phụ tùng máy đánh bóng sàn",
+      "facts": {
+        "goodsKind": "parts",
+        "partOf": "floorPolisher"
+      },
+      "expectHs": "85099010"
+    },
+    {
+      "id": "8509-part-other",
+      "heading": "8509",
+      "text": "lưỡi xay phụ tùng máy xay",
+      "facts": {
+        "goodsKind": "parts",
+        "partOf": "other"
+      },
+      "expectHs": "85099090"
+    },
+    {
+      "id": "8509-waste",
+      "heading": "8509",
+      "text": "máy hủy rác bếp garbage disposal",
+      "expectHs": "85098020"
+    },
+    {
+      "id": "8513-ask",
+      "heading": "8513",
+      "text": "đèn điện xách tay",
+      "expectAsk": [
+        "goodsKind"
+      ]
+    },
+    {
+      "id": "8513-bo-lightstick-3d",
+      "heading": "8513",
+      "text": "Bộ lightstick 3D",
+      "expectHs": "85131090",
+      "facts": {
+        "goodsKind": "lamp",
+        "lampType": "other"
+      }
+    },
+    {
+      "id": "8513-den-led-tich-dien-xa",
+      "heading": "8513",
+      "text": "Đèn LED tích điện xách tay",
+      "expectHs": "85131090",
+      "facts": {
+        "goodsKind": "lamp",
+        "lampType": "other"
+      }
+    },
+    {
+      "id": "8513-den-pin",
+      "heading": "8513",
+      "text": "Đèn pin",
+      "expectHs": "85131090",
+      "facts": {
+        "goodsKind": "lamp",
+        "lampType": "other"
+      }
+    },
+    {
+      "id": "8513-den-pin-cam-tay",
+      "heading": "8513",
+      "text": "Đèn pin cầm tay",
+      "expectHs": "85131090",
+      "facts": {
+        "goodsKind": "lamp",
+        "lampType": "other"
+      }
+    },
+    {
+      "id": "8513-den-pin-deo-dau",
+      "heading": "8513",
+      "text": "Đèn pin đeo đầu",
+      "expectHs": "85131090",
+      "facts": {
+        "goodsKind": "lamp",
+        "lampType": "other"
+      }
+    },
+    {
+      "id": "8513-den-pin-laser-cam-ta",
+      "heading": "8513",
+      "text": "Đèn pin laser cầm tay",
+      "expectHs": "85131090",
+      "facts": {
+        "goodsKind": "lamp",
+        "lampType": "other"
+      }
+    },
+    {
+      "id": "8513-den-pin-led-mini",
+      "heading": "8513",
+      "text": "Đèn pin LED mini",
+      "expectHs": "85131090",
+      "facts": {
+        "goodsKind": "lamp",
+        "lampType": "other"
+      }
+    },
+    {
+      "id": "8513-den-trang-tri-cam-ta",
+      "heading": "8513",
+      "text": "Đèn trang trí cầm tay",
+      "expectHs": "85131090",
+      "facts": {
+        "goodsKind": "lamp",
+        "lampType": "other"
+      }
+    },
+    {
+      "id": "8513-den-xach-tay-cam-tra",
+      "heading": "8513",
+      "text": "Đèn xách tay cắm trại",
+      "expectHs": "85131090",
+      "facts": {
+        "goodsKind": "lamp",
+        "lampType": "other"
+      }
+    },
+    {
+      "id": "8513-flashlight",
+      "heading": "8513",
+      "text": "đèn pin led xách tay",
+      "expectHs": "85131090"
+    },
+    {
+      "id": "8513-gay-co-vu-phat-sang",
+      "heading": "8513",
+      "text": "Gậy cổ vũ phát sáng",
+      "expectHs": "85131090",
+      "facts": {
+        "goodsKind": "lamp",
+        "lampType": "other"
+      }
+    },
+    {
+      "id": "8513-miner",
+      "heading": "8513",
+      "text": "đèn gắn mũ thợ mỏ điện xách tay",
+      "expectHs": "85131030"
+    },
+    {
+      "id": "8513-part-flash",
+      "heading": "8513",
+      "text": "phản quang đèn chớp plastic",
+      "expectHs": "85139030"
+    },
+    {
+      "id": "8513-part-miner",
+      "heading": "8513",
+      "text": "bộ phận đèn mũ thợ mỏ",
+      "expectHs": "85139010"
+    },
+    {
+      "id": "8513-part-other",
+      "heading": "8513",
+      "text": "vỏ đèn pin phụ tùng",
+      "facts": {
+        "goodsKind": "parts",
+        "partType": "other"
+      },
+      "expectHs": "85139090"
+    },
+    {
+      "id": "8513-vong-tay-phat-sang",
+      "heading": "8513",
+      "text": "Vòng tay phát sáng",
+      "expectHs": "85131090",
+      "facts": {
+        "goodsKind": "lamp",
+        "lampType": "other"
+      }
+    },
+    {
+      "id": "8514-ask",
+      "heading": "8514",
+      "text": "hàng hóa nhóm 8514",
+      "expectAsk": [
+        "goodsKind"
+      ]
+    },
+    {
+      "id": "8514-r-ebeam-other",
+      "heading": "8514",
+      "text": "hàng nhóm 8514",
+      "facts": {
+        "goodsKind": "furnaceOven",
+        "furnaceHeating": "electronBeam",
+        "pcbRelated": "no"
+      },
+      "expectHs": "85143190"
+    },
+    {
+      "id": "8514-r-ebeam-pcb",
+      "heading": "8514",
+      "text": "hàng nhóm 8514",
+      "facts": {
+        "goodsKind": "furnaceOven",
+        "furnaceHeating": "electronBeam",
+        "pcbRelated": "yes"
+      },
+      "expectHs": "85143110"
+    },
+    {
+      "id": "8514-r-ind-equipment",
+      "heading": "8514",
+      "text": "hàng nhóm 8514",
+      "facts": {
+        "goodsKind": "inductionHeatingEquipment"
+      },
+      "expectHs": "85144000"
+    },
+    {
+      "id": "8514-r-ind-other",
+      "heading": "8514",
+      "text": "hàng nhóm 8514",
+      "facts": {
+        "goodsKind": "furnaceOven",
+        "furnaceHeating": "inductionDielectric",
+        "pcbRelated": "no"
+      },
+      "expectHs": "85142090"
+    },
+    {
+      "id": "8514-r-ind-pcb",
+      "heading": "8514",
+      "text": "hàng nhóm 8514",
+      "facts": {
+        "goodsKind": "furnaceOven",
+        "furnaceHeating": "inductionDielectric",
+        "pcbRelated": "yes"
+      },
+      "expectHs": "85142020"
+    },
+    {
+      "id": "8514-r-part-other",
+      "heading": "8514",
+      "text": "hàng nhóm 8514",
+      "facts": {
+        "goodsKind": "parts",
+        "pcbRelated": "no"
+      },
+      "expectHs": "85149090"
+    },
+    {
+      "id": "8514-r-part-pcb",
+      "heading": "8514",
+      "text": "hàng nhóm 8514",
+      "facts": {
+        "goodsKind": "parts",
+        "pcbRelated": "yes"
+      },
+      "expectHs": "85149020"
+    },
+    {
+      "id": "8514-r-plasma-other",
+      "heading": "8514",
+      "text": "hàng nhóm 8514",
+      "facts": {
+        "goodsKind": "furnaceOven",
+        "furnaceHeating": "plasmaVacuumArc",
+        "pcbRelated": "no"
+      },
+      "expectHs": "85143290"
+    },
+    {
+      "id": "8514-r-plasma-pcb",
+      "heading": "8514",
+      "text": "hàng nhóm 8514",
+      "facts": {
+        "goodsKind": "furnaceOven",
+        "furnaceHeating": "plasmaVacuumArc",
+        "pcbRelated": "yes"
+      },
+      "expectHs": "85143210"
+    },
+    {
+      "id": "8514-r-res-hip",
+      "heading": "8514",
+      "text": "hàng nhóm 8514",
+      "facts": {
+        "goodsKind": "furnaceOven",
+        "furnaceHeating": "resistance",
+        "resistanceKind": "hotIsostaticPress"
+      },
+      "expectHs": "85141100"
+    },
+    {
+      "id": "8514-r-res-other",
+      "heading": "8514",
+      "text": "hàng nhóm 8514",
+      "facts": {
+        "goodsKind": "furnaceOven",
+        "furnaceHeating": "resistance",
+        "resistanceKind": "otherResistance"
+      },
+      "expectHs": "85141900"
+    },
+    {
+      "id": "8514-r-tech-other",
+      "heading": "8514",
+      "text": "hàng nhóm 8514",
+      "facts": {
+        "goodsKind": "furnaceOven",
+        "furnaceHeating": "otherTechnology",
+        "pcbRelated": "no"
+      },
+      "expectHs": "85143990"
+    },
+    {
+      "id": "8514-r-tech-pcb",
+      "heading": "8514",
+      "text": "hàng nhóm 8514",
+      "facts": {
+        "goodsKind": "furnaceOven",
+        "furnaceHeating": "otherTechnology",
+        "pcbRelated": "yes"
+      },
+      "expectHs": "85143910"
+    },
+    {
+      "id": "8521-ask",
+      "heading": "8521",
+      "text": "máy ghi hình video",
+      "expectAsk": [
+        "mediaType"
+      ]
+    },
+    {
+      "id": "8521-dvd-home",
+      "heading": "8521",
+      "text": "đầu đĩa blu-ray laser dân dụng",
+      "expectHs": "85219019"
+    },
+    {
+      "id": "8521-dvd-sen",
+      "heading": "8521",
+      "text": "đầu ghi dvd laser quang học dùng phát thanh truyền hình",
+      "expectHs": "85219011"
+    },
+    {
+      "id": "8521-hdd-home",
+      "heading": "8521",
+      "text": "đầu ghi hình hdd dvr gia đình",
+      "expectHs": "85219099"
+    },
+    {
+      "id": "8521-hdd-sen",
+      "heading": "8521",
+      "text": "đầu ghi hình hdd dvr broadcast studio",
+      "expectHs": "85219091"
+    },
+    {
+      "id": "8521-tape-home",
+      "heading": "8521",
+      "text": "đầu video vhs dân dụng magnetic tape",
+      "expectHs": "85211090"
+    },
+    {
+      "id": "8521-tape-sen",
+      "heading": "8521",
+      "text": "máy ghi hình băng từ betacam broadcast studio",
+      "expectHs": "85211010"
+    },
+    {
+      "id": "8522-ask",
+      "heading": "8522",
+      "text": "hàng nhóm 8522",
+      "expectAsk": [
+        "partKind"
+      ]
+    },
+    {
+      "id": "8522-f-85221000",
+      "heading": "8522",
+      "text": "kiểm r-pickup",
+      "facts": {
+        "partKind": "pickUpCartridge"
+      },
+      "expectHs": "85221000"
+    },
+    {
+      "id": "8522-f-85229020",
+      "heading": "8522",
+      "text": "kiểm r-pcb-answering",
+      "facts": {
+        "partKind": "pcbTelephoneAnswering"
+      },
+      "expectHs": "85229020"
+    },
+    {
+      "id": "8522-f-85229030",
+      "heading": "8522",
+      "text": "kiểm r-pcb-cinema",
+      "facts": {
+        "partKind": "pcbSoundCinema"
+      },
+      "expectHs": "85229030"
+    },
+    {
+      "id": "8522-f-85229040",
+      "heading": "8522",
+      "text": "kiểm r-mechanism",
+      "facts": {
+        "partKind": "tapeDiskMechanism"
+      },
+      "expectHs": "85229040"
+    },
+    {
+      "id": "8522-f-85229050",
+      "heading": "8522",
+      "text": "kiểm r-magnetic-head",
+      "facts": {
+        "partKind": "magneticHead"
+      },
+      "expectHs": "85229050"
+    },
+    {
+      "id": "8522-f-85229091",
+      "heading": "8522",
+      "text": "kiểm r-parts-sound",
+      "facts": {
+        "partKind": "partsSoundRepro"
+      },
+      "expectHs": "85229091"
+    },
+    {
+      "id": "8522-f-85229092",
+      "heading": "8522",
+      "text": "kiểm r-parts-answering",
+      "facts": {
+        "partKind": "partsTelephoneAnswering"
+      },
+      "expectHs": "85229092"
+    },
+    {
+      "id": "8522-f-85229093",
+      "heading": "8522",
+      "text": "kiểm r-parts-8521",
+      "facts": {
+        "partKind": "parts851981Or8521"
+      },
+      "expectHs": "85229093"
+    },
+    {
+      "id": "8522-f-85229099",
+      "heading": "8522",
+      "text": "kiểm r-parts-other",
+      "facts": {
+        "partKind": "partsOther"
+      },
+      "expectHs": "85229099"
+    },
+    {
+      "id": "8522-magnetic-head",
+      "heading": "8522",
+      "text": "đầu từ máy ghi âm",
+      "facts": {
+        "partKind": "magneticHead"
+      },
+      "expectHs": "85229050"
+    },
+    {
+      "id": "8522-mechanism",
+      "heading": "8522",
+      "text": "cơ chế đĩa máy nghe nhạc",
+      "facts": {
+        "partKind": "tapeDiskMechanism"
+      },
+      "expectHs": "85229040"
+    },
+    {
+      "id": "8522-parts-8521",
+      "heading": "8522",
+      "text": "bộ phận máy 8521 ghi âm",
+      "facts": {
+        "partKind": "parts851981Or8521"
+      },
+      "expectHs": "85229093"
+    },
+    {
+      "id": "8522-parts-answering",
+      "heading": "8522",
+      "text": "bộ phận máy trả lời điện thoại",
+      "facts": {
+        "partKind": "partsTelephoneAnswering"
+      },
+      "expectHs": "85229092"
+    },
+    {
+      "id": "8522-parts-other",
+      "heading": "8522",
+      "text": "bộ phận khác thiết bị âm thanh",
+      "facts": {
+        "partKind": "partsOther"
+      },
+      "expectHs": "85229099"
+    },
+    {
+      "id": "8522-parts-sound",
+      "heading": "8522",
+      "text": "bộ phận máy tái tạo âm thanh",
+      "facts": {
+        "partKind": "partsSoundRepro"
+      },
+      "expectHs": "85229091"
+    },
+    {
+      "id": "8522-pcb-answering",
+      "heading": "8522",
+      "text": "bảng mạch máy trả lời điện thoại",
+      "facts": {
+        "partKind": "pcbTelephoneAnswering"
+      },
+      "expectHs": "85229020"
+    },
+    {
+      "id": "8522-pcb-cinema",
+      "heading": "8522",
+      "text": "bảng mạch máy chiếu phim",
+      "facts": {
+        "partKind": "pcbSoundCinema"
+      },
+      "expectHs": "85229030"
+    },
+    {
+      "id": "8522-pickup",
+      "heading": "8522",
+      "text": "đầu pickup máy hát",
+      "facts": {
+        "partKind": "pickUpCartridge"
+      },
+      "expectHs": "85221000"
+    },
+    {
+      "id": "8524-ask",
+      "heading": "8524",
+      "text": "mô-đun màn hình phẳng",
+      "expectAsk": [
+        "panelTech"
+      ]
+    },
+    {
+      "id": "8524-lcd-bare",
+      "heading": "8524",
+      "text": "mô-đun màn hình lcd không driver",
+      "expectHs": "85241100"
+    },
+    {
+      "id": "8524-lcd-drv",
+      "heading": "8524",
+      "text": "mô-đun lcd có driver mạch điều khiển",
+      "expectHs": "85249100"
+    },
+    {
+      "id": "8524-oled-bare",
+      "heading": "8524",
+      "text": "panel oled without driver",
+      "expectHs": "85241200"
+    },
+    {
+      "id": "8524-oled-drv",
+      "heading": "8524",
+      "text": "amoled module with driver",
+      "expectHs": "85249200"
+    },
+    {
+      "id": "8524-other-bare",
+      "heading": "8524",
+      "text": "microled panel without driver",
+      "expectHs": "85241900"
+    },
+    {
+      "id": "8524-other-drv",
+      "heading": "8524",
+      "text": "microled module with driver",
+      "expectHs": "85249900"
+    },
+    {
+      "id": "8532-alu",
+      "heading": "8532",
+      "text": "tụ nhôm điện phân",
+      "facts": {
+        "capKind": "aluminiumElectrolytic"
+      },
+      "expectHs": "85322200"
+    },
+    {
+      "id": "8532-ask",
+      "heading": "8532",
+      "text": "hàng nhóm 8532",
+      "expectAsk": [
+        "capKind"
+      ]
+    },
+    {
+      "id": "8532-cer-multi",
+      "heading": "8532",
+      "text": "tụ gốm nhiều lớp",
+      "facts": {
+        "capKind": "ceramicMulti"
+      },
+      "expectHs": "85322400"
+    },
+    {
+      "id": "8532-cer-single",
+      "heading": "8532",
+      "text": "tụ gốm lớp đơn",
+      "facts": {
+        "capKind": "ceramicSingle"
+      },
+      "expectHs": "85322300"
+    },
+    {
+      "id": "8532-fixed-other",
+      "heading": "8532",
+      "text": "tụ cố định loại khác",
+      "facts": {
+        "capKind": "fixedOther"
+      },
+      "expectHs": "85322900"
+    },
+    {
+      "id": "8532-paper",
+      "heading": "8532",
+      "text": "tụ giấy hoặc plastic",
+      "facts": {
+        "capKind": "paperPlastic"
+      },
+      "expectHs": "85322500"
+    },
+    {
+      "id": "8532-parts",
+      "heading": "8532",
+      "text": "bộ phận tụ điện",
+      "facts": {
+        "capKind": "parts"
+      },
+      "expectHs": "85329000"
+    },
+    {
+      "id": "8532-power",
+      "heading": "8532",
+      "text": "tụ điện công suất 50Hz",
+      "facts": {
+        "capKind": "power50Hz"
+      },
+      "expectHs": "85321000"
+    },
+    {
+      "id": "8532-tantalum",
+      "heading": "8532",
+      "text": "tụ điện tantali",
+      "facts": {
+        "capKind": "tantalum"
+      },
+      "expectHs": "85322100"
+    },
+    {
+      "id": "8532-tu-dien-co-dinh-than",
+      "heading": "8532",
+      "text": "Tụ điện cố định thân nhôm",
+      "expectHs": "85322200",
+      "facts": {
+        "capKind": "aluminiumElectrolytic"
+      }
+    },
+    {
+      "id": "8532-tu-dien-dien-phan",
+      "heading": "8532",
+      "text": "Tụ điện điện phân",
+      "expectHs": "85322200",
+      "facts": {
+        "capKind": "aluminiumElectrolytic"
+      }
+    },
+    {
+      "id": "8532-tu-dien-film",
+      "heading": "8532",
+      "text": "Tụ điện film",
+      "expectHs": "85321000",
+      "facts": {
+        "capKind": "power50Hz"
+      }
+    },
+    {
+      "id": "8532-tu-dien-nhom-cam",
+      "heading": "8532",
+      "text": "Tụ điện nhôm cắm",
+      "expectHs": "85322200",
+      "facts": {
+        "capKind": "aluminiumElectrolytic"
+      }
+    },
+    {
+      "id": "8532-tu-dien-nhom-cam-cap",
+      "heading": "8532",
+      "text": "Tụ điện nhôm cắm CAPACITOR",
+      "expectHs": "85322200",
+      "facts": {
+        "capKind": "aluminiumElectrolytic"
+      }
+    },
+    {
+      "id": "8532-tu-dien-nhom-cam-loc",
+      "heading": "8532",
+      "text": "Tụ điện nhôm cắm lọc nguồn",
+      "expectHs": "85322200",
+      "facts": {
+        "capKind": "aluminiumElectrolytic"
+      }
+    },
+    {
+      "id": "8532-tu-gom-nhieu-lop",
+      "heading": "8532",
+      "text": "Tụ gốm nhiều lớp",
+      "expectHs": "85322400",
+      "facts": {
+        "capKind": "ceramicMulti"
+      }
+    },
+    {
+      "id": "8532-tu-gom-nhieu-lop-tu",
+      "heading": "8532",
+      "text": "Tụ gốm nhiều lớp (Tụ điện dán)",
+      "expectHs": "85322400",
+      "facts": {
+        "capKind": "ceramicMulti"
+      }
+    },
+    {
+      "id": "8532-tu-hoa",
+      "heading": "8532",
+      "text": "Tụ hoá",
+      "expectHs": "85322200",
+      "facts": {
+        "capKind": "aluminiumElectrolytic"
+      }
+    },
+    {
+      "id": "8532-tu-hoa-nhom-chan-dan",
+      "heading": "8532",
+      "text": "Tụ hoá nhôm chân dán smd",
+      "expectHs": "85322200",
+      "facts": {
+        "capKind": "aluminiumElectrolytic"
+      }
+    },
+    {
+      "id": "8532-tu-nhom-dan",
+      "heading": "8532",
+      "text": "Tụ nhôm dán",
+      "expectHs": "85322200",
+      "facts": {
+        "capKind": "aluminiumElectrolytic"
+      }
+    },
+    {
+      "id": "8532-variable",
+      "heading": "8532",
+      "text": "tụ biến đổi hoặc đặt trước",
+      "facts": {
+        "capKind": "variablePreset"
+      },
+      "expectHs": "85323000"
+    },
+    {
+      "id": "8532-x-85321000",
+      "heading": "8532",
+      "text": "tu dien 85321000 verify",
+      "facts": {
+        "capKind": "power50Hz"
+      },
+      "expectHs": "85321000"
+    },
+    {
+      "id": "8532-x-85322100",
+      "heading": "8532",
+      "text": "tu dien 85322100 verify",
+      "facts": {
+        "capKind": "tantalum"
+      },
+      "expectHs": "85322100"
+    },
+    {
+      "id": "8532-x-85322200",
+      "heading": "8532",
+      "text": "tu dien 85322200 verify",
+      "facts": {
+        "capKind": "aluminiumElectrolytic"
+      },
+      "expectHs": "85322200"
+    },
+    {
+      "id": "8532-x-85322300",
+      "heading": "8532",
+      "text": "tu dien 85322300 verify",
+      "facts": {
+        "capKind": "ceramicSingle"
+      },
+      "expectHs": "85322300"
+    },
+    {
+      "id": "8532-x-85322400",
+      "heading": "8532",
+      "text": "tu dien 85322400 verify",
+      "facts": {
+        "capKind": "ceramicMulti"
+      },
+      "expectHs": "85322400"
+    },
+    {
+      "id": "8532-x-85322500",
+      "heading": "8532",
+      "text": "tu dien 85322500 verify",
+      "facts": {
+        "capKind": "paperPlastic"
+      },
+      "expectHs": "85322500"
+    },
+    {
+      "id": "8532-x-85322900",
+      "heading": "8532",
+      "text": "tu dien 85322900 verify",
+      "facts": {
+        "capKind": "fixedOther"
+      },
+      "expectHs": "85322900"
+    },
+    {
+      "id": "8532-x-85323000",
+      "heading": "8532",
+      "text": "tu dien 85323000 verify",
+      "facts": {
+        "capKind": "variablePreset"
+      },
+      "expectHs": "85323000"
+    },
+    {
+      "id": "8532-x-85329000",
+      "heading": "8532",
+      "text": "tu dien 85329000 verify",
+      "facts": {
+        "capKind": "parts"
+      },
+      "expectHs": "85329000"
+    },
+    {
+      "id": "8533-ask",
+      "heading": "8533",
+      "text": "hàng nhóm 8533",
+      "expectAsk": [
+        "goodsRole"
+      ]
+    },
+    {
+      "id": "8533-carbon-chip",
+      "heading": "8533",
+      "text": "điện trở carbon cố định dạng chip",
+      "facts": {
+        "goodsRole": "resistor",
+        "resistorClass": "fixedCarbon",
+        "carbonMount": "chip"
+      },
+      "expectHs": "85331010"
+    },
+    {
+      "id": "8533-carbon-other",
+      "heading": "8533",
+      "text": "điện trở carbon cố định loại khác",
+      "facts": {
+        "goodsRole": "resistor",
+        "resistorClass": "fixedCarbon",
+        "carbonMount": "other"
+      },
+      "expectHs": "85331090"
+    },
+    {
+      "id": "8533-f-85331010",
+      "heading": "8533",
+      "text": "kiểm r-carbon-chip",
+      "facts": {
+        "goodsRole": "resistor",
+        "resistorClass": "fixedCarbon",
+        "carbonMount": "chip"
+      },
+      "expectHs": "85331010"
+    },
+    {
+      "id": "8533-f-85331090",
+      "heading": "8533",
+      "text": "kiểm r-carbon-other",
+      "facts": {
+        "goodsRole": "resistor",
+        "resistorClass": "fixedCarbon",
+        "carbonMount": "other"
+      },
+      "expectHs": "85331090"
+    },
+    {
+      "id": "8533-f-85332100",
+      "heading": "8533",
+      "text": "kiểm r-fixed-le20",
+      "facts": {
+        "goodsRole": "resistor",
+        "resistorClass": "fixedOther",
+        "powerW": 20
+      },
+      "expectHs": "85332100"
+    },
+    {
+      "id": "8533-f-85332900",
+      "heading": "8533",
+      "text": "kiểm r-fixed-gt20",
+      "facts": {
+        "goodsRole": "resistor",
+        "resistorClass": "fixedOther",
+        "powerW": 20.01
+      },
+      "expectHs": "85332900"
+    },
+    {
+      "id": "8533-f-85333100",
+      "heading": "8533",
+      "text": "kiểm r-wire-le20",
+      "facts": {
+        "goodsRole": "resistor",
+        "resistorClass": "wirewoundVariable",
+        "powerW": 20
+      },
+      "expectHs": "85333100"
+    },
+    {
+      "id": "8533-f-85333900",
+      "heading": "8533",
+      "text": "kiểm r-wire-gt20",
+      "facts": {
+        "goodsRole": "resistor",
+        "resistorClass": "wirewoundVariable",
+        "powerW": 20.01
+      },
+      "expectHs": "85333900"
+    },
+    {
+      "id": "8533-f-85334000",
+      "heading": "8533",
+      "text": "kiểm r-variable-other",
+      "facts": {
+        "goodsRole": "resistor",
+        "resistorClass": "variableOther"
+      },
+      "expectHs": "85334000"
+    },
+    {
+      "id": "8533-f-85339000",
+      "heading": "8533",
+      "text": "kiểm r-parts",
+      "facts": {
+        "goodsRole": "parts"
+      },
+      "expectHs": "85339000"
+    },
+    {
+      "id": "8533-fixed-gt20",
+      "heading": "8533",
+      "text": "điện trở cố định khác công suất >20W",
+      "facts": {
+        "goodsRole": "resistor",
+        "resistorClass": "fixedOther",
+        "powerW": 25
+      },
+      "expectHs": "85332900"
+    },
+    {
+      "id": "8533-fixed-le20",
+      "heading": "8533",
+      "text": "điện trở cố định khác công suất ≤20W",
+      "facts": {
+        "goodsRole": "resistor",
+        "resistorClass": "fixedOther",
+        "powerW": 10
+      },
+      "expectHs": "85332100"
+    },
+    {
+      "id": "8533-parts",
+      "heading": "8533",
+      "text": "bộ phận điện trở",
+      "facts": {
+        "goodsRole": "parts"
+      },
+      "expectHs": "85339000"
+    },
+    {
+      "id": "8533-variable-other",
+      "heading": "8533",
+      "text": "điện trở biến đổi loại khác",
+      "facts": {
+        "goodsRole": "resistor",
+        "resistorClass": "variableOther"
+      },
+      "expectHs": "85334000"
+    },
+    {
+      "id": "8533-wire-gt20",
+      "heading": "8533",
+      "text": "điện trở dây quấn biến đổi >20W",
+      "facts": {
+        "goodsRole": "resistor",
+        "resistorClass": "wirewoundVariable",
+        "powerW": 30
+      },
+      "expectHs": "85333900"
+    },
+    {
+      "id": "8533-wire-le20",
+      "heading": "8533",
+      "text": "điện trở dây quấn biến đổi ≤20W",
+      "facts": {
+        "goodsRole": "resistor",
+        "resistorClass": "wirewoundVariable",
+        "powerW": 15
+      },
+      "expectHs": "85333100"
+    },
+    {
+      "id": "8534-ask",
+      "heading": "8534",
+      "text": "mạch in pcb",
+      "expectAsk": [
+        "pcbLayers"
+      ]
+    },
+    {
+      "id": "8534-double",
+      "heading": "8534",
+      "text": "pcb hai mặt fr4",
+      "expectHs": "85340020"
+    },
+    {
+      "id": "8534-multi",
+      "heading": "8534",
+      "text": "mạch in multilayer 6 lớp",
+      "expectHs": "85340030"
+    },
+    {
+      "id": "8534-other",
+      "heading": "8534",
+      "text": "flexible pcb rigid-flex",
+      "expectHs": "85340090"
+    },
+    {
+      "id": "8534-single",
+      "heading": "8534",
+      "text": "mạch in pcb một mặt",
+      "expectHs": "85340010"
+    },
+    {
+      "id": "test-8534-85340010",
+      "heading": "8534",
+      "text": "mạch in một mặt PCB đơn cho điện tử tiêu dùng",
+      "facts": {
+        "pcbLayers": "single"
+      },
+      "expectHs": "85340010"
+    },
+    {
+      "id": "test-8534-85340020",
+      "heading": "8534",
+      "text": "mạch in hai mặt PCB đôi cho điện thoại thông minh",
+      "facts": {
+        "pcbLayers": "double"
+      },
+      "expectHs": "85340020"
+    },
+    {
+      "id": "test-8534-85340030",
+      "heading": "8534",
+      "text": "mạch in nhiều lớp 8 layer cho máy chủ",
+      "facts": {
+        "pcbLayers": "multi"
+      },
+      "expectHs": "85340030"
+    },
+    {
+      "id": "test-8534-85340090",
+      "heading": "8534",
+      "text": "mạch in loại khác không xác định số lớp",
+      "facts": {
+        "pcbLayers": "other"
+      },
+      "expectHs": "85340090"
+    },
+    {
+      "id": "8535-ask",
+      "heading": "8535",
+      "text": "hàng hóa nhóm 8535",
+      "expectAsk": [
+        "apparatusKind"
+      ]
+    },
+    {
+      "id": "8535-cb-elcb-hv",
+      "heading": "8535",
+      "text": "aptomat chống rò 72.5kV trở lên",
+      "facts": {
+        "apparatusKind": "circuitBreaker",
+        "breakerVoltageClass": "72_5kVOrMore",
+        "breaker72Elcb": "yes"
+      },
+      "expectHs": "85352910"
+    },
+    {
+      "id": "8535-cb-elcb-lv",
+      "heading": "8535",
+      "text": "aptomat chống rò dưới 72.5kV",
+      "facts": {
+        "apparatusKind": "circuitBreaker",
+        "breakerVoltageClass": "below72_5kV",
+        "breakerKind": "elcb"
+      },
+      "expectHs": "85352120"
+    },
+    {
+      "id": "8535-cb-moulded",
+      "heading": "8535",
+      "text": "aptomat loại kín dưới 72.5kV",
+      "facts": {
+        "apparatusKind": "circuitBreaker",
+        "breakerVoltageClass": "below72_5kV",
+        "breakerKind": "mouldedCase"
+      },
+      "expectHs": "85352110"
+    },
+    {
+      "id": "8535-cb-other-hv",
+      "heading": "8535",
+      "text": "aptomat khác 72.5kV trở lên",
+      "facts": {
+        "apparatusKind": "circuitBreaker",
+        "breakerVoltageClass": "72_5kVOrMore",
+        "breaker72Elcb": "no"
+      },
+      "expectHs": "85352990"
+    },
+    {
+      "id": "8535-cb-other-lv",
+      "heading": "8535",
+      "text": "aptomat khác dưới 72.5kV",
+      "facts": {
+        "apparatusKind": "circuitBreaker",
+        "breakerVoltageClass": "below72_5kV",
+        "breakerKind": "otherBreaker"
+      },
+      "expectHs": "85352190"
+    },
+    {
+      "id": "8535-fuse",
+      "heading": "8535",
+      "text": "cầu chì điện",
+      "facts": {
+        "apparatusKind": "fuse"
+      },
+      "expectHs": "85351000"
+    },
+    {
+      "id": "8535-other-motor",
+      "heading": "8535",
+      "text": "bộ chuyển mạch động cơ",
+      "facts": {
+        "apparatusKind": "other8535",
+        "other8535Kind": "motorChangeOver"
+      },
+      "expectHs": "85359020"
+    },
+    {
+      "id": "8535-other-nec",
+      "heading": "8535",
+      "text": "dụng cụ điện khác cho nhóm 8535",
+      "facts": {
+        "apparatusKind": "other8535",
+        "other8535Kind": "otherNec"
+      },
+      "expectHs": "85359090"
+    },
+    {
+      "id": "8535-other-tap",
+      "heading": "8535",
+      "text": "bộ chuyển đổi đầu cực máy biến áp",
+      "facts": {
+        "apparatusKind": "other8535",
+        "other8535Kind": "transformerTapSwitch"
+      },
+      "expectHs": "85359010"
+    },
+    {
+      "id": "8535-r-cb-elcb-hv",
+      "heading": "8535",
+      "text": "hàng nhóm 8535",
+      "facts": {
+        "apparatusKind": "circuitBreaker",
+        "breakerVoltageClass": "72_5kVOrMore",
+        "breaker72Elcb": "yes"
+      },
+      "expectHs": "85352910"
+    },
+    {
+      "id": "8535-r-cb-elcb-lv",
+      "heading": "8535",
+      "text": "hàng nhóm 8535",
+      "facts": {
+        "apparatusKind": "circuitBreaker",
+        "breakerVoltageClass": "below72_5kV",
+        "breakerKind": "elcb"
+      },
+      "expectHs": "85352120"
+    },
+    {
+      "id": "8535-r-cb-moulded",
+      "heading": "8535",
+      "text": "hàng nhóm 8535",
+      "facts": {
+        "apparatusKind": "circuitBreaker",
+        "breakerVoltageClass": "below72_5kV",
+        "breakerKind": "mouldedCase"
+      },
+      "expectHs": "85352110"
+    },
+    {
+      "id": "8535-r-cb-other-hv",
+      "heading": "8535",
+      "text": "hàng nhóm 8535",
+      "facts": {
+        "apparatusKind": "circuitBreaker",
+        "breakerVoltageClass": "72_5kVOrMore",
+        "breaker72Elcb": "no"
+      },
+      "expectHs": "85352990"
+    },
+    {
+      "id": "8535-r-cb-other-lv",
+      "heading": "8535",
+      "text": "hàng nhóm 8535",
+      "facts": {
+        "apparatusKind": "circuitBreaker",
+        "breakerVoltageClass": "below72_5kV",
+        "breakerKind": "otherBreaker"
+      },
+      "expectHs": "85352190"
+    },
+    {
+      "id": "8535-r-fuse",
+      "heading": "8535",
+      "text": "hàng nhóm 8535",
+      "facts": {
+        "apparatusKind": "fuse"
+      },
+      "expectHs": "85351000"
+    },
+    {
+      "id": "8535-r-other-motor",
+      "heading": "8535",
+      "text": "hàng nhóm 8535",
+      "facts": {
+        "apparatusKind": "other8535",
+        "other8535Kind": "motorChangeOver"
+      },
+      "expectHs": "85359020"
+    },
+    {
+      "id": "8535-r-other-nec",
+      "heading": "8535",
+      "text": "hàng nhóm 8535",
+      "facts": {
+        "apparatusKind": "other8535",
+        "other8535Kind": "otherNec"
+      },
+      "expectHs": "85359090"
+    },
+    {
+      "id": "8535-r-other-tap",
+      "heading": "8535",
+      "text": "hàng nhóm 8535",
+      "facts": {
+        "apparatusKind": "other8535",
+        "other8535Kind": "transformerTapSwitch"
+      },
+      "expectHs": "85359010"
+    },
+    {
+      "id": "8535-r-surge",
+      "heading": "8535",
+      "text": "hàng nhóm 8535",
+      "facts": {
+        "apparatusKind": "surgeProtection"
+      },
+      "expectHs": "85354000"
+    },
+    {
+      "id": "8535-r-sw-66kv",
+      "heading": "8535",
+      "text": "hàng nhóm 8535",
+      "facts": {
+        "apparatusKind": "isolatorSwitch",
+        "switchKind": "for66kVOrMore"
+      },
+      "expectHs": "85353020"
+    },
+    {
+      "id": "8535-r-sw-disc-other",
+      "heading": "8535",
+      "text": "hàng nhóm 8535",
+      "facts": {
+        "apparatusKind": "isolatorSwitch",
+        "switchKind": "otherDisconnect"
+      },
+      "expectHs": "85353019"
+    },
+    {
+      "id": "8535-r-sw-other",
+      "heading": "8535",
+      "text": "hàng nhóm 8535",
+      "facts": {
+        "apparatusKind": "isolatorSwitch",
+        "switchKind": "otherSwitch"
+      },
+      "expectHs": "85353090"
+    },
+    {
+      "id": "8535-r-sw-under36",
+      "heading": "8535",
+      "text": "hàng nhóm 8535",
+      "facts": {
+        "apparatusKind": "isolatorSwitch",
+        "switchKind": "disconnectUnder36kV"
+      },
+      "expectHs": "85353011"
+    },
+    {
+      "id": "8535-surge",
+      "heading": "8535",
+      "text": "chống sét lan",
+      "facts": {
+        "apparatusKind": "surgeProtection"
+      },
+      "expectHs": "85354000"
+    },
+    {
+      "id": "8535-sw-66kv",
+      "heading": "8535",
+      "text": "cầu dao cách ly cho 66kV trở lên",
+      "facts": {
+        "apparatusKind": "isolatorSwitch",
+        "switchKind": "for66kVOrMore"
+      },
+      "expectHs": "85353020"
+    },
+    {
+      "id": "8535-sw-disc-other",
+      "heading": "8535",
+      "text": "cầu dao cách ly loại khác",
+      "facts": {
+        "apparatusKind": "isolatorSwitch",
+        "switchKind": "otherDisconnect"
+      },
+      "expectHs": "85353019"
+    },
+    {
+      "id": "8535-sw-other",
+      "heading": "8535",
+      "text": "cầu dao điện khác",
+      "facts": {
+        "apparatusKind": "isolatorSwitch",
+        "switchKind": "otherSwitch"
+      },
+      "expectHs": "85353090"
+    },
+    {
+      "id": "8535-sw-under36",
+      "heading": "8535",
+      "text": "cầu dao cách ly dưới 36kV",
+      "facts": {
+        "apparatusKind": "isolatorSwitch",
+        "switchKind": "disconnectUnder36kV"
+      },
+      "expectHs": "85353011"
+    },
+    {
+      "id": "8536-aptomat-1-pha-20a",
+      "heading": "8536",
+      "text": "aptomat 1 pha 20A",
+      "facts": {
+        "function": "circuitBreaker",
+        "currentRating": "a16to32",
+        "specialApp": "none"
+      },
+      "expectHs": "85362012"
+    },
+    {
+      "id": "8536-aptomat-3-pha-40a",
+      "heading": "8536",
+      "text": "aptomat 3 pha 40A",
+      "facts": {
+        "function": "circuitBreaker",
+        "currentRating": "a32to1000",
+        "specialApp": "none"
+      },
+      "expectHs": "85362013"
+    },
+    {
+      "id": "8536-cong-tac-10a",
+      "heading": "8536",
+      "text": "công tắc 10A",
+      "facts": {
+        "function": "switch",
+        "currentRating": "lt16A",
+        "specialApp": "none"
+      },
+      "expectHs": "85365096"
+    },
+    {
+      "id": "8536-cong-tac-2-cuc",
+      "heading": "8536",
+      "text": "công tắc 2 cực",
+      "facts": {
+        "function": "switch",
+        "currentRating": "lt16A",
+        "specialApp": "none"
+      },
+      "expectHs": "85365096"
+    },
+    {
+      "id": "8536-nut-nhan",
+      "heading": "8536",
+      "text": "nút nhấn điện",
+      "facts": {
+        "function": "switch",
+        "currentRating": "lt16A",
+        "specialApp": "none"
+      },
+      "expectHs": "85365096"
+    },
+    {
+      "id": "8536-ro-le-220v",
+      "heading": "8536",
+      "text": "rơ le 220V",
+      "facts": {
+        "function": "relayGt60V",
+        "currentRating": "unspecified",
+        "specialApp": "none"
+      },
+      "expectHs": "85364990"
+    },
+    {
+      "id": "8536-ro-le-trung-gian",
+      "heading": "8536",
+      "text": "rơ le trung gian",
+      "facts": {
+        "function": "relayGt60V",
+        "currentRating": "lt16A",
+        "specialApp": "none"
+      },
+      "expectHs": "85364910"
+    },
+    {
+      "id": "8537-appliance",
+      "heading": "8537",
+      "text": "bảng điều khiển cho máy điều hòa không khí công nghiệp",
+      "facts": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "controlBoard",
+        "controlBoardRole": "applianceHvacWhiteGoods"
+      },
+      "expectHs": "85371013"
+    },
+    {
+      "id": "8537-ask",
+      "heading": "8537",
+      "text": "hàng nhóm 8537",
+      "expectAsk": [
+        "panelVoltage"
+      ]
+    },
+    {
+      "id": "8537-dcs",
+      "heading": "8537",
+      "text": "hệ thống điều khiển phân tán cho nhà máy xi măng",
+      "facts": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "controlBoard",
+        "controlBoardRole": "dcsDistributed"
+      },
+      "expectHs": "85371011"
+    },
+    {
+      "id": "8537-distribution",
+      "heading": "8537",
+      "text": "tủ phân phối điện hạ thế",
+      "expectHs": "85371020"
+    },
+    {
+      "id": "8537-f-85371011",
+      "heading": "8537",
+      "text": "kiểm r-lv-ctrl-dcs",
+      "facts": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "controlBoard",
+        "controlBoardRole": "dcsDistributed"
+      },
+      "expectHs": "85371011"
+    },
+    {
+      "id": "8537-f-85371012",
+      "heading": "8537",
+      "text": "kiểm r-lv-ctrl-plc",
+      "facts": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "controlBoard",
+        "controlBoardRole": "plcWithProcessor"
+      },
+      "expectHs": "85371012"
+    },
+    {
+      "id": "8537-f-85371013",
+      "heading": "8537",
+      "text": "kiểm r-lv-ctrl-appliance",
+      "facts": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "controlBoard",
+        "controlBoardRole": "applianceHvacWhiteGoods"
+      },
+      "expectHs": "85371013"
+    },
+    {
+      "id": "8537-f-85371019",
+      "heading": "8537",
+      "text": "kiểm r-lv-ctrl-other",
+      "facts": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "controlBoard",
+        "controlBoardRole": "otherControl"
+      },
+      "expectHs": "85371019"
+    },
+    {
+      "id": "8537-f-85371020",
+      "heading": "8537",
+      "text": "kiểm r-lv-dist-it",
+      "facts": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "distributionItTelecom"
+      },
+      "expectHs": "85371020"
+    },
+    {
+      "id": "8537-f-85371030",
+      "heading": "8537",
+      "text": "kiểm r-lv-plc-semi",
+      "facts": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "plcSemiconductorFab"
+      },
+      "expectHs": "85371030"
+    },
+    {
+      "id": "8537-f-85371040",
+      "heading": "8537",
+      "text": "kiểm r-lv-motor-drive",
+      "facts": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "motorDriveHighCurrent",
+        "outputVoltageVdc": 24,
+        "outputCurrentA": 300
+      },
+      "expectHs": "85371040"
+    },
+    {
+      "id": "8537-f-85371091",
+      "heading": "8537",
+      "text": "kiểm r-lv-other-radio",
+      "facts": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "otherAssembly",
+        "otherAssemblyUse": "radioOrElectricFan"
+      },
+      "expectHs": "85371091"
+    },
+    {
+      "id": "8537-f-85371092",
+      "heading": "8537",
+      "text": "kiểm r-lv-other-dcs",
+      "facts": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "otherAssembly",
+        "otherAssemblyUse": "dcsDistributed"
+      },
+      "expectHs": "85371092"
+    },
+    {
+      "id": "8537-f-85371099",
+      "heading": "8537",
+      "text": "kiểm r-lv-other-nec",
+      "facts": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "otherAssembly",
+        "otherAssemblyUse": "otherNec"
+      },
+      "expectHs": "85371099"
+    },
+    {
+      "id": "8537-f-85372011",
+      "heading": "8537",
+      "text": "kiểm r-hv-ctrl-66kv",
+      "facts": {
+        "panelVoltage": "gt1000v",
+        "hvPanelFunction": "control",
+        "incorporates66kvSwitchgear": "yes"
+      },
+      "expectHs": "85372011"
+    },
+    {
+      "id": "8537-f-85372019",
+      "heading": "8537",
+      "text": "kiểm r-hv-ctrl-other",
+      "facts": {
+        "panelVoltage": "gt1000v",
+        "hvPanelFunction": "control",
+        "incorporates66kvSwitchgear": "no"
+      },
+      "expectHs": "85372019"
+    },
+    {
+      "id": "8537-f-85372021",
+      "heading": "8537",
+      "text": "kiểm r-hv-dist-66kv",
+      "facts": {
+        "panelVoltage": "gt1000v",
+        "hvPanelFunction": "distribution",
+        "incorporates66kvSwitchgear": "yes"
+      },
+      "expectHs": "85372021"
+    },
+    {
+      "id": "8537-f-85372029",
+      "heading": "8537",
+      "text": "kiểm r-hv-dist-other",
+      "facts": {
+        "panelVoltage": "gt1000v",
+        "hvPanelFunction": "distribution",
+        "incorporates66kvSwitchgear": "no"
+      },
+      "expectHs": "85372029"
+    },
+    {
+      "id": "8537-f-85372090",
+      "heading": "8537",
+      "text": "kiểm r-hv-other",
+      "facts": {
+        "panelVoltage": "gt1000v",
+        "hvPanelFunction": "otherHv"
+      },
+      "expectHs": "85372090"
+    },
+    {
+      "id": "8537-hv-22kv",
+      "heading": "8537",
+      "text": "tủ trung thế 22kV điều khiển trạm biến áp",
+      "facts": {
+        "panelVoltage": "gt1000v",
+        "hvPanelFunction": "control",
+        "incorporates66kvSwitchgear": "no"
+      },
+      "expectHs": "85372019"
+    },
+    {
+      "id": "8537-lv-380v",
+      "heading": "8537",
+      "text": "bộ điều khiển 380v cho máy bơm",
+      "facts": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "otherAssembly",
+        "otherAssemblyUse": "otherNec"
+      },
+      "expectHs": "85371099"
+    },
+    {
+      "id": "8537-lv-48v",
+      "heading": "8537",
+      "text": "bộ điều khiển động cơ 48V 400A cho xe máy điện",
+      "facts": {
+        "panelVoltage": "lte1000v",
+        "outputVoltageVdc": 48,
+        "outputCurrentA": 400
+      },
+      "expectHs": "85371040"
+    },
+    {
+      "id": "8537-motor-drive-spec",
+      "heading": "8537",
+      "text": "bộ điều khiển động cơ 48VDC 400A cho máy bơm",
+      "facts": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "motorDriveHighCurrent",
+        "outputVoltageVdc": 48,
+        "outputCurrentA": 400
+      },
+      "expectHs": "85371040"
+    },
+    {
+      "id": "8537-other-nec",
+      "heading": "8537",
+      "text": "tủ điện lắp ráp cho máy đóng gói",
+      "facts": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "otherAssembly",
+        "otherAssemblyUse": "otherNec"
+      },
+      "expectHs": "85371099"
+    },
+    {
+      "id": "8537-plc",
+      "heading": "8537",
+      "text": "PLC công nghiệp điều khiển lò hơi",
+      "facts": {
+        "panelVoltage": "lte1000v",
+        "lvPanelClass": "controlBoard",
+        "controlBoardRole": "plcWithProcessor"
+      },
+      "expectHs": "85371012"
+    },
+    {
+      "id": "8538-ask",
+      "heading": "8538",
+      "text": "hàng hóa nhóm 8538",
+      "expectAsk": [
+        "partScope"
+      ]
+    },
+    {
+      "id": "8538-r-8537-hv-other",
+      "heading": "8538",
+      "text": "hàng nhóm 8538",
+      "facts": {
+        "partScope": "for8537Assemblies",
+        "partVoltage": "gt1000v",
+        "part8537Kind": "other8537"
+      },
+      "expectHs": "85381029"
+    },
+    {
+      "id": "8538-r-8537-hv-radio",
+      "heading": "8538",
+      "text": "hàng nhóm 8538",
+      "facts": {
+        "partScope": "for8537Assemblies",
+        "partVoltage": "gt1000v",
+        "part8537Kind": "radio"
+      },
+      "expectHs": "85381022"
+    },
+    {
+      "id": "8538-r-8537-hv-semi",
+      "heading": "8538",
+      "text": "hàng nhóm 8538",
+      "facts": {
+        "partScope": "for8537Assemblies",
+        "partVoltage": "gt1000v",
+        "part8537Kind": "semiFabPlc"
+      },
+      "expectHs": "85381021"
+    },
+    {
+      "id": "8538-r-8537-lv-other",
+      "heading": "8538",
+      "text": "hàng nhóm 8538",
+      "facts": {
+        "partScope": "for8537Assemblies",
+        "partVoltage": "lte1000v",
+        "part8537Kind": "other8537"
+      },
+      "expectHs": "85381019"
+    },
+    {
+      "id": "8538-r-8537-lv-radio",
+      "heading": "8538",
+      "text": "hàng nhóm 8538",
+      "facts": {
+        "partScope": "for8537Assemblies",
+        "partVoltage": "lte1000v",
+        "part8537Kind": "radio"
+      },
+      "expectHs": "85381012"
+    },
+    {
+      "id": "8538-r-8537-lv-semi",
+      "heading": "8538",
+      "text": "hàng nhóm 8538",
+      "facts": {
+        "partScope": "for8537Assemblies",
+        "partVoltage": "lte1000v",
+        "part8537Kind": "semiFabPlc"
+      },
+      "expectHs": "85381011"
+    },
+    {
+      "id": "8538-r-gen-hv",
+      "heading": "8538",
+      "text": "hàng nhóm 8538",
+      "facts": {
+        "partScope": "for8535_8536_8537General",
+        "partVoltage": "gt1000v"
+      },
+      "expectHs": "85389020"
+    },
+    {
+      "id": "8538-r-gen-lv-853650",
+      "heading": "8538",
+      "text": "hàng nhóm 8538",
+      "facts": {
+        "partScope": "for8535_8536_8537General",
+        "partVoltage": "lte1000v",
+        "generalPartTarget": "for853650Connectors"
+      },
+      "expectHs": "85389012"
+    },
+    {
+      "id": "8538-r-gen-lv-853669",
+      "heading": "8538",
+      "text": "hàng nhóm 8538",
+      "facts": {
+        "partScope": "for8535_8536_8537General",
+        "partVoltage": "lte1000v",
+        "generalPartTarget": "for853669_853690"
+      },
+      "expectHs": "85389011"
+    },
+    {
+      "id": "8538-r-gen-lv-85371020",
+      "heading": "8538",
+      "text": "hàng nhóm 8538",
+      "facts": {
+        "partScope": "for8535_8536_8537General",
+        "partVoltage": "lte1000v",
+        "generalPartTarget": "for85371020Dist"
+      },
+      "expectHs": "85389013"
+    },
+    {
+      "id": "8538-r-gen-lv-other",
+      "heading": "8538",
+      "text": "hàng nhóm 8538",
+      "facts": {
+        "partScope": "for8535_8536_8537General",
+        "partVoltage": "lte1000v",
+        "generalPartTarget": "otherGeneral"
+      },
+      "expectHs": "85389019"
+    },
+    {
+      "id": "8541-ask",
+      "heading": "8541",
+      "text": "hàng hóa nhóm 8541",
+      "expectAsk": [
+        "deviceKind"
+      ]
+    },
+    {
+      "id": "8541-r-diode",
+      "heading": "8541",
+      "text": "hàng nhóm 8541",
+      "facts": {
+        "deviceKind": "diode"
+      },
+      "expectHs": "85411000"
+    },
+    {
+      "id": "8541-r-led",
+      "heading": "8541",
+      "text": "hàng nhóm 8541",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "led"
+      },
+      "expectHs": "85414100"
+    },
+    {
+      "id": "8541-r-parts",
+      "heading": "8541",
+      "text": "hàng nhóm 8541",
+      "facts": {
+        "deviceKind": "parts"
+      },
+      "expectHs": "85419000"
+    },
+    {
+      "id": "8541-r-photo-nec",
+      "heading": "8541",
+      "text": "hàng nhóm 8541",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "generalNec"
+      },
+      "expectHs": "85415900"
+    },
+    {
+      "id": "8541-r-photo-other",
+      "heading": "8541",
+      "text": "hàng nhóm 8541",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "otherPhoto"
+      },
+      "expectHs": "85414900"
+    },
+    {
+      "id": "8541-r-photo-transducer",
+      "heading": "8541",
+      "text": "hàng nhóm 8541",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "semiconductorTransducer"
+      },
+      "expectHs": "85415100"
+    },
+    {
+      "id": "8541-r-piezo",
+      "heading": "8541",
+      "text": "hàng nhóm 8541",
+      "facts": {
+        "deviceKind": "piezoCrystal"
+      },
+      "expectHs": "85416000"
+    },
+    {
+      "id": "8541-r-pv-bare",
+      "heading": "8541",
+      "text": "hàng nhóm 8541",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "pvCellBare"
+      },
+      "expectHs": "85414200"
+    },
+    {
+      "id": "8541-r-pv-module",
+      "heading": "8541",
+      "text": "hàng nhóm 8541",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "pvModuleOrPanel"
+      },
+      "expectHs": "85414300"
+    },
+    {
+      "id": "8541-r-thyristor",
+      "heading": "8541",
+      "text": "hàng nhóm 8541",
+      "facts": {
+        "deviceKind": "thyristor"
+      },
+      "expectHs": "85413000"
+    },
+    {
+      "id": "8541-r-transistor-fallback",
+      "heading": "8541",
+      "text": "hàng nhóm 8541",
+      "facts": {
+        "deviceKind": "transistor"
+      },
+      "expectAsk": [
+        "transistorDissipationW"
+      ]
+    },
+    {
+      "id": "8541-r-transistor-gte1w",
+      "heading": "8541",
+      "text": "hàng nhóm 8541",
+      "facts": {
+        "deviceKind": "transistor",
+        "transistorDissipationW": 5
+      },
+      "expectHs": "85412900"
+    },
+    {
+      "id": "8541-r-transistor-lt1w",
+      "heading": "8541",
+      "text": "hàng nhóm 8541",
+      "facts": {
+        "deviceKind": "transistor",
+        "transistorDissipationW": 0.5
+      },
+      "expectHs": "85412100"
+    },
+    {
+      "id": "test-8541-diode",
+      "heading": "8541",
+      "text": "đi-ốt chỉnh lưu 5A 1000V",
+      "facts": {
+        "deviceKind": "diode"
+      },
+      "expectHs": "85411000"
+    },
+    {
+      "id": "test-8541-led",
+      "heading": "8541",
+      "text": "đèn LED 5mm đỏ tròn",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "led"
+      },
+      "expectHs": "85414100"
+    },
+    {
+      "id": "test-8541-optocoupler",
+      "heading": "8541",
+      "text": "optocoupler PC817 cách ly tín hiệu",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "otherPhoto"
+      },
+      "expectHs": "85414900"
+    },
+    {
+      "id": "test-8541-parts",
+      "heading": "8541",
+      "text": "bộ phận bán dẫn cho diode",
+      "facts": {
+        "deviceKind": "parts"
+      },
+      "expectHs": "85419000"
+    },
+    {
+      "id": "test-8541-piezo",
+      "heading": "8541",
+      "text": "tinh thể thạch anh áp điện đã lắp ráp 8MHz",
+      "facts": {
+        "deviceKind": "piezoCrystal"
+      },
+      "expectHs": "85416000"
+    },
+    {
+      "id": "test-8541-solarcell",
+      "heading": "8541",
+      "text": "tế bào quang điện chưa lắp mô-đun 100W",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "pvCellBare"
+      },
+      "expectHs": "85414200"
+    },
+    {
+      "id": "test-8541-solarpanel",
+      "heading": "8541",
+      "text": "tấm pin năng lượng mặt trời 300W đã lắp mô-đun",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "pvModuleOrPanel"
+      },
+      "expectHs": "85414300"
+    },
+    {
+      "id": "test-8541-transducer",
+      "heading": "8541",
+      "text": "cảm biến bán dẫn MEMS áp suất công nghiệp",
+      "facts": {
+        "deviceKind": "photosensitive",
+        "photosensitiveKind": "semiconductorTransducer"
+      },
+      "expectHs": "85415100"
+    },
+    {
+      "id": "test-8541-zener",
+      "heading": "8541",
+      "text": "zener diode 12V 1W",
+      "facts": {
+        "deviceKind": "diode"
+      },
+      "expectHs": "85411000"
+    },
+    {
+      "id": "8542-amp",
+      "heading": "8542",
+      "text": "vi mạch khuếch đại",
+      "facts": {
+        "goodsKind": "ic",
+        "icKind": "amplifier"
+      },
+      "expectHs": "85423300"
+    },
+    {
+      "id": "8542-ask",
+      "heading": "8542",
+      "text": "mạch tích hợp",
+      "expectAsk": [
+        "icKind"
+      ]
+    },
+    {
+      "id": "8542-cpu",
+      "heading": "8542",
+      "text": "ic cpu microcontroller mcu",
+      "expectHs": "85423100"
+    },
+    {
+      "id": "8542-dram",
+      "heading": "8542",
+      "text": "chip bộ nhớ dram",
+      "expectHs": "85423200"
+    },
+    {
+      "id": "8542-fpga",
+      "heading": "8542",
+      "text": "ic fpga",
+      "expectHs": "85423900"
+    },
+    {
+      "id": "8542-mem",
+      "heading": "8542",
+      "text": "vi mạch bộ nhớ",
+      "facts": {
+        "goodsKind": "ic",
+        "icKind": "memory"
+      },
+      "expectHs": "85423200"
+    },
+    {
+      "id": "8542-opamp",
+      "heading": "8542",
+      "text": "ic khuếch đại op-amp",
+      "expectHs": "85423300"
+    },
+    {
+      "id": "8542-other-ic",
+      "heading": "8542",
+      "text": "vi mạch tích hợp loại khác",
+      "facts": {
+        "goodsKind": "ic",
+        "icKind": "other"
+      },
+      "expectHs": "85423900"
+    },
+    {
+      "id": "8542-parts",
+      "heading": "8542",
+      "text": "lead frame bộ phận ic",
+      "facts": {
+        "goodsKind": "parts"
+      },
+      "expectHs": "85429000"
+    },
+    {
+      "id": "8542-proc",
+      "heading": "8542",
+      "text": "vi mạch bộ xử lý",
+      "facts": {
+        "goodsKind": "ic",
+        "icKind": "processor"
+      },
+      "expectHs": "85423100"
+    },
+    {
+      "id": "9030-may-do-dien",
+      "heading": "9030",
+      "text": "máy đo điện",
+      "expectAsk": [
+        "specificKind"
+      ]
+    },
+    {
+      "id": "9030-may-do-dien-tro",
+      "heading": "9030",
+      "text": "máy đo điện trở",
+      "expectAsk": [
+        "specificKind"
+      ]
     },
     {
       "id": "test-9031-90311000",
@@ -2766,1295 +5348,6 @@
         "measKind": "otherParts"
       },
       "expectHs": "90319090"
-    },
-    {
-      "id": "test-8534-85340010",
-      "heading": "8534",
-      "text": "mạch in một mặt PCB đơn cho điện tử tiêu dùng",
-      "facts": {
-        "pcbLayers": "single"
-      },
-      "expectHs": "85340010"
-    },
-    {
-      "id": "test-8534-85340020",
-      "heading": "8534",
-      "text": "mạch in hai mặt PCB đôi cho điện thoại thông minh",
-      "facts": {
-        "pcbLayers": "double"
-      },
-      "expectHs": "85340020"
-    },
-    {
-      "id": "test-8534-85340030",
-      "heading": "8534",
-      "text": "mạch in nhiều lớp 8 layer cho máy chủ",
-      "facts": {
-        "pcbLayers": "multi"
-      },
-      "expectHs": "85340030"
-    },
-    {
-      "id": "test-8534-85340090",
-      "heading": "8534",
-      "text": "mạch in loại khác không xác định số lớp",
-      "facts": {
-        "pcbLayers": "other"
-      },
-      "expectHs": "85340090"
-    },
-    {
-      "id": "test-8541-diode",
-      "heading": "8541",
-      "text": "đi-ốt chỉnh lưu 5A 1000V",
-      "facts": {
-        "deviceKind": "diode"
-      },
-      "expectHs": "85411000"
-    },
-    {
-      "id": "test-8541-zener",
-      "heading": "8541",
-      "text": "zener diode 12V 1W",
-      "facts": {
-        "deviceKind": "diode"
-      },
-      "expectHs": "85411000"
-    },
-    {
-      "id": "test-8541-led",
-      "heading": "8541",
-      "text": "đèn LED 5mm đỏ tròn",
-      "facts": {
-        "deviceKind": "photosensitive",
-        "photosensitiveKind": "led"
-      },
-      "expectHs": "85414100"
-    },
-    {
-      "id": "test-8541-solarcell",
-      "heading": "8541",
-      "text": "tế bào quang điện chưa lắp mô-đun 100W",
-      "facts": {
-        "deviceKind": "photosensitive",
-        "photosensitiveKind": "pvCellBare"
-      },
-      "expectHs": "85414200"
-    },
-    {
-      "id": "test-8541-solarpanel",
-      "heading": "8541",
-      "text": "tấm pin năng lượng mặt trời 300W đã lắp mô-đun",
-      "facts": {
-        "deviceKind": "photosensitive",
-        "photosensitiveKind": "pvModuleOrPanel"
-      },
-      "expectHs": "85414300"
-    },
-    {
-      "id": "test-8541-transducer",
-      "heading": "8541",
-      "text": "cảm biến bán dẫn MEMS áp suất công nghiệp",
-      "facts": {
-        "deviceKind": "photosensitive",
-        "photosensitiveKind": "semiconductorTransducer"
-      },
-      "expectHs": "85415100"
-    },
-    {
-      "id": "test-8541-optocoupler",
-      "heading": "8541",
-      "text": "optocoupler PC817 cách ly tín hiệu",
-      "facts": {
-        "deviceKind": "photosensitive",
-        "photosensitiveKind": "otherPhoto"
-      },
-      "expectHs": "85414900"
-    },
-    {
-      "id": "test-8541-piezo",
-      "heading": "8541",
-      "text": "tinh thể thạch anh áp điện đã lắp ráp 8MHz",
-      "facts": {
-        "deviceKind": "piezoCrystal"
-      },
-      "expectHs": "85416000"
-    },
-    {
-      "id": "test-8541-parts",
-      "heading": "8541",
-      "text": "bộ phận bán dẫn cho diode",
-      "facts": {
-        "deviceKind": "parts"
-      },
-      "expectHs": "85419000"
-    },
-    {
-      "id": "6004-knit-le20-explicit",
-      "heading": "6004",
-      "text": "vải dệt kim có sợi đàn hồi không quá 20% khối lượng",
-      "expectHs": "60041010"
-    },
-    {
-      "id": "6004-knit-gt20-explicit",
-      "heading": "6004",
-      "text": "vải dệt kim có sợi đàn hồi trên 20% khối lượng",
-      "expectHs": "60041090"
-    },
-    {
-      "id": "6004-knit-20pct-ask",
-      "heading": "6004",
-      "text": "vải dệt kim có sợi đàn hồi 20%",
-      "expectAsk": [
-        "elasticFiberContent"
-      ]
-    },
-    {
-      "id": "6004-knit-unk-ask",
-      "heading": "6004",
-      "text": "vải dệt kim có cao su",
-      "expectAsk": [
-        "elasticFiberContent"
-      ]
-    },
-    {
-      "id": "4008-cellular-lined-ok",
-      "heading": "4008",
-      "text": "tấm cao su xốp có lớp vải dệt lưu hóa",
-      "expectHs": "40081110"
-    },
-    {
-      "id": "4008-cellular-plain-ok",
-      "heading": "4008",
-      "text": "tấm cao su xốp không tráng lưu hóa",
-      "expectHs": "40081120"
-    },
-    {
-      "id": "4008-cellular-strip-ok",
-      "heading": "4008",
-      "text": "dải cao su xốp lưu hóa loại khác",
-      "expectHs": "40081900"
-    },
-    {
-      "id": "4008-noncellular-shoe-ok",
-      "heading": "4008",
-      "text": "đế giày tấm cao su đặc lưu hóa",
-      "expectHs": "40082140"
-    },
-    {
-      "id": "4008-cellular-ask",
-      "heading": "4008",
-      "text": "tấm cao su xốp lưu hóa",
-      "expectAsk": [
-        "specialFeature"
-      ]
-    },
-    {
-      "id": "4008-noncellular-ask",
-      "heading": "4008",
-      "text": "tấm cao su lưu hóa",
-      "expectAsk": [
-        "materialType"
-      ]
-    },
-    {
-      "id": "8311-electrode-other-ok",
-      "heading": "8311",
-      "text": "que hàn điện cực cho hàn hồ quang",
-      "expectAsk": [
-        "productKind"
-      ]
-    },
-    {
-      "id": "8311-other-article-ok",
-      "heading": "8311",
-      "text": "điện cực các bon cho hàn",
-      "expectAsk": [
-        "processType",
-        "productForm"
-      ]
-    },
-    {
-      "id": "4412-ply-tropical",
-      "heading": "4412",
-      "text": "gỗ dán có lớp gỗ nhiệt đới",
-      "expectAsk": [
-        "productKind",
-        "isTeak"
-      ]
-    },
-    {
-      "id": "4412-ply-bamboo",
-      "heading": "4412",
-      "text": "gỗ dán tre",
-      "expectAsk": [
-        "productKind"
-      ]
-    },
-    {
-      "id": "4412-lvl-teak",
-      "heading": "4412",
-      "text": "gỗ dán nhiều lớp LVL gỗ tếch",
-      "expectHs": "44124110"
-    },
-    {
-      "id": "4412-blockboard-conifer",
-      "heading": "4412",
-      "text": "khối ván gỗ lá kim",
-      "expectHs": "44125900"
-    },
-    {
-      "id": "4412-ply-specified-teak",
-      "heading": "4412",
-      "text": "gỗ dán đặc biệt gỗ tếch",
-      "expectAsk": [
-        "productKind"
-      ]
-    },
-    {
-      "id": "7323-scrubbingPad",
-      "heading": "7323",
-      "text": "miếng cọ rửa bằng sắt không gỉ",
-      "facts": {
-        "productKind": "scrubbingPad"
-      },
-      "expectHs": "73231000"
-    },
-    {
-      "id": "7323-steel-wool",
-      "heading": "7323",
-      "text": "bùi nhùi sắt mịn dùng cọ rửa",
-      "facts": {
-        "productKind": "scrubbingPad"
-      },
-      "expectHs": "73231000"
-    },
-    {
-      "id": "7323-castIron-kitchenware",
-      "heading": "7323",
-      "text": "nồi gang đúc đáy dày dùng nhà bếp",
-      "facts": {
-        "productKind": "kitchenware",
-        "materialType": "castIronPlain",
-        "productType": "kitchenware"
-      },
-      "expectHs": "73239110"
-    },
-    {
-      "id": "7323-castIron-ashtray",
-      "heading": "7323",
-      "text": "gạt tàn thuốc lá bằng gang đúc trơn",
-      "facts": {
-        "productKind": "kitchenware",
-        "materialType": "castIronPlain",
-        "productType": "ashtray"
-      },
-      "expectHs": "73239120"
-    },
-    {
-      "id": "7323-castIron-other",
-      "heading": "7323",
-      "text": "cái/hộp đựng bằng gang trơn không tráng men",
-      "facts": {
-        "productKind": "kitchenware",
-        "materialType": "castIronPlain"
-      },
-      "expectAsk": [
-        "productType"
-      ]
-    },
-    {
-      "id": "7323-castIron-enamelled",
-      "heading": "7323",
-      "text": "chảo gang tráng men dùng nhà bếp",
-      "facts": {
-        "productKind": "kitchenware",
-        "materialType": "castIronEnamelled"
-      },
-      "expectHs": "73239200"
-    },
-    {
-      "id": "7323-steelEnamelled-kitchenware",
-      "heading": "7323",
-      "text": "nồi sắt tráng men dùng nấu ăn",
-      "facts": {
-        "productKind": "kitchenware",
-        "materialType": "steelEnamelled",
-        "productType": "kitchenware"
-      },
-      "expectHs": "73239310"
-    },
-    {
-      "id": "7323-steelEnamelled-ashtray",
-      "heading": "7323",
-      "text": "gạt tàn bằng thép tráng men",
-      "facts": {
-        "productKind": "kitchenware",
-        "materialType": "steelEnamelled",
-        "productType": "ashtray"
-      },
-      "expectHs": "73239320"
-    },
-    {
-      "id": "7323-steelPlain-kitchenware",
-      "heading": "7323",
-      "text": "đồ dùng nhà bếp bằng thép không tráng men",
-      "facts": {
-        "productKind": "kitchenware",
-        "materialType": "steelPlain",
-        "productType": "kitchenware"
-      },
-      "expectHs": "73239910"
-    },
-    {
-      "id": "7323-steelPlain-ashtray",
-      "heading": "7323",
-      "text": "gạt tàn thuốc lá bằng thép không tráng men",
-      "facts": {
-        "productKind": "kitchenware",
-        "materialType": "steelPlain",
-        "productType": "ashtray"
-      },
-      "expectHs": "73239920"
-    },
-    {
-      "id": "8302-hinge",
-      "heading": "8302",
-      "text": "bản lề cửa bằng thép",
-      "facts": {
-        "articleKind": "hinge"
-      },
-      "expectHs": "83021000"
-    },
-    {
-      "id": "8302-castor-gt100",
-      "heading": "8302",
-      "text": "bánh xe đẩy đường kính 150mm",
-      "facts": {
-        "articleKind": "castor_wheel",
-        "diameterRange": "gt100mm"
-      },
-      "expectHs": "83022010"
-    },
-    {
-      "id": "8302-castor-le100",
-      "heading": "8302",
-      "text": "bánh xe đẩy nhỏ đường kính 80mm",
-      "facts": {
-        "articleKind": "castor_wheel",
-        "diameterRange": "le100mm"
-      },
-      "expectHs": "83022090"
-    },
-    {
-      "id": "8302-motor-hasHasp",
-      "heading": "8302",
-      "text": "bộ phận gắn động cơ xe máy có then cố định",
-      "facts": {
-        "articleKind": "motor_mounting",
-        "hasHasp": true
-      },
-      "expectHs": "83023010"
-    },
-    {
-      "id": "8302-motor-noHasp",
-      "heading": "8302",
-      "text": "giá đỡ động cơ xe không then",
-      "facts": {
-        "articleKind": "motor_mounting",
-        "hasHasp": false
-      },
-      "expectHs": "83023090"
-    },
-    {
-      "id": "8302-building-hasHasp",
-      "heading": "8302",
-      "text": "bulông cửa nhôm có then cố định",
-      "facts": {
-        "articleKind": "building_mounting",
-        "hasHasp": true
-      },
-      "expectHs": "83024131"
-    },
-    {
-      "id": "8302-building-general",
-      "heading": "8302",
-      "text": "thanh ray gắn tường không then",
-      "facts": {
-        "articleKind": "building_mounting",
-        "hasHasp": false,
-        "buildingSubKind": "general"
-      },
-      "expectHs": "83024190"
-    },
-    {
-      "id": "8302-building-hinge",
-      "heading": "8302",
-      "text": "bản lề kiểu gắn tường cho cửa nhôm",
-      "facts": {
-        "articleKind": "building_mounting",
-        "hasHasp": false,
-        "buildingSubKind": "hinge_type"
-      },
-      "expectHs": "83024139"
-    },
-    {
-      "id": "8302-furniture-hasHasp",
-      "heading": "8302",
-      "text": "bản lề tủ gỗ có then cố định",
-      "facts": {
-        "articleKind": "furniture_mounting",
-        "hasHasp": true
-      },
-      "expectHs": "83024220"
-    },
-    {
-      "id": "8302-furniture-noHasp",
-      "heading": "8302",
-      "text": "ray trượt ngăn kéo không then",
-      "facts": {
-        "articleKind": "furniture_mounting",
-        "hasHasp": false
-      },
-      "expectHs": "83024290"
-    },
-    {
-      "id": "8302-saddle",
-      "heading": "8302",
-      "text": "phụ kiện yên ngựa bằng kim loại",
-      "facts": {
-        "articleKind": "saddle_mounting"
-      },
-      "expectHs": "83024910"
-    },
-    {
-      "id": "8302-other-hasHasp",
-      "heading": "8302",
-      "text": "cơ cấu khác có then cố định",
-      "facts": {
-        "articleKind": "other_mounting",
-        "hasHasp": true
-      },
-      "expectHs": "83024991"
-    },
-    {
-      "id": "8302-other-noHasp",
-      "heading": "8302",
-      "text": "cơ cấu kim loại khác không then",
-      "facts": {
-        "articleKind": "other_mounting",
-        "hasHasp": false
-      },
-      "expectHs": "83024999"
-    },
-    {
-      "id": "8302-hat-rack",
-      "heading": "8302",
-      "text": "mắc áo bằng kim loại",
-      "facts": {
-        "articleKind": "hat_rack_bracket"
-      },
-      "expectHs": "83025000"
-    },
-    {
-      "id": "8302-door-closure",
-      "heading": "8302",
-      "text": "cơ cấu đóng cửa tự động",
-      "facts": {
-        "articleKind": "door_closure"
-      },
-      "expectHs": "83026000"
-    },
-    {
-      "id": "8480-foundry-box",
-      "heading": "8480",
-      "text": "hộp khuôn đúc bằng thép",
-      "facts": {
-        "mouldKind": "foundryBox"
-      },
-      "expectHs": "84801000"
-    },
-    {
-      "id": "8480-mould-base",
-      "heading": "8480",
-      "text": "đế khuôn bằng kim loại",
-      "facts": {
-        "mouldKind": "mouldBase"
-      },
-      "expectHs": "84802000"
-    },
-    {
-      "id": "8480-pattern-copper",
-      "heading": "8480",
-      "text": "mẫu khuôn bằng đồng",
-      "facts": {
-        "mouldKind": "pattern",
-        "patternMaterial": "copper"
-      },
-      "expectHs": "84803010"
-    },
-    {
-      "id": "8480-pattern-other",
-      "heading": "8480",
-      "text": "mẫu khuôn bằng gỗ",
-      "facts": {
-        "mouldKind": "pattern",
-        "patternMaterial": "other"
-      },
-      "expectHs": "84803090"
-    },
-    {
-      "id": "8480-metal-inject",
-      "heading": "8480",
-      "text": "khuôn kim loại ép phun",
-      "facts": {
-        "mouldKind": "metalMould",
-        "metalMouldProcess": "injectionOrCompression"
-      },
-      "expectHs": "84804100"
-    },
-    {
-      "id": "8480-metal-other",
-      "heading": "8480",
-      "text": "khuôn kim loại đúc áp lực khác",
-      "facts": {
-        "mouldKind": "metalMould",
-        "metalMouldProcess": "other"
-      },
-      "expectHs": "84804900"
-    },
-    {
-      "id": "8480-glass",
-      "heading": "8480",
-      "text": "khuôn đúc thủy tinh",
-      "facts": {
-        "mouldKind": "glassMould"
-      },
-      "expectHs": "84805000"
-    },
-    {
-      "id": "8480-mineral",
-      "heading": "8480",
-      "text": "khuôn đúc khoáng vật",
-      "facts": {
-        "mouldKind": "mineralMould"
-      },
-      "expectHs": "84806000"
-    },
-    {
-      "id": "8480-rp-inject-shoe",
-      "heading": "8480",
-      "text": "khuôn ép phun cao su làm đế giày",
-      "facts": {
-        "mouldKind": "rubberPlasticMould",
-        "rubberPlasticProcess": "injectionOrCompression",
-        "shoeSoleMould": "yes"
-      },
-      "expectHs": "84807110"
-    },
-    {
-      "id": "8480-rp-inject-other",
-      "heading": "8480",
-      "text": "khuôn ép phun nhựa không phải đế giày",
-      "facts": {
-        "mouldKind": "rubberPlasticMould",
-        "rubberPlasticProcess": "injectionOrCompression",
-        "shoeSoleMould": "no"
-      },
-      "expectHs": "84807190"
-    },
-    {
-      "id": "8480-rp-other-shoe",
-      "heading": "8480",
-      "text": "khuôn cao su nén khác làm đế giày",
-      "facts": {
-        "mouldKind": "rubberPlasticMould",
-        "rubberPlasticProcess": "other",
-        "shoeSoleMould": "yes"
-      },
-      "expectHs": "84807910"
-    },
-    {
-      "id": "8480-rp-other-nec",
-      "heading": "8480",
-      "text": "khuôn nén nhựa khác không phải đế giày",
-      "facts": {
-        "mouldKind": "rubberPlasticMould",
-        "rubberPlasticProcess": "other",
-        "shoeSoleMould": "no"
-      },
-      "expectHs": "84807990"
-    },
-    {
-      "id": "8522-pickup",
-      "heading": "8522",
-      "text": "đầu pickup máy hát",
-      "facts": {
-        "partKind": "pickUpCartridge"
-      },
-      "expectHs": "85221000"
-    },
-    {
-      "id": "8522-pcb-answering",
-      "heading": "8522",
-      "text": "bảng mạch máy trả lời điện thoại",
-      "facts": {
-        "partKind": "pcbTelephoneAnswering"
-      },
-      "expectHs": "85229020"
-    },
-    {
-      "id": "8522-pcb-cinema",
-      "heading": "8522",
-      "text": "bảng mạch máy chiếu phim",
-      "facts": {
-        "partKind": "pcbSoundCinema"
-      },
-      "expectHs": "85229030"
-    },
-    {
-      "id": "8522-mechanism",
-      "heading": "8522",
-      "text": "cơ chế đĩa máy nghe nhạc",
-      "facts": {
-        "partKind": "tapeDiskMechanism"
-      },
-      "expectHs": "85229040"
-    },
-    {
-      "id": "8522-magnetic-head",
-      "heading": "8522",
-      "text": "đầu từ máy ghi âm",
-      "facts": {
-        "partKind": "magneticHead"
-      },
-      "expectHs": "85229050"
-    },
-    {
-      "id": "8522-parts-sound",
-      "heading": "8522",
-      "text": "bộ phận máy tái tạo âm thanh",
-      "facts": {
-        "partKind": "partsSoundRepro"
-      },
-      "expectHs": "85229091"
-    },
-    {
-      "id": "8522-parts-answering",
-      "heading": "8522",
-      "text": "bộ phận máy trả lời điện thoại",
-      "facts": {
-        "partKind": "partsTelephoneAnswering"
-      },
-      "expectHs": "85229092"
-    },
-    {
-      "id": "8522-parts-8521",
-      "heading": "8522",
-      "text": "bộ phận máy 8521 ghi âm",
-      "facts": {
-        "partKind": "parts851981Or8521"
-      },
-      "expectHs": "85229093"
-    },
-    {
-      "id": "8522-parts-other",
-      "heading": "8522",
-      "text": "bộ phận khác thiết bị âm thanh",
-      "facts": {
-        "partKind": "partsOther"
-      },
-      "expectHs": "85229099"
-    },
-    {
-      "id": "8532-power",
-      "heading": "8532",
-      "text": "tụ điện công suất 50Hz",
-      "facts": {
-        "capKind": "power50Hz"
-      },
-      "expectHs": "85321000"
-    },
-    {
-      "id": "8532-tantalum",
-      "heading": "8532",
-      "text": "tụ điện tantali",
-      "facts": {
-        "capKind": "tantalum"
-      },
-      "expectHs": "85322100"
-    },
-    {
-      "id": "8532-alu",
-      "heading": "8532",
-      "text": "tụ nhôm điện phân",
-      "facts": {
-        "capKind": "aluminiumElectrolytic"
-      },
-      "expectHs": "85322200"
-    },
-    {
-      "id": "8532-cer-single",
-      "heading": "8532",
-      "text": "tụ gốm lớp đơn",
-      "facts": {
-        "capKind": "ceramicSingle"
-      },
-      "expectHs": "85322300"
-    },
-    {
-      "id": "8532-cer-multi",
-      "heading": "8532",
-      "text": "tụ gốm nhiều lớp",
-      "facts": {
-        "capKind": "ceramicMulti"
-      },
-      "expectHs": "85322400"
-    },
-    {
-      "id": "8532-paper",
-      "heading": "8532",
-      "text": "tụ giấy hoặc plastic",
-      "facts": {
-        "capKind": "paperPlastic"
-      },
-      "expectHs": "85322500"
-    },
-    {
-      "id": "8532-fixed-other",
-      "heading": "8532",
-      "text": "tụ cố định loại khác",
-      "facts": {
-        "capKind": "fixedOther"
-      },
-      "expectHs": "85322900"
-    },
-    {
-      "id": "8532-variable",
-      "heading": "8532",
-      "text": "tụ biến đổi hoặc đặt trước",
-      "facts": {
-        "capKind": "variablePreset"
-      },
-      "expectHs": "85323000"
-    },
-    {
-      "id": "8532-parts",
-      "heading": "8532",
-      "text": "bộ phận tụ điện",
-      "facts": {
-        "capKind": "parts"
-      },
-      "expectHs": "85329000"
-    },
-    {
-      "id": "8533-parts",
-      "heading": "8533",
-      "text": "bộ phận điện trở",
-      "facts": {
-        "goodsRole": "parts"
-      },
-      "expectHs": "85339000"
-    },
-    {
-      "id": "8533-carbon-chip",
-      "heading": "8533",
-      "text": "điện trở carbon cố định dạng chip",
-      "facts": {
-        "goodsRole": "resistor",
-        "resistorClass": "fixedCarbon",
-        "carbonMount": "chip"
-      },
-      "expectHs": "85331010"
-    },
-    {
-      "id": "8533-carbon-other",
-      "heading": "8533",
-      "text": "điện trở carbon cố định loại khác",
-      "facts": {
-        "goodsRole": "resistor",
-        "resistorClass": "fixedCarbon",
-        "carbonMount": "other"
-      },
-      "expectHs": "85331090"
-    },
-    {
-      "id": "8533-fixed-le20",
-      "heading": "8533",
-      "text": "điện trở cố định khác công suất ≤20W",
-      "facts": {
-        "goodsRole": "resistor",
-        "resistorClass": "fixedOther",
-        "powerW": 10
-      },
-      "expectHs": "85332100"
-    },
-    {
-      "id": "8533-fixed-gt20",
-      "heading": "8533",
-      "text": "điện trở cố định khác công suất >20W",
-      "facts": {
-        "goodsRole": "resistor",
-        "resistorClass": "fixedOther",
-        "powerW": 25
-      },
-      "expectHs": "85332900"
-    },
-    {
-      "id": "8533-wire-le20",
-      "heading": "8533",
-      "text": "điện trở dây quấn biến đổi ≤20W",
-      "facts": {
-        "goodsRole": "resistor",
-        "resistorClass": "wirewoundVariable",
-        "powerW": 15
-      },
-      "expectHs": "85333100"
-    },
-    {
-      "id": "8533-wire-gt20",
-      "heading": "8533",
-      "text": "điện trở dây quấn biến đổi >20W",
-      "facts": {
-        "goodsRole": "resistor",
-        "resistorClass": "wirewoundVariable",
-        "powerW": 30
-      },
-      "expectHs": "85333900"
-    },
-    {
-      "id": "8533-variable-other",
-      "heading": "8533",
-      "text": "điện trở biến đổi loại khác",
-      "facts": {
-        "goodsRole": "resistor",
-        "resistorClass": "variableOther"
-      },
-      "expectHs": "85334000"
-    },
-    {
-      "id": "8542-proc",
-      "heading": "8542",
-      "text": "vi mạch bộ xử lý",
-      "facts": {
-        "goodsKind": "ic",
-        "icKind": "processor"
-      },
-      "expectHs": "85423100"
-    },
-    {
-      "id": "8542-mem",
-      "heading": "8542",
-      "text": "vi mạch bộ nhớ",
-      "facts": {
-        "goodsKind": "ic",
-        "icKind": "memory"
-      },
-      "expectHs": "85423200"
-    },
-    {
-      "id": "8542-amp",
-      "heading": "8542",
-      "text": "vi mạch khuếch đại",
-      "facts": {
-        "goodsKind": "ic",
-        "icKind": "amplifier"
-      },
-      "expectHs": "85423300"
-    },
-    {
-      "id": "8542-other-ic",
-      "heading": "8542",
-      "text": "vi mạch tích hợp loại khác",
-      "facts": {
-        "goodsKind": "ic",
-        "icKind": "other"
-      },
-      "expectHs": "85423900"
-    },
-    {
-      "id": "8535-fuse",
-      "heading": "8535",
-      "text": "cầu chì điện",
-      "facts": {
-        "apparatusKind": "fuse"
-      },
-      "expectHs": "85351000"
-    },
-    {
-      "id": "8535-cb-moulded",
-      "heading": "8535",
-      "text": "aptomat loại kín dưới 72.5kV",
-      "facts": {
-        "apparatusKind": "circuitBreaker",
-        "breakerVoltageClass": "below72_5kV",
-        "breakerKind": "mouldedCase"
-      },
-      "expectHs": "85352110"
-    },
-    {
-      "id": "8535-cb-elcb-lv",
-      "heading": "8535",
-      "text": "aptomat chống rò dưới 72.5kV",
-      "facts": {
-        "apparatusKind": "circuitBreaker",
-        "breakerVoltageClass": "below72_5kV",
-        "breakerKind": "elcb"
-      },
-      "expectHs": "85352120"
-    },
-    {
-      "id": "8535-cb-other-lv",
-      "heading": "8535",
-      "text": "aptomat khác dưới 72.5kV",
-      "facts": {
-        "apparatusKind": "circuitBreaker",
-        "breakerVoltageClass": "below72_5kV",
-        "breakerKind": "otherBreaker"
-      },
-      "expectHs": "85352190"
-    },
-    {
-      "id": "8535-cb-elcb-hv",
-      "heading": "8535",
-      "text": "aptomat chống rò 72.5kV trở lên",
-      "facts": {
-        "apparatusKind": "circuitBreaker",
-        "breakerVoltageClass": "72_5kVOrMore",
-        "breaker72Elcb": "yes"
-      },
-      "expectHs": "85352910"
-    },
-    {
-      "id": "8535-cb-other-hv",
-      "heading": "8535",
-      "text": "aptomat khác 72.5kV trở lên",
-      "facts": {
-        "apparatusKind": "circuitBreaker",
-        "breakerVoltageClass": "72_5kVOrMore",
-        "breaker72Elcb": "no"
-      },
-      "expectHs": "85352990"
-    },
-    {
-      "id": "8535-sw-under36",
-      "heading": "8535",
-      "text": "cầu dao cách ly dưới 36kV",
-      "facts": {
-        "apparatusKind": "isolatorSwitch",
-        "switchKind": "disconnectUnder36kV"
-      },
-      "expectHs": "85353011"
-    },
-    {
-      "id": "8535-sw-disc-other",
-      "heading": "8535",
-      "text": "cầu dao cách ly loại khác",
-      "facts": {
-        "apparatusKind": "isolatorSwitch",
-        "switchKind": "otherDisconnect"
-      },
-      "expectHs": "85353019"
-    },
-    {
-      "id": "8535-sw-66kv",
-      "heading": "8535",
-      "text": "cầu dao cách ly cho 66kV trở lên",
-      "facts": {
-        "apparatusKind": "isolatorSwitch",
-        "switchKind": "for66kVOrMore"
-      },
-      "expectHs": "85353020"
-    },
-    {
-      "id": "8535-sw-other",
-      "heading": "8535",
-      "text": "cầu dao điện khác",
-      "facts": {
-        "apparatusKind": "isolatorSwitch",
-        "switchKind": "otherSwitch"
-      },
-      "expectHs": "85353090"
-    },
-    {
-      "id": "8535-surge",
-      "heading": "8535",
-      "text": "chống sét lan",
-      "facts": {
-        "apparatusKind": "surgeProtection"
-      },
-      "expectHs": "85354000"
-    },
-    {
-      "id": "8535-other-tap",
-      "heading": "8535",
-      "text": "bộ chuyển đổi đầu cực máy biến áp",
-      "facts": {
-        "apparatusKind": "other8535",
-        "other8535Kind": "transformerTapSwitch"
-      },
-      "expectHs": "85359010"
-    },
-    {
-      "id": "8535-other-motor",
-      "heading": "8535",
-      "text": "bộ chuyển mạch động cơ",
-      "facts": {
-        "apparatusKind": "other8535",
-        "other8535Kind": "motorChangeOver"
-      },
-      "expectHs": "85359020"
-    },
-    {
-      "id": "8535-other-nec",
-      "heading": "8535",
-      "text": "dụng cụ điện khác cho nhóm 8535",
-      "facts": {
-        "apparatusKind": "other8535",
-        "other8535Kind": "otherNec"
-      },
-      "expectHs": "85359090"
-    },
-    {
-      "id": "8537-lv-380v",
-      "heading": "8537",
-      "text": "bộ điều khiển 380v cho máy bơm",
-      "facts": {
-        "panelVoltage": "lte1000v",
-        "lvPanelClass": "otherAssembly",
-        "otherAssemblyUse": "otherNec"
-      },
-      "expectHs": "85371099"
-    },
-    {
-      "id": "8537-lv-48v",
-      "heading": "8537",
-      "text": "bộ điều khiển động cơ 48V 400A cho xe máy điện",
-      "facts": {
-        "panelVoltage": "lte1000v",
-        "outputVoltageVdc": 48,
-        "outputCurrentA": 400
-      },
-      "expectHs": "85371040"
-    },
-    {
-      "id": "8537-distribution",
-      "heading": "8537",
-      "text": "tủ phân phối điện hạ thế",
-      "expectHs": "85371020"
-    },
-    {
-      "id": "8537-plc",
-      "heading": "8537",
-      "text": "PLC công nghiệp điều khiển lò hơi",
-      "facts": {
-        "panelVoltage": "lte1000v",
-        "lvPanelClass": "controlBoard",
-        "controlBoardRole": "plcWithProcessor"
-      },
-      "expectHs": "85371012"
-    },
-    {
-      "id": "8537-dcs",
-      "heading": "8537",
-      "text": "hệ thống điều khiển phân tán cho nhà máy xi măng",
-      "facts": {
-        "panelVoltage": "lte1000v",
-        "lvPanelClass": "controlBoard",
-        "controlBoardRole": "dcsDistributed"
-      },
-      "expectHs": "85371011"
-    },
-    {
-      "id": "8537-hv-22kv",
-      "heading": "8537",
-      "text": "tủ trung thế 22kV điều khiển trạm biến áp",
-      "facts": {
-        "panelVoltage": "gt1000v",
-        "hvPanelFunction": "control",
-        "incorporates66kvSwitchgear": "no"
-      },
-      "expectHs": "85372019"
-    },
-    {
-      "id": "8537-motor-drive-spec",
-      "heading": "8537",
-      "text": "bộ điều khiển động cơ 48VDC 400A cho máy bơm",
-      "facts": {
-        "panelVoltage": "lte1000v",
-        "lvPanelClass": "motorDriveHighCurrent",
-        "outputVoltageVdc": 48,
-        "outputCurrentA": 400
-      },
-      "expectHs": "85371040"
-    },
-    {
-      "id": "8537-appliance",
-      "heading": "8537",
-      "text": "bảng điều khiển cho máy điều hòa không khí công nghiệp",
-      "facts": {
-        "panelVoltage": "lte1000v",
-        "lvPanelClass": "controlBoard",
-        "controlBoardRole": "applianceHvacWhiteGoods"
-      },
-      "expectHs": "85371013"
-    },
-    {
-      "id": "8537-other-nec",
-      "heading": "8537",
-      "text": "tủ điện lắp ráp cho máy đóng gói",
-      "facts": {
-        "panelVoltage": "lte1000v",
-        "lvPanelClass": "otherAssembly",
-        "otherAssemblyUse": "otherNec"
-      },
-      "expectHs": "85371099"
-    },
-    {
-      "id": "8208-dao-cat-metal",
-      "heading": "8208",
-      "text": "dao cắt kim loại máy tự động",
-      "facts": {
-        "toolApplication": "metalworking"
-      },
-      "expectHs": "82081000"
-    },
-    {
-      "id": "8208-luoi-cat-kim-loai",
-      "heading": "8208",
-      "text": "lưỡi cắt kim loại để phay",
-      "facts": {
-        "toolApplication": "metalworking"
-      },
-      "expectHs": "82081000"
-    },
-    {
-      "id": "8208-luoi-cat-go",
-      "heading": "8208",
-      "text": "lưỡi cắt gỗ cho máy CNC",
-      "facts": {
-        "toolApplication": "woodworking"
-      },
-      "expectHs": "82082000"
-    },
-    {
-      "id": "8208-dao-cat-nha-bep",
-      "heading": "8208",
-      "text": "dao cắt máy nhà bếp công nghiệp",
-      "facts": {
-        "toolApplication": "kitchen_industrial"
-      },
-      "expectHs": "82083000"
-    },
-    {
-      "id": "8208-dao-cat-nong-nghiep",
-      "heading": "8208",
-      "text": "lưỡi cắt máy nông nghiệp",
-      "facts": {
-        "toolApplication": "agriculture"
-      },
-      "expectHs": "82084000"
-    },
-    {
-      "id": "8536-cong-tac-10a",
-      "heading": "8536",
-      "text": "công tắc 10A",
-      "facts": {
-        "function": "switch",
-        "currentRating": "lt16A",
-        "specialApp": "none"
-      },
-      "expectHs": "85365096"
-    },
-    {
-      "id": "8536-cong-tac-2-cuc",
-      "heading": "8536",
-      "text": "công tắc 2 cực",
-      "facts": {
-        "function": "switch",
-        "currentRating": "lt16A",
-        "specialApp": "none"
-      },
-      "expectHs": "85365096"
-    },
-    {
-      "id": "8536-nut-nhan",
-      "heading": "8536",
-      "text": "nút nhấn điện",
-      "facts": {
-        "function": "switch",
-        "currentRating": "lt16A",
-        "specialApp": "none"
-      },
-      "expectHs": "85365096"
-    },
-    {
-      "id": "8536-aptomat-3-pha-40a",
-      "heading": "8536",
-      "text": "aptomat 3 pha 40A",
-      "facts": {
-        "function": "circuitBreaker",
-        "currentRating": "a32to1000",
-        "specialApp": "none"
-      },
-      "expectHs": "85362013"
-    },
-    {
-      "id": "8536-aptomat-1-pha-20a",
-      "heading": "8536",
-      "text": "aptomat 1 pha 20A",
-      "facts": {
-        "function": "circuitBreaker",
-        "currentRating": "a16to32",
-        "specialApp": "none"
-      },
-      "expectHs": "85362012"
-    },
-    {
-      "id": "8536-ro-le-220v",
-      "heading": "8536",
-      "text": "rơ le 220V",
-      "facts": {
-        "function": "relayGt60V",
-        "currentRating": "unspecified",
-        "specialApp": "none"
-      },
-      "expectHs": "85364990"
-    },
-    {
-      "id": "8536-ro-le-trung-gian",
-      "heading": "8536",
-      "text": "rơ le trung gian",
-      "facts": {
-        "function": "relayGt60V",
-        "currentRating": "lt16A",
-        "specialApp": "none"
-      },
-      "expectHs": "85364910"
-    },
-    {
-      "id": "8208-luoi-cat",
-      "heading": "8208",
-      "text": "lưỡi cắt",
-      "expectAsk": [
-        "toolApplication"
-      ]
-    },
-    {
-      "id": "9030-may-do-dien",
-      "heading": "9030",
-      "text": "máy đo điện",
-      "expectAsk": [
-        "specificKind"
-      ]
-    },
-    {
-      "id": "9030-may-do-dien-tro",
-      "heading": "9030",
-      "text": "máy đo điện trở",
-      "expectAsk": [
-        "specificKind"
-      ]
     }
   ]
 }
