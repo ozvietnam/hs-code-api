@@ -276,6 +276,54 @@
       "when": {
         "seatKind": "vehicle"
       }
+    },
+    {
+      "id": "9401-r14",
+      "priority": 14,
+      "hs": "94016910",
+      "reasonVi": "GIR 6: seatKind=wooden + hasPadding=true — ghế gỗ có đệm",
+      "source": "hermes-211-9401",
+      "gir": "GIR 6",
+      "when": {
+        "seatKind": "wooden",
+        "hasPadding": "true"
+      }
+    },
+    {
+      "id": "9401-r15",
+      "priority": 15,
+      "hs": "94017910",
+      "reasonVi": "GIR 6: seatKind=metal_frame + hasPadding=true — ghế kim loại có đệm",
+      "source": "hermes-211-9401",
+      "gir": "GIR 6",
+      "when": {
+        "seatKind": "metal_frame",
+        "hasPadding": "true"
+      }
+    },
+    {
+      "id": "9401-r18",
+      "priority": 18,
+      "hs": "94014900",
+      "reasonVi": "GIR 6: upholstered seat, other materials (bamboo/rattan)",
+      "source": "hermes-211-9401",
+      "gir": "GIR 6",
+      "when": {
+        "seatKind": "upholstered",
+        "frameKind": "plastic",
+        "hasPadding": "true"
+      }
+    },
+    {
+      "id": "9401-r19",
+      "priority": 19,
+      "hs": "94017990",
+      "reasonVi": "GIR 6: metal frame seat (default for metal_frame)",
+      "source": "hermes-211-9401",
+      "gir": "GIR 6",
+      "when": {
+        "seatKind": "metal_frame"
+      }
     }
   ]
 }

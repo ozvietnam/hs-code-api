@@ -1,4 +1,10 @@
 {
+  "8414": {
+    "state": "draft",
+    "branch": "hermes/decision-8414",
+    "cases": 0,
+    "notes": ""
+  },
   "version": 1,
   "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → draft (có bảng, chưa qua cửa dữ liệu thật) → done (qua cửa). `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
@@ -854,6 +860,23 @@
       "gateVi": "oz: 0/12 (0%)",
       "commit": "8346fd8"
     },
+    "9401": {
+      "status": "draft",
+      "table": true,
+      "branch": "hermes/decision-9401",
+      "doneAt": null,
+      "draftAt": "2026-10-03T16:00:00.000Z",
+      "by": "hermes-211",
+      "leafCount": 11,
+      "ruleCount": 14,
+      "attrs": [
+        "seatKind",
+        "frameKind",
+        "hasPadding"
+      ],
+      "gateVi": "pending expert review — 57 oz entries, 11/24 lá chỉ có rules, cần chuyên viên bổ sung 13 lá còn lại (94011000, 94012090, 94013100, 94014100, 94015200/15300/15900, 94016910, 94017910, 94019100, 94019910/19921/19930/19999)",
+      "noteVi": "Bảng 14 rules / 3 attrs (seatKind+frameKind+hasPadding). Phủ 11/24 lá 8 số. Thiếu 13 lá (ghế trẻ em, ghế tàu, ghế nằm, parts). Nguồn: oz-gold + biểu thuế 2026."
+    },
     "9405": {
       "status": "draft",
       "leafCount": 56,
@@ -882,11 +905,5 @@
       "by": "hermes-211",
       "note": "oz 56% (22/39), toyKind enum, 15 leaves covered"
     }
-  },
-  "8414": {
-    "state": "draft",
-    "branch": "hermes/decision-8414",
-    "cases": 0,
-    "notes": ""
   }
 }
