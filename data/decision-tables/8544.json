@@ -85,8 +85,10 @@
       "type": "enum",
       "domain": [
         "flat",
-        "round"
+        "round",
+        "unknown"
       ],
+      "assumeIfUnknown": "unknown",
       "labelVi": "Dạng cáp",
       "questionVi": "Cáp dẹt (flat) hay tròn?",
       "detect": {
@@ -334,6 +336,19 @@
       "source": "Biểu thuế 2026: 8544.42.96 — Cáp điện cách điện bằng plastic khác"
     },
     {
+      "id": "8544_flat_telecom_plastic_no_diameter",
+      "priority": 42,
+      "when": {
+        "cableKind": "telecom",
+        "flatCable": "flat",
+        "insulationMaterial": "plastic",
+        "hasConnector": "with_connector"
+      },
+      "hs": "85444294",
+      "reasonVi": "Cáp dẹt telecom có đầu nối, cách điện plastic → 85444294 (ước đường kính ≤0,5mm theo mẫu thông dụng)",
+      "source": "Biểu thuế 2026: 8544.42.94 — Cáp điện cách điện bằng plastic, mỗi lõi có đường kính không quá 0,5mm"
+    },
+    {
       "id": "8544_round_telecom_optical",
       "priority": 55,
       "when": {
@@ -341,9 +356,9 @@
         "flatCable": "round",
         "insulationMaterial": "other"
       },
-      "hs": "85444298",
-      "reasonVi": "Cáp tròn truyền dữ liệu dùng sợi quang (optical fiber) → 85444298",
-      "source": "Biểu thuế 2026: 8544.42.98 — Cáp dữ liệu dạng dẹt (khác loại 8544.42.91)"
+      "hs": "85447090",
+      "reasonVi": "Cáp tròn truyền dữ liệu dùng sợi quang (optical fiber) → 85447090",
+      "source": "Biểu thuế 2026: 8544.70.90 — Cáp sợi quang, loại khác"
     },
     {
       "id": "8544_flat_telecom_rubber_paper_other",
@@ -356,6 +371,106 @@
       "hs": "85444922",
       "reasonVi": "Cáp dẹt cách điện bằng cao su/giấy, dùng khác viễn thông → 85444922",
       "source": "Biểu thuế 2026: 8544.49.22 — Cáp điện cách điện bằng plastic, mỗi lõi có đường kính không quá 0,5mm"
+    },
+    {
+      "id": "8544_unknown_telecom_plastic_with_conn",
+      "priority": 43,
+      "when": {
+        "cableKind": "telecom",
+        "flatCable": "unknown",
+        "insulationMaterial": "plastic",
+        "hasConnector": "with_connector"
+      },
+      "hs": "85444294",
+      "reasonVi": "Cáp telecom có đầu nối, cách điện plastic, dạng không xác định → 85444294 (ước ≤0,5mm theo mẫu phổ biến)",
+      "source": "Biểu thuế 2026: 8544.42.94 — Cáp điện cách điện bằng plastic, mỗi lõi có đường kính không quá 0,5mm"
+    },
+    {
+      "id": "8544_unknown_telecom_plastic_no_conn",
+      "priority": 41,
+      "when": {
+        "cableKind": "telecom",
+        "flatCable": "unknown",
+        "insulationMaterial": "plastic",
+        "hasConnector": "without_connector"
+      },
+      "hs": "85444296",
+      "reasonVi": "Cáp telecom không đầu nối, cách điện plastic, dạng không xác định → 85444296",
+      "source": "Biểu thuế 2026: 8544.42.96 — Cáp điện cách điện bằng plastic khác"
+    },
+    {
+      "id": "8544_unknown_telecom_rubber_paper",
+      "priority": 45,
+      "when": {
+        "cableKind": "telecom",
+        "flatCable": "unknown",
+        "insulationMaterial": "rubber_paper"
+      },
+      "hs": "85444291",
+      "reasonVi": "Cáp telecom cách điện cao su/giấy, dạng không xác định → 85444291",
+      "source": "Biểu thuế 2026: 8544.42.91 — Cáp dữ liệu dẹt cách điện bằng cao su, plastic hoặc giấy"
+    },
+    {
+      "id": "8544_unknown_other_plastic_with_conn",
+      "priority": 30,
+      "when": {
+        "cableKind": "other",
+        "flatCable": "unknown",
+        "insulationMaterial": "plastic",
+        "hasConnector": "with_connector"
+      },
+      "hs": "85444299",
+      "reasonVi": "Dây dẫn điện khác viễn thông có đầu nối, cách điện plastic → 85444299",
+      "source": "Biểu thuế 2026: 8544.42.99 — Loại khác có đầu nối"
+    },
+    {
+      "id": "8544_unknown_other_plastic_no_conn",
+      "priority": 25,
+      "when": {
+        "cableKind": "other",
+        "flatCable": "unknown",
+        "insulationMaterial": "plastic",
+        "hasConnector": "without_connector"
+      },
+      "hs": "85444929",
+      "reasonVi": "Dây dẫn điện khác viễn thông không đầu nối, cách điện plastic → 85444929",
+      "source": "Biểu thuế 2026: 8544.49.29 — Loại khác, cách điện bằng cao su, plastic hoặc giấy"
+    },
+    {
+      "id": "8544_unknown_other_rubber_paper",
+      "priority": 28,
+      "when": {
+        "cableKind": "other",
+        "flatCable": "unknown",
+        "insulationMaterial": "rubber_paper"
+      },
+      "hs": "85444922",
+      "reasonVi": "Dây dẫn cách điện cao su/giấy, dùng khác viễn thông → 85444922",
+      "source": "Biểu thuế 2026: 8544.49.22 — Cáp điện cách điện bằng plastic, mỗi lõi có đường kính không quá 0,5mm"
+    },
+    {
+      "id": "8544_unknown_telecom_other",
+      "priority": 35,
+      "when": {
+        "cableKind": "telecom",
+        "flatCable": "unknown",
+        "insulationMaterial": "other"
+      },
+      "hs": "85444939",
+      "reasonVi": "Cáp telecom chất liệu cách điện khác (sợi quang) → 85444939",
+      "source": "Biểu thuế 2026: 8544.49.39 — Loại khác"
+    },
+    {
+      "id": "8544_unknown_other_other",
+      "priority": 22,
+      "when": {
+        "cableKind": "other",
+        "flatCable": "unknown",
+        "insulationMaterial": "other"
+      },
+      "hs": "85444939",
+      "reasonVi": "Dây dẫn điện cách điện loại khác, dùng khác viễn thông → 85444939",
+      "source": "Biểu thuế 2026: 8544.49.39 — Loại khác"
     },
     {
       "id": "8544_round_other_with_conn_plastic",
@@ -411,9 +526,9 @@
       "id": "8544_default",
       "priority": 10,
       "when": {},
-      "hs": "85444999",
-      "reasonVi": "Không xác định được → 85444999 (loại khác, không thuộc các trường hợp đặc biệt)",
-      "source": "Biểu thuế 2026: 8544.49.99 — Loại khác"
+      "hs": "85444939",
+      "reasonVi": "Không xác định được → 85444939 (loại khác, cách điện bằng cao su, plastic hoặc giấy)",
+      "source": "Biểu thuế 2026: 8544.49.39 — Loại khác"
     }
   ],
   "attributes": [
