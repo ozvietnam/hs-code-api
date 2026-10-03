@@ -195,6 +195,7 @@
   "rules": [
     {
       "id": "6403_ski_boot",
+      "priority": 100,
       "when": {
         "skiBoot": "ski_boot"
       },
@@ -204,6 +205,7 @@
     },
     {
       "id": "6403_metal_toe_cap",
+      "priority": 90,
       "when": {
         "metalToe": "metal_toe"
       },
@@ -213,6 +215,7 @@
     },
     {
       "id": "6403_leather_sole_strap",
+      "priority": 80,
       "when": {
         "outerSole": "leather_composition"
       },
@@ -221,36 +224,8 @@
       "reasonVi": "Giày đế da, có đai vòng qua mu bàn chân và quai xỏ ngón chân cái → 64032000"
     },
     {
-      "id": "6403_boot_rubber_leather",
-      "when": {
-        "bootType": "boot",
-        "outerSole": "rubber_plastics"
-      },
-      "hs": "64039190",
-      "source": "Biểu thuế 2026: giày boot cổ cao quá mắt cá chân, đế cao su hoặc nhựa, không thuộc 64039110/20/30 → 64039190",
-      "reasonVi": "Giày boot cổ cao quá mắt cá chân, đế cao su hoặc nhựa → phân nhóm 640391 (loại khác)"
-    },
-    {
-      "id": "6403_boot_wooden_sole",
-      "when": {
-        "bootType": "boot",
-        "outerSole": "wooden"
-      },
-      "hs": "64039110",
-      "source": "Biểu thuế 2026: giày boot có đế bằng gỗ → 64039110",
-      "reasonVi": "Giày boot có đế bằng gỗ → 64039110"
-    },
-    {
-      "id": "6403_boot_equestrian",
-      "when": {
-        "bootType": "boot"
-      },
-      "hs": "64039120",
-      "source": "Biểu thuế 2026: ủng để cưỡi ngựa (boot) → 64039120",
-      "reasonVi": "Ủng để cưỡi ngựa (cổ cao quá mắt cá chân) → 64039120"
-    },
-    {
       "id": "6403_boot_sen_toe",
+      "priority": 70,
       "when": {
         "bootType": "boot",
         "metalToe": "sen_toe"
@@ -260,7 +235,30 @@
       "reasonVi": "Giày boot có mũi phi kim loại (SEN) → 64039130"
     },
     {
+      "id": "6403_boot_wooden_sole",
+      "priority": 60,
+      "when": {
+        "bootType": "boot",
+        "outerSole": "wooden"
+      },
+      "hs": "64039110",
+      "source": "Biểu thuế 2026: giày boot có đế bằng gỗ → 64039110",
+      "reasonVi": "Giày boot có đế bằng gỗ → 64039110"
+    },
+    {
+      "id": "6403_boot_rubber_leather",
+      "priority": 50,
+      "when": {
+        "bootType": "boot",
+        "outerSole": "rubber_plastics"
+      },
+      "hs": "64039190",
+      "source": "Biểu thuế 2026: giày boot cổ cao quá mắt cá chân, đế cao su hoặc nhựa, không thuộc 64039110/20/30 → 64039190",
+      "reasonVi": "Giày boot cổ cao quá mắt cá chân, đế cao su hoặc nhựa → phân nhóm 640391 (loại khác)"
+    },
+    {
       "id": "6403_boot_leather_soles",
+      "priority": 50,
       "when": {
         "bootType": "boot",
         "outerSole": "leather_composition"
@@ -270,7 +268,40 @@
       "reasonVi": "Giày boot cổ cao quá mắt cá chân, đế da/composite → phân nhóm 640399 (loại khác)"
     },
     {
+      "id": "6403_boot_equestrian",
+      "priority": 40,
+      "when": {
+        "bootType": "boot"
+      },
+      "hs": "64039120",
+      "source": "Biểu thuế 2026: ủng để cưỡi ngựa (boot) → 64039120",
+      "reasonVi": "Ủng để cưỡi ngựa (cổ cao quá mắt cá chân) → 64039120"
+    },
+    {
+      "id": "6403_nonboot_sen_toe",
+      "priority": 70,
+      "when": {
+        "bootType": "non_boot",
+        "metalToe": "sen_toe"
+      },
+      "hs": "64039930",
+      "source": "Biểu thuế 2026: giày non-boot có mũi bảo vệ phi kim loại (SEN) → 64039930",
+      "reasonVi": "Giày non-boot có mũi phi kim loại (SEN) → 64039930"
+    },
+    {
+      "id": "6403_nonboot_wooden_sole",
+      "priority": 60,
+      "when": {
+        "bootType": "non_boot",
+        "outerSole": "wooden"
+      },
+      "hs": "64039910",
+      "source": "Biểu thuế 2026: giày non-boot có đế bằng gỗ, không có lót đế bên trong, không mũi kim loại → 64039910",
+      "reasonVi": "Giày non-boot có đế bằng gỗ → 64039910"
+    },
+    {
       "id": "6403_nonboot_sport_rubber",
+      "priority": 55,
       "when": {
         "bootType": "non_boot",
         "sportUse": "sport",
@@ -282,6 +313,7 @@
     },
     {
       "id": "6403_nonboot_bowling",
+      "priority": 55,
       "when": {
         "bootType": "non_boot",
         "sportUse": "sport"
@@ -292,6 +324,7 @@
     },
     {
       "id": "6403_nonboot_sport_leather",
+      "priority": 55,
       "when": {
         "bootType": "non_boot",
         "sportUse": "sport",
@@ -302,7 +335,18 @@
       "reasonVi": "Giày thể thao đế da/composite → 64031990"
     },
     {
+      "id": "6403_nonboot_studded",
+      "priority": 50,
+      "when": {
+        "bootType": "non_boot"
+      },
+      "hs": "64031910",
+      "source": "Biểu thuế 2026: giày, dép có gắn đinh, gắn miếng đế chân → 64031910",
+      "reasonVi": "Giày, dép có gắn đinh, gắn miếng đế chân → 64031910"
+    },
+    {
       "id": "6403_nonboot_fashion_leather_upper",
+      "priority": 45,
       "when": {
         "bootType": "non_boot",
         "sportUse": "non_sport",
@@ -315,6 +359,7 @@
     },
     {
       "id": "6403_nonboot_fashion_rubber_upper",
+      "priority": 45,
       "when": {
         "bootType": "non_boot",
         "sportUse": "non_sport",
@@ -327,6 +372,7 @@
     },
     {
       "id": "6403_nonboot_leather_sole",
+      "priority": 45,
       "when": {
         "bootType": "non_boot",
         "outerSole": "leather_composition"
@@ -336,33 +382,48 @@
       "reasonVi": "Giày đế da/composite → 64039990"
     },
     {
-      "id": "6403_nonboot_studded",
+      "id": "6403_boot_coth_cao_rubber",
+      "priority": 50,
       "when": {
-        "bootType": "non_boot"
+        "bootType": "boot",
+        "outerSole": "rubber_plastics"
       },
-      "hs": "64031910",
-      "source": "Biểu thuế 2026: giày, dép có gắn đinh, gắn miếng đế chân → 64031910",
-      "reasonVi": "Giày, dép có gắn đinh, gắn miếng đế chân → 64031910"
+      "hs": "64035100",
+      "source": "Biểu thuế 2026: giày cổ cao quá mắt cá chân, đế cao su hoặc nhựa → 64035100",
+      "reasonVi": "Giày cổ cao quá mắt cá chân, đế cao su hoặc nhựa → 64035100"
     },
     {
-      "id": "6403_nonboot_wooden_sole",
+      "id": "6403_nonboot_bowling_other",
+      "priority": 45,
       "when": {
         "bootType": "non_boot",
-        "outerSole": "wooden"
+        "sportUse": "sport"
       },
-      "hs": "64039910",
-      "source": "Biểu thuế 2026: giày non-boot có đế bằng gỗ, không có lót đế bên trong, không mũi kim loại → 64039910",
-      "reasonVi": "Giày non-boot có đế bằng gỗ → 64039910"
+      "hs": "64035910",
+      "source": "Biểu thuế 2026: giày chơi bowling non-boot, đế không phải cao su/nhựa → 64035910",
+      "reasonVi": "Giày chơi bowling non-boot → 64035910"
     },
     {
-      "id": "6403_nonboot_sen_toe",
+      "id": "6403_nonboot_other_fashion",
+      "priority": 30,
       "when": {
         "bootType": "non_boot",
-        "metalToe": "sen_toe"
+        "sportUse": "non_sport"
       },
-      "hs": "64039930",
-      "source": "Biểu thuế 2026: giày non-boot có mũi bảo vệ phi kim loại (SEN) → 64039930",
-      "reasonVi": "Giày non-boot có mũi phi kim loại (SEN) → 64039930"
+      "hs": "64035990",
+      "source": "Biểu thuế 2026: giày/dép non-boot không thuộc 640351-64035910, đế không phải cao su/nhựa → 64035990",
+      "reasonVi": "Giày non-boot loại khác (không phải cao su/nhựa) → 64035990"
+    },
+    {
+      "id": "6403_nonboot_bowling_nonrubber",
+      "priority": 45,
+      "when": {
+        "bootType": "non_boot",
+        "sportUse": "sport"
+      },
+      "hs": "64039920",
+      "source": "Biểu thuế 2026: giày chơi bowling non-boot, đế không phải cao su/nhựa → 64039920",
+      "reasonVi": "Giày chơi bowling non-boot → 64039920"
     }
   ]
 }
