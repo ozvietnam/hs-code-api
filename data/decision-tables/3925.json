@@ -1,0 +1,105 @@
+{
+  "heading": "3925",
+  "titleVi": "Sản phẩm bằng plastic, chưa phân loại nơi khác",
+  "verified": false,
+  "essenceTestVi": "Thùng chứa trên 300L, cửa/khung, cửa chớp/mành che, hay loại khác?",
+  "sourceVi": "Biểu thuế 2026 nhóm 39.25",
+  "inputs": [
+    {
+      "attribute": "productKind",
+      "type": "enum",
+      "labelVi": "Loại sản phẩm",
+      "questionVi": "Sản phẩm plastic thuộc loại nào?",
+      "domain": [
+        "tankContainer",
+        "doorWindowFrame",
+        "shutterBlind",
+        "other3925"
+      ],
+      "detect": {
+        "tankContainer": [
+          "thùng chứa",
+          "bể chứa",
+          "dung tích trên 300 lít",
+          "bể nước"
+        ],
+        "doorWindowFrame": [
+          "cửa ra vào",
+          "cửa sổ",
+          "khung cửa",
+          "ngưỡng cửa"
+        ],
+        "shutterBlind": [
+          "cửa chớp",
+          "mành che",
+          "màn che",
+          "rèm nhựa",
+          "lam chớp"
+        ],
+        "other3925": [
+          "3925"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-tank",
+      "priority": 50,
+      "when": { "productKind": "tankContainer" },
+      "hs": "39251000",
+      "gir": "GIR 6",
+      "reasonVi": "Thùng chứa, bể dung tích trên 300 lít → 3925.10.00",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-door",
+      "priority": 50,
+      "when": { "productKind": "doorWindowFrame" },
+      "hs": "39252000",
+      "gir": "GIR 6",
+      "reasonVi": "Cửa ra vào, cửa sổ và khung của chúng → 3925.20.00",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-shutter",
+      "priority": 50,
+      "when": { "productKind": "shutterBlind" },
+      "hs": "39253000",
+      "gir": "GIR 6",
+      "reasonVi": "Cửa chớp, mành che và các sản phẩm tương tự → 3925.30.00",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-other",
+      "priority": 10,
+      "when": { "productKind": "other3925" },
+      "hs": "39259000",
+      "gir": "GIR 6",
+      "reasonVi": "Loại khác (giá để đồ, vỏ bọc, phụ kiện…) → 3925.90.00",
+      "source": "Biểu thuế 2026"
+    }
+  ],
+  "leaves": [
+    { "id": "39251000", "code": "39251000", "conditions": { "productKind": "tankContainer" }, "heading": "3925", "noteVi": "Thùng chứa, bể dung tích trên 300 lít → 3925.10.00" },
+    { "id": "39252000", "code": "39252000", "conditions": { "productKind": "doorWindowFrame" }, "heading": "3925", "noteVi": "Cửa ra vào, cửa sổ và khung → 3925.20.00" },
+    { "id": "39253000", "code": "39253000", "conditions": { "productKind": "shutterBlind" }, "heading": "3925", "noteVi": "Cửa chớp, mành che → 3925.30.00" },
+    { "id": "39259000", "code": "39259000", "conditions": { "productKind": "other3925" }, "heading": "3925", "noteVi": "Loại khác → 3925.90.00" }
+  ],
+  "inputAttributes": ["productKind"],
+  "essenceVi": "thùng chứa / cửa-khung / cửa chớp / loại khác",
+  "generatedAt": "2026-10-04T07:00:00.000Z",
+  "attributes": {
+    "productKind": {
+      "detect": {
+        "tankContainer": ["thùng chứa", "bể chứa", "dung tích trên 300 lít", "bể nước"],
+        "doorWindowFrame": ["cửa ra vào", "cửa sổ", "khung cửa", "ngưỡng cửa"],
+        "shutterBlind": ["cửa chớp", "mành che", "màn che", "rèm nhựa", "lam chớp"],
+        "other3925": ["3925", "miếng dán", "giá để đồ", "vỏ bọc", "nút nhựa", "lô cuốn", "hạt nhựa"]
+      },
+      "type": "enum",
+      "domain": ["tankContainer", "doorWindowFrame", "shutterBlind", "other3925"]
+    }
+  }
+}
