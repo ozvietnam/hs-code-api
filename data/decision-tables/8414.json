@@ -521,6 +521,30 @@
         "deviceKind": "parts",
         "hasFilter": true
       }
+    },
+    {
+      "id": "8414-r28",
+      "priority": 1,
+      "hs": "84145910",
+      "reasonVi": "Phân loại 84145910: deviceKind=fan, tenHang chứa 'máy tính' hoặc 'case máy' — quạt tản nhiệt máy vi tính",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "fan"
+      }
+    },
+    {
+      "id": "8414-r29",
+      "priority": 2,
+      "hs": "84145930",
+      "reasonVi": "Phân loại 84145930: deviceKind=fan, tenHang chứa 'thổi bụi' hoặc 'thổi khí cao' — máy thổi khí công nghiệp",
+      "source": "hermes-211-8414",
+      "gir": "GIR 6",
+      "when": {
+        "deviceKind": "fan",
+        "mountKind": "handheld",
+        "powerSource": "AC"
+      }
     }
   ]
 }
