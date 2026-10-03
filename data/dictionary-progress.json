@@ -184,6 +184,19 @@
       "noteVi": "Bảng trống (0 rules) — placeholder detect phrases, cần xây dựng rules từ biểu thuế 6403.",
       "gateVi": "bảng rỗng, cần dev xây dựng rules"
     },
+    "6405": {
+      "status": "draft",
+      "by": "hermes-211",
+      "table": true,
+      "leafCount": 3,
+      "rules": 3,
+      "attrs": [
+        "upperMaterial"
+      ],
+      "draftAt": "2026-10-04T06:45:00.000Z",
+      "noteVi": "Bảng 3 rules/1 attr (upperMaterial: leatherUpper/textileUpper/otherUpper), phủ 3/3 lá (64051000/64052000/64059000). Nguồn: Biểu thuế 2026 + oz-gold 40 entries.",
+      "gateVi": "draft — cần chạy oz-to-cases và expert review"
+    },
     "7110": {
       "status": "draft",
       "doneAt": null,
@@ -980,6 +993,13 @@
       "by": "hermes-211",
       "note": "oz 56% (22/39), toyKind enum, 15 leaves covered"
     },
+    "9603": {
+      "status": "draft",
+      "rules": 18,
+      "leaves": 11,
+      "ozCases": 29,
+      "source": "oz-gold 32 entries + biểu thuế"
+    },
     "9615": {
       "status": "draft",
       "table": true,
@@ -995,13 +1015,6 @@
       ],
       "gateVi": "pending expert review — 47 oz entries, 9 rules",
       "noteVi": "Bảng 9 rules / 2 attrs (productKind + material), phủ 9 lá 8 số. Nguồn: oz-gold + biểu thuế 2026."
-    },
-    "9603": {
-      "status": "draft",
-      "rules": 18,
-      "leaves": 11,
-      "ozCases": 29,
-      "source": "oz-gold 32 entries + biểu thuế"
     }
   }
 }
