@@ -13,8 +13,13 @@ const read = (p) => JSON.parse(fs.readFileSync(p, 'utf8'));
 
 const conflicts = Object.keys(read('data/conflicts.json')).length;
 const legal = read('data/legal-docs.json');
-const docs = Object.keys(legal.documents).length;
-const verified = legal.verifiedTitles;
+// legal-docs.json is flat {code: doc} — normalize like test-doc-counts.mjs
+const docs = legal.documents && Object.keys(legal.documents).length > 0
+  ? Object.keys(legal.documents).length
+  : Object.keys(legal).length;
+const verified = docs > 0
+  ? (legal.documents ? Object.values(legal.documents) : Object.values(legal)).filter((d) => d.verified).length
+  : 0;
 const tax = read('data/tax.json');
 const rows = Object.keys(tax).length;
 const precRaw = read('data/precedents.json');

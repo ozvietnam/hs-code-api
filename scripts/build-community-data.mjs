@@ -20,7 +20,10 @@ const taxRows = Array.isArray(tax) ? tax : Object.values(tax);
 const enriched = read('tax-enriched.json');
 const enrichedRows = Array.isArray(enriched) ? enriched : Object.values(enriched);
 const legal = read('legal-docs.json');
-const legalDocs = Object.values(legal.documents || {});
+// legal-docs.json is flat {code: doc} — normalize
+const legalDocs = legal.documents && Object.keys(legal.documents).length > 0
+  ? Object.values(legal.documents)
+  : Object.values(legal);
 const notes = read('notes.json');
 const precedents = read('precedents.json');
 const conflicts = read('conflicts.json');

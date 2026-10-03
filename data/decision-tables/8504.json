@@ -1,0 +1,1304 @@
+{
+  "heading": "8504",
+  "titleVi": "Biến áp, bộ chỉnh lưu, cuộn cảm",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Với mỗi lá 8 số, hỏi: (1) loại sản phẩm (biến áp/chỉnh lưu/cuộn cảm/phụ tùng); (2) có nhãn SEN không; (3) công suất kVA; (4) cấp điện áp; (5) loại đặc biệt.",
+  "sourceVi": "Biểu thuế 2026 nhóm 8504 (72 rules, 5 attributes)",
+  "inputs": [
+    {
+      "attribute": "productType",
+      "type": "enum",
+      "domain": [
+        "ballast",
+        "transformer_le1kVA",
+        "transformer_1to16kVA",
+        "transformer_16to630kVA",
+        "transformer_gt630kVA",
+        "transformer_gt1kVA",
+        "staticConverter",
+        "inductor",
+        "parts"
+      ],
+      "labelVi": "Loại sản phẩm",
+      "questionVi": "Loại sản phẩm",
+      "detect": {
+        "ballast": [
+          "ballast"
+        ],
+        "transformer_le1kVA": [
+          "transformer_le1kVA"
+        ],
+        "transformer_1to16kVA": [
+          "transformer_1to16kVA"
+        ],
+        "transformer_16to630kVA": [
+          "transformer_16to630kVA"
+        ],
+        "transformer_gt630kVA": [
+          "transformer_gt630kVA"
+        ],
+        "transformer_gt1kVA": [
+          "transformer_gt1kVA"
+        ],
+        "staticConverter": [
+          "staticConverter"
+        ],
+        "inductor": [
+          "inductor"
+        ],
+        "parts": [
+          "parts"
+        ]
+      }
+    },
+    {
+      "attribute": "senMarked",
+      "type": "enum",
+      "domain": [
+        "sen",
+        "nonSen"
+      ],
+      "labelVi": "Có nhãn SEN (thiết bị điện cao áp)",
+      "questionVi": "Có nhãn SEN (thiết bị điện cao áp)",
+      "detect": {
+        "sen": [
+          "sen"
+        ],
+        "nonSen": [
+          "nonSen"
+        ]
+      }
+    },
+    {
+      "attribute": "powerkVA",
+      "type": "enum",
+      "domain": [
+        "le1",
+        "gt1le10",
+        "gt10le15",
+        "gt15le20",
+        "gt20le30",
+        "gt30",
+        "le2500",
+        "gt2500le10000",
+        "gt10000",
+        "unspecified"
+      ],
+      "labelVi": "Công suất danh định (kVA)",
+      "questionVi": "Công suất danh định (kVA)",
+      "detect": {
+        "le1": [
+          "le1"
+        ],
+        "gt1le10": [
+          "gt1le10"
+        ],
+        "gt10le15": [
+          "gt10le15"
+        ],
+        "gt15le20": [
+          "gt15le20"
+        ],
+        "gt20le30": [
+          "gt20le30"
+        ],
+        "gt30": [
+          "gt30"
+        ],
+        "le2500": [
+          "le2500"
+        ],
+        "gt2500le10000": [
+          "gt2500le10000"
+        ],
+        "gt10000": [
+          "gt10000"
+        ],
+        "unspecified": [
+          "unspecified"
+        ]
+      }
+    },
+    {
+      "attribute": "voltageClass",
+      "type": "enum",
+      "domain": [
+        "lt1",
+        "ge1lt66",
+        "ge66lt110",
+        "ge110",
+        "unspecified"
+      ],
+      "labelVi": "Cấp điện áp (kV)",
+      "questionVi": "Cấp điện áp (kV)",
+      "detect": {
+        "lt1": [
+          "lt1"
+        ],
+        "ge1lt66": [
+          "ge1lt66"
+        ],
+        "ge66lt110": [
+          "ge66lt110"
+        ],
+        "ge110": [
+          "ge110"
+        ],
+        "unspecified": [
+          "unspecified"
+        ]
+      }
+    },
+    {
+      "attribute": "specialType",
+      "type": "enum",
+      "domain": [
+        "currentTransformer",
+        "freqScan",
+        "ifTransformer",
+        "toys",
+        "stepUpDown",
+        "adapter",
+        "dryExplosionProof",
+        "batteryCharger",
+        "ups",
+        "rectifier",
+        "inverter",
+        "chipInductor",
+        "dataProcInductor",
+        "none"
+      ],
+      "labelVi": "Loại đặc biệt / ứng dụng riêng",
+      "questionVi": "Loại đặc biệt / ứng dụng riêng",
+      "detect": {
+        "currentTransformer": [
+          "currentTransformer"
+        ],
+        "freqScan": [
+          "freqScan"
+        ],
+        "ifTransformer": [
+          "ifTransformer"
+        ],
+        "toys": [
+          "toys"
+        ],
+        "stepUpDown": [
+          "stepUpDown"
+        ],
+        "adapter": [
+          "adapter"
+        ],
+        "dryExplosionProof": [
+          "dryExplosionProof"
+        ],
+        "batteryCharger": [
+          "batteryCharger"
+        ],
+        "ups": [
+          "ups"
+        ],
+        "rectifier": [
+          "rectifier"
+        ],
+        "inverter": [
+          "inverter"
+        ],
+        "chipInductor": [
+          "chipInductor"
+        ],
+        "dataProcInductor": [
+          "dataProcInductor"
+        ],
+        "none": [
+          "none"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-ballast-nonSen-none",
+      "priority": 50,
+      "when": {
+        "productType": "ballast",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85041000",
+      "gir": "GIR 6",
+      "reasonVi": "ballast nonSen unspecified unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt1kVA-sen-none",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "ge110",
+        "specialType": "none"
+      },
+      "hs": "85042111",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt1kVA sen gt1le10 ge110 none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt1kVA-sen-none-1",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85042119",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt1kVA sen gt1le10 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt1kVA-sen-none-2",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt10le15",
+        "voltageClass": "ge110",
+        "specialType": "none"
+      },
+      "hs": "85042192",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt1kVA sen gt10le15 ge110 none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt1kVA-sen-none-3",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt10le15",
+        "voltageClass": "ge66lt110",
+        "specialType": "none"
+      },
+      "hs": "85042193",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt1kVA sen gt10le15 ge66lt110 none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt1kVA-nonSen-none",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85042199",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt1kVA nonSen gt1le10 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt1kVA-sen-none-4",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "ge66lt110",
+        "specialType": "none"
+      },
+      "hs": "85042211",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt1kVA sen gt15le20 ge66lt110 none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt1kVA-sen-none-5",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85042219",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt1kVA sen gt15le20 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt1kVA-sen-none-6",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "ge110",
+        "specialType": "none"
+      },
+      "hs": "85042292",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt1kVA sen gt15le20 ge110 none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt1kVA-sen-none-7",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "ge66lt110",
+        "specialType": "none"
+      },
+      "hs": "85042293",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt1kVA sen gt15le20 ge66lt110 none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt1kVA-nonSen-none-1",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85042299",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt1kVA nonSen gt15le20 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt1kVA-nonSen-none-2",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le2500",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85042310",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt1kVA nonSen le2500 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt1kVA-nonSen-none-3",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85042321",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt1kVA nonSen gt15le20 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt1kVA-nonSen-none-4",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt20le30",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85042322",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt1kVA nonSen gt20le30 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt1kVA-nonSen-none-5",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85042329",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt1kVA nonSen gt30 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_le1kVA-nonSen-none",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "ge110",
+        "specialType": "none"
+      },
+      "hs": "85043111",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_le1kVA nonSen le1 ge110 none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_le1kVA-nonSen-none-1",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "ge66lt110",
+        "specialType": "none"
+      },
+      "hs": "85043112",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_le1kVA nonSen le1 ge66lt110 none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_le1kVA-nonSen-none-2",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "ge1lt66",
+        "specialType": "none"
+      },
+      "hs": "85043113",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_le1kVA nonSen le1 ge1lt66 none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_le1kVA-nonSen-none-3",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85043119",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_le1kVA nonSen le1 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_le1kVA-sen-currentTransformer",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "lt1",
+        "specialType": "currentTransformer"
+      },
+      "hs": "85043121",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_le1kVA sen le1 lt1 currentTransformer",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_le1kVA-nonSen-currentTransformer",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "currentTransformer"
+      },
+      "hs": "85043122",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_le1kVA nonSen le1 unspecified currentTransformer",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_le1kVA-sen-none",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "ge66lt110",
+        "specialType": "none"
+      },
+      "hs": "85043123",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_le1kVA sen le1 ge66lt110 none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_le1kVA-sen-none-1",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "ge1lt66",
+        "specialType": "none"
+      },
+      "hs": "85043124",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_le1kVA sen le1 ge1lt66 none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_le1kVA-sen-freqScan",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "freqScan"
+      },
+      "hs": "85043130",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_le1kVA sen le1 unspecified freqScan",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_le1kVA-nonSen-ifTransformer",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "ifTransformer"
+      },
+      "hs": "85043140",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_le1kVA nonSen le1 unspecified ifTransformer",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_le1kVA-nonSen-toys",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "toys"
+      },
+      "hs": "85043191",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_le1kVA nonSen le1 unspecified toys",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_le1kVA-sen-adapter",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "hs": "85043192",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_le1kVA sen le1 unspecified adapter",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_le1kVA-sen-stepUpDown",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "sen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "stepUpDown"
+      },
+      "hs": "85043193",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_le1kVA sen le1 unspecified stepUpDown",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_le1kVA-nonSen-none-4",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85043199",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_le1kVA nonSen le1 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_1to16kVA-sen-adapter",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "hs": "85043211",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_1to16kVA sen gt1le10 unspecified adapter",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_1to16kVA-nonSen-none",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85043219",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_1to16kVA nonSen gt1le10 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_1to16kVA-nonSen-toys",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "toys"
+      },
+      "hs": "85043220",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_1to16kVA nonSen gt1le10 unspecified toys",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_1to16kVA-nonSen-ifTransformer",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt1le10",
+        "voltageClass": "unspecified",
+        "specialType": "ifTransformer"
+      },
+      "hs": "85043230",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_1to16kVA nonSen gt1le10 unspecified ifTransformer",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_1to16kVA-sen-adapter-1",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt10le15",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "hs": "85043241",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_1to16kVA sen gt10le15 unspecified adapter",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_1to16kVA-nonSen-none-1",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt10le15",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85043249",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_1to16kVA nonSen gt10le15 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_1to16kVA-sen-adapter-2",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "hs": "85043251",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_1to16kVA sen gt15le20 unspecified adapter",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_1to16kVA-nonSen-none-2",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_1to16kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85043259",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_1to16kVA nonSen gt15le20 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_16to630kVA-sen-adapter",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_16to630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "hs": "85043311",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_16to630kVA sen gt15le20 unspecified adapter",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_16to630kVA-sen-none",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_16to630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85043319",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_16to630kVA sen gt15le20 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_16to630kVA-nonSen-adapter",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_16to630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "hs": "85043391",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_16to630kVA nonSen gt15le20 unspecified adapter",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_16to630kVA-nonSen-none",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_16to630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85043399",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_16to630kVA nonSen gt15le20 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt630kVA-sen-adapter",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "hs": "85043411",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt630kVA sen gt15le20 unspecified adapter",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt630kVA-sen-dryExplosionProof",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "dryExplosionProof"
+      },
+      "hs": "85043412",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt630kVA sen gt15le20 unspecified dryExplosionProof",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt630kVA-sen-none",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85043413",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt630kVA sen gt15le20 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt630kVA-nonSen-adapter",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "hs": "85043414",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt630kVA nonSen gt15le20 unspecified adapter",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt630kVA-nonSen-dryExplosionProof",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "dryExplosionProof"
+      },
+      "hs": "85043415",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt630kVA nonSen gt15le20 unspecified dryExplosionProof",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt630kVA-nonSen-none",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt15le20",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85043419",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt630kVA nonSen gt15le20 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt630kVA-sen-adapter-1",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "hs": "85043422",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt630kVA sen gt30 unspecified adapter",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt630kVA-sen-dryExplosionProof-1",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "dryExplosionProof"
+      },
+      "hs": "85043423",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt630kVA sen gt30 unspecified dryExplosionProof",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt630kVA-sen-none-1",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "sen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85043424",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt630kVA sen gt30 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt630kVA-nonSen-adapter-1",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "adapter"
+      },
+      "hs": "85043425",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt630kVA nonSen gt30 unspecified adapter",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt630kVA-nonSen-dryExplosionProof-1",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "dryExplosionProof"
+      },
+      "hs": "85043426",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt630kVA nonSen gt30 unspecified dryExplosionProof",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_gt630kVA-nonSen-none-1",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_gt630kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "gt30",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85043429",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_gt630kVA nonSen gt30 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-staticConverter-sen-ups",
+      "priority": 50,
+      "when": {
+        "productType": "staticConverter",
+        "senMarked": "sen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "ups"
+      },
+      "hs": "85044011",
+      "gir": "GIR 6",
+      "reasonVi": "staticConverter sen unspecified unspecified ups",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-staticConverter-nonSen-none",
+      "priority": 50,
+      "when": {
+        "productType": "staticConverter",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85044019",
+      "gir": "GIR 6",
+      "reasonVi": "staticConverter nonSen unspecified unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-staticConverter-nonSen-batteryCharger",
+      "priority": 50,
+      "when": {
+        "productType": "staticConverter",
+        "senMarked": "nonSen",
+        "powerkVA": "gt10000",
+        "voltageClass": "unspecified",
+        "specialType": "batteryCharger"
+      },
+      "hs": "85044020",
+      "gir": "GIR 6",
+      "reasonVi": "staticConverter nonSen gt10000 unspecified batteryCharger",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-staticConverter-nonSen-rectifier",
+      "priority": 50,
+      "when": {
+        "productType": "staticConverter",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "rectifier"
+      },
+      "hs": "85044030",
+      "gir": "GIR 6",
+      "reasonVi": "staticConverter nonSen unspecified unspecified rectifier",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-staticConverter-nonSen-inverter",
+      "priority": 50,
+      "when": {
+        "productType": "staticConverter",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "inverter"
+      },
+      "hs": "85044040",
+      "gir": "GIR 6",
+      "reasonVi": "staticConverter nonSen unspecified unspecified inverter",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-staticConverter-nonSen-none-1",
+      "priority": 50,
+      "when": {
+        "productType": "staticConverter",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85044090",
+      "gir": "GIR 6",
+      "reasonVi": "staticConverter nonSen unspecified unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-inductor-nonSen-dataProcInductor",
+      "priority": 50,
+      "when": {
+        "productType": "inductor",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "dataProcInductor"
+      },
+      "hs": "85045010",
+      "gir": "GIR 6",
+      "reasonVi": "inductor nonSen unspecified unspecified dataProcInductor",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-inductor-sen-chipInductor",
+      "priority": 50,
+      "when": {
+        "productType": "inductor",
+        "senMarked": "sen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "chipInductor"
+      },
+      "hs": "85045020",
+      "gir": "GIR 6",
+      "reasonVi": "inductor sen unspecified unspecified chipInductor",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-inductor-nonSen-none",
+      "priority": 50,
+      "when": {
+        "productType": "inductor",
+        "senMarked": "nonSen",
+        "powerkVA": "le2500",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85045093",
+      "gir": "GIR 6",
+      "reasonVi": "inductor nonSen le2500 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-inductor-nonSen-none-1",
+      "priority": 50,
+      "when": {
+        "productType": "inductor",
+        "senMarked": "nonSen",
+        "powerkVA": "gt2500le10000",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85045094",
+      "gir": "GIR 6",
+      "reasonVi": "inductor nonSen gt2500le10000 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-inductor-nonSen-none-2",
+      "priority": 50,
+      "when": {
+        "productType": "inductor",
+        "senMarked": "nonSen",
+        "powerkVA": "gt10000",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85045095",
+      "gir": "GIR 6",
+      "reasonVi": "inductor nonSen gt10000 unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-parts-nonSen-none",
+      "priority": 50,
+      "when": {
+        "productType": "parts",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85049010",
+      "gir": "GIR 6",
+      "reasonVi": "parts nonSen unspecified unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-parts-nonSen-none-1",
+      "priority": 50,
+      "when": {
+        "productType": "parts",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85049020",
+      "gir": "GIR 6",
+      "reasonVi": "parts nonSen unspecified unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-parts-nonSen-none-2",
+      "priority": 50,
+      "when": {
+        "productType": "parts",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85049031",
+      "gir": "GIR 6",
+      "reasonVi": "parts nonSen unspecified unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-parts-nonSen-none-3",
+      "priority": 50,
+      "when": {
+        "productType": "parts",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85049039",
+      "gir": "GIR 6",
+      "reasonVi": "parts nonSen unspecified unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-parts-nonSen-none-4",
+      "priority": 50,
+      "when": {
+        "productType": "parts",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85049041",
+      "gir": "GIR 6",
+      "reasonVi": "parts nonSen unspecified unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-parts-nonSen-none-5",
+      "priority": 50,
+      "when": {
+        "productType": "parts",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85049049",
+      "gir": "GIR 6",
+      "reasonVi": "parts nonSen unspecified unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-parts-nonSen-none-6",
+      "priority": 50,
+      "when": {
+        "productType": "parts",
+        "senMarked": "nonSen",
+        "powerkVA": "unspecified",
+        "voltageClass": "unspecified",
+        "specialType": "none"
+      },
+      "hs": "85049090",
+      "gir": "GIR 6",
+      "reasonVi": "parts nonSen unspecified unspecified none",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    },
+    {
+      "id": "r-transformer_le1kVA-nonSen-currentTransformer-1",
+      "priority": 50,
+      "when": {
+        "productType": "transformer_le1kVA",
+        "senMarked": "nonSen",
+        "powerkVA": "le1",
+        "voltageClass": "unspecified",
+        "specialType": "currentTransformer"
+      },
+      "hs": "85043129",
+      "gir": "GIR 6",
+      "reasonVi": "transformer_le1kVA nonSen le1 unspecified currentTransformer",
+      "source": "Biểu thuế 2026 nhóm 8504"
+    }
+  ]
+}

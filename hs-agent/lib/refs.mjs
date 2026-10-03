@@ -27,8 +27,10 @@ export function buildRefIndex(repoDir) {
       for (const r of doc.records || []) add(r?.source?.reference, String(r?.source?.issuedDate || '').slice(0, 4) || null);
     }
   }
-  const legal = readJson(join(repoDir, 'data/legal-docs.json'), { documents: {} });
-  for (const d of Object.values(legal.documents || {})) add(d.code, d.year);
+  // legal-docs.json is flat {code: doc}, normalize to {documents} for consistent access
+  const rawLegal = readJson(join(repoDir, 'data/legal-docs.json'), null);
+  const legalDocs = rawLegal && rawLegal.documents ? rawLegal.documents : (rawLegal || {});
+  for (const d of Object.values(legalDocs)) add(d.code, d.year);
   const titles = readJson(join(repoDir, 'data/legal-doc-titles.json'), { titles: {} });
   for (const k of Object.keys(titles.titles || {})) add(k, String(titles.titles[k].issuedDate || '').slice(0, 4) || null);
   return {

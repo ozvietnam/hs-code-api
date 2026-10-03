@@ -2,6 +2,17 @@
   "version": 1,
   "noteVi": "Sổ tiến độ vòng lặp theo nhóm 4 số. Trạng thái: open → claimed → draft (có bảng, chưa qua cửa dữ liệu thật) → done (qua cửa). `done` = có data/decision-tables/<nhóm>.json phủ mọi lá + dict:check xanh (test khoá). `dictionary` = mới có mục từ điển tên (chuẩn cũ 2026-09-16), chưa có bảng — hàng đợi vẫn coi là open. Cập nhật bằng scripts/dict-queue.mjs --claim / --done / --release, không sửa tay.",
   "headings": {
+    "6402": {
+      "status": "draft",
+      "doneAt": "2026-10-02",
+      "by": "hermes/lan-C-accuracy-v2",
+      "commit": "036e660",
+      "leafCount": 11,
+      "table": true,
+      "rules": 13,
+      "draftAt": "2026-10-02",
+      "noteVi": "Bảng quyết định cho 6402 (giày/dép nhựa PVC). 13 rules phủ 6/11 lá. Còn thiếu: 64021990,64029192,64029199,64029910,64029920 (cần upperMaterial=rubber hoặc chuyên gia HS thiết kế lại)."
+    },
     "7209": {
       "status": "done",
       "doneAt": "2026-09-17",
@@ -156,6 +167,39 @@
       "rules": 8,
       "gateVi": "oz: 4/4 (100%)"
     },
+    "8483": {
+      "status": "draft",
+      "doneAt": "2026-10-02",
+      "by": "hermes/lan-C-accuracy-v2",
+      "commit": "pending",
+      "leafCount": 11,
+      "table": true,
+      "rules": 9,
+      "draftAt": "2026-10-02",
+      "noteVi": "Bảng quyết định tạo mới cho nhóm 8483 (bộ truyền động cơ khí). Phân biệt 8483 (máy) vs 8714 (xe mô tô). Khớp entry thanh-rang-truyen-dong→84839019."
+    },
+    "8486": {
+      "status": "draft",
+      "doneAt": "2026-10-02",
+      "by": "hermes/lan-C-accuracy-v2",
+      "commit": "pending",
+      "leafCount": 71,
+      "table": true,
+      "rules": 71,
+      "draftAt": "2026-10-02",
+      "noteVi": "Bảng quyết định từ nhánh hermes/decision-8486 (71 rules, machineKind attr, 100% leaf cover). Chưa verify."
+    },
+    "8504": {
+      "status": "draft",
+      "doneAt": "2026-10-02",
+      "by": "hermes/lan-C-accuracy-v2",
+      "commit": "pending",
+      "leafCount": 72,
+      "table": true,
+      "rules": 72,
+      "draftAt": "2026-10-02",
+      "noteVi": "Bảng quyết định từ nhánh hermes/decision-8504 (72 rules, 5 attrs: productType/senMarked/powerkVA/voltageClass/specialType, 100% leaf cover). Chưa verify."
+    },
     "8505": {
       "status": "draft",
       "doneAt": "2026-09-17",
@@ -270,6 +314,17 @@
       "draftAt": "2026-09-18",
       "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8535 --oz"
     },
+    "8536": {
+      "status": "draft",
+      "doneAt": "2026-10-03",
+      "by": "hermes/lan-C-accuracy-v2",
+      "commit": "bfe0046",
+      "leafCount": 63,
+      "table": true,
+      "rules": 63,
+      "draftAt": "2026-10-03",
+      "noteVi": "Bảng quyết định cho 8536 (thiết bị đóng cắt, bảo vệ, nối mạch điện ≤1000V). 63 rules phủ 63/63 lá. 3 inputs: function(10 loại), currentRating(4 mức), specialApp(9 ứng dụng). Chưa có test cases — verified=false."
+    },
     "8537": {
       "status": "draft",
       "doneAt": "2026-09-17",
@@ -311,6 +366,39 @@
       "gateVi": "oz: 0/22 (0%)",
       "draftAt": "2026-09-18",
       "noteVi": "Bảng đúng cấu trúc nhưng chưa nhận ra tên hàng thật (nghiệm thu 2026-09-18). Xem: npm run dict:table -- 8542 --oz"
+    },
+    "8544": {
+      "status": "draft",
+      "doneAt": "2026-10-02",
+      "by": "hermes/lan-C-accuracy-v2",
+      "commit": "pending",
+      "leafCount": 17,
+      "table": true,
+      "rules": 6,
+      "draftAt": "2026-10-02",
+      "noteVi": "Bảng quyết định tạo mới cho nhóm 8544 (dây dẫn có cách điện). Phân biệt có đầu nối (cáp sạc USB→8544.42) vs không đầu nối. Khớp entry cap-sac-Type-C→85444299."
+    },
+    "8714": {
+      "status": "draft",
+      "doneAt": "2026-10-02",
+      "by": "hermes/lan-C-accuracy-v2",
+      "commit": "6d5da59",
+      "leafCount": 30,
+      "table": true,
+      "rules": 40,
+      "draftAt": "2026-10-02",
+      "noteVi": "Bảng quyết định 8714 (bộ phận xe). 40 rules phủ 30/30 lá - 100% leaf cover. Verified=False (cần chuyên gia HS kiểm tra essenceTest)."
+    },
+    "9620": {
+      "status": "draft",
+      "doneAt": "2026-10-02",
+      "by": "hermes/lan-C-accuracy-v2",
+      "commit": "pending",
+      "leafCount": 6,
+      "table": true,
+      "rules": 6,
+      "draftAt": "2026-10-02",
+      "noteVi": "Bảng quyết định tạo mới cho nhóm 9620 (chân giá đỡ). Phân biệt theo vật liệu: plastic→9620.00.10, steel→9620.00.30, aluminum→9620.00.40, wood→9620.00.50. Khớp entry chan-gia-do-dien-thoai→96200030."
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T09:45:47.141Z",
+  "generatedAt": "2026-10-02T22:48:36.790Z",
   "generatedBy": "scripts/build-conflict-worklist.mjs",
   "source": {
     "report": "data/accuracy-report-2026-05-28.json",
@@ -11,57 +11,13 @@
     "sameHeadingErrors": 34,
     "sameHeadingPct": 18,
     "clustersFound": 140,
-    "tablesExisting": 3,
-    "codesCoveredByTables": 10,
+    "tablesExisting": 4,
+    "codesCoveredByTables": 14,
     "totalHsCodes": 11871,
-    "coveragePct": 0.084
+    "coveragePct": 0.118
   },
   "howToUse": "Lấy cụm từ trên xuống. Với mỗi cụm: đọc chú giải nhóm liên quan trong data/chu-giai-heading.json, xác định DỮ KIỆN phân biệt, rồi soạn bảng vào data/conflict-tables.json theo mẫu có sẵn (mỗi rule cần gir + reasonVi + source). Người ngoài đóng góp qua data/community/ — xem CONTRIBUTING.md.",
   "clusters": [
-    {
-      "key": "H:8481",
-      "type": "cùng nhóm 4 số",
-      "headings": [
-        "8481"
-      ],
-      "errorCount": 3,
-      "priorityScore": 8.4,
-      "codesInvolved": [
-        "84812090",
-        "84818030",
-        "84818083",
-        "84818084"
-      ],
-      "alreadyInConflictsJson": true,
-      "alreadyHasTable": true,
-      "examples": [
-        {
-          "productName": "Van điện từ khí nén, model:4V220, điện áp AC220V,KT:3*5*12cm, đường kính van 9mm, chất liệu chính bằng sắt kết hợp với n",
-          "correctHs": "84812090",
-          "correctName": "Loại khác",
-          "wrongHs": "84818083",
-          "wrongName": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 h",
-          "confidence": 50
-        },
-        {
-          "productName": "Van điều chỉnh áp suất khí nén cỡ nhỏ AR3000-03, chất liệu nhựa+nhôm, dùng cho thiết bị khí nén, kích thước 53x122.5x101",
-          "correctHs": "84812090",
-          "correctName": "Loại khác",
-          "wrongHs": "84818084",
-          "wrongName": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 h",
-          "confidence": 35
-        },
-        {
-          "productName": "Van điện từ 2636000B 24VDC. Hãng Bes. Là van điện từ khí nén dùng đóng mở, phân nhánh đường ống khí nén, điện áp 24VDC. ",
-          "correctHs": "84812090",
-          "correctName": "Loại khác",
-          "wrongHs": "84818030",
-          "wrongName": "Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu h",
-          "confidence": 85
-        }
-      ],
-      "suggestedAttributes": []
-    },
     {
       "key": "H:8537",
       "type": "cùng nhóm 4 số",
@@ -451,6 +407,50 @@
           "wrongHs": "85437040",
           "wrongName": "Máy tách bụi hoặc khử tĩnh điện trong quá trình chế tạo tấm mạch PCB/P",
           "confidence": 102
+        }
+      ],
+      "suggestedAttributes": []
+    },
+    {
+      "key": "H:8481",
+      "type": "cùng nhóm 4 số",
+      "headings": [
+        "8481"
+      ],
+      "errorCount": 3,
+      "priorityScore": 2.5,
+      "codesInvolved": [
+        "84812090",
+        "84818030",
+        "84818083",
+        "84818084"
+      ],
+      "alreadyInConflictsJson": true,
+      "alreadyHasTable": true,
+      "examples": [
+        {
+          "productName": "Van điện từ khí nén, model:4V220, điện áp AC220V,KT:3*5*12cm, đường kính van 9mm, chất liệu chính bằng sắt kết hợp với n",
+          "correctHs": "84812090",
+          "correctName": "Loại khác",
+          "wrongHs": "84818083",
+          "wrongName": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 h",
+          "confidence": 50
+        },
+        {
+          "productName": "Van điều chỉnh áp suất khí nén cỡ nhỏ AR3000-03, chất liệu nhựa+nhôm, dùng cho thiết bị khí nén, kích thước 53x122.5x101",
+          "correctHs": "84812090",
+          "correctName": "Loại khác",
+          "wrongHs": "84818084",
+          "wrongName": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 h",
+          "confidence": 35
+        },
+        {
+          "productName": "Van điện từ 2636000B 24VDC. Hãng Bes. Là van điện từ khí nén dùng đóng mở, phân nhánh đường ống khí nén, điện áp 24VDC. ",
+          "correctHs": "84812090",
+          "correctName": "Loại khác",
+          "wrongHs": "84818030",
+          "wrongName": "Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu h",
+          "confidence": 85
         }
       ],
       "suggestedAttributes": []
@@ -1202,33 +1202,6 @@
           "wrongHs": "84051000",
           "wrongName": "Máy sản xuất chất khí hoặc hơi nước, có hoặc không kèm theo bộ lọc; má",
           "confidence": 11
-        }
-      ],
-      "suggestedAttributes": []
-    },
-    {
-      "key": "X:8481-9032",
-      "type": "khác nhóm",
-      "headings": [
-        "8481",
-        "9032"
-      ],
-      "errorCount": 1,
-      "priorityScore": 1.4,
-      "codesInvolved": [
-        "84812090",
-        "90328920"
-      ],
-      "alreadyInConflictsJson": true,
-      "alreadyHasTable": false,
-      "examples": [
-        {
-          "productName": "Van đạp chân Model:FV 420, dùng để điều chỉnh lưu lượng áp suất, trong hệ thống khí nén, Chất liệu sắt+nhựa, đường, kính",
-          "correctHs": "84812090",
-          "correctName": "Loại khác",
-          "wrongHs": "90328920",
-          "wrongName": "Dụng cụ và thiết bị tự động để điều chỉnh hoặc điều khiển dung dịch hó",
-          "confidence": 28
         }
       ],
       "suggestedAttributes": []
@@ -3983,6 +3956,33 @@
           "wrongHs": "85359010",
           "wrongName": "Đầu nối đã lắp ráp và bộ chuyển đổi theo nấc dùng cho máy biến áp phân",
           "confidence": 75
+        }
+      ],
+      "suggestedAttributes": []
+    },
+    {
+      "key": "X:8481-9032",
+      "type": "khác nhóm",
+      "headings": [
+        "8481",
+        "9032"
+      ],
+      "errorCount": 1,
+      "priorityScore": 0.4,
+      "codesInvolved": [
+        "84812090",
+        "90328920"
+      ],
+      "alreadyInConflictsJson": true,
+      "alreadyHasTable": true,
+      "examples": [
+        {
+          "productName": "Van đạp chân Model:FV 420, dùng để điều chỉnh lưu lượng áp suất, trong hệ thống khí nén, Chất liệu sắt+nhựa, đường, kính",
+          "correctHs": "84812090",
+          "correctName": "Loại khác",
+          "wrongHs": "90328920",
+          "wrongName": "Dụng cụ và thiết bị tự động để điều chỉnh hoặc điều khiển dung dịch hó",
+          "confidence": 28
         }
       ],
       "suggestedAttributes": []

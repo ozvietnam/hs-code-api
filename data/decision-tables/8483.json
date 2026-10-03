@@ -1,0 +1,258 @@
+{
+  "heading": "8483",
+  "titleVi": "Bộ truyền động cơ khí (trục, bánh răng, hộp số, ly hợp, ròng rọc…); cavity molds",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Nhóm 8483 là bộ truyền động CƠ KHÍ THUẦN TÚY dùng cho MÁY (nhóm 84). Bánh răng (gear) là bộ truyền động cơ khí → 8483.40. Thanh răng (rack = thanh có răng) → 8483.40. Phân biệt với 8714 (bộ phận xe) và 8466 (cavity molds cho khuôn nhựa).",
+  "sourceVi": "Biểu thuế 2026 nhóm 8483: 8483.10 trục truyền; 8483.20 vòng bi; 8483.30 các-te (plain shaft bearings); 8483.40 bánh răng/hộp số/ly hợp/ròng rọc; 8483.50 bánh đà; 8483.60 ly hợp nối trục; 8483.90 bộ phận. Chú giải nhóm 8480 vs 8483: khuôn (molds) ≠ bộ truyền động cơ khí.",
+  "inputs": [
+    {
+      "attribute": "goodsKind",
+      "type": "enum",
+      "domain": ["transmission", "bearing", "mold", "parts"],
+      "labelVi": "Loại hàng",
+      "questionVi": "Hàng là bộ truyền động cơ khí (trục, bánh răng, ly hợp, hộp số, ròng rọc), vòng bi, khuôn kim loại (molds), hay bộ phận chung?",
+      "detect": {
+        "transmission": [
+          "truyền động",
+          "bánh răng",
+          "banh rang",
+          "thanh răng",
+          "hộp số",
+          "hop so",
+          "ly hợp",
+          "ròng rọc",
+          "bánh đà",
+          "đà",
+          "pulley",
+          "gear",
+          "shaft",
+          "trục",
+          "bánh xích",
+          "xích",
+          "chain",
+          "gearbox",
+          "reducer",
+          "motor gearbox",
+          "thanh rang",
+          "rack"
+        ],
+        "bearing": [
+          "vòng bi",
+          "bạc đạn",
+          "ổ lăn",
+          "bearing",
+          "roller bearing",
+          "ball bearing"
+        ],
+        "mold": [
+          "khuôn",
+          "cavity mold",
+          "mold",
+          "khuôn kim loại",
+          "khuôn đúc",
+          "die mold"
+        ],
+        "parts": [
+          "bộ phận",
+          "parts of",
+          "phụ tùng"
+        ]
+      }
+    },
+    {
+      "attribute": "forVehicle",
+      "type": "enum",
+      "domain": ["machine", "vehicle", "unknown"],
+      "labelVi": "Dùng cho máy hay phương tiện",
+      "questionVi": "Bộ phận dùng cho MÁY (nhóm 84) hay PHƯƠNG TIỆN (nhóm 87)? Nếu dùng cho xe mô tô / xe đạp → nhóm 8714, không phải 8483.",
+      "detect": {
+        "machine": [
+          "máy",
+          "máy công nghiệp",
+          "máy sản xuất",
+          "máy gia công",
+          "nhóm 84",
+          "máy cắt",
+          "máy tiện",
+          "máy phay",
+          "máy CNC",
+          "máy in 3D"
+        ],
+        "vehicle": [
+          "xe mô tô",
+          "xe máy",
+          "xe gắn máy",
+          "xe đạp",
+          "nhóm 87",
+          "xe",
+          "ô tô",
+          "oto",
+          "xe hơi",
+          "xe tải",
+          "xe buýt",
+          "xe cơ giới"
+        ],
+        "unknown": [
+          "không rõ",
+          "không biết"
+        ]
+      }
+    },
+    {
+      "attribute": "transmissionKind",
+      "type": "enum",
+      "domain": ["shaft", "gear", "gearbox", "clutch", "pulley", "coupling", "other"],
+      "labelVi": "Loại truyền động",
+      "questionVi": "Cụ thể loại: trục truyền (shaft), bánh răng (gear), hộp số (gearbox), ly hợp (clutch), ròng rọc (pulley), khớp nối trục (coupling), hay khác?",
+      "detect": {
+        "shaft": [
+          "trục",
+          "truc",
+          "shaft",
+          "trục truyền",
+          "trục khuỷu",
+          "truc khuu",
+          "crankshaft",
+          "camshaft",
+          "drive shaft"
+        ],
+        "gear": [
+          "bánh răng",
+          "banh rang",
+          "gear",
+          "gear wheel",
+          "thanh răng",
+          "rack",
+          "pinion",
+          "bánh rang"
+        ],
+        "gearbox": [
+          "hộp số",
+          "hop so",
+          "gearbox",
+          "reducer",
+          "bộ giảm tốc",
+          "motor reducer"
+        ],
+        "clutch": [
+          "ly hợp",
+          "clutch",
+          "khớp nối",
+          "coupling"
+        ],
+        "pulley": [
+          "ròng rọc",
+          "bánh đà",
+          "pulley",
+          "flywheel",
+          "puli"
+        ],
+        "coupling": [
+          "khớp nối trục",
+          "universal joint",
+          "oldham",
+          "jaw coupling"
+        ],
+        "other": [
+          "bộ truyền",
+          "loại khác"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-vehicle-reject",
+      "priority": 95,
+      "when": { "forVehicle": "vehicle" },
+      "hs": "84839099",
+      "gir": "GIR 1",
+      "reasonVi": "Bộ truyền động dùng cho xe mô tô / xe gắn máy → KHÔNG thuộc 8483. Thuộc nhóm 8714. Bảng này chỉ phân giải 8483. Khi có tín hiệu 'xe' → hệ thống nên dùng bảng 8714 thay vì 8483.",
+      "source": "Biểu thuế 2026 nhóm 8714 vs 8483"
+    },
+    {
+      "id": "r-shaft-engine-8700",
+      "priority": 80,
+      "when": { "goodsKind": "transmission", "transmissionKind": "shaft" },
+      "hs": "84831090",
+      "gir": "GIR 1",
+      "reasonVi": "Trục truyền dùng cho máy (không phải động cơ thuộc nhóm 8407-8408) → 8483.10.90 (loại khác).",
+      "source": "Biểu thuế 2026 dòng 8483.10.90"
+    },
+    {
+      "id": "r-gear-machine",
+      "priority": 80,
+      "when": { "goodsKind": "transmission", "transmissionKind": "gear", "forVehicle": "machine" },
+      "hs": "84834090",
+      "gir": "GIR 1",
+      "reasonVi": "Bánh răng / thanh răng (rack) dùng cho máy công nghiệp → 8483.40.90 (loại khác). Thanh răng = rack gear → 8483.40.",
+      "source": "Biểu thuế 2026 dòng 8483.40.90; entry thanh-rang-truyen-dong→84839019"
+    },
+    {
+      "id": "r-gear-unknown",
+      "priority": 75,
+      "when": { "goodsKind": "transmission", "transmissionKind": "gear" },
+      "hs": "84834090",
+      "gir": "GIR 1",
+      "reasonVi": "Bánh răng / thanh răng không rõ dùng cho máy hay xe → mặc định 8483.40.90. Nếu dùng cho xe → bảng 8714 sẽ override.",
+      "source": "Biểu thuế 2026 dòng 8483.40.90"
+    },
+    {
+      "id": "r-gearbox-machine",
+      "priority": 80,
+      "when": { "goodsKind": "transmission", "transmissionKind": "gearbox", "forVehicle": "machine" },
+      "hs": "84834090",
+      "gir": "GIR 1",
+      "reasonVi": "Hộp số / bộ giảm tốc dùng cho máy → 8483.40.90.",
+      "source": "Biểu thuế 2026 dòng 8483.40.90"
+    },
+    {
+      "id": "r-gearbox-unknown",
+      "priority": 75,
+      "when": { "goodsKind": "transmission", "transmissionKind": "gearbox" },
+      "hs": "84834090",
+      "gir": "GIR 1",
+      "reasonVi": "Hộp số / bộ giảm tốc không rõ → 8483.40.90.",
+      "source": "Biểu thuế 2026 dòng 8483.40.90"
+    },
+    {
+      "id": "r-clutch-machine",
+      "priority": 80,
+      "when": { "goodsKind": "transmission", "transmissionKind": "clutch" },
+      "hs": "84836000",
+      "gir": "GIR 1",
+      "reasonVi": "Ly hợp và khớp nối trục dùng cho máy → 8483.60.00.",
+      "source": "Biểu thuế 2026 dòng 8483.60.00"
+    },
+    {
+      "id": "r-pulley",
+      "priority": 80,
+      "when": { "goodsKind": "transmission", "transmissionKind": "pulley" },
+      "hs": "84835000",
+      "gir": "GIR 1",
+      "reasonVi": "Bánh đà và ròng rọc → 8483.50.00.",
+      "source": "Biểu thuế 2026 dòng 8483.50.00"
+    },
+    {
+      "id": "r-bearings",
+      "priority": 75,
+      "when": { "goodsKind": "bearing" },
+      "hs": "84832090",
+      "gir": "GIR 1",
+      "reasonVi": "Vòng bi (plain shaft bearings) → 8483.20.90 (loại khác).",
+      "source": "Biểu thuế 2026 dòng 8483.20.90"
+    },
+    {
+      "id": "r-default-transmission",
+      "priority": 50,
+      "when": { "goodsKind": "transmission" },
+      "hs": "84834090",
+      "gir": "GIR 1",
+      "reasonVi": "Bộ truyền động cơ khí không rõ loại → 8483.40.90 (loại khác).",
+      "source": "Biểu thuế 2026 dòng 8483.40.90"
+    }
+  ]
+}

@@ -170,8 +170,12 @@
     },
     "legal-docs.json": {
       "kind": "DERIVED",
-      "descriptionVi": "Chỉ mục văn bản pháp luật trích từ cột chính sách của tax.json (108 mục, 70 đã verify tiêu đề)",
-      "builtBy": "scripts/extract-legal-refs.mjs"
+      "descriptionVi": "Chỉ mục văn bản pháp luật trích từ cột chính sách của tax.json (111 mục, 111 đã verify tiêu đề)",
+      "builtBy": "scripts/extract-legal-refs.mjs",
+      "lastUpdated": "2026-10-02",
+      "records": 111,
+      "verifiedRecords": 111,
+      "note": "111 docs: 89 ACTIVE, 6 EXPIRED, 5 REPLACED, 11 duplicates với year-suffixed variant"
     },
     "legal-notes-enriched.json": {
       "kind": "DERIVED",
@@ -239,7 +243,13 @@
     },
     "policy-procedures.json": {
       "kind": "CURATED",
-      "descriptionVi": "Quy trình kiểm tra chuyên ngành theo loại chính sách"
+      "descriptionVi": "Quy trình kiểm tra chuyên ngành theo loại chính sách",
+      "lastUpdated": "2026-10-02",
+      "records": 57,
+      "coverage": "97/97 chapters (100%)",
+      "verifiedChapters": "37/37 chapter groups verified=true, 37/37 have legalBasis",
+      "normalizeTypeCoverage": "100% (4928/4928 inspection+license types)",
+      "normalizeTypeNote": "normalizeType now handles all license types (NK có/không điều kiện/hạn chế, restricted import, TNTX, Chỉ định, CR) and all inspection types (pre-clearance, standalone sector names, technical inspection types)"
     },
     "precedents.json": {
       "kind": "MASTER",
@@ -281,6 +291,18 @@
     "wco-hs-international.csv": {
       "kind": "REFERENCE",
       "descriptionVi": "Danh mục HS 6 số quốc tế (EN) — dùng bổ sung tên tiếng Anh"
+    },
+    "policy-coverage.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Độ phủ chương HS có thủ tục nhập khẩu",
+      "lastUpdated": "2026-10-02",
+      "notes": "Coverage 97/97 (98% real chapters 01-97) — ch98 is safeguard duty, not an import procedure; totalProcedures updated to 20 (was 14)"
+    },
+    "policy-structure-test.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Test cấu trúc policy-procedures.json — chạy tay khi thêm nhóm mới",
+      "generatedAt": "2026-10-02",
+      "tests": 324
     }
   }
 }

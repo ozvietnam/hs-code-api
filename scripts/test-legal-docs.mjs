@@ -26,8 +26,9 @@ function assert(name, cond, detail = '') {
 
 // ── legal-docs.json index ────────────────────────────────────────────────────
 
+// legal-docs.json is a flat keyed object (keys = doc codes), NOT {documents:{}}
 const idx = JSON.parse(readFileSync(join(root, 'data', 'legal-docs.json'), 'utf8'));
-const docs = Object.values(idx.documents || {});
+const docs = Object.values(idx);
 
 assert('index có ≥ 80 văn bản (từ enriched, không còn 32 stub)', docs.length >= 80, `total=${docs.length}`);
 assert('mọi doc có code + type + issuer + url + status',
@@ -35,7 +36,7 @@ assert('mọi doc có code + type + issuer + url + status',
 assert('mọi doc có citedInHsCount ≥ 1 + scopeHsChapters không rỗng',
   docs.every((d) => d.citedInHsCount >= 1 && Array.isArray(d.scopeHsChapters) && d.scopeHsChapters.length > 0));
 assert('key document đã normalize (không còn Đ)',
-  Object.keys(idx.documents).every((k) => !k.includes('Đ')));
+  Object.keys(idx).every((k) => !k.includes('Đ')));
 assert('doc trích dẫn nhiều nhất ≥ 1000 mã (42/2019/TT-BCT)',
   docs.some((d) => d.citedInHsCount >= 1000));
 assert('severityMax là enum hợp lệ',

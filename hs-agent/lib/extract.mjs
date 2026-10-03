@@ -14,9 +14,10 @@ LUẬT:
 3. Văn bản nói "không đủ cơ sở", trả hồ sơ, chuyển đơn vị khác, chỉ nhắc nguyên tắc chung mà không kết luận mã cho mặt hàng cụ thể → coKetLuan=false, records=[].
 4. description = tên hàng + đặc tính kỹ thuật quyết định việc phân loại (chất liệu, cấu tạo, chức năng, thông số), 20–400 ký tự, tiếng Việt. TUYỆT ĐỐI KHÔNG ghi tên doanh nghiệp, địa chỉ, số công văn của doanh nghiệp, số tờ khai, trị giá. Tên nhãn hiệu/model của HÀNG thì được.
 5. Một văn bản có nhiều mặt hàng → mỗi mặt hàng một record. Kết luận có điều kiện ("nếu dùng cho… thì…") → mỗi nhánh một record, ghi điều kiện vào conditionVi.
+6. Nhiều quy tắc GIR → dùng dấu chấm phẩy ngăn cách: "GIR 1; GIR 3". Không dùng "và", "hoặc", dấu phẩy rời.
 Trả DUY NHẤT JSON:
 {"coKetLuan": true|false, "lyDoKhongKetLuan": "…"|null,
- "records": [{"hsCode": "85044090", "description": "…", "reasonVi": "căn cứ như văn bản nêu (chú giải, quy tắc GIR, đặc tính), ≤ 600 ký tự", "girRule": "GIR 1"|null, "confusedWith": ["8 chữ số"], "conditionVi": "…"|null}]}`;
+ "records": [{"hsCode": "85044090", "description": "…", "reasonVi": "căn cứ như văn bản nêu (chú giải, quy tắc GIR, đặc tính), ≤ 600 ký tự", "girRule": "GIR 1"|null|"GIR 1; GIR 3"|null, "confusedWith": ["8 chữ số"], "conditionVi": "…"|null}]}`;
 
 export function buildUserPrompt({ title, text }) {
   return `TIÊU ĐỀ: ${title}\n\nTOÀN VĂN:\n${String(text).slice(0, 14000)}`;
@@ -78,7 +79,21 @@ export function verifyRecords(llmJson, { text, ref, date, url, repoDir }) {
       description,
       source: { type: 'TB-TCHQ', reference: ref, ...(date ? { issuedDate: date } : {}), url },
       ...(reasonVi ? { reasonVi: reasonVi.slice(0, 1000) } : {}),
-      ...(r.girRule && /^GIR\s?[1-6]/i.test(r.girRule) ? { girRule: String(r.girRule).slice(0, 20) } : {}),
+      // Chuẩn hoá girRule đa trị: "GIR 1 và 6" → "GIR 1; GIR 6" (trong 20 ký tự)
+      // validate-community GIR_RE chỉ chấp nhận 1 GIR: dùng "; " nối nhiều giá trị.
+      // Mỗi phần sau khi tách phải giữ "GIR X"; nếu mất thì bổ sung.
+      ...(r.girRule ? (() => {
+        const raw = String(r.girRule);
+        const parts = raw.split(/\s+(?:và|hoặc|,|\/)\s+/i).map((p) => p.trim()).filter(Boolean);
+        const normalized = parts.map((p) => /^GIR\s?[1-6]/i.test(p) ? p : `GIR ${p}`).join('; ');
+        const sliced = normalized.slice(0, 24);
+        const result = /^GIR\s?[1-6](?:\s*\([abc]\))?(?:\s*;\s*GIR\s?[1-6](?:\s*\([abc]\))?)*$/i.test(sliced)
+          ? normalized.slice(0, 20)
+          : /^GIR\s?[1-6]/i.test(sliced)
+            ? normalized.slice(0, 20)
+            : null;
+        return result ? { girRule: result } : null;
+      })() : {}),
       confusedWith: [...new Set((r.confusedWith || []).map((c) => String(c).replace(/\D/g, '')).filter((c) => c.length === 8 && c !== code && codeAppears(c, text)))],
     };
     const hits = scanObject(rec).filter((h) => h.hard !== false);
