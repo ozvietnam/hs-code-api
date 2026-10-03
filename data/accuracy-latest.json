@@ -1,35 +1,1646 @@
 {
-  "updatedAt": "2026-07-07T10:07:03.363Z",
-  "method": "Chấm trên 57 tờ khai thật, lấy mẫu phân tầng phủ 50 chương HS (seed cố định). Không dùng mẫu để train — chỉ để đo.",
-  "sampleSize": 57,
-  "levels": [
+  "benchmarkDate": "2026-10-03T06:34:35.343Z",
+  "mode": "search-only (cand=keyword)",
+  "sampleSize": 73,
+  "totalEvaluated": 73,
+  "top1Correct": 5,
+  "top3Correct": 8,
+  "errors": 0,
+  "noCandidates": 0,
+  "overallTop1Rate": 6.85,
+  "overallTop3Rate": 10.96,
+  "seed": 42,
+  "weakestChapters": [
     {
-      "label": "Đúng chương (2 số)",
-      "pipeline": 73.7,
-      "depth": 2
+      "chapter": "39",
+      "total": 7,
+      "top1": 0,
+      "top3": 0,
+      "top1Rate": 0
     },
     {
-      "label": "Đúng nhóm/heading (4 số)",
-      "pipeline": 64.9,
-      "depth": 4
+      "chapter": "73",
+      "total": 2,
+      "top1": 0,
+      "top3": 0,
+      "top1Rate": 0
     },
     {
-      "label": "Đúng phân nhóm (6 số)",
-      "pipeline": 40.4,
-      "depth": 6
+      "chapter": "84",
+      "total": 10,
+      "top1": 0,
+      "top3": 0,
+      "top1Rate": 0
     },
     {
-      "label": "Đúng đủ mã (8 số)",
-      "pipeline": 24.6,
-      "depth": 8
+      "chapter": "94",
+      "total": 2,
+      "top1": 0,
+      "top3": 0,
+      "top1Rate": 0
+    },
+    {
+      "chapter": "85",
+      "total": 16,
+      "top1": 1,
+      "top3": 3,
+      "top1Rate": 0.0625
     }
   ],
-  "top1Exact8": 24.6,
-  "top3Exact8": 28.1,
-  "baselineSearchOnly": {
-    "top1Exact8": 1.75,
-    "note": "keyword search thô, không có AI rerank"
+  "byChapter": {
+    "32": {
+      "total": 1,
+      "top1": 1,
+      "top3": 1
+    },
+    "34": {
+      "total": 1,
+      "top1": 1,
+      "top3": 1
+    },
+    "38": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "39": {
+      "total": 7,
+      "top1": 0,
+      "top3": 0
+    },
+    "40": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "42": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "44": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "48": {
+      "total": 1,
+      "top1": 1,
+      "top3": 1
+    },
+    "52": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "54": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "55": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "56": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "57": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "59": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "60": {
+      "total": 1,
+      "top1": 0,
+      "top3": 1
+    },
+    "61": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "62": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "63": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "64": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "65": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "66": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "67": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "68": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "69": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "70": {
+      "total": 1,
+      "top1": 1,
+      "top3": 1
+    },
+    "71": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "72": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "73": {
+      "total": 2,
+      "top1": 0,
+      "top3": 0
+    },
+    "74": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "76": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "81": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "82": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "83": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "84": {
+      "total": 10,
+      "top1": 0,
+      "top3": 0
+    },
+    "85": {
+      "total": 16,
+      "top1": 1,
+      "top3": 3
+    },
+    "87": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "90": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "91": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "94": {
+      "total": 2,
+      "top1": 0,
+      "top3": 0
+    },
+    "95": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    },
+    "96": {
+      "total": 1,
+      "top1": 0,
+      "top3": 0
+    }
   },
-  "pipeline": "Ứng viên lai (AI đề xuất nhóm 4 số + tiền lệ + từ khoá) → AI xếp hạng → quy tắc GIR → tiền lệ",
-  "interpret": "Mã HS 8 số rất khó khớp tuyệt đối vì mô tả hàng thực tế thường thiếu thuộc tính. Chương/nhóm đúng cao (73–65%) đủ để định hướng khai đúng dòng thuế; con người chốt 2 số cuối."
+  "results": [
+    {
+      "decl": {
+        "hsCode": "38021010",
+        "hsCodeRevised": null,
+        "chapter": "38",
+        "productName": "Than hoạt tính lọc nước bể cá cảnh( từ than gáo dừa). NSX: Zhengzhou Zhulin Activated Carbon Development Co., Ltd.Mới 10"
+      },
+      "top1": "49070060",
+      "top3": [
+        "49070060",
+        "38276200",
+        "38276400"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 342,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "90328939",
+        "hsCodeRevised": null,
+        "chapter": "90",
+        "productName": "Bộ điều khiển áp suất tự động 3051CD1A22A1AM5B4K5TK, điện áp:10-20VDC , dòng điện: 4-20mA ,mức áp suất: 0~2000kPa, NSX: "
+      },
+      "top1": "85176243",
+      "top3": [
+        "85176243",
+        "85371030",
+        "85381011"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 408,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "94036090",
+        "hsCodeRevised": null,
+        "chapter": "94",
+        "productName": "Tủ trưng bày đồ trang trí dùng trong phòng khách(EL-14-F392;EL-12-F055A;EL-19-F706;EL-19-F742;EL-13-F190;EL-14-F307),c.l"
+      },
+      "top1": "48239020",
+      "top3": [
+        "48239020",
+        "39264000",
+        "96180000"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 408,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "61044300",
+        "hsCodeRevised": null,
+        "chapter": "61",
+        "productName": "Set váy len kẻ liền thân,chất liệu vải dệt kim từ sợi tổng hợp,freesize,1 set gồm 1 váy+1 áo khoác,không hiệu,NSX:Hangzh"
+      },
+      "top1": "59111000",
+      "top3": [
+        "59111000",
+        "60053610",
+        "60053710"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 698,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "94018000",
+        "hsCodeRevised": null,
+        "chapter": "94",
+        "productName": "Ghế rửa xe loại 2 tầng bằng nhựa tổng hợp, không xoay, không nâng hạ, không nhồi đệm. KT(66*57*48cm)cm+/-10%. không hiệu"
+      },
+      "top1": "41152000",
+      "top3": [
+        "41152000",
+        "49070060",
+        "84051000"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 343,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "67041900",
+        "hsCodeRevised": null,
+        "chapter": "67",
+        "productName": "Bờm mái tóc giả,dùng để che hói, chất liệu: vật liệu dệt tổng hợp,kích thước: 10*10*8cm +-10%,không hiệu,NSX:Xuchang Xin"
+      },
+      "top1": "67030000",
+      "top3": [
+        "67030000",
+        "38249930",
+        "85441120"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 359,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "39235000",
+        "hsCodeRevised": null,
+        "chapter": "39",
+        "productName": "Nắp nhựa vặn dạng ren,không gắn vòi xịt,dùng cho túi đựng mỹ phẩm,kt: ĐK22mm,không hiệu,NSX:Xiangyun Packaging Materials"
+      },
+      "top1": "84148043",
+      "top3": [
+        "84148043",
+        "84186941",
+        "84148042"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 326,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "85412900",
+        "hsCodeRevised": null,
+        "chapter": "85",
+        "productName": "Linh kiện bán dẫn chủ động NCE15TD60BF (transistor) dùng ở mạch khuếch đại, khoá điện tử đóng ngắt, tối đa 600V/15A, kt "
+      },
+      "top1": "85412100",
+      "top3": [
+        "85412100",
+        "84862094",
+        "84869028"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 876,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "85437090",
+        "hsCodeRevised": null,
+        "chapter": "85",
+        "productName": "Máy tạo khói lạnh cho sân khấu, model: WL-SW4000 , công suất 4000W, điện áp: 220V/20A, kích thước: 78x38x54cm, NSX Shenz"
+      },
+      "top1": "98182220",
+      "top3": [
+        "98182220",
+        "98182231",
+        "98183100"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 345,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "84807990",
+        "hsCodeRevised": null,
+        "chapter": "84",
+        "productName": "Khuôn bằng sắt mã: BIN63031300AA dùng để đúc ống nhựa, KT:(540*400*350)mm, không dùng điện (2 chi tiết/bộ), không hiệu.N"
+      },
+      "top1": "73130000",
+      "top3": [
+        "73130000",
+        "98181500",
+        "98181600"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 242,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "81029600",
+        "hsCodeRevised": null,
+        "chapter": "81",
+        "productName": "Dây cắt 0.18*2000m, dùng cho máy cắt kim loại, chất liệu dây: làm từ Molipđen, đường kính: 0.18mm, cuộn dài: 2000m, NSX:"
+      },
+      "top1": "59111000",
+      "top3": [
+        "59111000",
+        "58063210",
+        "85437021"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 328,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "34070010",
+        "hsCodeRevised": null,
+        "chapter": "34",
+        "productName": "Đất nặn các màu dạng bột nhão, dùng cho học sinh. Không hiệu. NSX: Ningbo hammy international trading co,.ltd.Mới 100%"
+      },
+      "top1": "34070010",
+      "top3": [
+        "34070010",
+        "41152000",
+        "49070060"
+      ],
+      "isTop1Correct": true,
+      "isTop3Correct": true,
+      "confidence": 342,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "73182200",
+        "hsCodeRevised": null,
+        "chapter": "73",
+        "productName": "Vòng đệm không ren bằng thép (Xéc măng), dùng làm kín piston cho trạm bơm nhũ tương BRW200/31.5, kích thước (130x105x30)"
+      },
+      "top1": "39209110",
+      "top3": [
+        "39209110",
+        "56075010",
+        "98401700"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 322,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "39253000",
+        "hsCodeRevised": null,
+        "chapter": "39",
+        "productName": "Phụ kiện rèm: Con chạy định hình trong thanh ray rèm tự động, bằng nhựa, KT: 1*3cm, khoảng cách giữa 2 con chạy 7cm. Màu"
+      },
+      "top1": "49070060",
+      "top3": [
+        "49070060",
+        "90319030",
+        "98494400"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 274,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "84169000",
+        "hsCodeRevised": null,
+        "chapter": "84",
+        "productName": "Bộ phận đánh lửa IFS244-5/1W,KT: 105x85x65mm,dùng cho bộ đầu đốt lò nung(Phụ tùng cho lò nung trong sản xuất gạch cerami"
+      },
+      "top1": "90319030",
+      "top3": [
+        "90319030",
+        "85149020",
+        "73219021"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 459,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "85371019",
+        "hsCodeRevised": null,
+        "chapter": "85",
+        "productName": "Mô đun model QY42P-A, điện áp 12-24VDC, loại 64 đầu ra Transistor dùng để xuất tín hiệu điều khiển trong hệ thống tự độn"
+      },
+      "top1": "84869028",
+      "top3": [
+        "84869028",
+        "84862031",
+        "84862094"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 775,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "68043000",
+        "hsCodeRevised": null,
+        "chapter": "68",
+        "productName": "Đá mài mòn (KT:phi 20*2)cm, bằng bột đá. Loại mài bằng tay dùng để mài chi tiết kim loại trong nhà máy cơ khí. Không hiệ"
+      },
+      "top1": "87168010",
+      "top3": [
+        "87168010",
+        "84793000",
+        "84861030"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 345,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "85365061",
+        "hsCodeRevised": null,
+        "chapter": "85",
+        "productName": "Công tắc cắt điện SCH-CT-FC180 sử dụng để báo tín hiệu trong thanh nối cánh hướng tuabin. KT: Phi 9*80mm, điện áp 220VAC"
+      },
+      "top1": "85234914",
+      "top3": [
+        "85234914",
+        "85234993",
+        "85232983"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 442,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "71171910",
+        "hsCodeRevised": null,
+        "chapter": "71",
+        "productName": "Lắc tay (vòng tay), model 349k, chất liệu hợp kim titan,(không mạ kim loại quý) kích thước 0,7cm* 10cm, chưa mạ kim loại"
+      },
+      "top1": "49070060",
+      "top3": [
+        "49070060",
+        "98110010",
+        "98110090"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 290,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "91029100",
+        "hsCodeRevised": null,
+        "chapter": "91",
+        "productName": "Đồng hồ báo thức cá nhân để bàn,chạy bằng pin,ko kèm pin,tích hợp loa bluetooth,c.suất loa:3W,kt:138x69x40mm, dung lượng"
+      },
+      "top1": "91051100",
+      "top3": [
+        "91051100",
+        "49070060",
+        "39231020"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 505,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "84128000",
+        "hsCodeRevised": null,
+        "chapter": "84",
+        "productName": "Xi lanh điện 12V, hành trình 100mm, tốc độ: 10mm/s,kt: 63x775mm, chất liệu thép không gỉ, dùng để nâng hạ trong công ngh"
+      },
+      "top1": "98401400",
+      "top3": [
+        "98401400",
+        "26219010",
+        "73064020"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 479,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "55121900",
+        "hsCodeRevised": null,
+        "chapter": "55",
+        "productName": "Vải dệt thoi, từ 100% xơ staple polyester,đã nhuộm,ĐL:130g/m2,khổ rộng:145cm, độ dày 0,25mm, không hiệu,NSX:Qiantai Text"
+      },
+      "top1": "55131300",
+      "top3": [
+        "55131300",
+        "55132300",
+        "55142300"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 417,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "39204900",
+        "hsCodeRevised": null,
+        "chapter": "39",
+        "productName": "Màng PVC không tự dính, dạng cuộn, chưa được gia cố với các vật liệu khác, khổ rộng: 80cm, dày: 0.12mm, cuộn dài: 20m, h"
+      },
+      "top1": "72084000",
+      "top3": [
+        "72084000",
+        "48070000",
+        "72081000"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 611,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "85340020",
+        "hsCodeRevised": null,
+        "chapter": "85",
+        "productName": "Mạch in 2 lớp PCB ốp trần tròn 20W,  c.liệu: Fr4- nhựa chống cháy, chưa gắn linh kiện điện tử, kt: 87.5*22.5*1.2mm, dùng"
+      },
+      "top1": "90319030",
+      "top3": [
+        "90319030",
+        "84869028",
+        "84798950"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 626,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "70072990",
+        "hsCodeRevised": null,
+        "chapter": "70",
+        "productName": "Kính cường lực trong full HD 4 lớp dùng để bảo vệ màn hình điện thoại di dộng KZHDIP001,kt:158*75*0.3mm,hiệu:KUZOOM,NSX:"
+      },
+      "top1": "70072990",
+      "top3": [
+        "70072990",
+        "38101000",
+        "39269044"
+      ],
+      "isTop1Correct": true,
+      "isTop3Correct": true,
+      "confidence": 620,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "85371019",
+        "hsCodeRevised": null,
+        "chapter": "85",
+        "productName": "Bộ điều khiển của máy đóng gói dạng đứng, model: YFDZ2012LB-24V, điện áp: 24V, kích thước: 141x111x60mm, NSX: YongFeng, "
+      },
+      "top1": "84224000",
+      "top3": [
+        "84224000",
+        "85381011",
+        "85381021"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 755,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "85371099",
+        "hsCodeRevised": null,
+        "chapter": "85",
+        "productName": "Mô-đun điều khiển công nghiệp model AS-F232, điện áp 24VDC, dùng điều khiển tín hiệu và cơ cấu chấp hành trong hệ thống "
+      },
+      "top1": "90328910",
+      "top3": [
+        "90328910",
+        "90328920",
+        "85371040"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 535,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "40118011",
+        "hsCodeRevised": null,
+        "chapter": "40",
+        "productName": "Lốp dùng cho máy xúc lật 14.00-24 28PR, chất liệu: cao su, hiệu: ATLAPEX, đã bao gồm săm, yếm lốp, đường kính: 1370mm, c"
+      },
+      "top1": "48101310",
+      "top3": [
+        "48101310",
+        "48101410",
+        "48101910"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 310,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "65050090",
+        "hsCodeRevised": null,
+        "chapter": "65",
+        "productName": "Mũ lông trẻ em xỏ tay,chất liệu dệt kim từ sợi tổng hợp, kích thước 32*45*100cm, dùng để giữ ấm, không dùng cho mục đích"
+      },
+      "top1": "59111000",
+      "top3": [
+        "59111000",
+        "58090000",
+        "63049300"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 535,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "59032000",
+        "hsCodeRevised": null,
+        "chapter": "59",
+        "productName": "Tấm da microfiber,dùng trong sản xuất nội thất,chất liệu từ sợi polyester đã được ngâm tẩm,tráng phủ nhựa polyurethan,ĐL"
+      },
+      "top1": "59111000",
+      "top3": [
+        "59111000",
+        "60019220",
+        "41152000"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 487,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "85444294",
+        "hsCodeRevised": null,
+        "chapter": "85",
+        "productName": "Dây Cáp nối dài, model YCX-5M-CN,dây dẫn bằng đồng có cách điện, chiều dài 5m, đkinh lõi 24 awg, đã gắn đầu nối,dùng nối"
+      },
+      "top1": "84864020",
+      "top3": [
+        "84864020",
+        "84869042",
+        "84869023"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 586,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "84123100",
+        "hsCodeRevised": null,
+        "chapter": "84",
+        "productName": "Xilanh tròn khí nén kí hiệu MAL, chuyển động tịnh tiến, đường kính 16/20mm, hành trình dài từ 25mm đến 250mm, bằng hợp k"
+      },
+      "top1": "94054130",
+      "top3": [
+        "94054130",
+        "94054230",
+        "94054930"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 493,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "72052900",
+        "hsCodeRevised": null,
+        "chapter": "72",
+        "productName": "Bột từ của sắt 0,5kg, 1 hộp nặng 0,5 kg, dùng để châm vào thắng bột từ, NSX: Zangdong Trading Co.,Ltd, hàng mới: 100%"
+      },
+      "top1": "49070060",
+      "top3": [
+        "49070060",
+        "26206000",
+        "68129951"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 290,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "76169990",
+        "hsCodeRevised": null,
+        "chapter": "76",
+        "productName": "Giảm chấn RBC1412, chất liệu bằng nhôm, đã được ren, dùng cho máy bôi keo tự động, hiệu SMC, hàng mới 100%"
+      },
+      "top1": "48101310",
+      "top3": [
+        "48101310",
+        "48101410",
+        "48101910"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 427,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "84672900",
+        "hsCodeRevised": null,
+        "chapter": "84",
+        "productName": "Máy bắn đinh cầm tay, có động cơ điện gắn liền, dùng pin sạc, không dùng khí nén, model: DCCN90S2, điện áp 20V, CS:700W,"
+      },
+      "top1": "84798950",
+      "top3": [
+        "84798950",
+        "84864020",
+        "85229030"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 350,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "82081000",
+        "hsCodeRevised": null,
+        "chapter": "82",
+        "productName": "Lưỡi phay SEMT13T3AGSN-JH VP15TF. KT:13*13*4mm, Chất liệu bằng thép hợp kim, dùng cho máy phay CNC, dùng để gia công kim"
+      },
+      "top1": "84564010",
+      "top3": [
+        "84564010",
+        "84861030",
+        "84869013"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 479,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "95069100",
+        "hsCodeRevised": null,
+        "chapter": "95",
+        "productName": "Dụng cụ yoga tập chân tại nhà,đếm được,không có đệm mút,chất liệu:nhựa tổng hợp,KT:24*11cm,không hiệu,NSX Yongkang Yulon"
+      },
+      "top1": "49070060",
+      "top3": [
+        "49070060",
+        "86073000",
+        "30069300"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 270,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "44201900",
+        "hsCodeRevised": null,
+        "chapter": "44",
+        "productName": "Mõ bằng gỗ đã qua xử lý nhiệt độ cao,dùng làm đồ trang trí trong gia đình,đường kính: 10inch, kt 25x25x20cm,có dùi đế đi"
+      },
+      "top1": "84193930",
+      "top3": [
+        "84193930",
+        "84198913",
+        "84199012"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 590,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "42021299",
+        "hsCodeRevised": null,
+        "chapter": "42",
+        "productName": "Vali in hình động vật, mặt ngoài bằng plastic,kích thước:35x26x47cm,không có tên thương hiệu,NSX: Baoding Mubao Luggage "
+      },
+      "top1": "42021211",
+      "top3": [
+        "42021211",
+        "42021291",
+        "42022100"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 375,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "85340020",
+        "hsCodeRevised": null,
+        "chapter": "85",
+        "productName": "Mạch in 2 lớp PCB đa sắc 4-7W 39*24*1,2mm, chất liệu: Fr4- nhựa chống cháy, chưa gắn linh kiện điện tử, kt:  39*24*1,2mm"
+      },
+      "top1": "90319030",
+      "top3": [
+        "90319030",
+        "84869028",
+        "84798950"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 626,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "32151190",
+        "hsCodeRevised": null,
+        "chapter": "32",
+        "productName": "Hộp mực in sơ đồ H45CC625A màu đen, dung tích: 42ml, mã CAS thành phần:56-81-5,112-34-5,616-45-5, 1UNK=1BOX, NSX: Guangz"
+      },
+      "top1": "32151190",
+      "top3": [
+        "32151190",
+        "49070060",
+        "84439920"
+      ],
+      "isTop1Correct": true,
+      "isTop3Correct": true,
+      "confidence": 300,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "85423900",
+        "hsCodeRevised": null,
+        "chapter": "85",
+        "productName": "Vi mạch điện tử tích hợp SOP-18, mã: BD9488F, điện áp: 18V/1A, kt: 5x3mm, dùng trong sản xuất bảng mạch điện tử, NSX: Sh"
+      },
+      "top1": "85437040",
+      "top3": [
+        "85437040",
+        "90319030",
+        "90314100"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 596,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "85364910",
+        "hsCodeRevised": null,
+        "chapter": "85",
+        "productName": "Role điều chỉnh điện áp 63A, loại rơ le kỹ thuật số, điện áp 220V, NSX:Shenzhen Technology, hàng mới 100%"
+      },
+      "top1": "85364140",
+      "top3": [
+        "85364140",
+        "85364110",
+        "85364910"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": true,
+      "confidence": 541,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "66019100",
+        "hsCodeRevised": null,
+        "chapter": "66",
+        "productName": "Dù cầm tay in logo, loại cán thẳng, kiểu ống lồng, kt: 27 inches,chất liệu: Vải 190T pogee, trục bằng kim loại, NSX: Zhe"
+      },
+      "top1": "56050000",
+      "top3": [
+        "56050000",
+        "49070060",
+        "84682010"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 307,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "62042300",
+        "hsCodeRevised": null,
+        "chapter": "62",
+        "productName": "Bộ quần áo nữ đồng bộ, model 5551,chất liệu vải dệt thoi từ sợi tổng hợp, nhiều màu sắc, size L,XL,hiệu PIER NO5,NSX:Sha"
+      },
+      "top1": "54074110",
+      "top3": [
+        "54074110",
+        "68128050",
+        "51130000"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 498,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "52083900",
+        "hsCodeRevised": null,
+        "chapter": "52",
+        "productName": "Vải dệt thoi 100% cotton tencel 60s,không phải(vải vân điểm, vân chéo) nhuộm phản ứng, dùng cho may mặc, khổ 250 cm, địn"
+      },
+      "top1": "58063110",
+      "top3": [
+        "58063110",
+        "58063210",
+        "58063992"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 526,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "54075200",
+        "hsCodeRevised": null,
+        "chapter": "54",
+        "productName": "Vải cara xốp, chất liệu: dệt thoi từ 95.5% sợi filament polyester dún, 4.5% spandex, đã nhuộm, định lượng 324g/m2, khổ r"
+      },
+      "top1": "54074110",
+      "top3": [
+        "54074110",
+        "54072000",
+        "54050000"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 566,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "84213990",
+        "hsCodeRevised": null,
+        "chapter": "84",
+        "productName": "Bộ lọc khí AF30-02-A, chất liệu bằng nhựa dùng cho máy bôi keo tự động, kt: 70x125mm, kt cổng vào/ ra: 30mm, hiệu SMC, h"
+      },
+      "top1": "84864020",
+      "top3": [
+        "84864020",
+        "84869014",
+        "84869024"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 570,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "39269099",
+        "hsCodeRevised": null,
+        "chapter": "39",
+        "productName": "Khung bảng tên nút nhấn, nhựa PS, KT:25*13mm, đường kính lỗ 22mm, dùng để gắn/hiển thị nhãn cho nút nhấn không hiệu, NSX"
+      },
+      "top1": "84864020",
+      "top3": [
+        "84864020",
+        "84869043",
+        "84869023"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 537,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "73089099",
+        "hsCodeRevised": null,
+        "chapter": "73",
+        "productName": "Phụ kiện lan can đã định hình: Hoa văn lan can nhiều họa tiết, mã A,chất liệu thép hợp kim, đã sơn phủ, KT 200*200MM+/-1"
+      },
+      "top1": "98100010",
+      "top3": [
+        "98100010",
+        "68128050",
+        "72124014"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 377,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "48236900",
+        "hsCodeRevised": null,
+        "chapter": "48",
+        "productName": "Giấy nến dùng để lót nướng bánh,không thấm dầu mỡ,dạng khay,kt:đường kính:29cm,cao 2cm ,không hiệu,NSX:Guangzhou Jinjief"
+      },
+      "top1": "48236900",
+      "top3": [
+        "48236900",
+        "38249910",
+        "64041990"
+      ],
+      "isTop1Correct": true,
+      "isTop3Correct": true,
+      "confidence": 420,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "84313990",
+        "hsCodeRevised": null,
+        "chapter": "84",
+        "productName": "Bộ phận của băng tải: con lăn tiếp điện cho băng tải, chất liệu: thép ko gỉ, kích thước: 63x72x30mm,ko hiệu, hàng mới: 1"
+      },
+      "top1": "85149020",
+      "top3": [
+        "85149020",
+        "30067000",
+        "98181500"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 498,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "84529099",
+        "hsCodeRevised": null,
+        "chapter": "84",
+        "productName": "Bộ phận của máy khâu công nghiệp: cữ căng chun.CL: sắt.kt: D17*R8*C5cm,1 bộ gồm:1 trục căng,1 vòng chặn nhựa,1 giá đỡ ki"
+      },
+      "top1": "85030020",
+      "top3": [
+        "85030020",
+        "84603110",
+        "85381011"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 439,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "87149490",
+        "hsCodeRevised": null,
+        "chapter": "87",
+        "productName": "Cụm tay phanh xe máy điện, chất liệu: thép ko gỉ, kích thước: 187x83mm, NSX:  NINGBO CIXI IMPORT AND EXPORT HOLDINGS CO."
+      },
+      "top1": "84864020",
+      "top3": [
+        "84864020",
+        "84861030",
+        "84869013"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 449,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "85081100",
+        "hsCodeRevised": null,
+        "chapter": "85",
+        "productName": "Máy hút bụi cầm tay chạy bằng pin, model: SA-269, điện áp: 7.4V/50W, kt: 204x110x250mm, có động cơ điện gắn liền, dung t"
+      },
+      "top1": "85087010",
+      "top3": [
+        "85087010",
+        "85086000",
+        "84073440"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 395,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "85198920",
+        "hsCodeRevised": null,
+        "chapter": "85",
+        "productName": "Máy quay đĩa ly tâm tốc độ cao, đặt cố định, không tự động. Model:LKH-VAD50. 2.2Kw, 220V 50Hz. Tốc độ quay động cơ 1380/"
+      },
+      "top1": "90292020",
+      "top3": [
+        "90292020",
+        "98493890",
+        "85198920"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": true,
+      "confidence": 326,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "63069099",
+        "hsCodeRevised": null,
+        "chapter": "63",
+        "productName": "Võng đơn dã ngoại, chất liệu: Vải Pongee 340T, kt: 290*148cm, tải trọng: 180kg,  NSX: NingBo Naturehike OutDoor Product "
+      },
+      "top1": "49070060",
+      "top3": [
+        "49070060",
+        "29162000",
+        "38249910"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 254,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "85423900",
+        "hsCodeRevised": null,
+        "chapter": "85",
+        "productName": "Mạch điện tử tích hợp:IGBT TXG75HF120CU (75A-1200V). Dùng điều khiển động cơ DC của đường dây 50/60hz, Imax: 75A; Umax: "
+      },
+      "top1": "85371040",
+      "top3": [
+        "85371040",
+        "90303320",
+        "85437021"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 577,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "64059000",
+        "hsCodeRevised": null,
+        "chapter": "64",
+        "productName": "Dép sục Crocs, chất liệu: nhựa xốp dẻo, Size: 35-40, ko hiệu, NSX: Zhengzhou Damaisui Trading Co., Ltd. hàng mới: 100%"
+      },
+      "top1": "49070060",
+      "top3": [
+        "49070060",
+        "29375000",
+        "38249910"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 254,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "74198090",
+        "hsCodeRevised": null,
+        "chapter": "74",
+        "productName": "Nút điều tiết dùng cho van trút tải, ký hiệu H2-XZF-33B2, bằng đồng, kích thước (5x10)mm, hiệu zhejiang, mới 100%."
+      },
+      "top1": "84818083",
+      "top3": [
+        "84818083",
+        "84818084",
+        "84818093"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 225,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "85044090",
+        "hsCodeRevised": null,
+        "chapter": "85",
+        "productName": "Bộ nguồn: điện áp vào 220v- điện áp ra 5v, công suất : 200w. Mã: CHUANGLIAN, dùng cấp nguồn điện cho đèn Led. Mới 100%"
+      },
+      "top1": "85044090",
+      "top3": [
+        "85044090",
+        "85042192",
+        "85042193"
+      ],
+      "isTop1Correct": true,
+      "isTop3Correct": true,
+      "confidence": 493,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "57050099",
+        "hsCodeRevised": null,
+        "chapter": "57",
+        "productName": "Thảm dã ngoại có thể gấp gọn,đã hoàn thiện,không tạo búi,kiểu dệt rổ,chất liệu: Vải Oxford phu PVC,kt:145*180 cm +-10cm,"
+      },
+      "top1": "85234914",
+      "top3": [
+        "85234914",
+        "85234993",
+        "85235940"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 273,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "84839099",
+        "hsCodeRevised": null,
+        "chapter": "84",
+        "productName": "Trục vít me bi 1R15-20B1-1000-0.018 Chất liệu bằng thép dùng cho máy bôi keo tự động, đường kính trục 15mm, dài 500mm,NS"
+      },
+      "top1": "84864020",
+      "top3": [
+        "84864020",
+        "84869014",
+        "84869024"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 566,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "39269099",
+        "hsCodeRevised": null,
+        "chapter": "39",
+        "productName": "Vỏ ốp nhám viền, có vòng tròn từ tính, bằng nhựa PVC . Mã hàng CH 16 . Dùng để bảo vệ điện thoai di động. KT(dài rộng 9*"
+      },
+      "top1": "39269044",
+      "top3": [
+        "39269044",
+        "60019220",
+        "34052000"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 478,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "83024290",
+        "hsCodeRevised": null,
+        "chapter": "83",
+        "productName": "Tay nắm cửa tủ(đồ nội thất),loại không kèm ổ khóa,chất liệu thép hợp kim,dài 96mm +-10%, hiệu: DMY,nsx:Jiada Hardware Fa"
+      },
+      "top1": "76042110",
+      "top3": [
+        "76042110",
+        "39269099",
+        "84186100"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 327,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "39269099",
+        "hsCodeRevised": null,
+        "chapter": "39",
+        "productName": "Gối đỡ bằng nhựa PP 16*20,kích thước: 16*20mm, dùng để đỡ con lăn cho máy công nghiệp, ko hiệu, NSX: Shenzhen Technology"
+      },
+      "top1": "84669330",
+      "top3": [
+        "84669330",
+        "84663000",
+        "84869014"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 443,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "39269099",
+        "hsCodeRevised": null,
+        "chapter": "39",
+        "productName": "Núm hút chân không KIST 15, chất liệu: nhựa, kích thước: 4x15mm, ko hiệu,NSX  Zhongshan Electronic Products Co., Ltd. hà"
+      },
+      "top1": "49070060",
+      "top3": [
+        "49070060",
+        "40169959",
+        "29375000"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 254,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "96159099",
+        "hsCodeRevised": null,
+        "chapter": "96",
+        "productName": "Dây buộc tóc, model:3930, chất liệu: bằng vải + chun, kích thước phi 20*4cm, không hiệu. NSX:HEBEI HEFENG FRP CO.,LTD, m"
+      },
+      "top1": "49070060",
+      "top3": [
+        "49070060",
+        "84431200",
+        "98300000"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 290,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "85122099",
+        "hsCodeRevised": null,
+        "chapter": "85",
+        "productName": "Đèn led dùng để tăng sáng cho ô tô tải (ko bao gồm cụm đèn, ko phải đèn pha gắn kín),đ.áp: 12-24V,c.suất:28W và 38W,1 bộ"
+      },
+      "top1": "98452000",
+      "top3": [
+        "98452000",
+        "63080000",
+        "38101000"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 398,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "56090000",
+        "hsCodeRevised": null,
+        "chapter": "56",
+        "productName": "Dây ruy băng bằng vải sợi tổng hợp dạng cuộn, dùng trang trí khổ(2.5-5)cm+_1cm.Không có tên thương hiệu. NSX: GUANGXI PI"
+      },
+      "top1": "58063210",
+      "top3": [
+        "58063210",
+        "64042000",
+        "61152100"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 295,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "69131090",
+        "hsCodeRevised": null,
+        "chapter": "69",
+        "productName": "Đồ trang trí để bàn hình mèo thần tài, chất liệu sứ, không dùng điện, kt: size 21cm, không hiệu, NSX:Chaozhou Yongjia Ce"
+      },
+      "top1": "39264000",
+      "top3": [
+        "39264000",
+        "63080000",
+        "98182220"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 755,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "60041010",
+        "hsCodeRevised": null,
+        "chapter": "60",
+        "productName": "Vải dệt kim sợi ngang MH75,thành phần 85% Polyester, 15% sợi đàn hồi Spandex,khổ 172-175cm,ĐL:175 g/m2,màu trắng,không t"
+      },
+      "top1": "59111000",
+      "top3": [
+        "59111000",
+        "60041010",
+        "68128050"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": true,
+      "confidence": 662,
+      "llmModel": null,
+      "ms": null
+    },
+    {
+      "decl": {
+        "hsCode": "84193990",
+        "hsCodeRevised": null,
+        "chapter": "84",
+        "productName": "Máy sấy khí HYF-200R (3380-20A-220-LB). Công suất 20KW, điện áp 380V, 50HZ, 2000m3/h. Dùng cho hệ thống khí nén. Kích th"
+      },
+      "top1": "98182220",
+      "top3": [
+        "98182220",
+        "85043121",
+        "85042111"
+      ],
+      "isTop1Correct": false,
+      "isTop3Correct": null,
+      "confidence": 379,
+      "llmModel": null,
+      "ms": null
+    }
+  ]
 }
