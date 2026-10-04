@@ -3413,7 +3413,350 @@
       "gir": "6",
       "basis": "RULE_TABLE",
       "sourceVi": "Biểu thuế 2026 dòng 8534.00.20; Bảng quyết định data/decision-tables/8534.json — thuộc tính pcbLayers=double."
+    },
+    {
+      "id": "phot-kich-tang-xich-may-xuc",
+      "titleVi": "Phớt kích tăng xích máy xúc (cao su lưu hóa)",
+      "terms": [
+        "phớt kích tăng xích máy xúc",
+        "phớt kích tăng xích",
+        "kích tăng xích máy xúc",
+        "kích tăng zcy"
+      ],
+      "candidates": [
+        {
+          "hs": "40169390",
+          "whenVi": "Phớt kích tăng xích máy xúc bằng cao su lưu hóa, dùng cho máy xúc đào",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [],
+      "sourceVi": "Biểu thuế 2026 nhóm 4016; tiền lệ oz-gold-final."
+    },
+    {
+      "id": "day-dai-rang",
+      "titleVi": "Dây đai răng / dây curoa (cao su lưu hóa)",
+      "terms": [
+        "dây đai răng",
+        "dây curoa",
+        "belt conveyor",
+        "timing belt",
+        "đai răng"
+      ],
+      "candidates": [
+        {
+          "hs": "40103900",
+          "whenVi": "Dây đai răng bằng cao su lưu hóa, dùng cho máy móc",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "4011",
+          "whyVi": "Nhóm 4011 là lốp/săm xe — không phải dây curoa."
+        }
+      ],
+      "sourceVi": "Biểu thuế 2026 nhóm 4010."
+    },
+    {
+      "id": "lop-may-xuc-let",
+      "titleVi": "Lốp/săm máy xúc lật và máy xúc đào",
+      "terms": [
+        "lốp máy xúc lật",
+        "lốp máy xúc đào",
+        "lốp máy xúc",
+        "lốp đặc máy xúc",
+        "lốp xe xúc"
+      ],
+      "candidates": [
+        {
+          "hs": "40118011",
+          "whenVi": "Lốp dùng cho máy xúc lật, bánh lốp",
+          "confidence": "high"
+        },
+        {
+          "hs": "40118021",
+          "whenVi": "Lốp dùng cho máy xúc đào, bánh lốp",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8708",
+          "whyVi": "Nhóm 8708 là phụ tùng ô tô — không phải lốp máy xúc."
+        }
+      ],
+      "sourceVi": "Biểu thuế 2026 nhóm 4011."
+    },
+    {
+      "id": "nut-chai-cao-su-xop",
+      "titleVi": "Nút chai / nắp cao su xốp",
+      "terms": [
+        "nút chai cao su xốp",
+        "nút chai thủy tinh cao su",
+        "nắp cao su xốp"
+      ],
+      "candidates": [
+        {
+          "hs": "40161090",
+          "whenVi": "Nút chai, nắp đậy bằng cao su xốp, dùng cho chai thủy tinh",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [],
+      "sourceVi": "Biểu thuế 2026 nhóm 4016."
+    },
+    {
+      "id": "tui-xach-tay-vai",
+      "titleVi": "Túi xách, túi đeo, ba lô (vải / nhựa / da PU)",
+      "terms": [
+        "túi xách tay",
+        "túi đeo vai",
+        "túi đeo chéo",
+        "túi xách nam",
+        "túi xách nữ",
+        "túi vải",
+        "ba lô vải",
+        "túi du lịch vải"
+      ],
+      "candidates": [
+        {
+          "hs": "42022220",
+          "whenVi": "Túi xách tay, túi đeo vai, ba lô bằng vải dệt tráng phủ da PU",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "9608",
+          "whyVi": "Nhóm 9608 là bút — không phải túi xách."
+        }
+      ],
+      "sourceVi": "Biểu thuế 2026 nhóm 4202."
+    },
+    {
+      "id": "hop-dung-vai",
+      "titleVi": "Hộp đựng / túi đựng bằng vải hoặc da PU",
+      "terms": [
+        "hộp đựng rượu vang",
+        "hộp đựng đồ vải",
+        "hộp đựng bằng vải",
+        "ví da pu"
+      ],
+      "candidates": [
+        {
+          "hs": "42029190",
+          "whenVi": "Hộp đựng bằng da tổng hợp (PU)",
+          "confidence": "medium"
+        },
+        {
+          "hs": "42023200",
+          "whenVi": "Ví, túi đựng bằng vải dệt tráng phủ da PU",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [],
+      "sourceVi": "Biểu thuế 2026 nhóm 4202, 4203."
+    },
+    {
+      "id": "giay-dep-nhua",
+      "titleVi": "Giày / dép bằng nhựa (PVC, PU, EVA)",
+      "terms": [
+        "giày nhựa",
+        "dép nhựa",
+        "dép sục",
+        "dép xăng đan",
+        "dép pvc",
+        "dép xốp dẻo",
+        "dép crocs",
+        "dép đi trong nhà"
+      ],
+      "candidates": [
+        {
+          "hs": "64029990",
+          "whenVi": "Dép, giày bằng nhựa PVC/PU, đế ngoài và mũ bằng nhựa",
+          "confidence": "high"
+        },
+        {
+          "hs": "64059000",
+          "whenVi": "Dép, giày bằng nhựa EVA/xốp dẻo",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "3921",
+          "whyVi": "Nhóm 3921 là tấm nhựa — không phải giày dép."
+        },
+        {
+          "prefix": "6401",
+          "whyVi": "Nhóm 6401 là ủng/cao su — không phải giày nhựa."
+        }
+      ],
+      "sourceVi": "Biểu thuế 2026 nhóm 6402/6405; tiền lệ oz-gold-final."
+    },
+    {
+      "id": "giay-vai",
+      "titleVi": "Giày vải / giày canvas / giày thể thao",
+      "terms": [
+        "giày vải",
+        "giày canvas",
+        "giày thể thao",
+        "giày sneaker",
+        "giày da tổng hợp"
+      ],
+      "candidates": [
+        {
+          "hs": "64041900",
+          "whenVi": "Giày vải canvas, giày thể thao",
+          "confidence": "high"
+        },
+        {
+          "hs": "64039990",
+          "whenVi": "Giày da tổng hợp PU",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "6403",
+          "whyVi": "Nhóm 6403 là giày da thật — giày vải thuộc 6404."
+        }
+      ],
+      "sourceVi": "Biểu thuế 2026 nhóm 6404."
+    },
+    {
+      "id": "phu-tung-xe-may",
+      "titleVi": "Phụ tùng xe máy (phanh, vành, xích, càng)",
+      "terms": [
+        "má phanh xe máy",
+        "phanh đĩa xe máy",
+        "vành bánh xe máy",
+        "bộ xích xe máy",
+        "càng xe máy",
+        "tay phanh xe máy",
+        "nhông xe máy",
+        "bộ đĩa xích xe máy"
+      ],
+      "candidates": [
+        {
+          "hs": "87141060",
+          "whenVi": "Má phanh đĩa xe máy",
+          "confidence": "high"
+        },
+        {
+          "hs": "87149290",
+          "whenVi": "Vành bánh xe máy",
+          "confidence": "high"
+        },
+        {
+          "hs": "87149490",
+          "whenVi": "Cụm tay phanh, cần phanh xe máy",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "4011",
+          "whyVi": "Nhóm 4011 là lốp/săm — không phải phụ tùng xe máy."
+        },
+        {
+          "prefix": "8708",
+          "whyVi": "Nhóm 8708 là phụ tùng ô tô — xe máy thuộc 8714."
+        }
+      ],
+      "sourceVi": "Biểu thuế 2026 nhóm 8714; tiền lệ oz-gold-final."
+    },
+    {
+      "id": "ket-nuoc-lam-mat",
+      "titleVi": "Két nước làm mát / két nước ô tô",
+      "terms": [
+        "két nước làm mát",
+        "két nước ô tô",
+        " két nước xe",
+        "radiator ô tô"
+      ],
+      "candidates": [
+        {
+          "hs": "87089116",
+          "whenVi": "Két nước làm mát cho ô tô",
+          "confidence": "high"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8419",
+          "whyVi": "Nhóm 8419 là máy lọc nước — két nước làm mát động cơ thuộc 8708."
+        }
+      ],
+      "sourceVi": "Biểu thuế 2026 nhóm 8708."
+    },
+    {
+      "id": "banh-xe-day",
+      "titleVi": "Bánh xe đẩy / phụ kiện cửa (bản lề, tay nắm)",
+      "terms": [
+        "bánh xe đẩy",
+        "bánh xe con đẩy",
+        "bản lề cửa",
+        "tay nắm cửa",
+        "khóa cửa thông minh"
+      ],
+      "candidates": [
+        {
+          "hs": "83022090",
+          "whenVi": "Bánh xe đẩy bằng kim loại hoặc nhựa",
+          "confidence": "high"
+        },
+        {
+          "hs": "83014020",
+          "whenVi": "Khóa cửa thông minh",
+          "confidence": "high"
+        },
+        {
+          "hs": "83024290",
+          "whenVi": "Tay nắm cửa (đồ nội thất)",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8714",
+          "whyVi": "Nhóm 8714 là phụ tùng xe — bánh xe đẩy thuộc 8302."
+        }
+      ],
+      "sourceVi": "Biểu thuế 2026 nhóm 8302; tiền lệ oz-gold-final."
+    },
+    {
+      "id": "dao-cnc-may-tien",
+      "titleVi": "Dao phay / dao tiện CNC (hợp kim)",
+      "terms": [
+        "dao phay cnc",
+        "dao tiện cnc",
+        "dao cắt kim loại",
+        "mảnh dao cắt",
+        "lưỡi dao cắt",
+        "dao hợp kim"
+      ],
+      "candidates": [
+        {
+          "hs": "82081000",
+          "whenVi": "Dao phay, dao tiện, dao cắt cho máy CNC",
+          "confidence": "high"
+        },
+        {
+          "hs": "82073000",
+          "whenVi": "Dụng cụ dập, dao cắt kim loại",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8456",
+          "whyVi": "Nhóm 8456 là máy CNC — dao cụ thuộc 8207."
+        }
+      ],
+      "sourceVi": "Biểu thuế 2026 nhóm 8207/8208."
     }
   ],
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-04T00:15:00.000Z"
 }
