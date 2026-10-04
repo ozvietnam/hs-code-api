@@ -3,7 +3,6 @@ const { understandQuery } = require('../lib/query-understand');
 const { setCors, handleOptions } = require('../lib/cors');
 const { getTaxRecord, normalizeHs } = require('../lib/data');
 const { mapTaxRecord } = require('../lib/tax-mapper');
-const { geminiGenerateJson } = require('../lib/gemini');
 // Gọi qua module (không destructure) để test mock được chuỗi fallback.
 const llmTier = require('../lib/llm-tier');
 const { SYSTEM_PROMPT, buildChapterFieldsPrompt } = require('../lib/customs-prompt');
@@ -11,6 +10,7 @@ const { composeWithMeta } = require('../lib/describe-compose');
 const { validateDeclaration, normalizeDeclaration } = require('../lib/declaration-validator');
 const { captureError } = require('../lib/error-monitor');
 const { checkTrademarkRisk } = require('../lib/trademark-watch');
+const { describeAttributes } = require('../lib/describe-attributes');
 
 module.exports = async function handler(req, res) {
   setCors(res);
@@ -47,19 +47,22 @@ module.exports = async function handler(req, res) {
   // tả; bản gốc giữ lại để kiểm xuất xứ (vd 墨西哥 → hàng Mexico, không phải TQ).
   const rawName = String(body?.productName || '').trim();
   const understood = rawName ? await understandQuery(rawName) : { applied: false, facts: null };
+  // H5: thông số đã chuẩn hóa từ ERP (khóa chuẩn → giá trị tiếng Việt) — dùng thay chữ
+  // Trung thô khi soạn mô tả. Giá trị còn chữ Hán bị bỏ, báo lại ở attributesSkipped.
+  const attrs = describeAttributes(body?.attributes);
   const context = {
     productName: understood.applied
       ? [understood.facts.tenHangVi, understood.facts.quyCach].filter(Boolean).join(', ')
       : (body?.productName || mapped.nameVi),
     sourceText: [rawName, body?.customerDescription].filter(Boolean).join(' | ') || null,
     detectedOrigin: understood.facts?.noiSanXuat || null,
-    brand: body?.brand || understood.facts?.thuongHieu || null,
-    model: body?.model || null,
+    brand: body?.brand || attrs.brand || understood.facts?.thuongHieu || null,
+    model: body?.model || attrs.model || null,
     origin: body?.origin || null,
-    material: body?.material || understood.facts?.chatLieu || null,
+    material: body?.material || attrs.material || understood.facts?.chatLieu || null,
     condition: body?.condition || null,
-    technicalSpec: body?.technicalSpec || null,
-    purpose: body?.purpose || understood.facts?.congDung || null,
+    technicalSpec: [body?.technicalSpec, attrs.technicalSpec].filter(Boolean).join('; ') || null,
+    purpose: body?.purpose || attrs.purpose || understood.facts?.congDung || null,
     customerDescription: body?.customerDescription || null,
     unitVi: mapped.unitVi,
     tariffNameVi: mapped.nameVi,
@@ -90,20 +93,11 @@ module.exports = async function handler(req, res) {
     const systemPrompt = SYSTEM_PROMPT + chapterHint;
     const userPrompt = JSON.stringify(payload, null, 2);
     try {
-      let result;
-      try {
-        result = await geminiGenerateJson({
-          systemPrompt,
-          userPrompt,
-          modelEnv: 'GEMINI_DESCRIBE_MODEL',
-          defaultModel: 'gemini-2.5-flash',
-        });
-      } catch (geminiError) {
-        // Không có Gemini → đi chuỗi fallback (Hermes → MiniMax → OpenRouter)
-        // như /api/suggest, thay vì chết 503. Lỗi khác giữ nguyên đường degraded.
-        if (geminiError.code !== 'GEMINI_NOT_CONFIGURED') throw geminiError;
-        result = await llmTier.callLLMJson(systemPrompt, userPrompt, { tier: 'standard', timeoutMs: 45000 });
-      }
+      // Cùng thứ tự với mọi endpoint (lib/llm-tier.js): Gemini miễn phí → dự phòng
+      // (MiniMax…) → khóa Gemini trả phí chỉ khi không còn đường nào.
+      const result = await llmTier.callLLMJson(systemPrompt, userPrompt, {
+        tier: 'standard', timeoutMs: 45000, geminiModelEnv: 'GEMINI_DESCRIBE_MODEL',
+      });
       llmModel = result.model;
       declaration = normalizeDeclaration(result.json, context);
     } catch (error) {
@@ -185,6 +179,8 @@ module.exports = async function handler(req, res) {
     },
     compliance,
     trademarkRisk,
+    attributesUsed: attrs.used,
+    ...(attrs.skipped.length ? { attributesSkipped: attrs.skipped } : {}),
     llmModel,
     degraded: llmError !== null,
     llmError,
