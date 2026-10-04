@@ -1,0 +1,260 @@
+{
+  "heading": "6404",
+  "titleVi": "Giày, dép bảo vệ và các loại giày, dép khác (64.04)",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "sportUse",
+      "type": "enum",
+      "labelVi": "Giày thể thao?",
+      "questionVi": "Giày có phải giày thể thao (bóng đá, tennis, chạy, gym) không?",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "detect": {
+        "yes": [
+          "giày bóng đá",
+          "giày thể thao",
+          "giày chạy",
+          "giày tennis",
+          "giày tập gym",
+          "giày đấu vật",
+          "giày cử tạ",
+          "giày bóng rổ",
+          "giày bóng chuyền",
+          "giày leo núi",
+          "giày trekking",
+          " dép lưới"
+        ],
+        "no": [
+          "giày thời trang",
+          "giày văn phòng",
+          "giày công sở",
+          "giày nam",
+          "giày nữ",
+          "giày lười",
+          "dép",
+          "sandals"
+        ]
+      }
+    },
+    {
+      "attribute": "upperMaterial",
+      "type": "enum",
+      "labelVi": "Vật liệu phần trên giày",
+      "questionVi": "Phần mũi giày (upper) làm bằng gì?",
+      "domain": [
+        "rubber",
+        "textile",
+        "plastic",
+        "leather",
+        "other"
+      ],
+      "detect": {
+        "rubber": [
+          "cao su",
+          "rubber",
+          "elastomer"
+        ],
+        "textile": [
+          "vải",
+          "dệt",
+          "fabric",
+          "lưới",
+          "canvas",
+          "polyester",
+          "nylon"
+        ],
+        "plastic": [
+          "nhựa tổng hợp",
+          "PU",
+          "TPU",
+          "PVC nhựa",
+          "phủ nhựa"
+        ],
+        "leather": [
+          "da",
+          "leather"
+        ],
+        "other": [
+          "khác"
+        ]
+      }
+    },
+    {
+      "attribute": "hasToeCap",
+      "type": "enum",
+      "labelVi": "Có mũi giày bảo vệ?",
+      "questionVi": "Giày có mũi giày được gắn bảo vệ (mũi sắt, mũi nhựa cứng) không?",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "detect": {
+        "yes": [
+          "mũi giày bảo vệ",
+          "mũi giày gắn",
+          "mũi sắt",
+          "mũi nhựa cứng"
+        ],
+        "no": [
+          "không có mũi bảo vệ",
+          "thời trang",
+          "văn phòng"
+        ]
+      }
+    },
+    {
+      "attribute": "soleMaterial",
+      "type": "enum",
+      "labelVi": "Vật liệu đế ngoài",
+      "questionVi": "Đế ngoài giày làm bằng gì?",
+      "domain": [
+        "rubber",
+        "plastic",
+        "leather",
+        "other"
+      ],
+      "detect": {
+        "rubber": [
+          "đế cao su",
+          "sole rubber",
+          "cao su lưu hóa"
+        ],
+        "plastic": [
+          "đế nhựa",
+          "phylon",
+          "EVA",
+          "đế nhựa tổng hợp",
+          "đế nhựa dẻo"
+        ],
+        "leather": [
+          "đế da",
+          "da thuộc"
+        ],
+        "other": []
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r01",
+      "priority": 93,
+      "when": {
+        "sportUse": "yes",
+        "hasToeCap": "yes"
+      },
+      "hs": "64041110",
+      "reasonVi": "Giày thể thao có gắn đinh hoặc mũi bảo vệ → 64041110",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r02",
+      "priority": 91,
+      "when": {
+        "sportUse": "yes",
+        "upperMaterial": "rubber"
+      },
+      "hs": "64041120",
+      "reasonVi": "Giày thể thao bằng cao su (đấu vật, cử tạ, thể hình) → 64041120",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r03",
+      "priority": 88,
+      "when": {
+        "sportUse": "yes"
+      },
+      "hs": "64041190",
+      "reasonVi": "Giày thể thao các loại khác (bóng đá, tennis, chạy, gym) → 64041190",
+      "source": "Biểu thuế NK VN 2026 + oz-gold 7 entries"
+    },
+    {
+      "id": "r10",
+      "priority": 90,
+      "when": {
+        "hasToeCap": "yes"
+      },
+      "hs": "64041910",
+      "reasonVi": "Giày có mũi giày được gắn bảo vệ → 64041910",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r11",
+      "priority": 85,
+      "when": {
+        "sportUse": "no",
+        "upperMaterial": "textile",
+        "soleMaterial": "rubber"
+      },
+      "hs": "64041990",
+      "reasonVi": "Giày vải với đế cao su (không thể thao) → 64041990",
+      "source": "Biểu thuế NK VN 2026 + oz-gold 11 entries"
+    },
+    {
+      "id": "r12",
+      "priority": 83,
+      "when": {
+        "sportUse": "no",
+        "upperMaterial": "textile"
+      },
+      "hs": "64041990",
+      "reasonVi": "Giày vải thời trang với đế nhựa → 64041990",
+      "source": "Biểu thuế NK VN 2026 + oz-gold 3 entries"
+    },
+    {
+      "id": "r13",
+      "priority": 80,
+      "when": {
+        "sportUse": "no"
+      },
+      "hs": "64041990",
+      "reasonVi": "Giày các loại khác → 64041990",
+      "source": "Biểu thuế NK VN 2026"
+    }
+  ],
+  "sourceVi": "Biểu thuế NK VN 2026 (6 mã 8 số). Oz-gold 21 entries (11×64041990, 7×64041190, 3×64041900).",
+  "essenceTestVi": "Phân biệt: giày thể thao (bóng đá/tennis/gym) → 640411; giày vải có đế cao su → 640419; giày vải thời trang đế nhựa → 64041900; giày có mũi bảo vệ → 64041910; giày có đế da → 640420.",
+  "leaves": {},
+  "hitPolicy": "FIRST",
+  "attributes": {
+    "sportUse": {
+      "type": "enum",
+      "labelVi": "Giày thể thao?",
+      "domain": [
+        "yes",
+        "no"
+      ]
+    },
+    "upperMaterial": {
+      "type": "enum",
+      "labelVi": "Vật liệu phần trên",
+      "domain": [
+        "rubber",
+        "textile",
+        "plastic",
+        "leather",
+        "other"
+      ]
+    },
+    "hasToeCap": {
+      "type": "enum",
+      "labelVi": "Có mũi giày bảo vệ?",
+      "domain": [
+        "yes",
+        "no"
+      ]
+    },
+    "soleMaterial": {
+      "type": "enum",
+      "labelVi": "Vật liệu đế ngoài",
+      "domain": [
+        "rubber",
+        "plastic",
+        "leather",
+        "other"
+      ]
+    }
+  }
+}
