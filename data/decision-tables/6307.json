@@ -2,14 +2,16 @@
   "heading": "6307",
   "titleVi": "Các sản phẩm dệt khác; bộ mere; vật tư các loại",
   "verified": false,
-  "essenceTestVi": "Mặt nạ không dệt, vải không dệt, đai cứu sinh, tấm phủ tam giác, khẩu trang phẫu thuật, quạt tay, dây buộc giày, hay loại khác?",
-  "sourceVi": "Biểu thuế 2026 nhóm 63.07",
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Từ vải không dệt hay vải dệt? Nếu không dệt: dạng tấm hay loại khác? Nếu dệt: áo cứu sinh, đai, tấm phủ tam giác, khẩu trang, khăn lau, dây buộc, hay loại khác? Công nghiệp hay không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 63.07; 40 oz-gold entries (40 entries)",
   "inputs": [
     {
       "attribute": "nonwovenType",
       "type": "enum",
       "labelVi": "Loại vải không dệt",
-      "questionVi": "Hàng có phải từ vải không dệt không?",
+      "questionVi": "Hàng có phải từ vải không dệt không? Nếu có, dạng tấm (trừ phớt) hay loại khác?",
       "domain": [
         "nonwovenSheet",
         "nonwovenOther"
@@ -17,38 +19,499 @@
       "detect": {
         "nonwovenSheet": [
           "vải không dệt trừ phớt",
-          "không dệt trừ phớt"
+          "không dệt trừ phớt",
+          "vải không dệt tấm"
         ],
         "nonwovenOther": [
           "vải không dệt",
-          "không dệt"
+          "không dệt",
+          "vải không dệt loại"
         ]
+      }
+    },
+    {
+      "attribute": "productKind",
+      "type": "enum",
+      "labelVi": "Loại sản phẩm",
+      "questionVi": "Sản phẩm dệt này thuộc loại nào?",
+      "domain": [
+        "lifeJacket",
+        "triangularCover",
+        "mask",
+        "wipe",
+        "beltStrap",
+        "apronGown",
+        "fanCurtainManual",
+        "industrialPart",
+        "other"
+      ],
+      "detect": {
+        "lifeJacket": [
+          "áo cứu sinh",
+          "đai cứu sinh",
+          "áo cứu",
+          "đai cứu",
+          "life jacket",
+          "life vest",
+          "pfd",
+          "áp phíu cứu sinh"
+        ],
+        "triangularCover": [
+          "tấm phủ ô",
+          "tấm phủ tam giác",
+          "ô che",
+          "che tam giác",
+          "tấm phủ che"
+        ],
+        "mask": [
+          "khẩu trang",
+          "mặt nạ",
+          "mask",
+          "khẩu trang phẫu thuật",
+          "khẩu trang y tế",
+          "khẩu trang vải",
+          "khẩu trang nỉ",
+          "khẩu trang trẻ em",
+          "khẩu trang chống bụi",
+          "khẩu trang kín mặt"
+        ],
+        "wipe": [
+          "khăn lau",
+          "vải lau",
+          "wipe",
+          "lau bụi",
+          "lau bếp",
+          "lau bảng",
+          "khăn lau bụi",
+          "khăn lau bếp",
+          "khăn lau bảng",
+          "khăn lau đa năng"
+        ],
+        "beltStrap": [
+          "đai lưng",
+          "đai cổ",
+          "dây đeo cổ tay",
+          "dây đeo thẻ",
+          "dây đeo điện thoại",
+          "dây đeo huy chương",
+          "dây nhung trang trí",
+          "đeo cổ tay",
+          "dây buộc giày",
+          "dây buộc ủng",
+          "dây giày",
+          "dây ủng",
+          "lace",
+          "shoelace",
+          "footwear strap",
+          "miếng lót cốc",
+          "tấm lót chuột"
+        ],
+        "apronGown": [
+          "áo choàng",
+          "tạp dề",
+          "áp phíu",
+          "apron",
+          "gown",
+          "bịt mắt ngủ",
+          "bịt mắt trẻ em"
+        ],
+        "fanCurtainManual": [
+          "quạt tay",
+          "màn che kéo",
+          "quạt và màn che",
+          "fan manual",
+          "curtain manual"
+        ],
+        "industrialPart": [
+          "ống thông gió",
+          "túi lọc",
+          "bộ phận công nghiệp",
+          "vải lọc công nghiệp",
+          "túi lọc nước"
+        ],
+        "other": [
+          "lều xông",
+          "lều",
+          "địu",
+          "địu em",
+          "địu ngồi",
+          "đai chống gù",
+          "miếng đệm vai",
+          "tấm hắt sáng",
+          "đai địu",
+          "tấm lót",
+          "địu bé"
+        ]
+      }
+    },
+    {
+      "attribute": "hasIndustrial",
+      "type": "enum",
+      "labelVi": "Công nghiệp",
+      "questionVi": "Có phải hàng dùng trong công nghiệp không?",
+      "domain": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "detect": {
+        "yes": [
+          "công nghiệp",
+          "industrial",
+          "usd trong công nghiệp"
+        ],
+        "no": [],
+        "unknown": []
       }
     }
   ],
   "hitPolicy": "PRIORITY",
   "rules": [
     {
-      "id": "r-nonwoven-sheet",
-      "priority": 50,
+      "id": "6307-r01",
+      "priority": 90,
+      "hs": "63071010",
+      "reasonVi": "Vải không dệt dạng tấm (trừ phớt) → 6307.10.10",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026",
       "when": {
         "nonwovenType": "nonwovenSheet"
-      },
-      "hs": "63071010",
-      "gir": "GIR 6",
-      "reasonVi": "Từ vải không dệt trừ phớt → 6307.10.10",
-      "source": "Biểu thuế 2026"
+      }
     },
     {
-      "id": "r-nonwoven-other",
-      "priority": 50,
+      "id": "6307-r02",
+      "priority": 90,
+      "hs": "63071020",
+      "reasonVi": "Vải không dệt dạng phớt → 6307.10.20",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "productKind": "other",
+        "nonwovenType": "nonwovenOther"
+      }
+    },
+    {
+      "id": "6307-r03",
+      "priority": 85,
+      "hs": "63071090",
+      "reasonVi": "Vải không dệt loại khác (khăn lau bằng vải dệt kim) → 6307.10.90",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026; oz-gold",
+      "when": {
+        "productKind": "wipe",
+        "nonwovenType": "nonwovenOther"
+      }
+    },
+    {
+      "id": "6307-r04",
+      "priority": 80,
+      "hs": "63071090",
+      "reasonVi": "Vải không dệt loại khác (không phải tấm/phớt) → 6307.10.90",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026",
       "when": {
         "nonwovenType": "nonwovenOther"
-      },
-      "hs": "63071090",
+      }
+    },
+    {
+      "id": "6307-r05",
+      "priority": 90,
+      "hs": "63072000",
+      "reasonVi": "Áo cứu sinh và đai cứu sinh → 6307.20.00",
+      "gir": "GIR 1",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "productKind": "lifeJacket"
+      }
+    },
+    {
+      "id": "6307-r06",
+      "priority": 90,
+      "hs": "63079030",
+      "reasonVi": "Tấm phủ ô che cắt sẵn hình tam giác → 6307.90.30",
+      "gir": "GIR 1",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "productKind": "triangularCover"
+      }
+    },
+    {
+      "id": "6307-r07",
+      "priority": 90,
+      "hs": "63079040",
+      "reasonVi": "Khẩu trang phẫu thuật/y tế → 6307.90.40",
+      "gir": "GIR 1",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "productKind": "mask"
+      }
+    },
+    {
+      "id": "6307-r08",
+      "priority": 90,
+      "hs": "63079061",
+      "reasonVi": "Sản phẩm dệt công nghiệp (bộ phận, túi lọc, ống thông gió) → 6307.90.61",
+      "gir": "GIR 1",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "productKind": "industrialPart",
+        "hasIndustrial": "yes"
+      }
+    },
+    {
+      "id": "6307-r09",
+      "priority": 88,
+      "hs": "63079061",
+      "reasonVi": "Vải dệt dùng trong công nghiệp → 6307.90.61",
       "gir": "GIR 6",
-      "reasonVi": "Từ vải không dệt loại khác → 6307.10.90",
-      "source": "Biểu thuế 2026"
+      "source": "Biểu thuế 2026; oz-gold",
+      "when": {
+        "productKind": "wipe",
+        "hasIndustrial": "yes"
+      }
+    },
+    {
+      "id": "6307-r10",
+      "priority": 80,
+      "hs": "63079069",
+      "reasonVi": "Sản phẩm dệt công nghiệp loại khác → 6307.90.69",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "productKind": "industrialPart",
+        "hasIndustrial": "no"
+      }
+    },
+    {
+      "id": "6307-r11",
+      "priority": 90,
+      "hs": "63079070",
+      "reasonVi": "Quạt và màn che kéo bằng tay → 6307.90.70",
+      "gir": "GIR 1",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "productKind": "fanCurtainManual"
+      }
+    },
+    {
+      "id": "6307-r12",
+      "priority": 90,
+      "hs": "63079080",
+      "reasonVi": "Dây buộc dùng cho giày, ủng, áo nịt ngực (SEN) → 6307.90.80",
+      "gir": "GIR 1",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "productKind": "beltStrap"
+      }
+    },
+    {
+      "id": "6307-r13",
+      "priority": 70,
+      "hs": "63079090",
+      "reasonVi": "Khẩu trang vải (không phải phẫu thuật) → 6307.90.90",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026; oz-gold",
+      "when": {
+        "productKind": "mask"
+      }
+    },
+    {
+      "id": "6307-r14",
+      "priority": 70,
+      "hs": "63079090",
+      "reasonVi": "Áo choàng cắt tóc, tạp dề → 6307.90.90",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "productKind": "apronGown"
+      }
+    },
+    {
+      "id": "6307-r15",
+      "priority": 60,
+      "hs": "63079090",
+      "reasonVi": "Sản phẩm dệt khác (đai lưng, túi lọc, địu em bé, v.v.) → 6307.90.90",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026; oz-gold",
+      "when": {
+        "productKind": "other"
+      }
+    },
+    {
+      "id": "6307-r13a",
+      "priority": 50,
+      "hs": "63079090",
+      "reasonVi": "Khẩu trang vải (không phải phẫu thuật) → 6307.90.90",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026; oz-gold",
+      "when": {
+        "productKind": "mask"
+      }
+    },
+    {
+      "id": "6307-r14a",
+      "priority": 50,
+      "hs": "63079090",
+      "reasonVi": "Áo choàng cắt tóc, tạp dề → 6307.90.90",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "productKind": "apronGown"
+      }
+    },
+    {
+      "id": "6307-r15a",
+      "priority": 50,
+      "hs": "63079090",
+      "reasonVi": "Đai lưng, dây đeo, đeo cổ tay (không phải dây giày) → 6307.90.90",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "productKind": "beltStrap"
+      }
+    },
+    {
+      "id": "6307-r16a",
+      "priority": 50,
+      "hs": "63079090",
+      "reasonVi": "Sản phẩm dệt khác → 6307.90.90",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "productKind": "other"
+      }
+    },
+    {
+      "id": "6307-r17a",
+      "priority": 50,
+      "hs": "63079090",
+      "reasonVi": "Sản phẩm dệt khác → 6307.90.90",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "productKind": "triangularCover"
+      }
+    },
+    {
+      "id": "6307-r18a",
+      "priority": 50,
+      "hs": "63079090",
+      "reasonVi": "Sản phẩm dệt khác → 6307.90.90",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "productKind": "fanCurtainManual"
+      }
+    },
+    {
+      "id": "6307-r19a",
+      "priority": 50,
+      "hs": "63079090",
+      "reasonVi": "Sản phẩm dệt khác → 6307.90.90",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "productKind": "industrialPart"
+      }
+    },
+    {
+      "id": "6307-r-kind-beltStrap",
+      "priority": 40,
+      "hs": "63079090",
+      "reasonVi": "Đai lưng, dây đeo, dây đeo cổ tay (không phải dây giày/ủng) → 6307.90.90",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "productKind": "beltStrap"
+      }
+    },
+    {
+      "id": "6307-r-kind-apronGown",
+      "priority": 40,
+      "hs": "63079090",
+      "reasonVi": "Áo choàng cắt tóc, tạp dề → 6307.90.90",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "productKind": "apronGown"
+      }
+    },
+    {
+      "id": "6307-r-kind-mask",
+      "priority": 40,
+      "hs": "63079090",
+      "reasonVi": "Khẩu trang vải (không phải phẫu thuật) → 6307.90.90",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "productKind": "mask"
+      }
+    },
+    {
+      "id": "6307-r-kind-lifeJacket",
+      "priority": 40,
+      "hs": "63072000",
+      "reasonVi": "Áo cứu sinh, đai cứu sinh → 6307.20.00",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "productKind": "lifeJacket"
+      }
+    },
+    {
+      "id": "6307-r-kind-triangularCover",
+      "priority": 40,
+      "hs": "63079030",
+      "reasonVi": "Tấm phủ ô che hình tam giác → 6307.90.30",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "productKind": "triangularCover"
+      }
+    },
+    {
+      "id": "6307-r-kind-fanCurtainManual",
+      "priority": 40,
+      "hs": "63079070",
+      "reasonVi": "Quạt và màn che kéo bằng tay → 6307.90.70",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "productKind": "fanCurtainManual"
+      }
+    },
+    {
+      "id": "6307-r-kind-industrialPart",
+      "priority": 40,
+      "hs": "63079069",
+      "reasonVi": "Bộ phận dệt công nghiệp → 6307.90.69",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "productKind": "industrialPart"
+      }
+    },
+    {
+      "id": "6307-r-kind-other",
+      "priority": 40,
+      "hs": "63079090",
+      "reasonVi": "Sản phẩm dệt khác → 6307.90.90",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "productKind": "other"
+      }
+    },
+    {
+      "id": "6307-r-kind-wipe",
+      "priority": 40,
+      "hs": "63071090",
+      "reasonVi": "Khăn lau (vải dệt) → 6307.10.90",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "productKind": "wipe"
+      }
     }
   ],
   "leaves": [
@@ -62,6 +525,16 @@
       "noteVi": "Từ vải không dệt trừ phớt → 6307.10.10"
     },
     {
+      "id": "63071020",
+      "code": "63071020",
+      "conditions": {
+        "productKind": "other",
+        "nonwovenType": "nonwovenOther"
+      },
+      "heading": "6307",
+      "noteVi": "Từ phớt → 6307.10.20"
+    },
+    {
       "id": "63071090",
       "code": "63071090",
       "conditions": {
@@ -73,82 +546,76 @@
     {
       "id": "63072000",
       "code": "63072000",
-      "conditions": {},
+      "conditions": {
+        "productKind": "lifeJacket"
+      },
       "heading": "6307",
       "noteVi": "Áo cứu sinh và đai cứu sinh → 6307.20.00"
     },
     {
       "id": "63079030",
       "code": "63079030",
-      "conditions": {},
+      "conditions": {
+        "productKind": "triangularCover"
+      },
       "heading": "6307",
       "noteVi": "Tấm phủ ô che cắt sẵn hình tam giác → 6307.90.30"
     },
     {
       "id": "63079040",
       "code": "63079040",
-      "conditions": {},
+      "conditions": {
+        "productKind": "mask"
+      },
       "heading": "6307",
       "noteVi": "Khẩu trang phẫu thuật → 6307.90.40"
     },
     {
       "id": "63079061",
       "code": "63079061",
-      "conditions": {},
+      "conditions": {
+        "productKind": "industrialPart",
+        "hasIndustrial": "yes"
+      },
       "heading": "6307",
       "noteVi": "Phù hợp dùng trong công nghiệp → 6307.90.61"
     },
     {
       "id": "63079069",
       "code": "63079069",
-      "conditions": {},
+      "conditions": {
+        "productKind": "industrialPart",
+        "hasIndustrial": "no"
+      },
       "heading": "6307",
       "noteVi": "Loại khác → 6307.90.69"
     },
     {
       "id": "63079070",
       "code": "63079070",
-      "conditions": {},
+      "conditions": {
+        "productKind": "fanCurtainManual"
+      },
       "heading": "6307",
       "noteVi": "Quạt và màn che kéo bằng tay → 6307.90.70"
     },
     {
       "id": "63079080",
       "code": "63079080",
-      "conditions": {},
+      "conditions": {
+        "productKind": "beltStrap"
+      },
       "heading": "6307",
       "noteVi": "Dây buộc dùng cho giày, ủng, áo nịt ngực (SEN) → 6307.90.80"
     },
     {
       "id": "63079090",
       "code": "63079090",
-      "conditions": {},
+      "conditions": {
+        "productKind": "other"
+      },
       "heading": "6307",
       "noteVi": "Loại khác → 6307.90.90"
     }
-  ],
-  "inputAttributes": [
-    "nonwovenType"
-  ],
-  "essenceVi": "vải không dệt / đai cứu sinh / khẩu trang / dây buộc / loại khác",
-  "generatedAt": "2026-10-04T06:55:00.000Z",
-  "attributes": {
-    "nonwovenType": {
-      "detect": {
-        "nonwovenSheet": [
-          "vải không dệt trừ phớt",
-          "không dệt trừ phớt"
-        ],
-        "nonwovenOther": [
-          "vải không dệt",
-          "không dệt"
-        ]
-      },
-      "type": "enum",
-      "domain": [
-        "nonwovenSheet",
-        "nonwovenOther"
-      ]
-    }
-  }
+  ]
 }

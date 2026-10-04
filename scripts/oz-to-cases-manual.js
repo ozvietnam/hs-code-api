@@ -58,7 +58,9 @@ for (const heading of headings) {
   console.log(`  unique: ${unique.length}`);
   
   for (const record of unique) {
-    const text = record.tenHang;
+    // Combine tenHang + chatLieu + congDung for richer text
+    const parts = [record.tenHang, record.chatLieu, record.congDung].filter(Boolean);
+    const text = parts.join(' ');
     if (!text || text.length < 3) continue;
     
     const idBase = `${heading}-oz-${slugify(text.slice(0, 40))}`;
