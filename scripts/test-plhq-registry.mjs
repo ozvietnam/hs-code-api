@@ -21,8 +21,21 @@ const fixture = {
 };
 mkdirSync(dataPath(), { recursive: true });
 writeFileSync(dataPath('plhq-registry.json'), JSON.stringify(fixture));
+// Bảng mã HS ↔ văn bản (dạng data/plhq-hs-index.json sau sync-plhq)
+writeFileSync(dataPath('plhq-hs-index.json'), JSON.stringify({ registryVersion: '2026-10-04', syncedAt: '2026-10-04', documents: [
+  { soHieu: '28/2026/TT-BCT', ten: 'Danh mục ATTP BCT', tinhTrang: 'CON_HIEU_LUC', hieuLucTu: '2026-07-17', hetHieuLucTu: null, hieuLucDaDoiChieu: false,
+    table: { file: 'danh-muc/28-2026-tt-bct.csv', source: 'https://congbao.chinhphu.vn/x', verified: false }, slug: '28-2026-tt-bct',
+    rows: [
+      { hs: '22030091', moTa: 'Bia đóng chai', phuLuc: 'Phụ lục', loaiTacDong: 'KIEM_TRA_ATTP', trang: 5 },
+      { hs: '1905', moTa: 'Bánh, bánh quy', phuLuc: 'Phụ lục', loaiTacDong: 'KIEM_TRA_ATTP', dieuKien: 'trừ loại dùng cho trẻ em', trang: 6 },
+      { hs: null, moTa: 'Thực phẩm dinh dưỡng', loaiTacDong: 'KIEM_TRA_ATTP', danChieu: '15/2024/TT-BYT' },
+    ] },
+  { soHieu: '1182/QĐ-BCT', ten: 'Danh mục cũ', tinhTrang: 'HET_HIEU_LUC', hieuLucTu: '2021-01-01', hetHieuLucTu: '2026-07-17', hieuLucDaDoiChieu: true,
+    table: { file: 'danh-muc/1182-qd-bct-2021.csv', source: null, verified: true }, slug: '1182-qd-bct-2021',
+    rows: [{ hs: '190590', moTa: 'Bánh các loại', loaiTacDong: 'KIEM_TRA_ATTP' }] },
+] }));
 
-const { registryReview, lookup, khoa, trichSoHieu, docRegistry, libraryConflicts } = require('../lib/plhq-registry.js');
+const { registryReview, lookup, khoa, trichSoHieu, docRegistry, libraryConflicts, hsListings } = require('../lib/plhq-registry.js');
 const { policyBasisReview, regimeStatusForCode } = require('../lib/policy-regime.js');
 
 let pass = 0;
@@ -84,5 +97,16 @@ t('/api/legal-status không tham số → libraryConflicts', s2._s === 200 && Ar
 const s3 = await call({ resource: 'legal_docs' });
 t('/api/legal-docs: mỗi văn bản có trường registry, đếm lệch', s3._s === 200 && s3._j.items.every((d) => 'registry' in d) && typeof s3._j.registryConflicts === 'number');
 
+
+// Lớp mã HS ↔ văn bản
+const l1 = hsListings('19059090', { asOf: '2026-10-04' });
+t('hsListings: khớp theo tiền tố 6 và 4 số, giữ dieuKien', l1.length === 2 && l1.some((x) => x.match.level === 'HS4' && x.dieuKien === 'trừ loại dùng cho trẻ em' && x.active) && l1.some((x) => x.match.level === 'HS6' && x.soHieu === '1182/QĐ-BCT'));
+t('hsListings: danh mục đã hết hiệu lực → active=false', l1.find((x) => x.soHieu === '1182/QĐ-BCT').active === false);
+t('hsListings: trước ngày hiệu lực → active=false', hsListings('22030091', { asOf: '2026-07-01' })[0].active === false && hsListings('22030091', { asOf: '2026-07-17' })[0].active === true);
+t('hsListings: khớp đúng 8 số, không khớp mã khác', hsListings('22030091')[0].match.level === 'HS8' && hsListings('22030099').length === 0);
+t('hsListings: dòng dẫn chiếu (không mã) không khớp mã nào; đầu vào sai → []', hsListings('1905').length === 0 && !hsListings('19059090').some((x) => x.danChieu));
+const { mapTaxRecord } = require('../lib/tax-mapper.js');
+const mapped = mapTaxRecord({ hs: '22030091', vn: '- - Bia', cs: '' });
+t('/api/tax: mã trong danh mục có hsListings; mã không có thì không có trường', mapped.hsListings?.[0]?.soHieu === '28/2026/TT-BCT' && !('hsListings' in mapTaxRecord({ hs: '01012100', vn: 'x', cs: '' })));
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

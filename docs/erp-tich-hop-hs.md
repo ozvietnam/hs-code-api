@@ -112,6 +112,12 @@ trả thêm `policyBasisReview`:
 - `/api/legal-docs` (danh sách và từng văn bản) kèm trường `registry` — tình trạng theo sổ cộng đồng; khi
   `registry.statusConflict: true` ERP hiện "tình trạng hiệu lực đang được đối chiếu", không khẳng định còn hiệu lực.
 - Sổ được đồng bộ tự động mỗi ngày (workflow `plhq-sync`); thay đổi lớn mở PR cho người duyệt.
+- `hsListings` (từ 10/2026): văn bản **danh mục** có phụ lục liệt kê mã này — trích nguyên văn bảng mã HS
+  của từng thông tư (danh mục KTCN 2026, cấm, giấy phép…), không phụ thuộc cột chính sách cũ. Mỗi mục có
+  `loaiTacDong` (KIEM_TRA_ATTP, KIEM_TRA_CHAT_LUONG…), `mucRuiRo`, `active` (đang áp dụng hôm nay) và
+  `match.level`: `HS8` khớp đúng mã; `HS4`/`HS6` khớp theo nhóm → **phải hiện `dieuKien`** cho nhân viên
+  (phụ lục có thể chỉ áp cho một phần nhóm). Chỉ dùng mục `active: true` để báo "mã này thuộc danh mục…";
+  không có `hsListings` **không** có nghĩa là không phải kiểm tra — bảng của nhiều thông tư chưa được trích.
 
 ## 4. Gửi lại mã đã sửa — `/api/feedback`
 
