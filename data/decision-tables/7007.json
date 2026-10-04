@@ -1,0 +1,332 @@
+{
+  "heading": "7007",
+  "titleVi": "Kính bảo hộ (kính cường lực, kính dán an toàn)",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Kính cường lực hay kính dán? Dùng cho xe, máy bay, hay máy công nghiệp/nhóm 84?",
+  "sourceVi": "Biểu thuế 2026 nhóm 70.07; 37 oz-gold entries",
+  "inputs": [
+    {
+      "attribute": "glassType",
+      "type": "enum",
+      "labelVi": "Loại kính",
+      "questionVi": "Hàng là kính cường lực (tempered) hay kính dán (laminated)?",
+      "domain": [
+        "tempered",
+        "laminated"
+      ],
+      "detect": {
+        "tempered": [
+          "kính cường lực",
+          "cường lực",
+          "tempered",
+          "kính temper",
+          "kính cường",
+          "tempered glass",
+          "cường lực"
+        ],
+        "laminated": [
+          "kính dán",
+          "dán an toàn",
+          "laminated",
+          "kính an toàn",
+          "kính laminated",
+          "safety glass",
+          "kính dán an toàn"
+        ]
+      }
+    },
+    {
+      "attribute": "application",
+      "type": "enum",
+      "labelVi": "Ứng dụng",
+      "questionVi": "Kính dùng cho loại phương tiện nào?",
+      "domain": [
+        "vehicle",
+        "aircraft",
+        "machine",
+        "other"
+      ],
+      "detect": {
+        "vehicle": [
+          "xe",
+          "ô tô",
+          "oto",
+          "chở người",
+          "chở hàng",
+          "vehicle"
+        ],
+        "aircraft": [
+          "máy bay",
+          "tàu vũ trụ",
+          "aircraft",
+          "drone"
+        ],
+        "machine": [
+          "máy",
+          "công nghiệp",
+          "máy móc",
+          "nhóm 84",
+          "machine"
+        ],
+        "other": [
+          "điện thoại",
+          "điện thoại",
+          "camera",
+          "màn hình",
+          "bảo vệ",
+          "chống nhìn trộm",
+          "bảo vệ màn hình"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "7007-r01",
+      "priority": 30,
+      "hs": "70071110",
+      "reasonVi": "Kính cường lực cho xe (Chương 87) → 7007.11.10",
+      "gir": "GIR 1",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "glassType": "tempered",
+        "application": "vehicle"
+      }
+    },
+    {
+      "id": "7007-r02",
+      "priority": 30,
+      "hs": "70071120",
+      "reasonVi": "Kính cường lực cho máy bay (Chương 88) → 7007.11.20",
+      "gir": "GIR 1",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "glassType": "tempered",
+        "application": "aircraft"
+      }
+    },
+    {
+      "id": "7007-r03",
+      "priority": 35,
+      "hs": "70071910",
+      "reasonVi": "Kính cường lực cho máy thuộc nhóm 84.29/84.30 → 7007.19.10",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "glassType": "tempered",
+        "application": "machine"
+      }
+    },
+    {
+      "id": "7007-r04",
+      "priority": 70,
+      "hs": "70071990",
+      "reasonVi": "Kính cường lực loại khác → 7007.19.90",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026; oz-gold",
+      "when": {
+        "glassType": "tempered",
+        "application": "other"
+      }
+    },
+    {
+      "id": "7007-r05",
+      "priority": 30,
+      "hs": "70072110",
+      "reasonVi": "Kính dán cho xe (Chương 87) → 7007.21.10",
+      "gir": "GIR 1",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "glassType": "laminated",
+        "application": "vehicle"
+      }
+    },
+    {
+      "id": "7007-r06",
+      "priority": 30,
+      "hs": "70072120",
+      "reasonVi": "Kính dán cho máy bay (Chương 88) → 7007.21.20",
+      "gir": "GIR 1",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "glassType": "laminated",
+        "application": "aircraft"
+      }
+    },
+    {
+      "id": "7007-r07",
+      "priority": 35,
+      "hs": "70072910",
+      "reasonVi": "Kính dán cho máy thuộc nhóm 84.29/84.30 → 7007.29.10",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "glassType": "laminated",
+        "application": "machine"
+      }
+    },
+    {
+      "id": "7007-r08",
+      "priority": 70,
+      "hs": "70072990",
+      "reasonVi": "Kính dán loại khác (kính bảo vệ điện thoại) → 7007.29.90",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026; oz-gold",
+      "when": {
+        "glassType": "laminated",
+        "application": "other"
+      }
+    },
+    {
+      "id": "7007-r09",
+      "priority": 80,
+      "hs": "70071990",
+      "reasonVi": "Kính cường lực (loại khác) → 7007.19.90",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "glassType": "tempered"
+      }
+    },
+    {
+      "id": "7007-r10",
+      "priority": 80,
+      "hs": "70072990",
+      "reasonVi": "Kính dán an toàn (loại khác) → 7007.29.90",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "glassType": "laminated"
+      }
+    },
+    {
+      "id": "7007-r11",
+      "priority": 60,
+      "hs": "70071190",
+      "reasonVi": "Kính cường lực dùng cho các phương tiện khác (không phải xe cơ giới/máy bay) → 7007.11.90",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "glassType": "tempered",
+        "application": "vehicle"
+      }
+    },
+    {
+      "id": "7007-r12",
+      "priority": 60,
+      "hs": "70072190",
+      "reasonVi": "Kính dán dùng cho các phương tiện khác (không phải xe cơ giới/máy bay) → 7007.21.90",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "glassType": "laminated",
+        "application": "vehicle"
+      }
+    }
+  ],
+  "leaves": [
+    {
+      "id": "70071110",
+      "code": "70071110",
+      "conditions": {
+        "glassType": "tempered",
+        "application": "vehicle"
+      },
+      "heading": "7007",
+      "noteVi": "Kính cường lực phù hợp dùng cho xe thuộc Chương 87"
+    },
+    {
+      "id": "70071120",
+      "code": "70071120",
+      "conditions": {
+        "glassType": "tempered",
+        "application": "aircraft"
+      },
+      "heading": "7007",
+      "noteVi": "Kính cường lực phù hợp dùng cho phương tiện bay thuộc Chương 88"
+    },
+    {
+      "id": "70071190",
+      "code": "70071190",
+      "conditions": {
+        "glassType": "tempered",
+        "application": "vehicle"
+      },
+      "heading": "7007",
+      "noteVi": "Kính cường lực loại khác"
+    },
+    {
+      "id": "70071910",
+      "code": "70071910",
+      "conditions": {
+        "glassType": "tempered",
+        "application": "machine"
+      },
+      "heading": "7007",
+      "noteVi": "Kính cường lực phù hợp dùng cho máy thuộc nhóm 84.29/84.30"
+    },
+    {
+      "id": "70071990",
+      "code": "70071990",
+      "conditions": {
+        "glassType": "tempered",
+        "application": "other"
+      },
+      "heading": "7007",
+      "noteVi": "Kính cường lực loại khác"
+    },
+    {
+      "id": "70072110",
+      "code": "70072110",
+      "conditions": {
+        "glassType": "laminated",
+        "application": "vehicle"
+      },
+      "heading": "7007",
+      "noteVi": "Kính dán phù hợp dùng cho xe thuộc Chương 87"
+    },
+    {
+      "id": "70072120",
+      "code": "70072120",
+      "conditions": {
+        "glassType": "laminated",
+        "application": "aircraft"
+      },
+      "heading": "7007",
+      "noteVi": "Kính dán phù hợp dùng cho phương tiện bay thuộc Chương 88"
+    },
+    {
+      "id": "70072190",
+      "code": "70072190",
+      "conditions": {
+        "glassType": "laminated",
+        "application": "vehicle"
+      },
+      "heading": "7007",
+      "noteVi": "Kính dán loại khác"
+    },
+    {
+      "id": "70072910",
+      "code": "70072910",
+      "conditions": {
+        "glassType": "laminated",
+        "application": "machine"
+      },
+      "heading": "7007",
+      "noteVi": "Kính dán phù hợp dùng cho máy thuộc nhóm 84.29/84.30"
+    },
+    {
+      "id": "70072990",
+      "code": "70072990",
+      "conditions": {
+        "glassType": "laminated",
+        "application": "other"
+      },
+      "heading": "7007",
+      "noteVi": "Kính dán loại khác"
+    }
+  ]
+}
