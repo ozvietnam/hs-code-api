@@ -1,0 +1,534 @@
+{
+  "heading": "7307",
+  "titleVi": "Phụ kiện ống dẫn (ống nối, khớp nối, co, bích)",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "7307 là phụ kiện đường ống bằng sắt/thép. Nếu là bích (flange) → 7307.21/.22/.23. Nếu là ống nối/khớp nối/góc/co → 7307.29/.91/.92/.99. Nếu không có đầu nối → 7307.11. Đường kính <15cm hay ≥15cm là specCode không có trong text — dùng mặc định <15cm.",
+  "sourceVi": "Biểu thuế 2026 nhóm 7307 — 19 lá; oz-gold 27 entries (730722/729/791/792/799).",
+  "hitPolicy": "FIRST",
+  "attributes": {
+    "fittingKind": {
+      "type": "enum",
+      "labelVi": "Loại phụ kiện",
+      "domain": [
+        "bich",
+        "ongNoi",
+        "elbowTee",
+        "nut",
+        "noConnector"
+      ],
+      "detect": {
+        "bich": [
+          "bích",
+          "bich",
+          "flange"
+        ],
+        "ongNoi": [
+          "khớp nối",
+          "ống nối",
+          "đầu nối",
+          "nối nhanh",
+          "nối ống",
+          "coupling",
+          "union",
+          "接头"
+        ],
+        "elbowTee": [
+          "co",
+          "cút",
+          "elbow",
+          "tee",
+          "ống giảm",
+          "reducer",
+          "ống chữ T",
+          "ống chữ Y",
+          "ba đầu",
+          "đầu ba"
+        ],
+        "nut": [
+          "đai ốc",
+          "ống lót",
+          "sleeve"
+        ],
+        "noConnector": [
+          "ống dẫn",
+          "ống luồn",
+          "đường ống"
+        ]
+      }
+    },
+    "materialKind": {
+      "type": "enum",
+      "labelVi": "Chất liệu",
+      "domain": [
+        "castIron",
+        "steel",
+        "stainlessSteel"
+      ],
+      "detect": {
+        "castIron": [
+          "gang",
+          "cast iron",
+          "fittings gang"
+        ],
+        "stainlessSteel": [
+          "thép không gỉ",
+          "inox",
+          "inox 316",
+          "stainless",
+          "316",
+          "304"
+        ],
+        "steel": [
+          "thép",
+          "sắt",
+          "carbon",
+          "thép carbon",
+          "sắt mạ"
+        ]
+      }
+    },
+    "diameterClass": {
+      "type": "enum",
+      "labelVi": "Đường kính",
+      "domain": [
+        "lt15cm",
+        "ge15cm"
+      ],
+      "detect": {
+        "lt15cm": [
+          "dưới 15cm",
+          "diameter < 15cm",
+          "đường kính dưới 15cm"
+        ],
+        "ge15cm": [
+          "trên 15cm",
+          "diameter >= 15cm",
+          "đường kính từ 15cm",
+          "15cm"
+        ]
+      }
+    }
+  },
+  "inputs": [
+    {
+      "attribute": "fittingKind",
+      "type": "enum",
+      "labelVi": "Loại phụ kiện",
+      "questionVi": "Phụ kiện đường ống thuộc loại nào?",
+      "domain": [
+        "bich",
+        "ongNoi",
+        "elbowTee",
+        "nut",
+        "noConnector"
+      ]
+    },
+    {
+      "attribute": "materialKind",
+      "type": "enum",
+      "labelVi": "Chất liệu",
+      "questionVi": "Phụ kiện làm bằng gì?",
+      "domain": [
+        "castIron",
+        "steel",
+        "stainlessSteel"
+      ]
+    }
+  ],
+  "inputAttributes": [
+    "fittingKind",
+    "materialKind"
+  ],
+  "rules": [
+    {
+      "id": "r-bich-caste-iron",
+      "priority": 80,
+      "when": {
+        "fittingKind": "bich",
+        "materialKind": "castIron"
+      },
+      "hs": "73071900",
+      "gir": "GIR 6",
+      "reasonVi": "Bích gang cho đường ống — thuộc 7307.19.00.",
+      "source": "Biểu thuế 2026 dòng 7307.19.00"
+    },
+    {
+      "id": "r-bich-stainless",
+      "priority": 90,
+      "when": {
+        "fittingKind": "bich",
+        "materialKind": "stainlessSteel"
+      },
+      "hs": "73072190",
+      "gir": "GIR 6",
+      "reasonVi": "Bích thép không gỉ cho đường ống — thuộc 7307.21.90 (đường kính ≥ 15cm) hoặc 7307.21.10 (< 15cm).",
+      "source": "Biểu thuế 2026 dòng 7307.21.90/7307.21.10"
+    },
+    {
+      "id": "r-bich-steel",
+      "priority": 80,
+      "when": {
+        "fittingKind": "bich",
+        "materialKind": "steel"
+      },
+      "hs": "73072290",
+      "gir": "GIR 6",
+      "reasonVi": "Bích thép carbon cho đường ống — thuộc 7307.22.90 (đường kính ≥ 15cm) hoặc 7307.22.10 (< 15cm).",
+      "source": "Biểu thuế 2026 dòng 7307.22.90/7307.22.10; oz: khớp nối thép."
+    },
+    {
+      "id": "r-bich-other",
+      "priority": 70,
+      "when": {
+        "fittingKind": "bich"
+      },
+      "hs": "73072390",
+      "gir": "GIR 6",
+      "reasonVi": "Bích loại khác (gang/đúc) — thuộc 7307.23.90 (đường kính ≥ 15cm) hoặc 7307.23.10 (< 15cm).",
+      "source": "Biểu thuế 2026 dòng 7307.23.90/7307.23.10"
+    },
+    {
+      "id": "r-khop-noi-iron",
+      "priority": 80,
+      "when": {
+        "fittingKind": "ongNoi",
+        "materialKind": "castIron"
+      },
+      "hs": "73071900",
+      "gir": "GIR 6",
+      "reasonVi": "Khớp nối ống bằng gang — thuộc 7307.19.00.",
+      "source": "Biểu thuế 2026 dòng 7307.19.00"
+    },
+    {
+      "id": "r-khop-noi-steel",
+      "priority": 80,
+      "when": {
+        "fittingKind": "ongNoi",
+        "materialKind": "steel"
+      },
+      "hs": "73079990",
+      "gir": "GIR 6",
+      "reasonVi": "Khớp nối ống bằng thép carbon — thuộc 7307.99.90 (đường kính ≥ 15cm) hoặc 7307.99.10 (< 15cm).",
+      "source": "Biểu thuế 2026 dòng 7307.99.90/7307.99.10; oz: khớp nối sắt, khớp nối 2 đầu cùng đường kính."
+    },
+    {
+      "id": "r-elbow-stainless",
+      "priority": 90,
+      "when": {
+        "fittingKind": "elbowTee",
+        "materialKind": "stainlessSteel"
+      },
+      "hs": "73079190",
+      "gir": "GIR 6",
+      "reasonVi": "Cút/ống chữ T bằng thép không gỉ — thuộc 7307.91.90 (đường kính ≥ 15cm) hoặc 7307.91.10 (< 15cm).",
+      "source": "Biểu thuế 2026 dòng 7307.91.90/7307.91.10"
+    },
+    {
+      "id": "r-elbow-steel",
+      "priority": 80,
+      "when": {
+        "fittingKind": "elbowTee",
+        "materialKind": "steel"
+      },
+      "hs": "73079190",
+      "gir": "GIR 6",
+      "reasonVi": "Cút/ống chữ T bằng thép carbon — thuộc 7307.91.90 (≥ 15cm) hoặc 7307.91.10 (< 15cm).",
+      "source": "Biểu thuế 2026 dòng 7307.91.90/7307.91.10"
+    },
+    {
+      "id": "r-elbow-iron",
+      "priority": 75,
+      "when": {
+        "fittingKind": "elbowTee",
+        "materialKind": "castIron"
+      },
+      "hs": "73071900",
+      "gir": "GIR 6",
+      "reasonVi": "Cút/ống chữ T bằng gang — thuộc 7307.19.00.",
+      "source": "Biểu thuế 2026 dòng 7307.19.00"
+    },
+    {
+      "id": "r-screwed-stainless",
+      "priority": 90,
+      "when": {
+        "fittingKind": "nut",
+        "materialKind": "stainlessSteel"
+      },
+      "hs": "73079290",
+      "gir": "GIR 6",
+      "reasonVi": "Ống nối ren bằng thép không gỉ — thuộc 7307.92.90 (đường kính ≥ 15cm) hoặc 7307.92.10 (< 15cm).",
+      "source": "Biểu thuế 2026 dòng 7307.92.90/7307.92.10"
+    },
+    {
+      "id": "r-screwed-steel",
+      "priority": 80,
+      "when": {
+        "fittingKind": "nut",
+        "materialKind": "steel"
+      },
+      "hs": "73079290",
+      "gir": "GIR 6",
+      "reasonVi": "Ống nối ren bằng thép carbon — thuộc 7307.92.90 (≥ 15cm) hoặc 7307.92.10 (< 15cm).",
+      "source": "Biểu thuế 2026 dòng 7307.92.90/7307.92.10"
+    },
+    {
+      "id": "r-screwed-iron",
+      "priority": 75,
+      "when": {
+        "fittingKind": "nut",
+        "materialKind": "castIron"
+      },
+      "hs": "73071900",
+      "gir": "GIR 6",
+      "reasonVi": "Ống nối ren bằng gang — thuộc 7307.19.00.",
+      "source": "Biểu thuế 2026 dòng 7307.19.00"
+    },
+    {
+      "id": "r-other-stainless",
+      "priority": 90,
+      "when": {
+        "fittingKind": "noConnector",
+        "materialKind": "stainlessSteel"
+      },
+      "hs": "73079990",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện đường ống khác bằng thép không gỉ — thuộc 7307.99.90 (đường kính ≥ 15cm) hoặc 7307.99.10 (< 15cm).",
+      "source": "Biểu thuế 2026 dòng 7307.99.90/7307.99.10"
+    },
+    {
+      "id": "r-other-steel",
+      "priority": 80,
+      "when": {
+        "fittingKind": "noConnector",
+        "materialKind": "steel"
+      },
+      "hs": "73079990",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện đường ống khác bằng thép carbon — thuộc 7307.99.90 (≥ 15cm) hoặc 7307.99.10 (< 15cm).",
+      "source": "Biểu thuế 2026 dòng 7307.99.90/7307.99.10; oz: khớp điều chỉnh góc camera."
+    },
+    {
+      "id": "r-other-iron",
+      "priority": 75,
+      "when": {
+        "fittingKind": "noConnector",
+        "materialKind": "castIron"
+      },
+      "hs": "73071900",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện đường ống khác bằng gang — thuộc 7307.19.00.",
+      "source": "Biểu thuế 2026 dòng 7307.19.00"
+    },
+    {
+      "id": "r-no-connector",
+      "priority": 70,
+      "when": {
+        "fittingKind": "noConnector"
+      },
+      "hs": "73071190",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện ống dẫn không có đầu nối — thuộc 7307.11.90 (gang) hoặc 7307.11.10 (thép).",
+      "source": "Biểu thuế 2026 dòng 7307.11.90/7307.11.10"
+    },
+    {
+      "id": "r-khop-noi-ss-lt15-assume",
+      "priority": 60,
+      "when": {
+        "fittingKind": "ongNoi",
+        "materialKind": "stainlessSteel"
+      },
+      "hs": "73072910",
+      "gir": "GIR 6",
+      "reasonVi": "Khớp nối ống bằng thép không gỉ (đường kính mặc định < 15cm) — thuộc 7307.29.10.",
+      "source": "Biểu thuế 2026 dòng 7307.29.10; oz: đầu nối nhanh khí nén, khớp nối Inox."
+    },
+    {
+      "id": "r-elbow-stainless-lt15-assume",
+      "priority": 60,
+      "when": {
+        "fittingKind": "elbowTee",
+        "materialKind": "stainlessSteel"
+      },
+      "hs": "73079110",
+      "gir": "GIR 6",
+      "reasonVi": "Cút/ống chữ T bằng thép không gỉ (đường kính mặc định < 15cm) — thuộc 7307.91.10.",
+      "source": "Biểu thuế 2026 dòng 7307.91.10"
+    },
+    {
+      "id": "r-screwed-stainless-lt15-assume",
+      "priority": 60,
+      "when": {
+        "fittingKind": "nut",
+        "materialKind": "stainlessSteel"
+      },
+      "hs": "73079210",
+      "gir": "GIR 6",
+      "reasonVi": "Ống nối ren bằng thép không gỉ (đường kính mặc định < 15cm) — thuộc 7307.92.10.",
+      "source": "Biểu thuế 2026 dòng 7307.92.10"
+    },
+    {
+      "id": "r-bich-stainless-lt15-assume",
+      "priority": 60,
+      "when": {
+        "fittingKind": "bich",
+        "materialKind": "stainlessSteel"
+      },
+      "hs": "73072110",
+      "gir": "GIR 6",
+      "reasonVi": "Bích thép không gỉ (đường kính mặc định < 15cm) — thuộc 7307.21.10.",
+      "source": "Biểu thuế 2026 dòng 7307.21.10"
+    },
+    {
+      "id": "r-bich-steel-lt15-assume",
+      "priority": 60,
+      "when": {
+        "fittingKind": "bich",
+        "materialKind": "steel"
+      },
+      "hs": "73072210",
+      "gir": "GIR 6",
+      "reasonVi": "Bích thép carbon (đường kính mặc định < 15cm) — thuộc 7307.22.10.",
+      "source": "Biểu thuế 2026 dòng 7307.22.10"
+    },
+    {
+      "id": "r-other-steel-lt15-assume",
+      "priority": 60,
+      "when": {
+        "fittingKind": "noConnector",
+        "materialKind": "steel"
+      },
+      "hs": "73079910",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện đường ống khác bằng thép carbon (đường kính mặc định < 15cm) — thuộc 7307.99.10.",
+      "source": "Biểu thuế 2026 dòng 7307.99.10"
+    },
+    {
+      "id": "r-khop-noi-ss-uncertain",
+      "priority": 30,
+      "when": {
+        "fittingKind": "ongNoi",
+        "materialKind": "stainlessSteel"
+      },
+      "hs": "73072910",
+      "gir": "GIR 6",
+      "reasonVi": "Khớp nối ống bằng thép không gỉ — 7307.29.10 (< 15cm). Nếu là loại ≥ 15cm → 7307.29.90.",
+      "source": "Biểu thuế 2026 dòng 7307.29.10/7307.29.90"
+    },
+    {
+      "id": "r-elbow-ss-uncertain",
+      "priority": 30,
+      "when": {
+        "fittingKind": "elbowTee",
+        "materialKind": "stainlessSteel"
+      },
+      "hs": "73079110",
+      "gir": "GIR 6",
+      "reasonVi": "Cút/ống chữ T bằng thép không gỉ — 7307.91.10 (< 15cm). Nếu là loại ≥ 15cm → 7307.91.90.",
+      "source": "Biểu thuế 2026 dòng 7307.91.10/7307.91.90"
+    },
+    {
+      "id": "r-no-con-steel",
+      "priority": 20,
+      "when": {
+        "fittingKind": "noConnector",
+        "materialKind": "steel"
+      },
+      "hs": "73071190",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện ống dẫn bằng thép — thuộc 7307.11.90. Nếu là loại < 15cm và không có đầu nối → 7307.11.10.",
+      "source": "Biểu thuế 2026 dòng 7307.11.90"
+    },
+    {
+      "id": "r-bich-other-fallback",
+      "priority": 20,
+      "when": {
+        "fittingKind": "bich"
+      },
+      "hs": "73071900",
+      "gir": "GIR 6",
+      "reasonVi": "Bích bằng gang hoặc hợp kim khác — thuộc 7307.19.00. Nếu là loại không rõ vật liệu → 7307.19.00.",
+      "source": "Biểu thuế 2026 dòng 7307.19.00"
+    },
+    {
+      "id": "r-khop-noi-ss-large",
+      "priority": 20,
+      "when": {
+        "fittingKind": "ongNoi",
+        "materialKind": "stainlessSteel"
+      },
+      "hs": "73072990",
+      "gir": "GIR 6",
+      "reasonVi": "Khớp nối ống bằng thép không gỉ, đường kính ≥ 15cm — thuộc 7307.29.90. Nếu < 15cm → 7307.29.10.",
+      "source": "Biểu thuế 2026 dòng 7307.29.90"
+    },
+    {
+      "id": "r-elbow-other-lt15",
+      "priority": 20,
+      "when": {
+        "fittingKind": "elbowTee",
+        "materialKind": "castIron"
+      },
+      "hs": "73071900",
+      "gir": "GIR 6",
+      "reasonVi": "Cút/ống chữ T bằng gang — thuộc 7307.19.00.",
+      "source": "Biểu thuế 2026 dòng 7307.19.00"
+    },
+    {
+      "id": "r-elbow-other-material",
+      "priority": 15,
+      "when": {
+        "fittingKind": "elbowTee"
+      },
+      "hs": "73079190",
+      "gir": "GIR 6",
+      "reasonVi": "Cút/ống chữ T — 7307.91.90 (≥15cm). Nếu < 15cm → 7307.91.10. Nếu bằng gang → 7307.19.00.",
+      "source": "Biểu thuế 2026 dòng 7307.91.90"
+    },
+    {
+      "id": "r-residual-no-connector-lt15",
+      "priority": 5,
+      "when": {
+        "fittingKind": "noConnector"
+      },
+      "hs": "73071110",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện đường ống không có đầu nối, đường kính < 15cm — thuộc 7307.11.10.",
+      "source": "Biểu thuế 2026 dòng 7307.11.10"
+    },
+    {
+      "id": "r-residual-bich-lt15",
+      "priority": 5,
+      "when": {
+        "fittingKind": "bich"
+      },
+      "hs": "73072310",
+      "gir": "GIR 6",
+      "reasonVi": "Bích đường ống, đường kính < 15cm — thuộc 7307.23.10.",
+      "source": "Biểu thuế 2026 dòng 7307.23.10"
+    },
+    {
+      "id": "r-residual-elbow-lt15",
+      "priority": 5,
+      "when": {
+        "fittingKind": "elbowTee"
+      },
+      "hs": "73079310",
+      "gir": "GIR 6",
+      "reasonVi": "Cút/ống chữ T đường ống, đường kính < 15cm — thuộc 7307.93.10.",
+      "source": "Biểu thuế 2026 dòng 7307.93.10"
+    },
+    {
+      "id": "r-residual-elbow-ge15",
+      "priority": 5,
+      "when": {
+        "fittingKind": "elbowTee"
+      },
+      "hs": "73079390",
+      "gir": "GIR 6",
+      "reasonVi": "Cút/ống chữ T đường ống, đường kính ≥ 15cm — thuộc 7307.93.90.",
+      "source": "Biểu thuế 2026 dòng 7307.93.90"
+    }
+  ]
+}
