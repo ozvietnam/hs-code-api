@@ -17,7 +17,19 @@ function articleText(html) {
 
 export default async function precedentExtract({ cfg, log, budget, dryRun }) {
   const queue = load('queue', { items: [] });
-  const todo = queue.items.filter((i) => i.kind === 'classification' && (i.state === 'new' || i.state === 'retry')).slice(0, cfg.maxDocsPerRun);
+  // Pick new/retry items, and also no-conclusion items that have never been retried
+  // (attempts=0) or have been stuck for ≥1 day without being picked up again.
+  const DAY_MS = 24 * 3600 * 1000;
+  const staleThreshold = Date.now() - DAY_MS;
+  const todo = queue.items.filter((i) => {
+    if (i.kind !== 'classification') return false;
+    if (i.state === 'new' || i.state === 'retry') return true;
+    // Re-pick no-conclusion items that were never retried or have been stuck >1 day
+    if (i.state === 'no-conclusion') {
+      return i.attempts === 0 || !i.retriedAt || i.retriedAt < staleThreshold;
+    }
+    return false;
+  }).slice(0, cfg.maxDocsPerRun);
   if (!todo.length) return { status: 'idle', lines: ['Hàng đợi trống.'] };
   if (!configuredProviders('standard').length) {
     return { status: 'waiting', lines: [`${todo.length}+ văn bản chờ trích nhưng chưa có khóa LLM nào trong /etc/hs-agent/env.`] };
@@ -42,6 +54,7 @@ export default async function precedentExtract({ cfg, log, budget, dryRun }) {
         if (v.noConclusion) {
           item.state = 'no-conclusion';
           item.note = String(v.noConclusion).slice(0, 200);
+          item.retriedAt = Date.now(); // mark so we don't re-queue within the same day
           docLines.push(`- ${item.ref}: không kết luận mã — ${item.note}`);
         } else if (!v.records.length) {
           item.state = item.attempts >= cfg.maxAttemptsPerDoc ? 'rejected' : 'retry';
