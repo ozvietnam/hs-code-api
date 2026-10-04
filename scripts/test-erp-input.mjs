@@ -14,6 +14,9 @@ const llmTier = require('../lib/llm-tier');
 llmTier.callLLMJson = async (system, user) => {
   calls.push(system.slice(0, 40));
   if (system.includes('DỮ KIỆN HÀNG HÓA')) {
+    if (user.includes('碳酸饮料')) {
+      return { json: { tenHangVi: 'nước ngọt có ga', banChat: 'đồ uống có ga khác dùng ngay được không cần pha loãng, chai thủy tinh', thuongHieu: 'Coca-Cola', noiSanXuat: 'MX' }, provider: 'stub', model: 'stub' };
+    }
     if (user.includes('可口可乐')) {
       return { json: { tenHangVi: 'nước ngọt có ga', banChat: 'đồ uống có ga vị cola, có đường mía, đóng chai thủy tinh 355ml', thanhPhan: 'nước, đường mía, CO2, hương liệu', thuongHieu: 'Coca-Cola', noiSanXuat: 'MX' }, provider: 'stub', model: 'stub' };
     }
@@ -98,6 +101,25 @@ const v1 = validateDeclaration(
 const codesV = (v1.warnings || []).map((w) => w.code);
 check('validator: chữ Hán trong mô tả → CJK_IN_DECLARATION', codesV.includes('CJK_IN_DECLARATION'), JSON.stringify(codesV));
 check('validator: khai CN nhưng tiêu đề Mexico → ORIGIN_CONFLICT', codesV.includes('ORIGIN_CONFLICT'), JSON.stringify(codesV));
+
+// 8. Mâu thuẫn có/không: nhãn "không có ga" cho hàng "có ga" (Coca-Cola → 2202.99.50 conf 90)
+const { checkPolarity } = require('../lib/subheading-check.js');
+const p1 = checkPolarity('22029950', 'nước ngọt có ga; đồ uống có ga, chai thủy tinh');
+check('polarity: "không có ga" vs mô tả "có ga" → cờ, gợi ý 2202.10.30', p1.ok === false && p1.conflicts[0]?.feature === 'ga' && p1.alternative === '22021030', JSON.stringify(p1));
+check('polarity: nước trái cây không có ga → 2202.99.50 qua', checkPolarity('22029950', 'Nước ép táo đóng chai, không có ga').ok);
+check('polarity: "ko có khung" viết tắt hiểu là phủ định', checkPolarity('85183020', 'Tai nghe có dây, ko có khung chụp qua đầu').ok);
+check('polarity: mô tả không nói có/không → qua', checkPolarity('22029950', 'Đồ uống đóng chai 500ml').ok);
+
+rerankReply = { suggestions: [
+  { hsCode: '22029950', confidence: 90, reasoning: 'Đồ uống dùng ngay.', gir: null },
+] };
+const polDesc = '墨西哥原装进口 可口可乐 玻璃瓶 355ml*12瓶 碳酸饮料';
+const r8 = await suggest(polDesc);
+const codes8 = (r8.suggestions || []).map((s) => s.hsCode);
+check('suggest: mã "không có ga" xuống cuối, 2202.10.30 lên đầu', codes8[0] === '22021030' && codes8[codes8.length - 1] === '22029950', JSON.stringify(codes8));
+check('suggest: mâu thuẫn có/không → NEEDS_EXPERT/FEATURE_CONFLICT', r8.status === 'NEEDS_EXPERT' && r8.nextAction?.reasonCode === 'FEATURE_CONFLICT', JSON.stringify({ s: r8.status, n: r8.nextAction }));
+check('suggest: có cảnh báo feature-polarity-conflict', (r8.antiPatternWarnings || []).some((w) => w.id === 'feature-polarity-conflict'));
+check('suggest: kết quả mâu thuẫn không bị cache', !(await suggest(polDesc)).cached);
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

@@ -39,7 +39,7 @@ Authorization: Bearer <HS_API_TOKEN>
 | `RESOLVED_BY_TABLE` | Bảng quyết định đã kiểm chứng chốt được mã | Mã + nút "Xác nhận" |
 | `REVIEW` | AI chọn trong ứng viên, độ tin ≥ 40 | Mã + độ tin + lý do + 2 mã thay thế; nhân viên xác nhận |
 | `NEED_FACTS` | Thiếu dữ kiện để chốt 8 số | Hiện `nextAction.questions` cho nhân viên trả lời, gọi lại với `facts` |
-| `NEEDS_EXPERT` | AI không chạy được, hoặc **tự tin < 40** (`nextAction.reasonCode = LOW_CONFIDENCE`) | **Không hiện "HS tham khảo"**. Hiện "Cần chuyên viên chọn mã" + danh sách `optionsHs` |
+| `NEEDS_EXPERT` | AI không chạy được, **tự tin < 40** (`reasonCode = LOW_CONFIDENCE`), hoặc mã AI chọn **mâu thuẫn có/không** với mô tả, vd nhãn "không có ga" cho hàng có ga (`reasonCode = FEATURE_CONFLICT`, mã mâu thuẫn bị đẩy xuống cuối) | **Không hiện "HS tham khảo"**. Hiện "Cần chuyên viên chọn mã" + danh sách `optionsHs` |
 | `NO_CANDIDATES` | Không tìm được ứng viên | Yêu cầu mô tả lại |
 
 Luôn hiện kèm `antiPatternWarnings` (ví dụ `subheading-unsupported`: "mã đòi dấu hiệu
