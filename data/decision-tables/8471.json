@@ -1,0 +1,555 @@
+{
+  "heading": "8471",
+  "titleVi": "Máy xử lý dữ liệu tự động, máy tính, máy quét mã vạch",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Máy có phải máy xử lý dữ liệu tự động (8471) không? Nếu là bộ phận/thiết bị ngoại vi thuộc 8471 thì phân biệt: bàn phím, chuột/bảng vẽ, ổ lưu trữ, card âm thanh/hình, bộ điều khiển, máy đọc mã vạch, thiết bị khác.",
+  "sourceVi": "Biểu thuế 2026 nhóm 8471 — 22 lá; oz-gold 32 entries (847130/141/149/150/160/170/180/190).",
+  "hitPolicy": "FIRST",
+  "attributes": {
+    "productKind": {
+      "type": "enum",
+      "labelVi": "Loại thiết bị",
+      "domain": [
+        "portableComputer",
+        "desktopComputer",
+        "systemUnit",
+        "inputDevice",
+        "storage",
+        "soundVideoCard",
+        "controller",
+        "barcodeReader",
+        "fingerprintReader",
+        "otherReader",
+        "otherMachine",
+        "kiosk"
+      ],
+      "detect": {
+        "portableComputer": [
+          "laptop",
+          "notebook",
+          "subnotebook",
+          "máy tính xách tay",
+          "847130",
+          "8471.30"
+        ],
+        "desktopComputer": [
+          "máy tính để bàn",
+          "desktop",
+          "máy tính cá nhân",
+          "máy tính pc",
+          "847141",
+          "8471.41",
+          "847149",
+          "8471.49"
+        ],
+        "systemUnit": [
+          "bộ xử lý trung tâm",
+          "cpu",
+          "central processing",
+          "máy chủ server",
+          "847150",
+          "8471.50"
+        ],
+        "inputDevice": [
+          "bàn phím",
+          "chuột",
+          "bảng vẽ",
+          "mouse",
+          "keyboard",
+          "drawing tablet",
+          "bút vẽ",
+          "thiết bị nhập",
+          "input device"
+        ],
+        "storage": [
+          "ổ đĩa",
+          "hard disk",
+          "hdd",
+          "ssd",
+          "ổ băng",
+          "tape",
+          "optical",
+          "cd-rom",
+          "dvd",
+          "847170",
+          "8471.70"
+        ],
+        "soundVideoCard": [
+          "card âm thanh",
+          "card hình",
+          "sound card",
+          "video card",
+          "card thu tín hiệu",
+          "card nhận tín hiệu",
+          "card truyền",
+          "card gửi",
+          "display card",
+          "graphics card",
+          "84718070",
+          "8471.8070"
+        ],
+        "controller": [
+          "bộ điều khiển",
+          "bộ thích ứng",
+          "controller",
+          "adapter",
+          "84718010",
+          "8471.8010"
+        ],
+        "barcodeReader": [
+          "mã vạch",
+          "barcode",
+          "laser scanner",
+          "quét mã",
+          "đọc mã",
+          "84719010",
+          "8471.9010"
+        ],
+        "fingerprintReader": [
+          "vân tay",
+          "fingerprint",
+          "sinh trắc",
+          "84719030",
+          "8471.9030"
+        ],
+        "otherReader": [
+          "ocr",
+          "ký tự quang",
+          "optical character",
+          "84719040",
+          "8471.9040"
+        ],
+        "kiosk": [
+          "kiosk",
+          "ki-ốt",
+          "máy kiosk",
+          "quản lý bán hàng",
+          "tự phục vụ",
+          "84714190"
+        ],
+        "otherMachine": [
+          "bộ xử lý hình",
+          "đầu đọc",
+          "rfid",
+          "nfc",
+          "ic từ",
+          "image processor",
+          "led",
+          "84719090",
+          "8471.9090",
+          "84716090",
+          "8471.6090"
+        ]
+      }
+    },
+    "isWireless": {
+      "type": "enum",
+      "labelVi": "Kết nối",
+      "domain": [
+        "wired",
+        "wireless",
+        "both"
+      ],
+      "detect": {
+        "wireless": [
+          "không dây",
+          "wireless",
+          "wifi",
+          "bluetooth",
+          "2.4ghz",
+          "2,4ghz",
+          "tần số",
+          "pin",
+          "rf 2.4"
+        ],
+        "wired": [
+          "có dây",
+          "wired",
+          "usb",
+          "rs-232",
+          "rs232",
+          "rs485",
+          "rs485",
+          "dvi",
+          "dây dài",
+          "cáp",
+          "dây cáp"
+        ],
+        "both": [
+          "đa chế độ",
+          "multi-mode"
+        ]
+      }
+    },
+    "hasDisplay": {
+      "type": "enum",
+      "labelVi": "Có màn hình",
+      "domain": [
+        "hasDisplay",
+        "noDisplay"
+      ],
+      "detect": {
+        "hasDisplay": [
+          "màn hình",
+          "display",
+          "screen",
+          "monitor",
+          "lcd"
+        ],
+        "noDisplay": []
+      }
+    }
+  },
+  "inputs": [
+    {
+      "attribute": "productKind",
+      "type": "enum",
+      "labelVi": "Loại thiết bị 8471",
+      "questionVi": "Hàng thuộc loại thiết bị nào trong 8471?",
+      "domain": [
+        "portableComputer",
+        "desktopComputer",
+        "systemUnit",
+        "inputDevice",
+        "storage",
+        "soundVideoCard",
+        "controller",
+        "barcodeReader",
+        "fingerprintReader",
+        "otherReader",
+        "kiosk",
+        "otherMachine"
+      ]
+    },
+    {
+      "attribute": "isWireless",
+      "type": "enum",
+      "labelVi": "Kết nối có dây / không dây",
+      "questionVi": "Thiết bị kết nối có dây hay không dây?",
+      "domain": [
+        "wired",
+        "wireless",
+        "both"
+      ]
+    },
+    {
+      "attribute": "hasDisplay",
+      "type": "enum",
+      "labelVi": "Có màn hình hay không",
+      "questionVi": "Máy tính có màn hình đi kèm không?",
+      "domain": [
+        "hasDisplay",
+        "noDisplay"
+      ]
+    }
+  ],
+  "inputAttributes": [
+    "productKind",
+    "isWireless",
+    "hasDisplay"
+  ],
+  "rules": [
+    {
+      "id": "r-laptop-notebook",
+      "priority": 80,
+      "when": {
+        "productKind": "portableComputer"
+      },
+      "hs": "84713020",
+      "gir": "GIR 6",
+      "reasonVi": "Máy tính xách tay kể cả notebook và subnotebook — thuộc 8471.30.",
+      "source": "Biểu thuế 2026 dòng 8471.30.20"
+    },
+    {
+      "id": "r-portable-other",
+      "priority": 10,
+      "when": {
+        "productKind": "portableComputer"
+      },
+      "hs": "84713090",
+      "gir": "GIR 6",
+      "reasonVi": "Máy xử lý dữ liệu tự động loại xách tay khác — thuộc 8471.30.",
+      "source": "Biểu thuế 2026 dòng 8471.30.90"
+    },
+    {
+      "id": "r-desktop-pc",
+      "priority": 80,
+      "when": {
+        "productKind": "desktopComputer"
+      },
+      "hs": "84714110",
+      "gir": "GIR 6",
+      "reasonVi": "Máy tính cá nhân để bàn (không phải xách tay) — thuộc 8471.41.10.",
+      "source": "Biểu thuế 2026 dòng 8471.41.10"
+    },
+    {
+      "id": "r-desktop-other",
+      "priority": 70,
+      "when": {
+        "productKind": "desktopComputer"
+      },
+      "hs": "84714190",
+      "gir": "GIR 6",
+      "reasonVi": "Máy tính cá nhân loại khác — thuộc 8471.41.90.",
+      "source": "Biểu thuế 2026 dòng 8471.41.90"
+    },
+    {
+      "id": "r-system-unit-pc",
+      "priority": 80,
+      "when": {
+        "productKind": "systemUnit"
+      },
+      "hs": "84714910",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ xử lý dùng cho máy tính cá nhân (8471.49.10) — hệ thống con / mainboard.",
+      "source": "Biểu thuế 2026 dòng 8471.49.10"
+    },
+    {
+      "id": "r-system-unit-other",
+      "priority": 10,
+      "when": {
+        "productKind": "systemUnit"
+      },
+      "hs": "84714990",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ xử lý dùng cho máy tính cá nhân loại khác — thuộc 8471.49.90.",
+      "source": "Biểu thuế 2026 dòng 8471.49.90"
+    },
+    {
+      "id": "r-cpu-unit",
+      "priority": 80,
+      "when": {
+        "productKind": "systemUnit"
+      },
+      "hs": "84715010",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ vi xử lý trung tâm máy tính (CPU) — thuộc 8471.50.10.",
+      "source": "Biểu thuế 2026 dòng 8471.50.10; oz-gold: Intel i5-3570K"
+    },
+    {
+      "id": "r-cpu-other",
+      "priority": 10,
+      "when": {
+        "productKind": "systemUnit"
+      },
+      "hs": "84715090",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ xử lý dùng cho máy tính cá nhân loại khác — thuộc 8471.50.90.",
+      "source": "Biểu thuế 2026 dòng 8471.50.90"
+    },
+    {
+      "id": "r-keyboard-wired",
+      "priority": 80,
+      "when": {
+        "productKind": "inputDevice",
+        "isWireless": "wired"
+      },
+      "hs": "84716030",
+      "gir": "GIR 6",
+      "reasonVi": "Bàn phím máy tính có dây — thuộc 8471.60.30.",
+      "source": "Biểu thuế 2026 dòng 8471.60.30; oz-gold: Sikai có dây"
+    },
+    {
+      "id": "r-keyboard-wireless",
+      "priority": 70,
+      "when": {
+        "productKind": "inputDevice",
+        "isWireless": "wireless"
+      },
+      "hs": "84716030",
+      "gir": "GIR 6",
+      "reasonVi": "Bàn phím máy tính không dây — thuộc 8471.60.30.",
+      "source": "Biểu thuế 2026 dòng 8471.60.30; oz-gold: Freewolf M68 bluetooth"
+    },
+    {
+      "id": "r-keyboard-both",
+      "priority": 60,
+      "when": {
+        "productKind": "inputDevice",
+        "isWireless": "both"
+      },
+      "hs": "84716030",
+      "gir": "GIR 6",
+      "reasonVi": "Bàn phím máy tính đa chế độ (có dây + không dây) — thuộc 8471.60.30.",
+      "source": "Biểu thuế 2026 dòng 8471.60.30"
+    },
+    {
+      "id": "r-keyboard-other",
+      "priority": 10,
+      "when": {
+        "productKind": "inputDevice"
+      },
+      "hs": "84716030",
+      "gir": "GIR 6",
+      "reasonVi": "Bàn phím máy tính — thuộc 8471.60.30.",
+      "source": "Biểu thuế 2026 dòng 8471.60.30"
+    },
+    {
+      "id": "r-mouse-wired",
+      "priority": 80,
+      "when": {
+        "productKind": "inputDevice"
+      },
+      "hs": "84716040",
+      "gir": "GIR 6",
+      "reasonVi": "Chuột máy tính có dây / không dây / gaming — thiết bị nhập tọa độ X-Y thuộc 8471.60.40.",
+      "source": "Biểu thuế 2026 dòng 8471.60.40; oz-gold: 8 chuột"
+    },
+    {
+      "id": "r-drawing-tablet",
+      "priority": 80,
+      "when": {
+        "productKind": "inputDevice"
+      },
+      "hs": "84716040",
+      "gir": "GIR 6",
+      "reasonVi": "Bảng vẽ điện tử — thiết bị nhập tọa độ X-Y thuộc 8471.60.40.",
+      "source": "Biểu thuế 2026 dòng 8471.60.40; oz-gold: XP-Pen CT430"
+    },
+    {
+      "id": "r-input-other",
+      "priority": 10,
+      "when": {
+        "productKind": "inputDevice"
+      },
+      "hs": "84716090",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị đầu vào khác thuộc 8471.60.90.",
+      "source": "Biểu thuế 2026 dòng 8471.60.90"
+    },
+    {
+      "id": "r-hdd",
+      "priority": 80,
+      "when": {
+        "productKind": "storage"
+      },
+      "hs": "84717020",
+      "gir": "GIR 6",
+      "reasonVi": "Ổ đĩa cứng (HDD) thuộc 8471.70.20.",
+      "source": "Biểu thuế 2026 dòng 8471.70.20"
+    },
+    {
+      "id": "r-tape",
+      "priority": 70,
+      "when": {
+        "productKind": "storage"
+      },
+      "hs": "84717030",
+      "gir": "GIR 6",
+      "reasonVi": "Ổ băng từ thuộc 8471.70.30.",
+      "source": "Biểu thuế 2026 dòng 8471.70.30"
+    },
+    {
+      "id": "r-optical",
+      "priority": 60,
+      "when": {
+        "productKind": "storage"
+      },
+      "hs": "84717040",
+      "gir": "GIR 6",
+      "reasonVi": "Ổ đĩa quang (CD/DVD) thuộc 8471.70.40.",
+      "source": "Biểu thuế 2026 dòng 8471.70.40"
+    },
+    {
+      "id": "r-storage-other",
+      "priority": 10,
+      "when": {
+        "productKind": "storage"
+      },
+      "hs": "84717090",
+      "gir": "GIR 6",
+      "reasonVi": "Ổ lưu trữ khác thuộc 8471.70.90.",
+      "source": "Biểu thuế 2026 dòng 8471.70.90"
+    },
+    {
+      "id": "r-sv-card",
+      "priority": 80,
+      "when": {
+        "productKind": "soundVideoCard"
+      },
+      "hs": "84718070",
+      "gir": "GIR 6",
+      "reasonVi": "Card âm thanh hoặc card hình ảnh thuộc 8471.80.70.",
+      "source": "Biểu thuế 2026 dòng 8471.80.70; oz-gold: Nova, Mooncell, Novastar cards"
+    },
+    {
+      "id": "r-controller",
+      "priority": 80,
+      "when": {
+        "productKind": "controller"
+      },
+      "hs": "84718010",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ điều khiển và bộ thích ứng thuộc 8471.80.10.",
+      "source": "Biểu thuế 2026 dòng 8471.80.10"
+    },
+    {
+      "id": "r-controller-other",
+      "priority": 10,
+      "when": {
+        "productKind": "controller"
+      },
+      "hs": "84718090",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ điều khiển/thích ứng khác thuộc 8471.80.90.",
+      "source": "Biểu thuế 2026 dòng 8471.80.90"
+    },
+    {
+      "id": "r-barcode",
+      "priority": 80,
+      "when": {
+        "productKind": "barcodeReader"
+      },
+      "hs": "84719010",
+      "gir": "GIR 6",
+      "reasonVi": "Máy đọc mã vạch thuộc 8471.90.10.",
+      "source": "Biểu thuế 2026 dòng 8471.90.10; oz-gold: Honeywell, HIKROBOT, Datalogic"
+    },
+    {
+      "id": "r-fingerprint",
+      "priority": 80,
+      "when": {
+        "productKind": "fingerprintReader"
+      },
+      "hs": "84719030",
+      "gir": "GIR 6",
+      "reasonVi": "Hệ thống nhận dạng vân tay điện tử thuộc 8471.90.30.",
+      "source": "Biểu thuế 2026 dòng 8471.90.30; oz-gold: ZKTeco FR1200"
+    },
+    {
+      "id": "r-ocr",
+      "priority": 80,
+      "when": {
+        "productKind": "otherReader"
+      },
+      "hs": "84719040",
+      "gir": "GIR 6",
+      "reasonVi": "Máy đọc ký tự quang học thuộc 8471.90.40.",
+      "source": "Biểu thuế 2026 dòng 8471.90.40"
+    },
+    {
+      "id": "r-other-machine",
+      "priority": 80,
+      "when": {
+        "productKind": "otherMachine"
+      },
+      "hs": "84719090",
+      "gir": "GIR 6",
+      "reasonVi": "Máy xử lý dữ liệu tự động khác chưa ghi — thuộc 8471.90.90.",
+      "source": "Biểu thuế 2026 dòng 8471.90.90; oz-gold: RFID, NFC, LED processors"
+    },
+    {
+      "id": "r-kiosk",
+      "priority": 80,
+      "when": {
+        "productKind": "kiosk"
+      },
+      "hs": "84714190",
+      "gir": "GIR 6",
+      "reasonVi": "Máy kiosk tự phục vụ là máy tính cá nhân loại khác thuộc 8471.41.90.",
+      "source": "Biểu thuế 2026 dòng 8471.41.90; oz-gold: XSD215-B1-YN"
+    }
+  ]
+}
