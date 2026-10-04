@@ -2,8 +2,10 @@ name: plhq-sync
 
 # Cầu nối oz-wiki-plhq → hs-code-api: mỗi ngày (và ngay khi kho cộng đồng báo qua repository_dispatch)
 # tải dist/registry.json, đo lại song kiếm, chạy toàn bộ test, rồi:
-#   - thay đổi nhỏ  → commit thẳng main (dữ liệu chỉ đọc, đã qua cửa duyệt PR của kho cộng đồng + npm test)
-#   - thay đổi lớn  → mở/cập nhật PR "auto/plhq-sync" cho người duyệt (bớt văn bản, hoặc > 10 văn bản đổi tình trạng)
+#   mở/cập nhật PR "auto/plhq-sync" (main được bảo vệ, bắt buộc qua PR), rồi
+#   - thay đổi nhỏ  → bot tự gộp PR (dữ liệu chỉ đọc, đã qua cửa duyệt PR của kho cộng đồng + npm test ở đây)
+#   - thay đổi lớn  → PR chờ người duyệt (bớt văn bản, hoặc > 10 văn bản đổi tình trạng)
+# Cần bật: Settings → Actions → General → "Allow GitHub Actions to create and approve pull requests".
 # Không đổi gì → không commit. Hạn đối chiếu plhqRegistry trong data-freshness.json được làm mới mỗi tuần.
 on:
   schedule:
@@ -51,11 +53,21 @@ jobs:
           git diff --cached --quiet && { echo "Không có gì để commit"; exit 0; }
           MSG="chore(data): đồng bộ sổ văn bản oz-wiki-plhq $(date -u +%F)"
           git commit -q -m "$MSG" -m "$(cat "$RUNNER_TEMP/plhq-summary.md")"
-          if [ "$LARGE" != "true" ] && git push origin HEAD:main; then
-            echo "Đã đẩy thẳng main"; exit 0
-          fi
-          # Thay đổi lớn, hoặc main được bảo vệ → PR cho người duyệt.
+          # main được bảo vệ (bắt buộc qua PR) → luôn đi qua PR auto/plhq-sync.
           git push -f origin HEAD:refs/heads/auto/plhq-sync
           { cat "$RUNNER_TEMP/plhq-summary.md"; echo; echo '<details><summary>Kết quả đo song kiếm</summary>'; echo; cat "$RUNNER_TEMP/bench.md" 2>/dev/null; echo; echo '</details>'; } > "$RUNNER_TEMP/body.md"
           NUM=$(gh pr list --head auto/plhq-sync --state open --json number --jq '.[0].number')
-          if [ -n "$NUM" ]; then gh pr edit "$NUM" --body-file "$RUNNER_TEMP/body.md"; else gh pr create --base main --head auto/plhq-sync --title "$MSG" --body-file "$RUNNER_TEMP/body.md"; fi
+          if [ -n "$NUM" ]; then
+            gh pr edit "$NUM" --title "$MSG" --body-file "$RUNNER_TEMP/body.md"
+          elif ! gh pr create --base main --head auto/plhq-sync --title "$MSG" --body-file "$RUNNER_TEMP/body.md"; then
+            echo "::error::GitHub Actions chưa được phép mở PR. Bật: Settings → Actions → General → Workflow permissions → 'Allow GitHub Actions to create and approve pull requests'. Nhánh auto/plhq-sync đã có sẵn — có thể mở PR tay."
+            exit 1
+          else
+            NUM=$(gh pr list --head auto/plhq-sync --state open --json number --jq '.[0].number')
+          fi
+          # Thay đổi nhỏ: test đã xanh ở bước trên → thử gộp luôn. Ruleset đòi người duyệt / check thì PR chờ người duyệt.
+          if [ "$LARGE" != "true" ]; then
+            gh pr merge "$NUM" --squash --delete-branch || echo "::notice::PR #$NUM chờ người duyệt (ruleset của main chưa cho bot tự gộp)."
+          else
+            echo "::notice::Thay đổi lớn — PR #$NUM chờ người duyệt."
+          fi
