@@ -1,0 +1,56 @@
+{
+  "heading": "8528",
+  "titleVi": "Màn hình (85.28)",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "displayKind",
+      "type": "enum",
+      "labelVi": "Loại màn hình",
+      "questionVi": "Màn hình thuộc loại nào: LED trong nhà/transparent, màu (cảm ứng), hay đơn sắc?",
+      "domain": ["ledIndoor", "color", "monochrome"],
+      "detect": {
+        "ledIndoor": ["led trong nhà", "led trong suốt", "cabinet led", "màn hình led trong nhà", "led indoor", "khung cabin led", "màn hình led"],
+        "color": ["cảm ứng", "lcd", "màu", "hmi", "hiển thị màu", "touchscreen", "màn hình lcd", "lcd rgb", "màn hình cảm ứng", "màn hình hmi", "màn hình điều khiển cảm ứng", "màn hình cảm ứng hmi", "màn hình cảm ứng lcd", "lcd/ktp", "màn hình hmi cảm ứng"],
+        "monochrome": ["đơn sắc", "monochrome", "màn hình đơn sắc", "hiển thị đơn sắc", "đen trắng", "1 màu", "hiển thị", "bộ hiển thị", "màn hình plc", "màn hình tpc", "báo tầng", "báo tải", "hiển thị báo", "hiển thị đa năng", "bếp điện", "máy xúc"]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r01",
+      "priority": 100,
+      "when": { "displayKind": "ledIndoor" },
+      "hs": "85285200",
+      "reasonVi": "Màn hình LED trong nhà/transparent → 85285200",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r02",
+      "priority": 90,
+      "when": { "displayKind": "color" },
+      "hs": "85285910",
+      "reasonVi": "Màn hình màu (cảm ứng/LCD/HMI) → 85285910",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r03",
+      "priority": 85,
+      "when": { "displayKind": "monochrome" },
+      "hs": "85285920",
+      "reasonVi": "Màn hình đơn sắc (PLC/hiển thị đơn sắc) → 85285920",
+      "source": "Biểu thuế NK VN 2026"
+    }
+  ],
+  "sourceVi": "Biểu thuế NK VN 2026 (18 mã 8 số). Oz-gold 31 entries.",
+  "essenceTestVi": "Phân biệt: LED trong nhà/transparent (85285200), màn hình màu (85285910), đơn sắc (85285920).",
+  "leaves": {},
+  "hitPolicy": "FIRST",
+  "attributes": {
+    "displayKind": {
+      "type": "enum",
+      "labelVi": "Loại màn hình",
+      "domain": ["ledIndoor", "color", "monochrome"]
+    }
+  }
+}
