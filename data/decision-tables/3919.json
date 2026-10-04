@@ -27,79 +27,416 @@
           "dạng phiến"
         ]
       }
+    },
+    {
+      "attribute": "materialKind",
+      "type": "enum",
+      "labelVi": "Loại vật liệu nhựa",
+      "questionVi": "Tấm/cuộn dán tự dính bằng vật liệu gì?",
+      "domain": [
+        "pvc",
+        "pe",
+        "pp",
+        "pet",
+        "pu",
+        "other",
+        "protein",
+        "rubber_chemical",
+        "cellulose"
+      ],
+      "detect": {
+        "pvc": [
+          "pvc",
+          "polyvinyl",
+          "vinyl clorua",
+          "nhựa vinyl"
+        ],
+        "pe": [
+          "pe",
+          "polyethylene",
+          "polyetylen",
+          "nhựa PE"
+        ],
+        "pp": [
+          "pp",
+          "polypropylene",
+          "polypropylen",
+          "nhựa PP"
+        ],
+        "pet": [
+          "pet",
+          "polyethylene terephthalate",
+          "nhựa PET",
+          "polyester"
+        ],
+        "pu": [
+          "pu",
+          "polyurethane",
+          "nhựa PU"
+        ],
+        "other": [],
+        "protein": [
+          "protein",
+          "đạm",
+          "làm cứng"
+        ],
+        "rubber_chemical": [
+          "cao su",
+          "dẫn xuất hóa học",
+          "rubber"
+        ],
+        "cellulose": [
+          "xenlulo",
+          "cellulose",
+          "trùng ngưng",
+          "trùng hợp"
+        ]
+      }
     }
   ],
   "hitPolicy": "PRIORITY",
   "rules": [
     {
-      "id": "r-roll-vinyl",
-      "priority": 50,
-      "when": { "adhesiveForm": "rollForm" },
+      "id": "3919-r01",
+      "priority": 90,
       "hs": "39191010",
+      "reasonVi": "Cuộn băng dính từ PVC → 3919.10.10",
       "gir": "GIR 6",
-      "reasonVi": "Cuộn từ polyme vinyl clorua → 3919.10.10",
-      "source": "Biểu thuế 2026"
+      "source": "Biểu thuế 2026; oz-gold",
+      "when": {
+        "adhesiveForm": "rollForm",
+        "materialKind": "pvc"
+      }
     },
     {
-      "id": "r-roll-pe",
-      "priority": 50,
-      "when": { "adhesiveForm": "rollForm" },
+      "id": "3919-r02",
+      "priority": 90,
       "hs": "39191020",
+      "reasonVi": "Cuộn băng dính 2 mặt từ PE → 3919.10.20",
       "gir": "GIR 6",
-      "reasonVi": "Cuộn từ polyetylen → 3919.10.20",
-      "source": "Biểu thuế 2026"
+      "source": "Biểu thuế 2026; oz-gold",
+      "when": {
+        "adhesiveForm": "rollForm",
+        "materialKind": "pe"
+      }
     },
     {
-      "id": "r-roll-other",
-      "priority": 30,
-      "when": { "adhesiveForm": "rollForm" },
+      "id": "3919-r03",
+      "priority": 80,
       "hs": "39191099",
+      "reasonVi": "Cuộn băng dính từ PP → 3919.10.99",
       "gir": "GIR 6",
-      "reasonVi": "Cuộn loại khác → 3919.10.99",
-      "source": "Biểu thuế 2026"
+      "source": "oz-gold",
+      "when": {
+        "adhesiveForm": "rollForm",
+        "materialKind": "pp"
+      }
     },
     {
-      "id": "r-sheet-vinyl",
+      "id": "3919-r04",
+      "priority": 80,
+      "hs": "39191099",
+      "reasonVi": "Cuộn băng dính từ PET → 3919.10.99",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "adhesiveForm": "rollForm",
+        "materialKind": "pet"
+      }
+    },
+    {
+      "id": "3919-r05",
+      "priority": 80,
+      "hs": "39191099",
+      "reasonVi": "Cuộn băng dính từ nhựa khác → 3919.10.99",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "adhesiveForm": "rollForm",
+        "materialKind": "other"
+      }
+    },
+    {
+      "id": "3919-r06",
       "priority": 50,
-      "when": { "adhesiveForm": "sheetForm" },
-      "hs": "39199010",
+      "hs": "39191099",
+      "reasonVi": "Cuộn băng dính (loại khác) → 3919.10.99",
       "gir": "GIR 6",
-      "reasonVi": "Tấm từ polyme vinyl clorua → 3919.90.10",
-      "source": "Biểu thuế 2026"
+      "source": "Biểu thuế 2026",
+      "when": {
+        "adhesiveForm": "rollForm"
+      }
     },
     {
-      "id": "r-sheet-other",
-      "priority": 30,
-      "when": { "adhesiveForm": "sheetForm" },
-      "hs": "39199099",
+      "id": "3919-r07",
+      "priority": 90,
+      "hs": "39199010",
+      "reasonVi": "Tấm/phim dán từ PVC → 3919.90.10",
       "gir": "GIR 6",
-      "reasonVi": "Tấm loại khác → 3919.90.99",
-      "source": "Biểu thuế 2026"
+      "source": "Biểu thuế 2026; oz-gold",
+      "when": {
+        "adhesiveForm": "sheetForm",
+        "materialKind": "pvc"
+      }
+    },
+    {
+      "id": "3919-r08",
+      "priority": 90,
+      "hs": "39199099",
+      "reasonVi": "Tấm dán từ PE → 3919.90.99",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "adhesiveForm": "sheetForm",
+        "materialKind": "pe"
+      }
+    },
+    {
+      "id": "3919-r09",
+      "priority": 80,
+      "hs": "39199099",
+      "reasonVi": "Tấm dán từ PP → 3919.90.99",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "adhesiveForm": "sheetForm",
+        "materialKind": "pp"
+      }
+    },
+    {
+      "id": "3919-r10",
+      "priority": 80,
+      "hs": "39199099",
+      "reasonVi": "Tấm dán từ PET → 3919.90.99",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "adhesiveForm": "sheetForm",
+        "materialKind": "pet"
+      }
+    },
+    {
+      "id": "3919-r11",
+      "priority": 80,
+      "hs": "39199099",
+      "reasonVi": "Tấm dán từ nhựa khác → 3919.90.99",
+      "gir": "GIR 6",
+      "source": "oz-gold",
+      "when": {
+        "adhesiveForm": "sheetForm",
+        "materialKind": "other"
+      }
+    },
+    {
+      "id": "3919-r12",
+      "priority": 50,
+      "hs": "39199099",
+      "reasonVi": "Tấm dán (loại khác) → 3919.90.99",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "adhesiveForm": "sheetForm"
+      }
+    },
+    {
+      "id": "3919-r13",
+      "priority": 85,
+      "hs": "39191091",
+      "reasonVi": "Cuộn từ protein đã làm cứng → 3919.10.91",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "adhesiveForm": "rollForm",
+        "materialKind": "protein"
+      }
+    },
+    {
+      "id": "3919-r14",
+      "priority": 85,
+      "hs": "39191092",
+      "reasonVi": "Cuộn từ polyme trùng hợp / trùng ngưng / xenlulo → 3919.10.92",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "adhesiveForm": "rollForm",
+        "materialKind": "cellulose"
+      }
+    },
+    {
+      "id": "3919-r15",
+      "priority": 85,
+      "hs": "39191092",
+      "reasonVi": "Cuộn từ polyme trùng hợp / trùng ngưng → 3919.10.92",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "adhesiveForm": "rollForm",
+        "materialKind": "rubber_chemical"
+      }
+    },
+    {
+      "id": "3919-r16",
+      "priority": 85,
+      "hs": "39199020",
+      "reasonVi": "Tấm từ protein đã làm cứng → 3919.90.20",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "adhesiveForm": "sheetForm",
+        "materialKind": "protein"
+      }
+    },
+    {
+      "id": "3919-r17",
+      "priority": 85,
+      "hs": "39199091",
+      "reasonVi": "Tấm từ dẫn xuất hóa học của cao su tự nhiên → 3919.90.91",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "adhesiveForm": "sheetForm",
+        "materialKind": "rubber_chemical"
+      }
+    },
+    {
+      "id": "3919-r18",
+      "priority": 85,
+      "hs": "39199092",
+      "reasonVi": "Tấm từ polyme trùng hợp / trùng ngưng / xenlulo → 3919.90.92",
+      "gir": "GIR 6",
+      "source": "Biểu thuế 2026",
+      "when": {
+        "adhesiveForm": "sheetForm",
+        "materialKind": "cellulose"
+      }
     }
   ],
   "leaves": [
-    { "id": "39191010", "code": "39191010", "conditions": { "adhesiveForm": "rollForm" }, "heading": "3919", "noteVi": "Cuộn từ polyme vinyl clorua → 3919.10.10" },
-    { "id": "39191020", "code": "39191020", "conditions": { "adhesiveForm": "rollForm" }, "heading": "3919", "noteVi": "Cuộn từ polyetylen → 3919.10.20" },
-    { "id": "39191091", "code": "39191091", "conditions": { "adhesiveForm": "rollForm" }, "heading": "3919", "noteVi": "Từ protein đã làm cứng hoặc dẫn xuất cao su → 3919.10.91" },
-    { "id": "39191092", "code": "39191092", "conditions": { "adhesiveForm": "rollForm" }, "heading": "3919", "noteVi": "Từ polyme trùng hợp / trùng ngưng / xenlulo đã hóa dẻo → 3919.10.92" },
-    { "id": "39191099", "code": "39191099", "conditions": { "adhesiveForm": "rollForm" }, "heading": "3919", "noteVi": "Cuộn loại khác → 3919.10.99" },
-    { "id": "39199010", "code": "39199010", "conditions": { "adhesiveForm": "sheetForm" }, "heading": "3919", "noteVi": "Tấm từ polyme vinyl clorua → 3919.90.10" },
-    { "id": "39199020", "code": "39199020", "conditions": { "adhesiveForm": "sheetForm" }, "heading": "3919", "noteVi": "Từ protein đã được làm cứng → 3919.90.20" },
-    { "id": "39199091", "code": "39199091", "conditions": { "adhesiveForm": "sheetForm" }, "heading": "3919", "noteVi": "Từ dẫn xuất hóa học cao su tự nhiên → 3919.90.91" },
-    { "id": "39199092", "code": "39199092", "conditions": { "adhesiveForm": "sheetForm" }, "heading": "3919", "noteVi": "Từ polyme trùng hợp / trùng ngưng / xenlulo đã hóa dẻo → 3919.90.92" },
-    { "id": "39199099", "code": "39199099", "conditions": { "adhesiveForm": "sheetForm" }, "heading": "3919", "noteVi": "Tấm loại khác → 3919.90.99" }
+    {
+      "id": "39191010",
+      "code": "39191010",
+      "conditions": {
+        "adhesiveForm": "rollForm"
+      },
+      "heading": "3919",
+      "noteVi": "Cuộn từ polyme vinyl clorua → 3919.10.10"
+    },
+    {
+      "id": "39191020",
+      "code": "39191020",
+      "conditions": {
+        "adhesiveForm": "rollForm"
+      },
+      "heading": "3919",
+      "noteVi": "Cuộn từ polyetylen → 3919.10.20"
+    },
+    {
+      "id": "39191091",
+      "code": "39191091",
+      "conditions": {
+        "adhesiveForm": "rollForm",
+        "materialKind": "protein"
+      },
+      "heading": "3919",
+      "noteVi": "Từ protein đã làm cứng hoặc dẫn xuất cao su → 3919.10.91"
+    },
+    {
+      "id": "39191092",
+      "code": "39191092",
+      "conditions": {
+        "adhesiveForm": "rollForm",
+        "materialKind": "cellulose"
+      },
+      "heading": "3919",
+      "noteVi": "Từ polyme trùng hợp / trùng ngưng / xenlulo đã hóa dẻo → 3919.10.92"
+    },
+    {
+      "id": "39191099",
+      "code": "39191099",
+      "conditions": {
+        "adhesiveForm": "rollForm"
+      },
+      "heading": "3919",
+      "noteVi": "Cuộn loại khác → 3919.10.99"
+    },
+    {
+      "id": "39199010",
+      "code": "39199010",
+      "conditions": {
+        "adhesiveForm": "sheetForm"
+      },
+      "heading": "3919",
+      "noteVi": "Tấm từ polyme vinyl clorua → 3919.90.10"
+    },
+    {
+      "id": "39199020",
+      "code": "39199020",
+      "conditions": {
+        "adhesiveForm": "sheetForm",
+        "materialKind": "protein"
+      },
+      "heading": "3919",
+      "noteVi": "Từ protein đã được làm cứng → 3919.90.20"
+    },
+    {
+      "id": "39199091",
+      "code": "39199091",
+      "conditions": {
+        "adhesiveForm": "sheetForm",
+        "materialKind": "rubber_chemical"
+      },
+      "heading": "3919",
+      "noteVi": "Từ dẫn xuất hóa học cao su tự nhiên → 3919.90.91"
+    },
+    {
+      "id": "39199092",
+      "code": "39199092",
+      "conditions": {
+        "adhesiveForm": "sheetForm",
+        "materialKind": "cellulose"
+      },
+      "heading": "3919",
+      "noteVi": "Từ polyme trùng hợp / trùng ngưng / xenlulo đã hóa dẻo → 3919.90.92"
+    },
+    {
+      "id": "39199099",
+      "code": "39199099",
+      "conditions": {
+        "adhesiveForm": "sheetForm"
+      },
+      "heading": "3919",
+      "noteVi": "Tấm loại khác → 3919.90.99"
+    }
   ],
-  "inputAttributes": ["adhesiveForm"],
+  "inputAttributes": [
+    "adhesiveForm"
+  ],
   "essenceVi": "dạng cuộn/tấm + vật liệu",
   "generatedAt": "2026-10-04T07:05:00.000Z",
   "attributes": {
     "adhesiveForm": {
       "detect": {
-        "rollForm": ["cuộn", "dạng cuộn", "băng dính", "cuộn băng", "băng keo", "cuộn film"],
-        "sheetForm": ["dạng tấm", "tấm", "dạng phiến", "film dạng tấm", "tấm film"]
+        "rollForm": [
+          "cuộn",
+          "dạng cuộn",
+          "băng dính",
+          "cuộn băng",
+          "băng keo",
+          "cuộn film"
+        ],
+        "sheetForm": [
+          "dạng tấm",
+          "tấm",
+          "dạng phiến",
+          "film dạng tấm",
+          "tấm film"
+        ]
       },
       "type": "enum",
-      "domain": ["rollForm", "sheetForm"]
+      "domain": [
+        "rollForm",
+        "sheetForm"
+      ]
     }
   }
 }
