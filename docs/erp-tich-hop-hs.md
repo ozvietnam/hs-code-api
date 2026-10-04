@@ -107,6 +107,11 @@ trả thêm `policyBasisReview`:
   [oz-wiki-plhq](https://github.com/ozvietnam/oz-wiki-plhq). `items[].source = oz-wiki-plhq` trong
   `policyBasisReview` là cảnh báo lấy từ sổ này (vd quyết định tự vệ/CBPG đã chấm dứt).
   `hieuLucDaDoiChieu: false` = kho cộng đồng chưa đối chiếu nguồn A.
+- Tra thẳng hiệu lực một hay nhiều văn bản: `GET /api/legal-status?so=28/2026/TT-BCT,1182/QĐ-BCT` (công khai).
+  Không tham số → danh sách văn bản trong thư viện `/api/legal-docs` đang ghi tình trạng khác sổ cộng đồng.
+- `/api/legal-docs` (danh sách và từng văn bản) kèm trường `registry` — tình trạng theo sổ cộng đồng; khi
+  `registry.statusConflict: true` ERP hiện "tình trạng hiệu lực đang được đối chiếu", không khẳng định còn hiệu lực.
+- Sổ được đồng bộ tự động mỗi ngày (workflow `plhq-sync`); thay đổi lớn mở PR cho người duyệt.
 
 ## 4. Gửi lại mã đã sửa — `/api/feedback`
 

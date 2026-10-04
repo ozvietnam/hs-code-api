@@ -473,6 +473,7 @@ const DATASET_META = {
   declaration_fields: ['Danh mục trường cần khai theo nhóm hàng (?hs=4/6/8 số), câu hỏi VI + ZH', '/api/declaration-fields'],
   attribute_synonyms: ['Từ điển nhãn thông số tiếng Trung → khóa chuẩn (dữ liệu mở CC BY 4.0)', '/api/attribute-synonyms'],
   ktcn_regime: ['Khung kiểm tra chuyên ngành 2026 (NĐ 37/2026, 3 mức rủi ro): danh mục mới từng bộ + căn cứ cũ đã bị thay', '/api/ktcn-regime'],
+  legal_status: ['Hiệu lực văn bản theo sổ đăng ký cộng đồng oz-wiki-plhq (?so=28/2026/TT-BCT,1182/QĐ-BCT); không tham số → văn bản thư viện lệch tình trạng với sổ', '/api/legal-status'],
 };
 
 for (const [resource, [summary, prettyPath]] of Object.entries(DATASET_META)) {
@@ -481,7 +482,9 @@ for (const [resource, [summary, prettyPath]] of Object.entries(DATASET_META)) {
     get: op({
       id: `dataset_${resource}`, tags: ['Tra cứu'], auth: pub, summary,
       description: `Rewrite tới /api/dataset?resource=${resource}`,
-      params: [q('hs', 'Lọc theo mã HS (nếu resource hỗ trợ)')],
+      params: resource === 'legal_status'
+        ? [q('so', 'Số hiệu văn bản, nhiều số cách nhau dấu phẩy (tối đa 50)')]
+        : [q('hs', 'Lọc theo mã HS (nếu resource hỗ trợ)')],
     }),
   };
 }
