@@ -1,0 +1,61 @@
+name: plhq-sync
+
+# Cầu nối oz-wiki-plhq → hs-code-api: mỗi ngày (và ngay khi kho cộng đồng báo qua repository_dispatch)
+# tải dist/registry.json, đo lại song kiếm, chạy toàn bộ test, rồi:
+#   - thay đổi nhỏ  → commit thẳng main (dữ liệu chỉ đọc, đã qua cửa duyệt PR của kho cộng đồng + npm test)
+#   - thay đổi lớn  → mở/cập nhật PR "auto/plhq-sync" cho người duyệt (bớt văn bản, hoặc > 10 văn bản đổi tình trạng)
+# Không đổi gì → không commit. Hạn đối chiếu plhqRegistry trong data-freshness.json được làm mới mỗi tuần.
+on:
+  schedule:
+    - cron: '17 1 * * *' # 08:17 giờ VN
+  workflow_dispatch:
+  repository_dispatch:
+    types: [plhq-updated]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: plhq-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Đồng bộ sổ đăng ký
+        id: sync
+        run: |
+          node scripts/sync-plhq.mjs --summary "$RUNNER_TEMP/plhq-summary.md" --touch-freshness | tee "$RUNNER_TEMP/sync.log"
+          grep -E '^(CHANGED|LARGE|TOUCHED)=' "$RUNNER_TEMP/sync.log" | tr 'A-Z' 'a-z' >> "$GITHUB_OUTPUT"
+      - name: Đo song kiếm
+        if: steps.sync.outputs.changed == 'true'
+        run: node scripts/bench-plhq.mjs --json > "$RUNNER_TEMP/bench.md"
+      - name: Toàn bộ test
+        if: steps.sync.outputs.changed == 'true' || steps.sync.outputs.touched == 'true'
+        run: npm test
+      - name: Commit / mở PR
+        if: steps.sync.outputs.changed == 'true' || steps.sync.outputs.touched == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LARGE: ${{ steps.sync.outputs.large }}
+        run: |
+          git config user.name "plhq-sync[bot]"
+          git config user.email "plhq-sync@users.noreply.github.com"
+          git add data/plhq-registry.json data/plhq-bench-latest.json data/data-freshness.json
+          git diff --cached --quiet && { echo "Không có gì để commit"; exit 0; }
+          MSG="chore(data): đồng bộ sổ văn bản oz-wiki-plhq $(date -u +%F)"
+          git commit -q -m "$MSG" -m "$(cat "$RUNNER_TEMP/plhq-summary.md")"
+          if [ "$LARGE" != "true" ] && git push origin HEAD:main; then
+            echo "Đã đẩy thẳng main"; exit 0
+          fi
+          # Thay đổi lớn, hoặc main được bảo vệ → PR cho người duyệt.
+          git push -f origin HEAD:refs/heads/auto/plhq-sync
+          { cat "$RUNNER_TEMP/plhq-summary.md"; echo; echo '<details><summary>Kết quả đo song kiếm</summary>'; echo; cat "$RUNNER_TEMP/bench.md" 2>/dev/null; echo; echo '</details>'; } > "$RUNNER_TEMP/body.md"
+          NUM=$(gh pr list --head auto/plhq-sync --state open --json number --jq '.[0].number')
+          if [ -n "$NUM" ]; then gh pr edit "$NUM" --body-file "$RUNNER_TEMP/body.md"; else gh pr create --base main --head auto/plhq-sync --title "$MSG" --body-file "$RUNNER_TEMP/body.md"; fi

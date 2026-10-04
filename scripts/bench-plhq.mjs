@@ -4,6 +4,7 @@
 //   2. Hiệu lực: mã HS đang dẫn văn bản còn hiệu lực / đã hết / chưa xác minh
 //   3. Hai lớp cảnh báo: quy tắc KTCN 2026 riêng của hs-code-api vs sổ cộng đồng — trùng, chỉ một bên
 //   4. Việc trả ngược cho kho cộng đồng (văn bản thiếu, văn bản cần đối chiếu theo số mã HS chịu ảnh hưởng)
+//   5. Thư viện văn bản riêng (data/legal-docs.json) lệch tình trạng với sổ cộng đồng
 //   node scripts/bench-plhq.mjs [--json]   → in markdown; --json ghi data/plhq-bench-latest.json
 import { writeFileSync } from 'fs';
 import { createRequire } from 'module';
@@ -13,7 +14,8 @@ import { fileURLToPath } from 'url';
 const require = createRequire(import.meta.url);
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const { taxData } = require('../lib/data.js');
-const { registryReview, registryMeta } = require('../lib/plhq-registry.js');
+const { registryReview, registryMeta, libraryConflicts } = require('../lib/plhq-registry.js');
+const { listDocs } = require('../lib/legal-docs.js');
 const { policyBasisReview } = require('../lib/policy-regime.js');
 
 const rows = Object.values(taxData);
@@ -72,6 +74,13 @@ const ketQua = {
   },
   theoVanBan: ds,
 };
+// 5. Lệch tình trạng: thư viện riêng ghi còn hiệu lực mà sổ cộng đồng ghi hết (hoặc ngược lại).
+const thuVien = listDocs();
+const lech = libraryConflicts(thuVien);
+ketQua.thuVienLechSo = {
+  tongThuVien: thuVien.length,
+  lech: lech.map((x) => ({ code: x.code, thuVien: x.libraryStatus, so: x.registry.tinhTrang, soHieu: x.registry.soHieu, hieuLucDaDoiChieu: x.registry.hieuLucDaDoiChieu, xacMinh: x.registry.xacMinh })),
+};
 
 const pct = (a, b) => (b ? `${Math.round((a / b) * 1000) / 10}%` : '—');
 const m = ketQua.maHs;
@@ -103,6 +112,10 @@ const md = [
   `- Chưa có trong sổ (${ketQua.traNguocChoKho.chuaCoTrongSo.length}): ${ketQua.traNguocChoKho.chuaCoTrongSo.map((x) => `${x.soHieu} (${x.soMaHs} mã)`).join(', ') || 'không'}`,
   '- Cần đối chiếu hiệu lực trước (xếp theo số mã HS chịu ảnh hưởng):',
   ...ketQua.traNguocChoKho.canDoiChieuTruoc.map((x, i) => `  ${i + 1}. ${x.soHieu} — ${x.tinhTrang} — ${x.soMaHs} mã`),
+  '',
+  '## 5. Thư viện /api/legal-docs lệch tình trạng với sổ cộng đồng',
+  `${ketQua.thuVienLechSo.lech.length}/${ketQua.thuVienLechSo.tongThuVien} văn bản lệch — đối chiếu nguồn A rồi sửa bên sai:`,
+  ...ketQua.thuVienLechSo.lech.map((x) => `- ${x.code}: thư viện ${x.thuVien}, sổ ${x.so} (${x.xacMinh}${x.hieuLucDaDoiChieu ? ', đã đối chiếu' : ''})`),
 ].join('\n');
 console.log(md);
 if (process.argv.includes('--json')) {

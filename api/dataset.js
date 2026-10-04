@@ -24,6 +24,7 @@ const { searchWatchlist, watchlistStats, checkTrademarkRisk } = require('../lib/
 const { declarationFields } = require('../lib/declaration-fields');
 const { dictionary: zhSpecDictionary } = require('../lib/zh-specs');
 const { regimeSummary } = require('../lib/policy-regime');
+const plhq = require('../lib/plhq-registry');
 const fs = require('fs');
 const path = require('path');
 
@@ -235,11 +236,13 @@ module.exports = async function handler(req, res) {
 
     if (resource === 'legal_docs') {
       const { chapter, status, issuer } = req.query;
-      const items = listDocs({ chapter, status, issuer });
+      // Mỗi văn bản kèm tình trạng theo sổ cộng đồng oz-wiki-plhq + cờ lệch với thư viện này.
+      const items = listDocs({ chapter, status, issuer }).map((d) => ({ ...d, registry: plhq.docRegistry(d.code, d.status) }));
       return res.status(200).json({
         total: items.length,
         chapter: chapter || 'all',
         freshness: legalDocsInfo(),
+        registryConflicts: items.filter((d) => d.registry?.statusConflict).length,
         items,
       });
     }
@@ -253,7 +256,27 @@ module.exports = async function handler(req, res) {
       if (!doc) {
         return res.status(404).json({ found: false, code, message: 'Legal document not in catalog' });
       }
-      return res.status(200).json({ found: true, ...doc, freshness: legalDocsInfo() });
+      return res.status(200).json({
+        found: true, ...doc, freshness: legalDocsInfo(), registry: plhq.docRegistry(doc.code, doc.status),
+      });
+    }
+
+    // Cầu nối sổ đăng ký cộng đồng oz-wiki-plhq: tra hiệu lực theo số hiệu (?so=A,B — tối đa 50).
+    // Không có ?so → thông tin bản chụp + các văn bản thư viện riêng đang lệch tình trạng với sổ.
+    if (resource === 'legal_status') {
+      const meta = plhq.registryMeta();
+      if (!meta) return res.status(503).json({ error: 'Chưa có bản chụp sổ cộng đồng (data/plhq-registry.json)' });
+      const so = String(req.query.so || '').split(/[,;\n]/).map((x) => x.trim()).filter(Boolean).slice(0, 50);
+      if (so.length) {
+        const items = so.map((q) => { const r = plhq.lookup(q); return r ? { query: q, found: true, ...r } : { query: q, found: false }; });
+        return res.status(200).json({ registry: meta, total: items.length, items });
+      }
+      const conflicts = plhq.libraryConflicts(listDocs());
+      return res.status(200).json({
+        registry: meta,
+        libraryConflicts: conflicts,
+        noteVi: 'libraryConflicts: văn bản trong thư viện /api/legal-docs ghi tình trạng khác sổ cộng đồng. Cần đối chiếu nguồn A trước khi sửa bên nào.',
+      });
     }
 
     if (resource === 'kpi') {

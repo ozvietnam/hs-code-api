@@ -40,7 +40,7 @@
       "labelVi": "Bản chụp sổ đăng ký văn bản cộng đồng (data/plhq-registry.json ← oz-wiki-plhq)",
       "lastCheckedAt": "2026-10-04",
       "checkEveryDays": 7,
-      "howToCheckVi": "node scripts/sync-plhq.mjs (tải dist/registry.json nhánh main của ozvietnam/oz-wiki-plhq), rồi node scripts/bench-plhq.mjs --json; đưa danh sách 'cần đối chiếu trước' sang issue luồng hiệu lực của kho cộng đồng."
+      "howToCheckVi": "Tự động: workflow .github/workflows/plhq-sync.yml mỗi ngày chạy node scripts/sync-plhq.mjs + bench-plhq.mjs + npm test và commit (thay đổi lớn → PR). Chạy tay: node scripts/sync-plhq.mjs rồi node scripts/bench-plhq.mjs --json. Văn bản 'cần đối chiếu trước' và 'thư viện lệch sổ' được kho cộng đồng tự kéo về báo cáo tuần (tools/nhu-cau.mjs)."
     },
     "ministries": {
       "labelVi": "Danh mục bộ ngành (data/ministries-vn.json)",

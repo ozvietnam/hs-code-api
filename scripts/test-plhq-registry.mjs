@@ -22,7 +22,7 @@ const fixture = {
 mkdirSync(dataPath(), { recursive: true });
 writeFileSync(dataPath('plhq-registry.json'), JSON.stringify(fixture));
 
-const { registryReview, lookup, khoa, trichSoHieu } = require('../lib/plhq-registry.js');
+const { registryReview, lookup, khoa, trichSoHieu, docRegistry, libraryConflicts } = require('../lib/plhq-registry.js');
 const { policyBasisReview, regimeStatusForCode } = require('../lib/policy-regime.js');
 
 let pass = 0;
@@ -60,6 +60,29 @@ t('regimeStatusForCode: số hiệu trần + chữ đầy đủ PL2 → quy tắ
 t('regimeStatusForCode: PL1 → quy tắc chất lượng nhóm 2', regimeStatusForCode('1182/QĐ-BCT', { csText: 'Y (1182/QĐ-BCT-PL1-2021)', asOf: '2026-10-04' })?.ruleId === 'bct-nhom2-1182-pl1');
 t('regimeStatusForCode: trước ngày hiệu lực → UPCOMING (nhất quán với policyBasisReview)', regimeStatusForCode('1182/QĐ-BCT', { csText: 'X (1182/QĐ-BCT-PL2-2021)', asOf: '2026-07-10' })?.relation === 'UPCOMING');
 t('regimeStatusForCode: M1 kiểm dịch khớp, M12 không', regimeStatusForCode('01/2024/TT-BNNPTNT', { csText: 'Z (01/2024/TT-BNNPTNT M1)' })?.ruleId === 'bnnptnt-m1-kiem-dich' && regimeStatusForCode('01/2024/TT-BNNPTNT', { csText: 'Z (01/2024/TT-BNNPTNT M12)' }) === null);
+
+
+// Cầu nối thư viện riêng (data/legal-docs.json) ↔ sổ cộng đồng
+t('lookup bỏ hậu tố phụ lục/năm', lookup('1182/QD-BCT-PL2-2021')?.soHieu === '1182/QĐ-BCT');
+t('docRegistry: thư viện ACTIVE, sổ HET_HIEU_LUC → lệch', docRegistry('1182/QD-BCT-PL1', 'ACTIVE')?.statusConflict === true);
+t('docRegistry: thư viện EXPIRED, sổ HET_HIEU_LUC → khớp', docRegistry('715/QĐ-BCT', 'EXPIRED')?.statusConflict === false);
+t('docRegistry: không có trong sổ → null', docRegistry('1/2099/TT-BXX', 'ACTIVE') === null);
+const lech = libraryConflicts([{ code: '2174/QĐ-BCT', status: 'ACTIVE' }, { code: '12/2022/TT-BGTVT', status: 'AMENDED' }, { code: '9/2099/TT-BXX', status: 'ACTIVE' }]);
+t('libraryConflicts: chỉ trả văn bản lệch', lech.length === 1 && lech[0].code === '12/2022/TT-BGTVT' && lech[0].registry.tinhTrang === 'HET_HIEU_LUC', JSON.stringify(lech));
+
+// /api/legal-status công khai
+const handler = require('../api/dataset.js');
+const call = async (query) => {
+  const res = { _s: 0, _j: null, headers: {}, setHeader(k, v) { this.headers[k] = v; }, getHeader(k) { return this.headers[k]; }, status(c) { this._s = c; return this; }, json(p) { this._j = p; return this; }, end() { return this; } };
+  await handler({ method: 'GET', url: '/api/dataset', query: { resource: 'legal_status', ...query }, headers: {} }, res);
+  return res;
+};
+const s1 = await call({ so: '2333/QĐ-BCT, 1/2099/TT-BXX' });
+t('/api/legal-status?so= công khai, tra nhiều số hiệu', s1._s === 200 && s1._j.items[0].found && s1._j.items[0].biThayTheBoi[0] === '2174/QĐ-BCT' && s1._j.items[1].found === false, JSON.stringify(s1._j).slice(0, 200));
+const s2 = await call({});
+t('/api/legal-status không tham số → libraryConflicts', s2._s === 200 && Array.isArray(s2._j.libraryConflicts) && s2._j.registry.registryVersion === '2026-10-04');
+const s3 = await call({ resource: 'legal_docs' });
+t('/api/legal-docs: mỗi văn bản có trường registry, đếm lệch', s3._s === 200 && s3._j.items.every((d) => 'registry' in d) && typeof s3._j.registryConflicts === 'number');
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

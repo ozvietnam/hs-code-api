@@ -2247,6 +2247,50 @@
           }
         }
       }
+    },
+    "/api/legal-status": {
+      "get": {
+        "operationId": "dataset_legal_status",
+        "summary": "Hiệu lực văn bản theo sổ đăng ký cộng đồng oz-wiki-plhq (?so=28/2026/TT-BCT,1182/QĐ-BCT); không tham số → văn bản thư viện lệch tình trạng với sổ",
+        "description": "Rewrite tới /api/dataset?resource=legal_status",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "so",
+            "in": "query",
+            "required": false,
+            "description": "Số hiệu văn bản, nhiều số cách nhau dấu phẩy (tối đa 50)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "x-generated": {
