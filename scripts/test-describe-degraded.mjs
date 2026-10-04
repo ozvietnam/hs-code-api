@@ -13,7 +13,9 @@ process.env.HS_API_TOKEN = 'test-token';
 const llmTier = require('../lib/llm-tier');
 let mode = 'ok';
 let lastPrompt = null;
-llmTier.callLLMJson = async (_system, user) => {
+let lastSystem = null;
+llmTier.callLLMJson = async (system, user) => {
+  lastSystem = system;
   lastPrompt = user;
   if (mode === 'retryable') throw Object.assign(new Error('rate limit exceeded'), { status: 429 });
   if (mode === 'fatal') throw new Error('unexpected token in JSON at position 0');
@@ -87,6 +89,30 @@ check('attributes: material vào ô chất liệu gửi AI', sent.material === '
 check('attributes: công suất vào thông số kỹ thuật', /Công suất: 1500W/.test(sent.technicalSpec || ''));
 check('attributes: không gửi chữ Hán cho AI', !/[\u3400-\u9fff]/.test(lastPrompt || ''));
 check('attributes: báo attributesUsed + attributesSkipped', (r6._j?.attributesUsed || []).includes('power') && (r6._j?.attributesSkipped || [])[0]?.key === 'fiberContent');
+
+// 7. PR #108: quy tắc bám dữ liệu người khai thật sự được gửi cho AI và khớp validator
+const { INPUT_FIELDS, SHORT_NAME_EXAMPLE, INPUT_FIDELITY_RULES } = require('../lib/customs-prompt');
+const { validateDeclaration, normalizeDeclaration } = require('../lib/declaration-validator');
+mode = 'ok';
+lastSystem = null;
+await call({
+  hsCode: '19059090', productName: 'bánh mè 500g/gói', origin: 'China', brand: 'X', model: 'M1',
+  material: 'bột mì, mè', purpose: 'thực phẩm', technicalSpec: '500g/gói', customerDescription: 'bánh mè giòn',
+});
+check('prompt: quy tắc bám dữ liệu người khai nằm trong system prompt gửi AI',
+  typeof INPUT_FIDELITY_RULES === 'string' && (lastSystem || '').includes(INPUT_FIDELITY_RULES));
+const sent7 = JSON.parse(lastPrompt || '{}');
+const absent = (INPUT_FIELDS || ['?']).filter((f) => !(f in sent7));
+check(`prompt: mọi trường quy tắc 3 nhắc tới có trong payload gửi AI${absent.length ? ` (thiếu: ${absent})` : ''}`, absent.length === 0);
+check('prompt: dặn dịch chữ Hán, không chép xuất xứ/quy cách vào tenHang',
+  /chữ Hán[^.]*DỊCH sang tiếng Việt/.test(INPUT_FIDELITY_RULES || '') && /KHÔNG đưa xuất xứ, quy cách/.test(INPUT_FIDELITY_RULES || ''));
+const tenHangOk = (t) => {
+  const d = normalizeDeclaration({ declaration: { tenHang: t } }, {});
+  const c = validateDeclaration(d, '19059090', {});
+  return !c.missingRequired.includes('tenHang') && !c.warnings.some((w) => w.field === 'tenHang' && w.code === 'TOO_GENERIC');
+};
+check('prompt: ví dụ tên ngắn trong prompt tự qua validator tenHang (≥10 ký tự, không mơ hồ)',
+  !!SHORT_NAME_EXAMPLE && tenHangOk(SHORT_NAME_EXAMPLE.tenHang) && !tenHangOk(SHORT_NAME_EXAMPLE.input));
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
