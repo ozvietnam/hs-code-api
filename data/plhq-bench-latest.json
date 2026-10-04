@@ -1,31 +1,39 @@
 {
  "ngay": "2026-10-04",
  "registryVersion": "2026-10-04",
- "soVanBanTrongSo": 152,
+ "soVanBanTrongSo": 154,
  "maHs": {
   "tong": 11871,
   "coChinhSach": 7928,
   "tatCaConHieuLuc": 4825,
-  "coVanBanHetHieuLuc": 1858,
-  "coVanBanChuaXacMinh": 1245,
-  "coVanBanMotPhanHoacChuaCoHieuLuc": 0,
+  "coVanBanHetHieuLuc": 2531,
+  "coVanBanChuaXacMinh": 535,
+  "coVanBanMotPhanHoacChuaCoHieuLuc": 37,
   "coVanBanChuaCoTrongSo": 0,
   "khongTrichDuoc": 0,
-  "daDoiChieuHetCacVanBan": 31
+  "daDoiChieuHetCacVanBan": 482
  },
  "vanBanDuocDan": {
   "tong": 61,
   "coTrongSo": 61,
   "chuaCoTrongSo": 0,
-  "daDoiChieuHieuLuc": 5
+  "daDoiChieuHieuLuc": 8
  },
  "haiLopCanhBao": {
-  "chiQuyTac": 342,
-  "chiSoCongDong": 68,
-  "caHai": 1790,
-  "khongCo": 5728
+  "chiQuyTac": 339,
+  "chiSoCongDong": 738,
+  "caHai": 1793,
+  "khongCo": 5058
  },
  "soCongDongBatThem": [
+  {
+   "soHieu": "113/2017/NĐ-CP",
+   "soMaHs": 667
+  },
+  {
+   "soHieu": "82/2022/NĐ-CP",
+   "soMaHs": 258
+  },
   {
    "soHieu": "04/2021/TT-BXD",
    "soMaHs": 34
@@ -108,11 +116,6 @@
     "soMaHs": 749
    },
    {
-    "soHieu": "113/2017/NĐ-CP",
-    "tinhTrang": "CHUA_XAC_MINH",
-    "soMaHs": 667
-   },
-   {
     "soHieu": "1182/QĐ-BCT",
     "tinhTrang": "HET_HIEU_LUC",
     "soMaHs": 496
@@ -126,11 +129,6 @@
     "soHieu": "2711/QĐ-BKHCN",
     "tinhTrang": "CHUA_XAC_MINH",
     "soMaHs": 263
-   },
-   {
-    "soHieu": "82/2022/NĐ-CP",
-    "tinhTrang": "CHUA_XAC_MINH",
-    "soMaHs": 258
    },
    {
     "soHieu": "15/2024/TT-BYT",
@@ -161,6 +159,16 @@
     "soHieu": "173/2018/TT-BQP",
     "tinhTrang": "CON_HIEU_LUC",
     "soMaHs": 41
+   },
+   {
+    "soHieu": "2310/QĐ-BCT",
+    "tinhTrang": "CON_HIEU_LUC",
+    "soMaHs": 38
+   },
+   {
+    "soHieu": "04/2021/TT-BXD",
+    "tinhTrang": "HET_HIEU_LUC",
+    "soMaHs": 34
    }
   ]
  },
@@ -244,9 +252,11 @@
   {
    "soHieu": "113/2017/NĐ-CP",
    "found": true,
-   "tinhTrang": "CHUA_XAC_MINH",
-   "verified": false,
-   "thay": [],
+   "tinhTrang": "HET_HIEU_LUC",
+   "verified": true,
+   "thay": [
+    "26/2026/NĐ-CP"
+   ],
    "soMaHs": 667
   },
   {
@@ -286,9 +296,11 @@
   {
    "soHieu": "82/2022/NĐ-CP",
    "found": true,
-   "tinhTrang": "CHUA_XAC_MINH",
-   "verified": false,
-   "thay": [],
+   "tinhTrang": "HET_HIEU_LUC",
+   "verified": true,
+   "thay": [
+    "26/2026/NĐ-CP"
+   ],
    "soMaHs": 258
   },
   {
@@ -350,8 +362,8 @@
   {
    "soHieu": "12/2018/TT-BCT",
    "found": true,
-   "tinhTrang": "CHUA_XAC_MINH",
-   "verified": false,
+   "tinhTrang": "HET_HIEU_LUC_MOT_PHAN",
+   "verified": true,
    "thay": [],
    "soMaHs": 37
   },
@@ -687,6 +699,22 @@
     "so": "HET_HIEU_LUC",
     "soHieu": "62/2024/TT-BGTVT",
     "hieuLucDaDoiChieu": false,
+    "xacMinh": "NGUON_A"
+   },
+   {
+    "code": "113/2017/ND-CP",
+    "thuVien": "AMENDED",
+    "so": "HET_HIEU_LUC",
+    "soHieu": "113/2017/NĐ-CP",
+    "hieuLucDaDoiChieu": true,
+    "xacMinh": "NGUON_A"
+   },
+   {
+    "code": "82/2022/ND-CP",
+    "thuVien": "ACTIVE",
+    "so": "HET_HIEU_LUC",
+    "soHieu": "82/2022/NĐ-CP",
+    "hieuLucDaDoiChieu": true,
     "xacMinh": "NGUON_A"
    },
    {
