@@ -49,7 +49,7 @@ jobs:
         run: |
           git config user.name "plhq-sync[bot]"
           git config user.email "plhq-sync@users.noreply.github.com"
-          git add data/plhq-registry.json data/plhq-bench-latest.json data/data-freshness.json
+          git add data/plhq-registry.json data/plhq-hs-index.json data/plhq-bench-latest.json data/data-freshness.json 2>/dev/null || git add data/plhq-registry.json data/plhq-bench-latest.json data/data-freshness.json
           git diff --cached --quiet && { echo "Không có gì để commit"; exit 0; }
           MSG="chore(data): đồng bộ sổ văn bản oz-wiki-plhq $(date -u +%F)"
           git commit -q -m "$MSG" -m "$(cat "$RUNNER_TEMP/plhq-summary.md")"

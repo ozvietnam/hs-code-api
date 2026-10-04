@@ -541,6 +541,116 @@
                         }
                       }
                     },
+                    "hsListings": {
+                      "type": "array",
+                      "description": "Văn bản danh mục (phụ lục có mã HS) chứa mã này, theo bảng trích nguyên văn của sổ cộng đồng oz-wiki-plhq (docs/luoc-do-danh-muc-hs.md). Độc lập với cột chính sách cũ của biểu thuế. Chỉ có khi mã nằm trong ít nhất một bảng. match.level HS4/HS6 = khớp theo nhóm — đọc dieuKien. active=false: văn bản hết/chưa có hiệu lực hoặc chưa xác minh — không dùng để kết luận.",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "soHieu": {
+                            "type": "string",
+                            "description": "Số hiệu văn bản danh mục"
+                          },
+                          "ten": {
+                            "type": "string",
+                            "description": "Tên văn bản"
+                          },
+                          "tinhTrang": {
+                            "type": "string",
+                            "enum": [
+                              "CON_HIEU_LUC",
+                              "HET_HIEU_LUC",
+                              "HET_HIEU_LUC_MOT_PHAN",
+                              "TAM_NGUNG_HIEU_LUC",
+                              "CHUA_CO_HIEU_LUC",
+                              "CHUA_XAC_MINH"
+                            ]
+                          },
+                          "active": {
+                            "type": "boolean",
+                            "description": "Đang áp dụng tại hôm nay (giờ VN)"
+                          },
+                          "match": {
+                            "type": "object",
+                            "properties": {
+                              "level": {
+                                "type": "string",
+                                "enum": [
+                                  "HS8",
+                                  "HS6",
+                                  "HS4"
+                                ]
+                              },
+                              "code": {
+                                "type": "string",
+                                "description": "Mã như ghi trong phụ lục"
+                              }
+                            }
+                          },
+                          "moTa": {
+                            "type": "string",
+                            "description": "Mô tả hàng nguyên văn trong phụ lục"
+                          },
+                          "phuLuc": {
+                            "type": "string",
+                            "description": "Phụ lục"
+                          },
+                          "nhom": {
+                            "type": "string",
+                            "description": "Nhóm/STT trong phụ lục"
+                          },
+                          "loaiTacDong": {
+                            "type": "string",
+                            "enum": [
+                              "KIEM_TRA_ATTP",
+                              "KIEM_TRA_CHAT_LUONG",
+                              "KIEM_DICH_DONG_VAT",
+                              "KIEM_DICH_THUC_VAT",
+                              "GIAY_PHEP",
+                              "CAM_NHAP_KHAU",
+                              "CAM_XUAT_KHAU",
+                              "CONG_BO_HOP_QUY",
+                              "DANG_KY_LUU_HANH",
+                              "PHONG_VE_THUONG_MAI",
+                              "KHAC"
+                            ]
+                          },
+                          "mucRuiRo": {
+                            "type": "string",
+                            "enum": [
+                              "CAO",
+                              "TRUNG_BINH",
+                              "THAP"
+                            ]
+                          },
+                          "dieuKien": {
+                            "type": "string",
+                            "description": "Giới hạn phạm vi in kèm dòng (nếu có)"
+                          },
+                          "trang": {
+                            "type": "integer"
+                          },
+                          "effectiveFrom": {
+                            "type": "string",
+                            "description": "Ngày hiệu lực"
+                          },
+                          "effectiveTo": {
+                            "type": "string",
+                            "description": "Ngày hết hiệu lực"
+                          },
+                          "hieuLucDaDoiChieu": {
+                            "type": "boolean"
+                          },
+                          "table": {
+                            "type": "object"
+                          },
+                          "url": {
+                            "type": "string",
+                            "description": "Bảng trong sổ cộng đồng"
+                          }
+                        }
+                      }
+                    },
                     "mappedHs": {
                       "type": "object",
                       "description": "Chương 98: mã hàng tương ứng tại Mục I"
