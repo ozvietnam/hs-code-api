@@ -1047,7 +1047,7 @@
       "post": {
         "operationId": "classify",
         "summary": "Phân loại có cây quyết định + bảng phân giải cụm mã dễ nhầm",
-        "description": "Trả `results[]` (mã 8 hoặc 6 số — 6 số nghĩa là còn thiếu dữ kiện, xem `missing[]`), `girRulesApplied[]` (có `basis`), `llmRejectedCodes` khi AI trả mã không có trong biểu thuế.",
+        "description": "Đọc `status` + `nextAction` TRƯỚC (cùng bảng với /api/suggest: REVIEW, NEED_FACTS, NEEDS_EXPERT [LOW_CONFIDENCE, FEATURE_CONFLICT, ENGINE_TIMEOUT, LLM_REJECTED], RESOLVED_BY_TABLE, NO_CANDIDATES). Nhận nguyên tiêu đề Taobao tiếng Trung (`queryUnderstanding`). Trả `results[]` (mã 8 hoặc 6 số), `missingStructured[]` (trường bắt buộc còn thiếu theo nhóm 4 số, câu hỏi VI + ZH), `originAssessment`, `girRulesApplied[]` (có `basis`), `llmRejectedCodes` khi AI trả mã không có trong biểu thuế.",
         "tags": [
           "AI"
         ],
@@ -1146,6 +1146,129 @@
           },
           "502": {
             "description": "Lỗi phân loại",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/extract-specs": {
+      "post": {
+        "operationId": "extractSpecs",
+        "summary": "Rút thông số chuẩn từ chữ tiếng Trung (thông số trang + chữ OCR trong ảnh)",
+        "description": "Không nhận ảnh — bên gọi tự OCR rồi gửi chữ. Từ điển mở (/api/attribute-synonyms) trước, AI sau; mỗi thông số có `evidence` (đoạn chữ + link ảnh), AI đưa bằng chứng không có trong chữ nguồn thì bị bỏ. Rewrite tới /api/classify?mode=extract_specs.",
+        "tags": [
+          "AI"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "titleZh": {
+                    "type": "string",
+                    "description": "Tiêu đề gốc"
+                  },
+                  "specsZh": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "description": "Nhãn tiếng Trung, vd 材质"
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "Giá trị"
+                        }
+                      }
+                    }
+                  },
+                  "imageTexts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "description": "Link ảnh"
+                        },
+                        "text": {
+                          "type": "string",
+                          "description": "Chữ OCR"
+                        }
+                      }
+                    }
+                  },
+                  "needKeys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Khóa chuẩn cần tìm, vd [\"material\",\"power\"]"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Không có chữ nào để đọc",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Thiếu hoặc sai Bearer token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Lỗi rút thông số",
             "content": {
               "application/json": {
                 "schema": {
@@ -1834,11 +1957,99 @@
           }
         }
       }
+    },
+    "/api/declaration-fields": {
+      "get": {
+        "operationId": "dataset_declaration_fields",
+        "summary": "Danh mục trường cần khai theo nhóm hàng (?hs=4/6/8 số), câu hỏi VI + ZH",
+        "description": "Rewrite tới /api/dataset?resource=declaration_fields",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/attribute-synonyms": {
+      "get": {
+        "operationId": "dataset_attribute_synonyms",
+        "summary": "Từ điển nhãn thông số tiếng Trung → khóa chuẩn (dữ liệu mở CC BY 4.0)",
+        "description": "Rewrite tới /api/dataset?resource=attribute_synonyms",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "x-generated": {
     "by": "scripts/build-openapi.mjs",
-    "at": "2026-09-24",
+    "at": "2026-10-04",
     "note": "Sinh tự động từ lib/public-access.js — đừng sửa tay, sửa nguồn rồi chạy npm run build."
   }
 }

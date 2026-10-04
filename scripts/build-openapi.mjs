@@ -365,10 +365,32 @@ const paths = {
     post: op({
       id: 'classify', tags: ['AI'], auth: bearer,
       summary: 'Phân loại có cây quyết định + bảng phân giải cụm mã dễ nhầm',
-      description: 'Trả `results[]` (mã 8 hoặc 6 số — 6 số nghĩa là còn thiếu dữ kiện, xem `missing[]`), ' +
+      description: 'Đọc `status` + `nextAction` TRƯỚC (cùng bảng với /api/suggest: REVIEW, NEED_FACTS, NEEDS_EXPERT ' +
+        '[LOW_CONFIDENCE, FEATURE_CONFLICT, ENGINE_TIMEOUT, LLM_REJECTED], RESOLVED_BY_TABLE, NO_CANDIDATES). ' +
+        'Nhận nguyên tiêu đề Taobao tiếng Trung (`queryUnderstanding`). Trả `results[]` (mã 8 hoặc 6 số), ' +
+        '`missingStructured[]` (trường bắt buộc còn thiếu theo nhóm 4 số, câu hỏi VI + ZH), `originAssessment`, ' +
         '`girRulesApplied[]` (có `basis`), `llmRejectedCodes` khi AI trả mã không có trong biểu thuế.',
       requestBody: CLASSIFY_REQUEST,
       errors: { 400: 'Thiếu tenHang', 502: 'Lỗi phân loại' },
+    }),
+  },
+  '/api/extract-specs': {
+    post: op({
+      id: 'extractSpecs', tags: ['AI'], auth: bearer,
+      summary: 'Rút thông số chuẩn từ chữ tiếng Trung (thông số trang + chữ OCR trong ảnh)',
+      description: 'Không nhận ảnh — bên gọi tự OCR rồi gửi chữ. Từ điển mở (/api/attribute-synonyms) trước, AI sau; ' +
+        'mỗi thông số có `evidence` (đoạn chữ + link ảnh), AI đưa bằng chứng không có trong chữ nguồn thì bị bỏ. ' +
+        'Rewrite tới /api/classify?mode=extract_specs.',
+      requestBody: {
+        type: 'object',
+        properties: {
+          titleZh: str('Tiêu đề gốc'),
+          specsZh: { type: 'array', items: { type: 'object', properties: { key: str('Nhãn tiếng Trung, vd 材质'), value: str('Giá trị') } } },
+          imageTexts: { type: 'array', items: { type: 'object', properties: { url: str('Link ảnh'), text: str('Chữ OCR') } } },
+          needKeys: { type: 'array', items: { type: 'string' }, description: 'Khóa chuẩn cần tìm, vd ["material","power"]' },
+        },
+      },
+      errors: { 400: 'Không có chữ nào để đọc', 502: 'Lỗi rút thông số' },
     }),
   },
   '/api/feedback': {
@@ -416,6 +438,8 @@ const DATASET_META = {
   products: ['Corpus sản phẩm cho mã "Loại khác"', '/api/products'],
   accuracy: ['Benchmark độ chính xác (công khai, không tô hồng)', '/api/accuracy'],
   data_quality: ['Báo cáo chất lượng dữ liệu — gồm cả điểm yếu', '/api/data-quality'],
+  declaration_fields: ['Danh mục trường cần khai theo nhóm hàng (?hs=4/6/8 số), câu hỏi VI + ZH', '/api/declaration-fields'],
+  attribute_synonyms: ['Từ điển nhãn thông số tiếng Trung → khóa chuẩn (dữ liệu mở CC BY 4.0)', '/api/attribute-synonyms'],
 };
 
 for (const [resource, [summary, prettyPath]] of Object.entries(DATASET_META)) {
