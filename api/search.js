@@ -45,7 +45,15 @@ function handleMatch(req, res) {
       querySnippet: String(body.titleVi || body.titleZh || '').slice(0, 80),
       hsCode: payload.matches?.[0]?.hsCode || null,
     });
-    return res.status(200).json(payload);
+    // Ngừng dùng (kế hoạch OZSource H6): khớp từ khóa, độ tin cậy cố định ~0,94 dù sai
+    // (máy chạy bộ → 8501.40, giấy nhám → 6404.19). Giữ để không gãy bên đang gọi.
+    res.setHeader('Deprecation', 'true');
+    res.setHeader('Link', '</api/classify>; rel="successor-version"');
+    return res.status(200).json({
+      ...payload,
+      deprecated: true,
+      deprecationVi: 'Ngừng dùng /api/match: kết quả chỉ khớp từ khóa, không dùng để chọn mã. Dùng POST /api/classify (hoặc /api/suggest).',
+    });
   } catch (error) {
     if (error.code === 'VALIDATION') {
       return res.status(400).json({ ok: false, error: error.message });

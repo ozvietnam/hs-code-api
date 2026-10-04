@@ -18,7 +18,27 @@ Kết quả sai không nằm ở một mặt hàng mà ở quy trình:
 | Mô tả ECUS | Dán tiêu đề tiếng Trung, dịch máy sai nghĩa | hs-code-api (chặn) + **ERP** (không dán tiêu đề thô) |
 | Học từ sửa sai | Nhân viên sửa mã nhưng không gửi về, hoặc gửi về mà prod không lưu được | **ERP** + hs-code-api (kho lưu bền) |
 
-## 2. Gọi `/api/suggest`
+## 2. Gọi `/api/classify` (ERP đang dùng) hoặc `/api/suggest`
+
+Từ 04/10/2026 hai endpoint có cùng các bước cho tiêu đề Taobao (hiểu hàng tiếng Trung,
+kiểm mâu thuẫn "có/không có", kiểm 8 số, chặn độ tin < 40, xuất xứ) và cùng trường
+`status` + `nextAction`. ERP đang gọi `/api/classify` qua `hsKbClassifyResult`:
+
+```http
+POST /api/classify
+Authorization: Bearer <HS_API_TOKEN>
+{ "tenHang": "<tên tiếng Việt hoặc nguyên tiêu đề>", "nameZh": "<tên gốc>",
+  "specs": "<thông số gốc, vd 材质：304不锈钢 额定功率：1500W>",
+  "attributes": { "material": "inox 304", "power": "1500W" } }
+```
+
+Trả thêm (giữ nguyên các trường cũ): `status`, `nextAction`, `queryUnderstanding`,
+`originAssessment`, `antiPatternWarnings`, `missingStructured` (trường bắt buộc còn thiếu
+theo nhóm 4 số, có `questionVi` + `questionZh` để hỏi shop). Danh mục trường đầy đủ của
+một nhóm: `GET /api/declaration-fields?hs=8413` (công khai). Tên khóa thuộc tính dùng
+chung: `GET /api/attribute-synonyms` (công khai).
+
+### `/api/suggest`
 
 ```http
 POST /api/suggest

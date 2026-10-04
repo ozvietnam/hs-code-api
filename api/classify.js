@@ -6,6 +6,7 @@
 const { requireAuth } = require('../lib/auth');
 const { setCors, handleOptions } = require('../lib/cors');
 const { classify } = require('../lib/classify');
+const { extractSpecs } = require('../lib/extract-specs');
 
 module.exports = async function handler(req, res) {
   setCors(res);
@@ -18,6 +19,22 @@ module.exports = async function handler(req, res) {
   let body = req.body;
   if (typeof body === 'string') {
     try { body = JSON.parse(body); } catch { return res.status(400).json({ error: 'Invalid JSON body' }); }
+  }
+
+  // POST /api/extract-specs (rewrite → ?mode=extract_specs): rút thông số chuẩn từ chữ
+  // tiếng Trung + chữ OCR ozsource gửi sang. Gộp vào function này theo pattern vercel.json.
+  if (String(req.query?.mode || '') === 'extract_specs') {
+    const hasText = body && (body.titleZh || (Array.isArray(body.specsZh) ? body.specsZh.length : body.specsZh) || (Array.isArray(body.imageTexts) && body.imageTexts.length));
+    if (!hasText) {
+      return res.status(400).json({ error: 'Cần ít nhất một trong: titleZh, specsZh, imageTexts[{url,text}]' });
+    }
+    try {
+      const started = Date.now();
+      const result = await extractSpecs(body);
+      return res.status(200).json({ ...result, ms: Date.now() - started });
+    } catch (e) {
+      return res.status(502).json({ error: 'Extract specs failed', detail: String(e.message).slice(0, 240) });
+    }
   }
 
   const attrs = {
