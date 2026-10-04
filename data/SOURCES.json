@@ -246,6 +246,11 @@
       "descriptionVi": "Bản chụp sổ đăng ký văn bản của kho cộng đồng oz-wiki-plhq (CC BY 4.0): hiệu lực, thay thế, mức xác minh — lib/plhq-registry.js, legalBasisRegistry + policyBasisReview trong /api/tax",
       "builtBy": "scripts/sync-plhq.mjs"
     },
+    "plhq-hs-index.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Bản rút gọn bảng mã HS ↔ văn bản danh mục của kho cộng đồng oz-wiki-plhq (dist/hs-index.json, CC BY 4.0): mã 4/6/8 số, loại tác động, điều kiện, tình trạng hiệu lực văn bản — lib/plhq-registry.js hsListings, trường hsListings trong /api/tax",
+      "builtBy": "scripts/sync-plhq.mjs"
+    },
     "plhq-bench-latest.json": {
       "kind": "REPORT",
       "descriptionVi": "Đo biểu thuế × sổ cộng đồng oz-wiki-plhq trên toàn bộ mã HS: độ phủ văn bản, tình trạng hiệu lực, hai lớp cảnh báo, việc trả ngược cho kho cộng đồng",
