@@ -10,6 +10,9 @@
  *
  * Bỏ qua data/community/examples/ (mẫu, không phải đóng góp thật).
  * Trùng: cùng hsCode + số hiệu TB-TCHQ / source.reference → bỏ qua.
+ * Nâng cấp: bản ghi "mỏng" (từ bảng cũ tb_tchq_index.json hoặc lý do < 150 ký tự) cùng mã +
+ *   số hiệu + mặt hàng bị THAY bằng bản đọc lại đầy đủ hơn (docs/huong-dan-trich-tb-tchq.md).
+ * Mang theo source.issuedDate → issuedDate, source.url → sourceUrl.
  * Tệp dính bộ lọc riêng tư → từ chối cả tệp, không ghi từng phần.
  *
  *   node scripts/merge-community.mjs [--dry-run] [--include-examples]
@@ -121,14 +124,41 @@ function existingKeys(precedents) {
   return keys;
 }
 
+// Bản ghi "mỏng": nhập từ bảng cũ tb_tchq_index.json (chỉ có tên hàng + mã) hoặc lý do
+// dưới ngưỡng này. Đọc lại toàn văn ra bản đầy đủ hơn thì THAY bản mỏng, không thêm dòng.
+const THIN_REASON = 150;
+const normRef = (s) => String(s || '').toUpperCase().replace(/\s+/g, '');
+
+function isThin(p) {
+  return p.sourceFile === 'tb_tchq_index.json' || String(p.technicalSpec || '').length < THIN_REASON;
+}
+
+const foldWords = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+  .replace(/đ/g, 'd').split(/[^a-z0-9]+/).filter((w) => w.length >= 3);
+
+/** ≥ 60 % từ trong tên hàng cũ có mặt trong mô tả mới — cùng một mặt hàng (một TB có thể có nhiều mặt hàng cùng mã). */
+function sameGoods(oldName, newDesc) {
+  const want = [...new Set(foldWords(oldName))];
+  if (!want.length) return false;
+  const have = new Set(foldWords(newDesc));
+  return want.filter((w) => have.has(w)).length / want.length >= 0.6;
+}
+
+/** Tìm bản ghi mỏng cùng mã + cùng số hiệu + cùng mặt hàng (+ cùng năm nếu cả hai có năm — số TB lặp lại mỗi năm). */
+function findThinTwin(list, entry) {
+  const ref = normRef(entry.tbTchqNumber);
+  if (!ref) return -1;
+  return list.findIndex((p) => p !== entry
+    && normRef(p.tbTchqNumber) === ref
+    && !(p.year && entry.year && Number(p.year) !== Number(entry.year))
+    && isThin(p)
+    && String(entry.technicalSpec || '').length > String(p.technicalSpec || '').length
+    && sameGoods(p.productName, entry.productName));
+}
+
 function mergePrecedent(precedents, seen, doc, rec, fileRel, stats) {
   const hs = String(rec.hsCode);
   const key = dedupKey(hs, rec);
-  if (seen.has(key)) {
-    stats.skippedDup += 1;
-    return;
-  }
-  seen.add(key);
   const entry = {
     tbTchqNumber: rec.source?.reference || null,
     productName: rec.description,
@@ -143,8 +173,30 @@ function mergePrecedent(precedents, seen, doc, rec, fileRel, stats) {
     sourceType: rec.source?.type || null,
     girRule: rec.girRule || null,
     confusedWith: rec.confusedWith || [],
+    ...(rec.source?.issuedDate ? { issuedDate: rec.source.issuedDate } : {}),
+    ...(rec.source?.url ? { sourceUrl: rec.source.url } : {}),
   };
   if (!Array.isArray(precedents[hs])) precedents[hs] = [];
+  const twin = findThinTwin(precedents[hs], entry);
+  if (twin >= 0 && seen.has(key)) {
+    // Bản đầy đủ đã có trong kho từ lần gộp trước → bản mỏng là dòng thừa.
+    precedents[hs].splice(twin, 1);
+    stats.removedThin += 1;
+    return;
+  }
+  if (twin >= 0) {
+    // Giữ link cũ nếu bản mới không có.
+    const old = precedents[hs][twin];
+    precedents[hs][twin] = { ...entry, ...(!entry.sourceUrl && old.sourceUrl ? { sourceUrl: old.sourceUrl } : {}) };
+    seen.add(key);
+    stats.upgraded += 1;
+    return;
+  }
+  if (seen.has(key)) {
+    stats.skippedDup += 1;
+    return;
+  }
+  seen.add(key);
   precedents[hs].push(entry);
   stats.precedents += 1;
 }
@@ -193,6 +245,8 @@ const stats = {
   skippedDup: 0,
   skippedShortHs: 0,
   precedents: 0,
+  upgraded: 0,
+  removedThin: 0,
   conflicts: 0,
   queued: 0,
 };
@@ -251,7 +305,7 @@ for (const full of files) {
   }
 }
 
-if (stats.precedents) writeJson(precedentsPath, precedents);
+if (stats.precedents || stats.upgraded || stats.removedThin) writeJson(precedentsPath, precedents);
 if (stats.conflicts) writeJson(conflictsPath, conflicts);
 
 appendLog({ action: 'summary', stats, dryRun: DRY });

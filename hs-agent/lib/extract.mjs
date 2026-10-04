@@ -4,6 +4,7 @@
 //   - mã HS phải xuất hiện NGUYÊN VĂN trong toàn văn (8504.40.90 / 85044090)
 //   - ≥ 60 % từ của mô tả phải có trong toàn văn (chống bịa)
 //   - lọc riêng tư của repo (tên DN, MST, số tờ khai) — dính là bỏ bản ghi
+// Trường cần lấy + cách đọc một thông báo: docs/huong-dan-trich-tb-tchq.md (sửa prompt thì sửa cả hai).
 import { createRequire } from 'module';
 import { join } from 'path';
 
