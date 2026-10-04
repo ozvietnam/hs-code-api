@@ -1,0 +1,149 @@
+{
+  "heading": "6405",
+  "description": "Giày dép có mũi cứng (的其他鞋类)",
+  "attributes": {
+    "upperMaterial": {
+      "type": "enum",
+      "domain": [
+        "leather",
+        "textile",
+        "rubber_plastic"
+      ],
+      "detect": {
+        "leather": [
+          "da lộn",
+          "da pu",
+          "da tổng hợp",
+          "da thuộc",
+          "pu giả da",
+          "giả da",
+          "suede"
+        ],
+        "textile": [
+          "canvas",
+          "vải canvas",
+          "lycra",
+          "vải dệt"
+        ],
+        "rubber_plastic": [
+          "nhựa eva",
+          "nhựa pvc",
+          "nhựa xốp",
+          "pu nhân tạo",
+          "nhựa pu",
+          "nhựa sục",
+          "tông",
+          "sung",
+          "xốp",
+          "đế nhựa",
+          "đế cao su"
+        ]
+      }
+    }
+  },
+  "inputs": [
+    {
+      "attribute": "upperMaterial",
+      "detect": {
+        "leather": [
+          "da lộn",
+          "da pu",
+          "da tổng hợp",
+          "da thuộc",
+          "pu giả da",
+          "giả da",
+          "suede"
+        ],
+        "textile": [
+          "canvas",
+          "vải canvas",
+          "lycra",
+          "vải dệt"
+        ],
+        "rubber_plastic": [
+          "nhựa eva",
+          "nhựa pvc",
+          "nhựa xốp",
+          "pu nhân tạo",
+          "nhựa pu",
+          "nhựa sục",
+          "tông",
+          "sung",
+          "xốp",
+          "đế nhựa",
+          "đế cao su"
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "leather",
+        "textile",
+        "rubber_plastic"
+      ],
+      "labelVi": "Vật liệu mũ giày",
+      "questionVi": "Mũ giày bằng gì: da, vải, hay nhựa/cao su?"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-leather",
+      "priority": 50,
+      "when": {
+        "upperMaterial": "leather"
+      },
+      "hs": "64051000",
+      "gir": "GIR 6",
+      "reasonVi": "Có mũi giày bằng da thuộc hoặc da tổng hợp → 6405.10.00",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-textile",
+      "priority": 50,
+      "when": {
+        "upperMaterial": "textile"
+      },
+      "hs": "64052000",
+      "gir": "GIR 6",
+      "reasonVi": "Có mũi giày bằng vật liệu dệt → 6405.20.00",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-other",
+      "priority": 30,
+      "when": {
+        "upperMaterial": "rubber_plastic"
+      },
+      "hs": "64059000",
+      "gir": "GIR 6",
+      "reasonVi": "Mũi giày bằng cao su hoặc nhựa → 6405.90.00",
+      "source": "Biểu thuế 2026"
+    }
+  ],
+  "leaves": [
+    {
+      "hsCode": "64051000",
+      "nameVi": "Có mũi giày bằng da thuộc hoặc da tổng hợp",
+      "dvt": "đôi",
+      "tt": "45",
+      "mfn": "30",
+      "vat": "8/10"
+    },
+    {
+      "hsCode": "64052000",
+      "nameVi": "Có mũi giày bằng vật liệu dệt",
+      "dvt": "đôi",
+      "tt": "45",
+      "mfn": "30",
+      "vat": "8/10"
+    },
+    {
+      "hsCode": "64059000",
+      "nameVi": "Loại khác",
+      "dvt": "đôi",
+      "tt": "45",
+      "mfn": "30",
+      "vat": "8/10",
+      "acfta": "0 (-BN, KR, MY, SG)"
+    }
+  ]
+}
