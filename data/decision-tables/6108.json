@@ -1,0 +1,61 @@
+{
+  "heading": "6108",
+  "titleVi": "Quần lót, áo lót ngủ, áo choàng tắm, đồ lót phụ nữ, trẻ em (61.08)",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "productKind",
+      "type": "enum",
+      "labelVi": "Loại sản phẩm",
+      "questionVi": "Sản phẩm thuộc loại nào?",
+      "domain": ["underwear", "nightwear", "bathrobe", "set"],
+      "detect": {
+        "underwear": ["quần lót", "quần chip", "quần xi líp"],
+        "nightwear": ["áo lót ngủ", "bộ quần áo ngủ", "đồ ngủ", "áo ngủ"],
+        "bathrobe": ["áo choàng tắm", "choàng tắm"],
+        "set": ["bộ", "set"]
+      }
+    },
+    {
+      "attribute": "materialKind",
+      "type": "enum",
+      "labelVi": "Chất liệu",
+      "questionVi": "Vải chính là gì?",
+      "domain": ["cotton", "synthetic", "other"],
+      "detect": {
+        "cotton": ["bông", "cotton", "100% cotton"],
+        "synthetic": ["sợi nhân tạo", "sợi tổng hợp", "polyester", "nylon", "modal", "viscose"],
+        "other": ["lông cừu", "lông động vật", "tơ tằm", "len", "lụa"]
+      }
+    }
+  ],
+  "rules": [
+    {"id":"r01","priority":90,"when":{"productKind":"underwear","materialKind":"cotton"},"hs":"61082100","reasonVi":"Quần lót từ bông → 61082100","source":"Biểu thuế NK VN 2026"},
+    {"id":"r02","priority":90,"when":{"productKind":"underwear","materialKind":"synthetic"},"hs":"61082200","reasonVi":"Quần lót từ sợi nhân tạo → 61082200","source":"Biểu thuế NK VN 2026 + oz-gold 11 entries"},
+    {"id":"r03","priority":90,"when":{"productKind":"underwear","materialKind":"other"},"hs":"61082900","reasonVi":"Quần lót từ vật liệu dệt khác → 61082900","source":"Biểu thuế NK VN 2026 + oz-gold 1 entry"},
+
+    {"id":"r10","priority":90,"when":{"productKind":"nightwear","materialKind":"cotton"},"hs":"61083100","reasonVi":"Áo lót ngủ/bộ ngủ từ bông → 61083100","source":"Biểu thuế NK VN 2026 + oz-gold 1 entry"},
+    {"id":"r11","priority":90,"when":{"productKind":"nightwear","materialKind":"synthetic"},"hs":"61083200","reasonVi":"Áo lót ngủ/bộ ngủ từ sợi nhân tạo → 61083200","source":"Biểu thuế NK VN 2026"},
+    {"id":"r12","priority":90,"when":{"productKind":"nightwear","materialKind":"other"},"hs":"61083900","reasonVi":"Áo lót ngủ/bộ ngủ từ vật liệu dệt khác → 61083900","source":"Biểu thuế NK VN 2026"},
+
+    {"id":"r20","priority":88,"when":{"productKind":"bathrobe","materialKind":"cotton"},"hs":"61089100","reasonVi":"Áo choàng tắm từ bông → 61089100","source":"Biểu thuế NK VN 2026"},
+    {"id":"r21","priority":88,"when":{"productKind":"bathrobe","materialKind":"synthetic"},"hs":"61089200","reasonVi":"Áo choàng tắm từ sợi nhân tạo → 61089200","source":"Biểu thuế NK VN 2026 + oz-gold 6 entries"},
+    {"id":"r22","priority":88,"when":{"productKind":"bathrobe","materialKind":"other"},"hs":"61089900","reasonVi":"Áo choàng tắm từ vật liệu dệt khác → 61089900","source":"Biểu thuế NK VN 2026"},
+
+    {"id":"r30","priority":80,"when":{"productKind":"set","materialKind":"cotton"},"hs":"61083100","reasonVi":"Bộ quần áo ngủ từ bông → 61083100","source":"Biểu thuế NK VN 2026"},
+    {"id":"r31","priority":80,"when":{"productKind":"set","materialKind":"synthetic"},"hs":"61083200","reasonVi":"Bộ quần áo ngủ từ sợi nhân tạo → 61083200","source":"Biểu thuế NK VN 2026"},
+    {"id":"r32","priority":80,"when":{"productKind":"set","materialKind":"other"},"hs":"61083900","reasonVi":"Bộ quần áo ngủ từ vật liệu dệt khác → 61083900","source":"Biểu thuế NK VN 2026"},
+
+    {"id":"r40","priority":70,"when":{"productKind":"underwear"},"hs":"61082200","reasonVi":"Quần lót không rõ chất liệu → mặc định sợi nhân tạo (phổ biến nhất) → 61082200","source":"oz-gold 11/20 entries synthetic"},
+    {"id":"r41","priority":70,"when":{"productKind":"nightwear"},"hs":"61083200","reasonVi":"Áo lót ngủ không rõ chất liệu → mặc định sợi nhân tạo → 61083200","source":"oz-gold majority synthetic"},
+    {"id":"r42","priority":70,"when":{"productKind":"bathrobe"},"hs":"61089200","reasonVi":"Áo choàng tắm không rõ chất liệu → mặc định sợi nhân tạo → 61089200","source":"oz-gold 6/6 entries synthetic"}
+  ],
+  "sourceVi": "Biểu thuế NK VN 2026 (14 mã 8 số). Oz-gold 20 entries (11×61082200, 6×61089200, 1×61083100, 1×61082900, 1×61082100).",
+  "essenceTestVi": "Phân biệt: quần lót theo chất liệu (bông/sợi nhân tạo/khác) → 610821/610822/610829; áo ngủ theo chất liệu → 610831/610832/610839; áo choàng tắm theo chất liệu → 610891/610892/610899.",
+  "leaves": {},
+  "hitPolicy": "FIRST",
+  "attributes": {
+    "productKind": {"type":"enum","labelVi":"Loại sản phẩm","domain":["underwear","nightwear","bathrobe","set"]},
+    "materialKind": {"type":"enum","labelVi":"Chất liệu","domain":["cotton","synthetic","other"]}
+  }
+}
