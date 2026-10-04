@@ -32,10 +32,11 @@ CEO chốt 29/09/2026: bỏ Vercel, chạy trên Coolify của server nhà. GitH
    | Biến | Ghi chú |
    |---|---|
    | `HS_API_TOKEN`, `HS_ADMIN_TOKEN` | giữ nguyên giá trị đang dùng để ERP không phải đổi |
-   | `GEMINI_API_KEY`, `GEMINI_RERANK_MODEL` | như prod hiện tại |
-   | `HERMES_BASE_URL`, `HERMES_API_KEY`, `HERMES_MODEL` | địa chỉ LAN của cổng Hermes (như `/etc/hs-agent/env` trên vps-hsagent) |
-   | `GEMINI_RACE_MS=8000` | bắt buộc khi có Hermes: cho Gemini đủ thời gian trước khi rơi sang Hermes |
-   | `MINIMAX_API_KEY`, `OLLAMA_API_KEY`, `GEMINI_FREE_KEYS` | chỉ nếu còn dùng |
+   | `MINIMAX_API_KEY` | **bắt buộc** — nhà cung cấp chính (gói MiniMax trả phí, gọi thẳng) |
+   | `MINIMAX_MODEL` | mặc định `MiniMax-M2.7-highspeed`; gói không cho thì tự lùi `MiniMax-M2.7` |
+   | `HERMES_BASE_URL`, `HERMES_API_KEY`, `HERMES_MODEL` | dự phòng thứ hai: cổng Hermes trong LAN (như `/etc/hs-agent/env` trên vps-hsagent) |
+   | `GEMINI_FREE_KEYS` | tùy chọn — dự phòng cuối khi MiniMax và Hermes đều lỗi |
+   | `GEMINI_API_KEY` | khóa trả phí, chỉ dùng khi NV bấm "auto" (tier premium); bỏ trống được |
 
 5. Gắn tên miền tạm, ví dụ `hs-kb-moi.uythacnhapkhau.com`, qua Cloudflare (tunnel hoặc
    bản ghi DNS trỏ về proxy của Coolify).
