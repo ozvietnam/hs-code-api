@@ -3,7 +3,7 @@
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { parseListing, parseTitle, classifyDoc, hsCodesIn, refKey, isKtcnRegulation } from '../lib/vbpl.mjs';
-import { codeAppears, coverage, scrub, verifyRecords } from '../lib/extract.mjs';
+import { codeAppears, coverage, girRuleField, scrub, verifyRecords } from '../lib/extract.mjs';
 import { createRunBudget, BudgetExceeded } from '../lib/budget.mjs';
 import { matchAny, push, classifyChanges } from '../lib/workspace.mjs';
 import { mkdtempSync, writeFileSync, mkdirSync, appendFileSync } from 'fs';
@@ -55,6 +55,8 @@ t('codeAppears: mã bịa không có', !codeAppears('85044019', text));
 t('codeAppears: không khớp giữa chuỗi số dài hơn', !codeAppears('8504', 'số 185044'));
 t('coverage: mô tả lấy từ văn bản ≥ 0,6', coverage('Thiết bị sạc không dây MagSafe Charger có mạch nghịch lưu, cuộn dây phát', text) >= 0.6);
 t('coverage: mô tả bịa < 0,6', coverage('Máy xúc lật bánh lốp động cơ diesel tải trọng 5 tấn', text) < 0.6);
+t('girRule: nhiều quy tắc → giữ quy tắc đầu, đúng mẫu validate-community', girRuleField('GIR 3(b) và GIR 6').girRule === 'GIR 3(b)' && girRuleField('gir 1, GIR 6').girRule === 'GIR 1');
+t('girRule: không phải GIR 1–6 → bỏ trường', !('girRule' in girRuleField('GIR 7')) && !('girRule' in girRuleField('Quy tắc 1')) && !('girRule' in girRuleField(null)));
 t('scrub: bỏ tên doanh nghiệp', !/công ty|tnhh/i.test(scrub('Thiết bị sạc của Công ty TNHH Táo Xanh, hàng mới')));
 const v = verifyRecords({
   coKetLuan: true,
