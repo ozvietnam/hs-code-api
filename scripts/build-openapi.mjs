@@ -191,6 +191,22 @@ const TAX_RESPONSE = {
     policyByHs: nullable(str('Chính sách quản lý nguyên văn')),
     policyStatus: { type: 'string', enum: ['RECORDED', 'NOT_RECORDED'], description: 'NOT_RECORDED ≠ không có chính sách — đọc policyNoteVi' },
     policyNoteVi: str('Cảnh báo khi dữ liệu chính sách trống'),
+    policyBasisReview: {
+      type: 'object',
+      description: 'Chỉ có khi ô chính sách còn dẫn danh mục đã/đang bị thay theo khung KTCN 2026 (NĐ 37/2026). KHÔNG đổi policyByHs — báo để đối chiếu. Xem /api/ktcn-regime.',
+      properties: {
+        status: { type: 'string', enum: ['OUTDATED_BASIS', 'NEEDS_REVIEW'] },
+        items: { type: 'array', items: { type: 'object', properties: {
+          id: str('Mã quy tắc'), labelVi: str('Căn cứ cũ'),
+          relation: { type: 'string', enum: ['REPLACED', 'LIKELY_REPLACED', 'REVIEW', 'UPCOMING'] },
+          confidence: { type: 'string', enum: ['HIGH', 'MEDIUM', 'LOW'] },
+          effectiveFrom: str('Ngày văn bản mới có hiệu lực'),
+          replacedBy: { type: 'array', items: { type: 'object' } },
+          noteVi: str('Hướng dẫn đối chiếu'),
+        } } },
+        noteVi: str('Tóm tắt cho người khai'), asOf: str('Ngày đánh giá'), dataVersion: str('Phiên bản data/ktcn-regime-2026.json'),
+      },
+    },
     mappedHs: { type: 'object', description: 'Chương 98: mã hàng tương ứng tại Mục I' },
     tariff: { type: 'object', description: 'effectiveDate, lastCheckedAt, freshness (OK/DUE/...), noteVi' },
     breadcrumb: { type: 'object' },
@@ -440,6 +456,7 @@ const DATASET_META = {
   data_quality: ['Báo cáo chất lượng dữ liệu — gồm cả điểm yếu', '/api/data-quality'],
   declaration_fields: ['Danh mục trường cần khai theo nhóm hàng (?hs=4/6/8 số), câu hỏi VI + ZH', '/api/declaration-fields'],
   attribute_synonyms: ['Từ điển nhãn thông số tiếng Trung → khóa chuẩn (dữ liệu mở CC BY 4.0)', '/api/attribute-synonyms'],
+  ktcn_regime: ['Khung kiểm tra chuyên ngành 2026 (NĐ 37/2026, 3 mức rủi ro): danh mục mới từng bộ + căn cứ cũ đã bị thay', '/api/ktcn-regime'],
 };
 
 for (const [resource, [summary, prettyPath]] of Object.entries(DATASET_META)) {

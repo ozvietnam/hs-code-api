@@ -5,7 +5,7 @@
 //   - regulation (thông tư/nghị định về danh mục, thuế, hải quan) → đưa vào báo cáo
 // Lần chạy đầu (bootstrap) đi sâu bootstrapPagesPerFolder trang để lấp hàng đợi.
 import { fetchPage, htmlToText } from '../lib/fetcher.mjs';
-import { folderUrl, parseListing, parseTitle, classifyDoc, hsCodesIn } from '../lib/vbpl.mjs';
+import { folderUrl, parseListing, parseTitle, classifyDoc, hsCodesIn, isKtcnRegulation } from '../lib/vbpl.mjs';
 import { buildRefIndex } from '../lib/refs.mjs';
 import { load, save } from '../lib/store.mjs';
 import { writeReport } from '../lib/notify.mjs';
@@ -48,6 +48,7 @@ export default async function legalWatch({ cfg, log, budget }) {
         // Không có ngày trong tiêu đề = văn bản cũ đăng theo mẫu cũ → chỉ đánh dấu đã thấy.
         if (!meta.date || meta.date < cutoff) continue;
         const entry = { id: it.id, url: it.url, title: it.title, ref: meta.ref, date: meta.date, kind, folder: folder.nameVi };
+        if (kind === 'regulation' && isKtcnRegulation(meta)) entry.ktcn = true;
         if (kind === 'classification') {
           if (refs.has(meta.ref, meta.year)) { entry.known = true; }
           else if (!queuedIds.has(it.id)) {
@@ -95,8 +96,11 @@ export default async function legalWatch({ cfg, log, budget }) {
     `## Phòng vệ thương mại (${fresh['trade-remedy'].length})`,
     ...fresh['trade-remedy'].map(fmt),
     '',
-    `## Quy định liên quan (${fresh.regulation.length})`,
-    ...fresh.regulation.map(fmt),
+    `## Kiểm tra chuyên ngành — cần đối chiếu data/ktcn-regime-2026.json + cột cs (${fresh.regulation.filter((e) => e.ktcn).length})`,
+    ...fresh.regulation.filter((e) => e.ktcn).map(fmt),
+    '',
+    `## Quy định liên quan khác (${fresh.regulation.filter((e) => !e.ktcn).length})`,
+    ...fresh.regulation.filter((e) => !e.ktcn).map(fmt),
     '',
     `Hàng đợi trích xuất (J2): ${pending} văn bản chờ.`,
   ].join('\n');
@@ -106,11 +110,11 @@ export default async function legalWatch({ cfg, log, budget }) {
   return {
     status: 'ok',
     lines: [
-      `Phân loại mới ${fresh.classification.length} (chưa có trong kho ${newClass}) · phòng vệ TM ${fresh['trade-remedy'].length} · quy định ${fresh.regulation.length} · khác ${fresh.other}`,
+      `Phân loại mới ${fresh.classification.length} (chưa có trong kho ${newClass}) · phòng vệ TM ${fresh['trade-remedy'].length} · quy định ${fresh.regulation.length} (KTCN ${fresh.regulation.filter((e) => e.ktcn).length}) · khác ${fresh.other}`,
       `Hàng đợi J2: ${pending} · báo cáo ${reportPath}`,
       ...(stoppedEarly ? [`Dừng quét sớm (${stoppedEarly}); phần còn lại quét ở lần sau.`] : []),
     ],
-    counts: { classification: fresh.classification.length, newClassification: newClass, remedy: fresh['trade-remedy'].length, regulation: fresh.regulation.length, queue: pending },
-    highlights: [...fresh['trade-remedy'], ...fresh.regulation, ...fresh.classification.filter((e) => !e.known)].slice(0, 12).map((e) => scrub(`${e.ref || ''} ${parseTitle(e.title).subject}`)),
+    counts: { classification: fresh.classification.length, newClassification: newClass, remedy: fresh['trade-remedy'].length, regulation: fresh.regulation.length, ktcn: fresh.regulation.filter((e) => e.ktcn).length, queue: pending },
+    highlights: [...fresh.regulation.filter((e) => e.ktcn), ...fresh['trade-remedy'], ...fresh.regulation.filter((e) => !e.ktcn), ...fresh.classification.filter((e) => !e.known)].slice(0, 12).map((e) => scrub(`${e.ref || ''} ${parseTitle(e.title).subject}`)),
   };
 }

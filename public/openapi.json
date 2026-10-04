@@ -383,6 +383,78 @@
                       "type": "string",
                       "description": "Cảnh báo khi dữ liệu chính sách trống"
                     },
+                    "policyBasisReview": {
+                      "type": "object",
+                      "description": "Chỉ có khi ô chính sách còn dẫn danh mục đã/đang bị thay theo khung KTCN 2026 (NĐ 37/2026). KHÔNG đổi policyByHs — báo để đối chiếu. Xem /api/ktcn-regime.",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "OUTDATED_BASIS",
+                            "NEEDS_REVIEW"
+                          ]
+                        },
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "description": "Mã quy tắc"
+                              },
+                              "labelVi": {
+                                "type": "string",
+                                "description": "Căn cứ cũ"
+                              },
+                              "relation": {
+                                "type": "string",
+                                "enum": [
+                                  "REPLACED",
+                                  "LIKELY_REPLACED",
+                                  "REVIEW",
+                                  "UPCOMING"
+                                ]
+                              },
+                              "confidence": {
+                                "type": "string",
+                                "enum": [
+                                  "HIGH",
+                                  "MEDIUM",
+                                  "LOW"
+                                ]
+                              },
+                              "effectiveFrom": {
+                                "type": "string",
+                                "description": "Ngày văn bản mới có hiệu lực"
+                              },
+                              "replacedBy": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object"
+                                }
+                              },
+                              "noteVi": {
+                                "type": "string",
+                                "description": "Hướng dẫn đối chiếu"
+                              }
+                            }
+                          }
+                        },
+                        "noteVi": {
+                          "type": "string",
+                          "description": "Tóm tắt cho người khai"
+                        },
+                        "asOf": {
+                          "type": "string",
+                          "description": "Ngày đánh giá"
+                        },
+                        "dataVersion": {
+                          "type": "string",
+                          "description": "Phiên bản data/ktcn-regime-2026.json"
+                        }
+                      }
+                    },
                     "mappedHs": {
                       "type": "object",
                       "description": "Chương 98: mã hàng tương ứng tại Mục I"
@@ -2007,6 +2079,50 @@
         "operationId": "dataset_attribute_synonyms",
         "summary": "Từ điển nhãn thông số tiếng Trung → khóa chuẩn (dữ liệu mở CC BY 4.0)",
         "description": "Rewrite tới /api/dataset?resource=attribute_synonyms",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ktcn-regime": {
+      "get": {
+        "operationId": "dataset_ktcn_regime",
+        "summary": "Khung kiểm tra chuyên ngành 2026 (NĐ 37/2026, 3 mức rủi ro): danh mục mới từng bộ + căn cứ cũ đã bị thay",
+        "description": "Rewrite tới /api/dataset?resource=ktcn_regime",
         "tags": [
           "Tra cứu"
         ],

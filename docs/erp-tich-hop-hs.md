@@ -92,6 +92,18 @@ Quy tắc cho ERP:
   `ORIGIN_CONFLICT` (xuất xứ khai khác nước sản xuất trong tiêu đề) — bắt nhân viên sửa.
 - Không dán tiêu đề Taobao vào ô mô tả ECUS.
 
+### Chính sách quản lý — `/api/tax` → `policyBasisReview`
+
+Từ 01/7/2026 kiểm tra chuyên ngành theo 3 mức rủi ro (NĐ 37/2026/NĐ-CP), các bộ đã ra danh
+mục mới. Cột `policyByHs` vẫn là nguyên văn biểu thuế; khi nó còn dẫn danh mục cũ, `/api/tax`
+trả thêm `policyBasisReview`:
+
+- `status: OUTDATED_BASIS` — căn cứ đã/gần chắc đã bị thay. ERP hiện cảnh báo vàng cạnh ô chính
+  sách: "căn cứ cũ — đối chiếu {replacedBy[].code}", không tự kết luận "không phải kiểm tra".
+- `status: NEEDS_REVIEW` — chỉ là gợi ý đối chiếu (độ tin cậy LOW).
+- `items[].relation = UPCOMING` — văn bản mới chưa tới ngày hiệu lực.
+- Toàn bộ khung + danh mục mới: `GET /api/ktcn-regime` (công khai).
+
 ## 4. Gửi lại mã đã sửa — `/api/feedback`
 
 Mỗi khi nhân viên **đổi** mã so với gợi ý (hoặc xác nhận mã ở trạng thái `NEEDS_EXPERT`):

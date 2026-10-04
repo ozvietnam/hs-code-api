@@ -53,7 +53,14 @@ const RE_ORG = /chức năng,? nhiệm vụ|cơ cấu tổ chức|thủ tục h�
 // văn bản hợp nhất / thông tư / nghị định / quyết định không phải văn bản phân loại.
 const RE_CUSTOMS_REF = /(TCHQ|CHQ|TXNK|NVTHQ|GSQL|KĐHQ|KDHQ|HQ)/i;
 const RE_NOT_LETTER_REF = /VBHN|\/TT-|\/NĐ-|\/ND-|\/QĐ-|\/QD-|\/NQ-/i;
-const RE_REGULATION = /danh mục|biểu thuế|mã số|phân loại|thuế xuất khẩu|thuế nhập khẩu|kiểm tra chuyên ngành|hải quan|xuất xứ|thuế suất/i;
+const RE_REGULATION = /danh mục|biểu thuế|mã số|phân loại|thuế xuất khẩu|thuế nhập khẩu|kiểm tra chuyên ngành|hải quan|xuất xứ|thuế suất|mức độ rủi ro|hợp quy|an toàn thực phẩm|kiểm dịch|chất lượng sản phẩm/i;
+// Văn bản làm đổi chính sách quản lý theo mã HS (khung KTCN 2026: NĐ 37/2026, danh mục rủi ro từng bộ).
+const RE_KTCN = /mức độ rủi ro|rủi ro (?:trung bình|cao)|hợp quy|kiểm tra (?:nhà nước|chuyên ngành)|an toàn thực phẩm|kiểm dịch|chất lượng sản phẩm,? hàng hóa|khả năng gây mất an toàn/i;
+
+/** Quy định có đụng tới danh mục kiểm tra chuyên ngành (cần đối chiếu data/ktcn-regime-2026.json + cột cs). */
+export function isKtcnRegulation({ docType, subject }) {
+  return /^(thông tư|nghị định|quyết định|nghị quyết|luật)$/i.test(String(docType || '')) && RE_KTCN.test(String(subject || ''));
+}
 
 /** Nhóm việc cho mỗi văn bản: classification | trade-remedy | regulation | other. */
 export function classifyDoc({ docType, ref, subject }) {
