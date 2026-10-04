@@ -4,12 +4,21 @@
     "hsCode": "85171300",
     "declaration": {
       "tenHang": "Điện thoại di động thông minh Apple iPhone 15 Pro Max",
-      "xuatXu": { "code": "CN", "nameVi": "Trung Quốc" },
+      "xuatXu": {
+        "code": "CN",
+        "nameVi": "Trung Quốc"
+      },
       "donViTinh": "chiếc",
       "tinhTrang": "Mới 100%",
       "nhanHieu": "Apple",
       "model": "A2848",
-      "thongSoKyThuat": ["dung lượng 256GB", "chip A17 Pro", "màn 6.7 inch", "sạc 20W", "dual SIM"],
+      "thongSoKyThuat": [
+        "dung lượng 256GB",
+        "chip A17 Pro",
+        "màn 6.7 inch",
+        "sạc 20W",
+        "dual SIM"
+      ],
       "chapterSpecific": {
         "modelNumber": "A2848",
         "hasSim": "dual SIM",
@@ -18,7 +27,9 @@
         "screenSize": "6.7 inch"
       }
     },
-    "context": { "tariffNameVi": "Điện thoại di động" },
+    "context": {
+      "tariffNameVi": "Điện thoại di động"
+    },
     "minLevel": "GOOD",
     "expectPass": true
   },
@@ -27,11 +38,16 @@
     "hsCode": "85171300",
     "declaration": {
       "tenHang": "Điện thoại các loại",
-      "xuatXu": { "code": "CN", "nameVi": "Trung Quốc" },
+      "xuatXu": {
+        "code": "CN",
+        "nameVi": "Trung Quốc"
+      },
       "donViTinh": "chiếc",
       "tinhTrang": "Mới 100%"
     },
-    "context": { "tariffNameVi": "Điện thoại di động" },
+    "context": {
+      "tariffNameVi": "Điện thoại di động"
+    },
     "maxLevel": "WEAK",
     "expectPass": false
   },
@@ -42,35 +58,85 @@
       "tenHang": "Điện thoại thông minh Samsung Galaxy S24",
       "donViTinh": "chiếc",
       "tinhTrang": "Mới 100%",
-      "thongSoKyThuat": ["5G", "256GB"]
+      "thongSoKyThuat": [
+        "5G",
+        "256GB"
+      ]
     },
     "context": {},
     "expectPass": false,
-    "expectMissing": ["xuatXu"]
+    "expectMissing": [
+      "xuatXu"
+    ]
   },
   {
     "id": "wrong-condition",
     "hsCode": "85171300",
     "declaration": {
       "tenHang": "Điện thoại iPhone đã qua sử dụng",
-      "xuatXu": { "code": "US", "nameVi": "Hoa Kỳ" },
+      "xuatXu": {
+        "code": "US",
+        "nameVi": "Hoa Kỳ"
+      },
       "donViTinh": "chiếc",
       "tinhTrang": "Mới 100%",
-      "thongSoKyThuat": ["128GB"]
+      "thongSoKyThuat": [
+        "128GB"
+      ]
     },
-    "context": { "customerDescription": "hàng cũ" },
-    "expectCodes": ["WRONG_CONDITION"]
+    "context": {
+      "customerDescription": "hàng cũ"
+    },
+    "expectCodes": [
+      "WRONG_CONDITION"
+    ]
   },
   {
     "id": "chapter-85-missing-spec",
     "hsCode": "85171300",
     "declaration": {
       "tenHang": "Thiết bị điện thoại di động không có thông số",
-      "xuatXu": { "code": "VN", "nameVi": "Việt Nam" },
+      "xuatXu": {
+        "code": "VN",
+        "nameVi": "Việt Nam"
+      },
       "donViTinh": "chiếc",
       "tinhTrang": "Mới 100%"
     },
-    "context": { "tariffNameVi": "Điện thoại" },
-    "expectCodes": ["MISSING_SPEC"]
+    "context": {
+      "tariffNameVi": "Điện thoại"
+    },
+    "expectCodes": [
+      "MISSING_SPEC"
+    ]
+  },
+  {
+    "id": "banh-me-tq-500g",
+    "hsCode": "19059090",
+    "description": "bánh mè đóng gói 500g/gói, nhập từ Trung Quốc",
+    "declaration": {
+      "tenHang": "bánh mè",
+      "xuatXu": {
+        "code": "CN",
+        "nameVi": "Trung Quốc"
+      },
+      "donViTinh": "gói",
+      "tinhTrang": "Mới 100%",
+      "nhanHieu": null,
+      "model": null,
+      "thongSoKyThuat": [],
+      "thanhPhanCauTao": null,
+      "congDung": null,
+      "quyCach": "500g/gói",
+      "chapterSpecific": {}
+    },
+    "context": {
+      "tariffNameVi": "Bánh, bánh quy, bánh gai và bánh khác"
+    },
+    "minLevel": "WEAK",
+    "expectPass": false,
+    "expectMissing": [
+      "tenHang"
+    ]
   }
 ]
