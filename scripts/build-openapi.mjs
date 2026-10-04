@@ -197,14 +197,30 @@ const TAX_RESPONSE = {
       properties: {
         status: { type: 'string', enum: ['OUTDATED_BASIS', 'NEEDS_REVIEW'] },
         items: { type: 'array', items: { type: 'object', properties: {
-          id: str('Mã quy tắc'), labelVi: str('Căn cứ cũ'),
-          relation: { type: 'string', enum: ['REPLACED', 'LIKELY_REPLACED', 'REVIEW', 'UPCOMING'] },
+          id: str('Mã quy tắc (plhq:<số hiệu> khi lấy từ sổ cộng đồng)'), labelVi: str('Căn cứ cũ'),
+          source: { type: 'string', enum: ['hs-code-api', 'oz-wiki-plhq'], description: 'hs-code-api = quy tắc KTCN 2026; oz-wiki-plhq = sổ đăng ký văn bản cộng đồng' },
+          relation: { type: 'string', enum: ['REPLACED', 'LIKELY_REPLACED', 'REVIEW', 'UPCOMING', 'EXPIRED', 'SUSPENDED'] },
+          url: str('Trang văn bản trong sổ cộng đồng (nếu có)'),
           confidence: { type: 'string', enum: ['HIGH', 'MEDIUM', 'LOW'] },
           effectiveFrom: str('Ngày văn bản mới có hiệu lực'),
           replacedBy: { type: 'array', items: { type: 'object' } },
           noteVi: str('Hướng dẫn đối chiếu'),
         } } },
         noteVi: str('Tóm tắt cho người khai'), asOf: str('Ngày đánh giá'), dataVersion: str('Phiên bản data/ktcn-regime-2026.json'),
+        registryVersion: str('Phiên bản sổ đăng ký cộng đồng oz-wiki-plhq'),
+      },
+    },
+    legalBasisRegistry: {
+      type: 'object',
+      description: 'Hiệu lực từng văn bản mà cột chính sách dẫn, theo sổ đăng ký cộng đồng oz-wiki-plhq (CC BY 4.0). hieuLucDaDoiChieu=false: chưa đối chiếu nguồn A — hiển thị như cảnh báo.',
+      properties: {
+        citations: { type: 'array', items: { type: 'object', properties: {
+          cited: str('Số hiệu như viết trong cột chính sách'), found: { type: 'boolean' }, soHieu: str('Số hiệu chuẩn'), ten: str('Tên văn bản'),
+          tinhTrang: { type: 'string', enum: ['CON_HIEU_LUC', 'HET_HIEU_LUC', 'HET_HIEU_LUC_MOT_PHAN', 'TAM_NGUNG_HIEU_LUC', 'CHUA_CO_HIEU_LUC', 'CHUA_XAC_MINH'] },
+          hetHieuLucTu: str('Ngày hết hiệu lực'), biThayTheBoi: { type: 'array', items: { type: 'string' } },
+          hieuLucDaDoiChieu: { type: 'boolean' }, url: str('Trang văn bản trong sổ cộng đồng'),
+        } } },
+        counts: { type: 'object' }, registryVersion: str('Phiên bản sổ'), syncedAt: str('Ngày đồng bộ'),
       },
     },
     mappedHs: { type: 'object', description: 'Chương 98: mã hàng tương ứng tại Mục I' },

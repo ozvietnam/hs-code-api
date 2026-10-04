@@ -36,6 +36,12 @@
       "checkEveryDays": 30,
       "howToCheckVi": "Rà Công báo (congbao.chinhphu.vn) các thông tư 'Danh mục sản phẩm, hàng hóa có mức độ rủi ro trung bình, cao' và danh mục kiểm tra ATTP/kiểm dịch kèm mã HS của 8 bộ ban hành sau lastCheckedAt. Có văn bản mới: thêm vào lists/superseded trong ktcn-regime-2026.json; có phụ lục mã HS gốc: cập nhật cột cs của tax.json rồi mới cập nhật ngày. Xem Issue theo dõi cập nhật chính sách."
     },
+    "plhqRegistry": {
+      "labelVi": "Bản chụp sổ đăng ký văn bản cộng đồng (data/plhq-registry.json ← oz-wiki-plhq)",
+      "lastCheckedAt": "2026-10-04",
+      "checkEveryDays": 7,
+      "howToCheckVi": "node scripts/sync-plhq.mjs (tải dist/registry.json nhánh main của ozvietnam/oz-wiki-plhq), rồi node scripts/bench-plhq.mjs --json; đưa danh sách 'cần đối chiếu trước' sang issue luồng hiệu lực của kho cộng đồng."
+    },
     "ministries": {
       "labelVi": "Danh mục bộ ngành (data/ministries-vn.json)",
       "lastCheckedAt": "2026-09-24",

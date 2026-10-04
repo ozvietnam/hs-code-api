@@ -241,6 +241,16 @@
       "kind": "CURATED",
       "descriptionVi": "Khung kiểm tra chuyên ngành 2026 (NĐ 37/2026, 3 mức rủi ro), danh mục mới của từng bộ và bảng căn cứ cũ đã/đang bị thay kèm mức tin cậy — lib/policy-regime.js, /api/ktcn-regime, policyBasisReview trong /api/tax"
     },
+    "plhq-registry.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Bản chụp sổ đăng ký văn bản của kho cộng đồng oz-wiki-plhq (CC BY 4.0): hiệu lực, thay thế, mức xác minh — lib/plhq-registry.js, legalBasisRegistry + policyBasisReview trong /api/tax",
+      "builtBy": "scripts/sync-plhq.mjs"
+    },
+    "plhq-bench-latest.json": {
+      "kind": "REPORT",
+      "descriptionVi": "Đo biểu thuế × sổ cộng đồng oz-wiki-plhq trên toàn bộ mã HS: độ phủ văn bản, tình trạng hiệu lực, hai lớp cảnh báo, việc trả ngược cho kho cộng đồng",
+      "builtBy": "scripts/bench-plhq.mjs"
+    },
     "policy-procedures.json": {
       "kind": "CURATED",
       "descriptionVi": "Quy trình kiểm tra chuyên ngành theo loại chính sách"

@@ -401,11 +401,19 @@
                             "properties": {
                               "id": {
                                 "type": "string",
-                                "description": "Mã quy tắc"
+                                "description": "Mã quy tắc (plhq:<số hiệu> khi lấy từ sổ cộng đồng)"
                               },
                               "labelVi": {
                                 "type": "string",
                                 "description": "Căn cứ cũ"
+                              },
+                              "source": {
+                                "type": "string",
+                                "enum": [
+                                  "hs-code-api",
+                                  "oz-wiki-plhq"
+                                ],
+                                "description": "hs-code-api = quy tắc KTCN 2026; oz-wiki-plhq = sổ đăng ký văn bản cộng đồng"
                               },
                               "relation": {
                                 "type": "string",
@@ -413,8 +421,14 @@
                                   "REPLACED",
                                   "LIKELY_REPLACED",
                                   "REVIEW",
-                                  "UPCOMING"
+                                  "UPCOMING",
+                                  "EXPIRED",
+                                  "SUSPENDED"
                                 ]
+                              },
+                              "url": {
+                                "type": "string",
+                                "description": "Trang văn bản trong sổ cộng đồng (nếu có)"
                               },
                               "confidence": {
                                 "type": "string",
@@ -452,6 +466,78 @@
                         "dataVersion": {
                           "type": "string",
                           "description": "Phiên bản data/ktcn-regime-2026.json"
+                        },
+                        "registryVersion": {
+                          "type": "string",
+                          "description": "Phiên bản sổ đăng ký cộng đồng oz-wiki-plhq"
+                        }
+                      }
+                    },
+                    "legalBasisRegistry": {
+                      "type": "object",
+                      "description": "Hiệu lực từng văn bản mà cột chính sách dẫn, theo sổ đăng ký cộng đồng oz-wiki-plhq (CC BY 4.0). hieuLucDaDoiChieu=false: chưa đối chiếu nguồn A — hiển thị như cảnh báo.",
+                      "properties": {
+                        "citations": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "cited": {
+                                "type": "string",
+                                "description": "Số hiệu như viết trong cột chính sách"
+                              },
+                              "found": {
+                                "type": "boolean"
+                              },
+                              "soHieu": {
+                                "type": "string",
+                                "description": "Số hiệu chuẩn"
+                              },
+                              "ten": {
+                                "type": "string",
+                                "description": "Tên văn bản"
+                              },
+                              "tinhTrang": {
+                                "type": "string",
+                                "enum": [
+                                  "CON_HIEU_LUC",
+                                  "HET_HIEU_LUC",
+                                  "HET_HIEU_LUC_MOT_PHAN",
+                                  "TAM_NGUNG_HIEU_LUC",
+                                  "CHUA_CO_HIEU_LUC",
+                                  "CHUA_XAC_MINH"
+                                ]
+                              },
+                              "hetHieuLucTu": {
+                                "type": "string",
+                                "description": "Ngày hết hiệu lực"
+                              },
+                              "biThayTheBoi": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "hieuLucDaDoiChieu": {
+                                "type": "boolean"
+                              },
+                              "url": {
+                                "type": "string",
+                                "description": "Trang văn bản trong sổ cộng đồng"
+                              }
+                            }
+                          }
+                        },
+                        "counts": {
+                          "type": "object"
+                        },
+                        "registryVersion": {
+                          "type": "string",
+                          "description": "Phiên bản sổ"
+                        },
+                        "syncedAt": {
+                          "type": "string",
+                          "description": "Ngày đồng bộ"
                         }
                       }
                     },

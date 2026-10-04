@@ -103,6 +103,10 @@ trả thêm `policyBasisReview`:
 - `status: NEEDS_REVIEW` — chỉ là gợi ý đối chiếu (độ tin cậy LOW).
 - `items[].relation = UPCOMING` — văn bản mới chưa tới ngày hiệu lực.
 - Toàn bộ khung + danh mục mới: `GET /api/ktcn-regime` (công khai).
+- `legalBasisRegistry`: hiệu lực từng văn bản mà cột chính sách dẫn, theo sổ cộng đồng
+  [oz-wiki-plhq](https://github.com/ozvietnam/oz-wiki-plhq). `items[].source = oz-wiki-plhq` trong
+  `policyBasisReview` là cảnh báo lấy từ sổ này (vd quyết định tự vệ/CBPG đã chấm dứt).
+  `hieuLucDaDoiChieu: false` = kho cộng đồng chưa đối chiếu nguồn A.
 
 ## 4. Gửi lại mã đã sửa — `/api/feedback`
 
