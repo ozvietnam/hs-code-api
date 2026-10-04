@@ -20,6 +20,8 @@ const { detectRepeatedPatterns } = require('../lib/feedback-store');
 const { listPromptVersions } = require('../lib/prompt-version');
 const { getEnrichedForHs } = require('../lib/enriched-data');
 const { searchWatchlist, watchlistStats, checkTrademarkRisk } = require('../lib/trademark-watch');
+const { declarationFields } = require('../lib/declaration-fields');
+const { dictionary: zhSpecDictionary } = require('../lib/zh-specs');
 const fs = require('fs');
 const path = require('path');
 
@@ -187,6 +189,29 @@ module.exports = async function handler(req, res) {
       return res.status(200).json({
         families,
         totalEntries: families.reduce((n, f) => n + f.count, 0),
+      });
+    }
+
+    // Danh mục trường cần khai theo nhóm hàng (kế hoạch OZSource H6) — dữ liệu tĩnh, công khai.
+    if (resource === 'declaration_fields') {
+      const code = String(req.query.hs || req.query.heading || '').replace(/\D/g, '');
+      if (code.length < 4) {
+        return res.status(400).json({ error: 'Thiếu hoặc sai ?hs — cần mã 4, 6 hoặc 8 số, vd ?hs=8413' });
+      }
+      const spec = declarationFields(code);
+      if (!spec) return res.status(404).json({ error: `Chưa có danh mục trường cho ${code}`, hs: code });
+      return res.status(200).json(spec);
+    }
+
+    // Từ điển nhãn thông số tiếng Trung → khóa chuẩn (kế hoạch OZSource H2) — dữ liệu mở.
+    if (resource === 'attribute_synonyms') {
+      const dict = zhSpecDictionary();
+      return res.status(200).json({
+        version: dict.version,
+        updated: dict.updated,
+        license: dict.license,
+        total: Object.keys(dict.keys || {}).length,
+        keys: dict.keys,
       });
     }
 
