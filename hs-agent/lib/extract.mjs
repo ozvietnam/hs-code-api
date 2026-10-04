@@ -44,6 +44,12 @@ export function coverage(description, text) {
 
 const COMPANY_RE = /\b(c[ôo]ng ty|cty|tnhh|c[ổo] ph[ầa]n|co\.?,? ?ltd|corporation|jsc)\b[^,.;:()]*/giu;
 
+/** girRule một quy tắc, đúng mẫu validate-community (GIR_RE): "GIR 3(b) và GIR 6" → "GIR 3(b)". Lý lẽ đầy đủ nằm ở reasonVi. */
+export function girRuleField(raw) {
+  const m = String(raw || '').match(/^\s*GIR ?([1-6])(?: ?\(([abc])\))?/i);
+  return m ? { girRule: `GIR ${m[1]}${m[2] ? `(${m[2].toLowerCase()})` : ''}` } : {};
+}
+
 export function scrub(s) {
   return String(s || '').replace(COMPANY_RE, '').replace(/\s{2,}/g, ' ').replace(/\s+([,.;:])/g, '$1').trim();
 }
@@ -78,7 +84,7 @@ export function verifyRecords(llmJson, { text, ref, date, url, repoDir }) {
       description,
       source: { type: 'TB-TCHQ', reference: ref, ...(date ? { issuedDate: date } : {}), url },
       ...(reasonVi ? { reasonVi: reasonVi.slice(0, 1000) } : {}),
-      ...(r.girRule && /^GIR\s?[1-6]/i.test(r.girRule) ? { girRule: String(r.girRule).slice(0, 20) } : {}),
+      ...girRuleField(r.girRule),
       confusedWith: [...new Set((r.confusedWith || []).map((c) => String(c).replace(/\D/g, '')).filter((c) => c.length === 8 && c !== code && codeAppears(c, text)))],
     };
     const hits = scanObject(rec).filter((h) => h.hard !== false);

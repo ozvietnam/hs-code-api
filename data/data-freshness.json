@@ -29,6 +29,19 @@
       "checkEveryDays": 60,
       "howToCheckVi": "Kiểm tra hiệu lực/thay thế của các văn bản trong legal-docs.json; cập nhật status, replacedBy."
     },
+    "ktcnLists": {
+      "labelVi": "Danh mục kiểm tra chuyên ngành của các bộ (data/ktcn-regime-2026.json + cột chính sách cs của tax.json)",
+      "legalBasis": "37/2026/NĐ-CP",
+      "lastCheckedAt": "2026-10-04",
+      "checkEveryDays": 30,
+      "howToCheckVi": "Rà Công báo (congbao.chinhphu.vn) các thông tư 'Danh mục sản phẩm, hàng hóa có mức độ rủi ro trung bình, cao' và danh mục kiểm tra ATTP/kiểm dịch kèm mã HS của 8 bộ ban hành sau lastCheckedAt. Có văn bản mới: thêm vào lists/superseded trong ktcn-regime-2026.json; có phụ lục mã HS gốc: cập nhật cột cs của tax.json rồi mới cập nhật ngày. Xem Issue theo dõi cập nhật chính sách."
+    },
+    "plhqRegistry": {
+      "labelVi": "Bản chụp sổ đăng ký văn bản cộng đồng (data/plhq-registry.json ← oz-wiki-plhq)",
+      "lastCheckedAt": "2026-10-04",
+      "checkEveryDays": 7,
+      "howToCheckVi": "Tự động: workflow .github/workflows/plhq-sync.yml mỗi ngày chạy node scripts/sync-plhq.mjs + bench-plhq.mjs + npm test và commit (thay đổi lớn → PR). Chạy tay: node scripts/sync-plhq.mjs rồi node scripts/bench-plhq.mjs --json. Văn bản 'cần đối chiếu trước' và 'thư viện lệch sổ' được kho cộng đồng tự kéo về báo cáo tuần (tools/nhu-cau.mjs)."
+    },
     "ministries": {
       "labelVi": "Danh mục bộ ngành (data/ministries-vn.json)",
       "lastCheckedAt": "2026-09-24",

@@ -21,6 +21,10 @@ const { detectRepeatedPatterns } = require('../lib/feedback-store');
 const { listPromptVersions } = require('../lib/prompt-version');
 const { getEnrichedForHs } = require('../lib/enriched-data');
 const { searchWatchlist, watchlistStats, checkTrademarkRisk } = require('../lib/trademark-watch');
+const { declarationFields } = require('../lib/declaration-fields');
+const { dictionary: zhSpecDictionary } = require('../lib/zh-specs');
+const { regimeSummary } = require('../lib/policy-regime');
+const plhq = require('../lib/plhq-registry');
 const fs = require('fs');
 const path = require('path');
 
@@ -191,6 +195,34 @@ module.exports = async function handler(req, res) {
       });
     }
 
+    // Danh mục trường cần khai theo nhóm hàng (kế hoạch OZSource H6) — dữ liệu tĩnh, công khai.
+    if (resource === 'declaration_fields') {
+      const code = String(req.query.hs || req.query.heading || '').replace(/\D/g, '');
+      if (code.length < 4) {
+        return res.status(400).json({ error: 'Thiếu hoặc sai ?hs — cần mã 4, 6 hoặc 8 số, vd ?hs=8413' });
+      }
+      const spec = declarationFields(code);
+      if (!spec) return res.status(404).json({ error: `Chưa có danh mục trường cho ${code}`, hs: code });
+      return res.status(200).json(spec);
+    }
+
+    // Từ điển nhãn thông số tiếng Trung → khóa chuẩn (kế hoạch OZSource H2) — dữ liệu mở.
+    if (resource === 'attribute_synonyms') {
+      const dict = zhSpecDictionary();
+      return res.status(200).json({
+        version: dict.version,
+        updated: dict.updated,
+        license: dict.license,
+        total: Object.keys(dict.keys || {}).length,
+        keys: dict.keys,
+      });
+    }
+
+    // Khung kiểm tra chuyên ngành 2026 (NĐ 37/2026, danh mục mới từng bộ, căn cứ cũ bị thay) — tĩnh, công khai.
+    if (resource === 'ktcn_regime') {
+      return res.status(200).json(regimeSummary());
+    }
+
     if (resource === 'ministries') {
       const { chapter } = req.query;
       if (chapter) {
@@ -204,10 +236,13 @@ module.exports = async function handler(req, res) {
 
     if (resource === 'legal_docs') {
       const { chapter, status, issuer } = req.query;
-      const items = listDocs({ chapter, status, issuer });
+      // Mỗi văn bản kèm tình trạng theo sổ cộng đồng oz-wiki-plhq + cờ lệch với thư viện này.
+      const items = listDocs({ chapter, status, issuer }).map((d) => ({ ...d, registry: plhq.docRegistry(d.code, d.status) }));
       return res.status(200).json({
         total: items.length,
         chapter: chapter || 'all',
+        freshness: legalDocsInfo(),
+        registryConflicts: items.filter((d) => d.registry?.statusConflict).length,
         items,
       });
     }
@@ -221,8 +256,27 @@ module.exports = async function handler(req, res) {
       if (!doc) {
         return res.status(404).json({ found: false, code, message: 'Legal document not in catalog' });
       }
-      const info = legalDocsInfo();
-      return res.status(200).json({ found: true, ...doc, _freshness: info });
+      return res.status(200).json({
+        found: true, ...doc, freshness: legalDocsInfo(), registry: plhq.docRegistry(doc.code, doc.status),
+      });
+    }
+
+    // Cầu nối sổ đăng ký cộng đồng oz-wiki-plhq: tra hiệu lực theo số hiệu (?so=A,B — tối đa 50).
+    // Không có ?so → thông tin bản chụp + các văn bản thư viện riêng đang lệch tình trạng với sổ.
+    if (resource === 'legal_status') {
+      const meta = plhq.registryMeta();
+      if (!meta) return res.status(503).json({ error: 'Chưa có bản chụp sổ cộng đồng (data/plhq-registry.json)' });
+      const so = String(req.query.so || '').split(/[,;\n]/).map((x) => x.trim()).filter(Boolean).slice(0, 50);
+      if (so.length) {
+        const items = so.map((q) => { const r = plhq.lookup(q); return r ? { query: q, found: true, ...r } : { query: q, found: false }; });
+        return res.status(200).json({ registry: meta, total: items.length, items });
+      }
+      const conflicts = plhq.libraryConflicts(listDocs());
+      return res.status(200).json({
+        registry: meta,
+        libraryConflicts: conflicts,
+        noteVi: 'libraryConflicts: văn bản trong thư viện /api/legal-docs ghi tình trạng khác sổ cộng đồng. Cần đối chiếu nguồn A trước khi sửa bên nào.',
+      });
     }
 
     if (resource === 'kpi') {

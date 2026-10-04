@@ -18,12 +18,16 @@ Service HTTP API cho ERP `erp-xnk` gọi sang để:
 - Node.js Vercel functions (serverless) — KHÔNG dùng Next.js framework
 - Data: JSON files trong `data/` (no DB cho serverless cold start nhanh)
 - AI: Gemini 2.5 Flash (rerank, describe) + Gemini Embedding 001 (semantic search)
-- Chuỗi fallback LLM (`lib/llm-tier.js` → `lib/llm.mjs`): Gemini → Hermes → MiniMax
-  → OpenRouter. Thiếu key provider nào thì tự bỏ qua provider đó. Prod đang có
-  `MINIMAX_API_KEY`; local dev dùng OpenRouter free — `docs/openrouter.md`,
-  `npm run openrouter:ping`
+- Chuỗi LLM (`lib/llm-tier.js` → `lib/llm.mjs`, CEO chốt 04/10/2026): **MiniMax gọi thẳng
+  (gói trả phí, `MiniMax-M2.7-highspeed`)** → Hermes → OpenRouter → Gemini miễn phí
+  (`GEMINI_FREE_KEYS`, chỉ dự phòng) → khóa Gemini trả phí chỉ khi tier premium. Không phụ
+  thuộc Gemini miễn phí. Thiếu key provider nào thì tự bỏ qua; local dev dùng OpenRouter free
+  — `docs/openrouter.md`, `npm run openrouter:ping`
 - Auth: Bearer token (`HS_API_TOKEN` env)
-- Deploy: Vercel project `hs-code-api`
+- Deploy: Vercel project `hs-code-api` (domain prod `hs-kb.uythacnhapkhau.com` qua Cloudflare)
+- **Nguồn sự thật là GitHub `ozvietnam/hs-code-api`** (CEO chốt 29/09/2026). Gitea của
+  hệ thống quản lý đơn (ERP) chỉ tự đồng bộ từ GitHub để lấy data về dùng — muốn sửa
+  gì thì sửa trên GitHub, KHÔNG sửa trên Gitea.
 
 ## Cấu trúc dự án
 

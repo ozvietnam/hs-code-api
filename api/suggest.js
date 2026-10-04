@@ -6,6 +6,10 @@ const { buildEvidenceTrace } = require('../lib/suggest-evidence');
 const { applyGirRules } = require('../lib/gir-engine');
 const { applyPrecedentBoost, detectSet } = require('../lib/precedent-search');
 const { translateToVi, getBrandHint } = require('../lib/glossary');
+const { understandQuery } = require('../lib/query-understand');
+const { checkSubheading, checkPolarity } = require('../lib/subheading-check');
+const { originAssessment } = require('../lib/origin-hints');
+const { removeDiacritics } = require('../lib/search-utils');
 const { searchOzByKeyword } = require('../lib/oz-precedent-search');
 const { applyHistoricalSignals } = require('../lib/suggest-confidence');
 const { appendSuggestLog } = require('../lib/ml-log');
@@ -22,7 +26,7 @@ const { checkResidualPreference } = require('../lib/residual-guard');
 const { applyLearnedCorrections } = require('../lib/learned-corrections');
 const { getSuggestCache, setSuggestCache } = require('../lib/suggest-cache');
 const { getPrompt } = require('../lib/prompt-version');
-const { buildSuggestStatus } = require('../lib/suggest-status');
+const { buildSuggestStatus, LOW_CONFIDENCE } = require('../lib/suggest-status');
 const { conflictsData, taxData } = require('../lib/data');
 const { sanitizeLlmSuggestions, deterministicSuggestions } = require('../lib/llm-output-guard');
 
@@ -110,10 +114,15 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({ ...cached, cached: true });
   }
 
+  // Bước 0 — hiểu hàng: tiêu đề Taobao tiếng Trung → dữ kiện tiếng Việt. Mọi bước
+  // KHỚP CHỮ phía sau (tìm ứng viên, GIR, tiền lệ, bảng quyết định) dùng matchText;
+  // mô tả gốc vẫn gửi LLM và trả lại ERP nguyên vẹn.
+  const understood = await understandQuery(description);
+  const matchText = understood.searchText || description;
   const glossaryVi = translateToVi(description);
   const brandHint = getBrandHint(description);
-  const { candidates: evidence, ozPrecedents } = await getCandidateEvidence(description, { topCandidates });
-  const audit = buildEvidenceTrace(description, evidence);
+  const { candidates: evidence, ozPrecedents } = await getCandidateEvidence(matchText, { topCandidates });
+  const audit = buildEvidenceTrace(matchText, evidence);
 
   if (evidence.length === 0) {
     appendSuggestLog({
@@ -143,6 +152,7 @@ module.exports = async function handler(req, res) {
     const userPrompt = JSON.stringify(
       {
         description,
+        ...(understood.applied ? { productFactsVi: understood.facts } : {}),
         glossaryTranslation: glossaryVi !== description ? glossaryVi : undefined,
         brandHint,
         candidates: evidence.map(({ hsCode, nameVi, policyByHs, score }) => ({
@@ -187,11 +197,11 @@ module.exports = async function handler(req, res) {
       engine = 'deterministic';
       rawSuggestions = deterministicSuggestions(evidence, { taxData, limit: topReranked });
     }
-    const girRanked = applyGirRules(rawSuggestions, description);
-    const precedentRanked = applyPrecedentBoost(girRanked.suggestions, description);
+    const girRanked = applyGirRules(rawSuggestions, matchText);
+    const precedentRanked = applyPrecedentBoost(girRanked.suggestions, matchText);
     const ozSearchItems = ozPrecedents.length
       ? ozPrecedents
-      : (await searchOzByKeyword(description, { limit: 5 })).items;
+      : (await searchOzByKeyword(matchText, { limit: 5 })).items;
     const evidenceByHs = new Map(evidence.map((item) => [item.hsCode, item]));
     const historyAdjusted = applyHistoricalSignals({
       suggestions: precedentRanked.suggestions.slice(0, topReranked),
@@ -207,10 +217,10 @@ module.exports = async function handler(req, res) {
       ms: Date.now() - started,
       candidates: evidence.length,
       girRules: determineGir({
-        description,
+        description: matchText,
         candidates: precedentRanked.suggestions,
         pickedHs: precedentRanked.suggestions?.[0]?.hsCode || null,
-        isSet: detectSet(description),
+        isSet: detectSet(matchText),
         precedentDrove: Boolean(precedentRanked.precedentDrove),
       }).determinations.map((d) => `${d.rule}:${d.basis}`),
       llmModel: model,
@@ -222,7 +232,7 @@ module.exports = async function handler(req, res) {
     // Bảng quyết định theo nhóm: tên/chức năng đưa tới nhóm, THUỘC TÍNH chốt lá.
     // Xét các nhóm trong top gợi ý; thiếu dữ kiện thì trả missingFacts để ERP /
     // người dùng bổ sung TRƯỚC khi chốt 8 số — không đoán.
-    const parsedDesc = parseCommodityQuery(description);
+    const parsedDesc = parseCommodityQuery(matchText);
     const decisionHeadings = [];
     for (const sg of precedentRanked.suggestions || []) {
       const h = String(sg.hsCode || '').slice(0, 4);
@@ -230,7 +240,7 @@ module.exports = async function handler(req, res) {
       if (decisionHeadings.length >= 3) break;
     }
     const decisions = decisionHeadings
-      .map((h) => resolveHeading(h, { text: description, parsed: parsedDesc, facts }))
+      .map((h) => resolveHeading(h, { text: matchText, parsed: parsedDesc, facts }))
       .filter((d) => d.status !== 'NO_TABLE');
     const topHeading = String(precedentRanked.suggestions?.[0]?.hsCode || '').slice(0, 4);
     const topDecision = decisions.find((d) => d.heading === topHeading) || null;
@@ -238,16 +248,16 @@ module.exports = async function handler(req, res) {
     const rejectedFacts = [...new Map(decisions.flatMap((d) => d.rejectedFacts || []).map((r) => [r.attribute, r])).values()];
     // Từ điển mâu thuẫn: tên hàng trong mô tả khớp mặt hàng "DN hay khai A, Hải quan
     // hay ấn định B" → trả tiêu chí phân biệt; HIGH khi gợi ý đầu rơi đúng mã A.
-    const confusionAlerts = confusionAlertsFor(description, (precedentRanked.suggestions || []).map((sg) => sg.hsCode));
+    const confusionAlerts = confusionAlertsFor(matchText, (precedentRanked.suggestions || []).map((sg) => sg.hsCode));
 
     // Trích dẫn GIR: chỉ phát ra khi có căn cứ kiểm chứng được (xem lib/gir.js).
     // Bảng chưa verified đi qua gir.js thành HEURISTIC, verified mới là RULE_TABLE.
     const girVerdict = determineGir({
-      description,
+      description: matchText,
       candidates: precedentRanked.suggestions,
       pickedHs: precedentRanked.suggestions?.[0]?.hsCode || null,
       resolver: toResolverShape(topDecision),
-      isSet: detectSet(description),
+      isSet: detectSet(matchText),
       precedentDrove: Boolean(precedentRanked.precedentDrove),
       llmGir: precedentRanked.suggestions?.[0]?.gir || null,
     });
@@ -259,7 +269,7 @@ module.exports = async function handler(req, res) {
     // tự động ghi đè. Nên chỉ CẢNH BÁO, để người có chuyên môn chốt.
     const residualAdvisory = checkResidualPreference({
       hsCode: precedentRanked.suggestions?.[0]?.hsCode || null,
-      description,
+      description: matchText,
       candidates: precedentRanked.suggestions,
     });
 
@@ -305,6 +315,65 @@ module.exports = async function handler(req, res) {
       else if (enrichedSuggestions.length > 1) enrichedSuggestions[enrichedSuggestions.length - 1] = added;
     }
 
+    // Kiểm cấp 8 số: dòng được chọn có chữ đặc trưng riêng (so với dòng anh em) mà
+    // mô tả không có → cảnh báo, và đưa dòng anh em hợp hơn vào danh sách. Chỉ TỰ
+    // ĐỔI top-1 khi chính lý do của AI phủ định dòng nó chọn ("không phải nước tăng
+    // lực" mà vẫn chọn 2202.10.20). Đo trên 5.156 tờ khai thật, quy tắc chữ đặc
+    // trưng đánh trượt 3,1% mã đúng — quá cao để tự đổi khi AI không tự mâu thuẫn.
+    let subheadingAdvisory = null;
+    const top0 = enrichedSuggestions[0];
+    if (top0 && !top0.decidedByTable) {
+      const sub = checkSubheading(top0.hsCode, matchText);
+      if (!sub.ok) {
+        const why = removeDiacritics(String(top0.reasoning || top0.reason || '').toLowerCase());
+        const selfContradicts = sub.distinctive.some((t) => new RegExp(`khong (phai|la|thuoc)[^.;]{0,40}\\b${t}\\b`).test(why));
+        const alt = sub.alternative && taxData[sub.alternative] ? sub.alternative : null;
+        subheadingAdvisory = { ...sub, autoSwapped: Boolean(selfContradicts && alt) };
+        if (alt && !enrichedSuggestions.some((sg) => sg.hsCode === alt)) {
+          const added = withExamples({
+            hsCode: alt,
+            nameVi: taxData[alt].vn || null,
+            confidence: selfContradicts ? top0.confidence ?? null : null,
+            reasoning: sub.reasonVi,
+            addedBySubheadingCheck: true,
+          }, 5);
+          if (selfContradicts) enrichedSuggestions.unshift(added);
+          else if (enrichedSuggestions.length < topReranked) enrichedSuggestions.push(added);
+          else if (enrichedSuggestions.length > 1) enrichedSuggestions[enrichedSuggestions.length - 1] = added;
+        } else if (alt && selfContradicts) {
+          const i = enrichedSuggestions.findIndex((sg) => sg.hsCode === alt);
+          enrichedSuggestions.unshift({ ...enrichedSuggestions.splice(i, 1)[0], addedBySubheadingCheck: true });
+        }
+        if (enrichedSuggestions.length > topReranked) enrichedSuggestions = enrichedSuggestions.slice(0, topReranked);
+      }
+    }
+
+    // Mâu thuẫn có/không ("Đồ uống KHÔNG CÓ GA" cho hàng "có ga"): mã đầu sai chắc chắn,
+    // đẩy xuống cuối, đưa mã không mâu thuẫn lên đầu và bắt chuyên viên xác nhận.
+    // Đo trên 5.058 tờ khai thật không bắt nhầm mã đúng nào (lib/subheading-check.js).
+    let polarityAdvisory = null;
+    const head = enrichedSuggestions[0];
+    if (head && !head.decidedByTable) {
+      const pol = checkPolarity(head.hsCode, matchText);
+      if (!pol.ok) {
+        const okIdx = enrichedSuggestions.findIndex((sg, i) => i > 0 && checkPolarity(sg.hsCode, matchText).ok);
+        let promoted = okIdx > 0 ? enrichedSuggestions.splice(okIdx, 1)[0] : null;
+        if (!promoted && pol.alternative && taxData[pol.alternative]) {
+          promoted = withExamples({
+            hsCode: pol.alternative,
+            nameVi: taxData[pol.alternative].vn || null,
+            confidence: null,
+            reasoning: pol.reasonVi,
+            addedByPolarityCheck: true,
+          }, 5);
+        }
+        const demoted = { ...enrichedSuggestions.shift(), polarityConflict: pol.conflicts };
+        const cap = Math.max(topReranked, 2);
+        enrichedSuggestions = [...(promoted ? [promoted] : []), ...enrichedSuggestions].slice(0, cap - 1).concat(demoted);
+        polarityAdvisory = { ...pol, promotedHs: promoted?.hsCode || null };
+      }
+    }
+
     // B4: shared knowledge — conflicts + explanatory note cho mã top (cùng layer với /classify)
     const top1Hs = enrichedSuggestions[0]?.hsCode;
     const explanatoryNote  = top1Hs ? getNoteSummaryForHs(top1Hs) : null;
@@ -317,6 +386,8 @@ module.exports = async function handler(req, res) {
       // Đọc trường này TRƯỚC: agent chỉ cần làm theo nextAction.
       ...buildSuggestStatus({
         description, suggestions: enrichedSuggestions, engine, missingFacts, rejectedFacts, facts, topDecision,
+        topConfidence: engine === 'llm' ? enrichedSuggestions[0]?.confidence ?? null : null,
+        featureConflict: polarityAdvisory,
       }),
       suggestions: enrichedSuggestions,
       rankingSignals,
@@ -359,6 +430,22 @@ module.exports = async function handler(req, res) {
       antiPatternWarnings: [
         ...audit.antiPatternWarnings,
         ...historyAdjusted.warnings,
+        ...(polarityAdvisory
+          ? [{
+              id: 'feature-polarity-conflict',
+              description: polarityAdvisory.reasonVi
+                + (polarityAdvisory.promotedHs ? ` Đã đưa ${polarityAdvisory.promotedHs} lên đầu, mã mâu thuẫn xuống cuối.` : ''),
+              fix: 'Chuyên viên xác nhận đặc tính (vd có ga hay không) rồi chọn mã.',
+            }]
+          : []),
+        ...(subheadingAdvisory
+          ? [{
+              id: subheadingAdvisory.autoSwapped ? 'subheading-self-contradiction' : 'subheading-unsupported',
+              description: subheadingAdvisory.reasonVi
+                + (subheadingAdvisory.autoSwapped ? ' Lý do AI tự viết phủ định dòng này nên đã đưa dòng anh em lên đầu.' : ''),
+              fix: 'Bổ sung dữ kiện chứng minh điều kiện của dòng cụ thể, hoặc chọn dòng anh em được đề xuất.',
+            }]
+          : []),
         ...(residualAdvisory
           ? [{
               id: 'residual-preference',
@@ -372,6 +459,12 @@ module.exports = async function handler(req, res) {
       explanatoryNote,
       confusionWarning,
       glossaryTranslation: glossaryVi !== description ? glossaryVi : undefined,
+      // Tiêu đề đã được đổi thành dữ kiện tiếng Việt trước khi tìm mã (xem lib/query-understand.js).
+      queryUnderstanding: understood.applied
+        ? { applied: true, searchTextVi: understood.searchText, productFactsVi: understood.facts }
+        : { applied: false, reason: understood.reason },
+      // Nước SẢN XUẤT theo tiêu đề — tách khỏi nơi mua. acftaApplicable=false: không áp C/O mẫu E.
+      originAssessment: originAssessment(description, { llmOrigin: understood.facts?.noiSanXuat || null }),
       brandHint,
       llmModel: model,
       promptVersion,
@@ -387,7 +480,11 @@ module.exports = async function handler(req, res) {
 
     // Store in LRU cache for repeated identical queries — không cache bản
     // degraded để lần gọi sau còn thử lại LLM.
-    if (engine === 'llm') setSuggestCache(description, topReranked, responsePayload, { facts });
+    // Không cache kết quả AI tự nhận không chắc — lần gọi sau còn cơ hội đúng
+    // (trước đây mã cocaine cho Coca-Cola được cache và trả lại suốt 24 giờ).
+    if (engine === 'llm' && !polarityAdvisory && Number(enrichedSuggestions[0]?.confidence) >= LOW_CONFIDENCE) {
+      setSuggestCache(description, topReranked, responsePayload, { facts });
+    }
 
     // Private cache 5 min — same product queried repeatedly in ERP session
     res.setHeader('Cache-Control', 'private, max-age=300');
@@ -435,17 +532,20 @@ async function handleBatch(req, res, body, started) {
         return { id: item.id, cached: true, ms: 0, ...cached };
       }
 
-      const { candidates: evidence } = await getCandidateEvidence(item.description, { topCandidates });
+      const understood = await understandQuery(item.description);
+      const matchText = understood.searchText || item.description;
+      const { candidates: evidence } = await getCandidateEvidence(matchText, { topCandidates });
       if (evidence.length === 0) {
         return { id: item.id, suggestions: [], evidence: [], ms: Date.now() - itemStart };
       }
 
       const glossaryVi = translateToVi(item.description);
       const brandHint = getBrandHint(item.description);
-      const audit = buildEvidenceTrace(item.description, evidence);
+      const audit = buildEvidenceTrace(matchText, evidence);
 
       const userPrompt = JSON.stringify({
         description: item.description,
+        ...(understood.applied ? { productFactsVi: understood.facts } : {}),
         glossaryTranslation: glossaryVi !== item.description ? glossaryVi : undefined,
         brandHint,
         candidates: evidence.map(({ hsCode, nameVi, policyByHs, score }) => ({ hsCode, nameVi, policyByHs, score })),
@@ -471,8 +571,8 @@ async function handleBatch(req, res, body, started) {
       const rawSuggestions = engine === 'llm'
         ? guarded.suggestions
         : deterministicSuggestions(evidence, { taxData, limit: topReranked });
-      const girRanked = applyGirRules(rawSuggestions, item.description);
-      const precedentRanked = applyPrecedentBoost(girRanked.suggestions, item.description);
+      const girRanked = applyGirRules(rawSuggestions, matchText);
+      const precedentRanked = applyPrecedentBoost(girRanked.suggestions, matchText);
       const suggestions = precedentRanked.suggestions.map(s => {
         const base = engine === 'deterministic' ? { ...s, confidence: null } : s;
         if (!isLoaiKhac(base.hsCode)) return base;
@@ -480,10 +580,10 @@ async function handleBatch(req, res, body, started) {
       });
 
       const batchGir = determineGir({
-        description: item.description,
+        description: matchText,
         candidates: precedentRanked.suggestions,
         pickedHs: precedentRanked.suggestions?.[0]?.hsCode || null,
-        isSet: detectSet(item.description),
+        isSet: detectSet(matchText),
         precedentDrove: Boolean(precedentRanked.precedentDrove),
       });
 

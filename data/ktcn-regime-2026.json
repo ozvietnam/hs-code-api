@@ -1,0 +1,395 @@
+{
+  "_comment": "Khung kiểm tra chuyên ngành (KTCN) hàng nhập khẩu từ 2026 + bảng văn bản danh mục CŨ đã/đang bị thay. Dùng cho lib/policy-regime.js: /api/tax gắn policyBasisReview khi ô chính sách (cs) còn dẫn căn cứ cũ. KHÔNG đổi mã HS: danh mục mới chưa có phụ lục mã HS gốc trong repo, nên chỉ báo 'căn cứ cũ, cần đối chiếu' — không tự khẳng định mã còn/không còn phải kiểm tra. Mức tin cậy: HIGH = nguồn trích nguyên văn/Công báo; MEDIUM = cùng bộ, cùng phạm vi, khung cũ đã hết hiệu lực nhưng chưa thấy điều khoản thay thế nguyên văn; LOW = chỉ là gợi ý đối chiếu.",
+  "version": "2026-10-04",
+  "asOf": "2026-10-04",
+  "sources": [
+    {
+      "id": "oz-ktcn-2026",
+      "kind": "SECONDARY",
+      "titleVi": "Bài 'Kiểm tra chuyên ngành hàng nhập khẩu năm 2026' (CEO gửi 04/10/2026, viết theo quy định hiệu lực tại 04/10/2026)",
+      "noteVi": "Nguồn thứ cấp có trích nguyên văn điều luật và tự đánh dấu chỗ 'chưa xác minh được'. Trước khi đổi chính sách theo mã HS phải đối chiếu bản gốc trên congbao.chinhphu.vn / vanban.chinhphu.vn."
+    }
+  ],
+  "framework": {
+    "qualityDecree": {
+      "code": "37/2026/NĐ-CP",
+      "issuedDate": "2026-01-23",
+      "effectiveDate": "2026-01-23",
+      "fullRegimeFrom": "2026-07-01",
+      "basedOnVi": "Luật Chất lượng sản phẩm, hàng hoá 05/2007/QH12, sửa đổi bởi Luật 78/2025/QH15",
+      "summaryVi": "Từ 01/7/2026 bỏ cách chia 'nhóm 1 / nhóm 2'. Hàng hoá chia 3 mức rủi ro: thấp, trung bình, cao. Mỗi bộ ban hành danh mục rủi ro trung bình/cao kèm mã HS.",
+      "riskTiers": [
+        {
+          "tier": "LOW",
+          "labelVi": "Rủi ro thấp",
+          "obligationVi": "Không thuộc đối tượng phải kiểm tra nhà nước về chất lượng khi nhập khẩu theo Điều 82 Nghị định 37/2026/NĐ-CP; thông quan theo thủ tục hải quan thông thường."
+        },
+        {
+          "tier": "MEDIUM",
+          "labelVi": "Rủi ro trung bình",
+          "obligationVi": "Không phải kiểm tra chất lượng khi nhập khẩu, nhưng phải công bố hợp quy (Điều 82 khoản 1 Nghị định 37/2026/NĐ-CP)."
+        },
+        {
+          "tier": "HIGH",
+          "labelVi": "Rủi ro cao",
+          "obligationVi": "Đăng ký kiểm tra nhà nước về chất lượng (Điều 83 Nghị định 37/2026/NĐ-CP). Đã có giấy chứng nhận hợp quy: Thông báo đáp ứng trong 01 ngày làm việc; thiếu hồ sơ bổ sung trong 07 ngày làm việc; sai nhãn khắc phục không quá 05 ngày làm việc. Chưa có giấy chứng nhận: đưa hàng về bảo quản và đánh giá tại tổ chức chứng nhận được chỉ định."
+        }
+      ],
+      "transitionVi": "Giấy chứng nhận hợp quy đã cấp còn hiệu lực đến hết thời hạn ghi trên giấy. Hồ sơ cơ quan nhận trước 01/7/2026 xử lý theo quy định tại thời điểm nhận."
+    },
+    "foodSafetyDecree": {
+      "code": "15/2018/NĐ-CP",
+      "status": "ACTIVE",
+      "noteVi": "Vẫn áp dụng tại 10/2026: Nghị định 46/2026/NĐ-CP (thay NĐ 15/2018) đang bị tạm ngưng hiệu lực theo Nghị quyết 09/2026/NQ-CP (04/02/2026) và Nghị quyết 15/2026/NQ-CP (06/4/2026). Kiểm tra ATTP: giảm/thông thường 03 ngày làm việc, chặt 07 ngày làm việc (Điều 16, 17, 19). 09 trường hợp miễn kiểm tra tại Điều 13."
+    },
+    "expired": [
+      {
+        "code": "132/2008/NĐ-CP",
+        "expiredFrom": "2026-07-01",
+        "noteVi": "Kèm Điều 2 Nghị định 67/2009/NĐ-CP — Điều 97 khoản 2 điểm a NĐ 37/2026"
+      },
+      {
+        "code": "74/2018/NĐ-CP",
+        "expiredFrom": "2026-07-01",
+        "noteVi": "Điều 97 khoản 2 điểm b NĐ 37/2026"
+      },
+      {
+        "code": "154/2018/NĐ-CP",
+        "expiredFrom": "2026-07-01",
+        "noteVi": "Riêng Điều 4 — Điều 97 khoản 2 điểm c NĐ 37/2026"
+      },
+      {
+        "code": "13/2022/NĐ-CP",
+        "expiredFrom": "2026-07-01",
+        "noteVi": "Toàn bộ từ 01/7/2026; riêng khoản 3–7 Điều 1 hết hiệu lực từ 23/01/2026 — Điều 97 NĐ 37/2026"
+      },
+      {
+        "code": "43/2017/NĐ-CP",
+        "expiredFrom": "2026-01-23",
+        "noteVi": "Nhãn hàng hoá — hết hiệu lực từ 23/01/2026 (không phải 01/7/2026), Điều 97 khoản 4 điểm b NĐ 37/2026"
+      },
+      {
+        "code": "111/2021/NĐ-CP",
+        "expiredFrom": "2026-01-23",
+        "noteVi": "Điều 97 khoản 4 điểm c NĐ 37/2026"
+      },
+      {
+        "code": "85/2019/NĐ-CP",
+        "expiredFrom": "2026-10-15",
+        "replacedBy": "336/2026/NĐ-CP",
+        "noteVi": "Một cửa quốc gia — NĐ 336/2026/NĐ-CP (22/8/2026) thay thế, hiệu lực 15/10/2026"
+      }
+    ],
+    "renamedMinistriesVi": "Bộ NN&PTNT + Bộ TN&MT → Bộ Nông nghiệp và Môi trường (TT-BNNMT); Bộ GTVT → Bộ Xây dựng (TT-BXD); Bộ LĐ-TB&XH → Bộ Nội vụ (TT-BNV); Bộ TT&TT → Bộ Khoa học và Công nghệ."
+  },
+  "lists": [
+    {
+      "code": "33/2026/TT-BCT",
+      "ministry": "BCT",
+      "kind": "QUALITY_RISK",
+      "issuedDate": "2026-06-30",
+      "effectiveDate": "2026-07-01",
+      "scopeVi": "Danh mục rủi ro trung bình/cao thuộc Bộ Công Thương, kèm mã HS và QCVN: tiền chất thuốc nổ, hoá chất, nồi hơi, bình chịu áp lực, chai LPG, thiết bị điện và điện tử, hiệu suất năng lượng",
+      "replaces": [
+        "41/2023/TT-BCT"
+      ],
+      "verification": "SECONDARY",
+      "noteVi": "Bài ghi mức tin cậy 'trung bình đến cao' cho quan hệ thay thế."
+    },
+    {
+      "code": "28/2026/TT-BCT",
+      "ministry": "BCT",
+      "kind": "FOOD_SAFETY",
+      "issuedDate": "2026-06-01",
+      "effectiveDate": "2026-07-17",
+      "scopeVi": "Danh mục mặt hàng nhập khẩu kèm mã HS phải kiểm tra nhà nước về an toàn thực phẩm thuộc Bộ Công Thương (5 nhóm, gồm rượu, bia, nước giải khát, sữa chế biến, dầu thực vật, bột/tinh bột, bánh mứt kẹo)",
+      "replaces": [
+        "11/2022/TT-BCT"
+      ],
+      "verification": "PRIMARY_QUOTED",
+      "noteVi": "Công báo số 328 ngày 14/6/2026. TT 11/2022/TT-BCT hết hiệu lực từ 17/7/2026 (đã xác minh nguyên văn). Không dẫn QĐ 1182/QĐ-BCT (2021) nữa."
+    },
+    {
+      "code": "36/2026/TT-BKHCN",
+      "ministry": "BKHCN",
+      "kind": "QUALITY_RISK",
+      "issuedDate": "2026-06-30",
+      "effectiveDate": "2026-07-01",
+      "scopeVi": "Xăng, dầu diesel, LPG, đồ chơi trẻ em, thiết bị điện và điện tử gia dụng, dây cáp điện, aptomat; thiết bị đầu cuối di động, trạm gốc, thiết bị vô tuyến từ 60 mW, thiết bị phát thanh truyền hình",
+      "replaces": [
+        "01/2009/TT-BKHCN",
+        "10/2024/TT-BKHCN"
+      ],
+      "verification": "SECONDARY",
+      "noteVi": "Bãi bỏ TT 01/2009/TT-BKHCN; thay TT 10/2024/TT-BKHCN (tin cậy trung bình đến cao)."
+    },
+    {
+      "code": "41/2026/TT-BXD",
+      "ministry": "BXD",
+      "kind": "QUALITY_RISK",
+      "issuedDate": "2026-06-26",
+      "effectiveDate": "2026-07-01",
+      "scopeVi": "Vật liệu xây dựng, 3 mức rủi ro, 09 nhóm rủi ro cao: xi măng, gạch gốm ốp lát, đá ốp lát, kính xây dựng, thiết bị vệ sinh, sơn, phụ gia bê tông, thạch cao, nhôm/thanh profile",
+      "replaces": [
+        "10/2024/TT-BXD"
+      ],
+      "verification": "PRIMARY_QUOTED",
+      "noteVi": "Công báo số 404 ngày 17/7/2026."
+    },
+    {
+      "code": "49/2026/TT-BXD",
+      "ministry": "BXD",
+      "kind": "QUALITY_RISK",
+      "issuedDate": "2026-06-30",
+      "effectiveDate": "2026-07-01",
+      "scopeVi": "Phương tiện giao thông: PL I rủi ro cao (ô tô, mô tô, xe gắn máy, xe bốn bánh có động cơ); PL II rủi ro trung bình (phương tiện, phụ tùng, thiết bị GTVT, đường sắt)",
+      "replaces": [
+        "12/2022/TT-BGTVT",
+        "62/2024/TT-BGTVT"
+      ],
+      "verification": "SECONDARY",
+      "noteVi": "Cơ quan: Cục Đăng kiểm Việt Nam."
+    },
+    {
+      "code": "27/2026/TT-BNNMT",
+      "ministry": "BNNMT",
+      "kind": "QUALITY_RISK",
+      "issuedDate": "2026-06-30",
+      "effectiveDate": "2026-07-01",
+      "scopeVi": "Rủi ro cao: thuốc bảo vệ thực vật, thuốc trừ chuột/nấm/cỏ, chất điều hoà sinh trưởng, chế phẩm diệt khuẩn nông nghiệp. Rủi ro trung bình: thức ăn chăn nuôi, phân bón, giống cây trồng, thuỷ sản, vật tư nông nghiệp khác",
+      "replaces": [],
+      "verification": "PRIMARY_QUOTED",
+      "noteVi": "Công báo số 411 ngày 18/7/2026. Không bao gồm kiểm dịch động vật/thực vật/thuỷ sản (theo pháp luật kiểm dịch riêng)."
+    },
+    {
+      "code": "22/2026/TT-BNNMT",
+      "ministry": "BNNMT",
+      "kind": "FOOD_SAFETY_AGENCY",
+      "issuedDate": "2026-05-19",
+      "effectiveDate": "2026-09-01",
+      "scopeVi": "Cơ quan kiểm tra nhà nước về ATTP hàng nhập khẩu thuộc Bộ NN&MT: cơ quan do Chủ tịch UBND cấp tỉnh giao hoặc chỉ định, thay Cục Thú y và Cục Bảo vệ thực vật (khoản 1, 2 Điều 3)",
+      "replaces": [],
+      "verification": "PRIMARY_QUOTED"
+    },
+    {
+      "code": "01/2026/TT-BNNMT",
+      "ministry": "BNNMT",
+      "kind": "QUARANTINE",
+      "issuedDate": null,
+      "effectiveDate": "2026-01-01",
+      "scopeVi": "Danh mục động vật, sản phẩm động vật trên cạn thuộc diện phải kiểm dịch và miễn kiểm dịch, kèm trình tự thủ tục (VBHN 67/VBHN-BNNMT năm 2026). Cơ quan: Cục Chăn nuôi và Thú y",
+      "replaces": [],
+      "verification": "SECONDARY"
+    },
+    {
+      "code": "16/2026/TT-BNV",
+      "ministry": "BNV",
+      "kind": "QUALITY_RISK",
+      "issuedDate": null,
+      "effectiveDate": "2026-07-28",
+      "scopeVi": "18 nhóm, 08 nhóm rủi ro cao: thang máy, cần trục, cầu trục, vận thăng, nồi hơi và thiết bị áp lực, thiết bị nâng, phương tiện bảo vệ cá nhân, thiết bị hàn",
+      "replaces": [],
+      "verification": "SECONDARY",
+      "noteVi": "Văn bản bị thay: CHƯA XÁC MINH (bài không khẳng định thay TT 01/2021/TT-BLĐTBXH)."
+    },
+    {
+      "code": "125/2026/TT-BCA",
+      "ministry": "BCA",
+      "kind": "QUALITY_RISK",
+      "issuedDate": "2026-06-30",
+      "effectiveDate": "2026-07-01",
+      "scopeVi": "Phương tiện phòng cháy chữa cháy và cứu nạn cứu hộ (8 sản phẩm), thiết bị an toàn giao thông, thiết bị giám sát an ninh công cộng",
+      "replaces": [],
+      "verification": "SECONDARY",
+      "noteVi": "Nền: Luật 55/2024/QH15. Tem kiểm định cũ hết 30/6/2026. Thời hạn thủ tục: chưa xác minh."
+    },
+    {
+      "code": "126/2026/TT-BQP",
+      "ministry": "BQP",
+      "kind": "QUALITY_RISK",
+      "issuedDate": null,
+      "effectiveDate": "2026-09-02",
+      "scopeVi": "Sản phẩm mật mã dân sự rủi ro cao. Cơ quan: Ban Cơ yếu Chính phủ",
+      "replaces": [],
+      "verification": "SECONDARY",
+      "noteVi": "Chuyển tiếp 24 tháng cho sản phẩm đã cấp phép."
+    },
+    {
+      "code": "24/2026/TT-BYT",
+      "ministry": "BYT",
+      "kind": "QUALITY_RISK",
+      "issuedDate": "2026-06-30",
+      "effectiveDate": "2026-07-01",
+      "scopeVi": "Mức độ rủi ro và biện pháp quản lý thiết bị y tế; sửa TT 05/2022/TT-BYT",
+      "replaces": [],
+      "verification": "SECONDARY"
+    },
+    {
+      "code": "26/2026/TT-BYT",
+      "ministry": "BYT",
+      "kind": "QUALITY_RISK",
+      "issuedDate": "2026-07-01",
+      "effectiveDate": "2026-07-01",
+      "scopeVi": "Dược liệu, thuốc cổ truyền — rủi ro trung bình",
+      "replaces": [],
+      "verification": "SECONDARY"
+    },
+    {
+      "code": "27/2026/TT-BYT",
+      "ministry": "BYT",
+      "kind": "QUALITY_RISK",
+      "issuedDate": "2026-07-01",
+      "effectiveDate": "2026-07-01",
+      "scopeVi": "Thực phẩm; dụng cụ chứa đựng, vật liệu bao gói tiếp xúc trực tiếp với thực phẩm — rủi ro trung bình, 8 nhóm (Công văn 1913/ATTP-KN hướng dẫn)",
+      "replaces": [],
+      "verification": "SECONDARY"
+    },
+    {
+      "code": "28/2026/TT-BYT",
+      "ministry": "BYT",
+      "kind": "QUALITY_RISK",
+      "issuedDate": "2026-07-01",
+      "effectiveDate": "2026-07-01",
+      "scopeVi": "Thuốc hoá dược, thuốc dược liệu, vắc xin, sinh phẩm, nguyên liệu làm thuốc — PL I rủi ro cao (10 nhóm), PL II rủi ro trung bình",
+      "replaces": [],
+      "verification": "UNVERIFIED",
+      "noteVi": "Bài chỉ tìm được nguồn thứ cấp, chưa có trang gốc — kiểm lại với Bộ Y tế trước khi dùng."
+    }
+  ],
+  "superseded": [
+    {
+      "id": "bct-attp-1182",
+      "patterns": [
+        "\\b1182/(?:2021/)?QD-BCT-PL2",
+        "\\b11/2022/TT-BCT"
+      ],
+      "labelVi": "Danh mục KT ATTP của Bộ Công Thương (QĐ 1182/QĐ-BCT 2021 Phụ lục 2, TT 11/2022/TT-BCT)",
+      "relation": "REPLACED",
+      "confidence": "HIGH",
+      "replacedBy": [
+        "28/2026/TT-BCT"
+      ],
+      "effectiveFrom": "2026-07-17",
+      "noteVi": "Danh mục KT ATTP của Bộ Công Thương nay là TT 28/2026/TT-BCT (hiệu lực 17/7/2026). Mã này nằm trong danh mục cũ; chưa đối chiếu với phụ lục mã HS của TT 28/2026."
+    },
+    {
+      "id": "bct-nhom2-1182-pl1",
+      "patterns": [
+        "\\b1182/(?:2021/)?QD-BCT-PL1"
+      ],
+      "labelVi": "Hàng KTCN về chất lượng 'nhóm 2' của Bộ Công Thương (QĐ 1182/QĐ-BCT 2021 Phụ lục 1)",
+      "relation": "LIKELY_REPLACED",
+      "confidence": "MEDIUM",
+      "replacedBy": [
+        "33/2026/TT-BCT"
+      ],
+      "effectiveFrom": "2026-07-01",
+      "noteVi": "Khung 'nhóm 2' hết hiệu lực từ 01/7/2026; danh mục rủi ro trung bình/cao của Bộ Công Thương nay là TT 33/2026/TT-BCT (hoá chất, nồi hơi, bình áp lực, chai LPG, thiết bị điện-điện tử, hiệu suất năng lượng). Cần đối chiếu mã với phụ lục TT 33/2026."
+    },
+    {
+      "id": "bgtvt-12-2022",
+      "patterns": [
+        "\\b12/2022/TT-BGTVT",
+        "\\b62/2024/TT-BGTVT"
+      ],
+      "labelVi": "Danh mục hàng có khả năng gây mất an toàn thuộc Bộ GTVT cũ (TT 12/2022, TT 62/2024/TT-BGTVT)",
+      "relation": "REPLACED",
+      "confidence": "HIGH",
+      "replacedBy": [
+        "49/2026/TT-BXD"
+      ],
+      "effectiveFrom": "2026-07-01",
+      "noteVi": "Bộ GTVT đã nhập vào Bộ Xây dựng; danh mục phương tiện giao thông nay là TT 49/2026/TT-BXD (rủi ro cao: ô tô, mô tô, xe gắn máy, xe bốn bánh có động cơ; rủi ro trung bình: phụ tùng, thiết bị GTVT, đường sắt). Chưa đối chiếu phụ lục mã HS."
+    },
+    {
+      "id": "bkhcn-nhom2",
+      "patterns": [
+        "\\b2711/(?:2022/)?QD-BKHCN",
+        "\\b366/QD-BKHCN",
+        "\\b367/QD-BH?KCN",
+        "\\b29/2025/TT-BKHCN",
+        "\\b10/2024/TT-BKHCN",
+        "\\b01/2009/TT-BKHCN"
+      ],
+      "labelVi": "Danh mục 'nhóm 2' / hợp quy cũ của Bộ KH&CN",
+      "relation": "LIKELY_REPLACED",
+      "confidence": "MEDIUM",
+      "replacedBy": [
+        "36/2026/TT-BKHCN"
+      ],
+      "effectiveFrom": "2026-07-01",
+      "noteVi": "Khung 'nhóm 2' (NĐ 132/2008, NĐ 74/2018) hết hiệu lực từ 01/7/2026; danh mục rủi ro mới của Bộ KH&CN là TT 36/2026/TT-BKHCN. Hàng rủi ro trung bình chỉ công bố hợp quy, rủi ro cao mới đăng ký kiểm tra. Cần đối chiếu mã với phụ lục TT 36/2026."
+    },
+    {
+      "id": "bca-nhom2",
+      "patterns": [
+        "\\b9981/QD-BCA",
+        "\\b6266/QD-BCA"
+      ],
+      "labelVi": "Danh mục 'nhóm 2' / hàng có khả năng gây mất an toàn của Bộ Công an (QĐ 9981/2019, QĐ 6266/2023)",
+      "relation": "LIKELY_REPLACED",
+      "confidence": "MEDIUM",
+      "replacedBy": [
+        "125/2026/TT-BCA"
+      ],
+      "effectiveFrom": "2026-07-01",
+      "noteVi": "Danh mục rủi ro mới của Bộ Công an là TT 125/2026/TT-BCA (PCCC & cứu nạn cứu hộ, thiết bị an toàn giao thông, giám sát an ninh). Tem kiểm định cũ hết 30/6/2026. Cần đối chiếu mã."
+    },
+    {
+      "id": "bct-hsnl-1725",
+      "patterns": [
+        "\\b1725/(?:2024/)?QD-BCT"
+      ],
+      "labelVi": "Danh mục KT hiệu suất năng lượng của Bộ Công Thương (QĐ 1725/QĐ-BCT 2024)",
+      "relation": "LIKELY_REPLACED",
+      "confidence": "MEDIUM",
+      "replacedBy": [
+        "33/2026/TT-BCT"
+      ],
+      "effectiveFrom": "2026-07-01",
+      "noteVi": "Danh mục rủi ro của Bộ Công Thương (TT 33/2026/TT-BCT) có nhóm hiệu suất năng lượng. Cần đối chiếu mã với phụ lục TT 33/2026."
+    },
+    {
+      "id": "bldtbxh-01-2021",
+      "patterns": [
+        "\\b01/2021/TT-BLDTBXH"
+      ],
+      "labelVi": "Danh mục an toàn lao động của Bộ LĐ-TB&XH (TT 01/2021/TT-BLĐTBXH)",
+      "relation": "REVIEW",
+      "confidence": "LOW",
+      "replacedBy": [
+        "16/2026/TT-BNV"
+      ],
+      "effectiveFrom": "2026-07-28",
+      "noteVi": "Bộ LĐ-TB&XH đã giải thể, quản lý an toàn lao động chuyển về Bộ Nội vụ; danh mục rủi ro mới là TT 16/2026/TT-BNV (hiệu lực 28/7/2026). CHƯA XÁC MINH TT 16/2026 thay TT 01/2021 — hỏi Bộ Nội vụ trước khi đổi."
+    },
+    {
+      "id": "byt-15-2024",
+      "patterns": [
+        "\\b15/2024/TT-BYT"
+      ],
+      "labelVi": "Danh mục thực phẩm, phụ gia, dụng cụ chứa đựng thuộc Bộ Y tế (TT 15/2024/TT-BYT)",
+      "relation": "REVIEW",
+      "confidence": "LOW",
+      "replacedBy": [
+        "27/2026/TT-BYT"
+      ],
+      "effectiveFrom": "2026-07-01",
+      "noteVi": "Kiểm tra ATTP vẫn theo NĐ 15/2018/NĐ-CP. Bộ Y tế ra thêm TT 27/2026/TT-BYT (thực phẩm, bao gói tiếp xúc thực phẩm — rủi ro trung bình). Chưa thấy nguồn nói TT 27/2026 thay TT 15/2024 — cần đối chiếu."
+    },
+    {
+      "id": "bnnptnt-m1-kiem-dich",
+      "patterns": [
+        "\\b01/(?:I_)?2024/[A-Z]{2}-B+N+PTNT\\s*M1\\b"
+      ],
+      "labelVi": "Động vật, sản phẩm động vật trên cạn phải kiểm dịch (TT 01/2024/TT-BNNPTNT Mục 1)",
+      "relation": "REVIEW",
+      "confidence": "LOW",
+      "replacedBy": [
+        "01/2026/TT-BNNMT"
+      ],
+      "effectiveFrom": "2026-01-01",
+      "noteVi": "TT 01/2026/TT-BNNMT (hiệu lực 01/01/2026) ban hành lại danh mục động vật, sản phẩm động vật trên cạn phải kiểm dịch / miễn kiểm dịch; cơ quan là Cục Chăn nuôi và Thú y. Cần đối chiếu bảng mã HS."
+    }
+  ]
+}

@@ -6,6 +6,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join } from 'path';
 import { createHash } from 'crypto';
+import { girRuleField } from '../lib/extract.mjs';
 
 // ── Cấu hình ──────────────────────────────────────────────────────────────
 const REPO_DIR    = '/srv/hs-code-api';
@@ -135,7 +136,7 @@ async function verifyRecords(llmJson, { text, ref, date, url }) {
       description,
       source: { type: 'TB-TCHQ', reference: ref, ...(date ? { issuedDate: date } : {}), url },
       ...(reasonVi ? { reasonVi: reasonVi.slice(0, 1000) } : {}),
-      ...(r.girRule && /^GIR\s?[1-6]/i.test(r.girRule) ? { girRule: String(r.girRule).slice(0, 20) } : {}),
+      ...girRuleField(r.girRule),
     };
     // Privacy word check
     const recText = JSON.stringify(rec).toLowerCase();

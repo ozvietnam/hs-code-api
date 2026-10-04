@@ -76,6 +76,26 @@
       "destination": "/api/search?mode=match"
     },
     {
+      "source": "/api/extract-specs",
+      "destination": "/api/classify?mode=extract_specs"
+    },
+    {
+      "source": "/api/declaration-fields",
+      "destination": "/api/dataset?resource=declaration_fields"
+    },
+    {
+      "source": "/api/attribute-synonyms",
+      "destination": "/api/dataset?resource=attribute_synonyms"
+    },
+    {
+      "source": "/api/ktcn-regime",
+      "destination": "/api/dataset?resource=ktcn_regime"
+    },
+    {
+      "source": "/api/legal-status",
+      "destination": "/api/dataset?resource=legal_status"
+    },
+    {
       "source": "/api/ministries",
       "destination": "/api/dataset?resource=ministries"
     },

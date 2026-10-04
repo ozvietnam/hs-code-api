@@ -2,8 +2,8 @@
 // Test offline cho harness hs-agent: không mạng, không ghi data/ (rule bất biến #8).
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
-import { parseListing, parseTitle, classifyDoc, hsCodesIn, refKey } from '../lib/vbpl.mjs';
-import { codeAppears, coverage, scrub, verifyRecords } from '../lib/extract.mjs';
+import { parseListing, parseTitle, classifyDoc, hsCodesIn, refKey, isKtcnRegulation } from '../lib/vbpl.mjs';
+import { codeAppears, coverage, girRuleField, scrub, verifyRecords } from '../lib/extract.mjs';
 import { createRunBudget, BudgetExceeded } from '../lib/budget.mjs';
 import { matchAny, push, classifyChanges } from '../lib/workspace.mjs';
 import { mkdtempSync, writeFileSync, mkdirSync, appendFileSync } from 'fs';
@@ -39,6 +39,11 @@ t('classifyDoc: thông tư phân loại là quy định, không vào hàng đợ
 t('classifyDoc: văn bản hợp nhất thông tư ghi "Công văn" không phải phân loại', classifyDoc(parseTitle('Công văn 73/2026/VBHN-TT-BCT ngày 14/09/2026 Hợp nhất Thông tư sửa đổi Danh mục chi tiết theo mã số HS')) !== 'classification');
 t('classifyDoc: quyết định cơ cấu tổ chức Cục Phòng vệ thương mại → không phải phòng vệ', classifyDoc(parseTitle('Quyết định 2230/QĐ-BCT ngày 11/09/2026 Quy định chức năng nhiệm vụ quyền hạn và cơ cấu tổ chức của Cục Phòng vệ thương mại')) !== 'trade-remedy');
 t('classifyDoc: công văn tỷ giá → other', classifyDoc(parseTitle(items[0].title)) === 'other');
+const ktcnTitle = parseTitle('Thông tư 36/2026/TT-BKHCN ngày 30/06/2026 Ban hành Danh mục sản phẩm, hàng hóa có mức độ rủi ro trung bình, mức độ rủi ro cao thuộc trách nhiệm quản lý của Bộ Khoa học và Công nghệ');
+t('classifyDoc: thông tư danh mục rủi ro (KTCN 2026) là quy định', classifyDoc(ktcnTitle) === 'regulation', JSON.stringify(ktcnTitle));
+t('isKtcnRegulation: danh mục rủi ro → true', isKtcnRegulation(ktcnTitle));
+t('isKtcnRegulation: thông tư liên tịch danh mục kiểm tra → true', isKtcnRegulation({ docType: 'Thông tư liên tịch', subject: 'Danh mục hàng hóa phải kiểm tra chuyên ngành' }));
+t('isKtcnRegulation: thông tư biểu thuế → false', !isKtcnRegulation(parseTitle('Thông tư 31/2022/TT-BTC ngày 08/06/2022 Ban hành Danh mục hàng hóa xuất khẩu, nhập khẩu Việt Nam')));
 t('refKey: QĐ = QD, hoa', refKey('2174/QĐ-bct') === '2174/QD-BCT');
 t('hsCodesIn: dạng có chấm, không bắt số lượng', JSON.stringify(hsCodesIn('mã 6907.21.23 và 6907.22; 3177.90 m2 không phải; năm 2026')) === JSON.stringify(['69072123', '690722', '317790']), JSON.stringify(hsCodesIn('mã 6907.21.23 và 6907.22; 3177.90 m2')));
 
@@ -50,6 +55,8 @@ t('codeAppears: mã bịa không có', !codeAppears('85044019', text));
 t('codeAppears: không khớp giữa chuỗi số dài hơn', !codeAppears('8504', 'số 185044'));
 t('coverage: mô tả lấy từ văn bản ≥ 0,6', coverage('Thiết bị sạc không dây MagSafe Charger có mạch nghịch lưu, cuộn dây phát', text) >= 0.6);
 t('coverage: mô tả bịa < 0,6', coverage('Máy xúc lật bánh lốp động cơ diesel tải trọng 5 tấn', text) < 0.6);
+t('girRule: nhiều quy tắc → giữ quy tắc đầu, đúng mẫu validate-community', girRuleField('GIR 3(b) và GIR 6').girRule === 'GIR 3(b)' && girRuleField('gir 1, GIR 6').girRule === 'GIR 1');
+t('girRule: không phải GIR 1–6 → bỏ trường', !('girRule' in girRuleField('GIR 7')) && !('girRule' in girRuleField('Quy tắc 1')) && !('girRule' in girRuleField(null)));
 t('scrub: bỏ tên doanh nghiệp', !/công ty|tnhh/i.test(scrub('Thiết bị sạc của Công ty TNHH Táo Xanh, hàng mới')));
 const v = verifyRecords({
   coKetLuan: true,

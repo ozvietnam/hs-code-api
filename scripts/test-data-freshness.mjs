@@ -3,7 +3,7 @@ import './test-isolate-data.mjs';
 /** Tính trạng thái độ mới dữ liệu + cảnh báo VAT hết hạn (thời gian cố định, không phụ thuộc hôm nay). */
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const { evaluateSource, freshnessReport } = require('../lib/data-freshness');
+const { evaluateSource, freshnessReport, legalDocsInfo } = require('../lib/data-freshness');
 
 let pass = 0, fail = 0;
 const check = (n, c, d) => { c ? (pass++, console.log(`PASS ${n}`)) : (fail++, console.log(`FAIL ${n}`, d === undefined ? '' : JSON.stringify(d))); };
@@ -14,6 +14,11 @@ check('quá hạn đối chiếu → DUE', evaluateSource('x', { lastCheckedAt: 
 check('sắp hết hiệu lực → EXPIRING', evaluateSource('x', { validUntil: '2026-12-31', warnBeforeDays: 60 }, at('2026-12-01')).status === 'EXPIRING');
 check('hết hiệu lực → EXPIRED', evaluateSource('x', { validUntil: '2026-12-31' }, at('2027-01-02')).status === 'EXPIRED');
 const rep = freshnessReport();
+const ldChecked = rep.sources.find((s) => s.key === 'legalDocs')?.lastCheckedAt;
+const ld = legalDocsInfo(at(ldChecked));
+check('legalDocsInfo trong hạn → OK, không noteVi, đếm văn bản', ld && ld.freshness === 'OK' && !ld.noteVi && ld.totalDocs > 0, ld);
+const ldDue = legalDocsInfo(new Date(at(ldChecked).getTime() + 400 * 864e5));
+check('legalDocsInfo quá hạn → DUE + noteVi', ldDue && ldDue.freshness === 'DUE' && /kiểm tra lại/.test(ldDue.noteVi), ldDue);
 check('manifest có tariff + vatReduction', ['tariff', 'vatReduction'].every((k) => rep.sources.some((s) => s.key === k)));
 
 // VAT: sau 31/12/2026 dòng đang giảm phải báo hết hạn, không im lặng báo 8%.
