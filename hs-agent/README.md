@@ -8,7 +8,7 @@ hướng dẫn vận hành. Chỉ dùng Node ≥ 22, không có dependency ngoà
 - Agent **không ghi `main`**: `lib/workspace.mjs` chỉ push `refs/heads/agent/<job>/<ngày>`, tên khác bị từ chối ngay trong code. Branch protection trên GitHub là lớp chặn thứ hai.
 - Agent **chỉ commit tệp khớp `writeAllow`** trong `config/jobs.json`. Script nào sửa tệp đã theo dõi ngoài vùng → hủy ship.
 - **Cửa kiểm chạy trước PR**; cửa chặn đỏ thì không có PR.
-- Bản ghi tiền lệ phải qua **kiểm tất định** (`lib/extract.mjs`): mã HS xuất hiện nguyên văn trong toàn văn, ≥ 60 % từ mô tả có trong toàn văn, số hiệu/ngày lấy từ tiêu đề nguồn, qua lọc riêng tư của repo.
+- Bản ghi tiền lệ phải qua **kiểm tất định** (`lib/extract.mjs`): mã HS xuất hiện nguyên văn trong toàn văn, ≥ 60 % từ mô tả có trong toàn văn, số hiệu/ngày lấy từ tiêu đề nguồn, qua lọc riêng tư của repo. Trường cần lấy và cách đọc một thông báo: [`docs/huong-dan-trich-tb-tchq.md`](../docs/huong-dan-trich-tb-tchq.md).
 - **Ngân sách cứng** mỗi lần chạy (`config/jobs.json`) và mỗi provider mỗi ngày (`config/providers.json`).
 - **Công tắc tắt**: `touch /srv/hs-agent/STOP` → mọi job bỏ qua. Gỡ tệp để chạy lại.
 
