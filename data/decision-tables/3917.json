@@ -1,0 +1,787 @@
+{
+  "heading": "3917",
+  "titleVi": "Ống, ống dẫn, ống mềm và phụ kiện nối, bằng plastic (39.17)",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "tubeKind",
+      "type": "enum",
+      "labelVi": "Loại ống",
+      "questionVi": "Sản phẩm thuộc loại nào: ống/rống cứng, ống mềm/dây dẫn, vỏ xúc xích, phụ kiện nối (cút/bích/khớp), hay thanh/hồп profile?",
+      "domain": [
+        "rigidTube",
+        "hose",
+        "sausage",
+        "fitting",
+        "profile"
+      ],
+      "detect": {
+        "rigidTube": [
+          "ống nhựa",
+          "ống cứng",
+          "ống dẫn cứng",
+          "ống PVC cứng",
+          "ống PE",
+          "ống PP",
+          "ống ABS",
+          "ống silicon cứng",
+          "ống nhựa cứng",
+          "ống luồn dây",
+          "ống nước nhựa",
+          "ống thoát nước nhựa",
+          "rống nhựa",
+          "ống nhựa pu"
+        ],
+        "hose": [
+          "dây dẫn",
+          "dây khí",
+          "dây hơi",
+          "ống mềm",
+          "dây nước",
+          "dây tưới",
+          "dây xịt",
+          "dây cấp nước",
+          "ống khí",
+          "dây khí nén",
+          "dây dẫn khí",
+          "dây sen vòi sen",
+          "dây phun",
+          "cuộn dây hơi",
+          "ống dẫn mềm"
+        ],
+        "sausage": [
+          "vỏ xúc xích",
+          "vỏ giăm bông",
+          "vỏ cá"
+        ],
+        "fitting": [
+          "cút nối",
+          "đầu nối",
+          "khớp nối",
+          "bích nối",
+          "co nối",
+          "tê nối",
+          "van nối",
+          "chếnh nối",
+          "bộ nối",
+          "đầu nối nhanh",
+          "đầu nối khí",
+          "đầu nối ống",
+          "cút nối khí",
+          "cút nối nhanh",
+          "khớp nối ống",
+          "đầu nối góc vuông"
+        ],
+        "profile": [
+          "thanh nhựa",
+          "hồп profile nhựa",
+          "thanh nhựa định hình",
+          "profile nhựa",
+          "thanh cửa nhựa",
+          "thanh rèm nhựa"
+        ]
+      }
+    },
+    {
+      "attribute": "materialKind",
+      "type": "enum",
+      "labelVi": "Loại nhựa",
+      "questionVi": "Sản phẩm bằng loại nhựa nào?",
+      "domain": [
+        "PE",
+        "PP",
+        "PVC",
+        "ABS",
+        "silicone",
+        "polycondensation",
+        "phenolic",
+        "amino",
+        "nitrocellulose",
+        "protein",
+        "other"
+      ],
+      "detect": {
+        "PE": [
+          "PE",
+          "polyetylen",
+          "polyethylene",
+          "nhựa PE",
+          "etylene polymer",
+          "hdpe",
+          "ldpe",
+          "nhựa polyethylene",
+          "nhựa dẻo PE"
+        ],
+        "PP": [
+          "PP",
+          "polypropylen",
+          "polypropylene",
+          "nhựa PP",
+          "propylene polymer",
+          "nhựa polypropylene"
+        ],
+        "PVC": [
+          "PVC",
+          "polyvinyl chlorid",
+          "polyvinylchloride",
+          "nhựa PVC",
+          "vinyl chlorid polymer",
+          "nhựa vinyl"
+        ],
+        "ABS": [
+          "ABS",
+          "acrylonitril butadien styren",
+          "nhựa ABS",
+          "acrylonitrile butadiene styrene"
+        ],
+        "silicone": [
+          "silicone",
+          "silicagel",
+          "nhựa silicone",
+          "硅胶",
+          "silicone rubber"
+        ],
+        "polycondensation": [
+          "polyme trùng ngưng",
+          "polyester",
+          "polyamit",
+          "polycarbonate",
+          "nhựa PU",
+          "PU",
+          "polyurethan",
+          "polymer trùng ngưng"
+        ],
+        "phenolic": [
+          "phenolic",
+          "nhựa phenolic",
+          "nhựa phenolic formaldehyde",
+          "bakelite",
+          "resolic"
+        ],
+        "amino": [
+          "amino",
+          "nhựa amino",
+          "nhựa melamin",
+          "melamin",
+          "urea formaldehyde"
+        ],
+        "nitrocellulose": [
+          "nitrocellulose",
+          "nitrat xenlulo",
+          "cellulose nitrate",
+          "xenlulo nitrat"
+        ],
+        "protein": [
+          "protein",
+          "protein động vật",
+          "gelatin"
+        ],
+        "other": [
+          "nhựa dẻo",
+          "nhựa tổng hợp",
+          "nhựa khác",
+          "nhựa polymer",
+          "nhựa plastic",
+          "nhựa PU"
+        ]
+      }
+    },
+    {
+      "attribute": "isReinforced",
+      "type": "enum",
+      "labelVi": "Có gia cố không?",
+      "questionVi": "Ống/dây có được gia cố bằng vật liệu khác (sợi, lưới, thép gital) không?",
+      "domain": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "detect": {
+        "yes": [
+          "gia cố",
+          "có gia cố",
+          "gital",
+          "sợi",
+          "lưới",
+          "bọc thép",
+          "giat cường",
+          "cường lực",
+          "lõi thép",
+          "thép gital"
+        ],
+        "no": [
+          "không gia cố",
+          "không có gia cố",
+          "chưa gia cố",
+          "đã gia cố",
+          "không"
+        ]
+      }
+    },
+    {
+      "attribute": "isSurfaceWorked",
+      "type": "enum",
+      "labelVi": "Có gia công bề mặt đặc biệt?",
+      "questionVi": "Ống có được gia công bề mặt đặc biệt hơn mức thông thường không?",
+      "domain": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "detect": {
+        "yes": [
+          "gia công bề mặt",
+          "bề mặt đặc biệt",
+          "printed",
+          "tráng",
+          "phủ"
+        ],
+        "no": [
+          "bề mặt thường",
+          "bình thường"
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r01",
+      "priority": 95,
+      "when": {
+        "tubeKind": "sausage"
+      },
+      "hs": "39173210",
+      "reasonVi": "Vỏ xúc xích hoặc vỏ giăm bông → 39173210",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r02",
+      "priority": 90,
+      "when": {
+        "tubeKind": "fitting"
+      },
+      "hs": "39174000",
+      "reasonVi": "Phụ kiện nối (cút, đầu nối, khớp nối, bích) → 39174000",
+      "source": "Biểu thuế NK VN 2026 + oz-gold 16 entries"
+    },
+    {
+      "id": "r03",
+      "priority": 88,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "protein"
+      },
+      "hs": "39171010",
+      "reasonVi": "Ống/rống từ protein đã làm cứng → 39171010",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r04",
+      "priority": 87,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "other"
+      },
+      "hs": "39171090",
+      "reasonVi": "Ống từ protein đã làm cứng, loại khác → 39171090",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r10",
+      "priority": 80,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "PE"
+      },
+      "hs": "39172100",
+      "reasonVi": "Ống cứng bằng polyme từ etylen (PE) → 39172100",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r11",
+      "priority": 80,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "PP"
+      },
+      "hs": "39172200",
+      "reasonVi": "Ống cứng bằng polyme từ propylen (PP) → 39172200",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r12",
+      "priority": 80,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "PVC"
+      },
+      "hs": "39172300",
+      "reasonVi": "Ống cứng bằng polyme từ vinyl clorua (PVC) → 39172300",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r20",
+      "priority": 75,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "ABS"
+      },
+      "hs": "39172911",
+      "reasonVi": "Ống cứng từ polyme trùng hợp khác (ABS) → 39172911",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r21",
+      "priority": 75,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "other"
+      },
+      "hs": "39172919",
+      "reasonVi": "Ống cứng từ polyme trùng hợp khác, loại khác → 39172919",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r30",
+      "priority": 73,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "phenolic"
+      },
+      "hs": "39172922",
+      "reasonVi": "Ống cứng từ nhựa phenolic → 39172922",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r31",
+      "priority": 73,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "amino"
+      },
+      "hs": "39172923",
+      "reasonVi": "Ống cứng từ nhựa amino → 39172923",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r32",
+      "priority": 73,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "nitrocellulose"
+      },
+      "hs": "39172924",
+      "reasonVi": "Ống cứng từ nitrat xenlulo → 39172924",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r33",
+      "priority": 73,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "polycondensation"
+      },
+      "hs": "39172925",
+      "reasonVi": "Ống cứng từ polyme trùng ngưng hoặc tái sắp xếp → 39172925",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r34",
+      "priority": 73,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "silicone"
+      },
+      "hs": "39172925",
+      "reasonVi": "Ống cứng silicone (polycondensation) → 39172925",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r35",
+      "priority": 70,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "other"
+      },
+      "hs": "39172929",
+      "reasonVi": "Ống cứng từ vật liệu khác → 39172929",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r40",
+      "priority": 85,
+      "when": {
+        "tubeKind": "hose",
+        "isReinforced": "yes",
+        "materialKind": "PE"
+      },
+      "hs": "39173111",
+      "reasonVi": "Ống mềm gia cố bằng PE → 39173111",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r41",
+      "priority": 85,
+      "when": {
+        "tubeKind": "hose",
+        "isReinforced": "yes",
+        "materialKind": "phenolic"
+      },
+      "hs": "39173112",
+      "reasonVi": "Ống mềm gia cố từ phenolic → 39173112",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r42",
+      "priority": 85,
+      "when": {
+        "tubeKind": "hose",
+        "isReinforced": "yes",
+        "materialKind": "other"
+      },
+      "hs": "39173119",
+      "reasonVi": "Ống mềm gia cố từ polyme trùng hợp khác → 39173119",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r43",
+      "priority": 85,
+      "when": {
+        "tubeKind": "hose",
+        "isReinforced": "yes",
+        "materialKind": "polycondensation"
+      },
+      "hs": "39173123",
+      "reasonVi": "Ống mềm gia cố từ polyme trùng ngưng → 39173123",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r44",
+      "priority": 85,
+      "when": {
+        "tubeKind": "hose",
+        "isReinforced": "yes",
+        "materialKind": "silicone"
+      },
+      "hs": "39173124",
+      "reasonVi": "Ống mềm gia cố từ sợi lưu hóa → 39173124",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r45",
+      "priority": 85,
+      "when": {
+        "tubeKind": "hose",
+        "isReinforced": "yes",
+        "materialKind": "amino"
+      },
+      "hs": "39173125",
+      "reasonVi": "Ống mềm gia cố từ nhựa amino/phenolic → 39173125",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r46",
+      "priority": 80,
+      "when": {
+        "tubeKind": "hose",
+        "isReinforced": "yes",
+        "materialKind": "other"
+      },
+      "hs": "39173129",
+      "reasonVi": "Ống mềm gia cố, loại khác → 39173129",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r50",
+      "priority": 82,
+      "when": {
+        "tubeKind": "hose",
+        "isReinforced": "no",
+        "materialKind": "PVC"
+      },
+      "hs": "39173220",
+      "reasonVi": "Ống nhựa nhiệt dẻo dùng cho bếp ga (PVC) → 39173220",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r51",
+      "priority": 80,
+      "when": {
+        "tubeKind": "hose",
+        "isReinforced": "no",
+        "materialKind": "PE"
+      },
+      "hs": "39173291",
+      "reasonVi": "Ống mềm không gia cố bằng PE → 39173291",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r52",
+      "priority": 80,
+      "when": {
+        "tubeKind": "hose",
+        "isReinforced": "no",
+        "materialKind": "phenolic"
+      },
+      "hs": "39173292",
+      "reasonVi": "Ống mềm không gia cố từ phenolic → 39173292",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r53",
+      "priority": 80,
+      "when": {
+        "tubeKind": "hose",
+        "isReinforced": "no",
+        "materialKind": "polycondensation"
+      },
+      "hs": "39173293",
+      "reasonVi": "Ống mềm không gia cố từ polyme trùng ngưng → 39173293",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r54",
+      "priority": 80,
+      "when": {
+        "tubeKind": "hose",
+        "isReinforced": "no",
+        "materialKind": "amino"
+      },
+      "hs": "39173294",
+      "reasonVi": "Ống mềm không gia cố từ nhựa amino → 39173294",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r55",
+      "priority": 80,
+      "when": {
+        "tubeKind": "hose",
+        "isReinforced": "no",
+        "materialKind": "silicone"
+      },
+      "hs": "39173295",
+      "reasonVi": "Ống mềm silicone không gia cố → 39173295",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r56",
+      "priority": 78,
+      "when": {
+        "tubeKind": "hose",
+        "isReinforced": "no",
+        "materialKind": "other"
+      },
+      "hs": "39173299",
+      "reasonVi": "Ống mềm không gia cố, loại khác → 39173299",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r60",
+      "priority": 83,
+      "when": {
+        "tubeKind": "hose",
+        "isSurfaceWorked": "yes"
+      },
+      "hs": "39173310",
+      "reasonVi": "Ống mềm được gia công bề mặt đặc biệt → 39173310",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r61",
+      "priority": 77,
+      "when": {
+        "tubeKind": "hose"
+      },
+      "hs": "39173390",
+      "reasonVi": "Ống mềm loại khác → 39173390",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r70",
+      "priority": 70,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "PE"
+      },
+      "hs": "39173911",
+      "reasonVi": "Thanh/hồп profile từ PE → 39173911",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r71",
+      "priority": 70,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "phenolic"
+      },
+      "hs": "39173912",
+      "reasonVi": "Thanh/hồп profile từ phenolic → 39173912",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r72",
+      "priority": 70,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "other"
+      },
+      "hs": "39173919",
+      "reasonVi": "Thanh/hồп profile từ polyme trùng hợp khác → 39173919",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r73",
+      "priority": 70,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "polycondensation"
+      },
+      "hs": "39173991",
+      "reasonVi": "Thanh/hồп profile từ polyme trùng ngưng → 39173991",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r74",
+      "priority": 70,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "amino"
+      },
+      "hs": "39173992",
+      "reasonVi": "Thanh/hồп profile từ nhựa amino → 39173992",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r75",
+      "priority": 70,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "nitrocellulose"
+      },
+      "hs": "39173993",
+      "reasonVi": "Thanh/hồп profile từ nitrat xenlulo → 39173993",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r76",
+      "priority": 70,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "silicone"
+      },
+      "hs": "39173994",
+      "reasonVi": "Thanh/hồп profile từ silicone → 39173994",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r77",
+      "priority": 68,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "other"
+      },
+      "hs": "39173999",
+      "reasonVi": "Thanh/hồп profile, loại khác → 39173999",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r90",
+      "priority": 50,
+      "when": {
+        "tubeKind": "hose",
+        "isReinforced": "unknown",
+        "materialKind": "PE"
+      },
+      "hs": "39173111",
+      "reasonVi": "Dây dẫn khí gia cố (PE, ước định) → 39173111",
+      "source": "oz-gold: dây khí, ống dẫn khí"
+    },
+    {
+      "id": "r91",
+      "priority": 50,
+      "when": {
+        "tubeKind": "hose",
+        "isReinforced": "unknown",
+        "materialKind": "other"
+      },
+      "hs": "39173390",
+      "reasonVi": "Dây dẫn mềm loại khác → 39173390",
+      "source": "oz-gold: dây dẫn khí, ống dẫn"
+    },
+    {
+      "id": "r22",
+      "priority": 75,
+      "when": {
+        "tubeKind": "rigidTube",
+        "materialKind": "other"
+      },
+      "hs": "39172921",
+      "reasonVi": "Ống cứng từ polyme trùng hợp khác (không SEN) → 39172921",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r47",
+      "priority": 85,
+      "when": {
+        "tubeKind": "hose",
+        "isReinforced": "yes",
+        "materialKind": "other"
+      },
+      "hs": "39173121",
+      "reasonVi": "Ống mềm gia cố từ polyme trùng hợp (không SEN) → 39173121",
+      "source": "Biểu thuế NK VN 2026"
+    }
+  ],
+  "sourceVi": "Biểu thuế NK VN 2026 (40 mã 8 số). Oz-gold 32 entries (16×39174000, 5×39173999, 3×39173299, 3×39173911, 2×39173399, 2×39173993, 1×39172919).",
+  "essenceTestVi": "Phân biệt: (1) vỏ xúc xích → 39173210; (2) phụ kiện nối → 39174000; (3) ống cứng theo polymer (PE→391721, PP→391722, PVC→391723, ABS→391729, phenolic→391729, amino→391729…); (4) ống mềm gia cố theo polymer; (5) ống mềm không gia cố theo polymer; (6) ống đã gia công bề mặt → 391733.",
+  "leaves": {},
+  "hitPolicy": "FIRST",
+  "attributes": {
+    "tubeKind": {
+      "type": "enum",
+      "labelVi": "Loại ống",
+      "domain": [
+        "rigidTube",
+        "hose",
+        "sausage",
+        "fitting",
+        "profile"
+      ]
+    },
+    "materialKind": {
+      "type": "enum",
+      "labelVi": "Loại nhựa",
+      "domain": [
+        "PE",
+        "PP",
+        "PVC",
+        "ABS",
+        "silicone",
+        "polycondensation",
+        "phenolic",
+        "amino",
+        "nitrocellulose",
+        "protein",
+        "other"
+      ]
+    },
+    "isReinforced": {
+      "type": "enum",
+      "labelVi": "Có gia cố không?",
+      "domain": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    },
+    "isSurfaceWorked": {
+      "type": "enum",
+      "labelVi": "Có gia công bề mặt đặc biệt?",
+      "domain": [
+        "yes",
+        "no",
+        "unknown"
+      ]
+    }
+  }
+}
