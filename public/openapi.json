@@ -383,6 +383,164 @@
                       "type": "string",
                       "description": "Cảnh báo khi dữ liệu chính sách trống"
                     },
+                    "policyBasisReview": {
+                      "type": "object",
+                      "description": "Chỉ có khi ô chính sách còn dẫn danh mục đã/đang bị thay theo khung KTCN 2026 (NĐ 37/2026). KHÔNG đổi policyByHs — báo để đối chiếu. Xem /api/ktcn-regime.",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "OUTDATED_BASIS",
+                            "NEEDS_REVIEW"
+                          ]
+                        },
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "description": "Mã quy tắc (plhq:<số hiệu> khi lấy từ sổ cộng đồng)"
+                              },
+                              "labelVi": {
+                                "type": "string",
+                                "description": "Căn cứ cũ"
+                              },
+                              "source": {
+                                "type": "string",
+                                "enum": [
+                                  "hs-code-api",
+                                  "oz-wiki-plhq"
+                                ],
+                                "description": "hs-code-api = quy tắc KTCN 2026; oz-wiki-plhq = sổ đăng ký văn bản cộng đồng"
+                              },
+                              "relation": {
+                                "type": "string",
+                                "enum": [
+                                  "REPLACED",
+                                  "LIKELY_REPLACED",
+                                  "REVIEW",
+                                  "UPCOMING",
+                                  "EXPIRED",
+                                  "SUSPENDED"
+                                ]
+                              },
+                              "url": {
+                                "type": "string",
+                                "description": "Trang văn bản trong sổ cộng đồng (nếu có)"
+                              },
+                              "confidence": {
+                                "type": "string",
+                                "enum": [
+                                  "HIGH",
+                                  "MEDIUM",
+                                  "LOW"
+                                ]
+                              },
+                              "effectiveFrom": {
+                                "type": "string",
+                                "description": "Ngày văn bản mới có hiệu lực"
+                              },
+                              "replacedBy": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object"
+                                }
+                              },
+                              "noteVi": {
+                                "type": "string",
+                                "description": "Hướng dẫn đối chiếu"
+                              }
+                            }
+                          }
+                        },
+                        "noteVi": {
+                          "type": "string",
+                          "description": "Tóm tắt cho người khai"
+                        },
+                        "asOf": {
+                          "type": "string",
+                          "description": "Ngày đánh giá"
+                        },
+                        "dataVersion": {
+                          "type": "string",
+                          "description": "Phiên bản data/ktcn-regime-2026.json"
+                        },
+                        "registryVersion": {
+                          "type": "string",
+                          "description": "Phiên bản sổ đăng ký cộng đồng oz-wiki-plhq"
+                        }
+                      }
+                    },
+                    "legalBasisRegistry": {
+                      "type": "object",
+                      "description": "Hiệu lực từng văn bản mà cột chính sách dẫn, theo sổ đăng ký cộng đồng oz-wiki-plhq (CC BY 4.0). hieuLucDaDoiChieu=false: chưa đối chiếu nguồn A — hiển thị như cảnh báo.",
+                      "properties": {
+                        "citations": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "cited": {
+                                "type": "string",
+                                "description": "Số hiệu như viết trong cột chính sách"
+                              },
+                              "found": {
+                                "type": "boolean"
+                              },
+                              "soHieu": {
+                                "type": "string",
+                                "description": "Số hiệu chuẩn"
+                              },
+                              "ten": {
+                                "type": "string",
+                                "description": "Tên văn bản"
+                              },
+                              "tinhTrang": {
+                                "type": "string",
+                                "enum": [
+                                  "CON_HIEU_LUC",
+                                  "HET_HIEU_LUC",
+                                  "HET_HIEU_LUC_MOT_PHAN",
+                                  "TAM_NGUNG_HIEU_LUC",
+                                  "CHUA_CO_HIEU_LUC",
+                                  "CHUA_XAC_MINH"
+                                ]
+                              },
+                              "hetHieuLucTu": {
+                                "type": "string",
+                                "description": "Ngày hết hiệu lực"
+                              },
+                              "biThayTheBoi": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "hieuLucDaDoiChieu": {
+                                "type": "boolean"
+                              },
+                              "url": {
+                                "type": "string",
+                                "description": "Trang văn bản trong sổ cộng đồng"
+                              }
+                            }
+                          }
+                        },
+                        "counts": {
+                          "type": "object"
+                        },
+                        "registryVersion": {
+                          "type": "string",
+                          "description": "Phiên bản sổ"
+                        },
+                        "syncedAt": {
+                          "type": "string",
+                          "description": "Ngày đồng bộ"
+                        }
+                      }
+                    },
                     "mappedHs": {
                       "type": "object",
                       "description": "Chương 98: mã hàng tương ứng tại Mục I"
@@ -2007,6 +2165,50 @@
         "operationId": "dataset_attribute_synonyms",
         "summary": "Từ điển nhãn thông số tiếng Trung → khóa chuẩn (dữ liệu mở CC BY 4.0)",
         "description": "Rewrite tới /api/dataset?resource=attribute_synonyms",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ktcn-regime": {
+      "get": {
+        "operationId": "dataset_ktcn_regime",
+        "summary": "Khung kiểm tra chuyên ngành 2026 (NĐ 37/2026, 3 mức rủi ro): danh mục mới từng bộ + căn cứ cũ đã bị thay",
+        "description": "Rewrite tới /api/dataset?resource=ktcn_regime",
         "tags": [
           "Tra cứu"
         ],
