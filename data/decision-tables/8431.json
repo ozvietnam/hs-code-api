@@ -1,0 +1,573 @@
+{
+  "heading": "8431",
+  "titleVi": "Bộ phận máy nâng, chuyển, xếp dỡ; bộ phận máy khoan đất",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "8431 là bộ phận/Phụ kiện dùng cho: (1) máy nâng/hạ 8425, (2) thang máy/vận thăng 8428, (3) băng tải 8428, (4) cần trục/cẩu 8426, (5) máy khoan đất 8430. Nếu là bộ phận máy khoan đất → 8431.43. Nếu thuộc vận thăng/thang máy 8428 → 8431.31. Nếu thuộc cẩu/puli 8425/8426 → 8431.10. Nếu thuộc băng tải 8428 → 8431.39. Các trường hợp khác → phân nhóm tương ứng.",
+  "sourceVi": "Biểu thuế 2026 nhóm 8431 — 22 lá; oz-gold 39 entries (843110/131/139/141/143/149).",
+  "hitPolicy": "FIRST",
+  "attributes": {
+    "partKind": {
+      "type": "enum",
+      "labelVi": "Loại bộ phận",
+      "domain": [
+        "hoistPart",
+        "elevatorPart",
+        "conveyorPart",
+        "cranePart",
+        "drillPart",
+        "otherExcavate",
+        "bucketBlade"
+      ],
+      "detect": {
+        "hoistPart": [
+          "tang cuốn",
+          "tời điện",
+          "ròng rọc",
+          "cuốn cáp",
+          "cáp nâng",
+          "bộ ròng rọc",
+          "palang",
+          "hoist",
+          "winch",
+          "tời",
+          "843110",
+          "8431.10"
+        ],
+        "elevatorPart": [
+          "vận thăng",
+          "thang máy",
+          "thiết bị vận thăng",
+          "phòng rơi",
+          "con lăn vận thăng",
+          "con lăn đơn",
+          "con lăn dẫn hướng",
+          "vận thăng lồng",
+          "elevator",
+          "con lăn ren cấy",
+          "con lăn xuyên trục"
+        ],
+        "conveyorPart": [
+          "băng tải",
+          "conveyor",
+          "băng tải",
+          "con lăn băng",
+          "con lăn công nghiệp",
+          "con lăn tiếp điện",
+          "con lăn nhông",
+          "con lăn đỡ cáp"
+        ],
+        "cranePart": [
+          "cẩu tháp",
+          "cần trục",
+          "bầu trợ lực",
+          "phanh thủy lực cẩu",
+          "giới hạn hành trình",
+          "bàn thao tác cẩu",
+          "con lăn đỡ xích",
+          "bánh tỳ cẩu"
+        ],
+        "drillPart": [
+          "máy khoan đất",
+          "khoan sâu",
+          "cần khoan",
+          "đầu khoan",
+          "đầu động lực",
+          "gầu khoan",
+          "ống lấy mẫu",
+          "tạ SPT",
+          "bạc đồng trục",
+          "ống lõi cần khoan",
+          "ống lục giác",
+          "đầu rồng",
+          "đầu chuyển tiếp",
+          "kẹp giữ cần khoan",
+          "cần chủ đạo",
+          "gia mốc",
+          "đầu đực gia mốc",
+          "bộ phận khoan",
+          "máy khoan tự hành",
+          "máy khoan đất đá",
+          "dàn khoan"
+        ],
+        "otherExcavate": [
+          "máy ủi",
+          "máy cạo",
+          "máy san",
+          "xe lu",
+          "bánh sao",
+          "lưỡi cắt",
+          "mũi lưỡi",
+          "bộ phận máy xúc",
+          "843149",
+          "8431.49"
+        ],
+        "bucketBlade": [
+          "lưỡi máy ủi",
+          "lưỡi cắt máy cào",
+          "lưỡi thẳng",
+          "lưỡi nghiêng",
+          "843142",
+          "8431.42"
+        ]
+      }
+    },
+    "machineGroup": {
+      "type": "enum",
+      "labelVi": "Nhóm máy gốc",
+      "domain": [
+        "hoist8425",
+        "elevator8428",
+        "conveyor8428",
+        "crane8426",
+        "drill8430",
+        "other"
+      ],
+      "detect": {
+        "hoist8425": [
+          "8425",
+          "tời",
+          "ròng rọc",
+          "palang",
+          "nâng hạ",
+          "843110"
+        ],
+        "elevator8428": [
+          "8428",
+          "vận thăng",
+          "thang máy",
+          "elevator",
+          "con lăn 8428",
+          "843131"
+        ],
+        "conveyor8428": [
+          "8428",
+          "băng tải",
+          "conveyor",
+          "843139"
+        ],
+        "crane8426": [
+          "8426",
+          "cẩu",
+          "cần trục",
+          "cẩu tháp",
+          "843141"
+        ],
+        "drill8430": [
+          "8430",
+          "khoan",
+          "đào",
+          "843143",
+          "cần khoan",
+          "dàn khoan"
+        ],
+        "other": []
+      }
+    },
+    "materialKind": {
+      "type": "enum",
+      "labelVi": "Chất liệu",
+      "domain": [
+        "steel",
+        "stainlessSteel",
+        "iron",
+        "castIron",
+        "other"
+      ],
+      "detect": {
+        "stainlessSteel": [
+          "thép không gỉ",
+          "inox",
+          "stainless"
+        ],
+        "steel": [
+          "thép",
+          "sắt",
+          "sắt mạ",
+          "thép ko hợp kim",
+          "metal"
+        ],
+        "castIron": [
+          "gang",
+          "cast iron"
+        ],
+        "iron": [
+          "sắt",
+          "thép carbon"
+        ],
+        "other": []
+      }
+    }
+  },
+  "inputs": [
+    {
+      "attribute": "partKind",
+      "type": "enum",
+      "labelVi": "Loại bộ phận",
+      "questionVi": "Bộ phận thuộc loại nào?",
+      "domain": [
+        "hoistPart",
+        "elevatorPart",
+        "conveyorPart",
+        "cranePart",
+        "drillPart",
+        "otherExcavate",
+        "bucketBlade"
+      ]
+    },
+    {
+      "attribute": "machineGroup",
+      "type": "enum",
+      "labelVi": "Nhóm máy gốc",
+      "questionVi": "Bộ phận thuộc máy nào?",
+      "domain": [
+        "hoist8425",
+        "elevator8428",
+        "conveyor8428",
+        "crane8426",
+        "drill8430",
+        "other"
+      ]
+    },
+    {
+      "attribute": "materialKind",
+      "type": "enum",
+      "labelVi": "Chất liệu",
+      "questionVi": "Bộ phận làm bằng gì?",
+      "domain": [
+        "steel",
+        "stainlessSteel",
+        "iron",
+        "castIron",
+        "other"
+      ]
+    }
+  ],
+  "inputAttributes": [
+    "partKind",
+    "machineGroup",
+    "materialKind"
+  ],
+  "rules": [
+    {
+      "id": "r-843110-tang-cuon",
+      "priority": 90,
+      "when": {
+        "partKind": "hoistPart"
+      },
+      "hs": "84311013",
+      "gir": "GIR 6",
+      "reasonVi": "Tang cuốn cáp, bộ phận cho tời/ròng rọc nâng hạ 8425 — thuộc 8431.10.13.",
+      "source": "Biểu thuế 2026 dòng 8431.10.13; oz: tang cuốn cáp."
+    },
+    {
+      "id": "r-843110-phanh-thuy-luc",
+      "priority": 85,
+      "when": {
+        "partKind": "hoistPart"
+      },
+      "hs": "84311013",
+      "gir": "GIR 6",
+      "reasonVi": "Phanh thủy lực cho tời điện 8425 — thuộc 8431.10.13.",
+      "source": "Biểu thuế 2026 dòng 8431.10.13; oz: phanh thủy lực."
+    },
+    {
+      "id": "r-843110-other",
+      "priority": 80,
+      "when": {
+        "partKind": "hoistPart"
+      },
+      "hs": "84311019",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác cho tời/ròng rọc 8425 — thuộc 8431.10.19.",
+      "source": "Biểu thuế 2026 dòng 8431.10.19"
+    },
+    {
+      "id": "r-843110-con-lan-cap",
+      "priority": 80,
+      "when": {
+        "partKind": "hoistPart"
+      },
+      "hs": "84311029",
+      "gir": "GIR 6",
+      "reasonVi": "Con lăn đỡ cáp, bộ phận cho ròng rọc nâng hạ — thuộc 8431.10.29.",
+      "source": "Biểu thuế 2026 dòng 8431.10.29; oz: con lăn đỡ cáp."
+    },
+    {
+      "id": "r-843120-forklift",
+      "priority": 80,
+      "when": {
+        "machineGroup": "hoist8425"
+      },
+      "hs": "84312010",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận cho xe nâng/pa lăng điện 8427 — thuộc 8431.20.10.",
+      "source": "Biểu thuế 2026 dòng 8431.20.10"
+    },
+    {
+      "id": "r-843120-other",
+      "priority": 10,
+      "when": {
+        "machineGroup": "hoist8425"
+      },
+      "hs": "84312090",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác cho xe nâng/pa lăng — thuộc 8431.20.90.",
+      "source": "Biểu thuế 2026 dòng 8431.20.90"
+    },
+    {
+      "id": "r-843131-phong-roi",
+      "priority": 90,
+      "when": {
+        "partKind": "elevatorPart"
+      },
+      "hs": "84313110",
+      "gir": "GIR 6",
+      "reasonVi": "Phòng rơi cho thiết bị vận thăng lồng 8428 — thuộc 8431.31.10.",
+      "source": "Biểu thuế 2026 dòng 8431.31.10; oz: phòng rơi, bộ phòng rơi."
+    },
+    {
+      "id": "r-843131-con-lan",
+      "priority": 85,
+      "when": {
+        "partKind": "elevatorPart"
+      },
+      "hs": "84313110",
+      "gir": "GIR 6",
+      "reasonVi": "Con lăn cho thiết bị vận thăng lồng 8428 — thuộc 8431.31.10.",
+      "source": "Biểu thuế 2026 dòng 8431.31.10; oz: con lăn vận thăng, con lăn đơn, con lăn dẫn hướng, con lăn ren cấy, con lăn xuyên trục."
+    },
+    {
+      "id": "r-843131-other-elevator",
+      "priority": 10,
+      "when": {
+        "partKind": "elevatorPart"
+      },
+      "hs": "84313120",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác cho thang máy/vận thăng 8428 — thuộc 8431.31.20.",
+      "source": "Biểu thuế 2026 dòng 8431.31.20"
+    },
+    {
+      "id": "r-843139-con-lan-conveyor",
+      "priority": 90,
+      "when": {
+        "partKind": "conveyorPart"
+      },
+      "hs": "84313990",
+      "gir": "GIR 6",
+      "reasonVi": "Con lăn băng tải/công nghiệp — bộ phận cho băng tải 8428, thuộc 8431.39.90.",
+      "source": "Biểu thuế 2026 dòng 8431.39.90; oz: con lăn thép công nghiệp, con lăn tiếp điện, con lăn nhông tỳ."
+    },
+    {
+      "id": "r-843139-con-lan-vithang",
+      "priority": 85,
+      "when": {
+        "partKind": "elevatorPart"
+      },
+      "hs": "84313990",
+      "gir": "GIR 6",
+      "reasonVi": "Con lăn cho thiết bị vận thăng, băng tải — thuộc 8431.39.90.",
+      "source": "Biểu thuế 2026 dòng 8431.39.90; oz: con lăn dẫn hướng vận thăng lồng."
+    },
+    {
+      "id": "r-843139-roi-phanh",
+      "priority": 80,
+      "when": {
+        "partKind": "conveyorPart"
+      },
+      "hs": "84313990",
+      "gir": "GIR 6",
+      "reasonVi": "Đĩa phanh, phòng rơi cho vận thăng/băng tải — thuộc 8431.39.90.",
+      "source": "Biểu thuế 2026 dòng 8431.39.90; oz: đĩa phanh, phòng rơi, tay chắn."
+    },
+    {
+      "id": "r-843139-other-conveyor",
+      "priority": 10,
+      "when": {
+        "partKind": "conveyorPart"
+      },
+      "hs": "84313990",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác cho băng tải 8428 — thuộc 8431.39.90.",
+      "source": "Biểu thuế 2026 dòng 8431.39.90"
+    },
+    {
+      "id": "r-843139-ofspecific",
+      "priority": 80,
+      "when": {
+        "machineGroup": "conveyor8428"
+      },
+      "hs": "84313910",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận cho máy nâng liên tục 8428.20/32/33 — thuộc 8431.39.10.",
+      "source": "Biểu thuế 2026 dòng 8431.39.10"
+    },
+    {
+      "id": "r-843141-fork",
+      "priority": 80,
+      "when": {
+        "machineGroup": "crane8426"
+      },
+      "hs": "84314110",
+      "gir": "GIR 6",
+      "reasonVi": "Cần/càng nâng cho cần trục 8426 — thuộc 8431.41.10.",
+      "source": "Biểu thuế 2026 dòng 8431.41.10"
+    },
+    {
+      "id": "r-843141-con-lan-xich",
+      "priority": 80,
+      "when": {
+        "partKind": "cranePart"
+      },
+      "hs": "84314190",
+      "gir": "GIR 6",
+      "reasonVi": "Con lăn đỡ xích, bộ phận cẩu tháp — thuộc 8431.41.90.",
+      "source": "Biểu thuế 2026 dòng 8431.41.90; oz: con lăn đỡ xích."
+    },
+    {
+      "id": "r-843141-bau-tro-luc",
+      "priority": 80,
+      "when": {
+        "partKind": "cranePart"
+      },
+      "hs": "84314190",
+      "gir": "GIR 6",
+      "reasonVi": "Bầu trợ lực phanh thủy lực cho cẩu tháp — thuộc 8431.41.90.",
+      "source": "Biểu thuế 2026 dòng 8431.41.90; oz: bầu trợ lực phanh thủy lực."
+    },
+    {
+      "id": "r-843141-gioi-han-hanh-trinh",
+      "priority": 75,
+      "when": {
+        "partKind": "cranePart"
+      },
+      "hs": "84314190",
+      "gir": "GIR 6",
+      "reasonVi": "Giới hạn hành trình, bàn thao tác cho cẩu tháp — thuộc 8431.41.90.",
+      "source": "Biểu thuế 2026 dòng 8431.41.90; oz: giới hạn hành trình."
+    },
+    {
+      "id": "r-843141-other",
+      "priority": 10,
+      "when": {
+        "partKind": "cranePart"
+      },
+      "hs": "84314190",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác cho cần trục 8426 — thuộc 8431.41.90.",
+      "source": "Biểu thuế 2026 dòng 8431.41.90"
+    },
+    {
+      "id": "r-843142",
+      "priority": 80,
+      "when": {
+        "partKind": "bucketBlade"
+      },
+      "hs": "84314200",
+      "gir": "GIR 6",
+      "reasonVi": "Lưỡi máy ủi đất — thuộc 8431.42.00.",
+      "source": "Biểu thuế 2026 dòng 8431.42.00"
+    },
+    {
+      "id": "r-843143-dau-dong-luc",
+      "priority": 95,
+      "when": {
+        "partKind": "drillPart"
+      },
+      "hs": "84314300",
+      "gir": "GIR 6",
+      "reasonVi": "Đầu động lực, cần chủ đạo, bộ phận máy khoan đất 8430 — thuộc 8431.43.00.",
+      "source": "Biểu thuế 2026 dòng 8431.43.00; oz: đầu động lực, đầu động lực kép, cần chủ đạo, gia mốc, đầu chuyển tiếp, kẹp giữ cần khoan."
+    },
+    {
+      "id": "r-843143-ong-loi-co",
+      "priority": 90,
+      "when": {
+        "partKind": "drillPart"
+      },
+      "hs": "84314300",
+      "gir": "GIR 6",
+      "reasonVi": "Ống lõi cần khoan, ống lấy mẫu SPT, tạ SPT, ống lục giác — bộ phận máy khoan đất 8430, thuộc 8431.43.00.",
+      "source": "Biểu thuế 2026 dòng 8431.43.00; oz: ống lõi cần khoan, ống lấy mẫu SPT, tạ SPT, tạ bi SPT, ống lục giác."
+    },
+    {
+      "id": "r-843143-dau-roi",
+      "priority": 85,
+      "when": {
+        "partKind": "drillPart"
+      },
+      "hs": "84314300",
+      "gir": "GIR 6",
+      "reasonVi": "Đầu rồng (đầu xoay cấp dung dịch khoan), đầu đực gia mốc — bộ phận máy khoan đất 8430, thuộc 8431.43.00.",
+      "source": "Biểu thuế 2026 dòng 8431.43.00; oz: đầu rồng, đầu đực gia mốc."
+    },
+    {
+      "id": "r-843143-bac-dong",
+      "priority": 80,
+      "when": {
+        "partKind": "drillPart"
+      },
+      "hs": "84314300",
+      "gir": "GIR 6",
+      "reasonVi": "Bạc đồng trục ty, bộ phận dẫn hướng cho máy khoan đất — thuộc 8431.43.00.",
+      "source": "Biểu thuế 2026 dòng 8431.43.00; oz: bạc đồng trục ty."
+    },
+    {
+      "id": "r-843149-parts",
+      "priority": 80,
+      "when": {
+        "partKind": "otherExcavate"
+      },
+      "hs": "84314910",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận cho máy thuộc nhóm 84.26 (bánh sao, puli, xích) — thuộc 8431.49.10.",
+      "source": "Biểu thuế 2026 dòng 8431.49.10"
+    },
+    {
+      "id": "r-843149-cutting",
+      "priority": 80,
+      "when": {
+        "partKind": "otherExcavate"
+      },
+      "hs": "84314920",
+      "gir": "GIR 6",
+      "reasonVi": "Lưỡi cắt/mũi lưỡi cắt cho máy cào/san/ủi — thuộc 8431.49.20.",
+      "source": "Biểu thuế 2026 dòng 8431.49.20"
+    },
+    {
+      "id": "r-843149-blade-uni",
+      "priority": 70,
+      "when": {
+        "partKind": "otherExcavate"
+      },
+      "hs": "84314940",
+      "gir": "GIR 6",
+      "reasonVi": "Lưỡi cắt/mũi lưỡi cho máy ủi đất — thuộc 8431.49.40.",
+      "source": "Biểu thuế 2026 dòng 8431.49.40"
+    },
+    {
+      "id": "r-843149-road-roller",
+      "priority": 80,
+      "when": {
+        "partKind": "otherExcavate"
+      },
+      "hs": "84314950",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận xe lu — thuộc 8431.49.50.",
+      "source": "Biểu thuế 2026 dòng 8431.49.50"
+    },
+    {
+      "id": "r-843149-other",
+      "priority": 10,
+      "when": {
+        "partKind": "otherExcavate"
+      },
+      "hs": "84314990",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác cho máy đào/ủi/san — thuộc 8431.49.90.",
+      "source": "Biểu thuế 2026 dòng 8431.49.90"
+    }
+  ]
+}
