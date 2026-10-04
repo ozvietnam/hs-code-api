@@ -1,0 +1,168 @@
+{
+  "heading": "8424",
+  "titleVi": "Máy móc, thiết bị phun, xịt, rải chất lỏng hoặc bột (84.24)",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "subKind",
+      "type": "enum",
+      "labelVi": "Loại sản phẩm",
+      "questionVi": "Sản phẩm thuộc loại nào: súng phun/xịt, máy phun hoàn chỉnh, máy phun cát/hơi, thiết bị phun nông nghiệp, thiết bị tưới, bình xịt gia đình, hay bộ phận?",
+      "domain": [
+        "sandblaster",
+        "sprayGun",
+        "completeSprayer",
+        "agriculturalSprayer",
+        "irrigation",
+        "householdSprayer",
+        "industrialParts"
+      ],
+      "detect": {
+        "sandblaster": [
+          "phun cát", "may phun cat", "áp lực cao", "hơi nước sương",
+          "sương mù", "phun áp lực", "sandblast", "may hat",
+          "phun hat", "may phun hat", "may xit cat"
+        ],
+        "sprayGun": [
+          "súng xịt", "súng phun", "súng xịt hơi", "súng xịt khí",
+          "súng xịt rửa xe", "vòi phun nước máy xịt", "súng xịt sơn",
+          "súng xịt hơi khí nén", "súng xịt khí nén", "súng xịt khí xì",
+          "súng phun xịt khí nén", "vòi phun nước máy"
+        ],
+        "completeSprayer": [
+          "máy bơm mỡ", "máy hơi nước", "máy xịt rửa xe",
+          "máy phun tẩy", "phun bọt rửa xe",
+          "bình xịt phun nước vệ sinh nội thất"
+        ],
+        "agriculturalSprayer": [
+          "phun thuốc", "phun phân", "nông nghiệp", "thuốc trừ",
+          "phun phủ kẽm", "phun kẽm", "phun kẽm chống ăn mòn",
+          "phun kẽm cầm tay"
+        ],
+        "irrigation": [
+          "tưới tiêu", "tưới cây", "tưới nông nghiệp", "làm vườn",
+          "béc tưới", "đầu tưới", "hệ thống tưới",
+          "tưới tự động", "béc phun nước tưới",
+          "đầu béc đồng phun nước"
+        ],
+        "householdSprayer": [
+          "bình xịt", "tưới cây cảnh", "tưới cây trong văn phòng",
+          "xịt tia nước", "bình xịt tia", "vệ sinh gia đình",
+          "bình tạo bọt", "xịt vệ sinh", "xịt nước gia đình",
+          "bình xịt phun nước nhựa vệ sinh"
+        ],
+        "industrialParts": [
+          "đầu chụp phun hồ", "đệm rãnh xoắn phun hồ",
+          "béc phun hồ đất sét", "đệm chữ thập phun hồ",
+          "đệm phun hồ", "đệm rãnh xoắn",
+          "con lăn tiếp điện", "chân đồng pallet",
+          "thanh ray gá con lăn", "thanh ray dẫn điện",
+          "hộp số", "giá xoay",
+          "đầu phun ion", "bình tạo bọt tuyết",
+          "đầu súng bắn keo"
+        ]
+      }
+    },
+    {
+      "attribute": "isElectric",
+      "type": "enum",
+      "labelVi": "Có nguồn điện",
+      "questionVi": "Có dùng điện không?",
+      "domain": ["true", "false"],
+      "detect": {
+        "true": ["220v", "điện", "electric", "bơm điện", "công suất"],
+        "false": ["không điện", "khí nén", "cầm tay", "tay", "thủ công", "bằng tay", "không dùng điện", "nhôm", "nhựa", "inox", "sắt", "thép", "đồng"]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r01",
+      "priority": 100,
+      "when": { "subKind": "sandblaster" },
+      "hs": "84243000",
+      "reasonVi": "Máy phun cát/hơi nước/áp lực → 84243000",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r02",
+      "priority": 100,
+      "when": { "subKind": "sprayGun", "isElectric": false },
+      "hs": "84242029",
+      "reasonVi": "Súng phun/xịt khí nén — loại khác, không điện → 84242029",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r03",
+      "priority": 100,
+      "when": { "subKind": "sprayGun", "isElectric": true },
+      "hs": "84242011",
+      "reasonVi": "Súng phun/xịt dùng điện — loại dùng trong nông nghiệp/làm vườn → 84242011",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r04",
+      "priority": 95,
+      "when": { "subKind": "irrigation" },
+      "hs": "84248230",
+      "reasonVi": "Béc/vòi phun nước tưới nông nghiệp — không điện → 84248230",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r05",
+      "priority": 90,
+      "when": { "subKind": "agriculturalSprayer", "isElectric": false },
+      "hs": "84242019",
+      "reasonVi": "Thiết bị phun nông nghiệp — loại khác, không điện → 84242019",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r06",
+      "priority": 90,
+      "when": { "subKind": "agriculturalSprayer", "isElectric": true },
+      "hs": "84242011",
+      "reasonVi": "Thiết bị phun nông nghiệp — hoạt động bằng điện → 84242011",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r07",
+      "priority": 90,
+      "when": { "subKind": "householdSprayer" },
+      "hs": "84248910",
+      "reasonVi": "Bình xịt/xịt nước gia đình ≤ 3L → 84248910",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r08",
+      "priority": 85,
+      "when": { "subKind": "completeSprayer" },
+      "hs": "84248990",
+      "reasonVi": "Máy phun/xịt hoàn chỉnh — loại khác, không điện → 84248990",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r09",
+      "priority": 100,
+      "when": { "subKind": "industrialParts" },
+      "hs": "84249099",
+      "reasonVi": "Bộ phận công nghiệp khác (đầu chụp, đệm, con lăn, chân, thanh ray…) → 84249099",
+      "source": "Biểu thuế NK VN 2026"
+    }
+  ],
+  "sourceVi": "Biểu thuế NK VN 2026 (31 mã 8 số). Oz-gold 33 entries.",
+  "essenceTestVi": "Phân biệt: máy phun cát (84243000), súng phun khí nén (84242029), béc phun tưới nông nghiệp (84248230), phun nông nghiệp (84242019/84242011), bình xịt gia đình (84248910), bộ phận công nghiệp (84249099).",
+  "leaves": {},
+  "hitPolicy": "FIRST",
+  "attributes": {
+    "subKind": {
+      "type": "enum",
+      "labelVi": "Loại sản phẩm",
+      "domain": ["sandblaster", "sprayGun", "completeSprayer", "agriculturalSprayer", "irrigation", "householdSprayer", "industrialParts"]
+    },
+    "isElectric": {
+      "type": "enum",
+      "labelVi": "Có nguồn điện",
+      "domain": ["true", "false"]
+    }
+  }
+}
