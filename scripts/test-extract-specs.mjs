@@ -83,5 +83,23 @@ check('AI lỗi → fiberContent trả valueVi=null để hỏi người', (r4._
 check('không có chữ → 400', (await extract({ needKeys: ['power'] }))._s === 400);
 check('không token → 401', (await extract({ titleZh: 'x' }, null))._s === 401);
 
+// 6. Chữ OCR thật (Tmall 575585063487, ảnh "产品信息" — mẫu từ ozsource PR #15): từ điển đủ, không gọi AI
+llmTier.callLLMJson = async (_s, user) => { llmCalls += 1; lastUser = JSON.parse(user); return { json: llmReply, provider: 'minimax', model: 'stub' }; };
+llmCalls = 0;
+const real = await extract({
+  imageTexts: [{ url: 'm30.jpg', text: '产品信息\n名称：联想M120Pro无线鼠标 接口：内置USB接口\n型号：M120Pro 按键数：3个\n品牌：联想 尺寸：118×61×38mm\n人体工学：是 重量：100g\n分辨率：1000DPI 工作方式：光电鼠标\n可选颜色：黑 适用机型：台式机/笔记本' }],
+  needKeys: ['modelNumber', 'dimensions', 'netWeight', 'connectivity'],
+});
+const rk = Object.fromEntries((real._j?.attributes || []).map((a) => [a.key, a.valueVi]));
+check('OCR thật: model, kích thước, trọng lượng lấy từ từ điển', rk.modelNumber === 'M120Pro' && rk.dimensions === '118×61×38mm' && rk.netWeight === '100g', JSON.stringify(rk));
+const asked = Object.keys(lastUser?.allowedKeys || {}).sort().join();
+check('OCR thật: chỉ giá trị chữ Hán (接口, 品牌, 颜色) gửi AI dịch, số đo thì không', llmCalls === 1 && asked === 'brand,color,connectivity', asked);
+
+// 7. Bằng chứng khác dấu câu / xuống dòng với chữ OCR vẫn được nhận
+llmCalls = 0;
+llmReply = { attributes: [{ key: 'material', valueVi: 'thép không gỉ 304', sourceId: 'img1', evidenceText: '材质：304不锈钢' }] };
+const r7 = await extract({ imageTexts: [{ url: 'u7', text: '产品参数\n材质\n304不锈钢\n容量 1.5L' }], needKeys: ['material'] });
+check('OCR tách dòng không dấu hai chấm, AI chép có dấu → vẫn nhận', (r7._j?.attributes || []).some((a) => a.key === 'material' && a.valueVi === 'thép không gỉ 304'), JSON.stringify(r7._j));
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
