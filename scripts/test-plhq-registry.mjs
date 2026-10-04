@@ -12,6 +12,8 @@ const fixture = {
   documents: [
     { soHieu: '715/QĐ-BCT', soHieuKhac: [], ten: 'Gia hạn tự vệ phân bón', tinhTrang: 'HET_HIEU_LUC', hetHieuLucTu: null, quanHeNguoc: {}, xacMinh: { muc: 'NGUON_A', hieuLucDaDoiChieu: false }, slug: '715-qd-bct-2020' },
     { soHieu: '2333/QĐ-BCT', soHieuKhac: [], ten: 'Khởi xướng điều tra CBPG gạch', tinhTrang: 'HET_HIEU_LUC', quanHeNguoc: { bi_thay_the_boi: [{ tu: '2174/QĐ-BCT' }] }, xacMinh: { muc: 'NGUON_A', hieuLucDaDoiChieu: true }, slug: '2333-qd-bct-2025' },
+    { soHieu: '691/QĐ-BCT', soHieuKhac: [], ten: 'Tự vệ thép (chưa đối chiếu)', tinhTrang: 'HET_HIEU_LUC', quanHeNguoc: { bi_thay_the_boi: [{ tu: '9999/QĐ-BCT' }] }, xacMinh: { muc: 'NGUON_A', hieuLucDaDoiChieu: false }, slug: '691-qd-bct-2023' },
+    { soHieu: '1182/QĐ-BCT', soHieuKhac: [], ten: 'Danh mục KTCN BCT 2021', tinhTrang: 'HET_HIEU_LUC', quanHeNguoc: {}, xacMinh: { muc: 'NGUON_B', hieuLucDaDoiChieu: false }, slug: '1182-qd-bct-2021' },
     { soHieu: '2174/QĐ-BCT', soHieuKhac: [], ten: 'Áp thuế CBPG chính thức gạch', tinhTrang: 'CON_HIEU_LUC', quanHeNguoc: {}, xacMinh: { muc: 'NGUON_A', hieuLucDaDoiChieu: true }, slug: '2174-qd-bct-2025' },
     { soHieu: '12/2018/TT-BCT', soHieuKhac: ['12/2018/TT-BTC'], ten: 'Quy định chi tiết Luật QLNT', tinhTrang: 'CON_HIEU_LUC', quanHeNguoc: {}, xacMinh: { muc: 'NGUON_A', hieuLucDaDoiChieu: false }, slug: '12-2018-tt-bct' },
     { soHieu: '12/2022/TT-BGTVT', soHieuKhac: [], ten: 'Danh mục GTVT cũ', tinhTrang: 'HET_HIEU_LUC', hetHieuLucTu: '2026-07-01', quanHeNguoc: { bi_thay_the_boi: [{ tu: '49/2026/TT-BXD' }] }, xacMinh: { muc: 'NGUON_A', hieuLucDaDoiChieu: false }, slug: '12-2022-tt-bgtvt' },
@@ -21,7 +23,7 @@ mkdirSync(dataPath(), { recursive: true });
 writeFileSync(dataPath('plhq-registry.json'), JSON.stringify(fixture));
 
 const { registryReview, lookup, khoa, trichSoHieu } = require('../lib/plhq-registry.js');
-const { policyBasisReview } = require('../lib/policy-regime.js');
+const { policyBasisReview, regimeStatusForCode } = require('../lib/policy-regime.js');
 
 let pass = 0;
 let fail = 0;
@@ -48,6 +50,16 @@ const p3 = policyBasisReview('Chứng nhận chất lượng ATKT (12/2022/TT-BG
 t('không trùng cảnh báo khi quy tắc KTCN 2026 đã bắt cùng văn bản', p3.items.filter((i) => i.source === 'oz-wiki-plhq').length === 0 && p3.items.some((i) => i.source === 'hs-code-api'), JSON.stringify(p3.items.map((i) => i.id)));
 t('trước ngày hết hiệu lực → không báo', !policyBasisReview('X (12/2022/TT-BGTVT)', { asOf: '2026-06-30' })?.items?.some((i) => i.source === 'oz-wiki-plhq'));
 t('văn bản còn hiệu lực → không cảnh báo', policyBasisReview('Áp thuế CBPG (2174/QĐ-BCT)', { asOf: '2026-10-04' }) === null);
+
+const p4 = policyBasisReview('Áp thuế tự vệ thép (691/QĐ-BCT-2023)', { asOf: '2026-10-04' });
+t('bị thay nhưng kho cộng đồng CHƯA đối chiếu → LIKELY_REPLACED, không REPLACED', p4?.items?.[0]?.relation === 'LIKELY_REPLACED' && p4.items[0].confidence === 'MEDIUM', JSON.stringify(p4?.items));
+const p5 = policyBasisReview('HH KTCN về an toàn thực phẩm (1182/QĐ-BCT-PL2-2021)', { asOf: '2026-10-04' });
+t('quy tắc theo phụ lục (PL2) đã báo → sổ cộng đồng không báo trùng cùng văn bản', p5.items.length === 1 && p5.items[0].source === 'hs-code-api', JSON.stringify(p5.items.map((i) => i.id)));
+t('nhận precomputed registry (không tính lại)', policyBasisReview('Áp thuế tự vệ thép (691/QĐ-BCT-2023)', { asOf: '2026-10-04', registry: null }) === null);
+t('regimeStatusForCode: số hiệu trần + chữ đầy đủ PL2 → quy tắc ATTP', regimeStatusForCode('1182/2021/QĐ-BCT', { csText: 'X (1182/QĐ-BCT-PL2-2021)', asOf: '2026-10-04' })?.ruleId === 'bct-attp-1182');
+t('regimeStatusForCode: PL1 → quy tắc chất lượng nhóm 2', regimeStatusForCode('1182/QĐ-BCT', { csText: 'Y (1182/QĐ-BCT-PL1-2021)', asOf: '2026-10-04' })?.ruleId === 'bct-nhom2-1182-pl1');
+t('regimeStatusForCode: trước ngày hiệu lực → UPCOMING (nhất quán với policyBasisReview)', regimeStatusForCode('1182/QĐ-BCT', { csText: 'X (1182/QĐ-BCT-PL2-2021)', asOf: '2026-07-10' })?.relation === 'UPCOMING');
+t('regimeStatusForCode: M1 kiểm dịch khớp, M12 không', regimeStatusForCode('01/2024/TT-BNNPTNT', { csText: 'Z (01/2024/TT-BNNPTNT M1)' })?.ruleId === 'bnnptnt-m1-kiem-dich' && regimeStatusForCode('01/2024/TT-BNNPTNT', { csText: 'Z (01/2024/TT-BNNPTNT M12)' }) === null);
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

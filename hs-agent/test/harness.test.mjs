@@ -42,6 +42,7 @@ t('classifyDoc: công văn tỷ giá → other', classifyDoc(parseTitle(items[0]
 const ktcnTitle = parseTitle('Thông tư 36/2026/TT-BKHCN ngày 30/06/2026 Ban hành Danh mục sản phẩm, hàng hóa có mức độ rủi ro trung bình, mức độ rủi ro cao thuộc trách nhiệm quản lý của Bộ Khoa học và Công nghệ');
 t('classifyDoc: thông tư danh mục rủi ro (KTCN 2026) là quy định', classifyDoc(ktcnTitle) === 'regulation', JSON.stringify(ktcnTitle));
 t('isKtcnRegulation: danh mục rủi ro → true', isKtcnRegulation(ktcnTitle));
+t('isKtcnRegulation: thông tư liên tịch danh mục kiểm tra → true', isKtcnRegulation({ docType: 'Thông tư liên tịch', subject: 'Danh mục hàng hóa phải kiểm tra chuyên ngành' }));
 t('isKtcnRegulation: thông tư biểu thuế → false', !isKtcnRegulation(parseTitle('Thông tư 31/2022/TT-BTC ngày 08/06/2022 Ban hành Danh mục hàng hóa xuất khẩu, nhập khẩu Việt Nam')));
 t('refKey: QĐ = QD, hoa', refKey('2174/QĐ-bct') === '2174/QD-BCT');
 t('hsCodesIn: dạng có chấm, không bắt số lượng', JSON.stringify(hsCodesIn('mã 6907.21.23 và 6907.22; 3177.90 m2 không phải; năm 2026')) === JSON.stringify(['69072123', '690722', '317790']), JSON.stringify(hsCodesIn('mã 6907.21.23 và 6907.22; 3177.90 m2')));

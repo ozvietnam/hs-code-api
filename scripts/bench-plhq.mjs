@@ -22,7 +22,7 @@ if (!meta) { console.error('Chưa có data/plhq-registry.json — chạy node sc
 
 const coCs = rows.filter((r) => String(r.cs || '').trim());
 const vanBan = new Map(); // khoá hiển thị → { found, tinhTrang, verified, hs: Set }
-const loaiDong = { tatCaConHieuLuc: 0, coVanBanHetHieuLuc: 0, coVanBanChuaXacMinh: 0, coVanBanChuaCoTrongSo: 0, khongTrichDuoc: 0 };
+const loaiDong = { tatCaConHieuLuc: 0, coVanBanHetHieuLuc: 0, coVanBanChuaXacMinh: 0, coVanBanMotPhanHoacChuaCoHieuLuc: 0, coVanBanChuaCoTrongSo: 0, khongTrichDuoc: 0 };
 const canhBao = { chiQuyTac: 0, chiSoCongDong: 0, caHai: 0, khongCo: 0 };
 const soThem = new Map(); // văn bản sổ cộng đồng bắt thêm → số mã HS
 let daDoiChieuDong = 0;
@@ -39,7 +39,8 @@ for (const r of coCs) {
   if (reg.counts.notFound) loaiDong.coVanBanChuaCoTrongSo += 1;
   if (f.some((c) => c.tinhTrang === 'HET_HIEU_LUC' || c.tinhTrang === 'TAM_NGUNG_HIEU_LUC')) loaiDong.coVanBanHetHieuLuc += 1;
   else if (f.some((c) => c.tinhTrang === 'CHUA_XAC_MINH')) loaiDong.coVanBanChuaXacMinh += 1;
-  else if (!reg.counts.notFound) loaiDong.tatCaConHieuLuc += 1;
+  else if (f.some((c) => c.tinhTrang === 'HET_HIEU_LUC_MOT_PHAN' || c.tinhTrang === 'CHUA_CO_HIEU_LUC')) loaiDong.coVanBanMotPhanHoacChuaCoHieuLuc += 1;
+  else if (!reg.counts.notFound && f.every((c) => c.tinhTrang === 'CON_HIEU_LUC')) loaiDong.tatCaConHieuLuc += 1;
   if (f.length && f.every((c) => c.hieuLucDaDoiChieu)) daDoiChieuDong += 1;
 
   // Đối chiếu độc lập: quy tắc KTCN 2026 (căn cứ đã/gần chắc bị thay) vs sổ cộng đồng (văn bản HẾT/TẠM NGƯNG).
@@ -87,6 +88,7 @@ const md = [
   '|---|---|---|',
   `| Dẫn ít nhất một văn bản HẾT hiệu lực / tạm ngưng | ${m.coVanBanHetHieuLuc} | ${pct(m.coVanBanHetHieuLuc, m.coChinhSach)} |`,
   `| Không hết hiệu lực nhưng có văn bản CHƯA XÁC MINH | ${m.coVanBanChuaXacMinh} | ${pct(m.coVanBanChuaXacMinh, m.coChinhSach)} |`,
+  `| Có văn bản hết hiệu lực MỘT PHẦN hoặc CHƯA có hiệu lực | ${m.coVanBanMotPhanHoacChuaCoHieuLuc} | ${pct(m.coVanBanMotPhanHoacChuaCoHieuLuc, m.coChinhSach)} |`,
   `| Mọi văn bản được dẫn đều ghi còn hiệu lực | ${m.tatCaConHieuLuc} | ${pct(m.tatCaConHieuLuc, m.coChinhSach)} |`,
   `| Có văn bản sổ cộng đồng chưa có | ${m.coVanBanChuaCoTrongSo} | ${pct(m.coVanBanChuaCoTrongSo, m.coChinhSach)} |`,
   `| Không trích được số hiệu | ${m.khongTrichDuoc} | ${pct(m.khongTrichDuoc, m.coChinhSach)} |`,

@@ -59,7 +59,7 @@ const RE_KTCN = /mức độ rủi ro|rủi ro (?:trung bình|cao)|hợp quy|ki�
 
 /** Quy định có đụng tới danh mục kiểm tra chuyên ngành (cần đối chiếu data/ktcn-regime-2026.json + cột cs). */
 export function isKtcnRegulation({ docType, subject }) {
-  return /^(thông tư|nghị định|quyết định|nghị quyết|luật)$/i.test(String(docType || '')) && RE_KTCN.test(String(subject || ''));
+  return /^(thông tư|thông tư liên tịch|nghị định|quyết định|nghị quyết|luật)$/i.test(String(docType || '')) && RE_KTCN.test(String(subject || ''));
 }
 
 /** Nhóm việc cho mỗi văn bản: classification | trade-remedy | regulation | other. */

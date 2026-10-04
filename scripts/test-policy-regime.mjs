@@ -57,6 +57,10 @@ check('REPLACED chỉ đi với HIGH (không khẳng định thay thế khi chư
 const rows = Object.values(taxData);
 const dead = regime.superseded.filter((s) => !rows.some((r) => s.patterns.some((p) => new RegExp(p, 'i').test(String(r.cs || '').toUpperCase().replace(/Đ/g, 'D')))));
 check('mọi quy tắc khớp ít nhất một dòng biểu thuế (không có quy tắc chết)', dead.length === 0, dead.map((d) => d.id).join());
+const allItems = rows.flatMap((r) => (r.cs ? policyBasisReview(r.cs)?.items || [] : []));
+check('toàn biểu thuế: mọi mục REPLACED (kể cả từ sổ cộng đồng) đều HIGH', allItems.every((i) => i.relation !== 'REPLACED' || i.confidence === 'HIGH'), JSON.stringify(allItems.filter((i) => i.relation === 'REPLACED' && i.confidence !== 'HIGH').slice(0, 3)));
+const cakeDocs = [...(cake.warnings?.legalCitations || []), ...(cake.warnings?.legalDocs || [])].filter((c) => /1182/.test(c.code || ''));
+check('19059090: trích dẫn 1182 trong warnings có regime2026 khớp quy tắc ATTP', cakeDocs.length > 0 && cakeDocs.every((c) => c.regime2026?.ruleId === 'bct-attp-1182'), JSON.stringify(cakeDocs.map((c) => [c.code, c.regime2026])));
 check('regimeSummary không lộ regex', !JSON.stringify(regimeSummary()).includes('patterns'));
 
 // 7. Bảng thủ tục đã theo khung mới
