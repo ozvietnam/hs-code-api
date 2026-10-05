@@ -176,6 +176,37 @@ check('khóa đã bổ sung không gửi AI rút lại', !(lastExtractUser?.need
   check('model câu mô tả bị loại, mã giữ', !plausibleValue('modelNumber', 'Bộ lọc nước Starry Silver bốn tốc độ') && plausibleValue('modelNumber', 'YLD-417') && plausibleValue('modelNumber', 'loại 86'));
 }
 
+// 3e. Review 05/10/2026 — các lỗi đã sửa
+{
+  const saved = llmTier.callLLMJson;
+  // AI viết mô tả lỗi → tên hàng KHÔNG được là chữ Hán (rơi về tên biểu thuế)
+  llmTier.callLLMJson = async (system, user, o) => {
+    if (system.includes('THÔNG SỐ SẢN PHẨM')) return { json: { attributes: [] }, provider: 'stub', model: 'stub' };
+    throw Object.assign(new Error('describe down'), { code: 'STUB' });
+  };
+  const rz = await buildDeclarationSheet({ titleZh: '86型墙壁暗装电源插座带开关测试', specsZh: [{ key: '额定电流', value: '10A' }], hsCode: '85366932' });
+  const dz = rz.json.description?.customsDescription || '';
+  check('AI lỗi: mô tả không lọt chữ Hán, đánh dấu degraded', !/[㐀-鿿]/.test(dz) && rz.json.description.degraded === true, dz);
+  // Mã 6 số: chỉ khung ô theo nhóm, không mô tả / chính sách
+  const r6 = await buildDeclarationSheet({ titleZh: '活牛测试', specsZh: [{ key: '额定电流', value: '10A' }], hsCode: '010121' });
+  check('mã 6 số: không viết mô tả / chính sách, có cảnh báo', r6.status === 200 && !r6.json.description && !r6.json.policy && r6.json.headingOnly === '010121' && r6.json.hsCode === null, JSON.stringify([r6.json.hsCode, r6.json.headingOnly]));
+  // specsZh dạng chuỗi
+  const rs = await buildDeclarationSheet({ specsZh: '材质: 不锈钢\n电压: 220V' });
+  check('specsZh dạng chuỗi được nhận', rs.status === 200 && rs.json.fields.length > 0, String(rs.status));
+  llmTier.callLLMJson = saved;
+}
+{
+  const { plausibleValue } = require('../lib/extract-specs');
+  check('model: câu mô tả có số bị loại, "Pro Max" giữ', !plausibleValue('modelNumber', 'Ổ cắm 5 lỗ có công tắc âm tường loại mới') && plausibleValue('modelNumber', 'Pro Max') && plausibleValue('modelNumber', 'CN-510L'));
+  // Bằng chứng: các mẩu phải gần nhau; số phải có trong bằng chứng
+  const { extractSpecs } = require('../lib/extract-specs');
+  const far = '材质: 塑料\n' + '其他说明'.repeat(30) + '\n赠品: 不锈钢勺子';
+  const ev = await extractSpecs({ titleZh: '水杯测试远', specsZh: far, needKeys: ['material'] }, { llm: async () => ({ json: { attributes: [{ key: 'material', valueVi: 'thép không gỉ', sourceId: 'specs', evidenceText: '材质 不锈钢' }] } }) });
+  check('bằng chứng ghép 2 dòng xa nhau bị loại', !ev.attributes.some((a) => a.key === 'material' && a.valueVi === 'thép không gỉ'), JSON.stringify(ev.attributes));
+  const evn = await extractSpecs({ titleZh: '插座测试数', specsZh: [{ key: '规格', value: '10A' }], needKeys: ['voltage'] }, { llm: async () => ({ json: { attributes: [{ key: 'voltage', valueVi: '250', sourceId: 'specs', evidenceText: '10A' }] } }) });
+  check('số không có trong bằng chứng bị loại (250 từ "10A")', !evn.attributes.some((a) => a.key === 'voltage'), JSON.stringify(evn.attributes));
+}
+
 // 4. Không có mã HS → chỉ ô chung, chưa viết mô tả
 extractReply = GOOD_REPLY;
 const r4 = await buildDeclarationSheet({ ...SOCKET });

@@ -20,7 +20,7 @@ const check = (name, cond, extra = '') => {
 const SHEET = {
   hsCode: '85366932',
   heading: { code: '8536', titleVi: 'Thiết bị đóng cắt', template: 'switchgear' },
-  fields: [{ key: 'brand', status: 'HAVE', valueVi: 'Marc Lichte' }],
+  fields: [{ key: 'brand', status: 'HAVE', valueVi: 'Marc Lichte', source: 'SITE', method: 'LLM' }],
   missing: [{ key: 'dimensions', status: 'MISSING' }],
   trademark: { brand: 'Marc Lichte', brandStatus: 'BRANDED', risk: null, counterfeitSignals: [{ term: '同款', labelVi: 'x' }] },
 };
@@ -53,6 +53,8 @@ const { extractSpecs } = require('../lib/extract-specs');
 const ex = await extractSpecs({ specsZh: [{ key: '品牌', value: '无品牌' }] }, { llm: async () => ({ json: { attributes: [] } }) });
 check('无品牌 → "không nhãn hiệu" (tất định)', ex.attributes.find((a) => a.key === 'brand')?.valueVi === 'không nhãn hiệu', JSON.stringify(ex.attributes));
 
+check('nhãn khách/NV tự gõ (supplement) KHÔNG thành tín hiệu công khai', !signalsFromSheet({ sheet: { ...SHEET, fields: [{ key: 'brand', status: 'HAVE', valueVi: 'Nguyễn Văn A 0912345678', source: 'CUSTOMER', method: 'SUPPLEMENT' }], trademark: { ...SHEET.trademark, brand: 'Nguyễn Văn A 0912345678' } }, mapped: MAPPED }).some((s) => s.t === 'BRAND_UNLISTED'));
+
 // Ghi + gom: 5 lần mã 85366932 → Cao; 1 lần mã khác → Thấp; tín hiệu quá 90 ngày bị bỏ
 fs.rmSync(dataPath('demand-signals.jsonl'), { force: true });
 for (let i = 0; i < 5; i += 1) recordSignals(sig, '2026-10-05');
@@ -65,6 +67,14 @@ check('mã gặp 1 lần → Thấp', agg.ktcn2026.find((x) => x.hs === '8518299
 check('tín hiệu ngoài 90 ngày bị bỏ', !agg.ktcn2026.some((x) => x.hs === '61091000'));
 check('nhãn hiệu kèm nhóm', agg.brands[0]?.brand === 'Marc Lichte' && agg.brands[0].headings.includes('8536'));
 const pub = JSON.stringify(agg);
+const ord = aggregateDemand({ now: '2026-10-05', rows: [
+  ...Array(3).fill({ d: '2026-10-05', t: 'ZH_LABEL_UNMAPPED', k: 'Z', m: {} }),
+  ...Array(4).fill({ d: '2026-10-05', t: 'ZH_LABEL_UNMAPPED', k: 'A', m: {} }),
+] }).zhLabels.map((x) => x.label).join();
+check('trong cùng mức xếp theo chữ cái (không lộ số lần qua thứ tự)', ord === 'A,Z', ord);
+const escMd = (await import('./demand-issue.mjs')).md;
+check('issue: thoát markdown + chặn @nhắc tên / link', !/@octocat|\]\(http/.test(escMd('@octocat [x](http://evil)')), escMd('@octocat [x](http://evil)'));
+check('ngày gặp làm tròn về thứ Hai của tuần', agg.ktcn2026[0]?.lastSeen === '2026-10-05' && require('../lib/demand-signals').weekOf('2026-10-08') === '2026-10-05');
 check('bản công khai KHÔNG có số lượng', !/"(n|count|so_lan|soLan)"\s*:/.test(pub), pub.slice(0, 300));
 
 // HTTP công khai qua /api/dataset?resource=demand (không token)
