@@ -128,6 +128,76 @@ function validateShape(file, doc) {
   });
 }
 
+// --- LỚP 3: chất lượng tiền lệ TB-TCHQ (tệp nộp từ STRICT_FROM) ---------------
+// Rút từ đợt HMAC 05/10/2026: mã giả 00000000 cho thông báo lỗi nguồn, lý do bị script cắt
+// cụt ở 316 ký tự, lý do kiểu "thuộc nhóm hàng hóa xác định trước mã số", hai tệp chứa cùng
+// một bản ghi. Tệp cũ hơn giữ nguyên (đã gộp), tệp mới phải đạt chuẩn của
+// docs/huong-dan-trich-tb-tchq.md mới vào kho.
+const STRICT_FROM = '2026-10-05';
+const BIEU_THUE = new Set(['2012', '2017', '2022']);
+const LOAI_TB = new Set(['KET_QUA_PHAN_LOAI', 'XAC_DINH_TRUOC', 'DINH_CHINH']);
+const THIN_REASON = 150;
+
+/** Mã kết luận phải có mặt trong lý do, dạng có chấm (3926.90.99) hoặc liền (39269099). */
+function hsInText(hs, text) {
+  const h = String(hs);
+  const dotted = h.length === 8 ? `${h.slice(0, 4)}.${h.slice(4, 6)}.${h.slice(6)}`
+    : h.length === 6 ? `${h.slice(0, 4)}.${h.slice(4)}` : `${h.slice(0, 2)}.${h.slice(2)}`;
+  const t = String(text || '').replace(/\s+/g, '');
+  return t.includes(dotted) || t.includes(h);
+}
+
+/** Ngoặc/ngoặc kép mở mà không đóng → thường là lý do bị cắt giữa chừng. */
+function unbalanced(text) {
+  const t = String(text || '');
+  const n = (re) => (t.match(re) || []).length;
+  return n(/\(/g) !== n(/\)/g) || n(/“/g) !== n(/”/g) || n(/"/g) % 2 === 1;
+}
+
+const normKey = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+  .replace(/đ/g, 'd').replace(/[^a-z0-9]+/g, ' ').trim();
+const recordKey = (r) => [
+  String(r?.source?.reference || '').toUpperCase().replace(/\s+/g, ''),
+  String(r?.source?.issuedDate || '').slice(0, 4),
+  r?.hsCode,
+  normKey(r?.description),
+].join('|');
+const seenRecords = new Map(); // khoá → tệp đầu tiên chứa bản ghi
+
+function validateQuality(file, doc) {
+  const strict = doc.kind === 'precedent' && String(doc.submittedAt || '') >= STRICT_FROM;
+  (doc.records || []).forEach((r, i) => {
+    const at = `records[${i}]`;
+    if (/^0+$/.test(String(r?.hsCode || '')) || /^(00|9[89])/.test(String(r?.hsCode || ''))) {
+      problem(file, `${at}.hsCode ${r.hsCode} không phải mã thật. Thông báo lỗi nguồn / không kết luận / không phải TB phân loại thì ghi lên sheet, KHÔNG tạo bản ghi`);
+    }
+    const key = recordKey(r);
+    if (seenRecords.has(key) && seenRecords.get(key) !== file && strict) {
+      problem(file, `${at} (${r?.source?.reference} → ${r?.hsCode}) trùng bản ghi trong ${seenRecords.get(key)} — mỗi bản ghi chỉ nằm ở một tệp`);
+    }
+    if (!seenRecords.has(key)) seenRecords.set(key, file);
+    if (!strict || r?.source?.type !== 'TB-TCHQ') return;
+
+    const ref = r.source.reference || '?';
+    const desc = String(r.description || '');
+    const reason = String(r.reasonVi || '');
+    if (desc.trim().length < 20) problem(file, `${at} (${ref}): description dưới 20 ký tự — thêm đặc tính quyết định việc phân loại`);
+    if (/^hàng hóa theo thông báo/i.test(desc.trim())) problem(file, `${at} (${ref}): description là chữ giữ chỗ, không phải tên hàng`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(String(r.source.issuedDate || ''))) problem(file, `${at} (${ref}): thiếu source.issuedDate dạng YYYY-MM-DD`);
+    if (!/^https?:\/\//.test(String(r.source.url || ''))) problem(file, `${at} (${ref}): thiếu source.url trang chi tiết`);
+    if (!BIEU_THUE.has(String(r.attributes?.bieuThue || ''))) problem(file, `${at} (${ref}): attributes.bieuThue phải là 2012 / 2017 / 2022`);
+    if (r.attributes?.loaiTB && !LOAI_TB.has(r.attributes.loaiTB)) problem(file, `${at} (${ref}): attributes.loaiTB không hợp lệ`);
+    if (reason.trim().length < 80) {
+      problem(file, `${at} (${ref}): reasonVi dưới 80 ký tự — chép nguyên văn chuỗi nhóm → phân nhóm → mã và căn cứ`);
+      return;
+    }
+    if (!hsInText(r.hsCode, reason)) problem(file, `${at} (${ref}): reasonVi không chứa mã kết luận ${r.hsCode} — lý do phải kết thúc ở mã số`);
+    if (unbalanced(reason)) problem(file, `${at} (${ref}): reasonVi có ngoặc mở không đóng — có vẻ bị cắt giữa chừng`);
+    if (reason.length > 1000) problem(file, `${at} (${ref}): reasonVi quá 1000 ký tự — bỏ phần mô tả hàng lặp lại, giữ chuỗi kết luận + căn cứ`);
+    else if (reason.length < THIN_REASON) warn(file, `${at} (${ref}): reasonVi dưới ${THIN_REASON} ký tự sẽ bị coi là bản mỏng`);
+  });
+}
+
 // --- Chạy ---------------------------------------------------------------------
 function listFiles(dir) {
   if (!existsSync(dir)) return [];
@@ -159,6 +229,7 @@ for (const full of files) {
     continue;
   }
   validateShape(file, doc);
+  validateQuality(file, doc);
   walkStrings(file, doc);
   if (errors === 0) console.log(`✅ ${file}: ${doc.records?.length ?? 0} bản ghi`);
 }
