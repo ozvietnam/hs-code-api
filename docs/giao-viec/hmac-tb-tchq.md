@@ -16,6 +16,31 @@ trong thông báo, lấy trường gì, cấm lấy gì. Tài liệu này chỉ 
 - HMAC chạy trên Mac, dùng Chrome thật của CEO nên mở được trang như người dùng bình thường.
 - **Không lách chặn bằng công cụ.** Chỉ mở trang trong trình duyệt như người đọc.
 
+## ⚠️ Rà soát 05/10 tối — sửa trước khi làm lô mới
+
+Claude rà 164 bản ghi đầu tiên (lô thử → lô 18): 79 bản ghi đạt, **85 bản ghi lỗi**. Từ nay
+`npm run validate:community` chặn các lỗi này (PR #135). Chạy lệnh đó sẽ thấy từng bản ghi lỗi.
+
+| Lỗi | Gặp ở | Cách sửa |
+|---|---|---|
+| Mã giả `00000000` + mô tả "Hàng hóa theo Thông báo …" (22) | lô 2, 3, 4, 6, 7, 9, 10, 13, 15, 16, 18 | **Xoá bản ghi.** Lỗi nguồn / không kết luận / không phải TB phân loại chỉ ghi lên sheet (J + cột H lý do), không tạo bản ghi |
+| Lý do bị cắt ở 315–316 ký tự (31) | lô 3, 4 | Script đang cắt chuỗi cố định. Bỏ giới hạn đó, lấy trọn chuỗi nhóm → phân nhóm → **mã số** (≤ 1000 ký tự) |
+| Lý do trống hoặc giữ chỗ "thuộc nhóm hàng hóa xác định trước mã số" (38) | lô 2 (19 bản ghi không có lý do), 3, 4, 5 | Đọc lại toàn văn, chép nguyên văn phần kết luận |
+| Lý do tự tóm tắt, dưới 150 ký tự (cảnh báo) | lô 5–18 (subagent) | Chép **nguyên văn** câu "thuộc nhóm … mã số …" kèm lời mô tả từng cấp, như lô 25. Lô 25 là mẫu tốt |
+| Mô tả dưới 20 ký tự | "Bạc lót trục (shaft bearing)", "Nước cốt trà sữa"… | Thêm đặc tính quyết định: chất liệu, cấu tạo, công dụng |
+| Trùng giữa hai tệp | 1005 (lô thử + lô 25), 4386 (lô 3 + lô 4) | Xoá `hmac-2026-10-05-lot-thu.json`; bỏ 4386 ở một trong hai lô |
+| Đính chính không đổi mã (4844) | lô 16 | Không tạo bản ghi; sheet ghi `Xong`, K = 0, cột H nói đính chính gì |
+
+**Sheet:**
+- Cột **M** phải là **ngày làm xong** (2026-10-05), không phải ngày ban hành thông báo. Các dòng lô 25, 2, 3, 4 đang ghi ngày ban hành, cần sửa.
+- Lô 5–21 (subagent) **chưa ghi gì lên sheet**. Tab Tổng hợp mới đếm 116 bản ghi, trong khi nhánh đã có hơn 180.
+
+**URL TVPL "chết" hoặc trỏ sang văn bản khác:** tìm trên TVPL theo số hiệu + năm để lấy URL mới, giống cách đã làm với 2131
+(518021 → 519110). Ghi URL mới vào `source.url` và cột H của sheet. Chỉ khi tìm không ra mới ghi `Lỗi nguồn`.
+
+**Nhịp độ:** chạy subagent song song vẫn phải giữ ≥ 8 giây giữa hai lần mở trang **trên cả máy** và ≤ 300 trang/ngày.
+Chất lượng quan trọng hơn số lượng: bản ghi lỗi sẽ không được gộp vào kho.
+
 ## Giai đoạn 1 — 2.927 thông báo "Cần lấy" (Sheet1)
 
 **Lọc:** Sheet1 cột F = `Cần lấy`, cột I còn trống. Sắp cột G tăng dần, rồi năm (cột D) giảm dần.
