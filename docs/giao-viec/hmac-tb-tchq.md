@@ -29,6 +29,7 @@ trong thông báo, lấy trường gì, cấm lấy gì. Tài liệu này chỉ 
 ### Vòng làm một lô (25 thông báo)
 
 1. **Nhận việc trên sheet:** với 25 dòng sắp làm, ghi cột **I = `HMAC`**, cột **J = `Đang làm`**. Ghi trước khi mở trang để không ai làm trùng.
+   **Tìm đúng dòng theo URL** (Ctrl+F số thông báo hoặc mã cuối URL, vd `646486`). Không ghi vào dòng đầu bảng. Lần thử 05/10, kết quả của 1005/TB-TCHQ bị ghi vào dòng 2, tức thông báo 511/TB-TCHQ.
 2. **Mở URL cột B** trong Chrome và đọc toàn văn. Trang chỉ có tóm tắt, phải trả phí, hoặc lỗi thì ghi **J = `Lỗi nguồn`**, cột H ghi lý do, rồi bỏ qua.
 3. **Trích bản ghi** đúng theo `docs/huong-dan-trich-tb-tchq.md` mục 2–3:
    - mã kết luận 8 số;
@@ -42,8 +43,10 @@ trong thông báo, lấy trường gì, cấm lấy gì. Tài liệu này chỉ 
    - mã xuất hiện nguyên văn trong toàn văn;
    - ít nhất 60% từ của mô tả có trong toàn văn;
    - **không** có tên doanh nghiệp, mã số thuế, số tờ khai, chi cục, trị giá.
+   - `reasonVi` chép **nguyên văn** câu kết luận và căn cứ của thông báo. Không thêm lời mình như "đáp ứng tiêu chí…", "biểu thuế theo…": biểu thuế ghi ở `attributes.bieuThue`.
+   - Số liệu trong `description` và `reasonVi` phải khớp nhau và khớp văn bản. Lần thử 05/10, mô tả ghi "heavy paraffinic 6%" còn lý do ghi "paraffin 1%".
 5. **Ghi tệp** `data/community/tb-tchq/hmac-<YYYY-MM-DD>-<lô>.json` (`kind: "precedent"`, `license: "CC-BY-SA-4.0"`, `contributor.name: "HMAC"`), tối đa 500 bản ghi một tệp.
-6. **Chạy:**
+6. **Chạy** (trước mỗi lô: `git pull origin hmac/tb-tchq-toan-van && git merge origin/main` để có script gộp mới nhất):
    ```bash
    npm run validate:community
    npm run data:merge-community      # tự thay bản ghi mỏng cùng số hiệu + mã + mặt hàng
