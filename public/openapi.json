@@ -589,7 +589,18 @@
                           },
                           "moTa": {
                             "type": "string",
-                            "description": "Mô tả hàng nguyên văn trong phụ lục"
+                            "description": "Mô tả hàng nguyên văn trong phụ lục (dòng đầu tiên của nhóm)"
+                          },
+                          "moTaMau": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Tối đa 3 mô tả mẫu của các dòng đã gộp"
+                          },
+                          "soDong": {
+                            "type": "integer",
+                            "description": "Số dòng phụ lục gộp vào mục này (cùng văn bản, phụ lục, loại tác động, mức rủi ro, điều kiện)"
                           },
                           "phuLuc": {
                             "type": "string",

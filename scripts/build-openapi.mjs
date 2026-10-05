@@ -231,7 +231,7 @@ const TAX_RESPONSE = {
         tinhTrang: { type: 'string', enum: ['CON_HIEU_LUC', 'HET_HIEU_LUC', 'HET_HIEU_LUC_MOT_PHAN', 'TAM_NGUNG_HIEU_LUC', 'CHUA_CO_HIEU_LUC', 'CHUA_XAC_MINH'] },
         active: { type: 'boolean', description: 'Đang áp dụng tại hôm nay (giờ VN)' },
         match: { type: 'object', properties: { level: { type: 'string', enum: ['HS8', 'HS6', 'HS4'] }, code: str('Mã như ghi trong phụ lục') } },
-        moTa: str('Mô tả hàng nguyên văn trong phụ lục'), phuLuc: str('Phụ lục'), nhom: str('Nhóm/STT trong phụ lục'),
+        moTa: str('Mô tả hàng nguyên văn trong phụ lục (dòng đầu tiên của nhóm)'), moTaMau: { type: 'array', items: { type: 'string' }, description: 'Tối đa 3 mô tả mẫu của các dòng đã gộp' }, soDong: { type: 'integer', description: 'Số dòng phụ lục gộp vào mục này (cùng văn bản, phụ lục, loại tác động, mức rủi ro, điều kiện)' }, phuLuc: str('Phụ lục'), nhom: str('Nhóm/STT trong phụ lục'),
         loaiTacDong: { type: 'string', enum: ['KIEM_TRA_ATTP', 'KIEM_TRA_CHAT_LUONG', 'KIEM_DICH_DONG_VAT', 'KIEM_DICH_THUC_VAT', 'GIAY_PHEP', 'CAM_NHAP_KHAU', 'CAM_XUAT_KHAU', 'CONG_BO_HOP_QUY', 'DANG_KY_LUU_HANH', 'PHONG_VE_THUONG_MAI', 'CAT_GIAM_KIEM_TRA', 'KHAC'] },
         mucRuiRo: { type: 'string', enum: ['CAO', 'TRUNG_BINH', 'THAP'] }, dieuKien: str('Giới hạn phạm vi in kèm dòng (nếu có)'),
         trang: { type: 'integer' }, effectiveFrom: str('Ngày hiệu lực'), effectiveTo: str('Ngày hết hiệu lực'),
