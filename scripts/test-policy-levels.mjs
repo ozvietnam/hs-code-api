@@ -36,7 +36,21 @@ check('cờ kiểm dịch trong warnings nâng BLOCKING', classifyPolicy('', { r
 check('cs rỗng → NONE', classifyPolicy(null, null).policyLevel === 'NONE');
 
 const sock = mapTaxLookup('85366932');
-check('/api/tax 85366932: INFO, không bật cờ, giữ hasPolicyWarning cũ', sock.policyLevel === 'INFO' && sock.hasActionablePolicy === false && sock.hasPolicyWarning === true && sock.policyLines.length === 1);
+check('/api/tax 85366932: INFO, không bật cờ, giữ hasPolicyWarning cũ', sock.policyLevel === 'INFO' && sock.hasActionablePolicy === false && sock.hasPolicyWarning === true && sock.policyLines.every((l) => l.level === 'INFO'));
+
+// Bảng danh mục oz-wiki (hsListings) → mức + cờ (05/10/2026: 8536.69.99 có trong 36/2026 mà không bật cờ)
+const { listingLines } = require('../lib/policy-levels');
+const L = (o) => ({ soHieu: '36/2026/TT-BKHCN', active: true, match: { level: 'HS8', code: '85366999' }, loaiTacDong: 'CONG_BO_HOP_QUY', mucRuiRo: 'TRUNG_BINH', ...o });
+const c1 = classifyPolicy('Hàng hóa … cư dân biên giới (42/2019/TT-BCT & 34/2025/TT-BCT )', {}, [L({})]);
+check('danh mục khớp 8 số: công bố hợp quy → BLOCKING, bật cờ', c1.policyLevel === 'BLOCKING' && c1.hasActionablePolicy && c1.policyLines[0].text.includes('Phải công bố hợp quy (rủi ro trung bình) — 36/2026/TT-BKHCN'), JSON.stringify(c1.policyLines[0]));
+check('danh mục khớp theo nhóm 4/6 số → chỉ Lưu ý', classifyPolicy('', {}, [L({ match: { level: 'HS4', code: '8536' } })]).policyLevel === 'NOTICE');
+check('danh mục hết hiệu lực → bỏ', classifyPolicy('', {}, [L({ active: false })]).policyLines.length === 0);
+check('cấm nhập chỉ hàng đã qua sử dụng → Lưu ý', classifyPolicy('', {}, [L({ loaiTacDong: 'CAM_NHAP_KHAU', dieuKien: 'Chỉ cấm hàng ĐÃ QUA SỬ DỤNG' })]).policyLevel === 'NOTICE');
+check('cắt giảm kiểm tra → Thông tin', classifyPolicy('', {}, [L({ loaiTacDong: 'CAT_GIAM_KIEM_TRA' })]).policyLevel === 'INFO');
+check('trùng văn bản+thủ tục: bỏ dòng khớp nhóm khi đã khớp 8 số', listingLines([L({}), L({ match: { level: 'HS6', code: '853669' } })]).length === 1);
+check('cờ: hợp quy → requiresInspection', listingLines([L({})])[0].flag === 'requiresInspection');
+const s99 = mapTaxLookup('85366999');
+check('/api/tax 85366999: BLOCKING + requiresInspection (từ danh mục 36/2026)', s99.policyLevel === 'BLOCKING' && s99.hasActionablePolicy && s99.warnings?.requiresInspection === true, JSON.stringify([s99.policyLevel, s99.warnings?.requiresInspection]));
 
 // Toàn biểu thuế: dòng nào cũng có mức; số dòng chưa phân loại phải nhỏ (rà luật khi tăng).
 let total = 0;
