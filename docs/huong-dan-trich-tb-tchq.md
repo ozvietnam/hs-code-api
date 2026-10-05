@@ -62,6 +62,8 @@ Tệp nằm ở `data/community/tb-tchq/<nguồn>-<YYYY-MM-DD>.json`, `kind: "pr
 | `attributes.loaiTB` | | `"KET_QUA_PHAN_LOAI"` / `"XAC_DINH_TRUOC"` / `"DINH_CHINH"` | |
 | `attributes.ptpl` | | Số thông báo kết quả phân tích, vd `"1586/TB-PTPL"` | |
 | `attributes.dinhChinhCho` | | Thông báo đính chính: số hiệu thông báo bị sửa | |
+| `evidence.soHieu` | ✔ (từ 06/10) | Dòng "Số: …" ở đầu **chính trang đã mở**. Khác `source.reference` nghĩa là trang trả về văn bản khác → `Lỗi nguồn`, không lấy gì từ trang đó | Chép từ sheet thay vì từ trang |
+| `evidence.ketLuan` | ✔ (từ 06/10) | Câu kết luận nguyên văn có mã số. Phải nằm trong `reasonVi`; `hsCode` phải lấy từ câu này | **Sửa mã cho khớp lý do** — tuyệt đối không |
 
 Kết luận có điều kiện thì ghi điều kiện ở cuối `reasonVi`: `Điều kiện: …`.
 
@@ -85,7 +87,11 @@ Ví dụ minh họa định dạng. Số hiệu và nội dung không phải vă
   "attributes": { "bieuThue": "2022", "loaiTB": "KET_QUA_PHAN_LOAI", "ptpl": "567/TB-KĐ4" },
   "reasonVi": "Thuộc nhóm 39.26 \"Các sản phẩm khác bằng plastic…\", phân nhóm 3926.90 \"- Loại khác\", mã số 3926.90.99 \"- - - Loại khác\". Căn cứ: sản phẩm bằng plastic, không phải khuôn đúc của nhóm 84.80 vì không dùng để tạo hình vật liệu, chỉ để định vị chi tiết khi hàn.",
   "girRule": "GIR 1",
-  "confusedWith": ["84807190"]
+  "confusedWith": ["84807190"],
+  "evidence": {
+    "soHieu": "Số: 1234/TB-TCHQ",
+    "ketLuan": "mã số 3926.90.99 \"- - - Loại khác\""
+  }
 }
 ```
 
@@ -104,6 +110,12 @@ Các bước dưới đây J2 làm tự động. Người nhập tay thì tự s
    - cùng một bản ghi (số hiệu + năm + mã + mô tả) nằm ở hai tệp.
 
    Lý do dưới 150 ký tự chỉ cảnh báo, nhưng sẽ bị coi là bản mỏng.
+
+   Từ 06/10 thêm: thiếu `evidence`, số hiệu trên trang khác số hiệu cần lấy, mã không có trong câu kết luận đã chép,
+   mô tả bị cắt giữa chừng.
+
+   **Bộ kiểm báo lỗi thì sửa cách đọc, không sửa dữ liệu cho qua.** Không đổi `hsCode` cho khớp lý do, không thêm
+   lời tự viết vào mô tả cho đủ độ dài. Không lấy được từ văn bản thì ghi `Lỗi nguồn` / `Không kết luận` lên sheet.
 
 ## 6. Nộp và gộp
 

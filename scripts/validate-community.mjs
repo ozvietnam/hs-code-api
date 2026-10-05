@@ -134,6 +134,10 @@ function validateShape(file, doc) {
 // một bản ghi. Tệp cũ hơn giữ nguyên (đã gộp), tệp mới phải đạt chuẩn của
 // docs/huong-dan-trich-tb-tchq.md mới vào kho.
 const STRICT_FROM = '2026-10-05';
+// Từ 06/10: phải chép dòng "Số: …" và câu kết luận của chính trang đã mở. Đợt sửa 05/10 tối,
+// trang TVPL trả về văn bản khác, agent lấy lý do của văn bản đó rồi ĐỔI MÃ cho khớp
+// (thép thanh → 3824.99.99, sô cô la → 3402.11.90) và bịa thêm mô tả cho đủ 20 ký tự.
+const EVIDENCE_FROM = '2026-10-06';
 const BIEU_THUE = new Set(['2012', '2017', '2022']);
 const LOAI_TB = new Set(['KET_QUA_PHAN_LOAI', 'XAC_DINH_TRUOC', 'DINH_CHINH']);
 const THIN_REASON = 150;
@@ -187,6 +191,23 @@ function validateQuality(file, doc) {
     if (!/^https?:\/\//.test(String(r.source.url || ''))) problem(file, `${at} (${ref}): thiếu source.url trang chi tiết`);
     if (!BIEU_THUE.has(String(r.attributes?.bieuThue || ''))) problem(file, `${at} (${ref}): attributes.bieuThue phải là 2012 / 2017 / 2022`);
     if (r.attributes?.loaiTB && !LOAI_TB.has(r.attributes.loaiTB)) problem(file, `${at} (${ref}): attributes.loaiTB không hợp lệ`);
+    if (String(doc.submittedAt || '') >= EVIDENCE_FROM) {
+      const ev = r.evidence || {};
+      const nref = (x) => String(x || '').toUpperCase().replace(/^SỐ\s*:?\s*/i, '').replace(/\s+/g, '');
+      if (!ev.soHieu) {
+        problem(file, `${at} (${ref}): thiếu evidence.soHieu — chép dòng "Số: …" ở đầu trang đã mở`);
+      } else if (nref(ev.soHieu) !== nref(ref)) {
+        problem(file, `${at} (${ref}): trang đã mở là ${ev.soHieu}, không phải ${ref} → ghi Lỗi nguồn lên sheet, KHÔNG lấy nội dung trang này`);
+      }
+      const kl = String(ev.ketLuan || '');
+      if (kl.trim().length < 30) {
+        problem(file, `${at} (${ref}): thiếu evidence.ketLuan — chép nguyên văn câu kết luận có mã số`);
+      } else {
+        if (!hsInText(r.hsCode, kl)) problem(file, `${at} (${ref}): mã ${r.hsCode} không có trong câu kết luận đã chép. Mã phải lấy từ câu kết luận, không sửa mã cho khớp`);
+        if (!reason.replace(/\s+/g, ' ').includes(kl.replace(/\s+/g, ' ').trim())) problem(file, `${at} (${ref}): reasonVi phải chứa nguyên văn evidence.ketLuan`);
+      }
+      if (unbalanced(desc)) problem(file, `${at} (${ref}): description có ngoặc mở không đóng — có vẻ bị cắt giữa chừng`);
+    }
     if (reason.trim().length < 80) {
       problem(file, `${at} (${ref}): reasonVi dưới 80 ký tự — chép nguyên văn chuỗi nhóm → phân nhóm → mã và căn cứ`);
       return;

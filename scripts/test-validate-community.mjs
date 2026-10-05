@@ -53,5 +53,18 @@ assert('chặn cùng bản ghi ở hai tệp', both.status === 1 && /trùng bả
 r = run('old', doc([{ ...good, reasonVi: 'ngắn' }], '2026-09-24'));
 assert('tệp cũ (trước 05/10) không bị lớp mới chặn', r.status === 0, r.out);
 
+// Từ 06/10: evidence.soHieu + evidence.ketLuan của chính trang đã mở.
+const ev = { soHieu: 'Số: 1573/TB-TCHQ', ketLuan: 'mã số 7407.10.40 "- - Dạng thanh và que khác"' };
+r = run('ev-ok', doc([{ ...good, evidence: ev }], '2026-10-06'));
+assert('có evidence khớp thì qua', r.status === 0, r.out);
+r = run('ev-missing', doc([good], '2026-10-06'));
+assert('thiếu evidence bị chặn', r.status === 1 && /evidence\.soHieu/.test(r.out), r.out);
+r = run('ev-other', doc([{ ...good, evidence: { ...ev, soHieu: 'Số: 1599/TB-TCHQ' } }], '2026-10-06'));
+assert('trang là văn bản khác bị chặn', r.status === 1 && /không phải 1573/.test(r.out), r.out);
+r = run('ev-code', doc([{ ...good, hsCode: '38249999', evidence: ev }], '2026-10-06'));
+assert('mã không có trong câu kết luận bị chặn', r.status === 1 && /không có trong câu kết luận/.test(r.out), r.out);
+r = run('ev-desc', doc([{ ...good, description: good.description + ' (- Thành phần: đồng 99' , evidence: ev }], '2026-10-06'));
+assert('mô tả bị cắt bị chặn', r.status === 1 && /description có ngoặc mở/.test(r.out), r.out);
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
