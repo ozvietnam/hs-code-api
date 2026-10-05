@@ -161,6 +161,7 @@ check('khóa đã bổ sung không gửi AI rút lại', !(lastExtractUser?.need
   const rl = await buildDeclarationSheet({ ...SOCKET, titleZh: SOCKET.titleZh + '长', hsCode: '85366932' });
   llmTier.callLLMJson = saved;
   const d = rl.json.description.customsDescription;
+  check('tên dài: không cụt ở từ nối', !/(kèm|có|và|với|cho|loại|kiểu);/.test(d), d);
   check('tên dài: vẫn đủ 250V, 10A, số chấu, KT, ≤200', ['250V', '10A', '1 ổ 2 chấu + 2 ổ 3 chấu', 'KT 86mm × 86mm'].every((x) => d.includes(x)) && d.length <= 200, `${d.length} ${d}`);
 }
 
