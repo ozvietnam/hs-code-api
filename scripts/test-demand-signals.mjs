@@ -48,6 +48,11 @@ check('đã có bảng KTCN 2026 cho mã → không báo', !signalsFromSheet({ s
 check('không mã HS → không tín hiệu', signalsFromSheet({ sheet: { ...SHEET, hsCode: null } }).length === 0);
 check('nhãn đã có rủi ro trong watchlist → không báo "chưa theo dõi"', !signalsFromSheet({ sheet: { ...SHEET, trademark: { ...SHEET.trademark, risk: { matched: true } } }, mapped: MAPPED }).some((s) => s.t === 'BRAND_UNLISTED'));
 
+check('无品牌 không phải "nhãn chỉ có chữ Hán"', !signalsFromSheet({ sheet: { ...SHEET, fields: [{ key: 'brand', status: 'UNTRANSLATED', valueZh: '无品牌' }] }, mapped: MAPPED }).some((s) => s.t === 'BRAND_HAN_ONLY'));
+const { extractSpecs } = require('../lib/extract-specs');
+const ex = await extractSpecs({ specsZh: [{ key: '品牌', value: '无品牌' }] }, { llm: async () => ({ json: { attributes: [] } }) });
+check('无品牌 → "không nhãn hiệu" (tất định)', ex.attributes.find((a) => a.key === 'brand')?.valueVi === 'không nhãn hiệu', JSON.stringify(ex.attributes));
+
 // Ghi + gom: 5 lần mã 85366932 → Cao; 1 lần mã khác → Thấp; tín hiệu quá 90 ngày bị bỏ
 fs.rmSync(dataPath('demand-signals.jsonl'), { force: true });
 for (let i = 0; i < 5; i += 1) recordSignals(sig, '2026-10-05');
