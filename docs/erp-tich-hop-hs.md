@@ -118,6 +118,8 @@ trả thêm `policyBasisReview`:
   `match.level`: `HS8` khớp đúng mã; `HS4`/`HS6` khớp theo nhóm → **phải hiện `dieuKien`** cho nhân viên
   (phụ lục có thể chỉ áp cho một phần nhóm). Chỉ dùng mục `active: true` để báo "mã này thuộc danh mục…";
   không có `hsListings` **không** có nghĩa là không phải kiểm tra — bảng của nhiều thông tư chưa được trích.
+  `loaiTacDong: CAT_GIAM_KIEM_TRA` là danh mục hàng **đã được bỏ** kiểm tra (vd 765/QĐ-BCT) — **không** hiện như
+  nghĩa vụ; danh mục cấm "đã qua sử dụng" luôn kèm `dieuKien`, ERP phải hiện điều kiện, không báo cấm cho hàng mới.
 
 ## 4. Gửi lại mã đã sửa — `/api/feedback`
 
