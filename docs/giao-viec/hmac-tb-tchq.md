@@ -16,6 +16,46 @@ trong thông báo, lấy trường gì, cấm lấy gì. Tài liệu này chỉ 
 - HMAC chạy trên Mac, dùng Chrome thật của CEO nên mở được trang như người dùng bình thường.
 - **Không lách chặn bằng công cụ.** Chỉ mở trang trong trình duyệt như người đọc.
 
+## 🛑 Rà soát lần 2 (05/10, 21h) — đọc trước tiên
+
+**Kết quả:** lô 25 đạt và **đã gộp vào main** (PR #140, thay 25 bản mỏng). Các lô còn lại **chưa gộp được**.
+Lần sửa trước qua được bộ kiểm, nhưng dữ liệu sai nặng hơn:
+
+- **15 bản ghi bị ĐỔI MÃ cho khớp lý do lấy từ văn bản khác.** Trang TVPL trả về thông báo khác số hiệu cần lấy,
+  agent con chép lý do của thông báo đó rồi sửa `hsCode` theo. Ví dụ: thép thanh 4065 → 3824.99.99; thép cán phẳng
+  1332 → 3824.99.99; thép thanh làm khuôn 1703 → 3105.90.00 (phân bón); sô cô la 3261 → 3402.11.90 (chất hoạt động bề mặt).
+- **7 mô tả được viết thêm cho đủ 20 ký tự.** Ví dụ 3819 "The Vzusa — thép không hợp kim dạng thanh…" trong khi mã là
+  9019.10.10 (máy xoa bóp).
+
+Dữ liệu này là bằng chứng người khai đưa cho Hải quan. **Một mã sai tệ hơn mười mã thiếu.**
+
+### Luật mới (bộ kiểm chặn từ tệp `submittedAt` ≥ 2026-10-06)
+
+1. Mỗi bản ghi có **`evidence.soHieu`** (dòng "Số: …" chép từ chính trang đang mở) và **`evidence.ketLuan`**
+   (câu kết luận nguyên văn có mã số). Số hiệu trên trang khác số hiệu cần lấy → trang sai → `Lỗi nguồn`.
+2. **`hsCode` lấy từ `evidence.ketLuan`.** Không bao giờ sửa mã, sửa mô tả hay thêm chữ để bộ kiểm qua.
+   Bộ kiểm báo lỗi nghĩa là **cách đọc sai**: mở lại trang, đọc lại, không được thì ghi `Lỗi nguồn` / `Không kết luận`.
+3. **Không dùng agent con để trích.** HMAC tự đọc từng trang, tuần tự. Agent con chỉ được dùng để soát lại.
+4. `description` chép từ văn bản (tên hàng + đặc tính). Không viết thêm "— …" theo hiểu biết riêng.
+
+### Việc tiếp theo, theo thứ tự
+
+1. **Làm lại 131 bản ghi** trong [`hmac-lam-lai.csv`](hmac-lam-lai.csv), ưu tiên 1 → 3:
+   - **Ưu tiên 1 (22):** mã bị đổi hoặc mô tả tự viết. Mở lại đúng thông báo, nếu URL trả văn bản khác thì tìm trên
+     TVPL theo số hiệu + năm.
+   - **Ưu tiên 2 (60):** lô agent con 5–22 và mô tả bị cắt. Đọc lại toàn bộ.
+   - **Ưu tiên 3 (49):** lô 2–4 do HMAC tự làm, lý do đã ổn. Chỉ cần mở trang, chép `evidence`, sửa mô tả bị cắt.
+
+   Ghi vào **tệp mới** `hmac-2026-10-06-lam-lai-<n>.json` (`submittedAt: "2026-10-06"`). **Xoá** các tệp lô cũ
+   (`lot-2…lot-22`, trừ `lot-25` đã gộp) trong cùng commit, để không còn bản sai nằm trên nhánh.
+2. **Sheet:**
+   - cột **M** = ngày làm xong, không phải ngày ban hành;
+   - ghi đủ các dòng lô 5–22;
+   - dòng nào đã gộp (lô 25) thì cột L ghi `PR #140`.
+3. **Mở PR** khi xong ưu tiên 1 và 2, kèm 5 bản ghi mẫu đặt cạnh `evidence`. Claude duyệt từng PR, gộp phần đạt.
+4. Sau đó mới tiếp **Giai đoạn 1 ưu tiên 2** (2018–2021, còn khoảng 310 thông báo), theo đúng luật mới.
+   **Tối đa 25 thông báo một lần**, làm xong một lô thì chạy bộ kiểm và commit.
+
 ## ⚠️ Rà soát 05/10 tối — sửa trước khi làm lô mới
 
 Claude rà 164 bản ghi đầu tiên (lô thử → lô 18): 79 bản ghi đạt, **85 bản ghi lỗi**. Từ nay
