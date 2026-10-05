@@ -76,6 +76,15 @@
           "description": "Thuộc tính phân loại theo data/attributes.json — vd chatLieu, congSuat, dienAp",
           "additionalProperties": { "type": ["string", "number", "boolean"] }
         },
+        "evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Bằng chứng đọc đúng văn bản (bắt buộc với tiền lệ TB-TCHQ nộp từ 2026-10-06): dòng số hiệu và câu kết luận chép nguyên văn từ chính trang đã mở",
+          "properties": {
+            "soHieu": { "type": "string", "maxLength": 100, "description": "Dòng 'Số: …' ở đầu văn bản, vd '1234/TB-TCHQ'" },
+            "ketLuan": { "type": "string", "maxLength": 1000, "description": "Câu kết luận nguyên văn có mã số, vd 'thuộc nhóm 39.26 … mã số 3926.90.99 …'" }
+          }
+        },
         "girRule": { "type": "string", "pattern": "^GIR ?[1-6]( ?\\([abc]\\))?$", "description": "Quy tắc GIR làm căn cứ, nếu biết" },
         "reasonVi": { "type": "string", "maxLength": 1000, "description": "Vì sao phân loại như vậy — phần quý nhất của đóng góp" },
         "confusedWith": {

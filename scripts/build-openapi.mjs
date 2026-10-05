@@ -512,6 +512,7 @@ const DATASET_META = {
   declaration_fields: ['Danh mục trường cần khai theo nhóm hàng (?hs=4/6/8 số), câu hỏi VI + ZH', '/api/declaration-fields'],
   attribute_synonyms: ['Từ điển nhãn thông số tiếng Trung → khóa chuẩn (dữ liệu mở CC BY 4.0)', '/api/attribute-synonyms'],
   ktcn_regime: ['Khung kiểm tra chuyên ngành 2026 (NĐ 37/2026, 3 mức rủi ro): danh mục mới từng bộ + căn cứ cũ đã bị thay', '/api/ktcn-regime'],
+  demand: ['Nhu cầu bổ sung tri thức rút từ hàng thật (phiếu hồ sơ khai báo): mã HS chưa đối chiếu KTCN 2026, nhãn hiệu chưa theo dõi, chữ Trung từ điển chưa hiểu, ô hay thiếu — chỉ mức ưu tiên, không số lượng/tên hàng/khách (?days=90)', '/api/demand'],
   legal_status: ['Hiệu lực văn bản theo sổ đăng ký cộng đồng oz-wiki-plhq (?so=28/2026/TT-BCT,1182/QĐ-BCT); không tham số → văn bản thư viện lệch tình trạng với sổ', '/api/legal-status'],
 };
 

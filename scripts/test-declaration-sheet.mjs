@@ -165,6 +165,17 @@ check('khóa đã bổ sung không gửi AI rút lại', !(lastExtractUser?.need
   check('tên dài: vẫn đủ 250V, 10A, số chấu, KT, ≤200', ['250V', '10A', '1 ổ 2 chấu + 2 ổ 3 chấu', 'KT 86mm × 86mm'].every((x) => d.includes(x)) && d.length <= 200, `${d.length} ${d}`);
 }
 
+// 3d. Chặn giá trị sai loại: tên nước không là nhãn hiệu; câu mô tả không là model
+{
+  const { plausibleValue } = require('../lib/extract-specs');
+  check('brand "Đức" bị loại', !plausibleValue('brand', 'Đức') && !plausibleValue('brand', 'Sản xuất tại Đức'));
+  check('brand thật giữ', plausibleValue('brand', 'Marc Lichte') && plausibleValue('brand', 'AIBUZ'));
+  extractReply = { attributes: [] };
+  const rk = await buildDeclarationSheet({ ...SOCKET, titleZh: SOCKET.titleZh + '旧', hsCode: '85366932', known: [{ key: 'brand', valueVi: 'Đức', source: 'SITE' }, { key: 'modelNumber', valueVi: 'Bộ lọc nước Starry Silver bốn tốc độ', source: 'SITE' }] });
+  check('known sai loại (lần trước lưu) bị bỏ, lấy lại từ trang', rk.json.fields.find((x) => x.key === 'brand')?.valueVi === 'Marc Lichte' && rk.json.fields.find((x) => x.key === 'modelNumber')?.valueVi !== 'Bộ lọc nước Starry Silver bốn tốc độ', JSON.stringify(rk.json.fields.filter((x) => ['brand', 'modelNumber'].includes(x.key))));
+  check('model câu mô tả bị loại, mã giữ', !plausibleValue('modelNumber', 'Bộ lọc nước Starry Silver bốn tốc độ') && plausibleValue('modelNumber', 'YLD-417') && plausibleValue('modelNumber', 'loại 86'));
+}
+
 // 4. Không có mã HS → chỉ ô chung, chưa viết mô tả
 extractReply = GOOD_REPLY;
 const r4 = await buildDeclarationSheet({ ...SOCKET });
