@@ -38,6 +38,10 @@ writeFileSync(join(dataDir, 'precedents.json'), JSON.stringify({
     { tbTchqNumber: '1049/TB-TCHQ', productName: 'Khuôn nhựa dùng để hàn Cell Pin', technicalSpec: null, year: 2019, outcome: '39269099', sourceFile: 'tb_tchq_index.json' },
     { tbTchqNumber: '1049/TB-TCHQ', productName: 'Tấm đệm cao su silicon', technicalSpec: null, year: 2024, outcome: '39269099', sourceFile: 'tb_tchq_index.json' },
   ],
+  // Tên lấy từ tiêu đề TVPL, dính đuôi "do … ban hành", tên thương mại — mô tả mới gần như không trùng từ.
+  '27101989': [
+    { tbTchqNumber: '1005/TB-TCHQ', productName: 'NOX-RUST 311HM do Tổng cục trưởng Tổng cục Hải quan ban hành', technicalSpec: ', công dụng:', year: 2025, outcome: '27101989', sourceFile: 'tb_tchq_index.json', sourceUrl: 'https://thuvienphapluat.vn/van-ban/Xuat-nhap-khau/Thong-bao-1005-TB-TCHQ-2025-x-646486.aspx' },
+  ],
 }, null, 2));
 writeFileSync(join(dataDir, 'conflicts.json'), JSON.stringify({}, null, 2));
 
@@ -64,6 +68,36 @@ writeFileSync(join(communityDir, 'tien-le-bom.json'), JSON.stringify({
     girRule: 'GIR 1',
     reasonVi: 'Bơm ly tâm dùng nước sạch, không phải bơm nhiên liệu.',
     confusedWith: ['84133090'],
+  }],
+}));
+
+writeFileSync(join(communityDir, 'doc-lai-1005.json'), JSON.stringify({
+  kind: 'precedent',
+  contributor: { name: 'HMAC' },
+  license: 'CC-BY-SA-4.0',
+  records: [{
+    hsCode: '27101989',
+    description: 'Chế phẩm dầu chống gỉ cho chi tiết kim loại, hàm lượng dầu có nguồn gốc dầu mỏ trên 70% khối lượng, phân đoạn dầu trung',
+    source: { type: 'TB-TCHQ', reference: '1005/TB-TCHQ', issuedDate: '2025-02-27' },
+    reasonVi: 'Thuộc nhóm 27.10 "Dầu có nguồn gốc từ dầu mỏ…", phân nhóm 2710.19 "- Loại khác", mã số 2710.19.89 "- - - Dầu trung khác và các chế phẩm khác". Chế phẩm chứa trên 70% dầu trung có nguồn gốc dầu mỏ.',
+  }],
+}));
+
+// Hai tệp cùng trích một mặt hàng của 720/TB-TCHQ: bản ngắn + bản đủ — gộp nhiều lần phải ổn định.
+writeFileSync(join(communityDir, 'a-ban-ngan-720.json'), JSON.stringify({
+  kind: 'precedent', contributor: { name: 'agent-a' }, license: 'CC-BY-SA-4.0',
+  records: [{
+    hsCode: '32089090', description: 'Sơn bóng từ polymer acrylic BECKRY TOP 25 dạng lỏng',
+    source: { type: 'TB-TCHQ', reference: '720/TB-TCHQ', issuedDate: '2016-01-26' },
+    reasonVi: 'Chất phủ từ polyme tổng hợp phân tán trong môi trường không chứa nước → 3208.90.90.',
+  }],
+}));
+writeFileSync(join(communityDir, 'b-ban-du-720.json'), JSON.stringify({
+  kind: 'precedent', contributor: { name: 'agent-b' }, license: 'CC-BY-SA-4.0',
+  records: [{
+    hsCode: '32089090', description: 'Sơn bóng từ polymer acrylic BECKRY TOP 25: chất phủ từ epoxy acrylate, dung môi hữu cơ, dạng lỏng',
+    source: { type: 'TB-TCHQ', reference: '720/TB-TCHQ', issuedDate: '2016-01-26' },
+    reasonVi: 'Thuộc nhóm 32.08 "Sơn và vecni… làm từ các loại polyme tổng hợp… đã phân tán hoặc hòa tan trong môi trường không chứa nước", phân nhóm 3208.90 "- Loại khác", mã số 3208.90.90 "- - Loại khác".',
   }],
 }));
 
@@ -119,6 +153,8 @@ assert('bản thay có lý do + GIR + ngày', up && up.technicalSpec.length > 15
 assert('bản thay giữ link cũ khi bản mới không có', up?.sourceUrl?.includes('Thong-bao-1049'));
 assert('không đụng TB cùng số khác năm', p1049.some((p) => p.year === 2019 && p.sourceFile === 'tb_tchq_index.json'));
 assert('không đụng mặt hàng khác cùng TB', p1049.some((p) => /silicon/.test(p.productName) && p.sourceFile === 'tb_tchq_index.json'));
+const p1005 = precedents['27101989'];
+assert('bản mỏng duy nhất cùng TB/năm/mã được THAY dù tên cũ không trùng từ', p1005.length === 1 && /dầu chống gỉ/.test(p1005[0].productName), JSON.stringify(p1005.map((p) => p.productName)));
 
 const again = spawnSync(process.execPath, [
   join(root, 'scripts', 'merge-community.mjs'),
@@ -128,6 +164,11 @@ const again = spawnSync(process.execPath, [
 const after = JSON.parse(readFileSync(join(dataDir, 'precedents.json'), 'utf8'));
 assert('chạy lại không nhân bản', after['84137090'].length === 1, `n=${after['84137090']?.length}`);
 assert('chạy lại không nhân bản bản đã thay', after['39269099'].length === 3, `n=${after['39269099']?.length}`);
+assert('chạy lại không nhân bản 1005', after['27101989'].length === 1, `n=${after['27101989']?.length}`);
+assert('720: chỉ giữ bản đủ', precedents['32089090'].length === 1 && precedents['32089090'][0].technicalSpec.length > 150, `n=${precedents['32089090']?.length}`);
+spawnSync(process.execPath, [join(root, 'scripts', 'merge-community.mjs'), '--community-dir', communityDir, '--data-dir', dataDir], { encoding: 'utf8' });
+const third = JSON.parse(readFileSync(join(dataDir, 'precedents.json'), 'utf8'));
+assert('gộp lần 2, lần 3 không dao động', after['32089090'].length === 1 && third['32089090'].length === 1 && JSON.stringify(third) === JSON.stringify(after));
 assert('chạy lại exit 0', again.status === 0, again.stderr || again.stdout);
 
 console.log(`\n${passed}/${passed + failed} passed`);
