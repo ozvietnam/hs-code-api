@@ -76,6 +76,14 @@ console.log('\n== Cách đánh giá: chưa biết thì hỏi, không chốt bừ
   check('bảng chưa verified thì không được RULE_TABLE', shape.tableVerified === false);
 }
 
+console.log('\n== Chữ Hán: khớp theo chuỗi con (không có khoảng trắng giữa từ) ==');
+{
+  const q = '86型墙壁暗装电源插座带开关 10A 250V';
+  const r = dt.resolveHeading('8536', { text: q, parsed: parseCommodityQuery(q) });
+  check('"…电源插座带开关…" nhận ra 插座 dù dính liền chữ khác', r.factSources?.apparatusKind === 'detect' && r.factsUsed?.apparatusKind === 'plugSocket');
+  check('ổ cắm kèm công tắc → GIR 3(b) đặc trưng là ổ cắm → 85366992', r.status === 'RESOLVED' && r.hs === '85366992');
+}
+
 console.log('\n== tests/decision-cases.json ==');
 {
   const cases = JSON.parse(readFileSync(join(ROOT, 'tests', 'decision-cases.json'), 'utf8')).cases;
