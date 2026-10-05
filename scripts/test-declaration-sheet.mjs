@@ -170,6 +170,9 @@ check('khóa đã bổ sung không gửi AI rút lại', !(lastExtractUser?.need
   const { plausibleValue } = require('../lib/extract-specs');
   check('brand "Đức" bị loại', !plausibleValue('brand', 'Đức') && !plausibleValue('brand', 'Sản xuất tại Đức'));
   check('brand thật giữ', plausibleValue('brand', 'Marc Lichte') && plausibleValue('brand', 'AIBUZ'));
+  extractReply = { attributes: [] };
+  const rk = await buildDeclarationSheet({ ...SOCKET, titleZh: SOCKET.titleZh + '旧', hsCode: '85366932', known: [{ key: 'brand', valueVi: 'Đức', source: 'SITE' }, { key: 'modelNumber', valueVi: 'Bộ lọc nước Starry Silver bốn tốc độ', source: 'SITE' }] });
+  check('known sai loại (lần trước lưu) bị bỏ, lấy lại từ trang', rk.json.fields.find((x) => x.key === 'brand')?.valueVi === 'Marc Lichte' && rk.json.fields.find((x) => x.key === 'modelNumber')?.valueVi !== 'Bộ lọc nước Starry Silver bốn tốc độ', JSON.stringify(rk.json.fields.filter((x) => ['brand', 'modelNumber'].includes(x.key))));
   check('model câu mô tả bị loại, mã giữ', !plausibleValue('modelNumber', 'Bộ lọc nước Starry Silver bốn tốc độ') && plausibleValue('modelNumber', 'YLD-417') && plausibleValue('modelNumber', 'loại 86'));
 }
 
