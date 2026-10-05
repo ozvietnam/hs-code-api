@@ -165,6 +165,14 @@ check('khóa đã bổ sung không gửi AI rút lại', !(lastExtractUser?.need
   check('tên dài: vẫn đủ 250V, 10A, số chấu, KT, ≤200', ['250V', '10A', '1 ổ 2 chấu + 2 ổ 3 chấu', 'KT 86mm × 86mm'].every((x) => d.includes(x)) && d.length <= 200, `${d.length} ${d}`);
 }
 
+// 3d. Chặn giá trị sai loại: tên nước không là nhãn hiệu; câu mô tả không là model
+{
+  const { plausibleValue } = require('../lib/extract-specs');
+  check('brand "Đức" bị loại', !plausibleValue('brand', 'Đức') && !plausibleValue('brand', 'Sản xuất tại Đức'));
+  check('brand thật giữ', plausibleValue('brand', 'Marc Lichte') && plausibleValue('brand', 'AIBUZ'));
+  check('model câu mô tả bị loại, mã giữ', !plausibleValue('modelNumber', 'Bộ lọc nước Starry Silver bốn tốc độ') && plausibleValue('modelNumber', 'YLD-417') && plausibleValue('modelNumber', 'loại 86'));
+}
+
 // 4. Không có mã HS → chỉ ô chung, chưa viết mô tả
 extractReply = GOOD_REPLY;
 const r4 = await buildDeclarationSheet({ ...SOCKET });
