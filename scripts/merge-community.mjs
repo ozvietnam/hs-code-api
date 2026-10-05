@@ -137,8 +137,12 @@ const foldWords = (s) => String(s || '').toLowerCase().normalize('NFD').replace(
   .replace(/đ/g, 'd').split(/[^a-z0-9]+/).filter((w) => w.length >= 3);
 
 /** ≥ 60 % từ trong tên hàng cũ có mặt trong mô tả mới — cùng một mặt hàng (một TB có thể có nhiều mặt hàng cùng mã). */
+// Bảng cũ tb_tchq_index.json lấy tên hàng từ tiêu đề TVPL nên dính đuôi "… do Tổng cục trưởng
+// Tổng cục Hải quan ban hành" — đuôi đó không phải tên hàng, bỏ trước khi so.
+const stripTitleTail = (s) => String(s || '').replace(/\s+do\s+[^]{0,80}?ban hành\s*$/i, '');
+
 function sameGoods(oldName, newDesc) {
-  const want = [...new Set(foldWords(oldName))];
+  const want = [...new Set(foldWords(stripTitleTail(oldName)))];
   if (!want.length) return false;
   const have = new Set(foldWords(newDesc));
   return want.filter((w) => have.has(w)).length / want.length >= 0.6;
@@ -148,12 +152,28 @@ function sameGoods(oldName, newDesc) {
 function findThinTwin(list, entry) {
   const ref = normRef(entry.tbTchqNumber);
   if (!ref) return -1;
-  return list.findIndex((p) => p !== entry
+  const sameRef = list.filter((p) => p !== entry
     && normRef(p.tbTchqNumber) === ref
+    && !(p.year && entry.year && Number(p.year) !== Number(entry.year)));
+  const cands = sameRef.filter((p) => isThin(p)
+    && String(entry.technicalSpec || '').length > String(p.technicalSpec || '').length);
+  const hit = cands.find((p) => sameGoods(p.productName, entry.productName))
+    // Tên trong bảng cũ thường là tên thương mại/tiếng Anh, mô tả mới viết theo đặc tính nên ít
+    // trùng từ. Cùng số hiệu + năm + mã mà kho chỉ có ĐÚNG MỘT dòng, lại là dòng bảng cũ, thì đó là
+    // cùng mặt hàng. Có dòng thứ hai (mặt hàng khác, hay bản đầy đủ đã gộp) thì không đoán.
+    || (sameRef.length === 1 && cands[0] === sameRef[0] && sameRef[0].sourceFile === 'tb_tchq_index.json' ? sameRef[0] : null);
+  return hit ? list.indexOf(hit) : -1;
+}
+
+/** Bản ghi đầy đủ hơn của cùng số hiệu + năm + mặt hàng mà `entry` (đang mỏng) sẽ bị nó thay. */
+function findBetter(list, entry) {
+  const ref = normRef(entry.tbTchqNumber);
+  const len = String(entry.technicalSpec || '').length;
+  if (!ref || len >= THIN_REASON) return null;
+  return list.find((p) => normRef(p.tbTchqNumber) === ref
     && !(p.year && entry.year && Number(p.year) !== Number(entry.year))
-    && isThin(p)
-    && String(entry.technicalSpec || '').length > String(p.technicalSpec || '').length
-    && sameGoods(p.productName, entry.productName));
+    && String(p.technicalSpec || '').length > len
+    && sameGoods(entry.productName, p.productName)) || null;
 }
 
 function mergePrecedent(precedents, seen, doc, rec, fileRel, stats) {
@@ -177,8 +197,28 @@ function mergePrecedent(precedents, seen, doc, rec, fileRel, stats) {
     ...(rec.source?.url ? { sourceUrl: rec.source.url } : {}),
   };
   if (!Array.isArray(precedents[hs])) precedents[hs] = [];
+  // Chính bản ghi này là bản mỏng và kho đã có bản đầy đủ hơn của cùng mặt hàng (thường là tệp đọc
+  // lại toàn văn) → không thêm lại. Thiếu bước này thì bản mỏng bị xoá ở lần gộp này rồi lại được
+  // thêm từ tệp gốc của nó ở lần sau — kho dao động mỗi lần chạy.
+  if (findBetter(precedents[hs], entry)) {
+    const own = precedents[hs].findIndex((p) => p.sourceFile === entry.sourceFile
+      && dedupKey(hs, { source: { reference: p.tbTchqNumber }, description: p.productName }) === key);
+    if (own >= 0) {
+      precedents[hs].splice(own, 1);
+      stats.removedThin += 1;
+    } else {
+      stats.superseded += 1;
+    }
+    seen.add(key);
+    return;
+  }
   const twin = findThinTwin(precedents[hs], entry);
-  if (twin >= 0 && seen.has(key)) {
+  const keyOf = (p) => dedupKey(hs, { source: { reference: p.tbTchqNumber }, description: p.productName });
+  // Khoá chỉ lấy 40 ký tự đầu mô tả nên bản mỏng và bản đủ có thể trùng khoá: phải thấy bản đủ
+  // thật trong kho mới được xoá bản mỏng, không thì là lần gộp đầu → thay.
+  const fullInStore = twin >= 0 && precedents[hs].some((p, i) => i !== twin && keyOf(p) === key
+    && String(p.technicalSpec || '').length >= String(entry.technicalSpec || '').length);
+  if (twin >= 0 && seen.has(key) && fullInStore) {
     // Bản đầy đủ đã có trong kho từ lần gộp trước → bản mỏng là dòng thừa.
     precedents[hs].splice(twin, 1);
     stats.removedThin += 1;
@@ -247,6 +287,7 @@ const stats = {
   precedents: 0,
   upgraded: 0,
   removedThin: 0,
+  superseded: 0,
   conflicts: 0,
   queued: 0,
 };
