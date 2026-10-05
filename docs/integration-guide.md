@@ -317,6 +317,17 @@ Gửi `known` (ô đã rút lần trước) để đỡ một lượt AI.
 TNTX, cửa khẩu phụ, phòng vệ thương mại) | `INFO` (không ràng buộc NK thương mại, vd danh mục cư dân biên giới).
 **Bật cờ cảnh báo theo `hasActionablePolicy`**, không theo việc cột chính sách có chữ.
 
+### Nhu cầu từ hàng thật — `GET /api/demand` (công khai)
+
+Mỗi lần lập phiếu có mã HS, hs-code-api ghi lại chỗ hổng tri thức của món đó (không định danh):
+mã HS chưa đối chiếu danh mục KTCN 2026, nhãn hiệu chưa có trong danh sách theo dõi, chữ gợi hàng nhái,
+ô bắt buộc hay thiếu, nhãn thông số tiếng Trung từ điển chưa hiểu. `GET /api/demand?days=90` trả bản gom —
+**chỉ mức ưu tiên Cao/Vừa/Thấp, không số lượng, tên hàng, link, shop hay khách** (CEO chốt 05/10/2026).
+
+Ai dùng:
+- **oz-wiki-plhq** — `tools/nhu-cau.mjs` kéo `ktcn2026` vào báo cáo điểm mù → việc trích bảng mã HS / hợp quy.
+- **hs-code-api** — workflow `demand-issue` hằng ngày cập nhật issue "Nhu cầu từ hàng thật (tự động)" (nhãn hiệu, từ điển, template).
+
 ## 6. Tra sản phẩm ví dụ cho mã Loại khác
 
 ### `GET /api/products?hs=<code>`

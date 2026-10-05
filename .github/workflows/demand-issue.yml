@@ -1,0 +1,29 @@
+name: demand-issue
+# Mỗi ngày 07:30 giờ VN: kéo nhu cầu từ hàng thật (GET /api/demand trên prod) và mở/cập nhật issue
+# "Nhu cầu từ hàng thật (tự động)" — nhãn hiệu, chữ Trung từ điển chưa hiểu, ô hay thiếu (CEO 05/10/2026).
+# Phần hợp quy / KTCN 2026 do oz-wiki-plhq tự kéo (tools/nhu-cau.mjs → báo cáo điểm mù).
+on:
+  schedule:
+    - cron: '30 0 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  demand:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Dựng nội dung
+        run: node scripts/demand-issue.mjs > demand.md
+      - name: Mở/cập nhật issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TITLE="Nhu cầu từ hàng thật (tự động)"
+          gh label create "nhu-cau-hang-that" --color FBCA04 --description "Tự động từ /api/demand" 2>/dev/null || true
+          NUM=$(gh issue list --state open --label "nhu-cau-hang-that" --json number --jq '.[0].number')
+          if [ -n "$NUM" ]; then gh issue edit "$NUM" --body-file demand.md; else gh issue create --title "$TITLE" --label "nhu-cau-hang-that" --body-file demand.md; fi
