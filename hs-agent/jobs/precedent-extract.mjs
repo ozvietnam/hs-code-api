@@ -17,7 +17,13 @@ function articleText(html) {
 
 export default async function precedentExtract({ cfg, log, budget, dryRun }) {
   const queue = load('queue', { items: [] });
-  const todo = queue.items.filter((i) => i.kind === 'classification' && (i.state === 'new' || i.state === 'retry')).slice(0, cfg.maxDocsPerRun);
+  const todo = queue.items.filter((i) => {
+    if (i.kind !== 'classification') return false;
+    if (i.state === 'new' || i.state === 'retry') return true;
+    // Pick stale no-conclusion items (attempts < maxAttemptsPerDoc) so they get retried
+    if (i.state === 'no-conclusion' && (i.attempts || 0) < (cfg.maxAttemptsPerDoc || 3)) return true;
+    return false;
+  }).slice(0, cfg.maxDocsPerRun);
   if (!todo.length) return { status: 'idle', lines: ['Hàng đợi trống.'] };
   if (!configuredProviders('standard').length) {
     return { status: 'waiting', lines: [`${todo.length}+ văn bản chờ trích nhưng chưa có khóa LLM nào trong /etc/hs-agent/env.`] };
