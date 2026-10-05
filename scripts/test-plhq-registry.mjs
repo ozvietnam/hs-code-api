@@ -27,6 +27,10 @@ writeFileSync(dataPath('plhq-hs-index.json'), JSON.stringify({ registryVersion: 
     table: { file: 'danh-muc/28-2026-tt-bct.csv', source: 'https://congbao.chinhphu.vn/x', verified: false }, slug: '28-2026-tt-bct',
     rows: [
       { hs: '22030091', moTa: 'Bia đóng chai', phuLuc: 'Phụ lục', loaiTacDong: 'KIEM_TRA_ATTP', trang: 5 },
+      { hs: '22030091', moTa: 'Bia lon', phuLuc: 'Phụ lục', loaiTacDong: 'KIEM_TRA_ATTP', trang: 5 },
+      { hs: '22030091', moTa: 'Bia hơi', phuLuc: 'Phụ lục', loaiTacDong: 'KIEM_TRA_ATTP', trang: 5 },
+      { hs: '22030091', moTa: 'Bia chai thủy tinh', phuLuc: 'Phụ lục', loaiTacDong: 'KIEM_TRA_ATTP', trang: 5 },
+      { hs: '22030091', moTa: 'Bia không cồn', phuLuc: 'Phụ lục', loaiTacDong: 'KIEM_TRA_ATTP', dieuKien: 'chỉ loại dưới 0,5% cồn', trang: 5 },
       { hs: '1905', moTa: 'Bánh, bánh quy', phuLuc: 'Phụ lục', loaiTacDong: 'KIEM_TRA_ATTP', dieuKien: 'trừ loại dùng cho trẻ em', trang: 6 },
       { hs: null, moTa: 'Thực phẩm dinh dưỡng', loaiTacDong: 'KIEM_TRA_ATTP', danChieu: '15/2024/TT-BYT' },
     ] },
@@ -103,6 +107,9 @@ const l1 = hsListings('19059090', { asOf: '2026-10-04' });
 t('hsListings: khớp theo tiền tố 6 và 4 số, giữ dieuKien', l1.length === 2 && l1.some((x) => x.match.level === 'HS4' && x.dieuKien === 'trừ loại dùng cho trẻ em' && x.active) && l1.some((x) => x.match.level === 'HS6' && x.soHieu === '1182/QĐ-BCT'));
 t('hsListings: danh mục đã hết hiệu lực → active=false', l1.find((x) => x.soHieu === '1182/QĐ-BCT').active === false);
 t('hsListings: trước ngày hiệu lực → active=false', hsListings('22030091', { asOf: '2026-07-01' })[0].active === false && hsListings('22030091', { asOf: '2026-07-17' })[0].active === true);
+const g = hsListings('22030091');
+t('hsListings: gộp dòng cùng văn bản + phụ lục + loại + điều kiện; tách khi điều kiện khác', g.length === 2
+  && g[0].soDong === 4 && g[0].moTa === 'Bia đóng chai' && g[0].moTaMau.length === 3 && g[1].soDong === 1 && g[1].dieuKien === 'chỉ loại dưới 0,5% cồn', JSON.stringify(g.map((x) => [x.soDong, x.dieuKien])));
 t('hsListings: khớp đúng 8 số, không khớp mã khác', hsListings('22030091')[0].match.level === 'HS8' && hsListings('22030099').length === 0);
 t('hsListings: dòng dẫn chiếu (không mã) không khớp mã nào; đầu vào sai → []', hsListings('1905').length === 0 && !hsListings('19059090').some((x) => x.danChieu));
 const { mapTaxRecord } = require('../lib/tax-mapper.js');
