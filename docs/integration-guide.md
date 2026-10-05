@@ -283,6 +283,40 @@ curl -X POST https://.../api/describe \
 
 ---
 
+## 5b. Phiếu hồ sơ khai báo (thông số trang + chữ trong ảnh → ô cần khai)
+
+`POST /api/declaration-sheet` (Bearer). Gom việc **chọn thông tin cho tờ khai** về một chỗ:
+ô chung TT 39/2018 (công dụng, chất liệu, kích thước, nhãn hiệu, model) + ô theo nhóm hàng
+(339 nhóm 4 số). Dịch vụ không lưu gì — bên gọi lưu phiếu của từng món.
+
+```bash
+curl -X POST "$BASE/api/declaration-sheet" -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d '{
+  "titleZh": "86型墙壁暗装电源插座带开关",
+  "specsZh": [{"key":"材质","value":"锡磷青铜"},{"key":"额定电流","value":"10A"}],
+  "variant": [{"label":"Phân loại","value":"一开多功能八孔"}],
+  "imageTexts": [{"url":"https://img/9.jpg","text":"产品规格 面板材质\n86mm*86mm PC阻燃"}],
+  "hsCode": "85366932",
+  "supplements": [{"key":"voltage","valueVi":"250V","source":"DOCUMENT"}]
+}'
+```
+
+Trả về:
+- `fields[]` — mỗi ô: `valueVi`, `status` (`HAVE` | `UNVERIFIED` máy đọc từ ảnh nhưng chưa soát |
+  `UNTRANSLATED` | `MISSING`), `source` (`SITE` | `IMAGE_OCR` | người bổ sung), `evidence` (đoạn chữ + link ảnh).
+- `missing[]` — ô bắt buộc còn thiếu, kèm `questionVi` / `questionZh` để hỏi khách / shop.
+- `images[]` — ảnh nào có thông số (`used`), ảnh nào bị gạt (quảng cáo, giới thiệu thương hiệu, chính sách shop).
+- `trademark` — nhãn hiệu, rủi ro nhãn được bảo hộ (TT 13/2015 & 13/2020), chữ gợi hàng nhái trên tên hàng (高仿, 原单, 同款…).
+- Có `hsCode`: `description.customsDescription` — mô tả ECUS **ghép tất định từ phiếu** (ô bắt buộc không bị rơi, ≤200 ký tự);
+  `policy` — mức chính sách (xem mục 3).
+
+Gửi lại `supplements` (khách/NV/chứng từ bổ sung) mỗi lần lập lại phiếu — chúng thắng dữ liệu trang.
+Gửi `known` (ô đã rút lần trước) để đỡ một lượt AI.
+
+**Mức chính sách** (`/api/tax`, cũng có trong phiếu): `policyLines[]` = từng dòng cột chính sách kèm `level`
+`BLOCKING` (giấy phép, KTCN/hợp quy, kiểm dịch…) | `NOTICE` (chỉ áp tình huống riêng: hàng đã qua sử dụng,
+TNTX, cửa khẩu phụ, phòng vệ thương mại) | `INFO` (không ràng buộc NK thương mại, vd danh mục cư dân biên giới).
+**Bật cờ cảnh báo theo `hasActionablePolicy`**, không theo việc cột chính sách có chữ.
+
 ## 6. Tra sản phẩm ví dụ cho mã Loại khác
 
 ### `GET /api/products?hs=<code>`

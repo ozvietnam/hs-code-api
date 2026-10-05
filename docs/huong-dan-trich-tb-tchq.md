@@ -96,7 +96,14 @@ Các bước dưới đây J2 làm tự động. Người nhập tay thì tự s
 1. `hsCode` xuất hiện **nguyên văn** trong toàn văn (`3926.90.99` hoặc `39269099`).
 2. ≥ 60 % từ của `description` có trong toàn văn. Đây là bước chống bịa.
 3. `source.reference` và `issuedDate` lấy từ phần đầu văn bản, không lấy từ trí nhớ.
-4. `npm run validate:community` xanh.
+4. `npm run validate:community` xanh. Từ 05/10/2026, tệp `precedent` có `submittedAt` từ ngày này trở đi bị chặn khi:
+   - mã giả (`00000000`…) hoặc mô tả giữ chỗ ("Hàng hóa theo Thông báo …"). Thông báo lỗi nguồn, không kết luận
+     hay không phải thông báo phân loại thì **ghi lên sheet, không tạo bản ghi**;
+   - `reasonVi` dưới 80 ký tự, không chứa mã kết luận, có ngoặc mở không đóng (bị cắt giữa chừng) hoặc quá 1000 ký tự;
+   - thiếu `issuedDate`, `url`, `attributes.bieuThue`; mô tả dưới 20 ký tự;
+   - cùng một bản ghi (số hiệu + năm + mã + mô tả) nằm ở hai tệp.
+
+   Lý do dưới 150 ký tự chỉ cảnh báo, nhưng sẽ bị coi là bản mỏng.
 
 ## 6. Nộp và gộp
 
@@ -110,7 +117,7 @@ npm test
 Mở PR nhãn `agent` hoặc `data`. Ghi trong PR: số thông báo đã đọc, số bản ghi, và những thông báo đọc
 rồi nhưng **không có kết luận** (trả hồ sơ, không đủ cơ sở). Liệt kê các thông báo này để không ai đọc lại.
 
-**Thông báo đính chính:** tạo bản ghi theo kết luận **mới** với `reference` là số thông báo đính chính,
+**Thông báo đính chính:** chỉ sửa câu chữ (thành phần, khổ vải…) mà mã giữ nguyên thì **không** tạo bản ghi; ghi lên sheet `Xong`, K = 0, cột H nói đính chính gì. Đính chính đổi mã hoặc đổi đặc tính quyết định thì tạo bản ghi theo kết luận **mới** với `reference` là số thông báo đính chính,
 `attributes.dinhChinhCho` là thông báo bị sửa. Ghi rõ trong PR để maintainer gỡ bản ghi cũ nếu mã đã đổi.
 
 ## 7. Việc bổ sung còn tồn (04/10/2026)

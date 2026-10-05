@@ -1560,6 +1560,173 @@
         }
       }
     },
+    "/api/declaration-sheet": {
+      "post": {
+        "operationId": "declarationSheet",
+        "summary": "Phiếu hồ sơ khai báo: ô cần khai theo mã HS, điền từ thông số trang + chữ trong ảnh, kèm nguồn",
+        "description": "Ô chung TT 39/2018 (công dụng, chất liệu, kích thước, nhãn hiệu, model) + ô theo nhóm hàng. Mỗi ô có valueVi, status (HAVE | UNVERIFIED | UNTRANSLATED | MISSING), source (SITE | IMAGE_OCR | CUSTOMER | SALES | OPS | ADMIN | DOCUMENT), evidence. `images[]` cho biết ảnh nào là rác (không có thông số). `missing[]` = ô bắt buộc còn thiếu kèm câu hỏi Việt/Trung. `trademark` = nhãn hiệu + rủi ro SHTT (TT 13/2015 & 13/2020) + chữ gợi hàng nhái. Có hsCode → thêm `description` (mô tả ECUS từ phiếu) và `policy` (mức chính sách). Không lưu gì — bên gọi tự lưu phiếu từng món, gửi lại bổ sung qua `supplements`. Rewrite tới /api/describe?mode=sheet.",
+        "tags": [
+          "AI"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "titleZh": {
+                    "type": "string",
+                    "description": "Tiêu đề gốc"
+                  },
+                  "titleVi": {
+                    "type": "string",
+                    "description": "Tiêu đề đã dịch (nếu có)"
+                  },
+                  "specsZh": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "description": "Nhãn tiếng Trung"
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "Giá trị"
+                        }
+                      }
+                    }
+                  },
+                  "variant": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "label": {
+                          "type": "string",
+                          "description": "Nhãn"
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "Phân loại khách chọn"
+                        }
+                      }
+                    }
+                  },
+                  "imageTexts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "description": "Link ảnh"
+                        },
+                        "text": {
+                          "type": "string",
+                          "description": "Chữ OCR"
+                        }
+                      }
+                    }
+                  },
+                  "hsCode": {
+                    "type": "string",
+                    "description": "Mã HS 8 số (bỏ trống = chỉ ô chung, chưa viết mô tả)"
+                  },
+                  "supplements": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "description": "Khóa chuẩn"
+                        },
+                        "valueVi": {
+                          "type": "string",
+                          "description": "Giá trị tiếng Việt"
+                        },
+                        "source": {
+                          "type": "string",
+                          "description": "CUSTOMER | SALES | OPS | ADMIN | DOCUMENT"
+                        }
+                      }
+                    }
+                  },
+                  "known": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    },
+                    "description": "Ô đã rút ở lần lập phiếu trước (đỡ một lượt AI)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Không có chữ nào để đọc",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Thiếu hoặc sai Bearer token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Lỗi lập phiếu",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/feedback": {
       "post": {
         "operationId": "feedback",
