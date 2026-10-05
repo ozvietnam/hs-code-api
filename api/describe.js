@@ -1,16 +1,7 @@
 const { requireAuth } = require('../lib/auth');
-const { understandQuery } = require('../lib/query-understand');
 const { setCors, handleOptions } = require('../lib/cors');
-const { getTaxRecord, normalizeHs } = require('../lib/data');
-const { mapTaxRecord } = require('../lib/tax-mapper');
-// Gọi qua module (không destructure) để test mock được chuỗi fallback.
-const llmTier = require('../lib/llm-tier');
-const { SYSTEM_PROMPT, buildChapterFieldsPrompt } = require('../lib/customs-prompt');
-const { composeWithMeta } = require('../lib/describe-compose');
-const { validateDeclaration, normalizeDeclaration } = require('../lib/declaration-validator');
-const { captureError } = require('../lib/error-monitor');
-const { checkTrademarkRisk } = require('../lib/trademark-watch');
-const { describeAttributes } = require('../lib/describe-attributes');
+const { describeProduct } = require('../lib/describe-core');
+const { buildDeclarationSheet } = require('../lib/declaration-sheet');
 
 module.exports = async function handler(req, res) {
   setCors(res);
@@ -29,166 +20,17 @@ module.exports = async function handler(req, res) {
     }
   }
 
-  const hsCode = normalizeHs(body?.hsCode || body?.hs);
-  if (!hsCode || hsCode === '00000000') {
-    return res.status(400).json({ error: 'hsCode is required' });
-  }
-
-  const tariff = getTaxRecord(hsCode);
-  if (!tariff) {
-    return res.status(404).json({
-      found: false,
-      message: `HS code ${hsCode} not found in tariff data`,
-    });
-  }
-
-  const mapped = mapTaxRecord(tariff);
-  // Tên hàng tiếng Trung (tiêu đề Taobao) → tên hàng tiếng Việt trước khi soạn mô
-  // tả; bản gốc giữ lại để kiểm xuất xứ (vd 墨西哥 → hàng Mexico, không phải TQ).
-  const rawName = String(body?.productName || '').trim();
-  const understood = rawName ? await understandQuery(rawName) : { applied: false, facts: null };
-  // H5: thông số đã chuẩn hóa từ ERP (khóa chuẩn → giá trị tiếng Việt) — dùng thay chữ
-  // Trung thô khi soạn mô tả. Giá trị còn chữ Hán bị bỏ, báo lại ở attributesSkipped.
-  const attrs = describeAttributes(body?.attributes);
-  const context = {
-    productName: understood.applied
-      ? [understood.facts.tenHangVi, understood.facts.quyCach].filter(Boolean).join(', ')
-      : (body?.productName || mapped.nameVi),
-    sourceText: [rawName, body?.customerDescription].filter(Boolean).join(' | ') || null,
-    detectedOrigin: understood.facts?.noiSanXuat || null,
-    brand: body?.brand || attrs.brand || understood.facts?.thuongHieu || null,
-    model: body?.model || attrs.model || null,
-    origin: body?.origin || null,
-    material: body?.material || attrs.material || understood.facts?.chatLieu || null,
-    condition: body?.condition || null,
-    technicalSpec: [body?.technicalSpec, attrs.technicalSpec].filter(Boolean).join('; ') || null,
-    purpose: body?.purpose || attrs.purpose || understood.facts?.congDung || null,
-    customerDescription: body?.customerDescription || null,
-    unitVi: mapped.unitVi,
-    tariffNameVi: mapped.nameVi,
-  };
-
-  const started = Date.now();
-  let declaration;
-  let llmModel = null;
-  // Cờ báo LLM lỗi → mô tả rơi về fallback context thô (không im lặng nữa).
-  let llmError = null;
-
-  if (body?.declaration && body?.validateOnly) {
-    declaration = normalizeDeclaration(body, context);
-  } else {
-    const payload = {
-      hsCode,
-      chapter: hsCode.slice(0, 2),
-      ...context,
-      tariffContext: {
-        nameVi: mapped.nameVi,
-        unitVi: mapped.unitVi,
-        policyByHs: mapped.policyByHs,
-        warnings: mapped.warnings,
-      },
-    };
-
-    const chapterHint = buildChapterFieldsPrompt(hsCode.slice(0, 2), hsCode);
-    const systemPrompt = SYSTEM_PROMPT + chapterHint;
-    const userPrompt = JSON.stringify(payload, null, 2);
+  // POST /api/declaration-sheet (rewrite → ?mode=sheet): phiếu hồ sơ khai báo — gộp vào
+  // function này theo pattern vercel.json.
+  if (String(req.query?.mode || '') === 'sheet') {
     try {
-      // Cùng thứ tự với mọi endpoint (lib/llm-tier.js): Gemini miễn phí → dự phòng
-      // (MiniMax…) → khóa Gemini trả phí chỉ khi không còn đường nào.
-      const result = await llmTier.callLLMJson(systemPrompt, userPrompt, {
-        tier: 'standard', timeoutMs: 45000, geminiModelEnv: 'GEMINI_DESCRIBE_MODEL',
-      });
-      llmModel = result.model;
-      declaration = normalizeDeclaration(result.json, context);
-    } catch (error) {
-      captureError(error, { endpoint: 'describe', hsCode });
-      // Hết provider vẫn trả bản khai dựng từ dữ kiện người dùng (degraded),
-      // KHÔNG 503 — mô hình/ERP phía trên vẫn có khung để làm việc tiếp.
-      declaration = normalizeDeclaration(
-        {
-          declaration: {
-            tenHang: context.productName,
-            xuatXu: context.origin,
-            donViTinh: context.unitVi,
-            tinhTrang: context.condition,
-            nhanHieu: context.brand,
-            model: context.model,
-            thongSoKyThuat: context.technicalSpec ? [context.technicalSpec] : [],
-            thanhPhanCauTao: context.material,
-            congDung: context.purpose,
-          },
-        },
-        context
-      );
-      llmModel = null;
-      // Phân loại lỗi tạm thời (nên retry) vs vĩnh viễn — để MCP/ERP xử đúng.
-      const errText = `${error.code || ''} ${error.status || ''} ${error.message || ''}`;
-      const retryable = /429|rate|quota|timeout|etimedout|econnreset|503|500|overload|unavailable/i.test(errText);
-      llmError = {
-        code: error.code || 'GEMINI_ERROR',
-        message: error.message || 'LLM generation failed',
-        retryable,
-      };
+      const out = await buildDeclarationSheet(body || {});
+      return res.status(out.status).json(out.json);
+    } catch (e) {
+      return res.status(502).json({ error: 'Declaration sheet failed', detail: String(e.message).slice(0, 240) });
     }
   }
 
-  const compliance = validateDeclaration(declaration, hsCode, context);
-  const composed = composeWithMeta(declaration);
-
-  // Không fail-silent: LLM lỗi → mô tả là fallback context thô, báo rõ vào warnings.
-  if (llmError) {
-    compliance.warnings.push({
-      code: 'DESCRIPTION_DEGRADED',
-      field: 'customsDescription',
-      severity: 'warn',
-      message: `Mô tả sinh ở chế độ dự phòng (không qua AI) do LLM lỗi: ${llmError.message}. ${
-        llmError.retryable ? 'Lỗi tạm thời — nên gọi lại.' : 'Cần kiểm tra cấu hình/model LLM.'
-      }`,
-      suggestion: 'Chạy lại /api/describe khi LLM sẵn sàng để có mô tả chuẩn TT 39/2018.',
-    });
-  }
-
-  // P2: cảnh báo rủi ro nhãn hiệu được bảo hộ (TT 13/2015 & 13/2020).
-  // Tách trục riêng với điểm compliance TT 39/2018 — chỉ thêm 1 cảnh báo mềm.
-  const trademarkRisk = checkTrademarkRisk({
-    brand: declaration.nhanHieu || context.brand,
-    text: `${declaration.tenHang || ''} ${context.customerDescription || ''}`,
-    hsCode,
-    origin: declaration.xuatXu?.nameVi || declaration.xuatXu?.code || context.origin,
-  });
-  if (trademarkRisk.matched) {
-    compliance.warnings.push({
-      code: 'TRADEMARK_WATCH',
-      field: 'nhanHieu',
-      severity: trademarkRisk.riskLevel === 'CRITICAL' || trademarkRisk.riskLevel === 'HIGH' ? 'error' : 'warn',
-      message: trademarkRisk.summary,
-      suggestion: trademarkRisk.matches[0]?.recommendations?.[0],
-    });
-  }
-
-  return res.status(200).json({
-    declaration,
-    customsDescription: composed.text,
-    descriptionMeta: {
-      length: composed.length,
-      maxLength: composed.maxLength,
-      truncated: composed.truncated,
-      fullLength: composed.fullLength,
-      dropped: composed.dropped,
-      ...(composed.truncated ? { fullText: composed.fullText } : {}),
-    },
-    compliance,
-    trademarkRisk,
-    attributesUsed: attrs.used,
-    ...(attrs.skipped.length ? { attributesSkipped: attrs.skipped } : {}),
-    llmModel,
-    degraded: llmError !== null,
-    llmError,
-    contextUsed: {
-      tariffFound: true,
-      policyByHs: mapped.policyByHs,
-      hsCode,
-    },
-    ms: Date.now() - started,
-  });
+  const out = await describeProduct(body);
+  return res.status(out.status).json(out.json);
 };
