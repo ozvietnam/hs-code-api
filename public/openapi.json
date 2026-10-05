@@ -2537,6 +2537,50 @@
         }
       }
     },
+    "/api/demand": {
+      "get": {
+        "operationId": "dataset_demand",
+        "summary": "Nhu cầu bổ sung tri thức rút từ hàng thật (phiếu hồ sơ khai báo): mã HS chưa đối chiếu KTCN 2026, nhãn hiệu chưa theo dõi, chữ Trung từ điển chưa hiểu, ô hay thiếu — chỉ mức ưu tiên, không số lượng/tên hàng/khách (?days=90)",
+        "description": "Rewrite tới /api/dataset?resource=demand",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/legal-status": {
       "get": {
         "operationId": "dataset_legal_status",

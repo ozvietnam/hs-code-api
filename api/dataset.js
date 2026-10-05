@@ -25,6 +25,7 @@ const { declarationFields } = require('../lib/declaration-fields');
 const { dictionary: zhSpecDictionary } = require('../lib/zh-specs');
 const { regimeSummary } = require('../lib/policy-regime');
 const plhq = require('../lib/plhq-registry');
+const { aggregateDemand } = require('../lib/demand-signals');
 const fs = require('fs');
 const path = require('path');
 
@@ -216,6 +217,12 @@ module.exports = async function handler(req, res) {
         total: Object.keys(dict.keys || {}).length,
         keys: dict.keys,
       });
+    }
+
+    // Nhu cầu bổ sung tri thức từ hàng thật (phiếu hồ sơ khai báo) — gom, không số lượng.
+    if (resource === 'demand') {
+      const days = Math.min(365, Math.max(7, parseInt(req.query.days, 10) || 90));
+      return res.status(200).json(aggregateDemand({ days }));
     }
 
     // Khung kiểm tra chuyên ngành 2026 (NĐ 37/2026, danh mục mới từng bộ, căn cứ cũ bị thay) — tĩnh, công khai.
