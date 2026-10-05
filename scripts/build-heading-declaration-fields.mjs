@@ -30,7 +30,9 @@ for (const [hs, row] of Object.entries(tax)) {
   if (!headingMeta[heading]) {
     headingMeta[heading] = {
       chapter: ch,
-      titleVi: (row.vn || '').replace(/\s+/g, ' ').trim().replace(/^-+\s*/, ''),
+      // Dòng đầu của nhóm có thể là dòng CON ("- - Thích hợp dùng cho quạt điện") — tên đó
+      // không phải tên nhóm; để null rồi lấy từ template bên dưới.
+      titleVi: /^\s*-/.test(row.vn || '') ? null : (row.vn || '').replace(/\s+/g, ' ').trim(),
       sampleHs: hs,
       subcodeCount: 0,
     };
@@ -49,7 +51,7 @@ for (const [heading, meta] of Object.entries(headingMeta).sort(([a], [b]) => a.l
     mapped += 1;
     headings[heading] = {
       chapter: meta.chapter,
-      titleVi: meta.titleVi,
+      titleVi: meta.titleVi || String(template.noteVi || '').split(' — ')[0] || null,
       template: templateId,
       required: [...template.required],
       recommended: [...(template.recommended || [])],

@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updated": "2026-10-04",
+  "updated": "2026-10-05",
   "license": "CC BY 4.0 — dữ liệu mở của hs-code-api, dùng lại xin ghi nguồn",
   "note": "Từ điển nhãn thông số trên trang Taobao/Tmall/1688/Alibaba (tiếng Trung) → khóa trường khai báo chuẩn của hs-code-api (data/chapter-declaration-fields.json). Khóa trùng tên với data/attributes.json được dùng chung. Dùng cho: nhận diện thông số đã có (danh sách còn thiếu), rút thông số từ chữ (/api/extract-specs), và cho ozsource/ERP đặt tên khóa thống nhất. Mỗi mục zh liệt kê nhãn hay gặp; khớp theo nhãn đứng trước dấu ':' hoặc '：'.",
   "keys": {
@@ -19,6 +19,7 @@
     "outputVoltage": { "labelVi": "Điện áp đầu ra (sạc)", "zh": ["输出电压", "输出"], "unitHint": "V" },
     "frequency": { "labelVi": "Tần số", "zh": ["频率", "额定频率", "电源频率"], "unitHint": "Hz" },
     "currentRating": { "labelVi": "Dòng định mức", "zh": ["额定电流", "电流", "输出电流"], "unitHint": "A" },
+    "poleCount": { "labelVi": "Số cực / số chấu", "zh": ["极数", "极", "插孔类型", "孔数", "孔位", "插孔数", "插脚类型"], "unitHint": "P" },
     "capacityAh": { "labelVi": "Dung lượng pin", "zh": ["电池容量", "容量(mAh)", "额定容量", "电芯容量"], "unitHint": "mAh/Ah" },
     "batteryChemistry": { "labelVi": "Loại pin", "zh": ["电池类型", "电芯类型", "电池种类"] },
     "phaseCount": { "labelVi": "Số pha", "zh": ["相数"] },

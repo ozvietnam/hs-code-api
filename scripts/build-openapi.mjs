@@ -440,6 +440,30 @@ const paths = {
       errors: { 400: 'Không có chữ nào để đọc', 502: 'Lỗi rút thông số' },
     }),
   },
+  '/api/declaration-sheet': {
+    post: op({
+      id: 'declarationSheet', tags: ['AI'], auth: bearer,
+      summary: 'Phiếu hồ sơ khai báo: ô cần khai theo mã HS, điền từ thông số trang + chữ trong ảnh, kèm nguồn',
+      description: 'Ô chung TT 39/2018 (công dụng, chất liệu, kích thước, nhãn hiệu, model) + ô theo nhóm hàng. ' +
+        'Mỗi ô có valueVi, status (HAVE | UNVERIFIED | UNTRANSLATED | MISSING), source (SITE | IMAGE_OCR | CUSTOMER | SALES | OPS | ADMIN | DOCUMENT), evidence. ' +
+        '`images[]` cho biết ảnh nào là rác (không có thông số). `missing[]` = ô bắt buộc còn thiếu kèm câu hỏi Việt/Trung. ' +
+        '`trademark` = nhãn hiệu + rủi ro SHTT (TT 13/2015 & 13/2020) + chữ gợi hàng nhái. Có hsCode → thêm `description` (mô tả ECUS từ phiếu) và `policy` (mức chính sách). ' +
+        'Không lưu gì — bên gọi tự lưu phiếu từng món, gửi lại bổ sung qua `supplements`. Rewrite tới /api/describe?mode=sheet.',
+      requestBody: {
+        type: 'object',
+        properties: {
+          titleZh: str('Tiêu đề gốc'), titleVi: str('Tiêu đề đã dịch (nếu có)'),
+          specsZh: { type: 'array', items: { type: 'object', properties: { key: str('Nhãn tiếng Trung'), value: str('Giá trị') } } },
+          variant: { type: 'array', items: { type: 'object', properties: { label: str('Nhãn'), value: str('Phân loại khách chọn') } } },
+          imageTexts: { type: 'array', items: { type: 'object', properties: { url: str('Link ảnh'), text: str('Chữ OCR') } } },
+          hsCode: str('Mã HS 8 số (bỏ trống = chỉ ô chung, chưa viết mô tả)'),
+          supplements: { type: 'array', items: { type: 'object', properties: { key: str('Khóa chuẩn'), valueVi: str('Giá trị tiếng Việt'), source: str('CUSTOMER | SALES | OPS | ADMIN | DOCUMENT') } } },
+          known: { type: 'array', items: { type: 'object' }, description: 'Ô đã rút ở lần lập phiếu trước (đỡ một lượt AI)' },
+        },
+      },
+      errors: { 400: 'Không có chữ nào để đọc', 502: 'Lỗi lập phiếu' },
+    }),
+  },
   '/api/feedback': {
     post: op({
       id: 'feedback', tags: ['AI'], auth: bearer,
