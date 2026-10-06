@@ -51,6 +51,12 @@ check('tự hành → mobility', P('xe nâng tự hành').mechanisms.some((m) =>
 check('bóc mác P20', P('thép tấm p20').materialGrades.includes('P20'));
 check('bóc SUS304', P('ống inox sus304').materialGrades.includes('SUS304'));
 
+console.log('\n== Đơn vị tự nói đại lượng (A = dòng điện) ==');
+check('"ổ cắm 10A" → dimension current 10', (() => { const s = P('ổ cắm 10A').specs[0]; return s?.dimension === 'current' && s.value === 10; })());
+check('"cầu đấu dây 60A": "dây" (= "dày" bỏ dấu) không biến 60 A thành chiều dày', (() => { const r = P('cầu đấu dây 60A'); return r.specs[0]?.dimension === 'current' && r.coreVi.includes('dây'); })());
+check('"công tắc áp suất 20A": 20 A không bị đọc là áp suất', P('công tắc áp suất 20A').specs[0]?.dimension === 'current');
+check('"dây 2.5mm" vẫn là chiều dày như cũ (không đụng đơn vị khác)', P('dây 2.5mm').specs[0]?.dimension === 'thickness');
+
 console.log('\n== Rào an toàn ==');
 check('gỡ hết thì trả câu gốc', P('thủy lực').coreVi === 'thủy lực');
 check('câu rỗng không nổ', P('').coreVi === '');

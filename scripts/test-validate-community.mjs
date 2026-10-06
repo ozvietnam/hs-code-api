@@ -66,5 +66,12 @@ assert('mã không có trong câu kết luận bị chặn', r.status === 1 && /
 r = run('ev-desc', doc([{ ...good, description: good.description + ' (- Thành phần: đồng 99' , evidence: ev }], '2026-10-06'));
 assert('mô tả bị cắt bị chặn', r.status === 1 && /description có ngoặc mở/.test(r.out), r.out);
 
+r = run('bt', doc([{ ...good, attributes: { bieuThue: '2022', loaiTB: 'KET_QUA_PHAN_LOAI' }, evidence: ev }], '2026-10-06'));
+assert('biểu thuế không khớp ngày ký bị chặn', r.status === 1 && /phân loại theo biểu 2017/.test(r.out), r.out);
+r = run('bt-old', doc([{ ...good, attributes: { bieuThue: '2022' } }], '2026-09-24'));
+assert('biểu thuế sai bị chặn cả ở tệp cũ', r.status === 1 && /bieuThue 2022 sai/.test(r.out), r.out);
+r = run('short40', doc([{ ...good, description: 'Thép cán nguội 1-3mm dạng cuộn', evidence: ev }], '2026-10-06'));
+assert('mô tả dưới 40 ký tự bị chặn (từ 06/10)', r.status === 1 && /dưới 40 ký tự/.test(r.out), r.out);
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);

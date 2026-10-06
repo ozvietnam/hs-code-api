@@ -2295,6 +2295,38 @@
       "gir": "1",
       "basis": "RULE_TABLE",
       "sourceVi": "Biểu thuế VN 8428.60, 8428.90.20, 8428.90.30."
+    },
+    {
+      "id": "phich-o-cam-dong-truc-8536",
+      "titleVi": "Phích cắm / ổ cắm đồng trục (anten TV, RF) — 8536.69.3x",
+      "terms": [
+        "phích cắm đồng trục",
+        "ổ cắm đồng trục",
+        "jack đồng trục",
+        "giắc đồng trục",
+        "coaxial plug",
+        "coaxial socket"
+      ],
+      "candidates": [
+        {
+          "hs": "853669",
+          "whenVi": "Phích cắm / ổ cắm cho cáp đồng trục (≤1000 V). Bảng quyết định 8536 chốt lá: 8536.69.32 dưới 16 A / .39 loại khác.",
+          "confidence": "medium"
+        }
+      ],
+      "avoid": [
+        {
+          "prefix": "8528",
+          "whyVi": "Tivi / màn hình là 8528; phích/ổ cắm đồng trục rời là thiết bị đấu nối 85.36."
+        },
+        {
+          "prefix": "854420",
+          "whyVi": "Cáp đồng trục (dây dẫn) là 8544.20; đầu cắm rời của cáp thuộc 85.36."
+        }
+      ],
+      "gir": "1",
+      "basis": "RULE_TABLE",
+      "sourceVi": "Biểu thuế 2026 phân nhóm 8536.69 — dòng cha \"Ổ cắm và phích cắm cho cáp đồng trục và mạch in\" (8536.69.32 / .39); TB 4786/TB-TCHQ (đầu nối mạch in → 8536.69.32)."
     }
   ],
   "updatedAt": "2026-09-16"
