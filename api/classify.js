@@ -47,6 +47,8 @@ module.exports = async function handler(req, res) {
     chucNang: body?.chucNang || null,
     nameZh: body?.nameZh || null,
     specs: body?.specs || body?.technicalSpec || null,
+    // Dữ kiện có bằng chứng từ phiếu hồ sơ khai báo [{key,labelVi,valueVi,evidence}] — nguồn căn cứ.
+    facts: Array.isArray(body?.facts) ? body.facts.slice(0, 30) : [],
   };
 
   // Resolver attrs: canonical + aliasVi từ attributes.json
