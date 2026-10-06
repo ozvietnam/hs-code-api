@@ -26,5 +26,13 @@ check('mẫu hồ sơ 404 → lùi về mẫu mặc định, KHÔNG gửi tham s
 bodies.length = 0;
 await chat([{ role: 'user', content: 'x' }], { json: true, order: ['minimax'] });
 check('không hồ sơ → y như cũ', bodies.length === 1 && !bodies[0].thinking && !bodies[0].reasoning_effort);
+bodies.length = 0;
+globalThis.fetch = async (url, init) => {
+  const b = JSON.parse(init.body); bodies.push(b);
+  if (b.model === 'MiniMax-M3') return new Response('{"type":"error","error":{"message":"Token Plan rate limit reached"}}', { status: 429 });
+  return new Response(JSON.stringify({ choices: [{ message: { content: '{"ok":1}' } }] }), { status: 200 });
+};
+const r429 = await chat([{ role: 'user', content: 'x' }], { json: true, minimax: stepProfile('headings'), order: ['minimax'] });
+check('mẫu hồ sơ 429 (giới hạn gói) → lùi về mẫu mặc định', bodies.length === 2 && r429.model === bodies[1].model && bodies[1].model !== 'MiniMax-M3');
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
