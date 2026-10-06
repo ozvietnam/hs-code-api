@@ -142,6 +142,18 @@ const BIEU_THUE = new Set(['2012', '2017', '2022']);
 const LOAI_TB = new Set(['KET_QUA_PHAN_LOAI', 'XAC_DINH_TRUOC', 'DINH_CHINH']);
 const THIN_REASON = 150;
 
+/**
+ * Biểu thuế theo ngày ký thông báo: TT 65/2017 áp dụng từ 01/01/2018, TT 31/2022 từ 01/12/2022.
+ * Khớp 100% với 1.873 bản ghi có ngày trong kho (10/2026). Thông báo cuối 2021 vẫn là biểu 2017.
+ */
+function bieuThueTheoNgay(issuedDate) {
+  const d = String(issuedDate || '');
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(d)) return null;
+  if (d < '2018-01-01') return '2012';
+  if (d < '2022-12-01') return '2017';
+  return '2022';
+}
+
 /** Mã kết luận phải có mặt trong lý do, dạng có chấm (3926.90.99) hoặc liền (39269099). */
 function hsInText(hs, text) {
   const h = String(hs);
@@ -180,6 +192,11 @@ function validateQuality(file, doc) {
       problem(file, `${at} (${r?.source?.reference} → ${r?.hsCode}) trùng bản ghi trong ${seenRecords.get(key)} — mỗi bản ghi chỉ nằm ở một tệp`);
     }
     if (!seenRecords.has(key)) seenRecords.set(key, file);
+    const bt = r?.attributes?.bieuThue;
+    const btWant = bieuThueTheoNgay(r?.source?.issuedDate);
+    if (bt && btWant && String(bt) !== btWant) {
+      problem(file, `${at} (${r?.source?.reference}): bieuThue ${bt} sai — thông báo ký ${r.source.issuedDate} phân loại theo biểu ${btWant} (căn cứ thông tư danh mục ghi trong phần "Căn cứ")`);
+    }
     if (!strict || r?.source?.type !== 'TB-TCHQ') return;
 
     const ref = r.source.reference || '?';
@@ -207,6 +224,7 @@ function validateQuality(file, doc) {
         if (!reason.replace(/\s+/g, ' ').includes(kl.replace(/\s+/g, ' ').trim())) problem(file, `${at} (${ref}): reasonVi phải chứa nguyên văn evidence.ketLuan`);
       }
       if (unbalanced(desc)) problem(file, `${at} (${ref}): description có ngoặc mở không đóng — có vẻ bị cắt giữa chừng`);
+      if (desc.trim().length < 40) problem(file, `${at} (${ref}): description dưới 40 ký tự — ghi tên hàng THỰC TẾ theo kết luận + đặc tính quyết định (chất liệu, cấu tạo, công dụng, thông số)`);
     }
     if (reason.trim().length < 80) {
       problem(file, `${at} (${ref}): reasonVi dưới 80 ký tự — chép nguyên văn chuỗi nhóm → phân nhóm → mã và căn cứ`);

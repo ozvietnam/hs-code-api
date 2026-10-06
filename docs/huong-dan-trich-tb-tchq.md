@@ -112,7 +112,13 @@ Các bước dưới đây J2 làm tự động. Người nhập tay thì tự s
    Lý do dưới 150 ký tự chỉ cảnh báo, nhưng sẽ bị coi là bản mỏng.
 
    Từ 06/10 thêm: thiếu `evidence`, số hiệu trên trang khác số hiệu cần lấy, mã không có trong câu kết luận đã chép,
-   mô tả bị cắt giữa chừng.
+   mô tả bị cắt giữa chừng, mô tả dưới 40 ký tự.
+
+   Mọi tệp: `bieuThue` phải khớp ngày ký — trước 01/01/2018 là `2012`, từ đó đến 30/11/2022 là `2017`, từ
+   01/12/2022 là `2022`.
+
+   **Mô tả là hàng THỰC TẾ theo kết luận**, không phải tên doanh nghiệp khai. Ví dụ thông báo nói "khai là bột nhão
+   nhôm, thực tế là phenylbis(…)phosphine oxide" thì mô tả là hóa chất đó, có thể thêm "(khai báo: bột nhão nhôm)".
 
    **Bộ kiểm báo lỗi thì sửa cách đọc, không sửa dữ liệu cho qua.** Không đổi `hsCode` cho khớp lý do, không thêm
    lời tự viết vào mô tả cho đủ độ dài. Không lấy được từ văn bản thì ghi `Lỗi nguồn` / `Không kết luận` lên sheet.
