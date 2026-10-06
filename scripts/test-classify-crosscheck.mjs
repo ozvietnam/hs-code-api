@@ -1,0 +1,37 @@
+// Ghép cửa chính (classify) với cửa đối chiếu (suggest-core) — docs/backlog/07-mot-engine.md.
+import './test-isolate-data.mjs';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const { mergeSecondOpinion } = require('../lib/classify');
+let pass = 0; let fail = 0;
+const check = (n, c, x = '') => { if (c) { pass += 1; console.log(`PASS ${n}`); } else { fail += 1; console.log(`FAIL ${n} ${x}`); } };
+const sug = (...codes) => ({ suggestions: codes.map((c, i) => ({ hsCode: c, confidence: 80 - i * 10, reasoning: `lý do ${c}` })) });
+const prim = (codes, extra = {}) => ({ status: 'REVIEW', results: codes.map((c, i) => ({ hs: c, hsLevel: c.length, confidence: 85 - i * 10, reason: `c ${c}` })), ...extra });
+
+let r = mergeSecondOpinion(prim([]), sug('85098090', '85167990'));
+check('bước chính rỗng → dùng cửa đối chiếu, không trả rỗng', r.results[0]?.hs === '85098090' && r.results[0].source === 'suggest');
+check('… và bắt chuyên viên xem lại, độ tin ≤60', r.review.needed && r.status === 'REVIEW' && r.results[0].confidence <= 60);
+
+r = mergeSecondOpinion(prim(['95049092', '95049021']), sug('95049021'));
+check('cùng nhóm khác dòng → lấy dòng 8 số của cửa đối chiếu', r.results[0].hs === '95049021' && r.crossCheck.subheadingFrom === 'suggest');
+check('… vẫn gắn cờ phân vân 2 mã, giữ mã kia', r.review.needed && r.results.some((x) => x.hs === '95049092') && /cùng nhóm 9504/.test(r.review.reasons[0]));
+
+r = mergeSecondOpinion(prim(['87120090']), sug('87120090'));
+check('hai cửa cùng mã 8 số → không cờ', r.review.needed === false && r.crossCheck.agree8);
+
+r = mergeSecondOpinion(prim(['94032090']), sug('87168010'));
+check('khác nhóm → giữ mã cửa chính, cờ "khác nhóm", có mã kia để chọn', r.results[0].hs === '94032090' && r.results.some((x) => x.hs === '87168010') && /khác nhóm/.test(r.review.reasons[0]));
+
+r = mergeSecondOpinion(prim(['85366992'], { results: [{ hs: '85366992', hsLevel: 8, confidence: 90, resolverOverride: { from: '85366932' } }] }), sug('85366932'));
+check('bảng quyết định đã chỉnh → KHÔNG bị cửa đối chiếu đổi lại', r.results[0].hs === '85366992' && r.review.needed);
+
+r = mergeSecondOpinion(prim(['22021030', '22029950'], { antiPatternWarnings: [{ id: 'feature-polarity-conflict' }] }), sug('22029950'));
+check('bộ kiểm mâu thuẫn có/không đã xếp → không đổi', r.results[0].hs === '22021030');
+
+r = mergeSecondOpinion(prim(['847130'], { status: 'NEED_FACTS' }), sug('84713020'));
+check('mã 6 số đang chờ hỏi dữ kiện → giữ câu hỏi, không đoán 8 số', r.results[0].hs === '847130' && r.status === 'NEED_FACTS');
+
+r = mergeSecondOpinion(prim(['39264000']), null);
+check('cửa đối chiếu lỗi → giữ nguyên kết quả chính', r.results[0].hs === '39264000' && r.crossCheck.available === false);
+console.log(`\n${pass} passed, ${fail} failed`);
+if (fail) process.exit(1);

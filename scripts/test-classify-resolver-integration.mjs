@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import './test-isolate-data.mjs';
+process.env.HS_CLASSIFY_CROSSCHECK = '0'; // kiểm bước chọn mã chính; cửa đối chiếu: test-classify-crosscheck.mjs
 /**
  * Integration smoke: classify B3.5 override path (no LLM).
  */
