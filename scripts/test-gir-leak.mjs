@@ -20,7 +20,7 @@ const idx = JSON.parse(fs.readFileSync('data/prompts/index.json', 'utf8'));
 const active = fs.readFileSync(path.join('data/prompts', `${idx.active}.md`), 'utf8').trim();
 check('prompt active không có girRulesApplied', !/girRulesApplied/.test(active));
 check('prompt active không có ví dụ mã HS cụ thể', !/"\d{8}"/.test(active));
-check('FALLBACK_PROMPT trong api/suggest.js trùng prompt active', fs.readFileSync('api/suggest.js', 'utf8').includes(active));
+check('FALLBACK_PROMPT trong lib/suggest-core.js trùng prompt active', fs.readFileSync('lib/suggest-core.js', 'utf8').includes(active));
 
 // 2) Quét code: chuỗi nhãn GIR có số chỉ được nằm ở nơi được phép.
 const ALLOW = new Set([

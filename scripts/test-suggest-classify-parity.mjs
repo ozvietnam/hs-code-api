@@ -52,9 +52,9 @@ console.log('  ✓ confusionWarning: conflictsDb()[top.hs]');
 // Trước đây script chỉ in, không kiểm gì (pass++ vô điều kiện). Nay kiểm THẬT
 // mã nguồn cả hai endpoint có gắn tầng tri thức dùng chung.
 const failures = [];
-const suggestSrc = fs.readFileSync(path.join(ROOT, 'api', 'suggest.js'), 'utf8');
+const suggestSrc = fs.readFileSync(path.join(ROOT, 'lib', 'suggest-core.js'), 'utf8'); // lõi suggest tách khỏi handler (backlog 07)
 const classifySrc = fs.readFileSync(path.join(ROOT, 'lib', 'classify.js'), 'utf8');
-for (const [name, src] of [['api/suggest.js', suggestSrc], ['lib/classify.js', classifySrc]]) {
+for (const [name, src] of [['lib/suggest-core.js', suggestSrc], ['lib/classify.js', classifySrc]]) {
   if (!/getNoteSummaryForHs\(/.test(src)) failures.push(`${name} không gọi getNoteSummaryForHs`);
   if (!/confusionWarning/.test(src)) failures.push(`${name} không trả confusionWarning`);
   if (!/explanatoryNote/.test(src)) failures.push(`${name} không trả explanatoryNote`);
