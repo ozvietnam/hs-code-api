@@ -6,6 +6,8 @@ import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
 process.env.HS_API_TOKEN = 'classify-test-token';
+// Test này kiểm bước chọn mã CHÍNH bằng AI giả; cửa đối chiếu có test riêng (test-classify-crosscheck.mjs).
+process.env.HS_CLASSIFY_CROSSCHECK = '0';
 process.env.HS_ACCESS_LOG = '0';
 
 let girReply = null;

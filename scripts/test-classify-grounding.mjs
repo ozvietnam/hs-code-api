@@ -1,6 +1,7 @@
 // Test luồng kiến thức cho bước chọn mã (06/10/2026 — thiết kế vĩ mô): mỗi lập luận gắn nguồn
 // (sản phẩm / chú giải / tiền lệ / suy luận); đặc tính sản phẩm phải có nguyên văn trong chữ gốc. Ca thật: dao hái cau cán cách điện bị AI tự gán "có động cơ điện" → 8467.29.
 import './test-isolate-data.mjs';
+process.env.HS_CLASSIFY_CROSSCHECK = '0'; // kiểm bước chọn mã chính; cửa đối chiếu: test-classify-crosscheck.mjs
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 process.env.HS_ACCESS_LOG = '0';
