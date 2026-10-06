@@ -27,6 +27,8 @@ const require = createRequire(join(libDir, 'x.js'));
 const engine = argv.engine || 'classify';
 const conc = Number(argv.concurrency || 3);
 const DEPTHS = [2, 4, 6, 8];
+// Một lượt treo (lời gọi không bao giờ trả về) không được làm mất cả đợt đo.
+const ITEM_TIMEOUT_MS = Number(argv.itemTimeout || 300000);
 
 function rng(seed) { let a = seed >>> 0; return () => { a = (a + 0x6d2b79f5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
 
@@ -71,7 +73,10 @@ async function worker() {
     const it = items[next++];
     const t = Date.now();
     try {
-      const { rs, missing, status } = await run(it);
+      const { rs, missing, status } = await Promise.race([
+        run(it),
+        new Promise((_, rej) => setTimeout(() => rej(new Error('BENCH_TIMEOUT')), ITEM_TIMEOUT_MS)),
+      ]);
       out.push({
         id: it.id, truth: it.truth, top: rs[0]?.hs || null, conf: rs[0]?.confidence ?? null, top3: rs.slice(0, 3).map((r) => r.hs),
         status, nMissing: missing.length, grounded: rs[0]?.grounded ?? null, basis: rs[0]?.basis || [],
@@ -81,6 +86,7 @@ async function worker() {
       out.push({ id: it.id, truth: it.truth, error: String(e.message).slice(0, 120), ms: Date.now() - t });
     }
     process.stderr.write(`\r${engine} ${out.length}/${items.length}`);
+    if (argv.out) writeFileSync(`${argv.out}.partial`, JSON.stringify(out));
   }
 }
 await Promise.all(Array.from({ length: conc }, worker));
@@ -100,3 +106,4 @@ const sum = {
 process.stderr.write('\n');
 console.log(JSON.stringify(sum));
 if (argv.out) writeFileSync(argv.out, JSON.stringify({ summary: sum, items: out }, null, 1));
+process.exit(0);
