@@ -82,6 +82,21 @@ assert('gạch nối bình thường trong mô tả vẫn qua', r.status === 0, 
 
 r = run('corp', doc([{ ...good, description: good.description + ', hãng Henningsen Nederland BV', evidence: ev }], '2026-10-06'));
 assert('tên doanh nghiệp (BV/Inc/Group…) trong mô tả bị chặn', r.status === 1 && /tên doanh nghiệp/.test(r.out), r.out);
+r = run('model', doc([{ ...good, description: 'Chất trợ nhuộm AG-2 dạng lỏng, thành phần chính là muối amoni bậc bốn trong nước', evidence: ev }], '2026-10-06'));
+assert('mã model "AG-2" không bị coi là tên doanh nghiệp', r.status === 0, r.out);
+
+// Trích bằng regex (PR #155): nhãn mục biểu mẫu, mã hàng nội bộ, tham chiếu dòng tờ khai, mã trong mô tả.
+const bad = (name, description, re) => {
+  const o = run(name, doc([{ ...good, description, evidence: ev }], '2026-10-06'));
+  assert(`chặn ${name}`, o.status === 1 && re.test(o.out), o.out);
+};
+bad('nhãn mục', 'Thanh đồng tinh luyện mặt cắt chữ nhật dẫn điện. — g thức hóa học: Cu 99,9%', /nhãn mục/);
+bad('nhãn kết quả', 'Đồng tinh luyện dạng thanh, mặt cắt chữ nhật 15 x 2 mm 5. Kết quả phân loại:', /nhãn mục/);
+bad('mã nội bộ', 'IC 57#&Thanh đồng tinh luyện mặt cắt chữ nhật 15 x 2 mm dùng dẫn điện', /mã hàng nội bộ/);
+bad('dòng tờ khai', 'Thanh đồng tinh luyện mặt cắt chữ nhật 15 x 2 mm dùng dẫn điện (mục 5 PLTK)', /dòng tờ khai/);
+bad('mã trong mô tả', 'Thanh đồng tinh luyện mặt cắt chữ nhật 15 x 2 mm dùng dẫn điện — 74071040', /chứa mã/);
+r = run('nsx', doc([{ ...good, reasonVi: 'Nhà sản xuất: Bureo-Patagonia. ' + good.reasonVi, evidence: ev }], '2026-10-06'));
+assert('tên nhà sản xuất trong lý do bị chặn', r.status === 1 && /nhà sản xuất/i.test(r.out), r.out);
 const g1 = join(dir, 'g1.json');
 const g2 = join(dir, 'g2.json');
 writeFileSync(g1, JSON.stringify(doc([{ ...good, evidence: ev }], '2026-10-06')));

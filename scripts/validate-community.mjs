@@ -238,8 +238,23 @@ function validateQuality(file, doc) {
       // Đợt 06/10 chiều: mô tả "đủ 40 ký tự" bằng cách nối tên nhóm biểu thuế lấy từ lý do
       // ("Màu thực phẩm … - Chất gắn đã điều chế dùng cho các loại khuôn đúc hoặc lõi đú") hoặc
       // chữ giữ chỗ "Hàng hóa TB 238 theo thông báo". Tên nhóm là kết luận, không phải đặc tính hàng.
-      const corp = desc.match(/\b(Inc|Ltd|LLC|GmbH|B\.?V|S\.?A|AG|Co\.,?|Corp(oration)?|Group|JSC|Pte|Sdn\s+Bhd|Limited)\b\.?/);
+      // (?![-\d]) để không bắt mã model kiểu "AG-2", "SA-100".
+      const corp = desc.match(/\b(Inc|Ltd|LLC|GmbH|B\.?V|S\.?A|AG|Co\.,?|Corp(oration)?|Group|JSC|Pte|Sdn\s+Bhd|Limited)\b\.?(?![-\d])/);
       if (corp) problem(file, `${at} (${ref}): description có tên doanh nghiệp ("${corp[0]}") — chỉ ghi đặc tính hàng, không ghi nhà sản xuất/nhập khẩu`);
+      // Đợt 06/10 tối (trích bằng regex): mô tả dính nhãn mục của biểu mẫu ("— g thức hóa học:",
+      // "5. Kết quả phân loại:", "Tên gọi theo cấu tạo, công dụng:"), mã hàng nội bộ "IC 57#&",
+      // "(mục 5 PLTK)" và cả mã kết luận. Đó là dấu hiệu lấy nhầm đoạn, thường là tên hàng KHAI chứ không
+      // phải hàng THỰC TẾ theo kết luận.
+      const label = desc.match(/kết quả phân loại|tên gọi theo cấu tạo|(^|[\s—–-])g thức hóa học|ký, mã hiệu|nhà sản xuất\s*:/i);
+      if (label) problem(file, `${at} (${ref}): description còn nhãn mục của văn bản ("${label[0].trim()}") — chỉ chép phần nội dung: tên hàng thực tế + đặc tính`);
+      if (/#&/.test(desc)) problem(file, `${at} (${ref}): description có mã hàng nội bộ doanh nghiệp ("…#&") lấy từ tờ khai — bỏ đi, ghi tên hàng thực tế theo kết luận`);
+      const muc = desc.match(/\(?\s*mục\s+\d+[^)]{0,30}?(tờ khai|PLTK|TK\b|phụ lục)[^)]*\)?/i);
+      if (muc) problem(file, `${at} (${ref}): description có tham chiếu dòng tờ khai ("${muc[0].trim()}") — bỏ đi, chỉ ghi đặc tính hàng`);
+      if (r.hsCode && desc.replace(/\D/g, ' ').split(/\s+/).includes(String(r.hsCode))) {
+        problem(file, `${at} (${ref}): description chứa mã ${r.hsCode} — mã đã ở hsCode, mô tả chỉ ghi hàng`);
+      }
+      const nsx = reason.match(/nhà sản xuất\s*:\s*[^\s,.;]+/i);
+      if (nsx) problem(file, `${at} (${ref}): reasonVi có tên nhà sản xuất ("${nsx[0]}") — bỏ phần "Ký, mã hiệu / Nhà sản xuất", bắt đầu chép từ đặc tính hàng hoặc "thuộc nhóm"`);
       const parts = desc.split(/\s[-–—]\s/);
       const head = parts[0].trim();
       const tail = parts.slice(1).join(' - ').trim().toLowerCase();

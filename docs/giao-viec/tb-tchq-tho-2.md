@@ -56,7 +56,14 @@ Cột `lo` trong CSV đã chia sẵn 102 lô, **làm từ lô 1** (năm 2017 tr�
    | `evidence.ketLuan` | Câu kết luận nguyên văn **có mã số**; phải nằm trong `reasonVi` |
    | `girRule` | **Chỉ khi văn bản viện dẫn rõ** "Quy tắc 1/3(b)…". Không tự suy |
 
-   **Cấm** trong mọi trường: tên doanh nghiệp, địa chỉ, mã số thuế, số/ngày tờ khai, chi cục, trị giá.
+   **Cấm** trong mọi trường: tên doanh nghiệp, **nhà sản xuất**, địa chỉ, mã số thuế, số/ngày tờ khai, chi cục, trị giá.
+
+   **Bài học PR #155 (trích bằng regex):** `description` lấy nhầm đoạn, dính nhãn mục ("— g thức hóa học:",
+   "5. Kết quả phân loại:", "Tên gọi theo cấu tạo, công dụng:"), mã hàng nội bộ ("IC 57#&…"), "(mục 5 PLTK)" và cả mã
+   số. Nặng hơn: nhiều bản ghi lấy **tên hàng khai** thay cho **hàng thực tế** (vd khai "chất chống va đập C36H70CaO4"
+   nhưng kết luận là copolyme etylen-vinyl clorua 3901.90). Hàng thực tế nằm sau "Tên gọi theo cấu tạo, công dụng:" ở
+   mục kết quả phân loại, ngay trước "thuộc nhóm". Bộ kiểm giờ chặn các dấu hiệu trên. Script chỉ dùng để chép trang;
+   chọn đoạn và đối chiếu phải do người đọc.
 4. **Ghi tệp** `data/community/tb-tchq/tho2-<YYYY-MM-DD>-lo-<n>.json` (một tệp một lô):
 
    ```json
