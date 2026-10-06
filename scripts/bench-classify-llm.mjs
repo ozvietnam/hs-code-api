@@ -45,7 +45,7 @@ async function worker() {
       const attrs = { tenHang: it.tenHang, nameZh: it.nameZh || null, specs: it.specs || null, ...(it.facts ? { facts: it.facts } : {}) };
       const res = await classify(attrs, {});
       const rs = res.results || [];
-      out.push({ id: it.id, truth: it.truth, top: rs[0]?.hs || null, conf: rs[0]?.confidence ?? null, grounded: rs[0]?.grounded ?? null, streams: rs[0]?.knowledgeStreams || null, fabricated: (rs[0]?.basis || []).filter((b) => b.stream === 'SAN_PHAM' && b.verified === false).length, top3: rs.map((r) => r.hs), unsupported: (res.missing || []).filter((m) => /^(Chưa có căn cứ|Cần xác nhận)/.test(m)), reason: String(rs[0]?.reason || '').slice(0, 160), ms: Date.now() - t });
+      out.push({ id: it.id, truth: it.truth, top: rs[0]?.hs || null, conf: rs[0]?.confidence ?? null, grounded: rs[0]?.grounded ?? null, streams: rs[0]?.knowledgeStreams || null, fabricated: (rs[0]?.basis || []).filter((b) => b.stream === 'SAN_PHAM' && b.verified === false).length,  basis: rs[0]?.basis || [], top3: rs.map((r) => r.hs), unsupported: (res.missing || []).filter((m) => /^(Chưa có căn cứ|Cần xác nhận)/.test(m)), reason: String(rs[0]?.reason || '').slice(0, 160), ms: Date.now() - t });
     } catch (e) {
       out.push({ id: it.id, truth: it.truth, error: String(e.message).slice(0, 120), ms: Date.now() - t });
     }

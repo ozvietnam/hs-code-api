@@ -34,6 +34,17 @@ check('suy luận gắn đúng nhãn: không bị coi là bịa, nhưng chưa c�
 check('không có basis = không grounded, ≤70', !groundResults([{ hs: '82019000', confidence: 90 }], SRC).results[0].grounded);
 check('luồng lạ → SUY_LUAN', groundResults([{ hs: '1', confidence: 50, basis: [{ stream: 'WEB', claim: 'x' }] }], SRC).results[0].basis[0].stream === 'SUY_LUAN');
 
+// Ca thật bench 06/10: AI chép nhiều đoạn nối ";" + giải thích tiếng Việt → vẫn là trích đúng
+const BIKE = '新款儿童自行车可折叠单车\n制动系统: 碟刹; 车架材质: 碳钢; 类别: 儿童自行车; 适用性别: 男女; 速别: 单速 6速; 是否可折叠: 支持折叠';
+const vb = groundResults([{ hs: '87120020', confidence: 85, basis: [
+  SP('xe đạp trẻ em', '车架材质：碳钢; 类别：儿童自行车; 速别：单速/6速'),
+  SP('gấp gọn', '是否可折叠：支持折叠; quy cách loại gấp gọn'),
+  SP('xe đạp gấp', '儿童自行车可折叠 (xe đạp gấp)'),
+] }], BIKE);
+check('trích nhiều đoạn + chú thích tiếng Việt vẫn được nhận', vb.results[0].grounded && vb.results[0].confidence === 85, JSON.stringify(vb.results[0].basis.map((b) => b.verified)));
+const vf = groundResults([{ hs: '87120090', confidence: 85, basis: [SP('không động cơ', '折叠山地自行车; 无电动机')] }], BIKE);
+check('có mẩu chữ Hán tự chế ("无电动机") → bị coi là bịa', !vf.results[0].grounded && vf.results[0].confidence === 60);
+
 // Qua classify đầy đủ: câu AI tự hiểu ("máy cắt có động cơ điện") KHÔNG phải chữ gốc sản phẩm
 girReply = { results: [{ hs: '84672900', confidence: 92, reason: 'dụng cụ có động cơ điện', basis: [SP('có động cơ điện', 'máy cắt có động cơ điện')] }], missing: [] };
 const r = await classify({ tenHang: '加粗防电摘割槟榔刀伸缩杆加长12米铝合金', nameZh: '加粗防电摘割槟榔刀伸缩杆加长12米铝合金', specs: '颜色分类: 13米8节加粗加厚杆+大刀 +锯刀' }, {});
