@@ -19,6 +19,11 @@ try {
   for (const [k, v] of Object.entries(syn.keys || {})) FIELD_LABEL[k] ||= v.labelVi || k;
 } catch { /* nhãn tiếng Việt là phụ */ }
 
+// Chữ từ dữ liệu (nhãn hiệu, nhãn Trung…) → thoát markdown + chặn @nhắc tên / link.
+export function md(x) {
+  return String(x ?? '').replace(/[\\`*_[\]()<>#|!~]/g, (c) => `\\${c}`).replace(/@/g, '@\u200b').replace(/https?:\/\//gi, (m) => m.replace(':', '\u200b:')).slice(0, 80);
+}
+
 const P = { Cao: '🔴 Cao', 'Vừa': '🟠 Vừa', 'Thấp': '⚪ Thấp' };
 
 export function renderIssue(d, { limit = 40 } = {}) {
@@ -35,17 +40,17 @@ export function renderIssue(d, { limit = 40 } = {}) {
     `Gom từ phiếu hồ sơ khai báo (\`/api/declaration-sheet\`) của các món hàng thật trong ${d.windowDays} ngày (từ ${d.since}). Mức ưu tiên theo số lần gặp — **không công bố số lượng, tên hàng, link, shop hay khách** (CEO 05/10/2026). Sinh tự động bởi \`scripts/demand-issue.mjs\`, không sửa tay.`,
     '',
     `Phần **hợp quy / KTCN 2026** (${(d.ktcn2026 || []).length} mã HS) chuyển sang oz-wiki-plhq — báo cáo điểm mù nhóm "Mã HS có hàng thật chưa đối chiếu KTCN 2026".`,
-    ...sec('Nhãn hiệu chưa có trong danh sách theo dõi', d.brands || [], (b) => `**${b.brand}** (nhóm ${b.headings.join(', ')})`,
+    ...sec('Nhãn hiệu chưa có trong danh sách theo dõi', d.brands || [], (b) => `**${md(b.brand)}** (nhóm ${b.headings.map(md).join(', ')})`,
       'Tra bảo hộ tại VN (IP Vietnam / WIPO) + đăng ký giám sát TCHQ. Có rủi ro → thêm vào `data/trademark-watch.json` (#60).'),
-    ...sec('Nhãn hiệu chỉ có chữ Hán', d.brandsHanOnly || [], (b) => `**${b.brandZh}** (nhóm ${b.headings.join(', ')})`,
+    ...sec('Nhãn hiệu chỉ có chữ Hán', d.brandsHanOnly || [], (b) => `**${md(b.brandZh)}** (nhóm ${b.headings.map(md).join(', ')})`,
       'Ghi tên Latin / pinyin chính thức để phiếu điền được ô nhãn hiệu và khớp danh sách theo dõi.'),
-    ...sec('Chữ gợi hàng nhái trên tên hàng', d.counterfeitTerms || [], (c) => `**${c.term}** (nhóm ${c.headings.join(', ')})`,
+    ...sec('Chữ gợi hàng nhái trên tên hàng', d.counterfeitTerms || [], (c) => `**${md(c.term)}** (nhóm ${c.headings.map(md).join(', ')})`,
       'Rà kiểu dáng / nhãn hiệu được bảo hộ cho các nhóm hàng này.'),
-    ...sec('Ô bắt buộc hay thiếu', d.missingFields || [], (f) => `Nhóm **${f.heading}** · ${FIELD_LABEL[f.field] || f.field} (\`${f.field}\`)`,
+    ...sec('Ô bắt buộc hay thiếu', d.missingFields || [], (f) => `Nhóm **${md(f.heading)}** · ${md(FIELD_LABEL[f.field] || f.field)}`,
       'Thêm nhãn tiếng Trung vào `data/attribute-synonyms-zh.json`, hoặc xem lại template nhóm (ô không hợp nhóm hàng).'),
-    ...sec('Nhãn thông số tiếng Trung từ điển chưa hiểu', d.zhLabels || [], (z) => `\`${z.label}\``,
+    ...sec('Nhãn thông số tiếng Trung từ điển chưa hiểu', d.zhLabels || [], (z) => `${md(z.label)}`,
       'Gắn vào khóa chuẩn trong `data/attribute-synonyms-zh.json` (hoặc bỏ qua nếu là thông tin bán hàng).'),
-    ...sec('Nhóm 4 số chưa có template ô khai báo', d.noHeadingTemplate || [], (h) => `Nhóm **${h.heading}**`,
+    ...sec('Nhóm 4 số chưa có template ô khai báo', d.noHeadingTemplate || [], (h) => `Nhóm **${md(h.heading)}**`,
       'Thêm template trong `lib/declaration-field-templates.js` rồi `npm run build:declaration-fields`.'),
   ];
   return lines.join('\n') + '\n';

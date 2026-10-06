@@ -32,7 +32,8 @@ check('dòng lạ → NOTICE (sai an toàn)', lv('Khoáng sản làm VLXD (04/20
 
 const c = classifyPolicy('HH tạm ngừng KD TNTX CK (08/2023/TT-BCT - PL2); Hàng tiêu dùng QSD cấp NK (08/2023/TT-BCT - PL1.I)', {});
 check('chỉ NOTICE → không bật cờ', c.policyLevel === 'NOTICE' && c.hasActionablePolicy === false);
-check('cờ kiểm dịch trong warnings nâng BLOCKING', classifyPolicy('', { requiresQuarantine: true }).hasActionablePolicy === true);
+check('cờ kiểm dịch do AI bóc (không căn cứ) KHÔNG tự nâng BLOCKING', classifyPolicy('', { requiresQuarantine: true }).hasActionablePolicy === false);
+check('cờ từ bảng danh mục (listingDerived) nâng BLOCKING', classifyPolicy('', { requiresQuarantine: true, listingDerived: ['LISTING_KIEM_DICH_THUC_VAT'] }).hasActionablePolicy === true);
 check('cs rỗng → NONE', classifyPolicy(null, null).policyLevel === 'NONE');
 
 const sock = mapTaxLookup('85366932');
@@ -51,6 +52,10 @@ check('trùng văn bản+thủ tục: bỏ dòng khớp nhóm khi đã khớp 8 
 check('cờ: hợp quy → requiresInspection', listingLines([L({})])[0].flag === 'requiresInspection');
 const s99 = mapTaxLookup('85366999');
 check('/api/tax 85366999: BLOCKING + requiresInspection (từ danh mục 36/2026)', s99.policyLevel === 'BLOCKING' && s99.hasActionablePolicy && s99.warnings?.requiresInspection === true, JSON.stringify([s99.policyLevel, s99.warnings?.requiresInspection]));
+
+const g = mapTaxLookup('25041000');
+check('cờ AI không căn cứ (than chì, tiêu chuẩn XK) bị gỡ, ghi flagsWithoutBasis', g.hasActionablePolicy === false && g.warnings?.requiresInspection === false && (g.warnings?.flagsWithoutBasis || []).includes('requiresInspection'), JSON.stringify([g.policyLevel, g.warnings?.flagsWithoutBasis]));
+check('dòng cs lặp nguyên văn chỉ giữ một', classifyPolicy('Mỹ phẩm XK, NK (09/2024/TT-BYT-DM14); Mỹ phẩm XK, NK (09/2024/TT-BYT-DM14)*', {}).policyLines.length === 1);
 
 // Toàn biểu thuế: dòng nào cũng có mức; số dòng chưa phân loại phải nhỏ (rà luật khi tăng).
 let total = 0;
