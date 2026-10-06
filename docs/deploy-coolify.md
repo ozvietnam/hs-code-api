@@ -63,3 +63,6 @@ CEO chốt 29/09/2026: bỏ Vercel, chạy trên Coolify của server nhà. GitH
   (`lib/data-paths.js`). Snapshot biểu thuế sửa qua admin sẽ nằm ở `/data` và che bản
   trong repo cho tới khi xoá — đồng bộ lại vào GitHub định kỳ.
 - Sao lưu volume `/data` theo lịch sao lưu của server.
+
+## Biến môi trường trên máy chủ .120 (ghi 07/10/2026)
+`/opt/hs-code-api/deploy-safe.sh` build bằng **Dockerfile riêng** ở `/opt/hs-code-api/deploy/` (đè Dockerfile trong repo) và chạy container với `--env-file /opt/hs-code-api/hs.env`. Vì vậy `ENV` trong Dockerfile của repo **không có tác dụng trên máy chủ**; muốn đổi biến (vd `HS_CLASSIFY_ENGINE=loop|legacy`, `LLM_STEP_*`) thì sửa `hs.env` rồi chạy `deploy-safe.sh main --force` để tạo lại container. Bản 07/10: `HS_CLASSIFY_ENGINE=loop` (động cơ hai vòng + chốt chặn).
