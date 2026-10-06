@@ -2,6 +2,7 @@
 // AI xếp 8536.69.32 (dòng cho cáp đồng trục/mạch in) → bảng 8536 chỉnh về 8536.69.92 trong cùng phân
 // nhóm 6 số. Không được nhảy sang phân nhóm khác. LLM giả lập — không mạng.
 import './test-isolate-data.mjs';
+process.env.HS_CLASSIFY_CROSSCHECK = '0'; // kiểm bước chọn mã chính; cửa đối chiếu: test-classify-crosscheck.mjs
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
