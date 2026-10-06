@@ -33,5 +33,13 @@ check('mã 6 số đang chờ hỏi dữ kiện → giữ câu hỏi, không đo
 
 r = mergeSecondOpinion(prim(['39264000']), null);
 check('cửa đối chiếu lỗi → giữ nguyên kết quả chính', r.results[0].hs === '39264000' && r.crossCheck.available === false);
+r = mergeSecondOpinion({ status: 'NEEDS_EXPERT', nextAction: { type: 'RETRY' }, results: [] }, { ...sug('94017100'), degraded: true });
+check('bước chính lỗi tạm thời + cửa đối chiếu không qua AI → giữ THỬ LẠI', r.nextAction.type === 'RETRY' && r.results.length === 0);
+r = mergeSecondOpinion({ status: 'NEEDS_EXPERT', nextAction: { type: 'RETRY' }, results: [] }, sug('94017100'));
+check('bước chính lỗi tạm thời + cửa đối chiếu có AI → dùng kết quả đối chiếu', r.results[0].hs === '94017100' && r.review.needed);
+// Ca thật 06/10/2026: móc khoá súng in 3D nhựa PLA — cửa đối chiếu chọn 9503.00.50 "trừ plastic"
+r = mergeSecondOpinion(prim(['95030099']), { suggestions: [{ hsCode: '95030050', confidence: 60, reasoning: 'đồ chơi làm bằng nhựa plastic' }] }, '3D打印钥匙扣 材质: 塑料; Chất liệu: nhựa in 3D PLA+');
+check('mã đối chiếu "trừ plastic" mà hàng bằng nhựa → KHÔNG lên đầu', r.results[0].hs === '95030099' && r.crossCheck.subheadingFrom === null);
+check('… vẫn gắn cờ, nêu rõ mâu thuẫn', r.review.needed && /mâu thuẫn/.test(r.review.reasons[0]) && /trừ plastic/.test(r.review.reasons[0]));
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
