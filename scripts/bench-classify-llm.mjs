@@ -45,7 +45,7 @@ async function worker() {
       const attrs = { tenHang: it.tenHang, nameZh: it.nameZh || null, specs: it.specs || null, ...(it.facts ? { facts: it.facts } : {}) };
       const res = await classify(attrs, {});
       const rs = res.results || [];
-      out.push({ id: it.id, truth: it.truth, top: rs[0]?.hs || null, conf: rs[0]?.confidence ?? null, grounded: rs[0]?.grounded ?? null, top3: rs.map((r) => r.hs), unsupported: (res.missing || []).filter((m) => /^Chưa có căn cứ/.test(m)), reason: String(rs[0]?.reason || '').slice(0, 160), ms: Date.now() - t });
+      out.push({ id: it.id, truth: it.truth, top: rs[0]?.hs || null, conf: rs[0]?.confidence ?? null, grounded: rs[0]?.grounded ?? null, streams: rs[0]?.knowledgeStreams || null, fabricated: (rs[0]?.basis || []).filter((b) => b.stream === 'SAN_PHAM' && b.verified === false).length, top3: rs.map((r) => r.hs), unsupported: (res.missing || []).filter((m) => /^(Chưa có căn cứ|Cần xác nhận)/.test(m)), reason: String(rs[0]?.reason || '').slice(0, 160), ms: Date.now() - t });
     } catch (e) {
       out.push({ id: it.id, truth: it.truth, error: String(e.message).slice(0, 120), ms: Date.now() - t });
     }
@@ -63,6 +63,7 @@ const sum = {
   confidentWrong4: pct(withTruth.filter((o) => (o.conf ?? 0) >= 80 && o.top?.slice(0, 4) !== o.truth.slice(0, 4)).length, withTruth.length),
   confidentWrong8: pct(withTruth.filter((o) => o.truth.length === 8 && (o.conf ?? 0) >= 80 && o.top !== o.truth).length, withTruth.filter((o) => o.truth.length === 8).length),
   ungroundedTop: pct(out.filter((o) => o.grounded === false).length, out.length),
+  fabricatedTop: pct(out.filter((o) => o.fabricated > 0).length, out.length),
   avgSec: Math.round(out.reduce((a, o) => a + o.ms, 0) / Math.max(1, out.length) / 1000),
 };
 process.stderr.write('\n');
