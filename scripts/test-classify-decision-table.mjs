@@ -33,10 +33,17 @@ check('AI ra 8536.69.32 → bảng 8536 đã duyệt chỉnh về 8536.69.92', r
 check('ghi vết chỉnh: from 85366932, có ruleId', r1.results?.[0]?.resolverOverride?.from === '85366932' && r1.results[0].resolverOverride.ruleId, JSON.stringify(r1.results?.[0]?.resolverOverride));
 check('mã AI cũ giữ làm gợi ý phụ', r1.results.some((r, i) => i > 0 && r.hs === '85366932'));
 
-// Bảng không được kéo sang phân nhóm 6 số khác (AI chọn công tắc 8536.50 → không ép thành ổ cắm)
-girReply = { results: [{ hs: '85365061', confidence: 85, reason: 'công tắc' }], missing: [] };
-const r2 = await classify({ ...SOCKET }, {});
-check('khác phân nhóm 6 số → không chỉnh', r2.results?.[0]?.hs?.startsWith('853650'), JSON.stringify(r2.results?.map((r) => r.hs)));
+// Cùng NHÓM 4 số, khác phân nhóm: AI xếp ổ cắm có công tắc vào công tắc 8536.50 / đui đèn 8536.61 /
+// chỉ 6 số → bảng (GIR 3b: đặc trưng là ổ cắm) chỉnh về 8536.69.92
+for (const wrong of ['85365059', '85366111', '853669']) {
+  girReply = { results: [{ hs: wrong, confidence: 85, reason: 'x' }], missing: [] };
+  const r = await classify({ ...SOCKET }, {});
+  check(`AI ra ${wrong} (cùng nhóm 8536) → 85366992`, r.results?.[0]?.hs === '85366992', JSON.stringify(r.results?.map((x) => x.hs)));
+}
+// KHÔNG đổi nhóm: dây nguồn có phích (8544) — bảng 8536 không được kéo sang 8536
+girReply = { results: [{ hs: '85444299', confidence: 80, reason: 'dây điện có đầu nối' }], missing: [] };
+const r2 = await classify({ tenHang: 'dây nguồn có phích cắm 1.5m', nameZh: '电源线 带插头 1.5米', specs: '' }, {});
+check('mã AI ở nhóm khác (8544) → không bị bảng 8536 kéo đi', r2.results?.[0]?.hs === '85444299', JSON.stringify(r2.results?.map((r) => r.hs)));
 
 // Tắt được theo opts
 girReply = { results: [{ hs: '85366932', confidence: 85, reason: 'x' }], missing: [] };
