@@ -4,6 +4,7 @@ const { notesData, normalizeHs } = require('../lib/data');
 const { buildNoteChain } = require('../lib/gir-notes');
 const fs = require('fs');
 const { dataReadPath } = require('../lib/data-paths');
+const { notesCoverage } = require('../lib/notes-coverage');
 
 // notes.json thiếu 9 chương (50, 52, 53, 75, 76, 78, 79, 80, 81). Chương 75–80
 // có chú giải trong chu-giai-chuong.json → dùng làm nguồn dự phòng thay vì 404.
@@ -61,6 +62,8 @@ module.exports = function handler(req, res) {
       found: true,
       hsCode,
       level: levelFilter || 'all',
+      // Chú giải còn thiếu/bị cắt ở tầng nào — câu trả lời thiếu mà không nói là thiếu thì nguy hại hơn không trả lời.
+      coverage: notesCoverage(hsCode),
       chain,
       source: 'GIR 5-level chain (section → chapter → heading → subheading → national)',
     });
@@ -82,6 +85,7 @@ module.exports = function handler(req, res) {
     chapter: parseInt(chapNum, 10),
     hsCode,
     content: notesData[chapNum] || fallback,
+    coverage: notesCoverage(hsCode || String(heading || '').replace(/\D/g, '') || String(chapNum).padStart(2, '0')),
     chain,
     source: notesData[chapNum]
       ? 'Danh mục HHDM XNK Việt Nam - TT31/2022/TT-BTC'
