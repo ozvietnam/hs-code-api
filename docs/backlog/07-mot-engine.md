@@ -105,3 +105,20 @@ cấu trúc (JSON-LD `HS Code`, Material, Application), không đọc văn quả
 | **Sau mỗi lần đổi pipeline/prompt** | `bench-classify-llm.mjs` cả hai `--engine`, ghi image SHA vào bảng trên | Không đo thì không biết tiến hay lùi |
 | **Hằng tuần** | Đếm món ERP `DONE` không có mã + tỉ lệ `review.needed` | Rỗng = lỗi im lặng; cờ quá nhiều = nhân viên bỏ qua cờ |
 | **Khi thêm tri thức mới** | Cập nhật bảng "Tri thức → luồng" ở trên | Lý do có bước này: tri thức xây xong mà không nối |
+
+## Đợt 2 (06–07/10/2026) — động cơ hai vòng + chốt chặn (`lib/engine-loop.js`, bật `HS_CLASSIFY_ENGINE=loop`)
+
+CEO chốt lại kiến trúc: **AI là bộ não phân loại, suy luận trước — dữ liệu tĩnh là CHỐT CHẶN, không phải gợi ý.**
+Phần AI độc lập trong ERP (`hs-suggest.ts`) là thiết kế có chủ đích, không phải lỗi như bước 7 đợt 1 đã ghi.
+
+| Vòng | Ai làm | Việc | Mẫu |
+|---|---|---|---|
+| 1 | AI | Hồ sơ hỗn độn → hồ sơ bản chất 3 thứ tiếng (ô nào cũng kèm nguyên văn) + giả thuyết Chương→Nhóm→Phân nhóm theo GIR + lệnh kiểm chứng (từ khoá Việt, chương cần mở, mã cần xem, truy vấn made-in-china) | `LLM_STEP_UNDERSTAND=MiniMax-M3` |
+| — | Máy chủ | Thực hiện lệnh kiểm chứng, **bổ sung lệnh bắt buộc AI quên**: chú giải + dòng biểu thuế mọi nhóm nêu; tiền lệ Oz theo mọi tên Việt; TB-TCHQ; bảng quyết định; cặp mã dễ nhầm; chính sách (biểu thuế + oz-wiki); made-in-china khi có model / chương 84-85-90 (`lib/mic-lookup.js`, robots-allowed, chỉ ô có cấu trúc, cache 30 ngày) | tất định |
+| 2 | AI | Quyết định trên gói đã gom: CHOT / DE_XUAT (tranh chấp GIR 3) / HOI (câu hỏi về thuộc tính hàng, không nhắc mã) | `LLM_STEP_GIR=MiniMax-M3` |
+| — | Máy chủ | **Chốt chặn**: mã tồn tại · câu trích đặc tính & điều kiện ĐẠT/TRÁI phải có trong HỒ SƠ GỐC (không phải chữ AI vòng 1 — chống tự chứng nhận) · "trừ X"/"không có X" · nhóm chưa kiểm chú giải (máy tự bổ sung) · made-in-china ≥2 shop khác nhóm (hàng máy) · bảng đã duyệt ghi đè | tất định |
+| 3–4 | AI | Chỉ khi bị chặn: nhận đúng lý do, sửa hoặc giải thích bằng câu chữ luật | M3 |
+
+Đo thử 2 món thật (07/10): dao hái cau → 8201.90.00 (67–88 s, 2 lượt AI); máy khuếch tán tinh dầu → 8509.80.90 (146 s, cờ tranh chấp).
+M2.7 làm "bộ não" không đạt: vòng 1 đoán 9507 (cần câu), vòng 2 vượt 150 s; M3 đúng cả hai và nhanh gấp đôi.
+Số đo bộ sạch ghi ở PR tương ứng. Việc mở: E-6 made-in-china đã có bản đầu; câu hỏi CHƯA RÕ chỉ lấy điều kiện khẳng định (phủ định là loại trừ AI đã cân nhắc).

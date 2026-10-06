@@ -27,6 +27,7 @@ const ALLOW = new Set([
   'lib/gir.js',            // nguồn chân lý
   'lib/gir-notes.js',      // nguyên văn 6 quy tắc
   'lib/decision-tables.js', // bảng do người soạn, đi vào gir.js qua resolver
+  'lib/engine-loop.js',    // prompt nhắc thứ tự quy tắc cho AI; nhãn 'gir' AI trả về đi qua gir.js (determineGir llmGir → LLM_ASSERTED)
   'api/notes.js',          // mô tả chuỗi chú giải 5 tầng, không phải trích dẫn
 ]);
 const leaks = [];

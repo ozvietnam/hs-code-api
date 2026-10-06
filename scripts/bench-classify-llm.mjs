@@ -62,7 +62,7 @@ if (engine === 'suggest') {
   const { classify } = require(join(libDir, 'classify.js'));
   run = async (it) => {
     const res = await classify({ tenHang: it.tenHang, nameZh: it.nameZh || null, specs: it.specs || null, ...(it.facts ? { facts: it.facts } : {}) }, {});
-    return { rs: (res.results || []).map((r) => ({ ...r, hs: nz(r.hs) })), missing: res.missing || [], status: res.status || null };
+    return { rs: (res.results || []).map((r) => ({ ...r, hs: nz(r.hs) })), missing: res.missing || [], status: res.status || null, res };
   };
 }
 
@@ -73,13 +73,14 @@ async function worker() {
     const it = items[next++];
     const t = Date.now();
     try {
-      const { rs, missing, status } = await Promise.race([
+      const { rs, missing, status, res = {} } = await Promise.race([
         run(it),
         new Promise((_, rej) => setTimeout(() => rej(new Error('BENCH_TIMEOUT')), ITEM_TIMEOUT_MS)),
       ]);
       out.push({
         id: it.id, truth: it.truth, top: rs[0]?.hs || null, conf: rs[0]?.confidence ?? null, top3: rs.slice(0, 3).map((r) => r.hs),
         status, nMissing: missing.length, grounded: rs[0]?.grounded ?? null, basis: rs[0]?.basis || [],
+        rounds: res.engine?.rounds ?? null, decision: res.dossier?.decision ?? null, gates: res.engine?.gates ?? null, reviewNeeded: res.review?.needed ?? null, micHeading: res.dossier?.mic?.consensus?.heading4 ?? null,
         reason: String(rs[0]?.reason || '').slice(0, 200), ms: Date.now() - t,
       });
     } catch (e) {
@@ -102,6 +103,10 @@ const sum = {
   loaiKhac: (() => { const lk = ok.filter((o) => o.truth.length === 8 && isLoaiKhac(o.truth)); return { n: lk.length, top1_8: pct(lk.filter((o) => o.top === o.truth).length, lk.length) }; })(),
   confidentWrong8: pct(ok.filter((o) => (o.conf ?? 0) >= 80 && o.top !== o.truth).length, ok.length),
   avgSec: Math.round(out.reduce((a, o) => a + o.ms, 0) / Math.max(1, out.length) / 1000),
+  byStatus: Object.fromEntries([...new Set(out.map((o) => o.status || (o.error ? 'ERROR' : 'NONE')))].map((s) => [s, out.filter((o) => (o.status || (o.error ? 'ERROR' : 'NONE')) === s).length])),
+  avgRounds: out.some((o) => o.rounds) ? Math.round(10 * out.reduce((a, o) => a + (o.rounds || 0), 0) / Math.max(1, out.filter((o) => o.rounds).length)) / 10 : null,
+  flagged: pct(out.filter((o) => o.reviewNeeded === true || (o.status && o.status !== 'REVIEW' && o.status !== 'RESOLVED_BY_TABLE')).length, out.length),
+  wrongUnflagged: pct(ok.filter((o) => !(o.reviewNeeded === true || (o.status && o.status !== 'REVIEW' && o.status !== 'RESOLVED_BY_TABLE')) && !(o.truth.length === 8 ? o.top === o.truth : at(o, 4))).length, ok.length),
 };
 process.stderr.write('\n');
 console.log(JSON.stringify(sum));
