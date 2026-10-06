@@ -80,5 +80,18 @@ assert('chữ giữ chỗ "Hàng hóa TB … theo thông báo" bị chặn', r.s
 r = run('dash-ok', doc([{ ...good, description: 'Thanh cái dẫn điện - đồng tinh luyện dạng thanh, mặt cắt chữ nhật 15 x 2 mm', evidence: ev }], '2026-10-06'));
 assert('gạch nối bình thường trong mô tả vẫn qua', r.status === 0, r.out);
 
+r = run('corp', doc([{ ...good, description: good.description + ', hãng Henningsen Nederland BV', evidence: ev }], '2026-10-06'));
+assert('tên doanh nghiệp (BV/Inc/Group…) trong mô tả bị chặn', r.status === 1 && /tên doanh nghiệp/.test(r.out), r.out);
+const g1 = join(dir, 'g1.json');
+const g2 = join(dir, 'g2.json');
+writeFileSync(g1, JSON.stringify(doc([{ ...good, evidence: ev }], '2026-10-06')));
+writeFileSync(g2, JSON.stringify(doc([{ ...good, description: 'Thanh đồng tinh luyện mặt cắt chữ nhật dùng dẫn điện trong tủ phân phối', evidence: ev }], '2026-10-07')));
+const re = spawnSync(process.execPath, [join(root, 'scripts', 'validate-community.mjs'), g1, g2], { encoding: 'utf8' });
+assert('cùng người đọc lại thông báo đã nộp ở tệp khác bị chặn', re.status === 1 && /đã nộp thông báo này/.test(re.stdout + re.stderr), re.stdout + re.stderr);
+const g3 = join(dir, 'g3.json');
+writeFileSync(g3, JSON.stringify({ ...doc([{ ...good, description: 'Thanh đồng tinh luyện mặt cắt chữ nhật dùng dẫn điện trong tủ phân phối', evidence: ev }], '2026-10-07'), contributor: { name: 'Thợ 2' } }));
+const re2 = spawnSync(process.execPath, [join(root, 'scripts', 'validate-community.mjs'), g1, g3], { encoding: 'utf8' });
+assert('người khác đọc lại để làm giàu thì vẫn qua', re2.status === 0, re2.stdout + re2.stderr);
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);

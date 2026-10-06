@@ -179,6 +179,7 @@ const recordKey = (r) => [
   normKey(r?.description),
 ].join('|');
 const seenRecords = new Map(); // khoá → tệp đầu tiên chứa bản ghi
+const seenRefHs = new Map(); // số hiệu|năm|mã → tệp đầu tiên (chặn đọc lại thông báo đã nộp ở tệp khác)
 
 function validateQuality(file, doc) {
   const strict = doc.kind === 'precedent' && String(doc.submittedAt || '') >= STRICT_FROM;
@@ -192,6 +193,15 @@ function validateQuality(file, doc) {
       problem(file, `${at} (${r?.source?.reference} → ${r?.hsCode}) trùng bản ghi trong ${seenRecords.get(key)} — mỗi bản ghi chỉ nằm ở một tệp`);
     }
     if (!seenRecords.has(key)) seenRecords.set(key, file);
+    const refHs = key.split('|').slice(0, 3).join('|');
+    // Cùng người nộp đọc lại thông báo đã nộp ở tệp khác → hai bản mâu thuẫn (đợt 06/10: 22/25 ngày ký
+    // khác nhau giữa hai lần đọc). Người khác đọc lại bản mỏng của người khác thì vẫn được (merge tự thay).
+    const who = String(doc.contributor?.name || '').trim().toLowerCase();
+    const first = seenRefHs.get(refHs);
+    if (first && first.file !== file && first.who === who && String(doc.submittedAt || '') >= EVIDENCE_FROM && r?.source?.type === 'TB-TCHQ') {
+      problem(file, `${at} (${r?.source?.reference} → ${r?.hsCode}): bạn đã nộp thông báo này ở ${first.file}. Muốn sửa thì sửa trong tệp đó, không nộp bản đọc lại thứ hai`);
+    }
+    if (!first) seenRefHs.set(refHs, { file, who });
     const bt = r?.attributes?.bieuThue;
     const btWant = bieuThueTheoNgay(r?.source?.issuedDate);
     if (bt && btWant && String(bt) !== btWant) {
@@ -228,6 +238,8 @@ function validateQuality(file, doc) {
       // Đợt 06/10 chiều: mô tả "đủ 40 ký tự" bằng cách nối tên nhóm biểu thuế lấy từ lý do
       // ("Màu thực phẩm … - Chất gắn đã điều chế dùng cho các loại khuôn đúc hoặc lõi đú") hoặc
       // chữ giữ chỗ "Hàng hóa TB 238 theo thông báo". Tên nhóm là kết luận, không phải đặc tính hàng.
+      const corp = desc.match(/\b(Inc|Ltd|LLC|GmbH|B\.?V|S\.?A|AG|Co\.,?|Corp(oration)?|Group|JSC|Pte|Sdn\s+Bhd|Limited)\b\.?/);
+      if (corp) problem(file, `${at} (${ref}): description có tên doanh nghiệp ("${corp[0]}") — chỉ ghi đặc tính hàng, không ghi nhà sản xuất/nhập khẩu`);
       const parts = desc.split(/\s[-–—]\s/);
       const head = parts[0].trim();
       const tail = parts.slice(1).join(' - ').trim().toLowerCase();
