@@ -41,5 +41,8 @@ check('bước chính lỗi tạm thời + cửa đối chiếu có AI → dùng
 r = mergeSecondOpinion(prim(['95030099']), { suggestions: [{ hsCode: '95030050', confidence: 60, reasoning: 'đồ chơi làm bằng nhựa plastic' }] }, '3D打印钥匙扣 材质: 塑料; Chất liệu: nhựa in 3D PLA+');
 check('mã đối chiếu "trừ plastic" mà hàng bằng nhựa → KHÔNG lên đầu', r.results[0].hs === '95030099' && r.crossCheck.subheadingFrom === null);
 check('… vẫn gắn cờ, nêu rõ mâu thuẫn', r.review.needed && /mâu thuẫn/.test(r.review.reasons[0]) && /trừ plastic/.test(r.review.reasons[0]));
+// Ca thật 06/10/2026: tinh dầu khuếch tán — cửa đối chiếu độ tin 35 không được đổi mã
+r = mergeSecondOpinion(prim(['85098090']), { suggestions: [{ hsCode: '85098010', confidence: 35, reasoning: 'máy đánh bóng sàn — không liên quan' }] });
+check('cửa đối chiếu độ tin thấp (35) → KHÔNG đổi mã, vẫn cờ kèm độ tin', r.results[0].hs === '85098090' && r.review.needed && /35%/.test(r.review.reasons[0]));
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
