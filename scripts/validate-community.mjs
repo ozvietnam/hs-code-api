@@ -225,6 +225,19 @@ function validateQuality(file, doc) {
       }
       if (unbalanced(desc)) problem(file, `${at} (${ref}): description có ngoặc mở không đóng — có vẻ bị cắt giữa chừng`);
       if (desc.trim().length < 40) problem(file, `${at} (${ref}): description dưới 40 ký tự — ghi tên hàng THỰC TẾ theo kết luận + đặc tính quyết định (chất liệu, cấu tạo, công dụng, thông số)`);
+      // Đợt 06/10 chiều: mô tả "đủ 40 ký tự" bằng cách nối tên nhóm biểu thuế lấy từ lý do
+      // ("Màu thực phẩm … - Chất gắn đã điều chế dùng cho các loại khuôn đúc hoặc lõi đú") hoặc
+      // chữ giữ chỗ "Hàng hóa TB 238 theo thông báo". Tên nhóm là kết luận, không phải đặc tính hàng.
+      const parts = desc.split(/\s[-–—]\s/);
+      const head = parts[0].trim();
+      const tail = parts.slice(1).join(' - ').trim().toLowerCase();
+      if (/^hàng hóa\s+(tb|theo)\b/i.test(head) || /theo thông báo\s*$/i.test(head)) {
+        problem(file, `${at} (${ref}): description là chữ giữ chỗ ("${head}") — chép tên hàng thực tế từ văn bản`);
+      }
+      const headings = [...reason.matchAll(/[“"]([^”"]{4,})[”"]/g)].map((m) => m[1].replace(/^[-\s]+/, '').trim().toLowerCase());
+      if (tail && headings.some((h) => h.startsWith(tail.slice(0, 25)))) {
+        problem(file, `${at} (${ref}): description nối thêm tên nhóm/phân nhóm biểu thuế ("${parts.slice(1).join(' - ').trim().slice(0, 40)}…") — đó là kết luận, không phải đặc tính hàng. Ghi chất liệu, cấu tạo, công dụng, thông số từ văn bản`);
+      }
     }
     if (reason.trim().length < 80) {
       problem(file, `${at} (${ref}): reasonVi dưới 80 ký tự — chép nguyên văn chuỗi nhóm → phân nhóm → mã và căn cứ`);

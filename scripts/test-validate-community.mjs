@@ -73,5 +73,12 @@ assert('biểu thuế sai bị chặn cả ở tệp cũ', r.status === 1 && /bi
 r = run('short40', doc([{ ...good, description: 'Thép cán nguội 1-3mm dạng cuộn', evidence: ev }], '2026-10-06'));
 assert('mô tả dưới 40 ký tự bị chặn (từ 06/10)', r.status === 1 && /dưới 40 ký tự/.test(r.out), r.out);
 
+r = run('pad', doc([{ ...good, description: 'Đồng tinh chế dạng dải - Đồng ở dạng thanh, que và dạng hình', evidence: ev }], '2026-10-06'));
+assert('mô tả nối tên nhóm biểu thuế bị chặn', r.status === 1 && /nối thêm tên nhóm/.test(r.out), r.out);
+r = run('ph2', doc([{ ...good, description: 'Hàng hóa TB 1573 theo thông báo - đồng tinh luyện dạng thanh', evidence: ev }], '2026-10-06'));
+assert('chữ giữ chỗ "Hàng hóa TB … theo thông báo" bị chặn', r.status === 1 && /chữ giữ chỗ/.test(r.out), r.out);
+r = run('dash-ok', doc([{ ...good, description: 'Thanh cái dẫn điện - đồng tinh luyện dạng thanh, mặt cắt chữ nhật 15 x 2 mm', evidence: ev }], '2026-10-06'));
+assert('gạch nối bình thường trong mô tả vẫn qua', r.status === 0, r.out);
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
