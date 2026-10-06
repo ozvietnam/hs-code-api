@@ -57,6 +57,10 @@ r = await run(KNIFE, [R1_KNIFE,
 check('câu trích không có trong hồ sơ → chặn tới trần vòng → không CHỐT', r.status !== 'REVIEW' && r.status !== 'RESOLVED_BY_TABLE' && r.missing.some((m) => /Chưa chốt được/.test(m)) && calls.length === 4, JSON.stringify([r.status, calls.length, r.engine.gates.map((x) => x.blocks)]));
 check('nhóm 8467 chưa kiểm → máy chủ tự bổ sung chú giải cho vòng sau', /NHÓM 8467/.test(calls[2].user));
 
+// 5b. Điều kiện phủ định CHƯA RÕ ("Hàng KHÔNG phải kéo…") không thành câu hỏi cho khách
+r = await run(KNIFE, [R1_KNIFE, { decision: 'CHOT', hs: '82019000', confidence: 85, reason: 'x', basis: [{ stream: 'SAN_PHAM', claim: 'hái cau', evidence: '用于摘取槟榔' }], conditions: [{ fact: 'Hàng KHÔNG phải kéo cắt cành có vòng xỏ ngón tay', status: 'UNKNOWN', evidence: '' }, { fact: 'Vận hành bằng tay, không có động cơ', status: 'UNKNOWN', evidence: '' }, { fact: 'Chiều dài cán', status: 'UNKNOWN', evidence: '' }], alternatives: [], questions: [] }]);
+check('điều kiện phủ định không thành câu hỏi; điều kiện khẳng định thì có', r.missing.some((m) => /Chiều dài cán/.test(m)) && !r.missing.some((m) => /KHÔNG phải kéo/.test(m)), JSON.stringify(r.missing));
+
 // 6a. Tiền lệ Oz khớp cao nhưng khác nhóm → cờ xem lại (không chặn, không đổi mã)
 const ozMod = require('../lib/oz-precedent-search');
 const origOz = ozMod.searchOzByKeyword;
