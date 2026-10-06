@@ -7,8 +7,8 @@ process.env.MIC_OFF = '1';
 process.env.HS_EVAL_EXCLUDE_HOLDOUT = '1';
 const llmTier = require('../lib/llm-tier');
 let script = []; let calls = [];
-llmTier.callLLMJson = async (system, user) => {
-  calls.push({ round: system.startsWith('VÒNG 1') ? 1 : 2, user });
+llmTier.callLLMJson = async (system, user, opts = {}) => {
+  calls.push({ round: system.startsWith('VÒNG 1') ? 1 : 2, user, thinkingOff: opts.minimax?.extraBody?.thinking?.type === 'disabled' });
   const next = script.shift();
   if (next instanceof Error) throw next;
   return { json: typeof next === 'function' ? next(user) : next, provider: 'stub', model: 'stub' };
@@ -56,6 +56,10 @@ r = await run(KNIFE, [R1_KNIFE,
 ]);
 check('câu trích không có trong hồ sơ → chặn tới trần vòng → không CHỐT', r.status !== 'REVIEW' && r.status !== 'RESOLVED_BY_TABLE' && r.missing.some((m) => /Chưa chốt được/.test(m)) && calls.length === 4, JSON.stringify([r.status, calls.length, r.engine.gates.map((x) => x.blocks)]));
 check('nhóm 8467 chưa kiểm → máy chủ tự bổ sung chú giải cho vòng sau', /NHÓM 8467/.test(calls[2].user));
+
+// 6b. Lưới an toàn: vòng 2 trả JSON không đọc được (M3 suy nghĩ quá dài) → gọi lại cùng mẫu tắt suy nghĩ
+r = await run(KNIFE, [R1_KNIFE, new Error('No parseable JSON in LLM output [minimax/MiniMax-M3, 46103 ký tự]'), { decision: 'CHOT', hs: '82019000', confidence: 80, reason: 'dụng cụ nông nghiệp', basis: [{ stream: 'SAN_PHAM', claim: 'hái cau', evidence: '用于摘取槟榔' }], conditions: [], alternatives: [], questions: [] }]);
+check('JSON hỏng → gọi lại tắt suy nghĩ → vẫn ra mã', r.results[0]?.hs === '82019000' && r.engine.gates.some((x) => x.fallback === 'thinking-off') && calls.length === 3 && calls[2].thinkingOff === true, JSON.stringify([r.status, calls.length, r.engine.gates]));
 
 // 6. Vòng 1 lỗi → RETRY, không rỗng-DONE
 r = await run(KNIFE, [new Error('HTTP 429 Token Plan rate limit')]);
