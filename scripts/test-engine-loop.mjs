@@ -57,6 +57,17 @@ r = await run(KNIFE, [R1_KNIFE,
 check('câu trích không có trong hồ sơ → chặn tới trần vòng → không CHỐT', r.status !== 'REVIEW' && r.status !== 'RESOLVED_BY_TABLE' && r.missing.some((m) => /Chưa chốt được/.test(m)) && calls.length === 4, JSON.stringify([r.status, calls.length, r.engine.gates.map((x) => x.blocks)]));
 check('nhóm 8467 chưa kiểm → máy chủ tự bổ sung chú giải cho vòng sau', /NHÓM 8467/.test(calls[2].user));
 
+// 6a. Tiền lệ Oz khớp cao nhưng khác nhóm → cờ xem lại (không chặn, không đổi mã)
+const ozMod = require('../lib/oz-precedent-search');
+const origOz = ozMod.searchOzByKeyword;
+ozMod.searchOzByKeyword = async () => ({ items: [{ hsCode: '87168010', tenHang: 'Xe đẩy thức ăn dùng trong khách sạn', ozCount: 3, matchCoverage: 80 }] });
+r = await run({ tenHang: 'Xe đẩy thức ăn dùng trong khách sạn, khung inox', nameZh: null }, [
+  { product: { nameVi: 'xe đẩy thức ăn khách sạn', nameEn: 'hotel food service trolley', purpose: 'phục vụ thức ăn', mechanism: 'cơ-tay', material: 'inox' }, hypotheses: [{ chapter: '94', heading4: '9403', subheading6: '940320', why: 'đồ nội thất', confidence: 80 }], verify: { searchVi: ['xe đẩy thức ăn'], codes8: ['94032090'], micQuery: null, unknowns: [] } },
+  { decision: 'CHOT', hs: '94032090', confidence: 85, reason: 'đồ nội thất kim loại', basis: [{ stream: 'SAN_PHAM', claim: 'khung inox', evidence: 'khung inox' }], conditions: [], alternatives: [], questions: [] },
+]);
+ozMod.searchOzByKeyword = origOz;
+check('tiền lệ Oz khác nhóm → giữ mã AI nhưng gắn cờ xem lại', r.results[0]?.hs === '94032090' && r.review.needed && /8716/.test(r.review.reasons[0]), JSON.stringify([r.results[0]?.hs, r.review]));
+
 // 6b. Lưới an toàn: vòng 2 trả JSON không đọc được (M3 suy nghĩ quá dài) → gọi lại cùng mẫu tắt suy nghĩ
 r = await run(KNIFE, [R1_KNIFE, new Error('No parseable JSON in LLM output [minimax/MiniMax-M3, 46103 ký tự]'), { decision: 'CHOT', hs: '82019000', confidence: 80, reason: 'dụng cụ nông nghiệp', basis: [{ stream: 'SAN_PHAM', claim: 'hái cau', evidence: '用于摘取槟榔' }], conditions: [], alternatives: [], questions: [] }]);
 check('JSON hỏng → gọi lại tắt suy nghĩ → vẫn ra mã', r.results[0]?.hs === '82019000' && r.engine.gates.some((x) => x.fallback === 'thinking-off') && calls.length === 3 && calls[2].thinkingOff === true, JSON.stringify([r.status, calls.length, r.engine.gates]));
