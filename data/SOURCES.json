@@ -53,12 +53,12 @@
     },
     "chu-giai-chuong.json": {
       "kind": "MASTER",
-      "descriptionVi": "Chú giải chương/phần — thu hoạch từ KG",
+      "descriptionVi": "Chú giải chương/phần — thu hoạch từ KG — `chuong` = toàn văn chú giải chương HS 2022 (scripts/import-chu-giai-pdf.py)",
       "builtBy": "scripts/harvest-chu-giai.mjs"
     },
     "chu-giai-heading.json": {
       "kind": "MASTER",
-      "descriptionVi": "Chú giải nhóm 4 số (1.269 nhóm) — thu hoạch từ KG + làm giàu điểm phân biệt",
+      "descriptionVi": "Chú giải nhóm 4 số (1.269 nhóm) — thu hoạch từ KG + làm giàu điểm phân biệt; `nhom` = toàn văn Chú giải chi tiết HS 2022 (scripts/import-chu-giai-pdf.py), `sen` = SEN 2022 (scripts/import-sen-pdf.py)",
       "builtBy": "scripts/harvest-chu-giai.mjs"
     },
     "conflict-tables.json": {
@@ -304,6 +304,11 @@
     "attribute-synonyms-zh.json": {
       "kind": "CURATED",
       "descriptionVi": "Từ điển nhãn thông số tiếng Trung (Taobao/1688) → khóa trường khai chuẩn; dữ liệu mở CC BY 4.0, công khai qua /api/attribute-synonyms"
+    },
+    "sen-2022.json": {
+      "kind": "MASTER",
+      "descriptionVi": "Chú giải bổ sung SEN 2022 (AHTN 2022, CV 3866/TCHQ-TXNK) — phần tiếng Việt theo mã 8/6/4 số, 395 mục / 683 mã; nhập từ PDF của CEO",
+      "builtBy": "scripts/import-sen-pdf.py"
     }
   }
 }
