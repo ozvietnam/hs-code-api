@@ -108,4 +108,16 @@ Lỗi đánh máy trong bản PDF 2022, bộ nhập đã tự xử lý:
 - không nhóm nào lẫn chú giải Phần hoặc chương sau;
 - nhóm mới HS 2022 và 71.06–71.18 có chú giải.
 
-Còn lại: SEN 2022 (chú giải bổ sung ASEAN cho mã 8 số) chưa nhập vào trường `sen`.
+## 6. Cập nhật 07/10/2026: Chú giải bổ sung SEN 2022 (AHTN)
+
+Nguồn: `chu_giai_SEN_2022.pdf` (386 trang, hai cột Việt/Anh, kèm CV 3866/TCHQ-TXNK ngày 24/07/2023).
+Lệnh: `python3 scripts/import-sen-pdf.py <pdf> --write`.
+
+- **395 mục / 683 mã**, gồm 656 mã 8 số, 1 phân nhóm 6 số (4001.21) và 26 mục cấp nhóm (27.10, 39.02…, 87.03). Mọi mã đều có trong biểu thuế.
+  `data/sen-2022.json` giữ mỗi mục kèm tên hàng, nội dung tiếng Việt, nước đề xuất và số trang.
+- Trường `sen` của **236 nhóm** trong `chu-giai-heading.json` được thay bằng SEN 2022, ghi nguồn ở `sen_nguon`. Bản cũ chỉ có 219 nhóm.
+- `lib/sen.js` có hàm `senFor(hs8)`, trả mục của đúng mã 8 số cộng mục cấp 6/4 số chứa nó. Không suy rộng sang mã 8 số anh em.
+- Kết quả được trả ra ở `/api/notes` (trường `sen`), `/api/classify` và `/api/suggest` (SEN của mã đứng đầu).
+- Cột tiếng Anh được cắt bằng cách tìm khe giữa hai cột trên từng trang, vì ở chương 27 cột Anh bắt đầu từ x≈340/792.
+  Test kiểm không lẫn chữ Anh, đồng thời giữ ngưỡng tối thiểu 380 mục / 650 mã.
+

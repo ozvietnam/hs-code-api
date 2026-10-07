@@ -4,11 +4,13 @@
 
 ## Vì sao có bước này — và vì sao KHÔNG phải làm lại từ đầu
 
-Dự án **đã** đọc hiểu chú giải cho đủ 1.269 nhóm (`data/chu-giai-heading.json`): `nhom`
-(phạm vi) 1.212, `bao_gom` 815, `khong_bao_gom` 737, `loai_tru` 811, `tinh_chat` 1.265,
-`phan_biet` 1.269, `sen` 219, `nguon` 1.269; chú giải chương `data/chu-giai-chuong.json`
-(97, chương 84/85 đã nạp lại toàn văn #162); `data/legal-notes-enriched.json` 1.039 mã có
-`tinh_chat` dạng cấu trúc (nguyên liệu / cấu tạo / nguyên lý / mục đích). **Phần đọc hiểu
+Dự án **đã** đọc hiểu chú giải cho đủ 1.269 nhóm (`data/chu-giai-heading.json`): `bao_gom` 815,
+`khong_bao_gom` 737, `loai_tru` 811, `tinh_chat` 1.265, `phan_biet` 1.269, `nguon` 1.269. **Kệ sách
+(nguyên văn) đã đủ từ 07/10/2026:** `nhom` = toàn văn Chú giải chi tiết **HS 2022** cho 1.228/1.228
+nhóm (trừ ch.98, `phien_ban: '2022'`, #163); `chu-giai-chuong.json` 96 chương bản 2022; **SEN 2022**
+theo mã 8 số ở `data/sen-2022.json` (395 mục, 683 mã; `lib/sen.js`) và trường `sen` của 236 nhóm;
+`data/legal-notes-enriched.json` 1.039 mã có `tinh_chat` dạng cấu trúc (nguyên liệu / cấu tạo /
+nguyên lý / mục đích). **Phần đọc hiểu
 đã có.** Thứ còn thiếu là ba điểm khiến động cơ chạy thật chưa dùng được nó:
 
 1. **Chưa có cấu trúc để máy chủ khớp.** `loai_tru` là chữ thô (có đoạn ghép vỡ, vd 8509:
