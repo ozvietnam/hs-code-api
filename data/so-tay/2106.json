@@ -1,0 +1,486 @@
+{
+ "nhom": "2106",
+ "phamVi": {
+  "text": "Chế phẩm thực phẩm chưa được chi tiết hoặc ghi ở nơi khác: chế phẩm ăn được cho người (ăn ngay hoặc qua chế biến) và chế phẩm toàn bộ/một phần là thực phẩm dùng để chế biến đồ uống hoặc thực phẩm (kể cả protein cô đặc, thực phẩm bảo vệ sức khỏe, xirô pha hương…).",
+  "nguon": "nhom2106.nhom",
+  "trich": "Nhóm này bao gồm các chế phẩm sau (với điều kiện chúng chưa thuộc các nhóm khác trong Danh mục): (A) Các chế phẩm được dùng làm thức ăn cho người, có thể ăn ngay được hoặc phải qua chế biến"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "chua_thuoc_nhom_khac_trong_danh_muc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2106.nhom",
+   "trich": "Nhóm này bao gồm các chế phẩm sau (với điều kiện chúng chưa thuộc các nhóm khác trong Danh mục)"
+  },
+  {
+   "fact": "dung_lam_thuc_an_cho_nguoi_hoac_che_bien_do_uong_thuc_pham",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2106.nhom",
+   "trich": "(B) Các chế phẩm bao gồm toàn bộ hoặc một phần là thực phẩm, được dùng để chế biến đồ uống hoặc chế phẩm thực phẩm cho người."
+  },
+  {
+   "fact": "ty_le_xuc_xich_thit_con_trung_ca_giap_xac_than_mem_khoi_luong",
+   "op": "<=",
+   "value": 20,
+   "donVi": "%",
+   "ngoaiTru": [
+    "Sản phẩm nhóm 21.03 hoặc 21.04"
+   ],
+   "nguon": "ch21.chuong",
+   "trich": "Các chế phẩm thực phẩm, trừ các sản phẩm ghi trong nhóm 21.03 hoặc 21.04, có chứa trên 20% tính theo khối lượng của xúc xích, thịt, phụ phẩm dạng thịt sau giết mổ, tiết, côn trùng, cá hoặc động vật giáp xác"
+  },
+  {
+   "fact": "thuc_pham_bao_ve_suc_khoe_du_hoat_chat_dieu_tri_phong_benh_cu_the",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "ngoaiTru": [
+    "Trừ tình trạng thiếu hụt dinh dưỡng liên quan"
+   ],
+   "nguon": "nhom2106.nhom",
+   "trich": "Các chế phẩm này không chứa đủ lượng thành phần hoạt tính để mang lại hiệu quả điều trị hoặc phòng ngừa các bệnh tật trừ tình trạng thiếu hụt dinh dưỡng liên quan."
+  },
+  {
+   "fact": "che_pham_san_xuat_do_uong_dua_tren_chat_thom",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2106.nhom",
+   "trich": "Các chế phẩm có hoặc không có cồn (không dựa trên các chất thơm) loại được sử dụng để sản xuất các loại đồ uống có hoặc không có cồn."
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Chế phẩm enzyme có chứa thực phẩm (vd chất làm mềm thịt chứa enzyme phân giải protein có thêm dextrose)",
+   "sangNhom": "3507",
+   "nguon": "nhom2106.nhom",
+   "trich": "Tuy nhiên, nhóm này không bao gồm các chế phẩm enzyme có chứa thực phẩm … Các chế phẩm này thuộc nhóm 35.07 với điều kiện chúng chưa thuộc các nhóm khác trong Danh mục."
+  },
+  {
+   "dieuKien": "Bột làm kem, thạch… từ bột mịn, bột thô, tinh bột, chiết xuất malt hoặc sản phẩm 04.01–04.04 (có/không thêm cacao) — tuỳ hàm lượng cacao",
+   "sangNhom": "1806|1901",
+   "nguon": "nhom2106.nhom",
+   "trich": "Các loại bột từ bột mịn, bột thô, tinh bột, chiết xuất malt hoặc từ các sản phẩm của các nhóm từ 04.01 đến 04.04, có hoặc không cho thêm ca cao, thuộc nhóm 18.06 hoặc 19.01 tuỳ theo hàm lượng ca cao"
+  },
+  {
+   "dieuKien": "Các loại bột làm kem, thạch khác có chứa cacao",
+   "sangNhom": "1806",
+   "nguon": "nhom2106.nhom",
+   "trich": "Các loại bột khác có chứa ca cao thuộc nhóm 18.06."
+  },
+  {
+   "dieuKien": "Bột có đặc tính của đường đã pha hương liệu hoặc chất màu dùng để làm ngọt",
+   "sangNhom": "1701|1702",
+   "nguon": "nhom2106.nhom",
+   "trich": "Còn các loại bột có đặc tính của đường đã pha hương liệu hoặc chất màu dùng để làm ngọt, tuỳ theo loại, thuộc nhóm 17.01 hoặc 17.02."
+  },
+  {
+   "dieuKien": "Bột đậu tương đã khử chất béo nhưng không được tạo kết cấu",
+   "sangNhom": "2304",
+   "nguon": "nhom2106.nhom",
+   "trich": "nhóm này không bao gồm bột đậu tương đã được khử chất béo nhưng không được tạo kết cấu, thích hợp hay không thích hợp làm thức ăn cho người (nhóm 23.04)"
+  },
+  {
+   "dieuKien": "Protein biệt lập",
+   "sangNhom": "3504",
+   "nguon": "nhom2106.nhom",
+   "trich": "và protein biệt lập (nhóm 35.04)."
+  },
+  {
+   "dieuKien": "Chế phẩm dùng để sản xuất đồ uống dựa trên một hoặc một số chất thơm",
+   "sangNhom": "3302",
+   "nguon": "nhom2106.nhom",
+   "trich": "Nhóm này không bao gồm các chế phẩm được dùng để sản xuất đồ uống, dựa trên một hoặc một số chất thơm (nhóm 33.02)."
+  },
+  {
+   "dieuKien": "Hỗn hợp cây/thảo dược có định lượng hoạt chất dùng để phòng hoặc chữa một bệnh cụ thể",
+   "sangNhom": "3003|3004",
+   "nguon": "nhom2106.nhom",
+   "trich": "Tuy nhiên nhóm này không bao gồm các sản phẩm pha trộn có định lượng của hoạt chất dùng để phòng hoặc chữa một loại bệnh cụ thể (nhóm 30.03 hoặc 30.04)."
+  },
+  {
+   "dieuKien": "Hỗn hợp cây, phần của cây để chế trà/dịch thảo dược nhưng là sản phẩm thuộc nhóm 08.13",
+   "sangNhom": "0813",
+   "nguon": "nhom2106.nhom",
+   "trich": "Cũng loại trừ khỏi nhóm này là các sản phẩm thuộc nhóm 08.13 hoặc Chương 9."
+  },
+  {
+   "dieuKien": "Chế phẩm (thực phẩm bổ sung) có lượng thành phần hoạt tính đủ để điều trị hoặc phòng ngừa một bệnh cụ thể",
+   "sangNhom": "3003|3004",
+   "nguon": "nhom2106.nhom",
+   "trich": "Các chế phẩm khác có lượng thành phần hoạt tính đủ để mang lại tác dụng điều trị hoặc phòng ngừa một căn bệnh cụ thể bị loại trừ (nhóm 30.03 hoặc 30.04)."
+  },
+  {
+   "dieuKien": "Chế phẩm dạng hạt/bột để chế biến đồ uống nhưng có đặc tính của đường",
+   "sangNhom": "1701|1702",
+   "nguon": "nhom2106.nhom",
+   "trich": "Tuy nhiên, các chế phẩm có đặc tính của đường thuộc nhóm 17.01 hoặc 17.02, tùy trường hợp."
+  },
+  {
+   "dieuKien": "Chế phẩm từ quả, quả hạch hoặc phần ăn được khác của cây mà đặc tính cơ bản do các thành phần đó tạo nên",
+   "sangNhom": "2008",
+   "nguon": "nhom2106.nhom",
+   "trich": "Các chế phẩm được chế biến từ quả, quả hạch (nut) hoặc các phần ăn được của cây thuộc nhóm 20.08, với điều kiện là đặc tính cơ bản của các chế phẩm được tạo bởi quả, quả hạch (nut) hoặc các phần ăn được của cây khác (nhóm 20.08)."
+  },
+  {
+   "dieuKien": "Vi sinh vật thuộc nhóm 21.02 đóng gói như thực phẩm bảo vệ sức khỏe dùng cho người",
+   "sangNhom": "2102",
+   "nguon": "nhom2106.nhom",
+   "trich": "Vi sinh vật thuộc nhóm 21.02 được đóng gói như thực phẩm bảo vệ sức khỏe (food supplements) dùng cho người (nhóm 21.02)."
+  },
+  {
+   "dieuKien": "Chế phẩm có chứa cacao đóng gói như thực phẩm bảo vệ sức khỏe",
+   "sangNhom": "1806",
+   "nguon": "nhom2106.nhom",
+   "trich": "Các chế phẩm có chứa ca cao, được đóng gói như thực phẩm bảo vệ sức khỏe thích hợp để sử dụng cho người (nhóm 18.06)."
+  },
+  {
+   "dieuKien": "Kẹo cao su có chứa nicotin",
+   "sangNhom": "2404",
+   "nguon": "nhom2106.nhom",
+   "trich": "Kẹo cao su có chứa nicotin (nhóm 24.04)."
+  },
+  {
+   "dieuKien": "Rau hỗn hợp",
+   "sangNhom": "0712",
+   "nguon": "ch21.chuong",
+   "trich": "Các loại rau hỗn hợp thuộc nhóm 07.12;"
+  },
+  {
+   "dieuKien": "Chất thay thế cà phê rang có chứa cà phê theo tỷ lệ bất kỳ",
+   "sangNhom": "0901",
+   "nguon": "ch21.chuong",
+   "trich": "Các chất thay thế cà phê rang có chứa cà phê theo tỷ lệ bất kỳ (nhóm 09.01);"
+  },
+  {
+   "dieuKien": "Chè đã pha hương liệu",
+   "sangNhom": "0902",
+   "nguon": "ch21.chuong",
+   "trich": "Chè đã pha hương liệu (nhóm 09.02);"
+  },
+  {
+   "dieuKien": "Men đóng gói như dược phẩm hoặc sản phẩm khác thuộc nhóm 30.03 hay 30.04",
+   "sangNhom": "3003|3004",
+   "nguon": "ch21.chuong",
+   "trich": "Men được đóng gói như dược phẩm hoặc các sản phẩm khác thuộc nhóm 30.03 hay 30.04"
+  },
+  {
+   "dieuKien": "Enzyme đã chế biến",
+   "sangNhom": "3507",
+   "nguon": "ch21.chuong",
+   "trich": "Enzyme đã chế biến thuộc nhóm 35.07."
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Chế phẩm (dạng thực phẩm bổ sung) có lượng hoạt chất đủ để điều trị hoặc phòng ngừa một bệnh cụ thể?",
+   "neuCo": "3003|3004",
+   "neuKhong": "2106",
+   "nguon": "nhom2106.nhom",
+   "trich": "Các chế phẩm khác có lượng thành phần hoạt tính đủ để mang lại tác dụng điều trị hoặc phòng ngừa một căn bệnh cụ thể bị loại trừ (nhóm 30.03 hoặc 30.04)."
+  },
+  {
+   "hoi": "Chế phẩm để sản xuất đồ uống được làm dựa trên một hoặc một số chất thơm?",
+   "neuCo": "3302",
+   "neuKhong": "2106",
+   "nguon": "nhom2106.nhom",
+   "trich": "Nhóm này không bao gồm các chế phẩm được dùng để sản xuất đồ uống, dựa trên một hoặc một số chất thơm (nhóm 33.02)."
+  },
+  {
+   "hoi": "Bột đậu tương đã khử chất béo nhưng chưa được tạo kết cấu?",
+   "neuCo": "2304",
+   "neuKhong": "2106",
+   "nguon": "nhom2106.nhom",
+   "trich": "nhóm này không bao gồm bột đậu tương đã được khử chất béo nhưng không được tạo kết cấu, thích hợp hay không thích hợp làm thức ăn cho người (nhóm 23.04)"
+  },
+  {
+   "hoi": "Sản phẩm đóng gói như thực phẩm bảo vệ sức khỏe có thành phần là vi sinh vật (men, vi sinh vật đơn bào)?",
+   "neuCo": "2102",
+   "neuKhong": "2106",
+   "nguon": "nhom2106.nhom",
+   "trich": "Vi sinh vật thuộc nhóm 21.02 được đóng gói như thực phẩm bảo vệ sức khỏe (food supplements) dùng cho người (nhóm 21.02)."
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "21061000",
+   "dieuKien": "2106.10 – Protein cô đặc và chất protein được làm rắn › - Protein cô đặc và chất protein được làm rắn (textured protein substances)",
+   "loaiKhac": false,
+   "nguon": "tax.21061000",
+   "trich": "21061000 - Protein cô đặc và chất protein được làm rắn (textured protein substances)"
+  },
+  {
+   "hs": "21069011",
+   "dieuKien": "2106.90 – Loại khác › - - - Váng đậu khô và váng đậu khô dạng thanh",
+   "loaiKhac": false,
+   "nguon": "tax.21069011",
+   "trich": "21069011 - - - Váng đậu khô và váng đậu khô dạng thanh"
+  },
+  {
+   "hs": "21069012",
+   "dieuKien": "2106.90 – Loại khác › - - - Đậu phụ tươi (tofu)",
+   "loaiKhac": false,
+   "nguon": "tax.21069012",
+   "trich": "21069012 - - - Đậu phụ tươi (tofu)"
+  },
+  {
+   "hs": "21069019",
+   "dieuKien": "2106.90 – Loại khác › - - - Loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.21069019",
+   "trich": "21069019 - - - Loại khác"
+  },
+  {
+   "hs": "21069020",
+   "dieuKien": "2106.90 – Loại khác › - - Cồn dạng bột",
+   "loaiKhac": false,
+   "nguon": "tax.21069020",
+   "trich": "21069020 - - Cồn dạng bột"
+  },
+  {
+   "hs": "21069030",
+   "dieuKien": "2106.90 – Loại khác › - - Kem không sữa",
+   "loaiKhac": false,
+   "nguon": "tax.21069030",
+   "trich": "21069030 - - Kem không sữa"
+  },
+  {
+   "hs": "21069041",
+   "dieuKien": "2106.90 – Loại khác › - - - Dạng bột",
+   "loaiKhac": false,
+   "nguon": "tax.21069041",
+   "trich": "21069041 - - - Dạng bột"
+  },
+  {
+   "hs": "21069049",
+   "dieuKien": "2106.90 – Loại khác › - - - Loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.21069049",
+   "trich": "21069049 - - - Loại khác"
+  },
+  {
+   "hs": "21069053",
+   "dieuKien": "2106.90 – Loại khác › - - - Sản phẩm từ sâm",
+   "loaiKhac": false,
+   "nguon": "tax.21069053",
+   "trich": "21069053 - - - Sản phẩm từ sâm"
+  },
+  {
+   "hs": "21069054",
+   "dieuKien": "2106.90 – Loại khác › - - - Các chế phẩm khác được sử dụng làm nguyên liệu thô để sản xuất chất cô đặc tổng hợp",
+   "loaiKhac": false,
+   "nguon": "tax.21069054",
+   "trich": "21069054 - - - Các chế phẩm khác được sử dụng làm nguyên liệu thô để sản xuất chất cô đặc tổng hợp"
+  },
+  {
+   "hs": "21069055",
+   "dieuKien": "2106.90 – Loại khác › - - - Loại khác, chất cô đặc tổng hợp để pha đơn giản với nước làm đồ uống",
+   "loaiKhac": true,
+   "nguon": "tax.21069055",
+   "trich": "21069055 - - - Loại khác, chất cô đặc tổng hợp để pha đơn giản với nước làm đồ uống"
+  },
+  {
+   "hs": "21069059",
+   "dieuKien": "2106.90 – Loại khác › - - - Loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.21069059",
+   "trich": "21069059 - - - Loại khác"
+  },
+  {
+   "hs": "21069061",
+   "dieuKien": "2106.90 – Loại khác › - - - - Loại sử dụng để sản xuất đồ uống có cồn, dạng lỏng",
+   "loaiKhac": false,
+   "nguon": "tax.21069061",
+   "trich": "21069061 - - - - Loại sử dụng để sản xuất đồ uống có cồn, dạng lỏng"
+  },
+  {
+   "hs": "21069062",
+   "dieuKien": "2106.90 – Loại khác › - - - - Loại sử dụng để sản xuất đồ uống có cồn, dạng khác",
+   "loaiKhac": false,
+   "nguon": "tax.21069062",
+   "trich": "21069062 - - - - Loại sử dụng để sản xuất đồ uống có cồn, dạng khác"
+  },
+  {
+   "hs": "21069064",
+   "dieuKien": "2106.90 – Loại khác › - - - - Loại sử dụng để sản xuất đồ uống có cồn, dạng lỏng",
+   "loaiKhac": false,
+   "nguon": "tax.21069064",
+   "trich": "21069064 - - - - Loại sử dụng để sản xuất đồ uống có cồn, dạng lỏng"
+  },
+  {
+   "hs": "21069065",
+   "dieuKien": "2106.90 – Loại khác › - - - - Loại sử dụng để sản xuất đồ uống có cồn, dạng khác",
+   "loaiKhac": false,
+   "nguon": "tax.21069065",
+   "trich": "21069065 - - - - Loại sử dụng để sản xuất đồ uống có cồn, dạng khác"
+  },
+  {
+   "hs": "21069066",
+   "dieuKien": "2106.90 – Loại khác › - - - Loại khác, sử dụng để sản xuất đồ uống có cồn, dạng lỏng",
+   "loaiKhac": true,
+   "nguon": "tax.21069066",
+   "trich": "21069066 - - - Loại khác, sử dụng để sản xuất đồ uống có cồn, dạng lỏng"
+  },
+  {
+   "hs": "21069067",
+   "dieuKien": "2106.90 – Loại khác › - - - Loại khác, sử dụng để sản xuất đồ uống có cồn, dạng khác",
+   "loaiKhac": true,
+   "nguon": "tax.21069067",
+   "trich": "21069067 - - - Loại khác, sử dụng để sản xuất đồ uống có cồn, dạng khác"
+  },
+  {
+   "hs": "21069069",
+   "dieuKien": "2106.90 – Loại khác › - - - Loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.21069069",
+   "trich": "21069069 - - - Loại khác"
+  },
+  {
+   "hs": "21069071",
+   "dieuKien": "2106.90 – Loại khác › - - - Thực phẩm bảo vệ sức khỏe từ sâm",
+   "loaiKhac": false,
+   "nguon": "tax.21069071",
+   "trich": "21069071 - - - Thực phẩm bảo vệ sức khỏe từ sâm"
+  },
+  {
+   "hs": "21069072",
+   "dieuKien": "2106.90 – Loại khác › - - - Thực phẩm bảo vệ sức khỏe khác",
+   "loaiKhac": false,
+   "nguon": "tax.21069072",
+   "trich": "21069072 - - - Thực phẩm bảo vệ sức khỏe khác"
+  },
+  {
+   "hs": "21069073",
+   "dieuKien": "2106.90 – Loại khác › Hỗn hợp vi chất để bổ sung vào thực phẩm (SEN): sản phẩm bổ sung một hoặc nhiều chất dinh dưỡng thiết yếu (vitamin, khoáng chất) vào thực phẩm nhằm phòng ngừa/khắc phục thiếu hụt dinh dưỡng",
+   "loaiKhac": false,
+   "nguon": "sen.21069073",
+   "trich": "Hỗn hợp vi chất để bổ sung vào thực phẩm là những sản phẩm được sử dụng để bổ sung một hoặc nhiều chất dinh dưỡng thiết yếu vào thực phẩm"
+  },
+  {
+   "hs": "21069081",
+   "dieuKien": "2106.90 – Loại khác › - - - Các chế phẩm thực phẩm dùng cho trẻ sơ sinh hoặc trẻ nhỏ thiếu lactaza",
+   "loaiKhac": false,
+   "nguon": "tax.21069081",
+   "trich": "21069081 - - - Các chế phẩm thực phẩm dùng cho trẻ sơ sinh hoặc trẻ nhỏ thiếu lactaza"
+  },
+  {
+   "hs": "21069089",
+   "dieuKien": "2106.90 – Loại khác › - - - Loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.21069089",
+   "trich": "21069089 - - - Loại khác"
+  },
+  {
+   "hs": "21069091",
+   "dieuKien": "2106.90 – Loại khác › - - - Hỗn hợp khác của hóa chất với thực phẩm hoặc các chất khác có giá trị dinh dưỡng, dùng để chế biến thực phẩm",
+   "loaiKhac": false,
+   "nguon": "tax.21069091",
+   "trich": "21069091 - - - Hỗn hợp khác của hóa chất với thực phẩm hoặc các chất khác có giá trị dinh dưỡng, dùng để chế biến thực phẩm"
+  },
+  {
+   "hs": "21069092",
+   "dieuKien": "2106.90 – Loại khác › - - - Xirô đã pha màu hoặc hương liệu",
+   "loaiKhac": false,
+   "nguon": "tax.21069092",
+   "trich": "21069092 - - - Xirô đã pha màu hoặc hương liệu"
+  },
+  {
+   "hs": "21069093",
+   "dieuKien": "2106.90 – Loại khác › Nước cốt dừa (chất lỏng chiết xuất từ cùi dừa, hàm lượng nước xấp xỉ 60%) hoặc bột từ nước cốt dừa (SEN)",
+   "loaiKhac": false,
+   "nguon": "sen.21069093",
+   "trich": "Nước cốt dừa: Chất lỏng màu trắng được chiết xuất từ cùi dừa và có hàm lượng nước xấp xỉ 60%."
+  },
+  {
+   "hs": "21069095",
+   "dieuKien": "2106.90 – Loại khác › Seri kaya (kaya/sangkaya) làm từ đường, trứng, nước cốt dừa, bột, tinh bột…, dạng nhão, phết hoặc bột; không chứa quả Annona squamosa (SEN)",
+   "loaiKhac": false,
+   "nguon": "sen.21069095",
+   "trich": "Seri kaya (được gọi là kaya hoặc sangkaya) được làm từ đường, trứng, nước cốt dừa, bột, tinh bột, muối, chất tạo màu và tạo hương. Nó có thể ở dạng nhão, phết (spread) hoặc bột."
+  },
+  {
+   "hs": "21069096",
+   "dieuKien": "2106.90 – Loại khác › Sản phẩm dinh dưỡng y tế khác — tiêu chí theo Chú giải SEN phân nhóm 1901.10.91, 1901.90.11 và 1901.90.91 (SEN)",
+   "loaiKhac": false,
+   "nguon": "sen.21069096",
+   "trich": "SẢN PHẨM DINH DƯỠNG Y TẾ KHÁC Xem Chú giải SEN của phân nhóm 1901.10.91, 1901.90.11 và 1901.90.91."
+  },
+  {
+   "hs": "21069097",
+   "dieuKien": "2106.90 – Loại khác › Tempeh: sản phẩm đậu tương đã làm chín ở dạng bánh nhờ lên men tự nhiên có kiểm soát (SEN)",
+   "loaiKhac": false,
+   "nguon": "sen.21069097",
+   "trich": "Tempeh là sản phẩm đậu tương đã làm chín ở dạng bánh nhờ quá trình lên men tự nhiên có kiểm soát."
+  },
+  {
+   "hs": "21069098",
+   "dieuKien": "2106.90 – Loại khác › Chế phẩm hương liệu khác: hỗn hợp chất/chiết xuất hương liệu không dựa trên chất thơm, với tinh bột, bột hoặc chất thực phẩm khác làm chất mang (SEN)",
+   "loaiKhac": false,
+   "nguon": "sen.21069098",
+   "trich": "Các chế phẩm hương liệu là hỗn hợp của đơn chất hoặc một vài chất hoặc chiết xuất hương liệu, không dựa trên các chất thơm, với tinh bột, bột hoặc các chất thực phẩm khác đóng vai trò chất mang."
+  },
+  {
+   "hs": "21069099",
+   "dieuKien": "2106.90 – Loại khác › - - - Loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.21069099",
+   "trich": "21069099 - - - Loại khác"
+  }
+ ],
+ "dungTuNguon": [
+  "ch21.chuong",
+  "nhom2106.nhom",
+  "sen.21069073",
+  "sen.21069093",
+  "sen.21069095",
+  "sen.21069096",
+  "sen.21069097",
+  "sen.21069098",
+  "tax.21061000",
+  "tax.21069011",
+  "tax.21069012",
+  "tax.21069019",
+  "tax.21069020",
+  "tax.21069030",
+  "tax.21069041",
+  "tax.21069049",
+  "tax.21069053",
+  "tax.21069054",
+  "tax.21069055",
+  "tax.21069059",
+  "tax.21069061",
+  "tax.21069062",
+  "tax.21069064",
+  "tax.21069065",
+  "tax.21069066",
+  "tax.21069067",
+  "tax.21069069",
+  "tax.21069071",
+  "tax.21069072",
+  "tax.21069081",
+  "tax.21069089",
+  "tax.21069091",
+  "tax.21069092",
+  "tax.21069099"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "model": null,
+  "luc": "2026-10-07T09:08:08.543Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 63,
+  "dat": 62,
+  "loai": 1,
+  "nguonBiCat": []
+ }
+}

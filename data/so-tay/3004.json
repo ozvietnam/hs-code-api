@@ -1,0 +1,783 @@
+{
+ "nhom": "3004",
+ "phamVi": {
+  "text": "Thuốc (gồm sản phẩm đã hoặc chưa pha trộn) dùng để phòng bệnh hoặc chữa bệnh, đã đóng gói theo liều lượng/làm thành dạng nhất định (kể cả hệ thẩm thấu qua da) hoặc đóng gói để bán lẻ — trừ hàng thuộc nhóm 30.02, 30.05, 30.06.",
+  "nguon": "nhom3004.nhom",
+  "trich": "Nhóm này bao gồm các loại thuốc có chứa các sản phẩm đã pha trộn hoặc chưa pha trộn, với điều kiện chúng là: … (b) Được đóng gói để bán lẻ dùng để phòng bệnh hoặc chữa bệnh."
+ },
+ "dieuKienVao": [
+  {
+   "fact": "dong_goi_theo_lieu_luong_hoac_dang_nhat_dinh_hoac_ban_le_de_phong_chua_benh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom3004.nhom",
+   "trich": "(a) Được đóng gói theo liều lượng hay ở dạng thuốc viên, ống … sẵn sàng để dùng như liều đơn để phòng hay chữa bệnh. … (b) Được đóng gói để bán lẻ dùng để phòng bệnh hoặc chữa bệnh."
+  },
+  {
+   "fact": "dang_lieu_don_ke_ca_khi_o_so_luong_lon",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom3004.nhom",
+   "trich": "Nhóm này áp dụng cho các dạng liều đơn dù chúng với số lượng lớn, đóng gói bán lẻ,...; hoặc"
+  },
+  {
+   "fact": "nuoc_cat_dong_ong_dung_truc_tiep_dieu_tri_the_tich",
+   "op": ">=",
+   "value": 1.25,
+   "donVi": "cm3",
+   "ngoaiTru": [
+    "ví dụ về dạng ống liều lượng; cận trên 10 cm3"
+   ],
+   "nguon": "nhom3004.nhom",
+   "trich": "nước cất đóng trong ống 1,25 đến 10 cm3, để sử dụng trực tiếp cho việc điều trị một số chứng bệnh nhất định"
+  },
+  {
+   "fact": "nuoc_cat_dong_ong_dung_truc_tiep_dieu_tri_the_tich",
+   "op": "<=",
+   "value": 10,
+   "donVi": "cm3",
+   "ngoaiTru": [
+    "ví dụ về dạng ống liều lượng; cận dưới 1,25 cm3"
+   ],
+   "nguon": "nhom3004.nhom",
+   "trich": "nước cất đóng trong ống 1,25 đến 10 cm3, để sử dụng trực tiếp cho việc điều trị một số chứng bệnh nhất định"
+  },
+  {
+   "fact": "ban_le_co_chi_dinh_dieu_tri_benh_cach_dung_lieu_luong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "sản phẩm không pha trộn đóng gói ở dạng rõ ràng cho mục đích phòng/chữa bệnh thì không cần chỉ định"
+   ],
+   "nguon": "nhom3004.nhom",
+   "trich": "do kiểu đóng gói và, đặc biệt là do có những chỉ định điều trị (nêu rõ các chứng bệnh hay thể trạng được chỉ định sử dụng sản phẩm đó, cách dùng, liều lượng,v.v..) cho thấy rõ ràng là để bán"
+  },
+  {
+   "fact": "chi_co_chi_dinh_duoc_pham_hoac_tieu_chuan_do_tinh_khiet",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom3004.nhom",
+   "trich": "Tuy nhiên, chỉ các chỉ định dược phẩm hoặc tiêu chuẩn về độ tinh khiết thôi thì không đủ để thuyết phục việc phân loại sản phẩm vào nhóm này."
+  },
+  {
+   "fact": "vien_ngam_tri_ho_co_chat_mang_dac_tinh_thuoc_du_tac_dung",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "thành phần chủ yếu là đường + chất tạo mùi → nhóm 17.04"
+   ],
+   "nguon": "nhom3004.nhom",
+   "trich": "với điều kiện là tỷ lệ của các chất này trong mỗi viên ngậm hoặc giọt thuốc nhỏ đủ để chúng cho tác dụng phòng bệnh hoặc chữa bệnh."
+  },
+  {
+   "fact": "thuc_pham_do_uong_chi_la_tac_nhan_bo_tro_cho_duoc_chat",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom3004.nhom",
+   "trich": "Mặt khác, nhóm này bao gồm các chế phẩm trong đó thực phẩm hoặc đồ uống chỉ đóng vai trò như là tác nhân bổ trợ, làm chất vận chuyển hoặc chất tạo ngọt hoặc hỗ trợ kỹ thuật hoặc chế biến cho dược chất"
+  },
+  {
+   "fact": "san_pham_khong_pha_tron_thuoc_nhom_2843_den_2846_hoac_2852",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom3004.nhom",
+   "trich": "Tuy nhiên cần lưu ý rằng, các sản phẩm không pha trộn thuộc các nhóm từ 28.43 đến 28.46 và 28.52 luôn luôn bị loại trừ khỏi nhóm 30.04, ngay cả khi chúng đáp ứng đầy đủ những điều kiện nêu ở phần (a) hoặc (b) trên đây."
+  },
+  {
+   "fact": "dong_goi_lieu_luong_hoac_ban_le_uu_tien_nhom_30_04",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "hàng thuộc nhóm 28.43 đến 28.46 hoặc 28.52"
+   ],
+   "nguon": "phan30.phan",
+   "trich": "các mặt hàng xếp vào các nhóm 30.04, 30.05, 30.06, 32.12, 33.03, 33.04, 33.05, 33.06, 33.07, 35.06, 37.07 hoặc 38.08 vì đã được đóng gói theo liều lượng hoặc đóng gói để bán lẻ được xếp vào các nhóm đó và không xếp vào bất cứ nhóm nào khác của Danh mục."
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Thuốc gồm sản phẩm hỗn hợp dùng phòng/chữa bệnh nhưng KHÔNG đóng gói theo liều lượng, không làm thành dạng nhất định, không đóng gói bán lẻ",
+   "sangNhom": "3003",
+   "nguon": "nhom3004.nhom",
+   "trich": "Các loại thuốc gồm các sản phẩm hỗn hợp dùng cho mục đích phòng bệnh hoặc chữa bệnh, nhưng không được đóng gói theo liều lượng hoặc được làm thành dạng nhất định hoặc đóng gói để bán lẻ được phân loại vào nhóm 30.03"
+  },
+  {
+   "dieuKien": "Sản phẩm không pha trộn thuộc nhóm 28.43 đến 28.46 và 28.52, kể cả khi đóng gói theo liều lượng hoặc trình bày như thuốc (vd keo bạc → 28.43)",
+   "sangNhom": "2843|2846|2852",
+   "nguon": "phan30.phan",
+   "trich": "(B) Theo Chú giải mục (A) trên, các mặt hàng đáp ứng các mô tả trong nhóm 28.43, 28.46 hoặc 28.52 được xếp vào các nhóm đó và không được đưa vào nhóm nào khác của Phần này."
+  },
+  {
+   "dieuKien": "Mặt hàng đáp ứng mô tả nhóm 28.44 hoặc 28.45 (chất phóng xạ, đồng vị)",
+   "sangNhom": "2844|2845",
+   "nguon": "phan30.phan",
+   "trich": "(A) Các mặt hàng (trừ quặng phóng xạ) đáp ứng các mô tả trong nhóm 28.44 hoặc 28.45 phải được xếp vào các nhóm đó và không được đưa vào nhóm nào khác của Danh mục."
+  },
+  {
+   "dieuKien": "Viên ngậm hoặc thuốc nhỏ trị ho có thành phần chủ yếu là đường và chất tạo mùi",
+   "sangNhom": "1704",
+   "nguon": "nhom3004.nhom",
+   "trich": "Tuy nhiên, các chế phẩm được đóng gói dưới dạng viên ngậm hoặc dưới dạng thuốc nhỏ để trị ho, chứa thành phần chủ yếu là đường … và các chất tạo mùi … được phân loại vào nhóm 17.04."
+  },
+  {
+   "dieuKien": "Xi măng gắn xương (thường chứa chất làm cứng và chất kích hoạt)",
+   "sangNhom": "3006",
+   "nguon": "nhom3004.nhom",
+   "trich": "Tuy nhiên, nhóm này không bao gồm xi măng gắn xương, thường chứa chất làm cứng (tác nhân đóng rắn) và một chất kích hoạt và sử dụng, ví dụ, để cấy ghép bộ phận giả cho xương hiện có (nhóm 30.06)."
+  },
+  {
+   "dieuKien": "Hỗn hợp cây/phần của cây dùng pha nước/trà thảo dược, ghi nhãn chung chung là giúp giảm bệnh tật hoặc tăng cường sức khỏe",
+   "sangNhom": "2106",
+   "nguon": "nhom3004.nhom",
+   "trich": "dùng để tạo nước thảo dược hoặc “trà” thảo dược … và được ghi nhãn là giúp giảm bệnh tật hoặc góp phần tăng cường sức khỏe của con người chung chung, thì cũng bị loại trừ khỏi vào nhóm này (nhóm 21.06)."
+  },
+  {
+   "dieuKien": "Thực phẩm bảo vệ sức khỏe chứa vitamin hoặc khoáng, dùng duy trì sức khỏe, cải thiện thành tích thể thao, ngừa thiếu hụt dinh dưỡng",
+   "sangNhom": "2106",
+   "nguon": "nhom3004.nhom",
+   "trich": "Hơn nữa, nhóm này không bao gồm gồm các chế phẩm thường được đề cập đến như là các thực phẩm bảo vệ sức khỏe có chứa các vitamin hoặc các loại khoáng … thường được phân vào nhóm 21.06 hoặc Chương 22."
+  },
+  {
+   "dieuKien": "Nọc độc của rắn hoặc ong, chưa được đóng gói như thuốc",
+   "sangNhom": "3001",
+   "nguon": "nhom3004.nhom",
+   "trich": "(a) Các loại nọc độc của rắn hoặc của ong, chưa được đóng gói như thuốc (nhóm 30.01)."
+  },
+  {
+   "dieuKien": "Sản phẩm thuộc nhóm 30.02, 30.05 hoặc 30.06, ở bất cứ dạng đóng gói nào",
+   "sangNhom": "3002|3005|3006",
+   "nguon": "nhom3004.nhom",
+   "trich": "(b) Các sản phẩm thuộc các nhóm 30.02, 30.05 hoặc 30.06, ở bất cứ dạng đóng gói nào."
+  },
+  {
+   "dieuKien": "Nước cất hoặc dung dịch nước của tinh dầu, dùng cho y tế",
+   "sangNhom": "3301",
+   "nguon": "ch30.chuong",
+   "trich": "(d) Nước cất hoặc dung dịch nước của các loại tinh dầu, dùng cho y tế (nhóm 33.01);"
+  },
+  {
+   "dieuKien": "Xà phòng dược phẩm, ở bất cứ dạng đóng gói nào",
+   "sangNhom": "3401",
+   "nguon": "nhom3004.nhom",
+   "trich": "(d) Các loại xà phòng dược phẩm, ở bất cứ dạng đóng gói nào (nhóm 34.01)."
+  },
+  {
+   "dieuKien": "Thuốc trừ sâu, thuốc khử trùng… thuộc nhóm 38.08, chưa đóng gói để sử dụng bên trong hoặc bên ngoài như thuốc",
+   "sangNhom": "3808",
+   "nguon": "nhom3004.nhom",
+   "trich": "(e) Thuốc trừ sâu, thuốc khử trùng, vv, thuộc nhóm 38.08, chưa đóng gói để sử dụng bên trong hoặc bên ngoài như thuốc"
+  },
+  {
+   "dieuKien": "Sản phẩm dạng viên, kẹo cao su hoặc miếng dán thẩm thấu qua da chứa nicotin nhằm hỗ trợ cai thuốc lá",
+   "sangNhom": "2404",
+   "nguon": "nhom3004.nhom",
+   "trich": "(f) Các sản phẩm, như là dạng viên, kẹo cao su (chewing gum) hoặc các miếng dán (thẩm thấu qua da), chứa nicotin và nhằm hỗ trợ cai thuốc lá (nhóm 24.04)."
+  },
+  {
+   "dieuKien": "Chất thử chẩn đoán của nhóm 38.22",
+   "sangNhom": "3822",
+   "nguon": "ch30.chuong",
+   "trich": "(ij) Các chất thử chẩn đoán của nhóm 38.22."
+  },
+  {
+   "dieuKien": "Phế thải dược phẩm — dược phẩm không còn thích hợp cho mục đích dự kiến ban đầu, ví dụ hết hạn sử dụng",
+   "sangNhom": "3006",
+   "nguon": "ch30.chuong",
+   "trich": "4. Nhóm 30.06 chỉ áp dụng cho các chất sau đây … (k) Phế thải dược phẩm, đó là, các loại dược phẩm không thích hợp đối với mục đích dự kiến ban đầu của nó, ví dụ, hết hạn sử dụng"
+  },
+  {
+   "dieuKien": "Chế phẩm hóa học tránh thai dựa trên hormon, sản phẩm nhóm 29.37 hoặc chất diệt tinh trùng",
+   "sangNhom": "3006",
+   "nguon": "ch30.chuong",
+   "trich": "4. Nhóm 30.06 chỉ áp dụng cho các chất sau đây … (h) Chế phẩm hóa học tránh thai dựa trên hormon, trên các sản phẩm khác thuộc nhóm 29.37 hoặc trên các chất diệt tinh trùng"
+  },
+  {
+   "dieuKien": "Giả dược và bộ dụng cụ thử nghiệm lâm sàng mù/mù đôi, đóng gói theo liều lượng, kể cả khi có dược tính",
+   "sangNhom": "3006",
+   "nguon": "ch30.chuong",
+   "trich": "4. Nhóm 30.06 chỉ áp dụng cho các chất sau đây … (e) Giả dược (placebos) và bộ dụng cụ thử nghiệm lâm sàng mù (hoặc mù đôi) để sử dụng trong các thử nghiệm lâm sàng đã công nhận, được đóng gói theo liều lượng, ngay cả khi chúng có thể chứa dược tính"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Thuốc đã được đóng gói theo liều lượng, làm thành dạng nhất định hoặc đóng gói để bán lẻ?",
+   "neuCo": "3004",
+   "neuKhong": "3003",
+   "nguon": "nhom3004.nhom",
+   "trich": "Các loại thuốc gồm các sản phẩm hỗn hợp dùng cho mục đích phòng bệnh hoặc chữa bệnh, nhưng không được đóng gói theo liều lượng hoặc được làm thành dạng nhất định hoặc đóng gói để bán lẻ được phân loại vào nhóm 30.03"
+  },
+  {
+   "hoi": "Viên ngậm/thuốc nhỏ trị ho có thành phần chủ yếu là đường và chất tạo mùi (không có chất mang đặc tính thuốc đủ tác dụng)?",
+   "neuCo": "1704",
+   "neuKhong": "3004",
+   "nguon": "nhom3004.nhom",
+   "trich": "Tuy nhiên, các chế phẩm được đóng gói dưới dạng viên ngậm hoặc dưới dạng thuốc nhỏ để trị ho, chứa thành phần chủ yếu là đường … và các chất tạo mùi … được phân loại vào nhóm 17.04."
+  },
+  {
+   "hoi": "Sản phẩm là thực phẩm bảo vệ sức khỏe chứa vitamin/khoáng để duy trì sức khỏe, không phải thuốc phòng hoặc chữa bệnh?",
+   "neuCo": "2106",
+   "neuKhong": "3004",
+   "nguon": "nhom3004.nhom",
+   "trich": "Hơn nữa, nhóm này không bao gồm gồm các chế phẩm thường được đề cập đến như là các thực phẩm bảo vệ sức khỏe có chứa các vitamin hoặc các loại khoáng … thường được phân vào nhóm 21.06 hoặc Chương 22."
+  },
+  {
+   "hoi": "Miếng dán là hệ thẩm thấu qua da (hoạt chất trong bộ phận chứa kín, giải phóng qua màng có lỗ), không phải cao dán y khoa?",
+   "neuCo": "3004",
+   "neuKhong": "3005",
+   "nguon": "nhom3004.nhom",
+   "trich": "Hoạt chất được chứa trong một bộ phận chứa được đóng kín bằng một màng có lỗ ở mặt tiếp xúc với da. … Hệ sản phẩm này không được lẫn với các miếng cao dán y khoa ở nhóm 30.05"
+  },
+  {
+   "hoi": "Sản phẩm chứa nicotin nhằm hỗ trợ cai thuốc lá?",
+   "neuCo": "2404",
+   "neuKhong": "3004",
+   "nguon": "nhom3004.nhom",
+   "trich": "(f) Các sản phẩm, như là dạng viên, kẹo cao su (chewing gum) hoặc các miếng dán (thẩm thấu qua da), chứa nicotin và nhằm hỗ trợ cai thuốc lá (nhóm 24.04)."
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "30041015",
+   "dieuKien": "Phân nhóm 3004.10 [Medicaments; containing penicillins, streptomycins or their derivatives, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa penicillin G (trừ penicillin G benzathin), phenoxymethyl penicillin hoặc muối của chúng (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30041015",
+   "trich": "Chứa penicillin G (trừ penicillin G benzathin), phenoxymethyl penicillin hoặc muối của chúng"
+  },
+  {
+   "hs": "30041016",
+   "dieuKien": "Phân nhóm 3004.10 [Medicaments; containing penicillins, streptomycins or their derivatives, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa ampicillin, amoxycillin hoặc muối của chúng, dạng uống (*) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30041016",
+   "trich": "Chứa ampicillin, amoxycillin hoặc muối của chúng, dạng uống (*)"
+  },
+  {
+   "hs": "30041019",
+   "dieuKien": "Phân nhóm 3004.10 [Medicaments; containing penicillins, streptomycins or their derivatives, for therapeutic or prophylactic uses, packaged for retail sale]: Loại khác — không thuộc 30041015 (Chứa penicillin G (trừ penicillin G benzathin), phenoxymethyl penic…); 30041016 (Chứa ampicillin, amoxycillin hoặc muối của chúng, dạng uống (*)) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.30041019",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "30041020",
+   "dieuKien": "Phân nhóm 3004.10 [Medicaments; containing penicillins, streptomycins or their derivatives, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa các streptomycin hoặc các dẫn xuất của chúng",
+   "loaiKhac": false,
+   "nguon": "tax.30041020",
+   "trich": "Chứa các streptomycin hoặc các dẫn xuất của chúng"
+  },
+  {
+   "hs": "30042010",
+   "dieuKien": "Phân nhóm 3004.20 [Medicaments; containing antibiotics (other than penicillins, streptomycins or their derivatives), for therapeutic or prophylactic uses, packaged for retail sale]: Chứa gentamycin, lincomycin, sulphamethoxazole hoặc các dẫn xuất của chúng, dạng uống (*) hoặc dạng mỡ",
+   "loaiKhac": false,
+   "nguon": "tax.30042010",
+   "trich": "Chứa gentamycin, lincomycin, sulphamethoxazole hoặc các dẫn xuất của chúng, dạng uống (*) hoặc dạng mỡ"
+  },
+  {
+   "hs": "30042031",
+   "dieuKien": "Phân nhóm 3004.20 [Medicaments; containing antibiotics (other than penicillins, streptomycins or their derivatives), for therapeutic or prophylactic uses, packaged for retail sale]: Dạng uống (*) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30042031",
+   "trich": "Dạng uống (*)"
+  },
+  {
+   "hs": "30042032",
+   "dieuKien": "Phân nhóm 3004.20 [Medicaments; containing antibiotics (other than penicillins, streptomycins or their derivatives), for therapeutic or prophylactic uses, packaged for retail sale]: Dạng mỡ (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30042032",
+   "trich": "Dạng mỡ"
+  },
+  {
+   "hs": "30042039",
+   "dieuKien": "Phân nhóm 3004.20 [Medicaments; containing antibiotics (other than penicillins, streptomycins or their derivatives), for therapeutic or prophylactic uses, packaged for retail sale]: Loại khác — không thuộc 30042031 (Dạng uống (*)); 30042032 (Dạng mỡ) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.30042039",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "30042071",
+   "dieuKien": "Phân nhóm 3004.20 [Medicaments; containing antibiotics (other than penicillins, streptomycins or their derivatives), for therapeutic or prophylactic uses, packaged for retail sale]: Dạng uống (*) hoặc dạng mỡ (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30042071",
+   "trich": "Dạng uống (*) hoặc dạng mỡ"
+  },
+  {
+   "hs": "30042079",
+   "dieuKien": "Phân nhóm 3004.20 [Medicaments; containing antibiotics (other than penicillins, streptomycins or their derivatives), for therapeutic or prophylactic uses, packaged for retail sale]: Loại khác — không thuộc 30042071 (Dạng uống (*) hoặc dạng mỡ) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.30042079",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "30042091",
+   "dieuKien": "Phân nhóm 3004.20 [Medicaments; containing antibiotics (other than penicillins, streptomycins or their derivatives), for therapeutic or prophylactic uses, packaged for retail sale]: Dạng uống (*) hoặc dạng mỡ (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30042091",
+   "trich": "Dạng uống (*) hoặc dạng mỡ"
+  },
+  {
+   "hs": "30042099",
+   "dieuKien": "Phân nhóm 3004.20 [Medicaments; containing antibiotics (other than penicillins, streptomycins or their derivatives), for therapeutic or prophylactic uses, packaged for retail sale]: Loại khác — không thuộc 30042091 (Dạng uống (*) hoặc dạng mỡ) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.30042099",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "30043100",
+   "dieuKien": "Phân nhóm 3004.31 [Medicaments; containing insulin, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa insulin",
+   "loaiKhac": false,
+   "nguon": "tax.30043100",
+   "trich": "Chứa insulin"
+  },
+  {
+   "hs": "30043210",
+   "dieuKien": "Phân nhóm 3004.32 [Medicaments; containing corticosteroid hormones, their derivatives or structural analogues (but not containing antibiotics), for therapeutic or prophylactic uses, packaged for retail sale]: Chứa dexamethasone hoặc các dẫn xuất của chúng",
+   "loaiKhac": false,
+   "nguon": "tax.30043210",
+   "trich": "Chứa dexamethasone hoặc các dẫn xuất của chúng"
+  },
+  {
+   "hs": "30043240",
+   "dieuKien": "Phân nhóm 3004.32 [Medicaments; containing corticosteroid hormones, their derivatives or structural analogues (but not containing antibiotics), for therapeutic or prophylactic uses, packaged for retail sale]: Chứa hydrocortisone natri succinate hoặc fluocinolone acetonide",
+   "loaiKhac": false,
+   "nguon": "tax.30043240",
+   "trich": "Chứa hydrocortisone natri succinate hoặc fluocinolone acetonide"
+  },
+  {
+   "hs": "30043290",
+   "dieuKien": "Phân nhóm 3004.32 [Medicaments; containing corticosteroid hormones, their derivatives or structural analogues (but not containing antibiotics), for therapeutic or prophylactic uses, packaged for retail sale]: Loại khác — không thuộc 30043210 (Chứa dexamethasone hoặc các dẫn xuất của chúng); 30043240 (Chứa hydrocortisone natri succinate hoặc fluocinolone acetonide)",
+   "loaiKhac": true,
+   "nguon": "tax.30043290",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "30043900",
+   "dieuKien": "Phân nhóm 3004.39 [Medicaments; containing hormones (but not insulin), adrenal cortex hormones or antibiotics, for therapeutic or prophylactic uses, packaged for retail sale]: Loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.30043900",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "30044100",
+   "dieuKien": "Phân nhóm 3004.41 [Medicaments; containing alkaloids or their derivatives, containing ephedrine or its salts, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa ephedrine hoặc muối của nó",
+   "loaiKhac": false,
+   "nguon": "tax.30044100",
+   "trich": "Chứa ephedrine hoặc muối của nó"
+  },
+  {
+   "hs": "30044200",
+   "dieuKien": "Phân nhóm 3004.42 [Medicaments; containing alkaloids or their derivatives, containing pseudoephedrine (INN) or its salts, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa pseudoephedrine (INN) hoặc muối của nó",
+   "loaiKhac": false,
+   "nguon": "tax.30044200",
+   "trich": "Chứa pseudoephedrine (INN) hoặc muối của nó"
+  },
+  {
+   "hs": "30044300",
+   "dieuKien": "Phân nhóm 3004.43 [Medicaments; containing alkaloids or their derivatives, containing norephedrine or its salts, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa norephedrine hoặc muối của nó",
+   "loaiKhac": false,
+   "nguon": "tax.30044300",
+   "trich": "Chứa norephedrine hoặc muối của nó"
+  },
+  {
+   "hs": "30044911",
+   "dieuKien": "Phân nhóm 3004.49 [Medicaments; containing alkaloids or their derivatives; other than ephedrine, pseudoephedrine (INN) or norephedrine or their salts; for therapeutic or prophylactic uses, packaged for retail sale]: Dạng uống (*) hoặc tiêm (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30044911",
+   "trich": "Dạng uống (*) hoặc tiêm"
+  },
+  {
+   "hs": "30044919",
+   "dieuKien": "Phân nhóm 3004.49 [Medicaments; containing alkaloids or their derivatives; other than ephedrine, pseudoephedrine (INN) or norephedrine or their salts; for therapeutic or prophylactic uses, packaged for retail sale]: Loại khác — không thuộc 30044911 (Dạng uống (*) hoặc tiêm) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.30044919",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "30044951",
+   "dieuKien": "Phân nhóm 3004.49 [Medicaments; containing alkaloids or their derivatives; other than ephedrine, pseudoephedrine (INN) or norephedrine or their salts; for therapeutic or prophylactic uses, packaged for retail sale]: Dạng uống (*) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30044951",
+   "trich": "Dạng uống (*)"
+  },
+  {
+   "hs": "30044959",
+   "dieuKien": "Phân nhóm 3004.49 [Medicaments; containing alkaloids or their derivatives; other than ephedrine, pseudoephedrine (INN) or norephedrine or their salts; for therapeutic or prophylactic uses, packaged for retail sale]: Loại khác — không thuộc 30044951 (Dạng uống (*)) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.30044959",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "30044960",
+   "dieuKien": "Phân nhóm 3004.49 [Medicaments; containing alkaloids or their derivatives; other than ephedrine, pseudoephedrine (INN) or norephedrine or their salts; for therapeutic or prophylactic uses, packaged for retail sale]: Chứa theophylline, dạng uống (*)",
+   "loaiKhac": false,
+   "nguon": "tax.30044960",
+   "trich": "Chứa theophylline, dạng uống (*)"
+  },
+  {
+   "hs": "30044970",
+   "dieuKien": "Phân nhóm 3004.49 [Medicaments; containing alkaloids or their derivatives; other than ephedrine, pseudoephedrine (INN) or norephedrine or their salts; for therapeutic or prophylactic uses, packaged for retail sale]: Chứa atropine sulphate",
+   "loaiKhac": false,
+   "nguon": "tax.30044970",
+   "trich": "Chứa atropine sulphate"
+  },
+  {
+   "hs": "30044980",
+   "dieuKien": "Phân nhóm 3004.49 [Medicaments; containing alkaloids or their derivatives; other than ephedrine, pseudoephedrine (INN) or norephedrine or their salts; for therapeutic or prophylactic uses, packaged for retail sale]: Chứa quinine hydrochloride hoặc dihydroquinine chloride, dùng để tiêm; Chứa quinine sulphate hoặc bisulphate, dạng uống (*)",
+   "loaiKhac": false,
+   "nguon": "tax.30044980",
+   "trich": "Chứa quinine hydrochloride hoặc dihydroquinine chloride, dùng để tiêm; Chứa quinine sulphate hoặc bisulphate, dạng uống (*)"
+  },
+  {
+   "hs": "30044990",
+   "dieuKien": "Phân nhóm 3004.49 [Medicaments; containing alkaloids or their derivatives; other than ephedrine, pseudoephedrine (INN) or norephedrine or their salts; for therapeutic or prophylactic uses, packaged for retail sale]: Loại khác — không thuộc 30044960 (Chứa theophylline, dạng uống (*)); 30044970 (Chứa atropine sulphate); 30044980 (Chứa quinine hydrochloride hoặc dihydroquinine chloride, dùng để ti…); nhánh 30044911/30044919/30044951/30044959 (dòng cha của nhánh này không có trong nguồn)",
+   "loaiKhac": true,
+   "nguon": "tax.30044990",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "30045010",
+   "dieuKien": "Phân nhóm 3004.50 [Medicaments; containing vitamins or their derivatives, for therapeutic or prophylactic use, packaged for retail sale]: Loại phù hợp cho trẻ em, dạng xirô",
+   "loaiKhac": false,
+   "nguon": "tax.30045010",
+   "trich": "Loại phù hợp cho trẻ em, dạng xirô"
+  },
+  {
+   "hs": "30045021",
+   "dieuKien": "Phân nhóm 3004.50 [Medicaments; containing vitamins or their derivatives, for therapeutic or prophylactic use, packaged for retail sale]: Dạng uống (*) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30045021",
+   "trich": "Dạng uống (*)"
+  },
+  {
+   "hs": "30045029",
+   "dieuKien": "Phân nhóm 3004.50 [Medicaments; containing vitamins or their derivatives, for therapeutic or prophylactic use, packaged for retail sale]: Loại khác — không thuộc 30045021 (Dạng uống (*)) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.30045029",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "30045091",
+   "dieuKien": "Phân nhóm 3004.50 [Medicaments; containing vitamins or their derivatives, for therapeutic or prophylactic use, packaged for retail sale]: Chứa vitamin A, B hoặc C (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30045091",
+   "trich": "Chứa vitamin A, B hoặc C"
+  },
+  {
+   "hs": "30045099",
+   "dieuKien": "Phân nhóm 3004.50 [Medicaments; containing vitamins or their derivatives, for therapeutic or prophylactic use, packaged for retail sale]: Loại khác — không thuộc 30045091 (Chứa vitamin A, B hoặc C) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.30045099",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "30046010",
+   "dieuKien": "Phân nhóm 3004.60 [Medicaments; containing antimalarial active principles described in Subheading Note 2 to this Chapter, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa artemisinin kết hợp với các thành phần có hoạt tính dược khác",
+   "loaiKhac": false,
+   "nguon": "tax.30046010",
+   "trich": "Chứa artemisinin kết hợp với các thành phần có hoạt tính dược khác"
+  },
+  {
+   "hs": "30046020",
+   "dieuKien": "Phân nhóm 3004.60 [Medicaments; containing antimalarial active principles described in Subheading Note 2 to this Chapter, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa artesunate hoặc chloroquine",
+   "loaiKhac": false,
+   "nguon": "tax.30046020",
+   "trich": "Chứa artesunate hoặc chloroquine"
+  },
+  {
+   "hs": "30046090",
+   "dieuKien": "Phân nhóm 3004.60 [Medicaments; containing antimalarial active principles described in Subheading Note 2 to this Chapter, for therapeutic or prophylactic uses, packaged for retail sale]: Loại khác — không thuộc 30046010 (Chứa artemisinin kết hợp với các thành phần có hoạt tính dược khác); 30046020 (Chứa artesunate hoặc chloroquine)",
+   "loaiKhac": true,
+   "nguon": "tax.30046090",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "30049010",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Miếng thẩm thấu qua da dùng điều trị bệnh ung thư hoặc bệnh tim",
+   "loaiKhac": false,
+   "nguon": "tax.30049010",
+   "trich": "Miếng thẩm thấu qua da dùng điều trị bệnh ung thư hoặc bệnh tim"
+  },
+  {
+   "hs": "30049020",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Nước vô trùng đóng kín để xông, loại dược phẩm — nước vô trùng điều chế từ nước để tiêm, đóng trong đồ chứa thủy tinh hoặc nhựa, nhãn ghi dùng qua đường xông và đường tiêu hóa",
+   "loaiKhac": false,
+   "nguon": "sen.30049020",
+   "trich": "Sản phẩm này chứa nước vô trùng được điều chế từ nước để tiêm, loại đã vô trùng và được đóng gói trong đồ chứa bằng thủy tinh hoặc nhựa phù hợp và được dán nhãn với nội dung: sản phẩm này sử dụng qua đường xông và đường tiêu hóa."
+  },
+  {
+   "hs": "30049030",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Thuốc sát trùng (Antiseptics)",
+   "loaiKhac": false,
+   "nguon": "tax.30049030",
+   "trich": "Thuốc sát trùng (Antiseptics)"
+  },
+  {
+   "hs": "30049041",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa procain hydroclorua (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30049041",
+   "trich": "Chứa procain hydroclorua"
+  },
+  {
+   "hs": "30049049",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Loại khác — không thuộc 30049041 (Chứa procain hydroclorua) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.30049049",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "30049051",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa axit acetylsalicylic, paracetamol hoặc dipyrone (INN), dạng uống (*) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30049051",
+   "trich": "Chứa axit acetylsalicylic, paracetamol hoặc dipyrone (INN), dạng uống (*)"
+  },
+  {
+   "hs": "30049053",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa diclofenac, dạng uống (*) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30049053",
+   "trich": "Chứa diclofenac, dạng uống (*)"
+  },
+  {
+   "hs": "30049054",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa piroxicam (INN) hoặc ibuprofen (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30049054",
+   "trich": "Chứa piroxicam (INN) hoặc ibuprofen"
+  },
+  {
+   "hs": "30049055",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Loại khác, dạng dầu xoa bóp (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30049055",
+   "trich": "Loại khác, dạng dầu xoa bóp"
+  },
+  {
+   "hs": "30049059",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Loại khác — không thuộc 30049051 (Chứa axit acetylsalicylic, paracetamol hoặc dipyrone (INN), dạng uố…); 30049053 (Chứa diclofenac, dạng uống (*)); 30049054 (Chứa piroxicam (INN) hoặc ibuprofen); 30049055 (Loại khác, dạng dầu xoa bóp) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.30049059",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "30049062",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa primaquine (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30049062",
+   "trich": "Chứa primaquine"
+  },
+  {
+   "hs": "30049064",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa artemisinin trừ các loại thuộc phân nhóm 3004.60.10 (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30049064",
+   "trich": "Chứa artemisinin trừ các loại thuộc phân nhóm 3004.60.10"
+  },
+  {
+   "hs": "30049065",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Thuốc đông y từ thảo dược (nhánh cùng 30049069) — được cơ quan có thẩm quyền nước nhập khẩu xác nhận là thuốc chữa bệnh; tối thiểu: đóng gói theo liều lượng, nhãn ghi điều trị/phòng chống bệnh cụ thể, chứa ≥1 thảo dược là hoạt chất; không đơn thuần duy trì sức khỏe (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "sen.30049065",
+   "trich": "Thuốc đông y từ thảo dược là dược phẩm được cơ quan nhà nước có thẩm quyền ở nước nhập khẩu xác nhận là thuốc chữa bệnh … đóng gói theo liều lượng, … ghi trên nhãn để điều trị hoặc phòng chống các dịch bệnh hoặc các bệnh cụ thể … Loại thuốc thảo dược này không đơn thuần chỉ để duy trì sức khỏe."
+  },
+  {
+   "hs": "30049069",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Loại khác — không thuộc 30049065 (Thuốc đông y từ thảo dược) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.30049069",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "30049071",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa piperazine hoặc mebendazole (INN) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30049071",
+   "trich": "Chứa piperazine hoặc mebendazole (INN)"
+  },
+  {
+   "hs": "30049072",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Thuốc đông y từ thảo dược (nhánh cùng 30049079) — được cơ quan có thẩm quyền nước nhập khẩu xác nhận là thuốc chữa bệnh; tối thiểu: đóng gói theo liều lượng, nhãn ghi điều trị/phòng chống bệnh cụ thể, chứa ≥1 thảo dược là hoạt chất; không đơn thuần duy trì sức khỏe (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "sen.30049072",
+   "trich": "Thuốc đông y từ thảo dược là dược phẩm được cơ quan nhà nước có thẩm quyền ở nước nhập khẩu xác nhận là thuốc chữa bệnh … đóng gói theo liều lượng, … ghi trên nhãn để điều trị hoặc phòng chống các dịch bệnh hoặc các bệnh cụ thể … Loại thuốc thảo dược này không đơn thuần chỉ để duy trì sức khỏe."
+  },
+  {
+   "hs": "30049079",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Loại khác — không thuộc 30049072 (Thuốc đông y từ thảo dược) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.30049079",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "30049081",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Thuốc khác điều trị ung thư, HIV/AIDS hoặc bệnh khó chữa khác (theo SEN: chỉ định cho bệnh nhân ung thư, tim, HIV/AIDS, suy thận hoặc bệnh kinh niên) — chứa deferoxamine, dạng tiêm",
+   "loaiKhac": false,
+   "nguon": "sen.30049081",
+   "trich": "CÁC THUỐC KHÁC ĐIỀU TRỊ UNG THƯ, HIV/AIDS HOẶC CÁC BỆNH KHÓ CHỮA KHÁC … Đây là những loại thuốc được chỉ định cho bệnh nhân mắc bệnh ung thư, bệnh tim, Virus suy giảm miễn dịch ở người (HIV)"
+  },
+  {
+   "hs": "30049082",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Thuốc khác điều trị ung thư, HIV/AIDS hoặc bệnh khó chữa khác — thuốc chống HIV/AIDS",
+   "loaiKhac": false,
+   "nguon": "sen.30049082",
+   "trich": "CÁC THUỐC KHÁC ĐIỀU TRỊ UNG THƯ, HIV/AIDS HOẶC CÁC BỆNH KHÓ CHỮA KHÁC … Đây là những loại thuốc được chỉ định cho bệnh nhân mắc bệnh ung thư, bệnh tim, Virus suy giảm miễn dịch ở người (HIV)/Hội chứng suy giảm miễn dịch mắc phải (AIDS) hoặc HIV/AIDS"
+  },
+  {
+   "hs": "30049089",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Thuốc khác điều trị ung thư, HIV/AIDS hoặc bệnh khó chữa khác — loại khác, không thuộc 30049081 (deferoxamine dạng tiêm) hoặc 30049082 (chống HIV/AIDS); gồm thuốc ức chế khối u, chế phẩm và dung dịch lọc máu, dung dịch hóa trị, thuốc tim mạch",
+   "loaiKhac": true,
+   "nguon": "sen.30049089",
+   "trich": "Chúng bao gồm các loại thuốc điều trị ung thư (ức chế khối u), các chế phẩm và dung dịch lọc máu, các dung dịch hóa trị và các loại thuốc tim mạch."
+  },
+  {
+   "hs": "30049091",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa natri clorua hoặc glucose, dạng truyền (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30049091",
+   "trich": "Chứa natri clorua hoặc glucose, dạng truyền"
+  },
+  {
+   "hs": "30049092",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa sorbitol hoặc salbutamol, dạng truyền (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30049092",
+   "trich": "Chứa sorbitol hoặc salbutamol, dạng truyền"
+  },
+  {
+   "hs": "30049093",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa sorbitol hoặc salbutamol, ở dạng khác (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30049093",
+   "trich": "Chứa sorbitol hoặc salbutamol, ở dạng khác"
+  },
+  {
+   "hs": "30049094",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa cimetidine (INN) hoặc ranitidine (INN) trừ dạng tiêm (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30049094",
+   "trich": "Chứa cimetidine (INN) hoặc ranitidine (INN) trừ dạng tiêm"
+  },
+  {
+   "hs": "30049095",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa phenobarbital, diazepam hoặc chlorpromazine, trừ dạng tiêm hoặc dạng truyền (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30049095",
+   "trich": "Chứa phenobarbital, diazepam hoặc chlorpromazine, trừ dạng tiêm hoặc dạng truyền"
+  },
+  {
+   "hs": "30049096",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Thuốc nhỏ mũi có chứa naphazoline, xylometazoline hoặc oxymetazoline (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.30049096",
+   "trich": "Thuốc nhỏ mũi có chứa naphazoline, xylometazoline hoặc oxymetazoline"
+  },
+  {
+   "hs": "30049098",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Thuốc đông y từ thảo dược (nhánh cùng 30049099) — được cơ quan có thẩm quyền nước nhập khẩu xác nhận là thuốc chữa bệnh; tối thiểu: đóng gói theo liều lượng, nhãn ghi điều trị/phòng chống bệnh cụ thể, chứa ≥1 thảo dược là hoạt chất; không đơn thuần duy trì sức khỏe (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "sen.30049098",
+   "trich": "Thuốc đông y từ thảo dược là dược phẩm được cơ quan nhà nước có thẩm quyền ở nước nhập khẩu xác nhận là thuốc chữa bệnh … đóng gói theo liều lượng, … ghi trên nhãn để điều trị hoặc phòng chống các dịch bệnh hoặc các bệnh cụ thể … Loại thuốc thảo dược này không đơn thuần chỉ để duy trì sức khỏe."
+  },
+  {
+   "hs": "30049099",
+   "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Loại khác — không thuộc 30049098 (Thuốc đông y từ thảo dược) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.30049099",
+   "trich": "Loại khác"
+  }
+ ],
+ "dungTuNguon": [
+  "ch30.chuong",
+  "nhom3004.nhom",
+  "phan30.phan",
+  "sen.30049020",
+  "sen.30049065",
+  "sen.30049072",
+  "sen.30049081",
+  "sen.30049082",
+  "sen.30049089",
+  "sen.30049098",
+  "tax.30041015",
+  "tax.30041016",
+  "tax.30041019",
+  "tax.30041020",
+  "tax.30042010",
+  "tax.30042031",
+  "tax.30042032",
+  "tax.30042039",
+  "tax.30042071",
+  "tax.30042079",
+  "tax.30042091",
+  "tax.30042099",
+  "tax.30043100",
+  "tax.30043210",
+  "tax.30043240",
+  "tax.30043290",
+  "tax.30043900",
+  "tax.30044100",
+  "tax.30044200",
+  "tax.30044300",
+  "tax.30044911",
+  "tax.30044919",
+  "tax.30044951",
+  "tax.30044959",
+  "tax.30044960",
+  "tax.30044970",
+  "tax.30044980",
+  "tax.30044990",
+  "tax.30045010",
+  "tax.30045021",
+  "tax.30045029",
+  "tax.30045091",
+  "tax.30045099",
+  "tax.30046010",
+  "tax.30046020",
+  "tax.30046090",
+  "tax.30049010",
+  "tax.30049030",
+  "tax.30049041",
+  "tax.30049049",
+  "tax.30049051",
+  "tax.30049053",
+  "tax.30049054",
+  "tax.30049055",
+  "tax.30049059",
+  "tax.30049062",
+  "tax.30049064",
+  "tax.30049069",
+  "tax.30049071",
+  "tax.30049079",
+  "tax.30049091",
+  "tax.30049092",
+  "tax.30049093",
+  "tax.30049094",
+  "tax.30049095",
+  "tax.30049096",
+  "tax.30049099"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "model": null,
+  "luc": "2026-10-07T09:08:08.557Z",
+  "ms": 4
+ },
+ "kiemTra": {
+  "tong": 97,
+  "dat": 97,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

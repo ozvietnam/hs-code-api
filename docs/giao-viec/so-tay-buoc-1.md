@@ -1,5 +1,11 @@
 # Giao việc: dựng sổ tay chú giải — bước 1 (chạy trên .120)
 
+> **✅ Xong 07/10/2026.** Không vào được .120 (khoá SSH không có quyền) nên phiên quản lý tự làm bằng 10 agent
+> con, không gọi AI ngoài. 60 nhóm (30 nhóm có bảng quyết định + 30 nhóm hay nhầm nhất theo `conflicts.json`,
+> vì kết quả bench ở `/tmp/egcb/out` không truy cập được), **2.237/2.274 mục đạt (98,4 %)**. Bài học và gói
+> giao các nhóm còn lại: [`so-tay-giao-ngoai.md`](so-tay-giao-ngoai.md). Phần dưới giữ để chạy lại bằng AI
+> trên .120 khi cần.
+
 - **Giao:** 2026-10-07. Người duyệt và gộp: Claude (phiên quản lý). Thiết kế: [`docs/backlog/08-so-tay-chu-giai.md`](../backlog/08-so-tay-chu-giai.md).
 - **Ai chạy:** Hermes / agent trên máy .120, vì cần khoá AI (MiniMax/Gemini) và kết quả bench ở `/tmp/egcb/out/`.
 - **Đầu vào đã sẵn sàng trên `main`:**

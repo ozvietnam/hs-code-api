@@ -1,0 +1,257 @@
+{
+ "nhom": "0402",
+ "phamVi": {
+  "text": "Sữa (nguyên kem hoặc tách kem) và kem, đã cô đặc hoặc pha thêm đường/chất tạo ngọt khác, dạng lỏng, nhão hoặc rắn (khối, bột, hạt), đã hoặc chưa bảo quản/hoàn nguyên.",
+  "nguon": "nhom0402.nhom",
+  "trich": "Nhóm này gồm sữa (như đã định nghĩa trong Chú giải 1 của Chương này) và kem, cô đặc (ví dụ, bằng cách làm bay hơi) hoặc pha thêm đường hoặc chất tạo ngọt khác, ở dạng lỏng, nhão hoặc rắn (dạng khối, bột hoặc hạt)"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "co_dac_hoac_pha_duong_chat_tao_ngot",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom0402.nhom",
+   "trich": "Nhóm này gồm sữa (như đã định nghĩa trong Chú giải 1 của Chương này) và kem, cô đặc (ví dụ, bằng cách làm bay hơi) hoặc pha thêm đường hoặc chất tạo ngọt khác"
+  },
+  {
+   "fact": "la_sua_nguyen_kem_hoac_tach_kem",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch04.chuong",
+   "trich": "Khái niệm \"sữa\" được hiểu là sữa còn nguyên kem hoặc sữa đã tách kem một phần hoặc toàn bộ."
+  },
+  {
+   "fact": "ty_le_tinh_bot_them_vao_sua_bot",
+   "op": "<=",
+   "value": 5,
+   "donVi": "%",
+   "ngoaiTru": [],
+   "nguon": "nhom0402.nhom",
+   "trich": "Sữa bột có thể chứa lượng nhỏ tinh bột (không quá 5% tính theo trọng lượng), được thêm vào, nhất là để giữ sữa hoàn nguyên trong trạng thái vật lý bình thường."
+  },
+  {
+   "fact": "da_lam_dong_len_men_hoac_axit_hoa",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom0402.nhom",
+   "trich": "(a) Sữa hoặc kem, đã được làm đông, được lên men hoặc được axit hoá (nhóm 04.03)."
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Sữa hoặc kem đã làm đông, lên men hoặc axit hoá",
+   "sangNhom": "0403",
+   "nguon": "nhom0402.nhom",
+   "trich": "(a) Sữa hoặc kem, đã được làm đông, được lên men hoặc được axit hoá (nhóm 04.03)."
+  },
+  {
+   "dieuKien": "Đồ uống gồm sữa được tạo hương bằng ca cao hoặc chất khác",
+   "sangNhom": "2202",
+   "nguon": "nhom0402.nhom",
+   "trich": "(b) Đồ uống gồm sữa được tạo hương bằng ca cao hoặc các chất khác (nhóm 22.02)."
+  },
+  {
+   "dieuKien": "Sản phẩm từ whey có lactoza khan trên 95% trọng lượng khô",
+   "sangNhom": "1702",
+   "nguon": "ch04.chuong",
+   "trich": "Các sản phẩm thu được từ whey, có hàm lượng lactoza khan chiếm trên 95%, tính theo trọng lượng ở thể khô (nhóm 17.02)"
+  },
+  {
+   "dieuKien": "Sản phẩm từ sữa đã thay thế thành phần tự nhiên (vd chất béo sữa bằng chất béo thực vật)",
+   "sangNhom": "1901|2106",
+   "nguon": "ch04.chuong",
+   "trich": "Các sản phẩm thu được từ sữa bằng cách thay thế một hoặc nhiều thành phần tự nhiên của sữa (ví dụ, chất béo butyric) bởi chất khác (ví dụ, chất béo oleic) (nhóm 19.01 hoặc 21.06)"
+  },
+  {
+   "dieuKien": "Chế phẩm thực phẩm từ sản phẩm bơ sữa",
+   "sangNhom": "1901",
+   "nguon": "ch04.chuong",
+   "trich": "(a) Những chế phẩm thực phẩm từ những sản phẩm bơ sữa (nhất là nhóm 19.01)."
+  },
+  {
+   "dieuKien": "Kem lạnh và sản phẩm ăn được tương tự",
+   "sangNhom": "2105",
+   "nguon": "ch04.chuong",
+   "trich": "(c) Kem lạnh và sản phẩm ăn được tương tự khác (nhóm 21.05)."
+  },
+  {
+   "dieuKien": "Casein, albumin sữa, casein đã làm cứng",
+   "sangNhom": "3501|3502|3913",
+   "nguon": "ch04.chuong",
+   "trich": "(e) Casein (nhóm 35.01), albumin sữa (nhóm 35.02) và casein đã được làm cứng (nhóm 39.13)."
+  },
+  {
+   "dieuKien": "Albumin, kể cả dịch cô đặc whey protein có whey protein trên 80% trọng lượng khô; globulin",
+   "sangNhom": "3502|3504",
+   "nguon": "ch04.chuong",
+   "trich": "Các albumin (kể cả dịch cô đặc từ hai hay nhiều whey protein, có hàm lượng whey protein chiếm trên 80% tính theo trọng lượng ở thể khô) (nhóm 35.02) hoặc globulin (nhóm 35.04)."
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Sữa hoặc kem đã được làm đông, lên men hoặc axit hoá?",
+   "neuCo": "0403",
+   "neuKhong": "0402",
+   "nguon": "nhom0402.nhom",
+   "trich": "(a) Sữa hoặc kem, đã được làm đông, được lên men hoặc được axit hoá (nhóm 04.03)."
+  },
+  {
+   "hoi": "Là đồ uống gồm sữa đã được tạo hương bằng ca cao hoặc chất khác?",
+   "neuCo": "2202",
+   "neuKhong": "0402",
+   "nguon": "nhom0402.nhom",
+   "trich": "(b) Đồ uống gồm sữa được tạo hương bằng ca cao hoặc các chất khác (nhóm 22.02)."
+  },
+  {
+   "hoi": "Một hoặc nhiều thành phần tự nhiên của sữa (vd chất béo sữa) đã bị thay bằng chất khác (vd chất béo thực vật)?",
+   "neuCo": "1901|2106",
+   "neuKhong": "0402",
+   "nguon": "ch04.chuong",
+   "trich": "Các sản phẩm thu được từ sữa bằng cách thay thế một hoặc nhiều thành phần tự nhiên của sữa (ví dụ, chất béo butyric) bởi chất khác (ví dụ, chất béo oleic) (nhóm 19.01 hoặc 21.06)"
+  },
+  {
+   "hoi": "Sản phẩm tách từ sữa có hàm lượng chất béo sữa từ 80% trở lên nhưng không quá 95% trọng lượng (bơ)?",
+   "neuCo": "0405",
+   "neuKhong": "0402",
+   "nguon": "ch04.chuong",
+   "trich": "Theo mục đích của nhóm 04.05: (a) Khái niệm \"bơ\" được hiểu là bơ tự nhiên, bơ whey hoặc bơ phối chế lại … được tách từ sữa, với hàm lượng chất béo sữa từ 80% trở lên nhưng không quá 95% tính theo trọng lượng"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "04021041",
+   "dieuKien": "Phân nhóm 0402.10 (dạng bột, hạt hoặc thể rắn khác, chất béo không quá 1,5%); đóng gói khối lượng tịnh từ 20 kg trở lên (nhóm 7 số 0402.10.4x)",
+   "loaiKhac": false,
+   "nguon": "tax.04021041",
+   "trich": "04021041 - - - Đóng gói với khối lượng tịnh từ 20 kg trở lên"
+  },
+  {
+   "hs": "04021042",
+   "dieuKien": "Phân nhóm 0402.10 (dạng bột, hạt hoặc thể rắn khác, chất béo không quá 1,5%); đóng gói khối lượng tịnh từ 2 kg trở xuống (nhóm 7 số 0402.10.4x)",
+   "loaiKhac": false,
+   "nguon": "tax.04021042",
+   "trich": "04021042 - - - Đóng gói với khối lượng tịnh từ 2 kg trở xuống"
+  },
+  {
+   "hs": "04021049",
+   "dieuKien": "Phân nhóm 0402.10 (dạng bột, hạt hoặc thể rắn khác, chất béo không quá 1,5%); đóng gói trên 2 kg đến dưới 20 kg (loại khác) (nhóm 7 số 0402.10.4x)",
+   "loaiKhac": true,
+   "nguon": "tax.04021049",
+   "trich": "04021049 - - - Loại khác"
+  },
+  {
+   "hs": "04021091",
+   "dieuKien": "Phân nhóm 0402.10 (dạng bột, hạt hoặc thể rắn khác, chất béo không quá 1,5%); đóng gói khối lượng tịnh từ 20 kg trở lên (nhóm 7 số 0402.10.9x)",
+   "loaiKhac": false,
+   "nguon": "tax.04021091",
+   "trich": "04021091 - - - Đóng gói với khối lượng tịnh từ 20 kg trở lên"
+  },
+  {
+   "hs": "04021092",
+   "dieuKien": "Phân nhóm 0402.10 (dạng bột, hạt hoặc thể rắn khác, chất béo không quá 1,5%); đóng gói khối lượng tịnh từ 2 kg trở xuống (nhóm 7 số 0402.10.9x)",
+   "loaiKhac": false,
+   "nguon": "tax.04021092",
+   "trich": "04021092 - - - Đóng gói với khối lượng tịnh từ 2 kg trở xuống"
+  },
+  {
+   "hs": "04021099",
+   "dieuKien": "Phân nhóm 0402.10 (dạng bột, hạt hoặc thể rắn khác, chất béo không quá 1,5%); đóng gói trên 2 kg đến dưới 20 kg (loại khác) (nhóm 7 số 0402.10.9x)",
+   "loaiKhac": true,
+   "nguon": "tax.04021099",
+   "trich": "04021099 - - - Loại khác"
+  },
+  {
+   "hs": "04022120",
+   "dieuKien": "Phân nhóm 0402.21 (dạng bột/hạt/rắn, chất béo trên 1,5%, chưa pha đường/chất tạo ngọt); đóng gói khối lượng tịnh từ 20 kg trở lên",
+   "loaiKhac": false,
+   "nguon": "tax.04022120",
+   "trich": "04022120 - - - Đóng gói với khối lượng tịnh từ 20 kg trở lên"
+  },
+  {
+   "hs": "04022130",
+   "dieuKien": "Phân nhóm 0402.21 (dạng bột/hạt/rắn, chất béo trên 1,5%, chưa pha đường/chất tạo ngọt); đóng gói khối lượng tịnh từ 2 kg trở xuống",
+   "loaiKhac": false,
+   "nguon": "tax.04022130",
+   "trich": "04022130 - - - Đóng gói với khối lượng tịnh từ 2 kg trở xuống"
+  },
+  {
+   "hs": "04022190",
+   "dieuKien": "Phân nhóm 0402.21 (dạng bột/hạt/rắn, chất béo trên 1,5%, chưa pha đường/chất tạo ngọt); đóng gói trên 2 kg đến dưới 20 kg (loại khác)",
+   "loaiKhac": true,
+   "nguon": "tax.04022190",
+   "trich": "04022190 - - - Loại khác"
+  },
+  {
+   "hs": "04022920",
+   "dieuKien": "Phân nhóm 0402.29 (dạng bột/hạt/rắn, chất béo trên 1,5%, đã pha đường/chất tạo ngọt); đóng gói khối lượng tịnh từ 20 kg trở lên",
+   "loaiKhac": false,
+   "nguon": "tax.04022920",
+   "trich": "04022920 - - - Đóng gói với khối lượng tịnh từ 20 kg trở lên"
+  },
+  {
+   "hs": "04022930",
+   "dieuKien": "Phân nhóm 0402.29 (dạng bột/hạt/rắn, chất béo trên 1,5%, đã pha đường/chất tạo ngọt); đóng gói khối lượng tịnh từ 2 kg trở xuống",
+   "loaiKhac": false,
+   "nguon": "tax.04022930",
+   "trich": "04022930 - - - Đóng gói với khối lượng tịnh từ 2 kg trở xuống"
+  },
+  {
+   "hs": "04022990",
+   "dieuKien": "Phân nhóm 0402.29 (dạng bột/hạt/rắn, chất béo trên 1,5%, đã pha đường/chất tạo ngọt); đóng gói trên 2 kg đến dưới 20 kg (loại khác)",
+   "loaiKhac": true,
+   "nguon": "tax.04022990",
+   "trich": "04022990 - - - Loại khác"
+  },
+  {
+   "hs": "04029100",
+   "dieuKien": "Không ở dạng bột/hạt/rắn (lỏng, nhão…), cô đặc, chưa pha thêm đường hoặc chất tạo ngọt khác (phân nhóm 0402.91)",
+   "loaiKhac": false,
+   "nguon": "tax.04029100",
+   "trich": "04029100 - - Chưa pha thêm đường hoặc chất tạo ngọt khác"
+  },
+  {
+   "hs": "04029900",
+   "dieuKien": "Không ở dạng bột/hạt/rắn, đã pha thêm đường hoặc chất tạo ngọt khác (phân nhóm 0402.99)",
+   "loaiKhac": true,
+   "nguon": "tax.04029900",
+   "trich": "04029900 - - Loại khác"
+  }
+ ],
+ "dungTuNguon": [
+  "ch04.chuong",
+  "nhom0402.nhom",
+  "tax.04021041",
+  "tax.04021042",
+  "tax.04021049",
+  "tax.04021091",
+  "tax.04021092",
+  "tax.04021099",
+  "tax.04022120",
+  "tax.04022130",
+  "tax.04022190",
+  "tax.04022920",
+  "tax.04022930",
+  "tax.04022990",
+  "tax.04029100",
+  "tax.04029900"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "model": null,
+  "luc": "2026-10-07T09:08:08.526Z",
+  "ms": 15
+ },
+ "kiemTra": {
+  "tong": 31,
+  "dat": 31,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

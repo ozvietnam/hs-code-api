@@ -1,0 +1,172 @@
+{
+ "nhom": "8524",
+ "phamVi": {
+  "text": "Mô-đun màn hình dẹt (LCD, OLED, LED hoặc công nghệ hiển thị khác), có hoặc không kết hợp màn cảm ứng, theo Chú giải 7 Chương 85, trình bày riêng chưa tích hợp vào thiết bị khác.",
+  "nguon": "nhom8524.nhom",
+  "trich": "Nhóm này bao gồm các mô-đun màn hình dẹt, có hoặc không kết hợp với màn cảm ứng, được định nghĩa trong Chú giải 7 của Chương này."
+ },
+ "dieuKienVao": [
+  {
+   "fact": "thiet_ke_de_lap_vao_san_pham_nhom_khac_truoc_khi_su_dung",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch85.chuong",
+   "trich": "“mô-đun màn hình dẹt” dùng để chỉ các thiết bị hoặc dụng cụ để hiển thị thông tin, được trang bị tối thiểu một màn hiển thị, được thiết kế để lắp vào các sản phẩm thuộc các nhóm khác trước khi sử dụng."
+  },
+  {
+   "fact": "co_thanh_phan_chuyen_doi_tin_hieu_video",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch85.chuong",
+   "trich": "Tuy nhiên, nhóm 85.24 không bao gồm các mô-đun hiển thị được trang bị các thành phần để chuyển đổi tín hiệu video (ví dụ, IC điều chỉnh tỷ lệ, IC giải mã hoặc bộ xử lý ứng dụng) hoặc mang đặc tính của hàng hóa thuộc các nhóm khác."
+  },
+  {
+   "fact": "trinh_bay_rieng_chua_tich_hop_vao_thiet_bi_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8524.nhom",
+   "trich": "Tuy nhiên, mô-đun màn hình dẹt không được tích hợp vào thiết bị khác và được trình bày riêng biệt sẽ được phân loại vào nhóm này thay vì phân loại vào nhóm của các sản phẩm hoàn thiện có mô-đun màn hình dẹt."
+  },
+  {
+   "fact": "cong_nghe_man_hien_thi",
+   "op": "in",
+   "value": "LCD|OLED|LED|công nghệ hiển thị khác",
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8524.nhom",
+   "trich": "Các mặt hàng thuộc nhóm này được trang bị tối thiểu một màn hình hiển thị sử dụng màn hình tinh thể lỏng (LCD), điốt phát quang hữu cơ (OLED), điốt phát sáng (LED) hoặc các công nghệ hiển thị khác."
+  },
+  {
+   "fact": "uu_tien_nhom_8524_hon_moi_nhom_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch85.chuong",
+   "trich": "Để phân loại mô-đun màn hình dẹt được định nghĩa trong Chú giải này, nhóm 85.24 sẽ được ưu tiên hơn bất kỳ nhóm nào khác trong Danh mục."
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Mô-đun màn hình dẹt có bộ phận chuyển đổi video",
+   "sangNhom": "8517|8528|8529",
+   "nguon": "nhom8524.nhom",
+   "trich": "(a) Mô-đun màn hình dẹt có bộ phận chuyển đổi video (thường là các sản phẩm thuộc các nhóm 85.17, 85.28 và 85.29)."
+  },
+  {
+   "dieuKien": "Thiết bị phát tín hiệu bằng hình ảnh (bảng chỉ báo) kết hợp với mô-đun màn hình dẹt",
+   "sangNhom": "8531",
+   "nguon": "nhom8524.nhom",
+   "trich": "(b) Thiết bị phát tín hiệu bằng hình ảnh (bảng chỉ báo) kết hợp với mô-đun màn hình dẹt (nhóm 85.31)."
+  },
+  {
+   "dieuKien": "Bộ phận của thiết bị thuộc nhóm này",
+   "sangNhom": "8529",
+   "nguon": "nhom8524.nhom",
+   "trich": "CÁC BỘ PHẬN Theo quy tắc chung phân loại các bộ phận (xem Chú giải Chi tiết Tổng quát Phần XVI), bộ phận của thiết bị thuộc nhóm này được phân loại vào nhóm 85.29."
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Mô-đun có gắn thành phần chuyển đổi tín hiệu video (ví dụ IC điều chỉnh tỷ lệ, IC giải mã, bộ xử lý ứng dụng) không?",
+   "neuCo": "8517|8528|8529",
+   "neuKhong": "8524",
+   "nguon": "nhom8524.nhom",
+   "trich": "(a) Mô-đun màn hình dẹt có bộ phận chuyển đổi video (thường là các sản phẩm thuộc các nhóm 85.17, 85.28 và 85.29)."
+  },
+  {
+   "hoi": "Hàng là thiết bị phát tín hiệu bằng hình ảnh (bảng chỉ báo) có kết hợp mô-đun màn hình dẹt?",
+   "neuCo": "8531",
+   "neuKhong": "8524",
+   "nguon": "nhom8524.nhom",
+   "trich": "(b) Thiết bị phát tín hiệu bằng hình ảnh (bảng chỉ báo) kết hợp với mô-đun màn hình dẹt (nhóm 85.31)."
+  },
+  {
+   "hoi": "Hàng chỉ là bộ phận của mô-đun màn hình dẹt, chưa có màn hiển thị hoàn chỉnh?",
+   "neuCo": "8529",
+   "neuKhong": "8524",
+   "nguon": "nhom8524.nhom",
+   "trich": "bộ phận của thiết bị thuộc nhóm này được phân loại vào nhóm 85.29."
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "85241100",
+   "dieuKien": "Bằng tinh thể lỏng (phân nhóm 8524.1x; tiêu chí cấp '-' của phân nhóm không có trong nguồn)",
+   "loaiKhac": false,
+   "nguon": "tax.85241100",
+   "trich": "85241100 - - Bằng tinh thể lỏng"
+  },
+  {
+   "hs": "85241200",
+   "dieuKien": "Bằng đi-ốt phát quang hữu cơ (OLED) (phân nhóm 8524.1x)",
+   "loaiKhac": false,
+   "nguon": "tax.85241200",
+   "trich": "85241200 - - Bằng đi-ốt phát quang hữu cơ (OLED)"
+  },
+  {
+   "hs": "85241900",
+   "dieuKien": "Loại khác (phân nhóm 8524.1x, không bằng tinh thể lỏng hoặc OLED)",
+   "loaiKhac": true,
+   "nguon": "tax.85241900",
+   "trich": "85241900 - - Loại khác"
+  },
+  {
+   "hs": "85249100",
+   "dieuKien": "Bằng tinh thể lỏng (phân nhóm 8524.9x; tiêu chí cấp '-' của phân nhóm không có trong nguồn)",
+   "loaiKhac": false,
+   "nguon": "tax.85249100",
+   "trich": "85249100 - - Bằng tinh thể lỏng"
+  },
+  {
+   "hs": "85249200",
+   "dieuKien": "Bằng đi-ốt phát quang hữu cơ (OLED) (phân nhóm 8524.9x)",
+   "loaiKhac": false,
+   "nguon": "tax.85249200",
+   "trich": "85249200 - - Bằng đi-ốt phát quang hữu cơ (OLED)"
+  },
+  {
+   "hs": "85249900",
+   "dieuKien": "Loại khác (phân nhóm 8524.9x, không bằng tinh thể lỏng hoặc OLED)",
+   "loaiKhac": true,
+   "nguon": "tax.85249900",
+   "trich": "85249900 - - Loại khác"
+  }
+ ],
+ "boPhan": {
+  "quyTac": "Quy tắc chung phân loại bộ phận (Chú giải Chi tiết Tổng quát Phần XVI)",
+  "tomTat": "Bộ phận của mô-đun màn hình dẹt thuộc nhóm này được phân loại vào nhóm 85.29.",
+  "nguon": "nhom8524.nhom",
+  "trich": "CÁC BỘ PHẬN Theo quy tắc chung phân loại các bộ phận (xem Chú giải Chi tiết Tổng quát Phần XVI), bộ phận của thiết bị thuộc nhóm này được phân loại vào nhóm 85.29."
+ },
+ "dungTuNguon": [
+  "ch85.chuong",
+  "nhom8524.nhom",
+  "tax.85241100",
+  "tax.85241200",
+  "tax.85241900",
+  "tax.85249100",
+  "tax.85249200",
+  "tax.85249900"
+ ],
+ "phienBan": "HS2022",
+ "bangQuyetDinh": "data/decision-tables/8524.json — ưu tiên tuyệt đối, sổ tay không ghi đè",
+ "taoBoi": {
+  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "model": null,
+  "luc": "2026-10-07T09:08:08.785Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 19,
+  "dat": 19,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

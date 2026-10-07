@@ -1,0 +1,211 @@
+{
+ "nhom": "2202",
+ "phamVi": {
+  "text": "Đồ uống không chứa cồn (nồng độ cồn ≤ 0,5% vol) không thuộc nhóm khác: nước đã pha đường/chất ngọt/hương liệu, bia không cồn và đồ uống không cồn khác (trừ nước quả/rau ép nhóm 20.09).",
+  "nguon": "nhom2202.nhom",
+  "trich": "Nhóm này bao gồm các loại đồ uống không chứa cồn, như định nghĩa tại Chú giải 3 của Chương này, không được phân loại vào các nhóm khác, đặc biệt là nhóm 20.09 hoặc 22.01."
+ },
+ "dieuKienVao": [
+  {
+   "fact": "nong_do_con_theo_the_tich",
+   "op": "<=",
+   "value": 0.5,
+   "donVi": "% vol",
+   "ngoaiTru": [],
+   "nguon": "ch22.chuong",
+   "trich": "Theo mục đích của nhóm 22.02, khái niệm \"đồ uống không chứa cồn\" có nghĩa là các loại đồ uống có nồng độ cồn không quá 0,5% tính theo thể tích."
+  },
+  {
+   "fact": "nhiet_do_xac_dinh_nong_do_con",
+   "op": "=",
+   "value": 20,
+   "donVi": "°C",
+   "ngoaiTru": [],
+   "nguon": "ch22.chuong",
+   "trich": "Theo mục đích của Chương này và các Chương 20 và 21, \"nồng độ cồn tính theo thể tích\" sẽ được xác định ở nhiệt độ 20°C."
+  },
+  {
+   "fact": "nuoc_da_pha_duong_chat_ngot_hoac_huong_lieu",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2202.nhom",
+   "trich": "(A) Nước, kể cả nước khoáng và nước có ga, đã pha thêm đường hoặc chất làm ngọt khác hoặc đã pha hương liệu."
+  },
+  {
+   "fact": "bia_mach_nha_nong_do_con_theo_the_tich",
+   "op": "<=",
+   "value": 0.5,
+   "donVi": "% vol",
+   "ngoaiTru": [],
+   "nguon": "nhom2202.nhom",
+   "trich": "(1) Bia làm từ mạch nha, nồng độ cồn tính theo thể tích giảm xuống còn 0,5% hoặc ít hơn."
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Sữa chua dạng lỏng, sữa/kem lên men hoặc làm chua khác có ca cao, quả hoặc hương liệu",
+   "sangNhom": "0403",
+   "nguon": "nhom2202.nhom",
+   "trich": "(a) Sữa chua ở dạng lỏng và các loại sữa và kem đã lên men hoặc được làm chua khác, có chứa ca cao, quả hoặc hương liệu (nhóm 04.03)."
+  },
+  {
+   "dieuKien": "Xirô đường",
+   "sangNhom": "1702",
+   "nguon": "nhom2202.nhom",
+   "trich": "(b) Xirô đường thuộc nhóm 17.02 và xirô đường có thêm hương liệu thuộc nhóm 21.06."
+  },
+  {
+   "dieuKien": "Xirô đường có thêm hương liệu",
+   "sangNhom": "2106",
+   "nguon": "nhom2202.nhom",
+   "trich": "(b) Xirô đường thuộc nhóm 17.02 và xirô đường có thêm hương liệu thuộc nhóm 21.06."
+  },
+  {
+   "dieuKien": "Nước ép trái cây, quả hạch hoặc nước rau ép, dùng hay không dùng làm đồ uống",
+   "sangNhom": "2009",
+   "nguon": "nhom2202.nhom",
+   "trich": "(c) Các loại nước ép trái cây hoặc quả (hạch) hoặc nước rau ép, dùng hay không được dùng làm đồ uống (nhóm 20.09)."
+  },
+  {
+   "dieuKien": "Dược phẩm",
+   "sangNhom": "3003|3004",
+   "nguon": "nhom2202.nhom",
+   "trich": "(d) Dược phẩm thuộc nhóm 30.03 hoặc 30.04."
+  },
+  {
+   "dieuKien": "Sản phẩm chương 22 đã chế biến để nấu nướng, không phù hợp làm đồ uống",
+   "sangNhom": "2103",
+   "nguon": "ch22.chuong",
+   "trich": "(a) Các sản phẩm của Chương này (trừ các sản phẩm của nhóm 22.09) được chế biến cho mục đích nấu nướng và không phù hợp để làm đồ uống (thường ở nhóm 21.03);"
+  },
+  {
+   "dieuKien": "Nước biển",
+   "sangNhom": "2501",
+   "nguon": "ch22.chuong",
+   "trich": "(b) Nước biển (nhóm 25.01);"
+  },
+  {
+   "dieuKien": "Nước cất, nước khử độ dẫn hoặc nước tinh khiết tương tự",
+   "sangNhom": "2853",
+   "nguon": "ch22.chuong",
+   "trich": "(c) Nước cất hoặc nước khử độ dẫn hay các loại nước tinh khiết tương tự (nhóm 28.53);"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là nước quả ép hoặc nước rau ép?",
+   "neuCo": "2009",
+   "neuKhong": "2202",
+   "nguon": "nhom2202.nhom",
+   "trich": "(C) Các loại đồ uống không có cồn khác, trừ nước quả ép và nước rau ép thuộc nhóm 20.09."
+  },
+  {
+   "hoi": "Hàng là sữa chua dạng lỏng hoặc sữa/kem đã lên men, làm chua có ca cao, quả hoặc hương liệu?",
+   "neuCo": "0403",
+   "neuKhong": "2202",
+   "nguon": "nhom2202.nhom",
+   "trich": "(a) Sữa chua ở dạng lỏng và các loại sữa và kem đã lên men hoặc được làm chua khác, có chứa ca cao, quả hoặc hương liệu (nhóm 04.03)."
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "22021020",
+   "dieuKien": "Nước tăng lực, có hoặc không có ga: đồ uống chứa hỗn hợp từ hai chất kích thích trở lên (caffeine, taurine, vitamin B…) và phụ gia",
+   "loaiKhac": false,
+   "nguon": "sen.22021020",
+   "trich": "Nước tăng lực là đồ uống có chứa một hỗn hợp chất kích thích và các chất phụ gia khác như chất bảo quản, chất ổn định,…"
+  },
+  {
+   "hs": "22021030",
+   "dieuKien": "Nước khoáng xô đa hoặc nước có ga khác, có hương liệu",
+   "loaiKhac": false,
+   "nguon": "tax.22021030",
+   "trich": "22021030 - - Nước khoáng xô đa hoặc nước có ga, loại khác, có hương liệu"
+  },
+  {
+   "hs": "22021090",
+   "dieuKien": "Nước đã pha đường/chất ngọt/hương liệu khác (không phải nước tăng lực, không phải nước có ga có hương liệu)",
+   "loaiKhac": true,
+   "nguon": "tax.22021090",
+   "trich": "22021090 - - Loại khác"
+  },
+  {
+   "hs": "22029100",
+   "dieuKien": "Bia không cồn",
+   "loaiKhac": false,
+   "nguon": "tax.22029100",
+   "trich": "22029100 - - Bia không cồn"
+  },
+  {
+   "hs": "22029910",
+   "dieuKien": "Đồ uống chứa sữa tiệt trùng có hương liệu",
+   "loaiKhac": false,
+   "nguon": "tax.22029910",
+   "trich": "22029910 - - - Đồ uống chứa sữa tiệt trùng có hương liệu"
+  },
+  {
+   "hs": "22029920",
+   "dieuKien": "Đồ uống sữa đậu nành",
+   "loaiKhac": false,
+   "nguon": "tax.22029920",
+   "trich": "22029920 - - - Đồ uống sữa đậu nành"
+  },
+  {
+   "hs": "22029930",
+   "dieuKien": "Đồ uống có nguyên liệu chính là nước dừa (có thể thêm đường, phụ gia)",
+   "loaiKhac": false,
+   "nguon": "sen.22029930",
+   "trich": "Đồ uống chứa nguyên liệu chính là nước dừa và có thể chứa thêm đường và các chất phụ gia thực phẩm khác như chất ổn định, chất làm đặc và chất nhũ hóa."
+  },
+  {
+   "hs": "22029940",
+   "dieuKien": "Đồ uống có chứa cà phê hoặc có hương liệu cà phê",
+   "loaiKhac": false,
+   "nguon": "tax.22029940",
+   "trich": "22029940 - - - Đồ uống có chứa cà phê hoặc đồ uống có hương liệu cà phê"
+  },
+  {
+   "hs": "22029950",
+   "dieuKien": "Đồ uống không có ga khác, dùng ngay không cần pha loãng",
+   "loaiKhac": false,
+   "nguon": "tax.22029950",
+   "trich": "22029950 - - - Đồ uống không có ga khác dùng ngay được không cần pha loãng"
+  },
+  {
+   "hs": "22029990",
+   "dieuKien": "Đồ uống không cồn khác (không thuộc các dòng trên)",
+   "loaiKhac": true,
+   "nguon": "tax.22029990",
+   "trich": "22029990 - - - Loại khác"
+  }
+ ],
+ "dungTuNguon": [
+  "ch22.chuong",
+  "nhom2202.nhom",
+  "sen.22021020",
+  "sen.22029930",
+  "tax.22021030",
+  "tax.22021090",
+  "tax.22029100",
+  "tax.22029910",
+  "tax.22029920",
+  "tax.22029940",
+  "tax.22029950",
+  "tax.22029990"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "model": null,
+  "luc": "2026-10-07T09:08:08.546Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 27,
+  "dat": 25,
+  "loai": 2,
+  "nguonBiCat": []
+ }
+}

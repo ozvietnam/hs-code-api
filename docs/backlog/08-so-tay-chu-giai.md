@@ -1,12 +1,13 @@
 # Bước 8 — Sổ tay chú giải: nâng phần đã đọc hiểu lên dạng máy dùng được
 
-**Ngày:** 2026-10-07 · **Trạng thái:** 🔧 Kệ sách xong (HS 2022 #163, SEN 2022 #166); máy kiểm nguồn + script dựng xong — chờ chạy bước 1 trên .120 ([giao việc](../giao-viec/so-tay-buoc-1.md)) · **Ai làm:** agent/dev của repo, làm dần theo mục "Cách làm"
+**Ngày:** 2026-10-07 · **Trạng thái:** 🔧 Kệ sách xong (HS 2022 #163, SEN 2022 #166); bước 1 xong 60 nhóm (#168); nhóm còn lại đóng gói giao agent ngoài ([giao việc](../giao-viec/so-tay-giao-ngoai.md)) · **Ai làm:** agent/dev của repo, làm dần theo mục "Cách làm"
 
 | Bước | Trạng thái |
 |---|---|
 | Kệ sách: toàn văn chú giải HS 2022 + SEN 2022 | ✅ #162, #163, #166 |
 | Máy kiểm nguồn `lib/so-tay.js` (`trich` nguyên văn, nhóm đích trong câu trích, ngưỡng số, dòng 8 số) + `npm run so-tay:check` | ✅ |
-| 1. Dựng ~60 nhóm bộ đo — `scripts/build-so-tay.mjs --bench=…` | ⏳ chạy trên .120 (cần khoá AI + `/tmp/egcb/out`) |
+| 1. Dựng ~60 nhóm — `data/so-tay/` | ✅ 60 nhóm, 98,4 % mục đạt (#168) — bài học: [so-tay-giao-ngoai](../giao-viec/so-tay-giao-ngoai.md) |
+| 1b. 1.168 nhóm còn lại — 195 lô giao agent ngoài ([so-tay-lo.csv](../giao-viec/so-tay-lo.csv)) | ⬜ |
 | 2. Chạy khô các cổng trên 113 kết quả | ⬜ |
 | 3. Nối `lib/engine-loop.js` | ⬜ |
 | 4. Dựng đủ 1.269 nhóm | ⬜ |

@@ -10,6 +10,7 @@
  *   node scripts/build-so-tay.mjs --bench='/tmp/egcb/out/v5-*.json'   # nhóm của truth/top/top3 trong kết quả bench
  *   node scripts/build-so-tay.mjs --all                        # đủ 1.269 nhóm (chạy đêm)
  *   thêm: --limit=N  --concurrency=2  --force (dựng lại cả nhóm đã có)  --dry (in prompt, không gọi AI)
+ *   --bao-cao=<tệp>: ghi báo cáo vào tệp riêng (lô giao ngoài: data/so-tay/bao-cao/lo-NNN.json)
  *   --xuat-nguon=<thư mục>: ghi prompt từng nhóm (<nhom>.txt) + _he-thong.txt, không gọi AI — để một AI
  *     khác (vd phiên Claude, người) soạn; --tu-tep=<thư mục>: nạp JSON <nhom>.json đã soạn thay vì gọi AI,
  *     vẫn qua đủ máy kiểm như đường AI.
@@ -49,7 +50,13 @@ Trả JSON đúng lược đồ:
 Quy tắc: loaiTru chỉ ghi khi chú giải nêu ĐÍCH DANH nhóm đích; ngưỡng số (value là số) phải xuất hiện trong câu trích;
 dong8 lấy đủ các dòng 8 số của nhóm có trong nguồn tax.*, dòng "Loại khác" ghi loaiKhac=true; ưu tiên điều kiện từ SEN khi có.
 Dòng biểu thuế VN thường chỉ ghi "- - - Loại khác": điều kiện cấp phân nhóm 6 số lấy từ wco.<6 số> (tên WCO, tiếng Anh) — trích nguyên văn tiếng Anh, "nguon": "wco.<6 số>".
-Câu trích phải tự nó nói điều mục khẳng định; KHÔNG ghép hai câu ở hai chỗ khác nhau thành một kết luận (vd định nghĩa A + "ưu tiên nhóm X" ≠ "A thuộc X").`;
+Bài học bước 1 (60 nhóm, 07/10/2026) — bắt buộc:
+- Câu trích phải tự nó nói điều mục khẳng định; KHÔNG ghép hai câu ở hai chỗ khác nhau thành một kết luận (vd định nghĩa A + "ưu tiên nhóm X" ≠ "A thuộc X").
+- phanBiet: mã ngoài nhóm này (neuCo/neuKhong) phải được NÊU trong câu trích; nguồn chỉ nói "Chương 29" thì không được chọn 2917.
+- Số nhóm chỉ là VÍ DỤ linh kiện ("máy biến điện (nhóm 85.04)") hoặc dải "từ 33.03 đến 33.07" / "Chương 84" → không phải loaiTru đích danh; chỉ ghi các mã nêu tên.
+- "dieuKien"/"text" chỉ diễn đạt điều câu trích (hoặc wco/sen) nói; không thêm tên phân nhóm theo hiểu biết riêng. Dòng 8 số trùng chữ mà nguồn không phân biệt → ghi "dòng cha không có trong nguồn — đối chiếu biểu thuế", không đoán.
+- Chép nguyên văn kể cả lỗi chính tả/số hiệu chú giải cũ của nguồn ("Chú giải 8 (a)"), không sửa.
+- Thà bỏ mục còn hơn mục không có căn cứ.`;
 
 function promptFor(h4, sources) {
   const cut = [];
@@ -117,7 +124,9 @@ async function main() {
   if (!list.length) return;
   if (!argv['xuat-nguon']) fs.mkdirSync(OUT, { recursive: true });
   const { callLLMJson } = require('../lib/llm-tier.js');
-  const reportPath = path.join(OUT, '_bao-cao.json');
+  // Mỗi lô giao ngoài ghi báo cáo riêng (--bao-cao=data/so-tay/bao-cao/lo-NNN.json) để PR song song không xung đột.
+  const reportPath = typeof argv['bao-cao'] === 'string' ? path.resolve(argv['bao-cao']) : path.join(OUT, '_bao-cao.json');
+  fs.mkdirSync(path.dirname(reportPath), { recursive: true });
   const report = fs.existsSync(reportPath) ? JSON.parse(fs.readFileSync(reportPath, 'utf8')) : { nhom: {} };
   const queue = [...list];
   const conc = Number(argv.concurrency || 2);

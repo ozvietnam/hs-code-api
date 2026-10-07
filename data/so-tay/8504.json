@@ -1,0 +1,786 @@
+{
+ "nhom": "8504",
+ "phamVi": {
+  "text": "Máy biến điện (kể cả chấn lưu cho đèn/ống phóng, biến áp đo lường, cuộn cảm kiểu biến điện), thiết bị biến đổi tĩnh điện (chỉnh lưu, nghịch lưu, biến đổi tần số, DC-DC, máy nạp ắc quy, nguồn ổn áp/UPS), cuộn cảm (cuộn kháng) và bộ phận của chúng.",
+  "nguon": "nhom8504.nhom",
+  "trich": "(I) CÁC MÁY BIẾN ĐIỆN … (II) CÁC THIẾT BỊ BIẾN ĐỔI TĨNH ĐIỆN … (III) CUỘN CẢM … BỘ PHẬN Theo quy tắc chung phân loại các bộ phận (xem chú giải chi tiết tổng quát phần XVI), bộ phận của hàng hóa thuộc nhóm này cũng được phân loại ở đây."
+ },
+ "dieuKienVao": [
+  {
+   "fact": "may_bien_dien_khong_co_phan_chuyen_dong_bien_doi_bang_cam_ung",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8504.nhom",
+   "trich": "Các máy biến điện là các thiết bị, không có phần chuyển động, sử dụng hiện tượng cảm ứng của hệ thống thiết lập trước hoặc có thể điều chỉnh được, để biến đổi dòng điện xoay chiều này thành dòng điện xoay chiều khác ở cấp điện áp, trở kháng... khác."
+  },
+  {
+   "fact": "cong_suat_bieu_kien_xac_dinh_tai",
+   "op": "=",
+   "value": "kVA ở đầu ra, chế độ làm việc liên tục, điện áp làm việc cuộn thứ cấp, tần số định mức",
+   "donVi": "kVA",
+   "ngoaiTru": [],
+   "nguon": "nhom8504.nhom",
+   "trich": "Công suất biểu kiến của máy biến thế điện được tính bằng kilovolt-ampeme (kVA), được xác định ở đầu ra trong chế độ làm việc liên tục tại mức điện áp làm việc ở cuộn thứ cấp (hoặc dòng điện định mức tương ứng) và tần số định mức mà không vượt quá giới hạn nhiệt độ làm việc cho phép."
+  },
+  {
+   "fact": "dau_dien_ap_cao_la",
+   "op": "=",
+   "value": "đầu có điện áp cao hơn, bất kể là đầu vào hay đầu ra",
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "sen.85042111",
+   "trich": "Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra."
+  },
+  {
+   "fact": "may_bien_dien_han_trinh_bay_rieng_khong_kem_dau_kep_que_han",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "trình bày cùng đầu kẹp que hàn hoặc thiết bị hàn → nhóm 85.15"
+   ],
+   "nguon": "nhom8504.nhom",
+   "trich": "Máy biến điện để hàn điện được phân loại trong nhóm này khi hiện diện riêng rẽ, không có đầu kẹp que hàn hoặc thiết bị hàn."
+  },
+  {
+   "fact": "mach_bo_tro_dieu_chinh_dien_ap_khong_lam_thay_doi_phan_loai",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8504.nhom",
+   "trich": "Trên thực tế thì các thiết bị này thường gắn với mạch bổ trợ dùng để điều chỉnh điện áp của các dòng nhấp nhô thì không ảnh hưởng đến việc phân loại trong nhóm này"
+  },
+  {
+   "fact": "nguon_on_ap_chinh_luu_ket_hop_on_ap_hoac_nguon_cap_lien_tuc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "máy điều chỉnh điện áp tự động → nhóm 90.32"
+   ],
+   "nguon": "nhom8504.nhom",
+   "trich": "Nhóm này cũng bao gồm các nguồn ổn áp (thiết bị chỉnh lưu kết hợp với thiết bị ổn áp) ví dụ các nguồn cấp liên tục cho các thiết bị điện tử."
+  },
+  {
+   "fact": "cuon_cam_cuon_khang_dang_cau_thanh_rieng_qua_in",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8504.nhom",
+   "trich": "Các cuộn kháng, cuộn cảm thu được dưới dạng các cấu thành riêng qua quá trình in cũng được xếp trong nhóm này."
+  },
+  {
+   "fact": "chinh_luu_ho_quang_thuy_ngan_vo_kim_loai",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch85.chuong",
+   "trich": "Tuy nhiên, thiết bị chỉnh lưu hồ quang thủy ngân vỏ kim loại vẫn được xếp vào nhóm 85.04."
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Máy biến điện để hàn trình bày cùng đầu kẹp que hàn hoặc thiết bị hàn",
+   "sangNhom": "8515",
+   "nguon": "nhom8504.nhom",
+   "trich": "Tuy nhiên, chúng được loại trừ (nhóm 85.15) khi mà hiện diện cùng đầu kẹp que hàn hoặc thiết bị hàn."
+  },
+  {
+   "dieuKien": "Cuộn cảm là thiết bị đánh lửa dùng cho động cơ đốt trong",
+   "sangNhom": "8511",
+   "nguon": "nhom8504.nhom",
+   "trich": "Nhóm này cũng bao gồm tất cả các loại cuộn cảm, chỉ trừ loại thiết bị đánh lửa dùng cho động cơ đốt trong (nhóm 85.11)"
+  },
+  {
+   "dieuKien": "Hàng hóa đã mô tả trong nhóm 85.11, 85.12, 85.40, 85.41 hoặc 85.42 (trừ thiết bị chỉnh lưu hồ quang thủy ngân vỏ kim loại)",
+   "sangNhom": "8511|8512|8540|8541|8542",
+   "nguon": "ch85.chuong",
+   "trich": "2. Các nhóm từ 85.01 đến 85.04 không áp dụng cho các loại hàng hóa đã mô tả trong nhóm 85.11, 85.12, 85.40, 85.41 hoặc 85.42."
+  },
+  {
+   "dieuKien": "Máy phát cao áp hoặc máy biến điện thiết kế đặc biệt cho thiết bị phát phóng xạ",
+   "sangNhom": "9022",
+   "nguon": "nhom8504.nhom",
+   "trich": "Tuy nhiên, các máy phát cao áp (hay các máy biến điện) được thiết kế đặc biệt cho các thiết bị phát phóng xạ thuộc nhóm 90.22."
+  },
+  {
+   "dieuKien": "Máy điều chỉnh điện áp tự động",
+   "sangNhom": "9032",
+   "nguon": "nhom8504.nhom",
+   "trich": "Cũng vậy, các máy điều chỉnh điện áp tự động được xếp vào nhóm 90.32."
+  },
+  {
+   "dieuKien": "Cuộn lái tia sử dụng cho ống phóng tia ca tốt",
+   "sangNhom": "8540",
+   "nguon": "nhom8504.nhom",
+   "trich": "Các cuộn lái tia sử dụng cho các ống phóng tia ca tốt được xếp vào nhóm 85.40."
+  },
+  {
+   "dieuKien": "Linh kiện (bộ phận) là chuyển mạch, ví dụ chuyển mạch nhiều vị trí dùng trong máy biến áp",
+   "sangNhom": "8536",
+   "nguon": "nhom8504.nhom",
+   "trich": "(a) Các chuyển mạch của nhóm 85.36 (ví dụ chuyển mạch nhiều vị trí sử dụng trong các máy biến áp)."
+  },
+  {
+   "dieuKien": "Linh kiện là van, ống chỉnh lưu chân không hoặc hơi thủy ngân, đèn điện tử (trừ vỏ kim loại), đèn thyratron",
+   "sangNhom": "8540",
+   "nguon": "nhom8504.nhom",
+   "trich": "(b) Các van và ống chỉnh lưu chân không hoặc hơi thủy ngân và các đèn điện tử (ngoại trừ các vỏ bằng kim loại) và các đèn thyraton (nhóm 85.40)."
+  },
+  {
+   "dieuKien": "Linh kiện là đi ốt bán dẫn, transistor, thyristor",
+   "sangNhom": "8541",
+   "nguon": "nhom8504.nhom",
+   "trich": "(c) Các đi ốt bán dẫn, transistor và thyristor (nhóm 85.41)."
+  },
+  {
+   "dieuKien": "Linh kiện là sản phẩm của nhóm 85.42 (mạch điện tử tích hợp)",
+   "sangNhom": "8542",
+   "nguon": "nhom8504.nhom",
+   "trich": "(d) Các sản phẩm của nhóm 85.42."
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Máy biến điện hàn được trình bày cùng đầu kẹp que hàn hoặc thiết bị hàn?",
+   "neuCo": "8515",
+   "neuKhong": "8504",
+   "nguon": "nhom8504.nhom",
+   "trich": "Máy biến điện để hàn điện được phân loại trong nhóm này khi hiện diện riêng rẽ, không có đầu kẹp que hàn hoặc thiết bị hàn. Tuy nhiên, chúng được loại trừ (nhóm 85.15) khi mà hiện diện cùng đầu kẹp que hàn hoặc thiết bị hàn."
+  },
+  {
+   "hoi": "Thiết bị là máy điều chỉnh điện áp tự động?",
+   "neuCo": "9032",
+   "neuKhong": "8504",
+   "nguon": "nhom8504.nhom",
+   "trich": "Cũng vậy, các máy điều chỉnh điện áp tự động được xếp vào nhóm 90.32."
+  },
+  {
+   "hoi": "Máy phát cao áp/máy biến điện được thiết kế đặc biệt cho thiết bị phát phóng xạ?",
+   "neuCo": "9022",
+   "neuKhong": "8504",
+   "nguon": "nhom8504.nhom",
+   "trich": "Tuy nhiên, các máy phát cao áp (hay các máy biến điện) được thiết kế đặc biệt cho các thiết bị phát phóng xạ thuộc nhóm 90.22."
+  },
+  {
+   "hoi": "Cuộn cảm là thiết bị đánh lửa dùng cho động cơ đốt trong?",
+   "neuCo": "8511",
+   "neuKhong": "8504",
+   "nguon": "nhom8504.nhom",
+   "trich": "Nhóm này cũng bao gồm tất cả các loại cuộn cảm, chỉ trừ loại thiết bị đánh lửa dùng cho động cơ đốt trong (nhóm 85.11)"
+  },
+  {
+   "hoi": "Hàng là cuộn lái tia dùng cho ống phóng tia ca tốt?",
+   "neuCo": "8540",
+   "neuKhong": "8504",
+   "nguon": "nhom8504.nhom",
+   "trich": "Các cuộn lái tia sử dụng cho các ống phóng tia ca tốt được xếp vào nhóm 85.40."
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "85041000",
+   "dieuKien": "Phân nhóm 8504.10 [Discharge lamps or tubes; ballasts therefor]: Chấn lưu dùng cho đèn phóng hoặc ống phóng",
+   "loaiKhac": false,
+   "nguon": "tax.85041000",
+   "trich": "Chấn lưu dùng cho đèn phóng hoặc ống phóng"
+  },
+  {
+   "hs": "85042111",
+   "dieuKien": "Phân nhóm 8504.21 [Electrical transformers; liquid dielectric, having a power handling capacity not exceeding 650kVA]: Máy biến đổi đo lường (1) loại công suất danh định không quá 1 kVA và đầu điện áp cao từ 110 kV trở lên (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'ĐẦU ĐIỆN ÁP CAO'): đầu nào có điện áp cao luôn được xem là 'đầu điện áp cao', bất kể là đầu vào hay đầu ra (không phân biệt biến thế tăng áp hay giảm áp)",
+   "loaiKhac": false,
+   "nguon": "sen.85042111",
+   "trich": "Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra."
+  },
+  {
+   "hs": "85042119",
+   "dieuKien": "Phân nhóm 8504.21 [Electrical transformers; liquid dielectric, having a power handling capacity not exceeding 650kVA]: Loại khác — không thuộc 85042111 (Máy biến đổi đo lường (1) loại công suất danh định không quá 1 kVA …) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'MÁY ỔN ÁP TỪNG NẤC (BIẾN ÁP TỰ NGẪU)'): gồm biến áp tự ngẫu loại ngâm dầu dùng điều chỉnh điện áp theo từng nấc (bể dầu kín, thiết bị xả áp, ống cách điện, chỉ thị mức dầu…)",
+   "loaiKhac": true,
+   "nguon": "sen.85042119",
+   "trich": "MÁY ỔN ÁP TỪNG NẤC (BIẾN ÁP TỰ NGẪU) … Đây là các biến áp tự ngẫu loại ngâm dầu được dùng để điều chỉnh điện áp theo từng nấc."
+  },
+  {
+   "hs": "85042192",
+   "dieuKien": "Phân nhóm 8504.21 [Electrical transformers; liquid dielectric, having a power handling capacity not exceeding 650kVA]: Có công suất danh định trên 10 kVA và đầu điện áp cao từ 110 kV trở lên (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'ĐẦU ĐIỆN ÁP CAO'): đầu nào có điện áp cao luôn được xem là 'đầu điện áp cao', bất kể là đầu vào hay đầu ra (không phân biệt biến thế tăng áp hay giảm áp)",
+   "loaiKhac": false,
+   "nguon": "sen.85042192",
+   "trich": "Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra."
+  },
+  {
+   "hs": "85042193",
+   "dieuKien": "Phân nhóm 8504.21 [Electrical transformers; liquid dielectric, having a power handling capacity not exceeding 650kVA]: Có công suất danh định trên 10 kVA và đầu điện áp cao từ 66 kV trở lên, nhưng dưới 110 kV (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'ĐẦU ĐIỆN ÁP CAO'): đầu nào có điện áp cao luôn được xem là 'đầu điện áp cao', bất kể là đầu vào hay đầu ra (không phân biệt biến thế tăng áp hay giảm áp)",
+   "loaiKhac": false,
+   "nguon": "sen.85042193",
+   "trich": "Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra."
+  },
+  {
+   "hs": "85042199",
+   "dieuKien": "Phân nhóm 8504.21 [Electrical transformers; liquid dielectric, having a power handling capacity not exceeding 650kVA]: Loại khác — không thuộc 85042192 (Có công suất danh định trên 10 kVA và đầu điện áp cao từ 110 kV trở…); 85042193 (Có công suất danh định trên 10 kVA và đầu điện áp cao từ 66 kV trở …) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.85042199",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "85042211",
+   "dieuKien": "Phân nhóm 8504.22 [Electrical transformers; liquid dielectric, having a power handling capacity exceeding 650kVA but not exceeding 10,000kVA]: Đầu điện áp cao từ 66 kV trở lên (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'ĐẦU ĐIỆN ÁP CAO'): đầu nào có điện áp cao luôn được xem là 'đầu điện áp cao', bất kể là đầu vào hay đầu ra (không phân biệt biến thế tăng áp hay giảm áp)",
+   "loaiKhac": false,
+   "nguon": "sen.85042211",
+   "trich": "Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra."
+  },
+  {
+   "hs": "85042219",
+   "dieuKien": "Phân nhóm 8504.22 [Electrical transformers; liquid dielectric, having a power handling capacity exceeding 650kVA but not exceeding 10,000kVA]: Loại khác — không thuộc 85042211 (Đầu điện áp cao từ 66 kV trở lên) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'MÁY ỔN ÁP TỪNG NẤC (BIẾN ÁP TỰ NGẪU)'): gồm biến áp tự ngẫu loại ngâm dầu dùng điều chỉnh điện áp theo từng nấc (bể dầu kín, thiết bị xả áp, ống cách điện, chỉ thị mức dầu…)",
+   "loaiKhac": true,
+   "nguon": "sen.85042219",
+   "trich": "MÁY ỔN ÁP TỪNG NẤC (BIẾN ÁP TỰ NGẪU) … Đây là các biến áp tự ngẫu loại ngâm dầu được dùng để điều chỉnh điện áp theo từng nấc."
+  },
+  {
+   "hs": "85042292",
+   "dieuKien": "Phân nhóm 8504.22 [Electrical transformers; liquid dielectric, having a power handling capacity exceeding 650kVA but not exceeding 10,000kVA]: Đầu điện áp cao từ 110 kV trở lên (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'ĐẦU ĐIỆN ÁP CAO'): đầu nào có điện áp cao luôn được xem là 'đầu điện áp cao', bất kể là đầu vào hay đầu ra (không phân biệt biến thế tăng áp hay giảm áp)",
+   "loaiKhac": false,
+   "nguon": "sen.85042292",
+   "trich": "Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra."
+  },
+  {
+   "hs": "85042293",
+   "dieuKien": "Phân nhóm 8504.22 [Electrical transformers; liquid dielectric, having a power handling capacity exceeding 650kVA but not exceeding 10,000kVA]: Đầu điện áp cao từ 66 kV trở lên, nhưng dưới 110 kV (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'ĐẦU ĐIỆN ÁP CAO'): đầu nào có điện áp cao luôn được xem là 'đầu điện áp cao', bất kể là đầu vào hay đầu ra (không phân biệt biến thế tăng áp hay giảm áp)",
+   "loaiKhac": false,
+   "nguon": "sen.85042293",
+   "trich": "Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra."
+  },
+  {
+   "hs": "85042299",
+   "dieuKien": "Phân nhóm 8504.22 [Electrical transformers; liquid dielectric, having a power handling capacity exceeding 650kVA but not exceeding 10,000kVA]: Loại khác — không thuộc 85042292 (Đầu điện áp cao từ 110 kV trở lên); 85042293 (Đầu điện áp cao từ 66 kV trở lên, nhưng dưới 110 kV) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.85042299",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "85042310",
+   "dieuKien": "Phân nhóm 8504.23 [Electrical transformers; liquid dielectric, having a power handling capacity exceeding 10,000kVA]: Có công suất danh định không quá 15.000 kVA",
+   "loaiKhac": false,
+   "nguon": "tax.85042310",
+   "trich": "Có công suất danh định không quá 15.000 kVA"
+  },
+  {
+   "hs": "85042321",
+   "dieuKien": "Phân nhóm 8504.23 [Electrical transformers; liquid dielectric, having a power handling capacity exceeding 10,000kVA]: Không quá 20.000 kVA (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.85042321",
+   "trich": "Không quá 20.000 kVA"
+  },
+  {
+   "hs": "85042322",
+   "dieuKien": "Phân nhóm 8504.23 [Electrical transformers; liquid dielectric, having a power handling capacity exceeding 10,000kVA]: Trên 20.000 kVA nhưng không quá 30.000 kVA (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.85042322",
+   "trich": "Trên 20.000 kVA nhưng không quá 30.000 kVA"
+  },
+  {
+   "hs": "85042329",
+   "dieuKien": "Phân nhóm 8504.23 [Electrical transformers; liquid dielectric, having a power handling capacity exceeding 10,000kVA]: Loại khác — không thuộc 85042321 (Không quá 20.000 kVA); 85042322 (Trên 20.000 kVA nhưng không quá 30.000 kVA) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.85042329",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "85043111",
+   "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Điện áp từ 110 kV trở lên (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.85043111",
+   "trich": "Điện áp từ 110 kV trở lên"
+  },
+  {
+   "hs": "85043112",
+   "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Điện áp từ 66 kV trở lên, nhưng dưới 110 kV (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.85043112",
+   "trich": "Điện áp từ 66 kV trở lên, nhưng dưới 110 kV"
+  },
+  {
+   "hs": "85043113",
+   "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Điện áp từ 1 kV trở lên, nhưng dưới 66 kV (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.85043113",
+   "trich": "Điện áp từ 1 kV trở lên, nhưng dưới 66 kV"
+  },
+  {
+   "hs": "85043119",
+   "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Loại khác — không thuộc 85043111 (Điện áp từ 110 kV trở lên); 85043112 (Điện áp từ 66 kV trở lên, nhưng dưới 110 kV); 85043113 (Điện áp từ 1 kV trở lên, nhưng dưới 66 kV) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.85043119",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "85043121",
+   "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN: máy biến dòng (biến điện đo lường) dạng vòng, dùng đo dòng/rơle bảo vệ, cho đường dây điện áp không quá 220 kV",
+   "loaiKhac": false,
+   "nguon": "sen.85043121",
+   "trich": "Máy biến dòng cũng được sử dụng phổ biến việc đo và trong các rơle bảo vệ trong công nghiệp điện. Một ví dụ điển hình của máy biến dòng đo dải đơn điện áp thấp là máy biến dòng dạng vòng."
+  },
+  {
+   "hs": "85043122",
+   "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Loại khác — không thuộc 85043121 (Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.85043122",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "85043123",
+   "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Điện áp từ 66 kV trở lên, nhưng dưới 110 kV (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.85043123",
+   "trich": "Điện áp từ 66 kV trở lên, nhưng dưới 110 kV"
+  },
+  {
+   "hs": "85043124",
+   "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Điện áp từ 1 kV trở lên, nhưng dưới 66 kV (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.85043124",
+   "trich": "Điện áp từ 1 kV trở lên, nhưng dưới 66 kV"
+  },
+  {
+   "hs": "85043129",
+   "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Loại khác — không thuộc 85043123 (Điện áp từ 66 kV trở lên, nhưng dưới 110 kV); 85043124 (Điện áp từ 1 kV trở lên, nhưng dưới 66 kV); nhánh 85043121/85043122 (dòng cha của nhánh này không có trong nguồn) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.85043129",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "85043130",
+   "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Máy biến áp quét về (biến áp tần số quét ngược) — SEN: biến áp quét về (biến áp đầu ra ngang/quét ngang) dùng trong thiết bị thu truyền hình",
+   "loaiKhac": false,
+   "nguon": "sen.85043130",
+   "trich": "Biến áp quét về được sử dụng trong thiết bị thu truyền hình để cung cấp điện áp hồi lưu theo chiều ngang, mức điện áp cao hơn cho điện cực dương thứ hai của đèn hình, và điện áp mảnh cho chỉnh lưu cao áp."
+  },
+  {
+   "hs": "85043140",
+   "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Máy biến điện trung tần",
+   "loaiKhac": false,
+   "nguon": "tax.85043140",
+   "trich": "Máy biến điện trung tần"
+  },
+  {
+   "hs": "85043191",
+   "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.85043191",
+   "trich": "Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự"
+  },
+  {
+   "hs": "85043192",
+   "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Biến áp thích ứng khác (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'MÁY BIẾN ÁP THÍCH ỨNG'): biến áp dùng để phối hợp trở kháng của mạch điện (vd biến áp cân bằng 300 Ω/75 Ω trong ti vi)",
+   "loaiKhac": false,
+   "nguon": "sen.85043192",
+   "trich": "MÁY BIẾN ÁP THÍCH ỨNG … Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện."
+  },
+  {
+   "hs": "85043193",
+   "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Máy biến áp tăng/giảm từng nấc (Step up/down transformers); máy điều chỉnh điện áp trượt (slide regulators) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN: biến áp có đầu vào không ổn định trong dải điện áp nhất định, đầu ra là các điện áp nhất định điều chỉnh BẰNG TAY (máy điều chỉnh điện áp tự động → 90.32)",
+   "loaiKhac": false,
+   "nguon": "sen.85043193",
+   "trich": "Máy biến áp tăng/giảm từng nấc và máy điều chỉnh điện áp trượt là các máy biến áp có đầu vào không ổn định trong các dải điện áp nhất định và có đầu ra là các điện áp nhất định mà có thể được điều chỉnh bằng tay."
+  },
+  {
+   "hs": "85043199",
+   "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Loại khác — không thuộc 85043191 (Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tươn…); 85043192 (Biến áp thích ứng khác); 85043193 (Máy biến áp tăng/giảm từng nấc (Step up/down transformers); máy điề…) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.85043199",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "85043211",
+   "dieuKien": "Phân nhóm 8504.32 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 1kVA but not exceeding 16kVA]: Biến áp thích ứng (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'MÁY BIẾN ÁP THÍCH ỨNG'): biến áp dùng để phối hợp trở kháng của mạch điện (vd biến áp cân bằng 300 Ω/75 Ω trong ti vi)",
+   "loaiKhac": false,
+   "nguon": "sen.85043211",
+   "trich": "MÁY BIẾN ÁP THÍCH ỨNG … Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện."
+  },
+  {
+   "hs": "85043219",
+   "dieuKien": "Phân nhóm 8504.32 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 1kVA but not exceeding 16kVA]: Loại khác — không thuộc 85043211 (Biến áp thích ứng) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.85043219",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "85043220",
+   "dieuKien": "Phân nhóm 8504.32 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 1kVA but not exceeding 16kVA]: Loại khác, sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự",
+   "loaiKhac": false,
+   "nguon": "tax.85043220",
+   "trich": "Loại khác, sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự"
+  },
+  {
+   "hs": "85043230",
+   "dieuKien": "Phân nhóm 8504.32 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 1kVA but not exceeding 16kVA]: Loại khác, tần số tối thiểu 3 MHz",
+   "loaiKhac": false,
+   "nguon": "tax.85043230",
+   "trich": "Loại khác, tần số tối thiểu 3 MHz"
+  },
+  {
+   "hs": "85043241",
+   "dieuKien": "Phân nhóm 8504.32 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 1kVA but not exceeding 16kVA]: Biến áp thích ứng (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'MÁY BIẾN ÁP THÍCH ỨNG'): biến áp dùng để phối hợp trở kháng của mạch điện (vd biến áp cân bằng 300 Ω/75 Ω trong ti vi)",
+   "loaiKhac": false,
+   "nguon": "sen.85043241",
+   "trich": "MÁY BIẾN ÁP THÍCH ỨNG … Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện."
+  },
+  {
+   "hs": "85043249",
+   "dieuKien": "Phân nhóm 8504.32 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 1kVA but not exceeding 16kVA]: Loại khác — không thuộc 85043241 (Biến áp thích ứng) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.85043249",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "85043251",
+   "dieuKien": "Phân nhóm 8504.32 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 1kVA but not exceeding 16kVA]: Biến áp thích ứng (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'MÁY BIẾN ÁP THÍCH ỨNG'): biến áp dùng để phối hợp trở kháng của mạch điện (vd biến áp cân bằng 300 Ω/75 Ω trong ti vi)",
+   "loaiKhac": false,
+   "nguon": "sen.85043251",
+   "trich": "MÁY BIẾN ÁP THÍCH ỨNG … Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện."
+  },
+  {
+   "hs": "85043259",
+   "dieuKien": "Phân nhóm 8504.32 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 1kVA but not exceeding 16kVA]: Loại khác — không thuộc 85043251 (Biến áp thích ứng) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.85043259",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "85043311",
+   "dieuKien": "Phân nhóm 8504.33 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 16kVA but not exceeding 500kVA]: Biến áp thích ứng (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'MÁY BIẾN ÁP THÍCH ỨNG'): biến áp dùng để phối hợp trở kháng của mạch điện (vd biến áp cân bằng 300 Ω/75 Ω trong ti vi)",
+   "loaiKhac": false,
+   "nguon": "sen.85043311",
+   "trich": "MÁY BIẾN ÁP THÍCH ỨNG … Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện."
+  },
+  {
+   "hs": "85043319",
+   "dieuKien": "Phân nhóm 8504.33 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 16kVA but not exceeding 500kVA]: Loại khác — không thuộc 85043311 (Biến áp thích ứng) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'ĐẦU ĐIỆN ÁP CAO'): đầu nào có điện áp cao luôn được xem là 'đầu điện áp cao', bất kể là đầu vào hay đầu ra (không phân biệt biến thế tăng áp hay giảm áp)",
+   "loaiKhac": true,
+   "nguon": "sen.85043319",
+   "trich": "Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra."
+  },
+  {
+   "hs": "85043391",
+   "dieuKien": "Phân nhóm 8504.33 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 16kVA but not exceeding 500kVA]: Biến áp thích ứng (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'MÁY BIẾN ÁP THÍCH ỨNG'): biến áp dùng để phối hợp trở kháng của mạch điện (vd biến áp cân bằng 300 Ω/75 Ω trong ti vi)",
+   "loaiKhac": false,
+   "nguon": "sen.85043391",
+   "trich": "MÁY BIẾN ÁP THÍCH ỨNG … Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện."
+  },
+  {
+   "hs": "85043399",
+   "dieuKien": "Phân nhóm 8504.33 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 16kVA but not exceeding 500kVA]: Loại khác — không thuộc 85043391 (Biến áp thích ứng) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.85043399",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "85043411",
+   "dieuKien": "Phân nhóm 8504.34 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 500kVA]: Biến áp thích ứng (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'MÁY BIẾN ÁP THÍCH ỨNG'): biến áp dùng để phối hợp trở kháng của mạch điện (vd biến áp cân bằng 300 Ω/75 Ω trong ti vi)",
+   "loaiKhac": false,
+   "nguon": "sen.85043411",
+   "trich": "MÁY BIẾN ÁP THÍCH ỨNG … Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện."
+  },
+  {
+   "hs": "85043412",
+   "dieuKien": "Phân nhóm 8504.34 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 500kVA]: Máy biến áp loại khô phòng nổ (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'ĐẦU ĐIỆN ÁP CAO'): đầu nào có điện áp cao luôn được xem là 'đầu điện áp cao', bất kể là đầu vào hay đầu ra (không phân biệt biến thế tăng áp hay giảm áp)",
+   "loaiKhac": false,
+   "nguon": "sen.85043412",
+   "trich": "Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra."
+  },
+  {
+   "hs": "85043413",
+   "dieuKien": "Phân nhóm 8504.34 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 500kVA]: Loại khác — không thuộc 85043411 (Biến áp thích ứng); 85043412 (Máy biến áp loại khô phòng nổ) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'ĐẦU ĐIỆN ÁP CAO'): đầu nào có điện áp cao luôn được xem là 'đầu điện áp cao', bất kể là đầu vào hay đầu ra (không phân biệt biến thế tăng áp hay giảm áp)",
+   "loaiKhac": true,
+   "nguon": "sen.85043413",
+   "trich": "Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra."
+  },
+  {
+   "hs": "85043414",
+   "dieuKien": "Phân nhóm 8504.34 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 500kVA]: Biến áp thích ứng (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'MÁY BIẾN ÁP THÍCH ỨNG'): biến áp dùng để phối hợp trở kháng của mạch điện (vd biến áp cân bằng 300 Ω/75 Ω trong ti vi)",
+   "loaiKhac": false,
+   "nguon": "sen.85043414",
+   "trich": "MÁY BIẾN ÁP THÍCH ỨNG … Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện."
+  },
+  {
+   "hs": "85043415",
+   "dieuKien": "Phân nhóm 8504.34 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 500kVA]: Máy biến áp loại khô phòng nổ (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.85043415",
+   "trich": "Máy biến áp loại khô phòng nổ"
+  },
+  {
+   "hs": "85043419",
+   "dieuKien": "Phân nhóm 8504.34 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 500kVA]: Loại khác — không thuộc 85043414 (Biến áp thích ứng); 85043415 (Máy biến áp loại khô phòng nổ) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.85043419",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "85043422",
+   "dieuKien": "Phân nhóm 8504.34 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 500kVA]: Biến áp thích ứng (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'MÁY BIẾN ÁP THÍCH ỨNG'): biến áp dùng để phối hợp trở kháng của mạch điện (vd biến áp cân bằng 300 Ω/75 Ω trong ti vi)",
+   "loaiKhac": false,
+   "nguon": "sen.85043422",
+   "trich": "MÁY BIẾN ÁP THÍCH ỨNG … Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện."
+  },
+  {
+   "hs": "85043423",
+   "dieuKien": "Phân nhóm 8504.34 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 500kVA]: Máy biến áp loại khô phòng nổ (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'ĐẦU ĐIỆN ÁP CAO'): đầu nào có điện áp cao luôn được xem là 'đầu điện áp cao', bất kể là đầu vào hay đầu ra (không phân biệt biến thế tăng áp hay giảm áp)",
+   "loaiKhac": false,
+   "nguon": "sen.85043423",
+   "trich": "Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra."
+  },
+  {
+   "hs": "85043424",
+   "dieuKien": "Phân nhóm 8504.34 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 500kVA]: Loại khác — không thuộc 85043422 (Biến áp thích ứng); 85043423 (Máy biến áp loại khô phòng nổ) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'ĐẦU ĐIỆN ÁP CAO'): đầu nào có điện áp cao luôn được xem là 'đầu điện áp cao', bất kể là đầu vào hay đầu ra (không phân biệt biến thế tăng áp hay giảm áp)",
+   "loaiKhac": true,
+   "nguon": "sen.85043424",
+   "trich": "Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra."
+  },
+  {
+   "hs": "85043425",
+   "dieuKien": "Phân nhóm 8504.34 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 500kVA]: Biến áp thích ứng (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'MÁY BIẾN ÁP THÍCH ỨNG'): biến áp dùng để phối hợp trở kháng của mạch điện (vd biến áp cân bằng 300 Ω/75 Ω trong ti vi)",
+   "loaiKhac": false,
+   "nguon": "sen.85043425",
+   "trich": "MÁY BIẾN ÁP THÍCH ỨNG … Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện."
+  },
+  {
+   "hs": "85043426",
+   "dieuKien": "Phân nhóm 8504.34 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 500kVA]: Máy biến áp loại khô phòng nổ (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.85043426",
+   "trich": "Máy biến áp loại khô phòng nổ"
+  },
+  {
+   "hs": "85043429",
+   "dieuKien": "Phân nhóm 8504.34 [Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 500kVA]: Loại khác — không thuộc 85043425 (Biến áp thích ứng); 85043426 (Máy biến áp loại khô phòng nổ) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.85043429",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "85044011",
+   "dieuKien": "Phân nhóm 8504.40 [Electrical static converters]: Bộ nguồn cấp điện liên tục (UPS) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN: UPS là bộ biến đổi điện gồm biến điện, ắc quy chì-axit gắn kín với đầu ra hoặc tấm mạch in kèm điện trở, tụ, rơ le; bảo vệ nguồn, chống sốc điện, lọc nhiễu, nạp ắc quy tức thời",
+   "loaiKhac": false,
+   "nguon": "sen.85044011",
+   "trich": "Bộ nguồn cấp điện liên tục là bộ biến đổi điện bao gồm các biến điện, các ắc quy chì-axit được gắn kín với đầu ra, hoặc các tấm mạch in lắp cùng với các điện trở, tụ điện, rơ le,..."
+  },
+  {
+   "hs": "85044019",
+   "dieuKien": "Phân nhóm 8504.40 [Electrical static converters]: Loại khác — không thuộc 85044011 (Bộ nguồn cấp điện liên tục (UPS)) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.85044019",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "85044020",
+   "dieuKien": "Phân nhóm 8504.40 [Electrical static converters]: Máy nạp ắc qui, pin có công suất danh định trên 100 kVA",
+   "loaiKhac": false,
+   "nguon": "tax.85044020",
+   "trich": "Máy nạp ắc qui, pin có công suất danh định trên 100 kVA"
+  },
+  {
+   "hs": "85044030",
+   "dieuKien": "Phân nhóm 8504.40 [Electrical static converters]: Bộ chỉnh lưu khác",
+   "loaiKhac": false,
+   "nguon": "tax.85044030",
+   "trich": "Bộ chỉnh lưu khác"
+  },
+  {
+   "hs": "85044040",
+   "dieuKien": "Phân nhóm 8504.40 [Electrical static converters]: Bộ nghịch lưu",
+   "loaiKhac": false,
+   "nguon": "tax.85044040",
+   "trich": "Bộ nghịch lưu"
+  },
+  {
+   "hs": "85044090",
+   "dieuKien": "Phân nhóm 8504.40 [Electrical static converters]: Loại khác — không thuộc 85044020 (Máy nạp ắc qui, pin có công suất danh định trên 100 kVA); 85044030 (Bộ chỉnh lưu khác); 85044040 (Bộ nghịch lưu); nhánh 85044011/85044019 (dòng cha của nhánh này không có trong nguồn)",
+   "loaiKhac": true,
+   "nguon": "tax.85044090",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "85045010",
+   "dieuKien": "Phân nhóm 8504.50 [Electrical inductors; n.e.c. in heading no. 8504]: Cuộn cảm dùng cho bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông",
+   "loaiKhac": false,
+   "nguon": "tax.85045010",
+   "trich": "Cuộn cảm dùng cho bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông"
+  },
+  {
+   "hs": "85045020",
+   "dieuKien": "Phân nhóm 8504.50 [Electrical inductors; n.e.c. in heading no. 8504]: Cuộn cảm cố định kiểu con chip — SEN: cuộn cảm cố định dạng chip nhỏ, dùng cho VTR, tivi, điện thoại di động…, mức điện thế và dòng điện thấp",
+   "loaiKhac": false,
+   "nguon": "sen.85045020",
+   "trich": "Các cuộn cảm cố định kiểu con chíp có dạng những con chip nhỏ sử dụng cho đầu ghi băng video (VTRs), tivi, điện thoại di động... dùng cho các mức điện thế và cường độ dòng điện thấp."
+  },
+  {
+   "hs": "85045093",
+   "dieuKien": "Phân nhóm 8504.50 [Electrical inductors; n.e.c. in heading no. 8504]: Có công suất danh định không quá 2.500 kVA (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.85045093",
+   "trich": "Có công suất danh định không quá 2.500 kVA"
+  },
+  {
+   "hs": "85045094",
+   "dieuKien": "Phân nhóm 8504.50 [Electrical inductors; n.e.c. in heading no. 8504]: Có công suất danh định trên 2.500 kVA nhưng không quá 10.000 kVA (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.85045094",
+   "trich": "Có công suất danh định trên 2.500 kVA nhưng không quá 10.000 kVA"
+  },
+  {
+   "hs": "85045095",
+   "dieuKien": "Phân nhóm 8504.50 [Electrical inductors; n.e.c. in heading no. 8504]: Có công suất danh định trên 10.000 kVA (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.85045095",
+   "trich": "Có công suất danh định trên 10.000 kVA"
+  },
+  {
+   "hs": "85049010",
+   "dieuKien": "Phân nhóm 8504.90 [Electrical transformers, static converters and inductors; parts thereof]: Của hàng hóa thuộc phân nhóm 8504.10",
+   "loaiKhac": false,
+   "nguon": "tax.85049010",
+   "trich": "Của hàng hóa thuộc phân nhóm 8504.10"
+  },
+  {
+   "hs": "85049020",
+   "dieuKien": "Phân nhóm 8504.90 [Electrical transformers, static converters and inductors; parts thereof]: Mạch in đã lắp ráp dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10",
+   "loaiKhac": false,
+   "nguon": "tax.85049020",
+   "trich": "Mạch in đã lắp ráp dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10"
+  },
+  {
+   "hs": "85049031",
+   "dieuKien": "Phân nhóm 8504.90 [Electrical transformers, static converters and inductors; parts thereof]: Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.85049031",
+   "trich": "Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn"
+  },
+  {
+   "hs": "85049039",
+   "dieuKien": "Phân nhóm 8504.90 [Electrical transformers, static converters and inductors; parts thereof]: Loại khác — không thuộc 85049031 (Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳ…) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.85049039",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "85049041",
+   "dieuKien": "Phân nhóm 8504.90 [Electrical transformers, static converters and inductors; parts thereof]: Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": false,
+   "nguon": "tax.85049041",
+   "trich": "Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn"
+  },
+  {
+   "hs": "85049049",
+   "dieuKien": "Phân nhóm 8504.90 [Electrical transformers, static converters and inductors; parts thereof]: Loại khác — không thuộc 85049041 (Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳ…) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+   "loaiKhac": true,
+   "nguon": "tax.85049049",
+   "trich": "Loại khác"
+  },
+  {
+   "hs": "85049090",
+   "dieuKien": "Phân nhóm 8504.90 [Electrical transformers, static converters and inductors; parts thereof]: Loại khác — không thuộc 85049010 (Của hàng hóa thuộc phân nhóm 8504.10); 85049020 (Mạch in đã lắp ráp dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 85…); nhánh 85049031/85049039/85049041/85049049 (dòng cha của nhánh này không có trong nguồn)",
+   "loaiKhac": true,
+   "nguon": "tax.85049090",
+   "trich": "Loại khác"
+  }
+ ],
+ "boPhan": {
+  "quyTac": "Quy tắc chung phân loại bộ phận (Chú giải chi tiết tổng quát Phần XVI)",
+  "tomTat": "Bộ phận của hàng hóa nhóm 85.04 phân loại tại đây (vd vỏ bình kim loại của bộ chỉnh lưu hồ quang hơi thủy ngân); nhưng linh kiện điện đã có nhóm riêng thì theo nhóm đó: chuyển mạch 85.36, van/ống chỉnh lưu và đèn thyratron 85.40, đi ốt/transistor/thyristor 85.41, sản phẩm 85.42.",
+  "nguon": "nhom8504.nhom",
+  "trich": "BỘ PHẬN Theo quy tắc chung phân loại các bộ phận (xem chú giải chi tiết tổng quát phần XVI), bộ phận của hàng hóa thuộc nhóm này cũng được phân loại ở đây. Trường hợp điển hình là trường hợp vỏ bình bằng kim loại của bộ chỉnh lưu hồ quang hơi thủy ngân có hay không có bơm luôn được phân loại như bộ phận."
+ },
+ "dungTuNguon": [
+  "ch85.chuong",
+  "nhom8504.nhom",
+  "sen.85042111",
+  "sen.85042119",
+  "sen.85042192",
+  "sen.85042193",
+  "sen.85042211",
+  "sen.85042219",
+  "sen.85042292",
+  "sen.85042293",
+  "sen.85043121",
+  "sen.85043130",
+  "sen.85043192",
+  "sen.85043193",
+  "sen.85043211",
+  "sen.85043241",
+  "sen.85043251",
+  "sen.85043311",
+  "sen.85043319",
+  "sen.85043391",
+  "sen.85043411",
+  "sen.85043412",
+  "sen.85043413",
+  "sen.85043414",
+  "sen.85043422",
+  "sen.85043423",
+  "sen.85043424",
+  "sen.85043425",
+  "sen.85044011",
+  "sen.85045020",
+  "tax.85041000",
+  "tax.85042199",
+  "tax.85042299",
+  "tax.85042310",
+  "tax.85042321",
+  "tax.85042322",
+  "tax.85042329",
+  "tax.85043111",
+  "tax.85043112",
+  "tax.85043113",
+  "tax.85043119",
+  "tax.85043122",
+  "tax.85043123",
+  "tax.85043124",
+  "tax.85043129",
+  "tax.85043140",
+  "tax.85043191",
+  "tax.85043199",
+  "tax.85043219",
+  "tax.85043220",
+  "tax.85043230",
+  "tax.85043249",
+  "tax.85043259",
+  "tax.85043399",
+  "tax.85043415",
+  "tax.85043419",
+  "tax.85043426",
+  "tax.85043429",
+  "tax.85044019",
+  "tax.85044020",
+  "tax.85044030",
+  "tax.85044040",
+  "tax.85044090",
+  "tax.85045010",
+  "tax.85045093",
+  "tax.85045094",
+  "tax.85045095",
+  "tax.85049010",
+  "tax.85049020",
+  "tax.85049031",
+  "tax.85049039",
+  "tax.85049041",
+  "tax.85049049",
+  "tax.85049090"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "model": null,
+  "luc": "2026-10-07T09:08:08.713Z",
+  "ms": 12
+ },
+ "kiemTra": {
+  "tong": 97,
+  "dat": 97,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
