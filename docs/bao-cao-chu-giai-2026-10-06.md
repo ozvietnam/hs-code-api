@@ -40,3 +40,35 @@ ERP nên hiển thị cảnh báo này. Gặp `notesCoverage.complete = false` t
 3. Đối chiếu sửa đổi HS 2022 cho các nhóm có thay đổi (ví dụ 8485, 8524, 8549).
 4. Sau khi nhập lại, `scripts/test-notes-coverage.mjs` sẽ cho thấy số nhóm thiếu giảm. Nên thêm ngưỡng tối thiểu vào test
    để dữ liệu không bị thụt lùi.
+
+## 4. Cập nhật 07/10/2026: đã nhập lại toàn văn
+
+Nguồn: Google Drive của CEO, thư mục "chú giải Hs code 2017" (5 tập PDF, 1.823 trang). Công cụ:
+`scripts/import-chu-giai-pdf.py` (PDF không commit; tải về rồi chạy, xem đầu tệp).
+
+| | Trước (06/10) | Sau (07/10) |
+|---|---|---|
+| Nhóm có toàn văn (`nhom_day_du`) | 0 | **1.194** |
+| Nhóm còn thiếu (ngoài chương 98) | 842/1.269 | **32/1.228** |
+| Chương trống | 52, 81 | không còn |
+
+Cách kiểm chéo từng nhóm trước khi ghi đè:
+
+- **1.113 nhóm**: phần đầu, giữa và cuối của bản cũ đều có trong bản PDF của chính nhóm đó, nên ghi đè bằng toàn văn.
+- **76 nhóm**: bản cũ bị gán nhầm (là chữ của nhóm hoặc chương khác), nên thay bằng bản PDF đúng nhóm. Ví dụ:
+  - 2530 cũ là chú giải 32.06; 3702 cũ là 73.02; 8480 cũ là 84.82; 0711 cũ là 20.05;
+  - 8484 cũ là chú giải máy in 3D (84.85 HS 2022);
+  - 2716 cũ là chú giải Phần VI;
+  - nhóm cuối mỗi chương cũ kéo luôn chú giải chương sau.
+- **5 nhóm trống** được điền mới: 2931, 6702, 8481, 8482, 8607.
+- **10 nhóm giữ bản cũ**: 1509, 1510, 1605, 2817, 2942, 3822, 7019, 8462, 9508, 9705. Bản cũ ở đây là câu chữ khác hẳn PDF 2017, khớp với các nhóm WCO sửa đổi năm 2022. Đè bản 2017 lên sẽ là thụt lùi. Các nhóm này vẫn bị cắt ở 2.000 ký tự và vẫn được báo thiếu.
+
+Còn thiếu, và câu trả lời vẫn tự báo thiếu:
+
+- **71.06–71.18** (kim loại quý): tập 3 của PDF dừng ở 71.05.
+- **6208, 8536, 8706**: PDF không có dòng mở nhóm.
+- **Nhóm mới của HS 2022** (2404, 3827, 8485, 8524, 8549, 8806, 8807): bản 2017 không có.
+- **Nguồn vẫn là HS 2017.** Cần bản Chú giải chi tiết HS 2022 tiếng Việt để đối chiếu các nhóm sửa đổi.
+- Thư mục Drive còn có "Chú giải bổ sung SEN 2022" (AHTN, CV 3866/TCHQ-TXNK). Bản này dùng cho phân nhóm 8 số ASEAN, sẽ nhập riêng vào trường `sen`.
+
+`scripts/test-notes-coverage.mjs` đặt ngưỡng tối thiểu 1.150 nhóm có toàn văn, để dữ liệu không thụt lùi.
