@@ -10,6 +10,9 @@
  *   node scripts/build-so-tay.mjs --bench='/tmp/egcb/out/v5-*.json'   # nhóm của truth/top/top3 trong kết quả bench
  *   node scripts/build-so-tay.mjs --all                        # đủ 1.269 nhóm (chạy đêm)
  *   thêm: --limit=N  --concurrency=2  --force (dựng lại cả nhóm đã có)  --dry (in prompt, không gọi AI)
+ *   --xuat-nguon=<thư mục>: ghi prompt từng nhóm (<nhom>.txt) + _he-thong.txt, không gọi AI — để một AI
+ *     khác (vd phiên Claude, người) soạn; --tu-tep=<thư mục>: nạp JSON <nhom>.json đã soạn thay vì gọi AI,
+ *     vẫn qua đủ máy kiểm như đường AI.
  * Nghiệm thu bước 1: ≥ 95 % mục AI đề xuất kiểm được nguồn (in ở cuối + trong _bao-cao.json).
  */
 import fs from 'node:fs';
@@ -81,12 +84,20 @@ function pickHeadings() {
 async function buildOne(h4, callLLMJson) {
   const sources = sourcesFor(h4);
   const { user, cut } = promptFor(h4, sources);
+  if (typeof argv['xuat-nguon'] === 'string') {
+    fs.mkdirSync(argv['xuat-nguon'], { recursive: true });
+    fs.writeFileSync(path.join(argv['xuat-nguon'], '_he-thong.txt'), SYSTEM);
+    fs.writeFileSync(path.join(argv['xuat-nguon'], `${h4}.txt`), user);
+    return null;
+  }
   if (argv.dry) {
     console.log(`\n===== ${h4} (${user.length} ký tự prompt${cut.length ? `; cắt: ${cut.join(', ')}` : ''})\n${user.slice(0, 1500)}…`);
     return null;
   }
   const t = Date.now();
-  const { json, provider, model } = await callLLMJson(SYSTEM, user, { maxTokens: 8000, timeoutMs: 240000, temperature: 0.1 });
+  const { json, provider, model } = typeof argv['tu-tep'] === 'string'
+    ? { json: JSON.parse(fs.readFileSync(path.join(argv['tu-tep'], `${h4}.json`), 'utf8')), provider: String(argv['nguoi-soan'] || 'tu-tep'), model: null }
+    : await callLLMJson(SYSTEM, user, { maxTokens: 8000, timeoutMs: 240000, temperature: 0.1 });
   const { soTay, loai, tong, dat } = verifySoTay(json, h4, sources);
   const decision = fs.existsSync(path.join(ROOT, 'data', 'decision-tables', `${h4}.json`));
   fs.writeFileSync(path.join(OUT, `${h4}.json`), JSON.stringify({
@@ -102,7 +113,7 @@ async function main() {
   const list = pickHeadings();
   console.error(`sổ tay: ${list.length} nhóm cần dựng${argv.dry ? ' (chạy khô)' : ''}`);
   if (!list.length) return;
-  fs.mkdirSync(OUT, { recursive: true });
+  if (!argv['xuat-nguon']) fs.mkdirSync(OUT, { recursive: true });
   const { callLLMJson } = require('../lib/llm-tier.js');
   const reportPath = path.join(OUT, '_bao-cao.json');
   const report = fs.existsSync(reportPath) ? JSON.parse(fs.readFileSync(reportPath, 'utf8')) : { nhom: {} };
@@ -120,10 +131,10 @@ async function main() {
       }
       done += 1;
       process.stderr.write(`\r${done}/${list.length} ${h4}   `);
-      if (!argv.dry) fs.writeFileSync(reportPath, JSON.stringify(summarize(report), null, 1));
+      if (!argv.dry && !argv['xuat-nguon']) fs.writeFileSync(reportPath, JSON.stringify(summarize(report), null, 1));
     }
   }));
-  if (argv.dry) return;
+  if (argv.dry || argv['xuat-nguon']) return;
   const s = summarize(report);
   fs.writeFileSync(reportPath, JSON.stringify(s, null, 1));
   console.error(`\nmục đạt ${s.tongDat}/${s.tongMuc} (${s.tyLeDat}%) — nghiệm thu bước 1 cần ≥ 95%; nhóm lỗi: ${s.nhomLoi.length}`);
