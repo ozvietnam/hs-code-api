@@ -122,3 +122,11 @@ Phần AI độc lập trong ERP (`hs-suggest.ts`) là thiết kế có chủ đ
 Đo thử 2 món thật (07/10): dao hái cau → 8201.90.00 (67–88 s, 2 lượt AI); máy khuếch tán tinh dầu → 8509.80.90 (146 s, cờ tranh chấp).
 M2.7 làm "bộ não" không đạt: vòng 1 đoán 9507 (cần câu), vòng 2 vượt 150 s; M3 đúng cả hai và nhanh gấp đôi.
 Số đo bộ sạch ghi ở PR tương ứng. Việc mở: E-6 made-in-china đã có bản đầu; câu hỏi CHƯA RÕ chỉ lấy điều kiện khẳng định (phủ định là loại trừ AI đã cân nhắc).
+
+### Trạng thái 07/10/2026 chiều (đã lên prod)
+- **Bộ não = Gemini 3.8-flash** (#164): `LOOP_PROVIDER=gemini`, `LOOP_GEMINI_MODEL=gemini-3.8-flash`, key trả phí trong `hs.env`; 503/429 thử lại 5/15/30 s rồi rơi về MiniMax-M3 (M3 tắt thinking nếu vượt token). Đo sạch 80 tờ khai: 8 số 57,5–58,8 (M3 51–57,5), top3 76; Taobao 33: 4 số 100; 35–45 s/món. Biến thiên giữa hai lần chạy ±5–7 điểm → so sánh mẫu phải chạy ≥2 lần.
+- **Cổng trích dẫn** `verifyQuote` (lib/classify.js): so khớp cả câu sau khi bỏ dấu câu/khoảng trắng (NFC, chỉ giữ chữ-số) trước khi tách mảnh — trước đó câu trích nguyên văn có "/()*" bị bác → cờ giả 32–56 %.
+- **Cờ tiền lệ Oz**: tiền lệ cov ≥ 75, ≥ 3 tờ, ≥ 60 % trọng số mà khác nhóm 4 số với mã chọn → `review.needed`.
+- **Vòng phản hồi từ ERP** (#165): `POST /api/feedback` nhận thêm `source`, `input{titleZh,specsZh,nameVi,facts}`, `systemTop3`, `agrees`, `chosenBy`. ERP (Gitea #305) gửi mỗi khi nhân viên chốt mã; mã chốt đi theo món sang đơn hàng (`OrderItem.hsCode`). Việc mở: đọc lại các bản ghi này thành tiền lệ Oz có lý do (hiện `learned-corrections` chưa dùng trường `input`).
+- Gọi tay để thử: `Authorization: Bearer $HS_API_TOKEN`, body `{tenHang, nameZh, specs}` (ERP gửi đúng thế; thiếu `tenHang` → 400).
+- Việc kế của repo: bước 8 (sổ tay chú giải) — xem `08-so-tay-chu-giai.md`.
