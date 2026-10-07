@@ -17,4 +17,6 @@ EXPOSE 3000
 VOLUME ["/data"]
 HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
   CMD wget -qO- http://127.0.0.1:3000/api/health >/dev/null || exit 1
+# Động cơ tra mã mặc định trên máy chủ: hai vòng + chốt chặn (lib/engine-loop.js). Đặt =legacy để quay về luồng cũ.
+ENV HS_CLASSIFY_ENGINE=loop
 CMD ["node", "server.js"]
