@@ -1,0 +1,139 @@
+{
+ "nhom": "8534",
+ "phamVi": {
+  "text": "Mạch in: mạch tạo trên tấm cách điện bằng quy trình in (rập nổi, mạ, khắc axit…) gồm phần tử dẫn điện, tiếp điểm hoặc thành phần thụ động in; kể cả mạch in phim mỏng/dày chỉ có phần tử thụ động. Không gồm mạch đã gắn linh kiện.",
+  "nguon": "nhom8534.nhom",
+  "trich": "nhóm này bao gồm tất cả các mạch được tạo ra trên một tấm cách điện, bằng một quy trình in nào đó (in thông thường hoặc rập nổi, mạ, khắc axít...), các phần tử dẫn điện (dây dẫn), các tiếp điểm hoặc các thành phần c dùng cho mạch in khác"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "tao_tren_tam_cach_dien_bang_quy_trinh_in_mach",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch85.chuong",
+   "trich": "Theo mục đích của nhóm 85.34 “mạch in” là mạch được tạo ra trên một tấm cách điện bằng một quy trình in mạch nào đó (ví dụ, rập nổi, mạ, khắc axit) hoặc bằng kỹ thuật tạo “mạch điện màng”"
+  },
+  {
+   "fact": "co_phan_tu_chu_dong",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8534.nhom",
+   "trich": "trừ các phần tử có thể phát (tạo ra), chỉnh lưu, dò tìm, điều biến hoặc khuếch đại tín hiệu điện, ví dụ như điốt, triốt hoặc các phần tử “chủ động” khác."
+  },
+  {
+   "fact": "da_gan_hoac_noi_linh_kien_dien_hoac_phan_tu_co_khi",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "ngoaiTru": [
+    "phần tử kết nối không qua quá trình in (vẫn được gắn)"
+   ],
+   "nguon": "nhom8534.nhom",
+   "trich": "Các mạch mà trên đó những phần tử cơ khí hoặc những linh kiện điện đã được gắn hoặc được nối không được xem như những mạch in theo đúng nghĩa của nhóm này. Nói chung, chúng được phân loại theo Chú giải 2 phần XVI hoặc chú giải 2 của chương 90, tùy trường hợp cụ thể."
+  },
+  {
+   "fact": "duoc_gan_phan_tu_ket_noi_khong_qua_in_mach",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch85.chuong",
+   "trich": "Tuy nhiên, những mạch in này có thể gắn với phần tử kết nối không qua quá trình in mạch."
+  },
+  {
+   "fact": "mach_in_phim_mong_hoac_day_chi_co_phan_tu_thu_dong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8534.nhom",
+   "trich": "Nhóm này cũng bao gồm những mạch in trên phim mỏng hoặc dầy chỉ có những phần tử thụ động."
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Linh kiện thụ động riêng lẻ (cuộn cảm, tụ điện, điện trở) có được nhờ quá trình in — phân loại vào nhóm riêng của chúng",
+   "sangNhom": "8504|8516|8532|8533",
+   "nguon": "nhom8534.nhom",
+   "trich": "Các linh kiện thụ động riêng lẻ, như cuộn cảm, tụ điện và điện trở có được nhờ quá trình in bất kỳ nào đó mà không được xem là những mạch in thuộc nhóm này, nhưng chúng được phân loại vào những nhóm thích hợp riêng của chúng. (ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33)."
+  },
+  {
+   "dieuKien": "Mạch điện màng mỏng hoặc dày có phần tử chủ động và thụ động hợp thành trong cùng một quy trình công nghệ",
+   "sangNhom": "8542",
+   "nguon": "ch85.chuong",
+   "trich": "Mạch điện màng mỏng hoặc dày bao gồm phần tử chủ động và thụ động hợp thành trong cùng một quy trình công nghệ được phân loại trong nhóm 85.42."
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Mạch màng mỏng/dày có cả phần tử chủ động và thụ động hợp thành trong cùng một quy trình công nghệ?",
+   "neuCo": "8542",
+   "neuKhong": "8534",
+   "nguon": "ch85.chuong",
+   "trich": "Mạch điện màng mỏng hoặc dày bao gồm phần tử chủ động và thụ động hợp thành trong cùng một quy trình công nghệ được phân loại trong nhóm 85.42."
+  },
+  {
+   "hoi": "Hàng chỉ là một linh kiện thụ động riêng lẻ (cuộn cảm, tụ điện hoặc điện trở) tạo bằng quá trình in, không phải mạch?",
+   "neuCo": "8504|8516|8532|8533",
+   "neuKhong": "8534",
+   "nguon": "nhom8534.nhom",
+   "trich": "Các linh kiện thụ động riêng lẻ, như cuộn cảm, tụ điện và điện trở có được nhờ quá trình in bất kỳ nào đó mà không được xem là những mạch in thuộc nhóm này … (ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33)."
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "85340010",
+   "dieuKien": "Mạch in một mặt",
+   "loaiKhac": false,
+   "nguon": "tax.85340010",
+   "trich": "85340010 - Một mặt"
+  },
+  {
+   "hs": "85340020",
+   "dieuKien": "Mạch in hai mặt",
+   "loaiKhac": false,
+   "nguon": "tax.85340020",
+   "trich": "85340020 - Hai mặt"
+  },
+  {
+   "hs": "85340030",
+   "dieuKien": "Mạch in nhiều lớp (nhiều lớp được nối với nhau)",
+   "loaiKhac": false,
+   "nguon": "tax.85340030",
+   "trich": "85340030 - Nhiều lớp"
+  },
+  {
+   "hs": "85340090",
+   "dieuKien": "Loại khác (không phải một mặt, hai mặt hoặc nhiều lớp)",
+   "loaiKhac": true,
+   "nguon": "tax.85340090",
+   "trich": "85340090 - Loại khác"
+  }
+ ],
+ "dungTuNguon": [
+  "ch85.chuong",
+  "nhom8534.nhom",
+  "tax.85340010",
+  "tax.85340020",
+  "tax.85340030",
+  "tax.85340090"
+ ],
+ "phienBan": "HS2022",
+ "bangQuyetDinh": "data/decision-tables/8534.json — ưu tiên tuyệt đối, sổ tay không ghi đè",
+ "taoBoi": {
+  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "model": null,
+  "luc": "2026-10-07T09:08:08.808Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 14,
+  "dat": 14,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

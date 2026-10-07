@@ -1,0 +1,201 @@
+{
+ "nhom": "8482",
+ "phamVi": {
+  "text": "Mọi loại ổ bi, ổ đũa, ổ đũa kim (dùng thay ổ trục trơn, giảm ma sát) và bộ phận của chúng (bi, kim, đũa, vòng, lồng…).",
+  "nguon": "nhom8482.nhom",
+  "trich": "Nhóm này bao gồm tất cả ổ bi, ổ đũa, ổ đũa hình kim. Chúng được sử dụng thay thế ổ trục kim loại trơn và để giảm đáng kể lực ma sát."
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_o_bi_o_dua_o_dua_kim",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "bộ phận máy móc có lắp ổ bi, ổ đũa hoặc ổ đũa kim"
+   ],
+   "nguon": "nhom8482.nhom",
+   "trich": "Thông thường, ổ trục bao gồm hai vòng tròn đồng tâm (vòng rế) bao quanh bi hoặc đũa, và một lồng để giữ chúng tại vị trí và đảm bảo khoảng cách của chúng không đổi."
+  },
+  {
+   "fact": "bi_thep_danh_bong_dung_sai_duong_kinh_toi_da",
+   "op": "<=",
+   "value": 1,
+   "donVi": "%",
+   "ngoaiTru": [
+    "hoặc không quá 0,05 mm, lấy mức dung sai nhỏ hơn"
+   ],
+   "nguon": "ch84.chuong",
+   "trich": "Không kể những đề cập khác, nhóm 84.82 áp dụng cho các bi thép đã đánh bóng, có dung sai lớn nhất và nhỏ nhất so với đường kính danh nghĩa không quá 1% hoặc không quá 0,05 mm, theo mức dung sai nhỏ hơn."
+  },
+  {
+   "fact": "bi_thep_danh_bong_dung_sai_duong_kinh_toi_da",
+   "op": "<=",
+   "value": 0.05,
+   "donVi": "mm",
+   "ngoaiTru": [
+    "hoặc không quá 1%, lấy mức dung sai nhỏ hơn"
+   ],
+   "nguon": "ch84.chuong",
+   "trich": "Không kể những đề cập khác, nhóm 84.82 áp dụng cho các bi thép đã đánh bóng, có dung sai lớn nhất và nhỏ nhất so với đường kính danh nghĩa không quá 1% hoặc không quá 0,05 mm, theo mức dung sai nhỏ hơn."
+  },
+  {
+   "fact": "phan_nhom_8482_40_duong_kinh_dua_toi_da",
+   "op": "<=",
+   "value": 5,
+   "donVi": "mm",
+   "ngoaiTru": [],
+   "nguon": "ch84.chuong",
+   "trich": "Phân nhóm 8482.40 chỉ áp dụng cho ổ bi đũa có đường kính đồng nhất của các bi đũa không quá 5 mm và có chiều dài ít nhất gấp 3 lần đường kính."
+  },
+  {
+   "fact": "phan_nhom_8482_40_ti_le_chieu_dai_tren_duong_kinh_dua",
+   "op": ">=",
+   "value": 3,
+   "donVi": "lần",
+   "ngoaiTru": [],
+   "nguon": "ch84.chuong",
+   "trich": "Phân nhóm 8482.40 chỉ áp dụng cho ổ bi đũa có đường kính đồng nhất của các bi đũa không quá 5 mm và có chiều dài ít nhất gấp 3 lần đường kính."
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Bi thép không đạt định nghĩa bi đánh bóng (dung sai vượt 1% hoặc 0,05 mm, theo mức nhỏ hơn)",
+   "sangNhom": "7326",
+   "nguon": "nhom8482.nhom",
+   "trich": "bi không phù hợp theo định nghĩa này được phân loại vào nhóm 73.26 (xem Chú giải 7 của Chương)."
+  },
+  {
+   "dieuKien": "Bộ phận máy có lắp ổ bi/ổ đũa: thân ổ và giá đỡ ổ bi",
+   "sangNhom": "8483",
+   "nguon": "nhom8482.nhom",
+   "trich": "Nhóm này không bao gồm các bộ phận máy móc có lắp ổ bi, ổ đũa hoặc ổ đũa hình kim; … (a) Thân ổ và giá đỡ ổ bi (nhóm 84.83)."
+  },
+  {
+   "dieuKien": "Bộ phận máy có lắp ổ bi: moay ơ xe đạp",
+   "sangNhom": "8714",
+   "nguon": "nhom8482.nhom",
+   "trich": "Nhóm này không bao gồm các bộ phận máy móc có lắp ổ bi, ổ đũa hoặc ổ đũa hình kim; … (b) Moay ơ xe đạp (nhóm 87.14)."
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Bi thép đã đánh bóng có dung sai đường kính so với danh nghĩa không quá 1% hoặc không quá 0,05 mm (theo mức nhỏ hơn) không?",
+   "neuCo": "8482",
+   "neuKhong": "7326",
+   "nguon": "ch84.chuong",
+   "trich": "nhóm 84.82 áp dụng cho các bi thép đã đánh bóng, có dung sai lớn nhất và nhỏ nhất so với đường kính danh nghĩa không quá 1% hoặc không quá 0,05 mm, theo mức dung sai nhỏ hơn. … Các loại bi thép khác được xếp vào nhóm 73.26."
+  },
+  {
+   "hoi": "Hàng là thân ổ hoặc giá đỡ ổ (bộ phận máy có lắp sẵn ổ bi/ổ đũa) chứ không phải bản thân ổ bi?",
+   "neuCo": "8483",
+   "neuKhong": "8482",
+   "nguon": "nhom8482.nhom",
+   "trich": "Nhóm này không bao gồm các bộ phận máy móc có lắp ổ bi, ổ đũa hoặc ổ đũa hình kim; … (a) Thân ổ và giá đỡ ổ bi (nhóm 84.83)."
+  },
+  {
+   "hoi": "Hàng là moay ơ xe đạp có lắp ổ bi?",
+   "neuCo": "8714",
+   "neuKhong": "8482",
+   "nguon": "nhom8482.nhom",
+   "trich": "Nhóm này không bao gồm các bộ phận máy móc có lắp ổ bi, ổ đũa hoặc ổ đũa hình kim; … (b) Moay ơ xe đạp (nhóm 87.14)."
+  },
+  {
+   "hoi": "Ổ đũa hình trụ có đũa đường kính đồng nhất không quá 5 mm và chiều dài ít nhất gấp 3 lần đường kính?",
+   "neuCo": "84824000",
+   "neuKhong": "84825000",
+   "nguon": "ch84.chuong",
+   "trich": "Phân nhóm 8482.40 chỉ áp dụng cho ổ bi đũa có đường kính đồng nhất của các bi đũa không quá 5 mm và có chiều dài ít nhất gấp 3 lần đường kính."
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "84821000",
+   "dieuKien": "Ổ bi",
+   "loaiKhac": false,
+   "nguon": "tax.84821000",
+   "trich": "84821000 - Ổ bi"
+  },
+  {
+   "hs": "84822000",
+   "dieuKien": "Ổ đũa côn, kể cả cụm linh kiện vành côn và đũa côn",
+   "loaiKhac": false,
+   "nguon": "tax.84822000",
+   "trich": "84822000 - Ổ đũa côn, kể cả cụm linh kiện vành côn và đũa côn"
+  },
+  {
+   "hs": "84823000",
+   "dieuKien": "Ổ đũa cầu",
+   "loaiKhac": false,
+   "nguon": "tax.84823000",
+   "trich": "84823000 - Ổ đũa cầu"
+  },
+  {
+   "hs": "84824000",
+   "dieuKien": "Ổ đũa kim (đũa đường kính đồng nhất ≤ 5 mm, dài ≥ 3 lần đường kính — Chú giải phân nhóm 4 Chương 84), kể cả lồng và đũa kim đã lắp ráp",
+   "loaiKhac": false,
+   "nguon": "tax.84824000",
+   "trich": "84824000 - Ổ đũa kim, kể cả lồng (cage) và đũa kim đã lắp ráp"
+  },
+  {
+   "hs": "84825000",
+   "dieuKien": "Ổ đũa hình trụ khác (không đạt tiêu chí ổ đũa kim), kể cả lồng và đũa đã lắp ráp",
+   "loaiKhac": false,
+   "nguon": "tax.84825000",
+   "trich": "84825000 - Các loại ổ đũa hình trụ khác, kể cả lồng (cage) và đũa đã lắp rắp"
+  },
+  {
+   "hs": "84828000",
+   "dieuKien": "Ổ trục khác, kể cả ổ kết hợp bi cầu/bi đũa",
+   "loaiKhac": true,
+   "nguon": "tax.84828000",
+   "trich": "84828000 - Loại khác, kể cả ổ kết hợp bi cầu/bi đũa"
+  },
+  {
+   "hs": "84829100",
+   "dieuKien": "Bộ phận: bi, kim và đũa",
+   "loaiKhac": false,
+   "nguon": "tax.84829100",
+   "trich": "84829100 - - Bi, kim và đũa"
+  },
+  {
+   "hs": "84829900",
+   "dieuKien": "Bộ phận khác (vòng, lồng, ống lót…)",
+   "loaiKhac": true,
+   "nguon": "tax.84829900",
+   "trich": "84829900 - - Loại khác"
+  }
+ ],
+ "boPhan": {
+  "quyTac": "Bộ phận của ổ bi, ổ đũa, ổ đũa kim được phân loại cùng nhóm 84.82",
+  "tomTat": "Bi thép đánh bóng đạt dung sai (Chú giải 7 Chương 84), bi bằng đồng/đồng thiếc/plastic, kim hoặc con lăn, vòng, lồng, ống lót cố định thuộc nhóm này; bộ phận máy có lắp ổ bi thì không.",
+  "nguon": "nhom8482.nhom",
+  "trich": "Nhóm này cũng bao gồm các bộ phận của ổ bi, ổ đũa, ổ đũa kim, ví dụ : … (3) Kim hoặc con lăn dùng cho ổ bi, bất kỳ dạng hình gì. … (4) Vòng, lồng cố định, ống lót cố định,..."
+ },
+ "dungTuNguon": [
+  "ch84.chuong",
+  "nhom8482.nhom",
+  "tax.84821000",
+  "tax.84822000",
+  "tax.84823000",
+  "tax.84824000",
+  "tax.84825000",
+  "tax.84828000",
+  "tax.84829100",
+  "tax.84829900"
+ ],
+ "phienBan": "HS2022",
+ "bangQuyetDinh": "data/decision-tables/8482.json — ưu tiên tuyệt đối, sổ tay không ghi đè",
+ "taoBoi": {
+  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "model": null,
+  "luc": "2026-10-07T09:08:08.699Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 22,
+  "dat": 22,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

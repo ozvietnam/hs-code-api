@@ -1,0 +1,703 @@
+{
+ "nhom": "8536",
+ "phamVi": {
+  "text": "Thiết bị điện để đóng ngắt, bảo vệ mạch điện, hoặc đấu nối/lắp trong mạch điện (công tắc, rơ le, cầu chì, phích cắm, ổ cắm, đui đèn, đầu nối...) dùng cho điện áp không quá 1000 V; kể cả đầu nối dùng cho sợi quang, bó sợi quang hoặc cáp quang.",
+  "nguon": "nhom8536.nhom",
+  "trich": "Nói chung, nhóm này bao gồm các thiết bị điện dùng cho điện áp không quá 1000v dùng cho các thiết bị gia dụng hoặc công nghệp. … Nhóm này cũng bao gồm các nối dùng cho sợi quang, bó sợi quang hoặc cáp quang."
+ },
+ "dieuKienVao": [
+  {
+   "fact": "dien_ap_lam_viec",
+   "op": "<=",
+   "value": 1000,
+   "donVi": "V",
+   "ngoaiTru": [
+    "thiết bị dùng cho điện áp trên 1000 V → 85.35"
+   ],
+   "nguon": "nhom8536.nhom",
+   "trich": "Nói chung, nhóm này bao gồm các thiết bị điện dùng cho điện áp không quá 1000v dùng cho các thiết bị gia dụng hoặc công nghệp. Tuy nhiên, các thiết bị dùng cho điện áp trên 1000V thuộc vào nhóm 85.35."
+  },
+  {
+   "fact": "dau_noi_soi_quang_chi_ghep_noi_co_hoc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "đầu nối có cáp dùng cho sợi quang → 85.44 hoặc 90.01",
+    "có chức năng khuếch đại, tái tạo hoặc biến đổi tín hiệu"
+   ],
+   "nguon": "ch85.chuong",
+   "trich": "Theo mục đích của nhóm 85.36, “đầu nối dùng cho sợi quang, bó sợi quang hoặc cáp quang” nghĩa là đầu nối chỉ dùng để ghép nối đối đầu một cách cơ học các sợi quang trong hệ thống đường truyền kỹ thuật số. Chúng không có chức năng khác, như khuếch đại, tái tạo hoặc biến đổi tín hiệu."
+  },
+  {
+   "fact": "cong_tac_tac_dong_nhanh_co_dien_tu_dong_dien",
+   "op": "<=",
+   "value": 11,
+   "donVi": "A",
+   "ngoaiTru": [],
+   "nguon": "nhom8536.nhom",
+   "trich": "và các công tắc tác động nhanh bằng cơ điện tử dùng cho dòng điện không quá 11amps (công tắc lật)."
+  },
+  {
+   "fact": "dui_den_chuc_nang_chinh_la_dui_den",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8536.nhom",
+   "trich": "Các đui đèn thường có dạng hình cây nến gắn vào giá đỡ hoặc được thiết kế dưới dạng gắn vào tường; những thiết bị này vẫn được xếp vào đây với điều kiện chức năng chính của chúng đóng vai trò như những đui đèn."
+  },
+  {
+   "fact": "hop_dau_noi_da_gan_dau_noi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "hộp đấu nối chưa gắn nối điện → phân loại theo vật liệu cấu thành"
+   ],
+   "nguon": "nhom8536.nhom",
+   "trich": "Các hộp đấu nối chưa được gắn nối điện hoặc phần dự trữ nối điện thì bị loại trừ và được phân loại theo vật liệu cấu thành."
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Thiết bị dùng cho điện áp trên 1000 V",
+   "sangNhom": "8535",
+   "nguon": "nhom8536.nhom",
+   "trich": "Tuy nhiên, các thiết bị dùng cho điện áp trên 1000V thuộc vào nhóm 85.35."
+  },
+  {
+   "dieuKien": "Chốt cửa có gắn công tắc",
+   "sangNhom": "8301",
+   "nguon": "nhom8536.nhom",
+   "trich": "Chốt cửa có gắn công tắc không nằm trong nhóm này (nhóm 83.01)."
+  },
+  {
+   "dieuKien": "Vật liệu cách điện của ổ cắm/đầu nối cầu chì (trừ chi tiết kim loại nhỏ chỉ dùng hỗ trợ gá lắp)",
+   "sangNhom": "8547",
+   "nguon": "nhom8536.nhom",
+   "trich": "các ổ cắm hoặc các đầu nối được xuất trình riêng rẽ cũng được xếp vào đây, ngoại trừ các vật liệu cách điện (trừ những chi tiết kim loại nhỏ chỉ … dùng hỗ trợ cho việc gá nhằm mục tiêu lắp ráp) (nhóm 85.47)."
+  },
+  {
+   "dieuKien": "Máy biến áp",
+   "sangNhom": "8504",
+   "nguon": "nhom8536.nhom",
+   "trich": "Nhóm này cũng không bao gồm các máy biến áp (nhóm 85.04) và các bộ điều chỉnh điện áp tự động (nhóm 90.32)"
+  },
+  {
+   "dieuKien": "Bộ điều chỉnh điện áp tự động",
+   "sangNhom": "9032",
+   "nguon": "nhom8536.nhom",
+   "trich": "Nhóm này cũng không bao gồm các máy biến áp (nhóm 85.04) và các bộ điều chỉnh điện áp tự động (nhóm 90.32)"
+  },
+  {
+   "dieuKien": "Tiếp xúc trượt (chổi, bộ lấy điện) bằng than hoặc than chì",
+   "sangNhom": "8545",
+   "nguon": "nhom8536.nhom",
+   "trich": "(các bộ lấy điện trên không hoặc lắp trên ray- kiểu trolley) trừ các tiếp xúc như vậy bằng “than” hoặc than chì (nhóm 85.45)."
+  },
+  {
+   "dieuKien": "Phích cắm và ổ cắm đi kèm dây dẫn",
+   "sangNhom": "8544",
+   "nguon": "nhom8536.nhom",
+   "trich": "Những phích cắm và ổ cắm đi kèm dây dẫn không nằm trong nhóm này (thuộc nhóm 85.44)."
+  },
+  {
+   "dieuKien": "Đầu nối có cáp dùng cho sợi quang",
+   "sangNhom": "8544|9001",
+   "nguon": "nhom8536.nhom",
+   "trich": "Các đầu nối không có cáp dùng cho sợi quang vẫn được phân loại ở nhóm này nhưng các đầu nối có cáp dùng cho sợi quang thì bị loại trừ (nhóm 85.44 hoặc 90.01)."
+  },
+  {
+   "dieuKien": "Điện trở phi tuyến dùng như bộ điều khiển điện áp",
+   "sangNhom": "8533",
+   "nguon": "nhom8536.nhom",
+   "trich": "(a) Các điện trở phi tuyến được dùng như bộ điều khiển điện áp (nhóm 85.33)."
+  },
+  {
+   "dieuKien": "Lắp ráp (trừ lắp ráp đóng-ngắt đơn giản) của các thiết bị thuộc nhóm",
+   "sangNhom": "8537",
+   "nguon": "nhom8536.nhom",
+   "trich": "(b) Sự lắp ráp (ngoại trừ các lắp ráp đóng-ngắt đơn giản) của các thiết bị được nêu ở trên (nhóm 85.37)."
+  },
+  {
+   "dieuKien": "Đi ốt bán dẫn dùng như bộ điều khiển điện áp",
+   "sangNhom": "8541",
+   "nguon": "nhom8536.nhom",
+   "trich": "(c) Các đi ốt bán dẫn được dùng như bộ điều khiển điện áp (nhóm 85.41)"
+  },
+  {
+   "dieuKien": "Bộ phận của thiết bị thuộc nhóm này",
+   "sangNhom": "8538",
+   "nguon": "nhom8536.nhom",
+   "trich": "BỘ PHẬN Theo quy tắc chung về phân loại các bộ phận (xem phần chú giải chung thuộc phần XVI), các bộ phận của thiết bị của nhóm này được phân loại vào nhóm 85.38."
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Thiết bị dùng cho điện áp trên 1000 V?",
+   "neuCo": "8535",
+   "neuKhong": "8536",
+   "nguon": "nhom8536.nhom",
+   "trich": "Tuy nhiên, các thiết bị dùng cho điện áp trên 1000V thuộc vào nhóm 85.35."
+  },
+  {
+   "hoi": "Phích cắm hoặc ổ cắm có kèm dây dẫn?",
+   "neuCo": "8544",
+   "neuKhong": "8536",
+   "nguon": "nhom8536.nhom",
+   "trich": "Những phích cắm và ổ cắm đi kèm dây dẫn không nằm trong nhóm này (thuộc nhóm 85.44)."
+  },
+  {
+   "hoi": "Là tổ hợp lắp ráp nhiều thiết bị đóng ngắt (không phải lắp ráp đóng-ngắt đơn giản)?",
+   "neuCo": "8537",
+   "neuKhong": "8536",
+   "nguon": "nhom8536.nhom",
+   "trich": "(b) Sự lắp ráp (ngoại trừ các lắp ráp đóng-ngắt đơn giản) của các thiết bị được nêu ở trên (nhóm 85.37)."
+  },
+  {
+   "hoi": "Tiếp xúc trượt (chổi, bộ lấy điện) làm bằng than hoặc than chì?",
+   "neuCo": "8545",
+   "neuKhong": "8536",
+   "nguon": "nhom8536.nhom",
+   "trich": "(2) Các tiếp xúc trượt chẳng hạn như các chổi than dùng trong động cơ … trừ các tiếp xúc như vậy bằng “than” hoặc than chì (nhóm 85.45)."
+  },
+  {
+   "hoi": "Đầu nối sợi quang đã gắn sẵn cáp?",
+   "neuCo": "8544",
+   "neuKhong": "8536",
+   "nguon": "nhom8536.nhom",
+   "trich": "Các đầu nối không có cáp dùng cho sợi quang vẫn được phân loại ở nhóm này nhưng các đầu nối có cáp dùng cho sợi quang thì bị loại trừ (nhóm 85.44 hoặc 90.01)."
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "85361011",
+   "dieuKien": "Phân nhóm 8536.10 — thích hợp dùng cho quạt điện",
+   "loaiKhac": false,
+   "nguon": "tax.85361011",
+   "trich": "85361011 - - - Thích hợp dùng cho quạt điện"
+  },
+  {
+   "hs": "85361012",
+   "dieuKien": "Phân nhóm 8536.10 — loại khác, dòng điện dưới 16 A",
+   "loaiKhac": false,
+   "nguon": "tax.85361012",
+   "trich": "85361012 - - - Loại khác, dòng điện dưới 16 A"
+  },
+  {
+   "hs": "85361013",
+   "dieuKien": "Phân nhóm 8536.10 — khối cầu chì loại sử dụng cho xe có động cơ (SEN: nhiều mạch cầu chì riêng lẻ, đầu vào/ra ở đáy khối, bảo vệ dây và thiết bị điện của xe)",
+   "loaiKhac": false,
+   "nguon": "sen.85361013",
+   "trich": "KHỐI CẦU CHÌ, LOẠI SỬ DỤNG CHO XE CÓ ĐỘNG CƠ Khối cầu chì bao gồm nhiều mạch cầu chì riêng lẻ khác nhau với đầu vào và đầu ra ở đáy của khối. Chúng được sử dụng để bảo vệ dây và thiết bị điện của xe."
+  },
+  {
+   "hs": "85361019",
+   "dieuKien": "Phân nhóm 8536.10 (cùng cấp 85361011–85361013) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85361019",
+   "trich": "85361019 - - - Loại khác"
+  },
+  {
+   "hs": "85361091",
+   "dieuKien": "Phân nhóm 8536.10 (nhánh 8536.10.9x) — thích hợp dùng cho quạt điện",
+   "loaiKhac": false,
+   "nguon": "tax.85361091",
+   "trich": "85361091 - - - Thích hợp dùng cho quạt điện"
+  },
+  {
+   "hs": "85361092",
+   "dieuKien": "Phân nhóm 8536.10 (nhánh 8536.10.9x) — loại khác, dòng điện dưới 16 A",
+   "loaiKhac": false,
+   "nguon": "tax.85361092",
+   "trich": "85361092 - - - Loại khác, dòng điện dưới 16 A"
+  },
+  {
+   "hs": "85361093",
+   "dieuKien": "Phân nhóm 8536.10 (nhánh 8536.10.9x) — khối cầu chì loại sử dụng cho xe có động cơ (SEN)",
+   "loaiKhac": false,
+   "nguon": "sen.85361093",
+   "trich": "KHỐI CẦU CHÌ, LOẠI SỬ DỤNG CHO XE CÓ ĐỘNG CƠ Khối cầu chì bao gồm nhiều mạch cầu chì riêng lẻ khác nhau với đầu vào và đầu ra ở đáy của khối."
+  },
+  {
+   "hs": "85361099",
+   "dieuKien": "Phân nhóm 8536.10 (nhánh 8536.10.9x) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85361099",
+   "trich": "85361099 - - - Loại khác"
+  },
+  {
+   "hs": "85362011",
+   "dieuKien": "Phân nhóm 8536.20 — dòng điện dưới 16 A",
+   "loaiKhac": false,
+   "nguon": "tax.85362011",
+   "trich": "85362011 - - - Dòng điện dưới 16 A"
+  },
+  {
+   "hs": "85362012",
+   "dieuKien": "Phân nhóm 8536.20 — dòng điện từ 16 A trở lên nhưng không quá 32 A",
+   "loaiKhac": false,
+   "nguon": "tax.85362012",
+   "trich": "85362012 - - - Dòng điện từ 16 A trở lên nhưng không quá 32 A"
+  },
+  {
+   "hs": "85362013",
+   "dieuKien": "Phân nhóm 8536.20 — dòng điện trên 32 A nhưng không quá 1.000 A",
+   "loaiKhac": false,
+   "nguon": "tax.85362013",
+   "trich": "85362013 - - - Dòng điện trên 32 A nhưng không quá 1.000 A"
+  },
+  {
+   "hs": "85362019",
+   "dieuKien": "Phân nhóm 8536.20 (cùng cấp 85362011–85362013) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85362019",
+   "trich": "85362019 - - - Loại khác"
+  },
+  {
+   "hs": "85362020",
+   "dieuKien": "Phân nhóm 8536.20 — để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16",
+   "loaiKhac": false,
+   "nguon": "tax.85362020",
+   "trich": "85362020 - - Để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16"
+  },
+  {
+   "hs": "85362091",
+   "dieuKien": "Phân nhóm 8536.20 (nhánh 8536.20.9x) — dòng điện dưới 16 A",
+   "loaiKhac": false,
+   "nguon": "tax.85362091",
+   "trich": "85362091 - - - Dòng điện dưới 16 A"
+  },
+  {
+   "hs": "85362099",
+   "dieuKien": "Phân nhóm 8536.20 (nhánh 8536.20.9x) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85362099",
+   "trich": "85362099 - - - Loại khác"
+  },
+  {
+   "hs": "85363010",
+   "dieuKien": "Phân nhóm 8536.30 — bộ chống sét",
+   "loaiKhac": false,
+   "nguon": "tax.85363010",
+   "trich": "85363010 - - Bộ chống sét"
+  },
+  {
+   "hs": "85363020",
+   "dieuKien": "Phân nhóm 8536.30 — loại sử dụng trong các thiết bị sóng vô tuyến hoặc quạt điện",
+   "loaiKhac": false,
+   "nguon": "tax.85363020",
+   "trich": "85363020 - - Loại sử dụng trong các thiết bị sóng vô tuyến hoặc quạt điện"
+  },
+  {
+   "hs": "85363090",
+   "dieuKien": "Phân nhóm 8536.30 — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85363090",
+   "trich": "85363090 - - Loại khác"
+  },
+  {
+   "hs": "85364110",
+   "dieuKien": "Phân nhóm 8536.41 — rơ le kỹ thuật số",
+   "loaiKhac": false,
+   "nguon": "tax.85364110",
+   "trich": "85364110 - - - Rơ le kỹ thuật số"
+  },
+  {
+   "hs": "85364120",
+   "dieuKien": "Phân nhóm 8536.41 — của loại sử dụng trong các thiết bị sóng vô tuyến",
+   "loaiKhac": false,
+   "nguon": "tax.85364120",
+   "trich": "85364120 - - - Của loại sử dụng trong các thiết bị sóng vô tuyến"
+  },
+  {
+   "hs": "85364130",
+   "dieuKien": "Phân nhóm 8536.41 — của loại sử dụng cho quạt điện",
+   "loaiKhac": false,
+   "nguon": "tax.85364130",
+   "trich": "85364130 - - - Của loại sử dụng cho quạt điện"
+  },
+  {
+   "hs": "85364140",
+   "dieuKien": "Phân nhóm 8536.41 — loại khác, dòng điện dưới 16 A",
+   "loaiKhac": false,
+   "nguon": "tax.85364140",
+   "trich": "85364140 - - - Loại khác, dòng điện dưới 16 A"
+  },
+  {
+   "hs": "85364191",
+   "dieuKien": "Phân nhóm 8536.41 (nhánh 8536.41.9x) — rơ le bán dẫn hoặc rơ le điện từ, điện áp không quá 28 V",
+   "loaiKhac": false,
+   "nguon": "tax.85364191",
+   "trich": "85364191 - - - - Rơ le bán dẫn hoặc rơ le điện từ, điện áp không quá 28 V"
+  },
+  {
+   "hs": "85364199",
+   "dieuKien": "Phân nhóm 8536.41 (nhánh 8536.41.9x) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85364199",
+   "trich": "85364199 - - - - Loại khác"
+  },
+  {
+   "hs": "85364910",
+   "dieuKien": "Phân nhóm 8536.49 — rơ le kỹ thuật số",
+   "loaiKhac": false,
+   "nguon": "tax.85364910",
+   "trich": "85364910 - - - Rơ le kỹ thuật số"
+  },
+  {
+   "hs": "85364990",
+   "dieuKien": "Phân nhóm 8536.49 — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85364990",
+   "trich": "85364990 - - - Loại khác"
+  },
+  {
+   "hs": "85365020",
+   "dieuKien": "Phân nhóm 8536.50 — loại tự động ngắt mạch khi có hiện tượng rò điện và quá tải",
+   "loaiKhac": false,
+   "nguon": "tax.85365020",
+   "trich": "85365020 - - Loại tự động ngắt mạch khi có hiện tượng rò điện và quá tải"
+  },
+  {
+   "hs": "85365032",
+   "dieuKien": "Phân nhóm 8536.50 (nhánh 8536.50.3x) — của loại thích hợp dùng cho quạt điện hoặc thiết bị sóng vô tuyến",
+   "loaiKhac": false,
+   "nguon": "tax.85365032",
+   "trich": "85365032 - - - Của loại thích hợp dùng cho quạt điện hoặc thiết bị sóng vô tuyến"
+  },
+  {
+   "hs": "85365033",
+   "dieuKien": "Nhánh 8536.50.3x — loại ngắt mạch khi có sốc dòng điện cao (SEN); dòng biểu thuế: loại khác, dùng cho dòng điện danh định dưới 16 A",
+   "loaiKhac": false,
+   "nguon": "sen.85365033",
+   "trich": "LOẠI NGẮT MẠCH KHI CÓ SỐC DÒNG ĐIỆN CAO Loại ngắt mạch này có khả năng xử lý sự tăng cao đột biến của dòng điện."
+  },
+  {
+   "hs": "85365039",
+   "dieuKien": "Nhánh 8536.50.3x — loại ngắt mạch khi có sốc dòng điện cao (SEN); dòng biểu thuế: loại khác",
+   "loaiKhac": true,
+   "nguon": "sen.85365039",
+   "trich": "LOẠI NGẮT MẠCH KHI CÓ SỐC DÒNG ĐIỆN CAO Loại ngắt mạch này có khả năng xử lý sự tăng cao đột biến của dòng điện."
+  },
+  {
+   "hs": "85365040",
+   "dieuKien": "Phân nhóm 8536.50 — công tắc mini thích hợp dùng cho nồi cơm điện hoặc lò nướng (toaster ovens)",
+   "loaiKhac": false,
+   "nguon": "tax.85365040",
+   "trich": "85365040 - - Công tắc mini thích hợp dùng cho nồi cơm điện hoặc lò nướng (toaster ovens)"
+  },
+  {
+   "hs": "85365051",
+   "dieuKien": "Phân nhóm 8536.50 (nhánh 8536.50.5x) — dòng điện dưới 16 A",
+   "loaiKhac": false,
+   "nguon": "tax.85365051",
+   "trich": "85365051 - - - Dòng điện dưới 16 A"
+  },
+  {
+   "hs": "85365059",
+   "dieuKien": "Phân nhóm 8536.50 (nhánh 8536.50.5x) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85365059",
+   "trich": "85365059 - - - Loại khác"
+  },
+  {
+   "hs": "85365061",
+   "dieuKien": "Phân nhóm 8536.50 (nhánh 8536.50.6x) — dòng điện dưới 16 A",
+   "loaiKhac": false,
+   "nguon": "tax.85365061",
+   "trich": "85365061 - - - Dòng điện dưới 16 A"
+  },
+  {
+   "hs": "85365069",
+   "dieuKien": "Phân nhóm 8536.50 (nhánh 8536.50.6x) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85365069",
+   "trich": "85365069 - - - Loại khác"
+  },
+  {
+   "hs": "85365095",
+   "dieuKien": "Phân nhóm 8536.50 (nhánh 8536.50.9x) — công tắc đảo chiều loại dùng khởi động động cơ điện; thiết bị đóng cắt có cầu chì (fuse switches)",
+   "loaiKhac": false,
+   "nguon": "tax.85365095",
+   "trich": "85365095 - - - Công tắc đảo chiều (change-over switches) loại dùng khởi động động cơ điện; thiết bị đóng cắt có cầu chì (fuse switches)"
+  },
+  {
+   "hs": "85365096",
+   "dieuKien": "Phân nhóm 8536.50 (nhánh 8536.50.9x) — loại khác, dòng điện dưới 16 A",
+   "loaiKhac": false,
+   "nguon": "tax.85365096",
+   "trich": "85365096 - - - Loại khác, dòng điện dưới 16 A"
+  },
+  {
+   "hs": "85365099",
+   "dieuKien": "Phân nhóm 8536.50 (nhánh 8536.50.9x) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85365099",
+   "trich": "85365099 - - - Loại khác"
+  },
+  {
+   "hs": "85366111",
+   "dieuKien": "Phân nhóm 8536.61 (nhánh 8536.61.1x) — dòng điện dưới 16 A",
+   "loaiKhac": false,
+   "nguon": "tax.85366111",
+   "trich": "85366111 - - - - Dòng điện dưới 16 A"
+  },
+  {
+   "hs": "85366119",
+   "dieuKien": "Phân nhóm 8536.61 (nhánh 8536.61.1x) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85366119",
+   "trich": "85366119 - - - - Loại khác"
+  },
+  {
+   "hs": "85366191",
+   "dieuKien": "Phân nhóm 8536.61 (nhánh 8536.61.9x) — dòng điện dưới 16 A",
+   "loaiKhac": false,
+   "nguon": "tax.85366191",
+   "trich": "85366191 - - - - Dòng điện dưới 16 A"
+  },
+  {
+   "hs": "85366199",
+   "dieuKien": "Phân nhóm 8536.61 (nhánh 8536.61.9x) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85366199",
+   "trich": "85366199 - - - - Loại khác"
+  },
+  {
+   "hs": "85366910",
+   "dieuKien": "Phân nhóm 8536.69 — phích cắm điện thoại",
+   "loaiKhac": false,
+   "nguon": "tax.85366910",
+   "trich": "85366910 - - - Phích cắm điện thoại"
+  },
+  {
+   "hs": "85366923",
+   "dieuKien": "Phân nhóm 8536.69 (nhánh 8536.69.2x) — dòng điện không quá 1,5 A",
+   "loaiKhac": false,
+   "nguon": "tax.85366923",
+   "trich": "85366923 - - - - Dòng điện không quá 1,5 A"
+  },
+  {
+   "hs": "85366924",
+   "dieuKien": "Phân nhóm 8536.69 (nhánh 8536.69.2x) — dòng điện trên 1,5 A nhưng dưới 16 A",
+   "loaiKhac": false,
+   "nguon": "tax.85366924",
+   "trich": "85366924 - - - - Dòng điện trên 1,5 A nhưng dưới 16 A"
+  },
+  {
+   "hs": "85366929",
+   "dieuKien": "Phân nhóm 8536.69 (nhánh 8536.69.2x) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85366929",
+   "trich": "85366929 - - - - Loại khác"
+  },
+  {
+   "hs": "85366932",
+   "dieuKien": "Phân nhóm 8536.69 (nhánh 8536.69.3x) — dòng điện dưới 16 A",
+   "loaiKhac": false,
+   "nguon": "tax.85366932",
+   "trich": "85366932 - - - - Dòng điện dưới 16 A"
+  },
+  {
+   "hs": "85366939",
+   "dieuKien": "Phân nhóm 8536.69 (nhánh 8536.69.3x) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85366939",
+   "trich": "85366939 - - - - Loại khác"
+  },
+  {
+   "hs": "85366992",
+   "dieuKien": "Phân nhóm 8536.69 (nhánh 8536.69.9x) — dòng điện dưới 16 A",
+   "loaiKhac": false,
+   "nguon": "tax.85366992",
+   "trich": "85366992 - - - - Dòng điện dưới 16 A"
+  },
+  {
+   "hs": "85366999",
+   "dieuKien": "Phân nhóm 8536.69 (nhánh 8536.69.9x) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85366999",
+   "trich": "85366999 - - - - Loại khác"
+  },
+  {
+   "hs": "85367010",
+   "dieuKien": "Phân nhóm 8536.70 — bằng gốm",
+   "loaiKhac": false,
+   "nguon": "tax.85367010",
+   "trich": "85367010 - - Bằng gốm"
+  },
+  {
+   "hs": "85367020",
+   "dieuKien": "Phân nhóm 8536.70 — bằng đồng",
+   "loaiKhac": false,
+   "nguon": "tax.85367020",
+   "trich": "85367020 - - Bằng đồng"
+  },
+  {
+   "hs": "85367090",
+   "dieuKien": "Phân nhóm 8536.70 — loại khác (không bằng gốm, không bằng đồng)",
+   "loaiKhac": true,
+   "nguon": "tax.85367090",
+   "trich": "85367090 - - Loại khác"
+  },
+  {
+   "hs": "85369012",
+   "dieuKien": "Phân nhóm 8536.90 (nhánh 8536.90.1x) — dòng điện dưới 16 A",
+   "loaiKhac": false,
+   "nguon": "tax.85369012",
+   "trich": "85369012 - - - Dòng điện dưới 16 A"
+  },
+  {
+   "hs": "85369019",
+   "dieuKien": "Phân nhóm 8536.90 (nhánh 8536.90.1x) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85369019",
+   "trich": "85369019 - - - Loại khác"
+  },
+  {
+   "hs": "85369022",
+   "dieuKien": "Phân nhóm 8536.90 (nhánh 8536.90.2x) — dòng điện dưới 16 A",
+   "loaiKhac": false,
+   "nguon": "tax.85369022",
+   "trich": "85369022 - - - Dòng điện dưới 16 A"
+  },
+  {
+   "hs": "85369029",
+   "dieuKien": "Phân nhóm 8536.90 (nhánh 8536.90.2x) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85369029",
+   "trich": "85369029 - - - Loại khác"
+  },
+  {
+   "hs": "85369032",
+   "dieuKien": "Phân nhóm 8536.90 (nhánh 8536.90.3x) — dòng điện dưới 16 A",
+   "loaiKhac": false,
+   "nguon": "tax.85369032",
+   "trich": "85369032 - - - Dòng điện dưới 16 A"
+  },
+  {
+   "hs": "85369039",
+   "dieuKien": "Phân nhóm 8536.90 (nhánh 8536.90.3x) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85369039",
+   "trich": "85369039 - - - Loại khác"
+  },
+  {
+   "hs": "85369040",
+   "dieuKien": "Phân nhóm 8536.90 — kẹp pin dùng cho xe có động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11",
+   "loaiKhac": false,
+   "nguon": "tax.85369040",
+   "trich": "85369040 - - Kẹp pin dùng cho xe có động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11"
+  },
+  {
+   "hs": "85369093",
+   "dieuKien": "Phân nhóm 8536.90 (nhánh 8536.90.9x) — phiến đầu nối và khối đấu nối cáp điện thoại",
+   "loaiKhac": false,
+   "nguon": "tax.85369093",
+   "trich": "85369093 - - - - Phiến đầu nối và khối đấu nối cáp điện thoại"
+  },
+  {
+   "hs": "85369094",
+   "dieuKien": "Phân nhóm 8536.90 (nhánh 8536.90.9x, cùng cấp 85369093) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85369094",
+   "trich": "85369094 - - - - Loại khác"
+  },
+  {
+   "hs": "85369099",
+   "dieuKien": "Phân nhóm 8536.90 (nhánh 8536.90.9x) — loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.85369099",
+   "trich": "85369099 - - - Loại khác"
+  }
+ ],
+ "boPhan": {
+  "quyTac": "Chú giải 2 Phần XVI (quy tắc chung phân loại bộ phận)",
+  "tomTat": "Bộ phận của thiết bị nhóm 85.36 phân loại vào nhóm 85.38.",
+  "nguon": "nhom8536.nhom",
+  "trich": "BỘ PHẬN Theo quy tắc chung về phân loại các bộ phận (xem phần chú giải chung thuộc phần XVI), các bộ phận của thiết bị của nhóm này được phân loại vào nhóm 85.38."
+ },
+ "dungTuNguon": [
+  "ch85.chuong",
+  "nhom8536.nhom",
+  "sen.85361013",
+  "sen.85361093",
+  "sen.85365033",
+  "sen.85365039",
+  "tax.85361011",
+  "tax.85361012",
+  "tax.85361019",
+  "tax.85361091",
+  "tax.85361092",
+  "tax.85361099",
+  "tax.85362011",
+  "tax.85362012",
+  "tax.85362013",
+  "tax.85362019",
+  "tax.85362020",
+  "tax.85362091",
+  "tax.85362099",
+  "tax.85363010",
+  "tax.85363020",
+  "tax.85363090",
+  "tax.85364110",
+  "tax.85364120",
+  "tax.85364130",
+  "tax.85364140",
+  "tax.85364191",
+  "tax.85364199",
+  "tax.85364910",
+  "tax.85364990",
+  "tax.85365020",
+  "tax.85365032",
+  "tax.85365040",
+  "tax.85365051",
+  "tax.85365059",
+  "tax.85365061",
+  "tax.85365069",
+  "tax.85365095",
+  "tax.85365096",
+  "tax.85365099",
+  "tax.85366111",
+  "tax.85366119",
+  "tax.85366191",
+  "tax.85366199",
+  "tax.85366910",
+  "tax.85366923",
+  "tax.85366924",
+  "tax.85366929",
+  "tax.85366932",
+  "tax.85366939",
+  "tax.85366992",
+  "tax.85366999",
+  "tax.85367010",
+  "tax.85367020",
+  "tax.85367090",
+  "tax.85369012",
+  "tax.85369019",
+  "tax.85369022",
+  "tax.85369029",
+  "tax.85369032",
+  "tax.85369039",
+  "tax.85369040",
+  "tax.85369093",
+  "tax.85369094",
+  "tax.85369099"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "bangQuyetDinh": "data/decision-tables/8536.json — ưu tiên tuyệt đối, sổ tay không ghi đè",
+ "taoBoi": {
+  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "model": null,
+  "luc": "2026-10-07T09:08:08.824Z",
+  "ms": 10
+ },
+ "kiemTra": {
+  "tong": 87,
+  "dat": 87,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

@@ -1,0 +1,397 @@
+{
+ "nhom": "1901",
+ "phamVi": {
+  "text": "Chiết xuất malt; chế phẩm thực phẩm từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt (cacao < 40% đã khử béo) và chế phẩm thực phẩm từ hàng hóa nhóm 04.01–04.04 (cacao < 5% đã khử béo), chưa chi tiết ở nơi khác.",
+  "nguon": "nhom1901.nhom",
+  "trich": "(II) Các chế phẩm thực phẩm từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt không chứa cacao hoặc chứa dưới 40% trọng lượng là cacao đã khử toàn bột chất béo, chưa được chi tiết hoặc ghi ở nơi khác."
+ },
+ "dieuKienVao": [
+  {
+   "fact": "dac_tinh_cot_yeu_tu_bot_tam_tinh_bot_hoac_chiet_xuat_malt",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom1901.nhom",
+   "trich": "Nhóm này bao gồm các chế phẩm thực phẩm được chế biến chủ yếu từ bột mịn, tấm, bột thô, tinh bột hoặc chiết xuất malt, những nguyên liệu này quyết định đặc điểm cốt yếu của chúng cho dù các thành phần này chiếm ưu thế hay không chiếm ưu thế về trọng lượng hoặc số lượng."
+  },
+  {
+   "fact": "ty_le_cacao_da_khu_toan_bo_chat_beo_che_pham_tu_bot_tinh_bot_malt",
+   "op": "<",
+   "value": 40,
+   "donVi": "%",
+   "ngoaiTru": [],
+   "nguon": "nhom1901.nhom",
+   "trich": "Các chế phẩm thực phẩm từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt không chứa cacao hoặc chứa dưới 40% trọng lượng là cacao đã khử toàn bột chất béo"
+  },
+  {
+   "fact": "ty_le_cacao_da_khu_toan_bo_chat_beo_che_pham_tu_hang_0401_0404",
+   "op": "<",
+   "value": 5,
+   "donVi": "%",
+   "ngoaiTru": [],
+   "nguon": "nhom1901.nhom",
+   "trich": "(III) Các chế phẩm thực phẩm thuộc các nhóm từ 04.01 đến 04.04, không chứa cacao hoặc chứa dưới 5% trọng lượng là cacao đã khử toàn bộ chất béo, chưa được chi tiết hoặc ghi ở nơi khác."
+  },
+  {
+   "fact": "ty_le_xuc_xich_thit_ca_giap_xac_than_mem_trong_luong",
+   "op": "<=",
+   "value": 20,
+   "donVi": "%",
+   "ngoaiTru": [],
+   "nguon": "nhom1901.nhom",
+   "trich": "các chế phẩm chứa trên 20% trọng lượng là xúc xích, thịt, phụ phẩm dạng thịt sau giết mổ, tiết, cá hoặc động vật giáp xác, động vật thân mềm hoặc động vật thuỷ sinh không xương sống khác hoặc hỗn hợp các sản phẩm nêu trên được loại trừ khỏi nhóm này (Chương 16)."
+  },
+  {
+   "fact": "che_pham_sua_co_thanh_phan_khong_duoc_phep_trong_0401_0404",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom1901.nhom",
+   "trich": "Các chế phẩm thuộc nhóm này có thể được phân biệt với các sản phẩm thuộc các nhóm từ 04.01 đến 04.04 ở chỗ, trong đó ngoài các thành phần sữa tự nhiên chúng còn bao gồm cả các thành phần khác không được cho phép có trong các sản phẩm thuộc các nhóm đã nêu ở các nhóm trước."
+  },
+  {
+   "fact": "chiet_xuat_malt_bo_sung_chat_khong_tao_thanh_duoc_pham_ch30",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom1901.nhom",
+   "trich": "Chiết xuất malt được bổ sung lecithin, vitamin, muối, v.v vẫn thuộc nhóm này miễn là chúng không tạo thành dược phẩm của Chương 30."
+  },
+  {
+   "fact": "he_so_quy_doi_ham_luong_cacao_tu_theobromine_va_caffeine",
+   "op": "=",
+   "value": 31,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch19.chuong",
+   "trich": "Theo mục đích của Chú giải 3 của Chương này và nhóm 19.01, hàm lượng ca cao trong một sản phẩm thông thường có thể tính bằng cách nhân hàm lượng hỗn hợp giữa theobromine và chất caffeine với hệ số 31."
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Kẹo đường chứa chiết xuất malt",
+   "sangNhom": "1704",
+   "nguon": "nhom1901.nhom",
+   "trich": "Các loại kẹo đường, chứa chiết xuất malt, thuộc nhóm 17.04."
+  },
+  {
+   "dieuKien": "Enzym malt",
+   "sangNhom": "3507",
+   "nguon": "nhom1901.nhom",
+   "trich": "Các enzym malt (nhóm 35.07)."
+  },
+  {
+   "dieuKien": "Bột, bột thô, bột mịn của rau khô, của khoai tây hoặc của rau đậu khô (không thuộc khái niệm 'bột' của nhóm 19.01)",
+   "sangNhom": "0712|1105|1106",
+   "nguon": "nhom1901.nhom",
+   "trich": "Tuy nhiên, các thuật ngữ này không bao gồm bột, bột thô hoặc bột mịn của các loại rau khô (nhóm 07.12), của khoai tây (nhóm 11.05) hoặc của các loại rau đậu khô (nhóm 11.06)."
+  },
+  {
+   "dieuKien": "Pizza đã được làm chín sơ (pre-cooked) hoặc làm chín",
+   "sangNhom": "1905",
+   "nguon": "nhom1901.nhom",
+   "trich": "Tuy nhiên, pizza đã được làm chín sơ (pre-cooked) hoặc làm chín được phân loại trong nhóm 19.05."
+  },
+  {
+   "dieuKien": "Bột lên men tự nhiên và bột 'trương nở' (dạng keo)",
+   "sangNhom": "1101|1102",
+   "nguon": "nhom1901.nhom",
+   "trich": "Bột lên men tự nhiên và bột “trương nở” (dạng keo) thuộc nhóm 11.01 hoặc 11.02."
+  },
+  {
+   "dieuKien": "Bột ngũ cốc đã pha trộn chưa chế biến cách khác",
+   "sangNhom": "1101|1102",
+   "nguon": "nhom1901.nhom",
+   "trich": "Bột ngũ cốc đã pha trộn (nhóm 11.01 hoặc 11.02)"
+  },
+  {
+   "dieuKien": "Bột, bột thô từ rau đậu đã pha trộn; bột, bột thô, bột mịn từ quả đã pha trộn, chưa chế biến cách khác",
+   "sangNhom": "1106",
+   "nguon": "nhom1901.nhom",
+   "trich": "bột và bột thô từ rau đậu đã pha trộn và bột, bột thô hoặc bột mịn từ quả đã pha trộn (nhóm 11.06), chưa được chế biến cách khác."
+  },
+  {
+   "dieuKien": "Sản phẩm từ bột nhào (pasta), couscous",
+   "sangNhom": "1902",
+   "nguon": "nhom1901.nhom",
+   "trich": "Sản phẩm từ bột nhào (Pasta) và bột mỳ nấu với thịt (couscous) thuộc nhóm 19.02."
+  },
+  {
+   "dieuKien": "Tinh bột sắn và sản phẩm thay thế",
+   "sangNhom": "1903",
+   "nguon": "nhom1901.nhom",
+   "trich": "Tinh bột sắn và các sản phẩm thay thế (nhóm 19.03)."
+  },
+  {
+   "dieuKien": "Bánh đã chín hoàn toàn hoặc một phần",
+   "sangNhom": "1905",
+   "nguon": "nhom1901.nhom",
+   "trich": "Các loại bánh đã chín hoàn toàn hoặc một phần. Loại chín một phần cần tiếp tục được làm chín trước khi dùng (nhóm 19.05)."
+  },
+  {
+   "dieuKien": "Nước xốt và chế phẩm làm nước xốt",
+   "sangNhom": "2103",
+   "nguon": "nhom1901.nhom",
+   "trich": "Nước xốt và các chế phẩm làm nước xốt (nhóm 21.03)."
+  },
+  {
+   "dieuKien": "Súp, nước xuýt, chế phẩm làm súp/nước xuýt; chế phẩm thực phẩm đồng nhất",
+   "sangNhom": "2104",
+   "nguon": "nhom1901.nhom",
+   "trich": "Súp và nước xuýt và chế phẩm để làm súp và nước xuýt và chế phẩm thực phẩm đồng nhất (nhóm 21.04)."
+  },
+  {
+   "dieuKien": "Sản phẩm protein thực vật có cấu trúc",
+   "sangNhom": "2106",
+   "nguon": "nhom1901.nhom",
+   "trich": "Các sản phẩm protein thực vật có cấu trúc (nhóm 21.06)."
+  },
+  {
+   "dieuKien": "Chế phẩm từ sữa có đặc tính kẹo đường",
+   "sangNhom": "1704",
+   "nguon": "nhom1901.nhom",
+   "trich": "Tuy nhiên, nhóm này không bao gồm các sản phẩm có đặc tính của kẹo đường (nhóm 17.04)"
+  },
+  {
+   "dieuKien": "Chế phẩm từ hàng hóa 04.01–04.04 chứa từ 5% trở lên cacao đã khử toàn bộ chất béo",
+   "sangNhom": "1806",
+   "nguon": "nhom1901.nhom",
+   "trich": "các sản phẩm có chứa từ 5% trở lên tính theo trọng lượng là ca cao đã khử toàn bộ chất béo (xem Chú giải Tổng quát của Chương này) (nhóm 18.06)"
+  },
+  {
+   "dieuKien": "Chế phẩm từ bột, tấm, bột thô, tinh bột, chiết xuất malt chứa từ 40% trở lên cacao đã khử toàn bộ chất béo",
+   "sangNhom": "1806",
+   "nguon": "ch19.chuong",
+   "trich": "Các chế phẩm thực phẩm từ bột mịn, tấm, bột thô, tinh bột hoặc chiết xuất malt chứa từ 40% trở lên trọng lượng là cacao được tính trên cơ sở đã loại trừ toàn bộ chất béo … (nhóm 18.06)."
+  },
+  {
+   "dieuKien": "Kem lạnh và các loại kem ăn được khác chế biến từ sữa (khác với hỗn hợp/bột nền để làm kem)",
+   "sangNhom": "2105",
+   "nguon": "nhom1901.nhom",
+   "trich": "Nhóm này cũng bao gồm các hỗn hợp và các sản phẩm nền (ví dụ, bột) để sản xuất kem lạnh nhưng lại không bao gồm kem lạnh và các loại kem ăn được khác được chế biến từ sữa (nhóm 21.05)."
+  },
+  {
+   "dieuKien": "Chất thay thế cà phê đã rang có chứa cà phê; chất thay thế cà phê đã rang khác (vd đại mạch rang)",
+   "sangNhom": "0901|2101",
+   "nguon": "ch19.chuong",
+   "trich": "Các chất thay thế cà phê đã rang có chứa một tỷ lệ cà phê bất kỳ (thuộc nhóm 09.01) và các chất thay thế cà phê đã rang khác (ví dụ đại mạch đã rang) (nhóm 21.01)."
+  },
+  {
+   "dieuKien": "Bột làm custard, món tráng miệng, kem… không làm từ bột mịn, bột thô, tinh bột, chiết xuất malt hoặc hàng hóa 04.01–04.04",
+   "sangNhom": "2106",
+   "nguon": "ch19.chuong",
+   "trich": "Các loại bột để làm custard, các món tráng miệng, kem hoặc các chế phẩm tương tự nhưng không phải là các chế phẩm được làm từ bột mịn, bột thô, tinh bột, chiết xuất malt hoặc các hàng hóa thuộc các nhóm từ 04.01 đến 04.04 (thường thuộc nhóm 21.06)."
+  },
+  {
+   "dieuKien": "Sản phẩm từ bột mịn hoặc tinh bột chế biến chuyên dùng làm thức ăn chăn nuôi (vd bánh quy cho chó)",
+   "sangNhom": "2309",
+   "nguon": "ch19.chuong",
+   "trich": "Các sản phẩm được làm từ bột mịn hoặc từ tinh bột, được chế biến chuyên dùng làm thức ăn chăn nuôi (ví dụ: bánh quy cho chó) (nhóm 23.09)."
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Chế phẩm từ sữa chứa từ 5% trở lên cacao tính trên cơ sở đã khử toàn bộ chất béo?",
+   "neuCo": "1806",
+   "neuKhong": "1901",
+   "nguon": "nhom1901.nhom",
+   "trich": "các sản phẩm có chứa từ 5% trở lên tính theo trọng lượng là ca cao đã khử toàn bộ chất béo (xem Chú giải Tổng quát của Chương này) (nhóm 18.06)"
+  },
+  {
+   "hoi": "Bánh pizza đã được làm chín sơ hoặc làm chín?",
+   "neuCo": "1905",
+   "neuKhong": "1901",
+   "nguon": "nhom1901.nhom",
+   "trich": "Tuy nhiên, pizza đã được làm chín sơ (pre-cooked) hoặc làm chín được phân loại trong nhóm 19.05."
+  },
+  {
+   "hoi": "Hàng là kem lạnh/kem ăn được thành phẩm (không phải hỗn hợp hoặc bột nền để làm kem)?",
+   "neuCo": "2105",
+   "neuKhong": "1901",
+   "nguon": "nhom1901.nhom",
+   "trich": "Nhóm này cũng bao gồm các hỗn hợp và các sản phẩm nền (ví dụ, bột) để sản xuất kem lạnh nhưng lại không bao gồm kem lạnh và các loại kem ăn được khác được chế biến từ sữa (nhóm 21.05)."
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "19011010",
+   "dieuKien": "1901.10 – Chế phẩm phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ, đã đóng gói để bán lẻ › - - Từ chiết xuất malt",
+   "loaiKhac": false,
+   "nguon": "tax.19011010",
+   "trich": "19011010 - - Từ chiết xuất malt"
+  },
+  {
+   "hs": "19011020",
+   "dieuKien": "1901.10 – Chế phẩm phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ, đã đóng gói để bán lẻ › - - Từ sản phẩm thuộc các nhóm từ 04.01 đến 04.04",
+   "loaiKhac": false,
+   "nguon": "tax.19011020",
+   "trich": "19011020 - - Từ sản phẩm thuộc các nhóm từ 04.01 đến 04.04"
+  },
+  {
+   "hs": "19011030",
+   "dieuKien": "1901.10 – Chế phẩm phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ, đã đóng gói để bán lẻ › - - Từ bột đỗ tương",
+   "loaiKhac": false,
+   "nguon": "tax.19011030",
+   "trich": "19011030 - - Từ bột đỗ tương"
+  },
+  {
+   "hs": "19011091",
+   "dieuKien": "1901.10 – Chế phẩm phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ, đã đóng gói để bán lẻ › - - - Sản phẩm dinh dưỡng y tế — Sản phẩm dinh dưỡng y tế (SEN): thực phẩm công thức đặc biệt, dùng đường miệng hoặc qua ống, nhãn ghi dùng để kiểm soát chế độ ăn khi rối loạn sức khoẻ/bệnh đặc thù, dùng dưới giám sát y tế",
+   "loaiKhac": false,
+   "nguon": "sen.19011091",
+   "trich": "Để được coi là sản phẩm dinh dưỡng y tế thì sản phẩm phải đáp ứng các yêu cầu tối thiểu: ● là thực phẩm dùng bằng đường miệng hoặc bằng ống (ống xông dạ dày) … và ● được sử dụng dưới sự giám sát về y tế."
+  },
+  {
+   "hs": "19011092",
+   "dieuKien": "1901.10 – Chế phẩm phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ, đã đóng gói để bán lẻ › - - - Loại khác, dùng cho trẻ trên một tuổi nhưng không quá ba tuổi",
+   "loaiKhac": true,
+   "nguon": "tax.19011092",
+   "trich": "19011092 - - - Loại khác, dùng cho trẻ trên một tuổi nhưng không quá ba tuổi"
+  },
+  {
+   "hs": "19011099",
+   "dieuKien": "1901.10 – Chế phẩm phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ, đã đóng gói để bán lẻ › - - - Loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.19011099",
+   "trich": "19011099 - - - Loại khác"
+  },
+  {
+   "hs": "19012010",
+   "dieuKien": "1901.20 – Bột trộn và bột nhào để chế biến thành các loại bánh thuộc nhóm 19.05 › - - Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, không chứa ca cao",
+   "loaiKhac": false,
+   "nguon": "tax.19012010",
+   "trich": "19012010 - - Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, không chứa ca cao"
+  },
+  {
+   "hs": "19012020",
+   "dieuKien": "1901.20 – Bột trộn và bột nhào để chế biến thành các loại bánh thuộc nhóm 19.05 › - - Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, chứa ca cao",
+   "loaiKhac": false,
+   "nguon": "tax.19012020",
+   "trich": "19012020 - - Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, chứa ca cao"
+  },
+  {
+   "hs": "19012030",
+   "dieuKien": "1901.20 – Bột trộn và bột nhào để chế biến thành các loại bánh thuộc nhóm 19.05 › - - Loại khác, không chứa ca cao",
+   "loaiKhac": true,
+   "nguon": "tax.19012030",
+   "trich": "19012030 - - Loại khác, không chứa ca cao"
+  },
+  {
+   "hs": "19012040",
+   "dieuKien": "1901.20 – Bột trộn và bột nhào để chế biến thành các loại bánh thuộc nhóm 19.05 › - - Loại khác, chứa ca cao",
+   "loaiKhac": true,
+   "nguon": "tax.19012040",
+   "trich": "19012040 - - Loại khác, chứa ca cao"
+  },
+  {
+   "hs": "19019011",
+   "dieuKien": "1901.90 – Loại khác › - - - Sản phẩm dinh dưỡng y tế — Sản phẩm dinh dưỡng y tế (SEN): thực phẩm công thức đặc biệt, dùng đường miệng hoặc qua ống, nhãn ghi dùng để kiểm soát chế độ ăn khi rối loạn sức khoẻ/bệnh đặc thù, dùng dưới giám sát y tế",
+   "loaiKhac": false,
+   "nguon": "sen.19019011",
+   "trich": "Để được coi là sản phẩm dinh dưỡng y tế thì sản phẩm phải đáp ứng các yêu cầu tối thiểu: ● là thực phẩm dùng bằng đường miệng hoặc bằng ống (ống xông dạ dày) … và ● được sử dụng dưới sự giám sát về y tế."
+  },
+  {
+   "hs": "19019019",
+   "dieuKien": "1901.90 – Loại khác › - - - Loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.19019019",
+   "trich": "19019019 - - - Loại khác"
+  },
+  {
+   "hs": "19019020",
+   "dieuKien": "1901.90 – Loại khác › - - Chiết xuất malt",
+   "loaiKhac": false,
+   "nguon": "tax.19019020",
+   "trich": "19019020 - - Chiết xuất malt"
+  },
+  {
+   "hs": "19019031",
+   "dieuKien": "1901.90 – Loại khác › - - - Chứa sữa — Chứa sữa (SEN): sản phẩm nguồn gốc từ sữa ở bất kỳ dạng nào được trộn hoặc pha với chất béo hoặc dầu không phải chất béo của sữa",
+   "loaiKhac": false,
+   "nguon": "sen.19019031",
+   "trich": "Sản phẩm có nguồn gốc từ sữa, ở bất kỳ dạng nào, đã hoặc chưa được cô đặc, làm bay hơi, làm đặc, làm thành bột, làm khô hoặc sấy khô được trộn hoặc pha với bất kỳ chất béo hoặc dầu mà không phải là chất béo của sữa."
+  },
+  {
+   "hs": "19019032",
+   "dieuKien": "1901.90 – Loại khác › - - - Loại khác, chứa bột ca cao",
+   "loaiKhac": true,
+   "nguon": "tax.19019032",
+   "trich": "19019032 - - - Loại khác, chứa bột ca cao"
+  },
+  {
+   "hs": "19019039",
+   "dieuKien": "1901.90 – Loại khác › - - - Loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.19019039",
+   "trich": "19019039 - - - Loại khác"
+  },
+  {
+   "hs": "19019041",
+   "dieuKien": "1901.90 – Loại khác › - - - Dạng bột",
+   "loaiKhac": false,
+   "nguon": "tax.19019041",
+   "trich": "19019041 - - - Dạng bột"
+  },
+  {
+   "hs": "19019049",
+   "dieuKien": "1901.90 – Loại khác › - - - Dạng khác",
+   "loaiKhac": false,
+   "nguon": "tax.19019049",
+   "trich": "19019049 - - - Dạng khác"
+  },
+  {
+   "hs": "19019091",
+   "dieuKien": "1901.90 – Loại khác › - - - Sản phẩm dinh dưỡng y tế — Sản phẩm dinh dưỡng y tế (SEN): thực phẩm công thức đặc biệt, dùng đường miệng hoặc qua ống, nhãn ghi dùng để kiểm soát chế độ ăn khi rối loạn sức khoẻ/bệnh đặc thù, dùng dưới giám sát y tế",
+   "loaiKhac": false,
+   "nguon": "sen.19019091",
+   "trich": "Để được coi là sản phẩm dinh dưỡng y tế thì sản phẩm phải đáp ứng các yêu cầu tối thiểu: ● là thực phẩm dùng bằng đường miệng hoặc bằng ống (ống xông dạ dày) … và ● được sử dụng dưới sự giám sát về y tế."
+  },
+  {
+   "hs": "19019099",
+   "dieuKien": "1901.90 – Loại khác › - - - Loại khác",
+   "loaiKhac": true,
+   "nguon": "tax.19019099",
+   "trich": "19019099 - - - Loại khác"
+  }
+ ],
+ "dungTuNguon": [
+  "ch19.chuong",
+  "nhom1901.nhom",
+  "sen.19011091",
+  "sen.19019011",
+  "sen.19019031",
+  "sen.19019091",
+  "tax.19011010",
+  "tax.19011020",
+  "tax.19011030",
+  "tax.19011092",
+  "tax.19011099",
+  "tax.19012010",
+  "tax.19012020",
+  "tax.19012030",
+  "tax.19012040",
+  "tax.19019019",
+  "tax.19019020",
+  "tax.19019032",
+  "tax.19019039",
+  "tax.19019041",
+  "tax.19019049",
+  "tax.19019099"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "model": null,
+  "luc": "2026-10-07T09:08:08.535Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 53,
+  "dat": 51,
+  "loai": 2,
+  "nguonBiCat": []
+ }
+}
