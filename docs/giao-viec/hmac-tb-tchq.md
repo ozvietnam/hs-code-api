@@ -171,3 +171,41 @@ Lấy PDF gốc và trích bảng mã HS của **19/2024/TT-BYT** (danh mục th
 2. Nếu dùng agent: chỉ lưu nguyên văn trang, người review viết bộ tách và đối chiếu
 
 **Bài học**: MÃ và MÔ TẢ phải đọc từ CÙNG MỘT VĂN BẢN. Không ghép từ nguồn khác (CSV tổng hợp + văn bản TB cụ thể).
+
+
+## 📌 Lô 25 TBs ưu tiên 1 năm 2025 (P1) - CẦN NGƯỜI LÀM TAY (07/10/2026)
+
+**Lý do HMAC không làm được:**
+- 25 URLs từ `hmac-bo-sung.csv` ghi năm 2025, nhưng thực tế TVPL lưu với năm khác (2023/2024). Tất cả URLs return `pagenotfound.htm`
+- Tìm URL đúng thất bại: Google rate-limit scrapling, DuckDuckGo 202, caselaw.vn/luatvietnam.vn/hethongphapluat.com/dulieuphapluat.vn đều không có văn bản này
+- Browser-harness không detect Chrome 9222 của anh
+- Subagent thất bại sau 50 lần web_search
+
+**Danh sách 25 TBs cần đọc văn bản gốc (TÊN HÀNG + MÃ HS):**
+- 49, 51 (AscentComTech SFP)
+- 57 (MS Hoof Clean)
+- 64 (Màng nhựa EVA)
+- 70, 71 (Thức uống sữa chà là / nước dừa)
+- 99, 101, 102 (Phụ kiện nhựa 37A7/MEC/MKC)
+- 103 (Màn hình Siemens SIMATIC HMI)
+- 118 (Bột lúa mạch sô cô la)
+- 143 (KLENZIT MS)
+- 144 (SYSTANE Gel Drops)
+- 146 (Pink guava puree)
+- 150 (ASSY-EU FAN MODULE)
+- 151 (Passion fruit juice powder)
+- 170, 171, 172, 173 (COPPER GLEAM HVS-202 A/B/BN/AN)
+- 187 (Acerola spray)
+- 188 (MS GOLDDUST)
+- 189, 190 (C4 Thô / C4 Raffinate-1)
+- 191 (Glentaz Forte)
+
+**Quy trình cho người làm tay:**
+1. Vào Sheet1 cột B, tìm URL đúng cho từng TB (Ctrl+F số TB)
+2. Mở URL trong Chrome (đã đăng nhập TVPL) - KHÔNG dùng curl
+3. Đọc "Số: XXX/TB-TCHQ" verify khớp
+4. Đọc "Tên hàng theo khai báo" (≥40 ký tự)
+5. Đọc "thuộc mã số XXXX.XX.XX" - lấy 8 số
+6. Lưu vào `/tmp/hs-code-api-hmac/data/community/tb-tchq/hmac-2026-10-07-lot3-p1.json` (schema từ CONTRIBUTING.md)
+
+**Bài học bổ sung**: Khi đã verify được scrapling bypass Cloudflare với URL ĐÚNG (test thành công TB 1005/TB-TCHQ/2025) → công cụ work, chỉ thiếu URLs. Có thể dùng scrapling thay browser thật cho batch lớn.
