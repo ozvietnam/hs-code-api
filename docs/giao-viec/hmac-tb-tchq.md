@@ -155,3 +155,19 @@ Lấy PDF gốc và trích bảng mã HS của **19/2024/TT-BYT** (danh mục th
 - Tab **Tổng hợp**: ưu tiên 1 và 2 đạt 100% đã xử lý; ưu tiên 3 làm dần.
 - Mỗi PR có `npm test` xanh, không đụng `data/oz-export/`, không có thông tin doanh nghiệp.
 - Claude (phiên quản lý) duyệt và gộp PR. HMAC không tự gộp vào `main`.
+
+
+## 🛑 TẠM DỪNG HMAC TRÍCH TB-TCHQ (07/10/2026)
+
+**Lý do**: Sau nhiều vòng sửa, dữ liệu vẫn có lỗi hệ thống:
+- 26/162 bản ghi có mã HS và mô tả ghép từ 2 nguồn khác nhau (vd 4034 mã dây thép nhưng mô tả "sợi bông", 3027 mã gối đỡ trục nhưng mô tả "vải ren")
+- Validator chỉ check schema, KHÔNG check ngữ nghĩa
+- Nguy cơ lọt dữ liệu sai vào kho công khai
+
+**Quyết định**: Dừng giao HMAC đọc TB-TCHQ. PR #139 đã đóng (07/10/2026).
+
+**Khuyến nghị**:
+1. Chuyển phần việc cho Thợ 2 hoặc người làm tay
+2. Nếu dùng agent: chỉ lưu nguyên văn trang, người review viết bộ tách và đối chiếu
+
+**Bài học**: MÃ và MÔ TẢ phải đọc từ CÙNG MỘT VĂN BẢN. Không ghép từ nguồn khác (CSV tổng hợp + văn bản TB cụ thể).
