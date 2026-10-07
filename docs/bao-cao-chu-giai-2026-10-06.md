@@ -72,3 +72,40 @@ Còn thiếu, và câu trả lời vẫn tự báo thiếu:
 - Thư mục Drive còn có "Chú giải bổ sung SEN 2022" (AHTN, CV 3866/TCHQ-TXNK). Bản này dùng cho phân nhóm 8 số ASEAN, sẽ nhập riêng vào trường `sen`.
 
 `scripts/test-notes-coverage.mjs` đặt ngưỡng tối thiểu 1.150 nhóm có toàn văn, để dữ liệu không thụt lùi.
+
+## 5. Cập nhật 07/10/2026 chiều: nhập bản HS 2022 toàn tập
+
+Nguồn: "Chu giai HS 2022 Toan tap (HQKV8).pdf" (2.409 trang, 24 MB) trong thư mục Drive "chú giải hs code 2022".
+Lệnh: `python3 scripts/import-chu-giai-pdf.py <thư-mục> --ban 2022 --write`.
+
+**Cách làm với tệp nặng.** Không cần cắt PDF thành nhiều tệp nhỏ. Bộ nhập đọc lần lượt từng trang rồi tách theo chương → nhóm. Mỗi nhóm được kiểm chéo riêng với bản 2017 đã nhập, và một nhóm hỏng không kéo theo nhóm khác. Toàn bộ chạy khoảng 1 phút.
+
+| | Sau nhập bản 2017 (sáng) | Sau nhập bản 2022 |
+|---|---|---|
+| Nhóm có toàn văn (ngoài ch.98) | 1.194, bản 2017 | **1.228/1.228, bản 2022** |
+| Nhóm còn báo thiếu | 32 | **0** |
+| Chương có chú giải bản 2022 | 0 | 96 |
+
+Kiểm chéo từng nhóm:
+
+- **1.191 nhóm** có câu chữ giống bản 2017.
+  - Trong đó có 1509, 1510, 2404, 8524, 8549… Câu chữ cũ của các nhóm này khớp bản 2022, xác nhận nhận định buổi sáng rằng đó là chữ sửa đổi năm 2022.
+- **18 nhóm** có câu chữ khác bản 2017: sửa đổi năm 2022 hoặc dịch lại. Ví dụ 8548: phế liệu pin chuyển sang nhóm mới 85.49.
+- **19 nhóm trước đây trống** nay có chú giải: 71.06–71.18, 8485 (in 3D), 3827, 6208, 8706, 2942, 0309.
+- **6 nhóm bộ chặn nghi ngờ, soát tay xác nhận bản 2022 đúng:** 6204, 6207, 6208, 3826, 8548, 8706.
+  - Bản 2017 của 6207 và 3826 bị tách tràn sang 6208 và chú giải Phần VII. Bản 2022 sửa cả hai.
+
+Lỗi đánh máy trong bản PDF 2022, bộ nhập đã tự xử lý:
+
+- "Chuong 33" không dấu;
+- "37.02-" thay cho 73.02, "90.20" thay cho 90.29;
+- "8706 -" thiếu dấu chấm, "(96.08 -" có ngoặc;
+- phân nhóm "9420.10" thay cho 9402.10. Mã chỉ được sửa sang mã nhóm có thật.
+
+`lib/notes-coverage.js` bỏ lưu ý "bản HS 2017" với các nhóm đã là bản 2022. Test kiểm:
+
+- mọi nhóm có bản 2022;
+- không nhóm nào lẫn chú giải Phần hoặc chương sau;
+- nhóm mới HS 2022 và 71.06–71.18 có chú giải.
+
+Còn lại: SEN 2022 (chú giải bổ sung ASEAN cho mã 8 số) chưa nhập vào trường `sen`.
