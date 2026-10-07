@@ -1,6 +1,16 @@
 # Bước 8 — Sổ tay chú giải: nâng phần đã đọc hiểu lên dạng máy dùng được
 
-**Ngày:** 2026-10-07 · **Trạng thái:** 📋 Thiết kế đã chốt với CEO, chưa làm · **Ai làm:** agent/dev của repo, làm dần theo mục "Cách làm"
+**Ngày:** 2026-10-07 · **Trạng thái:** 🔧 Kệ sách xong (HS 2022 #163, SEN 2022 #166); máy kiểm nguồn + script dựng xong — chờ chạy bước 1 trên .120 ([giao việc](../giao-viec/so-tay-buoc-1.md)) · **Ai làm:** agent/dev của repo, làm dần theo mục "Cách làm"
+
+| Bước | Trạng thái |
+|---|---|
+| Kệ sách: toàn văn chú giải HS 2022 + SEN 2022 | ✅ #162, #163, #166 |
+| Máy kiểm nguồn `lib/so-tay.js` (`trich` nguyên văn, nhóm đích trong câu trích, ngưỡng số, dòng 8 số) + `npm run so-tay:check` | ✅ |
+| 1. Dựng ~60 nhóm bộ đo — `scripts/build-so-tay.mjs --bench=…` | ⏳ chạy trên .120 (cần khoá AI + `/tmp/egcb/out`) |
+| 2. Chạy khô các cổng trên 113 kết quả | ⬜ |
+| 3. Nối `lib/engine-loop.js` | ⬜ |
+| 4. Dựng đủ 1.269 nhóm | ⬜ |
+| 5. Vòng sửa | ⬜ |
 
 ## Vì sao có bước này — và vì sao KHÔNG phải làm lại từ đầu
 
@@ -54,8 +64,11 @@ món. Bộ chuẩn HSCodeComp (2025) đo được: đưa luật thô cho AI làm
 }
 ```
 
-Quy tắc bất biến: **mọi mục phải có `nguon` trỏ tới một câu nguyên văn có thật** (máy kiểm bằng
-`verifyQuote` của `lib/classify.js`); mục không dẫn được nguồn thì bỏ, không giữ "cho đẹp".
+Quy tắc bất biến: **mọi mục phải có `nguon` (mã nguồn) + `trich` (câu nguyên văn chép từ nguồn đó)**;
+máy kiểm bằng `lib/so-tay.js` (chặt hơn `verifyQuote`: mọi đoạn của câu trích phải có nguyên văn, nhóm
+đích loại trừ phải được nêu trong câu trích, ngưỡng số phải có trong câu trích); mục không dẫn được nguồn
+thì bỏ, không giữ "cho đẹp". Mã nguồn: `nhom<4>.nhom|loai_tru|…`, `ch<2>.chuong`, `phan<2>.phan`,
+`sen.<mã>`, `tax.<8 số>`.
 `phienBan` ghi rõ 2017/2022/SEN để không trộn hai bản chú giải trong một mục.
 
 ## Cách làm (từng bước, mỗi bước có nghiệm thu)
