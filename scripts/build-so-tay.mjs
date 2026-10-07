@@ -48,7 +48,7 @@ Trả JSON đúng lược đồ:
  "dong8": [{"hs": "8 số", "dieuKien": "điều kiện quyết định dòng này", "loaiKhac": true|false, "nguon": "tax.<8 số> hoặc sen.<mã>", "trich": "..."}]
 }
 Quy tắc: loaiTru chỉ ghi khi chú giải nêu ĐÍCH DANH nhóm đích; ngưỡng số (value là số) phải xuất hiện trong câu trích;
-dong8 lấy đủ các dòng 8 số của nhóm có trong nguồn tax.*, dòng "Loại khác" ghi loaiKhac=true; ưu tiên điều kiện từ SEN khi có.
+dong8 lấy đủ các dòng 8 số của nhóm có trong nguồn tax.*, loaiKhac do máy tự điền theo biểu thuế (tên dòng bắt đầu bằng "Loại khác" → true), bạn ghi gì cũng bị ghi đè; ưu tiên điều kiện từ SEN khi có.
 Dòng biểu thuế VN thường chỉ ghi "- - - Loại khác": điều kiện cấp phân nhóm 6 số lấy từ wco.<6 số> (tên WCO, tiếng Anh) — trích nguyên văn tiếng Anh, "nguon": "wco.<6 số>".
 Bài học bước 1 (60 nhóm, 07/10/2026) — bắt buộc:
 - Câu trích phải tự nó nói điều mục khẳng định; KHÔNG ghép hai câu ở hai chỗ khác nhau thành một kết luận (vd định nghĩa A + "ưu tiên nhóm X" ≠ "A thuộc X").
