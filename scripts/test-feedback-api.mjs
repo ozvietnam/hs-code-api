@@ -38,5 +38,15 @@ fs.appendFileSync = orig;
 check('không lưu được → 503, ok=false (không nói dối)', ro._s === 503 && ro._j.ok === false && ro._j.code === 'FEEDBACK_NOT_PERSISTED', ro._j);
 check('503 trả lại bản ghi để phía gọi tự giữ', ro._j.record?.correctedHsCode === '84137019');
 
+
+// Vòng phản hồi ERP → hs-code-api (07/10/2026): bản ghi kèm đầu vào thật + mã hệ thống đề xuất
+{
+  const res = await post({
+    feedbackType: 'staff_choose', source: 'erp-staff', hsCodeAtTime: '95030040', correctedHsCode: '95030099', agrees: false, chosenBy: 'u1',
+    systemTop3: ['9503.00.40', '95030099'], input: { titleZh: '3D打印钥匙扣手指枪', specsZh: '材质: 塑料', nameVi: 'đồ chơi súng ngón tay', facts: [{ key: 'material', valueVi: 'nhựa PLA' }] },
+  });
+  const last = JSON.parse(fs.readFileSync(FEEDBACK_PATH, 'utf8').trim().split('\n').pop());
+  check('phản hồi ERP: lưu đầu vào thật + top3 + agrees', res._s === 200 && last.input?.titleZh === '3D打印钥匙扣手指枪' && last.systemTop3.join(',') === '95030040,95030099' && last.agrees === false && last.source === 'erp-staff' && last.correctedHsCode === '95030099', JSON.stringify(last).slice(0, 300));
+}
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

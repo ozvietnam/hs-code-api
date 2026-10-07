@@ -145,6 +145,19 @@ module.exports = function handler(req, res) {
     productName: body?.productName || null,
     directorNote: body?.directorNote || null,
     orderCode: body?.orderCode || null,
+    // Vòng phản hồi ERP → hs-code-api (07/10/2026, backlog 07 mục 4): nhân viên chốt mã → gửi kèm ĐẦU VÀO THẬT
+    // (tiêu đề tiếng Trung, thông số, dữ kiện phiếu) + mã hệ thống đề xuất. Đây là nguồn duy nhất tạo bộ đo
+    // đúng bài toán (Taobao → mã) và kho tiền lệ tiếng Trung. Chỉ lưu /data (riêng tư), không vào repo.
+    source: body?.source ? String(body.source).slice(0, 40) : null,
+    input: body?.input && typeof body.input === 'object' ? {
+      titleZh: String(body.input.titleZh || '').slice(0, 400) || null,
+      specsZh: String(body.input.specsZh || '').slice(0, 1500) || null,
+      nameVi: String(body.input.nameVi || '').slice(0, 200) || null,
+      facts: Array.isArray(body.input.facts) ? body.input.facts.slice(0, 20) : [],
+    } : null,
+    systemTop3: Array.isArray(body?.systemTop3) ? body.systemTop3.map((h) => String(h).replace(/\D/g, '')).filter(Boolean).slice(0, 3) : [],
+    agrees: typeof body?.agrees === 'boolean' ? body.agrees : null,
+    chosenBy: body?.chosenBy ? String(body.chosenBy).slice(0, 80) : null,
     status: 'pending',
     createdAt: body?.createdAt || new Date().toISOString(),
     receivedAt: new Date().toISOString(),
