@@ -30,7 +30,7 @@ const argv = Object.fromEntries(process.argv.slice(2).map((a) => {
 }));
 
 // Giới hạn chữ mỗi nguồn đưa vào prompt (chú giải 49.11 dài 50k ký tự). Bị cắt thì ghi vào báo cáo.
-const CAP = { nhom: 30000, chuong: 14000, phan: 6000, sen: 4000, other: 4000 };
+const CAP = { nhom: 30000, chuong: 40000, phan: 25000, sen: 4000, other: 4000 }; // bước 1: ch72 bị cắt mất (IV)(B) ở mức 14k
 
 const SYSTEM = `Bạn là chuyên viên phân loại HS Việt Nam, đang soạn SỔ TAY cho MỘT nhóm 4 số từ chú giải nguyên văn.
 Chỉ dùng các NGUỒN được cung cấp; không dùng kiến thức ngoài. Mỗi mục bắt buộc có:
@@ -47,12 +47,14 @@ Trả JSON đúng lược đồ:
  "dong8": [{"hs": "8 số", "dieuKien": "điều kiện quyết định dòng này", "loaiKhac": true|false, "nguon": "tax.<8 số> hoặc sen.<mã>", "trich": "..."}]
 }
 Quy tắc: loaiTru chỉ ghi khi chú giải nêu ĐÍCH DANH nhóm đích; ngưỡng số (value là số) phải xuất hiện trong câu trích;
-dong8 lấy đủ các dòng 8 số của nhóm có trong nguồn tax.*, dòng "Loại khác" ghi loaiKhac=true; ưu tiên điều kiện từ SEN khi có.`;
+dong8 lấy đủ các dòng 8 số của nhóm có trong nguồn tax.*, dòng "Loại khác" ghi loaiKhac=true; ưu tiên điều kiện từ SEN khi có.
+Dòng biểu thuế VN thường chỉ ghi "- - - Loại khác": điều kiện cấp phân nhóm 6 số lấy từ wco.<6 số> (tên WCO, tiếng Anh) — trích nguyên văn tiếng Anh, "nguon": "wco.<6 số>".
+Câu trích phải tự nó nói điều mục khẳng định; KHÔNG ghép hai câu ở hai chỗ khác nhau thành một kết luận (vd định nghĩa A + "ưu tiên nhóm X" ≠ "A thuộc X").`;
 
 function promptFor(h4, sources) {
   const cut = [];
   const parts = Object.entries(sources).map(([id, text]) => {
-    const kind = id.startsWith('tax.') ? null : id.endsWith('.nhom') ? 'nhom' : id.endsWith('.chuong') ? 'chuong' : id.startsWith('phan') ? 'phan' : id.startsWith('sen.') ? 'sen' : 'other';
+    const kind = id.startsWith('tax.') || id.startsWith('wco.') ? null : id.endsWith('.nhom') ? 'nhom' : id.endsWith('.chuong') ? 'chuong' : id.startsWith('phan') ? 'phan' : id.startsWith('sen.') ? 'sen' : 'other';
     const cap = kind ? CAP[kind] : Infinity;
     if (text.length > cap) cut.push(`${id} (${text.length}→${cap})`);
     return `[${id}]\n${text.slice(0, cap)}`;
