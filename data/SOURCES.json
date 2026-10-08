@@ -5,6 +5,15 @@
       "kind": "CONFIG",
       "descriptionVi": "Tệp này — nguồn gốc từng tệp dữ liệu"
     },
+    "hs-mapping-6digit.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Mapping 6 số WCO ↔ 8 số VN (AHTN). Căn cứ TT 85/2026/TT-BTC Điều 6.1(a)+(c). 5.784 mã 6 số, 11.871 mã 8 số, match rate 100%.",
+      "builtBy": "scripts/build-hs-mapping.mjs"
+    },
+    "sen-2022.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Chú giải bổ sung AHTN 2022 (SEN) — Phụ lục Nghị định thư AHTN. Căn cứ TT 85/2026/TT-BTC Điều 6.1(c)."
+    },
     "accuracy-latest.json": {
       "kind": "REPORT",
       "descriptionVi": "Độ chính xác pipeline (n=57, 2026-07-07)",
