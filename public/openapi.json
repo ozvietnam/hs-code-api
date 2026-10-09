@@ -280,6 +280,24 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "description": "Tên hàng tiếng Việt (tuỳ chọn) — dò cờ chính sách THEO TÊN: văn bản không có bảng mã HS (vd 05/2022/TT-BYT \"kính mắt\") → `policyByName[]` + `reviewByName: true`, mức NOTICE \"chuyên viên kiểm\". Thiếu thì chỉ khớp bằng tên dòng biểu thuế.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "purpose",
+            "in": "query",
+            "required": false,
+            "description": "Công dụng / chức năng chính tiếng Việt (tuỳ chọn) — cùng mục đích với `name`",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -659,6 +677,74 @@
                           "url": {
                             "type": "string",
                             "description": "Bảng trong sổ cộng đồng"
+                          }
+                        }
+                      }
+                    },
+                    "reviewByName": {
+                      "type": "boolean",
+                      "description": "true = có ít nhất một dòng chính sách khớp THEO TÊN (policyByName) — mức NOTICE, hasActionablePolicy=true, ERP hiện \"chuyên viên kiểm\" chứ không phải cờ đỏ."
+                    },
+                    "policyByName": {
+                      "type": "array",
+                      "description": "Cờ theo tên gọi (CEO 08/10/2026): văn bản không có bảng mã HS (data/policy-name-rules.json) hoặc dòng không mã trong sổ cộng đồng khớp cụm từ vào tên dòng biểu thuế / `name` / `purpose`, lọc theo chương. Không khẳng định mã thuộc diện — luôn kèm canCu để NV kiểm.",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "level": {
+                            "type": "string",
+                            "enum": [
+                              "REVIEW"
+                            ]
+                          },
+                          "source": {
+                            "type": "string",
+                            "enum": [
+                              "name"
+                            ]
+                          },
+                          "ruleId": {
+                            "type": "string",
+                            "description": "Mã luật trong policy-name-rules.json (null nếu từ sổ cộng đồng)"
+                          },
+                          "soHieu": {
+                            "type": "string",
+                            "description": "Số hiệu văn bản"
+                          },
+                          "ten": {
+                            "type": "string",
+                            "description": "Trích dẫn / tên văn bản"
+                          },
+                          "nguon": {
+                            "type": "string",
+                            "description": "Số hiệu + điều/mục hoặc nơi trích"
+                          },
+                          "cumTu": {
+                            "type": "string",
+                            "description": "Cụm từ đã khớp"
+                          },
+                          "matchedIn": {
+                            "type": "string",
+                            "enum": [
+                              "tariffNameVi",
+                              "productNameVi",
+                              "purposeVi"
+                            ]
+                          },
+                          "canCu": {
+                            "type": "string",
+                            "description": "\"<cụm từ>\" khớp <tên dòng biểu thuế|tên hàng|công dụng>"
+                          },
+                          "coQuan": {
+                            "type": "string",
+                            "description": "Mã bộ quản lý"
+                          },
+                          "loaiTacDong": {
+                            "type": "string"
+                          },
+                          "ghiChu": {
+                            "type": "string",
+                            "description": "Ghi chú cho NV kiểm"
                           }
                         }
                       }
@@ -2628,7 +2714,7 @@
   },
   "x-generated": {
     "by": "scripts/build-openapi.mjs",
-    "at": "2026-10-05",
+    "at": "2026-10-09",
     "note": "Sinh tự động từ lib/public-access.js — đừng sửa tay, sửa nguồn rồi chạy npm run build."
   }
 }

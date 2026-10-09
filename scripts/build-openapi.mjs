@@ -238,6 +238,18 @@ const TAX_RESPONSE = {
         hieuLucDaDoiChieu: { type: 'boolean' }, table: { type: 'object' }, url: str('Bảng trong sổ cộng đồng'),
       } },
     },
+    reviewByName: { type: 'boolean', description: 'true = có ít nhất một dòng chính sách khớp THEO TÊN (policyByName) — mức NOTICE, hasActionablePolicy=true, ERP hiện "chuyên viên kiểm" chứ không phải cờ đỏ.' },
+    policyByName: {
+      type: 'array',
+      description: 'Cờ theo tên gọi (CEO 08/10/2026): văn bản không có bảng mã HS (data/policy-name-rules.json) hoặc dòng không mã trong sổ cộng đồng khớp cụm từ vào tên dòng biểu thuế / `name` / `purpose`, lọc theo chương. Không khẳng định mã thuộc diện — luôn kèm canCu để NV kiểm.',
+      items: { type: 'object', properties: {
+        level: { type: 'string', enum: ['REVIEW'] }, source: { type: 'string', enum: ['name'] }, ruleId: str('Mã luật trong policy-name-rules.json (null nếu từ sổ cộng đồng)'),
+        soHieu: str('Số hiệu văn bản'), ten: str('Trích dẫn / tên văn bản'), nguon: str('Số hiệu + điều/mục hoặc nơi trích'),
+        cumTu: str('Cụm từ đã khớp'), matchedIn: { type: 'string', enum: ['tariffNameVi', 'productNameVi', 'purposeVi'] },
+        canCu: str('"<cụm từ>" khớp <tên dòng biểu thuế|tên hàng|công dụng>'), coQuan: str('Mã bộ quản lý'),
+        loaiTacDong: { type: 'string' }, ghiChu: str('Ghi chú cho NV kiểm'),
+      } },
+    },
     mappedHs: { type: 'object', description: 'Chương 98: mã hàng tương ứng tại Mục I' },
     tariff: { type: 'object', description: 'effectiveDate, lastCheckedAt, freshness (OK/DUE/...), noteVi' },
     breadcrumb: { type: 'object' },
@@ -321,7 +333,12 @@ const paths = {
         'lục loại trừ, vẫn phải khai ở mức `rate`; `noteVi` là nguyên văn lý do. Cùng với đó là ' +
         '`breadcrumb` cho biết mã nằm ở đâu trong biểu thuế — cần thiết với các mã có tên chỉ là ' +
         '"Loại khác". Lưu ý quy ước trường `taxVat` dạng "A/B": A là mức ĐANG áp dụng, B là mức còn lại.',
-      params: [q('hs', 'Mã HS 8 số, vd 84137090', true), q('origin', 'Nước xuất xứ ISO-2 để tính ACFTA (mặc định CN)')],
+      params: [
+        q('hs', 'Mã HS 8 số, vd 84137090', true),
+        q('origin', 'Nước xuất xứ ISO-2 để tính ACFTA (mặc định CN)'),
+        q('name', 'Tên hàng tiếng Việt (tuỳ chọn) — dò cờ chính sách THEO TÊN: văn bản không có bảng mã HS (vd 05/2022/TT-BYT "kính mắt") → `policyByName[]` + `reviewByName: true`, mức NOTICE "chuyên viên kiểm". Thiếu thì chỉ khớp bằng tên dòng biểu thuế.'),
+        q('purpose', 'Công dụng / chức năng chính tiếng Việt (tuỳ chọn) — cùng mục đích với `name`'),
+      ],
       response: TAX_RESPONSE,
       errors: { 400: 'Thiếu tham số hs', 404: 'Mã không có trong biểu thuế (kèm relatedHsCodes)' },
     }),

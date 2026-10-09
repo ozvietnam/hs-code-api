@@ -98,6 +98,26 @@ made-in-china (pilot 06/10: chương 84/85/90, ≥2 shop cùng ghi mã → 6/6 �
 5/11): chỉ bật cho hàng có model thuộc 84/85/90 hoặc khi hai luồng bất đồng; chỉ đọc ô có
 cấu trúc (JSON-LD `HS Code`, Material, Application), không đọc văn quảng cáo.
 
+### E-7 · Cờ chính sách THEO TÊN (đã làm 09/10/2026 — nhánh `feat/policy-name-listings`)
+CEO 08/10: *"hàng có chính sách, dò theo tên gọi và chức năng chính mà không được gắn cờ để nhân viên
+kiểm tra lại?"* — 9004.90.10 "Kính thuốc" là thiết bị y tế theo 05/2022/TT-BYT Điều 6 mục 43, nhưng văn bản
+không có bảng mã HS nên `hsListings` (khớp theo mã) không bao giờ bật.
+- `lib/policy-name-match.js` `matchPolicyByName({hs, tariffNameVi, productNameVi, purposeVi})`: khớp **cả cụm**
+  âm tiết đã chuẩn hoá (`lib/vi-tokens.js`, giữ dấu) vào tên dòng biểu thuế + tên hàng + công dụng, lọc theo
+  chương. Hai nguồn: `data/policy-name-rules.json` (soạn tay) + dòng `hs: null` của `plhq-hs-index`
+  (`plhq-registry.nameListings()`, vế ≥ 2 âm tiết). Không LLM.
+- Thang mức: **NOTICE** + `reviewByName: true` + `hasActionablePolicy: true`; `policyLines` thêm dòng
+  "Có thể thuộc quản lý <bộ> theo <số hiệu> — "<cụm>" khớp <đâu> — chuyên viên kiểm"; `/api/tax` trả
+  `policyByName[]`; `ministries` cộng thêm cơ quan ban hành văn bản khớp (`fromPolicyDoc: true`).
+- `/api/tax?hs=…&name=…&purpose=…` (tuỳ chọn, ERP gửi sau); thiếu vẫn khớp bằng tên dòng biểu thuế.
+- **Thêm mục vào `data/policy-name-rules.json`**: một object trong `rules[]` với `id`, `nguon` (số hiệu +
+  điều/mục hoặc nơi trích — KHÔNG bịa), `soHieu`, `trichDan` (nguyên văn), `cumTu[]` (cụm tiếng Việt có
+  dấu, 2+ âm tiết, tên hàng rõ — không đưa từ rộng như "hoá chất"), `chapters[]` (chương 2 số được phép
+  khớp — chặn "kính" bắt kính xây dựng chương 70), `coQuan`, `loaiTacDong` (cùng bộ mã plhq-hs-index),
+  `ghiChu` (NV cần kiểm gì). Chạy `node scripts/test-policy-name-match.mjs`.
+- Việc mở: khi oz-wiki trích xong bảng 19/2024/TT-BYT (có mã) thì mục `byt-05-2022-d6-43-kinh-mat` trở
+  thành lưới phụ — giữ, vì tên hàng vẫn bắt được mã khai sai nhóm.
+
 ## DUY TRÌ THEO THỜI GIAN
 
 | Nhịp | Việc | Vì sao |
@@ -105,6 +125,7 @@ cấu trúc (JSON-LD `HS Code`, Material, Application), không đọc văn quả
 | **Sau mỗi lần đổi pipeline/prompt** | `bench-classify-llm.mjs` cả hai `--engine`, ghi image SHA vào bảng trên | Không đo thì không biết tiến hay lùi |
 | **Hằng tuần** | Đếm món ERP `DONE` không có mã + tỉ lệ `review.needed` | Rỗng = lỗi im lặng; cờ quá nhiều = nhân viên bỏ qua cờ |
 | **Khi thêm tri thức mới** | Cập nhật bảng "Tri thức → luồng" ở trên | Lý do có bước này: tri thức xây xong mà không nối |
+| **Khi có văn bản KTCN mới không bảng mã** | Thêm mục `data/policy-name-rules.json` (E-7) | Không có mã thì chỉ tên mới bật được cờ |
 
 ## Đợt 2 (06–07/10/2026) — động cơ hai vòng + chốt chặn (`lib/engine-loop.js`, bật `HS_CLASSIFY_ENGINE=loop`)
 

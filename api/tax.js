@@ -12,7 +12,12 @@ module.exports = function handler(req, res) {
   }
   if (requireAuthUnlessPublic(req, res, { endpoint: 'tax' })) return;
 
+  // name/purpose (tuỳ chọn): tên hàng + công dụng để dò cờ chính sách theo tên (CEO 08/10/2026).
+  // Nhận cả query lẫn body (ERP có thể gửi JSON); thiếu thì vẫn khớp bằng tên dòng biểu thuế.
+  const body = req.body && typeof req.body === 'object' ? req.body : {};
   const { hs, origin } = req.query;
+  const name = String(req.query.name || body.name || '').trim().slice(0, 500) || null;
+  const purpose = String(req.query.purpose || body.purpose || '').trim().slice(0, 500) || null;
   if (!hs) {
     return res.status(400).json({
       error: 'Missing hs parameter',
@@ -20,11 +25,12 @@ module.exports = function handler(req, res) {
     });
   }
 
-  const result = buildTaxLookup(hs, origin ? { origin } : undefined);
+  const result = buildTaxLookup(hs, { ...(origin ? { origin } : {}), name, purpose });
   if (!result.found) {
     return res.status(404).json(result);
   }
 
-  res.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=3600');
+  // Có name/purpose → kết quả phụ thuộc đầu vào riêng, không cache chung.
+  res.setHeader('Cache-Control', name || purpose ? 'no-store' : 'public, max-age=86400, stale-while-revalidate=3600');
   return res.status(200).json(result);
 };

@@ -246,6 +246,10 @@
       "descriptionVi": "Bản chụp sổ đăng ký văn bản của kho cộng đồng oz-wiki-plhq (CC BY 4.0): hiệu lực, thay thế, mức xác minh — lib/plhq-registry.js, legalBasisRegistry + policyBasisReview trong /api/tax",
       "builtBy": "scripts/sync-plhq.mjs"
     },
+    "policy-name-rules.json": {
+      "kind": "CURATED",
+      "descriptionVi": "Mô tả hàng chịu quản lý trích từ văn bản KHÔNG có bảng mã HS (05/2022/TT-BYT Điều 6 mục 43 kính mắt; phạm vi 41/2026/TT-BXD, 36/2026/TT-BKHCN, 16/2026/TT-BNV, 27/2026/TT-BNNMT, 33/2026/TT-BCT theo ktcn-regime-2026.json) — lib/policy-name-match.js khớp cụm từ theo chương → policyByName / reviewByName trong /api/tax (cờ 'NV kiểm')"
+    },
     "plhq-hs-index.json": {
       "kind": "DERIVED",
       "descriptionVi": "Bản rút gọn bảng mã HS ↔ văn bản danh mục của kho cộng đồng oz-wiki-plhq (dist/hs-index.json, CC BY 4.0): mã 4/6/8 số, loại tác động, điều kiện, tình trạng hiệu lực văn bản — lib/plhq-registry.js hsListings, trường hsListings trong /api/tax",
