@@ -80,5 +80,14 @@ check('JSON hỏng → gọi lại tắt suy nghĩ → vẫn ra mã', r.results[
 r = await run(KNIFE, [new Error('HTTP 429 Token Plan rate limit')]);
 check('vòng 1 lỗi tạm thời → nextAction RETRY', r.nextAction?.type === 'RETRY' && r.results.length === 0);
 
+
+// 09/10/2026: key Gemini hết tiền nạp (402) → không thử lại 5/15/30 s, lùi MiniMax ngay.
+{
+  const { isGeminiBillingError } = await import('../lib/engine-loop.js').then((m) => m.default || m);
+  check('402 credits depleted là lỗi thanh toán', isGeminiBillingError('Gemini API error 402: {"error":{"code":402,"message":"Your prepayment credits are depleted."}}'));
+  check('403 PERMISSION_DENIED là lỗi khoá key', isGeminiBillingError('Gemini API error 403: PERMISSION_DENIED'));
+  check('503 quá tải KHÔNG phải lỗi thanh toán (vẫn thử lại)', !isGeminiBillingError('Gemini API error 503: high demand'));
+  check('timeout KHÔNG phải lỗi thanh toán', !isGeminiBillingError('Gemini timeout after 90000ms'));
+}
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
