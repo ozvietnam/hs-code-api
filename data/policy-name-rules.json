@@ -1,0 +1,72 @@
+{
+  "_comment": "Mô tả hàng chịu quản lý trích từ văn bản KHÔNG có bảng mã HS (hoặc bảng mã chưa được trích) — lib/policy-name-match.js khớp theo cụm từ vào tên dòng biểu thuế / tên hàng / công dụng, lọc theo chương, trả cờ mức 'NV kiểm' (không chặn cứng, luôn kèm căn cứ). Mỗi mục: nguon = số hiệu + điều/mục hoặc nơi trích (không bịa), cumTu = cụm tiếng Việt có dấu (khớp nguyên cụm, theo âm tiết), chapters = chương 2 số được phép khớp (tránh 'kính' khớp kính xây dựng chương 70), loaiTacDong = cùng bộ mã với plhq-hs-index (KIEM_TRA_CHAT_LUONG, CONG_BO_HOP_QUY, DANG_KY_LUU_HANH, GIAY_PHEP, KIEM_TRA_ATTP, KHAC…). Thêm mục mới: xem docs/backlog/07-mot-engine.md mục 'Cờ theo tên'.",
+  "version": "2026-10-09",
+  "rules": [
+    {
+      "id": "byt-05-2022-d6-43-kinh-mat",
+      "nguon": "05/2022/TT-BYT Điều 6 mục 43",
+      "soHieu": "05/2022/TT-BYT",
+      "trichDan": "Kính mắt, kính áp tròng (cận, viễn, loạn) và dung dịch bảo quản kính áp tròng",
+      "cumTu": ["kính mắt", "kính thuốc", "kính áp tròng", "kính cận", "kính viễn", "kính loạn", "kính lão", "dung dịch bảo quản kính áp tròng"],
+      "chapters": ["90", "33"],
+      "coQuan": "BYT",
+      "loaiTacDong": "KHAC",
+      "ghiChu": "Thiết bị y tế loại A/B theo khung 05/2022/TT-BYT (được 24/2026/TT-BYT sửa đổi): cần phân loại + công bố tiêu chuẩn áp dụng. 'Kính thuốc' là tên dòng 9004.90.10; 'kính lão' = kính viễn cho người lớn tuổi. Bảng mã 19/2024/TT-BYT chưa trích — NV đối chiếu."
+    },
+    {
+      "id": "bxd-41-2026-vlxd-rui-ro-cao",
+      "nguon": "41/2026/TT-BXD — 09 nhóm vật liệu xây dựng rủi ro cao (data/ktcn-regime-2026.json, Công báo số 404 ngày 17/7/2026)",
+      "soHieu": "41/2026/TT-BXD",
+      "trichDan": "xi măng, gạch gốm ốp lát, đá ốp lát, kính xây dựng, thiết bị vệ sinh, sơn, phụ gia bê tông, thạch cao, nhôm/thanh profile",
+      "cumTu": ["xi măng", "gạch gốm ốp lát", "gạch ốp lát", "đá ốp lát", "kính xây dựng", "thiết bị vệ sinh", "phụ gia bê tông", "thạch cao", "thanh profile nhôm", "nhôm profile"],
+      "chapters": ["25", "32", "38", "68", "69", "70", "76"],
+      "coQuan": "BXD",
+      "loaiTacDong": "KIEM_TRA_CHAT_LUONG",
+      "ghiChu": "Rủi ro cao theo NĐ 37/2026 → kiểm tra chất lượng khi nhập khẩu. Bảng mã HS của phụ lục chưa trích vào plhq-hs-index — NV đối chiếu phụ lục."
+    },
+    {
+      "id": "bkhcn-36-2026-nhom-2",
+      "nguon": "36/2026/TT-BKHCN — phạm vi danh mục (data/ktcn-regime-2026.json, nguồn thứ cấp)",
+      "soHieu": "36/2026/TT-BKHCN",
+      "trichDan": "đồ chơi trẻ em, thiết bị điện và điện tử gia dụng, dây cáp điện, aptomat",
+      "cumTu": ["đồ chơi trẻ em", "đồ chơi", "dây cáp điện", "cáp điện", "aptomat", "áp tô mát"],
+      "chapters": ["85", "95"],
+      "coQuan": "BKHCN",
+      "loaiTacDong": "CONG_BO_HOP_QUY",
+      "ghiChu": "Chỉ bật khi mã không có dòng 8 số trong bảng 36/2026 (bảng đã trích một phần vào plhq-hs-index). Khớp theo tên là lưới phụ — NV kiểm phụ lục."
+    },
+    {
+      "id": "bnv-16-2026-thiet-bi-an-toan",
+      "nguon": "16/2026/TT-BNV — 08 nhóm rủi ro cao (data/ktcn-regime-2026.json, nguồn thứ cấp)",
+      "soHieu": "16/2026/TT-BNV",
+      "trichDan": "thang máy, cần trục, cầu trục, vận thăng, nồi hơi và thiết bị áp lực, thiết bị nâng, phương tiện bảo vệ cá nhân, thiết bị hàn",
+      "cumTu": ["thang máy", "thang cuốn", "cần trục", "cầu trục", "vận thăng", "nồi hơi", "bình chịu áp lực", "thiết bị nâng", "máy hàn", "thiết bị hàn", "mũ bảo hộ", "dây đai an toàn", "giày bảo hộ"],
+      "chapters": ["39", "40", "42", "64", "65", "73", "84", "85"],
+      "coQuan": "BNV",
+      "loaiTacDong": "KIEM_TRA_CHAT_LUONG",
+      "ghiChu": "Văn bản bị thay chưa xác minh (TT 01/2021/TT-BLĐTBXH?). Cụm 'mũ bảo hộ / dây đai an toàn / giày bảo hộ' là ví dụ điển hình của 'phương tiện bảo vệ cá nhân' — NV kiểm phụ lục."
+    },
+    {
+      "id": "bnnmt-27-2026-vat-tu-nong-nghiep",
+      "nguon": "27/2026/TT-BNNMT — rủi ro cao/trung bình (data/ktcn-regime-2026.json, Công báo số 411 ngày 18/7/2026)",
+      "soHieu": "27/2026/TT-BNNMT",
+      "trichDan": "thuốc bảo vệ thực vật, thuốc trừ chuột/nấm/cỏ, chất điều hoà sinh trưởng; thức ăn chăn nuôi, phân bón, giống cây trồng, thuỷ sản",
+      "cumTu": ["thuốc bảo vệ thực vật", "thuốc trừ sâu", "thuốc trừ cỏ", "thuốc diệt cỏ", "thuốc trừ nấm", "thuốc diệt chuột", "thuốc trừ chuột", "chất điều hòa sinh trưởng", "chất điều hoà sinh trưởng", "thức ăn chăn nuôi", "thức ăn thủy sản", "thức ăn thuỷ sản", "phân bón", "giống cây trồng", "hạt giống"],
+      "chapters": ["06", "10", "12", "23", "31", "38"],
+      "coQuan": "BNNMT",
+      "loaiTacDong": "KIEM_TRA_CHAT_LUONG",
+      "ghiChu": "Thuốc BVTV còn cần giấy phép/đăng ký theo Luật BVTV; phân bón cần công nhận lưu hành. Kiểm dịch động/thực vật theo pháp luật riêng, không thuộc mục này."
+    },
+    {
+      "id": "bct-33-2026-rui-ro-trung-binh-cao",
+      "nguon": "33/2026/TT-BCT — phạm vi danh mục (data/ktcn-regime-2026.json, nguồn thứ cấp)",
+      "soHieu": "33/2026/TT-BCT",
+      "trichDan": "tiền chất thuốc nổ, hoá chất, nồi hơi, bình chịu áp lực, chai LPG, thiết bị điện và điện tử, hiệu suất năng lượng",
+      "cumTu": ["chai lpg", "chai chứa lpg", "bình gas", "bình ga", "tiền chất thuốc nổ"],
+      "chapters": ["28", "29", "31", "36", "73"],
+      "coQuan": "BCT",
+      "loaiTacDong": "KIEM_TRA_CHAT_LUONG",
+      "ghiChu": "Thay 41/2023/TT-BCT (tin cậy trung bình–cao). Chỉ đưa cụm có tên hàng rõ; 'hoá chất' quá rộng nên không đưa."
+    }
+  ]
+}
