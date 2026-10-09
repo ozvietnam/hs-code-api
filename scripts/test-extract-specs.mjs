@@ -58,10 +58,11 @@ const r2 = await extract({
 });
 const mat = (r2._j?.attributes || []).find((a) => a.key === 'material');
 check('chữ Hán → gọi AI một lần', llmCalls === 1 && r2._j.llmUsed === true && r2._j.engine?.provider === 'gemini-free');
-check('material dịch sang tiếng Việt, giữ giá trị gốc', mat?.valueVi === 'thép không gỉ 304' && mat.value === '304不锈钢' && mat.method === 'LLM', JSON.stringify(mat));
+// 08/10/2026: chất liệu phổ biến (304不锈钢, 金属…) dịch bằng bảng cố định, không chờ AI.
+check('material dịch sang tiếng Việt (bảng cố định), giữ giá trị gốc', mat?.valueVi === 'thép không gỉ 304' && mat.value === '304不锈钢' && mat.method === 'DICTIONARY', JSON.stringify(mat));
 check('AI bịa bằng chứng → application bị bỏ, vẫn báo thiếu', !(r2._j.attributes || []).some((a) => a.key === 'application') && r2._j.missingKeys.includes('application'), JSON.stringify(r2._j.missingKeys));
 check('容量 mơ hồ: có needKeys volumeMl → chỉ giữ volumeMl', (r2._j.attributes || []).some((a) => a.key === 'volumeMl') && !(r2._j.attributes || []).some((a) => a.key === 'storageCapacity'));
-check('AI chỉ được hỏi khóa cần dịch/cần tìm', Object.keys(lastUser.allowedKeys).sort().join() === 'application,material', JSON.stringify(lastUser.allowedKeys));
+check('AI chỉ được hỏi khóa cần dịch/cần tìm', Object.keys(lastUser.allowedKeys).sort().join() === 'application', JSON.stringify(lastUser.allowedKeys));
 
 // 3. Gọi lại cùng nội dung → lấy từ cache, không gọi AI
 llmCalls = 0;
@@ -93,7 +94,8 @@ const real = await extract({
 const rk = Object.fromEntries((real._j?.attributes || []).map((a) => [a.key, a.valueVi]));
 check('OCR thật: model, kích thước, trọng lượng lấy từ từ điển', rk.modelNumber === 'M120Pro' && rk.dimensions === '118×61×38mm' && rk.netWeight === '100g', JSON.stringify(rk));
 const asked = Object.keys(lastUser?.allowedKeys || {}).sort().join();
-check('OCR thật: chỉ giá trị chữ Hán (接口, 品牌, 颜色) gửi AI dịch, số đo thì không', llmCalls === 1 && asked === 'brand,color,connectivity', asked);
+// 08/10/2026: nhãn hiệu 联想 là tên riêng → giữ nguyên chữ gốc, không gửi AI dịch.
+check('OCR thật: chỉ giá trị chữ Hán (接口, 颜色) gửi AI dịch; nhãn hiệu giữ gốc, số đo thì không', llmCalls === 1 && asked === 'color,connectivity' && rk.brand === '联想', asked + ' ' + rk.brand);
 
 // 7. Bằng chứng khác dấu câu / xuống dòng với chữ OCR vẫn được nhận
 llmCalls = 0;
