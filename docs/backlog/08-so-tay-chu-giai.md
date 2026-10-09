@@ -8,9 +8,10 @@
 | Máy kiểm nguồn `lib/so-tay.js` (`trich` nguyên văn, nhóm đích trong câu trích, ngưỡng số, dòng 8 số) + `npm run so-tay:check` | ✅ |
 | 1. Dựng ~60 nhóm — `data/so-tay/` | ✅ 60 nhóm (#168), sau đó soát độc lập lại 09/10 — bài học: [so-tay-giao-ngoai](../giao-viec/so-tay-giao-ngoai.md) |
 | 1a. Vòng 2: 60 nhóm hay gặp nhất trong tờ khai thật + soát độc lập cả hai vòng | ✅ 120 nhóm, 4.109 mục (#169) |
-| 1b. 1.108 nhóm còn lại — 185 lô giao agent ngoài ([so-tay-lo.csv](../giao-viec/so-tay-lo.csv)) | ⬜ |
-| 2. Chạy khô các cổng (không AI) | ✅ 09/10 — trên 763 tờ khai giữ riêng thay cho 113 kết quả lưu trên .120; 4 cổng bật oan ≤ 3,3 % (mục "Trạng thái 09/10") |
-| 3. Nối `lib/engine-loop.js` | ⚙️ 09/10 — đã nối sau công tắc `HS_SO_TAY` (mặc định tắt); **chờ đo bằng AI thật trên .120** rồi mới bật prod |
+| 1c. Đợt 1 theo tần suất (#194): 32 nhóm, lô xếp theo ưu tiên | ✅ 152 nhóm, 4.930 mục, phủ 90,1 % tờ khai thật (#198) |
+| 1b. 1.076 nhóm còn lại — 180 lô xếp theo ưu tiên ([so-tay-lo.csv](../giao-viec/so-tay-lo.csv)); lô 8 đạt phủ 95 % | ⬜ |
+| 2. Chạy khô các cổng (không AI) | ✅ 09/10 — trên 763 tờ khai giữ riêng thay cho 113 kết quả lưu trên .120; 4 cổng bật oan ≤ 3,2 % với 152 nhóm (mục "Trạng thái 09/10") |
+| 3. Nối `lib/engine-loop.js` | ⚙️ 09/10 — đã nối sau công tắc `HS_SO_TAY` (mặc định tắt); **chờ đo bằng AI thật trên .120** (#193) rồi mới bật prod |
 | 4. Dựng đủ 1.269 nhóm | ⬜ |
 | 5. Vòng sửa | ⬜ |
 
@@ -116,12 +117,12 @@ Ngân sách: vòng 2 mặc định ≤ 4.000 token/món. Chú giải dài chỉ 
 
 **Bốn cổng (kết cục C — máy nghi, không chặn):**
 
-| Cổng | Bật khi | Bật oan trên mã ĐÚNG (601 mẫu) |
+| Cổng | Bật khi | Bật oan trên mã ĐÚNG (152 nhóm sổ tay → 651 mẫu có sổ tay; lượt đầu 120 nhóm/601 mẫu cho kết quả gần như nhau) |
 |---|---|---|
-| `SO_TAY_LOAI_TRU` | Sổ tay nhóm đã chọn loại trừ đích danh một nhóm khác, và **tên hàng** (danh từ đầu, trước định ngữ) chứa tên hàng của mệnh đề loại trừ | **3,3 %** (theo pool ứng viên: 15,6 % — không đạt; cả hai: 0,8 %) |
+| `SO_TAY_LOAI_TRU` | Sổ tay nhóm đã chọn loại trừ đích danh một nhóm khác, và **tên hàng** (danh từ đầu, trước định ngữ) chứa tên hàng của mệnh đề loại trừ | **3,2 %** (theo pool ứng viên: 16,9 % — không đạt; cả hai: 0,8 %) |
 | `SO_TAY_NGUONG` | Điều kiện vào nhóm có ngưỡng khối lượng / điện áp / dung tích mà mọi số đọc được trong hồ sơ đều trái ngưỡng (trừ ngoại lệ "khối lượng bất kỳ") | 0,2 % |
-| `SO_TAY_BO_PHAN` | Vòng 1 đọc ra hàng là **bộ phận** mà dòng chọn là hàng hoàn chỉnh, trong nhóm có dòng bộ phận riêng | 0,7 % |
-| `SO_TAY_DONG8` | Chọn dòng "Loại khác" trong khi tên một dòng cụ thể cùng phân nhóm 6 số nằm trong tên hàng | 1,0 % |
+| `SO_TAY_BO_PHAN` | Vòng 1 đọc ra hàng là **bộ phận** mà dòng chọn là hàng hoàn chỉnh, trong nhóm có dòng bộ phận riêng | 0,8 % |
+| `SO_TAY_DONG8` | Chọn dòng "Loại khác" trong khi tên một dòng cụ thể cùng phân nhóm 6 số nằm trong tên hàng | 0,9 % |
 
 Bài học chạy khô (đã sửa trước khi nối): khớp mọi mảnh của câu → bật oan cao ("Dây cáp điện **có đầu nối**" khớp
 loại trừ "đầu nối … → 85.36"); chỉ khớp **danh từ đầu** của cả hai phía. "… and parts thereof" (7323.93) không phải dòng

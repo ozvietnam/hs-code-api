@@ -4,95 +4,808 @@
   "license": "CC BY 4.0 — dữ liệu mở của hs-code-api, dùng lại xin ghi nguồn",
   "note": "Từ điển nhãn thông số trên trang Taobao/Tmall/1688/Alibaba (tiếng Trung) → khóa trường khai báo chuẩn của hs-code-api (data/chapter-declaration-fields.json). Khóa trùng tên với data/attributes.json được dùng chung. Dùng cho: nhận diện thông số đã có (danh sách còn thiếu), rút thông số từ chữ (/api/extract-specs), và cho ozsource/ERP đặt tên khóa thống nhất. Mỗi mục zh liệt kê nhãn hay gặp; khớp theo nhãn đứng trước dấu ':' hoặc '：'.",
   "keys": {
-    "material": { "labelVi": "Chất liệu", "zh": ["材质", "材料", "主材质", "主材", "产品材质", "面料", "外壳材质", "机身材质", "表面材质"] },
-    "fiberContent": { "labelVi": "Thành phần sợi", "zh": ["成分", "面料成分", "主面料成分", "成分含量", "里料成分", "纤维含量", "含量"] },
-    "upperMaterial": { "labelVi": "Chất liệu mũi giày", "zh": ["鞋面材质", "帮面材质", "鞋面材料"] },
-    "soleMaterial": { "labelVi": "Chất liệu đế", "zh": ["鞋底材质", "大底材质", "外底材质"] },
-    "bladeMaterial": { "labelVi": "Vật liệu lưỡi", "zh": ["刀片材质", "刀刃材质", "刀身材质", "钻头材质"] },
-    "conductorMaterial": { "labelVi": "Vật liệu dẫn", "zh": ["导体材质", "线芯材质", "芯材"] },
-    "steelGrade": { "labelVi": "Mác thép", "zh": ["不锈钢型号", "钢材型号", "钢号", "材质等级"] },
-    "polymerType": { "labelVi": "Loại nhựa", "zh": ["塑料材质", "塑料种类", "树脂类型"] },
-    "rubberType": { "labelVi": "Loại cao su", "zh": ["橡胶材质", "橡胶种类"] },
-    "glassType": { "labelVi": "Loại kính", "zh": ["玻璃类型", "玻璃材质", "镜片材质"] },
-    "power": { "labelVi": "Công suất", "zh": ["功率", "额定功率", "输出功率", "最大功率", "输入功率", "电机功率", "整机功率"], "unitHint": "W" },
-    "voltage": { "labelVi": "Điện áp", "zh": ["电压", "额定电压", "输入电压", "工作电压", "电源电压", "适用电压"], "unitHint": "V" },
-    "outputVoltage": { "labelVi": "Điện áp đầu ra (sạc)", "zh": ["输出电压", "输出"], "unitHint": "V" },
-    "frequency": { "labelVi": "Tần số", "zh": ["频率", "额定频率", "电源频率"], "unitHint": "Hz" },
-    "currentRating": { "labelVi": "Dòng định mức", "zh": ["额定电流", "电流", "输出电流"], "unitHint": "A" },
-    "poleCount": { "labelVi": "Số cực / số chấu", "zh": ["极数", "极", "插孔类型", "孔数", "孔位", "插孔数", "插脚类型"], "unitHint": "P" },
-    "capacityAh": { "labelVi": "Dung lượng pin", "zh": ["电池容量", "容量(mAh)", "额定容量", "电芯容量"], "unitHint": "mAh/Ah" },
-    "batteryChemistry": { "labelVi": "Loại pin", "zh": ["电池类型", "电芯类型", "电池种类"] },
-    "phaseCount": { "labelVi": "Số pha", "zh": ["相数"] },
-    "rpm": { "labelVi": "Vòng/phút", "zh": ["转速", "额定转速", "空载转速"], "unitHint": "rpm" },
-    "connectivity": { "labelVi": "Kết nối", "zh": ["连接方式", "接口类型", "接口", "无线连接", "蓝牙版本"] },
-    "networkGeneration": { "labelVi": "Mạng di động", "zh": ["网络类型", "网络制式"] },
-    "hasSim": { "labelVi": "Khe SIM", "zh": ["SIM卡", "卡槽", "支持SIM卡"] },
-    "screenSize": { "labelVi": "Màn hình", "zh": ["屏幕尺寸", "屏幕大小", "显示屏尺寸"], "unitHint": "inch" },
-    "resolution": { "labelVi": "Độ phân giải", "zh": ["分辨率", "像素"] },
-    "panelType": { "labelVi": "Loại tấm nền", "zh": ["屏幕类型", "面板类型", "屏幕材质"] },
-    "cpuModel": { "labelVi": "CPU", "zh": ["处理器", "CPU型号", "CPU"] },
-    "ramCapacity": { "labelVi": "RAM", "zh": ["运行内存", "内存容量", "内存"] },
-    "storageCapacity": { "labelVi": "Bộ nhớ/ổ cứng", "zh": ["存储容量", "硬盘容量", "机身存储", "容量"] },
-    "lightType": { "labelVi": "Loại đèn", "zh": ["光源类型", "灯源类型", "光源"] },
-    "modelNumber": { "labelVi": "Model", "zh": ["型号", "产品型号", "货号", "款号", "规格型号"] },
-    "partNumber": { "labelVi": "Mã linh kiện", "zh": ["料号", "零件号", "配件号"] },
-    "dimensions": { "labelVi": "Kích thước", "zh": ["尺寸", "产品尺寸", "外形尺寸", "规格尺寸", "长宽高", "产品规格", "整机尺寸"], "unitHint": "mm/cm" },
-    "packageDimensions": { "labelVi": "Kích thước kiện", "zh": ["包装尺寸", "包装规格", "外箱尺寸", "单件尺寸", "件尺寸"], "unitHint": "cm", "noteVi": "Kích thước KIỆN đóng gói (bảng 商品件重尺 / 包装信息 của 1688) — không phải kích thước sản phẩm; không đưa vào mô tả ECUS, dùng cho vận chuyển." },
-    "packageWeight": { "labelVi": "Trọng lượng kiện", "zh": ["包装重量", "单件重量", "件重", "整箱重量"], "unitHint": "g/kg", "noteVi": "Khối lượng kiện (cả bì) của SKU đang chọn — không phải trọng lượng tịnh." },
-    "packageVolume": { "labelVi": "Thể tích kiện", "zh": ["包装体积", "体积", "单件体积"], "unitHint": "cm³", "noteVi": "Thể tích kiện đóng gói từ bảng 商品件重尺." },
-    "thickness": { "labelVi": "Độ dày", "zh": ["厚度", "厚"], "unitHint": "mm" },
-    "size": { "labelVi": "Cỡ/size", "zh": ["尺码", "码数", "适用尺码"] },
-    "pipeDiameter": { "labelVi": "Đường kính ống", "zh": ["管径", "口径", "公称直径", "接口尺寸"] },
-    "crossSection": { "labelVi": "Tiết diện", "zh": ["截面积", "线径", "平方数"], "unitHint": "mm²" },
-    "cableLength": { "labelVi": "Chiều dài cáp", "zh": ["线长", "线材长度", "电线长度"], "unitHint": "m" },
-    "volumeMl": { "labelVi": "Dung tích", "zh": ["容量", "净含量", "容积", "规格(ml)"], "unitHint": "ml/L" },
-    "color": { "labelVi": "Màu sắc", "zh": ["颜色", "颜色分类", "色系"] },
-    "form": { "labelVi": "Dạng hàng", "zh": ["形状", "形态", "产品形态", "剂型"] },
-    "dosageForm": { "labelVi": "Dạng bào chế", "zh": ["剂型", "产品剂型", "质地"] },
-    "activeIngredient": { "labelVi": "Hoạt chất/hàm lượng", "zh": ["主要成分", "有效成分", "配料", "配料表", "全成分"] },
-    "cosmeticFunction": { "labelVi": "Công dụng mỹ phẩm", "zh": ["功效", "护肤功效", "产品功效"] },
-    "fragranceType": { "labelVi": "Loại hương", "zh": ["香调", "香型", "香味"] },
-    "targetGroup": { "labelVi": "Đối tượng", "zh": ["适用人群", "适用对象", "适用性别", "适用年龄"] },
-    "garmentType": { "labelVi": "Loại trang phục", "zh": ["服装款式", "款式", "品类"] },
-    "constructionType": { "labelVi": "Cấu trúc vải", "zh": ["面料工艺", "织造方法", "针织/梭织"] },
-    "application": { "labelVi": "Công dụng cụ thể", "zh": ["用途", "适用场景", "使用场景", "适用范围", "应用范围", "适用对象"] },
-    "machineFunction": { "labelVi": "Chức năng máy", "zh": ["功能", "主要功能", "产品功能"] },
-    "applianceFunction": { "labelVi": "Chức năng thiết bị", "zh": ["功能", "加热方式", "主要功能"] },
-    "principle": { "labelVi": "Nguyên lý hoạt động", "zh": ["工作原理", "原理"] },
-    "controlType": { "labelVi": "Điều khiển", "zh": ["控制方式", "操控方式", "控制类型"] },
-    "measurementType": { "labelVi": "Đại lượng đo", "zh": ["测量对象", "测量类型", "测量参数"] },
-    "toolType": { "labelVi": "Loại dụng cụ", "zh": ["工具类型", "工具种类"] },
-    "valveType": { "labelVi": "Loại van", "zh": ["阀门类型", "阀门种类"] },
-    "pumpType": { "labelVi": "Loại bơm", "zh": ["泵类型", "水泵类型"] },
-    "flowRate": { "labelVi": "Lưu lượng", "zh": ["流量", "最大流量", "额定流量"], "unitHint": "L/min, m³/h" },
-    "headPressure": { "labelVi": "Cột áp", "zh": ["扬程", "最大扬程"], "unitHint": "m" },
-    "pressureRating": { "labelVi": "Áp suất làm việc", "zh": ["压力", "工作压力", "额定压力", "公称压力"], "unitHint": "bar/MPa" },
-    "coolingCapacity": { "labelVi": "Công suất lạnh", "zh": ["制冷量", "制冷功率"], "unitHint": "W/BTU" },
-    "refrigerant": { "labelVi": "Môi chất lạnh", "zh": ["制冷剂", "冷媒"] },
-    "liftCapacity": { "labelVi": "Tải trọng nâng", "zh": ["载重", "额定载重", "起重量", "承重"], "unitHint": "kg/tấn" },
-    "liftHeight": { "labelVi": "Chiều cao nâng", "zh": ["起升高度", "提升高度"], "unitHint": "m" },
-    "engineDisplacement": { "labelVi": "Dung tích xi lanh", "zh": ["排量", "发动机排量"], "unitHint": "cc" },
-    "fuelType": { "labelVi": "Nhiên liệu", "zh": ["燃料类型", "燃料", "动力类型"] },
-    "printTechnology": { "labelVi": "Công nghệ in", "zh": ["打印方式", "打印技术"] },
-    "printSpeed": { "labelVi": "Tốc độ in", "zh": ["打印速度"], "unitHint": "trang/phút" },
-    "tireSize": { "labelVi": "Quy cách lốp", "zh": ["轮胎规格", "胎宽"] },
-    "moisturePercent": { "labelVi": "Độ ẩm", "zh": ["含水率", "水分"], "unitHint": "%" },
-    "viscosityGrade": { "labelVi": "Độ nhớt", "zh": ["粘度等级", "粘度"] },
-    "workingWidth": { "labelVi": "Chiều rộng làm việc", "zh": ["工作宽度", "作业幅宽", "幅宽"], "unitHint": "m" },
-    "spindlePower": { "labelVi": "Công suất trục chính", "zh": ["主轴功率"], "unitHint": "kW" },
-    "tableSize": { "labelVi": "Kích thước bàn", "zh": ["工作台尺寸", "台面尺寸"], "unitHint": "mm" },
-    "netWeight": { "labelVi": "Trọng lượng tịnh", "zh": ["净重", "产品净重", "重量", "产品重量", "毛重"], "unitHint": "kg/g", "noteVi": "Không thuộc danh mục trường khai báo theo nhóm; dùng cho mô tả ECUS và vận chuyển. 毛重 là trọng lượng cả bì." },
-    "brand": { "labelVi": "Nhãn hiệu", "zh": ["品牌", "品牌名称", "商标"], "noteVi": "Dùng cho mô tả ECUS; không quyết định mã HS." },
-    "origin": { "labelVi": "Nơi sản xuất", "zh": ["产地", "原产地", "生产地", "产地国", "国产/进口"], "noteVi": "Nơi sản xuất theo lời người bán, khác nơi mua hàng. Đối chiếu originAssessment." },
-    "lensMaterial": { "labelVi": "Chất liệu tròng kính", "zh": ["镜片材质", "镜片材料", "镜片"] },
-    "frameMaterial": { "labelVi": "Chất liệu gọng kính", "zh": ["镜框材质", "镜架材质", "框架材质", "镜腿材质", "镜框"] },
-    "lensPower": { "labelVi": "Độ kính", "zh": ["度数", "镜片度数", "老花度数", "近视度数", "是否有度数", "有无度数"], "unitHint": "độ (+1.00…)" },
-    "eyewearType": { "labelVi": "Loại kính mắt", "zh": ["眼镜类型", "镜片类型", "镜片功能", "眼镜款式", "产品类别"], "noteVi": "Kính thuốc / kính râm / kính bảo hộ / kính lão (nhóm 9004)." },
-    "focalLength": { "labelVi": "Tiêu cự / độ hội tụ", "zh": ["焦距", "焦段", "光学焦距"], "unitHint": "mm / diop" },
-    "magnification": { "labelVi": "Độ phóng đại", "zh": ["放大倍数", "倍率", "倍数", "放大倍率", "变倍范围"], "unitHint": "x" },
-    "powerSource": { "labelVi": "Nguồn điện (nếu có)", "zh": ["供电方式", "电源方式", "电源类型", "供电", "电池类型", "是否需要电源"], "noteVi": "Không bắt buộc; ghi 'không dùng điện' nếu hàng cơ học." },
-    "bodyContact": { "labelVi": "Bộ phận cơ thể tiếp xúc / sử dụng", "zh": ["适用部位", "使用部位", "作用部位", "适用部分"] },
-    "riskClass": { "labelVi": "Phân loại rủi ro TTBYT", "zh": ["管理类别", "医疗器械分类", "风险等级", "器械类别", "注册类别"], "noteVi": "Nhóm 9018–9022: loại A/B/C/D theo NĐ 98/2021." },
-    "furnitureType": { "labelVi": "Loại đồ nội thất", "zh": ["家具类型", "家具种类", "产品类型", "款式类型"] }
+    "material": {
+      "labelVi": "Chất liệu",
+      "zh": [
+        "材质",
+        "材料",
+        "主材质",
+        "主材",
+        "产品材质",
+        "面料",
+        "外壳材质",
+        "机身材质",
+        "表面材质"
+      ]
+    },
+    "fiberContent": {
+      "labelVi": "Thành phần sợi",
+      "zh": [
+        "成分",
+        "面料成分",
+        "主面料成分",
+        "成分含量",
+        "里料成分",
+        "纤维含量",
+        "含量"
+      ]
+    },
+    "upperMaterial": {
+      "labelVi": "Chất liệu mũi giày",
+      "zh": [
+        "鞋面材质",
+        "帮面材质",
+        "鞋面材料"
+      ]
+    },
+    "soleMaterial": {
+      "labelVi": "Chất liệu đế",
+      "zh": [
+        "鞋底材质",
+        "大底材质",
+        "外底材质"
+      ]
+    },
+    "bladeMaterial": {
+      "labelVi": "Vật liệu lưỡi",
+      "zh": [
+        "刀片材质",
+        "刀刃材质",
+        "刀身材质",
+        "钻头材质"
+      ]
+    },
+    "conductorMaterial": {
+      "labelVi": "Vật liệu dẫn",
+      "zh": [
+        "导体材质",
+        "线芯材质",
+        "芯材"
+      ]
+    },
+    "steelGrade": {
+      "labelVi": "Mác thép",
+      "zh": [
+        "不锈钢型号",
+        "钢材型号",
+        "钢号",
+        "材质等级"
+      ]
+    },
+    "polymerType": {
+      "labelVi": "Loại nhựa",
+      "zh": [
+        "塑料材质",
+        "塑料种类",
+        "树脂类型"
+      ]
+    },
+    "rubberType": {
+      "labelVi": "Loại cao su",
+      "zh": [
+        "橡胶材质",
+        "橡胶种类"
+      ]
+    },
+    "glassType": {
+      "labelVi": "Loại kính",
+      "zh": [
+        "玻璃类型",
+        "玻璃材质",
+        "镜片材质"
+      ]
+    },
+    "power": {
+      "labelVi": "Công suất",
+      "zh": [
+        "功率",
+        "额定功率",
+        "输出功率",
+        "最大功率",
+        "输入功率",
+        "电机功率",
+        "整机功率"
+      ],
+      "unitHint": "W"
+    },
+    "voltage": {
+      "labelVi": "Điện áp",
+      "zh": [
+        "电压",
+        "额定电压",
+        "输入电压",
+        "工作电压",
+        "电源电压",
+        "适用电压"
+      ],
+      "unitHint": "V"
+    },
+    "outputVoltage": {
+      "labelVi": "Điện áp đầu ra (sạc)",
+      "zh": [
+        "输出电压",
+        "输出"
+      ],
+      "unitHint": "V"
+    },
+    "frequency": {
+      "labelVi": "Tần số",
+      "zh": [
+        "频率",
+        "额定频率",
+        "电源频率"
+      ],
+      "unitHint": "Hz"
+    },
+    "currentRating": {
+      "labelVi": "Dòng định mức",
+      "zh": [
+        "额定电流",
+        "电流",
+        "输出电流"
+      ],
+      "unitHint": "A"
+    },
+    "poleCount": {
+      "labelVi": "Số cực / số chấu",
+      "zh": [
+        "极数",
+        "极",
+        "插孔类型",
+        "孔数",
+        "孔位",
+        "插孔数",
+        "插脚类型"
+      ],
+      "unitHint": "P"
+    },
+    "capacityAh": {
+      "labelVi": "Dung lượng pin",
+      "zh": [
+        "电池容量",
+        "容量(mAh)",
+        "额定容量",
+        "电芯容量"
+      ],
+      "unitHint": "mAh/Ah"
+    },
+    "batteryChemistry": {
+      "labelVi": "Loại pin",
+      "zh": [
+        "电池类型",
+        "电芯类型",
+        "电池种类"
+      ]
+    },
+    "phaseCount": {
+      "labelVi": "Số pha",
+      "zh": [
+        "相数"
+      ]
+    },
+    "rpm": {
+      "labelVi": "Vòng/phút",
+      "zh": [
+        "转速",
+        "额定转速",
+        "空载转速"
+      ],
+      "unitHint": "rpm"
+    },
+    "connectivity": {
+      "labelVi": "Kết nối",
+      "zh": [
+        "连接方式",
+        "接口类型",
+        "接口",
+        "无线连接",
+        "蓝牙版本"
+      ]
+    },
+    "networkGeneration": {
+      "labelVi": "Mạng di động",
+      "zh": [
+        "网络类型",
+        "网络制式"
+      ]
+    },
+    "hasSim": {
+      "labelVi": "Khe SIM",
+      "zh": [
+        "SIM卡",
+        "卡槽",
+        "支持SIM卡"
+      ]
+    },
+    "screenSize": {
+      "labelVi": "Màn hình",
+      "zh": [
+        "屏幕尺寸",
+        "屏幕大小",
+        "显示屏尺寸"
+      ],
+      "unitHint": "inch"
+    },
+    "resolution": {
+      "labelVi": "Độ phân giải",
+      "zh": [
+        "分辨率",
+        "像素"
+      ]
+    },
+    "panelType": {
+      "labelVi": "Loại tấm nền",
+      "zh": [
+        "屏幕类型",
+        "面板类型",
+        "屏幕材质"
+      ]
+    },
+    "cpuModel": {
+      "labelVi": "CPU",
+      "zh": [
+        "处理器",
+        "CPU型号",
+        "CPU"
+      ]
+    },
+    "ramCapacity": {
+      "labelVi": "RAM",
+      "zh": [
+        "运行内存",
+        "内存容量",
+        "内存"
+      ]
+    },
+    "storageCapacity": {
+      "labelVi": "Bộ nhớ/ổ cứng",
+      "zh": [
+        "存储容量",
+        "硬盘容量",
+        "机身存储",
+        "容量"
+      ]
+    },
+    "lightType": {
+      "labelVi": "Loại đèn",
+      "zh": [
+        "光源类型",
+        "灯源类型",
+        "光源"
+      ]
+    },
+    "modelNumber": {
+      "labelVi": "Model",
+      "zh": [
+        "型号",
+        "产品型号",
+        "货号",
+        "款号",
+        "规格型号"
+      ]
+    },
+    "partNumber": {
+      "labelVi": "Mã linh kiện",
+      "zh": [
+        "料号",
+        "零件号",
+        "配件号"
+      ]
+    },
+    "dimensions": {
+      "labelVi": "Kích thước",
+      "zh": [
+        "尺寸",
+        "产品尺寸",
+        "外形尺寸",
+        "规格尺寸",
+        "长宽高",
+        "产品规格",
+        "整机尺寸"
+      ],
+      "unitHint": "mm/cm"
+    },
+    "packageDimensions": {
+      "labelVi": "Kích thước kiện",
+      "zh": [
+        "包装尺寸",
+        "包装规格",
+        "外箱尺寸",
+        "单件尺寸",
+        "件尺寸"
+      ],
+      "unitHint": "cm",
+      "noteVi": "Kích thước KIỆN đóng gói (bảng 商品件重尺 / 包装信息 của 1688) — không phải kích thước sản phẩm; không đưa vào mô tả ECUS, dùng cho vận chuyển."
+    },
+    "packageWeight": {
+      "labelVi": "Trọng lượng kiện",
+      "zh": [
+        "包装重量",
+        "单件重量",
+        "件重",
+        "整箱重量"
+      ],
+      "unitHint": "g/kg",
+      "noteVi": "Khối lượng kiện (cả bì) của SKU đang chọn — không phải trọng lượng tịnh."
+    },
+    "packageVolume": {
+      "labelVi": "Thể tích kiện",
+      "zh": [
+        "包装体积",
+        "体积",
+        "单件体积"
+      ],
+      "unitHint": "cm³",
+      "noteVi": "Thể tích kiện đóng gói từ bảng 商品件重尺."
+    },
+    "thickness": {
+      "labelVi": "Độ dày",
+      "zh": [
+        "厚度",
+        "厚"
+      ],
+      "unitHint": "mm"
+    },
+    "size": {
+      "labelVi": "Cỡ/size",
+      "zh": [
+        "尺码",
+        "码数",
+        "适用尺码"
+      ]
+    },
+    "pipeDiameter": {
+      "labelVi": "Đường kính ống",
+      "zh": [
+        "管径",
+        "口径",
+        "公称直径",
+        "接口尺寸"
+      ]
+    },
+    "crossSection": {
+      "labelVi": "Tiết diện",
+      "zh": [
+        "截面积",
+        "线径",
+        "平方数"
+      ],
+      "unitHint": "mm²"
+    },
+    "cableLength": {
+      "labelVi": "Chiều dài cáp",
+      "zh": [
+        "线长",
+        "线材长度",
+        "电线长度"
+      ],
+      "unitHint": "m"
+    },
+    "volumeMl": {
+      "labelVi": "Dung tích",
+      "zh": [
+        "容量",
+        "净含量",
+        "容积",
+        "规格(ml)"
+      ],
+      "unitHint": "ml/L"
+    },
+    "color": {
+      "labelVi": "Màu sắc",
+      "zh": [
+        "颜色",
+        "颜色分类",
+        "色系"
+      ]
+    },
+    "form": {
+      "labelVi": "Dạng hàng",
+      "zh": [
+        "形状",
+        "形态",
+        "产品形态",
+        "剂型"
+      ]
+    },
+    "dosageForm": {
+      "labelVi": "Dạng bào chế",
+      "zh": [
+        "剂型",
+        "产品剂型",
+        "质地"
+      ]
+    },
+    "activeIngredient": {
+      "labelVi": "Hoạt chất/hàm lượng",
+      "zh": [
+        "主要成分",
+        "有效成分",
+        "配料",
+        "配料表",
+        "全成分"
+      ]
+    },
+    "cosmeticFunction": {
+      "labelVi": "Công dụng mỹ phẩm",
+      "zh": [
+        "功效",
+        "护肤功效",
+        "产品功效"
+      ]
+    },
+    "fragranceType": {
+      "labelVi": "Loại hương",
+      "zh": [
+        "香调",
+        "香型",
+        "香味"
+      ]
+    },
+    "targetGroup": {
+      "labelVi": "Đối tượng",
+      "zh": [
+        "适用人群",
+        "适用对象",
+        "适用性别",
+        "适用年龄"
+      ]
+    },
+    "garmentType": {
+      "labelVi": "Loại trang phục",
+      "zh": [
+        "服装款式",
+        "款式",
+        "品类"
+      ]
+    },
+    "constructionType": {
+      "labelVi": "Cấu trúc vải",
+      "zh": [
+        "面料工艺",
+        "织造方法",
+        "针织/梭织"
+      ]
+    },
+    "application": {
+      "labelVi": "Công dụng cụ thể",
+      "zh": [
+        "用途",
+        "适用场景",
+        "使用场景",
+        "适用范围",
+        "应用范围",
+        "适用对象"
+      ]
+    },
+    "machineFunction": {
+      "labelVi": "Chức năng máy",
+      "zh": [
+        "功能",
+        "主要功能",
+        "产品功能"
+      ]
+    },
+    "applianceFunction": {
+      "labelVi": "Chức năng thiết bị",
+      "zh": [
+        "功能",
+        "加热方式",
+        "主要功能"
+      ]
+    },
+    "principle": {
+      "labelVi": "Nguyên lý hoạt động",
+      "zh": [
+        "工作原理",
+        "原理"
+      ]
+    },
+    "controlType": {
+      "labelVi": "Điều khiển",
+      "zh": [
+        "控制方式",
+        "操控方式",
+        "控制类型"
+      ]
+    },
+    "measurementType": {
+      "labelVi": "Đại lượng đo",
+      "zh": [
+        "测量对象",
+        "测量类型",
+        "测量参数"
+      ]
+    },
+    "toolType": {
+      "labelVi": "Loại dụng cụ",
+      "zh": [
+        "工具类型",
+        "工具种类"
+      ]
+    },
+    "valveType": {
+      "labelVi": "Loại van",
+      "zh": [
+        "阀门类型",
+        "阀门种类"
+      ]
+    },
+    "pumpType": {
+      "labelVi": "Loại bơm",
+      "zh": [
+        "泵类型",
+        "水泵类型"
+      ]
+    },
+    "flowRate": {
+      "labelVi": "Lưu lượng",
+      "zh": [
+        "流量",
+        "最大流量",
+        "额定流量"
+      ],
+      "unitHint": "L/min, m³/h"
+    },
+    "headPressure": {
+      "labelVi": "Cột áp",
+      "zh": [
+        "扬程",
+        "最大扬程"
+      ],
+      "unitHint": "m"
+    },
+    "pressureRating": {
+      "labelVi": "Áp suất làm việc",
+      "zh": [
+        "压力",
+        "工作压力",
+        "额定压力",
+        "公称压力"
+      ],
+      "unitHint": "bar/MPa"
+    },
+    "coolingCapacity": {
+      "labelVi": "Công suất lạnh",
+      "zh": [
+        "制冷量",
+        "制冷功率"
+      ],
+      "unitHint": "W/BTU"
+    },
+    "refrigerant": {
+      "labelVi": "Môi chất lạnh",
+      "zh": [
+        "制冷剂",
+        "冷媒"
+      ]
+    },
+    "liftCapacity": {
+      "labelVi": "Tải trọng nâng",
+      "zh": [
+        "载重",
+        "额定载重",
+        "起重量",
+        "承重"
+      ],
+      "unitHint": "kg/tấn"
+    },
+    "liftHeight": {
+      "labelVi": "Chiều cao nâng",
+      "zh": [
+        "起升高度",
+        "提升高度"
+      ],
+      "unitHint": "m"
+    },
+    "engineDisplacement": {
+      "labelVi": "Dung tích xi lanh",
+      "zh": [
+        "排量",
+        "发动机排量"
+      ],
+      "unitHint": "cc"
+    },
+    "fuelType": {
+      "labelVi": "Nhiên liệu",
+      "zh": [
+        "燃料类型",
+        "燃料",
+        "动力类型"
+      ]
+    },
+    "printTechnology": {
+      "labelVi": "Công nghệ in",
+      "zh": [
+        "打印方式",
+        "打印技术"
+      ]
+    },
+    "printSpeed": {
+      "labelVi": "Tốc độ in",
+      "zh": [
+        "打印速度"
+      ],
+      "unitHint": "trang/phút"
+    },
+    "tireSize": {
+      "labelVi": "Quy cách lốp",
+      "zh": [
+        "轮胎规格",
+        "胎宽"
+      ]
+    },
+    "moisturePercent": {
+      "labelVi": "Độ ẩm",
+      "zh": [
+        "含水率",
+        "水分"
+      ],
+      "unitHint": "%"
+    },
+    "viscosityGrade": {
+      "labelVi": "Độ nhớt",
+      "zh": [
+        "粘度等级",
+        "粘度"
+      ]
+    },
+    "workingWidth": {
+      "labelVi": "Chiều rộng làm việc",
+      "zh": [
+        "工作宽度",
+        "作业幅宽",
+        "幅宽"
+      ],
+      "unitHint": "m"
+    },
+    "spindlePower": {
+      "labelVi": "Công suất trục chính",
+      "zh": [
+        "主轴功率"
+      ],
+      "unitHint": "kW"
+    },
+    "tableSize": {
+      "labelVi": "Kích thước bàn",
+      "zh": [
+        "工作台尺寸",
+        "台面尺寸"
+      ],
+      "unitHint": "mm"
+    },
+    "netWeight": {
+      "labelVi": "Trọng lượng tịnh",
+      "zh": [
+        "净重",
+        "产品净重",
+        "重量",
+        "产品重量",
+        "毛重"
+      ],
+      "unitHint": "kg/g",
+      "noteVi": "Không thuộc danh mục trường khai báo theo nhóm; dùng cho mô tả ECUS và vận chuyển. 毛重 là trọng lượng cả bì."
+    },
+    "brand": {
+      "labelVi": "Nhãn hiệu",
+      "zh": [
+        "品牌",
+        "品牌名称",
+        "商标"
+      ],
+      "noteVi": "Dùng cho mô tả ECUS; không quyết định mã HS."
+    },
+    "origin": {
+      "labelVi": "Nơi sản xuất",
+      "zh": [
+        "产地",
+        "原产地",
+        "生产地",
+        "产地国",
+        "国产/进口"
+      ],
+      "noteVi": "Nơi sản xuất theo lời người bán, khác nơi mua hàng. Đối chiếu originAssessment."
+    },
+    "lensMaterial": {
+      "labelVi": "Chất liệu tròng kính",
+      "zh": [
+        "镜片材质",
+        "镜片材料",
+        "镜片"
+      ]
+    },
+    "frameMaterial": {
+      "labelVi": "Chất liệu gọng kính",
+      "zh": [
+        "镜框材质",
+        "镜架材质",
+        "框架材质",
+        "镜腿材质",
+        "镜框"
+      ]
+    },
+    "lensPower": {
+      "labelVi": "Độ kính",
+      "zh": [
+        "度数",
+        "镜片度数",
+        "老花度数",
+        "近视度数",
+        "是否有度数",
+        "有无度数"
+      ],
+      "unitHint": "độ (+1.00…)"
+    },
+    "eyewearType": {
+      "labelVi": "Loại kính mắt",
+      "zh": [
+        "眼镜类型",
+        "产品类别",
+        "镜片类型",
+        "眼镜款式"
+      ],
+      "noteVi": "Kính thuốc / kính râm / kính bảo hộ / kính lão (nhóm 9004)."
+    },
+    "focalLength": {
+      "labelVi": "Tiêu cự / độ hội tụ",
+      "zh": [
+        "焦距",
+        "焦段",
+        "光学焦距"
+      ],
+      "unitHint": "mm / diop"
+    },
+    "magnification": {
+      "labelVi": "Độ phóng đại",
+      "zh": [
+        "放大倍数",
+        "倍率",
+        "倍数",
+        "放大倍率",
+        "变倍范围"
+      ],
+      "unitHint": "x"
+    },
+    "powerSource": {
+      "labelVi": "Nguồn điện (nếu có)",
+      "zh": [
+        "供电方式",
+        "电源方式",
+        "电源类型",
+        "供电",
+        "电池类型",
+        "是否需要电源"
+      ],
+      "noteVi": "Không bắt buộc; ghi 'không dùng điện' nếu hàng cơ học."
+    },
+    "bodyContact": {
+      "labelVi": "Bộ phận cơ thể tiếp xúc / sử dụng",
+      "zh": [
+        "适用部位",
+        "使用部位",
+        "作用部位",
+        "适用部分"
+      ]
+    },
+    "riskClass": {
+      "labelVi": "Phân loại rủi ro TTBYT",
+      "zh": [
+        "管理类别",
+        "医疗器械分类",
+        "风险等级",
+        "器械类别",
+        "注册类别"
+      ],
+      "noteVi": "Nhóm 9018–9022: loại A/B/C/D theo NĐ 98/2021."
+    },
+    "furnitureType": {
+      "labelVi": "Loại đồ nội thất",
+      "zh": [
+        "家具类型",
+        "家具种类",
+        "产品类型",
+        "款式类型"
+      ]
+    }
   }
 }

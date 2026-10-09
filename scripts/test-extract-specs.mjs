@@ -124,5 +124,13 @@ const w10 = (r10._j?.attributes || []).find((a) => a.key === 'netWeight' && a.va
 check('kích thước có đơn vị/dấu × vẫn nhận', !!d10, JSON.stringify(r10._j?.attributes?.slice(0, 3)));
 check('khối lượng "35g" vẫn nhận', !!w10, JSON.stringify(w10));
 
+
+// ── 10/10/2026: loại kính suy tất định từ 产品类别, không để AI đoán "kính râm" cho kính lão ──
+llmReply = { attributes: [{ key: 'eyewearType', valueVi: 'kính râm', sourceId: 's1', evidenceText: '老花镜' }] };
+const r11 = await extract({ specsZh: [{ key: '产品类别', value: '老花镜' }, { key: '镜片功能', value: '防蓝光' }], needKeys: ['eyewearType'] });
+const e11 = (r11._j?.attributes || []).filter((a) => a.key === 'eyewearType');
+check('产品类别=老花镜 → eyewearType "kính lão (kính viễn)" tất định, không bị AI "kính râm" đè', e11.some((a) => a.valueVi === 'kính lão (kính viễn)' && a.method === 'DICTIONARY') && !e11.some((a) => a.valueVi === 'kính râm' && (a.confidence || 0) >= 0.95), JSON.stringify(e11));
+check('镜片功能=防蓝光 không còn bị coi là loại kính', !e11.some((a) => /ánh sáng xanh/.test(a.valueVi || '') && a.method === 'DICTIONARY'), JSON.stringify(e11));
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

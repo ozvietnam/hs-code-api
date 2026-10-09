@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-10-09T16:12:57.907Z",
+ "updatedAt": "2026-10-09T18:12:19.578Z",
  "method": "Chạy khô cổng sổ tay, không AI, trên tập giữ riêng oz-gold (xem đầu scripts/so-tay-dry-run.mjs). A: chọn = mã đúng → bật = bật oan. B: chọn = mã luồng không AI.",
  "samples": 763,
- "soTayHeadings": 120,
- "truthHeadingHasSoTay": 601,
+ "soTayHeadings": 152,
+ "truthHeadingHasSoTay": 651,
  "detAccuracy": {
   "top1Heading4": 37.9,
   "top1Exact8": 9
@@ -11,26 +11,26 @@
  "variants": {
   "pool": {
    "A_truePick": {
-    "checked": 601,
+    "checked": 651,
     "falseFirePct": {
-     "SO_TAY_LOAI_TRU": 15.6,
+     "SO_TAY_LOAI_TRU": 16.9,
      "SO_TAY_NGUONG": 0.2,
-     "SO_TAY_BO_PHAN": 0.7,
-     "SO_TAY_DONG8": 1
+     "SO_TAY_BO_PHAN": 0.8,
+     "SO_TAY_DONG8": 0.9
     }
    },
    "B_detPick": {
-    "checked": 683,
-    "wrongHeading4": 419,
-    "wrongExact8": 618,
+    "checked": 720,
+    "wrongHeading4": 438,
+    "wrongExact8": 653,
     "trueFire": {
-     "SO_TAY_LOAI_TRU": 51,
+     "SO_TAY_LOAI_TRU": 57,
      "SO_TAY_NGUONG": 3,
-     "SO_TAY_BO_PHAN": 8,
+     "SO_TAY_BO_PHAN": 10,
      "SO_TAY_DONG8": 0
     },
     "falseFire": {
-     "SO_TAY_LOAI_TRU": 37,
+     "SO_TAY_LOAI_TRU": 44,
      "SO_TAY_NGUONG": 1,
      "SO_TAY_BO_PHAN": 1,
      "SO_TAY_DONG8": 0
@@ -40,22 +40,22 @@
   },
   "phrase": {
    "A_truePick": {
-    "checked": 601,
+    "checked": 651,
     "falseFirePct": {
-     "SO_TAY_LOAI_TRU": 3.3,
+     "SO_TAY_LOAI_TRU": 3.2,
      "SO_TAY_NGUONG": 0.2,
-     "SO_TAY_BO_PHAN": 0.7,
-     "SO_TAY_DONG8": 1
+     "SO_TAY_BO_PHAN": 0.8,
+     "SO_TAY_DONG8": 0.9
     }
    },
    "B_detPick": {
-    "checked": 683,
-    "wrongHeading4": 419,
-    "wrongExact8": 618,
+    "checked": 720,
+    "wrongHeading4": 438,
+    "wrongExact8": 653,
     "trueFire": {
-     "SO_TAY_LOAI_TRU": 5,
+     "SO_TAY_LOAI_TRU": 9,
      "SO_TAY_NGUONG": 3,
-     "SO_TAY_BO_PHAN": 8,
+     "SO_TAY_BO_PHAN": 10,
      "SO_TAY_DONG8": 0
     },
     "falseFire": {
@@ -64,27 +64,27 @@
      "SO_TAY_BO_PHAN": 1,
      "SO_TAY_DONG8": 0
     },
-    "loaiTruPointsToTruthHeading": 2
+    "loaiTruPointsToTruthHeading": 3
    }
   },
   "pool+phrase": {
    "A_truePick": {
-    "checked": 601,
+    "checked": 651,
     "falseFirePct": {
      "SO_TAY_LOAI_TRU": 0.8,
      "SO_TAY_NGUONG": 0.2,
-     "SO_TAY_BO_PHAN": 0.7,
-     "SO_TAY_DONG8": 1
+     "SO_TAY_BO_PHAN": 0.8,
+     "SO_TAY_DONG8": 0.9
     }
    },
    "B_detPick": {
-    "checked": 683,
-    "wrongHeading4": 419,
-    "wrongExact8": 618,
+    "checked": 720,
+    "wrongHeading4": 438,
+    "wrongExact8": 653,
     "trueFire": {
      "SO_TAY_LOAI_TRU": 2,
      "SO_TAY_NGUONG": 3,
-     "SO_TAY_BO_PHAN": 8,
+     "SO_TAY_BO_PHAN": 10,
      "SO_TAY_DONG8": 0
     },
     "falseFire": {
@@ -98,31 +98,31 @@
   },
   "pool|phrase": {
    "A_truePick": {
-    "checked": 601,
+    "checked": 651,
     "falseFirePct": {
-     "SO_TAY_LOAI_TRU": 18.1,
+     "SO_TAY_LOAI_TRU": 19.4,
      "SO_TAY_NGUONG": 0.2,
-     "SO_TAY_BO_PHAN": 0.7,
-     "SO_TAY_DONG8": 1
+     "SO_TAY_BO_PHAN": 0.8,
+     "SO_TAY_DONG8": 0.9
     }
    },
    "B_detPick": {
-    "checked": 683,
-    "wrongHeading4": 419,
-    "wrongExact8": 618,
+    "checked": 720,
+    "wrongHeading4": 438,
+    "wrongExact8": 653,
     "trueFire": {
-     "SO_TAY_LOAI_TRU": 53,
+     "SO_TAY_LOAI_TRU": 62,
      "SO_TAY_NGUONG": 3,
-     "SO_TAY_BO_PHAN": 8,
+     "SO_TAY_BO_PHAN": 10,
      "SO_TAY_DONG8": 0
     },
     "falseFire": {
-     "SO_TAY_LOAI_TRU": 40,
+     "SO_TAY_LOAI_TRU": 47,
      "SO_TAY_NGUONG": 1,
      "SO_TAY_BO_PHAN": 1,
      "SO_TAY_DONG8": 0
     },
-    "loaiTruPointsToTruthHeading": 16
+    "loaiTruPointsToTruthHeading": 17
    }
   }
  },
@@ -203,10 +203,36 @@
   },
   {
    "kind": "B-bat-dung",
+   "det": "54082300",
+   "truth": "55151900",
+   "gates": [
+    "SO_TAY_LOAI_TRU:4601(\"vải dệt thoi\")",
+    "SO_TAY_LOAI_TRU:5516(\"vải dệt thoi\")"
+   ]
+  },
+  {
+   "kind": "B-bat-dung",
    "det": "94052190",
    "truth": "70189090",
    "gates": [
     "SO_TAY_BO_PHAN:94059110"
+   ]
+  },
+  {
+   "kind": "B-bat-dung",
+   "det": "61042300",
+   "truth": "62042300",
+   "gates": [
+    "SO_TAY_LOAI_TRU:6309(\"quần áo\")",
+    "SO_TAY_LOAI_TRU:3926(\"quần áo\")"
+   ]
+  },
+  {
+   "kind": "A-bat-oan",
+   "truth": "61042300",
+   "gates": [
+    "SO_TAY_LOAI_TRU:6309(\"quần áo\")",
+    "SO_TAY_LOAI_TRU:3926(\"quần áo\")"
    ]
   },
   {
@@ -236,6 +262,15 @@
    ]
   },
   {
+   "kind": "B-bat-dung",
+   "det": "87087033",
+   "truth": "94019929",
+   "gates": [
+    "SO_TAY_LOAI_TRU:9401(\"ghế ngồi\")",
+    "SO_TAY_BO_PHAN:87082100"
+   ]
+  },
+  {
    "kind": "A-bat-oan",
    "truth": "85414029",
    "gates": [
@@ -256,6 +291,21 @@
    "truth": "84099139",
    "gates": [
     "SO_TAY_BO_PHAN:84839011"
+   ]
+  },
+  {
+   "kind": "A-bat-oan",
+   "truth": "87089195",
+   "gates": [
+    "SO_TAY_BO_PHAN:87082100"
+   ]
+  },
+  {
+   "kind": "B-bat-dung",
+   "det": "87089116",
+   "truth": "87089195",
+   "gates": [
+    "SO_TAY_BO_PHAN:87082100"
    ]
   },
   {
@@ -290,33 +340,11 @@
    ]
   },
   {
-   "kind": "A-bat-oan",
-   "truth": "85369012",
-   "gates": [
-    "SO_TAY_LOAI_TRU:8544(\"đầu nối\")"
-   ]
-  },
-  {
    "kind": "B-bat-dung",
    "det": "85444294",
    "truth": "85369012",
    "gates": [
     "SO_TAY_LOAI_TRU:8536(\"đầu nối\")"
-   ]
-  },
-  {
-   "kind": "A-bat-oan",
-   "truth": "85414029",
-   "gates": [
-    "SO_TAY_LOAI_TRU:8542(\"cảm biến\")"
-   ]
-  },
-  {
-   "kind": "A-bat-oan",
-   "truth": "85412900",
-   "gates": [
-    "SO_TAY_LOAI_TRU:8533(\"linh kiện bán dẫn\")",
-    "SO_TAY_BO_PHAN:85419000"
    ]
   },
   {
@@ -341,6 +369,15 @@
    "truth": "55121900",
    "gates": [
     "SO_TAY_LOAI_TRU:4601(\"vải dệt thoi\")"
+   ]
+  },
+  {
+   "kind": "B-bat-dung",
+   "det": "59039010",
+   "truth": "63029100",
+   "gates": [
+    "SO_TAY_LOAI_TRU:5904(\"vải dệt\")",
+    "SO_TAY_LOAI_TRU:5905(\"vải dệt\")"
    ]
   },
   {

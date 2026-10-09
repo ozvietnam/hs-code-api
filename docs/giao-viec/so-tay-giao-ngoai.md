@@ -2,9 +2,22 @@
 
 - **Giao:** 2026-10-07. **Người duyệt và gộp:** Claude (phiên quản lý). Agent ngoài **không tự gộp** vào `main`.
 - **Thiết kế:** [`docs/backlog/08-so-tay-chu-giai.md`](../backlog/08-so-tay-chu-giai.md).
-- **Phạm vi:** 1.108 nhóm 4 số còn lại (đã trừ 120 nhóm vòng 1+2, trừ chương 98), chia sẵn **185 lô** trong
-  [`so-tay-lo.csv`](so-tay-lo.csv) (tái tạo bằng `node scripts/gen-so-tay-lo.mjs`). Mỗi lô có tối đa 6 nhóm và ≤ 350 nghìn ký tự nguồn.
+- **Phạm vi:** 1.076 nhóm 4 số còn lại (đã trừ 152 nhóm của vòng 1, vòng 2 và đợt 1 theo tần suất, trừ chương 98), chia sẵn **180 lô**
+  trong [`so-tay-lo.csv`](so-tay-lo.csv), **xếp theo ưu tiên (số tờ khai thật của Oz theo nhóm), không theo chương**. Cột `phu_cum_pct` là độ phủ
+  tờ khai sau khi xong lô đó. Tái tạo bằng `node scripts/gen-so-tay-lo.mjs [--demand=<kết quả GET /api/demand>]`. Mỗi lô có tối đa 6 nhóm và ≤ 350 nghìn ký tự nguồn.
 - **Một agent nhận một lô.** Ghi tên vào cột `nguoi_lam` và chuyển `trang_thai` sang `dang-lam`. Làm xong một lô thì mở **một PR**.
+
+## 00. Đợt 1 theo tần suất (09/10/2026, #194): 32 nhóm, phủ 83,4% lên 90,1%
+
+Làm đúng quy trình dưới đây: 6 agent soạn (5–6 nhóm mỗi agent), 6 agent soát độc lập, máy kiểm lần cuối, rồi tự soát mẫu 26 mục ngẫu nhiên.
+Kết quả: 821/821 mục đạt; soát độc lập xoá 14 và sửa 39 (vòng 2 là xoá 325 / sửa 95), ít hơn nhiều vì người soạn đã tránh sẵn các lỗi
+đã biết và bị dặn "thà soạn ít mục chắc chắn". Lỗi mới người soát bắt được, nên thêm vào tiêu chí soát:
+
+- **Cắt trích để né câu rào:** người soạn cắt câu trích ngay trước "tùy từng trường hợp"/"thường…" để qua luật máy (6110) → mục nói chắc hơn nguồn. Máy không bắt được, người soát phải bắt.
+- **`hoi` của `phanBiet` bị đảo** so với câu loại trừ trong nguồn (9106, 9017, 7013): nhánh Có/Không bị hoán đổi hoặc `hoi` gộp thêm vế ngoài câu.
+- **Một nhánh của "A hoặc B"** bị chọn làm đích duy nhất (8708 → 7009: nguồn nói "70.09 hoặc Chương 90").
+- **Mất ngoại lệ ngay sau câu trích** (8708: kính an toàn chưa khung vẫn thuộc 8708.22 nếu có sưởi).
+- Máy chỉ kiểm câu trích ≤ 600 ký tự (lược đồ ghi 300); trích 300–600 ký tự vẫn qua, người soát cần để mắt.
 
 ## 0. Vòng 2 (09/10/2026) và điều quan trọng nhất: PHẢI có người soát độc lập
 
