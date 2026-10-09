@@ -304,6 +304,15 @@ const CLASSIFY_REQUEST = {
     specs: str('Thông số'),
     nameZh: str('Tên tiếng Trung'),
     tier: { type: 'string', enum: ['standard', 'premium'] },
+    supplierHs: {
+      type: 'object',
+      description: 'Mã HS nhà cung cấp tự khai trên trang sản phẩm (made-in-china, 09/10/2026). Mã TQ 8–10 số: chỉ 6 số đầu theo HS ' +
+        'quốc tế, đuôi là của TQ → máy chủ dùng làm MỘT nguồn kiểm chứng (nhóm 4 số được xem chú giải + dòng biểu thuế; chọn khác ' +
+        'nhóm thì AI phải giải trình, kết quả có `review.needed`; cùng 6 số thì tăng tin cậy). Không bao giờ lấy nguyên mã làm mã VN. ' +
+        'Trả `dossier.supplier {code, hs6, heading4, url, agree: SAME6|SAME4|DIFF}` (động cơ loop).',
+      properties: { code: str('Chữ số, ≥ 6 (vd "90049090")'), source: str('Nguồn, vd "made-in-china"'), url: str('Link trang sản phẩm của nhà cung cấp') },
+      required: ['code'],
+    },
   },
 };
 
