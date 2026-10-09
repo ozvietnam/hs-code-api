@@ -402,5 +402,133 @@ check('describe thường vẫn chạy (degraded khi AI lỗi)', h2._s === 200 &
   check('mô tả ≤ 200', r.composed.text.length <= 200, String(r.composed.text.length));
 }
 
+
+// ── 09/10/2026 (CEO): SKU đang chọn + bảng kiện + ảnh (vision) + chữ mô tả — ưu tiên nguồn
+//    SKU đang chọn > bảng thuộc tính trang > bảng kiện > ảnh (vision/OCR) > mô tả ──
+{
+  const imageFacts = require('../lib/image-facts');
+  const { filterDescriptionLines, normalizePackaging, normalizeSkuSelected, normalizeImages, PACKAGE_KEYS } = require('../lib/declaration-sheet');
+  const { measureOf } = require('../lib/extract-specs');
+  const savedLlm = llmTier.callLLMJson;
+  const savedVision = imageFacts.readImageFacts;
+  const SKU_IMG = 'https://cbu01.alicdn.com/img/ibank/sku-gold.jpg';
+  const MAIN_IMG = 'https://cbu01.alicdn.com/img/ibank/main.jpg';
+  const GL = {
+    titleZh: '老花镜防蓝光商务金属半框中老年高清老花眼镜',
+    specsZh: [
+      { key: '颜色分类', value: '金色,银色,黑色,枪色' },
+      { key: '镜片材质', value: 'PC' },
+      { key: '尺寸', value: '147mm' },
+      { key: '货号', value: '603' },
+    ],
+    skuSelected: [
+      { group: '颜色分类', value: '商务金【升级防蓝光镜片】', imageUrl: SKU_IMG, qty: 2 },
+      { group: '度数', value: '150度（建议50-54岁）' },
+      { group: '镜片折射率', value: '150度（建议50-54岁）' },
+      { group: '', value: 'bỏ' }, { group: '坏', value: '' }, 'rác', null,
+    ],
+    packaging: { sku: { 镜框颜色: '金色', 度数: '防蓝光' }, lengthCm: 17, widthCm: 11, heightCm: 10, volumeCm3: 1870, weightG: 40 },
+    descriptionText: '欢迎光临本店，全场包邮\n镜架材质：金属\n产品重量 25.8g\n镜架材质：金属\n这是一段很长的广告文字没有任何参数\n',
+    images: [{ url: MAIN_IMG, role: 'main' }, { url: SKU_IMG, role: 'sku' }, { url: 'ftp://bad', role: 'sku' }, { role: 'sku' }],
+    hsCode: '90049010',
+  };
+  let lastUser = null;
+  llmTier.callLLMJson = async (system, user, o) => {
+    if (!system.includes('THÔNG SỐ SẢN PHẨM')) return savedLlm(system, user, o);
+    lastUser = JSON.parse(user);
+    const reply = [];
+    if ((lastUser.translate || []).some((t) => t.key === 'color' && t.valueZh.startsWith('金色'))) reply.push({ key: 'color', valueVi: 'vàng, bạc, đen, xám', sourceId: 'specs', evidenceText: '颜色分类：金色,银色,黑色,枪色' });
+    if ((lastUser.translate || []).some((t) => t.key === 'color' && t.valueZh.startsWith('商务金'))) reply.push({ key: 'color', valueVi: 'vàng thương gia', sourceId: 'specs', evidenceText: '已选规格(颜色分类)：商务金【升级防蓝光镜片】' });
+    return { json: { attributes: reply }, provider: 'stub', model: 'stub' };
+  };
+  let visionCalls = [];
+  imageFacts.readImageFacts = async (images, opts) => {
+    visionCalls.push({ images, opts });
+    return {
+      images: images.map((i) => ({ ...i, fetched: true })), engine: { provider: 'gemini', model: 'stub-vision' },
+      seenText: ['603', 'Blue Light Blocking', '防蓝光'],
+      facts: [
+        { key: 'frameMaterial', valueVi: 'kim loại', valueZh: null, evidence: 'thấy gọng kim loại màu vàng', confidence: 0.95, imageUrl: SKU_IMG },
+        { key: 'lensMaterial', valueVi: 'nhựa', valueZh: null, evidence: 'tròng trong suốt', confidence: 0.6, imageUrl: SKU_IMG },
+        { key: 'color', valueVi: 'đen', valueZh: null, evidence: 'gọng đen', confidence: 0.6, imageUrl: SKU_IMG },
+        { key: 'eyewearType', valueVi: 'kính lão chống ánh sáng xanh', valueZh: null, evidence: 'nhãn Blue Light Blocking', confidence: 0.7, imageUrl: SKU_IMG },
+      ],
+    };
+  };
+  process.env.HS_SHEET_VISION = '1';
+  const r = await buildDeclarationSheet(GL);
+  const g = (k) => r.json.fields.find((x) => x.key === k) || r.json.extras.find((x) => x.key === k);
+  check('SKU: 200, giữ skuSelected đã lọc (3 mục hợp lệ, có qty/imageUrl)', r.status === 200 && r.json.skuSelected?.length === 3 && r.json.skuSelected[0].qty === 2 && r.json.skuSelected[0].imageUrl === SKU_IMG, JSON.stringify(r.json.skuSelected));
+  check('SKU đang chọn thắng bảng thuộc tính nhiều giá trị (color)', g('color')?.valueVi === 'vàng thương gia' && g('color').source === 'SITE', JSON.stringify(g('color')));
+  check('SKU: method SKU_SELECTED, tin 0.95, bằng chứng "SKU đang chọn: nhóm=giá trị"', g('color')?.method === 'SKU_SELECTED' && g('color').confidence === 0.95 && g('color').evidence?.text === 'SKU đang chọn: 颜色分类=商务金【升级防蓝光镜片】', JSON.stringify(g('color')));
+  check('SKU: nhóm 度数 dịch key → lensPower, số đo rút bằng regex (không chờ AI)', g('lensPower')?.valueVi === '150 độ' && g('lensPower').method === 'SKU_SELECTED' && !(lastUser?.translate || []).some((t) => t.key === 'lensPower'), JSON.stringify([g('lensPower'), lastUser?.translate]));
+  check('SKU: nhóm lạ 镜片折射率 KHÔNG bị khớp giả thành chất liệu tròng', g('lensMaterial')?.valueVi === 'PC' && g('lensMaterial').source === 'SITE', JSON.stringify(g('lensMaterial')));
+  check('measureOf: 150度（建议50-54岁） → "150 độ"; 220V giữ; chữ → null', measureOf('150度（建议50-54岁）') === '150 độ' && measureOf('220V') === '220V' && measureOf('金色') === null);
+  // Kiện đóng gói
+  check('kiện → ô riêng packageDimensions/Weight/Volume, nguồn SITE, bằng chứng 商品件重尺', g('packageDimensions')?.valueVi === '17×11×10 cm' && g('packageWeight')?.valueVi === '40 g' && g('packageVolume')?.valueVi === '1870 cm³' && [g('packageDimensions'), g('packageWeight'), g('packageVolume')].every((x) => x.source === 'SITE' && /商品件重尺/.test(x.evidence?.text || '') && x.packaging === true), JSON.stringify([g('packageDimensions'), g('packageWeight'), g('packageVolume')]));
+  check('kiện KHÔNG đè kích thước sản phẩm từ trang', g('dimensions')?.valueVi === '147mm' && !g('dimensions').packaging, JSON.stringify(g('dimensions')));
+  check('sheet.packaging ghi rõ là kiện, có sku + thể tích', r.json.packaging?.dimsCm === '17×11×10 cm' && r.json.packaging.sku?.镜框颜色 === '金色' && /KIỆN/.test(r.json.packaging.noteVi), JSON.stringify(r.json.packaging));
+  const desc = r.json.description?.customsDescription || '';
+  check('mô tả ECUS không dùng số đo kiện, vẫn có 147mm', !desc.includes('17×11×10') && !desc.includes('1870') && desc.includes('147mm'), desc);
+  // Mô tả
+  check('descriptionText lọc tất định: giữ dòng key：value + dòng số đơn vị, bỏ quảng cáo, bỏ trùng', filterDescriptionLines(GL.descriptionText) === '镜架材质：金属\n产品重量 25.8g', JSON.stringify(filterDescriptionLines(GL.descriptionText)));
+  const descSrc = (lastUser?.sources || []).find((x) => x.id === 'desc');
+  check('descriptionText vào AI như nguồn trang (id desc), sau specs, trước ảnh', descSrc && descSrc.text === '镜架材质：金属\n产品重量 25.8g' && lastUser.sources.findIndex((x) => x.id === 'specs') < lastUser.sources.findIndex((x) => x.id === 'desc'), JSON.stringify(lastUser?.sources?.map((x) => x.id)));
+  // Ảnh → vision
+  check('vision: gọi 1 lần, ảnh hợp lệ (bỏ ftp/thiếu url), có headingKeys + hsCode', visionCalls.length === 1 && visionCalls[0].images.length === 2 && visionCalls[0].images.every((i) => /^https:/.test(i.url)) && visionCalls[0].opts.hsCode === '90049010' && visionCalls[0].opts.headingKeys.frameMaterial, JSON.stringify(visionCalls[0]?.images));
+  check('vision: điền ô thiếu (frameMaterial), nguồn IMAGE_AI, tin kẹp ≤ 0.8', g('frameMaterial')?.valueVi === 'kim loại' && g('frameMaterial').source === 'IMAGE_AI' && g('frameMaterial').confidence <= 0.8 && g('frameMaterial').status === 'HAVE' && g('frameMaterial').evidence?.imageUrl === SKU_IMG, JSON.stringify(g('frameMaterial')));
+  check('vision: KHÔNG đè ô đã có từ trang (lensMaterial PC) / SKU (color)', g('lensMaterial')?.valueVi === 'PC' && g('color')?.valueVi === 'vàng thương gia', JSON.stringify([g('lensMaterial')?.valueVi, g('color')?.valueVi]));
+  check('vision: headingKeys không gửi ô đã chắc (lensMaterial, color)', !visionCalls[0].opts.headingKeys.lensMaterial && !visionCalls[0].opts.headingKeys.color, JSON.stringify(visionCalls[0].opts.headingKeys));
+  const imgs = r.json.images;
+  check('sheet.images[] ghi role, used:true, preview = chữ AI thấy', imgs.length === 2 && imgs.every((i) => i.used === true && i.vision === true && /603 Blue Light/.test(i.preview)) && imgs.find((i) => i.url === SKU_IMG)?.role === 'sku', JSON.stringify(imgs));
+  check('extraction.vision: used, engine, 2 ảnh, 4 facts', r.json.extraction.vision?.used === true && r.json.extraction.vision.engine?.model === 'stub-vision' && r.json.extraction.vision.images === 2, JSON.stringify(r.json.extraction.vision));
+  check('mô tả ECUS ≤ 200, không chữ Hán', desc.length <= 200 && !/[㐀-鿿]/.test(desc), desc);
+
+  // Không có images → không gọi vision; variant cũ vẫn chạy khi không có skuSelected
+  visionCalls = [];
+  const r2 = await buildDeclarationSheet({ titleZh: GL.titleZh + '无图', specsZh: GL.specsZh, variant: [{ label: '颜色分类', value: '商务金【升级防蓝光镜片】' }], hsCode: '90049010' });
+  const c2 = r2.json.fields.find((x) => x.key === 'color') || r2.json.extras.find((x) => x.key === 'color');
+  check('không images → không gọi vision, reason NO_IMAGES', visionCalls.length === 0 && r2.json.extraction.vision?.used === false && r2.json.extraction.vision.reason === 'NO_IMAGES', JSON.stringify(r2.json.extraction.vision));
+  check('variant cũ (không skuSelected) vẫn thắng danh sách màu', c2?.valueVi === 'vàng thương gia' && c2.method === 'SKU_SELECTED', JSON.stringify(c2));
+
+  // Ảnh host lạ → readImageFacts thật từ chối trước khi tải (không gọi mạng, không gọi AI)
+  imageFacts.readImageFacts = savedVision;
+  const r3 = await buildDeclarationSheet({ titleZh: GL.titleZh + '外链', specsZh: GL.specsZh, images: [{ url: 'https://evil.example.com/a.jpg', role: 'sku' }], hsCode: '90049010' });
+  check('ảnh host lạ bị từ chối: vision không có ảnh, không lỗi, phiếu vẫn 200', r3.status === 200 && r3.json.extraction.vision?.images === 0 && !r3.json.extraction.vision.llmError && r3.json.images.length === 0, JSON.stringify(r3.json.extraction.vision));
+
+  // Vision lỗi → bỏ qua, ghi llmError, phiếu vẫn lập
+  imageFacts.readImageFacts = async (images) => ({ images: images.map((i) => ({ ...i, fetched: false })), seenText: [], facts: [], engine: null, llmError: { code: 'IMAGE_FETCH_FAILED', message: 'stub' } });
+  const r4 = await buildDeclarationSheet({ ...GL, titleZh: GL.titleZh + '错', images: [{ url: MAIN_IMG, role: 'main' }] });
+  check('vision lỗi: phiếu vẫn 200, extraction.vision.llmError, ảnh used:false có lý do', r4.status === 200 && r4.json.extraction.vision?.llmError?.code === 'IMAGE_FETCH_FAILED' && r4.json.images[0]?.used === false && /Không tải được/.test(r4.json.images[0].reasonVi), JSON.stringify([r4.json.extraction.vision, r4.json.images]));
+  imageFacts.readImageFacts = async () => { throw new Error('boom'); };
+  const r4b = await buildDeclarationSheet({ ...GL, titleZh: GL.titleZh + '炸' });
+  check('vision ném lỗi: vẫn 200, llmError VISION_FAILED', r4b.status === 200 && r4b.json.extraction.vision?.llmError?.code === 'VISION_FAILED');
+
+  // Tắt vision bằng env
+  process.env.HS_SHEET_VISION = '0';
+  visionCalls = [];
+  imageFacts.readImageFacts = async (images, opts) => { visionCalls.push(1); return { images: [], seenText: [], facts: [], engine: null }; };
+  const r5 = await buildDeclarationSheet({ ...GL, titleZh: GL.titleZh + '关' });
+  check('HS_SHEET_VISION=0 → không gọi vision, reason DISABLED', visionCalls.length === 0 && r5.json.extraction.vision?.reason === 'DISABLED', JSON.stringify(r5.json.extraction.vision));
+  delete process.env.HS_SHEET_VISION;
+
+  // Kiện khi trang KHÔNG có kích thước sản phẩm → ô dimensions điền tạm từ kiện, đánh dấu packaging, không vào ECUS
+  process.env.HS_SHEET_VISION = '0';
+  const r6 = await buildDeclarationSheet({ titleZh: GL.titleZh + '无尺寸', specsZh: GL.specsZh.filter((x) => x.key !== '尺寸'), packaging: GL.packaging, hsCode: '90049010' });
+  const d6 = r6.json.fields.find((x) => x.key === 'dimensions');
+  check('không có KT sản phẩm → dimensions điền tạm từ kiện, packaging:true, note rõ', d6?.valueVi === '17×11×10 cm' && d6.packaging === true && /KIỆN/.test(d6.note || '') && d6.method === 'PACKAGING', JSON.stringify(d6));
+  check('dimensions từ kiện không vào mô tả ECUS', !(r6.json.description?.customsDescription || '').includes('17×11×10'), r6.json.description?.customsDescription);
+  delete process.env.HS_SHEET_VISION;
+
+  // Phòng thủ đầu vào
+  check('normalizePackaging: thiếu/sai số → null hoặc tính thể tích từ 3 cạnh', normalizePackaging({ lengthCm: 'x' }) === null && normalizePackaging(null) === null && normalizePackaging({ lengthCm: 10, widthCm: 5, heightCm: 2 })?.volumeCm3 === 100 && normalizePackaging({ weightG: 1500 })?.weightG === 1500);
+  check('normalizeSkuSelected: bỏ mục hỏng, nhận label thay group', normalizeSkuSelected([{ label: '颜色', value: '红' }, {}, 'x']).length === 1 && normalizeSkuSelected('x').length === 0);
+  check('normalizeImages: ≤3, bỏ URL hỏng, không images thì lấy ảnh SKU', normalizeImages([{ url: 'https://a/1.jpg' }, { url: 'https://a/2.jpg', role: 'sku' }, { url: 'https://a/3.jpg' }, { url: 'https://a/4.jpg' }, { url: 'nope' }]).length === 3 && normalizeImages([], [{ group: 'x', value: 'y', imageUrl: 'https://a/s.jpg' }])[0]?.role === 'sku');
+  check('PACKAGE_KEYS có trong từ điển zh (包装尺寸 → packageDimensions, không còn là dimensions)', [...PACKAGE_KEYS].every((k) => require('../lib/zh-specs').dictionary().keys[k]) && require('../lib/zh-specs').keysForLabel('包装尺寸').join() === 'packageDimensions');
+
+  llmTier.callLLMJson = savedLlm;
+  imageFacts.readImageFacts = savedVision;
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
