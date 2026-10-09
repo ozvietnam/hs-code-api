@@ -207,6 +207,78 @@ check('khóa đã bổ sung không gửi AI rút lại', !(lastExtractUser?.need
   check('số không có trong bằng chứng bị loại (250 từ "10A")', !evn.attributes.some((a) => a.key === 'voltage'), JSON.stringify(evn.attributes));
 }
 
+// 3f. CEO 08/10/2026 — nhãn hiệu là tên riêng (không dịch) + ghép chất liệu theo bộ phận.
+// Ca thật: kính lão 9004.90.10 (Taobao) — 镜片材质 PC / 镜框材质 金属 / 品牌 柚莎 / 货号 603 + 1 ảnh OCR.
+{
+  const GLASSES = {
+    titleZh: '眉毛架老花眼镜中老年高档男高清防蓝光花镜工厂批商务变色老花镜',
+    specsZh: [{ key: '镜片材质', value: 'PC' }, { key: '镜框材质', value: '金属' }, { key: '镜架材质', value: '金属' }, { key: '品牌', value: '柚莎' }, { key: '货号', value: '603' }],
+    imageTexts: [{ url: 'https://img/glasses.jpg', text: '产品类型： 防蓝光老花镜 镜架材质：金属 产品重量： 25.8g 镜片 材质: PC 147mm 50mm 39mm 17mm 135mm' }],
+    hsCode: '90049010',
+  };
+  const saved = llmTier.callLLMJson;
+  let askedBrand = null;
+  // AI soát ảnh: ứng viên "PC 147mm…" của bộ phận 镜片 → "PC" (ghi part). Nhãn hiệu KHÔNG được gửi dịch.
+  llmTier.callLLMJson = async (system, user, o) => {
+    if (!system.includes('THÔNG SỐ SẢN PHẨM')) return saved(system, user, o);
+    const u = JSON.parse(user);
+    askedBrand = Boolean(u.allowedKeys.brand) || (u.translate || []).some((t) => t.key === 'brand');
+    return { json: { attributes: [{ key: 'material', valueVi: 'PC', part: '镜片', sourceId: 'img1', evidenceText: '镜片 材质: PC' }] }, provider: 'stub', model: 'stub' };
+  };
+  const rg = await buildDeclarationSheet(GLASSES);
+  llmTier.callLLMJson = saved;
+  const g = (k) => rg.json.fields.find((x) => x.key === k);
+  check('brand chữ Hán → HAVE, giữ chữ gốc, có note, không gửi AI dịch', g('brand')?.status === 'HAVE' && g('brand').valueVi === '柚莎' && g('brand').valueZh === '柚莎' && /tên riêng/.test(g('brand').note || '') && askedBrand === false, JSON.stringify([g('brand'), askedBrand]));
+  check('brand chữ Hán: trademark nhận chuỗi gốc, BRANDED, cờ brandHanOnly', rg.json.trademark.brand === '柚莎' && rg.json.trademark.brandZh === '柚莎' && rg.json.trademark.brandStatus === 'BRANDED' && rg.json.trademark.brandHanOnly === true, JSON.stringify(rg.json.trademark));
+  check('brand chữ Hán không nằm trong missing', !rg.json.missing.some((m) => m.key === 'brand'), JSON.stringify(rg.json.missing));
+  check('material ghép tròng/gọng theo thứ tự trang, method MERGED_PARTS', g('material')?.valueVi === 'tròng: PC; gọng: kim loại' && g('material').method === 'MERGED_PARTS' && g('material').status === 'HAVE', JSON.stringify(g('material')));
+  check('material: mỗi mẩu giữ bằng chứng riêng', g('material')?.parts?.length === 2 && g('material').parts.every((p) => p.part?.vi && p.evidence?.text) && g('material').parts[1].evidence.text === '镜框材质：金属', JSON.stringify(g('material')?.parts));
+  check('ảnh + trang cùng bộ phận (镜架材质 金属 / 镜片 材质 PC) không lặp', (g('material').valueVi.match(/kim loại/g) || []).length === 1 && (g('material').valueVi.match(/PC/g) || []).length === 1, g('material').valueVi);
+  check('model 货号 Latin giữ nguyên', g('modelNumber')?.valueVi === '603' && g('modelNumber').status === 'HAVE');
+  const dg = rg.json.description.customsDescription;
+  check('mô tả ECUS: thành phần ghép, không chữ Hán, không lặp "PC", ≤200', /thành phần: tròng: PC; gọng: kim loại/.test(dg) && !/[㐀-鿿]/.test(dg) && (dg.match(/PC/g) || []).length === 1 && dg.length <= 200, dg);
+  check('mô tả ECUS: nhãn chữ Hán bị bỏ khỏi mô tả, báo omittedHan', !/nhãn hiệu/.test(dg) && rg.json.description.descriptionMeta.omittedHan?.[0]?.key === 'brand', JSON.stringify(rg.json.description.descriptionMeta));
+  // Tín hiệu BRAND_HAN_ONLY vẫn ghi dù ô không thiếu
+  const { signalsFromSheet } = require('../lib/demand-signals');
+  const sig = signalsFromSheet({ sheet: rg.json, mapped: { hsListings: [], policyLines: [] }, specsZh: GLASSES.specsZh });
+  check('tín hiệu BRAND_HAN_ONLY vẫn ghi', sig.some((x) => x.t === 'BRAND_HAN_ONLY' && x.k === '柚莎'), JSON.stringify(sig.filter((x) => /BRAND/.test(x.t))));
+
+  // Không có AI: vẫn ghép được từ trang (金属 dịch bảng cố định), ảnh chưa soát không chen vào
+  llmTier.callLLMJson = async (system, user, o) => {
+    if (system.includes('THÔNG SỐ SẢN PHẨM')) throw Object.assign(new Error('no llm'), { code: 'LLM' });
+    return saved(system, user, o);
+  };
+  const rn = await buildDeclarationSheet({ ...GLASSES, titleZh: GLASSES.titleZh + '无AI' });
+  llmTier.callLLMJson = saved;
+  const mn = rn.json.fields.find((x) => x.key === 'material');
+  check('AI lỗi: material vẫn ghép từ trang, không lẫn "147mm" của ảnh chưa soát', mn?.valueVi === 'tròng: PC; gọng: kim loại' && mn.status === 'HAVE', JSON.stringify(mn));
+
+  // brand "无品牌" → "không nhãn hiệu" như cũ; brand Latin không đổi; known/supplement chữ Hán cho ô tên riêng được nhận
+  extractReply = { attributes: [] };
+  const rb = await buildDeclarationSheet({ titleZh: '老花镜无牌测试', specsZh: [{ key: '品牌', value: '无品牌' }, { key: '镜框材质', value: '金属' }], hsCode: '90049010' });
+  const bb = rb.json.fields.find((x) => x.key === 'brand');
+  check('brand 无品牌 → "không nhãn hiệu", NO_BRAND, không note', bb?.valueVi === 'không nhãn hiệu' && rb.json.trademark.brandStatus === 'NO_BRAND' && !bb.note, JSON.stringify([bb, rb.json.trademark.brandStatus]));
+  check('brand Latin (Marc Lichte) không đổi, không note', f('brand')?.valueVi === 'Marc Lichte' && !f('brand').note);
+  const rs = await buildDeclarationSheet({ titleZh: '老花镜补充测试', specsZh: [{ key: '镜框材质', value: '金属' }], hsCode: '90049010', supplements: [{ key: 'brand', valueVi: '柚莎', source: 'SALES' }, { key: 'material', valueVi: '金属', source: 'SALES' }] });
+  check('supplement chữ Hán: nhận cho ô tên riêng (brand), vẫn bỏ cho ô khác (material)', rs.json.fields.find((x) => x.key === 'brand')?.valueVi === '柚莎' && rs.json.fields.find((x) => x.key === 'brand').source === 'SALES' && rs.json.fields.find((x) => x.key === 'material')?.valueVi === 'kim loại', JSON.stringify(rs.json.fields.filter((x) => ['brand', 'material'].includes(x.key)).map((x) => [x.key, x.valueVi, x.source])));
+  // material một nguồn (không bộ phận) giữ luật cũ: 1 giá trị, không parts
+  const r1s = await buildDeclarationSheet({ titleZh: '水壶单材质测试', specsZh: [{ key: '材质', value: '不锈钢' }], hsCode: '90049010' });
+  const m1 = r1s.json.fields.find((x) => x.key === 'material');
+  check('material đơn nguồn: giữ 1 giá trị, không parts/part', m1?.valueVi === 'thép không gỉ' && !m1.parts && !m1.part && m1.method === 'DICTIONARY', JSON.stringify(m1));
+  // Cùng ô, 2 bộ phận nhưng ô KHÔNG có khái niệm bộ phận (voltage) → chọn 1 như cũ
+  const rv = await buildDeclarationSheet({ titleZh: '插座电压测试', specsZh: [{ key: '额定电压', value: '220V' }, { key: '输入电压', value: '110V' }], hsCode: '85366932' });
+  const vv = rv.json.fields.find((x) => x.key === 'voltage');
+  check('ô không có khái niệm bộ phận (voltage) không bị ghép', vv?.valueVi === '220V' && !vv.parts, JSON.stringify(vv));
+  // 1 bộ phận duy nhất (chỉ 镜框材质) → giá trị thường + ghi part, không ghép
+  const rp = await buildDeclarationSheet({ titleZh: '镜框单件测试', specsZh: [{ key: '镜框材质', value: '金属' }], hsCode: '90049010' });
+  const mp = rp.json.fields.find((x) => x.key === 'material');
+  check('chỉ 1 bộ phận: giá trị thường + part, không ghép', mp?.valueVi === 'kim loại' && mp.part?.vi === 'gọng' && !mp.parts, JSON.stringify(mp));
+  // Đơn vị bộ phận: partOfLabel / partBeforeLabel
+  const { partOfLabel, partBeforeLabel } = require('../lib/extract-specs');
+  check('partOfLabel: 镜片材质 → tròng/材质; 材质 → null', partOfLabel('镜片材质')?.part.vi === 'tròng' && partOfLabel('镜片材质').rest === '材质' && partOfLabel('材质') === null);
+  check('partBeforeLabel: "镜片 材质: PC" trong chữ OCR → tròng', partBeforeLabel('材质', '产品重量： 25.8g 镜片 材质: PC 147mm')?.vi === 'tròng' && partBeforeLabel('材质', '产品重量： 25.8g 材质: PC') === null);
+}
+
 // 4. Không có mã HS → chỉ ô chung, chưa viết mô tả
 extractReply = GOOD_REPLY;
 const r4 = await buildDeclarationSheet({ ...SOCKET });
