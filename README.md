@@ -43,7 +43,7 @@ openssl rand -hex 32
 | `/api/health` | GET | No | Service health + config checks |
 | `/api/tax?hs=` | GET | Yes | Tariff lookup (camelCase) |
 | `/api/search?q=` | GET | Yes | Keyword / HS search |
-| `/api/match` | POST | No | Multilingual product → top-K HS (OZSource ERP) |
+| `/api/match` | POST | No | **[DEPRECATED]** keyword-only match → top-K HS (OZSource ERP). Use `/api/classify` or `/api/suggest` instead — see note below the table |
 | `/api/notes?chapter=` | GET | Yes | Chapter notes |
 | `/api/conflicts?hs=` | GET | Yes | HS conflict/risk details |
 | `/api/precedents?hs=` | GET | Yes | TB-TCHQ precedent list by HS |
@@ -64,6 +64,8 @@ openssl rand -hex 32
 | `/api/products?stats=1` | GET | Yes | Tổng quan corpus + priority queue đào sâu |
 | `/api/data-quality` | GET | Yes | Data quality report — anomaly tax.json + enriched (`?category=missingVat` lọc 1 nhóm; regen: `npm run data:quality-report`) |
 | `/api/trademark?q=` | GET | Yes | Trademark Watch — cảnh báo nhãn hiệu (VN nhập + TQ xuất); `&origin=CN` bật trục GACC (rewrite → `/api/dataset?resource=trademark`) |
+
+> **`/api/match` is deprecated** (responses carry `Deprecation: true` and `Link: </api/classify>; rel="successor-version"`). It only matches keywords and reports a fixed confidence of ~0.94 even when wrong (e.g. a query containing "người" returns foods and swimwear). Do not use it to choose an HS code: use `POST /api/classify` (decision tree, returns `status` + `nextAction`) or `POST /api/suggest` (AI rerank with GIR audit trail). It stays open only so existing callers do not break (issues #170, #174).
 
 ### Trademark Watch (cảnh báo SHTT — đa pháp tài VN nhập + TQ xuất)
 
