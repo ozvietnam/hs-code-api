@@ -1,7 +1,7 @@
 {
  "nhom": "8412",
  "phamVi": {
-  "text": "Động cơ và mô tơ khác (không điện, không thuộc 84.06–84.08, 84.10, 84.11): động cơ phản lực trừ tuabin phản lực, động cơ/mô tơ thủy lực và khí nén (kể cả xi lanh), động cơ gió, lò xo, đối trọng, máy hơi nước; và bộ phận.",
+  "text": "Các động cơ phản lực (trừ các tuabin phản lực), các động cơ và mô tơ khí nén, động cơ chạy bằng sức gió (động cơ gió), các động cơ có lò xo, động cơ chạy bằng đối trọng, cũng như một số loại tuabin thủy lực hoặc chạy bằng hơi nước hoặc hơi khác.",
   "nguon": "nhom8412.nhom",
   "trich": "Nhóm này bao gồm các động cơ phản lực (trừ các tuabin phản lực), các động cơ và mô tơ khí nén, động cơ chạy bằng sức gió (động cơ gió), các động cơ có lò xo, động cơ chạy bằng đối trọng.v.v.., cũng như một số loại tuabin thủy lực hoặc chạy bằng hơi nước hoặc hơi khác."
  },
@@ -16,53 +16,18 @@
    "trich": "Như vậy, nhóm này bao gồm các loại động cơ không hoạt động bằng điện, không phải là các tuabin hơi nước và tuabin hơi khác, các động cơ đốt trong kiểu piston, tuabin thủy lực, bánh xe guồng nước, tuabin phản lực, tuabin cánh quạt hoặc tuabin khí khác."
   },
   {
-   "fact": "khong_thuoc_nhom_8406_8408_8410_8411_8501_8502",
+   "fact": "khong_thuoc_nhom_8406_den_8408_8410_8411_8501_8502",
    "op": "=",
    "value": true,
    "donVi": null,
    "ngoaiTru": [],
    "nguon": "nhom8412.nhom",
    "trich": "Nhóm này bao gồm các mô tơ và động cơ không thuộc các nhóm trước (từ nhóm 84.06 đến 84.08, 84.10 hoặc 84.11) và cũng không thuộc các nhóm 85.01 hoặc 85.02."
-  },
-  {
-   "fact": "dong_co_ten_lua_dung_lam_don_vi_day",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [
-    "Tên lửa pháo hoa (36.04), phương tiện đẩy phóng tàu vũ trụ (88.02), đạn phóng chiến đấu (93.06)"
-   ],
-   "nguon": "nhom8412.nhom",
-   "trich": "Động cơ tên lửa được phân loại ở nhóm này chỉ khi nó dùng tạo thành các đơn vị đẩy (động cơ phụ hoặc động cơ giúp máy bay cất cánh, dẫn đường tên lửa, phóng tàu vũ trụ hoặc vệ tinh)."
-  },
-  {
-   "fact": "he_thong_thuy_luc_dong_bo_theo_chu_giai_4_phan_XVI",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8412.nhom",
-   "trich": "toàn bộ các chi tiết trên tạo nên bộ máy vận hành theo đúng quy định trong Chú giải 4 của phần XVI"
-  },
-  {
-   "fact": "uu_tien_nhom_8401_8424_so_voi_8425_8480",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "ch84.chuong",
-   "trich": "máy móc hoặc thiết bị thỏa mãn mô tả của một hoặc nhiều nhóm từ 84.01 đến 84.24, hoặc nhóm 84.86 và đồng thời thỏa mãn mô tả của một hoặc nhiều nhóm từ 84.25 đến 84.80 thì được phân loại vào một nhóm thích hợp trong số các nhóm từ 84.01 đến 84.24 hoặc 84.86"
   }
  ],
  "loaiTru": [
   {
-   "dieuKien": "Tuabin thủy lực và bánh xe guồng nước",
-   "sangNhom": "8410",
-   "nguon": "nhom8412.nhom",
-   "trich": "(1) Các loại động cơ, trừ tuabin hoặc các loại bánh xe thuộc nhóm 84.10"
-  },
-  {
-   "dieuKien": "Động cơ điện và tổ máy phát điện",
+   "dieuKien": "Mô tơ và động cơ thuộc các nhóm 85.01 hoặc 85.02",
    "sangNhom": "8501|8502",
    "nguon": "nhom8412.nhom",
    "trich": "Nhóm này bao gồm các mô tơ và động cơ không thuộc các nhóm trước (từ nhóm 84.06 đến 84.08, 84.10 hoặc 84.11) và cũng không thuộc các nhóm 85.01 hoặc 85.02."
@@ -197,13 +162,12 @@
   }
  ],
  "boPhan": {
-  "quyTac": "Chú giải 2 Phần XVI (quy tắc chung phân loại bộ phận)",
-  "tomTat": "Bộ phận của động cơ/mô tơ thuộc nhóm (buồng đốt, ống phụt, bộ điều chỉnh nhiên liệu, vòi phun, cánh quạt cối xay gió, xi lanh, piston, van trượt, bộ điều tốc, thanh truyền) xếp 8412.90; bộ phận máy hơi nước gắn nồi hơi có thể xếp như bộ phận nồi hơi (84.02); trục truyền, trục khuỷu xếp 84.83.",
+  "quyTac": "Quy tắc tổng quát về phân loại các bộ phận (chú giải tổng quát Phần XVI)",
+  "tomTat": "Nhóm này cũng bao gồm bộ phận của các động cơ hoặc mô tơ thuộc nhóm này; bộ phận của máy chạy bằng hơi nước hoặc hơi khác kết hợp với nồi hơi thường được phân loại như bộ phận của nồi hơi (nhóm 84.02) hoặc như bộ phận của máy chạy bằng hơi nước thuộc nhóm này; trục truyền và trục khuỷu không thuộc nhóm này mà thuộc nhóm 84.83.",
   "nguon": "nhom8412.nhom",
-  "trich": "BỘ PHẬN Theo các quy tắc tổng quát về phân loại các bộ phận (xem phần chú giải tổng quát của Phần XVI), nhóm này cũng bao gồm bộ phận của các động cơ hoặc mô tơ thuộc nhóm này"
+  "trich": "BỘ PHẬN Theo các quy tắc tổng quát về phân loại các bộ phận (xem phần chú giải tổng quát của Phần XVI), nhóm này cũng bao gồm bộ phận của các động cơ hoặc mô tơ thuộc nhóm này … Thông thường, các bộ phận của máy chạy bằng hơi nước hoặc hơi khác kết hợp với nồi hơi sẽ được phân loại như bộ phận của nồi hơi (nhóm 84.02), hoặc như bộ phận của máy chạy bằng hơi nước thuộc nhóm này. Tuy nhiên, các trục truyền và trục khuỷu thì không thuộc nhóm này, mà thuộc nhóm 84.83."
  },
  "dungTuNguon": [
-  "ch84.chuong",
   "nhom8412.nhom",
   "tax.84121000",
   "tax.84122100",
@@ -218,14 +182,14 @@
  "phienBan": "HS2022",
  "bangQuyetDinh": "data/decision-tables/8412.json — ưu tiên tuyệt đối, sổ tay không ghi đè",
  "taoBoi": {
-  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "provider": "phiên Claude quản lý (10 agent con soạn, 6 agent soát độc lập, 07-09/10/2026)",
   "model": null,
-  "luc": "2026-10-07T09:50:53.081Z",
-  "ms": 5
+  "luc": "2026-10-09T09:28:09.545Z",
+  "ms": 8
  },
  "kiemTra": {
-  "tong": 27,
-  "dat": 27,
+  "tong": 23,
+  "dat": 23,
   "loai": 0,
   "nguonBiCat": []
  }

@@ -1,22 +1,11 @@
 {
  "nhom": "8422",
  "phamVi": {
-  "text": "Máy rửa bát đĩa; máy rửa/làm khô chai lọ và đồ chứa; máy rót, đóng kín, đóng nắp, dán nhãn đồ chứa; máy nạp ga đồ uống; máy đóng gói, bao gói khác (kể cả màng co nhiệt); và bộ phận.",
+  "text": "Máy rửa bát đĩa (có hoặc không có bộ phận làm khô, gia dụng hoặc không); máy rửa hoặc làm khô chai lọ hoặc các vật chứa khác; máy rót hoặc đóng kín các vật chứa (kể cả máy nạp ga cho đồ uống); máy nói chung dùng để đóng gói hàng hóa (kể cả máy bọc màng co nhiệt) để bán, vận chuyển hoặc lưu kho.",
   "nguon": "nhom8422.nhom",
   "trich": "Nhóm này cũng bao gồm các loại máy dùng để rửa hoặc làm khô chai lọ hoặc các vật chứa khác, các loại máy dùng để rót hoặc đóng kín các loại vật chứa trên (kể cả máy nạp ga…cho đồ uống) và, các loại máy nói chung dùng để đóng gói hàng hóa (kể cả máy bọc màng co nhiệt) để bán, vận chuyển hoặc lưu kho."
  },
  "dieuKienVao": [
-  {
-   "fact": "chuc_nang_khac_chi_la_phu_cho_dong_goi",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [
-    "Máy có chức năng chủ yếu là chế biến nguyên liệu thô/bán thành phẩm thành sản phẩm cuối cùng (vd thiết bị sản xuất và đóng gói thuốc lá)"
-   ],
-   "nguon": "nhom8422.nhom",
-   "trich": "còn thực hiện các chức năng khác cũng được xếp trong nhóm này, nếu các thao tác khác đó chỉ được coi là chức năng phụ cho chức năng đóng gói"
-  },
   {
    "fact": "chuc_nang_chu_yeu_la_che_bien_thanh_san_pham",
    "op": "=",
@@ -25,53 +14,6 @@
    "ngoaiTru": [],
    "nguon": "nhom8422.nhom",
    "trich": "Tuy nhiên, nhóm này không bao gồm các loại máy, trong đó chức năng chủ yếu không phải là đóng gói,... mà là chế biến nguyên liệu dạng thô hoặc bán thành phẩm thành sản phẩm cuối cùng (ví dụ: thiết bị dùng để sản xuất và đóng gói thuốc lá)."
-  },
-  {
-   "fact": "may_rua_bat_dia_ke_ca_gia_dung_va_chay_dien",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8422.nhom",
-   "trich": "Nhóm này bao gồm các loại máy rửa bát đĩa (dùng để rửa đĩa, đồ thủy tinh, thìa dĩa,...), có hoặc không có bộ phận để làm khô, kể cả các loại chạy bằng điện, thuộc loại gia dụng hoặc không."
-  },
-  {
-   "fact": "may_rua_bat_gia_dung_dat_san_chieu_rong_8422_11",
-   "op": "<=",
-   "value": 65,
-   "donVi": "cm",
-   "ngoaiTru": [
-    "Kích thước bên ngoài của máy đặt sàn thuộc phân nhóm 8422.11; loại đặt bàn/quầy nhỏ hơn đáng kể"
-   ],
-   "nguon": "nhom8422.nhom",
-   "trich": "Kích thước bên ngoài của máy dùng để đặt trên mặt sàn như sau:…Chiều rộng: đến 65 cm"
-  },
-  {
-   "fact": "may_rua_bat_gia_dung_dat_san_chieu_cao_8422_11",
-   "op": "<=",
-   "value": 95,
-   "donVi": "cm",
-   "ngoaiTru": [],
-   "nguon": "nhom8422.nhom",
-   "trich": "Kích thước bên ngoài của máy dùng để đặt trên mặt sàn như sau:…Chiều cao: đến 95 cm"
-  },
-  {
-   "fact": "may_rua_bat_gia_dung_dat_san_chieu_sau_8422_11",
-   "op": "<=",
-   "value": 70,
-   "donVi": "cm",
-   "ngoaiTru": [],
-   "nguon": "nhom8422.nhom",
-   "trich": "Kích thước bên ngoài của máy dùng để đặt trên mặt sàn như sau:…Chiều sâu: đến 70 cm"
-  },
-  {
-   "fact": "uu_tien_nhom_8401_8424_so_voi_8425_8480",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "ch84.chuong",
-   "trich": "máy móc hoặc thiết bị thỏa mãn mô tả của một hoặc nhiều nhóm từ 84.01 đến 84.24, hoặc nhóm 84.86 và đồng thời thỏa mãn mô tả của một hoặc nhiều nhóm từ 84.25 đến 84.80 thì được phân loại vào một nhóm thích hợp trong số các nhóm từ 84.01 đến 84.24 hoặc 84.86"
   }
  ],
  "loaiTru": [
@@ -97,16 +39,16 @@
    "nguonGhi": "nhom8422.khong_bao_gom"
   },
   {
-   "dieuKien": "Máy khâu dùng để đóng túi hoặc bao bì tương tự (Chú giải 2(B)(i) Chương 84)",
+   "dieuKien": "Máy khâu dùng để đóng túi hoặc các loại bao bì tương tự",
    "sangNhom": "8452",
    "nguon": "ch84.chuong",
-   "trich": "(B) Nhóm 84.22 không bao gồm:…(i) Máy khâu dùng để đóng túi hoặc các loại bao bì tương tự (nhóm 84.52)"
+   "trich": "(B) Nhóm 84.22 không bao gồm: (i) Máy khâu dùng để đóng túi hoặc các loại bao bì tương tự (nhóm 84.52)"
   },
   {
-   "dieuKien": "Máy văn phòng (Chú giải 2(B)(ii) Chương 84)",
+   "dieuKien": "Máy văn phòng",
    "sangNhom": "8472",
    "nguon": "ch84.chuong",
-   "trich": "(B) Nhóm 84.22 không bao gồm:…(ii) Máy văn phòng thuộc nhóm 84.72."
+   "trich": "(B) Nhóm 84.22 không bao gồm: … (ii) Máy văn phòng thuộc nhóm 84.72."
   },
   {
    "dieuKien": "Máy đặt thư vào phong bì hoặc bọc thư bằng băng giấy",
@@ -128,12 +70,6 @@
    "nguon": "nhom8422.nhom",
    "trich": "(f) Máy bắn đinh (nhóm 84.65).",
    "nguonGhi": "nhom8422.khong_bao_gom"
-  },
-  {
-   "dieuKien": "Linh kiện trình bày riêng thuộc nhóm khác: dụng cụ cân, thiết bị gia công giấy/bìa, thiết bị in",
-   "sangNhom": "8423|8441|8443",
-   "nguon": "nhom8422.nhom",
-   "trich": "phần lớn các linh kiện trong các thiết bị này lại thuộc các nhóm khác, như các dụng cụ cân (nhóm 84.23), thiết bị dùng để gia công giấy hoặc bìa các tông (nhóm 84.41), thiết bị dùng để in (nhóm 84.43)."
   }
  ],
  "phanBiet": [
@@ -145,7 +81,7 @@
    "trich": "Phân nhóm 8422.11 Phân nhóm này bao gồm máy rửa bát đĩa, hoạt động bằng điện hoặc không, dùng trong gia đình, bất kể với mục đích sử dụng nào."
   },
   {
-   "hoi": "Là dụng cụ cơ khí gia dụng đóng chai/đóng hộp, trọng lượng không quá 10 kg?",
+   "hoi": "Hàng là máy đóng chai hoặc đóng hộp gia dụng, hoặc thiết bị cơ khí gia dụng khác có trọng lượng không quá 10 kg?",
    "neuCo": "8210",
    "neuKhong": "8422",
    "nguon": "nhom8422.nhom",
@@ -153,7 +89,7 @@
    "nguonGhi": "nhom8422.khong_bao_gom"
   },
   {
-   "hoi": "Máy khâu để may kín miệng bao sau khi đã chứa hàng?",
+   "hoi": "Hàng là máy khâu dùng để may đóng bao bì, sau khi đã chứa sản phẩm?",
    "neuCo": "8452",
    "neuKhong": "8422",
    "nguon": "nhom8422.nhom",
@@ -221,10 +157,10 @@
   }
  ],
  "boPhan": {
-  "quyTac": "Chú giải 2 Phần XVI (quy tắc chung phân loại bộ phận)",
-  "tomTat": "Bộ phận của máy thuộc nhóm xếp tại đây (8422.90); nhưng nhiều linh kiện thuộc nhóm khác nếu được định danh riêng: dụng cụ cân 84.23, thiết bị gia công giấy/bìa 84.41, thiết bị in 84.43.",
+  "quyTac": "Quy tắc chung về phân loại các bộ phận (Chú giải tổng quát Phần XVI)",
+  "tomTat": "Nhóm này cũng bao gồm bộ phận của các loại máy và thiết bị thuộc nhóm này; tuy nhiên phần lớn các linh kiện trong các thiết bị này lại thuộc các nhóm khác, như dụng cụ cân (84.23), thiết bị dùng để gia công giấy hoặc bìa các tông (84.41), thiết bị dùng để in (84.43).",
   "nguon": "nhom8422.nhom",
-  "trich": "BỘ PHẬN Theo các quy tắc chung về phân loại các bộ phận (xem phần Chú giải tổng quát của Phần XVI), nhóm này cũng bao gồm bộ phận của các loại máy và thiết bị thuộc nhóm này."
+  "trich": "BỘ PHẬN Theo các quy tắc chung về phân loại các bộ phận (xem phần Chú giải tổng quát của Phần XVI), nhóm này cũng bao gồm bộ phận của các loại máy và thiết bị thuộc nhóm này. Tuy nhiên, cũng cần chú ý rằng phần lớn các linh kiện trong các thiết bị này lại thuộc các nhóm khác, như các dụng cụ cân (nhóm 84.23), thiết bị dùng để gia công giấy hoặc bìa các tông (nhóm 84.41), thiết bị dùng để in (nhóm 84.43)."
  },
  "dungTuNguon": [
   "ch84.chuong",
@@ -240,14 +176,14 @@
  "phienBan": "HS2022",
  "bangQuyetDinh": "data/decision-tables/8422.json — ưu tiên tuyệt đối, sổ tay không ghi đè",
  "taoBoi": {
-  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "provider": "phiên Claude quản lý (10 agent con soạn, 6 agent soát độc lập, 07-09/10/2026)",
   "model": null,
-  "luc": "2026-10-07T09:50:53.099Z",
-  "ms": 7
+  "luc": "2026-10-09T09:28:09.558Z",
+  "ms": 4
  },
  "kiemTra": {
-  "tong": 29,
-  "dat": 29,
+  "tong": 22,
+  "dat": 22,
   "loai": 0,
   "nguonBiCat": []
  }

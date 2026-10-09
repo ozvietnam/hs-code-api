@@ -2,9 +2,34 @@
 
 - **Giao:** 2026-10-07. **Người duyệt và gộp:** Claude (phiên quản lý). Agent ngoài **không tự gộp** vào `main`.
 - **Thiết kế:** [`docs/backlog/08-so-tay-chu-giai.md`](../backlog/08-so-tay-chu-giai.md).
-- **Phạm vi:** 1.168 nhóm 4 số còn lại (đã trừ 60 nhóm bước 1, trừ chương 98), chia sẵn **195 lô** trong
-  [`so-tay-lo.csv`](so-tay-lo.csv). Mỗi lô có tối đa 6 nhóm và ≤ 350 nghìn ký tự nguồn.
+- **Phạm vi:** 1.108 nhóm 4 số còn lại (đã trừ 120 nhóm vòng 1+2, trừ chương 98), chia sẵn **185 lô** trong
+  [`so-tay-lo.csv`](so-tay-lo.csv) (tái tạo bằng `node scripts/gen-so-tay-lo.mjs`). Mỗi lô có tối đa 6 nhóm và ≤ 350 nghìn ký tự nguồn.
 - **Một agent nhận một lô.** Ghi tên vào cột `nguoi_lam` và chuyển `trang_thai` sang `dang-lam`. Làm xong một lô thì mở **một PR**.
+
+## 0. Vòng 2 (09/10/2026) và điều quan trọng nhất: PHẢI có người soát độc lập
+
+Vòng 2 làm 60 nhóm hay gặp nhất trong tờ khai thật của Oz (xếp theo số tờ khai; chỉ đếm tổng theo nhóm). Máy kiểm chỉ chứng minh
+câu trích có thật trong nguồn, **không** chứng minh nó nói đúng điều mục khẳng định. Khi giao 6 agent *soát độc lập* (không phải người soạn)
+đọc lại từng mục cùng nguồn, họ xoá/sửa một phần lớn: vòng 2 xoá 325 + sửa 95 trên ~1.300 mục; vòng 1 (đã gộp từ 07/10, chỉ soát mẫu 13 mục)
+soát lại xoá 262 + sửa 281. Kết luận: **không lô nào được gộp nếu chưa qua bước soát độc lập** (mục 4).
+
+Kiểu lỗi lặp lại, đã thành luật máy (`lib/so-tay.js`) hoặc người soát phải bắt:
+
+| Kiểu lỗi | Xử lý |
+|---|---|
+| `dieuKienVao` lấy từ tên phân nhóm WCO / SEN / dòng biểu thuế, trình bày như điều kiện vào cả nhóm 4 số ("công suất ≤ 750 W", "chu vi > 60 cm") | **Máy loại** (`dieu-kien-cap-phan-nhom`). Điều kiện phân nhóm thuộc `dong8` |
+| `dieuKienVao` từ câu CHO PHÉP ("vẫn được phân loại ở đây ngay cả khi…", "đã hoặc chưa…") đặt `=true` | **Máy loại** (`dieu-kien-chi-cho-phep`) |
+| `loaiTru` mà câu nguồn nói "thường thuộc nhóm X", "tùy trường hợp" | **Máy loại** (`loai-tru-chi-la-thuong`) |
+| `phanBiet` có `hoi` nhắc mã phân nhóm hoặc "WCO" | **Máy loại** (`hoi-nhac-ma-phan-nhom`) |
+| `loaiKhac` của dòng 8 số mỗi agent hiểu một kiểu | **Máy tự điền** theo biểu thuế (tên dòng bắt đầu bằng "Loại khác") |
+| Một nhánh của "A hoặc B" bị tách thành điều kiện độc lập (AND) | Người soát bắt |
+| Nhánh "không" của `phanBiet` chỉ suy từ cấu trúc anh em / danh sách loại trừ | Người soát bắt |
+| Dấu lược "…" nuốt mất ngoại lệ ("trừ", "tuy nhiên", "với điều kiện") hoặc câu liền sau trích là ngoại lệ | Người soát bắt |
+| `text`/`tomTat`/`dieuKien` thêm chữ không có trong câu trích (số hiệu chú giải, ví dụ, mã 8 số) | Người soát bắt |
+| Nguồn tự mâu thuẫn (bao gồm X ở một chỗ, loại X ở chỗ khác — vd 8409 "bơm phun") | Bỏ cả hai phía |
+
+**Ý nghĩa của `dieuKienVao` (quan trọng cho bước nối cổng):** đó là các sự kiện *mô tả hàng thuộc nhóm*, không phải điều kiện cần.
+Cổng sau này **không được** loại một nhóm chỉ vì thiếu một `dieuKienVao`. Dùng chúng để gợi ý hỏi người khai, không để chặn.
 
 ## 1. Kết quả bước 1 và bài học (60 nhóm, 07/10/2026)
 
@@ -84,8 +109,10 @@ Mô tả PR phải có:
 ## 4. Người duyệt (phiên quản lý) làm gì với mỗi PR
 
 - CI xanh, `so-tay:check` xanh, tỷ lệ đạt của lô ≥ 95 %.
-- Soát ngẫu nhiên ≥ 10 % số mục: `dieuKien`/`hoi` có đúng nghĩa với câu trích không, có ghép câu hay thêm hiểu biết riêng không.
+- **Soát độc lập bắt buộc, TOÀN BỘ** `phamVi`, `boPhan`, `dieuKienVao`, `loaiTru`, `phanBiet` của lô (không chỉ mẫu): một người/agent KHÁC người soạn
+  đọc từng mục cùng nguồn, ghi `xoa`/`sua` theo `index` (cách làm ở vòng 2: tệp `review/<nhom>.json` rồi áp lên bản nháp trước khi nạp). Mục `sua` phải qua `check-so-tay --raw` lại. PR ghi số mục soát/xoá/sửa.
+- Sau đó người duyệt tự soát ngẫu nhiên ≥ 10 % số mục còn lại: `dieuKien`/`hoi` có đúng nghĩa với câu trích không, có ghép câu hay thêm hiểu biết riêng không.
 - Bổ sung lỗi kệ sách mới phát hiện vào phần 1. Lỗi lặp lại thì đưa thành luật máy (`lib/so-tay.js`) cho các lô sau.
 - Đạt thì gộp và cập nhật `so-tay-lo.csv` (`trang_thai=xong`, `pr`).
 
-Ước tính toàn bộ 195 lô: khoảng 40 triệu token. 10 agent chạy song song thì khoảng 4 giờ.
+Ước tính toàn bộ 185 lô: soạn ~35 nghìn token/nhóm + soát độc lập ~30 nghìn token/nhóm → khoảng 70 triệu token. Vòng 2 (60 nhóm) mất khoảng 2 giờ với 10 agent soạn + 6 agent soát chạy song song.

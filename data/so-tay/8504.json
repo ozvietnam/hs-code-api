@@ -1,7 +1,7 @@
 {
  "nhom": "8504",
  "phamVi": {
-  "text": "Máy biến điện (kể cả chấn lưu cho đèn/ống phóng, biến áp đo lường, cuộn cảm kiểu biến điện), thiết bị biến đổi tĩnh điện (chỉnh lưu, nghịch lưu, biến đổi tần số, DC-DC, máy nạp ắc quy, nguồn ổn áp/UPS), cuộn cảm (cuộn kháng) và bộ phận của chúng.",
+  "text": "Máy biến điện, thiết bị biến đổi tĩnh điện, cuộn cảm và bộ phận của chúng.",
   "nguon": "nhom8504.nhom",
   "trich": "(I) CÁC MÁY BIẾN ĐIỆN … (II) CÁC THIẾT BỊ BIẾN ĐỔI TĨNH ĐIỆN … (III) CUỘN CẢM … BỘ PHẬN Theo quy tắc chung phân loại các bộ phận (xem chú giải chi tiết tổng quát phần XVI), bộ phận của hàng hóa thuộc nhóm này cũng được phân loại ở đây."
  },
@@ -16,15 +16,6 @@
    "trich": "Các máy biến điện là các thiết bị, không có phần chuyển động, sử dụng hiện tượng cảm ứng của hệ thống thiết lập trước hoặc có thể điều chỉnh được, để biến đổi dòng điện xoay chiều này thành dòng điện xoay chiều khác ở cấp điện áp, trở kháng... khác."
   },
   {
-   "fact": "cong_suat_bieu_kien_xac_dinh_tai",
-   "op": "=",
-   "value": "kVA ở đầu ra, chế độ làm việc liên tục, điện áp làm việc cuộn thứ cấp, tần số định mức",
-   "donVi": "kVA",
-   "ngoaiTru": [],
-   "nguon": "nhom8504.nhom",
-   "trich": "Công suất biểu kiến của máy biến thế điện được tính bằng kilovolt-ampeme (kVA), được xác định ở đầu ra trong chế độ làm việc liên tục tại mức điện áp làm việc ở cuộn thứ cấp (hoặc dòng điện định mức tương ứng) và tần số định mức mà không vượt quá giới hạn nhiệt độ làm việc cho phép."
-  },
-  {
    "fact": "may_bien_dien_han_trinh_bay_rieng_khong_kem_dau_kep_que_han",
    "op": "=",
    "value": true,
@@ -36,22 +27,11 @@
    "trich": "Máy biến điện để hàn điện được phân loại trong nhóm này khi hiện diện riêng rẽ, không có đầu kẹp que hàn hoặc thiết bị hàn."
   },
   {
-   "fact": "mach_bo_tro_dieu_chinh_dien_ap_khong_lam_thay_doi_phan_loai",
+   "fact": "nguon_on_ap_chinh_luu_ket_hop_thiet_bi_on_ap",
    "op": "=",
    "value": true,
    "donVi": null,
    "ngoaiTru": [],
-   "nguon": "nhom8504.nhom",
-   "trich": "Trên thực tế thì các thiết bị này thường gắn với mạch bổ trợ dùng để điều chỉnh điện áp của các dòng nhấp nhô thì không ảnh hưởng đến việc phân loại trong nhóm này"
-  },
-  {
-   "fact": "nguon_on_ap_chinh_luu_ket_hop_on_ap_hoac_nguon_cap_lien_tuc",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [
-    "máy điều chỉnh điện áp tự động → nhóm 90.32"
-   ],
    "nguon": "nhom8504.nhom",
    "trich": "Nhóm này cũng bao gồm các nguồn ổn áp (thiết bị chỉnh lưu kết hợp với thiết bị ổn áp) ví dụ các nguồn cấp liên tục cho các thiết bị điện tử."
   },
@@ -63,15 +43,6 @@
    "ngoaiTru": [],
    "nguon": "nhom8504.nhom",
    "trich": "Các cuộn kháng, cuộn cảm thu được dưới dạng các cấu thành riêng qua quá trình in cũng được xếp trong nhóm này."
-  },
-  {
-   "fact": "chinh_luu_ho_quang_thuy_ngan_vo_kim_loai",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "ch85.chuong",
-   "trich": "Tuy nhiên, thiết bị chỉnh lưu hồ quang thủy ngân vỏ kim loại vẫn được xếp vào nhóm 85.04."
   }
  ],
  "loaiTru": [
@@ -88,10 +59,10 @@
    "trich": "Nhóm này cũng bao gồm tất cả các loại cuộn cảm, chỉ trừ loại thiết bị đánh lửa dùng cho động cơ đốt trong (nhóm 85.11)"
   },
   {
-   "dieuKien": "Hàng hóa đã mô tả trong nhóm 85.11, 85.12, 85.40, 85.41 hoặc 85.42 (trừ thiết bị chỉnh lưu hồ quang thủy ngân vỏ kim loại)",
+   "dieuKien": "Hàng hóa đã mô tả trong nhóm 85.11, 85.12, 85.40, 85.41 hoặc 85.42 (trừ thiết bị chỉnh lưu hồ quang thủy ngân vỏ kim loại, vẫn xếp vào 85.04)",
    "sangNhom": "8511|8512|8540|8541|8542",
    "nguon": "ch85.chuong",
-   "trich": "2. Các nhóm từ 85.01 đến 85.04 không áp dụng cho các loại hàng hóa đã mô tả trong nhóm 85.11, 85.12, 85.40, 85.41 hoặc 85.42."
+   "trich": "2. Các nhóm từ 85.01 đến 85.04 không áp dụng cho các loại hàng hóa đã mô tả trong nhóm 85.11, 85.12, 85.40, 85.41 hoặc 85.42. Tuy nhiên, thiết bị chỉnh lưu hồ quang thủy ngân vỏ kim loại vẫn được xếp vào nhóm 85.04."
   },
   {
    "dieuKien": "Máy phát cao áp hoặc máy biến điện thiết kế đặc biệt cho thiết bị phát phóng xạ",
@@ -110,30 +81,6 @@
    "sangNhom": "8540",
    "nguon": "nhom8504.nhom",
    "trich": "Các cuộn lái tia sử dụng cho các ống phóng tia ca tốt được xếp vào nhóm 85.40."
-  },
-  {
-   "dieuKien": "Linh kiện (bộ phận) là chuyển mạch, ví dụ chuyển mạch nhiều vị trí dùng trong máy biến áp",
-   "sangNhom": "8536",
-   "nguon": "nhom8504.nhom",
-   "trich": "(a) Các chuyển mạch của nhóm 85.36 (ví dụ chuyển mạch nhiều vị trí sử dụng trong các máy biến áp)."
-  },
-  {
-   "dieuKien": "Linh kiện là van, ống chỉnh lưu chân không hoặc hơi thủy ngân, đèn điện tử (trừ vỏ kim loại), đèn thyratron",
-   "sangNhom": "8540",
-   "nguon": "nhom8504.nhom",
-   "trich": "(b) Các van và ống chỉnh lưu chân không hoặc hơi thủy ngân và các đèn điện tử (ngoại trừ các vỏ bằng kim loại) và các đèn thyraton (nhóm 85.40)."
-  },
-  {
-   "dieuKien": "Linh kiện là đi ốt bán dẫn, transistor, thyristor",
-   "sangNhom": "8541",
-   "nguon": "nhom8504.nhom",
-   "trich": "(c) Các đi ốt bán dẫn, transistor và thyristor (nhóm 85.41)."
-  },
-  {
-   "dieuKien": "Linh kiện là sản phẩm của nhóm 85.42 (mạch điện tử tích hợp)",
-   "sangNhom": "8542",
-   "nguon": "nhom8504.nhom",
-   "trich": "(d) Các sản phẩm của nhóm 85.42."
   }
  ],
  "phanBiet": [
@@ -681,7 +628,7 @@
  ],
  "boPhan": {
   "quyTac": "Quy tắc chung phân loại bộ phận (Chú giải chi tiết tổng quát Phần XVI)",
-  "tomTat": "Bộ phận của hàng hóa nhóm 85.04 phân loại tại đây (vd vỏ bình kim loại của bộ chỉnh lưu hồ quang hơi thủy ngân); nhưng linh kiện điện đã có nhóm riêng thì theo nhóm đó: chuyển mạch 85.36, van/ống chỉnh lưu và đèn thyratron 85.40, đi ốt/transistor/thyristor 85.41, sản phẩm 85.42.",
+  "tomTat": "Bộ phận của hàng hóa thuộc nhóm này cũng được phân loại ở đây theo quy tắc chung phân loại bộ phận; trường hợp điển hình là vỏ bình bằng kim loại của bộ chỉnh lưu hồ quang hơi thủy ngân.",
   "nguon": "nhom8504.nhom",
   "trich": "BỘ PHẬN Theo quy tắc chung phân loại các bộ phận (xem chú giải chi tiết tổng quát phần XVI), bộ phận của hàng hóa thuộc nhóm này cũng được phân loại ở đây. Trường hợp điển hình là trường hợp vỏ bình bằng kim loại của bộ chỉnh lưu hồ quang hơi thủy ngân có hay không có bơm luôn được phân loại như bộ phận."
  },
@@ -763,15 +710,15 @@
  ],
  "phienBan": "HS2022+SEN2022",
  "taoBoi": {
-  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "provider": "phiên Claude quản lý (10 agent con soạn, 6 agent soát độc lập, 07-09/10/2026)",
   "model": null,
-  "luc": "2026-10-07T09:50:53.229Z",
-  "ms": 18
+  "luc": "2026-10-09T09:28:09.705Z",
+  "ms": 29
  },
  "kiemTra": {
-  "tong": 96,
-  "dat": 96,
-  "loai": 0,
+  "tong": 90,
+  "dat": 89,
+  "loai": 1,
   "nguonBiCat": []
  }
 }

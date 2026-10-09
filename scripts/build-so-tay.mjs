@@ -57,7 +57,7 @@ Bài học bước 1 (60 nhóm, 07/10/2026) — bắt buộc:
 - "dieuKien"/"text" chỉ diễn đạt điều câu trích (hoặc wco/sen) nói; không thêm tên phân nhóm theo hiểu biết riêng. Dòng 8 số trùng chữ mà nguồn không phân biệt → ghi "dòng cha không có trong nguồn — đối chiếu biểu thuế", không đoán.
 - Chép nguyên văn kể cả lỗi chính tả/số hiệu chú giải cũ của nguồn ("Chú giải 8 (a)"), không sửa.
 - dieuKienVao CHỈ từ nguồn nhom*/ch*/phan* và phải là điều kiện VÀO NHÓM 4 số. Ngưỡng/điều kiện của phân nhóm hay dòng 8 số (tên wco.*, sen.*, tax.*: "công suất ≤ 750 W", "chu vi > 60 cm") KHÔNG đưa vào dieuKienVao — chúng thuộc dong8. Máy loại các mục đó.
-- Câu "nhóm này cũng bao gồm…", "có thể…", danh sách ví dụ: KHÔNG đặt value=true như điều kiện bắt buộc. Một nhánh của "A hoặc B" không được tách thành điều kiện độc lập.
+- Câu "nhóm này cũng bao gồm…", "có thể…", "vẫn được phân loại ở đây ngay cả khi…", "đã hoặc chưa…", danh sách ví dụ: KHÔNG đặt value=true như điều kiện bắt buộc (máy loại các câu cho phép). Một nhánh của "A hoặc B" không được tách thành điều kiện độc lập.
 - loaiTru: câu nguồn nói "thường thuộc/nằm nhóm X", "tùy trường hợp" thì BỎ (không phải loại trừ dứt khoát). dieuKien phải giữ định ngữ giới hạn của câu ("đã qua sử dụng thuộc nhóm 63.09", không viết "đã qua sử dụng").
 - phanBiet: "hoi" KHÔNG nhắc mã phân nhóm hay "WCO". Nhánh "không" phải có căn cứ trong nguồn; không suy từ cấu trúc anh em hay từ danh sách loại trừ. Không tạo nhiều mục cùng một câu hỏi cho các cặp mã khác nhau.
 - Dấu lược "…": đoạn bị lược KHÔNG được chứa ngoại lệ ("trừ", "tuy nhiên", "với điều kiện", "không kể"). Câu liền sau câu trích mà bắt đầu bằng "Tuy nhiên/trừ khi" thì phải kéo vào câu trích.
