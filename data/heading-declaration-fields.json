@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-05",
+  "version": "2026-10-09",
   "generatedBy": "scripts/build-heading-declaration-fields.mjs",
   "stats": {
     "headings": 339,
@@ -194,29 +194,33 @@
     "3406": {
       "chapter": "34",
       "titleVi": "Nến, nến cây và các loại tương tự",
-      "template": "waxPolish",
+      "template": "candle",
       "required": [
-        "dosageForm",
-        "applicationSurface"
+        "material",
+        "form",
+        "dimensions"
       ],
       "recommended": [
-        "activeIngredient"
+        "fragranceType",
+        "application"
       ],
-      "noteVi": "Sáp/đánh bóng — dạng và bề mặt dùng (da/gỗ/kim loại)",
+      "noteVi": "Nến — loại sáp, dạng (cây/cốc/thơm), kích thước",
       "subcodeCount": 1,
       "sampleHs": "34060000"
     },
     "3407": {
       "chapter": "34",
-      "titleVi": "Xà phòng/chất tẩy",
-      "template": "soapDetergent",
+      "titleVi": "Bột nặn/sáp nha khoa",
+      "template": "modellingPaste",
       "required": [
-        "dosageForm",
-        "activeIngredient",
-        "form"
+        "form",
+        "material",
+        "application"
       ],
-      "recommended": [],
-      "noteVi": "Xà phòng/chất tẩy — dạng (bột/lỏng/thanh), thành phần surfactant/enzyme",
+      "recommended": [
+        "dosageForm"
+      ],
+      "noteVi": "Bột nặn/sáp nha khoa — dạng, thành phần, công dụng",
       "subcodeCount": 3,
       "sampleHs": "34070010"
     },
@@ -446,17 +450,17 @@
     },
     "3915": {
       "chapter": "39",
-      "titleVi": "Sản phẩm nhựa",
-      "template": "polymerProduct",
+      "titleVi": "Phế liệu/mảnh vụn",
+      "template": "wasteScrap",
       "required": [
-        "polymerType",
-        "form",
-        "dimensions"
+        "material",
+        "form"
       ],
       "recommended": [
-        "thickness"
+        "color",
+        "application"
       ],
-      "noteVi": "Sản phẩm nhựa — loại nhựa, dạng (tấm/ống/phim), kích thước/độ dày",
+      "noteVi": "Phế liệu/mảnh vụn — vật liệu, dạng (vụn/khối/mảnh)",
       "subcodeCount": 12,
       "sampleHs": "39151010"
     },
@@ -1713,34 +1717,33 @@
     },
     "6406": {
       "chapter": "64",
-      "titleVi": "Giày dép",
-      "template": "footwear",
+      "titleVi": "Bộ phận giày dép (đế, mũ, gót)",
+      "template": "footwearPart",
       "required": [
-        "upperMaterial",
-        "soleMaterial",
-        "targetGroup",
-        "size"
+        "material",
+        "application"
       ],
       "recommended": [
+        "dimensions",
         "modelNumber"
       ],
-      "noteVi": "Giày dép — chất liệu mũi/đế, nam/nữ/trẻ em, size",
+      "noteVi": "Bộ phận giày dép (đế, mũ, gót) — vật liệu, bộ phận nào",
       "subcodeCount": 17,
       "sampleHs": "64061010"
     },
     "7001": {
       "chapter": "70",
       "titleVi": "Thủy tinh vụn và thủy tinh phế liệu và mảnh vụn khác, trừ thủy tinh từ ống đèn tia ca-tốt hoặc thủy tinh hoạt tính khác thuộc nhóm 85.49; thủy tinh ở dạng khối",
-      "template": "glassProduct",
+      "template": "wasteScrap",
       "required": [
-        "glassType",
-        "dimensions",
-        "application"
+        "material",
+        "form"
       ],
       "recommended": [
-        "modelNumber"
+        "color",
+        "application"
       ],
-      "noteVi": "Thủy tinh — loại (cường lực/dán), kích thước, công dụng",
+      "noteVi": "Phế liệu/mảnh vụn — vật liệu, dạng (vụn/khối/mảnh)",
       "subcodeCount": 1,
       "sampleHs": "70010000"
     },
@@ -1874,17 +1877,18 @@
     },
     "7010": {
       "chapter": "70",
-      "titleVi": "Thủy tinh",
-      "template": "glassProduct",
+      "titleVi": "Chai/lọ/bình thủy tinh",
+      "template": "glassContainer",
       "required": [
         "glassType",
-        "dimensions",
+        "volumeMl",
         "application"
       ],
       "recommended": [
-        "modelNumber"
+        "dimensions",
+        "color"
       ],
-      "noteVi": "Thủy tinh — loại (cường lực/dán), kích thước, công dụng",
+      "noteVi": "Chai/lọ/bình thủy tinh — loại thủy tinh, dung tích, đựng gì",
       "subcodeCount": 6,
       "sampleHs": "70101000"
     },
@@ -2524,49 +2528,49 @@
     },
     "8204": {
       "chapter": "82",
-      "titleVi": "Dụng cụ cầm tay",
-      "template": "handTool",
+      "titleVi": "Dụng cụ cầm tay không lưỡi (cờ lê, búa, thìa dĩa)",
+      "template": "handToolGeneric",
       "required": [
         "toolType",
-        "bladeMaterial",
+        "material",
         "dimensions"
       ],
       "recommended": [
         "modelNumber"
       ],
-      "noteVi": "Dụng cụ cầm tay — loại dao/khoan, vật liệu lưỡi, kích thước",
+      "noteVi": "Dụng cụ cầm tay không lưỡi (cờ lê, búa, thìa dĩa) — loại, vật liệu, kích thước",
       "subcodeCount": 3,
       "sampleHs": "82041100"
     },
     "8205": {
       "chapter": "82",
-      "titleVi": "Dụng cụ cầm tay",
-      "template": "handTool",
+      "titleVi": "Dụng cụ cầm tay không lưỡi (cờ lê, búa, thìa dĩa)",
+      "template": "handToolGeneric",
       "required": [
         "toolType",
-        "bladeMaterial",
+        "material",
         "dimensions"
       ],
       "recommended": [
         "modelNumber"
       ],
-      "noteVi": "Dụng cụ cầm tay — loại dao/khoan, vật liệu lưỡi, kích thước",
+      "noteVi": "Dụng cụ cầm tay không lưỡi (cờ lê, búa, thìa dĩa) — loại, vật liệu, kích thước",
       "subcodeCount": 9,
       "sampleHs": "82051000"
     },
     "8206": {
       "chapter": "82",
       "titleVi": "Bộ dụng cụ từ hai nhóm trở lên thuộc các nhóm từ 82.02 đến 82.05, đã đóng bộ để bán lẻ",
-      "template": "handTool",
+      "template": "handToolGeneric",
       "required": [
         "toolType",
-        "bladeMaterial",
+        "material",
         "dimensions"
       ],
       "recommended": [
         "modelNumber"
       ],
-      "noteVi": "Dụng cụ cầm tay — loại dao/khoan, vật liệu lưỡi, kích thước",
+      "noteVi": "Dụng cụ cầm tay không lưỡi (cờ lê, búa, thìa dĩa) — loại, vật liệu, kích thước",
       "subcodeCount": 1,
       "sampleHs": "82060000"
     },
@@ -2621,16 +2625,16 @@
     "8210": {
       "chapter": "82",
       "titleVi": "Đồ dùng cơ khí hoạt động bằng tay, nặng 10 kg trở xuống, dùng để chế biến, pha chế hoặc phục vụ đồ ăn hoặc đồ uống",
-      "template": "handTool",
+      "template": "handToolGeneric",
       "required": [
         "toolType",
-        "bladeMaterial",
+        "material",
         "dimensions"
       ],
       "recommended": [
         "modelNumber"
       ],
-      "noteVi": "Dụng cụ cầm tay — loại dao/khoan, vật liệu lưỡi, kích thước",
+      "noteVi": "Dụng cụ cầm tay không lưỡi (cờ lê, búa, thìa dĩa) — loại, vật liệu, kích thước",
       "subcodeCount": 1,
       "sampleHs": "82100000"
     },
@@ -2700,17 +2704,17 @@
     },
     "8215": {
       "chapter": "82",
-      "titleVi": "Dụng cụ cầm tay",
-      "template": "handTool",
+      "titleVi": "Dụng cụ cầm tay không lưỡi (cờ lê, búa, thìa dĩa)",
+      "template": "handToolGeneric",
       "required": [
         "toolType",
-        "bladeMaterial",
+        "material",
         "dimensions"
       ],
       "recommended": [
         "modelNumber"
       ],
-      "noteVi": "Dụng cụ cầm tay — loại dao/khoan, vật liệu lưỡi, kích thước",
+      "noteVi": "Dụng cụ cầm tay không lưỡi (cờ lê, búa, thìa dĩa) — loại, vật liệu, kích thước",
       "subcodeCount": 4,
       "sampleHs": "82151000"
     },
@@ -2733,103 +2737,113 @@
     },
     "8402": {
       "chapter": "84",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc)",
+      "template": "nonElectricMachine",
       "required": [
         "machineFunction",
-        "power",
-        "voltage"
+        "modelNumber"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "power",
+        "pressureRating",
+        "flowRate",
+        "dimensions",
+        "powerSource"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc) — chức năng, model; thông số kèm nếu có",
       "subcodeCount": 14,
       "sampleHs": "84021110"
     },
     "8403": {
       "chapter": "84",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc)",
+      "template": "nonElectricMachine",
       "required": [
         "machineFunction",
-        "power",
-        "voltage"
+        "modelNumber"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "power",
+        "pressureRating",
+        "flowRate",
+        "dimensions",
+        "powerSource"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc) — chức năng, model; thông số kèm nếu có",
       "subcodeCount": 3,
       "sampleHs": "84031000"
     },
     "8404": {
       "chapter": "84",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc)",
+      "template": "nonElectricMachine",
       "required": [
         "machineFunction",
-        "power",
-        "voltage"
+        "modelNumber"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "power",
+        "pressureRating",
+        "flowRate",
+        "dimensions",
+        "powerSource"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc) — chức năng, model; thông số kèm nếu có",
       "subcodeCount": 9,
       "sampleHs": "84041011"
     },
     "8405": {
       "chapter": "84",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc)",
+      "template": "nonElectricMachine",
       "required": [
         "machineFunction",
-        "power",
-        "voltage"
+        "modelNumber"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "power",
+        "pressureRating",
+        "flowRate",
+        "dimensions",
+        "powerSource"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc) — chức năng, model; thông số kèm nếu có",
       "subcodeCount": 2,
       "sampleHs": "84051000"
     },
     "8406": {
       "chapter": "84",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc)",
+      "template": "nonElectricMachine",
       "required": [
         "machineFunction",
-        "power",
-        "voltage"
+        "modelNumber"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "power",
+        "pressureRating",
+        "flowRate",
+        "dimensions",
+        "powerSource"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc) — chức năng, model; thông số kèm nếu có",
       "subcodeCount": 5,
       "sampleHs": "84061000"
     },
     "8407": {
       "chapter": "84",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Động cơ đốt trong",
+      "template": "engineCombustion",
       "required": [
-        "machineFunction",
+        "engineDisplacement",
         "power",
-        "voltage"
+        "cylinderCount",
+        "fuelType"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "modelNumber"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Động cơ đốt trong — dung tích xi lanh, công suất, số xy lanh, nhiên liệu",
       "subcodeCount": 29,
       "sampleHs": "84071000"
     },
@@ -2852,52 +2866,56 @@
     },
     "8409": {
       "chapter": "84",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Bộ phận máy",
+      "template": "machinePart",
       "required": [
-        "machineFunction",
-        "power",
-        "voltage"
+        "application",
+        "material",
+        "dimensions",
+        "modelNumber"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "form"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Bộ phận máy — lắp cho máy gì, vật liệu, kích thước, mã part",
       "subcodeCount": 106,
       "sampleHs": "84091000"
     },
     "8410": {
       "chapter": "84",
-      "titleVi": "Xi lanh khí",
-      "template": "pneumaticCylinder",
+      "titleVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc)",
+      "template": "nonElectricMachine",
       "required": [
-        "boreDiameter",
-        "strokeLength",
-        "pressureRating",
+        "machineFunction",
         "modelNumber"
       ],
       "recommended": [
-        "material"
+        "power",
+        "pressureRating",
+        "flowRate",
+        "dimensions",
+        "powerSource"
       ],
-      "noteVi": "Xi lanh khí — đường kính xy lanh, hành trình, áp suất làm việc",
+      "noteVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc) — chức năng, model; thông số kèm nếu có",
       "subcodeCount": 4,
       "sampleHs": "84101100"
     },
     "8411": {
       "chapter": "84",
-      "titleVi": "Xi lanh khí",
-      "template": "pneumaticCylinder",
+      "titleVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc)",
+      "template": "nonElectricMachine",
       "required": [
-        "boreDiameter",
-        "strokeLength",
-        "pressureRating",
+        "machineFunction",
         "modelNumber"
       ],
       "recommended": [
-        "material"
+        "power",
+        "pressureRating",
+        "flowRate",
+        "dimensions",
+        "powerSource"
       ],
-      "noteVi": "Xi lanh khí — đường kính xy lanh, hành trình, áp suất làm việc",
+      "noteVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc) — chức năng, model; thông số kèm nếu có",
       "subcodeCount": 8,
       "sampleHs": "84111100"
     },
@@ -2972,35 +2990,39 @@
     },
     "8416": {
       "chapter": "84",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc)",
+      "template": "nonElectricMachine",
       "required": [
         "machineFunction",
-        "power",
-        "voltage"
+        "modelNumber"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "power",
+        "pressureRating",
+        "flowRate",
+        "dimensions",
+        "powerSource"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc) — chức năng, model; thông số kèm nếu có",
       "subcodeCount": 4,
       "sampleHs": "84161000"
     },
     "8417": {
       "chapter": "84",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc)",
+      "template": "nonElectricMachine",
       "required": [
         "machineFunction",
-        "power",
-        "voltage"
+        "modelNumber"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "power",
+        "pressureRating",
+        "flowRate",
+        "dimensions",
+        "powerSource"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc) — chức năng, model; thông số kèm nếu có",
       "subcodeCount": 5,
       "sampleHs": "84171000"
     },
@@ -3057,18 +3079,20 @@
     },
     "8421": {
       "chapter": "84",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc)",
+      "template": "nonElectricMachine",
       "required": [
         "machineFunction",
-        "power",
-        "voltage"
+        "modelNumber"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "power",
+        "pressureRating",
+        "flowRate",
+        "dimensions",
+        "powerSource"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc) — chức năng, model; thông số kèm nếu có",
       "subcodeCount": 45,
       "sampleHs": "84211100"
     },
@@ -3108,18 +3132,20 @@
     },
     "8424": {
       "chapter": "84",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc)",
+      "template": "nonElectricMachine",
       "required": [
         "machineFunction",
-        "power",
-        "voltage"
+        "modelNumber"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "power",
+        "pressureRating",
+        "flowRate",
+        "dimensions",
+        "powerSource"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Máy/thiết bị không chạy điện lưới (nồi hơi, tua-bin, bình chữa cháy, lọc) — chức năng, model; thông số kèm nếu có",
       "subcodeCount": 31,
       "sampleHs": "84241010"
     },
@@ -3227,18 +3253,18 @@
     },
     "8431": {
       "chapter": "84",
-      "titleVi": "Máy nông nghiệp",
-      "template": "agriculturalMachine",
+      "titleVi": "Bộ phận máy",
+      "template": "machinePart",
       "required": [
-        "power",
-        "workingWidth",
-        "machineFunction"
+        "application",
+        "material",
+        "dimensions",
+        "modelNumber"
       ],
       "recommended": [
-        "modelNumber",
-        "voltage"
+        "form"
       ],
-      "noteVi": "Máy nông nghiệp — công suất, chiều rộng làm việc, chức năng (cày/gặt)",
+      "noteVi": "Bộ phận máy — lắp cho máy gì, vật liệu, kích thước, mã part",
       "subcodeCount": 22,
       "sampleHs": "84311013"
     },
@@ -3926,18 +3952,18 @@
     },
     "8473": {
       "chapter": "84",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Bộ phận máy",
+      "template": "machinePart",
       "required": [
-        "machineFunction",
-        "power",
-        "voltage"
+        "application",
+        "material",
+        "dimensions",
+        "modelNumber"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "form"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Bộ phận máy — lắp cho máy gì, vật liệu, kích thước, mã part",
       "subcodeCount": 7,
       "sampleHs": "84732100"
     },
@@ -4080,53 +4106,51 @@
     },
     "8482": {
       "chapter": "84",
-      "titleVi": "Van",
-      "template": "valve",
+      "titleVi": "Ổ bi/ổ lăn",
+      "template": "bearing",
       "required": [
-        "valveType",
-        "material",
-        "pressureRating",
-        "dimensions"
+        "modelNumber",
+        "dimensions",
+        "material"
       ],
       "recommended": [
-        "modelNumber",
-        "voltage"
+        "application"
       ],
-      "noteVi": "Van — loại van, vật liệu, áp suất, kích thước danh nghĩa",
+      "noteVi": "Ổ bi/ổ lăn — mã (6204-2RS), đường kính trong/ngoài, vật liệu",
       "subcodeCount": 8,
       "sampleHs": "84821000"
     },
     "8483": {
       "chapter": "84",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Bộ phận máy",
+      "template": "machinePart",
       "required": [
-        "machineFunction",
-        "power",
-        "voltage"
+        "application",
+        "material",
+        "dimensions",
+        "modelNumber"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "form"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Bộ phận máy — lắp cho máy gì, vật liệu, kích thước, mã part",
       "subcodeCount": 29,
       "sampleHs": "84831010"
     },
     "8484": {
       "chapter": "84",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Bộ phận máy",
+      "template": "machinePart",
       "required": [
-        "machineFunction",
-        "power",
-        "voltage"
+        "application",
+        "material",
+        "dimensions",
+        "modelNumber"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "form"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Bộ phận máy — lắp cho máy gì, vật liệu, kích thước, mã part",
       "subcodeCount": 3,
       "sampleHs": "84841000"
     },
@@ -4166,18 +4190,18 @@
     },
     "8487": {
       "chapter": "84",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Bộ phận máy",
+      "template": "machinePart",
       "required": [
-        "machineFunction",
-        "power",
-        "voltage"
+        "application",
+        "material",
+        "dimensions",
+        "modelNumber"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "form"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Bộ phận máy — lắp cho máy gì, vật liệu, kích thước, mã part",
       "subcodeCount": 2,
       "sampleHs": "84871000"
     },
@@ -4219,18 +4243,18 @@
     },
     "8503": {
       "chapter": "85",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Bộ phận máy",
+      "template": "machinePart",
       "required": [
-        "machineFunction",
-        "power",
-        "voltage"
+        "application",
+        "material",
+        "dimensions",
+        "modelNumber"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "form"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Bộ phận máy — lắp cho máy gì, vật liệu, kích thước, mã part",
       "subcodeCount": 2,
       "sampleHs": "85030020"
     },
@@ -4253,18 +4277,18 @@
     },
     "8505": {
       "chapter": "85",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Nam châm",
+      "template": "magnet",
       "required": [
-        "machineFunction",
-        "power",
-        "voltage"
+        "material",
+        "dimensions",
+        "application"
       ],
       "recommended": [
         "modelNumber",
-        "frequency"
+        "voltage"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Nam châm — vật liệu (NdFeB/ferrite), kích thước, công dụng; điện áp chỉ khi là nam châm điện",
       "subcodeCount": 6,
       "sampleHs": "85051100"
     },
@@ -4302,52 +4326,52 @@
     },
     "8508": {
       "chapter": "85",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Thiết bị gia dụng điện",
+      "template": "appliance",
       "required": [
-        "machineFunction",
         "power",
-        "voltage"
+        "voltage",
+        "applianceFunction"
       ],
       "recommended": [
         "modelNumber",
         "frequency"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Thiết bị gia dụng điện — công suất, điện áp, chức năng",
       "subcodeCount": 6,
       "sampleHs": "85081100"
     },
     "8509": {
       "chapter": "85",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Thiết bị gia dụng điện",
+      "template": "appliance",
       "required": [
-        "machineFunction",
         "power",
-        "voltage"
+        "voltage",
+        "applianceFunction"
       ],
       "recommended": [
         "modelNumber",
         "frequency"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Thiết bị gia dụng điện — công suất, điện áp, chức năng",
       "subcodeCount": 6,
       "sampleHs": "85094000"
     },
     "8510": {
       "chapter": "85",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Thiết bị gia dụng điện",
+      "template": "appliance",
       "required": [
-        "machineFunction",
         "power",
-        "voltage"
+        "voltage",
+        "applianceFunction"
       ],
       "recommended": [
         "modelNumber",
         "frequency"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Thiết bị gia dụng điện — công suất, điện áp, chức năng",
       "subcodeCount": 4,
       "sampleHs": "85101000"
     },
@@ -4370,35 +4394,37 @@
     },
     "8512": {
       "chapter": "85",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Đèn",
+      "template": "lighting",
       "required": [
-        "machineFunction",
         "power",
-        "voltage"
+        "voltage",
+        "lightType",
+        "application"
       ],
       "recommended": [
         "modelNumber",
-        "frequency"
+        "dimensions"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Đèn — công suất, điện áp, loại LED/compact, công dụng",
       "subcodeCount": 11,
       "sampleHs": "85121000"
     },
     "8513": {
       "chapter": "85",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Đèn",
+      "template": "lighting",
       "required": [
-        "machineFunction",
         "power",
-        "voltage"
+        "voltage",
+        "lightType",
+        "application"
       ],
       "recommended": [
         "modelNumber",
-        "frequency"
+        "dimensions"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Đèn — công suất, điện áp, loại LED/compact, công dụng",
       "subcodeCount": 5,
       "sampleHs": "85131030"
     },
@@ -4537,35 +4563,34 @@
     },
     "8523": {
       "chapter": "85",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Ổ cứng/SSD/USB/thẻ nhớ",
+      "template": "storageMedia",
       "required": [
-        "machineFunction",
-        "power",
-        "voltage"
+        "storageCapacity",
+        "modelNumber",
+        "connectivity"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "dimensions"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Ổ cứng/SSD/USB/thẻ nhớ — dung lượng, model, chuẩn kết nối; không đòi điện áp",
       "subcodeCount": 68,
       "sampleHs": "85232110"
     },
     "8524": {
       "chapter": "85",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Màn hình/TV",
+      "template": "display",
       "required": [
-        "machineFunction",
-        "power",
+        "screenSize",
+        "resolution",
+        "modelNumber",
         "voltage"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "panelType"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Màn hình/TV — kích thước inch, độ phân giải, model",
       "subcodeCount": 6,
       "sampleHs": "85241100"
     },
@@ -4690,69 +4715,65 @@
     },
     "8532": {
       "chapter": "85",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Linh kiện bán dẫn",
+      "template": "semiconductor",
       "required": [
-        "machineFunction",
-        "power",
-        "voltage"
+        "partNumber",
+        "function",
+        "packageType"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "voltage"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Linh kiện bán dẫn — mã part, chức năng, kiểu đóng gói",
       "subcodeCount": 9,
       "sampleHs": "85321000"
     },
     "8533": {
       "chapter": "85",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Linh kiện bán dẫn",
+      "template": "semiconductor",
       "required": [
-        "machineFunction",
-        "power",
-        "voltage"
+        "partNumber",
+        "function",
+        "packageType"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "voltage"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Linh kiện bán dẫn — mã part, chức năng, kiểu đóng gói",
       "subcodeCount": 8,
       "sampleHs": "85331010"
     },
     "8534": {
       "chapter": "85",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Mạch in",
+      "template": "pcb",
       "required": [
-        "machineFunction",
-        "power",
-        "voltage"
+        "dimensions",
+        "material",
+        "application"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "modelNumber"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Mạch in — kích thước, vật liệu/số lớp, lắp cho thiết bị gì",
       "subcodeCount": 4,
       "sampleHs": "85340010"
     },
     "8535": {
       "chapter": "85",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Thiết bị đóng cắt",
+      "template": "switchgear",
       "required": [
-        "machineFunction",
-        "power",
-        "voltage"
+        "voltage",
+        "currentRating",
+        "poleCount"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "modelNumber"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Thiết bị đóng cắt — điện áp, dòng định mức, số cực",
       "subcodeCount": 14,
       "sampleHs": "85351000"
     },
@@ -4808,35 +4829,35 @@
     },
     "8539": {
       "chapter": "85",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Đèn",
+      "template": "lighting",
       "required": [
-        "machineFunction",
         "power",
-        "voltage"
+        "voltage",
+        "lightType",
+        "application"
       ],
       "recommended": [
         "modelNumber",
-        "frequency"
+        "dimensions"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Đèn — công suất, điện áp, loại LED/compact, công dụng",
       "subcodeCount": 40,
       "sampleHs": "85391010"
     },
     "8540": {
       "chapter": "85",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Linh kiện bán dẫn",
+      "template": "semiconductor",
       "required": [
-        "machineFunction",
-        "power",
-        "voltage"
+        "partNumber",
+        "function",
+        "packageType"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "voltage"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Linh kiện bán dẫn — mã part, chức năng, kiểu đóng gói",
       "subcodeCount": 12,
       "sampleHs": "85401100"
     },
@@ -4926,35 +4947,33 @@
     },
     "8546": {
       "chapter": "85",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Sứ cách điện/phụ kiện cách điện",
+      "template": "insulator",
       "required": [
-        "machineFunction",
-        "power",
-        "voltage"
+        "material",
+        "voltage",
+        "dimensions"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "modelNumber"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Sứ cách điện/phụ kiện cách điện — vật liệu, cấp điện áp, kích thước",
       "subcodeCount": 4,
       "sampleHs": "85461000"
     },
     "8547": {
       "chapter": "85",
-      "titleVi": "Máy móc chung",
-      "template": "machineryGeneric",
+      "titleVi": "Sứ cách điện/phụ kiện cách điện",
+      "template": "insulator",
       "required": [
-        "machineFunction",
-        "power",
-        "voltage"
+        "material",
+        "voltage",
+        "dimensions"
       ],
       "recommended": [
-        "modelNumber",
-        "frequency"
+        "modelNumber"
       ],
-      "noteVi": "Máy móc chung — chức năng chính, công suất, điện áp",
+      "noteVi": "Sứ cách điện/phụ kiện cách điện — vật liệu, cấp điện áp, kích thước",
       "subcodeCount": 4,
       "sampleHs": "85471000"
     },
@@ -4994,222 +5013,233 @@
     },
     "9001": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Thấu kính/quang học",
+      "template": "opticalLens",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "material",
+        "application"
       ],
       "recommended": [
-        "dimensions"
+        "focalLength",
+        "lensPower",
+        "dimensions",
+        "modelNumber"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Thấu kính/quang học — chất liệu, công dụng; độ/tiêu cự, kích thước nếu có",
       "subcodeCount": 8,
       "sampleHs": "90011010"
     },
     "9002": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Thấu kính/quang học",
+      "template": "opticalLens",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "material",
+        "application"
       ],
       "recommended": [
-        "dimensions"
+        "focalLength",
+        "lensPower",
+        "dimensions",
+        "modelNumber"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Thấu kính/quang học — chất liệu, công dụng; độ/tiêu cự, kích thước nếu có",
       "subcodeCount": 8,
       "sampleHs": "90021100"
     },
     "9003": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Gọng kính",
+      "template": "eyewearFrame",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "frameMaterial",
+        "modelNumber"
       ],
       "recommended": [
-        "dimensions"
+        "targetGroup",
+        "dimensions",
+        "color"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Gọng kính — chất liệu gọng (kim loại/nhựa/TR90), model",
       "subcodeCount": 3,
       "sampleHs": "90031100"
     },
     "9004": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Kính mắt",
+      "template": "eyewear",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "eyewearType",
+        "lensMaterial",
+        "frameMaterial",
+        "modelNumber"
       ],
       "recommended": [
-        "dimensions"
+        "lensPower",
+        "targetGroup",
+        "dimensions",
+        "color"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Kính mắt — loại (thuốc/râm/bảo hộ), có độ hay không, chất liệu tròng, chất liệu gọng, model",
       "subcodeCount": 4,
       "sampleHs": "90041000"
     },
     "9005": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Ống nhòm/kính hiển vi",
+      "template": "opticalMagnifier",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "application",
+        "magnification",
+        "modelNumber"
       ],
       "recommended": [
+        "powerSource",
         "dimensions"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Ống nhòm/kính hiển vi — công dụng, độ phóng đại, model; nguồn điện nếu có",
       "subcodeCount": 5,
       "sampleHs": "90051000"
     },
     "9006": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Máy ảnh/máy chiếu/thiết bị quang học",
+      "template": "opticalApparatus",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "application",
+        "modelNumber"
       ],
       "recommended": [
+        "magnification",
+        "powerSource",
+        "resolution",
         "dimensions"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Máy ảnh/máy chiếu/thiết bị quang học — công dụng, model; nguồn điện nếu có",
       "subcodeCount": 18,
       "sampleHs": "90063000"
     },
     "9007": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Máy ảnh/máy chiếu/thiết bị quang học",
+      "template": "opticalApparatus",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "application",
+        "modelNumber"
       ],
       "recommended": [
+        "magnification",
+        "powerSource",
+        "resolution",
         "dimensions"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Máy ảnh/máy chiếu/thiết bị quang học — công dụng, model; nguồn điện nếu có",
       "subcodeCount": 5,
       "sampleHs": "90071000"
     },
     "9008": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Máy ảnh/máy chiếu/thiết bị quang học",
+      "template": "opticalApparatus",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "application",
+        "modelNumber"
       ],
       "recommended": [
+        "magnification",
+        "powerSource",
+        "resolution",
         "dimensions"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Máy ảnh/máy chiếu/thiết bị quang học — công dụng, model; nguồn điện nếu có",
       "subcodeCount": 4,
       "sampleHs": "90085010"
     },
     "9010": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Máy ảnh/máy chiếu/thiết bị quang học",
+      "template": "opticalApparatus",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "application",
+        "modelNumber"
       ],
       "recommended": [
+        "magnification",
+        "powerSource",
+        "resolution",
         "dimensions"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Máy ảnh/máy chiếu/thiết bị quang học — công dụng, model; nguồn điện nếu có",
       "subcodeCount": 9,
       "sampleHs": "90101000"
     },
     "9011": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Ống nhòm/kính hiển vi",
+      "template": "opticalMagnifier",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "application",
+        "magnification",
+        "modelNumber"
       ],
       "recommended": [
+        "powerSource",
         "dimensions"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Ống nhòm/kính hiển vi — công dụng, độ phóng đại, model; nguồn điện nếu có",
       "subcodeCount": 4,
       "sampleHs": "90111000"
     },
     "9012": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Ống nhòm/kính hiển vi",
+      "template": "opticalMagnifier",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "application",
+        "magnification",
+        "modelNumber"
       ],
       "recommended": [
+        "powerSource",
         "dimensions"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Ống nhòm/kính hiển vi — công dụng, độ phóng đại, model; nguồn điện nếu có",
       "subcodeCount": 2,
       "sampleHs": "90121000"
     },
     "9013": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Máy ảnh/máy chiếu/thiết bị quang học",
+      "template": "opticalApparatus",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "application",
+        "modelNumber"
       ],
       "recommended": [
+        "magnification",
+        "powerSource",
+        "resolution",
         "dimensions"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Máy ảnh/máy chiếu/thiết bị quang học — công dụng, model; nguồn điện nếu có",
       "subcodeCount": 9,
       "sampleHs": "90131010"
     },
     "9014": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Dụng cụ đo tay/la bàn/cân",
+      "template": "measuringInstrument",
       "required": [
         "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "modelNumber"
       ],
       "recommended": [
+        "principle",
+        "powerSource",
+        "material",
         "dimensions"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Dụng cụ đo tay/la bàn/cân — đại lượng đo, model; nguyên lý, nguồn điện tuỳ chọn",
       "subcodeCount": 7,
       "sampleHs": "90141000"
     },
@@ -5233,136 +5263,147 @@
     "9016": {
       "chapter": "90",
       "titleVi": "Cân với độ nhậy 5cg (50mg) hoặc chính xác hơn, có hoặc không có quả cân",
-      "template": "sensorInstrument",
+      "template": "measuringInstrument",
       "required": [
         "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "modelNumber"
       ],
       "recommended": [
+        "principle",
+        "powerSource",
+        "material",
         "dimensions"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Dụng cụ đo tay/la bàn/cân — đại lượng đo, model; nguyên lý, nguồn điện tuỳ chọn",
       "subcodeCount": 1,
       "sampleHs": "90160000"
     },
     "9017": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Dụng cụ đo tay/la bàn/cân",
+      "template": "measuringInstrument",
       "required": [
         "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "modelNumber"
       ],
       "recommended": [
+        "principle",
+        "powerSource",
+        "material",
         "dimensions"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Dụng cụ đo tay/la bàn/cân — đại lượng đo, model; nguyên lý, nguồn điện tuỳ chọn",
       "subcodeCount": 11,
       "sampleHs": "90171010"
     },
     "9018": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Thiết bị y tế",
+      "template": "medicalDevice",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "application",
+        "bodyContact",
+        "material",
+        "modelNumber"
       ],
       "recommended": [
+        "riskClass",
+        "powerSource",
         "dimensions"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Thiết bị y tế — công dụng y tế, bộ phận tiếp xúc cơ thể, chất liệu, model, phân loại rủi ro A/B/C/D; nguồn điện tuỳ chọn",
       "subcodeCount": 19,
       "sampleHs": "90181100"
     },
     "9019": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Thiết bị y tế",
+      "template": "medicalDevice",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "application",
+        "bodyContact",
+        "material",
+        "modelNumber"
       ],
       "recommended": [
+        "riskClass",
+        "powerSource",
         "dimensions"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Thiết bị y tế — công dụng y tế, bộ phận tiếp xúc cơ thể, chất liệu, model, phân loại rủi ro A/B/C/D; nguồn điện tuỳ chọn",
       "subcodeCount": 5,
       "sampleHs": "90191010"
     },
     "9020": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Thiết bị y tế",
+      "template": "medicalDevice",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "application",
+        "bodyContact",
+        "material",
+        "modelNumber"
       ],
       "recommended": [
+        "riskClass",
+        "powerSource",
         "dimensions"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Thiết bị y tế — công dụng y tế, bộ phận tiếp xúc cơ thể, chất liệu, model, phân loại rủi ro A/B/C/D; nguồn điện tuỳ chọn",
       "subcodeCount": 2,
       "sampleHs": "90200010"
     },
     "9021": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Thiết bị y tế",
+      "template": "medicalDevice",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "application",
+        "bodyContact",
+        "material",
+        "modelNumber"
       ],
       "recommended": [
+        "riskClass",
+        "powerSource",
         "dimensions"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Thiết bị y tế — công dụng y tế, bộ phận tiếp xúc cơ thể, chất liệu, model, phân loại rủi ro A/B/C/D; nguồn điện tuỳ chọn",
       "subcodeCount": 11,
       "sampleHs": "90211010"
     },
     "9022": {
       "chapter": "90",
-      "titleVi": "Thiết bị đo/cảm biến",
-      "template": "sensorInstrument",
+      "titleVi": "Thiết bị y tế",
+      "template": "medicalDevice",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
+        "application",
+        "bodyContact",
+        "material",
+        "modelNumber"
       ],
       "recommended": [
+        "riskClass",
+        "powerSource",
         "dimensions"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "noteVi": "Thiết bị y tế — công dụng y tế, bộ phận tiếp xúc cơ thể, chất liệu, model, phân loại rủi ro A/B/C/D; nguồn điện tuỳ chọn",
       "subcodeCount": 11,
       "sampleHs": "90221200"
     },
     "9023": {
       "chapter": "90",
       "titleVi": "Các dụng cụ, máy và mô hình, được thiết kế cho mục đích trưng bày (ví dụ, dùng trong giáo dục hoặc triển lãm), không sử dụng được cho các mục đích khác",
-      "template": "sensorInstrument",
+      "template": "demonstrationModel",
       "required": [
-        "measurementType",
-        "principle",
-        "modelNumber",
-        "voltage"
-      ],
-      "recommended": [
+        "application",
+        "material",
         "dimensions"
       ],
-      "noteVi": "Thiết bị đo/cảm biến — đại lượng đo, nguyên lý, model, điện áp",
+      "recommended": [
+        "modelNumber"
+      ],
+      "noteVi": "Mô hình/dụng cụ trình diễn, giảng dạy — công dụng, chất liệu, kích thước",
       "subcodeCount": 1,
       "sampleHs": "90230000"
     },
@@ -5538,73 +5579,72 @@
     },
     "9401": {
       "chapter": "94",
-      "titleVi": "Đèn",
-      "template": "lighting",
+      "titleVi": "Đồ nội thất",
+      "template": "furniture",
       "required": [
-        "power",
-        "voltage",
-        "lightType",
+        "furnitureType",
+        "material",
+        "dimensions",
         "application"
       ],
       "recommended": [
         "modelNumber",
-        "dimensions"
+        "color"
       ],
-      "noteVi": "Đèn — công suất, điện áp, loại LED/compact, công dụng",
+      "noteVi": "Đồ nội thất — loại (ghế/bàn/tủ/giường), chất liệu khung + bọc, kích thước, nơi dùng",
       "subcodeCount": 24,
       "sampleHs": "94011000"
     },
     "9402": {
       "chapter": "94",
-      "titleVi": "Đèn",
-      "template": "lighting",
+      "titleVi": "Đồ nội thất",
+      "template": "furniture",
       "required": [
-        "power",
-        "voltage",
-        "lightType",
+        "furnitureType",
+        "material",
+        "dimensions",
         "application"
       ],
       "recommended": [
         "modelNumber",
-        "dimensions"
+        "color"
       ],
-      "noteVi": "Đèn — công suất, điện áp, loại LED/compact, công dụng",
+      "noteVi": "Đồ nội thất — loại (ghế/bàn/tủ/giường), chất liệu khung + bọc, kích thước, nơi dùng",
       "subcodeCount": 9,
       "sampleHs": "94021010"
     },
     "9403": {
       "chapter": "94",
-      "titleVi": "Đèn",
-      "template": "lighting",
+      "titleVi": "Đồ nội thất",
+      "template": "furniture",
       "required": [
-        "power",
-        "voltage",
-        "lightType",
+        "furnitureType",
+        "material",
+        "dimensions",
         "application"
       ],
       "recommended": [
         "modelNumber",
-        "dimensions"
+        "color"
       ],
-      "noteVi": "Đèn — công suất, điện áp, loại LED/compact, công dụng",
+      "noteVi": "Đồ nội thất — loại (ghế/bàn/tủ/giường), chất liệu khung + bọc, kích thước, nơi dùng",
       "subcodeCount": 18,
       "sampleHs": "94031000"
     },
     "9404": {
       "chapter": "94",
-      "titleVi": "Đèn",
-      "template": "lighting",
+      "titleVi": "Đệm/chăn/gối",
+      "template": "bedding",
       "required": [
-        "power",
-        "voltage",
-        "lightType",
-        "application"
-      ],
-      "recommended": [
-        "modelNumber",
+        "articleType",
+        "material",
         "dimensions"
       ],
-      "noteVi": "Đèn — công suất, điện áp, loại LED/compact, công dụng",
+      "recommended": [
+        "fiberContent",
+        "modelNumber"
+      ],
+      "noteVi": "Đệm/chăn/gối — loại, chất liệu ruột + vỏ, kích thước",
       "subcodeCount": 9,
       "sampleHs": "94041000"
     },
@@ -5628,19 +5668,17 @@
     },
     "9406": {
       "chapter": "94",
-      "titleVi": "Đèn",
-      "template": "lighting",
+      "titleVi": "Nhà lắp ghép",
+      "template": "prefabBuilding",
       "required": [
-        "power",
-        "voltage",
-        "lightType",
+        "material",
+        "dimensions",
         "application"
       ],
       "recommended": [
-        "modelNumber",
-        "dimensions"
+        "modelNumber"
       ],
-      "noteVi": "Đèn — công suất, điện áp, loại LED/compact, công dụng",
+      "noteVi": "Nhà lắp ghép — vật liệu khung/vách, kích thước, công dụng",
       "subcodeCount": 11,
       "sampleHs": "94061010"
     }

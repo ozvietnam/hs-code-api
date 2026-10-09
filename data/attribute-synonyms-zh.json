@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updated": "2026-10-05",
+  "updated": "2026-10-09",
   "license": "CC BY 4.0 — dữ liệu mở của hs-code-api, dùng lại xin ghi nguồn",
   "note": "Từ điển nhãn thông số trên trang Taobao/Tmall/1688/Alibaba (tiếng Trung) → khóa trường khai báo chuẩn của hs-code-api (data/chapter-declaration-fields.json). Khóa trùng tên với data/attributes.json được dùng chung. Dùng cho: nhận diện thông số đã có (danh sách còn thiếu), rút thông số từ chữ (/api/extract-specs), và cho ozsource/ERP đặt tên khóa thống nhất. Mỗi mục zh liệt kê nhãn hay gặp; khớp theo nhãn đứng trước dấu ':' hoặc '：'.",
   "keys": {
@@ -80,6 +80,16 @@
     "tableSize": { "labelVi": "Kích thước bàn", "zh": ["工作台尺寸", "台面尺寸"], "unitHint": "mm" },
     "netWeight": { "labelVi": "Trọng lượng tịnh", "zh": ["净重", "产品净重", "重量", "产品重量", "毛重"], "unitHint": "kg/g", "noteVi": "Không thuộc danh mục trường khai báo theo nhóm; dùng cho mô tả ECUS và vận chuyển. 毛重 là trọng lượng cả bì." },
     "brand": { "labelVi": "Nhãn hiệu", "zh": ["品牌", "品牌名称", "商标"], "noteVi": "Dùng cho mô tả ECUS; không quyết định mã HS." },
-    "origin": { "labelVi": "Nơi sản xuất", "zh": ["产地", "原产地", "生产地", "产地国", "国产/进口"], "noteVi": "Nơi sản xuất theo lời người bán, khác nơi mua hàng. Đối chiếu originAssessment." }
+    "origin": { "labelVi": "Nơi sản xuất", "zh": ["产地", "原产地", "生产地", "产地国", "国产/进口"], "noteVi": "Nơi sản xuất theo lời người bán, khác nơi mua hàng. Đối chiếu originAssessment." },
+    "lensMaterial": { "labelVi": "Chất liệu tròng kính", "zh": ["镜片材质", "镜片材料", "镜片"] },
+    "frameMaterial": { "labelVi": "Chất liệu gọng kính", "zh": ["镜框材质", "镜架材质", "框架材质", "镜腿材质", "镜框"] },
+    "lensPower": { "labelVi": "Độ kính", "zh": ["度数", "镜片度数", "老花度数", "近视度数", "是否有度数", "有无度数"], "unitHint": "độ (+1.00…)" },
+    "eyewearType": { "labelVi": "Loại kính mắt", "zh": ["眼镜类型", "镜片类型", "镜片功能", "眼镜款式", "产品类别"], "noteVi": "Kính thuốc / kính râm / kính bảo hộ / kính lão (nhóm 9004)." },
+    "focalLength": { "labelVi": "Tiêu cự / độ hội tụ", "zh": ["焦距", "焦段", "光学焦距"], "unitHint": "mm / diop" },
+    "magnification": { "labelVi": "Độ phóng đại", "zh": ["放大倍数", "倍率", "倍数", "放大倍率", "变倍范围"], "unitHint": "x" },
+    "powerSource": { "labelVi": "Nguồn điện (nếu có)", "zh": ["供电方式", "电源方式", "电源类型", "供电", "电池类型", "是否需要电源"], "noteVi": "Không bắt buộc; ghi 'không dùng điện' nếu hàng cơ học." },
+    "bodyContact": { "labelVi": "Bộ phận cơ thể tiếp xúc / sử dụng", "zh": ["适用部位", "使用部位", "作用部位", "适用部分"] },
+    "riskClass": { "labelVi": "Phân loại rủi ro TTBYT", "zh": ["管理类别", "医疗器械分类", "风险等级", "器械类别", "注册类别"], "noteVi": "Nhóm 9018–9022: loại A/B/C/D theo NĐ 98/2021." },
+    "furnitureType": { "labelVi": "Loại đồ nội thất", "zh": ["家具类型", "家具种类", "产品类型", "款式类型"] }
   }
 }

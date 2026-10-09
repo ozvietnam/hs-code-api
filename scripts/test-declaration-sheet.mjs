@@ -216,6 +216,40 @@ check('không mã: chỉ ô chung, không description', r4.status === 200 && !r4
 const food = sheetFieldDefs('19053120');
 check('thực phẩm: chất liệu/kích thước không bắt buộc', food.defs.find((x) => x.key === 'material')?.required === false && food.defs.find((x) => x.key === 'dimensions')?.required === false);
 
+// 5b. Mẫu ô theo dải nhóm (CEO 08/10/2026: "mỗi sản phẩm một nhóm đặc tính, phiếu không được
+// luôn đòi điện áp/công suất"). Kính lão 9004.90.10 bị đòi nguyên lý + điện áp → sửa vĩ mô chương 90/94.
+{
+  const keys = (hs) => Object.fromEntries(sheetFieldDefs(hs).defs.map((d) => [d.key, d]));
+  const tpl = (hs) => sheetFieldDefs(hs).heading?.template;
+  const k9004 = keys('90049010');
+  check('9004 kính mắt: không điện áp / nguyên lý / đại lượng đo', !k9004.voltage && !k9004.principle && !k9004.measurementType, Object.keys(k9004).join());
+  check('9004 kính mắt: loại kính, tròng, gọng bắt buộc; độ chỉ khuyến nghị (kính râm không có độ)', ['eyewearType', 'lensMaterial', 'frameMaterial'].every((k) => k9004[k]?.required && k9004[k].origin === 'HEADING') && k9004.lensPower?.required === false && tpl('90049010') === 'eyewear', tpl('90049010'));
+  check('9003 gọng kính: chất liệu gọng, không điện', keys('90031100').frameMaterial?.required && !keys('90031100').voltage);
+  const k9018 = keys('90189090');
+  check('9018 y tế: bộ phận tiếp xúc bắt buộc; phân loại rủi ro + nguồn điện tuỳ chọn', k9018.bodyContact?.required && k9018.riskClass?.required === false && k9018.powerSource?.required === false && !k9018.voltage, Object.keys(k9018).join());
+  check('9027 thiết bị đo vẫn sensorInstrument (đại lượng đo + điện áp)', tpl('90275000') === 'sensorInstrument' && keys('90275000').measurementType?.required && keys('90275000').voltage?.required);
+  check('9005 ống nhòm: độ phóng đại bắt buộc, nguồn điện không', keys('90051000').magnification?.required && keys('90051000').powerSource?.required === false);
+  check('9017 thước/compa: không đòi điện áp', tpl('90178000') === 'measuringInstrument' && !keys('90178000').voltage);
+  const k9401 = keys('94016100');
+  check('9401 ghế: không ô điện, có loại nội thất + chất liệu + kích thước', !k9401.voltage && !k9401.power && !k9401.lightType && k9401.furnitureType?.required && k9401.material?.required && k9401.dimensions?.required, Object.keys(k9401).join());
+  check('9405 đèn: vẫn có công suất + điện áp + loại đèn', ['power', 'voltage', 'lightType'].every((k) => keys('94054290')[k]?.required));
+  check('8536 không đổi: điện áp, dòng, số cực', ['voltage', 'currentRating', 'poleCount'].every((k) => keys('85366932')[k]?.required) && tpl('85366932') === 'switchgear');
+  check('8523 SSD/USB: dung lượng + kết nối, không điện áp', keys('85235100').storageCapacity?.required && !keys('85235100').voltage);
+  check('8482 ổ bi: không còn mẫu van', tpl('84821000') === 'bearing' && !keys('84821000').valveType);
+  check('6406 đế giày: không đòi mũi giày/size', tpl('64062000') === 'footwearPart' && !keys('64062000').upperMaterial);
+  check('8215 thìa dĩa: không đòi vật liệu lưỡi', !keys('82159900').bladeMaterial && keys('82159900').toolType?.required);
+  check('3406 nến: không đòi hoạt chất', tpl('34060000') === 'candle' && !keys('34060000').activeIngredient);
+  // Ô mới phải nằm trong từ điển zh để AI rút được (declaration-sheet chỉ hỏi AI khóa có trong từ điển)
+  const { dictionary } = require('../lib/zh-specs');
+  const zhKeys = dictionary().keys || {};
+  const newKeys = ['eyewearType', 'lensPower', 'lensMaterial', 'frameMaterial', 'magnification', 'powerSource', 'bodyContact', 'riskClass', 'furnitureType', 'focalLength'];
+  check('ô mới có trong từ điển zh + catalog', newKeys.every((k) => zhKeys[k]?.zh?.length && require('../data/chapter-declaration-fields.json').fields[k]?.labelVi), newKeys.filter((k) => !zhKeys[k]).join());
+  // Kính lão thật: thông số trang (镜片材质/镜框材质/度数/产品类别) khớp từ điển → không còn thiếu ô
+  const { missingStructured } = require('../lib/declaration-fields');
+  const miss = missingStructured('90049010', { nameZh: '老花镜', specsZh: [{ key: '镜片材质', value: 'PC' }, { key: '镜框材质', value: '金属' }, { key: '产品类别', value: '老花镜' }, { key: '货号', value: '603' }, { key: '度数', value: '+100度,+150度' }] });
+  check('9004 thông số 1688 khớp từ điển → không thiếu ô bắt buộc', miss.length === 0, miss.map((m) => m.key).join());
+}
+
 // 6. Tín hiệu hàng nhái trên tên hàng
 check('高仿 / 同款 → tín hiệu SHTT', counterfeitSignals('高仿 耐克同款 运动鞋').length === 2);
 check('tên thường → không tín hiệu', counterfeitSignals('86型墙壁插座').length === 0);

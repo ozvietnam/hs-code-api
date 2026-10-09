@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-08",
+  "version": "2026-10-09",
   "legalRefs": [
     "TT 39/2018/TT-BTC mục 1.78 Phụ lục I",
     "CV 5189/TCHQ-GSQL (2019)",
@@ -96,6 +96,17 @@
     "boreDiameter": { "key": "boreDiameter", "labelVi": "Đường kính xy lanh", "ecusHint": "mm", "examples": ["32mm"], "patterns": ["đường kính", "duong kinh", "ø", "bore", "\\d+\\s*mm"] },
     "strokeLength": { "key": "strokeLength", "labelVi": "Hành trình", "ecusHint": "mm", "examples": ["100mm"], "patterns": ["hành trình", "hanh trinh", "stroke"] },
     "outputVoltage": { "key": "outputVoltage", "labelVi": "Điện áp đầu ra (sạc)", "ecusHint": "5V, 12V", "examples": ["5V"], "patterns": ["đầu ra", "dau ra", "output", "5v", "12v", "sạc"] },
+    "brand": { "key": "brand", "labelVi": "Nhãn hiệu", "ecusHint": "tên thương hiệu", "examples": ["Bosch"], "patterns": ["nhãn hiệu", "nhan hieu", "thương hiệu", "thuong hieu", "\\bbrand\\b"] },
+    "lensMaterial": { "key": "lensMaterial", "labelVi": "Chất liệu tròng kính", "ecusHint": "PC, CR-39, thủy tinh", "examples": ["PC", "CR-39"], "patterns": ["tròng", "trong kinh", "mắt kính", "mat kinh", "\\bCR-?39\\b", "\\blens\\b"] },
+    "frameMaterial": { "key": "frameMaterial", "labelVi": "Chất liệu gọng kính", "ecusHint": "kim loại, nhựa, TR90, acetate", "examples": ["kim loại", "TR90"], "patterns": ["gọng", "gong", "\\bTR90\\b", "acetate", "\\bframe\\b"] },
+    "lensPower": { "key": "lensPower", "labelVi": "Độ kính", "ecusHint": "có độ/không độ; +1.00…+3.00", "examples": ["không độ", "+1.50"], "patterns": ["\\bđộ\\b", "không độ", "khong do", "có độ", "co do", "[+-]\\d[.,]\\d{2}", "diop", "cận", "viễn", "lão"] },
+    "eyewearType": { "key": "eyewearType", "labelVi": "Loại kính mắt", "ecusHint": "kính thuốc / kính râm / kính bảo hộ / kính lão", "examples": ["kính râm", "kính lão"], "patterns": ["kính râm", "kinh ram", "kính thuốc", "kinh thuoc", "kính bảo hộ", "kinh bao ho", "kính lão", "kinh lao", "kính cận", "chống nắng", "sunglass"] },
+    "focalLength": { "key": "focalLength", "labelVi": "Tiêu cự / độ hội tụ", "ecusHint": "mm hoặc diop", "examples": ["50mm", "+2.00D"], "patterns": ["tiêu cự", "tieu cu", "focal", "\\d+\\s*mm\\b.*(kính|lens)", "diop"] },
+    "magnification": { "key": "magnification", "labelVi": "Độ phóng đại", "ecusHint": "số lần (10x, 40-1000x)", "examples": ["10x", "40-1000x"], "patterns": ["phóng đại", "phong dai", "\\b\\d+\\s*[xX]\\b", "\\d+\\s*lần", "zoom"] },
+    "powerSource": { "key": "powerSource", "labelVi": "Nguồn điện (nếu có)", "ecusHint": "pin, USB, 220V, không dùng điện", "examples": ["pin AA", "USB 5V", "không dùng điện"], "patterns": ["nguồn điện", "nguon dien", "dùng pin", "dung pin", "\\bpin\\b", "\\busb\\b", "sạc", "không dùng điện", "\\b\\d+\\s*v\\b"] },
+    "bodyContact": { "key": "bodyContact", "labelVi": "Bộ phận cơ thể tiếp xúc / sử dụng", "ecusHint": "da, miệng, mắt, tai, xâm lấn…", "examples": ["ngoài da", "trong miệng"], "patterns": ["tiếp xúc", "tiep xuc", "ngoài da", "ngoai da", "trong miệng", "xâm lấn", "xam lan", "bộ phận cơ thể"] },
+    "riskClass": { "key": "riskClass", "labelVi": "Phân loại rủi ro TTBYT", "ecusHint": "A, B, C hoặc D (NĐ 98/2021)", "examples": ["loại A", "loại B"], "patterns": ["loại\\s*[ABCD]\\b", "loai\\s*[abcd]\\b", "phân loại rủi ro", "phan loai rui ro", "class\\s*[ABCD1-3]\\b", "mức độ rủi ro"] },
+    "furnitureType": { "key": "furnitureType", "labelVi": "Loại đồ nội thất", "ecusHint": "ghế, bàn, tủ, giường, kệ", "examples": ["ghế sofa", "tủ quần áo"], "patterns": ["\\bghế\\b", "\\bghe\\b", "\\bbàn\\b", "\\btủ\\b", "\\btu\\b", "giường", "giuong", "\\bkệ\\b", "\\bke\\b", "sofa", "\\bchair\\b", "\\btable\\b", "cabinet", "\\bbed\\b"] },
     "application": { "key": "application", "labelVi": "Công dụng cụ thể", "ecusHint": "dùng cho…", "examples": ["bảo vệ màn hình"], "patterns": ["dùng cho", "dung cho", "công dụng", "cong dung", "bảo vệ"] }
   },
   "chapters": {
@@ -112,7 +123,7 @@
     "70": { "titleVi": "Thủy tinh", "required": ["glassType", "dimensions", "application"], "recommended": [] },
     "73": { "titleVi": "Sắt thép", "required": ["steelGrade", "form", "application"], "recommended": ["dimensions"] },
     "82": { "titleVi": "Dụng cụ", "required": ["toolType", "bladeMaterial"], "recommended": ["dimensions"] },
-    "90": { "titleVi": "Thiết bị đo", "required": ["measurementType", "modelNumber"], "recommended": ["voltage"] },
-    "94": { "titleVi": "Đèn, nội thất", "required": ["power", "voltage", "application"], "recommended": ["modelNumber"] }
+    "90": { "titleVi": "Quang học, đo lường, y tế", "required": ["application", "modelNumber"], "recommended": ["material", "powerSource"] },
+    "94": { "titleVi": "Nội thất, đèn", "required": ["material", "dimensions", "application"], "recommended": ["modelNumber"] }
   }
 }
