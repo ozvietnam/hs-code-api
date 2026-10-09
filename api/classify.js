@@ -4,6 +4,7 @@
 // Trả: { results:[{hs, confidence, reason, tbTchq?}], girRulesApplied:[], missing:[], candidates, ms }
 
 const { requireAuth } = require('../lib/auth');
+const { requireAuthOrPublicLlm } = require('../lib/public-llm');
 const { setCors, handleOptions } = require('../lib/cors');
 const { classify } = require('../lib/classify');
 const { extractSpecs } = require('../lib/extract-specs');
@@ -14,7 +15,9 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed — dùng POST' });
   }
-  if (requireAuth(req, res)) return;
+  // Chế độ phụ ?mode=extract_specs (/api/extract-specs) KHÔNG nằm trong 4 endpoint mở công khai → vẫn Bearer-only.
+  const extractMode = String(req.query?.mode || '') === 'extract_specs';
+  if (extractMode ? requireAuth(req, res) : requireAuthOrPublicLlm(req, res)) return;
 
   let body = req.body;
   if (typeof body === 'string') {

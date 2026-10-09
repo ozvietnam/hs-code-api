@@ -1,4 +1,4 @@
-const { requireAuth } = require('../lib/auth');
+const { requireAuthOrPublicLlm } = require('../lib/public-llm');
 const { setCors, handleOptions } = require('../lib/cors');
 const { suggestCore, FALLBACK_PROMPT } = require('../lib/suggest-core');
 const { getCandidateEvidence } = require('../lib/suggest-candidates');
@@ -58,7 +58,7 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
-  if (requireAuth(req, res)) return;
+  if (requireAuthOrPublicLlm(req, res)) return;
 
   const started = Date.now();
   let body = req.body;

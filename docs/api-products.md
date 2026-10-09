@@ -5,7 +5,7 @@ Dùng để hỗ trợ tìm kiếm hàng hóa → mã HS trong ERP.
 
 ## Authentication
 
-Tất cả endpoint đều yêu cầu Bearer token (trừ `/api/health`):
+Bearer token chỉ cần cho quản trị và ghi dữ liệu. Tra cứu và 4 endpoint AI (`suggest`, `describe`, `classify`, `match`) không cần token (xem `lib/public-llm.js`):
 
 ```
 Authorization: Bearer <HS_API_TOKEN>

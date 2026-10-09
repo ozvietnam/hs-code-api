@@ -1,4 +1,5 @@
 const { requireAuth } = require('../lib/auth');
+const { requireAuthOrPublicLlm } = require('../lib/public-llm');
 const { setCors, handleOptions } = require('../lib/cors');
 const { describeProduct } = require('../lib/describe-core');
 const { buildDeclarationSheet } = require('../lib/declaration-sheet');
@@ -9,7 +10,9 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
-  if (requireAuth(req, res)) return;
+  // Chế độ phụ ?mode=sheet (/api/declaration-sheet) KHÔNG nằm trong 4 endpoint mở công khai → vẫn Bearer-only.
+  const sheetMode = String(req.query?.mode || '') === 'sheet';
+  if (sheetMode ? requireAuth(req, res) : requireAuthOrPublicLlm(req, res)) return;
 
   let body = req.body;
   if (typeof body === 'string') {

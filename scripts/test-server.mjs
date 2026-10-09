@@ -41,8 +41,13 @@ try {
   const pj = await prec.json();
   check('/api/precedents (rewrite → dataset) trả dữ liệu', prec.status === 200 && pj.hsCode === '72052100', JSON.stringify(pj).slice(0, 120));
 
-  const noAuth = await get('/api/suggest', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ description: 'bàn gỗ' }) });
-  check('POST /api/suggest không token → 401', noAuth.status === 401, String(noAuth.status));
+  // 09/10/2026: 4 endpoint LLM mở công khai (lib/public-llm.js). Không token + JSON hỏng → handler trả 400, KHÔNG phải 401.
+  const noAuth = await get('/api/suggest', { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{hỏng' });
+  check('POST /api/suggest không token → vào handler (400), không 401', noAuth.status === 400, String(noAuth.status));
+  process.env.HS_PUBLIC_LLM = 'false';
+  const closed = await get('/api/suggest', { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{hỏng' });
+  check('HS_PUBLIC_LLM=false → suggest không token lại 401', closed.status === 401, String(closed.status));
+  delete process.env.HS_PUBLIC_LLM;
 
   const bad = await get('/api/suggest', { method: 'POST', headers: { 'content-type': 'application/json', authorization: 'Bearer server-test-token' }, body: '{hỏng' });
   check('JSON hỏng → handler trả 400', bad.status === 400, String(bad.status));

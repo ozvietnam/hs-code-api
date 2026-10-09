@@ -444,8 +444,12 @@ Kho tri thức cũ                    →  import-legacy              →  notes
 <section id="api">
   <div class="wrap">
     <h2>Dùng API thế nào</h2>
-    <p class="sub">API dành cho hệ thống (ERP, tích hợp) — cần Bearer token. Xem tài liệu đầy đủ trên GitHub.</p>
+    <p class="sub">API mở: tra cứu và cả 4 endpoint AI (<code>suggest</code>, <code>describe</code>, <code>classify</code>, <code>match</code>) gọi được ngay, <b>không cần token, không giới hạn lượt</b>. Token chỉ cần cho quản trị và ghi dữ liệu. Xem tài liệu đầy đủ trên GitHub.</p>
     <div class="cards">
+      <div class="card">
+        <h3>Dùng thử AI — không cần token</h3>
+        <p><code>POST /api/suggest</code><br />Body JSON <code>{"description": "Máy bơm nước ly tâm 1.5HP"}</code> → top mã HS kèm quy tắc GIR và mức căn cứ. Tương tự: <code>/api/classify</code> (<code>{"tenHang": "…"}</code>), <code>/api/describe</code> (<code>{"hsCode": "84137090", "productName": "…"}</code>). Mỗi lượt gọi tốn chi phí mô hình nên hãy gọi có chủ đích.</p>
+      </div>
       <div class="card">
         <h3>Tra thuế 1 mã HS</h3>
         <p><code>GET /api/tax?hs=85171300</code><br />→ tên hàng, thuế NK/ACFTA/VAT, cảnh báo chính sách + văn bản liên quan.</p>
@@ -466,7 +470,7 @@ Kho tri thức cũ                    →  import-legacy              →  notes
 
     <h3 style="margin:34px 0 6px">Toàn bộ endpoint</h3>
     <p class="ep-note" style="margin-bottom:16px">
-      Chỉ <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">/api/health</code> không cần token; còn lại cần header
+      Không cần token: tra cứu (GET) và 4 endpoint AI (POST). Chỉ nhóm quản trị và ghi dữ liệu mới cần header
       <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">Authorization: Bearer &lt;token&gt;</code>.
       Bấm <b>Chi tiết</b> ở từng dòng để xem ví dụ curl + response thực tế.
     </p>
@@ -479,8 +483,8 @@ Kho tri thức cũ                    →  import-legacy              →  notes
       </div>
     </div>
     <p class="ep-note">
-      <b>*</b> <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">/api/match</code> có thể bỏ token khi bật <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">HS_MATCH_PUBLIC=true</code> (server-to-server ERP).
-      Về hạ tầng: chạy trên server riêng của Oz;<code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">vercel.json</code> (vd <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">dataset.js</code> gánh hàng chục resource) để ít cold start &amp; repo gọn — URL công khai vẫn tách bạch.
+      <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">/api/match</code> chỉ khớp từ khóa, không dùng để chọn mã — dùng <code>/api/classify</code> hoặc <code>/api/suggest</code>.
+      Về hạ tầng: chạy trên server riêng của Oz; nhiều route logic được gộp qua rewrite trong <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">routes.json</code> (vd <code style="background:var(--bg-soft);padding:2px 7px;border-radius:6px;color:var(--accent)">dataset.js</code> gánh hàng chục resource) để repo gọn — URL công khai vẫn tách bạch.
     </p>
   </div>
 </section>

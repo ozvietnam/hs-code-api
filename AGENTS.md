@@ -47,8 +47,17 @@ curl "https://hs-kb.uythacnhapkhau.com/api/legal-docs"
 · Tổng quan số liệu: **[`/community-data.json`](https://hs-kb.uythacnhapkhau.com/community-data.json)**
 
 Nhóm sinh nội dung bằng AI (`/api/suggest`, `/api/describe`, `/api/classify`,
-`/api/match`) **cần Bearer token** vì mỗi lượt gọi tốn chi phí mô hình. Xin token
-qua GitHub Issue.
+`/api/match`) **cũng mở công khai, không cần token, không giới hạn lượt** (CEO chốt
+09/10/2026). Gọi POST thẳng, không cần header Authorization:
+
+```bash
+curl -X POST https://hs-kb.uythacnhapkhau.com/api/suggest \
+  -H "Content-Type: application/json" -d '{"description":"máy bơm nước ly tâm 1.5HP"}'
+```
+
+Mỗi lượt tốn chi phí mô hình thật: hãy gọi có chủ đích (một lượt cho mỗi mặt hàng,
+đừng lặp thăm dò). Chỉ nhóm quản trị và ghi dữ liệu (feedback, cập nhật biểu thuế,
+dashboard) mới cần Bearer token.
 
 ### Cách B — Đọc thẳng dữ liệu trong repo (khi làm offline / RAG)
 

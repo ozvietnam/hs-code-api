@@ -37,10 +37,10 @@ api/               # 12 file handler.
                    # qua rewrite trong routes.json — KHÔNG có file riêng.
   health.js          # Public — health check
   tax.js             # Bearer — tra thuế
-  search.js          # Bearer — search HS (+ /api/match qua ?mode=match)
-  suggest.js         # Bearer — AI suggest
-  describe.js        # Bearer — AI describe
-  classify.js        # Bearer — phân loại có decision tree + conflict resolver
+  search.js          # GET mở; /api/match (?mode=match) cũng mở (không token)
+  suggest.js         # Mở (không token) — AI suggest
+  describe.js        # Mở (không token) — AI describe
+  classify.js        # Mở (không token) — phân loại có decision tree + conflict resolver
   feedback.js        # Bearer — capture director feedback
   notes.js           # Bearer — chú giải chương
   kg_chapter.js      # Bearer — liệt kê HS trong chương
@@ -90,7 +90,7 @@ tests/             # Test fixtures
 ## Rule bất biến
 
 1. **Privacy data** — KHÔNG bao giờ commit `data/oz-export/*.{xlsx,csv,jsonl}` (gitignored). Đây là tờ khai cũ Oz có thông tin khách hàng.
-2. **Bearer auth** — mặc định KÍN. Endpoint sinh nội dung bằng LLM (`suggest`, `describe`, `classify`, `match`) và mọi thứ quản trị phải `requireAuth(req, res)` từ `lib/auth.js`. Nhóm tra cứu chỉ đọc dữ liệu tĩnh thì mở công khai qua `requireAuthUnlessPublic(...)` — **allowlist tường minh** ở `lib/public-access.js`. Thêm resource mới vào `dataset.js` thì nó mặc định KÍN; muốn mở phải khai có ý thức và `scripts/test-public-access.mjs` phải xanh. Quên khai = mất tính năng, quên chặn = lộ dữ liệu; luôn chọn hướng sai an toàn.
+2. **Bearer auth** — mặc định KÍN. Mọi thứ quản trị và ghi dữ liệu phải `requireAuth(req, res)` từ `lib/auth.js`. **Ngoại lệ do CEO chốt 09/10/2026:** 4 endpoint LLM (`suggest`, `describe`, `classify`, `match`) mở công khai KHÔNG giới hạn qua `requireAuthOrPublicLlm` (`lib/public-llm.js`; mỗi lượt tốn tiền LLM thật; đóng khẩn cấp bằng env `HS_PUBLIC_LLM=false`). Không mở thêm endpoint LLM khác (`extract-specs`, `declaration-sheet`) theo cơ chế này nếu CEO chưa chốt. Nhóm tra cứu chỉ đọc dữ liệu tĩnh thì mở công khai qua `requireAuthUnlessPublic(...)` — **allowlist tường minh** ở `lib/public-access.js`. Thêm resource mới vào `dataset.js` thì nó mặc định KÍN; muốn mở phải khai có ý thức và `scripts/test-public-access.mjs` phải xanh. Quên khai = mất tính năng, quên chặn = lộ dữ liệu; luôn chọn hướng sai an toàn.
 3. **CORS** — luôn `setCors(res)` + `handleOptions(req, res)` ở đầu handler.
 4. **camelCase response** — chuẩn shape camelCase cho ERP, dùng `lib/tax-mapper.js`.
 5. **Compliance TT 39/2018** — `/api/describe` phải trả structured `declaration` + `compliance.score` + `level` + `warnings[]`.

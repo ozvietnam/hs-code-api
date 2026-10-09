@@ -77,13 +77,21 @@ với `biến tần`, bảng soạn tay đề xuất `85044090` nhưng 6/6 tờ 
 khai `85044040`, nên mã đó xếp trên. Hãy trình bày cả hai căn cứ cho người dùng
 tự quyết, thay vì chọn hộ rồi giấu cái còn lại.
 
+## API AI — không cần token, không giới hạn lượt
+
+Gọi POST thẳng, **không cần header Authorization**. Nhóm này gọi mô hình ngôn ngữ nên mỗi lượt tốn chi phí:
+hãy gọi có chủ đích (một lượt cho mỗi mặt hàng, không lặp thăm dò).
+
+- `POST /api/suggest` — body `{"description": "máy bơm nước ly tâm 1.5HP"}`: gợi ý mã HS kèm audit trail GIR có căn cứ
+- `POST /api/describe` — body `{"hsCode": "84137090", "productName": "máy bơm nước"}`: sinh mô tả khai báo Hải quan chuẩn TT 39/2018, tối đa 200 ký tự ECUS
+- `POST /api/classify` — body `{"tenHang": "máy bơm nước ly tâm"}`: phân loại có cây quyết định + bảng phân giải cụm mã dễ nhầm
+- `POST /api/search?mode=match`: đối sánh sản phẩm theo từ khoá (không dùng để chọn mã)
+
+Đọc `status` + `nextAction` trong kết quả TRƯỚC khi dùng bất kỳ mã nào.
+
 ## API — cần Bearer token
 
-Nhóm này gọi mô hình ngôn ngữ nên tốn chi phí mỗi lượt. Xin token qua GitHub Issue.
-
-- `POST /api/suggest`: gợi ý mã HS kèm audit trail GIR có căn cứ
-- `POST /api/describe`: sinh mô tả khai báo Hải quan chuẩn TT 39/2018, tối đa 200 ký tự ECUS
-- `POST /api/classify`: phân loại có cây quyết định + bảng phân giải cụm mã dễ nhầm
+Chỉ nhóm quản trị và ghi dữ liệu (feedback, cập nhật biểu thuế, dashboard). Người dùng ngoài không cần nhóm này.
 
 ## Hướng dẫn cho AI
 

@@ -1,6 +1,6 @@
 {
   "baseUrl": "https://hs-kb.uythacnhapkhau.com",
-  "authHeader": "Authorization: Bearer <HS_API_TOKEN>",
+  "authHeader": "Không cần token cho tra cứu và cho /api/suggest, /api/describe, /api/classify, /api/match. Bearer token chỉ cần cho quản trị và ghi dữ liệu (Authorization: Bearer <HS_API_TOKEN>)",
   "endpoints": [
     {
       "id": "health",
@@ -64,10 +64,10 @@
       "id": "conflicts",
       "endpoint": "/api/conflicts?hs=",
       "method": "GET",
-      "auth": "bearer",
+      "auth": "none",
       "summary": "Cảnh báo các mã dễ nhầm lẫn",
       "when": "Trước khi chốt mã — kiểm tra mã HS có hay bị nhầm với mã khác không (vd bơm gia dụng vs công nghiệp).",
-      "request": "curl -H \"Authorization: Bearer $TOKEN\" \\\n  \"https://hs-kb.uythacnhapkhau.com/api/conflicts?hs=84137090\"",
+      "request": "curl \"https://hs-kb.uythacnhapkhau.com/api/conflicts?hs=84137090\"",
       "response": "{\n  \"found\": true,\n  \"hsCode\": \"84137090\",\n  \"riskLevel\": \"MEDIUM\",\n  \"confusedWith\": [\"84136090\", \"84139190\"],\n  \"reasonsVi\": [\"Phân biệt bằng công suất và điện áp\"]\n}",
       "tip": "/api/suggest tự gắn confusionWarning nếu mã gợi ý nằm trong danh sách rủi ro."
     },
@@ -75,10 +75,10 @@
       "id": "precedents",
       "endpoint": "/api/precedents?hs=",
       "method": "GET",
-      "auth": "bearer",
+      "auth": "none",
       "summary": "Tiền lệ phân loại TB-TCHQ",
       "when": "Tra quyết định phân loại chính thức của Tổng cục Hải quan cho mã/nhóm hàng tương tự.",
-      "request": "curl -H \"Authorization: Bearer $TOKEN\" \\\n  \"https://hs-kb.uythacnhapkhau.com/api/precedents?hs=85171300\"",
+      "request": "curl \"https://hs-kb.uythacnhapkhau.com/api/precedents?hs=85171300\"",
       "response": "{\n  \"found\": true,\n  \"hsCode\": \"85171300\",\n  \"items\": [\n    {\n      \"ref\": \"TB-TCHQ/...\",\n      \"productVi\": \"Điện thoại thông minh\",\n      \"finalHsCode\": \"85171300\"\n    }\n  ]\n}",
       "tip": "Dùng làm căn cứ thuyết phục khi Hải quan hỏi lại mã đã chọn."
     },
@@ -86,10 +86,10 @@
       "id": "legal-docs",
       "endpoint": "/api/legal-docs",
       "method": "GET",
-      "auth": "bearer",
+      "auth": "none",
       "summary": "Thư viện văn bản pháp luật XNK",
       "when": "Cần tra tiêu đề + link gốc văn bản được trích trong cột chính sách biểu thuế (Thông tư, Nghị định…).",
-      "request": "curl -H \"Authorization: Bearer $TOKEN\" \\\n  \"https://hs-kb.uythacnhapkhau.com/api/legal-docs?issuer=BCT&limit=5\"",
+      "request": "curl \"https://hs-kb.uythacnhapkhau.com/api/legal-docs?issuer=BCT&limit=5\"",
       "response": "{\n  \"total\": 108,\n  \"documents\": [\n    {\n      \"code\": \"08/2023/TT-BCT\",\n      \"titleVi\": \"Quy định về xuất xứ hàng hóa...\",\n      \"verified\": true,\n      \"url\": \"https://...\"\n    }\n  ]\n}",
       "tip": "GET /api/legal-docs/08-2023-TT-BCT — tra 1 văn bản cụ thể. Trang cộng đồng liệt kê 108 VB công khai."
     },
@@ -97,10 +97,10 @@
       "id": "products",
       "endpoint": "/api/products?hs=",
       "method": "GET",
-      "auth": "bearer",
+      "auth": "none",
       "summary": "Sản phẩm ví dụ cho mã \"Loại khác\"",
       "when": "Mã HS kết thúc nhóm residual (\"loại khác\") — show ví dụ tên hàng thực tế để NV xác nhận đúng phạm vi trước khi khai.",
-      "request": "curl -H \"Authorization: Bearer $TOKEN\" \\\n  \"https://hs-kb.uythacnhapkhau.com/api/products?hs=84021219&limit=5\"",
+      "request": "curl \"https://hs-kb.uythacnhapkhau.com/api/products?hs=84021219&limit=5\"",
       "response": "{\n  \"found\": true,\n  \"hsCode\": \"84021219\",\n  \"isLoaiKhac\": true,\n  \"productCount\": 12,\n  \"potential\": \"saturated\",\n  \"products\": [\n    \"Nồi hơi ống nước 1t/h đốt dầu DO áp suất 8 bar\",\n    \"Nồi hơi ống nước 2t/h đốt gas tự nhiên\"\n  ]\n}",
       "tip": "Batch: ?hs=84021219,39269099. Corpus 3.383 mã / 11.072 sản phẩm — xem section Loại khác trên trang này."
     },
@@ -119,34 +119,45 @@
       "id": "suggest",
       "endpoint": "/api/suggest",
       "method": "POST",
-      "auth": "bearer",
+      "auth": "none",
       "summary": "Gợi ý mã HS bằng AI + audit GIR",
       "when": "Việc lõi: NV nhập mô tả hàng → AI trả top 3 mã kèm confidence, lý do, quy tắc GIR đã áp dụng.",
-      "request": "curl -X POST https://hs-kb.uythacnhapkhau.com/api/suggest \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"description\": \"Máy bơm nước ly tâm Pentax 1.5HP 220V\",\n    \"options\": { \"topReranked\": 3 }\n  }'",
+      "request": "curl -X POST https://hs-kb.uythacnhapkhau.com/api/suggest \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"description\": \"Máy bơm nước ly tâm Pentax 1.5HP 220V\",\n    \"options\": { \"topReranked\": 3 }\n  }'",
       "response": "{\n  \"suggestions\": [\n    {\n      \"hsCode\": \"84137090\",\n      \"nameVi\": \"Bơm chất lỏng khác, loại khác\",\n      \"confidence\": 88,\n      \"reasoning\": \"Máy bơm ly tâm dân dụng...\",\n      \"productExamples\": [\n        \"Máy bơm nước ly tâm 1HP đầu gang\"\n      ]\n    }\n  ],\n  \"girRulesApplied\": [\n    {\n      \"rule\": \"GIR 6\",\n      \"basis\": \"DETERMINISTIC\",\n      \"confidence\": \"high\",\n      \"reasonVi\": \"Chọn ở cấp phân nhóm giữa nhiều phân nhóm cùng nhóm 4 số.\",\n      \"evidence\": {\n        \"heading\": \"8413\",\n        \"subheadingsCompared\": [\n          \"84137090\",\n          \"84138190\"\n        ]\n      },\n      \"source\": \"WCO General Interpretative Rules\"\n    }\n  ],\n  \"girDisclaimer\": \"Trích dẫn GIR là căn cứ tham khảo, KHÔNG phải phán quyết của Hải quan.\",\n  \"rankingSignals\": [\n    {\n      \"signal\": \"specificity_filter\",\n      \"note\": \"Ước lượng, chưa đối chiếu nguyên văn nhóm.\"\n    }\n  ],\n  \"chapterGuidance\": [\n    {\n      \"chapter\": \"84\",\n      \"titleVi\": \"Máy móc cơ khí\"\n    }\n  ],\n  \"ms\": 1240\n}",
-      "tip": "girRulesApplied[] mỗi mục có `basis`: RULE_TABLE/DETERMINISTIC là căn cứ chắc, HEURISTIC/LLM_ASSERTED phải kiểm chứng lại trước khi đưa vào hồ sơ giải trình. rankingSignals là tín hiệu kỹ thuật, không có giá trị pháp lý. `missingFacts[]` là thuộc tính còn thiếu để chốt lá 8 số — trả lời bằng body `facts` rồi gọi lại; `decisions[]` cho biết bảng nào chốt/hỏi."
+      "tip": "girRulesApplied[] mỗi mục có `basis`: RULE_TABLE/DETERMINISTIC là căn cứ chắc, HEURISTIC/LLM_ASSERTED phải kiểm chứng lại trước khi đưa vào hồ sơ giải trình. rankingSignals là tín hiệu kỹ thuật, không có giá trị pháp lý. `missingFacts[]` là thuộc tính còn thiếu để chốt lá 8 số — trả lời bằng body `facts` rồi gọi lại; `decisions[]` cho biết bảng nào chốt/hỏi. Không cần token; mỗi lượt gọi tốn chi phí LLM nên hãy gọi có chủ đích."
+    },
+    {
+      "id": "classify",
+      "endpoint": "/api/classify",
+      "method": "POST",
+      "auth": "none",
+      "summary": "Phân loại có cây quyết định + bảng phân giải cụm mã dễ nhầm",
+      "when": "Có tên hàng (kể cả nguyên tiêu đề Taobao tiếng Trung) và cần kết quả có trạng thái rõ: REVIEW, NEED_FACTS, NEEDS_EXPERT, RESOLVED_BY_TABLE.",
+      "request": "curl -X POST https://hs-kb.uythacnhapkhau.com/api/classify \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"tenHang\": \"Máy bơm nước ly tâm Pentax 1.5HP 220V\"\n  }'",
+      "response": "{\n  \"status\": \"REVIEW\",\n  \"nextAction\": \"...\",\n  \"results\": [ { \"hsCode\": \"84137090\" } ],\n  \"missingStructured\": []\n}",
+      "tip": "Đọc `status` + `nextAction` TRƯỚC. `girRulesApplied[]` mỗi mục có `basis` — HEURISTIC/LLM_ASSERTED phải kiểm chứng lại. Không cần token; mỗi lượt gọi tốn chi phí LLM."
     },
     {
       "id": "match",
       "endpoint": "/api/match",
       "method": "POST",
-      "auth": "bearer-opt",
+      "auth": "none",
       "summary": "Sản phẩm ERP đa ngữ → top-K mã HS",
       "when": "ERP có sẵn titleVi + titleZh từ catalog Oz/Taobao — match nhanh không qua AI đầy đủ, phù hợp đồng bộ hàng loạt.",
-      "request": "curl -X POST \"https://hs-kb.uythacnhapkhau.com/api/search?mode=match\" \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"titleVi\": \"Điện thoại iPhone 15 Pro Max 256GB\",\n    \"titleZh\": \"苹果15 Pro Max手机\",\n    \"topK\": 3\n  }'",
+      "request": "curl -X POST \"https://hs-kb.uythacnhapkhau.com/api/search?mode=match\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"titleVi\": \"Điện thoại iPhone 15 Pro Max 256GB\",\n    \"titleZh\": \"苹果15 Pro Max手机\",\n    \"topK\": 3\n  }'",
       "response": "{\n  \"ok\": true,\n  \"matches\": [\n    { \"hsCode\": \"85171300\", \"nameVi\": \"Điện thoại di động\", \"score\": 0.82 }\n  ],\n  \"ms\": 45\n}",
-      "tip": "Có thể bỏ token khi HS_MATCH_PUBLIC=true (server-to-server ERP). Nhanh hơn /api/suggest nhưng ít giải thích GIR hơn."
+      "tip": "Không cần token. Nhanh hơn /api/suggest nhưng ít giải thích GIR hơn; chỉ khớp từ khóa, không dùng để chọn mã (dùng /api/classify hoặc /api/suggest)."
     },
     {
       "id": "describe",
       "endpoint": "/api/describe",
       "method": "POST",
-      "auth": "bearer",
+      "auth": "none",
       "summary": "Sinh mô tả khai báo ECUS ≤200 ký tự",
       "when": "Đã chốt mã HS 8 số — sinh mô tả một dòng cho ô ECUS/VNACCS, chấm compliance TT 39/2018.",
-      "request": "curl -X POST https://hs-kb.uythacnhapkhau.com/api/describe \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"hsCode\": \"84137090\",\n    \"productName\": \"Máy bơm nước ly tâm\",\n    \"brand\": \"Pentax\",\n    \"model\": \"CM50\",\n    \"origin\": \"IT\",\n    \"technicalSpec\": \"1.5HP, 220V/50Hz\",\n    \"condition\": \"Mới 100%\"\n  }'",
+      "request": "curl -X POST https://hs-kb.uythacnhapkhau.com/api/describe \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"hsCode\": \"84137090\",\n    \"productName\": \"Máy bơm nước ly tâm\",\n    \"brand\": \"Pentax\",\n    \"model\": \"CM50\",\n    \"origin\": \"IT\",\n    \"technicalSpec\": \"1.5HP, 220V/50Hz\",\n    \"condition\": \"Mới 100%\"\n  }'",
       "response": "{\n  \"customsDescription\": \"Máy bơm nước ly tâm; nhãn hiệu Pentax; model CM50; xuất xứ Ý; Mới 100%\",\n  \"descriptionMeta\": { \"length\": 72, \"maxLength\": 200 },\n  \"compliance\": { \"score\": 92, \"level\": \"GOOD\" }\n}",
-      "tip": "ERP paste customsDescription vào ô mô tả ECUS. Xuất xứ + tình trạng luôn giữ cuối dòng."
+      "tip": "ERP paste customsDescription vào ô mô tả ECUS. Xuất xứ + tình trạng luôn giữ cuối dòng. Không cần token; mỗi lượt gọi tốn chi phí LLM nên hãy gọi có chủ đích."
     },
     {
       "id": "feedback",
@@ -163,10 +174,10 @@
       "id": "kg_stats",
       "endpoint": "/api/kg_stats",
       "method": "GET",
-      "auth": "bearer",
+      "auth": "none",
       "summary": "Tổng quan toàn bộ dataset",
       "when": "Dashboard / admin cần số liệu: bao nhiêu mã HS, chương, policy enriched, phiên bản biểu thuế hiện tại.",
-      "request": "curl -H \"Authorization: Bearer $TOKEN\" \\\n  \"https://hs-kb.uythacnhapkhau.com/api/kg_stats\"",
+      "request": "curl \"https://hs-kb.uythacnhapkhau.com/api/kg_stats\"",
       "response": "{\n  \"totalHsCodes\": 11871,\n  \"chapters\": 97,\n  \"enrichedPolicies\": 7928,\n  \"withWarnings\": 4200,\n  \"currentTariffVersion\": \"v2026-01-01\"\n}",
       "tip": "Cùng dữ liệu với section \"Chúng ta đang có gì\" trên trang cộng đồng."
     },
@@ -185,10 +196,10 @@
       "id": "data-quality",
       "endpoint": "/api/data-quality",
       "method": "GET",
-      "auth": "bearer",
+      "auth": "none",
       "summary": "Báo cáo chất lượng dữ liệu",
       "when": "Kiểm tra data sạch trước release: mã thiếu VAT, tên rỗng, policy chưa enrich…",
-      "request": "curl -H \"Authorization: Bearer $TOKEN\" \\\n  \"https://hs-kb.uythacnhapkhau.com/api/data-quality\"",
+      "request": "curl \"https://hs-kb.uythacnhapkhau.com/api/data-quality\"",
       "response": "{\n  \"generatedAt\": \"2026-07-07\",\n  \"issues\": [\n    { \"type\": \"missing_vat\", \"count\": 457, \"note\": \"Chương 98 — by design\" }\n  ],\n  \"healthScore\": 94\n}",
       "tip": "Chạy sau mỗi lần sync biểu thuế từ TCHQ."
     },
