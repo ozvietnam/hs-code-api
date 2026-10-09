@@ -103,5 +103,26 @@ llmReply = { attributes: [{ key: 'material', valueVi: 'thép không gỉ 304', s
 const r7 = await extract({ imageTexts: [{ url: 'u7', text: '产品参数\n材质\n304不锈钢\n容量 1.5L' }], needKeys: ['material'] });
 check('OCR tách dòng không dấu hai chấm, AI chép có dấu → vẫn nhận', (r7._j?.attributes || []).some((a) => a.key === 'material' && a.valueVi === 'thép không gỉ 304'), JSON.stringify(r7._j));
 
+
+// ── 09/10/2026 (ca Tmall kính lão): SKU đang chọn chữ Hán không dịch được → giữ chữ gốc; số đo không đơn vị / model=năm bị chặn ──
+llmReply = { attributes: [] };
+llmCalls = 0;
+const r9 = await extract({
+  titleZh: '老花镜男款2026新款高清防蓝光',
+  specsZh: [{ key: '已选规格(颜色分类)', value: '商务金【升级防蓝光镜片】' }, { key: '尺寸', value: '5310' }, { key: '型号', value: '2026' }],
+  needKeys: ['color', 'dimensions', 'modelNumber'],
+});
+const c9 = (r9._j?.attributes || []).find((a) => a.key === 'color');
+check('SKU đang chọn không dịch được → giữ chữ gốc, selected, tin 0,9', c9 && c9.valueVi === '商务金【升级防蓝光镜片】' && c9.selected === true && c9.method === 'SKU_ORIGINAL' && c9.confidence >= 0.9, JSON.stringify(c9));
+const d9 = (r9._j?.attributes || []).find((a) => a.key === 'dimensions' && a.valueVi);
+check('kích thước "5310" (không đơn vị) bị chặn', !d9, JSON.stringify(d9));
+const m9 = (r9._j?.attributes || []).find((a) => a.key === 'modelNumber' && a.valueVi);
+check('model "2026" (năm) bị chặn', !m9, JSON.stringify(m9));
+const r10 = await extract({ specsZh: [{ key: '尺寸', value: '147×50-39-17-135mm' }, { key: '重量', value: '35g' }], needKeys: ['dimensions', 'netWeight'] });
+const d10 = (r10._j?.attributes || []).find((a) => a.key === 'dimensions' && a.valueVi);
+const w10 = (r10._j?.attributes || []).find((a) => a.key === 'netWeight' && a.valueVi);
+check('kích thước có đơn vị/dấu × vẫn nhận', !!d10, JSON.stringify(r10._j?.attributes?.slice(0, 3)));
+check('khối lượng "35g" vẫn nhận', !!w10, JSON.stringify(w10));
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
