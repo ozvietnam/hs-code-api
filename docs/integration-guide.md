@@ -118,6 +118,24 @@ chắc, chỗ nào cần tự xác minh trước khi ký tờ khai.
   `productExamplesGenerated[]`: câu máy sinh, chưa kiểm chứng — hiển thị kèm nhãn "ví dụ tham khảo"
 - `learnedPenalty`: có nghĩa là AI từng gợi sai mã này, đã trừ điểm tự động
 
+### `POST /api/classify` — thêm `supplierHs` (mã nhà cung cấp tự khai, 09/10/2026)
+
+Sàn made-in-china ghi sẵn mã HS do nhà cung cấp khai trên trang sản phẩm. ERP gửi kèm:
+
+```json
+{ "tenHang": "…", "nameZh": "…", "specs": "…",
+  "supplierHs": { "code": "90049090", "source": "made-in-china", "url": "https://….en.made-in-china.com/product/…" } }
+```
+
+- Mã TQ 8–10 số: **chỉ 6 số đầu** theo HS quốc tế, đuôi là của TQ → máy chủ KHÔNG lấy nguyên mã làm mã VN.
+- Đúng tầng: **một nguồn kiểm chứng**, không phải đáp án. Nhóm 4 số của nhà cung cấp được xem chú giải + dòng biểu
+  thuế như mọi nhóm khác; AI vòng 2 thấy "Nhà cung cấp khai HS <6 số> (nhóm …)" kèm dòng biểu thuế VN tương ứng.
+- Chọn **khác nhóm 4 số** mà chưa giải trình → cổng `NCC_KHAI_KHAC_NHOM` chặn một lần; sau cùng vẫn khác nhóm →
+  `review.needed` với lý do "NCC khai … / hệ thống chọn …". Khác 6 số cùng nhóm → chỉ cảnh báo nhẹ
+  (`antiPatternWarnings`). Cùng 6 số → tăng tin cậy (+5, ghi `basis` stream `NHA_SAN_XUAT`).
+- Trả `dossier.supplier = { code, hs6, heading4, source, url, agree: "SAME6" | "SAME4" | "DIFF" }` (động cơ loop);
+  `attrs.supplierHs` là bản đã chuẩn hoá (`null` nếu rác: không đủ 6 chữ số / nhóm không có trong biểu thuế).
+
 ---
 
 ## 2. Xác định mã HS hàng loạt (nhập PO)
@@ -305,7 +323,8 @@ curl -X POST "$BASE/api/declaration-sheet" -H "Authorization: Bearer $TOKEN" -H 
 
 Trả về:
 - `fields[]` — mỗi ô: `valueVi`, `status` (`HAVE` | `UNVERIFIED` máy đọc từ ảnh nhưng chưa soát |
-  `UNTRANSLATED` | `MISSING`), `source` (`SITE` | `IMAGE_OCR` | người bổ sung), `evidence` (đoạn chữ + link ảnh).
+  `UNTRANSLATED` | `MISSING`), `source` (`SITE` | `IMAGE_OCR` | `IMAGE_AI` | người bổ sung), `method` (`DICTIONARY` | `LLM` |
+  `SKU_SELECTED` | `PACKAGING` | `VISION` | `MERGED_PARTS` | `SUPPLEMENT` | `KNOWN`), `evidence` (đoạn chữ + link ảnh).
 - `missing[]` — ô bắt buộc còn thiếu, kèm `questionVi` / `questionZh` để hỏi khách / shop.
 - `images[]` — ảnh nào có thông số (`used`), ảnh nào bị gạt (quảng cáo, giới thiệu thương hiệu, chính sách shop).
 - `trademark` — nhãn hiệu, rủi ro nhãn được bảo hộ (TT 13/2015 & 13/2020), chữ gợi hàng nhái trên tên hàng (高仿, 原单, 同款…).
@@ -314,6 +333,44 @@ Trả về:
 
 Gửi lại `supplements` (khách/NV/chứng từ bổ sung) mỗi lần lập lại phiếu — chúng thắng dữ liệu trang.
 Gửi `known` (ô đã rút lần trước) để đỡ một lượt AI.
+
+### 5c. SKU đang chọn + bảng kiện + ảnh (vision) + mô tả (09/10/2026)
+
+CEO: *"thẻ cấu trúc trên sàn (bảng thuộc tính, SKU đang chọn, bảng kiện) là nguồn chính xác nhất; ảnh SKU khách chọn
+thể hiện nhiều thông tin cụ thể; ảnh chi tiết chỉ bổ sung rộng."* Phiếu nhận thêm 4 trường (đều tuỳ chọn, thiếu/sai hình → bỏ):
+
+```jsonc
+{
+  "skuSelected": [                                   // lựa chọn ĐANG CHỌN — nguồn mạnh nhất về biến thể (thay variant)
+    {"group":"颜色分类","value":"商务金【升级防蓝光镜片】","imageUrl":"https://cbu01.alicdn.com/…jpg","qty":2},
+    {"group":"度数","value":"150度（建议50-54岁）"}
+  ],
+  "packaging": {"sku":{"镜框颜色":"金色"},"lengthCm":17,"widthCm":11,"heightCm":10,"volumeCm3":1870,"weightG":40}, // bảng 商品件重尺
+  "descriptionText": "镜架材质：金属\n产品重量 25.8g\n…",       // chữ 商品详情 ≤ 8.000 ký tự
+  "images": [{"url":"https://cbu01.alicdn.com/…sku.jpg","role":"sku"},{"url":"https://cbu01.alicdn.com/…main.jpg","role":"main"}] // ≤ 3
+}
+```
+
+**Luật ưu tiên nguồn** (ô nào đã có từ nguồn mạnh hơn thì nguồn yếu hơn không đè):
+`supplements` (người bổ sung) > **SKU đang chọn** > bảng thuộc tính trang (`specsZh`) > bảng kiện (`packaging`) > ảnh (vision `images` / OCR `imageTexts`) > mô tả (`descriptionText`).
+
+- **`skuSelected`** → mỗi `{group,value}` thành ô (`method: SKU_SELECTED`, tin 0.95, `evidence.text` = `SKU đang chọn: 颜色分类=商务金…`).
+  Nhóm dịch key qua từ điển (`颜色分类` → `color`, `度数` → `lensPower`); giá trị có số đo (度/°/mm/V/W…) rút bằng regex, không chờ AI
+  (`150度（建议50-54岁）` → `150 độ`); phần chữ Hán còn lại AI dịch như thông số trang. Khi `specsZh` liệt kê nhiều giá trị
+  (`金色,银色,黑色`) thì giá trị đang chọn **thắng**. Nhóm lạ (镜片折射率) không bị khớp giả thành ô khác.
+- **`packaging`** → ô riêng `packageDimensions` (`17×11×10 cm`), `packageWeight` (`40 g`), `packageVolume` (`1870 cm³`), nguồn `SITE`,
+  evidence `包装信息/商品件重尺 (SKU đang chọn)`, cờ `packaging:true`. Đây là **kiện đóng gói**, không phải kích thước sản phẩm:
+  KHÔNG đè ô `dimensions` đã có từ trang/ảnh; chỉ khi trang không có kích thước mới điền tạm vào `dimensions` (kèm `packaging:true`
+  + `note`). Mô tả ECUS **không dùng** số đo kiện. `sheet.packaging` trả lại bảng kiện đã chuẩn hoá.
+- **`images`** → `lib/image-facts.js`: tải ≤ 2 ảnh (role `sku` trước, rồi `main`; timeout 8 s; ≤ 3 MB; chỉ host alicdn /
+  aliexpress-media / taobao — host lạ bị bỏ, không tải), gửi **một** lượt Gemini vision (`GEMINI_VISION_MODEL`, mặc định `gemini-3.8-flash`).
+  AI liệt kê chữ nhìn thấy + thuộc tính quan sát được trong danh sách ô của nhóm, kèm bằng chứng. Kết quả vào phiếu với
+  `source: IMAGE_AI`, `method: VISION`, tin ≤ 0.8, **chỉ điền ô còn thiếu/chưa soát** — không đè ô từ SITE/SKU.
+  `images[]` của phiếu ghi `role`, `used`, `vision`, `preview` = chữ AI thấy. `extraction.vision` = `{used, engine, images, facts, llmError?}`.
+  Bật/tắt: `HS_SHEET_VISION=1|0` (không đặt → bật khi có `GEMINI_API_KEY`). Không có `images` → không gọi vision. Lỗi ảnh/AI → bỏ qua, phiếu vẫn lập.
+  Không có `images` mà `skuSelected[].imageUrl` có → dùng ảnh SKU đó.
+- **`descriptionText`** → lọc tất định trước AI: chỉ giữ dòng dạng `nhãn：giá trị` hoặc có số + đơn vị, bỏ trùng, cắt 4.000 ký tự;
+  đưa vào AI rút thông số như một nguồn chữ trang (`sourceId: desc`), xếp sau bảng thuộc tính, trước chữ OCR.
 
 **Mức chính sách** (`/api/tax`, cũng có trong phiếu): `policyLines[]` = từng dòng cột chính sách kèm `level`
 `BLOCKING` (giấy phép, KTCN/hợp quy, kiểm dịch…) | `NOTICE` (chỉ áp tình huống riêng: hàng đã qua sử dụng,

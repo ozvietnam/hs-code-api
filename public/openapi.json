@@ -1431,6 +1431,27 @@
                       "standard",
                       "premium"
                     ]
+                  },
+                  "supplierHs": {
+                    "type": "object",
+                    "description": "Mã HS nhà cung cấp tự khai trên trang sản phẩm (made-in-china, 09/10/2026). Mã TQ 8–10 số: chỉ 6 số đầu theo HS quốc tế, đuôi là của TQ → máy chủ dùng làm MỘT nguồn kiểm chứng (nhóm 4 số được xem chú giải + dòng biểu thuế; chọn khác nhóm thì AI phải giải trình, kết quả có `review.needed`; cùng 6 số thì tăng tin cậy). Không bao giờ lấy nguyên mã làm mã VN. Trả `dossier.supplier {code, hs6, heading4, url, agree: SAME6|SAME4|DIFF}` (động cơ loop).",
+                    "properties": {
+                      "code": {
+                        "type": "string",
+                        "description": "Chữ số, ≥ 6 (vd \"90049090\")"
+                      },
+                      "source": {
+                        "type": "string",
+                        "description": "Nguồn, vd \"made-in-china\""
+                      },
+                      "url": {
+                        "type": "string",
+                        "description": "Link trang sản phẩm của nhà cung cấp"
+                      }
+                    },
+                    "required": [
+                      "code"
+                    ]
                   }
                 }
               }
@@ -1607,8 +1628,8 @@
     "/api/declaration-sheet": {
       "post": {
         "operationId": "declarationSheet",
-        "summary": "Phiếu hồ sơ khai báo: ô cần khai theo mã HS, điền từ thông số trang + chữ trong ảnh, kèm nguồn",
-        "description": "Ô chung TT 39/2018 (công dụng, chất liệu, kích thước, nhãn hiệu, model) + ô theo nhóm hàng. Mỗi ô có valueVi, status (HAVE | UNVERIFIED | UNTRANSLATED | MISSING), source (SITE | IMAGE_OCR | CUSTOMER | SALES | OPS | ADMIN | DOCUMENT), evidence. `images[]` cho biết ảnh nào là rác (không có thông số). `missing[]` = ô bắt buộc còn thiếu kèm câu hỏi Việt/Trung. `trademark` = nhãn hiệu + rủi ro SHTT (TT 13/2015 & 13/2020) + chữ gợi hàng nhái. Có hsCode → thêm `description` (mô tả ECUS từ phiếu) và `policy` (mức chính sách). Không lưu gì — bên gọi tự lưu phiếu từng món, gửi lại bổ sung qua `supplements`. Rewrite tới /api/describe?mode=sheet.",
+        "summary": "Phiếu hồ sơ khai báo: ô cần khai theo mã HS, điền từ SKU đang chọn + thông số trang + bảng kiện + ảnh (vision/OCR) + mô tả, kèm nguồn",
+        "description": "Ô chung TT 39/2018 (công dụng, chất liệu, kích thước, nhãn hiệu, model) + ô theo nhóm hàng. Mỗi ô có valueVi, status (HAVE | UNVERIFIED | UNTRANSLATED | MISSING), source (SITE | IMAGE_OCR | IMAGE_AI | CUSTOMER | SALES | OPS | ADMIN | DOCUMENT), method (DICTIONARY | LLM | SKU_SELECTED | PACKAGING | VISION | MERGED_PARTS | SUPPLEMENT | KNOWN), evidence. Ưu tiên nguồn (09/10/2026): người bổ sung > `skuSelected` (lựa chọn đang chọn, tin 0.95, bằng chứng \"SKU đang chọn: nhóm=giá trị\", thắng bảng thuộc tính liệt kê nhiều giá trị) > bảng thuộc tính trang > `packaging` (bảng 商品件重尺 → ô riêng packageDimensions/packageWeight/packageVolume, KHÔNG đè kích thước sản phẩm, không vào mô tả ECUS; chỉ điền tạm ô dimensions khi trang không có, đánh dấu `packaging:true`) > ảnh (`images[]` ≤ 3 URL alicdn/aliexpress-media/taobao → Gemini vision, ≤ 2 ảnh một lượt, nguồn IMAGE_AI tin ≤ 0.8, chỉ điền ô còn thiếu; bật/tắt bằng env HS_SHEET_VISION, mặc định bật khi có GEMINI_API_KEY) > `descriptionText` (chỉ dòng \"nhãn：giá trị\" hoặc có số + đơn vị, ≤ 4.000 ký tự, làm nguồn chữ cho AI). `images[]` cho biết ảnh nào là rác (không có thông số), ảnh nào đã đọc bằng AI (`vision`, `role`, `preview` = chữ AI nhìn thấy). `extraction.vision` = trạng thái đọc ảnh (used, engine, llmError). `missing[]` = ô bắt buộc còn thiếu kèm câu hỏi Việt/Trung. `trademark` = nhãn hiệu + rủi ro SHTT (TT 13/2015 & 13/2020) + chữ gợi hàng nhái. Có hsCode → thêm `description` (mô tả ECUS từ phiếu) và `policy` (mức chính sách). Không lưu gì — bên gọi tự lưu phiếu từng món, gửi lại bổ sung qua `supplements`. Rewrite tới /api/describe?mode=sheet.",
         "tags": [
           "AI"
         ],
@@ -1677,6 +1698,89 @@
                         "text": {
                           "type": "string",
                           "description": "Chữ OCR"
+                        }
+                      }
+                    }
+                  },
+                  "skuSelected": {
+                    "type": "array",
+                    "description": "Lựa chọn ĐANG CHỌN trên trang (nguồn mạnh nhất về biến thể; thay cho variant khi có). ≤ 20 mục.",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "group",
+                        "value"
+                      ],
+                      "properties": {
+                        "group": {
+                          "type": "string",
+                          "description": "Nhóm thuộc tính tiếng Trung, vd 颜色分类 / 度数"
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "Giá trị đang chọn, vd 商务金【升级防蓝光镜片】"
+                        },
+                        "imageUrl": {
+                          "type": "string",
+                          "description": "Ảnh của lựa chọn (dùng làm ảnh sku nếu images trống)"
+                        },
+                        "qty": {
+                          "type": "number",
+                          "description": "Số lượng chọn"
+                        }
+                      }
+                    }
+                  },
+                  "packaging": {
+                    "type": "object",
+                    "description": "Kiện của SKU đang chọn (bảng 商品件重尺 / 包装信息). Vào ô riêng packageDimensions/packageWeight/packageVolume — không phải kích thước sản phẩm.",
+                    "properties": {
+                      "sku": {
+                        "type": "object",
+                        "description": "Thuộc tính SKU của dòng kiện, vd {镜框颜色:\"金色\"}"
+                      },
+                      "lengthCm": {
+                        "type": "number"
+                      },
+                      "widthCm": {
+                        "type": "number"
+                      },
+                      "heightCm": {
+                        "type": "number"
+                      },
+                      "volumeCm3": {
+                        "type": "number",
+                        "description": "Thiếu thì tính từ 3 cạnh"
+                      },
+                      "weightG": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "descriptionText": {
+                    "type": "string",
+                    "description": "Chữ mô tả 商品详情 ≤ 8.000 ký tự — dịch vụ tự lọc dòng có cấu trúc trước khi đưa AI"
+                  },
+                  "images": {
+                    "type": "array",
+                    "description": "Ảnh gửi AI đọc (≤ 3; chỉ host alicdn / aliexpress-media / taobao; role sku ưu tiên trước main; AI đọc tối đa 2 ảnh)",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "url"
+                      ],
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "description": "URL ảnh công khai"
+                        },
+                        "role": {
+                          "type": "string",
+                          "enum": [
+                            "sku",
+                            "main"
+                          ],
+                          "description": "sku = ảnh của lựa chọn đang chọn; main = ảnh chính"
                         }
                       }
                     }

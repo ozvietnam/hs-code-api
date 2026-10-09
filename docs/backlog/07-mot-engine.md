@@ -151,3 +151,30 @@ Số đo bộ sạch ghi ở PR tương ứng. Việc mở: E-6 made-in-china đ
 - **Vòng phản hồi từ ERP** (#165): `POST /api/feedback` nhận thêm `source`, `input{titleZh,specsZh,nameVi,facts}`, `systemTop3`, `agrees`, `chosenBy`. ERP (Gitea #305) gửi mỗi khi nhân viên chốt mã; mã chốt đi theo món sang đơn hàng (`OrderItem.hsCode`). Việc mở: đọc lại các bản ghi này thành tiền lệ Oz có lý do (hiện `learned-corrections` chưa dùng trường `input`).
 - Gọi tay để thử: `Authorization: Bearer $HS_API_TOKEN`, body `{tenHang, nameZh, specs}` (ERP gửi đúng thế; thiếu `tenHang` → 400).
 - Việc kế của repo: bước 8 (sổ tay chú giải) — xem `08-so-tay-chu-giai.md`.
+
+### Phiếu: SKU đang chọn + kiện + ảnh (vision) — 09/10/2026 (`feat/sheet-images-sku`)
+CEO: thẻ cấu trúc trên sàn (bảng thuộc tính, SKU đang chọn, bảng kiện) là nguồn chính xác nhất; ảnh SKU khách chọn
+thể hiện thông tin cụ thể; ảnh chi tiết chỉ bổ sung rộng. `/api/declaration-sheet` nhận thêm `skuSelected`, `packaging`,
+`descriptionText`, `images` (chi tiết: `docs/integration-guide.md` §5c; openapi).
+- **Luật ưu tiên nguồn, ô nào có rồi nguồn yếu hơn không đè:** người bổ sung > **SKU đang chọn** (tất định, tin 0.95,
+  số đo rút regex, thắng bảng thuộc tính liệt kê nhiều giá trị) > bảng thuộc tính trang > bảng kiện (ô riêng `package*`,
+  không vào mô tả ECUS, không đè kích thước sản phẩm) > ảnh (vision `IMAGE_AI` ≤ 0.8 / OCR) > mô tả (chỉ dòng có cấu trúc).
+- Vision: `lib/image-facts.js` + `geminiGenerateWithImages` (lib/gemini.js) — ≤ 2 ảnh, một lượt, host sàn, 3 MB, 8 s;
+  `HS_SHEET_VISION` bật/tắt. Từ điển zh thêm `packageDimensions/packageWeight/packageVolume` (包装尺寸 rời khỏi `dimensions`).
+- Sửa vĩ mô kèm theo: nhãn = bộ phận + phần lạ (镜片折射率) không còn khớp giả thành ô của bộ phận (lensMaterial).
+- Việc mở: đo thật vision trên 20 món 1688 (ảnh SKU có chữ in vs ảnh render); nếu AI hay trả màu/chất liệu quan sát sai
+  → hạ trần tin cậy ô quan sát xuống 0.6 hoặc chỉ nhận `seenText`.
+
+### Mã HS nhà cung cấp tự khai — `supplierHs` (09/10/2026, `feat/classify-supplier-hs`)
+CEO: thêm sàn made-in-china — trang sản phẩm ghi sẵn HS của nhà cung cấp (mã TQ 8–10 số, chỉ 6 số đầu theo HS quốc tế).
+Đúng tầng: **một nguồn kiểm chứng** (ưu tiên hơn "shop khác" vì đúng trang NCC), không phải đáp án.
+- `POST /api/classify` nhận `supplierHs {code, source, url}` (phòng thủ: chỉ chữ số ≥ 6, source/url cắt ngắn, nhóm phải có
+  trong biểu thuế VN — không thì bỏ). `lib/engine-loop.js`: `normalizeSupplierHs` / `supplierAgree`.
+- `gather`: nhóm NCC luôn vào `headings` (chú giải + dòng biểu thuế); gói kiểm chứng có mục "NHÀ CUNG CẤP KHAI HS" kèm
+  dòng biểu thuế VN của phân nhóm 6 số. `candidates.precedentCodes` không trộn mã TQ.
+- Cổng G7 `NCC_KHAI_KHAC_NHOM`: khác NHÓM chưa giải trình → chặn 1 lần (vòng 2); sau cùng vẫn khác nhóm → `review.needed`
+  "NCC khai … / hệ thống chọn …". Khác 6 số cùng nhóm → warning nhẹ. Cùng 6 số → +5 tin cậy, basis `NHA_SAN_XUAT`.
+- Output `dossier.supplier {code, hs6, heading4, source, url, agree: SAME6|SAME4|DIFF}`. Động cơ cũ: chỉ thêm lý do
+  `review` khi khác nhóm (`withSupplierHsReview`, lib/classify.js).
+- Việc mở: đo thật trên lô made-in-china đầu tiên — tỉ lệ NCC khai đúng nhóm so với mã chuyên viên chốt; nếu NCC đúng
+  nhóm > 90 % thì cân nhắc nâng từ "cảnh báo" lên "chặn tới trần vòng".
