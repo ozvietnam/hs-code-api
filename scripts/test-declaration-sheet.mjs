@@ -362,5 +362,27 @@ check('describe thường vẫn chạy (degraded khi AI lỗi)', h2._s === 200 &
   check('clipSpec bỏ ngoặc + lấy vế đầu', clipSpec('147 x 50 x 39 mm (tổng rộng), cầu mũi 17 mm') === '147 x 50 x 39 mm');
 }
 
+
+// ── 09/10/2026: ô chất liệu theo bộ phận (mẫu 9004) gộp vào "thành phần", không thành dòng thông số ──
+{
+  const { composeFromSheet } = await import('../lib/declaration-sheet.js').then((m) => m.default || m);
+  const F = (key, labelVi, valueVi, required = true, extra = {}) => ({ key, labelVi, valueVi, status: 'HAVE', required, ...extra });
+  const fields = [
+    F('eyewearType', 'Loại kính mắt', 'kính viễn lão'), F('lensMaterial', 'Chất liệu tròng kính', 'PC'), F('frameMaterial', 'Chất liệu gọng kính', 'kim loại'),
+    F('modelNumber', 'Model', '603'), F('dimensions', 'Kích thước', '147×50-39-17-135mm'),
+    F('lensPower', 'Độ kính', '+100 độ,+150 độ,+200 độ,+250 độ,+300 độ,+350 độ,+400 độ', false), F('targetGroup', 'Đối tượng', 'thông dụng', false),
+    F('color', 'Màu sắc', 'vàng, bạc, vàng chuyển xám, bạc chuyển xám', false),
+    F('application', 'Công dụng', 'kính lão chống ánh sáng xanh cho người lớn tuổi'), F('material', 'Chất liệu / thành phần cấu tạo', 'PC'),
+    F('brand', 'Nhãn hiệu', '柚莎', true, { valueZh: '柚莎' }),
+  ];
+  const r = composeFromSheet(fields, [], { tenHang: 'Kính lão chống ánh sáng xanh', thongSoKyThuat: [] }, { brandStatus: 'BRANDED' }, { productName: 'Kính thuốc', origin: 'Trung Quốc', condition: 'Mới 100%' });
+  check('thành phần gộp theo bộ phận', r.declaration.thanhPhanCauTao === 'tròng: PC; gọng: kim loại', r.declaration.thanhPhanCauTao);
+  check('không lặp "chất liệu tròng kính" trong thông số', !r.composed.text.includes('chất liệu tròng kính') && !r.composed.text.includes('chất liệu gọng kính'), r.composed.text);
+  check('model 603 còn trong mô tả (ca prod 09/10)', r.composed.text.includes('model 603'), r.composed.text);
+  check('mô tả ≤ 200', r.composed.text.length <= 200, String(r.composed.text.length));
+  const r2 = composeFromSheet([F('material', 'Chất liệu', 'thép không gỉ'), F('modelNumber', 'Model', 'X1')], [], { tenHang: 'Dao', thongSoKyThuat: [] }, { brandStatus: 'NO_BRAND' }, { productName: 'Dao', origin: 'Trung Quốc', condition: 'Mới 100%' });
+  check('không có ô bộ phận → thành phần như cũ', r2.declaration.thanhPhanCauTao === 'thép không gỉ');
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
