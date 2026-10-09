@@ -118,6 +118,24 @@ chắc, chỗ nào cần tự xác minh trước khi ký tờ khai.
   `productExamplesGenerated[]`: câu máy sinh, chưa kiểm chứng — hiển thị kèm nhãn "ví dụ tham khảo"
 - `learnedPenalty`: có nghĩa là AI từng gợi sai mã này, đã trừ điểm tự động
 
+### `POST /api/classify` — thêm `supplierHs` (mã nhà cung cấp tự khai, 09/10/2026)
+
+Sàn made-in-china ghi sẵn mã HS do nhà cung cấp khai trên trang sản phẩm. ERP gửi kèm:
+
+```json
+{ "tenHang": "…", "nameZh": "…", "specs": "…",
+  "supplierHs": { "code": "90049090", "source": "made-in-china", "url": "https://….en.made-in-china.com/product/…" } }
+```
+
+- Mã TQ 8–10 số: **chỉ 6 số đầu** theo HS quốc tế, đuôi là của TQ → máy chủ KHÔNG lấy nguyên mã làm mã VN.
+- Đúng tầng: **một nguồn kiểm chứng**, không phải đáp án. Nhóm 4 số của nhà cung cấp được xem chú giải + dòng biểu
+  thuế như mọi nhóm khác; AI vòng 2 thấy "Nhà cung cấp khai HS <6 số> (nhóm …)" kèm dòng biểu thuế VN tương ứng.
+- Chọn **khác nhóm 4 số** mà chưa giải trình → cổng `NCC_KHAI_KHAC_NHOM` chặn một lần; sau cùng vẫn khác nhóm →
+  `review.needed` với lý do "NCC khai … / hệ thống chọn …". Khác 6 số cùng nhóm → chỉ cảnh báo nhẹ
+  (`antiPatternWarnings`). Cùng 6 số → tăng tin cậy (+5, ghi `basis` stream `NHA_SAN_XUAT`).
+- Trả `dossier.supplier = { code, hs6, heading4, source, url, agree: "SAME6" | "SAME4" | "DIFF" }` (động cơ loop);
+  `attrs.supplierHs` là bản đã chuẩn hoá (`null` nếu rác: không đủ 6 chữ số / nhóm không có trong biểu thuế).
+
 ---
 
 ## 2. Xác định mã HS hàng loạt (nhập PO)

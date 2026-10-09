@@ -1,5 +1,5 @@
 // POST /api/classify — áp mã HS theo phương pháp hs-code-vn (Pha 2).
-// Body: { tenHang|name, chatLieu|material, congDung|purpose, chucNang?, nameZh?, specs? }
+// Body: { tenHang|name, chatLieu|material, congDung|purpose, chucNang?, nameZh?, specs?, facts?, supplierHs?{code,source,url} }
 //   (đến từ OrderItem ERP: name, customerDescription→congDung, nameZh, ...)
 // Trả: { results:[{hs, confidence, reason, tbTchq?}], girRulesApplied:[], missing:[], candidates, ms }
 
@@ -8,6 +8,16 @@ const { requireAuthOrPublicLlm } = require('../lib/public-llm');
 const { setCors, handleOptions } = require('../lib/cors');
 const { classify } = require('../lib/classify');
 const { extractSpecs } = require('../lib/extract-specs');
+
+/** `supplierHs`: {code, source?, url?} hoặc chuỗi mã. Trả null khi không đủ 6 chữ số. */
+function parseSupplierHs(v) {
+  if (!v) return null;
+  const o = typeof v === 'object' ? v : { code: v };
+  const code = String(o.code || '').replace(/\D/g, '').slice(0, 10);
+  if (code.length < 6) return null;
+  const url = String(o.url || '').trim().slice(0, 300);
+  return { code, source: String(o.source || '').trim().slice(0, 40) || null, url: /^https?:\/\//i.test(url) ? url : null };
+}
 
 module.exports = async function handler(req, res) {
   setCors(res);
@@ -52,6 +62,9 @@ module.exports = async function handler(req, res) {
     specs: body?.specs || body?.technicalSpec || null,
     // Dữ kiện có bằng chứng từ phiếu hồ sơ khai báo [{key,labelVi,valueVi,evidence}] — nguồn căn cứ.
     facts: Array.isArray(body?.facts) ? body.facts.slice(0, 30) : [],
+    // Mã HS nhà cung cấp tự khai trên trang sản phẩm (made-in-china, 09/10/2026): mã TQ 8–10 số, chỉ 6 số đầu
+    // theo HS quốc tế → MỘT nguồn kiểm chứng ở cấp nhóm, không phải đáp án. Phòng thủ: chỉ chữ số, ≥ 6.
+    supplierHs: parseSupplierHs(body?.supplierHs),
   };
 
   // Resolver attrs: canonical + aliasVi từ attributes.json

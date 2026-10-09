@@ -89,5 +89,44 @@ check('vòng 1 lỗi tạm thời → nextAction RETRY', r.nextAction?.type === 
   check('503 quá tải KHÔNG phải lỗi thanh toán (vẫn thử lại)', !isGeminiBillingError('Gemini API error 503: high demand'));
   check('timeout KHÔNG phải lỗi thanh toán', !isGeminiBillingError('Gemini timeout after 90000ms'));
 }
+// 09/10/2026: mã HS nhà cung cấp tự khai trên trang sản phẩm (made-in-china) = MỘT nguồn kiểm chứng, không phải đáp án.
+{
+  const { normalizeSupplierHs } = require('../lib/engine-loop.js');
+  const R2_OK = { decision: 'CHOT', hs: '82019000', confidence: 85, reason: 'dụng cụ cầm tay nông nghiệp', gir: 'GIR 1', basis: [{ stream: 'SAN_PHAM', claim: 'hái cau', evidence: '用于摘取槟榔' }], conditions: [], alternatives: [], questions: [] };
+  const SUP_URL = 'https://abc.en.made-in-china.com/product/x/Knife.html';
+
+  // 7a. Chuẩn hoá: 6 số / 10 số / chữ rác / nhóm không có trong biểu thuế
+  check('supplierHs 10 số → hs6 + nhóm', normalizeSupplierHs({ code: '8467290000' })?.hs6 === '846729' && normalizeSupplierHs({ code: '8467290000' }).heading4 === '8467');
+  check('supplierHs 6 số (chuỗi) → nhận', normalizeSupplierHs('846729')?.hs6 === '846729');
+  check('supplierHs chữ rác / <6 số / nhóm không tồn tại → bỏ', normalizeSupplierHs('abc') === null && normalizeSupplierHs({ code: '84-67' }) === null && normalizeSupplierHs({ code: '00009999' }) === null);
+
+  // 7b. Cùng 6 số → không cổng, tăng tin cậy, ghi basis NHA_SAN_XUAT, agree SAME6
+  r = await run({ ...KNIFE, supplierHs: { code: '82019000', source: 'made-in-china', url: SUP_URL } }, [R1_KNIFE, R2_OK]);
+  check('NCC cùng 6 số → không chặn, 2 lượt AI, agree SAME6, basis NHA_SAN_XUAT, tin cậy +5', calls.length === 2 && r.status === 'REVIEW' && r.dossier.supplier?.agree === 'SAME6' && r.results[0].basis.some((b) => b.stream === 'NHA_SAN_XUAT' && b.ref === SUP_URL) && r.results[0].confidence === 90 && r.review.needed === false, JSON.stringify([calls.length, r.status, r.dossier.supplier, r.results[0]?.confidence]));
+  check('vòng 2 thấy "NHÀ CUNG CẤP KHAI HS" kèm dòng biểu thuế VN 820190', /NHÀ CUNG CẤP KHAI HS[^\n]*820190 \(nhóm 8201\)/.test(calls[1].user) && /82019000 [^\n]*/.test(calls[1].user.split('NHÀ CUNG CẤP KHAI HS')[1]));
+  check('precedentCodes không trộn mã TQ', !r.candidates.precedentCodes.some((p) => p.hs === '82019000' && p.ozCount == null));
+
+  // 7c. Cùng nhóm, khác 6 số → không chặn, chỉ cảnh báo nhẹ, agree SAME4
+  r = await run({ ...KNIFE, supplierHs: { code: '82013000', source: 'made-in-china' } }, [R1_KNIFE, R2_OK]);
+  check('NCC cùng nhóm khác 6 số → không chặn, warning nhẹ, agree SAME4, không review', calls.length === 2 && r.dossier.supplier?.agree === 'SAME4' && r.antiPatternWarnings.some((w) => /820130/.test(w.description)) && r.review.needed === false, JSON.stringify([calls.length, r.dossier.supplier, r.antiPatternWarnings]));
+
+  // 7d. Khác nhóm → cổng NCC_KHAI_KHAC_NHOM vòng 2 → vòng 3 AI giải trình → qua, nhưng review.needed
+  r = await run({ ...KNIFE, supplierHs: { code: '84672900', source: 'made-in-china', url: SUP_URL } }, [R1_KNIFE, R2_OK,
+    (user) => (/NCC_KHAI_KHAC_NHOM/.test(user) && /8467/.test(user) ? { ...R2_OK, reason: 'Nhà cung cấp khai 8467 (dụng cụ có động cơ) nhưng hồ sơ không có động cơ — giữ 8201', alternatives: [{ hs: '84672900', whyNot: 'không có động cơ' }] } : R2_OK),
+  ]);
+  check('NCC khác nhóm → chặn vòng 2 → vòng 3 giải trình → qua', calls.length === 3 && r.engine.gates[0].blocks.includes('NCC_KHAI_KHAC_NHOM') && r.results[0]?.hs === '82019000' && r.status === 'REVIEW', JSON.stringify([calls.length, r.engine.gates, r.status]));
+  check('lý do chặn nêu mã NCC + nhóm đã chọn', /846729[^\n]*8467[^\n]*8201/.test(calls[2].user));
+  check('nhóm NCC được gom vào headings (chú giải 8467 trong gói kiểm chứng)', r.candidates.headings.includes('8467') && /NHÓM 8467/.test(calls[1].user));
+  check('vẫn khác nhóm sau giải trình → review.needed "NCC khai … / hệ thống chọn …", agree DIFF', r.review.needed && r.review.reasons.some((x) => /NCC khai HS 846729[^\n]*hệ thống chọn 82019000/.test(x)) && r.dossier.supplier?.agree === 'DIFF', JSON.stringify(r.review));
+
+  // 7e. AI không giải trình tới trần → không chặn mãi (chỉ 1 lần), vẫn REVIEW + cờ
+  r = await run({ ...KNIFE, supplierHs: { code: '84672900' } }, [R1_KNIFE, R2_OK, R2_OK, R2_OK]);
+  check('không giải trình → chặn 1 lần rồi cảnh báo, review.needed', calls.length === 3 && r.status === 'REVIEW' && r.review.needed && r.antiPatternWarnings.some((w) => /Nhà cung cấp khai 846729/.test(w.description)), JSON.stringify([calls.length, r.status, r.review, r.antiPatternWarnings]));
+
+  // 7f. supplierHs rác → bỏ hẳn, không cổng, dossier.supplier null
+  r = await run({ ...KNIFE, supplierHs: { code: 'N/A' } }, [R1_KNIFE, R2_OK]);
+  check('supplierHs rác → bỏ, không ảnh hưởng', calls.length === 2 && r.dossier.supplier === null && !/NHÀ CUNG CẤP KHAI HS/.test(calls[1].user));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);

@@ -80,5 +80,13 @@ girReply = { results: [{ hs: '847170', confidence: 65, reason: 'Bộ lưu trữ,
 const r5 = await classify({ tenHang: 'Thiết bị lưu trữ dữ liệu cho máy tính', chatLieu: 'kim loại', congDung: 'lưu dữ liệu' });
 check('classify: mã 6 số → NEED_FACTS có câu hỏi', r5.status === 'NEED_FACTS' && (r5.nextAction?.questions || []).length > 0, JSON.stringify({ s: r5.status, n: r5.nextAction }));
 
+// 6. supplierHs (made-in-china, 09/10/2026): body không vỡ; động cơ cũ chỉ thêm lý do review khi khác NHÓM
+girReply = { results: [{ hs: '22021030', confidence: 85, reason: 'Nước có ga có hương liệu.', gir: null }], missing: [] };
+const r6 = await classify({ tenHang: 'Nước ngọt có ga có hương liệu đóng chai 500ml', chatLieu: 'chai nhựa', congDung: 'uống', supplierHs: { code: '2106909000', source: 'made-in-china', url: 'https://abc.en.made-in-china.com/product/x.html' } });
+check('classify: supplierHs khác nhóm → vẫn ra mã, review.needed có lý do "NCC khai"', r6.results?.[0]?.hs === '22021030' && r6.review?.needed === true && (r6.review.reasons || []).some((x) => /NCC khai HS 210690/.test(x)), JSON.stringify({ r: r6.results?.[0]?.hs, review: r6.review, err: r6.error }));
+check('classify: attrs.supplierHs được chuẩn hoá (chữ số, source/url cắt ngắn)', r6.attrs?.supplierHs?.code === '2106909000' && r6.attrs.supplierHs.source === 'made-in-china', JSON.stringify(r6.attrs?.supplierHs));
+const r6b = await classify({ tenHang: 'Nước ngọt có ga có hương liệu đóng chai 500ml', chatLieu: 'chai nhựa', congDung: 'uống', supplierHs: { code: 'abc', url: 'javascript:alert(1)' } });
+check('classify: supplierHs rác → bỏ (null), không vỡ', r6b.results?.[0]?.hs === '22021030' && r6b.attrs?.supplierHs === null && !r6b.review?.needed, JSON.stringify({ a: r6b.attrs?.supplierHs, review: r6b.review }));
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
