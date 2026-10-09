@@ -58,7 +58,8 @@ check('không cờ theo tên → reviewByName=false, hasActionablePolicy như c�
 
 // 8. /api/tax (tax-mapper + tax-lookup): thiếu name vẫn khớp bằng tên dòng biểu thuế; có name thì dùng.
 const t1 = mapTaxLookup('90049010');
-check('/api/tax 90049010 không name: reviewByName=true, policyByName từ tên dòng biểu thuế', t1.reviewByName === true && t1.policyByName?.[0]?.matchedIn === 'tariffNameVi' && t1.policyLevel === 'NOTICE');
+// 90049010 giờ có bảng 19/2024/TT-BYT (BLOCKING) — cờ theo tên vẫn phải có như lưới phụ, không đòi mức NOTICE.
+check('/api/tax 90049010 không name: reviewByName=true, policyByName từ tên dòng biểu thuế (mức theo bảng mã nếu có)', t1.reviewByName === true && t1.policyByName?.[0]?.matchedIn === 'tariffNameVi' && ['NOTICE', 'BLOCKING'].includes(t1.policyLevel));
 const t2 = buildTaxLookup('90049010', { name: 'kính lão chống ánh sáng xanh' });
 check('buildTaxLookup(name) → căn cứ theo tên hàng', t2.policyByName?.[0]?.canCu === '"kính lão" khớp tên hàng');
 // Cờ AI bóc không căn cứ vẫn bị gỡ dù có cờ theo tên (cờ theo tên chỉ là NV kiểm).
