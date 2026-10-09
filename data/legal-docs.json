@@ -1,7 +1,7 @@
 {
-  "version": "2026-07-02",
-  "extractedFrom": "data/tax-enriched.json (LLM legalDocs) + data/tax.json cs (regex sweep)",
-  "total": 108,
+  "version": "2026-10-09",
+  "extractedFrom": "data/tax-enriched.json (LLM legalDocs) + data/tax.json cs (regex sweep) + manual (Hermes loop 2026-10-09)",
+  "total": 115,
   "citations": {
     "fromEnriched": 18575,
     "fromRegexSweep": 880
@@ -4758,8 +4758,251 @@
       "replaces": "Phụ lục III của 1182/QD-BCT",
       "verified": true,
       "verifiedSource": "thuvienphapluat.vn + luatvietnam.vn"
+    },
+    "26/2023/NĐ-CP": {
+      "code": "26/2023/NĐ-CP",
+      "type": "Nghị định",
+      "year": 2023,
+      "issuer": "CP",
+      "issuerFullVi": "Chính phủ",
+      "titleVi": "Biểu thuế xuất khẩu, Biểu thuế nhập khẩu ưu đãi, Danh mục hàng hoá và mức thuế tuyệt đối, thuế hỗn hợp, thuế nhập khẩu ngoài hạn ngạch thuế quan",
+      "url": "https://vanban.chinhphu.vn/default.aspx?docid=208020&pageid=27160",
+      "status": "ACTIVE",
+      "domain": [
+        "THUẾ_SUẤT",
+        "BIỂU_THUẾ"
+      ],
+      "scopeHsChapters": [],
+      "sections": [
+        "Biểu thuế NK ưu đãi",
+        "Biểu thuế XK",
+        "DM thuế tuyệt đối",
+        "Thuế hỗn hợp"
+      ],
+      "citedInHsCount": 0,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "INFO",
+      "sampleHsCodes": [],
+      "issuedDate": "2023-05-31",
+      "effectiveDate": "2023-07-15",
+      "replaces": [
+        "113/2017/NĐ-CP"
+      ],
+      "note": "Biểu thuế XK NK ưu đãi nền tảng — thay thế NĐ 113/2017 (NĐ 113/2017/NĐ-CP đã bị AMENDED theo legal-docs.json). Chưa được cập nhật trong cs của tax.json — 667 mã HS vẫn dẫn 113/2017. Cần patch tax.json hoặc dùng policy-regime.js cảnh báo.",
+      "verified": true,
+      "verifiedSource": "vanban.chinhphu.vn (Cổng Chính phủ)"
+    },
+    "31/2022/TT-BTC": {
+      "code": "31/2022/TT-BTC",
+      "type": "Thông tư",
+      "year": 2022,
+      "issuer": "BTC",
+      "issuerFullVi": "Bộ Tài chính",
+      "titleVi": "Ban hành Danh mục hàng hoá xuất khẩu, nhập khẩu Việt Nam",
+      "url": "https://congbao.chinhphu.vn/van-ban/thong-tu-so-31-2022-tt-btc-37431.htm",
+      "status": "ACTIVE",
+      "domain": [
+        "BIỂU_THUẾ",
+        "DANH_MỤC"
+      ],
+      "scopeHsChapters": [],
+      "sections": [
+        "DM hàng hóa XNK Việt Nam"
+      ],
+      "citedInHsCount": 0,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "INFO",
+      "sampleHsCodes": [],
+      "issuedDate": "2022-06-08",
+      "effectiveDate": "2022-12-01",
+      "replaces": [
+        "14/2018/TT-BTC",
+        "65/2017/TT-BTC"
+      ],
+      "note": "Danh mục hàng hóa XNK Việt Nam — nền tảng đối chiếu mã HS 8 số với 10 số cho tờ khai hải quan. Chưa có citedInHsCount (chưa tích hợp vào tax.json) — sẽ được tính tự động khi tích hợp.",
+      "verified": true,
+      "verifiedSource": "congbao.chinhphu.vn (Công báo)"
+    },
+    "49-PL1/2026/TT-BXD": {
+      "code": "49-PL1/2026/TT-BXD",
+      "type": "Thông tư",
+      "year": 2026,
+      "issuer": "BXD",
+      "issuerFullVi": "Bộ Xây dựng",
+      "titleVi": "Phụ lục I — Danh mục sản phẩm, hàng hóa có mức độ rủi ro cao thuộc phạm vi quản lý của Bộ Xây dựng (kèm theo TT 49/2026/TT-BXD)",
+      "url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/7/49-bxd-pl1.pdf",
+      "status": "ACTIVE",
+      "domain": [
+        "KTCL",
+        "DM_RỦI_RO_CAO"
+      ],
+      "scopeHsChapters": [],
+      "sections": [
+        "Phụ lục I - Rủi ro cao"
+      ],
+      "citedInHsCount": 0,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [],
+      "issuedDate": "2026-06-30",
+      "effectiveDate": "2026-07-01",
+      "note": "TT 49/2026/TT-BXD ban hành theo NĐ 37/2026/NĐ-CP (khung KTCN 3 mức rủi ro). Phụ lục I = rủi ro CAO. Chưa tích hợp vào tax.json — 04/2021/TT-BXD (AMENDED, 34 mã HS) vẫn đang dẫn trong biểu thuế.",
+      "verified": true,
+      "verifiedSource": "datafiles.chinhphu.vn (Kho PDF chữ ký số Cổng Chính phủ)"
+    },
+    "49-PL2/2026/TT-BXD": {
+      "code": "49-PL2/2026/TT-BXD",
+      "type": "Thông tư",
+      "year": 2026,
+      "issuer": "BXD",
+      "issuerFullVi": "Bộ Xây dựng",
+      "titleVi": "Phụ lục II — Danh mục sản phẩm, hàng hóa có mức độ rủi ro trung bình thuộc phạm vi quản lý của Bộ Xây dựng (kèm theo TT 49/2026/TT-BXD)",
+      "url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/7/49-bxd-pl2.pdf",
+      "status": "ACTIVE",
+      "domain": [
+        "KTCL",
+        "DM_RỦI_RO_TB"
+      ],
+      "scopeHsChapters": [],
+      "sections": [
+        "Phụ lục II - Rủi ro trung bình"
+      ],
+      "citedInHsCount": 0,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [],
+      "issuedDate": "2026-06-30",
+      "effectiveDate": "2026-07-01",
+      "note": "TT 49/2026/TT-BXD Phụ lục II = rủi ro TRUNG BÌNH. Chưa tích hợp vào tax.json. Bảng mã HS cần trích từ PDF (xem oz-wiki-plhq danh-muc/ — hiện chưa có CSV).",
+      "verified": true,
+      "verifiedSource": "datafiles.chinhphu.vn (Kho PDF chữ ký số Cổng Chính phủ)"
+    },
+    "31/2026/QĐ-TTg": {
+      "code": "31/2026/QĐ-TTg",
+      "type": "Quyết định",
+      "year": 2026,
+      "issuer": "TTG",
+      "issuerFullVi": "Thủ tướng Chính phủ",
+      "titleVi": "Ban hành Danh mục hàng hóa nhập khẩu phải làm thủ tục hải quan tại cửa khẩu nhập (thay thế QĐ 23/2019/QĐ-TTg)",
+      "url": "https://congbao.chinhphu.vn/van-ban/quyet-dinh-so-31-2026-qd-ttg-469911.htm",
+      "status": "ACTIVE",
+      "domain": [
+        "THỦ_TỤC_HẢI_QUAN",
+        "CỬA_KHẨU"
+      ],
+      "scopeHsChapters": [],
+      "sections": [
+        "DM hàng hóa NK tại cửa khẩu nhập"
+      ],
+      "citedInHsCount": 0,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "HIGH",
+      "sampleHsCodes": [],
+      "issuedDate": "2026-06-29",
+      "effectiveDate": "2026-08-14",
+      "replaces": [
+        "23/2019/QĐ-TTg"
+      ],
+      "note": "Thay thế QĐ 23/2019/QĐ-TTg (HET_HIEU_LUC). Chưa tích hợp vào tax.json. Danh mục cần trích từ PDF Công báo.",
+      "verified": true,
+      "verifiedSource": "congbao.chinhphu.vn + congbaocdn.chinhphu.vn (Công báo có chữ ký số)"
+    },
+    "30/2014/TT-BNNPTNT": {
+      "code": "30/2014/TT-BNNPTNT",
+      "type": "Thông tư",
+      "year": 2014,
+      "issuer": "BNNPTNT",
+      "issuerFullVi": "Bộ Nông nghiệp và Phát triển nông thôn",
+      "titleVi": "Danh mục vật thể thuộc diện kiểm dịch thực vật",
+      "url": "https://vanban.chinhphu.vn/?docid=176058&pageid=27160",
+      "status": "ACTIVE",
+      "domain": [
+        "KIỂM_DỊCH",
+        "THỰC_VẬT"
+      ],
+      "scopeHsChapters": [],
+      "sections": [
+        "DM vật thể kiểm dịch thực vật"
+      ],
+      "citedInHsCount": 0,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "MEDIUM",
+      "sampleHsCodes": [],
+      "issuedDate": "2014-09-29",
+      "effectiveDate": "2014-12-01",
+      "note": "Danh mục vật thể KDTV của Bộ NN&PTNT. Cũ (2014) nhưng còn hiệu lực một phần (KDTV thường cập nhật theo chu kỳ). Chưa tích hợp vào tax.json.",
+      "verified": true,
+      "verifiedSource": "vanban.chinhphu.vn (Cổng Chính phủ)"
+    },
+    "1357/QĐ-TCHQ": {
+      "code": "1357/QĐ-TCHQ",
+      "type": "Quyết định",
+      "year": 2021,
+      "issuer": "TCHQ",
+      "issuerFullVi": "Tổng cục Hải quan",
+      "titleVi": "Bảng mã loại hình xuất khẩu, nhập khẩu và hướng dẫn sử dụng (áp dụng cho hệ thống VNACCS)",
+      "url": "https://www.vietnamtradeportal.gov.vn/kcfinder/upload/files/1357_QD-TCHQ.pdf",
+      "status": "ACTIVE",
+      "domain": [
+        "THỦ_TỤC_HẢI_QUAN",
+        "VNACCS",
+        "MÃ_LOẠI_HÌNH"
+      ],
+      "scopeHsChapters": [],
+      "sections": [
+        "Bảng mã loại hình XK",
+        "Bảng mã loại hình NK",
+        "Hướng dẫn sử dụng"
+      ],
+      "citedInHsCount": 0,
+      "contextCounts": {
+        "license": 0,
+        "inspection": 0,
+        "quarantine": 0,
+        "dualUse": 0
+      },
+      "severityMax": "INFO",
+      "sampleHsCodes": [],
+      "issuedDate": "2021-05-18",
+      "effectiveDate": "2021-06-01",
+      "replaces": [
+        "2765/TCHQ-GSQL"
+      ],
+      "note": "Bảng mã loại hình XNK VNACCS — thay thế Công văn 2765/TCHQ-GSQL (2015). Không thuộc phạm vi mã HS (căn cứ khai báo) nhưng quan trọng cho ECUS/VNACCS. Chưa tích hợp tax.json.",
+      "verified": true,
+      "verifiedSource": "vietnamtradeportal.gov.vn (Cổng TT Bộ Công Thương — bản PDF chính thức)"
     }
   },
-  "verifiedTitles": 106,
-  "verifiedTitlesUpdatedAt": "2026-09-24"
+  "verifiedTitles": 113,
+  "verifiedTitlesUpdatedAt": "2026-10-09"
 }

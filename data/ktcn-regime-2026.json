@@ -1,7 +1,7 @@
 {
   "_comment": "Khung kiểm tra chuyên ngành (KTCN) hàng nhập khẩu từ 2026 + bảng văn bản danh mục CŨ đã/đang bị thay. Dùng cho lib/policy-regime.js: /api/tax gắn policyBasisReview khi ô chính sách (cs) còn dẫn căn cứ cũ. KHÔNG đổi mã HS: danh mục mới chưa có phụ lục mã HS gốc trong repo, nên chỉ báo 'căn cứ cũ, cần đối chiếu' — không tự khẳng định mã còn/không còn phải kiểm tra. Mức tin cậy: HIGH = nguồn trích nguyên văn/Công báo; MEDIUM = cùng bộ, cùng phạm vi, khung cũ đã hết hiệu lực nhưng chưa thấy điều khoản thay thế nguyên văn; LOW = chỉ là gợi ý đối chiếu.",
-  "version": "2026-10-04",
-  "asOf": "2026-10-04",
+  "version": "2026-10-09",
+  "asOf": "2026-10-09",
   "sources": [
     {
       "id": "oz-ktcn-2026",
@@ -254,6 +254,94 @@
       "replaces": [],
       "verification": "UNVERIFIED",
       "noteVi": "Bài chỉ tìm được nguồn thứ cấp, chưa có trang gốc — kiểm lại với Bộ Y tế trước khi dùng."
+    },
+    {
+      "code": "26/2023/NĐ-CP",
+      "ministry": "CP",
+      "kind": "TARIFF_SCHEDULE",
+      "issuedDate": "2023-05-31",
+      "effectiveDate": "2023-07-15",
+      "scopeVi": "Biểu thuế xuất khẩu, Biểu thuế nhập khẩu ưu đãi, Danh mục hàng hoá và mức thuế tuyệt đối, thuế hỗn hợp, thuế nhập khẩu ngoài hạn ngạch thuế quan",
+      "replaces": [
+        "113/2017/NĐ-CP"
+      ],
+      "verification": "PRIMARY_QUOTED",
+      "noteVi": "Biểu thuế XK NK ưu đãi nền tảng. NĐ 113/2017 hết hiệu lực từ 15/7/2023. Chưa patch tax.json (667 mã HS vẫn dẫn 113/2017)."
+    },
+    {
+      "code": "31/2022/TT-BTC",
+      "ministry": "BTC",
+      "kind": "TARIFF_SCHEDULE",
+      "issuedDate": "2022-06-08",
+      "effectiveDate": "2022-12-01",
+      "scopeVi": "Danh mục hàng hóa xuất khẩu, nhập khẩu Việt Nam (nền tảng đối chiếu mã HS 8 số với 10 số)",
+      "replaces": [
+        "14/2018/TT-BTC",
+        "65/2017/TT-BTC"
+      ],
+      "verification": "PRIMARY_QUOTED",
+      "noteVi": "Danh mục XNK Việt Nam. Chưa tích hợp vào tax.json — sẽ tự động khi có script đối chiếu mã HS 8 số → 10 số."
+    },
+    {
+      "code": "49-PL1/2026/TT-BXD",
+      "ministry": "BXD",
+      "kind": "QUALITY_RISK",
+      "issuedDate": "2026-06-30",
+      "effectiveDate": "2026-07-01",
+      "scopeVi": "Phụ lục I — Danh mục sản phẩm, hàng hóa có mức độ rủi ro CAO thuộc phạm vi quản lý của Bộ Xây dựng",
+      "replaces": [
+        "04/2021/TT-BXD"
+      ],
+      "verification": "PRIMARY_QUOTED",
+      "noteVi": "Theo khung KTCN 3 mức rủi ro (NĐ 37/2026/NĐ-CP). 04/2021/TT-BXD (34 mã HS) hiện vẫn dẫn trong tax.json."
+    },
+    {
+      "code": "49-PL2/2026/TT-BXD",
+      "ministry": "BXD",
+      "kind": "QUALITY_RISK",
+      "issuedDate": "2026-06-30",
+      "effectiveDate": "2026-07-01",
+      "scopeVi": "Phụ lục II — Danh mục sản phẩm, hàng hóa có mức độ rủi ro TRUNG BÌNH thuộc phạm vi quản lý của Bộ Xây dựng",
+      "replaces": [],
+      "verification": "PRIMARY_QUOTED",
+      "noteVi": "Theo khung KTCN 3 mức rủi ro. Cần trích bảng mã HS từ PDF (chưa có CSV)."
+    },
+    {
+      "code": "31/2026/QĐ-TTg",
+      "ministry": "TTG",
+      "kind": "CUSTOMS_PROCEDURE",
+      "issuedDate": "2026-06-29",
+      "effectiveDate": "2026-08-14",
+      "scopeVi": "Danh mục hàng hóa nhập khẩu phải làm thủ tục hải quan tại cửa khẩu nhập",
+      "replaces": [
+        "23/2019/QĐ-TTg"
+      ],
+      "verification": "PRIMARY_QUOTED",
+      "noteVi": "Thay thế QĐ 23/2019/QĐ-TTg (HET_HIEU_LUC). Chưa tích hợp tax.json."
+    },
+    {
+      "code": "30/2014/TT-BNNPTNT",
+      "ministry": "BNN",
+      "kind": "PHYTOSANITARY",
+      "issuedDate": "2014-09-29",
+      "effectiveDate": "2014-12-01",
+      "scopeVi": "Danh mục vật thể thuộc diện kiểm dịch thực vật",
+      "replaces": [],
+      "verification": "PRIMARY_QUOTED",
+      "noteVi": "Danh mục cũ (2014) còn hiệu lực một phần. Chưa tích hợp tax.json."
+    },
+    {
+      "code": "1357/QĐ-TCHQ",
+      "ministry": "TCHQ",
+      "kind": "VNACCS_CODES",
+      "issuedDate": "2021-05-18",
+      "effectiveDate": "2021-06-01",
+      "scopeVi": "Bảng mã loại hình xuất khẩu, nhập khẩu (áp dụng cho VNACCS) — không thuộc mã HS, chỉ mã loại hình khai báo",
+      "replaces": [
+        "2765/TCHQ-GSQL"
+      ],
+      "verification": "PRIMARY_QUOTED",
+      "noteVi": "Quan trọng cho ECUS/VNACCS. Không trích vào tax.json (không phải mã HS)."
     }
   ],
   "superseded": [
@@ -390,6 +478,49 @@
       ],
       "effectiveFrom": "2026-01-01",
       "noteVi": "TT 01/2026/TT-BNNMT (hiệu lực 01/01/2026) ban hành lại danh mục động vật, sản phẩm động vật trên cạn phải kiểm dịch / miễn kiểm dịch; cơ quan là Cục Chăn nuôi và Thú y. Cần đối chiếu bảng mã HS."
+    },
+    {
+      "id": "cp-hc-113",
+      "patterns": [
+        "\\b113/2017/(?:ND|NĐ)-CP(?:\\s*PL[1-9])?"
+      ],
+      "labelVi": "Danh mục hóa chất (NĐ 113/2017/NĐ-CP - hóa chất SX/KD có ĐK, hóa chất cấm, hóa chất phải khai báo)",
+      "relation": "REPLACED",
+      "confidence": "HIGH",
+      "replacedBy": [
+        "26/2023/NĐ-CP"
+      ],
+      "effectiveFrom": "2023-07-15",
+      "noteVi": "NĐ 113/2017/NĐ-CP hết hiệu lực từ 15/7/2023 theo NĐ 26/2023/NĐ-CP. tax.json chưa patch — 667 mã HS vẫn dẫn 113/2017."
+    },
+    {
+      "id": "ttg-cuakhau-23",
+      "patterns": [
+        "\\b23/2019/(?:QD|QĐ)-TTg"
+      ],
+      "labelVi": "DM hàng hóa NK phải làm thủ tục HQ tại cửa khẩu nhập (QĐ 23/2019/QĐ-TTg)",
+      "relation": "REPLACED",
+      "confidence": "HIGH",
+      "replacedBy": [
+        "31/2026/QĐ-TTg"
+      ],
+      "effectiveFrom": "2026-08-14",
+      "noteVi": "QĐ 23/2019/QĐ-TTg hết hiệu lực từ 14/8/2026 theo QĐ 31/2026/QĐ-TTg."
+    },
+    {
+      "id": "bxd-rca-04-2021",
+      "patterns": [
+        "\\b04/2021/TT-BXD"
+      ],
+      "labelVi": "Danh mục SP/HH rủi ro Bộ Xây dựng (TT 04/2021/TT-BXD)",
+      "relation": "REPLACED",
+      "confidence": "HIGH",
+      "replacedBy": [
+        "49-PL1/2026/TT-BXD",
+        "49-PL2/2026/TT-BXD"
+      ],
+      "effectiveFrom": "2026-07-01",
+      "noteVi": "TT 04/2021/TT-BXD thay bởi TT 49/2026/TT-BXD (Phụ lục I rủi ro cao, Phụ lục II rủi ro TB). tax.json chưa patch — 34 mã HS vẫn dẫn 04/2021."
     }
   ]
 }
