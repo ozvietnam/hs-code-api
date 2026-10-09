@@ -384,5 +384,23 @@ check('describe thường vẫn chạy (degraded khi AI lỗi)', h2._s === 200 &
   check('không có ô bộ phận → thành phần như cũ', r2.declaration.thanhPhanCauTao === 'thép không gỉ');
 }
 
+
+// ── 09/10/2026 (prod lần 2): tên AI dài dòng phải rút TRƯỚC khi bỏ model; rút theo vế dấu phẩy ──
+{
+  const { composeFromSheet } = await import('../lib/declaration-sheet.js').then((m) => m.default || m);
+  const F = (key, labelVi, valueVi, required = true, extra = {}) => ({ key, labelVi, valueVi, status: 'HAVE', required, ...extra });
+  const fields = [
+    F('eyewearType', 'Loại kính mắt', 'kính viễn'), F('lensMaterial', 'Chất liệu tròng kính', 'PC'), F('frameMaterial', 'Chất liệu gọng kính', 'kim loại'),
+    F('modelNumber', 'Model', '603'), F('dimensions', 'Kích thước', '147×50-39-17-135 mm'),
+    F('lensPower', 'Độ kính', '+100 độ,+150 độ,+200 độ,+250 độ,+300 độ', false), F('color', 'Màu sắc', 'vàng, bạc, vàng chuyển xám, bạc chuyển xám', false),
+    F('application', 'Công dụng', 'kính lão chống ánh sáng xanh cho người lớn tuổi'), F('material', 'Chất liệu / thành phần cấu tạo', 'PC'),
+    F('brand', 'Nhãn hiệu', '柚莎', true, { valueZh: '柚莎' }),
+  ];
+  const r = composeFromSheet(fields, [], { tenHang: 'Kính lão chống ánh sáng xanh cho nam, lão hoá cao cấp, có đổi màu, gọng kim loại nửa viền', thongSoKyThuat: [] }, { brandStatus: 'BRANDED' }, { productName: 'Kính thuốc', origin: 'Trung Quốc', condition: 'Mới 100%' });
+  check('tên dài rút theo vế dấu phẩy, không cụt ở "gọng"', r.declaration.tenHang === 'Kính lão chống ánh sáng xanh cho nam' || r.declaration.tenHang === 'Kính lão chống ánh sáng xanh cho nam, lão hoá cao cấp', r.declaration.tenHang);
+  check('model 603 giữ lại thay vì tên dài', r.declaration.model === '603' && r.composed.text.includes('model 603'), r.composed.text);
+  check('mô tả ≤ 200', r.composed.text.length <= 200, String(r.composed.text.length));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
