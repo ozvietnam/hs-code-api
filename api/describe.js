@@ -21,7 +21,7 @@ module.exports = async function handler(req, res) {
   }
 
   // POST /api/declaration-sheet (rewrite → ?mode=sheet): phiếu hồ sơ khai báo — gộp vào
-  // function này theo pattern vercel.json.
+  // function này theo pattern routes.json.
   if (String(req.query?.mode || '') === 'sheet') {
     try {
       const out = await buildDeclarationSheet(body || {});

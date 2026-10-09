@@ -15,7 +15,7 @@ Service HTTP API cho ERP `erp-xnk` gọi sang để:
 
 ## Tech stack
 
-- Node.js Vercel functions (serverless) — KHÔNG dùng Next.js framework
+- Node.js handler kiểu serverless (`api/*.js`) chạy bằng `server.js` trên server riêng — KHÔNG dùng Next.js framework
 - Data: JSON files trong `data/` (no DB cho serverless cold start nhanh)
 - AI: Gemini 2.5 Flash (rerank, describe) + Gemini Embedding 001 (semantic search)
 - Chuỗi LLM (`lib/llm-tier.js` → `lib/llm.mjs`, CEO chốt 04/10/2026): **MiniMax gọi thẳng
@@ -24,7 +24,7 @@ Service HTTP API cho ERP `erp-xnk` gọi sang để:
   thuộc Gemini miễn phí. Thiếu key provider nào thì tự bỏ qua; local dev dùng OpenRouter free
   — `docs/openrouter.md`, `npm run openrouter:ping`
 - Auth: Bearer token (`HS_API_TOKEN` env)
-- Deploy: Vercel project `hs-code-api` (domain prod `hs-kb.uythacnhapkhau.com` qua Cloudflare)
+- Deploy: server riêng của Oz (Docker/Coolify, `server.js` + `Dockerfile`), domain prod `hs-kb.uythacnhapkhau.com` qua Cloudflare. **Đã gỡ Vercel (CEO chốt 09/10/2026).** Định tuyến nằm ở `routes.json`
 - **Nguồn sự thật là GitHub `ozvietnam/hs-code-api`** (CEO chốt 29/09/2026). Gitea của
   hệ thống quản lý đơn (ERP) chỉ tự đồng bộ từ GitHub để lấy data về dùng — muốn sửa
   gì thì sửa trên GitHub, KHÔNG sửa trên Gitea.
@@ -32,9 +32,9 @@ Service HTTP API cho ERP `erp-xnk` gọi sang để:
 ## Cấu trúc dự án
 
 ```
-api/               # 12 file handler = 12 Vercel function.
+api/               # 12 file handler.
                    # Nhiều URL "logic" khác được gộp vào dataset.js/tariff.js
-                   # qua rewrite trong vercel.json — KHÔNG có file riêng.
+                   # qua rewrite trong routes.json — KHÔNG có file riêng.
   health.js          # Public — health check
   tax.js             # Bearer — tra thuế
   search.js          # Bearer — search HS (+ /api/match qua ?mode=match)
@@ -82,9 +82,9 @@ tests/             # Test fixtures
 1. **Đọc context** — check Issue link, related files trong `lib/` + `data/`
 2. **Brainstorm ngắn** (skill `superpowers:brainstorming`) — nếu phức tạp
 3. **Code thẳng** — anh code direct main (không có PR review, solo)
-4. **Test local** — `npx vercel dev` hoặc test endpoint qua `curl`
+4. **Test local** — `node server.js` (cổng 3000) rồi test endpoint qua `curl`
 5. **Commit incremental** — mỗi feature 1 commit có message rõ
-6. **Push origin main** — Vercel auto-deploy production
+6. **Push origin main** — server riêng tự kéo bản mới (Coolify) — xem docs/deploy-coolify.md
 7. **Verify** — curl production endpoint check OK
 
 ## Rule bất biến
@@ -95,7 +95,7 @@ tests/             # Test fixtures
 4. **camelCase response** — chuẩn shape camelCase cho ERP, dùng `lib/tax-mapper.js`.
 5. **Compliance TT 39/2018** — `/api/describe` phải trả structured `declaration` + `compliance.score` + `level` + `warnings[]`.
 6. **GIR audit trail** — `/api/suggest` response phải có `girRulesApplied[]` (Issue #24), và **mọi trích dẫn GIR phải đi qua `lib/gir.js`**. Không nơi nào khác được tự gắn nhãn `GIR-*`. Mỗi mục bắt buộc có `basis` (`RULE_TABLE` > `DETERMINISTIC` > `HEURISTIC` > `LLM_ASSERTED`) + `evidence` + `source`. Trích sai điều luật tệ hơn không trích: đây là bằng chứng người khai đưa cho Hải quan. Tín hiệu heuristic đi vào `rankingSignals[]`, checklist theo chương đi vào `chapterGuidance[]` — tuyệt đối không gọi chúng là GIR.
-7. **Vercel Pro** — đã nâng Pro (T7/2026), KHÔNG còn trần 12 function của Hobby; maxDuration cho phép tới 300s. Vẫn giữ pattern gộp route qua `vercel.json` rewrites (`dataset.js`/`tariff.js`) vì ít cold start + repo gọn — chỉ tách function mới khi thật sự cần.
+7. **Định tuyến gộp** — `server.js` đọc `routes.json`; giữ pattern gộp route qua rewrites (`dataset.js`/`tariff.js`) vì repo gọn; request chạy được tới 300s. Chỉ tách function khi thật sự cần.
 8. **Test KHÔNG được ghi vào `data/` thật** — mọi lib có ghi (`feedback-store`, `admin-update`, `tariff-mutations`, `access-log`, `error-monitor`, `ml-log`) phải lấy đường dẫn qua `lib/data-paths.js` (`dataPath` để ghi, `dataReadPath` để đọc), và test phải `import './test-isolate-data.mjs'` ở dòng đầu để ghi vào thư mục tạm. Trước đây `npm test` làm bẩn repo, có lần commit lẫn snapshot `v-api-test` thành phiên bản biểu thuế "đang hiệu lực".
 
 ## Tham chiếu pháp luật quan trọng
@@ -127,9 +127,9 @@ tests/             # Test fixtures
 
 **"Review code/PR"** → `git diff` → check 7 rule bất biến + compliance.
 
-**"Service đang OK không?"** → `curl /api/health` + xem latest deploy `vercel ls`.
+**"Service đang OK không?"** → `curl /api/health` + xem trạng thái ở Coolify.
 
-**"Đẩy lên Vercel"** → `git push origin main` (Vercel auto-deploy) + verify production.
+**"Đẩy lên server"** → `git push origin main` (Coolify tự kéo) + verify production.
 
 ## Commit message format
 

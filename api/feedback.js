@@ -173,7 +173,7 @@ module.exports = function handler(req, res) {
   }
 
   // Trước đây trả 200 {ok:true, persisted:false} → ERP tưởng đã lưu trong khi
-  // trên Vercel (FS read-only) mọi feedback đều mất. Nay báo lỗi thật + trả lại
+  // trên môi trường FS chỉ đọc mọi feedback đều mất. Nay báo lỗi thật + trả lại
   // bản ghi để phía gọi tự giữ và gửi lại khi có kho lưu bền.
   if (!persisted) {
     return res.status(503).json({

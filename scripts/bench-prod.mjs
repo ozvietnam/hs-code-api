@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Đo /api/suggest TRÊN PROD (hoặc URL bất kỳ) với một bộ đo jsonl — đúng thứ ERP
- * nhận được, gồm cả Gemini, cache và cấu hình Vercel.
+ * nhận được, gồm cả Gemini và cache.
  *
  * Ngoài top-1/top-3 còn đếm "sai mà tự tin": mã top-1 sai nhóm 4 số nhưng
  * confidence ≥ 70. Với ERP đây là loại sai nguy hiểm nhất — nhân viên thấy số
@@ -32,14 +32,7 @@ const CONFIDENT = Number(arg('confident', 70));
 const TOKEN = process.env.HS_API_TOKEN;
 if (!TOKEN) { console.error('Thiếu HS_API_TOKEN'); process.exit(1); }
 
-// Bản xem thử Vercel có bảo vệ đăng nhập: VERCEL_SHARE=<mã _vercel_share> (tạo bằng
-// công cụ Vercel, hết hạn sau 23 giờ) → đổi lấy cookie rồi gửi kèm mọi lượt gọi.
 let cookie = '';
-if (process.env.VERCEL_SHARE) {
-  const r = await fetch(`${URL_BASE}/?_vercel_share=${process.env.VERCEL_SHARE}`, { redirect: 'manual' });
-  cookie = (r.headers.getSetCookie?.() || [r.headers.get('set-cookie') || '']).map((c) => c.split(';')[0]).filter(Boolean).join('; ');
-  if (!cookie) { console.error('Không lấy được cookie từ VERCEL_SHARE'); process.exit(1); }
-}
 
 let items = readFileSync(join(ROOT, INPUT), 'utf8').trim().split('\n').map((l) => JSON.parse(l))
   .map((r) => ({ desc: String(r[FIELD] || '').trim(), truth: String(r.hsCode).replace(/\D/g, '') }))

@@ -1,5 +1,5 @@
-// Test server.js — thứ thay Vercel khi chạy trên Coolify/Docker. Kiểm: rewrite từ
-// vercel.json, header file tĩnh, handler API, auth, chặn ../, 404. Cổng ngẫu nhiên,
+// Test server.js — tiến trình chạy thật trên server riêng (Coolify/Docker). Kiểm: rewrite từ
+// routes.json, header file tĩnh, handler API, auth, chặn ../, 404. Cổng ngẫu nhiên,
 // ghi vào thư mục tạm (test-isolate-data).
 import './test-isolate-data.mjs';
 import { createRequire } from 'module';
@@ -32,7 +32,7 @@ try {
   check('GET /api/health: server chạy handler, giữ mã trạng thái', [200, 503].includes(h.status) && hj.service === 'hs-code-api', `${h.status} ${JSON.stringify(hj).slice(0, 100)}`);
 
   const llms = await get('/llms.txt');
-  check('/llms.txt: file tĩnh + header từ vercel.json', llms.status === 200 && /text\/plain/.test(llms.headers.get('content-type')) && llms.headers.get('access-control-allow-origin') === '*');
+  check('/llms.txt: file tĩnh + header từ routes.json', llms.status === 200 && /text\/plain/.test(llms.headers.get('content-type')) && llms.headers.get('access-control-allow-origin') === '*');
 
   const admin = await get('/admin');
   check('/admin → public/admin/index.html', admin.status === 200 && /text\/html/.test(admin.headers.get('content-type')));

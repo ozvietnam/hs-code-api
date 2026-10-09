@@ -32,7 +32,7 @@ function parseJsonBody(req) {
 
 /** Tariff versioning routes consolidated into one handler (fewer cold starts, tidy repo).
  * Public URLs (/api/versions, /api/version, /api/version/diff) rewritten here with ?op=
- * POST: op=snapshot|upload|rollback|activate (Bearer auth, local FS — may not persist on Vercel)
+ * POST: op=snapshot|upload|rollback|activate (Bearer auth, local FS — cần volume bền, xem HS_DATA_DIR)
  */
 module.exports = function handler(req, res) {
   setCors(res);

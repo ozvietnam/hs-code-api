@@ -1,7 +1,4 @@
 {
-  "framework": null,
-  "buildCommand": "npm run build",
-  "outputDirectory": "public",
   "rewrites": [
     {
       "source": "/admin",
@@ -176,13 +173,6 @@
       "destination": "/api/dataset?resource=trademark"
     }
   ],
-  "functions": {
-    "api/**/*.js": {
-      "memory": 1024,
-      "maxDuration": 300,
-      "includeFiles": "data/**"
-    }
-  },
   "headers": [
     {
       "source": "/llms.txt",
