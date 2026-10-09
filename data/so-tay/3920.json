@@ -1,0 +1,546 @@
+{
+ "nhom": "3920",
+ "phamVi": {
+  "text": "Tấm, phiến, màng, lá và dải từ plastic chưa được gia cố, gắn lớp mặt, bổ trợ hoặc kết hợp tương tự với vật liệu khác, trừ loại thuộc nhóm 39.18 hoặc 39.19.",
+  "nguon": "nhom3920.nhom",
+  "trich": "Nhóm này bao gồm các tấm, phiến, màng, lá và dải từ plastic (chúng chưa được gia cố, gắn lớp mặt, bổ trợ hoặc kết hợp tương tự với các vật liệu khác), trừ những loại thuộc nhóm 39.18 hoặc 39.19."
+ },
+ "dieuKienVao": [
+  {
+   "fact": "chua_gia_co_gan_lop_mat_bo_tro_hoac_ket_hop_tuong_tu_voi_vat_lieu_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom3920.nhom",
+   "trich": "chúng chưa được gia cố, gắn lớp mặt, bổ trợ hoặc kết hợp tương tự với các vật liệu khác"
+  },
+  {
+   "fact": "chat_don_dang_bot_hat_khoi_cau_hoac_vay_la_gia_co_hoac_ket_hop_tuong_tu",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom3920.nhom",
+   "trich": "các sản phẩm sản xuất ra từ plastic kết hợp với các chất độn ở dạng bột, dạng hạt, dạng khối cầu hoặc dạng vảy được phân loại ở nhóm này"
+  },
+  {
+   "fact": "xu_ly_be_mat_nho_la_gia_co_hoac_ket_hop_tuong_tu",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "ngoaiTru": [
+    "tạo màu",
+    "in",
+    "lắng đọng kim loại trong chân không"
+   ],
+   "nguon": "nhom3920.nhom",
+   "trich": "các quá trình xử lý bề mặt nhỏ như sự tạo màu, in (theo Chú giải 2 thuộc Phần VII), quá trình lắng đọng kim loại trong chân không thì không được xem như quá trình gia cố hoặc kết hợp tương tự theo mục đích của nhóm này"
+  },
+  {
+   "fact": "cat_thanh_hinh_chu_nhat_hoac_chua_cat_va_chua_gia_cong_them",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch39.chuong",
+   "trich": "chưa cắt hay được cắt thành hình chữ nhật (kể cả hình vuông) nhưng chưa được gia công thêm"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Tấm, phiến, màng, lá, dải thuộc nhóm 39.18 hoặc 39.19",
+   "sangNhom": "3918|3919",
+   "nguon": "nhom3920.nhom",
+   "trich": "trừ những loại thuộc nhóm 39.18 hoặc 39.19"
+  },
+  {
+   "dieuKien": "Sản phẩm đã được gia cố, gắn lớp mặt, bổ trợ hoặc kết hợp tương tự với vật liệu không phải plastic",
+   "sangNhom": "3921",
+   "nguon": "nhom3920.nhom",
+   "trich": "Nhóm này không bao gồm các sản phẩm, mà các sản phẩm này đã được gia cố, gắn lớp mặt, bổ trợ hoặc kết hợp tương tự với các vật liệu không phải plastic (nhóm 39.21)"
+  },
+  {
+   "dieuKien": "Sản phẩm loại xốp",
+   "sangNhom": "3921",
+   "nguon": "nhom3920.nhom",
+   "trich": "Nhóm này cũng loại trừ các sản phẩm loại xốp (nhóm 39.21)"
+  },
+  {
+   "dieuKien": "Tấm phủ tường",
+   "sangNhom": "4814",
+   "nguon": "ch39.chuong",
+   "trich": "Các loại tấm phủ tường thuộc nhóm 48.14"
+  },
+  {
+   "dieuKien": "Lá phôi dập",
+   "sangNhom": "3212",
+   "nguon": "ch39.chuong",
+   "trich": "lá phôi dập thuộc nhóm 32.12"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Sản phẩm có cấu trúc xốp (loại plastic xốp)?",
+   "neuCo": "3921",
+   "neuKhong": "3920",
+   "nguon": "nhom3920.nhom",
+   "trich": "Nhóm này cũng loại trừ các sản phẩm loại xốp (nhóm 39.21)"
+  },
+  {
+   "hoi": "Sản phẩm đã được gia cố, gắn lớp mặt, bổ trợ hoặc kết hợp tương tự với vật liệu không phải plastic?",
+   "neuCo": "3921",
+   "neuKhong": "3920",
+   "nguon": "nhom3920.nhom",
+   "trich": "Nhóm này không bao gồm các sản phẩm, mà các sản phẩm này đã được gia cố, gắn lớp mặt, bổ trợ hoặc kết hợp tương tự với các vật liệu không phải plastic (nhóm 39.21)"
+  },
+  {
+   "hoi": "Polyme vinyl clorua có hàm lượng chất hóa dẻo từ 6% trở lên theo trọng lượng?",
+   "neuCo": "39204310|39204390",
+   "neuKhong": "39204900",
+   "nguon": "wco.392043",
+   "trich": "polymers of vinyl chloride, containing by weight not less than 6% of plasticisers"
+  },
+  {
+   "hoi": "Tấm và phiến polycarbonat: mặt cắt ngang hình chữ nhật (kể cả hình vuông), đáp ứng Chú giải 10 Chương 39 và dày trên 0,25 mm?",
+   "neuCo": "39206110",
+   "neuKhong": "39206190",
+   "nguon": "sen.39206110",
+   "trich": "POLYCARBONAT DẠNG TẤM VÀ PHIẾN Tấm và phiến thuộc phân nhóm này đáp ứng đủ các yêu cầu của Chú giải 10 Chương 39, có mặt cắt ngang là hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25mm"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "39201011",
+   "dieuKien": "Loại cứng (SEN): plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc kéo lớn hơn 100,000 psi ở 23°C, độ ẩm tương đối 50%, thử theo ASTM D747 hoặc D790 — phân nhóm 3920.10 (WCO: polymers of ethylene)",
+   "loaiKhac": false,
+   "nguon": "sen.39201011",
+   "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790"
+  },
+  {
+   "hs": "39201019",
+   "dieuKien": "Loại khác — phân nhóm 3920.10 (WCO: polymers of ethylene); dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.39201019",
+   "trich": "39201019 - - - Loại khác"
+  },
+  {
+   "hs": "39201090",
+   "dieuKien": "Loại khác — phân nhóm 3920.10 (WCO: polymers of ethylene); dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.39201090",
+   "trich": "39201090 - - Loại khác"
+  },
+  {
+   "hs": "39202010",
+   "dieuKien": "Màng polypropylen định hướng hai chiều (BOPP) (SEN): lớp màng polypropylen được kéo dài theo cả hai hướng dọc (MD) và ngang (AMD) — phân nhóm 3920.20 (WCO: polymers of propylene)",
+   "loaiKhac": false,
+   "nguon": "sen.39202010",
+   "trich": "lớp màng polyproplylen được kéo dài theo cả hai hướng hướng dọc-trực hướng (MD) và hướng ngang-đẳng hướng (AMD)"
+  },
+  {
+   "hs": "39202091",
+   "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.20 (WCO: polymers of propylene)",
+   "loaiKhac": false,
+   "nguon": "sen.3920",
+   "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá"
+  },
+  {
+   "hs": "39202099",
+   "dieuKien": "Loại khác — phân nhóm 3920.20 (WCO: polymers of propylene)",
+   "loaiKhac": true,
+   "nguon": "tax.39202099",
+   "trich": "39202099 - - - Loại khác"
+  },
+  {
+   "hs": "39203020",
+   "dieuKien": "Tấm Acrylonitril butadien styren (ABS) sử dụng trong sản xuất tủ lạnh — phân nhóm 3920.30 (WCO: polymers of styrene)",
+   "loaiKhac": false,
+   "nguon": "tax.39203020",
+   "trich": "39203020 - - Tấm Acrylonitril butadien styren (ABS) sử dụng trong sản xuất tủ lạnh"
+  },
+  {
+   "hs": "39203091",
+   "dieuKien": "Loại cứng (SEN): plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc kéo lớn hơn 100,000 psi ở 23°C, độ ẩm tương đối 50%, thử theo ASTM D747 hoặc D790 — phân nhóm 3920.30 (WCO: polymers of styrene)",
+   "loaiKhac": false,
+   "nguon": "sen.39203091",
+   "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790"
+  },
+  {
+   "hs": "39203092",
+   "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.30 (WCO: polymers of styrene)",
+   "loaiKhac": true,
+   "nguon": "sen.3920",
+   "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá"
+  },
+  {
+   "hs": "39203099",
+   "dieuKien": "Loại khác — phân nhóm 3920.30 (WCO: polymers of styrene)",
+   "loaiKhac": true,
+   "nguon": "tax.39203099",
+   "trich": "39203099 - - - Loại khác"
+  },
+  {
+   "hs": "39204310",
+   "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.43 (WCO: polymers of vinyl chloride, plasticisers not less than 6% by weight)",
+   "loaiKhac": false,
+   "nguon": "sen.3920",
+   "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá"
+  },
+  {
+   "hs": "39204390",
+   "dieuKien": "Loại khác — phân nhóm 3920.43 (WCO: polymers of vinyl chloride, plasticisers not less than 6% by weight)",
+   "loaiKhac": true,
+   "nguon": "tax.39204390",
+   "trich": "39204390 - - - Loại khác"
+  },
+  {
+   "hs": "39204900",
+   "dieuKien": "Loại khác — phân nhóm 3920.49 (WCO: polymers of vinyl chloride, plasticisers less than 6% by weight)",
+   "loaiKhac": true,
+   "nguon": "tax.39204900",
+   "trich": "39204900 - - Loại khác"
+  },
+  {
+   "hs": "39205111",
+   "dieuKien": "Loại cứng (SEN): plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc kéo lớn hơn 100,000 psi ở 23°C, độ ẩm tương đối 50%, thử theo ASTM D747 hoặc D790 — phân nhóm 3920.51 (WCO: acrylic polymers, polymethyl methacrylate)",
+   "loaiKhac": false,
+   "nguon": "sen.39205111",
+   "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790"
+  },
+  {
+   "hs": "39205119",
+   "dieuKien": "Loại khác — phân nhóm 3920.51 (WCO: acrylic polymers, polymethyl methacrylate); dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.39205119",
+   "trich": "39205119 - - - - Loại khác"
+  },
+  {
+   "hs": "39205190",
+   "dieuKien": "Loại khác — phân nhóm 3920.51 (WCO: acrylic polymers, polymethyl methacrylate); dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.39205190",
+   "trich": "39205190 - - - Loại khác"
+  },
+  {
+   "hs": "39205911",
+   "dieuKien": "Loại cứng (SEN): plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc kéo lớn hơn 100,000 psi ở 23°C, độ ẩm tương đối 50%, thử theo ASTM D747 hoặc D790 — phân nhóm 3920.59 (WCO: acrylic polymers (excluding polymethyl methacrylate))",
+   "loaiKhac": false,
+   "nguon": "sen.39205911",
+   "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790"
+  },
+  {
+   "hs": "39205919",
+   "dieuKien": "Loại khác — phân nhóm 3920.59 (WCO: acrylic polymers (excluding polymethyl methacrylate)); dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.39205919",
+   "trich": "39205919 - - - - Loại khác"
+  },
+  {
+   "hs": "39205990",
+   "dieuKien": "Loại khác — phân nhóm 3920.59 (WCO: acrylic polymers (excluding polymethyl methacrylate)); dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.39205990",
+   "trich": "39205990 - - - Loại khác"
+  },
+  {
+   "hs": "39206110",
+   "dieuKien": "Dạng tấm và phiến (SEN) của polycarbonat: đáp ứng Chú giải 10 Chương 39, mặt cắt ngang hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm — phân nhóm 3920.61 (WCO: polycarbonates)",
+   "loaiKhac": false,
+   "nguon": "sen.39206110",
+   "trich": "Tấm và phiến thuộc phân nhóm này đáp ứng đủ các yêu cầu của Chú giải 10 Chương 39, có mặt cắt ngang là hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25mm"
+  },
+  {
+   "hs": "39206190",
+   "dieuKien": "Loại khác — phân nhóm 3920.61 (WCO: polycarbonates)",
+   "loaiKhac": true,
+   "nguon": "tax.39206190",
+   "trich": "39206190 - - - Loại khác"
+  },
+  {
+   "hs": "39206210",
+   "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.62 (WCO: poly(ethylene terephthalate))",
+   "loaiKhac": false,
+   "nguon": "sen.3920",
+   "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá"
+  },
+  {
+   "hs": "39206291",
+   "dieuKien": "Màng bảo vệ chắn ánh sáng mặt trời (SEN): màng plastic lọc tia cực tím, có hoặc không mạ lớp kim loại mỏng, làm bằng polyetylen terephthalate (PET) — phân nhóm 3920.62 (WCO: poly(ethylene terephthalate))",
+   "loaiKhac": false,
+   "nguon": "sen.39206291",
+   "trich": "Màng bảo vệ chắn ánh sáng mặt trời là màng plastic lọc tia cực tím có hoặc không được mạ lớp kim loại mỏng (metalized), được làm bằng polyetylen terephthalate (PET)"
+  },
+  {
+   "hs": "39206299",
+   "dieuKien": "Loại khác — phân nhóm 3920.62 (WCO: poly(ethylene terephthalate))",
+   "loaiKhac": true,
+   "nguon": "tax.39206299",
+   "trich": "39206299 - - - - Loại khác"
+  },
+  {
+   "hs": "39206310",
+   "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.63 (WCO: unsaturated polyesters)",
+   "loaiKhac": false,
+   "nguon": "sen.3920",
+   "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá"
+  },
+  {
+   "hs": "39206390",
+   "dieuKien": "Loại khác — phân nhóm 3920.63 (WCO: unsaturated polyesters)",
+   "loaiKhac": true,
+   "nguon": "tax.39206390",
+   "trich": "39206390 - - - Loại khác"
+  },
+  {
+   "hs": "39206910",
+   "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.69 (WCO: polyesters n.e.c. in heading 3920)",
+   "loaiKhac": false,
+   "nguon": "sen.3920",
+   "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá"
+  },
+  {
+   "hs": "39206990",
+   "dieuKien": "Loại khác — phân nhóm 3920.69 (WCO: polyesters n.e.c. in heading 3920)",
+   "loaiKhac": true,
+   "nguon": "tax.39206990",
+   "trich": "39206990 - - - Loại khác"
+  },
+  {
+   "hs": "39207110",
+   "dieuKien": "Màng xenlophan — phân nhóm 3920.71 (WCO: regenerated cellulose)",
+   "loaiKhac": false,
+   "nguon": "tax.39207110",
+   "trich": "39207110 - - - Màng xenlophan"
+  },
+  {
+   "hs": "39207191",
+   "dieuKien": "Dạng phiến (sheets) đã in — phân nhóm 3920.71 (WCO: regenerated cellulose)",
+   "loaiKhac": false,
+   "nguon": "tax.39207191",
+   "trich": "39207191 - - - - Dạng phiến (sheets) đã in"
+  },
+  {
+   "hs": "39207199",
+   "dieuKien": "Loại khác — phân nhóm 3920.71 (WCO: regenerated cellulose)",
+   "loaiKhac": true,
+   "nguon": "tax.39207199",
+   "trich": "39207199 - - - - Loại khác"
+  },
+  {
+   "hs": "39207300",
+   "dieuKien": "Từ xenlulo axetat — phân nhóm 3920.73 (WCO: cellulose acetate)",
+   "loaiKhac": false,
+   "nguon": "tax.39207300",
+   "trich": "39207300 - - Từ xenlulo axetat"
+  },
+  {
+   "hs": "39207910",
+   "dieuKien": "Từ nitrocellulose (thuốc nổ bông) — phân nhóm 3920.79 (WCO: cellulose derivatives n.e.c. in heading 3920)",
+   "loaiKhac": false,
+   "nguon": "tax.39207910",
+   "trich": "39207910 - - - Từ nitrocellulose (thuốc nổ bông)"
+  },
+  {
+   "hs": "39207920",
+   "dieuKien": "Từ sợi lưu hóa — phân nhóm 3920.79 (WCO: cellulose derivatives n.e.c. in heading 3920)",
+   "loaiKhac": false,
+   "nguon": "tax.39207920",
+   "trich": "39207920 - - - Từ sợi lưu hóa"
+  },
+  {
+   "hs": "39207991",
+   "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.79 (WCO: cellulose derivatives n.e.c. in heading 3920)",
+   "loaiKhac": false,
+   "nguon": "sen.3920",
+   "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá"
+  },
+  {
+   "hs": "39207999",
+   "dieuKien": "Loại khác — phân nhóm 3920.79 (WCO: cellulose derivatives n.e.c. in heading 3920)",
+   "loaiKhac": true,
+   "nguon": "tax.39207999",
+   "trich": "39207999 - - - - Loại khác"
+  },
+  {
+   "hs": "39209110",
+   "dieuKien": "Màng dùng làm kính an toàn, độ dày trên 0,38 mm nhưng không quá 0,76 mm, và chiều rộng không quá 2 m — phân nhóm 3920.91 (WCO: poly(vinyl butyral))",
+   "loaiKhac": false,
+   "nguon": "tax.39209110",
+   "trich": "39209110 - - - Màng dùng làm kính an toàn, độ dày trên 0,38 mm nhưng không quá 0,76 mm, và chiều rộng không quá 2 m"
+  },
+  {
+   "hs": "39209191",
+   "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.91 (WCO: poly(vinyl butyral))",
+   "loaiKhac": false,
+   "nguon": "sen.3920",
+   "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá"
+  },
+  {
+   "hs": "39209199",
+   "dieuKien": "Loại khác — phân nhóm 3920.91 (WCO: poly(vinyl butyral))",
+   "loaiKhac": true,
+   "nguon": "tax.39209199",
+   "trich": "39209199 - - - - Loại khác"
+  },
+  {
+   "hs": "39209210",
+   "dieuKien": "Từ polyamide-6 — phân nhóm 3920.92 (WCO: polyamides)",
+   "loaiKhac": false,
+   "nguon": "tax.39209210",
+   "trich": "39209210 - - - Từ polyamide-6"
+  },
+  {
+   "hs": "39209291",
+   "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.92 (WCO: polyamides)",
+   "loaiKhac": false,
+   "nguon": "sen.3920",
+   "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá"
+  },
+  {
+   "hs": "39209299",
+   "dieuKien": "Loại khác — phân nhóm 3920.92 (WCO: polyamides)",
+   "loaiKhac": true,
+   "nguon": "tax.39209299",
+   "trich": "39209299 - - - - Loại khác"
+  },
+  {
+   "hs": "39209310",
+   "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.93 (WCO: amino-resins)",
+   "loaiKhac": false,
+   "nguon": "sen.3920",
+   "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá"
+  },
+  {
+   "hs": "39209390",
+   "dieuKien": "Loại khác — phân nhóm 3920.93 (WCO: amino-resins)",
+   "loaiKhac": true,
+   "nguon": "tax.39209390",
+   "trich": "39209390 - - - Loại khác"
+  },
+  {
+   "hs": "39209410",
+   "dieuKien": "Dạng tấm phenol formaldehyt (bakelit) — phân nhóm 3920.94 (WCO: phenolic resins)",
+   "loaiKhac": false,
+   "nguon": "tax.39209410",
+   "trich": "39209410 - - - Dạng tấm phenol formaldehyt (bakelit)"
+  },
+  {
+   "hs": "39209491",
+   "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.94 (WCO: phenolic resins)",
+   "loaiKhac": false,
+   "nguon": "sen.3920",
+   "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá"
+  },
+  {
+   "hs": "39209499",
+   "dieuKien": "Loại khác — phân nhóm 3920.94 (WCO: phenolic resins)",
+   "loaiKhac": true,
+   "nguon": "tax.39209499",
+   "trich": "39209499 - - - - Loại khác"
+  },
+  {
+   "hs": "39209910",
+   "dieuKien": "Từ protein đã được làm cứng; từ dẫn xuất hóa học của cao su tự nhiên — phân nhóm 3920.99 (WCO: plastics n.e.c. in heading 3920)",
+   "loaiKhac": false,
+   "nguon": "tax.39209910",
+   "trich": "39209910 - - - Từ protein đã được làm cứng; từ dẫn xuất hóa học của cao su tự nhiên"
+  },
+  {
+   "hs": "39209921",
+   "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.99 (WCO: plastics n.e.c. in heading 3920)",
+   "loaiKhac": false,
+   "nguon": "sen.3920",
+   "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá"
+  },
+  {
+   "hs": "39209929",
+   "dieuKien": "Loại khác — phân nhóm 3920.99 (WCO: plastics n.e.c. in heading 3920); dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.39209929",
+   "trich": "39209929 - - - - Loại khác"
+  },
+  {
+   "hs": "39209931",
+   "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.99 (WCO: plastics n.e.c. in heading 3920)",
+   "loaiKhac": false,
+   "nguon": "sen.3920",
+   "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá"
+  },
+  {
+   "hs": "39209939",
+   "dieuKien": "Loại khác — phân nhóm 3920.99 (WCO: plastics n.e.c. in heading 3920); dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.39209939",
+   "trich": "39209939 - - - - Loại khác"
+  },
+  {
+   "hs": "39209990",
+   "dieuKien": "Loại khác — phân nhóm 3920.99 (WCO: plastics n.e.c. in heading 3920); dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.39209990",
+   "trich": "39209990 - - - Loại khác"
+  }
+ ],
+ "dungTuNguon": [
+  "ch39.chuong",
+  "nhom3920.nhom",
+  "sen.3920",
+  "sen.39201011",
+  "sen.39202010",
+  "sen.39203091",
+  "sen.39205111",
+  "sen.39205911",
+  "sen.39206110",
+  "sen.39206291",
+  "tax.39201019",
+  "tax.39201090",
+  "tax.39202099",
+  "tax.39203020",
+  "tax.39203099",
+  "tax.39204390",
+  "tax.39204900",
+  "tax.39205119",
+  "tax.39205190",
+  "tax.39205919",
+  "tax.39205990",
+  "tax.39206190",
+  "tax.39206299",
+  "tax.39206390",
+  "tax.39206990",
+  "tax.39207110",
+  "tax.39207191",
+  "tax.39207199",
+  "tax.39207300",
+  "tax.39207910",
+  "tax.39207920",
+  "tax.39207999",
+  "tax.39209110",
+  "tax.39209199",
+  "tax.39209210",
+  "tax.39209299",
+  "tax.39209390",
+  "tax.39209410",
+  "tax.39209499",
+  "tax.39209910",
+  "tax.39209929",
+  "tax.39209939",
+  "tax.39209990",
+  "wco.392043"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "phiên Claude quản lý (10 agent soạn + 6 agent soát độc lập, 07/10/2026)",
+  "model": null,
+  "luc": "2026-10-07T09:49:37.127Z",
+  "ms": 7
+ },
+ "kiemTra": {
+  "tong": 69,
+  "dat": 67,
+  "loai": 2,
+  "nguonBiCat": [
+   "ch39.chuong (44853→40000)"
+  ]
+ }
+}
