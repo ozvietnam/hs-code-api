@@ -223,10 +223,10 @@ check('thực phẩm: chất liệu/kích thước không bắt buộc', food.de
   const tpl = (hs) => sheetFieldDefs(hs).heading?.template;
   const k9004 = keys('90049010');
   check('9004 kính mắt: không điện áp / nguyên lý / đại lượng đo', !k9004.voltage && !k9004.principle && !k9004.measurementType, Object.keys(k9004).join());
-  check('9004 kính mắt: có loại kính, độ, tròng, gọng bắt buộc', ['eyewearType', 'lensPower', 'lensMaterial', 'frameMaterial'].every((k) => k9004[k]?.required && k9004[k].origin === 'HEADING') && tpl('90049010') === 'eyewear', tpl('90049010'));
+  check('9004 kính mắt: loại kính, tròng, gọng bắt buộc; độ chỉ khuyến nghị (kính râm không có độ)', ['eyewearType', 'lensMaterial', 'frameMaterial'].every((k) => k9004[k]?.required && k9004[k].origin === 'HEADING') && k9004.lensPower?.required === false && tpl('90049010') === 'eyewear', tpl('90049010'));
   check('9003 gọng kính: chất liệu gọng, không điện', keys('90031100').frameMaterial?.required && !keys('90031100').voltage);
   const k9018 = keys('90189090');
-  check('9018 y tế: bộ phận tiếp xúc + phân loại rủi ro bắt buộc, nguồn điện tuỳ chọn', k9018.bodyContact?.required && k9018.riskClass?.required && k9018.powerSource?.required === false && !k9018.voltage, Object.keys(k9018).join());
+  check('9018 y tế: bộ phận tiếp xúc bắt buộc; phân loại rủi ro + nguồn điện tuỳ chọn', k9018.bodyContact?.required && k9018.riskClass?.required === false && k9018.powerSource?.required === false && !k9018.voltage, Object.keys(k9018).join());
   check('9027 thiết bị đo vẫn sensorInstrument (đại lượng đo + điện áp)', tpl('90275000') === 'sensorInstrument' && keys('90275000').measurementType?.required && keys('90275000').voltage?.required);
   check('9005 ống nhòm: độ phóng đại bắt buộc, nguồn điện không', keys('90051000').magnification?.required && keys('90051000').powerSource?.required === false);
   check('9017 thước/compa: không đòi điện áp', tpl('90178000') === 'measuringInstrument' && !keys('90178000').voltage);
