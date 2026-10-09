@@ -341,5 +341,26 @@ failDescribe = true;
 const h2 = await call({ hsCode: '85366932', productName: 'Ổ cắm' }, 'sheet-test-token', null);
 check('describe thường vẫn chạy (degraded khi AI lỗi)', h2._s === 200 && h2._j?.degraded === true, JSON.stringify([h2._s, h2._j?.degraded, h2._j?.error]));
 
+
+// ── 09/10/2026: ô bắt buộc dài không được đẩy tên hàng/model ra khỏi mô tả ECUS (ca kính lão prod) ──
+{
+  const { composeFromSheet, clipSpec } = await import('../lib/declaration-sheet.js').then((m) => m.default || m);
+  const F = (key, labelVi, valueVi, required = true) => ({ key, labelVi, valueVi, status: 'HAVE', required });
+  const fields = [
+    F('eyewearType', 'Loại kính mắt', 'kính chống ánh sáng xanh'), F('lensMaterial', 'Chất liệu tròng kính', 'PC'), F('frameMaterial', 'Chất liệu gọng kính', 'kim loại'),
+    F('modelNumber', 'Model', '603'), F('dimensions', 'Kích thước', '147 x 50 x 39 mm (tổng rộng x tròng x đ cao), cầu mũi 17 mm, càng kính 135 mm'),
+    F('lensPower', 'Độ kính', 'chống ánh sáng xanh, +100 độ, +150 độ, +200 độ', false), F('targetGroup', 'Đối tượng', 'nam trung niên và cao tuổi', false),
+    F('application', 'Công dụng', 'kính lão thị chống ánh sáng xanh'),
+    { ...F('material', 'Chất liệu / thành phần cấu tạo', 'tròng: PC; gọng: kim loại'), parts: [{ part: { zh: '镜片', vi: 'tròng' }, valueVi: 'PC' }, { part: { zh: '镜框', vi: 'gọng' }, valueVi: 'kim loại' }] },
+    { ...F('brand', 'Nhãn hiệu', '柚莎'), valueZh: '柚莎' },
+  ];
+  const r = composeFromSheet(fields, [], { tenHang: 'Kính lão chống ánh sáng xanh', thongSoKyThuat: [] }, { brandStatus: 'BRANDED' }, { productName: 'Kính thuốc', origin: 'Trung Quốc', condition: 'Mới 100%' });
+  check('ECUS giữ nguyên tên hàng khi ô bắt buộc dài', r.declaration.tenHang === 'Kính lão chống ánh sáng xanh', r.declaration.tenHang);
+  check('ECUS giữ model 603', r.declaration.model === '603' && r.composed.text.includes('model 603'), r.composed.text);
+  check('ECUS rút kích thước về cốt lõi thay vì bỏ', /(kích thước|KT) 147 x 50 x 39 mm/.test(r.composed.text) && !r.composed.text.includes('tổng rộng'), r.composed.text);
+  check('ECUS ≤ 200 ký tự, không báo rơi ô bắt buộc', r.composed.text.length <= 200 && r.requiredDropped.length === 0, `${r.composed.text.length} ${r.requiredDropped.join(',')}`);
+  check('clipSpec bỏ ngoặc + lấy vế đầu', clipSpec('147 x 50 x 39 mm (tổng rộng), cầu mũi 17 mm') === '147 x 50 x 39 mm');
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
