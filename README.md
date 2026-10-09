@@ -6,7 +6,7 @@ Lightweight HS Code + tariff API for ERP `erp-xnk`.
 
 ## Auth
 
-All endpoints except `/api/health` require:
+Lookups (GET) and the four AI endpoints (`/api/suggest`, `/api/describe`, `/api/classify`, `/api/match`) need **no token and have no rate limit** (CEO decision 2026-10-09; kill switch: `HS_PUBLIC_LLM=false`). Admin and write endpoints require:
 
 ```http
 Authorization: Bearer $HS_API_TOKEN
@@ -20,7 +20,7 @@ GEMINI_API_KEY=...            # dự phòng, xem chuỗi LLM trong CLAUDE.md
 GEMINI_RERANK_MODEL=...       # optional, default gemini-2.5-flash
 GEMINI_DESCRIBE_MODEL=...     # optional, default gemini-2.5-flash
 GEMINI_ENRICH_MODEL=...       # optional, default gemini-2.5-pro (chỉ script enrich offline)
-HS_MATCH_PUBLIC=true          # optional: /api/match không cần Bearer token
+HS_PUBLIC_LLM=true             # mặc định true: suggest/describe/classify/match không cần token; false = đóng lại, cần Bearer
 CORS_ORIGINS=...              # optional, danh sách phẩy; mặc định gồm ERP + localhost
 ```
 
@@ -28,7 +28,7 @@ Agent tự hành trên VPS riêng (xin cấp máy + thiết kế harness, bàn g
 
 Local fallback LLM (OpenRouter free models): copy [`.env.example`](.env.example) → `.env`, set `OPENROUTER_API_KEY`, then `npm run openrouter:ping`. See **[docs/openrouter.md](docs/openrouter.md)**.
 
-\* When `HS_MATCH_PUBLIC=true`, `/api/match` skips Bearer auth (for server-to-server ERP). Other routes still require `HS_API_TOKEN`.
+The AI endpoints cost real LLM money per call and are uncapped by design; set `HS_PUBLIC_LLM=false` to close them if abused.
 
 Generate token:
 
@@ -43,13 +43,13 @@ openssl rand -hex 32
 | `/api/health` | GET | No | Service health + config checks |
 | `/api/tax?hs=` | GET | Yes | Tariff lookup (camelCase) |
 | `/api/search?q=` | GET | Yes | Keyword / HS search |
-| `/api/match` | POST | Optional* | Multilingual product → top-K HS (OZSource ERP) |
+| `/api/match` | POST | No | Multilingual product → top-K HS (OZSource ERP) |
 | `/api/notes?chapter=` | GET | Yes | Chapter notes |
 | `/api/conflicts?hs=` | GET | Yes | HS conflict/risk details |
 | `/api/precedents?hs=` | GET | Yes | TB-TCHQ precedent list by HS |
 | `/api/confusion-pairs?q=\|hs=\|id=` | GET | Yes | Từ điển mâu thuẫn HS: mặt hàng DN hay khai mã A, HQ hay ấn định mã B + tiêu chí phân biệt (rewrite → `/api/dataset?resource=confusion_pairs`); `/api/suggest` và `/api/search` trả `confusionAlerts[]` |
-| `/api/suggest` | POST | Yes | AI HS suggestions (Gemini) |
-| `/api/describe` | POST | Yes | AI customs description (Gemini) — auto-fit 200 ký tự ECUS, xuất xứ + tình trạng luôn ở cuối; trả `descriptionMeta {length, truncated, dropped, fullText}`. Khi LLM lỗi: **không fail-silent** — trả `degraded:true` + `llmError {code,message,retryable}` + warning `DESCRIPTION_DEGRADED` (mô tả là fallback context thô) |
+| `/api/suggest` | POST | No (open) | AI HS suggestions (Gemini) |
+| `/api/describe` | POST | No (open) | AI customs description (Gemini) — auto-fit 200 ký tự ECUS, xuất xứ + tình trạng luôn ở cuối; trả `descriptionMeta {length, truncated, dropped, fullText}`. Khi LLM lỗi: **không fail-silent** — trả `degraded:true` + `llmError {code,message,retryable}` + warning `DESCRIPTION_DEGRADED` (mô tả là fallback context thô) |
 | `/api/feedback` | POST | Yes | Capture director override feedback |
 | `/api/kg_chapter?chapter=` | GET | Yes | List HS codes in chapter |
 | `/api/kg_stats` | GET | Yes | Dataset overview (rewrite → `/api/dataset?resource=kg_stats`) |

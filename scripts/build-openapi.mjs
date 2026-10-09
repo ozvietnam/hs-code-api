@@ -15,6 +15,7 @@ import { fileURLToPath } from 'url';
 const require = createRequire(import.meta.url);
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const { PUBLIC_ENDPOINTS, PUBLIC_DATASET_RESOURCES } = require('../lib/public-access.js');
+const { PUBLIC_LLM_ENDPOINTS } = require('../lib/public-llm.js');
 
 const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'));
 const BASE = 'https://hs-kb.uythacnhapkhau.com';
@@ -394,7 +395,7 @@ const paths = {
   },
   '/api/suggest': {
     post: op({
-      id: 'suggest', tags: ['AI'], auth: bearer,
+      id: 'suggest', tags: ['AI'], auth: pub,
       summary: 'Gợi ý mã HS bằng AI, kèm audit trail GIR có căn cứ',
       description:
         'Body: `{"description": "tên hàng"}`. Trả `suggestions[]`, `girRulesApplied[]` (mỗi mục có `basis`: ' +
@@ -404,7 +405,7 @@ const paths = {
         'thuộc tính còn thiếu để chốt lá 8 số; ERP/người dùng trả lời bằng body `facts: {...}` rồi gọi lại. ' +
         'Bảng đã verified chốt được lá thì lá đó lên đầu với `decidedByTable`; chưa verified chỉ tư vấn. ' +
         'Kèm `confusionAlerts[]` từ từ điển mâu thuẫn HS (xem /api/confusion-pairs). ' +
-        'Cần token vì mỗi lượt gọi tốn chi phí LLM. ' +
+        'Mở công khai, không cần token (mỗi lượt gọi tốn chi phí LLM nên hãy gọi có chủ đích). ' +
         'ĐỌC `status` + `nextAction` TRƯỚC: NEED_FACTS → hỏi người dùng rồi gọi lại với `facts`; ' +
         'NEEDS_EXPERT → AI không chạy được, cần chuyên viên; REVIEW → người dùng chọn/xác nhận. ' +
         'Không có trạng thái tự chốt: `confidence` chưa hiệu chuẩn.',
@@ -415,7 +416,7 @@ const paths = {
   },
   '/api/describe': {
     post: op({
-      id: 'describe', tags: ['AI'], auth: bearer,
+      id: 'describe', tags: ['AI'], auth: pub,
       summary: 'Sinh mô tả khai báo Hải quan chuẩn TT 39/2018 (tối đa 200 ký tự ECUS)',
       description:
         'Khi LLM lỗi, trả `degraded: true` + `llmError{code,message,retryable}` + cảnh báo ' +
@@ -427,7 +428,7 @@ const paths = {
   },
   '/api/classify': {
     post: op({
-      id: 'classify', tags: ['AI'], auth: bearer,
+      id: 'classify', tags: ['AI'], auth: pub,
       summary: 'Phân loại có cây quyết định + bảng phân giải cụm mã dễ nhầm',
       description: 'Đọc `status` + `nextAction` TRƯỚC (cùng bảng với /api/suggest: REVIEW, NEED_FACTS, NEEDS_EXPERT ' +
         '[LOW_CONFIDENCE, FEATURE_CONFLICT, ENGINE_TIMEOUT, LLM_REJECTED], RESOLVED_BY_TABLE, NO_CANDIDATES). ' +
@@ -560,7 +561,9 @@ const spec = {
       `**Không cần token** — nhóm tra cứu (${[...PUBLIC_ENDPOINTS].map((e) => `/api/${e}`).join(', ')} và các resource dữ liệu).`,
       'Đây là kho tri thức mở: bất kỳ AI hay người nào cũng gọi được ngay.',
       '',
-      '**Cần Bearer token** — nhóm AI (`/api/suggest`, `/api/describe`, `/api/classify`, `/api/match`) vì mỗi lượt gọi tốn chi phí mô hình, và nhóm quản trị.',
+      `**Không cần token, không giới hạn lượt** — nhóm AI (${PUBLIC_LLM_ENDPOINTS.map((e) => `\`/api/${e}\``).join(', ')}): gọi POST thẳng, không cần header Authorization. Mỗi lượt tốn chi phí mô hình nên hãy gọi có chủ đích.`,
+      '',
+      '**Cần Bearer token** — nhóm quản trị và ghi dữ liệu (`/api/feedback`, sửa biểu thuế, dashboard, `extract-specs`, `declaration-sheet`).',
       '',
       '## Đọc kết quả cho đúng',
       '',

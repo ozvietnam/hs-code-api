@@ -313,6 +313,15 @@
       "kind": "MASTER",
       "descriptionVi": "Chú giải bổ sung SEN 2022 (AHTN 2022, CV 3866/TCHQ-TXNK) — phần tiếng Việt theo mã 8/6/4 số, 395 mục / 683 mã; nhập từ PDF của CEO",
       "builtBy": "scripts/import-sen-pdf.py"
+    },
+    "demand-signals.jsonl": {
+      "kind": "RUNTIME_LOG",
+      "descriptionVi": "Tín hiệu nhu cầu từ phiếu hồ sơ khai báo hàng thật (chỉ mã HS / nhãn hiệu / nhãn chữ Trung / khóa ô + mức ưu tiên; không tên hàng, link, shop, khách)",
+      "builtBy": "lib/demand-signals.js"
+    },
+    "parts-zh.json": {
+      "kind": "CURATED",
+      "descriptionVi": "BỘ PHẬN của hàng đứng trước nhãn thông số trên Taobao/1688 (镜片材质 = chất liệu tròng, 镜框材质 = chất liệu gọng) — soạn tay, CC BY 4.0"
     }
   }
 }

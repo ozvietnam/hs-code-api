@@ -1,4 +1,4 @@
-const { requireAuth } = require('../lib/auth');
+const { requireAuthOrPublicLlm } = require('../lib/public-llm');
 const { requireAuthUnlessPublic } = require('../lib/public-access');
 const { setCors, handleOptions } = require('../lib/cors');
 const { taxData } = require('../lib/data');
@@ -29,7 +29,7 @@ function handleMatch(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed', hint: 'Use POST /api/match' });
   }
-  if (requireAuth(req, res, { publicRoute: true })) return;
+  if (requireAuthOrPublicLlm(req, res, { publicRoute: true })) return;
 
   const body = parseBody(req);
   if (!body) {

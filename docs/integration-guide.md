@@ -5,12 +5,15 @@ Tài liệu này dành cho developer của `erp-xnk` hoặc bất kỳ hệ th�
 ## Base URL & Auth
 
 ```
-Base: https://hs-code-api-thangs-projects-4472c6e9.vercel.app
+Base: https://hs-kb.uythacnhapkhau.com
 
-Authorization: Bearer <HS_API_TOKEN>
+Authorization: Bearer <HS_API_TOKEN>   # chỉ cần cho quản trị / ghi dữ liệu
 ```
 
-Tất cả endpoint (trừ `/api/health`) đều yêu cầu header này. Token lấy từ Vercel env hoặc hỏi admin.
+**Không cần token** (09/10/2026): nhóm tra cứu (GET) và 4 endpoint AI `suggest`, `describe`, `classify`, `match`
+(không giới hạn lượt; đóng khẩn cấp bằng `HS_PUBLIC_LLM=false`). **Cần token**: `feedback`, `tariff` admin, dashboard
+`admin_*`, `kpi`, `error_log`, `extract-specs`, `declaration-sheet`. ERP vẫn gửi token như cũ — gửi thừa không bị lỗi.
+Token lấy từ biến môi trường của server hoặc hỏi admin.
 
 ---
 
@@ -482,7 +485,7 @@ async function suggestWithRetry(description, maxRetries = 2) {
 
 ---
 
-## Env variables cần thiết (Vercel)
+## Env variables cần thiết (server riêng)
 
 ```bash
 HS_API_TOKEN=<secret>          # Bearer token cho ERP
@@ -490,5 +493,5 @@ GEMINI_API_KEY=<key>           # Nên có; thiếu thì suggest/describe dùng c
 MINIMAX_API_KEY=<key>          # Fallback LLM (prod đang dùng)
 OPENROUTER_API_KEY=<key>       # Fallback LLM khi Gemini lỗi (nên có)
 SENTRY_DSN=<dsn>               # Optional error monitoring
-HS_MATCH_PUBLIC=false          # true = /api/match không cần token
+HS_PUBLIC_LLM=true             # mặc định true: suggest/describe/classify/match không cần token; false = đóng lại, cần Bearer
 ```

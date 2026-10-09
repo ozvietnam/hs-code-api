@@ -4,7 +4,7 @@
     "title": "HS Knowledge Base API",
     "version": "2.0.0",
     "summary": "Kho tri thức mở về mã HS, thuế và pháp lý xuất nhập khẩu Việt Nam",
-    "description": "API tra mã HS, thuế suất, chính sách mặt hàng và sinh mô tả khai báo Hải quan theo TT 39/2018.\n\n## Quyền truy cập\n\n**Không cần token** — nhóm tra cứu (/api/tax, /api/search, /api/notes, /api/kg_chapter, /api/customs-types và các resource dữ liệu).\nĐây là kho tri thức mở: bất kỳ AI hay người nào cũng gọi được ngay.\n\n**Cần Bearer token** — nhóm AI (`/api/suggest`, `/api/describe`, `/api/classify`, `/api/match`) vì mỗi lượt gọi tốn chi phí mô hình, và nhóm quản trị.\n\n## Đọc kết quả cho đúng\n\nMọi trích dẫn quy tắc GIR đều kèm trường `basis`:\n\n| basis | Nghĩa | Dùng cho hồ sơ giải trình Hải quan? |\n|---|---|---|\n| `RULE_TABLE` | Bảng quyết định do người soạn, có dẫn văn bản gốc | Được |\n| `DETERMINISTIC` | Hệ thống suy ra từ tín hiệu chắc chắn | Được |\n| `HEURISTIC` | Dò từ khoá / điểm ước lượng | Cần người kiểm chứng |\n| `LLM_ASSERTED` | Mô hình tự khai, chưa kiểm chứng | Không |\n\n## Miễn trừ trách nhiệm\n\nĐây là **tài liệu tham khảo nghiệp vụ**, không phải phán quyết phân loại của cơ quan Hải quan và không phải tư vấn pháp lý.\nPháp luật XNK thay đổi liên tục — luôn đối chiếu văn bản gốc còn hiệu lực tại thời điểm khai báo.",
+    "description": "API tra mã HS, thuế suất, chính sách mặt hàng và sinh mô tả khai báo Hải quan theo TT 39/2018.\n\n## Quyền truy cập\n\n**Không cần token** — nhóm tra cứu (/api/tax, /api/search, /api/notes, /api/kg_chapter, /api/customs-types và các resource dữ liệu).\nĐây là kho tri thức mở: bất kỳ AI hay người nào cũng gọi được ngay.\n\n**Không cần token, không giới hạn lượt** — nhóm AI (`/api/suggest`, `/api/describe`, `/api/classify`, `/api/match`): gọi POST thẳng, không cần header Authorization. Mỗi lượt tốn chi phí mô hình nên hãy gọi có chủ đích.\n\n**Cần Bearer token** — nhóm quản trị và ghi dữ liệu (`/api/feedback`, sửa biểu thuế, dashboard, `extract-specs`, `declaration-sheet`).\n\n## Đọc kết quả cho đúng\n\nMọi trích dẫn quy tắc GIR đều kèm trường `basis`:\n\n| basis | Nghĩa | Dùng cho hồ sơ giải trình Hải quan? |\n|---|---|---|\n| `RULE_TABLE` | Bảng quyết định do người soạn, có dẫn văn bản gốc | Được |\n| `DETERMINISTIC` | Hệ thống suy ra từ tín hiệu chắc chắn | Được |\n| `HEURISTIC` | Dò từ khoá / điểm ước lượng | Cần người kiểm chứng |\n| `LLM_ASSERTED` | Mô hình tự khai, chưa kiểm chứng | Không |\n\n## Miễn trừ trách nhiệm\n\nĐây là **tài liệu tham khảo nghiệp vụ**, không phải phán quyết phân loại của cơ quan Hải quan và không phải tư vấn pháp lý.\nPháp luật XNK thay đổi liên tục — luôn đối chiếu văn bản gốc còn hiệu lực tại thời điểm khai báo.",
     "license": {
       "name": "MIT (code) / CC BY-SA 4.0 (dữ liệu)",
       "url": "https://github.com/ozvietnam/hs-code-api/blob/main/NOTICE.md"
@@ -993,15 +993,11 @@
       "post": {
         "operationId": "suggest",
         "summary": "Gợi ý mã HS bằng AI, kèm audit trail GIR có căn cứ",
-        "description": "Body: `{\"description\": \"tên hàng\"}`. Trả `suggestions[]`, `girRulesApplied[]` (mỗi mục có `basis`: RULE_TABLE/DETERMINISTIC là căn cứ chắc, HEURISTIC/LLM_ASSERTED phải kiểm chứng lại), `girDisclaimer`, `rankingSignals[]` (kỹ thuật, không có giá trị pháp lý) và `chapterGuidance[]`. Kèm `decisions[]` (bảng quyết định theo thuộc tính cho các nhóm trong top gợi ý) và `missingFacts[]` — thuộc tính còn thiếu để chốt lá 8 số; ERP/người dùng trả lời bằng body `facts: {...}` rồi gọi lại. Bảng đã verified chốt được lá thì lá đó lên đầu với `decidedByTable`; chưa verified chỉ tư vấn. Kèm `confusionAlerts[]` từ từ điển mâu thuẫn HS (xem /api/confusion-pairs). Cần token vì mỗi lượt gọi tốn chi phí LLM. ĐỌC `status` + `nextAction` TRƯỚC: NEED_FACTS → hỏi người dùng rồi gọi lại với `facts`; NEEDS_EXPERT → AI không chạy được, cần chuyên viên; REVIEW → người dùng chọn/xác nhận. Không có trạng thái tự chốt: `confidence` chưa hiệu chuẩn.",
+        "description": "Body: `{\"description\": \"tên hàng\"}`. Trả `suggestions[]`, `girRulesApplied[]` (mỗi mục có `basis`: RULE_TABLE/DETERMINISTIC là căn cứ chắc, HEURISTIC/LLM_ASSERTED phải kiểm chứng lại), `girDisclaimer`, `rankingSignals[]` (kỹ thuật, không có giá trị pháp lý) và `chapterGuidance[]`. Kèm `decisions[]` (bảng quyết định theo thuộc tính cho các nhóm trong top gợi ý) và `missingFacts[]` — thuộc tính còn thiếu để chốt lá 8 số; ERP/người dùng trả lời bằng body `facts: {...}` rồi gọi lại. Bảng đã verified chốt được lá thì lá đó lên đầu với `decidedByTable`; chưa verified chỉ tư vấn. Kèm `confusionAlerts[]` từ từ điển mâu thuẫn HS (xem /api/confusion-pairs). Mở công khai, không cần token (mỗi lượt gọi tốn chi phí LLM nên hãy gọi có chủ đích). ĐỌC `status` + `nextAction` TRƯỚC: NEED_FACTS → hỏi người dùng rồi gọi lại với `facts`; NEEDS_EXPERT → AI không chạy được, cần chuyên viên; REVIEW → người dùng chọn/xác nhận. Không có trạng thái tự chốt: `confidence` chưa hiệu chuẩn.",
         "tags": [
           "AI"
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -1202,16 +1198,6 @@
               }
             }
           },
-          "401": {
-            "description": "Thiếu hoặc sai Bearer token",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
           "500": {
             "description": "Lỗi máy chủ",
             "content": {
@@ -1233,11 +1219,7 @@
         "tags": [
           "AI"
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -1376,16 +1358,6 @@
               }
             }
           },
-          "401": {
-            "description": "Thiếu hoặc sai Bearer token",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
           "404": {
             "description": "Mã không có trong biểu thuế",
             "content": {
@@ -1417,11 +1389,7 @@
         "tags": [
           "AI"
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -1482,16 +1450,6 @@
           },
           "400": {
             "description": "Thiếu tenHang",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Thiếu hoặc sai Bearer token",
             "content": {
               "application/json": {
                 "schema": {
