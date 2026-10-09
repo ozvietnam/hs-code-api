@@ -6,8 +6,9 @@
 |---|---|
 | Kệ sách: toàn văn chú giải HS 2022 + SEN 2022 | ✅ #162, #163, #166 |
 | Máy kiểm nguồn `lib/so-tay.js` (`trich` nguyên văn, nhóm đích trong câu trích, ngưỡng số, dòng 8 số) + `npm run so-tay:check` | ✅ |
-| 1. Dựng ~60 nhóm — `data/so-tay/` | ✅ 60 nhóm, 98,4 % mục đạt (#168) — bài học: [so-tay-giao-ngoai](../giao-viec/so-tay-giao-ngoai.md) |
-| 1b. 1.168 nhóm còn lại — 195 lô giao agent ngoài ([so-tay-lo.csv](../giao-viec/so-tay-lo.csv)) | ⬜ |
+| 1. Dựng ~60 nhóm — `data/so-tay/` | ✅ 60 nhóm (#168), sau đó soát độc lập lại 09/10 — bài học: [so-tay-giao-ngoai](../giao-viec/so-tay-giao-ngoai.md) |
+| 1a. Vòng 2: 60 nhóm hay gặp nhất trong tờ khai thật + soát độc lập cả hai vòng | ✅ 120 nhóm, 4.109 mục (#169) |
+| 1b. 1.108 nhóm còn lại — 185 lô giao agent ngoài ([so-tay-lo.csv](../giao-viec/so-tay-lo.csv)) | ⬜ |
 | 2. Chạy khô các cổng trên 113 kết quả | ⬜ |
 | 3. Nối `lib/engine-loop.js` | ⬜ |
 | 4. Dựng đủ 1.269 nhóm | ⬜ |

@@ -1,7 +1,7 @@
 {
  "nhom": "8536",
  "phamVi": {
-  "text": "Thiết bị điện để đóng ngắt, bảo vệ mạch điện, hoặc đấu nối/lắp trong mạch điện (công tắc, rơ le, cầu chì, phích cắm, ổ cắm, đui đèn, đầu nối...) dùng cho điện áp không quá 1000 V; kể cả đầu nối dùng cho sợi quang, bó sợi quang hoặc cáp quang.",
+  "text": "Nói chung, nhóm này bao gồm các thiết bị điện dùng cho điện áp không quá 1000 V (gia dụng hoặc công nghiệp); cũng bao gồm các đầu nối dùng cho sợi quang, bó sợi quang hoặc cáp quang.",
   "nguon": "nhom8536.nhom",
   "trich": "Nói chung, nhóm này bao gồm các thiết bị điện dùng cho điện áp không quá 1000v dùng cho các thiết bị gia dụng hoặc công nghệp. … Nhóm này cũng bao gồm các nối dùng cho sợi quang, bó sợi quang hoặc cáp quang."
  },
@@ -23,7 +23,6 @@
    "value": true,
    "donVi": null,
    "ngoaiTru": [
-    "đầu nối có cáp dùng cho sợi quang → 85.44 hoặc 90.01",
     "có chức năng khuếch đại, tái tạo hoặc biến đổi tín hiệu"
    ],
    "nguon": "ch85.chuong",
@@ -37,15 +36,6 @@
    "ngoaiTru": [],
    "nguon": "nhom8536.nhom",
    "trich": "và các công tắc tác động nhanh bằng cơ điện tử dùng cho dòng điện không quá 11amps (công tắc lật)."
-  },
-  {
-   "fact": "dui_den_chuc_nang_chinh_la_dui_den",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8536.nhom",
-   "trich": "Các đui đèn thường có dạng hình cây nến gắn vào giá đỡ hoặc được thiết kế dưới dạng gắn vào tường; những thiết bị này vẫn được xếp vào đây với điều kiện chức năng chính của chúng đóng vai trò như những đui đèn."
   },
   {
    "fact": "hop_dau_noi_da_gan_dau_noi",
@@ -73,7 +63,7 @@
    "trich": "Chốt cửa có gắn công tắc không nằm trong nhóm này (nhóm 83.01)."
   },
   {
-   "dieuKien": "Vật liệu cách điện của ổ cắm/đầu nối cầu chì (trừ chi tiết kim loại nhỏ chỉ dùng hỗ trợ gá lắp)",
+   "dieuKien": "Vật liệu cách điện của ổ cắm hoặc đầu nối được xuất trình riêng rẽ (trừ chi tiết kim loại nhỏ chỉ dùng hỗ trợ cho việc gá nhằm mục tiêu lắp ráp)",
    "sangNhom": "8547",
    "nguon": "nhom8536.nhom",
    "trich": "các ổ cắm hoặc các đầu nối được xuất trình riêng rẽ cũng được xếp vào đây, ngoại trừ các vật liệu cách điện (trừ những chi tiết kim loại nhỏ chỉ … dùng hỗ trợ cho việc gá nhằm mục tiêu lắp ráp) (nhóm 85.47)."
@@ -91,10 +81,10 @@
    "trich": "Nhóm này cũng không bao gồm các máy biến áp (nhóm 85.04) và các bộ điều chỉnh điện áp tự động (nhóm 90.32)"
   },
   {
-   "dieuKien": "Tiếp xúc trượt (chổi, bộ lấy điện) bằng than hoặc than chì",
+   "dieuKien": "Các tiếp xúc trượt bằng “than” hoặc than chì",
    "sangNhom": "8545",
    "nguon": "nhom8536.nhom",
-   "trich": "(các bộ lấy điện trên không hoặc lắp trên ray- kiểu trolley) trừ các tiếp xúc như vậy bằng “than” hoặc than chì (nhóm 85.45)."
+   "trich": "(2) Các tiếp xúc trượt chẳng hạn như các chổi than dùng trong động cơ … trừ các tiếp xúc như vậy bằng “than” hoặc than chì (nhóm 85.45)."
   },
   {
    "dieuKien": "Phích cắm và ổ cắm đi kèm dây dẫn",
@@ -156,7 +146,7 @@
    "trich": "(b) Sự lắp ráp (ngoại trừ các lắp ráp đóng-ngắt đơn giản) của các thiết bị được nêu ở trên (nhóm 85.37)."
   },
   {
-   "hoi": "Tiếp xúc trượt (chổi, bộ lấy điện) làm bằng than hoặc than chì?",
+   "hoi": "Tiếp xúc trượt làm bằng “than” hoặc than chì?",
    "neuCo": "8545",
    "neuKhong": "8536",
    "nguon": "nhom8536.nhom",
@@ -164,7 +154,7 @@
   },
   {
    "hoi": "Đầu nối sợi quang đã gắn sẵn cáp?",
-   "neuCo": "8544",
+   "neuCo": "8544|9001",
    "neuKhong": "8536",
    "nguon": "nhom8536.nhom",
    "trich": "Các đầu nối không có cáp dùng cho sợi quang vẫn được phân loại ở nhóm này nhưng các đầu nối có cáp dùng cho sợi quang thì bị loại trừ (nhóm 85.44 hoặc 90.01)."
@@ -181,7 +171,7 @@
   {
    "hs": "85361012",
    "dieuKien": "Phân nhóm 8536.10 — loại khác, dòng điện dưới 16 A",
-   "loaiKhac": false,
+   "loaiKhac": true,
    "nguon": "tax.85361012",
    "trich": "85361012 - - - Loại khác, dòng điện dưới 16 A"
   },
@@ -209,7 +199,7 @@
   {
    "hs": "85361092",
    "dieuKien": "Phân nhóm 8536.10 (nhánh 8536.10.9x) — loại khác, dòng điện dưới 16 A",
-   "loaiKhac": false,
+   "loaiKhac": true,
    "nguon": "tax.85361092",
    "trich": "85361092 - - - Loại khác, dòng điện dưới 16 A"
   },
@@ -321,7 +311,7 @@
   {
    "hs": "85364140",
    "dieuKien": "Phân nhóm 8536.41 — loại khác, dòng điện dưới 16 A",
-   "loaiKhac": false,
+   "loaiKhac": true,
    "nguon": "tax.85364140",
    "trich": "85364140 - - - Loại khác, dòng điện dưới 16 A"
   },
@@ -370,7 +360,7 @@
   {
    "hs": "85365033",
    "dieuKien": "Nhánh 8536.50.3x — loại ngắt mạch khi có sốc dòng điện cao (SEN); dòng biểu thuế: loại khác, dùng cho dòng điện danh định dưới 16 A",
-   "loaiKhac": false,
+   "loaiKhac": true,
    "nguon": "sen.85365033",
    "trich": "LOẠI NGẮT MẠCH KHI CÓ SỐC DÒNG ĐIỆN CAO Loại ngắt mạch này có khả năng xử lý sự tăng cao đột biến của dòng điện."
   },
@@ -426,7 +416,7 @@
   {
    "hs": "85365096",
    "dieuKien": "Phân nhóm 8536.50 (nhánh 8536.50.9x) — loại khác, dòng điện dưới 16 A",
-   "loaiKhac": false,
+   "loaiKhac": true,
    "nguon": "tax.85365096",
    "trich": "85365096 - - - Loại khác, dòng điện dưới 16 A"
   },
@@ -614,7 +604,7 @@
   }
  ],
  "boPhan": {
-  "quyTac": "Chú giải 2 Phần XVI (quy tắc chung phân loại bộ phận)",
+  "quyTac": "Quy tắc chung về phân loại các bộ phận (xem chú giải chung thuộc Phần XVI)",
   "tomTat": "Bộ phận của thiết bị nhóm 85.36 phân loại vào nhóm 85.38.",
   "nguon": "nhom8536.nhom",
   "trich": "BỘ PHẬN Theo quy tắc chung về phân loại các bộ phận (xem phần chú giải chung thuộc phần XVI), các bộ phận của thiết bị của nhóm này được phân loại vào nhóm 85.38."
@@ -689,15 +679,15 @@
  "phienBan": "HS2022+SEN2022",
  "bangQuyetDinh": "data/decision-tables/8536.json — ưu tiên tuyệt đối, sổ tay không ghi đè",
  "taoBoi": {
-  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "provider": "phiên Claude quản lý (10 agent con soạn, 6 agent soát độc lập, 07-09/10/2026)",
   "model": null,
-  "luc": "2026-10-07T09:08:08.824Z",
-  "ms": 10
+  "luc": "2026-10-09T09:28:09.874Z",
+  "ms": 19
  },
  "kiemTra": {
   "tong": 87,
-  "dat": 87,
-  "loai": 0,
+  "dat": 86,
+  "loai": 1,
   "nguonBiCat": []
  }
 }

@@ -1,0 +1,146 @@
+{
+ "nhom": "6405",
+ "phamVi": {
+  "text": "Giày, dép có đế ngoài và mũ làm bằng một loại vật liệu hoặc kết hợp các loại vật liệu chưa được đề cập trong các nhóm trước của Chương 64.",
+  "nguon": "nhom6405.nhom",
+  "trich": "nhóm này bao gồm toàn bộ các loại giày, dép có đế ngoài và mũ được làm bằng một loại vật liệu hoặc kết hợp các loại vật liệu chưa được đề cập trong các nhóm trước của Chương này"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "co_de_ngoai",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom6405.nhom",
+   "trich": "nhóm này bao gồm toàn bộ các loại giày, dép có đế ngoài và mũ"
+  },
+  {
+   "fact": "vat_lieu_mu_giay_xac_dinh_theo",
+   "op": "=",
+   "value": "vật liệu cấu thành có diện tích mặt ngoài lớn nhất",
+   "donVi": null,
+   "ngoaiTru": [
+    "phụ kiện hoặc đồ phụ trợ như mảng ở mắt cá chân, mép viền, vật trang trí, khoá cài, mác nhãn, khoen xỏ dây giày"
+   ],
+   "nguon": "ch64.chuong",
+   "trich": "vật liệu làm mũ giày được xếp theo loại vật liệu cấu thành có diện tích mặt ngoài lớn nhất, không tính đến các phụ kiện hoặc đồ phụ trợ như những mảng ở mắt cá chân, mép viền, vật trang trí, khoá cài, mác nhãn, khoen xỏ dây giày hoặc các vật gắn lắp tương tự"
+  },
+  {
+   "fact": "vat_lieu_de_ngoai_xac_dinh_theo",
+   "op": "=",
+   "value": "vật liệu có bề mặt rộng nhất tiếp xúc với đất",
+   "donVi": null,
+   "ngoaiTru": [
+    "phụ tùng hoặc vật phụ trợ như đinh đóng đế giày, đinh, que, các vật bảo vệ"
+   ],
+   "nguon": "ch64.chuong",
+   "trich": "vật liệu cấu thành của đế ngoài được tính là vật liệu có bề mặt rộng nhất trong việc tiếp xúc với đất, không tính đến phụ tùng hoặc các vật phụ trợ như đinh đóng đế giày, đinh, que, các vật bảo vệ hoặc các vật gắn lắp tương tự"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Chi tiết lắp ráp của các bộ phận (ví dụ mũ, đã gắn hoặc chưa gắn vào đế trong) chưa mang đặc trưng cơ bản của giày, dép nhóm 64.01 đến 64.05",
+   "sangNhom": "6406",
+   "nguon": "nhom6405.nhom",
+   "trich": "Nhóm này không bao gồm các chi tiết lắp ráp của các bộ phận (ví dụ như: mũ, đã gắn hoặc chưa gắn vào đế trong) không những chưa tạo thành mà còn chưa có mang đặc trưng cơ bản của các loại giày, dép được mô tả trong các nhóm từ 64.01 đến 64.05 (nhóm 64.06)"
+  },
+  {
+   "dieuKien": "Giày, dép đã qua sử dụng thuộc nhóm 63.09",
+   "sangNhom": "6309",
+   "nguon": "ch64.chuong",
+   "trich": "(c) Giày, dép đã qua sử dụng thuộc nhóm 63.09;"
+  },
+  {
+   "dieuKien": "Các sản phẩm bằng amiăng",
+   "sangNhom": "6812",
+   "nguon": "ch64.chuong",
+   "trich": "(d) Các sản phẩm bằng amiăng (nhóm 68.12);"
+  },
+  {
+   "dieuKien": "Giày, dép chỉnh hình hoặc các thiết bị chỉnh hình khác, hoặc các bộ phận của chúng",
+   "sangNhom": "9021",
+   "nguon": "ch64.chuong",
+   "trich": "(e) Giày, dép chỉnh hình hoặc các thiết bị chỉnh hình khác, hoặc các bộ phận của chúng (nhóm 90.21)"
+  },
+  {
+   "dieuKien": "Giày ống có gắn lưỡi trượt patanh hoặc lưỡi trượt băng, lưỡi trượt gắn cố định vào đế giày",
+   "sangNhom": "9506",
+   "nguon": "ch64.chuong",
+   "trich": "giày ống có gắn lưỡi trượt patanh hoặc giày ống có gắn lưỡi trượt băng với phần lưỡi trượt được gắn cố định vào đế giày bị loại trừ khỏi nhóm này (nhóm 95.06)"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Mũ giày bằng da thuộc hoặc da tổng hợp?",
+   "neuCo": "64051000",
+   "neuKhong": "64052000|64059000",
+   "nguon": "tax.64051000",
+   "trich": "64051000 - Có mũ giày bằng da thuộc hoặc da tổng hợp"
+  },
+  {
+   "hoi": "Chỉ là chi tiết lắp ráp của các bộ phận (ví dụ mũ), chưa mang đặc trưng cơ bản của giày, dép?",
+   "neuCo": "6406",
+   "neuKhong": "6405",
+   "nguon": "nhom6405.nhom",
+   "trich": "Nhóm này không bao gồm các chi tiết lắp ráp của các bộ phận (ví dụ như: mũ, đã gắn hoặc chưa gắn vào đế trong) không những chưa tạo thành mà còn chưa có mang đặc trưng cơ bản của các loại giày, dép được mô tả trong các nhóm từ 64.01 đến 64.05 (nhóm 64.06)"
+  },
+  {
+   "hoi": "Giày ống có gắn lưỡi trượt patanh hoặc lưỡi trượt băng cố định vào đế giày?",
+   "neuCo": "9506",
+   "neuKhong": "6405",
+   "nguon": "ch64.chuong",
+   "trich": "giày ống có gắn lưỡi trượt patanh hoặc giày ống có gắn lưỡi trượt băng với phần lưỡi trượt được gắn cố định vào đế giày bị loại trừ khỏi nhóm này (nhóm 95.06)"
+  },
+  {
+   "hoi": "Là giày, dép chỉnh hình?",
+   "neuCo": "9021",
+   "neuKhong": "6405",
+   "nguon": "ch64.chuong",
+   "trich": "(d) Các loại giày, dép chỉnh hình (nhóm 90.21)."
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "64051000",
+   "dieuKien": "Có mũ giày bằng da thuộc hoặc da tổng hợp — phân nhóm 6405.10 (WCO: footwear with uppers of leather or composition leather, n.e.c. in chapter 64)",
+   "loaiKhac": false,
+   "nguon": "tax.64051000",
+   "trich": "64051000 - Có mũ giày bằng da thuộc hoặc da tổng hợp"
+  },
+  {
+   "hs": "64052000",
+   "dieuKien": "Có mũ giày bằng vật liệu dệt — phân nhóm 6405.20 (WCO: footwear with uppers of textile materials, n.e.c. in chapter 64)",
+   "loaiKhac": false,
+   "nguon": "tax.64052000",
+   "trich": "64052000 - Có mũ giày bằng vật liệu dệt"
+  },
+  {
+   "hs": "64059000",
+   "dieuKien": "Loại khác — phân nhóm 6405.90 (WCO: footwear, n.e.c. in chapter 64)",
+   "loaiKhac": true,
+   "nguon": "tax.64059000",
+   "trich": "64059000 - Loại khác"
+  }
+ ],
+ "dungTuNguon": [
+  "ch64.chuong",
+  "nhom6405.nhom",
+  "tax.64051000",
+  "tax.64052000",
+  "tax.64059000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "phiên Claude quản lý (10 agent soạn + 6 agent soát độc lập, 07-09/10/2026)",
+  "model": null,
+  "luc": "2026-10-09T09:28:10.607Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 16,
+  "dat": 16,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

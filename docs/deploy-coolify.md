@@ -15,7 +15,7 @@ CEO chốt 29/09/2026: bỏ Vercel, chạy trên Coolify của server nhà. GitH
 ## 2. Thành phần trong repo
 
 - `server.js` — tiến trình Node thường, không thư viện ngoài. Đọc `rewrites` và
-  `headers` từ `vercel.json` (giữ file này làm cấu hình định tuyến), phục vụ `public/`,
+  `headers` từ `routes.json` (cấu hình định tuyến), phục vụ `public/`,
   chạy `api/<tên>.js`. Timeout 300 s. Test: `scripts/test-server.mjs`.
 - `Dockerfile` — `node:22-alpine`, `npm run build` (như `buildCommand` cũ),
   `HS_DATA_DIR=/data`, healthcheck `/api/health`, cổng 3000.
@@ -54,6 +54,9 @@ CEO chốt 29/09/2026: bỏ Vercel, chạy trên Coolify của server nhà. GitH
 5. Sau 7 ngày ổn định: ngắt Git integration và xoá project Vercel; xoá các khoá
    Vercel-only (`functions`, `buildCommand`, `outputDirectory`) khỏi `vercel.json` hoặc đổi
    tên file cấu hình định tuyến; cập nhật CLAUDE.md, README.
+   **✅ Phía mã đã xong 09/10/2026:** `vercel.json` → `routes.json` (chỉ còn `rewrites` + `headers`),
+   `server.js` đọc `routes.json`, bỏ script Vercel Blob và `VERCEL_SHARE`, sửa CLAUDE.md/README.
+   Còn lại là việc trên dashboard Vercel: xoá project (cần chủ tài khoản bấm xác nhận).
 
 ## 5. Lưu ý
 

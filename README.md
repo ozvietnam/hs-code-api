@@ -2,7 +2,7 @@
 
 Lightweight HS Code + tariff API for ERP `erp-xnk`.
 
-**Live:** https://hs-code-api-thangs-projects-4472c6e9.vercel.app
+**Live:** https://hs-kb.uythacnhapkhau.com (server riêng của Oz, chạy `server.js` — xem [docs/deploy-coolify.md](docs/deploy-coolify.md))
 
 ## Auth
 
@@ -12,16 +12,16 @@ All endpoints except `/api/health` require:
 Authorization: Bearer $HS_API_TOKEN
 ```
 
-Set on Vercel:
+Biến môi trường đặt trên server (file `.env` / bảng biến của Coolify):
 
 ```bash
-vercel env add HS_API_TOKEN production
-vercel env add GEMINI_API_KEY production
-vercel env add GEMINI_RERANK_MODEL production   # optional, default gemini-2.5-flash
-vercel env add GEMINI_DESCRIBE_MODEL production # optional, default gemini-2.5-flash
-vercel env add GEMINI_ENRICH_MODEL production   # optional, default gemini-2.5-pro (offline enrich script only)
-vercel env add HS_MATCH_PUBLIC production       # optional: "true" = /api/match without Bearer token
-vercel env add CORS_ORIGINS production          # optional comma list; defaults include ERP + localhost
+HS_API_TOKEN=...              # Bearer token cho ERP và nội bộ
+GEMINI_API_KEY=...            # dự phòng, xem chuỗi LLM trong CLAUDE.md
+GEMINI_RERANK_MODEL=...       # optional, default gemini-2.5-flash
+GEMINI_DESCRIBE_MODEL=...     # optional, default gemini-2.5-flash
+GEMINI_ENRICH_MODEL=...       # optional, default gemini-2.5-pro (chỉ script enrich offline)
+HS_MATCH_PUBLIC=true          # optional: /api/match không cần Bearer token
+CORS_ORIGINS=...              # optional, danh sách phẩy; mặc định gồm ERP + localhost
 ```
 
 Agent tự hành trên VPS riêng (xin cấp máy + thiết kế harness, bàn giao cho dev quản trị server): **[docs/vps-agent-tu-hanh.md](docs/vps-agent-tu-hanh.md)**. Dựng 4 endpoint LLM trên server nhà: [docs/server-nha.md](docs/server-nha.md).
@@ -84,7 +84,7 @@ Data & ingest:
 - Admin UI: `/admin/trademark.html` (cột rủi ro VN + cột xuất khẩu TQ, ô nhập Xuất xứ).
 - ⚠️ Tư vấn tham khảo, **không phải phán quyết hải quan**; entry `verified:false` là seed cần xác minh tại iplib.noip.gov.vn / WIPO / danh sách GACC.
 
-This project runs on **Vercel Pro** (no ~12-function Hobby cap; functions may run up to 300s). Several “logical” endpoints are still consolidated into **`/api/dataset`** and **`/api/tariff`** with `resource` / `op` query params — an intentional choice for fewer cold starts and a tidier repo; `vercel.json` rewrites preserve the public URLs above.
+This project runs as a plain Node process (`server.js`) on Oz's own server; a request may run up to 300s. Several “logical” endpoints are still consolidated into **`/api/dataset`** and **`/api/tariff`** with `resource` / `op` query params — an intentional choice for fewer cold starts and a tidier repo; `vercel.json` rewrites preserve the public URLs above.
 
 ## Admin dashboard
 
@@ -97,17 +97,17 @@ This project runs on **Vercel Pro** (no ~12-function Hobby cap; functions may ru
 ```bash
 TOKEN=your_token
 
-curl https://hs-code-api-thangs-projects-4472c6e9.vercel.app/api/health
+curl https://hs-kb.uythacnhapkhau.com/api/health
 
 curl -H "Authorization: Bearer $TOKEN" \
-  "https://hs-code-api-thangs-projects-4472c6e9.vercel.app/api/tax?hs=85171300"
+  "https://hs-kb.uythacnhapkhau.com/api/tax?hs=85171300"
 
 curl -H "Authorization: Bearer $TOKEN" \
-  "https://hs-code-api-thangs-projects-4472c6e9.vercel.app/api/search?q=điện+thoại&limit=5"
+  "https://hs-kb.uythacnhapkhau.com/api/search?q=điện+thoại&limit=5"
 
 curl -X POST -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
   -d '{"description":"iPhone 15 Pro Max 256GB"}' \
-  https://hs-code-api-thangs-projects-4472c6e9.vercel.app/api/suggest
+  https://hs-kb.uythacnhapkhau.com/api/suggest
 ```
 
 ## Response shape (ERP contract)

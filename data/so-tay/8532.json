@@ -1,7 +1,7 @@
 {
  "nhom": "8532",
  "phamVi": {
-  "text": "Mọi loại tụ điện (cố định, biến đổi, điều chỉnh được/định mức trước), không phân biệt kiểu, cách chế tạo, mục đích sử dụng; kể cả nhóm tụ trên cùng khung/vỏ và bộ phận của tụ điện.",
+  "text": "Tất cả các tụ điện, không xét đến kiểu tụ, phương pháp chế tạo, và với mọi mục đích sử dụng.",
   "nguon": "nhom8532.nhom",
   "trich": "Tuy nhiên, nhóm này bao gồm tất cả các tụ điện mà không xét đến kiểu tụ, phương pháp chế tạo, và với mọi mục đích sử dụng"
  },
@@ -14,24 +14,6 @@
    "ngoaiTru": [],
    "nguon": "nhom8532.nhom",
    "trich": "Về mặt nguyên lý, các tụ điện (hoặc bộ điện dung) bao gồm hai bề mặt dẫn, được cách ly bằng vật liệu cách điện (điện môi), ví dụ không khí, giấy, mica, dầu nhờn, nhựa và cao su, gốm sứ hoặc thủy tinh..."
-  },
-  {
-   "fact": "nhom_tu_tren_cung_khung_hoac_vo",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8532.nhom",
-   "trich": "Nhóm này cũng bao gồm các nhóm tụ trên cùng một khung hoặc trong cùng một vỏ (ví dụ các tụ có hệ số công suất lớn và các hộp tụ bao gồm một số các tụ tiêu chuẩn có khả năng kết nối với nhau, theo kiểu song song hoặc nối tiếp, để thu được bất kỳ điện dung cần thiết nào)."
-  },
-  {
-   "fact": "loai_tu",
-   "op": "in",
-   "value": "cố định|biến đổi|điều chỉnh được hoặc có mức định trước",
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8532.nhom",
-   "trich": "(A) CÁC TỤ ĐIỆN CỐ ĐỊNH … (B) TỤ BIẾN ĐỔI … (C) TỤ ĐIỆN ĐIỀU CHỈNH ĐƯỢC HOẶC CÁC TỤ ĐIỆN CÓ MỨC ĐỊNH TRƯỚC"
   }
  ],
  "loaiTru": [
@@ -40,12 +22,6 @@
    "sangNhom": "8501",
    "nguon": "nhom8532.nhom",
    "trich": "Nhóm này không bao gồm các động cơ đồng bộ được dùng để cải thiện hệ số công suất, mặc dù chúng thường được gọi là “các tụ đồng bộ” (nhóm 85.01)."
-  },
-  {
-   "dieuKien": "Mạch tích hợp đa thành phần (MCO) kết hợp mạch tích hợp với thành phần thực hiện chức năng tụ điện, định hình thành một khối không thể tách rời — nhóm 85.41/85.42 được ưu tiên",
-   "sangNhom": "8542",
-   "nguon": "ch85.chuong",
-   "trich": "(iv) Mạch tích hợp đa thành phần (MCOs): sự kết hợp một hoặc nhiều mạch tích hợp đơn khối, lai hoặc đa chíp … các thành phần thực hiện chức năng của hàng hóa thuộc nhóm 85.32, 85.33, 85.41 … Để phân loại những mặt hàng được định nghĩa trong Chú giải này, các nhóm 85.41 và 85.42 được ưu tiên xem xét trước hết"
   }
  ],
  "phanBiet": [
@@ -138,12 +114,11 @@
  ],
  "boPhan": {
   "quyTac": "Quy tắc chung phân loại bộ phận (Chú giải Chi tiết Tổng quát Phần XVI)",
-  "tomTat": "Bộ phận của tụ điện cũng được phân loại trong nhóm 85.32 (dòng 85329000).",
+  "tomTat": "Các bộ phận của tụ điện cũng được phân loại trong nhóm này.",
   "nguon": "nhom8532.nhom",
   "trich": "BỘ PHẬN Theo quy tắc chung về phân loại các bộ phận (xem Chú giải Chi tiết Tổng quát phần XVI), các bộ phận của tụ điện cũng được phân loại trong nhóm này."
  },
  "dungTuNguon": [
-  "ch85.chuong",
   "nhom8532.nhom",
   "tax.85321000",
   "tax.85322100",
@@ -158,14 +133,14 @@
  "phienBan": "HS2022",
  "bangQuyetDinh": "data/decision-tables/8532.json — ưu tiên tuyệt đối, sổ tay không ghi đè",
  "taoBoi": {
-  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "provider": "phiên Claude quản lý (10 agent con soạn, 6 agent soát độc lập, 07-09/10/2026)",
   "model": null,
-  "luc": "2026-10-07T09:08:08.797Z",
-  "ms": 4
+  "luc": "2026-10-09T09:28:09.832Z",
+  "ms": 9
  },
  "kiemTra": {
-  "tong": 19,
-  "dat": 19,
+  "tong": 16,
+  "dat": 16,
   "loai": 0,
   "nguonBiCat": []
  }

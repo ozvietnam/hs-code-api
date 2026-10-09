@@ -1,7 +1,7 @@
 {
  "nhom": "8524",
  "phamVi": {
-  "text": "Mô-đun màn hình dẹt (LCD, OLED, LED hoặc công nghệ hiển thị khác), có hoặc không kết hợp màn cảm ứng, theo Chú giải 7 Chương 85, trình bày riêng chưa tích hợp vào thiết bị khác.",
+  "text": "Các mô-đun màn hình dẹt, có hoặc không kết hợp với màn cảm ứng, được định nghĩa trong Chú giải 7 của Chương này.",
   "nguon": "nhom8524.nhom",
   "trich": "Nhóm này bao gồm các mô-đun màn hình dẹt, có hoặc không kết hợp với màn cảm ứng, được định nghĩa trong Chú giải 7 của Chương này."
  },
@@ -41,24 +41,9 @@
    "ngoaiTru": [],
    "nguon": "nhom8524.nhom",
    "trich": "Các mặt hàng thuộc nhóm này được trang bị tối thiểu một màn hình hiển thị sử dụng màn hình tinh thể lỏng (LCD), điốt phát quang hữu cơ (OLED), điốt phát sáng (LED) hoặc các công nghệ hiển thị khác."
-  },
-  {
-   "fact": "uu_tien_nhom_8524_hon_moi_nhom_khac",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "ch85.chuong",
-   "trich": "Để phân loại mô-đun màn hình dẹt được định nghĩa trong Chú giải này, nhóm 85.24 sẽ được ưu tiên hơn bất kỳ nhóm nào khác trong Danh mục."
   }
  ],
  "loaiTru": [
-  {
-   "dieuKien": "Mô-đun màn hình dẹt có bộ phận chuyển đổi video",
-   "sangNhom": "8517|8528|8529",
-   "nguon": "nhom8524.nhom",
-   "trich": "(a) Mô-đun màn hình dẹt có bộ phận chuyển đổi video (thường là các sản phẩm thuộc các nhóm 85.17, 85.28 và 85.29)."
-  },
   {
    "dieuKien": "Thiết bị phát tín hiệu bằng hình ảnh (bảng chỉ báo) kết hợp với mô-đun màn hình dẹt",
    "sangNhom": "8531",
@@ -74,25 +59,11 @@
  ],
  "phanBiet": [
   {
-   "hoi": "Mô-đun có gắn thành phần chuyển đổi tín hiệu video (ví dụ IC điều chỉnh tỷ lệ, IC giải mã, bộ xử lý ứng dụng) không?",
-   "neuCo": "8517|8528|8529",
-   "neuKhong": "8524",
-   "nguon": "nhom8524.nhom",
-   "trich": "(a) Mô-đun màn hình dẹt có bộ phận chuyển đổi video (thường là các sản phẩm thuộc các nhóm 85.17, 85.28 và 85.29)."
-  },
-  {
    "hoi": "Hàng là thiết bị phát tín hiệu bằng hình ảnh (bảng chỉ báo) có kết hợp mô-đun màn hình dẹt?",
    "neuCo": "8531",
    "neuKhong": "8524",
    "nguon": "nhom8524.nhom",
    "trich": "(b) Thiết bị phát tín hiệu bằng hình ảnh (bảng chỉ báo) kết hợp với mô-đun màn hình dẹt (nhóm 85.31)."
-  },
-  {
-   "hoi": "Hàng chỉ là bộ phận của mô-đun màn hình dẹt, chưa có màn hiển thị hoàn chỉnh?",
-   "neuCo": "8529",
-   "neuKhong": "8524",
-   "nguon": "nhom8524.nhom",
-   "trich": "bộ phận của thiết bị thuộc nhóm này được phân loại vào nhóm 85.29."
   }
  ],
  "dong8": [
@@ -158,14 +129,14 @@
  "phienBan": "HS2022",
  "bangQuyetDinh": "data/decision-tables/8524.json — ưu tiên tuyệt đối, sổ tay không ghi đè",
  "taoBoi": {
-  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "provider": "phiên Claude quản lý (10 agent con soạn, 6 agent soát độc lập, 07-09/10/2026)",
   "model": null,
-  "luc": "2026-10-07T09:08:08.785Z",
-  "ms": 3
+  "luc": "2026-10-09T09:28:09.812Z",
+  "ms": 4
  },
  "kiemTra": {
-  "tong": 19,
-  "dat": 19,
+  "tong": 15,
+  "dat": 15,
   "loai": 0,
   "nguonBiCat": []
  }

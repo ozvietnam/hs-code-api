@@ -46,7 +46,7 @@ lại chỉ tạo thêm một nguồn sự thật thứ hai để lệch nhau.
 Mã nguồn viết theo dạng Vercel serverless function (mỗi file trong `api/` export
 một `handler(req, res)` chuẩn Node). Bọc lại bằng Express hoặc chạy thẳng
 `vercel dev` đều được — **chưa có sẵn server tự dựng, đây là việc anh làm.**
-Xem `vercel.json` mục `rewrites` (35 dòng) để biết URL nào ánh xạ vào file nào;
+Xem `routes.json` mục `rewrites` (35 dòng) để biết URL nào ánh xạ vào file nào;
 phải giữ nguyên ánh xạ đó, ERP đang gọi theo URL cũ.
 
 ---

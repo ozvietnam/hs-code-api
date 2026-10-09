@@ -1,7 +1,7 @@
 {
  "nhom": "3006",
  "phamVi": {
-  "text": "Chỉ áp dụng cho các mặt hàng dược phẩm đặc thù liệt kê tại Chú giải 4 Chương 30 (vật liệu khâu vô trùng, tảo nong vô trùng, cầm máu tự tiêu vô trùng, cản quang/chất thử chẩn đoán cho bệnh nhân, xi măng nha khoa/gắn xương, hộp cấp cứu, tránh thai, gel bôi trơn y tế, phế thải dược phẩm, dụng cụ hậu môn giả, giả dược).",
+  "text": "Nhóm 30.06 chỉ áp dụng cho các chất liệt kê trong Chú giải 4 Chương 30; những chất này phải xếp vào nhóm này và không thể đưa vào nhóm nào khác của Danh mục.",
   "nguon": "ch30.chuong",
   "trich": "4. Nhóm 30.06 chỉ áp dụng cho các chất sau đây, những chất này phải xếp vào nhóm này và không thể đưa vào nhóm nào khác của Danh mục:"
  },
@@ -14,64 +14,6 @@
    "ngoaiTru": [],
    "nguon": "ch30.chuong",
    "trich": "4. Nhóm 30.06 chỉ áp dụng cho các chất sau đây, những chất này phải xếp vào nhóm này và không thể đưa vào nhóm nào khác của Danh mục:"
-  },
-  {
-   "fact": "vat_lieu_khau_vo_trung",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom3006.nhom",
-   "trich": "Mục này bao gồm tất cả các loại dùng cho khâu vết thương khi phẫu thuật, với điều kiện chúng phải vô trùng."
-  },
-  {
-   "fact": "san_pham_cam_mau_vo_trung_tu_tieu",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom3006.nhom",
-   "trich": "Mục này bao gồm các sản phẩm vô trùng sử dụng trong phẫu thuật hoặc nha khoa để cầm máu, chúng được các dịch trong cơ thể hấp thụ."
-  },
-  {
-   "fact": "chat_thu_chan_doan_dieu_che_dung_cho_benh_nhan",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [
-    "chất thử dùng cho mẫu máu, nước tiểu, mẫu lấy từ bệnh nhân hoặc chất thử phòng thí nghiệm"
-   ],
-   "nguon": "nhom3006.nhom",
-   "trich": "Các thuốc thử chẩn đoán (bao gồm cả thuốc thử chẩn đoán dạng vi sinh) thuộc nhóm này là các loại dùng bằng cách uống, tiêm, vv."
-  },
-  {
-   "fact": "hop_cap_cuu_chi_chua_luong_nho_thuoc_thong_thuong_bang_bo_dung_cu_don_gian",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [
-    "hộp dụng cụ y tế phức tạp hơn như loại bác sĩ sử dụng"
-   ],
-   "nguon": "nhom3006.nhom",
-   "trich": "Chỉ được coi là hộp và bộ dụng cụ cấp cứu khi là các loại có chứa một lượng nhỏ của một vài loại thuốc chữa bệnh thông thường (nước ôxy già, cồn iốt, thuốc đỏ, cồn, kim sa..), một số đồ băng bó (gạc, bông...) và một vài dụng cụ như kẹp, kéo..."
-  },
-  {
-   "fact": "gia_duoc_dung_trong_thu_nghiem_lam_sang_cong_nhan_dong_goi_theo_lieu",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom3006.nhom",
-   "trich": "Giả dược hoặc bộ thử nghiệm lâm sàng mù (hoặc mù đôi) thuộc nhóm này được đóng gói theo liều lượng để sử dụng trong các thử nghiệm lâm sàng được công nhận."
-  },
-  {
-   "fact": "duoc_pham_khong_con_phu_hop_muc_dich_ban_dau",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom3006.nhom",
-   "trich": "Nhóm này cũng bao gồm các sản phẩm dược phẩm không phù hợp với mục đích ban đầu tạo ra chúng, ví dụ các dược phẩm quá hạn."
   }
  ],
  "loaiTru": [
@@ -85,13 +27,7 @@
    "dieuKien": "Tảo nong và nút tảo nong không vô trùng",
    "sangNhom": "1212",
    "nguon": "nhom3006.nhom",
-   "trich": "Các loại sản phẩm không vô trùng bị loại trừ (nhóm 12.12)."
-  },
-  {
-   "dieuKien": "Chất thử chẩn đoán không điều chế để dùng cho bệnh nhân (xét nghiệm máu, nước tiểu, mẫu bệnh phẩm, chất thử phòng thí nghiệm) — xếp theo vật liệu, ví dụ 30.02 hoặc 38.22 (hoặc Chương 28, 29)",
-   "sangNhom": "3002|3822",
-   "nguon": "nhom3006.nhom",
-   "trich": "Những chất thử chuẩn đoán không được điều chế để dùng cho bệnh nhân (ví dụ, những chất dùng để tiến hành các xét nghiệm máu, nước tiểu v.v... hay các mẫu lấy từ bệnh nhân, hay dùng như một chất thử trong phòng thí nghiệm) thì bị loại trừ; … (ví dụ, Chương 28, Chương 29 hoặc nhóm 30.02 hoặc 38.22)."
+   "trich": "(2) Tảo nong vô trùng và nút tảo nong vô trùng. … Các loại sản phẩm không vô trùng bị loại trừ (nhóm 12.12)."
   },
   {
    "dieuKien": "Thạch cao đã nung/nghiền mịn (25.20) và chế phẩm dựa trên thạch cao (34.07) dùng trong nha khoa",
@@ -106,12 +42,6 @@
    "trich": "Chất thay thế ghép xương, như những sự thay thế từ sulphat canxi loại dùng cho phẫu thuật, cung cấp một khối tinh thể mà xương mới có thể phát triển khi khối này được hấp thụ cũng bị loại trừ (nhóm 30.04)."
   },
   {
-   "dieuKien": "Giả dược / bộ thử nghiệm lâm sàng mù không dành cho thử nghiệm lâm sàng đã đáp ứng yêu cầu quy định — xếp theo thành phần, ví dụ 17.04, 21.06",
-   "sangNhom": "1704|2106",
-   "nguon": "nhom3006.nhom",
-   "trich": "Những sản phẩm \"giả dược\" và \"bộ dụng cụ thử nghiệm lâm sàng mù (hoặc mù đôi)\" không dành cho thử nghiệm lâm sàng đã đáp ứng các yêu cầu quy định liên quan đối với việc nhập khẩu các chất, phải được phân loại tương ứng vào các nhóm khác (ví dụ, nhóm 17.04, 21.06,...)"
-  },
-  {
    "dieuKien": "Các chất thử chẩn đoán của nhóm 38.22",
    "sangNhom": "3822",
    "nguon": "ch30.chuong",
@@ -120,18 +50,18 @@
  ],
  "phanBiet": [
   {
-   "hoi": "Chỉ catgut/vật liệu khâu phẫu thuật ở trạng thái vô trùng?",
+   "hoi": "Chỉ catgut phẫu thuật ở trạng thái vô trùng?",
    "neuCo": "3006",
    "neuKhong": "4206",
    "nguon": "nhom3006.nhom",
-   "trich": "Nhóm này không bao gồm các vật liệu khâu không vô trùng. Chúng được phân loại tùy theo bản chất của chúng, ví dụ, catgut (nhóm 42.06)"
+   "trich": "(1) Chỉ catgut phẫu thuật vô trùng, các vật liệu khâu vô trùng tương tự … Nhóm này không bao gồm các vật liệu khâu không vô trùng. Chúng được phân loại tùy theo bản chất của chúng, ví dụ, catgut (nhóm 42.06)"
   },
   {
    "hoi": "Tảo nong/nút tảo nong ở trạng thái vô trùng?",
    "neuCo": "3006",
    "neuKhong": "1212",
    "nguon": "nhom3006.nhom",
-   "trich": "Các loại sản phẩm không vô trùng bị loại trừ (nhóm 12.12)."
+   "trich": "(2) Tảo nong vô trùng và nút tảo nong vô trùng. … Các loại sản phẩm không vô trùng bị loại trừ (nhóm 12.12)."
   },
   {
    "hoi": "Chế phẩm nha khoa có thành phần cơ bản là thạch cao?",
@@ -141,11 +71,11 @@
    "trich": "Các loại thạch cao đã được nung hoặc nghiền mịn và các chế phẩm dựa trên thạch cao dùng trong nha khoa bị loại trừ (nhóm 25.20 và 34.07 tương ứng)."
   },
   {
-   "hoi": "Là chất thay thế ghép xương (khối tinh thể để xương mới phát triển khi được hấp thụ), không phải xi măng gắn xương?",
+   "hoi": "Là chất thay thế ghép xương (như sulphat canxi loại dùng cho phẫu thuật), không phải xi măng gắn xương?",
    "neuCo": "3004",
    "neuKhong": "3006",
    "nguon": "nhom3006.nhom",
-   "trich": "Chất thay thế ghép xương, như những sự thay thế từ sulphat canxi loại dùng cho phẫu thuật, cung cấp một khối tinh thể mà xương mới có thể phát triển khi khối này được hấp thụ cũng bị loại trừ (nhóm 30.04)."
+   "trich": "(6) Xi măng nha khoa và các chất hàn răng khác và xi măng dùng để gắn xương. … Chất thay thế ghép xương, như những sự thay thế từ sulphat canxi loại dùng cho phẫu thuật, cung cấp một khối tinh thể … cũng bị loại trừ (nhóm 30.04)."
   }
  ],
  "dong8": [
@@ -276,15 +206,15 @@
  ],
  "phienBan": "HS2022",
  "taoBoi": {
-  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "provider": "phiên Claude quản lý (10 agent con soạn, 6 agent soát độc lập, 07-09/10/2026)",
   "model": null,
-  "luc": "2026-10-07T09:08:08.561Z",
-  "ms": 2
+  "luc": "2026-10-09T09:28:09.464Z",
+  "ms": 3
  },
  "kiemTra": {
-  "tong": 35,
-  "dat": 34,
-  "loai": 1,
+  "tong": 26,
+  "dat": 26,
+  "loai": 0,
   "nguonBiCat": []
  }
 }

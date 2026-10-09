@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 // server.js — chạy hs-code-api như một tiến trình Node thường (Coolify / Docker / máy nhà),
-// thay cho hạ tầng serverless của Vercel. Không phụ thuộc thư viện ngoài.
+// (server riêng của Oz; không còn chạy serverless). Không phụ thuộc thư viện ngoài.
 //
-// Làm đúng những gì Vercel làm cho dự án này, đọc cấu hình từ chính vercel.json:
+// Đọc cấu hình định tuyến từ routes.json:
 //   - rewrites  : /api/precedents → /api/dataset?resource=precedents, /admin → /admin/index.html…
 //   - headers   : Content-Type/Cache-Control/CORS cho /llms.txt, /openapi.json…
-//   - public/   : file tĩnh (outputDirectory)
-//   - api/<ten>.js : handler kiểu Vercel (req.query, req.body, res.status().json())
+//   - public/   : file tĩnh
+//   - api/<ten>.js : handler kiểu serverless (req.query, req.body, res.status().json())
 // Ghi dữ liệu (feedback, audit, snapshot biểu thuế) đi qua lib/data-paths.js → đặt
 // HS_DATA_DIR trỏ vào ổ lưu bền (volume) để không mất khi triển khai lại.
 'use strict';
@@ -21,7 +21,7 @@ const API_DIR = path.join(ROOT, 'api');
 const MAX_BODY = 10 * 1024 * 1024;
 const TIMEOUT_MS = Number(process.env.HS_REQUEST_TIMEOUT_MS) || 300000; // = maxDuration cũ
 
-const vercelConfig = JSON.parse(fs.readFileSync(path.join(ROOT, 'vercel.json'), 'utf8'));
+const routeConfig = JSON.parse(fs.readFileSync(path.join(ROOT, 'routes.json'), 'utf8'));
 
 function compileSource(source) {
   const keys = [];
@@ -31,8 +31,8 @@ function compileSource(source) {
   return { re: new RegExp(`^${pattern}/?$`), keys };
 }
 
-const REWRITES = (vercelConfig.rewrites || []).map((r) => ({ ...compileSource(r.source), destination: r.destination }));
-const HEADERS = (vercelConfig.headers || []).map((h) => ({ ...compileSource(h.source), headers: h.headers || [] }));
+const REWRITES = (routeConfig.rewrites || []).map((r) => ({ ...compileSource(r.source), destination: r.destination }));
+const HEADERS = (routeConfig.headers || []).map((h) => ({ ...compileSource(h.source), headers: h.headers || [] }));
 
 /** Áp rewrite đầu tiên khớp. Trả URL mới (giữ query gốc nếu đích chưa có) hoặc null. */
 function applyRewrite(url) {

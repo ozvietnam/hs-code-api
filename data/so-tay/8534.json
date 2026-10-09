@@ -1,13 +1,13 @@
 {
  "nhom": "8534",
  "phamVi": {
-  "text": "Mạch in: mạch tạo trên tấm cách điện bằng quy trình in (rập nổi, mạ, khắc axit…) gồm phần tử dẫn điện, tiếp điểm hoặc thành phần thụ động in; kể cả mạch in phim mỏng/dày chỉ có phần tử thụ động. Không gồm mạch đã gắn linh kiện.",
+  "text": "Nhóm này bao gồm tất cả các mạch được tạo ra trên một tấm cách điện bằng một quy trình in nào đó (in thông thường hoặc rập nổi, mạ, khắc axít...), các phần tử dẫn điện (dây dẫn), các tiếp điểm hoặc các thành phần dùng cho mạch in khác, trừ các phần tử có thể phát (tạo ra), chỉnh lưu, dò tìm, điều biến hoặc khuếch đại tín hiệu điện.",
   "nguon": "nhom8534.nhom",
-  "trich": "nhóm này bao gồm tất cả các mạch được tạo ra trên một tấm cách điện, bằng một quy trình in nào đó (in thông thường hoặc rập nổi, mạ, khắc axít...), các phần tử dẫn điện (dây dẫn), các tiếp điểm hoặc các thành phần c dùng cho mạch in khác"
+  "trich": "nhóm này bao gồm tất cả các mạch được tạo ra trên một tấm cách điện, bằng một quy trình in nào đó (in thông thường hoặc rập nổi, mạ, khắc axít...), các phần tử dẫn điện (dây dẫn), các tiếp điểm hoặc các thành phần c dùng cho mạch in khác … trừ các phần tử có thể phát (tạo ra), chỉnh lưu, dò tìm, điều biến hoặc khuếch đại tín hiệu điện"
  },
  "dieuKienVao": [
   {
-   "fact": "tao_tren_tam_cach_dien_bang_quy_trinh_in_mach",
+   "fact": "tao_tren_tam_cach_dien_bang_quy_trinh_in_mach_hoac_ky_thuat_mach_dien_mang",
    "op": "=",
    "value": true,
    "donVi": null,
@@ -34,33 +34,9 @@
    ],
    "nguon": "nhom8534.nhom",
    "trich": "Các mạch mà trên đó những phần tử cơ khí hoặc những linh kiện điện đã được gắn hoặc được nối không được xem như những mạch in theo đúng nghĩa của nhóm này. Nói chung, chúng được phân loại theo Chú giải 2 phần XVI hoặc chú giải 2 của chương 90, tùy trường hợp cụ thể."
-  },
-  {
-   "fact": "duoc_gan_phan_tu_ket_noi_khong_qua_in_mach",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "ch85.chuong",
-   "trich": "Tuy nhiên, những mạch in này có thể gắn với phần tử kết nối không qua quá trình in mạch."
-  },
-  {
-   "fact": "mach_in_phim_mong_hoac_day_chi_co_phan_tu_thu_dong",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8534.nhom",
-   "trich": "Nhóm này cũng bao gồm những mạch in trên phim mỏng hoặc dầy chỉ có những phần tử thụ động."
   }
  ],
  "loaiTru": [
-  {
-   "dieuKien": "Linh kiện thụ động riêng lẻ (cuộn cảm, tụ điện, điện trở) có được nhờ quá trình in — phân loại vào nhóm riêng của chúng",
-   "sangNhom": "8504|8516|8532|8533",
-   "nguon": "nhom8534.nhom",
-   "trich": "Các linh kiện thụ động riêng lẻ, như cuộn cảm, tụ điện và điện trở có được nhờ quá trình in bất kỳ nào đó mà không được xem là những mạch in thuộc nhóm này, nhưng chúng được phân loại vào những nhóm thích hợp riêng của chúng. (ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33)."
-  },
   {
    "dieuKien": "Mạch điện màng mỏng hoặc dày có phần tử chủ động và thụ động hợp thành trong cùng một quy trình công nghệ",
    "sangNhom": "8542",
@@ -75,13 +51,6 @@
    "neuKhong": "8534",
    "nguon": "ch85.chuong",
    "trich": "Mạch điện màng mỏng hoặc dày bao gồm phần tử chủ động và thụ động hợp thành trong cùng một quy trình công nghệ được phân loại trong nhóm 85.42."
-  },
-  {
-   "hoi": "Hàng chỉ là một linh kiện thụ động riêng lẻ (cuộn cảm, tụ điện hoặc điện trở) tạo bằng quá trình in, không phải mạch?",
-   "neuCo": "8504|8516|8532|8533",
-   "neuKhong": "8534",
-   "nguon": "nhom8534.nhom",
-   "trich": "Các linh kiện thụ động riêng lẻ, như cuộn cảm, tụ điện và điện trở có được nhờ quá trình in bất kỳ nào đó mà không được xem là những mạch in thuộc nhóm này … (ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33)."
   }
  ],
  "dong8": [
@@ -125,14 +94,14 @@
  "phienBan": "HS2022",
  "bangQuyetDinh": "data/decision-tables/8534.json — ưu tiên tuyệt đối, sổ tay không ghi đè",
  "taoBoi": {
-  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "provider": "phiên Claude quản lý (10 agent con soạn, 6 agent soát độc lập, 07-09/10/2026)",
   "model": null,
-  "luc": "2026-10-07T09:08:08.808Z",
-  "ms": 3
+  "luc": "2026-10-09T09:28:09.844Z",
+  "ms": 4
  },
  "kiemTra": {
-  "tong": 14,
-  "dat": 14,
+  "tong": 10,
+  "dat": 10,
   "loai": 0,
   "nguonBiCat": []
  }

@@ -2,67 +2,16 @@
  "nhom": "7209",
  "dieuKienVao": [
   {
-   "fact": "ap_dung_chu_giai_nhom_7208_voi_sua_doi_thich_hop",
+   "fact": "la_san_pham_can_phang_theo_chu_giai_1k_chuong_72",
    "op": "=",
    "value": true,
    "donVi": null,
    "ngoaiTru": [],
-   "nguon": "nhom7209.nhom",
-   "trich": "Các điều khoản của Chú giải cho nhóm 72.08, với những sửa đổi thích hợp, áp dụng cho các sản phẩm thuộc nhóm này."
-  },
-  {
-   "fact": "ham_luong_carbon",
-   "op": "<=",
-   "value": 2,
-   "donVi": "%",
-   "ngoaiTru": [
-    "Thép crôm có thể có hàm lượng carbon cao hơn"
-   ],
    "nguon": "ch72.chuong",
-   "trich": "Là các vật liệu dễ uốn có chứa sắt trừ các vật liệu thuộc nhóm 72.03 (không kể loại được sản xuất bằng phương pháp đúc) và có hàm lượng carbon không quá 2% tính theo khối lượng."
-  },
-  {
-   "fact": "ty_le_rong_tren_day_khi_day_duoi_4_75mm",
-   "op": ">=",
-   "value": 10,
-   "donVi": "lần",
-   "ngoaiTru": [
-    "Áp dụng cho dạng đoạn thẳng; dạng cuộn lớp chồng liên tiếp không xét tỷ lệ này"
-   ],
-   "nguon": "ch72.chuong",
-   "trich": "đoạn thẳng, nếu chiều dày của nó dưới 4,75 mm thì chiều rộng tối thiểu phải gấp 10 lần chiều dày"
-  },
-  {
-   "fact": "chieu_rong_khi_day_tu_4_75mm",
-   "op": ">",
-   "value": 150,
-   "donVi": "mm",
-   "ngoaiTru": [
-    "Đồng thời chiều rộng tối thiểu gấp 2 lần chiều dày"
-   ],
-   "nguon": "ch72.chuong",
-   "trich": "nếu chiều dày từ 4,75 mm trở lên thì chiều rộng phải trên 150 mm và tối thiểu phải gấp 2 lần chiều dày."
-  },
-  {
-   "fact": "hinh_dang_khac_chu_nhat_vuong_coi_nhu_rong_tu_600mm",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [
-    "Trừ khi đã mang đặc tính của mặt hàng thuộc nhóm khác"
-   ],
-   "nguon": "ch72.chuong",
-   "trich": "Các sản phẩm cán phẳng có hình dạng khác với dạng hình chữ nhật hoặc hình vuông, với mọi kích thước, được phân loại như các sản phẩm có chiều rộng từ 600 mm trở lên, với điều kiện là chúng không mang đặc tính của các mặt hàng hoặc các sản phẩm thuộc nhóm khác."
+   "trich": "Các sản phẩm cán có mặt cắt ngang đông đặc hình chữ nhật (trừ hình vuông), không thích hợp như định nghĩa tại mục (ij) nêu trên ở dạng sau: - cuộn từ các lớp được chồng lên nhau liên tiếp, hoặc - đoạn thẳng, nếu chiều dày của nó dưới 4,75 mm thì chiều rộng tối thiểu phải gấp 10 lần chiều dày hoặc nếu chiều dày từ 4,75 mm trở lên thì chiều rộng phải trên 150 mm và tối thiểu phải gấp 2 lần chiều dày."
   }
  ],
- "loaiTru": [
-  {
-   "dieuKien": "Sản phẩm cán phẳng được cán nóng (không cán nguội)",
-   "sangNhom": "7208",
-   "nguon": "nhom7209.nhom",
-   "trich": "Các tiêu chuẩn về sự khác biệt giữa các sản phẩm cán nguội thuộc nhóm này và các sản phẩm được cán nóng thuộc các nhóm 72.08 được trình bày trong Chú giải chung cho Chương này"
-  }
- ],
+ "loaiTru": [],
  "phanBiet": [],
  "dong8": [
   {
@@ -187,7 +136,6 @@
  ],
  "dungTuNguon": [
   "ch72.chuong",
-  "nhom7209.nhom",
   "tax.72091500",
   "tax.72091610",
   "tax.72091690",
@@ -209,15 +157,15 @@
  "phienBan": "HS2022",
  "bangQuyetDinh": "data/decision-tables/7209.json — ưu tiên tuyệt đối, sổ tay không ghi đè",
  "taoBoi": {
-  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "provider": "phiên Claude quản lý (10 agent con soạn, 6 agent soát độc lập, 07-09/10/2026)",
   "model": null,
-  "luc": "2026-10-07T09:08:08.604Z",
-  "ms": 4
+  "luc": "2026-10-09T09:28:09.522Z",
+  "ms": 5
  },
  "kiemTra": {
-  "tong": 30,
-  "dat": 23,
-  "loai": 7,
+  "tong": 18,
+  "dat": 18,
+  "loai": 0,
   "nguonBiCat": []
  }
 }

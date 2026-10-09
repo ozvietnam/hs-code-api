@@ -1,30 +1,19 @@
 {
  "nhom": "8420",
  "phamVi": {
-  "text": "Máy cán là hoặc máy cán ép kiểu trục lăn khác (trừ máy dùng cho kim loại hoặc thủy tinh), và bộ phận của chúng (kể cả trục cán).",
+  "text": "Máy cán là hoặc máy cán ép kiểu trục lăn khác, trừ các loại máy dùng để cán ép và gia công kim loại thuộc nhóm 84.55, 84.62 hoặc 84.63 và máy gia công thủy tinh thuộc nhóm 84.75.",
   "nguon": "nhom8420.nhom",
   "trich": "Trừ các loại máy dùng để cán ép và gia công kim loại thuộc nhóm 84.55, 84.62 hoặc 84.63 và máy gia công thủy tinh thuộc nhóm 84.75, nhóm này bao gồm các loại máy cán là hoặc các máy cán ép kiểu trục lăn khác"
  },
  "dieuKienVao": [
   {
-   "fact": "co_hai_truc_can_song_song_tro_len",
-   "op": "=",
-   "value": true,
+   "fact": "cong_doan_thuc_hien",
+   "op": "in",
+   "value": "cán thành dạng tấm các nguyên liệu đưa vào trục cán dưới dạng bột nhão; tạo tác động lên bề mặt vật liệu dạng tấm trừ kim loại hoặc thủy tinh; tạo lớp phủ bề mặt; kết dính nhiều lớp vải",
    "donVi": null,
    "ngoaiTru": [],
    "nguon": "nhom8420.nhom",
-   "trich": "Các máy này chủ yếu gồm hai hoặc nhiều trục cán hoặc trục quay đặt song song, chuyển động quay với khoảng cách tiếp xúc lớn hoặc bé"
-  },
-  {
-   "fact": "cong_doan_thuc_hien",
-   "op": "in",
-   "value": "cán thành tấm vật liệu dạng nhão; tác động bề mặt vật liệu dạng tấm (đánh bóng, là phẳng, làm láng, tạo hạt, tạo nếp); tạo lớp phủ bề mặt; kết dính nhiều lớp vải",
-   "donVi": null,
-   "ngoaiTru": [
-    "Vật liệu dạng tấm là kim loại hoặc thủy tinh"
-   ],
-   "nguon": "nhom8420.nhom",
-   "trich": "(1) Cán thành dạng tấm các nguyên liệu…(2) Tạo một số tác động lên bề mặt của vật liệu dạng tấm (trừ kim loại hoặc thủy tinh)…(3) Tạo lớp phủ bề mặt.…(4) Kết dính nhiều lớp vải."
+   "trich": "(1) Cán thành dạng tấm các nguyên liệu (bột bánh, kẹo, bánh quy..., bột nhão, sô cô la, cao su...) được đưa vào trục cán dưới dạng bột nhão. (2) Tạo một số tác động lên bề mặt của vật liệu dạng tấm (trừ kim loại hoặc thủy tinh) … (3) Tạo lớp phủ bề mặt. (4) Kết dính nhiều lớp vải."
   },
   {
    "fact": "thuc_hien_day_du_muc_dich_can_la_can_ep",
@@ -32,40 +21,10 @@
    "value": true,
    "donVi": null,
    "ngoaiTru": [
-    "Máy có cơ chế trục lăn tương tự nhưng không thực hiện đầy đủ các mục đích trên (máy sấy trục lăn, máy nghiền con lăn, máy vắt quần áo...)"
+    "máy có cơ chế hoạt động tương tự máy cán là hoặc cán ép kiểu trục lăn nhưng không thực hiện các mục đích một cách đầy đủ như đã mô tả"
    ],
    "nguon": "nhom8420.nhom",
-   "trich": "các loại máy, dù chúng có cơ chế hoạt động tương tự như máy cán là hoặc cán ép kiểu trục lăn, nhưng không thực hiện các mục đích một cách đầy đủ như đã mô tả ở trên",
-   "nguonGhi": "nhom8420.khong_bao_gom"
-  },
-  {
-   "fact": "kem_thiet_bi_phu_be_ngam_truc_phet_cuon_cat_van_thuoc_nhom",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [
-    "Máy cán là máy phụ kết hợp với máy khác (vd máy làm giấy): phân loại theo Chú giải 3 và 4 Phần XVI"
-   ],
-   "nguon": "nhom8420.nhom",
-   "trich": "Mặt khác, nếu máy cán có kết hợp thêm các thiết bị phụ như bể ngâm, trục phết bề mặt, thiết bị cuộn hoặc cắt thì vẫn thuộc nhóm này."
-  },
-  {
-   "fact": "may_lam_mem_may_la_kieu_can_ke_ca_gia_dung",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8420.nhom",
-   "trich": "Nhóm này cũng gồm các máy làm mềm hoặc máy là kiểu cán, bất kể được sử dụng trong gia đình hoặc không."
-  },
-  {
-   "fact": "uu_tien_nhom_8401_8424_so_voi_8425_8480",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "ch84.chuong",
-   "trich": "máy móc hoặc thiết bị thỏa mãn mô tả của một hoặc nhiều nhóm từ 84.01 đến 84.24, hoặc nhóm 84.86 và đồng thời thỏa mãn mô tả của một hoặc nhiều nhóm từ 84.25 đến 84.80 thì được phân loại vào một nhóm thích hợp trong số các nhóm từ 84.01 đến 84.24 hoặc 84.86"
+   "trich": "Nhóm này không bao gồm các loại máy, dù chúng có cơ chế hoạt động tương tự như máy cán là hoặc cán ép kiểu trục lăn, nhưng không thực hiện các mục đích một cách đầy đủ như đã mô tả ở trên"
   }
  ],
  "loaiTru": [
@@ -143,20 +102,18 @@
    "nguonGhi": "nhom8420.khong_bao_gom"
   },
   {
-   "hoi": "Máy dùng để sản xuất hoặc gia công thủy tinh bằng cách cán?",
+   "hoi": "Máy dùng để sản xuất thủy tinh dạng tấm phẳng bằng cách cán, hoặc máy cán dùng để gia công thủy tinh?",
    "neuCo": "8475",
    "neuKhong": "8420",
    "nguon": "nhom8420.nhom",
-   "trich": "(h) Máy dùng để sản xuất thủy tinh dạng tấm phẳng bằng cách cán, và máy cán dùng để gia công thủy tinh (nhóm 84.75).",
-   "nguonGhi": "nhom8420.khong_bao_gom"
+   "trich": "(h) Máy dùng để sản xuất thủy tinh dạng tấm phẳng bằng cách cán, và máy cán dùng để gia công thủy tinh (nhóm 84.75)."
   },
   {
-   "hoi": "Trục lăn chỉ dùng để sấy khô vải, giấy (không cán là, cán ép)?",
+   "hoi": "Hàng là máy sấy kiểu trục lăn cho vải, giấy,...?",
    "neuCo": "8419|8451",
    "neuKhong": "8420",
    "nguon": "nhom8420.nhom",
-   "trich": "(a) Máy sấy kiểu trục lăn cho vải, giấy,... (nhóm 84.19 hoặc 84.51).",
-   "nguonGhi": "nhom8420.khong_bao_gom"
+   "trich": "(a) Máy sấy kiểu trục lăn cho vải, giấy,... (nhóm 84.19 hoặc 84.51)."
   },
   {
    "hoi": "Máy chỉ dùng hoặc chủ yếu dùng để sản xuất tấm nền mạch in hoặc mạch in?",
@@ -218,13 +175,12 @@
   }
  ],
  "boPhan": {
-  "quyTac": "Chú giải 2 Phần XVI (quy tắc chung phân loại bộ phận)",
-  "tomTat": "Bộ phận của máy thuộc nhóm xếp tại đây, kể cả trục cán rõ ràng dùng cho máy cán/máy ép của nhóm (bằng kim loại, gỗ, giấy ép...; nhẵn, khía rãnh, bọc vải/da/cao su...).",
+  "quyTac": "Quy tắc chung về phân loại các bộ phận (xem phần Chú giải tổng quát của phần XVI)",
+  "tomTat": "Bộ phận của các loại máy thuộc nhóm này cũng được phân loại ở nhóm này, kể cả các trục cán mà rõ ràng được dùng cho các loại máy cán hoặc máy ép thuộc nhóm này.",
   "nguon": "nhom8420.nhom",
   "trich": "BỘ PHẬN Theo các quy tắc chung về phân loại các bộ phận (xem phần Chú giải tổng quát của phần XVI), bộ phận của các loại máy thuộc nhóm này cũng được phân loại ở đây. Các bộ phận này bao gồm cả các trục cán mà rõ ràng được dùng cho các loại máy cán hoặc máy ép thuộc nhóm này."
  },
  "dungTuNguon": [
-  "ch84.chuong",
   "nhom8420.nhom",
   "tax.84201010",
   "tax.84201020",
@@ -237,14 +193,14 @@
  "phienBan": "HS2022",
  "bangQuyetDinh": "data/decision-tables/8420.json — ưu tiên tuyệt đối, sổ tay không ghi đè",
  "taoBoi": {
-  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "provider": "phiên Claude quản lý (10 agent con soạn, 6 agent soát độc lập, 07-09/10/2026)",
   "model": null,
-  "luc": "2026-10-07T09:08:08.627Z",
-  "ms": 4
+  "luc": "2026-10-09T09:28:09.552Z",
+  "ms": 5
  },
  "kiemTra": {
-  "tong": 28,
-  "dat": 28,
+  "tong": 24,
+  "dat": 24,
   "loai": 0,
   "nguonBiCat": []
  }

@@ -1,4 +1,4 @@
-# hs-code-api trên Coolify / Docker (thay Vercel). Không có thư viện runtime ngoài.
+# hs-code-api trên Coolify / Docker. Không có thư viện runtime ngoài.
 FROM node:22-alpine
 
 WORKDIR /app
@@ -9,7 +9,7 @@ ENV NODE_ENV=production \
     HS_DATA_DIR=/data
 
 COPY . .
-# Như buildCommand của Vercel: sinh openapi.json, community-data.json… vào public/.
+# Bước build: sinh openapi.json, community-data.json… vào public/.
 RUN npm run build && mkdir -p /data && chown -R node:node /data
 
 USER node

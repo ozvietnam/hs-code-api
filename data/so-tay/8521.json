@@ -1,51 +1,14 @@
 {
  "nhom": "8521",
  "phamVi": {
-  "text": "Thiết bị ghi và kết hợp ghi với tái tạo video (hình ảnh và âm thanh) bằng từ tính hoặc quang học trên băng hoặc đĩa, kể cả máy ghi video kỹ thuật số; và thiết bị chỉ tái tạo hình ảnh, âm thanh trên máy thu truyền hình.",
+  "text": "Các thiết bị ghi và kết hợp ghi với tái tạo video (phương pháp ghi có thể bằng từ tính hoặc quang học và phương tiện ghi thường là băng hoặc đĩa); thiết bị tái tạo.",
   "nguon": "nhom8521.nhom",
   "trich": "(A) CÁC THIẾT BỊ GHI VÀ KẾT HỢP GHI VỚI TÁI TẠO VIDEO … Phương pháp ghi có thể bằng từ tính hoặc quang học và phương tiện ghi thường là băng hoặc đĩa. … (B) THIẾT BỊ TÁI TẠO"
  },
- "dieuKienVao": [
-  {
-   "fact": "tai_tao_ca_hinh_anh_va_am_thanh",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8521.nhom",
-   "trich": "Theo Chú giải 3 Phần XVI, thiết bị mà có thể tái tạo cả hình ảnh và âm thanh được phân loại ở nhóm này."
-  },
-  {
-   "fact": "phuong_phap_ghi",
-   "op": "in",
-   "value": "từ tính|quang học",
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8521.nhom",
-   "trich": "Phương pháp ghi có thể bằng từ tính hoặc quang học và phương tiện ghi thường là băng hoặc đĩa."
-  },
-  {
-   "fact": "ghi_ma_ky_thuat_so_tu_may_xu_ly_du_lieu_tu_dong",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8521.nhom",
-   "trich": "Nhóm này cũng bao gồm các thiết bị ghi, thường là trên đĩa từ, mã kỹ thuật số tương ứng với hình ảnh video và âm thanh, bằng cách chuyển đổi các mã kỹ thuật số từ một máy xử lý dữ liệu tự động (ví dụ, máy ghi video kỹ thuật số)."
-  },
-  {
-   "fact": "chi_tai_tao_tren_may_thu_truyen_hinh",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8521.nhom",
-   "trich": "Thiết bị này được thiết kế chỉ để tái tạo hình ảnh và âm thanh trực tiếp trên thiết bị thu truyền hình."
-  }
- ],
+ "dieuKienVao": [],
  "loaiTru": [
   {
-   "dieuKien": "Phương tiện ghi (băng, đĩa…) — không phải thiết bị ghi/tái tạo",
+   "dieuKien": "Phương tiện ghi âm",
    "sangNhom": "8523",
    "nguon": "nhom8521.nhom",
    "trich": "(a) Phương tiện ghi âm của nhóm 85.23.",
@@ -90,7 +53,7 @@
    "nguonGhi": "nhom8521.khong_bao_gom"
   },
   {
-   "hoi": "Hàng chỉ là phương tiện ghi (băng, đĩa) chứ không phải thiết bị ghi/tái tạo?",
+   "hoi": "Hàng là phương tiện ghi âm, chứ không phải thiết bị ghi hoặc tái tạo video?",
    "neuCo": "8523",
    "neuKhong": "8521",
    "nguon": "nhom8521.nhom",
@@ -98,7 +61,7 @@
    "nguonGhi": "nhom8521.khong_bao_gom"
   },
   {
-   "hoi": "Hàng là bộ phận hoặc phụ kiện (không phải thiết bị ghi/tái tạo video hoàn chỉnh)?",
+   "hoi": "Hàng là bộ phận hoặc phụ kiện của thiết bị ghi hoặc tái tạo video (không phải thiết bị hoàn chỉnh)?",
    "neuCo": "8522",
    "neuKhong": "8521",
    "nguon": "nhom8521.nhom",
@@ -167,14 +130,14 @@
  "phienBan": "HS2022+SEN2022",
  "bangQuyetDinh": "data/decision-tables/8521.json — ưu tiên tuyệt đối, sổ tay không ghi đè",
  "taoBoi": {
-  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "provider": "phiên Claude quản lý (10 agent con soạn, 6 agent soát độc lập, 07-09/10/2026)",
   "model": null,
-  "luc": "2026-10-07T09:08:08.777Z",
-  "ms": 3
+  "luc": "2026-10-09T09:28:09.800Z",
+  "ms": 4
  },
  "kiemTra": {
-  "tong": 20,
-  "dat": 20,
+  "tong": 16,
+  "dat": 16,
   "loai": 0,
   "nguonBiCat": []
  }

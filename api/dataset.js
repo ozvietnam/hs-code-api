@@ -30,7 +30,7 @@ const fs = require('fs');
 const path = require('path');
 
 /** Multi-route handler consolidating several logical endpoints into one function
- * (fewer cold starts, tidy repo — not a plan constraint; project is on Vercel Pro).
+ * (fewer cold starts, tidy repo — not a plan constraint).
  * Entry: `GET /api/dataset` with `resource` query (set via rewrites from legacy URLs).
  */
 module.exports = async function handler(req, res) {

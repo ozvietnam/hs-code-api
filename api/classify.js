@@ -22,7 +22,7 @@ module.exports = async function handler(req, res) {
   }
 
   // POST /api/extract-specs (rewrite → ?mode=extract_specs): rút thông số chuẩn từ chữ
-  // tiếng Trung + chữ OCR ozsource gửi sang. Gộp vào function này theo pattern vercel.json.
+  // tiếng Trung + chữ OCR ozsource gửi sang. Gộp vào function này theo pattern routes.json.
   if (String(req.query?.mode || '') === 'extract_specs') {
     const hasText = body && (body.titleZh || (Array.isArray(body.specsZh) ? body.specsZh.length : body.specsZh) || (Array.isArray(body.imageTexts) && body.imageTexts.length));
     if (!hasText) {

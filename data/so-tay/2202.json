@@ -1,9 +1,9 @@
 {
  "nhom": "2202",
  "phamVi": {
-  "text": "Đồ uống không chứa cồn (nồng độ cồn ≤ 0,5% vol) không thuộc nhóm khác: nước đã pha đường/chất ngọt/hương liệu, bia không cồn và đồ uống không cồn khác (trừ nước quả/rau ép nhóm 20.09).",
+  "text": "Các loại đồ uống không chứa cồn, như định nghĩa tại Chú giải 3 của Chương 22, không được phân loại vào các nhóm khác, đặc biệt là nhóm 20.09 hoặc 22.01: nước (kể cả nước khoáng, nước có ga) đã pha thêm đường, chất làm ngọt khác hoặc hương liệu; bia không cồn; các loại đồ uống không có cồn khác, trừ nước quả ép và nước rau ép thuộc nhóm 20.09.",
   "nguon": "nhom2202.nhom",
-  "trich": "Nhóm này bao gồm các loại đồ uống không chứa cồn, như định nghĩa tại Chú giải 3 của Chương này, không được phân loại vào các nhóm khác, đặc biệt là nhóm 20.09 hoặc 22.01."
+  "trich": "Nhóm này bao gồm các loại đồ uống không chứa cồn, như định nghĩa tại Chú giải 3 của Chương này, không được phân loại vào các nhóm khác, đặc biệt là nhóm 20.09 hoặc 22.01. (A) Nước, kể cả nước khoáng và nước có ga, đã pha thêm đường hoặc chất làm ngọt khác hoặc đã pha hương liệu. … (B) Bia không cồn. … (C) Các loại đồ uống không có cồn khác, trừ nước quả ép và nước rau ép thuộc nhóm 20.09."
  },
  "dieuKienVao": [
   {
@@ -23,24 +23,6 @@
    "ngoaiTru": [],
    "nguon": "ch22.chuong",
    "trich": "Theo mục đích của Chương này và các Chương 20 và 21, \"nồng độ cồn tính theo thể tích\" sẽ được xác định ở nhiệt độ 20°C."
-  },
-  {
-   "fact": "nuoc_da_pha_duong_chat_ngot_hoac_huong_lieu",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom2202.nhom",
-   "trich": "(A) Nước, kể cả nước khoáng và nước có ga, đã pha thêm đường hoặc chất làm ngọt khác hoặc đã pha hương liệu."
-  },
-  {
-   "fact": "bia_mach_nha_nong_do_con_theo_the_tich",
-   "op": "<=",
-   "value": 0.5,
-   "donVi": "% vol",
-   "ngoaiTru": [],
-   "nguon": "nhom2202.nhom",
-   "trich": "(1) Bia làm từ mạch nha, nồng độ cồn tính theo thể tích giảm xuống còn 0,5% hoặc ít hơn."
   }
  ],
  "loaiTru": [
@@ -51,7 +33,7 @@
    "trich": "(a) Sữa chua ở dạng lỏng và các loại sữa và kem đã lên men hoặc được làm chua khác, có chứa ca cao, quả hoặc hương liệu (nhóm 04.03)."
   },
   {
-   "dieuKien": "Xirô đường",
+   "dieuKien": "Xirô đường thuộc nhóm 17.02",
    "sangNhom": "1702",
    "nguon": "nhom2202.nhom",
    "trich": "(b) Xirô đường thuộc nhóm 17.02 và xirô đường có thêm hương liệu thuộc nhóm 21.06."
@@ -73,12 +55,6 @@
    "sangNhom": "3003|3004",
    "nguon": "nhom2202.nhom",
    "trich": "(d) Dược phẩm thuộc nhóm 30.03 hoặc 30.04."
-  },
-  {
-   "dieuKien": "Sản phẩm chương 22 đã chế biến để nấu nướng, không phù hợp làm đồ uống",
-   "sangNhom": "2103",
-   "nguon": "ch22.chuong",
-   "trich": "(a) Các sản phẩm của Chương này (trừ các sản phẩm của nhóm 22.09) được chế biến cho mục đích nấu nướng và không phù hợp để làm đồ uống (thường ở nhóm 21.03);"
   },
   {
    "dieuKien": "Nước biển",
@@ -197,15 +173,15 @@
  ],
  "phienBan": "HS2022+SEN2022",
  "taoBoi": {
-  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "provider": "phiên Claude quản lý (10 agent con soạn, 6 agent soát độc lập, 07-09/10/2026)",
   "model": null,
-  "luc": "2026-10-07T09:08:08.546Z",
-  "ms": 2
+  "luc": "2026-10-09T09:28:09.445Z",
+  "ms": 1
  },
  "kiemTra": {
-  "tong": 27,
-  "dat": 25,
-  "loai": 2,
+  "tong": 22,
+  "dat": 22,
+  "loai": 0,
   "nguonBiCat": []
  }
 }

@@ -1,22 +1,11 @@
 {
  "nhom": "1702",
  "phamVi": {
-  "text": "Các loại đường khác (trừ đường mía/củ cải nhóm 17.01 và đường tinh khiết hoá học nhóm 29.40) ở thể rắn, xirô đường, mật ong nhân tạo và đường caramen.",
+  "text": "Các loại đường khác ở thể rắn, xirô đường cũng như mật ong nhân tạo và đường caramen.",
   "nguon": "nhom1702.nhom",
   "trich": "Nhóm này bao gồm các loại đường khác ở thể rắn, xirô đường cũng như mật ong nhân tạo và đường caramen."
  },
  "dieuKienVao": [
-  {
-   "fact": "khong_phai_duong_nhom_1701_hoac_duong_tinh_khiet_hoa_hoc_2940",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [
-    "sucroza, lactoza, maltoza, glucoza, fructoza tinh khiết hoá học vẫn thuộc Chương 17"
-   ],
-   "nguon": "nhom1702.nhom",
-   "trich": "Phần này bao gồm đường, trừ đường thuộc nhóm 17.01 hoặc đường tinh khiết về mặt hoá học thuộc nhóm 29.40, ở thể rắn (kể cả dạng bột), đã hoặc chưa được thêm hương liệu hoặc chất màu."
-  },
   {
    "fact": "ty_le_lactoza_khan_tren_chat_kho",
    "op": ">",
@@ -74,7 +63,7 @@
  ],
  "loaiTru": [
   {
-   "dieuKien": "Đường thuộc nhóm 17.01 (đường mía, đường củ cải)",
+   "dieuKien": "Đường thuộc nhóm 17.01",
    "sangNhom": "1701",
    "nguon": "nhom1702.nhom",
    "trich": "Phần này bao gồm đường, trừ đường thuộc nhóm 17.01 hoặc đường tinh khiết về mặt hoá học thuộc nhóm 29.40"
@@ -86,22 +75,10 @@
    "trich": "(d) Đường tinh khiết về mặt hoá học (trừ đường sucroza, lactoza, maltose, glucoza và fructoza), và dạng dung dịch có nước của chúng (nhóm 29.40)."
   },
   {
-   "dieuKien": "Sản phẩm từ whey có lactoza khan từ 95% trở xuống (trọng lượng khô)",
-   "sangNhom": "0404",
-   "nguon": "nhom1702.nhom",
-   "trich": "Sản phẩm thu được từ whey và chứa hàm lượng lactoza, được ép thành đường lactoza khan, từ 95% trở xuống, tính theo trọng lượng ở thể khô, bị loại trừ (thường thuộc nhóm 04.04)."
-  },
-  {
    "dieuKien": "Malto-dextrin có lượng đường khử không quá 10%",
    "sangNhom": "3505",
    "nguon": "nhom1702.nhom",
    "trich": "Các sản phẩm có lượng đường khử không vượt quá 10% thuộc nhóm 35.05."
-  },
-  {
-   "dieuKien": "Xirô đường đã thêm hương liệu hoặc chất màu",
-   "sangNhom": "2106",
-   "nguon": "nhom1702.nhom",
-   "trich": "với điều kiện chưa được thêm hương liệu hoặc chất màu (xem phần Chú giải của nhóm 21.06)."
   },
   {
    "dieuKien": "Kẹo đường có pha cacao/sôcôla (trừ sôcôla trắng); bột cacao làm ngọt",
@@ -125,25 +102,11 @@
    "trich": "(d) Đường tinh khiết về mặt hoá học (trừ đường sucroza, lactoza, maltose, glucoza và fructoza), và dạng dung dịch có nước của chúng (nhóm 29.40)."
   },
   {
-   "hoi": "Sản phẩm từ whey có hàm lượng lactoza (quy về lactoza khan) trên 95% tính theo trọng lượng chất khô?",
-   "neuCo": "1702",
-   "neuKhong": "0404",
-   "nguon": "nhom1702.nhom",
-   "trich": "Các sản phẩm này phải chứa hàm lượng lactoza, được ép thành đường lactoza khan, trên 95% tính theo trọng lượng chất khô. … Sản phẩm thu được từ whey và chứa hàm lượng lactoza, được ép thành đường lactoza khan, từ 95% trở xuống, tính theo trọng lượng ở thể khô, bị loại trừ (thường thuộc nhóm 04.04)."
-  },
-  {
    "hoi": "Malto-dextrin có lượng đường khử (biểu thị như dextrose, chất khô) trên 10%?",
    "neuCo": "1702",
    "neuKhong": "3505",
    "nguon": "nhom1702.nhom",
    "trich": "Nhóm này chỉ bao gồm những sản phẩm có lượng đường khử, biểu thị như đường dextrose ở dạng chất khô, trên 10% (nhưng dưới 20%). Các sản phẩm có lượng đường khử không vượt quá 10% thuộc nhóm 35.05."
-  },
-  {
-   "hoi": "Xirô đường đã được thêm hương liệu hoặc chất màu?",
-   "neuCo": "2106",
-   "neuKhong": "1702",
-   "nguon": "nhom1702.nhom",
-   "trich": "với điều kiện chưa được thêm hương liệu hoặc chất màu (xem phần Chú giải của nhóm 21.06)."
   }
  ],
  "dong8": [
@@ -298,14 +261,14 @@
  ],
  "phienBan": "HS2022+SEN2022",
  "taoBoi": {
-  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "provider": "phiên Claude quản lý (10 agent con soạn, 6 agent soát độc lập, 07-09/10/2026)",
   "model": null,
-  "luc": "2026-10-07T09:08:08.530Z",
+  "luc": "2026-10-09T09:28:09.428Z",
   "ms": 2
  },
  "kiemTra": {
-  "tong": 38,
-  "dat": 37,
+  "tong": 33,
+  "dat": 32,
   "loai": 1,
   "nguonBiCat": []
  }

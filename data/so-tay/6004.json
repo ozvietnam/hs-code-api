@@ -1,0 +1,157 @@
+{
+ "nhom": "6004",
+ "phamVi": {
+  "text": "Vải dệt kim hoặc móc khổ rộng trên 30 cm, trừ loại thuộc nhóm 60.01, chứa từ 5% trở lên theo trọng lượng sợi đàn hồi (theo tên phân nhóm WCO 6004.10).",
+  "nguon": "wco.600410",
+  "trich": "knitted or crocheted fabrics of a width exceeding 30 cm, other than those of heading 60.01, containing by weight 5% or more of elastomeric yarn but not containing rubber thread"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "ty_trong_soi_dan_hoi_hoac_soi_cao_su",
+   "op": ">=",
+   "value": 5,
+   "donVi": "%",
+   "ngoaiTru": [],
+   "nguon": "nhom6004.nhom",
+   "trich": "có tỷ trọng sợi đàn hồi hoặc sợi cao su từ 5% trở lên"
+  },
+  {
+   "fact": "la_vai_co_tao_vong_long_nhom_6001",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom6004.nhom",
+   "trich": "Loại trừ vải có tạo vòng lông thuộc nhóm 60.01"
+  },
+  {
+   "fact": "soi_co_lai_sau_khi_keo_dan_2_lan_do_dai_ban_dau_trong_5_phut",
+   "op": "<=",
+   "value": 1.5,
+   "donVi": "lần độ dài ban đầu",
+   "ngoaiTru": [],
+   "nguon": "phan60.phan",
+   "trich": "sau khi bị kéo dãn ra gấp hai lần độ dài ban đầu, trong thời gian năm phút, sẽ co lại còn độ dài không quá 1,5 lần độ dài ban đầu của nó"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Vải có tạo vòng lông",
+   "sangNhom": "6001",
+   "nguon": "nhom6004.nhom",
+   "trich": "Loại trừ vải có tạo vòng lông thuộc nhóm 60.01"
+  },
+  {
+   "dieuKien": "Băng đã tẩm thuốc hoặc đóng gói để bán lẻ",
+   "sangNhom": "3005",
+   "nguon": "nhom6004.nhom",
+   "trich": "(a) Băng, đã tẩm thuốc hoặc đóng gói để bán lẻ (nhóm 30.05)."
+  },
+  {
+   "dieuKien": "Nhãn, phù hiệu và các mặt hàng tương tự, dệt kim hoặc móc",
+   "sangNhom": "5807",
+   "nguon": "nhom6004.nhom",
+   "trich": "(b) Các loại nhãn, phù hiệu và các mặt hàng tương tự, dệt kim hoặc móc thuộc nhóm 58.07."
+  },
+  {
+   "dieuKien": "Vải thêu",
+   "sangNhom": "5810",
+   "nguon": "nhom6004.nhom",
+   "trich": "(c) Vải thêu thuộc nhóm 58.10"
+  },
+  {
+   "dieuKien": "Hàng ren, móc",
+   "sangNhom": "5804",
+   "nguon": "ch60.chuong",
+   "trich": "(a) Hàng ren, móc thuộc nhóm 58.04;"
+  },
+  {
+   "dieuKien": "Vải khâu đính thu được bằng cách lấy các xơ dệt từ tấm xơ",
+   "sangNhom": "5602",
+   "nguon": "ch60.chuong",
+   "trich": "(a) Vải khâu đính thu được bằng cách lấy các xơ dệt từ tấm xơ đó (nhóm 56.02)."
+  },
+  {
+   "dieuKien": "Vải lưới và lưới",
+   "sangNhom": "5608",
+   "nguon": "ch60.chuong",
+   "trich": "(b) Vải lưới và lưới (nhóm 56.08)."
+  },
+  {
+   "dieuKien": "Thảm dệt kim và thảm",
+   "sangNhom": "5705",
+   "nguon": "ch60.chuong",
+   "trich": "(c) Các loại thảm dệt kim và thảm (nhóm 57.05)."
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Vải có tạo vòng lông?",
+   "neuCo": "6001",
+   "neuKhong": "6004",
+   "nguon": "nhom6004.nhom",
+   "trich": "Loại trừ vải có tạo vòng lông thuộc nhóm 60.01, nhóm này bao gồm vải dệt kim hoặc móc"
+  },
+  {
+   "hoi": "Vải chỉ chứa sợi đàn hồi (không chứa sợi cao su)?",
+   "neuCo": "60041010|60041090",
+   "neuKhong": "60049000",
+   "nguon": "wco.600410",
+   "trich": "containing by weight 5% or more of elastomeric yarn but not containing rubber thread"
+  },
+  {
+   "hoi": "Hàm lượng sợi đàn hồi không quá 20% tính theo khối lượng?",
+   "neuCo": "60041010",
+   "neuKhong": "60041090",
+   "nguon": "tax.60041010",
+   "trich": "60041010 - - Có hàm lượng sợi đàn hồi chiếm không quá 20% tính theo khối lượng"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "60041010",
+   "dieuKien": "Có hàm lượng sợi đàn hồi chiếm không quá 20% tính theo khối lượng — phân nhóm 6004.10 (WCO: knitted or crocheted fabrics of a width exceeding 30 cm, other than heading 60.01, containing by weight 5% or more of elastomeric yarn but not containing rubber thread)",
+   "loaiKhac": false,
+   "nguon": "tax.60041010",
+   "trich": "60041010 - - Có hàm lượng sợi đàn hồi chiếm không quá 20% tính theo khối lượng"
+  },
+  {
+   "hs": "60041090",
+   "dieuKien": "Loại khác — phân nhóm 6004.10 (WCO: knitted or crocheted fabrics of a width exceeding 30 cm, other than heading 60.01, containing by weight 5% or more of elastomeric yarn but not containing rubber thread)",
+   "loaiKhac": true,
+   "nguon": "tax.60041090",
+   "trich": "60041090 - - Loại khác"
+  },
+  {
+   "hs": "60049000",
+   "dieuKien": "Loại khác — phân nhóm 6004.90 (WCO: knitted or crocheted fabrics other than heading 60.01, width exceeding 30 cm, containing by weight 5% or more of elastomeric yarn or rubber thread)",
+   "loaiKhac": true,
+   "nguon": "tax.60049000",
+   "trich": "60049000 - Loại khác"
+  }
+ ],
+ "dungTuNguon": [
+  "ch60.chuong",
+  "nhom6004.nhom",
+  "phan60.phan",
+  "tax.60041010",
+  "tax.60041090",
+  "tax.60049000",
+  "wco.600410"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "phiên Claude quản lý (10 agent soạn + 6 agent soát độc lập, 07-09/10/2026)",
+  "model": null,
+  "luc": "2026-10-09T09:28:10.828Z",
+  "ms": 5
+ },
+ "kiemTra": {
+  "tong": 19,
+  "dat": 18,
+  "loai": 1,
+  "nguonBiCat": [
+   "phan60.phan (46130→25000)"
+  ]
+ }
+}

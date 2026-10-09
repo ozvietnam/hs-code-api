@@ -1,50 +1,19 @@
 {
  "nhom": "8537",
  "phamVi": {
-  "text": "Bảng, panel, giá đỡ, bàn, tủ... đã lắp từ hai thiết bị trở lên thuộc nhóm 85.35/85.36 (đóng ngắt, cầu chì...) để điều khiển hoặc phân phối điện; kể cả bảng điều khiển số có máy xử lý dữ liệu tự động, bảng chuyển mạch lập trình và bộ điều khiển có khả năng lập trình (PLC).",
+  "text": "Hệ thống các thiết bị thuộc hai nhóm nêu ở trên (ví dụ, các thiết bị đóng ngắt và cầu chì) được lắp ráp lại với nhau trên một bảng, panel, giá đỡ v.v... hoặc được gá trên tủ, bàn v.v...",
   "nguon": "nhom8537.nhom",
   "trich": "Chúng gồm một hệ thống các thiết bị thuộc hai nhóm nêu ở trên (ví dụ, các thiết bị đóng ngắt và cầu chì) được lắp ráp lại với nhau trên một bảng, panel, giá đỡ v.v… hoặc được gá trên … tủ, bàn v.v.."
  },
  "dieuKienVao": [
   {
-   "fact": "lap_rap_he_thong_thiet_bi_nhom_8535_8536_tren_bang_tu",
+   "fact": "lap_rap_he_thong_thiet_bi_len_bang_panel_gia_do_hoac_tu_ban",
    "op": "=",
    "value": true,
    "donVi": null,
-   "ngoaiTru": [
-    "bộ phận chuyển mạch đơn giản (vd hai chuyển mạch và một đầu nối) → 85.35 hoặc 85.36"
-   ],
+   "ngoaiTru": [],
    "nguon": "nhom8537.nhom",
    "trich": "Chúng gồm một hệ thống các thiết bị thuộc hai nhóm nêu ở trên (ví dụ, các thiết bị đóng ngắt và cầu chì) được lắp ráp lại với nhau trên một bảng, panel, giá đỡ v.v…"
-  },
-  {
-   "fact": "bang_dieu_khien_so_gan_may_xu_ly_du_lieu_tu_dong",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8537.nhom",
-   "trich": "(1) Các bảng điều khiển số được gắn kết hợp máy xử lý dữ liệu tự động, nói chung thường được dùng để điều khiển máy công cụ."
-  },
-  {
-   "fact": "bang_chuyen_mach_duoc_lap_trinh",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8537.nhom",
-   "trich": "(2) Các bảng chuyển mạch được lập trình để điều khiển các thiết bị; thiết bị này cho phép thay đổi các thao tác có lựa chọn. Thường thì chúng được sử dụng trong những thiết bị điện gia dụng như máy giặt và máy rửa bát."
-  },
-  {
-   "fact": "bo_dieu_khien_co_kha_nang_lap_trinh_PLC",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [
-    "thiết bị điều khiển tự động → 90.32"
-   ],
-   "nguon": "nhom8537.nhom",
-   "trich": "(3) “Các bộ điều khiển có khả năng lập trình” là các thiết bị số sử dụng bộ nhớ có khả năng lập trình để lưu trữ những câu lệnh nhằm thực hiện những hàm cụ thể như logic, trình tự, thời gian, đếm và số học, để điều khiển, nhờ các module vào/ra tương tự hoặc số, các kiểu máy khác nhau."
   }
  ],
  "loaiTru": [
@@ -73,7 +42,7 @@
    "trich": "(c) Các thiết bị hồng ngoại không dây dùng để điều khiển từ xa thiết bị thu truyền hình, máy ghi video hoặc các thiết bị điện khác (nhóm 85.43)."
   },
   {
-   "dieuKien": "Thiết bị hồng ngoại không dây điều khiển từ xa (chú giải chương)",
+   "dieuKien": "Thiết bị không dây hồng ngoại dùng cho điều khiển từ xa của máy thu truyền hình hoặc các thiết bị điện khác",
    "sangNhom": "8543",
    "nguon": "ch85.chuong",
    "trich": "10. Nhóm 85.37 không gồm các thiết bị không dây hồng ngoại dùng cho điều khiển từ xa của máy thu truyền hình hoặc các thiết bị điện khác (nhóm 85.43)."
@@ -100,21 +69,21 @@
    "trich": "(b) Các bộ phận chuyển mạch đơn giản, chẳng hạn những bộ phận có hai chuyển mạch và một đầu nối (nhóm 85.35 hoặc nhóm 85.36)."
   },
   {
-   "hoi": "Là thiết bị điều khiển tự động (tự điều chỉnh) chứ không phải bảng/tủ lắp thiết bị đóng ngắt?",
+   "hoi": "Là thiết bị điều khiển tự động?",
    "neuCo": "9032",
    "neuKhong": "8537",
    "nguon": "nhom8537.nhom",
    "trich": "Nhóm này không bao gồm các thiết bị điều khiển tự động thuộc nhóm 90.32."
   },
   {
-   "hoi": "Là thiết bị điều khiển từ xa hồng ngoại không dây?",
+   "hoi": "Là thiết bị không dây hồng ngoại dùng cho điều khiển từ xa của máy thu truyền hình hoặc các thiết bị điện khác?",
    "neuCo": "8543",
    "neuKhong": "8537",
    "nguon": "ch85.chuong",
    "trich": "10. Nhóm 85.37 không gồm các thiết bị không dây hồng ngoại dùng cho điều khiển từ xa của máy thu truyền hình hoặc các thiết bị điện khác (nhóm 85.43)."
   },
   {
-   "hoi": "Thiết bị đóng ngắt định giờ có đồng hồ hoặc động cơ đồng bộ?",
+   "hoi": "Là thiết bị đóng ngắt định giờ có đồng hồ cá nhân hoặc máy đồng hồ thời gian hoặc có động cơ đồng bộ?",
    "neuCo": "9107",
    "neuKhong": "8537",
    "nguon": "nhom8537.nhom",
@@ -236,8 +205,8 @@
   }
  ],
  "boPhan": {
-  "quyTac": "Chú giải 2 Phần XVI (quy tắc chung phân loại bộ phận)",
-  "tomTat": "Bộ phận của bảng, tủ điều khiển/phân phối nhóm 85.37 phân loại vào nhóm 85.38.",
+  "quyTac": "Quy định chung về phân loại các bộ phận (xem Chú giải Tổng quát Phần XVI)",
+  "tomTat": "Các bộ phận của sản phẩm thuộc nhóm này được phân loại vào nhóm 85.38.",
   "nguon": "nhom8537.nhom",
   "trich": "BỘ PHẬN Theo quy định chung về phân loại các bộ phận (xem Chú giải Tổng quát Phần XVI), các bộ phận của sản phẩm thuộc nhóm này được phân loại vào nhóm 85.38."
  },
@@ -263,14 +232,14 @@
  "phienBan": "HS2022+SEN2022",
  "bangQuyetDinh": "data/decision-tables/8537.json — ưu tiên tuyệt đối, sổ tay không ghi đè",
  "taoBoi": {
-  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "provider": "phiên Claude quản lý (10 agent con soạn, 6 agent soát độc lập, 07-09/10/2026)",
   "model": null,
-  "luc": "2026-10-07T09:08:08.829Z",
-  "ms": 4
+  "luc": "2026-10-09T09:28:09.898Z",
+  "ms": 19
  },
  "kiemTra": {
-  "tong": 33,
-  "dat": 33,
+  "tong": 30,
+  "dat": 30,
   "loai": 0,
   "nguonBiCat": []
  }

@@ -1,7 +1,7 @@
 {
  "nhom": "8535",
  "phamVi": {
-  "text": "Thiết bị điện để đóng ngắt, bảo vệ mạch điện hoặc đấu nối/lắp trong mạch điện (cầu chì, bộ ngắt mạch tự động, thiết bị đóng ngắt cao áp, bộ chống sét, bộ khống chế điện áp, cầu dao cách ly, bộ triệt xung) dùng cho điện áp trên 1000 V.",
+  "text": "Các thiết bị điện dùng trong hệ thống phân phối điện năng; gồm các thiết bị đã được mô tả trong Chú giải chi tiết nhóm 85.36 khi điện áp trên 1000V.",
   "nguon": "nhom8535.nhom",
   "trich": "Nói chung, nhóm này bao gồm các thiết bị điện dùng trong hệ thống phân phối điện năng. … Nhóm này bao gồm các thiết bị đã được mô tả trong phần Chú giải chi tiết nhóm 85.36 khi điện áp trên 1000V."
  },
@@ -20,9 +20,7 @@
    "op": "=",
    "value": true,
    "donVi": null,
-   "ngoaiTru": [
-    "cụm chi tiết lắp ráp của các thiết bị (trừ cụm đóng ngắt đơn giản) → 85.37"
-   ],
+   "ngoaiTru": [],
    "nguon": "nhom8535.nhom",
    "trich": "Các điều khoản của Chú giải chi tiết nhóm 85.36 áp dụng, một cách tương tự, về khía cạnh các đặc điểm kỹ thuật và chức năng của các thiết bị, đóng ngắt mạch hay bảo vệ dòng điện, hoặc dùng để đấu nối hay lắp trong mạch điện."
   },
@@ -31,11 +29,9 @@
    "op": "=",
    "value": true,
    "donVi": null,
-   "ngoaiTru": [
-    "bộ điều chỉnh điện áp tự động → 90.32"
-   ],
+   "ngoaiTru": [],
    "nguon": "nhom8535.nhom",
-   "trich": "Đôi khi những thiết bị này có cấu trúc giống với kiểu đèn phóng điện, nhưng không sử dụng cho những mục đích chiếu sáng, chúng không được xem như là đèn chiếu sáng."
+   "trich": "(D) Các bộ khống chế điện áp. … Đôi khi những thiết bị này có cấu trúc giống với kiểu đèn phóng điện, nhưng không sử dụng cho những mục đích chiếu sáng, chúng không được xem như là đèn chiếu sáng."
   }
  ],
  "loaiTru": [
@@ -66,21 +62,14 @@
  ],
  "phanBiet": [
   {
-   "hoi": "Thiết bị đóng ngắt/bảo vệ/đấu nối mạch điện dùng cho điện áp trên 1000 V?",
-   "neuCo": "8535",
-   "neuKhong": "8536",
-   "nguon": "nhom8535.nhom",
-   "trich": "Nhóm này bao gồm các thiết bị đã được mô tả trong phần Chú giải chi tiết nhóm 85.36 khi điện áp trên 1000V."
-  },
-  {
-   "hoi": "Là cụm lắp ráp nhiều thiết bị đóng ngắt/bảo vệ (không phải cụm đóng ngắt đơn giản)?",
+   "hoi": "Là cụm chi tiết lắp ráp của các thiết bị kể trên (trừ các cụm đóng ngắt đơn giản)?",
    "neuCo": "8537",
    "neuKhong": "8535",
    "nguon": "nhom8535.nhom",
    "trich": "Nhóm này ngoại trừ những cụm chi tiết lắp ráp của những thiết bị kể trên (trừ các cụm đóng ngắt đơn giản) (nhóm 85.37)."
   },
   {
-   "hoi": "Thiết bị là bộ điều chỉnh điện áp tự động (không phải bộ khống chế/bảo vệ quá áp)?",
+   "hoi": "Thiết bị là bộ điều chỉnh điện áp tự động?",
    "neuCo": "9032",
    "neuKhong": "8535",
    "nguon": "nhom8535.nhom",
@@ -195,8 +184,8 @@
   }
  ],
  "boPhan": {
-  "quyTac": "Chú giải 2 Phần XVI (quy tắc chung phân loại bộ phận)",
-  "tomTat": "Bộ phận của thiết bị nhóm 85.35 không phân loại tại đây mà vào nhóm 85.38.",
+  "quyTac": "Quy tắc chung về phân loại các bộ phận (xem Chú giải Chi tiết Tổng quát phần XVI)",
+  "tomTat": "Các bộ phận của các thiết bị thuộc nhóm này được phân loại ở nhóm 85.38.",
   "nguon": "nhom8535.nhom",
   "trich": "BỘ PHẬN Theo quy tắc chung về phân loại các bộ phận (xem Chú giải Chi tiết Tổng quát phần XVI), các bộ phận của các thiết bị thuộc nhóm này được phân loại ở nhóm 85.38."
  },
@@ -220,14 +209,14 @@
  "phienBan": "HS2022+SEN2022",
  "bangQuyetDinh": "data/decision-tables/8535.json — ưu tiên tuyệt đối, sổ tay không ghi đè",
  "taoBoi": {
-  "provider": "phiên Claude quản lý (10 agent con, 07/10/2026)",
+  "provider": "phiên Claude quản lý (10 agent con soạn, 6 agent soát độc lập, 07-09/10/2026)",
   "model": null,
-  "luc": "2026-10-07T09:08:08.813Z",
-  "ms": 4
+  "luc": "2026-10-09T09:28:09.852Z",
+  "ms": 6
  },
  "kiemTra": {
-  "tong": 27,
-  "dat": 27,
+  "tong": 26,
+  "dat": 26,
   "loai": 0,
   "nguonBiCat": []
  }

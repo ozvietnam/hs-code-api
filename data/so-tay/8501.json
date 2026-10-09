@@ -1,0 +1,725 @@
+{
+ "nhom": "8501",
+ "phamVi": {
+  "text": "Động cơ điện (máy chuyển điện năng sang cơ năng), gồm động cơ quay tròn và động cơ tuyến tính; máy móc sản sinh điện năng từ nhiều nguồn năng lượng khác nhau (cơ năng, năng lượng mặt trời...) với điều kiện không được mô tả cụ thể hơn ở nhóm khác.",
+  "nguon": "nhom8501.nhom",
+  "trich": "Các động cơ điện là các loại máy chuyển điện năng sang cơ năng. Nhóm này bao gồm các động cơ quay tròn và các động cơ tuyến tính. … Máy móc sản sinh điện năng từ nhiều nguồn năng lượng khác nhau (cơ năng, năng lượng mặt trời...) được phân loại vào nhóm này, với điều kiện là chúng không được mô tả cụ thể hơn ở bất kỳ một nhóm nào khác trong danh mục."
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_dong_co_dien_chuyen_dien_nang_sang_co_nang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8501.nhom",
+   "trich": "Các động cơ điện là các loại máy chuyển điện năng sang cơ năng. Nhóm này bao gồm các động cơ quay tròn và các động cơ tuyến tính."
+  },
+  {
+   "fact": "may_san_sinh_dien_nang_khong_duoc_mo_ta_cu_the_hon_o_nhom_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8501.nhom",
+   "trich": "Máy móc sản sinh điện năng từ nhiều nguồn năng lượng khác nhau (cơ năng, năng lượng mặt trời...) được phân loại vào nhóm này, với điều kiện là chúng không được mô tả cụ thể hơn ở bất kỳ một nhóm nào khác trong danh mục."
+  },
+  {
+   "fact": "may_phat_dien_xuat_trinh_khong_co_nguon_luc_so_cap",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8501.nhom",
+   "trich": "Tuy nhiên, nhóm này chỉ bao gồm các máy phát điện khi xuất trình không có nguồn lực sơ cấp."
+  },
+  {
+   "fact": "may_phat_quang_dien_tam_te_bao_quang_dien_ket_hop_thiet_bi_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8501.nhom",
+   "trich": "Nhóm này cũng bao gồm các máy phát quang điện, chúng bao gồm các tấm tế bào quang điện kết hợp với các thiết bị khác, ví dụ như ắc quy, bộ điều khiển điện tử (bộ ôn áp, nghịch lưu,...)"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Động cơ khởi động sử dụng trong các động cơ đốt trong",
+   "sangNhom": "8511",
+   "nguon": "nhom8501.nhom",
+   "trich": "Ngoại trừ các động cơ khởi động sử dụng trong các động cơ đốt trong (nhóm 85.11), nhóm này còn bao gồm tất cả các loại động cơ điện"
+  },
+  {
+   "dieuKien": "Động cơ đồng bộ dùng cho đồng hồ đã được lắp ráp với hệ thống truyền động của đồng hồ",
+   "sangNhom": "9109",
+   "nguon": "nhom8501.nhom",
+   "trich": "tuy nhiên loại trừ những động cơ đồng bộ như vậy mà đã được lắp ráp với hệ thống truyền động của đồng hồ (nhóm 91.09)"
+  },
+  {
+   "dieuKien": "Trống hoặc con lăn kết hợp với mô tơ điện dùng cho băng tải hoặc băng truyền",
+   "sangNhom": "8431",
+   "nguon": "nhom8501.nhom",
+   "trich": "(a) Trống hoặc con lăn kết hợp với mô tơ điện dùng cho băng tải hoặc băng truyền (nhóm 84.31)."
+  },
+  {
+   "dieuKien": "Động cơ rung và thiết bị rung điện từ",
+   "sangNhom": "8479",
+   "nguon": "nhom8501.nhom",
+   "trich": "(b) Các động cơ rung và các thiết bị rung điện từ thuộc nhóm 84.79"
+  },
+  {
+   "dieuKien": "Máy phát điện kết hợp với phần kéo sơ cấp",
+   "sangNhom": "8502",
+   "nguon": "nhom8501.nhom",
+   "trich": "(c) Các máy phát điện kết hợp với phần kéo sơ cấp (nhóm 85.02)."
+  },
+  {
+   "dieuKien": "Máy phát điện cao thế",
+   "sangNhom": "8504",
+   "nguon": "nhom8501.nhom",
+   "trich": "(d) Các máy phát điện cao thế (nhóm 85.04)"
+  },
+  {
+   "dieuKien": "Pin và bộ pin",
+   "sangNhom": "8506",
+   "nguon": "nhom8501.nhom",
+   "trich": "(e) Các pin và bộ pin (nhóm 85.06)"
+  },
+  {
+   "dieuKien": "Máy phát (đinamô và xoay chiều) sử dụng chung với động cơ đốt trong, hoặc cho thiết bị phát ánh sáng hoặc phát tín hiệu dùng cho xe đạp hoặc xe có động cơ",
+   "sangNhom": "8511|8512",
+   "nguon": "nhom8501.nhom",
+   "trich": "(í) Các máy phát (đinamô và xoay chiều) được sử dụng chung với động cơ đốt trong, hoặc cho thiết bị phát ánh sáng hoặc thiết bị phát tín hiệu dùng cho xe đạp hoặc xe có động cơ (nhóm 85.11 và 85.12 tương ứng)."
+  },
+  {
+   "dieuKien": "Pin mặt trời, đã hoặc chưa lắp ráp thành môđun hoặc làm thành dạng tấm nhưng không gắn với các linh kiện dù là đơn giản",
+   "sangNhom": "8541",
+   "nguon": "nhom8501.nhom",
+   "trich": "(g) Các pin mặt trời, đã hoặc chưa lắp ráp thành môđun hoặc làm thành dạng tấm nhưng không gắn với các linh kiện dù là đơn giản, nó cung cấp năng lượng trực tiếp, ví dụ, cho động cơ, cho thiết bị điện phân (nhóm 85.41)."
+  },
+  {
+   "dieuKien": "Thiết bị điện đôi khi cũng được biết như là máy phát nhưng không sản sinh ra năng lượng điện (ví dụ máy phát các tín hiệu)",
+   "sangNhom": "8543",
+   "nguon": "nhom8501.nhom",
+   "trich": "(h) Các thiết bị điện, đôi khi cũng được biết như là máy phát mặc dù nó không sản sinh ra năng lượng điện, ví dụ như máy phát các tín hiệu (nhóm 85.43)."
+  },
+  {
+   "dieuKien": "Máy phát tia X",
+   "sangNhom": "9022",
+   "nguon": "nhom8501.nhom",
+   "trich": "(ij) Các máy phát của Chương 90 chẳng hạn như máy phát tia X (nhóm 90.22)"
+  },
+  {
+   "dieuKien": "Máy phát được thiết kế cho mục đích trưng bày và không thích hợp cho mục đích sử dụng khác",
+   "sangNhom": "9023",
+   "nguon": "nhom8501.nhom",
+   "trich": "các máy phát được thiết kế cho mục đích trưng bày và không thích hợp cho mục đích sử dụng khác (nhóm 90.23)."
+  },
+  {
+   "dieuKien": "Hàng hóa đã mô tả trong nhóm 85.11, 85.12, 85.40, 85.41 hoặc 85.42",
+   "sangNhom": "8511|8512|8540|8541|8542",
+   "nguon": "ch85.chuong",
+   "trich": "2. Các nhóm từ 85.01 đến 85.04 không áp dụng cho các loại hàng hóa đã mô tả trong nhóm 85.11, 85.12, 85.40, 85.41 hoặc 85.42."
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Máy phát điện được xuất trình kết hợp với phần kéo sơ cấp (nguồn lực sơ cấp)?",
+   "neuCo": "8502",
+   "neuKhong": "8501",
+   "nguon": "nhom8501.nhom",
+   "trich": "Tuy nhiên, nhóm này chỉ bao gồm các máy phát điện khi xuất trình không có nguồn lực sơ cấp. … (c) Các máy phát điện kết hợp với phần kéo sơ cấp (nhóm 85.02)."
+  },
+  {
+   "hoi": "Trong các máy phát điện: là máy phát điện cao thế?",
+   "neuCo": "8504",
+   "neuKhong": "8501",
+   "nguon": "nhom8501.nhom",
+   "trich": "Nhóm này bao gồm tất cả các loại máy phát điện kể cả gồm các máy phát điện công suất lớn dùng cho nhà máy điện … (d) Các máy phát điện cao thế (nhóm 85.04)"
+  },
+  {
+   "hoi": "Là tấm hoặc môđun pin mặt trời không gắn với linh kiện dù là đơn giản (ví dụ điôt, ắc quy, bộ điều khiển điện tử)?",
+   "neuCo": "8541",
+   "neuKhong": "8501",
+   "nguon": "nhom8501.nhom",
+   "trich": "Nhóm này cũng bao gồm các máy phát quang điện, chúng bao gồm các tấm tế bào quang điện kết hợp với các thiết bị khác, ví dụ như ắc quy, bộ điều khiển điện tử (bộ ôn áp, nghịch lưu,...) cũng như các tấm hoặc các mô-đun gắn các thiết bị đơn giản (ví dụ điôt để điều khiển chiều của dòng điện) … (g) Các pin mặt trời, đã hoặc chưa lắp ráp thành môđun hoặc làm thành dạng tấm nhưng không gắn với các linh kiện dù là đơn giản, nó cung cấp năng lượng trực tiếp, ví dụ, cho động cơ, cho thiết bị điện phân (nhóm 85.41)."
+  },
+  {
+   "hoi": "Là động cơ khởi động sử dụng trong các động cơ đốt trong?",
+   "neuCo": "8511",
+   "neuKhong": "8501",
+   "nguon": "nhom8501.nhom",
+   "trich": "Ngoại trừ các động cơ khởi động sử dụng trong các động cơ đốt trong (nhóm 85.11), nhóm này còn bao gồm tất cả các loại động cơ điện"
+  },
+  {
+   "hoi": "Trong máy điện một chiều (động cơ và máy phát) công suất không quá 750 W: là máy phát điện?",
+   "neuCo": "85013180",
+   "neuKhong": "85013130|85013160|85013170",
+   "nguon": "tax.85013180",
+   "trich": "85013180 - - - Máy phát điện"
+  },
+  {
+   "hoi": "Trong máy điện một chiều (động cơ và máy phát) công suất không quá 750 W: là động cơ dùng cho xe của Chương 87?",
+   "neuCo": "85013160",
+   "neuKhong": "85013130|85013170|85013180",
+   "nguon": "tax.85013160",
+   "trich": "85013160 - - - Động cơ dùng cho xe của Chương 87"
+  },
+  {
+   "hoi": "Trong máy điện một chiều công suất trên 750 W nhưng không quá 75 kW: là máy phát điện (không phải động cơ)?",
+   "neuCo": "85013226|85013233",
+   "neuKhong": "85013221|85013224|85013225|85013231|85013232",
+   "nguon": "tax.85013226",
+   "trich": "85013226 - - - - Máy phát điện"
+  },
+  {
+   "hoi": "Máy phát điện xoay chiều (trừ quang điện) công suất không quá 75 kVA: công suất không quá 12,5 kVA?",
+   "neuCo": "85016110",
+   "neuKhong": "85016120",
+   "nguon": "tax.85016110",
+   "trich": "85016110 - - - Công suất không quá 12,5 kVA"
+  },
+  {
+   "hoi": "Máy phát điện xoay chiều (trừ quang điện) công suất trên 75 kVA: công suất không quá 150 kVA?",
+   "neuCo": "85016210",
+   "neuKhong": "85016220",
+   "nguon": "tax.85016210",
+   "trich": "85016210 - - - Công suất trên 75 kVA nhưng không quá 150 kVA"
+  },
+  {
+   "hoi": "Động cơ xoay chiều nhiều pha công suất trên 750 W nhưng không quá 75 kW: loại dùng cho xe của Chương 87?",
+   "neuCo": "85015212|85015222|85015232",
+   "neuKhong": "85015211|85015219|85015221|85015229|85015231|85015239",
+   "nguon": "tax.85015212",
+   "trich": "85015212 - - - - Loại dùng cho xe của Chương 87"
+  },
+  {
+   "hoi": "Động cơ xoay chiều nhiều pha công suất trên 75 kW: loại dùng cho xe của Chương 87?",
+   "neuCo": "85015310",
+   "neuKhong": "85015390",
+   "nguon": "tax.85015310",
+   "trich": "85015310 - - - Loại dùng cho xe của Chương 87"
+  },
+  {
+   "hoi": "Là động cơ một pha cỡ nhỏ, có độ chính xác cao dùng cho ổ đĩa cứng, ổ đĩa mềm, ổ đĩa compact, ổ DVD (động cơ hướng trục)?",
+   "neuCo": "85011030|85011060",
+   "neuKhong": "85011029|85011049|85011059|85011099",
+   "nguon": "sen.85011030",
+   "trich": "Động cơ hướng trục là động cơ một pha cỡ nhỏ, có độ chính xác cao được dùng cho các loại ổ đĩa cứng (HD), ổ đĩa mềm (FD), ổ đĩa compact (CD), ổ đĩa kỹ thuật số đa dụng (DVD), v.v...."
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "85011021",
+   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "tax.85011021",
+   "trich": "85011021 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+  },
+  {
+   "hs": "85011022",
+   "dieuKien": "Loại khác, công suất không quá 5 W (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W)",
+   "loaiKhac": true,
+   "nguon": "tax.85011022",
+   "trich": "85011022 - - - - Loại khác, công suất không quá 5 W"
+  },
+  {
+   "hs": "85011029",
+   "dieuKien": "Loại khác (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.85011029",
+   "trich": "85011029 - - - - Loại khác"
+  },
+  {
+   "hs": "85011030",
+   "dieuKien": "Động cơ hướng trục: động cơ một pha cỡ nhỏ, có độ chính xác cao dùng cho ổ đĩa cứng (HD), ổ đĩa mềm (FD), ổ đĩa compact (CD), ổ đĩa kỹ thuật số đa dụng (DVD); quay đĩa với tốc độ từ 3.000 đến 10.000 vòng/phút (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "sen.85011030",
+   "trich": "Động cơ hướng trục là động cơ một pha cỡ nhỏ, có độ chính xác cao được dùng cho các loại ổ đĩa cứng (HD), ổ đĩa mềm (FD), ổ đĩa compact (CD), ổ đĩa kỹ thuật số đa dụng (DVD), v.v...."
+  },
+  {
+   "hs": "85011041",
+   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "tax.85011041",
+   "trich": "85011041 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+  },
+  {
+   "hs": "85011049",
+   "dieuKien": "Loại khác (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.85011049",
+   "trich": "85011049 - - - - Loại khác"
+  },
+  {
+   "hs": "85011051",
+   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "tax.85011051",
+   "trich": "85011051 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+  },
+  {
+   "hs": "85011059",
+   "dieuKien": "Loại khác (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.85011059",
+   "trich": "85011059 - - - - Loại khác"
+  },
+  {
+   "hs": "85011060",
+   "dieuKien": "Động cơ hướng trục: động cơ một pha cỡ nhỏ, có độ chính xác cao dùng cho ổ đĩa cứng (HD), ổ đĩa mềm (FD), ổ đĩa compact (CD), ổ đĩa kỹ thuật số đa dụng (DVD); quay đĩa với tốc độ từ 3.000 đến 10.000 vòng/phút (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "sen.85011060",
+   "trich": "Động cơ hướng trục là động cơ một pha cỡ nhỏ, có độ chính xác cao được dùng cho các loại ổ đĩa cứng (HD), ổ đĩa mềm (FD), ổ đĩa compact (CD), ổ đĩa kỹ thuật số đa dụng (DVD), v.v...."
+  },
+  {
+   "hs": "85011091",
+   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "tax.85011091",
+   "trich": "85011091 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+  },
+  {
+   "hs": "85011099",
+   "dieuKien": "Loại khác (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.85011099",
+   "trich": "85011099 - - - - Loại khác"
+  },
+  {
+   "hs": "85012012",
+   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850120: Electric motors; universal AC/DC of an output exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "tax.85012012",
+   "trich": "85012012 - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+  },
+  {
+   "hs": "85012019",
+   "dieuKien": "Loại khác (thuộc WCO 850120: Electric motors; universal AC/DC of an output exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.85012019",
+   "trich": "85012019 - - - Loại khác"
+  },
+  {
+   "hs": "85012021",
+   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850120: Electric motors; universal AC/DC of an output exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "tax.85012021",
+   "trich": "85012021 - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+  },
+  {
+   "hs": "85012029",
+   "dieuKien": "Loại khác (thuộc WCO 850120: Electric motors; universal AC/DC of an output exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.85012029",
+   "trich": "85012029 - - - Loại khác"
+  },
+  {
+   "hs": "85013130",
+   "dieuKien": "Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850131: Electric motors and generators; DC, of an output not exceeding 750W)",
+   "loaiKhac": false,
+   "nguon": "tax.85013130",
+   "trich": "85013130 - - - Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+  },
+  {
+   "hs": "85013160",
+   "dieuKien": "Động cơ dùng cho xe của Chương 87 (thuộc WCO 850131: Electric motors and generators; DC, of an output not exceeding 750W)",
+   "loaiKhac": false,
+   "nguon": "tax.85013160",
+   "trich": "85013160 - - - Động cơ dùng cho xe của Chương 87"
+  },
+  {
+   "hs": "85013170",
+   "dieuKien": "Động cơ khác (thuộc WCO 850131: Electric motors and generators; DC, of an output not exceeding 750W)",
+   "loaiKhac": false,
+   "nguon": "tax.85013170",
+   "trich": "85013170 - - - Động cơ khác"
+  },
+  {
+   "hs": "85013180",
+   "dieuKien": "Máy phát điện (thuộc WCO 850131: Electric motors and generators; DC, of an output not exceeding 750W)",
+   "loaiKhac": false,
+   "nguon": "tax.85013180",
+   "trich": "85013180 - - - Máy phát điện"
+  },
+  {
+   "hs": "85013221",
+   "dieuKien": "Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850132: Electric motors and generators; DC, of an output exceeding 750W but not exceeding 75kW)",
+   "loaiKhac": false,
+   "nguon": "tax.85013221",
+   "trich": "85013221 - - - - Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+  },
+  {
+   "hs": "85013224",
+   "dieuKien": "Động cơ dùng cho xe của Chương 87 (thuộc WCO 850132: Electric motors and generators; DC, of an output exceeding 750W but not exceeding 75kW)",
+   "loaiKhac": false,
+   "nguon": "tax.85013224",
+   "trich": "85013224 - - - - Động cơ dùng cho xe của Chương 87"
+  },
+  {
+   "hs": "85013225",
+   "dieuKien": "Động cơ khác (thuộc WCO 850132: Electric motors and generators; DC, of an output exceeding 750W but not exceeding 75kW); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "tax.85013225",
+   "trich": "85013225 - - - - Động cơ khác"
+  },
+  {
+   "hs": "85013226",
+   "dieuKien": "Máy phát điện (thuộc WCO 850132: Electric motors and generators; DC, of an output exceeding 750W but not exceeding 75kW); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "tax.85013226",
+   "trich": "85013226 - - - - Máy phát điện"
+  },
+  {
+   "hs": "85013231",
+   "dieuKien": "Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50 (thuộc WCO 850132: Electric motors and generators; DC, of an output exceeding 750W but not exceeding 75kW)",
+   "loaiKhac": false,
+   "nguon": "tax.85013231",
+   "trich": "85013231 - - - - Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50"
+  },
+  {
+   "hs": "85013232",
+   "dieuKien": "Động cơ khác (thuộc WCO 850132: Electric motors and generators; DC, of an output exceeding 750W but not exceeding 75kW); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "tax.85013232",
+   "trich": "85013232 - - - - Động cơ khác"
+  },
+  {
+   "hs": "85013233",
+   "dieuKien": "Máy phát điện (thuộc WCO 850132: Electric motors and generators; DC, of an output exceeding 750W but not exceeding 75kW); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "tax.85013233",
+   "trich": "85013233 - - - - Máy phát điện"
+  },
+  {
+   "hs": "85013310",
+   "dieuKien": "Loại dùng cho xe của Chương 87 (thuộc WCO 850133: Electric motors and generators; DC, of an output exceeding 75kW but not exceeding 375kW)",
+   "loaiKhac": false,
+   "nguon": "tax.85013310",
+   "trich": "85013310 - - - Loại dùng cho xe của Chương 87"
+  },
+  {
+   "hs": "85013390",
+   "dieuKien": "Loại khác (thuộc WCO 850133: Electric motors and generators; DC, of an output exceeding 75kW but not exceeding 375kW)",
+   "loaiKhac": true,
+   "nguon": "tax.85013390",
+   "trich": "85013390 - - - Loại khác"
+  },
+  {
+   "hs": "85013400",
+   "dieuKien": "Công suất trên 375 kW (thuộc WCO 850134: Electric motors and generators; DC, of an output exceeding 375kW)",
+   "loaiKhac": false,
+   "nguon": "tax.85013400",
+   "trich": "85013400 - - Công suất trên 375 kW"
+  },
+  {
+   "hs": "85014011",
+   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850140: Electric motors; AC motors, single-phase); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "tax.85014011",
+   "trich": "85014011 - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+  },
+  {
+   "hs": "85014019",
+   "dieuKien": "Loại khác (thuộc WCO 850140: Electric motors; AC motors, single-phase); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.85014019",
+   "trich": "85014019 - - - Loại khác"
+  },
+  {
+   "hs": "85014021",
+   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850140: Electric motors; AC motors, single-phase); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "tax.85014021",
+   "trich": "85014021 - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+  },
+  {
+   "hs": "85014029",
+   "dieuKien": "Loại khác (thuộc WCO 850140: Electric motors; AC motors, single-phase); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.85014029",
+   "trich": "85014029 - - - Loại khác"
+  },
+  {
+   "hs": "85015111",
+   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850151: Electric motors; AC motors, multi-phase, of an output not exceeding 750W)",
+   "loaiKhac": false,
+   "nguon": "tax.85015111",
+   "trich": "85015111 - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+  },
+  {
+   "hs": "85015119",
+   "dieuKien": "Loại khác (thuộc WCO 850151: Electric motors; AC motors, multi-phase, of an output not exceeding 750W)",
+   "loaiKhac": true,
+   "nguon": "tax.85015119",
+   "trich": "85015119 - - - Loại khác"
+  },
+  {
+   "hs": "85015211",
+   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850152: Electric motors; AC motors, multi-phase, of an output exceeding 750W but not exceeding 75kW); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "tax.85015211",
+   "trich": "85015211 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+  },
+  {
+   "hs": "85015212",
+   "dieuKien": "Loại dùng cho xe của Chương 87 (thuộc WCO 850152: Electric motors; AC motors, multi-phase, of an output exceeding 750W but not exceeding 75kW); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "tax.85015212",
+   "trich": "85015212 - - - - Loại dùng cho xe của Chương 87"
+  },
+  {
+   "hs": "85015219",
+   "dieuKien": "Loại khác (thuộc WCO 850152: Electric motors; AC motors, multi-phase, of an output exceeding 750W but not exceeding 75kW); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.85015219",
+   "trich": "85015219 - - - - Loại khác"
+  },
+  {
+   "hs": "85015221",
+   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850152: Electric motors; AC motors, multi-phase, of an output exceeding 750W but not exceeding 75kW); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "tax.85015221",
+   "trich": "85015221 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+  },
+  {
+   "hs": "85015222",
+   "dieuKien": "Loại dùng cho xe của Chương 87 (thuộc WCO 850152: Electric motors; AC motors, multi-phase, of an output exceeding 750W but not exceeding 75kW); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "tax.85015222",
+   "trich": "85015222 - - - - Loại dùng cho xe của Chương 87"
+  },
+  {
+   "hs": "85015229",
+   "dieuKien": "Loại khác (thuộc WCO 850152: Electric motors; AC motors, multi-phase, of an output exceeding 750W but not exceeding 75kW); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.85015229",
+   "trich": "85015229 - - - - Loại khác"
+  },
+  {
+   "hs": "85015231",
+   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50 (thuộc WCO 850152: Electric motors; AC motors, multi-phase, of an output exceeding 750W but not exceeding 75kW)",
+   "loaiKhac": false,
+   "nguon": "tax.85015231",
+   "trich": "85015231 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50"
+  },
+  {
+   "hs": "85015232",
+   "dieuKien": "Loại dùng cho xe của Chương 87 (thuộc WCO 850152: Electric motors; AC motors, multi-phase, of an output exceeding 750W but not exceeding 75kW); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": false,
+   "nguon": "tax.85015232",
+   "trich": "85015232 - - - - Loại dùng cho xe của Chương 87"
+  },
+  {
+   "hs": "85015239",
+   "dieuKien": "Loại khác (thuộc WCO 850152: Electric motors; AC motors, multi-phase, of an output exceeding 750W but not exceeding 75kW); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "loaiKhac": true,
+   "nguon": "tax.85015239",
+   "trich": "85015239 - - - - Loại khác"
+  },
+  {
+   "hs": "85015310",
+   "dieuKien": "Loại dùng cho xe của Chương 87 (thuộc WCO 850153: Electric motors; AC motors, multi-phase, of an output exceeding 75kW)",
+   "loaiKhac": false,
+   "nguon": "tax.85015310",
+   "trich": "85015310 - - - Loại dùng cho xe của Chương 87"
+  },
+  {
+   "hs": "85015390",
+   "dieuKien": "Loại khác (thuộc WCO 850153: Electric motors; AC motors, multi-phase, of an output exceeding 75kW)",
+   "loaiKhac": true,
+   "nguon": "tax.85015390",
+   "trich": "85015390 - - - Loại khác"
+  },
+  {
+   "hs": "85016110",
+   "dieuKien": "Công suất không quá 12,5 kVA (thuộc WCO 850161: Generators; AC generators, (alternators), other than photovoltaic generators, of an output not exceeding 75kVA)",
+   "loaiKhac": false,
+   "nguon": "tax.85016110",
+   "trich": "85016110 - - - Công suất không quá 12,5 kVA"
+  },
+  {
+   "hs": "85016120",
+   "dieuKien": "Công suất trên 12,5 kVA (thuộc WCO 850161: Generators; AC generators, (alternators), other than photovoltaic generators, of an output not exceeding 75kVA)",
+   "loaiKhac": false,
+   "nguon": "tax.85016120",
+   "trich": "85016120 - - - Công suất trên 12,5 kVA"
+  },
+  {
+   "hs": "85016210",
+   "dieuKien": "Công suất trên 75 kVA nhưng không quá 150 kVA (thuộc WCO 850162: Electric generators; AC generators, (alternators), other than photovoltaic generators, of an output exceeding 75kVA but not exceeding 375kVA)",
+   "loaiKhac": false,
+   "nguon": "tax.85016210",
+   "trich": "85016210 - - - Công suất trên 75 kVA nhưng không quá 150 kVA"
+  },
+  {
+   "hs": "85016220",
+   "dieuKien": "Công suất trên 150 kVA nhưng không quá 375 kVA (thuộc WCO 850162: Electric generators; AC generators, (alternators), other than photovoltaic generators, of an output exceeding 75kVA but not exceeding 375kVA)",
+   "loaiKhac": false,
+   "nguon": "tax.85016220",
+   "trich": "85016220 - - - Công suất trên 150 kVA nhưng không quá 375 kVA"
+  },
+  {
+   "hs": "85016300",
+   "dieuKien": "Công suất trên 375 kVA nhưng không quá 750 kVA (thuộc WCO 850163: Electric generators; AC generators, (alternators), other than photovoltaic generators, of an output exceeding 375kVA but not exceeding 750kVA)",
+   "loaiKhac": false,
+   "nguon": "tax.85016300",
+   "trich": "85016300 - - Công suất trên 375 kVA nhưng không quá 750 kVA"
+  },
+  {
+   "hs": "85016400",
+   "dieuKien": "Công suất trên 750 kVA (thuộc WCO 850164: Electric generators; AC generators, (alternators), other than photovoltaic generators, of an output exceeding 750kVA)",
+   "loaiKhac": false,
+   "nguon": "tax.85016400",
+   "trich": "85016400 - - Công suất trên 750 kVA"
+  },
+  {
+   "hs": "85017100",
+   "dieuKien": "Công suất không quá 50 W (thuộc WCO 850171: Electric generators; photovoltaic DC generators, of an output not exceeding 50W)",
+   "loaiKhac": false,
+   "nguon": "tax.85017100",
+   "trich": "85017100 - - Công suất không quá 50 W"
+  },
+  {
+   "hs": "85017210",
+   "dieuKien": "Công suất không quá 750 W (thuộc WCO 850172: Electric generators; photovoltaic DC generators, of an output exceeding 50W)",
+   "loaiKhac": false,
+   "nguon": "tax.85017210",
+   "trich": "85017210 - - - Công suất không quá 750 W"
+  },
+  {
+   "hs": "85017220",
+   "dieuKien": "Công suất trên 750 W nhưng không quá 37,5 kW (thuộc WCO 850172: Electric generators; photovoltaic DC generators, of an output exceeding 50W)",
+   "loaiKhac": false,
+   "nguon": "tax.85017220",
+   "trich": "85017220 - - - Công suất trên 750 W nhưng không quá 37,5 kW"
+  },
+  {
+   "hs": "85017230",
+   "dieuKien": "Công suất trên 37,5 kW nhưng không quá 75 kW (thuộc WCO 850172: Electric generators; photovoltaic DC generators, of an output exceeding 50W)",
+   "loaiKhac": false,
+   "nguon": "tax.85017230",
+   "trich": "85017230 - - - Công suất trên 37,5 kW nhưng không quá 75 kW"
+  },
+  {
+   "hs": "85017240",
+   "dieuKien": "Công suất trên 75 kW (thuộc WCO 850172: Electric generators; photovoltaic DC generators, of an output exceeding 50W)",
+   "loaiKhac": false,
+   "nguon": "tax.85017240",
+   "trich": "85017240 - - - Công suất trên 75 kW"
+  },
+  {
+   "hs": "85018010",
+   "dieuKien": "Công suất không quá 75 kVA (thuộc WCO 850180: Electric generators; (excluding generating sets), photovoltaic AC generators (alternators))",
+   "loaiKhac": false,
+   "nguon": "tax.85018010",
+   "trich": "85018010 - - Công suất không quá 75 kVA"
+  },
+  {
+   "hs": "85018020",
+   "dieuKien": "Công suất trên 75 kVA nhưng không quá 375 kVA (thuộc WCO 850180: Electric generators; (excluding generating sets), photovoltaic AC generators (alternators))",
+   "loaiKhac": false,
+   "nguon": "tax.85018020",
+   "trich": "85018020 - - Công suất trên 75 kVA nhưng không quá 375 kVA"
+  },
+  {
+   "hs": "85018030",
+   "dieuKien": "Công suất trên 375 kVA nhưng không quá 750 kVA (thuộc WCO 850180: Electric generators; (excluding generating sets), photovoltaic AC generators (alternators))",
+   "loaiKhac": false,
+   "nguon": "tax.85018030",
+   "trich": "85018030 - - Công suất trên 375 kVA nhưng không quá 750 kVA"
+  },
+  {
+   "hs": "85018040",
+   "dieuKien": "Công suất trên 750 kVA (thuộc WCO 850180: Electric generators; (excluding generating sets), photovoltaic AC generators (alternators))",
+   "loaiKhac": false,
+   "nguon": "tax.85018040",
+   "trich": "85018040 - - Công suất trên 750 kVA"
+  }
+ ],
+ "boPhan": {
+  "quyTac": "Theo quy tắc chung phân loại các bộ phận (chú giải chi tiết tổng quát Phần XVI), các bộ phận của máy móc thuộc nhóm 85.01 được phân loại vào nhóm 85.03.",
+  "tomTat": "Bộ phận của máy móc thuộc nhóm 85.01 phân loại vào nhóm 85.03.",
+  "nguon": "nhom8501.nhom",
+  "trich": "BỘ PHẬN Theo quy tắc chung phân loại các bộ phận (xem chú giải chi tiết tổng quát phần XVI), các bộ phận của máy móc thuộc nhóm này được phân loại vào nhóm 85.03."
+ },
+ "dungTuNguon": [
+  "ch85.chuong",
+  "nhom8501.nhom",
+  "sen.85011030",
+  "sen.85011060",
+  "tax.85011021",
+  "tax.85011022",
+  "tax.85011029",
+  "tax.85011041",
+  "tax.85011049",
+  "tax.85011051",
+  "tax.85011059",
+  "tax.85011091",
+  "tax.85011099",
+  "tax.85012012",
+  "tax.85012019",
+  "tax.85012021",
+  "tax.85012029",
+  "tax.85013130",
+  "tax.85013160",
+  "tax.85013170",
+  "tax.85013180",
+  "tax.85013221",
+  "tax.85013224",
+  "tax.85013225",
+  "tax.85013226",
+  "tax.85013231",
+  "tax.85013232",
+  "tax.85013233",
+  "tax.85013310",
+  "tax.85013390",
+  "tax.85013400",
+  "tax.85014011",
+  "tax.85014019",
+  "tax.85014021",
+  "tax.85014029",
+  "tax.85015111",
+  "tax.85015119",
+  "tax.85015211",
+  "tax.85015212",
+  "tax.85015219",
+  "tax.85015221",
+  "tax.85015222",
+  "tax.85015229",
+  "tax.85015231",
+  "tax.85015232",
+  "tax.85015239",
+  "tax.85015310",
+  "tax.85015390",
+  "tax.85016110",
+  "tax.85016120",
+  "tax.85016210",
+  "tax.85016220",
+  "tax.85016300",
+  "tax.85016400",
+  "tax.85017100",
+  "tax.85017210",
+  "tax.85017220",
+  "tax.85017230",
+  "tax.85017240",
+  "tax.85018010",
+  "tax.85018020",
+  "tax.85018030",
+  "tax.85018040"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "phiên Claude quản lý (10 agent soạn + 6 agent soát độc lập, 07-09/10/2026)",
+  "model": null,
+  "luc": "2026-10-09T09:28:10.590Z",
+  "ms": 23
+ },
+ "kiemTra": {
+  "tong": 94,
+  "dat": 92,
+  "loai": 2,
+  "nguonBiCat": []
+ }
+}
