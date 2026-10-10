@@ -64,6 +64,13 @@ python3 scripts/wco-op-banners.py --pdf data/wco-op/WCO-Compendium-2022.pdf --cr
 node scripts/wco-op-fix-headings.mjs --banners=data/wco-op/banners.jsonl
 ```
 
+## Vá tiếp khi không có ảnh dải mã: suy luận có kiểm + dịch tiếng Việt (10/10/2026)
+Còn 88 chỗ / 117 khối mất tiêu đề mà tiêu đề tiếp nối không cứu được (chỉ ~3 chỗ suy được tất định từ các câu "See also"). Khi không đọc được ảnh dải mã:
+- `scripts/wco-op-apply-inferred.mjs`: nhận kết quả suy luận mã từ HAI lượt độc lập; máy kiểm mã nằm giữa hai tiêu đề đọc được, tăng nghiêm ngặt trong run; **chỉ nhận khi hai lượt cùng
+  chọn một mã và cả hai không "low"** (mã đúng có thể nằm ngoài khoảng ứng viên nếu một tiêu đề kế bị OCR sai, khi đó agent buộc chọn bừa). Ý kiến được gán mang `headingInferred` +
+  `headingBasis: LLM_AGREED`; còn lại giữ `headingSuspect` (không ra API).
+- `scripts/wco-op-check-vi.mjs`: máy kiểm bản dịch tiếng Việt — mọi con số của bản gốc phải còn trong bản dịch (đổi dấu thập phân/nghìn được); lệch → dịch lại/soát tay.
+
 ## Chạy (trên server có repo + Python 3 + `pip install pymupdf`)
 ```bash
 # 0. thử vài trang để xem bố cục (in cấu trúc, chữ cắt 14 ký tự — không ghi tệp)
