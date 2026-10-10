@@ -105,7 +105,11 @@
   "tax.85423200",
   "tax.85423300",
   "tax.85423900",
-  "tax.85429000"
+  "tax.85429000",
+  "wco-op.854239.1",
+  "wco-op.854239.2",
+  "wco-op.854239.3",
+  "wco-op.854239.4"
  ],
  "phienBan": "HS2022",
  "bangQuyetDinh": "data/decision-tables/8542.json — ưu tiên tuyệt đối, sổ tay không ghi đè",
@@ -116,9 +120,51 @@
   "ms": 4
  },
  "kiemTra": {
-  "tong": 13,
-  "dat": 13,
+  "tong": 17,
+  "dat": 17,
   "loai": 0,
   "nguonBiCat": []
- }
+ },
+ "yKienWco": [
+  {
+   "hs": "854239",
+   "thuTuTrongMa": 1,
+   "namThongQua": 2008,
+   "moTa": "Mô-đun công suất gồm 6 transistor, 6 diode, 4 mạch tích hợp cùng 3 điện trở và linh kiện thụ động khác kể cả nhiệt điện trở; các phần tử sản xuất riêng, gắn trên khung dẫn đồng, nối dây, đúc nhựa; đóng cắt dòng cấp cho động cơ ba pha → mã 8542.39",
+   "nguon": "wco-op.854239.1",
+   "dauVet": "854b36e68148d5d2",
+   "doTinCay": "SUY_LUAN",
+   "daSoatAnh": false
+  },
+  {
+   "hs": "854239",
+   "thuTuTrongMa": 2,
+   "namThongQua": 2008,
+   "moTa": "Mô-đun công suất gồm 6 transistor, 6 diode, 4 mạch tích hợp và linh kiện thụ động khác nhưng không có điện trở hay nhiệt điện trở; các phần tử sản xuất riêng, gắn trên khung dẫn đồng, nối dây, đúc nhựa; đóng cắt dòng cấp cho động cơ ba pha → mã 8542.39",
+   "nguon": "wco-op.854239.2",
+   "dauVet": "8e39b5b28eb762b5",
+   "doTinCay": "SUY_LUAN",
+   "daSoatAnh": false
+  },
+  {
+   "hs": "854239",
+   "thuTuTrongMa": 3,
+   "namThongQua": 2008,
+   "moTa": "Mô-đun công suất gồm một MOSFET và một mạch tích hợp đơn khối điều khiển, bảo vệ transistor đó; sản xuất riêng, gắn trên khung dẫn đồng (dọc hoặc ngang), nối dây, đúc nhựa; đóng cắt dòng từ sơ cấp sang thứ cấp của bộ biến đổi thuận trong nguồn xung → mã 8542.39",
+   "nguon": "wco-op.854239.3",
+   "dauVet": "581782c8f83c9cd7",
+   "doTinCay": "CHAC",
+   "daSoatAnh": false
+  },
+  {
+   "hs": "854239",
+   "thuTuTrongMa": 4,
+   "namThongQua": 2008,
+   "moTa": "Mô-đun công suất gồm một MOSFET và một mạch tích hợp đơn khối điều khiển, bảo vệ transistor đó; sản xuất riêng, gắn nằm ngang trên khung dẫn đồng, nối dây, đúc nhựa; đóng vai trò bộ ổn áp tuyến tính, duy trì điện áp ra theo điện áp tham chiếu vào → mã 8542.39",
+   "nguon": "wco-op.854239.4",
+   "dauVet": "eb5a5e916b061046",
+   "doTinCay": "CHAC",
+   "daSoatAnh": false
+  }
+ ]
 }

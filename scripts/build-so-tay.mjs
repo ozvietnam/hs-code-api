@@ -23,7 +23,7 @@ import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const OUT = path.join(ROOT, 'data', 'so-tay');
-const { sourcesFor, verifySoTay } = require('../lib/so-tay.js');
+const { sourcesFor, verifySoTay, carryOverYKienWco } = require('../lib/so-tay.js');
 
 const argv = Object.fromEntries(process.argv.slice(2).map((a) => {
   const m = a.match(/^--([^=]+)(?:=(.*))?$/);
@@ -115,12 +115,14 @@ async function buildOne(h4, callLLMJson) {
     : await callLLMJson(SYSTEM, user, { maxTokens: 8000, timeoutMs: 240000, temperature: 0.1 });
   const { soTay, loai, tong, dat } = verifySoTay(json, h4, sources);
   const decision = fs.existsSync(path.join(ROOT, 'data', 'decision-tables', `${h4}.json`));
-  fs.writeFileSync(path.join(OUT, `${h4}.json`), JSON.stringify({
+  const outFile = path.join(OUT, `${h4}.json`);
+  let existing = null; try { existing = JSON.parse(fs.readFileSync(outFile, 'utf8')); } catch { /* chưa có */ }
+  fs.writeFileSync(outFile, JSON.stringify(carryOverYKienWco(existing, {
     ...soTay,
     ...(decision ? { bangQuyetDinh: `data/decision-tables/${h4}.json — ưu tiên tuyệt đối, sổ tay không ghi đè` } : {}),
     taoBoi: { provider, model, luc: new Date().toISOString(), ms: Date.now() - t },
     kiemTra: { tong, dat, loai: loai.length, nguonBiCat: cut },
-  }, null, 1));
+  }), null, 1));
   return { h4, tong, dat, loai, cut, provider, model };
 }
 

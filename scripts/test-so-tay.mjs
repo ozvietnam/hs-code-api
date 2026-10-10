@@ -5,7 +5,7 @@ const require = createRequire(import.meta.url);
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-const { sourcesFor, verifySoTay, checkItem, isLoaiKhac, checkYKienWco, fingerprint, resetWcoCache } = require('../lib/so-tay.js');
+const { sourcesFor, verifySoTay, checkItem, isLoaiKhac, checkYKienWco, fingerprint, resetWcoCache, carryOverYKienWco } = require('../lib/so-tay.js');
 const wcoOpLib = require('../lib/wco-op.js');
 
 let passed = 0;
@@ -88,6 +88,17 @@ assert('loaiTru mà câu nguồn chỉ nói "thường thuộc nhóm" bị loạ
   assert('verifySoTay: giữ mục yKienWco đạt, loại mục sai, ghi nguồn', vr.dat === 1 && vr.tong === 2 && vr.soTay.yKienWco.length === 1 && vr.soTay.dungTuNguon.includes('wco-op.841451.1') && vr.loai[0].kind === 'yKienWco');
   delete process.env.HS_WCO_OP_FILE; delete process.env.HS_WCO_TRICH_FILE; wcoOpLib.reset(); resetWcoCache();
   fs.rmSync(tmp, { recursive: true, force: true });
+}
+
+// Dựng lại nhóm không được làm mất yKienWco đã nạp
+{
+  const old = { nhom: '8414', yKienWco: [{ nguon: 'wco-op.841451.1' }, { nguon: 'wco-op.841451.2' }], kiemTra: { tong: 5 } };
+  const fresh = { nhom: '8414', dungTuNguon: ['ch84.chuong'], kiemTra: { tong: 7, dat: 6, loai: 1 }, yKienWco: [{ nguon: 'bịa' }] };
+  const m = carryOverYKienWco(old, fresh);
+  assert('carryOver: giữ yKienWco cũ, bỏ yKienWco do bản dựng mới tự đưa vào', m.yKienWco.length === 2 && m.yKienWco[0].nguon === 'wco-op.841451.1');
+  assert('carryOver: cộng vào kiemTra và dungTuNguon, không sửa tham số', m.kiemTra.tong === 9 && m.kiemTra.dat === 8 && m.dungTuNguon.includes('wco-op.841451.2') && fresh.kiemTra.tong === 7 && fresh.dungTuNguon.length === 1);
+  const none = carryOverYKienWco(null, fresh);
+  assert('carryOver: nhóm chưa có file cũ → không có yKienWco', !('yKienWco' in none) && none.kiemTra.tong === 7);
 }
 
 console.log(`\n${passed}/${passed + failed} passed`);
