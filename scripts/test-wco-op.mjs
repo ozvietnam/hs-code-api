@@ -11,6 +11,7 @@ import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { segment, validate, fixOcrId, DEFAULT_CODE_ONLY_REGEX } from './wco-op-parse.mjs';
 import { skeleton, shapeOf, findLabels } from './wco-op-skeleton.mjs';
+import { parseMarkdown, parseHeadingCode } from './wco-op-parse-md.mjs';
 
 const require = createRequire(import.meta.url);
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -110,6 +111,35 @@ assert('neo sau nhãn: mã dẫn chiếu nằm lại trong thân ý kiến trư�
 assert('neo sau nhãn: mã lùi được giữ và báo outOfOrder (không loại)', an.outOfOrder.length >= 1 && an.opinions.some((o) => o.id === '340119/1'), an.outOfOrder);
 assert('neo sau nhãn: ý kiến đầu tài liệu (không có nhãn đứng trước) bị bỏ, lời nói đầu đếm đúng', an.preface === tail.findIndex((x) => x.t === '3802.90' && x.pdfPage === 7), an.preface);
 
+// 2f. Bản OCR markdown (## Section / ### mã / **n.** mô tả / *Application…* / *Adoption: năm*) — văn bản TỰ VIẾT
+const md = [
+  '# Compendium', '## Introduction', 'Some invented intro. *Adoption: 1999* (không thuộc ý kiến nào vì chưa có mã)', '',
+  '## Section VI — Invented section (Chapters 28–38)', '',
+  '### 3802.90', '',
+  '**1.** First invented opinion text that is long enough to count as a body.', '', '*Application of GIRs 1 and 6.*', '', '*Adoption: 2014*', '',
+  'a —_ ee Section VI', '',
+  '**2.** Second invented opinion of the same code, with a table:', '| a | b |', '| 1 | 2 |', '', '*Application of GIR 1.*', '', '*Adoption: 2016*', '',
+  ': 3. Third invented opinion whose number was mangled by OCR and printed wrongly.', '', '*Adoption: 20l8*', '',
+  '### 3808.5O', '',
+  '**1.** Invented opinion under a heading with a mangled digit.', '', '*Adoption*', '',
+  '### 3809.91', '',
+  '**1.** Invented opinion that lost its Adoption line to the OCR, but has plenty of text to keep.', '',
+  '### 3401.11', '',
+  '**1.** Another invented opinion.', '', '*Application of Note 3 to Chapter 34.*', '', '*Adoption: 2001*', '',
+  '## Annex — Trade marks', '### 9999.99', '**1.** annex rows must never become opinions', '*Adoption: 2000*',
+].join('\n');
+const pm = parseMarkdown(md);
+assert('md: nhận đúng 6 ý kiến (3 + 1 + 1 mất Adoption + 1), Annex bị bỏ', pm.opinions.length === 6 && !pm.opinions.some((o) => o.hs === '999999'), pm.opinions.map((o) => o.id));
+assert('md: id theo vị trí trong mã, section gắn đúng', pm.opinions.slice(0, 3).map((o) => o.id).join() === '380290/1,380290/2,380290/3' && pm.opinions[0].section === 'Section VI — Invented section');
+assert('md: dòng đầu trang lọt giữa các ý kiến không dính vào ý kiến sau', !pm.opinions[1].text.includes('ee Section'));
+assert('md: số in sẵn khớp thì ordInferred=false; số méo ": 3." vẫn đọc ra 3', pm.opinions[0].ordInferred === undefined && pm.opinions[2].ordPrinted === 3 && pm.opinions[2].ordInferred === undefined);
+assert('md: năm Adoption sửa "20l8" → 2018; thiếu năm → null', pm.opinions[2].adoption === 2018 && pm.opinions.find((o) => o.hs === '380850').adoption === null);
+assert('md: mã tiêu đề méo "3808.5O" sửa thành 380850', pm.opinions.some((o) => o.hs === '380850') && parseHeadingCode('3808.5O') === '380850' && parseHeadingCode('abc') === null);
+assert('md: nhận GIR và Application; bảng giữ lại trong text', pm.opinions[0].girMentioned?.[0] === '1 and 6' && pm.opinions[1].text.includes('| 1 | 2 |') && pm.opinions[1].application === 'Application of GIR 1.');
+const orphan = pm.opinions.find((o) => o.hs === '380991');
+assert('md: ý kiến mất dòng Adoption vẫn được giữ, đánh dấu noAdoptionLine', orphan?.noAdoptionLine === true && orphan.adoption === null, orphan);
+assert('md: đủ trường nguồn', pm.opinions.every((o) => o.source === 'ocr-md' && o.level === 6 && o.text.length > 0));
+
 // 3. validate
 const wcoCodes = { six: new Set(['851762', '852351']), four: new Set(['2106']) };
 const v = validate([
@@ -122,9 +152,12 @@ assert('validate: nhảy thứ tự', v.ordinalGaps.join() === '851762: 1→3');
 assert('validate: quá ngắn + trang lùi', v.tooShort.join() === '999999/1' && v.pageBackwards.join() === '999999/1');
 
 // 4. lib/wco-op trên kho thử (thư mục tạm của test-isolate-data)
+process.env.HS_WCO_OP_FILE = path.join(dataPath('wco-op'), 'khong-ton-tai.json'); // không phụ thuộc kho thật trên máy chạy test
+wco.reset();
 assert('chưa có kho → available() = false', wco.available() === false && wco.byHs('8517').length === 0);
 const store = dataPath('wco-op');
 fs.mkdirSync(store, { recursive: true });
+process.env.HS_WCO_OP_FILE = path.join(store, 'opinions.json');
 fs.writeFileSync(path.join(store, 'opinions.json'), JSON.stringify([
   { id: '851762/4', hs: '851762', level: 6, ord: 4, pages: [1, 1], text: 'The invented prefabri-\ncated unit, which is not for sale,\nis classified in this subheading.' },
   { id: '2106/1', hs: '2106', level: 4, ord: 1, pages: [2, 2], text: 'Invented preparation of a kind used for food.' },
