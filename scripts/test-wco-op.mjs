@@ -15,6 +15,7 @@ import { parseMarkdown, parseHeadingCode, markSuspect } from './wco-op-parse-md.
 import { alignHeadings } from './wco-op-fix-headings.mjs';
 import { applyInferred } from './wco-op-apply-inferred.mjs';
 import { numericParity, numberTokens } from './wco-op-check-vi.mjs';
+import { join as joinVi, fmtHs, citation } from './wco-op-join-vi.mjs';
 
 const require = createRequire(import.meta.url);
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -219,6 +220,14 @@ assert('dịch: thiếu số bị báo', numericParity('A salt content of 1.2 % 
 assert('dịch: thêm số lạ bị báo', numericParity('Weight 115 g', 'Khối lượng 115 g, 20 cái').extra.join() === '20');
 assert('dịch: số thứ tự đầu dòng và năm Adoption không tính', numericParity('1. Chicken cuts\n\nAdoption: 2008', 'Thịt gà cắt miếng\n\nThông qua: 2008').ok && numberTokens('2. Foo 5 mm').join() === '5');
 assert('dịch: số nghìn 1,000 = 1.000', numericParity('1,000 kg', '1.000 kg').ok);
+{
+  const ops = [{ id: '851762/4', hs: '851762', ord: 4, adoption: 2019, line: 10, text: 'A device of 5 cm', headingSuspect: false }, { id: '2106/1', hs: '2106', ord: 1, adoption: 0, line: 20, text: 'Food 1 kg' }];
+  const j = joinVi(ops, [{ line: 10, vi: 'Thiết bị 5 cm [?]' }, { line: 99, vi: 'x' }]);
+  assert('ghép vi: khoá theo line, nguồn ghi mã/thứ tự/năm', j.out[10].nguon.includes('8517.62/4') && j.out[10].nguon.includes('2019') && j.out[10].nguon.includes('không chính thức'));
+  assert('ghép vi: cờ nghiOcr, mồ côi và dòng thiếu', j.out[10].nghiOcr === true && j.orphan.join() === '99' && j.missing.join() === '20');
+  assert('ghép vi: mã 4 số định dạng 21.06; lệch số được ghi', fmtHs('2106') === '21.06' && joinVi(ops, [{ line: 10, vi: 'Thiết bị 6 cm' }]).out[10].lechSo.extra.join() === '6');
+  assert('ghép vi: citation không có năm thì bỏ vế năm', !citation(ops[1]).includes('thông qua năm'));
+}
 
 // 3. validate
 const wcoCodes = { six: new Set(['851762', '852351']), four: new Set(['2106']) };
