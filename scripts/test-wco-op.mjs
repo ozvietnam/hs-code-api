@@ -97,6 +97,19 @@ assert('khung xương: không rò chữ nội dung', !JSON.stringify(rep).includ
 assert('khung xương: cửa sổ quanh nhãn có hình dạng, giữ nguyên nhãn mẫu', rep.windows.length === 2 && rep.windows[0].lines.some((l) => l.shape.startsWith('Adoption')), rep.windows[0]);
 assert('shapeOf: chữ→a, số→9', shapeOf('Ab12 x') === 'aa99 a');
 
+// 2e. Neo sau nhãn: "Adoption : năm" là dòng CUỐI ý kiến, mã kế ngay sau là đầu ý kiến mới (cấu trúc thật của bản scan)
+const tail = [
+  ...L(5, 'Preface line', '3802.90 appears in the preface as a stray code line'),
+  ...L(7, 'Body of an opening opinion that has no code before it.', 'Adoption : 2012', '3802.90', 'First invented body line.', 'Cross reference follows:', '3808.59 mentioned inside the body, not after a label', 'Application of GIRs 1 and 6.', 'Adoption : 2014'),
+  ...L(8, '3802.90', 'Second invented opinion, same code.', 'Adoption : 2016', '', '3808.59', 'Third invented opinion.', 'Adoption : 2018', '3401.11', 'Last invented opinion.', 'Adoption : 2019'),
+  ...L(9, '3402.13', 'Out of order code, probably OCR.', 'Adoption : 2020', '3401.19', 'x'),
+];
+const an = segment(tail.map((x) => ({ ...x })), { idRegex: DEFAULT_CODE_ONLY_REGEX, inferOrd: true, anchorAfter: '^Adoption' });
+assert('neo sau nhãn: mã giữa thân bài (không đứng sau nhãn) không thành đầu ý kiến', an.opinions.map((o) => o.id).join() === '380290/1,380290/2,380859/1,340111/1,340213/1,340119/1', JSON.stringify(an.opinions.map((o) => o.id)));
+assert('neo sau nhãn: mã dẫn chiếu nằm lại trong thân ý kiến trước', an.opinions[0].text.includes('mentioned inside the body') && an.opinions[0].adoption === 2014 && an.opinions[1].adoption === 2016);
+assert('neo sau nhãn: mã lùi được giữ và báo outOfOrder (không loại)', an.outOfOrder.length >= 1 && an.opinions.some((o) => o.id === '340119/1'), an.outOfOrder);
+assert('neo sau nhãn: ý kiến đầu tài liệu (không có nhãn đứng trước) bị bỏ, lời nói đầu đếm đúng', an.preface === tail.findIndex((x) => x.t === '3802.90' && x.pdfPage === 7), an.preface);
+
 // 3. validate
 const wcoCodes = { six: new Set(['851762', '852351']), four: new Set(['2106']) };
 const v = validate([
