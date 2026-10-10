@@ -146,8 +146,12 @@ không bày thứ tự suy ra như một số hiệu. Nếu bản gốc có số
 ## Dùng sau khi có `opinions.json`
 `lib/wco-op.js`: `get`, `byHs`, `quoteInOpinion` (máy kiểm câu trích, cùng cách chuẩn hoá với sổ tay), `parseSourceId`
 (`wco-op.<hs>.<thứ tự>`). Thiếu kho riêng thì mọi hàm trả rỗng, CI và bản công khai chạy bình thường.
-Bước tiếp (chưa làm, cần kho thật): thêm nguồn `wco-op.*` vào `lib/so-tay.js` + soát độc lập như mọi đợt sổ tay; phần công khai
-chỉ gồm số hiệu, mã HS 6 số, câu mô tả tiếng Việt **tự viết** và con trỏ tới bản gốc — không có nguyên văn, không có bản dịch toàn văn.
+Đã làm (đợt 1, #196): mục `yKienWco` trong `data/so-tay/<nhom4>.json` (`lib/so-tay.js#checkYKienWco`, nạp bằng `scripts/wco-op-so-tay.mjs`);
+phần công khai chỉ gồm số hiệu, mã HS, năm thông qua, câu mô tả tiếng Việt **tự viết** và dấu vết (băm câu trích) — không có nguyên văn, không có bản dịch toàn văn.
+Câu trích tiếng Anh nằm ở kho riêng `data/wco-op/so-tay-trich.json`. Có kho riêng thì máy kiểm: ý kiến tồn tại + qua cổng số thứ tự, trích có nguyên văn trong ý kiến,
+dấu vết khớp, mọi con số trong mô tả có trong ý kiến. Không có kho riêng (CI) chỉ kiểm hình dạng. `daSoatAnh:false` cho tới khi người đối chiếu ảnh trang gốc.
+Soát nội dung độc lập (2 người, 93 mục): 0 lỗi nặng; 1 ý kiến (950300/6) lọt cổng mã nhưng nội dung là kính hiển vi (9011.80) → loại tay (`headingConflict: noi-dung-khong-khop-ma`).
+Ý kiến còn bị loại: xem [wco-op-ocr-lai.md](wco-op-ocr-lai.md) (sinh bằng `scripts/wco-op-ocr-request.mjs`).
 
 ## Cổng cuối: số thứ tự in (scripts/wco-op-ordcheck.mjs)
 
