@@ -34,6 +34,8 @@ assert('git chỉ theo dõi README trong data/wco-op', tracked.every((f) => f ==
 const pdfs = spawnSync('git', ['ls-files', '*.pdf', '*Compendium*'], { cwd: ROOT, encoding: 'utf8' }).stdout.split('\n').filter(Boolean);
 assert('repo không có PDF/Compendium nào được theo dõi', pdfs.length === 0, pdfs.join(','));
 
+assert('.dockerignore loại data/wco-op (Dockerfile COPY . . sẽ nhồi PDF 130 MB vào image)', /^data\/wco-op\/?$/m.test(fs.readFileSync(path.join(ROOT, '.dockerignore'), 'utf8')));
+
 // 2. segment
 const doc = [
   ...L(10, 'Some preface line', 'Another line'),
