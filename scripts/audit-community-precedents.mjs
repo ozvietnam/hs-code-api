@@ -42,7 +42,7 @@ for (const [hs, list] of Object.entries(existing)) for (const p of list || []) {
   existingByRef.get(k).set(hs, p.year || null);
 }
 
-const REF_RE = /^\d{1,6}\/(TB-TCHQ|TB-CHQ|TCHQ-TXNK|TCHQ-TNXK|CHQ-NVTHQ|TCHQ-GSQL|TXNK-PL|TB-CTHQ|CHQ-TXNK|TB-KĐ\d+|TB-CMTV|TB-KĐĐNB|TB-KĐCMTV|TB-KĐHQ|TBKQ[\wĐ-ỹ-]*|QĐ-[\w-]+|\d+)$/i;
+const REF_RE = /^\d{1,6}\/(TB-TCHQ|TB-CHQ|TCHQ-TXNK|TCHQ-TNXK|CHQ-NVTHQ|TCHQ-GSQL|TXNK-PL|TB-CTHQ|CHQ-TXNK|TB-KĐ\d+|TB-CMTV|TB-KĐĐNB|TB-KĐCMTV|TB-KĐHQ|TBKQ[\wĐ-ỹ-]*|QĐ-[\w-]+|\d+)(\/\d{4})?$/i;
 // TCHQ-TNXK: lỗi đánh máy in ngay trên công văn gốc (vd 3935/TCHQ-TNXK 13/6/2019), giữ đúng nguồn.
 
 function listFiles(d) {
