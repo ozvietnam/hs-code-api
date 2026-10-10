@@ -92,7 +92,9 @@
     "dict:check": "node scripts/dict-check.mjs",
     "test:query-parse": "node scripts/test-query-parse.mjs",
     "test:confusion-pairs": "node scripts/test-confusion-pairs.mjs",
-    "data:build-confusion-pairs": "node scripts/build-confusion-pairs.mjs"
+    "data:build-confusion-pairs": "node scripts/build-confusion-pairs.mjs",
+    "qa:api": "node scripts/qa-api-smoke.mjs",
+    "qa:api:dev": "node scripts/qa-api-smoke.mjs http://localhost:3000"
   },
   "devDependencies": {
     "xlsx": "^0.18.5"
