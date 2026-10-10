@@ -205,6 +205,12 @@ const aw = applyInferred(opsI.map((o) => ({ ...o })), tasksI, pass('847130', '84
 assert('suy luận: mã không tăng nghiêm ngặt trong run bị loại cả run', aw.report.rejected.some((r) => r.why === 'khong-tang-nghiem-ngat') && aw.opinions[2].hs === '844230');
 const al = applyInferred(opsI.map((o) => ({ ...o })), tasksI, pass('846610', '846719', 'low', 'high'), pass('846610', '846719', 'low', 'medium'));
 assert('suy luận: chỉ cần MỘT lượt "low" là không nhận (mã đúng có thể nằm ngoài khoảng ứng viên)', al.opinions[2].hs === '844230' && al.report.unresolved[0].why === 'co-luot-low' && al.opinions[3].hs === '846719');
+const opsMixed = [mk(1, '844230', 1), mk(2, '844230', 2), mk(3, '844230', 1, { headingSuspect: true }), mk(4, '844230', undefined, { headingSuspect: true }), mk(5, '844510', 1)];
+const tasksMixed = [{ runId: 'R01', ownCode: '844230', nextHeadingCode: '844510', candidates: [{ code: '846610' }], blocks: [{ block: 1, opinions: [{ line: 3 }, { line: 4 }] }] }];
+const passM = [{ runId: 'R01', blocks: [{ block: 1, code: '846610', confidence: 'high' }] }];
+const am = applyInferred(opsMixed.map((o) => ({ ...o })), tasksMixed, passM, passM);
+assert('suy luận: khối lẫn ý kiến không đánh số (có thể thuộc mã kế tiếp) KHÔNG được gán', am.report.unresolved[0]?.why === 'khoi-lan-y-kien-khong-khop-so-in-san' && am.opinions[2].hs === '844230' && am.opinions[2].headingSuspect === true, am.report);
+
 assert('suy luận: tính lại thứ tự theo vị trí trong mã', ai.opinions[2].ord === 1 && ai.opinions[3].ord === 1 && ai.opinions[2].id === '846610/1');
 
 // 2k. Máy kiểm số của bản dịch: mọi con số của bản gốc phải còn trong bản dịch (dấu thập phân/nghìn đổi được)

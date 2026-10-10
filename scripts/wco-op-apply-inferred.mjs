@@ -10,6 +10,7 @@
  * Quy tắc (máy kiểm, không tin lời agent):
  *   - mã phải thuộc danh sách ứng viên của run (mã nằm giữa ownCode và nextHeadingCode theo thứ tự HS), tăng nghiêm ngặt giữa các khối của run;
  *   - CHỈ nhận khi HAI lượt cùng chọn một mã và CẢ HAI không phải "low"; khác nhau / có lượt "low" → để nguyên (headingSuspect), ghi báo cáo;
+ *   - khối phải SẠCH: mọi ý kiến có số in sẵn đúng 1..n (khối lẫn ý kiến không đánh số có thể chứa ý kiến của mã kế tiếp → không gán);
  *   - ý kiến được gán đánh dấu headingInferred + headingBasis (không bao giờ giả làm "đọc từ tiêu đề"); thứ tự trong mã tính lại theo vị trí.
  * Ghi opinions.json (bản gốc lưu opinions.pre-inferred.json) + inferred-report.json (không chứa chữ WCO). Từ chối ghi nếu không bị .gitignore.
  */
@@ -36,6 +37,9 @@ export function applyInferred(opinions, tasks, passA, passB) {
       report.blocks += 1;
       const a = A.get(t.runId)?.get(blk.block); const b = B.get(t.runId)?.get(blk.block);
       if (!a || !b) { report.unresolved.push({ run: t.runId, block: blk.block, why: 'thieu-ket-qua' }); runOk = false; plan.push(null); continue; }
+      // Khối lẫn ý kiến không đánh số / số in sẵn không khớp 1..n: có thể chứa ý kiến của mã kế tiếp (agent đã báo) → không gán cả khối.
+      const clean = blk.opinions.every((op, idx) => { const i = lineIdx.get(op.line); return i !== undefined && opinions[i].ordPrinted === idx + 1; });
+      if (!clean) { report.unresolved.push({ run: t.runId, block: blk.block, why: 'khoi-lan-y-kien-khong-khop-so-in-san', size: blk.opinions.length }); plan.push(null); continue; }
       const bad = [a, b].find((x) => !cand.has(String(x.code)));
       if (bad) { report.rejected.push({ run: t.runId, block: blk.block, why: 'ma-ngoai-ung-vien', a: a.code, b: b.code }); runOk = false; plan.push(null); continue; }
       if (String(a.code) !== String(b.code)) { report.unresolved.push({ run: t.runId, block: blk.block, why: 'hai-luot-khac-nhau', a: a.code, b: b.code, confA: a.confidence, confB: b.confidence }); runOk = false; plan.push(null); continue; }
