@@ -9,7 +9,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
-import { segment, validate } from './wco-op-parse.mjs';
+import { segment, validate, fixOcrId } from './wco-op-parse.mjs';
 
 const require = createRequire(import.meta.url);
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -58,6 +58,16 @@ assert('trang đầu/cuối của ý kiến', seg.opinions[1].pages[0] === 10 &&
 assert('đếm dòng lời nói đầu', seg.preface === 2);
 assert('--id-regex tuỳ biến', segment(L(1, 'Opinion 8517.62-1 text'), { idRegex: 'Opinion\\s+(\\d{4}\\.\\d{2})-(\\d+)' }).opinions.length === 1);
 assert('requireBold bỏ dòng không đậm', segment(doc, { requireBold: true }).opinions.length === 0);
+
+// 2b. OCR đọc nhầm ký tự trong mã đầu ý kiến
+const known = { six: new Set(['851762', '852351']), four: new Set(['2106']) };
+const fx = (s) => fixOcrId(s, known);
+assert('OCR: O→0, l→1', fx('85l7.62/4 Invented').t === '8517.62/4 Invented' && fx('8517.62/4 x').fixed === false);
+assert('OCR: dấu phẩy, "/" đọc thành l, I→1', fx('8517,62 l 4 Invented').t === '8517.62/4 Invented' && fx('852351/1').fixed === false);
+assert('OCR: chỉ sửa khi mã tồn tại trong bảng WCO', fx('8999.99/1 Invented').fixed === false && fixOcrId('8517.62/4 x', null).fixed === false);
+assert('OCR: câu chữ thường không bị biến thành mã', fx('Soil.04/1 is a word').fixed === false);
+const segFix = segment(L(1, '85l7.62/1  Invented', 'Text body of the invented opinion one.', '8S23.5l/1  Invented two', 'Text body two.'), { known });
+assert('segment nhận mã đã sửa OCR và ghi báo cáo', segFix.opinions.map((o) => o.id).join() === '851762/1,852351/1' && segFix.ocrFixed.length === 2, JSON.stringify(segFix.opinions.map((o) => o.id)));
 
 // 3. validate
 const wcoCodes = { six: new Set(['851762', '852351']), four: new Set(['2106']) };
