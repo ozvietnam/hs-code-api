@@ -171,6 +171,23 @@ assert('banners: dải không đọc được → không đoán', fixedD.report.
 const clean = [op('851762', 1, 1, 1), op('851762', 2, 2, 2), op('852351', 1, 1, 3)];
 assert('banners: đoạn sạch không đổi', alignHeadings(clean, ['851762', '852351']).opinions.every((o, i) => o.hs === clean[i].hs) && alignHeadings(clean, ['851762', '852351']).report.alreadyClean === 2);
 
+// 2i. "(continued)": ý kiến n>1 dưới tiêu đề tiếp nối → n−1 ý kiến ngay trước (dải mã trang đầu bị rơi) thuộc cùng mã
+const mdCont = [
+  '## Section XVI — Invented', '### 8470.50',
+  '**1.** Invented opinion that really belongs to 8470.50, with enough text to count.', '*Adoption: 2001*',
+  '**1.** Invented opinion whose banner was lost; it really belongs to 8471.30 (printed 1).', '*Adoption: 2002*',
+  '### 8471.30 (continued)',
+  '**2.** Invented second opinion of 8471.30 under the continued heading.', '*Adoption: 2003*',
+  '**3.** Invented third opinion of 8471.30.', '*Adoption: 2004*',
+  '### 8471.40', '**1.** Invented opinion of the next code.', '*Adoption: 2005*',
+].join('\n');
+const pc = parseMarkdown(mdCont);
+assert('(continued): ý kiến trước tiêu đề tiếp nối được chuyển về mã đúng, vị trí tính lại', pc.opinions.map((o) => o.id).join() === '847050/1,847130/1,847130/2,847130/3,847140/1', pc.opinions.map((o) => o.id));
+assert('(continued): đánh dấu headingRecovered, số in sẵn khớp vị trí, hết nghi ngờ', pc.opinions[1].headingRecovered === 'continued' && pc.opinions.every((o) => !o.headingSuspect && !o.ordInferred) && pc.stats.recoveredFromContinued.opinions === 1, pc.stats);
+assert('(continued): tiêu đề "(continued)" vẫn đọc ra mã', parseHeadingCode('8471.30 (continued)') === '847130' && parseHeadingCode('8471.30 (Continued)') === '847130');
+const mdNoMatch = mdCont.replace('**1.** Invented opinion whose banner was lost; it really belongs to 8471.30 (printed 1).', '**7.** Invented opinion with an unrelated printed number.');
+assert('(continued): số in sẵn của ý kiến trước không khớp 1..n−1 → KHÔNG chuyển', parseMarkdown(mdNoMatch).opinions[1].hs === '847050');
+
 // 3. validate
 const wcoCodes = { six: new Set(['851762', '852351']), four: new Set(['2106']) };
 const v = validate([
