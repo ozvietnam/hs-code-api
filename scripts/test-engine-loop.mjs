@@ -128,5 +128,25 @@ check('vòng 1 lỗi tạm thời → nextAction RETRY', r.nextAction?.type === 
   check('supplierHs rác → bỏ, không ảnh hưởng', calls.length === 2 && r.dossier.supplier === null && !/NHÀ CUNG CẤP KHAI HS/.test(calls[1].user));
 }
 
+// 10/10/2026: trang made-in-china lạc Chương/Phần (câu tìm ra món khác) → bỏ; toàn lạc → mic null, cổng G6 không bật.
+{
+  const micMod = require('../lib/mic-lookup.js');
+  const savedMic = micMod.micLookup;
+  const { gather } = require('../lib/engine-loop.js');
+  const PG = (shop, hsCode, name) => ({ shop, url: `https://${shop}.en.made-in-china.com/product/x/y.html`, name, hsCode, props: {} });
+  // 8a. Ổ cắm 8536 nhưng 2 shop cùng ghi 9507 (cần câu) + 1 shop 8716 → toàn lạc → gathered.mic null
+  micMod.micLookup = async (q) => ({ query: q, searched: true, pages: [PG('rodshop', '9507100000', 'Fishing Rod'), PG('rodshop2', '9507100000', 'Carbon Rod'), PG('trailer', '8716900000', 'Trailer Axle')], consensus: null });
+  let gth = await gather(R1_SOCKET, { tenHang: '86型墙壁暗装电源插座', nameZh: '86型墙壁暗装电源插座' }, { micAllowed: true });
+  check('toàn trang lạc chương → gathered.mic = null, gói kiểm chứng không có bảng made-in-china', gth.mic === null && !/MADE-IN-CHINA/.test(gth.pack), JSON.stringify(gth.mic));
+  // 8b. Cùng dữ liệu qua classify: trước đây 2 shop 9507 ≠ 8536 (hàng máy) → cổng NHA_SAN_XUAT_KHAC_NHOM; nay không chặn, 2 lượt AI
+  r = await run({ tenHang: '86型墙壁暗装电源插座带开关五孔面板家用', nameZh: '86型墙壁暗装电源插座带开关五孔面板家用', specs: '额定电流: 10A; 额定电压: 250V' }, [R1_SOCKET, { decision: 'CHOT', hs: '85366992', confidence: 80, reason: 'ổ cắm', basis: [{ stream: 'SAN_PHAM', claim: 'ổ cắm 10A', evidence: '额定电流: 10A' }], conditions: [], alternatives: [], questions: [] }]);
+  check('mic null → cổng NHA_SAN_XUAT_KHAC_NHOM không bật, dossier.mic null, 2 lượt AI', calls.length === 2 && !r.engine.gates.some((x) => (x.blocks || []).includes('NHA_SAN_XUAT_KHAC_NHOM')) && r.dossier.mic === null, JSON.stringify([calls.length, r.engine.gates, r.dossier.mic]));
+  // 8c. Trộn: 2 shop 8536 + 1 shop 9507 → giữ 2 trang cùng chương, droppedOffChapter 1, queryKind 'name' (không có model)
+  micMod.micLookup = async (q) => ({ query: q, searched: true, pages: [PG('sock1', '8536699000', 'Wall Socket'), PG('rodshop', '9507100000', 'Fishing Rod'), PG('sock2', '8536690000', 'Socket 86')], consensus: null });
+  gth = await gather(R1_SOCKET, { tenHang: '86型墙壁暗装电源插座', nameZh: '86型墙壁暗装电源插座' }, { micAllowed: true });
+  check('trang lạc bị bỏ khỏi pages, giữ cùng chương, đồng thuận 8536, queryKind name', gth.mic?.pages.length === 2 && gth.mic.droppedOffChapter === 1 && gth.mic.consensus.heading4 === '8536' && gth.mic.queryKind === 'name' && !/Fishing Rod/.test(gth.pack), JSON.stringify(gth.mic));
+  micMod.micLookup = savedMic;
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
