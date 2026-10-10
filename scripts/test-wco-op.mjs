@@ -15,6 +15,7 @@ import { parseMarkdown, parseHeadingCode, markSuspect } from './wco-op-parse-md.
 import { alignHeadings } from './wco-op-fix-headings.mjs';
 import { applyInferred } from './wco-op-apply-inferred.mjs';
 import { numericParity, numberTokens } from './wco-op-check-vi.mjs';
+import { markOrdConflicts, leadingNumber } from './wco-op-ordcheck.mjs';
 import { join as joinVi, fmtHs, citation } from './wco-op-join-vi.mjs';
 
 const require = createRequire(import.meta.url);
@@ -220,6 +221,20 @@ assert('dịch: thiếu số bị báo', numericParity('A salt content of 1.2 % 
 assert('dịch: thêm số lạ bị báo', numericParity('Weight 115 g', 'Khối lượng 115 g, 20 cái').extra.join() === '20');
 assert('dịch: số thứ tự đầu dòng và năm Adoption không tính', numericParity('1. Chicken cuts\n\nAdoption: 2008', 'Thịt gà cắt miếng\n\nThông qua: 2008').ok && numberTokens('2. Foo 5 mm').join() === '5');
 assert('dịch: số nghìn 1,000 = 1.000', numericParity('1,000 kg', '1.000 kg').ok);
+{
+  const mk = (hs, ord, text, extra = {}) => ({ hs, ord, text, ...extra });
+  const A = [mk('111111', 1, '1. Foo bar baz.'), mk('111111', 2, '2. Foo two.'), mk('111111', 3, '1. Restart opinion x.'), mk('111111', 4, '2. After restart.')];
+  const r = markOrdConflicts(A);
+  assert('ordcheck: số in = thứ tự thì giữ', !A[0].headingSuspect && !A[1].headingSuspect);
+  assert('ordcheck: đánh số lại bị loại, kéo theo các ý kiến sau trong mã', A[2].headingSuspect && A[3].headingSuspect && r.restart === 1);
+  const B = [mk('222222', 1, 'x 3. Shifted opinion text.'), mk('222222', 2, '4. Next.')];
+  markOrdConflicts(B);
+  assert('ordcheck: số in lớn hơn thứ tự bị loại (trích "ý kiến thứ mấy" sẽ sai)', B[0].headingSuspect && B[1].headingSuspect);
+  const C = [mk('333333', 1, 'Drive cable Bi Inboard arm iC | Outboard arm'), mk('333333', 2, 'It is used for storing papers.'), mk('444444', 1, 'Jack-up drilling platform for sea use.')];
+  markOrdConflicts(C);
+  assert('ordcheck: mở đầu bằng nhãn ảnh / ord>1 không đọc được số bị loại; ord 1 câu văn sạch giữ', C[0].headingSuspect && C[1].headingSuspect && !C[2].headingSuspect);
+  assert('ordcheck: số mục sau đầu trang lẫn vào', leadingNumber('i 8704.31 (continued) ; 5. Three-wheeled vehicle') === 5 && leadingNumber('Fig. 1 Fig. 1 : Tobacco') === null);
+}
 {
   const ops = [{ id: '851762/4', hs: '851762', ord: 4, adoption: 2019, line: 10, text: 'A device of 5 cm', headingSuspect: false }, { id: '2106/1', hs: '2106', ord: 1, adoption: 0, line: 20, text: 'Food 1 kg' }];
   const j = joinVi(ops, [{ line: 10, vi: 'Thiết bị 5 cm [?]' }, { line: 99, vi: 'x' }]);

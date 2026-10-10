@@ -148,3 +148,14 @@ không bày thứ tự suy ra như một số hiệu. Nếu bản gốc có số
 (`wco-op.<hs>.<thứ tự>`). Thiếu kho riêng thì mọi hàm trả rỗng, CI và bản công khai chạy bình thường.
 Bước tiếp (chưa làm, cần kho thật): thêm nguồn `wco-op.*` vào `lib/so-tay.js` + soát độc lập như mọi đợt sổ tay; phần công khai
 chỉ gồm số hiệu, mã HS 6 số, câu mô tả tiếng Việt **tự viết** và con trỏ tới bản gốc — không có nguyên văn, không có bản dịch toàn văn.
+
+## Cổng cuối: số thứ tự in (scripts/wco-op-ordcheck.mjs)
+
+Sau khi soát độc lập bản dịch (56 mục) phát hiện 12 mục có mã gán không khớp nội dung, đã thêm cổng cuối dựa trên **số thứ tự IN trong văn bản** (số chính thức, được các ý kiến khác dẫn chiếu "xem thêm …/n"). Ý kiến bị loại khỏi API (`headingSuspect` + `headingConflict`) khi:
+
+- số in < thứ tự ta gán (đánh số lại → thuộc mã kế tiếp có biển tiêu đề bị OCR làm rơi; các ý kiến sau nó trong mã cũng nghi);
+- số in > thứ tự ta gán (cột "ý kiến thứ mấy" sẽ trích sai);
+- mở đầu bằng nhãn/chú thích ảnh, không có số in;
+- thứ tự > 1 mà không đọc được số in (thứ tự chỉ suy ra từ vị trí).
+
+Kết quả trên kho hiện có: 1.038 ý kiến, 910 có mã/thứ tự đã qua cổng, 128 bị loại khỏi API. Chạy lại cổng sau mỗi lần sửa mã: `node scripts/wco-op-ordcheck.mjs` (tự lưu `opinions.pre-ordcheck.json`).
