@@ -1,0 +1,3697 @@
+{
+  "heading": "8708",
+  "titleVi": "Bộ phận và phụ kiện của xe có động cơ thuộc các nhóm từ 87.01 đến 87.05",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "proposedBy": "GĐ Claude theo chỉ đạo CEO 10/10/2026",
+  "proposedAt": "2026-10-10",
+  "needsCeoReview": true,
+  "ceoReviewNotesVi": [
+    "Ca mở đầu: Tmall \"26款零跑A10纯电版底盘护板电池护板…\" (tấm ốp bảo vệ gầm/pin thép mangan, dập theo lỗ vít nguyên bản Leapmotor A10/A05). Động cơ chốt 8708.29.95 (thân xe) với bằng chứng yếu; CEO chỉ đạo nghiên cứu 8708.99.62 (bộ phận khung gầm, xe 87.03). Bảng này xếp tấm bảo vệ gầm bắt vào khung gầm → 8708.99.6x.",
+    "GIẢ ĐỊNH cần CEO duyệt: (1) vehicleClass = 87.03 (ô tô con) khi hồ sơ không nói loại xe — hàng Taobao/Tmall/1688 phụ tùng chủ yếu cho ô tô con; mọi kết quả dựa giả định ghi factSources = assumed để chuyên viên thấy. (2) Vè xe / tai xe (翼子板, fender) → bodyOther 8708.29.95; chắn bùn (挡泥板, mud flap) → 8708.29.93 \"chắn bùn\". (3) Hộp số / cầu / két nước / ống xả / túi khí / vô lăng không nói rõ → giả định dạng hoàn chỉnh (assembled / radiator / silencerPipe / airbag complete / không túi khí).",
+    "tax.json chỉ có dòng lá 8 số, KHÔNG có dòng cha 3–5 gạch; tên nhóm con của 8708.40, 8708.50, 8708.70, 8708.92, 8708.99.6x suy từ AHTN 2022 (ghi trong noteVi từng luật) — CEO đối chiếu biểu thuế in trước khi bật verified.",
+    "Thuế lệch: 8708.29.95 ACFTA \"0 (-ID, PH, CN)\" (TQ không hưởng, MFN 15 %) vs 8708.99.62 ACFTA \"0 (-ID, PH, TH)\" (TQ 0 %). Phân định phải theo bản chất (bắt vào đâu), bảng KHÔNG được dùng để tối ưu thuế.",
+    "Chế độ chạy: verified=false → classify/engine-loop chỉ TƯ VẤN (decisionAdvisory + cảnh báo + review khi khác mã), không ghi đè. Bật verified=true mới ghi đè như bảng 8536."
+  ],
+  "essenceTestVi": "Hàng là BỘ PHẬN GÌ của xe 87.01–87.05, GẮN VÀO ĐÂU và làm CHỨC NĂNG gì? (1) Thân vỏ / khoang xe — tấm nhìn thấy từ ngoài hoặc trong khoang (cửa, nắp ca pô, vè xe, ba đờ xốc, ốp cửa, tấm lót sàn, bậc lên xuống, che nắng, trang trí nội thất, chắn bùn, thanh chống ca pô) → Chú giải (B) → 8708.10 / 8708.21–.29 theo loại xe; (2) Khung gầm – hệ treo – truyền động – điều khiển — bắt vào khung gầm hoặc nằm trong hệ cơ khí (phanh, hộp số, cầu, bánh xe, giảm xóc, két nước, ống xả, ly hợp, vô lăng, túi khí, thùng nhiên liệu, bàn đạp, khay ắc quy, tấm hướng khí, khung gầm và TẤM BẢO VỆ GẦM / PIN / ĐỘNG CƠ bắt vào khung gầm, giá đỡ động cơ) → Chú giải (A), (C)–(O) → 8708.30–.99; (3) Bộ phận bên trong động cơ (84.09, 84.83), ắc quy (85.07), đèn (85.12), bơm/van/ổ bi (84.13/84.81/84.82), ghế (94.01), bu lông (73.18) → KHÔNG thuộc 87.08 (Chú giải 2 Phần XVII). Trong mỗi phân nhóm, dòng 8 số tách theo LOẠI XE (87.01 / 87.02 / 87.03 / 8704.10 / 87.04 / 87.05) và trạng thái lắp ráp / loại bộ phận.",
+  "sourceVi": "Biểu thuế 2026 nhóm 87.08 (data/tax.json chỉ có 119 dòng lá 8 số; tên dòng cha đối chiếu AHTN 2022 và nguyên văn các TB phân loại trong data/precedents.json): 8708.10 ba đờ xốc (.10 xe 87.01; .90 khác — TB 18590/18591/TB-CHQ cụm cản → 8708.10.90); 8708.21.00 dây đai an toàn; 8708.22 kính chắn gió / cửa sổ (.10 / .20 / .30 theo xe 87.01 / 87.03 / 87.02–87.04–87.05); 8708.29 bộ phận thân xe khác: bộ phận của cụm ốp cửa (.11 87.01; .15 đỡ tay trên cửa 87.03; .16 khác 87.03; .17 8704.10; .18 87.02 hoặc 87.04 khác; .19 khác), .20 bộ phận dây đai an toàn, loại khác (.92 87.01; 87.03: .93 phụ kiện trang trí nội thất (SEN) / chắn bùn, .94 thanh chống nắp ca pô, .95 loại khác — TB 4168/TB-TCHQ, 18595/TB-CHQ, 20233/TB-CHQ; 87.02/87.04: .96 / .97 / .98 — 3552/TCHQ-TXNK nắp thùng bán tải chở hàng → .98, chở người → .95; .99 khác); 8708.30 phanh (.10 87.01; 87.03: .21 phanh trống/đĩa/hơi, .29 khác; .30 phanh trống/đĩa/hơi 87.02/87.04; .90 khác); 8708.40 hộp số (đã lắp ráp .11 87.03 / .13 87.04–87.05 / .14 87.01 / .19; chưa lắp ráp .25 / .26 / .27 / .29; bộ phận .91 / .92 / .99); 8708.50 cầu (đã lắp ráp .11 / .13 / .15 / .19; chưa lắp ráp .25 / .26 / .27 / .29; bộ phận: bánh răng vành khăn & quả dứa (SEN) .91 / .94 / .96, khác .92 / .95 / .99); 8708.70 bánh xe (đĩa bánh .15–.19; nắp trục .21–.29; bánh xe hoàn chỉnh .31–.39, .33 xe tự đổ >45 tấn (SEN); khác .95–.99); 8708.80 hệ treo (giảm xóc .15–.19; khác .91–.99); 8708.91 két nước (.15–.19; bộ phận .91, nút xả (SEN) .93 / .94, khác .95 / .99 — TB 1008, 1009/TB-TCHQ); 8708.92 ống xả (.10 87.01; .20 87.03; .51/.52 và .61/.62 ống xả & giảm thanh / bộ phận (SEN) theo xe; .90); 8708.93 ly hợp (.50 / .60 / .70 / .90); 8708.94 vô lăng (có túi khí .11 / .19; khác .94 / .95 / .99); 8708.95 túi khí (.10 hoàn chỉnh; .90 bộ phận); 8708.99 khác: 87.01 (.11 thùng nhiên liệu chưa lắp ráp; khung giá đỡ động cơ; .19 khác), \"Dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04\" (nguyên văn TB 3988/TB-TCHQ): thùng nhiên liệu .21 / .24 nửa dưới–nắp–ống dẫn–đai (SEN) / .25 khác (SEN); .30 bàn đạp ga/phanh/côn; .40 giá đỡ – khay ắc quy; .50 tấm hướng luồng khí tản nhiệt (SEN); .61 / .62 / .63 theo xe 87.02 / 87.03 / 87.04 (nhóm 4 gạch suy từ AHTN 2022: khung gầm và bộ phận khung gầm — TB 8017/TB-TCHQ tấm đệm thép bộ phận khung xe → 8708.99.62); .70 khung giá đỡ động cơ; .80 loại khác (TB 3988/TB-TCHQ pách đỡ vi sai); loại khác (87.05): .91 / .99. Chú giải HS 87.08 (A) khung gầm và phụ tùng đi kèm, (B) thân xe và phụ kiện, (C)–(O) các hệ cơ khí (data/chu-giai-heading.json[\"8708\"], data/so-tay/8708.json). GIẢ ĐỊNH (assumeIfUnknown, chờ CEO duyệt): vehicleClass = 8703; gearboxState/axleState = assembled; wheelPartKind = completeWheel; radiatorPartKind = radiator; exhaustKind = silencerPipe; steeringAirbag = no; airbagComplete = yes; fuelTankState = assembled; fuelTankPartKind = tank; crownWheelPinion = no.",
+  "inputs": [
+    {
+      "attribute": "partKind",
+      "type": "enum",
+      "labelVi": "Bộ phận gì của xe",
+      "questionVi": "Hàng là bộ phận gì của xe: ba đờ xốc; dây đai an toàn / bộ phận dây đai; kính chắn gió – cửa sổ; ốp cửa (tapi) / đỡ tay cửa; bộ phận thân vỏ khác (cửa, nắp ca pô, vè xe, đuôi gió, bậc lên xuống, tấm che nắng…); phụ kiện nội thất hoặc chắn bùn; thanh chống nắp ca pô; phanh; hộp số; cầu/trục; bánh xe; hệ thống treo / giảm xóc; két nước; ống xả; ly hợp; vô lăng – trụ lái; túi khí; thùng nhiên liệu; bàn đạp; khay/giá ắc quy; tấm hướng luồng khí tản nhiệt; tấm bảo vệ gầm / ốp gầm / bảo vệ pin – động cơ bắt vào khung gầm; khung gầm / bộ phận khung gầm; khung giá đỡ động cơ; hay bộ phận khác?",
+      "preferOnConflict": "chassisGuard",
+      "domain": [
+        "bumper",
+        "seatBelt",
+        "seatBeltPart",
+        "windowGlass",
+        "doorTrimPart",
+        "doorArmrest",
+        "bodyOther",
+        "interiorTrimOrMudguard",
+        "hoodRod",
+        "brake",
+        "gearbox",
+        "axle",
+        "roadWheel",
+        "suspension",
+        "radiator",
+        "exhaust",
+        "clutch",
+        "steering",
+        "airbag",
+        "fuelTank",
+        "pedal",
+        "batteryTray",
+        "radiatorShroud",
+        "chassisGuard",
+        "chassisFrame",
+        "engineBracket",
+        "otherPart"
+      ],
+      "optionsVi": {
+        "bumper": "Ba đờ xốc (cản) và bộ phận cản",
+        "seatBelt": "Dây đai an toàn hoàn chỉnh",
+        "seatBeltPart": "Bộ phận của dây đai an toàn",
+        "windowGlass": "Kính chắn gió / kính sau / cửa sổ đã gắn khung",
+        "doorTrimPart": "Bộ phận của cụm ốp cửa (tapi cửa)",
+        "doorArmrest": "Đỡ tay (tựa tay) trên cửa xe",
+        "bodyOther": "Bộ phận thân vỏ khác (cửa, nắp ca pô, vè xe, ốp thân, đuôi gió, bậc, che nắng…)",
+        "interiorTrimOrMudguard": "Phụ kiện trang trí nội thất (ốp, lớp lót trong xe) hoặc chắn bùn",
+        "hoodRod": "Thanh chống nắp ca pô",
+        "brake": "Phanh / bộ phận phanh",
+        "gearbox": "Hộp số / bộ phận hộp số",
+        "axle": "Cầu xe / trục / bộ phận cầu",
+        "roadWheel": "Bánh xe, mâm, vành, nắp trục, đĩa bánh",
+        "suspension": "Hệ thống treo / giảm xóc",
+        "radiator": "Két nước làm mát / bộ phận két nước",
+        "exhaust": "Ống xả / bộ giảm thanh / bộ phận",
+        "clutch": "Bộ ly hợp (côn) / bộ phận",
+        "steering": "Vô lăng, trụ lái, hộp cơ cấu lái",
+        "airbag": "Túi khí an toàn / bộ phận túi khí",
+        "fuelTank": "Thùng nhiên liệu / bộ phận thùng",
+        "pedal": "Bàn đạp ga / phanh / côn",
+        "batteryTray": "Giá đỡ / khay đỡ bình ắc quy",
+        "radiatorShroud": "Tấm hướng luồng khí tản nhiệt",
+        "chassisGuard": "Tấm bảo vệ gầm / ốp gầm / tấm bảo vệ pin, động cơ bắt vào khung gầm (skid plate)",
+        "chassisFrame": "Khung gầm / bộ phận khung gầm (dầm, thanh ngang, tấm đệm khung)",
+        "engineBracket": "Khung giá đỡ động cơ (chân máy)",
+        "otherPart": "Bộ phận khác (pách đỡ, cáp ga/phanh, cần số, ống dẫn…)"
+      },
+      "detect": {
+        "bumper": [
+          "ba đờ xốc",
+          "ba đờ sốc",
+          "cản trước",
+          "cản sau",
+          "cụm cản",
+          "ốp cản",
+          "nẹp cản",
+          "bumper",
+          "ba đờ xốc",
+          "保险杠",
+          "前杠",
+          "后杠",
+          "防撞梁"
+        ],
+        "seatBelt": [
+          "dây đai an toàn",
+          "đai an toàn",
+          "seat belt",
+          "seatbelt",
+          "安全带"
+        ],
+        "seatBeltPart": [
+          "khoá đai an toàn",
+          "chốt đai an toàn",
+          "cuộn dây đai an toàn",
+          "bộ phận dây đai an toàn",
+          "seat belt buckle",
+          "安全带卡扣",
+          "安全带锁扣",
+          "安全带卷收器"
+        ],
+        "windowGlass": [
+          "kính chắn gió",
+          "kính lái",
+          "kính sau",
+          "kính cửa sổ",
+          "windscreen",
+          "windshield",
+          "挡风玻璃",
+          "前挡玻璃",
+          "后挡玻璃",
+          "车窗玻璃"
+        ],
+        "doorTrimPart": [
+          "ốp cửa",
+          "tapi cửa",
+          "táp pi cửa",
+          "ốp tapi",
+          "ốp trong cửa",
+          "door trim",
+          "门板",
+          "门内饰板",
+          "车门内饰",
+          "门饰板"
+        ],
+        "doorArmrest": [
+          "đỡ tay trên cửa",
+          "tựa tay cửa",
+          "tay vịn cửa",
+          "door armrest",
+          "门扶手",
+          "车门扶手"
+        ],
+        "bodyOther": [
+          "cửa xe",
+          "cánh cửa",
+          "nắp ca pô",
+          "nắp capo",
+          "nắp capô",
+          "ca pô",
+          "capo",
+          "vè xe",
+          "tai xe",
+          "fender",
+          "tấm thân xe",
+          "thân vỏ",
+          "ốp thân",
+          "đuôi gió",
+          "cánh gió",
+          "spoiler",
+          "body kit",
+          "bodykit",
+          "bậc lên xuống",
+          "bệ bước chân",
+          "tấm che nắng",
+          "giá nóc",
+          "baga nóc",
+          "giá chở hành lý",
+          "nắp thùng xe",
+          "tấm lót sàn",
+          "khung cửa sổ",
+          "giá biển số",
+          "nắp chụp đèn",
+          "táp lô",
+          "tablo",
+          "bảng khí cụ",
+          "mặt ca lăng",
+          "ca lăng",
+          "lưới tản nhiệt",
+          "calang",
+          "grille",
+          "车门",
+          "引擎盖",
+          "发动机盖",
+          "机盖",
+          "翼子板",
+          "叶子板",
+          "尾翼",
+          "扰流板",
+          "车身",
+          "侧踏板",
+          "脚踏板",
+          "遮阳板",
+          "行李架",
+          "车顶架",
+          "仪表台",
+          "中网",
+          "进气格栅",
+          "车顶",
+          "尾门",
+          "后备箱盖",
+          "门把手"
+        ],
+        "interiorTrimOrMudguard": [
+          "chắn bùn",
+          "tấm chắn bùn",
+          "mud flap",
+          "mudguard",
+          "phụ kiện trang trí nội thất",
+          "ốp nội thất",
+          "ốp trang trí nội thất",
+          "lớp lót nội thất",
+          "ốp táp lô",
+          "ốp trụ",
+          "ốp bệ cửa",
+          "ốp cốp",
+          "挡泥板",
+          "挡泥皮",
+          "内饰",
+          "内饰板",
+          "内饰条",
+          "门槛条",
+          "后备箱垫"
+        ],
+        "hoodRod": [
+          "thanh chống nắp ca pô",
+          "thanh chống nắp capo",
+          "ty chống nắp capo",
+          "ty thủy lực nắp capo",
+          "hood rod",
+          "hood strut",
+          "引擎盖撑杆",
+          "机盖撑杆",
+          "引擎盖液压杆",
+          "机盖液压杆"
+        ],
+        "brake": [
+          "phanh",
+          "má phanh",
+          "đĩa phanh",
+          "tang trống phanh",
+          "cụm phanh",
+          "heo dầu",
+          "xi lanh phanh",
+          "trợ lực phanh",
+          "bầu trợ lực",
+          "brake",
+          "brake pad",
+          "brake disc",
+          "brake caliper",
+          "刹车",
+          "制动",
+          "刹车片",
+          "刹车盘",
+          "制动器",
+          "刹车卡钳",
+          "刹车总泵",
+          "刹车分泵"
+        ],
+        "gearbox": [
+          "hộp số",
+          "vỏ hộp số",
+          "bánh răng hộp số",
+          "gearbox",
+          "transmission",
+          "变速箱",
+          "变速器",
+          "变速箱壳",
+          "变速箱齿轮"
+        ],
+        "axle": [
+          "cầu xe",
+          "cầu chủ động",
+          "cầu bị động",
+          "cầu trước",
+          "cầu sau",
+          "bộ vi sai",
+          "vi sai",
+          "bán trục",
+          "trục bánh xe",
+          "láp ngang",
+          "cây láp",
+          "bánh răng vành khăn",
+          "bánh răng quả dứa",
+          "axle",
+          "differential",
+          "drive axle",
+          "half shaft",
+          "车桥",
+          "前桥",
+          "后桥",
+          "差速器",
+          "半轴",
+          "传动半轴",
+          "驱动桥"
+        ],
+        "roadWheel": [
+          "bánh xe",
+          "mâm xe",
+          "mâm đúc",
+          "vành xe",
+          "la zăng",
+          "lazang",
+          "vành bánh",
+          "nắp trục bánh xe",
+          "chụp mâm",
+          "nắp chụp mâm",
+          "nắp bánh xe",
+          "nan hoa",
+          "đĩa bánh xe",
+          "road wheel",
+          "wheel rim",
+          "alloy wheel",
+          "hub cap",
+          "hubcap",
+          "wheel cover",
+          "轮毂",
+          "轮圈",
+          "钢圈",
+          "轮辋",
+          "轮毂盖",
+          "轮毂罩",
+          "轮毂中心盖",
+          "轮盖"
+        ],
+        "suspension": [
+          "giảm xóc",
+          "giảm sóc",
+          "phuộc",
+          "phuộc nhún",
+          "hệ thống treo",
+          "càng a",
+          "càng chữ a",
+          "thanh cân bằng",
+          "thanh giằng",
+          "rotuyn",
+          "rô tuyn",
+          "thanh xoắn",
+          "shock absorber",
+          "strut",
+          "control arm",
+          "stabilizer bar",
+          "sway bar",
+          "减震器",
+          "减振器",
+          "避震器",
+          "悬挂",
+          "悬架",
+          "下摆臂",
+          "上摆臂",
+          "平衡杆",
+          "稳定杆",
+          "扭力杆",
+          "球头"
+        ],
+        "radiator": [
+          "két nước",
+          "két làm mát",
+          "két nước làm mát",
+          "bộ tản nhiệt",
+          "bình nước phụ",
+          "nút xả két nước",
+          "radiator",
+          "水箱",
+          "散热器",
+          "散热水箱",
+          "水箱放水阀",
+          "放水螺塞"
+        ],
+        "exhaust": [
+          "ống xả",
+          "bô xả",
+          "pô xe",
+          "bộ giảm thanh",
+          "ống pô",
+          "cổ pô",
+          "ống bô",
+          "exhaust",
+          "muffler",
+          "silencer",
+          "排气管",
+          "消音器",
+          "消声器",
+          "排气筒",
+          "尾喉",
+          "排气尾管"
+        ],
+        "clutch": [
+          "ly hợp",
+          "bộ côn",
+          "đĩa côn",
+          "bàn ép côn",
+          "lá côn",
+          "bi tê",
+          "clutch",
+          "离合器",
+          "离合片",
+          "压盘",
+          "离合器压盘",
+          "离合器片"
+        ],
+        "steering": [
+          "vô lăng",
+          "tay lái",
+          "trụ lái",
+          "cột lái",
+          "thước lái",
+          "hộp lái",
+          "hộp cơ cấu lái",
+          "bơm trợ lực lái",
+          "cơ cấu lái",
+          "vô lăng có túi khí",
+          "vô lăng kèm túi khí",
+          "vô lăng tích hợp túi khí",
+          "steering wheel with airbag",
+          "airbag steering wheel",
+          "带气囊方向盘",
+          "气囊方向盘",
+          "steering wheel",
+          "steering column",
+          "steering rack",
+          "steering gear",
+          "方向盘",
+          "转向柱",
+          "转向器",
+          "转向机",
+          "转向助力泵",
+          "方向机"
+        ],
+        "airbag": [
+          "túi khí",
+          "túi khí an toàn",
+          "bộ bơm phồng túi khí",
+          "airbag",
+          "air bag",
+          "安全气囊",
+          "气囊",
+          "气体发生器"
+        ],
+        "fuelTank": [
+          "thùng nhiên liệu",
+          "bình nhiên liệu",
+          "bình xăng",
+          "thùng xăng",
+          "thùng dầu",
+          "nắp thùng nhiên liệu",
+          "nắp bình xăng",
+          "ống dẫn nhiên liệu của thùng",
+          "đai giữ bình nhiên liệu",
+          "fuel tank",
+          "filler pipe",
+          "filler hose",
+          "fuel tank cap",
+          "油箱",
+          "燃油箱",
+          "油箱盖",
+          "加油管",
+          "油箱带"
+        ],
+        "pedal": [
+          "chân ga",
+          "chân phanh",
+          "chân côn",
+          "bàn đạp ga",
+          "bàn đạp phanh",
+          "bàn đạp côn",
+          "bàn đạp ly hợp",
+          "cụm bàn đạp",
+          "accelerator pedal",
+          "brake pedal",
+          "clutch pedal",
+          "油门踏板",
+          "刹车踏板",
+          "离合踏板",
+          "制动踏板",
+          "踏板总成",
+          "加速踏板"
+        ],
+        "batteryTray": [
+          "khay ắc quy",
+          "khay đỡ ắc quy",
+          "khay đỡ bình ắc quy",
+          "khay bình ắc quy",
+          "giá bình ắc quy",
+          "khay đựng ắc quy",
+          "giá ắc quy",
+          "giá đỡ ắc quy",
+          "giá đỡ bình ắc quy",
+          "khay bình ắc quy",
+          "khung ắc quy",
+          "battery tray",
+          "battery carrier",
+          "battery bracket",
+          "电瓶托盘",
+          "电瓶支架",
+          "蓄电池托盘",
+          "蓄电池支架",
+          "电瓶架"
+        ],
+        "radiatorShroud": [
+          "tấm hướng luồng khí tản nhiệt",
+          "tấm hướng gió két nước",
+          "ốp hướng gió két nước",
+          "radiator shroud",
+          "fan shroud",
+          "散热器导风板",
+          "水箱导风板",
+          "导风罩",
+          "风扇罩"
+        ],
+        "chassisGuard": [
+          "tấm bảo vệ gầm",
+          "tấm ốp gầm",
+          "ốp gầm",
+          "ốp bảo vệ gầm",
+          "bảo vệ gầm",
+          "giáp gầm",
+          "tấm chắn gầm",
+          "tấm che gầm",
+          "tấm bảo vệ pin",
+          "bảo vệ pin",
+          "ốp bảo vệ pin",
+          "tấm bảo vệ động cơ",
+          "bảo vệ động cơ",
+          "tấm chắn động cơ",
+          "tấm bảo vệ hộp số",
+          "tấm bảo vệ bình xăng",
+          "tấm bảo vệ két nước",
+          "skid plate",
+          "underbody guard",
+          "under guard",
+          "engine guard",
+          "engine protection plate",
+          "battery guard",
+          "battery protection plate",
+          "chassis guard",
+          "护板",
+          "底盘护板",
+          "车底护板",
+          "下护板",
+          "发动机护板",
+          "发动机下护板",
+          "电池护板",
+          "电池包护板",
+          "变速箱护板",
+          "油箱护板",
+          "水箱护板",
+          "底盘装甲",
+          "底护板",
+          "前下护板"
+        ],
+        "chassisFrame": [
+          "khung gầm",
+          "khung xe",
+          "dầm dọc khung",
+          "thanh ngang khung",
+          "xà ngang khung",
+          "tấm đệm khung xe",
+          "chassis frame",
+          "chassis",
+          "cross member",
+          "side member",
+          "车架",
+          "底盘车架",
+          "车架横梁",
+          "车架纵梁",
+          "大梁",
+          "副车架"
+        ],
+        "engineBracket": [
+          "khung giá đỡ động cơ",
+          "giá đỡ động cơ",
+          "chân máy",
+          "cao su chân máy",
+          "engine bracket",
+          "engine mount",
+          "engine mounting",
+          "发动机支架",
+          "发动机机脚",
+          "机脚胶",
+          "发动机托架",
+          "发动机悬置"
+        ],
+        "otherPart": [
+          "pách đỡ",
+          "giá bắt",
+          "pát đỡ",
+          "cáp phanh",
+          "cáp ga",
+          "dây ga",
+          "dây côn",
+          "cáp côn",
+          "cần số",
+          "cần phanh tay",
+          "thanh nối",
+          "bracket",
+          "cable",
+          "gear lever",
+          "ống dẫn",
+          "pách đỡ bộ vi sai",
+          "pách đỡ vi sai",
+          "giá đỡ vi sai",
+          "giá bắt vi sai",
+          "differential bracket",
+          "差速器支架",
+          "支架",
+          "拉线",
+          "油门拉线",
+          "刹车拉线",
+          "离合拉线",
+          "换挡杆",
+          "手刹",
+          "手刹拉线",
+          "连杆",
+          "托架"
+        ]
+      }
+    },
+    {
+      "attribute": "vehicleClass",
+      "type": "enum",
+      "labelVi": "Loại xe lắp bộ phận này",
+      "questionVi": "Bộ phận dùng cho xe loại nào: máy kéo / đầu kéo (87.01); xe chở từ 10 người trở lên — xe khách, xe buýt (87.02); ô tô con chở người (87.03); xe tự đổ chạy ngoài đường quốc lộ — xe ben mỏ (8704.10); xe tải khác, bán tải (87.04); hay xe chuyên dùng — cứu hoả, cẩu, trộn bê tông (87.05)?",
+      "domain": [
+        "8701",
+        "8702",
+        "8703",
+        "870410",
+        "8704",
+        "8705"
+      ],
+      "assumeIfUnknown": "8703",
+      "optionsVi": {
+        "8701": "Máy kéo / đầu kéo (87.01)",
+        "8702": "Xe chở ≥10 người — xe khách, xe buýt (87.02)",
+        "8703": "Ô tô con chở người (87.03)",
+        "8704": "Xe tải khác, bán tải (87.04)",
+        "8705": "Xe chuyên dùng (87.05)",
+        "870410": "Xe tự đổ chạy ngoài đường quốc lộ (8704.10)"
+      },
+      "detect": {
+        "8701": [
+          "máy kéo",
+          "đầu kéo",
+          "xe đầu kéo",
+          "tractor",
+          "tractor head",
+          "prime mover",
+          "拖拉机",
+          "牵引车",
+          "半挂牵引车",
+          "拖车头"
+        ],
+        "8702": [
+          "xe khách",
+          "xe buýt",
+          "xe bus",
+          "xe chở khách",
+          "bus",
+          "coach",
+          "minibus",
+          "xe 16 chỗ",
+          "xe 29 chỗ",
+          "xe 45 chỗ",
+          "xe 47 chỗ",
+          "客车",
+          "大巴",
+          "大巴车",
+          "公交车",
+          "巴士",
+          "中巴"
+        ],
+        "8703": [
+          "ô tô con",
+          "xe con",
+          "xe du lịch",
+          "ô tô du lịch",
+          "xe ô tô con",
+          "sedan",
+          "suv",
+          "hatchback",
+          "crossover",
+          "mpv",
+          "xe 4 chỗ",
+          "xe 5 chỗ",
+          "xe 7 chỗ",
+          "xe gia đình",
+          "ô tô điện con",
+          "轿车",
+          "乘用车",
+          "小汽车",
+          "小轿车",
+          "家用车",
+          "越野车",
+          "跑车",
+          "小客车",
+          "纯电动轿车",
+          "新能源汽车",
+          "电动汽车"
+        ],
+        "8704": [
+          "xe tải",
+          "xe bán tải",
+          "xe ben",
+          "xe chở hàng",
+          "xe tải nhẹ",
+          "xe tải nặng",
+          "xe tải van",
+          "pickup",
+          "pick-up",
+          "pick up",
+          "truck",
+          "lorry",
+          "light truck",
+          "货车",
+          "卡车",
+          "皮卡",
+          "载货车",
+          "轻卡",
+          "重卡",
+          "厢式货车",
+          "载货汽车",
+          "微卡"
+        ],
+        "8705": [
+          "xe chuyên dùng",
+          "xe cứu hoả",
+          "xe cứu hỏa",
+          "xe chữa cháy",
+          "xe cẩu",
+          "xe cần cẩu",
+          "xe trộn bê tông",
+          "xe bồn bê tông",
+          "xe cứu hộ",
+          "xe cứu thương",
+          "xe quét đường",
+          "xe thang",
+          "fire truck",
+          "crane truck",
+          "mobile crane",
+          "concrete mixer truck",
+          "专用车",
+          "消防车",
+          "起重车",
+          "汽车起重机",
+          "混凝土搅拌车",
+          "搅拌车",
+          "救援车",
+          "清障车",
+          "扫路车",
+          "救护车"
+        ],
+        "870410": [
+          "xe tự đổ",
+          "xe ben mỏ",
+          "xe ben chạy ngoài đường quốc lộ",
+          "dumper",
+          "dump truck off-highway",
+          "off-highway dump truck",
+          "mining dump truck",
+          "自卸车",
+          "矿用自卸车",
+          "非公路自卸车",
+          "矿卡"
+        ]
+      }
+    },
+    {
+      "attribute": "brakeKind",
+      "type": "enum",
+      "labelVi": "Loại phanh",
+      "questionVi": "Hàng là cụm phanh trống / phanh đĩa / phanh hơi hoàn chỉnh, hay bộ phận phanh (má phanh, đĩa phanh rời, xi lanh, trợ lực…)?",
+      "domain": [
+        "drumDiscAir",
+        "otherBrakePart"
+      ],
+      "optionsVi": {
+        "drumDiscAir": "Phanh trống / phanh đĩa / phanh hơi (cụm hoàn chỉnh)",
+        "otherBrakePart": "Bộ phận phanh (má, đĩa rời, xi lanh, trợ lực…)"
+      },
+      "detect": {
+        "drumDiscAir": [
+          "phanh trống",
+          "phanh đĩa hoàn chỉnh",
+          "cụm phanh",
+          "phanh hơi",
+          "cụm phanh đĩa",
+          "cụm phanh trống",
+          "drum brake",
+          "disc brake assembly",
+          "air brake",
+          "brake assembly",
+          "鼓式制动器",
+          "盘式制动器",
+          "制动器总成",
+          "刹车总成",
+          "气制动",
+          "空气制动器"
+        ],
+        "otherBrakePart": [
+          "má phanh",
+          "bố thắng",
+          "đĩa phanh",
+          "tang trống",
+          "xi lanh phanh",
+          "heo dầu",
+          "cùm phanh",
+          "trợ lực phanh",
+          "bầu trợ lực",
+          "dây phanh",
+          "ống dầu phanh",
+          "bình dầu phanh",
+          "brake pad",
+          "brake disc",
+          "brake rotor",
+          "brake caliper",
+          "brake cylinder",
+          "brake booster",
+          "brake shoe",
+          "刹车片",
+          "刹车盘",
+          "刹车卡钳",
+          "刹车分泵",
+          "刹车总泵",
+          "真空助力器",
+          "刹车蹄",
+          "刹车油管",
+          "制动鼓"
+        ]
+      }
+    },
+    {
+      "attribute": "gearboxState",
+      "type": "enum",
+      "labelVi": "Hộp số: đã lắp ráp / chưa lắp ráp / bộ phận",
+      "questionVi": "Hộp số nhập ở dạng đã lắp ráp hoàn chỉnh, chưa lắp ráp (linh kiện rời cùng bộ), hay chỉ là bộ phận của hộp số (vỏ, bánh răng, cần số…)?",
+      "domain": [
+        "assembled",
+        "unassembled",
+        "part"
+      ],
+      "assumeIfUnknown": "assembled",
+      "optionsVi": {
+        "assembled": "Hộp số đã lắp ráp hoàn chỉnh",
+        "unassembled": "Hộp số chưa lắp ráp (bộ linh kiện)",
+        "part": "Bộ phận của hộp số"
+      },
+      "detect": {
+        "assembled": [
+          "hộp số hoàn chỉnh",
+          "hộp số nguyên cụm",
+          "hộp số đã lắp ráp",
+          "cụm hộp số",
+          "gearbox assembly",
+          "transmission assembly",
+          "complete gearbox",
+          "变速箱总成",
+          "变速器总成"
+        ],
+        "unassembled": [
+          "hộp số chưa lắp ráp",
+          "hộp số dạng rời",
+          "hộp số tháo rời",
+          "chưa lắp ráp",
+          "dạng rời",
+          "tháo rời",
+          "ckd",
+          "unassembled gearbox",
+          "unassembled",
+          "未组装变速箱",
+          "散件变速箱",
+          "未组装",
+          "散件"
+        ],
+        "part": [
+          "vỏ hộp số",
+          "bánh răng hộp số",
+          "trục hộp số",
+          "cần số",
+          "bộ phận hộp số",
+          "phớt hộp số",
+          "gearbox housing",
+          "gearbox gear",
+          "gear shaft",
+          "shift lever",
+          "gearbox parts",
+          "变速箱壳",
+          "变速箱齿轮",
+          "变速箱配件",
+          "变速箱油封",
+          "换挡拨叉",
+          "变速箱轴"
+        ]
+      }
+    },
+    {
+      "attribute": "axleState",
+      "type": "enum",
+      "labelVi": "Cầu xe: đã lắp ráp / chưa lắp ráp / bộ phận",
+      "questionVi": "Cầu xe nhập ở dạng đã lắp ráp hoàn chỉnh, chưa lắp ráp (linh kiện rời cùng bộ), hay chỉ là bộ phận của cầu (bánh răng, bán trục, vỏ cầu…)?",
+      "domain": [
+        "assembled",
+        "unassembled",
+        "part"
+      ],
+      "assumeIfUnknown": "assembled",
+      "optionsVi": {
+        "assembled": "Cầu xe đã lắp ráp hoàn chỉnh",
+        "unassembled": "Cầu xe chưa lắp ráp (bộ linh kiện)",
+        "part": "Bộ phận của cầu xe"
+      },
+      "detect": {
+        "assembled": [
+          "cầu xe hoàn chỉnh",
+          "cụm cầu",
+          "cầu đã lắp ráp",
+          "cầu sau hoàn chỉnh",
+          "cầu trước hoàn chỉnh",
+          "axle assembly",
+          "complete axle",
+          "车桥总成",
+          "后桥总成",
+          "前桥总成"
+        ],
+        "unassembled": [
+          "cầu chưa lắp ráp",
+          "cầu dạng rời",
+          "cầu tháo rời",
+          "chưa lắp ráp",
+          "dạng rời",
+          "tháo rời",
+          "ckd",
+          "unassembled axle",
+          "unassembled",
+          "未组装车桥",
+          "散件车桥",
+          "未组装",
+          "散件"
+        ],
+        "part": [
+          "bánh răng vành khăn",
+          "bánh răng quả dứa",
+          "bán trục",
+          "láp ngang",
+          "cây láp",
+          "vỏ cầu",
+          "vỏ vi sai",
+          "bánh răng vi sai",
+          "trục bánh xe",
+          "bộ phận cầu",
+          "moay ơ",
+          "crown wheel",
+          "pinion",
+          "half shaft",
+          "axle shaft",
+          "differential housing",
+          "axle housing",
+          "differential gear",
+          "半轴",
+          "传动半轴",
+          "盆角齿",
+          "差速器壳",
+          "桥壳",
+          "差速器齿轮",
+          "轮毂轴",
+          "主减速器"
+        ]
+      }
+    },
+    {
+      "attribute": "crownWheelPinion",
+      "type": "enum",
+      "labelVi": "Bánh răng vành khăn / bánh răng quả dứa",
+      "questionVi": "Bộ phận cầu là bánh răng vành khăn (crown wheel) hoặc bánh răng quả dứa (pinion) của bộ vi sai không?",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "assumeIfUnknown": "no",
+      "detect": {
+        "yes": [
+          "bánh răng vành khăn",
+          "bánh răng quả dứa",
+          "vành khăn",
+          "quả dứa",
+          "crown wheel",
+          "ring gear",
+          "pinion",
+          "ring and pinion",
+          "盆角齿",
+          "盆齿",
+          "角齿",
+          "主减速器齿轮"
+        ],
+        "no": [
+          "bán trục",
+          "láp ngang",
+          "cây láp",
+          "vỏ cầu",
+          "vỏ vi sai",
+          "trục bánh xe",
+          "moay ơ",
+          "half shaft",
+          "axle housing",
+          "differential housing",
+          "bánh răng hành tinh",
+          "半轴",
+          "桥壳",
+          "差速器壳",
+          "轮毂轴",
+          "行星齿轮"
+        ]
+      }
+    },
+    {
+      "attribute": "wheelPartKind",
+      "type": "enum",
+      "labelVi": "Loại bộ phận bánh xe",
+      "questionVi": "Hàng là đĩa bánh xe (centre disc); nắp trục / chụp mâm (hub cap); bánh xe hoàn chỉnh — mâm, vành, có hoặc không lắp lốp; hay bộ phận/phụ kiện khác của bánh xe (nan hoa, vòng cân bằng, ốp vành…)?",
+      "domain": [
+        "centreDisc",
+        "hubCap",
+        "completeWheel",
+        "otherWheelPart"
+      ],
+      "assumeIfUnknown": "completeWheel",
+      "optionsVi": {
+        "centreDisc": "Đĩa bánh xe (centre disc)",
+        "hubCap": "Nắp trục bánh xe / chụp mâm (hub cap)",
+        "completeWheel": "Bánh xe hoàn chỉnh — mâm, vành, la-zăng (có hoặc không lốp)",
+        "otherWheelPart": "Bộ phận / phụ kiện khác của bánh xe"
+      },
+      "detect": {
+        "centreDisc": [
+          "đĩa bánh xe",
+          "đĩa mâm",
+          "centre disc",
+          "center disc",
+          "wheel disc",
+          "轮辐",
+          "轮辐盘",
+          "轮盘"
+        ],
+        "hubCap": [
+          "nắp trục bánh xe",
+          "chụp mâm",
+          "nắp chụp mâm",
+          "nắp bánh xe",
+          "ốp mâm",
+          "nắp moay ơ",
+          "hub cap",
+          "hubcap",
+          "wheel cover",
+          "center cap",
+          "centre cap",
+          "轮毂盖",
+          "轮毂罩",
+          "轮毂中心盖",
+          "轮盖",
+          "轮毂装饰盖"
+        ],
+        "completeWheel": [
+          "bánh xe",
+          "mâm xe",
+          "mâm đúc",
+          "mâm hợp kim",
+          "vành xe",
+          "la zăng",
+          "lazang",
+          "vành bánh xe",
+          "bánh xe có lốp",
+          "road wheel",
+          "wheel rim",
+          "alloy wheel",
+          "steel wheel",
+          "rim",
+          "轮毂",
+          "轮圈",
+          "钢圈",
+          "轮辋",
+          "铝合金轮毂",
+          "钢制轮毂",
+          "车轮总成"
+        ],
+        "otherWheelPart": [
+          "nan hoa",
+          "vòng cân bằng",
+          "ốp vành",
+          "ốc bánh xe",
+          "van bánh xe",
+          "spoke",
+          "balance weight",
+          "wheel weight",
+          "wheel nut",
+          "轮毂配件",
+          "平衡块",
+          "轮胎平衡块",
+          "轮毂螺母",
+          "轮毂螺栓",
+          "气门嘴"
+        ]
+      }
+    },
+    {
+      "attribute": "suspensionKind",
+      "type": "enum",
+      "labelVi": "Giảm xóc hay bộ phận treo khác",
+      "questionVi": "Hàng là giảm xóc (shock absorber / phuộc nhún) hay bộ phận khác của hệ thống treo (càng A, thanh cân bằng, rotuyn, thanh xoắn, giá đỡ…)?",
+      "domain": [
+        "shockAbsorber",
+        "otherSuspension"
+      ],
+      "detect": {
+        "shockAbsorber": [
+          "giảm xóc",
+          "giảm sóc",
+          "phuộc",
+          "phuộc nhún",
+          "ty giảm xóc",
+          "cụm giảm xóc",
+          "shock absorber",
+          "shock",
+          "strut assembly",
+          "damper",
+          "减震器",
+          "减振器",
+          "避震器",
+          "减震总成",
+          "前减震",
+          "后减震"
+        ],
+        "otherSuspension": [
+          "càng a",
+          "càng chữ a",
+          "thanh cân bằng",
+          "thanh giằng",
+          "rotuyn",
+          "rô tuyn",
+          "thanh xoắn",
+          "bát bèo",
+          "cao su giảm xóc",
+          "cao su chụp bụi",
+          "giá đỡ giảm xóc",
+          "control arm",
+          "stabilizer bar",
+          "sway bar",
+          "tie rod",
+          "ball joint",
+          "torsion bar",
+          "strut mount",
+          "bushing",
+          "下摆臂",
+          "上摆臂",
+          "摆臂",
+          "平衡杆",
+          "稳定杆",
+          "扭力杆",
+          "球头",
+          "减震器座",
+          "衬套",
+          "拉杆球头",
+          "减震顶胶"
+        ]
+      }
+    },
+    {
+      "attribute": "radiatorPartKind",
+      "type": "enum",
+      "labelVi": "Két nước hoàn chỉnh / nút xả / bộ phận khác",
+      "questionVi": "Hàng là két nước làm mát hoàn chỉnh; nút xả (drain plug) của két nước; hay bộ phận khác của két nước (ống, lá tản nhiệt, bình phụ, nắp két…)?",
+      "domain": [
+        "radiator",
+        "drainPlug",
+        "otherRadiatorPart"
+      ],
+      "assumeIfUnknown": "radiator",
+      "optionsVi": {
+        "radiator": "Két nước làm mát hoàn chỉnh",
+        "drainPlug": "Nút xả két nước (SEN)",
+        "otherRadiatorPart": "Bộ phận khác của két nước"
+      },
+      "detect": {
+        "radiator": [
+          "két nước làm mát",
+          "két nước hoàn chỉnh",
+          "két làm mát",
+          "két nước",
+          "bộ tản nhiệt",
+          "radiator",
+          "radiator assembly",
+          "水箱",
+          "散热器",
+          "散热水箱",
+          "水箱总成",
+          "散热器总成"
+        ],
+        "drainPlug": [
+          "nút xả",
+          "nút xả két nước",
+          "ốc xả nước",
+          "van xả két nước",
+          "drain plug",
+          "radiator drain plug",
+          "drain cock",
+          "放水阀",
+          "放水螺塞",
+          "水箱放水阀",
+          "水箱放水螺丝",
+          "排水塞"
+        ],
+        "otherRadiatorPart": [
+          "ống két nước",
+          "ống nhôm két nước",
+          "lá tản nhiệt",
+          "bình nước phụ",
+          "nắp két nước",
+          "cổ két nước",
+          "bộ phận két nước",
+          "radiator hose",
+          "radiator cap",
+          "radiator tube",
+          "radiator core",
+          "header tank",
+          "radiator tank",
+          "水箱盖",
+          "水箱配件",
+          "散热器芯",
+          "散热管",
+          "副水箱",
+          "膨胀水箱",
+          "水箱上盖",
+          "水箱下盖",
+          "散热器水室"
+        ]
+      }
+    },
+    {
+      "attribute": "exhaustKind",
+      "type": "enum",
+      "labelVi": "Ống xả / bộ giảm thanh hay bộ phận",
+      "questionVi": "Hàng là ống xả hoặc bộ giảm thanh (nguyên cụm), hay bộ phận của chúng (giá treo, gioăng, đầu pô, ống nối…)?",
+      "domain": [
+        "silencerPipe",
+        "exhaustPart"
+      ],
+      "assumeIfUnknown": "silencerPipe",
+      "optionsVi": {
+        "silencerPipe": "Ống xả / bộ giảm thanh",
+        "exhaustPart": "Bộ phận của ống xả (SEN)"
+      },
+      "detect": {
+        "silencerPipe": [
+          "ống xả",
+          "bộ giảm thanh",
+          "bô xả",
+          "pô xe",
+          "ống pô",
+          "cụm ống xả",
+          "exhaust pipe",
+          "muffler",
+          "silencer",
+          "exhaust system",
+          "排气管",
+          "消音器",
+          "消声器",
+          "排气管总成",
+          "排气筒"
+        ],
+        "exhaustPart": [
+          "giá treo ống xả",
+          "gioăng ống xả",
+          "đầu pô",
+          "cổ pô",
+          "ống nối pô",
+          "bát treo pô",
+          "cao su treo pô",
+          "bộ phận ống xả",
+          "exhaust hanger",
+          "exhaust gasket",
+          "exhaust tip",
+          "exhaust flange",
+          "exhaust clamp",
+          "排气管吊耳",
+          "排气管垫片",
+          "尾喉",
+          "排气管卡箍",
+          "排气管法兰",
+          "排气管吊胶",
+          "排气配件"
+        ]
+      }
+    },
+    {
+      "attribute": "steeringAirbag",
+      "type": "enum",
+      "labelVi": "Vô lăng có lắp cụm túi khí",
+      "questionVi": "Vô lăng có lắp sẵn cụm túi khí (airbag) không?",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "assumeIfUnknown": "no",
+      "detect": {
+        "yes": [
+          "vô lăng có túi khí",
+          "vô lăng kèm túi khí",
+          "vô lăng tích hợp túi khí",
+          "steering wheel with airbag",
+          "airbag steering wheel",
+          "带气囊方向盘",
+          "方向盘带安全气囊",
+          "气囊方向盘",
+          "方向盘总成带气囊"
+        ],
+        "no": [
+          "vô lăng không túi khí",
+          "trụ lái",
+          "cột lái",
+          "thước lái",
+          "hộp lái",
+          "bơm trợ lực lái",
+          "cơ cấu lái",
+          "ốp vô lăng",
+          "bọc vô lăng",
+          "steering column",
+          "steering rack",
+          "steering gear",
+          "power steering pump",
+          "转向柱",
+          "转向器",
+          "转向机",
+          "转向助力泵",
+          "方向机",
+          "无气囊"
+        ]
+      }
+    },
+    {
+      "attribute": "airbagComplete",
+      "type": "enum",
+      "labelVi": "Túi khí hoàn chỉnh hay bộ phận",
+      "questionVi": "Hàng là túi khí an toàn hoàn chỉnh có hệ thống bơm phồng, hay chỉ là bộ phận (vỏ túi, bộ bơm phồng rời, nắp che…)?",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "assumeIfUnknown": "yes",
+      "optionsVi": {
+        "yes": "Túi khí hoàn chỉnh lắp với hệ thống bơm phồng",
+        "no": "Bộ phận của túi khí"
+      },
+      "detect": {
+        "yes": [
+          "túi khí hoàn chỉnh",
+          "cụm túi khí",
+          "túi khí an toàn",
+          "túi khí có bộ bơm",
+          "airbag module",
+          "airbag assembly",
+          "complete airbag",
+          "安全气囊总成",
+          "气囊总成",
+          "安全气囊模块"
+        ],
+        "no": [
+          "bộ phận túi khí",
+          "bộ bơm phồng",
+          "nắp túi khí",
+          "vỏ túi khí",
+          "ngòi nổ túi khí",
+          "airbag inflator",
+          "airbag cover",
+          "airbag housing",
+          "airbag parts",
+          "气体发生器",
+          "气囊盖",
+          "气囊壳",
+          "气囊配件",
+          "安全气囊盖板"
+        ]
+      }
+    },
+    {
+      "attribute": "fuelTankState",
+      "type": "enum",
+      "labelVi": "Thùng nhiên liệu đã lắp ráp / chưa lắp ráp (xe 87.01, 87.05)",
+      "questionVi": "Thùng nhiên liệu nhập ở dạng chưa lắp ráp (linh kiện rời) hay đã lắp ráp hoàn chỉnh / bộ phận của thùng?",
+      "domain": [
+        "unassembled",
+        "assembled"
+      ],
+      "assumeIfUnknown": "assembled",
+      "optionsVi": {
+        "unassembled": "Thùng nhiên liệu chưa lắp ráp",
+        "assembled": "Thùng nhiên liệu đã lắp ráp / bộ phận thùng"
+      },
+      "detect": {
+        "unassembled": [
+          "thùng nhiên liệu chưa lắp ráp",
+          "thùng chưa lắp ráp",
+          "thùng dạng rời",
+          "chưa lắp ráp",
+          "dạng rời",
+          "tháo rời",
+          "ckd",
+          "unassembled fuel tank",
+          "unassembled",
+          "未组装油箱",
+          "散件油箱",
+          "未组装",
+          "散件"
+        ],
+        "assembled": [
+          "thùng nhiên liệu hoàn chỉnh",
+          "thùng đã lắp ráp",
+          "nắp bình xăng",
+          "nắp thùng nhiên liệu",
+          "ống dẫn nhiên liệu",
+          "fuel tank assembly",
+          "fuel tank cap",
+          "filler pipe",
+          "油箱总成",
+          "油箱盖",
+          "加油管"
+        ]
+      }
+    },
+    {
+      "attribute": "fuelTankPartKind",
+      "type": "enum",
+      "labelVi": "Thùng nhiên liệu / nửa dưới – nắp – ống dẫn – đai / bộ phận khác",
+      "questionVi": "Hàng là thùng nhiên liệu (nguyên thùng); nửa dưới thùng, nắp đậy thùng, ống dẫn (filler pipe/hose), đai giữ bình; hay bộ phận khác của thùng nhiên liệu?",
+      "domain": [
+        "tank",
+        "lowerHalfCapPipeStrap",
+        "otherTankPart"
+      ],
+      "assumeIfUnknown": "tank",
+      "optionsVi": {
+        "tank": "Thùng nhiên liệu nguyên thùng",
+        "lowerHalfCapPipeStrap": "Nửa dưới thùng / nắp đậy / ống dẫn / đai giữ bình (SEN)",
+        "otherTankPart": "Bộ phận khác của thùng nhiên liệu (SEN)"
+      },
+      "detect": {
+        "tank": [
+          "thùng nhiên liệu",
+          "bình nhiên liệu",
+          "bình xăng",
+          "thùng xăng",
+          "thùng dầu",
+          "fuel tank",
+          "油箱",
+          "燃油箱",
+          "油箱总成"
+        ],
+        "lowerHalfCapPipeStrap": [
+          "nửa dưới thùng",
+          "nắp thùng nhiên liệu",
+          "nắp bình xăng",
+          "nắp bình nhiên liệu",
+          "ống dẫn nhiên liệu",
+          "ống nạp nhiên liệu",
+          "cổ bình xăng",
+          "đai giữ bình",
+          "đai thùng nhiên liệu",
+          "fuel tank cap",
+          "filler pipe",
+          "filler hose",
+          "filler neck",
+          "fuel tank strap",
+          "油箱盖",
+          "加油管",
+          "加油口",
+          "油箱带",
+          "油箱下壳",
+          "油箱固定带",
+          "加油口盖"
+        ],
+        "otherTankPart": [
+          "phao nhiên liệu",
+          "cảm biến mức nhiên liệu",
+          "van thùng nhiên liệu",
+          "gioăng thùng nhiên liệu",
+          "tấm chắn thùng",
+          "fuel tank float",
+          "fuel tank gasket",
+          "fuel tank valve",
+          "tank shield",
+          "油箱浮子",
+          "油箱垫圈",
+          "油箱阀",
+          "油箱隔热板",
+          "油箱配件"
+        ]
+      }
+    },
+    {
+      "attribute": "dumperOver45t",
+      "type": "enum",
+      "labelVi": "Xe tự đổ trên 45 tấn",
+      "questionVi": "Xe tự đổ chạy ngoài đường quốc lộ có khối lượng toàn bộ theo thiết kế trên 45 tấn không?",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "detect": {
+        "yes": [
+          "trên 45 tấn",
+          "> 45 tấn",
+          "hơn 45 tấn",
+          "xe ben mỏ lớn",
+          "mining truck",
+          "over 45 ton",
+          "45吨以上",
+          "大型矿卡",
+          "矿用宽体车"
+        ],
+        "no": [
+          "dưới 45 tấn",
+          "≤ 45 tấn",
+          "không quá 45 tấn",
+          "under 45 ton",
+          "45吨以下"
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-bumper-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "bumper",
+        "vehicleClass": "8701"
+      },
+      "hs": "87081010",
+      "gir": "GIR 6",
+      "reasonVi": "Ba đờ xốc (thanh chắn chống va đập) và bộ phận của nó, xe thuộc nhóm 87.01 (máy kéo / đầu kéo) → 8708.10.10.",
+      "source": "Biểu thuế 2026 dòng 8708.10.10 \"Dùng cho xe thuộc nhóm 87.01\"",
+      "noteVi": "TB 18590, 18591/TB-CHQ: cụm cản trước/sau (BUMPER ASSY) → 8708.10.90. Ốp/nẹp cản là \"bộ phận của ba đờ xốc\" vẫn ở 8708.10, không phải 8708.29."
+    },
+    {
+      "id": "r-bumper-8702-8703-870410-8704-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "bumper",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8703",
+            "870410",
+            "8704",
+            "8705"
+          ]
+        }
+      },
+      "hs": "87081090",
+      "gir": "GIR 6",
+      "reasonVi": "Ba đờ xốc (thanh chắn chống va đập) và bộ phận của nó, xe thuộc nhóm 87.02 (xe chở ≥10 người) / xe thuộc nhóm 87.03 (ô tô con) / xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 / xe tải khác thuộc nhóm 87.04 / xe chuyên dùng thuộc nhóm 87.05 → 8708.10.90.",
+      "source": "Biểu thuế 2026 dòng 8708.10.90 \"Loại khác\"",
+      "noteVi": "TB 18590, 18591/TB-CHQ: cụm cản trước/sau (BUMPER ASSY) → 8708.10.90. Ốp/nẹp cản là \"bộ phận của ba đờ xốc\" vẫn ở 8708.10, không phải 8708.29."
+    },
+    {
+      "id": "r-seatbelt",
+      "priority": 50,
+      "when": {
+        "partKind": "seatBelt"
+      },
+      "hs": "87082100",
+      "gir": "GIR 6",
+      "reasonVi": "Dây đai an toàn hoàn chỉnh → 8708.21.00 (mọi loại xe 87.01–87.05).",
+      "source": "Biểu thuế 2026 dòng 8708.21.00 \"Dây đai an toàn\""
+    },
+    {
+      "id": "r-seatbelt-part",
+      "priority": 50,
+      "when": {
+        "partKind": "seatBeltPart"
+      },
+      "hs": "87082920",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của dây đai an toàn (khoá, cuộn, chốt…) → 8708.29.20.",
+      "source": "Biểu thuế 2026 dòng 8708.29.20 \"Bộ phận của dây đai an toàn\""
+    },
+    {
+      "id": "r-window-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "windowGlass",
+        "vehicleClass": "8701"
+      },
+      "hs": "87082210",
+      "gir": "GIR 6",
+      "reasonVi": "Kính chắn gió trước, kính sau, cửa sổ khác đã gắn khung / có điện trở nhiệt (Chú giải phân nhóm 1 Chương 87), xe thuộc nhóm 87.01 (máy kéo / đầu kéo) → 8708.22.10.",
+      "source": "Biểu thuế 2026 dòng 8708.22.10 \"Dùng cho xe thuộc nhóm 87.01\"",
+      "noteVi": "Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-window-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "windowGlass",
+        "vehicleClass": "8703"
+      },
+      "hs": "87082220",
+      "gir": "GIR 6",
+      "reasonVi": "Kính chắn gió trước, kính sau, cửa sổ khác đã gắn khung / có điện trở nhiệt (Chú giải phân nhóm 1 Chương 87), xe thuộc nhóm 87.03 (ô tô con) → 8708.22.20.",
+      "source": "Biểu thuế 2026 dòng 8708.22.20 \"Dùng cho xe thuộc nhóm 87.03\"",
+      "noteVi": "Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-window-8702-870410-8704-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "windowGlass",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "870410",
+            "8704",
+            "8705"
+          ]
+        }
+      },
+      "hs": "87082230",
+      "gir": "GIR 6",
+      "reasonVi": "Kính chắn gió trước, kính sau, cửa sổ khác đã gắn khung / có điện trở nhiệt (Chú giải phân nhóm 1 Chương 87), xe thuộc nhóm 87.02 (xe chở ≥10 người) / xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 / xe tải khác thuộc nhóm 87.04 / xe chuyên dùng thuộc nhóm 87.05 → 8708.22.30.",
+      "source": "Biểu thuế 2026 dòng 8708.22.30 \"Dùng cho xe thuộc nhóm 87.02, 87.04 hoặc 87.05\"",
+      "noteVi": "Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-doortrim-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "doorTrimPart",
+        "vehicleClass": "8701"
+      },
+      "hs": "87082911",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của cụm ốp cửa (tapi cửa, ốp trong cửa — \"Components of door trim assemblies\", AHTN 2022), xe thuộc nhóm 87.01 (máy kéo / đầu kéo) → 8708.29.11.",
+      "source": "Biểu thuế 2026 dòng 8708.29.11 \"Dùng cho xe thuộc nhóm 87.01\""
+    },
+    {
+      "id": "r-doortrim-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "doorTrimPart",
+        "vehicleClass": "8703"
+      },
+      "hs": "87082916",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của cụm ốp cửa (tapi cửa, ốp trong cửa — \"Components of door trim assemblies\", AHTN 2022), xe thuộc nhóm 87.03 (ô tô con) → 8708.29.16.",
+      "source": "Biểu thuế 2026 dòng 8708.29.16 \"Loại khác, dùng cho xe thuộc nhóm 87.03\""
+    },
+    {
+      "id": "r-doortrim-870410",
+      "priority": 50,
+      "when": {
+        "partKind": "doorTrimPart",
+        "vehicleClass": "870410"
+      },
+      "hs": "87082917",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của cụm ốp cửa (tapi cửa, ốp trong cửa — \"Components of door trim assemblies\", AHTN 2022), xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 → 8708.29.17.",
+      "source": "Biểu thuế 2026 dòng 8708.29.17 \"Dùng cho xe thuộc phân nhóm 8704.10\""
+    },
+    {
+      "id": "r-doortrim-8702-8704",
+      "priority": 50,
+      "when": {
+        "partKind": "doorTrimPart",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87082918",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của cụm ốp cửa (tapi cửa, ốp trong cửa — \"Components of door trim assemblies\", AHTN 2022), xe thuộc nhóm 87.02 (xe chở ≥10 người) / xe tải khác thuộc nhóm 87.04 → 8708.29.18.",
+      "source": "Biểu thuế 2026 dòng 8708.29.18 \"Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04\""
+    },
+    {
+      "id": "r-doortrim-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "doorTrimPart",
+        "vehicleClass": "8705"
+      },
+      "hs": "87082919",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của cụm ốp cửa (tapi cửa, ốp trong cửa — \"Components of door trim assemblies\", AHTN 2022), xe chuyên dùng thuộc nhóm 87.05 → 8708.29.19.",
+      "source": "Biểu thuế 2026 dòng 8708.29.19 \"Loại khác\""
+    },
+    {
+      "id": "r-armrest-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "doorArmrest",
+        "vehicleClass": "8703"
+      },
+      "hs": "87082915",
+      "gir": "GIR 6",
+      "reasonVi": "Đỡ tay (tựa tay) trên cửa xe, dùng cho xe 87.03 → 8708.29.15 (dòng riêng).",
+      "source": "Biểu thuế 2026 dòng 8708.29.15 \"Đỡ tay trên cửa xe dùng cho xe thuộc nhóm 87.03\""
+    },
+    {
+      "id": "r-armrest-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "doorArmrest",
+        "vehicleClass": "8701"
+      },
+      "hs": "87082911",
+      "gir": "GIR 6",
+      "reasonVi": "Đỡ tay trên cửa xe là bộ phận của cụm ốp cửa; xe thuộc nhóm 87.01 (máy kéo / đầu kéo) không có dòng riêng → 8708.29.11.",
+      "source": "Biểu thuế 2026 dòng 8708.29.11 \"Dùng cho xe thuộc nhóm 87.01\""
+    },
+    {
+      "id": "r-armrest-870410",
+      "priority": 50,
+      "when": {
+        "partKind": "doorArmrest",
+        "vehicleClass": "870410"
+      },
+      "hs": "87082917",
+      "gir": "GIR 6",
+      "reasonVi": "Đỡ tay trên cửa xe là bộ phận của cụm ốp cửa; xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 không có dòng riêng → 8708.29.17.",
+      "source": "Biểu thuế 2026 dòng 8708.29.17 \"Dùng cho xe thuộc phân nhóm 8704.10\""
+    },
+    {
+      "id": "r-armrest-8702-8704",
+      "priority": 50,
+      "when": {
+        "partKind": "doorArmrest",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87082918",
+      "gir": "GIR 6",
+      "reasonVi": "Đỡ tay trên cửa xe là bộ phận của cụm ốp cửa; xe thuộc nhóm 87.02 (xe chở ≥10 người) / xe tải khác thuộc nhóm 87.04 không có dòng riêng → 8708.29.18.",
+      "source": "Biểu thuế 2026 dòng 8708.29.18 \"Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04\""
+    },
+    {
+      "id": "r-armrest-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "doorArmrest",
+        "vehicleClass": "8705"
+      },
+      "hs": "87082919",
+      "gir": "GIR 6",
+      "reasonVi": "Đỡ tay trên cửa xe là bộ phận của cụm ốp cửa; xe chuyên dùng thuộc nhóm 87.05 không có dòng riêng → 8708.29.19.",
+      "source": "Biểu thuế 2026 dòng 8708.29.19 \"Loại khác\""
+    },
+    {
+      "id": "r-body-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "bodyOther",
+        "vehicleClass": "8701"
+      },
+      "hs": "87082992",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận và phụ kiện khác của thân xe (Chú giải (B)), dùng cho xe 87.01 → 8708.29.92.",
+      "source": "Biểu thuế 2026 dòng 8708.29.92 \"Dùng cho xe thuộc nhóm 87.01\"",
+      "noteVi": "Chú giải HS 87.08 (B): bộ phận THÂN XE và phụ kiện — tấm lót sàn, thành xe, tấm chắn trước/sau, cửa và bộ phận cửa, nắp ca pô, bậc lên xuống, vè xe, chắn bùn, bảng khí cụ, giá biển số, giá chở hành lý, tấm che nắng… Tấm BẢO VỆ GẦM bắt vào khung gầm (底盘护板) KHÔNG nằm trong danh mục này → xem luật chassisGuard (8708.99.6x). Thuế: 8708.29.95 ACFTA \"0 (-ID, PH, CN)\" → hàng Trung Quốc KHÔNG hưởng ACFTA, chịu MFN 15 %; 8708.99.62 ACFTA \"0 (-ID, PH, TH)\" → hàng Trung Quốc được 0 %. Chênh thuế lớn nên phải phân định bằng BẢN CHẤT (bắt vào đâu), không theo lợi thuế."
+    },
+    {
+      "id": "r-trim-mudguard-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "interiorTrimOrMudguard",
+        "vehicleClass": "8701"
+      },
+      "hs": "87082992",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện trang trí nội thất / chắn bùn cho xe 87.01 không có dòng riêng → 8708.29.92.",
+      "source": "Biểu thuế 2026 dòng 8708.29.92 \"Dùng cho xe thuộc nhóm 87.01\""
+    },
+    {
+      "id": "r-hoodrod-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "hoodRod",
+        "vehicleClass": "8701"
+      },
+      "hs": "87082992",
+      "gir": "GIR 6",
+      "reasonVi": "Thanh chống nắp ca pô cho xe 87.01 không có dòng riêng → 8708.29.92.",
+      "source": "Biểu thuế 2026 dòng 8708.29.92 \"Dùng cho xe thuộc nhóm 87.01\""
+    },
+    {
+      "id": "r-trim-mudguard-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "interiorTrimOrMudguard",
+        "vehicleClass": "8703"
+      },
+      "hs": "87082993",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện trang trí nội thất (SEN: các mặt, tấm, lớp lót và vỏ bên trong xe) hoặc chắn bùn, dùng cho xe 87.03 → 8708.29.93.",
+      "source": "Biểu thuế 2026 dòng 8708.29.93 \"Phụ kiện trang trí nội thất (SEN); chắn bùn\"",
+      "noteVi": "SEN 2022 tr.363 \"Phụ kiện trang trí nội thất\". Chắn bùn (挡泥板 / mud flap) vào dòng này; vè xe / tai xe (翼子板, fender) là tấm thân vỏ ngoài → luật bodyOther 8708.29.95 — CEO xác nhận cách tách này."
+    },
+    {
+      "id": "r-hoodrod-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "hoodRod",
+        "vehicleClass": "8703"
+      },
+      "hs": "87082994",
+      "gir": "GIR 6",
+      "reasonVi": "Thanh chống nắp ca pô, dùng cho xe 87.03 → 8708.29.94.",
+      "source": "Biểu thuế 2026 dòng 8708.29.94 \"Thanh chống nắp ca pô\""
+    },
+    {
+      "id": "r-body-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "bodyOther",
+        "vehicleClass": "8703"
+      },
+      "hs": "87082995",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận và phụ kiện khác của thân xe (Chú giải (B): cửa, nắp ca pô, vè xe, ốp thân, đuôi gió, bậc lên xuống, tấm che nắng…), dùng cho xe 87.03 → 8708.29.95.",
+      "source": "Biểu thuế 2026 dòng 8708.29.95 \"Loại khác\"",
+      "noteVi": "TB 4168/TB-TCHQ nắp chụp đèn sương mù, 18595/TB-CHQ đuôi gió, 20233/TB-CHQ cụm táp-lô (IP), 3552/TCHQ-TXNK nắp thùng bán tải chở người → 8708.29.95. Chú giải HS 87.08 (B): bộ phận THÂN XE và phụ kiện — tấm lót sàn, thành xe, tấm chắn trước/sau, cửa và bộ phận cửa, nắp ca pô, bậc lên xuống, vè xe, chắn bùn, bảng khí cụ, giá biển số, giá chở hành lý, tấm che nắng… Tấm BẢO VỆ GẦM bắt vào khung gầm (底盘护板) KHÔNG nằm trong danh mục này → xem luật chassisGuard (8708.99.6x). Thuế: 8708.29.95 ACFTA \"0 (-ID, PH, CN)\" → hàng Trung Quốc KHÔNG hưởng ACFTA, chịu MFN 15 %; 8708.99.62 ACFTA \"0 (-ID, PH, TH)\" → hàng Trung Quốc được 0 %. Chênh thuế lớn nên phải phân định bằng BẢN CHẤT (bắt vào đâu), không theo lợi thuế."
+    },
+    {
+      "id": "r-trim-mudguard-8702-8704",
+      "priority": 50,
+      "when": {
+        "partKind": "interiorTrimOrMudguard",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "870410",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87082996",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện trang trí nội thất (SEN) hoặc chắn bùn, dùng cho xe 87.02 hoặc 87.04 → 8708.29.96.",
+      "source": "Biểu thuế 2026 dòng 8708.29.96 \"Phụ kiện trang trí nội thất (SEN); chắn bùn\""
+    },
+    {
+      "id": "r-hoodrod-8702-8704",
+      "priority": 50,
+      "when": {
+        "partKind": "hoodRod",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "870410",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87082997",
+      "gir": "GIR 6",
+      "reasonVi": "Thanh chống nắp ca pô, dùng cho xe 87.02 hoặc 87.04 → 8708.29.97.",
+      "source": "Biểu thuế 2026 dòng 8708.29.97 \"Thanh chống nắp ca pô\""
+    },
+    {
+      "id": "r-body-8702-8704",
+      "priority": 50,
+      "when": {
+        "partKind": "bodyOther",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "870410",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87082998",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận và phụ kiện khác của thân xe, dùng cho xe 87.02 hoặc 87.04 → 8708.29.98.",
+      "source": "Biểu thuế 2026 dòng 8708.29.98 \"Loại khác\"",
+      "noteVi": "TB 3552/TCHQ-TXNK: nắp thùng xe bán tải chở hàng → 8708.29.98. Chú giải HS 87.08 (B): bộ phận THÂN XE và phụ kiện — tấm lót sàn, thành xe, tấm chắn trước/sau, cửa và bộ phận cửa, nắp ca pô, bậc lên xuống, vè xe, chắn bùn, bảng khí cụ, giá biển số, giá chở hành lý, tấm che nắng… Tấm BẢO VỆ GẦM bắt vào khung gầm (底盘护板) KHÔNG nằm trong danh mục này → xem luật chassisGuard (8708.99.6x). Thuế: 8708.29.95 ACFTA \"0 (-ID, PH, CN)\" → hàng Trung Quốc KHÔNG hưởng ACFTA, chịu MFN 15 %; 8708.99.62 ACFTA \"0 (-ID, PH, TH)\" → hàng Trung Quốc được 0 %. Chênh thuế lớn nên phải phân định bằng BẢN CHẤT (bắt vào đâu), không theo lợi thuế."
+    },
+    {
+      "id": "r-body-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "bodyOther",
+        "vehicleClass": "8705"
+      },
+      "hs": "87082999",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận thân xe dùng cho xe chuyên dùng 87.05 → 8708.29.99 (Loại khác).",
+      "source": "Biểu thuế 2026 dòng 8708.29.99 \"Loại khác\""
+    },
+    {
+      "id": "r-trim-mudguard-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "interiorTrimOrMudguard",
+        "vehicleClass": "8705"
+      },
+      "hs": "87082999",
+      "gir": "GIR 6",
+      "reasonVi": "Phụ kiện nội thất / chắn bùn cho xe 87.05 → 8708.29.99.",
+      "source": "Biểu thuế 2026 dòng 8708.29.99 \"Loại khác\""
+    },
+    {
+      "id": "r-hoodrod-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "hoodRod",
+        "vehicleClass": "8705"
+      },
+      "hs": "87082999",
+      "gir": "GIR 6",
+      "reasonVi": "Thanh chống nắp ca pô cho xe 87.05 → 8708.29.99.",
+      "source": "Biểu thuế 2026 dòng 8708.29.99 \"Loại khác\""
+    },
+    {
+      "id": "r-brake-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "brake",
+        "vehicleClass": "8701"
+      },
+      "hs": "87083010",
+      "gir": "GIR 6",
+      "reasonVi": "Phanh, trợ lực phanh và bộ phận (Chú giải (H)), dùng cho xe 87.01 → 8708.30.10.",
+      "source": "Biểu thuế 2026 dòng 8708.30.10 \"Dùng cho xe thuộc nhóm 87.01\""
+    },
+    {
+      "id": "r-brake-8703-drum",
+      "priority": 50,
+      "when": {
+        "partKind": "brake",
+        "vehicleClass": "8703",
+        "brakeKind": "drumDiscAir"
+      },
+      "hs": "87083021",
+      "gir": "GIR 6",
+      "reasonVi": "Phanh trống, phanh đĩa hoặc phanh hơi (cụm phanh hoàn chỉnh) cho xe 87.03 → 8708.30.21.",
+      "source": "Biểu thuế 2026 dòng 8708.30.21 \"Phanh trống, phanh đĩa hoặc phanh hơi\""
+    },
+    {
+      "id": "r-brake-8703-other",
+      "priority": 50,
+      "when": {
+        "partKind": "brake",
+        "vehicleClass": "8703",
+        "brakeKind": "otherBrakePart"
+      },
+      "hs": "87083029",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận phanh khác (má phanh, đĩa phanh rời, xi lanh phanh, trợ lực…) cho xe 87.03 → 8708.30.29.",
+      "source": "Biểu thuế 2026 dòng 8708.30.29 \"Loại khác\""
+    },
+    {
+      "id": "r-brake-8702-8704-drum",
+      "priority": 50,
+      "when": {
+        "partKind": "brake",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "870410",
+            "8704"
+          ]
+        },
+        "brakeKind": "drumDiscAir"
+      },
+      "hs": "87083030",
+      "gir": "GIR 6",
+      "reasonVi": "Phanh trống, phanh đĩa hoặc phanh hơi cho xe 87.02 hoặc 87.04 → 8708.30.30.",
+      "source": "Biểu thuế 2026 dòng 8708.30.30 \"Phanh trống, phanh đĩa hoặc phanh hơi cho xe thuộc nhóm 87.02 hoặc 87.04\""
+    },
+    {
+      "id": "r-brake-8702-8704-other",
+      "priority": 50,
+      "when": {
+        "partKind": "brake",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "870410",
+            "8704"
+          ]
+        },
+        "brakeKind": "otherBrakePart"
+      },
+      "hs": "87083090",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận phanh khác cho xe 87.02/87.04 → 8708.30.90.",
+      "source": "Biểu thuế 2026 dòng 8708.30.90 \"Loại khác\""
+    },
+    {
+      "id": "r-brake-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "brake",
+        "vehicleClass": "8705"
+      },
+      "hs": "87083090",
+      "gir": "GIR 6",
+      "reasonVi": "Phanh và bộ phận phanh cho xe 87.05 → 8708.30.90.",
+      "source": "Biểu thuế 2026 dòng 8708.30.90 \"Loại khác\""
+    },
+    {
+      "id": "r-gearbox-assembled-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "gearbox",
+        "gearboxState": "assembled",
+        "vehicleClass": "8703"
+      },
+      "hs": "87084011",
+      "gir": "GIR 6",
+      "reasonVi": "Hộp số đã lắp ráp (Chú giải (D)), xe thuộc nhóm 87.03 (ô tô con) → 8708.40.11.",
+      "source": "Biểu thuế 2026 dòng 8708.40.11 \"Dùng cho xe thuộc nhóm 87.03\"",
+      "noteVi": "Tên nhóm 3 gạch \"Đã lắp ráp / Chưa lắp ráp / Bộ phận\" suy từ AHTN 2022 (tax.json không có dòng cha) — CEO đối chiếu biểu thuế in."
+    },
+    {
+      "id": "r-gearbox-assembled-870410-8704-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "gearbox",
+        "gearboxState": "assembled",
+        "vehicleClass": {
+          "in": [
+            "870410",
+            "8704",
+            "8705"
+          ]
+        }
+      },
+      "hs": "87084013",
+      "gir": "GIR 6",
+      "reasonVi": "Hộp số đã lắp ráp (Chú giải (D)), xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 / xe tải khác thuộc nhóm 87.04 / xe chuyên dùng thuộc nhóm 87.05 → 8708.40.13.",
+      "source": "Biểu thuế 2026 dòng 8708.40.13 \"Dùng cho xe thuộc nhóm 87.04 hoặc 87.05\"",
+      "noteVi": "Tên nhóm 3 gạch \"Đã lắp ráp / Chưa lắp ráp / Bộ phận\" suy từ AHTN 2022 (tax.json không có dòng cha) — CEO đối chiếu biểu thuế in."
+    },
+    {
+      "id": "r-gearbox-assembled-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "gearbox",
+        "gearboxState": "assembled",
+        "vehicleClass": "8701"
+      },
+      "hs": "87084014",
+      "gir": "GIR 6",
+      "reasonVi": "Hộp số đã lắp ráp (Chú giải (D)), xe thuộc nhóm 87.01 (máy kéo / đầu kéo) → 8708.40.14.",
+      "source": "Biểu thuế 2026 dòng 8708.40.14 \"Dùng cho xe thuộc nhóm 87.01\"",
+      "noteVi": "Tên nhóm 3 gạch \"Đã lắp ráp / Chưa lắp ráp / Bộ phận\" suy từ AHTN 2022 (tax.json không có dòng cha) — CEO đối chiếu biểu thuế in."
+    },
+    {
+      "id": "r-gearbox-assembled-8702",
+      "priority": 50,
+      "when": {
+        "partKind": "gearbox",
+        "gearboxState": "assembled",
+        "vehicleClass": "8702"
+      },
+      "hs": "87084019",
+      "gir": "GIR 6",
+      "reasonVi": "Hộp số đã lắp ráp (Chú giải (D)), xe thuộc nhóm 87.02 (xe chở ≥10 người) → 8708.40.19.",
+      "source": "Biểu thuế 2026 dòng 8708.40.19 \"Loại khác\"",
+      "noteVi": "Tên nhóm 3 gạch \"Đã lắp ráp / Chưa lắp ráp / Bộ phận\" suy từ AHTN 2022 (tax.json không có dòng cha) — CEO đối chiếu biểu thuế in."
+    },
+    {
+      "id": "r-gearbox-unassembled-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "gearbox",
+        "gearboxState": "unassembled",
+        "vehicleClass": "8701"
+      },
+      "hs": "87084025",
+      "gir": "GIR 6",
+      "reasonVi": "Hộp số chưa lắp ráp (dạng linh kiện rời), xe thuộc nhóm 87.01 (máy kéo / đầu kéo) → 8708.40.25.",
+      "source": "Biểu thuế 2026 dòng 8708.40.25 \"Dùng cho xe thuộc nhóm 87.01\""
+    },
+    {
+      "id": "r-gearbox-unassembled-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "gearbox",
+        "gearboxState": "unassembled",
+        "vehicleClass": "8703"
+      },
+      "hs": "87084026",
+      "gir": "GIR 6",
+      "reasonVi": "Hộp số chưa lắp ráp (dạng linh kiện rời), xe thuộc nhóm 87.03 (ô tô con) → 8708.40.26.",
+      "source": "Biểu thuế 2026 dòng 8708.40.26 \"Dùng cho xe thuộc nhóm 87.03\""
+    },
+    {
+      "id": "r-gearbox-unassembled-870410-8704-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "gearbox",
+        "gearboxState": "unassembled",
+        "vehicleClass": {
+          "in": [
+            "870410",
+            "8704",
+            "8705"
+          ]
+        }
+      },
+      "hs": "87084027",
+      "gir": "GIR 6",
+      "reasonVi": "Hộp số chưa lắp ráp (dạng linh kiện rời), xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 / xe tải khác thuộc nhóm 87.04 / xe chuyên dùng thuộc nhóm 87.05 → 8708.40.27.",
+      "source": "Biểu thuế 2026 dòng 8708.40.27 \"Dùng cho xe thuộc nhóm 87.04 hoặc 87.05\""
+    },
+    {
+      "id": "r-gearbox-unassembled-8702",
+      "priority": 50,
+      "when": {
+        "partKind": "gearbox",
+        "gearboxState": "unassembled",
+        "vehicleClass": "8702"
+      },
+      "hs": "87084029",
+      "gir": "GIR 6",
+      "reasonVi": "Hộp số chưa lắp ráp (dạng linh kiện rời), xe thuộc nhóm 87.02 (xe chở ≥10 người) → 8708.40.29.",
+      "source": "Biểu thuế 2026 dòng 8708.40.29 \"Loại khác\""
+    },
+    {
+      "id": "r-gearbox-part-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "gearbox",
+        "gearboxState": "part",
+        "vehicleClass": "8701"
+      },
+      "hs": "87084091",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của hộp số (vỏ hộp số, bánh răng hộp số, cần số…), xe thuộc nhóm 87.01 (máy kéo / đầu kéo) → 8708.40.91.",
+      "source": "Biểu thuế 2026 dòng 8708.40.91 \"Dùng cho xe thuộc nhóm 87.01\""
+    },
+    {
+      "id": "r-gearbox-part-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "gearbox",
+        "gearboxState": "part",
+        "vehicleClass": "8703"
+      },
+      "hs": "87084092",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của hộp số (vỏ hộp số, bánh răng hộp số, cần số…), xe thuộc nhóm 87.03 (ô tô con) → 8708.40.92.",
+      "source": "Biểu thuế 2026 dòng 8708.40.92 \"Dùng cho xe thuộc nhóm 87.03\""
+    },
+    {
+      "id": "r-gearbox-part-8702-870410-8704-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "gearbox",
+        "gearboxState": "part",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "870410",
+            "8704",
+            "8705"
+          ]
+        }
+      },
+      "hs": "87084099",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của hộp số (vỏ hộp số, bánh răng hộp số, cần số…), xe thuộc nhóm 87.02 (xe chở ≥10 người) / xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 / xe tải khác thuộc nhóm 87.04 / xe chuyên dùng thuộc nhóm 87.05 → 8708.40.99.",
+      "source": "Biểu thuế 2026 dòng 8708.40.99 \"Loại khác\""
+    },
+    {
+      "id": "r-axle-assembled-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "axle",
+        "axleState": "assembled",
+        "vehicleClass": "8703"
+      },
+      "hs": "87085011",
+      "gir": "GIR 6",
+      "reasonVi": "Cầu chủ động có bộ vi sai / cầu bị động đã lắp ráp (Chú giải (E)), xe thuộc nhóm 87.03 (ô tô con) → 8708.50.11.",
+      "source": "Biểu thuế 2026 dòng 8708.50.11 \"Dùng cho xe thuộc nhóm 87.03\"",
+      "noteVi": "Thứ tự nhóm 3 gạch (.11–.19 đã lắp ráp, .25–.29 chưa lắp ráp, .91–.99 bộ phận) suy theo cấu trúc 8708.40 của AHTN 2022 — CEO đối chiếu biểu thuế in."
+    },
+    {
+      "id": "r-axle-assembled-870410-8704-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "axle",
+        "axleState": "assembled",
+        "vehicleClass": {
+          "in": [
+            "870410",
+            "8704",
+            "8705"
+          ]
+        }
+      },
+      "hs": "87085013",
+      "gir": "GIR 6",
+      "reasonVi": "Cầu chủ động có bộ vi sai / cầu bị động đã lắp ráp (Chú giải (E)), xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 / xe tải khác thuộc nhóm 87.04 / xe chuyên dùng thuộc nhóm 87.05 → 8708.50.13.",
+      "source": "Biểu thuế 2026 dòng 8708.50.13 \"Dùng cho xe thuộc nhóm 87.04 hoặc 87.05\"",
+      "noteVi": "Thứ tự nhóm 3 gạch (.11–.19 đã lắp ráp, .25–.29 chưa lắp ráp, .91–.99 bộ phận) suy theo cấu trúc 8708.40 của AHTN 2022 — CEO đối chiếu biểu thuế in."
+    },
+    {
+      "id": "r-axle-assembled-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "axle",
+        "axleState": "assembled",
+        "vehicleClass": "8701"
+      },
+      "hs": "87085015",
+      "gir": "GIR 6",
+      "reasonVi": "Cầu chủ động có bộ vi sai / cầu bị động đã lắp ráp (Chú giải (E)), xe thuộc nhóm 87.01 (máy kéo / đầu kéo) → 8708.50.15.",
+      "source": "Biểu thuế 2026 dòng 8708.50.15 \"Dùng cho xe thuộc nhóm 87.01\"",
+      "noteVi": "Thứ tự nhóm 3 gạch (.11–.19 đã lắp ráp, .25–.29 chưa lắp ráp, .91–.99 bộ phận) suy theo cấu trúc 8708.40 của AHTN 2022 — CEO đối chiếu biểu thuế in."
+    },
+    {
+      "id": "r-axle-assembled-8702",
+      "priority": 50,
+      "when": {
+        "partKind": "axle",
+        "axleState": "assembled",
+        "vehicleClass": "8702"
+      },
+      "hs": "87085019",
+      "gir": "GIR 6",
+      "reasonVi": "Cầu chủ động có bộ vi sai / cầu bị động đã lắp ráp (Chú giải (E)), xe thuộc nhóm 87.02 (xe chở ≥10 người) → 8708.50.19.",
+      "source": "Biểu thuế 2026 dòng 8708.50.19 \"Loại khác\"",
+      "noteVi": "Thứ tự nhóm 3 gạch (.11–.19 đã lắp ráp, .25–.29 chưa lắp ráp, .91–.99 bộ phận) suy theo cấu trúc 8708.40 của AHTN 2022 — CEO đối chiếu biểu thuế in."
+    },
+    {
+      "id": "r-axle-unassembled-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "axle",
+        "axleState": "unassembled",
+        "vehicleClass": "8701"
+      },
+      "hs": "87085025",
+      "gir": "GIR 6",
+      "reasonVi": "Cầu / trục chưa lắp ráp, xe thuộc nhóm 87.01 (máy kéo / đầu kéo) → 8708.50.25.",
+      "source": "Biểu thuế 2026 dòng 8708.50.25 \"Dùng cho xe thuộc nhóm 87.01\""
+    },
+    {
+      "id": "r-axle-unassembled-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "axle",
+        "axleState": "unassembled",
+        "vehicleClass": "8703"
+      },
+      "hs": "87085026",
+      "gir": "GIR 6",
+      "reasonVi": "Cầu / trục chưa lắp ráp, xe thuộc nhóm 87.03 (ô tô con) → 8708.50.26.",
+      "source": "Biểu thuế 2026 dòng 8708.50.26 \"Dùng cho xe thuộc nhóm 87.03\""
+    },
+    {
+      "id": "r-axle-unassembled-870410-8704-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "axle",
+        "axleState": "unassembled",
+        "vehicleClass": {
+          "in": [
+            "870410",
+            "8704",
+            "8705"
+          ]
+        }
+      },
+      "hs": "87085027",
+      "gir": "GIR 6",
+      "reasonVi": "Cầu / trục chưa lắp ráp, xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 / xe tải khác thuộc nhóm 87.04 / xe chuyên dùng thuộc nhóm 87.05 → 8708.50.27.",
+      "source": "Biểu thuế 2026 dòng 8708.50.27 \"Dùng cho xe thuộc nhóm 87.04 hoặc 87.05\""
+    },
+    {
+      "id": "r-axle-unassembled-8702",
+      "priority": 50,
+      "when": {
+        "partKind": "axle",
+        "axleState": "unassembled",
+        "vehicleClass": "8702"
+      },
+      "hs": "87085029",
+      "gir": "GIR 6",
+      "reasonVi": "Cầu / trục chưa lắp ráp, xe thuộc nhóm 87.02 (xe chở ≥10 người) → 8708.50.29.",
+      "source": "Biểu thuế 2026 dòng 8708.50.29 \"Loại khác\""
+    },
+    {
+      "id": "r-axle-part-8701-crown",
+      "priority": 50,
+      "when": {
+        "partKind": "axle",
+        "axleState": "part",
+        "vehicleClass": "8701",
+        "crownWheelPinion": "yes"
+      },
+      "hs": "87085091",
+      "gir": "GIR 6",
+      "reasonVi": "Bánh răng vành khăn và bánh răng quả dứa (SEN) của cầu xe 87.01 → 8708.50.91.",
+      "source": "Biểu thuế 2026 dòng 8708.50.91 \"Bánh răng vành khăn và bánh răng quả dứa (SEN)\""
+    },
+    {
+      "id": "r-axle-part-8701-other",
+      "priority": 50,
+      "when": {
+        "partKind": "axle",
+        "axleState": "part",
+        "vehicleClass": "8701",
+        "crownWheelPinion": "no"
+      },
+      "hs": "87085092",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác của cầu xe 87.01 (vỏ cầu, bán trục, trục bánh xe…) → 8708.50.92.",
+      "source": "Biểu thuế 2026 dòng 8708.50.92 \"Loại khác\""
+    },
+    {
+      "id": "r-axle-part-8703-crown",
+      "priority": 50,
+      "when": {
+        "partKind": "axle",
+        "axleState": "part",
+        "vehicleClass": "8703",
+        "crownWheelPinion": "yes"
+      },
+      "hs": "87085094",
+      "gir": "GIR 6",
+      "reasonVi": "Bánh răng vành khăn và bánh răng quả dứa (SEN) của cầu xe 87.03 → 8708.50.94.",
+      "source": "Biểu thuế 2026 dòng 8708.50.94 \"Bánh răng vành khăn và bánh răng quả dứa (SEN)\""
+    },
+    {
+      "id": "r-axle-part-8703-other",
+      "priority": 50,
+      "when": {
+        "partKind": "axle",
+        "axleState": "part",
+        "vehicleClass": "8703",
+        "crownWheelPinion": "no"
+      },
+      "hs": "87085095",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác của cầu xe 87.03 → 8708.50.95.",
+      "source": "Biểu thuế 2026 dòng 8708.50.95 \"Loại khác\""
+    },
+    {
+      "id": "r-axle-part-other-crown",
+      "priority": 50,
+      "when": {
+        "partKind": "axle",
+        "axleState": "part",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "870410",
+            "8704",
+            "8705"
+          ]
+        },
+        "crownWheelPinion": "yes"
+      },
+      "hs": "87085096",
+      "gir": "GIR 6",
+      "reasonVi": "Bánh răng vành khăn và bánh răng quả dứa (SEN) của cầu xe 87.02/87.04/87.05 → 8708.50.96.",
+      "source": "Biểu thuế 2026 dòng 8708.50.96 \"Bánh răng vành khăn và bánh răng quả dứa (SEN)\""
+    },
+    {
+      "id": "r-axle-part-other-other",
+      "priority": 50,
+      "when": {
+        "partKind": "axle",
+        "axleState": "part",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "870410",
+            "8704",
+            "8705"
+          ]
+        },
+        "crownWheelPinion": "no"
+      },
+      "hs": "87085099",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác của cầu xe 87.02/87.04/87.05 → 8708.50.99.",
+      "source": "Biểu thuế 2026 dòng 8708.50.99 \"Loại khác\""
+    },
+    {
+      "id": "r-wheel-disc-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "centreDisc",
+        "vehicleClass": "8701"
+      },
+      "hs": "87087015",
+      "gir": "GIR 6",
+      "reasonVi": "Đĩa bánh xe (centre disc), xe thuộc nhóm 87.01 (máy kéo / đầu kéo) → 8708.70.15.",
+      "source": "Biểu thuế 2026 dòng 8708.70.15 \"Dùng cho xe thuộc nhóm 87.01\"",
+      "noteVi": "Tên 4 nhóm 3 gạch của 8708.70 (đĩa bánh xe / nắp trục bánh xe / bánh xe hoàn chỉnh có hoặc không có lốp / loại khác) suy từ AHTN 2022 — tax.json không có dòng cha. CEO đối chiếu biểu thuế in trước khi duyệt. Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-wheel-disc-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "centreDisc",
+        "vehicleClass": "8703"
+      },
+      "hs": "87087016",
+      "gir": "GIR 6",
+      "reasonVi": "Đĩa bánh xe (centre disc), xe thuộc nhóm 87.03 (ô tô con) → 8708.70.16.",
+      "source": "Biểu thuế 2026 dòng 8708.70.16 \"Dùng cho xe thuộc nhóm 87.03\"",
+      "noteVi": "Tên 4 nhóm 3 gạch của 8708.70 (đĩa bánh xe / nắp trục bánh xe / bánh xe hoàn chỉnh có hoặc không có lốp / loại khác) suy từ AHTN 2022 — tax.json không có dòng cha. CEO đối chiếu biểu thuế in trước khi duyệt. Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-wheel-disc-870410",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "centreDisc",
+        "vehicleClass": "870410"
+      },
+      "hs": "87087017",
+      "gir": "GIR 6",
+      "reasonVi": "Đĩa bánh xe (centre disc), xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 → 8708.70.17.",
+      "source": "Biểu thuế 2026 dòng 8708.70.17 \"Dùng cho xe thuộc phân nhóm 8704.10\"",
+      "noteVi": "Tên 4 nhóm 3 gạch của 8708.70 (đĩa bánh xe / nắp trục bánh xe / bánh xe hoàn chỉnh có hoặc không có lốp / loại khác) suy từ AHTN 2022 — tax.json không có dòng cha. CEO đối chiếu biểu thuế in trước khi duyệt. Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-wheel-disc-8702-8704",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "centreDisc",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87087018",
+      "gir": "GIR 6",
+      "reasonVi": "Đĩa bánh xe (centre disc), xe thuộc nhóm 87.02 (xe chở ≥10 người) / xe tải khác thuộc nhóm 87.04 → 8708.70.18.",
+      "source": "Biểu thuế 2026 dòng 8708.70.18 \"Loại khác\"",
+      "noteVi": "Tên 4 nhóm 3 gạch của 8708.70 (đĩa bánh xe / nắp trục bánh xe / bánh xe hoàn chỉnh có hoặc không có lốp / loại khác) suy từ AHTN 2022 — tax.json không có dòng cha. CEO đối chiếu biểu thuế in trước khi duyệt. Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-wheel-disc-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "centreDisc",
+        "vehicleClass": "8705"
+      },
+      "hs": "87087019",
+      "gir": "GIR 6",
+      "reasonVi": "Đĩa bánh xe (centre disc), xe chuyên dùng thuộc nhóm 87.05 → 8708.70.19.",
+      "source": "Biểu thuế 2026 dòng 8708.70.19 \"Loại khác\"",
+      "noteVi": "Tên 4 nhóm 3 gạch của 8708.70 (đĩa bánh xe / nắp trục bánh xe / bánh xe hoàn chỉnh có hoặc không có lốp / loại khác) suy từ AHTN 2022 — tax.json không có dòng cha. CEO đối chiếu biểu thuế in trước khi duyệt. Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-wheel-hubcap-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "hubCap",
+        "vehicleClass": "8701"
+      },
+      "hs": "87087021",
+      "gir": "GIR 6",
+      "reasonVi": "Nắp trục / chụp mâm bánh xe (hub cap), xe thuộc nhóm 87.01 (máy kéo / đầu kéo) → 8708.70.21.",
+      "source": "Biểu thuế 2026 dòng 8708.70.21 \"Dùng cho xe thuộc nhóm 87.01\"",
+      "noteVi": "Tên 4 nhóm 3 gạch của 8708.70 (đĩa bánh xe / nắp trục bánh xe / bánh xe hoàn chỉnh có hoặc không có lốp / loại khác) suy từ AHTN 2022 — tax.json không có dòng cha. CEO đối chiếu biểu thuế in trước khi duyệt. Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-wheel-hubcap-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "hubCap",
+        "vehicleClass": "8703"
+      },
+      "hs": "87087022",
+      "gir": "GIR 6",
+      "reasonVi": "Nắp trục / chụp mâm bánh xe (hub cap), xe thuộc nhóm 87.03 (ô tô con) → 8708.70.22.",
+      "source": "Biểu thuế 2026 dòng 8708.70.22 \"Dùng cho xe thuộc nhóm 87.03\"",
+      "noteVi": "Tên 4 nhóm 3 gạch của 8708.70 (đĩa bánh xe / nắp trục bánh xe / bánh xe hoàn chỉnh có hoặc không có lốp / loại khác) suy từ AHTN 2022 — tax.json không có dòng cha. CEO đối chiếu biểu thuế in trước khi duyệt. Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-wheel-hubcap-8702-870410-8704",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "hubCap",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "870410",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87087023",
+      "gir": "GIR 6",
+      "reasonVi": "Nắp trục / chụp mâm bánh xe (hub cap), xe thuộc nhóm 87.02 (xe chở ≥10 người) / xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 / xe tải khác thuộc nhóm 87.04 → 8708.70.23.",
+      "source": "Biểu thuế 2026 dòng 8708.70.23 \"Dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ phân nhóm 8704.10)\"",
+      "noteVi": "Tên 4 nhóm 3 gạch của 8708.70 (đĩa bánh xe / nắp trục bánh xe / bánh xe hoàn chỉnh có hoặc không có lốp / loại khác) suy từ AHTN 2022 — tax.json không có dòng cha. CEO đối chiếu biểu thuế in trước khi duyệt. Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-wheel-hubcap-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "hubCap",
+        "vehicleClass": "8705"
+      },
+      "hs": "87087029",
+      "gir": "GIR 6",
+      "reasonVi": "Nắp trục / chụp mâm bánh xe (hub cap), xe chuyên dùng thuộc nhóm 87.05 → 8708.70.29.",
+      "source": "Biểu thuế 2026 dòng 8708.70.29 \"Loại khác\"",
+      "noteVi": "Tên 4 nhóm 3 gạch của 8708.70 (đĩa bánh xe / nắp trục bánh xe / bánh xe hoàn chỉnh có hoặc không có lốp / loại khác) suy từ AHTN 2022 — tax.json không có dòng cha. CEO đối chiếu biểu thuế in trước khi duyệt. Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-wheel-complete-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "completeWheel",
+        "vehicleClass": "8701"
+      },
+      "hs": "87087031",
+      "gir": "GIR 6",
+      "reasonVi": "Bánh xe hoàn chỉnh (mâm / vành, có hoặc không lắp lốp) cho xe 87.01 → 8708.70.31.",
+      "source": "Biểu thuế 2026 dòng 8708.70.31 \"Dùng cho xe thuộc nhóm 87.01\"",
+      "noteVi": "Tên 4 nhóm 3 gạch của 8708.70 (đĩa bánh xe / nắp trục bánh xe / bánh xe hoàn chỉnh có hoặc không có lốp / loại khác) suy từ AHTN 2022 — tax.json không có dòng cha. CEO đối chiếu biểu thuế in trước khi duyệt. Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-wheel-complete-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "completeWheel",
+        "vehicleClass": "8703"
+      },
+      "hs": "87087032",
+      "gir": "GIR 6",
+      "reasonVi": "Bánh xe hoàn chỉnh cho xe 87.03 → 8708.70.32.",
+      "source": "Biểu thuế 2026 dòng 8708.70.32 \"Dùng cho xe thuộc nhóm 87.03\""
+    },
+    {
+      "id": "r-wheel-complete-dumper45",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "completeWheel",
+        "vehicleClass": "870410",
+        "dumperOver45t": "yes"
+      },
+      "hs": "87087033",
+      "gir": "GIR 6",
+      "reasonVi": "Bánh xe cho xe tự đổ chạy ngoài đường quốc lộ, khối lượng toàn bộ theo thiết kế trên 45 tấn (SEN) → 8708.70.33.",
+      "source": "Biểu thuế 2026 dòng 8708.70.33 \"Dùng cho xe tự đổ được thiết kế để sử dụng trên các loại đường không phải đường quốc lộ có khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn\""
+    },
+    {
+      "id": "r-wheel-complete-dumper-le45",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "completeWheel",
+        "vehicleClass": "870410",
+        "dumperOver45t": "no"
+      },
+      "hs": "87087034",
+      "gir": "GIR 6",
+      "reasonVi": "Bánh xe cho xe tự đổ ≤45 tấn (\"xe khác thuộc nhóm 87.04\") → 8708.70.34.",
+      "source": "Biểu thuế 2026 dòng 8708.70.34 \"Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04\""
+    },
+    {
+      "id": "r-wheel-complete-8702-8704",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "completeWheel",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87087034",
+      "gir": "GIR 6",
+      "reasonVi": "Bánh xe hoàn chỉnh cho xe 87.02 hoặc xe khác thuộc 87.04 → 8708.70.34.",
+      "source": "Biểu thuế 2026 dòng 8708.70.34 \"Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04\""
+    },
+    {
+      "id": "r-wheel-complete-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "completeWheel",
+        "vehicleClass": "8705"
+      },
+      "hs": "87087039",
+      "gir": "GIR 6",
+      "reasonVi": "Bánh xe hoàn chỉnh cho xe 87.05 → 8708.70.39.",
+      "source": "Biểu thuế 2026 dòng 8708.70.39 \"Loại khác\""
+    },
+    {
+      "id": "r-wheel-other-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "otherWheelPart",
+        "vehicleClass": "8701"
+      },
+      "hs": "87087095",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận và phụ kiện khác của bánh xe (nan hoa, vòng cân bằng, ốp vành…), xe thuộc nhóm 87.01 (máy kéo / đầu kéo) → 8708.70.95.",
+      "source": "Biểu thuế 2026 dòng 8708.70.95 \"Dùng cho xe thuộc nhóm 87.01\""
+    },
+    {
+      "id": "r-wheel-other-8702-870410-8704",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "otherWheelPart",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "870410",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87087096",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận và phụ kiện khác của bánh xe (nan hoa, vòng cân bằng, ốp vành…), xe thuộc nhóm 87.02 (xe chở ≥10 người) / xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 / xe tải khác thuộc nhóm 87.04 → 8708.70.96.",
+      "source": "Biểu thuế 2026 dòng 8708.70.96 \"Dùng cho thuộc nhóm 87.02 hoặc 87.04\""
+    },
+    {
+      "id": "r-wheel-other-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "otherWheelPart",
+        "vehicleClass": "8703"
+      },
+      "hs": "87087097",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận và phụ kiện khác của bánh xe (nan hoa, vòng cân bằng, ốp vành…), xe thuộc nhóm 87.03 (ô tô con) → 8708.70.97.",
+      "source": "Biểu thuế 2026 dòng 8708.70.97 \"Dùng cho xe thuộc nhóm 87.03\""
+    },
+    {
+      "id": "r-wheel-other-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "roadWheel",
+        "wheelPartKind": "otherWheelPart",
+        "vehicleClass": "8705"
+      },
+      "hs": "87087099",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận và phụ kiện khác của bánh xe (nan hoa, vòng cân bằng, ốp vành…), xe chuyên dùng thuộc nhóm 87.05 → 8708.70.99.",
+      "source": "Biểu thuế 2026 dòng 8708.70.99 \"Loại khác\""
+    },
+    {
+      "id": "r-shock-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "suspension",
+        "suspensionKind": "shockAbsorber",
+        "vehicleClass": "8701"
+      },
+      "hs": "87088015",
+      "gir": "GIR 6",
+      "reasonVi": "Giảm xóc (shock absorber) treo, xe thuộc nhóm 87.01 (máy kéo / đầu kéo) → 8708.80.15.",
+      "source": "Biểu thuế 2026 dòng 8708.80.15 \"Dùng cho xe thuộc nhóm 87.01\""
+    },
+    {
+      "id": "r-shock-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "suspension",
+        "suspensionKind": "shockAbsorber",
+        "vehicleClass": "8703"
+      },
+      "hs": "87088016",
+      "gir": "GIR 6",
+      "reasonVi": "Giảm xóc (shock absorber) treo, xe thuộc nhóm 87.03 (ô tô con) → 8708.80.16.",
+      "source": "Biểu thuế 2026 dòng 8708.80.16 \"Dùng cho xe thuộc nhóm 87.03\""
+    },
+    {
+      "id": "r-shock-870410-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "suspension",
+        "suspensionKind": "shockAbsorber",
+        "vehicleClass": {
+          "in": [
+            "870410",
+            "8705"
+          ]
+        }
+      },
+      "hs": "87088017",
+      "gir": "GIR 6",
+      "reasonVi": "Giảm xóc (shock absorber) treo, xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 / xe chuyên dùng thuộc nhóm 87.05 → 8708.80.17.",
+      "source": "Biểu thuế 2026 dòng 8708.80.17 \"Dùng cho xe thuộc phân nhóm 8704.10 hoặc nhóm 87.05\""
+    },
+    {
+      "id": "r-shock-8702-8704",
+      "priority": 50,
+      "when": {
+        "partKind": "suspension",
+        "suspensionKind": "shockAbsorber",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87088019",
+      "gir": "GIR 6",
+      "reasonVi": "Giảm xóc (shock absorber) treo, xe thuộc nhóm 87.02 (xe chở ≥10 người) / xe tải khác thuộc nhóm 87.04 → 8708.80.19.",
+      "source": "Biểu thuế 2026 dòng 8708.80.19 \"Loại khác\""
+    },
+    {
+      "id": "r-suspension-other-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "suspension",
+        "suspensionKind": "otherSuspension",
+        "vehicleClass": "8701"
+      },
+      "hs": "87088091",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác của hệ thống treo (càng A, thanh cân bằng, rotuyn, thanh xoắn — Chú giải (IJ), trừ lò xo 73.20), xe thuộc nhóm 87.01 (máy kéo / đầu kéo) → 8708.80.91.",
+      "source": "Biểu thuế 2026 dòng 8708.80.91 \"Dùng cho xe thuộc nhóm 87.01\""
+    },
+    {
+      "id": "r-suspension-other-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "suspension",
+        "suspensionKind": "otherSuspension",
+        "vehicleClass": "8703"
+      },
+      "hs": "87088092",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác của hệ thống treo (càng A, thanh cân bằng, rotuyn, thanh xoắn — Chú giải (IJ), trừ lò xo 73.20), xe thuộc nhóm 87.03 (ô tô con) → 8708.80.92.",
+      "source": "Biểu thuế 2026 dòng 8708.80.92 \"Dùng cho xe thuộc nhóm 87.03\""
+    },
+    {
+      "id": "r-suspension-other-8702-870410-8704-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "suspension",
+        "suspensionKind": "otherSuspension",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "870410",
+            "8704",
+            "8705"
+          ]
+        }
+      },
+      "hs": "87088099",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác của hệ thống treo (càng A, thanh cân bằng, rotuyn, thanh xoắn — Chú giải (IJ), trừ lò xo 73.20), xe thuộc nhóm 87.02 (xe chở ≥10 người) / xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 / xe tải khác thuộc nhóm 87.04 / xe chuyên dùng thuộc nhóm 87.05 → 8708.80.99.",
+      "source": "Biểu thuế 2026 dòng 8708.80.99 \"Loại khác\""
+    },
+    {
+      "id": "r-radiator-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "radiator",
+        "radiatorPartKind": "radiator",
+        "vehicleClass": "8701"
+      },
+      "hs": "87089115",
+      "gir": "GIR 6",
+      "reasonVi": "Két nước làm mát hoàn chỉnh, xe thuộc nhóm 87.01 (máy kéo / đầu kéo) → 8708.91.15.",
+      "source": "Biểu thuế 2026 dòng 8708.91.15 \"Dùng cho xe thuộc nhóm 87.01\"",
+      "noteVi": "Tờ khai Oz: \"két nước làm mát\" 14 lần → 8708.91.16 (xe 87.03)."
+    },
+    {
+      "id": "r-radiator-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "radiator",
+        "radiatorPartKind": "radiator",
+        "vehicleClass": "8703"
+      },
+      "hs": "87089116",
+      "gir": "GIR 6",
+      "reasonVi": "Két nước làm mát hoàn chỉnh, xe thuộc nhóm 87.03 (ô tô con) → 8708.91.16.",
+      "source": "Biểu thuế 2026 dòng 8708.91.16 \"Dùng cho xe thuộc nhóm 87.03\"",
+      "noteVi": "Tờ khai Oz: \"két nước làm mát\" 14 lần → 8708.91.16 (xe 87.03)."
+    },
+    {
+      "id": "r-radiator-870410",
+      "priority": 50,
+      "when": {
+        "partKind": "radiator",
+        "radiatorPartKind": "radiator",
+        "vehicleClass": "870410"
+      },
+      "hs": "87089117",
+      "gir": "GIR 6",
+      "reasonVi": "Két nước làm mát hoàn chỉnh, xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 → 8708.91.17.",
+      "source": "Biểu thuế 2026 dòng 8708.91.17 \"Dùng cho xe thuộc phân nhóm 8704.10\"",
+      "noteVi": "Tờ khai Oz: \"két nước làm mát\" 14 lần → 8708.91.16 (xe 87.03)."
+    },
+    {
+      "id": "r-radiator-8702-8704",
+      "priority": 50,
+      "when": {
+        "partKind": "radiator",
+        "radiatorPartKind": "radiator",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87089118",
+      "gir": "GIR 6",
+      "reasonVi": "Két nước làm mát hoàn chỉnh, xe thuộc nhóm 87.02 (xe chở ≥10 người) / xe tải khác thuộc nhóm 87.04 → 8708.91.18.",
+      "source": "Biểu thuế 2026 dòng 8708.91.18 \"Loại khác\"",
+      "noteVi": "Tờ khai Oz: \"két nước làm mát\" 14 lần → 8708.91.16 (xe 87.03)."
+    },
+    {
+      "id": "r-radiator-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "radiator",
+        "radiatorPartKind": "radiator",
+        "vehicleClass": "8705"
+      },
+      "hs": "87089119",
+      "gir": "GIR 6",
+      "reasonVi": "Két nước làm mát hoàn chỉnh, xe chuyên dùng thuộc nhóm 87.05 → 8708.91.19.",
+      "source": "Biểu thuế 2026 dòng 8708.91.19 \"Loại khác\"",
+      "noteVi": "Tờ khai Oz: \"két nước làm mát\" 14 lần → 8708.91.16 (xe 87.03)."
+    },
+    {
+      "id": "r-radiator-part-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "radiator",
+        "radiatorPartKind": {
+          "in": [
+            "drainPlug",
+            "otherRadiatorPart"
+          ]
+        },
+        "vehicleClass": "8701"
+      },
+      "hs": "87089191",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của két nước cho xe 87.01 → 8708.91.91.",
+      "source": "Biểu thuế 2026 dòng 8708.91.91 \"Dùng cho xe thuộc nhóm 87.01\""
+    },
+    {
+      "id": "r-radiator-drainplug-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "radiator",
+        "radiatorPartKind": "drainPlug",
+        "vehicleClass": "8703"
+      },
+      "hs": "87089193",
+      "gir": "GIR 6",
+      "reasonVi": "Nút xả (SEN) két nước, dùng cho xe 87.03 → 8708.91.93.",
+      "source": "Biểu thuế 2026 dòng 8708.91.93 \"Nút xả(SEN) dùng cho xe thuộc nhóm 87.03\""
+    },
+    {
+      "id": "r-radiator-drainplug-8702-8704",
+      "priority": 50,
+      "when": {
+        "partKind": "radiator",
+        "radiatorPartKind": "drainPlug",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87089194",
+      "gir": "GIR 6",
+      "reasonVi": "Nút xả (SEN) két nước, dùng cho xe 87.02 hoặc 87.04 (trừ 8704.10) → 8708.91.94.",
+      "source": "Biểu thuế 2026 dòng 8708.91.94 \"Nút xả(SEN) dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ loại thuộc phân nhóm 8704.10)\""
+    },
+    {
+      "id": "r-radiator-part-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "radiator",
+        "radiatorPartKind": "otherRadiatorPart",
+        "vehicleClass": "8703"
+      },
+      "hs": "87089195",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác của két nước (ống, lá tản nhiệt, bình phụ…) cho xe 87.03 → 8708.91.95.",
+      "source": "Biểu thuế 2026 dòng 8708.91.95 \"Loại khác, dùng cho xe thuộc nhóm 87.03\""
+    },
+    {
+      "id": "r-radiator-part-other",
+      "priority": 50,
+      "when": {
+        "partKind": "radiator",
+        "radiatorPartKind": "otherRadiatorPart",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "870410",
+            "8704",
+            "8705"
+          ]
+        }
+      },
+      "hs": "87089199",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác của két nước cho xe 87.02/87.04/87.05 → 8708.91.99 (TB 1008, 1009/TB-TCHQ ống nhôm két nước xe tải).",
+      "source": "Biểu thuế 2026 dòng 8708.91.99 \"Loại khác\""
+    },
+    {
+      "id": "r-radiator-drainplug-other",
+      "priority": 50,
+      "when": {
+        "partKind": "radiator",
+        "radiatorPartKind": "drainPlug",
+        "vehicleClass": {
+          "in": [
+            "870410",
+            "8705"
+          ]
+        }
+      },
+      "hs": "87089199",
+      "gir": "GIR 6",
+      "reasonVi": "Nút xả két nước cho xe 8704.10 / 87.05 không có dòng riêng → 8708.91.99.",
+      "source": "Biểu thuế 2026 dòng 8708.91.99 \"Loại khác\""
+    },
+    {
+      "id": "r-exhaust-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "exhaust",
+        "vehicleClass": "8701"
+      },
+      "hs": "87089210",
+      "gir": "GIR 6",
+      "reasonVi": "Ống xả, bộ giảm thanh và bộ phận cho xe 87.01 → 8708.92.10.",
+      "source": "Biểu thuế 2026 dòng 8708.92.10 \"Dùng cho xe thuộc nhóm 87.01\""
+    },
+    {
+      "id": "r-exhaust-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "exhaust",
+        "vehicleClass": "8703"
+      },
+      "hs": "87089220",
+      "gir": "GIR 6",
+      "reasonVi": "Ống xả, bộ giảm thanh và bộ phận cho xe 87.03 → 8708.92.20.",
+      "source": "Biểu thuế 2026 dòng 8708.92.20 \"Dùng cho xe thuộc nhóm 87.03\""
+    },
+    {
+      "id": "r-exhaust-dumper-pipe",
+      "priority": 50,
+      "when": {
+        "partKind": "exhaust",
+        "vehicleClass": "870410",
+        "exhaustKind": "silencerPipe"
+      },
+      "hs": "87089251",
+      "gir": "GIR 6",
+      "reasonVi": "Ống xả và bộ giảm thanh cho xe tự đổ 8704.10 → 8708.92.51.",
+      "source": "Biểu thuế 2026 dòng 8708.92.51 \"Ống xả và bộ giảm thanh\"",
+      "noteVi": "Hai nhóm 3 gạch (.51/.52 và .61/.62) của 8708.92 suy từ AHTN 2022: xe 8704.10 → .5x; xe 87.02 hoặc xe khác 87.04 → .6x. tax.json không có dòng cha — CEO đối chiếu."
+    },
+    {
+      "id": "r-exhaust-dumper-part",
+      "priority": 50,
+      "when": {
+        "partKind": "exhaust",
+        "vehicleClass": "870410",
+        "exhaustKind": "exhaustPart"
+      },
+      "hs": "87089252",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận (SEN) của ống xả cho xe tự đổ 8704.10 → 8708.92.52.",
+      "source": "Biểu thuế 2026 dòng 8708.92.52 \"Bộ phận (SEN)\"",
+      "noteVi": "Hai nhóm 3 gạch (.51/.52 và .61/.62) của 8708.92 suy từ AHTN 2022: xe 8704.10 → .5x; xe 87.02 hoặc xe khác 87.04 → .6x. tax.json không có dòng cha — CEO đối chiếu."
+    },
+    {
+      "id": "r-exhaust-8702-8704-pipe",
+      "priority": 50,
+      "when": {
+        "partKind": "exhaust",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8704"
+          ]
+        },
+        "exhaustKind": "silencerPipe"
+      },
+      "hs": "87089261",
+      "gir": "GIR 6",
+      "reasonVi": "Ống xả và bộ giảm thanh cho xe 87.02 hoặc xe khác 87.04 → 8708.92.61.",
+      "source": "Biểu thuế 2026 dòng 8708.92.61 \"Ống xả và bộ giảm thanh\"",
+      "noteVi": "Hai nhóm 3 gạch (.51/.52 và .61/.62) của 8708.92 suy từ AHTN 2022: xe 8704.10 → .5x; xe 87.02 hoặc xe khác 87.04 → .6x. tax.json không có dòng cha — CEO đối chiếu."
+    },
+    {
+      "id": "r-exhaust-8702-8704-part",
+      "priority": 50,
+      "when": {
+        "partKind": "exhaust",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8704"
+          ]
+        },
+        "exhaustKind": "exhaustPart"
+      },
+      "hs": "87089262",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận (SEN) của ống xả cho xe 87.02 hoặc xe khác 87.04 → 8708.92.62.",
+      "source": "Biểu thuế 2026 dòng 8708.92.62 \"Bộ phận (SEN)\"",
+      "noteVi": "Hai nhóm 3 gạch (.51/.52 và .61/.62) của 8708.92 suy từ AHTN 2022: xe 8704.10 → .5x; xe 87.02 hoặc xe khác 87.04 → .6x. tax.json không có dòng cha — CEO đối chiếu."
+    },
+    {
+      "id": "r-exhaust-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "exhaust",
+        "vehicleClass": "8705"
+      },
+      "hs": "87089290",
+      "gir": "GIR 6",
+      "reasonVi": "Ống xả và bộ phận cho xe 87.05 → 8708.92.90.",
+      "source": "Biểu thuế 2026 dòng 8708.92.90 \"Loại khác\""
+    },
+    {
+      "id": "r-clutch-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "clutch",
+        "vehicleClass": "8701"
+      },
+      "hs": "87089350",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ ly hợp và bộ phận (Chú giải (C), trừ ly hợp điện từ 85.05), xe thuộc nhóm 87.01 (máy kéo / đầu kéo) → 8708.93.50.",
+      "source": "Biểu thuế 2026 dòng 8708.93.50 \"Dùng cho xe thuộc nhóm 87.01\""
+    },
+    {
+      "id": "r-clutch-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "clutch",
+        "vehicleClass": "8703"
+      },
+      "hs": "87089360",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ ly hợp và bộ phận (Chú giải (C), trừ ly hợp điện từ 85.05), xe thuộc nhóm 87.03 (ô tô con) → 8708.93.60.",
+      "source": "Biểu thuế 2026 dòng 8708.93.60 \"Dùng cho xe thuộc nhóm 87.03\""
+    },
+    {
+      "id": "r-clutch-870410-8704-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "clutch",
+        "vehicleClass": {
+          "in": [
+            "870410",
+            "8704",
+            "8705"
+          ]
+        }
+      },
+      "hs": "87089370",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ ly hợp và bộ phận (Chú giải (C), trừ ly hợp điện từ 85.05), xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 / xe tải khác thuộc nhóm 87.04 / xe chuyên dùng thuộc nhóm 87.05 → 8708.93.70.",
+      "source": "Biểu thuế 2026 dòng 8708.93.70 \"Dùng cho xe thuộc nhóm 87.04 hoặc 87.05\""
+    },
+    {
+      "id": "r-clutch-8702",
+      "priority": 50,
+      "when": {
+        "partKind": "clutch",
+        "vehicleClass": "8702"
+      },
+      "hs": "87089390",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ ly hợp và bộ phận (Chú giải (C), trừ ly hợp điện từ 85.05), xe thuộc nhóm 87.02 (xe chở ≥10 người) → 8708.93.90.",
+      "source": "Biểu thuế 2026 dòng 8708.93.90 \"Loại khác\""
+    },
+    {
+      "id": "r-steering-airbag-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "steering",
+        "steeringAirbag": "yes",
+        "vehicleClass": "8701"
+      },
+      "hs": "87089411",
+      "gir": "GIR 6",
+      "reasonVi": "Vô lăng có lắp cụm túi khí, dùng cho xe 87.01 → 8708.94.11.",
+      "source": "Biểu thuế 2026 dòng 8708.94.11 \"Dùng cho xe thuộc nhóm 87.01\""
+    },
+    {
+      "id": "r-steering-airbag-other",
+      "priority": 50,
+      "when": {
+        "partKind": "steering",
+        "steeringAirbag": "yes",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8703",
+            "870410",
+            "8704",
+            "8705"
+          ]
+        }
+      },
+      "hs": "87089419",
+      "gir": "GIR 6",
+      "reasonVi": "Vô lăng có lắp cụm túi khí, xe khác 87.01 → 8708.94.19.",
+      "source": "Biểu thuế 2026 dòng 8708.94.19 \"Loại khác\""
+    },
+    {
+      "id": "r-steering-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "steering",
+        "steeringAirbag": "no",
+        "vehicleClass": "8701"
+      },
+      "hs": "87089494",
+      "gir": "GIR 6",
+      "reasonVi": "Vô lăng, trụ lái, hộp cơ cấu lái và bộ phận (Chú giải (G), (L)) không có túi khí, xe thuộc nhóm 87.01 (máy kéo / đầu kéo) → 8708.94.94.",
+      "source": "Biểu thuế 2026 dòng 8708.94.94 \"Dùng cho xe thuộc nhóm 87.01\""
+    },
+    {
+      "id": "r-steering-8703",
+      "priority": 50,
+      "when": {
+        "partKind": "steering",
+        "steeringAirbag": "no",
+        "vehicleClass": "8703"
+      },
+      "hs": "87089495",
+      "gir": "GIR 6",
+      "reasonVi": "Vô lăng, trụ lái, hộp cơ cấu lái và bộ phận (Chú giải (G), (L)) không có túi khí, xe thuộc nhóm 87.03 (ô tô con) → 8708.94.95.",
+      "source": "Biểu thuế 2026 dòng 8708.94.95 \"Dùng cho xe thuộc nhóm 87.03\""
+    },
+    {
+      "id": "r-steering-8702-870410-8704-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "steering",
+        "steeringAirbag": "no",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "870410",
+            "8704",
+            "8705"
+          ]
+        }
+      },
+      "hs": "87089499",
+      "gir": "GIR 6",
+      "reasonVi": "Vô lăng, trụ lái, hộp cơ cấu lái và bộ phận (Chú giải (G), (L)) không có túi khí, xe thuộc nhóm 87.02 (xe chở ≥10 người) / xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 / xe tải khác thuộc nhóm 87.04 / xe chuyên dùng thuộc nhóm 87.05 → 8708.94.99.",
+      "source": "Biểu thuế 2026 dòng 8708.94.99 \"Loại khác\""
+    },
+    {
+      "id": "r-airbag-complete",
+      "priority": 50,
+      "when": {
+        "partKind": "airbag",
+        "airbagComplete": "yes"
+      },
+      "hs": "87089510",
+      "gir": "GIR 6",
+      "reasonVi": "Túi khí an toàn lắp với hệ thống bơm phồng (Chú giải (O)) → 8708.95.10.",
+      "source": "Biểu thuế 2026 dòng 8708.95.10 \"Túi khí an toàn lắp với hệ thống bơm phồng\""
+    },
+    {
+      "id": "r-airbag-part",
+      "priority": 50,
+      "when": {
+        "partKind": "airbag",
+        "airbagComplete": "no"
+      },
+      "hs": "87089590",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của túi khí (vỏ, bộ bơm phồng rời…; trừ cảm biến/ECU) → 8708.95.90.",
+      "source": "Biểu thuế 2026 dòng 8708.95.90 \"Bộ phận\""
+    },
+    {
+      "id": "r-fueltank-8701-unassembled",
+      "priority": 50,
+      "when": {
+        "partKind": "fuelTank",
+        "vehicleClass": "8701",
+        "fuelTankState": "unassembled"
+      },
+      "hs": "87089911",
+      "gir": "GIR 6",
+      "reasonVi": "Thùng nhiên liệu chưa lắp ráp cho xe 87.01 → 8708.99.11.",
+      "source": "Biểu thuế 2026 dòng 8708.99.11 \"Thùng nhiên liệu chưa lắp ráp; khung giá đỡ động cơ\""
+    },
+    {
+      "id": "r-enginebracket-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "engineBracket",
+        "vehicleClass": "8701"
+      },
+      "hs": "87089911",
+      "gir": "GIR 6",
+      "reasonVi": "Khung giá đỡ động cơ cho xe 87.01 → 8708.99.11.",
+      "source": "Biểu thuế 2026 dòng 8708.99.11 \"Thùng nhiên liệu chưa lắp ráp; khung giá đỡ động cơ\""
+    },
+    {
+      "id": "r-fueltank-8701-assembled",
+      "priority": 50,
+      "when": {
+        "partKind": "fuelTank",
+        "vehicleClass": "8701",
+        "fuelTankState": "assembled"
+      },
+      "hs": "87089919",
+      "gir": "GIR 6",
+      "reasonVi": "Thùng nhiên liệu đã lắp ráp / bộ phận thùng cho xe 87.01 → 8708.99.19 (Loại khác).",
+      "source": "Biểu thuế 2026 dòng 8708.99.19 \"Loại khác\""
+    },
+    {
+      "id": "r-pedal-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "pedal",
+        "vehicleClass": "8701"
+      },
+      "hs": "87089919",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác (pedal) cho xe 87.01 không có dòng riêng → 8708.99.19.",
+      "source": "Biểu thuế 2026 dòng 8708.99.19 \"Loại khác\""
+    },
+    {
+      "id": "r-batteryTray-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "batteryTray",
+        "vehicleClass": "8701"
+      },
+      "hs": "87089919",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác (batteryTray) cho xe 87.01 không có dòng riêng → 8708.99.19.",
+      "source": "Biểu thuế 2026 dòng 8708.99.19 \"Loại khác\""
+    },
+    {
+      "id": "r-radiatorShroud-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "radiatorShroud",
+        "vehicleClass": "8701"
+      },
+      "hs": "87089919",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác (radiatorShroud) cho xe 87.01 không có dòng riêng → 8708.99.19.",
+      "source": "Biểu thuế 2026 dòng 8708.99.19 \"Loại khác\""
+    },
+    {
+      "id": "r-chassisGuard-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "chassisGuard",
+        "vehicleClass": "8701"
+      },
+      "hs": "87089919",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác (chassisGuard) cho xe 87.01 không có dòng riêng → 8708.99.19.",
+      "source": "Biểu thuế 2026 dòng 8708.99.19 \"Loại khác\""
+    },
+    {
+      "id": "r-chassisFrame-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "chassisFrame",
+        "vehicleClass": "8701"
+      },
+      "hs": "87089919",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác (chassisFrame) cho xe 87.01 không có dòng riêng → 8708.99.19.",
+      "source": "Biểu thuế 2026 dòng 8708.99.19 \"Loại khác\""
+    },
+    {
+      "id": "r-otherPart-8701",
+      "priority": 50,
+      "when": {
+        "partKind": "otherPart",
+        "vehicleClass": "8701"
+      },
+      "hs": "87089919",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác (otherPart) cho xe 87.01 không có dòng riêng → 8708.99.19.",
+      "source": "Biểu thuế 2026 dòng 8708.99.19 \"Loại khác\""
+    },
+    {
+      "id": "r-fueltank-mid-tank",
+      "priority": 50,
+      "when": {
+        "partKind": "fuelTank",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8703",
+            "870410",
+            "8704"
+          ]
+        },
+        "fuelTankPartKind": "tank"
+      },
+      "hs": "87089921",
+      "gir": "GIR 6",
+      "reasonVi": "Thùng nhiên liệu cho xe 87.02/87.03/87.04 → 8708.99.21.",
+      "source": "Biểu thuế 2026 dòng 8708.99.21 \"Thùng nhiên liệu\"",
+      "noteVi": "Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-fueltank-mid-lower",
+      "priority": 50,
+      "when": {
+        "partKind": "fuelTank",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8703",
+            "870410",
+            "8704"
+          ]
+        },
+        "fuelTankPartKind": "lowerHalfCapPipeStrap"
+      },
+      "hs": "87089924",
+      "gir": "GIR 6",
+      "reasonVi": "Nửa dưới thùng nhiên liệu; nắp đậy; ống dẫn (filler pipe/hose); đai giữ bình (SEN) cho xe 87.02–87.04 → 8708.99.24.",
+      "source": "Biểu thuế 2026 dòng 8708.99.24 \"Nửa dưới của thùng nhiên liệu; nắp đậy thùng nhiên liệu; ống dẫn của thùng nhiên liệu (filler pipes); ống dẫn hướng có đầu nối với bình nhiên liệu (filler hose); đai giữ bình nhiên liệu (SEN)\""
+    },
+    {
+      "id": "r-fueltank-mid-otherpart",
+      "priority": 50,
+      "when": {
+        "partKind": "fuelTank",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8703",
+            "870410",
+            "8704"
+          ]
+        },
+        "fuelTankPartKind": "otherTankPart"
+      },
+      "hs": "87089925",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác của thùng nhiên liệu (SEN) cho xe 87.02–87.04 → 8708.99.25.",
+      "source": "Biểu thuế 2026 dòng 8708.99.25 \"Các bộ phận khác (SEN)\""
+    },
+    {
+      "id": "r-pedal-mid",
+      "priority": 50,
+      "when": {
+        "partKind": "pedal",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8703",
+            "870410",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87089930",
+      "gir": "GIR 6",
+      "reasonVi": "Chân ga, chân phanh, chân côn (bàn đạp — Chú giải (L)) cho xe 87.02–87.04 → 8708.99.30.",
+      "source": "Biểu thuế 2026 dòng 8708.99.30 \"Chân ga (bàn đạp ga), chân phanh (bàn đạp phanh) hoặc chân côn (bàn đạp côn)\""
+    },
+    {
+      "id": "r-batterytray-mid",
+      "priority": 50,
+      "when": {
+        "partKind": "batteryTray",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8703",
+            "870410",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87089940",
+      "gir": "GIR 6",
+      "reasonVi": "Giá đỡ / khay đỡ bình ắc quy và khung của nó (Chú giải (A): đỡ ắc quy) cho xe 87.02–87.04 → 8708.99.40.",
+      "source": "Biểu thuế 2026 dòng 8708.99.40 \"Giá đỡ hoặc khay đỡ bình ắc quy và khung của nó\"",
+      "noteVi": "Khay ắc quy 12 V bắt vào khung gầm → .40; tấm BẢO VỆ pin cao áp xe điện ốp dưới gầm (电池护板) không phải khay đỡ → luật chassisGuard 8708.99.6x."
+    },
+    {
+      "id": "r-shroud-mid",
+      "priority": 50,
+      "when": {
+        "partKind": "radiatorShroud",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8703",
+            "870410",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87089950",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm hướng luồng khí tản nhiệt (SEN: cầu nối khung xe – bộ tản nhiệt) cho xe 87.02–87.04 → 8708.99.50.",
+      "source": "Biểu thuế 2026 dòng 8708.99.50 \"Tấm hướng luồng khí tản nhiệt (SEN)\""
+    },
+    {
+      "id": "r-chassisGuard-8702",
+      "priority": 55,
+      "when": {
+        "partKind": "chassisGuard",
+        "vehicleClass": "8702"
+      },
+      "hs": "87089961",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm bảo vệ gầm / ốp gầm / tấm bảo vệ pin, động cơ bắt vào khung gầm (底盘护板, 发动机护板, 电池护板, skid plate), xe thuộc nhóm 87.02 (xe chở ≥10 người) → 8708.99.61.",
+      "source": "Biểu thuế 2026 dòng 8708.99.61 \"Dùng cho xe thuộc nhóm 87.02\"",
+      "noteVi": "CEO 10/10/2026 (ca ốp gầm Leapmotor A10/A05): tấm bảo vệ gầm / pin / động cơ bằng thép dập theo lỗ vít nguyên bản, bắt trực tiếp vào KHUNG GẦM, không phải tấm thân vỏ nhìn thấy từ ngoài / trong khoang → KHÔNG thuộc Chú giải (B) thân xe (8708.29) mà là phụ tùng khung gầm theo Chú giải (A) → 8708.99.6x. Tiền lệ 8017/TB-TCHQ: tấm đệm thép bộ phận khung xe (kết nối khung gầm – thân xe) → 8708.99.62. Thực hành quốc tế: skid plate / underbody guard → 8708.99 (other parts). Tên nhóm 4 gạch của .61/.62/.63 (\"Khung gầm hoặc bộ phận của khung gầm\") suy từ AHTN 2022 — CEO đối chiếu. Thuế: 8708.29.95 ACFTA \"0 (-ID, PH, CN)\" → hàng Trung Quốc KHÔNG hưởng ACFTA, chịu MFN 15 %; 8708.99.62 ACFTA \"0 (-ID, PH, TH)\" → hàng Trung Quốc được 0 %. Chênh thuế lớn nên phải phân định bằng BẢN CHẤT (bắt vào đâu), không theo lợi thuế. Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-chassisGuard-8703",
+      "priority": 55,
+      "when": {
+        "partKind": "chassisGuard",
+        "vehicleClass": "8703"
+      },
+      "hs": "87089962",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm bảo vệ gầm / ốp gầm / tấm bảo vệ pin, động cơ bắt vào khung gầm (底盘护板, 发动机护板, 电池护板, skid plate), xe thuộc nhóm 87.03 (ô tô con) → 8708.99.62.",
+      "source": "Biểu thuế 2026 dòng 8708.99.62 \"Dùng cho xe thuộc nhóm 87.03\"",
+      "noteVi": "CEO 10/10/2026 (ca ốp gầm Leapmotor A10/A05): tấm bảo vệ gầm / pin / động cơ bằng thép dập theo lỗ vít nguyên bản, bắt trực tiếp vào KHUNG GẦM, không phải tấm thân vỏ nhìn thấy từ ngoài / trong khoang → KHÔNG thuộc Chú giải (B) thân xe (8708.29) mà là phụ tùng khung gầm theo Chú giải (A) → 8708.99.6x. Tiền lệ 8017/TB-TCHQ: tấm đệm thép bộ phận khung xe (kết nối khung gầm – thân xe) → 8708.99.62. Thực hành quốc tế: skid plate / underbody guard → 8708.99 (other parts). Tên nhóm 4 gạch của .61/.62/.63 (\"Khung gầm hoặc bộ phận của khung gầm\") suy từ AHTN 2022 — CEO đối chiếu. Thuế: 8708.29.95 ACFTA \"0 (-ID, PH, CN)\" → hàng Trung Quốc KHÔNG hưởng ACFTA, chịu MFN 15 %; 8708.99.62 ACFTA \"0 (-ID, PH, TH)\" → hàng Trung Quốc được 0 %. Chênh thuế lớn nên phải phân định bằng BẢN CHẤT (bắt vào đâu), không theo lợi thuế. Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-chassisGuard-870410-8704",
+      "priority": 55,
+      "when": {
+        "partKind": "chassisGuard",
+        "vehicleClass": {
+          "in": [
+            "870410",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87089963",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm bảo vệ gầm / ốp gầm / tấm bảo vệ pin, động cơ bắt vào khung gầm (底盘护板, 发动机护板, 电池护板, skid plate), xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 / xe tải khác thuộc nhóm 87.04 → 8708.99.63.",
+      "source": "Biểu thuế 2026 dòng 8708.99.63 \"Dùng cho xe thuộc nhóm 87.04\"",
+      "noteVi": "CEO 10/10/2026 (ca ốp gầm Leapmotor A10/A05): tấm bảo vệ gầm / pin / động cơ bằng thép dập theo lỗ vít nguyên bản, bắt trực tiếp vào KHUNG GẦM, không phải tấm thân vỏ nhìn thấy từ ngoài / trong khoang → KHÔNG thuộc Chú giải (B) thân xe (8708.29) mà là phụ tùng khung gầm theo Chú giải (A) → 8708.99.6x. Tiền lệ 8017/TB-TCHQ: tấm đệm thép bộ phận khung xe (kết nối khung gầm – thân xe) → 8708.99.62. Thực hành quốc tế: skid plate / underbody guard → 8708.99 (other parts). Tên nhóm 4 gạch của .61/.62/.63 (\"Khung gầm hoặc bộ phận của khung gầm\") suy từ AHTN 2022 — CEO đối chiếu. Thuế: 8708.29.95 ACFTA \"0 (-ID, PH, CN)\" → hàng Trung Quốc KHÔNG hưởng ACFTA, chịu MFN 15 %; 8708.99.62 ACFTA \"0 (-ID, PH, TH)\" → hàng Trung Quốc được 0 %. Chênh thuế lớn nên phải phân định bằng BẢN CHẤT (bắt vào đâu), không theo lợi thuế. Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-chassisFrame-8702",
+      "priority": 55,
+      "when": {
+        "partKind": "chassisFrame",
+        "vehicleClass": "8702"
+      },
+      "hs": "87089961",
+      "gir": "GIR 6",
+      "reasonVi": "Khung gầm / bộ phận khung gầm (dầm dọc, thanh ngang, tấm đệm khung — Chú giải (A)), xe thuộc nhóm 87.02 (xe chở ≥10 người) → 8708.99.61.",
+      "source": "Biểu thuế 2026 dòng 8708.99.61 \"Dùng cho xe thuộc nhóm 87.02\"",
+      "noteVi": "CEO 10/10/2026 (ca ốp gầm Leapmotor A10/A05): tấm bảo vệ gầm / pin / động cơ bằng thép dập theo lỗ vít nguyên bản, bắt trực tiếp vào KHUNG GẦM, không phải tấm thân vỏ nhìn thấy từ ngoài / trong khoang → KHÔNG thuộc Chú giải (B) thân xe (8708.29) mà là phụ tùng khung gầm theo Chú giải (A) → 8708.99.6x. Tiền lệ 8017/TB-TCHQ: tấm đệm thép bộ phận khung xe (kết nối khung gầm – thân xe) → 8708.99.62. Thực hành quốc tế: skid plate / underbody guard → 8708.99 (other parts). Tên nhóm 4 gạch của .61/.62/.63 (\"Khung gầm hoặc bộ phận của khung gầm\") suy từ AHTN 2022 — CEO đối chiếu. Thuế: 8708.29.95 ACFTA \"0 (-ID, PH, CN)\" → hàng Trung Quốc KHÔNG hưởng ACFTA, chịu MFN 15 %; 8708.99.62 ACFTA \"0 (-ID, PH, TH)\" → hàng Trung Quốc được 0 %. Chênh thuế lớn nên phải phân định bằng BẢN CHẤT (bắt vào đâu), không theo lợi thuế. Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-chassisFrame-8703",
+      "priority": 55,
+      "when": {
+        "partKind": "chassisFrame",
+        "vehicleClass": "8703"
+      },
+      "hs": "87089962",
+      "gir": "GIR 6",
+      "reasonVi": "Khung gầm / bộ phận khung gầm (dầm dọc, thanh ngang, tấm đệm khung — Chú giải (A)), xe thuộc nhóm 87.03 (ô tô con) → 8708.99.62.",
+      "source": "Biểu thuế 2026 dòng 8708.99.62 \"Dùng cho xe thuộc nhóm 87.03\"",
+      "noteVi": "CEO 10/10/2026 (ca ốp gầm Leapmotor A10/A05): tấm bảo vệ gầm / pin / động cơ bằng thép dập theo lỗ vít nguyên bản, bắt trực tiếp vào KHUNG GẦM, không phải tấm thân vỏ nhìn thấy từ ngoài / trong khoang → KHÔNG thuộc Chú giải (B) thân xe (8708.29) mà là phụ tùng khung gầm theo Chú giải (A) → 8708.99.6x. Tiền lệ 8017/TB-TCHQ: tấm đệm thép bộ phận khung xe (kết nối khung gầm – thân xe) → 8708.99.62. Thực hành quốc tế: skid plate / underbody guard → 8708.99 (other parts). Tên nhóm 4 gạch của .61/.62/.63 (\"Khung gầm hoặc bộ phận của khung gầm\") suy từ AHTN 2022 — CEO đối chiếu. Thuế: 8708.29.95 ACFTA \"0 (-ID, PH, CN)\" → hàng Trung Quốc KHÔNG hưởng ACFTA, chịu MFN 15 %; 8708.99.62 ACFTA \"0 (-ID, PH, TH)\" → hàng Trung Quốc được 0 %. Chênh thuế lớn nên phải phân định bằng BẢN CHẤT (bắt vào đâu), không theo lợi thuế. Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-chassisFrame-870410-8704",
+      "priority": 55,
+      "when": {
+        "partKind": "chassisFrame",
+        "vehicleClass": {
+          "in": [
+            "870410",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87089963",
+      "gir": "GIR 6",
+      "reasonVi": "Khung gầm / bộ phận khung gầm (dầm dọc, thanh ngang, tấm đệm khung — Chú giải (A)), xe tự đổ chạy ngoài đường quốc lộ thuộc phân nhóm 8704.10 / xe tải khác thuộc nhóm 87.04 → 8708.99.63.",
+      "source": "Biểu thuế 2026 dòng 8708.99.63 \"Dùng cho xe thuộc nhóm 87.04\"",
+      "noteVi": "CEO 10/10/2026 (ca ốp gầm Leapmotor A10/A05): tấm bảo vệ gầm / pin / động cơ bằng thép dập theo lỗ vít nguyên bản, bắt trực tiếp vào KHUNG GẦM, không phải tấm thân vỏ nhìn thấy từ ngoài / trong khoang → KHÔNG thuộc Chú giải (B) thân xe (8708.29) mà là phụ tùng khung gầm theo Chú giải (A) → 8708.99.6x. Tiền lệ 8017/TB-TCHQ: tấm đệm thép bộ phận khung xe (kết nối khung gầm – thân xe) → 8708.99.62. Thực hành quốc tế: skid plate / underbody guard → 8708.99 (other parts). Tên nhóm 4 gạch của .61/.62/.63 (\"Khung gầm hoặc bộ phận của khung gầm\") suy từ AHTN 2022 — CEO đối chiếu. Thuế: 8708.29.95 ACFTA \"0 (-ID, PH, CN)\" → hàng Trung Quốc KHÔNG hưởng ACFTA, chịu MFN 15 %; 8708.99.62 ACFTA \"0 (-ID, PH, TH)\" → hàng Trung Quốc được 0 %. Chênh thuế lớn nên phải phân định bằng BẢN CHẤT (bắt vào đâu), không theo lợi thuế. Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-enginebracket-mid",
+      "priority": 50,
+      "when": {
+        "partKind": "engineBracket",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8703",
+            "870410",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87089970",
+      "gir": "GIR 6",
+      "reasonVi": "Khung giá đỡ động cơ (engine bracket / chân máy) cho xe 87.02–87.04 → 8708.99.70.",
+      "source": "Biểu thuế 2026 dòng 8708.99.70 \"Khung giá đỡ động cơ\"",
+      "noteVi": "TB 3988/TB-TCHQ: pách đỡ bộ vi sai (bắt vi sai vào động cơ) → 8708.99.80, không phải .70."
+    },
+    {
+      "id": "r-other-mid",
+      "priority": 50,
+      "when": {
+        "partKind": "otherPart",
+        "vehicleClass": {
+          "in": [
+            "8702",
+            "8703",
+            "870410",
+            "8704"
+          ]
+        }
+      },
+      "hs": "87089980",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận và phụ kiện khác không có dòng riêng (pách đỡ, giá bắt, cáp phanh/ga, cần số, ống dẫn…) cho xe 87.02–87.04 → 8708.99.80.",
+      "source": "Biểu thuế 2026 dòng 8708.99.80 \"Loại khác\"",
+      "noteVi": "TB 3988/TB-TCHQ pách đỡ bộ vi sai xe 87.03 → 8708.99.80. Dòng 8708.99.xx (và 8708.22/8708.70) đi kèm cột \"cs\" biểu thuế: Chứng nhận chất lượng ATKT và BVMT sau TQ, trước khi đưa ra thị trường (12/2022/TT-BGTVT và 62/2024/TT-BGTVT) — nhân viên phải kiểm nghĩa vụ chứng nhận khi khai."
+    },
+    {
+      "id": "r-fueltank-8705-unassembled",
+      "priority": 50,
+      "when": {
+        "partKind": "fuelTank",
+        "vehicleClass": "8705",
+        "fuelTankState": "unassembled"
+      },
+      "hs": "87089991",
+      "gir": "GIR 6",
+      "reasonVi": "Thùng nhiên liệu chưa lắp ráp cho xe 87.05 → 8708.99.91.",
+      "source": "Biểu thuế 2026 dòng 8708.99.91 \"Thùng nhiên liệu chưa lắp ráp; khung giá đỡ động cơ\""
+    },
+    {
+      "id": "r-enginebracket-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "engineBracket",
+        "vehicleClass": "8705"
+      },
+      "hs": "87089991",
+      "gir": "GIR 6",
+      "reasonVi": "Khung giá đỡ động cơ cho xe 87.05 → 8708.99.91.",
+      "source": "Biểu thuế 2026 dòng 8708.99.91 \"Thùng nhiên liệu chưa lắp ráp; khung giá đỡ động cơ\""
+    },
+    {
+      "id": "r-fueltank-8705-assembled",
+      "priority": 50,
+      "when": {
+        "partKind": "fuelTank",
+        "vehicleClass": "8705",
+        "fuelTankState": "assembled"
+      },
+      "hs": "87089999",
+      "gir": "GIR 6",
+      "reasonVi": "Thùng nhiên liệu đã lắp ráp / bộ phận thùng cho xe 87.05 → 8708.99.99.",
+      "source": "Biểu thuế 2026 dòng 8708.99.99 \"Loại khác\""
+    },
+    {
+      "id": "r-pedal-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "pedal",
+        "vehicleClass": "8705"
+      },
+      "hs": "87089999",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác (pedal) cho xe 87.05 → 8708.99.99.",
+      "source": "Biểu thuế 2026 dòng 8708.99.99 \"Loại khác\""
+    },
+    {
+      "id": "r-batteryTray-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "batteryTray",
+        "vehicleClass": "8705"
+      },
+      "hs": "87089999",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác (batteryTray) cho xe 87.05 → 8708.99.99.",
+      "source": "Biểu thuế 2026 dòng 8708.99.99 \"Loại khác\""
+    },
+    {
+      "id": "r-radiatorShroud-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "radiatorShroud",
+        "vehicleClass": "8705"
+      },
+      "hs": "87089999",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác (radiatorShroud) cho xe 87.05 → 8708.99.99.",
+      "source": "Biểu thuế 2026 dòng 8708.99.99 \"Loại khác\""
+    },
+    {
+      "id": "r-chassisGuard-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "chassisGuard",
+        "vehicleClass": "8705"
+      },
+      "hs": "87089999",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác (chassisGuard) cho xe 87.05 → 8708.99.99.",
+      "source": "Biểu thuế 2026 dòng 8708.99.99 \"Loại khác\""
+    },
+    {
+      "id": "r-chassisFrame-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "chassisFrame",
+        "vehicleClass": "8705"
+      },
+      "hs": "87089999",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác (chassisFrame) cho xe 87.05 → 8708.99.99.",
+      "source": "Biểu thuế 2026 dòng 8708.99.99 \"Loại khác\""
+    },
+    {
+      "id": "r-otherPart-8705",
+      "priority": 50,
+      "when": {
+        "partKind": "otherPart",
+        "vehicleClass": "8705"
+      },
+      "hs": "87089999",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận khác (otherPart) cho xe 87.05 → 8708.99.99.",
+      "source": "Biểu thuế 2026 dòng 8708.99.99 \"Loại khác\""
+    }
+  ]
+}

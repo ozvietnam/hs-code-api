@@ -118,6 +118,15 @@ không có bảng mã HS nên `hsListings` (khớp theo mã) không bao giờ b�
 - Việc mở: khi oz-wiki trích xong bảng 19/2024/TT-BYT (có mã) thì mục `byt-05-2022-d6-43-kinh-mat` trở
   thành lưới phụ — giữ, vì tên hàng vẫn bắt được mã khai sai nhóm.
 
+### E-8 · Bảng quyết định CHƯA duyệt → tư vấn (advisory), không ghi đè (10/10/2026 — nhánh `feat/decision-table-8708`)
+Ca ốp gầm Leapmotor (xem `05-decision-tables.md` D-7): bảng 8708 chưa CEO duyệt trước đây bị classify/engine-loop BỎ HẲN.
+Nay cả hai động cơ: RESOLVED cùng nhóm 4 số → `decisionAdvisory {hs, ruleId, reasonVi, agrees, assumedFacts, noteVi}`;
+khác mã → `antiPatternWarnings[decision-table-advisory]` + `review.needed` (áp ở mọi đường ra của cửa đối chiếu, kể cả khi
+cửa đối chiếu lỗi) + mã bảng vào `results` (`source: decision-table-advisory`, confidence null). Engine-loop: dòng
+"bảng quyết định chưa duyệt — chỉ tư vấn → RESOLVED …" trong gói kiểm chứng vòng 2 (`gather().tables`), G5 cảnh báo, kết quả
+có `decisionAdvisory` + review. Không bao giờ `RESOLVED_BY_TABLE` / `RULE_TABLE` cho bảng chưa duyệt. ERP (E-1) nên hiển thị
+cùng chip "Phân vân 2 mã". Test: `test-classify-decision-table` (+10), `test-classify-crosscheck` (+3), `test-decision-tables` (+11).
+
 ## DUY TRÌ THEO THỜI GIAN
 
 | Nhịp | Việc | Vì sao |
