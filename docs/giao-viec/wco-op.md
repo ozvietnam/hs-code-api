@@ -48,6 +48,22 @@ Thử riêng một ảnh trang: `python3 scripts/wco-op-banners.py --image trang
 `heading-fix-report.json`: `resolved` (đoạn khôi phục), `unresolved[]` (lý do: thiếu ranh giới, nhiều tổ hợp, dải không đọc được), `headingSuspectAfter`, `ordPrintedMismatchAfter` (phải gần 0:
 số in sẵn chính là số hiệu dùng trong câu "See also …/n", nên khi mã đúng thì thứ tự theo vị trí = số in sẵn).
 
+## Bản OCR mới (10/10/2026, `WCO_Compendium_2022_Opinions_EN.md`): 531 tiêu đề thay vì 313
+OCR lại sạch hơn: nhận được nhiều dải mã hơn, kể cả dạng `### 8471.30 (continued)` (mã tiếp tục sang trang sau). Kết quả `wco-op-parse-md.mjs` trên bản này:
+**1.038 ý kiến / 434 mã** (1.036 dòng `Adoption` + 2 ý kiến mất dòng Adoption vẫn giữ được); `unknownHs=0`, không trùng. Ý kiến nghi sai mã giảm **461 → 169**.
+
+Hai lớp khôi phục, đều tất định:
+1. **Từ tiêu đề `(continued)` (đã có trong `wco-op-parse-md.mjs`):** nếu ý kiến đầu tiên dưới một tiêu đề có số in sẵn n > 1 thì n−1 ý kiến ngay trước (số in sẵn 1..n−1) thuộc
+   cùng mã nhưng dải mã trang đầu bị rơi → chuyển về mã đó. Bản này: 25 khối / 41 ý kiến (vd ý kiến "Palm-size electronic organizer" về lại 8471.30). Nếu số in sẵn của các ý kiến trước không khớp thì KHÔNG chuyển.
+2. **Từ ảnh dải mã (`wco-op-banners.py` + `wco-op-fix-headings.mjs`)** cho phần còn lại (88 chỗ số in sẵn quay về 1 mà không có tiêu đề tiếp nối, vd 8467.19 vẫn nằm trong 8466.10).
+
+Thứ tự chạy trên server (sau `git pull`):
+```bash
+node scripts/wco-op-parse-md.mjs --md=data/wco-op/WCO_Compendium_2022_Opinions_EN.md --expect=1036
+python3 scripts/wco-op-banners.py --pdf data/wco-op/WCO-Compendium-2022.pdf --crops data/wco-op/banner-crops
+node scripts/wco-op-fix-headings.mjs --banners=data/wco-op/banners.jsonl
+```
+
 ## Chạy (trên server có repo + Python 3 + `pip install pymupdf`)
 ```bash
 # 0. thử vài trang để xem bố cục (in cấu trúc, chữ cắt 14 ký tự — không ghi tệp)

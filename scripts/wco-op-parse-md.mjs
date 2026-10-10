@@ -33,7 +33,8 @@ const APPLICATION = /^\W*\*?\s*Application\b/i;
 
 /** "### 3802.90" (kể cả OCR méo như "38O2.90") → "380290" hoặc null. */
 export function parseHeadingCode(h) {
-  const m = /^\s*([0-9OoIl|S]{4})\s*[.,]\s*([0-9OoIl|S]{2})\s*$/.exec(h);
+  // "3802.90" hoặc "3802.90 (continued)" (mã tiếp tục sang trang sau — vẫn là cùng mã)
+  const m = /^\s*([0-9OoIl|S]{4})\s*[.,]\s*([0-9OoIl|S]{2})\s*(?:\(\s*continued\s*\))?\s*$/i.exec(h);
   if (!m) return null;
   const d = fixDigits(m[1]) + fixDigits(m[2]);
   return /^\d{6}$/.test(d) ? d : null;
@@ -44,7 +45,7 @@ export function parseMarkdown(md) {
   const lines = md.split('\n');
   const opinions = [];
   const stats = { headings: 0, headingsUnparsed: [], orphanLines: 0, annexStartLine: null };
-  let section = null; let code = null; let buf = []; let inAnnex = false;
+  let section = null; let code = null; let buf = []; let inAnnex = false; let headingNo = 0; let headingContinued = false;
   const perCode = new Map();
 
   const finalize = (adoptionLine, lineNo) => {
@@ -70,8 +71,9 @@ export function parseMarkdown(md) {
       ...(appLines.length ? { application: appLines.join(' ') } : {}),
       ...(gir.length ? { girMentioned: [...new Set(gir)] } : {}),
       ...(printed !== null ? { ordPrinted: printed } : {}),
-      source: 'ocr-md', line: lineNo,
+      source: 'ocr-md', line: lineNo, headingNo,
     };
+    if (headingContinued) o.headingContinued = true;
     if (printed === null || printed !== ord) o.ordInferred = true;
     opinions.push(o);
   };
@@ -97,6 +99,7 @@ export function parseMarkdown(md) {
     if (inAnnex) return;
     if (/^### /.test(l)) {
       stats.headings += 1;
+      headingNo = i + 1; headingContinued = /\(\s*continued\s*\)/i.test(l);
       const c = parseHeadingCode(l.slice(4));
       flushOrphan(i + 1);
       if (!c) stats.headingsUnparsed.push(i + 1);
@@ -107,8 +110,43 @@ export function parseMarkdown(md) {
     if (ADOPTION.test(l.trim())) { finalize(l, i + 1); return; }
     buf.push(l);
   });
+  recoverFromContinued(opinions, stats);
   markSuspect(opinions, stats);
   return { opinions, stats };
+}
+
+/**
+ * Tiêu đề "### 8471.30 (continued)" (hoặc tiêu đề đọc được ở trang sau) mà ý kiến đầu tiên dưới nó có số in sẵn n > 1
+ * nghĩa là n−1 ý kiến ngay trước đó thuộc CÙNG mã nhưng dải mã ở trang đầu bị OCR làm rơi, nên chúng đang nằm dưới mã khác.
+ * Chỉ chuyển khi các ý kiến đó có số in sẵn 1..n−1 khớp (hoặc không đọc được) — còn lại để nguyên cho markSuspect.
+ */
+export function recoverFromContinued(opinions, stats = {}) {
+  let moved = 0; let blocks = 0;
+  for (let i = 0; i < opinions.length; i++) {
+    const first = opinions[i];
+    if (i > 0 && opinions[i - 1].headingNo === first.headingNo) continue; // chỉ xét ý kiến đầu của mỗi khối tiêu đề
+    const n = first.ordPrinted;
+    if (!n || n <= 1) continue;
+    const k = n - 1;
+    if (i - k < 0) continue;
+    const prev = opinions.slice(i - k, i);
+    if (prev.some((o) => o.hs === first.hs)) continue; // đã cùng mã (không cần chuyển)
+    const okShape = prev.every((o, j) => o.ordPrinted === undefined || o.ordPrinted === j + 1);
+    const knownCount = prev.filter((o) => o.ordPrinted !== undefined).length;
+    if (!okShape || knownCount * 2 < prev.length) continue;
+    blocks += 1;
+    for (const o of prev) { o.hs = first.hs; o.headingRecovered = 'continued'; moved += 1; }
+  }
+  // tính lại số thứ tự theo vị trí trong từng mã (theo thứ tự tài liệu)
+  const perCode = new Map();
+  for (const o of opinions) {
+    const ord = (perCode.get(o.hs) || 0) + 1;
+    perCode.set(o.hs, ord);
+    o.ord = ord; o.id = `${o.hs}/${ord}`;
+    if (o.ordPrinted === undefined || o.ordPrinted !== ord) o.ordInferred = true; else delete o.ordInferred;
+  }
+  stats.recoveredFromContinued = { blocks, opinions: moved };
+  return opinions;
 }
 
 /**
@@ -145,6 +183,7 @@ function main() {
     source: path.basename(md), opinions: opinions.length, codes: new Set(opinions.map((o) => o.hs)).size,
     ...(expect !== null ? { expected: expect, matchesExpected: opinions.length === expect } : {}),
     headings: stats.headings, headingsUnparsed: stats.headingsUnparsed, withoutAdoptionLine: opinions.filter((o) => o.noAdoptionLine).length, annexStartLine: stats.annexStartLine,
+    recoveredFromContinued: stats.recoveredFromContinued,
     headingSuspect: opinions.filter((o) => o.headingSuspect).length, headingRestarts: stats.headingRestarts,
     codesWithSuspect: new Set(opinions.filter((o) => o.headingSuspect).map((o) => o.hs)).size,
     ordInferred: opinions.filter((o) => o.ordInferred).length,
