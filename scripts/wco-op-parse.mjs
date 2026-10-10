@@ -131,7 +131,7 @@ export function segment(lines, { idRegex = DEFAULT_ID_REGEX, requireBold = false
   return { opinions, rejectedBackward, rejectedUnconfirmed, outOfOrder, ocrFixed, preface: starts.length ? starts[0].i : lines.length };
 }
 
-function loadWcoCodes() {
+export function loadWcoCodes() {
   const six = new Set(); const four = new Set();
   const f = path.join(ROOT, 'data', 'wco-hs-international.csv');
   if (!fs.existsSync(f)) return null;
@@ -154,8 +154,10 @@ export function validate(opinions, wcoCodes) {
     if (wcoCodes && !(o.level === 6 ? wcoCodes.six : wcoCodes.four).has(o.hs)) issues.unknownHs.push(o.id);
     if (o.text.length < MIN_CHARS) issues.tooShort.push(o.id);
     if (o.text.length > MAX_CHARS) issues.tooLong.push(o.id);
-    if (o.pages[0] < prevPage) issues.pageBackwards.push(o.id);
-    prevPage = o.pages[1];
+    if (o.pages) {
+      if (o.pages[0] < prevPage) issues.pageBackwards.push(o.id);
+      prevPage = o.pages[1];
+    }
     const prev = maxOrd.get(o.hs);
     if (prev !== undefined && o.ord !== prev + 1) issues.ordinalGaps.push(`${o.hs}: ${prev}→${o.ord}`);
     maxOrd.set(o.hs, o.ord);
@@ -163,7 +165,7 @@ export function validate(opinions, wcoCodes) {
   return issues;
 }
 
-function assertIgnored(file) {
+export function assertIgnored(file) {
   const top = spawnSync('git', ['rev-parse', '--show-toplevel'], { cwd: path.dirname(path.resolve(file)), encoding: 'utf8' });
   if (top.status !== 0) return; // không phải repo git
   const r = spawnSync('git', ['check-ignore', '-q', file], { cwd: top.stdout.trim() });

@@ -56,26 +56,18 @@ check('6.1.d: có khớp → CO_TIEN_LE_KHOP + số tiền lệ', d({ precedentC
 
 // ── 6.1.b: kho WCO riêng tư ──
 const w = (hs) => lb.canCuPhapLy({ status: 'REVIEW', topHs: hs }).cacBuoc[1].taiLieu[1];
+process.env.HS_WCO_OP_FILE = path.join(dataPath('wco-op'), 'khong-ton-tai.json'); // không phụ thuộc kho thật (có thể có trên máy chạy test)
 wcoOp.reset();
 check('6.1.b: chưa nạp kho → CHUA_TRA_CUU (nói thật)', w('85176200').trangThai === 'CHUA_TRA_CUU');
 fs.mkdirSync(dataPath('wco-op'), { recursive: true });
+process.env.HS_WCO_OP_FILE = dataPath('wco-op', 'opinions.json');
 fs.writeFileSync(dataPath('wco-op', 'opinions.json'), JSON.stringify([
-  { id: '851762/4', hs: '851762', level: 6, ord: 4, pages: [1, 1], text: 'SECRET invented wco text that must never be returned' },
+  { id: '851762/4', hs: '851762', level: 6, ord: 4, adoption: 2014, text: 'SECRET invented wco text that must never be returned' },
 ]));
 wcoOp.reset();
 const wb = w('85176200');
-check('6.1.b: có ý kiến → CO_Y_KIEN + số hiệu', wb.trangThai === 'CO_Y_KIEN' && wb.yKien.join() === '851762/4', wb);
+check('6.1.b: có ý kiến → CO_Y_KIEN + con trỏ (mã, vị trí, năm), không nguyên văn', wb.trangThai === 'CO_Y_KIEN' && wb.yKien.length === 1 && wb.yKien[0].hs6 === '851762' && wb.yKien[0].thuTuTrongMa === 4 && wb.yKien[0].namThongQua === 2014 && /không phải số hiệu chính thức/.test(wb.ghiChu), wb);
 check('6.1.b: KHÔNG rò nguyên văn WCO ra phản hồi', !JSON.stringify(lb.canCuPhapLy({ status: 'REVIEW', topHs: '85176200' })).includes('SECRET'));
-fs.writeFileSync(dataPath('wco-op', 'opinions.json'), JSON.stringify([
-  { id: '380290/1', hs: '380290', level: 6, ord: 1, ordInferred: true, pages: [123, 124], text: 'invented' },
-]));
-wcoOp.reset();
-const wi = w('38029000');
-check('6.1.b: thứ tự suy ra → không giả làm số hiệu chính thức, dẫn theo trang PDF', wi.trangThai === 'CO_Y_KIEN' && wi.yKien[0] === '380290 (trang 123 bản PDF)' && /không phải số hiệu chính thức/.test(wi.ghiChu), wi);
-fs.writeFileSync(dataPath('wco-op', 'opinions.json'), JSON.stringify([
-  { id: '851762/4', hs: '851762', level: 6, ord: 4, pages: [1, 1], text: 'SECRET invented wco text that must never be returned' },
-]));
-wcoOp.reset();
 check('6.1.b: mã không có ý kiến → KHONG_CO_Y_KIEN_CHO_MA_NAY', w('84713000').trangThai === 'KHONG_CO_Y_KIEN_CHO_MA_NAY');
 check('6.1.b: chỉ có mã 4 số → không tra theo 6 số', w('8517').trangThai === 'KHONG_CO_Y_KIEN_CHO_MA_NAY');
 fs.rmSync(dataPath('wco-op'), { recursive: true, force: true });

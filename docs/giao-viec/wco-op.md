@@ -10,6 +10,23 @@ Oz có bản PDF 2022 (~800 trang, song ngữ Anh–Pháp, mua lại qua bên th
 3. **Chỉ lấy tiếng Anh.** Bản Pháp bị loại ngay ở bước 1.
 4. Báo cáo (`extract-report.json`, `parse-report.json`) **không chứa chữ WCO** — dán gửi người chỉnh code được.
 
+## Nguồn chính từ 10/10/2026: bản OCR tiếng Anh dạng markdown (1.036 ý kiến)
+Có bản OCR đã cắt riêng cột tiếng Anh, dạng markdown (`WCO_Compendium_2022_English_OCR.md`, ~860 KB), cấu trúc sạch hơn nhiều so với đường PDF → `pages-en.jsonl`:
+`## Section …` → `### 3802.90` (mã 6 số) → `**1.** mô tả` → `*Application of GIRs 1 and 6.*` → `*Adoption: 2014*` (dòng CUỐI của ý kiến). Phần `## Annex` (bảng nhãn hiệu/thành phần) không phải ý kiến.
+
+```bash
+# đặt tệp vào data/wco-op/ (bị .gitignore + .dockerignore chặn), rồi:
+node scripts/wco-op-parse-md.mjs --md=data/wco-op/WCO_Compendium_2022_English_OCR.md --expect=1036
+```
+Kết quả trên bản thật: **1.036 ý kiến / 309 mã — khớp số dòng `Adoption`**; mọi mã đều có trong bảng WCO (`unknownHs=0`), không trùng, không nhảy thứ tự. Báo cáo ghi: `withoutAdoptionYear` (3, năm rụng do scan),
+`ordInferred` (xem dưới), `issues.tooShort` (4, là tên hàng ngắn thật), `headingsUnparsed`.
+
+**Số hiệu:** số in sẵn `**n.**` bị OCR làm méo/lặp ở khoảng một nửa số ý kiến (404 lệch, 101 không đọc được), nên **không dùng làm số hiệu chính thức**. `ord` = vị trí
+trong mã theo thứ tự xuất hiện (ổn định, tất định); `ordPrinted` giữ số in sẵn để đối chiếu. Con trỏ API (`canCuPhapLy` mục 6.1.b) là `{hs6, thuTuTrongMa, namThongQua}` và ghi rõ
+không phải số hiệu chính thức.
+
+Đường PDF → `pages-en.jsonl` → `wco-op-parse.mjs` bên dưới giữ làm phương án dự phòng (và để đối chiếu số lượng).
+
 ## Chạy (trên server có repo + Python 3 + `pip install pymupdf`)
 ```bash
 # 0. thử vài trang để xem bố cục (in cấu trúc, chữ cắt 14 ký tự — không ghi tệp)
