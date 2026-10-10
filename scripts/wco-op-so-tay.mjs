@@ -31,7 +31,7 @@ export function buildItems(all, outs, opinionOf) {
     const op = opinionOf(c);
     items.push({
       hs: c.hs, thuTuTrongMa: c.ord, namThongQua: c.namThongQua, moTa: String(o.moTa).trim(), nguon: c.nguon,
-      dauVet: fingerprint(o.trich), doTinCay: op && (op.headingInferred || op.headingRecovered) ? 'SUY_LUAN' : 'CHAC', daSoatAnh: false,
+      dauVet: fingerprint(o.trich), doTinCay: wcoOp.doTinCay(op), daSoatAnh: false,
       _trich: String(o.trich),
     });
   }
@@ -69,7 +69,8 @@ function main() {
     const merged = new Map((cur.yKienWco || []).map((x) => [x.nguon, x]));
     for (const x of list) merged.set(x.nguon, x);
     const yk = [...merged.values()].sort((a, b) => a.hs.localeCompare(b.hs) || a.thuTuTrongMa - b.thuTuTrongMa);
-    const next = { ...cur, yKienWco: yk };
+    // Danh sách ý kiến WCO của nhóm KHÔNG đủ (ý kiến chưa đối chiếu được mã/số in bị loại) → không được hiểu là "nhóm này chỉ có chừng đó ý kiến".
+    const next = { ...cur, yKienWco: yk, yKienWcoDayDu: wcoOp.incomplete() ? false : (cur.yKienWcoDayDu ?? false) };
     const r = verifySoTay(next, h4, undefined, { doiChieuWco: true });
     if (r.loai.some((l) => l.kind === 'yKienWco')) throw new Error(`${h4}: mục yKienWco không qua kiểm: ${JSON.stringify(r.loai.filter((l) => l.kind === 'yKienWco'))}`);
     next.dungTuNguon = [...new Set([...(cur.dungTuNguon || []), ...yk.map((x) => x.nguon)])].sort();

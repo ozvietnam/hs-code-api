@@ -66,7 +66,7 @@ fs.writeFileSync(dataPath('wco-op', 'opinions.json'), JSON.stringify([
 ]));
 wcoOp.reset();
 const wb = w('85176200');
-check('6.1.b: có ý kiến → CO_Y_KIEN + con trỏ (mã, vị trí, năm), không nguyên văn', wb.trangThai === 'CO_Y_KIEN' && wb.yKien.length === 1 && wb.yKien[0].doTinCay === 'CHAC' && wb.yKien[0].hs6 === '851762' && wb.yKien[0].thuTuTrongMa === 4 && wb.yKien[0].namThongQua === 2014 && /không phải số hiệu chính thức/.test(wb.ghiChu), wb);
+check('6.1.b: có ý kiến → CO_Y_KIEN + con trỏ (mã, vị trí, năm), không nguyên văn', wb.trangThai === 'CO_Y_KIEN' && wb.yKien.length === 1 && wb.yKien[0].doTinCay === 'CHAC' && wb.yKien[0].hs6 === '851762' && wb.yKien[0].thuTuTrongMa === 4 && wb.yKien[0].namThongQua === 2014 && /khớp số thứ tự in/.test(wb.ghiChu) && /có thể chưa đủ/.test(wb.ghiChu) && !/không phải số hiệu chính thức/.test(wb.ghiChu), wb);
 check('6.1.b: KHÔNG rò nguyên văn WCO ra phản hồi', !JSON.stringify(lb.canCuPhapLy({ status: 'REVIEW', topHs: '85176200' })).includes('SECRET'));
 fs.writeFileSync(dataPath('wco-op', 'opinions.json'), JSON.stringify([
   { id: '851762/4', hs: '851762', level: 6, ord: 4, adoption: 2014, text: 'x' },

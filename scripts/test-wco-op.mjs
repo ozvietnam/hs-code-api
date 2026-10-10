@@ -222,6 +222,11 @@ assert('dịch: thêm số lạ bị báo', numericParity('Weight 115 g', 'Khố
 assert('dịch: số thứ tự đầu dòng và năm Adoption không tính', numericParity('1. Chicken cuts\n\nAdoption: 2008', 'Thịt gà cắt miếng\n\nThông qua: 2008').ok && numberTokens('2. Foo 5 mm').join() === '5');
 assert('dịch: số nghìn 1,000 = 1.000', numericParity('1,000 kg', '1.000 kg').ok);
 {
+  const wcoLib = (await import('node:module')).createRequire(import.meta.url)('../lib/wco-op.js');
+  assert('doTinCay: tiêu đề đọc thẳng → CHAC', wcoLib.doTinCay({ hs: '111111', ord: 1 }) === 'CHAC');
+  assert('doTinCay: khôi phục "(continued)" hoặc suy luận → SUY_LUAN (một luật cho API và sổ tay)', wcoLib.doTinCay({ headingRecovered: 'continued' }) === 'SUY_LUAN' && wcoLib.doTinCay({ headingInferred: true }) === 'SUY_LUAN' && wcoLib.doTinCay(null) === 'CHAC');
+}
+{
   const mk = (hs, ord, text, extra = {}) => ({ hs, ord, text, ...extra });
   const A = [mk('111111', 1, '1. Foo bar baz.'), mk('111111', 2, '2. Foo two.'), mk('111111', 3, '1. Restart opinion x.'), mk('111111', 4, '2. After restart.')];
   const r = markOrdConflicts(A);

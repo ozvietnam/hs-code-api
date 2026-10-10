@@ -92,11 +92,12 @@ assert('loaiTru mà câu nguồn chỉ nói "thường thuộc nhóm" bị loạ
 
 // Dựng lại nhóm không được làm mất yKienWco đã nạp
 {
-  const old = { nhom: '8414', yKienWco: [{ nguon: 'wco-op.841451.1' }, { nguon: 'wco-op.841451.2' }], kiemTra: { tong: 5 } };
+  const old = { nhom: '8414', yKienWco: [{ nguon: 'wco-op.841451.1' }, { nguon: 'wco-op.841451.2' }], yKienWcoDayDu: false, kiemTra: { tong: 5 } };
   const fresh = { nhom: '8414', dungTuNguon: ['ch84.chuong'], kiemTra: { tong: 7, dat: 6, loai: 1 }, yKienWco: [{ nguon: 'bịa' }] };
   const m = carryOverYKienWco(old, fresh);
   assert('carryOver: giữ yKienWco cũ, bỏ yKienWco do bản dựng mới tự đưa vào', m.yKienWco.length === 2 && m.yKienWco[0].nguon === 'wco-op.841451.1');
   assert('carryOver: cộng vào kiemTra và dungTuNguon, không sửa tham số', m.kiemTra.tong === 9 && m.kiemTra.dat === 8 && m.dungTuNguon.includes('wco-op.841451.2') && fresh.kiemTra.tong === 7 && fresh.dungTuNguon.length === 1);
+  assert('carryOver: giữ cờ yKienWcoDayDu (danh sách chưa đủ)', m.yKienWcoDayDu === false);
   const none = carryOverYKienWco(null, fresh);
   assert('carryOver: nhóm chưa có file cũ → không có yKienWco', !('yKienWco' in none) && none.kiemTra.tong === 7);
 }
