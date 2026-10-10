@@ -530,5 +530,29 @@ check('describe thường vẫn chạy (degraded khi AI lỗi)', h2._s === 200 &
   imageFacts.readImageFacts = savedVision;
 }
 
+
+// ── 10/10/2026 (CEO): thư viện đặc điểm theo nhóm — phiếu lọc rác trước AI, lượt vá chỉ gửi nguồn liên quan ô thiếu ──
+{
+  const saved = llmTier.callLLMJson;
+  const users = [];
+  llmTier.callLLMJson = async (system, user, o) => {
+    if (!system.includes('THÔNG SỐ SẢN PHẨM')) return saved(system, user, o);
+    users.push({ system, u: JSON.parse(user) });
+    // Lượt 1 bỏ sót chất liệu → lượt vá hỏi riêng material.
+    return { json: { attributes: users.length === 1 ? GOOD_REPLY.attributes.filter((a) => a.key !== 'material') : [GOOD_REPLY.attributes.find((a) => a.key === 'material')] }, provider: 'stub', model: 'stub' };
+  };
+  const NOISY = { ...SOCKET, titleZh: SOCKET.titleZh + '词库', specsZh: [...SOCKET.specsZh, { key: '是否跨境货源', value: '否' }, { key: '发货地', value: '广东' }, { key: '风格', value: '现代简约' }, { key: '上市时间', value: '2024' }], hsCode: '85366932' };
+  const r = await buildDeclarationSheet(NOISY);
+  llmTier.callLLMJson = saved;
+  const f = (k) => r.json.fields.find((x) => x.key === k);
+  check('phiếu 8536: rác (是否跨境货源/发货地/风格/上市时间) không vào gói AI', !/跨境货源|发货地|风格|上市时间/.test(JSON.stringify(users[0]?.u.sources || [])), JSON.stringify(users[0]?.u.sources));
+  check('phiếu 8536: ảnh thương hiệu/chính sách lọc dòng, bảng thông số vẫn gửi (10A/13A/250V)', JSON.stringify(users[0]?.u.sources).includes('10A/13A/250V'));
+  check('phiếu 8536: SYSTEM lượt 1 có dòng "Ô cần cho nhóm này" (voltage, currentRating, poleCount)', /Ô cần cho nhóm này: .*voltage: Điện áp.*poleCount/.test(users[0]?.system || ''), users[0]?.system.split('\n').pop());
+  check('phiếu 8536: ô bắt buộc vẫn đủ (missing rỗng), chất liệu từ lượt vá', r.json.missing.length === 0 && f('material')?.valueVi === 'đồng phốt-pho thiếc', JSON.stringify(r.json.missing));
+  const rep = users[1]?.u;
+  check('lượt vá: chỉ hỏi material; gói nhỏ hơn lượt 1; nguồn chỉ còn nhãn chất liệu + số đơn vị + SKU + tên', rep && Object.keys(rep.allowedKeys).join() === 'material' && JSON.stringify(rep).length < JSON.stringify(users[0].u).length && /材质：锡磷青铜/.test(JSON.stringify(rep.sources)) && !/插孔类型/.test(JSON.stringify(rep.sources)) && /一开多功能八孔/.test(JSON.stringify(rep.sources)), JSON.stringify(rep?.sources));
+  check('extraction.filter: stats + dropped (lý do) + miscLabels; repairFilter có stats', r.json.extraction.filter?.source === 'heading' && r.json.extraction.filter.stats.specsIn === 10 && r.json.extraction.filter.dropped.some((d) => d.reason === 'NOISE') && Array.isArray(r.json.extraction.filter.miscLabels) && r.json.extraction.repairFilter?.stats, JSON.stringify(r.json.extraction));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);

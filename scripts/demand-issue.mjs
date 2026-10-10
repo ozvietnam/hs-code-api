@@ -50,6 +50,8 @@ export function renderIssue(d, { limit = 40 } = {}) {
       'Thêm nhãn tiếng Trung vào `data/attribute-synonyms-zh.json`, hoặc xem lại template nhóm (ô không hợp nhóm hàng).'),
     ...sec('Nhãn thông số tiếng Trung từ điển chưa hiểu', d.zhLabels || [], (z) => `${md(z.label)}`,
       'Gắn vào khóa chuẩn trong `data/attribute-synonyms-zh.json` (hoặc bỏ qua nếu là thông tin bán hàng).'),
+    ...sec('Nhãn thông số không thuộc thư viện nhóm (misc)', d.unknownLabels || [], (z) => `${md(z.label)} (nhóm ${(z.headings || []).map(md).join(', ')})`,
+      'Nếu là đặc tính hàng: gắn khoá trong `data/attribute-synonyms-zh.json` + thêm ô vào template nhóm; nếu là rác bán hàng: thêm vào `data/noise-labels-zh.json`.'),
     ...sec('Nhóm 4 số chưa có template ô khai báo', d.noHeadingTemplate || [], (h) => `Nhóm **${md(h.heading)}**`,
       'Thêm template trong `lib/declaration-field-templates.js` rồi `npm run build:declaration-fields`.'),
   ];
