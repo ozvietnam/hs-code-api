@@ -183,6 +183,104 @@
           }
         }
       },
+      "SoTay": {
+        "type": "object",
+        "description": "Sổ tay chú giải (docs/backlog/08) ở CHẾ ĐỘ CỐ VẤN: đính thêm vào phản hồi, KHÔNG đổi mã đã chọn, trạng thái hay cờ. `canGiaiTrinh` = máy NGHI (sổ tay nhóm đã chọn loại trừ đích danh một nhóm khác cũng đang là ứng viên; chưa kết luận, chưa đo tỉ lệ báo oan). `yKienWco` = tóm tắt TỰ VIẾT của ý kiến phân loại WCO cho đúng mã (TT 85/2026 Điều 6.1.b), không phải nguyên văn; `daSoatAnh:false` = chưa đối chiếu ảnh trang gốc. Tắt khẩn cấp bằng env HS_SOTAY_RUNTIME=false (khi đó không có trường này).",
+        "properties": {
+          "trangThai": {
+            "type": "string",
+            "enum": [
+              "CO_SO_TAY",
+              "CHUA_CO_SO_TAY_CHO_NHOM"
+            ]
+          },
+          "nhom": {
+            "type": "string",
+            "description": "Nhóm 4 số của mã đã chọn"
+          },
+          "phienBan": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "cheDo": {
+            "type": "string",
+            "enum": [
+              "CO_VAN"
+            ]
+          },
+          "canGiaiTrinh": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sangNhom": {
+                  "type": "string"
+                },
+                "dieuKien": {
+                  "type": "string"
+                },
+                "nguon": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "lyDo": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "yKienWco": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "hs": {
+                  "type": "string"
+                },
+                "thuTuTrongMa": {
+                  "type": "integer"
+                },
+                "namThongQua": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "moTa": {
+                  "type": "string"
+                },
+                "doTinCay": {
+                  "type": "string",
+                  "enum": [
+                    "CHAC",
+                    "SUY_LUAN"
+                  ]
+                },
+                "daSoatAnh": {
+                  "type": "boolean"
+                },
+                "nguon": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "yKienWcoConLai": {
+            "type": "integer"
+          },
+          "yKienWcoDayDu": {
+            "type": "boolean",
+            "description": "false = danh sách có thể chưa đủ (ý kiến chưa đối chiếu được mã/số in bị loại) — đừng hiểu là \"mã này chỉ có chừng đó ý kiến\""
+          },
+          "ghiChu": {
+            "type": "string"
+          }
+        }
+      },
       "GirDetermination": {
         "type": "object",
         "properties": {
@@ -1210,6 +1308,9 @@
                     },
                     "canCuPhapLy": {
                       "$ref": "#/components/schemas/CanCuPhapLy"
+                    },
+                    "soTay": {
+                      "$ref": "#/components/schemas/SoTay"
                     },
                     "residualAdvisory": {
                       "type": "object"

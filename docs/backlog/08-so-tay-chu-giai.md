@@ -12,7 +12,8 @@
 | 1d. Ý kiến WCO (#196) nối vào sổ tay: mục `yKienWco`, 430 ý kiến ở 97 nhóm (đợt 1: 25 nhóm hay gặp nhất, 93 ý kiến, phủ 42,5 % tờ khai; đợt 2: 337 ý kiến còn lại trong các nhóm đã có sổ tay); nguyên văn ở kho riêng, công khai chỉ có mã/số hiệu/năm/mô tả tự viết/dấu vết | ✅ (chưa soát ảnh trang gốc — `daSoatAnh:false`) |
 | 1b. 1.076 nhóm còn lại — 180 lô xếp theo ưu tiên ([so-tay-lo.csv](../giao-viec/so-tay-lo.csv)); lô 8 đạt phủ 95 % | ⬜ |
 | 2. Chạy khô các cổng trên 113 kết quả | ⬜ |
-| 3. Nối `lib/engine-loop.js` | ⬜ |
+| 3a. Nối sổ tay vào phản hồi ở **chế độ cố vấn** (`lib/so-tay-runtime.js`: `soTay.canGiaiTrinh` = kết cục C kiểu *nghi*, `soTay.yKienWco`; không đổi mã/trạng thái/prompt; tắt bằng `HS_SOTAY_RUNTIME=false`) | ✅ 10/10/2026 |
+| 3b. Nối vào *quyết định*: kết cục A–D, rút gọn prompt vòng 2, đo token/"sai mà không cờ" | ⬜ cần bước 2 (113 kết quả ở .120) + bench LLM |
 | 4. Dựng đủ 1.269 nhóm | ⬜ |
 | 5. Vòng sửa | ⬜ |
 

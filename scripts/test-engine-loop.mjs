@@ -148,5 +148,20 @@ check('vòng 1 lỗi tạm thời → nextAction RETRY', r.nextAction?.type === 
   micMod.micLookup = savedMic;
 }
 
+// ── Sổ tay (chế độ CỐ VẤN, #196/bước 3): đính vào phản hồi, KHÔNG đổi mã/trạng thái/cờ/lượt gọi AI ──
+{
+  const SOCKET = { tenHang: '86型墙壁暗装电源插座带开关五孔面板家用', nameZh: '86型墙壁暗装电源插座带开关五孔面板家用', specs: '额定电流: 10A; 额定电压: 250V' };
+  const steps = () => [R1_SOCKET, { decision: 'CHOT', hs: '85366932', confidence: 80, reason: 'ổ cắm', basis: [{ stream: 'SAN_PHAM', claim: 'ổ cắm 10A', evidence: '额定电流: 10A' }], conditions: [], alternatives: [], questions: [] }];
+  const strip = (o) => JSON.stringify({ status: o.status, results: o.results, review: o.review, nextAction: o.nextAction, missing: o.missing, candidates: o.candidates, resolver: o.resolver });
+  const on = await run(SOCKET, steps()); const callsOn = calls.length;
+  process.env.HS_SOTAY_RUNTIME = 'false';
+  const off = await run(SOCKET, steps()); const callsOff = calls.length;
+  delete process.env.HS_SOTAY_RUNTIME;
+  check('sổ tay bật: phản hồi có khối soTay (nhóm 8536, chế độ CỐ VẤN)', on.soTay?.trangThai === 'CO_SO_TAY' && on.soTay.nhom === '8536' && on.soTay.cheDo === 'CO_VAN', JSON.stringify(on.soTay)?.slice(0, 200));
+  check('sổ tay tắt khẩn cấp: không có khối soTay', off.soTay === undefined);
+  check('BẤT BIẾN: bật/tắt sổ tay → cùng mã, cùng trạng thái, cùng cờ, cùng ứng viên, cùng số lượt gọi AI', strip(on) === strip(off) && callsOn === callsOff, `${callsOn}/${callsOff}`);
+  check('prompt vòng 2 không chứa dữ liệu sổ tay (chưa đổi prompt)', !/yKienWco|canGiaiTrinh|wco-op\./.test(calls.map((c) => c.user).join('\n')));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
