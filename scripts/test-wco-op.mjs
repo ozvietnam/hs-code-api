@@ -9,7 +9,8 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
-import { segment, validate, fixOcrId } from './wco-op-parse.mjs';
+import { segment, validate, fixOcrId, DEFAULT_CODE_ONLY_REGEX } from './wco-op-parse.mjs';
+import { skeleton, shapeOf, findLabels } from './wco-op-skeleton.mjs';
 
 const require = createRequire(import.meta.url);
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -68,6 +69,33 @@ assert('OCR: chỉ sửa khi mã tồn tại trong bảng WCO', fx('8999.99/1 In
 assert('OCR: câu chữ thường không bị biến thành mã', fx('Soil.04/1 is a word').fixed === false);
 const segFix = segment(L(1, '85l7.62/1  Invented', 'Text body of the invented opinion one.', '8S23.5l/1  Invented two', 'Text body two.'), { known });
 assert('segment nhận mã đã sửa OCR và ghi báo cáo', segFix.opinions.map((o) => o.id).join() === '851762/1,852351/1' && segFix.ocrFixed.length === 2, JSON.stringify(segFix.opinions.map((o) => o.id)));
+
+// 2c. Bản gốc chỉ ghi mã (không "/n") + dòng nhãn "Adoption : năm"
+const noSlash = [
+  ...L(5, 'Preface line one', 'Preface line two'),
+  ...L(5, '3802.90', 'Invented activated product description line.', 'Adoption : 2014', 'Application of GIRs 1 and 6 (invented).'),
+  ...L(6, 'Cross reference line follows, see below:', '3802.90 appears here as a quoted code at line start', 'More body text of the first opinion.'),
+  ...L(6, '3802.90', 'Second invented opinion for the same code.', 'Adoption : 2016', 'Application of GIR 1.'),
+  ...L(7, '3808.59', 'Third invented opinion.', 'Adoption : 2018'),
+];
+const nsOpts = { idRegex: DEFAULT_CODE_ONLY_REGEX, inferOrd: true, confirm: '^Adoption', confirmWithin: 4 };
+const ns = segment(noSlash.map((x) => ({ ...x })), nsOpts);
+assert('không có "/n": nhận mã đầu dòng + xác nhận bằng nhãn, 3 ý kiến', ns.opinions.map((o) => o.id).join() === '380290/1,380290/2,380859/1', JSON.stringify(ns.opinions.map((o) => o.id)));
+assert('thứ tự suy ra được đánh dấu ordInferred', ns.opinions.every((o) => o.ordInferred === true));
+assert('mã dẫn chiếu giữa thân (không có Adoption ngay sau) bị loại vì chưa xác nhận', ns.rejectedUnconfirmed.length >= 1 && ns.opinions[0].text.includes('quoted code'), ns.rejectedUnconfirmed);
+assert('đọc năm Adoption và "GIRs 1 and 6"', ns.opinions[0].adoption === 2014 && ns.opinions[0].girMentioned?.[0] === '1 and 6' && ns.opinions[1].adoption === 2016);
+assert('không bật --infer-ord thì mã trần không thành ý kiến', segment(noSlash.map((x) => ({ ...x }))).opinions.length === 0);
+assert('regex mặc định vẫn nhận "8517.62/4" khi bật infer', segment(L(1, '8517.62/4 x', 'Adoption : 2020'), { idRegex: '^\\s*(\\d{4}\\.\\d{2})\\s*\\/\\s*(\\d{1,3})', inferOrd: true }).opinions[0]?.ord === 4);
+
+// 2d. Khung xương: chỉ lộ hình dạng + nhãn mẫu lặp lại, không lộ chữ nội dung
+const sk = [];
+for (let i = 0; i < 10; i++) sk.push(...L(1 + i, '3802.90', `Secretword${i} invented body that must never leak`, `Adoption : 20${10 + i}`, 'Application of GIR 1.'));
+const rep = skeleton(sk.map((x) => ({ ...x, x: 40, s: 9 })), { around: 'Adoption', show: 2, ctx: 3 });
+assert('khung xương: nhận nhãn "Adoption" lặp ≥ 8 lần', rep.labels.Adoption === 10 && findLabels(sk).Application === undefined, rep.labels);
+assert('khung xương: hình dạng dòng mã là 9999.99', rep.codeLineShapes['9999.99'] === 10, rep.codeLineShapes);
+assert('khung xương: không rò chữ nội dung', !JSON.stringify(rep).includes('Secretword') && !JSON.stringify(rep).includes('invented'), JSON.stringify(rep).slice(0, 200));
+assert('khung xương: cửa sổ quanh nhãn có hình dạng, giữ nguyên nhãn mẫu', rep.windows.length === 2 && rep.windows[0].lines.some((l) => l.shape.startsWith('Adoption')), rep.windows[0]);
+assert('shapeOf: chữ→a, số→9', shapeOf('Ab12 x') === 'aa99 a');
 
 // 3. validate
 const wcoCodes = { six: new Set(['851762', '852351']), four: new Set(['2106']) };

@@ -54,6 +54,21 @@ OCR không tuyệt đối, nên code đã xử lý:
   được người soát đối chiếu với ảnh trang gốc (số trang `pdfPage` có trong `opinions.json`) trước khi nạp; máy chỉ chứng minh được
   "khớp chữ OCR", không chứng minh được "khớp tờ giấy".
 
+## Định dạng thật của bản scan (10/10/2026, OCR 16 trang thử)
+OCR tốt (nhiễu 0,0006; hai cột 16/16). Nhưng mã đầu ý kiến hiện dạng **`3802.90` / `3808.59` — không có `/n`** — kèm dòng `Adoption : <năm>` và
+`Application of GIRs 1 and 6 (…)`. Regex mặc định (`NNNN.NN/n`) vì thế ra 0 ý kiến. Cách chỉnh, theo thứ tự:
+
+1. **Xem khung xương** (an toàn dán gửi, không có chữ nội dung): `node scripts/wco-op-skeleton.mjs --around=Adoption`. In nhãn mẫu lặp lại,
+   hình dạng dòng mã và hình dạng các dòng quanh nhãn `Adoption` (chữ → `a`, số → `9`) — đủ thấy thứ tự mã → tên hàng → … → `Adoption`.
+2. **Tách với mã trần**: `node scripts/wco-op-parse.mjs --infer-ord --confirm='^Adoption' --confirm-within=25`.
+   - `--infer-ord`: nhận dòng bắt đầu bằng `NNNN.NN` (không theo sau `/`); thứ tự trong cùng mã **suy theo thứ tự xuất hiện**, đánh dấu `ordInferred`.
+   - `--confirm`: ứng viên chỉ là đầu ý kiến nếu nhãn (ở đây `Adoption`) xuất hiện trong N dòng kế tiếp **trước mã đầu dòng tiếp theo** — loại mã
+     gặp đầu dòng trong phần dẫn chiếu. Nếu `Adoption` đứng CUỐI ý kiến (sau mã) thì cổng này sẽ loại nhầm: xem khung xương rồi đổi nhãn/khoảng.
+3. Đọc `parse-report.json`: `ordInferred`, `rejectedUnconfirmed` (mã bị loại vì thiếu nhãn), `rejectedBackward`, `issues.*`, `withAdoption`.
+
+**Số hiệu chính thức:** nếu bản gốc không đánh số từng ý kiến thì `ordInferred` ≠ số hiệu. Phản hồi API (`canCuPhapLy`) khi đó chỉ trỏ **mã HS + trang bản PDF**,
+không bày thứ tự suy ra như một số hiệu. Nếu bản gốc có số hiệu ở chỗ khác (vd dòng riêng), chỉnh `--id-regex` để bắt nó.
+
 ## Dùng sau khi có `opinions.json`
 `lib/wco-op.js`: `get`, `byHs`, `quoteInOpinion` (máy kiểm câu trích, cùng cách chuẩn hoá với sổ tay), `parseSourceId`
 (`wco-op.<hs>.<thứ tự>`). Thiếu kho riêng thì mọi hàm trả rỗng, CI và bản công khai chạy bình thường.
