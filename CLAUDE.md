@@ -89,7 +89,7 @@ tests/             # Test fixtures
 
 ## Rule bất biến
 
-1. **Privacy data** — KHÔNG bao giờ commit `data/oz-export/*.{xlsx,csv,jsonl}` (gitignored). Đây là tờ khai cũ Oz có thông tin khách hàng.
+1. **Privacy data** — KHÔNG bao giờ commit `data/oz-export/*.{xlsx,csv,jsonl}` (gitignored). Đây là tờ khai cũ Oz có thông tin khách hàng. Tương tự `data/wco-op/*` (Tuyển tập ý kiến phân loại WCO, bản quyền WCO, chỉ README được commit — #196).
 2. **Bearer auth** — mặc định KÍN. Mọi thứ quản trị và ghi dữ liệu phải `requireAuth(req, res)` từ `lib/auth.js`. **Ngoại lệ do CEO chốt 09/10/2026:** 4 endpoint LLM (`suggest`, `describe`, `classify`, `match`) mở công khai KHÔNG giới hạn qua `requireAuthOrPublicLlm` (`lib/public-llm.js`; mỗi lượt tốn tiền LLM thật; đóng khẩn cấp bằng env `HS_PUBLIC_LLM=false`). Không mở thêm endpoint LLM khác (`extract-specs`, `declaration-sheet`) theo cơ chế này nếu CEO chưa chốt. Nhóm tra cứu chỉ đọc dữ liệu tĩnh thì mở công khai qua `requireAuthUnlessPublic(...)` — **allowlist tường minh** ở `lib/public-access.js`. Thêm resource mới vào `dataset.js` thì nó mặc định KÍN; muốn mở phải khai có ý thức và `scripts/test-public-access.mjs` phải xanh. Quên khai = mất tính năng, quên chặn = lộ dữ liệu; luôn chọn hướng sai an toàn.
 3. **CORS** — luôn `setCors(res)` + `handleOptions(req, res)` ở đầu handler.
 4. **camelCase response** — chuẩn shape camelCase cho ERP, dùng `lib/tax-mapper.js`.
