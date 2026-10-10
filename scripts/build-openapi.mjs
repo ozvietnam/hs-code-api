@@ -459,7 +459,12 @@ const paths = {
         '[LOW_CONFIDENCE, FEATURE_CONFLICT, ENGINE_TIMEOUT, LLM_REJECTED], RESOLVED_BY_TABLE, NO_CANDIDATES). ' +
         'Nhận nguyên tiêu đề Taobao tiếng Trung (`queryUnderstanding`). Trả `results[]` (mã 8 hoặc 6 số), ' +
         '`missingStructured[]` (trường bắt buộc còn thiếu theo nhóm 4 số, câu hỏi VI + ZH), `originAssessment`, ' +
-        '`girRulesApplied[]` (có `basis`), `llmRejectedCodes` khi AI trả mã không có trong biểu thuế.',
+        '`girRulesApplied[]` (có `basis`), `llmRejectedCodes` khi AI trả mã không có trong biểu thuế. ' +
+        '`dossier.declarationOptions[]` (≤ 4, 10/10/2026): bảng phương án khai cho chuyên viên — `{hs, nameVi, kind: CHON|CUNG_NHOM|' +
+        'THEO_VAT_LIEU|KHAC, canCuVi, dieuKienVi, ruiRo: THAP|VUA|CAO, ruiRoVi, thue{mfn, acftaCn (null khi CN bị loại trừ), ' +
+        'acftaNoteVi, vat}, coChinhSach{level, lineVi}, khuyenNghi}`; đúng một phương án `khuyenNghi=true` (mã máy chọn). ' +
+        'THEO_VAT_LIEU = đường 73.26/76.16/39.26… cho bộ phận/tấm/vỏ — luôn liệt kê kèm rủi ro theo Chú giải 2 Phần XV/XVI/XVII ' +
+        '(bộ phận nhận dạng được cho máy/xe phải xếp theo máy/xe), không phải gợi ý khai. Động cơ cũ: chỉ CHON + CUNG_NHOM + THEO_VAT_LIEU.',
       requestBody: CLASSIFY_REQUEST,
       errors: { 400: 'Thiếu tenHang', 502: 'Lỗi phân loại' },
     }),
