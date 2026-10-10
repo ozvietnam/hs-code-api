@@ -17,6 +17,7 @@ const check = (n, c, d) => { c ? (pass++, console.log(`PASS ${n}`)) : (fail++, c
 const lb = require('../lib/legal-basis.js');
 const { dataPath } = require('../lib/data-paths.js');
 const wcoOp = require('../lib/wco-op.js');
+const stRuntime = require('../lib/so-tay-runtime.js');
 
 // ── cite ──
 check('cite: điều khoản lạ → ném lỗi (không có trích dẫn tự do)', (() => { try { lb.cite('99.9'); return false; } catch { return true; } })());
@@ -58,7 +59,18 @@ check('6.1.d: có khớp → CO_TIEN_LE_KHOP + số tiền lệ', d({ precedentC
 const w = (hs) => lb.canCuPhapLy({ status: 'REVIEW', topHs: hs }).cacBuoc[1].taiLieu[1];
 process.env.HS_WCO_OP_FILE = path.join(dataPath('wco-op'), 'khong-ton-tai.json'); // không phụ thuộc kho thật (có thể có trên máy chạy test)
 wcoOp.reset();
-check('6.1.b: chưa nạp kho → CHUA_TRA_CUU (nói thật)', w('85176200').trangThai === 'CHUA_TRA_CUU');
+// Sổ tay giả trong thư mục tạm (không phụ thuộc sổ tay thật): mã 8517.62 có 1 ý kiến, mã 0101.21 không có sổ tay.
+fs.mkdirSync(dataPath('so-tay'), { recursive: true });
+fs.writeFileSync(dataPath('so-tay', '8517.json'), JSON.stringify({ nhom: '8517', yKienWcoDayDu: false, yKienWco: [
+  { hs: '851762', thuTuTrongMa: 4, namThongQua: 2014, moTa: 'Thiết bị mẫu → mã 8517.62', nguon: 'wco-op.851762.4', doTinCay: 'CHAC', daSoatAnh: false, dauVet: '0123456789abcdef' },
+] }));
+stRuntime.reset();
+check('6.1.b: chưa nạp kho, mã KHÔNG có sổ tay → CHUA_TRA_CUU (nói thật)', w('01012100').trangThai === 'CHUA_TRA_CUU');
+{
+  const sb = w('85176200');
+  check('6.1.b: chưa nạp kho nhưng sổ tay có → CO_Y_KIEN, nguonTraCuu=SO_TAY, chỉ con trỏ, ghi rõ danh sách có thể chưa đủ',
+    sb.trangThai === 'CO_Y_KIEN' && sb.nguonTraCuu === 'SO_TAY' && sb.yKien.length === 1 && sb.yKien[0].thuTuTrongMa === 4 && sb.yKien[0].doTinCay === 'CHAC' && !('moTa' in sb.yKien[0]) && /chưa đủ/.test(sb.ghiChu), sb);
+}
 fs.mkdirSync(dataPath('wco-op'), { recursive: true });
 process.env.HS_WCO_OP_FILE = dataPath('wco-op', 'opinions.json');
 fs.writeFileSync(dataPath('wco-op', 'opinions.json'), JSON.stringify([

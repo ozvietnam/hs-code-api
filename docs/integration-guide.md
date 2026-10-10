@@ -89,6 +89,13 @@ curl -X POST https://.../api/suggest \
 - Trạng thái từng tài liệu nói đúng điều hệ thống biết: `CO_NOI_DUNG` (kệ sách có nội dung cho mã này), `KHONG_CO_DU_LIEU_CHO_MA_NAY`, `CHUA_TRA_CUU` (kho chưa nạp, hiện là ý kiến phân loại WCO), `CHUA_TRA_CUU_TRONG_LUOT_NAY`, `CO_TIEN_LE_KHOP`/`KHONG_CO_TIEN_LE_KHOP`. Ý kiến phân loại WCO chỉ trả số hiệu, không trả nguyên văn (bản quyền).
 - `dieuKhoan` chứa nguyên văn từng điều được dẫn (mỗi điều một lần); các bước chỉ nêu id. Đây là điều luật để tham khảo, **không phải quyết định phân loại**; người khai chịu trách nhiệm về mã số khai.
 
+**`soTay` — sổ tay chú giải, chế độ cố vấn.** Có trong `/api/suggest` và `/api/classify` khi nhóm của mã đã chọn có sổ tay (152 nhóm; nhóm chưa có → `trangThai: CHUA_CO_SO_TAY_CHO_NHOM`).
+- **Không đổi** mã đã chọn, trạng thái, cờ hay prompt: chỉ đính thêm thông tin. Hệ thống ERP cứ xử lý như cũ; hiển thị `soTay` cho chuyên viên nếu muốn.
+- `canGiaiTrinh[]` = máy **nghi**, chưa kết luận: sổ tay nhóm đã chọn loại trừ đích danh một nhóm khác mà nhóm đó cũng đang là ứng viên. Chưa đo tỉ lệ báo oan — đừng dùng làm cổng chặn tự động.
+- `yKienWco[]` = tóm tắt **tự viết** của ý kiến phân loại WCO cho đúng mã (6 số), kèm số thứ tự in, năm thông qua, `doTinCay` (`CHAC` | `SUY_LUAN`). Không phải nguyên văn; `daSoatAnh:false` = chưa đối chiếu ảnh trang gốc; `yKienWcoDayDu:false` = danh sách có thể chưa đủ.
+- Máy chủ prod không giữ kho WCO gốc; `canCuPhapLy` mục 6.1.b khi đó lấy con trỏ từ sổ tay (`nguonTraCuu: "SO_TAY"`).
+- Tắt khẩn cấp: env `HS_SOTAY_RUNTIME=false`.
+
 ### ⚠️ Thay đổi hợp đồng `girRulesApplied` (2026-09)
 
 Trước đây trường này chứa **checklist dữ kiện theo chương**, dù tên gọi là "GIR
