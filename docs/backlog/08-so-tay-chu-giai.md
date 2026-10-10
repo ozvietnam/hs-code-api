@@ -10,8 +10,8 @@
 | 1a. Vòng 2: 60 nhóm hay gặp nhất trong tờ khai thật + soát độc lập cả hai vòng | ✅ 120 nhóm, 4.109 mục (#169) |
 | 1c. Đợt 1 theo tần suất (#194): 32 nhóm, lô xếp theo ưu tiên | ✅ 152 nhóm, 4.930 mục, phủ 90,1 % tờ khai thật (#198) |
 | 1b. 1.076 nhóm còn lại — 180 lô xếp theo ưu tiên ([so-tay-lo.csv](../giao-viec/so-tay-lo.csv)); lô 8 đạt phủ 95 % | ⬜ |
-| 2. Chạy khô các cổng trên 113 kết quả | ⬜ |
-| 3. Nối `lib/engine-loop.js` | ⬜ |
+| 2. Chạy khô các cổng (không AI) | ✅ 09/10 — trên 763 tờ khai giữ riêng thay cho 113 kết quả lưu trên .120; 4 cổng bật oan ≤ 3,2 % với 152 nhóm (mục "Trạng thái 09/10") |
+| 3. Nối `lib/engine-loop.js` | ⚙️ 09/10 — đã nối sau công tắc `HS_SO_TAY` (mặc định tắt); **chờ đo bằng AI thật trên .120** (#193) rồi mới bật prod |
 | 4. Dựng đủ 1.269 nhóm | ⬜ |
 | 5. Vòng sửa | ⬜ |
 
@@ -108,6 +108,47 @@ vật liệu/cơ chế trong từ điển**. Mọi suy luận nghĩa còn lại 
 
 Ngân sách: vòng 2 mặc định ≤ 4.000 token/món. Chú giải dài chỉ vào khi C bật hoặc vòng 1 xin
 đích danh điều khoản.
+
+## Trạng thái 09/10/2026 — bước 2 + 3
+
+**Mã:** `lib/so-tay-gates.js` (cổng + khối sổ tay cho gói vòng 2) · nối trong `lib/engine-loop.js` · chạy khô
+`npm run so-tay:dry-run` (`scripts/so-tay-dry-run.mjs`, kết quả `data/so-tay/bao-cao/chay-kho.json`) · test
+`scripts/test-so-tay-gates.mjs`, `scripts/test-engine-loop-so-tay.mjs` (AI giả).
+
+**Bốn cổng (kết cục C — máy nghi, không chặn):**
+
+| Cổng | Bật khi | Bật oan trên mã ĐÚNG (152 nhóm sổ tay → 651 mẫu có sổ tay; lượt đầu 120 nhóm/601 mẫu cho kết quả gần như nhau) |
+|---|---|---|
+| `SO_TAY_LOAI_TRU` | Sổ tay nhóm đã chọn loại trừ đích danh một nhóm khác, và **tên hàng** (danh từ đầu, trước định ngữ) chứa tên hàng của mệnh đề loại trừ | **3,2 %** (theo pool ứng viên: 16,9 % — không đạt; cả hai: 0,8 %) |
+| `SO_TAY_NGUONG` | Điều kiện vào nhóm có ngưỡng khối lượng / điện áp / dung tích mà mọi số đọc được trong hồ sơ đều trái ngưỡng (trừ ngoại lệ "khối lượng bất kỳ") | 0,2 % |
+| `SO_TAY_BO_PHAN` | Vòng 1 đọc ra hàng là **bộ phận** mà dòng chọn là hàng hoàn chỉnh, trong nhóm có dòng bộ phận riêng | 0,8 % |
+| `SO_TAY_DONG8` | Chọn dòng "Loại khác" trong khi tên một dòng cụ thể cùng phân nhóm 6 số nằm trong tên hàng | 0,9 % |
+
+Bài học chạy khô (đã sửa trước khi nối): khớp mọi mảnh của câu → bật oan cao ("Dây cáp điện **có đầu nối**" khớp
+loại trừ "đầu nối … → 85.36"); chỉ khớp **danh từ đầu** của cả hai phía. "… and parts thereof" (7323.93) không phải dòng
+bộ phận. Chiều ngược của cổng bộ phận (hàng "hoàn chỉnh" mà chọn dòng bộ phận) bỏ: bánh xe đẩy vừa là món hoàn chỉnh
+vừa là bộ phận. Giới hạn của số đo: mã của luồng không AI sai quá xa (đúng nhóm 37,9 %) nên số **bật đúng** chưa nói
+được gì — phải đo bằng AI thật.
+
+**Luồng trong động cơ** (`HS_SO_TAY=gates`): sau khi qua mọi chốt chặn, cổng sổ tay nghi → **một** lượt giải trình:
+câu hỏi + đúng đoạn luật có nguồn (≤ 1.500 ký tự), máy bổ sung chú giải + dòng biểu thuế của nhóm đích. AI đổi mã
+→ `CHANGED`; giữ mã và mọi mục có câu trích **có thật trong hồ sơ gốc** → `EXPLAINED` (lưu `soTay.giaiTrinh[]` — hồ sơ
+giải trình); không → `UNRESOLVED` + cờ `review` "Sổ tay chú giải: …"; hết giờ → `NO_TIME` + cờ. Không hỏi lần hai.
+`HS_SO_TAY=full` thêm: nhóm đã có sổ tay thì gói vòng 2 dùng sổ tay thay chú giải thô bị cắt. `HS_SO_TAY_LOAI_TRU=
+pool+phrase` đổi cổng loại trừ sang chế độ chặt hơn. Phản hồi có khối `soTay {mode, outcome, challenges[], giaiTrinh[]}`.
+
+Sửa kèm: nhóm máy chủ bổ sung (chốt chặn "nhóm chưa kiểm", nhóm đích sổ tay) không còn bị cắt khỏi trần 4 nhóm của gói.
+
+**Việc tiếp theo — cần máy có khoá AI (.120):**
+```bash
+for m in off gates full; do
+  HS_CLASSIFY_ENGINE=loop LOOP_PROVIDER=gemini HS_SO_TAY=$m \
+    node scripts/bench-classify-llm.mjs --engine=classify --set=gold --limit=80 --out=/tmp/so-tay-$m.json
+done   # chạy mỗi chế độ ≥ 2 lần (chênh giữa 2 lần ±5–7 điểm)
+```
+Nghiệm thu bước 3 (giữ nguyên tiêu chí gốc): `wrongUnflagged` không tăng; đúng 8 số không giảm quá sai số;
+`avgPromptCharsR2` của `full` giảm so với `off`; `soTay.changedHarmful` ≤ `soTay.changedHelpful`. Đạt → đặt
+`HS_SO_TAY` trong `hs.env` rồi `deploy-safe.sh main --force`.
 
 ## Liên quan
 - Bước 2 G-2 (bóc mệnh đề loại trừ thành cấu trúc) và bước 5 D-3 (định tuyến 6 số): sổ tay là

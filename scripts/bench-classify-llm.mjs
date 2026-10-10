@@ -11,6 +11,8 @@
 // scripts/bench-matrix.mjs). Ghi log/ml-log rơi vào thư mục tạm (test-isolate-data).
 // Chỉ số: đúng 2/4/6/8 số (mã đầu + trong 3 mã), riêng nhóm "Loại khác" (D-6), tự tin ≥80 mà sai,
 // và "sai mà KHÔNG bị gắn cờ xem lại" — chỉ tiêu chính (CEO 06/10/2026).
+// Sổ tay chú giải (bước 8): chạy cùng bộ mẫu với HS_SO_TAY=off | gates | full (HS_CLASSIFY_ENGINE=loop) rồi so;
+// `soTay` đếm kết cục lượt giải trình, đổi mã có lợi/có hại; `avgPromptCharsR2` = cỡ gói vòng 2 (token ≈ ký tự/3).
 import { readFileSync, writeFileSync } from 'fs';
 import { createRequire } from 'module';
 import { dirname, join } from 'path';
@@ -25,6 +27,14 @@ process.env.HS_API_TOKEN = process.env.HS_API_TOKEN || 'bench-token';
 await import(join(here, 'test-isolate-data.mjs'));
 const require = createRequire(join(libDir, 'x.js'));
 const engine = argv.engine || 'classify';
+// Đo cỡ gói vòng 2 (động cơ hai vòng): bọc callLLMJson TRƯỚC khi nạp classify (engine-loop lấy hàm lúc nạp).
+const llmTierMod = require(join(libDir, 'llm-tier.js'));
+const promptStat = { r2Calls: 0, r2Chars: 0 };
+const origCall = llmTierMod.callLLMJson;
+llmTierMod.callLLMJson = async (system, user, o) => {
+  if (String(system).startsWith('VÒNG 2')) { promptStat.r2Calls += 1; promptStat.r2Chars += String(user || '').length; }
+  return origCall(system, user, o);
+};
 const conc = Number(argv.concurrency || 3);
 const DEPTHS = [2, 4, 6, 8];
 // Một lượt treo (lời gọi không bao giờ trả về) không được làm mất cả đợt đo.
@@ -81,6 +91,7 @@ async function worker() {
         id: it.id, truth: it.truth, top: rs[0]?.hs || null, conf: rs[0]?.confidence ?? null, top3: rs.slice(0, 3).map((r) => r.hs),
         status, nMissing: missing.length, grounded: rs[0]?.grounded ?? null, basis: rs[0]?.basis || [],
         rounds: res.engine?.rounds ?? null, decision: res.dossier?.decision ?? null, gates: res.engine?.gates ?? null, reviewNeeded: res.review?.needed ?? null, micHeading: res.dossier?.mic?.consensus?.heading4 ?? null,
+        soTay: res.soTay ? { outcome: res.soTay.outcome, gates: (res.soTay.challenges || []).map((c) => c.gate), from: res.soTay.from || null, to: res.soTay.to || null } : null,
         reason: String(rs[0]?.reason || '').slice(0, 200), ms: Date.now() - t,
       });
     } catch (e) {
@@ -106,6 +117,21 @@ const sum = {
   byStatus: Object.fromEntries([...new Set(out.map((o) => o.status || (o.error ? 'ERROR' : 'NONE')))].map((s) => [s, out.filter((o) => (o.status || (o.error ? 'ERROR' : 'NONE')) === s).length])),
   avgRounds: out.some((o) => o.rounds) ? Math.round(10 * out.reduce((a, o) => a + (o.rounds || 0), 0) / Math.max(1, out.filter((o) => o.rounds).length)) / 10 : null,
   flagged: pct(out.filter((o) => o.reviewNeeded === true || (o.status && o.status !== 'REVIEW' && o.status !== 'RESOLVED_BY_TABLE')).length, out.length),
+  avgPromptCharsR2: promptStat.r2Calls ? Math.round(promptStat.r2Chars / promptStat.r2Calls) : null,
+  soTay: (() => {
+    const st = ok.filter((o) => o.soTay);
+    if (!st.length) return null;
+    const fired = st.filter((o) => o.soTay.outcome !== 'NONE');
+    const changed = fired.filter((o) => o.soTay.outcome === 'CHANGED');
+    return {
+      items: st.length, fired: fired.length,
+      byOutcome: Object.fromEntries([...new Set(fired.map((o) => o.soTay.outcome))].map((k) => [k, fired.filter((o) => o.soTay.outcome === k).length])),
+      byGate: Object.fromEntries([...new Set(fired.flatMap((o) => o.soTay.gates))].map((k) => [k, fired.filter((o) => o.soTay.gates.includes(k)).length])),
+      changedHelpful: changed.filter((o) => o.soTay.from !== o.truth && o.soTay.to === o.truth).length,
+      changedHarmful: changed.filter((o) => o.soTay.from === o.truth && o.soTay.to !== o.truth).length,
+      firedOnCorrect: fired.filter((o) => o.soTay.from === o.truth).length,
+    };
+  })(),
   wrongUnflagged: pct(ok.filter((o) => !(o.reviewNeeded === true || (o.status && o.status !== 'REVIEW' && o.status !== 'RESOLVED_BY_TABLE')) && !(o.truth.length === 8 ? o.top === o.truth : at(o, 4))).length, ok.length),
 };
 process.stderr.write('\n');
