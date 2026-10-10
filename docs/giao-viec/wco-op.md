@@ -27,6 +27,27 @@ không phải số hiệu chính thức.
 
 Đường PDF → `pages-en.jsonl` → `wco-op-parse.mjs` bên dưới giữ làm phương án dự phòng (và để đối chiếu số lượng).
 
+## ⚠ Lỗi dữ liệu đã phát hiện (10/10/2026): bản markdown làm RƠI tiêu đề mã
+Ba ảnh trang gốc (Section XVI/13, /37, /39) cho thấy mỗi mã in thành một **dải xanh đậm chữ trắng** (`8471.30`, `8466.10`…). OCR đọc chữ trắng trên nền xanh kém nên nhiều dải
+không thành `### mã`. Hệ quả: các ý kiến của mã mất tiêu đề bị **dồn vào mã đứng trước** (vd "Telescopic arm" của 8466.10 nằm ở `844230/13`; "Palm-size electronic organizer" của 8471.30
+nằm ở `847050/2`). Số ý kiến (1.036) vẫn khớp vì đếm theo dòng `Adoption`, nhưng **gán mã thì sai ở nhiều chỗ**:
+- 105 mã có số in sẵn của ý kiến quay về 1 giữa chừng (226 chỗ) → **461/1036 ý kiến nghi gán sai mã** (`headingSuspect`);
+- 76/136 câu "See also Opinions 8467.19/1…" trỏ tới mã không có ý kiến nào trong dữ liệu (đúng vì mã đó bị mất tiêu đề).
+
+**Chốt an toàn (đã có trong code):** ý kiến `headingSuspect` không bao giờ được trả cho API; khi kho còn ý kiến loại này, mã nào không có ý kiến đáng tin sẽ ghi
+`CHUA_TRA_CUU_DAY_DU`, **không** ghi "không có ý kiến". Chưa dùng bất kỳ ý kiến nào làm nguồn sổ tay cho tới khi khôi phục xong.
+
+**Khôi phục (tất định, không AI)** — đọc mã thẳng từ ẢNH dải xanh rồi ghép với markdown:
+```bash
+# 1. trên server có bản scan + tesseract:  pip install pymupdf numpy pillow
+python3 scripts/wco-op-banners.py --pdf data/wco-op/WCO-Compendium-2022.pdf --crops data/wco-op/banner-crops   # → data/wco-op/banners.jsonl (~30 phút)
+# 2. ghép mã vào ý kiến (ghi opinions.json, bản gốc lưu opinions.raw.json):
+node scripts/wco-op-fix-headings.mjs --banners=data/wco-op/banners.jsonl
+```
+Thử riêng một ảnh trang: `python3 scripts/wco-op-banners.py --image trang.png --detect-only` (đếm dải). Trên 3 ảnh mẫu: tìm đúng 4/4 dải và ảnh dải sau khi đảo màu đọc rõ.
+`heading-fix-report.json`: `resolved` (đoạn khôi phục), `unresolved[]` (lý do: thiếu ranh giới, nhiều tổ hợp, dải không đọc được), `headingSuspectAfter`, `ordPrintedMismatchAfter` (phải gần 0:
+số in sẵn chính là số hiệu dùng trong câu "See also …/n", nên khi mã đúng thì thứ tự theo vị trí = số in sẵn).
+
 ## Chạy (trên server có repo + Python 3 + `pip install pymupdf`)
 ```bash
 # 0. thử vài trang để xem bố cục (in cấu trúc, chữ cắt 14 ký tự — không ghi tệp)

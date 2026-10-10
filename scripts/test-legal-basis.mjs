@@ -68,6 +68,18 @@ wcoOp.reset();
 const wb = w('85176200');
 check('6.1.b: có ý kiến → CO_Y_KIEN + con trỏ (mã, vị trí, năm), không nguyên văn', wb.trangThai === 'CO_Y_KIEN' && wb.yKien.length === 1 && wb.yKien[0].hs6 === '851762' && wb.yKien[0].thuTuTrongMa === 4 && wb.yKien[0].namThongQua === 2014 && /không phải số hiệu chính thức/.test(wb.ghiChu), wb);
 check('6.1.b: KHÔNG rò nguyên văn WCO ra phản hồi', !JSON.stringify(lb.canCuPhapLy({ status: 'REVIEW', topHs: '85176200' })).includes('SECRET'));
+fs.writeFileSync(dataPath('wco-op', 'opinions.json'), JSON.stringify([
+  { id: '851762/4', hs: '851762', level: 6, ord: 4, adoption: 2014, text: 'x' },
+  { id: '844230/13', hs: '844230', level: 6, ord: 13, adoption: 2015, headingSuspect: true, text: 'invented opinion filed under a wrong code' },
+]));
+wcoOp.reset();
+const wsus = lb.canCuPhapLy({ status: 'REVIEW', topHs: '84423000' }).cacBuoc[1].taiLieu[1];
+check('6.1.b: ý kiến gán sai mã KHÔNG bị trích; kho chưa đủ → CHUA_TRA_CUU_DAY_DU (không nói "không có")', wsus.trangThai === 'CHUA_TRA_CUU_DAY_DU' && !wsus.yKien, wsus);
+check('6.1.b: mã có ý kiến đáng tin vẫn được trích khi kho chưa đủ', w('85176200').trangThai === 'CO_Y_KIEN');
+fs.writeFileSync(dataPath('wco-op', 'opinions.json'), JSON.stringify([
+  { id: '851762/4', hs: '851762', level: 6, ord: 4, adoption: 2014, text: 'SECRET invented wco text that must never be returned' },
+]));
+wcoOp.reset();
 check('6.1.b: mã không có ý kiến → KHONG_CO_Y_KIEN_CHO_MA_NAY', w('84713000').trangThai === 'KHONG_CO_Y_KIEN_CHO_MA_NAY');
 check('6.1.b: chỉ có mã 4 số → không tra theo 6 số', w('8517').trangThai === 'KHONG_CO_Y_KIEN_CHO_MA_NAY');
 fs.rmSync(dataPath('wco-op'), { recursive: true, force: true });
