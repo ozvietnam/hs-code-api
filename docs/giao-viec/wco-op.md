@@ -163,3 +163,10 @@ Sau khi soát độc lập bản dịch (56 mục) phát hiện 12 mục có mã
 - thứ tự > 1 mà không đọc được số in (thứ tự chỉ suy ra từ vị trí).
 
 Kết quả trên kho hiện có: 1.038 ý kiến, 910 có mã/thứ tự đã qua cổng, 128 bị loại khỏi API. Chạy lại cổng sau mỗi lần sửa mã: `node scripts/wco-op-ordcheck.mjs` (tự lưu `opinions.pre-ordcheck.json`).
+
+## Đợt nạp sổ tay thứ hai (10/10/2026)
+Mọi ý kiến **sạch** (qua cổng mã/thứ tự, số in đọc được và khớp) nằm trong nhóm đã có sổ tay đều đã nạp: 430 mục ở 97 nhóm. Soát nội dung độc lập (6 người, 336 mục): 0 lỗi nặng, 11 mô tả nhẹ đã sửa.
+Bài học: chuỗi mã sau dòng `Adoption` (vd `3921.90 or 3926.90`) là **biển tiêu đề của ý kiến kế tiếp** lẫn vào cuối ý kiến này, không phải kết luận của nó — người soạn đã hiểu nhầm một lần (392099/1), đã soạn lại.
+Chưa nạp được:
+- 476 ý kiến sạch nằm ở 234 nhóm CHƯA có sổ tay: không tạo file sổ tay rỗng (`gen-so-tay-lo` coi nhóm có file là đã làm xong và sẽ bỏ nhóm khỏi hàng đợi dựng); nạp khi nhóm được dựng (lô 1b) bằng `scripts/wco-op-so-tay.mjs`. `build-so-tay` đã được sửa để GIỮ `yKienWco` của file cũ khi dựng lại nhóm (`carryOverYKienWco`).
+- 392390/3 (cụt giữa câu) và 129 ý kiến bị loại khỏi API: xem [wco-op-ocr-lai.md](wco-op-ocr-lai.md).
