@@ -1,4 +1,4 @@
-// Test /api/classify đọc bảng quyết định NHÓM 4 số đã verified (B3.6, 06/10/2026): ổ cắm gia dụng
+// Test /api/classify đọc bảng quyết định NHÓM 4 số đã verified (B3.6, 06/10/2026; 8708 duyệt 10/10/2026): ổ cắm gia dụng
 // AI xếp 8536.69.32 (dòng cho cáp đồng trục/mạch in) → bảng 8536 chỉnh về 8536.69.92 trong cùng phân
 // nhóm 6 số. Không được nhảy sang phân nhóm khác. LLM giả lập — không mạng.
 import './test-isolate-data.mjs';
@@ -53,36 +53,71 @@ girReply = { results: [{ hs: '85366932', confidence: 85, reason: 'x' }], missing
 const r3 = await classify(SOCKET, { decisionTables: false });
 check('opts.decisionTables=false → giữ mã AI', r3.results?.[0]?.hs === '85366932');
 
-// ── Bảng CHƯA duyệt (8708, CEO 10/10/2026): chỉ TƯ VẤN, không ghi đè ─────────────────────────────
-// Ca thật Tmall: tấm ốp bảo vệ gầm / pin thép mangan Leapmotor A10 — động cơ chốt 8708.29.95 (thân xe) với bằng chứng
-// yếu; bảng 8708 chỉ về 8708.99.62 (bộ phận khung gầm, xe 87.03) → cảnh báo + review, mã AI giữ nguyên.
+// ── Bảng 8708 ĐÃ duyệt (CEO duyệt 10/10/2026): ghi đè như 8536 ─────────────────────────────────
+// Ca thật Tmall: tấm ốp bảo vệ gầm / pin thép mangan Leapmotor A10 — AI chốt 8708.29.95 (thân xe) với bằng chứng
+// yếu; bảng 8708 về 8708.99.62 (bộ phận khung gầm, xe 87.03) → ghi đè, mã AI giữ làm gợi ý phụ.
 const GUARD = { tenHang: 'Tấm ốp bảo vệ gầm xe, bảo vệ pin bằng thép mangan cho Leapmotor A10/A05', nameZh: '26款零跑A10纯电版底盘护板电池护板原车孔位专用零跑A05车底护板', specs: '材质: 锰钢; 商品品类: 车底防护板' };
 understood = { tenHangVi: 'tấm bảo vệ gầm xe bảo vệ pin', banChat: 'tấm thép mangan ốp dưới gầm xe điện, bắt theo lỗ vít nguyên bản' };
 headingsReply = ['8708'];
 girReply = { results: [{ hs: '87082995', confidence: 80, reason: 'bộ phận thân xe loại khác' }], missing: [] };
 const g1 = await classify(GUARD, {});
-check('底盘护板 87.03: AI ra 8708.29.95 → bảng 8708 CHƯA duyệt KHÔNG ghi đè (mã đầu giữ 87082995)', g1.results?.[0]?.hs === '87082995' && !g1.results[0].resolverOverride, JSON.stringify(g1.results?.map((r) => r.hs)));
-check('… nhưng có decisionAdvisory → 87089962, tableVerified=false, agrees=false', g1.decisionAdvisory?.hs === '87089962' && g1.decisionAdvisory.tableVerified === false && g1.decisionAdvisory.agrees === false, JSON.stringify(g1.decisionAdvisory));
-check('… cảnh báo decision-table-advisory nêu rõ "chưa CEO duyệt — chỉ tư vấn"', (g1.antiPatternWarnings || []).some((w) => w.id === 'decision-table-advisory' && /chưa CEO duyệt/.test(w.description)), JSON.stringify(g1.antiPatternWarnings));
-check('… mã bảng có mặt trong results để chuyên viên chọn (source decision-table-advisory)', g1.results.some((r, i) => i > 0 && r.hs === '87089962' && r.source === 'decision-table-advisory'));
-check('… review.needed=true với lý do từ bảng (gói đối chiếu vòng 2, kể cả khi cửa đối chiếu tắt)', g1.review?.needed === true && g1.review.reasons.some((x) => /Bảng quyết định nhóm 8708/.test(x)), JSON.stringify(g1.review));
-check('… trạng thái KHÔNG phải RESOLVED_BY_TABLE (không đội lốt bảng đã duyệt)', g1.status !== 'RESOLVED_BY_TABLE' && g1.resolver?.status !== 'RESOLVED', g1.status);
-check('… cặp mã dễ nhầm 8708.29.95 ↔ 8708.99.62 bật confusionWarning kèm tiêu chí phân biệt', g1.confusionWarning?.confusedWith?.includes('87089962') && g1.confusionWarning.discriminatorsVi?.length >= 3, JSON.stringify(g1.confusionWarning));
+check('底盘护板 87.03: AI ra 8708.29.95 → bảng 8708 ĐÃ duyệt ghi đè về 8708.99.62', g1.results?.[0]?.hs === '87089962' && g1.results[0].resolverOverride?.from === '87082995', JSON.stringify(g1.results?.map((r) => r.hs)));
+check('… trạng thái RESOLVED_BY_TABLE, không có decisionAdvisory', g1.status === 'RESOLVED_BY_TABLE' && g1.decisionAdvisory == null, g1.status);
+check('… không cảnh báo decision-table-advisory', !(g1.antiPatternWarnings || []).some((w) => w.id === 'decision-table-advisory'));
+check('… mã AI cũ 87082995 giữ làm gợi ý phụ', g1.results.some((r, i) => i > 0 && r.hs === '87082995'));
 
-// 翼子板 (vè xe): AI ra 8708.99.62 (khung gầm) → bảng chỉ về 8708.29 (thân xe) → tư vấn ngược chiều, vẫn không đổi mã
+// 翼子板 (vè xe): AI ra 8708.99.62 (khung gầm) → bảng chỉnh về 8708.29 (thân xe)
 const FENDER = { tenHang: 'Vè xe trước (tai xe) ô tô', nameZh: '汽车翼子板 前翼子板 适用于本田', specs: '材质: 钢' };
 understood = { tenHangVi: 'vè xe trước ô tô', banChat: 'tấm thân vỏ ngoài bên hông bánh trước' };
 girReply = { results: [{ hs: '87089962', confidence: 75, reason: 'bộ phận khung gầm' }], missing: [] };
 const g2 = await classify(FENDER, {});
-check('翼子板: AI ra 8708.99.62 → bảng tư vấn 8708.29.xx, mã AI giữ nguyên', g2.results?.[0]?.hs === '87089962' && g2.decisionAdvisory?.hs?.startsWith('870829') && g2.decisionAdvisory.agrees === false, JSON.stringify(g2.decisionAdvisory));
-// AI đã chọn đúng mã bảng → agrees, không cảnh báo, không review vì bảng
+check('翼子板: AI ra 8708.99.62 → bảng ghi đè về 8708.29.xx', g2.results?.[0]?.hs?.startsWith('870829') && g2.results[0].resolverOverride?.from === '87089962', JSON.stringify(g2.results?.map((r) => r.hs)));
+// AI đã chọn đúng mã bảng → không ghi đè, không cảnh báo
 girReply = { results: [{ hs: '87089962', confidence: 80, reason: 'bộ phận khung gầm' }], missing: [] };
 understood = { tenHangVi: 'tấm bảo vệ gầm xe bảo vệ pin', banChat: 'tấm thép mangan ốp dưới gầm xe điện' };
 const g3 = await classify(GUARD, {});
-check('AI chọn đúng mã bảng → decisionAdvisory.agrees=true, không cảnh báo, không review vì bảng', g3.decisionAdvisory?.agrees === true && !(g3.antiPatternWarnings || []).some((w) => w.id === 'decision-table-advisory') && !(g3.review?.reasons || []).some((x) => /Bảng quyết định/.test(x)), JSON.stringify(g3.review));
+check('AI chọn đúng mã bảng → giữ 87089962, không resolverOverride', g3.results?.[0]?.hs === '87089962' && !g3.results[0].resolverOverride, JSON.stringify(g3.results?.map((r) => r.hs)));
 girReply = { results: [{ hs: '87082995', confidence: 80, reason: 'x' }], missing: [] };
 const g4 = await classify(GUARD, { decisionTables: false });
-check('opts.decisionTables=false → không có decisionAdvisory', g4.decisionAdvisory == null && g4.results?.[0]?.hs === '87082995');
+check('opts.decisionTables=false → giữ mã AI, không decisionAdvisory', g4.decisionAdvisory == null && g4.results?.[0]?.hs === '87082995');
+
+// ── Chế độ TƯ VẤN (bảng CHƯA duyệt): giả lập bằng bản sao 8708 verified=false trong thư mục dữ liệu cách ly ──
+// Giữ phủ test cho đường advisory (B3.7) dù bảng thật đã duyệt: dataReadPath ưu tiên HS_DATA_DIR khi file tồn tại.
+{
+  const fs = require('fs');
+  const path = require('path');
+  const dt = require('../lib/decision-tables');
+  const src = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/decision-tables/8708.json'), 'utf8'));
+  const clone = { ...src, verified: false, needsCeoReview: true };
+  const dir = path.join(process.env.HS_DATA_DIR, 'decision-tables');
+  fs.mkdirSync(dir, { recursive: true });
+  const file = path.join(dir, '8708.json');
+  fs.writeFileSync(file, JSON.stringify(clone));
+  dt._reset();
+  try {
+    understood = { tenHangVi: 'tấm bảo vệ gầm xe bảo vệ pin', banChat: 'tấm thép mangan ốp dưới gầm xe điện, bắt theo lỗ vít nguyên bản' };
+    girReply = { results: [{ hs: '87082995', confidence: 80, reason: 'bộ phận thân xe loại khác' }], missing: [] };
+    const a1 = await classify(GUARD, {});
+    check('[chưa duyệt] AI ra 8708.29.95 → KHÔNG ghi đè (mã đầu giữ 87082995)', a1.results?.[0]?.hs === '87082995' && !a1.results[0].resolverOverride, JSON.stringify(a1.results?.map((r) => r.hs)));
+    check('[chưa duyệt] có decisionAdvisory → 87089962, tableVerified=false, agrees=false', a1.decisionAdvisory?.hs === '87089962' && a1.decisionAdvisory.tableVerified === false && a1.decisionAdvisory.agrees === false, JSON.stringify(a1.decisionAdvisory));
+    check('[chưa duyệt] cảnh báo decision-table-advisory nêu rõ "chưa CEO duyệt — chỉ tư vấn"', (a1.antiPatternWarnings || []).some((w) => w.id === 'decision-table-advisory' && /chưa CEO duyệt/.test(w.description)), JSON.stringify(a1.antiPatternWarnings));
+    check('[chưa duyệt] mã bảng có mặt trong results (source decision-table-advisory)', a1.results.some((r, i) => i > 0 && r.hs === '87089962' && r.source === 'decision-table-advisory'));
+    check('[chưa duyệt] review.needed=true với lý do từ bảng', a1.review?.needed === true && a1.review.reasons.some((x) => /Bảng quyết định nhóm 8708/.test(x)), JSON.stringify(a1.review));
+    check('[chưa duyệt] trạng thái KHÔNG phải RESOLVED_BY_TABLE', a1.status !== 'RESOLVED_BY_TABLE' && a1.resolver?.status !== 'RESOLVED', a1.status);
+    check('[chưa duyệt] cặp mã dễ nhầm 8708.29.95 ↔ 8708.99.62 bật confusionWarning', a1.confusionWarning?.confusedWith?.includes('87089962') && a1.confusionWarning.discriminatorsVi?.length >= 3, JSON.stringify(a1.confusionWarning));
+    understood = { tenHangVi: 'vè xe trước ô tô', banChat: 'tấm thân vỏ ngoài bên hông bánh trước' };
+    girReply = { results: [{ hs: '87089962', confidence: 75, reason: 'bộ phận khung gầm' }], missing: [] };
+    const a2 = await classify(FENDER, {});
+    check('[chưa duyệt] 翼子板: AI ra 8708.99.62 → bảng tư vấn 8708.29.xx, mã AI giữ nguyên', a2.results?.[0]?.hs === '87089962' && a2.decisionAdvisory?.hs?.startsWith('870829') && a2.decisionAdvisory.agrees === false, JSON.stringify(a2.decisionAdvisory));
+    girReply = { results: [{ hs: '87089962', confidence: 80, reason: 'bộ phận khung gầm' }], missing: [] };
+    understood = { tenHangVi: 'tấm bảo vệ gầm xe bảo vệ pin', banChat: 'tấm thép mangan ốp dưới gầm xe điện' };
+    const a3 = await classify(GUARD, {});
+    check('[chưa duyệt] AI chọn đúng mã bảng → agrees=true, không cảnh báo, không review vì bảng', a3.decisionAdvisory?.agrees === true && !(a3.antiPatternWarnings || []).some((w) => w.id === 'decision-table-advisory') && !(a3.review?.reasons || []).some((x) => /Bảng quyết định/.test(x)), JSON.stringify(a3.review));
+  } finally {
+    fs.rmSync(file, { force: true });
+    dt._reset();
+  }
+}
 
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
