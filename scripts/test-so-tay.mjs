@@ -2,7 +2,11 @@
 /** lib/so-tay.js: máy kiểm từng mục sổ tay bằng nguồn nguyên văn thật (nhóm 8509). */
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const { sourcesFor, verifySoTay, checkItem, isLoaiKhac } = require('../lib/so-tay.js');
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+const { sourcesFor, verifySoTay, checkItem, isLoaiKhac, checkYKienWco, fingerprint, resetWcoCache } = require('../lib/so-tay.js');
+const wcoOpLib = require('../lib/wco-op.js');
 
 let passed = 0;
 let failed = 0;
@@ -49,6 +53,42 @@ assert('phanBiet có hoi nhắc mã phân nhóm/WCO bị loại',
   why('phanBiet', { hoi: 'Là máy công suất ≤ 750 W (WCO 850131)?', neuCo: '85013110', neuKhong: '85013120', nguon: 'ch85.chuong', trich: 'Các loại máy khác có khối lượng không quá 20 kg' }) === 'hoi-nhac-ma-phan-nhom');
 assert('loaiTru mà câu nguồn chỉ nói "thường thuộc nhóm" bị loại',
   checkItem('loaiTru', { dieuKien: 'Máy hút bụi', sangNhom: '8508', nguon: 'nhom8509.nhom', trich: 'Máy hút bụi thường thuộc nhóm 85.08' }, { 'nhom8509.nhom': 'Máy hút bụi thường thuộc nhóm 85.08' }, '8509') === 'loai-tru-chi-la-thuong');
+
+// ── yKienWco (#196): ý kiến WCO trong kho RIÊNG; dùng kho giả để test, không đụng kho thật ──
+{
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'sotay-wco-'));
+  const opF = path.join(tmp, 'opinions.json'); const trF = path.join(tmp, 'trich.json');
+  const TEXT = 'A hand-held electric fan with a plastic housing, 12 cm in diameter and a rechargeable battery.\n\nAdoption: 2019';
+  fs.writeFileSync(opF, JSON.stringify([
+    { id: '841451/1', hs: '841451', ord: 1, adoption: 2019, text: TEXT, line: 10 },
+    { id: '841451/2', hs: '841451', ord: 2, adoption: 2019, text: TEXT, line: 20, headingSuspect: true },
+  ]));
+  const TRICH = 'A hand-held electric fan with a plastic housing';
+  fs.writeFileSync(trF, JSON.stringify({ 'wco-op.841451.1': TRICH, 'wco-op.841451.2': TRICH }));
+  const item = { hs: '841451', thuTuTrongMa: 1, namThongQua: 2019, moTa: 'Quạt điện cầm tay vỏ plastic, đường kính 12 cm, có pin sạc → mã 8414.51', nguon: 'wco-op.841451.1', dauVet: fingerprint(TRICH), doTinCay: 'CHAC', daSoatAnh: false };
+
+  // 1) không có kho riêng (như CI): chỉ kiểm hình dạng, nhưng đòi đối chiếu thì báo lỗi
+  process.env.HS_WCO_OP_FILE = path.join(tmp, 'khong-co.json'); wcoOpLib.reset(); resetWcoCache();
+  assert('yKienWco: thiếu kho riêng → chỉ kiểm hình dạng, đạt', checkYKienWco(item, '8414') === null);
+  assert('yKienWco: thiếu kho riêng mà đòi đối chiếu → lỗi (không bao giờ coi là đã đối chiếu)', checkYKienWco(item, '8414', { doiChieu: true }) === 'khong-co-kho-rieng-de-doi-chieu');
+  assert('yKienWco: hình dạng sai bị loại dù thiếu kho', /nguon-khong-khop/.test(checkYKienWco({ ...item, nguon: 'wco-op.841451.2' }, '8414')) && checkYKienWco({ ...item, moTa: 'ngắn' }, '8414') === 'mo-ta-do-dai' && checkYKienWco({ ...item, moTa: 'Quạt điện cầm tay vỏ plastic, đường kính 12 cm không nêu mã' }, '8414') === 'mo-ta-khong-neu-ma' && /hs-khong-thuoc-nhom/.test(checkYKienWco(item, '8415')));
+
+  // 2) có kho riêng: đối chiếu thật
+  process.env.HS_WCO_OP_FILE = opF; process.env.HS_WCO_TRICH_FILE = trF; wcoOpLib.reset(); resetWcoCache();
+  assert('yKienWco: có kho riêng, mục đúng → đạt', checkYKienWco(item, '8414', { doiChieu: true }) === null);
+  assert('yKienWco: năm không khớp kho → loại', checkYKienWco({ ...item, namThongQua: 2020 }, '8414') === 'nam-khong-khop-kho');
+  assert('yKienWco: ý kiến chưa qua cổng mã (headingSuspect) → loại', checkYKienWco({ ...item, thuTuTrongMa: 2, nguon: 'wco-op.841451.2' }, '8414') === 'y-kien-chua-qua-cong-ma');
+  assert('yKienWco: ý kiến không có trong kho → loại', checkYKienWco({ ...item, thuTuTrongMa: 9, nguon: 'wco-op.841451.9' }, '8414') === 'y-kien-khong-co-trong-kho');
+  assert('yKienWco: dấu vết không khớp câu trích → loại', checkYKienWco({ ...item, dauVet: '0000000000000000' }, '8414') === 'dau-vet-khong-khop-trich');
+  fs.writeFileSync(trF, JSON.stringify({ 'wco-op.841451.1': 'A foldable fan made of paper and bamboo' })); resetWcoCache();
+  assert('yKienWco: câu trích không có trong ý kiến → loại', checkYKienWco(item, '8414') === 'trich-khong-co-trong-y-kien');
+  fs.writeFileSync(trF, JSON.stringify({ 'wco-op.841451.1': TRICH })); resetWcoCache();
+  assert('yKienWco: số trong moTa không có trong ý kiến → loại', /mo-ta-co-so-khong-co-trong-y-kien:15/.test(checkYKienWco({ ...item, moTa: 'Quạt điện cầm tay vỏ plastic, đường kính 15 cm → mã 8414.51' }, '8414')));
+  const vr = verifySoTay({ yKienWco: [item, { ...item, namThongQua: 2020 }] }, '8414', {}, { doiChieuWco: true });
+  assert('verifySoTay: giữ mục yKienWco đạt, loại mục sai, ghi nguồn', vr.dat === 1 && vr.tong === 2 && vr.soTay.yKienWco.length === 1 && vr.soTay.dungTuNguon.includes('wco-op.841451.1') && vr.loai[0].kind === 'yKienWco');
+  delete process.env.HS_WCO_OP_FILE; delete process.env.HS_WCO_TRICH_FILE; wcoOpLib.reset(); resetWcoCache();
+  fs.rmSync(tmp, { recursive: true, force: true });
+}
 
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);

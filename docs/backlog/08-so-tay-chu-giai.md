@@ -9,6 +9,7 @@
 | 1. Dựng ~60 nhóm — `data/so-tay/` | ✅ 60 nhóm (#168), sau đó soát độc lập lại 09/10 — bài học: [so-tay-giao-ngoai](../giao-viec/so-tay-giao-ngoai.md) |
 | 1a. Vòng 2: 60 nhóm hay gặp nhất trong tờ khai thật + soát độc lập cả hai vòng | ✅ 120 nhóm, 4.109 mục (#169) |
 | 1c. Đợt 1 theo tần suất (#194): 32 nhóm, lô xếp theo ưu tiên | ✅ 152 nhóm, 4.930 mục, phủ 90,1 % tờ khai thật (#198) |
+| 1d. Ý kiến WCO (#196) nối vào sổ tay: mục `yKienWco`, đợt 1 = 25 nhóm hay gặp nhất, 93 ý kiến (phủ 42,5 % tờ khai); nguyên văn ở kho riêng, công khai chỉ có mã/số hiệu/năm/mô tả tự viết/dấu vết | ✅ (chưa soát ảnh trang gốc — `daSoatAnh:false`) |
 | 1b. 1.076 nhóm còn lại — 180 lô xếp theo ưu tiên ([so-tay-lo.csv](../giao-viec/so-tay-lo.csv)); lô 8 đạt phủ 95 % | ⬜ |
 | 2. Chạy khô các cổng trên 113 kết quả | ⬜ |
 | 3. Nối `lib/engine-loop.js` | ⬜ |
