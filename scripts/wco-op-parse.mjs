@@ -3,6 +3,9 @@
  * Bước 2 của #196: pages-en.jsonl (chữ tiếng Anh đã gạn bởi wco-op-extract.py) → opinions.json, mỗi ý kiến phân loại một mục.
  *
  *   node scripts/wco-op-parse.mjs [--in=data/wco-op] [--out=data/wco-op] [--id-regex='…'] [--require-bold]
+ *   Nhãn đứng CUỐI ý kiến (bản WCO: "Adoption : năm" rồi tới mã ý kiến kế):  --anchor-after='^Adoption' [--anchor-gap=2]
+ *       (mã ngay sau nhãn là đầu ý kiến; ý kiến đầu tiên của tài liệu không có nhãn đứng trước nên bị bỏ — xem prefaceLines;
+ *        withoutAdoption = ý kiến thiếu nhãn cuối → nghi gộp nhầm hai ý kiến hoặc OCR mất dòng)
  *   Bản KHÔNG ghi "/n" sau mã:  --infer-ord --confirm='^Adoption' [--confirm-within=20]  (thứ tự suy ra, ghi ordInferred)
  *
  * Ra (đều trong data/wco-op/, bị .gitignore chặn; script từ chối ghi nếu thư mục ra không bị ignore):
@@ -59,9 +62,11 @@ const codeDigits = (c) => c.replace(/\D/g, '');
  * Tách ý kiến từ danh sách dòng. lines: [{t, pdfPage, b}] theo thứ tự đọc.
  * @returns {{opinions: object[], rejectedBackward: string[], rejectedUnconfirmed: string[], preface: number, ocrFixed: string[]}}
  */
-export function segment(lines, { idRegex = DEFAULT_ID_REGEX, requireBold = false, known = null, inferOrd = false, confirm = null, confirmWithin = 20 } = {}) {
+export function segment(lines, { idRegex = DEFAULT_ID_REGEX, requireBold = false, known = null, inferOrd = false, confirm = null, confirmWithin = 20, anchorAfter = null, anchorGap = 2 } = {}) {
   const re = new RegExp(idRegex);
   const confirmRe = confirm ? new RegExp(confirm, 'i') : null;
+  const anchorRe = anchorAfter ? new RegExp(anchorAfter, 'i') : null; // nhãn đứng CUỐI ý kiến (vd "Adoption : 2014"): mã ngay sau nó là đầu ý kiến kế tiếp
+  const outOfOrder = [];
   const starts = [];
   const rejectedBackward = [];
   const rejectedUnconfirmed = [];
@@ -79,6 +84,18 @@ export function segment(lines, { idRegex = DEFAULT_ID_REGEX, requireBold = false
     // Bản gốc không ghi "/n" (vd chỉ "3808.59"): thứ tự suy theo thứ tự xuất hiện của cùng mã — KHÔNG phải số hiệu chính thức.
     const explicit = m[2] !== undefined && m[2] !== '';
     if (!explicit && !inferOrd) return;
+    if (anchorRe) {
+      // Neo sau nhãn: chỉ nhận mã nằm ngay sau dòng nhãn (cách tối đa anchorGap dòng). Mã dẫn chiếu giữa thân bài không đứng sau nhãn nên tự bị loại.
+      const prev = lines.slice(Math.max(0, i - anchorGap), i);
+      if (!prev.some((x) => anchorRe.test(x.t))) { rejectedUnconfirmed.push(`${hs}@p${l.pdfPage}`); return; }
+      const ordA = (perHs.get(hs) || 0) + 1;
+      // Neo đã đủ mạnh: mã lùi so với ý kiến trước nhiều khả năng là OCR đọc sai chữ số → giữ và báo, KHÔNG loại.
+      if (last.hs && hs.localeCompare(last.hs) < 0) outOfOrder.push(`${hs}@p${l.pdfPage}`);
+      last = { hs, ord: ordA };
+      perHs.set(hs, ordA);
+      starts.push({ i, hs, ord: ordA, ordInferred: true });
+      return;
+    }
     // Cổng xác nhận: ứng viên chỉ là đầu ý kiến nếu một dòng nhãn mẫu (vd "Adoption") xuất hiện trong N dòng kế tiếp
     // — loại mã gặp đầu dòng trong phần dẫn chiếu.
     if (confirmRe) {
@@ -111,7 +128,7 @@ export function segment(lines, { idRegex = DEFAULT_ID_REGEX, requireBold = false
     if (gir.length) o.girMentioned = [...new Set(gir)];
     return o;
   });
-  return { opinions, rejectedBackward, rejectedUnconfirmed, ocrFixed, preface: starts.length ? starts[0].i : lines.length };
+  return { opinions, rejectedBackward, rejectedUnconfirmed, outOfOrder, ocrFixed, preface: starts.length ? starts[0].i : lines.length };
 }
 
 function loadWcoCodes() {
@@ -165,9 +182,10 @@ function main() {
     for (const l of p.lines) lines.push({ t: l.t, b: l.b, pdfPage: p.pdfPage });
   }
   const wco = loadWcoCodes();
-  const { opinions, rejectedBackward, rejectedUnconfirmed, ocrFixed, preface } = segment(lines, {
-    idRegex: arg('id-regex', flag('infer-ord') ? DEFAULT_CODE_ONLY_REGEX : DEFAULT_ID_REGEX), requireBold: flag('require-bold'), known: wco,
-    inferOrd: flag('infer-ord'), confirm: arg('confirm'), confirmWithin: Number(arg('confirm-within', 20)),
+  const { opinions, rejectedBackward, rejectedUnconfirmed, outOfOrder, ocrFixed, preface } = segment(lines, {
+    idRegex: arg('id-regex', flag('infer-ord') || arg('anchor-after') ? DEFAULT_CODE_ONLY_REGEX : DEFAULT_ID_REGEX), requireBold: flag('require-bold'), known: wco,
+    inferOrd: flag('infer-ord') || Boolean(arg('anchor-after')), confirm: arg('confirm'), confirmWithin: Number(arg('confirm-within', 20)),
+    anchorAfter: arg('anchor-after'), anchorGap: Number(arg('anchor-gap', 2)),
   });
   const issues = validate(opinions, wco);
   const byChapter = {};
@@ -179,6 +197,8 @@ function main() {
     ocrFixedIds: { count: ocrFixed.length, pages: ocrFixed.slice(0, 50) },
     ordInferred: opinions.filter((o) => o.ordInferred).length, withAdoption: opinions.filter((o) => o.adoption).length,
     rejectedUnconfirmed: { count: rejectedUnconfirmed.length, first: rejectedUnconfirmed.slice(0, 30) },
+    outOfOrder: { count: outOfOrder.length, first: outOfOrder.slice(0, 30) },
+    withoutAdoption: { count: opinions.filter((o) => !o.adoption).length, first: opinions.filter((o) => !o.adoption).map((o) => `${o.id}@p${o.pages[0]}`).slice(0, 30) },
     byChapter, rejectedBackward: { count: rejectedBackward.length, first: rejectedBackward.slice(0, 30) },
     issues: Object.fromEntries(Object.entries(issues).map(([k, v]) => [k, { count: v.length, first: v.slice(0, 30) }])),
     wcoCodesChecked: !!wco,

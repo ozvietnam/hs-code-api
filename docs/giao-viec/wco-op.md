@@ -66,6 +66,19 @@ OCR tốt (nhiễu 0,0006; hai cột 16/16). Nhưng mã đầu ý kiến hiện 
      gặp đầu dòng trong phần dẫn chiếu. Nếu `Adoption` đứng CUỐI ý kiến (sau mã) thì cổng này sẽ loại nhầm: xem khung xương rồi đổi nhãn/khoảng.
 3. Đọc `parse-report.json`: `ordInferred`, `rejectedUnconfirmed` (mã bị loại vì thiếu nhãn), `rejectedBackward`, `issues.*`, `withAdoption`.
 
+### Cấu trúc thật (toàn bộ 706 trang, 10/10/2026): `Adoption` là dòng CUỐI ý kiến
+Kết quả `--infer-ord --confirm=^Adoption` trên cả cuốn: 134 ý kiến, **710 mã bị loại** — vì mã đứng ĐẦU ý kiến còn nhãn `Adoption : năm` ở CUỐI, mã kế tiếp ngay sau nhãn.
+Neo đúng là "mã ngay sau dòng nhãn":
+```bash
+node scripts/wco-op-parse.mjs --anchor-after='^Adoption' --anchor-gap=2
+```
+- Mã dẫn chiếu giữa thân bài không đứng sau nhãn nên tự bị loại (không cần đoán độ dài ý kiến).
+- Mã lùi so với ý kiến trước **được giữ** và báo `outOfOrder` (neo đã mạnh; lùi thường là OCR đọc sai chữ số) — soát tay danh sách đó.
+- `withoutAdoption` > 0: ý kiến thiếu nhãn cuối, nghi hai ý kiến bị gộp (OCR mất dòng `Adoption`) — thường đi cùng `issues.tooLong`.
+- `Adoption` xuất hiện cả ở cột Pháp; bản `pages-en.jsonl` chỉ nên có cột Anh, trừ vài trang đầu (bìa, mục lục) bị chấm ngôn ngữ nhầm — nằm trong `prefaceLines`.
+- Các dòng dạng `99.999/a`, `99.999/a/9` (hơn 450 dòng) có thể là số hiệu tài liệu WCO của từng ý kiến (khác với thứ tự suy ra). Soi chúng bằng
+  `node scripts/wco-op-skeleton.mjs --around='^\d{2}\.\d{3}/[A-Za-z]' --show=4` rồi báo em vị trí so với dòng mã; nếu đúng là số hiệu thì bắt nó thành `soHieu` để trích dẫn.
+
 **Số hiệu chính thức:** nếu bản gốc không đánh số từng ý kiến thì `ordInferred` ≠ số hiệu. Phản hồi API (`canCuPhapLy`) khi đó chỉ trỏ **mã HS + trang bản PDF**,
 không bày thứ tự suy ra như một số hiệu. Nếu bản gốc có số hiệu ở chỗ khác (vd dòng riêng), chỉnh `--id-regex` để bắt nó.
 
