@@ -554,5 +554,41 @@ check('describe thường vẫn chạy (degraded khi AI lỗi)', h2._s === 200 &
   check('extraction.filter: stats + dropped (lý do) + miscLabels; repairFilter có stats', r.json.extraction.filter?.source === 'heading' && r.json.extraction.filter.stats.specsIn === 10 && r.json.extraction.filter.dropped.some((d) => d.reason === 'NOISE') && Array.isArray(r.json.extraction.filter.miscLabels) && r.json.extraction.repairFilter?.stats, JSON.stringify(r.json.extraction));
 }
 
+// ── 10/10/2026: ô material của phiếu = gộp theo bộ phận như ECUS (ca giày cưới 6403.99.90: mũ da bò / đế cao su
+// mà ô material hiện "cao su" vì 鞋底材质 cũng rơi vào material qua từ điển) ──
+{
+  const { composeFromSheet, foldPartMaterials, mergePartMaterials } = await import('../lib/declaration-sheet.js').then((m) => m.default || m);
+  const F = (key, labelVi, valueVi, required = true, extra = {}) => ({ key, labelVi, valueVi, status: 'HAVE', required, source: 'SITE', evidence: { source: 'SITE', imageUrl: null, text: `${key} ev` }, method: 'DICTIONARY', confidence: 0.9, ...extra });
+  // 1. Phiếu thật qua buildDeclarationSheet: trang ghi 鞋面材质 牛皮 / 鞋底材质 橡胶 (từ điển đã rót 鞋底材质 → material
+  //    "cao su" như ca prod); AI dịch ô mũ/đế.
+  const saved = llmTier.callLLMJson;
+  llmTier.callLLMJson = async (system, user, o) => {
+    if (!system.includes('THÔNG SỐ SẢN PHẨM')) return saved(system, user, o);
+    return { json: { attributes: [
+      { key: 'upperMaterial', valueVi: 'da bò', sourceId: 'specs', evidenceText: '鞋面材质 牛皮' },
+      { key: 'soleMaterial', valueVi: 'cao su', sourceId: 'specs', evidenceText: '鞋底材质 橡胶' },
+    ] }, provider: 'stub', model: 'stub' };
+  };
+  const rsh = await buildDeclarationSheet({ titleZh: '婚鞋女新娘鞋水晶高跟鞋测试', specsZh: [{ key: '鞋面材质', value: '牛皮' }, { key: '鞋底材质', value: '橡胶' }, { key: '货号', value: 'WD-01' }], hsCode: '64039990' });
+  llmTier.callLLMJson = saved;
+  const m = rsh.json.fields.find((x) => x.key === 'material');
+  check('phiếu giày: material gộp "mũ giày: da bò; đế: cao su", MERGED_PARTS, parts[] có bằng chứng từng ô', m?.valueVi === 'mũ giày: da bò; đế: cao su' && m.method === 'MERGED_PARTS' && m.status === 'HAVE' && m.parts?.length === 2 && m.parts.every((p) => p.key && p.evidence?.text), JSON.stringify(m));
+  const dsh = rsh.json.description?.customsDescription || '';
+  check('ECUS giày: thành phần cùng chuỗi, không lặp "cao su" 2 lần, không dòng "chất liệu đế" riêng', rsh.json.description?.declaration?.thanhPhanCauTao === 'mũ giày: da bò; đế: cao su' && (dsh.match(/cao su/g) || []).length === 1 && !/chất liệu đế/i.test(dsh), dsh);
+  // 2. material đơn (không ô bộ phận) giữ nguyên; material khác hẳn bộ phận → "chính:" đứng đầu, cùng một hàm cho ECUS
+  const single = [F('material', 'Chất liệu', 'thép không gỉ'), F('modelNumber', 'Model', 'X1')];
+  foldPartMaterials(single);
+  const rSingle = composeFromSheet(single, [], { tenHang: 'Dao', thongSoKyThuat: [] }, { brandStatus: 'NO_BRAND' }, { productName: 'Dao', origin: 'Trung Quốc', condition: 'Mới 100%' });
+  const mixed = [F('upperMaterial', 'Chất liệu mũi giày', 'da bò'), F('soleMaterial', 'Chất liệu đế', 'cao su'), F('material', 'Chất liệu', 'vải')];
+  foldPartMaterials(mixed);
+  check('material đơn giữ nguyên (không parts); material khác bộ phận → "chính: vải; mũ giày: da bò; đế: cao su"', single[0].valueVi === 'thép không gỉ' && !single[0].parts && rSingle.declaration.thanhPhanCauTao === 'thép không gỉ' && mixed[2].valueVi === 'chính: vải; mũ giày: da bò; đế: cao su' && mixed[2].parts.length === 3 && mergePartMaterials({ valueVi: 'da' }, [['mũ giày', 'da bò']]) === 'mũ giày: da bò', JSON.stringify([single[0].valueVi, mixed[2].valueVi]));
+  // 3. ECUS không đổi: ô kính lão (material PC trùng tròng) → "tròng: PC; gọng: kim loại" như trước, dù qua fold hay không
+  const glasses = [F('lensMaterial', 'Chất liệu tròng kính', 'PC'), F('frameMaterial', 'Chất liệu gọng kính', 'kim loại'), F('material', 'Chất liệu / thành phần cấu tạo', 'PC'), F('modelNumber', 'Model', '603')];
+  const before = composeFromSheet(glasses.map((f) => ({ ...f })), [], { tenHang: 'Kính lão', thongSoKyThuat: [] }, { brandStatus: 'NO_BRAND' }, { productName: 'Kính', origin: 'Trung Quốc', condition: 'Mới 100%' });
+  foldPartMaterials(glasses);
+  const after = composeFromSheet(glasses, [], { tenHang: 'Kính lão', thongSoKyThuat: [] }, { brandStatus: 'NO_BRAND' }, { productName: 'Kính', origin: 'Trung Quốc', condition: 'Mới 100%' });
+  check('ECUS không đổi trước/sau fold: "tròng: PC; gọng: kim loại", cùng composed.text', before.declaration.thanhPhanCauTao === 'tròng: PC; gọng: kim loại' && after.declaration.thanhPhanCauTao === before.declaration.thanhPhanCauTao && after.composed.text === before.composed.text, JSON.stringify([before.composed.text, after.composed.text]));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
