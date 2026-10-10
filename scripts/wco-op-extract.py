@@ -148,6 +148,15 @@ def classify_page(lines, width):
     return 'single', kept, st
 
 
+NOISE_OK = re.compile(r"[A-Za-zÀ-ÿ0-9\s.,;:()\-/'\"%&\[\]°–—’“”]")
+
+
+def noise(lines):
+    """Tỉ lệ ký tự lạ trong các dòng giữ lại — OCR hỏng thường để lại ký hiệu rác."""
+    txt = ''.join(l['t'] for l in lines)
+    return 0.0 if not txt else 1 - len(NOISE_OK.findall(txt)) / len(txt)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--pdf', required=True)
@@ -201,7 +210,7 @@ def main():
                 print(f"  x={l['x0']:6.1f}-{l['x1']:6.1f} y={l['y0']:6.1f} s={l['s']:4.1f} {'B' if l['b'] else ' '} {lang_of(en, fr):7s} blk={l['blk']:<3d} {l['t'][:14]!r}")
         layout, kept, st = classify_page(body, p['w'])
         layouts[layout] += 1
-        report_pages.append([p['pn'], layout, len(kept), st['en'], st['fr'], st['neutral']])
+        report_pages.append([p['pn'], layout, len(kept), st['en'], st['fr'], st['neutral'], round(noise(kept), 3)])
         rows.append({'pdfPage': p['pn'], 'layout': layout,
                      'lines': [{'t': l['t'], 'x': round(l['x0']), 'y': round(l['y0']), 's': l['s'], 'b': l['b']} for l in kept]})
     if want:
@@ -223,7 +232,9 @@ def main():
         'keptLines': sum(r[2] for r in report_pages),
         'langLines': {'en': sum(r[3] for r in report_pages), 'fr': sum(r[4] for r in report_pages), 'neutral': sum(r[5] for r in report_pages)},
         'sparsePages': sparse[:200], 'unresolvedPages': [r[0] for r in report_pages if r[1] == 'two-col-unresolved'][:200],
-        'perPage_cols': ['pdfPage', 'layout', 'keptLines', 'enLines', 'frLines', 'neutralLines'], 'perPage': report_pages,
+        'noisyPages': [r[0] for r in report_pages if r[6] > 0.08][:300],
+        'avgNoise': round(sum(r[6] for r in report_pages) / max(1, len(report_pages)), 4),
+        'perPage_cols': ['pdfPage', 'layout', 'keptLines', 'enLines', 'frLines', 'neutralLines', 'noise'], 'perPage': report_pages,
     }
     with open(rp, 'w', encoding='utf-8') as f:
         json.dump(report, f, ensure_ascii=False)
