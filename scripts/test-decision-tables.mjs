@@ -84,6 +84,31 @@ console.log('\n== Chữ Hán: khớp theo chuỗi con (không có khoảng trắ
   check('ổ cắm kèm công tắc → GIR 3(b) đặc trưng là ổ cắm → 85366992', r.status === 'RESOLVED' && r.hs === '85366992');
 }
 
+console.log('\n== 8708: thân vỏ (8708.29) vs bộ phận bắt vào khung gầm (8708.99) — bảng CHƯA duyệt chỉ tư vấn ==');
+{
+  const t8708 = dt.loadTable('8708');
+  check('bảng 8708 chưa verified, có cờ needsCeoReview + proposedBy', t8708.verified === false && t8708.needsCeoReview === true && /CEO 10\/10\/2026/.test(t8708.proposedBy));
+  const zh = '26款零跑A10纯电版底盘护板电池护板原车孔位专用零跑A05车底护板';
+  const r = dt.resolveHeading('8708', { text: zh, parsed: parseCommodityQuery(zh) });
+  check('底盘护板/电池护板 (ốp gầm, bảo vệ pin) → chassisGuard → 87089962 (xe 87.03)', r.status === 'RESOLVED' && r.hs === '87089962' && r.factsUsed.partKind === 'chassisGuard', `${r.status} ${r.hs}`);
+  check('loại xe không ghi → giả định 87.03, ghi rõ factSources=assumed', r.factSources?.vehicleClass === 'assumed');
+  const r2 = dt.resolveHeading('8708', { text: zh, parsed: parseCommodityQuery(zh), facts: { vehicleClass: '8704' } });
+  check('cùng hàng, xe tải (facts) → 87089963', r2.status === 'RESOLVED' && r2.hs === '87089963');
+  const fender = dt.resolveHeading('8708', { text: '汽车翼子板 前翼子板', parsed: parseCommodityQuery('汽车翼子板 前翼子板') });
+  check('翼子板 (vè xe — tấm thân vỏ) → 8708.29', fender.status === 'RESOLVED' && fender.hs.startsWith('870829'), `${fender.status} ${fender.hs}`);
+  const adv = dt.adviseHeading('87082995', { text: zh, parsed: parseCommodityQuery(zh) }, { taxData });
+  check('adviseHeading: AI chọn 87082995 → tư vấn 87089962, agrees=false, nêu giả định vehicleClass', adv?.hs === '87089962' && adv.agrees === false && adv.assumedFacts.join() === 'vehicleClass' && /chưa CEO duyệt/.test(adv.noteVi), JSON.stringify(adv));
+  check('tư vấn không được đội lốt RULE_TABLE', adv?.tableVerified === false && adv.basis === 'HEURISTIC');
+  check('AI chọn đúng mã bảng → agrees=true', dt.adviseHeading('87089962', { text: zh, parsed: parseCommodityQuery(zh) })?.agrees === true);
+  check('mã AI khác nhóm 4 số → không tư vấn (bảng không kéo nhóm)', dt.adviseHeading('73269099', { text: zh }) === null);
+  check('bảng ĐÃ duyệt (8536) → adviseHeading null (đi đường override)', dt.adviseHeading('85366932', { text: '86型墙壁暗装电源插座带开关 10A' }) === null);
+  const shaped = dt.toResolverShape(r);
+  check('toResolverShape của bảng chưa duyệt vẫn tableVerified=false', shaped.tableVerified === false);
+  // {in:[…]} cho enum chữ — trước đây bị ép số → "unknown" → luật treo mãi.
+  const plug = dt.resolveHeading('8708', { text: 'nút xả két nước xe tải', parsed: parseCommodityQuery('nút xả két nước xe tải') });
+  check('điều kiện {in:[…]} trên enum chữ khớp được (nút xả két nước xe tải → 87089194)', plug.status === 'RESOLVED' && plug.hs === '87089194', `${plug.status} ${plug.hs}`);
+}
+
 console.log('\n== tests/decision-cases.json ==');
 {
   const cases = JSON.parse(readFileSync(join(ROOT, 'tests', 'decision-cases.json'), 'utf8')).cases;

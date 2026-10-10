@@ -73,6 +73,7 @@ const cases = [
   ['máy cắt laser fiber 1500W CNC', 'MT-016'],
   ['cảm biến tiệm cận cảm ứng Omron E2E', 'MT-028'],
   ['đồng hồ thông minh Huawei Watch', 'MT-005'],
+  ['tấm ốp bảo vệ gầm xe bảo vệ pin thép mangan Leapmotor A10', 'PT-13'],
 ];
 for (const [q, id] of cases) {
   const hits = cp.matchByText(q).map((h) => h.entry.id);
@@ -93,6 +94,10 @@ check('cảnh báo mang tiêu chí phân biệt + mã hai phía', high[0] && hig
 const info = cp.confusionAlertsFor('thiết bị không tên', ['84798939']);
 check('chỉ trùng mã DN hay khai (không khớp tên) → INFO, ≤ 3', info.every((a) => a.severity === 'INFO') && info.length <= 3, JSON.stringify(info.map((a) => a.id)));
 check('không cảnh báo khi không khớp gì', cp.confusionAlertsFor('cà phê rang xay', ['09012120']).length === 0);
+// CEO 10/10/2026: ốp gầm / bảo vệ pin bắt vào khung gầm — DN/AI hay khai 8708.29.95 (thân xe), đúng là 8708.99.6x
+const guard = cp.confusionAlertsFor('tấm ốp bảo vệ gầm xe bảo vệ pin Leapmotor', ['87082995']);
+check('ốp gầm + gợi ý đầu 8708.29.95 → PT-13 HIGH, tiêu chí "gắn vào đâu"', guard[0]?.id === 'PT-13' && guard[0].severity === 'HIGH' && /KHUNG GẦM/.test(guard[0].essenceTestVi), JSON.stringify(guard.map((a) => [a.id, a.severity])));
+check('ốp gầm + gợi ý đầu 8708.99.62 → CHECK', cp.confusionAlertsFor('ốp gầm xe điện', ['87089962'])[0]?.severity === 'CHECK');
 const dup = cp.confusionAlertsFor('robot hút bụi Xiaomi', ['85081100']);
 check('mục MT và mục nhóm ngành cùng mặt hàng gộp thành một cảnh báo (alsoIds)', dup.filter((a) => a.matchedBy === 'text').length === 1 && (dup[0].alsoIds || []).length >= 1, JSON.stringify(dup.map((a) => [a.id, a.alsoIds])));
 const review = doc.entries.filter((e) => e.needsReview);

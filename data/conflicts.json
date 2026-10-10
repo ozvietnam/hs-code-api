@@ -770,6 +770,21 @@
     "group": "CF-valve-pneumatic-vs-other",
     "sourceFile": "conflict_index.json"
   },
+  "84818030": {
+    "hsCode": "84818030",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "84812090",
+      "84818083",
+      "84818084"
+    ],
+    "reasonsVi": [
+      "8481.80.30 là van bếp nấu / bếp có lò nướng ga (kể cả có bộ đánh lửa điện từ) — van điện từ khí nén công nghiệp không thuộc mã này."
+    ],
+    "precedents": [],
+    "group": "CF-valve-pneumatic-vs-other",
+    "sourceFile": "conflict_resolver_seed"
+  },
   "84818083": {
     "hsCode": "84818083",
     "riskLevel": "ORANGE",
@@ -795,21 +810,6 @@
     ],
     "reasonsVi": [
       "8481.80.84 là van ngắt nhiên liệu plastic cho xe 87.02/87.03/87.04, cửa nạp 1–2,5cm — không dùng cho van khí nén công nghiệp (8481.20)."
-    ],
-    "precedents": [],
-    "group": "CF-valve-pneumatic-vs-other",
-    "sourceFile": "conflict_resolver_seed"
-  },
-  "84818030": {
-    "hsCode": "84818030",
-    "riskLevel": "ORANGE",
-    "confusedWith": [
-      "84812090",
-      "84818083",
-      "84818084"
-    ],
-    "reasonsVi": [
-      "8481.80.30 là van bếp nấu / bếp có lò nướng ga (kể cả có bộ đánh lửa điện từ) — van điện từ khí nén công nghiệp không thuộc mã này."
     ],
     "precedents": [],
     "group": "CF-valve-pneumatic-vs-other",
@@ -1285,6 +1285,57 @@
     ],
     "precedents": [],
     "sourceFile": "conflict_index.json"
+  },
+  "87082995": {
+    "hsCode": "87082995",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "87089962",
+      "87089980",
+      "87081090",
+      "87082993"
+    ],
+    "reasonsVi": [
+      "Mã 8708.29.95 là bộ phận và phụ kiện khác của THÂN XE (Chú giải 87.08 (B): vè xe, cửa, nắp ca pô, ốp thân, đuôi gió, bậc lên xuống…) dùng cho ô tô con 87.03; tấm bảo vệ gầm / pin / động cơ bắt vào KHUNG GẦM (底盘护板, skid plate) không phải thân xe → 8708.99.62.",
+      "Mã 8708.99.80 là bộ phận khác không có dòng riêng (pách đỡ, giá bắt — TB 3988/TB-TCHQ) cho xe 87.02–87.04, không phải tấm thân vỏ.",
+      "Mã 8708.10.90 là ba đờ xốc và bộ phận của nó (TB 18590/18591/TB-CHQ cụm cản) — ốp/nẹp cản vẫn ở 8708.10, không phải 8708.29.",
+      "Mã 8708.29.93 là phụ kiện trang trí nội thất (SEN) hoặc chắn bùn cho xe 87.03 — dòng cụ thể hơn 8708.29.95.",
+      "Thuế: 8708.29.95 ACFTA \"0 (-ID, PH, CN)\" — hàng Trung Quốc KHÔNG hưởng, MFN 15 %; 8708.99.62 ACFTA \"0 (-ID, PH, TH)\" — hàng Trung Quốc 0 %."
+    ],
+    "discriminatorsVi": [
+      "Gắn vào ĐÂU: bắt vào dầm/khung gầm dưới xe (→ 8708.99) hay là tấm của thân vỏ / khoang xe (→ 8708.29)?",
+      "Có phải tấm nhìn thấy từ ngoài xe hoặc trong khoang (vè, ốp thân, cửa, nắp ca pô, lót sàn) không? Có → 8708.29.",
+      "Chức năng: che chắn động cơ / pin / hộp số khỏi va đập từ dưới gầm (skid plate) → 8708.99.6x; trang trí / tạo hình thân xe → 8708.29.",
+      "Loại xe: 87.02 → 8708.99.61; 87.03 → 8708.99.62; 87.04 → 8708.99.63."
+    ],
+    "precedents": [],
+    "sourceFile": "ceo-2026-10-10-op-gam-leapmotor"
+  },
+  "87089962": {
+    "hsCode": "87089962",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "87082995",
+      "87089980",
+      "87089963",
+      "87089961",
+      "87089940"
+    ],
+    "reasonsVi": [
+      "Mã 8708.99.62 là bộ phận KHUNG GẦM (Chú giải 87.08 (A)) dùng cho ô tô con 87.03 — tấm bảo vệ gầm / pin / động cơ bắt vào khung gầm (底盘护板, 电池护板, 发动机护板; TB 8017/TB-TCHQ tấm đệm khung xe); tấm thân vỏ nhìn thấy từ ngoài / trong khoang là 8708.29.95.",
+      "Mã 8708.99.80 là bộ phận khác không có dòng riêng cho xe 87.02–87.04 (pách đỡ, giá bắt, cáp…) — không phải bộ phận khung gầm.",
+      "Mã 8708.99.61 / 8708.99.63 là cùng loại bộ phận khung gầm nhưng cho xe 87.02 / 87.04 — tách theo loại xe.",
+      "Mã 8708.99.40 là giá đỡ / khay đỡ bình ắc quy và khung của nó — tấm BẢO VỆ pin cao áp ốp dưới gầm không phải khay đỡ ắc quy.",
+      "Dòng 8708.99.xx kèm cột cs: chứng nhận chất lượng ATKT và BVMT sau TQ (12/2022/TT-BGTVT, 62/2024/TT-BGTVT)."
+    ],
+    "discriminatorsVi": [
+      "Gắn vào ĐÂU: bắt vào dầm/khung gầm dưới xe (→ 8708.99) hay là tấm của thân vỏ / khoang xe (→ 8708.29)?",
+      "Có phải tấm nhìn thấy từ ngoài xe hoặc trong khoang (vè, ốp thân, cửa, nắp ca pô, lót sàn) không? Có → 8708.29.",
+      "Chức năng: che chắn động cơ / pin / hộp số khỏi va đập từ dưới gầm (skid plate) → 8708.99.6x; trang trí / tạo hình thân xe → 8708.29.",
+      "Loại xe: 87.02 → 8708.99.61; 87.03 → 8708.99.62; 87.04 → 8708.99.63."
+    ],
+    "precedents": [],
+    "sourceFile": "ceo-2026-10-10-op-gam-leapmotor"
   },
   "90029090": {
     "hsCode": "90029090",
