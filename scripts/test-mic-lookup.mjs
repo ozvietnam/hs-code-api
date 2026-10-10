@@ -2,7 +2,7 @@
 import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const { parseProductPage, parseSearchPage, consensusOf, slugify } = require('../lib/mic-lookup');
+const { parseProductPage, parseSearchPage, consensusOf, slugify, filterPagesByChapter } = require('../lib/mic-lookup');
 let pass = 0; let fail = 0;
 const check = (n, c, x = '') => { if (c) { pass += 1; console.log(`PASS ${n}`); } else { fail += 1; console.log(`FAIL ${n} ${x}`); } };
 
@@ -30,5 +30,16 @@ check('đồng thuận: ≥2 shop khác nhau cùng nhóm 4 số', c.heading4 ===
 check('1 shop đơn lẻ → không đồng thuận', consensusOf([{ shop: 'a', hsCode: '8509809000' }]).heading4 === null);
 check('cùng 1 shop ghi 2 lần không tính 2', consensusOf([{ shop: 'a', hsCode: '85098090' }, { shop: 'a', hsCode: '85098010' }]).heading4 === null);
 check('slug đường tìm kiếm được phép', slugify('Wall Mounted Aroma Diffuser XS-105') === 'Wall_Mounted_Aroma_Diffuser_XS_105');
+
+// 10/10/2026: giày cưới 6403 — câu tìm ra cần câu 9507 / sợi thuỷ tinh 7019 / rơ-moóc 8716 → lọc theo Chương/Phần neo.
+{
+  const noisy = [{ shop: 'a', hsCode: '9507100000' }, { shop: 'b', hsCode: '7019690000' }, { shop: 'c', hsCode: '8716900000' }, { shop: 'd', hsCode: '6404110000' }, { shop: 'e', hsCode: '6401100000' }, { shop: 'f', hsCode: null }];
+  const f = filterPagesByChapter(noisy, ['6403']);
+  check('lọc lạc chương: giữ 64xx, bỏ 9507/7019/8716 (droppedOffChapter 3), trang không HS cũng bỏ', f.pages.map((p) => p.shop).join() === 'd,e' && f.droppedOffChapter === 3 && f.droppedNoHs === 1, JSON.stringify(f));
+  const g = filterPagesByChapter([{ shop: 'a', hsCode: '8509809000' }, { shop: 'b', hsCode: '8414591000' }, { shop: 'c', hsCode: '9507' }], ['8509', '85098090']);
+  check('cùng Phần XVI (84 với neo 85) giữ; 95 bỏ; neo trùng 4/8 số không sao', g.pages.length === 2 && g.droppedOffChapter === 1 && consensusOf(g.pages).heading4 === null);
+  const h = filterPagesByChapter([{ shop: 'a', hsCode: '9507100000' }, { shop: 'b', hsCode: '9507100000' }], ['64']);
+  check('toàn trang lạc → rỗng (đồng thuận không còn dù 2 shop); không neo → giữ nguyên', h.pages.length === 0 && consensusOf(h.pages).heading4 === null && filterPagesByChapter(noisy, []).pages.length === 6);
+}
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);

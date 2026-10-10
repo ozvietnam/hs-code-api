@@ -118,6 +118,15 @@ không có bảng mã HS nên `hsListings` (khớp theo mã) không bao giờ b�
 - Việc mở: khi oz-wiki trích xong bảng 19/2024/TT-BYT (có mã) thì mục `byt-05-2022-d6-43-kinh-mat` trở
   thành lưới phụ — giữ, vì tên hàng vẫn bắt được mã khai sai nhóm.
 
+### E-8 · Bảng quyết định CHƯA duyệt → tư vấn (advisory), không ghi đè (10/10/2026 — nhánh `feat/decision-table-8708`)
+Ca ốp gầm Leapmotor (xem `05-decision-tables.md` D-7): bảng 8708 chưa CEO duyệt trước đây bị classify/engine-loop BỎ HẲN.
+Nay cả hai động cơ: RESOLVED cùng nhóm 4 số → `decisionAdvisory {hs, ruleId, reasonVi, agrees, assumedFacts, noteVi}`;
+khác mã → `antiPatternWarnings[decision-table-advisory]` + `review.needed` (áp ở mọi đường ra của cửa đối chiếu, kể cả khi
+cửa đối chiếu lỗi) + mã bảng vào `results` (`source: decision-table-advisory`, confidence null). Engine-loop: dòng
+"bảng quyết định chưa duyệt — chỉ tư vấn → RESOLVED …" trong gói kiểm chứng vòng 2 (`gather().tables`), G5 cảnh báo, kết quả
+có `decisionAdvisory` + review. Không bao giờ `RESOLVED_BY_TABLE` / `RULE_TABLE` cho bảng chưa duyệt. ERP (E-1) nên hiển thị
+cùng chip "Phân vân 2 mã". Test: `test-classify-decision-table` (+10), `test-classify-crosscheck` (+3), `test-decision-tables` (+11).
+
 ## DUY TRÌ THEO THỜI GIAN
 
 | Nhịp | Việc | Vì sao |
@@ -178,3 +187,39 @@ CEO: thêm sàn made-in-china — trang sản phẩm ghi sẵn HS của nhà cun
   `review` khi khác nhóm (`withSupplierHsReview`, lib/classify.js).
 - Việc mở: đo thật trên lô made-in-china đầu tiên — tỉ lệ NCC khai đúng nhóm so với mã chuyên viên chốt; nếu NCC đúng
   nhóm > 90 % thì cân nhắc nâng từ "cảnh báo" lên "chặn tới trần vòng".
+
+### Thư viện đặc điểm theo nhóm — lọc trước AI (10/10/2026, `feat/heading-lexicon-filter`)
+CEO 10/10: *"Thư viện các đặc điểm, tính chất, từ khoá của từng nhóm mục tiêu — lọc bớt rác chủ động, giảm áp lực và
+nhiễu cho LLM."* Đo thật ca kính lão 1688 (9004): AI nhận 24 dòng thông số, 10 dòng rác (上市年份/季节, 脸型, 风格…)
+= 47 % ký tự; OCR đưa nguyên 60 % quảng cáo/chính sách; 2 lượt AI cùng gói; 镜片功能 → 功能 đẻ `machineFunction`.
+Dựng từ mầm có sẵn, không viết từ điển mới:
+- `lib/heading-lexicon.js` `lexiconFor(hs)`: ô bắt buộc + nên có của nhóm (`heading-declaration-fields`, rơi về chương,
+  không mã → toàn từ điển 'global') + ô chung TT 39 + origin → `keepKeys` / `keepLabelsZh` (nhãn zh qua
+  `attribute-synonyms-zh` + nhãn ghép bộ phận `parts-zh` × chất liệu/màu/kích thước). Cache theo nhóm.
+- `data/noise-labels-zh.json`: 78 nhãn rác toàn cục (mỗi nhãn 1 ghi chú vì sao) + mẫu `^是否(跨境|进口|现货…)` +
+  `ocrNoise` (NOISE + POLICY chuyển từ addon `src/lib/ocr-score.ts`). Addon giữ bản riêng để CHỌN ẢNH; đây lọc DÒNG.
+- `lib/source-filter.js` `filterSources`: SKU đang chọn luôn giữ > nhãn thuộc thư viện / giá trị có số+đơn vị giữ >
+  nhãn rác bỏ > còn lại `misc` ≤ 300 ký tự (AI thấy, từ điển không đọc). OCR: bỏ dòng có từ quảng cáo (trừ dòng có cặp
+  nhãn keep), giữ dòng nhãn：giá trị / số+đơn vị / nhãn keep (+ dòng kế — bảng OCR tách nhãn và giá trị) / dấu hiệu công
+  dụng (用于…), ≤ 1.500 ký tự/ảnh. Mô tả: `filterDescriptionLines` + luật rác. Tắt: `HS_SOURCE_FILTER=0`.
+- Nối: `extractSpecs` nhận `hsCode` (+ `focusKeys`) → lọc TRƯỚC từ điển và `sourcesOf`; khoá sinh từ nhãn bộ phận phải
+  ∈ keepKeys (镜片功能 không còn đẻ machineFunction cho kính). Phiếu: lượt VÁ gửi `focusKeys = ô còn thiếu` → chỉ
+  nhãn của ô đó + số+đơn vị + SKU + tên hàng. Prompt SYSTEM thêm 1 dòng "Ô cần cho nhóm này: key: labelVi".
+  Trả `extraction.filter {source, stats, dropped ≤ 30 (lý do), miscLabels}`; nhãn misc → tín hiệu nhu cầu `LABEL_UNKNOWN`
+  (`/api/demand` mục `unknownLabels`, kèm nhóm, không định danh) để thư viện lớn dần từ hàng thật.
+- Đo trước/sau (`scripts/bench-sheet-filter.mjs`, AI giả lập dịch mọi mục; ca 1688/Tmall từ addon 10/10, ổ cắm từ test):
+
+| Ca | Gói AI lượt 1 | Gói AI lượt vá | Tổng gói AI | Nguồn chữ 2 lượt | Specs vào→giữ | OCR ký tự | Ô bắt buộc |
+|---|---|---|---|---|---|---|---|
+| 1688 kính lão 9004 | 1086 → 973 (−10 %) | 542 → 255 (−53 %) | **−25 %** | 746 → 352 (**−53 %**) | 24→12 | — | 8/8 → 8/8 |
+| Tmall kính lão 9004 | 1192 → 1111 (−7 %) | 594 → 455 (−23 %) | **−12 %** | 780 → 614 (−21 %) | 15→9 | — | 6/8 → 6/8 |
+| Taobao ổ cắm 8536 + 3 ảnh OCR | 830 → 688 (−17 %) | 725 → 480 (−34 %) | **−25 %** | 726 → 391 (**−46 %**) | 11→6 | 201→116 | 6/8 → 6/8 |
+| 1688 kính + 3 ảnh OCR *mẫu* | 1375 → 1056 (−23 %) | 831 → 338 (−59 %) | **−37 %** | 1152 → 462 (**−60 %**) | 24→12 | 203→55 | 8/8 → 8/8 |
+
+  0 ô bắt buộc mất ở cả 4 ca. Mục tiêu −35 % đạt trên **nguồn chữ** (phần nhiễu thật) ở 3/4 ca và trên cả gói khi có
+  OCR; gói lượt 1 của ca chỉ có bảng thuộc tính giảm ít (7–10 %) vì phần cố định (allowedKeys, translate lặp lại
+  giá trị gốc) chiếm hơn nửa gói — muốn giảm nữa phải đổi giao thức user JSON (việc mở, chưa đụng).
+- Việc mở: (1) gắn fact so-tay/legal-notes vào khoá thuộc tính (chưa có chữ zh) để thư viện nhóm có thêm từ khoá luật;
+  (2) `translate` không lặp giá trị đã có trong `sources` (đổi giao thức → phải bench lại MiniMax/Gemini);
+  (3) 眼镜款式 → eyewearType trong từ điển đang khớp "多边形" (hình gọng) thành loại kính — sửa từ điển; (4) đo thật
+  prod 20 món 1688 xem `misc`/`LABEL_UNKNOWN` gom ra nhãn nào cần đưa vào thư viện.

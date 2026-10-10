@@ -124,5 +124,30 @@ const w10 = (r10._j?.attributes || []).find((a) => a.key === 'netWeight' && a.va
 check('kích thước có đơn vị/dấu × vẫn nhận', !!d10, JSON.stringify(r10._j?.attributes?.slice(0, 3)));
 check('khối lượng "35g" vẫn nhận', !!w10, JSON.stringify(w10));
 
+
+// ── 10/10/2026: loại kính suy tất định từ 产品类别, không để AI đoán "kính râm" cho kính lão ──
+llmReply = { attributes: [{ key: 'eyewearType', valueVi: 'kính râm', sourceId: 's1', evidenceText: '老花镜' }] };
+const r11 = await extract({ specsZh: [{ key: '产品类别', value: '老花镜' }, { key: '镜片功能', value: '防蓝光' }], needKeys: ['eyewearType'] });
+const e11 = (r11._j?.attributes || []).filter((a) => a.key === 'eyewearType');
+check('产品类别=老花镜 → eyewearType "kính lão (kính viễn)" tất định, không bị AI "kính râm" đè', e11.some((a) => a.valueVi === 'kính lão (kính viễn)' && a.method === 'DICTIONARY') && !e11.some((a) => a.valueVi === 'kính râm' && (a.confidence || 0) >= 0.95), JSON.stringify(e11));
+check('镜片功能=防蓝光 không còn bị coi là loại kính', !e11.some((a) => /ánh sáng xanh/.test(a.valueVi || '') && a.method === 'DICTIONARY'), JSON.stringify(e11));
+
+
+// ── 10/10/2026: lọc nguồn theo thư viện nhóm (hsCode) — rác không tới AI, số đo + SKU vẫn giữ, khoá mơ hồ không sinh khoá ngoài nhóm ──
+llmReply = { attributes: [] };
+llmCalls = 0;
+const r12 = await extract({
+  titleZh: '老花镜词库测试', hsCode: '90049010',
+  specsZh: [{ key: '镜片材质', value: 'PC' }, { key: '镜片功能', value: '防蓝光' }, { key: '功能', value: '防蓝光' }, { key: '脸型', value: '圆脸' }, { key: '风格', value: '商务' }, { key: '上市年份/季节', value: '2025年春季' }, { key: '奇怪', value: '147mm' }, { key: '已选规格(镜框颜色)', value: '金色' }],
+  imageTexts: [{ url: 'https://img/p.jpg', text: '关于我们 源头工厂\n全场包邮\n镜框材质：金属' }],
+  needKeys: ['lensMaterial', 'frameMaterial', 'dimensions', 'color'],
+});
+const specs12 = (lastUser?.sources || []).find((s) => s.id === 'specs')?.text || '';
+const img12 = (lastUser?.sources || []).find((s) => s.id === 'img1')?.text || '';
+check('hsCode 9004: AI không nhận 脸型/风格/上市年份, giữ 147mm + SKU', !/脸型|风格|上市年份/.test(specs12) && /147mm/.test(specs12) && /已选规格\(镜框颜色\)：金色/.test(specs12), specs12);
+check('hsCode 9004: OCR bỏ 关于我们/包邮, giữ 镜框材质：金属', !/关于我们|包邮/.test(img12) && /镜框材质：金属/.test(img12), img12);
+check('hsCode 9004: 功能 không sinh machineFunction/applianceFunction; 镜片功能 → misc', !(r12._j?.attributes || []).some((a) => /Function$/.test(a.key)) && (lastUser?.sources || []).find((s) => s.id === 'misc')?.text.includes('镜片功能：防蓝光'), JSON.stringify(r12._j?.attributes?.map((a) => a.key)));
+check('hsCode 9004: trả extraction filter (stats + dropped ≤30 + miscLabels)', r12._j?.filter?.source === 'heading' && r12._j.filter.stats.specsIn === 8 && r12._j.filter.dropped.length >= 3 && r12._j.filter.dropped.length <= 30 && r12._j.filter.miscLabels.includes('镜片功能'), JSON.stringify(r12._j?.filter));
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
