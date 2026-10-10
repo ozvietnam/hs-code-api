@@ -87,6 +87,20 @@ const SCHEMAS = {
       },
     },
   },
+  CanCuPhapLy: {
+    type: 'object',
+    description: 'Căn cứ pháp lý theo TT 85/2026/TT-BTC (hiệu lực 15/09/2026): bước nào đã áp dụng, tài liệu nào của Điều 6.1 thật sự có/đã tra. ' +
+      'Trích dẫn nguyên văn nằm ở `dieuKhoan` (mỗi điều một lần), các bước chỉ nêu id. KHÔNG phải quyết định phân loại.',
+    properties: {
+      vanBan: { type: 'object', description: 'TT 85/2026/TT-BTC: số hiệu, ngày ban hành, hiệu lực, Công báo' },
+      trangThai: { type: 'string', enum: ['XAC_DINH_THEO_DIEU_4', 'CHUA_CHOT_CAN_XAC_NHAN', 'THIEU_DU_KIEN', 'CHUA_XAC_DINH_DUOC'] },
+      cacBuoc: { type: 'array', items: { type: 'object' }, description: 'Bước 1 = Điều 4 (Danh mục VN + Biểu thuế + 6 quy tắc tổng quát); bước 2 = Điều 6.1 (chỉ khi bước 1 chưa ra mã duy nhất), kèm trạng thái từng tài liệu a→d' },
+      huongTiep: { type: 'array', items: { type: 'object' }, description: 'Chỉ khi chưa xác định được / thiếu dữ kiện: Điều 6.3, 3.3, 3.1' },
+      luuYPhapLy: { type: 'array', items: { type: 'object' }, description: 'Điều 5.2 (thuế theo biểu có hiệu lực tại thời điểm đăng ký tờ khai); Điều 8 khi mô tả có dấu hiệu hàng tháo rời (basis HEURISTIC)' },
+      dieuKhoan: { type: 'object', description: 'Từ điển id → {dieu, khoan, diem, tham_chieu, trang, trich nguyên văn}' },
+      disclaimer: { type: 'string' },
+    },
+  },
   GirDetermination: {
     type: 'object',
     properties: {
@@ -160,6 +174,7 @@ const SUGGEST_RESPONSE = {
     rejectedFacts: { type: 'array', items: { type: 'object' } },
     decisions: { type: 'array', items: { type: 'object' } },
     girRulesApplied: { type: 'array', items: { $ref: '#/components/schemas/GirDetermination' } },
+    canCuPhapLy: { $ref: '#/components/schemas/CanCuPhapLy' },
     residualAdvisory: { type: 'object' },
     antiPatternWarnings: { type: 'array', items: { type: 'object' } },
     confusionWarning: { type: ['object', 'null'] },
@@ -410,6 +425,7 @@ const paths = {
         'Body: `{"description": "tên hàng"}`. Trả `suggestions[]`, `girRulesApplied[]` (mỗi mục có `basis`: ' +
         'RULE_TABLE/DETERMINISTIC là căn cứ chắc, HEURISTIC/LLM_ASSERTED phải kiểm chứng lại), ' +
         '`girDisclaimer`, `rankingSignals[]` (kỹ thuật, không có giá trị pháp lý) và `chapterGuidance[]`. ' +
+        '`canCuPhapLy` ghi căn cứ TT 85/2026/TT-BTC (Điều 4, Điều 6.1…) và tài liệu nào thật sự có/đã tra. ' +
         'Kèm `decisions[]` (bảng quyết định theo thuộc tính cho các nhóm trong top gợi ý) và `missingFacts[]` — ' +
         'thuộc tính còn thiếu để chốt lá 8 số; ERP/người dùng trả lời bằng body `facts: {...}` rồi gọi lại. ' +
         'Bảng đã verified chốt được lá thì lá đó lên đầu với `decidedByTable`; chưa verified chỉ tư vấn. ' +

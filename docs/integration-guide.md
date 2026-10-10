@@ -60,6 +60,16 @@ curl -X POST https://.../api/suggest \
     }
   ],
   "girDisclaimer": "Trích dẫn GIR là căn cứ tham khảo do hệ thống suy ra, KHÔNG phải phán quyết...",
+  "canCuPhapLy": {
+    "vanBan": { "soHieu": "85/2026/TT-BTC", "hieuLucTu": "2026-09-15", "congBao": "Công báo số 409 ngày 18-07-2026" },
+    "trangThai": "CHUA_CHOT_CAN_XAC_NHAN",
+    "cacBuoc": [
+      { "buoc": 1, "canCu": ["4.1", "4.2.b", "4.2.c", "4.2.d"], "trangThai": "DA_AP_DUNG" },
+      { "buoc": 2, "canCu": ["6.1"], "canDung": true, "taiLieu": [{ "id": "6.1.a", "trangThai": "CO_NOI_DUNG" }, { "id": "6.1.b", "trangThai": "CHUA_TRA_CUU" }, "…"] }
+    ],
+    "luuYPhapLy": [{ "canCu": ["5.2"], "basis": "RULE_TABLE" }],
+    "dieuKhoan": { "4.1": { "tham_chieu": "Điều 4 khoản 1 85/2026/TT-BTC", "trang": 4, "trich": "Một mặt hàng có một mã số duy nhất…" }, "…": "…" }
+  },
   "rankingSignals": [
     { "signal": "specificity_filter", "effect": "loại 2 ứng viên...", "note": "Ước lượng — CHƯA đối chiếu nguyên văn nhóm." }
   ],
@@ -73,6 +83,11 @@ curl -X POST https://.../api/suggest \
   "ms": 1240
 }
 ```
+
+**`canCuPhapLy` — căn cứ pháp lý (TT 85/2026/TT-BTC, hiệu lực 15/09/2026).** Có trong `/api/suggest` và `/api/classify`.
+- Bước 1 = Điều 4 (Danh mục VN + Biểu thuế + 6 quy tắc tổng quát; chi tiết quy tắc ở `girRulesApplied[]`). Bước 2 = Điều 6.1, **chỉ khi bước 1 chưa ra mã duy nhất**; `canDung` cho biết có cần dùng không. Điều 6.1 chỉ *liệt kê* a→d (Chú giải chi tiết HS, ý kiến phân loại WCO, SEN AHTN, CSDL Danh mục VN); văn bản **không** ghi "theo thứ tự" hay "ưu tiên", nên API không khẳng định thứ tự pháp lý.
+- Trạng thái từng tài liệu nói đúng điều hệ thống biết: `CO_NOI_DUNG` (kệ sách có nội dung cho mã này), `KHONG_CO_DU_LIEU_CHO_MA_NAY`, `CHUA_TRA_CUU` (kho chưa nạp, hiện là ý kiến phân loại WCO), `CHUA_TRA_CUU_TRONG_LUOT_NAY`, `CO_TIEN_LE_KHOP`/`KHONG_CO_TIEN_LE_KHOP`. Ý kiến phân loại WCO chỉ trả số hiệu, không trả nguyên văn (bản quyền).
+- `dieuKhoan` chứa nguyên văn từng điều được dẫn (mỗi điều một lần); các bước chỉ nêu id. Đây là điều luật để tham khảo, **không phải quyết định phân loại**; người khai chịu trách nhiệm về mã số khai.
 
 ### ⚠️ Thay đổi hợp đồng `girRulesApplied` (2026-09)
 
