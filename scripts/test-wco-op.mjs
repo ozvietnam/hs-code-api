@@ -13,6 +13,8 @@ import { segment, validate, fixOcrId, DEFAULT_CODE_ONLY_REGEX } from './wco-op-p
 import { skeleton, shapeOf, findLabels } from './wco-op-skeleton.mjs';
 import { parseMarkdown, parseHeadingCode, markSuspect } from './wco-op-parse-md.mjs';
 import { alignHeadings } from './wco-op-fix-headings.mjs';
+import { applyInferred } from './wco-op-apply-inferred.mjs';
+import { numericParity, numberTokens } from './wco-op-check-vi.mjs';
 
 const require = createRequire(import.meta.url);
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -187,6 +189,30 @@ assert('(continued): đánh dấu headingRecovered, số in sẵn khớp vị tr
 assert('(continued): tiêu đề "(continued)" vẫn đọc ra mã', parseHeadingCode('8471.30 (continued)') === '847130' && parseHeadingCode('8471.30 (Continued)') === '847130');
 const mdNoMatch = mdCont.replace('**1.** Invented opinion whose banner was lost; it really belongs to 8471.30 (printed 1).', '**7.** Invented opinion with an unrelated printed number.');
 assert('(continued): số in sẵn của ý kiến trước không khớp 1..n−1 → KHÔNG chuyển', parseMarkdown(mdNoMatch).opinions[1].hs === '847050');
+
+// 2j. Suy luận mã cho khối mất tiêu đề: chỉ nhận khi HAI lượt độc lập cùng chọn, trong ràng buộc thứ tự HS
+const mk = (line, hs, printed, extra = {}) => ({ line, hs, ord: 0, ordPrinted: printed, text: 'x', ...extra });
+const opsI = [mk(1, '844230', 1), mk(2, '844230', 2), mk(3, '844230', 1, { headingSuspect: true }), mk(4, '844230', 1, { headingSuspect: true }), mk(5, '844510', 1)];
+const tasksI = [{ runId: 'R01', ownCode: '844230', nextHeadingCode: '844510', candidates: [{ code: '846610' }, { code: '846719' }, { code: '847130' }], blocks: [{ block: 1, opinions: [{ line: 3 }] }, { block: 2, opinions: [{ line: 4 }] }] }];
+const pass = (c1, c2, f1 = 'high', f2 = 'high') => [{ runId: 'R01', blocks: [{ block: 1, code: c1, confidence: f1 }, { block: 2, code: c2, confidence: f2 }] }];
+const ai = applyInferred(opsI.map((o) => ({ ...o })), tasksI, pass('846610', '846719'), pass('846610', '846719'));
+assert('suy luận: hai lượt cùng chọn → áp dụng, đánh dấu headingInferred/LLM_AGREED, hết nghi ngờ', ai.opinions.map((o) => `${o.hs}`).join() === '844230,844230,846610,846719,844510' && ai.opinions[2].headingInferred === true && ai.opinions[2].headingBasis === 'LLM_AGREED' && !ai.opinions[2].headingSuspect && ai.report.applied === 2, ai.report);
+const ad = applyInferred(opsI.map((o) => ({ ...o })), tasksI, pass('846610', '846719'), pass('846610', '847130'));
+assert('suy luận: hai lượt khác nhau ở một khối → khối đó giữ nghi ngờ, khối kia vẫn áp dụng', ad.opinions[2].hs === '846610' && ad.opinions[3].hs === '844230' && ad.opinions[3].headingSuspect === true && ad.report.unresolved[0].why === 'hai-luot-khac-nhau', ad.report);
+const ao = applyInferred(opsI.map((o) => ({ ...o })), tasksI, pass('999999', '846719'), pass('999999', '846719'));
+assert('suy luận: mã ngoài danh sách ứng viên bị loại', ao.report.rejected.some((r) => r.why === 'ma-ngoai-ung-vien') && ao.opinions[2].hs === '844230');
+const aw = applyInferred(opsI.map((o) => ({ ...o })), tasksI, pass('847130', '846719'), pass('847130', '846719'));
+assert('suy luận: mã không tăng nghiêm ngặt trong run bị loại cả run', aw.report.rejected.some((r) => r.why === 'khong-tang-nghiem-ngat') && aw.opinions[2].hs === '844230');
+const al = applyInferred(opsI.map((o) => ({ ...o })), tasksI, pass('846610', '846719', 'low', 'high'), pass('846610', '846719', 'low', 'medium'));
+assert('suy luận: chỉ cần MỘT lượt "low" là không nhận (mã đúng có thể nằm ngoài khoảng ứng viên)', al.opinions[2].hs === '844230' && al.report.unresolved[0].why === 'co-luot-low' && al.opinions[3].hs === '846719');
+assert('suy luận: tính lại thứ tự theo vị trí trong mã', ai.opinions[2].ord === 1 && ai.opinions[3].ord === 1 && ai.opinions[2].id === '846610/1');
+
+// 2k. Máy kiểm số của bản dịch: mọi con số của bản gốc phải còn trong bản dịch (dấu thập phân/nghìn đổi được)
+assert('dịch: số giữ nguyên dù đổi dấu thập phân', numericParity('Dimensions 11.5 cm x 7.7 cm. Weight: 115 g', 'Kích thước 11,5 cm x 7,7 cm. Khối lượng: 115 g').ok);
+assert('dịch: thiếu số bị báo', numericParity('A salt content of 1.2 % to 3 %', 'Hàm lượng muối 1,2 %').missing.join() === '3');
+assert('dịch: thêm số lạ bị báo', numericParity('Weight 115 g', 'Khối lượng 115 g, 20 cái').extra.join() === '20');
+assert('dịch: số thứ tự đầu dòng và năm Adoption không tính', numericParity('1. Chicken cuts\n\nAdoption: 2008', 'Thịt gà cắt miếng\n\nThông qua: 2008').ok && numberTokens('2. Foo 5 mm').join() === '5');
+assert('dịch: số nghìn 1,000 = 1.000', numericParity('1,000 kg', '1.000 kg').ok);
 
 // 3. validate
 const wcoCodes = { six: new Set(['851762', '852351']), four: new Set(['2106']) };
