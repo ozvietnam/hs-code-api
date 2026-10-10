@@ -11,7 +11,8 @@ import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { segment, validate, fixOcrId, DEFAULT_CODE_ONLY_REGEX } from './wco-op-parse.mjs';
 import { skeleton, shapeOf, findLabels } from './wco-op-skeleton.mjs';
-import { parseMarkdown, parseHeadingCode } from './wco-op-parse-md.mjs';
+import { parseMarkdown, parseHeadingCode, markSuspect } from './wco-op-parse-md.mjs';
+import { alignHeadings } from './wco-op-fix-headings.mjs';
 
 const require = createRequire(import.meta.url);
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -140,6 +141,36 @@ const orphan = pm.opinions.find((o) => o.hs === '380991');
 assert('md: ý kiến mất dòng Adoption vẫn được giữ, đánh dấu noAdoptionLine', orphan?.noAdoptionLine === true && orphan.adoption === null, orphan);
 assert('md: đủ trường nguồn', pm.opinions.every((o) => o.source === 'ocr-md' && o.level === 6 && o.text.length > 0));
 
+// 2g. Tiêu đề mã bị OCR làm rơi → số in sẵn quay về 1 giữa một mã: từ đó trở đi mã gán KHÔNG đáng tin
+const mdLost = [
+  '## Section XVI — Invented', '### 8444.30',
+  '**1.** Invented opinion one under the real heading, long enough to be a body.', '*Adoption: 2001*',
+  '**2.** Invented opinion two under the real heading, long enough to be a body.', '*Adoption: 2002*',
+  '**1.** Invented opinion whose banner was lost by OCR (printed number restarts at one).', '*Adoption: 2003*',
+  '**2.** Invented opinion that also belongs to the unnamed code.', '*Adoption: 2004*',
+  '### 8445.10', '**1.** Invented opinion with a proper heading.', '*Adoption: 2005*',
+].join('\n');
+const pl = parseMarkdown(mdLost);
+assert('md: số in sẵn quay về 1 → từ đó mã không đáng tin (headingSuspect), phần trước vẫn đáng tin', pl.opinions.map((o) => !!o.headingSuspect).join() === 'false,false,true,true,false', JSON.stringify(pl.opinions.map((o) => [o.id, o.headingSuspect])));
+assert('md: đếm chỗ mất tiêu đề', pl.stats.headingRestarts === 1 && pl.opinions[2].headingRestart === true);
+
+// 2h. Khôi phục mã bị mất tiêu đề bằng dãy mã đọc từ ẢNH dải xanh (banners)
+const op = (hs, ord, printed, line) => ({ id: `${hs}/${ord}`, hs, ord, ordPrinted: printed, text: 't', line });
+const seq = [op('844230', 1, 1, 10), op('844230', 2, 2, 11), op('844230', 3, 1, 12), op('844230', 4, 2, 13), op('844230', 5, 1, 14), op('844510', 1, 1, 15), op('844510', 2, 2, 16)];
+markSuspect(seq);
+const fixedA = alignHeadings(seq, ['844230', '846610', '846719', '844510']);
+assert('banners: 2 mã bị mất → 3 đoạn gán đúng mã và vị trí', fixedA.opinions.map((o) => `${o.hs}/${o.ord}`).join() === '844230/1,844230/2,846610/1,846610/2,846719/1,844510/1,844510/2', fixedA.opinions.map((o) => o.id));
+assert('banners: khôi phục xong thì bỏ cờ headingSuspect, đánh dấu headingRecovered', fixedA.opinions.every((o) => !o.headingSuspect) && fixedA.opinions[2].headingRecovered === true && fixedA.report.resolved === 1 && fixedA.report.recoveredOpinions === 3, fixedA.report);
+assert('banners: dải lặp liên tiếp (trang tiếp) được gộp', alignHeadings(seq.map((o) => ({ ...o })), ['844230', '844230', '846610', '846719', '846719', '844510']).report.resolved === 1);
+const fixedB = alignHeadings(seq.map((o) => ({ ...o })), ['844230', '846610', '844510']);
+assert('banners: ranh giới thừa so với mã mất → chọn tổ hợp khớp số in sẵn nhất', fixedB.report.resolved === 1 || fixedB.report.unresolved.some((u) => u.why === 'nhieu-to-hop-hoa'), fixedB.report);
+const fixedC = alignHeadings(seq.map((o) => ({ ...o })), ['844230', '846610', '846719', '846720', '846730', '844510']);
+assert('banners: thiếu ranh giới → KHÔNG đoán, ghi chưa khôi phục', fixedC.report.unresolved[0]?.why === 'thieu-ranh-gioi' && fixedC.opinions.some((o) => o.headingSuspect), fixedC.report);
+const fixedD = alignHeadings(seq.map((o) => ({ ...o })), ['844230', null, '846719', '844510']);
+assert('banners: dải không đọc được → không đoán', fixedD.report.unresolved[0]?.why === 'dai-khong-doc-duoc');
+const clean = [op('851762', 1, 1, 1), op('851762', 2, 2, 2), op('852351', 1, 1, 3)];
+assert('banners: đoạn sạch không đổi', alignHeadings(clean, ['851762', '852351']).opinions.every((o, i) => o.hs === clean[i].hs) && alignHeadings(clean, ['851762', '852351']).report.alreadyClean === 2);
+
 // 3. validate
 const wcoCodes = { six: new Set(['851762', '852351']), four: new Set(['2106']) };
 const v = validate([
@@ -167,6 +198,19 @@ assert('có kho → available()', wco.available());
 assert('get theo id', wco.get('851762/4')?.ord === 4 && wco.get('1/1') === null);
 assert('byHs 4 số, 6 số, sai độ dài', wco.byHs('8517').length === 1 && wco.byHs('851762').length === 1 && wco.byHs('85').length === 0);
 assert('byHs(2106) trả ý kiến nhóm 4 số', wco.byHs('2106')[0]?.id === '2106/1');
+fs.writeFileSync(path.join(store, 'opinions.json'), JSON.stringify([
+  { id: '844230/1', hs: '844230', level: 6, ord: 1, text: 'Invented reliable opinion.' },
+  { id: '844230/2', hs: '844230', level: 6, ord: 2, headingSuspect: true, text: 'Invented opinion filed under a wrong code.' },
+]));
+wco.reset();
+assert('ý kiến headingSuspect KHÔNG được trả bởi byHs', wco.byHs('844230').length === 1 && wco.byHs('844230')[0].id === '844230/1');
+assert('incomplete(): còn ý kiến gán không đáng tin', wco.incomplete() === true);
+fs.writeFileSync(path.join(store, 'opinions.json'), JSON.stringify([
+  { id: '851762/4', hs: '851762', level: 6, ord: 4, pages: [1, 1], text: 'The invented prefabri-\ncated unit, which is not for sale,\nis classified in this subheading.' },
+  { id: '2106/1', hs: '2106', level: 4, ord: 1, pages: [2, 2], text: 'Invented preparation of a kind used for food.' },
+]));
+wco.reset();
+assert('incomplete(): kho sạch → false', wco.incomplete() === false);
 assert('trích đúng (kể cả gạch nối cuối dòng)', wco.quoteInOpinion('851762/4', 'invented prefabricated unit'));
 assert('trích có "…" giữa các đoạn', wco.quoteInOpinion('851762/4', 'invented prefabricated unit … is classified in this subheading'));
 assert('trích sai bị loại', !wco.quoteInOpinion('851762/4', 'is classified in heading 85.18'));

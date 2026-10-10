@@ -107,7 +107,27 @@ export function parseMarkdown(md) {
     if (ADOPTION.test(l.trim())) { finalize(l, i + 1); return; }
     buf.push(l);
   });
+  markSuspect(opinions, stats);
   return { opinions, stats };
+}
+
+/**
+ * Bản OCR làm rơi nhiều tiêu đề mã (dải xanh chữ trắng) nên nhiều ý kiến bị dồn vào mã đứng trước. Dấu hiệu: số in sẵn của ý kiến
+ * quay về 1 (hoặc nhỏ hơn số trước) giữa một mã — ở đó có một mã mới bị mất tiêu đề. Từ ý kiến đó trở đi trong cùng đoạn, mã gán KHÔNG ĐÁNG TIN
+ * (headingSuspect). Chiều an toàn: nhầm số in sẵn (OCR đọc sai) chỉ làm loại bớt ý kiến, không gán sai.
+ */
+export function markSuspect(opinions, stats = {}) {
+  let prevHs = null; let prevPrinted = null; let suspect = false; let restarts = 0;
+  for (const o of opinions) {
+    if (o.hs !== prevHs) { suspect = false; prevPrinted = null; prevHs = o.hs; }
+    if (!suspect && o.ordPrinted !== undefined && o.ord > 1 && (o.ordPrinted === 1 || (prevPrinted !== null && o.ordPrinted < prevPrinted))) {
+      suspect = true; restarts += 1; o.headingRestart = true;
+    }
+    if (o.ordPrinted !== undefined) prevPrinted = o.ordPrinted;
+    if (suspect) o.headingSuspect = true;
+  }
+  stats.headingRestarts = restarts;
+  return opinions;
 }
 
 function main() {
@@ -125,6 +145,8 @@ function main() {
     source: path.basename(md), opinions: opinions.length, codes: new Set(opinions.map((o) => o.hs)).size,
     ...(expect !== null ? { expected: expect, matchesExpected: opinions.length === expect } : {}),
     headings: stats.headings, headingsUnparsed: stats.headingsUnparsed, withoutAdoptionLine: opinions.filter((o) => o.noAdoptionLine).length, annexStartLine: stats.annexStartLine,
+    headingSuspect: opinions.filter((o) => o.headingSuspect).length, headingRestarts: stats.headingRestarts,
+    codesWithSuspect: new Set(opinions.filter((o) => o.headingSuspect).map((o) => o.hs)).size,
     ordInferred: opinions.filter((o) => o.ordInferred).length,
     ordPrintedMismatch: opinions.filter((o) => o.ordPrinted !== undefined && o.ordPrinted !== o.ord).length,
     withoutAdoptionYear: { count: opinions.filter((o) => !o.adoption).length, ids: opinions.filter((o) => !o.adoption).map((o) => o.id).slice(0, 30) },
@@ -140,6 +162,7 @@ function main() {
   fs.writeFileSync(of, JSON.stringify(opinions, null, 1));
   fs.writeFileSync(rf, JSON.stringify(report, null, 1));
   console.log(`${opinions.length} ý kiến / ${report.codes} mã${expect !== null ? ` (kỳ vọng ${expect}: ${report.matchesExpected ? 'KHỚP' : 'LỆCH'})` : ''}; ordInferred ${report.ordInferred}; thiếu năm ${report.withoutAdoptionYear.count}; cảnh báo: ` + Object.entries(issues).map(([k, v]) => `${k}=${v.length}`).join(' '));
+  if (report.headingSuspect) console.log(`CẢNH BÁO: ${report.headingSuspect}/${opinions.length} ý kiến có mã gán KHÔNG ĐÁNG TIN (tiêu đề mã bị OCR làm rơi, ${report.headingRestarts} chỗ). API bỏ qua các ý kiến này cho tới khi khôi phục tiêu đề (docs/giao-viec/wco-op.md).`);
   console.log(`  ${of}\n  ${rf}  ← báo cáo không chứa chữ WCO, dán gửi được`);
 }
 
