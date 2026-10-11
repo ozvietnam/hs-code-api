@@ -123,6 +123,11 @@ assert('loaiTru mà câu nguồn chỉ nói "thường thuộc nhóm" bị loạ
   assert('tieuChi6 hợp lệ (phân nhóm có trong cây, nguồn wco, số có trong trích) → đạt', checkItem('tieuChi6', tc, src4, '8504') === null);
   assert('tieuChi6: phân nhóm không thuộc nhóm / không có trong cây bị loại', /hs6-khong-co-trong-cay/.test(checkItem('tieuChi6', { ...tc, hs6: '850921' }, src4, '8504')) && /hs6-khong-co-trong-cay/.test(checkItem('tieuChi6', { ...tc, hs6: '850499' }, src4, '8504')));
   assert('tieuChi6: ngưỡng số không có trong trích / op lạ / fact không snake_case bị loại', /nguong-khong-co-trong-trich/.test(checkItem('tieuChi6', { ...tc, value: 750 }, src4, '8504')) && /op-khong-hop-le/.test(checkItem('tieuChi6', { ...tc, op: '~' }, src4, '8504')) && /fact-khong-hop-le/.test(checkItem('tieuChi6', { ...tc, fact: 'Công suất' }, src4, '8504')));
+  // 7019.12 là dòng lá 70191200 = chính phân nhóm WCO (laPhanNhom): tiêu chí chú giải phân nhóm vẫn đặt được ở cấp 6
+  const src19 = sourcesFor('7019');
+  assert('tieuChi6 cho phân nhóm là dòng lá xxxxxx00 (laPhanNhom) → đạt; kiemCay báo phân nhóm dạng này chưa có tiêu chí',
+    checkItem('tieuChi6', { hs6: '701912', fact: 'dang_soi_tho', op: '=', value: true, nguon: 'wco.701912', trich: 'Rovings' }, { ...src19, 'wco.701912': 'Rovings' }, '7019') === null
+    && kiemCay({}, '7019').canhBao.includes('phan-nhom-chua-co-tieu-chi:701912') && buildCay('7019').nut.find((n) => n.id === '70191200')?.laPhanNhom === '701912');
   assert('tieuChi6 lấy từ dòng 8 số (tax.*) bị loại', checkItem('tieuChi6', { ...tc, nguon: 'tax.85042111', trich: 'Máy biến đổi đo lường' }, src4, '8504') === 'tieu-chi-6-khong-lay-tu-dong-8');
   assert('dong8.tieuChi: số phải có trong câu trích; không có tieuChi vẫn đạt', /nguong-khong-co-trong-trich/.test(checkItem('dong8', { hs: '85042111', dieuKien: 'x', tieuChi: { fact: 'cong_suat_kva', op: '<=', value: 2, donVi: 'kVA' }, nguon: 'tax.85042111', trich: 'Máy biến đổi đo lường (1) loại công suất danh định không quá 1 kVA' }, src4, '8504')) && checkTieuChi({ fact: 'cong_suat_kva', op: '<=', value: 1 }, 'không quá 1 kVA') === null);
   // tên điền cho nút bị lược: 8504211 là tiêu đề quốc gia suyRa trong cây 8504
