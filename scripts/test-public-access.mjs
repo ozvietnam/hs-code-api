@@ -68,7 +68,7 @@ for (const endpoint of ['suggest', 'describe', 'classify', 'match', 'feedback'])
 for (const endpoint of ['tax', 'search', 'notes', 'kg_chapter', 'customs-types']) {
   assert(`MỞ: /api/${endpoint}`, isPublicRead({ endpoint, method: 'GET' }) === true);
 }
-for (const resource of ['kg_stats', 'chapters', 'conflicts', 'precedents', 'ministries', 'legal_docs', 'products', 'accuracy', 'data_quality']) {
+for (const resource of ['kg_stats', 'chapters', 'conflicts', 'precedents', 'wco_opinions', 'ministries', 'legal_docs', 'products', 'accuracy', 'data_quality']) {
   assert(`MỞ: dataset?resource=${resource}`, isPublicRead({ endpoint: 'dataset', resource, method: 'GET' }) === true);
 }
 
