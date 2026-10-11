@@ -3,7 +3,8 @@
  "phamVi": {
   "text": "Máy trị liệu cơ học, máy xoa bóp, thiết bị thử nghiệm trạng thái tâm lý, thiết bị trị liệu bằng ôzôn, bằng oxy, bằng hô hấp nhân tạo hoặc bằng các thiết bị trị liệu hô hấp khác, và thiết bị trị liệu bằng xông khí.",
   "nguon": "nhom9019.nhom",
-  "trich": "MÁY TRỊ LIỆU CƠ HỌC … MÁY XOA BÓP … THIẾT BỊ THỬ NGHIỆM TRẠNG THÁI TÂM LÝ … THIẾT BỊ TRỊ LIỆU BẰNG ÔZÔN … THIẾT BỊ TRỊ LIỆU BẰNG OXY, BẰNG HÔ HẤP NHÂN TẠO HOẶC BẰNG CÁC THIẾT BỊ TRỊ LIỆU HÔ HẤP KHÁC … THIẾT BỊ TRỊ LIỆU BẰNG XÔNG KHÍ"
+  "trich": "MÁY TRỊ LIỆU CƠ HỌC … MÁY XOA BÓP … THIẾT BỊ THỬ NGHIỆM TRẠNG THÁI TÂM LÝ … THIẾT BỊ TRỊ LIỆU BẰNG ÔZÔN … THIẾT BỊ TRỊ LIỆU BẰNG OXY, BẰNG HÔ HẤP NHÂN TẠO HOẶC BẰNG CÁC THIẾT BỊ TRỊ LIỆU HÔ HẤP KHÁC … THIẾT BỊ TRỊ LIỆU BẰNG XÔNG KHÍ",
+  "nguonLoai": "AI_DA_KIEM"
  },
  "dieuKienVao": [],
  "loaiTru": [
@@ -11,88 +12,166 @@
    "dieuKien": "Thiết bị thuộc loại thông thường dùng cho chẩn đoán trong y tế để khám mắt, tai, tim",
    "sangNhom": "9018",
    "nguon": "nhom9019.nhom",
-   "trich": "Tuy nhiên, cần chú ý rằng nhóm này không bao gồm những thiết bị thuộc loại thông thường dùng cho chẩn đoán trong y tế để khám mắt, tai, tim, v.v... (nhóm 90.18)."
+   "trich": "Tuy nhiên, cần chú ý rằng nhóm này không bao gồm những thiết bị thuộc loại thông thường dùng cho chẩn đoán trong y tế để khám mắt, tai, tim, v.v... (nhóm 90.18).",
+   "nguonLoai": "AI_DA_KIEM"
   },
   {
    "dieuKien": "Khoang có áp suất cao hoặc khoang giảm áp",
    "sangNhom": "9018",
    "nguon": "nhom9019.nhom",
-   "trich": "Nhóm này không bao gồm khoang có áp suất cao hoặc khoang giảm áp (nhóm 90.18)."
+   "trich": "Nhóm này không bao gồm khoang có áp suất cao hoặc khoang giảm áp (nhóm 90.18).",
+   "nguonLoai": "AI_DA_KIEM"
   },
   {
    "dieuKien": "Các máy thông thường để rèn luyện thể lực, hay thể dục y học, sử dụng ở nhà hay trong các phòng tập",
    "sangNhom": "9506",
    "nguon": "nhom9019.nhom",
-   "trich": "do đó thiết bị nhóm này nên được phân biệt với các máy thông thường để rèn luyện thể lực, hay thể dục y học, sử dụng ở nhà hay trong các phòng tập (nhóm 95.06)"
+   "trich": "do đó thiết bị nhóm này nên được phân biệt với các máy thông thường để rèn luyện thể lực, hay thể dục y học, sử dụng ở nhà hay trong các phòng tập (nhóm 95.06)",
+   "nguonLoai": "AI_DA_KIEM"
   }
  ],
  "phanBiet": [],
+ "tieuChi6": [],
  "dong8": [
   {
    "hs": "90191010",
    "dieuKien": "Hoạt động bằng điện",
    "loaiKhac": false,
    "nguon": "tax.90191010",
-   "trich": "90191010 - - Hoạt động bằng điện"
+   "trich": "90191010 - - Hoạt động bằng điện",
+   "nguonLoai": "AI_DA_KIEM"
   },
   {
    "hs": "90191090",
    "dieuKien": "Loại khác trong phân nhóm máy trị liệu cơ học, máy xoa bóp và thiết bị thử nghiệm trạng thái tâm lý (theo tên WCO)",
    "loaiKhac": true,
    "nguon": "wco.901910",
-   "trich": "Mechano-therapy appliances; massage apparatus and psychological aptitude-testing apparatus"
+   "trich": "Mechano-therapy appliances; massage apparatus and psychological aptitude-testing apparatus",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "901910",
+    "truAnhEm": [
+     "90191010"
+    ],
+    "toTienCoTen": "901910",
+    "dinhNghiaDuoc": true
+   }
   },
   {
    "hs": "90192010",
    "dieuKien": "Máy trợ thở xâm lấn: dùng một ống được đưa vào khí quản của bệnh nhân qua cổ họng, xâm nhập vào đường hô hấp",
    "loaiKhac": false,
    "nguon": "sen.90192010",
-   "trich": "Máy trợ thở xâm lấn sử dụng một ống được đưa vào khí quản của bệnh nhân qua cổ họng, do đó xâm nhập vào đường hô hấp"
+   "trich": "Máy trợ thở xâm lấn sử dụng một ống được đưa vào khí quản của bệnh nhân qua cổ họng, do đó xâm nhập vào đường hô hấp",
+   "nguonLoai": "AI_DA_KIEM"
   },
   {
    "hs": "90192020",
    "dieuKien": "Máy trợ thở khác",
    "loaiKhac": false,
    "nguon": "tax.90192020",
-   "trich": "90192020 - - Máy trợ thở khác"
+   "trich": "90192020 - - Máy trợ thở khác",
+   "nguonLoai": "AI_DA_KIEM"
   },
   {
    "hs": "90192090",
    "dieuKien": "Loại khác trong phân nhóm thiết bị trị liệu hô hấp; thiết bị trị liệu bằng ôzôn, oxy, xông khí; thiết bị hô hấp nhân tạo hoặc trị liệu hô hấp khác (theo tên WCO)",
    "loaiKhac": true,
    "nguon": "wco.901920",
-   "trich": "Therapeutic respiration apparatus; ozone, oxygen, aerosol therapy apparatus; artificial respiration or other therapeutic respiration apparatus"
+   "trich": "Therapeutic respiration apparatus; ozone, oxygen, aerosol therapy apparatus; artificial respiration or other therapeutic respiration apparatus",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "901920",
+    "truAnhEm": [
+     "90192010",
+     "90192020"
+    ],
+    "toTienCoTen": "901920",
+    "dinhNghiaDuoc": true
+   }
   }
  ],
  "boPhan": {
   "quyTac": "Bộ phận và phụ kiện cho các dụng cụ hoặc thiết bị của nhóm này cũng được phân loại trong nhóm (theo Chú giải 1 và 2 của Chương 90).",
   "tomTat": "Bao gồm lồng chụp và các thiết bị gắn lồng chụp cho các máy trị liệu ôxy.",
   "nguon": "nhom9019.nhom",
-  "trich": "Theo các Chú giải 1 và 2 của Chương này (xem Chú giải tổng quát), các bộ phận và phụ kiện cho các dụng cụ hoặc thiết bị nhóm này cũng được phân loại trong nhóm. Những bộ phận và phụ kiện này bao gồm lồng chụp và các thiết bị gắn lồng chụp cho các máy trị liệu ôxy."
+  "trich": "Theo các Chú giải 1 và 2 của Chương này (xem Chú giải tổng quát), các bộ phận và phụ kiện cho các dụng cụ hoặc thiết bị nhóm này cũng được phân loại trong nhóm. Những bộ phận và phụ kiện này bao gồm lồng chụp và các thiết bị gắn lồng chụp cho các máy trị liệu ôxy.",
+  "nguonLoai": "AI_DA_KIEM"
  },
- "dungTuNguon": [
-  "nhom9019.nhom",
-  "sen.90192010",
-  "tax.90191010",
-  "tax.90192020",
-  "wco-op.901910.1",
-  "wco-op.901910.2",
-  "wco-op.901920.1",
-  "wco.901910",
-  "wco.901920"
- ],
- "phienBan": "HS2022+SEN2022",
- "taoBoi": {
-  "provider": "phiên Claude quản lý (6 agent soạn + 6 agent soát độc lập, 09/10/2026)",
-  "model": null,
-  "luc": "2026-10-09T17:04:44.650Z",
-  "ms": 5
- },
- "kiemTra": {
-  "tong": 13,
-  "dat": 13,
-  "loai": 0,
-  "nguonBiCat": []
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "9019",
+    "cap": 4,
+    "cha": "90",
+    "tenVi": "Thiết bị trị liệu cơ học; máy xoa bóp; máy thử nghiệm trạng thái tâm lý; máy trị liệu bằng ôzôn, bằng oxy, bằng xông, máy hô hấp nhân tạo hoặc máy hô hấp trị liệu khác.",
+    "tenEn": "Mechano-therapy, massage appliances; psychological aptitude testing apparatus; ozone, oxygen, aerosol therapy, artificial respiration or other therapeutic respiration apparatus",
+    "suyRa": false
+   },
+   {
+    "id": "901910",
+    "cap": 6,
+    "cha": "9019",
+    "tenVi": null,
+    "tenEn": "Mechano-therapy appliances; massage apparatus and psychological aptitude-testing apparatus",
+    "suyRa": false
+   },
+   {
+    "id": "90191010",
+    "cap": 8,
+    "cha": "901910",
+    "tenVi": "Hoạt động bằng điện",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "90191090",
+    "cap": 8,
+    "cha": "901910",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "901920",
+    "cap": 6,
+    "cha": "9019",
+    "tenVi": null,
+    "tenEn": "Therapeutic respiration apparatus; ozone, oxygen, aerosol therapy apparatus; artificial respiration or other therapeutic respiration apparatus",
+    "suyRa": false
+   },
+   {
+    "id": "90192010",
+    "cap": 8,
+    "cha": "901920",
+    "tenVi": "Máy trợ thở xâm lấn (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "90192020",
+    "cap": 8,
+    "cha": "901920",
+    "tenVi": "Máy trợ thở khác",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "90192090",
+    "cap": 8,
+    "cha": "901920",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
  },
  "yKienWco": [
   {
@@ -126,5 +205,38 @@
    "daSoatAnh": false
   }
  ],
+ "dungTuNguon": [
+  "nhom9019.nhom",
+  "sen.90192010",
+  "tax.90191010",
+  "tax.90192020",
+  "wco-op.901910.1",
+  "wco-op.901910.2",
+  "wco-op.901920.1",
+  "wco.901910",
+  "wco.901920"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "phiên Claude quản lý (6 agent soạn + 6 agent soát độc lập, 09/10/2026)",
+  "model": null,
+  "luc": "2026-10-09T17:04:44.650Z",
+  "ms": 5
+ },
+ "kiemTra": {
+  "tong": 16,
+  "dat": 16,
+  "loai": 0,
+  "nguonBiCat": [],
+  "nangCap": {
+   "luc": "2026-10-11",
+   "them": [
+    "nguonLoai",
+    "cay",
+    "tieuChi6",
+    "phamViLoaiKhac"
+   ]
+  }
+ },
  "yKienWcoDayDu": false
 }

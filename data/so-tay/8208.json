@@ -3,7 +3,8 @@
  "phamVi": {
   "text": "Dao chưa lắp hoặc lưỡi cắt (hình chữ nhật, hình tròn hoặc hình dạng khác) dùng cho máy móc hoặc thiết bị cơ khí.",
   "nguon": "nhom8208.nhom",
-  "trich": "Nhóm này áp dụng cho các loại dao chưa lắp hoặc các lưỡi cắt có hình chữ nhật, hình tròn hoặc hình dạng khác, dùng cho các máy móc hoặc thiết bị cơ khí."
+  "trich": "Nhóm này áp dụng cho các loại dao chưa lắp hoặc các lưỡi cắt có hình chữ nhật, hình tròn hoặc hình dạng khác, dùng cho các máy móc hoặc thiết bị cơ khí.",
+  "nguonLoai": "AI_DA_KIEM"
  },
  "dieuKienVao": [
   {
@@ -15,7 +16,8 @@
     "lưỡi cắt hoặc dao của các dụng cụ cầm tay thuộc nhóm 82.01 đến 82.05 (ví dụ: lưỡi bào)"
    ],
    "nguon": "nhom8208.nhom",
-   "trich": "Nhóm này áp dụng cho các loại dao chưa lắp hoặc các lưỡi cắt có hình chữ nhật, hình tròn hoặc hình dạng khác, dùng cho các máy móc hoặc thiết bị cơ khí. Tuy vậy nhóm này không bao gồm các lưỡi cắt hoặc dao của các dụng cụ cầm tay thuộc nhóm 82.01 đến 82.05 (ví dụ: lưỡi bào)."
+   "trich": "Nhóm này áp dụng cho các loại dao chưa lắp hoặc các lưỡi cắt có hình chữ nhật, hình tròn hoặc hình dạng khác, dùng cho các máy móc hoặc thiết bị cơ khí. Tuy vậy nhóm này không bao gồm các lưỡi cắt hoặc dao của các dụng cụ cầm tay thuộc nhóm 82.01 đến 82.05 (ví dụ: lưỡi bào).",
+   "nguonLoai": "AI_DA_KIEM"
   }
  ],
  "loaiTru": [
@@ -23,7 +25,8 @@
    "dieuKien": "Đầu, lưỡi dao và lưỡi cắt của máy cạo râu dùng điện hoặc tông đơ cắt tóc dùng điện",
    "sangNhom": "8510",
    "nguon": "ch82.chuong",
-   "trich": "Đầu, lưỡi dao và lưỡi cắt của máy cạo râu dùng điện hoặc tông đo cắt tóc dùng điện được xếp vào nhóm 85.10."
+   "trich": "Đầu, lưỡi dao và lưỡi cắt của máy cạo râu dùng điện hoặc tông đo cắt tóc dùng điện được xếp vào nhóm 85.10.",
+   "nguonLoai": "AI_DA_KIEM"
   }
  ],
  "phanBiet": [
@@ -32,72 +35,151 @@
    "neuCo": "82081000",
    "neuKhong": "82082000|82083000|82084000|82089000",
    "nguon": "tax.82081000",
-   "trich": "82081000 - Để gia công kim loại"
+   "trich": "82081000 - Để gia công kim loại",
+   "nguonLoai": "AI_DA_KIEM"
   },
   {
    "hoi": "Dao hoặc lưỡi cắt dùng cho máy hoặc thiết bị cơ khí gia công gỗ?",
    "neuCo": "82082000",
    "neuKhong": "82081000|82083000|82084000|82089000",
    "nguon": "tax.82082000",
-   "trich": "82082000 - Để gia công gỗ"
+   "trich": "82082000 - Để gia công gỗ",
+   "nguonLoai": "AI_DA_KIEM"
   },
   {
    "hoi": "Dao hoặc lưỡi cắt dùng cho dụng cụ nhà bếp hoặc cho máy dùng trong công nghiệp thực phẩm?",
    "neuCo": "82083000",
    "neuKhong": "82081000|82082000|82084000|82089000",
    "nguon": "tax.82083000",
-   "trich": "82083000 - Dùng cho dụng cụ nhà bếp hoặc cho máy dùng trong công nghiệp thực phẩm"
+   "trich": "82083000 - Dùng cho dụng cụ nhà bếp hoặc cho máy dùng trong công nghiệp thực phẩm",
+   "nguonLoai": "AI_DA_KIEM"
   },
   {
    "hoi": "Dao hoặc lưỡi cắt dùng cho máy nông nghiệp, làm vườn hoặc lâm nghiệp?",
    "neuCo": "82084000",
    "neuKhong": "82081000|82082000|82083000|82089000",
    "nguon": "tax.82084000",
-   "trich": "82084000 - Dùng cho máy nông nghiệp, làm vườn hoặc lâm nghiệp"
+   "trich": "82084000 - Dùng cho máy nông nghiệp, làm vườn hoặc lâm nghiệp",
+   "nguonLoai": "AI_DA_KIEM"
   }
  ],
+ "tieuChi6": [],
  "dong8": [
   {
    "hs": "82081000",
    "dieuKien": "Để gia công kim loại (WCO 820810: knives and cutting blades, for machines or for mechanical appliances, for metal working)",
    "loaiKhac": false,
    "nguon": "tax.82081000",
-   "trich": "82081000 - Để gia công kim loại"
+   "trich": "82081000 - Để gia công kim loại",
+   "nguonLoai": "AI_DA_KIEM"
   },
   {
    "hs": "82082000",
    "dieuKien": "Để gia công gỗ (WCO 820820: knives and cutting blades, for wood working machines or mechanical appliances)",
    "loaiKhac": false,
    "nguon": "tax.82082000",
-   "trich": "82082000 - Để gia công gỗ"
+   "trich": "82082000 - Để gia công gỗ",
+   "nguonLoai": "AI_DA_KIEM"
   },
   {
    "hs": "82083000",
    "dieuKien": "Dùng cho dụng cụ nhà bếp hoặc cho máy dùng trong công nghiệp thực phẩm",
    "loaiKhac": false,
    "nguon": "tax.82083000",
-   "trich": "82083000 - Dùng cho dụng cụ nhà bếp hoặc cho máy dùng trong công nghiệp thực phẩm"
+   "trich": "82083000 - Dùng cho dụng cụ nhà bếp hoặc cho máy dùng trong công nghiệp thực phẩm",
+   "nguonLoai": "AI_DA_KIEM"
   },
   {
    "hs": "82084000",
    "dieuKien": "Dùng cho máy nông nghiệp, làm vườn hoặc lâm nghiệp",
    "loaiKhac": false,
    "nguon": "tax.82084000",
-   "trich": "82084000 - Dùng cho máy nông nghiệp, làm vườn hoặc lâm nghiệp"
+   "trich": "82084000 - Dùng cho máy nông nghiệp, làm vườn hoặc lâm nghiệp",
+   "nguonLoai": "AI_DA_KIEM"
   },
   {
    "hs": "82089000",
    "dieuKien": "Loại khác: dao và lưỡi cắt cho máy móc hoặc thiết bị cơ khí chưa nêu ở các dòng trên (WCO 820890: n.e.c. in heading no. 8208)",
    "loaiKhac": true,
    "nguon": "tax.82089000",
-   "trich": "82089000 - Loại khác"
+   "trich": "82089000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8208",
+    "truAnhEm": [
+     "82081000",
+     "82082000",
+     "82083000",
+     "82084000"
+    ],
+    "toTienCoTen": "8208",
+    "dinhNghiaDuoc": true
+   }
   }
  ],
  "boPhan": {
   "quyTac": "Các bộ phận bằng kim loại cơ bản của sản phẩm thuộc Chương 82 được phân loại theo các sản phẩm đó, trừ các bộ phận được chi tiết riêng và tay cầm cho các loại dụng cụ cầm tay (nhóm 84.66).",
   "tomTat": "Bộ phận kim loại cơ bản của sản phẩm Chương 82 phân loại theo sản phẩm; ngoại lệ: bộ phận được chi tiết riêng, và tay cầm cho dụng cụ cầm tay (84.66).",
   "nguon": "ch82.chuong",
-  "trich": "Các bộ phận bằng kim loại cơ bản của các sản phẩm thuộc Chương này được phân loại theo các sản phẩm đó, trừ các bộ phận được chi tiết riêng và tay cầm cho các loại dụng cụ cầm tay (nhóm 84.66)."
+  "trich": "Các bộ phận bằng kim loại cơ bản của các sản phẩm thuộc Chương này được phân loại theo các sản phẩm đó, trừ các bộ phận được chi tiết riêng và tay cầm cho các loại dụng cụ cầm tay (nhóm 84.66).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8208",
+    "cap": 4,
+    "cha": "82",
+    "tenVi": "Dao và lưỡi cắt, dùng cho máy hoặc dụng cụ cơ khí.",
+    "tenEn": "Knives and cutting blades, for machines or for mechanical appliances",
+    "suyRa": false
+   },
+   {
+    "id": "82081000",
+    "cap": 8,
+    "cha": "8208",
+    "tenVi": "Để gia công kim loại",
+    "tenEn": "Tools; knives and cutting blades, for machines or for mechanical appliances, for metal working",
+    "suyRa": false
+   },
+   {
+    "id": "82082000",
+    "cap": 8,
+    "cha": "8208",
+    "tenVi": "Để gia công gỗ",
+    "tenEn": "Tools; knives and cutting blades, for wood working machines or mechanical appliances",
+    "suyRa": false
+   },
+   {
+    "id": "82083000",
+    "cap": 8,
+    "cha": "8208",
+    "tenVi": "Dùng cho dụng cụ nhà bếp hoặc cho máy dùng trong công nghiệp thực phẩm",
+    "tenEn": "Tools; knives and cutting blades, for kitchen appliances or for machines used by the food industry",
+    "suyRa": false
+   },
+   {
+    "id": "82084000",
+    "cap": 8,
+    "cha": "8208",
+    "tenVi": "Dùng cho máy nông nghiệp, làm vườn hoặc lâm nghiệp",
+    "tenEn": "Tools; knives and cutting blades, for agricultural, horticultural or forestry machines or mechanical appliances",
+    "suyRa": false
+   },
+   {
+    "id": "82089000",
+    "cap": 8,
+    "cha": "8208",
+    "tenVi": "Loại khác",
+    "tenEn": "Tools; knives and cutting blades, for machines or mechanical appliances, n.e.c. in heading no. 8208",
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
  },
  "dungTuNguon": [
   "ch82.chuong",
@@ -119,6 +201,15 @@
   "tong": 13,
   "dat": 13,
   "loai": 0,
-  "nguonBiCat": []
+  "nguonBiCat": [],
+  "nangCap": {
+   "luc": "2026-10-11",
+   "them": [
+    "nguonLoai",
+    "cay",
+    "tieuChi6",
+    "phamViLoaiKhac"
+   ]
+  }
  }
 }

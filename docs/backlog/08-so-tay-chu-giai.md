@@ -76,6 +76,32 @@ thì bỏ, không giữ "cho đẹp". Mã nguồn: `nhom<4>.nhom|loai_tru|…`, 
 `sen.<mã>`, `tax.<8 số>`.
 `phienBan` ghi rõ 2017/2022/SEN để không trộn hai bản chú giải trong một mục.
 
+### Mở rộng 11/10/2026 (#236 việc 2, CEO duyệt): nhãn loại nguồn + cây + tiêu chí 6 số
+
+```jsonc
+{
+  "cay": {                                   // MÁY SINH từ lib/hs-tree.js (chữ số của mã) mỗi lần dựng/kiểm — không soạn tay
+    "nguonLoai": "MAY_SUY", "sinhTu": "lib/hs-tree.js",
+    "nut": [ { "id": "8504211", "cap": "TIEU_DE_QG", "cha": "850421", "tenVi": null, "tenEn": null, "suyRa": true }, "…" ],
+    "tenDien": [                             // người soạn ĐIỀN tên cho nút bị lược / phân nhóm chưa có tên tiếng Việt — máy kiểm trích như mọi mục
+      { "id": "8504211", "tenVi": "Máy biến đổi đo lường", "nguon": "sen.85042111", "trich": "…", "nguonLoai": "AI_DA_KIEM" }
+    ]
+  },
+  "tieuChi6": [                              // tiêu chí kỹ thuật cấp 6 số có cấu trúc; nguồn chú giải/SEN/wco.<6 số>, KHÔNG tax.*
+    { "hs6": "850421", "fact": "cong_suat_kva", "op": "<=", "value": 650, "donVi": "kVA", "nguon": "wco.850421", "trich": "…not exceeding 650kVA", "nguonLoai": "AI_DA_KIEM" }
+  ],
+  "dong8": [
+    { "hs": "85044090", "dieuKien": "…", "loaiKhac": true, "nguon": "tax.85044090", "trich": "Loại khác", "nguonLoai": "AI_DA_KIEM",
+      "tieuChi": null,                       // tuỳ chọn {fact, op, value, donVi}: phân biệt dòng này với anh em; số phải có trong trích
+      "phamViLoaiKhac": { "nguonLoai": "MAY_SUY", "cha": "850440", "truAnhEm": ["8504401", "85044020", "85044030", "85044040"], "toTienCoTen": "850440", "dinhNghiaDuoc": true } }
+  ]
+}
+```
+
+- `nguonLoai` trên **mọi** mục (`lib/nguon-loai.js`): mục soạn = `AI_DA_KIEM` (máy đã kiểm trích; máy tự gán khi thiếu) hoặc `NGUOI_DUYET` (quy trình soát độc lập ghi); khối máy sinh = `MAY_SUY`. `AI_CHUA_KIEM` hay nhãn lạ → máy loại mục. Runtime (`lib/so-tay-runtime.js`) **không trích** mục `AI_CHUA_KIEM`.
+- Máy kiểm cây `scripts/check-cay.mjs` (trong `npm test`): sổ tay lệch cây hiện hành (biểu thuế đổi) → đỏ; chỗ còn trống (lá chưa có `dong8`, nút ảo chưa có tên, phân nhóm chưa có `tieuChi6`) → báo, là việc của vòng soạn.
+- Nâng cấp tệp cũ tại chỗ: `npm run so-tay:nang-cap` (chạy lại máy kiểm, không làm rơi mục).
+
 ## Cách làm (từng bước, mỗi bước có nghiệm thu)
 
 1. **Dựng cho ~60 nhóm có trong bộ đo trước** (danh sách từ `bench-classify-llm` kết quả đã lưu

@@ -78,7 +78,7 @@ curl -X POST https://.../api/suggest \
   ],
   "precedentMatches": [...],
   "confusionWarning": null,
-  "explanatoryNote": { "summary": "..." },
+  "explanatoryNote": { "noteVi": "...", "nguonLoai": "AI_CHUA_KIEM", "ghiChu": "chữ AI chưa kiểm — không làm căn cứ" },
   "cached": false,
   "ms": 1240
 }
@@ -86,6 +86,7 @@ curl -X POST https://.../api/suggest \
 
 **`canCuPhapLy` — căn cứ pháp lý (TT 85/2026/TT-BTC, hiệu lực 15/09/2026).** Có trong `/api/suggest` và `/api/classify`.
 - Bước 1 = Điều 4 (Danh mục VN + Biểu thuế + 6 quy tắc tổng quát; chi tiết quy tắc ở `girRulesApplied[]`). Bước 2 = Điều 6.1, **chỉ khi bước 1 chưa ra mã duy nhất**; `canDung` cho biết có cần dùng không. Điều 6.1 chỉ *liệt kê* a→d (Chú giải chi tiết HS, ý kiến phân loại WCO, SEN AHTN, CSDL Danh mục VN); văn bản **không** ghi "theo thứ tự" hay "ưu tiên", nên API không khẳng định thứ tự pháp lý.
+- `6.1.a` dựa **nguyên văn chú giải nhóm** (toàn văn HS 2022 trong kệ sách; kèm `nhom`, `toanVan`), không dựa `explanatoryNote` — trường đó là chữ AI chưa kiểm (`nguonLoai: AI_CHUA_KIEM`, có `ghiChu`), chỉ gợi ý. Nhãn loại nguồn dùng chung: `NGUYEN_VAN` / `MAY_SUY` / `AI_DA_KIEM` / `NGUOI_DUYET` / `AI_CHUA_KIEM` (`lib/nguon-loai.js`); mọi mục sổ tay trong `soTay` mang `nguonLoai`, mục `AI_CHUA_KIEM` không bao giờ được trích.
 - Trạng thái từng tài liệu nói đúng điều hệ thống biết: `CO_NOI_DUNG` (kệ sách có nội dung cho mã này), `KHONG_CO_DU_LIEU_CHO_MA_NAY`, `CHUA_TRA_CUU` (kho chưa nạp, hiện là ý kiến phân loại WCO), `CHUA_TRA_CUU_TRONG_LUOT_NAY`, `CO_TIEN_LE_KHOP`/`KHONG_CO_TIEN_LE_KHOP`. Phản hồi suggest/classify chỉ trả **con trỏ** tới ý kiến phân loại WCO (kèm `xemToanVan`); toàn văn xem ở `/api/wco-opinions` bên dưới.
 - `dieuKhoan` chứa nguyên văn từng điều được dẫn (mỗi điều một lần); các bước chỉ nêu id. Đây là điều luật để tham khảo, **không phải quyết định phân loại**; người khai chịu trách nhiệm về mã số khai.
 
@@ -286,11 +287,12 @@ Số gạch trong tên dòng chỉ là tầng hiển thị. Trước đó anh em
 | | `parentCode`, `parentSuyRa` | Cha thật theo chữ số; `parentSuyRa: true` = tiêu đề bị lược khi nhập biểu thuế (vd `8504211`), tên chưa có |
 | | `siblingGroupCodes[]`, `treePath[]` | Anh em là nhóm con (tiêu đề); đường từ phần tới cha |
 | | `parentSubheadingCode`, `indentationLevel`, `treeLevel` | Giữ như cũ |
-| `POST /api/suggest`, `/api/classify` → `soTay` | `viTri` | Vị trí mã đã chọn: `nut`, `duongDan[]`, `cha {id, ten, suyRa}`, `anhEm[]`. Có cả khi nhóm chưa có sổ tay |
+| `POST /api/suggest`, `/api/classify` → `soTay` | `viTri` | Vị trí mã đã chọn: `nut`, `duongDan[]`, `cha {id, ten, suyRa}`, `anhEm[]`. Có cả khi nhóm chưa có sổ tay. Nút bị lược mà sổ tay đã điền tên (kèm trích, máy kiểm) có thêm `tenSoTay {tenVi, nguon, trich, nguonLoai}` và `duongDan[]` ghi "tên theo sổ tay: …" |
 | | `loaiKhac` (chỉ khi mã đã chọn là dòng "Loại khác") | `toTienCoTen` trừ `anhEmCoTen[]`; mỗi anh em kèm `dieuKien` + `nguon` + `trich` từ sổ tay (đã máy kiểm) nếu có. **Cố vấn**: không đổi mã; là danh sách người khai phải chứng minh hàng KHÔNG rơi vào |
 | | `canGiaiTrinh[].loai` | `LOAI_TRU_SANG_NHOM` (sổ tay loại trừ sang nhóm đang là ứng viên) hoặc **`ANH_EM_CO_TEN_KHOP`** (mã chọn là "Loại khác" trần mà mô tả hàng khớp dòng anh em có tên: `hs`, `tenVi`, `doKhop`, `nguon`, `trich`). Cả hai là máy **nghi**, chưa đo tỉ lệ báo oan — Cổng/ERP hiển thị để người khai giải trình hoặc xem lại mã, **không** tự đổi mã |
 | `POST /api/classify`, `/api/suggest` + header `X-OZ-Eval-Holdout: 1` | — | Lượt bench chống rò: kho tiền lệ Oz bỏ tập giữ riêng chỉ trong lượt này. Chỉ bớt ngữ cảnh, không mở gì thêm; khách thường không gửi |
 | `GET /api/tree?hs=` (mới, công khai) | `nut`, `duongDan[]`, `cha`, `anhEm[]`, `con[]`, `loaiKhac`, `nguon{}` | Một mã (2/4/6/8 số, hoặc 5/7 số cho nút trung gian) → toàn bộ quan hệ + phạm vi "Loại khác" + nguồn gắn vào nút với nhãn `NGUYEN_VAN` / `DA_KIEM` / `AI_CHUA_KIEM`. Mã WCO `xxxx00` trỏ về nhóm. Đây là nguồn cho công cụ MCP `tra_cay_hs` bên Cổng OZ |
+| `GET /api/notes` → `chain[]` | `nguonLoai` | Cấp `NATIONAL` (từ `explanatory-notes.json`) mang `nguonLoai: AI_CHUA_KIEM` + `ghiChu`; các cấp phần/chương/nhóm/phân nhóm là nguyên văn |
 | `GET /api/tax`, `GET /api/search` → `breadcrumb` | `levels[]`, `trail` | Nay có tên tiếng Việt chương/nhóm (từ chú giải) và cả tiêu đề bị lược ("Tiêu đề 8504211 (tên bị lược)") |
 | | `path[]`, `parentId`, `siblingHsCodes[]`, `anhEmCoTen[]`, `toTienCoTen` | Mới. Với dòng "Loại khác": phạm vi = `toTienCoTen` trừ `anhEmCoTen` (cha trừ anh em có tên) |
 | | `isResidual`, `scopeVi`, `excludesVi` | Giữ như cũ; `scopeVi`/`excludesVi` là chữ AI (chưa kiểm), chỉ gợi ý |

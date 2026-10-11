@@ -107,5 +107,27 @@ assert('dữ liệu thật: không có trường nguyên văn nào lọt ra (ch�
   assert('máy nghi: nhóm chưa có sổ tay vẫn nghi được theo tên dòng biểu thuế (nguon tax.<mã>)', n4.trangThai === 'CHUA_CO_SO_TAY_CHO_NHOM' && (n4.canGiaiTrinh || []).some((x) => x.loai === 'ANH_EM_CO_TEN_KHOP' && x.hs === '40112011' && x.nguon === 'tax.40112011'), JSON.stringify(n4.canGiaiTrinh));
 }
 
+
+// ── #236 việc 2: tên điền từ sổ tay đính vào viTri; mục AI_CHUA_KIEM không được trích ──
+{
+  fs.mkdirSync(dataPath('so-tay'), { recursive: true });
+  fs.writeFileSync(dataPath('so-tay', '8504.json'), JSON.stringify({ nhom: '8504', loaiTru: [{ dieuKien: 'máy hàn', sangNhom: '8515', nguon: 'nhom8504.nhom', nguonLoai: 'AI_CHUA_KIEM' }], yKienWcoDayDu: false, yKienWco: [],
+    cay: { nguonLoai: 'MAY_SUY', tenDien: [{ id: '8504211', tenVi: 'Máy biến đổi đo lường', nguon: 'tax.85042111', trich: 'Máy biến đổi đo lường', nguonLoai: 'AI_DA_KIEM' }, { id: '8504401', tenVi: 'tên AI chưa kiểm', nguon: 'x', nguonLoai: 'AI_CHUA_KIEM' }] },
+    dong8: [
+      { hs: '85044040', dieuKien: 'Bộ nghịch lưu (inverter)', loaiKhac: false, nguon: 'tax.85044040', trich: 'Bộ nghịch lưu', nguonLoai: 'AI_CHUA_KIEM' },
+      { hs: '85044030', dieuKien: 'Bộ chỉnh lưu khác', loaiKhac: false, nguon: 'tax.85044030', trich: 'Bộ chỉnh lưu khác', nguonLoai: 'AI_DA_KIEM' },
+    ] }));
+  rt.reset();
+  const v = rt.advise({ topHs: '85042111', candidates: [] });
+  assert('viTri: nút cha bị lược có tenSoTay (tên điền + nguồn + trích) và đường dẫn ghi "tên theo sổ tay"', v.viTri.cha.id === '8504211' && v.viTri.cha.tenSoTay?.tenVi === 'Máy biến đổi đo lường' && v.viTri.cha.tenSoTay.nguon === 'tax.85042111' && v.viTri.duongDan.some((d) => /tên theo sổ tay: Máy biến đổi đo lường/.test(d)), JSON.stringify(v.viTri).slice(0, 300));
+  const w = rt.advise({ topHs: '85044090', candidates: ['8504', '8515'], sanPham: { tenHang: 'Bộ nghịch lưu năng lượng mặt trời', chatLieu: 'kim loại' } });
+  const ae = w.loaiKhac.anhEmCoTen;
+  assert('AI_CHUA_KIEM không được trích: dong8 85044040 (AI_CHUA_KIEM) không kèm trich; 85044030 (AI_DA_KIEM) có; tên điền AI_CHUA_KIEM không hiện',
+    ae.find((x) => x.hs === '85044040') && !ae.find((x) => x.hs === '85044040').trich && ae.find((x) => x.hs === '85044030')?.trich === 'Bộ chỉnh lưu khác' && !ae.find((x) => x.hs === '8504401')?.tenSoTay && rt.tenSoTayOf('8504401') === null, JSON.stringify(ae).slice(0, 400));
+  assert('máy nghi vẫn chạy trên tên biểu thuế nhưng không trích sổ tay AI_CHUA_KIEM; loaiTru AI_CHUA_KIEM không vào canGiaiTrinh',
+    w.canGiaiTrinh.some((x) => x.loai === 'ANH_EM_CO_TEN_KHOP' && x.hs === '85044040' && x.nguon === 'tax.85044040' && !x.trich) && !w.canGiaiTrinh.some((x) => x.loai === 'LOAI_TRU_SANG_NHOM'), JSON.stringify(w.canGiaiTrinh));
+  fs.rmSync(dataPath('so-tay'), { recursive: true, force: true }); rt.reset();
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
