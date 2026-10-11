@@ -287,7 +287,10 @@ const TAX_RESPONSE = {
     },
     mappedHs: { type: 'object', description: 'Chương 98: mã hàng tương ứng tại Mục I' },
     tariff: { type: 'object', description: 'effectiveDate, lastCheckedAt, freshness (OK/DUE/...), noteVi' },
-    breadcrumb: { type: 'object' },
+    breadcrumb: {
+      type: 'object',
+      description: 'Chuỗi phân cấp theo chữ số của mã (phần → chương → nhóm → phân nhóm → tiêu đề quốc gia → dòng): trail, levels[], isResidual; với dòng "Loại khác" có thêm scopeVi/excludesVi (chữ AI, chỉ gợi ý). Trường `tree` cùng phản hồi cho siblingHsCodes (anh em cùng cha thật theo chữ số), parentCode, parentSuyRa (cha là tiêu đề bị lược khi nhập biểu thuế, tên chưa có), treePath.',
+    },
   },
 };
 

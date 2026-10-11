@@ -274,6 +274,25 @@ curl "https://.../api/tax?hs=10019911&origin=CN"
 
 ---
 
+## 3b. Cây quan hệ HS (phần → chương → nhóm → phân nhóm → tiêu đề quốc gia → dòng 8 số) — 11/10/2026
+
+Từ 11/10/2026 mọi quan hệ cha/anh em trong phản hồi lấy từ `lib/hs-tree.js`: suy **từ chữ số của mã** (2 số = chương,
+4 = nhóm, 5–6 = phân nhóm WCO theo quy ước `xxxx.x0` một gạch / `xxxx.xy` hai gạch, 7 = tiêu đề quốc gia, 8 = dòng lá).
+Số gạch trong tên dòng chỉ là tầng hiển thị. Trước đó anh em suy theo gạch — sai ở 1.964/3.383 mã "Loại khác".
+
+| Nơi | Trường | Ý nghĩa |
+|---|---|---|
+| `GET /api/tax` → `tree` | `siblingHsCodes[]` | Dòng 8 số **cùng cha thật** (vd 85044090 → 85044020, 85044030, 85044040; không còn 85041000) |
+| | `parentCode`, `parentSuyRa` | Cha thật theo chữ số; `parentSuyRa: true` = tiêu đề bị lược khi nhập biểu thuế (vd `8504211`), tên chưa có |
+| | `siblingGroupCodes[]`, `treePath[]` | Anh em là nhóm con (tiêu đề); đường từ phần tới cha |
+| | `parentSubheadingCode`, `indentationLevel`, `treeLevel` | Giữ như cũ |
+| `GET /api/tax`, `GET /api/search` → `breadcrumb` | `levels[]`, `trail` | Nay có tên tiếng Việt chương/nhóm (từ chú giải) và cả tiêu đề bị lược ("Tiêu đề 8504211 (tên bị lược)") |
+| | `path[]`, `parentId`, `siblingHsCodes[]`, `anhEmCoTen[]`, `toTienCoTen` | Mới. Với dòng "Loại khác": phạm vi = `toTienCoTen` trừ `anhEmCoTen` (cha trừ anh em có tên) |
+| | `isResidual`, `scopeVi`, `excludesVi` | Giữ như cũ; `scopeVi`/`excludesVi` là chữ AI (chưa kiểm), chỉ gợi ý |
+| `GET /api/kg_chapter?chapter=85&tree=1` | nút `level` | Thêm hai loại nút ảo: `ONE_DASH_GROUP` (nhóm một gạch, vd `85042`) và `NATIONAL_HEADER` (tiêu đề quốc gia, vd `8504211`), đều `suyRa: true`, `name` có thể `null`. `SUBHEADING` có `nameEn` WCO. Dòng lá giữ nguyên trường cũ. Tên nhóm lấy từ chú giải nhóm thay vì dòng lá đầu |
+
+Nút ảo không bịa tên: `name: null` cho tới khi sổ tay điền kèm trích dẫn. Người đọc cây nên hiển thị mã nút kèm nhãn "tên bị lược".
+
 ## 4. Tra chi tiết chính sách kiểm tra chuyên ngành
 
 ### `GET /api/tax?hs=<code>` (trường `warnings`)
