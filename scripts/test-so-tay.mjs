@@ -102,5 +102,44 @@ assert('loaiTru mà câu nguồn chỉ nói "thường thuộc nhóm" bị loạ
   assert('carryOver: nhóm chưa có file cũ → không có yKienWco', !('yKienWco' in none) && none.kiemTra.tong === 7);
 }
 
+
+// ── #236 việc 2: nhãn loại nguồn + cây + tiêu chí 6 số + tên điền + máy kiểm cây ──
+{
+  const { buildCay, phamViLoaiKhac, kiemCay, checkTieuChi } = require('../lib/so-tay.js');
+  const r2 = verifySoTay(ok, '8509', src);
+  assert('nguonLoai: mục soạn thiếu nhãn → máy gán AI_DA_KIEM; NGUOI_DUYET giữ nguyên',
+    r2.soTay.dieuKienVao[0].nguonLoai === 'AI_DA_KIEM' && r2.soTay.dong8[0].nguonLoai === 'AI_DA_KIEM'
+    && verifySoTay({ dong8: [{ ...ok.dong8[0], nguonLoai: 'NGUOI_DUYET' }] }, '8509', src).soTay.dong8[0].nguonLoai === 'NGUOI_DUYET');
+  assert('nguonLoai AI_CHUA_KIEM hoặc nhãn lạ → loại', why('dong8', { ...ok.dong8[0], nguonLoai: 'AI_CHUA_KIEM' }) === 'nguon-loai-khong-hop-le:AI_CHUA_KIEM' && /nguon-loai-khong-hop-le/.test(why('phamVi', { ...ok.phamVi, nguonLoai: 'XYZ' })));
+  const cay = buildCay('8509');
+  assert('cay: máy sinh từ hs-tree, nhãn MAY_SUY, có nhóm + lá 85098010, cha của lá đúng chữ số', cay.nguonLoai === 'MAY_SUY' && cay.nut[0].id === '8509' && cay.nut.some((n) => n.id === '85098010' && n.cap === 8 && n.cha) && cay.nut.every((n) => n.id === '8509' || n.cha));
+  assert('verifySoTay luôn kèm cay (tenDien rỗng khi không soạn) và tieuChi6: []', Array.isArray(r2.soTay.cay?.nut) && r2.soTay.cay.tenDien.length === 0 && Array.isArray(r2.soTay.tieuChi6));
+  assert('phamViLoaiKhac: dòng Loại khác → MAY_SUY với cha/truAnhEm; dòng có tên → không có',
+    verifySoTay({ dong8: [{ hs: '85098090', dieuKien: 'còn lại', nguon: 'tax.85098090', trich: 'Loại khác' }] }, '8509', src).soTay.dong8[0].phamViLoaiKhac?.nguonLoai === 'MAY_SUY'
+    && phamViLoaiKhac('85098090').truAnhEm.includes('85098010') && !r2.soTay.dong8[0].phamViLoaiKhac);
+  // tiêu chí 6 số: 8504 có phân nhóm 850421 (≤ 650 kVA); nguồn wco.850421 có số 650
+  const src4 = sourcesFor('8504');
+  const tc = { hs6: '850421', fact: 'cong_suat_kva', op: '<=', value: 650, donVi: 'kVA', nguon: 'wco.850421', trich: 'having a power handling capacity not exceeding 650kVA' };
+  assert('tieuChi6 hợp lệ (phân nhóm có trong cây, nguồn wco, số có trong trích) → đạt', checkItem('tieuChi6', tc, src4, '8504') === null);
+  assert('tieuChi6: phân nhóm không thuộc nhóm / không có trong cây bị loại', /hs6-khong-co-trong-cay/.test(checkItem('tieuChi6', { ...tc, hs6: '850921' }, src4, '8504')) && /hs6-khong-co-trong-cay/.test(checkItem('tieuChi6', { ...tc, hs6: '850499' }, src4, '8504')));
+  assert('tieuChi6: ngưỡng số không có trong trích / op lạ / fact không snake_case bị loại', /nguong-khong-co-trong-trich/.test(checkItem('tieuChi6', { ...tc, value: 750 }, src4, '8504')) && /op-khong-hop-le/.test(checkItem('tieuChi6', { ...tc, op: '~' }, src4, '8504')) && /fact-khong-hop-le/.test(checkItem('tieuChi6', { ...tc, fact: 'Công suất' }, src4, '8504')));
+  assert('tieuChi6 lấy từ dòng 8 số (tax.*) bị loại', checkItem('tieuChi6', { ...tc, nguon: 'tax.85042111', trich: 'Máy biến đổi đo lường' }, src4, '8504') === 'tieu-chi-6-khong-lay-tu-dong-8');
+  assert('dong8.tieuChi: số phải có trong câu trích; không có tieuChi vẫn đạt', /nguong-khong-co-trong-trich/.test(checkItem('dong8', { hs: '85042111', dieuKien: 'x', tieuChi: { fact: 'cong_suat_kva', op: '<=', value: 2, donVi: 'kVA' }, nguon: 'tax.85042111', trich: 'Máy biến đổi đo lường (1) loại công suất danh định không quá 1 kVA' }, src4, '8504')) && checkTieuChi({ fact: 'cong_suat_kva', op: '<=', value: 1 }, 'không quá 1 kVA') === null);
+  // tên điền cho nút bị lược: 8504211 là tiêu đề quốc gia suyRa trong cây 8504
+  const td = { id: '8504211', tenVi: 'Máy biến đổi đo lường', nguon: 'tax.85042111', trich: 'Máy biến đổi đo lường' };
+  const rt = verifySoTay({ cay: { tenDien: [td, { ...td, id: '8504' }, { ...td, id: '85042111' }, { ...td, id: '8504219', trich: 'câu bịa' }] } }, '8504', src4);
+  assert('tenDien: nút ảo + trích có trong nguồn → đạt, nhãn AI_DA_KIEM; nút đã có tên / lá 8 số / trích bịa bị loại',
+    rt.soTay.cay.tenDien.length === 1 && rt.soTay.cay.tenDien[0].id === '8504211' && rt.soTay.cay.tenDien[0].nguonLoai === 'AI_DA_KIEM'
+    && rt.loai.map((x) => x.lyDo.split(':')[0]).sort().join() === 'nut-da-co-ten,nut-khong-co-trong-cay,trich-khong-co-trong-nguon', rt.loai.map((x) => x.lyDo).join());
+  assert('cay.tenDien không sinh lại được bằng máy: nút ảo trong cay.nut vẫn tenVi null', rt.soTay.cay.nut.find((n) => n.id === '8504211').tenVi === null);
+  // máy kiểm cây
+  const k0 = kiemCay(rt.soTay, '8504');
+  assert('kiemCay: sổ tay vừa dựng khớp cây → 0 lỗi; báo dong8 thiếu + nút ảo chưa tên + phân nhóm chưa tiêu chí', k0.loi.length === 0 && k0.canhBao.some((c) => c.startsWith('dong8-thieu:')) && k0.canhBao.some((c) => c.startsWith('nut-ao-chua-co-ten:')) && !k0.canhBao.includes('nut-ao-chua-co-ten:8504211') && k0.canhBao.some((c) => c.startsWith('phan-nhom-chua-co-tieu-chi:')));
+  const lech = JSON.parse(JSON.stringify(rt.soTay)); lech.cay.nut.find((n) => n.id === '85042111').cha = '8504'; lech.cay.nut.push({ id: '85049999', cap: 8, cha: '8504' }); lech.cay.nut.splice(1, 1);
+  const k1 = kiemCay(lech, '8504');
+  assert('kiemCay: cha lệch / nút không còn / thiếu nút → lỗi đỏ', k1.loi.some((l) => l === 'cay-lech-nut:85042111') && k1.loi.some((l) => l === 'cay-nut-khong-con:85049999') && k1.loi.some((l) => l.startsWith('cay-thieu-nut:')));
+  assert('kiemCay: dong8/tenDien trỏ mã không có trong cây → lỗi đỏ; thiếu khối cay → chỉ báo', kiemCay({ dong8: [{ hs: '85049999' }], cay: { tenDien: [{ id: '8504999' }] } }, '8504').loi.sort().join() === 'dong8-khong-co-trong-cay:85049999,ten-dien-nut-khong-co:8504999' && kiemCay({}, '8504').canhBao.includes('chua-co-khoi-cay') && kiemCay({}, '8504').loi.length === 0);
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);

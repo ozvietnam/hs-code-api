@@ -45,8 +45,11 @@ Trả JSON đúng lược đồ:
  "loaiTru": [{"dieuKien": "hàng nào bị loại", "sangNhom": "8508" hoặc "8450|8451", "nguon": "...", "trich": "câu có NÊU số nhóm đích, vd (nhóm 85.08)"}],
  "phanBiet": [{"hoi": "câu hỏi có/không về đặc tính hàng (không nhắc mã)", "neuCo": "mã", "neuKhong": "mã", "nguon": "...", "trich": "..."}],
  "boPhan": {"quyTac": "...", "tomTat": "...", "nguon": "...", "trich": "..."} hoặc null,
- "dong8": [{"hs": "8 số", "dieuKien": "điều kiện quyết định dòng này", "loaiKhac": true|false, "nguon": "tax.<8 số> hoặc sen.<mã>", "trich": "..."}]
+ "tieuChi6": [{"hs6": "6 số (phân nhóm WCO của nhóm)", "fact": "ten_su_kien_snake_case", "op": "=|<=|>=|<|>|in", "value": true|số|"chuỗi", "donVi": "…|null", "nguon": "nhom*/ch*/phan*/sen.*/wco.<6 số>", "trich": "..."}],
+ "cay": {"tenDien": [{"id": "mã nút bị lược (7 số tiêu đề quốc gia, 5 số nhóm một gạch) hoặc phân nhóm 6 số chưa có tên tiếng Việt", "tenVi": "tên tiếng Việt", "nguon": "...", "trich": "câu nguyên văn làm căn cứ cho tên"}]},
+ "dong8": [{"hs": "8 số", "dieuKien": "điều kiện quyết định dòng này", "tieuChi": {"fact": "…", "op": "…", "value": …, "donVi": "…|null"} hoặc null, "loaiKhac": true|false, "nguon": "tax.<8 số> hoặc sen.<mã>", "trich": "..."}]
 }
+Cây của nhóm (phần→chương→nhóm→phân nhóm 6 số→tiêu đề quốc gia→dòng 8 số) do MÁY sinh từ chữ số của mã — bạn không soạn; chỉ điền tên cho nút bị lược ở cay.tenDien khi nguồn có câu nêu tên đó. tieuChi6 là tiêu chí kỹ thuật cấp 6 số có cấu trúc (như dieuKienVao) lấy từ chú giải/SEN/tên WCO; dong8.tieuChi là tiêu chí phân biệt dòng 8 số với anh em (số phải có trong câu trích). Máy gắn nguonLoai cho mọi mục; bạn không ghi trường này.
 Quy tắc: loaiTru chỉ ghi khi chú giải nêu ĐÍCH DANH nhóm đích; ngưỡng số (value là số) phải xuất hiện trong câu trích;
 dong8 lấy đủ các dòng 8 số của nhóm có trong nguồn tax.*, loaiKhac do máy tự điền theo biểu thuế (tên dòng bắt đầu bằng "Loại khác" → true), bạn ghi gì cũng bị ghi đè; ưu tiên điều kiện từ SEN khi có.
 Dòng biểu thuế VN thường chỉ ghi "- - - Loại khác": điều kiện cấp phân nhóm 6 số lấy từ wco.<6 số> (tên WCO, tiếng Anh) — trích nguyên văn tiếng Anh, "nguon": "wco.<6 số>".
