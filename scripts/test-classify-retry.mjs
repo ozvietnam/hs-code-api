@@ -12,6 +12,6 @@ let pass = 0; let fail = 0;
 const check = (n, c, x = '') => { if (c) { pass += 1; console.log(`PASS ${n}`); } else { fail += 1; console.log(`FAIL ${n} ${x}`); } };
 const r = await classify({ tenHang: 'zzqx 真皮大班总裁椅' }, {});
 check('AI 429 + 0 ứng viên → RETRY, không NO_CANDIDATES', r.nextAction?.type === 'RETRY' && r.status !== 'NO_CANDIDATES' && (r.results || []).length === 0, JSON.stringify([r.status, r.nextAction]));
-check('có ghi lỗi AI để chẩn đoán', /429/.test(r.llmError || ''));
+check('có ghi lỗi AI để chẩn đoán ({code, message})', /429/.test(r.llmError?.message || '') && r.llmError?.code === 'LLM_FAILED', JSON.stringify(r.llmError));
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);

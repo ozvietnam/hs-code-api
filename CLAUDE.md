@@ -23,6 +23,11 @@ Service HTTP API cho ERP `erp-xnk` gọi sang để:
   (`GEMINI_FREE_KEYS`, chỉ dự phòng) → khóa Gemini trả phí chỉ khi tier premium. Không phụ
   thuộc Gemini miễn phí. Thiếu key provider nào thì tự bỏ qua; local dev dùng OpenRouter free
   — `docs/openrouter.md`, `npm run openrouter:ping`
+- **Dữ liệu khách không ra tầng miễn phí** (`lib/llm-privacy.js`, #237 J1, CEO chốt 11/10/2026): lượt từ khoá
+  dịch vụ (`HS_SERVICE_TOKENS`: Cổng OZ, ERP) chạy trong `withPrivateData()` → LLM chỉ đi nhà cung cấp trong
+  `LLM_NO_TRAIN_PROVIDERS` (mặc định MiniMax + khoá Gemini trả phí); không Gemini miễn phí, không mẫu `:free`,
+  không Hermes. Hết nhà cung cấp hợp lệ → `NO_PRIVATE_LLM`, không rơi xuống tầng miễn phí. Script batch chạy trên
+  tờ khai Oz đặt `HS_LLM_PRIVATE_ALL=true`. Thêm endpoint LLM mới cho khoá dịch vụ thì phải bọc `withPrivateData`.
 - Auth: Bearer token (`HS_API_TOKEN` env)
 - Deploy: server riêng của Oz (Docker/Coolify, `server.js` + `Dockerfile`), domain prod `hs-kb.uythacnhapkhau.com` qua Cloudflare. **Đã gỡ Vercel (CEO chốt 09/10/2026).** Định tuyến nằm ở `routes.json`
 - **Nguồn sự thật là GitHub `ozvietnam/hs-code-api`** (CEO chốt 29/09/2026). Gitea của

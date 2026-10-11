@@ -120,6 +120,7 @@ Cổng là máy chủ MCP bọc các endpoint dưới đây và bán/cấp cho k
 | `phan_loai_hs` → `POST /api/classify` | ✅ | `girRulesApplied[]`, `canCuPhapLy` đi nguyên văn. Trường **thêm mới (chỉ thêm, không đổi shape)**: `soTay` (sổ tay cố vấn, có thể vắng) và `canCuPhapLy…yKien[].xemToanVan`. |
 | Ý kiến phân loại WCO (kỹ năng 3 "tranh chấp") | ✅ **mới** `GET /api/wco-opinions?hs=` / `&n=` — công khai | Toàn văn + bản dịch + `banQuyen`. Đề xuất công cụ miễn phí `tra_y_kien_wco` bên Cổng. |
 | Tắt chế độ mở của 4 lệnh LLM | ⏸ chờ M3 (CEO duyệt: tắt cùng lúc thu tiền) | `HS_PUBLIC_LLM=false` khi tới lúc; khoá dịch vụ không bị ảnh hưởng. |
+| Dữ liệu khách không ra tầng LLM miễn phí (#237 J1) | ✅ tự động cho **mọi lượt có khoá dịch vụ** (`suggest`, `classify`, `describe`) | LLM chỉ đi nhà cung cấp trong `LLM_NO_TRAIN_PROVIDERS` (mặc định MiniMax + khoá Gemini trả phí); không Gemini miễn phí, không mẫu `:free`, không Hermes. Hết nhà cung cấp hợp lệ → `describe` trả `degraded:true` + `llmError.code="NO_PRIVATE_LLM"`; `classify` trả `status` lỗi động cơ kèm `llmError` chứa `NO_PRIVATE_LLM`. Cổng báo khách "hệ thống tạm không nhận, thử lại sau", **không** gọi lại bằng khoá khác. Kiểm: `GET /api/health` → `llm.private.providers`. |
 | `extract-specs`, `declaration-sheet` | 🔒 kín | Không đưa vào Cổng khi CEO chưa chốt (luật bất biến 2). |
 
 Fixture hợp đồng: Cổng ghi phản hồi thật bằng `apps/gateway/scripts/ghi-fixture.ts`; kho này chỉ **thêm** trường, không đổi tên/bỏ trường đã có — đổi gì phá hợp đồng phải ghi ở mục này trước.
