@@ -41,7 +41,8 @@ if (RO.includes('tb')) {
     for (const t of Array.isArray(v) ? v : [v]) if (t.productName) items.push({ ro: 'tb', truth: hs, body: { tenHang: String(t.productName).slice(0, 300), specs: t.technicalSpec ? String(t.technicalSpec).slice(0, 300) : undefined } });
   }
 }
-const list = LIMIT ? items.slice(0, LIMIT) : items;
+const list = (LIMIT ? items.slice(0, LIMIT) : items).map((it, idx) => ({ ...it, idx }));
+const { taxData } = require('../lib/data.js');
 console.error(`Bộ đề: ${list.length} mẫu (${RO.join('/')}) trên ${NHOM.length} nhóm → ${BASE}`);
 
 // ── Gọi ──
@@ -49,14 +50,15 @@ async function one(it) {
   const t0 = Date.now();
   try {
     const res = await fetch(`${BASE}/api/classify`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-OZ-Eval-Holdout': '1' }, body: JSON.stringify(it.body), signal: AbortSignal.timeout(305000) });
-    const j = await res.json();
+    const text = await res.text();
+    let j; try { j = JSON.parse(text); } catch { return { idx: it.idx, ro: it.ro, truth: it.truth, truthHopLe: Boolean(taxData[it.truth]), top: '', http: res.status, ms: Date.now() - t0, loi: `HTTP ${res.status} không phải JSON (${text.slice(0, 40).replace(/\s+/g, ' ')})`, dung4: false, dung6: false, dung8: false, nghiKhop: [], nghiKhopLocal: [] }; }
     const top = d(j.results?.[0]?.hs || j.results?.[0]?.hsCode || '');
     const st = j.soTay || {};
     const khop = (st.canGiaiTrinh || []).filter((x) => x.loai === 'ANH_EM_CO_TEN_KHOP').map((x) => x.hs);
     // Máy nghi tính lại tại chỗ (server có thể chưa deploy bản có máy nghi): cùng mã top + cùng mô tả.
     const khopLocal = top ? rt.anhEmKhop(top, it.body).map((x) => x.hs) : [];
     return {
-      ro: it.ro, truth: it.truth, top, status: j.status || null, http: res.status, ms: Date.now() - t0,
+      idx: it.idx, ro: it.ro, truth: it.truth, truthHopLe: Boolean(taxData[it.truth]), top, status: j.status || null, http: res.status, ms: Date.now() - t0,
       dung4: top.slice(0, 4) === it.truth.slice(0, 4), dung6: top.slice(0, 6) === it.truth.slice(0, 6), dung8: top === it.truth,
       topLaLoaiKhac: /loại khác/i.test(j.results?.[0]?.nameVi || j.results?.[0]?.tenVi || '') || Boolean(st.loaiKhac),
       nghiKhop: khop, nghiKhopLocal: khopLocal,
@@ -65,7 +67,7 @@ async function one(it) {
       llmError: j.llmError?.code || null, engine: j.engine?.name || null,
     };
   } catch (e) {
-    return { ro: it.ro, truth: it.truth, top: '', http: 0, ms: Date.now() - t0, loi: String(e.message || e).slice(0, 120), dung4: false, dung6: false, dung8: false, nghiKhop: [], nghiKhopLocal: [] };
+    return { idx: it.idx, ro: it.ro, truth: it.truth, truthHopLe: Boolean(taxData[it.truth]), top: '', http: 0, ms: Date.now() - t0, loi: String(e.message || e).slice(0, 120), dung4: false, dung6: false, dung8: false, nghiKhop: [], nghiKhopLocal: [] };
   }
 }
 const results = []; let i = 0;
@@ -73,7 +75,7 @@ await Promise.all(Array.from({ length: CONC }, async () => { while (i < list.len
 
 // ── Tổng hợp ──
 const pct = (n, t) => (t ? Math.round((n / t) * 1000) / 10 : null);
-const sum = (rows) => { const t = rows.length; const ok = rows.filter((r) => r.http === 200); return { mau: t, http200: ok.length, dung4: pct(rows.filter((r) => r.dung4).length, t), dung6: pct(rows.filter((r) => r.dung6).length, t), dung8: pct(rows.filter((r) => r.dung8).length, t), topLoaiKhac: rows.filter((r) => r.topLaLoaiKhac).length, truthLoaiKhac: rows.filter((r) => r.truthLaLoaiKhac).length, nghiBat: rows.filter((r) => r.nghiKhopLocal?.length).length, nghiDung: rows.filter((r) => r.nghiDung).length, nghiOan: rows.filter((r) => r.nghiOan).length, p50ms: ok.length ? ok.map((r) => r.ms).sort((a, b) => a - b)[Math.floor(ok.length / 2)] : null, p95ms: ok.length ? ok.map((r) => r.ms).sort((a, b) => a - b)[Math.floor(ok.length * 0.95)] : null, loi: rows.filter((r) => r.loi || r.llmError).length }; };
+const sum = (rows) => { const t = rows.length; const ok = rows.filter((r) => r.http === 200); return { mau: t, http200: ok.length, truthKhongCoTrongBieuThue: rows.filter((r) => r.truthHopLe === false).length, dung4: pct(rows.filter((r) => r.dung4).length, t), dung6: pct(rows.filter((r) => r.dung6).length, t), dung8: pct(rows.filter((r) => r.dung8).length, t), topLoaiKhac: rows.filter((r) => r.topLaLoaiKhac).length, truthLoaiKhac: rows.filter((r) => r.truthLaLoaiKhac).length, nghiBat: rows.filter((r) => r.nghiKhopLocal?.length).length, nghiDung: rows.filter((r) => r.nghiDung).length, nghiOan: rows.filter((r) => r.nghiOan).length, p50ms: ok.length ? ok.map((r) => r.ms).sort((a, b) => a - b)[Math.floor(ok.length / 2)] : null, p95ms: ok.length ? ok.map((r) => r.ms).sort((a, b) => a - b)[Math.floor(ok.length * 0.95)] : null, loi: rows.filter((r) => r.loi || r.llmError).length }; };
 const T = require('../lib/hs-tree.js');
 for (const r of results) r.truthLaLoaiKhac = Boolean(T.nodeOf(r.truth)?.loaiKhac);
 const byRo = {}; for (const ro of RO) byRo[ro] = sum(results.filter((r) => r.ro === ro));
