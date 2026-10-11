@@ -26,3 +26,12 @@ const nhom = arg('nhom');
 if (nhom) for (const h of nhom.split(',')) { console.log(`\n${T.render(h)}`); }
 const lk = arg('loai-khac');
 if (lk) console.log(JSON.stringify(T.loaiKhacOf(lk), null, 2));
+
+// ── Nguồn gắn vào nút (lib/hs-tree-sources.js) ──
+const S = require('../lib/hs-tree-sources.js');
+if (process.argv.includes('--nguon')) {
+  console.log('\n== Độ phủ nguồn theo cấp (số nút có nguồn)');
+  for (const [lv, o] of Object.entries(S.coverage())) console.log(`  ${lv}: ${JSON.stringify(o)}`);
+}
+const ma = arg('ma');
+if (ma) console.log(JSON.stringify(S.sourcesOf(ma), null, 2));
