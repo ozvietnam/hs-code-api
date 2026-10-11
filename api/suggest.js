@@ -1,6 +1,7 @@
 const { requireAuthOrPublicLlm } = require('../lib/public-llm');
 const { serviceCaller } = require('../lib/auth');
 const { withPrivateData } = require('../lib/llm-privacy');
+const { withEvalHoldout, wantsEvalHoldout } = require('../lib/holdout');
 const { setCors, handleOptions } = require('../lib/cors');
 const { suggestCore, FALLBACK_PROMPT } = require('../lib/suggest-core');
 const { getCandidateEvidence } = require('../lib/suggest-candidates');
@@ -62,8 +63,9 @@ module.exports = async function handler(req, res) {
   }
   if (requireAuthOrPublicLlm(req, res)) return;
   // Khoá dịch vụ (Cổng OZ, ERP) = dữ liệu khách (#237 J1): mọi lượt LLM bên trong không qua tầng miễn phí.
-  if (serviceCaller(req) !== null) return withPrivateData(() => handleSuggest(req, res));
-  return handleSuggest(req, res);
+  const run = wantsEvalHoldout(req) ? (fn) => withEvalHoldout(fn) : (fn) => fn(); // bench chống rò: bỏ tập giữ riêng
+  if (serviceCaller(req) !== null) return run(() => withPrivateData(() => handleSuggest(req, res)));
+  return run(() => handleSuggest(req, res));
 };
 
 async function handleSuggest(req, res) {
