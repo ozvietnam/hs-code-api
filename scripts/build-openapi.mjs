@@ -577,6 +577,7 @@ const DATASET_META = {
   materials: ['Phân loại vật liệu', '/api/materials'],
   ministries: ['14 bộ ngành quản lý chuyên ngành', '/api/ministries'],
   legal_docs: ['Thư viện văn bản pháp luật', '/api/legal-docs'],
+  wco_opinions: ['Ý kiến phân loại WCO (Compendium 2022): ?hs=4/6/8 số → danh sách con trỏ; ?hs=<6 số>&n=<thứ tự> → toàn văn OCR tiếng Anh + bản dịch tiếng Việt (không chính thức) + nguồn + tuyên bố bản quyền (Oz đã trả phí bản quyền; nội dung thuộc WCO, không thuộc CC BY-SA). Chỉ ý kiến đã qua cổng mã/thứ tự; danh sách có thể chưa đủ', '/api/wco-opinions'],
   policy_procedures: ['Thủ tục kiểm tra chuyên ngành', '/api/policy-procedures'],
   products: ['Corpus sản phẩm cho mã "Loại khác"', '/api/products'],
   accuracy: ['Benchmark độ chính xác (công khai, không tô hồng)', '/api/accuracy'],

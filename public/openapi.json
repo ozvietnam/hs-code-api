@@ -2528,6 +2528,50 @@
         }
       }
     },
+    "/api/wco-opinions": {
+      "get": {
+        "operationId": "dataset_wco_opinions",
+        "summary": "Ý kiến phân loại WCO (Compendium 2022): ?hs=4/6/8 số → danh sách con trỏ; ?hs=<6 số>&n=<thứ tự> → toàn văn OCR tiếng Anh + bản dịch tiếng Việt (không chính thức) + nguồn + tuyên bố bản quyền (Oz đã trả phí bản quyền; nội dung thuộc WCO, không thuộc CC BY-SA). Chỉ ý kiến đã qua cổng mã/thứ tự; danh sách có thể chưa đủ",
+        "description": "Rewrite tới /api/dataset?resource=wco_opinions",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/policy-procedures": {
       "get": {
         "operationId": "dataset_policy_procedures",
@@ -2927,7 +2971,7 @@
   },
   "x-generated": {
     "by": "scripts/build-openapi.mjs",
-    "at": "2026-10-10",
+    "at": "2026-10-11",
     "note": "Sinh tự động từ lib/public-access.js — đừng sửa tay, sửa nguồn rồi chạy npm run build."
   }
 }

@@ -165,12 +165,19 @@ export function validate(opinions, wcoCodes) {
   return issues;
 }
 
-export function assertIgnored(file) {
-  const top = spawnSync('git', ['rev-parse', '--show-toplevel'], { cwd: path.dirname(path.resolve(file)), encoding: 'utf8' });
-  if (top.status !== 0) return; // không phải repo git
-  const r = spawnSync('git', ['check-ignore', '-q', file], { cwd: top.stdout.trim() });
-  if (r.status !== 0) { console.error(`TỪ CHỐI ghi ${file}: không nằm trong .gitignore (dữ liệu WCO có bản quyền). Dùng data/wco-op/.`); process.exit(2); }
+/**
+ * Cổng ghi: công cụ WCO chỉ được ghi trong data/wco-op/ (hoặc ngoài repo, vd thư mục tạm của test). Từ 11/10/2026 dữ liệu WCO là công khai
+ * nên không còn đòi .gitignore, nhưng vẫn chặn ghi nhầm sang chỗ khác trong repo (data/, docs/…).
+ */
+export function assertInWcoDir(file) {
+  const abs = path.resolve(file);
+  const root = path.resolve(ROOT);
+  const rel = path.relative(root, abs);
+  if (rel.startsWith('..') || path.isAbsolute(rel)) return; // ngoài repo (thư mục tạm…)
+  const inWco = path.relative(path.join(root, 'data', 'wco-op'), abs);
+  if (inWco.startsWith('..') || path.isAbsolute(inWco)) { console.error(`TỪ CHỐI ghi ${file}: công cụ WCO chỉ ghi trong data/wco-op/.`); process.exit(2); }
 }
+export const assertIgnored = assertInWcoDir; // tên cũ, giữ để các script gọi không vỡ
 
 function main() {
   const inDir = path.resolve(ROOT, arg('in', 'data/wco-op'));

@@ -86,14 +86,21 @@ curl -X POST https://.../api/suggest \
 
 **`canCuPhapLy` — căn cứ pháp lý (TT 85/2026/TT-BTC, hiệu lực 15/09/2026).** Có trong `/api/suggest` và `/api/classify`.
 - Bước 1 = Điều 4 (Danh mục VN + Biểu thuế + 6 quy tắc tổng quát; chi tiết quy tắc ở `girRulesApplied[]`). Bước 2 = Điều 6.1, **chỉ khi bước 1 chưa ra mã duy nhất**; `canDung` cho biết có cần dùng không. Điều 6.1 chỉ *liệt kê* a→d (Chú giải chi tiết HS, ý kiến phân loại WCO, SEN AHTN, CSDL Danh mục VN); văn bản **không** ghi "theo thứ tự" hay "ưu tiên", nên API không khẳng định thứ tự pháp lý.
-- Trạng thái từng tài liệu nói đúng điều hệ thống biết: `CO_NOI_DUNG` (kệ sách có nội dung cho mã này), `KHONG_CO_DU_LIEU_CHO_MA_NAY`, `CHUA_TRA_CUU` (kho chưa nạp, hiện là ý kiến phân loại WCO), `CHUA_TRA_CUU_TRONG_LUOT_NAY`, `CO_TIEN_LE_KHOP`/`KHONG_CO_TIEN_LE_KHOP`. Ý kiến phân loại WCO chỉ trả số hiệu, không trả nguyên văn (bản quyền).
+- Trạng thái từng tài liệu nói đúng điều hệ thống biết: `CO_NOI_DUNG` (kệ sách có nội dung cho mã này), `KHONG_CO_DU_LIEU_CHO_MA_NAY`, `CHUA_TRA_CUU` (kho chưa nạp, hiện là ý kiến phân loại WCO), `CHUA_TRA_CUU_TRONG_LUOT_NAY`, `CO_TIEN_LE_KHOP`/`KHONG_CO_TIEN_LE_KHOP`. Phản hồi suggest/classify chỉ trả **con trỏ** tới ý kiến phân loại WCO (kèm `xemToanVan`); toàn văn xem ở `/api/wco-opinions` bên dưới.
 - `dieuKhoan` chứa nguyên văn từng điều được dẫn (mỗi điều một lần); các bước chỉ nêu id. Đây là điều luật để tham khảo, **không phải quyết định phân loại**; người khai chịu trách nhiệm về mã số khai.
+
+**`GET /api/wco-opinions` — ý kiến phân loại WCO (Compendium 2022), công khai, không cần token.**
+- `?hs=8528` | `?hs=852852` | `?hs=85285200` → danh sách con trỏ `{hs, thuTuTrongMa, namThongQua, doTinCay, xemToanVan}`; thêm `&chiTiet=1` để kèm toàn văn (tối đa 20).
+- `?hs=852852&n=6` → toàn văn: `nguyenVanEn` (bản OCR), `banDichVi` (bản dịch tiếng Việt **không chính thức**, chỗ nghi lỗi OCR ghi `[?]`), `quyTacApDung`, `nguon`, `doTinCay`, `daSoatAnh`, `luuY`, `banQuyen`.
+- **Chỉ ý kiến đã qua cổng mã/thứ tự** được trả (OCR làm rơi biển tiêu đề mã ở một số ý kiến; trích nhầm mã tệ hơn không trích). Danh sách **có thể chưa đủ** — không có kết quả không có nghĩa là mã này không có ý kiến (`daySuDu:false`).
+- **Bản quyền:** nội dung thuộc WCO; Oz tuyên bố đã trả phí bản quyền để sử dụng và công bố; nội dung này không thuộc CC BY-SA (xem `NOTICE.md`). Mọi phản hồi kèm `banQuyen`.
+- `nguyenVanEn` là OCR từ bản scan, `daSoatAnh:false` = chưa đối chiếu ảnh trang gốc: đối chiếu bản gốc trước khi dẫn trong hồ sơ Hải quan.
 
 **`soTay` — sổ tay chú giải, chế độ cố vấn.** Có trong `/api/suggest` và `/api/classify` khi nhóm của mã đã chọn có sổ tay (152 nhóm; nhóm chưa có → `trangThai: CHUA_CO_SO_TAY_CHO_NHOM`).
 - **Không đổi** mã đã chọn, trạng thái, cờ hay prompt: chỉ đính thêm thông tin. Hệ thống ERP cứ xử lý như cũ; hiển thị `soTay` cho chuyên viên nếu muốn.
 - `canGiaiTrinh[]` = máy **nghi**, chưa kết luận: sổ tay nhóm đã chọn loại trừ đích danh một nhóm khác mà nhóm đó cũng đang là ứng viên. Chưa đo tỉ lệ báo oan — đừng dùng làm cổng chặn tự động.
 - `yKienWco[]` = tóm tắt **tự viết** của ý kiến phân loại WCO cho đúng mã (6 số), kèm số thứ tự in, năm thông qua, `doTinCay` (`CHAC` | `SUY_LUAN`). Không phải nguyên văn; `daSoatAnh:false` = chưa đối chiếu ảnh trang gốc; `yKienWcoDayDu:false` = danh sách có thể chưa đủ.
-- Máy chủ prod không giữ kho WCO gốc; `canCuPhapLy` mục 6.1.b khi đó lấy con trỏ từ sổ tay (`nguonTraCuu: "SO_TAY"`).
+- `canCuPhapLy` mục 6.1.b lấy con trỏ từ kho `data/wco-op` (đi kèm bản triển khai); nếu kho không có thì lấy từ sổ tay (`nguonTraCuu: "SO_TAY"`).
 - Tắt khẩn cấp: env `HS_SOTAY_RUNTIME=false`.
 
 ### ⚠️ Thay đổi hợp đồng `girRulesApplied` (2026-09)

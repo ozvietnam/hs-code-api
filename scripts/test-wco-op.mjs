@@ -30,18 +30,23 @@ const assert = (name, ok, extra = '') => {
 };
 const L = (pdfPage, ...ts) => ts.map((t) => ({ t, pdfPage, b: false }));
 
-// 1. Riêng tư: .gitignore chặn mọi thứ trong data/wco-op trừ README
+// 1. Công khai từ 11/10/2026 (CEO Oz tuyên bố đã trả phí bản quyền): commit ý kiến + bản dịch + câu trích sổ tay + README;
+//    vẫn KHÔNG commit tệp nặng/trung gian (PDF ~136 MB vượt giới hạn GitHub, bản OCR md, bản sao lưu, báo cáo).
 const ign = (f) => spawnSync('git', ['check-ignore', '-q', f], { cwd: ROOT }).status === 0;
-for (const f of ['WCO Compendium 2022.pdf', 'pages-en.jsonl', 'opinions.json', 'extract-report.json', 'parse-report.json', 'ban-dich.json']) {
-  assert(`gitignore chặn data/wco-op/${f}`, ign(`data/wco-op/${f}`));
+for (const f of ['WCO Compendium 2022.pdf', 'pages-en.jsonl', 'opinions.pre-inferred.json', 'WCO_Compendium_2022_Opinions_EN.md', 'parse-report.json']) {
+  assert(`gitignore vẫn chặn tệp nặng/trung gian data/wco-op/${f}`, ign(`data/wco-op/${f}`));
 }
-assert('README.md của kho riêng KHÔNG bị ignore', !ign('data/wco-op/README.md'));
+for (const f of ['README.md', 'opinions.json', 'vi.json', 'so-tay-trich.json']) {
+  assert(`data/wco-op/${f} được phép commit (không bị ignore)`, !ign(`data/wco-op/${f}`));
+}
+const ALLOWED = new Set(['data/wco-op/README.md', 'data/wco-op/opinions.json', 'data/wco-op/vi.json', 'data/wco-op/so-tay-trich.json']);
 const tracked = spawnSync('git', ['ls-files', 'data/wco-op'], { cwd: ROOT, encoding: 'utf8' }).stdout.split('\n').filter(Boolean);
-assert('git chỉ theo dõi README trong data/wco-op', tracked.every((f) => f === 'data/wco-op/README.md'), tracked.join(','));
+assert('git chỉ theo dõi các tệp được phép trong data/wco-op', tracked.every((f) => ALLOWED.has(f)), tracked.join(','));
+const dockerIgnore = fs.readFileSync(path.join(ROOT, '.dockerignore'), 'utf8');
+assert('.dockerignore cho ảnh Docker mang theo ý kiến + bản dịch nhưng không mang PDF/OCR', /data\/wco-op\/\*/.test(dockerIgnore) && /!data\/wco-op\/opinions\.json/.test(dockerIgnore) && /!data\/wco-op\/vi\.json/.test(dockerIgnore));
 const pdfs = spawnSync('git', ['ls-files', '*.pdf', '*Compendium*'], { cwd: ROOT, encoding: 'utf8' }).stdout.split('\n').filter(Boolean);
 assert('repo không có PDF/Compendium nào được theo dõi', pdfs.length === 0, pdfs.join(','));
 
-assert('.dockerignore loại data/wco-op (Dockerfile COPY . . sẽ nhồi PDF 130 MB vào image)', /^data\/wco-op\/?$/m.test(fs.readFileSync(path.join(ROOT, '.dockerignore'), 'utf8')));
 
 // 2. segment
 const doc = [
@@ -225,6 +230,27 @@ assert('dịch: số nghìn 1,000 = 1.000', numericParity('1,000 kg', '1.000 kg'
   const wcoLib = (await import('node:module')).createRequire(import.meta.url)('../lib/wco-op.js');
   assert('doTinCay: tiêu đề đọc thẳng → CHAC', wcoLib.doTinCay({ hs: '111111', ord: 1 }) === 'CHAC');
   assert('doTinCay: khôi phục "(continued)" hoặc suy luận → SUY_LUAN (một luật cho API và sổ tay)', wcoLib.doTinCay({ headingRecovered: 'continued' }) === 'SUY_LUAN' && wcoLib.doTinCay({ headingInferred: true }) === 'SUY_LUAN' && wcoLib.doTinCay(null) === 'CHAC');
+}
+{
+  // view(): bản xem đầy đủ để trả ra API — dùng kho giả cách ly, không phụ thuộc kho thật
+  const tmp2 = fs.mkdtempSync(path.join(os.tmpdir(), 'wco-view-'));
+  fs.writeFileSync(path.join(tmp2, 'op.json'), JSON.stringify([
+    { id: '852852/1', hs: '852852', ord: 1, adoption: 2011, text: '1. A colour monitor with a TFT LCD panel.\n\nAdoption: 2011', application: 'Application of GIRs 1 and 6.', line: 10 },
+    { id: '852852/2', hs: '852852', ord: 2, adoption: 2013, text: '2. Suspect text', line: 20, headingSuspect: true },
+  ]));
+  fs.writeFileSync(path.join(tmp2, 'vi.json'), JSON.stringify({ 10: { vi: '1. Màn hình màu có tấm nền TFT LCD.' } }));
+  const prevOp = process.env.HS_WCO_OP_FILE; const prevVi = process.env.HS_WCO_VI_FILE;
+  process.env.HS_WCO_OP_FILE = path.join(tmp2, 'op.json'); process.env.HS_WCO_VI_FILE = path.join(tmp2, 'vi.json');
+  const wcoV = (await import('node:module')).createRequire(import.meta.url)('../lib/wco-op.js');
+  wcoV.reset();
+  const v1 = wcoV.view(wcoV.get('852852/1'));
+  assert('view: nguyên văn OCR + bản dịch + nguồn + độ tin cậy + cờ chưa soát ảnh', v1.nguyenVanEn.includes('TFT LCD') && v1.banDichVi.includes('Màn hình') && v1.nguon.includes('8528.52/1') && v1.nguon.includes('2011') && v1.doTinCay === 'CHAC' && v1.daSoatAnh === false && v1.maNguon === 'wco-op.852852.1');
+  assert('view: luôn kèm tuyên bố bản quyền và cảnh báo OCR/bản dịch không chính thức', /Oz tuyên bố đã trả phí bản quyền/.test(v1.banQuyen) && /KHÔNG thuộc giấy phép CC BY-SA/.test(v1.banQuyen) && /OCR/.test(v1.luuY) && /KHÔNG chính thức/.test(v1.luuY));
+  assert('view: ý kiến chưa qua cổng (headingSuspect) → null, byHs cũng không trả', wcoV.view(wcoV.get('852852/2')) === null && wcoV.byHs('852852').length === 1);
+  assert('view: thiếu bản dịch → banDichVi null (không bịa)', (() => { const o = { ...wcoV.get('852852/1'), line: 999 }; return wcoV.view(o).banDichVi === null; })());
+  process.env.HS_WCO_OP_FILE = prevOp ?? ''; if (prevOp === undefined) delete process.env.HS_WCO_OP_FILE;
+  process.env.HS_WCO_VI_FILE = prevVi ?? ''; if (prevVi === undefined) delete process.env.HS_WCO_VI_FILE;
+  wcoV.reset(); fs.rmSync(tmp2, { recursive: true, force: true });
 }
 {
   const mk = (hs, ord, text, extra = {}) => ({ hs, ord, text, ...extra });

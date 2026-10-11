@@ -1,7 +1,12 @@
 # Tuyển tập ý kiến phân loại WCO (#196) — nhập kho riêng tư
 
+> **Cập nhật 11/10/2026 — công khai.** CEO Oz tuyên bố đã trả phí bản quyền và cho dùng công khai: `opinions.json`, `vi.json`, `so-tay-trich.json`
+> được commit, `GET /api/wco-opinions` mở không cần token (mọi phản hồi kèm `banQuyen`), nội dung WCO là ngoại lệ của CC BY-SA (`NOTICE.md`).
+> Các đoạn dưới đây nói "riêng tư / chỉ trên server / `.gitignore` chặn" là **lịch sử trước 11/10/2026**. Cổng độ chính xác (chỉ trả ý kiến đã qua
+> cổng mã/thứ tự) vẫn giữ nguyên — vì độ chính xác, không vì bản quyền. PDF gốc và OCR md vẫn không commit (nặng/trung gian).
+
 TT 85/2026 Điều 6.1 yêu cầu tra 4 nguồn; nguồn 2 là **Tuyển tập ý kiến phân loại WCO** (WCO Compendium of Classification Opinions),
-Oz có bản PDF 2022 (~800 trang, song ngữ Anh–Pháp, mua lại qua bên thứ ba). Chỉ dùng nội bộ.
+Oz có bản PDF 2022 (~800 trang, song ngữ Anh–Pháp). Từ 11/10/2026 công khai theo tuyên bố của CEO Oz (xem ghi chú đầu tệp).
 
 ## Nguyên tắc
 1. **Không có chữ WCO nào trong repo.** `data/wco-op/*` bị `.gitignore` chặn (chỉ README). `scripts/test-wco-op.mjs` khoá điều này

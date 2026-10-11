@@ -73,7 +73,11 @@ __pycache__/
 tmp/
 data/demand-signals.jsonl
 
-# WCO Compendium of Classification Opinions — PRIVATE (#196). Bản quyền WCO, Oz mua lại qua bên thứ ba:
-# tệp PDF, văn bản tách và JSON ý kiến chỉ nằm trên server, KHÔNG commit. Chỉ giữ README.
+# WCO Compendium of Classification Opinions (#196) — CÔNG KHAI từ 11/10/2026: CEO Oz tuyên bố đã trả phí bản quyền, cho dùng công khai.
+# Commit: ý kiến đã tách (opinions.json), bản dịch (vi.json), câu trích của sổ tay (so-tay-trich.json), README.
+# KHÔNG commit tệp nặng/trung gian: PDF (~136 MB), văn bản OCR, bản sao lưu, báo cáo. Xem data/wco-op/README.md và NOTICE.md.
 data/wco-op/*
 !data/wco-op/README.md
+!data/wco-op/opinions.json
+!data/wco-op/vi.json
+!data/wco-op/so-tay-trich.json
