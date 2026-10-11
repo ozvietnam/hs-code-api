@@ -83,5 +83,29 @@ assert('dữ liệu thật: không có trường nguyên văn nào lọt ra (ch�
   delete process.env.HS_SOTAY_RUNTIME;
 }
 
+
+// ── Máy nghi ANH_EM_CO_TEN_KHOP (CEO duyệt 11/10): mô tả hàng khớp dòng anh em có tên của mã "Loại khác" đã chọn ──
+{
+  fs.mkdirSync(dataPath('so-tay'), { recursive: true });
+  fs.writeFileSync(dataPath('so-tay', '8504.json'), JSON.stringify({ nhom: '8504', loaiTru: [{ dieuKien: 'máy hàn', sangNhom: '8515', nguon: 'nhom8504.nhom' }], yKienWcoDayDu: false, yKienWco: [], dong8: [
+    { hs: '85044040', dieuKien: 'Bộ nghịch lưu (inverter)', loaiKhac: false, nguon: 'tax.85044040', trich: 'Bộ nghịch lưu' },
+  ] }));
+  rt.reset();
+  const sp = { tenHang: 'Bộ nghịch lưu năng lượng mặt trời hòa lưới 5kW', chatLieu: 'vỏ nhôm', congDung: 'đổi điện DC sang AC' };
+  const k = rt.advise({ topHs: '85044090', candidates: ['8504', '8515'], sanPham: sp });
+  const khop = k.canGiaiTrinh.filter((x) => x.loai === 'ANH_EM_CO_TEN_KHOP');
+  assert('máy nghi: "bộ nghịch lưu" chọn Loại khác 85044090 → nghi anh em 85044040, kèm trích sổ tay, đứng đầu canGiaiTrinh', khop.length === 1 && khop[0].hs === '85044040' && khop[0].doKhop >= 0.8 && khop[0].nguon === 'tax.85044040' && khop[0].trich === 'Bộ nghịch lưu' && k.canGiaiTrinh[0].loai === 'ANH_EM_CO_TEN_KHOP', JSON.stringify(k.canGiaiTrinh));
+  assert('máy nghi: loaiKhac.anhEmKhop cũng ghi; mục loại trừ cũ có loai LOAI_TRU_SANG_NHOM', k.loaiKhac.anhEmKhop?.[0]?.hs === '85044040' && k.canGiaiTrinh.some((x) => x.loai === 'LOAI_TRU_SANG_NHOM' && x.sangNhom === '8515'));
+  assert('máy nghi: vẫn KHÔNG đổi mã (chế độ cố vấn), lý do nói "cần giải trình… hoặc xem lại mã"', k.cheDo === 'CO_VAN' && /cần giải trình/.test(khop[0].lyDo) && !('maDeXuat' in k));
+  const n1 = rt.advise({ topHs: '85044090', candidates: [], sanPham: { tenHang: 'Bộ chuyển đổi tần số cho động cơ', chatLieu: 'nhựa' } });
+  assert('máy nghi: mô tả không khớp anh em nào → không nghi', !n1.canGiaiTrinh.some((x) => x.loai === 'ANH_EM_CO_TEN_KHOP') && !n1.loaiKhac.anhEmKhop);
+  const n2 = rt.advise({ topHs: '85044090', candidates: [] });
+  assert('máy nghi: thiếu sanPham → không nghi, không lỗi', n2 && !n2.canGiaiTrinh.some((x) => x.loai === 'ANH_EM_CO_TEN_KHOP'));
+  const n3 = rt.advise({ topHs: '85044040', candidates: [], sanPham: sp });
+  assert('máy nghi: mã chọn có tên (không phải Loại khác) → không áp', !n3.canGiaiTrinh.some((x) => x.loai === 'ANH_EM_CO_TEN_KHOP'));
+  const n4 = rt.advise({ topHs: '40112019', candidates: [], sanPham: { tenHang: 'Lốp xe tải mới, chiều rộng không quá 230 mm, lắp vành có đường kính không quá 16 inch', chatLieu: 'cao su' } });
+  assert('máy nghi: nhóm chưa có sổ tay vẫn nghi được theo tên dòng biểu thuế (nguon tax.<mã>)', n4.trangThai === 'CHUA_CO_SO_TAY_CHO_NHOM' && (n4.canGiaiTrinh || []).some((x) => x.loai === 'ANH_EM_CO_TEN_KHOP' && x.hs === '40112011' && x.nguon === 'tax.40112011'), JSON.stringify(n4.canGiaiTrinh));
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
