@@ -103,6 +103,27 @@ curl -X POST https://.../api/suggest \
 - `canCuPhapLy` mục 6.1.b lấy con trỏ từ kho `data/wco-op` (đi kèm bản triển khai); nếu kho không có thì lấy từ sổ tay (`nguonTraCuu: "SO_TAY"`).
 - Tắt khẩn cấp: env `HS_SOTAY_RUNTIME=false`.
 
+## Hợp đồng cho Cổng OZ (`ozvietnam/ozplugin`, MCP gateway) — 11/10/2026
+
+Cổng là máy chủ MCP bọc các endpoint dưới đây và bán/cấp cho khách qua Claude Desktop, Cursor, DSH. Hợp đồng từ phía kho này:
+
+| Cổng cần | Trạng thái ở hs-code-api | Ghi chú hợp đồng |
+|---|---|---|
+| Khoá dịch vụ có tên (13.2) | ✅ `HS_SERVICE_TOKENS="cong-oz:<khoá>,erp:<khoá>"` (`lib/auth.js#serviceCaller`) | Nhật ký phân biệt được Cổng / ERP / quản trị. `HS_API_TOKEN` cũ vẫn dùng được. |
+| Chi phí vốn mỗi lượt (13.1) | ✅ `usage: [{provider, model, inputTokens, outputTokens}]` ở `/api/classify`, `/api/describe` | **Chỉ** trả cho khoá dịch vụ; công khai / `HS_API_TOKEN` không có trường này. Token không biết = `-1`. Không bao giờ chuyển `usage` cho khách. |
+| `tra_thue` → `GET /api/tax?hs=&origin=` | ✅ công khai | — |
+| `tim_ma_hs` → `GET /api/search` | ✅ công khai, **lexical** | Tìm theo từ khoá; mô tả dài/đồng nghĩa yếu. Phân loại thật dùng `/api/classify` (thu phí). Đây là cách giải quyết mục 2 của #67. |
+| `tra_chu_giai` → `GET /api/notes` | ✅ công khai | — |
+| `tra_tien_le` (J4) → `GET /api/precedents?hs=` hoặc `?q=` | ✅ cả hai nhánh | ⚠️ Nhánh `?hs=` **không có tiền lệ → HTTP 404** `{found:false}`; nhánh `?q=` trả 200 `{found:false}`. Adapter của Cổng coi mọi `!res.ok` là `BACKEND_LOI` nên **phải xử lý 404 ở precedents là "không có tiền lệ"**, không phải lỗi. Có cả `hs` lẫn `q` thì API ưu tiên `q`; Cổng muốn ưu tiên mã thì chỉ gửi `hs`. |
+| `tra_hieu_luc_van_ban` (J5) → `GET /api/dataset?resource=legal_status&so=` | ✅ | `registry.registryVersion` (vd `2026-10-10`) là phiên bản để ghi vào `nguon[0].phienBan`. Tối đa 50 số hiệu/lượt. |
+| `sinh_mo_ta_khai_bao` (J6) → `POST /api/describe` | ✅ | `compliance.{score,level,warnings[]}` đi nguyên văn. LLM lỗi → vẫn 200 nhưng `degraded:true` + `llmError:{code,message,retryable}` + warning `DESCRIPTION_DEGRADED` (#67 mục 1): Cổng phải báo khách "bản tạm, nên gọi lại" khi `retryable`. |
+| `phan_loai_hs` → `POST /api/classify` | ✅ | `girRulesApplied[]`, `canCuPhapLy` đi nguyên văn. Trường **thêm mới (chỉ thêm, không đổi shape)**: `soTay` (sổ tay cố vấn, có thể vắng) và `canCuPhapLy…yKien[].xemToanVan`. |
+| Ý kiến phân loại WCO (kỹ năng 3 "tranh chấp") | ✅ **mới** `GET /api/wco-opinions?hs=` / `&n=` — công khai | Toàn văn + bản dịch + `banQuyen`. Đề xuất công cụ miễn phí `tra_y_kien_wco` bên Cổng. |
+| Tắt chế độ mở của 4 lệnh LLM | ⏸ chờ M3 (CEO duyệt: tắt cùng lúc thu tiền) | `HS_PUBLIC_LLM=false` khi tới lúc; khoá dịch vụ không bị ảnh hưởng. |
+| `extract-specs`, `declaration-sheet` | 🔒 kín | Không đưa vào Cổng khi CEO chưa chốt (luật bất biến 2). |
+
+Fixture hợp đồng: Cổng ghi phản hồi thật bằng `apps/gateway/scripts/ghi-fixture.ts`; kho này chỉ **thêm** trường, không đổi tên/bỏ trường đã có — đổi gì phá hợp đồng phải ghi ở mục này trước.
+
 ### ⚠️ Thay đổi hợp đồng `girRulesApplied` (2026-09)
 
 Trước đây trường này chứa **checklist dữ kiện theo chương**, dù tên gọi là "GIR
