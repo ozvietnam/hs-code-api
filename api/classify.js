@@ -5,6 +5,7 @@
 
 const { requireAuth, serviceCaller } = require('../lib/auth');
 const { withUsage } = require('../lib/usage-context');
+const { withPrivateData } = require('../lib/llm-privacy');
 const { requireAuthOrPublicLlm } = require('../lib/public-llm');
 const { setCors, handleOptions } = require('../lib/cors');
 const { classify } = require('../lib/classify');
@@ -87,7 +88,8 @@ module.exports = async function handler(req, res) {
     const started = Date.now();
     // Khoá dịch vụ có tên (Cổng ozplugin…) nhận thêm `usage` để tính phí; công khai / HS_API_TOKEN thì không.
     if (serviceCaller(req) !== null) {
-      const { result, usage } = await withUsage(() => classify(attrs, { tier }));
+      // Dữ liệu khách (#237 J1): LLM bên trong chỉ đi nhà cung cấp hợp lệ, không qua tầng miễn phí.
+      const { result, usage } = await withPrivateData(() => withUsage(() => classify(attrs, { tier })));
       return res.status(200).json({ ...result, attrs, usage, ms: Date.now() - started });
     }
     const result = await classify(attrs, { tier });

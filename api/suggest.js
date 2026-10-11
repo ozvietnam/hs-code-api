@@ -1,4 +1,6 @@
 const { requireAuthOrPublicLlm } = require('../lib/public-llm');
+const { serviceCaller } = require('../lib/auth');
+const { withPrivateData } = require('../lib/llm-privacy');
 const { setCors, handleOptions } = require('../lib/cors');
 const { suggestCore, FALLBACK_PROMPT } = require('../lib/suggest-core');
 const { getCandidateEvidence } = require('../lib/suggest-candidates');
@@ -59,7 +61,12 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
   if (requireAuthOrPublicLlm(req, res)) return;
+  // Khoá dịch vụ (Cổng OZ, ERP) = dữ liệu khách (#237 J1): mọi lượt LLM bên trong không qua tầng miễn phí.
+  if (serviceCaller(req) !== null) return withPrivateData(() => handleSuggest(req, res));
+  return handleSuggest(req, res);
+};
 
+async function handleSuggest(req, res) {
   const started = Date.now();
   let body = req.body;
   if (typeof body === 'string') {
@@ -88,7 +95,7 @@ module.exports = async function handler(req, res) {
   const out = await suggestCore({ description, topCandidates, topReranked, facts }, { started });
   if (out.code === 200) res.setHeader('Cache-Control', 'private, max-age=300');
   return res.status(out.code).json(out.json);
-};
+}
 
 /**
  * Batch mode: POST /api/suggest { items: [{id, description, origin?}], options? }
