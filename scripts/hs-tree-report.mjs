@@ -17,7 +17,7 @@ console.log('== Thống kê cây (từ data/tax.json + data/wco-hs-international
 for (const [k, v] of Object.entries(s)) console.log(`  ${k}: ${v}`);
 const { anomalies } = T.tree();
 if (anomalies.length) {
-  console.log(`\n== Bất thường (${anomalies.length}) — dòng mất gạch / phân nhóm vừa lá vừa cha; vị trí vẫn đặt theo chữ số`);
+  console.log(`\n== Bất thường (${anomalies.length}) — gạch lệch với tầng chữ số: chỉ ghi chú chất lượng dữ liệu, cấu trúc không đổi`);
   const byType = {};
   for (const a of anomalies) (byType[a.loai] ||= []).push(a.ma);
   for (const [k, v] of Object.entries(byType)) console.log(`  ${k}: ${v.length} — ${v.slice(0, 20).join(', ')}${v.length > 20 ? '…' : ''}`);

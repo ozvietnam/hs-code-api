@@ -31,33 +31,38 @@ check('85044020 (…20) con trực tiếp của 850440, cùng cha với 85044090
 check('85393200 là chính phân nhóm 853932 (mã 6 số trỏ vào lá, có tên WCO)', T.nodeOf('85393200').laPhanNhom === '853932' && T.nodeOf('853932').id === '85393200' && /mercury|sodium/i.test(T.nodeOf('85393200').tenEn || ''), T.nodeOf('85393200').tenEn);
 check('nhóm không chia (xxxx0000) treo thẳng dưới nhóm 4 số', (() => { const n = [...T.tree().nodes.values()].find((x) => x.cap === 8 && x.id.endsWith('0000')); return n && n.parent === n.id.slice(0, 4); })());
 
-// Sâu hơn chữ số: tiêu đề phụ gom theo dãy, cắt tại "Loại khác" trần.
-check('85043121/85043122 chung một tiêu đề phụ, tách khỏi 85043123', T.nodeOf('85043121').parent === T.nodeOf('85043122').parent && T.nodeOf('85043121').parent !== T.nodeOf('85043123').parent);
-check('tiêu đề phụ của 85043121 nằm dưới 8504312', T.nodeOf(T.nodeOf('85043121').parent).parent === '8504312');
-check('85043411–13 và 85043414–19 là hai nhóm anh em (cắt sau "Loại khác" trần 85043413)', T.nodeOf('85043413').parent === T.nodeOf('85043411').parent && T.nodeOf('85043414').parent !== T.nodeOf('85043413').parent && T.nodeOf('85043419').parent === T.nodeOf('85043414').parent);
+// Gạch sâu hơn chữ số: KHÔNG gom theo gạch (CEO 11/10: quan hệ ăn thẳng vào số, gạch chỉ là tầng hiển thị).
+check('85043121 (5 gạch) và 85043123 (4 gạch) cùng cha 8504312 theo chữ số; gạch chỉ ghi lại', T.nodeOf('85043121').parent === '8504312' && T.nodeOf('85043123').parent === '8504312' && T.nodeOf('85043121').gach === 5 && T.nodeOf('85043123').gach === 4);
+check('không có nút nào sinh từ gạch', ![...T.tree().nodes.values()].some((n) => n.cap === 'TIEU_DE_PHU'));
+
+// Khung trên: phần → chương → nhóm, cũng từ chữ số (2 số đầu = chương) + data/hs-sections.json.
+check('tổ tiên của 85044090: Phần XVI > Chương 85 > 8504 > 850440', T.ancestorsOf('85044090').map((n) => n.id).join('>') === 'P:XVI>85>8504>850440', T.ancestorsOf('85044090').map((n) => n.id).join('>'));
+check('chương 85 có tên tiếng Việt từ chú giải chương và tên WCO', /Máy điện/.test(T.nodeOf('85').tenVi || '') && /Electrical/i.test(T.nodeOf('85').tenEn || ''), T.nodeOf('85').tenVi);
+check('phần XVI có tên tiếng Việt, chứa chương 84 và 85', T.nodeOf('P:XVI').tenVi && T.nodeOf('P:XVI').children.includes('84') && T.nodeOf('P:XVI').children.includes('85'));
+check('render được từ chương', /^CHƯƠNG 85/.test(T.render('85')) && /NHÓM 8504/.test(T.render('85')));
 
 // "Loại khác" định nghĩa bằng quan hệ.
 {
   const lk = T.loaiKhacOf('85042119');
   check('85042119: cha 8504211, trừ anh em có tên [85042111], tổ tiên có tên 850421', lk && lk.cha === '8504211' && lk.anhEmCoTen.join() === '85042111' && lk.toTienCoTen === '850421' && lk.dinhNghiaDuoc === true, JSON.stringify(lk));
   const lk2 = T.loaiKhacOf('85044090');
-  check('85044090: cha có tên (850440) → chuỗi 1 bước, trừ 85044011-group…85044040', lk2 && lk2.toTienCoTen === '850440' && lk2.chuoi.length === 1 && lk2.anhEmCoTen.includes('8504401') && lk2.anhEmCoTen.includes('85044040'), JSON.stringify(lk2));
+  check('85044090: cha có tên (850440) → chuỗi 1 bước, trừ 8504401 (tiêu đề QG) … 85044040', lk2 && lk2.toTienCoTen === '850440' && lk2.chuoi.length === 1 && lk2.anhEmCoTen.includes('8504401') && lk2.anhEmCoTen.includes('85044040'), JSON.stringify(lk2));
   check('"Loại khác, dùng cho chiếu sáng gia dụng" (85392233) là LK có điều kiện, không phải LK trần', T.nodeOf('85392233').loaiKhac && !T.nodeOf('85392233').loaiKhacTran && T.nodeOf('85392239').loaiKhacTran);
   check('85392239: anh em có LK có điều kiện → chưa định nghĩa được bằng máy', T.loaiKhacOf('85392239').dinhNghiaDuoc === false);
   check('mã không phải Loại khác → null', T.loaiKhacOf('85042111') === null);
 }
 
 // Chương 98 (không có trong WCO) vẫn dựng được bằng chữ số.
-check('chương 98: lá có đường về nhóm 4 số', (() => { const n = [...T.tree().nodes.values()].find((x) => x.cap === 8 && x.id.startsWith('98')); return n && T.ancestorsOf(n.id)[0]?.cap === 4; })());
+check('chương 98: lá có đường về nhóm 4 số và chương 98', (() => { const n = [...T.tree().nodes.values()].find((x) => x.cap === 8 && x.id.startsWith('98')); const a = T.ancestorsOf(n.id).map((x) => x.id); return n && a.includes('98') && a.includes(n.id.slice(0, 4)); })());
 
 // Bất biến toàn cục.
 const s = T.stats();
 console.log('thống kê:', JSON.stringify(s));
-check('đủ 11.871 lá, 1.269 nhóm', s.la === Object.keys(require('../lib/data.js').taxData).length && s.nhom4 >= 1200, JSON.stringify(s));
+check('đủ 11.871 lá, 1.269 nhóm, 97 chương, 21 phần', s.la === Object.keys(require('../lib/data.js').taxData).length && s.nhom4 >= 1200 && s.chuong >= 96 && s.phan === 21, JSON.stringify(s));
 check('mọi lá về được nhóm 4 số', s.laKhongVeNhom === 0);
 check('không nút ảo nào trống con', s.nutAoKhongCon === 0);
 check('đa số "Loại khác" định nghĩa được bằng quan hệ (≥ 70%)', s.loaiKhacDinhNghiaDuoc / s.loaiKhac >= 0.7, `${s.loaiKhacDinhNghiaDuoc}/${s.loaiKhac}`);
-check('bất thường gạch ít (< 2% lá; chủ yếu chương 98 và dòng mất gạch)', s.batThuong < s.la * 0.02, String(s.batThuong));
+check('lệch gạch chỉ là ghi chú dữ liệu (có danh sách, không đổi cấu trúc)', Array.isArray(T.tree().anomalies) && T.tree().anomalies.every((a) => a.ma && a.loai === 'gach-lech'), String(s.batThuong));
 check('render 8539 có nhóm, phân nhóm WCO và nhãn [LK]', /NHÓM 8539/.test(T.render('8539')) && /853921/.test(T.render('8539')) && /\[LK\]/.test(T.render('8539')));
 
 console.log(`\n${pass} passed, ${fail} failed`);
