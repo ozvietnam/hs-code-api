@@ -230,6 +230,35 @@ module.exports = async function handler(req, res) {
     //   ?hs=8528|852852|85285200        → danh sách con trỏ (hs6, thứ tự, năm, độ tin cậy) + đường dẫn xem toàn văn
     //   ?hs=852852&n=6                  → toàn văn OCR tiếng Anh + bản dịch tiếng Việt (không chính thức) + nguồn + tuyên bố bản quyền
     //   ?hs=...&chiTiet=1               → như danh sách nhưng kèm toàn văn (tối đa 20 ý kiến)
+    // Cây quan hệ HS theo chữ số (#236): vị trí, cha, anh em, con, phạm vi "Loại khác", nguồn gắn vào nút. Công khai, tĩnh.
+    if (resource === 'hs_tree') {
+      const T = require('../lib/hs-tree');
+      const S = require('../lib/hs-tree-sources');
+      const rt = require('../lib/so-tay-runtime');
+      const hs = String(req.query.hs || '').replace(/\D/g, '');
+      if (![2, 4, 5, 6, 7, 8].includes(hs.length)) {
+        return res.status(400).json({ error: 'Thiếu hoặc sai ?hs — cần mã 2, 4, 6 hoặc 8 số (5/7 số = nút trung gian)', example: '/api/tree?hs=85044090' });
+      }
+      const n = T.nodeOf(hs);
+      if (!n) return res.status(404).json({ found: false, hs, message: 'Mã không có trong biểu thuế / cây' });
+      const nut = (x) => ({ id: x.id, cap: x.cap, ten: T.labelOf(x), tenVi: x.tenVi || null, tenEn: x.tenEn || null, suyRa: Boolean(x.suyRa), ...(x.cap === 8 ? { loaiKhac: Boolean(x.loaiKhac), gach: x.gach } : {}) });
+      const cha = n.parent ? T.nodeOf(n.parent) : null;
+      const con = n.children.slice(0, 200).map((id) => nut(T.nodeOf(id)));
+      const src = S.sourcesOf(n.id);
+      const lk = n.cap === 8 && n.loaiKhac ? rt.loaiKhac(n.id) : null;
+      return res.status(200).json({
+        found: true, hs: n.id,
+        nut: nut(n),
+        duongDan: T.ancestorsOf(n.id).map(nut),
+        cha: cha ? nut(cha) : null,
+        anhEm: T.siblingsOf(n.id).slice(0, 100).map(nut),
+        con, ...(n.children.length > 200 ? { conConLai: n.children.length - 200 } : {}),
+        ...(lk ? { loaiKhac: lk } : {}),
+        nguon: src ? src.nguon : {},
+        ghiChu: 'Cấu trúc suy từ chữ số của mã (2 chương, 4 nhóm, 5–6 phân nhóm WCO, 7 tiêu đề quốc gia, 8 dòng). Nút suyRa=true là tiêu đề bị lược khi nhập biểu thuế: cấu trúc chắc, tên chưa có — không bịa. Nhãn nguồn: NGUYEN_VAN / DA_KIEM / AI_CHUA_KIEM.',
+      });
+    }
+
     if (resource === 'wco_opinions') {
       const wco = require('../lib/wco-op');
       const hs = String(req.query.hs || '').replace(/\D/g, '');

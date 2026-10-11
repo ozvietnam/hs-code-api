@@ -58,5 +58,30 @@ const real = rt.advise({ topHs: '85285200', candidates: ['8525'] });
 assert('dữ liệu thật: 8528.52 có ý kiến WCO trong sổ tay công khai', real.trangThai === 'CO_SO_TAY' && real.yKienWco.length >= 5 && real.yKienWco.every((x) => x.hs === '852852'), JSON.stringify(real).slice(0, 200));
 assert('dữ liệu thật: không có trường nguyên văn nào lọt ra (chỉ moTa tự viết ≤ 300 ký tự)', real.yKienWco.every((x) => x.moTa.length <= 300 && !('trich' in x) && !('text' in x)));
 
+
+// ── Cây quan hệ (#236): viTri + loaiKhac đính vào soTay, cố vấn, không đổi mã ──
+{
+  // Sổ tay tạm 8504 với dong8 có điều kiện + trích cho một anh em (thư mục tạm đã bị xoá ở bước 'dữ liệu thật' → tạo lại)
+  fs.mkdirSync(dataPath('so-tay'), { recursive: true });
+  fs.writeFileSync(dataPath('so-tay', '8504.json'), JSON.stringify({ nhom: '8504', loaiTru: [], yKienWcoDayDu: false, yKienWco: [], dong8: [
+    { hs: '85044011', dieuKien: 'Bộ nguồn cấp điện liên tục (UPS)', loaiKhac: false, nguon: 'sen.85044011', trich: 'Bộ nguồn cấp điện liên tục là bộ biến đổi điện…' },
+    { hs: '85044090', dieuKien: 'Loại khác — không thuộc các dòng 8504.40 có tên', loaiKhac: true, nguon: 'tax.85044090', trich: 'Loại khác' },
+  ] }));
+  rt.reset();
+  const v = rt.advise({ topHs: '85044090', candidates: ['8504', '8471'] });
+  assert('viTri: đường dẫn phần→chương→nhóm→phân nhóm, cha 850440 không suyRa, anh em có nhóm con 8504401 suyRa', v.viTri && v.viTri.duongDan.length === 4 && v.viTri.cha.id === '850440' && v.viTri.cha.suyRa === false && v.viTri.anhEm.some((x) => x.id === '8504401' && x.suyRa), JSON.stringify(v.viTri));
+  assert('loaiKhac: tổ tiên có tên 850440, 4 anh em có tên; anh em có trong dong8 thì kèm dieuKien + nguon + trich', v.loaiKhac && v.loaiKhac.toTienCoTen.id === '850440' && v.loaiKhac.anhEmCoTen.length === 4 && v.loaiKhac.anhEmCoTen[0].hs === '85044011' && v.loaiKhac.anhEmCoTen[0].nguon === 'sen.85044011' && /Bộ nguồn/.test(v.loaiKhac.anhEmCoTen[0].trich) && !v.loaiKhac.anhEmCoTen[1].trich, JSON.stringify(v.loaiKhac));
+  assert('loaiKhac: dòng chính nó có dieuKienSoTay; ghi chú nói "phải chứng minh KHÔNG rơi vào"', /không thuộc/.test(v.loaiKhac.dieuKienSoTay) && /KHÔNG rơi vào/.test(v.loaiKhac.ghiChu));
+  const w = rt.advise({ topHs: '85042111', candidates: [] });
+  assert('mã có tên (không Loại khác): có viTri (cha là tiêu đề bị lược), không có loaiKhac', w.viTri && w.viTri.cha.id === '8504211' && w.viTri.cha.suyRa === true && !w.loaiKhac);
+  const x = rt.advise({ topHs: '40118019', candidates: [] });
+  assert('nhóm chưa có sổ tay: vẫn có viTri + loaiKhac suy từ chữ số, trạng thái CHUA_CO_SO_TAY_CHO_NHOM', x.trangThai === 'CHUA_CO_SO_TAY_CHO_NHOM' && x.viTri && x.loaiKhac && x.loaiKhac.anhEmCoTen.map((a) => a.hs).join() === '40118011' && !x.loaiKhac.anhEmCoTen[0].trich, JSON.stringify(x));
+  const y = rt.advise({ topHs: '8504', candidates: [] });
+  assert('mã 4 số: viTri là nhóm, không có loaiKhac', y.viTri.nut.startsWith('Nhóm 8504') && !y.loaiKhac);
+  process.env.HS_SOTAY_RUNTIME = 'false';
+  assert('tắt khẩn cấp → null (kể cả viTri)', rt.advise({ topHs: '85044090', candidates: [] }) === null);
+  delete process.env.HS_SOTAY_RUNTIME;
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);

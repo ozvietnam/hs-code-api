@@ -57,6 +57,8 @@ api/               # 12 file handler.
 lib/               # Business logic (~50 module)
   data.js, auth.js, cors.js, gemini.js, llm-tier.js, llm.mjs
   data-paths.js           # phân giải đường dẫn data/ — HS_DATA_DIR để test cách ly
+  hs-tree.js              # LÕI: cây HS theo CHỮ SỐ của mã (phần→chương→nhóm→phân nhóm→tiêu đề QG→lá), #236
+  hs-tree-sources.js      # nguồn tri thức gắn vào từng nút, nhãn NGUYEN_VAN/DA_KIEM/AI_CHUA_KIEM
   search-utils.js, tax-mapper.js
   declaration-validator.js, gir-engine.js, conflict-resolver.js
   ministries.js, material-taxonomy.js, glossary.js
