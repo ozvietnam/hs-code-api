@@ -580,6 +580,7 @@ const DATASET_META = {
   materials: ['Phân loại vật liệu', '/api/materials'],
   ministries: ['14 bộ ngành quản lý chuyên ngành', '/api/ministries'],
   legal_docs: ['Thư viện văn bản pháp luật', '/api/legal-docs'],
+  hs_tree: ['Cây quan hệ HS theo chữ số của mã (?hs=2/4/6/8 số; 5/7 số = nút trung gian): vị trí, đường dẫn phần→chương→nhóm→phân nhóm→tiêu đề quốc gia, cha thật (suyRa=true là tiêu đề bị lược, tên chưa có), anh em, con, phạm vi dòng "Loại khác" (tổ tiên có tên trừ anh em có tên, kèm điều kiện + trích dẫn sổ tay) và nguồn tri thức gắn vào nút với nhãn NGUYEN_VAN / DA_KIEM / AI_CHUA_KIEM', '/api/tree'],
   wco_opinions: ['Ý kiến phân loại WCO (Compendium 2022): ?hs=4/6/8 số → danh sách con trỏ; ?hs=<6 số>&n=<thứ tự> → toàn văn OCR tiếng Anh + bản dịch tiếng Việt (không chính thức) + nguồn + tuyên bố bản quyền (Oz đã trả phí bản quyền; nội dung thuộc WCO, không thuộc CC BY-SA). Chỉ ý kiến đã qua cổng mã/thứ tự; danh sách có thể chưa đủ', '/api/wco-opinions'],
   policy_procedures: ['Thủ tục kiểm tra chuyên ngành', '/api/policy-procedures'],
   products: ['Corpus sản phẩm cho mã "Loại khác"', '/api/products'],

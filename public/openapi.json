@@ -2529,6 +2529,50 @@
         }
       }
     },
+    "/api/tree": {
+      "get": {
+        "operationId": "dataset_hs_tree",
+        "summary": "Cây quan hệ HS theo chữ số của mã (?hs=2/4/6/8 số; 5/7 số = nút trung gian): vị trí, đường dẫn phần→chương→nhóm→phân nhóm→tiêu đề quốc gia, cha thật (suyRa=true là tiêu đề bị lược, tên chưa có), anh em, con, phạm vi dòng \"Loại khác\" (tổ tiên có tên trừ anh em có tên, kèm điều kiện + trích dẫn sổ tay) và nguồn tri thức gắn vào nút với nhãn NGUYEN_VAN / DA_KIEM / AI_CHUA_KIEM",
+        "description": "Rewrite tới /api/dataset?resource=hs_tree",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/wco-opinions": {
       "get": {
         "operationId": "dataset_wco_opinions",
