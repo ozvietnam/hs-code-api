@@ -33,7 +33,7 @@ ls -la data/oz-export/BIEU-THUE-XNK-*.xlsx && git check-ignore data/oz-export/BI
 node scripts/bieu-thue/kham-pha.mjs --file=data/oz-export/BIEU-THUE-XNK-2026.04.05.xlsx
 
 # 2. TRÍCH — từ chối khi bảo toàn không đủ hoặc có sheet chưa khai bỏ qua
-node scripts/bieu-thue/trich.mjs --file=data/oz-export/BIEU-THUE-XNK-2026.04.05.xlsx --phien-ban=2026.04.05 [--bo-qua-sheet="Phu luc"]
+node scripts/bieu-thue/trich.mjs --file=data/oz-export/BIEU-THUE-XNK-2026.04.05.xlsx --phien-ban=2026.04.05 --bo-qua-sheet="BIA,HT,BANG,6QT,PL1,PL2,EU,DB"   # 8 sheet phụ lục không có tiêu đề cột (xem Kết quả lần đầu)
 
 # 3. KIỂM — đỏ khi mất mã so với tax.json, mã trùng, dòng 8 số không mô tả, nút ảo không có trong cây
 node scripts/bieu-thue/kiem.mjs --phien-ban=2026.04.05
@@ -55,7 +55,7 @@ Tên nút: 2.160/2.194 nút ảo của cây + 1.046 phân nhóm 6 số có tên 
 
 ## Sau khi có dữ liệu — ai dùng gì
 
-- **#251 thuế FTA + loại C/O**: `dong.json[].thue` có mọi cột FTA chuỗi gốc → `lib/fta.js` đọc nghĩa (khuôn `lib/acfta.js`: loại trừ nước, nhiều mức → `needsReview`). Không chép FTA vào `tax.json` bằng tay.
+- **#251 thuế FTA + loại C/O**: `bieu-chinh.jsonl.gz` (mỗi dòng `thue{}` + `canCu{}`) có mọi cột FTA chuỗi gốc kèm văn bản + ngày hiệu lực từng mức → `lib/fta.js` đọc nghĩa (khuôn `lib/acfta.js`: loại trừ nước, nhiều mức → `needsReview`). Không chép FTA vào `tax.json` bằng tay.
 - **#236 tên nút ảo**: `ten-nut.json` (`doTinCay: KHOP_TAP` = tập lá dưới tiêu đề khớp đúng tập lá của nút) → `lib/hs-tree.js` **đã** nạp làm `tenVi` nguyên văn cho nhóm một gạch / tiêu đề quốc gia / phân nhóm 6 số (`tenNguon: "bieu-thue@<phiên bản>"`); sổ tay `cay.tenDien` chỉ còn cho 34 nút biểu thuế cũng không đặt tên.
 - **`tax.json`**: KHÔNG thay bằng tệp này trực tiếp; đối chiếu `doi-chieu-tax.json` rồi quyết định cập nhật qua `scripts/tariff-upload-xlsx.mjs`/phiên bản biểu thuế như trước.
 
