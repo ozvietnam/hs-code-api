@@ -52,6 +52,10 @@ là chương 98 xuất hiện hai lần — bình thường), 4.780 dòng tiêu 
 theo năm/mốc (ATIGA 2022–2027, CPTPP (I)–(VII), VJEPA theo khoảng ngày…), biểu XK, CU/MOI (mã cũ/mới). 8 sheet phụ lục
 (BIA, HT, BANG, 6QT, PL1, PL2, EU, DB) không có tiêu đề cột → bỏ qua có ý thức, vẫn nằm trong bản thô.
 Tên nút: 2.160/2.194 nút ảo của cây + 1.046 phân nhóm 6 số có tên tiếng Việt nguyên văn → `lib/hs-tree.js` tự nạp.
+Từng sheet chứa gì (kể cả 8 sheet phụ lục: `HT` là hệ thống văn bản + **mẫu C/O** từng hiệp định, `PL1` danh mục không giảm VAT,
+`DB` biểu TTĐB lộ trình, `MT` BVMT, `BANG` bảng kỹ thuật, `CU`/`MOI` mã cũ/mới…): `data/bieu-thue/README.md` mục "Từng sheet chứa gì".
+Dòng có mức thuế nhưng ô mã trống (lỗi nguồn, vd `XK` dòng 1123) → giữ ở `khac` với cờ `CO_THUE_KHONG_MA`, `kiem.mjs` in
+CẢNH BÁO; **không** để máy đoán mã từ cột phụ (cột phụ công thức có thể lệch dòng) — người đối chiếu văn bản.
 
 ## Sau khi có dữ liệu — ai dùng gì
 

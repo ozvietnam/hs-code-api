@@ -35,5 +35,7 @@ const t = T.tree(); const ao = [...new Set(t.nodes.values())].filter((n) => n.su
 const coTen = ao.filter((n) => tn.ten[n.id]);
 console.log(`biểu ${ver} sheet chính ${dc.sheetChinh}: ${dong.length} dòng mã (8 số: ${dong.filter((d) => d.soChuSo === 8).length}, trùng ch.98: ${dc.maTrung.length}); tax.json ${dc.soTax}, thiếu ${dc.thieuTrongBieu.length}, mới ${dc.moiSoVoiTax.length}; ${tk.cotThue.length} cột thuế (mọi sheet)`);
 console.log(`tên nút ảo từ biểu thuế: ${coTen.length}/${ao.length} nút ảo của cây có tên (${Object.values(tn.ten).filter((v) => v.doTinCay === 'KHOP_TAP').length} khớp tập, ${tn.khongNoi.length} tiêu đề không nối được)`);
+// Dòng có mức thuế nhưng ô mã trống (lỗi nguồn: chèn dòng, cột phụ lệch) — CẢNH BÁO, không gán mã máy; người kiểm đối chiếu văn bản.
+for (const s of tk.sheets) for (const k of s.coThueKhongMa || []) console.log(`CẢNH BÁO sheet ${s.ten} dòng ${k.r}: có mức thuế nhưng không có mã → ${JSON.stringify(k.o).slice(0, 160)}`);
 console.log(loi ? `${loi} lỗi` : 'PASS kiểm biểu thuế');
 process.exit(loi ? 1 : 0);
