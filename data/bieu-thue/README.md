@@ -20,6 +20,37 @@ của phiên bản mới nhất → nút ảo và phân nhóm 6 số có `tenVi`
 Phiên bản 2026.04.05 (sha256 `2b55f20e…`): sheet chính 15.115 dòng mã (12.000 dòng 8 số, 11.871/11.871 mã `tax.json` có mặt, 78 trùng là chương 98 xuất hiện hai lần), 4.780 dòng tiêu đề; 2.160/2.194 nút ảo của cây có tên (khớp tập), 1.046/2.035 phân nhóm 6 số có tên tiếng Việt; 8 sheet phụ lục (BIA, HT, BANG, 6QT, PL1, PL2, EU, DB) bỏ qua có ý thức (giữ trong bản thô).
 Không sửa tay các tệp này; sửa `lib/bieu-thue.js` rồi trích lại.
 
+## Rà soát cột Chính sách mặt hàng (`cs`) theo từng mã 8 số — `2026.04.05/ra-soat-cs.json`
+
+CEO yêu cầu 12/10/2026. So cột CY "Chính sách mặt hàng theo mã HS" của biểu chính 2026.04.05 với trường `cs` của `data/tax.json`
+(gốc: biểu 01/01/2026, `data/versions/tax-v2026-01-01-base.json`) cho **11.871/11.871 mã 8 số**; số hiệu văn bản đối chiếu sổ
+oz-wiki-plhq qua `lib/plhq-registry.js` (cầu nối — nội dung văn bản để oz-wiki làm, repo này không chép).
+
+| Kết quả | Số mã |
+|---|---|
+| Giống nhau | 7.011 |
+| Cả hai trống | 3.831 |
+| Khác nhau | 1.029 (460 mã biểu có mục mới; 684 mã tax còn mục biểu đã bỏ) |
+| `tax.json` dính hai mục không có `;` (lỗi nhập cũ, vd 29031110) | 61 |
+
+Thay đổi chính sách giữa 01/01/2026 → 05/04/2026 (mục × số mã): **mới** — tài nguyên khoáng sản chưa/đã chế biến (181/2025/NĐ-CP
+PL1/PL2) 148 + 184; hoá chất Bảng 1/2/3 theo 33/2024 & 26/2026/NĐ-CP 80; khai báo hoá chất qua Cổng một cửa (Đ6 NĐ26) 59; VLXD
+nhóm 2 (10/2024/TT-BXD) trước/sau thông quan 26 + 54; hoá chất cấm đầu tư kinh doanh (Đ5.5 NĐ26) 20; CBPG ván sợi 121/QĐ-BCT-2026,
+kính nổi 228/QĐ-BCT-2026. **Bỏ** — toàn bộ danh mục hoá chất theo 113/2017/NĐ-CP (PL1/PL3/PL4/PL5) và 82/2022/NĐ-CP PL2
+(604 + 322 + 257 + 196 + 48 mã, thay bằng NĐ 26/2026 hướng dẫn Luật Hoá chất 2025); CBPG ván sợi 2491/QĐ-BCT-2025, kính nổi
+2093/QĐ-BCT-2025 (thay bằng QĐ 2026); pháo hoa 125/2021/TT-BCA (1 mã).
+
+Cầu nối sổ oz-wiki: cột chính sách biểu 2026 trích được **62 số hiệu**; sổ **thiếu 3** (181/2025/NĐ-CP — 332 mã, 33/2024/NĐ-CP — 60 mã,
+228/QĐ-BCT — 2 mã); **12 văn bản sổ ghi đã hết hiệu lực sau 05/04/2026** mà biểu còn trích (12/2022 + 62/2024/TT-BGTVT 2.183 mã hết
+01/07/2026 chưa ghi văn bản thay; 23/2019/QĐ-TTg → 31/2026/QĐ-TTg; 01/2021/TT-BLĐTBXH → 16/2026/TT-BNV; 10/2024/TT-BXD → 41/2026/TT-BXD;
+29/2025/TT-BKHCN → 36/2026/TT-BKHCN; 04/2021/TT-BXD → 11/2026/TT-BXD; 69/2018/NĐ-CP → 292/2026/NĐ-CP; 691, 693, 715, 2105/QĐ-BCT).
+4 mục không có số hiệu máy đọc được ("Đ6-NĐ26", "Đ5.5 NĐ26", "10.2022.TT.BTTT", dòng CITES bị tách). Sheet `HT` nêu 144 số hiệu,
+sổ thiếu 66 (chủ yếu nghị định biểu thuế FTA 2022, biểu MFN/XK 2023–2025, thông tư PSR) — danh sách trong tệp để chuyển oz-wiki.
+
+Tệp `ra-soat-cs.json` (`MAY_SUY`): `theoMa[]` từng mã khác nhau (`tax`, `bieu`, `mucMoi`, `mucBo`), `mucMoi`/`mucBo` tổng hợp,
+`taxDinhMuc`, `vanBanCotChinhSach` (số hiệu, số mã, có trong sổ, tình trạng), `sheetHT.thieuTrongSoOzWiki`. **Không sửa `tax.json`
+ở đây** — cập nhật `cs` đi qua phiên bản biểu thuế (`scripts/tariff-upload-xlsx.mjs` / `data/versions/`) khi CEO chốt.
+
 ## Từng sheet chứa gì (khám phá 12/10/2026, tệp 2026.04.05)
 
 Cột `Mã`/`Mô tả`/`Thuế` là khoá trong `cot.json`; "dòng mã" = dòng có mã 2–10 số; "khác" = dòng giữ nguyên ô, không vào dòng mã/tiêu đề.
