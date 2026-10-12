@@ -44,7 +44,7 @@ ws['!merges'] = [{ s: { r: 1, c: 4 }, e: { r: 1, c: 10 } }, { s: { r: 1, c: 0 },
 const wb = XLSX.utils.book_new();
 XLSX.utils.book_append_sheet(wb, ws, 'Bieu thue');
 XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([['Phụ lục'], ['Danh mục hàng hoá quản lý'], ['x', 'y']]), 'Phu luc');
-XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([['Mã hàng', 'Mô tả hàng hóa', 'Thuế suất (%)', ''], ['', '', '2022', '2023 - 2027'], ['', 'Chương 85'], ['8504.21.11', '- - - - Loại công suất danh định không quá 1 kVA', '7', '0']]), 'VNCU');
+XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([['Mã hàng', 'Mô tả hàng hóa', 'Thuế suất (%)', '', ''], ['', '', '2022', '2023 - 2027', ''], ['', 'Chương 85'], ['8504.21.11', '- - - - Loại công suất danh định không quá 1 kVA', '7', '0', '85042111'], ['', '', '5', '0', '85042119']]), 'VNCU');
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'bieu-thue-'));
 const f = path.join(tmp, 'thu.xlsx');
 XLSX.writeFile(wb, f);
@@ -73,6 +73,7 @@ assert('dòng tên biểu trước tiêu đề cột và dòng ghi chú cuối �
 assert('BẢO TOÀN: số ô đã ghi = số ô không rỗng của sheet', sh.baoToan.du && sh.baoToan.oDaGhi === soO, sh.baoToan);
 assert('sheet phụ không có tiêu đề cột → khongNhanRa, giữ mẫu thô', kq.khongNhanRa.length === 1 && kq.khongNhanRa[0].ten === 'Phu luc' && kq.khongNhanRa[0].soO === 4, kq.khongNhanRa);
 const vncu = kq.sheets.find((s) => s.ten === 'VNCU');
+assert('ô mã trống, không mô tả nhưng có thuế (mã chỉ ở cột phụ không tiêu đề) → KHÔNG gán mã, giữ ở khac với cờ CO_THUE_KHONG_MA, đủ ô; dòng mã thật không bị ảnh hưởng', vncu && vncu.dong.length === 1 && vncu.khac.some((k) => k.canhBao === 'CO_THUE_KHONG_MA' && k.o.E === '85042119' && k.o.C === '5') && vncu.baoToan.du, vncu && { dong: vncu.dong.length, khac: vncu.khac });
 assert('sheet VNCU: "Thuế suất (%)" → thue.vn_cuba suy từ tên sheet, mốc "2022" và "2023 - 2027" từ dòng tiêu đề phụ', vncu && vncu.cot.find((c) => c.cot === 'C').khoa === 'thue.vn_cuba@2022' && vncu.cot.find((c) => c.cot === 'D').khoa === 'thue.vn_cuba@2023 - 2027' && vncu.cot.find((c) => c.cot === 'C').suyTuSheet === true && vncu.dong[0].thue['vn_cuba@2022'] === '7' && vncu.baoToan.du, vncu && { cot: vncu.cot, dong: vncu.dong, bt: vncu.baoToan });
 
 // ── Nối tiêu đề vào cây ──
