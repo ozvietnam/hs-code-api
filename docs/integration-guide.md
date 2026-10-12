@@ -298,7 +298,7 @@ Số gạch trong tên dòng chỉ là tầng hiển thị. Trước đó anh em
 | | `isResidual`, `scopeVi`, `excludesVi` | Giữ như cũ; `scopeVi`/`excludesVi` là chữ AI (chưa kiểm), chỉ gợi ý |
 | `GET /api/kg_chapter?chapter=85&tree=1` | nút `level` | Thêm hai loại nút ảo: `ONE_DASH_GROUP` (nhóm một gạch, vd `85042`) và `NATIONAL_HEADER` (tiêu đề quốc gia, vd `8504211`), đều `suyRa: true`, `name` có thể `null`. `SUBHEADING` có `nameEn` WCO. Dòng lá giữ nguyên trường cũ. Tên nhóm lấy từ chú giải nhóm thay vì dòng lá đầu |
 
-Nút ảo không bịa tên: `name: null` cho tới khi sổ tay điền kèm trích dẫn. Người đọc cây nên hiển thị mã nút kèm nhãn "tên bị lược".
+Nút ảo không bịa tên. **Từ 12/10/2026** tên tiếng Việt của nhóm một gạch, tiêu đề quốc gia và phân nhóm 6 số lấy **nguyên văn từ biểu thuế XNK của Tổng cục** (`data/bieu-thue/<phiên bản>/ten-nut.json`, nhãn `NGUYEN_VAN`, `tenNguon: "bieu-thue@2026.04.05"`): 2.160/2.194 nút ảo và 1.046/2.035 phân nhóm 6 số đã có tên — `viTri`, `breadcrumb`, `/api/tree`, `/api/kg_chapter?tree=1` tự có tên. 34 nút còn lại vẫn `name: null` / "tên bị lược" cho tới khi sổ tay điền kèm trích dẫn.
 
 ## 4. Tra chi tiết chính sách kiểm tra chuyên ngành
 

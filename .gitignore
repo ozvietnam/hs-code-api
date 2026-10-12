@@ -33,6 +33,10 @@ data/accuracy-report-*.json
 # Chặn MỌI tệp trong oz-export (xlsx, xls, csv, json, pdf…), chỉ giữ README.
 data/oz-export/*
 !data/oz-export/README.md
+# Bản thô từng ô của biểu thuế (tái sinh bằng scripts/bieu-thue/trich.mjs) — lớn, không commit
+data/oz-export/bieu-thue-raw/
+# Các sheet FTA theo năm của biểu thuế (tái sinh được; sheet chính + tên nút + tiêu đề thì commit)
+data/bieu-thue/*/sheet/
 data/oz-declarations.jsonl
 
 # Oz private derived data (raw + trung gian — KHÔNG commit)

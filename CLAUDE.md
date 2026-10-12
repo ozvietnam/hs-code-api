@@ -60,6 +60,7 @@ lib/               # Business logic (~50 module)
   hs-tree.js              # LÕI: cây HS theo CHỮ SỐ của mã (phần→chương→nhóm→phân nhóm→tiêu đề QG→lá), #236
   hs-tree-sources.js      # nguồn tri thức gắn vào từng nút, nhãn NGUYEN_VAN/DA_KIEM/AI_CHUA_KIEM
   nguon-loai.js           # MỘT bảng nhãn loại nguồn cho mọi tệp data/ (AI_CHUA_KIEM không được trích làm căn cứ)
+  bieu-thue.js            # đọc biểu thuế XNK Tổng cục (Excel) KHÔNG bỏ sót — skill .claude/skills/bieu-thue-xnk; cây lấy tên nút từ đây
   so-tay.js, so-tay-runtime.js  # máy kiểm sổ tay (nguonLoai, cay, tieuChi6, kiemCay) + sổ tay lúc chạy (cố vấn)
   search-utils.js, tax-mapper.js
   declaration-validator.js, gir-engine.js, conflict-resolver.js
@@ -79,7 +80,8 @@ data/              # Lookup tables + main dataset
   customs-types.json      # Mã loại hình XNK
   taxonomy/               # polymer/wood/fiber/chemical/metal
   versions/               # Tariff versioning history
-  oz-export/              # CEO drop ECUS data (PRIVATE, gitignored)
+  oz-export/              # CEO drop ECUS data + BIEU-THUE-XNK-<ngày>.xlsx (PRIVATE, gitignored)
+  bieu-thue/<ngày>/       # biểu thuế Tổng cục đã trích: bieu-chinh.jsonl.gz (27 mức thuế + căn cứ từng mức), ten-nut.json, tieu-de
 
 scripts/           # Admin CLI tools
 public/admin/      # Admin Dashboard UI (HTML/JS)
