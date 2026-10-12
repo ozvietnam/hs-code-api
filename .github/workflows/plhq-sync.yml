@@ -40,7 +40,7 @@ jobs:
         run: node scripts/bench-plhq.mjs --json > "$RUNNER_TEMP/bench.md"
       - name: Toàn bộ test
         if: steps.sync.outputs.changed == 'true' || steps.sync.outputs.touched == 'true'
-        run: npm test
+        run: npm ci --no-audit --no-fund && npm test   # devDependency xlsx cho test biểu thuế
       - name: Commit / mở PR
         if: steps.sync.outputs.changed == 'true' || steps.sync.outputs.touched == 'true'
         env:
