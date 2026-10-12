@@ -17,7 +17,7 @@ Service HTTP API cho ERP `erp-xnk` gọi sang để:
 
 - Node.js handler kiểu serverless (`api/*.js`) chạy bằng `server.js` trên server riêng — KHÔNG dùng Next.js framework
 - Data: bảng tra **TĨNH** (tax.json, notes, precedents… — chỉ đọc) giữ dạng JSON files trong `data/` (nạp nhanh, versioned bằng git). **Dữ liệu GHI LÚC CHẠY** (kho tiền lệ, feedback, log) **ĐƯỢC dùng database** (Postgres) — rào "no DB" cũ chỉ áp cho thời Vercel serverless (tránh cold start chậm); nay chạy `server.js` server riêng nên DB thường trú OK. CEO chốt 12/10/2026 (#237, #255-B3).
-- AI: Gemini 2.5 Flash (rerank, describe) + Gemini Embedding 001 (semantic search)
+- AI: rerank + sinh mô tả qua chuỗi LLM (xem dòng dưới; MiniMax chính). Semantic search bằng embedding **chưa bật ở runtime** — ghi "Gemini Embedding 001" trước đây là SAI; #237 sẽ đưa bge-m3 cục bộ vào, khi đó cập nhật lại.
 - Chuỗi LLM (`lib/llm-tier.js` → `lib/llm.mjs`, CEO chốt 04/10/2026): **MiniMax gọi thẳng
   (gói trả phí, `MiniMax-M2.7-highspeed`)** → Hermes → OpenRouter → Gemini miễn phí
   (`GEMINI_FREE_KEYS`, chỉ dự phòng) → khóa Gemini trả phí chỉ khi tier premium. Không phụ
