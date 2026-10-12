@@ -40,8 +40,9 @@ kính nổi 228/QĐ-BCT-2026. **Bỏ** — toàn bộ danh mục hoá chất the
 (604 + 322 + 257 + 196 + 48 mã, thay bằng NĐ 26/2026 hướng dẫn Luật Hoá chất 2025); CBPG ván sợi 2491/QĐ-BCT-2025, kính nổi
 2093/QĐ-BCT-2025 (thay bằng QĐ 2026); pháo hoa 125/2021/TT-BCA (1 mã).
 
-Cầu nối sổ oz-wiki: cột chính sách biểu 2026 trích được **62 số hiệu**; sổ **thiếu 3** (181/2025/NĐ-CP — 332 mã, 33/2024/NĐ-CP — 60 mã,
-228/QĐ-BCT — 2 mã); **12 văn bản sổ ghi đã hết hiệu lực sau 05/04/2026** mà biểu còn trích (12/2022 + 62/2024/TT-BGTVT 2.183 mã hết
+Cầu nối sổ oz-wiki (sổ bản 10/10/2026 lúc rà; CEO nạp 40 văn bản sheet HT vào sổ trưa 12/10 → bản 12/10 chỉ còn thiếu
+33/2024/NĐ-CP ở cột chính sách và 28 văn bản *bị thay* nêu ở sheet HT — xem `van-ban-bieu-thue.json`): cột chính sách biểu 2026
+trích được **62 số hiệu**; sổ 10/10 **thiếu 3** (181/2025/NĐ-CP — 332 mã, 33/2024/NĐ-CP — 60 mã, 228/QĐ-BCT — 2 mã); **12 văn bản sổ ghi đã hết hiệu lực sau 05/04/2026** mà biểu còn trích (12/2022 + 62/2024/TT-BGTVT 2.183 mã hết
 01/07/2026 chưa ghi văn bản thay; 23/2019/QĐ-TTg → 31/2026/QĐ-TTg; 01/2021/TT-BLĐTBXH → 16/2026/TT-BNV; 10/2024/TT-BXD → 41/2026/TT-BXD;
 29/2025/TT-BKHCN → 36/2026/TT-BKHCN; 04/2021/TT-BXD → 11/2026/TT-BXD; 69/2018/NĐ-CP → 292/2026/NĐ-CP; 691, 693, 715, 2105/QĐ-BCT).
 4 mục không có số hiệu máy đọc được ("Đ6-NĐ26", "Đ5.5 NĐ26", "10.2022.TT.BTTT", dòng CITES bị tách). Sheet `HT` nêu 144 số hiệu,
@@ -61,7 +62,9 @@ Tệp `ra-soat-cs.json` (`MAY_SUY`): `theoMa[]` từng mã khác nhau (`tax`, `b
   mà biểu thuế nêu (sheet `HT` cột F hiện hành / cột I bị thay + cột chính sách kèm số mã HS), đối chiếu sổ oz-wiki
   (`trongSo`, `tinhTrang`, `hetHieuLucTu`, `biThayTheBoi`). oz-wiki-plhq `tools/nhu-cau.mjs` kéo tệp này về
   `nhu-cau/bieu-thue-van-ban.json` và `tools/diem-mu.mjs` sinh việc `BIEU_THUE_*`. Tệp chỉ có số hiệu + tên biểu/danh mục,
-  **không có nội dung văn bản** — nội dung là việc của oz-wiki. 2026.04.05: 150 số hiệu, sổ chưa có 68, hết hiệu lực 20.
+  **không có nội dung văn bản** — nội dung là việc của oz-wiki. 2026.04.05 (sổ 12/10): 150 số hiệu, sổ chưa có 29 (1 hiện hành:
+34/2024/NĐ-CP; 1 cột chính sách: 33/2024/NĐ-CP; 27 văn bản bị thay), 20 hết hiệu lực — trong đó 13 văn bản biểu còn coi là hiện
+hành mà sổ ghi hết (6 chưa ghi văn bản thay: 12/2022 + 62/2024/TT-BGTVT, 691, 693, 715, 2105/QĐ-BCT).
 
 ## Từng sheet chứa gì (khám phá 12/10/2026, tệp 2026.04.05)
 
