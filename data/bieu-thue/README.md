@@ -51,6 +51,18 @@ Tệp `ra-soat-cs.json` (`MAY_SUY`): `theoMa[]` từng mã khác nhau (`tax`, `b
 `taxDinhMuc`, `vanBanCotChinhSach` (số hiệu, số mã, có trong sổ, tình trạng), `sheetHT.thieuTrongSoOzWiki`. **Không sửa `tax.json`
 ở đây** — cập nhật `cs` đi qua phiên bản biểu thuế (`scripts/tariff-upload-xlsx.mjs` / `data/versions/`) khi CEO chốt.
 
+### Cập nhật `cs` và cầu nối oz-wiki (CEO duyệt 12/10/2026)
+
+- `npm run bieu-thue:cap-nhat-cs -- --phien-ban=2026.04.05` (`scripts/bieu-thue/cap-nhat-cs.mjs`): thay trường `cs` của **mọi**
+  mã 8 số trong `data/tax.json` bằng cột CY của biểu đã trích — đi qua `lib/tariff-mutations.js uploadTariffMap` → phiên bản
+  `v2-2026-04-05-cs` trong `data/versions/` + thay `tax.json`; mọi trường khác giữ nguyên; `--kho` để xem trước. Kết quả lần
+  chạy khô 12/10/2026: đổi 1.029 mã (thêm 112, bỏ trống 367, sửa 550 — gồm 61 mã dính mục).
+- `npm run bieu-thue:van-ban` (`scripts/bieu-thue/van-ban.mjs`) → **`data/bieu-thue/van-ban-bieu-thue.json`**: mọi số hiệu văn bản
+  mà biểu thuế nêu (sheet `HT` cột F hiện hành / cột I bị thay + cột chính sách kèm số mã HS), đối chiếu sổ oz-wiki
+  (`trongSo`, `tinhTrang`, `hetHieuLucTu`, `biThayTheBoi`). oz-wiki-plhq `tools/nhu-cau.mjs` kéo tệp này về
+  `nhu-cau/bieu-thue-van-ban.json` và `tools/diem-mu.mjs` sinh việc `BIEU_THUE_*`. Tệp chỉ có số hiệu + tên biểu/danh mục,
+  **không có nội dung văn bản** — nội dung là việc của oz-wiki. 2026.04.05: 150 số hiệu, sổ chưa có 68, hết hiệu lực 20.
+
 ## Từng sheet chứa gì (khám phá 12/10/2026, tệp 2026.04.05)
 
 Cột `Mã`/`Mô tả`/`Thuế` là khoá trong `cot.json`; "dòng mã" = dòng có mã 2–10 số; "khác" = dòng giữ nguyên ô, không vào dòng mã/tiêu đề.
