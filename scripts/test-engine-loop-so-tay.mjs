@@ -30,8 +30,10 @@ const CHOT_8509 = { decision: 'CHOT', hs: '85098090', confidence: 75, reason: 't
 
 // 1. Tắt sổ tay (mặc định) → hành vi cũ: 2 lượt AI, không có khối soTay, không cờ.
 let r = await run(null, FAN, [R1_FAN, CHOT_8509]);
-// (Cờ tiền lệ Oz 84.14 vẫn bật như cũ — đó là cơ chế khác, không thuộc sổ tay.)
-check('HS_SO_TAY tắt → không hỏi giải trình, không trả soTay', calls.length === 2 && r.results[0]?.hs === '85098090' && r.soTay === undefined && !r.review.reasons.some((x) => /Sổ tay/.test(x)), JSON.stringify([calls.length, r.results[0]?.hs, r.review]));
+// (Cờ tiền lệ Oz 84.14 vẫn bật như cũ — đó là cơ chế khác, không thuộc sổ tay.
+//  Chế độ cố vấn 3a so-tay-runtime mặc định BẬT từ 10/10 nên soTay cố vấn có thể có mặt —
+//  điều kiện là KHÔNG có payload chế độ quyết định: outcome/challenges/giaiTrinh.)
+check('HS_SO_TAY tắt → không hỏi giải trình, không trả payload quyết định', calls.length === 2 && r.results[0]?.hs === '85098090' && !(r.soTay && (r.soTay.outcome || r.soTay.challenges || r.soTay.giaiTrinh)) && !r.review.reasons.some((x) => /Sổ tay/.test(x)), JSON.stringify([calls.length, r.results[0]?.hs, r.review]));
 check('HS_SO_TAY tắt → gói vòng 2 vẫn là chú giải cũ', !/SỔ TAY nhóm/.test(calls[1].user));
 
 // 2. gates: loại trừ đích danh → lượt giải trình kèm câu luật + chú giải nhóm 84.14 → AI đổi sang 8414 → CHANGED.
