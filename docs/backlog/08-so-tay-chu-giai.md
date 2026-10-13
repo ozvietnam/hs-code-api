@@ -205,6 +205,37 @@ cổng **nghi đúng hướng** — hệ đang chọn dòng "Loại khác" trong
 `/opt/hs-bench/so-tay-{off,gates,full}-r{1,2}.json` giữ trên .120 (không commit — theo chuẩn không
 ghi dữ liệu đo vào repo).
 
+## Trạng thái 13/10/2026 (khuya) — CHỐT DÒNG 8 SỐ (#195): máy sẵn sàng, chưa đủ phủ để bật
+
+**Đã xây (nhánh #195, đủ 3 tầng bóc→kiểm→chấm):** `dieuKienSo` có cấu trúc `{fact, op, value, donVi}`
+trên 341 mục / ~40 nhóm sổ tay (máy kiểm `check-so-tay`: số + đơn vị nguyên văn trong trích, 0 lỗi);
+op `LA` (chất liệu — bảng alias Việt + Hán dùng chung); op `HOAC` (phép chọn giữa các khoảng —
+`phuongAn` nối OR trong, AND ngoài, có guard ngữ nghĩa "hoặc"); cổng `chotDong8()` trong
+`lib/so-tay-gates.js` sau công tắc RIÊNG `HS_SO_TAY_DONG=on` (mặc định TẮT, độc lập `HS_SO_TAY`):
+CHOT (đúng 1 dòng thoả, tự tin ≥85 + trích), LOAI_KHAC (phủ định HOÀN CHỈNH: mọi anh em có điều kiện
+đã kiểm + đúng 1 dòng LK), THIEU_SO_LIEU (hỏi dữ kiện), TRANH_CAP (cờ chuyên viên), KHONG_THE_CHOT
+(điểm mù — trả `chotDong.lyDo`).
+
+**Chạy khô 763 tờ giữ riêng (mã đúng):** oan **0/663 (0%)**; máy xác nhận đúng dòng 10 ca; hỏi dữ kiện
+2; cờ tranh cấp 1; còn **97,4% KHONG_THE_CHOT = bản đồ điểm mù** (1.119/1.230 PN6 chưa số hoá — top:
+5407/6204/6104/6005/6006 dệt may, 3824, 9506, 9401/9405, 7019).
+
+**Bench vòng 2 (gates vs gates+dong, 80 mẫu vàng, mỗi chế độ 2 lượt, container biệt lập trên .120):**
+
+| Chế độ | Đ8 (2 lượt) | sai-không-cờ | cờ | lỗi |
+|---|---|---|---|---|
+| gates | 63,8 · 61,3 | 13,8 · 13,8 | 43,8 · 45 | 0 · 0 |
+| gates+dong | 57,5 · 63,3 | 15 · 19 | 37,5 · 31,3 | 0 · 1 |
+
+**Đọc số cho đúng:** cổng chốt dòng chỉ bắt lửa ~10/763 ca (**1,05%**) — trên 80 mẫu vàng ≈ 1 ca/lượt,
+nên chênh lệch giữa hai chế độ (−2,2 điểm Đ8; +3,2 sai-không-cờ) là **nhiễu LLM** (nội bộ chế độ dong
+lệch nhau 5,8 điểm), không kết luận được lợi hay hại. `changedHarmful` = 0 cả hai chế độ.
+
+**Quyết định: GIỮ `HS_SO_TAY_DONG` TẮT ở prod** (kỷ luật #193: đo đủ mới bật; hiện chưa chứng minh
+được lợi ích vì phủ quá mỏng). **Điều kiện mở khóa:** số hoá `dieuKienSo` cho PN6 của các nhóm hay
+gặp (giao với #141 và các nhóm trong đề vàng): **9004, 8708, 6204, 6403, 9405, 7019, 8539** — đủ để
+cổng bắt lửa >5% số mẫu; sau đó chạy lại bench này (script/kịch bản đã sẵn ở mục trên).
+
 ## Liên quan
 - Bước 2 G-2 (bóc mệnh đề loại trừ thành cấu trúc) và bước 5 D-3 (định tuyến 6 số): sổ tay là
   cách làm chung cho cả hai.
