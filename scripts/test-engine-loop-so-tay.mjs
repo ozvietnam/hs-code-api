@@ -5,6 +5,7 @@ const require = createRequire(import.meta.url);
 process.env.HS_CLASSIFY_ENGINE = 'loop';
 process.env.MIC_OFF = '1';
 process.env.HS_EVAL_EXCLUDE_HOLDOUT = '1';
+process.env.HS_SO_TAY_DONG = 'on'; // #195: công tắc riêng của chốt dòng — test bật tường minh
 const llmTier = require('../lib/llm-tier');
 let script = []; let calls = [];
 llmTier.callLLMJson = async (system, user) => {
@@ -78,3 +79,12 @@ check('"Loại khác" khi có dòng cụ thể → đổi sang 85098010, CHANGED
 delete process.env.HS_SO_TAY;
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
+
+// 7. #195 CHỐT DÒNG: AI chọn dòng Loại khác 4009.21.90 nhưng hồ sơ có số → máy chốt 4009.21.10, không cờ.
+const ONG_R1 = { product: { nameVi: 'ống cao su có lắp phụ kiện cứng', purpose: 'dẫn dầu', mechanism: 'ốc vít', material: 'cao su', form: 'hoàn chỉnh', evidence: {} }, hypotheses: [{ chapter: '40', heading4: '4009', subheading6: '400921', why: 'ống cao su có lắp phụ kiện', confidence: 70 }], verify: { searchVi: ['ống cao su'], codes8: ['40092190'], micQuery: null, unknowns: [] } };
+r = await run('gates', { tenHang: '橡胶软管 附配件', specs: '直径: 20 cm; 壁厚: 2 cm' }, [
+  ONG_R1,
+  { decision: 'CHOT', hs: '40092190', confidence: 75, reason: 'ống cao su có lắp phụ kiện cứng', basis: [{ stream: 'SAN_PHAM', claim: 'ống dẫn', evidence: '橡胶软管' }], conditions: [], alternatives: [], questions: [] },
+]);
+check('chốt dòng: 40092190 → 40092110 theo điều kiện số, tự tin ≥85, kèm trích', r.results[0]?.hs === '40092110' && (r.results[0]?.confidence ?? 0) >= 85 && r.results[0]?.dongChot?.tu === '40092190' && /sen\.40092110/.test(JSON.stringify(r.results[0]?.dongChot?.traNguon || [])), JSON.stringify(r.results?.[0]?.hs));
+check('chốt dòng xong → soTay.chotDong ghi CHOT, không cờ chuyên viên', r.soTay?.chotDong?.ketQua === 'CHOT' && r.review.needed === false, JSON.stringify([r.soTay?.chotDong, r.review.needed]));

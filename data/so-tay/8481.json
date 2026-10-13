@@ -176,7 +176,15 @@
    "loaiKhac": false,
    "nguon": "tax.84811011",
    "trich": "84811011 - - - Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84811019",
@@ -201,7 +209,15 @@
    "loaiKhac": false,
    "nguon": "tax.84811021",
    "trich": "84811021 - - - Có đường kính trong không quá 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84811022",
@@ -209,7 +225,15 @@
    "loaiKhac": false,
    "nguon": "tax.84811022",
    "trich": "84811022 - - - Có đường kính trong trên 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84811091",
@@ -217,7 +241,26 @@
    "loaiKhac": false,
    "nguon": "tax.84811091",
    "trich": "84811091 - - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 1,
+     "donVi": "cm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84811099",
@@ -267,7 +310,26 @@
    "loaiKhac": false,
    "nguon": "tax.84812020",
    "trich": "84812020 - - Bằng đồng hoặc hợp kim đồng, có đường kính trong không quá 2,5 cm, hoặc bằng plastic, có đường kính trong từ 1 cm đến 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 1,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84812090",
@@ -293,7 +355,21 @@
    "loaiKhac": false,
    "nguon": "tax.84813010",
    "trich": "84813010 - - Van cản, bằng gang đúc, có đường kính trong cửa nạp từ 4 cm đến 60 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 4,
+     "donVi": "cm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 60,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84813020",
@@ -301,7 +377,15 @@
    "loaiKhac": false,
    "nguon": "tax.84813020",
    "trich": "84813020 - - Bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84813040",
@@ -309,7 +393,26 @@
    "loaiKhac": false,
    "nguon": "tax.84813040",
    "trich": "84813040 - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 1,
+     "donVi": "cm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84813090",
@@ -336,7 +439,15 @@
    "loaiKhac": false,
    "nguon": "tax.84814010",
    "trich": "84814010 - - Bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84814030",
@@ -344,7 +455,26 @@
    "loaiKhac": false,
    "nguon": "tax.84814030",
    "trich": "84814030 - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 1,
+     "donVi": "cm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84814090",
@@ -402,7 +532,15 @@
    "loaiKhac": false,
    "nguon": "tax.84818021",
    "trich": "84818021 - - - Có đường kính cửa nạp hoặc cửa thoát không quá 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818022",
@@ -410,7 +548,15 @@
    "loaiKhac": false,
    "nguon": "tax.84818022",
    "trich": "84818022 - - - Có đường kính cửa nạp hoặc cửa thoát trên 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818030",
@@ -426,7 +572,26 @@
    "loaiKhac": false,
    "nguon": "tax.84818041",
    "trich": "84818041 - - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 1,
+     "donVi": "cm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818049",
@@ -451,7 +616,26 @@
    "loaiKhac": false,
    "nguon": "tax.84818051",
    "trich": "84818051 - - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 1,
+     "donVi": "cm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818059",
@@ -476,7 +660,21 @@
    "loaiKhac": false,
    "nguon": "tax.84818061",
    "trich": "84818061 - - - - Van cổng điều khiển bằng tay có đường kính trong trên 5 cm nhưng không quá 40 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 5,
+     "donVi": "cm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 40,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818062",
@@ -549,7 +747,26 @@
    "loaiKhac": false,
    "nguon": "tax.84818066",
    "trich": "84818066 - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 1,
+     "donVi": "cm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818067",
@@ -576,7 +793,26 @@
    "loaiKhac": false,
    "nguon": "tax.84818071",
    "trich": "84818071 - - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 1,
+     "donVi": "cm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818072",
@@ -605,7 +841,15 @@
    "loaiKhac": false,
    "nguon": "tax.84818073",
    "trich": "84818073 - - - - Có đường kính trong cửa nạp và cửa thoát trên 5 cm nhưng không quá 40 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818074",
@@ -613,7 +857,15 @@
    "loaiKhac": false,
    "nguon": "tax.84818074",
    "trich": "84818074 - - - - Có đường kính trong cửa nạp và cửa thoát trên 40 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 40,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818077",
@@ -621,7 +873,15 @@
    "loaiKhac": false,
    "nguon": "tax.84818077",
    "trich": "84818077 - - - - Có đường kính trong cửa nạp và cửa thoát không quá 5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818078",
@@ -629,7 +889,26 @@
    "loaiKhac": false,
    "nguon": "tax.84818078",
    "trich": "84818078 - - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 1,
+     "donVi": "cm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818079",
@@ -658,7 +937,26 @@
    "loaiKhac": false,
    "nguon": "tax.84818081",
    "trich": "84818081 - - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 1,
+     "donVi": "cm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818082",
@@ -685,7 +983,20 @@
    "loaiKhac": false,
    "nguon": "tax.84818083",
    "trich": "84818083 - - - Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp dưới 1cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<",
+     "value": 1,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818084",
@@ -693,7 +1004,26 @@
    "loaiKhac": false,
    "nguon": "tax.84818084",
    "trich": "84818084 - - - Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp từ 1cm đến 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 1,
+     "donVi": "cm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818093",
@@ -709,7 +1039,15 @@
    "loaiKhac": false,
    "nguon": "tax.84818094",
    "trich": "84818094 - - - - Có đường kính trong cửa nạp dưới 1 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": "<",
+     "value": 1,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818095",
@@ -717,7 +1055,21 @@
    "loaiKhac": false,
    "nguon": "tax.84818095",
    "trich": "84818095 - - - - Có đường kính trong cửa nạp từ 1 cm đến 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 1,
+     "donVi": "cm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818096",
@@ -725,7 +1077,15 @@
    "loaiKhac": false,
    "nguon": "tax.84818096",
    "trich": "84818096 - - - - Có đường kính trong cửa nạp trên 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818097",
@@ -754,7 +1114,15 @@
    "loaiKhac": false,
    "nguon": "tax.84818098",
    "trich": "84818098 - - - - Vòi nước bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818099",
@@ -784,7 +1152,15 @@
    "loaiKhac": false,
    "nguon": "tax.84819010",
    "trich": "84819010 - - Vỏ của van cổng hoặc van cống có đường kính trong cửa nạp hoặc cửa thoát trên 50 mm nhưng không quá 400 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 50,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "84819021",

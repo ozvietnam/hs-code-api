@@ -61,7 +61,15 @@
    "loaiKhac": false,
    "nguon": "tax.85321000",
    "trich": "85321000 - Tụ điện cố định được thiết kế dùng trong mạch có tần số 50/60 Hz và có giới hạn công suất phản kháng cho phép không dưới 0,5 kvar (tụ nguồn)",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "cong_suat",
+     "op": ">=",
+     "value": 0.5,
+     "donVi": "kVA"
+    }
+   ]
   },
   {
    "hs": "85322100",

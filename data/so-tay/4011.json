@@ -166,7 +166,27 @@
    "nguon": "tax.40112013",
    "trich": "40112013 - - - Có chiều rộng trên 230 mm nhưng không quá 385 mm (SEN)",
    "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": ">",
+     "value": 230,
+     "donVi": "mm"
+    },
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 385,
+     "donVi": "mm"
+    },
+    {
+     "fact": "chieu_rong",
+     "op": ">",
+     "value": 385,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "40112019",

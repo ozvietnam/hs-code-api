@@ -218,7 +218,21 @@
    "loaiKhac": false,
    "nguon": "tax.73083010",
    "trich": "Cửa ra vào, có độ dày từ 6 mm đến 8 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "be_day",
+     "op": ">=",
+     "value": 6,
+     "donVi": "mm"
+    },
+    {
+     "fact": "be_day",
+     "op": "<=",
+     "value": 8,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "73083090",

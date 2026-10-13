@@ -22,7 +22,15 @@
    "loaiKhac": false,
    "nguon": "tax.72091500",
    "trich": "72091500 - - Có chiều dày từ 3 mm trở lên",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "be_day",
+     "op": ">=",
+     "value": 3,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "72091610",
@@ -88,7 +96,21 @@
    "loaiKhac": false,
    "nguon": "tax.72091891",
    "trich": "72091891 - - - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "khoi_luong",
+     "op": "<",
+     "value": 0.6,
+     "donVi": "%"
+    },
+    {
+     "fact": "khoi_luong",
+     "op": "<=",
+     "value": 0.17,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "72091899",
@@ -113,7 +135,15 @@
    "loaiKhac": false,
    "nguon": "tax.72092500",
    "trich": "72092500 - - Có chiều dày từ 3 mm trở lên",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "be_day",
+     "op": ">=",
+     "value": 3,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "72092610",
@@ -171,7 +201,21 @@
    "loaiKhac": false,
    "nguon": "tax.72092810",
    "trich": "72092810 - - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "khoi_luong",
+     "op": "<",
+     "value": 0.6,
+     "donVi": "%"
+    },
+    {
+     "fact": "khoi_luong",
+     "op": "<=",
+     "value": 0.17,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "72092890",

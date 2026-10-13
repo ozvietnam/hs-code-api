@@ -2,7 +2,7 @@
 import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const { soTayGates, soTayBlock, headPhrases, productHead, phraseHit, isPartsLine, loadSoTay } = require('../lib/so-tay-gates.js');
+const { soTayGates, soTayBlock, headPhrases, productHead, phraseHit, isPartsLine, loadSoTay, chotDong8, giaTriCua } = require('../lib/so-tay-gates.js');
 
 let pass = 0; let fail = 0;
 const check = (n, c, x = '') => { if (c) { pass += 1; console.log(`PASS ${n}`); } else { fail += 1; console.log(`FAIL ${n} ${x}`); } };
@@ -58,3 +58,58 @@ check('đã chọn dòng cụ thể → không nghi', !gatesOf(r).some((g) => g.
 
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
+
+// ── #195 CHỐT DÒNG 8 SỐ (dieuKienSo đã ốp vào data/so-tay) ──
+check('đọc số quy đổi: mm → cm, DN25 → 2.5cm, kích thước bao không lọt', JSON.stringify(giaTriCua('duong_kinh', 'đường kính 30 mm')) === '[3]' && JSON.stringify(giaTriCua('duong_kinh', 'van DN25')) === '[2.5]' && giaTriCua('duong_kinh', 'thùng 10 x 20 cm').length === 0);
+let cd = chotDong8({ hs: '40092190', productText: 'ống cao su có lắp phụ kiện cứng, đường kính 20 cm, độ dày thành ống 2 cm' });
+check('4009.21: 20cm + 2cm → CHOT 40092110 kèm trích nguồn', cd.ketQua === 'CHOT' && cd.hs === '40092110' && cd.traNguon?.[0]?.nguon === 'sen.40092110', JSON.stringify(cd.ketQua));
+cd = chotDong8({ hs: '40092110', productText: 'ống cao su có phụ kiện, đường kính 12 mm' });
+check('4009.21: 1.2cm trái mọi điều kiện → LOAI_KHAC 40092190 (phủ định hoàn chỉnh)', cd.ketQua === 'LOAI_KHAC' && cd.hs === '40092190', JSON.stringify(cd));
+cd = chotDong8({ hs: '40092190', productText: 'ống cao su có lắp phụ kiện cứng' });
+check('thiếu số liệu → THIEU_SO_LIEU + missingFacts duong_kinh', cd.ketQua === 'THIEU_SO_LIEU' && cd.missingFacts?.[0]?.fact === 'duong_kinh', JSON.stringify(cd.missingFacts));
+cd = chotDong8({ hs: '84811019', productText: 'van cổng điều khiển bằng tay, đường kính 30 cm' });
+check('8481.10: 30 cm → 2 dòng cùng thoả → TRANH_CAP (không đoán)', cd.ketQua === 'TRANH_CAP' && (cd.dongThoa || []).length === 2, JSON.stringify(cd.dongThoa));
+cd = chotDong8({ hs: '84811019', productText: 'van giảm áp kim loại, đường kính trong 2 cm' });
+check('8481.10 + op LA: kim loại 2cm → CHOT 84811021 (đúng luật, không cần AI chọn dòng)', cd.ketQua === 'CHOT' && cd.hs === '84811021', JSON.stringify([cd.ketQua, cd.hs]));
+cd = chotDong8({ hs: '84811019', productText: 'van giảm áp bằng plastic, đường kính 2 cm' });
+check('8481.10: plastic 2cm → TRANH_CAP .21/.91 (nhánh plastic cụ thể hơn — chuyên viên chốt)', cd.ketQua === 'TRANH_CAP' && (cd.dongThoa || []).includes('84811091'), JSON.stringify(cd.dongThoa));
+cd = chotDong8({ hs: '84051099', productText: 'máy phát acetylen' });
+check('phân nhóm chưa số hóa ranh giới → KHONG_THE_CHOT (điểm mù)', cd.checked === false || cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd.ketQua));
+
+// #195 chốt dòng — 3 hành vi sau đọc tay 18 ca oan (13/10):
+cd = chotDong8({ hs: '85044090', productText: 'Bộ nguồn 260W, đầu vào AC100-240V' });
+check('8504.40 có 2 dòng Loại khác → KHONG_THE_CHOT (không lấy dòng đầu)', cd.ketQua === 'KHONG_THE_CHOT' && ['nhieu-dong-loai-khac', 'phu-dinh-chua-hoan-chinh'].includes(cd.lyDo), JSON.stringify(cd));
+cd = chotDong8({ hs: '85444299', productText: 'Dây cáp mạng USB, đường kính lõi 0.0625mm, vỏ nhựa cách điện' });
+check('8544.42.94 có vế CHẤT LIỆU chưa mô hình → không chốt .94 (bảo thủ)', cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd));
+cd = chotDong8({ hs: '40118011', productText: 'Lốp máy xúc lật 14.00-24, đường kính 788mm' });
+check('4011 ngưỡng VÀNH không lấy đường kính ngoài → KHONG_THE_CHOT', cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd));
+cd = chotDong8({ hs: '85044019', productText: 'Bộ đổi nguồn 30W dùng cho tủ điện' });
+check('8504.40 chọn .19 (LK trong) cũng không chốt được — phủ định chưa hoàn chỉnh', cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd));
+
+// ── op HOAC (#195 vòng 4): fixture trong thư mục TẠM (test-isolate-data) — PN6 giả 871699 trong nhóm 8716 thật ──
+{
+  const { dataPath } = require('../lib/data-paths.js');
+  const path = require('path'); const fss = require('fs');
+  const goc = JSON.parse(fss.readFileSync(path.join(process.cwd(), 'data/so-tay/8716.json'), 'utf8'));
+  const HOAC = { op: 'HOAC', phuongAn: [
+    [{ fact: 'duong_kinh', op: '>', value: 75, donVi: 'mm' }, { fact: 'duong_kinh', op: '<=', value: 100, donVi: 'mm' }],
+    [{ fact: 'duong_kinh', op: '>', value: 250, donVi: 'mm' }],
+  ] };
+  goc.dong8 = (goc.dong8 || []).concat([
+    { hs: '87169911', dieuKien: 'thử HOAC', trich: '87169911 - bánh xe thử: trên 75 mm nhưng không quá 100 mm, hoặc hơn 250 mm; chiều rộng không nhỏ hơn 30 mm', nguon: 'tax.87169911', nguonLoai: 'NGUYEN_VAN', loaiKhac: false, dieuKienSo: [HOAC, { fact: 'chieu_rong', op: '>=', value: 30, donVi: 'mm' }] },
+    { hs: '87169990', dieuKien: 'thử HOAC — Loại khác', trich: '87169990 - Loại khác', nguon: 'tax.87169990', nguonLoai: 'NGUYEN_VAN', loaiKhac: true },
+  ]);
+  fss.mkdirSync(dataPath('so-tay'), { recursive: true });
+  fss.writeFileSync(dataPath('so-tay/8716.json'), JSON.stringify(goc, null, 1));
+  const { reset } = { reset: () => { try { require('../lib/so-tay-gates.js').loadSoTay('0000'); } catch {} } };
+  cd = chotDong8({ hs: '87169999', productText: 'bánh xe đẩy, đường kính 80 mm, chiều rộng 40 mm' });
+  check('HOAC vế 1 thoả (>75≤100) + rộng đạt → CHOT 87169911', cd.ketQua === 'CHOT' && cd.hs === '87169911', JSON.stringify([cd.ketQua, cd.hs]));
+  cd = chotDong8({ hs: '87169999', productText: 'bánh xe đẩy, đường kính 300 mm, chiều rộng 40 mm' });
+  check('HOAC vế 2 thoả (>250) → CHOT 87169911', cd.ketQua === 'CHOT' && cd.hs === '87169911', JSON.stringify([cd.ketQua, cd.hs]));
+  cd = chotDong8({ hs: '87169999', productText: 'bánh xe đẩy, đường kính 60 mm, chiều rộng 40 mm' });
+  check('mọi vế HOAC trượt + rộng đạt → LOAI_KHAC 87169990 (phủ định hoàn chỉnh)', cd.ketQua === 'LOAI_KHAC' && cd.hs === '87169990', JSON.stringify([cd.ketQua, cd.hs]));
+  cd = chotDong8({ hs: '87169999', productText: 'bánh xe đẩy, đường kính 80 mm, chiều rộng 25 mm' });
+  check('HOAC thoả nhưng chiều rộng trượt → không chốt', cd.ketQua === 'LOAI_KHAC' || cd.ketQua === 'KHONG_THE_CHOT' || cd.ketQua === 'TRANH_CAP', JSON.stringify(cd.ketQua));
+  cd = chotDong8({ hs: '87169999', productText: 'bánh xe đẩy, đường kính 80 mm' });
+  check('thiếu chiều rộng → THIEU_SO_LIEU (không đoán)', cd.ketQua === 'THIEU_SO_LIEU' && (cd.missingFacts || []).some((m) => m.fact === 'chieu_rong'), JSON.stringify(cd.ketQua));
+}
