@@ -36,7 +36,9 @@ CEO chốt 29/09/2026: bỏ Vercel, chạy trên Coolify của server nhà. GitH
    | `MINIMAX_MODEL` | mặc định `MiniMax-M2.7-highspeed`; gói không cho thì tự lùi `MiniMax-M2.7` |
    | `HERMES_BASE_URL`, `HERMES_API_KEY`, `HERMES_MODEL` | dự phòng thứ hai: cổng Hermes trong LAN (như `/etc/hs-agent/env` trên vps-hsagent) |
    | `GEMINI_FREE_KEYS` | tùy chọn — dự phòng cuối khi MiniMax và Hermes đều lỗi |
-   | `GEMINI_API_KEY` | khóa trả phí, chỉ dùng khi NV bấm "auto" (tier premium); bỏ trống được |
+   | `GEMINI_API_KEY` | khóa trả phí, chỉ dùng khi NV bấm "auto" (tier premium); bỏ trống được. **Với dữ liệu khách** nó là dự phòng hợp lệ thay cho tầng miễn phí |
+   | `LLM_NO_TRAIN_PROVIDERS` | mặc định `minimax,gemini` — nhà cung cấp được nhận **dữ liệu khách** (lượt từ khoá dịch vụ `HS_SERVICE_TOKENS`). Hermes/OpenRouter chỉ thêm khi CEO xác minh họ không huấn luyện trên dữ liệu; mẫu `:free` luôn bị chặn. Hết nhà cung cấp hợp lệ → `NO_PRIVATE_LLM`, không rơi xuống Gemini miễn phí. `GET /api/health` → `llm.private` |
+   | `HS_LLM_PRIVATE_ALL` | `true` → mọi lượt (kể cả công khai) coi là dữ liệu khách; mặc định tắt |
 
 5. Gắn tên miền tạm, ví dụ `hs-kb-moi.uythacnhapkhau.com`, qua Cloudflare (tunnel hoặc
    bản ghi DNS trỏ về proxy của Coolify).

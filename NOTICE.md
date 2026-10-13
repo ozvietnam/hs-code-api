@@ -8,6 +8,7 @@ dữ liệu được cấp phép khác nhau, vì chúng có bản chất pháp l
 | **Mã nguồn** | `api/`, `lib/`, `scripts/`, `public/**/*.html`, `*.config.*` | MIT | [`LICENSE`](LICENSE) |
 | **Dữ liệu** | `data/**`, `public/*.json`, `tests/**` | CC BY-SA 4.0 | [`LICENSE-DATA`](LICENSE-DATA) |
 | **Tài liệu** | `README.md`, `docs/**`, `CLAUDE.md` | CC BY-SA 4.0 | [`LICENSE-DATA`](LICENSE-DATA) |
+| **Nội dung của WCO** (ngoại lệ) | `data/wco-op/**` (ý kiến phân loại WCO + bản dịch), các trường `moTa`/`yKienWco` trong `data/so-tay/**` | ⚠️ **KHÔNG** thuộc CC BY-SA — xem mục "Nội dung của WCO" dưới đây | — |
 | **Dữ liệu riêng tư** | `data/oz-export/**` | ❌ Không phát hành | — |
 
 ## Vì sao tách đôi?
@@ -53,6 +54,21 @@ Dữ liệu của dự án được biên soạn từ các nguồn công khai ch
 Điều 15 Luật Sở hữu trí tuệ Việt Nam. Phần được cấp phép ở đây là công sức biên
 soạn của dự án — xem [`LICENSE-DATA`](LICENSE-DATA) mục "Lưu ý về văn bản quy
 phạm pháp luật".
+
+## Nội dung của WCO (ngoại lệ của CC BY-SA)
+
+`data/wco-op/` chứa **Tuyển tập ý kiến phân loại (Compendium of Classification Opinions) của Tổ chức Hải quan Thế giới
+(WCO), ấn bản HS 2022** — bản OCR tiếng Anh (`opinions.json`), bản dịch tiếng Việt không chính thức (`vi.json`) và các
+câu trích dùng để kiểm sổ tay (`so-tay-trich.json`). Các ý kiến này **thuộc bản quyền của WCO**.
+
+- **Tuyên bố của chủ dự án (Oz):** Oz tuyên bố **đã trả phí bản quyền** để sử dụng và công bố nội dung này, và công khai nó
+  trong dự án này (CEO Oz xác nhận ngày 10/10/2026, áp dụng từ 11/10/2026). Dự án không giữ và không công bố chi tiết hợp
+  đồng bản quyền.
+- **Nội dung này KHÔNG được cấp phép theo CC BY-SA.** Giấy phép của dự án chỉ áp dụng cho công sức biên soạn của dự án.
+  Mọi quyền khác đối với nội dung WCO thuộc WCO; muốn tái phân phối ngoài phạm vi Oz đã được phép, hãy liên hệ WCO.
+- Bản dịch tiếng Việt là **bản dịch phái sinh, không chính thức** (máy dịch, soát mẫu; chỗ nghi lỗi OCR ghi `[?]`).
+  Bản OCR có thể sai chữ/ký tự — đối chiếu bản gốc trước khi dẫn trong hồ sơ Hải quan.
+- Phản hồi API trả nội dung WCO luôn kèm trường `banQuyen` ghi các điều trên.
 
 ## Quyền riêng tư
 

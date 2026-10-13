@@ -136,6 +136,151 @@
           }
         }
       },
+      "CanCuPhapLy": {
+        "type": "object",
+        "description": "Căn cứ pháp lý theo TT 85/2026/TT-BTC (hiệu lực 15/09/2026): bước nào đã áp dụng, tài liệu nào của Điều 6.1 thật sự có/đã tra. Trích dẫn nguyên văn nằm ở `dieuKhoan` (mỗi điều một lần), các bước chỉ nêu id. KHÔNG phải quyết định phân loại.",
+        "properties": {
+          "vanBan": {
+            "type": "object",
+            "description": "TT 85/2026/TT-BTC: số hiệu, ngày ban hành, hiệu lực, Công báo"
+          },
+          "trangThai": {
+            "type": "string",
+            "enum": [
+              "XAC_DINH_THEO_DIEU_4",
+              "CHUA_CHOT_CAN_XAC_NHAN",
+              "THIEU_DU_KIEN",
+              "CHUA_XAC_DINH_DUOC"
+            ]
+          },
+          "cacBuoc": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Bước 1 = Điều 4 (Danh mục VN + Biểu thuế + 6 quy tắc tổng quát); bước 2 = Điều 6.1 (chỉ khi bước 1 chưa ra mã duy nhất), kèm trạng thái từng tài liệu a→d"
+          },
+          "huongTiep": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Chỉ khi chưa xác định được / thiếu dữ kiện: Điều 6.3, 3.3, 3.1"
+          },
+          "luuYPhapLy": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Điều 5.2 (thuế theo biểu có hiệu lực tại thời điểm đăng ký tờ khai); Điều 8 khi mô tả có dấu hiệu hàng tháo rời (basis HEURISTIC)"
+          },
+          "dieuKhoan": {
+            "type": "object",
+            "description": "Từ điển id → {dieu, khoan, diem, tham_chieu, trang, trich nguyên văn}"
+          },
+          "disclaimer": {
+            "type": "string"
+          }
+        }
+      },
+      "SoTay": {
+        "type": "object",
+        "description": "Sổ tay chú giải (docs/backlog/08) ở CHẾ ĐỘ CỐ VẤN: đính thêm vào phản hồi, KHÔNG đổi mã đã chọn, trạng thái hay cờ. `canGiaiTrinh` = máy NGHI (sổ tay nhóm đã chọn loại trừ đích danh một nhóm khác cũng đang là ứng viên; chưa kết luận, chưa đo tỉ lệ báo oan). `yKienWco` = tóm tắt TỰ VIẾT của ý kiến phân loại WCO cho đúng mã (TT 85/2026 Điều 6.1.b), không phải nguyên văn; `daSoatAnh:false` = chưa đối chiếu ảnh trang gốc. Tắt khẩn cấp bằng env HS_SOTAY_RUNTIME=false (khi đó không có trường này).",
+        "properties": {
+          "trangThai": {
+            "type": "string",
+            "enum": [
+              "CO_SO_TAY",
+              "CHUA_CO_SO_TAY_CHO_NHOM"
+            ]
+          },
+          "nhom": {
+            "type": "string",
+            "description": "Nhóm 4 số của mã đã chọn"
+          },
+          "phienBan": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "cheDo": {
+            "type": "string",
+            "enum": [
+              "CO_VAN"
+            ]
+          },
+          "canGiaiTrinh": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sangNhom": {
+                  "type": "string"
+                },
+                "dieuKien": {
+                  "type": "string"
+                },
+                "nguon": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "lyDo": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "yKienWco": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "hs": {
+                  "type": "string"
+                },
+                "thuTuTrongMa": {
+                  "type": "integer"
+                },
+                "namThongQua": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "moTa": {
+                  "type": "string"
+                },
+                "doTinCay": {
+                  "type": "string",
+                  "enum": [
+                    "CHAC",
+                    "SUY_LUAN"
+                  ]
+                },
+                "daSoatAnh": {
+                  "type": "boolean"
+                },
+                "nguon": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "yKienWcoConLai": {
+            "type": "integer"
+          },
+          "yKienWcoDayDu": {
+            "type": "boolean",
+            "description": "false = danh sách có thể chưa đủ (ý kiến chưa đối chiếu được mã/số in bị loại) — đừng hiểu là \"mã này chỉ có chừng đó ý kiến\""
+          },
+          "ghiChu": {
+            "type": "string"
+          }
+        }
+      },
       "GirDetermination": {
         "type": "object",
         "properties": {
@@ -758,7 +903,8 @@
                       "description": "effectiveDate, lastCheckedAt, freshness (OK/DUE/...), noteVi"
                     },
                     "breadcrumb": {
-                      "type": "object"
+                      "type": "object",
+                      "description": "Chuỗi phân cấp theo chữ số của mã (phần → chương → nhóm → phân nhóm → tiêu đề quốc gia → dòng): trail, levels[], isResidual; với dòng \"Loại khác\" có thêm scopeVi/excludesVi (chữ AI, chỉ gợi ý). Trường `tree` cùng phản hồi cho siblingHsCodes (anh em cùng cha thật theo chữ số), parentCode, parentSuyRa (cha là tiêu đề bị lược khi nhập biểu thuế, tên chưa có), treePath."
                     }
                   }
                 }
@@ -993,7 +1139,7 @@
       "post": {
         "operationId": "suggest",
         "summary": "Gợi ý mã HS bằng AI, kèm audit trail GIR có căn cứ",
-        "description": "Body: `{\"description\": \"tên hàng\"}`. Trả `suggestions[]`, `girRulesApplied[]` (mỗi mục có `basis`: RULE_TABLE/DETERMINISTIC là căn cứ chắc, HEURISTIC/LLM_ASSERTED phải kiểm chứng lại), `girDisclaimer`, `rankingSignals[]` (kỹ thuật, không có giá trị pháp lý) và `chapterGuidance[]`. Kèm `decisions[]` (bảng quyết định theo thuộc tính cho các nhóm trong top gợi ý) và `missingFacts[]` — thuộc tính còn thiếu để chốt lá 8 số; ERP/người dùng trả lời bằng body `facts: {...}` rồi gọi lại. Bảng đã verified chốt được lá thì lá đó lên đầu với `decidedByTable`; chưa verified chỉ tư vấn. Kèm `confusionAlerts[]` từ từ điển mâu thuẫn HS (xem /api/confusion-pairs). Mở công khai, không cần token (mỗi lượt gọi tốn chi phí LLM nên hãy gọi có chủ đích). ĐỌC `status` + `nextAction` TRƯỚC: NEED_FACTS → hỏi người dùng rồi gọi lại với `facts`; NEEDS_EXPERT → AI không chạy được, cần chuyên viên; REVIEW → người dùng chọn/xác nhận. Không có trạng thái tự chốt: `confidence` chưa hiệu chuẩn.",
+        "description": "Body: `{\"description\": \"tên hàng\"}`. Trả `suggestions[]`, `girRulesApplied[]` (mỗi mục có `basis`: RULE_TABLE/DETERMINISTIC là căn cứ chắc, HEURISTIC/LLM_ASSERTED phải kiểm chứng lại), `girDisclaimer`, `rankingSignals[]` (kỹ thuật, không có giá trị pháp lý) và `chapterGuidance[]`. `canCuPhapLy` ghi căn cứ TT 85/2026/TT-BTC (Điều 4, Điều 6.1…) và tài liệu nào thật sự có/đã tra. Kèm `decisions[]` (bảng quyết định theo thuộc tính cho các nhóm trong top gợi ý) và `missingFacts[]` — thuộc tính còn thiếu để chốt lá 8 số; ERP/người dùng trả lời bằng body `facts: {...}` rồi gọi lại. Bảng đã verified chốt được lá thì lá đó lên đầu với `decidedByTable`; chưa verified chỉ tư vấn. Kèm `confusionAlerts[]` từ từ điển mâu thuẫn HS (xem /api/confusion-pairs). Mở công khai, không cần token (mỗi lượt gọi tốn chi phí LLM nên hãy gọi có chủ đích). ĐỌC `status` + `nextAction` TRƯỚC: NEED_FACTS → hỏi người dùng rồi gọi lại với `facts`; NEEDS_EXPERT → AI không chạy được, cần chuyên viên; REVIEW → người dùng chọn/xác nhận. Không có trạng thái tự chốt: `confidence` chưa hiệu chuẩn.",
         "tags": [
           "AI"
         ],
@@ -1160,6 +1306,12 @@
                       "items": {
                         "$ref": "#/components/schemas/GirDetermination"
                       }
+                    },
+                    "canCuPhapLy": {
+                      "$ref": "#/components/schemas/CanCuPhapLy"
+                    },
+                    "soTay": {
+                      "$ref": "#/components/schemas/SoTay"
                     },
                     "residualAdvisory": {
                       "type": "object"
@@ -1385,7 +1537,7 @@
       "post": {
         "operationId": "classify",
         "summary": "Phân loại có cây quyết định + bảng phân giải cụm mã dễ nhầm",
-        "description": "Đọc `status` + `nextAction` TRƯỚC (cùng bảng với /api/suggest: REVIEW, NEED_FACTS, NEEDS_EXPERT [LOW_CONFIDENCE, FEATURE_CONFLICT, ENGINE_TIMEOUT, LLM_REJECTED], RESOLVED_BY_TABLE, NO_CANDIDATES). Nhận nguyên tiêu đề Taobao tiếng Trung (`queryUnderstanding`). Trả `results[]` (mã 8 hoặc 6 số), `missingStructured[]` (trường bắt buộc còn thiếu theo nhóm 4 số, câu hỏi VI + ZH), `originAssessment`, `girRulesApplied[]` (có `basis`), `llmRejectedCodes` khi AI trả mã không có trong biểu thuế.",
+        "description": "Đọc `status` + `nextAction` TRƯỚC (cùng bảng với /api/suggest: REVIEW, NEED_FACTS, NEEDS_EXPERT [LOW_CONFIDENCE, FEATURE_CONFLICT, ENGINE_TIMEOUT, LLM_REJECTED], RESOLVED_BY_TABLE, NO_CANDIDATES). Nhận nguyên tiêu đề Taobao tiếng Trung (`queryUnderstanding`). Trả `results[]` (mã 8 hoặc 6 số), `missingStructured[]` (trường bắt buộc còn thiếu theo nhóm 4 số, câu hỏi VI + ZH), `originAssessment`, `girRulesApplied[]` (có `basis`), `llmRejectedCodes` khi AI trả mã không có trong biểu thuế. `dossier.declarationOptions[]` (≤ 4, 10/10/2026): bảng phương án khai cho chuyên viên — `{hs, nameVi, kind: CHON|CUNG_NHOM|THEO_VAT_LIEU|KHAC, canCuVi, dieuKienVi, ruiRo: THAP|VUA|CAO, ruiRoVi, thue{mfn, acftaCn (null khi CN bị loại trừ), acftaNoteVi, vat}, coChinhSach{level, lineVi}, khuyenNghi}`; đúng một phương án `khuyenNghi=true` (mã máy chọn). THEO_VAT_LIEU = đường 73.26/76.16/39.26… cho bộ phận/tấm/vỏ — luôn liệt kê kèm rủi ro theo Chú giải 2 Phần XV/XVI/XVII (bộ phận nhận dạng được cho máy/xe phải xếp theo máy/xe), không phải gợi ý khai. Động cơ cũ: chỉ CHON + CUNG_NHOM + THEO_VAT_LIEU.",
         "tags": [
           "AI"
         ],
@@ -2377,6 +2529,94 @@
         }
       }
     },
+    "/api/tree": {
+      "get": {
+        "operationId": "dataset_hs_tree",
+        "summary": "Cây quan hệ HS theo chữ số của mã (?hs=2/4/6/8 số; 5/7 số = nút trung gian): vị trí, đường dẫn phần→chương→nhóm→phân nhóm→tiêu đề quốc gia, cha thật (suyRa=true là tiêu đề bị lược, tên chưa có), anh em, con, phạm vi dòng \"Loại khác\" (tổ tiên có tên trừ anh em có tên, kèm điều kiện + trích dẫn sổ tay) và nguồn tri thức gắn vào nút với nhãn NGUYEN_VAN / DA_KIEM / AI_CHUA_KIEM",
+        "description": "Rewrite tới /api/dataset?resource=hs_tree",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wco-opinions": {
+      "get": {
+        "operationId": "dataset_wco_opinions",
+        "summary": "Ý kiến phân loại WCO (Compendium 2022): ?hs=4/6/8 số → danh sách con trỏ; ?hs=<6 số>&n=<thứ tự> → toàn văn OCR tiếng Anh + bản dịch tiếng Việt (không chính thức) + nguồn + tuyên bố bản quyền (Oz đã trả phí bản quyền; nội dung thuộc WCO, không thuộc CC BY-SA). Chỉ ý kiến đã qua cổng mã/thứ tự; danh sách có thể chưa đủ",
+        "description": "Rewrite tới /api/dataset?resource=wco_opinions",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/policy-procedures": {
       "get": {
         "operationId": "dataset_policy_procedures",
@@ -2776,7 +3016,7 @@
   },
   "x-generated": {
     "by": "scripts/build-openapi.mjs",
-    "at": "2026-10-09",
+    "at": "2026-10-11",
     "note": "Sinh tự động từ lib/public-access.js — đừng sửa tay, sửa nguồn rồi chạy npm run build."
   }
 }

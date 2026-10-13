@@ -44,5 +44,13 @@ check('… vẫn gắn cờ, nêu rõ mâu thuẫn', r.review.needed && /mâu th
 // Ca thật 06/10/2026: tinh dầu khuếch tán — cửa đối chiếu độ tin 35 không được đổi mã
 r = mergeSecondOpinion(prim(['85098090']), { suggestions: [{ hsCode: '85098010', confidence: 35, reasoning: 'máy đánh bóng sàn — không liên quan' }] });
 check('cửa đối chiếu độ tin thấp (35) → KHÔNG đổi mã, vẫn cờ kèm độ tin', r.results[0].hs === '85098090' && r.review.needed && /35%/.test(r.review.reasons[0]));
+// Bảng quyết định CHƯA duyệt (8708, CEO 10/10/2026) chỉ về mã khác → review dù hai cửa trùng mã; không đổi mã
+const adv = { heading: '8708', hs: '87089962', agrees: false, tableVerified: false, noteVi: 'Bảng quyết định nhóm 8708 (chưa CEO duyệt — chỉ tư vấn, không đổi mã) chỉ về 87089962 — khác mã đã chọn 87082995; chuyên viên kiểm.' };
+r = mergeSecondOpinion(prim(['87082995'], { decisionAdvisory: adv }), sug('87082995'));
+check('hai cửa cùng mã nhưng bảng chưa duyệt tư vấn mã khác → vẫn review, mã đầu giữ nguyên', r.results[0].hs === '87082995' && r.review.needed && r.review.reasons.some((x) => /Bảng quyết định nhóm 8708/.test(x)) && r.crossCheck.agree8);
+r = mergeSecondOpinion(prim(['87082995'], { decisionAdvisory: adv }), null);
+check('cửa đối chiếu lỗi → tư vấn bảng vẫn vào review', r.crossCheck.available === false && r.review?.needed && /8708/.test(r.review.reasons[0]));
+r = mergeSecondOpinion(prim(['87089962'], { decisionAdvisory: { ...adv, agrees: true } }), sug('87089962'));
+check('bảng đồng ý mã → không review', r.review.needed === false);
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);

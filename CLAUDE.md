@@ -16,13 +16,18 @@ Service HTTP API cho ERP `erp-xnk` gọi sang để:
 ## Tech stack
 
 - Node.js handler kiểu serverless (`api/*.js`) chạy bằng `server.js` trên server riêng — KHÔNG dùng Next.js framework
-- Data: JSON files trong `data/` (no DB cho serverless cold start nhanh)
-- AI: Gemini 2.5 Flash (rerank, describe) + Gemini Embedding 001 (semantic search)
+- Data: bảng tra **TĨNH** (tax.json, notes, precedents… — chỉ đọc) giữ dạng JSON files trong `data/` (nạp nhanh, versioned bằng git). **Dữ liệu GHI LÚC CHẠY** (kho tiền lệ, feedback, log) **ĐƯỢC dùng database** (Postgres) — rào "no DB" cũ chỉ áp cho thời Vercel serverless (tránh cold start chậm); nay chạy `server.js` server riêng nên DB thường trú OK. CEO chốt 12/10/2026 (#237, #255-B3).
+- AI: rerank + sinh mô tả qua chuỗi LLM (xem dòng dưới; MiniMax chính). Semantic search bằng embedding **chưa bật ở runtime** — ghi "Gemini Embedding 001" trước đây là SAI; #237 sẽ đưa bge-m3 cục bộ vào, khi đó cập nhật lại.
 - Chuỗi LLM (`lib/llm-tier.js` → `lib/llm.mjs`, CEO chốt 04/10/2026): **MiniMax gọi thẳng
   (gói trả phí, `MiniMax-M2.7-highspeed`)** → Hermes → OpenRouter → Gemini miễn phí
   (`GEMINI_FREE_KEYS`, chỉ dự phòng) → khóa Gemini trả phí chỉ khi tier premium. Không phụ
   thuộc Gemini miễn phí. Thiếu key provider nào thì tự bỏ qua; local dev dùng OpenRouter free
   — `docs/openrouter.md`, `npm run openrouter:ping`
+- **Dữ liệu khách không ra tầng miễn phí** (`lib/llm-privacy.js`, #237 J1, CEO chốt 11/10/2026): lượt từ khoá
+  dịch vụ (`HS_SERVICE_TOKENS`: Cổng OZ, ERP) chạy trong `withPrivateData()` → LLM chỉ đi nhà cung cấp trong
+  `LLM_NO_TRAIN_PROVIDERS` (mặc định MiniMax + khoá Gemini trả phí); không Gemini miễn phí, không mẫu `:free`,
+  không Hermes. Hết nhà cung cấp hợp lệ → `NO_PRIVATE_LLM`, không rơi xuống tầng miễn phí. Script batch chạy trên
+  tờ khai Oz đặt `HS_LLM_PRIVATE_ALL=true`. Thêm endpoint LLM mới cho khoá dịch vụ thì phải bọc `withPrivateData`.
 - Auth: Bearer token (`HS_API_TOKEN` env)
 - Deploy: server riêng của Oz (Docker/Coolify, `server.js` + `Dockerfile`), domain prod `hs-kb.uythacnhapkhau.com` qua Cloudflare. **Đã gỡ Vercel (CEO chốt 09/10/2026).** Định tuyến nằm ở `routes.json`
 - **Nguồn sự thật là GitHub `ozvietnam/hs-code-api`** (CEO chốt 29/09/2026). Gitea của
@@ -52,6 +57,11 @@ api/               # 12 file handler.
 lib/               # Business logic (~50 module)
   data.js, auth.js, cors.js, gemini.js, llm-tier.js, llm.mjs
   data-paths.js           # phân giải đường dẫn data/ — HS_DATA_DIR để test cách ly
+  hs-tree.js              # LÕI: cây HS theo CHỮ SỐ của mã (phần→chương→nhóm→phân nhóm→tiêu đề QG→lá), #236
+  hs-tree-sources.js      # nguồn tri thức gắn vào từng nút, nhãn NGUYEN_VAN/DA_KIEM/AI_CHUA_KIEM
+  nguon-loai.js           # MỘT bảng nhãn loại nguồn cho mọi tệp data/ (AI_CHUA_KIEM không được trích làm căn cứ)
+  bieu-thue.js            # đọc biểu thuế XNK Tổng cục (Excel) KHÔNG bỏ sót — skill .claude/skills/bieu-thue-xnk; cây lấy tên nút từ đây
+  so-tay.js, so-tay-runtime.js  # máy kiểm sổ tay (nguonLoai, cay, tieuChi6, kiemCay) + sổ tay lúc chạy (cố vấn)
   search-utils.js, tax-mapper.js
   declaration-validator.js, gir-engine.js, conflict-resolver.js
   ministries.js, material-taxonomy.js, glossary.js
@@ -70,7 +80,8 @@ data/              # Lookup tables + main dataset
   customs-types.json      # Mã loại hình XNK
   taxonomy/               # polymer/wood/fiber/chemical/metal
   versions/               # Tariff versioning history
-  oz-export/              # CEO drop ECUS data (PRIVATE, gitignored)
+  oz-export/              # CEO drop ECUS data + BIEU-THUE-XNK-<ngày>.xlsx (PRIVATE, gitignored)
+  bieu-thue/<ngày>/       # biểu thuế Tổng cục đã trích: bieu-chinh.jsonl.gz (27 mức thuế + căn cứ từng mức), ten-nut.json, tieu-de
 
 scripts/           # Admin CLI tools
 public/admin/      # Admin Dashboard UI (HTML/JS)
@@ -87,14 +98,24 @@ tests/             # Test fixtures
 6. **Push origin main** — server riêng tự kéo bản mới (Coolify) — xem docs/deploy-coolify.md
 7. **Verify** — curl production endpoint check OK
 
+## Tư duy tiếp cận (CEO chốt 11/10/2026)
+
+Dự án **phục vụ xã hội**: tri thức phân loại HS (chú giải, ý kiến WCO, tiền lệ, sổ tay) được mở công khai cho người khai
+báo, cơ quan hải quan, AI agent và bất kỳ ai cần — mặc định **mở, không rón rén**. Chỉ giữ kín ba thứ: (1) dữ liệu khách
+hàng/tờ khai gốc của Oz, (2) bí mật vận hành (khoá, log, admin), (3) nội dung chưa đủ tin cậy để công bố. Bản quyền của
+nguồn ngoài (vd WCO) được ghi rõ trong `NOTICE.md` — ghi tuyên bố đúng sự thật, không giấu cũng không bịa thêm. Cổng kiểm
+chỉ chặn vì **độ chính xác** (trích sai mã tệ hơn không trích), không chặn vì sợ.
+
 ## Rule bất biến
 
-1. **Privacy data** — KHÔNG bao giờ commit `data/oz-export/*.{xlsx,csv,jsonl}` (gitignored). Đây là tờ khai cũ Oz có thông tin khách hàng.
+1. **Privacy data** — KHÔNG bao giờ commit `data/oz-export/*.{xlsx,csv,jsonl}` (gitignored). Đây là tờ khai cũ Oz có thông tin khách hàng. `data/wco-op/` (Tuyển tập ý kiến phân loại WCO) **được commit và công khai từ 11/10/2026** (CEO Oz tuyên bố đã trả phí bản quyền, cho dùng công khai — #196): commit `opinions.json`, `vi.json`, `so-tay-trich.json`, README; KHÔNG commit PDF/OCR md/bản sao lưu (nặng, trung gian). Nội dung WCO là **ngoại lệ của CC BY-SA** (xem `NOTICE.md`); mọi phản hồi trả nội dung WCO kèm `banQuyen` (`lib/wco-op.js#BAN_QUYEN`) và chỉ trả ý kiến đã qua cổng mã/thứ tự (`byHs`/`view`) — vì độ chính xác, không vì bản quyền.
 2. **Bearer auth** — mặc định KÍN. Mọi thứ quản trị và ghi dữ liệu phải `requireAuth(req, res)` từ `lib/auth.js`. **Ngoại lệ do CEO chốt 09/10/2026:** 4 endpoint LLM (`suggest`, `describe`, `classify`, `match`) mở công khai KHÔNG giới hạn qua `requireAuthOrPublicLlm` (`lib/public-llm.js`; mỗi lượt tốn tiền LLM thật; đóng khẩn cấp bằng env `HS_PUBLIC_LLM=false`). Không mở thêm endpoint LLM khác (`extract-specs`, `declaration-sheet`) theo cơ chế này nếu CEO chưa chốt. Nhóm tra cứu chỉ đọc dữ liệu tĩnh thì mở công khai qua `requireAuthUnlessPublic(...)` — **allowlist tường minh** ở `lib/public-access.js`. Thêm resource mới vào `dataset.js` thì nó mặc định KÍN; muốn mở phải khai có ý thức và `scripts/test-public-access.mjs` phải xanh. Quên khai = mất tính năng, quên chặn = lộ dữ liệu; luôn chọn hướng sai an toàn.
 3. **CORS** — luôn `setCors(res)` + `handleOptions(req, res)` ở đầu handler.
 4. **camelCase response** — chuẩn shape camelCase cho ERP, dùng `lib/tax-mapper.js`.
 5. **Compliance TT 39/2018** — `/api/describe` phải trả structured `declaration` + `compliance.score` + `level` + `warnings[]`.
 6. **GIR audit trail** — `/api/suggest` response phải có `girRulesApplied[]` (Issue #24), và **mọi trích dẫn GIR phải đi qua `lib/gir.js`**. Không nơi nào khác được tự gắn nhãn `GIR-*`. Mỗi mục bắt buộc có `basis` (`RULE_TABLE` > `DETERMINISTIC` > `HEURISTIC` > `LLM_ASSERTED`) + `evidence` + `source`. Trích sai điều luật tệ hơn không trích: đây là bằng chứng người khai đưa cho Hải quan. Tín hiệu heuristic đi vào `rankingSignals[]`, checklist theo chương đi vào `chapterGuidance[]` — tuyệt đối không gọi chúng là GIR.
+7a. **Căn cứ pháp lý TT 85/2026** — `canCuPhapLy` trong phản hồi `/api/suggest`, `/api/classify` (và vòng hai) ghi điều/khoản/điểm của TT 85/2026/TT-BTC (hiệu lực 15/09/2026). **Mọi trích dẫn điều luật đi qua `lib/legal-basis.js`** (như `lib/gir.js` với GIR); điều khoản mới thêm vào `CLAUSES` và chạy `node scripts/check-legal-basis.mjs --text=<văn bản trích từ PDF Công báo>`. Không khẳng định điều văn bản không nói (Điều 6.1 chỉ *liệt kê* a→d, không ghi "ưu tiên"); không khẳng định đã tra nguồn mà lượt đó không tra (dùng `CHUA_TRA_CUU*`). Phản hồi `/api/suggest`/`/api/classify` trả CON TRỎ tới ý kiến WCO (kèm `xemToanVan`); toàn văn + bản dịch ở `/api/wco-opinions` (công khai, kèm `banQuyen`).
+7b. **Sổ tay lúc chạy = CỐ VẤN** — `soTay` trong phản hồi `/api/suggest`, `/api/classify` (`lib/so-tay-runtime.js`) chỉ đính thêm thông tin: không đổi mã đã chọn, trạng thái, cờ hay prompt LLM; lỗi bất kỳ → bỏ khối này, endpoint chạy như cũ; tắt khẩn cấp `HS_SOTAY_RUNTIME=false`. `canGiaiTrinh` là máy *nghi* (chưa đo tỉ lệ báo oan), không dùng làm cổng chặn. Nối vào *quyết định* (kết cục A–D, rút gọn prompt) chỉ sau khi chạy khô bước 2 và đo bench. `yKienWco` trong sổ tay là tóm tắt tự viết + `xemToanVan`; nguyên văn nằm ở `data/wco-op/`, không chép vào `data/so-tay/`. **Nhãn loại nguồn** (`lib/nguon-loai.js`, 11/10/2026): mọi mục sổ tay mang `nguonLoai` (`AI_DA_KIEM`/`NGUOI_DUYET`; khối máy sinh `MAY_SUY`); tệp AI cũ (`explanatory-notes`, `legal-notes-enriched`, `loai-khac-index`, `hs-context`, `tax-enriched`) là `AI_CHUA_KIEM` — lộ ra phản hồi phải kèm nhãn, không làm căn cứ, không trích vào sổ tay. Khối `cay` của sổ tay do máy sinh từ `lib/hs-tree.js`; `scripts/check-cay.mjs` đỏ khi sổ tay lệch cây.
 7. **Định tuyến gộp** — `server.js` đọc `routes.json`; giữ pattern gộp route qua rewrites (`dataset.js`/`tariff.js`) vì repo gọn; request chạy được tới 300s. Chỉ tách function khi thật sự cần.
 8. **Test KHÔNG được ghi vào `data/` thật** — mọi lib có ghi (`feedback-store`, `admin-update`, `tariff-mutations`, `access-log`, `error-monitor`, `ml-log`) phải lấy đường dẫn qua `lib/data-paths.js` (`dataPath` để ghi, `dataReadPath` để đọc), và test phải `import './test-isolate-data.mjs'` ở dòng đầu để ghi vào thư mục tạm. Trước đây `npm test` làm bẩn repo, có lần commit lẫn snapshot `v-api-test` thành phiên bản biểu thuế "đang hiệu lực".
 

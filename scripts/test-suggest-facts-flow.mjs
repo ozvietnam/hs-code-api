@@ -70,5 +70,12 @@ check('lượt 2: không hỏi lại liftKind', !(r2.nextAction?.questions || []
 const r3 = await call({ description: desc, facts: { liftKind: 'tàu vũ trụ' } });
 check('câu trả lời vô nghĩa → rejectedFacts + hỏi lại có lựa chọn', (r3.rejectedFacts || []).some((x) => x.attribute === 'liftKind') && r3.status === 'NEED_FACTS', { rf: r3.rejectedFacts, st: r3.status });
 
+// ── Sổ tay (chế độ CỐ VẤN): đính vào /api/suggest, không đổi mã/trạng thái ──
+check('suggest: phản hồi có khối soTay đúng nhóm của mã top, chế độ CỐ VẤN', r1.soTay?.cheDo === 'CO_VAN' && r1.soTay.nhom === String(r1.suggestions?.[0]?.hsCode || '').slice(0, 4), r1.soTay);
+process.env.HS_SOTAY_RUNTIME = 'false';
+const r4 = await call({ description: 'thang cuốn lắp trong trung tâm thương mại, động cơ điện' });
+delete process.env.HS_SOTAY_RUNTIME;
+check('suggest: tắt khẩn cấp HS_SOTAY_RUNTIME=false → không có soTay, phản hồi vẫn bình thường', r4.soTay === undefined && Array.isArray(r4.suggestions) && Boolean(r4.status), { has: r4.soTay, st: r4.status });
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

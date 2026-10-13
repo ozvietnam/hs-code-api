@@ -1,4 +1,6 @@
-const { requireAuth } = require('../lib/auth');
+const { requireAuth, serviceCaller } = require('../lib/auth');
+const { withUsage } = require('../lib/usage-context');
+const { withPrivateData } = require('../lib/llm-privacy');
 const { requireAuthOrPublicLlm } = require('../lib/public-llm');
 const { setCors, handleOptions } = require('../lib/cors');
 const { describeProduct } = require('../lib/describe-core');
@@ -34,6 +36,13 @@ module.exports = async function handler(req, res) {
     }
   }
 
+  // Khoá dịch vụ có tên nhận thêm `usage` để tính phí; công khai / HS_API_TOKEN thì không (shape không đổi).
+  if (serviceCaller(req) !== null) {
+    // Dữ liệu khách (#237 J1): LLM bên trong chỉ đi nhà cung cấp hợp lệ, không qua tầng miễn phí.
+    const { result: out, usage } = await withPrivateData(() => withUsage(() => describeProduct(body)));
+    const json = out.json && typeof out.json === 'object' && !Array.isArray(out.json) ? { ...out.json, usage } : out.json;
+    return res.status(out.status).json(json);
+  }
   const out = await describeProduct(body);
   return res.status(out.status).json(out.json);
 };

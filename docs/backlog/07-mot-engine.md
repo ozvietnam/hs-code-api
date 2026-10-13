@@ -118,6 +118,15 @@ không có bảng mã HS nên `hsListings` (khớp theo mã) không bao giờ b�
 - Việc mở: khi oz-wiki trích xong bảng 19/2024/TT-BYT (có mã) thì mục `byt-05-2022-d6-43-kinh-mat` trở
   thành lưới phụ — giữ, vì tên hàng vẫn bắt được mã khai sai nhóm.
 
+### E-8 · Bảng quyết định CHƯA duyệt → tư vấn (advisory), không ghi đè (10/10/2026 — nhánh `feat/decision-table-8708`)
+Ca ốp gầm Leapmotor (xem `05-decision-tables.md` D-7): bảng 8708 chưa CEO duyệt trước đây bị classify/engine-loop BỎ HẲN.
+Nay cả hai động cơ: RESOLVED cùng nhóm 4 số → `decisionAdvisory {hs, ruleId, reasonVi, agrees, assumedFacts, noteVi}`;
+khác mã → `antiPatternWarnings[decision-table-advisory]` + `review.needed` (áp ở mọi đường ra của cửa đối chiếu, kể cả khi
+cửa đối chiếu lỗi) + mã bảng vào `results` (`source: decision-table-advisory`, confidence null). Engine-loop: dòng
+"bảng quyết định chưa duyệt — chỉ tư vấn → RESOLVED …" trong gói kiểm chứng vòng 2 (`gather().tables`), G5 cảnh báo, kết quả
+có `decisionAdvisory` + review. Không bao giờ `RESOLVED_BY_TABLE` / `RULE_TABLE` cho bảng chưa duyệt. ERP (E-1) nên hiển thị
+cùng chip "Phân vân 2 mã". Test: `test-classify-decision-table` (+10), `test-classify-crosscheck` (+3), `test-decision-tables` (+11).
+
 ## DUY TRÌ THEO THỜI GIAN
 
 | Nhịp | Việc | Vì sao |
@@ -214,3 +223,31 @@ Dựng từ mầm có sẵn, không viết từ điển mới:
   (2) `translate` không lặp giá trị đã có trong `sources` (đổi giao thức → phải bench lại MiniMax/Gemini);
   (3) 眼镜款式 → eyewearType trong từ điển đang khớp "多边形" (hình gọng) thành loại kính — sửa từ điển; (4) đo thật
   prod 20 món 1688 xem `misc`/`LABEL_UNKNOWN` gom ra nhãn nào cần đưa vào thư viện.
+
+### Bảng phương án khai — `dossier.declarationOptions` (10/10/2026, `feat/declaration-options`)
+CEO (ca tấm bảo vệ gầm/pin thép mangan dập định hình theo xe Leapmotor): *"Kết quả hơi bó hẹp vào 1 nhóm (8708.29 vs
+8708.99), trong khi khai là tấm thép định hình sẵn (7326) cũng có thể được. Làm sao để không bỏ lỡ những phương án kiểu
+như vậy."* Động cơ chỉ đưa phương án thay thế TRONG cùng nhóm → chuyên viên không thấy đường phân loại theo vật liệu.
+- `lib/declaration-options.js` `buildDeclarationOptions({top, results, dossier, gathered, origin, review, materialTexts,
+  partTexts})` → ≤ 4 phương án `{hs, nameVi, kind, canCuVi, dieuKienVi, ruiRo THAP|VUA|CAO, ruiRoVi, thue{mfn, acftaCn,
+  acftaNoteVi, vat}, coChinhSach{level, lineVi}, khuyenNghi, ghiChuVi?}`. Bốn nguồn: (a) mã chọn `CHON` (khuyến nghị duy
+  nhất; rủi ro theo CHOT/DE_XUAT/HOI/cờ review/độ tin); (b) `CUNG_NHOM` từ `results[1..]` + `dossier.alternatives`
+  (AI khác nhóm → `KHAC`); (c) `THEO_VAT_LIEU` — vật liệu chính (product.material → ô chất liệu → thông số; từ khoá
+  Việt/Anh/Trung, kiểm biên từ) → `data/material-fallback-headings.json` (thép 73.26/73.08 kết cấu, nhôm 76.16, đồng
+  74.19, plastic 39.26, cao su 40.16, gỗ 44.21, thuỷ tinh 70.20, dệt 63.07, da 42.05, gốm 69.14), CHỈ khi hàng là bộ
+  phận/phụ kiện/tấm/vỏ/giá đỡ và mã chọn chưa thuộc nhóm công dụng chung (73.18, 73.20, 83.01…); (d) `KHAC` từ NCC tự
+  khai khác nhóm, made-in-china đồng thuận khác nhóm, tiền lệ Oz (cov ≥ 75, ≥ 3 tờ) khác nhóm.
+- **Đúng luật, không gợi ý khai sai:** rủi ro đường vật liệu theo PHẦN của mã chọn — XVI/XVII/Chương 90 = **CAO** (Chú
+  giải 2 Phần XVI, 2(b)+3 Phần XVII, 2 Chương 90: bộ phận nhận dạng được cho máy/xe xếp theo máy/xe; chỉ "bộ phận công
+  dụng chung" theo Chú giải 2 Phần XV mới theo vật liệu), XV = VUA, còn lại = VUA (GIR 3(a)). Vẫn LIỆT KÊ để chuyên viên
+  thấy; AI vòng 2 đã loại đúng mã đó → `ghiChuVi` ghi lý do AI loại. Thuế/cờ từng phương án qua `buildTaxLookup`
+  (ACFTA theo `acfta.forOrigin`, CN bị "(-CN)" → `acftaCn: null` + ghi chú; `coChinhSach` = policyLevel + dòng
+  BLOCKING/NOTICE đầu).
+- Nối: `classifyLoop` → `dossier.declarationOptions` (bỏ qua khi còn cổng chặn); `SYS_R2` thêm yêu cầu `alternatives`
+  khác nhóm/chương theo vật liệu kèm `whyNot` (gate không đổi — mã khác nhóm vẫn bị `NOT_IN_CANDIDATE_HEADINGS` khỏi
+  `results`, nhưng vào bảng phương án). Động cơ cũ (`classify()` → `withDeclarationOptions`): chỉ (a)+(b)+(c).
+- Test `scripts/test-declaration-options.mjs` (25 ca, AI giả, cả hai động cơ). ERP: `hsCodeSuggestions[0].declarationOptions` (≤ 4, cắt
+  chuỗi), trang NV `HsManagePanel` bảng "Phương án khai (cân nhắc)" — không hiện cho khách.
+- Việc mở: (1) đo thật 20 món bộ phận xe/máy — tỉ lệ chuyên viên chọn phương án ≠ máy; (2) `KHAC` từ bảng quyết định
+  chưa duyệt (`decision-table-advisory`) đang đi qua `results` → đã vào bảng, chưa có test riêng; (3) vật liệu composite
+  (sợi carbon, kim loại không rõ) chưa có đường.

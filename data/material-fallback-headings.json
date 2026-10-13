@@ -1,0 +1,181 @@
+{
+  "_comment": "Đường phân loại THEO VẬT LIỆU cho hàng là bộ phận/phụ kiện/tấm/vỏ/giá đỡ (CEO 10/10/2026, ca tấm bảo vệ gầm Leapmotor: động cơ chỉ so 8708.29 vs 8708.99, bỏ lỡ phương án 7326). lib/declaration-options.js đọc bảng này để LIỆT KÊ phương án cho chuyên viên — kèm rủi ro theo luật, không gợi ý khai sai. Nguồn luật: Chú giải 2 Phần XV (định nghĩa 'bộ phận có công dụng chung'), Chú giải 1(g)+2 Phần XVI, Chú giải 2(b)+3 Phần XVII, Chú giải 2 Chương 90 — toàn văn trong data/chu-giai-chuong.json (khoá phan). Mã 8 số là dòng 'Loại khác' của nhóm trong biểu thuế hiện hành (scripts/test-declaration-options.mjs kiểm mã còn tồn tại).",
+  "nguon": "Chú giải chi tiết HS 2022 bản tiếng Việt (chu-giai-chuong.json) + Biểu thuế XNK 8 số (tax.json)",
+  "materials": [
+    {
+      "id": "thep",
+      "nameVi": "sắt / thép",
+      "keywords": ["thép", "sắt", "gang", "inox", "thép không gỉ", "steel", "iron", "stainless", "sắt thép", "钢", "铁", "不锈钢", "锰钢", "碳钢", "钢板", "铁板"],
+      "headings": [
+        {
+          "hs": "73269099",
+          "heading4": "7326",
+          "nameVi": "Sản phẩm khác bằng sắt hoặc thép — Loại khác",
+          "canCuVi": "Nhóm 73.26 'Các sản phẩm khác bằng sắt hoặc thép' là nhóm còn lại của Chương 73 (GIR 1 + chú giải nhóm): chỉ gồm sản phẩm bằng sắt/thép KHÔNG được mô tả cụ thể ở nhóm nào khác của Danh mục.",
+          "dieuKienVi": "Áp được khi hàng không nhận dạng được là bộ phận dùng riêng/chủ yếu cho máy, xe cụ thể (tấm/chi tiết dập chung, chưa có hình dạng, lỗ lắp theo một model) HOẶC là bộ phận có công dụng chung theo Chú giải 2 Phần XV."
+        },
+        {
+          "hs": "73089099",
+          "heading4": "7308",
+          "nameVi": "Cấu kiện và bộ phận kết cấu bằng sắt hoặc thép — Loại khác",
+          "onlyWhenVi": "kết cấu|khung nhà|giàn|cột|dầm|lan can|kèo|nhà thép|cấu kiện|structure|结构|钢结构",
+          "canCuVi": "Nhóm 73.08 gồm các cấu kiện và bộ phận kết cấu (cầu, tháp, cột, dầm, khung) bằng sắt/thép đã gia công để dùng trong kết cấu — GIR 1 theo tên nhóm.",
+          "dieuKienVi": "Chỉ khi hàng là bộ phận kết cấu xây dựng/công trình (đã khoan lỗ, hàn để lắp vào kết cấu), không phải bộ phận của máy hay xe."
+        }
+      ]
+    },
+    {
+      "id": "nhom",
+      "nameVi": "nhôm",
+      "keywords": ["nhôm", "hợp kim nhôm", "aluminum", "aluminium", "铝", "铝合金"],
+      "headings": [
+        {
+          "hs": "76169990",
+          "heading4": "7616",
+          "nameVi": "Sản phẩm khác bằng nhôm — Loại khác",
+          "canCuVi": "Nhóm 76.16 'Các sản phẩm khác bằng nhôm' là nhóm còn lại của Chương 76 (GIR 1): sản phẩm bằng nhôm không được mô tả cụ thể ở nhóm nào khác.",
+          "dieuKienVi": "Áp được khi hàng không nhận dạng được là bộ phận dùng riêng/chủ yếu cho máy, xe cụ thể, hoặc là bộ phận có công dụng chung (Chú giải 2 Phần XV)."
+        }
+      ]
+    },
+    {
+      "id": "dong",
+      "nameVi": "đồng",
+      "keywords": ["đồng thau", "đồng đỏ", "hợp kim đồng", "bằng đồng", "copper", "brass", "bronze", "铜", "黄铜", "紫铜"],
+      "headings": [
+        {
+          "hs": "74198090",
+          "heading4": "7419",
+          "nameVi": "Sản phẩm khác bằng đồng — Loại khác",
+          "canCuVi": "Nhóm 74.19 'Các sản phẩm khác bằng đồng' là nhóm còn lại của Chương 74 (GIR 1).",
+          "dieuKienVi": "Áp được khi hàng không nhận dạng được là bộ phận dùng riêng/chủ yếu cho máy, xe cụ thể, hoặc là bộ phận có công dụng chung (Chú giải 2 Phần XV)."
+        }
+      ]
+    },
+    {
+      "id": "nhua",
+      "nameVi": "plastic",
+      "keywords": ["nhựa", "plastic", "polyme", "polymer", "ABS", "PP", "PE", "PVC", "PC", "nylon", "polyamide", "PA66", "POM", "PET", "TPU", "silicone", "塑料", "塑胶", "尼龙", "硅胶"],
+      "headings": [
+        {
+          "hs": "39269099",
+          "heading4": "3926",
+          "nameVi": "Sản phẩm khác bằng plastic — Loại khác",
+          "canCuVi": "Nhóm 39.26 'Các sản phẩm khác bằng plastic' là nhóm còn lại của Chương 39 (GIR 1). Chú giải 1(g) Phần XVI và 2(b) Phần XVII: 'các loại hàng hoá tương tự bộ phận công dụng chung, bằng plastic' xếp vào Chương 39.",
+          "dieuKienVi": "Áp được khi hàng bằng plastic không nhận dạng được là bộ phận dùng riêng/chủ yếu cho máy, xe cụ thể, hoặc tương tự bộ phận công dụng chung (vít, đệm, khoá, móc…)."
+        }
+      ]
+    },
+    {
+      "id": "caosu",
+      "nameVi": "cao su",
+      "keywords": ["cao su", "rubber", "EPDM", "NBR", "橡胶", "橡皮"],
+      "headings": [
+        {
+          "hs": "40169999",
+          "heading4": "4016",
+          "nameVi": "Sản phẩm khác bằng cao su lưu hoá trừ cao su cứng — Loại khác",
+          "canCuVi": "Chú giải 2(a) Phần XVII và 1(a) Phần XVI: tấm đệm, vòng đệm và 'các sản phẩm khác bằng cao su lưu hoá trừ cao su cứng' thuộc nhóm 40.16 dù dùng cho xe/máy.",
+          "dieuKienVi": "Hàng bằng cao su lưu hoá (không phải cao su cứng): đệm, vòng đệm, ống nối mềm, chi tiết giảm chấn — đường này do chính chú giải Phần XVI/XVII chỉ định."
+        }
+      ]
+    },
+    {
+      "id": "go",
+      "nameVi": "gỗ",
+      "keywords": ["gỗ", "wood", "wooden", "plywood", "MDF", "ván ép", "木", "木质", "实木", "木制"],
+      "headings": [
+        {
+          "hs": "44219999",
+          "heading4": "4421",
+          "nameVi": "Các sản phẩm bằng gỗ khác — Loại khác",
+          "canCuVi": "Nhóm 44.21 'Các sản phẩm bằng gỗ khác' là nhóm còn lại của Chương 44 (GIR 1).",
+          "dieuKienVi": "Áp được khi hàng bằng gỗ không được mô tả cụ thể ở nhóm khác (đồ nội thất 94.03, dụng cụ 44.17, bao bì 44.15…) và không phải bộ phận dùng riêng cho máy/xe."
+        }
+      ]
+    },
+    {
+      "id": "kinh",
+      "nameVi": "thuỷ tinh",
+      "keywords": ["thuỷ tinh", "thủy tinh", "kính cường lực", "glass", "玻璃", "钢化玻璃"],
+      "headings": [
+        {
+          "hs": "70200090",
+          "heading4": "7020",
+          "nameVi": "Các sản phẩm khác bằng thuỷ tinh — Loại khác",
+          "canCuVi": "Nhóm 70.20 'Các sản phẩm khác bằng thuỷ tinh' là nhóm còn lại của Chương 70 (GIR 1). Kính an toàn cho xe có nhóm riêng 70.07.",
+          "dieuKienVi": "Áp được khi hàng bằng thuỷ tinh không thuộc nhóm cụ thể (70.07 kính an toàn, 70.09 gương, 70.13 đồ gia dụng) và không phải bộ phận của máy/xe đã nhận dạng."
+        }
+      ]
+    },
+    {
+      "id": "det",
+      "nameVi": "vật liệu dệt",
+      "keywords": ["vải", "dệt", "polyester", "sợi", "fabric", "textile", "woven", "布", "织物", "涤纶", "面料"],
+      "headings": [
+        {
+          "hs": "63079090",
+          "heading4": "6307",
+          "nameVi": "Các mặt hàng dệt đã hoàn thiện khác — Loại khác",
+          "canCuVi": "Nhóm 63.07 'Các mặt hàng đã hoàn thiện khác' là nhóm còn lại của Chương 63 (GIR 1 + Chú giải 1 Chương 63).",
+          "dieuKienVi": "Áp được khi hàng dệt đã hoàn thiện không được mô tả cụ thể ở nhóm khác (bọc ghế xe, tấm che) và không thuộc nhóm bộ phận xe/máy theo chú giải."
+        }
+      ]
+    },
+    {
+      "id": "da",
+      "nameVi": "da thuộc",
+      "keywords": ["da thuộc", "da bò", "da thật", "da tổng hợp", "da PU", "leather", "皮革", "真皮", "牛皮", "PU皮"],
+      "headings": [
+        {
+          "hs": "42050090",
+          "heading4": "4205",
+          "nameVi": "Sản phẩm khác bằng da thuộc hoặc da tổng hợp — Loại khác",
+          "canCuVi": "Nhóm 42.05 'Các sản phẩm khác bằng da thuộc hoặc da tổng hợp' (GIR 1). Chú giải 1(b) Phần XVI: sản phẩm bằng da thuộc dùng trong máy móc xếp vào 42.05.",
+          "dieuKienVi": "Hàng bằng da thuộc/da tổng hợp không thuộc 42.02/42.03; dùng cho máy móc có dòng 4205.00.40."
+        }
+      ]
+    },
+    {
+      "id": "gom",
+      "nameVi": "gốm, sứ",
+      "keywords": ["gốm", "sứ", "ceramic", "porcelain", "陶瓷", "瓷"],
+      "headings": [
+        {
+          "hs": "69149000",
+          "heading4": "6914",
+          "nameVi": "Các sản phẩm bằng gốm khác — Loại khác",
+          "canCuVi": "Nhóm 69.14 'Các sản phẩm bằng gốm khác' là nhóm còn lại của Chương 69 (GIR 1). Bằng sứ → 6914.10.00.",
+          "dieuKienVi": "Hàng bằng gốm/sứ không thuộc nhóm cụ thể (69.09 gốm kỹ thuật, 69.11–69.12 đồ gia dụng) và không phải bộ phận máy/xe đã nhận dạng."
+        }
+      ]
+    }
+  ],
+  "generalUseHeadings": {
+    "_comment": "Chú giải 2 Phần XV — 'bộ phận có công dụng chung': khi mã chọn đã nằm ở các nhóm này thì đường vật liệu chính là đường đã chọn, không liệt kê thêm.",
+    "list": ["7307", "7312", "7315", "7317", "7318", "7320", "8301", "8302", "8308", "8310", "8306"]
+  },
+  "sectionRules": {
+    "_comment": "Rủi ro của đường vật liệu theo PHẦN của mã chọn. Khoá = sectionCode (data/hs-sections.json); '90' = Chương 90 (Phần XVIII, chú giải chương riêng).",
+    "XV": {
+      "ruiRo": "VUA",
+      "ruiRoVi": "Mã chọn và đường vật liệu cùng Phần XV: Chú giải 2 Phần XV loại 'bộ phận có công dụng chung' (73.07/73.12/73.15/73.17/73.18, lò xo 73.20, 83.01/83.02/83.08/83.10) ra khỏi 'bộ phận' của các chương 73–76, 78–82 — kiểm hàng có thuộc các nhóm đó không."
+    },
+    "XVI": {
+      "ruiRo": "CAO",
+      "ruiRoVi": "Chú giải 2 Phần XVI: bộ phận nhận dạng được là dùng riêng/chủ yếu cho một máy xếp theo máy đó; chỉ bộ phận công dụng chung (Chú giải 2 Phần XV: bu lông, lò xo…) hoặc hàng plastic tương tự (Chú giải 1(g)) mới theo vật liệu. Khai theo vật liệu cho bộ phận đã nhận dạng → dễ bị ấn định lại mã."
+    },
+    "XVII": {
+      "ruiRo": "CAO",
+      "ruiRoVi": "Chú giải 2(b)+3 Phần XVII: bộ phận chỉ/chủ yếu dùng cho xe xếp vào 87.08; chỉ bộ phận công dụng chung (Chú giải 2 Phần XV: bu lông, lò xo…) hoặc hàng plastic tương tự mới theo vật liệu. Tấm/vỏ dập định hình, đúng lỗ vít theo xe là bộ phận nhận dạng được → khai theo vật liệu dễ bị ấn định lại mã."
+    },
+    "90": {
+      "ruiRo": "CAO",
+      "ruiRoVi": "Chú giải 2 Chương 90: bộ phận, phụ kiện dùng riêng hoặc chủ yếu cho một loại máy/thiết bị của Chương 90 xếp theo máy đó; chỉ bộ phận công dụng chung (Chú giải 1(f)) mới xếp theo vật liệu."
+    },
+    "default": {
+      "ruiRo": "VUA",
+      "ruiRoVi": "Đường vật liệu là nhóm 'còn lại' — chỉ đúng khi hàng không thoả tên nhóm nào cụ thể hơn (GIR 3(a): mô tả cụ thể nhất thắng). Đối chiếu chú giải chương của mã chọn trước."
+    }
+  }
+}

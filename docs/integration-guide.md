@@ -60,6 +60,16 @@ curl -X POST https://.../api/suggest \
     }
   ],
   "girDisclaimer": "Trích dẫn GIR là căn cứ tham khảo do hệ thống suy ra, KHÔNG phải phán quyết...",
+  "canCuPhapLy": {
+    "vanBan": { "soHieu": "85/2026/TT-BTC", "hieuLucTu": "2026-09-15", "congBao": "Công báo số 409 ngày 18-07-2026" },
+    "trangThai": "CHUA_CHOT_CAN_XAC_NHAN",
+    "cacBuoc": [
+      { "buoc": 1, "canCu": ["4.1", "4.2.b", "4.2.c", "4.2.d"], "trangThai": "DA_AP_DUNG" },
+      { "buoc": 2, "canCu": ["6.1"], "canDung": true, "taiLieu": [{ "id": "6.1.a", "trangThai": "CO_NOI_DUNG" }, { "id": "6.1.b", "trangThai": "CHUA_TRA_CUU" }, "…"] }
+    ],
+    "luuYPhapLy": [{ "canCu": ["5.2"], "basis": "RULE_TABLE" }],
+    "dieuKhoan": { "4.1": { "tham_chieu": "Điều 4 khoản 1 85/2026/TT-BTC", "trang": 4, "trich": "Một mặt hàng có một mã số duy nhất…" }, "…": "…" }
+  },
   "rankingSignals": [
     { "signal": "specificity_filter", "effect": "loại 2 ứng viên...", "note": "Ước lượng — CHƯA đối chiếu nguyên văn nhóm." }
   ],
@@ -68,11 +78,53 @@ curl -X POST https://.../api/suggest \
   ],
   "precedentMatches": [...],
   "confusionWarning": null,
-  "explanatoryNote": { "summary": "..." },
+  "explanatoryNote": { "noteVi": "...", "nguonLoai": "AI_CHUA_KIEM", "ghiChu": "chữ AI chưa kiểm — không làm căn cứ" },
   "cached": false,
   "ms": 1240
 }
 ```
+
+**`canCuPhapLy` — căn cứ pháp lý (TT 85/2026/TT-BTC, hiệu lực 15/09/2026).** Có trong `/api/suggest` và `/api/classify`.
+- Bước 1 = Điều 4 (Danh mục VN + Biểu thuế + 6 quy tắc tổng quát; chi tiết quy tắc ở `girRulesApplied[]`). Bước 2 = Điều 6.1, **chỉ khi bước 1 chưa ra mã duy nhất**; `canDung` cho biết có cần dùng không. Điều 6.1 chỉ *liệt kê* a→d (Chú giải chi tiết HS, ý kiến phân loại WCO, SEN AHTN, CSDL Danh mục VN); văn bản **không** ghi "theo thứ tự" hay "ưu tiên", nên API không khẳng định thứ tự pháp lý.
+- `6.1.a` dựa **nguyên văn chú giải nhóm** (toàn văn HS 2022 trong kệ sách; kèm `nhom`, `toanVan`), không dựa `explanatoryNote` — trường đó là chữ AI chưa kiểm (`nguonLoai: AI_CHUA_KIEM`, có `ghiChu`), chỉ gợi ý. Nhãn loại nguồn dùng chung: `NGUYEN_VAN` / `MAY_SUY` / `AI_DA_KIEM` / `NGUOI_DUYET` / `AI_CHUA_KIEM` (`lib/nguon-loai.js`); mọi mục sổ tay trong `soTay` mang `nguonLoai`, mục `AI_CHUA_KIEM` không bao giờ được trích.
+- Trạng thái từng tài liệu nói đúng điều hệ thống biết: `CO_NOI_DUNG` (kệ sách có nội dung cho mã này), `KHONG_CO_DU_LIEU_CHO_MA_NAY`, `CHUA_TRA_CUU` (kho chưa nạp, hiện là ý kiến phân loại WCO), `CHUA_TRA_CUU_TRONG_LUOT_NAY`, `CO_TIEN_LE_KHOP`/`KHONG_CO_TIEN_LE_KHOP`. Phản hồi suggest/classify chỉ trả **con trỏ** tới ý kiến phân loại WCO (kèm `xemToanVan`); toàn văn xem ở `/api/wco-opinions` bên dưới.
+- `dieuKhoan` chứa nguyên văn từng điều được dẫn (mỗi điều một lần); các bước chỉ nêu id. Đây là điều luật để tham khảo, **không phải quyết định phân loại**; người khai chịu trách nhiệm về mã số khai.
+
+**`GET /api/wco-opinions` — ý kiến phân loại WCO (Compendium 2022), công khai, không cần token.**
+- `?hs=8528` | `?hs=852852` | `?hs=85285200` → danh sách con trỏ `{hs, thuTuTrongMa, namThongQua, doTinCay, xemToanVan}`; thêm `&chiTiet=1` để kèm toàn văn (tối đa 20).
+- `?hs=852852&n=6` → toàn văn: `nguyenVanEn` (bản OCR), `banDichVi` (bản dịch tiếng Việt **không chính thức**, chỗ nghi lỗi OCR ghi `[?]`), `quyTacApDung`, `nguon`, `doTinCay`, `daSoatAnh`, `luuY`, `banQuyen`.
+- **Chỉ ý kiến đã qua cổng mã/thứ tự** được trả (OCR làm rơi biển tiêu đề mã ở một số ý kiến; trích nhầm mã tệ hơn không trích). Danh sách **có thể chưa đủ** — không có kết quả không có nghĩa là mã này không có ý kiến (`daySuDu:false`).
+- **Bản quyền:** nội dung thuộc WCO; Oz tuyên bố đã trả phí bản quyền để sử dụng và công bố; nội dung này không thuộc CC BY-SA (xem `NOTICE.md`). Mọi phản hồi kèm `banQuyen`.
+- `nguyenVanEn` là OCR từ bản scan, `daSoatAnh:false` = chưa đối chiếu ảnh trang gốc: đối chiếu bản gốc trước khi dẫn trong hồ sơ Hải quan.
+
+**`soTay` — sổ tay chú giải, chế độ cố vấn.** Có trong `/api/suggest` và `/api/classify` khi nhóm của mã đã chọn có sổ tay (152 nhóm; nhóm chưa có → `trangThai: CHUA_CO_SO_TAY_CHO_NHOM`).
+- **Không đổi** mã đã chọn, trạng thái, cờ hay prompt: chỉ đính thêm thông tin. Hệ thống ERP cứ xử lý như cũ; hiển thị `soTay` cho chuyên viên nếu muốn.
+- `canGiaiTrinh[]` = máy **nghi**, chưa kết luận: sổ tay nhóm đã chọn loại trừ đích danh một nhóm khác mà nhóm đó cũng đang là ứng viên. Chưa đo tỉ lệ báo oan — đừng dùng làm cổng chặn tự động.
+- `yKienWco[]` = tóm tắt **tự viết** của ý kiến phân loại WCO cho đúng mã (6 số), kèm số thứ tự in, năm thông qua, `doTinCay` (`CHAC` | `SUY_LUAN`). Không phải nguyên văn; `daSoatAnh:false` = chưa đối chiếu ảnh trang gốc; `yKienWcoDayDu:false` = danh sách có thể chưa đủ.
+- `canCuPhapLy` mục 6.1.b lấy con trỏ từ kho `data/wco-op` (đi kèm bản triển khai); nếu kho không có thì lấy từ sổ tay (`nguonTraCuu: "SO_TAY"`).
+- Tắt khẩn cấp: env `HS_SOTAY_RUNTIME=false`.
+
+## Hợp đồng cho Cổng OZ (`ozvietnam/ozplugin`, MCP gateway) — 11/10/2026
+
+Cổng là máy chủ MCP bọc các endpoint dưới đây và bán/cấp cho khách qua Claude Desktop, Cursor, DSH. Hợp đồng từ phía kho này:
+
+| Cổng cần | Trạng thái ở hs-code-api | Ghi chú hợp đồng |
+|---|---|---|
+| Khoá dịch vụ có tên (13.2) | ✅ `HS_SERVICE_TOKENS="cong-oz:<khoá>,erp:<khoá>"` (`lib/auth.js#serviceCaller`) | Nhật ký phân biệt được Cổng / ERP / quản trị. `HS_API_TOKEN` cũ vẫn dùng được. |
+| Chi phí vốn mỗi lượt (13.1) | ✅ `usage: [{provider, model, inputTokens, outputTokens}]` ở `/api/classify`, `/api/describe` | **Chỉ** trả cho khoá dịch vụ; công khai / `HS_API_TOKEN` không có trường này. Token không biết = `-1`. Không bao giờ chuyển `usage` cho khách. |
+| `tra_thue` → `GET /api/tax?hs=&origin=` | ✅ công khai | — |
+| `tim_ma_hs` → `GET /api/search` | ✅ công khai, **lexical** | Tìm theo từ khoá; mô tả dài/đồng nghĩa yếu. Phân loại thật dùng `/api/classify` (thu phí). Đây là cách giải quyết mục 2 của #67. |
+| `tra_chu_giai` → `GET /api/notes` | ✅ công khai | — |
+| `tra_tien_le` (J4) → `GET /api/precedents?hs=` hoặc `?q=` | ✅ cả hai nhánh | ⚠️ Nhánh `?hs=` **không có tiền lệ → HTTP 404** `{found:false}`; nhánh `?q=` trả 200 `{found:false}`. Adapter của Cổng coi mọi `!res.ok` là `BACKEND_LOI` nên **phải xử lý 404 ở precedents là "không có tiền lệ"**, không phải lỗi. Có cả `hs` lẫn `q` thì API ưu tiên `q`; Cổng muốn ưu tiên mã thì chỉ gửi `hs`. |
+| `tra_hieu_luc_van_ban` (J5) → `GET /api/dataset?resource=legal_status&so=` | ✅ | `registry.registryVersion` (vd `2026-10-10`) là phiên bản để ghi vào `nguon[0].phienBan`. Tối đa 50 số hiệu/lượt. |
+| `sinh_mo_ta_khai_bao` (J6) → `POST /api/describe` | ✅ | `compliance.{score,level,warnings[]}` đi nguyên văn. LLM lỗi → vẫn 200 nhưng `degraded:true` + `llmError:{code,message,retryable}` + warning `DESCRIPTION_DEGRADED` (#67 mục 1): Cổng phải báo khách "bản tạm, nên gọi lại" khi `retryable`. |
+| `phan_loai_hs` → `POST /api/classify` | ✅ | `girRulesApplied[]`, `canCuPhapLy` đi nguyên văn. Trường **thêm mới (chỉ thêm, không đổi shape)**: `soTay` (sổ tay cố vấn, có thể vắng) và `canCuPhapLy…yKien[].xemToanVan`. |
+| Ý kiến phân loại WCO (kỹ năng 3 "tranh chấp") | ✅ **mới** `GET /api/wco-opinions?hs=` / `&n=` — công khai | Toàn văn + bản dịch + `banQuyen`. Đề xuất công cụ miễn phí `tra_y_kien_wco` bên Cổng. |
+| Tắt chế độ mở của 4 lệnh LLM | ⏸ chờ M3 (CEO duyệt: tắt cùng lúc thu tiền) | `HS_PUBLIC_LLM=false` khi tới lúc; khoá dịch vụ không bị ảnh hưởng. |
+| Dữ liệu khách không ra tầng LLM miễn phí (#237 J1) | ✅ tự động cho **mọi lượt có khoá dịch vụ** (`suggest`, `classify`, `describe`) | LLM chỉ đi nhà cung cấp trong `LLM_NO_TRAIN_PROVIDERS` (mặc định MiniMax + khoá Gemini trả phí); không Gemini miễn phí, không mẫu `:free`, không Hermes. Hết nhà cung cấp hợp lệ → `describe` trả `degraded:true` + `llmError.code="NO_PRIVATE_LLM"`; `classify` trả `status` lỗi động cơ kèm `llmError` chứa `NO_PRIVATE_LLM`. Cổng báo khách "hệ thống tạm không nhận, thử lại sau", **không** gọi lại bằng khoá khác. Kiểm: `GET /api/health` → `llm.private.providers`. |
+| `extract-specs`, `declaration-sheet` | 🔒 kín | Không đưa vào Cổng khi CEO chưa chốt (luật bất biến 2). |
+
+Fixture hợp đồng: Cổng ghi phản hồi thật bằng `apps/gateway/scripts/ghi-fixture.ts`; kho này chỉ **thêm** trường, không đổi tên/bỏ trường đã có — đổi gì phá hợp đồng phải ghi ở mục này trước.
 
 ### ⚠️ Thay đổi hợp đồng `girRulesApplied` (2026-09)
 
@@ -222,6 +274,31 @@ curl "https://.../api/tax?hs=10019911&origin=CN"
 - `policyByHs` → raw text policy; bản đã phân tích nằm ở trường `warnings` (mục 4)
 
 ---
+
+## 3b. Cây quan hệ HS (phần → chương → nhóm → phân nhóm → tiêu đề quốc gia → dòng 8 số) — 11/10/2026
+
+Từ 11/10/2026 mọi quan hệ cha/anh em trong phản hồi lấy từ `lib/hs-tree.js`: suy **từ chữ số của mã** (2 số = chương,
+4 = nhóm, 5–6 = phân nhóm WCO theo quy ước `xxxx.x0` một gạch / `xxxx.xy` hai gạch, 7 = tiêu đề quốc gia, 8 = dòng lá).
+Số gạch trong tên dòng chỉ là tầng hiển thị. Trước đó anh em suy theo gạch — sai ở 1.964/3.383 mã "Loại khác".
+
+| Nơi | Trường | Ý nghĩa |
+|---|---|---|
+| `GET /api/tax` (trường cấp cao nhất) | `siblingHsCodes[]` | Dòng 8 số **cùng cha thật** (vd 85044090 → 85044020, 85044030, 85044040; không còn 85041000) |
+| | `parentCode`, `parentSuyRa` | Cha thật theo chữ số; `parentSuyRa: true` = tiêu đề bị lược khi nhập biểu thuế (vd `8504211`), tên chưa có |
+| | `siblingGroupCodes[]`, `treePath[]` | Anh em là nhóm con (tiêu đề); đường từ phần tới cha |
+| | `parentSubheadingCode`, `indentationLevel`, `treeLevel` | Giữ như cũ |
+| `POST /api/suggest`, `/api/classify` → `soTay` | `viTri` | Vị trí mã đã chọn: `nut`, `duongDan[]`, `cha {id, ten, suyRa}`, `anhEm[]`. Có cả khi nhóm chưa có sổ tay. Nút bị lược mà sổ tay đã điền tên (kèm trích, máy kiểm) có thêm `tenSoTay {tenVi, nguon, trich, nguonLoai}` và `duongDan[]` ghi "tên theo sổ tay: …" |
+| | `loaiKhac` (chỉ khi mã đã chọn là dòng "Loại khác") | `toTienCoTen` trừ `anhEmCoTen[]`; mỗi anh em kèm `dieuKien` + `nguon` + `trich` từ sổ tay (đã máy kiểm) nếu có. **Cố vấn**: không đổi mã; là danh sách người khai phải chứng minh hàng KHÔNG rơi vào |
+| | `canGiaiTrinh[].loai` | `LOAI_TRU_SANG_NHOM` (sổ tay loại trừ sang nhóm đang là ứng viên) hoặc **`ANH_EM_CO_TEN_KHOP`** (mã chọn là "Loại khác" trần mà mô tả hàng khớp dòng anh em có tên: `hs`, `tenVi`, `doKhop`, `nguon`, `trich`). Cả hai là máy **nghi**, chưa đo tỉ lệ báo oan — Cổng/ERP hiển thị để người khai giải trình hoặc xem lại mã, **không** tự đổi mã |
+| `POST /api/classify`, `/api/suggest` + header `X-OZ-Eval-Holdout: 1` | — | Lượt bench chống rò: kho tiền lệ Oz bỏ tập giữ riêng chỉ trong lượt này. Chỉ bớt ngữ cảnh, không mở gì thêm; khách thường không gửi |
+| `GET /api/tree?hs=` (mới, công khai) | `nut`, `duongDan[]`, `cha`, `anhEm[]`, `con[]`, `loaiKhac`, `nguon{}` | Một mã (2/4/6/8 số, hoặc 5/7 số cho nút trung gian) → toàn bộ quan hệ + phạm vi "Loại khác" + nguồn gắn vào nút với nhãn `NGUYEN_VAN` / `DA_KIEM` / `AI_CHUA_KIEM`. Mã WCO `xxxx00` trỏ về nhóm. Đây là nguồn cho công cụ MCP `tra_cay_hs` bên Cổng OZ |
+| `GET /api/notes` → `chain[]` | `nguonLoai` | Cấp `NATIONAL` (từ `explanatory-notes.json`) mang `nguonLoai: AI_CHUA_KIEM` + `ghiChu`; các cấp phần/chương/nhóm/phân nhóm là nguyên văn |
+| `GET /api/tax`, `GET /api/search` → `breadcrumb` | `levels[]`, `trail` | Nay có tên tiếng Việt chương/nhóm (từ chú giải) và cả tiêu đề bị lược ("Tiêu đề 8504211 (tên bị lược)") |
+| | `path[]`, `parentId`, `siblingHsCodes[]`, `anhEmCoTen[]`, `toTienCoTen` | Mới. Với dòng "Loại khác": phạm vi = `toTienCoTen` trừ `anhEmCoTen` (cha trừ anh em có tên) |
+| | `isResidual`, `scopeVi`, `excludesVi` | Giữ như cũ; `scopeVi`/`excludesVi` là chữ AI (chưa kiểm), chỉ gợi ý |
+| `GET /api/kg_chapter?chapter=85&tree=1` | nút `level` | Thêm hai loại nút ảo: `ONE_DASH_GROUP` (nhóm một gạch, vd `85042`) và `NATIONAL_HEADER` (tiêu đề quốc gia, vd `8504211`), đều `suyRa: true`, `name` có thể `null`. `SUBHEADING` có `nameEn` WCO. Dòng lá giữ nguyên trường cũ. Tên nhóm lấy từ chú giải nhóm thay vì dòng lá đầu |
+
+Nút ảo không bịa tên. **Từ 12/10/2026** tên tiếng Việt của nhóm một gạch, tiêu đề quốc gia và phân nhóm 6 số lấy **nguyên văn từ biểu thuế XNK của Tổng cục** (`data/bieu-thue/<phiên bản>/ten-nut.json`, nhãn `NGUYEN_VAN`, `tenNguon: "bieu-thue@2026.04.05"`): 2.160/2.194 nút ảo và 1.046/2.035 phân nhóm 6 số đã có tên — `viTri`, `breadcrumb`, `/api/tree`, `/api/kg_chapter?tree=1` tự có tên. 34 nút còn lại vẫn `name: null` / "tên bị lược" cho tới khi sổ tay điền kèm trích dẫn.
 
 ## 4. Tra chi tiết chính sách kiểm tra chuyên ngành
 

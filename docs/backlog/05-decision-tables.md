@@ -152,6 +152,27 @@ kèm; cảnh báo khi chú giải cũ hơn biểu thuế đang dùng. (Đã nêu
 tổng và công bố riêng — nếu không, mọi cải tiến ở nhóm mã cụ thể sẽ che mất việc
 nửa lượng hàng thật vẫn đang sai.
 
+### D-7 · 8708: thân vỏ vs bộ phận khác — bảng chờ CEO duyệt (10/10/2026, nhánh `feat/decision-table-8708`)
+
+Ca thật Tmall: tấm ốp bảo vệ gầm / pin thép mangan Leapmotor A10/A05 (底盘护板) — động cơ chốt **8708.29.95** (thân xe)
+với bằng chứng yếu "商品品类: 车底防护板"; CEO chỉ đạo nghiên cứu **8708.99.62** (bộ phận khung gầm, xe 87.03). Tri thức dạng
+BẢNG, không vá riêng món:
+- `data/decision-tables/8708.json` — `verified:false`, `needsCeoReview:true`, 147 luật phủ 119/119 lá. Essence test: bộ phận gì,
+  GẮN VÀO ĐÂU (thân vỏ / khung gầm–treo–truyền động / điều khiển), chức năng. Tấm bảo vệ gầm/pin/động cơ bắt vào khung gầm →
+  8708.99.6x theo loại xe; vè xe (翼子板) → 8708.29.95; chắn bùn (挡泥板) → 8708.29.93. Cửa Oz 3/3 (két nước làm mát → 8708.91.16).
+- Cơ chế **advisory** (`lib/decision-tables.js` `advisoryFromDecision` / `adviseHeading`): bảng CHƯA duyệt không ghi đè (D-2 giữ
+  nguyên) nhưng không im — RESOLVED cùng nhóm → `decisionAdvisory` + cảnh báo `decision-table-advisory` + `review.needed` khi
+  khác mã, mã bảng chèn vào `results` để chuyên viên chọn; engine-loop đưa dòng "chưa duyệt — chỉ tư vấn" vào gói kiểm chứng vòng 2.
+  Bật `verified:true` → ghi đè như 8536.
+- `data/confusion-pairs.json` PT-13 + `data/conflicts.json` 87082995 ↔ 87089962 (`discriminatorsVi`: gắn vào đâu, có phải tấm nhìn
+  thấy từ ngoài/trong khoang) → `confusionWarning` bật ở /api/classify.
+- Sửa lõi: `{in:[…]}` trên enum chữ trước đây bị ép số → "unknown" → luật treo; nay khớp đúng + validateTable kiểm giá trị trong domain.
+
+**CEO cần duyệt**: (1) giả định `vehicleClass=8703` khi hồ sơ không nói loại xe (ghi `factSources=assumed`); (2) vè xe → .95 /
+chắn bùn → .93; (3) tên nhóm con 3–5 gạch của 8708.40/.50/.70/.92/.99.6x suy từ AHTN 2022 vì tax.json không có dòng cha
+(ghi `noteVi` từng luật) — đối chiếu biểu thuế in; (4) thuế lệch 8708.29.95 (TQ không hưởng ACFTA, MFN 15 %) vs 8708.99.62
+(TQ 0 %) — quyết theo bản chất, không theo lợi thuế; dòng 8708.99 kèm chứng nhận ATKT & BVMT (12/2022, 62/2024/TT-BGTVT).
+
 ## DUY TRÌ THEO THỜI GIAN
 
 | Nhịp | Việc | Vì sao |

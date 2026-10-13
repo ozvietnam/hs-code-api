@@ -1,0 +1,651 @@
+{
+ "nhom": "4011",
+ "phamVi": {
+  "text": "Lốp (loại bơm hơi, bằng cao su, chưa qua sử dụng) dùng cho bất cứ loại xe cộ hoặc máy bay nào, đồ chơi có bánh, máy móc có bánh, vũ khí pháo binh có bánh…; có thể cần hoặc không cần săm bên trong.",
+  "nguon": "nhom4011.nhom",
+  "trich": "Các loại lốp này có thể dùng trong bất cứ loại xe cộ hoặc máy bay nào, trong đồ chơi có bánh, máy móc có bánh, vũ khí pháo binh có bánh... Chúng có thể cần hoặc không cần có săm bên trong.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "lam_toan_bo_tu_cao_su_hoac_co_dac_tinh_co_ban_cua_hang_hoa_dan_xuat_tu_cao_su",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "sản phẩm bị loại trừ theo Chú giải 2 của Chương 40"
+   ],
+   "nguon": "ch40.chuong",
+   "trich": "Chương này bao gồm cao su, như đã định nghĩa ở trên, ở dạng nguyên liệu thô hay bán thành phẩm, … và các sản phẩm làm toàn bộ từ cao su hoặc có đặc tính cơ bản của hàng hoá dẫn xuất từ cao su, trừ những sản phẩm bị loại trừ theo Chú giải 2 của Chương này.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "cao_su_theo_chu_giai_1_chuong_40",
+   "op": "in",
+   "value": "cao su tự nhiên|nhựa cây balata|nhựa két|nhựa cây cúc cao su|nhựa chicle|nhựa tự nhiên tương tự|cao su tổng hợp|chất thay thế cao su thu được từ dầu|các chất đó được tái sinh",
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch40.chuong",
+   "trich": "Trừ khi có yêu cầu khác, trong toàn bộ Danh mục, khái niệm “cao su” chỉ những sản phẩm dưới đây, … cao su tự nhiên, nhựa cây balata, nhựa két, nhựa cây cúc cao su, nhựa chicle và các loại nhựa tự nhiên tương tự, cao su tổng hợp, các chất thay thế cao su thu được từ các loại dầu, và những chất như vậy được tái sinh.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "cao_su_da_luu_hoa",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "cao su cứng"
+   ],
+   "nguon": "ch40.chuong",
+   "trich": "(e) Các nhóm từ nhóm 40.07 đến nhóm 40.16 bao gồm các bán thành phẩm và các sản phẩm của cao su đã lưu hoá, trừ cao su cứng.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "401110",
+   "fact": "dung_cho_o_to_con_ke_ca_station_wagons_va_o_to_dua",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.401110",
+   "trich": "401110 Rubber; new pneumatic tyres, of a kind used on motor cars (including station wagons and racing cars)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "401120",
+   "fact": "dung_cho_buses_hoac_lorries",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.401120",
+   "trich": "401120 Rubber; new pneumatic tyres, of a kind used on buses or lorries",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "401130",
+   "fact": "dung_cho_phuong_tien_bay",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.401130",
+   "trich": "401130 Rubber; new pneumatic tyres, of a kind used on aircraft",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "401140",
+   "fact": "dung_cho_xe_mo_to",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.401140",
+   "trich": "401140 Rubber; new pneumatic tyres, of a kind used on motorcycles",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "401150",
+   "fact": "dung_cho_xe_dap",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.401150",
+   "trich": "401150 Rubber; new pneumatic tyres, of a kind used on bicycles",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "401170",
+   "fact": "dung_cho_xe_va_may_nong_nghiep_hoac_lam_nghiep",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.401170",
+   "trich": "401170 Rubber; new pneumatic tyres, of a kind used on agricultural or forestry vehicles and machines",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "401180",
+   "fact": "dung_cho_xe_va_may_xay_dung_ham_mo_hoac_xep_do_cong_nghiep",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.401180",
+   "trich": "401180 Rubber; new pneumatic tyres, of a kind used on construction, mining or industrial handling vehicles and machines",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "401190",
+   "fact": "dung_cho_light_commercial_vehicles",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.401190",
+   "trich": "401190 Rubber; new pneumatic tyres, of a kind used on light commercial vehicles",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "40111000",
+   "dieuKien": "Lốp loại sử dụng cho ô tô con (motor car), kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua (= phân nhóm 4011.10)",
+   "tieuChi": {
+    "fact": "dung_cho_o_to_con",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.40111000",
+   "trich": "40111000 - Loại sử dụng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40112011",
+   "dieuKien": "Lốp của phân nhóm 4011.20 (WCO: of a kind used on buses or lorries), thuộc tiêu đề quốc gia 4011201 (tên bị lược — đối chiếu biểu thuế): có chiều rộng không quá 230 mm VÀ lắp vành có đường kính không quá 16 inch. Khác 40112012 ở đường kính lắp vành (không quá 16 inch); khác 40112013 ở chiều rộng (không quá 230 mm).",
+   "tieuChi": null,
+   "nguon": "tax.40112011",
+   "trich": "40112011 - - - Có chiều rộng không quá 230 mm và lắp vành có đường kính không quá 16 inch (SEN)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40112012",
+   "dieuKien": "Lốp của phân nhóm 4011.20 (WCO: of a kind used on buses or lorries), thuộc tiêu đề quốc gia 4011201 (tên bị lược — đối chiếu biểu thuế): có chiều rộng không quá 230 mm VÀ lắp vành có đường kính trên 16 inch. Khác 40112011 ở đường kính lắp vành (trên 16 inch).",
+   "tieuChi": null,
+   "nguon": "tax.40112012",
+   "trich": "40112012 - - - Có chiều rộng không quá 230 mm và lắp vành có đường kính trên 16 inch (SEN)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40112013",
+   "dieuKien": "Lốp của phân nhóm 4011.20 (WCO: of a kind used on buses or lorries), thuộc tiêu đề quốc gia 4011201 (tên bị lược — đối chiếu biểu thuế): có chiều rộng trên 230 mm nhưng không quá 385 mm. Khác 40112011/40112012 ở chiều rộng (trên 230 mm); trên 385 mm thì không thuộc dòng này.",
+   "tieuChi": null,
+   "nguon": "tax.40112013",
+   "trich": "40112013 - - - Có chiều rộng trên 230 mm nhưng không quá 385 mm (SEN)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40112019",
+   "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 4011201 (tên bị lược — đối chiếu biểu thuế) trong phân nhóm 4011.20, trừ 40112011 (rộng ≤ 230 mm, vành ≤ 16 inch), 40112012 (rộng ≤ 230 mm, vành > 16 inch) và 40112013 (rộng > 230 mm đến 385 mm).",
+   "tieuChi": null,
+   "nguon": "tax.40112019",
+   "trich": "40112019 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "4011201",
+    "truAnhEm": [
+     "40112011",
+     "40112012",
+     "40112013"
+    ],
+    "toTienCoTen": "401120",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "40112090",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 4011.20 (WCO: of a kind used on buses or lorries) trừ tiêu đề quốc gia 4011201 (gồm 40112011, 40112012, 40112013, 40112019) — tên tiêu đề 4011201 bị lược, đối chiếu biểu thuế để biết ranh giới.",
+   "tieuChi": null,
+   "nguon": "tax.40112090",
+   "trich": "40112090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "401120",
+    "truAnhEm": [
+     "4011201"
+    ],
+    "toTienCoTen": "401120",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "40113000",
+   "dieuKien": "Lốp loại sử dụng cho phương tiện bay (= phân nhóm 4011.30)",
+   "tieuChi": {
+    "fact": "dung_cho_phuong_tien_bay",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.40113000",
+   "trich": "40113000 - Loại sử dụng cho phương tiện bay",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40114000",
+   "dieuKien": "Lốp loại dùng cho xe môtô (= phân nhóm 4011.40)",
+   "tieuChi": {
+    "fact": "dung_cho_xe_mo_to",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.40114000",
+   "trich": "40114000 - Loại dùng cho xe môtô",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40115000",
+   "dieuKien": "Lốp loại dùng cho xe đạp (= phân nhóm 4011.50)",
+   "tieuChi": {
+    "fact": "dung_cho_xe_dap",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.40115000",
+   "trich": "40115000 - Loại dùng cho xe đạp",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40117000",
+   "dieuKien": "Lốp loại dùng cho xe và máy nông nghiệp hoặc lâm nghiệp (= phân nhóm 4011.70)",
+   "tieuChi": {
+    "fact": "dung_cho_xe_va_may_nong_nghiep_hoac_lam_nghiep",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.40117000",
+   "trich": "40117000 - Loại dùng cho xe và máy nông nghiệp hoặc lâm nghiệp",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40118011",
+   "dieuKien": "Lốp của phân nhóm 4011.80 (WCO: used on construction, mining or industrial handling vehicles and machines), thuộc tiêu đề quốc gia 4011801 (tên bị lược — đối chiếu biểu thuế): loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng, xe cút kít hoặc xe và máy xếp dỡ công nghiệp khác.",
+   "tieuChi": {
+    "fact": "dung_cho_xe_keo_may_8429_8430_xe_nang_hang_xe_cut_kit_hoac_xe_may_xep_do_cong_nghiep_khac",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.40118011",
+   "trich": "40118011 - - - Loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng, xe cút kít hoặc xe và máy xếp dỡ công nghiệp khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40118019",
+   "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 4011801 (tên bị lược — đối chiếu biểu thuế) trong phân nhóm 4011.80, trừ 40118011 (dùng cho xe kéo, máy 84.29/84.30, xe nâng hàng, xe cút kít hoặc xe và máy xếp dỡ công nghiệp khác).",
+   "tieuChi": null,
+   "nguon": "tax.40118019",
+   "trich": "40118019 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "4011801",
+    "truAnhEm": [
+     "40118011"
+    ],
+    "toTienCoTen": "401180",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "40118031",
+   "dieuKien": "Lốp của phân nhóm 4011.80, thuộc tiêu đề quốc gia 4011803 (tên bị lược — đối chiếu biểu thuế): loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30.",
+   "tieuChi": {
+    "fact": "dung_cho_may_nhom_8429_hoac_8430",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.40118031",
+   "trich": "40118031 - - - Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40118039",
+   "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 4011803 (tên bị lược — đối chiếu biểu thuế) trong phân nhóm 4011.80, trừ 40118031 (dùng cho máy thuộc nhóm 84.29 hoặc 84.30).",
+   "tieuChi": null,
+   "nguon": "tax.40118039",
+   "trich": "40118039 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "4011803",
+    "truAnhEm": [
+     "40118031"
+    ],
+    "toTienCoTen": "401180",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "40118040",
+   "dieuKien": "Lốp của phân nhóm 4011.80 lắp vành có đường kính trên 24 inch, loại khác — tức không thuộc hai tiêu đề quốc gia 4011801 và 4011803 (tên hai tiêu đề này bị lược, đối chiếu biểu thuế để biết ranh giới).",
+   "tieuChi": {
+    "fact": "duong_kinh_lap_vanh",
+    "op": ">",
+    "value": 24,
+    "donVi": "inch"
+   },
+   "nguon": "tax.40118040",
+   "trich": "40118040 - - Lắp vành có đường kính trên 24 inch, loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40119010",
+   "dieuKien": "Lốp của phân nhóm 4011.90 (WCO: of a kind used on light commercial vehicles), loại dùng cho xe thuộc Chương 87.",
+   "tieuChi": {
+    "fact": "dung_cho_xe_thuoc_chuong_87",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.40119010",
+   "trich": "40119010 - - Loại dùng cho xe thuộc Chương 87",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40119020",
+   "dieuKien": "Lốp của phân nhóm 4011.90 (WCO: of a kind used on light commercial vehicles), loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30.",
+   "tieuChi": {
+    "fact": "dung_cho_may_nhom_8429_hoac_8430",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.40119020",
+   "trich": "40119020 - - Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40119090",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 4011.90 (WCO: of a kind used on light commercial vehicles) trừ 40119010 (xe thuộc Chương 87) và 40119020 (máy thuộc nhóm 84.29 hoặc 84.30).",
+   "tieuChi": null,
+   "nguon": "tax.40119090",
+   "trich": "40119090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "401190",
+    "truAnhEm": [
+     "40119010",
+     "40119020"
+    ],
+    "toTienCoTen": "401190",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "4011",
+    "cap": 4,
+    "cha": "40",
+    "tenVi": "Lốp loại bơm hơi bằng cao su, chưa qua sử dụng (+).",
+    "tenEn": "New pneumatic tyres, of rubber",
+    "suyRa": false
+   },
+   {
+    "id": "40111000",
+    "cap": 8,
+    "cha": "4011",
+    "tenVi": "Loại sử dụng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)",
+    "tenEn": "Rubber; new pneumatic tyres, of a kind used on motor cars (including station wagons and racing cars)",
+    "suyRa": false,
+    "laPhanNhom": "401110"
+   },
+   {
+    "id": "401120",
+    "cap": 6,
+    "cha": "4011",
+    "tenVi": null,
+    "tenEn": "Rubber; new pneumatic tyres, of a kind used on buses or lorries",
+    "suyRa": false
+   },
+   {
+    "id": "4011201",
+    "cap": "TIEU_DE_QG",
+    "cha": "401120",
+    "tenVi": null,
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "40112011",
+    "cap": 8,
+    "cha": "4011201",
+    "tenVi": "Có chiều rộng không quá 230 mm và lắp vành có đường kính không quá 16 inch (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "40112012",
+    "cap": 8,
+    "cha": "4011201",
+    "tenVi": "Có chiều rộng không quá 230 mm và lắp vành có đường kính trên 16 inch (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "40112013",
+    "cap": 8,
+    "cha": "4011201",
+    "tenVi": "Có chiều rộng trên 230 mm nhưng không quá 385 mm (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "40112019",
+    "cap": 8,
+    "cha": "4011201",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "40112090",
+    "cap": 8,
+    "cha": "401120",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "40113000",
+    "cap": 8,
+    "cha": "4011",
+    "tenVi": "Loại sử dụng cho phương tiện bay",
+    "tenEn": "Rubber; new pneumatic tyres, of a kind used on aircraft",
+    "suyRa": false,
+    "laPhanNhom": "401130"
+   },
+   {
+    "id": "40114000",
+    "cap": 8,
+    "cha": "4011",
+    "tenVi": "Loại dùng cho xe môtô",
+    "tenEn": "Rubber; new pneumatic tyres, of a kind used on motorcycles",
+    "suyRa": false,
+    "laPhanNhom": "401140"
+   },
+   {
+    "id": "40115000",
+    "cap": 8,
+    "cha": "4011",
+    "tenVi": "Loại dùng cho xe đạp",
+    "tenEn": "Rubber; new pneumatic tyres, of a kind used on bicycles",
+    "suyRa": false,
+    "laPhanNhom": "401150"
+   },
+   {
+    "id": "40117000",
+    "cap": 8,
+    "cha": "4011",
+    "tenVi": "Loại dùng cho xe và máy nông nghiệp hoặc lâm nghiệp",
+    "tenEn": "Rubber; new pneumatic tyres, of a kind used on agricultural or forestry vehicles and machines",
+    "suyRa": false,
+    "laPhanNhom": "401170"
+   },
+   {
+    "id": "401180",
+    "cap": 6,
+    "cha": "4011",
+    "tenVi": null,
+    "tenEn": "Rubber; new pneumatic tyres, of a kind used on construction, mining or industrial handling vehicles and machines",
+    "suyRa": false
+   },
+   {
+    "id": "4011801",
+    "cap": "TIEU_DE_QG",
+    "cha": "401180",
+    "tenVi": null,
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "40118011",
+    "cap": 8,
+    "cha": "4011801",
+    "tenVi": "Loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng, xe cút kít hoặc xe và máy xếp dỡ công nghiệp khác",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "40118019",
+    "cap": 8,
+    "cha": "4011801",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "4011803",
+    "cap": "TIEU_DE_QG",
+    "cha": "401180",
+    "tenVi": null,
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "40118031",
+    "cap": 8,
+    "cha": "4011803",
+    "tenVi": "Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "40118039",
+    "cap": 8,
+    "cha": "4011803",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "40118040",
+    "cap": 8,
+    "cha": "401180",
+    "tenVi": "Lắp vành có đường kính trên 24 inch, loại khác",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "401190",
+    "cap": 6,
+    "cha": "4011",
+    "tenVi": null,
+    "tenEn": "Rubber; new pneumatic tyres, of a kind used on light commercial vehicles",
+    "suyRa": false
+   },
+   {
+    "id": "40119010",
+    "cap": 8,
+    "cha": "401190",
+    "tenVi": "Loại dùng cho xe thuộc Chương 87",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "40119020",
+    "cap": 8,
+    "cha": "401190",
+    "tenVi": "Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "40119090",
+    "cap": 8,
+    "cha": "401190",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch40.chuong",
+  "nhom4011.nhom",
+  "tax.40111000",
+  "tax.40112011",
+  "tax.40112012",
+  "tax.40112013",
+  "tax.40112019",
+  "tax.40112090",
+  "tax.40113000",
+  "tax.40114000",
+  "tax.40115000",
+  "tax.40117000",
+  "tax.40118011",
+  "tax.40118019",
+  "tax.40118031",
+  "tax.40118039",
+  "tax.40118040",
+  "tax.40119010",
+  "tax.40119020",
+  "tax.40119090",
+  "wco.401110",
+  "wco.401120",
+  "wco.401130",
+  "wco.401140",
+  "wco.401150",
+  "wco.401170",
+  "wco.401180",
+  "wco.401190"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "Claude (phiên soạn + soát độc lập, 11/10/2026)",
+  "model": null,
+  "luc": "2026-10-11T06:48:02.630Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 30,
+  "dat": 30,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

@@ -33,6 +33,10 @@ data/accuracy-report-*.json
 # Chặn MỌI tệp trong oz-export (xlsx, xls, csv, json, pdf…), chỉ giữ README.
 data/oz-export/*
 !data/oz-export/README.md
+# Bản thô từng ô của biểu thuế (tái sinh bằng scripts/bieu-thue/trich.mjs) — lớn, không commit
+data/oz-export/bieu-thue-raw/
+# Các sheet FTA theo năm của biểu thuế (tái sinh được; sheet chính + tên nút + tiêu đề thì commit)
+data/bieu-thue/*/sheet/
 data/oz-declarations.jsonl
 
 # Oz private derived data (raw + trung gian — KHÔNG commit)
@@ -72,3 +76,12 @@ __pycache__/
 # Bản nháp sổ tay của agent (docs/giao-viec/so-tay-giao-ngoai.md) — không commit
 tmp/
 data/demand-signals.jsonl
+
+# WCO Compendium of Classification Opinions (#196) — CÔNG KHAI từ 11/10/2026: CEO Oz tuyên bố đã trả phí bản quyền, cho dùng công khai.
+# Commit: ý kiến đã tách (opinions.json), bản dịch (vi.json), câu trích của sổ tay (so-tay-trich.json), README.
+# KHÔNG commit tệp nặng/trung gian: PDF (~136 MB), văn bản OCR, bản sao lưu, báo cáo. Xem data/wco-op/README.md và NOTICE.md.
+data/wco-op/*
+!data/wco-op/README.md
+!data/wco-op/opinions.json
+!data/wco-op/vi.json
+!data/wco-op/so-tay-trich.json

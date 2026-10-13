@@ -3,7 +3,10 @@
 //   (đến từ OrderItem ERP: name, customerDescription→congDung, nameZh, ...)
 // Trả: { results:[{hs, confidence, reason, tbTchq?}], girRulesApplied:[], missing:[], candidates, ms }
 
-const { requireAuth } = require('../lib/auth');
+const { requireAuth, serviceCaller } = require('../lib/auth');
+const { withUsage } = require('../lib/usage-context');
+const { withPrivateData } = require('../lib/llm-privacy');
+const { withEvalHoldout, wantsEvalHoldout } = require('../lib/holdout');
 const { requireAuthOrPublicLlm } = require('../lib/public-llm');
 const { setCors, handleOptions } = require('../lib/cors');
 const { classify } = require('../lib/classify');
@@ -84,7 +87,15 @@ module.exports = async function handler(req, res) {
 
   try {
     const started = Date.now();
-    const result = await classify(attrs, { tier });
+    // Khoá dịch vụ có tên (Cổng ozplugin…) nhận thêm `usage` để tính phí; công khai / HS_API_TOKEN thì không.
+    // Bench chống rò (R5): header X-OZ-Eval-Holdout: 1 → kho tiền lệ Oz bỏ tập giữ riêng trong lượt này. Chỉ bớt ngữ cảnh.
+    const run = wantsEvalHoldout(req) ? (fn) => withEvalHoldout(fn) : (fn) => fn();
+    if (serviceCaller(req) !== null) {
+      // Dữ liệu khách (#237 J1): LLM bên trong chỉ đi nhà cung cấp hợp lệ, không qua tầng miễn phí.
+      const { result, usage } = await run(() => withPrivateData(() => withUsage(() => classify(attrs, { tier }))));
+      return res.status(200).json({ ...result, attrs, usage, ms: Date.now() - started });
+    }
+    const result = await run(() => classify(attrs, { tier }));
     return res.status(200).json({ ...result, attrs, ms: Date.now() - started });
   } catch (e) {
     return res.status(502).json({ error: 'Classify failed', detail: String(e.message).slice(0, 240) });

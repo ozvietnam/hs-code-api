@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-24",
+  "version": "2026-10-10",
   "noteVi": "Từ điển mâu thuẫn HS: mặt hàng doanh nghiệp hay khai mã A, Hải quan hay ấn định mã B, kèm tiêu chí phân biệt. CEO soạn cùng Grok (Drive: HS_Mau_Thuan_Reports_2026/MASTER_Tu_Dien_Mau_Thuan_HS_System, TU_DIEN_MAU_THUAN_HS_MOT_FILE.md), nhập bằng scripts/build-confusion-pairs.mjs. Mọi mục verified:false cho tới khi CEO duyệt; mục oldTariff:true có mã theo biểu thuế cũ, cần đối chiếu. Trường girRule chỉ là trích dẫn của nguồn, KHÔNG phải determination — mọi trích dẫn GIR chính thức đi qua lib/gir.js.",
   "sources": [
     "grok-mt: 50 báo cáo chi tiết MT-001…MT-050 (08/2026–09/2026)",
@@ -18152,6 +18152,100 @@
       ],
       "examples": [],
       "verified": false
+    },
+    {
+      "id": "PT-13",
+      "origin": "agent-evidence",
+      "group": "phu-tung-xe",
+      "nameVi": "Tấm bảo vệ gầm / ốp gầm / tấm bảo vệ pin, động cơ bắt vào khung gầm ô tô (skid plate, underbody guard)",
+      "nameEn": "Underbody skid plate / engine guard / battery protection plate bolted to the chassis of motor vehicles",
+      "aliases": [
+        "tấm bảo vệ gầm",
+        "tam bao ve gam",
+        "ốp gầm",
+        "op gam",
+        "ốp bảo vệ gầm",
+        "bảo vệ gầm xe",
+        "tấm chắn gầm",
+        "giáp gầm",
+        "tấm bảo vệ pin",
+        "bảo vệ pin xe điện",
+        "tấm bảo vệ động cơ",
+        "bảo vệ động cơ ô tô",
+        "tấm chắn động cơ",
+        "skid plate",
+        "underbody guard",
+        "under guard",
+        "engine guard plate",
+        "engine protection plate",
+        "battery guard plate",
+        "chassis guard"
+      ],
+      "chapters": [
+        "87"
+      ],
+      "correctHs": [
+        "8708.99.62",
+        "8708.99.61",
+        "8708.99.63"
+      ],
+      "declaredHs": [
+        "8708.29.95",
+        "8708.29.98",
+        "7326.90.99"
+      ],
+      "essenceTestVi": "Tấm bắt trực tiếp vào KHUNG GẦM dưới xe để che động cơ / pin / hộp số (Chú giải 87.08 (A): khung gầm và phụ tùng đi kèm) — hay tấm THÂN VỎ nhìn thấy từ ngoài / trong khoang như vè xe, ốp thân, tấm lót sàn (Chú giải (B) → 8708.29)? Vật liệu thép/nhôm dập theo lỗ vít nguyên bản của xe → bộ phận chuyên dùng cho xe (không phải 7326).",
+      "rules": [
+        {
+          "ifVi": "tấm bảo vệ gầm / pin / động cơ bắt vào khung gầm, dùng cho ô tô con 87.03",
+          "hs": "8708.99.62"
+        },
+        {
+          "ifVi": "cùng loại, dùng cho xe chở ≥10 người 87.02",
+          "hs": "8708.99.61"
+        },
+        {
+          "ifVi": "cùng loại, dùng cho xe tải / bán tải 87.04",
+          "hs": "8708.99.63"
+        },
+        {
+          "ifVi": "tấm thân vỏ ngoài (vè xe, ốp thân, đuôi gió, nắp ca pô) cho ô tô con",
+          "hs": "8708.29.95"
+        }
+      ],
+      "whyMisdeclaredVi": "Shop TQ ghi \"车底防护板 / 底盘护板\" (tấm phòng hộ gầm) → AI/nhân viên coi là tấm thân xe (8708.29 \"bộ phận và phụ kiện khác của thân xe\"); nhưng tấm này ốp dưới gầm, bắt vào dầm khung, không phải tấm thân vỏ. Chênh thuế: 8708.29.95 ACFTA \"0 (-ID, PH, CN)\" (hàng TQ không hưởng, MFN 15 %) vs 8708.99.62 ACFTA \"0 (-ID, PH, TH)\" (hàng TQ 0 %) — phải quyết theo bản chất, không theo lợi thuế. declaredHs 8708.29.95 là mã động cơ hs-code-api đã chốt trong ca thật 10/10/2026 (suy luận, chưa có TB ấn định).",
+      "deliberateVi": null,
+      "girRule": "GIR 1 + GIR 6 (Chú giải 87.08 (A) vs (B))",
+      "legalBasisVi": "Chú giải chi tiết HS nhóm 87.08: (A) khung gầm xe cơ giới đã lắp ráp và các phụ tùng đi kèm (dầm dọc, thanh ngang, đỡ hệ thống treo, giá đỡ động cơ, ắc quy, bình nhiên liệu…); (B) các bộ phận của thân xe và phụ kiện (tấm lót sàn, thành xe, cửa, nắp ca pô, vè xe, chắn bùn, bậc lên xuống, ba đờ xốc…). Cột cs biểu thuế 8708.99.xx: chứng nhận chất lượng ATKT và BVMT (12/2022/TT-BGTVT, 62/2024/TT-BGTVT).",
+      "sourceRefs": [
+        {
+          "type": "TB-TCHQ",
+          "reference": "8017/TB-TCHQ",
+          "date": null,
+          "year": null,
+          "noteVi": "Tấm đệm thép — bộ phận của khung xe bán tải, kết nối khung gầm với thân xe → 8708.99.62 (biểu thuế TT 193/2012)"
+        },
+        {
+          "type": "TB-TCHQ",
+          "reference": "4168/TB-TCHQ",
+          "date": null,
+          "year": null,
+          "noteVi": "Nắp chụp đèn sương mù plastic (tấm thân vỏ ngoài) xe 87.03 → 8708.29.95 — đối chứng phía thân xe"
+        }
+      ],
+      "warningVi": "Khai 8708.29.95 / 8708.29.98 (thân xe) cho tấm bảo vệ gầm / pin / động cơ bắt vào khung gầm → rủi ro ấn định 8708.99.6x (bộ phận khung gầm); chiều ngược lại: tấm thân vỏ khai 8708.99.62 để hưởng ACFTA → rủi ro ấn định 8708.29.95 và truy thu. 8708.99.xx kèm nghĩa vụ chứng nhận ATKT & BVMT.",
+      "relatedIds": [
+        "PT-07"
+      ],
+      "examples": [
+        "底盘护板",
+        "电池护板",
+        "发动机护板",
+        "26款零跑A10纯电版底盘护板电池护板原车孔位专用"
+      ],
+      "verified": false,
+      "needsReview": true,
+      "reviewNoteVi": "CEO 10/10/2026 chỉ đạo nghiên cứu 8708.99.62 cho ốp gầm Leapmotor A10/A05 (động cơ đang chốt 8708.29.95). Chưa có TB ấn định trực tiếp cho skid plate — chỉ có 8017/TB-TCHQ (tấm đệm khung xe). Chờ CEO duyệt cùng bảng data/decision-tables/8708.json."
     }
   ]
 }

@@ -69,7 +69,7 @@ dashboard) mới cần Bearer token.
 | **Chú giải nhóm 4 số (1.269 — phủ 100%)** | `data/chu-giai-heading.json` |
 | Chú giải chi tiết WCO | `data/explanatory-notes.json` |
 | Tiền lệ TB-TCHQ (1.045 mã trong biểu hiện hành) | `data/precedents.json` — trích thêm/bổ sung theo [`docs/huong-dan-trich-tb-tchq.md`](docs/huong-dan-trich-tb-tchq.md) |
-| Cảnh báo mã dễ nhầm (66) | `data/conflicts.json` |
+| Cảnh báo mã dễ nhầm (68) | `data/conflicts.json` |
 | **Bảng quyết định phân giải** | `data/conflict-tables.json` |
 | Văn bản pháp luật (108) | `data/legal-docs.json` |
 | Mã loại hình XNK | `data/customs-types.json` |

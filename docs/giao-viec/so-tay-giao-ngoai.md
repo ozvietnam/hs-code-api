@@ -118,6 +118,9 @@ Mô tả PR phải có:
 6. `dong8`: đủ mọi dòng `tax.*` của nhóm. `loaiKhac` máy tự điền theo biểu thuế (tên dòng bắt đầu bằng "Loại khác" → `true`), không cần cân nhắc. Có SEN thì ưu tiên điều kiện từ SEN. Dòng trùng chữ mà nguồn không phân biệt được thì ghi rõ, không đoán.
 7. Không ghép hai câu xa nhau thành một kết luận. Không thêm hiểu biết riêng vào `dieuKien`/`text`.
 8. Không sửa mã, nguồn hay câu trích để máy kiểm cho qua. Không trích được thì **xoá mục**.
+9. (11/10/2026) `cay` do máy sinh — **không soạn**. Chỉ điền `cay.tenDien[]` `{id, tenVi, nguon, trich}` cho nút bị lược (tiêu đề quốc gia 7 số, nhóm một gạch 5 số) hoặc phân nhóm 6 số chưa có tên tiếng Việt, khi nguồn có câu nêu tên đó. Nút đã có tên / dòng 8 số → máy loại.
+10. `tieuChi6[]` `{hs6, fact, op, value, donVi, nguon, trich}`: tiêu chí cấp 6 số từ chú giải/SEN/`wco.<6 số>` — không lấy từ `tax.*`; số phải có trong trích. `dong8[].tieuChi` `{fact, op, value, donVi}` tuỳ chọn, cùng luật số.
+11. Không ghi `nguonLoai` — máy gán `AI_DA_KIEM`; người soát độc lập mới đổi sang `NGUOI_DUYET`. Sau khi nạp chạy `node scripts/check-cay.mjs --nhom=<nhom> --chi-tiet` để thấy chỗ còn trống của nhóm.
 
 ## 4. Người duyệt (phiên quản lý) làm gì với mỗi PR
 
