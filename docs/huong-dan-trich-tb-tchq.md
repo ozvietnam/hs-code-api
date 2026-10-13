@@ -56,8 +56,9 @@ Tệp nằm ở `data/community/tb-tchq/<nguồn>-<YYYY-MM-DD>.json`, `kind: "pr
 | `source.issuedDate` | ✔ | Ngày ký, dạng `YYYY-MM-DD` | Lấy ngày tờ khai hoặc ngày đăng web |
 | `source.url` | ✔ | Trang **chi tiết** đã đọc, không lấy trang tìm kiếm | |
 | `reasonVi` | ✔ | Chuỗi kết luận **nguyên văn** nhóm → phân nhóm → mã (kèm lời mô tả của từng cấp), cộng căn cứ văn bản nêu: chú giải chương/nhóm, đặc tính quyết định, kết quả phân tích. ≤ 1000 ký tự. **Dưới 150 ký tự bị coi là "mỏng"**, nên viết đủ khi văn bản có đủ | Tóm tắt lại bằng lời mình; chỉ ghi "→ 3208.90.90" |
+| `attributes.loaiTB` | | **Luôn ghi** khi biết: `XAC_DINH_TRUOC` (trả lời trước khi hàng về — phòng tranh chấp), `KET_QUA_PHAN_LOAI` (kết luận sau phân tích/khai báo), `DINH_CHINH` (sửa chính thông báo trước). Đọc từ tiêu đề văn bản | Gán sai loại → người tra hiểu nhầm bối cảnh |
 | `girRule` | | **Chỉ khi văn bản viện dẫn rõ** "Quy tắc 1", "quy tắc 3(b)"… Dạng `"GIR 3(b)"`. Nhiều quy tắc thì ghi quy tắc quyết định (thường không phải 1 và 6), đủ cả trong `reasonVi` | **Tự suy ra GIR.** Trích sai điều luật tệ hơn không trích (CLAUDE.md luật 6) |
-| `confusedWith` | | Mã văn bản nói hàng **không** thuộc về, hoặc mã doanh nghiệp đã khai mà văn bản bác. Chỉ mã có nguyên văn trong văn bản | Thêm mã "nghĩ là hay nhầm" |
+| `confusedWith` | | Mã văn bản nói hàng **không** thuộc về, mã doanh nghiệp đã khai mà văn bản bác, hoặc mã cũ trong thông báo **đính chính** (đọc từ cột "Nội dung đã ban hành"). Chỉ mã có nguyên văn trong văn bản | Thêm mã "nghĩ là hay nhầm" |
 | `attributes.bieuThue` | ✔ | Biểu thuế theo thông tư danh mục ở phần căn cứ: TT 156/2011 hoặc TT 103/2015 → `"2012"`; TT 65/2017 → `"2017"`; TT 31/2022 → `"2022"` | Đoán theo năm ban hành |
 | `attributes.loaiTB` | | `"KET_QUA_PHAN_LOAI"` / `"XAC_DINH_TRUOC"` / `"DINH_CHINH"` | |
 | `attributes.ptpl` | | Số thông báo kết quả phân tích, vd `"1586/TB-PTPL"` | |
