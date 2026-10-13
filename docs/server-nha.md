@@ -60,12 +60,13 @@ phải giữ nguyên ánh xạ đó, ERP đang gọi theo URL cũ.
 | `HS_API_TOKEN` | Bearer token. **Không có biến này thì toàn bộ endpoint quản trị mở toang.** |
 | Ít nhất một key LLM | `GEMINI_API_KEY` · `MINIMAX_API_KEY` · `HERMES_API_KEY` · `OPENROUTER_API_KEY` |
 
-Chuỗi dự phòng LLM: Gemini → Hermes → MiniMax → OpenRouter (`lib/llm-tier.js`).
+Chuỗi gọi LLM (`lib/llm-tier.js` → `lib/llm.mjs`): MiniMax (gọi thẳng, gói trả phí) →
+Hermes → OpenRouter → Gemini miễn phí (chỉ dự phòng) → Gemini trả phí (chỉ tier premium).
 Thiếu key nào thì tự bỏ qua provider đó, không sập.
 
-⚠️ **Trên Vercel hiện tại `GEMINI_API_KEY` đang RỖNG lúc chạy** (`/api/health` trả
-`geminiKey: false`), mọi thứ đang chạy bằng MiniMax. Khi dựng máy mới, kiểm lại
-key bằng `/api/health` chứ đừng tin là đã đặt.
+⚠️ Vercel đã gỡ 09/10/2026 — service chạy `server.js` trên server riêng. Khi dựng máy
+mới, kiểm key LLM bằng `/api/health` (`llmStatus`) chứ đừng tin là đã đặt. `geminiKey: false`
+chỉ nghĩa là chưa đặt khóa Gemini TRẢ PHÍ — service vẫn chạy bình thường bằng MiniMax.
 
 **Tuỳ chọn:** `HS_PUBLIC_READ=false` (đóng đọc công khai — trên server nhà **nên
 đặt `false`**, vì phần công khai đã ở CDN rồi, máy này không cần phục vụ ai lạ),
