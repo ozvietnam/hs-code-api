@@ -240,7 +240,9 @@ function mergePrecedent(precedents, seen, doc, rec, fileRel, stats) {
     const old = precedents[hs][ownIdx];
     const giàuHơn = (entry.loaiTB && !old.loaiTB)
       || (entry.confusedWith || []).length > (old.confusedWith || []).length
-      || String(entry.technicalSpec || '').length > String(old.technicalSpec || '').length;
+      || String(entry.technicalSpec || '').length > String(old.technicalSpec || '').length
+      // Sửa mô tả tại tệp nguồn (vd gỡ tên doanh nghiệp lộ trong description) cũng là bản giàu hơn.
+      || String(entry.productName || '') !== String(old.productName || '');
     if (giàuHơn) {
       precedents[hs][ownIdx] = { ...entry, ...(!entry.sourceUrl && old.sourceUrl ? { sourceUrl: old.sourceUrl } : {}) };
       stats.refreshed += 1;

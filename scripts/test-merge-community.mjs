@@ -189,12 +189,13 @@ assert('refresh: lần đầu vào kho, chưa có loaiTB', après1['85366932']?.
 
 writeFileSync(refreshFile, JSON.stringify({
   ...refreshBase,
-  records: [{ ...refreshBase.records[0], attributes: { bieuThue: '2017', loaiTB: 'KET_QUA_PHAN_LOAI' }, confusedWith: ['85369019'] }],
+  records: [{ ...refreshBase.records[0], description: refreshBase.records[0].description + ' (bản chỉnh mô tả)', attributes: { bieuThue: '2017', loaiTB: 'KET_QUA_PHAN_LOAI' }, confusedWith: ['85369019'] }],
 }));
 spawnSync(process.execPath, [join(root, 'scripts', 'merge-community.mjs'), '--community-dir', communityDir, '--data-dir', dataDir], { encoding: 'utf8' });
 const après2 = JSON.parse(readFileSync(join(dataDir, 'precedents.json'), 'utf8'));
 assert('refresh: nộp lại bản giàu hơn → thay tại chỗ, không nhân bản', après2['85366932']?.length === 1, `n=${après2['85366932']?.length}`);
 assert('refresh: loaiTB + confusedWith đã vào kho', après2['85366932'][0].loaiTB === 'KET_QUA_PHAN_LOAI' && (après2['85366932'][0].confusedWith || []).includes('85369019'));
+assert('refresh: sửa mô tả tại tệp nguồn cũng được cập nhật', /bản chỉnh mô tả/.test(après2['85366932'][0].productName), après2['85366932'][0].productName);
 
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
