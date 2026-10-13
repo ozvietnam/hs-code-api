@@ -192,6 +192,7 @@ function mergePrecedent(precedents, seen, doc, rec, fileRel, stats) {
     },
     sourceType: rec.source?.type || null,
     girRule: rec.girRule || null,
+    ...(rec.attributes?.loaiTB ? { loaiTB: rec.attributes.loaiTB } : {}),
     confusedWith: rec.confusedWith || [],
     ...(rec.source?.issuedDate ? { issuedDate: rec.source.issuedDate } : {}),
     ...(rec.source?.url ? { sourceUrl: rec.source.url } : {}),
@@ -230,6 +231,24 @@ function mergePrecedent(precedents, seen, doc, rec, fileRel, stats) {
     precedents[hs][twin] = { ...entry, ...(!entry.sourceUrl && old.sourceUrl ? { sourceUrl: old.sourceUrl } : {}) };
     seen.add(key);
     stats.upgraded += 1;
+    return;
+  }
+  // Cùng TỆP NGUỒN nộp lại bản đầy đủ hơn (thêm loaiTB / confusedWith / lý do dài hơn) — luật 13/10/2026
+  // để nâng cấp tại chỗ mà không nhân bản; nộp lại y hệt thì skip như cũ.
+  const ownIdx = precedents[hs].findIndex((p) => p.sourceFile === entry.sourceFile && keyOf(p) === key);
+  if (ownIdx >= 0) {
+    const old = precedents[hs][ownIdx];
+    const giàuHơn = (entry.loaiTB && !old.loaiTB)
+      || (entry.confusedWith || []).length > (old.confusedWith || []).length
+      || String(entry.technicalSpec || '').length > String(old.technicalSpec || '').length;
+    if (giàuHơn) {
+      precedents[hs][ownIdx] = { ...entry, ...(!entry.sourceUrl && old.sourceUrl ? { sourceUrl: old.sourceUrl } : {}) };
+      stats.refreshed += 1;
+      seen.add(key);
+      return;
+    }
+    stats.skippedDup += 1;
+    seen.add(key);
     return;
   }
   if (seen.has(key)) {
@@ -286,6 +305,7 @@ const stats = {
   skippedShortHs: 0,
   precedents: 0,
   upgraded: 0,
+  refreshed: 0,
   removedThin: 0,
   superseded: 0,
   conflicts: 0,
@@ -346,7 +366,7 @@ for (const full of files) {
   }
 }
 
-if (stats.precedents || stats.upgraded || stats.removedThin) writeJson(precedentsPath, precedents);
+if (stats.precedents || stats.upgraded || stats.removedThin || stats.refreshed) writeJson(precedentsPath, precedents);
 if (stats.conflicts) writeJson(conflictsPath, conflicts);
 
 appendLog({ action: 'summary', stats, dryRun: DRY });

@@ -171,5 +171,30 @@ const third = JSON.parse(readFileSync(join(dataDir, 'precedents.json'), 'utf8'))
 assert('gộp lần 2, lần 3 không dao động', after['32089090'].length === 1 && third['32089090'].length === 1 && JSON.stringify(third) === JSON.stringify(after));
 assert('chạy lại exit 0', again.status === 0, again.stderr || again.stdout);
 
+// Refresh cùng tệp nguồn (luật 13/10/2026): nộp lại bản đầy đủ hơn → thay tại chỗ, không nhân bản.
+const refreshFile = join(communityDir, 'refresh-lot.json');
+const refreshBase = {
+  kind: 'precedent', contributor: { name: 'agent-refresh' }, license: 'CC-BY-SA-4.0',
+  records: [{
+    hsCode: '85366932',
+    description: 'Đầu nối điện thoại Connector 12P dùng cho bo mạch điện thoại di động, hàng mới 100%',
+    source: { type: 'TB-TCHQ', reference: '5150/TB-TCHQ', issuedDate: '2020-05-15' },
+    reasonVi: 'Thuộc nhóm 85.36 “Thiết bị điện để đóng ngắt mạch điện”, mã số 8536.69.32 “- - Loại khác” tại Danh mục hàng hóa xuất khẩu, nhập khẩu Việt Nam.',
+  }],
+};
+writeFileSync(refreshFile, JSON.stringify(refreshBase));
+spawnSync(process.execPath, [join(root, 'scripts', 'merge-community.mjs'), '--community-dir', communityDir, '--data-dir', dataDir], { encoding: 'utf8' });
+const après1 = JSON.parse(readFileSync(join(dataDir, 'precedents.json'), 'utf8'));
+assert('refresh: lần đầu vào kho, chưa có loaiTB', après1['85366932']?.length === 1 && !après1['85366932'][0].loaiTB);
+
+writeFileSync(refreshFile, JSON.stringify({
+  ...refreshBase,
+  records: [{ ...refreshBase.records[0], attributes: { bieuThue: '2017', loaiTB: 'KET_QUA_PHAN_LOAI' }, confusedWith: ['85369019'] }],
+}));
+spawnSync(process.execPath, [join(root, 'scripts', 'merge-community.mjs'), '--community-dir', communityDir, '--data-dir', dataDir], { encoding: 'utf8' });
+const après2 = JSON.parse(readFileSync(join(dataDir, 'precedents.json'), 'utf8'));
+assert('refresh: nộp lại bản giàu hơn → thay tại chỗ, không nhân bản', après2['85366932']?.length === 1, `n=${après2['85366932']?.length}`);
+assert('refresh: loaiTB + confusedWith đã vào kho', après2['85366932'][0].loaiTB === 'KET_QUA_PHAN_LOAI' && (après2['85366932'][0].confusedWith || []).includes('85369019'));
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
