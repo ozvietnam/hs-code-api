@@ -13,7 +13,7 @@
 | 1b. 1.076 nhóm còn lại — 180 lô xếp theo ưu tiên ([so-tay-lo.csv](../giao-viec/so-tay-lo.csv)); lô 8 đạt phủ 95 % | ⬜ |
 | 2. Chạy khô các cổng (không AI) | ✅ 09/10 — trên 763 tờ khai giữ riêng thay cho 113 kết quả lưu trên .120; 4 cổng bật oan ≤ 3,2 % với 152 nhóm (mục "Trạng thái 09/10") |
 | 3a. Nối sổ tay vào phản hồi ở **chế độ cố vấn** (`lib/so-tay-runtime.js`: `soTay.canGiaiTrinh` = kết cục C kiểu *nghi*, `soTay.yKienWco`; không đổi mã/trạng thái/prompt; tắt bằng `HS_SOTAY_RUNTIME=false`) | ✅ 10/10/2026 |
-| 3b. Nối vào *quyết định* sau công tắc `HS_SO_TAY` (mặc định tắt; 4 cổng máy nghi + một lượt giải trình AI, kết cục CHANGED/EXPLAINED/UNRESOLVED/NO_TIME) | ⚙️ 09/10 — đã nối `lib/engine-loop.js` (PR #190); **chờ đo bằng AI thật trên .120** (#193) rồi mới bật prod |
+| 3b. Nối vào *quyết định* sau công tắc `HS_SO_TAY` (mặc định tắt; 4 cổng máy nghi + một lượt giải trình AI, kết cục CHANGED/EXPLAINED/UNRESOLVED/NO_TIME) | ✅ đo #193 đạt 13/10 (mục "Trạng thái 13/10") — **đã bật `gates` trên prod** |
 | 4. Dựng đủ 1.269 nhóm | ⬜ |
 | 5. Vòng sửa | ⬜ |
 
@@ -177,6 +177,33 @@ done   # chạy mỗi chế độ ≥ 2 lần (chênh giữa 2 lần ±5–7 đi
 Nghiệm thu bước 3 (giữ nguyên tiêu chí gốc): `wrongUnflagged` không tăng; đúng 8 số không giảm quá sai số;
 `avgPromptCharsR2` của `full` giảm so với `off`; `soTay.changedHarmful` ≤ `soTay.changedHelpful`. Đạt → đặt
 `HS_SO_TAY` trong `hs.env` rồi `deploy-safe.sh main --force`.
+
+## Trạng thái 13/10/2026 — đo bằng AI thật (#193) xong, đạt với `gates`
+
+Chạy đúng kịch bản trên .120 (image `8db37f90` = PR #190 sau khi gộp main; `LOOP_PROVIDER=gemini`,
+bộ 80 mẫu vàng `--set=gold --limit=80`, mỗi chế độ 2 lượt, container đo biệt lập `hs-bench` tách khỏi
+prod vì timer auto-deploy 5 phút thay container nhánh). Kết quả trung bình 2 lượt:
+
+| Chế độ | Đ2 | Đ4 | Đ6 | Đ8 | Top3-Đ8 | "Loại khác" Đ8 | Sai-không-cờ | Cờ | Gói R2 (ký tự) | Cổng bắn / kết cục |
+|---|---|---|---|---|---|---|---|---|---|---|
+| off | 86,8 | 78,7 | 73,0 | 60,4 | 78,0 | 52,8 | 17,6 | 37,5 | 9.074 | — (chỉ cố vấn 3a bám 79–80/80) |
+| gates | 86,3 | 78,8 | 72,5 | 60,1 | 76,9 | 50,0 | **16,3** | 35,1 | **8.987** | 4–5 lượt, toàn EXPLAINED, 0 CHANGED |
+| full | 85,6 | 78,0 | 71,1 | 61,1 | 81,2 | 54,6 | 16,4 | 39,4 | 9.800 | 5–6 lượt: 4 EXPLAINED, 1 CHANGED (lợi), 1–2 UNRESOLVED |
+
+Chênh giữa 2 lần cùng chế độ ±4–7 điểm (đúng như dự báo). Chấm 4 điều nghiệm thu:
+1. Sai-không-cờ không tăng — **đạt** (off 17,6 → gates 16,3, full 16,4).
+2. Đúng 8 số không giảm quá sai số — **đạt** (gates −0,3, full +0,7; đều gọn trong sai số run-to-run).
+3. Gói `full` nhỏ hơn `off` — **không đạt** (9.800 > 9.074, +8 %); `gates` thì nhỏ hơn (8.987 < 9.074).
+4. `changedHarmful` ≤ `changedHelpful` — **đạt** (0 hại; full có 1 đổi mã có lợi 84833090 → 84139190).
+
+Đọc tay (#193 bước 3): **0 ca changedHarmful**; 2 ca UNRESOLVED (full, cổng `SO_TAY_DONG8`) đều là
+cổng **nghi đúng hướng** — hệ đang chọn dòng "Loại khác" trong khi đáp án thật là dòng cụ thể cùng phân nhóm
+(bộ xúc xắc 9503.00.60, bộ điều khiển DMX512 8537.10) — AI không giải trình được nên lên cờ chuyên viên,
+đúng triết lý "máy nghi, không chặn". Không mục sổ tay nào sai nghĩa → không phải sửa `data/so-tay/`.
+
+**Quyết định: bật `HS_SO_TAY=gates`** (full không tốt hơn rõ rệt và vướng điều gói). File đo gốc
+`/opt/hs-bench/so-tay-{off,gates,full}-r{1,2}.json` giữ trên .120 (không commit — theo chuẩn không
+ghi dữ liệu đo vào repo).
 
 ## Liên quan
 - Bước 2 G-2 (bóc mệnh đề loại trừ thành cấu trúc) và bước 5 D-3 (định tuyến 6 số): sổ tay là
