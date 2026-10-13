@@ -68,6 +68,16 @@ check('4009.21: 1.2cm trái mọi điều kiện → LOAI_KHAC 40092190 (phủ �
 cd = chotDong8({ hs: '40092190', productText: 'ống cao su có lắp phụ kiện cứng' });
 check('thiếu số liệu → THIEU_SO_LIEU + missingFacts duong_kinh', cd.ketQua === 'THIEU_SO_LIEU' && cd.missingFacts?.[0]?.fact === 'duong_kinh', JSON.stringify(cd.missingFacts));
 cd = chotDong8({ hs: '84811019', productText: 'van cổng điều khiển bằng tay, đường kính 30 cm' });
-check('8481.10: vật liệu chưa là điều kiện → 2 dòng cùng thoả → TRANH_CAP (không đoán)', cd.ketQua === 'TRANH_CAP' && (cd.dongThoa || []).length === 2, JSON.stringify(cd.dongThoa));
+check('8481.10: còn anh em chưa số hoá → KHONG_THE_CHOT (không đoán, không hỏi vô nghĩa)', cd.ketQua === 'KHONG_THE_CHOT' && cd.lyDo === 'phu-dinh-chua-hoan-chinh', JSON.stringify(cd.lyDo));
 cd = chotDong8({ hs: '84051099', productText: 'máy phát acetylen' });
 check('phân nhóm chưa số hóa ranh giới → KHONG_THE_CHOT (điểm mù)', cd.checked === false || cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd.ketQua));
+
+// #195 chốt dòng — 3 hành vi sau đọc tay 18 ca oan (13/10):
+cd = chotDong8({ hs: '85044090', productText: 'Bộ nguồn 260W, đầu vào AC100-240V' });
+check('8504.40 có 2 dòng Loại khác → KHONG_THE_CHOT (không lấy dòng đầu)', cd.ketQua === 'KHONG_THE_CHOT' && ['nhieu-dong-loai-khac', 'phu-dinh-chua-hoan-chinh'].includes(cd.lyDo), JSON.stringify(cd));
+cd = chotDong8({ hs: '85444299', productText: 'Dây cáp mạng USB, đường kính lõi 0.0625mm, vỏ nhựa cách điện' });
+check('8544.42.94 có vế CHẤT LIỆU chưa mô hình → không chốt .94 (bảo thủ)', cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd));
+cd = chotDong8({ hs: '40118011', productText: 'Lốp máy xúc lật 14.00-24, đường kính 788mm' });
+check('4011 ngưỡng VÀNH không lấy đường kính ngoài → KHONG_THE_CHOT', cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd));
+cd = chotDong8({ hs: '85044019', productText: 'Bộ đổi nguồn 30W dùng cho tủ điện' });
+check('8504.40 chọn .19 (LK trong) cũng không chốt được — phủ định chưa hoàn chỉnh', cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd));

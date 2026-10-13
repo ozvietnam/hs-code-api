@@ -145,7 +145,17 @@ for (const f of files) {
     const ownSegment = String(l.dieuKien).split('›').pop().trim();
     // Dòng có "hoặc" giữa các khoảng (vd "trên 75 nhưng không quá 100, HOẶC hơn 250") là phép CHỌN —
     // schema v1 chỉ nối AND; bỏ sang hàng soát để không chấm sai chiều nào.
-    if (/\bhoặc\b/i.test(ownSegment)) { stat.canSoat++; draft.push({ nhom, hs: l.hs, loaiKhac: !!l.loaiKhac, nguon: l.nguon || null, nguonLoai: l.nguonLoai || null, trich: trich.slice(0, 400), dieuKienSo: [], canSoat: [{ fact: null, lyDo: 'dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR', soNguyenVan: null, donViNguyenVan: null }] }); continue; }
+    // "HOẶC" chỉ nguy khi nối hai KHOẢNG (số cả hai vế, hoặc "hoặc hơn/trên/không quá…").
+    // "cửa nạp hoặc cửa thoát trên 5 cm" là hai vị trí tương đương cùng một ngưỡng — bóc bình thường.
+    const hoacHaiKhoang = /\d[^.;:]{0,50}?\bhoặc\b[^.;:]{0,50}?\d/i.test(ownSegment) || /\bhoặc\s+(trên|dưới|hơn|không quá|không dưới|từ|ít nhất|tối đa|tối thiểu)/i.test(ownSegment);
+    if (hoacHaiKhoang) { stat.canSoat++; draft.push({ nhom, hs: l.hs, loaiKhac: !!l.loaiKhac, nguon: l.nguon || null, nguonLoai: l.nguonLoai || null, trich: trich.slice(0, 400), dieuKienSo: [], canSoat: [{ fact: null, lyDo: 'dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR', soNguyenVan: null, donViNguyenVan: null }] }); continue; }
+    // Chất liệu là điều kiện PHÂN BIỆT thường trực (vd "cách điện bằng plastic" của 8544.42.94) mà schema v1
+    // chưa mô hình (chờ op LA) — bóc số trên dòng đó sẽ chốt thiếu vế chất liệu → để người soát.
+    const MATERIAL = /(cách điện|làm|làm từ|làm bằng|chất liệu|bằng)\s+(plastic|nhựa|cao su|giấy|gỗ|kim loại|nhôm|thép|đồng|vải|dệt|thủy tinh|gốm|sứ|mica|inox|sắt|gang|bạc|vàng|đá|bê tông|xi măng)/i;
+    if (MATERIAL.test(ownSegment)) { stat.canSoat++; draft.push({ nhom, hs: l.hs, loaiKhac: !!l.loaiKhac, nguon: l.nguon || null, nguonLoai: l.nguonLoai || null, trich: trich.slice(0, 400), dieuKienSo: [], canSoat: [{ fact: null, lyDo: 'điều kiện có vế CHẤT LIỆU chưa mô hình (op LA) — chờ soát', soNguyenVan: null, donViNguyenVan: null }] }); continue; }
+    // "Lắp vành có đường kính..." — đường kính VÀNH (rim), không đọc được từ "đường kính" chung của hàng
+    // (đo 4011: máy từng lấy đường kính NGOÀI lốp 788mm chấm cho ngưỡng vành 24 inch). Chờ dữ kiện vành riêng.
+    if (/\b(vành|lazang|lazăng|rim)\b/i.test(ownSegment)) { stat.canSoat++; draft.push({ nhom, hs: l.hs, loaiKhac: !!l.loaiKhac, nguon: l.nguon || null, nguonLoai: l.nguonLoai || null, trich: trich.slice(0, 400), dieuKienSo: [], canSoat: [{ fact: null, lyDo: 'ngưỡng theo đường kính VÀNH — chờ dữ kiện vành riêng', soNguyenVan: null, donViNguyenVan: null }] }); continue; }
     const conds = extractConditions(ownSegment);
     if (!conds.length) { stat.khongBocDuoc++; continue; }
     // máy kiểm: số (nguyên văn) VÀ đơn vị phải cùng có mặt trong câu trích
