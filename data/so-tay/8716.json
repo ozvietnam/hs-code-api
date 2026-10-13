@@ -295,7 +295,27 @@
    "loaiKhac": false,
    "nguon": "tax.87169021",
    "trich": "Bánh xe đẩy (castor), có đường kính (kể cả lốp) trên 100 mm nhưng không quá 250 mm với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không nhỏ hơn 30 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 100,
+     "donVi": "mm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 250,
+     "donVi": "mm"
+    },
+    {
+     "fact": "chieu_rong",
+     "op": ">",
+     "value": 30,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "87169022",
@@ -357,7 +377,27 @@
    "loaiKhac": false,
    "nguon": "tax.87169095",
    "trich": "Bánh xe đẩy (castor), có đường kính (kể cả lốp) trên 100 mm nhưng không quá 250 mm với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không nhỏ hơn 30 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 100,
+     "donVi": "mm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 250,
+     "donVi": "mm"
+    },
+    {
+     "fact": "chieu_rong",
+     "op": ">",
+     "value": 30,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "87169096",

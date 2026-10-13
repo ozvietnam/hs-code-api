@@ -310,7 +310,26 @@
    "loaiKhac": false,
    "nguon": "tax.84812020",
    "trich": "84812020 - - Bằng đồng hoặc hợp kim đồng, có đường kính trong không quá 2,5 cm, hoặc bằng plastic, có đường kính trong từ 1 cm đến 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 1,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84812090",
@@ -964,7 +983,20 @@
    "loaiKhac": false,
    "nguon": "tax.84818083",
    "trich": "84818083 - - - Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp dưới 1cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<",
+     "value": 1,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818084",
@@ -972,7 +1004,26 @@
    "loaiKhac": false,
    "nguon": "tax.84818084",
    "trich": "84818084 - - - Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp từ 1cm đến 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 1,
+     "donVi": "cm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "84818093",

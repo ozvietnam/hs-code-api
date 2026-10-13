@@ -87,7 +87,7 @@ function unitToken(raw) {
 
 // ── Bóc điều kiện từ một khối chữ ──
 const NUM_RE = new RegExp('(?<num>\\d+(?:[.,]\\d+)*)\\s*' + UNIT_RE, 'gi');
-function extractConditions(text) {
+function extractConditions(text, factHint = null) {
   const out = [];
   for (const m of String(text || '').matchAll(NUM_RE)) {
     const value = parseVN(m.groups.num);
@@ -98,7 +98,7 @@ function extractConditions(text) {
     const around = String(text).slice(Math.max(0, idx - 60), idx + m[0].length + 60);
     const op = opOf(before);
     if (!op) continue; // số + đơn vị mà không có phép so thì không phải ranh giới
-    const factHit = FACT_MAP.find(([re]) => re.test(around));
+    const factHit = FACT_MAP.find(([re]) => re.test(around)) || (factHint ? FACT_MAP.find(([re]) => re === factHint) : null);
     const numAsIs = m.groups.num;
     out.push({
       fact: factHit ? factHit[1] : null,
@@ -119,6 +119,42 @@ function extractConditions(text) {
     seen.add(k);
     return true;
   });
+}
+
+/** "hoặc" nối hai KHOẢNG khi từ "hoặc" tới số kế tiếp CHỈ có từ so sánh (hơn/trên/không quá…),
+ *  không có danh từ. "chiều rộng bánh xe hoặc lốp lắp vào không nhỏ hơn 30 mm" là hai VỊ TRÍ tương đương, không phải phép CHỌN. */
+function laHoacKhoang(seg) {
+  const re = /\bhoặc\b/gi; let m;
+  while ((m = re.exec(seg))) {
+    const after = seg.slice(m.index + m[0].length);
+    // số theo sau phải KÈM ĐƠN VỊ ĐO (mm/cm/kg/inch…) — "hoặc 84.46" (danh sách mã nhóm) không phải khoảng
+    const mm = after.match(new RegExp('^([\\s,]*)(.*?)(\\d+(?:[.,]\\d+)*\\s*' + UNIT_RE + '\\b)', 'is'));
+    if (!mm) continue;
+    if (/^(trên|dưới|hơn|không quá|không dưới|không vượt|từ|ít nhất|tối đa|tối thiểu|đến|và|,|\s)*$/i.test(mm[2])) return true;
+  }
+  return false;
+}
+
+/** Phép CHỌN giữa các khoảng: cắt theo "hoặc", bóc từng vế; mọi vế phải có ≥1 điều kiện thì mới nhận.
+ *  Vế thiếu tên đại lượng (vd "hoặc hơn 250") nhận fact GỢI Ý từ vế đầu. */
+function extractHoac(segment) {
+  // Đúng MỘT chữ "hoặc" mới là phép CHỌN giữa hai vế; nhiều chữ (một chọn + một vị trí như
+  // "trên 75..100 hoặc hơn 250, chiều rộng bánh xe hoặc lốp...") → để người soát.
+  if ((String(segment).match(/\bhoặc\b/gi) || []).length !== 1) return null;
+  const parts = String(segment).split(/\s*\bhoặc\b\s*/i).map((x) => x.trim()).filter(Boolean);
+  if (parts.length !== 2) return null;
+  const hint = extractConditions(parts[0]).find((c) => c.fact) || null;
+  const phuongAn = [];
+  for (const part of parts) {
+    const conds = extractConditions(part);
+    // Vế mở đầu bằng TỪ SO SÁNH ("hơn 250 mm") mới được mượn tên đại lượng của vế đầu;
+    // vế mở đầu bằng danh từ ("lốp lắp vào không nhỏ hơn 30 mm") thì phải tự gọi được tên — không thì bỏ.
+    const moDauSoSanh = /^\s*(trên|dưới|hơn|không quá|không dưới|không vượt|từ|ít nhất|tối đa|tối thiểu)/i.test(part);
+    const withFact = conds.map((c) => ({ ...c, fact: c.fact || (moDauSoSanh && hint ? hint.fact : null) }));
+    if (!withFact.length || withFact.some((c) => !c.fact) || (withFact.some((c) => !c.fact))) return null;
+    phuongAn.push(withFact.map(({ fact, op, value, donVi, soNguyenVan, donViNguyenVan }) => ({ fact, op, value, donVi, soNguyenVan, donViNguyenVan })));
+  }
+  return { op: 'HOAC', phuongAn, soNguyenVan: null, donViNguyenVan: null };
 }
 
 // ── Duyệt sổ tay ──
@@ -145,13 +181,19 @@ for (const f of files) {
     const trich = String(l.trich || '');
     // Chỉ bóc từ ĐOẠN TÊN CỦA CHÍNH DÒNG (sau "›" cuối của breadcrumb): điều kiện dòng cha/tiêu đề
     // thuộc về nút cha, không thuộc dòng lá — kế thừa xuống lá sẽ làm các dòng cùng thoả (đo 8481/8716).
-    const ownSegment = String(l.dieuKien).split('›').pop().trim();
+    // Gỡ ghi chú soạn của sổ tay ("; dòng cha không có trong nguồn — …") — không phải văn bản luật.
+    const ownSegment = String(l.dieuKien).split('›').pop().replace(/;\s*dòng cha không có trong nguồn[\s\S]*$/i, '').trim();
     // Dòng có "hoặc" giữa các khoảng (vd "trên 75 nhưng không quá 100, HOẶC hơn 250") là phép CHỌN —
     // schema v1 chỉ nối AND; bỏ sang hàng soát để không chấm sai chiều nào.
-    // "HOẶC" chỉ nguy khi nối hai KHOẢNG (số cả hai vế, hoặc "hoặc hơn/trên/không quá…").
-    // "cửa nạp hoặc cửa thoát trên 5 cm" là hai vị trí tương đương cùng một ngưỡng — bóc bình thường.
-    const hoacHaiKhoang = /\d[^.;:]{0,50}?\bhoặc\b[^.;:]{0,50}?\d/i.test(ownSegment) || /\bhoặc\s+(trên|dưới|hơn|không quá|không dưới|từ|ít nhất|tối đa|tối thiểu)/i.test(ownSegment);
-    if (hoacHaiKhoang) { stat.canSoat++; draft.push({ nhom, hs: l.hs, loaiKhac: !!l.loaiKhac, nguon: l.nguon || null, nguonLoai: l.nguonLoai || null, trich: trich.slice(0, 400), dieuKienSo: [], canSoat: [{ fact: null, lyDo: 'dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR', soNguyenVan: null, donViNguyenVan: null }] }); continue; }
+    // "HOẶC" nối hai KHOẢNG (vd ">75 nhưng ≤100, HOẶC >250") là phép CHỌN giữa các phương án:
+    // bóc thành {op:'HOAC', phuongAn:[[đk...],[đk...]]} — mỗi phương án nối AND, các phương án nối OR.
+    // "cửa nạp hoặc cửa thoát trên 5 cm" là hai vị trí tương đương cùng một ngưỡng → không tách.
+    const hoacHaiKhoang = laHoacKhoang(ownSegment);
+    if (hoacHaiKhoang) {
+      const hoac = extractHoac(ownSegment);
+      if (hoac) { stat.deXuat++; draft.push({ nhom, hs: l.hs, loaiKhac: !!l.loaiKhac, nguon: l.nguon || null, nguonLoai: l.nguonLoai || null, trich: trich.slice(0, 400), dieuKienSo: [hoac], canSoat: [] }); continue; }
+      stat.canSoat++; draft.push({ nhom, hs: l.hs, loaiKhac: !!l.loaiKhac, nguon: l.nguon || null, nguonLoai: l.nguonLoai || null, trich: trich.slice(0, 400), dieuKienSo: [], canSoat: [{ fact: null, lyDo: 'dòng có phép HOẶC nhưng tách phương án không sạch — chờ soát tay', soNguyenVan: null, donViNguyenVan: null }] }); continue;
+    }
     // Chất liệu (#195 vòng 3): một vật liệu sau từ dẫn (cách điện/làm/bằng/chất liệu) → điều kiện LA
     // ("cách điện bằng plastic" của 8544.42.94); NHIỀU vật liệu nối bằng dấu phẩy/hoặc là phép CHỌN → chờ soát tay.
     const matFound = MATERIALS.filter(([, re]) => new RegExp('(?:cách điện|làm|làm từ|làm bằng|chất liệu|bằng)\\s+[^,;:.]{0,25}?' + re.source, 'i').test(ownSegment));
@@ -170,6 +212,20 @@ for (const f of files) {
     // máy kiểm: số (nguyên văn) VÀ đơn vị phải cùng có mặt trong câu trích
     for (const c of conds) {
       if (c.op === 'LA') { if (c.trangThai === 'DE_XUAT') stat.deXuat++; else stat.canSoat++; continue; }
+      if (c.op === 'HOAC') {
+        let okAll = true;
+        for (const alt of c.phuongAn) for (const cc of alt) {
+          const soOk = new RegExp('(?<!\\d)' + String(cc.soNguyenVan).replace(/[.,]/g, (x) => '[' + x + ',.]') + '(?<!\\d)').test(trich);
+          const dvOk = trich.toLowerCase().includes(String(cc.donViNguyenVan).toLowerCase().replace('³', '3').replace('²', '2'));
+          if (!soOk || !dvOk) okAll = false;
+        }
+        c.trangThai = okAll ? 'DE_XUAT' : 'CAN_SOAT';
+        c.lyDo = okAll ? null : 'HOẶC: có số/đơn vị không nguyên văn trong trích';
+        // gộp về hình chuẩn: chỉ giữ {fact,op,value,donVi} trong phuongAn
+        c.phuongAn = c.phuongAn.map((alt) => alt.map(({ fact, op, value, donVi }) => ({ fact, op, value, donVi })));
+        if (c.trangThai === 'DE_XUAT') stat.deXuat++; else stat.canSoat++;
+        continue;
+      }
       c.kiem.soTrongTrich = new RegExp('(?<!\\d)' + c.soNguyenVan.replace(/[.,]/g, (x) => '[' + x + ',.]') + '(?!\\d)').test(trich);
       c.kiem.donViTrongTrich = trich.toLowerCase().includes(String(c.donViNguyenVan).toLowerCase().replace('³', '3').replace('²', '2'));
       c.trangThai = (c.kiem.soTrongTrich && c.kiem.donViTrongTrich && c.fact) ? 'DE_XUAT' : 'CAN_SOAT';

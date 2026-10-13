@@ -29,9 +29,18 @@ for (const f of readdirSync(DIR).filter((x) => /^\d{4}\.json$/.test(x))) {
   for (const { line } of lines(j.dong8 || [], nhom)) {
     const key = `${nhom}/${String(line.hs).replace(/\D/g, '')}`;
     if (map.has(key)) {
+      const trich = String(line.trich || '');
+      const soTrongTrich = (v) => new RegExp('(?<!\\d)' + String(v).replace('.', '[.,]') + '(?!\\d)').test(trich);
+      const dung = (c) => {
+        if (c.op === 'LA') return true; // đã kiểm alias trong nháp lúc bóc; check-so-tay kiểm lại
+        if (c.op === 'HOAC') return (c.phuongAn || []).every((alt) => alt.every((cc) => soTrongTrich(cc.value)));
+        return soTrongTrich(c.value);
+      };
       const conds = map.get(key).dieuKienSo
-        .map(({ fact, op, value, donVi }) => ({ fact, op, value, donVi }))
-        .filter((c) => new RegExp('(?<!\\d)' + String(c.value).replace('.', '[.,]') + '(?!\\d)').test(String(line.trich || '')));
+        .map((c) => (c.op === 'HOAC'
+          ? { op: 'HOAC', phuongAn: c.phuongAn.map((alt) => alt.map(({ fact, op, value, donVi }) => ({ fact, op, value, donVi }))) }
+          : { fact: c.fact, op: c.op, value: c.value, ...(c.op === 'LA' ? {} : { donVi: c.donVi }) }))
+        .filter(dung);
       if (!conds.length) { boLo++; continue; }
       line.dieuKienSo = conds; dat += conds.length; changed = true;
     } else if (line.dieuKienSo) { delete line.dieuKienSo; xoa++; changed = true; } else { giu++; }

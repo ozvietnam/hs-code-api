@@ -1,13 +1,13 @@
 {
- "taoLuc": "2026-10-13T09:06:23.861Z",
+ "taoLuc": "2026-10-13T09:10:14.507Z",
  "mucDich": "#195 — nháp điều kiện số cho dòng 8 số; DE_XUAT đã qua máy kiểm trích dẫn, CAN_SOAT chờ người soát; KHÔNG dùng để chốt cho tới khi ốp vào sổ tay nhóm và qua duyệt",
  "tongKe": {
   "nhom": 172,
   "dongCoDieuKien": 3240,
   "dongLoaiKhac": 1013,
-  "deXuat": 305,
-  "canSoat": 292,
-  "khongBocDuoc": 1761
+  "deXuat": 341,
+  "canSoat": 199,
+  "khongBocDuoc": 1870
  },
  "dong": [
   {
@@ -17,13 +17,36 @@
    "nguon": "tax.04021041",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "04021041 - - - Đóng gói với khối lượng tịnh từ 20 kg trở lên",
-   "dieuKienSo": [],
+   "dieuKienSo": [
+    {
+     "fact": "khoi_luong",
+     "op": ">=",
+     "value": 20,
+     "donVi": "kg",
+     "soNguyenVan": "20",
+     "donViNguyenVan": "kg",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    }
+   ],
    "canSoat": [
     {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "fact": "khoi_luong",
+     "op": "<=",
+     "value": 1.5,
+     "donVi": "%",
+     "soNguyenVan": "1,5",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "số không có nguyên văn trong trích"
     }
    ]
   },
@@ -34,13 +57,36 @@
    "nguon": "tax.04021042",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "04021042 - - - Đóng gói với khối lượng tịnh từ 2 kg trở xuống",
-   "dieuKienSo": [],
+   "dieuKienSo": [
+    {
+     "fact": "khoi_luong",
+     "op": ">=",
+     "value": 2,
+     "donVi": "kg",
+     "soNguyenVan": "2",
+     "donViNguyenVan": "kg",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    }
+   ],
    "canSoat": [
     {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "fact": "khoi_luong",
+     "op": "<=",
+     "value": 1.5,
+     "donVi": "%",
+     "soNguyenVan": "1,5",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "số không có nguyên văn trong trích"
     }
    ]
   },
@@ -51,13 +97,36 @@
    "nguon": "tax.04021091",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "04021091 - - - Đóng gói với khối lượng tịnh từ 20 kg trở lên",
-   "dieuKienSo": [],
+   "dieuKienSo": [
+    {
+     "fact": "khoi_luong",
+     "op": ">=",
+     "value": 20,
+     "donVi": "kg",
+     "soNguyenVan": "20",
+     "donViNguyenVan": "kg",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    }
+   ],
    "canSoat": [
     {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "fact": "khoi_luong",
+     "op": "<=",
+     "value": 1.5,
+     "donVi": "%",
+     "soNguyenVan": "1,5",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "số không có nguyên văn trong trích"
     }
    ]
   },
@@ -68,13 +137,36 @@
    "nguon": "tax.04021092",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "04021092 - - - Đóng gói với khối lượng tịnh từ 2 kg trở xuống",
-   "dieuKienSo": [],
+   "dieuKienSo": [
+    {
+     "fact": "khoi_luong",
+     "op": ">=",
+     "value": 2,
+     "donVi": "kg",
+     "soNguyenVan": "2",
+     "donViNguyenVan": "kg",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    }
+   ],
    "canSoat": [
     {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "fact": "khoi_luong",
+     "op": "<=",
+     "value": 1.5,
+     "donVi": "%",
+     "soNguyenVan": "1,5",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "số không có nguyên văn trong trích"
     }
    ]
   },
@@ -541,9 +633,17 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": ">",
+     "value": 50,
+     "donVi": "%",
+     "soNguyenVan": "50",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -583,9 +683,17 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": ">",
+     "value": 50,
+     "donVi": "%",
+     "soNguyenVan": "50",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -625,9 +733,17 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": ">",
+     "value": 50,
+     "donVi": "%",
+     "soNguyenVan": "50",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -642,9 +758,17 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": ">",
+     "value": 50,
+     "donVi": "%",
+     "soNguyenVan": "50",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -973,9 +1097,17 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": ">",
+     "value": 50,
+     "donVi": "%",
+     "soNguyenVan": "50",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -1040,9 +1172,17 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": ">",
+     "value": 50,
+     "donVi": "%",
+     "soNguyenVan": "50",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -1107,9 +1247,17 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": ">",
+     "value": 50,
+     "donVi": "%",
+     "soNguyenVan": "50",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -1160,40 +1308,6 @@
      },
      "trangThai": "CAN_SOAT",
      "lyDo": "không gọi được tên đại lượng (fact)"
-    }
-   ]
-  },
-  {
-   "nhom": "3921",
-   "hs": "39211940",
-   "loaiKhac": false,
-   "nguon": "tax.39211940",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "39211940 - - - Dạng tấm và phiến(SEN) từ xenlulo hoặc từ các dẫn xuất hóa học của chúng, hoặc từ sợi lưu hóa",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "3921",
-   "hs": "39211950",
-   "loaiKhac": false,
-   "nguon": "tax.39211950",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "39211950 - - - Dạng tấm và phiến(SEN) từ các protein được làm cứng, hoặc từ các dẫn xuất hóa học của cao su tự nhiên",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
     }
    ]
   },
@@ -1406,23 +1520,6 @@
     }
    ],
    "canSoat": []
-  },
-  {
-   "nhom": "3923",
-   "hs": "39234010",
-   "loaiKhac": false,
-   "nguon": "sen.39234010",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "SUỐT CHỈ, ỐNG CHỈ, LÕI VÀ CÁC VẬT PHẨM TƯƠNG TỰ, LOẠI PHÙ HỢP SỬ DỤNG VỚI MÁY MÓC THUỘC NHÓM 84.44, 84.45 HOẶC 84.48",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
   },
   {
    "nhom": "3925",
@@ -1697,23 +1794,6 @@
     }
    ],
    "canSoat": []
-  },
-  {
-   "nhom": "4009",
-   "hs": "40093191",
-   "loaiKhac": false,
-   "nguon": "tax.40093191",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Ống dẫn nhiên liệu, ống dẫn nhiệt và ống dẫn nước, dùng cho xe gắn động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
   },
   {
    "nhom": "4009",
@@ -2200,40 +2280,6 @@
   },
   {
    "nhom": "4011",
-   "hs": "40118011",
-   "loaiKhac": false,
-   "nguon": "tax.40118011",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "40118011 - - - Loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng, xe cút kít hoặc xe và máy xếp dỡ công nghiệp khác",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "4011",
-   "hs": "40118031",
-   "loaiKhac": false,
-   "nguon": "tax.40118031",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "40118031 - - - Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "4011",
    "hs": "40118040",
    "loaiKhac": false,
    "nguon": "tax.40118040",
@@ -2244,23 +2290,6 @@
     {
      "fact": null,
      "lyDo": "ngưỡng theo đường kính VÀNH — chờ dữ kiện vành riêng",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "4011",
-   "hs": "40119020",
-   "loaiKhac": false,
-   "nguon": "tax.40119020",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "40119020 - - Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
      "soNguyenVan": null,
      "donViNguyenVan": null
     }
@@ -2293,23 +2322,6 @@
   },
   {
    "nhom": "4012",
-   "hs": "40121930",
-   "loaiKhac": false,
-   "nguon": "tax.40121930",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "4012",
    "hs": "40122021",
    "loaiKhac": false,
    "nguon": "tax.40122021",
@@ -2332,23 +2344,6 @@
     }
    ],
    "canSoat": []
-  },
-  {
-   "nhom": "4012",
-   "hs": "40122060",
-   "loaiKhac": false,
-   "nguon": "tax.40122060",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
   },
   {
    "nhom": "4012",
@@ -2556,58 +2551,7 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "4016",
-   "hs": "40169911",
-   "loaiKhac": false,
-   "nguon": "tax.40169911",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05, trừ viền cao su quanh kính cửa",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "4016",
-   "hs": "40169913",
-   "loaiKhac": false,
-   "nguon": "tax.40169913",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Viền cao su quanh kính cửa, dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "4016",
-   "hs": "40169915",
-   "loaiKhac": false,
-   "nguon": "tax.40169915",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Dùng cho xe thuộc nhóm 87.09, 87.13, 87.15 hoặc 87.16",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
+     "lyDo": "ngưỡng theo đường kính VÀNH — chờ dữ kiện vành riêng",
      "soNguyenVan": null,
      "donViNguyenVan": null
     }
@@ -2770,13 +2714,50 @@
    "nguon": "tax.48025411",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "48025411 - - - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)",
-   "dieuKienSo": [],
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 15,
+     "donVi": "cm",
+     "soNguyenVan": "15",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    }
+   ],
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": "<=",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": ">",
+     "value": 36,
+     "donVi": "cm",
+     "soNguyenVan": "36",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -2787,13 +2768,50 @@
    "nguon": "tax.48025421",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "48025421 - - - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)",
-   "dieuKienSo": [],
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 15,
+     "donVi": "cm",
+     "soNguyenVan": "15",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    }
+   ],
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": "<=",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": ">",
+     "value": 36,
+     "donVi": "cm",
+     "soNguyenVan": "36",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -2808,7 +2826,7 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
+     "lyDo": "nhiều CHẤT LIỆU nối hoặc/dấu phẩy — phép CHỌN, chờ soát tay",
      "soNguyenVan": null,
      "donViNguyenVan": null
     }
@@ -2821,13 +2839,50 @@
    "nguon": "tax.48025440",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "48025440 - - - Loại dùng để viết, in và các mục đích đồ bản khác, dạng cuộn có chiều rộng không quá 15 cm hoặc dạng tờ hình chữ nhật (kể cả hình vuông) không có cạnh nào trên 36 cm ở dạng không gấp",
-   "dieuKienSo": [],
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 15,
+     "donVi": "cm",
+     "soNguyenVan": "15",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    }
+   ],
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": "<=",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": ">",
+     "value": 36,
+     "donVi": "cm",
+     "soNguyenVan": "36",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -2842,9 +2897,17 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": "<=",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -2855,13 +2918,36 @@
    "nguon": "tax.48025521",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "48025521 - - - - Có chiều rộng không quá 15 cm (SEN)",
-   "dieuKienSo": [],
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 15,
+     "donVi": "cm",
+     "soNguyenVan": "15",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    }
+   ],
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": "<=",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -2876,7 +2962,7 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
+     "lyDo": "nhiều CHẤT LIỆU nối hoặc/dấu phẩy — phép CHỌN, chờ soát tay",
      "soNguyenVan": null,
      "donViNguyenVan": null
     }
@@ -2889,13 +2975,35 @@
    "nguon": "sen.48025550",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "GIẤY LÀM NỀN SẢN XUẤT GIẤY CHỐNG DÍNH Loại giấy này được làm từ bột giấy hóa học được tẩy trắng, đã được nhuộm màu toàn bộ, định lượng 75 ± 5 g/m2, độ dày 0,1 ± 0,05 mm, độ hút nước theo phương pháp Cobb nhỏ hơn 18 g/m2",
-   "dieuKienSo": [],
+   "dieuKienSo": [
+    {
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "giấy",
+     "soNguyenVan": null,
+     "donViNguyenVan": null,
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    }
+   ],
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": "<=",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -2906,13 +3014,36 @@
    "nguon": "tax.48025561",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "48025561 - - - - Có chiều rộng không quá 15 cm",
-   "dieuKienSo": [],
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 15,
+     "donVi": "cm",
+     "soNguyenVan": "15",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    }
+   ],
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": "<=",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -2927,9 +3058,17 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": "<=",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -2944,9 +3083,59 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": "<=",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": "<=",
+     "value": 435,
+     "donVi": "mm",
+     "soNguyenVan": "435",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": "<=",
+     "value": 297,
+     "donVi": "mm",
+     "soNguyenVan": "297",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": ">",
+     "value": 36,
+     "donVi": "cm",
+     "soNguyenVan": "36",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -2957,13 +3146,64 @@
    "nguon": "tax.48025641",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "48025641 - - - - Có chiều rộng không quá 36 cm ở dạng tờ hình chữ nhật (kể cả hình vuông) và ở dạng không gấp",
-   "dieuKienSo": [],
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 36,
+     "donVi": "cm",
+     "soNguyenVan": "36",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    }
+   ],
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": "<=",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": "<=",
+     "value": 435,
+     "donVi": "mm",
+     "soNguyenVan": "435",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": "<=",
+     "value": 297,
+     "donVi": "mm",
+     "soNguyenVan": "297",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -2978,9 +3218,45 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": "<=",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": "<=",
+     "value": 435,
+     "donVi": "mm",
+     "soNguyenVan": "435",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": "<=",
+     "value": 297,
+     "donVi": "mm",
+     "soNguyenVan": "297",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -2995,9 +3271,31 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": "<=",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": ">",
+     "value": 36,
+     "donVi": "cm",
+     "soNguyenVan": "36",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -3012,9 +3310,17 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": "<=",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -3025,13 +3331,64 @@
    "nguon": "tax.48025821",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "48025821 - - - - Ở dạng cuộn có chiều rộng từ 15 cm trở xuống hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp(SEN)",
-   "dieuKienSo": [],
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": ">=",
+     "value": 15,
+     "donVi": "cm",
+     "soNguyenVan": "15",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    }
+   ],
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": "<=",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": ">=",
+     "value": 36,
+     "donVi": "cm",
+     "soNguyenVan": "36",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": ">=",
+     "value": 15,
+     "donVi": "cm",
+     "soNguyenVan": "15",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -3042,13 +3399,50 @@
    "nguon": "tax.48025831",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "48025831 - - - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
-   "dieuKienSo": [],
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 15,
+     "donVi": "cm",
+     "soNguyenVan": "15",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    }
+   ],
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": "<=",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": ">",
+     "value": 36,
+     "donVi": "cm",
+     "soNguyenVan": "36",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -3063,9 +3457,17 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": "<=",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -3076,13 +3478,36 @@
    "nguon": "tax.48026131",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "48026131 - - - - Có chiều rộng không quá 15 cm (SEN)",
-   "dieuKienSo": [],
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 15,
+     "donVi": "cm",
+     "soNguyenVan": "15",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    }
+   ],
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": ">",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -3097,7 +3522,7 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
+     "lyDo": "nhiều CHẤT LIỆU nối hoặc/dấu phẩy — phép CHỌN, chờ soát tay",
      "soNguyenVan": null,
      "donViNguyenVan": null
     }
@@ -3110,13 +3535,36 @@
    "nguon": "tax.48026151",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "48026151 - - - - Có chiều rộng không quá 15 cm",
-   "dieuKienSo": [],
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 15,
+     "donVi": "cm",
+     "soNguyenVan": "15",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    }
+   ],
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": ">",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -3131,9 +3579,17 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": ">",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -3148,9 +3604,17 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": ">",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -3165,9 +3629,45 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": ">",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": "<=",
+     "value": 435,
+     "donVi": "mm",
+     "soNguyenVan": "435",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": "<=",
+     "value": 297,
+     "donVi": "mm",
+     "soNguyenVan": "297",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -3182,9 +3682,45 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": ">",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": "<=",
+     "value": 435,
+     "donVi": "mm",
+     "soNguyenVan": "435",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": "<=",
+     "value": 297,
+     "donVi": "mm",
+     "soNguyenVan": "297",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -3199,9 +3735,59 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": ">",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": "<=",
+     "value": 435,
+     "donVi": "mm",
+     "soNguyenVan": "435",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": "<=",
+     "value": 297,
+     "donVi": "mm",
+     "soNguyenVan": "297",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": ">",
+     "value": 36,
+     "donVi": "cm",
+     "soNguyenVan": "36",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -3216,9 +3802,45 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": ">",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": "<=",
+     "value": 435,
+     "donVi": "mm",
+     "soNguyenVan": "435",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": "<=",
+     "value": 297,
+     "donVi": "mm",
+     "soNguyenVan": "297",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -3233,9 +3855,31 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": ">",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
+    },
+    {
+     "fact": null,
+     "op": ">",
+     "value": 36,
+     "donVi": "cm",
+     "soNguyenVan": "36",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -3250,9 +3894,17 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "op": ">",
+     "value": 10,
+     "donVi": "%",
+     "soNguyenVan": "10",
+     "donViNguyenVan": "%",
+     "kiem": {
+      "soTrongTrich": false,
+      "donViTrongTrich": false
+     },
+     "trangThai": "CAN_SOAT",
+     "lyDo": "không gọi được tên đại lượng (fact)"
     }
    ]
   },
@@ -3875,40 +4527,6 @@
    ]
   },
   {
-   "nhom": "6005",
-   "hs": "60053500",
-   "loaiKhac": false,
-   "nguon": "ch60.chuong",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Phân nhóm 6005.35 bao gồm vải từ monofilament polyetylen hoặc từ multifilament polyeste, có định lượng từ 30g/m2 đến 55g/m2, có kích cỡ lưới từ 20 lỗ/cm2 đến 100 lỗ/cm2, và được tẩm hoặc phủ alpha- cypermethrin (ISO), chlorfenapyr (ISO), deltamethrin (INN, ISO), lambda-cyhalothrin (ISO), permethrin (ISO) hoặc pirimiphos- methyl (ISO).",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "6006",
-   "hs": "60061000",
-   "loaiKhac": false,
-   "nguon": "tax.60061000",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "60061000 - Từ lông cừu hoặc lông động vật loại mịn",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
    "nhom": "6402",
    "hs": "64021200",
    "loaiKhac": false,
@@ -4062,74 +4680,6 @@
    ]
   },
   {
-   "nhom": "7007",
-   "hs": "70071120",
-   "loaiKhac": false,
-   "nguon": "tax.70071120",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Phù hợp dùng cho phương tiện bay hoặc tàu vũ trụ thuộc Chương 88",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "7007",
-   "hs": "70071910",
-   "loaiKhac": false,
-   "nguon": "tax.70071910",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Phù hợp dùng cho các máy thuộc nhóm 84.29 hoặc 84.30",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "7007",
-   "hs": "70072120",
-   "loaiKhac": false,
-   "nguon": "tax.70072120",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Phù hợp dùng cho phương tiện bay hoặc tàu vũ trụ thuộc Chương 88",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "7007",
-   "hs": "70072910",
-   "loaiKhac": false,
-   "nguon": "tax.70072910",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Phù hợp dùng cho các máy thuộc nhóm 84.29 hoặc 84.30",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
    "nhom": "7013",
    "hs": "70131000",
    "loaiKhac": false,
@@ -4140,7 +4690,7 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
+     "lyDo": "nhiều CHẤT LIỆU nối hoặc/dấu phẩy — phép CHỌN, chờ soát tay",
      "soNguyenVan": null,
      "donViNguyenVan": null
     }
@@ -4246,23 +4796,6 @@
     }
    ],
    "canSoat": []
-  },
-  {
-   "nhom": "7019",
-   "hs": "70199020",
-   "loaiKhac": false,
-   "nguon": "sen.70199020",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Rèm thủy tinh nói chung, bao gồm rèm gỗ hoặc acrylic kết hợp với tấm thủy tinh (kiểu kẹp sandwich), đóng khung nhôm vừa với cửa sổ hoặc cửa ra vào … Trong trường hợp rèm gỗ hoặc acrylic không kết hợp với tấm thủy tinh được phân loại theo chất liệu của Chương 39 hoặc 44.",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
   },
   {
    "nhom": "7019",
@@ -6541,40 +7074,6 @@
   },
   {
    "nhom": "8413",
-   "hs": "84133030",
-   "loaiKhac": false,
-   "nguon": "tax.84133030",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84133030 - - Bơm nhiên liệu loại sử dụng cho động cơ của xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8413",
-   "hs": "84133040",
-   "loaiKhac": false,
-   "nguon": "sen.84133040",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "BƠM NƯỚC LOẠI ĐƯỢC SỬ DỤNG CHO ĐỘNG CƠ CỦA XE CÓ ĐỘNG CƠ THUỘC NHÓM 87.02, 87.03 HOẶC 87.04 Bơm nước này bơm tuần hoàn dung dịch làm mát đi khắp động cơ.",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8413",
    "hs": "84133051",
    "loaiKhac": false,
    "nguon": "tax.84133051",
@@ -6772,15 +7271,23 @@
    "nguon": "tax.84143040",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "84143040 - - Có công suất làm lạnh trên 21,10 kW, hoặc có dung tích làm việc trên một chu kỳ từ 220 cc trở lên",
-   "dieuKienSo": [],
-   "canSoat": [
+   "dieuKienSo": [
     {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "fact": "dung_tich",
+     "op": ">",
+     "value": 21.1,
+     "donVi": "kW",
+     "soNguyenVan": "21,10",
+     "donViNguyenVan": "kW",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
     }
-   ]
+   ],
+   "canSoat": []
   },
   {
    "nhom": "8414",
@@ -6829,23 +7336,6 @@
      },
      "trangThai": "CAN_SOAT",
      "lyDo": "không gọi được tên đại lượng (fact)"
-    }
-   ]
-  },
-  {
-   "nhom": "8414",
-   "hs": "84149021",
-   "loaiKhac": false,
-   "nguon": "tax.84149021",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84149021 - - - Của hàng hóa thuộc nhóm 84.15, 84.18, 85.09 hoặc 85.16",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
     }
    ]
   },
@@ -7030,23 +7520,6 @@
    ]
   },
   {
-   "nhom": "8418",
-   "hs": "84189940",
-   "loaiKhac": false,
-   "nguon": "sen.84189940",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "PANEL NHÔM CÁN-GHÉP DÙNG CHO HÀNG HÓA THUỘC PHÂN NHÓM 8418.10.31, 8418.10.32, 8418.21.10, 8418.21.90 HOẶC 8418.29.00 … Panel loại này được cấu tạo từ 2 tấm nhôm ghép vào với nhau bằng phương pháp cán. … Sau khi cán, các đường rãnh được tạo ra bằng cách ép tấm đó với áp suất từ 100 đến 150 bar.",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
    "nhom": "8419",
    "hs": "84195020",
    "loaiKhac": false,
@@ -7095,91 +7568,6 @@
     }
    ],
    "canSoat": []
-  },
-  {
-   "nhom": "8421",
-   "hs": "84213110",
-   "loaiKhac": false,
-   "nguon": "tax.84213110",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8421",
-   "hs": "84219190",
-   "loaiKhac": false,
-   "nguon": "tax.84219190",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Của hàng hóa thuộc phân nhóm 8421.11.00 hoặc 8421.19.90",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8421",
-   "hs": "84219921",
-   "loaiKhac": false,
-   "nguon": "sen.84219921",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Lõi lọc của thiết bị lọc thuộc phân nhóm 8421.23 là các bộ phận thiết yếu của các thiết bị lọc dầu hoặc xăng dùng trong động cơ đốt trong.",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8421",
-   "hs": "84219996",
-   "loaiKhac": false,
-   "nguon": "tax.84219996",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Của hàng hóa thuộc phân nhóm 8421.23.11 hoặc 8421.23.91",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8421",
-   "hs": "84219997",
-   "loaiKhac": false,
-   "nguon": "tax.84219997",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Của hàng hóa thuộc phân nhóm 8421.23.19 hoặc 8421.23.99",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
   },
   {
    "nhom": "8423",
@@ -7296,159 +7684,6 @@
    "canSoat": []
   },
   {
-   "nhom": "8424",
-   "hs": "84249094",
-   "loaiKhac": false,
-   "nguon": "tax.84249094",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Của hàng hóa thuộc phân nhóm 8424.41.10, 8424.41.20, 8424.49.20 hoặc 8424.82.30",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8424",
-   "hs": "84249095",
-   "loaiKhac": false,
-   "nguon": "tax.84249095",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Của hàng hóa thuộc phân nhóm 8424.41.90, 8424.49.10 hoặc 8424.82.20",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8431",
-   "hs": "84311013",
-   "loaiKhac": false,
-   "nguon": "tax.84311013",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84311013 - - - Của hàng hóa thuộc phân nhóm 8425.11.00, 8425.31.00 hoặc 8425.49.10",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8431",
-   "hs": "84311022",
-   "loaiKhac": false,
-   "nguon": "tax.84311022",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84311022 - - - Của hàng hóa thuộc phân nhóm 8425.19.00, 8425.39.00, 8425.41.00, 8425.42.10 hoặc 8425.42.90",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8431",
-   "hs": "84312010",
-   "loaiKhac": false,
-   "nguon": "tax.84312010",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84312010 - - Thuộc phân nhóm 8427.10 hoặc 8427.20",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8431",
-   "hs": "84313110",
-   "loaiKhac": false,
-   "nguon": "tax.84313110",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84313110 - - - Của hàng hóa thuộc phân nhóm 8428.10.39 hoặc 8428.10.40",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8431",
-   "hs": "84313120",
-   "loaiKhac": false,
-   "nguon": "tax.84313120",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84313120 - - - Của hàng hóa thuộc phân nhóm 8428.10.31 hoặc 8428.40.00",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8431",
-   "hs": "84313910",
-   "loaiKhac": false,
-   "nguon": "tax.84313910",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84313910 - - - Của hàng hóa thuộc phân nhóm 8428.20.10, 8428.32.10, 8428.33.10 hoặc 8428.39.10",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8431",
-   "hs": "84314300",
-   "loaiKhac": false,
-   "nguon": "tax.84314300",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84314300 - - Bộ phận của máy khoan hoặc máy đào sâu thuộc phân nhóm 8430.41 hoặc 8430.49",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
    "nhom": "8443",
    "hs": "84431200",
    "loaiKhac": false,
@@ -7484,108 +7719,6 @@
      },
      "trangThai": "CAN_SOAT",
      "lyDo": "không gọi được tên đại lượng (fact)"
-    }
-   ]
-  },
-  {
-   "nhom": "8466",
-   "hs": "84661010",
-   "loaiKhac": false,
-   "nguon": "tax.84661010",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84661010 - - Dùng cho máy thuộc phân nhóm 8456.40.10, 8456.90.20, 8460.31.10, 8465.91.10, 8465.92.10, 8465.95.10 hoặc 8465.99.50",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8466",
-   "hs": "84662010",
-   "loaiKhac": false,
-   "nguon": "tax.84662010",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84662010 - - Dùng cho máy thuộc phân nhóm 8456.40.10, 8456.90.20, 8460.31.10, 8465.91.10, 8465.92.10, 8465.95.10 hoặc 8465.99.50",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8466",
-   "hs": "84669330",
-   "loaiKhac": false,
-   "nguon": "tax.84669330",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84669330 - - - Dùng cho máy thuộc các phân nhóm 8456.11.10, 8456.12.10, 8456.20.00, hoặc 8456.30.00, loại chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất mạch in, mạch in đã lắp ráp … dùng cho máy thuộc các phân nhóm 8457.10, 8458.91.00, 8459.21.00, 8459.29.10, 8459.61.00, 8459.69.10, hoặc 8461.50.00",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8466",
-   "hs": "84669400",
-   "loaiKhac": false,
-   "nguon": "tax.84669400",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84669400 - - Dùng cho máy thuộc nhóm 84.62 hoặc 84.63",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8467",
-   "hs": "84679910",
-   "loaiKhac": false,
-   "nguon": "tax.84679910",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84679910 - - - Của hàng hóa thuộc phân nhóm 8467.21.00, 8467.22.00 hoặc 8467.29.00",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8473",
-   "hs": "84732100",
-   "loaiKhac": false,
-   "nguon": "tax.84732100",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84732100 - - Của máy tính điện tử thuộc phân nhóm 8470.10.00, 8470.21.00 hoặc 8470.29.00",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
     }
    ]
   },
@@ -7738,15 +7871,50 @@
    "nguon": "tax.84812020",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "84812020 - - Bằng đồng hoặc hợp kim đồng, có đường kính trong không quá 2,5 cm, hoặc bằng plastic, có đường kính trong từ 1 cm đến 2,5 cm",
-   "dieuKienSo": [],
-   "canSoat": [
+   "dieuKienSo": [
     {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic",
      "soNguyenVan": null,
-     "donViNguyenVan": null
+     "donViNguyenVan": null,
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm",
+     "soNguyenVan": "2,5",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    },
+    {
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 1,
+     "donVi": "cm",
+     "soNguyenVan": "1",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
     }
-   ]
+   ],
+   "canSoat": []
   },
   {
    "nhom": "8481",
@@ -8478,15 +8646,36 @@
    "nguon": "tax.84818083",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "84818083 - - - Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp dưới 1cm",
-   "dieuKienSo": [],
-   "canSoat": [
+   "dieuKienSo": [
     {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic",
      "soNguyenVan": null,
-     "donViNguyenVan": null
+     "donViNguyenVan": null,
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<",
+     "value": 1,
+     "donVi": "cm",
+     "soNguyenVan": "1",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
     }
-   ]
+   ],
+   "canSoat": []
   },
   {
    "nhom": "8481",
@@ -8495,32 +8684,50 @@
    "nguon": "tax.84818084",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "84818084 - - - Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp từ 1cm đến 2,5 cm",
-   "dieuKienSo": [],
-   "canSoat": [
+   "dieuKienSo": [
     {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
+     "fact": "chat_lieu",
+     "op": "LA",
+     "value": "plastic",
      "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8481",
-   "hs": "84818093",
-   "loaiKhac": false,
-   "nguon": "tax.84818093",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84818093 - - - Van ngắt nhiên liệu bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
-   "dieuKienSo": [],
-   "canSoat": [
+     "donViNguyenVan": null,
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    },
     {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "fact": "duong_kinh",
+     "op": ">=",
+     "value": 1,
+     "donVi": "cm",
+     "soNguyenVan": "1",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 2.5,
+     "donVi": "cm",
+     "soNguyenVan": "2,5",
+     "donViNguyenVan": "cm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
     }
-   ]
+   ],
+   "canSoat": []
   },
   {
    "nhom": "8481",
@@ -8695,23 +8902,6 @@
   },
   {
    "nhom": "8483",
-   "hs": "84831010",
-   "loaiKhac": false,
-   "nguon": "tax.84831010",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84831010 - - Dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8483",
    "hs": "84831031",
    "loaiKhac": false,
    "nguon": "tax.84831031",
@@ -8734,227 +8924,6 @@
     }
    ],
    "canSoat": []
-  },
-  {
-   "nhom": "8483",
-   "hs": "84832020",
-   "loaiKhac": false,
-   "nguon": "tax.84832020",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84832020 - - Dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8483",
-   "hs": "84834030",
-   "loaiKhac": false,
-   "nguon": "tax.84834030",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84834030 - - Dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8483",
-   "hs": "84839011",
-   "loaiKhac": false,
-   "nguon": "tax.84839011",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84839011 - - - Dùng cho xe kéo thuộc phân nhóm 8701.10 hoặc 8701.91 đến 8701.95",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8483",
-   "hs": "84839091",
-   "loaiKhac": false,
-   "nguon": "tax.84839091",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "84839091 - - - Dùng cho hàng hóa thuộc phân nhóm 8701.10 hoặc 8701.91 đến 8701.95",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8501",
-   "hs": "85011021",
-   "loaiKhac": false,
-   "nguon": "tax.85011021",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85011021 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8501",
-   "hs": "85011041",
-   "loaiKhac": false,
-   "nguon": "tax.85011041",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85011041 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8501",
-   "hs": "85011051",
-   "loaiKhac": false,
-   "nguon": "tax.85011051",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85011051 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8501",
-   "hs": "85011091",
-   "loaiKhac": false,
-   "nguon": "tax.85011091",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85011091 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8501",
-   "hs": "85012012",
-   "loaiKhac": false,
-   "nguon": "tax.85012012",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85012012 - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8501",
-   "hs": "85012021",
-   "loaiKhac": false,
-   "nguon": "tax.85012021",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85012021 - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8501",
-   "hs": "85013130",
-   "loaiKhac": false,
-   "nguon": "tax.85013130",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85013130 - - - Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8501",
-   "hs": "85013221",
-   "loaiKhac": false,
-   "nguon": "tax.85013221",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85013221 - - - - Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8501",
-   "hs": "85013231",
-   "loaiKhac": false,
-   "nguon": "tax.85013231",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85013231 - - - - Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
   },
   {
    "nhom": "8501",
@@ -8980,108 +8949,6 @@
     }
    ],
    "canSoat": []
-  },
-  {
-   "nhom": "8501",
-   "hs": "85014011",
-   "loaiKhac": false,
-   "nguon": "tax.85014011",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85014011 - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8501",
-   "hs": "85014021",
-   "loaiKhac": false,
-   "nguon": "tax.85014021",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85014021 - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8501",
-   "hs": "85015111",
-   "loaiKhac": false,
-   "nguon": "tax.85015111",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85015111 - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8501",
-   "hs": "85015211",
-   "loaiKhac": false,
-   "nguon": "tax.85015211",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85015211 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8501",
-   "hs": "85015221",
-   "loaiKhac": false,
-   "nguon": "tax.85015221",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85015221 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8501",
-   "hs": "85015231",
-   "loaiKhac": false,
-   "nguon": "tax.85015231",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85015231 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
   },
   {
    "nhom": "8501",
@@ -9771,23 +9638,6 @@
    "canSoat": []
   },
   {
-   "nhom": "8504",
-   "hs": "85049020",
-   "loaiKhac": false,
-   "nguon": "tax.85049020",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Mạch in đã lắp ráp dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
    "nhom": "8506",
    "hs": "85066010",
    "loaiKhac": false,
@@ -10194,159 +10044,6 @@
    "canSoat": []
   },
   {
-   "nhom": "8507",
-   "hs": "85079011",
-   "loaiKhac": false,
-   "nguon": "tax.85079011",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Của hàng hóa thuộc phân nhóm 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8511",
-   "hs": "85114021",
-   "loaiKhac": false,
-   "nguon": "tax.85114021",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85114021 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8511",
-   "hs": "85114032",
-   "loaiKhac": false,
-   "nguon": "tax.85114032",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85114032 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8511",
-   "hs": "85114091",
-   "loaiKhac": false,
-   "nguon": "tax.85114091",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85114091 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8511",
-   "hs": "85115021",
-   "loaiKhac": false,
-   "nguon": "tax.85115021",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85115021 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8511",
-   "hs": "85115032",
-   "loaiKhac": false,
-   "nguon": "tax.85115032",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85115032 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8511",
-   "hs": "85115091",
-   "loaiKhac": false,
-   "nguon": "tax.85115091",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85115091 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8518",
-   "hs": "85189010",
-   "loaiKhac": false,
-   "nguon": "tax.85189010",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85189010 - - Của hàng hóa thuộc phân nhóm 8518.10.11, 8518.29.20, 8518.30.40 hoặc 8518.40.20, kể cả mạch in đã lắp ráp",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8518",
-   "hs": "85189030",
-   "loaiKhac": false,
-   "nguon": "tax.85189030",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85189030 - - Của hàng hóa thuộc phân nhóm 8518.21 hoặc 8518.22",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
    "nhom": "8519",
    "hs": "85198110",
    "loaiKhac": false,
@@ -10400,74 +10097,6 @@
    ]
   },
   {
-   "nhom": "8522",
-   "hs": "85229093",
-   "loaiKhac": false,
-   "nguon": "tax.85229093",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85229093 - - - Bộ phận và phụ kiện khác của hàng hóa thuộc phân nhóm 8519.81 hoặc nhóm 85.21",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8523",
-   "hs": "85238040",
-   "loaiKhac": false,
-   "nguon": "tax.85238040",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85238040 - - Đĩa ghi âm sử dụng kỹ thuật analog",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8523",
-   "hs": "85238051",
-   "loaiKhac": false,
-   "nguon": "tax.85238051",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85238051 - - - Loại dùng cho máy vi tính",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8523",
-   "hs": "85238091",
-   "loaiKhac": false,
-   "nguon": "tax.85238091",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85238091 - - - Loại sử dụng để tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
    "nhom": "8528",
    "hs": "85286910",
    "loaiKhac": false,
@@ -10493,23 +10122,6 @@
    "canSoat": []
   },
   {
-   "nhom": "8531",
-   "hs": "85319010",
-   "loaiKhac": false,
-   "nguon": "tax.85319010",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85319010 - - Bộ phận kể cả mạch in đã lắp ráp của phân nhóm 8531.20, 8531.80.21 hoặc 8531.80.29",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
    "nhom": "8532",
    "hs": "85321000",
    "loaiKhac": false,
@@ -10533,159 +10145,6 @@
     }
    ],
    "canSoat": []
-  },
-  {
-   "nhom": "8536",
-   "hs": "85364191",
-   "loaiKhac": false,
-   "nguon": "tax.85364191",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85364191 - - - - Rơ le bán dẫn hoặc rơ le điện từ, điện áp không quá 28 V",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8536",
-   "hs": "85369040",
-   "loaiKhac": false,
-   "nguon": "tax.85369040",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85369040 - - Kẹp pin dùng cho xe có động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8537",
-   "hs": "85371013",
-   "loaiKhac": false,
-   "nguon": "sen.85371013",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Các bảng điều khiển loại này bao gồm các bảng mạch in (PCBs), được lắp đặt trong hàng hóa thuộc các nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16. Đó là các bảng điều khiển đã được lập trình sử dụng để điều khiển hoạt động của máy điều hòa không khí, máy giặt, máy hút bụi,...",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8537",
-   "hs": "85371020",
-   "loaiKhac": false,
-   "nguon": "tax.85371020",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85371020 - - Bảng phân phối (gồm cả panel đỡ và tấm đỡ phẳng) chỉ dùng hoặc chủ yếu dùng với các hàng hóa thuộc nhóm 84.71, 85.17 hoặc 85.25",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8537",
-   "hs": "85372011",
-   "loaiKhac": false,
-   "nguon": "tax.85372011",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85372011 - - - Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8537",
-   "hs": "85372021",
-   "loaiKhac": false,
-   "nguon": "tax.85372021",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85372021 - - - Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8538",
-   "hs": "85389011",
-   "loaiKhac": false,
-   "nguon": "tax.85389011",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85389011 - - - Bộ phận của hàng hóa thuộc phân nhóm 8536.69.10, 8536.90.12 hoặc 8536.90.19",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8538",
-   "hs": "85389012",
-   "loaiKhac": false,
-   "nguon": "tax.85389012",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85389012 - - - Bộ phận của hàng hóa thuộc phân nhóm 8536.50.51, 8536.50.59, 8536.69.32 hoặc 8536.69.39",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8543",
-   "hs": "85437030",
-   "loaiKhac": false,
-   "nguon": "tax.85437030",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85437030 - - Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
   },
   {
    "nhom": "8544",
@@ -10774,40 +10233,6 @@
   },
   {
    "nhom": "8544",
-   "hs": "85443012",
-   "loaiKhac": false,
-   "nguon": "tax.85443012",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85443012 - - - - Loại dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8544",
-   "hs": "85443014",
-   "loaiKhac": false,
-   "nguon": "tax.85443014",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85443014 - - - - Loại dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8544",
    "hs": "85443091",
    "loaiKhac": false,
    "nguon": "tax.85443091",
@@ -10818,74 +10243,6 @@
     {
      "fact": null,
      "lyDo": "nhiều CHẤT LIỆU nối hoặc/dấu phẩy — phép CHỌN, chờ soát tay",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8544",
-   "hs": "85444232",
-   "loaiKhac": false,
-   "nguon": "tax.85444232",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85444232 - - - - - Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8544",
-   "hs": "85444234",
-   "loaiKhac": false,
-   "nguon": "tax.85444234",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85444234 - - - - - Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8544",
-   "hs": "85444291",
-   "loaiKhac": false,
-   "nguon": "tax.85444291",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85444291 - - - - Cáp dữ liệu dẹt có hai sợi hoặc hơn, cách điện bằng cao su, plastic hoặc giấy",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8544",
-   "hs": "85444292",
-   "loaiKhac": false,
-   "nguon": "tax.85444292",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "85444292 - - - - Cáp dữ liệu dẹt có hai sợi hoặc hơn, loại khác",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
      "soNguyenVan": null,
      "donViNguyenVan": null
     }
@@ -11114,125 +10471,6 @@
   },
   {
    "nhom": "8708",
-   "hs": "87082230",
-   "loaiKhac": false,
-   "nguon": "tax.87082230",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "87082230 - - - Dùng cho xe thuộc nhóm 87.02, 87.04 hoặc 87.05",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8708",
-   "hs": "87082918",
-   "loaiKhac": false,
-   "nguon": "tax.87082918",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "87082918 - - - - Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8708",
-   "hs": "87083030",
-   "loaiKhac": false,
-   "nguon": "tax.87083030",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "87083030 - - Phanh trống, phanh đĩa hoặc phanh hơi cho xe thuộc nhóm 87.02 hoặc 87.04",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8708",
-   "hs": "87084013",
-   "loaiKhac": false,
-   "nguon": "tax.87084013",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "87084013 - - - Dùng cho xe thuộc nhóm 87.04 hoặc 87.05",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8708",
-   "hs": "87084027",
-   "loaiKhac": false,
-   "nguon": "tax.87084027",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "87084027 - - - Dùng cho xe thuộc nhóm 87.04 hoặc 87.05",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8708",
-   "hs": "87085013",
-   "loaiKhac": false,
-   "nguon": "tax.87085013",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "87085013 - - - Dùng cho xe thuộc nhóm 87.04 hoặc 87.05",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8708",
-   "hs": "87085027",
-   "loaiKhac": false,
-   "nguon": "tax.87085027",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "87085027 - - - Dùng cho xe thuộc nhóm 87.04 hoặc 87.05",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8708",
    "hs": "87085091",
    "loaiKhac": false,
    "nguon": "sen.87085091",
@@ -11284,23 +10522,6 @@
   },
   {
    "nhom": "8708",
-   "hs": "87087023",
-   "loaiKhac": false,
-   "nguon": "tax.87087023",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "87087023 - - - Dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ phân nhóm 8704.10)",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8708",
    "hs": "87087033",
    "loaiKhac": false,
    "nguon": "tax.87087033",
@@ -11323,91 +10544,6 @@
     }
    ],
    "canSoat": []
-  },
-  {
-   "nhom": "8708",
-   "hs": "87087034",
-   "loaiKhac": false,
-   "nguon": "tax.87087034",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "87087034 - - - Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8708",
-   "hs": "87087096",
-   "loaiKhac": false,
-   "nguon": "tax.87087096",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "87087096 - - - Dùng cho thuộc nhóm 87.02 hoặc 87.04",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8708",
-   "hs": "87088017",
-   "loaiKhac": false,
-   "nguon": "tax.87088017",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "87088017 - - - Dùng cho xe thuộc phân nhóm 8704.10 hoặc nhóm 87.05",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8708",
-   "hs": "87089194",
-   "loaiKhac": false,
-   "nguon": "sen.87089194",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "Nút xả nhỏ, thường gắn ở đáy két nước làm mát, sử dụng để xả dung dịch làm mát và nước.",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "8708",
-   "hs": "87089370",
-   "loaiKhac": false,
-   "nguon": "tax.87089370",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "87089370 - - - Dùng cho xe thuộc nhóm 87.04 hoặc 87.05",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
   },
   {
    "nhom": "8714",
@@ -11433,15 +10569,51 @@
    "nguon": "tax.87142011",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "87142011 - - - Có đường kính (kể cả lốp) trên 75 mm nhưng không quá 100 mm, với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không dưới 30 mm",
-   "dieuKienSo": [],
-   "canSoat": [
+   "dieuKienSo": [
     {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 75,
+     "donVi": "mm",
+     "soNguyenVan": "75",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 100,
+     "donVi": "mm",
+     "soNguyenVan": "100",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    },
+    {
+     "fact": "chieu_rong",
+     "op": ">=",
+     "value": 30,
+     "donVi": "mm",
+     "soNguyenVan": "30",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
     }
-   ]
+   ],
+   "canSoat": []
   },
   {
    "nhom": "8714",
@@ -11450,15 +10622,51 @@
    "nguon": "tax.87142012",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "87142012 - - - Có đường kính (kể cả lốp) trên 100 mm nhưng không quá 250 mm, với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không dưới 30 mm",
-   "dieuKienSo": [],
-   "canSoat": [
+   "dieuKienSo": [
     {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 100,
+     "donVi": "mm",
+     "soNguyenVan": "100",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 250,
+     "donVi": "mm",
+     "soNguyenVan": "250",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    },
+    {
+     "fact": "chieu_rong",
+     "op": ">=",
+     "value": 30,
+     "donVi": "mm",
+     "soNguyenVan": "30",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
     }
-   ]
+   ],
+   "canSoat": []
   },
   {
    "nhom": "8714",
@@ -11471,7 +10679,7 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
+     "lyDo": "dòng có phép HOẶC nhưng tách phương án không sạch — chờ soát tay",
      "soNguyenVan": null,
      "donViNguyenVan": null
     }
@@ -11488,7 +10696,7 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
+     "lyDo": "dòng có phép HOẶC nhưng tách phương án không sạch — chờ soát tay",
      "soNguyenVan": null,
      "donViNguyenVan": null
     }
@@ -11505,7 +10713,7 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
+     "lyDo": "dòng có phép HOẶC nhưng tách phương án không sạch — chờ soát tay",
      "soNguyenVan": null,
      "donViNguyenVan": null
     }
@@ -11522,7 +10730,7 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
+     "lyDo": "dòng có phép HOẶC nhưng tách phương án không sạch — chờ soát tay",
      "soNguyenVan": null,
      "donViNguyenVan": null
     }
@@ -11539,7 +10747,7 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
+     "lyDo": "dòng có phép HOẶC nhưng tách phương án không sạch — chờ soát tay",
      "soNguyenVan": null,
      "donViNguyenVan": null
     }
@@ -11556,7 +10764,7 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
+     "lyDo": "dòng có phép HOẶC nhưng tách phương án không sạch — chờ soát tay",
      "soNguyenVan": null,
      "donViNguyenVan": null
     }
@@ -11594,15 +10802,51 @@
    "nguon": "tax.87169021",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "Bánh xe đẩy (castor), có đường kính (kể cả lốp) trên 100 mm nhưng không quá 250 mm với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không nhỏ hơn 30 mm",
-   "dieuKienSo": [],
-   "canSoat": [
+   "dieuKienSo": [
     {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 100,
+     "donVi": "mm",
+     "soNguyenVan": "100",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 250,
+     "donVi": "mm",
+     "soNguyenVan": "250",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    },
+    {
+     "fact": "chieu_rong",
+     "op": ">",
+     "value": 30,
+     "donVi": "mm",
+     "soNguyenVan": "30",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
     }
-   ]
+   ],
+   "canSoat": []
   },
   {
    "nhom": "8716",
@@ -11615,7 +10859,7 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
+     "lyDo": "dòng có phép HOẶC nhưng tách phương án không sạch — chờ soát tay",
      "soNguyenVan": null,
      "donViNguyenVan": null
     }
@@ -11628,15 +10872,51 @@
    "nguon": "tax.87169095",
    "nguonLoai": "AI_DA_KIEM",
    "trich": "Bánh xe đẩy (castor), có đường kính (kể cả lốp) trên 100 mm nhưng không quá 250 mm với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không nhỏ hơn 30 mm",
-   "dieuKienSo": [],
-   "canSoat": [
+   "dieuKienSo": [
     {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 100,
+     "donVi": "mm",
+     "soNguyenVan": "100",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 250,
+     "donVi": "mm",
+     "soNguyenVan": "250",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
+    },
+    {
+     "fact": "chieu_rong",
+     "op": ">",
+     "value": 30,
+     "donVi": "mm",
+     "soNguyenVan": "30",
+     "donViNguyenVan": "mm",
+     "kiem": {
+      "soTrongTrich": true,
+      "donViTrongTrich": true
+     },
+     "trangThai": "DE_XUAT",
+     "lyDo": null
     }
-   ]
+   ],
+   "canSoat": []
   },
   {
    "nhom": "8716",
@@ -11649,24 +10929,7 @@
    "canSoat": [
     {
      "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "9401",
-   "hs": "94012010",
-   "loaiKhac": false,
-   "nguon": "tax.94012010",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "94012010 - - Của xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
+     "lyDo": "dòng có phép HOẶC nhưng tách phương án không sạch — chờ soát tay",
      "soNguyenVan": null,
      "donViNguyenVan": null
     }
@@ -11735,23 +10998,6 @@
     {
      "fact": null,
      "lyDo": "nhiều CHẤT LIỆU nối hoặc/dấu phẩy — phép CHỌN, chờ soát tay",
-     "soNguyenVan": null,
-     "donViNguyenVan": null
-    }
-   ]
-  },
-  {
-   "nhom": "9405",
-   "hs": "94059930",
-   "loaiKhac": false,
-   "nguon": "tax.94059930",
-   "nguonLoai": "AI_DA_KIEM",
-   "trich": "94059930 - - - Của đèn thuộc phân nhóm 9405.50.11 hoặc 9405.50.19",
-   "dieuKienSo": [],
-   "canSoat": [
-    {
-     "fact": null,
-     "lyDo": "dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR",
      "soNguyenVan": null,
      "donViNguyenVan": null
     }

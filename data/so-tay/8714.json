@@ -191,7 +191,27 @@
    "loaiKhac": false,
    "nguon": "tax.87142011",
    "trich": "87142011 - - - Có đường kính (kể cả lốp) trên 75 mm nhưng không quá 100 mm, với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không dưới 30 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 75,
+     "donVi": "mm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 100,
+     "donVi": "mm"
+    },
+    {
+     "fact": "chieu_rong",
+     "op": ">=",
+     "value": 30,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "87142012",
@@ -199,7 +219,27 @@
    "loaiKhac": false,
    "nguon": "tax.87142012",
    "trich": "87142012 - - - Có đường kính (kể cả lốp) trên 100 mm nhưng không quá 250 mm, với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không dưới 30 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 100,
+     "donVi": "mm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 250,
+     "donVi": "mm"
+    },
+    {
+     "fact": "chieu_rong",
+     "op": ">=",
+     "value": 30,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "87142019",
