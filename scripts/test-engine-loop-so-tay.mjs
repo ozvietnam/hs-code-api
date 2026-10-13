@@ -5,6 +5,7 @@ const require = createRequire(import.meta.url);
 process.env.HS_CLASSIFY_ENGINE = 'loop';
 process.env.MIC_OFF = '1';
 process.env.HS_EVAL_EXCLUDE_HOLDOUT = '1';
+process.env.HS_SO_TAY_DONG = 'on'; // #195: công tắc riêng của chốt dòng — test bật tường minh
 const llmTier = require('../lib/llm-tier');
 let script = []; let calls = [];
 llmTier.callLLMJson = async (system, user) => {
