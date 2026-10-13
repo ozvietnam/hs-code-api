@@ -193,6 +193,7 @@ function mergePrecedent(precedents, seen, doc, rec, fileRel, stats) {
     sourceType: rec.source?.type || null,
     girRule: rec.girRule || null,
     ...(rec.attributes?.loaiTB ? { loaiTB: rec.attributes.loaiTB } : {}),
+    ...(rec.attributes?.legacyHs ? { legacyHs: true, legacyHsNote: rec.attributes.legacyHsNote || null } : {}),
     confusedWith: rec.confusedWith || [],
     ...(rec.source?.issuedDate ? { issuedDate: rec.source.issuedDate } : {}),
     ...(rec.source?.url ? { sourceUrl: rec.source.url } : {}),
