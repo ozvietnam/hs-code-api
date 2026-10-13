@@ -36,7 +36,7 @@ Mỗi file `NN-<chủ-đề>.md` ứng với một bước đã triển khai, g�
 | 5 | Nạp bảng quyết định — kéo độ chính xác | ⚙️ Công cụ xong; D-2 verified + D-1 cụm 8481 đã xong | [`05-decision-tables.md`](05-decision-tables.md) |
 | 6 | Tách mặt công khai ra CDN tĩnh | ⚙️ Công cụ xong, chờ deploy | [`06-static-cdn.md`](06-static-cdn.md) |
 | 7 | Một engine — nối tri thức đã xây vào đường ERP | ⚙️ Đợt 1 xong (lõi chung + cửa đối chiếu) | [`07-mot-engine.md`](07-mot-engine.md) |
-| 8 | Sổ tay chú giải — nâng phần đã đọc hiểu lên dạng máy dùng được (kệ sách → sổ tay → bộ não) | 📋 Thiết kế chốt 07/10, làm dần | [`08-so-tay-chu-giai.md`](08-so-tay-chu-giai.md) |
+| 8 | Sổ tay chú giải — nâng phần đã đọc hiểu lên dạng máy dùng được (kệ sách → sổ tay → bộ não) | ⚙️ 120 nhóm; cổng đã chạy khô + nối động cơ sau `HS_SO_TAY` (09/10), chờ đo AI thật | [`08-so-tay-chu-giai.md`](08-so-tay-chu-giai.md) |
 
 ## Nhịp cập nhật tổng hợp
 
