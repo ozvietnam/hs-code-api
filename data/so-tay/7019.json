@@ -495,7 +495,15 @@
    "nguon": "tax.70191100",
    "trich": "70191100 - - Sợi bện đã cắt đoạn, chiều dài không quá 50 mm",
    "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "chieu_dai",
+     "op": "<=",
+     "value": 50,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "70191200",
@@ -613,7 +621,15 @@
    "nguon": "tax.70196500",
    "trich": "70196500 - - Vải dệt thoi khổ mở có chiều rộng không quá 30 cm",
    "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 30,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "70196600",
@@ -627,7 +643,15 @@
    "nguon": "tax.70196600",
    "trich": "70196600 - - Vải dệt thoi khổ mở có chiều rộng trên 30 cm",
    "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": ">",
+     "value": 30,
+     "donVi": "cm"
+    }
+   ]
   },
   {
    "hs": "70196900",

@@ -573,7 +573,21 @@
    "loaiKhac": false,
    "nguon": "tax.39209110",
    "trich": "39209110 - - - Màng dùng làm kính an toàn, độ dày trên 0,38 mm nhưng không quá 0,76 mm, và chiều rộng không quá 2 m",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": ">",
+     "value": 0.38,
+     "donVi": "mm"
+    },
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 0.76,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "39209191",

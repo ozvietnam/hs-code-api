@@ -112,7 +112,21 @@
    "loaiKhac": false,
    "nguon": "tax.85181011",
    "trich": "85181011 - - - Micro có dải tần số từ 300 Hz đến 3.400 Hz, với đường kính không quá 10 mm và cao không quá 3 mm, dùng trong viễn thông",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 10,
+     "donVi": "mm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 3,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "85181019",
@@ -195,7 +209,15 @@
    "loaiKhac": false,
    "nguon": "tax.85182920",
    "trich": "85182920 - - - Loa, không có vỏ, có dải tần số 300 Hz đến 3.400 Hz, với đường kính không quá 50 mm, dùng trong viễn thông",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 50,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "85182990",

@@ -2,7 +2,7 @@
 import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const { soTayGates, soTayBlock, headPhrases, productHead, phraseHit, isPartsLine, loadSoTay } = require('../lib/so-tay-gates.js');
+const { soTayGates, soTayBlock, headPhrases, productHead, phraseHit, isPartsLine, loadSoTay, chotDong8, giaTriCua } = require('../lib/so-tay-gates.js');
 
 let pass = 0; let fail = 0;
 const check = (n, c, x = '') => { if (c) { pass += 1; console.log(`PASS ${n}`); } else { fail += 1; console.log(`FAIL ${n} ${x}`); } };
@@ -58,3 +58,16 @@ check('đã chọn dòng cụ thể → không nghi', !gatesOf(r).some((g) => g.
 
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
+
+// ── #195 CHỐT DÒNG 8 SỐ (dieuKienSo đã ốp vào data/so-tay) ──
+check('đọc số quy đổi: mm → cm, DN25 → 2.5cm, kích thước bao không lọt', JSON.stringify(giaTriCua('duong_kinh', 'đường kính 30 mm')) === '[3]' && JSON.stringify(giaTriCua('duong_kinh', 'van DN25')) === '[2.5]' && giaTriCua('duong_kinh', 'thùng 10 x 20 cm').length === 0);
+let cd = chotDong8({ hs: '40092190', productText: 'ống cao su có lắp phụ kiện cứng, đường kính 20 cm, độ dày thành ống 2 cm' });
+check('4009.21: 20cm + 2cm → CHOT 40092110 kèm trích nguồn', cd.ketQua === 'CHOT' && cd.hs === '40092110' && cd.traNguon?.[0]?.nguon === 'sen.40092110', JSON.stringify(cd.ketQua));
+cd = chotDong8({ hs: '40092110', productText: 'ống cao su có phụ kiện, đường kính 12 mm' });
+check('4009.21: 1.2cm trái mọi điều kiện → LOAI_KHAC 40092190 (phủ định hoàn chỉnh)', cd.ketQua === 'LOAI_KHAC' && cd.hs === '40092190', JSON.stringify(cd));
+cd = chotDong8({ hs: '40092190', productText: 'ống cao su có lắp phụ kiện cứng' });
+check('thiếu số liệu → THIEU_SO_LIEU + missingFacts duong_kinh', cd.ketQua === 'THIEU_SO_LIEU' && cd.missingFacts?.[0]?.fact === 'duong_kinh', JSON.stringify(cd.missingFacts));
+cd = chotDong8({ hs: '84811019', productText: 'van cổng điều khiển bằng tay, đường kính 30 cm' });
+check('8481.10: vật liệu chưa là điều kiện → 2 dòng cùng thoả → TRANH_CAP (không đoán)', cd.ketQua === 'TRANH_CAP' && (cd.dongThoa || []).length === 2, JSON.stringify(cd.dongThoa));
+cd = chotDong8({ hs: '84051099', productText: 'máy phát acetylen' });
+check('phân nhóm chưa số hóa ranh giới → KHONG_THE_CHOT (điểm mù)', cd.checked === false || cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd.ketQua));

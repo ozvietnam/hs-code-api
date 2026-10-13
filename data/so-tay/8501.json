@@ -544,7 +544,15 @@
    "loaiKhac": false,
    "nguon": "tax.85013400",
    "trich": "85013400 - - Công suất trên 375 kW",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "cong_suat",
+     "op": ">",
+     "value": 375,
+     "donVi": "kW"
+    }
+   ]
   },
   {
    "hs": "85014011",
@@ -754,7 +762,15 @@
    "loaiKhac": false,
    "nguon": "tax.85016110",
    "trich": "85016110 - - - Công suất không quá 12,5 kVA",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "cong_suat",
+     "op": "<=",
+     "value": 12.5,
+     "donVi": "kVA"
+    }
+   ]
   },
   {
    "hs": "85016120",
@@ -762,7 +778,15 @@
    "loaiKhac": false,
    "nguon": "tax.85016120",
    "trich": "85016120 - - - Công suất trên 12,5 kVA",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "cong_suat",
+     "op": ">",
+     "value": 12.5,
+     "donVi": "kVA"
+    }
+   ]
   },
   {
    "hs": "85016210",
@@ -770,7 +794,21 @@
    "loaiKhac": false,
    "nguon": "tax.85016210",
    "trich": "85016210 - - - Công suất trên 75 kVA nhưng không quá 150 kVA",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "cong_suat",
+     "op": ">",
+     "value": 75,
+     "donVi": "kVA"
+    },
+    {
+     "fact": "cong_suat",
+     "op": "<=",
+     "value": 150,
+     "donVi": "kVA"
+    }
+   ]
   },
   {
    "hs": "85016220",
@@ -778,7 +816,21 @@
    "loaiKhac": false,
    "nguon": "tax.85016220",
    "trich": "85016220 - - - Công suất trên 150 kVA nhưng không quá 375 kVA",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "cong_suat",
+     "op": ">",
+     "value": 150,
+     "donVi": "kVA"
+    },
+    {
+     "fact": "cong_suat",
+     "op": "<=",
+     "value": 375,
+     "donVi": "kVA"
+    }
+   ]
   },
   {
    "hs": "85016300",
@@ -786,7 +838,21 @@
    "loaiKhac": false,
    "nguon": "tax.85016300",
    "trich": "85016300 - - Công suất trên 375 kVA nhưng không quá 750 kVA",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "cong_suat",
+     "op": ">",
+     "value": 375,
+     "donVi": "kVA"
+    },
+    {
+     "fact": "cong_suat",
+     "op": "<=",
+     "value": 750,
+     "donVi": "kVA"
+    }
+   ]
   },
   {
    "hs": "85016400",
@@ -794,7 +860,15 @@
    "loaiKhac": false,
    "nguon": "tax.85016400",
    "trich": "85016400 - - Công suất trên 750 kVA",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "cong_suat",
+     "op": ">",
+     "value": 750,
+     "donVi": "kVA"
+    }
+   ]
   },
   {
    "hs": "85017100",
@@ -818,7 +892,15 @@
    "loaiKhac": false,
    "nguon": "tax.85017220",
    "trich": "85017220 - - - Công suất trên 750 W nhưng không quá 37,5 kW",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "cong_suat",
+     "op": "<=",
+     "value": 37.5,
+     "donVi": "kW"
+    }
+   ]
   },
   {
    "hs": "85017230",
@@ -826,7 +908,21 @@
    "loaiKhac": false,
    "nguon": "tax.85017230",
    "trich": "85017230 - - - Công suất trên 37,5 kW nhưng không quá 75 kW",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "cong_suat",
+     "op": ">",
+     "value": 37.5,
+     "donVi": "kW"
+    },
+    {
+     "fact": "cong_suat",
+     "op": "<=",
+     "value": 75,
+     "donVi": "kW"
+    }
+   ]
   },
   {
    "hs": "85017240",
@@ -834,7 +930,15 @@
    "loaiKhac": false,
    "nguon": "tax.85017240",
    "trich": "85017240 - - - Công suất trên 75 kW",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "cong_suat",
+     "op": ">",
+     "value": 75,
+     "donVi": "kW"
+    }
+   ]
   },
   {
    "hs": "85018010",
@@ -842,7 +946,15 @@
    "loaiKhac": false,
    "nguon": "tax.85018010",
    "trich": "85018010 - - Công suất không quá 75 kVA",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "cong_suat",
+     "op": "<=",
+     "value": 75,
+     "donVi": "kVA"
+    }
+   ]
   },
   {
    "hs": "85018020",
@@ -850,7 +962,21 @@
    "loaiKhac": false,
    "nguon": "tax.85018020",
    "trich": "85018020 - - Công suất trên 75 kVA nhưng không quá 375 kVA",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "cong_suat",
+     "op": ">",
+     "value": 75,
+     "donVi": "kVA"
+    },
+    {
+     "fact": "cong_suat",
+     "op": "<=",
+     "value": 375,
+     "donVi": "kVA"
+    }
+   ]
   },
   {
    "hs": "85018030",
@@ -858,7 +984,21 @@
    "loaiKhac": false,
    "nguon": "tax.85018030",
    "trich": "85018030 - - Công suất trên 375 kVA nhưng không quá 750 kVA",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "cong_suat",
+     "op": ">",
+     "value": 375,
+     "donVi": "kVA"
+    },
+    {
+     "fact": "cong_suat",
+     "op": "<=",
+     "value": 750,
+     "donVi": "kVA"
+    }
+   ]
   },
   {
    "hs": "85018040",
@@ -866,7 +1006,15 @@
    "loaiKhac": false,
    "nguon": "tax.85018040",
    "trich": "85018040 - - Công suất trên 750 kVA",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "cong_suat",
+     "op": ">",
+     "value": 750,
+     "donVi": "kVA"
+    }
+   ]
   }
  ],
  "boPhan": {

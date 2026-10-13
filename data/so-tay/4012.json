@@ -203,7 +203,15 @@
    "loaiKhac": false,
    "nguon": "tax.40121210",
    "trich": "Chiều rộng không quá 450 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "40121290",
@@ -343,7 +351,15 @@
    "loaiKhac": false,
    "nguon": "tax.40122021",
    "trich": "Chiều rộng không quá 450 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "40122029",
@@ -509,7 +525,21 @@
    "loaiKhac": false,
    "nguon": "tax.40129014",
    "trich": "Lốp đặc có đường kính ngoài trên 250 mm, chiều rộng không quá 450 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 250,
+     "donVi": "mm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "40129017",
@@ -523,7 +553,21 @@
    "loaiKhac": false,
    "nguon": "tax.40129017",
    "trich": "Lốp đặc có đường kính ngoài trên 250 mm, chiều rộng trên 450 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 250,
+     "donVi": "mm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "40129019",
@@ -556,7 +600,15 @@
    "loaiKhac": false,
    "nguon": "tax.40129021",
    "trich": "Chiều rộng không quá 450 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "40129022",
@@ -570,7 +622,15 @@
    "loaiKhac": false,
    "nguon": "tax.40129022",
    "trich": "Có chiều rộng trên 450 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": ">",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "40129071",
@@ -584,7 +644,15 @@
    "loaiKhac": false,
    "nguon": "tax.40129071",
    "trich": "Chiều rộng không quá 450 mm (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "40129072",
@@ -598,7 +666,15 @@
    "loaiKhac": false,
    "nguon": "tax.40129072",
    "trich": "Có chiều rộng trên 450 mm (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": ">",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "40129080",

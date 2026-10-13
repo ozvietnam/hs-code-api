@@ -101,7 +101,21 @@
    "loaiKhac": false,
    "nguon": "tax.83022010",
    "trich": "83022010 - - Loại có đường kính (bao gồm cả lốp) trên 100 mm nhưng không quá 250 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "duong_kinh",
+     "op": ">",
+     "value": 100,
+     "donVi": "mm"
+    },
+    {
+     "fact": "duong_kinh",
+     "op": "<=",
+     "value": 250,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "83022090",

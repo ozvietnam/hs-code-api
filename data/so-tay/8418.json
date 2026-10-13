@@ -311,7 +311,15 @@
    "nguon": "tax.84181031",
    "trich": "84181031 - - - Loại gia dụng, có dung tích không quá 230 lít",
    "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "dung_tich",
+     "op": "<=",
+     "value": 230,
+     "donVi": "lít"
+    }
+   ]
   },
   {
    "hs": "84181032",
@@ -325,7 +333,15 @@
    "nguon": "tax.84181032",
    "trich": "84181032 - - - Loại gia dụng khác, có dung tích trên 230 lít",
    "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "dung_tich",
+     "op": ">",
+     "value": 230,
+     "donVi": "lít"
+    }
+   ]
   },
   {
    "hs": "84181039",
@@ -382,7 +398,15 @@
    "nguon": "tax.84181091",
    "trich": "84181091 - - - Quầy hàng, tủ bày hàng và các loại tương tự, có lắp thiết bị làm lạnh, dung tích trên 200 lít",
    "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "dung_tich",
+     "op": ">",
+     "value": 200,
+     "donVi": "lít"
+    }
+   ]
   },
   {
    "hs": "84181099",
@@ -414,7 +438,15 @@
    "nguon": "tax.84182110",
    "trich": "84182110 - - - Dung tích không quá 230 lít",
    "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "dung_tich",
+     "op": "<=",
+     "value": 230,
+     "donVi": "lít"
+    }
+   ]
   },
   {
    "hs": "84182190",
@@ -464,7 +496,15 @@
    "nguon": "tax.84183010",
    "trich": "84183010 - - Dung tích không quá 200 lít",
    "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "dung_tich",
+     "op": "<=",
+     "value": 200,
+     "donVi": "lít"
+    }
+   ]
   },
   {
    "hs": "84183090",
@@ -496,7 +536,15 @@
    "nguon": "tax.84184010",
    "trich": "84184010 - - Dung tích không quá 200 lít",
    "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "dung_tich",
+     "op": "<=",
+     "value": 200,
+     "donVi": "lít"
+    }
+   ]
   },
   {
    "hs": "84184090",

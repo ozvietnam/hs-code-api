@@ -810,7 +810,15 @@
    "loaiKhac": false,
    "nguon": "tax.85044020",
    "trich": "Máy nạp ắc qui, pin có công suất danh định trên 100 kVA",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "cong_suat",
+     "op": ">",
+     "value": 100,
+     "donVi": "kVA"
+    }
+   ]
   },
   {
    "hs": "85044030",

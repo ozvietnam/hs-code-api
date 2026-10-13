@@ -140,7 +140,13 @@ for (const f of files) {
     stat.dongCoDieuKien++;
     if (l.loaiKhac) { stat.dongLoaiKhac++; continue; }
     const trich = String(l.trich || '');
-    const conds = extractConditions(String(l.dieuKien) + '\n' + trich);
+    // Chỉ bóc từ ĐOẠN TÊN CỦA CHÍNH DÒNG (sau "›" cuối của breadcrumb): điều kiện dòng cha/tiêu đề
+    // thuộc về nút cha, không thuộc dòng lá — kế thừa xuống lá sẽ làm các dòng cùng thoả (đo 8481/8716).
+    const ownSegment = String(l.dieuKien).split('›').pop().trim();
+    // Dòng có "hoặc" giữa các khoảng (vd "trên 75 nhưng không quá 100, HOẶC hơn 250") là phép CHỌN —
+    // schema v1 chỉ nối AND; bỏ sang hàng soát để không chấm sai chiều nào.
+    if (/\bhoặc\b/i.test(ownSegment)) { stat.canSoat++; draft.push({ nhom, hs: l.hs, loaiKhac: !!l.loaiKhac, nguon: l.nguon || null, nguonLoai: l.nguonLoai || null, trich: trich.slice(0, 400), dieuKienSo: [], canSoat: [{ fact: null, lyDo: 'dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR', soNguyenVan: null, donViNguyenVan: null }] }); continue; }
+    const conds = extractConditions(ownSegment);
     if (!conds.length) { stat.khongBocDuoc++; continue; }
     // máy kiểm: số (nguyên văn) VÀ đơn vị phải cùng có mặt trong câu trích
     for (const c of conds) {
