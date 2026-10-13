@@ -193,6 +193,13 @@ function mergePrecedent(precedents, seen, doc, rec, fileRel, stats) {
     sourceType: rec.source?.type || null,
     girRule: rec.girRule || null,
     ...(rec.attributes?.loaiTB ? { loaiTB: rec.attributes.loaiTB } : {}),
+    ...(rec.attributes?.legacyHs ? {
+      legacyHs: true,
+      legacyHsRemap: rec.attributes.legacyHsRemap || null,
+      legacyHsConfidence: rec.attributes.legacyHsConfidence || null,
+      legacyHsReasoning: rec.attributes.legacyHsReasoning || null,
+      legacyHsNote: rec.attributes.legacyHsNote || null,
+    } : {}),
     confusedWith: rec.confusedWith || [],
     ...(rec.source?.issuedDate ? { issuedDate: rec.source.issuedDate } : {}),
     ...(rec.source?.url ? { sourceUrl: rec.source.url } : {}),
@@ -242,7 +249,9 @@ function mergePrecedent(precedents, seen, doc, rec, fileRel, stats) {
       || (entry.confusedWith || []).length > (old.confusedWith || []).length
       || String(entry.technicalSpec || '').length > String(old.technicalSpec || '').length
       // Sửa mô tả tại tệp nguồn (vd gỡ tên doanh nghiệp lộ trong description) cũng là bản giàu hơn.
-      || String(entry.productName || '') !== String(old.productName || '');
+      || String(entry.productName || '') !== String(old.productName || '')
+      // Cờ chất lượng legacyHs (mã 2017 lệch EN2022) thêm ở bản nộp lại cũng là giàu hơn.
+      || (entry.legacyHs && !old.legacyHs);
     if (giàuHơn) {
       precedents[hs][ownIdx] = { ...entry, ...(!entry.sourceUrl && old.sourceUrl ? { sourceUrl: old.sourceUrl } : {}) };
       stats.refreshed += 1;
