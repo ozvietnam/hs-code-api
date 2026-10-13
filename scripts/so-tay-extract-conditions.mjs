@@ -15,6 +15,8 @@ import { join } from 'node:path';
 const require = createRequire(import.meta.url);
 const argv = Object.fromEntries(process.argv.slice(2).map((a) => { const [k, v] = a.replace(/^--/, '').split('='); return [k, v ?? true]; }));
 const DIR = join(import.meta.dirname, '..', 'data', 'so-tay');
+// Vật liệu phân biệt — bảng alias dùng chung với runtime (lib/so-tay-gates.js)
+const { chatLieuRegex, MATERIALS } = require('../lib/so-tay-gates.js');
 
 // ── Đơn vị máy nhận ra (chuẩn hoá về token) ──
 const UNITS = [
@@ -40,6 +42,7 @@ const FACT_MAP = [
   [/áp suất/i, 'ap_suat'],
   [/chiều dài/i, 'chieu_dai'],
   [/chiều rộng|bề rộng/i, 'chieu_rong'],
+  [/chiều dày|độ dày|bề dày/i, 'be_day'],
   [/chiều cao|bề cao/i, 'chieu_cao'],
   [/diện tích|bề mặt/i, 'dien_tich'],
   [/tốc độ|vận tốc/i, 'toc_do'],
@@ -149,17 +152,24 @@ for (const f of files) {
     // "cửa nạp hoặc cửa thoát trên 5 cm" là hai vị trí tương đương cùng một ngưỡng — bóc bình thường.
     const hoacHaiKhoang = /\d[^.;:]{0,50}?\bhoặc\b[^.;:]{0,50}?\d/i.test(ownSegment) || /\bhoặc\s+(trên|dưới|hơn|không quá|không dưới|từ|ít nhất|tối đa|tối thiểu)/i.test(ownSegment);
     if (hoacHaiKhoang) { stat.canSoat++; draft.push({ nhom, hs: l.hs, loaiKhac: !!l.loaiKhac, nguon: l.nguon || null, nguonLoai: l.nguonLoai || null, trich: trich.slice(0, 400), dieuKienSo: [], canSoat: [{ fact: null, lyDo: 'dòng có phép HOẶC giữa các khoảng — chờ soát tay tách nhóm OR', soNguyenVan: null, donViNguyenVan: null }] }); continue; }
-    // Chất liệu là điều kiện PHÂN BIỆT thường trực (vd "cách điện bằng plastic" của 8544.42.94) mà schema v1
-    // chưa mô hình (chờ op LA) — bóc số trên dòng đó sẽ chốt thiếu vế chất liệu → để người soát.
-    const MATERIAL = /(cách điện|làm|làm từ|làm bằng|chất liệu|bằng)\s+(plastic|nhựa|cao su|giấy|gỗ|kim loại|nhôm|thép|đồng|vải|dệt|thủy tinh|gốm|sứ|mica|inox|sắt|gang|bạc|vàng|đá|bê tông|xi măng)/i;
-    if (MATERIAL.test(ownSegment)) { stat.canSoat++; draft.push({ nhom, hs: l.hs, loaiKhac: !!l.loaiKhac, nguon: l.nguon || null, nguonLoai: l.nguonLoai || null, trich: trich.slice(0, 400), dieuKienSo: [], canSoat: [{ fact: null, lyDo: 'điều kiện có vế CHẤT LIỆU chưa mô hình (op LA) — chờ soát', soNguyenVan: null, donViNguyenVan: null }] }); continue; }
+    // Chất liệu (#195 vòng 3): một vật liệu sau từ dẫn (cách điện/làm/bằng/chất liệu) → điều kiện LA
+    // ("cách điện bằng plastic" của 8544.42.94); NHIỀU vật liệu nối bằng dấu phẩy/hoặc là phép CHỌN → chờ soát tay.
+    const matFound = MATERIALS.filter(([, re]) => new RegExp('(?:cách điện|làm|làm từ|làm bằng|chất liệu|bằng)\\s+[^,;:.]{0,25}?' + re.source, 'i').test(ownSegment));
+    const matConds = [];
+    if (matFound.length > 1) { stat.canSoat++; draft.push({ nhom, hs: l.hs, loaiKhac: !!l.loaiKhac, nguon: l.nguon || null, nguonLoai: l.nguonLoai || null, trich: trich.slice(0, 400), dieuKienSo: [], canSoat: [{ fact: null, lyDo: 'nhiều CHẤT LIỆU nối hoặc/dấu phẩy — phép CHỌN, chờ soát tay', soNguyenVan: null, donViNguyenVan: null }] }); continue; }
+    if (matFound.length === 1) {
+      const [name] = matFound[0];
+      if (chatLieuRegex(name).test(trich)) matConds.push({ fact: 'chat_lieu', op: 'LA', value: name, soNguyenVan: null, donViNguyenVan: null, kiem: { soTrongTrich: true, donViTrongTrich: true }, trangThai: 'DE_XUAT', lyDo: null });
+    }
     // "Lắp vành có đường kính..." — đường kính VÀNH (rim), không đọc được từ "đường kính" chung của hàng
     // (đo 4011: máy từng lấy đường kính NGOÀI lốp 788mm chấm cho ngưỡng vành 24 inch). Chờ dữ kiện vành riêng.
     if (/\b(vành|lazang|lazăng|rim)\b/i.test(ownSegment)) { stat.canSoat++; draft.push({ nhom, hs: l.hs, loaiKhac: !!l.loaiKhac, nguon: l.nguon || null, nguonLoai: l.nguonLoai || null, trich: trich.slice(0, 400), dieuKienSo: [], canSoat: [{ fact: null, lyDo: 'ngưỡng theo đường kính VÀNH — chờ dữ kiện vành riêng', soNguyenVan: null, donViNguyenVan: null }] }); continue; }
     const conds = extractConditions(ownSegment);
     if (!conds.length) { stat.khongBocDuoc++; continue; }
+    for (const c of matConds) { conds.unshift(c); }
     // máy kiểm: số (nguyên văn) VÀ đơn vị phải cùng có mặt trong câu trích
     for (const c of conds) {
+      if (c.op === 'LA') { if (c.trangThai === 'DE_XUAT') stat.deXuat++; else stat.canSoat++; continue; }
       c.kiem.soTrongTrich = new RegExp('(?<!\\d)' + c.soNguyenVan.replace(/[.,]/g, (x) => '[' + x + ',.]') + '(?!\\d)').test(trich);
       c.kiem.donViTrongTrich = trich.toLowerCase().includes(String(c.donViNguyenVan).toLowerCase().replace('³', '3').replace('²', '2'));
       c.trangThai = (c.kiem.soTrongTrich && c.kiem.donViTrongTrich && c.fact) ? 'DE_XUAT' : 'CAN_SOAT';

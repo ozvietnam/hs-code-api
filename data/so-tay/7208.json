@@ -86,7 +86,15 @@
    "loaiKhac": false,
    "nguon": "tax.72082500",
    "trich": "72082500 - - Chiều dày từ 4,75 mm trở lên",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "be_day",
+     "op": ">=",
+     "value": 4.75,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "72082600",
@@ -94,7 +102,21 @@
    "loaiKhac": false,
    "nguon": "tax.72082600",
    "trich": "72082600 - - Chiều dày từ 3 mm đến dưới 4,75 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "be_day",
+     "op": ">=",
+     "value": 3,
+     "donVi": "mm"
+    },
+    {
+     "fact": "be_day",
+     "op": "<",
+     "value": 4.75,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "72082711",
@@ -168,7 +190,15 @@
    "loaiKhac": false,
    "nguon": "tax.72083600",
    "trich": "72083600 - - Chiều dày trên 10 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "be_day",
+     "op": ">",
+     "value": 10,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "72083700",
@@ -176,7 +206,21 @@
    "loaiKhac": false,
    "nguon": "tax.72083700",
    "trich": "72083700 - - Chiều dày từ 4,75 mm đến 10 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "be_day",
+     "op": ">=",
+     "value": 4.75,
+     "donVi": "mm"
+    },
+    {
+     "fact": "be_day",
+     "op": "<=",
+     "value": 10,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "72083800",
@@ -184,7 +228,21 @@
    "loaiKhac": false,
    "nguon": "tax.72083800",
    "trich": "72083800 - - Chiều dày từ 3 mm đến dưới 4,75 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "be_day",
+     "op": ">=",
+     "value": 3,
+     "donVi": "mm"
+    },
+    {
+     "fact": "be_day",
+     "op": "<",
+     "value": 4.75,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "72083910",
@@ -308,7 +366,15 @@
    "loaiKhac": false,
    "nguon": "tax.72085100",
    "trich": "72085100 - - Chiều dày trên 10 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "be_day",
+     "op": ">",
+     "value": 10,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "72085200",
@@ -316,7 +382,21 @@
    "loaiKhac": false,
    "nguon": "tax.72085200",
    "trich": "72085200 - - Chiều dày từ 4,75 mm đến 10 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "be_day",
+     "op": ">=",
+     "value": 4.75,
+     "donVi": "mm"
+    },
+    {
+     "fact": "be_day",
+     "op": "<=",
+     "value": 10,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "72085300",
@@ -324,7 +404,21 @@
    "loaiKhac": false,
    "nguon": "tax.72085300",
    "trich": "72085300 - - Chiều dày từ 3 mm đến dưới 4,75 mm",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "be_day",
+     "op": ">=",
+     "value": 3,
+     "donVi": "mm"
+    },
+    {
+     "fact": "be_day",
+     "op": "<",
+     "value": 4.75,
+     "donVi": "mm"
+    }
+   ]
   },
   {
    "hs": "72085410",
