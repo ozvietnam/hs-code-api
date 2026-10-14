@@ -103,6 +103,10 @@ số đo sai lệch giữa hai lượt. Bench phải mount rw (hoặc copy cache
 
 ## 5. Việc đề xuất làm ngay (chờ CEO gật)
 
+> **Cập nhật 14/10/2026:** phản hồi khách thật (#166, ozplugin) xác nhận hậu quả — `phan_loai_hs` bị
+> Cloudflare cắt 524 ở 100 s, 3/3 lượt lỗi không kèm `maLuot`. Độ trễ không còn là chuyện chi phí:
+> khách thật không dùng được. Thứ tự ưu tiên mục 5 giữ nguyên, nhưng bước 1-2 lên trước.
+
 1. Bench chuẩn hóa bước 0+1 (thêm ms vào gates + 80 mẫu × 2 tổ hợp env) — tốn ~1 buổi máy, không tốn tiền mặt (plan bao).
 2. Song song hoá `gather()` (PR nhỏ, có test).
 3. Chuyển vision sang M3 (PR nhỏ, có test) — cắt nốt khoá Gemini trả phí.
