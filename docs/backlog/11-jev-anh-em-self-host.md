@@ -113,6 +113,13 @@ thuê GPU, so lại trên đề vàng trước khi thay tầng 1.
 - Số "193× nhanh / 444× rẻ" của Jev là do hãng tự đo — không đưa vào tính toán mua sắm.
 - JevBench chạy nhanh (v1.5.x đã ra, điểm đổi liên tục) — chốt số phải ghi rõ phiên bản.
 
+## 6. Chốt của CEO 14/10/2026 (ghi nhận — triển khai sau)
+
+- **Ghi nhận kế hoạch P0′→P2 (mục 4), triển khai sau.** Chưa mua/ký gì với TypeSafe.
+- **Chỉ tin kết quả nếu TRAIN ĐƯỢC**: decider mua sẵn/API (kể cả Jev gốc) tối đa là **tầng lọc nhanh** — CEO không tin "quyết định nhanh mà đúng" cho bài toán này. Đường đáng đi là Đường C (train trên dữ liệu miền của mình), làm sau khi cần.
+- **Điều kiện bắt buộc cho MỌI kết quả chốt mã (cả hệ, không riêng Jev):** phải kèm **bằng chứng pháp lý đầy đủ** — **một trong 6 nguyên tắc GIR**, dẫn chứng điều khoản/biểu thuế nguyên văn, **catalogue máy** (made-in-china), **nguyên lý hoạt động** của hàng. Tầng nhanh/decider **không bao giờ** được phát mã thiếu chuỗi bằng chứng; thiếu → trả `NEED_FACTS`/`NEEDS_EXPERT` theo đúng hệ cổng chặn hiện có.
+- **Ưu tiên trước mắt thay cho P0′** (theo phản hồi khách thật #166 ngày 14/10 — classify bị 524 vì chạy > 100 s): (1) trả `maLuot` trong **mọi nhánh lỗi** + hạn nội bộ < 100 s kèm `retryable`; (2) tầng nhanh hiệu suất theo leo thang của `09-hieu-suat-llm.md` (đo trước — thêm ms từng lượt vào engine, bench 80 mẫu); (3) các mục #166 còn lại (tra_thu_tuc gộp dữ liệu chính sách, nhãn `AI_CHUA_KIEM` cho trường enrichment, kênh báo lỗi `bao_loi`).
+
 Nguồn: JevBench v1.4.2.2 qua `freezetheflame/jev-ecosystem-research`; lab đo `yibie/laya-jev-lab`;
 `exfly/laya-jev-compatible-server`; `ZimmyGao/openjev-rlcd` (arXiv 2609.38850); `datawhalechina/jev-cookbook`;
 `convaiinnovations/laya` (Hugging Face, Apache 2.0); danh mục `yibie/awesome-jev`; `mode-io/vllm-jev`.
