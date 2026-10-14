@@ -1,0 +1,296 @@
+{
+  "nhom": "2208",
+  "phamVi": {
+    "text": "Cồn etylic chưa biến tính có nồng độ cồn dưới 80% tính theo thể tích; rượu mạnh, rượu mùi và đồ uống có rượu khác.",
+    "nguon": "nhom2208.nhom",
+    "trich": "Nhóm này bao gồm các loại rượu với bất cứ nồng độ cồn nào",
+    "nguonLoai": "AI_DA_KIEM"
+  },
+  "dieuKienVao": [
+    {
+      "fact": "nong_do_con",
+      "op": "lt",
+      "value": 80,
+      "donVi": "%",
+      "nguon": "nhom2208.nhom",
+      "trich": "chưa biến tính có nồng độ cồn dưới 80%",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "loaiTru": [],
+  "phanBiet": [],
+  "tieuChi6": [
+    {
+      "hs6": "220820",
+      "fact": "loai_ruou",
+      "op": "=",
+      "value": "cat_tu_nho",
+      "nguon": "wco.220820",
+      "trich": "Spirits obtained by distilling grape wine or grape marc",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "220830",
+      "fact": "loai_ruou",
+      "op": "=",
+      "value": "whisky",
+      "nguon": "wco.220830",
+      "trich": "Whiskies",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "220840",
+      "fact": "loai_ruou",
+      "op": "=",
+      "value": "rum_hoac_cat_tu_mia",
+      "nguon": "wco.220840",
+      "trich": "Rum and other spirits obtained by distilling fermented sugar-cane products",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "220850",
+      "fact": "loai_ruou",
+      "op": "=",
+      "value": "gin_geneva",
+      "nguon": "wco.220850",
+      "trich": "Gin and geneva",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "220870",
+      "fact": "loai_ruou",
+      "op": "=",
+      "value": "ruou_mui_liqueurs",
+      "nguon": "wco.220870",
+      "trich": "Liqueurs and cordials",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "220890",
+      "fact": "loai_ruou",
+      "op": "in",
+      "value": "khac",
+      "nguon": "wco.220890",
+      "trich": "Spirits, liqueurs and other spirituous beverages; n.e.c. in heading no. 2208",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "22082050",
+      "dieuKien": "Rượu brandy (cất từ rượu vang nho)",
+      "tieuChi": null,
+      "loaiKhac": false,
+      "nguon": "tax.22082050",
+      "trich": "Rượu brandy",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "22082090",
+      "dieuKien": "Rượu mạnh cất từ nho khác (vd: cognac, grappa)",
+      "tieuChi": null,
+      "loaiKhac": true,
+      "nguon": "tax.22082090",
+      "trich": "Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "22083010",
+      "dieuKien": "Whisky đựng trong đồ chứa trên 5 lít (bulk)",
+      "tieuChi": null,
+      "loaiKhac": false,
+      "nguon": "tax.22083010",
+      "trich": "Được đựng trong đồ chứa trên 5 lít",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "22083090",
+      "dieuKien": "Whisky loại khác (đóng chai)",
+      "tieuChi": null,
+      "loaiKhac": true,
+      "nguon": "tax.22083090",
+      "trich": "Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "22084000",
+      "dieuKien": "Rượu rum và rượu mạnh cất từ sản phẩm mía đường lên men",
+      "tieuChi": null,
+      "loaiKhac": false,
+      "nguon": "tax.22084000",
+      "trich": "Rượu rum và rượu mạnh khác được cất từ các sản phẩm mía đường lên men",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "22085000",
+      "dieuKien": "Rượu gin và geneva",
+      "tieuChi": null,
+      "loaiKhac": false,
+      "nguon": "tax.22085000",
+      "trich": "Rượu gin và rượu Geneva",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "22086000",
+      "dieuKien": "Rượu vodka",
+      "tieuChi": null,
+      "loaiKhac": false,
+      "nguon": "tax.22086000",
+      "trich": "Rượu vodka",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "22087010",
+      "dieuKien": "Rượu mùi (liqueurs, cordials) có nồng độ cồn ≤ 57% vol - vd: TB 22087010 38 records",
+      "tieuChi": null,
+      "loaiKhac": false,
+      "nguon": "tax.22087010",
+      "trich": "Có nồng độ cồn không quá 57% tính theo thể tích",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "22087090",
+      "dieuKien": "Rượu mùi (liqueurs, cordials) khác - nồng độ cồn > 57% vol",
+      "tieuChi": null,
+      "loaiKhac": true,
+      "nguon": "tax.22087090",
+      "trich": "Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "22089010",
+      "dieuKien": "Rượu bổ sam-su có nồng độ cồn ≤ 40% vol",
+      "tieuChi": null,
+      "loaiKhac": false,
+      "nguon": "tax.22089010",
+      "trich": "Rượu bổ sam-su có nồng độ cồn không quá 40% tính theo thể tích",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "22089099",
+      "dieuKien": "Rượu mạnh/rượu mùi khác - vd: TB 22089099",
+      "tieuChi": null,
+      "loaiKhac": true,
+      "nguon": "tax.22089099",
+      "trich": "Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "22",
+        "cap": 2,
+        "cha": null,
+        "tenVi": "Đồ uống có cồn"
+      },
+      {
+        "id": "2207",
+        "cap": 4,
+        "cha": "22",
+        "tenVi": "Cồn etylic (đã/chưa biến tính)"
+      },
+      {
+        "id": "2208",
+        "cap": 4,
+        "cha": "22",
+        "tenVi": "Cồn etylic <80% vol; rượu mạnh; rượu mùi"
+      },
+      {
+        "id": "220820",
+        "cap": 6,
+        "cha": "2208",
+        "tenVi": "Cất từ nho (brandy, cognac)"
+      },
+      {
+        "id": "220830",
+        "cap": 6,
+        "cha": "2208",
+        "tenVi": "Whisky"
+      },
+      {
+        "id": "220840",
+        "cap": 6,
+        "cha": "2208",
+        "tenVi": "Rum"
+      },
+      {
+        "id": "220850",
+        "cap": 6,
+        "cha": "2208",
+        "tenVi": "Gin/Geneva"
+      },
+      {
+        "id": "220860",
+        "cap": 6,
+        "cha": "2208",
+        "tenVi": "Vodka"
+      },
+      {
+        "id": "220870",
+        "cap": 6,
+        "cha": "2208",
+        "tenVi": "Rượu mùi (liqueurs)"
+      },
+      {
+        "id": "220890",
+        "cap": 6,
+        "cha": "2208",
+        "tenVi": "Rượu mạnh khác"
+      },
+      {
+        "id": "22082050",
+        "cap": 8,
+        "cha": "220820",
+        "tenVi": "Rượu brandy"
+      },
+      {
+        "id": "22087010",
+        "cap": 8,
+        "cha": "220870",
+        "tenVi": "Rượu mùi cồn ≤ 57%"
+      },
+      {
+        "id": "22089010",
+        "cap": 8,
+        "cha": "220890",
+        "tenVi": "Rượu sam-su cồn ≤ 40%"
+      }
+    ]
+  },
+  "dungTuNguon": [
+    "nhom2208.nhom",
+    "wco.220820",
+    "wco.220830",
+    "wco.220840",
+    "wco.220850",
+    "wco.220860",
+    "wco.220870",
+    "wco.220890",
+    "tax.22082050",
+    "tax.22082090",
+    "tax.22083010",
+    "tax.22084000",
+    "tax.22085000",
+    "tax.22086000",
+    "tax.22087010",
+    "tax.22087090",
+    "tax.22089010",
+    "tax.22089099",
+    "tb.22087010: Rượu mùi (liqueurs) - 38 records trong kho",
+    "tb.22089099: Rượu mạnh khác - nhiều records"
+  ],
+  "phienBan": "HS2022+SEN2022",
+  "taoBoi": {
+    "provider": "Hermes (Sếp Thắng)",
+    "model": "manual-tbtchq-2026-10-15",
+    "luc": "2026-10-15"
+  },
+  "kiemTra": {
+    "tong": 0,
+    "dat": 0,
+    "loai": "TAY"
+  }
+}

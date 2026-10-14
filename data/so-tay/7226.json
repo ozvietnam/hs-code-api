@@ -1,0 +1,230 @@
+{
+  "nhom": "7226",
+  "phamVi": {
+    "text": "Sản phẩm của thép hợp kim khác được cán phẳng, có chiều rộng dưới 600 mm. Áp dụng tương tự Chú giải nhóm 72.11 và 72.12.",
+    "nguon": "nhom7226.nhom",
+    "trich": "Những điều khoản của Chú giải cho nhóm 72.11 và 72.12, với những sửa đổi thích hợp, áp dụng cho các sản phẩm thuộc nhóm này.",
+    "nguonLoai": "AI_DA_KIEM"
+  },
+  "dieuKienVao": [],
+  "loaiTru": [],
+  "phanBiet": [],
+  "tieuChi6": [
+    {
+      "hs6": "722611",
+      "fact": "loai_thep",
+      "op": "=",
+      "value": "silic_dien_grain_oriented",
+      "nguon": "wco.722611",
+      "trich": "Steel, alloy; flat-rolled, width less than 600mm, of silicon-electrical steel, grain-oriented",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "722619",
+      "fact": "loai_thep",
+      "op": "=",
+      "value": "silic_dien_khac",
+      "nguon": "wco.722619",
+      "trich": "Steel, alloy; flat-rolled, width less than 600mm, of silicon-electrical steel, other than grain-oriented",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "722620",
+      "fact": "loai_thep",
+      "op": "=",
+      "value": "high_speed_steel",
+      "nguon": "wco.722620",
+      "trich": "Steel, alloy; flat-rolled, width less than 600mm, of high speed steel",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "722691",
+      "fact": "loai_thep",
+      "op": "in",
+      "value": "khac_can_nong",
+      "nguon": "wco.722691",
+      "trich": "Steel, alloy; flat-rolled, width less than 600mm, (excluding silicon-electrical or high speed steel), hot-rolled",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "722692",
+      "fact": "loai_thep",
+      "op": "in",
+      "value": "khac_can_nguoi",
+      "nguon": "wco.722692",
+      "trich": "Steel, alloy; flat-rolled, width less than 600mm, (excluding silicon-electrical or high speed steel), cold-rolled",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "722699",
+      "fact": "loai_thep",
+      "op": "in",
+      "value": "khac",
+      "nguon": "wco.722699",
+      "trich": "Steel, alloy; flat-rolled, width less than 600mm, n.e.c. in item no. 7226.9",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "72261190",
+      "dieuKien": "Thép silic điện grain-oriented (định hướng từ tính), rộng <600mm, loại khác - dùng cho lõi máy biến áp - vd: TB 72261190 (18 records)",
+      "tieuChi": null,
+      "loaiKhac": true,
+      "nguon": "tax.72261190",
+      "trich": "Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72261990",
+      "dieuKien": "Thép silic điện không grain-oriented, rộng <600mm, loại khác - dùng cho motor, máy phát",
+      "tieuChi": null,
+      "loaiKhac": true,
+      "nguon": "tax.72261990",
+      "trich": "Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72262090",
+      "dieuKien": "Thép gió (high speed steel) cán phẳng rộng <600mm, loại khác - dùng cho dao cắt, khuôn dập",
+      "tieuChi": null,
+      "loaiKhac": true,
+      "nguon": "tax.72262090",
+      "trich": "Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72269190",
+      "dieuKien": "Thép hợp kim khác cán nóng rộng <600mm - vd: TB có 72269190 (13 records)",
+      "tieuChi": null,
+      "loaiKhac": true,
+      "nguon": "tax.72269190",
+      "trich": "Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72269210",
+      "dieuKien": "Thép hợp kim khác cán nguội rộng <600mm, dạng đai/dải rộng ≤400mm",
+      "tieuChi": null,
+      "loaiKhac": false,
+      "nguon": "tax.72269210",
+      "trich": "Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72269290",
+      "dieuKien": "Thép hợp kim khác cán nguội rộng <600mm, loại khác",
+      "tieuChi": null,
+      "loaiKhac": true,
+      "nguon": "tax.72269290",
+      "trich": "Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "72",
+        "cap": 2,
+        "cha": null,
+        "tenVi": "Sắt thép"
+      },
+      {
+        "id": "7225",
+        "cap": 4,
+        "cha": "72",
+        "tenVi": "Thép hợp kim cán phẳng rộng ≥600mm"
+      },
+      {
+        "id": "7226",
+        "cap": 4,
+        "cha": "72",
+        "tenVi": "Thép hợp kim cán phẳng rộng <600mm"
+      },
+      {
+        "id": "722611",
+        "cap": 6,
+        "cha": "7226",
+        "tenVi": "Thép silic điện grain-oriented"
+      },
+      {
+        "id": "722619",
+        "cap": 6,
+        "cha": "7226",
+        "tenVi": "Thép silic điện không grain-oriented"
+      },
+      {
+        "id": "722620",
+        "cap": 6,
+        "cha": "7226",
+        "tenVi": "Thép gió (high speed)"
+      },
+      {
+        "id": "722691",
+        "cap": 6,
+        "cha": "7226",
+        "tenVi": "Thép hợp kim khác cán nóng"
+      },
+      {
+        "id": "722692",
+        "cap": 6,
+        "cha": "7226",
+        "tenVi": "Thép hợp kim khác cán nguội"
+      },
+      {
+        "id": "722699",
+        "cap": 6,
+        "cha": "7226",
+        "tenVi": "Thép hợp kim khác - loại khác"
+      },
+      {
+        "id": "72261190",
+        "cap": 8,
+        "cha": "722611",
+        "tenVi": "Thép silic grain-oriented khác"
+      },
+      {
+        "id": "72269190",
+        "cap": 8,
+        "cha": "722691",
+        "tenVi": "Thép hợp kim cán nóng khác"
+      },
+      {
+        "id": "72269290",
+        "cap": 8,
+        "cha": "722692",
+        "tenVi": "Thép hợp kim cán nguội khác"
+      }
+    ]
+  },
+  "dungTuNguon": [
+    "nhom7226.nhom",
+    "wco.722611",
+    "wco.722619",
+    "wco.722620",
+    "wco.722691",
+    "wco.722692",
+    "wco.722699",
+    "tax.72261190",
+    "tax.72261990",
+    "tax.72262090",
+    "tax.72269190",
+    "tax.72269210",
+    "tax.72269290",
+    "tb.72261190: Thép silic grain-oriented - 18 records trong kho",
+    "tb.72269190: Thép hợp kim cán nóng - 13 records"
+  ],
+  "phienBan": "HS2022+SEN2022",
+  "taoBoi": {
+    "provider": "Hermes (Sếp Thắng)",
+    "model": "manual-tbtchq-2026-10-15",
+    "luc": "2026-10-15"
+  },
+  "kiemTra": {
+    "tong": 0,
+    "dat": 0,
+    "loai": "TAY"
+  }
+}
