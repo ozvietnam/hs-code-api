@@ -1,0 +1,251 @@
+{
+  "nhom": "5503",
+  "phamVi": {
+    "text": "Sợi staple tổng hợp, chưa chải thô, chưa kéo thành sợi hoặc đã chải thô hoặc kéo thành sợi theo cách khác. Bao gồm cả tô filament tổng hợp có chiều dài không quá 2m, mỗi filament có độ mảnh dưới 67 decitex.",
+    "nguon": "nhom5503.nhom",
+    "trich": "Nhóm cũng bao gồm tô filament tổng hợp có chiều dài không quá 2 m miễn là mỗi filament có độ mảnh dưới 67 decitex. Tô filament tổng hợp có chiều dài trên 2 m bị loại trừ (nhóm 54.02 hoặc 55.01).",
+    "nguonLoai": "AI_DA_KIEM"
+  },
+  "dieuKienVao": [
+    {
+      "fact": "loaiSoi",
+      "op": "=",
+      "value": "staple_to_hop",
+      "nguon": "nhom5503.nhom",
+      "trich": "Xơ staple tổng hợp thường được ép-đóng gói thành kiện. Nói chung các xơ có chiều dài đồng đều, điều này phân biệt chúng với phế liệu của nhóm 55.05.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "loaiTru": [
+    {
+      "dieuKien": "Tô filament tổng hợp có chiều dài trên 2 m",
+      "sangNhom": "5402 hoặc 5501",
+      "nguon": "nhom5503.nhom",
+      "trich": "Tô filament tổng hợp có chiều dài trên 2 m bị loại trừ (nhóm 54.02 hoặc 55.01).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Xơ staple tổng hợp đã chải thô, chải kỹ hoặc gia công cách khác để kéo sợi",
+      "sangNhom": "5506",
+      "nguon": "nhom5503.nhom",
+      "trich": "Xơ staple tổng hợp đã được chải thô, chải kỹ hoặc được gia công cách khác để kéo sợi cũng bị loại trừ (nhóm 55.06).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Phế liệu xơ staple",
+      "sangNhom": "5505",
+      "nguon": "nhom5503.nhom",
+      "trich": "Xơ staple tổng hợp thường được ép-đóng gói thành kiện. Nói chung các xơ có chiều dài đồng đều, điều này phân biệt chúng với phế liệu của nhóm 55.05.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Sợi là filament (liên tục) hay staple (ngắn)?",
+      "neuCo": "5402 (sợi filament tổng hợp)",
+      "neuKhong": "5503 (sợi staple tổng hợp)",
+      "nguon": "nhom5503.nhom",
+      "trich": "Tô filament tổng hợp có chiều dài trên 2 m bị loại trừ (nhóm 54.02 hoặc 55.01).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Sợi staple đã được gia công (chải thô, kéo sợi) hay chưa?",
+      "neuCo": "5506 (đã chải thô/kỹ/gia công cách khác)",
+      "neuKhong": "5503 (chưa chải thô/kỹ)",
+      "nguon": "nhom5503.nhom",
+      "trich": "Xơ staple tổng hợp đã được chải thô, chải kỹ hoặc được gia công cách khác để kéo sợi cũng bị loại trừ (nhóm 55.06).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [
+    {
+      "hs6": "550311",
+      "fact": "loai_polymer",
+      "op": "=",
+      "value": "aramid",
+      "nguon": "wco.550311",
+      "trich": "Fibres; synthetic staple fibres, of aramids, not carded, combed or otherwise processed for spinning",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "550319",
+      "fact": "loai_polymer",
+      "op": "=",
+      "value": "aramid_khac",
+      "nguon": "wco.550319",
+      "trich": "Fibres; synthetic staple fibres, of nylon or other polyamides other than aramids, not carded, combed or otherwise processed for spinning",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "550320",
+      "fact": "loai_polymer",
+      "op": "=",
+      "value": "polyester",
+      "nguon": "wco.550320",
+      "trich": "Fibres; synthetic staple fibres, of polyesters, not carded, combed or otherwise processed for spinning",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "550330",
+      "fact": "loai_polymer",
+      "op": "=",
+      "value": "acrylic_modacrylic",
+      "nguon": "wco.550330",
+      "trich": "Fibres; synthetic staple fibres, acrylic or modacrylic, not carded, combed or otherwise processed for spinning",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "550340",
+      "fact": "loai_polymer",
+      "op": "=",
+      "value": "polypropylen",
+      "nguon": "wco.550340",
+      "trich": "Fibres; synthetic staple fibres, of polypropylene, not carded, combed or otherwise processed for spinning",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "550390",
+      "fact": "loai_polymer",
+      "op": "in",
+      "value": "khac",
+      "nguon": "wco.550390",
+      "trich": "Fibres; synthetic staple fibres, of synthetic materials n.e.c. in heading no. 5503, not carded, combed or otherwise processed for spinning",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "55031100",
+      "dieuKien": "Sợi staple aramit, chưa chải thô/kéo thành sợi - dùng trong sản phẩm chịu nhiệt, chống đạn",
+      "tieuChi": null,
+      "loaiKhac": false,
+      "nguon": "tax.55031100",
+      "trich": "Từ các aramit",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "55031900",
+      "dieuKien": "Sợi staple aramit khác - loại khác",
+      "tieuChi": null,
+      "loaiKhac": true,
+      "nguon": "tax.55031900",
+      "trich": "Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "55033000",
+      "dieuKien": "Sợi staple acrylic hoặc modacrylic",
+      "tieuChi": null,
+      "loaiKhac": false,
+      "nguon": "tax.55033000",
+      "trich": "Từ acrylic hoặc modacrylic",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "55034000",
+      "dieuKien": "Sợi staple polypropylen",
+      "tieuChi": null,
+      "loaiKhac": false,
+      "nguon": "tax.55034000",
+      "trich": "Từ polypropylen",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "55",
+        "cap": 2,
+        "cha": null,
+        "tenVi": "Sợi staple nhân tạo và tổng hợp"
+      },
+      {
+        "id": "5501",
+        "cap": 4,
+        "cha": "55",
+        "tenVi": "Sợi staple nhân tạo (từ cellulose)"
+      },
+      {
+        "id": "5502",
+        "cap": 4,
+        "cha": "55",
+        "tenVi": "Sợi staple nhân tạo (từ filament)"
+      },
+      {
+        "id": "5503",
+        "cap": 4,
+        "cha": "55",
+        "tenVi": "Sợi staple tổng hợp, chưa chải thô/keo thành sợi"
+      },
+      {
+        "id": "550320",
+        "cap": 6,
+        "cha": "5503",
+        "tenVi": "Từ polyeste"
+      },
+      {
+        "id": "550330",
+        "cap": 6,
+        "cha": "5503",
+        "tenVi": "Từ acrylic hoặc modacrylic"
+      },
+      {
+        "id": "550340",
+        "cap": 6,
+        "cha": "5503",
+        "tenVi": "Từ polypropylen"
+      },
+      {
+        "id": "550390",
+        "cap": 6,
+        "cha": "5503",
+        "tenVi": "Từ loại khác"
+      },
+      {
+        "id": "55032000",
+        "cap": 8,
+        "cha": "550320",
+        "tenVi": "Sợi staple polyeste"
+      },
+      {
+        "id": "55033000",
+        "cap": 8,
+        "cha": "550330",
+        "tenVi": "Sợi staple acrylic hoặc modacrylic"
+      },
+      {
+        "id": "55034000",
+        "cap": 8,
+        "cha": "550340",
+        "tenVi": "Sợi staple polypropylen"
+      },
+      {
+        "id": "55039000",
+        "cap": 8,
+        "cha": "550390",
+        "tenVi": "Sợi staple tổng hợp loại khác"
+      }
+    ]
+  },
+  "dungTuNguon": [
+    "nhom5503.nhom",
+    "tax.55031100",
+    "tax.55033000",
+    "tax.55034000",
+    "tb.2698/2022: ES Fiber PE/PET FS1405114 4Dx51mm → 55032000 (qua sen.55032010)",
+    "tb.2699/2022: xơ staple polyeste khác → 55032000 (qua sen.55032010)"
+  ],
+  "phienBan": "HS2022+SEN2022",
+  "taoBoi": {
+    "provider": "Hermes (Sếp Thắng)",
+    "model": "manual-tbtchq-2026-10-15",
+    "luc": "2026-10-15"
+  },
+  "kiemTra": {
+    "tong": 0,
+    "dat": 0,
+    "loai": "TAY"
+  }
+}
