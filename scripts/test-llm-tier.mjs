@@ -87,6 +87,34 @@ reset();
 r = await callLLMJson('sys', 'user', { tier: 'premium' });
 check('premium → Gemini trả phí trước', r.provider === 'gemini' && calls[0] === 'gemini:paid', JSON.stringify(calls));
 
+// 6b. PREMIUM_PROVIDER=minimax (CEO chốt 14/10/2026, hạ chi phí Gemini trả phí):
+// premium đi chuỗi chuẩn trước — MiniMax làm việc, khoá trả phí chỉ còn là chốt cuối.
+process.env.PREMIUM_PROVIDER = 'minimax';
+reset();
+r = await callLLMJson('sys', 'user', { tier: 'premium' });
+check('premium + PREMIUM_PROVIDER=minimax → MiniMax trước, không đụng Gemini', r.provider === 'minimax' && !calls.some((c) => c.startsWith('gemini')), JSON.stringify(calls));
+
+// Chuỗi chuẩn chết hẳn + không khoá miễn phí → khoá trả phí là chốt cuối (dịch vụ không chết).
+delete process.env.GEMINI_FREE_KEYS;
+minimaxMode = 'down';
+reset();
+r = await callLLMJson('sys', 'user', { tier: 'premium' });
+check('premium + chuỗi chết → lùi về Gemini trả phí làm chốt cuối', calls[0]?.startsWith('minimax') && r.provider === 'gemini' && r.json.who === 'paid', JSON.stringify(calls));
+
+// Dữ liệu khách: chốt cuối vẫn là khoá trả phí (danh sách trắng nhận dữ liệu khách).
+reset();
+r = await callLLMJson('sys', 'user', { tier: 'premium', containsCustomerData: true });
+check('premium + dữ liệu khách + chuỗi chết → Gemini trả phí chốt cuối', r.provider === 'gemini' && r.json.who === 'paid', JSON.stringify(calls));
+
+// Bỏ đặt → hành vi cũ nguyên vẹn (Gemini trả phí trước).
+delete process.env.PREMIUM_PROVIDER;
+process.env.GEMINI_FREE_KEYS = 'free-day,free-min';
+minimaxMode = 'ok';
+reset();
+r = await callLLMJson('sys', 'user', { tier: 'premium' });
+check('bỏ PREMIUM_PROVIDER → premium Gemini trả phí trước như cũ', r.provider === 'gemini' && calls[0] === 'gemini:paid', JSON.stringify(calls));
+
+
 // 7. Không MiniMax, không khóa miễn phí, chỉ khóa trả phí → vẫn chạy
 delete process.env.MINIMAX_API_KEY;
 delete process.env.GEMINI_FREE_KEYS;
