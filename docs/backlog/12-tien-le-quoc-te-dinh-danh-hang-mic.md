@@ -4,7 +4,7 @@
 > (CEO phản biện 2 vòng: lượt 1 sai 8479.89.69 vì xếp mã khi chưa bóc nguyên lý
 > hoạt động; lượt 2+3 sửa thành 8421.39.90 bằng chuỗi bằng chứng quốc tế phải tự
 > ra ngoài tìm) + **chỉ thị CEO bổ sung nguồn Made-in-China 15/10 chiều**.
-> Trạng thái: **ĐANG TRIỂN KHAI — sóng P0 (B-3, C-2, C-4) xong 15/10; sóng kế: A-1 + A-2.**
+> Trạng thái: **ĐANG TRIỂN KHAI — P0 (B-3, C-2, C-4) + A-1 xong 15/10; A-2 code xong, chờ đo 20 mẫu vàng bằng LLM thật; sóng kế: B-1 + B-2.**
 
 ## ĐÃ LÀM (thực chứng 15/10, không làm trùng lại)
 
@@ -61,8 +61,8 @@ HYPOTHESIS, 2 nguồn độc lập khớp = CORROBORATED, tài liệu sơ cấp 
 
 | ID | Việc | Ưu tiên | Ước lượng | Nghiệm thu |
 |---|---|---|---|---|
-| A-1 | **Schema khung thuộc tính dùng chung** `data/attribute-frames.json`: định nghĩa frame theo chương (mở rộng template TT 39 sẵn có: thêm `nguyenLyHoatDong`, `cauThanhModule`, `nguon[]` với nhãn HYPOTHESIS/CORROBORATED/VERIFIED + URL + retrievedAt) | P1 | 1–2 ngày | Frame của case glovebox (MBraun) + 2 case khác (1 máy TQ, 1 hàng tiêu dùng) điền được đủ trường; test schema |
-| A-2 | **Endpoint `POST /api/identify`** (não: M3, thinking off): nhận `{tenHang, model, thuongHieu, moTa, anhUrl[]}` → trả frame có nhãn kiểm chứng + danh sách nguồn; ảnh đi M3 multimodal đọc nameplate/model plate (đã đo 1,4–2 s, backlog 09) | P1 | 3–5 ngày | 20 mẫu vàng gồm 5 món chỉ có ảnh nameplate; ≥80% frame đạt CORROBORATED trở lên; p50 < 30 s |
+| A-1 ✅ (15/10) | **Schema khung thuộc tính dùng chung** `data/attribute-frames.json`: định nghĩa frame theo chương (mở rộng template TT 39 sẵn có: thêm `nguyenLyHoatDong`, `cauThanhModule`, `nguon[]` với nhãn HYPOTHESIS/CORROBORATED/VERIFIED + URL + retrievedAt) | P1 | 1–2 ngày | Frame của case glovebox (MBraun) + 2 case khác (1 máy TQ, 1 hàng tiêu dùng) điền được đủ trường; test schema |
+| A-2 ⚙️ (15/10 — code xong + 12 test AI giả; nghiệm thu 20 mẫu vàng cần LLM thật, hoãn vì hạn mức MiniMax hôm nay) | **Endpoint `POST /api/identify`** (não: M3, thinking off): nhận `{tenHang, model, thuongHieu, moTa, anhUrl[]}` → trả frame có nhãn kiểm chứng + danh sách nguồn; ảnh đi M3 multimodal đọc nameplate/model plate (đã đo 1,4–2 s, backlog 09) | P1 | 3–5 ngày | 20 mẫu vàng gồm 5 món chỉ có ảnh nameplate; ≥80% frame đạt CORROBORATED trở lên; p50 < 30 s |
 | A-3 | **Cổng MCP tách tool `dinh_danh_hang`** chạy trước `phan_loai_hs`: `phan_loai_hs` nhận frame làm đầu vào; cập nhật `instructions`/`sinhSkill()` dạy thứ tự gọi; frame thiếu trường bắt buộc → trả NEED_FACTS đúng hợp đồng đang thiết kế | P1 | 2–3 ngày | Bộ đàm thoại mẫu qua Cổng: tên nghèo nàn → tool hỏi đích danh → frame đầy → phan_loai_hs chốt kèm bằng chứng |
 
 ### PHẦN B — Kho tiền lệ quốc tế (kiến trúc 3 tầng)

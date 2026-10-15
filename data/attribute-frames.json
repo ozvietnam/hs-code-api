@@ -1,0 +1,17 @@
+{
+ "phienBan": 1,
+ "mucDich": "Bước 12 (A-1, #299): khung thuộc tính định danh hàng hoá TRƯỚC khi phân loại. Mở rộng template khai báo TT 39 (data/chapter-declaration-fields.json) thêm trường nghiệp vụ phân loại + nguồn kiểm chứng theo tam giác HYPOTHESIS/CORROBORATED/VERIFIED. Dùng CHUNG schema với phiếu hồ sơ khai báo để hiểu hàng xong thì các trường khai báo tự đầy.",
+ "truongBuoc12": {
+  "nguyenLyHoatDong": { "labelVi": "Nguyên lý hoạt động", "ecusHint": "cơ chế biến đổi/công nghệ lõi (vd: quay ly tâm, khuếch tán siêu âm, làm lạnh nén hơi)", "ghiChu": "Bắt buộc với chương máy móc — bài học glovebox lượt 1 sai vì xếp mã khi chưa bóc nguyên lý (15/10)" },
+  "cauThanhModule": { "labelVi": "Cấu thành module", "ecusHint": "cac module chính (vd: buồng kín + găng nhúng + bộ lọc khí O₂/ẩm)" },
+  "chucNangChinh": { "labelVi": "Chức năng chính", "ecusHint": "mục đích sử dụng cốt lõi theo lời NSX" },
+  "nguon": { "labelVi": "Nguồn kiểm chứng", "dang": "mảng {loai: 'nsx'|'phu', url, trich, retrievedAt}", "ghiChu": "tam giác kiểm chứng do MÁY gán nhãn (lib/attribute-frames.js) — AI chỉ đề xuất nguồn" }
+ },
+ "chuong": {
+  "84": { "titleVi": "Máy móc, thiết bị cơ khí", "boSungBatBuoc": ["nguyenLyHoatDong", "chucNangChinh"], "tuKhoa": ["máy", "thiết bị", "bơm", "van", "động cơ", "máy nén", "bộ lọc", "hộp giảm"] },
+  "85": { "titleVi": "Máy móc, thiết bị điện", "boSungBatBuoc": ["nguyenLyHoatDong", "chucNangChinh"], "tuKhoa": ["điện", "motor", "biến áp", "nguồn", "cảm biến", "board mạch"] },
+  "90": { "titleVi": "Dụng cụ đo, kiểm tra chính xác", "boSungBatBuoc": ["nguyenLyHoatDong", "chucNangChinh", "doChinhXac"], "tuKhoa": ["đo", "cân", "kiểm tra", "phân tích", "thí nghiệm", "y tế"] },
+  "39": { "titleVi": "Nhựa và sản phẩm nhựa", "boSungBatBuoc": ["chatLieuCuThe"], "tuKhoa": ["nhựa", "plastic", "PP", "PE", "PVC", "silicone"] },
+  "94": { "titleVi": "Đồ nội thất, giường, đèn", "boSungBatBuoc": ["chatLieuCuThe"], "tuKhoa": ["nội thất", "đèn", "bàn", "ghế", "giường", "tủ"] }
+ }
+}
