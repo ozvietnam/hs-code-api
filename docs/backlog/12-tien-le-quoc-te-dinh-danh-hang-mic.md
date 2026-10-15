@@ -59,15 +59,32 @@ template khai báo TT 39 (`machineryGeneric`…): hiểu hàng xong thì các tr
 tắt) từ chính các trang nguồn EN/ZH đã truy vết + `alternates`/`pageLang` có sẵn trong
 `ProductPayload` v2 của ozsource; (4) **tam giác kiểm chứng**: 1 nguồn phụ = HYPOTHESIS, 2 nguồn độc
 lập khớp = CORROBORATED, tài liệu sơ cấp NSX = VERIFIED; (5) dịch sang **ngôn ngữ chức năng biểu
-thuế** (EN cho tiền lệ quốc tế, VN cho TB-TCHQ, giữ ZH để nối query-understand tiêu đề tiếng Trung
-sẵn có); (6) mới vào phễu 2/4→6→8 + tiền lệ.
+thuế** — cụm EN phải **dẫn từ từ vựng chính tắc tầng pháp lý của A-4** (không để LLM tự chế), VN
+cho TB-TCHQ, giữ ZH để nối query-understand tiêu đề tiếng Trung sẵn có; (6) mới vào phễu 2/4→6→8
++ tiền lệ.
 
 | ID | Việc | Ưu tiên | Ước lượng | Nghiệm thu |
 |---|---|---|---|---|
 | A-1 | **Schema khung thuộc tính dùng chung** `data/attribute-frames.json`: frame theo chương (mở rộng template TT 39 sẵn có: thêm `nguyenLyHoatDong`, `cauThanhModule`, `tenDongNghia {vi[],en[],zh[]}`, `tuVungChucNang {en[],zh[]}`, `nguon[]` với nhãn HYPOTHESIS/CORROBORATED/VERIFIED + URL + retrievedAt) | P1 | 1–2 ngày | Frame của case glovebox (MBraun) + 2 case khác (1 máy TQ, 1 hàng tiêu dùng) điền đủ; glovebox: `tenDongNghia.en` có "glovebox", "inert atmosphere workstation"; `.zh` có "手套箱"; test schema |
 | A-2 | **Endpoint `POST /api/identify`** (não: M3, thinking off): nhận `{tenHang, model, thuongHieu, moTa, anhUrl[]}` → trả frame có nhãn kiểm chứng + danh sách nguồn + tên đồng nghĩa đa ngữ; ảnh đi M3 multimodal đọc nameplate/model plate (đã đo 1,4–2 s, backlog 09) | P1 | 3–5 ngày | 20 mẫu vàng gồm 5 món chỉ có ảnh nameplate; ≥80% frame đạt CORROBORATED trở lên; p50 < 30 s |
 | A-3 | **Cổng MCP tách tool `dinh_danh_hang`** chạy trước `phan_loai_hs`: `phan_loai_hs` nhận frame làm đầu vào; cập nhật `instructions`/`sinhSkill()` dạy thứ tự gọi; frame thiếu trường bắt buộc → trả NEED_FACTS đúng hợp đồng đang thiết kế | P1 | 2–3 ngày | Bộ đàm thoại mẫu qua Cổng: tên nghèo nàn → tool hỏi đích danh → frame đầy → phan_loai_hs chốt kèm bằng chứng |
-| A-4 | **Từ điển đồng nghĩa hàng hoá đa ngữ** `data/synonyms.json`: mining tên VN/EN/ZH từ kho 11.072 sản phẩm Shopee/Taobao + lô MiC (trường `alternates`) + TB-TCHQ (productNameRaw) → phục vụ (a) tra tiền lệ quốc tế bằng từ khoá EN, (b) tra TB-TCHQ bằng từ khoá VN khi đầu vào là tên ZH/EN, (c) nối `query-understand.js` tier premium (đang xử lý tiêu đề tiếng Trung), (d) sinh câu hỏi NEED_FACTS bằng đúng ngôn ngữ khách | P1 | 3–4 ngày | 500 mặt hàng hay gặp có ≥1 cặp VN↔EN↔ZH có nguồn; đàm thoại thử "手套箱" chốt được về cụm chức năng "glove box / khí trơ" và trúng tiền lệ glovebox |
+| A-4 | **Bảng đồng nghĩa hàng hoá đa ngữ `data/synonyms.json` — tiếng ANH làm ngôn ngữ trục** (pipeline 4 tầng chi tiết bên dưới) | P1 | 4–5 ngày | 500 mặt hàng hay gặp có cặp VN↔EN↔ZH có nguồn; đàm thoại "手套箱" chốt về cụm glove box + trúng tiền lệ; cụm EN sinh tự động từ frame trúng bộ ba WCO 8421.39/1 + CBP M82907 + TCO 1679759 |
+
+#### A-4 chi tiết — khai thác 4 tầng nguồn, tiếng Anh là trục (pivot)
+
+> Nguyên tắc: **gốc tiếng Anh nhiều dữ liệu nhất và quan điểm rõ nét nhất** — toàn bộ danh pháp HS,
+> Diễn giải, ý kiến phân loại, phán quyết quốc tế đều gốc EN (VN/ZH là bản dịch phái sinh). Nên EN vừa
+> là nguồn dày nhất vừa là **trục nối**: cặp ZH↔VN không có trực tiếp thì đi qua EN
+> (手套箱 → "glove box" → "hộp găng tay").
+
+| Tầng | Nguồn (đã có sẵn trong kho / từ Phần B) | Cái gì bóc được |
+|---|---|---|
+| **1. Pháp lý EN** — từ vựng chính tắc | `data/wco-hs-international.csv` (toàn văn danh pháp HS EN theo mã) · `data/sen-2022.json` (tên EN theo mã 8 số) · `data/explanatory-notes.json` (bóc pattern "also known as", "commonly known as", parentheses alias, mục excludes) · `data/wco-op/` `nguyenVanEn` (mô tả sản phẩm EN ↔ mã, tin cậy nhất) | **Mã HS ↔ cụm chức năng EN chính tắc** — bộ từ vựng `tuVungChucNang.en` của frame PHẢI dẫn từ đây (cấm LLM tự chế); đánh dấu `phapLy: true` |
+| **2. Tiền lệ EN** | CBP rulings toàn văn ↔ HTSUS (B-1) · EU BTI (B-6) · mô tả TCO ABF (B-2) | co-occurrence cụm EN ↔ mã → alias bổ sung + độ tin theo tần suất; bắt các tên gọi thương mại EN không nằm trong danh pháp |
+| **3. Thương mại EN↔ZH — cầu nối** | **MiC** (tiêu đề EN + `alternates` ZH + `hsCodeHint` = bộ ba EN/ZH/HS-tín-hiệu trọn gói trên 1 trang) · Alibaba EN qua ozsource | cặp tên EN↔ZH thật của thị trường + tín hiệu HS; bù tên mới/tên chợ cho tầng 1 |
+| **4. Nội địa VN/ZH** | TB-TCHQ `productNameRaw` ↔ `finalHsCode` (lô mới có mã 8 cấu trúc) · kho 11.072 SP Shopee/Taobao | neo VN↔HS; tên kĩ thuật VN; phát hiện xung đột mã VN↔quốc tế để soi lại |
+
+Luật nối: EN là trục — mọi cạnh ZH↔VN thiếu trực tiếp đi qua EN; mỗi entry gắn `{nguon, nhãn kiểm chứng, phapLy?}`; từ vựng tầng 1–2 dùng **sinh tự động cụm truy vấn EN** cho tìm kiếm tiền lệ (nối B-4) — bước 5 của phễu không còn phụ thuộc "sáng tạo" của LLM. Năm đầu ra phục vụ: (a) tra tiền lệ quốc tế bằng EN; (b) tra TB-TCHQ bằng VN khi đầu vào ZH/EN; (c) nối `query-understand.js` tier premium (tiêu đề ZH); (d) **sinh cụm EN chính tắc từ frame**; (e) câu hỏi NEED_FACTS đúng ngôn ngữ khách.
 
 ### PHẦN B — Kho tiền lệ quốc tế (kiến trúc 3 tầng)
 
@@ -81,7 +98,7 @@ theo schema `precedents.json` + trường mở rộng.
 | B-1 | **Crawler CBP CROSS**: khảo sát cách enumerate danh sách ruling ID (sitemap/search API) → bóc qua `/api/ruling/{ID}` → lọc nhóm 84+85 + từ khoá ngành → `data/community/intl-precedents/cbp/*.json` | P1 | 2–3 ngày | ≥1.000 ruling chéo ngành máy móc; mẫu M82907 trong kho khớp nguyên văn API; validate-community 0 lỗi |
 | B-2 | **Crawler ABF TCO**: duyệt `?tcn=` toàn bộ mã 6 số liên quan (84, 85, 90…), headless, parse bảng TCO → lô `abf/*.json` kèm attribution | P1 | 2 ngày | Toàn bộ TCO nhóm 84+85 trong kho; TCO 1679759 nguyên văn; license ghi đúng |
 | B-3 | **`merge-community` nhận loại mới `intl-precedent`**: schema (country, instrumentType: RULING/TCO/BTI/OP, snapshotHash, retrievedAt, license, verbatimText) + validate + CI sync-doc-counts như luật TB-TCHQ | P0 (chặn B-1/B-2 gộp) | 1–2 ngày | Lô thử 10 bản ghi qua đầy đủ validate → merge → test xanh |
-| B-4 | **Tìm kiếm chéo nguồn theo mô tả chức năng**: `/api/precedents` mở rộng index tiền lệ quốc tế, query tiếng Anh chức năng ("sealed chamber gas purification") trả WCO OP + CBP + ABF + TB-TCHQ xếp hạng cùng bảng | P1 | 2–3 ngày | Truy vấn case glovebox trả đúng bộ 3 (WCO 8421.39/1, M82907, TCO 1679759) trong top 5 |
+| B-4 | **Tìm kiếm chéo nguồn theo mô tả chức năng**: `/api/precedents` mở rộng index tiền lệ quốc tế, query tiếng Anh chức năng ("sealed chamber gas purification") trả WCO OP + CBP + ABF + TB-TCHQ xếp hạng cùng bảng; **index seed bằng từ vựng chính tắc tầng 1–2 của A-4** (không index tự do) | P1 | 2–3 ngày | Truy vấn case glovebox trả đúng bộ 3 (WCO 8421.39/1, M82907, TCO 1679759) trong top 5 |
 | B-5 | **Soát ảnh WCO OP** (`daSoatAnh`): đối chiếu bản scan Compendium gốc cho các opinion đang được dẫn trong hồ sơ thật; dùng nguồn công khai corroborate làm NGUON_B tạm | P2 | theo lô | Opinion 8421.39/1 đạt daSoatAnh=true kèm ảnh gốc |
 | B-6 | **Cache-on-demand EU BTI/UK/Canada**: fetcher recipe từng nguồn (URL pattern, UA, extraction, fallback) + cache TTL 30 ngày + snapshotHash | P2 | 3–4 ngày | Truy vấn "glove box" BTI trả kết quả có nhãn nguồn + ngày lấy |
 | B-7 | **Nhãn mức kiểm chứng cho precedents**: trường `xacMinh` (sourceUrl đã mở lại tự động chưa) hiển thị ở API + Cổng — CEO đã đồng ý hướng 15/10 | P1 | 1 ngày | Mọi record precedents trả kèm xacMinh; tối ưu ưu tiên soi các record đang được cite |
@@ -125,6 +142,7 @@ hàng, model, và các sản phẩm có tính năng tương tự**; trang cửa 
 - `% ca phân loại có frame định danh CORROBORATED+` (mục tiêu ≥70% sau quý đầu).
 - `Đ8` trên tập con có frame đầy đủ so với tổng thể (kỳ vọng chênh +8–12 điểm,
   cùng bối với #195).
+- **100% `tuVungChucNang.en` của frame có nguồn tầng 1–2 (phapLy) — 0 cụm EN do LLM tự chế** (test máy kiểm).
 - `p50` `/api/identify` < 30 s; p90 < 60 s.
 - Tiền lệ quốc tế: số nguồn đồng thuận hiển thị được trong từng kết quả
   `phan_loai_hs` (WCO/BTI/CBP/ABF/TB-TCHQ).
