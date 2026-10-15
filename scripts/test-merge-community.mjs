@@ -198,5 +198,34 @@ assert('refresh: loaiTB + confusedWith đã vào kho', après2['85366932'][0].lo
 assert('refresh: sửa mô tả tại tệp nguồn cũng được cập nhật', /bản chỉnh mô tả/.test(après2['85366932'][0].productName), après2['85366932'][0].productName);
 assert('refresh: cờ legacyHs + remap vào kho', après2['85366932'][0].legacyHs === true && après2['85366932'][0].legacyHsRemap === '8536.69.32');
 
+// Tệp nguồn ĐỔI TÊN sau khi đã gộp (tracuuhs-* → legal-customs-*) và mô tả đầu bị sửa (khoá 40 ký tự
+// đổi): bản nộp lại vẫn phải nâng cấp TẠI CHỖ (không nhân bản) và tự cập nhật tên tệp nguồn mới.
+const renameFile = join(communityDir, 'tb-tchq-ren', 'legal-customs-lot-ren.json');
+mkdirSync(join(communityDir, 'tb-tchq-ren'), { recursive: true });
+writeFileSync(renameFile, JSON.stringify({
+  kind: 'precedent', contributor: { name: 'agent-rename' }, license: 'CC-BY-SA-4.0',
+  records: [{
+    hsCode: '84834090',
+    description: 'Hộp giảm tốc bánh răng nghiêng dùng cho băng tải công nghiệp, tỷ số truyền 1:30',
+    source: { type: 'TB-TCHQ', reference: '777/TB-TCHQ', issuedDate: '2021-03-10' },
+    reasonVi: 'Thuộc nhóm 84.83 “Trục truyền, trục khuỷu, tay biên, ổ bi…”, phân nhóm 8483.40 “- Hộp số và các bộ phận giảm tốc khác…”, mã số 8483.40.90 “- - Loại khác” tại Danh mục hàng hóa xuất khẩu, nhập khẩu Việt Nam.',
+  }],
+}));
+{
+  const cur = JSON.parse(readFileSync(join(dataDir, 'precedents.json'), 'utf8'));
+  cur['84834090'] = [{
+    tbTchqNumber: '777/TB-TCHQ', productName: 'Hộp giảm tốc bánh răng dùng cho băng tải (mô tả cũ đã sửa)',
+    technicalSpec: 'Thuộc nhóm 84.83, mã số 8483.40.90.', year: 2021, outcome: '84834090',
+    sourceFile: 'community:tb-tchq-ren/tracuuhs-lot-ren.json',
+  }];
+  writeFileSync(join(dataDir, 'precedents.json'), JSON.stringify(cur));
+}
+spawnSync(process.execPath, [join(root, 'scripts', 'merge-community.mjs'), '--community-dir', communityDir, '--data-dir', dataDir], { encoding: 'utf8' });
+const après3 = JSON.parse(readFileSync(join(dataDir, 'precedents.json'), 'utf8'));
+assert('đổi tên tệp + sửa mô tả: nâng cấp tại chỗ, không nhân bản', après3['84834090']?.length === 1, `n=${après3['84834090']?.length}`);
+assert('đổi tên tệp + sửa mô tả: lý do được thay bằng bản đủ', String(après3['84834090']?.[0]?.technicalSpec || '').length > 150 && /8483\.40\.90/.test(après3['84834090'][0].technicalSpec));
+assert('đổi tên tệp: tự cập nhật tên tệp nguồn mới', après3['84834090'][0].sourceFile === 'community:tb-tchq-ren/legal-customs-lot-ren.json', après3['84834090'][0].sourceFile);
+
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
