@@ -31,9 +31,11 @@ jobs:
   precedents-coverage:
     name: "Đảm bảo precedents.json không mất hsCode keys"
     runs-on: ubuntu-latest
-    if: >-
-      github.event_name == 'pull_request' &&
-      contains(github.event.pull_request.changed_files, 'data/precedents.json')
+    # Chỉ chạy trên PR. Trigger paths ở cấp workflow đã lọc sẵn (data/**, schemas/**,
+    # validate-community) — hễ job này chạy tức là có đụng dữ liệu, nên chạy guard
+    # không cần điều kiện thêm. (Điều kiện cũ dùng changed_files — vốn là SỐ ĐẾM tệp,
+    # không phải danh sách đường dẫn — nên contains() luôn false, job chết lặng.)
+    if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -57,10 +59,7 @@ jobs:
   community-vs-precedents:
     name: "Đảm bảo tất cả records trong community có trong precedents"
     runs-on: ubuntu-latest
-    if: >-
-      github.event_name == 'pull_request' &&
-      (contains(github.event.pull_request.changed_files, 'data/community/')
-       || contains(github.event.pull_request.changed_files, 'data/precedents.json'))
+    if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
