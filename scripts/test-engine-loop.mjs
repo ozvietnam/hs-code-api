@@ -171,5 +171,29 @@ check('vòng 1 lỗi tạm thời → nextAction RETRY', r.nextAction?.type === 
   check('prompt vòng 2 không chứa dữ liệu sổ tay (chưa đổi prompt)', !/yKienWco|canGiaiTrinh|wco-op\./.test(calls.map((c) => c.user).join('\n')));
 }
 
+
+
+// ── Bước 12 (C-2): tín hiệu HS người bán MiC — LUẬT SẮT: hint sai KHÔNG kéo mã, hint chỉ là chú thích ──
+{
+  const micMod2 = require('../lib/mic-lookup.js');
+  const saved2 = micMod2.micLookup;
+  const PG2 = (shop, hsCode, name) => ({ shop, url: `https://${shop}.en.made-in-china.com/product/x/y.html`, name, hsCode, props: {} });
+  const R1_MIC = { product: { nameVi: 'quạt thông gió gia dụng', nameEn: 'household exhaust fan', purpose: 'hút khí', mechanism: 'điện', material: 'nhựa', form: 'hoàn chỉnh', model: 'HY-30', evidence: {} }, hypotheses: [{ chapter: '84', heading4: '8414', subheading6: '841451', why: 'quạt có động cơ', confidence: 70 }], verify: { searchVi: ['quạt'], codes8: ['84145199'], micQuery: null, unknowns: [] } };
+  const CHOT_8414 = { decision: 'CHOT', hs: '84145199', confidence: 80, reason: 'quạt thông gió có động cơ điện — nhóm 84.14', basis: [{ stream: 'SAN_PHAM', claim: 'quạt hút', evidence: '换气扇' }], conditions: [], alternatives: [], questions: [] };
+  // 3 shop đồng thuận khai 8479.89.98 (SAI — thực tế là máy công nghiệp khác) trong khi AI đúng 8414
+  micMod2.micLookup = async (q) => ({ query: q, searched: true, pages: [PG2('s1', '8479899800', 'Exhaust Fan'), PG2('s2', '8479899800', 'Fan 30W'), PG2('s3', '8479899800', 'Vent Fan')], consensus: null });
+  // Vòng 2 bị cổng made-in-china CHẶN hỏi lại (đúng thiết kế — hint buộc AI đối chiếu, không tự đổi mã);
+  // vòng 3 AI giải trình xong và vẫn chốt 84.14 → hint sai KHÔNG kéo mã.
+  const CHOT_8414_DA_GIAI_TRINH = { ...CHOT_8414, reason: 'quạt thông gió gia dụng có động cơ điện — nhóm 84.14; đã đối chiếu NCC/made-in-china ghi 8479: đó là nhóm máy công nghiệp khác, không phải quạt gia dụng' };
+  let rMic = await run({ tenHang: '家用排气扇 厨房换气扇', nameZh: '家用排气扇 厨房换气扇', specs: '功率: 30W; 材质: 塑料', model: 'HY-30' }, [R1_MIC, CHOT_8414, CHOT_8414_DA_GIAI_TRINH]);
+  check('C-2: hint MiC sai (3 shop 8479) KHÔNG kéo mã — cổng chỉ bắt AI giải trình, AI giữ 84.14', rMic.results[0]?.hs === '84145199', JSON.stringify(rMic.results?.[0]?.hs));
+  check('C-2: tín hiệu vẫn hiện trong phản hồi kèm ghi chú ranh giới', Boolean(rMic.dossier?.mic?.signal?.ghiChu) && /TÍN HIỆU/i.test(rMic.dossier.mic.signal.ghiChu), JSON.stringify(rMic.dossier?.mic ?? null).slice(0, 220));
+  const { micSignal: micSignalFn, GHI_CHU } = require('../lib/mic-signal.js');
+  const sig = micSignalFn('8479899800');
+  check('C-2: ánh xạ 10 số TQ → PN6 847989 + dòng VN ứng viên', sig?.hs6 === '847989' && Array.isArray(sig.dong8UngVien) && sig.dong8UngVien.length > 0 && sig.loai === 'SIGNAL', JSON.stringify(sig).slice(0, 120));
+  check('C-2: mã rác → null; module không xuất hàm chốt mã', micSignalFn('abc') === null && Object.keys(require('../lib/mic-signal.js')).every((k) => !/chot|override|final/i.test(k)));
+  micMod2.micLookup = saved2;
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);

@@ -214,6 +214,14 @@ function mergePrecedent(precedents, seen, doc, rec, fileRel, stats) {
       legacyHsReasoning: rec.attributes.legacyHsReasoning || null,
       legacyHsNote: rec.attributes.legacyHsNote || null,
     } : {}),
+    // Bước 12 (B-3): tiền lệ quốc tế — dấu vết lấy dữ liệu + giấy phép nguồn; verbatimText giữ ở tệp nộp.
+    ...(rec.attributes?.instrumentType ? {
+      instrumentType: rec.attributes.instrumentType,
+      country: rec.attributes.country || null,
+      snapshotHash: rec.snapshotHash || null,
+      retrievedAt: rec.retrievedAt || null,
+      sourceLicense: rec.source?.license || null,
+    } : {}),
     confusedWith: rec.confusedWith || [],
     ...(rec.source?.issuedDate ? { issuedDate: rec.source.issuedDate } : {}),
     ...(rec.source?.url ? { sourceUrl: rec.source.url } : {}),
@@ -378,7 +386,7 @@ for (const full of files) {
   if (!Array.isArray(doc.records) || !doc.records.length) continue;
   stats.files += 1;
 
-  if (doc.kind === 'precedent') {
+  if (doc.kind === 'precedent' || doc.kind === 'intl-precedent') {
     for (const rec of doc.records) mergePrecedent(precedents, seen, doc, rec, fileRel, stats);
   } else if (doc.kind === 'conflict-table') {
     for (const rec of doc.records) mergeConflictHints(conflicts, rec, doc, fileRel, stats);

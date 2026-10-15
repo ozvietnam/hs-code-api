@@ -127,6 +127,24 @@ writeFileSync(join(communityDir, 'conflict-hint.json'), JSON.stringify({
   }],
 }));
 
+// ── Bước 12 (B-3): intl-precedent — trường quốc tế + dấu vết lấy dữ liệu phải vào kho ──
+writeFileSync(join(communityDir, 'intl-thu.json'), JSON.stringify({
+  kind: 'intl-precedent',
+  contributor: { name: 'zcode-cbp-crawler', github: 'ozvietnam' },
+  license: 'CC-BY-SA-4.0',
+  submittedAt: '2026-10-15T00:00:00Z',
+  records: [{
+    hsCode: '847989',
+    description: 'CBP CROSS M82907: anaerobic and hypoxia workstations',
+    source: { type: 'CBP-CROSS-RULING', reference: 'M82907', url: 'https://rulings.cbp.gov/ruling/M82907', issuedDate: '2006-04-24', license: 'public-domain-us-gov' },
+    attributes: { instrumentType: 'RULING', country: 'US' },
+    reasonVi: 'The applicable subheading for the anaerobic workstation will be 8479.89.98.',
+    evidence: { soHieu: 'M82907', ketLuan: 'The applicable subheading will be 8479.89.98.' },
+    snapshotHash: 'a'.repeat(64),
+    retrievedAt: '2026-10-15',
+  }],
+}));
+
 const run = spawnSync(process.execPath, [
   join(root, 'scripts', 'merge-community.mjs'),
   '--community-dir', communityDir,
@@ -226,6 +244,14 @@ assert('đổi tên tệp + sửa mô tả: nâng cấp tại chỗ, không nhâ
 assert('đổi tên tệp + sửa mô tả: lý do được thay bằng bản đủ', String(après3['84834090']?.[0]?.technicalSpec || '').length > 150 && /8483\.40\.90/.test(après3['84834090'][0].technicalSpec));
 assert('đổi tên tệp: tự cập nhật tên tệp nguồn mới', après3['84834090'][0].sourceFile === 'community:tb-tchq-ren/legal-customs-lot-ren.json', après3['84834090'][0].sourceFile);
 
+
+// B-3: kiểm intl-precedent vào kho với đủ trường quốc tế
+{
+  const kho = JSON.parse(readFileSync(join(dataDir, 'precedents.json'), 'utf8'));
+  const itl = (kho['847989'] || []).find((p) => p.tbTchqNumber === 'M82907');
+  assert('intl-precedent vào kho theo kind mới', !!itl, JSON.stringify(kho['847989'] || []).slice(0, 200));
+  assert('intl: đủ instrumentType/country/snapshotHash/retrievedAt/sourceLicense', itl?.instrumentType === 'RULING' && itl?.country === 'US' && /^[0-9a-f]{64}$/.test(itl?.snapshotHash || '') && itl?.retrievedAt === '2026-10-15' && itl?.sourceLicense === 'public-domain-us-gov', JSON.stringify(itl).slice(0, 260));
+}
 
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
