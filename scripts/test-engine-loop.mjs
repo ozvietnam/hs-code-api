@@ -29,6 +29,14 @@ check('câu trích đặc tính kiểm với hồ sơ GỐC → verified', r.res
 check('vòng 2 nhận chú giải + dòng biểu thuế nhóm 8201', /NHÓM 8201/.test(calls[1].user) && /82019000/.test(calls[1].user));
 check('có ECUS, dossier 3 thứ tiếng', r.ecus && r.dossier.product.nameEn === 'telescopic pole fruit picker knife');
 
+// 0b. Đo ms từng pha (backlog 09 bước 0): phases có r1Ms/gatherMs/llmMs hợp lệ, tổng khớp engine.ms.
+{
+  const ph = r.engine.phases || {};
+  const ok = ['r1Ms', 'gatherMs', 'llmMs'].every((k) => Number.isFinite(ph[k]) && ph[k] >= 0);
+  check('engine.phases đo r1/gather/llm (ms)', ok, JSON.stringify(ph));
+  check('engine.ms ≥ tổng các pha', Number.isFinite(r.engine.ms) && r.engine.ms >= ph.r1Ms + ph.gatherMs + ph.llmMs - 5, JSON.stringify([r.engine.ms, ph]));
+}
+
 // 2. Chốt chặn "trừ plastic" → vòng 3 sửa mã
 const R1_TOY = { product: { nameVi: 'đồ chơi súng ngón tay in 3D', nameEn: '3D printed finger gun toy keychain', nameZh: '3D打印钥匙扣手指枪', purpose: 'đồ chơi giải trí bắn bi', mechanism: 'cơ-tay', material: 'nhựa PLA', evidence: { material: '材质: 塑料' } }, hypotheses: [{ chapter: '95', heading4: '9503', subheading6: '950300', why: 'đồ chơi khác', confidence: 85 }], verify: { searchVi: ['đồ chơi súng nhựa'], codes8: ['95030050', '95030099'], micQuery: null, unknowns: [] } };
 const TOY = { tenHang: '3D打印钥匙扣可发射小球解压玩具手指枪', nameZh: '3D打印钥匙扣可发射小球解压玩具手指枪', specs: '材质: 塑料; 工艺: 3D打印' };
