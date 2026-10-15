@@ -66,10 +66,15 @@ function walkStrings(file, node, path = '') {
 }
 
 // --- LỚP 2: kiểm schema (thủ công, không cần thư viện) -----------------------
-const KINDS = new Set(['precedent', 'correction', 'conflict-table', 'product-example']);
+const KINDS = new Set(['precedent', 'correction', 'conflict-table', 'product-example', 'intl-precedent']);
 const SOURCE_TYPES = new Set([
   'TB-TCHQ', 'van-ban-phap-luat', 'to-khai-da-thong-quan', 'chu-giai-WCO', 'kinh-nghiem-thuc-te',
+  // Bước 12 (B-3): tiền lệ quốc tế — mọi crawler mirror/cache-on-demand nộp qua đây
+  'CBP-CROSS-RULING', 'ABF-TCO', 'EU-BTI', 'UK-BTI', 'CA-CRA-RULING', 'WCO-OP',
 ]);
+const INSTRUMENT_TYPES = new Set(['RULING', 'TCO', 'BTI', 'OP']);
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+const SHA256 = /^[0-9a-f]{64}$/;
 const HS_RE = /^[0-9]{4}([0-9]{2}([0-9]{2})?)?$/;
 const GIR_RE = /^GIR ?[1-6]( ?\([abc]\))?$/;
 
@@ -114,6 +119,36 @@ function validateShape(file, doc) {
     }
     if (r?.girRule && !GIR_RE.test(r.girRule)) {
       problem(file, `${at}.girRule sai định dạng — dùng dạng "GIR 3(b)"`);
+    }
+    // Bước 12 (B-3) — tiền lệ quốc tế: phải đủ dấu vết lấy dữ liệu + giấy phép nguồn.
+    if (doc.kind === 'intl-precedent') {
+      if (!INSTRUMENT_TYPES.has(r?.attributes?.instrumentType)) {
+        problem(file, `${at}.attributes.instrumentType phải là một trong: ${[...INSTRUMENT_TYPES].join(', ')} (bước 12 B-3)`);
+      }
+      if (!/^[A-Z]{2}$|^WCO$/.test(String(r?.attributes?.country || ''))) {
+        problem(file, `${at}.attributes.country phải mã ISO 2 chữ (US, AU, EU…) hoặc 'WCO'`);
+      }
+      if (!SHA256.test(String(r?.snapshotHash || ''))) {
+        problem(file, `${at}.snapshotHash phải là sha256 hex của nội dung gốc đã lấy (bước 12 nguyên tắc 3)`);
+      }
+      if (!ISO_DATE.test(String(r?.retrievedAt || ''))) {
+        problem(file, `${at}.retrievedAt phải ngày ISO YYYY-MM-DD`);
+      }
+      if (!r?.source?.license) {
+        problem(file, `${at}.source.license bắt buộc — ghi giấy phép của nguồn (vd 'public-domain-us-gov', 'attribution-commonwealth-au')`);
+      }
+      if (!r?.source?.url) {
+        problem(file, `${at}.source.url bắt buộc — nguồn quốc tế phải mở lại được`);
+      }
+      if (!r?.source?.reference) {
+        problem(file, `${at}.source.reference bắt buộc (số hiệu ruling/TCO/BTI/opinion)`);
+      }
+      if (!r?.evidence?.ketLuan) {
+        problem(file, `${at}.evidence.ketLuan bắt buộc — câu kết luận nguyên văn của nguồn`);
+      }
+      if (r?.verbatimText && String(r.verbatimText).length > 8000) {
+        problem(file, `${at}.verbatimText tối đa 8000 ký tự — toàn văn dài giữ ở kho riêng, không trong tệp nộp`);
+      }
     }
     if (doc.kind === 'correction' && !r?.correctionOf?.file) {
       problem(file, `${at}: kind=correction phải có correctionOf.file chỉ ra dữ liệu nào đang sai`);

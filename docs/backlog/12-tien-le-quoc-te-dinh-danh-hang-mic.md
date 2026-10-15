@@ -4,7 +4,7 @@
 > (CEO phản biện 2 vòng: lượt 1 sai 8479.89.69 vì xếp mã khi chưa bóc nguyên lý
 > hoạt động; lượt 2+3 sửa thành 8421.39.90 bằng chuỗi bằng chứng quốc tế phải tự
 > ra ngoài tìm) + **chỉ thị CEO bổ sung nguồn Made-in-China 15/10 chiều**.
-> Trạng thái: **KẾ HOẠCH — chờ phân bổ.**
+> Trạng thái: **ĐANG TRIỂN KHAI — sóng P0 (B-3, C-2, C-4) xong 15/10; sóng kế: A-1 + A-2.**
 
 ## ĐÃ LÀM (thực chứng 15/10, không làm trùng lại)
 
@@ -76,7 +76,7 @@ theo schema `precedents.json` + trường mở rộng.
 |---|---|---|---|---|
 | B-1 | **Crawler CBP CROSS**: khảo sát cách enumerate danh sách ruling ID (sitemap/search API) → bóc qua `/api/ruling/{ID}` → lọc nhóm 84+85 + từ khoá ngành → `data/community/intl-precedents/cbp/*.json` | P1 | 2–3 ngày | ≥1.000 ruling chéo ngành máy móc; mẫu M82907 trong kho khớp nguyên văn API; validate-community 0 lỗi |
 | B-2 | **Crawler ABF TCO**: duyệt `?tcn=` toàn bộ mã 6 số liên quan (84, 85, 90…), headless, parse bảng TCO → lô `abf/*.json` kèm attribution | P1 | 2 ngày | Toàn bộ TCO nhóm 84+85 trong kho; TCO 1679759 nguyên văn; license ghi đúng |
-| B-3 | **`merge-community` nhận loại mới `intl-precedent`**: schema (country, instrumentType: RULING/TCO/BTI/OP, snapshotHash, retrievedAt, license, verbatimText) + validate + CI sync-doc-counts như luật TB-TCHQ | P0 (chặn B-1/B-2 gộp) | 1–2 ngày | Lô thử 10 bản ghi qua đầy đủ validate → merge → test xanh |
+| B-3 ✅ (15/10) | **`merge-community` nhận loại mới `intl-precedent`**: schema (country, instrumentType: RULING/TCO/BTI/OP, snapshotHash, retrievedAt, license, verbatimText) + validate + CI sync-doc-counts như luật TB-TCHQ | P0 (chặn B-1/B-2 gộp) | 1–2 ngày | Lô thử 10 bản ghi qua đầy đủ validate → merge → test xanh |
 | B-4 | **Tìm kiếm chéo nguồn theo mô tả chức năng**: `/api/precedents` mở rộng index tiền lệ quốc tế, query tiếng Anh chức năng ("sealed chamber gas purification") trả WCO OP + CBP + ABF + TB-TCHQ xếp hạng cùng bảng | P1 | 2–3 ngày | Truy vấn case glovebox trả đúng bộ 3 (WCO 8421.39/1, M82907, TCO 1679759) trong top 5 |
 | B-5 | **Soát ảnh WCO OP** (`daSoatAnh`): đối chiếu bản scan Compendium gốc cho các opinion đang được dẫn trong hồ sơ thật; dùng nguồn công khai corroborate làm NGUON_B tạm | P2 | theo lô | Opinion 8421.39/1 đạt daSoatAnh=true kèm ảnh gốc |
 | B-6 | **Cache-on-demand EU BTI/UK/Canada**: fetcher recipe từng nguồn (URL pattern, UA, extraction, fallback) + cache TTL 30 ngày + snapshotHash | P2 | 3–4 ngày | Truy vấn "glove box" BTI trả kết quả có nhãn nguồn + ngày lấy |
@@ -94,9 +94,9 @@ hàng, model, và các sản phẩm có tính năng tương tự**; trang cửa 
 | ID | Việc | Ưu tiên | Ước lượng | Nghiệm thu |
 |---|---|---|---|---|
 | C-1 | **Port bộ bóc MiC sang máy chủ**: chuyển `src/lib/capture/made-in-china.ts` (ozsource — thuần, test bằng fixture) sang crawler Node (linkedom/cheerio), giữ nguyên `ProductPayload` schemaVersion 2 (`specs, hsCodeHint, price, minOrderQty, shop, gallery, skuId`); thêm adapter **tìm kiếm** MiC (tên hàng/model/similar) chứ không chỉ trang chi tiết | P1 | 3–4 ngày | Crawl 100 URL sản phẩm mẫu (đủ ngành) → 0 lỗi schema; fixture test port từ ozsource sang giữ nguyên |
-| C-2 | **Lớp tín hiệu MiC**: bảng map HS 10 số TQ → ứng viên 6 số WCO → dòng 8 VN; ghi vào kho là `signal` (rank hint) KHÔNG phải evidence; rule chặn trong engine: không bao giờ chốt mã chỉ vì MiC hsCodeHint | P0 (chặn dùng sai bằng chứng) | 2 ngày | Test: classify có MiC hint sai vẫn không bị kéo theo; hint đúng thì ranking cải thiện đo được trên 80 mẫu vàng |
+| C-2 ✅ (15/10) | **Lớp tín hiệu MiC**: bảng map HS 10 số TQ → ứng viên 6 số WCO → dòng 8 VN; ghi vào kho là `signal` (rank hint) KHÔNG phải evidence; rule chặn trong engine: không bao giờ chốt mã chỉ vì MiC hsCodeHint | P0 (chặn dùng sai bằng chứng) | 2 ngày | Test: classify có MiC hint sai vẫn không bị kéo theo; hint đúng thì ranking cải thiện đo được trên 80 mẫu vàng |
 | C-3 | **Tương tự theo tính năng (similar products)**: từ khung thuộc tính tìm sản phẩm MiC cùng tính năng → sinh từ vựng chức năng EN cho bước tra tiền lệ + `viDu` cho dòng "Loại khác" (đi luồng duyệt lô, không bao giờ DETERMINISTIC — đúng luật #195) | P2 | 3 ngày | 20 dòng "Loại khác" hay gặp có ≥3 viDu có nguồn; máy kiểm trích dẫn pass |
-| C-4 | **Tuân thủ crawl MiC**: tôn trọng robots.txt, giới hạn QPS, cache riêng TTL dài, chỉ giữ trường dữ kiện + URL nguồn + retrievedAt (không sao chép gallery/mô tả dài vào kho công khai — dữ kiện số liệu không có SHTT nhưng nội dung sáng tạo có) | P0 (chặn C-1 chạy) | 0,5 ngày | Crawler có rate limiter + robots check trong code + test |
+| C-4 ✅ (15/10) | **Tuân thủ crawl MiC**: tôn trọng robots.txt, giới hạn QPS, cache riêng TTL dài, chỉ giữ trường dữ kiện + URL nguồn + retrievedAt (không sao chép gallery/mô tả dài vào kho công khai — dữ kiện số liệu không có SHTT nhưng nội dung sáng tạo có) | P0 (chặn C-1 chạy) | 0,5 ngày | Crawler có rate limiter + robots check trong code + test |
 
 ### Thứ tự khởi động đề xuất
 
