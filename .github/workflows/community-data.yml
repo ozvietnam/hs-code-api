@@ -7,12 +7,14 @@ on:
   pull_request:
     paths:
       - 'data/community/**'
+      - 'data/precedents.json'
       - 'schemas/**'
       - 'scripts/validate-community.mjs'
   push:
     branches: [main]
     paths:
       - 'data/community/**'
+      - 'data/precedents.json'
 
 jobs:
   validate:
@@ -24,6 +26,44 @@ jobs:
           node-version: '22'
       - name: Kiểm schema + lọc thông tin khách hàng
         run: node scripts/validate-community.mjs
+
+  # Bug tìm thấy ở PR #293: mất 20 hsCode keys, 53 records do agent tự rebase
+  precedents-coverage:
+    name: "Đảm bảo precedents.json không mất hsCode keys"
+    runs-on: ubuntu-latest
+    if: >-
+      github.event_name == 'pull_request' &&
+      contains(github.event.pull_request.changed_files, 'data/precedents.json')
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Backup baseline
+        run: |
+          mkdir -p .backups
+          cp data/precedents.json .backups/precedents-baseline.json
+      - name: Verify không mất hsCode
+        run: |
+          node scripts/ci-check-precedents-coverage.mjs --baseline .backups/precedents-baseline.json
+
+  # Bug tìm thấy ở PR #293: 53 records trong community không có trong precedents
+  community-vs-precedents:
+    name: "Đảm bảo tất cả records trong community có trong precedents"
+    runs-on: ubuntu-latest
+    if: >-
+      github.event_name == 'pull_request' &&
+      (contains(github.event.pull_request.changed_files, 'data/community/tb-tchq/legal-customs-2026-10-13-goi-')
+       || contains(github.event.pull_request.changed_files, 'data/precedents.json'))
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify community ↔ precedents consistency
+        run: node scripts/ci-check-community-vs-precedents.mjs
 
   dco:
     runs-on: ubuntu-latest
