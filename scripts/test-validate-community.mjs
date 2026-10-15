@@ -134,6 +134,42 @@ assert('intl: source.license thiếu bị chặn', /source\.license bắt buộc
 assert('intl: source.url thiếu bị chặn', /source\.url bắt buộc/.test(run('intl-nourl', intlBase({ source: { type: 'CBP-CROSS-RULING', reference: 'M82907', license: 'public-domain-us-gov', issuedDate: '2006-04-24' } })).out));
 assert('intl: verbatimText >8000 ký tự bị chặn', /verbatimText tối đa 8000/.test(run('intl-toolong', intlBase({ verbatimText: 'x'.repeat(8001) })).out));
 
+// ── Bước 12 (B-3): intl-precedent — instrumentType TCO (ABF) ───────────────────
+const tcoBase = (overrides = {}) => ({
+  kind: 'intl-precedent',
+  contributor: { name: 'zcode-abf-crawler', github: 'ozvietnam' },
+  license: 'CC-BY-SA-4.0',
+  submittedAt: '2026-10-15T00:00:00Z',
+  records: [{
+    hsCode: '842139',
+    description: 'ABF TCO 1679759: GLOVE BOXES, laboratory — hermetically sealed enclosures with glove openings and gas purification',
+    source: {
+      type: 'ABF-TCO',
+      reference: '1679759',
+      url: 'https://www.abf.gov.au/tariff-classification-subsite/Pages/TariffConcessionOrders.aspx?ch=84',
+      issuedDate: '2016-12-20',
+      license: 'attribution-commonwealth-au',
+    },
+    attributes: { instrumentType: 'TCO', country: 'AU' },
+    reasonVi: 'TCO Úc 1679759 — hộp găng tay phòng thí nghiệm kín khí có hệ lọc khí giảm ẩm/O₂; phân loại 8421.39.90; hiệu lực 01/01/2017 (quyết định 20/12/2016).',
+    evidence: {
+      soHieu: '1679759',
+      ketLuan: 'GLOVE BOXES, laboratory, being hermetically sealed enclosures with glove openings, incorporating a gas purification system for the reduction of moisture and oxygen content (Tariff Classification 8421.39.90; operative 01/01/2017; decision 20/12/2016)',
+    },
+    snapshotHash: '85e2f9468534b6a244f711b2975f759a01d67529e799a45d65c9131416a8abb6',
+    retrievedAt: '2026-10-15',
+    ...overrides,
+  }],
+});
+r = run('tco-ok', tcoBase());
+assert('intl TCO: bản đầy đủ (ABF) qua validate', r.status === 0, r.out);
+r = run('tco-no-snapshotHash', tcoBase({ snapshotHash: undefined }));
+assert('intl TCO: thiếu snapshotHash bị chặn', /snapshotHash phải là sha256 hex/.test(r.out), r.out);
+r = run('tco-no-license', tcoBase({ source: { type: 'ABF-TCO', reference: '1679759', url: 'https://www.abf.gov.au/tariff-classification-subsite/Pages/TariffConcessionOrders.aspx?ch=84', issuedDate: '2016-12-20' } }));
+assert('intl TCO: thiếu source.license bị chặn', /source\.license bắt buộc/.test(r.out), r.out);
+r = run('tco-no-ketLuan', tcoBase({ evidence: { soHieu: '1679759' } }));
+assert('intl TCO: thiếu evidence.ketLuan bị chặn', /evidence\.ketLuan bắt buộc/.test(r.out), r.out);
+
 // ── Bước 12 (B-3): mic-product — ProductPayload v2 schema nghiêm ngặt ──────────
 const mpDoc = (records, submittedAt = '2026-10-15', extras = {}) => ({
   kind: 'mic-product',
