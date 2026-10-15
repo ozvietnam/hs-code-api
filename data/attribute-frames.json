@@ -5,13 +5,15 @@
   "nguyenLyHoatDong": { "labelVi": "Nguyên lý hoạt động", "ecusHint": "cơ chế biến đổi/công nghệ lõi (vd: quay ly tâm, khuếch tán siêu âm, làm lạnh nén hơi)", "ghiChu": "Bắt buộc với chương máy móc — bài học glovebox lượt 1 sai vì xếp mã khi chưa bóc nguyên lý (15/10)" },
   "cauThanhModule": { "labelVi": "Cấu thành module", "ecusHint": "cac module chính (vd: buồng kín + găng nhúng + bộ lọc khí O₂/ẩm)" },
   "chucNangChinh": { "labelVi": "Chức năng chính", "ecusHint": "mục đích sử dụng cốt lõi theo lời NSX" },
-  "nguon": { "labelVi": "Nguồn kiểm chứng", "dang": "mảng {loai: 'nsx'|'phu', url, trich, retrievedAt}", "ghiChu": "tam giác kiểm chứng do MÁY gán nhãn (lib/attribute-frames.js) — AI chỉ đề xuất nguồn" }
+  "tenDongNghia": { "labelVi": "Tên đồng nghĩa", "dang": "{vi: string[], en: string[], zh: string[]}", "ecusHint": "các tên gọi khác của cùng mặt hàng: tên thương mại, tên kỹ thuật, tên tiếng Anh/Trung trên nhãn hoặc catalogue", "ghiChu": "#308: cụm EN phải dẫn nguồn tầng pháp lý (data/wco-hs-international.csv mô tả EN, data/wco-op/opinions.json trường text = nguyenVanEn) HOẶC xuất hiện trong câu trich của nguon[] đã khai — máy kiểm kiemTrichDanEn LOẠI cụm không qua kiểm; KHÔNG tự chế từ. sen-2022.json + explanatory-notes.json là bản tiếng Việt nên không cấp cụm EN." },
+  "tuVungChucNang": { "labelVi": "Từ vựng chức năng", "dang": "{en: string[], zh: string[]}", "ecusHint": "từ khoá chức năng/công dụng EN-ZH để tra cứu đối chiếu (vd: vacuum sealing / 真空包装)", "ghiChu": "#308: luật nguồn EN như tenDongNghia — qua máy kiểm trích dẫn, không qua = loại." },
+  "nguon": { "labelVi": "Nguồn kiểm chứng", "dang": "mảng {loai: 'nsx'|'phu', url, trich, retrievedAt}", "ghiChu": "tam giác kiểm chứng do MÁY gán nhãn (lib/attribute-frames.js) — AI chỉ đề xuất nguồn. retrievedAt (YYYY-MM-DD) bắt buộc (#308)" }
  },
  "chuong": {
-  "84": { "titleVi": "Máy móc, thiết bị cơ khí", "boSungBatBuoc": ["nguyenLyHoatDong", "chucNangChinh"], "tuKhoa": ["máy", "thiết bị", "bơm", "van", "động cơ", "máy nén", "bộ lọc", "hộp giảm"] },
-  "85": { "titleVi": "Máy móc, thiết bị điện", "boSungBatBuoc": ["nguyenLyHoatDong", "chucNangChinh"], "tuKhoa": ["điện", "motor", "biến áp", "nguồn", "cảm biến", "board mạch"] },
-  "90": { "titleVi": "Dụng cụ đo, kiểm tra chính xác", "boSungBatBuoc": ["nguyenLyHoatDong", "chucNangChinh", "doChinhXac"], "tuKhoa": ["đo", "cân", "kiểm tra", "phân tích", "thí nghiệm", "y tế"] },
-  "39": { "titleVi": "Nhựa và sản phẩm nhựa", "boSungBatBuoc": ["chatLieuCuThe"], "tuKhoa": ["nhựa", "plastic", "PP", "PE", "PVC", "silicone"] },
-  "94": { "titleVi": "Đồ nội thất, giường, đèn", "boSungBatBuoc": ["chatLieuCuThe"], "tuKhoa": ["nội thất", "đèn", "bàn", "ghế", "giường", "tủ"] }
+  "84": { "titleVi": "Máy móc, thiết bị cơ khí", "boSungBatBuoc": ["nguyenLyHoatDong", "chucNangChinh"], "boSungKhuyenNghi": ["tenDongNghia", "tuVungChucNang"], "tuKhoa": ["máy", "thiết bị", "bơm", "van", "động cơ", "máy nén", "bộ lọc", "hộp giảm"] },
+  "85": { "titleVi": "Máy móc, thiết bị điện", "boSungBatBuoc": ["nguyenLyHoatDong", "chucNangChinh"], "boSungKhuyenNghi": ["tenDongNghia", "tuVungChucNang"], "tuKhoa": ["điện", "motor", "biến áp", "nguồn", "cảm biến", "board mạch"] },
+  "90": { "titleVi": "Dụng cụ đo, kiểm tra chính xác", "boSungBatBuoc": ["nguyenLyHoatDong", "chucNangChinh", "doChinhXac"], "boSungKhuyenNghi": ["tenDongNghia", "tuVungChucNang"], "tuKhoa": ["đo", "cân", "kiểm tra", "phân tích", "thí nghiệm", "y tế"] },
+  "39": { "titleVi": "Nhựa và sản phẩm nhựa", "boSungBatBuoc": ["chatLieuCuThe"], "boSungKhuyenNghi": ["tenDongNghia", "tuVungChucNang"], "tuKhoa": ["nhựa", "plastic", "PP", "PE", "PVC", "silicone"] },
+  "94": { "titleVi": "Đồ nội thất, giường, đèn", "boSungBatBuoc": ["chatLieuCuThe"], "boSungKhuyenNghi": ["tenDongNghia", "tuVungChucNang"], "tuKhoa": ["nội thất", "đèn", "bàn", "ghế", "giường", "tủ"] }
  }
 }
