@@ -129,6 +129,12 @@ function existingKeys(precedents) {
 const THIN_REASON = 150;
 const normRef = (s) => String(s || '').toUpperCase().replace(/\s+/g, '');
 
+// Tệp nguồn đổi tên sau khi đã gộp (tracuuhs-2026-10-13-goi-* → legal-customs-…) làm phép so
+// theo sourceFile trượt: bản nộp lại đầy đủ hơn bị xếp nhầm là "trùng khoá" nên kho giữ mãi
+// bản cũ (đôi khi bị cắt cụt). So tên tệp bỏ tiền tố để nhận ra vẫn là cùng một tệp nguồn.
+const tenTepNguon = (s) => String(s || '').replace(/^community:/, '').replace(/(^|\/)(tracuuhs|legal-customs)-/, '$1x-');
+const cungTepNguon = (a, b) => a === b || tenTepNguon(a) === tenTepNguon(b);
+
 function isThin(p) {
   return p.sourceFile === 'tb_tchq_index.json' || String(p.technicalSpec || '').length < THIN_REASON;
 }
@@ -217,7 +223,7 @@ function mergePrecedent(precedents, seen, doc, rec, fileRel, stats) {
   // lại toàn văn) → không thêm lại. Thiếu bước này thì bản mỏng bị xoá ở lần gộp này rồi lại được
   // thêm từ tệp gốc của nó ở lần sau — kho dao động mỗi lần chạy.
   if (findBetter(precedents[hs], entry)) {
-    const own = precedents[hs].findIndex((p) => p.sourceFile === entry.sourceFile
+    const own = precedents[hs].findIndex((p) => cungTepNguon(p.sourceFile, entry.sourceFile)
       && dedupKey(hs, { source: { reference: p.tbTchqNumber }, description: p.productName }) === key);
     if (own >= 0) {
       precedents[hs].splice(own, 1);
@@ -250,7 +256,19 @@ function mergePrecedent(precedents, seen, doc, rec, fileRel, stats) {
   }
   // Cùng TỆP NGUỒN nộp lại bản đầy đủ hơn (thêm loaiTB / confusedWith / lý do dài hơn) — luật 13/10/2026
   // để nâng cấp tại chỗ mà không nhân bản; nộp lại y hệt thì skip như cũ.
-  const ownIdx = precedents[hs].findIndex((p) => p.sourceFile === entry.sourceFile && keyOf(p) === key);
+  let ownIdx = precedents[hs].findIndex((p) => cungTepNguon(p.sourceFile, entry.sourceFile) && keyOf(p) === key);
+  if (ownIdx < 0) {
+    // Khoá mô tả (40 ký tự đầu) đổi do sửa mô tả tại tệp nguồn — vẫn là cùng bản ghi nếu cùng tệp
+    // nguồn + cùng số hiệu + cùng năm: chọn ứng viên trùng mặt hàng, hoặc ứng viên duy nhất.
+    const hàng = precedents[hs]
+      .map((p, i) => ({ p, i }))
+      .filter(({ p }) => cungTepNguon(p.sourceFile, entry.sourceFile)
+        && normRef(p.tbTchqNumber) === normRef(entry.tbTchqNumber)
+        && !(p.year && entry.year && Number(p.year) !== Number(entry.year)));
+    const trúng = hàng.find(({ p }) => sameGoods(p.productName, entry.productName))
+      || (hàng.length === 1 ? hàng[0] : null);
+    if (trúng) ownIdx = trúng.i;
+  }
   if (ownIdx >= 0) {
     const old = precedents[hs][ownIdx];
     const giàuHơn = (entry.loaiTB && !old.loaiTB)
