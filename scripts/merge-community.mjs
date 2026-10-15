@@ -193,6 +193,14 @@ function mergePrecedent(precedents, seen, doc, rec, fileRel, stats) {
     sourceType: rec.source?.type || null,
     girRule: rec.girRule || null,
     ...(rec.attributes?.loaiTB ? { loaiTB: rec.attributes.loaiTB } : {}),
+    // Các field nguyên tắc phân loại (thu thập từ TB gốc)
+    ...(rec.attributes?.nguyen_tac_phan_loai ? { nguyenTacPhanLoai: rec.attributes.nguyen_tac_phan_loai } : {}),
+    ...(rec.attributes?.nhom_hs ? { nhomHs: rec.attributes.nhom_hs } : {}),
+    ...(rec.attributes?.hs_code_goc ? { hsCodeGoc: rec.attributes.hs_code_goc } : {}),
+    ...(rec.attributes?.loai_hang_ma ? { loaiHangMa: rec.attributes.loai_hang_ma } : {}),
+    ...(rec.attributes?.hs_in_tax_2022 !== undefined ? { hsInTax2022: rec.attributes.hs_in_tax_2022 } : {}),
+    ...(rec.attributes?.legacy_hs !== undefined ? { legacyHs2022: rec.attributes.legacy_hs } : {}),
+    ...(rec.attributes?.bieuThue ? { bieuThueGoc: rec.attributes.bieuThue } : {}),
     ...(rec.attributes?.legacyHs ? {
       legacyHs: true,
       legacyHsRemap: rec.attributes.legacyHsRemap || null,
