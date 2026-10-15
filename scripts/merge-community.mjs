@@ -355,7 +355,60 @@ const stats = {
   superseded: 0,
   conflicts: 0,
   queued: 0,
+  // Bước 12 (B-3) — mic-product
+  micProducts: 0,
+  micRefreshed: 0,
+  micSkippedDup: 0,
 };
+
+// Kho riêng cho mic-product: shape {documents: [...], generatedAt: isoString}.
+// Refresh theo cùng tệp nguồn: trùng skuId HOẶC urlNguon → bản giàu hơn thay tại chỗ;
+// y hệt → skip. Khoác với precedent (merge vô hash theo mã+ref), mic-product là danh sách
+// phẳng — mỗi tệp nguồn được cache lại và làm giàu qua các lần nộp.
+const micProductsPath = join(dataDir, 'mic-products.json');
+const micProducts = readJson(micProductsPath, { documents: [], generatedAt: null });
+if (!Array.isArray(micProducts.documents)) micProducts.documents = [];
+
+function mergeMicProduct(doc, rec, fileRel, statsObj) {
+  const sourceFile = `community:${fileRel}`;
+  const entry = {
+    skuId: rec.skuId || null,
+    title: rec.title || null,
+    specs: rec.specs || null,
+    hsCodeHint: rec.hsCodeHint || null,
+    price: rec.price || null,
+    minOrderQty: rec.minOrderQty || null,
+    shop: rec.shop || null,
+    urlNguon: rec.urlNguon || null,
+    retrievedAt: rec.retrievedAt || null,
+    contributor: {
+      name: doc.contributor?.name || null,
+      github: doc.contributor?.github || null,
+    },
+    sourceFile,
+  };
+  const docs = micProducts.documents;
+  // Cùng tệp nguồn — refresh tại chỗ khi trùng skuId HOẶC urlNguon; giàu hơn mới thay.
+  const sameSrcIdx = docs.findIndex((d) => d.sourceFile === sourceFile
+    && ((d.skuId && d.skuId === entry.skuId)
+      || (d.urlNguon && d.urlNguon === entry.urlNguon)));
+  if (sameSrcIdx >= 0) {
+    const old = docs[sameSrcIdx];
+    const giàuHơn = (entry.specs?.length || 0) > (old.specs?.length || 0)
+      || entry.price !== old.price
+      || entry.minOrderQty !== old.minOrderQty
+      || String(entry.title || '') !== String(old.title || '');
+    if (!giàuHơn) {
+      statsObj.micSkippedDup += 1;
+      return;
+    }
+    docs[sameSrcIdx] = entry;
+    statsObj.micRefreshed += 1;
+    return;
+  }
+  docs.push(entry);
+  statsObj.micProducts += 1;
+}
 
 const files = listFiles(communityDir);
 for (const full of files) {
@@ -406,6 +459,8 @@ for (const full of files) {
     });
     stats.queued += doc.records.length;
     appendLog({ action: 'queue-product', file: fileRel, n: doc.records.length });
+  } else if (doc.kind === 'mic-product') {
+    for (const rec of doc.records) mergeMicProduct(doc, rec, fileRel, stats);
   } else {
     appendLog({ action: 'skip-unknown-kind', file: fileRel, kind: doc.kind });
   }
@@ -413,6 +468,10 @@ for (const full of files) {
 
 if (stats.precedents || stats.upgraded || stats.removedThin || stats.refreshed) writeJson(precedentsPath, precedents);
 if (stats.conflicts) writeJson(conflictsPath, conflicts);
+if (stats.micProducts || stats.micRefreshed) {
+  micProducts.generatedAt = new Date().toISOString();
+  writeJson(micProductsPath, micProducts);
+}
 
 appendLog({ action: 'summary', stats, dryRun: DRY });
 
