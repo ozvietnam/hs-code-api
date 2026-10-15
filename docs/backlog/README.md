@@ -37,6 +37,10 @@ Mỗi file `NN-<chủ-đề>.md` ứng với một bước đã triển khai, g�
 | 6 | Tách mặt công khai ra CDN tĩnh | ⚙️ Công cụ xong, chờ deploy | [`06-static-cdn.md`](06-static-cdn.md) |
 | 7 | Một engine — nối tri thức đã xây vào đường ERP | ⚙️ Đợt 1 xong (lõi chung + cửa đối chiếu) | [`07-mot-engine.md`](07-mot-engine.md) |
 | 8 | Sổ tay chú giải — nâng phần đã đọc hiểu lên dạng máy dùng được (kệ sách → sổ tay → bộ não) | ⚙️ 120 nhóm; cổng đã chạy khô + nối động cơ sau `HS_SO_TAY` (09/10), chờ đo AI thật | [`08-so-tay-chu-giai.md`](08-so-tay-chu-giai.md) |
+| 9 | Hiệu suất LLM — rút giây classify | ⚙️ Bước 0 (đo ms từng pha) xong #298; 8 bước cải tiến chờ duyệt | [`09-hieu-suat-llm.md`](09-hieu-suat-llm.md) |
+| 10 | Jev (System One) — bộ chọn dòng có kiểu | 📄 Nghiên cứu xong, chờ CEO chọn đường key để chạy P0 | [`10-jev-system-one.md`](10-jev-system-one.md) |
+| 11 | "Anh em" của Jev — self-host (Laya…) | 📄 Nghiên cứu xong; CEO chốt triển khai SAU | [`11-jev-anh-em-self-host.md`](11-jev-anh-em-self-host.md) |
+| 12 | Tiền lệ quốc tế + định danh hàng hoá + nguồn Made-in-China | 📄 Kế hoạch (thực chứng 15/10), chờ phân bổ | [`12-tien-le-quoc-te-dinh-danh-hang-mic.md`](12-tien-le-quoc-te-dinh-danh-hang-mic.md) |
 
 ## Nhịp cập nhật tổng hợp
 
