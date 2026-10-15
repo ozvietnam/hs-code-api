@@ -54,9 +54,12 @@ function walkStrings(file, node, path = '') {
   if (typeof node === 'string') {
     // source.url: id bài viết trong đường dẫn (vd .../articles/16000067953) không
     // phải MST/số tờ khai — chỉ bỏ qua các mẫu THUẦN SỐ trong url, mẫu chữ vẫn quét.
+    // records[i].hsCodeHint (mic-product): mã HS 10 số theo biểu TQ — regex "10 số = MST"
+    // của bộ lọc bắt nhầm. Bỏ qua — validator đã đối chiếu HS_HINT_RE.
     if (/(^|\.)source\.url$/.test(path) && /^https?:\/\//.test(node)) {
       return scanPrivacy(file, node.replace(/\d{6,}/g, (d) => 'x'.repeat(d.length)), path);
     }
+    if (/^records\[\d+\]\.hsCodeHint$/.test(path)) return;
     return scanPrivacy(file, node, path || '(gốc)');
   }
   if (Array.isArray(node)) return node.forEach((v, i) => walkStrings(file, v, `${path}[${i}]`));
@@ -66,7 +69,7 @@ function walkStrings(file, node, path = '') {
 }
 
 // --- LỚP 2: kiểm schema (thủ công, không cần thư viện) -----------------------
-const KINDS = new Set(['precedent', 'correction', 'conflict-table', 'product-example', 'intl-precedent']);
+const KINDS = new Set(['precedent', 'correction', 'conflict-table', 'product-example', 'intl-precedent', 'mic-product']);
 const SOURCE_TYPES = new Set([
   'TB-TCHQ', 'van-ban-phap-luat', 'to-khai-da-thong-quan', 'chu-giai-WCO', 'kinh-nghiem-thuc-te',
   // Bước 12 (B-3): tiền lệ quốc tế — mọi crawler mirror/cache-on-demand nộp qua đây
@@ -76,7 +79,14 @@ const INSTRUMENT_TYPES = new Set(['RULING', 'TCO', 'BTI', 'OP']);
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 const SHA256 = /^[0-9a-f]{64}$/;
 const HS_RE = /^[0-9]{4}([0-9]{2}([0-9]{2})?)?$/;
+// Bước 12 (B-3) — mic-product: mã HS trên made-in-china là mã 10 số theo biểu TQ (khác
+// biểu VN 4/6/8). Phải có regex riêng; HS_RE sẵn không nhận 10 số.
+const HS_HINT_RE = /^[0-9]{10}$/;
 const GIR_RE = /^GIR ?[1-6]( ?\([abc]\))?$/;
+// ProductPayload v2 — trường hợp lệ duy nhất cho kind=mic-product. Mọi trường ngoài
+// schema (vd gallery, description, detailImages, imageTexts, price.label…) là lỗi cứng.
+const MIC_PAYLOAD_FIELDS = new Set(['title', 'specs', 'hsCodeHint', 'price', 'minOrderQty', 'skuId', 'shop', 'urlNguon', 'retrievedAt']);
+const MIC_PAYLOAD_REQUIRED = ['title', 'skuId', 'urlNguon', 'retrievedAt'];
 
 function validateShape(file, doc) {
   if (typeof doc !== 'object' || doc === null || Array.isArray(doc)) {
@@ -103,6 +113,44 @@ function validateShape(file, doc) {
 
   doc.records.forEach((r, i) => {
     const at = `records[${i}]`;
+    // Bước 12 (B-3): mic-product — schema ProductPayload v2 nghiêm ngặt. Khác các
+    // kind khác: không có hsCode (chỉ hsCodeHint TQ 10 số), không có description,
+    // không có source.type (chỉ urlNguon). Mọi trường ngoài schema (đặc biệt
+    // gallery / detailImages / imageTexts / description dài) là lỗi cứng.
+    if (doc.kind === 'mic-product') {
+      for (const fld of MIC_PAYLOAD_REQUIRED) {
+        if (!(fld in r)) problem(file, `${at}: thiếu ${fld} (B-3 ProductPayload v2)`);
+      }
+      const extra = Object.keys(r || {}).filter((k) => !MIC_PAYLOAD_FIELDS.has(k));
+      if (extra.length) {
+        problem(file, `${at}: trường ngoài schema ProductPayload v2 (${extra.join(', ')}) — nghiêm cấm gallery / description dài / ảnh`);
+      }
+      const title = String(r.title || '').trim();
+      if (title.length < 5) problem(file, `${at}.title quá ngắn (<5 ký tự)`);
+      if (title.length > 200) problem(file, `${at}.title quá dài (>200 ký tự) — mô tả dài vi phạm schema, cắt bớt`);
+      if (r.hsCodeHint !== undefined && !HS_HINT_RE.test(String(r.hsCodeHint))) {
+        problem(file, `${at}.hsCodeHint phải là đúng 10 chữ số (mã theo biểu TQ, đang ${JSON.stringify(r.hsCodeHint)})`);
+      }
+      if (!/^https?:\/\//.test(String(r.urlNguon || ''))) {
+        problem(file, `${at}.urlNguon phải là URL http(s)`);
+      }
+      if (!ISO_DATE.test(String(r.retrievedAt || ''))) {
+        problem(file, `${at}.retrievedAt phải ngày ISO YYYY-MM-DD`);
+      }
+      if (r.specs !== undefined && !Array.isArray(r.specs)) {
+        problem(file, `${at}.specs phải là mảng các {key, value} (SpecField)`);
+      }
+      if (r.minOrderQty !== undefined && r.minOrderQty !== null && typeof r.minOrderQty !== 'number') {
+        problem(file, `${at}.minOrderQty phải là số hoặc bỏ trống`);
+      }
+      if (r.shop !== undefined && (typeof r.shop !== 'object' || r.shop === null || Array.isArray(r.shop))) {
+        problem(file, `${at}.shop phải là object {name, url}`);
+      }
+      if (r.price !== undefined && (typeof r.price !== 'object' || r.price === null || Array.isArray(r.price))) {
+        problem(file, `${at}.price phải là object {value, currency}`);
+      }
+      return; // khác hẳn schema: bỏ qua các check hsCode/description/source chung
+    }
     if (!HS_RE.test(String(r?.hsCode || ''))) {
       problem(file, `${at}.hsCode phải là 4, 6 hoặc 8 chữ số (đang ${JSON.stringify(r?.hsCode)})`);
     }
