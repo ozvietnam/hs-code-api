@@ -24,7 +24,9 @@ function extractCommunityKeys(file) {
     }
     return keys;
   } catch (e) {
-    return new Set();
+    // Bail out instead of silently returning empty Set
+    console.error(`❌ Failed to parse ${file.split('/').pop()}: ${e.message}`);
+    process.exit(1);
   }
 }
 

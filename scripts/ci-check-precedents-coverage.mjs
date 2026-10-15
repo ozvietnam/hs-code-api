@@ -9,7 +9,7 @@
 // Options:
 //   --baseline <path>  File JSON chứa (ref, hsCode) keys baseline (mặc định: .backups/precedents-baseline.json)
 
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -70,8 +70,7 @@ function main() {
     // Find most recent backup
     const backupDir = resolve(ROOT, '.backups');
     if (existsSync(backupDir)) {
-      const fs = require('node:fs');
-      const backups = fs.readdirSync(backupDir)
+      const backups = readdirSync(backupDir)
         .filter(f => f.startsWith('precedents') && f.endsWith('.json'))
         .sort()
         .reverse();
@@ -117,16 +116,17 @@ function main() {
   }
 
   if (lostKeys.length > 0) {
-    console.log(`\n⚠️  ${lostKeys.length} specific (ref, hsCode) lost (but hsCodes preserved):`);
-    for (const k of lostKeys.slice(0, 5)) {
+    console.log(`\n❌ FAILED: ${lostKeys.length} specific (ref, hsCode) lost (but hsCodes preserved):`);
+    for (const k of lostKeys.slice(0, 10)) {
       console.log(`  - ${k}`);
     }
-    if (lostKeys.length > 5) {
-      console.log(`  ... and ${lostKeys.length - 5} more`);
+    if (lostKeys.length > 10) {
+      console.log(`  ... and ${lostKeys.length - 10} more`);
     }
+    process.exit(1);
   }
 
-  console.log(`\n✅ PASSED: All baseline hsCodes preserved.`);
+  console.log(`\n✅ PASSED: All baseline (ref, hsCode) keys preserved.`);
   process.exit(0);
 }
 

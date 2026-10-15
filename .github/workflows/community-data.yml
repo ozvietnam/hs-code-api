@@ -44,7 +44,11 @@ jobs:
       - name: Backup baseline
         run: |
           mkdir -p .backups
-          cp data/precedents.json .backups/precedents-baseline.json
+          if ! cp data/precedents.json .backups/precedents-baseline.json; then
+            echo "::error::Failed to backup precedents.json as baseline"
+            exit 1
+          fi
+          test -s .backups/precedents-baseline.json || (echo "::error::Baseline is empty"; exit 1)
       - name: Verify không mất hsCode
         run: |
           node scripts/ci-check-precedents-coverage.mjs --baseline .backups/precedents-baseline.json
@@ -55,7 +59,7 @@ jobs:
     runs-on: ubuntu-latest
     if: >-
       github.event_name == 'pull_request' &&
-      (contains(github.event.pull_request.changed_files, 'data/community/tb-tchq/legal-customs-2026-10-13-goi-')
+      (contains(github.event.pull_request.changed_files, 'data/community/')
        || contains(github.event.pull_request.changed_files, 'data/precedents.json'))
     steps:
       - uses: actions/checkout@v4
