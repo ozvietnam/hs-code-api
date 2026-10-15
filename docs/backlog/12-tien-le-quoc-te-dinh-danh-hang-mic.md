@@ -50,20 +50,24 @@
 
 ### PHẦN A — Stage `dinh_danh_hang` (định danh hàng trước khi phân loại)
 
-Phễu 5 bước: (1) truy vết bằng **model + HSX tiếng Anh** (trang NSX → manual PDF
-thường ở commons phòng lab → marketplace đấu giá → trang thiết bị viện nghiên
-cứu); (2) đóng **khung thuộc tính theo template chương** (chức năng chính, nguyên
-lý hoạt động, cấu thành module, công suất/điện áp, vật liệu, ngữ cảnh) — dùng
-CHUNG schema với template khai báo TT 39 (`machineryGeneric`…): hiểu hàng xong
-thì các trường khai báo tự đầy; (3) **tam giác kiểm chứng**: 1 nguồn phụ =
-HYPOTHESIS, 2 nguồn độc lập khớp = CORROBORATED, tài liệu sơ cấp NSX = VERIFIED;
-(4) dịch sang ngôn ngữ chức năng biểu thuế; (5) mới vào phễu 2/4→6→8 + tiền lệ.
+Phễu 6 bước: (1) truy vết bằng **model + HSX** — query tiếng Anh *và tiếng Trung* (trang NSX →
+manual PDF thường ở commons phòng lab → marketplace đấu giá → trang thiết bị viện nghiên cứu; hàng
+TQ qua MiC/1688/Taobao); (2) đóng **khung thuộc tính theo template chương** (chức năng chính, nguyên
+lý hoạt động, cấu thành module, công suất/điện áp, vật liệu, ngữ cảnh) — dùng CHUNG schema với
+template khai báo TT 39 (`machineryGeneric`…): hiểu hàng xong thì các trường khai báo tự đầy;
+(3) **tên gọi khác đa ngữ** — gom `tenDongNghia {vi[], en[], zh[]}` (tên thương mại/ kỹ thuật/ viết
+tắt) từ chính các trang nguồn EN/ZH đã truy vết + `alternates`/`pageLang` có sẵn trong
+`ProductPayload` v2 của ozsource; (4) **tam giác kiểm chứng**: 1 nguồn phụ = HYPOTHESIS, 2 nguồn độc
+lập khớp = CORROBORATED, tài liệu sơ cấp NSX = VERIFIED; (5) dịch sang **ngôn ngữ chức năng biểu
+thuế** (EN cho tiền lệ quốc tế, VN cho TB-TCHQ, giữ ZH để nối query-understand tiêu đề tiếng Trung
+sẵn có); (6) mới vào phễu 2/4→6→8 + tiền lệ.
 
 | ID | Việc | Ưu tiên | Ước lượng | Nghiệm thu |
 |---|---|---|---|---|
-| A-1 | **Schema khung thuộc tính dùng chung** `data/attribute-frames.json`: định nghĩa frame theo chương (mở rộng template TT 39 sẵn có: thêm `nguyenLyHoatDong`, `cauThanhModule`, `nguon[]` với nhãn HYPOTHESIS/CORROBORATED/VERIFIED + URL + retrievedAt) | P1 | 1–2 ngày | Frame của case glovebox (MBraun) + 2 case khác (1 máy TQ, 1 hàng tiêu dùng) điền được đủ trường; test schema |
-| A-2 | **Endpoint `POST /api/identify`** (não: M3, thinking off): nhận `{tenHang, model, thuongHieu, moTa, anhUrl[]}` → trả frame có nhãn kiểm chứng + danh sách nguồn; ảnh đi M3 multimodal đọc nameplate/model plate (đã đo 1,4–2 s, backlog 09) | P1 | 3–5 ngày | 20 mẫu vàng gồm 5 món chỉ có ảnh nameplate; ≥80% frame đạt CORROBORATED trở lên; p50 < 30 s |
+| A-1 | **Schema khung thuộc tính dùng chung** `data/attribute-frames.json`: frame theo chương (mở rộng template TT 39 sẵn có: thêm `nguyenLyHoatDong`, `cauThanhModule`, `tenDongNghia {vi[],en[],zh[]}`, `tuVungChucNang {en[],zh[]}`, `nguon[]` với nhãn HYPOTHESIS/CORROBORATED/VERIFIED + URL + retrievedAt) | P1 | 1–2 ngày | Frame của case glovebox (MBraun) + 2 case khác (1 máy TQ, 1 hàng tiêu dùng) điền đủ; glovebox: `tenDongNghia.en` có "glovebox", "inert atmosphere workstation"; `.zh` có "手套箱"; test schema |
+| A-2 | **Endpoint `POST /api/identify`** (não: M3, thinking off): nhận `{tenHang, model, thuongHieu, moTa, anhUrl[]}` → trả frame có nhãn kiểm chứng + danh sách nguồn + tên đồng nghĩa đa ngữ; ảnh đi M3 multimodal đọc nameplate/model plate (đã đo 1,4–2 s, backlog 09) | P1 | 3–5 ngày | 20 mẫu vàng gồm 5 món chỉ có ảnh nameplate; ≥80% frame đạt CORROBORATED trở lên; p50 < 30 s |
 | A-3 | **Cổng MCP tách tool `dinh_danh_hang`** chạy trước `phan_loai_hs`: `phan_loai_hs` nhận frame làm đầu vào; cập nhật `instructions`/`sinhSkill()` dạy thứ tự gọi; frame thiếu trường bắt buộc → trả NEED_FACTS đúng hợp đồng đang thiết kế | P1 | 2–3 ngày | Bộ đàm thoại mẫu qua Cổng: tên nghèo nàn → tool hỏi đích danh → frame đầy → phan_loai_hs chốt kèm bằng chứng |
+| A-4 | **Từ điển đồng nghĩa hàng hoá đa ngữ** `data/synonyms.json`: mining tên VN/EN/ZH từ kho 11.072 sản phẩm Shopee/Taobao + lô MiC (trường `alternates`) + TB-TCHQ (productNameRaw) → phục vụ (a) tra tiền lệ quốc tế bằng từ khoá EN, (b) tra TB-TCHQ bằng từ khoá VN khi đầu vào là tên ZH/EN, (c) nối `query-understand.js` tier premium (đang xử lý tiêu đề tiếng Trung), (d) sinh câu hỏi NEED_FACTS bằng đúng ngôn ngữ khách | P1 | 3–4 ngày | 500 mặt hàng hay gặp có ≥1 cặp VN↔EN↔ZH có nguồn; đàm thoại thử "手套箱" chốt được về cụm chức năng "glove box / khí trơ" và trúng tiền lệ glovebox |
 
 ### PHẦN B — Kho tiền lệ quốc tế (kiến trúc 3 tầng)
 
