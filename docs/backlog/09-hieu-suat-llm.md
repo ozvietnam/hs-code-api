@@ -79,6 +79,30 @@ Cùng 3 món, prod (`engine.phases` trong response classify):
 
 Tín hiệu sớm (3 món, container bench riêng, thinking-off): 255→**47,6 s** (85098090 ✓ — off còn ĐÚNG hơn: on trả 6 số 850980), 136→**38 s** (84145941 ✓), 178→**96,9 s** (82019000 ✓, nhưng 4 vòng vì cổng chặn). p50 136→47 s. **Đang xác thức bằng bench 80 mẫu vàng × 2 lượt on-vs-off** (`/opt/hs-bench4`, runner nền, ~4–5 h) — cổng nghiệm thu: Đ8 không giảm quá 2 điểm so với on.
 
+## 2c. Kết luận chốt 16/10 — ĐÃ ĐO ĐỦ 4 TỔ HỢP THINKING, KHÔNG có "cầu nối env" (bước 1 đóng)
+
+Bổ sung ô còn thiếu của 2b: `UNDERSTAND:off` đơn lẻ (GIR giữ thinking mặc định) + `R1_MAX_TOKENS=6000`,
+ảnh `1646d50a` (kèm gather song song #330), 80 mẫu vàng, lượt 1 đủ (`/opt/hs-bench5/bench-uoff-r1.json`;
+lượt 2 dừng giữa chừng cho tiết kiệm quota vì lượt 1 đã fail dứt khoát cả hai cổng):
+
+| Chế độ | p50 / p90 (s) | TB (s) | Đ8 top1 | Đ6 | top3-8 | Ghi chú |
+|---|---|---:|---:|---:|---:|---|
+| **on** (mặc định) r1/r2 | 115/149 · 250/251 | 136/156 | 56,3/53,8 | 66,3/67,5 | 75/68,8 | baseline |
+| off (cả 2 vòng) r1/r2 | 54/57 · 106/101 | 62/63 | 38,8/40,0 | 56,3/52,5 | 56,3/61,3 | nhanh 2,3× nhưng Đ8 −16 |
+| low (cả 2 vòng) r1/r2 | 203/121 · 300/239 | 200/138 | 47,5/58,8 | 58,8/70,0 | 60/72,5 | nhiễu ±10 điểm, không nhanh |
+| **uoff (chỉ vòng 1 off)** r1 | **146 · 253** | **157** | **46,3** | 60,0 | 57,5 | **fail cả 2 cổng** |
+
+**Kết luận:**
+1. **Tắt thinking vòng 1 cũng bị bác** (Đ8 46,3 vs on 53,8–56,3 = −7÷−10 điểm, vượt xa cổng ≤2; p50 146 s
+   KHÔNG nhanh hơn on — TB 157 s còn chậm hơn 136 s). Cơ chế hợp lý: trích xuất hồ sơ yếu đi → pool ứng viên
+   vòng 2 tệ hơn → cổng chặn bắn nhiều hơn → thêm vòng sửa → tổng thời gian không giảm mà chất lượng giảm.
+2. **Bước 1 (env-only) ĐÓNG**: không tồn tại tổ hợp env thinking nào vừa giữ chất lượng vừa hạ p50.
+   Prod giữ nguyên mặc định (thinking on). Không ai cần đo lại cell này.
+3. Đường đã duyệt và ĐÃ LIVE thay cho cầu nối env: **async "trợ lý cầm điện thoại"** (ozplugin #182 —
+   biên nhận <2 s, `ket_qua_phan_loai`, `bo_sung_du_kien`, cache 24 h) + bước 2 đã merge (#330, gather
+   micLookup song song — an toàn 0 rủi ro chất lượng nhưng lợi nhỏ vì gather chỉ 0,3–9 s).
+4. Đòn trong engine còn lại: **bước 3 (cắt vòng sửa oan)** và **bước 4 (ngắn hoá output)** — llmMs 85–95%.
+
 ## 3. Các bước cải tiến (xếp theo tỉ lệ lợi/kỳ công, kèm cách nghiệm thu)
 
 0. **Đo trước khi tối ưu (1 dòng code):** ghi `ms` + `provider` của TỪNG lượt gọi vào `engine.gates`
