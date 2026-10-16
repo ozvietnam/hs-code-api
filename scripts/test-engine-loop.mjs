@@ -156,6 +156,51 @@ check('vòng 1 lỗi tạm thời → nextAction RETRY', r.nextAction?.type === 
   micMod.micLookup = savedMic;
 }
 
+// 8d. Backlog 09 bước 2: 3 truy vấn made-in-china bắn ĐỒNG THỜI (không xếp hàng chờ nhau) nhưng vẫn
+// xử lý theo thứ tự ưu tiên model → model+tên Anh → tên Anh; đủ đồng thuận thì truy vấn sau bị bỏ.
+{
+  const micMod = require('../lib/mic-lookup.js');
+  const savedMic = micMod.micLookup;
+  const { gather } = require('../lib/engine-loop.js');
+  const PG = (shop, hsCode, name) => ({ shop, url: `https://${shop}.en.made-in-china.com/product/x/y.html`, name, hsCode, props: {} });
+  const R1_DRILL = { product: { nameVi: 'máy khoan đục bê tông', nameEn: 'rotary hammer drill', model: 'HD-2200X', purpose: 'khoan đục bê tông', mechanism: 'điện', material: 'kim loại', evidence: {} }, hypotheses: [{ chapter: '84', heading4: '8467', subheading6: '846721', why: 'máy khoan điện cầm tay', confidence: 88 }], verify: { codes8: ['8467210000'], micQuery: 'rotary hammer drill', unknowns: [] } };
+  const gọi = []; const nhả = new Map();
+  micMod.micLookup = (q) => { gọi.push(q); return new Promise((res) => nhả.set(q, res)); };
+  const p = gather(R1_DRILL, { tenHang: '电锤 HD-2200X', nameZh: '电锤', specs: '功率: 800W' }, { micAllowed: true });
+  await new Promise((r) => setImmediate(r));
+  check('mic: 3 truy vấn bắn đồng thời trước khi lượt nào có kết quả, đúng thứ tự ưu tiên', gọi.length === 3 && gọi[0] === 'HD-2200X' && gọi[1] === 'rotary hammer drill HD-2200X' && gọi[2] === 'rotary hammer drill', JSON.stringify(gọi));
+  nhả.get('HD-2200X')({ query: 'HD-2200X', searched: true, pages: [PG('d1', '8467210000', 'Rotary Hammer'), PG('x1', '8207500000', 'Masonry Chisel')] });
+  nhả.get('rotary hammer drill HD-2200X')({ query: 'rotary hammer drill HD-2200X', searched: true, pages: [PG('d2', '8467210000', 'Electric Hammer'), PG('d3', '8467210000', 'Hammer Drill 800W')] });
+  nhả.get('rotary hammer drill')({ query: 'rotary hammer drill', searched: true, pages: [PG('zz', '9503000000', 'Toy Drill')] });
+  const g = await p;
+  check('mic: đồng thuận 8467 gộp từ 2 truy vấn đầu (3 shop), queryKind model', g.mic?.consensus?.heading4 === '8467' && g.mic.queryKind === 'model' && g.mic.pages.some((x) => x.shop === 'd3'), JSON.stringify(g.mic?.consensus));
+  check('mic: đủ đồng thuận rồi thì truy vấn sau không lọt vào gói (không có trang zz)', !g.pack.includes('Toy Drill'), JSON.stringify(g.mic?.pages.map((x) => x.shop)));
+  // Truy vấn model tự nó đủ đồng thuận → dừng ngay, không đợi 2 truy vấn chậm (kể cả khi chúng còn treo).
+  const gọi2 = []; const treo2 = new Map();
+  micMod.micLookup = (q) => { gọi2.push(q); return new Promise((res) => treo2.set(q, res)); };
+  const p2 = gather(R1_DRILL, { tenHang: '电锤 HD-2200X', nameZh: '电锤', specs: '功率: 800W' }, { micAllowed: true });
+  await new Promise((r) => setImmediate(r));
+  treo2.get('HD-2200X')({ query: 'HD-2200X', searched: true, pages: [PG('d1', '8467210000', 'Rotary Hammer'), PG('d2', '8467210000', 'Electric Hammer')] });
+  const g2 = await p2;
+  check('mic: model đã đồng thuận → không đợi 2 truy vấn sau (vẫn trả được khi chúng còn treo)', g2.mic?.consensus?.heading4 === '8467' && gọi2.length === 3, JSON.stringify(g2.mic?.consensus));
+  micMod.micLookup = savedMic;
+}
+
+// 8e. R1_MAX_TOKENS (backlog 09 bước 4): hạ trần token vòng 1 qua env, vòng 2 không đổi.
+{
+  const saved = llmTier.callLLMJson;
+  let cap1 = null; let cap2 = null;
+  llmTier.callLLMJson = async (system, user, opts = {}) => { if (system.startsWith('VÒNG 1')) cap1 = opts.maxTokens; else cap2 = opts.maxTokens; return saved(system, user, opts); };
+  const CHOT = { decision: 'CHOT', hs: '82019000', confidence: 88, reason: 'dụng cụ cầm tay nông nghiệp, cơ-tay', gir: 'GIR 1', basis: [{ stream: 'SAN_PHAM', claim: 'dùng hái cau', evidence: '用于摘取槟榔' }, { stream: 'CHU_GIAI', claim: 'nhóm 8201 gồm dụng cụ cầm tay nông nghiệp', ref: '8201' }], conditions: [], alternatives: [], questions: [] };
+  await run(KNIFE, [R1_KNIFE, CHOT]);
+  check('R1_MAX_TOKENS: mặc định 12000', cap1 === 12000, String(cap1));
+  process.env.R1_MAX_TOKENS = '6000';
+  await run(KNIFE, [R1_KNIFE, CHOT]);
+  delete process.env.R1_MAX_TOKENS;
+  llmTier.callLLMJson = saved;
+  check('R1_MAX_TOKENS=6000 hạ trần vòng 1, vòng 2 giữ nguyên', cap1 === 6000 && cap2 === 20000, JSON.stringify([cap1, cap2]));
+}
+
 // ── Sổ tay (chế độ CỐ VẤN, #196/bước 3): đính vào phản hồi, KHÔNG đổi mã/trạng thái/cờ/lượt gọi AI ──
 {
   const SOCKET = { tenHang: '86型墙壁暗装电源插座带开关五孔面板家用', nameZh: '86型墙壁暗装电源插座带开关五孔面板家用', specs: '额定电流: 10A; 额定电压: 250V' };
