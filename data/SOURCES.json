@@ -343,6 +343,11 @@
     "attribute-frames.json": {
       "kind": "CURATED",
       "descriptionVi": "Bước 12 A-1 (#303): khung thuộc tính định danh hàng theo chương — mở rộng template TT 39 (chapter-declaration-fields) thêm trường nghiệp vụ phân loại (nguyenLyHoatDong, cauThanhModule, chucNangChinh, doChinhXac, chatLieuCuThe) + từ khoá đoán chương; tam giác kiểm chứng định nghĩa trong lib/attribute-frames.js"
+    },
+    "mic-products.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Bước 12 B-3 (#306): sản phẩm made-in-china.com ProductPayload v2 — schema khác hẳn precedent (không có hsCode/description/source TB-TCHQ; chỉ hsCodeHint TQ 10 số + urlNguon). Refresh cùng tệp nguồn theo skuId/urlNguon (luật 13/10/2026). Kho tách riêng (không lẫn vào precedents.json). Validate bằng scripts/validate-community.mjs (kind=mic-product). Số lượng & độ giàu cập nhật theo lô craw từ MiC; trong tương lai nạp qua API /api/identify (lib/identify.js) thay vì tệp nộp.",
+      "builtBy": "scripts/merge-community.mjs"
     }
   }
 }

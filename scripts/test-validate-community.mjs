@@ -108,5 +108,132 @@ writeFileSync(g3, JSON.stringify({ ...doc([{ ...good, description: 'Thanh đồn
 const re2 = spawnSync(process.execPath, [join(root, 'scripts', 'validate-community.mjs'), g1, g3], { encoding: 'utf8' });
 assert('người khác đọc lại để làm giàu thì vẫn qua', re2.status === 0, re2.stdout + re2.stderr);
 
+// ── Bước 12 (B-3): intl-precedent — các case "đụng lỗ hổng" hiện có ──────────────
+const intlBase = (overrides = {}) => ({
+  kind: 'intl-precedent',
+  contributor: { name: 'zcode-cbp-crawler', github: 'ozvietnam' },
+  license: 'CC-BY-SA-4.0',
+  submittedAt: '2026-10-15T00:00:00Z',
+  records: [{
+    hsCode: '847989',
+    description: 'CBP CROSS M82907: anaerobic and hypoxia workstations',
+    source: { type: 'CBP-CROSS-RULING', reference: 'M82907', url: 'https://rulings.cbp.gov/ruling/M82907', issuedDate: '2006-04-24', license: 'public-domain-us-gov' },
+    attributes: { instrumentType: 'RULING', country: 'US' },
+    reasonVi: 'The applicable subheading will be 8479.89.98.',
+    evidence: { soHieu: 'M82907', ketLuan: 'the applicable subheading will be 8479.89.98' },
+    snapshotHash: 'a'.repeat(64),
+    retrievedAt: '2026-10-15',
+    ...overrides,
+  }],
+});
+assert('intl OK: bản đầy đủ qua', run('intl-ok', intlBase()).status === 0, '');
+assert('intl: snapshotHash sai độ dài (63 hex) bị chặn', /snapshotHash phải là sha256 hex/.test(run('intl-badhash', intlBase({ snapshotHash: 'a'.repeat(63) })).out));
+assert('intl: snapshotHash chứa ký tự không phải hex bị chặn', /snapshotHash phải là sha256 hex/.test(run('intl-nonhex', intlBase({ snapshotHash: 'Z'.repeat(64) })).out));
+assert('intl: source.license rỗng bị chặn', /source\.license bắt buộc/.test(run('intl-nolicense', intlBase({ source: { type: 'CBP-CROSS-RULING', reference: 'M82907', url: 'https://rulings.cbp.gov/ruling/M82907', issuedDate: '2006-04-24', license: '' } })).out));
+assert('intl: source.license thiếu bị chặn', /source\.license bắt buộc/.test(run('intl-misslicense', intlBase({ source: { type: 'CBP-CROSS-RULING', reference: 'M82907', url: 'https://rulings.cbp.gov/ruling/M82907', issuedDate: '2006-04-24' } })).out));
+assert('intl: source.url thiếu bị chặn', /source\.url bắt buộc/.test(run('intl-nourl', intlBase({ source: { type: 'CBP-CROSS-RULING', reference: 'M82907', license: 'public-domain-us-gov', issuedDate: '2006-04-24' } })).out));
+assert('intl: verbatimText >8000 ký tự bị chặn', /verbatimText tối đa 8000/.test(run('intl-toolong', intlBase({ verbatimText: 'x'.repeat(8001) })).out));
+
+// ── Bước 12 (B-3): intl-precedent — instrumentType TCO (ABF) ───────────────────
+const tcoBase = (overrides = {}) => ({
+  kind: 'intl-precedent',
+  contributor: { name: 'zcode-abf-crawler', github: 'ozvietnam' },
+  license: 'CC-BY-SA-4.0',
+  submittedAt: '2026-10-15T00:00:00Z',
+  records: [{
+    hsCode: '842139',
+    description: 'ABF TCO 1679759: GLOVE BOXES, laboratory — hermetically sealed enclosures with glove openings and gas purification',
+    source: {
+      type: 'ABF-TCO',
+      reference: '1679759',
+      url: 'https://www.abf.gov.au/tariff-classification-subsite/Pages/TariffConcessionOrders.aspx?ch=84',
+      issuedDate: '2016-12-20',
+      license: 'attribution-commonwealth-au',
+    },
+    attributes: { instrumentType: 'TCO', country: 'AU' },
+    reasonVi: 'TCO Úc 1679759 — hộp găng tay phòng thí nghiệm kín khí có hệ lọc khí giảm ẩm/O₂; phân loại 8421.39.90; hiệu lực 01/01/2017 (quyết định 20/12/2016).',
+    evidence: {
+      soHieu: '1679759',
+      ketLuan: 'GLOVE BOXES, laboratory, being hermetically sealed enclosures with glove openings, incorporating a gas purification system for the reduction of moisture and oxygen content (Tariff Classification 8421.39.90; operative 01/01/2017; decision 20/12/2016)',
+    },
+    snapshotHash: '85e2f9468534b6a244f711b2975f759a01d67529e799a45d65c9131416a8abb6',
+    retrievedAt: '2026-10-15',
+    ...overrides,
+  }],
+});
+r = run('tco-ok', tcoBase());
+assert('intl TCO: bản đầy đủ (ABF) qua validate', r.status === 0, r.out);
+r = run('tco-no-snapshotHash', tcoBase({ snapshotHash: undefined }));
+assert('intl TCO: thiếu snapshotHash bị chặn', /snapshotHash phải là sha256 hex/.test(r.out), r.out);
+r = run('tco-no-license', tcoBase({ source: { type: 'ABF-TCO', reference: '1679759', url: 'https://www.abf.gov.au/tariff-classification-subsite/Pages/TariffConcessionOrders.aspx?ch=84', issuedDate: '2016-12-20' } }));
+assert('intl TCO: thiếu source.license bị chặn', /source\.license bắt buộc/.test(r.out), r.out);
+r = run('tco-no-ketLuan', tcoBase({ evidence: { soHieu: '1679759' } }));
+assert('intl TCO: thiếu evidence.ketLuan bị chặn', /evidence\.ketLuan bắt buộc/.test(r.out), r.out);
+
+// ── Bước 12 (B-3): mic-product — ProductPayload v2 schema nghiêm ngặt ──────────
+const mpDoc = (records, submittedAt = '2026-10-15', extras = {}) => ({
+  kind: 'mic-product',
+  contributor: { name: 'mic-agent-2026-10', github: 'ozvietnam' },
+  license: 'CC-BY-SA-4.0',
+  submittedAt,
+  records,
+  ...extras,
+});
+const mpGood = {
+  title: 'Classic Presbyopic Reading Glasses with Custom Color Options and Blue Light Protection',
+  skuId: 'gpDYSaTAVEkZ',
+  urlNguon: 'https://gpDYSaTAVEkZ.en.made-in-china.com/product/Classic-Presbyopic-Reading-Glasses-gpDYSaTAVEkZ.html',
+  retrievedAt: '2026-10-15',
+  hsCodeHint: '9004900009', // 10 số theo biểu TQ (MiC HS Code; brief nêu rõ TQ 10 số)
+  specs: [
+    { key: 'Material', value: 'PC Frame + AC Lens' },
+    { key: 'Usage', value: 'Reading glasses for presbyopia' },
+    { key: 'Power', value: '+1.00 ~ +3.50' },
+  ],
+  shop: { name: 'Wenzhou Grand', url: 'https://grand-sg.en.made-in-china.com' },
+  price: { value: '0.90', currency: 'USD' },
+  minOrderQty: 100,
+};
+r = run('mp-good', mpDoc([mpGood]));
+assert('mic-product: bản đầy đủ qua (ProductPayload v2)', r.status === 0, r.out);
+
+// Field ngoài schema → lỗi cứng (cấm gallery / description dài / imageTexts / detailImages…)
+r = run('mp-gallery', mpDoc([{ ...mpGood, gallery: ['https://example.com/p1.jpg', 'https://example.com/p2.jpg'] }]));
+assert('mic-product: cấm trường gallery ngoài schema', r.status === 1 && /trường ngoài schema/.test(r.out), r.out);
+r = run('mp-desc-text', mpDoc([{ ...mpGood, description: 'Full marketing description dài 500 ký tự…' }]));
+assert('mic-product: cấm trường description (mô tả dài)', /trường ngoài schema/.test(r.out), r.out);
+r = run('mp-detail-images', mpDoc([{ ...mpGood, detailImages: [{ url: 'x', w: 1, h: 1, alt: null, index: 0 }] }]));
+assert('mic-product: cấm trường detailImages (kèo theo ảnh dài)', /trường ngoài schema/.test(r.out), r.out);
+
+// Required fields
+r = run('mp-no-title', mpDoc([{ ...mpGood, title: undefined }]));
+assert('mic-product: thiếu title bị chặn', /thiếu title/.test(r.out), r.out);
+r = run('mp-no-sku', mpDoc([{ ...mpGood, skuId: undefined }]));
+assert('mic-product: thiếu skuId bị chặn', /thiếu skuId/.test(r.out), r.out);
+r = run('mp-no-url', mpDoc([{ ...mpGood, urlNguon: undefined }]));
+assert('mic-product: thiếu urlNguon bị chặn', /thiếu urlNguon/.test(r.out), r.out);
+r = run('mp-no-retrieved', mpDoc([{ ...mpGood, retrievedAt: undefined }]));
+assert('mic-product: thiếu retrievedAt bị chặn', /thiếu retrievedAt/.test(r.out), r.out);
+
+// Field-level validation
+r = run('mp-url-bad', mpDoc([{ ...mpGood, urlNguon: 'not-a-url' }]));
+assert('mic-product: urlNguon không phải http(s) bị chặn', /urlNguon phải là URL http/.test(r.out), r.out);
+r = run('mp-date-bad', mpDoc([{ ...mpGood, retrievedAt: '15-10-2026' }]));
+assert('mic-product: retrievedAt không ISO YYYY-MM-DD bị chặn', /retrievedAt phải ngày ISO/.test(r.out), r.out);
+r = run('mp-hshint-bad', mpDoc([{ ...mpGood, hsCodeHint: '847989' }]));   // 6 số — VN style, không phải TQ 10 số
+assert('mic-product: hsCodeHint 6 số (không phải TQ 10) bị chặn', /hsCodeHint phải là đúng 10 chữ số/.test(r.out), r.out);
+r = run('mp-hshint-1011', mpDoc([{ ...mpGood, hsCodeHint: '90049090123' }])); // 11 số
+assert('mic-product: hsCodeHint 11 số bị chặn', /hsCodeHint phải là đúng 10 chữ số/.test(r.out), r.out);
+r = run('mp-specs-not-array', mpDoc([{ ...mpGood, specs: 'PC Frame' }]));
+assert('mic-product: specs không phải mảng bị chặn', /specs phải là mảng/.test(r.out), r.out);
+r = run('mp-moq-not-number', mpDoc([{ ...mpGood, minOrderQty: '100 cái' }]));
+assert('mic-product: minOrderQty không phải số bị chặn', /minOrderQty phải là số/.test(r.out), r.out);
+r = run('mp-title-short', mpDoc([{ ...mpGood, title: 'Kính' }]));
+assert('mic-product: title quá ngắn bị chặn', /title quá ngắn/.test(r.out), r.out);
+r = run('mp-title-long', mpDoc([{ ...mpGood, title: 'x'.repeat(250) }]));
+assert('mic-product: title quá dài bị chặn', /title quá dài/.test(r.out), r.out);
+r = run('mp-shop-bad', mpDoc([{ ...mpGood, shop: 'not-an-object' }]));
+assert('mic-product: shop không phải object bị chặn', /shop phải là object/.test(r.out), r.out);
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
