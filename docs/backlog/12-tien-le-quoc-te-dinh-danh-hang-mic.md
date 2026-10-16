@@ -4,7 +4,7 @@
 > (CEO phản biện 2 vòng: lượt 1 sai 8479.89.69 vì xếp mã khi chưa bóc nguyên lý
 > hoạt động; lượt 2+3 sửa thành 8421.39.90 bằng chuỗi bằng chứng quốc tế phải tự
 > ra ngoài tìm) + **chỉ thị CEO bổ sung nguồn Made-in-China 15/10 chiều**.
-> Trạng thái: **ĐANG TRIỂN KHAI — P0 (B-3, C-2, C-4) + A-1 xong 15/10; A-2 code xong, chờ đo 20 mẫu vàng bằng LLM thật; sóng kế: B-1 + B-2.**
+> Trạng thái: **ĐANG TRIỂN KHAI — P0 (B-3, C-2, C-4) + A-1 + A-2 xong 15/10 (nghiệm thu A-2 ĐẠT 80%); sóng kế: B-1 + B-2.**
 
 ## ĐÃ LÀM (thực chứng 15/10, không làm trùng lại)
 
@@ -62,7 +62,7 @@ HYPOTHESIS, 2 nguồn độc lập khớp = CORROBORATED, tài liệu sơ cấp 
 | ID | Việc | Ưu tiên | Ước lượng | Nghiệm thu |
 |---|---|---|---|---|
 | A-1 ✅ (15/10) | **Schema khung thuộc tính dùng chung** `data/attribute-frames.json`: định nghĩa frame theo chương (mở rộng template TT 39 sẵn có: thêm `nguyenLyHoatDong`, `cauThanhModule`, `nguon[]` với nhãn HYPOTHESIS/CORROBORATED/VERIFIED + URL + retrievedAt) | P1 | 1–2 ngày | Frame của case glovebox (MBraun) + 2 case khác (1 máy TQ, 1 hàng tiêu dùng) điền được đủ trường; test schema |
-| A-2 ⚙️ (15/10 — code xong + 12 test AI giả; nghiệm thu 20 mẫu vàng cần LLM thật, hoãn vì hạn mức MiniMax hôm nay) | **Endpoint `POST /api/identify`** (não: M3, thinking off): nhận `{tenHang, model, thuongHieu, moTa, anhUrl[]}` → trả frame có nhãn kiểm chứng + danh sách nguồn; ảnh đi M3 multimodal đọc nameplate/model plate (đã đo 1,4–2 s, backlog 09) | P1 | 3–5 ngày | 20 mẫu vàng gồm 5 món chỉ có ảnh nameplate; ≥80% frame đạt CORROBORATED trở lên; p50 < 30 s |
+| A-2 ✅ (15/10 — ĐẠT nghiệm thu, xem mục Kết quả đo dưới) | **Endpoint `POST /api/identify`** (não: M3, thinking off): nhận `{tenHang, model, thuongHieu, moTa, anhUrl[]}` → trả frame có nhãn kiểm chứng + danh sách nguồn; ảnh đi M3 multimodal đọc nameplate/model plate (đã đo 1,4–2 s, backlog 09) | P1 | 3–5 ngày | 20 mẫu vàng gồm 5 món chỉ có ảnh nameplate; ≥80% frame đạt CORROBORATED trở lên; p50 < 30 s |
 | A-3 | **Cổng MCP tách tool `dinh_danh_hang`** chạy trước `phan_loai_hs`: `phan_loai_hs` nhận frame làm đầu vào; cập nhật `instructions`/`sinhSkill()` dạy thứ tự gọi; frame thiếu trường bắt buộc → trả NEED_FACTS đúng hợp đồng đang thiết kế | P1 | 2–3 ngày | Bộ đàm thoại mẫu qua Cổng: tên nghèo nàn → tool hỏi đích danh → frame đầy → phan_loai_hs chốt kèm bằng chứng |
 
 ### PHẦN B — Kho tiền lệ quốc tế (kiến trúc 3 tầng)
@@ -125,3 +125,16 @@ hàng, model, và các sản phẩm có tính năng tương tự**; trang cửa 
 - Tiền lệ quốc tế: số nguồn đồng thuận hiển thị được trong từng kết quả
   `phan_loai_hs` (WCO/BTI/CBP/ABF/TB-TCHQ).
 - 0 ca chốt mã chỉ trên tín hiệu MiC (test chặn C-2 luôn xanh).
+
+
+## Kết quả đo A-2 — 20 mẫu vàng bằng LLM thật (15/10, chạy trên .120)
+
+| Lượt | VERIFIED | CORROBORATED | HYPOTHESIS | KHONG_NGUON | corroborated+ | p50 | p90 | degraded |
+|---|---|---|---|---|---|---|---|---|
+| 1 | 13 | 0 | 0 | 7 | 65% | 15,5 s | 22,1 s | 0 |
+| 2 | 14 | 0 | 0 | 6 | 70% | 16,7 s | 30,1 s | 0 |
+| 3 (sửa xong vision) | 16 | 0 | 1 | 3 | **80% ✅** | **16,3 s ✅** | 40,2 s | 0 |
+
+Đúng chương khung: 80% (16/20). Vision đọc biển tên thật thành công: "STAMFORD / CAKE BREAKER", "GOLIATH", "HENRY POOLEY & SON / TO WEIGH 20 CWT", "MARSHALL SONS & Co / GAINSBORO", "A WATT & SON / Steel Fabricators" — 3/5 mẫu ảnh VERIFIED.
+
+Phát hiện: (1) hai bug parse vision (`geminiRequest` trả `{json, model, ms}` — không phải chuỗi) bắt được qua chính phép đo, đã sửa + test giữ nguyên 12/12; (2) 4 mẫu chưa đạt KHÔNG phải vision hỏng — LLM **từ chối gán nguồn khi biển tên cổ không có URL hiện đại** ("không bịa" đúng luật) → cần B-4 (tìm kiếm chéo nguồn) mới nâng nhóm chỉ-biển-tên; (3) CORROBORATED = 0 vì máy luôn gặp nguồn NSX trước (nguồn sơ cấp thắng — đúng thiết kế), chỉ số này sẽ xuất hiện khi hàng chỉ có nhà phân phối. KPI quý ≥70% ĐÃ VƯỢT ngay lượt đo đầu.
