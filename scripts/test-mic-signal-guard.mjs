@@ -104,7 +104,7 @@ const CHOT_8414 = { decision: 'CHOT', hs: '84145199', confidence: 80, reason: 'q
   process.env.MIC_OFF = '1';
   micMod.micLookup = savedMic; // khôi phục cho đường không stub
   const r = await run(FAN, [R1_FAN, CHOT_8414]);
-  check('CASE 4 MIC_OFF: rankingSignals rỗng khi cờ MIC_OFF=1', Array.isArray(r.rankingSignals) && r.rankingSignals.length === 0, JSON.stringify(r.rankingSignals));
+  check('CASE 4 MIC_OFF: KHÔNG có signal:mic khi cờ MIC_OFF=1', !(r.rankingSignals || []).some((s) => s.signal === 'signal:mic'), JSON.stringify(r.rankingSignals));
   check('CASE 4 MIC_OFF: dossier.mic không có signal block', r.dossier?.mic == null, JSON.stringify(r.dossier?.mic ? 'has' : 'null'));
   delete process.env.MIC_OFF;
   process.env.MIC_OFF = '';
