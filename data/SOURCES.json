@@ -223,6 +223,11 @@
       "kind": "CURATED",
       "descriptionVi": "Cơ chế hoạt động máy móc — CHƯA GHI NHẬN — cần bổ sung nguồn gốc"
     },
+    "mic-hs-map.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Bước 12 C-2 (#307): cache tĩnh hs6 → {hs4, dong8UngVien, loai:'SIGNAL'} precomputed từ tax.json — lib/mic-signal.js đọc để tra O(1), không quét taxData runtime. Map chỉ chứa SIGNAL (tín hiệu xếp hạng ứng viên), KHÔNG chứa GIR/basis. Sinh lại bằng scripts/build-mic-hs-map.mjs.",
+      "builtBy": "scripts/build-mic-hs-map.mjs"
+    },
     "ministries-vn.json": {
       "kind": "CURATED",
       "descriptionVi": "Bộ ngành quản lý chuyên ngành — đã cập nhật sáp nhập 01/03/2025 (NQ 176/2025/QH15)"
