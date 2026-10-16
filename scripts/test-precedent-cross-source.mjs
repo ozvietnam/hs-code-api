@@ -44,10 +44,8 @@ assert('flat index chứa WCO OP', flat.some((p) => p.source === 'WCO_OP'), 'no 
 assert('flat index chứa TB-TCHQ', flat.some((p) => p.source === 'TB-TCHQ'), 'no TB-TCHQ in flat');
 
 // ───────────────────────────────────────────────────────────────────────────
-// CASE 1: glove box gas purification → top 5 chứa TCO + WCO (bộ ba đạt 2/3).
-// M82907 (HS 847989, anaerobic workstations) KHÔNG surface được vì tier-1 phrases
-// hiện không có cụm liên kết "glove box"/"anaerobic workstation" → 847989; thêm cụm
-// mới vào data/synonyms.json (data work, ngoài phạm vi #311) sẽ giải quyết.
+// CASE 1: glove box gas purification → top 5 chứa ĐỦ bộ ba WCO 842139/1 + CBP M82907 + TCO 1679759.
+// Brief #311 vòng 2: cầu nối confusedWith (đề xuất 1) + fallback productName-chứa-tier-1-token (đề xuất 2).
 // ───────────────────────────────────────────────────────────────────────────
 {
   const rank = top5('glove box gas purification');
@@ -55,12 +53,11 @@ assert('flat index chứa TB-TCHQ', flat.some((p) => p.source === 'TB-TCHQ'), 'n
   console.log('  CASE 1 top5:', ids);
   assert('CASE 1: có WCO 842139/1 trong top 5', hasWco, JSON.stringify(ids));
   assert('CASE 1: có TCO 1679759 trong top 5', hasTco, JSON.stringify(ids));
-  // Tài liệu: M82907 KHÔNG surface được với data hiện tại — ghi nhận trong report.
-  console.log('  CASE 1 CBP M82907 in top 5?', hasCbp, '(documented limitation)');
+  assert('CASE 1: có CBP M82907 trong top 5 (bộ ba 3/3)', hasCbp, JSON.stringify(ids));
 }
 
 // ───────────────────────────────────────────────────────────────────────────
-// CASE 2: sealed chamber glove ports → likewise (bộ ba đạt 2/3, cùng lý do).
+// CASE 2: sealed chamber glove ports → likewise (bộ ba 3/3).
 // ───────────────────────────────────────────────────────────────────────────
 {
   const rank = top5('sealed chamber glove ports');
@@ -68,7 +65,7 @@ assert('flat index chứa TB-TCHQ', flat.some((p) => p.source === 'TB-TCHQ'), 'n
   console.log('  CASE 2 top5:', ids);
   assert('CASE 2: có WCO 842139/1 trong top 5', hasWco, JSON.stringify(ids));
   assert('CASE 2: có TCO 1679759 trong top 5', hasTco, JSON.stringify(ids));
-  console.log('  CASE 2 CBP M82907 in top 5?', hasCbp, '(documented limitation)');
+  assert('CASE 2: có CBP M82907 trong top 5 (bộ ba 3/3)', hasCbp, JSON.stringify(ids));
 }
 
 // ───────────────────────────────────────────────────────────────────────────
