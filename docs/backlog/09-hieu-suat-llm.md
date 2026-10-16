@@ -65,6 +65,20 @@ nhất mà không đụng chất lượng.
 **Bài học bench:** mount `/data` kiểu `:ro` làm cache `mic-cache.json` (30 ngày) không ghi được —
 số đo sai lệch giữa hai lượt. Bench phải mount rw (hoặc copy cache sẵn) để giống prod.
 
+## 2b. Số pha đo thật 15/10 (instrumentation #298, MiniMax thinking mặc định = on)
+
+Cùng 3 món, prod (`engine.phases` trong response classify):
+
+| Món | ms tổng | r1Ms (vòng 1) | gatherMs (kiểm chứng) | llmMs (vòng 2+) | rounds |
+|---|---:|---:|---:|---:|---:|
+| Máy khuếch tán (thinking on) | 255 360 | 73 763 | 320 | 181 249 | 3 |
+| Quạt thông gió | 136 766 | 20 036 | 9 093 | 107 564 | 2 |
+| Dụng cụ hái cau | 178 525 | 30 775 | 6 952 | 140 764 | 3 |
+
+**Kết luận chẩn đoán:** `gather` (toàn bộ tra chú giải/tiền lệ/mic/bảng) chỉ 0,3–9 s → **KHÔNG phải** nút thắt như phỏng đoán hôm qua; **~85–95% thời gian là lời gọi LLM** (r1 + các vòng 2+), tức `thinking` + độ dài output + số vòng. Bước 2 (song song hoá `gather`) tụt ưu tiên; đòn chính là **tầng nhanh thinking-off** (bước 1) và **cắt vòng sửa oan** (bước 3).
+
+Tín hiệu sớm (3 món, container bench riêng, thinking-off): 255→**47,6 s** (85098090 ✓ — off còn ĐÚNG hơn: on trả 6 số 850980), 136→**38 s** (84145941 ✓), 178→**96,9 s** (82019000 ✓, nhưng 4 vòng vì cổng chặn). p50 136→47 s. **Đang xác thức bằng bench 80 mẫu vàng × 2 lượt on-vs-off** (`/opt/hs-bench4`, runner nền, ~4–5 h) — cổng nghiệm thu: Đ8 không giảm quá 2 điểm so với on.
+
 ## 3. Các bước cải tiến (xếp theo tỉ lệ lợi/kỳ công, kèm cách nghiệm thu)
 
 0. **Đo trước khi tối ưu (1 dòng code):** ghi `ms` + `provider` của TỪNG lượt gọi vào `engine.gates`
