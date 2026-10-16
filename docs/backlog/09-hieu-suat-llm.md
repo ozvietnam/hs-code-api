@@ -99,8 +99,13 @@ lượt 2 dừng giữa chừng cho tiết kiệm quota vì lượt 1 đã fail 
 2. **Bước 1 (env-only) ĐÓNG**: không tồn tại tổ hợp env thinking nào vừa giữ chất lượng vừa hạ p50.
    Prod giữ nguyên mặc định (thinking on). Không ai cần đo lại cell này.
 3. Đường đã duyệt và ĐÃ LIVE thay cho cầu nối env: **async "trợ lý cầm điện thoại"** (ozplugin #182 —
-   biên nhận <2 s, `ket_qua_phan_loai`, `bo_sung_du_kien`, cache 24 h) + bước 2 đã merge (#330, gather
-   micLookup song song — an toàn 0 rủi ro chất lượng nhưng lợi nhỏ vì gather chỉ 0,3–9 s).
+   biên nhận <2 s, `ket_qua_phan_loai`, `bo_sung_du_kien`, cache 24 h; E2E prod 16/10: biên nhận 0,2–0,8 s,
+   engine chạy trọn qua mạng nội bộ Docker — **phát hiện kèm**: `HS_BASE_URL` prod cũ trỏ domain công khai
+   nên chính chặng Cổng→backend cũng bị trần Cloudflare 125 s cắt, đã đổi sang `http://hs-code-api:3000`)
+   + bước 2 đã merge (#330, gather micLookup song song — an toàn 0 rủi ro chất lượng nhưng lợi nhỏ vì
+   gather chỉ 0,3–9 s).
+3b. Bằng chứng cơ chế cho `low`: probe API cho thấy `reasoning_effort:"low"` trên M3 gần như không giảm
+   suy nghĩ (8,1 s ≈ on 9,0 s trên prompt ngắn) — khớp số bench (nhiễu ±10 điểm, TB không giảm).
 4. Đòn trong engine còn lại: **bước 3 (cắt vòng sửa oan)** và **bước 4 (ngắn hoá output)** — llmMs 85–95%.
 
 ## 3. Các bước cải tiến (xếp theo tỉ lệ lợi/kỳ công, kèm cách nghiệm thu)

@@ -60,11 +60,13 @@ tổng 3 call nhỏ ~30–60 s < 1 call khổng lồ. Được kiểm bằng ben
 
 ## Phần D — Việc cần quyết (chờ CEO)
 
-1. **Duyệt kiến trúc A+B** để chia milestone (ước: A ~1 ngày; B tách 3 PR nhỏ B1/B1b/B3 + bench).
+1. **Duyệt kiến trúc A+B** — ✅ **CEO duyệt 16/10 ("làm đi em")**; **A ĐÃ LIVE prod** (ozplugin #182,
+   E2E 16/10: biên nhận 0,2–0,8 s → poll → CAN_DU_KIEN → `bo_sung_du_kien` → XONG; kèm fix chặng nội bộ
+   HS_BASE_URL thoát trần Cloudflare 125 s và #184 reset ngân sách thử khi bổ sung).
 2. **Chọn search API** (Brave Search API ~$5/1k; Serper ~$1/1k; Google CSE) — chi phí vận hành mới,
-   cần anh duyệt vì liên quan thẻ thanh toán.
-3. Bench `low` (đang chạy, ~11:30 xong) — nếu Đ8 giữ ≥55 và p50 <110 s thì **tạm bật làm cầu nối**
-   trong lúc xây A+B (1 biến env, revert được).
+   cần anh duyệt vì liên quan thẻ thanh toán. **VẪN CHỜ** (chỉ chặn B1b).
+3. Bench `low` — ✅ **XONG 16/10, cầu nối env ĐÓNG** cả 4 ô thinking (off/off-r1/low/uoff đều fail cổng;
+   số đầy đủ `09-hieu-suat-llm.md` mục 2c). A + B là đường duy nhất.
 
 ## Phần E — Cách nghiệm thu
 
