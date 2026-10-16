@@ -15,6 +15,10 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
+const { doiTuRequest, runWithConsent } = require('./lib/share-consent');
+const shareConsent = require('./lib/share-consent');
+const consentChiaSe = (req) => doiTuRequest(req).chiaSe;
+
 const ROOT = __dirname;
 const PUBLIC_DIR = path.join(ROOT, 'public');
 const API_DIR = path.join(ROOT, 'api');
@@ -161,14 +165,19 @@ function createServer() {
   const server = http.createServer(async (req, res) => {
     const t0 = Date.now();
     if (process.env.HS_ACCESS_LOG !== '0') {
-      res.on('finish', () => console.log(`${new Date().toISOString()} ${req.method} ${req.url.slice(0, 160)} ${res.statusCode} ${Date.now() - t0}ms`));
+      // #261: khách không đồng ý chia sẻ → log stdout KHÔNG lộ mô tả hàng (che q/moTa/description, giữ độ dài).
+      res.on('finish', () => {
+        const u = consentChiaSe(req) ? req.url : shareConsent.cheUrl(req.url);
+        console.log(`${new Date().toISOString()} ${req.method} ${u.slice(0, 160)} ${res.statusCode} ${Date.now() - t0}ms`);
+      });
     }
     res.setTimeout(TIMEOUT_MS, () => {
       if (!res.headersSent) withHelpers(res).status(504).json({ error: 'Request timeout' });
       else res.destroy();
     });
     try {
-      await handle(req, res);
+      // #261: một điểm thắt duy nhất — mọi handler/hàm ghi log phía dưới đọc được ngữ cảnh qua ALS.
+      await runWithConsent(doiTuRequest(req), () => handle(req, res));
     } catch (e) {
       console.error(new Date().toISOString(), 'handler error', req.method, req.url, e && e.stack ? e.stack.split('\n').slice(0, 4).join(' | ') : e);
       if (!res.headersSent) withHelpers(res).status(500).json({ error: 'Internal server error' });
