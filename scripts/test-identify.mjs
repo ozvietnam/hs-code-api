@@ -59,5 +59,10 @@ res = mkRes();
 await api({ method: 'POST', headers: { authorization: 'Bearer test-token' }, body: { tenHang: 'vỏ bình giữ nhiệt' } }, res);
 check('endpoint: 200 + frame + muc (Bearer hợp lệ)', res._s === 200 && res._j?.frame?.chuong === '39' && res._j?.xacMinh?.muc === 'KHONG_NGUON', JSON.stringify(res._j).slice(0, 120));
 
+// 7. #308: nguon LLM đề xuất thiếu retrievedAt → MÁY đóng dấu ngày lượt xử lý (không dính lỗi validate).
+script = [{ chuong: '39', truong: { polymerType: 'PP', form: 'vỏ', chatLieuCuThe: 'PP' }, nguon: [{ loai: 'phu', url: 'https://s.example.com/x', trich: 'bình PP' }] }];
+r = await identify({ tenHang: 'bình giữ nhiệt PP' });
+check('#308: retrievedAt được máy đóng dấu trong nguon của identify, loi rỗng', /^\d{4}-\d{2}-\d{2}$/.test(r.xacMinh?.nguon?.[0]?.retrievedAt || '') && (r.loi || []).length === 0, JSON.stringify([r.xacMinh?.nguon?.[0], r.loi]));
+
 log(`${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

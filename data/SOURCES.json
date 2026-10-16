@@ -309,6 +309,11 @@
       "descriptionVi": "Chú giải bổ sung SEN 2022 (AHTN 2022, CV 3866/TCHQ-TXNK) — phần tiếng Việt theo mã 8/6/4 số, 395 mục / 683 mã; nhập từ PDF của CEO",
       "builtBy": "scripts/import-sen-pdf.py"
     },
+    "synonyms.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Từ vựng chính tắc EN tier 1 (#309): mã HS ↔ cụm chức năng tiếng Anh NGUYÊN VĂN bóc từ danh pháp WCO (wco-hs-international.csv) + ý kiến phân loại WCO (wco-op/opinions.json, chỉ ý kiến qua cổng mã/thứ tự). phapLy=true, nhãn NGUYEN_VAN; máy kiểm scripts/test-synonyms.mjs chứng minh en ⊆ trich ⊆ nguồn thật — 0 cụm LLM tự chế. Nội dung WCO kèm banQuyen trong meta (giữ nguyên trạng)",
+      "builtBy": "scripts/build-synonyms-tier1.mjs"
+    },
     "tax-enriched.json": {
       "kind": "DERIVED",
       "descriptionVi": "Chính sách quản lý bóc từ cột cs của tax.json bằng LLM (MiniMax/Gemini/Hermes), CHƯA có người duyệt từng dòng; lỗi hệ thống đã sửa bằng luật lib/policy-rules.js (scripts/fix-policy-rules.mjs)",
@@ -343,6 +348,11 @@
     "attribute-frames.json": {
       "kind": "CURATED",
       "descriptionVi": "Bước 12 A-1 (#303): khung thuộc tính định danh hàng theo chương — mở rộng template TT 39 (chapter-declaration-fields) thêm trường nghiệp vụ phân loại (nguyenLyHoatDong, cauThanhModule, chucNangChinh, doChinhXac, chatLieuCuThe) + từ khoá đoán chương; tam giác kiểm chứng định nghĩa trong lib/attribute-frames.js"
+    },
+    "mic-products.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Bước 12 B-3 (#306): sản phẩm made-in-china.com ProductPayload v2 — schema khác hẳn precedent (không có hsCode/description/source TB-TCHQ; chỉ hsCodeHint TQ 10 số + urlNguon). Refresh cùng tệp nguồn theo skuId/urlNguon (luật 13/10/2026). Kho tách riêng (không lẫn vào precedents.json). Validate bằng scripts/validate-community.mjs (kind=mic-product). Số lượng & độ giàu cập nhật theo lô craw từ MiC; trong tương lai nạp qua API /api/identify (lib/identify.js) thay vì tệp nộp.",
+      "builtBy": "scripts/merge-community.mjs"
     }
   }
 }

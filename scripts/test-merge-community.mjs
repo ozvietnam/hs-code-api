@@ -253,5 +253,60 @@ assert('đổi tên tệp: tự cập nhật tên tệp nguồn mới', après3[
   assert('intl: đủ instrumentType/country/snapshotHash/retrievedAt/sourceLicense', itl?.instrumentType === 'RULING' && itl?.country === 'US' && /^[0-9a-f]{64}$/.test(itl?.snapshotHash || '') && itl?.retrievedAt === '2026-10-15' && itl?.sourceLicense === 'public-domain-us-gov', JSON.stringify(itl).slice(0, 260));
 }
 
+// ── Bước 12 (B-3): mic-product → ghi kho riêng data/mic-products.json, KHÔNG đụng precedents ──
+writeFileSync(join(dataDir, 'mic-products.json'), JSON.stringify({ documents: [], generatedAt: '2026-10-15T00:00:00Z' }, null, 2));
+mkdirSync(join(communityDir, 'mic'), { recursive: true });
+const micLotFile = join(communityDir, 'mic', 'mic-lot-2026-10-15.json');
+writeFileSync(micLotFile, JSON.stringify({
+  kind: 'mic-product',
+  contributor: { name: 'mic-agent-2026-10', github: 'ozvietnam' },
+  license: 'CC-BY-SA-4.0',
+  submittedAt: '2026-10-15T00:00:00Z',
+  records: [
+    { title: 'Reading Glasses Blue Light PC Frame', skuId: 'gpDYSaTAVEkZ', urlNguon: 'https://gpDYSaTAVEkZ.en.made-in-china.com/product/prod1.html', retrievedAt: '2026-10-15', hsCodeHint: '9004900009', specs: [{ key: 'Material', value: 'PC Frame' }] },
+    { title: 'Wireless Earbuds TWS Bluetooth 5.3', skuId: 'abcXYZ987', urlNguon: 'https://abcxyz.en.made-in-china.com/product/prod2.html', retrievedAt: '2026-10-15', hsCodeHint: '8518300099', specs: [{ key: 'Battery', value: '500mAh' }] },
+  ],
+}));
+spawnSync(process.execPath, [join(root, 'scripts', 'merge-community.mjs'), '--community-dir', communityDir, '--data-dir', dataDir], { encoding: 'utf8' });
+const mic1 = JSON.parse(readFileSync(join(dataDir, 'mic-products.json'), 'utf8'));
+assert('mic: ghi vào kho riêng mic-products.json với shape {documents, generatedAt}', Array.isArray(mic1.documents) && typeof mic1.generatedAt === 'string');
+assert('mic: 2 bản ghi đầu tiên vào kho', mic1.documents?.length === 2, `n=${mic1.documents?.length}`);
+assert('mic: ghi skuId, title, hsCodeHint', mic1.documents[0].skuId === 'gpDYSaTAVEkZ' && /Reading Glasses/.test(mic1.documents[0].title) && mic1.documents[0].hsCodeHint === '9004900009');
+assert('mic: ghi contributor + sourceFile', mic1.documents[0].contributor?.name === 'mic-agent-2026-10' && mic1.documents[0].sourceFile?.includes('mic-lot-2026-10-15.json'));
+assert("mic: KHÔNG đụng precedents.json (kiểm tra bản ghi '11082000' cũ vẫn còn)", JSON.parse(readFileSync(join(dataDir, 'precedents.json'), 'utf8'))['11082000']?.length === 1);
+assert('mic: KHÔNG đụng precedents.json (84137090 vẫn 1)', JSON.parse(readFileSync(join(dataDir, 'precedents.json'), 'utf8'))['84137090']?.length === 1);
+
+// Refresh: nộp lại cùng tệp với bản giàu hơn (giàu thêm specs) → thay tại chỗ, không nhân bản
+const refreshLot = JSON.parse(readFileSync(micLotFile, 'utf8'));
+writeFileSync(micLotFile, JSON.stringify({
+  ...refreshLot,
+  records: [
+    { ...refreshLot.records[0], title: 'Reading Glasses Blue Light PC Frame + Metal Hinge', specs: [{ key: 'Material', value: 'PC Frame' }, { key: 'Hinge', value: 'Metal' }] },
+    refreshLot.records[1],
+  ],
+}));
+spawnSync(process.execPath, [join(root, 'scripts', 'merge-community.mjs'), '--community-dir', communityDir, '--data-dir', dataDir], { encoding: 'utf8' });
+const mic2 = JSON.parse(readFileSync(join(dataDir, 'mic-products.json'), 'utf8'));
+assert('mic refresh: thay tại chỗ, không nhân bản', mic2.documents?.length === 2, `n=${mic2.documents?.length}`);
+assert('mic refresh: title được cập nhật', /Metal Hinge/.test(mic2.documents[0].title), mic2.documents[0].title);
+assert('mic refresh: specs được làm giàu', mic2.documents[0].specs?.length === 2, JSON.stringify(mic2.documents[0].specs));
+
+// Nộp lại y hệt → skippedDup (vẫn 2 docs, không thêm)
+spawnSync(process.execPath, [join(root, 'scripts', 'merge-community.mjs'), '--community-dir', communityDir, '--data-dir', dataDir], { encoding: 'utf8' });
+const mic3 = JSON.parse(readFileSync(join(dataDir, 'mic-products.json'), 'utf8'));
+assert('mic y hệt: skip dup, vẫn 2 docs', mic3.documents?.length === 2, `n=${mic3.documents?.length}`);
+
+// Refresh same source nhận diện bằng skuId HOẶC urlNguon (giàu hơn ở 1 trong 2 đều được)
+writeFileSync(micLotFile, JSON.stringify({
+  ...refreshLot,
+  records: [
+    { ...refreshLot.records[0], urlNguon: 'https://gpDYSaTAVEkZ.en.made-in-china.com/product/prod1-renamed-slug.html' },
+    refreshLot.records[1],
+  ],
+}));
+spawnSync(process.execPath, [join(root, 'scripts', 'merge-community.mjs'), '--community-dir', communityDir, '--data-dir', dataDir], { encoding: 'utf8' });
+const mic4 = JSON.parse(readFileSync(join(dataDir, 'mic-products.json'), 'utf8'));
+assert('mic refresh theo skuId cũng match khi urlNguon đổi (cùng sourceFile)', mic4.documents?.length === 2 && /prod1-renamed/.test(mic4.documents[0].urlNguon), JSON.stringify(mic4.documents[0]));
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
