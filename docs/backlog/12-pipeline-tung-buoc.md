@@ -60,11 +60,12 @@ tổng 3 call nhỏ ~30–60 s < 1 call khổng lồ. Được kiểm bằng ben
 
 ## Phần D — Việc cần quyết (chờ CEO)
 
-1. **Duyệt kiến trúc A+B** để chia milestone (ước: A ~1 ngày; B tách 3 PR nhỏ B1/B1b/B3 + bench).
+1. **Duyệt kiến trúc A+B** — ✅ **CEO duyệt 16/10 ("làm đi em")**. A đã code + test (ozplugin PR #182).
 2. **Chọn search API** (Brave Search API ~$5/1k; Serper ~$1/1k; Google CSE) — chi phí vận hành mới,
-   cần anh duyệt vì liên quan thẻ thanh toán.
-3. Bench `low` (đang chạy, ~11:30 xong) — nếu Đ8 giữ ≥55 và p50 <110 s thì **tạm bật làm cầu nối**
-   trong lúc xây A+B (1 biến env, revert được).
+   cần anh duyệt vì liên quan thẻ thanh toán. **VẪN CHỜ** (chỉ chặn B1b).
+3. Bench `low` — ✅ **XONG 16/10, BÁC cầu nối**: v1 Đ8 54,3 TB 200 s; v2 Đ8 60,3 TB 138 s →
+   chất lượng ngang on nhưng không nhanh hơn (M3 "low" gần như không giảm suy nghĩ — số chi tiết
+   `09-hieu-suat-llm.md` mục 2c). Không bật env; A + B là đường duy nhất.
 
 ## Phần E — Cách nghiệm thu
 

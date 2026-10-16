@@ -79,6 +79,19 @@ Cùng 3 món, prod (`engine.phases` trong response classify):
 
 Tín hiệu sớm (3 món, container bench riêng, thinking-off): 255→**47,6 s** (85098090 ✓ — off còn ĐÚNG hơn: on trả 6 số 850980), 136→**38 s** (84145941 ✓), 178→**96,9 s** (82019000 ✓, nhưng 4 vòng vì cổng chặn). p50 136→47 s. **Đang xác thức bằng bench 80 mẫu vàng × 2 lượt on-vs-off** (`/opt/hs-bench4`, runner nền, ~4–5 h) — cổng nghiệm thu: Đ8 không giảm quá 2 điểm so với on.
 
+### 2c. Đóng hai bench chẩn 16/10 — off và low đều KHÔNG phải cầu nối
+
+- **off** (`:off` toàn bước): Đ8 38,8–40, rớt ~17 điểm so với on (56,1 TB) → **bác**.
+- **low** (`LLM_STEP_UNDERSTAND/GIR=MiniMax-M3:low`, 80 vàng × 2 lượt, `/opt/hs-bench4`):
+  - vòng 1: Đ8 **54,3** · Đ6 67,1 · top3_8 68,6 · conf-sai 30 · TB **200 s** · 2,3 vòng · cờ 22,5
+  - vòng 2: Đ8 **60,3** · Đ6 71,8 · top3_8 74,4 · conf-sai 21,8 · TB **138 s** · 2,2 vòng · cờ 20
+  - trung bình Đ8 ~57,3 ≈ on (~56,1) — chất lượng đi ngang; nhưng TB ~169 s KHÔNG nhanh hơn on
+    (~146 s), p50 vẫn vượt trần 125 s của Cloudflare. Probe API hợp lệ: `reasoning_effort:"low"`
+    trên M3 gần như không giảm suy nghĩ (8,1 s ≈ on 9,0 s trên prompt ngắn).
+- **Hệ quả:** không có cầu nối env nào (tắt thì mất chất, nông thì không nhanh). Đường bền là
+  **kiến trúc**: Phần A async (ozplugin PR #182 — biên nhận + thợ việc, đã code+test) và Phần B
+  pipeline theo tầng (mỗi tầng call nhỏ, thinking hẹp, có căn cứ riêng).
+
 ## 3. Các bước cải tiến (xếp theo tỉ lệ lợi/kỳ công, kèm cách nghiệm thu)
 
 0. **Đo trước khi tối ưu (1 dòng code):** ghi `ms` + `provider` của TỪNG lượt gọi vào `engine.gates`
