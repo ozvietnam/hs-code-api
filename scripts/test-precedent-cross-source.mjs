@@ -133,5 +133,73 @@ assert('flat index chứa TB-TCHQ', flat.some((p) => p.source === 'TB-TCHQ'), 'n
   assert('0 cụm ngoài tier-1 (chỉ từ wco-hs-international.csv hoặc wco-op/opinions.json)', illegal.length === 0, `illegal=${illegal.length} sample=${JSON.stringify(illegal[0])}`);
 }
 
+// ───────────────────────────────────────────────────────────────────────────
+// CASE 6: bridge confusedWith work đúng khi có data cầu nối (vòng 2 brief #311).
+// Data M82907.confusedWith=[] nên CASE 1/2 với data thật KHÔNG bridge được — chứng minh
+// code work bằng cách set confusedWith giả cho M82907 (=["842139"], đúng cặp khai glovebox).
+// ───────────────────────────────────────────────────────────────────────────
+{
+  const ps = require('../lib/precedent-search.js');
+  ps.reset();
+  const flat = ps.loadFlatPrecedents();
+  const m82 = flat.find((p) => p.precedentId && p.precedentId.includes('M82907'));
+  m82.confusedWith = ['842139']; // mô phỏng data cầu nối
+  const r = ps.searchPrecedents('glove box gas purification', { topK: 5 });
+  const m82In = r.find((m) => m.precedent.precedentId.includes('M82907'));
+  console.log('  CASE 6 top5:', r.map((m) => m.precedent.precedentId));
+  assert('CASE 6: bridge confusedWith kéo M82907 vào top 5', !!m82In, JSON.stringify(r.map((m) => m.precedent.precedentId)));
+  assert('CASE 6: M82907 có nhãn viConfusedWith: true', m82In && m82In.viConfusedWith === true, JSON.stringify(m82In));
+  assert('CASE 6: điểm bridge ≤ điểm top1 direct (TCO 1679759)', m82In && r[0] && m82In.similarity <= r[0].similarity, `m82.sim=${m82In?.similarity} top1.sim=${r[0]?.similarity}`);
+  ps.reset();
+}
+
+// ───────────────────────────────────────────────────────────────────────────
+// CASE 7: fallback productName-tier-1 work đúng khi có cụm tier-1 khớp token.
+// M82907 productName "anaerobic and hypoxia workstations" — không trùng tier-1 của 842139.
+// Chứng minh fallback work: thêm 1 record intl giả có productName chứa token "gases"
+// (token tier-1 của 842139 "for filtering or purifying gases").
+// ───────────────────────────────────────────────────────────────────────────
+{
+  const ps = require('../lib/precedent-search.js');
+  ps.reset();
+  // Thêm 1 record intl giả vào flatIndex
+  const fakeId = 'RULING_CBP_FAKE_GASES';
+  const fakeHs = '84798999';
+  const fakeRec = {
+    precedentId: fakeId,
+    source: 'RULING_CBP',
+    loaiNguon: 'RULING_CBP',
+    instrumentType: 'RULING',
+    country: 'US',
+    tbTchqNumber: null,
+    productNameRaw: 'CBP FAKE: apparatus for purifying gases with chambers',
+    technicalSpec: '',
+    finalHsCode: fakeHs,
+    outcome: 'APPROVED',
+    outcomeHs: fakeHs,
+    year: 2020,
+    issuedDate: null,
+    sourceUrl: null,
+    sourceFile: null,
+    snapshotHash: null,
+    retrievedAt: null,
+    confusedWith: [],
+    _headTokens: new Set(['cbp', 'fake', 'apparatus', 'for', 'purifying', 'gases', 'with', 'chambers']),
+    _nameTokens: new Set(['cbp', 'fake', 'apparatus', 'for', 'purifying', 'gases', 'with', 'chambers']),
+    _specTokens: new Set(),
+    _xacMinhBase: 'CHUA',
+    xacMinh: 'CHUA',
+  };
+  // Inject sau khi loadFlatPrecedents
+  const flat = ps.loadFlatPrecedents();
+  flat.push(fakeRec);
+  const r = ps.searchPrecedents('glove box gas purification', { topK: 5 });
+  const fakeIn = r.find((m) => m.precedent.precedentId === fakeId);
+  console.log('  CASE 7 top5:', r.map((m) => m.precedent.precedentId));
+  assert('CASE 7: fallback productName-tier-1 kéo intl record có token "gases" vào top 5', !!fakeIn, JSON.stringify(r.map((m) => m.precedent.precedentId)));
+  assert('CASE 7: record qua fallback có nhãn viConfusedWith: true', fakeIn && fakeIn.viConfusedWith === true, JSON.stringify(fakeIn));
+  ps.reset();
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
