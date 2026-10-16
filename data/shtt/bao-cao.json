@@ -1,45 +1,51 @@
 {
- "ngay": "2026-10-16",
- "may": "macOS dev-zcode (macOS darwin/arm64); tmdn=tmdn-blocked",
- "batDau": "2026-10-16T15:23:00Z",
- "ketThuc": "2026-10-16T16:39:17.913Z",
- "camKet": {
-  "khongLachCaptcha": true,
-  "tocDo": "≤ 1 yêu cầu/giây/nguồn (Chrome navigate Wicket/WAF + delay 4.5s/lượt; mỗi lượt lưu raw sha256)"
- },
- "nguon": [
-  {
-   "ma": "vn-tchq-giam-sat",
-   "trangThai": "CHAN",
-   "soBanGhi": 0,
-   "ghiChu": "TCHQ (customs.gov.vn) không công bố danh sách nhãn hiệu giám sát SHTT dạng dataset/API public. SPA shell 13973 bytes cho mọi pageId (đã thử 6 pageId). Theo docs/trademark-sources.md (đo 07/2026): \"danh sách không công bố dạng dataset/API — thực tế export tay\". Cần CEO export tay CSV rồi nạp qua scripts/ingest-trademark-watch.mjs --customs. Đã capture 6 raw HTML làm bằng chứng."
+  "ngay": "2026-10-16",
+  "may": "macOS dev-zcode (macOS darwin/arm64); mang mo VN; tmdn=timeout",
+  "batDau": "2026-10-16T15:23:00Z",
+  "ketThuc": "2026-10-16T16:56:54.000Z",
+  "camKet": {
+    "khongLachCaptcha": true,
+    "tocDo": "≤ 1 yêu cầu/giây/nguồn. WIPO Publish: chờ render 4.5s/lượt và ≥ 600 ms giữa các bản ghi cùng trang. Không đổi IP, không lách captcha."
   },
-  {
-   "ma": "cn-gacc-beian",
-   "trangThai": "CAPTCHA",
-   "soBanGhi": 0,
-   "ghiChu": "GACC bị Aliyun WAF chặn từ máy dev VN (probe URL=http://www.customs.gov.cn/customs/ipr/ipr/iprInit lúc 2026-10-16T15:25:05.360Z): body rỗng hoặc script anti-bot.  raw bằng chứng: a7fe83ec64bb23eb28090598db3d166ed98e52e39d1afbbfd74c579553f93e4e (39 bytes). Theo đơn đặt hàng luật 2: không lách captcha."
-  },
-  {
-   "ma": "vn-ipvietnam-dang-ky",
-   "trangThai": "OK",
-   "soBanGhi": 975,
-   "ghiChu": "cào 975 bản ghi"
-  },
-  {
-   "ma": "tmview-cn-vn",
-   "trangThai": "CHAN",
-   "soBanGhi": 0,
-   "ghiChu": "TMview (www.tmdn.org) bị chặn outbound từ máy dev VN — Chrome timeout (page.goto: Timeout 35000ms exceeded.\nCall log:\n  - navigatin) sau 36s. Đã capture raw placeholder (sha=6d2211945367, 261 bytes). Theo đơn đặt hàng luật 1 + luật 7: không lách anti-bot, không đổi IP/proxy. Cần allowlist trong network policy hoặc dùng máy có egress mở."
-  },
-  {
-   "ma": "cn-cnipa-dang-ky",
-   "trangThai": "BO_QUA",
-   "soBanGhi": 0,
-   "ghiChu": "chưa có script cào / không tra tới"
+  "nguon": [
+    {
+      "ma": "vn-tchq-giam-sat",
+      "trangThai": "LOI",
+      "soBanGhi": 0,
+      "ghiChu": "Đo lại 2026-10-16 ~23:50 máy VN, Chrome có đầu. customs.gov.vn HTTP 200. Menu Tra cứu không có danh sách nhãn hiệu giám sát SHTT. Tìm kiếm toàn văn «sở hữu trí tuệ» (API tim-kiem-toan-van) chỉ ra tin bài; «danh sách nhãn hiệu kiểm tra giám sát» không có kết quả. Cổng nộp đơn https://pus.customs.gov.vn yêu cầu đăng nhập. Không bịa bản ghi — cần export tay rồi nạp --customs."
+    },
+    {
+      "ma": "cn-gacc-beian",
+      "trangThai": "CAPTCHA",
+      "soBanGhi": 0,
+      "ghiChu": "CAPTCHA/anti-bot. online.customs.gov.cn mục 知识产权备案 trỏ http://202.127.48.145:8888/ . Chrome có đầu 2026-10-16T16:56:38Z nhận HTTP 412 (script $_ts) rồi body rỗng. http://www.customs.gov.cn/ipr/recordation cùng lớp chặn. Không lách. raw a7fe83ec64bb (39 bytes, body sau khi thử thách thất bại)."
+    },
+    {
+      "ma": "vn-ipvietnam-dang-ky",
+      "trangThai": "OK",
+      "soBanGhi": 328,
+      "ghiChu": "Ưu tiên 1: 159/159 đã tra (khớp chính xác chuỗi chuan hoặc nhan). Đã loại bản ghi khớp mờ (includes) khỏi tệp — những nhãn chỉ có kết quả gần giống nằm ở khong-tim-thay.ghiChu, không gán ungVien. Đang mở rộng ưu tiên 2 và 3."
+    },
+    {
+      "ma": "tmview-cn-vn",
+      "trangThai": "CHAN",
+      "soBanGhi": 0,
+      "ghiChu": "Đo lại 2026-10-16T16:43Z máy VN. DNS www.tmdn.org → 109.232.208.203. curl HEAD và POST /tmview/api/search/results timeout (20–25s, IPv4). Không có mã HTTP. Không đổi IP/proxy."
+    },
+    {
+      "ma": "cn-cnipa-dang-ky",
+      "trangThai": "CHAN",
+      "soBanGhi": 0,
+      "ghiChu": "TMview không với tới nên thử CNIPA. https://sbj.cnipa.gov.cn/sbj/sbcx/ mở https://wcjs.sbj.cnipa.gov.cn/ — Chrome có đầu HTTP 403 «请求被阻断» lúc 2026-10-16T16:56:53Z. Không có captcha hình, không lách. Đã xoá IP khỏi bản thô. raw 46820bb295f70028bf583221713277b5c7be2e7e74014ee995129ceea7713861. Dừng, không tra từng ứng viên."
+    }
+  ],
+  "soKhongTimThay": 71,
+  "loiTruot": [],
+  "thoiGianTungNguon": {
+    "vn-tchq-giam-sat": "đo lại ~10 phút, không có dataset",
+    "cn-gacc-beian": "probe 2026-10-16T16:56:38Z",
+    "tmview-cn-vn": "timeout 2026-10-16T16:43Z",
+    "vn-ipvietnam-dang-ky": "ưu tiên 1 xong; lọc khớp mờ 16:56Z",
+    "cn-cnipa-dang-ky": "probe 2026-10-16T16:56:53Z rồi dừng"
   }
- ],
- "soKhongTimThay": 53,
- "soRaw": 2099,
- "ghiChuChung": "Đợt cào đêm 16-17/10/2026 (#335). WIPO Publish cho ~56+ record VN. TCHQ/GACC/TMview chặn từ máy dev VN (CHAN/CAPTCHA), ghi trạng thái đầy đủ — không bịa. Xem scripts/shtt/cao-*.mjs để tái lập."
 }

@@ -33,7 +33,7 @@ const STATUS_FILE = {
   'cn-gacc-beian': '_gacc-status.json',
   'vn-ipvietnam-dang-ky': null, // có record JSONL, không cần status meta
   'tmview-cn-vn': '_tmview-status.json',
-  'cn-cnipa-dang-ky': null,
+  'cn-cnipa-dang-ky': '_cnipa-status.json',
 };
 
 function readMeta(name) {

@@ -57,8 +57,8 @@ async function main() {
   const fs = await import('node:fs');
   const metaPath = join(DIR_SHTT, '_tchq-status.json');
   fs.writeFileSync(metaPath, JSON.stringify({
-    trangThai: 'CHAN',
-    ghiChu: `TCHQ (customs.gov.vn) không công bố danh sách nhãn hiệu giám sát SHTT dạng dataset/API public. SPA shell 13973 bytes cho mọi pageId (đã thử ${candidates.length} pageId). Theo docs/trademark-sources.md (đo 07/2026): "danh sách không công bố dạng dataset/API — thực tế export tay". Cần CEO export tay CSV rồi nạp qua scripts/ingest-trademark-watch.mjs --customs. Đã capture ${raws.length} raw HTML làm bằng chứng.`,
+    trangThai: 'LOI',
+    ghiChu: `Site customs.gov.vn trả HTTP 200 (Chrome có đầu, ${raws.length} trang đã lưu). Không có bảng/dataset công khai "danh sách nhãn hiệu giám sát SHTT". Tìm kiếm toàn văn "sở hữu trí tuệ" ra bài viết tin tức, không ra danh mục nhãn+chủ+số hồ sơ. Cụm "danh sách nhãn hiệu kiểm tra giám sát" = không tìm thấy. Cổng nộp đơn https://pus.customs.gov.vn yêu cầu đăng nhập, không có trang tra cứu công khai. Không bịa bản ghi. Cần export tay rồi nạp scripts/ingest-trademark-watch.mjs --customs.`,
     soBanGhi: 0,
     rawFiles: raws.map((r) => ({ url: r.u, sha256: r.sha256, bytes: r.bytes })),
   }, null, 1) + '\n');

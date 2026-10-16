@@ -19,10 +19,27 @@
  *  - KHÔNG sửa lib/, scripts/shtt/kiem.mjs, scripts/test-shtt-kiem.mjs, ung-vien-nhan-hieu.*
  */
 import { chromium } from 'playwright-core';
-import { existsSync, readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { politeFetch, writeRaw, appendRecord, writeReport, TEP, log, UA, DIR_SHTT } from './lib-common.mjs';
+import { writeRaw, appendRecord, readJsonl, TEP, log, UA, DIR_SHTT, sleep } from './lib-common.mjs';
+
+const require = createRequire(import.meta.url);
+const { removeDiacritics } = require('../../lib/search-utils.js');
+
+/** Cùng hàm chuẩn hoá với scripts/shtt/ung-vien.mjs — so khớp chính xác, không khớp mờ. */
+export function chuanHoa(s) {
+  return removeDiacritics(String(s || '')).toLowerCase().replace(/[^a-z0-9一-鿿]+/g, ' ').trim();
+}
+
+/** Luật 4: ungVien chỉ khi nhãn trang khớp đúng chuỗi chuan hoặc nhan nguyên bản. */
+export function khopChinhXac(nhanTrang, ungVien) {
+  const trang = String(nhanTrang || '').trim();
+  if (!trang || !ungVien) return false;
+  if (chuanHoa(trang) === ungVien.chuan) return true;
+  return trang === String(ungVien.nhan || '').trim();
+}
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
@@ -68,20 +85,23 @@ export async function searchTiminwips(page, brand, chuan) {
       return out;
     });
     const recs = [];
+    const gan = [];
     const seen = new Set();
-    const chuanLower = chuan.toLowerCase();
-    const brandLower = brand.toLowerCase();
+    const ung = { chuan, nhan: brand };
+    let wrote = false;
     for (const text of items) {
       const p = parseItem(text);
       if (!p) continue;
-      // Luật 4: chỉ ghi khi nhan khớp chính xác chuan HOẶC nhan nguyên bản.
-      const nl = p.nhan.toLowerCase();
-      if (!nl.includes(chuanLower) && !nl.includes(brandLower)) continue;
       const key = `${p.soDon}|${p.nhan}`;
-      if (seen.has(key)) continue; // dedup trong cùng query
+      if (seen.has(key)) continue;
       seen.add(key);
-      // Mỗi record có 1 "view" raw riêng (cắt từ HTML gốc) — đảm bảo
-      // sha256 + layLuc duy nhất để kiem.mjs không bắt lỗi tốc độ lịch sự.
+      if (!khopChinhXac(p.nhan, ung)) {
+        if (gan.length < 5) gan.push(p.nhan);
+        continue;
+      }
+      // Một trang có nhiều nhãn khớp: cách layLuc ≥ 600 ms để cổng kiểm tốc độ không đỏ.
+      if (wrote) await sleep(600);
+      wrote = true;
       const view = `${url}\n\n${text}\n`;
       const viewRaw = writeRaw('vn-ipvietnam-dang-ky', url, view);
       recs.push({
@@ -93,16 +113,68 @@ export async function searchTiminwips(page, brand, chuan) {
         nguon: { url, layLuc: viewRaw.layLuc, sha256: viewRaw.sha256 },
       });
     }
-    return { records: recs, raw, htmlLen: html.length, itemsCount: items.length };
+    return { records: recs, gan, raw, htmlLen: html.length, itemsCount: items.length };
   } catch (e) {
     return { records: [], raw: null, htmlLen: 0, err: e.message };
   }
 }
 
-async function main() {
+/** Bỏ bản ghi khớp mờ (includes) đã ghi nhầm ungVien. Giữ nguyên layLuc/sha256 của bản khớp chính xác. */
+export function locKhongKhopMo() {
   const uv = JSON.parse(readFileSync(UV_PATH, 'utf8')).ungVien;
-  const uu1 = uv.filter((u) => u.uuTien === 1);
-  log(`WIPO cào ${uu1.length} nhãn ưu tiên 1 (Chrome headless).`);
+  const by = new Map(uv.map((u) => [u.chuan, u]));
+  const recs = readJsonl(TEP['vn-ipvietnam-dang-ky']).filter((r) => !r.__loi);
+  const ktt = readJsonl(TEP['khong-tim-thay']).filter((r) => !r.__loi);
+  const daKtt = new Set(ktt.filter((r) => r.nguonMa === 'vn-ipvietnam-dang-ky').map((r) => r.ungVien));
+  const exact = [];
+  const seen = new Set();
+  const gan = new Map();
+  for (const r of recs) {
+    const u = by.get(r.ungVien);
+    if (!u || !khopChinhXac(r.nhan, u)) {
+      if (!gan.has(r.ungVien)) gan.set(r.ungVien, { nguon: r.nguon, ten: [] });
+      const g = gan.get(r.ungVien);
+      if (g.ten.length < 5) g.ten.push(r.nhan);
+      continue;
+    }
+    const k = `${r.soDon}|${r.nhan}`;
+    if (seen.has(k)) continue;
+    seen.add(k);
+    exact.push(r);
+  }
+  writeFileSync(join(DIR_SHTT, TEP['vn-ipvietnam-dang-ky']), exact.map((r) => JSON.stringify(r)).join('\n') + (exact.length ? '\n' : ''));
+  const coExact = new Set(exact.map((r) => r.ungVien));
+  let them = 0;
+  for (const [chuan, g] of gan) {
+    if (coExact.has(chuan) || daKtt.has(chuan)) continue;
+    appendRecord(TEP['khong-tim-thay'], {
+      ungVien: chuan,
+      nguonMa: 'vn-ipvietnam-dang-ky',
+      nguon: { url: g.nguon.url, layLuc: g.nguon.layLuc, sha256: g.nguon.sha256 },
+      ghiChu: `không có nhãn khớp chính xác chuỗi chuan/nhan. Kết quả gần giống không gán ungVien: ${g.ten.join('; ')}`,
+    });
+    them += 1;
+  }
+  log(`lọc khớp mờ: giữ ${exact.length} khớp chính xác, thêm ${them} dòng không-tìm-thấy`);
+  return { exact: exact.length, them };
+}
+
+async function main() {
+  if (process.argv.includes('--loc-mo')) {
+    locKhongKhopMo();
+    return;
+  }
+  const uuArg = process.argv.find((a) => a.startsWith('--uu='));
+  const uuSet = new Set((uuArg ? uuArg.slice('--uu='.length) : '1').split(',').map((x) => Number(x.trim())).filter((n) => n > 0));
+  const uv = JSON.parse(readFileSync(UV_PATH, 'utf8')).ungVien;
+  const hang = uv.filter((u) => uuSet.has(u.uuTien));
+  const daTra = new Set([
+    ...readJsonl(TEP['vn-ipvietnam-dang-ky']).map((r) => r.ungVien),
+    ...readJsonl(TEP['khong-tim-thay']).filter((r) => r.nguonMa === 'vn-ipvietnam-dang-ky').map((r) => r.ungVien),
+  ]);
+  const viec = hang.filter((u) => !daTra.has(u.chuan));
+  log(`WIPO cào ưu tiên ${[...uuSet].join('+')} — ${viec.length}/${hang.length} nhãn chưa tra (Chrome headless).`);
+  if (!viec.length) return;
 
   const browser = await chromium.launch({ executablePath: CHROME, headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
   const ctx = await browser.newContext({ userAgent: UA });
@@ -119,26 +191,29 @@ async function main() {
   let notFound = 0;
   let errs = 0;
   const t0 = Date.now();
-  for (let i = 0; i < uu1.length; i++) {
-    const u = uu1[i];
+  for (let i = 0; i < viec.length; i++) {
+    const u = viec[i];
     const brand = u.nhan;
     const chuan = u.chuan;
-    const { records, raw, err } = await searchTiminwips(page, brand, chuan);
-    if (err) { errs += 1; log(`[${i + 1}/${uu1.length}] ${chuan} ERR ${err.slice(0, 80)}`); continue; }
+    const { records, gan, raw, err } = await searchTiminwips(page, brand, chuan);
+    if (err) { errs += 1; log(`[${i + 1}/${viec.length}] ${chuan} ERR ${err.slice(0, 80)}`); continue; }
     if (records.length === 0) {
       notFound += 1;
+      const ghiChu = gan && gan.length
+        ? `không có nhãn khớp chính xác chuỗi chuan/nhan. Kết quả gần giống không gán ungVien: ${gan.join('; ')}`
+        : 'không có kết quả khớp chính xác chuan/nhan';
       appendRecord(TEP['khong-tim-thay'], {
         ungVien: chuan,
         nguonMa: 'vn-ipvietnam-dang-ky',
-        nguon: raw ? { url: raw.url || `${WIPO}?query=${encodeURIComponent(brand)}`, layLuc: raw.layLuc, sha256: raw.sha256 } : { url: `${WIPO}?query=${encodeURIComponent(brand)}`, layLuc: new Date().toISOString(), sha256: null },
-        ghiChu: 'không có kết quả khớp chính xác chuan/nhan',
+        nguon: raw ? { url: raw.url, layLuc: raw.layLuc, sha256: raw.sha256 } : { url: `${WIPO}?query=${encodeURIComponent(brand)}`, layLuc: new Date().toISOString() },
+        ghiChu,
       });
     } else {
       found += records.length;
       for (const r of records) appendRecord(TEP['vn-ipvietnam-dang-ky'], r);
     }
-    if ((i + 1) % 10 === 0 || i === uu1.length - 1) {
-      log(`[${i + 1}/${uu1.length}] found=${found} notFound=${notFound} errs=${errs} elapsed=${Math.round((Date.now() - t0) / 1000)}s`);
+    if ((i + 1) % 10 === 0 || i === viec.length - 1) {
+      log(`[${i + 1}/${viec.length}] found=${found} notFound=${notFound} errs=${errs} elapsed=${Math.round((Date.now() - t0) / 1000)}s`);
     }
   }
   await browser.close();

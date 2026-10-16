@@ -3,10 +3,12 @@
  * Cào GACC (Hải quan Trung Quốc — 知识产权海关保护备案) cho nhãn hiệu ghi nhận.
  * Nguồn: docs/giao-viec/shtt-cao-dem.md mục 2 (cn-gacc-beian).
  *
- * Thực tế (đo từ máy dev VN, 2026-10-16):
- *   - http://www.customs.gov.cn/customs/ipr/*  bị Aliyun WAF chặn (HTTP 412 / captcha).
- *   - Chrome headless cũng bị chặn — body trả về rỗng (39 bytes placeholder).
- *   - Theo đơn đặt hàng: nguồn CHAN/CAPTCHA không phải lỗi; ghi trạng thái + ghiChu.
+ * Thực tế (đo lại từ máy dev VN, mạng mở, 2026-10-16 ~23:45):
+ *   - Cổng chính thức online.customs.gov.cn mục "我要查 → 知识产权备案" trỏ tới
+ *     http://202.127.48.145:8888/ (hệ thống 知识产权海关保护备案).
+ *   - URL đó và http://www.customs.gov.cn/ipr/recordation trả HTTP 412 (JS anti-bot $_ts).
+ *   - Chrome có đầu, UA mặc định lẫn UA định danh, vẫn 412 rồi body rỗng — không lách.
+ *   - haiguanbeian.com là bên thứ ba: chỉ dùng để đối chiếu đường, không lấy dữ liệu.
  *
  * Script này vẫn CỐ thử với từng ứng viên ưu tiên 1: nếu captcha ngoại lệ xảy ra
  * cho 1 query cụ thể (vd query không có captcha) → ghi record. Nếu mọi lượt fail
@@ -29,11 +31,10 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const UV_PATH = join(DIR_SHTT, 'ung-vien-nhan-hieu.json');
 
-// Cổng GACC (Aliyun WAF). URL cố định: iprInit trang truy vấn "备案查询".
+// URL chính thức lấy từ payload cổng online.customs.gov.cn (functionName 知识产权备案 / 知识产权海关保护备案).
 const CANDIDATE_URLS = [
-  'http://www.customs.gov.cn/customs/ipr/ipr/iprInit',
-  'http://haiguanbeian.com/RecordalApply/Query',
-  'http://online.customs.gov.cn/ipr/init',
+  'http://202.127.48.145:8888/',
+  'http://www.customs.gov.cn/ipr/recordation',
 ];
 
 const NGUON_MA = 'cn-gacc-beian';
@@ -54,22 +55,22 @@ async function tryQuery(page, brand) {
 async function main() {
   const uv = JSON.parse(readFileSync(UV_PATH, 'utf8')).ungVien;
   const uu1 = uv.filter((u) => u.uuTien === 1);
-  log(`GACC cào ${uu1.length} nhãn ưu tiên 1 (Chrome headless).`);
+  log(`GACC cào ${uu1.length} nhãn ưu tiên 1 (Chrome có đầu; dừng nếu anti-bot).`);
 
   // Probe 1 lần để xác định captcha
   let captcha = false;
   let probeRaw = null;
   let probeErr = null;
-  const browser = await chromium.launch({ executablePath: CHROME, headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
-  const ctx = await browser.newContext({ userAgent: UA });
+  const browser = await chromium.launch({ executablePath: CHROME, headless: false, args: ['--disable-dev-shm-usage'] });
+  const ctx = await browser.newContext({ userAgent: UA, locale: 'zh-CN' });
   const page = await ctx.newPage();
   try {
-    await page.goto(CANDIDATE_URLS[0], { waitUntil: 'domcontentloaded', timeout: 30000 });
-    await page.waitForTimeout(4000);
+    const resp = await page.goto(CANDIDATE_URLS[0], { waitUntil: 'domcontentloaded', timeout: 30000 });
+    await page.waitForTimeout(6000);
     const html = await page.content();
     probeRaw = writeRaw(NGUON_MA, CANDIDATE_URLS[0], html);
-    // Điều kiện captcha: body rỗng / chỉ có script anti-bot / status 412
-    captcha = html.length < 500 || /waf|aliyun|verify|captcha|slardar/i.test(html);
+    const status = resp ? resp.status() : 0;
+    captcha = status === 412 || status === 403 || html.length < 800 || /\$_ts|waf|aliyun|verify|captcha|slardar|阻断|Precondition/i.test(html);
   } catch (e) { probeErr = e.message; }
 
   if (captcha || probeErr) {
@@ -82,7 +83,7 @@ async function main() {
     const fs = await import('node:fs');
     fs.writeFileSync(metaPath, JSON.stringify({
       trangThai: 'CAPTCHA',
-      ghiChu: `GACC bị Aliyun WAF chặn từ máy dev VN (probe URL=${CANDIDATE_URLS[0]} lúc ${new Date().toISOString()}): body rỗng hoặc script anti-bot. ${probeErr ? `Err: ${probeErr.slice(0, 100)}.` : ''} raw bằng chứng: ${probeRaw?.sha256 || 'n/a'} (${probeRaw?.bytes || 0} bytes). Theo đơn đặt hàng luật 2: không lách captcha.`,
+      ghiChu: `CAPTCHA/anti-bot. Cổng online.customs.gov.cn mục 知识产权备案 trỏ http://202.127.48.145:8888/ . Chrome có đầu từ máy VN lúc ${new Date().toISOString()} nhận HTTP 412 (script $_ts), sau vài giây body rỗng. Cùng lớp chặn ở http://www.customs.gov.cn/ipr/recordation. Không lách. raw: ${probeRaw?.sha256 || 'n/a'} (${probeRaw?.bytes || 0} bytes). ${probeErr ? `Err: ${probeErr.slice(0, 120)}.` : ''}`,
       soBanGhi: 0,
     }, null, 1) + '\n');
     log(`Đã ghi CAPTCHA status vào ${metaPath}`);
