@@ -1,0 +1,51 @@
+{
+  "ngay": "2026-10-17",
+  "may": "macOS dev-zcode (macOS darwin/arm64); mang mo VN; tmdn=timeout",
+  "batDau": "2026-10-16T15:23:00Z",
+  "ketThuc": "2026-10-16T19:25:55.748Z",
+  "camKet": {
+    "khongLachCaptcha": true,
+    "tocDo": "≤ 1 yêu cầu/giây/nguồn. WIPO Publish: chờ render 4.5s/lượt và ≥ 600 ms giữa các bản ghi cùng trang. Không đổi IP, không lách captcha."
+  },
+  "nguon": [
+    {
+      "ma": "vn-tchq-giam-sat",
+      "trangThai": "LOI",
+      "soBanGhi": 0,
+      "ghiChu": "Đo lại 2026-10-16 ~23:50 máy VN, Chrome có đầu. customs.gov.vn HTTP 200. Menu Tra cứu không có danh sách nhãn hiệu giám sát SHTT. Tìm kiếm toàn văn «sở hữu trí tuệ» (API tim-kiem-toan-van) chỉ ra tin bài; «danh sách nhãn hiệu kiểm tra giám sát» không có kết quả. Cổng nộp đơn https://pus.customs.gov.vn yêu cầu đăng nhập. Không bịa bản ghi — cần export tay rồi nạp --customs."
+    },
+    {
+      "ma": "cn-gacc-beian",
+      "trangThai": "CAPTCHA",
+      "soBanGhi": 0,
+      "ghiChu": "CAPTCHA/anti-bot. online.customs.gov.cn mục 知识产权备案 trỏ http://202.127.48.145:8888/ . Chrome có đầu 2026-10-16T16:56:38Z nhận HTTP 412 (script $_ts) rồi body rỗng. http://www.customs.gov.cn/ipr/recordation cùng lớp chặn. Không lách. raw a7fe83ec64bb (39 bytes, body sau khi thử thách thất bại)."
+    },
+    {
+      "ma": "vn-ipvietnam-dang-ky",
+      "trangThai": "OK",
+      "soBanGhi": 1434,
+      "ghiChu": "Đã tra hết 1246/1246 ứng viên (ưu tiên 1+2+3). 1434 bản ghi khớp chính xác chuỗi chuan hoặc nhan. 808 dòng khong-tim-thay; kết quả gần giống chỉ nằm trong ghiChu, không gán ungVien. 0 lỗi mạng. WIPO Publish, Chrome, 2026-10-16T16:57Z–19:25Z cho ưu tiên 2+3."
+    },
+    {
+      "ma": "tmview-cn-vn",
+      "trangThai": "CHAN",
+      "soBanGhi": 0,
+      "ghiChu": "Đo lại 2026-10-16T16:43Z máy VN. DNS www.tmdn.org → 109.232.208.203. curl HEAD và POST /tmview/api/search/results timeout (20–25s, IPv4). Không có mã HTTP. Không đổi IP/proxy."
+    },
+    {
+      "ma": "cn-cnipa-dang-ky",
+      "trangThai": "CHAN",
+      "soBanGhi": 0,
+      "ghiChu": "TMview không với tới nên thử CNIPA. https://sbj.cnipa.gov.cn/sbj/sbcx/ mở https://wcjs.sbj.cnipa.gov.cn/ — Chrome có đầu HTTP 403 «请求被阻断» lúc 2026-10-16T16:56:53Z. Không có captcha hình, không lách. Đã xoá IP khỏi bản thô. raw 46820bb295f70028bf583221713277b5c7be2e7e74014ee995129ceea7713861. Dừng, không tra từng ứng viên."
+    }
+  ],
+  "soKhongTimThay": 808,
+  "loiTruot": [],
+  "thoiGianTungNguon": {
+    "vn-tchq-giam-sat": "đo lại ~10 phút 2026-10-16 ~16:50Z, không có dataset",
+    "cn-gacc-beian": "probe 2026-10-16T16:56:38Z",
+    "tmview-cn-vn": "timeout 2026-10-16T16:43Z",
+    "vn-ipvietnam-dang-ky": "ưu tiên 1 trước 16:56Z; ưu tiên 2+3 16:57:51Z–19:25:55Z (8879s, 0 lỗi)",
+    "cn-cnipa-dang-ky": "probe 2026-10-16T16:56:53Z rồi dừng"
+  }
+}
