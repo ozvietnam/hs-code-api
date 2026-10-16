@@ -1,0 +1,45 @@
+{
+ "ngay": "2026-10-16",
+ "may": "macOS dev-zcode (macOS darwin/arm64); tmdn=tmdn-blocked",
+ "batDau": "2026-10-16T15:23:00Z",
+ "ketThuc": "2026-10-16T16:39:17.913Z",
+ "camKet": {
+  "khongLachCaptcha": true,
+  "tocDo": "≤ 1 yêu cầu/giây/nguồn (Chrome navigate Wicket/WAF + delay 4.5s/lượt; mỗi lượt lưu raw sha256)"
+ },
+ "nguon": [
+  {
+   "ma": "vn-tchq-giam-sat",
+   "trangThai": "CHAN",
+   "soBanGhi": 0,
+   "ghiChu": "TCHQ (customs.gov.vn) không công bố danh sách nhãn hiệu giám sát SHTT dạng dataset/API public. SPA shell 13973 bytes cho mọi pageId (đã thử 6 pageId). Theo docs/trademark-sources.md (đo 07/2026): \"danh sách không công bố dạng dataset/API — thực tế export tay\". Cần CEO export tay CSV rồi nạp qua scripts/ingest-trademark-watch.mjs --customs. Đã capture 6 raw HTML làm bằng chứng."
+  },
+  {
+   "ma": "cn-gacc-beian",
+   "trangThai": "CAPTCHA",
+   "soBanGhi": 0,
+   "ghiChu": "GACC bị Aliyun WAF chặn từ máy dev VN (probe URL=http://www.customs.gov.cn/customs/ipr/ipr/iprInit lúc 2026-10-16T15:25:05.360Z): body rỗng hoặc script anti-bot.  raw bằng chứng: a7fe83ec64bb23eb28090598db3d166ed98e52e39d1afbbfd74c579553f93e4e (39 bytes). Theo đơn đặt hàng luật 2: không lách captcha."
+  },
+  {
+   "ma": "vn-ipvietnam-dang-ky",
+   "trangThai": "OK",
+   "soBanGhi": 975,
+   "ghiChu": "cào 975 bản ghi"
+  },
+  {
+   "ma": "tmview-cn-vn",
+   "trangThai": "CHAN",
+   "soBanGhi": 0,
+   "ghiChu": "TMview (www.tmdn.org) bị chặn outbound từ máy dev VN — Chrome timeout (page.goto: Timeout 35000ms exceeded.\nCall log:\n  - navigatin) sau 36s. Đã capture raw placeholder (sha=6d2211945367, 261 bytes). Theo đơn đặt hàng luật 1 + luật 7: không lách anti-bot, không đổi IP/proxy. Cần allowlist trong network policy hoặc dùng máy có egress mở."
+  },
+  {
+   "ma": "cn-cnipa-dang-ky",
+   "trangThai": "BO_QUA",
+   "soBanGhi": 0,
+   "ghiChu": "chưa có script cào / không tra tới"
+  }
+ ],
+ "soKhongTimThay": 53,
+ "soRaw": 2099,
+ "ghiChuChung": "Đợt cào đêm 16-17/10/2026 (#335). WIPO Publish cho ~56+ record VN. TCHQ/GACC/TMview chặn từ máy dev VN (CHAN/CAPTCHA), ghi trạng thái đầy đủ — không bịa. Xem scripts/shtt/cao-*.mjs để tái lập."
+}
