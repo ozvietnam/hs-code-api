@@ -304,6 +304,11 @@
       "descriptionVi": "Chú giải bổ sung SEN 2022 (AHTN 2022, CV 3866/TCHQ-TXNK) — phần tiếng Việt theo mã 8/6/4 số, 395 mục / 683 mã; nhập từ PDF của CEO",
       "builtBy": "scripts/import-sen-pdf.py"
     },
+    "synonyms.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Từ vựng chính tắc EN tier 1 (#309): mã HS ↔ cụm chức năng tiếng Anh NGUYÊN VĂN bóc từ danh pháp WCO (wco-hs-international.csv) + ý kiến phân loại WCO (wco-op/opinions.json, chỉ ý kiến qua cổng mã/thứ tự). phapLy=true, nhãn NGUYEN_VAN; máy kiểm scripts/test-synonyms.mjs chứng minh en ⊆ trich ⊆ nguồn thật — 0 cụm LLM tự chế. Nội dung WCO kèm banQuyen trong meta (giữ nguyên trạng)",
+      "builtBy": "scripts/build-synonyms-tier1.mjs"
+    },
     "tax-enriched.json": {
       "kind": "DERIVED",
       "descriptionVi": "Chính sách quản lý bóc từ cột cs của tax.json bằng LLM (MiniMax/Gemini/Hermes), CHƯA có người duyệt từng dòng; lỗi hệ thống đã sửa bằng luật lib/policy-rules.js (scripts/fix-policy-rules.mjs)",
