@@ -123,8 +123,44 @@ Cổng là máy chủ MCP bọc các endpoint dưới đây và bán/cấp cho k
 | Tắt chế độ mở của 4 lệnh LLM | ⏸ chờ M3 (CEO duyệt: tắt cùng lúc thu tiền) | `HS_PUBLIC_LLM=false` khi tới lúc; khoá dịch vụ không bị ảnh hưởng. |
 | Dữ liệu khách không ra tầng LLM miễn phí (#237 J1) | ✅ tự động cho **mọi lượt có khoá dịch vụ** (`suggest`, `classify`, `describe`) | LLM chỉ đi nhà cung cấp trong `LLM_NO_TRAIN_PROVIDERS` (mặc định MiniMax + khoá Gemini trả phí); không Gemini miễn phí, không mẫu `:free`, không Hermes. Hết nhà cung cấp hợp lệ → `describe` trả `degraded:true` + `llmError.code="NO_PRIVATE_LLM"`; `classify` trả `status` lỗi động cơ kèm `llmError` chứa `NO_PRIVATE_LLM`. Cổng báo khách "hệ thống tạm không nhận, thử lại sau", **không** gọi lại bằng khoá khác. Kiểm: `GET /api/health` → `llm.private.providers`. |
 | `extract-specs`, `declaration-sheet` | 🔒 kín | Không đưa vào Cổng khi CEO chưa chốt (luật bất biến 2). |
+| Gói căn cứ soát/giải trình (S3, hs-code-api#337) → `POST /api/evidence-pack` | ✅ **mới** — 🔒 KÍN (khoá dịch vụ / `HS_API_TOKEN`), **không gọi LLM** | Xem mục con *Gói căn cứ* ngay dưới. |
 
 Fixture hợp đồng: Cổng ghi phản hồi thật bằng `apps/gateway/scripts/ghi-fixture.ts`; kho này chỉ **thêm** trường, không đổi tên/bỏ trường đã có — đổi gì phá hợp đồng phải ghi ở mục này trước.
+
+### Gói căn cứ — `POST /api/evidence-pack` (17/10/2026, #337)
+
+Rewrite `/api/evidence-pack` → `/api/dataset?resource=evidence_pack`. Chỉ `POST`; `GET` → 405. Không token → 401 (không nằm trong
+allowlist `lib/public-access.js`). Không gọi LLM nên không có chi phí vốn: khoá dịch vụ nhận `usage: []`.
+
+**Đầu vào** (khớp `YeuCauGoiCanCuInput` của Cổng, `.strict()`): `{ maHs: string[1..2] (mỗi mã đúng 8 chữ số), moTa: string (1–2000 sau trim), thongSo?: string (≤ 2000) }`.
+Trường lạ, sai kiểu, sai độ dài → `400 { error: "DAU_VAO_SAI", chiTiet: string[] }`.
+
+**Đầu ra** (camelCase):
+
+```
+{ goiCanCu: GoiCanCu[],              // cùng thứ tự maHs
+  soSanhCap?: { maA, maB, cungChuong, cungNhom4, cungPhanNhom6, trongBangDeNham, ghiChu },   // chỉ khi 2 mã
+  phienBanGoiCanCu, phienBanBieuThue, khongDungLlm: true, disclaimer, usage? }
+```
+
+Mỗi `GoiCanCu` = `{ maHs, coTrongBieu, viTri, chuGiai, loaiKhac, gir, canCuPhapLy, yKienWco, tienLe, capDeNham, thue }`.
+**Mọi phần luôn có mặt và là object có `trangThai`**; danh sách nằm ở `items` và chỉ có khi không rỗng — không bao giờ có mảng rỗng im lặng.
+
+| Phần | Nguồn | `trangThai` có thể gặp |
+|---|---|---|
+| `viTri` | `lib/hs-tree.js` (cây theo chữ số) + tên dòng biểu thuế | `CO_DU_LIEU` |
+| `chuGiai` | `items[]` = `{cap: PHAN\|CHUONG\|NHOM\|SEN, ma, nguyenVan, nguon, phienBan}` — **nguyên văn**; `thieu[]` = chỗ chú giải còn thiếu | `CO_NOI_DUNG` |
+| `loaiKhac` | phạm vi "Loại khác" = cha trừ `anhEmCoTen[]` | `LA_DONG_LOAI_KHAC`, `KHONG_PHAI_DONG_LOAI_KHAC` |
+| `gir` | **chỉ** `lib/gir.js`; `items[]` có `basis`/`evidence`/`source` + `disclaimer` | `CO_TRICH_DAN`, `KHONG_CO_TRICH_DAN` |
+| `canCuPhapLy` | **chỉ** `lib/legal-basis.js` (`canCuPhapLy` như `/api/classify`) + `hoSo` (Điều 10.1.d; Điều 8, 9.1, 9.2.b khi mô tả có dấu hiệu tháo rời) | như `/api/classify` (`CHUA_CHOT_CAN_XAC_NHAN`: mã do người gọi đưa vào) |
+| `yKienWco` | `lib/wco-op.js#byHs/view`; mỗi mục có `nguyenVanEn`, `banDichVi`, `banQuyen`, `xemToanVan` | `CO_Y_KIEN`, `KHONG_CO_Y_KIEN_CHO_MA_NAY`, `CHUA_TRA_CUU_DAY_DU` |
+| `tienLe` | `data/precedents.json` (TB-TCHQ + CBP/ABF); `items[].khop` = `DUNG_MA`/`CUNG_PHAN_NHOM`/`CUNG_NHOM`/`MO_TA_TUONG_TU`, `xacMinhNguon.muc` = `CO_BAN_CHUP`/`CO_DUONG_DAN`/`CHUA_XAC_MINH`; `tienLeMaKhac[]` = mô tả tương tự nhưng kết luận nhóm khác | `CO_TIEN_LE_KHOP`, `KHONG_CO_TIEN_LE_KHOP` |
+| `capDeNham` | `data/conflicts.json` + bảng quyết định qua `lib/conflict-resolver.js` (`tieuChiPhanBiet[]`) | `CO_CAP_DE_NHAM`, `KHONG_CO_TRONG_BANG` |
+| `thue` | đúng shape `GET /api/tax` | `CO_DU_LIEU` |
+
+Phần nào không tra được (mã không có trong biểu, kho chưa nạp…) → `{ trangThai: "CHUA_TRA_CUU", ghiChu }`. Cổng **không** được
+diễn giải `CHUA_TRA_CUU` thành "không có". Gói có thể lớn (chú giải phần/chương nguyên văn, ~80–170 KB cho 2 mã).
+Bộ ca thử: `tests/fixtures/soat/ca-tong-hop.json` (38 ca công khai: TB-TCHQ, ý kiến WCO, dòng ACFTA "(-CN)", ca CEO thử qua Cổng).
 
 ### ⚠️ Thay đổi hợp đồng `girRulesApplied` (2026-09)
 
