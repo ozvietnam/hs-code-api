@@ -243,7 +243,7 @@ const refIds = Object.keys(refs);
 check('giữ phần trích được: mã tham chiếu cho viTri, chú giải nhóm, điều khoản TT 85, ý kiến WCO, tiền lệ của cả hai mã', ['K.viTri', 'H.viTri', 'K.cg.NHOM', 'K.tt85.6.1', 'K.wco.842710/1', 'H.wco.842720/1', 'H.tl.1'].every((r) => refIds.includes(r)), refIds);
 check('điều khoản TT 85 trong bản gọn giữ nguyên văn trich từ lib/legal-basis.js', refs['K.tt85.6.1']?.trich === require('../lib/legal-basis.js').cite('6.1').trich);
 const cgNhom = fullPack.goiCanCu[0].chuGiai.items.find((x) => x.cap === 'NHOM');
-const cgGon = JSON.stringify(goiGon).includes(cgNhom.nguyenVan.slice(0, 200));
+const cgGon = JSON.stringify(goiGon).includes(JSON.stringify(cgNhom.nguyenVan.slice(0, 200)).slice(1, -1)); // so trên dạng JSON (\n đã thoát)
 check('chú giải nhóm: đoạn giữ lại là NGUYÊN VĂN (đoạn đầu trùng từng ký tự)', cgGon);
 check('mọi mã tham chiếu xuất hiện trong bản gửi LLM', refIds.every((r) => JSON.stringify(goiGon).includes(r)));
 
