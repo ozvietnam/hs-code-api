@@ -5,6 +5,7 @@ const { requireAuthOrPublicLlm } = require('../lib/public-llm');
 const { setCors, handleOptions } = require('../lib/cors');
 const { describeProduct } = require('../lib/describe-core');
 const { buildDeclarationSheet } = require('../lib/declaration-sheet');
+const { validateDisputeInput, soanHoSoGiaiTrinh } = require('../lib/dispute-draft');
 
 module.exports = async function handler(req, res) {
   setCors(res);
@@ -12,9 +13,12 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
-  // Chế độ phụ ?mode=sheet (/api/declaration-sheet) KHÔNG nằm trong 4 endpoint mở công khai → vẫn Bearer-only.
-  const sheetMode = String(req.query?.mode || '') === 'sheet';
-  if (sheetMode ? requireAuth(req, res) : requireAuthOrPublicLlm(req, res)) return;
+  // Chế độ phụ ?mode=sheet (/api/declaration-sheet) và ?mode=dispute (/api/dispute-draft, #339) KHÔNG nằm trong
+  // 4 endpoint mở công khai → Bearer-only (khoá dịch vụ / HS_API_TOKEN), không đi requireAuthOrPublicLlm.
+  const mode = String(req.query?.mode || '');
+  if ((mode === 'sheet' || mode === 'dispute') ? requireAuth(req, res) : requireAuthOrPublicLlm(req, res)) return;
+
+  if (mode === 'dispute') return disputeDraft(req, res);
 
   let body = req.body;
   if (typeof body === 'string') {
@@ -46,3 +50,25 @@ module.exports = async function handler(req, res) {
   const out = await describeProduct(body);
   return res.status(out.status).json(out.json);
 };
+
+/**
+ * POST /api/dispute-draft (rewrite → ?mode=dispute): hồ sơ giải trình tranh chấp mã HS (#339, job H3).
+ * Lệnh LLM KÍN. Mọi lượt chạy trong withPrivateData BẤT KỂ ai gọi (dữ liệu vụ việc luôn là dữ liệu khách — spec 6.3);
+ * khoá dịch vụ có tên nhận thêm `usage`. Không ghi mẫu (X-OZ-Chia-Se mặc định 0, #261): lib/dispute-draft.js không ghi gì.
+ */
+async function disputeDraft(req, res) {
+  res.setHeader('Cache-Control', 'no-store');
+  let body = req.body;
+  if (typeof body === 'string') {
+    try { body = JSON.parse(body); } catch { return res.status(400).json({ error: 'DAU_VAO_SAI', chiTiet: ['Body không phải JSON hợp lệ.'] }); }
+  }
+  const v = validateDisputeInput(body);
+  if (!v.ok) return res.status(400).json({ error: v.error, chiTiet: v.loi });
+  const caller = serviceCaller(req);
+  try {
+    const { result: out, usage } = await withPrivateData(() => withUsage(() => soanHoSoGiaiTrinh(v.data)));
+    return res.status(out.status).json(caller ? { ...out.json, usage } : out.json);
+  } catch (e) {
+    return res.status(500).json({ error: 'dispute draft failed', detail: String(e?.message || e).slice(0, 240), ...(caller && Array.isArray(e?.usage) ? { usage: e.usage } : {}) });
+  }
+}
