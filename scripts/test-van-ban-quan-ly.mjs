@@ -12,23 +12,39 @@ const { taxData } = require('../lib/data');
 let pass = 0, fail = 0;
 const check = (n, c, d) => { c ? (pass++, console.log(`PASS ${n}`)) : (fail++, console.log(`FAIL ${n}`, d === undefined ? '' : JSON.stringify(d))); };
 
-// --- Ca repro bug #328: HS 38249970 có 3 văn bản. ---
+// --- Ca repro bug #328. Cột cs đổi theo biểu thuế (17/10/2026: 38249970 chỉ còn 15/2024/TT-BYT),
+// nên không neo số lượng vào một mã: quét TOÀN biểu, mọi mã có ≥ 2 số hiệu phải trả đủ đuôi, không trùng.
 const r = buildTaxLookup('38249970');
 check(
-  '38249970: vanBanQuanLy có đúng 3 văn bản đầy đủ đuôi',
+  '38249970: vanBanQuanLy là mảng, có 15/2024/TT-BYT, không có số hiệu cắt cụt',
   Array.isArray(r.vanBanQuanLy)
-    && r.vanBanQuanLy.length === 3
-    && r.vanBanQuanLy.includes('82/2022/NĐ-CP')
-    && r.vanBanQuanLy.includes('113/2017/NĐ-CP')
-    && r.vanBanQuanLy.includes('15/2024/TT-BYT'),
+    && r.vanBanQuanLy.includes('15/2024/TT-BYT')
+    && !r.vanBanQuanLy.some((c) => /\/[NĐD]$/.test(c)),
   r.vanBanQuanLy,
 );
+const nhieuVanBan = Object.values(taxData).filter((row) => (String(row.cs || '').match(/\d+\/\d{4}\//g) || []).length >= 2);
+let loiCatCut = 0;
+let loiTrung = 0;
+for (const row of nhieuVanBan) {
+  const arr = vanBanQuanLyFromText(row.cs);
+  if (arr.some((c) => /\/[NĐD]$/.test(c))) loiCatCut += 1;
+  const seen = new Set();
+  for (const c of arr) {
+    const k = c.replace(/Đ/g, 'D');
+    if (seen.has(k)) { loiTrung += 1; break; }
+    seen.add(k);
+  }
+}
 check(
-  '38249970: không có số hiệu cắt cụt (82/2022/N, 113/2017/N)',
-  !r.vanBanQuanLy.includes('82/2022/N')
-    && !r.vanBanQuanLy.includes('113/2017/N'),
-  r.vanBanQuanLy,
+  `toàn biểu: ${nhieuVanBan.length} mã có ≥ 2 số hiệu → 0 cắt cụt, 0 trùng`,
+  nhieuVanBan.length > 100 && loiCatCut === 0 && loiTrung === 0,
+  { loiCatCut, loiTrung },
 );
+const coDCP = nhieuVanBan.find((row) => /NĐ-CP/.test(row.cs));
+if (coDCP) {
+  const arr = vanBanQuanLyFromText(coDCP.cs);
+  check(`${coDCP.hs}: giữ đủ đuôi NĐ-CP`, arr.some((c) => /\/NĐ-CP$/.test(c)), arr);
+}
 
 // --- Khử trùng theo dạng chuẩn hoá (Đ ↔ D cùng 1 văn bản). ---
 check(
