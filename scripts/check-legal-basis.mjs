@@ -4,7 +4,8 @@
  *   node scripts/check-legal-basis.mjs --text=<tệp văn bản trích từ PDF Công báo>
  * Văn bản gốc: oz-wiki-plhq raw/download/congbaocdn.chinhphu.vn/2026/7/18/85-2026-tt-btc.pdf (sha256 trong lib/legal-basis.js).
  * Trích chữ: python3 -c "import fitz;print(''.join(p.get_text() for p in fitz.open('85-2026-tt-btc.pdf')))" > tt85.txt
- * (CI không có PDF nên bước này chạy tay khi sửa CLAUSES; khi kho wiki có điều khoản có cấu trúc thì chuyển sang đọc tệp đó.)
+ * Bản trích sẵn trong kho: tests/fixtures/legal/tt85-2026-cong-bao-409.txt (pdftotext, cùng PDF) — scripts/test-evidence-pack.mjs
+ * chạy lệnh này với tệp đó. Sửa CLAUSES thì vẫn đối chiếu PDF gốc.
  */
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
