@@ -44,6 +44,7 @@ const MUST_STAY_PRIVATE = [
   ['oz_precedents', 'lịch sử tờ khai của Oz — tri thức kinh doanh riêng'],
   ['trademark', 'cảnh báo SHTT mới verify 1/53 nhãn'],
   ['evidence_pack', 'gói căn cứ soát/giải trình — chỉ khoá dịch vụ (#337)'],
+  ['declaration_check', 'soát tờ khai — dữ liệu tờ khai của khách, chỉ khoá dịch vụ (#338)'],
 ];
 for (const [resource, why] of MUST_STAY_PRIVATE) {
   assert(
