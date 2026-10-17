@@ -1,4 +1,5 @@
 // POST /api/classify — áp mã HS theo phương pháp hs-code-vn (Pha 2).
+// POST /api/declaration-check (rewrite → ?mode=check, #338): soát tờ khai — KÍN, xem lib/declaration-check.js.
 // Body: { tenHang|name, chatLieu|material, congDung|purpose, chucNang?, nameZh?, specs?, facts?, supplierHs?{code,source,url} }
 //   (đến từ OrderItem ERP: name, customerDescription→congDung, nameZh, ...)
 // Trả: { results:[{hs, confidence, reason, tbTchq?}], girRulesApplied:[], missing:[], candidates, ms }
@@ -11,6 +12,8 @@ const { requireAuthOrPublicLlm } = require('../lib/public-llm');
 const { setCors, handleOptions } = require('../lib/cors');
 const { classify } = require('../lib/classify');
 const { extractSpecs } = require('../lib/extract-specs');
+const { runDeclarationCheck, validateDeclarationCheckInput } = require('../lib/declaration-check');
+const { acquireServiceSlot } = require('../lib/service-rate-limit');
 
 /** `supplierHs`: {code, source?, url?} hoặc chuỗi mã. Trả null khi không đủ 6 chữ số. */
 function parseSupplierHs(v) {
@@ -28,6 +31,9 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed — dùng POST' });
   }
+  // POST /api/declaration-check (rewrite → ?mode=check, #338): soát tờ khai. KÍN — chỉ khoá dịch vụ / HS_API_TOKEN,
+  // KHÔNG theo chế độ mở công khai của classify (dữ liệu tờ khai của khách).
+  if (String(req.query?.mode || '') === 'check') return declarationCheck(req, res);
   // Chế độ phụ ?mode=extract_specs (/api/extract-specs) KHÔNG nằm trong 4 endpoint mở công khai → vẫn Bearer-only.
   const extractMode = String(req.query?.mode || '') === 'extract_specs';
   if (extractMode ? requireAuth(req, res) : requireAuthOrPublicLlm(req, res)) return;
@@ -101,3 +107,31 @@ module.exports = async function handler(req, res) {
     return res.status(502).json({ error: 'Classify failed', detail: String(e.message).slice(0, 240) });
   }
 };
+
+/** POST /api/declaration-check — KetQuaSoat (lib/declaration-check.js). Không kiemMa → không gọi LLM. */
+async function declarationCheck(req, res) {
+  if (requireAuth(req, res)) return;
+  const caller = serviceCaller(req);
+  // Trần theo khoá gọi (hướng #238): vượt → 429 + Retry-After; Cổng báo VUOT_HAN_MUC, không trừ điểm.
+  const slot = acquireServiceSlot('declaration-check', caller || 'hs-api-token', { envPrefix: 'HS_DECL_CHECK', perMinute: 300, maxConcurrent: 8 });
+  if (!slot.ok) {
+    res.setHeader('Retry-After', String(slot.retryAfter));
+    return res.status(429).json({ error: 'VUOT_HAN_MUC', chiTiet: [slot.lyDo], retryAfter: slot.retryAfter });
+  }
+  try {
+    let body = req.body;
+    if (typeof body === 'string') {
+      try { body = JSON.parse(body); } catch { return res.status(400).json({ error: 'DAU_VAO_SAI', chiTiet: ['Body không phải JSON hợp lệ.'] }); }
+    }
+    const v = validateDeclarationCheckInput(body);
+    if (!v.ok) return res.status(400).json({ error: 'DAU_VAO_SAI', chiTiet: v.loi });
+    const started = Date.now();
+    const kq = await runDeclarationCheck(v.data, { laKhoaDichVu: caller !== null });
+    res.setHeader('Cache-Control', 'no-store');
+    return res.status(200).json({ ...kq, ms: Date.now() - started });
+  } catch (e) {
+    return res.status(502).json({ error: 'Declaration check failed', detail: String(e.message).slice(0, 240) });
+  } finally {
+    slot.release();
+  }
+}

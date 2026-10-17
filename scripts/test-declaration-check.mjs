@@ -182,6 +182,10 @@ check('ACFTA 94019921 "0 (-CN)" xuất xứ TH khai 0% → K3 DAT, không có AC
 const r3c = await call({ dongHang: [dongMau({ maHs: '83012000', moTa: 'Ổ khóa cửa dùng cho xe ô tô, bằng kim loại', thueSuatKhai: { nk: '0', loai: 'MFN' } })] });
 allResults.push(r3c._j);
 check('K3: khai MFN 0% cho 83012000 (biểu 25%) → LOI RULE_TABLE, evidence có mức biểu', items(r3c._j, 1, 'K3').some((m) => m.trangThai === 'LOI' && m.basis === 'RULE_TABLE' && m.evidence.some((e) => /25/.test(e))), items(r3c._j, 1, 'K3'));
+// Ngày đăng ký dự kiến khác năm của biểu đang giữ → lệch thuế suất chỉ CANH_BAO (biểu áp tại ngày đăng ký — Điều 5.2)
+const r3d = await call({ ngayDuKienDangKy: '2027-03-01', dongHang: [dongMau({ maHs: '83012000', moTa: 'Ổ khóa cửa dùng cho xe ô tô, bằng kim loại', thueSuatKhai: { nk: '0', loai: 'MFN' } })] });
+allResults.push(r3d._j);
+check('K3: ngày đăng ký khác năm biểu → lệch thuế chỉ CANH_BAO + canhBao nêu lý do', items(r3d._j, 1, 'K3').some((m) => m.trangThai === 'CANH_BAO' && m.ma === 'THUE_SUAT_KHAI_LECH_BIEU') && (r3d._j?.canhBao || []).some((x) => /2027-03-01/.test(x)), items(r3d._j, 1, 'K3'));
 // Không khai thuế suất → K3 CHUA_KIEM có lý do
 check('K3: không khai thuế suất → CHUA_KIEM có lý do', items(k1, 1, 'K3').some((m) => m.trangThai === 'CHUA_KIEM' && m.lyDoChuaKiem), items(k1, 1, 'K3'));
 
