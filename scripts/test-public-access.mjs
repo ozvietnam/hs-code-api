@@ -45,6 +45,7 @@ const MUST_STAY_PRIVATE = [
   ['trademark', 'cảnh báo SHTT mới verify 1/53 nhãn'],
   ['evidence_pack', 'gói căn cứ soát/giải trình — chỉ khoá dịch vụ (#337)'],
   ['declaration_check', 'soát tờ khai — dữ liệu tờ khai của khách, chỉ khoá dịch vụ (#338)'],
+  ['dispute_draft', 'hồ sơ giải trình tranh chấp mã — lệnh LLM kín, chỉ khoá dịch vụ (#339)'],
 ];
 for (const [resource, why] of MUST_STAY_PRIVATE) {
   assert(
