@@ -13,7 +13,7 @@ import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
 for (const k of ['GEMINI_API_KEY', 'GEMINI_FREE_KEYS', 'HERMES_API_KEY', 'HERMES_BASE_URL', 'MINIMAX_API_KEY', 'MINIMAX_MODEL',
-  'MINIMAX_ENRICH_MODEL', 'MINIMAX_FALLBACK_MODEL', 'OPENROUTER_API_KEY', 'OPENROUTER_ENRICH_MODEL', 'BYTEPLUS_API_KEY',
+  'MINIMAX_ENRICH_MODEL', 'MINIMAX_FALLBACK_MODEL', 'OPENROUTER_API_KEY', 'OPENROUTER_ENRICH_MODEL', 'DEEPSEEK_API_KEY',
   'LLM_NO_TRAIN_PROVIDERS', 'HS_LLM_PRIVATE_ALL', 'HS_PUBLIC_LLM', 'HS_MATCH_PUBLIC']) delete process.env[k];
 process.env.HS_API_TOKEN = 'legacy-token';
 process.env.HS_SERVICE_TOKENS = 'cong-oz:khoa-cong';

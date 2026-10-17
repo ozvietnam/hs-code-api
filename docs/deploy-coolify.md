@@ -34,7 +34,8 @@ CEO chốt 29/09/2026: bỏ Vercel, chạy trên Coolify của server nhà. GitH
    | `HS_API_TOKEN`, `HS_ADMIN_TOKEN` | giữ nguyên giá trị đang dùng để ERP không phải đổi |
    | `MINIMAX_API_KEY` | **bắt buộc** — nhà cung cấp chính (gói MiniMax trả phí, gọi thẳng) |
    | `MINIMAX_MODEL` | mặc định `MiniMax-M2.7-highspeed`; gói không cho thì tự lùi `MiniMax-M2.7` |
-   | `HERMES_BASE_URL`, `HERMES_API_KEY`, `HERMES_MODEL` | dự phòng thứ hai: cổng Hermes trong LAN (như `/etc/hs-agent/env` trên vps-hsagent) |
+   | `DEEPSEEK_API_KEY` (tuỳ chọn `DEEPSEEK_MODEL`, mặc định `deepseek-chat`) | dự phòng thứ hai: DeepSeek gọi thẳng `api.deepseek.com` (CEO chốt 17/10/2026) — không nhận dữ liệu khách (ngoài `LLM_NO_TRAIN_PROVIDERS`) |
+   | `HERMES_BASE_URL`, `HERMES_API_KEY`, `HERMES_MODEL` | dự phòng thứ ba: cổng Hermes trong LAN (như `/etc/hs-agent/env` trên vps-hsagent) |
    | `GEMINI_FREE_KEYS` | tùy chọn — dự phòng cuối khi MiniMax và Hermes đều lỗi |
    | `GEMINI_API_KEY` | khóa trả phí, chỉ dùng khi NV bấm "auto" (tier premium); bỏ trống được. **Với dữ liệu khách** nó là dự phòng hợp lệ thay cho tầng miễn phí |
    | `LLM_NO_TRAIN_PROVIDERS` | mặc định `minimax,gemini` — nhà cung cấp được nhận **dữ liệu khách** (lượt từ khoá dịch vụ `HS_SERVICE_TOKENS`). Hermes/OpenRouter chỉ thêm khi CEO xác minh họ không huấn luyện trên dữ liệu; mẫu `:free` luôn bị chặn. Hết nhà cung cấp hợp lệ → `NO_PRIVATE_LLM`, không rơi xuống Gemini miễn phí. `GET /api/health` → `llm.private` |
