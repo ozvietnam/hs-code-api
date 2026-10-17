@@ -28,6 +28,8 @@ ingest tự động từ trong session web được**. Ba cách gỡ:
    - ⚠️ Áp dụng cho **session MỚI** — sau khi lưu, mở session mới rồi yêu cầu chạy:
      `npm run data:ingest-tmview -- --all` (TMview, phủ CN+VN). GACC nạp qua `--gacc` (xuất file từ haiguanbeian.com).
 3. **Xuất file thủ công** từ portal rồi nạp qua `--customs/--wipo/--gacc` (offline-safe, luôn chạy được).
+4. **Cào đêm từ máy VN** theo đơn đặt hàng `docs/giao-viec/shtt-cao-dem.md` (script `scripts/shtt/cao-*.mjs`,
+   cổng kiểm `npm run shtt:kiem`), rồi nạp qua `--ipvietnam` — xem mục 6 (kết quả đợt 16-17/10/2026).
 
 ---
 
@@ -127,3 +129,53 @@ thì sai độ phủ, cấm bulk, hoặc chặn bot.** Recordal hải quan (2 b�
 4. **Bổ sung tay** nhãn công nghiệp hay bị giả (ABB, Siemens, Schneider, Omron, Mitsubishi…) vào watchlist (seed `verified:false`) để bulk bắt được ngay, trong lúc chờ nguồn tự động.
 
 > Test thực hiện 2026-07. HTTP code có thể đổi khi env allowlist thay đổi — đo lại bằng `node` fetch trước khi kết luận.
+
+## 6. Đợt cào đêm 16-17/10/2026 — đo từ máy VN (dev zcode, PR #342, #335)
+
+Chạy từ máy macOS ở VN, mạng mở, Chrome thật, UA `hs-code-api/shtt (ozvietnam, ceo@ozfreight.vn)`,
+≤ 1 yêu cầu/giây/nguồn, **không lách captcha/anti-bot, không đổi IP**. Bản thô (558 MB, 4.034 tệp)
+để ngoài git (`data/_src/shtt/raw/`, zip 41 MB nhận tay); chỉ số `sha256` nằm trong `data/shtt/raw-index.json`.
+Cổng kiểm `npm run shtt:kiem` PASS. Claude kiểm lại sáng 17/10: 10 bản ghi ngẫu nhiên đều có bản thô
+khớp sha256 + trang HTML gốc cùng URL; 0 bản ghi lệch danh sách ứng viên; không có dữ liệu khách Oz trong commit.
+
+### Ma trận reachability (đo từ máy VN, 16/10/2026)
+
+| Nguồn (`ma` trong bao-cao) | Dữ liệu | Kết quả từ máy VN | Bản ghi |
+|---|---|---|---|
+| `vn-ipvietnam-dang-ky` — `wipopublish.ipvietnam.gov.vn` | Registry **VN** (Cục SHTT) | ✅ **OK** — Chrome render được, tra hết 1.246/1.246 ứng viên (ưu tiên 1→3), 0 lỗi mạng | **1.434** đơn khớp chính xác tên (438 nhãn) + 808 nhãn không thấy |
+| `vn-tchq-giam-sat` — `customs.gov.vn` | **Giám sát hải quan VN** (`customsRecorded`) ⭐ | ⚠️ LOI — site 200 nhưng **không có danh sách nhãn hiệu giám sát** dạng tra cứu; cổng nộp đơn `pus.customs.gov.vn` cần đăng nhập | 0 — vẫn **export tay** |
+| `cn-gacc-beian` — `online.customs.gov.cn` → `202.127.48.145:8888` | **Recordal hải quan TQ** (`gaccRecorded`) ⭐ | ❌ CAPTCHA — HTTP 412 (Aliyun WAF `$_ts`) rồi body rỗng; `customs.gov.cn/ipr/recordation` cùng lớp chặn | 0 — **export tay** từ `haiguanbeian.com` |
+| `tmview-cn-vn` — `www.tmdn.org` | Registry **CN + VN** | ❌ CHAN — timeout 20–25 s (IPv4), không có mã HTTP, từ mạng VN | 0 — thử lại từ mạng khác/giờ khác |
+| `cn-cnipa-dang-ky` — `sbj.cnipa.gov.cn` → `wcjs.sbj.cnipa.gov.cn` | Registry **CN** | ❌ CHAN — HTTP 403 «请求被阻断», dừng ngay | 0 |
+
+### Dữ liệu `data/shtt/` (đã commit, nhãn nguồn `NGUYEN_VAN`)
+
+- `vn-ipvietnam-dang-ky.jsonl` — mỗi dòng một **đơn**: `nhan`, `soDon` (VN-4-YYYY-NNNNN), `tinhTrang`
+  (DANG_KY 780 · DANG_XU_LY 152 · HET_HAN 95 · TU_CHOI 315 · KHAC 92), `tinhTrangGoc`, `ungVien`, `nguon{url,layLuc,sha256}`.
+  Trang danh sách WIPO Publish **không có chủ sở hữu và nhóm Nice** → hai trường này còn trống, làm giàu sau từ trang chi tiết.
+  92 dòng `KHAC` có `tinhTrangGoc` là số 4 chữ số (1879, 1903…) — parser bắt nhầm ô, coi là trạng thái **không rõ**.
+- `khong-tim-thay.jsonl` — 808 ứng viên tra không ra khớp chính xác (tra-không-thấy cũng là dữ liệu).
+- `bao-cao.json` — cam kết + trạng thái 5 nguồn; `raw-index.json` — sha256 mọi bản thô.
+- Theo ưu tiên: ưu tiên 1 có 88/159 nhãn thấy trên registry VN (76 nhãn có ≥ 1 đơn Cấp bằng); ưu tiên 2: 85/251 (53); ưu tiên 3: 265/836 (209).
+
+### Nạp vào watchlist
+
+```bash
+node scripts/ingest-trademark-watch.mjs --ipvietnam data/shtt/vn-ipvietnam-dang-ky.jsonl
+```
+
+Gộp mọi đơn của một ứng viên thành một nhãn: `status` = mức cao nhất (Cấp bằng → REGISTERED; chỉ Đang giải
+quyết → PENDING; chỉ Hết hạn → EXPIRED; chỉ Từ chối/không rõ → UNKNOWN), khối `vn.soDon` giữ số đơn theo từng
+trạng thái + `vn.thamChieu` (url, sha256). Nhãn seed trùng tên (ABB, Siemens, Daikin…) được cập nhật đúng khoá cũ,
+giữ `owner`/`niceClasses` seed. **Không** bật `customsRecorded` — đây là registry, không phải recordal.
+Đợt 17/10: watchlist 53 → 449 nhãn (REGISTERED 339 · PENDING 37 · EXPIRED 15 · UNKNOWN 58).
+
+> Lưu ý vận hành: nhãn `verified + REGISTERED` chưa có nhóm Nice → `scoreMark` cho **HIGH** với mọi chương HS
+> (không hạ bậc vì `classMatch` không xác định). Muốn giảm báo động thì làm giàu nhóm Nice từ trang chi tiết trước.
+
+### Còn lại cho đợt sau
+- **Recordal hải quan hai nước = 0 bản ghi** (TCHQ không công bố danh sách; GACC chặn WAF) → vẫn phải export tay rồi
+  `--customs` / `--gacc`; số nhãn ưu tiên 1 "có ghi nhận hải quan" hiện **chưa xác định**.
+- TMview thử lại từ mạng/giờ khác; CNIPA cần đường hợp pháp khác (không lách anti-bot).
+- Làm giàu `owner` + `nhomNice` từ trang chi tiết WIPO Publish (cùng nhịp lịch sự), để hạ báo động sai lớp hàng.
+

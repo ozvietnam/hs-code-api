@@ -26,6 +26,8 @@ const { dictionary: zhSpecDictionary } = require('../lib/zh-specs');
 const { regimeSummary } = require('../lib/policy-regime');
 const plhq = require('../lib/plhq-registry');
 const { aggregateDemand } = require('../lib/demand-signals');
+const { buildEvidencePack, validateEvidenceInput } = require('../lib/evidence-pack');
+const { serviceCaller } = require('../lib/auth');
 const fs = require('fs');
 const path = require('path');
 
@@ -40,6 +42,26 @@ module.exports = async function handler(req, res) {
   const resource = String(req.query.resource || '').trim();
   // Allowlist tường minh trong lib/public-access.js — resource mới mặc định KÍN.
   if (requireAuthUnlessPublic(req, res, { endpoint: 'dataset', resource })) return;
+  // Gói căn cứ soát/giải trình (#337): CHỈ POST, KÍN (khoá dịch vụ / HS_API_TOKEN), không gọi LLM.
+  // Không nằm trong allowlist lib/public-access.js → requireAuthUnlessPublic ở trên đã đòi Bearer.
+  if (resource === 'evidence_pack') {
+    if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed', hint: 'POST /api/evidence-pack { maHs: string[1..2], moTa, thongSo? }' });
+    let body = req.body;
+    if (typeof body === 'string') {
+      try { body = JSON.parse(body); } catch { return res.status(400).json({ error: 'DAU_VAO_SAI', chiTiet: ['Body không phải JSON hợp lệ.'] }); }
+    }
+    const v = validateEvidenceInput(body);
+    if (!v.ok) return res.status(400).json({ error: 'DAU_VAO_SAI', chiTiet: v.loi });
+    try {
+      const pack = buildEvidencePack(v.data);
+      const caller = serviceCaller(req);
+      res.setHeader('Cache-Control', 'no-store');
+      return res.status(200).json({ ...pack, ...(caller ? { usage: [] } : {}) });
+    } catch (e) {
+      return res.status(500).json({ error: 'evidence pack failed', detail: e.message });
+    }
+  }
+
   // GET cho mọi resource; POST chỉ mở cho screening batch nhãn hiệu (số lượng lớn).
   const isTrademarkBatch = req.method === 'POST' && resource === 'trademark';
   if (req.method !== 'GET' && !isTrademarkBatch) {
