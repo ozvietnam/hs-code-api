@@ -122,11 +122,15 @@ module.exports = async function handler(req, res) {
       const searchText = String(q || description || '').trim();
       if (searchText.length >= 3) {
         const matches = searchPrecedents(searchText, { topK: 5 });
+        // Có ý kiến WCO trong kết quả → kèm banQuyen ở cấp phản hồi (luật 1); từng mục chỉ có trích đoạn + xemToanVan.
+        const coWco = matches.some((m) => m.loaiNguon === 'WCO_OP');
+        const wcoBanQuyen = coWco ? require('../lib/wco-op').BAN_QUYEN : null;
         return res.status(200).json({
           found: matches.length > 0,
           query: searchText,
           total: matches.length,
           matches,
+          ...(coWco ? { banQuyen: wcoBanQuyen } : {}),
         });
       }
       if (!hs) {

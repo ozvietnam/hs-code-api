@@ -201,5 +201,15 @@ assert('flat index chứa TB-TCHQ', flat.some((p) => p.source === 'TB-TCHQ'), 'n
   ps.reset();
 }
 
+
+// Luật 1: ý kiến WCO trong kết quả tìm tiền lệ chỉ là trích đoạn + con trỏ, kèm banQuyen.
+{
+  const m = searchPrecedents('glove box gas purification', { topK: 5 });
+  const w = m.find((x) => x.loaiNguon === 'WCO_OP');
+  assert('WCO trong kết quả: có banQuyen + xemToanVan', !!w && typeof w.banQuyen === 'string' && w.banQuyen.includes('WCO') && typeof w.xemToanVan === 'string' && w.xemToanVan.startsWith('/api/wco-opinions'), w && { banQuyen: !!w.banQuyen, xemToanVan: w.xemToanVan });
+  assert('WCO trong kết quả: technicalSpec chỉ là trích đoạn ≤ 201 ký tự', !!w && String(w.precedent.technicalSpec || '').length <= 201, w && String(w.precedent.technicalSpec || '').length);
+  assert('TB-TCHQ/CBP không bị gắn banQuyen WCO', m.filter((x) => x.loaiNguon !== 'WCO_OP').every((x) => x.banQuyen === undefined));
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
