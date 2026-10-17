@@ -124,6 +124,7 @@ Cổng là máy chủ MCP bọc các endpoint dưới đây và bán/cấp cho k
 | Dữ liệu khách không ra tầng LLM miễn phí (#237 J1) | ✅ tự động cho **mọi lượt có khoá dịch vụ** (`suggest`, `classify`, `describe`) | LLM chỉ đi nhà cung cấp trong `LLM_NO_TRAIN_PROVIDERS` (mặc định MiniMax + khoá Gemini trả phí); không Gemini miễn phí, không mẫu `:free`, không Hermes. Hết nhà cung cấp hợp lệ → `describe` trả `degraded:true` + `llmError.code="NO_PRIVATE_LLM"`; `classify` trả `status` lỗi động cơ kèm `llmError` chứa `NO_PRIVATE_LLM`. Cổng báo khách "hệ thống tạm không nhận, thử lại sau", **không** gọi lại bằng khoá khác. Kiểm: `GET /api/health` → `llm.private.providers`. |
 | `extract-specs`, `declaration-sheet` | 🔒 kín | Không đưa vào Cổng khi CEO chưa chốt (luật bất biến 2). |
 | Gói căn cứ soát/giải trình (S3, hs-code-api#337) → `POST /api/evidence-pack` | ✅ **mới** — 🔒 KÍN (khoá dịch vụ / `HS_API_TOKEN`), **không gọi LLM** | Xem mục con *Gói căn cứ* ngay dưới. |
+| `soat_to_khai` / `kiem_ma_to_khai` (S4, S5, hs-code-api#338) → `POST /api/declaration-check` | ✅ **mới** — 🔒 KÍN (khoá dịch vụ / `HS_API_TOKEN`), **không gọi LLM trừ khi `kiemMa: true`**, trần 429 theo khoá | Xem mục con *Soát tờ khai* dưới mục *Gói căn cứ*. |
 
 Fixture hợp đồng: Cổng ghi phản hồi thật bằng `apps/gateway/scripts/ghi-fixture.ts`; kho này chỉ **thêm** trường, không đổi tên/bỏ trường đã có — đổi gì phá hợp đồng phải ghi ở mục này trước.
 
@@ -161,6 +162,61 @@ Mỗi `GoiCanCu` = `{ maHs, coTrongBieu, viTri, chuGiai, loaiKhac, gir, canCuPha
 Phần nào không tra được (mã không có trong biểu, kho chưa nạp…) → `{ trangThai: "CHUA_TRA_CUU", ghiChu }`. Cổng **không** được
 diễn giải `CHUA_TRA_CUU` thành "không có". Gói có thể lớn (chú giải phần/chương nguyên văn, ~80–170 KB cho 2 mã).
 Bộ ca thử: `tests/fixtures/soat/ca-tong-hop.json` (38 ca công khai: TB-TCHQ, ý kiến WCO, dòng ACFTA "(-CN)", ca CEO thử qua Cổng).
+
+### Soát tờ khai — `POST /api/declaration-check` (17/10/2026, #338)
+
+Rewrite `/api/declaration-check` → `/api/classify?mode=check`. Chỉ `POST`; `GET` → 405. **Kín:** không token / token sai → 401,
+kể cả khi chế độ mở công khai của `/api/classify` đang bật (`HS_PUBLIC_LLM`) — nhánh `mode=check` dùng `requireAuth`, không
+nằm trong allowlist `lib/public-access.js` (`scripts/test-public-access.mjs` khoá `declaration_check` ở `MUST_STAY_PRIVATE`).
+
+**Đầu vào** (khớp `SoatToKhaiInput` / `KiemMaToKhaiInput` của Cổng, `.strict()` ở mọi tầng; `null` = vắng):
+
+```
+{ ngayDuKienDangKy?: "YYYY-MM-DD",  // thiếu = hôm nay (giờ VN)
+  loaiHinh?: string(1..10),
+  kiemMa?: true,                    // CHỈ nhận true; vắng = không chạy K2, không gọi LLM
+  maLuotSoat?: uuid,                // trả lại nguyên văn để Cổng gộp K2 vào kết quả soát cũ
+  dongHang: [1..50] { stt: int>0, maHs: "8 số", moTa: string(1..2000), xuatXu: "ISO-2 hoa",
+    donViTinh?, soLuong?: number≥0, triGia?: { soTien: "chuỗi số", tienTe: "ISO-4217", dieuKien? },
+    thueSuatKhai?: { nk?: string, loai?: "MFN"|"ACFTA"|"THONG_THUONG" }, coFormE?: boolean,
+    giayPhepCo?: string[≤20], thongSo?: string(≤2000) } }
+```
+
+Trường lạ (tên doanh nghiệp, MST, số tờ khai, số hoá đơn…), sai kiểu, `soTien` là number, quá 50 dòng → `400 { error: "DAU_VAO_SAI", chiTiet: string[] }`.
+Vượt trần theo khoá gọi → `429 { error: "VUOT_HAN_MUC", chiTiet, retryAfter }` + header `Retry-After` (giây). Trần đọc từ env
+`HS_DECL_CHECK_RPM` (mặc định 300 lượt/phút/khoá) và `HS_DECL_CHECK_CONCURRENCY` (mặc định 8 lượt cùng lúc/khoá), bộ nhớ trong tiến
+trình (`lib/service-rate-limit.js`, hướng #238). Cổng báo `VUOT_HAN_MUC`, không trừ điểm.
+
+**Đầu ra** `KetQuaSoat` (camelCase; chỉ **thêm** trường so với spec 4.3):
+
+```
+{ phienBanBoKiem: "declaration-check@2026-10-17", phienBanBieuThue: "2026-01-01", bieuThue: {effectiveDate, lastCheckedAt, freshness, noteVi},
+  ngayDuKienDangKy, loaiHinh?, maLuotSoat?, kiemMa: boolean, khongDungLlm: boolean,
+  tongQuan: { soDong, soLoi, soCanhBao, soChuaKiem, mucSanSang },
+  dong: [{ stt, maHs, mucSanSang, kiem: MucKiem[], girRulesApplied?, canCuPhapLy?, ketQuaPhanLoai? }],
+  canhBao: string[], goiYChuyenGia: { nen, lyDo[] }, usage?, ms }
+MucKiem = { nhom: K1..K7, trangThai: DAT|CANH_BAO|LOI|CHUA_KIEM, ma, noiDung, goiYSua?, basis, evidence: string[],
+            nguon: [{ backend: "hs-code-api", duongDan, phienBan? }], lyDoChuaKiem? (bắt buộc khi CHUA_KIEM), dieuKhoan? (K7) }
+```
+
+Bất biến Cổng được dựa vào: **mỗi dòng luôn có đủ K1–K7** (một nhóm có thể có nhiều mục); mục không chạy là `CHUA_KIEM` + `lyDoChuaKiem`
+(không bao giờ hiểu thành "không có"); mục chỉ dựa `HEURISTIC`/`LLM_ASSERTED` tối đa `CANH_BAO`. `mucSanSang` = `PHAI_SUA` nếu có `LOI`,
+`NEN_SUA` nếu có `CANH_BAO`, ngược lại `SAN_SANG` — **không** tính `CHUA_KIEM` (luôn có, ví dụ K6 so giá) nên `SAN_SANG` không có nghĩa
+"tờ khai đạt"; `canhBao` liệt kê "Không kiểm được: …". `tongQuan` đếm theo **mục**, không theo dòng.
+
+| Nhóm | Chạy thế nào | `ma` hay gặp |
+|---|---|---|
+| K1 | `validateDeclaration` trên **câu khách viết** (không gọi describe). `LOI` chỉ cho từ cấm CV 5189 và chữ Hán (`DETERMINISTIC`) | `TOO_GENERIC`, `CJK_IN_DECLARATION`, `UNIT_MISSING`, `THIEU_THONG_SO_THEO_NHOM`, `MO_TA_DAT_TT39` |
+| K2 | Không `kiemMa` → `CHUA_KIEM` (`CHUA_KIEM_MA`). `kiemMa: true` → đường `lib/classify.js` sẵn có, **mỗi dòng một lượt** (song song `HS_DECL_CHECK_K2_PARALLEL`, mặc định 3), trong `withPrivateData`; `girRulesApplied`, `canCuPhapLy` nguyên văn ở cấp dòng; gói căn cứ H1 cho "Loại khác"/tiền lệ. MVP: K2 tối đa `CANH_BAO` | `MA_KHOP`, `KHAC_NHOM`, `KHAC_PHAN_NHOM`, `KHAC_DONG_8_SO`, `LOAI_KHAC_KHOP_ANH_EM`, `TIEN_LE_MO_TA_TUONG_TU_MA_KHAC`, `NEED_FACTS`, `NO_PRIVATE_LLM` |
+| K3 | So `thueSuatKhai` với `data/tax.json` (MFN, thông thường, ACFTA theo xuất xứ). Ngày đăng ký khác năm của biểu → lệch chỉ `CANH_BAO`. ACFTA theo năm: chờ #336 (ghi trong `canhBao`) | `THUE_SUAT_KHOP_BIEU`, `THUE_SUAT_KHAI_LECH_BIEU`, `MA_KHONG_CO_TRONG_BIEU`, `KHONG_KHAI_THUE_SUAT` |
+| K4 | `lib/acfta.js` (loại trừ "(-CN)", `needsReview`, ACFTA > MFN); xung đột xuất xứ bằng từ khoá (`HEURISTIC`); chứng từ C/O → `CHUA_KIEM` | `ACFTA_LOAI_TRU_CN`, `XUAT_XU_KHONG_THUOC_ACFTA`, `KHAI_ACFTA_KHONG_CO_CO`, `CO_THE_HUONG_ACFTA`, `ORIGIN_CONFLICT`, `CHUNG_TU_CO` |
+| K5 | Chính sách theo mã (`/api/tax`) so với `giayPhepCo`; nhãn hiệu rủi ro cao/đã đăng ký giám sát; theo bản chất hàng → `CHUA_KIEM` (#243/#322). Tối đa `CANH_BAO` | `CAN_KTCN_GIAY_PHEP`, `NHAN_HIEU_DUOC_BAO_HO`, `THEO_BAN_CHAT_HANG` |
+| K6 | Tự suy: trị giá 0, thiếu điều kiện giao hàng, đơn giá bất thường; so giá tham chiếu → luôn `CHUA_KIEM` (Q5) | `TRI_GIA_BANG_0`, `THIEU_DIEU_KIEN_GIAO_HANG`, `SO_GIA_THAM_CHIEU` |
+| K7 | Chỉ qua `lib/legal-basis.js#canCuHoSo`: chương 84/85/90 + dấu hiệu tháo rời → Điều 8, 9.1, 9.2.b (`HEURISTIC`); luôn kèm gợi ý tài liệu kỹ thuật Điều 10.1.d. `dieuKhoan` = nguyên văn `cite()` | `CO_THE_PHAI_DANG_KY_DANH_MUC`, `TAI_LIEU_KY_THUAT_KHI_LAY_MAU` |
+
+`usage` chỉ trả cho khoá dịch vụ có tên (mảng rỗng khi không `kiemMa`). Mọi lượt chạy trong `withPrivateData` bất kể ai gọi; `X-OZ-Chia-Se: 0`
+→ không ghi mô tả hàng xuống đĩa (endpoint không tự ghi gì; classify bên trong tôn trọng cờ như #261). Đo trên 38 ca tổng hợp
+(`scripts/test-declaration-check.mjs` in bảng tóm tắt): mọi dòng đủ 7 nhóm có nhãn, không gọi LLM.
 
 ### ⚠️ Thay đổi hợp đồng `girRulesApplied` (2026-09)
 
