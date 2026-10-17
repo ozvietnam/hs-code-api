@@ -6,6 +6,7 @@ data/knowledge-bundle.json
 data/versions/*.json
 !data/versions/index.json
 !data/versions/tax-v2026-01-01-base.json
+!data/versions/tax-2026-04-05-cs.json
 
 # Runtime access telemetry (ephemeral on Vercel)
 data/access-log.jsonl
@@ -90,3 +91,5 @@ data/wco-op/*
 .backups/
 # Bản thô nguồn ngoài (SHTT, WIPO, GACC…) — nặng, tái tạo được, có thể chứa dữ liệu bên thứ ba
 data/_src/
+# SHTT — file tạm cho script cào (trạng thái từng nguồn); cuối cùng gộp vào bao-cao.json
+data/shtt/_*-status.json
