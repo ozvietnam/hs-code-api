@@ -4,6 +4,7 @@ const { setCors, handleOptions } = require('../lib/cors');
 const { taxData } = require('../lib/data');
 const { mapSearchResult } = require('../lib/tax-mapper');
 const { searchCandidates } = require('../lib/search-utils');
+const { filterLowConfidence } = require('../lib/search-low-confidence');
 const { lookupAliases } = require('../lib/hs-aliases');
 const { lookupTradeTerms } = require('../lib/trade-synonyms');
 const { breadcrumbOf } = require('../lib/hs-breadcrumb');
@@ -100,9 +101,27 @@ module.exports = function handler(req, res) {
   }
   const started = Date.now();
   const rawCandidates = searchCandidates(q, { topCandidates: limitNum, csOnly: onlyCS, facts });
-  // Chương 98 là mã ưu đãi riêng, không phải kết luận phân loại — loại khỏi kết
-  // quả trừ khi người dùng chủ động hỏi (gõ "98..." hoặc includeChapter98=1).
-  const ch98 = filterChapter98(rawCandidates, {
+  // #326: điểm khớp quá thấp → sai miền (vd "trạm sạc" → chất tẩy rửa). Lọc sớm
+  // trước mọi nhánh phụ (chapter98, alias, trade) — các lớp đó cũng có thể bơm
+  // vào kết quả dù top đã thấp, gây nhiễu cờ lowConfidence.
+  const lowConf = filterLowConfidence(rawCandidates);
+  if (lowConf.lowConfidence) {
+    appendAccess({
+      route: '/api/search',
+      ms: Date.now() - started,
+      querySnippet: String(q).slice(0, 80),
+      hsCode: null,
+      lowConfidence: true,
+    });
+    return res.status(200).json({
+      keyword: q,
+      total: 0,
+      results: [],
+      lowConfidence: true,
+      suggestionVi: lowConf.suggestionVi,
+    });
+  }
+  const ch98 = filterChapter98(lowConf.results, {
     query: q,
     include: req.query.includeChapter98 === '1' || req.query.includeChapter98 === 'true',
   });
