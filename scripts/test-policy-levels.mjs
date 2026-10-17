@@ -28,7 +28,7 @@ check('chống bán phá giá → NOTICE', lv('Áp thuế CBPG Thép mạ (CN, K
 check('hợp quy → BLOCKING', lv('SPHH lĩnh vực CNTT và VT bắt buộc phải chứng nhận hợp quy và công bố hợp quy (29/2025/TT-BKHCN-PL1)') === 'BLOCKING');
 check('kiểm dịch → BLOCKING', lv('Kiểm dịch thực vật (01/2024/TT-BNNPTNT M9)') === 'BLOCKING');
 check('nhóm 2 BKHCN → BLOCKING', lv('Hàng hóa nhóm 2 (2711/QĐ-BKHCN 2022)') === 'BLOCKING');
-check('dòng lạ → NOTICE (sai an toàn)', lv('Khoáng sản làm VLXD (04/2021/TT-BXD)') === 'NOTICE');
+check('dòng lạ → NOTICE (sai an toàn)', lv('Dòng chính sách chưa có luật (00/0000/TT-XYZ)') === 'NOTICE');
 
 const c = classifyPolicy('HH tạm ngừng KD TNTX CK (08/2023/TT-BCT - PL2); Hàng tiêu dùng QSD cấp NK (08/2023/TT-BCT - PL1.I)', {});
 check('chỉ NOTICE → không bật cờ', c.policyLevel === 'NOTICE' && c.hasActionablePolicy === false);
@@ -56,6 +56,14 @@ check('/api/tax 85366999: BLOCKING + requiresInspection (từ danh mục 36/2026
 const g = mapTaxLookup('25041000');
 check('cờ AI không căn cứ (than chì, tiêu chuẩn XK) bị gỡ, ghi flagsWithoutBasis', g.hasActionablePolicy === false && g.warnings?.requiresInspection === false && (g.warnings?.flagsWithoutBasis || []).includes('requiresInspection'), JSON.stringify([g.policyLevel, g.warnings?.flagsWithoutBasis]));
 check('dòng cs lặp nguyên văn chỉ giữ một', classifyPolicy('Mỹ phẩm XK, NK (09/2024/TT-BYT-DM14); Mỹ phẩm XK, NK (09/2024/TT-BYT-DM14)*', {}).policyLines.length === 1);
+
+// Dòng mới từ biểu thuế 2026.04.05 (cột cs cập nhật 17/10/2026)
+check('TNKS PL1 NĐ 181/2025 → INFO (thuế GTGT, không phải thủ tục)', levelOfLine('TNKS khai thác chưa chế biến thành SP khác (181/2025/NĐ-CP PL1)').rule === 'VAT_RESOURCE_LIST');
+check('TNKS PL2 NĐ 181/2025 → INFO', levelOfLine('TNKS khai thác đã chế biến thành SP khác (181/2025/NĐ-CP PL2)').level === 'INFO');
+check('khoáng sản làm VLXD 04/2021/TT-BXD → INFO (xuất khẩu)', levelOfLine('Khoáng sản làm VLXD (04/2021/TT-BXD)').rule === 'EXPORT_MINERAL_LIST');
+check('DM khoáng sản XK 45/2023/TT-BCT (có chữ NK) → INFO, không BLOCKING', levelOfLine('DM chủng loại và tiêu chuẩn khoáng sản XK có nguồn gốc trong nước/NK (45/2023/TT-BCT-PL1/PL2)').level === 'INFO');
+check('khai báo HC NK qua CTT 1CQG → BLOCKING', levelOfLine('Khai báo HC NK trước khi TQ qua CTT 1CQG (Đ6-NĐ26)').rule === 'CHEMICAL_DECLARATION');
+check('HC cấm ĐTKD → BLOCKING', levelOfLine('HC cấm ĐTKD theo QĐ của Luật Đầu tư (Đ5.5 NĐ26)').rule === 'CHEMICAL_BANNED');
 
 // Toàn biểu thuế: dòng nào cũng có mức; số dòng chưa phân loại phải nhỏ (rà luật khi tăng).
 let total = 0;
