@@ -57,7 +57,10 @@ Tệp `ra-soat-cs.json` (`MAY_SUY`): `theoMa[]` từng mã khác nhau (`tax`, `b
 - `npm run bieu-thue:cap-nhat-cs -- --phien-ban=2026.04.05` (`scripts/bieu-thue/cap-nhat-cs.mjs`): thay trường `cs` của **mọi**
   mã 8 số trong `data/tax.json` bằng cột CY của biểu đã trích — đi qua `lib/tariff-mutations.js uploadTariffMap` → phiên bản
   `v2-2026-04-05-cs` trong `data/versions/` + thay `tax.json`; mọi trường khác giữ nguyên; `--kho` để xem trước. Kết quả lần
-  chạy khô 12/10/2026: đổi 1.029 mã (thêm 112, bỏ trống 367, sửa 550 — gồm 61 mã dính mục).
+  chạy khô 12/10/2026: đổi 1.029 mã (thêm 112, bỏ trống 367, sửa 550 — gồm 61 mã dính mục). **Đã chạy thật 17/10/2026
+  (CEO chốt)**: `tax.json` + phiên bản `v2-2026-04-05-cs` (snapshot `data/versions/tax-2026-04-05-cs.json`, commit kèm) — 8 kiểu dòng
+  chính sách mới được thêm luật ở `lib/policy-levels.js` (TNKS NĐ 181/2025 → INFO; khoáng sản XK → INFO; khai báo hóa chất
+  1CQG, hóa chất cấm ĐTKD → BLOCKING); còn 1 dòng `Than cám (41/2019/TT-BCT)` chưa phân loại.
 - `npm run bieu-thue:van-ban` (`scripts/bieu-thue/van-ban.mjs`) → **`data/bieu-thue/van-ban-bieu-thue.json`**: mọi số hiệu văn bản
   mà biểu thuế nêu (sheet `HT` cột F hiện hành / cột I bị thay + cột chính sách kèm số mã HS), đối chiếu sổ oz-wiki
   (`trongSo`, `tinhTrang`, `hetHieuLucTu`, `biThayTheBoi`). oz-wiki-plhq `tools/nhu-cau.mjs` kéo tệp này về
