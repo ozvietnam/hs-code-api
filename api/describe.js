@@ -6,6 +6,8 @@ const { setCors, handleOptions } = require('../lib/cors');
 const { describeProduct } = require('../lib/describe-core');
 const { buildDeclarationSheet } = require('../lib/declaration-sheet');
 const { validateDisputeInput, soanHoSoGiaiTrinh } = require('../lib/dispute-draft');
+const { validateInput: validateSourcingInput, runSourcingAssist } = require('../lib/mkt-sourcing');
+const { acquireServiceSlot } = require('../lib/service-rate-limit');
 
 module.exports = async function handler(req, res) {
   setCors(res);
@@ -16,6 +18,9 @@ module.exports = async function handler(req, res) {
   // Chế độ phụ ?mode=sheet (/api/declaration-sheet) và ?mode=dispute (/api/dispute-draft, #339) KHÔNG nằm trong
   // 4 endpoint mở công khai → Bearer-only (khoá dịch vụ / HS_API_TOKEN), không đi requireAuthOrPublicLlm.
   const mode = String(req.query?.mode || '');
+  // POST /api/mkt/sourcing-assist (rewrite → ?mode=sourcing): trợ lý Tìm nguồn của oz-mkt. KÍN — CHỈ khoá dịch vụ,
+  // không qua requireAuthOrPublicLlm, không nhận HS_API_TOKEN. Rẽ nhánh TRƯỚC mọi cổng công khai.
+  if (mode === 'sourcing') return sourcingAssist(req, res);
   if ((mode === 'sheet' || mode === 'dispute') ? requireAuth(req, res) : requireAuthOrPublicLlm(req, res)) return;
 
   if (mode === 'dispute') return disputeDraft(req, res);
@@ -70,5 +75,43 @@ async function disputeDraft(req, res) {
     return res.status(out.status).json(caller ? { ...out.json, usage } : out.json);
   } catch (e) {
     return res.status(500).json({ error: 'dispute draft failed', detail: String(e?.message || e).slice(0, 240), ...(caller && Array.isArray(e?.usage) ? { usage: e.usage } : {}) });
+  }
+}
+
+/**
+ * POST /api/mkt/sourcing-assist (rewrite → ?mode=sourcing): clarify | brief | score cho trang Tìm nguồn (oz-mkt PR #9).
+ * Chỉ khoá dịch vụ (HS_SERVICE_TOKENS): không token/sai → 401, HS_API_TOKEN (không phải khoá dịch vụ) → 403.
+ * Mọi lượt LLM trong withPrivateData; hết nhà cung cấp hợp lệ → 502 NO_PRIVATE_LLM. Không log nội dung khách,
+ * lỗi không vọng lại nguyên văn đầu vào/đầu ra LLM. Tắt khẩn cấp: HS_MKT_SOURCING=false → 503.
+ */
+async function sourcingAssist(req, res) {
+  res.setHeader('Cache-Control', 'no-store');
+  if (requireAuth(req, res)) return;
+  const caller = serviceCaller(req);
+  if (!caller) return res.status(403).json({ error: 'CHI_KHOA_DICH_VU', chiTiet: ['Endpoint chỉ nhận khoá dịch vụ (HS_SERVICE_TOKENS).'] });
+  if (String(process.env.HS_MKT_SOURCING || '').toLowerCase() === 'false') {
+    return res.status(503).json({ error: 'TAM_TAT', chiTiet: ['sourcing-assist đang tắt (HS_MKT_SOURCING=false).'] });
+  }
+  let body = req.body;
+  if (typeof body === 'string') {
+    try { body = JSON.parse(body); } catch { return res.status(400).json({ error: 'DAU_VAO_SAI', chiTiet: ['Body không phải JSON hợp lệ.'] }); }
+  }
+  const v = validateSourcingInput(body);
+  if (!v.ok) return res.status(400).json({ error: 'DAU_VAO_SAI', chiTiet: v.loi });
+  const slot = acquireServiceSlot('mkt-sourcing', caller, { envPrefix: 'HS_MKT_SOURCING', perMinute: 120, maxConcurrent: 6 });
+  if (!slot.ok) {
+    res.setHeader('Retry-After', String(slot.retryAfter));
+    return res.status(429).json({ error: 'VUOT_HAN_MUC', chiTiet: [slot.lyDo], retryAfter: slot.retryAfter });
+  }
+  try {
+    const { result: out, usage } = await withPrivateData(() => withUsage(() => runSourcingAssist(v.task, v.data)));
+    return res.status(200).json({ result: out.result, usage });
+  } catch (e) {
+    const code = ['NO_PRIVATE_LLM', 'LLM_LOI', 'LLM_KET_QUA_SAI'].includes(e?.code) ? e.code : 'LLM_LOI';
+    const chiTiet = code === 'LLM_KET_QUA_SAI' ? [String(e.message).slice(0, 200)]
+      : code === 'NO_PRIVATE_LLM' ? ['Không có nhà cung cấp LLM riêng tư hợp lệ.'] : ['Gọi LLM thất bại.'];
+    return res.status(502).json({ error: code, chiTiet });
+  } finally {
+    slot.release();
   }
 }
