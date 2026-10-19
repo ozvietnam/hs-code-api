@@ -1,8 +1,38 @@
 # Nguồn dữ liệu nhãn hiệu cho Trademark Watch (VN nhập + TQ xuất)
 
 Tool `lib/trademark-watch.js` cảnh báo 2 trục: **VN nhập** (TCHQ) + **TQ xuất** (GACC).
-Cảnh báo chỉ tin cậy khi watchlist được nạp **dữ liệu thật**. Tài liệu này liệt kê các
-nguồn hợp pháp và cách nạp.
+Cảnh báo chỉ tin cậy khi có **dữ liệu thật**. Tài liệu này liệt kê các nguồn hợp pháp và cách nạp.
+
+Từ 10/2026 có **2 tầng dữ liệu**:
+- **Tầng chính — API OZ SHTT** (`lib/shtt-client.js`, biến `OZ_SHTT_URL`): kho nhãn hiệu VN
+  đầy đủ (robot đang tải, đích ~978k) + tra chữ/tra ảnh, trả **đèn tín hiệu** 🟡/🟢/⚪ (ADR-0010).
+  Nguồn chính khi đã cấu hình — xem mục **0**.
+- **Tầng dự phòng — watchlist nội bộ** (`data/trademark-watch.json`): giữ để bắt nhãn công
+  nghiệp hay bị giả + chạy khi chưa cấu hình/không gọi được OZ SHTT.
+
+> ⚠️ **Đèn hiện chỉ là THAM KHẢO, CHƯA có đèn 🔴 ĐỎ.** v1 trần ở 🟡 VÀNG: đèn đỏ chỉ đặt khi
+> có đăng ký **giám sát hải quan** (VN/TQ) — nguồn recordal đó chưa có (mục 2, 4, 6), nên không
+> món nào được gắn đỏ. 🟢 XANH chỉ chắc khi kho đã tải gần đủ (kèm `scope.coverage`).
+
+## 0. OZ SHTT API — nguồn đèn tín hiệu chính ⭐ (MỚI 10/2026)
+
+- Repo: `oz-shtt` (Gitea `oz/oz-shtt`). Dịch vụ `oz-shtt-api` chạy trên **oz-brain 192.168.1.124**.
+- hs-code-api gọi `GET /v1/check?brand=&hs=<8 số>&origin=&importer=&seller=&depth=` qua
+  `lib/shtt-client.js`. Hợp đồng dữ liệu: `oz-shtt/packages/shared/src/check.ts`
+  (`CheckResult`: `level` RED/YELLOW/GREEN/UNKNOWN, `reasons`, `evidence`, `scope.coverage`, `disclaimer`).
+- Cấu hình (env của hs-code-api):
+  ```bash
+  OZ_SHTT_URL=http://192.168.1.124:3010   # trống = tắt → rơi về watchlist nội bộ
+  OZ_SHTT_API_KEY=<khoá x-api-key cấp cho hs-code-api>
+  OZ_SHTT_TIMEOUT_MS=1500                  # chờ tối đa; quá giờ → bỏ đèn, KHÔNG chặn tra HS
+  ```
+- **An toàn:** oz-shtt im lặng / lỗi / chưa cấu hình → hs-code-api vẫn tra/ phân loại HS bình
+  thường, chỉ bỏ phần đèn (tự rơi về watchlist nội bộ). Không bao giờ làm hỏng luồng tra HS.
+- **Nguồn gốc dữ liệu của oz-shtt:** WIPO Publish VN (NOIP) + CNIPA (mở dữ liệu nhãn TQ, gồm ảnh
+  logo). Recordal hải quan (đèn đỏ) vẫn chưa có nên oz-shtt cũng trần ở vàng.
+- **Hạ tầng còn mở (HỎI CEO trước — dịch vụ đang phục vụ khách):** `oz-shtt-api` đang bind
+  `127.0.0.1` trên oz-brain → hs-code-api (.120) chưa gọi LAN được. Cần đổi `HOST=0.0.0.0`,
+  thêm 1 API key cho hs-code-api vào `API_KEYS`, mở cổng 3010 cho `192.168.1.0/24`, rồi restart.
 
 ## ⚠️ Vướng mắc môi trường (đọc trước)
 
@@ -53,10 +83,18 @@ ingest tự động từ trong session web được**. Ba cách gỡ:
 
 ## 2. GACC — recordal Hải quan Trung Quốc (đúng `gaccRecorded`) ⭐
 
-- Hệ thống bảo hộ SHTT Hải quan TQ: **http://www.haiguanbeian.com/**
-  (hoặc Online Services của hải quan TQ → "Intellectual Property Customs Protection").
-- **Tra công khai, KHÔNG cần login**: link "Query Valid Recordations" → tra theo tên chủ
-  sở hữu, số recordal, tên/số quyền, quốc tịch chủ, loại nội dung. Hỗ trợ tra chính xác + mờ.
+> ⚠️ **Đính chính (10/2026): `haiguanbeian.com` KHÔNG phải trang chính thức của Hải quan TQ.**
+> Cổng tra recordal SHTT chính thức là của GACC: `online.customs.gov.cn` → IP
+> **`http://202.127.48.145:8888/`**, và cổng này có **chống bot mạnh** (đợt đo 16/10/2026 ở mục 6
+> trả HTTP 412 — Aliyun WAF `$_ts`; CEO cũng ghi nhận lớp chống bot Ruishu) → **không** `fetch`/scrape
+> được, phải mở bằng trình duyệt thật rồi **export tay**. `haiguanbeian.com` chỉ là trang trung
+> gian/dịch vụ, đừng coi là nguồn dữ liệu hay URL chính thức.
+
+- Cổng chính thức (Online Services của GACC → "Intellectual Property Customs Protection"):
+  `online.customs.gov.cn` / `http://202.127.48.145:8888/`.
+- **Tra công khai, KHÔNG cần login**: "Query Valid Recordations" → tra theo tên chủ sở hữu, số
+  recordal, tên/số quyền, quốc tịch chủ, loại nội dung. Hỗ trợ tra chính xác + mờ.
+  (Chống bot chặn tự động → chỉ mở bằng trình duyệt rồi export tay — xem mục 6.)
 - Xuất kết quả (mark, recordNo, ipTypes, owner) sang JSON theo mẫu rồi nạp:
   ```bash
   node scripts/ingest-trademark-watch.mjs --gacc data/_src/gacc.json
@@ -90,7 +128,8 @@ ingest tự động từ trong session web được**. Ba cách gỡ:
 - Chỉ nguồn được đối chiếu mới đặt `verified=true`.
 - `customsRecorded` (VN) ⟵ chỉ từ `--customs`. `cn.gaccRecorded` (TQ) ⟵ chỉ từ `--gacc`.
   Đăng ký registry (TMview/WIPO) KHÔNG ngụ ý có recordal hải quan.
-- Mọi cảnh báo là **tư vấn tham khảo, không phải phán quyết hải quan**.
+- Mọi cảnh báo là **tư vấn tham khảo, không phải phán quyết hải quan**. Đèn hiện trần ở 🟡 VÀNG —
+  **chưa có đèn 🔴 ĐỎ** (đỏ cần recordal hải quan, nguồn chưa có). 🟢 XANH kèm độ phủ kho.
 - Thư mục nguồn thô để ở `data/_src/` (gitignore nếu chứa dữ liệu lớn/nhạy cảm).
 
 ---
@@ -110,8 +149,8 @@ thì sai độ phủ, cấm bulk, hoặc chặn bot.** Recordal hải quan (2 b�
 | `asean-tmview.org` (gồm VN) | Registry **VN** | ❌ HTTP 503 | ⚠️ chỉ khi allowlist |
 | `api.euipo.europa.eu` (Trademark Search) | Registry — **CHỈ EUTM/Madrid EU** | ✅ HTTP 401 (cần OAuth2) | ✅ API chính thức, free key — **NHƯNG không có CN/VN** → vô dụng cho ta |
 | `public-api.branddb.wipo.int` (WIPO GBD) | Registry toàn cầu | ✅ HTTP 403 (cần token) | ❌ cần key **+ ToU CẤM bulk/auto-download** |
-| `sbj.cnipa.gov.cn` (CNIPA) | Registry **CN** | ✅ HTTP 200 | ⚠️ captcha/anti-bot nặng, chỉ tiếng Trung — rất khó |
-| `haiguanbeian.com` / GACC online | **Recordal hải quan TQ** (`gaccRecorded`) ⭐ | ❌ 403 (private IP) / timeout | ❌ **chỉ export tay** |
+| `sbj.cnipa.gov.cn` (CNIPA) | Registry **CN** | ✅ HTTP 200 | ⚠️ captcha/anti-bot nặng, chỉ tiếng Trung — rất khó. CNIPA **mở dữ liệu** nhãn TQ (gồm ảnh logo) đã được oz-shtt khai thác (mục 0) |
+| `202.127.48.145:8888` (GACC chính thức) | **Recordal hải quan TQ** (`gaccRecorded`) ⭐ | ❌ chống bot (WAF/412) | ❌ **chỉ export tay**. `haiguanbeian.com` **KHÔNG** phải trang chính thức |
 | `english.customs.gov.cn` | Trang thông tin GACC (không phải DB tra) | ✅ HTTP 200 | ❌ không có dataset |
 | `customs.gov.vn` (TCHQ) | **Danh sách giám sát VN** (`customsRecorded`) ⭐ | ✅ HTTP 200 | ⚠️ danh sách **không** công bố dạng dataset/API — thực tế export tay |
 
