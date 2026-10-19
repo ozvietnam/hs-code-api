@@ -3,8 +3,9 @@ import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const llmTier = require('../lib/llm-tier.js');
-let script = []; let calls = [];
-llmTier.callLLMJson = async (system, user) => { calls.push({ system: String(system).slice(0, 60), user }); const n = script.shift(); if (n instanceof Error) throw n; return { json: typeof n === 'function' ? n(user) : n, provider: 'stub', model: 'stub' }; };
+const { isPrivate } = require('../lib/llm-privacy.js');
+let script = []; let calls = []; let thayRiengTu = null;
+llmTier.callLLMJson = async (system, user) => { thayRiengTu = isPrivate(); calls.push({ system: String(system).slice(0, 60), user }); const n = script.shift(); if (n instanceof Error) throw n; return { json: typeof n === 'function' ? n(user) : n, provider: 'stub', model: 'stub' }; };
 console.error = () => {}; console.warn = () => {};
 const log = console.log; console.log = () => {}; // log = bản gốc cho check/tổng kết
 process.env.HS_API_TOKEN = process.env.HS_API_TOKEN || 'test-token';
@@ -63,6 +64,20 @@ check('endpoint: 200 + frame + muc (Bearer hợp lệ)', res._s === 200 && res._
 script = [{ chuong: '39', truong: { polymerType: 'PP', form: 'vỏ', chatLieuCuThe: 'PP' }, nguon: [{ loai: 'phu', url: 'https://s.example.com/x', trich: 'bình PP' }] }];
 r = await identify({ tenHang: 'bình giữ nhiệt PP' });
 check('#308: retrievedAt được máy đóng dấu trong nguon của identify, loi rỗng', /^\d{4}-\d{2}-\d{2}$/.test(r.xacMinh?.nguon?.[0]?.retrievedAt || '') && (r.loi || []).length === 0, JSON.stringify([r.xacMinh?.nguon?.[0], r.loi]));
+
+// 8. Khoá dịch vụ (Cổng OZ, oz-mkt…) = dữ liệu khách (#237 J1): lượt LLM chạy trong withPrivateData; HS_API_TOKEN thì không.
+process.env.HS_SERVICE_TOKENS = 'cong-oz:svc-key-test';
+thayRiengTu = null;
+script = [{ chuong: '39', truong: { polymerType: 'PP', form: 'vỏ', chatLieuCuThe: 'PP' }, nguon: [] }];
+res = mkRes();
+await api({ method: 'POST', headers: { authorization: 'Bearer svc-key-test' }, body: { tenHang: 'vỏ bình giữ nhiệt' } }, res);
+check('khoá dịch vụ → 200 và LLM chạy ở chế độ riêng tư', res._s === 200 && thayRiengTu === true, JSON.stringify([res._s, thayRiengTu]));
+thayRiengTu = null;
+script = [{ chuong: '39', truong: { polymerType: 'PP', form: 'vỏ', chatLieuCuThe: 'PP' }, nguon: [] }];
+res = mkRes();
+await api({ method: 'POST', headers: { authorization: 'Bearer test-token' }, body: { tenHang: 'vỏ bình giữ nhiệt' } }, res);
+check('HS_API_TOKEN → không ép chế độ riêng tư (như /api/suggest)', res._s === 200 && thayRiengTu === false, JSON.stringify([res._s, thayRiengTu]));
+delete process.env.HS_SERVICE_TOKENS;
 
 log(`${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
