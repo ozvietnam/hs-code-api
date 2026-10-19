@@ -8,14 +8,14 @@
  "nguon": [
   {
    "ma": "gacc-shuize-2026",
-   "vanBan": "《中华人民共和国进出口税则（2026）》",
+   "vanBan": "《中华人民共和国进出口税则（2026）》税委会公告2025年第12号",
    "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
    "trangThai": "OK",
-   "soDong": 4784,
-   "soThieu": 1000,
+   "soDong": 5594,
+   "soThieu": 190,
    "tongHs6": 5784,
-   "ghiChu": "PDF 1492 trang từ gss.mof.gov.cn (mof.gov.cn — tên miền chính thống theo đơn đặt hàng §1). customs.gov.cn trả HTTP 412 từ máy này nên không dùng. Trích tự động: tên 6-số lấy theo thứ tự ưu tiên — section_header 1-2 dash trước row đầu (tên 6-số rõ ràng); row name 1-dash (-改良种用 → 改良种用); row name 2-dash (--鳟鱼（...） → 鳟鱼（...）). Tên cụt/\"其他\" → tenZhCha = tên 4-số cha (không ghép)."
+   "ghiChu": "PDF 1.493 trang (70 MB, sha256 tên tệp) tải từ gss.mof.gov.cn — tên miền Bộ Tài chính TQ theo đơn §1; customs.gov.cn HTTP 412 (Aliyun WAF) từ máy VN nên không dùng. 2 lượt: (1) dev zcode tải PDF + bóc vòng đầu theo dòng …00; (2) quản lý ZCode sửa quy tắc span (dòng 6 số = dòng gạch nông nhất có phạm vi nằm trọn trong nhóm — đóng bởi dòng gạch/dòng thuế kế tiếp có dash<=), nối tên xuống dòng, và vùng xám (nhóm gộp cấp 6 vào 4 số: dòng cuối 「其他」→ tenZh+tenZhCha=heading, còn lại thieu). Máy kiểm nguyên văn cấp trang: 5.581/5.595 tự động + 14 soát tay (tên 2 đoạn bị cột tỷ lệ chen giữa) + 1 sửa tay 290723 (3 đoạn chen cột, tr.357) + 1 chuyển thieu 380852 (tên thuần Latin DDT（ISO）). thieu 190 = 172 mã chương 98 VN (TQ không có) + 17 nhóm gộp 4 số + 380852."
   }
  ],
- "phu": "4784/5784"
+ "phu": "5594/5784"
 }
