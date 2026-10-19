@@ -69,7 +69,8 @@ data/.bench-cache/
 data/policy-review-queue.csv
 
 # Phụ thuộc npm (npm ci)
-node_modules/
+# không có "/" để chặn cả symlink node_modules mà worktree hay tạo (ozsource từng lỡ commit ở #23)
+node_modules
 
 # Python (scripts/import-chu-giai-pdf.py)
 __pycache__/
