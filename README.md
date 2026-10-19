@@ -73,6 +73,8 @@ Cảnh báo khi lô hàng mang nhãn hiệu có thể được bảo hộ. Hai t
 - **VN nhập** — TT 13/2015 & 13/2020/TT-BTC (giám sát + tạm dừng thông quan); HQ chủ động dừng từ 1/3/2026.
 - **TQ xuất** — Hải quan TQ (GACC) tạm dừng cả hàng XUẤT nghi vi phạm SHTT đã ghi nhận; chủ thể quyền chỉ có **3 ngày làm việc** (không gia hạn); Smart Customs TQ dùng AI nhận diện rủi ro. **Kích hoạt khi `origin` là Trung Quốc** (phần lớn hàng của hệ thống).
 
+**Nguồn dữ liệu (10/2026):** `/api/describe` + phiếu khai báo ưu tiên gọi **API OZ SHTT** (kho nhãn VN đầy đủ + đèn 🟡/🟢/⚪ theo ADR-0010) qua `lib/shtt-client.js`; khi chưa cấu hình/không gọi được thì tự rơi về **watchlist nội bộ** (~53 nhãn seed) — tra HS không bao giờ bị chặn. Cấu hình env: `OZ_SHTT_URL` (gốc API, trống = tắt), `OZ_SHTT_API_KEY` (header `x-api-key`), `OZ_SHTT_TIMEOUT_MS` (mặc định 1500). Đèn hiện **chỉ tham khảo, chưa có 🔴 ĐỎ** (đỏ cần recordal hải quan — chưa có nguồn). Chi tiết: [`docs/trademark-sources.md`](docs/trademark-sources.md).
+
 Endpoint:
 - `GET /api/trademark?q=vpower[&hs=27101990][&origin=CN]` — tra watchlist; `hs` cross-check nhóm Nice ↔ chương HS; `origin=CN` bật trục rủi ro xuất khẩu TQ.
 - `GET /api/trademark?q=vpower&risk=1&hs=...&origin=CN` — object cảnh báo (`riskLevel` tổng = max(VN, CN); `matches[].vnImportRisk` + `matches[].cnExportRisk`; recommendations).
