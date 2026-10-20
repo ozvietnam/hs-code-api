@@ -233,5 +233,22 @@ check(
   `${chapterFieldCorrect}/${chapterFieldAssertions}`
 );
 
+// ── #324: nhóm máy giữ thông số bắt buộc (power/voltage) khi vượt 200 ký tự ──
+const tramsac = {
+  tenHang: 'Trạm sạc nhanh DC cho xe điện, 2 súng, kiểu all-in-one lắp ngoài trời',
+  nhanHieu: 'Sinexcel', model: 'V7-400kW',
+  thanhPhanCauTao: 'vỏ thép tấm sơn tĩnh điện, module sạc tích hợp',
+  thongSoKyThuat: ['công suất 400 kW', 'đầu ra DC 200-1000V, dòng tối đa 500A', 'điện áp vào 380Vac 3 pha', 'IP54'],
+  congDung: 'sạc pin xe điện',
+  xuatXu: { nameVi: 'Trung Quốc' }, tinhTrang: 'Mới 100%',
+};
+const mayMeta = composeWithMeta(tramsac, { keepSpecs: true });
+check('#324 nhóm 85: mô tả GIỮ công suất 400 kW (không hy sinh thông số trước phụ đề)', /400\s?kW/i.test(mayMeta.text), mayMeta.text);
+check('#324 nhóm 85: giữ điện áp 380V hoặc dòng 500A (ít nhất một cơ sở phân loại)', /380|500A/i.test(mayMeta.text), mayMeta.text);
+check('#324 nhóm 85: vẫn vừa 200 ký tự ECUS', mayMeta.length <= 200, String(mayMeta.length));
+check('#324 nhóm 85: phụ đề/công dụng bị cắt TRƯỚC thông số', !/công dụng/i.test(mayMeta.text), mayMeta.text);
+const cuMeta = composeWithMeta(tramsac); // không keepSpecs — hành vi cũ
+check('#324 nhóm khác: hành vi cũ giữ nguyên (thông số có thể bị cắt như trước)', cuMeta.dropped.includes('thongSoKyThuat') || cuMeta.text.includes('400 kW'), JSON.stringify(cuMeta.dropped));
+
 console.log(`\n${passed}/${passed + failed} passed, ${failed} failed`);
 process.exit(failed > 0 ? 1 : 0);
