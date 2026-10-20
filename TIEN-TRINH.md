@@ -213,29 +213,45 @@ Log runner: `/tmp/oz-exec-359-mm.log`
 - [x] Dò code: `lib/precedent-search.js`, `api/dataset.js`, `lib/engine-loop.js`, `lib/suggest-core.js`, `lib/llm-output-guard.js`
 - [x] Tìm record TCO 1679759: `data/community/intl-precedents/abf/abf-tco-2026-10-15-lot-thu.json`
 - [x] **ĐO bộ mẫu vàng → chốt ngưỡng 0,55**
-- [x] Commit test ĐỎ (3 script mới + wire `npm test`)
-- [ ] Commit fix (3 nhóm)
-- [ ] `npm test` xanh toàn bộ
+- [x] Commit test ĐỎ (3 script mới + wire `npm test`) — `3ef92da`
+- [x] Sửa 2 kỳ vọng test sai khi đo thật — `dabf711`
+- [x] Commit fix (3 nhóm) — `4ecb349`
+- [x] Đồng bộ đếm "mã có tiền lệ" — `952ee05`
+- [x] `npm test` xanh toàn bộ (exit 0)
 - [ ] Push nhánh + mở PR (KHÔNG merge)
+
+## Commit trên nhánh `zcode/359-tra-tien-le-nguong`
+
+| Commit | Nội dung |
+|---|---|
+| `3ef92da` | **test đỏ** — 3 script mới, wire `npm test`, TIEN-TRINH.md |
+| `dabf711` | test — sửa 2 kỳ vọng sai (stub LLM chung; tên dòng 8301.60.00; ca maHs) |
+| `4ecb349` | **fix** — ngưỡng + outcome/outcomeHs + lyDoThayHe + 1 tệp data lô |
+| `952ee05` | test — `test-doc-counts` đọc `outcomeHs \|\| outcome` |
+
+Không commit nào trộn test với mã sản phẩm (radar CI bắt việc này).
 
 ## KẾT QUẢ ĐO NGƯỠNG (bắt buộc theo brief — không tin đề xuất 0,70)
 
 Bộ mẫu: **38 ca vàng** `tests/fixtures/soat/ca-tong-hop.json` (17/10, dữ liệu công khai) +
 **120 tờ khai Oz thật** lấy từ `data/oz-gold-final.jsonl` **đã loại tập giữ riêng (holdout)**.
 
-| Ngưỡng | top-1 đúng còn | ca còn ra tiền lệ | **top-1 SAI bị lọt** |
-|---|---|---|---|
-| 0,45 | 22/26 | 26/38 | 3 |
-| 0,50 | 21/26 | 22/38 | 1 |
-| **0,55** | **18/26** | **18/38** | **0** |
-| 0,60 | 19/26 | 19/38 | 0 |
-| 0,70 | 15/26 | 15/38 | 0 |
+Số đo **trên mã đã sửa** (đo lại sau khi sửa, không dùng lại số đo trước):
+
+| | 38 ca vàng | 120 tờ khai Oz thật |
+|---|---|---|
+| **Trước** — còn ra tiền lệ | 38/38 | 120/120 |
+| **Trước** — trong đó top-1 **SAI** nhóm | **12** | **100** |
+| **Sau** — còn ra tiền lệ | **20/38 (53%)** | **0/120** |
+| **Sau** — `found:false` | 18/38 | 120/120 |
+| **Sau** — trong đó top-1 **SAI** nhóm | **0** | **0** |
 
 Chốt **0,55** vì đó là điểm cắt sạch:
 
 - top-1 **SAI** nhóm cao nhất trong 38 ca = **0,504** (acfta-o-khoa-o-to) → 0,55 loại hết match sai.
 - ca trong issue (điều khiển từ xa bảng giá điện tử) đứng ở **0,537** → dưới ngưỡng ⇒ `found:false` đúng ý.
-- top-1 **ĐÚNG** thấp nhất = 0,495; các ca đúng kế tiếp 0,524 rồi 0,591 → 0,55 không giết nhầm ca nào có chất lượng.
+- 6 ca vàng có top-1 **đúng** nhưng điểm thấp bị loại: 0,309 · 0,309 · 0,366 · 0,411 · 0,495 · 0,524.
+  Đây là cái giá của ngưỡng: match đúng-nhóm ở điểm 0,3 không phải bằng chứng tiền lệ.
 
 **Vì sao KHÔNG dùng 0,70 như issue đề xuất:**
 
@@ -247,12 +263,14 @@ Chốt **0,55** vì đó là điểm cắt sạch:
    **WCO** (tên sinh tự động là "Section XVI — WCO opinion 842139/1") nằm dưới trần này. Ngưỡng > 0,45
    ⇒ WCO **không bao giờ** hiện qua tìm theo mô tả.
 
-### Đánh đổi phải nói thẳng (sẽ ghi trong PR)
+### Đánh đổi phải nói thẳng (đã ghi trong PR)
 
-- `/api/precedents?q=` còn trả kết quả cho **18/38 ca vàng**; 20 ca còn lại trả `found:false` +
-  `lyDo`. Đây là hành vi ĐÚNG: kho tiền lệ chỉ 5.766 bản ghi, phần lớn mô tả tờ khai không có tiền lệ
-  đủ gần; trả kết quả yếu như ca 20/10 chỉ làm người khai tin nhầm là "có tiền lệ".
-- Nhánh `?hs=` (tra đúng mã) **không đổi** — ngưỡng chỉ áp cho tìm theo mô tả.
+- Với **mô tả tờ khai thật**, `/api/precedents?q=` giờ trả `found:false` gần như luôn (0/120 mẫu Oz
+  thật còn ra tiền lệ). Đây là hành vi ĐÚNG theo issue: trước đó 120/120 mẫu đều "có tiền lệ" mà
+  **100/120 là sai nhóm** — chính cái hại gây ra ca 20/10. Muốn tra tiền lệ theo mã thì dùng `?hs=`
+   (nhánh này không đổi), và `/api/evidence-pack` vẫn tra tiền lệ theo mã + mô tả với ngưỡng riêng 0,5.
+- Ý kiến **WCO** chỉ hiện qua tìm theo mô tả khi điểm chạm 0,45 trần của `scorePrecedent` — tức là
+  hầu như không hiện. Tra WCO theo mã vẫn qua `/api/wco-opinions?hs=` và nhánh `?hs=` như cũ.
 - Tìm tiền lệ nội bộ (`applyPrecedentBoost`, `engine-loop`, `evidence-pack`) **không đổi**: chúng tự
   có ngưỡng riêng (0,5 / 0,5) và cần cả tiền lệ anh em để dựng bộ đồng thuận.
 
