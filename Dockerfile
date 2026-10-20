@@ -19,4 +19,7 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
   CMD wget -qO- http://127.0.0.1:3000/api/health >/dev/null || exit 1
 # Động cơ tra mã mặc định trên máy chủ: hai vòng + chốt chặn (lib/engine-loop.js). Đặt =legacy để quay về luồng cũ.
 ENV HS_CLASSIFY_ENGINE=loop
+# Sổ tay chú giải (lib/so-tay-gates.js): full = gói vòng 2 dùng sổ tay đã tiêu hoá (HS 2022 + SEN) thay đoạn chú giải
+# thô bị cắt + cổng NGHI sổ tay. Nhẹ hơn: đặt =gates (chỉ bật cổng NGHI, KHÔNG dựng gói sổ tay trong gather). Bỏ dòng = tắt.
+ENV HS_SO_TAY=full
 CMD ["node", "server.js"]
