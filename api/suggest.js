@@ -33,6 +33,8 @@ const { getPrompt } = require('../lib/prompt-version');
 const { buildSuggestStatus, LOW_CONFIDENCE } = require('../lib/suggest-status');
 const { conflictsData, taxData } = require('../lib/data');
 const { sanitizeLlmSuggestions, deterministicSuggestions } = require('../lib/llm-output-guard');
+// #359: mỗi mã thay thế trong batch phải kèm tên dòng biểu thuế 8 số (xem lib/ma-thay-the.js).
+const { ganLyDoThayThe } = require('../lib/ma-thay-the');
 
 /**
  * productExamples = tên hàng THẬT từ tờ khai; productExamplesGenerated = câu máy
@@ -174,11 +176,11 @@ async function handleBatch(req, res, body, started) {
         : deterministicSuggestions(evidence, { taxData, limit: topReranked });
       const girRanked = applyGirRules(rawSuggestions, matchText);
       const precedentRanked = applyPrecedentBoost(girRanked.suggestions, matchText);
-      const suggestions = precedentRanked.suggestions.map(s => {
+      const suggestions = ganLyDoThayThe(precedentRanked.suggestions.map(s => {
         const base = engine === 'deterministic' ? { ...s, confidence: null } : s;
         if (!isLoaiKhac(base.hsCode)) return base;
         return withExamples(base, 3);
-      });
+      }));
 
       const batchGir = determineGir({
         description: matchText,

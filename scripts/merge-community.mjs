@@ -185,12 +185,19 @@ function findBetter(list, entry) {
 function mergePrecedent(precedents, seen, doc, rec, fileRel, stats) {
   const hs = String(rec.hsCode);
   const key = dedupKey(hs, rec);
+  // #359: `outcome` mặc định vẫn là mã HS mà văn bản chốt (tiền lệ = đã phân loại) — nhưng
+  // bản ghi quốc tế được nêu kết luận bằng ENUM (APPROVED/…). Khi ấy mã nó chốt phải nằm ở
+  // `outcomeHs`, đệm 0 BÊN PHẢI (842139 → 84213900; đệm bên trái ra 00842139 là sai phía).
+  // Không có outcomeHs riêng thì lấy từ hsCode để số "mã có tiền lệ" (sync-doc-counts) không rơi.
+  const outcome = rec.outcome || hs;
   const entry = {
     tbTchqNumber: rec.source?.reference || null,
     productName: rec.description,
     technicalSpec: rec.reasonVi || null,
     year: yearOf(rec),
-    outcome: hs,
+    outcome,
+    ...(rec.outcomeHs || rec.outcome ? { outcomeHs: String(rec.outcomeHs || hs).replace(/\D/g, '').padEnd(8, '0').slice(0, 8) } : {}),
+    ...(rec.xacMinh ? { xacMinh: rec.xacMinh } : {}),
     sourceFile: `community:${fileRel}`,
     contributor: {
       name: doc.contributor?.name || null,
