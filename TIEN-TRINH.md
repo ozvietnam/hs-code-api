@@ -218,7 +218,7 @@ Log runner: `/tmp/oz-exec-359-mm.log`
 - [x] Commit fix (3 nhóm) — `4ecb349`
 - [x] Đồng bộ đếm "mã có tiền lệ" — `952ee05`
 - [x] `npm test` xanh toàn bộ (exit 0)
-- [ ] Push nhánh + mở PR (KHÔNG merge)
+- [x] Push nhánh + mở PR — **https://github.com/ozvietnam/hs-code-api/pull/363** (OPEN, KHÔNG merge)
 
 ## Commit trên nhánh `zcode/359-tra-tien-le-nguong`
 
