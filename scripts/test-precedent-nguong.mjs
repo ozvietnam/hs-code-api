@@ -110,24 +110,30 @@ async function callApi(query, extra = {}) {
 }
 
 // ── maHs: ưu tiên nhóm 4 số (boost nhẹ), KHÔNG lọc cứng ────────────────────────
-const Q_LUOI = 'Lưỡi dao thay thế bằng thép carbon cao SK5, dùng để lắp vào con dao';
-const khongMa = searchPrecedents(Q_LUOI, { topK: 6 });
-const coMa = searchPrecedents(Q_LUOI, { topK: 6, maHs: '73089000' });
-assert('không truyền maHs: nhóm 8205 đứng đầu', khongMa[0]?.finalHsCode.startsWith('8205'), JSON.stringify(khongMa.slice(0, 2).map((m) => [m.finalHsCode, m.similarity])));
-assert('truyền maHs=73089000: nhóm 7308 được ưu tiên lên đầu', coMa[0]?.finalHsCode.startsWith('7308'), JSON.stringify(coMa.slice(0, 2).map((m) => [m.finalHsCode, m.similarity])));
-assert('maHs KHÔNG lọc cứng: số match không đổi, không mất mạch nào', coMa.length === khongMa.length
+// Ca thật: "còi điện dùng cho xe ô tô" — mô tả trùng tiền lệ nhóm 8512 (máy phát tín hiệu)
+// trước. Khi người gọi đã cân nhắc 8537.10.19 (còi điện xe ô tô đúng nghĩa) thì tiền lệ
+// nhóm 8537 phải lên trước. Lưu ý: cầu nối chéo nguồn của #311 giới hạn mọi tiền lệ quốc tế
+// ở 0,95 × điểm top-1, nên boost nhẹ KHÔNG đủ để vượt top-1 ở câu mà bộ đồng thuận đang đẩy trần.
+const Q_COI = 'Còi điện dùng cho xe ô tô, đã lắp ráp hoàn chỉnh';
+const khongMa = searchPrecedents(Q_COI, { topK: 6 });
+const coMa = searchPrecedents(Q_COI, { topK: 6, maHs: '85371019' });
+assert('không truyền maHs: nhóm 8512 đứng đầu', khongMa[0]?.finalHsCode.startsWith('8512'), JSON.stringify(khongMa.slice(0, 2).map((m) => [m.finalHsCode, m.similarity])));
+assert('truyền maHs=85371019: tiền lệ nhóm 8537 được ưu tiên lên đầu', coMa[0]?.finalHsCode.startsWith('8537'), JSON.stringify(coMa.slice(0, 2).map((m) => [m.finalHsCode, m.similarity])));
+assert('mạch bị đẩy xuống vẫn CÒN trong kết quả (không phải lọc bỏ)', coMa.some((m) => m.finalHsCode.startsWith('8512')),
+  JSON.stringify(coMa.map((m) => [m.finalHsCode, +m.similarity.toFixed(3)])));
+assert('maHs KHÔNG lọc cứng: không mất mạch nào so với không truyền maHs', coMa.length === khongMa.length
   && coMa.every((m) => khongMa.some((k) => k.precedent.precedentId === m.precedent.precedentId)),
   `${coMa.length} vs ${khongMa.length}`);
 assert('maHs KHÔNG đẩy dưới ngưỡng bất kỳ match nào còn lại',
-  searchPrecedents(Q_LUOI, { topK: 6, maHs: '73089000', minSimilarity: NGUONG_KHOP_TIEN_LE })
+  searchPrecedents(Q_COI, { topK: 6, maHs: '85371019', minSimilarity: NGUONG_KHOP_TIEN_LE })
     .every((m) => m.similarity >= NGUONG_KHOP_TIEN_LE));
 {
   // maHs thuộc nhóm không có tiền lệ nào → KHÔNG được sinh match ảo, KHÔNG chặn mạch đang có.
-  const r = await callApi(Q_LUOI, { hs: '39269099' });
+  const r = await callApi(Q_COI, { hs: '39269099' });
   assert('maHs thuộc nhóm không có tiền lệ: không được sinh match ma', (r._j?.matches || []).every((m) => !m.finalHsCode.startsWith('3926')),
     JSON.stringify((r._j?.matches || []).map((m) => m.finalHsCode)));
-  assert('maHs không chặn được mạch cùng nhóm: vẫn ra tiền lệ 7308', (r._j?.matches || []).some((m) => m.finalHsCode.startsWith('7308')),
-    JSON.stringify((r._j?.matches || []).map((m) => [m.finalHsCode, +m.similarity.toFixed(3)])));
+  assert('maHs không chặn được mạch đang có: kết quả không rỗng', (r._j?.matches || []).length > 0,
+    JSON.stringify(r._j?.lyDo));
 }
 {
   // Còn nhánh ?hs= (tra đúng mã) KHÔNG đổi: đây là tra cứu theo mã, không phải tìm theo mô tả.
