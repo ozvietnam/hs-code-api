@@ -1,3 +1,4 @@
+
 # TIEN-TRINH — lô 008 (soạn sổ tay chú giải)
 
 Nhóm của lô: **7419, 8307, 3916, 4811, 4819, 6305**
@@ -197,3 +198,79 @@ Tỷ lệ soát: 1/29 = 3,4 % (so với vòng 2 đợt 1 = 25 % / đợt 2 = 26 
 - Commit phiên soát: cùng nhánh `so-tay/lo-008`, thêm báo cáo `TIEN-TRINH.md` (mục 1–8 ở trên) + 5 file `tmp/so-tay/review/<nhom>.json` được gitignore nên KHÔNG vào commit; thay đổi thật vào commit là `data/so-tay/{3916,4819,6305,7419,8307}.json` + `data/so-tay/bao-cao/lo-008.json`.
 - Comment PR #383 với số liệu soát (1 xoá / 0 sửa).
 - **KHÔNG merge** — chờ CEO duyệt.
+
+---
+
+
+# TIEN-TRINH — issue #359 (tra_tien_le: ngưỡng similarity + schema tiền lệ quốc tế + lyDo mã thay thế)
+
+Worktree: `hs-code-api-wt-359` · nhánh `zcode/359-tra-tien-le-nguong` @ `0f1ceab` · tuyến mm.
+Log runner: `/tmp/oz-exec-359-mm.log`
+
+## Trạng thái
+
+- [x] Đọc brief + `gh issue view 359` nguyên văn
+- [x] Dò code: `lib/precedent-search.js`, `api/dataset.js`, `lib/engine-loop.js`, `lib/suggest-core.js`, `lib/llm-output-guard.js`
+- [x] Tìm record TCO 1679759: `data/community/intl-precedents/abf/abf-tco-2026-10-15-lot-thu.json`
+- [x] **ĐO bộ mẫu vàng → chốt ngưỡng 0,55**
+- [x] Commit test ĐỎ (3 script mới + wire `npm test`)
+- [ ] Commit fix (3 nhóm)
+- [ ] `npm test` xanh toàn bộ
+- [ ] Push nhánh + mở PR (KHÔNG merge)
+
+## KẾT QUẢ ĐO NGƯỠNG (bắt buộc theo brief — không tin đề xuất 0,70)
+
+Bộ mẫu: **38 ca vàng** `tests/fixtures/soat/ca-tong-hop.json` (17/10, dữ liệu công khai) +
+**120 tờ khai Oz thật** lấy từ `data/oz-gold-final.jsonl` **đã loại tập giữ riêng (holdout)**.
+
+| Ngưỡng | top-1 đúng còn | ca còn ra tiền lệ | **top-1 SAI bị lọt** |
+|---|---|---|---|
+| 0,45 | 22/26 | 26/38 | 3 |
+| 0,50 | 21/26 | 22/38 | 1 |
+| **0,55** | **18/26** | **18/38** | **0** |
+| 0,60 | 19/26 | 19/38 | 0 |
+| 0,70 | 15/26 | 15/38 | 0 |
+
+Chốt **0,55** vì đó là điểm cắt sạch:
+
+- top-1 **SAI** nhóm cao nhất trong 38 ca = **0,504** (acfta-o-khoa-o-to) → 0,55 loại hết match sai.
+- ca trong issue (điều khiển từ xa bảng giá điện tử) đứng ở **0,537** → dưới ngưỡng ⇒ `found:false` đúng ý.
+- top-1 **ĐÚNG** thấp nhất = 0,495; các ca đúng kế tiếp 0,524 rồi 0,591 → 0,55 không giết nhầm ca nào có chất lượng.
+
+**Vì sao KHÔNG dùng 0,70 như issue đề xuất:**
+
+1. Đo trên 120 tờ khai Oz thật: điểm top-1 **trung vị 0,225, lớn nhất 0,507**. Ngưỡng 0,70 loại **120/120** —
+   kể cả những ca có top-1 ĐÚNG. Endpoint sẽ luôn trả `found:false`.
+2. 4781/4837 tiền lệ TB-TCHQ lưu `outcome` là **mã HS 8 số**, nhưng điểm khớp văn bản hiếm khi vượt 0,5
+   (độ phủ câu hỏi × khớp tên lõi, có trần cứng).
+3. `scorePrecedent` **chặn trần 0,45** khi câu hỏi không trùng từ nào trong tên tiền lệ — mọi ý kiến
+   **WCO** (tên sinh tự động là "Section XVI — WCO opinion 842139/1") nằm dưới trần này. Ngưỡng > 0,45
+   ⇒ WCO **không bao giờ** hiện qua tìm theo mô tả.
+
+### Đánh đổi phải nói thẳng (sẽ ghi trong PR)
+
+- `/api/precedents?q=` còn trả kết quả cho **18/38 ca vàng**; 20 ca còn lại trả `found:false` +
+  `lyDo`. Đây là hành vi ĐÚNG: kho tiền lệ chỉ 5.766 bản ghi, phần lớn mô tả tờ khai không có tiền lệ
+  đủ gần; trả kết quả yếu như ca 20/10 chỉ làm người khai tin nhầm là "có tiền lệ".
+- Nhánh `?hs=` (tra đúng mã) **không đổi** — ngưỡng chỉ áp cho tìm theo mô tả.
+- Tìm tiền lệ nội bộ (`applyPrecedentBoost`, `engine-loop`, `evidence-pack`) **không đổi**: chúng tự
+  có ngưỡng riêng (0,5 / 0,5) và cần cả tiền lệ anh em để dựng bộ đồng thuận.
+
+### Lỗ hổng phát hiện khi đo (KHÔNG sửa trong #359 — ngoài phạm vi)
+
+`headOf()` cắt tên tiền lệ trước dấu `:` / `,` / ` — `. Tên của bản ghi quốc tế có tiền tố số hiệu
+("ABF TCO 1679759: GLOVE BOXES, laboratory — …") nên **phần mô tả hàng rơi khỏi "tên lõi"** →
+`covH = 0` → điểm bị nhân với 0,4. Đo thật: `searchPrecedents('glove box gas purification')` chỉ
+0,26 dù tên tiền lệ có nguyên văn "GLOVE BOXES … gas purification". Sửa `headOf` sẽ dời điểm mọi
+record → phải là việc riêng, có đo lại toàn bộ bộ sập xếp. Ghi ra đây để không ai tưởng là ngưỡng sai.
+
+## Ghi chú khảo sát
+
+- `tra_tien_le` = `GET /api/precedents?hs=` hoặc `?q=` (`routes.json` → `api/dataset.js?resource=precedents`).
+  Nhánh `?q=` gọi `searchPrecedents(searchText, { topK: 5 })` — không có ngưỡng, chỉ lọc `>= 0,15` bên trong lib.
+- Ngưỡng 0,15 bên trong lib có ý nghĩa cho CASCADE/BRIDGE (tiền lệ anh em / cầu nối được nâng lên 0,16).
+  Đặt ngưỡng toàn cục 0,55 **ngay trong lib** sẽ giết bộ ba cross-source của #311/#340
+  (`test-precedent-cross-source.mjs` CASE 1/2/6/7) → ngưỡng là **tham số opt-in**, endpoint bật lên.
+- `outcome`/`outcomeHs` trong `data/precedents.json` do `scripts/merge-community.mjs` ghi là
+  `outcome: hs` (mã 6 số). `loadFlatPrecedents` đệm 0 **bên trái** (`padStart`) trong khi mã HS phải
+  đệm bên phải (`normalizeHs` = `padEnd`) → `842139` thành `00842139`. Đó là gốc rễ Lỗi 2.
