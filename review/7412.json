@@ -1,0 +1,53 @@
+{
+  "nhom": "7412",
+  "tongMuc": 14,
+  "tongGiu": 14,
+  "tongXoa": 0,
+  "tongSua": 0,
+  "ghiChu": "Soát độc lập toàn bộ 14 mục cùng nguồn tmp/so-tay/nguon/7412.txt. Tất cả khớp nguyên văn. Không mục nào cần xoá hay sửa. Nguồn mỏng nhất lô (chỉ 5 dòng trong nhom7412.nhom); phamVi chỉ phủ 7412.10 như đã cờ trong PR.",
+  "ketQuaChiTiet": {
+    "phamVi": {
+      "hanhDong": "giu",
+      "lyDo": "trich từ wco.741210 '741210 Copper; tube or pipe fittings (e.g. couplings, elbows, sleeves) of refined copper' verbatim. CHỈ phủ 7412.10. nguồn nhom7412.nhom không có câu scope tiếng Việt nào cho 7412.20. Theo kỷ luật 'thà bỏ mục còn hơn mục không có căn cứ' và 'chỉ trích từ nguồn nguồn trong tệp', giữ phamVi phủ 7412.10 duy nhất và để 7412.20 mô tả qua tieuChi6 + dong8. PR đã cờ."
+    },
+    "dieuKienVao": [
+      {
+        "index": 0,
+        "hanhDong": "giu",
+        "lyDo": "Cần NGƯỜI DUYỆT xem xét (PR đã cờ). dieuKienVao 'bang_dong_hoac_hop_kim_cua_no=true': trich từ ch74.chuong dòng 69 'Chương này bao gồm đồng và hợp kim của nó và các sản phẩm chủ yếu bằng đồng.' — câu TỔNG QUÁT chương. Cùng tình huống như 7615.dieuKienVao. Trich nguyên văn, khẳng định đúng cho 7412 vì thuộc Ch.74. Giữ."
+      }
+    ],
+    "loaiTru": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "(a) Bu lông/đai ốc 74.15: trich từ dòng 8 nguyên văn. Đích danh."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "(b) Ống nối 84.81: trich từ dòng 10 'Ống nối lắp ghép với vòi nước, van... (nhóm 84.81)' nguyên văn."}
+    ],
+    "phanBiet": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "Phân biệt bu lông/đai ốc 74.15 vs 7412 — câu hỏi mở, đúng chiều."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "Phân biệt ống nối 84.81 — OK."}
+    ],
+    "boPhan": {
+      "hanhDong": "giu",
+      "lyDo": "boPhan lấy từ dòng 4 'Chú giải Chi tiết nhóm 73.07 áp dụng, với những sửa đổi phù hợp, cho nhóm này.' — đây là câu dẫn chiếu (referral), không phải loại trừ hay điều kiện. Đặt ở boPhan để nói 'quy tắc' của 7412 là áp dụng quy tắc 73.07 với sửa đổi. Đây là cách dùng hợp lệ của boPhan."
+    },
+    "tieuChi6": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "hs6=741210, fact=bang_dong_tinh_luyen: trich từ wco.741210 verbatim."},
+      {
+        "index": 1,
+        "hanhDong": "giu",
+        "lyDo": "hs6=741210, fact=ham_luong_dong_tinh_luyen, op='in', value='ít nhất 99,85% đồng, hoặc ít nhất 97,5% đồng với điều kiện hàm lượng các tạp chất không vượt quá giới hạn ghi trong bảng': trich từ ch74.chuong dòng 21 'Kim loại có ít nhất 99,85% tính theo khối lượng là đồng; hoặc Kim loại có ít nhất 97,5% tính theo khối lượng là đồng, với điều kiện hàm lượng các tạp chất không vượt quá giới hạn ghi trong bảng sau:' verbatim. Lưu ý: giữ cả HAI nhánh của 'A hoặc B' trong cùng một mục — không tách thành hai mục điều kiện độc lập (tuân thủ luật)."
+      },
+      {"index": 2, "hanhDong": "giu", "lyDo": "hs6=741220, fact=bang_hop_kim_dong: trich từ wco.741220 verbatim."}
+    ],
+    "dong8": [
+      {"index": 0, "hs": "74121000", "hanhDong": "giu", "lyDo": "tax.74121000 'Bằng đồng tinh luyện' verbatim."},
+      {
+        "index": 1,
+        "hs": "74122020",
+        "hanhDong": "giu",
+        "lyDo": "sen.74122020 'Phụ kiện ghép nối cho ống vòi dùng cho vòi mềm hoặc các loại ống mềm tương tự khác là phụ kiện được làm bằng hợp kim đồng mà đặc điểm chính là chúng không có ren để phù hợp với đặc tính mềm dẻo của vòi mềm hoặc các loại ống mền tương tự khác.' verbatim (giữ nguyên lỗi 'mền' cuối — luật 7). dieuKien paraphrase ngắn gọn nhưng vẫn phản ánh đủ thành phần trich — chấp nhận."
+      },
+      {"index": 2, "hs": "74122091", "hanhDong": "giu", "lyDo": "tax.74122091 'Bằng hợp kim đồng - kẽm (đồng thau)' verbatim."},
+      {"index": 3, "hs": "74122099", "hanhDong": "giu", "lyDo": "tax.74122099 'Loại khác' → wco.741220. OK."}
+    ]
+  }
+}

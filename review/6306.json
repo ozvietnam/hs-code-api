@@ -1,0 +1,67 @@
+{
+  "nhom": "6306",
+  "tongMuc": 33,
+  "tongGiu": 33,
+  "tongXoa": 0,
+  "tongSua": 0,
+  "ghiChu": "Soát độc lập toàn bộ 33 mục cùng nguồn tmp/so-tay/nguon/6306.txt. Tất cả khớp nguyên văn. Không mục nào cần xoá hay sửa. Lưu ý đặc biệt: câu 'thường làm bằng các loại vải bạt dệt dày' được đặt ở phamVi (mô tả) chứ không phải dieuKienVao (điều kiện bắt buộc) vì sai với 6306.12 (sợi tổng hợp).",
+  "ketQuaChiTiet": {
+    "phamVi": {
+      "hanhDong": "giu",
+      "lyDo": "trich từ nhom6306.nhom dòng 4-26 (tổng quát + (1)-(5)) nguyên văn, lược giữa các mục. Cụm 'mặt hàng thường làm bằng các loại vải bạt dệt dày' giữ đúng dạng mô tả (thường = chỉ đa số, không bắt buộc). Đặt ở phamVi thay vì dieuKienVao là chính xác."
+    },
+    "dieuKienVao": {
+      "hanhDong": "giu",
+      "lyDo": "Để trống. Hợp lý — không có câu điều kiện vào nhóm nào chắc chắn."
+    },
+    "loaiTru": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "(a) Ba lô 42.02: trich từ dòng 30 nguyên văn."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "(b) Túi ngủ 94.04: trich từ dòng 32 nguyên văn."},
+      {"index": 2, "hanhDong": "giu", "lyDo": "(c) Lều chơi 95.03: trich từ dòng 34 nguyên văn."},
+      {"index": 3, "hanhDong": "giu", "lyDo": "Lều bạt dạng ô 66.01: trich từ dòng 24 'Nhóm này loại trừ lều bạt dạng ô của nhóm 66.01.' nguyên văn. Lưu ý: không phải từ danh sách '(a)/(b)/(c)' mà từ đoạn mô tả (4) Lều — vẫn loaiTru hợp lệ vì trich nêu đích danh."},
+      {"index": 4, "hanhDong": "giu", "lyDo": "Vỏ bọc mềm 63.07: trich từ dòng 10 nguyên văn ('Tấm vải chống thấm nước không nên nhầm lẫn với... (nhóm 63.07)')."},
+      {"index": 5, "hanhDong": "giu", "lyDo": "Nệm/đệm khí 40.16: trich từ ngoặc '(trừ các sản phẩm thuộc nhóm 40.16)' trong dòng 26 nguyên văn. Hai 'loaiTru' 4016 và 5608 lấy cùng đoạn (5) — chính đáng vì trich nêu đích danh."},
+      {"index": 6, "hanhDong": "giu", "lyDo": "Võng 56.08: trich từ dòng 26 nguyên văn tương tự."}
+    ],
+    "phanBiet": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "Phân biệt ba lô 42.02 vs 6306 — OK."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "Phân biệt túi ngủ 94.04 — OK."},
+      {"index": 2, "hanhDong": "giu", "lyDo": "Phân biệt lều chơi 95.03 — OK."},
+      {"index": 3, "hanhDong": "giu", "lyDo": "Phân biệt lều ô 66.01 — OK."},
+      {"index": 4, "hanhDong": "giu", "lyDo": "Phân biệt vỏ bọc mềm 63.07 — OK."}
+    ],
+    "phanBiet_OMIT": [
+      {"muc": "loaiTru 4016 (nệm/đệm khí)", "lyDo": "Câu trích chỉ có '(trừ các sản phẩm thuộc nhóm 40.16)' không nêu đặc tính để đặt câu hỏi. Bỏ phanBiet là chính đáng."},
+      {"muc": "loaiTru 5608 (võng)", "lyDo": "Tương tự — '(trừ các sản phẩm thuộc nhóm 56.08)' không có đặc tính để phân biệt."}
+    ],
+    "tieuChi6": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "hs6=630612, fact=tu_soi_tong_hop: trich từ wco.630612 verbatim."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "hs6=630619, fact=tu_vat_lieu_det_khong_phai_soi_tong_hop: trich từ wco.630619 verbatim."},
+      {"index": 2, "hanhDong": "giu", "lyDo": "hs6=630622, fact=tu_soi_tong_hop: trich từ wco.630622 verbatim."},
+      {"index": 3, "hanhDong": "giu", "lyDo": "hs6=630629, fact=tu_vat_lieu_det_khong_phai_soi_tong_hop: trich từ wco.630629 verbatim."},
+      {"index": 4, "hanhDong": "giu", "lyDo": "hs6=630630, fact=cho_du_thuyen_xuong_nho_tau_danh_ca_hoac_van_luot: trich từ nhom6306.nhom dòng 12 '(2) Buồm cho tàu thuyền (cho du thuyền, xuồng nhỏ, tàu đánh cá hoặc các loại tàu thuyền khác, cho ván lướt hoặc ván lướt cát)'."},
+      {"index": 5, "hanhDong": "giu", "lyDo": "hs6=630640, fact=la_hang_hoa_dung_cho_cam_trai: trich từ wco.630640 verbatim."},
+      {"index": 6, "hanhDong": "giu", "lyDo": "hs6=630690, fact=la_hang_hoa_dung_cho_cam_trai_khac: trich từ wco.630690 verbatim."}
+    ],
+    "dong8": [
+      {"index": 0, "hs": "63061200", "hanhDong": "giu", "lyDo": "tax.63061200 'Từ sợi tổng hợp' verbatim."},
+      {"index": 1, "hs": "63061910", "hanhDong": "giu", "lyDo": "tax.63061910 'Từ sợi dệt thực vật thuộc nhóm 53.05' verbatim."},
+      {"index": 2, "hs": "63061920", "hanhDong": "giu", "lyDo": "tax.63061920 'Từ bông' verbatim."},
+      {"index": 3, "hs": "63061990", "hanhDong": "giu", "lyDo": "tax.63061990 'Loại khác' → wco.630619. OK."},
+      {"index": 4, "hs": "63062200", "hanhDong": "giu", "lyDo": "tax.63062200 'Từ sợi tổng hợp' verbatim."},
+      {"index": 5, "hs": "63062910", "hanhDong": "giu", "lyDo": "tax.63062910 'Từ bông' verbatim."},
+      {"index": 6, "hs": "63062990", "hanhDong": "giu", "lyDo": "tax.63062990 'Loại khác' → wco.630629. OK."},
+      {
+        "index": 7,
+        "hs": "63063000",
+        "hanhDong": "giu",
+        "lyDo": "tax.63063000 'Buồm cho tàu thuyền' verbatim. dieuKien mở rộng với WCO name + paraphrase dòng 12 nhom6306.nhom 'buồm dùng cho du thuyền, xuồng nhỏ, tàu đánh cá hoặc các loại tàu thuyền khác, cho ván lướt hoặc ván lướt cát' — không thêm thông tin mới ngoài nguồn. Chấp nhận."
+      },
+      {"index": 8, "hs": "63064010", "hanhDong": "giu", "lyDo": "tax.63064010 'Từ bông' verbatim."},
+      {"index": 9, "hs": "63064090", "hanhDong": "giu", "lyDo": "tax.63064090 'Loại khác' → wco.630640. OK."},
+      {"index": 10, "hs": "63069010", "hanhDong": "giu", "lyDo": "tax.63069010 'Từ vải không dệt' verbatim."},
+      {"index": 11, "hs": "63069091", "hanhDong": "giu", "lyDo": "tax.63069091 'Từ bông' verbatim."},
+      {"index": 12, "hs": "63069099", "hanhDong": "giu", "lyDo": "tax.63069099 'Loại khác' → wco.630690. OK."}
+    ]
+  }
+}

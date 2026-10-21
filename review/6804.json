@@ -1,0 +1,88 @@
+{
+  "nhom": "6804",
+  "tongMuc": 23,
+  "tongGiu": 22,
+  "tongXoa": 0,
+  "tongSua": 1,
+  "ghiChu": "Soát độc lập toàn bộ 23 mục cùng nguồn tmp/so-tay/nguon/6804.txt. Phát hiện 1 mục cần sửa: THIẾU phanBiet cho loaiTru (f) Mũi khoan vành có cạnh cắt có răng → 82.07, không → 6804. Có 1 mục cần người duyệt xem xét riêng (dieuKienVao[0] 'khong_co_khung' phạm rộng cả nhóm, source cụ thể nói về đá mài cho kho thóc/bột giấy).",
+  "ketQuaChiTiet": {
+    "phamVi": {
+      "hanhDong": "giu",
+      "lyDo": "trich từ nhom6804.nhom dòng 4-26 nguyên văn, lược giữa (1) và (3), giữa (3) và (4). Đoạn lược chứa (2) ('Đá mài dùng để mài dao...') — không có ngoại lệ. Note: lược mục (2) — vẫn khớp với tóm tắt 'Chủ yếu gồm'."
+    },
+    "dieuKienVao": [
+      {
+        "index": 0,
+        "hanhDong": "giu",
+        "lyDo": "Cần NGƯỜI DUYỆT xem xét (PR đã cờ). dieuKienVao 'khong_co_khung=true': trich 'chúng cũng có thể được gắn trên các trục, cọc sợi, nhưng chúng phải không có khung.' (dòng 34). Đại từ 'chúng' tham chiếu 'Các loại đá mài của nhóm này, và đặc biệt các loại đá dùng cho kho thóc hoặc cho bột giấy'. Mệnh đề rộng 'các loại đá mài của nhóm' đúng cho cả nhóm; 'đặc biệt các loại ... kho thóc/bột giấy' chỉ subset. Đặt điều kiện 'không có khung' cho CẢ nhóm 6804 có thể quá rộng nếu có sản phẩm đá mài có khung không vận hành điện cũng thuộc 6804 (theo (3) của nguồn). Nhưng nguồn nói 6804 'bao gồm' loại không khung và (e) loại trừ loại 'có khung' (vận hành tay/điện) — tức 6804 thực chất là 'không có khung' theo nghĩa loại trừ. Trich nguyên văn và khẳng định đúng. Giữ theo kỷ luật 'soát độc lập không xoá nếu trich có thật và đúng nghĩa'."
+      },
+      {
+        "index": 1,
+        "hanhDong": "giu",
+        "lyDo": "vat_lieu_moi_la_da_tu_nhien_hoac_vat_lieu_mai_ket_khoi_hoac_gom: trich từ dòng 28 'Đá mài, đá mài dạng hình tròn, v.v, phải được làm chủ yếu bằng đá tự nhiên, được hoặc chưa kết khối ... bằng các vật liệu mài nhân tạo hoặc tự nhiên đã được kết khối ... hoặc bằng gốm (bằng đất nung hoặc đất chịu lửa hoặc bằng sứ).' Trich lược hai ngoặc '(ví dụ đá cát kết, đá granite...)' và '(ví dụ, đá nhám, đá bọt...)' — không chứa ngoại lệ. fact nối hai thành phần thành phép OR — đúng theo ý nghĩa 'hoặc' trong nguồn."
+      }
+    ],
+    "loaiTru": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "(a) Đá bọt thơm 33.04: trich từ dòng 42 nguyên văn. Đích danh."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "Hạt mài 68.05: trich từ dòng 44 'Hạt hoặc bột mài tự nhiên hoặc nhân tạo được phủ lên các vật liệu dệt, giấy, bìa cứng hoặc các vật liệu khác (nhóm 68.05)' nguyên văn. Lưu ý: dòng (b) trong nguồn có thêm câu tiếp '...được dán thêm lên trên các vật đỡ như đĩa hoặc dải gỗ mỏng (dũa mài dùng trong ngành công nghiệp...)' nhưng trich đã dừng tại '(nhóm 68.05)' để giữ trich ngắn. Không có ngoại lệ trong đoạn dùng."},
+      {"index": 2, "hanhDong": "giu", "lyDo": "(c) Đầu mũi khoan nha khoa 90.18: trich từ dòng 46 nguyên văn."},
+      {"index": 3, "hanhDong": "giu", "lyDo": "Cưa có răng cắt 82.02: trich từ dòng 18 'Do vậy, các loại cưa có răng cắt được phủ vật liệu mài vẫn được xếp vào nhóm 82.02.' nguyên văn."},
+      {
+        "index": 4,
+        "hanhDong": "giu",
+        "lyDo": "Đá mài có khung 82.05: trich từ dòng 36 nguyên văn 'Đá mài có khung được phân loại vào nhóm 82.05 nếu được vận hành bằng tay hoặc bàn đạp hoặc vào Chương 84 hoặc Chương 85 nếu được vận hành bằng điện.' Trich gồm cả ba nhánh (82.05 / Ch.84 / Ch.85) — dieuKien 'Đá mài có khung được vận hành bằng tay hoặc bàn đạp' chỉ rõ nhánh 82.05. HAI nhánh kia (Ch.84/Ch.85) không được liệt kê trong loaiTru vì không có mã cụ thể (luật 3). Ghi nhận đây là giới hạn của cấu trúc sổ tay với nguồn có cấu trúc OR ba nhánh."
+      },
+      {
+        "index": 5,
+        "hanhDong": "giu-phao-tin",
+        "lyDo": "Mũi khoan vành 82.07: trich từ dòng 18 đoạn 'Tương tự, các mũi khoan vành khi được dùng để cắt các loại đĩa từ các tấm thủy tinh, thạch anh, v.v được xếp vào nhóm này nếu cạnh cắt nhẵn trừ chất phủ vật liệu mài, nhưng được xếp vào nhóm 82.07 nếu cạnh cắt có răng (có hoặc không được phù vật liệu mài).' — trich giữ nguyên văn cả 'được phù' (lỗi chính tả gốc). Đích danh."
+      }
+    ],
+    "phanBiet": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "Cưa 82.02 — câu hỏi mở, đúng chiều."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "Đầu nha khoa 90.18 — OK."},
+      {"index": 2, "hanhDong": "giu", "lyDo": "Hạt mài 68.05 — OK."},
+      {"index": 3, "hanhDong": "giu", "lyDo": "Đá bọt 33.04 — OK."},
+      {
+        "index": 4,
+        "hanhDong": "them-moi",
+        "lyDo": "THÊM phanBiet cho loaiTru (f) Mũi khoan vành có cạnh cắt có răng. Trich từ dòng 18: 'cạnh cắt nhẵn trừ chất phủ vật liệu mài' → 6804, 'cạnh cắt có răng (có hoặc không được phù vật liệu mài)' → 82.07. Hai nhánh loại trừ cạnh tranh nhau (mutually exclusive: có răng vs không có răng) → có thể hỏi Có/Không hợp lệ. Không phải trường hợp multi-branch như (e) vì chỉ một ranh giới. Câu hỏi đề xuất: 'Là mũi khoan vành có cạnh cắt có răng (có hoặc không có phủ vật liệu mài)?' neuCo=8207, neuKhong=6804.",
+        "sua": {
+          "insertAt": 4,
+          "newItem": {
+            "hoi": "Là mũi khoan vành có cạnh cắt có răng (có hoặc không có phủ vật liệu mài)?",
+            "neuCo": "8207",
+            "neuKhong": "6804",
+            "nguon": "nhom6804.nhom",
+            "trich": "Tương tự, các mũi khoan vành khi được dùng để cắt các loại đĩa từ các tấm thủy tinh, thạch anh, v.v được xếp vào nhóm này nếu cạnh cắt nhẵn trừ chất phủ vật liệu mài, nhưng được xếp vào nhóm 82.07 nếu cạnh cắt có răng (có hoặc không được phù vật liệu mài)."
+          }
+        }
+      }
+    ],
+    "phanBiet_OMIT": [
+      {
+        "muc": "loaiTru (e) Đá mài có khung 82.05",
+        "lyDo": "Trich có BA nhánh (82.05 / Ch.84 / Ch.85) theo phương thức vận hành. Hỏi 'Là đá mài có khung vận hành bằng tay?' → không nhưng là vận hành điện → nhánh không → 6804 SAI (thực tế vào Ch.84/Ch.85). Bỏ phanBiet vì nhánh 'không' không xác định được — chính đáng như PR đã cờ."
+      }
+    ],
+    "tieuChi6": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "hs6=680410, fact=dung_de_giam_kich_co_hat: trich từ chú giải chi tiết nhom6804.nhom dòng 52 'Phân nhóm 6804.10 Các sản phẩm trong phân nhóm này được thiết kế dùng giảm kích cỡ hạt của các vật liệu như hạt, bột, bột màu, v.v chứ không dùng để đẽo, mài bóng, mài sắc, giũa hoặc bóc tách vật liệu khác.' Lưu ý: trich có '... không dùng để đẽo, mài bóng, mài sắc, giũa hoặc bóc tách vật liệu khác' — phủ định chứa các hành động bị loại. Đây là rào (constraint), nhưng fact chỉ tách phần đầu fact dương. Không thêm thông tin mới."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "hs6=680421, fact=bang_kim_cuong_da_ket_khoi: trich từ wco.680421 verbatim."},
+      {"index": 2, "hanhDong": "giu", "lyDo": "hs6=680422, fact=bang_vat_lieu_mai_da_ket_khoi_khac_hoac_bang_gom: trich từ wco.680422 verbatim."},
+      {"index": 3, "hanhDong": "giu", "lyDo": "hs6=680423, fact=bang_da_tu_nhien: trich từ wco.680423 verbatim."},
+      {"index": 4, "hanhDong": "giu", "lyDo": "hs6=680430, fact=da_mai_hoac_da_danh_bong_bang_tay: trich từ wco.680430 verbatim."}
+    ],
+    "dong8": [
+      {
+        "index": 0,
+        "hs": "68041000",
+        "hanhDong": "giu",
+        "lyDo": "tax.68041000 'Đá nghiền (thớt cối xay) và đá mài để nghiền, mài hoặc xay thành bột' verbatim. dieuKien mở rộng với chú thích từ nhom6804.nhom dòng 52 (chú giải chi tiết phân nhóm) — paraphrase 'dùng giảm kích cỡ hạt của các vật liệu như hạt, bột, bột màu'. Không thêm gì ngoài nguồn."
+      },
+      {"index": 1, "hs": "68042100", "hanhDong": "giu", "lyDo": "tax.68042100 'Bằng kim cương tự nhiên hoặc kim cương nhân tạo đã được kết khối' verbatim."},
+      {"index": 2, "hs": "68042200", "hanhDong": "giu", "lyDo": "tax.68042200 'Bằng vật liệu mài đã được kết khối hoặc bằng gốm khác' verbatim."},
+      {"index": 3, "hs": "68042300", "hanhDong": "giu", "lyDo": "tax.68042300 'Bằng đá tự nhiên' verbatim."},
+      {"index": 4, "hs": "68043000", "hanhDong": "giu", "lyDo": "tax.68043000 'Đá mài hoặc đá đánh bóng bằng tay' verbatim."}
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "nhom": "7615",
+  "tongMuc": 19,
+  "tongGiu": 19,
+  "tongXoa": 0,
+  "tongSua": 0,
+  "ghiChu": "Soát độc lập toàn bộ 19 mục cùng nguồn tmp/so-tay/nguon/7615.txt. Tất cả khớp nguyên văn. Không mục nào cần xoá hay sửa. Có 2 mục cần người duyệt xem xét riêng (dieuKienVao cấp chương; loaiTru (f) ghi 8509|8516 trong khi trich còn nói 'Chương 85').",
+  "ketQuaChiTiet": {
+    "phamVi": {
+      "hanhDong": "giu",
+      "lyDo": "trich từ nhom7615.nhom dòng 4 nguyên văn, lược giữa 'đồ dùng nhà bếp' và 'Nhóm này cũng bao gồm' bằng '…'. Đoạn lược ('các sản phẩm sử dụng trong vệ sinh và toilet được mô tả trong các nhóm đó') không chứa ngoại lệ."
+    },
+    "dieuKienVao": [
+      {
+        "index": 0,
+        "hanhDong": "giu",
+        "lyDo": "Cần NGƯỜI DUYỆT xem xét (PR đã cờ). dieuKienVao 'bang_nhom_hoac_hop_kim_nhom=true' lấy từ ch76.chuong dòng 55 'Chương này bao gồm nhôm và hợp kim nhôm và các sản phẩm bằng nhôm.' — câu TỔNG QUÁT của cả chương 76, không phải câu riêng của nhóm 7615. Về nghĩa vẫn đúng cho 7615 (vì 7615 thuộc Ch.76), nhưng là suy luận từ phạm vi chương. Trich nguyên văn. Theo kỷ luật 'soát độc lập' không xoá nếu trich có thật và khẳng định đúng. Giữ."
+      }
+    ],
+    "loaiTru": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "(a) Can, hộp 76.12: trich nguyên văn từ nhom7615.nhom dòng 8. Đích danh."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "(d) Đồ trang trí 83.06: trich từ dòng 14 nguyên văn."},
+      {"index": 2, "hanhDong": "giu", "lyDo": "(e) Thiết bị đun nước 84.19: trich từ dòng 16 nguyên văn."},
+      {
+        "index": 3,
+        "hanhDong": "giu",
+        "lyDo": "Cần NGƯỜI DUYỆT xem xét. (f) sangNhom=8509|8516: trich từ dòng 18 có 'Chương 85' chung VÀ 85.09/85.16 cụ thể trong ngoặc 'Cụ thể là'. Theo luật 3, dải/Chương không phải đích danh; nhưng cụ thể 85.09 và 85.16 IS đích danh (vì 'Cụ thể là'). Vì trich chỉ rõ hai nhóm này và loại trừ chỉ đến Ch.85 chung, sangNhom='8509|8516' dưới báo cáo — chấp nhận được nhưng KHÔNG bắt được nhánh thiết bị điện gia dụng khác Ch.85. Giữ theo nguyên tắc 'không sửa câu nguồn/mã để lách'."
+      },
+      {"index": 4, "hanhDong": "giu", "lyDo": "(h) Bật lửa 96.13: trich từ dòng 22 nguyên văn."},
+      {"index": 5, "hanhDong": "giu", "lyDo": "(ij) Phích 96.17: trich từ dòng 24 nguyên văn. Lưu ý: mã gốc trong nguồn viết 'ij' (không phải '(i)' hay '(j)') — giữ nguyên lỗi chính tả theo luật 7."}
+    ],
+    "loaiTru_OMIT": [
+      {"muc": "(b) Đồ gia dụng đặc tính dụng cụ (Chương 82)", "lyDo": "Trich chỉ nói 'Chương 82' không có mã cụ thể → bỏ theo luật 3."},
+      {"muc": "(c) Dao kéo... thuộc nhóm 82.11 đến 82.15", "lyDo": "Dải 'từ X đến Y' → bỏ theo luật 3."},
+      {"muc": "(g) Hàng hóa thuộc Chương 94", "lyDo": "Chỉ 'Chương 94' → bỏ theo luật 3."}
+    ],
+    "phanBiet": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "Phân biệt can/hộp 76.12 vs 76.15 — câu hỏi mở, đúng chiều."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "Phân biệt đồ trang trí 83.06 vs 76.15 — OK."},
+      {"index": 2, "hanhDong": "giu", "lyDo": "Phân biệt thiết bị 84.19 — OK."},
+      {"index": 3, "hanhDong": "giu", "lyDo": "Phân biệt bật lửa 96.13 — OK."},
+      {"index": 4, "hanhDong": "giu", "lyDo": "Phân biệt phích 96.17 — OK."}
+    ],
+    "phanBiet_OMIT": [
+      {"muc": "(f) điện gia dụng 85.09|85.16", "lyDo": "Trich có cả 'Chương 85' (chung) và 85.09/85.16 (cụ thể). Nếu hỏi 'Là nhóm 85.09 hoặc 85.16?' → không → 7615 sai khi đáp án là điện gia dụng ở nhóm 85.xx khác. Bỏ phanBiet — chính đáng."},
+      {"muc": "(b/c/g) đã bỏ loaiTru", "lyDo": "Luật 4: mã ngoài nhóm phải có trong câu trích. Nếu đã bỏ loaiTru thì không có mã hợp lệ để đặt phanBiet."}
+    ],
+    "tieuChi6": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "hs6=761510, fact=do_dung_bep_va_gia_dung_khac_va_phu_kien: trich từ wco.761510 verbatim."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "hs6=761520, fact=do_ve_sinh_va_phu_kien: trich từ wco.761520 verbatim."}
+    ],
+    "dong8": [
+      {"index": 0, "hs": "76151010", "hanhDong": "giu", "lyDo": "tax.76151010 'Miếng cọ nồi và cọ rửa hoặc đánh bóng, găng tay và các loại tương tự' verbatim. dieuKien lặp lại tên WCO + paraphrase — accepted."},
+      {"index": 1, "hs": "76151090", "hanhDong": "giu", "lyDo": "tax.76151090 'Loại khác' → wco.761510. dieuKien paraphrase tên WCO, phần 'trừ 76151010' diễn đạt 'Loại khác' — OK."},
+      {"index": 2, "hs": "76152020", "hanhDong": "giu", "lyDo": "tax.76152020 'Bô để giường bệnh, bô đi tiểu hoặc bô để phòng ngủ' verbatim."},
+      {"index": 3, "hs": "76152090", "hanhDong": "giu", "lyDo": "tax.76152090 'Loại khác' → wco.761520. OK."}
+    ]
+  }
+}
