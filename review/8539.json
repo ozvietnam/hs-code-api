@@ -1,0 +1,20 @@
+{
+ "nhom": "8539",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-21T12:10:30+07:00",
+ "daKiem": 88,
+ "xoa": 0,
+ "sua": 0,
+ "ghiChu": "Audit 8539: 1 phamVi + 1 dieuKienVao + 9 loaiTru + 7 phanBiet + 18 tieuChi6 + 39 dong8 + 1 boPhan + 1 cay (50 nút + 6 tenDien). ĐÂY LÀ NHÓM CHẤT LƯỢNG CAO — đã có đầy đủ phanBiet (7 mục phân biệt với các nhóm 70.11, 85.33, 85.36, 85.40, 85.41, 85.43, 85.45 và phân biệt 85395.10 LED module vs 85395.20 LED lamp), 6 cay.tenDien điền tên nút ảo (85392/85393/85395/853910/853952/853990). Đã kiểm chéo từng trich với nguồn nhom8539.nhom (dòng 4-78), ch85.chuong, phan85.phan, sen.85393130, wco.<6số>, tax.<8số> — tất cả đều khớp nguyên văn. Không phát hiện lỗi nào trong audit độc lập.",
+ "thayDoi": [],
+ "canhBaoKhongSuaTrongAudit": [
+  {
+   "loai": "dieuKienVao chỉ có 1 mục",
+   "lyDo": "JSON 8539 chỉ có 1 dieuKienVao (chứa bộ phận biến đổi năng lượng điện thành ánh sáng) - đây là điều kiện cốt lõi của nhóm theo nguồn nhom8539.nhom. Đầy đủ."
+  },
+  {
+   "loai": "Trich dài 300-600 ký tự trong dong8",
+   "lyDo": "Một số mục dong8 có trich dài (đặc biệt dòng 8539223x tổng hợp nhiều dòng) - copy nguyên tên biểu thuế cho đầy đủ, không có dấu hiệu cắt né câu rào. Chấp nhận."
+  }
+ ]
+}
