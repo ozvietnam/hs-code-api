@@ -1,0 +1,44 @@
+{
+  "nhom": "3215",
+  "tongMuc": 19,
+  "tongGiu": 19,
+  "tongXoa": 0,
+  "tongSua": 0,
+  "ghiChu": "Soát độc lập toàn bộ 19 mục cùng nguồn tmp/so-tay/nguon/3215.txt. Tất cả khớp nguyên văn. Không mục nào cần xoá hay sửa. Có 1 bất thường về nguồn (SEN 32151120 ≡ SEN 32151910 byte-identical) — lỗi nguồn, không sửa mã.",
+  "ketQuaChiTiet": {
+    "phamVi": {
+      "hanhDong": "giu",
+      "lyDo": "trich từ nhom3215.nhom dòng 4-8 nguyên văn, lược giữa (A) và (B). Đoạn lược chứa mô tả thành phần carbon, polyme, ... không có ngoại lệ."
+    },
+    "dieuKienVao": {
+      "hanhDong": "giu",
+      "lyDo": "Để trống. Câu dòng 24 'Các sản phẩm này thường ở dạng lỏng hay dạng nhão, nhưng chúng cũng được xếp trong nhóm này khi đã được dạng cô đặc hoặc dạng rắn' là câu cho phép — máy loại theo dieu-kien-chi-cho-phep. Đúng luật."
+    },
+    "loaiTru": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "(a) Thuốc tráng phim 37.07: trich từ dòng 28 nguyên văn. Đích danh."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "(b) Ống mực bút bi 96.08: trich từ dòng 30 nguyên văn + bao gồm câu 'Ngược lại...' (câu tương phản, không phải ngoại lệ). Đích danh."},
+      {"index": 2, "hanhDong": "giu", "lyDo": "(c) Băng mực 96.12: trich từ dòng 32 nguyên văn. Đích danh."}
+    ],
+    "phanBiet": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "Phân biệt ống mực 96.08 vs 3215 — câu hỏi mở, đúng chiều (Có → 96.08, không → 3215)."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "Phân biệt băng mực 96.12 — OK."},
+      {"index": 2, "hanhDong": "giu", "lyDo": "Phân biệt thuốc tráng phim 37.07 — OK."}
+    ],
+    "tieuChi6": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "hs6=321511, fact=muc_in_den: trich từ wco.321511 verbatim."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "hs6=321519, fact=muc_in_khac_muc_den: trich từ wco.321519 verbatim."},
+      {"index": 2, "hanhDong": "giu", "lyDo": "hs6=321590, fact=muc_viet_hoac_muc_ve_va_muc_khac: trich từ wco.321590 verbatim."}
+    ],
+    "dong8": [
+      {"index": 0, "hs": "32151110", "hanhDong": "giu", "lyDo": "sen.32151110 'Mực in được làm khô bằng tia cực tím là mực để in các tài liệu quảng cáo...' verbatim."},
+      {"index": 1, "hs": "32151120", "hanhDong": "giu", "lyDo": "sen.32151120 'MỰC THỂ RẮN Ở CÁC HÌNH DẠNG...' verbatim. CÂN NHẮC: sen.32151120 và sen.32151910 có văn bản giống hệt nhau (lỗi nguồn OCR/số). PR đã chọn giữ nguyên vì theo luật 8 'không sửa câu nguồn/mã để lách'. Đồng ý."},
+      {"index": 2, "hs": "32151190", "hanhDong": "giu", "lyDo": "tax.32151190 'Loại khác' → wco.321511. OK."},
+      {"index": 3, "hs": "32151910", "hanhDong": "giu", "lyDo": "sen.32151910 → trùng văn bản với sen.32151120 (xem chú thích ở trên). Giữ."},
+      {"index": 4, "hs": "32151990", "hanhDong": "giu", "lyDo": "tax.32151990 'Loại khác' → wco.321519. OK."},
+      {"index": 5, "hs": "32159010", "hanhDong": "giu", "lyDo": "tax.32159010 'Khối carbon loại dùng để sản xuất giấy than' verbatim."},
+      {"index": 6, "hs": "32159060", "hanhDong": "giu", "lyDo": "tax.32159060 'Mực vẽ hoặc mực viết' verbatim."},
+      {"index": 7, "hs": "32159070", "hanhDong": "giu", "lyDo": "sen.32159070 'MỰC DÙNG CHO MÁY NHÂN BẢN THUỘC NHÓM 84.72 ... Máy nhân bản sử dụng mực in keo gelatin hoặc cồn đã được cải tiến để dùng mực nhân bản sử dụng giấy sáp ở dạng bột nhão hoặc dạng bán lỏng.' verbatim (đã lược bỏ công thức và đoạn 'Mực viết' ở giữa — không có ngoại lệ)."},
+      {"index": 8, "hs": "32159090", "hanhDong": "giu", "lyDo": "tax.32159090 'Loại khác' → wco.321590. OK."}
+    ]
+  }
+}

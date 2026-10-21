@@ -1,0 +1,44 @@
+{
+  "nhom": "9609",
+  "tongMuc": 19,
+  "tongGiu": 19,
+  "tongXoa": 0,
+  "tongSua": 0,
+  "ghiChu": "Soát độc lập toàn bộ 19 mục cùng nguồn tmp/so-tay/nguon/9609.txt. Tất cả khớp nguyên văn. Không mục nào cần xoá hay sửa.",
+  "ketQuaChiTiet": {
+    "phamVi": {
+      "hanhDong": "giu",
+      "lyDo": "trich lấy nguyên văn từ nhom9609.nhom dòng 4-8 (hai loại (A)(B)); lược bằng '…' giữa (A) và (B) — không có ngoại lệ ('trừ/tuy nhiên/với điều kiện/không kể')."
+    },
+    "dieuKienVao": {
+      "hanhDong": "giu",
+      "lyDo": "Để trống. Câu 'Các sản phẩm này thường ở dạng lỏng hay dạng nhão, nhưng chúng cũng được xếp trong nhóm này khi đã được dạng cô đặc hoặc dạng rắn' mang tính cho phép — máy loại theo dieu-kien-chi-cho-phep. Quyết định đúng luật."
+    },
+    "loaiTru": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "(a) Phấn dạng thô → 2509: trich nguyên văn từ nhom9609.nhom dòng 38. Đích danh."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "(b) Bút chì y tế → 3004: trich nguyên văn từ dòng 40. Đích danh."},
+      {"index": 2, "hanhDong": "giu", "lyDo": "(c) Bút chì trang điểm → 3304|3307: trich nguyên văn từ dòng 42. Cả hai số trong trich."},
+      {"index": 3, "hanhDong": "giu", "lyDo": "(d) Phấn bi-a → 9504: trich nguyên văn từ dòng 44. Đích danh."}
+    ],
+    "phanBiet": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "Câu hỏi mở 'Là phấn dạng thô?' — không nhắc mã phân nhóm hay WCO. Nhánh Có/Không đúng chiều (Có → 2509, không → 9609)."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "Tương tự cho 3004."},
+      {"index": 2, "hanhDong": "giu", "lyDo": "Tương tự cho 3304|3307."},
+      {"index": 3, "hanhDong": "giu", "lyDo": "Tương tự cho 9504."}
+    ],
+    "tieuChi6": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "hs6=960910, fact=but_chi_co_thanh_chi_o_trong_vo: trich từ wco.960910 verbatim."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "hs6=960920, fact=ruot_chi_den_hoac_mau: trich từ wco.960920 verbatim."},
+      {"index": 2, "hanhDong": "giu", "lyDo": "hs6=960990, fact=phan_ve_phan_pham_mau_phan_tho_nghe: trich từ wco.960990 verbatim."}
+    ],
+    "dong8": [
+      {"index": 0, "hs": "96091010", "hanhDong": "giu", "lyDo": "tax.96091010 'Bút chì đen' verbatim."},
+      {"index": 1, "hs": "96091090", "hanhDong": "giu", "lyDo": "tax.96091090 'Loại khác' → dùng wco.960910 làm nguồn là đúng. dieuKien tổng hợp WCO name + loại trừ 96091010 — accepted as paraphrase."},
+      {"index": 2, "hs": "96092000", "hanhDong": "giu", "lyDo": "tax.96092000 'Ruột chì, đen hoặc màu' verbatim."},
+      {"index": 3, "hs": "96099010", "hanhDong": "giu", "lyDo": "tax.96099010 'Bút chì bằng đá phiến (slate) dùng trong trường học' verbatim. Nguồn mâu thuẫn (ch68.chuong loại trừ 96.09 làm bằng đá phiến nhưng tax.96099010 chính là bút chì đá phiến) — PR đã chọn KHÔNG tạo loaiTru/phanBiet về phía mâu thuẫn; giữ chỉ ghi dong8 verbatim biểu thuế. Hợp lý theo luật 'Nguồn tự mâu thuẫn → bỏ cả hai phía'."},
+      {"index": 4, "hs": "96099030", "hanhDong": "giu", "lyDo": "tax.96099030 'Bút chì và bút màu khác trừ loại thuộc phân nhóm 9609.10' verbatim."},
+      {"index": 5, "hs": "96099091", "hanhDong": "giu", "lyDo": "tax.96099091 'Phấn vẽ hoặc phấn viết' verbatim."},
+      {"index": 6, "hs": "96099099", "hanhDong": "giu", "lyDo": "tax.96099099 'Loại khác' → wco.960990 làm nguồn. OK."}
+    ]
+  }
+}
