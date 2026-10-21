@@ -1,0 +1,14 @@
+[
+ {
+  "truong": "dieuKienVao",
+  "index": 0,
+  "hanhDong": "xoa",
+  "lyDo": "Mục gộp 3 phạm trù 'tấm trải sàn|tấm phủ tường|phủ trần' vào một fact 'loai_tam_phu_bang_plastic' dù chúng đến từ hai phạm vi riêng biệt của nhóm (Phần đầu + Phần thứ hai theo Chú giải 9 Chương 39). Quan trọng hơn: trich có ngoại lệ 'kể cả loại có lớp bồi bằng vật liệu dệt' — fact không phản ánh ngoại lệ này, tạo mục mờ má. Brief giao: mục mờ má → XOÁ."
+ },
+ {
+  "truong": "dieuKienVao",
+  "index": 1,
+  "hanhDong": "xoa",
+  "lyDo": "Điều kiện 'chều rộng từ 45 cm trở lên, thích hợp cho việc trang trí tường hoặc trần' (Chú giải 9 Chương 39) chỉ áp dụng cho SUBSET 'tấm phủ tường hoặc phủ trần bằng plastic' của nhóm 3918, không phải điều kiện vào CẢ nhóm 4 số (3918 còn bao gồm cả tấm trải sàn bằng plastic — phần đầu của nhóm — không yêu cầu chiều rộng ≥45cm). fact 'chieu_rong_tam_phu_tuong_hoac_phu_tran' có tên gọi riêng cho subset, đặt làm dieuKienVao cả nhóm sẽ áp nhầm điều kiện cho tất cả sản phẩm 3918. Mục mờ má → XOÁ."
+ }
+]
