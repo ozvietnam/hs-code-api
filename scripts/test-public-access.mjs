@@ -71,7 +71,7 @@ for (const endpoint of ['suggest', 'describe', 'classify', 'match', 'feedback'])
 for (const endpoint of ['tax', 'search', 'notes', 'kg_chapter', 'customs-types']) {
   assert(`MỞ: /api/${endpoint}`, isPublicRead({ endpoint, method: 'GET' }) === true);
 }
-for (const resource of ['kg_stats', 'chapters', 'conflicts', 'precedents', 'wco_opinions', 'hs_tree', 'ministries', 'legal_docs', 'products', 'accuracy', 'data_quality']) {
+for (const resource of ['kg_stats', 'chapters', 'conflicts', 'precedents', 'wco_opinions', 'hs_tree', 'ministries', 'legal_docs', 'products', 'accuracy', 'data_quality', 'declaration_fields', 'chapter_declaration_fields']) {
   assert(`MỞ: dataset?resource=${resource}`, isPublicRead({ endpoint: 'dataset', resource, method: 'GET' }) === true);
 }
 
@@ -140,8 +140,8 @@ for (const bad of [undefined, {}, { endpoint: null }, { endpoint: 'tax', method:
 // --- Bất biến: allowlist không được rỗng, cũng không được phình bất thường ----
 assert('có ít nhất 5 endpoint mở', PUBLIC_ENDPOINTS.size >= 5, PUBLIC_ENDPOINTS.size);
 assert(
-  'allowlist dataset không vượt 20 resource (phình = dấu hiệu mở ẩu)',
-  PUBLIC_DATASET_RESOURCES.size <= 20,
+  'allowlist dataset không vượt 21 resource (phình = dấu hiệu mở ẩu)',
+  PUBLIC_DATASET_RESOURCES.size <= 21,
   PUBLIC_DATASET_RESOURCES.size,
 );
 
