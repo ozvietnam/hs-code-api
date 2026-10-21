@@ -1,0 +1,21 @@
+{
+ "nhom": "8213",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-21T21:50:00+07:00",
+ "daKiem": 4,
+ "xoa": 0,
+ "sua": 1,
+ "ghiChu": "Audit 8213: 1 phamVi + 0 dieuKienVao + 2 loaiTru + 0 phanBiet + 0 boPhan + 0 tieuChi6 + 1 dong8 = 4 mục. Nhóm nhỏ (1 heading 8 số duy nhất, không có phân nhóm 6 số). Kiểm chéo với [nhom8213.nhom], [wco.821300], [tax.82130000]. SỬA 1: phamVi. text đề cập 2 nội dung không có trong trich: (i) 'kéo khớp nối tại điểm nút chỉ có một vòng xỏ (chủ yếu công nghiệp dệt)' từ line 6, (ii) 'Lưỡi kéo, đã hoặc chưa hoàn chỉnh, đều thuộc nhóm này' từ line 20. Trich hiện chỉ lấy line 4 (định nghĩa 2 lưỡi chồng). Phân tích vị trí lược: line 4 → line 6 chỉ có dòng trống; line 6 → line 20 chứa enumeration (1)-(5) và 'Nhóm này không bao gồm:' ở line 22 (NGOẠI LỆ) — không thể lược gọn từ line 6 → line 20 mà KHÔNG chứa loại trừ theo luật 11. Hai cách khả thi: (A) bỏ phần text bị thừa (kéo khớp nối + lưỡi kéo); (B) mở rộng trich ghép line 4 + line 6 + line 20 với 2 '…' ở giữa. Chọn (B) vì 2 ý 'khớp nối điểm nút 1 vòng xỏ' + 'lưỡi kéo đã/chưa hoàn chỉnh' là đặc trưng QUAN TRỌNG của 8213. Đếm: ~280 + 1 + ~150 + 1 + ~80 = ~512 chars (≤ 600, đã squash check). KHÔNG sửa khác.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "text mở rộng quá trich. Mở rộng trich bằng cách nối line 4 + '…' + line 6 + '…' + line 20. Đoạn lược thứ nhất (line 4 → line 6) chỉ là dòng trống. Đoạn lược thứ hai (line 6 → line 20) chứa enumeration (1)-(5) trong nguồn; thực tế enumeration này nằm trong các đoạn 'Ngoài những mặt hàng khác, nhóm này bao gồm: (1)...(5)…' và 'Nhóm này bao gồm các lưỡi kéo, đã làm hoàn chỉnh hay chưa hoàn chỉnh.' — không có từ 'trừ/tuy nhiên/với điều kiện/không kể' trong khoảng này nên hợp lệ luật 11.",
+   "sua": {
+    "trich": "Kéo được phân loại trong nhóm này gồm có 2 lưỡi chồng lên nhau đôi khi lưỡi có răng cưa, có khớp trên một đinh vít hoặc trên một chốt gần điểm giữa của kéo.… Nhóm này cũng gồm có các loại kéo có khớp nối tại điểm nút và chỉ có một vòng xỏ ngón tay (được sử dụng chủ yếu trong công nghiệp dệt).… Nhóm này bao gồm các lưỡi kéo, đã làm hoàn chỉnh hay chưa hoàn chỉnh."
+   }
+  }
+ ],
+ "canhBaoKhongSuaTrongAudit": [],
+ "xoa": []
+}

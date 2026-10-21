@@ -1,0 +1,26 @@
+{
+ "nhom": "8548",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-21T21:50:00+07:00",
+ "daKiem": 2,
+ "xoa": 0,
+ "sua": 1,
+ "ghiChu": "Audit 8548: 1 phamVi + 0 loaiTru + 0 phanBiet + 0 boPhan + 0 tieuChi6 + 1 dong8 = 2 mục (rất nhỏ — single-heading 8 số duy nhất 854800, không có phân nhóm 6 số). Kiểm chéo với [nhom8548.nhom], [wco.854800], [tax.85480000]. SỬA 1: phamVi. text đề cập 2 nội dung KHÔNG có trong trich: (i) 'các bộ phận nằm trong nhóm trước của Chương 85 hoặc bị loại trừ theo Chú giải 1 của Phần XVI' — từ line 8 (clause (b)); (ii) 'Nhóm gồm các mặt hàng nhận biết được là bộ phận điện, không phải của máy/thiết bị cụ thể, gắn với nối điện, phần cách điện, cuộn dây, tiếp điểm hoặc yếu tố điện đặc biệt khác' — paraphrase của line 10 'Do đó nhóm này bao gồm các mặt hàng có thể nhận biết được là các bộ phận điện của máy hoặc thiết bị…'. Trich hiện chỉ lấy line 4-6 (clause (a)). Hai lựa chọn: (A) đơn giản text; (B) mở rộng trich. Đếm ghép nguyên văn: ~150 (line 4-6) + 1 + ~110 (line 8) + 1 + ~280 (line 10) = ~542 chars ≤600 — chọn (B) vì 'bộ phận nằm trong nhóm trước' và 'gắn với nối điện, cuộn dây…' là đặc trưng QUAN TRỌNG của nhóm 8548 (là nhóm 'cuối cùng' thu gom bộ phận điện rơi vãi). Đoạn lược từ '(a)' → '(b)' chỉ là dòng trống (line 7). Đoạn lược '(b)' → 'Do đó' chỉ là dòng trống + có thể có 'đo đó' trong 'Do đó' (không phải ngoại lệ theo luật 11 'trừ/tuy nhiên/với điều kiện/không kể'). Đã check squash.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "text mở rộng từ nhiều clause của nhom8548.nhom mà trich chỉ cover (a). Mở rộng trich ghép clause (a) + (b) + đoạn 'Do đó…' = ~542 chars (≤600). Hai đoạn '…' giữa là dòng trống (line 7) và chuyển đoạn (line 9) — không chứa từ ngoại lệ ('trừ', 'tuy nhiên', 'với điều kiện', 'không kể') nên hợp lệ luật 11.",
+   "sua": {
+    "trich": "Nhóm này cũng bao gồm tất cả các bộ phận điện trong máy, hoặc thiết bị trừ:… (b) Các bộ phận nằm trong nhóm trước của Chương này hoặc bị loại trừ theo Chú giải 1 của Phần XVI.… Do đó nhóm này bao gồm các mặt hàng có thể nhận biết được là các bộ phận điện của máy hoặc thiết bị, nhưng không phải là những bộ phận của máy hoặc thiết bị cụ thể, và gắn với nối điện, các phần cách điện, các cuộn dây, các tiếp điểm hoặc các yếu tố điện đặc biệt khác."
+   }
+  }
+ ],
+ "canhBaoKhongSuaTrongAudit": [
+  {
+   "loai": "loaiTru và phanBiet đều rỗng mặc dù nguồn có (a)(b) exclusions",
+   "lyDo": "Theo luật 3, loaiTru chỉ ghi khi nguồn nêu ĐÍCH DANH mã nhóm đích. Hai exclusions (a)(b) đều KHÔNG có mã nhóm đích (chỉ mô tả 'các bộ phận chỉ dùng hoặc chủ yếu dùng với máy/thiết bị cụ thể' và 'các bộ phận nằm trong nhóm trước… hoặc bị loại trừ theo Chú giải 1'). Đây là đặc thù của 8548 (catch-all cho bộ phận điện rơi vãi) — exclusions được diễn đạt theo kiểu 'các bộ phận này không', không thể gán mã. PhanBiet tương tự — không có cặp mã cụ thể để nhắm đến. Giữ rỗng là ĐÚNG theo luật 3."
+  }
+ ],
+ "xoa": []
+}

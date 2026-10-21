@@ -1,0 +1,44 @@
+{
+ "nhom": "8531",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-21T21:50:00+07:00",
+ "daKiem": 29,
+ "xoa": 1,
+ "sua": 1,
+ "ghiChu": "Audit 8531: 1 phamVi + 6 loaiTru + 1 boPhan + 7 tieuChi6 + 14 dong8 = 29 mục. Kiểm chéo với [nhom8531.nhom], [wco.853110/120/180/190], [tax.85311010/.../85319090]. 2 THAY ĐỔI: (1) SỬA phamVi: text mở rộng nội dung 'Tín hiệu tĩnh (đèn, đèn lồng, bảng hiệu phát sáng) không thuộc nhóm này' từ line 6, nhưng trich chỉ lấy line 4. Hai lựa chọn: A) đơn giản text thành chỉ những gì trich cover; B) mở rộng trich. Chọn A vì line 6 dài 280 chars cộng line 4 ~470 chars vượt 600 char limit. Đồng thời đơn giản text 'cho gia dụng/văn phòng/công nghiệp' → bỏ 'công nghiệp' (không có trong nguồn) chỉ giữ 'vận hành bằng tay hoặc tự động' (có trong line 4). (2) XÓA loaiTru[3] 'có hoặc không gắn kèm các đèn chỉ báo đơn giản (nhóm 85.36 hoặc 85.37)' — đã có đầy đủ trong loaiTru[2] '(a) Các bộ đóng ngắt… (nhóm 85.36 hoặc 85.37)'. Cùng pattern lỗi 'splitting' ở 8512 (3 mục pin/ắc quy/dynamo từ 1 đoạn). (3) GỘP loaiTru[0] + [1] thành 1 mục sangNhom '8512|8530' vì câu source 'Trừ A (nhóm 85.12) và B (nhóm 85.30)' bị tách thành 2 mục; mỗi trich đứng riêng không đầy đủ. Phương án an toàn hơn là gộp — pipe sẽ được máy check đầy đủ.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "text mở rộng thêm clause 'tín hiệu tĩnh (đèn, đèn lồng, bảng hiệu phát sáng) không thuộc nhóm này' từ line 6 mà trich không có. Đồng thời text có 'công nghiệp' không có trong nguồn (source line 4 chỉ nói 'sử dụng âm thanh… hoặc những chỉ dẫn có thể nhìn thấy được… vận hành bằng tay… hoặc tự động'). Đơn giản text cho khớp với trich (~470 chars ≤600).",
+   "sua": {
+    "text": "Các thiết bị điện dùng cho mục đích phát tín hiệu (bằng âm thanh hoặc chỉ dẫn có thể nhìn thấy được như chuông, còi, đèn, các con số phát sáng) — vận hành bằng tay hoặc tự động. Trừ thiết bị dùng cho xe đạp/xe có động cơ (8512) và điều khiển giao thông đường bộ/đường sắt (8530)."
+   }
+  },
+  {
+   "index": "loaiTru",
+   "hanhDong": "gop+them",
+   "lyDo": "GỘP loaiTru[0] (đích 8512) và [1] (đích 8530) thành 1 mục sangNhom '8512|8530' vì câu source 'Trừ A (nhóm 85.12) và B (nhóm 85.30)' bị tách; mỗi trich đứng riêng thiếu scope đầy đủ. Thêm mới mục [0] gộp (sangNhom '8512|8530' pipe, trich = cả câu tổng hợp), XÓA [0] cũ 8512 và [1] cũ 8530.",
+   "sua": {
+    "index_new": "loaiTru[0]",
+    "dieuKien": "Thiết bị phát tín hiệu sử dụng trên xe đạp/xe có động cơ + thiết bị dùng cho điều khiển giao thông đường bộ/đường sắt",
+    "sangNhom": "8512|8530",
+    "nguon": "nhom8531.nhom",
+    "trich": "Trừ các thiết bị phát tín hiệu sử dụng trên xe đạp hoặc xe có động cơ (nhóm 85.12) và các thiết bị dùng cho điều khiển giao thông trên đường bộ, đường sắt v.v... (nhóm 85.30)"
+   },
+   "xoa_cu": [
+    {"index": "loaiTru[0]", "sangNhom_old": "8512", "lyDo": "đã gộp sang mục mới"},
+    {"index": "loaiTru[1]", "sangNhom_old": "8530", "lyDo": "đã gộp sang mục mới"}
+   ]
+  },
+  {
+   "index": "loaiTru[3] (sau gộp thành [3])",
+   "hanhDong": "xoa",
+   "lyDo": "Tách từ loaiTru[2] '(a) Các bộ đóng ngắt… (nhóm 85.36 hoặc 85.37)' — đã có sẵn. Trich 'có hoặc không gắn kèm các đèn chỉ báo đơn giản (nhóm 85.36 hoặc 85.37)' thiếu lead-in '(a)'. Cùng pattern lỗi 'splitting' ở 8512 đã fix bằng XÓA."
+  }
+ ],
+ "canhBaoKhongSuaTrongAudit": [],
+ "xoa": [
+  {"index": "loaiTru cũ [3] ('có hoặc không gắn kèm… 8536 hoặc 8537')", "lyDo": "Trùng với loaiTru[2] đã có"}
+ ]
+}

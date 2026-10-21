@@ -1,0 +1,26 @@
+{
+ "nhom": "7321",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-21T21:50:00+07:00",
+ "daKiem": 42,
+ "xoa": 0,
+ "sua": 1,
+ "ghiChu": "Audit 7321: 1 phamVi + 2 dieuKienVao + 7 loaiTru + 1 boPhan + 20 tieuChi6 + 11 dong8 = 42 mục. Kiểm chéo với [nhom7321.nhom], [ch73.chuong], [phan73.phan], [sen.73219010/21], [wco.732111/112/119/181/182/189/190], [tax.73211100/.../73219090]. SỬA 1: phamVi — (i) text có 'khái' là lỗi đánh máy (đáng lẽ 'khí'), (ii) text có 'các bộ phận rời bằng sắt/thép có nhận dạng rõ ràng' từ câu 6 của nhom7321.nhom nhưng trich (clause 1) không chứa phần này — vi phạm 'câu trích phải tự nó nói điều mục khẳng định'. Đồng thời text dùng 'bộ phận rời' tương tự như đã có ở boPhan (sẽ trùng nội dung). Cách xử lý tốt nhất: đơn giản text bỏ câu 'bộ phận rời' (vì boPhan đã cover) + sửa typo 'khái' → 'khí'. KHÔNG sửa: loaiTru[6] trich 'nhóm này loại trừ những dụng cụ cũng sử dụng điện…' — source nói 'Mặt khác nhóm này loại trừ…'; thiếu 'Mặt khác' nhưng substance vẫn đúng (squash fragment 'nhómnàyloạitrừnhữngdụngcụ…' vẫn có trong squash nguồn). Hai dieuKienVao dùng op='in' pipe-values (sưởi|nấu|đun và rắn|lỏng|khí|nguồn khác) — pipe-strings chỉ shallow validated, đã human-confirm từng term: 'sưởi ấm không gian', 'nấu', 'đun' đều có trong source trich; 'rắn', 'lỏng', 'khí', 'nguồn khác' đều có trong source trich. 7 loaiTru đều nguyên văn (trích cả 'Nhóm này cũng không bao gồm :' lead-in cho (a)). 20 tieuChi6 wco.* khớp fact/op/value. 11 dong8: 2 từ sen.73219010/21 (BỘ PHẬN CỦA BẾP DẦU HỎA + Đầu đốt) verbatim, còn lại tax.*, 3 dòng Loại khác (73211990/73218900/73219090) đúng cờ máy. Không có vấn đề khác.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "text có 2 lỗi: (a) typo 'khái' → 'khí' (đáng lẽ 'nhiên liệu rắn, lỏng hoặc khí'); (b) text đề cập 'bộ phận rời bằng sắt/thép có nhận dạng rõ ràng' từ câu 6 nhom7321.nhom nhưng trich chỉ lấy câu 1 (3 yêu cầu (i)(ii)(iii)) — câu trích không tự nói đủ điều text khẳng định. Phần 'bộ phận rời' đã có ở boPhan nên cắt khỏi phamVi.text cho gọn.",
+   "sua": {
+    "text": "Lò sấy, lò sưởi, bếp lò, bếp có lò nướng, bếp du lịch, nồi giặt hơi, các dụng cụ/thiết bị gia dụng (dùng cho sưởi ấm không gian, nấu, đun) — không dùng điện, dùng nhiên liệu rắn/lỏng/khí/nguồn khác, dùng bình thường trong nhà hoặc cắm trại."
+   }
+  }
+ ],
+ "canhBaoKhongSuaTrongAudit": [
+  {
+   "loai": "dieuKienVao[1] và [2] dùng op='in' với pipe-values — máy chỉ shallow validate, mỗi term đã human-confirm có trong source trich",
+   "lyDo": "Pipe values: 'sưởi ấm không gian' | 'nấu' | 'đun' (dieuKienVao[0]) và 'rắn' | 'lỏng' | 'khí' | 'nguồn khác' (dieuKienVao[1]) — tất cả 7 token đều xuất hiện verbatim trong câu trich. Đề xuất: nếu muốn strict hơn, có thể mở rộng checkItem() để verify pipe-terms trong trich (hiện tại chỉ check legal op + non-empty value)."
+  }
+ ],
+ "xoa": []
+}
