@@ -1,0 +1,36 @@
+{
+  "nhom": "5309",
+  "nguoiSoat": "NGUOI_DUYET",
+  "luc": "2026-10-21T21:45:00+07:00",
+  "daKiem": 4,
+  "xoa": 0,
+  "sua": 2,
+  "ghiChu": "Soát độc lập phamVi + dieuKienVao + loaiTru + phanBiet (bỏ qua tieuChi6/dong8/cay theo phạm vi đợt này). Tổng 4 mục: 1 phamVi + 1 dieuKienVao + 1 loaiTru + 1 phanBiet. 2 giữ, 2 sửa, 0 xoá. Cả 4 câu trích đều có thật trong nguồn (đã kiểm từng đoạn theo đúng cách quoteInSource tách trên '…'), nhưng máy KHÔNG bắt được 2 lớp lỗi về nghĩa: (1) phamVi.text khẳng định 'Không gồm băng dùng trong y tế đã tẩm thuốc hay đã đóng gói để bán lẻ' trong khi câu trích chỉ chép 2 đoạn mở đầu, KHÔNG chép câu loại trừ ở dòng 8 — text vượt quá phạm vi trích; (2) phanBiet[0].hoi hỏi về 'lanh và đay chiếm tỷ trọng lớn hơn bông' (tức đã cộng lanh+đay) nhưng câu trích CẮT NGAY trước câu giải thích quy tắc cộng — đúng lớp lỗi 'cắt trích để né câu rào' đã ghi trong _he-thong.txt. Ngưỡng định lượng của nhóm 5309 trong bản nháp là 85% hàm lượng lanh, đã đặt đúng chỗ (tieuChi6/dong8), KHÔNG đẩy nhầm lên dieuKienVao — đã kiểm, không có mục nào vi phạm.",
+  "thayDoi": [
+    {
+      "mang": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Lỗi 1: text khẳng định vế 'Không gồm băng dùng trong y tế đã tẩm thuốc hay đã đóng gói để bán lẻ' nhưng câu trích chỉ chép dòng 4 + dòng 6, không chép câu loại trừ ở dòng 8 → vi phạm luật bài học bước 1 'câu trích phải tự nó nói điều mục khẳng định'. Lỗi 2: trich dài 324 ký tự, vượt trần ≤300 của lược đồ dù máy chỉ chặn 600. Sửa: thay trích bằng câu định nghĩa + câu loại trừ (226 ký tự, cả hai đoạn nguyên văn), đủ để text đứng vững và về dưới 300. Bỏ nhãn '(vải lanh)' khỏi text vì câu trích mới không còn chép câu 'Vải lanh cũng dùng làm…'."
+    },
+    {
+      "mang": "phanBiet",
+      "index": 0,
+      "hanhDong": "sua",
+      "lyDo": "Lỗi cắt trích: trich hiện dừng ở '…(vải dệt thoi từ sợi lanh).' nhưng câu liền sau ngay trong nguồn (phan53.phan) mới là câu giải thích quy tắc: 'Sự phân loại này đạt được bởi việc xác định trước tiên là Chương thích hợp (trong trường hợp này là Chương 53 vì tỷ lệ về sợi lanh và sợi đay được cộng lại)… tỷ lệ bông không được để ý đến theo Chú giải 2 (B) (b) của Phần này.' Hoi hỏi 'lanh và đay chiếm tỷ trọng lớn hơn bông' — tức đã giả định lanh+đay được cộng — nhưng trich cũ không hề nói chuyện cộng ấy, nên hoi đứng không vững. Sửa: kéo thêm mảnh 'tỷ lệ bông không được để ý đến theo Chú giải 2 (B) (b) của Phần này.' vào trich bằng dấu lược. KHÔNG sửa/chọn lọc chữ trong mảnh thêm vào (chép nguyên văn). Chiều phân biệt giữ nguyên: có → 5309, không → 5212; cả hai mã đều được nêu trong trich. Sau sửa trich dài 293 ký tự, vẫn ≤300."
+    }
+  ],
+  "giu": [
+    {
+      "mang": "dieuKienVao",
+      "index": 0,
+      "hanhDong": "giu",
+      "lyDo": "fact=la_vai_det_thoi_lam_tu_soi_lanh, op='=', value=true. Nguồn: 'Nhóm này bao gồm các vải dệt thoi (như đã định nghĩa tại Phần (I) (c) của Chú giải tổng quát Phần XI) được làm từ sợi lanh.' Đây là câu bao hàm DƯỚT ĐÁNH (không phải 'cũng bao gồm…', không phải 'có thể…', không có CAU_CHO_PHEP) và đúng là điều kiện VÀO NHÓM 4 số — không phải ngưỡng của phân nhóm. Ngưỡng 85% hàm lượng lanh KHÔNG bị đẩy nhầm vào đây (đã kiểm). Trich 123 ký tự, nguyên văn, ≤300."
+    },
+    {
+      "mang": "loaiTru",
+      "index": 0,
+      "hanhDong": "giu",
+      "lyDo": "dieuKien='băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ', sangNhom='3005'. Nguồn: 'Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ (nhóm 30.05) bị loại trừ khỏi nhóm này.' — đích danh số nhóm đích (30.05), loại trừ DỨT KHOÁT (không 'thường', không 'tùy trường hợp' nên không dính HEDGE_LOAI_TRU), không mâu thuẫn với phần 'bao gồm' ở đầu chú giải. dieuKien giữ đúng định ngữ 'hay' (hoặc/hoặc) của nguồn. Trich 100 ký tự, nguyên văn."
+    }
+  ]
+}
