@@ -1,0 +1,44 @@
+{
+ "nhom": "6201",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-21T12:06:30+07:00",
+ "daKiem": 27,
+ "xoa": 0,
+ "sua": 3,
+ "ghiChu": "Audit 6201: 1 phamVi + 2 dieuKienVao + 9 loaiTru + 0 phanBiet + 4 tieuChi6 + 11 dong8. Trich đa số đều có nguyên văn từ nguồn tương ứng. Phat hien 3 lỗi tieuChi6 mà máy không bắt: value thêm chi tiết từ biểu thuế (trench coats, gabardines, áo khoác ghi lê có đệm) mà không có trong trich WCO — vi phạm rule §L10 (tieuChi6 lấy từ chú giải/SEN/WCO, không từ tax) và §L08 (value không thêm chữ ngoài trich). PHANBIET RONG []: thiếu case phan biet 62.01 vs 62.02 (ao nam/nu theo chieu cai than truoc) — nguồn ch62.chuong dong 79 noi rõ, không ghi vào JSON. Em GHI NHẬN trong review để người duyệt quyết định, KHONG tu them (ra ngoài scope audit). dieuKienVao #2 (cài thân trước từ trái qua phải → nam) là quy ước phân biệt nam/nữ của cả Chương 62 chứ không phải điều kiện vào riêng 6201; máy không loại; giữ nhưng ghi nhận đây là ranh giới mơ hồ giữa dieuKienVao và phanBiet — đề xuất phanBiet mới sẽ giải quyết triệt để hơn.",
+ "thayDoi": [
+  {
+   "index": "tieuChi6[0]",
+   "hs6": "620120",
+   "hanhDong": "sua",
+   "lyDo": "Value hiện có 'áo khoác mỏng (trench coats), áo khoác gabardines, áo khoác ghi lê có đệm' — 3 chi tiết này CÓ trong tax.62012010 nguồn Việt, nhưng KHÔNG có trong trich WCO 'Coats; men's or boys', overcoats, raincoats, car-coats, capes, cloaks, anoraks (including ski-jackets) and similar articles...'. Vi phạm rule §L10 (tieuChi6 lấy từ chú giải/SEN/WCO, không từ tax) và §L08 (value thêm chữ không có trong trich).",
+   "sua": {
+    "value": "áo khoác ngoài (overcoats), áo mưa (raincoats), áo choàng mặc khi đi xe (car-coats), áo choàng không tay (capes), áo khoác không tay (cloaks), áo khoác có mũ trùm đầu dạng ski (anoraks incl. ski-jackets), các loại áo tương tự, từ lông cừu hoặc lông động vật loại mịn, không dệt kim hoặc móc (trừ loại thuộc nhóm 62.03)"
+   }
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hs6": "620130",
+   "hanhDong": "sua",
+   "lyDo": "Tương tự 620120: value có 'trench coats', 'gabardines', 'áo khoác ghi lê có đệm' từ tax.*, không có trong trich WCO. Chỉ khác WCO 620130 là 'cotton' thay vì 'wool or fine animal hair'.",
+   "sua": {
+    "value": "áo khoác ngoài (overcoats), áo mưa (raincoats), áo choàng mặc khi đi xe (car-coats), áo choàng không tay (capes), áo khoác không tay (cloaks), áo khoác có mũ trùm đầu dạng ski (anoraks incl. ski-jackets), các loại áo tương tự, từ bông, không dệt kim hoặc móc (trừ loại thuộc nhóm 62.03)"
+   }
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hs6": "620140",
+   "hanhDong": "sua",
+   "lyDo": "Tương tự 620120/620130: value có 'trench coats', 'gabardines', 'áo khoác ghi lê có đệm' từ tax.*, không có trong trich WCO. Chỉ khác WCO 620140 là 'man-made fibres'.",
+   "sua": {
+    "value": "áo khoác ngoài (overcoats), áo mưa (raincoats), áo choàng mặc khi đi xe (car-coats), áo choàng không tay (capes), áo khoác không tay (cloaks), áo khoác có mũ trùm đầu dạng ski (anoraks incl. ski-jackets), các loại áo tương tự, từ sợi nhân tạo, không dệt kim hoặc móc (trừ loại thuộc nhóm 62.03)"
+   }
+  }
+ ],
+ "canhBaoKhongSuaTrongAudit": [
+  {
+   "loai": "phanBiet rỗng",
+   "lyDo": "JSON có 'phanBiet: []' - thiếu mục phân biệt 62.01 vs 62.02 theo chiều cài thân trước (trái qua phải vs phải qua trái) - nguồn ch62.chuong dòng 79 ghi rõ 'Quần áo được thiết kế để cài thân trước từ trái qua phải = nam, từ phải qua trái = nữ'. Brief yêu cầu xóa/sửa, không yêu cầu thêm mới; ghi nhận để người duyệt chốt."
+  }
+ ]
+}

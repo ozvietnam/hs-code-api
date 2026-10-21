@@ -1,0 +1,24 @@
+{
+ "nhom": "6204",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-21T12:09:30+07:00",
+ "daKiem": 102,
+ "xoa": 0,
+ "sua": 0,
+ "ghiChu": "Audit 6204: 1 phamVi + 2 dieuKienVao + 11 loaiTru + 0 phanBiet + 49 tieuChi6 + 36 dong8 + 1 boPhan + 1 cay (51 nút). Cấu trúc lớn (~1859 dòng JSON). Trich đa số đều khớp nguồn (nhom6204.nhom, ch62.chuong, phan62.phan, wco.<6số>, tax.<8số>). LUU Y NGUON: nhom6204.nhom ngắn (chỉ liệt kê phân nhóm 6204.5x/6x + 2 câu tổng quát); phan62.phan bị cắt (Lesson 4770: 46130 chars → 25000 chars). Vì vậy phamVi từ nhom6204.nhom — OK; loaiTru + boPhan từ ch62.chuong là chính. tieuChi6 có fact='loai_trang_phuc' value='bộ com-lê'/'váy liền thân'/'áo jacket, áo blazer'/'chân váy, chân váy dạng quần'/'quần dài, quần yếm có dây đeo, quần ống chẽn, quần soóc' — bản dịch VI của WCO 'Suits; women's or girls'', 'Dresses', 'Jackets and blazers', 'Skirts and divided skirts', 'Trousers, bib and brace overalls, breeches and shorts'. Trich vẫn có từ WCO nguyên văn (verified), fact/value là bản dịch — không vi phạm rule §L07/L10 nặng, ghi nhận là chấp nhận được. PHANBIET RONG []: thiếu case phan biet 62.04 vs 62.03 (bộ com-lê/áo jacket/blazer quàn áo NAM vs NU - dựa trên chiều cài thân trước theo ch62.chuong dòng 85) — giống 6201, không tu them (ra ngoài scope audit). cac nút TIEU_DE_QG 6204191/6204391 có tenVi=null không có nguồn đặt tên trong 6204.txt → cay.tenDien rỗng theo rule §L09. dong8 có những mục mang '(SEN)' trong trich ('Được in bằng phương pháp batik truyền thống (SEN)') — đây có thể là tên hàng trong biểu thuế (đã ghi từ trước) kèm ghi chú SEN; tax là nguồn hợp lệ, không lỗi.",
+ "thayDoi": [],
+ "canhBaoKhongSuaTrongAudit": [
+  {
+   "loai": "phanBiet rỗng",
+   "lyDo": "JSON có 'phanBiet: []' - thiếu mục phân biệt 62.04 vs 62.03 (bộ com-lê/áo jacket nữ vs nam) dựa trên chiều cài thân trước - nguồn ch62.chuong dòng 85 ghi rõ. Brief yêu cầu xóa/sửa, không yêu cầu thêm mới; ghi nhận."
+  },
+  {
+   "loai": "tieuChi6 fact/value là bản dịch",
+   "lyDo": "49 mục tieuChi6 dùng trich từ WCO (nguyên văn) nhưng value tiếng Việt là bản dịch — đây là cách diễn đạt song ngữ, không phải 'thêm chữ ngoài trich'. Chấp nhận được theo tinh thần rule (fact/value mang tính khung dữ liệu, không phải text kể chuyện)."
+  },
+  {
+   "loai": "nguon bi cat",
+   "lyDo": "phan62.phan trong 6204.txt bị cắt (Lesson 4770: 46130 chars → 25000 chars). Ảnh hưởng đến độ phủ nguồn của 6204 - chỉ loaiTru[10] (mục da lông 4303|4304) lấy từ phan62.phan, còn lại dùng ch62.chuong. Không phải lỗi JSON; đã được ghi nhận trong PR #368 và báo cáo lo-002.json (nguonBiCat)."
+  }
+ ]
+}
