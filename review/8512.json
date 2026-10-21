@@ -1,0 +1,35 @@
+{
+ "nhom": "8512",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-21T21:50:00+07:00",
+ "daKiem": 32,
+ "xoa": 2,
+ "sua": 1,
+ "ghiChu": "Audit 8512: 1 phamVi + 10 loaiTru + 1 boPhan + 9 tieuChi6 + 11 dong8 = 32 mục. Kiểm chéo với [nhom8512.nhom], [wco.851210/220/230/240/290], [tax.85121000/.../85129020]. 3 THAY ĐỔI: (1) SỬA phamVi: text mở rộng từ line 4+line 6 ('…gạt nước, gạt và chống tạo sương và tuyết trên kính chắn hoạt động bằng điện của xe có động cơ.'), nhưng trich chỉ có clause 1. Mở rộng trich ghép clause 1 + loại trừ pin/ắc quy/dynamo + clause 2 (đoạn lược chứa loại trừ — không thể '…' qua mà vẫn an toàn, nên viết nguyên văn ~ 470 chars ≤ 600 OK). (2) XÓA loaiTru[1] 'ắc quy điện (nhóm 85.07)' — đã có đầy đủ trong [0] 'Tuy nhiên, nhóm không bao gồm pin khô (nhóm 85.06), ắc quy điện (nhóm 85.07) hoặc các dynamo và các dynamo magneto của nhóm 85.11' (trich này chứa cả 3 nhóm đích 8506/8507/8511). (3) XÓA loaiTru[2] 'các dynamo và các dynamo magneto của nhóm 85.11' — cùng lý do, đã có trong [0]. Brief từng flag đây là lỗi 'pin khô / ắc quy / dynamo whose exclusion clause lacks the Nhóm này không bao gồm: lead-in' của vòng trước — xác nhận lỗi, fix bằng XÓA. KHÔNG sửa loaiTru[9] sangNhom '7322|8708' (brief 'candidate for splitting' nhưng source không phân biệt chi tiết, loại 'A hoặc B' này giữ 1 item đúng luật 11 'thà bỏ mục còn hơn không có căn cứ'). 7 loaiTru còn lại [(3)-(9)] đều nguyên văn lead-in. 9 tieuChi6 từ wco.* khớp. 11 dong8 từ tax.* khớp, 2 dòng Loại khác (85122099/85123099). Không có vấn đề khác.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "trich hiện chỉ có clause 1 ('thiết bị điện… phát ánh sáng hoặc phát tín hiệu'), nhưng text mở rộng thêm clause 2 ('…gạt nước, gạt và chống tạo sương và tuyết trên kính chắn hoạt động bằng điện của xe có động cơ'). Mở rộng trich ghép cả 3 đoạn (clause 1 + loại trừ + clause 2) nguyên văn — đoạn lược chứa loại trừ nên không '…' được mà viết thẳng. Kết quả ~470 chars ≤600, squash test đã pass với [nhom8512.nhom].",
+   "sua": {
+    "trich": "Nhóm này bao gồm các thiết bị điện và các thiết bị chuyên dùng sử dụng cho xe đạp hoặc xe có động cơ để phát ánh sáng hoặc phát tín hiệu. Tuy nhiên, nhóm không bao gồm pin khô (nhóm 85.06), ắc quy điện (nhóm 85.07) hoặc các dynamo và các dynamo magneto của nhóm 85.11. Nhóm này cũng bao gồm các gạt nước, gạt và chống tạo sương và tuyết trên kính chắn hoạt động bằng điện của xe có động cơ."
+   }
+  }
+ ],
+ "canhBaoKhongSuaTrongAudit": [
+  {
+   "loai": "loaiTru mục 'thiết bị sưởi ấm xe hơi… (nhóm 73.22 hay 87.08)' có sangNhom '7322|8708'",
+   "lyDo": "Brief từng flag đây là 'candidate for splitting' nhưng source không phân biệt điều kiện sang 7322 vs 8708 — chỉ có 'nhóm 73.22 hay 87.08'. Pipe-sangNhom cho phép máy validate 2 mã đích cùng lúc với cùng một điều kiện. Theo luật 11 'thà bỏ mục còn hơn mục không có căn cứ' → giữ nguyên, không tách."
+  }
+ ],
+ "xoa": [
+  {
+   "index": "loaiTru[1]",
+   "lyDo": "Đã được phủ bởi loaiTru[0] (nguồn tổng hợp cả pin khô 8506, ắc quy 8507, dynamo 8511). Tách riêng thành mục thứ 2 (chỉ có 'ắc quy điện (nhóm 85.07)') là lỗi vòng trước brief đã flag — trich thiếu lead-in 'Nhóm này không bao gồm:' và không có scope."
+  },
+  {
+   "index": "loaiTru[2]",
+   "lyDo": "Cùng lý do (bị loaiTru[0] phủ), trich lại còn ngắn hơn — không có 'Nhóm này không bao gồm:' lead-in, đứng một mình không nói loại trừ cái gì."
+  }
+ ]
+}

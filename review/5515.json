@@ -1,0 +1,21 @@
+{
+ "nhom": "5515",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-21T21:50:00+07:00",
+ "daKiem": 27,
+ "xoa": 0,
+ "sua": 1,
+ "ghiChu": "Audit 5515: 1 phamVi + 0 dieuKienVao + 1 loaiTru + 15 tieuChi6 + 10 dong8 = 27 mục. Kiểm chéo với [nhom5515.nhom], [wco.551511/512/513/519/521/522/529/591/599], [tax.55151100/.../55159990]. SỬA 1: phamVi. text khẳng định 'chỉ gồm loại đã pha (Chú giải 2 Phần XI), trừ các loại được nêu trong các nhóm trước của Chương 55 hoặc được chi tiết trong phần hai của Phần XI (thường thuộc Chương 58 và Chương 59)' — toàn bộ phần này nằm trong câu thứ 2 của nhom5515.nhom ('Tuy nhiên, cần chú ý rằng… trừ những loại được nêu trong các nhóm trước của Chương này hoặc được chi tiết trong phần hai của Phần XI (thường thuộc Chương 58 và Chương 59).'). Trich hiện chỉ copy câu đầu ('Nhóm này bao gồm vải dệt thoi… được làm bằng sợi từ xơ staple tổng hợp.'). Theo luật 1 (bài học vòng 1) 'câu trích phải tự nó nói điều mục khẳng định' — text nói về 'đã pha + trừ…thường thuộc 58/59' nhưng trich chỉ có câu 1 → vi phạm. Sửa: ghép câu 2 vào trich, dùng '…' giữa; đoạn giữa hai câu là dòng trống, không chứa ngoại lệ nên hợp lệ theo luật 11. Đếm: ~280 + 1 + ~117 = ~398 chars (đã test squash pass qua nguồn). KHÔNG sửa: text paraphrase 'Phần (I)(C) CGTQ Phần XI' (chữ viết tắt) so với nguồn 'Phần (I) (C) của Chú giải tổng quát' — chấp nhận được vì text là paraphrase, trich nguyên văn. loaiTru 'Băng, đã tẩm thuốc hay đã đóng gói để bán lẻ bị loại trừ (nhóm 30.05)' — verbatim, đích danh nhóm 30.05. 15 tieuChi6 và 10 dong8 đều lấy từ wco.* hoặc tax.* đúng fact/op/value; loaiKhac do máy tự điền (5 dòng Loại khác trong dong8 đã đúng). Không có vấn đề khác.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "text khẳng định 'đã pha theo Chú giải 2 Phần XI, trừ … (thường thuộc Chương 58 và Chương 59)' nhưng trich chỉ lấy câu đầu của nhom5515.nhom — vi phạm luật 1 ('câu trích phải tự nó nói điều mục khẳng định'). Mở rộng trich ghép câu 2 với '…' giữa; đoạn giữa chỉ là dòng trống nên an toàn.",
+   "sua": {
+    "trich": "Nhóm này bao gồm vải dệt thoi (được định nghĩa trong Phần (I) (C) của Chú giải tổng quát Phần XI) được làm bằng sợi từ xơ staple tổng hợp.… Tuy nhiên, cần chú ý rằng nhóm này chỉ bao gồm vải dệt thoi đã được pha như định nghĩa tại Chú giải 2 của Phần XI, trừ những loại được nêu trong các nhóm trước của Chương này hoặc được chi tiết trong phần hai của Phần XI (thường thuộc Chương 58 và Chương 59)."
+   }
+  }
+ ],
+ "canhBaoKhongSuaTrongAudit": [],
+ "xoa": []
+}

@@ -1,363 +1,321 @@
 {
  "nhom": "7321",
  "phamVi": {
-  "text": "Dụng cụ được thiết kế để sản xuất và sử dụng nhiệt cho các mục đích sưởi ấm không gian, nấu hoặc đun; sử dụng nhiên liệu rắn, lỏng hoặc khí, hoặc nguồn năng lượng khác; được sử dụng bình thường trong nhà hoặc cho cắm trại.",
+  "text": "Lò sấy, lò sưởi, bếp lò, bếp có lò nướng, bếp du lịch, nồi giặt hơi, các dụng cụ/thiết bị gia dụng (dùng cho sưởi ấm không gian, nấu, đun) — không dùng điện, dùng nhiên liệu rắn/lỏng/khí/nguồn khác, dùng bình thường trong nhà hoặc cắm trại.",
   "nguon": "nhom7321.nhom",
-  "trich": "Nhóm này bao gồm một nhóm các dụng cụ thoả mãn những yêu cầu sau: (i) được thiết kế để sản xuất và sử dụng nhiệt cho các mục đích sưởi ấm không gian, nấu hoặc đun; (ii) sử dụng nhiên liệu rắn, lỏng hoặc khí, hoặc nguồn năng lượng khác … (iii) được sử dụng bình thường trong nhà hoặc cho cắm trại.",
-  "nguonLoai": "AI_DA_KIEM"
+  "trich": "Nhóm này bao gồm một nhóm các dụng cụ thoả mãn những yêu cầu sau: (i) được thiết kế để sản xuất và sử dụng nhiệt cho các mục đích sưởi ấm không gian, nấu hoặc đun; (ii) sử dụng nhiên liệu rắn, lỏng hoặc khí, hoặc nguồn năng lượng khác (ví dụ năng lượng mặt trời); (iii) được sử dụng bình thường trong nhà hoặc cho cắm trại.",
+  "nguonLoai": "NGUOI_DUYET"
  },
  "dieuKienVao": [
   {
-   "fact": "thiet_ke_de_san_xuat_va_su_dung_nhiet_cho_suoi_am_khong_gian_nau_hoac_dun",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom7321.nhom",
-   "trich": "(i) được thiết kế để sản xuất và sử dụng nhiệt cho các mục đích sưởi ấm không gian, nấu hoặc đun;",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "fact": "nguon_nhiet",
+   "fact": "muc_dich_su_dung",
    "op": "in",
-   "value": "nhiên liệu rắn|nhiên liệu lỏng|nhiên liệu khí|nguồn năng lượng khác (ví dụ năng lượng mặt trời)",
+   "value": "sưởi ấm không gian|nấu|đun",
    "donVi": null,
-   "ngoaiTru": [],
    "nguon": "nhom7321.nhom",
-   "trich": "(ii) sử dụng nhiên liệu rắn, lỏng hoặc khí, hoặc nguồn năng lượng khác (ví dụ năng lượng mặt trời);",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "được thiết kế để sản xuất và sử dụng nhiệt cho các mục đích sưởi ấm không gian, nấu hoặc đun",
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
-   "fact": "su_dung_binh_thuong_trong_nha_hoac_cho_cam_trai",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom7321.nhom",
-   "trich": "(iii) được sử dụng bình thường trong nhà hoặc cho cắm trại.",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "fact": "hoat_dong_o_muc_vuot_qua_yeu_cau_trong_gia_dinh",
-   "op": "=",
-   "value": false,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom7321.nhom",
-   "trich": "Tiêu chuẩn so sánh để đánh giá những đặc trưng này là các dụng cụ được đề cập tới không được hoạt động ở mức vượt quá các yêu cầu trong gia đình.",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "fact": "cung_su_dung_dien_cho_muc_dich_lam_nong",
-   "op": "=",
-   "value": false,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom7321.nhom",
-   "trich": "Mặt khác nhóm này loại trừ những dụng cụ cũng sử dụng điện cho các mục đích làm nóng, như trong trường hợp các bếp lò tổ hợp điện - ga (nhóm 85.16).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "fact": "chat_lieu",
+   "fact": "loai_nhien_lieu",
    "op": "in",
-   "value": "sắt|gang đúc|thép",
+   "value": "rắn|lỏng|khí|nguồn khác",
    "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "ch73.chuong",
-   "trich": "Chương này bao gồm số lượng nhất định các sản phẩm đặc trưng trong các nhóm 73.01 đến 73.24 và trong các nhóm 73.25 và 73.26 một nhóm các sản phẩm không được định rõ hoặc không thuộc Chương 82 hoặc 83 và không thuộc các Chương khác của Danh mục, bằng sắt (gồm cả gang đúc như được định nghĩa trong Chú giải 1 cho Chương này) hoặc bằng thép.",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "fact": "la_bo_phan_co_cong_dung_chung",
-   "op": "=",
-   "value": false,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "phan73.phan",
-   "trich": "Từ Chương 73 đến Chương 76 và từ Chương 78 đến Chương 82 (nhưng trừ nhóm 73.15) các bộ phận của hàng hoá thuộc các chương này không bao gồm các bộ phận có công dụng chung như đã nêu ở trên.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguon": "nhom7321.nhom",
+   "trich": "sử dụng nhiên liệu rắn, lỏng hoặc khí, hoặc nguồn năng lượng khác (ví dụ năng lượng mặt trời)",
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "loaiTru": [
   {
-   "dieuKien": "dụng cụ cũng sử dụng điện cho các mục đích làm nóng (bếp lò tổ hợp điện - ga)",
-   "sangNhom": "8516",
-   "nguon": "nhom7321.nhom",
-   "trich": "Mặt khác nhóm này loại trừ những dụng cụ cũng sử dụng điện cho các mục đích làm nóng, như trong trường hợp các bếp lò tổ hợp điện - ga (nhóm 85.16).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "lò sưởi cho thiết bị nhiệt trung tâm, thiết bị làm nóng không khí hoặc bộ phân phối khí nóng, và các bộ phận rời của chúng",
+   "dieuKien": "Lò sưởi cho thiết bị nhiệt trung tâm, thiết bị làm nóng không khí hoặc bộ phân phối khí nóng, và các bộ phận rời của chúng",
    "sangNhom": "7322",
    "nguon": "nhom7321.nhom",
-   "trich": "(a) Lò sưởi cho thiết bị nhiệt trung tâm, thiết bị làm nóng không khí hoặc bộ phân phối khí nóng, và các bộ phận rời của chúng, thuộc nhóm 73.22.",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "Nhóm này cũng không bao gồm : (a) Lò sưởi cho thiết bị nhiệt trung tâm, thiết bị làm nóng không khí hoặc bộ phân phối khí nóng, và các bộ phận rời của chúng, thuộc nhóm 73.22.",
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
-   "dieuKien": "lò và nồi hơi chưa được lắp với các phần tử đốt nóng",
+   "dieuKien": "Lò và nồi hơi chưa được lắp với các phần tử đốt nóng",
    "sangNhom": "7323",
    "nguon": "nhom7321.nhom",
    "trich": "(b) Lò và nồi hơi chưa được lắp với các phần tử đốt nóng (nhóm 73.23).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
-   "dieuKien": "đèn hàn xì và bộ bệ rèn xách tay",
+   "dieuKien": "Đèn hàn xì và bộ bệ rèn xách tay",
    "sangNhom": "8205",
    "nguon": "nhom7321.nhom",
    "trich": "(c) Đèn hàn xì và bộ bệ rèn xách tay (nhóm 82.05).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
-   "dieuKien": "buồng đốt của lò",
+   "dieuKien": "Buồng đốt của lò",
    "sangNhom": "8416",
    "nguon": "nhom7321.nhom",
    "trich": "(d) Buồng đốt của lò (nhóm 84.16).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
-   "dieuKien": "buồng đốt và lò sử dụng trong công nghiệp và phòng thí nghiệm",
+   "dieuKien": "Buồng đốt và lò sử dụng trong công nghiệp và phòng thí nghiệm",
    "sangNhom": "8417",
    "nguon": "nhom7321.nhom",
    "trich": "(e) Buồng đốt và lò sử dụng trong công nghiệp và phòng thí nghiệm thuộc nhóm 84.17.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
-   "dieuKien": "thiết bị hoặc máy móc đốt nóng, nấu, nung, chưng cất và thiết bị tương tự trong phòng thí nghiệm",
+   "dieuKien": "Các thiết bị hoặc máy móc đốt nóng, nấu, nung, chưng cất và thiết bị tương tự trong phòng thí nghiệm",
    "sangNhom": "8419",
    "nguon": "nhom7321.nhom",
    "trich": "(f) Các thiết bị hoặc máy móc đốt nóng, nấu, nung, chưng cất,... và thiết bị tương tự trong phòng thí nghiệm thuộc nhóm 84.19.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
-   "dieuKien": "đồ dùng đun nước tức thời hoặc đồ dùng đun nước tích nhiệt không dùng điện (dùng trong hoặc ngoài gia đình)",
-   "sangNhom": "8419",
-   "nguon": "nhom7321.nhom",
-   "trich": "thuộc nhóm 84.19. Ngoài những đề cập khác, nhóm này bao gồm: (i) Đồ dùng đun nước tức thời hoặc đồ dùng đun nước tích nhiệt không dùng điện (hoặc sử dụng trong gia đình hoặc sử dụng ngoài gia đình).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "thiết bị nung nóng, nấu đặc dụng không được sử dụng thông thường trong gia đình (bình ngâm chiết cà phê kiểu ống đếm, chảo sâu rán mỡ, bộ phận khử trùng, tủ hâm nóng, tủ sấy khô)",
-   "sangNhom": "8419",
-   "nguon": "nhom7321.nhom",
-   "trich": "thuộc nhóm 84.19. Ngoài những đề cập khác, nhóm này bao gồm: … (ii) Một số thiết bị nung nóng, nấu đặc dụng mà không được sử dụng thông thường trong gia đình (ví dụ: bình ngâm chiết cà phê kiểu ống đếm, chảo sâu rán mỡ; bộ phận khử trùng, tủ hâm nóng, tủ sấy khô",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "thiết bị nhiệt điện",
+   "dieuKien": "Dụng cụ cũng sử dụng điện cho các mục đích làm nóng (bếp lò tổ hợp điện - ga)",
    "sangNhom": "8516",
    "nguon": "nhom7321.nhom",
-   "trich": "(g) Các thiết bị nhiệt điện thuộc nhóm 85.16.",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "nhóm này loại trừ những dụng cụ cũng sử dụng điện cho các mục đích làm nóng, như trong trường hợp các bếp lò tổ hợp điện - ga (nhóm 85.16).",
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
- "phanBiet": [
-  {
-   "hoi": "Dụng cụ có cũng sử dụng điện cho mục đích làm nóng (ví dụ bếp lò tổ hợp điện - ga) không?",
-   "neuCo": "8516",
-   "neuKhong": "7321",
-   "nguon": "nhom7321.nhom",
-   "trich": "Mặt khác nhóm này loại trừ những dụng cụ cũng sử dụng điện cho các mục đích làm nóng, như trong trường hợp các bếp lò tổ hợp điện - ga (nhóm 85.16).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
+ "phanBiet": [],
  "tieuChi6": [
   {
-   "hs6": "732119",
-   "fact": "la_dung_cu_nau_hoac_dung_cu_ham_nong_dang_tam",
+   "hs6": "732111",
+   "fact": "loai_dung_cu",
    "op": "=",
-   "value": true,
+   "value": "bếp nấu/hâm nóng",
    "donVi": null,
-   "nguon": "wco.732119",
-   "trich": "Cooking appliances and plate warmers; for solid fuel and fuels other than gas or liquid, of iron or steel",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguon": "wco.732111",
+   "trich": "Cooking appliances and plate warmers",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hs6": "732111",
+   "fact": "loai_nhien_lieu",
+   "op": "=",
+   "value": "khí hoặc cả khí và nhiên liệu khác",
+   "donVi": null,
+   "nguon": "wco.732111",
+   "trich": "for gas fuel or for both gas and other fuels",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hs6": "732111",
+   "fact": "chat_lieu",
+   "op": "=",
+   "value": "iron or steel",
+   "donVi": null,
+   "nguon": "wco.732111",
+   "trich": "of iron or steel",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hs6": "732112",
+   "fact": "loai_dung_cu",
+   "op": "=",
+   "value": "bếp nấu/hâm nóng",
+   "donVi": null,
+   "nguon": "wco.732112",
+   "trich": "Cooking appliances and plate warmers",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hs6": "732112",
+   "fact": "loai_nhien_lieu",
+   "op": "=",
+   "value": "lỏng",
+   "donVi": null,
+   "nguon": "wco.732112",
+   "trich": "for liquid fuel",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hs6": "732112",
+   "fact": "chat_lieu",
+   "op": "=",
+   "value": "iron or steel",
+   "donVi": null,
+   "nguon": "wco.732112",
+   "trich": "of iron or steel",
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hs6": "732119",
-   "fact": "nhien_lieu",
-   "op": "in",
-   "value": "rắn|nhiên liệu khác ngoài khí hoặc lỏng",
+   "fact": "loai_dung_cu",
+   "op": "=",
+   "value": "bếp nấu/hâm nóng",
    "donVi": null,
    "nguon": "wco.732119",
-   "trich": "for solid fuel and fuels other than gas or liquid, of iron or steel",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "Cooking appliances and plate warmers",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hs6": "732119",
+   "fact": "loai_nhien_lieu",
+   "op": "=",
+   "value": "rắn hoặc ngoài khí/lỏng",
+   "donVi": null,
+   "nguon": "wco.732119",
+   "trich": "for solid fuel and fuels other than gas or liquid",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hs6": "732119",
+   "fact": "chat_lieu",
+   "op": "=",
+   "value": "iron or steel",
+   "donVi": null,
+   "nguon": "wco.732119",
+   "trich": "of iron or steel",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hs6": "732181",
+   "fact": "loai_dung_cu",
+   "op": "=",
+   "value": "gia dụng không điện (trừ bếp/hâm nóng)",
+   "donVi": null,
+   "nguon": "wco.732181",
+   "trich": "Domestic appliances; non-electric, (other than cookers and plate warmers)",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hs6": "732181",
+   "fact": "loai_nhien_lieu",
+   "op": "=",
+   "value": "khí hoặc cả khí và nhiên liệu khác",
+   "donVi": null,
+   "nguon": "wco.732181",
+   "trich": "for gas fuel or for both gas and other fuels",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hs6": "732181",
+   "fact": "chat_lieu",
+   "op": "=",
+   "value": "iron or steel",
+   "donVi": null,
+   "nguon": "wco.732181",
+   "trich": "of iron or steel",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hs6": "732182",
+   "fact": "loai_dung_cu",
+   "op": "=",
+   "value": "gia dụng không điện (trừ bếp/hâm nóng)",
+   "donVi": null,
+   "nguon": "wco.732182",
+   "trich": "Domestic appliances; non-electric, (other than cookers and plate warmers)",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hs6": "732182",
+   "fact": "loai_nhien_lieu",
+   "op": "=",
+   "value": "lỏng",
+   "donVi": null,
+   "nguon": "wco.732182",
+   "trich": "for liquid fuel",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hs6": "732182",
+   "fact": "chat_lieu",
+   "op": "=",
+   "value": "iron or steel",
+   "donVi": null,
+   "nguon": "wco.732182",
+   "trich": "of iron or steel",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hs6": "732189",
+   "fact": "loai_dung_cu",
+   "op": "=",
+   "value": "gia dụng không điện (trừ bếp/hâm nóng)",
+   "donVi": null,
+   "nguon": "wco.732189",
+   "trich": "Domestic appliances; non-electric, (other than cookers and plate warmers)",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hs6": "732189",
+   "fact": "loai_nhien_lieu",
+   "op": "=",
+   "value": "rắn hoặc ngoài khí/lỏng",
+   "donVi": null,
+   "nguon": "wco.732189",
+   "trich": "for solid fuel and fuels other than gas or liquid",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hs6": "732189",
+   "fact": "chat_lieu",
+   "op": "=",
+   "value": "iron or steel",
+   "donVi": null,
+   "nguon": "wco.732189",
+   "trich": "of iron or steel",
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hs6": "732190",
-   "fact": "la_bo_phan",
+   "fact": "loai_dung_cu",
    "op": "=",
-   "value": true,
+   "value": "bộ phận",
    "donVi": null,
    "nguon": "wco.732190",
-   "trich": "Domestic appliances; non-electric, parts thereof, of iron or steel",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "parts thereof",
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hs6": "732190",
-   "fact": "bo_phan_roi_bang_sat_hoac_thep_nhan_dang_ro_rang",
+   "fact": "chat_lieu",
    "op": "=",
-   "value": true,
+   "value": "iron or steel",
    "donVi": null,
-   "nguon": "nhom7321.nhom",
-   "trich": "Nhóm này còn bao gồm các bộ phận rời bằng sắt hoặc thép có thể nhận dạng rõ ràng của các dụng cụ được đề cập ở trên",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "732111",
-   "fact": "la_dung_cu_nau_hoac_dung_cu_ham_nong_dang_tam",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "nguon": "wco.732111",
-   "trich": "Cooking appliances and plate warmers; for gas fuel or for both gas and other fuels, of iron or steel",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "732111",
-   "fact": "nhien_lieu",
-   "op": "in",
-   "value": "khí|cả khí và nhiên liệu khác",
-   "donVi": null,
-   "nguon": "wco.732111",
-   "trich": "for gas fuel or for both gas and other fuels, of iron or steel",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "732112",
-   "fact": "la_dung_cu_nau_hoac_dung_cu_ham_nong_dang_tam",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "nguon": "wco.732112",
-   "trich": "Cooking appliances and plate warmers; for liquid fuel, of iron or steel",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "732112",
-   "fact": "nhien_lieu",
-   "op": "=",
-   "value": "lỏng",
-   "donVi": null,
-   "nguon": "wco.732112",
-   "trich": "for liquid fuel, of iron or steel",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "732181",
-   "fact": "la_dung_cu_nau_hoac_dung_cu_ham_nong_dang_tam",
-   "op": "=",
-   "value": false,
-   "donVi": null,
-   "nguon": "wco.732181",
-   "trich": "Domestic appliances; non-electric, (other than cookers and plate warmers), for gas fuel or for both gas and other fuels, of iron or steel",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "732181",
-   "fact": "nhien_lieu",
-   "op": "in",
-   "value": "khí|cả khí và nhiên liệu khác",
-   "donVi": null,
-   "nguon": "wco.732181",
-   "trich": "for gas fuel or for both gas and other fuels, of iron or steel",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "732182",
-   "fact": "la_dung_cu_nau_hoac_dung_cu_ham_nong_dang_tam",
-   "op": "=",
-   "value": false,
-   "donVi": null,
-   "nguon": "wco.732182",
-   "trich": "Domestic appliances; non-electric, (other than cookers and plate warmers), for liquid fuel, of iron or steel",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "732182",
-   "fact": "nhien_lieu",
-   "op": "=",
-   "value": "lỏng",
-   "donVi": null,
-   "nguon": "wco.732182",
-   "trich": "for liquid fuel, of iron or steel",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "732189",
-   "fact": "la_dung_cu_nau_hoac_dung_cu_ham_nong_dang_tam",
-   "op": "=",
-   "value": false,
-   "donVi": null,
-   "nguon": "wco.732189",
-   "trich": "Domestic appliances; non-electric, (other than cookers and plate warmers), for solid fuel and fuels other than gas or liquid, of iron or steel",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "732189",
-   "fact": "nhien_lieu",
-   "op": "in",
-   "value": "rắn|nhiên liệu khác ngoài khí hoặc lỏng",
-   "donVi": null,
-   "nguon": "wco.732189",
-   "trich": "for solid fuel and fuels other than gas or liquid, of iron or steel",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguon": "wco.732190",
+   "trich": "of iron or steel",
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "dong8": [
   {
    "hs": "73211100",
-   "dieuKien": "Dụng cụ nấu và dụng cụ hâm nóng dạng tấm (nhánh 73211) dùng nhiên liệu khí hoặc dùng cả khí và nhiên liệu khác",
-   "tieuChi": {
-    "fact": "nhien_lieu",
-    "op": "in",
-    "value": "khí|cả khí và nhiên liệu khác",
-    "donVi": null
-   },
+   "dieuKien": "Bếp nấu/hâm nóng (phân nhóm 732111 — WCO: cooking appliances and plate warmers) dùng nhiên liệu khí hoặc cả khí và nhiên liệu khác, bằng sắt hoặc thép",
+   "tieuChi": null,
    "loaiKhac": false,
    "nguon": "tax.73211100",
    "trich": "73211100 - - Loại dùng nhiên liệu khí hoặc dùng cả khí và nhiên liệu khác",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hs": "73211200",
-   "dieuKien": "Dụng cụ nấu và dụng cụ hâm nóng dạng tấm (nhánh 73211) dùng nhiên liệu lỏng",
-   "tieuChi": {
-    "fact": "nhien_lieu",
-    "op": "=",
-    "value": "lỏng",
-    "donVi": null
-   },
+   "dieuKien": "Bếp nấu/hâm nóng (732112) dùng nhiên liệu lỏng, bằng sắt hoặc thép",
+   "tieuChi": null,
    "loaiKhac": false,
    "nguon": "tax.73211200",
    "trich": "73211200 - - Loại dùng nhiên liệu lỏng",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hs": "73211910",
-   "dieuKien": "Dụng cụ nấu và dụng cụ hâm nóng dạng tấm thuộc phân nhóm 732119 (nhiên liệu rắn và nhiên liệu khác ngoài khí hoặc lỏng) dùng nhiên liệu rắn",
-   "tieuChi": {
-    "fact": "nhien_lieu",
-    "op": "=",
-    "value": "rắn",
-    "donVi": null
-   },
+   "dieuKien": "Bếp nấu/hâm nóng (732119) dùng nhiên liệu rắn, bằng sắt hoặc thép",
+   "tieuChi": null,
    "loaiKhac": false,
    "nguon": "tax.73211910",
    "trich": "73211910 - - - Loại dùng nhiên liệu rắn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hs": "73211990",
-   "dieuKien": "Phần còn lại của phân nhóm 732119 (dụng cụ nấu và hâm nóng dạng tấm dùng nhiên liệu rắn và nhiên liệu khác ngoài khí hoặc lỏng) trừ 73211910 (nhiên liệu rắn): tức dùng nhiên liệu khác ngoài khí, lỏng hoặc rắn",
-   "tieuChi": {
-    "fact": "nhien_lieu",
-    "op": "=",
-    "value": "nhiên liệu khác ngoài khí, lỏng hoặc rắn",
-    "donVi": null
-   },
+   "dieuKien": "Phần còn lại của phân nhóm 732119 — dòng cha không phân biệt chi tiết trong nguồn, đối chiếu biểu thuế",
+   "tieuChi": null,
    "loaiKhac": true,
    "nguon": "tax.73211990",
    "trich": "73211990 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "NGUOI_DUYET",
    "phamViLoaiKhac": {
     "nguonLoai": "MAY_SUY",
     "cha": "732119",
@@ -370,45 +328,30 @@
   },
   {
    "hs": "73218100",
-   "dieuKien": "Đồ dùng gia đình không dùng điện trừ dụng cụ nấu và dụng cụ hâm nóng dạng tấm (nhánh 73218) dùng nhiên liệu khí hoặc dùng cả khí và nhiên liệu khác",
-   "tieuChi": {
-    "fact": "nhien_lieu",
-    "op": "in",
-    "value": "khí|cả khí và nhiên liệu khác",
-    "donVi": null
-   },
+   "dieuKien": "Dụng cụ gia dụng không điện, trừ bếp/hâm nóng (732181) dùng nhiên liệu khí hoặc cả khí và nhiên liệu khác",
+   "tieuChi": null,
    "loaiKhac": false,
    "nguon": "tax.73218100",
    "trich": "73218100 - - Loại dùng nhiên liệu khí hoặc dùng cả khí và nhiên liệu khác",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hs": "73218200",
-   "dieuKien": "Đồ dùng gia đình không dùng điện trừ dụng cụ nấu và dụng cụ hâm nóng dạng tấm (nhánh 73218) dùng nhiên liệu lỏng",
-   "tieuChi": {
-    "fact": "nhien_lieu",
-    "op": "=",
-    "value": "lỏng",
-    "donVi": null
-   },
+   "dieuKien": "Dụng cụ gia dụng không điện, trừ bếp/hâm nóng (732182) dùng nhiên liệu lỏng",
+   "tieuChi": null,
    "loaiKhac": false,
    "nguon": "tax.73218200",
    "trich": "73218200 - - Loại dùng nhiên liệu lỏng",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hs": "73218900",
-   "dieuKien": "Phần còn lại của nhánh 73218 (đồ dùng gia đình không dùng điện trừ dụng cụ nấu và hâm nóng dạng tấm) trừ 73218100 (khí/cả khí và nhiên liệu khác) và 73218200 (lỏng), kể cả dụng cụ dùng nhiên liệu rắn",
-   "tieuChi": {
-    "fact": "nhien_lieu",
-    "op": "in",
-    "value": "rắn|nhiên liệu khác ngoài khí hoặc lỏng",
-    "donVi": null
-   },
+   "dieuKien": "Dụng cụ gia dụng không điện, trừ bếp/hâm nóng (732189) khác gồm nhiên liệu rắn — dòng cha không phân biệt chi tiết trong nguồn",
+   "tieuChi": null,
    "loaiKhac": true,
    "nguon": "tax.73218900",
    "trich": "73218900 - - Loại khác, kể cả dụng cụ dùng nhiên liệu rắn",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "NGUOI_DUYET",
    "phamViLoaiKhac": {
     "nguonLoai": "MAY_SUY",
     "cha": "73218",
@@ -422,40 +365,30 @@
   },
   {
    "hs": "73219010",
-   "dieuKien": "Bộ phận (phân nhóm 732190) của bếp dầu hỏa",
-   "tieuChi": {
-    "fact": "bo_phan_cua",
-    "op": "=",
-    "value": "bếp dầu hỏa",
-    "donVi": null
-   },
+   "dieuKien": "Bộ phận (732190) của bếp dầu hỏa (SEN): các bộ phận điển hình (thân, đầu đốt, chảo đỡ đúc, cụm ống dẫn gas, núm vặn, cuộn cao su, bảng tên, vỏ thép không gỉ, khung, bộ chảo, vách ngăn)",
+   "tieuChi": null,
    "loaiKhac": false,
    "nguon": "sen.73219010",
-   "trich": "BỘ PHẬN CỦA BẾP DẦU HỎA Ví dụ điển hình về các bộ phận của bếp dầu hỏa:",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "BỘ PHẬN CỦA BẾP DẦU HỎA Ví dụ điển hình về các bộ phận của bếp dầu hỏa",
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hs": "73219021",
-   "dieuKien": "Bộ phận thuộc tiêu đề quốc gia 7321902 (tên bị lược — đối chiếu biểu thuế) là đầu đốt (burner) hoặc bộ phận được sản xuất bằng quá trình dập hoặc ép (vỏ, vách ngăn, khung, bộ chảo bằng thép không gỉ)",
-   "tieuChi": {
-    "fact": "loai_bo_phan",
-    "op": "in",
-    "value": "đầu đốt (burner)|bộ phận sản xuất bằng quá trình dập hoặc ép",
-    "donVi": null
-   },
+   "dieuKien": "Bộ phận (732190) — đầu đốt (burner); các bộ phận được sản xuất bằng quá trình dập hoặc ép (SEN): tấm sắt cán nguội cắt theo kích thước, ép sâu tạo hình thân, khoét lỗ, mạ niken crome/tráng men",
+   "tieuChi": null,
    "loaiKhac": false,
    "nguon": "sen.73219021",
-   "trich": "ĐẦU ĐỐT (BURNER); CÁC BỘ PHẬN ĐƯỢC SẢN XUẤT BẰNG QUÁ TRÌNH DẬP HOẶC ÉP … Các bộ phận được sản xuất bằng quá trình dập hoặc ép như vỏ thép không gỉ, vách ngăn bằng thép không gỉ, khung thép không gỉ và bộ chảo bằng thép không gỉ.",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "Đầu đốt (burner); các bộ phận được sản xuất bằng quá trình dập hoặc ép",
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hs": "73219029",
-   "dieuKien": "Phần còn lại của tiêu đề quốc gia 7321902 (dòng cha không có trong nguồn — đối chiếu biểu thuế) trừ 73219021: bộ phận không phải đầu đốt (burner) và không được sản xuất bằng quá trình dập hoặc ép",
+   "dieuKien": "Bộ phận (732190) khác — dòng cha không phân biệt chi tiết trong nguồn, đối chiếu biểu thuế",
    "tieuChi": null,
    "loaiKhac": true,
    "nguon": "tax.73219029",
    "trich": "73219029 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "NGUOI_DUYET",
    "phamViLoaiKhac": {
     "nguonLoai": "MAY_SUY",
     "cha": "7321902",
@@ -468,12 +401,12 @@
   },
   {
    "hs": "73219090",
-   "dieuKien": "Phần còn lại của phân nhóm 732190 (bộ phận) trừ 73219010 (của bếp dầu hỏa) và tiêu đề quốc gia 7321902 (dòng cha không có trong nguồn — đối chiếu biểu thuế)",
+   "dieuKien": "Bộ phận (732190) khác — dòng cha không phân biệt chi tiết trong nguồn, đối chiếu biểu thuế",
    "tieuChi": null,
    "loaiKhac": true,
    "nguon": "tax.73219090",
    "trich": "73219090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "NGUOI_DUYET",
    "phamViLoaiKhac": {
     "nguonLoai": "MAY_SUY",
     "cha": "732190",
@@ -487,11 +420,11 @@
   }
  ],
  "boPhan": {
-  "quyTac": "Bộ phận rời bằng sắt hoặc thép, có thể nhận dạng rõ ràng là của các dụng cụ thuộc nhóm, được xếp vào nhóm này.",
-  "tomTat": "Bộ phận rời bằng sắt/thép nhận dạng rõ ràng: kệ lò bên trong, vòng và tấm nấu, hố tro, hộp lửa, nôi lửa dời chuyển được, buồng đốt ga, buồng đốt dầu, cửa, vỉ nướng, đế, tay vịn bảo vệ, giá đỡ tấm.",
+  "quyTac": "Các bộ phận rời bằng sắt hoặc thép có thể nhận dạng rõ ràng của các dụng cụ trong nhóm này (kệ lò bên trong, vòng và tấm nấu, hố tro, hộp lửa và nôi lửa dời chuyển được, buồng đốt ga, buồng đốt dầu, cửa, vỉ nướng, đế, tay vịn bảo vệ, thanh để khăn lau, giá đỡ tấm) được phân loại ở đây.",
+  "tomTat": "Bộ phận rời bằng sắt/thép có nhận dạng rõ ràng của bếp, lò sưởi và thiết bị tương tự của nhóm 7321 → thuộc 7321.",
   "nguon": "nhom7321.nhom",
-  "trich": "Nhóm này còn bao gồm các bộ phận rời bằng sắt hoặc thép có thể nhận dạng rõ ràng của các dụng cụ được đề cập ở trên (ví dụ các kệ lò bên trong, vòng và tấm nấu, hố tro, hộp lửa và nôi lửa dời chuyển được, buồng đốt ga, buồng đốt dầu, cửa, vỉ nướng, đế, tay vịn bảo vệ … giá đỡ tấm).",
-  "nguonLoai": "AI_DA_KIEM"
+  "trich": "Nhóm này còn bao gồm các bộ phận rời bằng sắt hoặc thép có thể nhận dạng rõ ràng của các dụng cụ được đề cập ở trên (ví dụ các kệ lò bên trong, vòng và tấm nấu, hố tro, hộp lửa và nôi lửa dời chuyển được, buồng đốt ga, buồng đốt dầu, cửa, vỉ nướng, đế, tay vịn bảo vệ, thanh để khăn lau và giá đỡ tấm).",
+  "nguonLoai": "NGUOI_DUYET"
  },
  "cay": {
   "nguonLoai": "MAY_SUY",
@@ -509,8 +442,8 @@
     "id": "73211",
     "cap": "NHOM_MOT_GACH",
     "cha": "7321",
-    "tenVi": null,
-    "tenEn": null,
+    "tenVi": "Dụng cụ nấu và dụng cụ hâm nóng dạng tấm",
+    "tenEn": "Cooking appliances and plate warmers",
     "suyRa": true
    },
    {
@@ -560,7 +493,7 @@
     "id": "73218",
     "cap": "NHOM_MOT_GACH",
     "cha": "7321",
-    "tenVi": null,
+    "tenVi": "Dụng cụ khác",
     "tenEn": null,
     "suyRa": true
    },
@@ -596,7 +529,7 @@
     "id": "732190",
     "cap": 6,
     "cha": "7321",
-    "tenVi": null,
+    "tenVi": "Bộ phận",
     "tenEn": "Domestic appliances; non-electric, parts thereof, of iron or steel",
     "suyRa": false
    },
@@ -612,8 +545,8 @@
     "id": "7321902",
     "cap": "TIEU_DE_QG",
     "cha": "732190",
-    "tenVi": null,
-    "tenEn": null,
+    "tenVi": "Của dụng cụ nấu và dụng cụ hâm nóng dạng tấm dùng nhiên liệu khí (SEN)",
+    "tenEn": "Of cooking appliances and plate warmers using gas fuel",
     "suyRa": true
    },
    {
@@ -646,9 +579,7 @@
   "tenDien": []
  },
  "dungTuNguon": [
-  "ch73.chuong",
   "nhom7321.nhom",
-  "phan73.phan",
   "sen.73219010",
   "sen.73219021",
   "tax.73211100",
@@ -670,14 +601,14 @@
  ],
  "phienBan": "HS2022+SEN2022",
  "taoBoi": {
-  "provider": "Claude (phiên soạn + soát độc lập, 11/10/2026)",
+  "provider": "dev-zcode-mm",
   "model": null,
-  "luc": "2026-10-11T06:48:02.848Z",
+  "luc": "2026-10-21T14:50:59.645Z",
   "ms": 3
  },
  "kiemTra": {
-  "tong": 45,
-  "dat": 45,
+  "tong": 42,
+  "dat": 42,
   "loai": 0,
   "nguonBiCat": []
  }
