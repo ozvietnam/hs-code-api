@@ -21,7 +21,7 @@ const { detectRepeatedPatterns } = require('../lib/feedback-store');
 const { listPromptVersions } = require('../lib/prompt-version');
 const { getEnrichedForHs } = require('../lib/enriched-data');
 const { searchWatchlist, watchlistStats, checkTrademarkRisk } = require('../lib/trademark-watch');
-const { declarationFields } = require('../lib/declaration-fields');
+const { declarationFields, chapterDeclarationFields } = require('../lib/declaration-fields');
 const { dictionary: zhSpecDictionary } = require('../lib/zh-specs');
 const { regimeSummary } = require('../lib/policy-regime');
 const plhq = require('../lib/plhq-registry');
@@ -230,6 +230,19 @@ module.exports = async function handler(req, res) {
       }
       const spec = declarationFields(code);
       if (!spec) return res.status(404).json({ error: `Chưa có danh mục trường cho ${code}`, hs: code });
+      return res.status(200).json(spec);
+    }
+
+    // Danh mục trường khai theo CHƯƠNG 2 số (khuôn chung khi chưa có nhóm 4 số) — dữ liệu tĩnh, công khai.
+    // data/chapter-declaration-fields.json đã có; đây là cửa đọc theo chương (?chapter=84 hoặc ?hs=8481…).
+    if (resource === 'chapter_declaration_fields') {
+      const ch = String(req.query.chapter || req.query.hs || '').replace(/\D/g, '');
+      if (ch.length < 2) {
+        return res.status(400).json({ error: 'Thiếu hoặc sai ?chapter — cần số chương 2 chữ số, vd ?chapter=84' });
+      }
+      const ch2 = String(parseInt(ch.slice(0, 2), 10)).padStart(2, '0');
+      const spec = chapterDeclarationFields(ch);
+      if (!spec) return res.status(404).json({ error: `Chưa có danh mục trường cho chương ${ch2}`, chapter: ch2 });
       return res.status(200).json(spec);
     }
 
