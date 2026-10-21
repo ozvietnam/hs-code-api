@@ -13,7 +13,14 @@ Ngày: 2026-10-21 · Phiên này là **người soạn** (không phải soát đ
 - [x] **B5.** `check-so-tay.mjs --raw` → 113/113 sạch, **nhưng phải tự soát bằng mắt** — đã sửa 5 lỗi máy không bắt (mục "Tự soát" bên dưới).
 - [x] **B6.** Nạp `--tu-tep --force --nguoi-soan="dev-zcode-mm" --bao-cao=...lo-008.json` → **113/113 (100 %)**, 0 nhóm lỗi.
 - [x] **B7.** `check-cay.mjs --chi-tiet` cho cả 5 nhóm → **5/5 "đủ"**, 0 lỗi lệch cây. `npm run so-tay:check` → 203 nhóm / 7051 mục / 0 lỗi. `npm test` → **ALL TESTS PASSED**.
-- [x] **B8.** Commit + push + mở PR (**KHÔNG merge**).
+- [x] **B8.** Commit + push + mở PR (**KHÔNG merge**) → **PR #383** https://github.com/ozvietnam/hs-code-api/pull/383 (trạng thái CLEAN, 8 tệp).
+
+## Bàn giao
+
+- **PR #383** đang mở, **chưa merge**, chờ người duyệt.
+- Việc còn lại của người duyệt (mục 4 giao việc): **soát độc lập TOÀN BỘ** `phamVi`/`boPhan`/`dieuKienVao`/`loaiTru`/`phanBiet` của 5 nhóm này; rồi tự soát ngẫu nhiên ≥ 10 % phần còn lại.
+- Khi đạt: `so-tay-lo.csv` dòng 008 → `trang_thai=xong` + điền `pr=383`.
+- Lỗi kệ sách phát hiện ở mục "Nhóm nguồn mỏng / bất thường" nên bổ sung vào mục 1 của `so-tay-giao-ngoai.md` để các lô sau tránh.
 
 ## Kết quả
 
