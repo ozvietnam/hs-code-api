@@ -1,0 +1,40 @@
+{
+  "nhom": "6001",
+  "nguoiSoat": "NGUOI_DUYET",
+  "luc": "2026-10-21T21:45:00+07:00",
+  "daKiem": 6,
+  "xoa": 0,
+  "sua": 1,
+  "ghiChu": "Soát độc lập nhóm 6001. Tổng cộng 6 mục trong phạm vi (1 phamVi + 1 dieuKienVao + 3 loaiTru + 1 phanBiet). Trich đa số khớp nguyên văn nguồn nhom6001.nhom. Phát hiện 1 lỗi mà máy không bắt: fact 'la_vai_det_kim_hoac_moc' = true dùng trich CHỈ nói 'thu được bằng dệt kim' (không nói 'hoặc móc'). Vi phạm rule §L08 (value/fact thêm chữ ngoài trich) và §L10 (chỉ nên lấy từ câu trich). Sửa fact → 'la_vai_det_kim' để khớp nguyên văn. Lưu ý: 'Vải dệt kim hoặc móc' trong tên nhóm/tiêu đề là tên WCO không có trong câu trich đang dùng cho dieuKienVao; nếu muốn phủ cả 'móc' phải trích câu 'Vải dệt kim hoặc móc nổi vòng, được ngâm tẩm…' (câu cuối) — nhưng câu cuối dùng 'vẫn được phân loại trong nhóm này' (câu cho phép theo §L28, máy sẽ loại), nên không dùng được. Kết luận: GIỮ logic phủ dệt kim qua trich câu đầu, fact 'la_vai_det_kim' đúng với câu trich.",
+  "thayDoi": [
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "sua",
+      "lyDo": "Fact 'la_vai_det_kim_hoac_moc' = true thêm 'hoặc móc' so với trich 'thu được bằng dệt kim' (câu trich chỉ nói 'dệt kim', không nói 'hoặc móc'). Vi phạm rule §L08 (fact thêm chữ ngoài trich). Sửa fact thành 'la_vai_det_kim' để khớp nguyên văn.",
+      "sua": {
+        "fact": "la_vai_det_kim"
+      }
+    }
+  ],
+  "ketQuaChiTiet": {
+    "phamVi": {
+      "hanhDong": "giu",
+      "lyDo": "Trich 3 đoạn nối bằng '…': (i) 'Không giống như vải dệt thoi thuộc nhóm 58.01, các sản phẩm của nhóm này thu được bằng dệt kim.' (ii) '(3) sợi dệt từ 1 cúi sợi đã chải thô được lồng vào các vòng của 1 tấm vải nền đã được dệt kim… (vải \"vòng lông dài\" (long pile))' (iii) 'Vải dệt kim hoặc móc nổi vòng, được ngâm tẩm, tráng, phủ hoặc dát mỏng, vẫn được phân loại trong nhóm này.' Đoạn lược 1: chứa (1)+(2) mô tả phương pháp dệt kim (đan tròn, kim sợi dọc), không có ngoại lệ — OK. Đoạn lược 2: chứa (4) imitation terry + 'Các vải như vậy có các đường mũi khâu trên mặt sau…' — mô tả đặc điểm, không có từ 'trừ'/'tuy nhiên'/'với điều kiện' — OK. Tổng: đoạn lược không nuốt ngoại lệ."
+    },
+    "dieuKienVao": [
+      {
+        "index": 0,
+        "hanhDong": "sua",
+        "lyDo": "Trich 'thu được bằng dệt kim' — CHỈ nói 'dệt kim', không nói 'hoặc móc'. Fact hiện tại 'la_vai_det_kim_hoac_moc' thêm cụm 'hoặc móc' so với trich → vi phạm §L08. Sửa fact về 'la_vai_det_kim' để khớp chính xác nguyên văn trich."
+      }
+    ],
+    "loaiTru": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "(a) Da lông nhân tạo thuộc nhóm 43.04 — trich nguyên văn, dieuKien 'da lông nhân tạo' giữ đúng định ngữ, sangNhom '4304' từ 43.04 đúng 4 số. Đích danh."},
+      {"index": 1, "hanhDong": "giu", "lyDo": "(b) Vải dệt nổi vòng (nhóm 58.01) — trich nguyên văn, dieuKien 'vải dệt nổi vòng' khớp, sangNhom '5801' từ 58.01 đúng. Đích danh."},
+      {"index": 2, "hanhDong": "giu", "lyDo": "(c) Vải dệt kim hoặc móc, may chần sợi nổi vòng (nhóm 58.02) — trich nguyên văn, dieuKien khớp cả cụm 'vải dệt kim hoặc móc, may chần sợi nổi vòng', sangNhom '5802' từ 58.02 đúng. Đích danh."}
+    ],
+    "phanBiet": [
+      {"index": 0, "hanhDong": "giu", "lyDo": "Phân biệt vải dệt kim 'vải bông xù giả' (imitation terry) có các đường mũi khâu trên mặt sau KHÔNG chạy dọc theo chiều dài (hỏi về đặc tính may, không nhắc mã phân nhóm — OK §L30). Trich nói 'Các vải như vậy có các đường mũi khâu trên mặt sau… và chúng khác với vải dệt nổi vòng thuộc nhóm 58.02, với đặc điểm là có các hàng mũi khâu chạy dọc theo chiều dài của mặt sau tấm vải' — neuKhong='5802' có đích danh trong trich. neuCo='6001' được ngụ ý qua 'Các vải như vậy' = vải của nhóm 60.01 (câu nằm trong chú giải nhóm này). Câu hỏi đúng chiều Có/Không. OK."}
+    ]
+  }
+}
