@@ -1,0 +1,136 @@
+{
+  "nhom": "8460",
+  "nguoiSoat": "NGUOI_DUYET",
+  "luc": "2026-10-21T23:10:00+07:00",
+  "phamViSoat": "Toàn bộ 24 mục của bản nháp (1 phamVi + 7 loaiTru + 1 phanBiet + 1 boPhan + 14 dong8), đọc cùng tmp/so-tay/nguon/8460.txt (729 dòng: nhom8460.nhom, ch84.chuong, phan84.phan, wco.8460xx, tax.8460xxxx).",
+  "soat": 24,
+  "sua": 1,
+  "chen": 0,
+  "xoa": 0,
+  "ghiChu": "Không xoá mục nào: 24 mục đều có câu trích nguyên văn và nói đúng điều mục khẳng định. Một lỗi sửa: phanBiet chỉ ghi nhánh 'không' là 8205 trong khi câu trích nói chung với cả 82.05 và 84.67 — rơi mất một nhánh (họ lỗi 'một nhánh của A hoặc B bị chọn làm đích duy nhất'). Nhánh 'có' (có bệ/khung gắn/giá đỡ → 8460) đúng chiều, đã kiểm kỹ vì đây là lỗi hay gặp. tieuChi6 để rỗng: nguồn có tên WCO của cả 10 phân nhóm và dòng 84603110 có hai ngưỡng số (công suất ≤ 0,74 kW; đường kính chuôi ≤ 3,175 mm) nhưng bản nháp chỉ đặt hai ngưỡng đó trong prose của dong8[7] — máy không kiểm prose, người khai báo không lấy được ngưỡng có cấu trúc (dong8[].tieuChi/dieuKienSo). Không tự thêm vì nhiệm vụ soát là xác minh, không soạn bổ sung; ghi ở đây để lô sau đưa vào. Quan sát khác: loại trừ 'máy cát răng, mài răng hoặc máy gia công răng lần cuối (nhóm 84.61)' chỉ nằm trong phamVi, chưa tách thành loaiTru — runtime canGiaiTrinh chỉ đọc loaiTru nên chưa dùng được. Nguồn mỏng: khối phan84.phan bị cắt giữa chừng (mục '(IX) Máy móc và thiết bị sử dụng trong phòng thí nghiệm' dở câu '…thuộc'), và không có khối chú giải Tổng quát Phần XVI; không ảnh hưởng mục đã soạn vì mọi mục đều trích nhom8460.nhom hoặc tax.*.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "trich nhom8460.nhom nguyên văn hai câu đầu; text chỉ diễn đạt đúng hai câu đó (gia công tinh bề mặt kim loại/gốm kim loại bằng bóc tách qua đá mài, vật liệu mài hoặc sản phẩm đánh bóng; không gồm máy cát răng/mài răng/gia công răng lần cuối). Không thêm chữ ngoài câu."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "trich nguyên văn (a) 'Các dụng cụ cầm tay, đá mài dạng hình tròn hoạt động bằng tay hoặc chân (nhóm 82.05)'; đích 8205 nêu trong câu."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "trich nguyên văn (b) 'Máy phun cát (nhóm 84.24)'; đích 8424 nêu trong câu."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "trich nguyên văn (c) '…bằng các quy trình công nghệ tia lade hoặc tia sáng khác hoặc chùm phô-tông, siêu âm, phóng điện, điện hóa, tia điện tử, tia ion hoặc hồ quang plasma; máy cắt bằng tia nước (nhóm 84.56)'; đúng cả hai vế dù nguồn ngắt dòng giữa 'phóng điện,' và 'điện hóa'."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "trich nguyên văn (d) 'Trung tâm gia công, máy kết cấu nguyên khối (một vị trí gia công) và máy gia công chuyển dịch đa vị trí để gia công kim loại (nhóm 84.57)'; đích 8457 nêu trong câu."
+    },
+    {
+      "index": "loaiTru[4]",
+      "hanhDong": "giu",
+      "lyDo": "trich nguyên văn (e) 'Dụng cụ cầm tay hoạt động bằng khí nén, thủy lực hoặc gắn động cơ dùng điện hoặc không dùng điện (nhóm 84.67)'; đích 8467 nêu trong câu."
+    },
+    {
+      "index": "loaiTru[5]",
+      "hanhDong": "giu",
+      "lyDo": "trich nguyên văn (f) 'Các thùng quay tròn dùng để đánh bóng bằng cát, đánh sạch gỉ hoặc đánh bóng đồ kim loại (nhóm 84.79)'; đích 8479 nêu trong câu."
+    },
+    {
+      "index": "loaiTru[6]",
+      "hanhDong": "giu",
+      "lyDo": "trich nguyên văn (g) 'Máy và thiết bị kiểm tra (nhóm 90.24)'; đích 9024 nêu trong câu."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "RƠI NHÁNH: câu nguồn phân biệt loại chạy tay/đạp chân với BẠN dụng cụ bằng tay thuộc 82.05 'và' dụng cụ cầm tay thuộc 84.67, nhưng mục chỉ đưa 8205 vào nhánh 'không' — người khai một máy cầm tay không có bệ thì không biết còn đường về 8467. Sửa neuKhong thành '8205|8467' (cả hai mã đều có trong câu trích). Chiều nhánh 'có' đã kiểm kỹ và đúng: câu nói loại của nhóm 8460 PHẢI có bệ/khung gắn/giá đỡ mới phân biệt được với dụng cụ cầm tay, nên có → 8460, không → dụng cụ cầm tay. Hỏi không nhắc mã. Lưu ý câu nguồn có vẻ 'thường' (chúng thường được thiết kế…, vì vậy chúng thường có bệ…) — vẫn giữ trong câu trích nên người đọc thấy mức độ chắc của nguồn.",
+      "sua": {
+        "neuKhong": "8205|8467"
+      }
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "trich nhom8460.nhom nguyên văn ('các bộ phận và phụ tùng (trừ dụng cụ thuộc Chương 82) của các loại máy công cụ của nhóm này được phân vào nhóm 84.66'); quy tắc giữ nguyên cả ngoại lệ 'trừ dụng cụ thuộc Chương 82', không cắt bằng '…'. tomTat khớp."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "tax.84601200 'Điều khiển số'; phần 'Máy mài mặt phẳng' lấy từ wco.846012 có trong nguồn nhóm."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "tax.84601900 'Loại khác' (máy tự đánh loaiKhac=true); '(không điều khiển số)' đúng với wco.846019 'other than numerically controlled'."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "tax.84602200 'Máy mài không tâm, loại điều khiển số'; dieuKien = nguyên văn."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "tax.84602300 'Máy mài trụ khác, loại điều khiển số'; dieuKien = nguyên văn."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "tax.84602400 'Loại khác, điều khiển số'; dieuKien = nguyên văn, loaiKhac do máy suy."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "tax.84602910 'Hoạt động bằng điện'; '(trừ mặt phẳng, không NC)' đúng với wco.846029 'grinding machines (excluding flat-surface), other than numerically controlled' — cần thiết để dòng này không nuốt 8460.19/8460.31/8460.39."
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "giu",
+      "lyDo": "tax.84602920 'Không hoạt động bằng điện'; giới hạn phân nhóm lấy từ wco.846029 như dòng trên."
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "giu",
+      "lyDo": "tax.84603110 nguyên văn, hai ngưỡng 0,74 kW và 3,175 mm có trong câu; đã kiểm không có chữ nào ngoài câu (tiền tố 'Máy mài sắc, điều khiển số' lấy từ wco.846031)."
+    },
+    {
+      "index": "dong8[8]",
+      "hanhDong": "giu",
+      "lyDo": "tax.84603190 'Loại khác' — loaiKhac=true do máy suy; tiền tố 'Máy mài sắc, điều khiển số' lấy từ wco.846031."
+    },
+    {
+      "index": "dong8[9]",
+      "hanhDong": "giu",
+      "lyDo": "tax.84603910 'Hoạt động bằng điện'; 'khác (không NC)' theo wco.846039."
+    },
+    {
+      "index": "dong8[10]",
+      "hanhDong": "giu",
+      "lyDo": "tax.84603920 'Không hoạt động bằng điện'; giới hạn phân nhóm theo wco.846039."
+    },
+    {
+      "index": "dong8[11]",
+      "hanhDong": "giu",
+      "lyDo": "tax.84604000 'Máy mài khôn hoặc máy mài rà'; dieuKien = nguyên văn, khớp cả wco.846040 (honing or lapping)."
+    },
+    {
+      "index": "dong8[12]",
+      "hanhDong": "giu",
+      "lyDo": "tax.84609010 'Hoạt động bằng điện'; '(đánh bóng, làm sạch ba via, v.v.)' dịch từ wco.846090 'deburring, grinding, polishing or otherwise finishing metal…', không phải chữ tự thêm."
+    },
+    {
+      "index": "dong8[13]",
+      "hanhDong": "giu",
+      "lyDo": "tax.84609020 'Không hoạt động bằng điện'; giới hạn theo wco.846090 như dòng trên."
+    }
+  ]
+}

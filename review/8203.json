@@ -1,0 +1,101 @@
+{
+  "nhom": "8203",
+  "nguoiSoat": "NGUOI_DUYET",
+  "luc": "2026-10-21T23:10:00+07:00",
+  "phamViSoat": "Toàn bộ 13 mục của bản nháp (1 phamVi + 5 loaiTru + 1 phanBiet + 1 boPhan + 1 tieuChi6 + 4 dong8), đọc cùng tmp/so-tay/nguon/8203.txt (298 dòng: nhom8203.nhom, ch82.chuong, phan82.phan, wco.8203xx, tax.8203xxxx).",
+  "soat": 13,
+  "sua": 3,
+  "chen": 1,
+  "xoa": 0,
+  "ghiChu": "Không xoá mục nào: 13 mục đều có câu trích nguyên văn trong đúng nguồn và nói đúng điều mục khẳng định. Ba lỗi đã sửa đều thuộc họ lỗi 'cắt trích/lạc nhánh' mà máy không bắt: (1) phamVi.text khẳng định cả (A)(B)(C)(D) nhưng câu trích chỉ tới (B) — trích 316 ký tự (300–600) bị cắt lặng lẽ; (2) loaiTru (d) gộp hai hàng khác nhau và chỉ giữ đích 84.62, rơi mất nhánh 84.72; (3) phanBiet cắt mất vế 'thậm chí nếu nó được sử dụng bằng tay' ngay sau câu trích. boPhan để null là đúng: nguồn không có quy tắc bộ phận riêng cho nhóm 8203 (ch82.chuong CG2 chỉ nhắc 'tay cầm cho dụng cụ cầm tay (nhóm 84.66)' ở cấp Chương — ghi vào boPhan của nhóm là diễn giải quá tầm, để lô sau). Quan sát cho lô sau: loại trừ 'máy cát răng, mài răng, gia công răng lần cuối (nhóm 84.61)' của nhom8460 chỉ nằm trong phamVi chứ chưa tách thành loaiTru, nên runtime chưa dùng được để giải trình khi 8460 và 8461 cùng là ứng viên.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "text khẳng định trọn 4 nhóm thành phần (A) giũa-nạo, (B) kìm/panh/nhíp, (C) kéo cắt kim loại, (D) dụng cụ cắt ống-xén bulông-đột lỗ, nhưng câu trích chỉ chứa (A) và (B) — đúng loại 'trích 300–600 ký tự lặng lẽ' mà máy không bắt (luật mục 3 bài học vòng 1). Sửa bằng cách kéo (C) và (D) vào câu trích, lược bằng '…'; giữ nguyên text. Câu mới 285 ký tự (≤300 của lược đồ).",
+      "sua": {
+        "trich": "Nhóm này bao gồm các dụng cụ có tay cầm như sau: (A) Giũa, nạo và các dụng cụ tương tự… (B) Kìm (Kể cả kìm cắt) panh (kẹp), nhíp và dụng cụ tương tự, bao gồm:… (C) Kéo cắt kim loại và các dụng cụ tương tự… (D) Dụng cụ cắt ống, xén bulông, đột (đục) lỗ và các dụng cụ tương tự, bao gồm:"
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "trich nhom8203.nhom nguyên văn (a) 'Kìm đục lỗ và giũa (kể cả giũa tròn) cho máy công cụ (nhóm 82.07)'; nêu đích danh 82.07, đúng loại trừ dứt khoát (không có 'thường/tùy trường hợp'). dieuKien bỏ đúng phần '(kể cả giũa tròn)'? — không, giữ trọn."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "trich nguyên văn (b) 'Giũa móng tay, kìm bấm khóe móng tay và kiềm cắt móng tay (nhóm 82.14)'; đích 8214 nêu trong câu."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "trich nguyên văn (c) 'Kẹp gắp đường (nhóm 82.15)'; đích 8215 nêu trong câu."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI LẠC NHÁNH: câu (d) nêu HAI nhóm đích — 'Máy cắt kim loại kiểu cơ khí (nhóm 84.62)' và 'các dụng cụ đục lỗ trong văn phòng… (nhóm 84.72)' — nhưng mục chỉ ghi sangNhom 8462 và gộp hai hàng khác nhau vào một dieuKien ('có đế cố định/đặt gắn trên bàn' chỉ nói về dụng cụ đục lỗ, không nói về máy cắt kim loại). Đọc như vậy thì dụng cụ đục lỗ văn phòng bị ghi nhầm sang 8462 — sai. Tách: mục này giữ nhánh máy cắt kim loại, thêm mục mới cho nhánh 84.72 ngay dưới.",
+      "sua": {
+        "dieuKien": "Máy cắt kim loại kiểu cơ khí",
+        "sangNhom": "8462",
+        "trich": "(d) Máy cắt kim loại kiểu cơ khí (nhóm 84.62)"
+      }
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "chen",
+      "sau": 3,
+      "lyDo": "Nhánh thứ hai của câu (d) bị rơi: dụng cụ đục lỗ trong văn phòng có đế cố định/đặt gắn trên bàn → nhóm 84.72 (không phải 84.62). Chèn ngay sau mục (d) để giữ thứ tự nguồn; sau khi chèn, mục (e) 96.11 chuyển từ index 4 xuống index 5.",
+      "muc": {
+        "dieuKien": "Các dụng cụ đục lỗ trong văn phòng có một đế để cố định hoặc đặt gắn trên bàn",
+        "sangNhom": "8472",
+        "nguon": "nhom8203.nhom",
+        "trich": "các dụng cụ đục lỗ trong văn phòng có một đế để cố định hoặc đặt gắn trên bàn... (nhóm 84.72)"
+      }
+    },
+    {
+      "index": "loaiTru[4]",
+      "hanhDong": "giu",
+      "lyDo": "trich nguyên văn (e) 'Cái đột lỗ trên vé có ngày hoặc các chữ khác (nhóm 96.11)'; đích 9611 nêu trong câu. Không mâu thuẫn với phần (D)(2) của cùng chú giải ('đục lỗ vé (trừ các loại đóng trên vé có ngày hoặc các chữ khác - nhóm 96.11)') — hai chỗ nói cùng một ngoại lệ."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "Thiếu vế ngay sau câu trích: nguồn (ch82.chuong) viết '… được phân loại trong nhóm 84.62 thậm chí nếu nó được sử dụng bằng tay.' — vế này là thông tin quan trọng cho người khai (máy cắt kiểu máy chém vẫn dùng tay nhưng có chân đế → 84.62). Cắt đi thì mục nói chắc hơn nguồn. Kéo nguyên vế vào câu trích. Nhánh Có/Không đã đúng (có giá đỡ/bệ tựa lại → 8462; không → 8203), hỏi không nhắc mã.",
+      "sua": {
+        "trich": "Tương tự, các dụng cụ cắt kim loại kiểu kìm được phân loại trong nhóm 82.03, trái lại dụng cụ cắt kiểu máy chém gắn một giá đỡ hoặc bệ tựa lại được phân loại trong nhóm 84.62 thậm chí nếu nó được sử dụng bằng tay."
+      }
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "null — nguồn không có quy tắc bộ phận gắn riêng với nhóm 8203. (ch82.chuong CG2 có nhắc 'tay cầm cho các loại dụng cụ cầm tay (nhóm 84.66)' nhưng đó là quy tắc cấp Chương, đặt vào boPhan của nhóm là diễn giải quá tầm — ghi nhận để lô sau cân nhắc.)"
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 820310 lấy từ wco.820310 nguyên văn, value=true (không phải số nên không cần ngưỡng trong trích). Cân nhắc xoá vì tiêu chí chỉ lặp lại tên phân nhóm, không phân biệt được với anh em — nhưng đây là quy ước đã dùng ở 429 tieuChi6 lấy từ wco trong data/so-tay (vd 401110, 321511) và mục CÓ căn cứ nguyên văn, nên giữ."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "tax.82031000 'Giũa, nạo và các dụng cụ tương tự'; dieuKien = nguyên văn tên dòng biểu thuế, không thêm chữ."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "tax.82032000 'Kìm (kể cả kìm cắt), panh, nhíp và dụng cụ tương tự'; dieuKien = nguyên văn."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "tax.82033000 'Kéo cắt kim loại và dụng cụ tương tự'; dieuKien = nguyên văn."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "tax.82034000 'Dụng cụ cắt ống, xén bu lông, mũi đột lỗ và các dụng cụ tương tự'; dieuKien = nguyên văn. Lưu ý nguồn ghi 'xén bu lông' (bản nháp cũng vậy) trong khi chú giải nhóm dùng 'xén bulông' — giữ nguyên theo luật 'không sửa lỗi nguồn'."
+    }
+  ]
+}
