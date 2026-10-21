@@ -1,0 +1,289 @@
+{
+ "nhom": "5309",
+ "phamVi": {
+  "text": "Vải dệt thoi làm từ sợi lanh: dùng làm quần áo lót phụ nữ và váy áo, ga trải giường, khăn trải bàn, bọc đệm, bao tải, vải bạt, buồm. Không gồm băng dùng trong y tế đã tẩm thuốc hay đã đóng gói để bán lẻ.",
+  "nguon": "nhom5309.nhom",
+  "trich": "Nhóm này bao gồm các vải dệt thoi (như đã định nghĩa tại Phần (I) (c) của Chú giải tổng quát Phần XI) được làm từ sợi lanh. … Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ (nhóm 30.05) bị loại trừ khỏi nhóm này.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_vai_det_thoi_lam_tu_soi_lanh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom5309.nhom",
+   "trich": "Nhóm này bao gồm các vải dệt thoi (như đã định nghĩa tại Phần (I) (c) của Chú giải tổng quát Phần XI) được làm từ sợi lanh.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ",
+   "sangNhom": "3005",
+   "nguon": "nhom5309.nhom",
+   "trich": "Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ (nhóm 30.05) bị loại trừ khỏi nhóm này.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Vải dệt thoi trong đó lanh và đay chiếm tỷ trọng lớn hơn bông thuộc nhóm nào?",
+   "neuCo": "5309",
+   "neuKhong": "5212",
+   "nguon": "phan53.phan",
+   "trich": "Vải dệt thoi bao gồm Tỷ trọng lanh 35% Tỷ trọng đay 25% Tỷ trọng bông 40% Hàng dệt này không được phân loại trong nhóm 52.12 (vải dệt thoi khác từ bông) nhưng lại được phân loại trong nhóm 53.09 (vải dệt thoi từ sợi lanh). … tỷ lệ bông không được để ý đến theo Chú giải 2 (B) (b) của Phần này.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "530911",
+   "fact": "han_luong_lanh",
+   "op": ">=",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.530911",
+   "trich": "Fabrics, woven; of flax, containing 85% or more flax, unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "530911",
+   "fact": "la_vai_det_thoi_chua_tay_trang_hoac_da_tay_trang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "phan53.phan",
+   "trich": "(d) Vải dệt thoi chưa tẩy trắng Vải dệt thoi được làm từ sợi chưa tẩy trắng và vải đó chưa được tẩy trắng, nhuộm hoặc in. … (e) Vải dệt thoi đã tẩy trắng Loại vải dệt thoi: (i) đã được tẩy trắng hoặc, trừ khi có yêu cầu khác, nhuộm tăng trắng, hoặc xử lý bằng loại hồ tăng trắng, ở dạng mảnh;",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "530919",
+   "fact": "han_luong_lanh",
+   "op": ">=",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.530919",
+   "trich": "Fabrics, woven; of flax, containing 85% or more flax, other than bleached or unbleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "530919",
+   "fact": "khong_phai_vai_chua_tay_trang_hoac_da_tay_trang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.530919",
+   "trich": "other than bleached or unbleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "530921",
+   "fact": "han_luong_lanh",
+   "op": "<",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.530921",
+   "trich": "Fabrics, woven; of flax, containing less than 85% flax, unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "530921",
+   "fact": "la_vai_det_thoi_chua_tay_trang_hoac_da_tay_trang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "phan53.phan",
+   "trich": "(d) Vải dệt thoi chưa tẩy trắng Vải dệt thoi được làm từ sợi chưa tẩy trắng và vải đó chưa được tẩy trắng, nhuộm hoặc in. … (e) Vải dệt thoi đã tẩy trắng Loại vải dệt thoi: (i) đã được tẩy trắng hoặc, trừ khi có yêu cầu khác, nhuộm tăng trắng, hoặc xử lý bằng loại hồ tăng trắng, ở dạng mảnh;",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "530929",
+   "fact": "han_luong_lanh",
+   "op": "<",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.530929",
+   "trich": "Fabrics, woven; of flax, containing less than 85% flax, other than unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "530929",
+   "fact": "khong_phai_vai_chua_tay_trang_hoac_da_tay_trang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.530929",
+   "trich": "other than unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "53091100",
+   "dieuKien": "Vải dệt thoi từ sợi lanh chứa 85% trở lên lanh, chưa tẩy trắng hoặc đã tẩy trắng (biểu thuế ghi \"Chưa tẩy trắng hoặc đã tẩy trắng\").",
+   "tieuChi": {
+    "fact": "han_luong_lanh",
+    "op": ">=",
+    "value": 85,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "wco.530911",
+   "trich": "Fabrics, woven; of flax, containing 85% or more flax, unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "53091900",
+   "dieuKien": "Vải dệt thoi từ sợi lanh chứa 85% trở lên lanh, khác loại chưa tẩy trắng hoặc đã tẩy trắng (biểu thuế ghi \"Loại khác\").",
+   "tieuChi": {
+    "fact": "han_luong_lanh",
+    "op": ">=",
+    "value": 85,
+    "donVi": "%"
+   },
+   "loaiKhac": true,
+   "nguon": "wco.530919",
+   "trich": "Fabrics, woven; of flax, containing 85% or more flax, other than bleached or unbleached",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "53091",
+    "truAnhEm": [
+     "53091100"
+    ],
+    "toTienCoTen": "5309",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "53092100",
+   "dieuKien": "Vải dệt thoi từ sợi lanh chứa dưới 85% lanh, chưa tẩy trắng hoặc đã tẩy trắng (biểu thuế ghi \"Chưa tẩy trắng hoặc đã tẩy trắng\").",
+   "tieuChi": {
+    "fact": "han_luong_lanh",
+    "op": "<",
+    "value": 85,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "wco.530921",
+   "trich": "Fabrics, woven; of flax, containing less than 85% flax, unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "53092900",
+   "dieuKien": "Vải dệt thoi từ sợi lanh chứa dưới 85% lanh, khác loại chưa tẩy trắng hoặc đã tẩy trắng (biểu thuều ghi \"Loại khác\").",
+   "tieuChi": {
+    "fact": "han_luong_lanh",
+    "op": "<",
+    "value": 85,
+    "donVi": "%"
+   },
+   "loaiKhac": true,
+   "nguon": "wco.530929",
+   "trich": "Fabrics, woven; of flax, containing less than 85% flax, other than unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "53092",
+    "truAnhEm": [
+     "53092100"
+    ],
+    "toTienCoTen": "5309",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5309",
+    "cap": 4,
+    "cha": "53",
+    "tenVi": "Vải dệt thoi từ sợi lanh.",
+    "tenEn": "Woven fabrics of flax",
+    "suyRa": false
+   },
+   {
+    "id": "53091",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5309",
+    "tenVi": "Có hàm lượng lanh chiếm từ 85% trở lên tính theo khối lượng",
+    "tenEn": "Containing 85% or more by weight of flax",
+    "suyRa": true
+   },
+   {
+    "id": "53091100",
+    "cap": 8,
+    "cha": "53091",
+    "tenVi": "Chưa tẩy trắng hoặc đã tẩy trắng",
+    "tenEn": "Fabrics, woven; of flax, containing 85% or more flax, unbleached or bleached",
+    "suyRa": false,
+    "laPhanNhom": "530911"
+   },
+   {
+    "id": "53091900",
+    "cap": 8,
+    "cha": "53091",
+    "tenVi": "Loại khác",
+    "tenEn": "Fabrics, woven; of flax, containing 85% or more flax, other than bleached or unbleached",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "530919"
+   },
+   {
+    "id": "53092",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5309",
+    "tenVi": "Có hàm lượng lanh chiếm dưới 85% tính theo khối lượng",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "53092100",
+    "cap": 8,
+    "cha": "53092",
+    "tenVi": "Chưa tẩy trắng hoặc đã tẩy trắng",
+    "tenEn": "Fabrics, woven; of flax, containing less than 85% flax, unbleached or bleached",
+    "suyRa": false,
+    "laPhanNhom": "530921"
+   },
+   {
+    "id": "53092900",
+    "cap": 8,
+    "cha": "53092",
+    "tenVi": "Loại khác",
+    "tenEn": "Fabrics, woven; of flax, containing less than 85% flax, other than unbleached or bleached",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "530929"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom5309.nhom",
+  "phan53.phan",
+  "wco.530911",
+  "wco.530919",
+  "wco.530921",
+  "wco.530929"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-21T14:48:49.201Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 16,
+  "dat": 16,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan53.phan (46130→25000)"
+  ]
+ }
+}

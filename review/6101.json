@@ -1,0 +1,53 @@
+{
+  "phamVi": {
+    "hanhDong": "giu",
+    "lyDo": "Text và trich khớp với nguồn nhom6101.nhom; trich liệt kê đầy đủ các loại áo, có nêu 'áo jacket trượt tuyết' và 'áo Jacket chống gió' đúng như nguyên văn; phạm vi giới hạn 'nam giới hoặc trẻ em trai' khớp với nhóm 6101.",
+    "sua": null
+  },
+  "dieuKienVao": [
+    {
+      "index": 0,
+      "hanhDong": "xoa",
+      "lyDo": "Câu trich 'chúng thường mặc phủ bên ngoài...' dùng 'thường' - đây là câu cho phép/mô tả đặc điểm phạm vi nhóm, KHÔNG phải điều kiện VÀO bắt buộc. Quy tắc _he-thong cấm đặt value=true cho câu có 'thường'. Ngoài ra đây là mô tả đặc điểm nhóm 6101 (phạm vi), không phải dieuKienVao. Đẩy 'thường mặc phủ' vào dieuKienVao là lỗi phân loại.",
+      "sua": null
+    },
+    {
+      "index": 1,
+      "hanhDong": "sua",
+      "lyDo": "Trich lược mất ngoại lệ 'Những quy định này không áp dụng cho những loại quần áo mà cách cắt may của chúng thể hiện rõ ràng là dùng cho nam hoặc nữ' ngay sau câu cốt lõi. Theo quy tắc, đoạn lược không được chứa ngoại lệ. Cần kéo nguyên câu hoặc chuyển thành fact riêng.",
+      "sua": {
+        "trich": "Quần áo thuộc Chương này được thiết kế để cài thân trước từ trái qua phải được coi là quần áo nam giới hoặc trẻ em trai, và quần áo được thiết kế để cài thân trước từ phải qua trái được coi là quần áo phụ nữ hoặc trẻ em gái. Những quy định này không áp dụng cho những loại quần áo mà cách cắt may của chúng thể hiện rõ ràng là dùng cho nam hoặc nữ."
+      }
+    },
+    {
+      "index": 2,
+      "hanhDong": "xoa",
+      "lyDo": "Fact 'khong_xac_dinh_duoc_nam_hoac_nu_theo_cach_cat_may' với value=false nghĩa là 'xác định được' - nhưng câu trich 'Quần áo không thể nhận biết được... thì được xếp vào nhóm quần áo phụ nữ' chỉ nói trường hợp value=true (không nhận biết được → nữ). Không có căn cứ nào trong nguồn cho chiều ngược lại 'xác định được → nam'. Hơn nữa vế 'xác định được' thuộc về dieuKienVao[1] đã có (cài từ trái qua phải).",
+      "sua": null
+    }
+  ],
+  "loaiTru": [
+    {
+      "index": 0,
+      "hanhDong": "sua",
+      "lyDo": "dieuKien thêm chữ '(áo khoác dạng com-lê)' không có trong trich nguyên văn. Trich chỉ nói 'Quần áo thuộc nhóm 61.03'. Phần '(áo khoác dạng com-lê)' là từ chú giải chương 61.3 nói về định nghĩa com-lê - không thuộc nguồn nhom6101.nhom. Bỏ chữ thừa.",
+      "sua": {
+        "dieuKien": "quần áo thuộc nhóm 61.03"
+      }
+    },
+    {
+      "index": 1,
+      "hanhDong": "giu",
+      "lyDo": "Trich nêu đích danh nhóm 61.13; điều kiện 'quần áo hoàn chỉnh được làm từ các loại vải dệt kim hoặc móc thuộc các nhóm 59.03, 59.06 hoặc 59.07' khớp nguyên văn. OK.",
+      "sua": null
+    }
+  ],
+  "phanBiet": [
+    {
+      "index": 0,
+      "hanhDong": "giu",
+      "lyDo": "Sau khi tra lại: nguồn 'ch61.chuong' là ĐÚNG. Câu trich về 'sản phẩm làm từ sản phẩm dệt may đã chần dạng chiếc thuộc nhóm 58.11' nằm trong file nguồn 6101.txt dưới header [ch61.chuong] (line 16-134), cụ thể mục 'Chú giải phân nhóm' ở line 131. Đây là chú giải phân nhóm nằm trong cùng phần với ch61.chuong. Đề xuất đổi sang 'phan61.phan' ban đầu SAI - vì phan61.phan (chú giải Phần XI) không chứa câu này.",
+      "sua": null
+    }
+  ]
+}
