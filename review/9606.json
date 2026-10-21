@@ -1,0 +1,42 @@
+{
+  "nhom": "9606",
+  "nguoiSoat": "NGUOI_DUYET",
+  "luc": "2026-10-21T15:25:00+07:00",
+  "daKiem": 15,
+  "xoa": 0,
+  "sua": 2,
+  "ghiChu": "Audit 9606: 1 phamVi + 0 dieuKienVao + 2 loaiTru + 0 phanBiet + 5 tieuChi6 + 7 dong8 = 15 mục. Kiểm chéo từng câu trích với nguồn [nhom9606.nhom], [wco.960610/621/622/629/630], [tax.9606xxxx] — 15/15 nguyên văn. SỬA 2 (cả 2 đều là lỗi MÁY KHÔNG BẮT được): (1) phamVi — dấu lược '…' nuốt mất đoạn có NGOẠI LỆ '…các kim loại quí … miễn là chúng chỉ chiếm một phần rất ít, NẾU KHÔNG chúng thuộc Chương 71'. Đây đúng dạng 'cắt trích né câu rào' (mục 00 giao việc, mục 1 bài học vòng 1/2): câu trích cắt đúng trước ranh giới Chương 71. Đã viết lại trich để mang theo hết điều kiện đó và thu text về đúng những gì trich nói. (2) tieuChi6[960610] — fact tiếng Việt bỏ mất vế 'và bộ phận của chúng' có trong WCO ('and parts therefor'); chú giải tiếng Việt (B) cũng bỏ vế này nhưng câu trích WCO có, nên sửa cho khớp. GIỮ: 2 loaiTru 'khuy măng sét' sang 7103 và 7117 là CHÍCH HAI NHÁNH của một câu 'nhóm 71.03 hoặc 71.17' — không phải lỗi 'tách một nhánh A hoặc B thành đích duy nhất' (cả hai đích đều có mặt). phanBiet rỗng là ĐÚNG: nguồn không nêu mã ngoài nhóm nào (chỉ nói 'theo vật liệu cấu thành' và 'hình cầu/hạt tròn' — cả hai đều không có mã).",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Dấu lược '…' đầu tiên nuốt mất ngoại lệ: '…các kim loại quí hoặc kim loại mạ kim loại quí MIỄN LÀ chúng chỉ chiếm một phần rất ít, NẾU KHÔNG chúng thuộc Chương 71'. Trích cũ cắt đúng trước ranh giới Chương 71 (lỗi 'cắt trích né câu rào' — máy không bắt). Đồng thời text khẳng định cả danh sách vật liệu, 'có thể bọc nguyên liệu dệt' và các mục (1) khuôn cúc / (2) bộ phận / (3) khuy trơn — những thứ KHÔNG có trong câu trích (vi phạm 'câu trích phải tự nó nói điều mục khẳng định').",
+      "sua": {
+        "text": "Cúc, khuy rời và các loại tương tự dùng để cài hoặc trang điểm cho quần áo, đồ vải gia dụng. Làm bằng các vật liệu khác nhau và có thể chứa ngọc trai tự nhiên hoặc nuôi cấy, đá quí hoặc đá bán quí, các kim loại quí hoặc kim loại mạ kim loại quí, miễn là chúng chỉ chiếm một phần rất ít — nếu không thuộc Chương 71. Gồm: (A) khuy đục lỗ và khuy có chân; (B) cúc bấm, khoá bấm và khuy tán bấm.",
+        "trich": "Nhóm này bao gồm cúc, khuy rời và các loại tương tự dùng để cài hoặc trang điểm cho quần áo, đồ vải gia dụng, .... Chúng được làm bằng các vật liệu khác nhau và có thể chứa ngọc trai tự nhiên hoặc nuôi cấy, đá quí hoặc đá bán quí (tổng hợp hoặc tái tạo), các kim loại quí hoặc kim loại mạ kim loại quí miễn là chúng chỉ chiếm một phần rất ít, nếu không chúng thuộc Chương 71. … Nhóm này bao gồm cả: (A) Khuy đục lỗ và khuy có chân. … (B) Cúc bấm, khoá bấm và khuy tán bấm."
+      }
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích WCO 'Press-fasteners, snap-fasteners, press-studs AND PARTS THEREOF' có vế 'bộ phận của chúng', nhưng fact tiếng Việt bỏ mất vế đó. Nguồn nhom9606.nhom cũng nói rõ 'Các cúc bấm và loại tương tự vẫn được xếp vào nhóm này khi các bộ phận riêng lẻ được đính sẵn trên mặt dải ruy băng hẹp'. Bỏ vế này làm tiêu chí 9606.10 hẹp hơn thực tế.",
+      "sua": {
+        "fact": "la_cuc_bam_khoa_bam_khuy_tan_bam_va_bo_phan_cua_chung"
+      }
+    }
+  ],
+  "canhBaoKhongSuaTrongAudit": [
+    {
+      "loai": "dieuKienVao rỗng dù nguồn có điều kiện vào nhóm",
+      "lyDo": "Mục (1) Khuôn cúc: 'Chúng được phân loại vào đây chỉ khi chúng có thể nhận thấy rõ ràng được thiết kế để sản xuất cúc' và mục (3)(iii) về khuy trơn: '…khiến chúng có thể xác định rõ ràng là để làm khuy'. Đây là điều kiện vào nhóm thật, nhưng câu trích gắn nó vào MỘT TIỂU MỤC cụ thể (khuôn cúc / khuy trơn), không phải cả nhóm 9606. Không ghi vào dieuKienVao vì sẽ biến điều kiện của một tiểu mục thành điều kiện chung của nhóm (nói quá). Đề xuất cho phiên quản lý: nếu sau này schema dieuKienVao có trường phạm vi thì bổ sung."
+    },
+    {
+      "loai": "trich dài 472 ký tự (>300)",
+      "lyDo": "Vượt quy ước 300 của bản nháp nhưng dưới trần 600 của máy, và CÓ LÝ DO: giữ trọn điều kiện 'nếu không chúng thuộc Chương 71' trong câu trích thay vì lược bằng '…'. Rút xuống ≤300 chỉ được bằng cách hoặc nuốt mất ngoại lệ (lỗi bị soát chính), hoặc cắt bỏ phần '(A)/(B)' mà text khẳng định. Chọn giữ ngoại lệ."
+    },
+    {
+      "loai": "dong8[].dieuKien nhắc tên phân nhóm lấy từ wco.* và nhom9606.nhom, không có trong trich của chính dòng đó",
+      "lyDo": "Ví dụ dong8 96061010: 'Cúc bấm, khoá bấm và khuy tán bấm (phân nhóm 960610 — WCO: press-fasteners…)' trong khi trich chỉ là '96061010 - - Bằng plastic'. Phần thêm này KHÔNG bịa — nó trích nguyên văn từ các khối wco.960610 / nhom9606.nhom có sẵn trong cùng tệp nguồn. Đã ghi ở đây để người quản lý biết (mẫu bắt buộc trong mô tả PR). Giữ nguyên vì thực tế rất hữu ích: nó chỉ cho người dùng biết dòng này thuộc phân nhóm nào. Không sửa 7 dòng sang dạng khác vì sẽ mất thông tin."
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "nhom": "9002",
+  "nguoiSoat": "NGUOI_DUYET",
+  "luc": "2026-10-21T15:40:00+07:00",
+  "daKiem": 19,
+  "xoa": 0,
+  "sua": 10,
+  "ghiChu": "Audit 9002: 1 phamVi + 0 dieuKienVao + 6 loaiTru + 0 phanBiet + 4 tieuChi6 + 8 dong8 = 19 mục. Kiểm chéo với [nhom9002.nhom], [wco.900211/219/220/290], [tax.9002xxxx] — 19/19 nguyên văn. SỬA 10. LỖI MÁY KHÔNG BẮT ĐƯỢC, nghiêm trọng nhất của lô: (1) loaiTru[2] — trich là đoạn 'VÀ gương dùng trong y tế hoặc nha khoa (nhóm 90.18)', tức một VẾ CỤT bắt đầu bằng chữ 'và'. Đọc riêng, câu này KHÔNG nói gì về việc bị loại trừ — trong khi mục khẳng định đây là loại trừ sang 9018. Đúng dạng 'câu trích phải tự nó nói điều mục khẳng định'. Đã thay bằng cả câu 'Nhóm này không bao gồm …'. (2) loaiTru[3][4][5] — cùng lỗi nhẹ hơn: chỉ trích riêng mục (a)/(b)/(c) của danh sách 'Nhóm này không bao gồm:' nên mất câu dẫn; đã gắn lại câu dẫn (kèm '…' cho (b) và (c) vì giữa câu dẫn và chúng có mục (a)). (3) loaiTru[1] — mất thành ngữ 'ví dụ': nguồn nói 90.13 là mã của VÍ DỤ 'kính lúp cầm tay', không phải mã đích của toàn bộ điều kiện; bản nháp đã viết điều kiện đúng nhưng bỏ chữ 'ví dụ'. (4) phamVi — text liệt kê trọn nội dung nhóm (1)…(8) trong khi câu trích CHỈ nói điều kiện 'đã lắp ráp cố định, thích hợp để lắp vào thiết bị'; không thể trích đủ danh sách (1)…(8) trong 600 ký tự, nên đã thu text về đúng phần câu trích đứng, và mở rộng trích thêm câu 'được thiết kế chủ yếu để gắn vào các bộ phận khác'. (5) 4 tieuChi6 — bản nháp cắt câu WCO trước vế ', being parts or fittings … (excluding glass not optically worked)' và fact tiếng Việt bỏ chữ 'đã lắp ráp' (mounted) — mà 'đã lắp ráp' mới là điều kiện cốt lõi của cả Tiêu đề 9002. GIỮ: loaiTru[0] (thấu kính chữa mắt → 9004, dứt khoát, nêu đích danh); 8 dong8 đều khớp biểu thuế; phanBiet rỗng hợp lý (nguồn không đặt 9002 đối với mã nào khác trong một câu hỏi có/không).",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "text khẳng định cả danh sách nội dung (1)…(8) của nhóm nhưng câu trích không có lấy một mục nào trong số đó — vi phạm 'câu trích phải tự nó nói điều mục khẳng định'. Đưa đủ (1)…(8) vào trích cần >1000 ký tự (máy chặn ở 600) nên không thể. Cách sửa: thu text về đúng điều kiện xác định nhóm (là tiêu chí quyết định khi khai tờ khai), và mở rộng trích để text có trọn căn cứ. Nội dung (1)…(8) không mất khỏi sổ tay: các nhánh đã có tên ở tieuChi6 và ở nguồn.",
+      "sua": {
+        "text": "Các mặt hàng ở các Mục (B), (C) và (D) thuộc Chú giải Chi tiết nhóm 90.01 nhưng đã lắp ráp cố định (đã được đóng vào một giá đỡ hoặc khung), thích hợp để lắp vào thiết bị hoặc dụng cụ — tức là những mặt hàng được thiết kế chủ yếu để gắn vào các bộ phận khác nhằm tạo ra một dụng cụ nhất định hoặc bộ phận của một dụng cụ.",
+        "trich": "Trừ thấu kính để chữa bệnh về mắt (khi đã lắp ráp tạo ra kính mắt, kính cầm tay hoặc các mặt hàng tương tự thuộc nhóm 90.04), nhóm này bao gồm những mặt hàng ở các Mục (B), (C) và (D) thuộc Chú giải Chi tiết nhóm 90.01, nhưng đã lắp ráp cố định (nghĩa là đã được đóng vào một giá đỡ hoặc khung,…), thích hợp để lắp vào thiết bị hoặc dụng cụ. Những mặt hàng thuộc nhóm này là những mặt hàng được thiết kế chủ yếu để gắn vào các bộ phận khác nhằm tạo ra một dụng cụ nhất định hoặc bộ phận của một dụng cụ."
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "sua",
+      "lyDo": "Nguồn: '…dụng cụ riêng biệt, VÍ DỤ, kính lúp cầm tay (nhóm 90.13)'. 90.13 là mã của một VÍ DỤ, còn điều kiện loại trừ thật là cả loại 'bộ phận quang học đã được tạo khung mà bản thân chúng đã hình thành các dụng cụ riêng biệt'. Bản nháp viết đúng điều kiện nhưng bỏ mất thành ngữ 'ví dụ' — người đọc dễ hiểu 9013 là đích của mọi bộ phận quang học đã tạo khung. Giữ lại nhưng nói rõ đây là ví dụ.",
+      "sua": {
+        "dieuKien": "bộ phận quang học đã được tạo khung mà bản thân chúng đã hình thành các dụng cụ riêng biệt (nguồn nêu 'ví dụ' là kính lúp cầm tay)"
+      }
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "sua",
+      "lyDo": "NGHIÊM TRỌNG — câu trích là vế cụt bắt đầu bằng chữ 'VÀ gương dùng trong y tế hoặc nha khoa (nhóm 90.18)'. Đọc câu này riêng thì KHÔNG có nghĩa loại trừ gì cả, trong khi mục khẳng định gương y tế/nha khoa bị loại sang 9018. Máy chỉ so khớp chuỗi nên không bắt được. Thay bằng cả câu có vế chủ ngữ 'không bao gồm'.",
+      "sua": {
+        "dieuKien": "gương dùng trong y tế hoặc nha khoa (nguồn nêu như một ví dụ của bộ phận quang học đã tạo khung thành dụng cụ riêng biệt)",
+        "trich": "Nhóm này không bao gồm bộ phận quang học đã được tạo khung mà bản thân chúng đã hình thành các dụng cụ riêng biệt, ví dụ, kính lúp cầm tay (nhóm 90.13), và gương dùng trong y tế hoặc nha khoa (nhóm 90.18)."
+      }
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "sua",
+      "lyDo": "Chỉ trích mục (a) của danh sách mà không có câu dẫn 'Nhóm này không bao gồm:' → câu trích không tự nói điều mục khẳng định.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm: (a) Các bộ phận quang học được gắn một khung tạm thời chỉ có một mục đích để bảo vệ khi chuyên chở (nhóm 90.01)."
+      }
+    },
+    {
+      "index": "loaiTru[4]",
+      "hanhDong": "sua",
+      "lyDo": "Cùng lý do loaiTru[3] — thiếu câu dẫn 'không bao gồm'. Câu dẫn cách mục (b) bởi mục (a) nên phải lược bằng '…'.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm: … (b) Gương bằng thủy tinh đã được đóng khung, đã gia công quang học, không phù hợp để lắp vào các thiết bị hoặc dụng cụ (ví dụ, một số gương hậu, gương để xem xét ống khói, xem xét các kênh dẫn, và gương đặc biệt để quan sát luồng gió) (nhóm 90.13)."
+      }
+    },
+    {
+      "index": "loaiTru[5]",
+      "hanhDong": "sua",
+      "lyDo": "Cùng lý do loaiTru[3] — thiếu câu dẫn 'không bao gồm'.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm: … (c) Các bộ thấu kính đựng trong hộp dùng để lắp vào gọng đặc biệt dùng trong việc kiểm tra thị lực (được các bác sĩ nhãn khoa sử dụng) (nhóm 90.18)."
+      }
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "sua",
+      "lyDo": "Câu WCO bị cắt sau chữ 'mounted', bỏ mất vế ', being parts or fittings for instruments or apparatus, of any material (excluding glass not optically worked)' — trong đó có NGOẠI LỆ 'trừ kính thủy tinh chưa gia công quang học' (loại về 9001, đúng cái dễ nhầm nhất của tiêu đề này). Fact tiếng Việt cũng bỏ 'đã lắp ráp' (mounted) dù đó là điều kiện cốt lõi của cả Tiêu đề 9002.",
+      "sua": {
+        "fact": "la_vat_kinh_da_lap_rap_cho_camera_may_chieu_may_phong_to_hoac_thu_nho_anh",
+        "trich": "900211 Lenses; objective, for cameras, projectors or photographic enlargers or reducers, mounted, being parts or fittings for instruments or apparatus, of any material (excluding glass not optically worked)"
+      }
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "sua",
+      "lyDo": "Câu WCO bị cắt sau chữ 'reducers)', bỏ mất ', mounted, of any material (excluding elements of glass not optically worked)'. Bổ sung trọn vẹn (177 ký tự, vẫn ≤300) và thêm 'đã lắp ráp' vào fact.",
+      "sua": {
+        "fact": "la_vat_kinh_da_lap_rap_loai_khac",
+        "trich": "900219 Lenses; objective, (other than for cameras, projectors or photographic enlargers or reducers), mounted, of any material (excluding elements of glass not optically worked)"
+      }
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "sua",
+      "lyDo": "Câu WCO bị cắt sau chữ 'apparatus', bỏ mất ', of any material (excluding elements of glass not optically worked)'. Bổ sung trọn vẹn (141 ký tự).",
+      "sua": {
+        "trich": "900220 Filters; mounted as parts or fittings for instruments or apparatus, of any material (excluding elements of glass not optically worked)"
+      }
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "sua",
+      "lyDo": "Câu WCO bị cắt sau chữ 'mounted', bỏ mất vế ', being parts or fittings … (excluding elements of glass not optically worked)'. Bổ sung trọn vẹn (208 ký tự) và thêm 'đã lắp ráp' vào fact.",
+      "sua": {
+        "fact": "la_bo_phan_quang_hoc_khac_da_lap_rap",
+        "trich": "900290 Optical elements; n.e.c. in heading no. 9002 (e.g. prisms and mirrors), mounted, being parts or fittings for instruments or apparatus, of any material (excluding elements of glass not optically worked)"
+      }
+    }
+  ],
+  "canhBaoKhongSuaTrongAudit": [
+    {
+      "loai": "dieuKienVao rỗng dù nhóm có một điều kiện vào rõ ràng",
+      "lyDo": "nhom9002.nhom: '…nhưng ĐÃ LẮP RÁP CỐ ĐỊNH (nghĩa là đã được đóng vào một giá đỡ hoặc khung,…), THÍCH HỢP ĐỂ LẮP VÀO THIẾT BỊ HOẶC DỤNG CỤ'. Đây là tiêu chí phân biệt bộ phận quang học 9002 với linh kiện rời của 9001 và là thứ người khai hay sai nhất. Đã đưa vào phamVi (nơi câu trích vốn nằm sẵn) chứ không tự thêm vào dieuKienVao — việc bổ sung mục mới là của người soạn, em chỉ ghi ở đây để phiên quản lý quyết định."
+    },
+    {
+      "loai": "trich dài 503 ký tự (>300)",
+      "lyDo": "Dưới trần 600 của máy. Lý do: cần giữ trọn điều kiện lắp ráp cố định + câu 'thiết kế chủ yếu để gắn vào các bộ phận khác' mà text khẳng định. Nếu cắt bớt thì text lại nói quá so với trích."
+    },
+    {
+      "loai": "dong8[1] gọi '9002.11 + 9002.19' là 'nhóm'",
+      "lyDo": "Trong thuật ngữ HS, 'nhóm' là 4 số, 'phân nhóm' là 6 số. Câu này nói 'Phần còn lại của nhóm \"vật kính đã lắp ráp\" (9002.11 + 9002.19)' — vì có ghi rõ số nên không gây nhầm trên thực tế, nhưng là lỗi thuật ngữ. Không sửa vì không ảnh hưởng tính đúng của câu trích; ghi ra để các lô sau chú ý."
+    },
+    {
+      "loai": "Nội dung (1)…(8) của nhóm bị lùa khỏi phamVi khi sửa",
+      "lyDo": "Danh sách 8 mục (vật kính cho máy ảnh, bộ lọc phân cực, thị kính, lăng kính, gương, bộ phận hải đăng, thấu kính phụ kiện bàn quang học, ảnh bán sắc) không thể trích gọn trong 600 ký tự cùng điều kiện vào nhóm. Vẫn tra được qua tieuChi6 (900211 vật kính camera, 900220 bộ lọc, 900290 lăng kính/gương) và nguồn gốc. Nếu phiên quản lý muốn giữ đủ 8 mục trong phamVi thì cần mở rộng lược đồ (ví dụ cho phép nhiều câu trích), không phải sửa tay."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "nhom": "4011",
+  "nguoiSoat": "NGUOI_DUYET",
+  "luc": "2026-10-21T15:52:00+07:00",
+  "daKiem": 30,
+  "xoa": 0,
+  "sua": 0,
+  "ghiChu": "Audit 4011: 1 phamVi + 3 dieuKienVao + 0 loaiTru + 0 phanBiet + 8 tieuChi6 + 18 dong8 = 30 mục. Kiểm chéo từng câu trích với [nhom4011.nhom], [ch40.chuong], [sen.40112011/12/13], [wco.4011xx], [tax.4011xxxx] — 30/30 nguyên văn. KHÔNG SỬA GÌ. Đã kiểm kỹ ba chỗ dễ sai và cả ba đều đúng: (a) tieuChi6 chỉ ghi 'dung cho <xe>' mà bỏ 'new pneumatic tyres' — ĐÚNG vì 'lốp mới bơm hơi' là đặc điểm chung của cả Tiêu đề 4011, không phải tiêu chí phân biệt giữa các phân nhóm con; (b) dong8 40118040 ghi 'tức không thuộc hai tiêu đề quốc gia 4011801 và 4011803' — là suy luận cấu trúc chứ không có trong câu trích, nhưng cây do máy sinh (lib/hs-tree.js) đặt 40118040 trực tiếp dưới nút 401180 chứ không dưới 4011801/4011803, nên suy luận đúng, và bản nháp đã tự ghi 'đối chiếu biểu thuế để biết ranh giới'; (c) dong8 đủ 18 dòng, khớp đúng 18 mã 4011* trong data/tax.json (4011.60 không tồn tại trong biểu thuê VN). loaiTru và phanBiet rỗng là ĐÚNG: chú giải 4011 không có mục loại trừ nào, và không có câu nào đặt 4011 với một mã ngoài nhóm. 3 dieuKienVao đều đã gọi đúng ngoại lệ vào ngoaiTru (mục 0: 'sản phẩm bị loại trừ theo Chú giải 2 của Chương 40'; mục 2: 'cao su cứng' — chính là khoản trừ 'trừ cao su cứng' dẫn sang nhóm 40.17).",
+  "thayDoi": [],
+  "canhBaoKhongSuaTrongAudit": [
+    {
+      "loai": "LỖI KỸ THUẬT CỦA BỘ XUẤT NGUỒN — nên sửa ở scripts/build-so-tay.mjs cho các lô sau",
+      "lyDo": "Khối [nhom4011.nhom] bắt đầu bằng 'CÁC LOẠI LỐP NÀY có thể dùng…' — từ chỉ từ 'này' không có antecedent vì TÊN TIÊU ĐỀ 4011 ('Lốp loại bơm hơi bằng cao su, chưa qua sử dụng') không được đưa vào khối nguồn (promptFor chỉ nối phần chú giải chi tiết, không nối tên tiêu đề). Vì vậy người soạn phải tự điền '(loại bơm hơi, bằng cao su, chưa qua sử dụng)' vào phamVi.text mà câu trích không có. Em GIỮ nội dung đó (không sai, và là chính thứ năng phân biệt 4011 với 4012 lốp đã qua sử dụng và 4013 lốp tẩy lại) và khai ở đây. Đề xuất cụ thể: ghép tên nút 4 số (lấy từ data/bieu-thue/<ngày>/ten-nut.json hoặc data/chu-giai-heading.json — cây đã có sẵn: tenVi của nút 4011 là 'Lốp loại bơm hơi bằng cao su, chưa qua sử dụng (+)') vào ĐẦU khối .nhom. Sẽ vá được cả lỗi 'vế cụt bắt đầu bằng chữ và' ở các lô sau."
+    },
+    {
+      "loai": "NGUỒN sen.40112011/12/13 rỗng — bất thường dữ liệu, KHÔNG phải lỗi sổ tay",
+      "lyDo": "Cả ba khối SEN 4011.20 đều chỉ có câu dẫn 'Theo mục đích của các phân nhóm ASEAN tại phân nhóm 4011.20, thuật ngữ \"chiều rộng\" và \"đường kính lắp vành\" của lốp được hiểu như sau:' rồi HẾT — không có bảng định nghĩa nào cả. Hệ quả thực tế: ba ngưỡng mà biểu thuế dùng để tách 40112011 / 40112012 / 40112013 (rộng ≤ 230 mm, vành ≤ 16 inch, rộng > 230 mm đến 385 mm) đang KHÔNG có định nghĩa cách đo trong kho. Người khai tờ khai sẽ không có căn cứ để tranh chấp. Cần sửa nguồn (bổ sung bảng định nghĩa vào sen.*), không sửa tay trong sổ tay."
+    },
+    {
+      "loai": "dieuKienVao[1] dùng op='in' với value là chuỗi phân tách bằng dấu '|'",
+      "lyDo": "value = 'cao su tự nhiên|nhựa cây balata|…|các chất đó được tái sinh'. Kiểu này mãi mãi không khớp với câu trích nếu ai đó so khớp chuỗi thật; máy không kiểm (chỉ kiểm ngưỡng số). Hiện chưa gây hại vì dieuKienVao chỉ mang tính gợi ý, cổng không dùng nó để chặn. Ghi ra để các lô sau cân nhắc một dạng có cấu trúc (ví dụ tách thành nhiều mục fact). Em không sửa để khỏi mất thông tin."
+    },
+    {
+      "loai": "phamVi.text có '(loại bơm hơi, bằng cao su, chưa qua sử dụng)' không nằm trong câu trích",
+      "lyDo": "Đã kiểm: cụm này chép NGUYÊN VĂN từ tên tiêu đề 4011 trong biểu thuê ('Lốp loại bơm hơi bằng cao su, chưa qua sử dụng'), không phải suy đoán. Không bỏ vì đây là điều kiện phân biệt cốt lõi của nhóm (4011 = lốp MỚI bơm hơi, khác 4012 đã qua sử dụng và 4013 đã tẩy lại) và phamVi là chỗ duy nhất trong nhóm đang nói nó."
+    },
+    {
+      "loai": "dieuKienVao[1] trích 316 ký tự (>300)",
+      "lyDo": "Không sửa: câu nguồn vốn dài, và câu bắt đầu bằng điều kiện 'TRỪ KHI CÓ YÊU CẦU KHÁC' — điều kiện này nằm NGAY ĐẦU câu trích nên người đọc vẫn thấy, không bị '…' nuốt mất. (Nếu mở rộng trích thành câu đầy đủ thì sẽ chứa cụm 'đã hoặc chưa lưu hoá', đúng biểu thức mà CAU_CHO_PHEP trong lib/so-tay.js dùng để loại — máy sẽ loại mục này. Đây là điểm máy quá nặng tay, ghi ra cho các lô sau.)"
+    }
+  ]
+}

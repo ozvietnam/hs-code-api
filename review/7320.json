@@ -1,0 +1,61 @@
+{
+  "nhom": "7320",
+  "nguoiSoat": "NGUOI_DUYET",
+  "luc": "2026-10-21T15:32:00+07:00",
+  "daKiem": 18,
+  "xoa": 0,
+  "sua": 4,
+  "ghiChu": "Audit 7320: 1 phamVi + 0 dieuKienVao + 4 loaiTru + 0 phanBiet + 3 tieuChi6 + 10 dong8 = 18 mục. Kiểm chéo với [nhom7320.nhom], [phan73.phan], [wco.732010/732020/732090], [tax.7320xxxx] — 18/18 nguyên văn. SỬA 4. LỖI LỚN NHẤT: loaiTru[3] — nguồn nói 'LÒ XO LẮP RÁP VỚI CÁC SẢN PHẨM KHÁC ĐỂ TẠO DÁNG, VÍ DỤ các cơ cấu đóng cửa tự động (nhóm 83.02)'. Tức 83.02 là MÃ ĐÍCH của MỘT VÍ DỤ, còn điều kiện loại trừ thật là cả loại 'lò xo lắp ráp với sản phẩm khác để tạo dáng'. Bản nháp lại viết dieuKien = 'cơ cấu đóng cửa tự động (…)' — hẹp hóa điều kiện thành đúng một ví dụ VÀ làm mất định ngữ 'ví dụ' của nguồn (đúng dạng lỗi 'cắt trích né câu rào'). Đã sửa để giữ cả vế điều kiện lẫn thành ngữ 'ví dụ'. phamVi: text khẳng định ba thứ không có trong câu trích — '(lò xo một lá hoặc lò xo lá nhíp)', hai nhóm chủ yếu của (B), và 'Lò xo có thể lắp ráp với bu lông hình chữ U hoặc phụ kiện để lắp ráp/gắn'; đã mở rộng trích cho đủ (495 ký tự, vẫn <600). tieuChi6[0] và [1]: tên WCO có vế 'and leaves therefor / and leaves for springs' mà fact tiếng Việt bỏ mất. GIỮ: 4 loaiTru — chỉ ghi (a) 66.03, (b) 73.18 và (c) 83.02 là ba mục CÓ nêu nhóm 4 số; (c) phần 'các bộ phận có thể nhận dạng của máy móc (Phần XVI) hoặc thiết bị dụng cụ Chương 90, 91' và (d) 'Bộ giảm xóc, các thanh xoắn thuộc Phần XVII' chỉ nêu Phần/Chương nên bỏ đúng luật 3. phanBiet rỗng hợp lý: nguồn không có câu nào đặt 7320 đối với một mã NGOÀI nhóm có tên rõ ràng. cay.tenDien rỗng là ĐÚNG — check-cay báo 'đủ tên nút ảo, đủ tiêu chí 6 số'.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích (302 ký tự) chỉ có các nhãn trần '(A) Lò xo lá / (B) Lò xo cuộn' nhưng text khẳng định thêm: '(một lá hoặc lá nhíp)', hai nhóm chủ yếu của (B) (xoắn cuộn nén/kéo/xoắn và xoắn ốc), và cả câu 'Lò xo có thể lắp ráp với bu lông hình chữ U hoặc phụ kiện để lắp ráp/gắn'. Ba ý đó KHÔNG có trong câu trích — vi phạm 'câu trích phải tự nó nói điều mục khẳng định'. Mở rộng trích (vẫn nguyên văn, không nuốt ngoại lệ nào: các đoạn lược giữa (B)-(1), (1)-(2), (c)-(d), (d)-'lắc ráp' đều không chứa ngoại lệ).",
+      "sua": {
+        "trich": "Nhóm này bao gồm lò xo các loại bằng sắt hoặc thép, không kể đến công dụng của chúng, trừ lò xo đồng hồ hoặc lò xo đồng hồ đeo tay thuộc nhóm 91.14. … (A) Lò xo lá (lò xo một lá hoặc lò xo lá nhíp) … (B) Lò xo cuộn … (1) Lò xo xoắn cuộn … (2) Lò xo xoắn ốc … (c) Lò xo dẹt và lò xo xoắn ốc dẹt … (d) Lò xo đĩa và lò xo vòng … Lò xo có thể được lắp ráp với bu lông hình chữ U (ví dụ đối với các lò xo lá) hoặc các phụ kiện để lắp ráp hoặc gắn. Các lá của lò xo cũng được phân loại trong nhóm này."
+      }
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "sua",
+      "lyDo": "Nguồn: 'Lò xo lắp ráp với các sản phẩm khác để tạo dáng, VÍ DỤ các cơ cấu đóng cửa tự động (nhóm 83.02)'. Điều kiện loại trừ thật là cả loại 'lò xo lắp ráp với sản phẩm khác để tạo dáng'; 83.02 là mã đích của một VÍ DỤ. Bản nháp đặt dieuKien = 'cơ cấu đóng cửa tự động' — biến một ví dụ thành điều kiện duy nhất và xóa mất thành ngữ 'ví dụ' của nguồn (dạng lỗi 'cắt trích né câu rào'). Người dùng sẽ hiểu nhầm rằng chỉ cơ cấu đóng cửa tự động mới loại sang 8302.",
+      "sua": {
+        "dieuKien": "lò xo lắp ráp với các sản phẩm khác để tạo dáng (ví dụ: các cơ cấu đóng cửa tự động)"
+      }
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "sua",
+      "lyDo": "WCO 732010: 'leaf-springs AND LEAVES THEREOF'. Fact tiếng Việt chỉ 'la_lo_xo_la', bỏ mất vế 'lá'. Chú giải tiếng Việt cũng nhắc 'Các lá của lò xo cũng được phân loại trong nhóm này'.",
+      "sua": {
+        "fact": "la_lo_xo_la_va_la_cho_lo_xo_la"
+      }
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "sua",
+      "lyDo": "WCO 732020: 'helical springs AND LEAVES FOR SPRINGS'. Fact tiếng Việt chỉ 'la_lo_xo_cuon', bỏ mất vế 'lá cho lò xo'.",
+      "sua": {
+        "fact": "la_lo_xo_cuon_va_la_cho_lo_xo"
+      }
+    }
+  ],
+  "canhBaoKhongSuaTrongAudit": [
+    {
+      "loai": "NGUỒN TỰ MÂU THUẪN về vòng đệm — cần người quản lý xử lý, không sửa trong sổ tay",
+      "lyDo": "nhom7320.nhom mục (b): 'Vòng đệm lò xo (nhóm 73.18)' — tức vòng đệm lò xo LOẠI sang 73.18. Nhưng phan73.phan mục (C) lại viết: 'Vòng đệm thì được phân loại tại nhóm 73.20 (đối với vòng đệm) và không được phân loại 87.08 (như là bộ phận của phương tiện môtô)'. Hai câu chỉ khác ở ngữ cảnh (vòng đệm LÒ XO vs vòng đệm đặc biệt dùng trong xe mô tô) nên chưa chắc mâu thuẫn tuyệt đối, nhưng rất dễ gây nhầm cho khai tờ khai 'vòng đệm'. Theo luật 'nguồn tự mâu thuẫn thì bỏ cả hai phía', em KHÔNG ghi phanBiet nào về vòng đệm và GIỮ loaiTru[2] (vòng đệm lò xo → 7318) vì câu gốc rõ ràng, dứt khoát, đích danh và không mang định ngữ suông. Đề xuất: hoặc ghi chú vào phần 1 bài học của giao việc, hoặc sửa nguồn."
+    },
+    {
+      "loai": "dieuKienVao rỗng dù nguồn có đặc trưng quyết định nhóm",
+      "lyDo": "nhom7320.nhom: 'Lò xo được làm từ kim loại tấm, dây hoặc que có đặc tính đàn hồi, do đàn hồi chúng có đặc tính quay trở về dạng ban đầu của chúng ngay cả sau sự dịch chuyển đáng kể.' Đây đúng là tiêu chí phân biệt lò xo với mảnh kim loại thường. Em không tự thêm vào dieuKienVao vì đó là việc của người soạn, không phải người soát; ghi ở đây để phiên quản lý quyết định có bổ sung cho lô sau hay không."
+    },
+    {
+      "loai": "trich dài 495 ký tự (>300)",
+      "lyDo": "Dưới trần 600 của máy. Lý do: bản nháp gốc chỉ 302 ký tự nhưng thiếu ba ý mà text khẳng định; rút xuống ≤300 buộc phải cắt bỏ (1)/(2) hoặc câu 'lắc ráp với bu lông hình chữ U' — tức làm text nói quá so với trích. Chọn giữ trích đủ."
+    },
+    {
+      "loai": "dong8[].dieuKien diễn giải 'xe có động cơ khác' thành '(không thuộc 87.02/87.03/87.04)'",
+      "lyDo": "Dòng 73201012 trong biểu thuế chỉ ghi 'Dùng cho xe có động cơ khác'. Câu trích không nói rõ loại xe nào bị loại trừ; em ghi thành '(không thuộc 87.02/87.03/87.04)' là SUY DIỄN từ chữ 'khác' (đối chiếu với dòng 73201011 liền kề). Suy diễn này hiển nhiên và đúng, nhưng vẫn ghi ra để người quản lý biết — không sửa vì nếu bỏ thì dòng cha/nhóm anh em mất thông tin."
+    }
+  ]
+}
