@@ -1,0 +1,95 @@
+{
+  "nhom": "6116",
+  "nguoiSoat": "NGUOI_DUYET",
+  "luc": "2026-10-21T23:10:00+07:00",
+  "phamViSoat": "Toàn bộ 14 mục của bản nháp (1 phamVi + 4 loaiTru + 1 phanBiet + 1 boPhan + 1 tieuChi6 + 6 dong8), đọc cùng tmp/so-tay/nguon/6116.txt (590 dòng: nhom6116.nhom, ch61.chuong, phan61.phan, wco.6116xx, tax.6116xxxx).",
+  "soat": 14,
+  "sua": 4,
+  "chen": 0,
+  "xoa": 0,
+  "ghiChu": "Không xoá mục nào: 14 mục đều có câu trích nguyên văn và nói đúng điều mục khẳng định. Bốn lỗi sửa đều là lỗi 'cắt lặng lẽ' và 'rơi nhánh A hoặc B': (1) phamVi.text khẳng định 'găng tay chưa hoàn chỉnh có đặc trưng cơ bản của sản phẩm hoàn chỉnh' nhưng câu trích dừng ở câu về các loại găng (trích 417 ký tự — vùng 300–600 mà máy không kiểm); (2) loaiTru (a) chỉ ghi đích 43.03, rơi mất 'hoặc 43.04' trong câu; (3) loaiTru (d) chép dấu nháy thẳng thay vì dấu nháy cong nguyên văn của nguồn; (4) phanBiet rơi nhánh 43.04 giống (2). Lưu ý nguồn mỏng: khối phan61.phan bị cắt ở giữa câu (đoạn TỔNG QUAT Phần XI kết thúc bằng 'Chún'), nên không có nguồn Phần XI cho nhóm này — không ảnh hưởng các mục đã soạn vì không mục nào trích phan61, nhưng phải ghi ra để lô sau không tin là 'đã đọc hết Phần XI'. Quan sát cho lô sau: loại trừ sang 61.11 có định nghĩa đi kèm ở ch61.chuong CG6(a) ('trẻ có chiều cao không quá 86 cm'); câu trích nhóm không nêu nên mục loaiTru (b) không kèm ngưỡng này — đúng, vì ngưỡng thuộc ch61 chứ không phải câu đã trích.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "text khẳng định 'kể cả găng tay chưa hoàn chỉnh có đặc trưng cơ bản của sản phẩm hoàn chỉnh', nhưng câu trích chỉ có hai câu đầu (không có câu 'Nhóm này cũng bao gồm các loại găng tay chưa hoàn chỉnh…'). Đây đúng là 'trích 300–600 ký tự lặng lẽ' (417 ký tự) khiến mục nói nhiều hơn nguồn. Sửa bằng cách lược '…' giữa câu 1 và câu 2 rồi nối tiếp câu 3; câu mới 502 ký tự (dưới trần 600 của máy) và giờ tự nó nói đủ mọi điều text khẳng định.",
+      "sua": {
+        "trich": "Nhóm này bao gồm tất cả các loại găng tay dệt kim hoặc móc, không phân biệt dùng cho phụ nữ hoặc trẻ em gái và dùng cho nam giới hoặc trẻ em trai… có các ngón riêng lẻ, găng tay hở ngón chỉ che phủ một phần các ngón tay, găng tay bao chỉ tách biệt ngón tay cái và bao tay dài, hoặc các găng dài khác có thể che tới cẳng tay hoặc thậm chí là phần trên của cánh tay. Nhóm này cũng bao gồm các loại găng tay chưa hoàn chỉnh, dệt kim hoặc móc, miễn là chúng có các đặc trưng cơ bản của sản phẩm hoàn chỉnh."
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "RƠI NHÁNH: câu (a) kết bằng '(nhóm 43.03 hoặc 43.04)' nhưng mục chỉ ghi sangNhom 4303 — đúng loại lỗi 'một nhánh của A hoặc B bị chọn làm đích duy nhất' đã gặp ở 8708→7009. Người khai găng lót/phủ da lông bị mất đích 43.04. Sửa theo đúng quy ước đã dùng ở data/so-tay (nhiều nhóm, vd 4818.json: '3401|3405'): ghi '4303|4304'. Câu trích và dieuKien giữ nguyên (đã đủ cả hai vế 'lót bằng da lông' và 'mặt ngoài được phủ').",
+      "sua": {
+        "sangNhom": "4303|4304"
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "trich nguyên văn (b) 'Găng tay, găng tay hở ngón và găng tay bao dùng cho trẻ em (nhóm 61.11)'; đích 6111 nêu trong câu, loại trừ dứt khoát."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "trich nguyên văn (c) 'Găng tay, găng tay hở ngón và găng tay bao dệt, không được dệt kim hoặc móc (nhóm 62.16)'; đích 6216 nêu trong câu. Câu có phủ định 'không được dệt kim hoặc móc' — đúng nghĩa, không đảo."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "sua",
+      "lyDo": "Chép lệch dấu: bản nháp dùng dấu nháy thẳng \"Găng tay\" trong khi nguồn dùng dấu nháy cong (luật 2: chép nguyên văn). Máy không bắt được vì nó bỏ hết dấu câu khi so khớp. Sửa lại đúng dấu của nguồn.",
+      "sua": {
+        "trich": "(d) “Găng tay” cọ xát dùng để xoa bóp hoặc dùng cho vệ sinh (nhóm 63.02)."
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "Cùng lỗi rơi nhánh như loaiTru[0]: câu (a) nêu '(nhóm 43.03 hoặc 43.04)' mà neuCo chỉ ghi 4303. Nhánh 'không' (neuKhong 6116) đúng — câu loại trừ nói rõ những găng này không ở 6116; hỏi không nhắc mã. Sửa neuCo thành '4303|4304'.",
+      "sua": {
+        "neuCo": "4303|4304"
+      }
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "null — không có quy tắc bộ phận nào trong nguồn của nhóm 6116 (ch61/phan61 chỉ nói bộ phận móc của áo quần ở 61.17, không liên quan găng)."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 611610 lấy từ wco.611610 nguyên văn ('impregnated, coated, covered or laminated with plastics or rubber'); đây là tiêu chí CÓ tách dụng vì bốn phân nhóm anh em 611691/92/93/99 ghi rõ '(other than impregnated…)'. Không lấy ngưỡng từ tax (đúng luật 10)."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "tax.61161010 'Găng tay của thợ lặn'; phần '(dệt kim hoặc móc, ngâm tẩm/tráng/phủ/laminate với plastic/cao su)' lấy từ wco.611610 có trong nguồn nhóm, không phải chữ tự thêm."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "tax.61161090 'Loại khác' — loaiKhac do máy suy từ biểu thuế; '(không phải găng thợ lặn)' là phủ định đối chiếu dòng anh em 61161010, không phải đoán."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "tax.61169100 'Từ lông cừu hoặc lông động vật loại mịn'; '(trừ ngâm tẩm plastic/cao su)' đúng với wco.611691 '(other than impregnated…)'."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "tax.61169200 'Từ bông'; phần giới hạn lấy từ wco.611692."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "tax.61169300 'Từ sợi tổng hợp'; phần giới hạn lấy từ wco.611693."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "tax.61169900 'Từ các vật liệu dệt khác'; phần giới hạn lấy từ wco.611699. Tên dòng là 'Từ các vật liệu dệt khác' chứ không phải 'Loại khác' nên loaiKhac=false là đúng (khác dòng gom 61161090)."
+    }
+  ]
+}
