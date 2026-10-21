@@ -1,0 +1,106 @@
+{
+ "nhom": "6406",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-21T16:20:00+07:00",
+ "daKiem": 34,
+ "xoa": 0,
+ "sua": 9,
+ "ghiChu": "Audit 6406: 1 phamVi + 0 dieuKienVao + 8 loaiTru + 2 phanBiet + 1 boPhan + 5 tieuChi6 + 17 dong8 = 34 mục. Kiểm chéo với [nhom6406.nhom], [ch64.chuong], [sen.64069042/52], [wco.640610/620/690], [tax.6406xxxx] — 34/34 nguyên văn. SỬA 9. (1) phamVi — dấu lược '…' nuốt mất NGOẠI LỆ 'trừ amiăng', và ngoại lệ này bị lặp HAI lần trong nguồn (mục (A) và phần vật liệu của mục (II)); bản nháp cũng không đưa điều kiện này vào text. Đây là điều kiện vật liệu của cả nhóm nên người khai tờ khai phải thấy. Đã viết lại trích 514 ký tự đủ cả hai chỗ. (2) phanBiet[1] — hoi chỉ hỏi 'làm theo số đo' nhưng nguồn nói 'được làm theo số đo VÀ các dụng cụ chỉnh hình' (vế liên tục); hỏi thiếu một vế khiến người dùng trả lời 'có' cho một đế trong đo riêng mà không có dụng cụ chỉnh hình rồi bị đẩy nhầm sang 9021. (3) 7 mục loaiTru — xem ghi chú riêng. GIỮ: boPhan và loaiTru[7] dùng chung câu Chú giải 2 Chương 64 nhưng khác vai trò (một là quy tắc định nghĩa 'bộ phận', một là loại trừ) — không phải trùng lặp. tieuChi6[1] có value=false và câu trích là 'other than stiffeners' — đã kiểm kỹ là ĐÚNG chiều, không bị đảo Có/Không. loaiTru chỉ ghi những mục có nhóm 4 số: (b) 'tấm đệm đầu gối và mắt cá' và (c) 'ống ôm sát chân một mảnh' chỉ nói 'theo vật liệu' hoặc 'Chương 61 hoặc 62' nên bỏ đúng luật 3. dong8 đủ 17 dòng, khớp 17 mã 6406* trong data/tax.json.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Dấu lược '…' đầu tiên nuốt mất toàn bộ thân chú giải, trong đó có NGOẠI LỆ 'các bộ phận này có thể được làm bằng mọi loại vật liệu TRỪ AMIĂNG' (mục A) và 'làm bằng bất cứ vật liệu gì … LOẠI TRỪ AMIĂNG' (phần vật liệu của mục II) — ngoại lệ vật liệu của cả nhóm. Đúng dạng lỗi 'đoạn bị lược không được chứa ngoại lệ' mà máy không bắt. Đồng thời text cũ bỏ luôn điều kiện 'trừ amiăng'. Đã viết lại trích 514 ký tự (nguyên văn, có giữ cả hai ngoại lệ) và bổ sung điều kiện này vào text.",
+   "sua": {
+    "text": "Các bộ phận của giày, dép (kể cả mũ giày đã hoặc chưa gắn đế, trừ đế ngoài); miếng lót của giày, dép có thể tháo, đệm gót chân và các sản phẩm tương tự — làm bằng mọi loại vật liệu trừ amiăng. Và ghệt, ống ôm sát chân (leggings) và các sản phẩm tương tự, và các bộ phận của chúng — cũng làm bằng bất cứ vật liệu gì nhưng loại trừ amiăng.",
+    "trich": "(I) CÁC BỘ PHẬN CỦA GIÀY, DÉP (KỂ CẢ MŨ GIÀY, ĐÃ HOẶC CHƯA GẮN ĐỂ TRỪ ĐẾ NGOÀI); MIẾNG LÓT CỦA GIÀY, DÉP CÓ THỂ THÁO, ĐỆM GÓT CHÂN VÀ CÁC SẢN PHẨM TƯƠNG TỰ … Nhóm này bao gồm: (A) Các loại bộ phận cấu thành của giày, dép; các bộ phận này có thể được làm bằng mọi loại vật liệu trừ amiăng. … (II) GHỆT, ỐNG ÔM SÁT CHÂN (LEGGINGS) VÀ CÁC SẢN PHẨM TƯƠNG TỰ, VÀ CÁC BỘ PHẬN CỦA CHÚNG … Các sản phẩm này có thể được làm bằng bất cứ vật liệu gì (đa thuộc, vải bạt, nỉ (phớt), vải dệt kim hoặc móc,.v.v.) loại trừ amiăng."
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "Câu nguồn: 'Đế trong được thiết kế đặc biệt dùng để hỗ trợ lòng bàn chân, được làm theo số đo VÀ CÁC DỤNG CỤ CHỈNH HÌNH (nhóm 90.21)' — là điều kiện liên tục. Bản nháp đưa vào hoi chỉ vế 'làm theo số đo', bỏ mất vế 'và các dụng cụ chỉnh hình'. Hệ quả: một đế trong chỉ đo riêng cho một khách mà không có dụng cụ chỉnh hình vẫn bị đẩy nhầm sang 9021. Sửa hoi cho đủ cả hai vế; hoi không nhắc mã nên vẫn đúng luật.",
+   "sua": {
+    "hoi": "Đế trong có được thiết kế đặc biệt dùng để hỗ trợ lòng bàn chân, làm theo số đo và có dụng cụ chỉnh hình không?"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "Mục (a) nằm ngay sau câu dẫn 'Nhóm này không bao gồm:' nên gắn thẳng, không cần '…'.",
+   "sua": {
+    "trich": "Nhóm này không bao gồm: (a) Dải diềm bằng da thuộc hoặc da tổng hợp (nhóm 42.05), bằng plastic (Chương 39) hoặc bằng cao su (Chương 40)."
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích chỉ có mục của danh sách loại trừ mà không có câu dẫn, nên đọc riêng thì KHÔNG nói đây là loại trừ — trong khi mục khẳng định đó là loại trừ sang nhóm đích. Đã gắn lại câu dẫn (kèm '…' cho các mục không liền kề câu dẫn).",
+   "sua": {
+    "trich": "Nhóm này không bao gồm: … (d) Các bộ phận và các đồ phụ trợ của giày dép bằng amiăng (nhóm 68.12)"
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích chỉ có mục của danh sách loại trừ mà không có câu dẫn, nên đọc riêng thì KHÔNG nói đây là loại trừ — trong khi mục khẳng định đó là loại trừ sang nhóm đích. Đã gắn lại câu dẫn (kèm '…' cho các mục không liền kề câu dẫn).",
+   "sua": {
+    "trich": "Nhóm này không bao gồm: … (e) Đế trong được thiết kế đặc biệt dùng để hỗ trợ lòng bàn chân, được làm theo số đo và các dụng cụ chỉnh hình (nhóm 90.21)."
+   }
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "sua",
+   "lyDo": "Tương tự: mục (e) trong danh sách loại trừ của CHƯƠNG 64, thiếu câu dẫn 'Chương này không bao gồm:'. Câu trích cũ còn kết bằng dấu phẩy + chữ 'hoặc' nối sang mục (f), đọc riêng thì cụt.",
+   "sua": {
+    "trich": "Chương này không bao gồm: … (e) Giày, dép chỉnh hình hoặc các thiết bị chỉnh hình khác, hoặc các bộ phận của chúng (nhóm 90.21);"
+   }
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích chỉ có mục của danh sách loại trừ mà không có câu dẫn, nên đọc riêng thì KHÔNG nói đây là loại trừ — trong khi mục khẳng định đó là loại trừ sang nhóm đích. Đã gắn lại câu dẫn (kèm '…' cho các mục không liền kề câu dẫn).",
+   "sua": {
+    "trich": "Nhóm này không bao gồm: … (f) Đệm bảo vệ ống chân, tấm ốp bảo vệ ống chân, miếng đệm đầu gối và các sản phẩm bảo vệ khác dùng trong các hoạt động thể thao (nhóm 95.06)."
+   }
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích chỉ có mục của danh sách loại trừ mà không có câu dẫn, nên đọc riêng thì KHÔNG nói đây là loại trừ — trong khi mục khẳng định đó là loại trừ sang nhóm đích. Đã gắn lại câu dẫn (kèm '…' cho các mục không liền kề câu dẫn).",
+   "sua": {
+    "trich": "Nhóm này không bao gồm: … (g) Chốt, đinh, khoen, móc cải, khóa cải, bộ phận bảo vệ, dải viền, búp cài, đăng ten, các sản phẩm này được phân loại vào các nhóm phù hợp của chúng, các loại khuy, khuy bấm, khuy dập, khuy đẩy (nhóm 96.06) và khóa kéo (nhóm 96.07)."
+   }
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích chỉ có mục của danh sách loại trừ mà không có câu dẫn, nên đọc riêng thì KHÔNG nói đây là loại trừ — trong khi mục khẳng định đó là loại trừ sang nhóm đích. Đã gắn lại câu dẫn (kèm '…' cho các mục không liền kề câu dẫn).",
+   "sua": {
+    "trich": "Nhóm này không bao gồm: … (g) Chốt, đinh, khoen, móc cải, khóa cải, bộ phận bảo vệ, dải viền, búp cài, đăng ten, các sản phẩm này được phân loại vào các nhóm phù hợp của chúng, các loại khuy, khuy bấm, khuy dập, khuy đẩy (nhóm 96.06) và khóa kéo (nhóm 96.07)."
+   }
+  }
+ ],
+ "canhBaoKhongSuaTrongAudit": [
+  {
+   "loai": "NGUỒN: tiêu đề quốc gia 6406904 và 6406905 trùng chữ tuyệt đối, không phân biệt được",
+   "lyDo": "Biểu thuê có 6406904{1,2,9} = 'Tấm lót giày' / 'Đế giày đã hoàn thiện (SEN)' / 'Loại khác' và 6406905{1,2,9} = đúng ba dòng đó, y hệt; hai khối sen.64069042 và sen.64069052 cũng giống nhau từng chữ. Nguồn KHÔNG nói khác biệt là gì giữa 4x và 5x. Bản nháp xử lý đúng luật 6: mỗi dòng ghi rõ 'trùng chữ với 6406905/4, nguồn không phân biệt — đối chiếu biểu thuế'. Giữ nguyên. Đây là lỗi dữ liệu nguồn cần người quản lý tra (có thể cần SEN phân biệt vật liệu hoặc công nghệ)."
+  },
+  {
+   "loai": "trich dài 514 ký tự (>300)",
+   "lyDo": "Dưới trần 600 của máy. Lý do: phải chứa đủ hai lần ngoại lệ \"trừ amiăng\". Rút xuống ≤300 chỉ được bằng cách lược mất ngoại lệ — tức đúng lỗi đang sửa."
+  },
+  {
+   "loai": "phanBiet[0] và [1] đều đặt neuKhong = 6406",
+   "lyDo": "Mục khẳng định \"không thỏa điều kiện thì ở lại nhóm 6406\" — đây là chính nhóm đang xét, không phải mã ngoài nhóm, nên luật 4 không áp dụng và máy cũng cố ý miễn kiểm (điều kiện c.startsWith(h4)). Chấp nhận. Lưu ý nhỏ: \"không phải amiăng\" hay \"không phải đế trong chỉnh hình\" không bảo đảm món hàng là 6406 nếu nó là một đôi giày hoàn chỉnh (khi đó thuộc 6401–6405) — nhưng câu hỏi đã giới hạn phạm vi là \"bộ phận hoặc đồ phụ trợ của giày dép\" nên vẫn hợp lý."
+  },
+  {
+   "loai": "tieuChi6[2] và [3] cùng phân nhóm 640620 nhưng tách thành hai tiêu chí",
+   "lyDo": "Không phải lỗi: một tiêu chí cho LOẠI BỘ PHẬN (đế ngoài|gót), một tiêu chí cho VẬT LIỆU (cao su|plastic) — đúng hai điều kiện độc lập mà WCO nêu (\"outer soles and heels, of rubber or plastics\"). Hai câu trích trích cùng một dòng WCO nhưng ở hai đoạn khác nhau. Đã kiểm, chấp nhận."
+  },
+  {
+   "loai": "dong8[10] và [13] (đế giày đã hoàn thiện) dùng nguon sen.64069042/52 chứ không phải tax.*",
+   "lyDo": "Đúng luật 6 (\"có SEN thì ưu tiên điều kiện từ SEN\") và được lược đồ cho phép (nguon: tax.<8 số> hoặc sen.<mã>). Câu trích lấy từ định nghĩa trong SEN nên có căn cứ đầy đủ. Chấp nhận."
+  }
+ ]
+}
