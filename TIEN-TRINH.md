@@ -117,3 +117,83 @@ Máy chạy xanh ngay lần đầu (114/114), nhưng đọc lại từng mục c
 - 1 file `TIEN-TRINH.md` (viết lại cho phiên soạn lô 008)
 - **KHÔNG** commit `tmp/` (gitignored). **KHÔNG** đụng `data/so-tay/4811.json`. **KHÔNG** merge.
 - **KHÔNG** ghi `nguonLoai` (máy tự gán `AI_DA_KIEM`; đổi sang `NGUOI_DUYET` là việc của người soát độc lập — luật 11).
+
+---
+
+# PHIÊN SOÁT ĐỘC LẬP — 2026-10-21 22:5x (+07)
+
+Brief: `brief-st-soat-lo008.md`. Em là **người soát ĐỘC LẬP** (không phải người soạn). Quy trình: đọc lại từng mục `phamVi`/`boPhan`/`dieuKienVao`/`loaiTru`/`phanBiet` của 5 nhóm (`3916,4819,6305,7419,8307`) cùng nguồn — 4811 đã có sổ tay qua soát (#252), KHÔNG soát lại.
+
+## 1) Phạm vi soát
+
+| Nhóm | phamVi | dieuKienVao | loaiTru | phanBiet | Tổng mục kiểm |
+|---|---|---|---|---|---|
+| 3916 | 1 | 2 | 0 | 1 | 4 |
+| 4819 | 1 | 1 | 5 | 3 | 10 |
+| 6305 | 1 | 0 | 1 | 1 | 3 |
+| 7419 | 1 | 0 | 5 | 3 | 9 |
+| 8307 | 1 | 0 | 1 | 1 | 3 |
+| **Tổng** | 5 | 3 | 12 | 9 | **29** |
+
+## 2) Phát hiện & hành động
+
+| # | Nhóm | `path` | Hành động | Lý do |
+|---|---|---|---|---|
+| 1 | 4819 | `dieuKienVao[0]` | **XOÁ** | Trich từ `ch48.chuong` — nguyên tắc chung cho cả Ch.48 (gate Ch.48 ↔ Ch.49 "in chỉ là phần phụ"), không phải điều kiện VÀO nhóm 4 số 4819. Fact `vi_tri_hoa_don` với `value` là chuỗi mô tả dài (`"việc in chỉ là phần phụ..."`) dùng `op:'='` — không evaluate được thành boolean cho cổng ra quyết định: điều kiện chết (dead condition). Mục nhiễu tín hiệu; xoá giữ signal-to-noise của nhóm. |
+
+29 mục kiểm → 1 xoá, 0 sửa. Còn lại 28 mục đạt cả verbatim và đúng nghĩa. Máy kiểm vẫn lọt mục #1 (vì `nguon` hợp lệ `ch48.chuong`, `trich` có trong nguồn, không trigger `CAU_CHO_PHEP`) — đây đúng là kiểu lỗi "mục mờ má" mà vòng 2 cảnh báo: máy đạt nhưng không giúp cổng ra quyết định.
+
+## 3) Review theo từng nhóm
+
+- **3916**: 4/4 đạt. Trich từ `nhom3916.nhom` đều khớp nguyên văn. `phanBiet` hollow-shape vs tube — đã xử lý đảo chiều ở phiên soạn, không còn vướng "thuộc nhóm 39.17" đọc literal; đọc kỹ đoạn gốc thấy "thuộc 39.17" gắn vào **ống** (subject là tubes), hollow-shape ở đây = 3916. Logic phanBiet khớp.
+- **4819**: 9/10 đạt. 5 `loaiTru` (42.02, 46.02, 48.11, 48.20, 63.05) + 3 `phanBiet` (63.05, 48.20, 48.11) — trich verbatim từ "Nhóm này không bao gồm: (a)..(e)", đích danh đầy đủ. Loại 1 `dieuKienVao` (xem mục 2).
+- **6305**: 3/3 đạt. `phamVi` đã được kéo dài trích ở phiên soạn để giữ ví dụ túi ngũ cốc/than/tinh bột/khoai tây/cà phê, túi đưa thư, túi bưu điện. `loaiTru[0]` và `phanBiet[0]` cùng câu 63.07 — verbatim.
+- **7419**: 9/9 đạt. 5 `loaiTru` (71.17, 91.14, 58.09, 83.11, 96.04) + 3 `phanBiet` (71.17, 58.09, 91.14) — trich verbatim. Mục (4)/(9) "Nhóm này bao gồm, cụ thể: …" có vế **"trừ …"** nêu đích danh 71.17/91.14 → `loaiTru` hợp lệ, không phải lỗi scope như 3916.
+- **8307**: 3/3 đạt. `phamVi` đã sửa vế cụt ở phiên soạn — trích nay gồm cả (1) và (2) với "…" hợp lệ, bỏ câu "Loại ống này có thể được làm kín nuớc bằng cách bọc cao su…" (là method description, không có ngoại lệ). `tieuChi6` 8307 gốc có mục `gia_cong_ve_mat` lạ — đã XOÁ ở phiên soạn (vì *with or without fittings* là fittings nối ghép, không phải gia công bề mặt).
+
+## 4) Kiểm tra rào lỗi vòng 1/2 (mục 0 của giao-viec)
+
+- **Cắt trích né câu rào** ("thường…", "tùy trường hợp"): KHÔNG có mục nào. Trich đều lấy câu đứng tự nhiên.
+- **`hoi` phanBiet đảo nhánh**: tất cả 8 `phanBiet` có neuCo (đúng chiều) khớp với "nếu có đặc tính X → thuộc nhóm Y".
+- **"A hoặc B" bị tách**: KHÔNG có. Không mục nào dùng AND ngầm.
+- **Mất ngoại lệ ngay sau trích**: 3916 phanBiet trich kết thúc bằng "xem Chú giải 8 thuộc Chương này" — câu sau (chỉ giải thích "tubular forms") không phải ngoại lệ, OK. 4819 mỗi `loaiTru` dùng trích đến hết mệnh đề "(a)/(b)/(c)/…"; mệnh đề tiếp theo đều là kết thúc `Nhóm này không bao gồm:`.
+- **Trích 300–600 ký tự**: 0 mục mới soát vượt 300 (đã xem lại `phamVi` 6305 đã được kéo dài = 385 ở phiên soạn, ai đó đọc nhanh cứ chú ý).
+- **Ghép hai câu xa**: KHÔNG. Mỗi trich là một đoạn liên tục hoặc hai đoạn liền kề.
+- **`dieuKien`/`text` thêm chữ**: KHÔNG. Đã kiểm cross tất cả `text` với trich.
+
+## 5) Bàn giao + hành động đã chạy
+
+1. `tmp/so-tay/review/<nhom>.json` ghi lại hành động theo `index` — 4 file `[]`, file `4819.json` có 1 mục xoá.
+2. Đã áp lên `tmp/so-tay/raw/` → file `4819.json` không còn `dieuKienVao[0]`.
+3. Đặt `nguonLoai = 'NGUOI_DUYET'` cho mọi mục đã soát ở 5 nhóm (luật 11 — chỉ người soát độc lập được đổi).
+4. `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw`: **112/112 sạch**.
+5. Nạp lại `node scripts/build-so-tay.mjs --nhom=3916,4819,6305,7419,8307 --tu-tep=tmp/so-tay/raw --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-008.json`: **112/112 (100%)**.
+6. `npm run so-tay:check`: **203 nhóm / 7050 mục / 0 lỗi**.
+7. `npm test`: **ALL TESTS PASSED**.
+
+## 6) Kết quả số liệu
+
+| Nhóm | Trước (phiên soạn) | Sau (phiên soát) | Xoá | Sửa |
+|---|---|---|---|---|
+| 3916 | 26 / 26 | 26 / 26 | 0 | 0 |
+| 4819 | 23 / 23 | 22 / 22 | 1 | 0 |
+| 6305 | 30 / 30 | 30 / 30 | 0 | 0 |
+| 7419 | 27 / 27 | 27 / 27 | 0 | 0 |
+| 8307 | 7 / 7 | 7 / 7 | 0 | 0 |
+| **Tổng** | **113 / 113** | **112 / 112** | **1** | **0** |
+
+Tỷ lệ soát: 1/29 = 3,4 % (so với vòng 2 đợt 1 = 25 % / đợt 2 = 26 %). Lý do tỷ lệ thấp: tác giả đã được dặn "thà soạn ít mục chắc chắn" và đã tự phát hiện 5 defect (lô 006 = 14 xoá / 39 sửa = ~22 %), để lại 29 mục phần lớn là sạch — phiên soát này loại 1 mục duy nhất còn mờ má.
+
+## 7) Hạn chế còn lại — KHÔNG sửa trong sổ tay (giống phiên soạn)
+
+- `nhom6305.nhom` mỏng bất thường (chỉ 3 đoạn + 1 chú giải phân nhóm) → `dieuKienVao` rỗng là đúng nguồn, không phải lỗi người soạn.
+- Chú giải 6305.32 cụt "...đựng các vật liệu khô, dễ trôi" (lỗi kệ sách).
+- `nhom4819.nhom` thiếu nhãn "(A)" (lỗi kệ sách).
+- 3 cặp dòng biểu thuề trùng chữ (đã ghi trong `dong8.dieuKien` là "đối chiếu phân nhóm cha, không đoán").
+- `ch39.chuong` bị cắt trần 44.853 → 40.000 ký tự khi xuất nguồn — em chỉ dùng câu **còn nằm trong phần còn lại**.
+
+## 8) Commit + PR #383
+
+- Commit phiên soát: cùng nhánh `so-tay/lo-008`, thêm báo cáo `TIEN-TRINH.md` (mục 1–8 ở trên) + 5 file `tmp/so-tay/review/<nhom>.json` được gitignore nên KHÔNG vào commit; thay đổi thật vào commit là `data/so-tay/{3916,4819,6305,7419,8307}.json` + `data/so-tay/bao-cao/lo-008.json`.
+- Comment PR #383 với số liệu soát (1 xoá / 0 sửa).
+- **KHÔNG merge** — chờ CEO duyệt.
