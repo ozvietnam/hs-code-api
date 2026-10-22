@@ -1,0 +1,242 @@
+{
+ "nhom": "6401",
+ "phamVi": {
+  "text": "Giày, dép không thấm nước bằng cao su, plastic hoặc vật liệu dệt có lớp ngoài bằng cao su hoặc plastic nhìn thấy bằng mắt thường, miễn là mũ giày không gắn với đế hoặc lắp ghép theo các quy trình đã nêu trong nhóm.",
+  "nguon": "nhom6401.nhom",
+  "trich": "Nhóm này bao gồm giày, dép không thấm nước có cả đế ngoài và mũ giày … bằng cao su (theo định nghĩa của Chú giải 1 Chương 40), bằng plastic hoặc bằng vật liệu dệt có lớp ngoài bằng cao su hoặc plastic có thể nhìn thấy được bằng mắt thường … miễn là phần mũ giày không gắn với đế hoặc lắp ghép theo các quy trình đã được nêu trong nhóm.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "khong_tham_nuoc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom6401.nhom",
+   "trich": "Nhóm này bao gồm giày, dép không thấm nước có cả đế ngoài và mũ giày",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "mu_giay_khong_gan_voi_de_hoac_lap_ghep_theo_cac_quy_trinh_da_neu_trong_nhom",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom6401.nhom",
+   "trich": "miễn là phần mũ giày không gắn với đế hoặc lắp ghép theo các quy trình đã được nêu trong nhóm.",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "vai_lieu_lop_ngoai_la_cao_su_hoac_plastic_nhin_thay_duoc_bang_mat_thuong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch64.chuong",
+   "trich": "thuật ngữ “cao su” và “plastic” kể cả vải dệt thoi hoặc các sản phẩm dệt khác có lớp ngoài bằng cao su hoặc plastic có thể nhìn thấy được bằng mắt thường",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "giày, dép đã qua sử dụng",
+   "sangNhom": "6309",
+   "nguon": "ch64.chuong",
+   "trich": "(c) Giày, dép đã qua sử dụng thuộc nhóm 63.09;",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "sản phẩm bằng amiăng",
+   "sangNhom": "6812",
+   "nguon": "ch64.chuong",
+   "trich": "(d) Các sản phẩm bằng amiăng (nhóm 68.12);",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "giày, dép chỉnh hình hoặc thiết bị chỉnh hình khác, hoặc bộ phận của chúng",
+   "sangNhom": "9021",
+   "nguon": "ch64.chuong",
+   "trich": "(e) Giày, dép chỉnh hình hoặc các thiết bị chỉnh hình khác, hoặc các bộ phận của chúng (nhóm 90.21); hoặc",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "640110",
+   "fact": "co_mui_giay_gan_kim_loai_bao_ve",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.640110",
+   "trich": "waterproof with metal toe-cap, rubber or plastic outer soles and uppers",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "64011000",
+   "dieuKien": "Giày, dép có mũi gắn kim loại bảo vệ (= phân nhóm 640110 — WCO: waterproof with metal toe-cap, rubber or plastic outer soles and uppers)",
+   "nguon": "tax.64011000",
+   "trich": "64011000 - Giày, dép có mũi gắn kim loại bảo vệ",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "64019210",
+   "dieuKien": "Loại có mũi giày được gắn bảo vệ không phải kim loại — thuộc phân nhóm 640192, dòng cha không có trong nguồn — đối chiếu biểu thuế (SEN: nhựa nhiệt dẻo polyurethan (TPU), Kevlar hoặc sợi carbon)",
+   "nguon": "sen.64019210",
+   "trich": "Giày dép có gắn mũi bảo vệ không phải kim loại, như nhựa nhiệt dẻo polyurethan (TPU), Kevlar hoặc sợi carbon.",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "64019290",
+   "dieuKien": "Loại khác — thuộc phân nhóm 640192, dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "nguon": "tax.64019290",
+   "trich": "64019290 - - - Loại khác",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "640192",
+    "truAnhEm": [
+     "64019210"
+    ],
+    "toTienCoTen": "640192",
+    "dinhNghiaDuoc": true
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true
+  },
+  {
+   "hs": "64019910",
+   "dieuKien": "Giày cổ cao quá đầu gối — thuộc phân nhóm 640199, dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "nguon": "tax.64019910",
+   "trich": "64019910 - - - Giày cổ cao quá đầu gối",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "64019990",
+   "dieuKien": "Loại khác — thuộc phân nhóm 640199, dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "nguon": "tax.64019990",
+   "trich": "64019990 - - - Loại khác",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "640199",
+    "truAnhEm": [
+     "64019910"
+    ],
+    "toTienCoTen": "640199",
+    "dinhNghiaDuoc": true
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "6401",
+    "cap": 4,
+    "cha": "64",
+    "tenVi": "Giày, dép không thấm nước có đế ngoài và mũ giày bằng cao su hoặc plastic, mũ giày, dép không gắn hoặc lắp ghép với đế bằng cách khâu, tán đinh, xoáy ốc, cắm đế hoặc các cách tương tự.",
+    "tenEn": "Footwear; waterproof, with outer soles and uppers of rubber or plastics, (uppers not fixed to the sole nor assembled by stitch, rivet, nail, screw, plug or similar)",
+    "suyRa": false
+   },
+   {
+    "id": "64011000",
+    "cap": 8,
+    "cha": "6401",
+    "tenVi": "Giày, dép có mũi gắn kim loại bảo vệ",
+    "tenEn": "Footwear; waterproof with metal toe-cap, rubber or plastic outer soles and uppers (not assembled by stitch, rivet, nail, screw, plug or similar)",
+    "suyRa": false,
+    "laPhanNhom": "640110"
+   },
+   {
+    "id": "64019",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "6401",
+    "tenVi": "Giày, dép khác",
+    "tenEn": "Other footwear",
+    "suyRa": true
+   },
+   {
+    "id": "640192",
+    "cap": 6,
+    "cha": "64019",
+    "tenVi": null,
+    "tenEn": "Footwear; waterproof, covering the ankle (but not the knee), rubber or plastic outer soles and uppers (not assembled by stitch, rivet, nail, screw, plug or similar)",
+    "suyRa": false
+   },
+   {
+    "id": "64019210",
+    "cap": 8,
+    "cha": "640192",
+    "tenVi": "Loại có mũi giày được gắn bảo vệ không phải kim loại (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "64019290",
+    "cap": 8,
+    "cha": "640192",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "640199",
+    "cap": 6,
+    "cha": "64019",
+    "tenVi": null,
+    "tenEn": "Footwear; waterproof, n.e.c. in heading no. 6401, rubber or plastic outer soles and uppers (not assembled by stitch, rivet, nail, screw, plug or similar)",
+    "suyRa": false
+   },
+   {
+    "id": "64019910",
+    "cap": 8,
+    "cha": "640199",
+    "tenVi": "Giày cổ cao quá đầu gối",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "64019990",
+    "cap": 8,
+    "cha": "640199",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch64.chuong",
+  "nhom6401.nhom",
+  "sen.64019210",
+  "tax.64011000",
+  "tax.64019290",
+  "tax.64019910",
+  "tax.64019990",
+  "wco.640110"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-22T16:39:23.073Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 13,
+  "dat": 13,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

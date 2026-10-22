@@ -1,0 +1,108 @@
+{
+ "nhom": "6506",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-22T23:45:00+07:00",
+ "soat": 19,
+ "daKiem": 19,
+ "xoa": 1,
+ "sua": 4,
+ "ghiChu": "Soát độc lập 6506: 1 phamVi + 1 dieuKienVao + 5 loaiTru + 1 phanBiet + 3 tieuChi6 + 8 dong8 = 19 mục. Sửa 4, xoá 1. (1) phamVi — nới phạm vi: vế 'có hoặc chưa có lớp lót bảo vệ' trong nguồn nằm trong câu định danh về các loại MŨ BẢO HIỂM ('Nhóm này bao gồm chủ yếu là các loại mũ bảo hiểm (…), có hoặc chưa có lớp lót bảo vệ hoặc…'), dấu lược của bản nháp nuốt mất câu định danh đó rồi gộp vế vào 'tất cả các loại mũ … có hoặc chưa có lớp lót bảo vệ'. (2) XOÁ phanBiet[0] — câu trích nằm trong danh sách 'Nhóm này cũng bao gồm:', là danh sách bao gồm chứ không phải quy tắc xếp loại; nhánh neuKhong (65069910|65069990) còn sai về nghĩa vì mũ bảo hiểm bằng cao su phải vào 650610 chứ không vào 650691 như mục khẳng định. (3-5) ba tieuChi6: sửa lỗi gõ 'va_va', và bổ sung vế '(other than safety headgear)' mà WCO 650691/650699 đều có nhưng fact bỏ mất — đây là lỗi nguy hiểm vì fact đi thẳng vào prompt. GIỮ: 5 loaiTru, trong đó loaiTru sang '6117|6214' giữ đủ CẢ HAI nhánh của 'hoặc' (không tách một nhánh làm đích duy nhất). BỎ ĐÚNG LUẬT 3: các mục 'mũ búp bê, mũ đồ chơi, mặt hàng lễ hội carnival (Chương 95)' và 'đồ phụ trang trí mũ chưa gắn vào mũ' không nêu số nhóm nên không thành loaiTru.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Lỗi 'nới phạm vi'. Nguồn: vế 'có hoặc chưa có lớp lót bảo vệ' nằm trong câu định danh về các loại MŨ BẢO HIỂM ('Nhóm này bao gồm chủ yếu là các loại mũ bảo hiểm (...), có hoặc chưa có lớp lót bảo vệ hoặc...'). Dấu lược của bản nháp nuốt mất câu định danh đó, rồi gộp vế đó thành 'tất cả các loại mũ ... có hoặc chưa có lớp lót bảo vệ' — biến đặc tính của một nhóm nhỏ thành đặc tính của cả nhóm. Đã bỏ hẳn vế 'lớp lót bảo vệ' khỏi cả text lẫn trích.",
+   "sua": {
+    "text": "Tất cả các loại mũ và các vật đội đầu chưa được phân loại vào các nhóm trước của Chương này hoặc các Chương 63, 68 hoặc 95.",
+    "trich": "Nhóm này bao gồm tất cả các loại mũ và các vật đội đầu chưa được phân loại vào các nhóm trước của Chương này hoặc các Chương 63, 68 hoặc 95."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "sua",
+   "lyDo": "fact gõ lỗi 'va_va' và thêm chữ 'khác' không có trong tên WCO ('Headgear; safety').",
+   "sua": {
+    "fact": "la_mu_bao_hiem_va_vat_doi_dau_an_toan"
+   }
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "sua",
+   "lyDo": "fact thiếu vế phủ định quan trọng: WCO 650691 là '(other than safety headgear), of rubber or plastics'. fact cũ chỉ nói 'bằng cao su hoặc plastic' thì mũ bảo hiểm bằng cao su cũng thoả → sai. Đây là loại lỗi mà fact đi vào prompt nên rất nguy hiểm.",
+   "sua": {
+    "fact": "khong_phai_mu_bao_hiem_va_bang_cao_su_hoac_plastic"
+   }
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lỗi: WCO 650699 cũng có vế '(other than safety headgear)' mà fact bỏ mất.",
+   "sua": {
+    "fact": "khong_phai_mu_bao_hiem_bang_vat_lieu_khac_khong_phai_cao_su_hoac_plastic"
+   }
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "xoa",
+   "lyDo": "Câu trích nằm trong danh sách 'Nhóm này cũng bao gồm:' — là danh sách BAO GỒM, không phải quy tắc xếp loại. Câu hỏi đặt ra còn ép một phân đôi mà nguồn không có: nếu mũ bằng cao su mà LÀ mũ bảo hiểm thì theo WCO 650610 vẫn là 650610, không phải 650691 như mục này khẳng định. Nhánh neuKhong (65069910|65069990) suy thẳng từ cấu trúc anh em, trái luật 'nhánh không phải có căn cứ trong nguồn'.",
+   "ghiChuThem": "Ghi nhận chỗ kệ sách: nhóm 6506 loại trừ 'Mũ búp bê, mũ đồ chơi, mặt hàng lễ hội carnival (Chương 95)' nhưng không nêu số nhóm nên không thành loaiTru — đã bỏ đúng luật 3."
+  }
+ ]
+}
