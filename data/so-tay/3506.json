@@ -4,47 +4,37 @@
   "text": "Sản phẩm phù hợp dùng như keo hoặc chất kết dính đã đóng gói để bán lẻ (tịnh không quá 1kg) và keo, chất kết dính thành phẩm khác không nằm trong nhóm cụ thể hơn.",
   "nguon": "nhom3506.nhom",
   "trich": "(A) Các sản phẩm phù hợp dùng như keo hoặc chất kết dính và đã đóng gói để bán lẻ như keo hoặc chất kết dính, trọng lượng tịnh không quá 1kg. … (B) Keo thành phẩm và chất kết dính thành phẩm khác, không nằm trong một nhóm cụ thể hơn trong Danh mục hàng hóa",
-  "nguonLoai": "AI_DA_KIEM"
+  "nguonLoai": "NGUOI_DUYET"
  },
- "dieuKienVao": [
-  {
-   "fact": "khong_thuoc_nhom_cu_the_hon_trong_danh_muc",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "nguon": "nhom3506.nhom",
-   "trich": "(B) Keo thành phẩm và chất kết dính thành phẩm khác, không nằm trong một nhóm cụ thể hơn trong Danh mục hàng hóa",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
+ "dieuKienVao": [],
  "loaiTru": [
   {
    "dieuKien": "Keo không phù hợp với điều khoản của phần (A) (tức không đóng gói để bán lẻ với trọng lượng không quá 1kg): keo casein, keo có nguồn gốc động vật, keo có thành phần cơ bản là tinh bột hoặc dextrin hoặc tinh bột biến tính khác",
    "sangNhom": "3501|3503|3505",
    "nguon": "nhom3506.nhom",
    "trich": "Trừ khi chúng phù hợp với điều khoản của phần (A) ở trên, nhóm này loại trừ các sản phẩm thuộc một nhóm cụ thể hơn trong Danh mục hàng hóa, ví dụ:\n\n(a) Keo casein (nhóm 35.01), keo có nguồn gốc động vật (nhóm 35.03) và các keo có thành phần cơ bản là tinh bột, hoặc dextrin hoặc các tinh bột biến tính khác (nhóm 35.05).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Keo không phù hợp với điều khoản của phần (A) (tức không đóng gói để bán lẻ với trọng lượng không quá 1kg): sản phẩm dùng được như keo trực tiếp hoặc sau khi xử lý như nhựa bẫy chim, silicate không trộn, caseinat canxi, dextrin, chất phân tán/hòa tan của polyme 39.01–39.13, chất phân tán/hòa tan của cao su",
    "sangNhom": "1302|2839|3501|3505|3208",
    "nguon": "nhom3506.nhom",
    "trich": "Trừ khi chúng phù hợp với điều khoản của phần (A) ở trên, nhóm này loại trừ các sản phẩm thuộc một nhóm cụ thể hơn trong Danh mục hàng hóa, ví dụ: … (b) Các sản phẩm khác, có thể được dùng như keo hoặc các chất kết dính khác hoặc trực tiếp hoặc sau khi xử lý, ví dụ, nhựa bẫy chim (nhóm 13.02), silicate, không trộn (nhóm 28.39), caseinat canxi (nhóm 35.01), dextrin (nhóm 35.05), chất phân tán hay hòa tan của polyme thuộc các nhóm từ 39.01 đến 39.13 (Chương 39 hoặc nhóm 32.08) và chất phân tán hay hòa tan của cao su (Chương 40).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Chất làm bóng và chất xử lý hoàn tất vải đã điều chế dùng cho ngành dệt, và chất đúc lõi cáp điện",
    "sangNhom": "3809|3824",
    "nguon": "nhom3506.nhom",
    "trich": "Nhóm này không bao gồm chất làm bóng và chất xử lý hoàn tất vải đã được điều chế dùng cho ngành dệt, vv...(nhóm 38.09) hoặc chất đúc lõi cáp điện (nhóm 38.24); ở một số nước, những chất này đôi lúc được gọi là \"keo\", nhưng chúng không được dùng để kết dính.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Sản phẩm có đặc tính của ma tít, chất bồi",
    "sangNhom": "3214",
    "nguon": "nhom3506.nhom",
    "trich": "Nhóm này cũng không bao gồm các sản phẩm có đặc tính của ma tít, chất bồi, vv... thuộc nhóm 32.14.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "phanBiet": [
@@ -54,7 +44,7 @@
    "neuKhong": "3505",
    "nguon": "phan35.phan",
    "trich": "dextrin\nđược đóng gói để bán lẻ như là một loại keo được phân loại vào nhóm 35.06 và không được\nphân loại vào nhóm 35.05.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "tieuChi6": [
@@ -229,12 +219,12 @@
  "taoBoi": {
   "provider": "dev-zcode-mm",
   "model": null,
-  "luc": "2026-10-22T15:12:24.079Z",
-  "ms": 1
+  "luc": "2026-10-22T15:51:19.540Z",
+  "ms": 82
  },
  "kiemTra": {
-  "tong": 14,
-  "dat": 14,
+  "tong": 13,
+  "dat": 13,
   "loai": 0,
   "nguonBiCat": []
  }
