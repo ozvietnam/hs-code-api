@@ -1,0 +1,56 @@
+{
+ "nhom": "5508",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-23T02:15:00+07:00",
+ "phamViSoat": "Toàn bộ 7 mục của 4 khối trong tmp/so-tay/raw/5508.json (1 phamVi + 4 dieuKienVao + 1 loaiTru + 1 phanBiet; không có boPhan), đọc cùng tmp/so-tay/nguon/5508.txt, đối chiếu [nhom5508.nhom] và [phan55.phan].",
+ "soat": 7,
+ "daKiem": 7,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "7 mục: giữ 6, sửa 1, xoá 0. Định nghĩa 'chỉ khâu' ở khoản 5 Phần XI có đủ ba điều kiện (a)(b)(c) và cả ba đều được ghi. Loại trừ 56.07 và câu hỏi phân biệt đúng chiều. Một lỗi sửa: dieuKienVao[1] đặt ngưỡng số thành chuỗi '1.000' với op '<=' — không phải value số, không dùng được cho máy; đổi thành fact boolean. GHI NHẬN NGUỒN MỎNG: khối [phan55.phan] bị cắt ở 'Chún', nên phần (I)(B)(4) mà phamVi dẫn chiếu không có trong nguồn xuất; sổ tay chỉ chép nguyên văn câu của nhóm, không tự bịa nội dung được dẫn chiếu.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "text và trich trùng khít câu [nhom5508.nhom]; các chỗ xuống dòng giữa 'Phần (I) (B)' và '(4)' là của chính nguồn, không phải cắt câu. phamVi chỉ dẫn chiếu tới phần định nghĩa, không khẳng định thêm điều gì."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Khoản 5 Phần XI: 'chỉ khâu' là loại sợi xe hoặc sợi cáp — điều kiện vật liệu đầu tiên; fact la_soi_xe_hoac_soi_cap đúng, nguồn phan55.phan hợp lệ cho dieuKienVao."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "sua",
+   "lyDo": "Ngưỡng 'không quá 1.000 g (kể cả lõi)' là số thật, nhưng mục cũ đặt value = chuỗi '1.000' với op '<=' kèm ghi chú tự bào chữa. Chuỗi không phải số: máy so ngưỡng chỉ xử lý value kiểu number, còn cổng đọc value sẽ so sánh chuỗi — đúng kiểu 'lách máy bằng value chuỗi' mà bài học lô 012 cấm. Đổi thành sự kiện boolean giữ nguyên nghĩa và ngưỡng trong tên fact; trich và ngoại lệ rỗng giữ nguyên.",
+   "sua": {
+    "fact": "trong_luong_cuon_tren_lo_khong_qua_1000_g",
+    "op": "=",
+    "value": true,
+    "donVi": null,
+    "ngoaiTru": []
+   }
+  },
+  {
+   "index": "dieuKienVao[2]",
+   "hanhDong": "giu",
+   "lyDo": "(b) 'Đã hoàn tất để sử dụng làm chỉ khâu' nguyên văn; là một trong ba điều kiện AND của định nghĩa."
+  },
+  {
+   "index": "dieuKienVao[3]",
+   "hanhDong": "giu",
+   "lyDo": "(c) 'Có xoắn \"Z\" cuối cùng' nguyên văn; điều kiện thứ ba của định nghĩa."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu 'nếu chỉ khâu như vậy thuộc phạm vi định nghĩa về dây xe… thì bị loại trừ khỏi nhóm này (nhóm 56.07)' nêu đích danh 56.07, không phải 'thường'. dieuKien giữ đủ định ngữ 'thuộc phạm vi định nghĩa về dây xe v.v…'."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều: hỏi chỉ khâu CÓ thuộc định nghĩa dây xe/chão bện/thừng/cáp không → có thì sang 5607 (bị loại trừ), không thì ở 5508. Mã 5607 có trong câu trích; hoi không nhắc mã phân nhóm."
+  }
+ ]
+}

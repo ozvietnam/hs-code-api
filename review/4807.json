@@ -1,0 +1,50 @@
+{
+ "nhom": "4807",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-23T02:15:00+07:00",
+ "phamViSoat": "Toàn bộ 6 mục của 4 khối trong tmp/so-tay/raw/4807.json (1 phamVi + 2 dieuKienVao + 2 loaiTru + 1 phanBiet; không có boPhan), đọc cùng tmp/so-tay/nguon/4807.txt, đối chiếu [nhom4807.nhom] và [ch48.chuong].",
+ "soat": 6,
+ "daKiem": 6,
+ "sua": 2,
+ "xoa": 1,
+ "ghiChu": "6 mục: giữ 3, sửa 2, xoá 1. Xoá phanBiet[0] vì nhánh 'không' (4802) là suy từ cấu trúc anh em, không có trong nguồn. Hai lỗi sửa đều là text/trich lệch (text khẳng định 'mọi chất lượng' nhưng trich bỏ câu đó) và trich 372 ký tự vượt mốc 300. Nguồn có câu 'Giấy và bìa bồi trong đó chất liệu dính đóng vai trò như vật liệu không thấm nước… cũng thuộc nhóm này… với điều kiện…' và 'Về kích thước… xem Chú giải 8' — phamVi không cần chép hết, không phải ngoại lệ bị nuốt.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "text khẳng định 'có thể làm từ giấy hoặc bìa thuộc mọi chất lượng' nhưng trich cũ nhảy thẳng từ câu định nghĩa sang câu nguồn gốc chất kết dính bằng '…', bỏ mất chính câu 'Các sản phẩm này có thể làm từ giấy hoặc bìa thuộc mọi chất lượng'. Đã nới trich để câu trích tự nói đủ mọi vế của text; đồng thời cắt danh sách ví dụ '(dextrin, keo, hắc ín…)' không cần cho text, giữ trich 260 ký tự. Dấu '…' đặt đúng chỗ xuống đoạn của nguồn, không lược câu rào nào.",
+   "sua": {
+    "trich": "Nhóm này bao gồm giấy và bìa được làm bằng cách dán hai hoặc nhiều lớp giấy hoặc bìa với nhau nhờ chất kết dính. Các sản phẩm này có thể làm từ giấy hoặc bìa thuộc mọi chất lượng … chất kết dính được dùng có thể có nguồn gốc động vật, thực vật hoặc khoáng vật."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải 8 Chương 48 là điều kiện hình dạng/kích thước để các nhóm 48.03–48.09 (gồm 4807) được áp dụng; hai nhánh (a) dải/cuộn rộng trên 36 cm, (b) tờ một chiều trên 36 cm và chiều kia trên 15 cm, được ghi đủ trong value dạng 'in' với dấu '|'. trich nguyên văn, không cắt trước câu rào."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "sua",
+   "lyDo": "trich cũ 372 ký tự — vượt mốc mềm 300 mà mục 4 dặn để mắt. Câu thứ hai 'Các lớp… cũng tách ra khi đốt cháy' không được fact sử dụng; ngoặc '(được làm bằng cách gắn các lớp bằng cách ép mà không cần chất kết dính)' cũng chỉ là giải thích đối chiếu. Đã lược hai phần này bằng '…' (giữ nguyên văn phần còn lại), trich còn 242 ký tự; tiêu chí phân biệt 'sau khi ngâm… tự tách thành các lớp riêng lẻ và có vết tích chất kết dính' vẫn nguyên vẹn.",
+   "sua": {
+    "trich": "Các sản phẩm của nhóm này được phân biệt với các sản phẩm của các nhóm trước … bởi thực tế là sau khi ngâm vào nước hoặc vào một dung môi phù hợp khác, chúng tự tách ra một cách dễ dàng thành các lớp riêng lẻ và có vết tích của chất kết dính."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn nói dứt khoát 'Ván sợi bị loại trừ khỏi nhóm này (nhóm 44.11)'; đích 4411 có trong câu, không phải 'thường' hay ví dụ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (m) Chú giải 2 Chương 48 nêu đích danh 68.05 và 68.14; trich giữ trọn cả ngoặc 'tuy nhiên, bìa hoặc giấy tráng phủ với bột mica, được xếp vào Chương này' nên ngoại lệ không bị nuốt. dieuKien đúng là 'bìa hoặc giấy ráp' (ráp = mài), không thêm định ngữ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "xoa",
+   "lyDo": "Câu hỏi lấy tiêu chí kích thước của Chú giải 8 (đúng), nhưng nhánh 'không' gán 4802 là KHÔNG có căn cứ: câu trích chỉ nói 'Mặt khác, các nhóm 48.02, 48.10 và 48.11 gồm giấy và bìa… với kích thước bất kỳ', tức 48.02 không bị giới hạn kích thước — không hề nói giấy/bìa bồi cỡ nhỏ thuộc 48.02. 48.02 là giấy/bìa viết, in; giấy bồi cỡ nhỏ đi theo phạm vi Chương (III) sang 48.16–48.23, không phải 4802. Đây đúng kiểu lỗi 'nhánh không suy từ cấu trúc anh em' mà mục 0 cấm; nguồn không nêu đích thay thế nên xoá mục, không tự đoán mã."
+  }
+ ]
+}
