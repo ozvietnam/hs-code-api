@@ -1,0 +1,535 @@
+{
+ "nhom": "7310",
+ "phamVi": {
+  "text": "Đồ chứa bằng sắt hoặc thép lá, thép tấm có dung tích không quá 300 lít, kích cỡ dễ di chuyển hoặc xách tay, dùng phổ biến để chuyên chở thương mại và đóng gói hàng hoá; cũng gồm đồ chứa loại đó khi lắp đặt cố định.",
+  "nguon": "nhom7310.nhom",
+  "trich": "Trong khi nhóm trước áp dụng cho các đồ chứa có dung tích trên 3001; thường được lắp đặt như những vật cố định trong các nhà máy,... thì nhóm này bao gồm các đồ chứa bằng sắt hoặc thép lá hoặc thép tấm có dung tích không vượt quá 3001, nhưng có kích cỡ dễ di chuyển hoặc xách tay, được sử dụng phổ biến để chuyên chở thương mại và đóng gói hàng hoá, và cả những đồ chứa như vậy được lắp đặt như những vật cố định.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_do_chua_bang_sat_hoac_thep_la_hoac_thep_tam",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom7310.nhom",
+   "trich": "…thì nhóm này bao gồm các đồ chứa bằng sắt hoặc thép lá hoặc thép tấm có dung tích không vượt quá 3001, nhưng có kích cỡ dễ di chuyển hoặc xách tay…",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "dung_tich_khong_vuot_qua_300_lit",
+   "op": "<=",
+   "value": 300,
+   "donVi": "l",
+   "ngoaiTru": [
+    "Nhóm trước (73.09) áp dụng cho đồ chứa có dung tích trên 300 lít."
+   ],
+   "nguon": "nhom7310.nhom",
+   "trich": "…thì nhóm này bao gồm các đồ chứa bằng sắt hoặc thép lá hoặc thép tấm có dung tích không vượt quá 3001, nhưng có kích cỡ dễ di chuyển hoặc xách tay…",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "co_kich_co_de_di_chuyen_hoac_xach_tay",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom7310.nhom",
+   "trich": "…thì nhóm này bao gồm các đồ chứa bằng sắt hoặc thép lá hoặc thép tấm có dung tích không vượt quá 3001, nhưng có kích cỡ dễ di chuyển hoặc xách tay…",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "đồ chứa có sẵn điều khoản luân chuyển chất lỏng làm lạnh và làm nóng giữa các thành",
+   "sangNhom": "8419",
+   "nguon": "nhom7310.nhom",
+   "trich": "Nhóm này cũng bao gồm các thùng,... được cách nhiệt nhờ bởi thành đôi hoặc đáy kép với giả thiết là không làm sẵn để luân chuyển các chất lỏng làm lạnh và làm nóng giữa các thành. (Các đồ chứa với những điều khoản như vậy bị loại trừ, xem nhóm 84.19).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "các sản phẩm thuộc nhóm 42.02",
+   "sangNhom": "4202",
+   "nguon": "nhom7310.nhom",
+   "trich": "(a) Các sản phẩm thuộc nhóm 42.02.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "các thùng bích qui tròn, hộp trà, hộp sắt tây đựng đường và các thùng chứa, hộp nhỏ tương tự dùng trong nhà hoặc trong bếp",
+   "sangNhom": "7323",
+   "nguon": "nhom7310.nhom",
+   "trich": "(b) Các thùng bích qui tròn, hộp trà, hộp sắt tây đựng đường và các thùng chứa và hộp nhỏ tương tự dùng trong nhà hoặc trong bếp (nhóm 73.23).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "các hộp xì gà, hộp phấn sáp bỏ túi, hộp đựng đồ nghề và các hộp chứa tương tự cho sử dụng cá nhân hoặc sử dụng trong nghề nghiệp",
+   "sangNhom": "7325|7326",
+   "nguon": "nhom7310.nhom",
+   "trich": "(c) Các hộp xì gà, hộp phấn sáp bỏ túi, hộp đựng đồ nghề và các hộp chứa tương tự cho sử dụng cá nhân hoặc sử dụng trong nghề nghiệp (nhóm 73.25 hoặc 73.26).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "két sắt, hòm đựng tiền hoặc tủ đựng chứng từ tài liệu và các đồ chứa tương tự",
+   "sangNhom": "8303",
+   "nguon": "nhom7310.nhom",
+   "trich": "(d) Két sắt, các hòm đựng tiền hoặc tủ đựng chứng từ tài liệu, và các đồ chứa tương tự (nhóm 83.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "các mặt hàng thuộc nhóm 83.04",
+   "sangNhom": "8304",
+   "nguon": "nhom7310.nhom",
+   "trich": "(e) Các mặt hàng thuộc nhóm 83.04.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "các hộp dùng để trang trí",
+   "sangNhom": "8306",
+   "nguon": "nhom7310.nhom",
+   "trich": "(f) Các hộp dùng để trang trí (nhóm 83.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "các thùng chứa được thiết kế và trang bị đặc biệt để chuyên chở bởi một hoặc nhiều phương thức vận tải",
+   "sangNhom": "8609",
+   "nguon": "nhom7310.nhom",
+   "trich": "(g) Các thùng chứa được thiết kế và trang bị đặc biệt để chuyên chở bởi một hoặc nhiều phương thức vận tải (nhóm 86.09).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "phích chân không và các bình chân không khác hoàn chỉnh có kèm vỏ",
+   "sangNhom": "9617",
+   "nguon": "nhom7310.nhom",
+   "trich": "(h) Phích chân không và các bình chân không khác hoàn chỉnh có kèm vỏ, thuộc nhóm 96.17.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Đồ chứa có sẵn điều khoản luân chuyển chất lỏng làm lạnh và làm nóng giữa các thành (thành đôi hoặc đáy kép làm sẵn để luân chuyển)?",
+   "neuCo": "8419",
+   "neuKhong": "7310",
+   "nguon": "nhom7310.nhom",
+   "trich": "Nhóm này cũng bao gồm các thùng,... được cách nhiệt nhờ bởi thành đôi hoặc đáy kép với giả thiết là không làm sẵn để luân chuyển các chất lỏng làm lạnh và làm nóng giữa các thành. (Các đồ chứa với những điều khoản như vậy bị loại trừ, xem nhóm 84.19).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "731010",
+   "fact": "dung_tich_tu_50_lit_tro_len_nhung_khong_vuot_qua_300_lit",
+   "op": ">=",
+   "value": 50,
+   "donVi": "l",
+   "nguon": "wco.731010",
+   "trich": "731010 Tanks, casks, drums, cans, boxes and similar containers, for any material (excluding compressed or liquefied gas), 50l or more capacity but not exceeding 300l",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "731021",
+   "fact": "la_hop_duoc_dong_bang_cach_han_hoac_ep_rim_dung_tich_duoi_50_lit",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.731021",
+   "trich": "731021 Cans; which are to be closed by soldering or crimping, for any material (excluding compressed or liquefied gas), less than 50l capacity, of iron or steel",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "731029",
+   "fact": "la_do_chua_duoi_50_lit_khong_phai_hop_dong_bang_cach_han_hoac_ep_rim",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.731029",
+   "trich": "731029 Tanks, casks, drums, boxes and similar containers for any material (excluding compressed or liquefied gas) less than 50l capacity, n.e.c. in item no. 7310.2, of iron or steel",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "73101010",
+   "dieuKien": "Được tráng thiếc — dòng cha 731010: đồ chứa dung tích từ 50 lít trở lên (đối chiếu biểu thuế)",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.73101010",
+   "trich": "73101010 - - Được tráng thiếc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "73101091",
+   "dieuKien": "Được đúc, rèn hoặc dập, ở dạng thô — dòng cha 731010: đồ chứa dung tích từ 50 lít trở lên (đối chiếu biểu thuế)",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.73101091",
+   "trich": "73101091 - - - Được đúc, rèn hoặc dập, ở dạng thô",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "73101099",
+   "dieuKien": "Loại khác — thuộc phân nhóm 731010 (WCO 7310.10: két, thùng phuy, thùng hình trống, hộp và đồ chứa tương tự dung tích từ 50 lít trở lên nhưng không quá 300 lít)",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.731010",
+   "trich": "731010 Tanks, casks, drums, cans, boxes and similar containers, for any material (excluding compressed or liquefied gas), 50l or more capacity but not exceeding 300l",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "7310109",
+    "truAnhEm": [
+     "73101091"
+    ],
+    "toTienCoTen": "731010",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "73102111",
+   "dieuKien": "Được tráng thiếc — dòng cha 7310211: dung tích dưới 1 lít (đối chiếu biểu thuế); phân nhóm 731021 chưa có tên trong biểu thuế, đối chiếu WCO 7310.21 (hộp đóng bằng hàn hoặc ép rím, dung tích dưới 50 lít)",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.73102111",
+   "trich": "73102111 - - - - Được tráng thiếc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "73102119",
+   "dieuKien": "Loại khác — hộp đóng bằng hàn hoặc ép rím, dung tích dưới 1 lít, không tráng thiếc (dòng cha 7310211 theo biểu thuế; phân nhóm 731021 đối chiếu WCO 7310.21)",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.731021",
+   "trich": "731021 Cans; which are to be closed by soldering or crimping, for any material (excluding compressed or liquefied gas), less than 50l capacity, of iron or steel",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "7310211",
+    "truAnhEm": [
+     "73102111"
+    ],
+    "toTienCoTen": "731021",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "73102191",
+   "dieuKien": "Được tráng thiếc — dòng cha 7310219 ghi “Loại khác” trong biểu thuế; phân nhóm 731021 đối chiếu WCO 7310.21 (hộp đóng bằng hàn hoặc ép rím, dung tích dưới 50 lít)",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.73102191",
+   "trich": "73102191 - - - - Được tráng thiếc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "73102199",
+   "dieuKien": "Loại khác — hộp đóng bằng hàn hoặc ép rím, dung tích dưới 50 lít, không thuộc nhóm 7310.2.1 (dòng cha 7310219 ghi “Loại khác” trong biểu thuế; phân nhóm 731021 đối chiếu WCO 7310.21)",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.731021",
+   "trich": "731021 Cans; which are to be closed by soldering or crimping, for any material (excluding compressed or liquefied gas), less than 50l capacity, of iron or steel",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "7310219",
+    "truAnhEm": [
+     "73102191"
+    ],
+    "toTienCoTen": "731021",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "73102911",
+   "dieuKien": "Được tráng thiếc — dòng cha 7310291: đồ chứa dung tích dưới 1 lít (đối chiếu biểu thuế; phân nhóm 731029 chưa có tên trong biểu thuế, đối chiếu WCO 7310.29)",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.73102911",
+   "trich": "73102911 - - - - Được tráng thiếc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "73102919",
+   "dieuKien": "Loại khác — đồ chứa dung tích dưới 1 lít, không thuộc nhóm 7310.2.2, không tráng thiếc (dòng cha 7310291 theo biểu thuế; phân nhóm 731029 đối chiếu WCO 7310.29)",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.731029",
+   "trich": "731029 Tanks, casks, drums, boxes and similar containers for any material (excluding compressed or liquefied gas) less than 50l capacity, n.e.c. in item no. 7310.2, of iron or steel",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "7310291",
+    "truAnhEm": [
+     "73102911"
+    ],
+    "toTienCoTen": "731029",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "73102991",
+   "dieuKien": "Được tráng thiếc — dòng cha 7310299 ghi “Loại khác” trong biểu thuế; phân nhóm 731029 đối chiếu WCO 7310.29 (đồ chứa dung tích dưới 50 lít, không thuộc mục 7310.2)",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.73102991",
+   "trich": "73102991 - - - - Được tráng thiếc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "73102992",
+   "dieuKien": "Được đúc, rèn hoặc dập khác, ở dạng thô — dòng cha 7310299 ghi “Loại khác” trong biểu thuế; phân nhóm 731029 đối chiếu WCO 7310.29",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.73102992",
+   "trich": "73102992 - - - - Được đúc, rèn hoặc dập khác, ở dạng thô",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "73102999",
+   "dieuKien": "Loại khác — đồ chứa dung tích dưới 50 lít, không thuộc mục 7310.2, không tráng thiếc và không đúc/rèn/dập ở dạng thô (dòng cha 7310299 theo biểu thuế; phân nhóm 731029 đối chiếu WCO 7310.29)",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.731029",
+   "trich": "731029 Tanks, casks, drums, boxes and similar containers for any material (excluding compressed or liquefied gas) less than 50l capacity, n.e.c. in item no. 7310.2, of iron or steel",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "7310299",
+    "truAnhEm": [
+     "73102991",
+     "73102992"
+    ],
+    "toTienCoTen": "731029",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "7310",
+    "cap": 4,
+    "cha": "73",
+    "tenVi": "Các loại đồ chứa dạng két, thùng phuy, thùng hình trống, hình hộp, lon và các loại đồ chứa tương tự, dùng để chứa mọi loại vật liệu (trừ khí nén hoặc khí hóa lỏng), bằng sắt hoặc thép, dung tích không quá 300 lít, đã hoặc chưa được lót hoặc được cách nhiệt, nhưng chưa được ghép với thiết bị cơ khí hoặc thiết bị nhiệt.",
+    "tenEn": "Tanks, casks, drums, cans, boxes and similar containers, for any material (excluding compressed or liquefied gas), of iron or steel, capacity not exceeding 300l, whether or not lined or heat-insulated",
+    "suyRa": false
+   },
+   {
+    "id": "731010",
+    "cap": 6,
+    "cha": "7310",
+    "tenVi": "Có dung tích từ 50 lít trở lên",
+    "tenEn": "Tanks, casks, drums, cans, boxes and similar containers, for any material (excluding compressed or liquefied gas), 50l or more capacity but not exceeding 300l",
+    "suyRa": false
+   },
+   {
+    "id": "73101010",
+    "cap": 8,
+    "cha": "731010",
+    "tenVi": "Được tráng thiếc",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "7310109",
+    "cap": "TIEU_DE_QG",
+    "cha": "731010",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "73101091",
+    "cap": 8,
+    "cha": "7310109",
+    "tenVi": "Được đúc, rèn hoặc dập, ở dạng thô",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "73101099",
+    "cap": 8,
+    "cha": "7310109",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "73102",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "7310",
+    "tenVi": "Có dung tích dưới 50 lít",
+    "tenEn": "Of a capacity of less than 50 l",
+    "suyRa": true
+   },
+   {
+    "id": "731021",
+    "cap": 6,
+    "cha": "73102",
+    "tenVi": null,
+    "tenEn": "Cans; which are to be closed by soldering or crimping, for any material (excluding compressed or liquefied gas), less than 50l capacity, of iron or steel",
+    "suyRa": false
+   },
+   {
+    "id": "7310211",
+    "cap": "TIEU_DE_QG",
+    "cha": "731021",
+    "tenVi": "Có dung tích dưới 1 lít",
+    "tenEn": "Of a capacity of less than 1 l",
+    "suyRa": true
+   },
+   {
+    "id": "73102111",
+    "cap": 8,
+    "cha": "7310211",
+    "tenVi": "Được tráng thiếc",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "73102119",
+    "cap": 8,
+    "cha": "7310211",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "7310219",
+    "cap": "TIEU_DE_QG",
+    "cha": "731021",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "73102191",
+    "cap": 8,
+    "cha": "7310219",
+    "tenVi": "Được tráng thiếc",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "73102199",
+    "cap": 8,
+    "cha": "7310219",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "731029",
+    "cap": 6,
+    "cha": "73102",
+    "tenVi": null,
+    "tenEn": "Tanks, casks, drums, boxes and similar containers for any material (excluding compressed or liquefied gas) less than 50l capacity, n.e.c. in item no. 7310.2, of iron or steel",
+    "suyRa": false
+   },
+   {
+    "id": "7310291",
+    "cap": "TIEU_DE_QG",
+    "cha": "731029",
+    "tenVi": "Có dung tích dưới 1 lít",
+    "tenEn": "Of a capacity of less than 1 l",
+    "suyRa": true
+   },
+   {
+    "id": "73102911",
+    "cap": 8,
+    "cha": "7310291",
+    "tenVi": "Được tráng thiếc",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "73102919",
+    "cap": 8,
+    "cha": "7310291",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "7310299",
+    "cap": "TIEU_DE_QG",
+    "cha": "731029",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "73102991",
+    "cap": 8,
+    "cha": "7310299",
+    "tenVi": "Được tráng thiếc",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "73102992",
+    "cap": 8,
+    "cha": "7310299",
+    "tenVi": "Được đúc, rèn hoặc dập khác, ở dạng thô",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "73102999",
+    "cap": 8,
+    "cha": "7310299",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": [
+   {
+    "id": "731021",
+    "tenVi": "Hộp phải đóng bằng cách hàn hoặc ép rím, dùng chứa mọi vật liệu (trừ khí nén hoặc khí hóa lỏng), dung tích dưới 50 lít, bằng sắt hoặc thép",
+    "nguon": "wco.731021",
+    "trich": "731021 Cans; which are to be closed by soldering or crimping, for any material (excluding compressed or liquefied gas), less than 50l capacity, of iron or steel",
+    "nguonLoai": "AI_DA_KIEM"
+   },
+   {
+    "id": "731029",
+    "tenVi": "Két, thùng phuy, thùng hình trống, hộp và đồ chứa tương tự dùng chứa mọi vật liệu (trừ khí nén hoặc khí hóa lỏng), dung tích dưới 50 lít, không thuộc mục 7310.2, bằng sắt hoặc thép",
+    "nguon": "wco.731029",
+    "trich": "731029 Tanks, casks, drums, boxes and similar containers for any material (excluding compressed or liquefied gas) less than 50l capacity, n.e.c. in item no. 7310.2, of iron or steel",
+    "nguonLoai": "AI_DA_KIEM"
+   }
+  ]
+ },
+ "dungTuNguon": [
+  "nhom7310.nhom",
+  "tax.73101010",
+  "tax.73101091",
+  "tax.73102111",
+  "tax.73102191",
+  "tax.73102911",
+  "tax.73102991",
+  "tax.73102992",
+  "wco.731010",
+  "wco.731021",
+  "wco.731029"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-22T16:29:59.014Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 31,
+  "dat": 31,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
