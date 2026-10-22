@@ -28,7 +28,7 @@ lô 008 và 003 từng dính y hệt). **Em theo CSV.**
 - [x] **B6.** `check-so-tay.mjs --raw` → 94/94 sạch, **nhưng phải tự soát bằng mắt** — đã sửa **9 lỗi** máy không bắt (mục dưới) → chạy lại, vẫn 94/94.
 - [x] **B7.** Nạp `--tu-tep --force --nguoi-soan="dev-zcode-mm" --bao-cao=...lo-009.json` → **94/94 (100 %)**, 0 nhóm lỗi.
 - [x] **B8.** `check-cay.mjs --nhom=<6> --chi-tiet` → **0 lỗi lệch cây** (3 cảnh báo xem dưới). `npm run so-tay:check` → 212 nhóm / 7194 mục / 0 lỗi. `npm test` → **ALL TESTS PASSED**.
-- [x] **B9.** Commit + push + mở PR (**KHÔNG merge**).
+- [x] **B9.** Commit + push + mở PR → **PR #386** https://github.com/ozvietnam/hs-code-api/pull/386 (9 tệp, `MERGEABLE`, **chưa merge**). CI: `test` **pass** (1m28s) + `bench` **pass** (11m22s); `Vercel` đỏ "Deployment was blocked" là **lỗi có sẵn**, không liên quan code (Vercel đã gỡ khỏi hạ tầng từ 09/10/2026).
 
 ## Tự soát bằng mắt — 9 lỗi máy KHÔNG bắt được (đã sửa trước khi nạp)
 
@@ -116,10 +116,11 @@ Tất cả mục còn lại đều ≤ 300 ký tự.
 | `check-cay.mjs --nhom=<6> --chi-tiet` | 6 nhóm, **0 lỗi lệch cây**; 3 cảnh báo `phan-nhom-chua-co-tieu-chi` (xem mục "Quyết định bỏ") |
 | `npm run so-tay:check` | 212 nhóm, 7194 mục, **0 lỗi** |
 | `npm test` | **ALL TESTS PASSED** |
+| CI GitHub (`test`, `bench`) | **pass** — `test` 1m28s, `bench` 11m22s |
 
 ## Bàn giao
 
-- **KHÔNG merge** — PR đang mở, chờ người duyệt.
+- **KHÔNG merge** — PR #386 đang mở, chờ người duyệt.
 - Việc còn lại của người duyệt (mục 4 giao việc): **soát độc lập TOÀN BỘ** `phamVi`/`boPhan`/`dieuKienVao`/`loaiTru`/`phanBiet` của 6 nhóm này (**27 mục**); rồi tự soát ngẫu nhiên ≥ 10 % phần còn lại (67 mục `tieuChi6`/`dong8`).
 - **Ba chỗ cần người soát để mắt nhiều nhất** (máy không có khả năng phát hiện):
   1. Chiều nhánh `phanBiet[0]` 6601 (mục "Nhóm nguồn mỏng" #7).
