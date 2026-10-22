@@ -1,0 +1,76 @@
+{
+ "nhom": "5210",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-23T02:15:00+07:00",
+ "phamViSoat": "Toàn bộ 11 mục của 4 khối trong tmp/so-tay/raw/5210.json (1 phamVi + 4 dieuKienVao + 5 loaiTru + 1 phanBiet; không có boPhan), đọc cùng tmp/so-tay/nguon/5210.txt, đối chiếu [nhom5210.nhom] và [phan52.phan].",
+ "soat": 11,
+ "daKiem": 11,
+ "sua": 2,
+ "xoa": 0,
+ "ghiChu": "11 mục: giữ 9, sửa 2, xoá 0. Danh sách không bao gồm (a)–(e) của nhóm được ghi đủ 5/5. Hai lỗi sửa: (1) phamVi.trich chỉ chép ba tiêu chuẩn (a)(b)(c) trong khi text khẳng định thêm 'được phân loại như vải bông theo Chú giải 2 Phần XI' — đã nới trich; (2) phanBiet[0] đảo ngược nhánh Có/Không so với câu nguồn. tieuChi6/dong8 ngoài phạm vi soát bắt buộc.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "text nói 'Vải được phân loại như là vải bông theo Chú giải 2 Phần XI, phải đáp ứng…' nhưng trich cũ chỉ có ba tiêu chuẩn (a)(b)(c); vế 'theo Chú giải 2 Phần XI' không có trong câu trích — đúng lỗi text khẳng định ngoài trich. Đã kéo câu mở đầu 'Nhóm này cũng bao gồm các loại vải được phân loại như là vải bông theo Chú giải 2 Phần XI…' vào trich (lược ngoặc dẫn chiếu bằng '…', không mất nghĩa), giữ đủ ba tiêu chuẩn; trich 274 ký tự ≤ 300.",
+   "sua": {
+    "trich": "Nhóm này cũng bao gồm các loại vải được phân loại như là vải bông theo Chú giải 2 Phần XI … và với điều kiện chúng phải đáp ứng những tiêu chuẩn sau: (a) Có tỷ trọng bông dưới 85%; (b) Được pha chủ yếu hay chỉ pha duy nhất với xơ nhân tạo; (c) Trọng lượng không quá 200g/m2."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "'Nhóm này bao gồm các loại vải dệt như đã định nghĩa trong Phần (I) (C)…' là điều kiện vật liệu đầu tiên (phải là vải dệt thoi theo định nghĩa Phần XI), không phải điều kiện phân nhóm; fact la_vai_det_thoi đúng."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "(a) tỷ trọng bông dưới 85% nguyên văn; value 85 nằm trong câu trích, op '<' đúng chiều 'dưới'."
+  },
+  {
+   "index": "dieuKienVao[2]",
+   "hanhDong": "giu",
+   "lyDo": "(b) 'Được pha chủ yếu hay chỉ pha duy nhất với xơ nhân tạo' nguyên văn; đây là điều kiện VÀO nhóm 4 số, không phải điều kiện của phân nhóm."
+  },
+  {
+   "index": "dieuKienVao[3]",
+   "hanhDong": "giu",
+   "lyDo": "(c) 'Trọng lượng không quá 200g/m2' nguyên văn; value 200 trong câu trích, op '<=' đúng chiều 'không quá'."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (a): băng y tế, đích 30.05 nêu trong câu; giữ đủ định ngữ 'đã tẩm thuốc hay đã đóng gói để bán lẻ'."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b): vải dệt nhóm 58.01, đích nêu đích danh trong câu."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c): vải khăn lông và vải dệt thoi tạo vòng lông tương tự, đích 58.02 có trong câu."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (d): vải dệt quấn, đích 58.03 có trong câu. Giữ nguyên chữ 'quấn' của nguồn, không tự sửa thành thuật ngữ khác."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (e): vải dệt thoi phục vụ mục đích kỹ thuật, đích 59.11 có trong câu; dieuKien giữ đủ định ngữ 'phục vụ cho mục đích kỹ thuật'."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "Nhánh Có/Không bị ĐẢO: câu hỏi mô tả đúng ba tiêu chí của 5210 (bông dưới 85%, pha chủ yếu/duy nhất với xơ nhân tạo, không quá 200 g/m2), nhưng nháp gán 'Có → 5212, Không → 5210'. Câu nguồn nói ngược: vải thỏa ba tiêu chí đó 'thì không thuộc nhóm 52.12… mà ở trong nhóm 52.10'. Đã hoán đổi lại neuCo=5210, neuKhong=5212; trich giữ nguyên văn (kể cả lỗi 'tỷ trong bông' của nguồn).",
+   "sua": {
+    "neuCo": "5210",
+    "neuKhong": "5212"
+   }
+  }
+ ]
+}

@@ -1110,3 +1110,89 @@ Mọi mục đều mang `nguonLoai: AI_DA_KIEM` do máy gán (em không ghi tay 
   `in_progress` (lo-021 / lo-022 / lo-026) ⇒ runner có vẻ đang tắc. Em **không** coi đây là CI xanh.
   Thay vào đó em đã chạy đúng nội dung của job `test` tại máy: `npm test` exit 0 (ALL TESTS PASSED,
   mọi suite `0 failed`) + `npm run so-tay:check` = `279 nhóm, 8804 mục, 0 mục không kiểm được nguồn`.
+
+## Bước 6 — SOÁT ĐỘC LẬP toàn bộ 5 nhóm (23/10/2026)
+
+Người soát: **phiên Claude độc lập** (KHÔNG phải người soạn `dev-zcode-mm`), nhánh
+`so-tay/lo-025`, PR #407. Trước khi soát đã merge `origin/main` (lô 021, #402) vào nhánh —
+commit `d7170a6`; PR hết `CONFLICTING`. Merge chỉ đụng `TIEN-TRINH.md`, không đụng 5 tệp sổ tay.
+
+**Phạm vi đúng mục 4 giao việc:** đọc lại TOÀN BỘ `phamVi`, `boPhan`, `dieuKienVao`, `loaiTru`,
+`phanBiet` của **5 nhóm lô này** (4412, 4807, 5210, 5508, 5510) cùng nguồn
+`tmp/so-tay/nguon/<nhom>.txt` — không soát mẫu. `4802` không nằm trong phạm vi: nhóm đã có sẵn từ
+vòng `lo-cay-20-nhom` (118/118, đã soát độc lập 11/10/2026), lô này không soạn lại.
+
+| nhóm | mục soát | giữ | sửa | xoá | ghi chú |
+|---|---:|---:|---:|---:|---|
+| 4412 | 9 | 8 | 1 | 0 | thêm vế "hoặc những tấm rời để ghép" bị bỏ khỏi `phanBiet[2].hoi` |
+| 4807 | 6 | 3 | 2 | 1 | nới `phamVi.trich` (text khẳng định "mọi chất lượng" ngoài trích); rút `dieuKienVao[1].trich` 372→242 ký tự; xoá `phanBiet[0]` |
+| 5210 | 11 | 9 | 2 | 0 | nới `phamVi.trich` (text khẳng định "theo Chú giải 2 Phần XI" ngoài trích); đảo lại nhánh `phanBiet[0]` |
+| 5508 | 7 | 6 | 1 | 0 | bỏ ngưỡng giả `value:"1.000"` + `op:"<="`; đổi thành fact boolean |
+| 5510 | 2 | 2 | 0 | 0 | nguồn mỏng — xem dưới |
+| **tổng** | **35** | **28** | **6** | **1** | 34 mục còn lại đổi `nguonLoai` → `NGUOI_DUYET` |
+
+> Lưu ý đếm: 6 mục `sua` (không phải 11 — script in 11 là số **trường** bị đổi, 5 trường nằm trong
+> cùng mục `5508 dieuKienVao[1]`). Sau soát: 144 → **143 mục** (4412 50 · 4807 6 · 5210 50 ·
+> 5508 13 · 5510 24), `bao-cao/lo-025.json` ghi `143/143 (100 %)`.
+
+### 6 lỗi sửa + 1 mục xoá (máy KHÔNG bắt được)
+
+1. **4412 `phanBiet[2].hoi`** — câu hỏi bỏ mất nhánh "hoặc những tấm rời để ghép" của nguồn (c).
+   Tấm rời để ghép mà không phải panel gỗ xốp/panel đã lắp ghép sẽ trả lời "không" và bị đẩy về
+   4412, trái nguồn (nguồn đưa sang 44.18). Đã thêm đúng vế nguồn.
+2. **4807 `phamVi.trich`** — `text` khẳng định "có thể làm từ giấy hoặc bìa thuộc mọi chất lượng"
+   nhưng trích cũ nhảy thẳng từ câu định nghĩa sang nguồn gốc chất kết dính, bỏ mất chính câu đó.
+   Đã nới trích (260 ký tự), cắt danh sách ví dụ không cần.
+3. **4807 `dieuKienVao[1].trich`** — 372 ký tự, nằm vùng 300–600 mà mục 4 dặn để mắt. Đã lược câu
+   "cũng tách ra khi đốt cháy" và ngoặc giải thích đối chiếu bằng "…", còn 242 ký tự; tiêu chí
+   phân biệt (tự tách lớp sau khi ngâm, có vết tích chất kết dính) nguyên vẹn.
+4. **4807 `phanBiet[0]` — XOÁ.** Nhánh "không → 4802" không có trong nguồn: câu trích chỉ nói
+   48.02/48.10/48.11 "có kích thước bất kỳ", không nói giấy bồi cỡ nhỏ thuộc 48.02. 48.02 là giấy
+   viết/in; giấy bồi cỡ nhỏ đi theo phạm vi Chương (III) sang 48.16–48.23. Đây là lỗi "nhánh không
+   suy từ cấu trúc anh em"; nguồn không nêu đích thay thế nên xoá, không tự đoán mã.
+5. **5210 `phamVi.trich`** — `text` khẳng định "được phân loại như vải bông theo Chú giải 2 Phần XI"
+   nhưng trích cũ chỉ có ba tiêu chuẩn (a)(b)(c). Đã kéo câu mở đầu vào trích (274 ký tự).
+6. **5210 `phanBiet[0]`** — nhánh **bị đảo**: câu hỏi mô tả đúng ba tiêu chí của 5210 nhưng nháp gán
+   "Có → 5212, Không → 5210"; nguồn nói ngược ("không thuộc 52.12 mà ở trong nhóm 52.10"). Đã đổi
+   lại `neuCo=5210`, `neuKhong=5212`; giữ nguyên cả lỗi "tỷ trong bông" của nguồn.
+7. **5508 `dieuKienVao[1]`** — ngưỡng "không quá 1.000 g" bị đặt thành `value:"1.000"` (chuỗi) với
+   `op:"<="` kèm ghi chú tự bào chữa. Chuỗi không phải số, cổng đọc `value` sẽ so sánh chuỗi; đây
+   đúng kiểu lách máy mà bài học lô 012 cấm. Đổi thành
+   `fact:"trong_luong_cuon_tren_lo_khong_qua_1000_g"`, `op:"="`, `value:true`, `donVi:null`.
+
+### Giữ nguyên có lý do (không phải bỏ sót)
+
+- **4412 `loaiTru[2]`** dài 287 ký tự: cắt thêm sẽ mất vế "kể cả các loại bao gồm khối gỗ, dải gỗ,
+  viền gỗ…" — vế mở rộng của chính câu loại trừ, không phải câu rào.
+- **4412 `phanBiet[0,1,3]`** có `neuKhong = 4412`: đúng quy ước "nhánh không trỏ chính nhóm" khi
+  nguồn nói sản phẩm đó KHÔNG thuộc nhóm; không phải lỗi.
+- **4807 `dieuKienVao[0]`**: Chú giải 8 Chương 48 là điều kiện hình dạng/kích thước cho cả cụm
+  48.03–48.09, không phải điều kiện phân nhóm.
+- **5508 `phanBiet[0]`**: "Có → 5607, Không → 5508" đúng chiều với câu "nếu… thì bị loại trừ".
+- **5510 `loaiTru[0]`**: Chú giải 1(d) Chương 55 nêu đích danh 70.19; áp cho cả chương.
+
+### Nguồn mỏng (ghi nhận, không tự bịa)
+
+- **5508**: khối `[phan55.phan]` bị cắt ở "Chún" (giới hạn `CAP.phan = 25000`), nên phần
+  (I)(B)(4) mà `phamVi` dẫn chiếu không có trong nguồn xuất. Sổ tay chỉ chép nguyên văn câu của
+  nhóm; định nghĩa "chỉ khâu" lấy từ khoản 5 (có đủ trong nguồn).
+- **5510**: `[nhom5510.nhom]` chỉ có một câu "Chú giải chi tiết của nhóm 55.09 được áp dụng…";
+  bản thân chú giải 55.09 **không được xuất** vào nguồn. Vì vậy `dieuKienVao`/`phanBiet` để rỗng là
+  đúng hướng an toàn — không suy điều kiện từ kiến thức ngoài.
+
+### Kiểm sau soát
+
+| lệnh | kết quả |
+|---|---|
+| `TARGET=raw APPLY=1 node scripts/apply-review-lo025.mjs` | 5 nhóm, 35 mục: giữ 28, sửa 6, xoá 1 |
+| `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw 4412 4807 5210 5508 5510` | **143/143 đạt, 0 mục rớt** |
+| `node scripts/build-so-tay.mjs --nhom=… --tu-tep=tmp/so-tay/raw --force --bao-cao=…` | `143/143 (100 %)`, `nhomLoi: []` |
+| `TARGET=data APPLY=1 node scripts/apply-review-lo025.mjs` | đổi **34** mục `AI_DA_KIEM` → `NGUOI_DUYET` (35 soát − 1 xoá) |
+| `npm run so-tay:check` | `285 nhóm, 8936 mục, 0 mục không kiểm được nguồn` |
+| `npm test` | **ALL TESTS PASSED**, exit 0, mọi suite `0 failed` |
+
+Hồ sơ soát: `review/{4412,4807,5210,5508,5510}.json` (mọi mục đều có entry, kể cả `giu`); script áp
+2 pha: `scripts/apply-review-lo025.mjs` (`TARGET=raw` sửa/xoá trước, `TARGET=data` chỉ đổi nhãn).
+
+**KHÔNG merge.** PR #407 chờ người duyệt quyết định tự soát mẫu ≥ 10 % phần còn lại
+(`tieuChi6`/`dong8`/`cay`) rồi gộp và điền `trang_thai=xong`, cột `pr` trong `so-tay-lo.csv`.
