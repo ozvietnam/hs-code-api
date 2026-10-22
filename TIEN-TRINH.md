@@ -212,6 +212,9 @@ Nguồn `sen.*` **không có** cho lô này, kể cả mục `63025110` mang nh�
 
 ## Bàn giao
 
+- **PR #391** đang mở, **KHÔNG merge**: https://github.com/ozvietnam/hs-code-api/pull/391
+  CI: `test` ✅ (2m19s) · `bench` ✅ (10m47s) · "Vercel: Deployment was blocked" ❌ là **đỏ có sẵn**
+  (memory `vercel-check-blocked-la-pre-existing` — Vercel đã gỡ khỏi deploy từ 09/10/2026).
 - Việc còn lại của người duyệt (mục 4 giao việc): **soát độc lập TOÀN BỘ** `phamVi` / `boPhan` / `dieuKienVao` /
   `loaiTru` / `phanBiet` — tức **31 mục** (5 phạm vi + 2 bộ phận + 1 điều kiện + 15 loại trừ + 8 phân biệt);
   cộng 41 `tieuChi6` + 48 `dong8` + 5 `tenDien` nếu muốn soi thêm. Đặc biệt nên soi:
@@ -223,7 +226,9 @@ Nguồn `sen.*` **không có** cho lô này, kể cả mục `63025110` mang nh�
 - Nhớ: lỗi kệ sách ở mục "83099081/91… trùng chữ", "2 nguồn tự mâu thuẫn" nên bổ sung vào **mục 1** của
   `docs/giao-viec/so-tay-giao-ngoai.md` để các lô sau tránh.
 
----# TIEN-TRINH — lô 010 (soạn sổ tay chú giải)
+---
+
+# TIEN-TRINH — lô 010 (soạn sổ tay chú giải)
 
 Nhóm của lô: **9406, 9616, 3407, 4820, 5607, 6107**
 Người soạn: `dev-zcode-mm` · Nhánh: `so-tay/lo-010` @ `b58dda8` (main mới nhết) · Ngày: 2026-10-22
