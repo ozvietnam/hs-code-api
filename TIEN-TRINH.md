@@ -488,3 +488,100 @@ không cần phân giải index. Trước đó script ném lỗi và phiên soá
 3. Bổ sung lỗi kệ sách mới phát hiện vào **mục 1** của `docs/giao-viec/so-tay-giao-ngoai.md`:
    chú giải nhóm 3407 mất đầu mục (A); `CAP.phan` cắt mất phần chú giải nhóm dẫn chiếu.
 4. Khi đạt: `so-tay-lo.csv` dòng 010 → `trang_thai=xong` + điền `pr=384`, rồi merge.
+
+---
+
+# TIEN-TRINH — lô 011, PHIÊN SOÁT ĐỘC LẬP (22/10/2026)
+
+Nhánh `so-tay/lo-011`, PR **#391**. Người soát: phiên Claude **độc lập**, không phải người soạn
+(`dev-zcode-mm`). Commit soát: **`cfa4a73`** (đã push, **KHÔNG merge**).
+
+## Đã làm
+
+- [x] **S1.** Đọc lại **TOÀN BỘ 124 mục** của 5 nhóm (6302, 8201, 8309, 9028, 9607) cùng
+  `tmp/so-tay/nguon/<nhom>.txt` — không chỉ 31 mục `phamVi/boPhan/dieuKienVao/loaiTru/phanBiet`.
+  Đọc thêm `lib/so-tay.js` (luật máy), `lib/so-tay-runtime.js` (runtime đọc `loaiTru`),
+  `scripts/audit-trich.mjs` (in câu trước/sau mỗi trích) và đối chiếu `docs/giao-viec/so-tay-giao-ngoai.md`.
+- [x] **S2.** Chạy `tmp/so-tay/raw/_verbatim.mjs` (so **NGUYÊN VĂN**, không squash) — 0 mục lệch,
+  1 cảnh báo độ dài (401). Chạy `audit-trich.mjs` cho cả 5 nhóm để soi từng đoạn lược.
+- [x] **S3.** Ghi `review/{6302,8201,8309,9028,9607}.json` — mỗi tệp ghi đủ mục đã soi, lý do từng
+  quyết định, và `canhBaoKhongSuaTrongAudit` cho những chỗ cố ý không sửa.
+- [x] **S4.** Áp: `scripts/apply-review-lo011.mjs` (`TARGET=raw APPLY=1`) → `check-so-tay --raw` 124/124
+  → `build-so-tay --tu-tep --force --nguoi-soan="dev-zcode-mm" --bao-cao=lo-011.json`
+  → `TARGET=data APPLY=1` đổi `nguonLoai` **30 mục** sang `NGUOI_DUYET`.
+- [x] **S5.** Kiểm chạy lại: `so-tay:check` 222 nhóm / 7422 mục / 0 lỗi · `check-cay` 5 nhóm đủ ·
+  `npm test` **ALL TESTS PASSED** · in lại `sangNhom` + đếm `nguonLoai` (không trùng mục).
+- [x] **S6.** Commit + push + cập nhật thân PR #391. **KHÔNG merge.**
+
+## Kết quả: soát 124 → sửa 3, xoá 0, giữ 121
+
+**Không mục nào phải xoá** — 124/124 câu trích nguyên văn. Bản nháp tốt hơn vòng 2 (xoá 325/sửa 95)
+và ngang lô 010 (sửa 7/104); nhóm 8309 sạch tuyệt đối (13/13 giữ).
+
+| Nhóm | Mục | Sửa | Xoá | Đổi `nguonLoai` |
+|---|---|---|---|---|
+| 6302 | 53 | 1 (`phanBiet[1]`) | 0 | 7 |
+| 8201 | 25 | 2 (`phanBiet[0]`, `tieuChi6[4]`) | 0 | 11 |
+| 8309 | 13 | 0 | 0 | 1 |
+| 9028 | 24 | 2 (`loaiTru[2]`, `phanBiet[0]`) | 0 | 8 |
+| 9607 | 9 | 0 | 0 | 3 |
+| **Tổng** | **124** | **3** | **0** | **30** |
+
+### Ba lỗi nặng (máy không bắt được)
+
+1. **6302 `phanBiet[1]` — "đã qua sử dụng → 6309" nói hơn nguồn.** Câu trích chỉ có Chú giải 2(b) Chương 63
+   nhưng mục biến nó thành *quy tắc nhị phân*. Chú giải 3 ngay dưới, **cùng khối nguồn**, nói 6309 chỉ chứa
+   hàng thoả **cả hai** điều kiện (còn mặc được + đóng gói cỡ lớng/kiện/bao). Đã kéo cả hai điều kiện
+   vào `hoi` và `trich`. Đây là biến thể của lỗi "mất điều kiện ngay sau câu trích" — lần này điều kiện
+   nằm ở **chú giải kế tiếp** chứ không phải câu liền.
+2. **8201 `phanBiet[0]` — nhánh "Có" suy ngược từ câu đối chiểu + trích mồ côi.** Trích câu *"Những loại
+   dụng cụ này khác xa với các loại kéo thuộc nhóm 82.13 vì chúng không có các vòng xỏ ngón tay vào"*;
+   chủ thể nằm câu trước, và *"có vòng xỏ → 8213"* chỉ suy ra từ phần đối chiểu. Đã đổi sang câu loại trừ
+   tường minh ngay trong chú giải nhóm. Kèm sửa `tieuChi6[820150]`: nối chủ thể bằng `…` (mục trích mồ côi).
+3. **9028 `loaiTru[2]` + `phanBiet[0]` — trích mồ côi và mất phạm vi.** Trích bắt đầu bằng *"trừ các bơm
+   chất lỏng …"*; chủ ngữ *"Công tơ đo chất lỏng sản xuất hoặc cung cấp"* nằm ở tiêu đề mục (B) ngay trước,
+   và nguồn chỉ nêu loại trừ này cho phần **công tơ chất lỏng** chứ không nói cho công tơ khí.
+
+### Máy bắt lỗi ngay trong bản sửa của người soát (bài học cho lô sau)
+
+- Chép **trọn dòng nguồn** 9028 kèm dấu `…` **có sẵn trong nguồn** → `check-so-tay` loại 2 mục
+  `trich-khong-co-trong-nguon`. Phải lược **trước** dấu `…` của nguồn (cùng họ với
+  `so-tay-nguon-co-dau-cham-ellipsis-that`).
+- Thử nối 2 khối `wco.*` cho 9607 → máy loại: **một mục chỉ được trích từ một khối nguồn**. Đã hoàn nguyên.
+- Rút `trich` 6302 về ≤300 bằng cách bỏ dấu `…` giữa hai câu liền dòng có dòng trống ở giữa → verbatim
+  checker báo lệch. Phải giữ `…`.
+
+### Những chỗ cố ý KHÔNG sửa (xin người quản lý quyết)
+
+1. **`phanBiet` trùng cặp với `loaiTru`** (6302: 2, 9028: 2). Cùng câu nguồn, cùng chiều, không sai — nhưng
+   quét 90 nhóm sổ tay đã gộp thì **0/480 phanBiet trùng cặp với loaiTru**. Đề xuất luật máy hoặc quy ước.
+2. **8201 thiếu loại trừ mục (d)**: nguồn chỉ nêu *"Chương 84"*, không nêu nhóm đích → không ghi `loaiTru`
+   được (đúng luật 3). Thực tế *trục làm vườn, máy cắt cỏ đẩy-kéo* rất dễ bị khai nhầm vào 8201.
+3. **6302 thiếu loại trừ 5601** ("các sản phẩm mềm xơ") — không tự chèn vì đó là mở rộng phạm vi soát.
+4. **8309**: dấu `…` của chính nguồn làm cụt câu loại trừ *"không bao gồm những nút cơ học phần lớn làm
+   bằng nhựa, sứ…"* → thêm một đầu mục kệ sách.
+5. **9607 `phanBiet[0]`**: nhánh "Có" có căn cứ ở `tieuChi6[960711]` nhưng không nằm trong cùng câu trích,
+   và không sửa được vì 960711/960719 là hai khối `wco.*` riêng. Nếu muốn sửa thì phải đổi luật "một mục chỉ
+   trích từ một khối nguồn".
+6. **Xác nhận cho `phamVi.trich` 401 ký tự của 6302** (PR từng xin xác nhận): **giữ nguyên** — đoạn lược
+   không có ngoại lệ nào áp vào chính mệnh đề mà `text` khẳng định, ngoại lệ 63.04 đã kéo nguyên văn vào trích.
+   Sau khi sửa, `6302.phanBiet[1].trich` dài 329 ký tự — cùng lý do (kéo ngoại lệ, không nuốt).
+
+### Kiểm chéo kiến thức từ 3 trợ soát chạy song song
+
+Em chạy 3 agent audit độc lập (mỗi agent 2–3 nhóm) rồi **tự kiểm lại từng nhận định** trước khi đưa vào
+review. Kết quả: phần lớn nhận định của họ là **over-reach theo quy ước sẵn có** (đòi bỏ `neuKhong` = chính
+nhóm trong khi 318/480 `phanBiet` sẵn có trong sổ tay dùng đúng mẫu đó; đòi `tieuChi: null` cho dòng trần
+trong khi 275 dòng `dong8` đã gộp dùng mẫu "Loại khác: phần còn lại…"; đòi bỏ loại trừ cấp Chương trong
+khi chính lô này có 3 mục như vậy và lô 007/009 đã duyệt). Giữ lại 3 ý đúng: **2 câu trích ở 9607/8201**,
+**câu trích mồ côi ở 9028**, và **thiếu điều kiện ở 6302 `phanBiet[1]`**.
+
+## Việc còn lại của người quản lý
+
+1. Đọc `review/*.json` (mỗi tệp có `canhBaoKhongSuaTrongAudit`) và quyết 5 mục "cố ý không sửa" ở trên.
+2. Tự soát ngẫu nhiên ≥ 10 % phần còn lại (mục 4 giao việc).
+3. Cân nhắc đưa 2 luật máy mới phát hiện: (a) `phanBiet` không lặp cặp với `loaiTru`; (b) `phanBiet` mà
+   câu trích chỉ nêu MỘT vế của cặp cấp 6 số → bắt nhắc bổ sung khối nguồn kia (9607).
+4. Bổ sung kệ sách mới vào **mục 1** `docs/giao-viec/so-tay-giao-ngoai.md`: 8309 mất nửa câu loại trừ do
+   `…` của nguồn; 8201 mục (d) chỉ nêu "Chương 84" nên không dùng được.
+5. Khi đạt: `so-tay-lo.csv` dòng 011 → `trang_thai=xong` + `pr=391`, rồi merge.
