@@ -1,0 +1,68 @@
+{
+ "nhom": "9024",
+ "nguoiSoat": "dev-soat-doc-lap-l023",
+ "luc": "soát độc lập lô 023 (PR #404)",
+ "daKiem": "check-so-tay --raw=tmp/so-tay/raw (17/17) + strict-trich.mjs (122/122) + đọc tay toàn vện tmp/so-tay/nguon/9024.txt + soi cấu trúc ngoặc '(ví dụ…)' bằng script",
+ "soat": 9,
+ "xoa": 1,
+ "sua": 3,
+ "ghiChu": "1) Soi cấu trúc ngoặc trong nguồn bằng script cho thấy mục (a) có HAI ngoặc: '(ví dụ, thiết bị nghiên cứu kết cấu kim loại và hợp kim hoặc kính hiển vi khác - nhóm 90.11 hay 90.12)' và '(nhóm 90.27)'. Mã nằm TRONG ngoặc 'ví dụ,' là mã ví dụ, đúng luật 'số nhóm chỉ là ví dụ linh kiện → không phải loaiTru đích danh' (đã xoá tương tự ở lô 022 với 8416). 2) Câu về dụng cụ dệt chỉ có MỘT mã, '(nhóm 90.31)', dán cho mục cuối trong danh sách ví dụ — không có đích cạnh tranh nên giữ nguyên phạm vi như người soạn, chỉ ghi chú. 3) LỖI NGOÀI PHẠM VI SOÁT ĐỘC LẬP, cần người duyệt quyết: cả 4 `fact` của nhóm 9024 viết 'co_mechanic' ('đặc tính cơ mechanic') thay vì 'co_hoc' — grep toàn data/so-tay thì 4 chỗ này là toàn bộ số lần dùng 'mechanic', không có tiền lệ nào khác. Không ảnh hưởng hàm vi (không fact nào khớp UNIT_RULES trong so-tay-gates.js) nên KHÔNG sửa nửa vời: scripts/apply-review-*.mjs cố ý không đụng tieuChi6, sửa một nửa sẽ để nhóm lệch nhau. Đề xuất sửa cả 4 ở đợt nạp sau hoặc đưa thành luật máy.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "`text` tóm thêm câu KHÁC của khối nguồn không có trong trích (bài học lô 016). Vế 'từ máy nặng hàng tấn đến dụng cụ nhỏ bỏ túi' lấy từ đoạn 'Phạm vi của chúng bao gồm từ những máy móc nặng hàng tấn … cho đến những dụng cụ nhỏ xách tay, thậm chí bỏ túi.' — trích chỉ chép câu mở đầu. Sửa: bỏ vế ngoài trích, không kéo dài trích (trích hiện 264 ký tự, kéo thêm sẽ vượt trần 300).",
+   "sua": {
+    "text": "Máy móc và dụng cụ thử độ cứng, độ đàn hồi, độ bền khi bị kéo, bị nén và các đặc tính cơ học khác của các loại nguyên vật liệu khác nhau (ví dụ: kim loại, gỗ, bê-tông, sợi dệt và vải, giấy hoặc bìa, cao su, plastic, da thuộc)."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng nghĩa dieuKienVao (sự kiện mô tả hàng thuộc nhóm), không phải câu cho phép, không phải ngưỡng cấp phân nhóm/dòng 8 số. Ghi chú: tên `fact` viết 'co_mechanic' — xem ghiChu cấp nhóm, không sửa ở đây để tránh lệch với tieuChi6."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "Khẳng định 9011/9012 là đích loại trừ là do đọc sai câu. Nguồn viết: '(a) Các dụng cụ hoặc máy móc để kiểm tra cấu trúc vật chất vi thể (ví dụ, … kính hiển vi khác - nhóm 90.11 hay 90.12) hoặc phân tích vật liệu, hay đo đạc các đặc tính như độ xốp, sự giãn nở nhiệt,... (nhóm 90.27).' — 90.11 và 90.12 nằm BÊN TRONG ngoặc '(ví dụ, …)', tức mã ví dụ, đúng luật 'chỉ ghi các mã nêu tên'; chữ 'kính hiển vi khác' còn hàm ý loại trừ 9011 (chính là loại đã được nhắc ở đoạn trước). Chỉ '(nhóm 90.27)' là đích nêu đích danh. Sửa: bỏ 9011/9012, thu hẹp điều kiện về phần đích 90.27; câu trích giữ nguyên để người đọc tự thấy lớp ví dụ.",
+   "sua": {
+    "dieuKien": "Dụng cụ hoặc máy móc để phân tích vật liệu, hay đo đạc các đặc tính như độ xốp, sự giãn nở nhiệt",
+    "sangNhom": "9027"
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đích '(nhóm 90.17 hay 90.31)' nằm ngoài ngoặc '(ví dụ như …)', là đích nêu đích danh. `dieuKien` giữ đúng định ngữ giới hạn 'chỉ để tiến hành những công việc…' và cố tình KHÔNG đưa '(ví dụ như các bộ phận được gia công, dây dẫn, đồ kim loại)' vào điều kiện — làm đúng luật ví dụ."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c) nguyên văn; đích '(nhóm 90.31)' nêu đích danh."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu này chỉ có MỘT mã, '(nhóm 90.31)', dán cho mục cuối trong danh sách ví dụ; không có đích cạnh tranh nên `dieuKien` gộp cả dụng cụ kiểm tra vật liệu dệt với máy đo sức căng/máy cuốn sợi/xoắn kế vẫn đúng ý nguồn (toàn bộ đề nằm trong câu 'không bao gồm'). Khác hẳn loaiTru[0] là nơi có mã nằm trong ngoặc 'ví dụ,' cạnh một đích khác. Ghi chú để người duyệt thấy điểm mờ này."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "xoa",
+   "lyDo": "Sai loại mục VÀ trùng lặp. Đây là Chú giải 5 CHƯƠNG 90 ('những dụng cụ, thiết bị hoặc máy quang học … có thể phân loại ở cả 2 nhóm 90.13 và 90.31 thì phải xếp vào nhóm 90.31') — câu này nói về cách phân định 90.13 với 90.31, không hề nhắc 9024. Đặt nó làm loaiTru của nhóm 9024 là lỗi phạm trù: `dieuKien` mô tả dụng cụ 'phân loại được ở cả 90.13 và 90.31' chứ không phải hàng bị loại khỏi 9024, đọc vào sổ tay sẽ gợi ý sai rằng những dụng cụ đó bị loại trừ khỏi 9024. Đồng thời trích NGUYÊN VĂN y hệt phanBiet[0] — cùng một câu, cùng nguồn, trong cùng một nhóm. Xoá mục này thì thông tin không mất gì vì phanBiet[0] đã mang."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Giữ theo cùng lý do như 9011: Chú giải 5 Chương 90 nêu đích danh cả 90.13 và 90.31; `hoi` không nhắc mã; có 5 tiền lệ cùng dạng trong data/so-tay (3922, 5208, 8424, 8428, 8431); so-tay-gates.js in kèm cả hai mã (có→9031 / không→9013) nên câu hỏi không mơ hồ khi vào prompt. Ghi chú: luật cấp Chương, không nhắc 9024."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "Mất định ngữ giới hạn (bài học lô 017 — trích vẫn nguyên văn nên strict-trich im lặng). Nguồn mở đầu 'CÁC BỘ PHẬN VÀ PHỤ KIỆN Theo Chú giải 1 và 2 của Chương này (xem Chú giải tổng quát),' nhưng `quyTac` và `tomTat` bỏ hẳn. Bỏ vậy thì câu thành luật tuyệt đối, trong khi Chú giải 1 và 2 Chương 90 quy định bộ phận thuộc nhóm riêng của Chương thì vào nhóm riêng, bộ phận còn lại thì vào 90.33. Sửa: đưa lại định ngữ vào cả hai trường.",
+   "sua": {
+    "quyTac": "Theo Chú giải 1 và 2 của Chương này, các bộ phận và phụ kiện của các dụng cụ hoặc thiết bị thuộc nhóm này cũng được phân loại trong nhóm.",
+    "tomTat": "Theo Chú giải 1 và 2 Chương 90: bộ phận và phụ kiện của dụng cụ, thiết bị thuộc nhóm thì xếp cùng nhóm."
+   }
+  }
+ ]
+}

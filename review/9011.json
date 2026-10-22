@@ -1,0 +1,66 @@
+{
+ "nhom": "9011",
+ "nguoiSoat": "dev-soat-doc-lap-l023",
+ "luc": "soát độc lập lô 023 (PR #404)",
+ "daKiem": "check-so-tay --raw=tmp/so-tay/raw (18/18) + strict-trich.mjs so từng ký tự (122/122) + đọc tay toàn vện tmp/so-tay/nguon/9011.txt + so từng byte mục loaiTru[4]",
+ "soat": 10,
+ "xoa": 0,
+ "sua": 1,
+ "ghiChu": "1) loaiTru[4] câu nguồn ghi 'cơ khí' — mắt thường dễ đọc nhầm thành 'cơ khế' (lỗi quy ước nguồn) rồi tưởng người soạn đã tự sửa. Đã so bằng mã lực: nguồn U+0063 U+01A1 U+0020 U+006B U+0068 U+00ED = 'cơ khí'; bản nháp y hệt. Trích đúng nguyên văn, giữ nguyên. 2) phanBiet[0] lấy từ Chú giải 5 CHƯƠNG 90, không phải chú giải nhóm: câu nói 'có thể phân loại ở cả 2 nhóm 90.13 và 90.31 thì phải xếp vào nhóm 90.31'. Đích 9031 và 9013 đều được nêu trong câu trích; hoi không nhắc mã; sổ tay dùng quy ước neuKhong trỏ nhóm kia. Đếm được 5 mẫu cùng dạng 'cả hai mã đều ngoài nhóm' đã có trong data/so-tay (3922, 5208, 8424, 8428, 8431) nên giữ. Lo lắng 'hai nhóm quang học kia' mơ hồ khi vào prompt là không có: so-tay-gates.js in kèm cả hai mã (có→9031 / không→9013) ngay cạnh câu hỏi. Điểm này báo lại ở PR: đây là luật cấp Chương, không nhắc 9011. 3) dong8[2] 90118000 ghi đúng theo luật 'dòng 8 số trùng chữ mà nguồn không phân biệt được thì ghi rõ, không đoán'.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Mọi ý trong `text` đều nằm trong câu trích; không có vế tóm thêm từ câu khác."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "'kính hiển vi quang học phức hợp của nhóm này thực hiện khuyếch đại bước thứ hai…' là đặc điểm mô tả hàng thuộc nhóm, đúng nghĩa của dieuKienVao, và nó mới chính là điều phân biệt với bộ khuyếch đại một bước của nhóm 90.13 mà câu trích so sánh. Không phải câu cho phép, không phải ngưỡng cấp phân nhóm. `fact` chép đúng vế câu."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (a) nguyên văn trong 'Nhóm này không bao gồm:'; đích 70.17 nêu đích danh."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b) nguyên văn; đích 90.18 nêu đích danh."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c) nguyên văn; đích 90.23 nêu đích danh."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (d) nguyên văn; đích 90.27 nêu đích danh."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (e) nguyên văn; đích 90.31 nêu đích danh. Đã so bằng mã lực: nguồn ghi 'cơ khí' (U+00ED) và bản nháp cũng 'cơ khí' — câu trích nguyên văn, không bị sửa lỗi (người đọc bằng mắt dễ tưởng nguồn ghi 'cơ khế')."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu 'Các máy chụp ảnh hoặc quay phim ở dạng riêng lẻ … bị loại trừ (chúng lần lượt thuộc các nhóm 90.06 hoặc 90.07).' nêu đích danh cả hai nhóm và `dieuKien` giữ nguyên định ngữ giới hạn 'ở dạng riêng lẻ' — bỏ định ngữ này thì máy ảnh gắn cố định vào kính hiển vi (loại vẫn thuộc 9011) cũng bị loại nhầm sang 9006."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải 5 Chương 90 nêu đích danh cả 90.13 và 90.31 trong câu; `hoi` không nhắc mã; dạng 'cả hai mã ngoài nhóm' có 5 tiền lệ đã gộp (3922, 5208, 8424, 8428, 8431). Ghi chú: luật cấp Chương, không nhắc 9011 — đã nêu ở ghiChu để báo lại trong PR."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "Mất định ngữ giới hạn (bài học lô 017 — trích vẫn nguyên văn nên strict-trich im lặng, chỉ lộ ra khi so `quyTac` với `trich`). Câu nguồn mở đầu bằng 'Theo quy định của Chú giải 1 và 2 của Chương này (xem Chú giải Tổng quát),' nhưng `quyTac` bỏ hẳn. Bỏ vậy thì câu trở thành luật tuyệt đối, trong khi Chú giải 1 và 2 Chương 90 quy định bộ phận thuộc nhóm riêng của Chương thì vào nhóm riêng, bộ phận còn lại thì vào 90.33 — bộ phận kính hiển vi dùng chung sẽ bị nuốt nhầm vào 9011. Sửa: đưa lại định ngữ giới hạn vào `quyTac` và `tomTat`; câu trích giữ nguyên, không cần kéo dài.",
+   "sua": {
+    "quyTac": "Theo quy định của Chú giải 1 và 2 của Chương này, các bộ phận và phụ kiện có thể nhận biết được khi đứng tách biệt hoặc được sử dụng chủ yếu cùng các kính hiển vi thì cũng được phân loại ở đây.",
+    "tomTat": "Theo Chú giải 1 và 2 Chương 90: bộ phận/phụ kiện nhận biết được khi tách biệt, hoặc chủ yếu dùng cùng kính hiển vi, thì xếp vào nhóm này."
+   }
+  }
+ ]
+}
