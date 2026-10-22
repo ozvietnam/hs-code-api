@@ -1,0 +1,72 @@
+{
+ "nhom": "5401",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T14:45:00+07:00",
+ "daKiem": 15,
+ "soat": 15,
+ "xoa": 0,
+ "sua": 0,
+ "ghiChu": "Audit 5401 (1 phamVi + 5 loaiTru + 3 phanBiet + 2 tieuChi6 + 4 dong8 = 15 mục; dieuKienVao rỗng). CÓ THẬT: 15/15 câu trích khớp nguồn tuyệt đối. ĐÚNG KHẲNG ĐỊNH: phamVi chép nguyên văn câu mở nhóm. dieuKienVao rỗng là đúng — câu \"Chỉ khâu vẫn thuộc nhóm này dù đã hoặc chưa được đóng gói để bán lẻ…\" là câu CHO PHÉP (luật máy dieu-kien-chi-cho-phep), và Phần XI không có trong gói nguồn nên không dựng được điều kiện vào nhóm. loaiTru: (a) chỉ tơ nha khoa → 3306, (b) chỉ và dây bện → 4007, (d) sợi cacbon → 6815, (e) sợi thủy tinh → 7019 — số nhóm đích đều có thật trong trích; mục (c) \"sản phẩm của Chương 55\" bị BỎ là đúng vì chỉ nêu Chương chứ không nêu nhóm đích. phanBiet 3 mục đều đúng chiều nhánh (Có → nhóm đích, Không → 5401) và giữ \"A hoặc B\" bằng dấu | (5402|5403|5404|5405) chứ không tách thành AND. tieuChi6 + dong8 khớp wco.540110/540120; dòng \"…90\" đã tự ghi chú đối chiếu dòng \"…10\" của biểu thuế. GHI NHẬN MÁY LOẠI SAI: loaiTru[0] bị luật loai-tru-chi-la-thuong loại vì câu nguồn có \"tùy từng trường hợp\" — nhưng \"tùy từng trường hợp\" nằm TRONG ngoặc (nhóm 54.02, 54.03, 54.04 hoặc 54.05 tùy từng trường hợp), chỉ nói chọn mã nào áp dụng chứ không phủ nhận việc loại trừ. Giữ nguyên mục, KHÔNG lách câu trích; đề nghị quản lý nới luật máy. Ghi nhận thiếu (không tự thêm vì ngoài phạm vi sửa): chú giải nhóm có câu loại trừ v.v... → 5607 chưa được ghi.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu"
+  }
+ ]
+}

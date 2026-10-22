@@ -1,0 +1,105 @@
+{
+ "nhom": "4420",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T14:45:00+07:00",
+ "daKiem": 21,
+ "soat": 21,
+ "xoa": 0,
+ "sua": 2,
+ "ghiChu": "Audit 4420 (1 phamVi + 2 dieuKienVao + 5 loaiTru + 5 phanBiet + 3 tieuChi6 + 5 dong8 = 21 mục). CÓ THẬT: 21/21 câu trích khớp nguồn tuyệt đối (kể cả dấu \"…,\" nguyên của nguồn ở loạiTru[0] và lỗi gõ \"khác khác gỗ\" ở phamVi — đều giữ nguyên). SỬA 2: (1) dieuKienVao[1] — trích gốc là mảnh câu \"với điều kiện là chúng là những mặt hàng về bản chất từ gỗ.\" đứng một mình, mất cả danh ngữ và cả chủ thể \"chúng\", và fact đẩy điều kiện vốn CHỈ áp cho mặt hàng được lót một phần/toàn bộ bằng da thuộc, bìa, plastic, sợi dệt thành điều kiện vào CẢ nhóm 4420. Đã nới trích ra đúng câu đầy đủ và đặt lại phạm vi trong fact. (2) tieuChi6[2] — fact chỉ nêu 2 trong 3 nhánh của wco.442090, bỏ mất \"hộp và các đồ chứa đồ kim hoàn và dụng cụ cắt\", nên một chiếc hộp đựng đồ kim hoàn (đúng 4420.90) sẽ bị loại khi đọc fact. Còn lại: phamVi chép nguyên văn; dieuKienVao[0] (giữ đặc trưng cơ bản dù có gắn gương) đúng và là điều kiện quan trọng nhất của nhóm; 5 loại trừ đều nêu đích danh, bỏ (c)(d)(f)(g)(h) là đúng vì chỉ nêu Chương; 5 phanBiet đúng chiều; dong8 đủ 5 dòng tax, dòng 44201900 mô tả theo WCO thay vì để \"Loại khác\" trống — đúng quy ước đã dùng ở 3215/3917.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "sua",
+   "lyDo": "Cả hai đều sai. (a) Trích gốc là mảnh câu đứng một mình \"với điều kiện là chúng là những mặt hàng về bản chất từ gỗ.\" — mất danh ngữ và mất chủ thể \"chúng\", người đọc không biết nói về ai. (b) Fact đẩy điều kiện vốn CHỈ áp cho mặt hàng được lót một phần hay toàn bộ bằng da thuộc/bìa/plastic/sợi dệt (câu đầy đủ trong chính nguồn) thành điều kiện vào CẢ nhóm 4420 — đúng loại lỗi mà lô 009 đã xoá ở 3918. Nới trích ra đúng câu đầy đủ nguyên văn (206 ký tự, vẫn có thật trong nguồn) và đặt lại phạm vi trong fact.",
+   "sua": {
+    "fact": "mat_hang_duoc_lot_mot_phan_hay_toan_bo_bang_da_thuoc_bia_plastic_soi_det_phai_la_hang_ve_ban_chat_tu_go",
+    "trich": "Tương tự, nhóm này cũng bao gồm các mặt hàng được lót một phần hay toàn bộ bằng da thuộc tự nhiên hoặc da thuộc tổng hợp, bìa, plastic, sợi dệt... với điều kiện là chúng là những mặt hàng về bản chất từ gỗ."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "sua",
+   "lyDo": "wco.442090 nêu 3 nhánh (gỗ khảm/gỗ dát; hộp và đồ chứa đồ kim hoàn và dụng cụ cắt; đồ nội thất gỗ không thuộc Chương 94) nhưng fact chỉ giữ 2 nhánh, bỏ mất nhánh hộp/đồ chứa. Đọc fact thì một chiếc hộp đựng đồ kim hoàn — vốn đúng 4420.90 — sẽ bị kết luận là không thuộc 4420.90. Bổ sung nhánh bị bỏ; không đổi câu trích.",
+   "sua": {
+    "fact": "la_hang_go_kham_go_dat_hoac_hoi_va_do_noi_that_go_khong_thuoc_chuong_94"
+   }
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu"
+  }
+ ]
+}
