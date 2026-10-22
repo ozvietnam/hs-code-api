@@ -1091,3 +1091,22 @@ Kiểm đầy đủ:
 | `npm test` | **ALL TESTS PASSED**, exit 0, mọi suite `0 failed` |
 
 Mọi mục đều mang `nguonLoai: AI_DA_KIEM` do máy gán (em không ghi tay trường này — luật 11).
+
+## Bước 5 — commit, push, mở PR (23/10/2026)
+
+- Commit `cb064bb` — chỉ 8 tệp: 5 `data/so-tay/<nhom>.json`, `bao-cao/lo-025.json`,
+  `docs/giao-viec/so-tay-lo.csv` (dòng 025: `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm`),
+  `TIEN-TRINH.md`. `tmp/` đã gitignored (`.gitignore:79`) nên bản nháp không lọt vào commit.
+- Đẩy nhánh `so-tay/lo-025`, mở **PR #407** (`https://github.com/ozvietnam/hs-code-api/pull/407`).
+  **KHÔNG merge** — chờ người duyệt soát độc lập toàn bộ rồi mới gộp.
+- `trang_thai` và cột `pr` để người duyệt điền khi nghiệm thu (đúng mục 4 giao việc ngoài).
+
+### Trạng thái CI (báo cáo thật)
+
+- **Vercel: FAILURE — "Deployment rate limited, retry in 24 hours".** Lỗi hạ tầng bên Vercel, **không
+  phải** lỗi code; đã xảy ra sẵn ở các lô trước (PR #401 cũng Vercel FAILURE).
+- **GitHub Actions CHƯA chạy** cho PR #407 sau ~4 phút, dù `test-all.yml` khai `on: pull_request`.
+  `gh run list --branch so-tay/lo-025` không có dòng nào. Nhiều run từ 22/10 vẫn kẹt ở
+  `in_progress` (lo-021 / lo-022 / lo-026) ⇒ runner có vẻ đang tắc. Em **không** coi đây là CI xanh.
+  Thay vào đó em đã chạy đúng nội dung của job `test` tại máy: `npm test` exit 0 (ALL TESTS PASSED,
+  mọi suite `0 failed`) + `npm run so-tay:check` = `279 nhóm, 8804 mục, 0 mục không kiểm được nguồn`.
