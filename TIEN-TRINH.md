@@ -1389,3 +1389,14 @@ giải quyết `TIEN-TRINH.md` **hai lần** (mỗi commit của lô 022 đều 
 **hợp nhất (union)**: giữ nguyên phần lô 018 của `main` (cả soạn lẫn soát) VÀ phần lô 022, có chèn
 tiêu đề ngăn hai danh sách "Việc còn lại" để không đọc lẫn. Không mất dòng nào của phiên trước.
 Sau rebase: 268 nhóm / 8.394 mục, `npm test` xanh. Đẩy `git push --force-with-lease` lên `so-tay/lo-022`.
+
+## Kết quả CI của PR #403 (đo sau khi đẩy `b5a593a`)
+
+| check | kết quả |
+|---|---|
+| `test` | ✅ pass (2m32s) |
+| `bench` | ✅ pass (11m49s) — `node scripts/benchmark-alias-holdout.mjs --gate` |
+| `Vercel` | ❌ *"Deployment rate limited — retry in 24 hours"* — **giới hạn tài khoản hạ tầng, không liên quan code** (đã ghi nhận ở mục 6 và ở các lô trước). Vì vậy `mergeStateStatus=UNSTABLE` còn `mergeable=MERGEABLE`. |
+
+`docs/giao-viec/so-tay-lo.csv` dòng 022 giữ `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm`, cột `pr` để
+trống — người quản lý điền sau khi gộp (theo mục 4 giao việc).
