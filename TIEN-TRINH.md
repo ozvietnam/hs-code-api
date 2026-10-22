@@ -645,3 +645,10 @@ Cũng kiểm độ dài trích: dài nhất 269 ký tự — **không có trích
   tên "Loại khác"; nguồn 6911 thiếu chú giải 69.12; lệch nhẹ giữa `wco.691010` ("baths, bidets") và chú
   giải nhóm 6910 (bồn tắm di động sang 69.11/69.12) — sổ tay chỉ trích nên không khẳng định gì.
 - **KHÔNG merge** cho tới khi người quản lý duyệt.
+
+### CI sau khi áp review (commit `47c1979`)
+
+- `test` **pass** (2m27s) · `bench` **pass** — gate alias-holdout in log: *"✓ Alias không làm giảm top-1 ở bất kỳ mức
+  nào"* và *"✓ [gate] Không tụt quá 1 điểm % so với mốc"*.
+- `Vercel: Deployment was blocked` — **đỏ có sẵn** (CEO đã gỡ Vercel 09/10/2026), không phải lỗi code.
+- PR #394 vẫn **OPEN**, không draft, **KHÔNG merge**.
