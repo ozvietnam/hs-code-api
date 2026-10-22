@@ -1,0 +1,741 @@
+{
+ "nhom": "5806",
+ "phamVi": {
+  "text": "Hai phần: (A) vải dệt thoi khổ hẹp (khổ rộng không vượt quá 30 cm, có đường viền ở cả hai đường biên); (B) các dây buộc.",
+  "nguon": "nhom5806.nhom",
+  "trich": "(A) VẢI DỆT KHỔ HẸP … (1) Các dải vải có sợi ngang và sợi dọc với chiều rộng không vượt quá 30cm, với điều kiện các đường viền (hình dẹt hoặc hình ống) ở cả hai đường biên. … (B) CÁC DÂY BUỘC",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_vai_det_thoi_kho_hep_co_duong_vien_o_ca_hai_duong_bien",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom5806.nhom",
+   "trich": "(1) Các dải vải có sợi ngang và sợi dọc với chiều rộng không vượt quá 30cm, với điều kiện các đường viền (hình dẹt hoặc hình ống) ở cả hai đường biên.",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "kho_rong_vai_det_thoi_kho_hep",
+   "op": "<=",
+   "value": 30,
+   "donVi": "cm",
+   "ngoaiTru": [
+    "Các dải được cắt ra từ tấm vải nhưng chưa có một đường viền thẳng hoặc lệch, trên mỗi đường biên, thì bị loại trừ khỏi nhóm này và được phân loại với các loại vải dệt thoi thông thường."
+   ],
+   "nguon": "nhom5806.nhom",
+   "trich": "(1) Các dải vải có sợi ngang và sợi dọc với chiều rộng không vượt quá 30cm, với điều kiện các đường viền (hình dẹt hoặc hình ống) ở cả hai đường biên.",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "la_day_buoc_kho_rong_vai_mm_den_1cm_chi_co_soi_doc_noi_bang_chat_ke_tinh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom5806.nhom",
+   "trich": "Nhóm này cũng gồm có các loại vải dệt khổ hẹp (các dây buộc) có khổ rộng từ vài mm đến 1 cm, bao gồm sợi dọc (những sợi song song, sợi monofilament hoặc sợi dệt) không có sợi ngang nhưng được liên kết với nhau bằng một chất kết dính.",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "gom_ca_ray_bang_vai_lam_dai_va_dai_trang_suc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom5806.nhom",
+   "trich": "Theo Chú giải 5 thuộc Chương này nhóm này gồm các sản phẩm như vải dệt khổ hẹp: … Các sản phẩm nói trên gồm có cả những ray băng và vải làm đai cũng như các dải trang sức có đặc điểm của các vải ruy băng dệt thoi.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "băng dùng trong y tế, đã tẩm thuốc hoặc đã đóng gói hoặc đóng gói để bán lẻ",
+   "sangNhom": "3005",
+   "nguon": "nhom5806.nhom",
+   "trich": "(a) Băng dùng trong y tế, đã tẩm thuốc hoặc đã đóng gói hoặc đóng gói để bán lẻ (nhóm 30.05).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "vải dệt khổ hẹp với các đường viền dệt, các đồ trang trí bằng vải và các dải tết",
+   "sangNhom": "5808",
+   "nguon": "nhom5806.nhom",
+   "trich": "(b) Vải dệt khổ hẹp với các đường viền dệt, các đồ trang trí bằng vải và các dải tết (nhóm 58.08).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "các loại nhãn dệt, phù hiệu dệt và các sản phẩm tương tự dạng dải",
+   "sangNhom": "5807|5808",
+   "nguon": "nhom5806.nhom",
+   "trich": "(1) Các loại nhãn dệt, phù hiệu dệt và các sản phẩm tương tự dạng dải (nhóm 58.07 hoặc 58.08).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "các loại bấc đèn, lò, bật lửa, nến hoặc các loại tương tự",
+   "sangNhom": "5908",
+   "nguon": "nhom5806.nhom",
+   "trich": "(2) Các loại bấc đèn, lò, bật lửa, nến hoặc các loại tương tự (nhóm 59.08).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "các loại ống dẫn bằng hàng dệt, hoặc các loại ống tương tự",
+   "sangNhom": "5909",
+   "nguon": "nhom5806.nhom",
+   "trich": "(3) Các loại ống dẫn bằng hàng dệt, hoặc các loại ống tương tự (nhóm 59.09).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "băng tải, băng truyền hoặc băng đai",
+   "sangNhom": "5910",
+   "nguon": "nhom5806.nhom",
+   "trich": "(4) Băng tải hoặc băng truyền hoặc băng đai (nhóm 59.10).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "vải dệt thoi khổ hẹp đã ngâm tẩm, tráng, phủ hoặc ép lớp, đặc biệt loại làm từ vải nhung ngâm tẩm cao su để phủ con suốt",
+   "sangNhom": "5911",
+   "nguon": "nhom5806.nhom",
+   "trich": "(d) Các loại vải dệt thoi khổ hẹp đã được ngâm tẩm, tráng, phủ hoặc ép thuộc Chương 59, đặc biệt các loại vải dệt khổ hẹp làm từ vải nhung được ngâm tẩm cao su, để phủ con suốt (trục dệt) (nhóm 59.11).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "ruy băng đánh máy chữ",
+   "sangNhom": "9612",
+   "nguon": "nhom5806.nhom",
+   "trich": "(g) Ruy băng đánh máy chữ (nhóm 96.12).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là băng dùng trong y tế, đã tẩm thuốc hoặc đã đóng gói để bán lẻ không?",
+   "neuCo": "3005",
+   "neuKhong": "5806",
+   "nguon": "nhom5806.nhom",
+   "trich": "(a) Băng dùng trong y tế, đã tẩm thuốc hoặc đã đóng gói hoặc đóng gói để bán lẻ (nhóm 30.05).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hoi": "Hàng là nhãn dệt, phù hiệu dệt hoặc sản phẩm tương tự dạng dải không?",
+   "neuCo": "5807|5808",
+   "neuKhong": "5806",
+   "nguon": "nhom5806.nhom",
+   "trich": "(1) Các loại nhãn dệt, phù hiệu dệt và các sản phẩm tương tự dạng dải (nhóm 58.07 hoặc 58.08).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hoi": "Hàng là băng tải, băng truyền hoặc băng đai không?",
+   "neuCo": "5910",
+   "neuKhong": "5806",
+   "nguon": "nhom5806.nhom",
+   "trich": "(4) Băng tải hoặc băng truyền hoặc băng đai (nhóm 59.10).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hoi": "Hàng là ruy băng đánh máy chữ không?",
+   "neuCo": "9612",
+   "neuKhong": "5806",
+   "nguon": "nhom5806.nhom",
+   "trich": "(g) Ruy băng đánh máy chữ (nhóm 96.12).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "580610",
+   "fact": "la_vai_det_noi_vong_va_vai_chenille",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.580610",
+   "trich": "580610 Fabrics; woven pile (including terry towelling and similar terry fabrics) and chenille fabrics (excluding goods of heading 5807)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "580620",
+   "fact": "ham_luong_soi_dan_hoi_hoac_soi_cao_su_tinh_theo_khoi_luong",
+   "op": ">=",
+   "value": 5,
+   "donVi": "%",
+   "nguon": "wco.580620",
+   "trich": "580620 Fabrics; narrow (excluding pile fabrics), containing by weight 5% or more of elastomeric yarn or rubber thread",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "580631",
+   "fact": "la_vai_kho_hep_tu_bong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.580631",
+   "trich": "580631 Fabrics; narrow woven fabrics, n.e.c. in heading no. 5806, of cotton (excluding goods of heading no. 5807)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "580632",
+   "fact": "la_vai_kho_hep_tu_xo_nhan_tao",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.580632",
+   "trich": "580632 Fabrics, narrow woven fabrics, n.e.c. in heading no. 5806, of man-made fibres (excluding goods of heading no. 5807)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "580639",
+   "fact": "la_vai_kho_hep_tu_vat_lieu_det_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.580639",
+   "trich": "580639 Fabrics; narrow woven fabrics, n.e.c. in heading no. 5806, of textile materials n.e.c. in item no. 5806.3 (excluding goods of heading no. 5807)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "580640",
+   "fact": "chi_co_soi_doc_khong_co_soi_ngang_noi_bang_chat_ke_tinh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.580640",
+   "trich": "580640 Fabrics; narrow woven, consisting of warp without weft, assembled by means of an adhesive (bolducs)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "58061010",
+   "dieuKien": "Vải dệt thoi nổi vòng và vải chenille (= phân nhóm 580610 — WCO: woven pile and chenille fabrics), từ tơ tằm",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.58061010",
+   "trich": "58061010 - - Từ tơ tằm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "58061020",
+   "dieuKien": "Vải dệt thoi nổi vòng và vải chenille, từ bông",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.58061020",
+   "trich": "58061020 - - Từ bông",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "58061090",
+   "dieuKien": "Loại khác, thuộc phân nhóm 580610 — WCO: woven pile and chenille fabrics",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "tax.58061090",
+   "trich": "58061090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "580610",
+    "truAnhEm": [
+     "58061010",
+     "58061020"
+    ],
+    "toTienCoTen": "580610",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "58062010",
+   "dieuKien": "Vải dệt thoi khác có sợi đàn hồi hoặc sợi cao su từ 5% trở lên tính theo khối lượng (= phân nhóm 580620 — WCO: narrow fabrics containing 5% or more of elastomeric yarn or rubber thread), dạng băng dùng để quấn tay cầm hoặc cán của các dụng cụ thể thao",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.58062010",
+   "trich": "58062010 - - Băng loại dùng để quấn tay cầm hoặc cán của các dụng cụ thể thao",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "58062090",
+   "dieuKien": "Loại khác, thuộc phân nhóm 580620 — WCO: narrow fabrics containing 5% or more of elastomeric yarn or rubber thread",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "tax.58062090",
+   "trich": "58062090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "580620",
+    "truAnhEm": [
+     "58062010"
+    ],
+    "toTienCoTen": "580620",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "58063110",
+   "dieuKien": "Vải dệt thoi khổ hẹp khác, từ bông (= phân nhóm 580631 — WCO: narrow woven fabrics of cotton), thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.58063110",
+   "trich": "58063110 - - - Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "58063120",
+   "dieuKien": "Vải dệt thoi khổ hẹp khác, từ bông, làm nền cho giấy cách điện",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.58063120",
+   "trich": "58063120 - - - Làm nền cho giấy cách điện",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "58063130",
+   "dieuKien": "Vải dệt thoi khổ hẹp khác, từ bông, là ruy băng dùng làm khóa kéo và có chiều rộng không quá 12 mm",
+   "tieuChi": {
+    "fact": "kho_rong",
+    "op": "<=",
+    "value": 12,
+    "donVi": "mm"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.58063130",
+   "trich": "58063130 - - - Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "58063190",
+   "dieuKien": "Loại khác, thuộc phân nhóm 580631 — WCO: narrow woven fabrics of cotton",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "tax.58063190",
+   "trich": "58063190 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "580631",
+    "truAnhEm": [
+     "58063110",
+     "58063120",
+     "58063130"
+    ],
+    "toTienCoTen": "580631",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "58063210",
+   "dieuKien": "Vải dệt thoi khổ hẹp khác, từ xơ nhân tạo (= phân nhóm 580632 — WCO: narrow woven fabrics of man-made fibres), thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự; băng vải dùng làm dây đai an toàn ghế ngồi",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.58063210",
+   "trich": "58063210 - - - Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự; băng vải dùng làm dây đai an toàn ghế ngồi",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "58063240",
+   "dieuKien": "Vải dệt thoi khổ hẹp khác, từ xơ nhân tạo, làm nền cho giấy cách điện",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.58063240",
+   "trich": "58063240 - - - Làm nền cho giấy cách điện",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "58063250",
+   "dieuKien": "Vải dệt thoi khổ hẹp khác, từ xơ nhân tạo, là ruy băng dùng làm khóa kéo và có chiều rộng không quá 12 mm",
+   "tieuChi": {
+    "fact": "kho_rong",
+    "op": "<=",
+    "value": 12,
+    "donVi": "mm"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.58063250",
+   "trich": "58063250 - - - Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "58063290",
+   "dieuKien": "Loại khác, thuộc phân nhóm 580632 — WCO: narrow woven fabrics of man-made fibres",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "tax.58063290",
+   "trich": "58063290 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "580632",
+    "truAnhEm": [
+     "58063210",
+     "58063240",
+     "58063250"
+    ],
+    "toTienCoTen": "580632",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "58063910",
+   "dieuKien": "Vải dệt thoi khổ hẹp khác, từ vật liệu dệt khác (= phân nhóm 580639 — WCO: narrow woven fabrics of other textile materials), từ tơ tằm",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.58063910",
+   "trich": "58063910 - - - Từ tơ tằm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "58063991",
+   "dieuKien": "Vải dệt thoi khổ hẹp khác, từ vật liệu dệt khác, làm nền cho giấy cách điện",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.58063991",
+   "trich": "58063991 - - - - Làm nền cho giấy cách điện",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "58063992",
+   "dieuKien": "Vải dệt thoi khổ hẹp khác, từ vật liệu dệt khác, thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.58063992",
+   "trich": "58063992 - - - - Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "58063993",
+   "dieuKien": "Vải dệt thoi khổ hẹp khác, từ vật liệu dệt khác, là ruy băng dùng làm khóa kéo và có chiều rộng không quá 12 mm",
+   "tieuChi": {
+    "fact": "kho_rong",
+    "op": "<=",
+    "value": 12,
+    "donVi": "mm"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.58063993",
+   "trich": "58063993 - - - - Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "58063999",
+   "dieuKien": "Loại khác, thuộc phân nhóm 580639 — WCO: narrow woven fabrics of other textile materials",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "tax.58063999",
+   "trich": "58063999 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "5806399",
+    "truAnhEm": [
+     "58063991",
+     "58063992",
+     "58063993"
+    ],
+    "toTienCoTen": "580639",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "58064000",
+   "dieuKien": "Vải dệt chỉ có sợi dọc, không có sợi ngang, liên kết với nhau bằng chất kết dính (bolducs)",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.58064000",
+   "trich": "58064000 - Các loại vải dệt chỉ có sợi dọc không có sợi ngang liên kết với nhau bằng chất kết dính (bolducs)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5806",
+    "cap": 4,
+    "cha": "58",
+    "tenVi": "Vải dệt thoi khổ hẹp, trừ các loại hàng thuộc nhóm 58.07; vải khổ hẹp gồm toàn sợi dọc không có sợi ngang liên kết với nhau bằng chất kết dính (bolducs).",
+    "tenEn": "Fabrics; narrow woven, other than goods of heading 5807; narrow fabrics consisting of warp without weft assembled by means of an adhesive (bolducs)",
+    "suyRa": false
+   },
+   {
+    "id": "580610",
+    "cap": 6,
+    "cha": "5806",
+    "tenVi": "Vải dệt thoi nổi vòng (kể cả vải khăn lông (terry) và các loại vải dệt nổi vòng tương tự) và vải dệt từ sợi sơnin (chenille)",
+    "tenEn": "Fabrics; woven pile (including terry towelling and similar terry fabrics) and chenille fabrics (excluding goods of heading 5807)",
+    "suyRa": false
+   },
+   {
+    "id": "58061010",
+    "cap": 8,
+    "cha": "580610",
+    "tenVi": "Từ tơ tằm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "58061020",
+    "cap": 8,
+    "cha": "580610",
+    "tenVi": "Từ bông",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "58061090",
+    "cap": 8,
+    "cha": "580610",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "580620",
+    "cap": 6,
+    "cha": "5806",
+    "tenVi": "Vải dệt thoi khác, có hàm lượng sợi đàn hồi (elastomeric) hoặc sợi cao su chiếm từ 5% trở lên tính theo khối lượng",
+    "tenEn": "Fabrics; narrow (excluding pile fabrics), containing by weight 5% or more of elastomeric yarn or rubber thread",
+    "suyRa": false
+   },
+   {
+    "id": "58062010",
+    "cap": 8,
+    "cha": "580620",
+    "tenVi": "Băng loại dùng để quấn tay cầm hoặc cán của các dụng cụ thể thao",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "58062090",
+    "cap": 8,
+    "cha": "580620",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "58063",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5806",
+    "tenVi": "Vải dệt thoi khác",
+    "tenEn": "Other woven fabrics",
+    "suyRa": true
+   },
+   {
+    "id": "580631",
+    "cap": 6,
+    "cha": "58063",
+    "tenVi": null,
+    "tenEn": "Fabrics; narrow woven fabrics, n.e.c. in heading no. 5806, of cotton (excluding goods of heading no. 5807)",
+    "suyRa": false
+   },
+   {
+    "id": "58063110",
+    "cap": 8,
+    "cha": "580631",
+    "tenVi": "Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "58063120",
+    "cap": 8,
+    "cha": "580631",
+    "tenVi": "Làm nền cho giấy cách điện",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "58063130",
+    "cap": 8,
+    "cha": "580631",
+    "tenVi": "Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "58063190",
+    "cap": 8,
+    "cha": "580631",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "580632",
+    "cap": 6,
+    "cha": "58063",
+    "tenVi": null,
+    "tenEn": "Fabrics, narrow woven fabrics, n.e.c. in heading no. 5806, of man-made fibres (excluding goods of heading no. 5807)",
+    "suyRa": false
+   },
+   {
+    "id": "58063210",
+    "cap": 8,
+    "cha": "580632",
+    "tenVi": "Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự; băng vải dùng làm dây đai an toàn ghế ngồi",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "58063240",
+    "cap": 8,
+    "cha": "580632",
+    "tenVi": "Làm nền cho giấy cách điện",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "58063250",
+    "cap": 8,
+    "cha": "580632",
+    "tenVi": "Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "58063290",
+    "cap": 8,
+    "cha": "580632",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "580639",
+    "cap": 6,
+    "cha": "58063",
+    "tenVi": null,
+    "tenEn": "Fabrics; narrow woven fabrics, n.e.c. in heading no. 5806, of textile materials n.e.c. in item no. 5806.3 (excluding goods of heading no. 5807)",
+    "suyRa": false
+   },
+   {
+    "id": "58063910",
+    "cap": 8,
+    "cha": "580639",
+    "tenVi": "Từ tơ tằm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "5806399",
+    "cap": "TIEU_DE_QG",
+    "cha": "580639",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "58063991",
+    "cap": 8,
+    "cha": "5806399",
+    "tenVi": "Làm nền cho giấy cách điện",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "58063992",
+    "cap": 8,
+    "cha": "5806399",
+    "tenVi": "Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "58063993",
+    "cap": 8,
+    "cha": "5806399",
+    "tenVi": "Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "58063999",
+    "cap": 8,
+    "cha": "5806399",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "58064000",
+    "cap": 8,
+    "cha": "5806",
+    "tenVi": "Các loại vải dệt chỉ có sợi dọc không có sợi ngang liên kết với nhau bằng chất kết dính (bolducs)",
+    "tenEn": "Fabrics; narrow woven, consisting of warp without weft, assembled by means of an adhesive (bolducs)",
+    "suyRa": false,
+    "laPhanNhom": "580640"
+   }
+  ],
+  "tenDien": [
+   {
+    "id": "580631",
+    "tenVi": "Vải dệt thoi khổ hẹp khác, từ bông",
+    "nguon": "wco.580631",
+    "trich": "580631 Fabrics; narrow woven fabrics, n.e.c. in heading no. 5806, of cotton (excluding goods of heading no. 5807)",
+    "nguonLoai": "AI_DA_KIEM"
+   },
+   {
+    "id": "580632",
+    "tenVi": "Vải dệt thoi khổ hẹp khác, từ xơ nhân tạo",
+    "nguon": "wco.580632",
+    "trich": "580632 Fabrics, narrow woven fabrics, n.e.c. in heading no. 5806, of man-made fibres (excluding goods of heading no. 5807)",
+    "nguonLoai": "AI_DA_KIEM"
+   },
+   {
+    "id": "580639",
+    "tenVi": "Vải dệt thoi khổ hẹp khác, từ vật liệu dệt khác",
+    "nguon": "wco.580639",
+    "trich": "580639 Fabrics; narrow woven fabrics, n.e.c. in heading no. 5806, of textile materials n.e.c. in item no. 5806.3 (excluding goods of heading no. 5807)",
+    "nguonLoai": "AI_DA_KIEM"
+   }
+  ]
+ },
+ "dungTuNguon": [
+  "nhom5806.nhom",
+  "tax.58061010",
+  "tax.58061020",
+  "tax.58061090",
+  "tax.58062010",
+  "tax.58062090",
+  "tax.58063110",
+  "tax.58063120",
+  "tax.58063130",
+  "tax.58063190",
+  "tax.58063210",
+  "tax.58063240",
+  "tax.58063250",
+  "tax.58063290",
+  "tax.58063910",
+  "tax.58063991",
+  "tax.58063992",
+  "tax.58063993",
+  "tax.58063999",
+  "tax.58064000",
+  "wco.580610",
+  "wco.580620",
+  "wco.580631",
+  "wco.580632",
+  "wco.580639",
+  "wco.580640"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-22T15:01:09.966Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 45,
+  "dat": 45,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan58.phan (46130→25000)"
+  ]
+ }
+}

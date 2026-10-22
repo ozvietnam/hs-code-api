@@ -1,0 +1,29 @@
+[
+ {
+  "truong": "loaiTru",
+  "index": 0,
+  "hanhDong": "sua",
+  "lyDo": "Lỗi loại 'A và B gộp thành một nhánh đích'. Câu nguồn loại trừ HAI loại vật hàng khác nhau: '(a) Vải dệt thưa thuộc các Chương 50 đến 55' (loại trừ vì nó ở lại Chương 50–55, KHÔNG phải vì sang 5803) và 'vải dệt quấn thuộc nhóm 58.03'. Bản nháp đặt chung một điều kiện gộp cả hai và trỏ cả hai sang 5803 ⇒ sổ tay bảo Hải quan rằng vải dệt thưa chương 50–55 thuộc 5803, ngược hẳn nguồn (đích danh 58.03 chỉ áp cho vải dệt quấn). Người soạn tự viết đúng ở phanBiet[0] (chỉ hỏi về vải dệt quấn) — chứng tỏ đây là lỗi lệch ở loaiTru, không phải chủ ý. Sửa: thu hẹp dieuKien còn 'vải dệt quấn', giữ nguyên sangNhom 5803 và nguyên văn trích.",
+  "sua": {
+   "dieuKien": "vải dệt quấn"
+  }
+ },
+ {
+  "truong": "dieuKienVao",
+  "index": 2,
+  "hanhDong": "xoa",
+  "lyDo": "Câu CHO PHÉP đặt thành điều kiện bắt buộc. Trích là 'Hàng ren có thể được làm bằng tay hoặc bằng máy.' — _he-thong.txt dòng 28 cấm rõ 'có thể…' với value=true; luật máy CAU_CHO_PHEP (lib/so-tay.js:166) không có mẫu 'có thể' nên lọt (đề xuất bổ sung cho các lô sau). Thêm nữa mục này không mang thông tin phân loại: mọi mặt hàng đều được làm bằng tay hoặc bằng máy, nên fact này không thể dùng để hỏi người khai cũng không phân biệt được dòng nào — đúng nghĩa 'mục mờ má'. Thông tin 'làm tay hay làm máy' vẫn còn ở tieuChi6[1..3] (lấy từ wco.580421/580429/580430) nên không mất gì.",
+  "sua": null
+ },
+ {
+  "truong": "phamVi",
+  "index": 0,
+  "hanhDong": "sua",
+  "lyDo": "Phạm vi bị cắt mất nửa nhóm: trích chỉ lấy Phần (I) (vải tuyn, vải dệt lưới) và dừng trước '(II) HÀNG REN', trong khi nhóm 5804 có 4 phân nhóm 6 số thì 3 phân nhóm (5804.21, 5804.29, 5804.30 — tức 10/11 dòng 8 số của biểu thuế) là hàng ren. Người đọc sổ tay sẽ tưởng 5804 chỉ là vải lưới và loại bỏ nhầm ren (ren cổ áo, ren bảng…). Sửa: đưa cả hai phần vào trích, nguyên văn từ đúng khối nhom5804.nhom (không ghép hai khối nguồn).",
+  "sua": {
+   "text": "Hai phần: (I) vải tuyn và vải dệt lưới khác (dùng làm rèm, màn, quần áo phụ nữ, sản phẩm thêu); (II) hàng ren.",
+   "nguon": "nhom5804.nhom",
+   "trich": "(I) CÁC LOẠI VẢI TUYN VÀ VẢI DỆT LƯỚI KHÁC … Những sản phẩm này được sử dụng để làm rèm, khăn trải giường hoặc các loại trang trí trong nhà tương tự, màn, quần áo phụ nữ, sản phẩm thêu… … (II) HÀNG REN"
+  }
+ }
+]
