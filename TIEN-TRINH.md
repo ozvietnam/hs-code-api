@@ -787,3 +787,11 @@ Lần đầu nạp cả 6 nhóm (đúng lệnh trong brief) → báo cáo báo `
 7. **Hai chỗ lược bằng "…" có chủ đích**: (a) `9024.loaiTru[3]` bỏ tiền tố "Nhóm này không bao gồm" cho vừa
    300 ký tự (điều kiện loại trừ vẫn nằm trong `dieuKien`); (b) ba `8456.loaiTru` trỏ 84.86 lược giữa các
    mục (i)(ii)(iii) — vì chỉ câu dẫn mới nêu "84.86", mỗi mục phải trích lại câu dẫn.
+
+### Bước 6 — nộp
+- Commit `60b97ba`, đẩy nhánh `so-tay/lo-023`, mở **PR #404** (chưa merge).
+- `so-tay-lo.csv` dòng 023 → `trang_lam=dang-lam`, `nguoi_lam=dev-zcode-mm`, `pr=404`.
+  Dùng `dang-lam` (từ vựng ghi ở mục 2 giao-viec) chứ không phải `cho-duyet` — CSV chỉ dùng
+  `chua-lam` / `dang-lam` / `xong`; người duyệt chuyển sang `xong` khi gộp.
+- CI: `test` và `bench` là 2 job thật; `Vercel` đỏ do rate-limit tài khoản, có sẵn từ trước,
+  không liên quan PR này.
