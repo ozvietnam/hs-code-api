@@ -538,3 +538,10 @@ Có SEN: 1 (`sen.84513010` → dòng 84513010). Không nhóm nào dùng `wco-op`
 2. Tự soát ngẫu nhiên ≥ 10 % phần còn lại (52 `tieuChi6` + 55 `dong8` + 6 `phamVi`).
 3. Bổ sung mục 1 `docs/giao-viec/so-tay-giao-ngoai.md` với lỗi kệ sách mục 2 và 3 ở trên.
 4. Khi đạt: `so-tay-lo.csv` dòng 013 → `trang_thai=xong` + `pr=<số>`, rồi merge.
+
+## Nộp
+
+- Commit `6d26b7b` trên nhánh `so-tay/lo-013`, push lên `origin`.
+- **PR #394** — https://github.com/ozvietnam/hs-code-api/pull/394 — **KHÔNG merge** (chờ soát độc lập).
+- CI: `test` **pass** (1m41s) · `bench` **pass** (6m37s). `Vercel: Deployment was blocked` là **đỏ có sẵn**
+  (CEO đã gỡ Vercel 09/10/2026) — không phải lỗi code.
