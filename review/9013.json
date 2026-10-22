@@ -1,0 +1,87 @@
+{
+ "nhom": "9013",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T22:10:00+07:00",
+ "daKiem": 32,
+ "soat": 32,
+ "xoa": 2,
+ "sua": 5,
+ "ghiChu": "Audit 9013 (1 phamVi + 10 loaiTru + 3 phanBiet + 1 boPhan + 8 tieuChi6 + 9 dong8 = 32 mục; dieuKienVao/cay.tenDien rỗng). CÓ THẬT: strict-nguyen-van — toàn bộ câu trích khớp nguồn TUYỆT ĐỐI. ĐÚNG KHẲNG ĐỊNH thì KHÔNG: 2 mục `loaiTru` ghi NGƯỢC nguồn — đây là lỗi nặng nhất của lô, máy không bắt được vì câu trích vẫn là nguyên văn, chỉ bị CẮT trước vế quyết định. (1) loaiTru[9] cắt câu Chú giải 4 ch.90 ngay trước '; kính ngắm và kính viễn vọng như vậy được phân loại vào nhóm 90.13' — nên một câu nói 'vào 9013' bị ghi thành 'loại trừ sang 9005'. (2) loaiTru[6] đọc ngược 'các kính lúp hai mặt … không giống với các kính hiển vi soi nổi phân loại ở nhóm 90.11' thành 'kính lúp hai mặt → 9011', trong khi đúng ra chính là vì KHÔNG có vật kính nên chúng không phải kính hiển vi 9011 mà ở lại 9013. Cả hai đều đã có mục đúng ở khoản khác (phanBiet[0]) nên xoá không mất thông tin. Ngoài ra 6 mục sửa: phamVi.text mượn cụm 'Thiết bị tạo tia laser' của biểu thuế trong khi nguồn nhóm viết 'các thiết bị laser'; boPhan.tomTat thêm '(ví dụ ống laser)' lấy từ câu khác — đúng loại 'thêm ví dụ ngoài câu trích' mà mục 4 nêu; phanBiet[2] có nhánh 'không' (=9013) chưa có căn cứ trong câu trích; tieuChi6[2] rút 'máy, thiết bị, dụng cụ hoặc bộ dụng cụ' còn 'máy_thiết_bi' làm mất 2 nhánh; dong8[0] đưa tên WCO thiếu nhánh thứ ba mà không báo cắt. dieuKienVao rỗng là đúng: câu duy nhất có dạng điều kiện vào ('một số kính thiên văn có tính khúc xạ nhất định') lại chỉ nói về một phần nhỏ của nhóm và còn dùng định ngữ 'một số', đặt thành điều kiện chung sẽ dẫn sai. 9/9 dòng tax.* có trong dong8. cay.tenDien rỗng là đúng (check-cay báo đủ tên nút ảo).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "`text` mở đầu bằng 'Thiết bị tạo tia laser' — cụm này lấy từ dòng biểu thuế tax.90132000 ('Thiết bị tạo tia laser, trừ đi-ốt laser') và wco.901320, trong khi nguồn nhóm 9013 viết 'các thiết bị laser'. Cùng nghĩa, nhưng đúng loại 'text thêm chữ không có trong câu trích'. Đổi về đúng từ ngữ nguồn; phần liệt kê (1)/(2)/(4)/(10) và câu trích giữ nguyên.",
+   "sua": {
+    "text": "Các thiết bị laser và các thiết bị, dụng cụ quang học khác: (1) Các thiết bị laser … (2) Các kính lúp và kính phóng đại cầm tay … (4) Các kính ngắm và các bộ ngắm bằng khúc xạ hoặc phản xạ dùng cho vũ khí ở dạng riêng lẻ … (10) Các gương kính, đã gia công về quang học và không phù hợp để lắp ghép vào các thiết bị hoặc dụng cụ, …"
+   }
+  },
+  { "index": "loaiTru[0]", "hanhDong": "giu" },
+  { "index": "loaiTru[1]", "hanhDong": "giu" },
+  { "index": "loaiTru[2]", "hanhDong": "giu" },
+  { "index": "loaiTru[3]", "hanhDong": "giu" },
+  { "index": "loaiTru[4]", "hanhDong": "giu" },
+  { "index": "loaiTru[5]", "hanhDong": "giu" },
+  { "index": "loaiTru[7]", "hanhDong": "giu" },
+  { "index": "loaiTru[8]", "hanhDong": "giu" },
+  { "index": "phanBiet[0]", "hanhDong": "giu" },
+  { "index": "phanBiet[1]", "hanhDong": "giu" },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "sua",
+   "lyDo": "Nhánh 'không' (= 9013) chưa có căn cứ trong câu trích. Câu trích chỉ nói 'các kính lúp hai mặt … không giống với các kính hiển vi soi nổi phân loại ở nhóm 90.11, chúng được lắp thêm những thị kính nhưng không có vật kính' — tức chỉ dựng được nhánh 'có'. Nhánh 'không' đang được suy từ việc kính lúp hai mặt nằm trong mục (2) của danh sách 'Nhóm này gồm', mà câu đó không có trong trích. Nới trích để có câu neo 'Nhóm này gồm:' cho cả hai nhánh, đúng như tiền lệ 1702 (mục soát lô trước cũng kéo câu bao hàm nhóm vào trích). Không đổi `hoi`, không đổi neuCo/neuKhong.",
+   "sua": {
+    "trich": "Nhóm này gồm: … các kính lúp hai mặt … không giống với các kính hiển vi soi nổi phân loại ở nhóm 90.11, chúng được lắp thêm những thị kính nhưng không có vật kính."
+   }
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "`tomTat` thêm '(ví dụ ống laser)' — cụm ví dụ này nằm ở câu khác trong nguồn ('các bộ phận và phụ kiện của các thiết bị laser, ví dụ ống laser, cũng thuộc nhóm này'), không có trong câu trích. Mục 4 của tài liệu giao việc liệt kê đúng loại lỗi này: 'text/tomTat/dieuKien thêm chữ không có trong câu trích (số hiệu chú giải, **ví dụ**, mã 8 số)'. Bỏ phần ví dụ, `quyTac` giữ nguyên.",
+   "sua": {
+    "tomTat": "Bộ phận và phụ kiện cho các thiết bị hoặc dụng cụ trong nhóm này thì vẫn được phân loại vào nhóm 9013."
+   }
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "sua",
+   "lyDo": "`fact` rút 'machines, appliances, instruments or apparatus' của wco.901310 còn 'máy_thiết_bi', làm mất hai nhánh 'dụng cụ' và 'bộ dụng cụ' — cùng loại lỗi mà lô 012 đã vá ở 4420 tieuChi6[2] và 5705 dieuKienVao[0]. Dòng biểu thuế 90131020 cũng liệt kê đủ 'máy, thiết bị, dụng cụ hoặc bộ dụng cụ'. Giữ đủ các nhánh; câu trích không đổi.",
+   "sua": {
+    "fact": "la_kinh_vien_vong_thiet_ke_la_bo_phan_cua_may_thiet_bi_dung_cu_hoac_bo_dung_cu_cua_chuong_nay"
+   }
+  },
+  { "index": "tieuChi6[0]", "hanhDong": "giu" },
+  { "index": "tieuChi6[1]", "hanhDong": "giu" },
+  { "index": "tieuChi6[3]", "hanhDong": "giu" },
+  { "index": "tieuChi6[4]", "hanhDong": "giu" },
+  { "index": "tieuChi6[5]", "hanhDong": "giu" },
+  { "index": "tieuChi6[6]", "hanhDong": "giu" },
+  { "index": "tieuChi6[7]", "hanhDong": "giu" },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "sua",
+   "lyDo": "Cụm '(tên WCO: telescopic sights for fitting to arms; periscopes)' là tên riêng của phân nhóm nhưng bị cắt mất nhánh thứ ba 'telescopes designed to form parts of machines, appliances, instruments or apparatus of this chapter' mà không báo cắt, khiến 9013.10 trông như chỉ gồm kính ngắm và kính tiềm vọng — trái với chính dòng 90131020 ngay bên dưới. Ghi đủ tên WCO như các nhóm khác của lô (4013 cũng ghi đủ). Không đổi câu trích.",
+   "sua": {
+    "dieuKien": "Kính ngắm để lắp vào vũ khí; kính tiềm vọng, thuộc phân nhóm 9013.10 (tên WCO: telescopic sights for fitting to arms; periscopes; telescopes designed to form parts of machines, appliances, instruments or apparatus of this chapter)"
+   }
+  },
+  { "index": "dong8[1]", "hanhDong": "giu" },
+  { "index": "dong8[2]", "hanhDong": "giu" },
+  { "index": "dong8[3]", "hanhDong": "giu" },
+  { "index": "dong8[4]", "hanhDong": "giu" },
+  { "index": "dong8[5]", "hanhDong": "giu" },
+  { "index": "dong8[6]", "hanhDong": "giu" },
+  { "index": "dong8[7]", "hanhDong": "giu" },
+  { "index": "dong8[8]", "hanhDong": "giu" },
+  {
+   "index": "loaiTru[9]",
+   "hanhDong": "xoa",
+   "lyDo": "Ghi NGƯỢC nguồn. Chú giải 4 Chương 90 nói: 'Nhóm 90.05 không áp dụng cho kính ngắm dùng để lắp vào vũ khí, kính ngắm tiềm vọng để lắp vào tàu ngầm hoặc xe tăng, hoặc kính viễn vọng dùng cho máy, thiết bị, dụng cụ hoặc đồ dùng của Chương này hoặc của Phần XVI; **kính ngắm và kính viễn vọng như vậy được phân loại vào nhóm 90.13**.' Câu trích của mục cắt đúng trước vế cuối bằng dấu chấm lửng, biến một câu XÁC NHẬN VÀO 9013 thành một mục loại trừ sang 9005. Đây là loại lỗi 'mất ngoại lệ ngay sau câu trích' và 'cắt trích né câu rào' — máy không bắt được vì đoạn cắt vẫn nguyên văn. XOÁ. Thông tin này đã có đúng ở phanBiet[0] (neuCo 9013 / neuKhong 9005, trích đủ cả vế 'được phân loại vào nhóm 90.13') nên không mất gì."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "xoa",
+   "lyDo": "Ghi NGƯỢC nguồn. Nguồn: 'các kính lúp hai mặt (thường là trên giá đỡ) **không giống với** các kính hiển vi soi nổi phân loại ở nhóm 90.11, chúng được lắp thêm những thị kính nhưng **không có vật kính**.' Nghĩa là kính lúp hai mặt KHÔNG phải kính hiển vi soi nổi và ở lại nhóm này (mục (2) của danh sách nhóm), chứ không phải loại trừ sang 9011. Câu trích còn cắt luôn đoạn '(thường là trên giá đỡ)' bằng dấu chấm lửng, chỉ chừa 'các kính lúp hai mặt … không giống với …' — đọc cụt rất dễ đảo thành loại trừ. Mục này khẳng định điều ngược với chú giải và sẽ khiến cổng hỏi đẩy kính lúp hai mặt sang 9011. XOÁ; phần phân biệt đúng đã nằm ở phanBiet[2]."
+  }
+ ]
+}

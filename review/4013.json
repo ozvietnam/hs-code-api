@@ -1,0 +1,65 @@
+{
+ "nhom": "4013",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T21:45:00+07:00",
+ "daKiem": 21,
+ "soat": 21,
+ "xoa": 1,
+ "sua": 4,
+ "ghiChu": "Audit 4013 (1 phamVi + 3 dieuKienVao + 4 tieuChi6 + 13 dong8 = 21 mục; boPhan/loaiTru/phanBiet/cay.tenDien rỗng). CÓ THẬT: strict-nguyen-van — 100% câu trích khớp nguồn TUYỆT ĐỐI (byte, không squash), kể cả lỗi chính tả 'xe môtô' và chữ 'chưu' trong ch40. ĐÚNG KHẲNG ĐỊNH: 1 mục thừa (tieuChi6[1] lặp lại tieuChi6[0] với cùng một câu trích) và 4 mục dong8 của 4013.10 nói 'tên tiêu đề không có trong nguồn' nhưng cây máy CÓ tên tiêu đề — trong khi 4 dòng 4013.90 lại ghi tên. Không có câu rào 'thường…'/'tùy từng trường hợp' trong nguồn 4013 nên không có kiểu lỗi 'cắt trích né câu rào'. loaiTru RỖNG là đúng: nhom4013.nhom không có câu loại trừ, còn Chú giải 2 chương 40 loại theo Chương/Chương-mục chứ không nêu đích danh nhóm (luật 3). phanBiet RỖNG là đúng: nguồn không câu nào phân biệt 4013.10/4013.20/4013.90 với nhau bằng câu chép được — việc đó đã do tieuChi6 đảm nhiệm. 13/13 dòng biểu thuế tax.* có trong dong8, không thừa không thiếu.",
+ "thayDoi": [
+  { "index": "phamVi", "hanhDong": "giu" },
+  { "index": "dieuKienVao[0]", "hanhDong": "giu" },
+  { "index": "dieuKienVao[1]", "hanhDong": "giu" },
+  { "index": "dieuKienVao[2]", "hanhDong": "giu" },
+  { "index": "tieuChi6[0]", "hanhDong": "giu" },
+  { "index": "tieuChi6[2]", "hanhDong": "giu" },
+  { "index": "tieuChi6[3]", "hanhDong": "giu" },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "sua",
+   "lyDo": "dieuKien ghi 'thuộc tiêu đề quốc gia 4013101 (tên tiêu đề không có trong nguồn — đối chiếu biểu thuế)' — câu này báo rằng không có tên, trong khi cây máy (biểu thuế) CÓ tên tiêu đề và 4 dòng 4013.90 cùng nhóm lại đã ghi tên. Hậu quả: 40131011 và 40131021 có CÙNG câu trích ('Dùng cho loại lốp có chiều rộng không quá 450 mm') và cùng `dieuKien`, tức mất hẳn điều kiện duy nhất phân biệt chúng là tiêu đề 4013101 (ô tô con) với 4013102 (ô tô khách/chở hàng). Ghi tên tiêu đề lấy nguyên văn từ cây máy, kèm nhãn trung thực là nguồn đối chiếu biểu thuế chứ không phải câu trong tệp nguồn. Không đổi câu trích.",
+   "sua": {
+    "dieuKien": "Săm của phân nhóm 4013.10 (tên WCO: inner tubes, of a kind used on motorcars (including station wagons and racing cars), buses and lorries), thuộc tiêu đề quốc gia 4013101 — Loại dùng cho ô tô con (motor car) (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua) (tên tiêu đề lấy từ cây máy theo biểu thuế, không có câu nào trong nguồn nêu): dùng cho loại lốp có chiều rộng không quá 450 mm"
+   }
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lý do dong8[0]: 'tên tiêu đề không có trong nguồn' là nói sai với tiêu đề 4013101, và 40131011/40131019 mất điều kiện phân biệt. Ghi tên tiêu đề 4013101 nguyên văn từ cây máy. Giữ phần 'Khác 40131011 ở chiều rộng (trên 450 mm)' và câu trích.",
+   "sua": {
+    "dieuKien": "Săm của phân nhóm 4013.10 (tên WCO: inner tubes, of a kind used on motorcars (including station wagons and racing cars), buses and lorries), thuộc tiêu đề quốc gia 4013101 — Loại dùng cho ô tô con (motor car) (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua) (tên tiêu đề lấy từ cây máy theo biểu thuế, không có câu nào trong nguồn nêu): dùng cho loại lốp có chiều rộng trên 450 mm. Khác 40131011 ở chiều rộng (trên 450 mm)"
+   }
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lý do dong8[0], áp cho tiêu đề 4013102. Đây là dòng mà trước đó mất hẳn khả năng phân biệt với 40131011 (cùng câu trích, cùng chiều rộng). Ghi tên tiêu đề 4013102 nguyên văn từ cây máy. Không đổi câu trích.",
+   "sua": {
+    "dieuKien": "Săm của phân nhóm 4013.10 (tên WCO: inner tubes, of a kind used on motorcars (including station wagons and racing cars), buses and lorries), thuộc tiêu đề quốc gia 4013102 — Loại dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries) (tên tiêu đề lấy từ cây máy theo biểu thuế, không có câu nào trong nguồn nêu): dùng cho loại lốp có chiều rộng không quá 450 mm"
+   }
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lý do dong8[2], áp cho tiêu đề 4013102 và giữ phần 'Khác 40131021 ở chiều rộng (trên 450 mm)'. Không đổi câu trích.",
+   "sua": {
+    "dieuKien": "Săm của phân nhóm 4013.10 (tên WCO: inner tubes, of a kind used on motorcars (including station wagons and racing cars), buses and lorries), thuộc tiêu đề quốc gia 4013102 — Loại dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries) (tên tiêu đề lấy từ cây máy theo biểu thuế, không có câu nào trong nguồn nêu): dùng cho loại lốp có chiều rộng trên 450 mm. Khác 40131021 ở chiều rộng (trên 450 mm)"
+   }
+  },
+  { "index": "dong8[4]", "hanhDong": "giu" },
+  { "index": "dong8[5]", "hanhDong": "giu" },
+  { "index": "dong8[6]", "hanhDong": "giu" },
+  { "index": "dong8[7]", "hanhDong": "giu" },
+  { "index": "dong8[8]", "hanhDong": "giu" },
+  { "index": "dong8[9]", "hanhDong": "giu" },
+  { "index": "dong8[10]", "hanhDong": "giu" },
+  { "index": "dong8[11]", "hanhDong": "giu" },
+  { "index": "dong8[12]", "hanhDong": "giu" },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "xoa",
+   "lyDo": "Lặp lại y hệt tieuChi6[0] với CÙNG một câu trích wco.401310: 'inner tubes, of a kind used on motorcars (including station wagons and racing cars), buses and lorries'. [0] đã nêu đúng nội dung đó qua fact 'dung_cho_o_to_con_va_xe_khach_xe_cho_hang'; [1] thêm fact 'loai_phuong_tien_su_dung' — vế trần, đọc riêng không có nghĩa gì — và đẩy cả một câu tiếng Anh dài vào `value`, trong khi `value` là một giá trị vô hướng. tieuChi6 chỉ được lib/so-tay.js dùng để báo 'phân nhóm 6 số chưa có tiêu chí' (check-cay), KHÔNG đi vào prompt nào, nên mục thừa này không thêm thông tin gì cho cổng hỏi người khai. XOÁ, giữ lại [0]."
+  }
+ ]
+}

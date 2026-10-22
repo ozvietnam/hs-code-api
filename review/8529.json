@@ -1,0 +1,75 @@
+{
+ "nhom": "8529",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T22:40:00+07:00",
+ "daKiem": 35,
+ "soat": 35,
+ "xoa": 0,
+ "sua": 4,
+ "ghiChu": "Audit 8529 (1 phamVi + 1 dieuKienVao + 9 loaiTru + 1 boPhan + 4 tieuChi6 + 19 dong8 = 35 mục; phanBiet/cay.tenDien rỗng). CÓ THẬT: strict-nguyen-van — 100% khớp nguồn TUYỆT ĐỐI, kể cả dấu cách cuối dòng của tax.85291094 và lỗi 'tiếp sóng' (đúng bản tiếng Việt có 'tiếp', không phải 'phát'). ĐÚNG KHẲNG ĐỊNH: không mục nào sai nghĩa, không mục nào phải xoá. 9/9 điểm loại trừ (a)-(ij) của chú giải nhóm đều được ghi đúng đích danh, kể cả mục (d) 'bộ phận … nhóm 85.17 và 85.25 đến 85.28 → 85.17' — đúng câu chứ không rút gọn thành 'thường thuộc'. 19/19 dòng tax.* có trong dong8, không thừa không thiếu. 4 mục sửa đều là 'chữ ngoài câu trích': boPhan.tomTat kéo mục (d) vào trong khi trích chỉ có câu quy tắc chung; dong8[0]/[1] gắn nhãn tiêu đề 8529102 là 'Bộ phản xạ ăng ten' (cụm lấy từ mục (1) của chú giải nhóm, tức tên của phân nhóm 8529.10 chứ không phải tên tiêu đề 7 số); dong8[3] thêm chú thích 'tương ứng mục (4) chú giải nhóm'. Ghi chú cho người gộp (KHÔNG phải lỗi, em không tự thêm): phanBiet rỗng dù nguồn có câu dựng được một cặp hỏi 8517 ↔ 8529 (mục (d)) — nhưng `loaiTru[3]` đã nêu đúng việc loại trừ và cùng nằm trong khối in ra prompt, nên không coi là thiếu sót. dong8[15]/[16] ghi 'dòng trùng chữ với 85299059/85299055, nguồn không phân biệt được (đối chiếu biểu thuế)' — đúng luật 'dòng trùng chữ mà nguồn không phân biệt thì ghi rõ, không đoán'.",
+ "thayDoi": [
+  { "index": "phamVi", "hanhDong": "giu" },
+  { "index": "dieuKienVao[0]", "hanhDong": "giu" },
+  { "index": "loaiTru[0]", "hanhDong": "giu" },
+  { "index": "loaiTru[1]", "hanhDong": "giu" },
+  { "index": "loaiTru[2]", "hanhDong": "giu" },
+  { "index": "loaiTru[3]", "hanhDong": "giu" },
+  { "index": "loaiTru[4]", "hanhDong": "giu" },
+  { "index": "loaiTru[5]", "hanhDong": "giu" },
+  { "index": "loaiTru[6]", "hanhDong": "giu" },
+  { "index": "loaiTru[7]", "hanhDong": "giu" },
+  { "index": "loaiTru[8]", "hanhDong": "giu" },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "`tomTat` thêm vế 'bộ phận chỉ dùng chủ yếu cho hàng hóa 85.17 và 85.25 đến 85.28 thì sang 85.17 (mục (d))' — mục (d) nằm ở đoạn 'Nhóm này không bao gồm', không có trong câu trích (câu trích chỉ là câu 'Theo quy tắc chung về phân loại các bộ phận … năm nhóm trước.'). Đúng loại 'tomTat thêm chữ không có trong câu trích'; vế đó đã có đúng ở loaiTru[3]. Bỏ vế thừa, `quyTac` giữ nguyên.",
+   "sua": {
+    "tomTat": "8529 là nhóm bộ phận của thiết bị của năm nhóm trước, theo quy tắc chung về phân loại các bộ phận (xem Chú giải Chi tiết Tổng quát phần XVI)."
+   }
+  },
+  { "index": "tieuChi6[0]", "hanhDong": "giu" },
+  { "index": "tieuChi6[1]", "hanhDong": "giu" },
+  { "index": "tieuChi6[2]", "hanhDong": "giu" },
+  { "index": "tieuChi6[3]", "hanhDong": "giu" },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "sua",
+   "lyDo": "`dieuKien` mở đầu bằng 'Bộ phản xạ ăng ten' rồi nói 'thuộc tiêu đề quốc gia 8529102 (tên tiêu đề không có trong nguồn — đối chiếu biểu thuế)'. Cụm 'bộ phản xạ ăng ten' lấy từ mục (1) của chú giải nhóm, tức là tên của PHÂN NHÓM 8529.10, không phải tên tiêu đề 7 số 8529102; cây máy (biểu thuế) CÓ tên tiêu đề này: 'Chảo phản xạ của ăng ten parabol sử dụng cho hệ phát trực tiếp đa phương tiện và các bộ phận của chúng'. Nhãn sai đồng thời nói 'không có tên' khi tên có sẵn. Ghi đúng tên tiêu đề lấy nguyên văn từ cây máy, kèm nhãn trung thực là đối chiếu biểu thuế — cùng cách đã làm với 4013. Không đổi câu trích.",
+   "sua": {
+    "dieuKien": "Dùng cho máy thu truyền hình, thuộc tiêu đề quốc gia 8529102 — Chảo phản xạ của ăng ten parabol sử dụng cho hệ phát trực tiếp đa phương tiện và các bộ phận của chúng (tên tiêu đề lấy từ cây máy theo biểu thuế, không có câu nào trong nguồn nêu)"
+   }
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lỗi ở dong8[0]: 'bộ phản xạ ăng ten' không phải tên tiêu đề 8529102, và trích chỉ có 'Loại khác'. Viết lại dòng 'khác' theo đúng quan hệ với dòng anh em 85291021 và nêu đúng tên tiêu đề từ cây máy. Không đổi câu trích.",
+   "sua": {
+    "dieuKien": "Loại khác — không phải dòng 85291021, thuộc tiêu đề quốc gia 8529102 — Chảo phản xạ của ăng ten parabol sử dụng cho hệ phát trực tiếp đa phương tiện và các bộ phận của chúng (tên tiêu đề lấy từ cây máy theo biểu thuế, không có câu nào trong nguồn nêu)"
+   }
+  },
+  { "index": "dong8[2]", "hanhDong": "giu" },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "sua",
+   "lyDo": "`dieuKien` thêm ngoặc '(tương ứng mục (4) chú giải nhóm: các bộ chia và lọc tín hiệu ăng ten)'. Câu trích chỉ có '85291040 - - Bộ lọc và tách tín hiệu ăng ten'; mục (4) nằm ở câu khác của nguồn. Đúng loại 'thêm chữ ngoài câu trích' (mục 4 tài liệu giao việc liệt kê thẳng 'ví dụ' là ví dụ vi phạm). Cần giữ thì phải nới trích, nhưng mục (4) không phân biệt được dòng này với dòng khác nên không cần — bỏ ngoặc, `dieuKien` còn lại đúng nguyên văn dòng biểu thuế.",
+   "sua": {
+    "dieuKien": "Bộ lọc và tách tín hiệu ăng ten"
+   }
+  },
+  { "index": "dong8[4]", "hanhDong": "giu" },
+  { "index": "dong8[5]", "hanhDong": "giu" },
+  { "index": "dong8[6]", "hanhDong": "giu" },
+  { "index": "dong8[7]", "hanhDong": "giu" },
+  { "index": "dong8[8]", "hanhDong": "giu" },
+  { "index": "dong8[9]", "hanhDong": "giu" },
+  { "index": "dong8[10]", "hanhDong": "giu" },
+  { "index": "dong8[11]", "hanhDong": "giu" },
+  { "index": "dong8[12]", "hanhDong": "giu" },
+  { "index": "dong8[13]", "hanhDong": "giu" },
+  { "index": "dong8[14]", "hanhDong": "giu" },
+  { "index": "dong8[15]", "hanhDong": "giu" },
+  { "index": "dong8[16]", "hanhDong": "giu" },
+  { "index": "dong8[17]", "hanhDong": "giu" },
+  { "index": "dong8[18]", "hanhDong": "giu" }
+ ]
+}
