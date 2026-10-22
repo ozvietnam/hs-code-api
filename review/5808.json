@@ -1,0 +1,137 @@
+{
+ "nhom": "5808",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T22:20:00+07:00",
+ "daKiem": 23,
+ "soat": 23,
+ "sua": 3,
+ "xoa": 1,
+ "giu": 19,
+ "ghiChu": "Audit 5808 (1 phamVi + 2 dieuKienVao + 12 loaiTru + 2 phanBiet + 2 tieuChi6 + 4 dong8 = 23). CÓ THẬT: 23/23 câu trích nguyên văn tuyệt đối trong đúng khối nguồn (kiểm byte-exact, không squash) — kể cả \"…,\" nguyên của nguồn ở loaiTru[9]. SỬA 3 / XOÁ 1. Điểm lớn nhất: `phamVi` kể (1) tiêu đề (A)+(B), (2) \"trang trí nội thất\" — nhưng trích chỉ copy MỘT câu về quần áo; `text` khẳng định nhiều hơn trích nói. Xoá `dieuKienVao` \"la_vai_det_thoi_kho_hep_co_tua_vien\": đó là CHỦNG KIẾN CHỈ của mục (3) phần (A), không phải điều kiện vào CẢ nhóm 5808 (tua/ngù không phải vải dệt thoi) — máy `dieu-kien-cap-phan-nhom` chỉ chặn wco/sen/tax nên lọt. GIỮ (đã cân): loaiTru[6] khóa kéo→9607 (câu trích cắt trước \"tùy từng trường hợp\" nhưng nhánh KHÓA KÉO không hề rào — chỉ nhánh móc/mắt cài/bấm nén mới rào; không phải cắt trích để lách luật); 12 loại trừ còn lại đều nêu đích danh; 2 phanBiet đúng chiều. Ghi nhận: 6 mục (a)-(f) nằm dưới câu dẫn \"Tuy vậy, nói chung nhóm này loại trừ…\" — tiền tố \"nói chung\" có nhẹ, nhưng từng mục (a)-(f) vẫn là loại trừ dứt khoát nên giữ.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "`text` khẳng định tiêu đề (A) và (B), cùng vế \"trang trí nội thất\", nhưng `trich` chỉ chép một câu về quần áo và bị cắt ngay trước \"hoặc các loại trang trí nội thất\". Câu trích phải tự nó nói điều mục khẳng định (luật 7). Nới trích ra đúng các mảnh cần, có dấu lược ở mỗi chỗ lược để không tạo liền mạch giả.",
+   "sua": {
+    "trich": "(A) CÁC DẢI BỆN DẠNG CHIẾC; DẢI, MẢNH TRANG TRÍ DẠNG CHIẾC, KHÔNG THÊU, TRỪ CÁC LOẠI DỆT KIM HOẶC MÓC … Ngoài các loại dải bện, phần (A) của nhóm này gồm có nhiều sản phẩm khác nhau về chiều dài, được thiết kế để trang hoàng hoặc trang trí các loại quần áo … hoặc các loại trang trí nội thất … (B) TUA, NGÙ VÀ CÁC MẶT HÀNG TƯƠNG TỰ"
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "Trích bắt đầu giữa câu tại \"miễn là…\" nên mất chủ ngữ (\"chúng được trang trí bằng các đồng Sêquyn, các chuỗi hạt, và các phụ kiện tương tự\") — đọc mảnh trích không biết \"những loại này\" là gì. Nới trích ra trọn câu (233 ký tự, vẫn dưới trần 600).",
+   "sua": {
+    "trich": "chúng được trang trí bằng các đồng Sêquyn, các chuỗi hạt, và các phụ kiện tương tự, miễn là những loại này không được gán bằng kỹ thuật gán hình (appliqué work) mà với kỹ thuật này chúng được phân loại như hàng thêu thuộc nhóm 58.10."
+   }
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "xoa",
+   "lyDo": "Sai tầng, không phải mờ: chú giải chương 58 mục 5 chỉ nói \"Vải dệt thoi khổ hẹp có tua viền được phân loại vào nhóm 58.08\" — đó là đủ điện kiện RIÊNG cho mục (3) phần (A). Đặt làm `dieuKienVao` của CẢ nhóm 5808 thì mọi hàng tua/ngù/trang trí dạng chiếc (không phải vải dệt thoi) đều bị loại oan — đúng lỗi mà `lib/so-tay.js` đã có luật `dieu-kien-cap-phan-nhom` nhằm chặn, nhưng luật đó chỉ soi nguồn wco/sen/tax nên câu lấy từ `ch58.chuong` lọt. Thà bỏ mục còn hơn mục loại oang hàng hợp lệ."
+  },
+  {
+   "index": "loaiTru[10]",
+   "hanhDong": "sua",
+   "lyDo": "`dieuKien` có vế \"cũng như các thắt nút (swordknot) làm bằng những chất liệu này\" nhưng `trich` chỉ chép câu về nơ hoa hồng — vế thắt nút nằm ở câu kế tiếp, không có trong trích (dieuKien thêm chữ ngoài câu trích). Nới trích tới đúng mệnh đề đó thay vì cắt bớt `dieuKien`.",
+   "sua": {
+    "trich": "Nơ hoa hồng làm bằng các loại dải và dải trang trí thuộc mục này được phân loại trong nhóm 62.17 hoặc 63.07. … cũng như các thắt nút (swordknot) làm bằng những chất liệu này được phân loại ở nhóm 63.07."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "loaiTru[8]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "loaiTru[9]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "loaiTru[11]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  }
+ ]
+}
