@@ -1,0 +1,50 @@
+{
+ "nhom": "8447",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T22:52:00+07:00",
+ "daKiem": 7,
+ "soat": 7,
+ "xoa": 0,
+ "sua": 1,
+ "ghiChu": "Audit 8447 (1 phamVi + 2 loaiTru + 3 phanBiet + 1 boPhan = 7 mục; dieuKienVao rỗng). Máy xác nhận 17/17 câu trích khớp nguồn TUYỆT ĐỐI; em đọc HẾT [nhom8447.nhom] (dòng 3-58) cùng chú giải Chương 84 + Phần XVI để đối chiếu. BẪY ĐÃ QUA ĐÚNG CÁCH — đoạn dòng 16 mở bằng 'Nhóm này CŨNG BAO HỒM máy dệt kim gia dụng loại nhỏ, và máy được thiết kế để dệt kim chỉ những khâu cần thiết cho việc chữa bít tất dài.' rồi mới sang câu MỚI 'Máy dùng để nối hai mảnh vải dệt kim... được phân loại ở nhóm 84.52.' (lỗi lô 008 ở 3916 là đọc nhầm tiền tố 'bao hồm' thành loại trừ). Người soạn đã tách đúng: KHÔNG lấy 2 mục 'máy dệt kim gia dụng' / 'máy chữa bít tất' làm loaiTru, chỉ lấy câu có vế 'được phân loại ở nhóm 84.52'. SỬA 1 — phanBiet[2].hoi đã thêm chữ 'CHỈ' không có trong câu trích: nguồn ghi 'không bao gồm máy khâu MÀ CÓ THỂ thực hiện công việc thêu đơn giản phụ trợ việc khâu thông thường' (điều kiện LÀ CÓ THỂ), còn hoi viết 'máy khâu CHỈ thực hiện' (điều kiện LÀ CHỈ LÀM). Hai việc này cho kết quả ngược nhau với máy vừa khâu vừa thêu: theo nguồn phải sang 84.52, theo hoi sẽ ở lại 84.47. Chính loaiTru[1].dieuKien của cùng nhóm đã viết đúng 'máy khâu có thể thực hiện' — em chỉ sửa hoi cho khớp, KHÔNG đụng câu trích. Còn lại giữ nguyên: loaiTru[0] trích đủ câu có vế đích danh 84.52 ✓; loaiTru[1] giữ CẢ HAI nhánh loại trừ trong một mục bằng dấu chấm phẩy + 'và' (không tách thành AND sai) ✓ và giữ lỗi chính tả nguồn 'thêu đơn giện' ✓; phanBiet[0] và phanBiet[1] đúng chiều Có → 8452 / Không → 8447, hoi không nhắc mã, mã 84.52 có trong trích ✓ (hai câu hỏi khác nhau — một câu về máy nối viền, một câu về máy khâu mắt xích/viền — nên không vi phạm luật 'không tạo nhiều mục cùng một câu hỏi'); boPhan trích nguyên văn câu dòng 58, quyTac chỉ thay 'nhóm này' bằng mã 8447 là đúng, tomTat không thêm ý riêng ✓. GHI NHẬN (không sửa, nằm ngoài 5 khối được giao): (a) phamVi trích đã lược bằng '…' mất vế 'hoặc sử dụng sợi chưa được xe,' — đây là MỘT NHÁNH 'hoặc' cùng loại trong chuỗi bao hàm chứ KHÔNG phải ngoại lệ nên không làm đảo nghĩa; câu đầy đủ dài 326 ký tự (vượt hướng dẫn 300, máy chấp nhận tới 600) nên em giữ bản lược, chỉ ghi nhận để quản lý cân nhắc. (b) tieuChi6[3] (844790) fact dịch 'gimped yarn' thành 'suoi_vien' chưa chuẩn và BỎ mất 'đồ thêu' (embroidery) có trong câu WCO — thuộc khối máy suy, em không tự sửa. (c) Bo phận máy dệt sang 84.48 mới chỉ nằm trong boPhan, chưa có phanBiet hỏi riêng; không sai, nhưng có thể thêm ở lô sau. dong8: 6/6 dòng tax.* trong nguồn đều được ghi, không thừa không thiếu.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn, lược bằng '…' đúng quy cách; vế bị lược là nhánh 'hoặc' cùng loại, không phải ngoại lệ, không làm đảo nghĩa."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nằm SAU tiền tố 'Nhóm này cũng bao gồm...', là câu riêng có vế đích danh 84.52 — đúng là loại trừ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Giữ cả hai nhánh loại trừ trong một mục; số 84.52 có trong câu trích; giữ nguyên lỗi chính tả nguồn."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều Có → 8452 / Không → 8447; mã 84.52 có trong trích; hoi không nhắc mã."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều nhánh; ngoặc trong hoi ('dù chủ yếu để viền sản phẩm dệt') lấy từ câu trích."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "sua",
+   "lyDo": "hoi thêm chữ 'chỉ' không có trong nguồn. Nguồn: không bao gồm máy khâu MÀ CÓ THỂ thực hiện thêu đơn giản phụ trợ việc khâu thông thường. Với máy vừa khâu vừa thêu, hai cách viết cho kết quả ngược nhau (nguồn → 84.52; hoi cũ → 84.47). Sửa cho khớp với loaiTru[1].dieuKien đã viết đúng 'có thể thực hiện'. KHÔNG sửa câu trích.",
+   "sua": {
+    "hoi": "Hàng là máy khâu có thể thực hiện công việc thêu đơn giản phụ trợ việc khâu thông thường không?"
+   }
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn câu dòng 58; quyTac chỉ thay 'nhóm này' bằng mã 8447 — đúng và không thêm ý riêng."
+  }
+ ]
+}

@@ -1,0 +1,128 @@
+{
+ "nhom": "8441",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T23:25:00+07:00",
+ "daKiem": 22,
+ "soat": 22,
+ "xoa": 0,
+ "sua": 2,
+ "ghiChu": "Audit 8441 (1 phamVi + 1 dieuKienVao + 10 loaiTru + 9 phanBiet + 1 boPhan = 22 mục). Máy xác nhận 36/36 câu trích khớp nguồn TUYỆT ĐỐI; em đọc HẾT [nhom8441.nhom] (dòng 3-62) cùng chú giải Chương 84 và Phần XVI. SỬA 2 — CÙNG MỘT LỖI: loaiTru[3].dieuKien và phanBiet[3].hoi đã BỎ MẤT ĐỊNH NGỮ GIỚI HẠN có sẵn trong câu trích. Nguồn dòng 40: 'Tuy nhiên, nhóm này không bao gồm máy ép thủy lực hoặc cơ khí đơn giản LÀ NHỮNG MÁY MÀ THƯỜNG ĐƯỢC SỬ DỤNG VÌ MỤC ĐÍCH NÀY (nhóm 84.79).' Vế 'là những máy mà thường được sử dụng vì mục đích này' giới hạn loại trừ chỉ áp cho máy ép dùng để chế biến bột giấy/giấy/bìa (đọc theo câu mở dòng 4 của cùng chú giải nhóm). Mục đang viết tắt thành 'máy ép thủy lực hoặc cơ khí đơn giản' — ĐỐI VỚI MỌI máy ép, tức rộng hơn nguồn; máy ép thủy lực dùng cho mục đích khác sẽ bị kéo nhầm sang 84.79. Đúng bài học 'dieuKien phải giữ định ngữ giới hạn của câu'. Ghi chú thêm: luật máy loai-tru-chi-la-thuong cố tình KHÔNG bắt câu này — biểu thức của nó là 'thường (nằm|thuộc|được xếp|xếp)' và 'tùy trường hợp', còn đây là 'thường được SỬ DỤNG' — tức không phải câu nói 'thường thuộc nhóm X' có tính chất ngoại lệ mềm, nên máy không báo là đúng; lỗi nằm ở chỗ `dieuKien`/`hoi` bỏ vế giới hạn, KHÔNG phải ở chỗ câu trích có 'thường'. Em KHÔNG sửa câu trích, chỉ bổ sung định ngữ giới hạn vào nhãn. Còn lại giữ nguyên: dieuKienVao[0] là điều kiện VÀO NHÓM đúng chỗ và rất quan trọng — nguồn 'Những máy như vậy cũng thuộc nhóm này VỚI ĐIỀU KIỆN chúng thuộc loại thường được sử dụng để làm giấy hoặc bìa giấy' (áp cho máy vốn còn dùng được cho nhựa/kim loại tấm mỏng); KHÔNG phải câu cho phép vì nó nêu rõ ĐIỀU KIỆN, và nguồn thuộc loại nhom* ✓. loaiTru[0] là mệnh đề loại trừ nằm GIỮA mục (1) đang được bao hồm, trích lấy từ đúng chỗ đó, số 90.10 có trong câu ✓. loaiTru[1] chép nguyên văn cả lỗi chính tả của nguồn: nguồn ghi 'máy dập ĐÂY kim loại đơn giản' (rõ là lỗi nhập, đáng lẽ 'dây'); câu trích giữ nguyên 'đây' như luật yêu cầu, còn nhãn dieuKien/hoi viết 'dây' — em chấp nhận vì đây là nhãn tiếng Việt đúng chứ không phải sửa câu trích. loaiTru[8]/phanBiet[8] giữ trọn cả hai nhánh (đột lỗ thẻ/tài liệu giấy VÀ máy cắt vụn giấy văn phòng) trong một mục ✓. loaiTru[9] giữ nguyên dấu '....' của nguồn ✓. Tất cả 10 mã nhóm đích (90.10, 84.40, 84.40, 84.79, 84.19, 84.22, 84.45, 84.52, 84.72, 84.79) đều có mặt trong câu trích tương ứng. boPhan trích nguyên văn dòng 46, thay 'nhóm này' bằng 8441 là đúng. GHI NHẬN THIẾU (không tự thêm, vì nằm ngoài 5 khối em được giao và không sai): dòng 42 còn một điều kiện vào nhóm nữa — 'những máy như vậy [có trang bị thiết bị in] cũng được phân vào nhóm này với điều kiện chức năng in không phải là chức năng chủ yếu của máy' — người soạn chưa ghi thành dieuKienVao thứ hai. GHI NHẬN THU HẸP: phamVi lược mất vế 'hoặc thành các tờ có kích cỡ thương mại' trong chuỗi 'từ… tới…' — cùng loại thu hẹp vế 'hoặc' đã ghi ở 8447 và 7607, không làm sai hướng. dong8: 8/8 dòng tax.* có trong nguồn; dòng 84419000 lấy tên phân nhóm từ wco.844190.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn; vế bị lược là một nhánh 'hoặc' trong chuỗi mô tả phạm vi, không chứa ngoại lệ."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Điều kiện VÀO NHÓM 4 số, nguồn nhom*, câu nêu rõ 'với điều kiện' chứ không phải câu cho phép."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mệnh đề loại trừ nằm trong mục (1) đang được bao hồm; trích đúng mệnh đề; 90.10 có trong câu."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn giữ lỗi chính tả nguồn ('dập đây'); 84.40 có trong câu; nhãn dùng 'dây' là bản đúng tiếng Việt, không sửa trích."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn (15); 84.40 có trong câu."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "sua",
+   "lyDo": "dieuKien bỏ mất vế giới hạn 'là những máy mà thường được sử dụng vì mục đích này' có trong nguồn, biến loại trừ có điều kiện thành loại trừ vô điều kiện. Sửa để giữ định ngữ giới hạn; KHÔNG sửa câu trích.",
+   "sua": {
+    "dieuKien": "máy ép thủy lực hoặc cơ khí đơn giản thường được sử dụng vì mục đích này"
+   }
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn (a); 84.19 có trong câu."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn (b) giữ trọn điều kiện 'cũng để làm và in hộp đựng bằng giấy bìa'; 84.22 có trong câu."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn (c); 84.45 có trong câu."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn (d); 84.52 có trong câu."
+  },
+  {
+   "index": "loaiTru[8]",
+   "hanhDong": "giu",
+   "lyDo": "Giữ trọn cả hai nhánh loại trừ (đột lỗ và cắt vụn giấy) trong một mục; 84.72 có trong câu."
+  },
+  {
+   "index": "loaiTru[9]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn (f), giữ nguyên dấu '....' của nguồn; 84.79 có trong câu."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều Có → 9010 / Không → 8441; mã 90.10 có trong trích."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều nhánh; 84.40 có trong trích."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều nhánh; 84.40 có trong trích."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "sua",
+   "lyDo": "hoi bỏ mất vế giới hạn 'thường được sử dụng vì mục đích này' — cùng lỗi với loaiTru[3], sửa cho khớp. KHÔNG sửa câu trích.",
+   "sua": {
+    "hoi": "Hàng là máy ép thủy lực hoặc cơ khí đơn giản thường được sử dụng vì mục đích này không?"
+   }
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "giu",
+   "lyDo": "Chép đúng câu (a); 84.19 có trong trích."
+  },
+  {
+   "index": "phanBiet[5]",
+   "hanhDong": "giu",
+   "lyDo": "Chép đúng câu (b); 84.22 có trong trích."
+  },
+  {
+   "index": "phanBiet[6]",
+   "hanhDong": "giu",
+   "lyDo": "Chép đúng câu (c); 84.45 có trong trích."
+  },
+  {
+   "index": "phanBiet[7]",
+   "hanhDong": "giu",
+   "lyDo": "Chép đúng câu (d); 84.52 có trong trích."
+  },
+  {
+   "index": "phanBiet[8]",
+   "hanhDong": "giu",
+   "lyDo": "Chép đúng câu (e), giữ cả hai nhánh; 84.72 có trong trích."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn dòng 46; quyTac/tomTat chỉ thay 'nhóm này' bằng 8441, không thêm ý riêng."
+  }
+ ]
+}

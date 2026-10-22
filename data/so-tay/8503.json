@@ -1,0 +1,98 @@
+{
+ "nhom": "8503",
+ "phamVi": {
+  "text": "Bộ phận chỉ dùng hoặc chủ yếu dùng cho máy móc thuộc nhóm 85.01 hoặc 85.02.",
+  "nguon": "wco.850300",
+  "trich": "850300 Electric motors and generators; parts suitable for use solely or principally with the machines of heading no. 8501 or 8502",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "85030020",
+   "dieuKien": "Bộ phận của máy phát điện (kể cả tổ máy phát điện) thuộc nhóm 85.01 hoặc 85.02, công suất từ 12.500 kVA trở lên",
+   "nguon": "tax.85030020",
+   "trich": "85030020 - Bộ phận của máy phát điện (kể cả tổ máy phát điện) thuộc nhóm 85.01 hoặc 85.02, công suất từ 12.500 kVA trở lên",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "85030090",
+   "dieuKien": "Loại khác (dòng cha 850300 không có tên trong nguồn — đối chiếu biểu thuê)",
+   "nguon": "tax.85030090",
+   "trich": "85030090 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8503",
+    "truAnhEm": [
+     "85030020"
+    ],
+    "toTienCoTen": "8503",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "boPhan": {
+  "quyTac": "Bộ phận của máy móc nêu tại hai nhóm trước được phân loại vào nhóm này theo các quy tắc chung về việc phân loại các bộ phận.",
+  "tomTat": "Bộ phận của máy móc nêu tại hai nhóm trước được xếp vào nhóm này theo các quy tắc chung về phân loại các bộ phận.",
+  "nguon": "nhom8503.nhom",
+  "trich": "Theo các quy tắc chung về việc phân loại các bộ phận (xem chú giải chi tiết tổng quát phần XVI), nhóm này bao gồm các bộ phận của máy móc nêu tại hai nhóm trước.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8503",
+    "cap": 4,
+    "cha": "85",
+    "tenVi": "Các bộ phận chỉ dùng hoặc chủ yếu dùng cho các loại máy thuộc nhóm 85.01 hoặc 85.02.",
+    "tenEn": "Electric motors and generators; parts suitable for use solely or principally with the machines of heading no. 8501 or 8502",
+    "suyRa": false
+   },
+   {
+    "id": "85030020",
+    "cap": 8,
+    "cha": "8503",
+    "tenVi": "Bộ phận của máy phát điện (kể cả tổ máy phát điện) thuộc nhóm 85.01 hoặc 85.02, công suất từ 12.500 kVA trở lên",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "85030090",
+    "cap": 8,
+    "cha": "8503",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom8503.nhom",
+  "tax.85030020",
+  "tax.85030090",
+  "wco.850300"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-22T15:52:57.765Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 4,
+  "dat": 4,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

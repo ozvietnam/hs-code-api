@@ -1,0 +1,27 @@
+{
+ "nhom": "7610",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T22:45:00+07:00",
+ "daKiem": 3,
+ "soat": 3,
+ "xoa": 0,
+ "sua": 0,
+ "ghiChu": "Audit 7610 (1 phamVi + 1 loaiTru + 1 phanBiet = 3 mục; dieuKienVao rỗng, boPhan null). Máy đã xác nhận 10/10 câu trích khớp nguồn TUYỆT ĐỐI (strict-trich: 0 sai, 0 trích >300 ký tự) — em kiểm lại từng câu với tmp/so-tay/nguon/7610.txt. phamVi chép đúng câu mở nhóm (nguồn dòng 4), chỉ diễn lại vì trí tự; nghĩa không đổi. loaiTru (c) → 9406: số nhóm đích 94.06 CÓ THẬT trong câu trích, đúng luật 3. hai mục loại trừ còn lại của nguồn là (a) 'bộ phận của sản phẩm của Chương 84 tới 88' và (b) 'kết cấu nổi của Chương 89' — chỉ nêu CHƯƠNG chứ không nêu nhóm đích, người soạn BỎ là đúng luật 3 (không tính Chương N là loại trừ đích danh). phanBiet: hoi 'Hàng là nhà lắp ghép không?' không nhắc mã ✓; chiều nhánh đúng (Có → 9406, Không → 7610) vì câu nằm dưới 'Nhóm này không bao gồm:'. Trích chỉ lấy mục (c) chưa kèm câu dẫn 'Nhóm này không bao gồm:' — em đã đối chiếu quy ước đã qua soát ở lô trước: sổ tay có sẵn 711 loaiTru và 171 phanBiet trích bằng nhãn mục (a)/(b)/... không kèm câu dẫn, nên giữ nguyên cho nhất quán, KHÔNG sửa. dieuKienVao rỗng là ĐÚNG: nguồn không có câu nào là điều kiện VÀO nhóm 4 số — hai đoạn 'đôi khi' (gắn kết bằng nhựa tổng hợp; nhôm thay sắt/thép) là câu tuỳ biến, không phải điều kiện bắt buộc (luật máy dieu-kien-chi-cho-phep), còn khái niệm nhôm/hợp kim nhôm ở chú giải chương và Phần XV là điều kiện cấp chương. boPhan null là đúng: nhóm này không có quy tắc bộ phận riêng (chỉ dẫn sang chú giải 73.08). GHI NHẬN NGOÀI PHẠM VI SỬA: chữ viết sai 'đối chiếu biểu thuề' trong ghi chú của dong8 'Loại khác' (76101090, 76109099) — lỗi có sẵn ở 7 tệp sổ tay đã gộp, không do lô 017, không sửa để khỏi nhiễu diff. tieuChi6 + dong8: 5/5 dòng biểu thuế có trong nguồn đều được ghi, dòng 76109030 lấy điều kiện từ SEN theo luật 6.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn đúng dòng 4 nguồn; nghĩa phạm vi không vượt quá nguồn."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Số nhóm đích 94.06 có thật trong câu trích; nguồn nêu đích danh, không phải Chương."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều nhánh Có → 9406 / Không → 7610; hoi không nhắc mã; mã 9406 có trong câu trích."
+  }
+ ]
+}
