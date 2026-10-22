@@ -1,0 +1,22 @@
+{
+ "nhom": "8503",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T22:45:00+07:00",
+ "daKiem": 2,
+ "soat": 2,
+ "xoa": 0,
+ "sua": 0,
+ "ghiChu": "Audit 8503 (1 phamVi + 1 boPhan = 2 mục; dieuKienVao/loaiTru/phanBiet/tieuChi6 rỗng). Máy xác nhận 4/4 câu trích khớp nguồn TUYỆT ĐỐI; em đọc lại từng câu với tmp/so-tay/nguon/8503.txt (đọc HẾT mục [nhom8503.nhom] và chú giải Chương 85 + Phần XV). phamVi: trích '850300 Electric motors and generators; parts suitable for use solely or principally with the machines of heading no. 8501 or 8502' nguyên văn; text 'Bộ phận chỉ dùng hoặc chủ yếu dùng cho máy móc thuộc nhóm 85.01 hoặc 85.02' dịch đúng câu 'parts suitable for use solely or principally with the machines of heading no. 8501 or 8502', KHÔNG thêm ý riêng. Đoạn 'Electric motors and generators;' ở đầu chuỗi WCO là tiền tố dữ liệu của nguồn, text bỏ qua là đúng vì tiêu đề nhóm 85.03 về bộ phận. boPhan: trích nguyên văn câu 'Theo các quy tắc chung về việc phân loại các bộ phận (xem chú giải chi tiết tổng quát phần XVI), nhóm này bao gồm các bộ phận của máy móc nêu tại hai nhóm trước.' — đây ĐÚNG là quy tắc bộ phận của nhóm, đặt vào boPhan là chỗ đúng; quyTac và tomTat nói cùng một điều, không thêm hiểu biết riêng. GHI NHẬN THIẾU (không tự thêm): câu 'Trong số các bộ phận nêu trên, có thể kể ra:' kèm ví dụ (1) khung và hộp, sta-to, rô-to, các vành góp... (2) lá thép kỹ thuật điện trừ hình vuông/hành chữ nhật — người soạn không đưa vào tomTat; tomTat chỉ tóm tắt quy tắc nên không sai, nhưng ví dụ thành phần bộ phận sẽ hữu ích cho người khai. Không sửa vì nằm ngoài 5 khối em được giao soát và câu đó cũng không sai. dieuKienVao rỗng là ĐÚNG: nguồn [nhom8503.nhom] chỉ có câu BAO HỜM ('nhóm này bao gồm các bộ phận...'), không phải điều kiện vào nhóm; vị từ 'chỉ dùng hoặc chủ yếu' chỉ nằm trong tên wco.850300 mà luật 27 cấm lấy wco làm nguồn dieuKienVao. loaiTru và phanBiet rỗng là ĐÚNG: nhóm không có danh sách loại trừ; mà câu chú giải chỉ nói 'hai nhóm trước' chứ KHÔNG nêu số 85.01/85.02, nên không dựng được phanBiet trỏ 2 nhóm đó (luật 4 — mã ngoài nhóm phải có trong câu trích). tieuChi6 rỗng là đúng vì 85.03 ở VN không có phân nhóm 6 số (biểu thuế chỉ có dòng 8 số). dong8: 2/2 dòng có trong nguồn; dòng 'Loại khác' ghi trung thực 'dòng cha 850300 không có tên trong nguồn — đối chiếu biểu thuề' thay vì đoán, đúng luật 6.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn wco.850300; text dịch đúng, không thêm nội dung ngoài nguồn."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Câu chú giải nhóm về quy tắc bộ phận — đúng chỗ; quyTac/tomTat diễn đạt lại đúng câu trích."
+  }
+ ]
+}

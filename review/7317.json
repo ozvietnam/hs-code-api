@@ -1,0 +1,70 @@
+{
+ "nhom": "7317",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T23:00:00+07:00",
+ "daKiem": 11,
+ "soat": 11,
+ "xoa": 2,
+ "sua": 1,
+ "ghiChu": "Audit 7317 (1 phamVi + 5 loaiTru + 5 phanBiet = 11 mục; dieuKienVao rỗng, boPhan null). Máy xác nhận 15/15 câu trích khớp nguồn TUYỆT ĐỐI; em đọc HẾT [nhom7317.nhom] (dòng 3-50) cùng chú giải Chương 73 để đối chiếu. XOÁ 2 — NGUỒN TỰ MÂU THUẪN VỀ 'ĐINH MÓC', áp đúng luật 'nguồn mâu thuẫn (bao hồm X ở một chỗ, loại trừ X ở chỗ khác) → bỏ cả hai phía'. Bằng chứng: (i) dòng 22 bao hồm 'đinh móc (cách điện hoặc không cách điện) được mài nhọn cả hai đầu... và các đinh móc khác không được biểu hiện ở dạng dải'; (ii) dòng 32 mục (B)(3) bao hồm 'Đinh móc và đinh vành, là những loại có thể được dập từ kim loại tấm hoặc được rèn'; (iii) dòng 38 CHỐT lại: 'Tất cả những hàng hoá đề cập ở trên VẪN Ở TRONG NHÓM NÀY' — tức chủ động giữ lại cả đinh móc nói ở (i) và (ii); (iv) nhưng dòng 40-42 lại mở 'Nhóm này không bao gồm: (a) Đinh móc, đinh vòng, vít dẫn động mài nhọn với đầu xẻ rãnh và vít dẫn động không được mài nhọn (nhóm 73.18).' Cùng một từ 'đinh móc' vừa được giữ vừa bị loại, và nguồn KHÔNG nêu tiêu chí phân biệt. Vì vậy em xoá cả loaiTru[0] lẫn phanBiet[0] thay vì tự thu hẹp — thà không có mục còn hơn mục khẳng định sai. GHI NHẬN CHO QUẢN LÝ: (1) phần KHÔNG bị mâu thuẫn trong cùng câu loại trừ (a) là 'đinh vòng, vít dẫn động mài nhọn với đầu xẻ rãnh và vít dẫn động không được mài nhọn' — em KHÔNG tự tách riêng vì nó nằm chung một mục với 'đinh móc' đã mâu thuẫn; nếu muốn có thì phải sửa nguồn chú giải trước. (2) Nhóm 7318 đã gộp (data/so-tay/7318.json) có loaiTru[0] ngược chiều 'Đinh vít được mài nhọn với đầu không xẻ rãnh → 7317' và KHÔNG có phanBiet nào khẳng định đinh móc thuộc 7318, nên xoá bên 7317 KHÔNG để lại lỗ hổng với 7318. (3) Đây là mâu thuẫn KỆ SÁCH cần sửa riêng, không sửa được trong sổ tay. SỬA 1 — phanBiet[1].hoi đã bỏ mất vế 'có hoặc không có': nguồn (b) loại trừ 'Thiết bị bảo vệ giày, CÓ HOẶC KHÔNG CÓ các mũi nhọn gắn vào' tức CẢ HAI loại, còn hoi viết 'thiết bị bảo vệ giày CÓ mũi nhọn' — thêm một điều kiện không có trong trích, khiến loại không mũi nhọn (cũng bị loại theo nguồn) bị đẩy nhầm về 7317. loaiTru[1].dieuKien của cùng nhóm đã viết đúng 'có hoặc không có' nên em chỉ sửa hoi cho khớp, KHÔNG đụng câu trích. Còn lại giữ nguyên: phamVi lược bằng '…' qua khối phương pháp sản xuất (1)-(6) và các kiểu đinh (B)(1)-(5) — phần bị lược là liệt kê bao hồm, không có ngoại lệ; riêng ngoại lệ 'trừ đồng hoặc các hợp kim của đồng' CÓ nằm trong trích ✓; loaiTru[2] giữ đúng chữ 'hoặc' của cặp 'bằng đồng hoặc bằng hợp kim đồng' (không tách thành AND) và giữ dấu '...' có sẵn trong nguồn; loaiTru[3] không mâu thuẫn vì dòng 6 đã tự khoét '(trừ các sản phẩm thuộc nhóm 83.05)' ngay trong mục bao hồm; loaiTru[4] khớp với loaiTru[2] của 7318 đã gộp (đinh gỗ → 92.09); phanBiet[2] giữ 'hoặc', phanBiet[3] và [4] chép đúng câu nguồn; tất cả hoi không nhắc mã. dong8: 4/4 dòng tax.* trong nguồn đều được ghi.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn hai đoạn; đoạn lược chỉ là liệt kê bao hồm, ngoại lệ 'trừ đồng hoặc các hợp kim của đồng' vẫn nằm trong trích."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "xoa",
+   "lyDo": "Nguồn mâu thuẫn: dòng 38 nói 'Tất cả những hàng hoá đề cập ở trên vẫn ở trong nhóm này' giữ lại 'đinh móc' (dòng 22 và (B)(3) dòng 32), rồi dòng 42 lại loại trừ 'Đinh móc' sang 73.18, không nêu tiêu chí phân biệt. Luật nguồn mâu thuẫn → bỏ cả hai phía."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn (b); số 73.26 có trong câu; không mâu thuẫn với phần bao hồm; dieuKien giữ đúng 'có hoặc không có mũi nhọn'."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Số 74.15 có trong trích; giữ đúng phép 'hoặc' của cặp đồng/hợp kim đồng; khớp với ngoại lệ 'trừ đồng' ở dòng 38."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Số 83.05 có trong trích; không mâu thuẫn — dòng 6 đã khoét sẵn '(trừ các sản phẩm thuộc nhóm 83.05)'."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Số 92.09 có trong trích; khớp với loaiTru[2] đã gộp của nhóm 7318."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "hoi bỏ mất vế 'có hoặc không có' có trong nguồn, biến điều kiện thành hẹp hơn: loại không có mũi nhọn vốn cũng bị nguồn loại sẽ bị đẩy nhầm về 7317. Sửa cho khớp loaiTru[1].dieuKien; KHÔNG sửa câu trích.",
+   "sua": {
+    "hoi": "Hàng là thiết bị bảo vệ giày (có hoặc không có các mũi nhọn gắn vào), các móc tranh vẽ với các đinh cố định, hoặc móc đai không?"
+   }
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Chép đúng câu (c); giữ phép 'hoặc'; mã 74.15 có trong trích."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Chép đúng câu (d); mã 83.05 có trong trích."
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "giu",
+   "lyDo": "Chép đúng câu (e); mã 92.09 có trong trích."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "xoa",
+   "lyDo": "Cùng mâu thuẫn nguồn về 'đinh móc' với loaiTru[0] — bỏ cả hai phía. Đặt XOÁ này CUỐI danh sách để các mục 'sua' phía trên không bị lệch index sau khi mảng bị rút."
+  }
+ ]
+}
