@@ -1045,3 +1045,66 @@ Nộp đúng 3 loại: 6 tệp `data/so-tay/<nhom>.json` + `data/so-tay/bao-cao/
    - `nhom5608.nhom` bắt đầu giữa chừng (thiếu tiêu đề nhóm + mục (1)).
    - `560122`, `560819`, `570329`, `570339`, `570390` chỉ có tên WCO tiếng Anh, không có câu
      tiếng Việt nào để điền `cay.tenDien` → cây để trống, `check-cay` vẫn xanh.
+
+
+# TIEN-TRINH — lô 026, PHIÊN SOÁT ĐỘC LẬP (bổ sung, không thay phần trên)
+
+- **Ngày:** 2026-10-23. **Căn cứ:** `brief-st-soat-lo026.md` + mục 4 `docs/giao-viec/so-tay-giao-ngoai.md`.
+- **Vai:** người soát độc lập (không phải `dev-zcode-mm`); KHÔNG soạn lại, KHÔNG gộp.
+
+## Cách làm
+
+- Xuất lại nguồn **ĐẦY ĐỦ** từ `lib/so-tay.js#sourcesFor` (`tmp/so-tay/nguon/*.txt` bị cắt Phần XI
+  còn 25.000 ký tự) → `tmp/so-tay/nguon-full/`; đối chiếu từng mục với nguồn gốc, không tin bản cắt.
+- Soát từng mục trong 5 khối `phamVi`/`boPhan`/`dieuKienVao`/`loaiTru`/`phanBiet`:
+  **47 mục** (5601: 13, 5608: 4, 5703: 5, 6106: 11, 6111: 5, 6114: 9).
+- So nguyên văn bằng script riêng (không dùng `squash`): **0/109 mục còn lệch ký tự** sau khi sửa
+  (khác biệt chỉ còn là xuống dòng của nguồn).
+- `tieuChi6`/`dong8` ngoài phạm vi soát nghĩa; chỉ sửa 2 lỗi ký tự phát hiện khi đối chiếu nguyên văn,
+  **không** đổi `nguonLoai` của chúng.
+
+## Kết quả: 47 mục → giữ 35 · sửa 9 · xoá 3
+
+Hồ sơ: `review/<nhom>.json` (ghi đủ cả mục giữ) + `scripts/apply-review-lo026.mjs`.
+
+**XOÁ 3**
+1. `5608 phanBiet[0]` — câu nguồn Việt "…mà tại đó chúng được làm bằng dây xe…" mơ hồ, không xác
+   định được chiều Có/Không; ánh xạ cũ Có→5607 sai (5607 là bản thân dây/chão, không phải lưới thắt nút).
+2. `6106 loaiTru[0]` — đích 61.04/61.10 nằm dưới câu dẫn "thường được phân loại như sau" và dùng
+   "như áo jacket…/áo cardigan…"; trích đã cắt né câu rào "thường" → không phải loại trừ dứt khoát.
+3. `6106 loaiTru[1]` — cùng lý do; đích 61.02/61.10 chỉ là ví dụ điển hình.
+
+**SỬA 9**
+- `5601 loaiTru[1]`: bỏ "nước hoa, mỹ phẩm" khỏi `dieuKien` (đích Chương 33 không có trong `sangNhom`).
+- `5601 loaiTru[8]`: sửa nhãn đảo nghĩa "trừ": hàng sang 63.07 là loại **được bao phủ hoàn toàn bằng vải dệt**.
+- `5608 phamVi`: "lưới khinh khí cầu" → "lưới của khinh khí cầu có điều khiển" (nguồn có định ngữ).
+- `5703 dieuKienVao[0]`: `fact` cũ bỏ nhánh "sản phẩm có đặc tính trải sàn dùng cho mục đích khác"
+  (cùng họ lỗi 5705); nới trích + đổi `fact` giữ cả hai nhánh.
+- `5703 phanBiet[0]`: trích cắt ngay trước "giúp tạo cho chúng…", biến "ví dụ" thành tiêu chí;
+  nới trích + giữ chữ "ví dụ" trong `hoi`.
+- `6106 boPhan`: kéo câu "Tuy nhiên, các bộ phận được móc… nhóm 61.17" vào trích + `quyTac`/`tomTat`
+  (ngoại lệ ngay sau câu trích từng bị cắt mất).
+- `6106 dieuKienVao[2]`: nới trích thêm câu "Áo blouse… có thể không có tay áo" để `fact`
+  "có thể có tay áo" có căn cứ.
+- `6111 boPhan`: sửa nhãn biến "hoặc" liệt kê cách gắn đế thành điều kiện thay thế (có thể cho giày
+  CÓ đế ngoài dán keo lọt nhóm).
+- `6114 boPhan`: thêm lại định ngữ "dùng cho thể thao, khiêu vũ hoặc thể dục" vào `tomTat`.
+
+**2 lỗi ký tự ngoài 5 khối (chỉ sửa `trich`, giữ `nguonLoai=AI_DA_KIEM`)**
+- `5601 dong8` 56012900: "- - -" → "- -" (nguồn 2 gạch).
+- `5703 dong8` 57039099: "- -" → "- - -" (nguồn 3 gạch).
+
+## Nạp lại + kiểm
+
+- `check-so-tay --raw` 6 nhóm: **109/109 đạt**, 0 mục hỏng.
+- `build-so-tay --tu-tep --force --nguoi-soan=dev-zcode-mm --bao-cao=…/lo-026.json`:
+  **109/109 (100 %)**, `nhomLoi: []`.
+- `TARGET=data apply-review-lo026`: **44 mục giữ lại đổi `AI_DA_KIEM` → `NGUOI_DUYET`**
+  (47 trừ 3 mục xoá); `tieuChi6`/`dong8`/`cay` giữ nguyên nhãn.
+- `npm run so-tay:check`: **280 nhóm, 8769 mục, 0 mục không kiểm được nguồn**
+  (giảm 3 so với 8772 do xoá 3 mục).
+- `npm test`: **`=== ALL TESTS PASSED ===`**.
+- Strict verbatim trên 109 mục: **0 lệch ký tự**.
+
+**Commit:** nhánh `so-tay/lo-026`, PR **#406**, **KHÔNG merge**. Việc còn lại của người quản lý:
+đổi `so-tay-lo.csv` dòng 026 sang `trang_thai=xong` + `pr=406` rồi merge nếu đạt.
