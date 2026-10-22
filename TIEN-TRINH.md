@@ -758,3 +758,85 @@ Commit `data/so-tay/{4421,4812,4908,4911,5209,5906}.json` + `data/so-tay/bao-cao
 ### Bước 6 — mở PR (KHÔNG merge)
 `gh pr create` → **PR #400** https://github.com/ozvietnam/hs-code-api/pull/400 (base `main`, head `so-tay/lo-019`, trạng thái OPEN).
 Dòng 019 trong `so-tay-lo.csv` để `nguoi_lam=dev-zcode-mm`, `trang_thai=dang-lam`; cột `pr` để trống — theo mục 4 giao việc, người duyệt điền `trang_thai=xong` + `pr` **sau khi gộp**.
+
+---
+
+## 2026-10-22 — SOÁT ĐỘC LẬP lô 019 (PR #400), người soát ≠ người soạn
+
+Phiên này là **người soát**, không phải người soạn. Đọc lại toàn bộ 187 mục của 6 nhóm
+(4421, 4812, 4908, 4911, 5209, 5906) cùng nguồn, theo mục 4 `docs/giao-viec/so-tay-giao-ngoai.md`.
+
+### Công cụ soát (mới, đều để trong `tmp/` — gitignored)
+- `tmp/so-tay/soat.mjs` — in từng mục kèm câu trích + **ngữ cảnh trước/sau** lấy từ **nguồn thật**
+  (`lib/so-tay.js sourcesFor`), để thấy ngay câu trích có bị cắt né câu rào, và câu ngay sau có
+  phải ngoại lệ không.
+- `tmp/so-tay/soat-diem-lech.mjs` — tìm **điểm lệch ký tự** (không nén) của từng câu trích.
+- `tmp/so-tay/soat-luoi.mjs` — soi 2 lỗi kinh điển máy không bắt: dấu lược `…` nuốt ngoại lệ, và
+  mã đích chỉ được nhắc trong "ví dụ".
+- `tmp/so-tay/soat-cau-sau.mjs` — phát hiện câu trích **dừng ngay trước** câu rào/ngoại lệ.
+- `tmp/so-tay/viet-review-lo019.mjs` — **sinh** `review/<nhom>.json`; mọi câu trích sửa được CẮT
+  THẲNG từ nguồn thật nên không thể gõ tay sai.
+- `scripts/apply-review-lo019.mjs` — áp `review/` vào bản nháp (chép từ `apply-review-lo014.mjs`).
+- `tmp/so-tay/khoi-phuc-ban-nhap.mjs` — phục hồi bản nháp gốc khi đã áp rồi cần làm lại (xem "Sự cố").
+- `tmp/so-tay/diff-voi-pre-review.mjs` — chứng minh lần nạp chỉ đổi đúng những gì soát quyết định.
+
+### Kết quả: soát 187/187 → **giữ 169 · sửa 15 · xoá 3** (184 mục còn lại, đạt 100 %)
+
+**XOÁ 3** (mục mờ má):
+1. `4421 loaiTru[4]` + `4421 phanBiet[3]` — mã 84.80 chỉ nêu trong "(**ví dụ**, các mô hình khuôn bằng
+   gỗ thuộc nhóm 84.80)"; đích danh của câu loại trừ là **Phần XVI**. Ghi thành đích danh thu hẹp
+   loại trừ cấp Phần xuống một ví dụ.
+2. `4911 phanBiet[2]` — câu hỏi "in ấn chữ/hình chỉ là thứ yếu?" quá rộng: 4 mã 39.18/39.19/48.14/48.21
+   chỉ thuộc **nhánh đầu** của câu loại trừ (b); nhánh "sản phẩm bằng giấy đã in của Chương 48" không có
+   mã đích (chú giải còn dẫn 48.17, 48.20) → hỏi vậy sẽ dẫn nhầm sổ vở 48.17 sang 48.14.
+
+**SỬA 15:**
+- `4421 phamVi` — dấu lược `…` cắt **đúng ngay trước** nhánh ngoại lệ thứ hai "và trừ những mặt hàng
+  được phân loại nơi khác không tính đến chất liệu cấu tạo của chúng" → sửa trích lại trọn hai câu.
+- `4421 loaiTru[3]` — mục (10) thuộc danh sách "Nhóm này bao gồm", chỉ có ngoại lệ "trừ loại thuộc 44.18";
+  `dieuKien` cũ mô tả phần **được bao hàm** nên đọc ngược thành loại trừ → sửa hướng.
+- `4911 loaiTru[2]` — bỏ nhánh không có mã đích khỏi `dieuKien`.
+- `4911 dong8[6]` (49119199) — sai phân nhóm: ghi "phần còn lại của phân nhóm **4911.99**" trong khi dòng
+  này thuộc **4911.91**; sửa cả `dieuKien`, `nguon`, `trich`.
+- `5209 dong8` × 11 — câu trích dòng biểu thuế bị **bỏ dấu "-" cấp độ** (nguồn `52091200 - - Vải vân
+  chéo…`, trích `52091200 - Vải vân chéo…`). `check-so-tay` nén mọi ký tự phiên chữ nên không bắt
+  được; chỉ so thẳng `sourcesFor` mới thấy. Đã vá cả 11 bằng câu cắt từ nguồn thật.
+
+**GIỮ — đã kiểm chứng cụ thể:**
+- `4908`: câu "48.09 hoặc 48.16 **tuỳ theo từng trường hợp**" KHÔNG ghi thành loaiTru ✓.
+- `5209`: 3 dòng batik ghi "chỉ đúng tên dòng" là ĐÚNG — đã mở `phan52.phan` bản đầy đủ 46.130 ký tự,
+  xác nhận KHÔNG có câu định nghĩa batik truyền thống (chỉ có "in hoa batic" trong định nghĩa vải đã in).
+- `5906`: giữ đủ "hoặc" của (b) 40.05/40.08; (e) "Chương 57 hoặc 59.04 **tùy từng trường hợp**" và (h)
+  "thường là các Chương 61-63" KHÔNG ghi loaiTru ✓.
+- `4421` d/e/f/h/(ij)/l và `4911` (f)(g): chỉ nêu Chương/Phần → không ghi loaiTru (đúng luật 3).
+- Quét toàn lô: **0** câu trích nào dừng ngay trước câu rào; 7 câu dài 300–600 ký tự đều là cây đo
+  nguyên văn không rút được (1,5 % câu trích đã gộp cũng vượt 300) → giữ.
+
+**Ghi nhận thiếu sót (không sửa — người soát không được thêm nội dung):** `5209 loaiTru` rỗng dù
+`phan52.phan` có loại trừ cấp Phần XI có mã đích danh: (l) nhóm 42.01/42.02, (q) vật liệu dệt phủ bột
+mài 68.05 + sợi carbon 68.15, (b) tóc 05.01/67.03/67.04 trừ vải lọc 59.11. Cần người soạn bổ sung hoặc
+người duyệt chấp nhận để trống.
+
+### Sự cố trong lúc soát (đã xử lý, ghi lại để không lặp)
+Bản nháp ở `tmp/` mà gitignore. Lần áp đầu, công cụ của tôi gọi `cat(src, mã, '')` mà `cat()` quy ước
+"không có `den` → trả về chính `tu`", nên **11 câu trích 5209 bị cắt cụt còn đúng mã dòng** — và
+`check-so-tay` vẫn XANH vì mã dòng vẫn là chuỗi con của nguồn. Đã phát hiện khi soi lại dữ liệu đã nạp.
+Cách sửa: dựng lại bản nháp gốc từ `git show 8bff2ae:data/so-tay/<nhom>.json` (bỏ trường máy tự
+thêm), sinh lại `review/`, áp lại từ đầu, rồi **đối chiếu diff** với `8bff2ae`: 4812/4908/5906 =
+**0 khác biệt nội dung**, 4421/4911/5209 đúng bằng danh sách sửa/xoá ở trên.
+
+### Kiểm sau khi áp
+```
+node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw → 6 nhóm, 184 mục, 0 mục không kiểm được nguồn
+node scripts/build-so-tay.mjs --tu-tep=tmp/so-tay/raw --force --bao-cao=…/lo-019.json
+   → mục đạt 184/184 (100 %), nhomLoi: []
+npm run so-tay:check → 244 nhóm, 7987 mục, 0 mục không kiểm được nguồn
+node scripts/check-cay.mjs --nhom=… --chi-tiet → 6 nhóm đủ cây, 0 lỗi lệch cây
+npm test → ALL TESTS PASSED
+```
+`nguonLoai` của **47 mục đã soát** (phamVi/boPhan/dieuKienVao/loaiTru/phanBiet) đổi `AI_DA_KIEM` →
+`NGUOI_DUYET` (luật 11 — chỉ người soát độc lập được đổi). `tieuChi6`/`dong8`/`cay` giữ nguyên nhãn.
+
+### Bàn giao
+Commit trên chính nhánh `so-tay/lo-019`, push, cập nhật body PR #400. **KHÔNG merge.**
+Dòng 019 của `so-tay-lo.csv` vẫn `trang_thai=dang-lam`, cột `pr` để trống — người duyệt điền sau khi gộp.
