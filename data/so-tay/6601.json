@@ -1,0 +1,160 @@
+{
+ "nhom": "6601",
+ "phamVi": {
+  "text": "Ô, dù che và gậy chống đủ các loại, không phụ thuộc chất liệu các thành phần cấu thành bằng bất kỳ nguyên liệu nào.",
+  "nguon": "nhom6601.nhom",
+  "trich": "… nhóm này gồm các loại ô, dù che và gậy chống đủ các loại … không phụ thuộc chất liệu các thành phần cấu thành (kể cả các bộ phận và đồ trang trí lắp vào) bằng bất kỳ nguyên liệu nào.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Các loại lều trại trên bãi biển, không mang tính chất như dù che hoặc dù che có thể làm thành lều",
+   "sangNhom": "6306",
+   "nguon": "nhom6601.nhom",
+   "trich": "(b) Các loại lều trại trên bãi biển, không mang tính chất như dù che hoặc dù che có thể làm thành lều (nhóm 63.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có mang tính chất như dù che hoặc dù che có thể làm thành lều không?",
+   "neuCo": "6601",
+   "neuKhong": "6306",
+   "nguon": "nhom6601.nhom",
+   "trich": "(b) Các loại lều trại trên bãi biển, không mang tính chất như dù che hoặc dù che có thể làm thành lều (nhóm 63.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "660110",
+   "fact": "de_gan_co_dinh_khong_phai_de_cam_tay",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom6601.nhom",
+   "trich": "Dù che được thiết kế không phải để cầm tay mà để gắn cố định (ví dụ, gắn lên mặt đất, gắn vào bàn hay giá đỡ) được coi là “dù che dùng trong vườn hoặc tương tự”.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "660191",
+   "fact": "co_can_telescopic",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.660191",
+   "trich": "660191 Umbrellas and sun umbrellas; having a telescopic shaft, (excluding garden or similar umbrellas)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "66011000",
+   "dieuKien": "Dù che trong vườn hoặc các loại ô, dù tương tự",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.66011000",
+   "trich": "66011000 - Dù che trong vườn hoặc các loại ô, dù tương tự",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "66019100",
+   "dieuKien": "Có cán kiểu ống lồng",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.66019100",
+   "trich": "66019100 - - Có cán kiểu ống lồng",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "66019900",
+   "dieuKien": "Loại khác",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "tax.66019900",
+   "trich": "66019900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "66019",
+    "truAnhEm": [
+     "66019100"
+    ],
+    "toTienCoTen": "6601",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "6601",
+    "cap": 4,
+    "cha": "66",
+    "tenVi": "Các loại ô và dù (kể cả ô có cán là ba toong, dù che trong vườn và các loại ô, dù tương tự).",
+    "tenEn": "Umbrellas; sun umbrellas (including walking stick umbrellas, garden umbrellas and similar umbrellas)",
+    "suyRa": false
+   },
+   {
+    "id": "66011000",
+    "cap": 8,
+    "cha": "6601",
+    "tenVi": "Dù che trong vườn hoặc các loại ô, dù tương tự",
+    "tenEn": "Umbrellas and sun umbrellas; garden or similar umbrellas",
+    "suyRa": false,
+    "laPhanNhom": "660110"
+   },
+   {
+    "id": "66019",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "6601",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "66019100",
+    "cap": 8,
+    "cha": "66019",
+    "tenVi": "Có cán kiểu ống lồng",
+    "tenEn": "Umbrellas and sun umbrellas; having a telescopic shaft, (excluding garden or similar umbrellas)",
+    "suyRa": false,
+    "laPhanNhom": "660191"
+   },
+   {
+    "id": "66019900",
+    "cap": 8,
+    "cha": "66019",
+    "tenVi": "Loại khác",
+    "tenEn": "Umbrellas and sun umbrellas; n.e.c. in heading no. 6601 (including walking stick umbrellas)",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "660199"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom6601.nhom",
+  "tax.66011000",
+  "tax.66019100",
+  "tax.66019900",
+  "wco.660191"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-22T04:36:49.494Z",
+  "ms": 88
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

@@ -1,0 +1,191 @@
+{
+ "nhom": "8212",
+ "phamVi": {
+  "text": "Dao cạo có lưỡi hở, dao cạo râu an toàn cùng các bộ phận và lưỡi của chúng, và dao cạo râu nhựa đã lắp kèm lưỡi dao.",
+  "nguon": "nhom8212.nhom",
+  "trich": "(1) Dao cạo có lưỡi hở, kể cả những lưỡi trình bày riêng (hoàn tất hoặc chưa) và các tay cầm làm bằng kim loại cơ bản trình bày riêng rẽ. … (2) Dao cạo râu an toàn và các bộ phận làm bằng kim loại cơ bản và lưỡi của chúng, đã hoàn tất hoặc chưa … (3) Dao cạo râu nhựa đã lắp kèm các lưỡi dao.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Dao cạo râu nhựa không có lưỡi",
+   "sangNhom": "3924",
+   "nguon": "nhom8212.nhom",
+   "trich": "(a) Dao cạo râu nhựa không có lưỡi (nhóm 39.24).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Dao cạo râu điện, lưỡi cắt và đĩa cắt của các loại dao cạo râu này",
+   "sangNhom": "8510",
+   "nguon": "nhom8212.nhom",
+   "trich": "(b) Dao cạo râu điện, lưỡi cắt và đĩa cắt của các loại dao cạo râu này (nhóm 85.10).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là dao cạo râu nhựa không có lưỡi dao không?",
+   "neuCo": "3924",
+   "neuKhong": "8212",
+   "nguon": "nhom8212.nhom",
+   "trich": "(a) Dao cạo râu nhựa không có lưỡi (nhóm 39.24).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là dao cạo râu dùng điện không?",
+   "neuCo": "8510",
+   "neuKhong": "8212",
+   "nguon": "nhom8212.nhom",
+   "trich": "(b) Dao cạo râu điện, lưỡi cắt và đĩa cắt của các loại dao cạo râu này (nhóm 85.10).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "821210",
+   "fact": "la_luoi_ho",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom8212.nhom",
+   "trich": "(1) Dao cạo có lưỡi hở, kể cả những lưỡi trình bày riêng (hoàn tất hoặc chưa) và các tay cầm làm bằng kim loại cơ bản trình bày riêng rẽ.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "821220",
+   "fact": "la_luoi_dao_cao_rau_an_toan",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom8212.nhom",
+   "trich": "(2) Dao cạo râu an toàn và các bộ phận làm bằng kim loại cơ bản và lưỡi của chúng, đã hoàn tất hoặc chưa",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "82121000",
+   "dieuKien": "Dao cạo",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.82121000",
+   "trich": "82121000 - Dao cạo",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "82122010",
+   "dieuKien": "Lưỡi dao cạo kép",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.82122010",
+   "trich": "82122010 - - Lưỡi dao cạo kép",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "82122090",
+   "dieuKien": "Loại khác",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "tax.82122090",
+   "trich": "82122090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "821220",
+    "truAnhEm": [
+     "82122010"
+    ],
+    "toTienCoTen": "821220",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "82129000",
+   "dieuKien": "Các bộ phận khác",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.82129000",
+   "trich": "82129000 - Các bộ phận khác",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8212",
+    "cap": 4,
+    "cha": "82",
+    "tenVi": "Dao cạo và lưỡi dao cạo (kể cả lưỡi dao cạo chưa hoàn thiện ở dạng dải).",
+    "tenEn": "Razors and razor blades; (including razor blade blanks in strips)",
+    "suyRa": false
+   },
+   {
+    "id": "82121000",
+    "cap": 8,
+    "cha": "8212",
+    "tenVi": "Dao cạo",
+    "tenEn": "Razors",
+    "suyRa": false,
+    "laPhanNhom": "821210"
+   },
+   {
+    "id": "821220",
+    "cap": 6,
+    "cha": "8212",
+    "tenVi": "Lưỡi dao cạo an toàn, kể cả lưỡi dao cạo chưa hoàn thiện ở dạng dải",
+    "tenEn": "Razors; safety razor blades, including razor blade blanks in strips",
+    "suyRa": false
+   },
+   {
+    "id": "82122010",
+    "cap": 8,
+    "cha": "821220",
+    "tenVi": "Lưỡi dao cạo kép",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "82122090",
+    "cap": 8,
+    "cha": "821220",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "82129000",
+    "cap": 8,
+    "cha": "8212",
+    "tenVi": "Các bộ phận khác",
+    "tenEn": "Razors; parts n.e.c. in heading no. 8212",
+    "suyRa": false,
+    "laPhanNhom": "821290"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom8212.nhom",
+  "tax.82121000",
+  "tax.82122010",
+  "tax.82122090",
+  "tax.82129000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-22T04:36:49.505Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 11,
+  "dat": 11,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
