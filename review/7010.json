@@ -1,0 +1,26 @@
+{
+  "nhom": "7010",
+  "nguoiSoat": "NGUOI_DUYET",
+  "luc": "2026-10-22T21:40:00+07:00",
+  "daKiem": 12,
+  "soat": 12,
+  "xoa": 0,
+  "sua": 2,
+  "soatPhu": { "tieuChi6": 3, "dong8": 6 },
+  "ghiChu": "SOÁT ĐỘC LẬP 7010 (1 phamVi + 2 dieuKienVao + 7 loaiTru + 2 phanBiet = 12 mục; đọc thêm 3 tieuChi6 + 6 dong8). KIỂM KÝ TỰ: cả 12 câu trích khớp NGUYÊN VĂN khối nguồn (kiểm bằng script tách mảnh theo '…' rồi so khớp ký tự, không bỏ dấu câu như check-so-tay) — kể cả dấu '…,' nguyên của nguồn ở loaiTru[6]. SỬA 2. (1) dieuKienVao[0] — câu nguồn là '...thuộc loại THƯỜNG dùng cho các mục đích thương mại để vận chuyển hoặc đóng...'; fact cũ 'dung_de_van_chuyen_hoac_dong_hang_trong_thuong_mai = true' phát biểu không định ngữ giới hạn, nói chắc hơn nguồn (đúng loại lỗi 'cắt trích né câu rào' mà máy không bắt — CAU_CHO_PHEP không có 'thường'). Đã đổi fact thành 'thuong_dung_cho_muc_dich_thuong_mai_de_van_chuyen_hoac_dong_hang' để giữ đúng định ngữ 'thường' của nguồn; ngoaiTru (loại trừ (c) 'sử dụng chủ yếu...') vốn đã đúng và giữ nguyên. (2) phanBiet[0] — hoi gốc 'Hàng có được sử dụng chủ yếu cho việc vận chuyển hoặc đóng hàng trong thương mại không?' thiếu loại hàng, nên nhánh không→7013 đúng cho MỌI hàng không dùng thương mại (sai với bình trưng bày 7020, bình sữa 7013...). Câu loại trừ (c) chỉ nói về 'bình đựng rượu, bộ đồ dùng để uống và các đồ chứa bằng thủy tinh khác LÀ ĐỒ THỦY TINH TRONG GIA DỤNG'. Đã sửa hoi thành 'Đồ chứa thủy tinh gia dụng có được dùng chủ yếu để vận chuyển hoặc đóng hàng trong thương mại không?' (96 ký tự, không bị clip 110 trong prompt) — phạm vi khớp đúng câu trích. GIỮ: phamVi giữ nguyên chữ 'thường' (không cắt rào); dieuKienVao[1] (ch70 'thủy tinh ở tất cả các dạng...') đúng; 7 loaiTru đều nêu đích danh, riêng (g) giữ đủ 3 đích 7013|9616|9617 (không tách một nhánh của 'hoặc'); 3 tieuChi6 lấy từ wco, không có số nào ngoài trích; 6 dong8 đủ, số 'trên 1 lít' có trong trích."
+  ,
+  "thayDoi": [
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "sua",
+      "lyDo": "Nguồn nói 'thường dùng cho các mục đích thương mại'; fact cũ phát biểu thành điều kiện tuyệt đối = true (nói chắc hơn nguồn). Giữ định ngữ giới hạn trong tên fact.",
+      "sua": { "fact": "thuong_dung_cho_muc_dich_thuong_mai_de_van_chuyen_hoac_dong_hang" }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "hoi thiếu loại hàng mà câu trích giới hạn (đồ thủy tinh TRONG GIA DỤNG), khiến nhánh không→7013 áp cho mọi hàng không dùng thương mại.",
+      "sua": { "hoi": "Đồ chứa thủy tinh gia dụng có được dùng chủ yếu để vận chuyển hoặc đóng hàng trong thương mại không?" }
+    }
+  ]
+}

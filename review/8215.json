@@ -1,0 +1,31 @@
+{
+  "nhom": "8215",
+  "nguoiSoat": "NGUOI_DUYET",
+  "luc": "2026-10-22T21:45:00+07:00",
+  "daKiem": 3,
+  "soat": 3,
+  "xoa": 1,
+  "sua": 2,
+  "soatPhu": { "tieuChi6": 8, "dong8": 4 },
+  "ghiChu": "SOÁT ĐỘC LẬP 8215 (1 phamVi + 1 loaiTru + 1 phanBiet = 3 mục bắt buộc; đọc thêm 8 tieuChi6 + 4 dong8). Câu trích khớp nguyên văn cả 15 mục. XOÁ 1 + SỬA 2 đều ở khối phụ — nhưng là lỗi thật, không phải chỉn chu. (1) XOÁ tieuChi6[6] (hs6 821599, fact 'khong_la_bo_tong_hop'): tiêu đề WCO 8462 không nói gì về 'bộ tổ hợp' — chỉ có 'other than plated with precious metal'. Cụm 'không phải bộ tổ hợp' là SUY TỪ CẤU TRÚC ANH EM (821591 mới là 'plated..., not in sets'), đúng loại người duyệt phải bắt mà máy không bắt. Giữ lại fact 'khong_ma_kim_loai_quy' (có trong trích). (2) SỬA phanBiet[0]: hoi gốc 'Dao có phải dao cắt tôm hùm hoặc dao xén lông gia cầm không?' ĐÃ MẤT ĐỊNH NGỮ GIỚI HẠN — câu nguồn loại trừ là 'dao cắt tôm hùm, hoặc dao xén lông gia cầm THUỘC THỂ LOẠI KÉO CẮT CÂY hoặc thể loại kéo hai lưỡi'; dao cắt tôm hùm không thuộc loại kéo đó vẫn ở 8215. loaiTru[0] đã giữ đúng định ngữ này, phanBiet thì không — sửa hoi cho khớp. (3) SỬA dong8[3] (82159900): dieuKien '...không phải bộ tổ hợp' cũng vượt quá câu trích (wco.821599) như trên; bỏ, chỉ giữ phần biểu thuế. GIỮ: phamVi (dấu '…' lược đúng mục (1)-(6) của danh sách liệt kê, không nuốt ngoại lệ; vẫn nêu đủ chức năng của nhóm — cùng cách làm với phamVi 6204 đã gộp); dieuKienVao rỗng là ĐÚNG — Chú giải 1 Phần XV về vật liệu lưỡi là 4 nhánh 'hoặc', tách nhánh sẽ thành điều kiện sai; loaiTru[0] giữ đủ 'thuộc thể loại kéo cắt cây hoặc thể loại kéo hai lưỡi' và giữ đủ 2 đích 8201|8213; 4 dong8 đủ, khớp đủ 4 dòng tax."
+  ,
+  "thayDoi": [
+    {
+      "index": "tieuChi6[6]",
+      "hanhDong": "xoa",
+      "lyDo": "fact 'khong_la_bo_tong_hop' cho 821599 không có trong câu trích wco.821599 ('other than plated with precious metal'); nội dung này suy từ tiêu đề anh em 821591 — cấm theo luật 'không suy từ cấu trúc anh em'."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "hoi bỏ mất định ngữ giới hạn của câu loại trừ ('thuộc thể loại kéo cắt cây hoặc thể loại kéo hai lưỡi'), nên nhánh có→8201|8213 áp cho MỌI dao cắt tôm hùm/dao xén lông gia cầm.",
+      "sua": { "hoi": "Dao có phải dao cắt tôm hùm hoặc dao xén lông gia cầm thuộc thể loại kéo cắt cây hoặc kéo hai lưỡi không?" }
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "sua",
+      "lyDo": "'không phải bộ tổ hợp' không có trong câu trích wco.821599; chỉ giữ phần 'không được mạ kim loại quý' + khuôn dạng 'phần còn lại' đúng quy ước dòng Loại khác.",
+      "sua": { "dieuKien": "Không được mạ kim loại quý — phần còn lại của tiêu đề 8215.99" }
+    }
+  ]
+}
