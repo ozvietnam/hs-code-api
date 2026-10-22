@@ -817,3 +817,9 @@ phải **đọc lại vài dòng 8 số bằng mắt** trước khi nạp.
 - `npm run so-tay:check`: 268 nhóm / 8.401 mục / 0 lỗi. `npm test`: ALL PASSED.
 - Sổ tay ghi: **6 phạm vi · 14 điều kiện vào · 12 loại trừ · 3 câu hỏi phân biệt · 22 tiêu chí 6 số ·
   54 dòng 8 số · 4 tên điền cây**.
+
+## B7 — Nộp
+
+- Commit `15be2cd`, đẩy nhánh `so-tay/lo-024`, mở **PR #405** — https://github.com/ozvietnam/hs-code-api/pull/405
+- **KHÔNG merge.** Chờ soát độc lập toàn bộ theo mục 4 giao việc.
+- Dòng CSV 024 để `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm` (người duyệt đổi `xong` + `pr` khi gộp).
