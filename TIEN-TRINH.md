@@ -570,3 +570,91 @@ Ngoài ra đã chạy thêm một kiểm tự động: **không `dieuKien`/`text
 4. Cân nhắc máy kiểm chéo `dieuKien` với `trich` (kiểu số chữ / mã nhắc) để bắt lỗi loại (a).
 5. Tự soát ngẫu nhiên ≥ 10 % phần còn lại (mục 4 giao việc).
 6. Khi đạt: `so-tay-lo.csv` dòng 015 → `trang_thai=xong` + `pr=<số>`, rồi merge.
+
+---
+
+# 2026-10-22 — SOÁT ĐỘC LẬP lô 015 (PR #397) — người soát: Claude (`dev-zcode-mm` / phiên quản lý)
+
+Không phải người soạn. Đã đọc **lại toàn bộ** `phamVi` / `boPhan` / `dieuKienVao` / `loaiTru` /
+`phanBiet` của 6 nhóm **cùng nguồn nguyên văn** `tmp/so-tay/nguon/<nhom>.txt` (đọc hết, không đọc
+bản nháp trước), rồi mới đối chiếu từng mục.
+
+## Số liệu
+
+| | |
+|---|---|
+| Mục đã soát tay | **73** (4418: 13 · 5511: 8 · 5602: 15 · 5609: 8 · 5804: 12 → còn 11 · 5806: 17) |
+| Kết quả | **xoá 1, sửa 5 mục (8 trường), giữ 67** |
+| Nhóm sạch | 4418 · 5511 · 5602 · 5609 (`review/<nhom>.json` = `[]`) |
+| Nhóm có lỗi | **5804** (xoá 1 / sửa 2) · **5806** (sửa 3) |
+| Sau khi sửa | 175/175 mục đạt máy; `check-so-tay.mjs --raw` 0 lỗi; `so-tay:check` 233 nhóm / 7.672 mục 0 lỗi; `npm test` xanh; `check-cay` 6/6 xanh |
+| Nhãn | 72 mục đã soát đổi `AI_DA_KIEM` → `NGUOI_DUYET` (đúng bằng số mục tôi đếm tay) |
+
+## 6 lỗi tìm được — máy KHÔNG bắt được (tất cả đều đã sửa/xoá)
+
+1. **`5804 loaiTru[0]` — gộp "A và B" thành một nhánh đích** (nghiêm trọng nhất).
+   Câu nguồn loại trừ hai vật hàng khác nhau: *"Vải dệt thưa thuộc các Chương 50 đến 55"* (loại vì
+   **ở lại** Chương 50–55) và *"vải dệt quấn thuộc nhóm 58.03"*. Bản nháp gộp chung điều kiện và trỏ
+   **cả hai → 5803**, tức bảo Hải quan rằng vải dệt thưa chương 50–55 thuộc 5803 — ngược hẳn nguồn.
+   Máy không bắt được vì trích nguyên văn và "58.03" có trong câu. **Đã sửa:** thu hẹp `dieuKien`
+   còn "vải dệt quấn". (Người soạn tự viết đúng ở `phanBiet[0]` cùng câu đó — chứng tỏ lỗi lệch chỗ.)
+2. **`5804 dieuKienVao[2]` — câu CHO PHÉP đặt thành điều kiện bắt buộc.**
+   *"Hàng ren **có thể** được làm bằng tay hoặc bằng máy."* → `_he-thong.txt` dòng 28 cấm rõ. Mẫu
+   `CAU_CHO_PHEP` của máy (`lib/so-tay.js:166`) không có "có thể" nên lọt. Thêm nữa mục này vô nghĩa
+   phân loại (mọi mặt hàng đều làm tay hoặc máy). **Đã xoá** — thông tin tay/máy còn nguyên ở
+   `tieuChi6[1..3]` (wco.580421/29/30).
+3. **`5804 phamVi` — phạm vi mất nửa nhóm.** Trích chỉ lấy Phần (I) (vải tuyn, lưới) và dừng trước
+   "(II) HÀNG REN"; nhưng 3/4 phân nhóm 6 số của 5804 (5804.21/.29/.30 — 8/11 dòng biểu thuế) là
+   **hàng ren**. Người đọc sẽ tưởng 5804 chỉ là vải lưới và loại nhầm ren (ren cổ áo, ren bảng…).
+   **Đã sửa:** trích cả hai phần, nguyên văn từ đúng khối `nhom5804.nhom`.
+4. **`5806 phamVi` — `text` thêm chữ không có trong trích.** `text` khẳng định nhóm gồm "(B) các dây
+   buộc" nhưng trích lấy từ `ch58.chuong` (Chú giải 5 Ch.58) và **không có câu nào** nói vế đó — nó đến
+   từ mục (B) của chính chú giải nhóm. **Đã sửa:** chuyển phạm vi về `nhom5806.nhom`, trích tiêu đề
+   (A) + câu định nghĩa khổ 30 cm + tiêu đề (B). Hệ quả: `nguonDung` của 5806 không còn `ch58.chuong`
+   (đúng sự thật — không mục nào còn trích khối đó).
+5. **`5806 phanBiet[1]` — mất một nhánh của "A hoặc B".** Nguồn: *"(nhóm 58.07 **hoặc** 58.08)"*;
+   bản nháp đặt `neuCo = "5807"`. Cùng câu đó ở `loaiTru[2]` đã ghi đúng `5807|5808`. **Đã sửa**
+   thành `5807|5808` (mẫu đã có sẵn: 104/511 `phanBiet` trong dữ liệu gộp dùng nhiều mã).
+6. **`5806 dieuKienVao[3]` — trích mồ côi.** Câu mở *"**Các sản phẩm nói trên** gồm có cả những ray
+   băng…"*: đọc riêng câu trích thì không biết "sản phẩm nói trên" là gì, nên fact không có chủ thể để áp.
+   **Đã sửa** bằng cách nối chủ thể bằng `…` với câu mở đoạc ngay trước (nguyên văn, cùng khối nguồn).
+
+## Những gì tôi cố ý KHÔNG đụng (đã cân, thấy đúng)
+
+* **`4418 dieuKienVao[0]` "cũng là tre hay vật liệu có tính chất gỗ"** (Chú giải 6 Ch.44) — có tiền lệ
+  nguyên văn trong dữ liệu gộp (`5208 la_vai_det_thoi`, `5309`, `3925 la_ong_mang_hoac_phu_kien`);
+  luật Chú giải cấp chương áp cho cả chương.
+* **`5511 loaiTru[0]` "tô ≤ 2 m → 5503 hoặc 5504"** — giữ đủ **cả hai** nhánh (`5503|5504`), đúng luật 3.
+* **`5602`/`5609`/`4418` loại trừ lấy từ Chú giải cấp chương** — mẫu đã chấp nhận (8201, 9607).
+* **`5804` bỏ qua loại trừ "sản phẩm làm từ hàng ren → nhìn chung ở Chương 62/63 (ví dụ 62.14, 62.17,
+  63.04)"** — câu có định ngữ rào *"nhìn chung"* và các số nhóm chỉ là **ví dụ** ⇒ đúng luật 3, bỏ có chủ ý.
+* **`5804 tieuChi6[0]` bỏ vế ngoặc "(other than fabrics of headings 60.02 to 60.06)"** của wco.580410,
+  và `580639` bỏ "n.e.c. in item no. 5806.3" — đây là quy ước chung của 511 `phanBiet`/tất cả `tieuChi6`
+  đã gộp; sửa riêng một nhóm sẽ gây lệch, nên **ghi nhận chứ không sửa**.
+
+## Kiểm bổ sung tôi chạy thêm (ngoài 3 tầng máy sẵn có)
+
+1. **In câu ngay SAU mỗi câu trích** (73 mục) để bắt "mất ngoại lệ ngay sau trích" — kết quả: không mục
+   nào bỏ mất ngoại lệ; riêng `5602 dieuKienVao[2]` và `5806 dieuKienVao[1]` **đã** kéo ngoại lệ vào
+   `ngoaiTru` ngay từ bản nháp (đúng cách chữa bài học lô 009).
+2. **Ngưỡng số có thật trong trích, không phải trùng chữ số trong mã HS** — 6 ngưỡng của lô
+   (5511 ×2 `85%`, 5806 `5%` + 3 dòng `12 mm`) đều khớp theo **ranh giới chữ số**. Lỗi
+   `soCoTrongTrich()` dùng `includes` (báo ở TIEN-TRINH người soạn) **không** xảy ra trong lô này.
+3. **Đối chiếu tên tiêu đề quốc gia** mà `dieuKien` của dòng 8 số ghi ("từ tơ tằm" của 5804101…):
+   hỏi `lib/hs-tree.js` → `5804101 = "Từ tơ tằm"` (`tenNguon: bieu-thue@2026.04.05`) — đúng sự thật,
+   người soạn ghi rõ "đối chiếu biểu thuế" là đúng luật.
+4. **Đủ dòng 8 số**: 4418 21/21 · 5511 5/5 · 5602 4/4 · 5609 1/1 · 5804 11/11 · 5806 19/19.
+
+## Kiến nghị bổ sung vào tài liệu (đề xuất, chưa tự sửa luật máy)
+
+1. `CAU_CHO_PHEP` (`lib/so-tay.js:166`) thêm mẫu **"có thể"** — hiện câu `… **có thể** được làm bằng tay
+   hoặc bằng máy` lọt vào `dieuKienVao` với `value=true` (đã xoá ở lô này).
+2. Thêm **kiểm chéo `dieuKien`/`text` với `trich`** (mã HS nhắc trong `text` mà câu trích không có;
+   hoặc ngược lại câu trích nói "A và B" mà `dieuKien` chỉ giữ một nhánh) — đây là lớp lỗi mà cả 3 tầng
+   máy đều im; 5/6 lỗi tôi tìm nằm ở đây.
+3. `soCoTrongTrich()` nên khớp **theo ranh giới chữ số** (`(^|\D)5(\D|$)`), không dùng `includes`
+   (xác nhận lại vấn đề người soạn đã báo; lô này chưa dính nhưng lô sau có thể dính).
+
+**Việc còn lại của người quản lý:** tự soát ngẫu nhiên ≥ 10 % phần còn lại (67 mục đã giữ), quyết
+định về `CAP.phan = 25.000` (vẫn treo, lô này là bằng chứng thứ hai), rồi mới gộp. PR #397 **để mở,
+KHÔNG merge**.
