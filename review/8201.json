@@ -1,0 +1,42 @@
+{
+  "nhom": "8201",
+  "nguoiSoat": "soat-doc-lap-011 (phiên Claude soát độc lập — KHÔNG phải người soạn dev-zcode-mm)",
+  "luc": "2026-10-22T15:40:00+07:00",
+  "soat": 25,
+  "daKiem": 25,
+  "xoa": 0,
+  "sua": 2,
+  "ghiChu": "Audit 8201: 1 phamVi + 1 dieuKienVao + 6 loaiTru + 2 phanBiet + 1 boPhan + 7 tieuChi6 + 7 dong8 = 25 mục. Đọc HẾT [nhom8201.nhom] (8 mục), [ch82.chuong], [phan82.phan], 6 khối [wco.*], 7 khối [tax.*]. Kết quả: 23 giữ, 2 sửa, 0 xoá. Cả 2 lỗi sửa đều thuộc họ 'câu trích mồ côi / nhánh Có suy ngược' mà máy không bắt. SỬA 1 (phanBiet[0]): trích câu đối chiếu 'Những loại dụng cụ này khác xa với các loại kéo thuộc nhóm 82.13 vì chúng không có các vòng xỏ ngón tay vào' — chủ thể 'Những loại dụng cụ này' nằm ở câu trước (mục (5) kéo tỉa cây một tay), và nhánh 'CÓ vòng xỏ → 8213' chỉ suy ra từ phần đối chiếu chứ câu trích không nói thẳng. Đổi sang câu loại trừ tường minh ngay trong chú giải nhóm. SỬA 2 (tieuChi6[820150] 'khong_co_vong_xo_ngon_tay_vao'): nối chủ thể vào câu trích bằng dấu lược, đúng cách đã dùng cho lô 008 (mục trích mồ côi của 6815). GIỮ có lý do: (1) dieuKienVao 'chủ yếu sử dụng trong nông nghiệp/làm vườn/lâm nghiệp' — câu nguồn có 'chủ yếu… mặc dầu một số loại cũng có thể được dùng cho mục đích khác', đây là đặc tính phạm vi của nhóm, và cùng dạng đã có tiền lệ đã qua soát ở 6913, 9503, 8431, 8473, 8522, 8714; (2) loaiTru[4] kéo có vòng xỏ → 8213 lấy từ câu 'Tuy nhiên nhóm này không bao gồm…' có mã 82.13; (3) loaiTru[5] tay cầm → 8466 lấy nguyên văn Chú giải 2 Chương 82, tự nó đã đủ để nói 'tay cầm dụng cụ cầm tay không đi cùng nhóm mà sang 8466' — không cần ghép thêm câu nào; (4) dong8 82013090 'Loại khác' mô tả phần còn lại của phân nhóm trừ 82013010, tieuChi value=false là quy ước 'dòng trần' đã dùng 275 dòng trong sổ tay đã gộp; (5) KHÔNG ghi loaiTru cho mục (d) 'Các trục làm vườn, bùa, máy cắt cỏ… (Chương 84)' vì nguồn chỉ nêu CHƯƠNG chứ không nêu nhóm đích — đúng luật 3.",
+  "thayDoi": [
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "Hai vấn đề trong một câu trích: (1) CHỦ THỂ MỒ CÔI — 'Những loại dụng cụ này' nằm ở câu trước (mục (5) kéo tỉa cây loại sử dụng một tay), đọc riêng câu trích không biết nói về loại kéo nào; (2) NHÁNH 'CÓ' SUY NGƯỢC — câu trích chỉ nói 8201 'không có vòng xỏ', nên 'có vòng xỏ → 8213' là đối lập ngược (contrapositive), không phải câu nói thẳng của nguồn; trong khi ngay 6 dòng dưới, chú giải nhóm có câu loại trừ tường minh nêu đích danh 82.13: 'Tuy nhiên nhóm này không bao gồm các loại kéo cắt cành có lưỡi với vòng xỏ ngón tay (Xem phần ghi chú giải thích nhóm 82.13).' Câu đó tự nói được cả hai nhánh và tự chứa chủ thể — đổi sang dùng nó. Chiều nhánh Có/Không GIỮ NGUYÊN (có vòng xỏ → 8213, không → 8201); chỉ đổi câu làm căn cứ.",
+      "sua": {
+        "trich": "Tuy nhiên nhóm này không bao gồm các loại kéo cắt cành có lưỡi với vòng xỏ ngón tay (Xem phần ghi chú giải thích nhóm 82.13)."
+      }
+    },
+    {
+      "index": "tieuChi6[4]",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích 'Những loại dụng cụ này khác xa…' không tự nói 'Những loại dụng cụ này' là gì; chủ thể nằm ở câu trước. Mục này gắn tiêu chí vào hs6 820150 (kéo tỉa cây một tay) nên phải chứng minh được bằng chính câu trích, không bắt người đọc tự tra câu trước. Nối chủ thể bằng dấu lược '…' — cùng cách sửa trích mồ côi đã dùng ở lô 008. Vẫn dưới 300 ký tự.",
+      "sua": {
+        "trich": "(5) Kéo tỉa cây và kéo cắt tỉa tương tự loại sử dụng một tay (kể cả kéo xén lông gia cầm) … Những loại dụng cụ này khác xa với các loại kéo thuộc nhóm 82.13 vì chúng không có các vòng xỏ ngón tay vào."
+      }
+    }
+  ],
+  "canhBaoKhongSuaTrongAudit": [
+    {
+      "loai": "loaiTru thiếu mục (d) — '(d) Các trục làm vườn, bùa, máy cắt cỏ và các dụng cụ tương tự, những dụng cụ này được đẩy hoặc kéo bằng tay (Chương 84).'",
+      "lyDo": "Nguồn chỉ nêu 'Chương 84' chứ không nêu nhóm đích, mà luật 3 bắt buộc số nhóm phải có trong câu trích và máy kiểm cũng loại loạiTru thiếu mã. Đây là khoảng trống ĐÚNG QUY TẮC, không phải lỗi — nhưng là khoảng trống thực tế (trục làm vườn/máy cắt cỏ đẩy-kéo rất dễ bị khai nhầm vào 8201). Ghi ở đây để người quản lý biết; nếu muốn thì phải thêm quy tắc riêng cho loại trừ chỉ nêu Chương, chứ không sửa vội trong lô này."
+    },
+    {
+      "loai": "dieuKienVao có từ 'chủ yếu' kèm câu 'mặc dầu một số loại cũng có thể được dùng cho mục đích khác'",
+      "lyDo": "Giữ: đây là đặc tính phạm vi của nhóm, không phải câu cho phép (câu cho phép là câu bảo hàng VẪN ĐƯỢC xếp vào đây dù thiếu thuộc tính). Cùng dạng đã qua soát ở 6913/9503/8431/8473/8522/8714. Chạy runtime chỉ dùng để GỢI Ý hỏi người khai, không dùng chặn."
+    },
+    {
+      "loai": "dong8[82013090] ghi 'Loại khác: phần còn lại của phân nhóm 820130 … trừ 82013010' và tieuChi value=false",
+      "lyDo": "Giữ: đây là quy ước 'dòng trần' đã dùng ở 275 dòng dong8 trong sổ tay đã gộp (3215, 3917, 6302, 9028…). Người soát độc lập khác có ý kiến nên để tieuChi=null — em không đồng ý vì 82013010 có tên riêng rõ ràng trong biểu thuế nên 'phần còn lại' là suy luận trực tiếp, không phải đoán. Ngược lại, 4 dòng trùng chữ thật sự của 8309 (81/89/91/99) thì người soạn đã ghi đúng câu 'nguồn không phân biệt được; đối chiếu biểu thuế'."
+    }
+  ]
+}

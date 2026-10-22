@@ -1,0 +1,46 @@
+{
+  "nhom": "9028",
+  "nguoiSoat": "soat-doc-lap-011 (phiên Claude soát độc lập — KHÔNG phải người soạn dev-zcode-mm)",
+  "luc": "2026-10-22T15:40:00+07:00",
+  "soat": 24,
+  "daKiem": 24,
+  "xoa": 0,
+  "sua": 2,
+  "ghiChu": "Audit 9028: 1 phamVi + 0 dieuKienVao + 3 loaiTru + 3 phanBiet + 1 boPhan + 8 tieuChi6 + 8 dong8 = 24 mục. Đọc HẾT [nhom9028.nhom] (103 dòng), [ch90.chuong], 4 khối [wco.*], 8 khối [tax.*]. Kết quả: 22 giữ, 2 sửa, 0 xoá. Cả 2 sửa là cùng một lỗi: câu trích bắt đầu bằng 'trừ các bơm chất lỏng…' — đọc riêng không biết nó loại trừ CÁI GÌ (chủ ngữ 'Công tơ đo chất lỏng sản xuất hoặc cung cấp' nằm ở tiêu đề mục (B) ngay trước) và mất cả phạm vi: nguồn chỉ nêu việc loại trừ này cho phần công tơ CHẤT LỎNG, không nói cho công tơ khí. GIỮ có lý do: (1) cả 3 loaiTru đều nêu đích danh mã nhóm trong câu trích (90.26, 90.30, 84.13) và không câu nào có định ngữ 'thường/tùy trường hợp'; (2) cả 3 phanBiet đều đúng CHIỀU nhánh — kiểm riêng từng câu: 'lưu lượng kế bị loại trừ (nhóm 90.26)' → có đo tốc độ lưu lượng = 9026; 'trừ các bơm chất lỏng … của nhóm 84.13' → có phải bơm = 8413; 'không dùng để đo tổng số lượng điện hay năng lượng tiêu thụ … (nhóm 90.30)' → có đo tổng = 9028, không = 9030; (3) tieuChi6 'đo theo đơn vị thể tích, lượng chất lỏng chảy qua một ống' gắn vào 902820 là đúng vì câu nguồn nói rõ 'lượng CHẤT LỎNG', không kéo sang 902810 (khí); (4) dong8 đủ 8/8 dòng tax.*, các dòng 'Loại khác' mô tả phần còn lại của phân nhóm trừ dòng chi tiết — quy ước dòng trần đã dùng 275 lần trong sổ tay đã gộp.",
+  "thayDoi": [
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích cũ bắt đầu bằng 'trừ các bơm chất lỏng (ngay cả khi nó có một cơ cấu đo) của nhóm 84.13.' — đọc riêng thì mồ côi: không biết loại trừ cái gì khỏi đâu, vì chủ ngữ 'Công tơ đo chất lỏng sản xuất hoặc cung cấp' nằm ở tiêu đề mục (B) ngay câu trước. Ngoài ra mất phạm vi: nguồn chỉ nêu việc loại trừ này cho PHẦN công tơ chất lỏng, không nói cho công tơ khí. Nối thêm chủ ngữ bằng dấu lược; đoạn lược là danh sách ví dụ mặt hàng (nước nóng, nước lạnh, dầu mỏ, cồn, bia, rượu, sữa) chứ không có ngoại lệ. KỸ THUẬT: phải lược TRƯỚC dấu '…' CÓ SẴN trong nguồn — lần đầu em chép trọn cả dòng nguồn (kèm '…' có sẵn), máy kiểm tách đoạn tại đó và loại mục 'trich-khong-co-trong-nguon'; đã sửa lại như ghiChu.",
+      "sua": {
+        "trich": "(B) Công tơ đo chất lỏng sản xuất hoặc cung cấp … trừ các bơm chất lỏng (ngay cả khi nó có một cơ cấu đo) của nhóm 84.13."
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "Cùng lỗi và cùng nguồn với loaiTru[2] nên phải sửa đồng loạt để hai mục không lệch nhau. Chiều nhánh GIỮ NGUYÊN (có phải bơm chất lỏng → 8413, không → 9028); chỉ nối chủ ngữ vào câu trích.",
+      "sua": {
+        "trich": "(B) Công tơ đo chất lỏng sản xuất hoặc cung cấp … trừ các bơm chất lỏng (ngay cả khi nó có một cơ cấu đo) của nhóm 84.13."
+      }
+    }
+  ],
+  "canhBaoKhongSuaTrongAudit": [
+    {
+      "loai": "phamVi.trich nối hai câu cách ~96 dòng bằng '…', đoạn lược có chứa 3 câu loại trừ (9026, 8413, 9030)",
+      "lyDo": "GIỮ có lý do: phamVi.text khẳng định 'kể cả bộ phận và phụ kiện của chúng', nên câu trích BẮT BUỘC phải kéo câu về bộ phận (dòng 102) vào; mà câu đó nằm cuối chú giải nhóm. Cả 3 loại trừ bị lược đều đã có mặt trong sổ tay dưới dạng loaiTru với câu trích đầy đủ, nên không mất thông tin; và phần bị lược không có ngoại lệ nào áp vào chính mệnh đề mà phamVi khẳng định (đoạn lược chỉ gồm mô tả cấu tạo công tơ). Ghi ở đây vì đây là mẫu 'trích phạm vi xa' — nếu các lô sau lạm dụng thì nên đưa thành luật máy giới hạn số câu lược."
+    },
+    {
+      "loai": "phanBiet[0] và phanBiet[1] trùng cặp với loaiTru[2] và loaiTru[0]",
+      "lyDo": "Cùng câu nguồn, cùng chiều, không sai — nhưng đây là mẫu chưa có tiền lệ trong 90 nhóm sổ tay đã gộp (0/480 phanBiet trùng cặp với loaiTru). Đề xuất người quản lý: hoặc chấp nhận thành quy ước, hoặc đưa thành luật máy."
+    },
+    {
+      "loai": "boPhan.tomTat nhắc mã 8 số 90289010/90289090 không có trong câu trích",
+      "lyDo": "Hai mã đó có thật trong cùng tệp nguồn (khối tax.90289010 / tax.90289090) nên không phải bịa, nhưng là ngoại lệ so với quy tắc 'tomTat chỉ diễn đạt điều câu trích nói'. Giữ vì hữu ích và không sai sự thật; ghi ra để người quản lý biết khi rà lại."
+    },
+    {
+      "loai": "dong8 các dòng 'Loại khác' diễn đạt lại tên phân nhóm (ví dụ 90283090: 'công tơ đo lượng điện hoặc năng lượng tiêu thụ' thay cho 'electricity supply or production meters')",
+      "lyDo": "Cách diễn đạt lấy từ chính chú giải nhóm phần (II) của 9028 ('đo lượng điện tiêu thụ … hoặc năng lượng tiêu thụ') chứ không phải tự dịch sai; mục đã ghi rõ '(theo tên WCO)'. Giữ nguyên."
+    }
+  ]
+}
