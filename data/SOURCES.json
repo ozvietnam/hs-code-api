@@ -353,6 +353,16 @@
       "kind": "DERIVED",
       "descriptionVi": "Bước 12 B-3 (#306): sản phẩm made-in-china.com ProductPayload v2 — schema khác hẳn precedent (không có hsCode/description/source TB-TCHQ; chỉ hsCodeHint TQ 10 số + urlNguon). Refresh cùng tệp nguồn theo skuId/urlNguon (luật 13/10/2026). Kho tách riêng (không lẫn vào precedents.json). Validate bằng scripts/validate-community.mjs (kind=mic-product). Số lượng & độ giàu cập nhật theo lô craw từ MiC; trong tương lai nạp qua API /api/identify (lib/identify.js) thay vì tệp nộp.",
       "builtBy": "scripts/merge-community.mjs"
+    },
+    "gd0/index-e5-small.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "GĐ1 (#377/#366): index vector embedding cục bộ (e5-small ONNX q8, 384 chiều) — nhãn 1.269 nhóm 4 + 5.784 PN6 = mô tả tờ khai thật (bỏ holdout) + tên biểu thuế; xây lại bằng scripts/gd0/j2-build-index.mjs",
+      "builtBy": "scripts/gd0/j2-build-index.mjs"
+    },
+    "gd0/ket-qua-j4.json": {
+      "kind": "REPORT",
+      "descriptionVi": "GĐ0/J4 (#377): kết quả baseline retrieval trên 763 mẫu holdout (chỉ mã/điểm, không mô tả hàng)",
+      "builtBy": "scripts/gd0/j4-bench-holdout.mjs"
     }
   }
 }

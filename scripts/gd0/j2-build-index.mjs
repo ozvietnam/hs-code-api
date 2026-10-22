@@ -29,6 +29,29 @@ for (const g of gold) {
   (moTa4[hs.slice(0, 4)] ||= []).push(desc.slice(0, 300));
   (moTa6[hs.slice(0, 6)] ||= []).push(desc.slice(0, 300));
 }
+// NGUỒN BỔ SUNG (GĐ1): (a) tiền lệ TB-TCHQ — mô tả hàng thật đã có phán quyết; (b) tên tiếng Trung 税则 2026.
+let tienLe4 = {}; let tienLe6 = {};
+try {
+  const precedents = require(join(ROOT, 'data/precedents.json'));
+  for (const rec of Object.values(precedents).flat()) {
+    const hs = nz(rec.outcome);
+    const ten = String(rec.productName || '').trim();
+    if (!hs || !ten) continue;
+    if (hs.length >= 4) (tienLe4[hs.slice(0, 4)] ||= []).push(ten.slice(0, 300));
+    if (hs.length >= 6) (tienLe6[hs.slice(0, 6)] ||= []).push(ten.slice(0, 300));
+  }
+} catch { /* kho tiền lệ khuyết → bỏ qua nguồn này */ }
+let zh6 = {}; let zh4 = {};
+try {
+  for (const line of readFileSync(join(ROOT, 'data/bieu-thue/zh/hs6-zh.jsonl'), 'utf8').trim().split('\n')) {
+    const j = JSON.parse(line);
+    const hs6 = nz(j.hs6);
+    if (hs6.length !== 6 || !j.tenZh) continue;
+    zh6[hs6] = [j.tenZh, j.tenZhCha].filter(Boolean).join(' ');
+    (zh4[hs6.slice(0, 4)] ||= []).push(j.tenZh);
+  }
+} catch { /* tên TQ chưa có → bỏ qua */ }
+
 // Nhãn chuẩn từ biểu thuế (phủ nhóm không có tờ khai)
 const tenChuan = (hs, cap) => {
   if (cap === 4) {
@@ -43,8 +66,23 @@ const nhan4 = {}; const nhan6 = {};
 const tatCa4 = new Set([...Object.keys(moTa4), ...Object.keys(tax).map((k) => k.slice(0, 4))]);
 const tatCa6 = new Set(Object.keys(tax).map((k) => k.slice(0, 6)));
 const CHI_MO_TA = process.env.GD0_CHI_MO_TA === '1'; // chỉ mô tả thật, không pha tên biểu thuế chuẩn
-for (const h4 of tatCa4) nhan4[h4] = CHI_MO_TA ? (moTa4[h4] || []).slice(0, 20).join(' ¶ ') : [...(moTa4[h4] || []).slice(0, 20), tenChuan(h4, 4)].filter(Boolean).join(' ¶ ');
-for (const h6 of tatCa6) nhan6[h6] = CHI_MO_TA ? (moTa6[h6] || []).slice(0, 20).join(' ¶ ') : [...(moTa6[h6] || []).slice(0, 20), tenChuan(h6, 6)].filter(Boolean).join(' ¶ ');
+const THEM_NGUON = process.env.GD0_THEM_NGUON === '1';
+// GĐ1 thí nghiệm: nối chuỗi tiền lệ + tên TQ làm LOÃNG mean-pooling (phủ top-5 92,9→68,2) → mặc định TẮT.
+// Đường đúng cho sau: multi-vector theo nguồn + trọng số, không nối chuỗi (ghi nhận trong docs/gd0).
+for (const h4 of tatCa4) {
+  const tienLe = THEM_NGUON ? [...new Set(tienLe4[h4] || [])].slice(0, 3).join(' ¶ ') : '';
+  const zh = THEM_NGUON ? [...new Set(zh4[h4] || [])].slice(0, 4).join(' ¶ ') : '';
+  nhan4[h4] = CHI_MO_TA
+    ? (moTa4[h4] || []).slice(0, 20).join(' ¶ ')
+    : [...(moTa4[h4] || []).slice(0, 20), tenChuan(h4, 4), tienLe, zh].filter(Boolean).join(' ¶ ');
+}
+for (const h6 of tatCa6) {
+  const tienLe = THEM_NGUON ? [...new Set(tienLe6[h6] || [])].slice(0, 3).join(' ¶ ') : '';
+  const zh = THEM_NGUON ? zh6[h6] || '' : '';
+  nhan6[h6] = CHI_MO_TA
+    ? (moTa6[h6] || []).slice(0, 20).join(' ¶ ')
+    : [...(moTa6[h6] || []).slice(0, 20), tenChuan(h6, 6), tienLe, zh].filter(Boolean).join(' ¶ ');
+}
 
 // CHI_MO_TA: nhóm không có tờ khai thật → bỏ khỏi index (chỉ đo khả năng của mô tả thật)
 if (CHI_MO_TA) { for (const k of Object.keys(nhan4)) if (!nhan4[k]) delete nhan4[k]; for (const k of Object.keys(nhan6)) if (!nhan6[k]) delete nhan6[k]; }

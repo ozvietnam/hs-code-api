@@ -242,3 +242,31 @@ check('vòng 1 lỗi tạm thời → nextAction RETRY', r.nextAction?.type === 
 
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
+
+// ── GĐ1 (#377): tầng ứng viên embedding — tín hiệu vào gói vòng 2, không đổi mã ──
+{
+  const savedPool = require('../lib/embed-pool.js').poolNhom;
+  const embedPoolMod = require('../lib/embed-pool.js');
+  const POOL_STUB = { nhom4: [{ ma: '8414', diem: 0.93 }, { ma: '8509', diem: 0.81 }, { ma: '8415', diem: 0.79 }], nhom6: [{ ma: '841451', diem: 0.91 }], model: 'stub' };
+  embedPoolMod.poolNhom = async () => ({ ...POOL_STUB });
+  process.env.HS_EMBED_POOL = 'on';
+
+  const R1_QUAT = { product: { nameVi: 'quạt thông gió gia dụng', purpose: 'hút khí', mechanism: 'điện', material: 'nhựa', form: 'hoàn chỉnh', evidence: {} }, hypotheses: [{ chapter: '85', heading4: '8509', subheading6: '850980', why: 'thiết bị điện gia dụng', confidence: 70 }], verify: { searchVi: ['quạt thông gió'], codes8: ['85098090'], micQuery: null, unknowns: [] } };
+  const CHOT = { decision: 'CHOT', hs: '85098090', confidence: 75, reason: 'thiết bị điện gia dụng', basis: [{ stream: 'SAN_PHAM', claim: 'quạt', evidence: '换气扇' }], conditions: [], alternatives: [], questions: [] };
+  let rPool = await run({ tenHang: '家用排气扇 厨房卫生间换气扇 静音', nameZh: '家用排气扇 厨房卫生间换气扇 静音', specs: '功率: 30W; 用途: 厨房排气' }, [R1_QUAT, CHOT]);
+
+  check('GĐ1: gói vòng 2 có khối ỨNG VIÊN NHÓM + điểm số', calls.some((c) => /ỨNG VIÊN NHÓM/.test(c.user) && /8414\(0.93\)/.test(c.user)), '');
+  check('GĐ1: nhóm pool top-3 (8414) được nạp CHÚ GIẢI (nhóm ngoài giả thuyết 8509)', calls.some((c) => /8414/.test(c.user) && /CHÚ GIẢI/.test(c.user) && c.user.indexOf('8414') < c.user.indexOf('CHÚ GIẢI') === false || /8414/.test(c.user.split('CHÚ GIẢI')[1] || '')), '');
+  check('GĐ1: response có dossier.embedPool + phases.embedMs', rPool.dossier?.embedPool?.nhom4?.length === 3 && typeof rPool.engine?.phases?.embedMs === 'number', JSON.stringify(rPool.dossier?.embedPool));
+  check('GĐ1: mã chọn không đổi (tín hiệu không phải quyết định)', rPool.results?.[0]?.hs === '85098090', JSON.stringify(rPool.results?.[0]?.hs));
+
+  // Lỗi pool → engine vẫn chạy như cũ, không có khối tín hiệu
+  embedPoolMod.poolNhom = async () => { throw new Error('model lỗi'); };
+  let rErr = await run({ tenHang: '家用排气扇 厨房卫生间换气扇 静音', nameZh: '家用排气扇 厨房卫生间换气扇 静音', specs: '功率: 30W; 用途: 厨房排气' }, [R1_QUAT, CHOT]);
+  check('GĐ1: pool lỗi → không crash, không khối tín hiệu, mã giữ nguyên', rErr.results?.[0]?.hs === '85098090' && !calls.some((c) => /ỨNG VIÊN NHÓM/.test(c.user)), JSON.stringify(rErr.results?.[0]?.hs));
+
+  delete process.env.HS_EMBED_POOL;
+  embedPoolMod.poolNhom = savedPool;
+  let rOff = await run({ tenHang: '家用排气扇 厨房卫生间换气扇 静音', nameZh: '家用排气扇 厨房卫生间换气扇 静音', specs: '功率: 30W; 用途: 厨房排气' }, [R1_QUAT, CHOT]);
+  check('GĐ1: cờ TẮT → không khối tín hiệu (hành vi cũ nguyên vẹn)', !calls.some((c) => /ỨNG VIÊN NHÓM/.test(c.user)), '');
+}
