@@ -19,7 +19,7 @@ const precRaw = JSON.parse(fs.readFileSync('data/precedents.json', 'utf8'));
 // giúp gì người tra theo mã hiện hành.
 const taxMap = JSON.parse(fs.readFileSync('data/tax.json', 'utf8'));
 const precCodes = new Set((Array.isArray(precRaw) ? precRaw : Object.values(precRaw).flat())
-  .map((x) => x.outcome).filter((h) => h && taxMap[h])).size;
+  .map((x) => x.outcomeHs || x.outcome).filter((h) => h && taxMap[h])).size;
 
 let fail = 0;
 const check = (n, c) => { console.log(`${c ? 'PASS' : 'FAIL'} ${n}`); if (!c) fail += 1; };

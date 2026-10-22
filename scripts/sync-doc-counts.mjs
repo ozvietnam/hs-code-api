@@ -18,7 +18,9 @@ const verified = legal.verifiedTitles;
 const tax = read('data/tax.json');
 const rows = Object.keys(tax).length;
 const precRaw = read('data/precedents.json');
-const precCodes = new Set((Array.isArray(precRaw) ? precRaw : Object.values(precRaw).flat()).map((x) => x.outcome).filter((h) => h && tax[h])).size;
+// #359: bản ghi tiền lệ quốc tế nêu kết luận bằng enum (APPROVED) và để mã nó chốt ở `outcomeHs`
+// ⇒ mã phải đọc từ `outcomeHs` trước, không thì số "mã có tiền lệ" rơi mất bản ghi đó.
+const precCodes = new Set((Array.isArray(precRaw) ? precRaw : Object.values(precRaw).flat()).map((x) => x.outcomeHs || x.outcome).filter((h) => h && tax[h])).size;
 
 const NUM = '[\\d.]+';
 const rules = {
