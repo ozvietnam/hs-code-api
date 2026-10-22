@@ -1,0 +1,23 @@
+{
+ "nhom": "3914",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-23T01:25:00+07:00",
+ "soat": 10,
+ "daKiem": 10,
+ "xoa": 3,
+ "sua": 0,
+ "phamViSoat": "Toàn bộ 10 mục của bản nháp (1 phamVi + 4 dieuKienVao + 3 loaiTru + 1 phanBiet + 1 dong8), đọc cùng tmp/so-tay/nguon/3914.txt (nhom3914.nhom ở dòng 3–10, ch39.chuong ở dòng 12–406, wco.391400, tax.39140000). Riêng phần ch39.chuong đã dò TOÀN BỘ 12 chỗ nhắc '39.01 đến 39.14' (dòng 17, 93, 99, 181, 193, 199, 269, 293) để kiểm tầng áp dụng.",
+ "ghiChu": "Audit 3914: 10 mục, XOÁ 3, sửa 0. LỖI LỚN NHẤT — SAI TẦNG ĐỐI TƯỢNG (máy không bắt được): `loaiTru[1]` (sang 3208) và `loaiTru[2]` (sang 3506) lấy từ Chú giải 2 của Chương 39, nhưng CHÍNH câu trích của chúng giới hạn phạm vi ở 'các nhóm 39.01 đến 39.13' — KHÔNG có 39.14. Hai mục này mô tả loại trừ cho hàng của 39.01–39.13, không phải cho hàng của nhóm 39.14; đưa vào sổ tay 3914 sẽ khiến người đọc tin rằng chất trao đổi ion 3914 hoà trong dung môi hữu cơ >50% sẽ sang 3208 — điều nguồn KHÔNG nói. Đây đúng là lỗi 'mục nói đúng điều câu trích không nói'. Lỗi thứ hai: `dieuKienVao[2]` đặt value=true cho câu chép nguyên văn 'có thể trao đổi một trong các kiểu ion' — đây là câu NÓ KHẢ NĂNG (cơ chế hoạt động của nhựa trao đổi ion), không phải điều kiện bắt buộc để vào nhóm; _he-thong.txt dòng 28 cấm đặt value=true cho câu 'có thể'. Đối chiếu toàn kho: KHÔNG có một `dieuKienVao` value=true nào trong 268 nhóm sẵn có mà câu trích chứa 'có thể' (0/8.401 mục) → đây là chuẩn kho, máy chỉ quên bắt ở câu này. GIỮ CÓ LÝ DO: `dieuKienVao[3]` ('o_dang_nguyen_sinh') lấy từ câu 'Các nhóm 39.01 đến 39.14 chỉ gồm những hàng hóa ở dạng nguyên sinh' (dòng 269) — câu này CÓ 39.14 nên áp dụng thật, khác hẳn hai mục bị xoá. `phanBiet[0]`: nhánh 'không' (=3914) có căn cứ trực tiếp trong câu loại trừ, không suy từ danh sách; nhánh 'có' là 3926 và số 39.26 có trong trích. Ghi chú kệ sách: dòng 10 của [nhom3914.nhom] dính tiêu đề 'Phân chương II: PHẾ LIỆU...' của Chương 39 — không phải văn bản pháp lý của nhóm, bản nháp đã không trích nó (đúng).",
+ "thayDoi": [
+  { "index": "loaiTru[2]", "hanhDong": "xoa", "lyDo": "Chú giải 2(b) Chương 39 chỉ loại trừ 'các sản phẩm thuộc các nhóm 39.01 đến 39.13' — không có 39.14. Giữ mục này trong sổ tay 3914 sẽ bảo rằng chất trao đổi ion của 39.14 đóng gói bán lẻ dưới 1 kg sang 3506, điều nguồn không nói. Xoá, không sửa số nhóm để lách máy." },
+  { "index": "loaiTru[1]", "hanhDong": "xoa", "lyDo": "Chú giải 2(e) Chương 39 chỉ loại trừ dung dịch của 'các nhóm 39.01 đến 39.13' — không có 39.14. Hai chỗ khác trong [ch39.chuong] xác nhận cùng giới hạn (dòng 279 và 351), và dòng 193 nói rõ 'Nhóm 39.14 bao gồm các nhứa trao đổi ion làm từ các polymer thuộc các nhóm từ 39.01 đến 39.13' — tức 39.14 là ngoại lệ, không nằm trong các khoản loại trừ này." },
+  { "index": "dieuKienVao[2]", "hanhDong": "xoa", "lyDo": "Câu trích nói 'có thể trao đổi' — câu nói khả năng (cơ chế của nhựa trao đổi ion khi gặp dung dịch điện phân), KHÔNG phải điều kiện vào nhóm 3914. _he-thong.txt dòng 28 cấm đặt value=true cho câu 'có thể'; toàn kho không có mục nào làm vậy (0/8.401). Máy bỏ sót vì bộ dò câu-cho-phép của lib/so-tay.js không bắt 'có thể' ở vị trí này." },
+  { "index": "phamVi", "hanhDong": "giu", "lyDo": "Text chỉ nói đúng nội dung hai câu trong trich; đoạn lược '…' không nuốt ngoại lệ." },
+  { "index": "dieuKienVao[0]", "hanhDong": "giu", "lyDo": "Câu định nghĩa nói thẳng 'là các polyme có liên kết ngang' — điều kiện vào nhóm, không phải câu cho phép." },
+  { "index": "dieuKienVao[1]", "hanhDong": "giu", "lyDo": "'chứa các nhóm ion hoạt động' nằm nguyên trong câu định nghĩa." },
+  { "index": "dieuKienVao[3]", "hanhDong": "giu", "lyDo": "Câu 'Các nhóm 39.01 đến 39.14 chỉ gồm những hàng hóa ở dạng nguyên sinh' (ch39.chuong dòng 269) có nêu 39.14 nên áp dụng thật cho nhóm này." },
+  { "index": "loaiTru[0]", "hanhDong": "giu", "lyDo": "Loại trừ dứt khoát ngay trong [nhom3914.nhom], nêu đích danh 'nhóm 39.26'." },
+  { "index": "phanBiet[0]", "hanhDong": "giu", "lyDo": "Hỏi không nhắc mã; nhánh 'không' (=3914) căn cứ ngay trong câu loại trừ; nhánh 'có' 3926 có số 39.26 trong trích." },
+  { "index": "dong8[0]", "hanhDong": "giu", "lyDo": "Dòng 8 số duy nhất của nhóm; trích khớp [tax.39140000], hậu tố WCO theo khuôn mẫu kho sổ tay." }
+ ]
+}

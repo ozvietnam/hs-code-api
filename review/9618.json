@@ -1,0 +1,16 @@
+{
+ "nhom": "9618",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-23T01:00:00+07:00",
+ "soat": 3,
+ "daKiem": 3,
+ "xoa": 0,
+ "sua": 0,
+ "phamViSoat": "Toàn bộ 3 mục của bản nháp (1 phamVi + 1 loaiTru + 1 dong8; không có dieuKienVao/phanBiet/boPhan/tieuChi6/cay.tenDien), đọc cùng tmp/so-tay/nguon/9618.txt (81 dòng: nhom9618.nhom, ch96.chuong, wco.961800, tax.96180000).",
+ "ghiChu": "Audit 9618: 3/3 nguyên văn và đúng nghĩa, KHÔNG sửa gì. Soát từng điểm rủi ro trong danh mục lỗi: (1) `phamVi` — text chép đúng nghĩa câu định nghĩa nhóm + câu loại hình bóng/chụp nghiêng; các chỗ lược bằng '…' (thân mục (1) và thân mục (2)) không chứa 'trừ/tuy nhiên/với điệu kiện/không kể' nên không nuốt ngoại lệ. Cần lưu ý: nguồn viết 'Mặt hàng này THƯỜNG chúng được làm bằng gỗ... và được phân loại theo vật liệu cấu thành' — định ngữ 'thường' chỉ bọc vế vật liệu, KHÔNG bọc vế 'được phân loại theo vật liệu cấu thành', nên text khẳng định vế sau là đúng, không phải cắt trích né câu rào. (2) `loaiTru[0]` sangNhom 9023 — nguồn nêu ĐÍCH DANH 'nhóm 90.23' trong chính câu trích, là loại trừ dứt khoát (không phải 'thường thuộc/tùy trường hợp') nên giữ. Khoản loại trừ (b) 'Búp bê và đồ chơi (Chương 95)' CỐ Ý KHÔNG ghi: chỉ nêu Chương, không nêu mã nhóm đích → không đủ điều kiện `loaiTru` (luật 3). (3) `dong8[0]` — 96180000 là dòng 8 số DUY NHẤT của nhóm nên không có anh em để phân biệt; hậu tố '— phân nhóm 9618.00 (WCO): ...' là khuôn mẫu sẵn có của kho sổ tay (130+ nhóm, vd 1702/3215/3916/3917), KHÔNG phải sáng tạo của lô này, nên không sửa. `cay.tenDien` để trống là ĐÚNG: `check-cay --chi-tiet` báo nhóm 9618 'đủ tên nút ảo'.",
+ "thayDoi": [
+  { "index": "phamVi", "hanhDong": "giu", "lyDo": "Đối chiếu [nhom9618.nhom]: text chỉ nói đúng những gì trich nói; phần loại trừ hình bóng/chụp nghiêng có nguyên văn trong trich." },
+  { "index": "loaiTru[0]", "hanhDong": "giu", "lyDo": "Câu nêu đích danh nhóm 90.23, số nhóm đích nằm trong chính câu trích → loại trừ hợp lệ (luật 3)." },
+  { "index": "dong8[0]", "hanhDong": "giu", "lyDo": "Dòng 8 số duy nhất, trích khớp nguyên văn dòng [tax.96180000]; hậu tố WCO theo khuôn mẫu kho sổ tay." }
+ ]
+}
