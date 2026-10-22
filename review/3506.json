@@ -1,0 +1,69 @@
+{
+ "nhom": "3506",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T23:02:00+07:00",
+ "daKiem": 14,
+ "soat": 14,
+ "xoa": 1,
+ "sua": 0,
+ "ghiChu": "Audit 3506 (1 phamVi + 1 dieuKienVao + 4 loaiTru + 1 phanBiet + 3 tieuChi6 + 4 dong8 = 14 mục). CÓ THẬT: 14/14 câu trích khớp nguồn tuyệt đối. XOÁ 1 (dieuKienVao[0]): fact 'không thuộc nhóm cụ thể hơn trong danh mục = true' lấy từ tiêu đề NHÁNH (B) — 'Keo thành phẩm và chất kết dính thành phẩm khác, không nằm trong một nhóm cụ thể hơn' — rồi trình thành điều kiện vào CẢ nhóm 3506. Sai, vì nguồn nói ngược lại ở chính dòng dẫn: 'Trừ khi chúng phù hợp với điều khoản của phần (A) ở trên, nhóm này loại trừ các sản phẩm thuộc một nhóm cụ thể hơn'. Nghĩa là hàng thuộc nhóm cụ thể hơn VẪN vào 3506 nếu đủ điều kiện (A). Chính phanBiet[0] của nhóm này là bằng chứng: dextrin thuộc 3505 nhưng đóng gói bán lẻ như keo thì sang 3506 (Chú giải 2 Phần 35). Giữ mục này thì máy đọc kiểu AND sẽ loại nhầm chính trường hợp kinh điển của nhóm. Đây là 'điều kiện của một nhánh bị đẩy thành điều kiện của cả nhóm' — đúng kiểu lỗi lô 009 xoá ở 3918. Còn lại: phamVi chép nguyên văn cả hai nhánh (A) và (B); 4 loaiTru đều nêu đích danh và giữ đúng định ngữ giới hạn 'không phù hợp với điều khoản của phần (A)' như nguồn, không rút gọn thành loại trừ vô điều kiện — riêng loaiTru[2] còn chép trọn vế đuôi 'đôi lúc được gọi là keo, nhưng chúng không được dùng để kết dính' thay vì cắt trước đó, đúng bài học lô 016; loaiTru[1] không bịa mã cho 'chất phân tán của cao su' vì nguồn chỉ nêu Chương 40; phanBiet[0] đúng chiều Có/Không và lấy từ phan35.phan; 3 tieuChi6 đúng, trong đó tieuChi6[0] gắn ngưỡng 1 kg vào 350610 (không phải cả nhóm) là chính xác; 4 dong8 đủ mọi dòng tax của nhóm.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "Điều kiện của RIÊNG nhánh (B) bị trình thành điều kiện VÀO CẢ nhóm, và nguồn nói ngược lại: hàng thuộc nhóm cụ thể hơn vẫn vào 3506 khi phù hợp phần (A). Ví dụ ngay trong chính sổ tay này: dextrin (3505) đóng gói bán lẻ như keo → 3506. Giữ mục này sẽ loại nhầm hàng hợp lệ của nhóm."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu"
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "nhom": "9612",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T22:55:00+07:00",
+ "daKiem": 6,
+ "soat": 6,
+ "xoa": 0,
+ "sua": 1,
+ "ghiChu": "Audit 9612 (1 phamVi + 0 dieuKienVao + 0 loaiTru + 0 phanBiet + 2 tieuChi6 + 3 dong8 = 6 mục). CÓ THẬT: 6/6 câu trích khớp nguồn tuyệt đối. SỬA 1 (phamVi): câu trích cũ đi '(1) Các ruy băng… … Nhóm này không bao gồm: … (2) Tấm mực dấu…' — dấu lược nằm NGAY SAU câu 'Nhóm này không bao gồm:' rồi nhảy thẳng sang mục (2), đọc lên như danh sách loại trừ rỗng, trong khi nguồn có ba mục loại trừ thật (a) dải giấy máy tính/thu ngân → Chương 48, (b) ruy băng chưa tẩm/tráng → Chương 39, (c) cuộn băng rỗng. LoạiTru rỗng là ĐÚNG (cả ba mục chỉ nêu Chương hoặc 'phân loại theo vật liệu', không có số nhóm 4 số đích danh), nên nếu không sửa câu trích thì sổ tay mất hẳn cả ba ngoại lệ. Đã bỏ đoạn lược gây ấn tượng sai, thay bằng mục (c) Cuộn băng rỗng nguyên văn (mục duy nhất trong ba mục loại trừ mà mô tả được bằng lời trong chính nguồn), và bỏ vế 'có hoặc không hộp' trong text vì vế đó đến từ wco.961220 chứ không có trong câu trích của phạm vi. Giữ nguyên cả dấu '…,' bốn chấm và lỗi gõ 'dùng cho máy đánh chữ' của nguồn. Còn lại: 2 tieuChi6 đúng (961210 lấy điều kiện 'được tẩm mực hoặc sẵn sàng để in ấn' nguyên văn dòng 10 — đây là điều kiện VÀO nhóm nên đặt fact = true là hợp lệ; 961220 lấy 'whether or not inked, with or without boxes'); 3 dong8 đủ và đúng nguồn (96122000 mô tả theo WCO vì dòng biểu thuế chỉ ghi 'Tấm mực dấu').",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Dấu lược nuốt mất danh sách loại trừ rồi nhảy sang mục (2), tạo cảm giác nhóm không loại gì; đồng thời text vương vế 'có hoặc không hộp' không có trong câu trích. Nới trích để câu nói thật về phạm vi và đưa mục loại trừ (c) vào, rồi bỏ vế thừa trong text.",
+   "sua": {
+    "text": "Ruy băng cho máy đánh chữ, máy tính hoặc bất kỳ máy nào khác có thiết bị in bằng ruy băng (đã hoặc chưa cuộn vào thành ống) và tấm mực dấu đã hoặc chưa tẩm mực dùng cho con dấu đóng ngày tháng; nhóm không gồm các cuộn băng rỗng.",
+    "trich": "(1) Các ruy băng, đã hoặc chưa cuộn vào thành ống hoặc để trong ruy băng dùng cho máy đánh chữ, máy tính hoặc bất kỳ loại máy nào khác … (2) Tấm mực dấu đã hoặc chưa tẩm mực, dùng cho con dấu đóng ngày tháng,.... … Nhóm này không bao gồm: … (c) Các cuộn băng rỗng (phân loại theo vật liệu cấu thành)."
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu"
+  }
+ ]
+}
