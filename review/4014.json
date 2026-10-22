@@ -1,0 +1,25 @@
+{
+ "nhom": "4014",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-23T01:10:00+07:00",
+ "soat": 12,
+ "daKiem": 12,
+ "xoa": 1,
+ "sua": 0,
+ "phamViSoat": "Toàn bộ 12 mục của bản nháp (1 phamVi + 2 dieuKienVao + 1 loaiTru + 1 phanBiet + 2 tieuChi6 + 5 dong8), đọc cùng tmp/so-tay/nguon/4014.txt (152 dòng: nhom4014.nhom, ch40.chuong, wco.401410/401490, tax.40141000/40149010/40149040/40149050/40149090).",
+ "ghiChu": "Audit 4014: 12 mục, XOÁ 1, sửa 0. LỖI MÁY KHÔNG BẮT (loại 'ghép hai câu xa nhau' + 'câu trích không nói điều mục khẳng định'): `dieuKienVao[1]` khẳng định `thuoc_loai_dung_cho_muc_dich_ve_sinh_hoac_phong_benh = true`, nhưng câu trích của nó ('Bởi vậy nó bao gồm, không kể những cái khác, bao tránh thai, ống dẫn lưu, bơm tiêm...') là DANH SÁCH VÍ DỤ chứ KHÔNG hề nói về mục đích sử dụng; cụm 'thuộc loại dùng cho các mục đích vệ sinh hoặc phòng bệnh' nằm ở câu TRƯỚC — tức mục khẳng định điều lấy từ câu khác, đúng loại lỗi bảng mục 1 của docs/giao-viec/so-tay-giao-ngoai.md. Thêm nữa câu trích mở bằng 'Bởi vậy nó bao gồm' (hệ quả của câu định nghĩa nhóm) đúng dạng câu-mở-rộng mà _he-thong.txt dòng 28 cấm đặt value=true. Giữ lại `dieuKienVao[0]` vì câu định nghĩa nhóm nói thẳng điều kiện vào ('bao gồm hàng hóa bằng cao su lưu hoá trừ cao su cứng') và `ngoaiTru:['cao su cứng']` đúng chiều (cao su cứng bị TRƯỢC ra khỏi nhóm, không phải 'trên ngưỡng thì sang nhóm khác'). GIỮ CÓ LÝ DO: `phanBiet[0]` — nhánh 'có' (40141000) không xuất hiện trong câu trích, nhưng mã đó NẰM TRONG nhóm 4014 nên luật 4 (mã ngoài nhóm phải có trong trích) không áp dụng; nhánh 'không' có căn cứ ngay trong trích ('excluding sheath contraceptives') chứ không suy từ danh sách loại trừ hay cấu trúc anh em. `cay.tenDien` để trống là ĐÚNG — check-cay báo nhóm 4014 'đủ tên nút ảo'.",
+ "thayDoi": [
+  { "index": "phamVi", "hanhDong": "giu", "lyDo": "Text diễn đạt lại đúng câu định nghĩa nhóm, không thêm chữ ngoài trich." },
+  { "index": "dieuKienVao[0]", "hanhDong": "giu", "lyDo": "Điều kiện vào nhóm do chính câu định nghĩa nhóm nêu; ngoaiTru đúng chiều vì 'cao su cứng' bị trừ ra khỏi nhóm." },
+  { "index": "dieuKienVao[1]", "hanhDong": "xoa", "lyDo": "Câu trích là danh sách ví dụ ('Bởi vậy nó bao gồm, không kể những cái khác, bao tránh thai, ống dẫn lưu, bơm tiêm...') chứ không nói gì về 'dùng cho mục đích vệ sinh hoặc phòng bệnh' — vế đó nằm ở câu trước, đã thuộc `phamVi`. Mục khẳng định điều lấy từ câu khác là lỗi 'ghép hai câu xa nhau'; giữ lại sẽ đưa một điều kiện không có căn cứ vào prompt. Không sửa câu trích/mã để lách — xoá hẳn theo luật 8." },
+  { "index": "loaiTru[0]", "hanhDong": "giu", "lyDo": "Loại trừ dứt khoát, nêu đích danh 'nhóm 40.15' trong chính câu trích." },
+  { "index": "phanBiet[0]", "hanhDong": "giu", "lyDo": "Hỏi không nhắc mã; nhánh 'không' có căn cứ trực tiếp trong trích ('excluding sheath contraceptives'), nhánh 'có' là mã trong chính nhóm (luật 4 không áp dụng)." },
+  { "index": "tieuChi6[0]", "hanhDong": "giu", "lyDo": "Tên WCO 401410 'sheath contraceptives' làm căn cứ cho tiêu chí 'là bao tránh thai'." },
+  { "index": "tieuChi6[1]", "hanhDong": "giu", "lyDo": "Tên WCO 401490 '(excluding sheath contraceptives)' làm căn cứ cho tiêu chí 'không phải bao tránh thai'." },
+  { "index": "dong8[0]", "hanhDong": "giu", "lyDo": "Trích khớp [tax.40141000]; dòng duy nhất của phân nhóm 4014.10." },
+  { "index": "dong8[1]", "hanhDong": "giu", "lyDo": "Trích khớp [tax.40149010]." },
+  { "index": "dong8[2]", "hanhDong": "giu", "lyDo": "Trích khớp [tax.40149040] (nguồn có khoảng trắng cuối dòng, bản nháp đã cắt — gate byte-exachtận, không sai nghĩa)." },
+  { "index": "dong8[3]", "hanhDong": "giu", "lyDo": "Trích khớp [tax.40149050]." },
+  { "index": "dong8[4]", "hanhDong": "giu", "lyDo": "Trích khớp [tax.40149090]; loaiKhac=true đúng vì tên dòng là 'Loại khác'." }
+ ]
+}

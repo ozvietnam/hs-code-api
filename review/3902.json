@@ -1,0 +1,32 @@
+{
+ "nhom": "3902",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-23T02:00:00+07:00",
+ "soat": 18,
+ "daKiem": 18,
+ "xoa": 0,
+ "sua": 0,
+ "phamViSoat": "Toàn bộ 18 mục của bản nháp (1 phamVi + 2 dieuKienVao + 3 loaiTru + 4 tieuChi6 + 8 dong8; phanBiet rỗng), đọc cùng tmp/so-tay/nguon/3902.txt ([nhom3902.nhom] dòng 3–12, [ch39.chuong] 14–406, [sen.39029010], [sen.3902], [wco.390210/220/230/290], [tax.*] 8 dòng).",
+ "ghiChu": "Audit 3902: 18 mục, KHÔNG sửa, KHÔNG xoá. ĐIỂM MẤU CHỐT đã soi kỹ và kết luận GIỮ: `loaiTru[1]` (3208) và `loaiTru[2]` (3506) cùng loại với hai mục đã xoá ở nhóm 3914, nhưng ở đây CHÍNH XÁC là hợp lệ — phạm vi hai câu trích là 'các nhóm 39.01 đến 39.13', và 39.02 NẰM TRONG khoảng đó (với 3914 thì 39.14 nằm NGOÀI, nên bị xoá). Đây là ranh giới phải soi tay chứ máy không phân biệt được. `phanBiet` rỗng là ĐÚNG và em đã tự xác minh lý do, không tin báo cáo phiên trước: khối [ch39.chuong] trong tệp nguồn bị CẮT CỤT giữa chữ — câu (4) của Chú giải phân nhóm 1 dừng ở 'Do đó, ví dụ, một copolyme etyle' (dòng ~403), đúng chỗ ví dụ phân loại 3902.30 nằm. Không đoán nổi mã đích nên không ghi là đúng luật. LỖI KỆ SÁCH cần báo người quản lý: CAP.chuong = 40.000 ký tự trong scripts/build-so-tay.mjs, chú giải Chương 39 dài 44.853 ký tự → mất 4.853 ký tự cuối; nên cân nhắc nới trần hoặc cắt theo mốc câu. Đã soi thêm: `dieuKienSo` là TRƯỜNG CÓ THẬT (lib/so-tay.js:244 và lib/so-tay-gates.js dùng vào, kho đã có 244 dòng ở 44 nhóm) nên hai ngưỡng 10 %/1 mm và ≥ 90 %/5 mm là dữ liệu sống, không bị bỏ rơi; hai ngưỡng đều có mặt trong câu trích. `dong8[1]` (39021040) là mục hơi lệch chuẩn: `nguon` là sen.3902 nhưng vế đầu của `dieuKien` ('Dạng hạt, viên, hạt cườm, vẩy, mảnh') lấy từ [tax.39021040]; người soạn đã tự ghi rõ '(dòng biểu thuế 39021040)' trong chính câu đó để không lấn át nguồn → chấp nhận được, không phải 'thêm hiểu biết riêng'. `loaiTru[2]` dài ~460 ký tự nhưng là MỘT câu pháp lý nguyên văn, không phải ghép hai câu xa.",
+ "canhBao": "Lỗi kệ sách: chú giải Chương 39 bị scripts/build-so-tay.mjs cắt cụt ở 40.000 ký tự (mất 4.853 ký tự cuối, cắt giữa chữ tại 'một copolyme etyle'). Hậu quả trực tiếp: phanBiet của 3902 không thể soạn. Không sửa trong lô này.",
+ "thayDoi": [
+  { "index": "phamVi", "hanhDong": "giu", "lyDo": "Chép đúng hai câu đầu [nhom3902.nhom]; không có ngoại lệ bị lược." },
+  { "index": "dieuKienVao[0]", "hanhDong": "giu", "lyDo": "Điều kiện vào nhóm nói thẳng 'trừ etylen'; ngoaiTru=['etilen'] đúng chiều (etilen là nhóm 39.01)." },
+  { "index": "dieuKienVao[1]", "hanhDong": "giu", "lyDo": "Câu 'Các nhóm 39.01 đến 39.14 chỉ gồm những hàng hóa ở dạng nguyên sinh' có nêu 39.02 (thuộc khoảng) nên áp dụng thật." },
+  { "index": "loaiTru[0]", "hanhDong": "giu", "lyDo": "Loại trừ dứt khoát ngay trong [nhom3902.nhom], nêu đích danh 'nhóm 27.10'; không mâu thuẫn với câu ngay trước (PIB thỏa mãn Chú giải 3(a) vẫn được bao gồm)." },
+  { "index": "loaiTru[1]", "hanhDong": "giu", "lyDo": "Chú giải 2(e) Chương 39 giới hạn 'nhóm 39.01 đến 39.13' — 39.02 NẰM TRONG khoảng nên loại trừ này áp dụng thật cho nhóm đang soạn (khác hẳn 3914)." },
+  { "index": "loaiTru[2]", "hanhDong": "giu", "lyDo": "Chú giải 2(b) Chương 39 cùng phạm vi 39.01–39.13, 39.02 nằm trong khoảng; câu trích dài nhưng nguyên văn một câu." },
+  { "index": "tieuChi6[0]", "hanhDong": "giu", "lyDo": "wco.390210 'polypropylene in primary forms' làm căn cứ." },
+  { "index": "tieuChi6[1]", "hanhDong": "giu", "lyDo": "wco.390220 'polyisobutylene in primary forms' làm căn cứ." },
+  { "index": "tieuChi6[2]", "hanhDong": "giu", "lyDo": "wco.390230 'propylene copolymers in primary forms' làm căn cứ." },
+  { "index": "tieuChi6[3]", "hanhDong": "giu", "lyDo": "wco.390290 'n.e.c. in heading no. 3902' làm căn cứ cho tiêu chí 'polyme olefin khác thuộc nhóm 3902'." },
+  { "index": "dong8[0]", "hanhDong": "giu", "lyDo": "Trích khớp [tax.39021030]; tieuChi 'dạng phân tán' lấy đúng tên dòng." },
+  { "index": "dong8[1]", "hanhDong": "giu", "lyDo": "Đủ hai ngưỡng 10 %/1 mm và ≥ 90 %/5 mm lấy từ [sen.3902], đều có mặt trong câu trích; vế tên dạng đã ghi rõ nguồn trong chính câu." },
+  { "index": "dong8[2]", "hanhDong": "giu", "lyDo": "Trích khớp [tax.39021090]; loaiKhac=true đúng." },
+  { "index": "dong8[3]", "hanhDong": "giu", "lyDo": "Trích khớp [tax.39022000]." },
+  { "index": "dong8[4]", "hanhDong": "giu", "lyDo": "Trích khớp [tax.39023030]; tieuChi lấy đúng tên dòng 'Dạng lỏng hoặc dạng nhão'." },
+  { "index": "dong8[5]", "hanhDong": "giu", "lyDo": "Trích khớp [tax.39023090]; loaiKhac=true đúng." },
+  { "index": "dong8[6]", "hanhDong": "giu", "lyDo": "Trích khớp [tax.39029010]; hậu tố (SEN) có thật trong dòng biểu thuế." },
+  { "index": "dong8[7]", "hanhDong": "giu", "lyDo": "Trích khớp [tax.39029090]; loaiKhac=true đúng. Đủ cả 8 dòng biểu thuế của nhóm." }
+ ]
+}
