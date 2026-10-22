@@ -1,0 +1,43 @@
+{
+  "nhom": "6302",
+  "nguoiSoat": "soat-doc-lap-011 (phiên Claude soát độc lập — KHÔNG phải người soạn dev-zcode-mm)",
+  "luc": "2026-10-22T15:40:00+07:00",
+  "soat": 53,
+  "daKiem": 53,
+  "xoa": 0,
+  "sua": 1,
+  "ghiChu": "Audit 6302: 1 phamVi + 0 dieuKienVao + 4 loaiTru + 2 phanBiet + 0 boPhan + 21 tieuChi6 + 5 cay.tenDien + 20 dong8 = 53 mục. Đọc HẾT nguồn [nhom6302.nhom] + [ch63.chuong] + [phan63.phan] + 15 khối [wco.*] + 20 khối [tax.*]; đối chiếu từng câu trích NGUYÊN VĂN (máy soát trên chuỗi đã bóc dấu câu nên không bắt lỗi ký tự — em so thêm bằng _verbatim.mjs: 0 mục lệch). Kết quả: 52/53 giữ nguyên, 1 sửa, 0 xoá. SỬA 1 (phanBiet[1], lỗi máy KHÔNG bắt được): câu trích chỉ có Chú giải 2(b) của Chương 63 nhưng mục biến nó thành QUY TẮC NHỊ PHÂN 'đã qua sử dụng → 6309', trong khi Chú giải 3 ngay 20 dòng dưới trong CÙNG nguồn nói 6309 chỉ chứa hàng thoả CẢ HAI điều kiện (còn mặc được + đóng gói cỡ lớng/kiện/bao). Câu hỏi cũ nói hơn nguồn — đúng loại lỗi 'mất điều kiện ngay sau câu trích'. GIỮ có lý do: (1) loaiTru[0] khăn lau → 6307 giữ nguyên định ngữ giới hạn 'các sản phẩm này thường được làm bằng các vật liệu thô dày' đúng luật; (2) loaiTru chỉ ghi 4 mục có mã đích danh — KHÔNG ghi câu 'các sản phẩm này thường được phân loại trong nhóm 63.04' vì nguồn nói 'thường' (đúng luật loai-tru-chi-la-thuong), nhưng câu này ĐÃ được kéo nguyên văn vào chính câu trích của phamVi; (3) tieuChi6/cay.tenDien/dong8 lấy đúng tên WCO, đúng cấp 6 số, đủ 20/20 dòng tax.*; (4) dieuKienVao rỗng là ĐÚNG: nguồn chỉ có câu 'thường làm từ bông hoặc lanh… thỉnh thoảng làm bằng sợi gai dầu' (có định ngữ mềm), còn định nghĩa 'hoàn thiện' ở Chú giải 7 Phần XI không áp cho Chương 63 (Chú giải 8 nói rõ Chương 50–55 và 60, các Chương 56–59 trừ khi có yêu cầu khác).",
+  "thayDoi": [
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "Câu hỏi cũ 'Sản phẩm đã qua sử dụng chưa?' (có → 6309 / không → 6302) biến CÂU LOẠI TRỪ của Chú giải 2(b) thành quy tắc nhị phân, và câu đó NÓI HƠN NGUỒN: Chú giải 3 Chương 63 (ngay trong khối [ch63.chuong] của đúng tệp nguồn này) quy định 6309 chỉ bao gồm hàng thoả mãn CẢ HAI điều kiện — (i) có ký hiệu là hàng còn mặc được, (ii) được thể hiện ở dạng đóng gói cỡ lớn hoặc kiện, bao hoặc các kiểu đóng gói tương tự. Không kéo hai điều kiện này vào thì sổ tay bảo người khai 'hàng đã qua sử dụng → 6309', trong khi một chiếc khăn dùng đơn lẻ không đủ điều kiện. Máy không bắt được vì câu trích vẫn nguyên văn và mã 63.09 vẫn có trong câu.",
+      "sua": {
+        "hoi": "Sản phẩm đã qua sử dụng, có ký hiệu là hàng còn mặc được và đóng gói ở dạng cỡ lớng/kiện hoặc bao không?",
+        "trich": "(b) Quần áo đã qua sử dụng hoặc các mặt hàng đã qua sử dụng khác thuộc nhóm 63.09 … Để được xếp vào nhóm này, các mặt hàng nêu ở trên phải thoả mãn cả hai điều kiện sau đây: … (i) Chúng phải có ký hiệu là hàng còn mặc được, và … (ii) Chúng phải được thể hiện ở dạng đóng gói cỡ lớn hoặc kiện, bao hoặc các kiểu đóng gói tương tự."
+      }
+    }
+  ],
+  "canhBaoKhongSuaTrongAudit": [
+    {
+      "loai": "phamVi.trich dài 401 ký tự (>300 của bản nháp, dưới trần 600 của máy)",
+      "lyDo": "GIỮ có lý do: trích phải nói đủ 4 mục (1)–(4) vì phamVi.text khẳng định cả bốn, và phải mang theo câu ngoại lệ 'khăn phủ giữa bàn bằng ren, nhung, thêu kim tuyến (gấm) … thường được phân loại trong nhóm 63.04' — rút xuống ≤300 chỉ được bằng cách nuốt mất ngoại lệ (lỗi soát phải bắt). Đã kiểm đoạn lược `…`: không đoạn nào bị lược chứa ngoại lệ áp vào chính mệnh đề mà phamVi khẳng định."
+    },
+    {
+      "loai": "phanBiet trùng cặp với loaiTru (phanBiet[0] 5603 và phanBiet[1] 6309 lặp đúng loaiTru[1] và loaiTru[3])",
+      "lyDo": "Không sai về căn cứ — cùng một câu nguồn, cùng chiều. Nhưng đây là mẫu MỚI: quét 90 nhóm sổ tay đã gộp thì KHÔNG nhóm nào có phanBiet trùng cặp với loaiTru (318 mục có neuKhong = chính nhóm của nó, 162 mục có neuKhong = mã khác, 0 mục trùng). Đề xuất cho người quản lý: hoặc chấp nhận và ghi thành quy ước, hoặc đưa thành luật máy 'phanBiet không được lặp cặp (neuCo,neuKhong) đã có trong loaiTru'. Em không tự xoá vì hai khối này phục vụ hai nơi khác nhau (canGiaiTrinh đọc loaiTru; prompt sổ tay đọc cả hai) và cả hai đều trung thực với nguồn."
+    },
+    {
+      "loai": "loaiTru thiếu mục (a) của Chú giải tổng quát Chương 63 — 'Các sản phẩm mềm xơ thuộc nhóm 56.01'",
+      "lyDo": "Câu này CÓ nêu đích danh 56.01 và có thể ghi thành loaiTru, nhưng người soạn đã bỏ. Không chèn vì việc chèn là mở rộng phạm vi soát, không phải sửa lỗi; và mẫu vải mềm xơ (5601) trùng lẫn với khăn trong thực tế khai báo, nên để người quản lý quyết định có muốn bổ sung hay không."
+    },
+    {
+      "loai": "cây cảm giác 'không dệt hoặc móc' trong tên tiếng Việt tự điền (630222, 630232, 630251, 630259)",
+      "lyDo": "Tiếng Anh 'not knitted or crocheted' dịch sát là 'không dệt hoặc móc' nhưng có thể đọc nhầm thành phủ định cả hai vế. Rõ hơn là 'không dệt kim hoặc móc'. Không sửa vì tên điền cây được dùng để HIỂN THỊ và câu trích WCO là giữ nguyên; ghi ở đây để các lô sau dùng 'không dệt kim hoặc móc'."
+    },
+    {
+      "loai": "tieuChi6 của 630231 / 630232 / 630239 / 630253 / 630293 chỉ ghi vật liệu, không ghi 'không in' dù tên WCO có",
+      "lyDo": "Thiếu độ phủ, KHÔNG phải sai (không có mục nào khẳng định sai). Ghi để người quản lý biết bộ tiêu chí chưa cân đối: 630221/630222/630229 có fact 'duoc_in_hoa' còn nhóm 'không in' thì không."
+    }
+  ]
+}

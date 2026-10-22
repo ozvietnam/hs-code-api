@@ -1,0 +1,187 @@
+{
+ "nhom": "9607",
+ "phamVi": {
+  "text": "Khoá kéo thuộc mọi kích thước và cho mọi mục đích sử dụng (quần áo, giầy, các đồ du lịch), cùng các phụ tùng của khoá kéo.",
+  "nguon": "nhom9607.nhom",
+  "trich": "(1) Các khoá kéo thuộc mọi kích thước và cho mọi mục đích sử dụng (quần áo, giầy, các đồ du lịch, v.v.) … 2) Các phụ tùng của khoá kéo, ví dụ răng xích, con trượt, cái mảnh khoá đuôi, đầu, và các dải dài khác nhau gắn răng xích (phéc mơ tuya).",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Đồ trang sức làm bằng chất liệu khác",
+   "sangNhom": "7117",
+   "nguon": "ch96.chuong",
+   "trich": "(c) Đồ trang sức làm bằng chất liệu khác (nhóm 71.17);",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Khoá kéo có răng làm bằng kim loại cơ bản không?",
+   "neuCo": "96071100",
+   "neuKhong": "96071900",
+   "nguon": "wco.960719",
+   "trich": "960719 Slide fasteners; other than those fitted with chain scoops of base metal",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "960711",
+   "fact": "co_rang_bang_kim_loai_co_ban",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.960711",
+   "trich": "960711 Slide fasteners; fitted with chain scoops of base metal",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "960719",
+   "fact": "khong_co_rang_bang_kim_loai_co_ban",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.960719",
+   "trich": "960719 Slide fasteners; other than those fitted with chain scoops of base metal",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "960720",
+   "fact": "la_bo_phan_khoa_keo",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.960720",
+   "trich": "960720 Slide fasteners; parts",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "96071100",
+   "dieuKien": "Khoá kéo có răng làm bằng kim loại cơ bản",
+   "tieuChi": {
+    "fact": "co_rang_bang_kim_loai_co_ban",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.96071100",
+   "trich": "96071100 - - Có răng bằng kim loại cơ bản",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "96071900",
+   "dieuKien": "Loại khác: khoá kéo không có răng bằng kim loại cơ bản (phân nhóm 960719, tên WCO 960719)",
+   "tieuChi": {
+    "fact": "khong_co_rang_bang_kim_loai_co_ban",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "wco.960719",
+   "trich": "960719 Slide fasteners; other than those fitted with chain scoops of base metal",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "96071",
+    "truAnhEm": [
+     "96071100"
+    ],
+    "toTienCoTen": "9607",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "96072000",
+   "dieuKien": "Bộ phận của khoá kéo",
+   "tieuChi": {
+    "fact": "la_bo_phan_khoa_keo",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.96072000",
+   "trich": "96072000 - Bộ phận",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "9607",
+    "cap": 4,
+    "cha": "96",
+    "tenVi": "Khóa kéo và các bộ phận của chúng.",
+    "tenEn": "Slide fasteners and parts thereof",
+    "suyRa": false
+   },
+   {
+    "id": "96071",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "9607",
+    "tenVi": "Khóa kéo",
+    "tenEn": "Slide fasteners",
+    "suyRa": true
+   },
+   {
+    "id": "96071100",
+    "cap": 8,
+    "cha": "96071",
+    "tenVi": "Có răng bằng kim loại cơ bản",
+    "tenEn": "Slide fasteners; fitted with chain scoops of base metal",
+    "suyRa": false,
+    "laPhanNhom": "960711"
+   },
+   {
+    "id": "96071900",
+    "cap": 8,
+    "cha": "96071",
+    "tenVi": "Loại khác",
+    "tenEn": "Slide fasteners; other than those fitted with chain scoops of base metal",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "960719"
+   },
+   {
+    "id": "96072000",
+    "cap": 8,
+    "cha": "9607",
+    "tenVi": "Bộ phận",
+    "tenEn": "Slide fasteners; parts",
+    "suyRa": false,
+    "laPhanNhom": "960720"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch96.chuong",
+  "nhom9607.nhom",
+  "tax.96071100",
+  "tax.96072000",
+  "wco.960711",
+  "wco.960719",
+  "wco.960720"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-22T07:50:51.565Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

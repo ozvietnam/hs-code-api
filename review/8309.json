@@ -1,0 +1,21 @@
+{
+  "nhom": "8309",
+  "nguoiSoat": "soat-doc-lap-011 (phiên Claude soát độc lập — KHÔNG phải người soạn dev-zcode-mm)",
+  "luc": "2026-10-22T15:40:00+07:00",
+  "soat": 13,
+  "daKiem": 13,
+  "xoa": 0,
+  "sua": 0,
+  "ghiChu": "Audit 8309: 1 phamVi + 0 dieuKienVao + 0 loaiTru + 0 phanBiet + 0 boPhan + 2 tieuChi6 + 10 dong8 = 13 mục. Đọc HẾT [nhom8309.nhom] (10 mục), [ch83.chuong], [phan83.phan], 2 khối [wco.*], 10 khối [tax.*]. Kết quả: 13/13 GIỮ NGUYÊN, 0 sửa, 0 xoá — nhóm sạch nhất của lô. Cơ sở: (1) phamVi chép trọn câu mở đầu kể cả dấu '…' CÓ SẴN trong nguồn và không lược mất gì; (2) loaiTru/phanBiet/dieuKienVao rỗng là ĐÚNG: chú giải nhóm có câu loại trừ duy nhất là 'Nhóm này không bao gồm những nút cơ học phần lớn làm bằng nhựa, sứ...' nhưng câu đó KHÔNG nêu mã nhóm đích (còn bị cắt cụt bởi dấu '…' của chính nguồn) nên không thể ghi loaiTru/phanBiet theo luật 3; (3) tieuChi6 lấy đúng tên WCO cấp 6 số; (4) dong8 đủ 10/10 dòng tax.*, trong đó 4 dòng trùng chữ (83099081/89/91/99) đã ghi rõ 'nguồn không phân biệt được; đối chiếu biểu thuế' đúng luật 25 — không đoán. Em đã kiểm riêng với _verbatim.mjs (so NGUYÊN VĂN, không bóc dấu câu): 0 mục lệch, 0 trích vượt 300 ký tự.",
+  "thayDoi": [],
+  "canhBaoKhongSuaTrongAudit": [
+    {
+      "loai": "tieuChi6[830910] dùng từ WCO 'corks' → fact 'la_nut_hoi_bang_kim_loai_co_ban', trong khi dòng biểu thuệ 83091000 ghi 'Nắp hình vương miện'",
+      "lyDo": "Giữ nguyên và nêu ra để người quản lý biết: (a) luật 10 CẤM lấy tieuChi6 từ tax.*, nên khi dòng biểu thuế có tên riêng thì tên phân nhóm phải lấy từ wco.<6 số> — người soạn làm đúng luật; (b) 'corks' ở đây chính là viên nút/nắp kim loại (crown cap), cùng vật với 'Nắp hình vương miện' của biểu thuệ, không mâu thuẫn. Điểm cần người quản lý quyết: tiếng Việt của 'corks' là 'nút hơi' hay 'viên nút' — repo không có nguồn để đối chiếu, em không tự sửa chữ."
+    },
+    {
+      "loai": "chú giải nhóm có câu loại trừ 'Nhóm này không bao gồm những nút cơ học phần lớn làm bằng nhựa, sứ...' nhưng sổ tay không ghi được",
+      "lyDo": "Câu bị cắt cụt bởi dấu '…' CÓ SẴN trong nguồn và không nêu mã nhóm đích, nên không ghi loaiTru/phanBiet được. Ghi ở đây như một gạch đầu dòng về kệ sách: chú giải nhóm 8309 có dấu '…' khiến câu loại trừ bị bỏ nửa."
+    }
+  ]
+}

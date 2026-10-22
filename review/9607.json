@@ -1,0 +1,29 @@
+{
+  "nhom": "9607",
+  "nguoiSoat": "soat-doc-lap-011 (phiên Claude soát độc lập — KHÔNG phải người soạn dev-zcode-mm)",
+  "luc": "2026-10-22T15:40:00+07:00",
+  "soat": 9,
+  "daKiem": 9,
+  "xoa": 0,
+  "sua": 0,
+  "ghiChu": "Audit 9607: 1 phamVi + 0 dieuKienVao + 1 loaiTru + 1 phanBiet + 0 boPhan + 3 tieuChi6 + 3 dong8 = 9 mục. Đọc HẾT [nhom9607.nhom], [ch96.chuong] (13 mục loại trừ của Chương 96), 3 khối [wco.*], 3 khối [tax.*]. Kết quả: 9/9 GIỮ NGUYÊN, 0 sửa, 0 xoá. GIỮ có lý do: (1) loaiTru 'Đồ trang sức làm bằng chất liệu khác → 7117' lấy từ Chú giải 1(c) Chương 96 — loại trừ cấp Chương áp cho mọi nhóm trong Chương, dùng làm loaiTru cấp nhóm là đúng, và mã 71.17 có trong câu trích; (2) dieuKienVao rỗng là ĐÚNG: chú giải nhóm không có điều kiện vào nhóm (mục 4 của Chú giải Chương 96 nói về kim loại quý nhưng là quy tắc CHUNG của Chương, không phải điều kiện riêng của 9607); (3) tieuChi6 lấy đúng tên WCO cấp 6 số; (4) dong8 đủ 3/3 dòng tax.*; (5) phamVi nối mục (1) và mục 2) bằng '…' qua đoạn mô tả cấu tạo khoá kéo — đoạn lược không có ngoại lệ.",
+  "thayDoi": [],
+  "canhBaoKhongSuaTrongAudit": [
+    {
+      "loai": "phanBiet[0] — câu trích chỉ có vế 960719, nhánh 'CÓ' (96071100) suy từ chữ 'other than'",
+      "lyDo": "Em ĐÃ thử sửa bằng cách lấy cả hai tên phân nhóm WCO ('960711 … fitted with chain scoops of base metal … 960719 … other than …') thì máy loại 'trich-khong-co-trong-nguon': mỗi mục chỉ được trích từ MỘT khối nguồn, mà 960711 và 960719 là hai khối [wco.*] riêng. Không sửa được mà không phá luật. GIỮ nguyên: nhánh 'CÓ' vẫn có căn cứ nguyên văn trong sổ tay, ở tieuChi6[960711] (fact 'co_rang_bang_kim_loai_co_ban', trích '960711 Slide fasteners; fitted with chain scoops of base metal'), và chiều nhánh đã đúng. Đề xuất cho người quản lý: nếu muốn phanBiet tự nói được cả hai nhánh thì phải đổi lược đoạn — ví dụ cho phép trích ghép 2 khối wco liên tiếp — chứ không sửa vội trong lô này."
+    },
+    {
+      "loai": "'chain scoops' được dịch thành 'răng' trong fact/dieuKien (không phải 'răng xích')",
+      "lyDo": "Giữ: chính dòng biểu thuệ 96071100 trong nguồn ghi 'Có răng bằng kim loại cơ bản', nên sổ tay bám đúng cách gọi chính thức. Chú giải nhóm có dùng 'răng xích' ở mục phụ tùng nhưng câu đó nói về phụ tùng, không nói về phân nhóm 9607.11. Ghi để các lô sau cân nhắc dùng 'răng xích' khi trích từ wco.*."
+    },
+    {
+      "loai": "dong8[96071900].dieuKien có ngoặc thừa '(phân nhóm 960719, tên WCO 960719)'",
+      "lyDo": "Lặp mã hai lần, chỉ là lỗi câu chữ, không ảnh hưởng nghĩa. Không sửa để tránh nhiễu diff — nêu ra để người quản lý thấy khi đọc PR."
+    },
+    {
+      "loai": "dong8[96071900] lấy nguồn wco.960719 thay vì tax.96071900 ('Loại khác')",
+      "lyDo": "Không sai: dòng biểu thuế chỉ ghi 'Loại khác' nên điều kiện phải lấy từ tên WCO — đúng luật 6/20. Đây là mẫu đã có 275 dòng trong sổ tay đã gộp."
+    }
+  ]
+}
