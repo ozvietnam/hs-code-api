@@ -12,12 +12,16 @@ import fs from 'fs';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const { dataPath, dataReadPath } = require('../lib/data-paths.js');
+const { tenZhOf } = require('../lib/bieu-thue-zh.js');
 
 export function buildSearchIndex(tax) {
   return Object.keys(tax).sort().map((hs) => ({
     hs,
     vn: tax[hs].vn,
     cs: String(tax[hs].cs || '').trim() ? '1' : '0',
+    // Tên tiếng Trung cấp 6 số (PR #356): chỉ ~nửa số mã có — Vercel cold-start
+    // đọc cả tệp 1,3 MB mỗi lần nên nạp sẵn vào index thay vì tra runtime.
+    ...(tenZhOf(hs) ? { zh: tenZhOf(hs) } : {}),
   }));
 }
 

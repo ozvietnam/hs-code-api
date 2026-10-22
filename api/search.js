@@ -139,6 +139,7 @@ module.exports = function handler(req, res) {
         hs: item.hsCode,
         vn: item.nameVi,
         cs: item.hasPolicyWarning ? '1' : '0',
+        zh: item.nameZh || null,
       },
       full
     );
