@@ -1,0 +1,562 @@
+{
+ "nhom": "4013",
+ "phamVi": {
+  "text": "Săm được lắp vào lốp của, ví dụ, ô tô con, xe rơ-moóc hoặc xe đạp.",
+  "nguon": "nhom4013.nhom",
+  "trich": "Săm được lắp vào lốp của, ví dụ, ô tô con, xe rơ-moóc hoặc xe đạp.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_sam_lap_vao_lop",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom4013.nhom",
+   "trich": "Săm được lắp vào lốp của, ví dụ, ô tô con, xe rơ-moóc hoặc xe đạp.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "lam_toan_bo_tu_cao_su_hoac_co_dac_tinh_co_ban_cua_hang_hoa_dan_xuat_tu_cao_su",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "sản phẩm bị loại trừ theo Chú giải 2 của Chương 40"
+   ],
+   "nguon": "ch40.chuong",
+   "trich": "Chương này bao gồm cao su, như đã định nghĩa ở trên, ở dạng nguyên liệu thô hay bán thành phẩm, … và các sản phẩm làm toàn bộ từ cao su hoặc có đặc tính cơ bản của hàng hoá dẫn xuất từ cao su, trừ những sản phẩm bị loại trừ theo Chú giải 2 của Chương này.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "cao_su_da_luu_hoa",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "cao su cứng"
+   ],
+   "nguon": "ch40.chuong",
+   "trich": "(e) Các nhóm từ nhóm 40.07 đến nhóm 40.16 bao gồm các bán thành phẩm và các sản phẩm của cao su đã lưu hoá, trừ cao su cứng.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "401310",
+   "fact": "dung_cho_o_to_con_va_xe_khach_xe_cho_hang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.401310",
+   "trich": "401310 Rubber; inner tubes, of a kind used on motorcars (including station wagons and racing cars), buses and lorries",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "401310",
+   "fact": "loai_phuong_tien_su_dung",
+   "op": "=",
+   "value": "motorcars (including station wagons and racing cars), buses and lorries",
+   "donVi": null,
+   "nguon": "wco.401310",
+   "trich": "401310 Rubber; inner tubes, of a kind used on motorcars (including station wagons and racing cars), buses and lorries",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "401320",
+   "fact": "dung_cho_xe_dap",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.401320",
+   "trich": "401320 Rubber; inner tubes, of a kind used on bicycles",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "401390",
+   "fact": "la_sam_khac_trong_nhom_4013",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.401390",
+   "trich": "401390 Rubber; inner tubes, n.e.c. in heading no. 4013",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "40131011",
+   "dieuKien": "Săm của phân nhóm 4013.10 (tên WCO: inner tubes, of a kind used on motorcars (including station wagons and racing cars), buses and lorries), thuộc tiêu đề quốc gia 4013101 (tên tiêu đề không có trong nguồn — đối chiếu biểu thuế): dùng cho loại lốp có chiều rộng không quá 450 mm",
+   "tieuChi": {
+    "fact": "chieu_rong",
+    "op": "<=",
+    "value": 450,
+    "donVi": "mm"
+   },
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ],
+   "nguon": "tax.40131011",
+   "trich": "40131011 - - - Dùng cho loại lốp có chiều rộng không quá 450 mm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40131019",
+   "dieuKien": "Săm của phân nhóm 4013.10 (tên WCO: inner tubes, of a kind used on motorcars (including station wagons and racing cars), buses and lorries), thuộc tiêu đề quốc gia 4013101 (tên tiêu đề không có trong nguồn — đối chiếu biểu thuế): dùng cho loại lốp có chiều rộng trên 450 mm. Khác 40131011 ở chiều rộng (trên 450 mm)",
+   "tieuChi": {
+    "fact": "chieu_rong",
+    "op": ">",
+    "value": 450,
+    "donVi": "mm"
+   },
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": ">",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ],
+   "nguon": "tax.40131019",
+   "trich": "40131019 - - - Dùng cho loại lốp có chiều rộng trên 450 mm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40131021",
+   "dieuKien": "Săm của phân nhóm 4013.10 (tên WCO: inner tubes, of a kind used on motorcars (including station wagons and racing cars), buses and lorries), thuộc tiêu đề quốc gia 4013102 (tên tiêu đề không có trong nguồn — đối chiếu biểu thuế): dùng cho loại lốp có chiều rộng không quá 450 mm",
+   "tieuChi": {
+    "fact": "chieu_rong",
+    "op": "<=",
+    "value": 450,
+    "donVi": "mm"
+   },
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ],
+   "nguon": "tax.40131021",
+   "trich": "40131021 - - - Dùng cho loại lốp có chiều rộng không quá 450 mm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40131029",
+   "dieuKien": "Săm của phân nhóm 4013.10 (tên WCO: inner tubes, of a kind used on motorcars (including station wagons and racing cars), buses and lorries), thuộc tiêu đề quốc gia 4013102 (tên tiêu đề không có trong nguồn — đối chiếu biểu thuế): dùng cho loại lốp có chiều rộng trên 450 mm. Khác 40131021 ở chiều rộng (trên 450 mm)",
+   "tieuChi": {
+    "fact": "chieu_rong",
+    "op": ">",
+    "value": 450,
+    "donVi": "mm"
+   },
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": ">",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ],
+   "nguon": "tax.40131029",
+   "trich": "40131029 - - - Dùng cho loại lốp có chiều rộng trên 450 mm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40132000",
+   "dieuKien": "Săm dùng cho xe đạp (tên WCO: inner tubes, of a kind used on bicycles)",
+   "tieuChi": {
+    "fact": "dung_cho_xe_dap",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.40132000",
+   "trich": "40132000 - Loại dùng cho xe đạp",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40139011",
+   "dieuKien": "Săm dùng cho máy thuộc nhóm 84.29 hoặc 84.30 (tiêu đề quốc gia 4013901, tên tiêu đề không có trong nguồn — đối chiếu biểu thuế): dùng cho loại lốp có chiều rộng không quá 450 mm",
+   "tieuChi": {
+    "fact": "chieu_rong",
+    "op": "<=",
+    "value": 450,
+    "donVi": "mm"
+   },
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ],
+   "nguon": "tax.40139011",
+   "trich": "40139011 - - - Dùng cho loại lốp có chiều rộng không quá 450 mm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40139019",
+   "dieuKien": "Săm dùng cho máy thuộc nhóm 84.29 hoặc 84.30 (tiêu đề quốc gia 4013901, tên tiêu đề không có trong nguồn — đối chiếu biểu thuế): dùng cho loại lốp có chiều rộng trên 450 mm. Khác 40139011 ở chiều rộng (trên 450 mm)",
+   "tieuChi": {
+    "fact": "chieu_rong",
+    "op": ">",
+    "value": 450,
+    "donVi": "mm"
+   },
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": ">",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ],
+   "nguon": "tax.40139019",
+   "trich": "40139019 - - - Dùng cho loại lốp có chiều rộng trên 450 mm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40139020",
+   "dieuKien": "Săm khác thuộc phân nhóm 4013.90, dùng cho xe môtô",
+   "tieuChi": {
+    "fact": "dung_cho_xe_moto",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.40139020",
+   "trich": "40139020 - - Loại dùng cho xe môtô",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40139031",
+   "dieuKien": "Săm dùng cho các xe khác thuộc Chương 87 (tiêu đề quốc gia 4013903, tên tiêu đề không có trong nguồn — đối chiếu biểu thuế): dùng cho loại lốp có chiều rộng không quá 450 mm",
+   "tieuChi": {
+    "fact": "chieu_rong",
+    "op": "<=",
+    "value": 450,
+    "donVi": "mm"
+   },
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ],
+   "nguon": "tax.40139031",
+   "trich": "40139031 - - - Dùng cho loại lốp có chiều rộng không quá 450 mm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40139039",
+   "dieuKien": "Săm dùng cho các xe khác thuộc Chương 87 (tiêu đề quốc gia 4013903, tên tiêu đề không có trong nguồn — đối chiếu biểu thuế): dùng cho loại lốp có chiều rộng trên 450 mm. Khác 40139031 ở chiều rộng (trên 450 mm)",
+   "tieuChi": {
+    "fact": "chieu_rong",
+    "op": ">",
+    "value": 450,
+    "donVi": "mm"
+   },
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": ">",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ],
+   "nguon": "tax.40139039",
+   "trich": "40139039 - - - Dùng cho loại lốp có chiều rộng trên 450 mm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40139040",
+   "dieuKien": "Săm khác thuộc phân nhóm 4013.90, loại sử dụng cho phương tiện bay",
+   "tieuChi": {
+    "fact": "dung_cho_phuong_tien_bay",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.40139040",
+   "trich": "40139040 - - Loại sử dụng cho phương tiện bay",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40139091",
+   "dieuKien": "Săm dùng cho loại khác (tiêu đề quốc gia 4013909, tên tiêu đề không có trong nguồn — đối chiếu biểu thuế): dùng cho loại lốp có chiều rộng không quá 450 mm",
+   "tieuChi": {
+    "fact": "chieu_rong",
+    "op": "<=",
+    "value": 450,
+    "donVi": "mm"
+   },
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": "<=",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ],
+   "nguon": "tax.40139091",
+   "trich": "40139091 - - - Dùng cho loại lốp có chiều rộng không quá 450 mm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40139099",
+   "dieuKien": "Săm dùng cho loại khác (tiêu đề quốc gia 4013909, tên tiêu đề không có trong nguồn — đối chiếu biểu thuế): dùng cho loại lốp có chiều rộng trên 450 mm. Khác 40139091 ở chiều rộng (trên 450 mm)",
+   "tieuChi": {
+    "fact": "chieu_rong",
+    "op": ">",
+    "value": 450,
+    "donVi": "mm"
+   },
+   "dieuKienSo": [
+    {
+     "fact": "chieu_rong",
+     "op": ">",
+     "value": 450,
+     "donVi": "mm"
+    }
+   ],
+   "nguon": "tax.40139099",
+   "trich": "40139099 - - - Dùng cho loại lốp có chiều rộng trên 450 mm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "4013",
+    "cap": 4,
+    "cha": "40",
+    "tenVi": "Săm các loại, bằng cao su.",
+    "tenEn": "Inner tubes, of rubber",
+    "suyRa": false
+   },
+   {
+    "id": "401310",
+    "cap": 6,
+    "cha": "4013",
+    "tenVi": "Loại dùng cho ô tô con (motor car) (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua), ô tô khách hoặc ô tô chở hàng",
+    "tenEn": "Rubber; inner tubes, of a kind used on motorcars (including station wagons and racing cars), buses and lorries",
+    "suyRa": false
+   },
+   {
+    "id": "4013101",
+    "cap": "TIEU_DE_QG",
+    "cha": "401310",
+    "tenVi": "Loại dùng cho ô tô con (motor car) (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)",
+    "tenEn": "Of a kind used on motor cars (including station wagons and racing cars)",
+    "suyRa": true
+   },
+   {
+    "id": "40131011",
+    "cap": 8,
+    "cha": "4013101",
+    "tenVi": "Dùng cho loại lốp có chiều rộng không quá 450 mm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "40131019",
+    "cap": 8,
+    "cha": "4013101",
+    "tenVi": "Dùng cho loại lốp có chiều rộng trên 450 mm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "4013102",
+    "cap": "TIEU_DE_QG",
+    "cha": "401310",
+    "tenVi": "Loại dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries)",
+    "tenEn": "Of a kind used on buses or lorries",
+    "suyRa": true
+   },
+   {
+    "id": "40131021",
+    "cap": 8,
+    "cha": "4013102",
+    "tenVi": "Dùng cho loại lốp có chiều rộng không quá 450 mm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "40131029",
+    "cap": 8,
+    "cha": "4013102",
+    "tenVi": "Dùng cho loại lốp có chiều rộng trên 450 mm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "40132000",
+    "cap": 8,
+    "cha": "4013",
+    "tenVi": "Loại dùng cho xe đạp",
+    "tenEn": "Rubber; inner tubes, of a kind used on bicycles",
+    "suyRa": false,
+    "laPhanNhom": "401320"
+   },
+   {
+    "id": "401390",
+    "cap": 6,
+    "cha": "4013",
+    "tenVi": "Loại khác",
+    "tenEn": "Rubber; inner tubes, n.e.c. in heading no. 4013",
+    "suyRa": false
+   },
+   {
+    "id": "4013901",
+    "cap": "TIEU_DE_QG",
+    "cha": "401390",
+    "tenVi": "Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
+    "tenEn": "Of a kind used on machinery of heading 84.29 or 84.30",
+    "suyRa": true
+   },
+   {
+    "id": "40139011",
+    "cap": 8,
+    "cha": "4013901",
+    "tenVi": "Dùng cho loại lốp có chiều rộng không quá 450 mm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "40139019",
+    "cap": 8,
+    "cha": "4013901",
+    "tenVi": "Dùng cho loại lốp có chiều rộng trên 450 mm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "40139020",
+    "cap": 8,
+    "cha": "401390",
+    "tenVi": "Loại dùng cho xe môtô",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "4013903",
+    "cap": "TIEU_DE_QG",
+    "cha": "401390",
+    "tenVi": "Loại dùng cho các xe khác thuộc Chương 87",
+    "tenEn": "Of a kind used on other vehicles of Chapter 87",
+    "suyRa": true
+   },
+   {
+    "id": "40139031",
+    "cap": 8,
+    "cha": "4013903",
+    "tenVi": "Dùng cho loại lốp có chiều rộng không quá 450 mm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "40139039",
+    "cap": 8,
+    "cha": "4013903",
+    "tenVi": "Dùng cho loại lốp có chiều rộng trên 450 mm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "40139040",
+    "cap": 8,
+    "cha": "401390",
+    "tenVi": "Loại sử dụng cho phương tiện bay",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "4013909",
+    "cap": "TIEU_DE_QG",
+    "cha": "401390",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "40139091",
+    "cap": 8,
+    "cha": "4013909",
+    "tenVi": "Dùng cho loại lốp có chiều rộng không quá 450 mm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "40139099",
+    "cap": 8,
+    "cha": "4013909",
+    "tenVi": "Dùng cho loại lốp có chiều rộng trên 450 mm",
+    "tenEn": null,
+    "suyRa": false
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch40.chuong",
+  "nhom4013.nhom",
+  "tax.40131011",
+  "tax.40131019",
+  "tax.40131021",
+  "tax.40131029",
+  "tax.40132000",
+  "tax.40139011",
+  "tax.40139019",
+  "tax.40139020",
+  "tax.40139031",
+  "tax.40139039",
+  "tax.40139040",
+  "tax.40139091",
+  "tax.40139099",
+  "wco.401310",
+  "wco.401320",
+  "wco.401390"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-22T09:20:57.924Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 21,
+  "dat": 21,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
