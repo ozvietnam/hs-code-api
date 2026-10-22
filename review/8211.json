@@ -1,0 +1,80 @@
+{
+ "nhom": "8211",
+ "nguoiSoat": "dev-soat-doc-lap-l022",
+ "luc": "soát độc lập lô 022 (PR #403)",
+ "daKiem": "check-so-tay --raw=tmp/so-tay/raw + đọc tay toàn vện tmp/so-tay/nguon/8211.txt",
+ "soat": 12,
+ "xoa": 1,
+ "sua": 2,
+ "ghiChu": "Nguồn nhom8211.nhom có phần đầu là MỘT CÂU loại trừ dài, rồi tới danh sách (1)-(4), rồi về lưỡi cắt/cán dao, rồi mới tới danh sách loại trừ (a)(b)(c). Người soạn cắt câu đầu ngay sau 'nhóm 82.08' — cắt đúng giữa danh sách loại trừ. Không sửa loaiTru[0] vì kéo dài câu đó sẽ gán nhầm đích 82.08 cho cả các dụng cụ 'nhất định'/dụng cụ bàn ăn gọi là dao (những thứ đó thuộc nhóm khác, không có đích danh trong nguồn).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Trích cắt giữa câu ngay sau 'trừ loại dao thuộc nhóm 82.08', bỏ mất vế tiếp 'các dụng cụ nhất định, và dụng cụ bàn ăn đôi khi được gọi là \"dao\" song bao hàm một cách rõ ràng hoặc ngấm ngầm (ngụ ý) trong các nhóm khác thuộc chương này' — text và câu trích đều khiến người đọc tưởng 82.08 là loại trừ DUY NHẤT. Sửa: chép trọn vế loại trừ.",
+   "sua": {
+    "text": "Dao có lưỡi cắt, có răng cưa hoặc không; trừ dao nhóm 82.08, dụng cụ nhất định và dụng cụ bàn ăn gọi là \"dao\" mà bao hàm ở nhóm khác của chương. Kèm lưỡi cắt của các loại dao đã liệt kê và cán dao kim loại cơ bản.",
+    "trich": "Nhóm này bao gồm các loại dao có lưỡi cắt, có răng cưa hoặc không, trừ loại dao thuộc nhóm 82.08, các dụng cụ nhất định, và dụng cụ bàn ăn đôi khi được gọi là \"dao\" song bao hàm một cách rõ ràng hoặc ngấm ngầm (ngụ ý) trong các nhóm khác thuộc chương này … Nhóm này bao gồm các loại lưỡi cắt của các loại dao như đã liệt kê ở trên … Các cán dao làm bằng kim loại cơ bản cũng thuộc nhóm này."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "Hai lỗi cùng một mục: (1) trich cắt giữa câu ngay sau 'nhóm 82.08' như trên; (2) ngoaiTru 'Các cán dao làm bằng kim loại cơ bản cũng thuộc nhóm này' lấy từ câu KHÁC, không có trong trich — text thêm chữ không có trong trích. Sửa: nối trích tới hết câu 'Các cán dao làm bằng kim loại cơ bản cũng thuộc nhóm này.' để ngoaiTru có căn cứ trong chính câu trích.",
+   "sua": {
+    "trich": "Nhóm này bao gồm các loại dao có lưỡi cắt, có răng cưa hoặc không, trừ loại dao thuộc nhóm 82.08, các dụng cụ nhất định, và dụng cụ bàn ăn đôi khi được gọi là \"dao\" song bao hàm một cách rõ ràng hoặc ngấm ngầm (ngụ ý) trong các nhóm khác thuộc chương này … Các cán dao làm bằng kim loại cơ bản cũng thuộc nhóm này."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đích 82.08 nêu đúng trong câu; trích cắt ở đây không làm sai mục vì mục chỉ khẳng định 'Loại dao thuộc nhóm 82.08' chứ không nói đó là loại trừ duy nhất. Không kéo dài câu vì như ghiChu, phần còn lại của câu không có đích danh.",
+   "ghiChu": "xem ghiChu cấp nhóm"
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn mục (a), đích 82.01 nêu rõ trong câu."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn mục (b), đích 82.14 nêu rõ trong câu."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn mục (c), đích 82.15 nêu rõ trong câu."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải 3 Chương 82, nguyên văn; câu tự nêu đích 'được phân loại trong nhóm 82.15' — không phải suy từ cấu trúc anh em."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoại lệ cấp Chương 82, đích 90.18 nêu rõ trong câu."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mã 82.01 nêu trong câu; hoi hỏi về loại dao (quắm/rựa), không nhắc mã. Nhánh 'không' trỏ chính nhóm — cùng thực hành phổ biến của sổ tay."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "xoa",
+   "lyDo": "Hai lỗi. (1) hoi 'Bộ dao có kèm sản phẩm thuộc nhóm 82.15 với số lượng tương đương số lượng dao không?' tự nói đích 82.15 — vi phạm luật 'hoi không nhắc mã phân nhóm', và câu nguồn không nêu 82.15 là dao cá/dao bơ hay hàng gì, nên người khai phải biết trước 82.15 mới trả lời được: hỏi như vậy không phân biệt được gì. Máy không bắt vì luật máy chỉ soi dạng \\d{4}\\.\\d{2} (6 số), '82.15' là 4 số. (2) Nhánh 'không' (→ 8211) thuần suy từ đối lập với loại trừ, nguồn không nói gì về nhánh này."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mã 90.18 nêu trong câu; hoi hỏi về công dụng ngành y/nha khoa/phẫu thuật/thú y, không nhắc mã."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Trích chép trọn cả hai câu về lưỡi cắt và cán dao; quyTac và tomTat nói đúng phạm vi câu trích. Đây là boPhan duy nhất trong lô có trich đủ để bọc cả hai vế."
+  }
+ ]
+}

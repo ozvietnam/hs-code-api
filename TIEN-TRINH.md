@@ -1293,3 +1293,99 @@ làm mục nói chắc hơn nguồn). Đã nêu rõ trong PR, không dựng mẫ
 
 Commit `46bd282`, đẩy nhánh `so-tay/lo-022`, mở **PR #403 — để mở, KHÔNG merge**.
 CSV giữ `trang_thai=dang-lam`, cột `pr` để trống cho người quản lý điền sau khi gộp.
+
+# LÔ 022 — PHA SOÁT ĐỘC LẬP (người soát: dev-soat-doc-lap-l022, KHÁC người soạn dev-zcode-mm)
+
+## Sai lệch brief ↔ phạm vi thật (đã xử lý, không im lặng)
+
+Brief `brief-st-soat-lo022.md` liệt kê **18 nhóm** nhưng lại viết "6 nhóm", và 12 nhóm trong danh sách đó
+(5808, 6214, 6216, 6809, 6909, 7314 — lô 016; 7317, 7607, 7610, 8441, 8447, 8503 — lô 017) **đã nằm trong
+`main` và đã qua soát độc lập ở PR #396 / #398** (`review/<nhom>.json` của chúng đều khác rỗng). PR #403
+chỉ đổi 6 nhóm của lô 022, khớp CSV. Vì vậy em soát đúng **6 nhóm**, ghi rõ ở đây.
+
+## Bước 1 — đọc lại từng mục cùng nguồn
+
+Em đọc TRỌN `tmp/so-tay/nguon/<nhom>.txt` cho cả 6 nhóm, không đọc lướt. Với mỗi mục trong
+`phamVi / boPhan / dieuKienVao / loaiTru / phanBiet` em hỏi hai câu riêng:
+**(1) câu trích có thật trong nguồn không? (2) câu trích có NÓI ĐÚNG điều mục khẳng định không?**
+
+Câu 2 mới là chỗ máy không bắt được. Thêm hai trợ: `scripts/audit-trich.mjs` có sẵn (in 130 ký tự trước/sau),
+và em viết thêm `tmp/audit-sau-frag.mjs` (file tạm, gitignored) để in **sau MỖI** đoạn trích sau khi bỏ "…",
+vì `audit-trich.mjs` chỉ in quanh đoạn ĐẦU — đúng chỗ dễ nuốt ngoại lệ giữa hai đoạn là đoạn không phải đầu.
+
+**49 mục đã soi** (8202: 9 · 8204: 5 · 8206: 6 · 8211: 12 · 8305: 9 · 8416: 8) → **giữ 36 · sửa 13 · xoá 3**.
+
+## 3 mục XOÁ
+
+1. **8211 `phanBiet[1]`** — câu hỏi *"Bộ dao có kèm sản phẩm thuộc nhóm 82.15 với số lượng tương đương…?"*
+   tự nói sẵn đích. Câu nguồn (Chú giải 3 Chương 82) không nêu 82.15 là dao cá/dao bơ hay hàng gì, nên người
+   khai phải biết trước 82.15 mới trả lời được — hỏi vậy không phân biệt được gì. **Máy không bắt** vì luật
+   `MA_PHAN_NHOM_TRONG_HOI = /WCO|\d{4}\.\d{2}/` chỉ soi dạng 6 số, "82.15" là 4 số. Nhánh "không" (→8211)
+   cũng thuần suy từ phủ định.
+2. **8416 `loaiTru[1]`** — nguồn: *"…sẽ được phân loại là bộ phận của máy và thiết bị đó (ví dụ: cho các máy
+   tạo khí - nhóm 84.05)"*. Chính câu này nói **đích thay đổi theo máy**; 84.05 chỉ là ví dụ minh hoạ.
+   Ghi `sangNhom: 8405` là khẳng định một đích cố định mà nguồn không cam kết → máy sẽ kéo mọi ghi lò
+   chuyên dụng về 84.05. `loaiTru` bắt buộc có `sangNhom` nên không sửa bằng chữ được → xoá.
+3. **8416 `phanBiet[1]`** — cùng lý do (nhánh "có" dùng 84.05), cộng nhánh "không" (→8416) suy từ phủ định.
+
+## 13 lỗi SỬA — theo loại
+
+| Loại | Nhóm | Cụ thể |
+|---|---|---|
+| **Dấu lược "…" nuốt mất ngoại lệ** (4) | 8202 `phamVi`, 8204 `phamVi`, 8211 `phamVi`, 8211 `dieuKienVao[0]` | 8202 lược qua *"Tuy nhiên các đĩa không có răng… cũng bị loại khỏi nhóm này"*; 8204 lược qua *"Tuy vậy nhóm này không bao gồm thanh vặn tarô (nhóm 82.05)"*; 8211 cắt **giữa câu** ngay sau *"nhóm 82.08"* làm mất cả vế *"các dụng cụ nhất định, và dụng cụ bàn ăn đôi khi được gọi là 'dao'…"*. Đọc câu trích ra thấy nhóm không có ngoại lệ nào — nói chắc hơn nguồn. |
+| **`text`/`tomTat` khẳng định vế không có trong trích** (4) | 8202/8204/8206 `boPhan`, 8305 `boPhan` | Cả 4 đều khẳng định vế "bộ phận là đối tượng thuộc một nhóm đặc biệt" + "bộ phận công dụng chung nằm ở Chương 73-76, 78-81" nhưng `trich` chỉ chép câu đầu. Sửa: kéo nguyên văn cả 3 câu liền nhau. |
+| **Trích mồ côi / ghép hai câu** (1) | 8305 `dieuKienVao[1]` | Đoạn sau *"đóng thành tập, ghim lại…"* là vị ngữ của câu KHÁC, chủ thể thật là *"những đồ dùng văn phòng bằng kim loại được sử dụng"* bị "…" nuốt mất → câu trích đọc ra thành "chi tiết ghép nối … đóng thành tập". |
+| **`fact` thêm chữ nguồn không có** (1) | 8204 `dieuKienVao[0]` | `dung_cho_van_dai_oc_hoac_bu_long` — cả nhóm lẫn Chương 82 **không hề nhắc bu lông** (chữ "bu lông" chỉ ở Chú giải tổng quát về bộ phận công dụng chung, không liên quan). Sửa thành `dung_cho_van_dai_oc`. |
+| **`ngoaiTru` lấy từ câu ngoài trích** (1) | 8211 `dieuKienVao[0]` | `ngoaiTru` chép câu "Các cán dao làm bằng kim loại cơ bản…" ở cuối chú giải, không có trong `trich`. Sửa: nối trích tới hết câu đó. |
+
+**Về độ dài câu trích:** 3 mục `boPhan` cấp Chương 82 dài **552 ký tự**, vượt quy ước 300 của bản nháp nhưng dưới
+trần 600 của máy — **cố ý**, có lý do ghi trong `review/*.json`: rút xuống ≤300 chỉ được bằng cách hoặc nuốt
+mất ngoại lệ (lỗi bị soát chính), hoặc cắt bỏ đúng vế mà `tomTat` khẳng định. Có tiền lệ (lô trước cũng vậy).
+`so-tay-gates.js:143` chỉ đưa `tomTat` (cắt 160 ký tự) vào prompt nên không phình prompt.
+
+## Cân nhắc rồi GIỮ (đừng sửa vội ở lô sau)
+
+- **`neuKhong` trỏ chính nhóm** (5 mục): đếm trong `data/so-tay/` là **401/570** mục `phanBiet` — đây là quy ước
+  của sổ tay, không phải lỗi.
+- **"ví dụ" trong loạiTru phải phân biệt từng câu.** 8305 *"Đinh ấn (đinh rệp) (ví dụ: nhóm 73.17 hoặc 74.15)"*
+  → **GIỮ**: câu nguồn không nêu chỗ khác, 73.17/74.15 chính là chỗ phân loại của hàng bị loại. 8416
+  *"…bộ phận của máy và thiết bị đó (ví dụ: cho các máy tạo khí - nhóm 84.05)"* → **XOÁ**: câu nguồn đã nói
+  đích là "bộ phận của máy và thiết bị đó", 84.05 chỉ là ví dụ. **Tiêu chí: câu nguồn có nêu chỗ khác không.**
+- **Loại trừ cấp Phần/Chương** (8305 loaiTru[2] "Bàn chải (96.03)" ở chú giải Phần 83; 9018 ở Chương 82 cho
+  8202/8204/8206/8211): loại trừ Phần thì loại trừ luôn khỏi nhóm, đích nêu rõ → giữ.
+
+## Bước 2 — áp review + nạp lại
+
+```
+TARGET=raw APPLY=1 node scripts/apply-review-lo022.mjs     # áp lên tmp/so-tay/raw/
+node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw         # 108/108, 0 mục hỏng
+rm -f data/so-tay/bao-cao/lo-022.json                     # xoá báo cáo cũ trước khi nạp lại
+node scripts/build-so-tay.mjs --nhom=8202,8204,8206,8211,8305,8416 --tu-tep=tmp/so-tay/raw --force \
+  --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-022.json
+TARGET=data APPLY=1 node scripts/apply-review-lo022.mjs    # chỉ đổi nguonLoai → NGUOI_DUYET
+```
+
+| cổng | kết quả |
+|---|---|
+| `check-so-tay --raw` | ✅ 108/108 (6 nhóm), 0 mục không kiểm được nguồn |
+| `npm run so-tay:check` | ✅ xanh — **268 nhóm, 8.394 mục**, 0 mục không kiểm được nguồn (đo SAU rebase lên `main` đã có lô 018; trước rebase là 262 nhóm / 8.302 mục) |
+| `npm test` | ✅ ALL TESTS PASSED |
+| `check-cay --chi-tiet` | ✅ 6/6 nhóm "đủ", 0 lỗi lệch cây |
+| nhãn `nguonLoai` | **46 mục đã soát → `NGUOI_DUYET`** (8202: 9 · 8204: 5 · 8206: 6 · 8211: 11 · 8305: 9 · 8416: 6); `tieuChi6`/`dong8`/`cay` giữ nguyên `AI_DA_KIEM`/`MAY_SUY` vì người soát không soi khối đó (đúng luật 11). |
+
+## Lỗi mới đề xuất thêm vào tiêu chí soát (mục 4)
+
+1. **`hoi` chỉ chặn được dạng `d.d.d` (6 số).** `MA_PHAN_NHOM_TRONG_HOI = /WCO|\d{4}\.\d{2}/` không bắt
+   "nhóm 82.15" (4 số). Đề xuất: `|\d{2}\.\d{2}\b`.
+2. **"Ví dụ" trong `loaiTru` cần máy phân biệt.** Máy chỉ kiểm "số nhóm có trong câu"; nên bắt được dạng
+   "sẽ được phân loại là … của máy/thiết bị đó (ví dụ: … nhóm 84.xx)" — tức câu TỰ nói đích là thứ khác.
+3. **`text`/`tomTat`/`ngoaiTru` khẳng định vế ngoài `trich`** xuất hiện ở **4/6 nhóm** — tần suất rất cao,
+   đáng thành luật máy: kiểm "mỗi vế của text/tomTat phải có từ khoá xuất hiện trong trich" (heuristic, có thể
+   báo động giả, nhưng bắt được phần lớn).
+## Bước 3 — rebase + đẩy lại (KHÔNG merge)
+
+`origin/main` đã có lô 018 (PR #399), và PR #403 chuyển sang `CONFLICTING`. Rebase lên `69b7af2`, phải
+giải quyết `TIEN-TRINH.md` **hai lần** (mỗi commit của lô 022 đều ghi đè toàn bộ tệp) — lần này dùng
+**hợp nhất (union)**: giữ nguyên phần lô 018 của `main` (cả soạn lẫn soát) VÀ phần lô 022, có chèn
+tiêu đề ngăn hai danh sách "Việc còn lại" để không đọc lẫn. Không mất dòng nào của phiên trước.
+Sau rebase: 268 nhóm / 8.394 mục, `npm test` xanh. Đẩy `git push --force-with-lease` lên `so-tay/lo-022`.

@@ -1,0 +1,63 @@
+{
+ "nhom": "8305",
+ "nguoiSoat": "dev-soat-doc-lap-l022",
+ "luc": "soát độc lập lô 022 (PR #403)",
+ "daKiem": "check-so-tay --raw=tmp/so-tay/raw + đọc tay toàn vện tmp/so-tay/nguon/8305.txt",
+ "soat": 9,
+ "xoa": 0,
+ "sua": 2,
+ "ghiChu": "Hai chỗ dễ nhầm đã soi kỹ và GIỮ: (1) loaiTru[0] 'Đinh ấn (đinh rệp) (ví dụ: nhóm 73.17 hoặc 74.15)' — chữ 'ví dụ' ở đây dẫn chiếu CHÍNH ĐÍCH phân loại của hàng bị loại (đinh ấn), khác với loạiTru[1] của nhóm 8416 (xem ghiChu nhóm 8416) — nên vẫn là loại trừ đích danh, giữ nguyên. (2) loaiTru[2] 'Bàn chải (nhóm 96.03)' lấy từ danh sách loại trừ cấp Phần 83 — loại trừ Phần thì loại trừ luôn khỏi nhóm, đích nêu rõ, giữ.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Ba đoạn nguyên văn. Các đoạn lược chỉ là liệt kê các loại kẹp/vòng bảo vệ (bao hồm), không chứa ngoại lệ; danh sách loại trừ (a)(b) nằm SAU đoạn trích cuối chứ không bị lược qua."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn; fact 'bang_kim_loai_co_ban' nói đúng câu. Là điều kiện thuộc nhóm 4 số, không phải điều kiện phân nhóm."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "sua",
+   "lyDo": "Trích mồ côi + ghép hai câu: đoạn đầu nói về 'những chi tiết ghép nối ... dùng cho cặp giữ tờ rời', đoạn sau ('đóng thành tập, ghim lại hoặc đánh dấu...') là VẾ VỊ NGỮ của câu khác, chủ thể thật là 'những đồ dùng văn phòng bằng kim loại được sử dụng' — dấu '…' nuốt mất chủ thể, đọc câu trích ra thành nói những chi tiết ghép nối 'đóng thành tập, ghim lại'. Sửa: chép trọn câu có chủ thể. Fact giữ nguyên vì vẫn nói đúng mục đích của đồ dùng nhóm 8305.",
+   "sua": {
+    "trich": "Nhóm này còn bao gồm các vòng bảo vệ, dải đóng gáy, nẹp góc dùng cho các loại sổ, sách văn phòng; tương tự như vậy là những đồ dùng văn phòng bằng kim loại được sử dụng để đóng thành tập, ghim lại hoặc đánh dấu các loại giấy tờ tài liệu rời"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn mục (a); đích 73.17 hoặc 74.15 được nêu rõ trong câu và giữ nguyên dạng phép 'hoặc' (sangNhom '7317|7415')."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn mục (b); đích 83.01 hoặc 83.08 nêu rõ trong câu, giữ dạng 'hoặc'."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn mục (l) chú giải Phần 83; đích 96.03 nêu rõ trong câu."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mã 73.17 nêu trong câu; hoi hỏi về bản chất hàng (đinh ấn/đinh rệp), không nhắc mã. Nhánh 'không' trỏ chính nhóm — cùng thực hành phổ biến của sổ tay."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mã 83.01 nêu trong câu; hoi hỏi về bản chất hàng (khóa/chốt cho sách, sổ), không nhắc mã."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "tomTat khẳng định vế thứ hai ('riêng bộ phận thuộc nhóm 73.12, 73.15, 73.17, 73.18, 73.20 thì không xem là bộ phận của sản phẩm thuộc Chương này') nhưng trich chỉ chép câu đầu — text thêm chữ không có trong trích. Sửa: kéo nguyên văn câu 'Tuy nhiên, ...' vào trích (356 ký tự, dưới trần 600 của máy).",
+   "sua": {
+    "trich": "Theo mục đích của Chương này, các bộ phận của sản phẩm bằng kim loại cơ bản được phân loại theo sản phẩm gốc. Tuy nhiên, các sản phẩm bằng sắt hoặc thép thuộc nhóm 73.12, 73.15, 73.17, 73.18 hoặc 73.20, hoặc các sản phẩm tương tự bằng kim loại cơ bản khác (Chương 74 đến 76 và 78 đến 81) sẽ không được xem như các bộ phận của các sản phẩm thuộc chương này."
+   }
+  }
+ ]
+}
