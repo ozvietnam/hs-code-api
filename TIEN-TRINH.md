@@ -1029,3 +1029,19 @@ khi xuất nguồn. Lô này không dùng chỗ bị cắt nên không ảnh hư
 **5 câu trích dài 324–383 ký tự** (nền tảng ghi 300, máy cho 600). Em đã để mắt từng câu: không câu nào
 lược bằng "…" nuốt mất ngoại lệ — 5608/6114 ghép hai câu **liền nhau** trong cùng đoạn, 5703 (`sen.5703`)
 và 6114 (`sen.61143020`) trích trọn khối kể cả câu "Tuy nhiên, loại vải này không chứa amiăng".
+
+**Bước 7 — nạp, commit, push, mở PR (xong).**
+Commit `7e5e118`, đẩy nhánh `so-tay/lo-026`, mở PR **#406** (base `main`, KHÔNG merge).
+Nộp đúng 3 loại: 6 tệp `data/so-tay/<nhom>.json` + `data/so-tay/bao-cao/lo-026.json`
++ dòng CSV 026 + `TIEN-TRINH.md`. `tmp/` gitignored nên bản nháp không lên repo.
+
+## Việc còn lại của người quản lý
+
+1. **Soát độc lập TOÀN BỘ 112 mục** (mục 4 giao việc) — người KHÁC người soạn (`dev-zcode-mm`),
+   tệp `review/<nhom>.json` rồi áp lên bản nháp trước khi nạp lại. PR ghi sẵn các điểm cần soi:
+   3 khối rỗng cố ý, 5 dòng `5703` dùng chung `sen.5703`, 10 `loaiTru` của 5601.
+2. Đạt thì `so-tay-lo.csv` dòng 026 → `trang_thai=xong` + `pr=406`, rồi merge.
+3. **Lỗi kệ sách chưa có trong mục 1 giao việc — đề nghị bổ sung:**
+   - `nhom5608.nhom` bắt đầu giữa chừng (thiếu tiêu đề nhóm + mục (1)).
+   - `560122`, `560819`, `570329`, `570339`, `570390` chỉ có tên WCO tiếng Anh, không có câu
+     tiếng Việt nào để điền `cay.tenDien` → cây để trống, `check-cay` vẫn xanh.
