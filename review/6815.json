@@ -1,0 +1,128 @@
+{
+ "nhom": "6815",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T12:40:00+07:00",
+ "daKiem": 26,
+ "soat": 26,
+ "xoa": 0,
+ "sua": 3,
+ "ghiChu": "Audit 6815 (10 mục lõi + 6 tieuChi6 + 10 dong8 = 26 mục). SỬA 3, cùng một lỗi: TRÍCH MẤT CHỦ THỂ. (1) dieuKienVao[0].trich chép từ giữa câu, bắt đầu bằng 'các sản phẩm bằng đá…' (vế không chủ ngữ). Bổ sung 'Nhóm này gồm' — nguyên văn nguồn. (2) loaiTru[0].trích 'Các sản phẩm tương tự sau nung được loại trừ (nhóm 69.02 hoặc 69.03).' không nói 'sản phẩm tương tự' là CÁI GÌ: chủ thể nằm ở mục (5) 'Gạch xây và các hình khối khác (đặc biệt các sản phẩm bằng magiê hoặc magiê crom), được liên kết bằng hoá học, nhưng chưa được nung'. Nối thêm chủ thể bằng '…'; đoạn lược là câu 'Các sản phẩm này được nung trong quá trình nung đầu tiến của lò mà chúng đã được xếp trong đó.' — KHÔNG có ngoại lệ, hợp luật 11. Giữ '6902|6903' (không tách 'A hoặc B' thành hai nhánh). (3) phanBiet[2] dùng chính câu trích mồ côi đó — sửa y như (2). GIỮ: loaiTru[1] (cách nhiệt → 6806, trích đã có chủ thể '(8) Khối và phiến lát vỉa hè…'), loaiTru[2] (graphit để cắt chổi điện → 3801), loaiTru[3] (ngành điện → 8545). Loại trừ (b) 'sản phẩm chịu lửa… (nhóm 69.02 hoặc 69.03, TUỲ TRƯỜNG HỢP CỤ THỂ)' đúng là KHÔNG ghi loaiTru — câu có định ngữ giới hạn (luật máy loại-tru-chi-la-thuong) và trùng đích với [0]. phanBiet[0..3] đều đúng chiều: có → nhóm đích, không → 6815. tieuChi6: 6 mục, mỗi mục khớp câu nguồn (681511/681519 'không phải sản phẩm điện', 681512 vải xơ carbon, 681513 sản phẩm xơ carbon, 681520 than bùn, 681591 liên kết hoá học + chưa nung); 681599 n.e.c. nên không có tiêu chí — không bịa. dong8 đủ 10 dòng; dòng trùng chữ 'Sợi hoặc chỉ' (68151310 / 68151910) đã ghi chú 'Dòng cha không có trong nguồn — đối chiếu biểu thuế, không đoán' đúng văn phong repo. cây: 0 lỗi lệch.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "Trích chép từ giữa câu, mất chủ ngữ ('các sản phẩm bằng đá…'). Bổ sung 'Nhóm này gồm' — nguyên văn nguồn, không diễn đạt lại.",
+   "sua": {
+    "trich": "Nhóm này gồm các sản phẩm bằng đá hoặc bằng các chất khoáng khác, chưa được xếp vào các nhóm trước của chương này và chưa được ghi ở nơi khác trong Danh mục"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "Trích mồ côi: 'Các sản phẩm tương tự sau nung' không nêu sản phẩm nào; chủ thể là mục (5) gạch xây/hình khối magiê liên kết hoá học chưa nung. Nối chủ thể bằng '…'; đoạn lược không chứa ngoại lệ.",
+   "sua": {
+    "trich": "(5) Gạch xây và các hình khối khác (đặc biệt các sản phẩm bằng magiê hoặc magiê crom), được liên kết bằng hoá học, nhưng chưa được nung… Các sản phẩm tương tự sau nung được loại trừ (nhóm 69.02 hoặc 69.03)."
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lỗi trích mồ côi với loaiTru[0]: câu hỏi 'sản phẩm tương tự sau khi đã nung' không có chủ ngữ. Nối chủ thể mục (5) vào trích; chiều nhánh giữ nguyên (có → 6902|6903, không → 6815).",
+   "sua": {
+    "trich": "(5) Gạch xây và các hình khối khác (đặc biệt các sản phẩm bằng magiê hoặc magiê crom), được liên kết bằng hoá học, nhưng chưa được nung… Các sản phẩm tương tự sau nung được loại trừ (nhóm 69.02 hoặc 69.03)."
+   }
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu"
+  }
+ ]
+}

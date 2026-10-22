@@ -1,0 +1,141 @@
+{
+ "nhom": "9032",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T12:40:00+07:00",
+ "daKiem": 30,
+ "soat": 30,
+ "xoa": 0,
+ "sua": 2,
+ "ghiChu": "Audit 9032 (14 mục lõi + 5 tieuChi6 + 11 dong8 = 30 mục — nhóm lớn nhất lô). SỬA 2, cùng một lỗi NẶNG: KHẲNG ĐỊNH VÔ ĐIỀU KIỆN, nuốt mất ngoại lệ NGAY SAU CÂU TRÍCH. loaiTru[5] và phanBiet[4] đều dùng câu 'Thiết bị kích hoạt được phân loại vào nhóm thích hợp (…84.25; …84.81; …85.05…).' Dấu '…' đó CÓ SẸN trong nguồn nên máy không bắt, nhưng câu KẾ TIẾP NGAY LẠI là ngoại lệ điều kiện: 'Trong trường hợp mà bộ điều chỉnh tự động được phối hợp với một cơ cấu kích hoạt, toàn bộ cơ cấu này phải được xếp theo Quy tắc 1 hoặc theo Quy tắc 3(b).' Nếu giữ nguyên, một cụm ổn nhiệt gắn van (cơ cấu chức năng) bị đẩy nhầm sang 8481. Sửa: kéo câu điều kiện vào trích (nguyên văn) và viết lại dieuKien có điều kiện. Chiều nhánh phanBiet giữ nguyên. KIỂM 3 TRÍCH DÀI 300–600 (máy không bắt, đã đọc tay): phamVi 534 ký tự — lược '…' nuốt câu 'Chúng được thiết kế để đưa hệ số này tới và duy trì nó ở giá trị mong muốn…' (KHÔNG có ngoại lệ, hợp lệ); dieuKienVao[0] 568 ký tự — chép liên tục Chú giải 7(a) chương 90, dừng trước '; và', không mất gì. Cả hai GIỮ. GIỮ: loaiTru[0] van điều chỉnh bằng nhiệt → 8481; [1] ngắt mạch nhà riêng + điều áp → 8511; [2] PLC → 8537; [3] đo bằng điện nói chung, không đáp ứng mô tả → '9025|9026|9030' (A hoặc B gộp đúng, KHÔNG tách thành AND); [4] khởi động/ngắt/vận hành → 8536. Không ghi (a) 'lò hấp hơi, buồng tĩnh nhiệt…' vì nguồn chỉ nói 'phân loại theo các nhóm tương ứng' — không nêu đích danh. Không ghi mục (2) của Chú giải 7 vì đó là LỌI VÀO nhóm này (điều chỉnh không hoàn toàn tự động), không phải loại trừ. phanBiet[0..3] đúng chiều; phanBiet[1] (van giảm áp) trích có đủ phạm vi. boPhan: trích 'CÁC BỘ PHẬN VÀ PHỤ KIỆN Theo Chú giải 1 và 2…' và quyTac chỉ nói 'theo Chú giải 1 và 2', không khẳng định gì vượt ngoài những chú giải đó → không cần sửa (không nói 9032.90 nuốt hết bộ phận như 90.33). tieuChi6: 5 mục khớp nguồn (903210 nhiệt độ, 903220 áp lực, 903281 thủy lực/khí nén, 903289 không thuộc hai loại đó, 903290 bộ phận). Trích 903220 dừng giữa câu ở 'một thành phần cảm ứng với áp suất' nhưng phần đó ĐÃ ĐỦ chứng minh fact 'kiem_tra_hoac_dieu_chinh_ap_luc' nên không mở rộng (tránh đẩy trích vào vùng 300+ không cần thiết). dong8 đủ 11 dòng. ĐÃ ĐỐI CHIẾU RIÊNG ghi chú của 90328939: câu 'tiêu đề quốc gia 9032.89.3 (Loại khác, hoạt động bằng điện)' KHÔNG phải chế tác — đã tra data/bieu-thue/2026.04.05/ten-nut.json, nút 9032893 có tenVi 'Loại khác, hoạt động bằng điện:' (cap TIEU_DE_QG). Ghi chú trùng chữ 'Sợi hoặc chỉ' ở 6815 và 'Loại khác' ở 90328939/90328990 xử lý đúng văn phong 'dòng cha không có trong nguồn — đối chiếu biểu thuế, không đoán'.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích dừng ở dấu '…' CÓ SẸN trong nguồn, ngay trước câu điều kiện 'Trong trường hợp mà bộ điều chỉnh tự động được phối hợp với một cơ cấu kích hoạt, toàn bộ cơ cấu này phải được xếp theo Quy tắc 1 hoặc theo Quy tắc 3(b).' — mất ngoại lệ ngay sau câu trích. Mục đang khẳng định vô điều kiện 'thiết bị kích hoạt → 8425|8481|8505'. Kéo câu điều kiện vào trích (nguyên văn) và viết lại dieuKien có điều kiện.",
+   "sua": {
+    "trich": "Thiết bị kích hoạt được phân loại vào nhóm thích hợp (kẹp điều chỉnh thuộc nhóm 84.25; van động cơ hoặc van ruột gà vào nhóm 84.81; cơ cấu định vị điện từ thuộc nhóm 85.05...). Trong trường hợp mà bộ điều chỉnh tự động được phối hợp với một cơ cấu kích hoạt, toàn bộ cơ cấu này phải được xếp theo Quy tắc 1 hoặc theo Quy tắc 3(b).",
+    "dieuKien": "Thiết bị kích hoạt (kẹp điều chỉnh thuộc nhóm 84.25; van động cơ hoặc van ruột gà vào nhóm 84.81; cơ cấu định vị điện từ thuộc nhóm 85.05) khi không phối hợp với bộ điều chỉnh tự động; nếu phối hợp thì toàn bộ cơ cấu xếp theo Quy tắc 1 hoặc Quy tắc 3(b)"
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lỗi với loaiTru[5]: nhánh 'có → 8425|8481|8505' khẳng định vô điều kiện. Mở rộng trích để kèm câu Quy tắc 1/3(b); giữ nguyên hoi và chiều nhánh.",
+   "sua": {
+    "trich": "Thiết bị kích hoạt được phân loại vào nhóm thích hợp (kẹp điều chỉnh thuộc nhóm 84.25; van động cơ hoặc van ruột gà vào nhóm 84.81; cơ cấu định vị điện từ thuộc nhóm 85.05...). Trong trường hợp mà bộ điều chỉnh tự động được phối hợp với một cơ cấu kích hoạt, toàn bộ cơ cấu này phải được xếp theo Quy tắc 1 hoặc theo Quy tắc 3(b)."
+   }
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu"
+  }
+ ]
+}
