@@ -1,0 +1,300 @@
+{
+ "nhom": "6203",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-22T23:45:00+07:00",
+ "soat": 69,
+ "daKiem": 69,
+ "xoa": 1,
+ "sua": 2,
+ "ghiChu": "Soát độc lập 6203: 1 phamVi + 2 dieuKienVao + 8 loaiTru + 1 boPhan + 34 tieuChi6 + 23 dong8 = 69 mục. Sửa 2, xoá 1. (1) dieuKienVao[0] — fact chỉ giữ vế dương, bỏ 'trừ mền xơ' và 'không bao gồm sản phẩm dệt kim hoặc móc (trừ 6212)'; fact đi vào prompt (lib/so-tay-gates.js chỉ đưa fact/op/value) nên bản cũ khiến đồ dệt kim bị coi là thoả điều kiện vào 6203. (2) XOÁ dieuKienVao[1] — quy tắc giới tính của Chú giải 9 không phải điều kiện vào nhóm mà là quy tắc chọn giữa các nhóm trong Chương, và câu trích cắt ngay trước ngoại lệ 'không áp dụng cho quần áo mà cách cắt may thể hiện rõ ràng là dùng cho nam hoặc nữ'. (3) boPhan — thiếu phạm vi 'chưa hoàn thiện/chưa hoàn chỉnh', tomTat thêm chữ 'rời' và 'không ở 6203 mà về 62.17' không có trong nguồn. GIỮ: 23 dong8 — các dòng 62031911/19/21/29/90 viết 'thuộc tiêu đề 6203191 (biểu thuế ghi \"Từ bông\")' và 6203192 'Từ tơ tằm': đã tra lib/hs-tree.js, đúng tên nút từ bieu-thue@2026.04.05, và đúng cách diễn đạt đã có tiền lệ ở 8462 (tiêu đề 8462611 'Điều khiển số'). Dòng 'phần còn lại của phân nhóm … trừ <dòng chi tiết>' là mẫu đã được duyệt (275 dòng). CHƯA LÀM (để người duyệt quyết): phanBiet rỗng — chưa có câu hỏi nào phân biệt bộ com-lê / bộ đồng bộ / jacket / quần dù nguồn có định nghĩa rõ cho 6203.11–6203.19.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "Giống 6112: câu trích thiếu phạm vi áp dụng ('các sản phẩm được mô tả trong Chương dưới dạng chưa hoàn thiện hoặc chưa hoàn chỉnh') và tomTat thêm chữ 'rời' + mệnh đề 'không ở 6203 mà về 62.17' không có trong nguồn (chú giải nói 'các chi tiết của áo quần... không dệt kim hoặc móc', không nói chi tiết rời, cũng không giới hạn trong 6203). Đã kéo phạm vi vào trích nguyên văn và viết lại.",
+   "sua": {
+    "quyTac": "Sản phẩm chưa hoàn thiện: vải định hình có đặc trưng cơ bản của thành phẩm thì xếp cùng nhóm thành phẩm; chi tiết của áo quần/hàng may mặc phụ trợ không dệt kim hoặc móc (trừ 6212) thì xếp nhóm 62.17.",
+    "tomTat": "Sản phẩm chưa hoàn thiện: vải định hình có đặc trưng cơ bản → cùng nhóm thành phẩm; chi tiết áo quần/hàng may mặc phụ trợ không dệt kim hoặc móc (trừ 6212) → 62.17.",
+    "trich": "Chương này cũng bao gồm các sản phẩm được mô tả trong Chương dưới dạng chưa hoàn thiện hoặc chưa hoàn chỉnh … Nếu vải đã được định hình này có đặc trưng cơ bản của các thành phẩm liên quan, thì chúng được phân loại vào cùng nhóm của các thành phẩm. Tuy nhiên, các chi tiết của áo quần hoặc của hàng may mặc phụ trợ, không dệt kim hoặc móc (trừ các chi tiết như vậy của nhóm 62.12) được phân loại trong nhóm 62.17."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "fact chỉ giữ vế dương ('hàng may sẵn bằng vật liệu dệt') và BỎ hai điều kiện phủ định ngay trong câu trích: 'trừ mền xơ' và 'không bao gồm các sản phẩm dệt kim hoặc móc (trừ 6212)'. fact đi vào prompt (lib/so-tay-gates.js chỉ đưa fact/op/value, không đưa trich) nên bản nháp khiến đồ dệt kim/móc bị coi là thoả điều kiện vào nhóm. Đã gộp cả ba vế vào fact.",
+   "sua": {
+    "fact": "hang_may_san_bang_vai_det_khong_phai_mem_xo_va_khong_phai_san_pham_det_kim_hoac_moc_tru_nhom_6212"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[6]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[7]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[8]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[9]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[10]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[11]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[12]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[13]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[14]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[15]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[16]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[17]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[18]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[19]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[20]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[21]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[22]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[23]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[24]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[25]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[26]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[27]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[28]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[29]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[30]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[31]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[32]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[33]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[12]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[13]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[14]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[15]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[16]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[17]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[18]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[19]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[20]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[21]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[22]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "xoa",
+   "lyDo": "Hai lỗi cùng lúc. (a) Đây không phải điều kiện VÀO nhóm 4 số mà là quy tắc phân giới tính giữa các nhóm của Chương 62 — đặt vào dieuKienVao là sai chỗ. (b) Câu trích là câu đầu của Chú giải 9 và ngay sau nó là NGOẠI LỆ 'Quy định này không áp dụng cho những quần áo mà cách cắt may của chúng thể hiện rõ ràng là dùng cho nam hoặc nữ' — bản nháp cắt ngay trước, nên sổ tay bảo hỏi sai với đúng loại hàng mà quy định không áp dụng. Cùng lý do này, lô 020 đã cố ý không đặt phanBiet cho 6203/6208 thay vì đặt sai; giữ nguyên phanBiet rỗng."
+  }
+ ]
+}

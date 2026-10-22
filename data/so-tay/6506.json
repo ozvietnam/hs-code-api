@@ -1,10 +1,10 @@
 {
  "nhom": "6506",
  "phamVi": {
-  "text": "Tất cả các loại mũ và các vật đội đầu chưa được phân loại vào các nhóm trước của Chương này hoặc các Chương 63, 68 hoặc 95, có hoặc chưa có lớp lót bảo vệ.",
+  "text": "Tất cả các loại mũ và các vật đội đầu chưa được phân loại vào các nhóm trước của Chương này hoặc các Chương 63, 68 hoặc 95.",
   "nguon": "nhom6506.nhom",
-  "trich": "Nhóm này bao gồm tất cả các loại mũ và các vật đội đầu chưa được phân loại vào các nhóm trước của Chương này hoặc các Chương 63, 68 hoặc 95. … có hoặc chưa có lớp lót bảo vệ",
-  "nguonLoai": "AI_DA_KIEM"
+  "trich": "Nhóm này bao gồm tất cả các loại mũ và các vật đội đầu chưa được phân loại vào các nhóm trước của Chương này hoặc các Chương 63, 68 hoặc 95.",
+  "nguonLoai": "NGUOI_DUYET"
  },
  "dieuKienVao": [
   {
@@ -15,7 +15,7 @@
    "ngoaiTru": [],
    "nguon": "nhom6506.nhom",
    "trich": "Nhóm này bao gồm tất cả các loại mũ và các vật đội đầu chưa được phân loại vào các nhóm trước của Chương này hoặc các Chương 63, 68 hoặc 95.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "loaiTru": [
@@ -24,51 +24,42 @@
    "sangNhom": "6309",
    "nguon": "ch65.chuong",
    "trich": "(a) Mũ và các vật đội đầu khác đã qua sử dụng thuộc nhóm 63.09;",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "mũ và các vật đội đầu khác bằng amiăng",
    "sangNhom": "6812",
    "nguon": "ch65.chuong",
    "trich": "(b) Mũ và các vật đội đầu khác, bằng amiăng (nhóm 68.12); hoặc",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "mũ và các vật đội đầu khác dành cho động vật",
    "sangNhom": "4201",
    "nguon": "ch65.chuong",
    "trich": "(a) Mũ và các vật đội đầu khác dành cho động vật (nhóm 42.01).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "khăn choàng, khăn quàng cổ, khăn choàng vai, mạng che mặt và các loại tương tự",
    "sangNhom": "6117|6214",
    "nguon": "ch65.chuong",
    "trich": "(b) Khăn choàng, khăn quàng cổ, khăn choàng vai, mạng che mặt và các loại tương tự (nhóm 61.17 hoặc nhóm 62.14).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "tóc giả và các sản phẩm tương tự",
    "sangNhom": "6704",
    "nguon": "ch65.chuong",
    "trich": "(d) Tóc giả và các sản phẩm tương tự (nhóm 67.04).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
- "phanBiet": [
-  {
-   "hoi": "Mũ và vật đội đầu này có làm bằng cao su hoặc bằng plastic không?",
-   "neuCo": "65069100",
-   "neuKhong": "65069910|65069990",
-   "nguon": "nhom6506.nhom",
-   "trich": "(1) Mũ và vật đội đầu bằng cao su hoặc bằng plastic (ví dụ, mũ trùm đầu khi tắm, mũ trùm đầu).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
+ "phanBiet": [],
  "tieuChi6": [
   {
    "hs6": "650610",
-   "fact": "la_mu_bao_hiem_va_va_tat_doi_dau_an_toan_khac",
+   "fact": "la_mu_bao_hiem_va_vat_doi_dau_an_toan",
    "op": "=",
    "value": true,
    "donVi": null,
@@ -78,7 +69,7 @@
   },
   {
    "hs6": "650691",
-   "fact": "bang_cao_su_hoac_plastic",
+   "fact": "khong_phai_mu_bao_hiem_va_bang_cao_su_hoac_plastic",
    "op": "=",
    "value": true,
    "donVi": null,
@@ -88,7 +79,7 @@
   },
   {
    "hs6": "650699",
-   "fact": "bang_vat_lieu_khac_khong_phai_cao_su_hoac_plastic",
+   "fact": "khong_phai_mu_bao_hiem_bang_vat_lieu_khac_khong_phai_cao_su_hoac_plastic",
    "op": "=",
    "value": true,
    "donVi": null,
@@ -135,8 +126,6 @@
    "dieuKien": "Loại khác — thuộc phân nhóm 650610 (WCO: Headgear; safety)",
    "nguon": "tax.65061090",
    "trich": "65061090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": true,
    "phamViLoaiKhac": {
     "nguonLoai": "MAY_SUY",
     "cha": "650610",
@@ -148,7 +137,9 @@
     ],
     "toTienCoTen": "650610",
     "dinhNghiaDuoc": true
-   }
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true
   },
   {
    "hs": "65069100",
@@ -171,8 +162,6 @@
    "dieuKien": "Loại khác — thuộc phân nhóm 650699 (WCO: Headgear; (other than safety headgear), (of materials other than rubber or plastic))",
    "nguon": "tax.65069990",
    "trich": "65069990 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": true,
    "phamViLoaiKhac": {
     "nguonLoai": "MAY_SUY",
     "cha": "650699",
@@ -181,7 +170,9 @@
     ],
     "toTienCoTen": "650699",
     "dinhNghiaDuoc": true
-   }
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true
   }
  ],
  "cay": {
@@ -309,12 +300,12 @@
  "taoBoi": {
   "provider": "dev-zcode-mm",
   "model": null,
-  "luc": "2026-10-22T15:58:07.942Z",
-  "ms": 1
+  "luc": "2026-10-22T16:39:23.074Z",
+  "ms": 0
  },
  "kiemTra": {
-  "tong": 19,
-  "dat": 19,
+  "tong": 18,
+  "dat": 18,
   "loai": 0,
   "nguonBiCat": []
  }

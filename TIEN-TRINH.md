@@ -813,3 +813,160 @@ tên sẵn dùng trong `data/so-tay/bao-cao/` (memory `bao-cao-lo-...-lo-0NN`).
 2. Người duyệt tự soát ngẫu nhiên ≥ 10 % số mục còn lại.
 3. Gộp `scripts/check-trich-nguyen-van.mjs` từ PR #396 vào `scripts/` (nó đang nằm ở `tmp/`
    nên không lấy lại được) — hoặc đề xuất vá `quoteInSource()` để so khớp nguyên văn thay vì squash.
+
+---
+
+
+# TIEN-TRINH — lô 020, PHIÊN SOÁT ĐỘC LẬP (bổ sung, không thay phần trên)
+
+- **Ngày:** 2026-10-22 → 23. **Căn cứ:** `brief-st-soat-lo020.md` + mục 4 `docs/giao-viec/so-tay-giao-ngoai.md`.
+- **Vai:** người soát độc lập — đọc lại từng mục cùng nguồn nguyên văn, KHÔNG soạn lại, KHÔNG gộp.
+- **Nhóm:** 5911 · 6112 · 6203 · 6208 · 6401 · 6506.
+
+## Đã làm
+
+1. Đọc lại `docs/giao-viec/so-tay-giao-ngoai.md` (mục 0 đợt 1 — 5 kiểu lỗi người soát phải bắt; mục 0/vòng 2;
+   mục 3 **11 luật**; mục 4) + `tmp/so-tay/nguon/_he-thong.txt` trước khi soi — không soi bằng trí nhớ.
+2. Đọc `review/6406.json` + `scripts/apply-review-lo014.mjs` để lấy đúng quy ước ghi kết quả soát.
+3. **Đếm tiền lệ TRƯỚC khi kết luận mẫu nào là lỗi** (bài học lô 011 — ba người soát báo nhầm rồi phải
+   bác bỏ từng cái): quét `data/so-tay/*.json` cho ba mẫu nghi ngờ —
+   `neuKhong` trỏ về chính nhóm (**480/516 mục — hợp lệ**), `loaiTru` cùng Chương (**611/1572 — hợp lệ**),
+   `dong8` ghi *"tiêu đề 7 số (biểu thuế ghi '…')"* (**tiền lệ ở 8462 đã gộp**), `op:"in"` (**50 mục**).
+   Cả bốn đều **KHÔNG phải lỗi** — không đụng vào. Đã tra `lib/hs-tree.js` xác nhận 6203191 = "Từ bông",
+   6203192 = "Từ tơ tằm" (nguồn `bieu-thue@2026.04.05`), nên nhãn tiêu đề 7 số của 6203 là đúng.
+4. Chạy `node tmp/so-tay/strict-nguyen-van.mjs` (máy kim nguyên văn TUYẾT ĐỐI, không squash) **trước**:
+   **0 đoạn sai** — tức mọi lỗi em tìm đều thuộc loại máy KHÔNG bắt được.
+5. Soát **TOÀN BỘ 195 mục** của 6 nhóm, từng mục, cùng nguồn nguyên văn. Không gật đầu cho qua.
+6. Ghi `review/<nhom>.json` (đủ cả mục `giu`) + `scripts/apply-review-lo020.mjs` để áp.
+7. Áp → `check-so-tay --raw` → `build-so-tay --tu-tep --force` → `nguonLoai` → `so-tay:check` → `npm test`.
+
+### Sai sót em tự bắt được giữa chừng (ghi lại vì rất dễ lặp lại)
+
+Em chạy lại `gen-review-lo020.mjs` **sau khi đã áp review vào `tmp/so-tay/raw/`** → 5 mục `xoa`
+biến mất khỏi `review/*.json` và `soat` rơi 195 → 190. `tmp/so-tay/raw/` là **bản nháp đã bị sửa**, không
+phải bản gốc. Cách khôi phục đã dùng: dựng lại bản nháp gốc từ `git show HEAD:data/so-tay/<nhom>.json`
+bằng cách bỏ `nhom/cay/dungTuNguon/phienBan/taoBoi/kiemTra` + `nguonLoai` + `loaiKhac` (đúng những
+trường máy tự thêm), rồi chạy lại cả chuỗi. Đối chiếu kết quả: hai lần dựng **giống nhau tuyệt đối**,
+chỉ khác `taoBoi.luc`/`taoBoi.ms`.
+**Luật rút ra: `review/<nhom>.json` phải sinh từ bản nháp GỐC, và không bao giờ sinh lại sau khi đã áp.**
+
+## Kết quả: soát 195 → sửa 21, xoá 5, giữ 169
+
+| Nhóm | soát | sửa | xoá | sau khi soát |
+|---|---|---|---|---|
+| 5911 | 21 | 4 | 0 | 21 |
+| 6112 | 33 | 4 | 1 | 32 |
+| 6203 | 69 | 2 | 1 | 68 |
+| 6208 | 39 | 6 | 1 | 38 |
+| 6401 | 14 | 1 | 1 | 13 |
+| 6506 | 19 | 4 | 1 | 18 |
+
+Báo cáo lô: `195/195 (100 %)` → **`190/190 (100 %)`** sau khi bỏ 5 mục; `nhomLoi: []`.
+`npm run so-tay:check` xanh (**244 nhóm / 7 993 mục / 0 lỗi**). `npm test` **ALL TESTS PASSED**.
+`check-cay --chi-tiet` cho cả 6 nhóm: **0 lỗi lệch cây**; 5/6 nhóm "đủ" (6401 còn trống 2 phân nhóm
+chưa có tiêu chí 6 số — xem "Còn lại"). `strict-nguyen-van` sau khi áp: **0 đoạn sai**.
+
+## Năm mục XOÁ — đều là mục khẳng định NGƯỢC nguồn
+
+Máy không bắt được vì câu trích vẫn nguyên văn; lỗi nằm ở chỗ **cắt trích trước vế quyết định**
+hoặc **suy nhánh "không" từ cấu trúc anh em**.
+
+1. **6112 `phanBiet[0]` — mất HAI ngoại lệ ngay sau câu trích.** Chú giải 9 Chương 61 còn ngay sau câu đã
+   trích: *"Quy định này không áp dụng cho những quần áo mà cách cắt may của chúng thể hiện rõ ràng
+   là dùng cho nam hoặc nữ"* và *"Quần áo không thể nhận biết được là quần áo nam hoặc nữ thì được
+   xếp vào nhóm quần áo phụ nữ hoặc trẻ em gái"*. Bản nháp cắt ngay trước cả hai — nên sổ tay bảo hỏi
+   kiểu cài cho đúng những bộ quần áo mà quy định **không áp dụng**. Không thể vừa giữ nguyên văn vừa
+   kéo cả hai ngoại lệ vào 300 ký tự → xoá.
+2. **6203 + 6208 `dieuKienVao[1]` — quy tắc giới tính đặt nhầm chỗ.** Đây không phải điều kiện VÀO
+   nhóm 4 số mà là quy tắc chọn giữa các nhóm trong Chương 62; thêm nữa câu trích lại cắt ngay trước
+   ngoại lệ *"Quy định này không áp dụng cho những quần áo mà cách cắt may của chúng thể hiện rõ
+   ràng là dùng cho nam hoặc nữ"*.
+3. **6401 `phanBiet[0]` — câu trích chỉ là DÒNG BIỂU THUẾ** *"64011000 - Giày, dép có mũi gắn kim
+   loại bảo vệ"*, không nói gì về trường hợp không có mũi kim loại; nhánh `neuKhong` suy thẳng từ
+   cấu trúc anh em.
+4. **6506 `phanBiet[0]` — trích nhầm một DANH SÁCH "bao gồm".** Câu *"Nhóm này cũng bao gồm: (1) Mũ
+   và vật đội đầu bằng cao su hoặc bằng plastic"* là danh sách bao gồm, không phải quy tắc xếp loại;
+   nhánh `neuKhong` còn **sai về nghĩa** vì mũ bảo hiểm bằng cao su theo WCO 650610 vẫn là 650610,
+   không phải 650691 như mục khẳng định.
+
+Cả 5 đều không mất thông tin: 6401 còn `phamVi` + `dieuKienVao[1]` (điều kiện "không lắp ráp theo
+quy trình trong nhóm"), 6506 còn 5 `loaiTru`, 6112 còn `tieuChi6` + `boPhan`, 6203/6208 còn 8/7 `loaiTru`.
+
+## Hai mươi mốt mục SỬA — nhóm theo kiểu lỗi
+
+- **"Fact rút mất nhánh phủ định" (5 mục — nguy hiểm nhất, vì `lib/so-tay-gates.js:135` chỉ đưa
+  `fact op value` ra prompt, KHÔNG đưa `trich`).** 6506 `tieuChi6[1]` và `[2]`: WCO 650691/650699 đều
+  có vế **"(other than safety headgear)"** mà `fact` bỏ mất → mũ bảo hiểm bằng cao su sẽ bị kéo sang
+  650691. 6203 + 6208 `dieuKienVao[0]`: `fact` chỉ giữ vế dương, bỏ *"trừ mền xơ"* và *"không bao
+  gồm các sản phẩm dệt kim hoặc móc (trừ 6212)"* → đồ dệt kim bị coi là thoả điều kiện vào 6203/6208.
+- **"Dấu lược nuốt ngoại lệ / định ngữ mềm" (4 mục).** 6208 `phamVi`: dấu lược nuốt trọn câu
+  *"Cũng nên lưu ý rằng các sản phẩm dệt kim hoặc móc của loại này được phân loại trong nhóm 61.08
+  hoặc 61.09, tùy trường hợp"* — đúng câu loại đồ dệt kim ra khỏi 6208 — cùng định ngữ mềm *"(các loại
+  áo này thường mặc trong nhà)"*. 5911 `phamVi`: nuốt *"Nhóm này bao gồm, **đặc biệt là** …"*, biến
+  nghĩa "đặc biệt" thành "kể cả". 5911 `loaiTru[2]`: mất định ngữ *"không kể loại"*.
+- **"Mất nhánh của A hoặc B" (1 mục).** 6401 `phamVi.text`: nguồn *"miễn là phần mũ giày không gắn với
+  đế **hoặc lắp ghép** theo các quy trình đã được nêu trong nhóm"*, bản nháp gộp thành *"không gắn
+  với đế theo các quy trình…"* — gắn mệnh đề "theo các quy trình" vào riêng vế "gắn với đế", nhánh
+  "lắp ghép" biến mất.
+- **"Fact nói vòng không truy ra được" (5 mục).** 6112 `tieuChi6[3,7,10]` và 6208 `tieuChi6[7,13]`
+  ghi `chưa chi tiết trong 6112_1 / 6208_2 / 6208_9` trong khi WCO nói thẳng *"other than cotton or
+  synthetic fibres"*. Người soạn tự viết tường minh khi WCO tường minh (620349 cùng lô này) — 5 mục
+  này không nhất quán với chính quy ước đó.
+- **"Trích/thông tin lệch nhau" (3 mục — cùng một lỗi, xuất hiện ở cả 3 Chương).** 6112 `boPhan`:
+  `quyTac` khẳng định hai vế nhưng `trich` chỉ trích vế *"Tuy nhiên…"*; 6203 + 6208 `boPhan` giống hệt
+  và cả ba đều mất phạm vi áp dụng *"các sản phẩm … chưa hoàn thiện hoặc chưa hoàn chỉnh"*.
+- **"Fact gõ lỗi ký tự" (2 mục).** 5911 `tieuChi6[0]` (`vai_trem` → `vai_dem`), 6506 `tieuChi6[0]`
+  (`va_va`).
+- **"Đảo ngược hướng của cả câu" (1 mục — sửa, không xoá).** 5911 `phanBiet[0]`: câu trích nói sản
+  phẩm monofilament xoắn ốc **đã nằm ở phân nhóm này (5911.90)** và *"không nằm trong phân nhóm
+  5911.31 hoặc 5911.32"*; bản nháp lại hỏi ngược lại rồi gán câu trả lời "có" cho 59119010 — mà
+  59119010 là *"Miếng đệm và miếng chèn"*, điều câu trích không hề nói. Đã đảo lại thành câu hỏi về
+  vải/phớt dệt vòng liền dùng cho máy sản xuất giấy → 5911.31/5911.32, giữ nguyên câu trích nguyên văn.
+
+## Kiểm chứng lại các mẫu NGHI NGỜ nhưng **KHÔNG** phải lỗi (chốt là giữ, không phải bỏ sót)
+
+- **`neuKhong` trỏ về chính nhóm** (5911) — đây là cách mã hoá chuẩn "không dính điều kiện loại trừ
+  thì ở lại nhóm này", chiếm **480/516** mục đã gộp. Không sửa.
+- **`loaiTru` cùng Chương** (6112 → 6111/6113, 6203 → 6209/6210) — là quy tắc ưu tiên nội bộ Chương,
+  **611/1572** mục đã gộp cùng kiểu. Với 6112 còn đúng về mặt pháp lý: bộ quần áo thể thao của trẻ
+  trai vào 6111, của nữ vào 6112. Không sửa.
+- **`dong8` ghi nhãn tiêu đề 7 số lấy từ cây máy** (62031911/19/21/29/90) — đã tra `lib/hs-tree.js`:
+  6203191 = "Từ bông", 6203192 = "Từ tơ tằm" (`bieu-thue@2026.04.05`), và đúng tiền lệ đã gộp ở 8462.
+  Không sửa.
+- **Dòng *"Phần còn lại của phân nhóm … trừ <dòng chi tiết>"*** — mẫu đã được duyệt (275 dòng).
+- **`phanBiet` rỗng ở 6203/6208** — người soạn cố ý để rỗng vì luật ưu tiên và quy tắc giới tính đều
+  không diễn đạt được thành cặp mã; 6204 đã duyệt cũng rỗng. **Giữ nguyên, không tự thêm mục mới**
+  (em là người soát, không phải người soạn).
+
+## Bốn lỗi kệ sách phát hiện thêm (đề nghị bổ sung mục 1 giao việc — KHÔNG sửa trong sổ tay)
+
+1. **Mâu thuẫn nguồn 6401** — WCO 640192 nói *"waterproof, covering the ankle"* **không loại trừ mũi
+   kim loại**, còn biểu thuế VN tách 64019210/90 theo *"mũi giày được gắn bảo vệ không phải kim loại"*.
+   Hai nguồn đọc theo hai hướng khác nhau. Giữ cả hai phía, không ghi kết luận nào.
+2. **`ch64.chuong` Chú giải 2** nói về "các bộ phận" của **nhóm 64.06**, không phải 6401 → không dùng làm
+   `loaiTru` của 6401 (điều kiện sai cấp). Người soạn đã bỏ đúng.
+3. **`phan59/61/62.phan` bị cắt còn 25.000 ký tự** khi xuất nguồn (`CAP.phan`) — báo cáo lô ghi
+   `nguonBiCat`; biệt phân nhóm 12 vẫn đủ vì nằm ở đầu văn bản.
+4. **`nhom5911.nhom` mục (5)** — em ĐÃ KI LẠI và xác nhận **KHÔNG phải mâu thuẫn nguồn**: câu *"Vải dệt,
+   đã được gia cố kim loại, dùng cho các mục đích kỹ thuật…"* đứng ngay trước *"Tuy nhiên, phớt được
+   gia cố kim loại bị loại trừ khỏi nhóm này (nhóm 56.02)"* là **khoét lỗ rõ ràng** (phớt ≠ vải dệt).
+   Người soạn ghi `loaiTru` sang 5602 là đúng. Ghi lại ở đây vì thoạt nhìn rất giống mâu thuẫn kiểu
+   "bao hàm X ở một chỗ, loại X ở chỗ khác".
+
+## Việc còn lại của người quản lý
+
+1. **Tự soát ngẫu nhiên ≥ 10 %** phần còn lại (mục 4) — em đã soát 100 %, bước này vẫn theo quy trình.
+2. **`6401` còn 2 phân nhóm chưa có tiêu chí 6 số** (`check-cay` báo `phan-nhom-chua-co-tieu-chi:
+   640192`, `640199`) — đề xuất bổ sung, KHÔNG phải lỗi: WCO 640192 nói *"covering the ankle (but not
+   the knee)"*, 640199 nói *"n.e.c."*. Cả hai đều trích nguyên văn được.
+3. **`5911` chưa có mục nào trả lời câu hỏi quan trọng nhất của nhóm**: vải lọc ép dầu làm từ tóc người
+   vẫn thuộc 5911 — `phan59.phan` loại trừ nhóm 67.03/67.04 *"trừ vải lọc dùng trong công nghệ ép dầu
+   hoặc tương tự (nhóm 59.11)"*. Đề xuất thêm `loaiTru` hoặc `tieuChi6`, KHÔNG phải lỗi.
+4. **`6203` chưa có câu hỏi phân biệt** bộ com-lê / bộ đồng bộ / jacket / quần dù Chú giải 3(a)(b)
+   Chương 62 có định nghĩa rõ cho 6203.11–6203.19. Đề xuất bổ sung, KHÔNG phải lỗi.
+5. **Độ dài trích sau khi sửa**: 5 mục `trich` rơi vào khoảng **324–438 ký tự** (nền tảng ghi 300, máy
+   cho 600 — `docs/giao-viec/so-tay-giao-ngoai.md` mục 0 ghi rõ khoảng 300–600 là người soát phải để
+   mắt; em đã để mắt từng câu). Nới trích là cách DUY NHẤT giữ được ngoại lệ mà không sửa câu nguồn, nên
+   chọn nới thay vì bỏ mục. Ngược lại, mọi `text`/`tomTat`/`quyTac`/`fact` đã rút về ≤ 220 ký tự vì
+   runtime cắt cụt ở 220.
+6. Khi đạt: `docs/giao-viec/so-tay-lo.csv` dòng 020 → `trang_thai=xong` + `pr=401`, rồi merge.

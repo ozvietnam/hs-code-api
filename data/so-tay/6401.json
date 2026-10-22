@@ -1,10 +1,10 @@
 {
  "nhom": "6401",
  "phamVi": {
-  "text": "Giày, dép không thấm nước bằng cao su, plastic hoặc vật liệu dệt có lớp ngoài bằng cao su hoặc plastic nhìn thấy bằng mắt thường, miễn là mũ giày không gắn với đế theo các quy trình đã nêu trong nhóm.",
+  "text": "Giày, dép không thấm nước bằng cao su, plastic hoặc vật liệu dệt có lớp ngoài bằng cao su hoặc plastic nhìn thấy bằng mắt thường, miễn là mũ giày không gắn với đế hoặc lắp ghép theo các quy trình đã nêu trong nhóm.",
   "nguon": "nhom6401.nhom",
   "trich": "Nhóm này bao gồm giày, dép không thấm nước có cả đế ngoài và mũ giày … bằng cao su (theo định nghĩa của Chú giải 1 Chương 40), bằng plastic hoặc bằng vật liệu dệt có lớp ngoài bằng cao su hoặc plastic có thể nhìn thấy được bằng mắt thường … miễn là phần mũ giày không gắn với đế hoặc lắp ghép theo các quy trình đã được nêu trong nhóm.",
-  "nguonLoai": "AI_DA_KIEM"
+  "nguonLoai": "NGUOI_DUYET"
  },
  "dieuKienVao": [
   {
@@ -15,7 +15,7 @@
    "ngoaiTru": [],
    "nguon": "nhom6401.nhom",
    "trich": "Nhóm này bao gồm giày, dép không thấm nước có cả đế ngoài và mũ giày",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "fact": "mu_giay_khong_gan_voi_de_hoac_lap_ghep_theo_cac_quy_trinh_da_neu_trong_nhom",
@@ -25,7 +25,7 @@
    "ngoaiTru": [],
    "nguon": "nhom6401.nhom",
    "trich": "miễn là phần mũ giày không gắn với đế hoặc lắp ghép theo các quy trình đã được nêu trong nhóm.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "fact": "vai_lieu_lop_ngoai_la_cao_su_hoac_plastic_nhin_thay_duoc_bang_mat_thuong",
@@ -35,7 +35,7 @@
    "ngoaiTru": [],
    "nguon": "ch64.chuong",
    "trich": "thuật ngữ “cao su” và “plastic” kể cả vải dệt thoi hoặc các sản phẩm dệt khác có lớp ngoài bằng cao su hoặc plastic có thể nhìn thấy được bằng mắt thường",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "loaiTru": [
@@ -44,33 +44,24 @@
    "sangNhom": "6309",
    "nguon": "ch64.chuong",
    "trich": "(c) Giày, dép đã qua sử dụng thuộc nhóm 63.09;",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "sản phẩm bằng amiăng",
    "sangNhom": "6812",
    "nguon": "ch64.chuong",
    "trich": "(d) Các sản phẩm bằng amiăng (nhóm 68.12);",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "giày, dép chỉnh hình hoặc thiết bị chỉnh hình khác, hoặc bộ phận của chúng",
    "sangNhom": "9021",
    "nguon": "ch64.chuong",
    "trich": "(e) Giày, dép chỉnh hình hoặc các thiết bị chỉnh hình khác, hoặc các bộ phận của chúng (nhóm 90.21); hoặc",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
- "phanBiet": [
-  {
-   "hoi": "Giày, dép này có mũi gắn bảo vệ bằng kim loại không?",
-   "neuCo": "64011000",
-   "neuKhong": "64019210|64019290|64019910|64019990",
-   "nguon": "tax.64011000",
-   "trich": "64011000 - Giày, dép có mũi gắn kim loại bảo vệ",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
+ "phanBiet": [],
  "tieuChi6": [
   {
    "hs6": "640110",
@@ -105,8 +96,6 @@
    "dieuKien": "Loại khác — thuộc phân nhóm 640192, dòng cha không có trong nguồn — đối chiếu biểu thuế",
    "nguon": "tax.64019290",
    "trich": "64019290 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": true,
    "phamViLoaiKhac": {
     "nguonLoai": "MAY_SUY",
     "cha": "640192",
@@ -115,7 +104,9 @@
     ],
     "toTienCoTen": "640192",
     "dinhNghiaDuoc": true
-   }
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true
   },
   {
    "hs": "64019910",
@@ -130,8 +121,6 @@
    "dieuKien": "Loại khác — thuộc phân nhóm 640199, dòng cha không có trong nguồn — đối chiếu biểu thuế",
    "nguon": "tax.64019990",
    "trich": "64019990 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": true,
    "phamViLoaiKhac": {
     "nguonLoai": "MAY_SUY",
     "cha": "640199",
@@ -140,7 +129,9 @@
     ],
     "toTienCoTen": "640199",
     "dinhNghiaDuoc": true
-   }
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true
   }
  ],
  "cay": {
@@ -239,12 +230,12 @@
  "taoBoi": {
   "provider": "dev-zcode-mm",
   "model": null,
-  "luc": "2026-10-22T15:58:07.940Z",
+  "luc": "2026-10-22T16:39:23.073Z",
   "ms": 1
  },
  "kiemTra": {
-  "tong": 14,
-  "dat": 14,
+  "tong": 13,
+  "dat": 13,
   "loai": 0,
   "nguonBiCat": []
  }
