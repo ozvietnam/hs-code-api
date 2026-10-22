@@ -1,0 +1,87 @@
+{
+ "nhom": "8459",
+ "nguoiSoat": "dev-soat-doc-lap-l023",
+ "luc": "soát độc lập lô 023 (PR #404)",
+ "daKiem": "check-so-tay --raw=tmp/so-tay/raw (43/43) + strict-trich.mjs (122/122) + đọc tay toàn vện khối [nhom8459.nhom] + kiểm byte-by-byte câu trích thay thế trước khi đưa vào đây",
+ "soat": 13,
+ "xoa": 1,
+ "sua": 3,
+ "ghiChu": "Câu thay thế cho phanBiet[1].trich đã kiểm bằng script trước khi ghi: mỗi đoạn sau dấu '…' đều nằm NGUYÊN VĂN trong khối [nhom8459.nhom], dài 261 ký tự (trong trần 300), vẫn chứa cả 82.05 lẫn 84.67. Không gõ tay. Nhớ lô 023: người soạn đã tự sửa đúng một lỗi ở phanBiet này (neuCo lấy thêm 8467) — soát lại thấy phần còn lại còn thiếu chủ ngữ, xem mục phanBiet[1].",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "`text` nằm gọn trong câu trích, không có vế tóm thêm từ câu khác."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "`fact` bỏ mất định ngữ giới hạn, mà ở đây bỏ là mất đúng thứ quan trọng nhất. Câu nguồn: 'Nhóm này bao gồm máy công cụ dùng để khoan, doa, phay, cắt ren hoặc tarô ren bằng cách cắt hoặc bóc tách kim loại TRỪ máy tiện (kể cả trung tâm gia công tiện) thuộc nhóm 84.58.' — `fact` chỉ lấy tới 'bóc tách kim loại', bỏ luôn vế 'trừ máy tiện'. Đọc vào prompt là 'dung_de_khoan_doa_phay_cat_ren_hoac_taro_ren_bang_cach_cat_hoac_boc_tach_kim_loai = true', tức coi MÁY TIỆN cũng thoả điều kiện vào nhóm — đúng nhầm lớp nhất của 8459 (khoan/doa/phay với tiện), và sai so với chính câu trích ngay dưới. Cùng lớp lỗi với boPhan của 8456/9011/9024 và lô 017, nhưng ở đây hậu quả nặng hơn vì nó là ranh giới 84.58/84.59. Sửa: đưa vế loại trừ vào `fact`; câu trích giữ nguyên.",
+   "sua": {
+    "fact": "dung_de_khoan_doa_phay_cat_ren_hoac_taro_ren_bang_cach_cat_hoac_boc_tach_kim_loai_tru_may_tien_ke_ca_trung_tam_gia_cong_tien"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (a) nguyên văn; đích '(nhóm 84.56)' nêu đích danh."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b) nguyên văn; đích '(nhóm 84.57)' nêu đích danh."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c) nguyên văn; đích '(nhóm 84.58)' nêu đích danh."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trong mục (3) Máy doa: 'Mặt khác, máy tiện … thực hiện việc gia công lỗ như nguyên công bổ sung hoặc phụ trợ được phân vào nhóm 84.58.' Khác câu của loaiTru[2] nên không trùng; nêu đích danh 84.58. Giữ."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (d) nguyên văn; đích 84.61 nêu đích danh."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (e) nguyên văn, kể cả việc không có dấu chấm câu (nguồn cũng không có); đích '(nhóm 84.67)' nêu đích danh."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (f) nguyên văn; đích 'nhóm 90.24' nêu đích danh."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "xoa",
+   "lyDo": "Sai phạm trù VÀ trùng lặp — cùng lý do loaiTru[6] của 8456. Đây là luật XẾP BỘ PHẬN ('các bộ phận và phụ tùng … được phân vào nhóm 84.66'), không phải hàng bị loại khỏi nhóm; đưa vào `loaiTru` thì khi vào prompt nó hiện dưới nhãn 'LOẠI TRỪ (sang nhóm khác)'. Thêm nữa trích trùng NGUYÊN VĂN với `boPhan` (cùng nguồn, cùng chuỗi). Xoá không mất thông tin vì `boPhan.tomTat` đã phát ra nội dung này."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng quy ước `neuKhong` trỏ chính nhóm: hỏi 'là máy tiện không?' → có thì 84.58, không thì ở lại 84.59. `hoi` không nhắc mã, 84.58 có trong câu trích. Đếm tiền lệ: đây là dạng phổ biến nhất trong sổ tay (89% phanBiet có neuKhong trỏ chính nhóm), KHÔNG phải lỗi."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "Trích mồ côi — bắt đầu giữa chừng ở 'có thể được phân biệt với…', mất chủ ngữ 'Các máy tương tự hoạt động bằng tay hoặc bàn đạp'. Câu trích đứng riêng không cho biết đang phân biệt CÁI GÌ với dụng cụ cầm tay, nên mục mất căn cứ đọc ngược (chiều nghĩa nhánh có/không thì vẫn đúng vì hai mã đều nêu trong câu). Ngoài ra chỗ lược giữa hai vế là ký tự xuống dòng thô '\\n\\n' chứ không phải dấu lược '…' như luật yêu cầu. Sửa: kéo trích lên đủ chủ ngữ, lược bằng '…', bỏ đuôi 'và vì vậy chúng thường có tấm đế, khung gắn, giá đỡ…' cho vừa trần. Câu mới đã kiểm từng đoạn nằm nguyên văn trong nguồn, dài 261 ký tự, vẫn chứa cả 82.05 và 84.67.",
+   "sua": {
+    "trich": "Các máy tương tự hoạt động bằng tay hoặc bàn đạp có thể được phân biệt với dụng cụ cầm tay thuộc nhóm 82.05 và … những dụng cụ cầm tay thuộc nhóm 84.67 do thực tế là những máy này thường được thiết kế đặt trên sàn, trên giá máy, gắn tường hoặc gắn trên máy khác"
+   }
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "Mất hẳn tham chiếu luật — lần thứ tư trong lô này (8456, 9011, 9024, 8459). Nguồn mở đầu 'CÁC BỘ PHẬN VÀ PHỤ KIỆN Theo điều khoản chung liên quan đến việc phân loại các bộ phận (xem chú giải Tổng quát của phần XVI),' nhưng `quyTac`/`tomTat` bỏ sạch. Quét toàn data/so-tay: 59/65 nhóm còn giữ tham chiếu, chỉ 6 mất hẳn — 8459 là một trong số đó. Sửa: đưa lại định ngữ; giữ nguyên vế '(trừ dụng cụ thuộc Chương 82)' vốn đã có.",
+   "sua": {
+    "quyTac": "Theo điều khoản chung liên quan đến việc phân loại các bộ phận (xem chú giải Tổng quát của phần XVI), các bộ phận và phụ tùng (trừ dụng cụ thuộc Chương 82) của các loại máy công cụ của nhóm này được phân vào nhóm 84.66.",
+    "tomTat": "Theo điều khoản chung về phân loại các bộ phận (xem chú giải Tổng quát của phần XVI): bộ phận và phụ tùng của máy công cụ nhóm này (trừ dụng cụ Chương 82) thì xếp vào nhóm 84.66."
+   }
+  }
+ ]
+}

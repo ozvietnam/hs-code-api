@@ -1,0 +1,45 @@
+{
+ "nhom": "9113",
+ "nguoiSoat": "dev-soat-doc-lap-l023",
+ "luc": "soát độc lập lô 023 (PR #404)",
+ "daKiem": "check-so-tay --raw=tmp/so-tay/raw (12/12) + strict-trich.mjs so từng ký tự (122/122) + đọc tay toàn vện tmp/so-tay/nguon/9113.txt",
+ "soat": 6,
+ "xoa": 1,
+ "sua": 1,
+ "ghiChu": "dieuKienVao để rỗng là ĐÚNG: câu 'có thể được làm bằng mọi chất liệu' là câu CHO PHÉP, luật dieu-kien-chi-cho-phep loại — không có câu nào trong nguồn nói điều kiện BẮT BUỘC vào nhóm. Ba tieuChi6 lấy từ wco.911310/911320/911390 khớp tiền lệ 321590 và 350699 (fact mô tả phân nhóm 'n.e.c. in heading no.'), giữ nguyên.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Lỗi lớn nhất khi soát (bài học lô 016, dính 5/6 nhóm): `text` tóm thêm một câu nữa của khối nguồn nhưng câu trích chỉ chép câu đầu. Vế 'làm được bằng mọi chất liệu' lấy từ đoạn 2 của nhom9113.nhom ('có thể được làm bằng mọi chất liệu, ví dụ, kim loại cơ bản, kim loại quý, da, plastic hay vật liệu dệt') — không có trong trích. Đo được 20/266 nhóm còn lại rơi vào tình huống này, nên đây không phải lối viết quy ước mà là lệch căn cứ. Sửa: bỏ vế ngoài trích, giữ câu trích nguyên văn, không kéo dài trích (kéo sẽ vượt trần 300 ký tự).",
+   "sua": {
+    "text": "Dây đeo, quai đeo và vòng đeo của đồng hồ cá nhân, tức là tất cả những gì có thể giữ chắc đồng hồ trên cổ tay."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nằm trong danh sách 'Nhóm này không bao gồm:' mục (b); đích 71.15 được nêu đích danh trong chính câu trích. Tách 'A hoặc B' thành hai mục loaiTru là cách làm quy ước — đếm được 18 mẫu tương tự (vd 4811: cùng một câu 'hoặc', tách 3401 / 3405), không mất nhánh nào."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nhánh còn lại của cùng câu (b); đích 83.08 nêu đích danh. Cả hai nhánh đều được giữ nên không rơi vào lỗi 'một nhánh của A hoặc B bị chọn làm đích duy nhất'."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c) nguyên văn; nguồn nói 'nhóm 91.01 hay 91.02', ghi sangNhom '9101|9102' đúng và giữ đủ cả hai."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "xoa",
+   "lyDo": "Nhánh 'không' sai và là mục này đã trùng lặp y hệt loaiTru[0]/[1]. Câu nguồn chỉ nêu HAI trường hợp bị loại (kim loại quý → 71.15, kim loại cơ bản → 83.08) chứ không nói 'hết hai ngạch này thì còn nhóm kia'. Hỏi 'khoá làm bằng kim loại cơ bản?' rồi trả 'không → 7115' sẽ dẫn sai hàng không phải kim loại (da, plastic, vật liệu dệt — chính nhóm 9113 nói dây đeo làm bằng mọi chất liệu) sang 7115, trong khi nguồn giữ chúng ở 9113. Đây đúng là lỗi 'nhánh không chỉ suy từ danh sách loại trừ' mà máy không bắt được. Đếm tiền lệ: 579 mục phanBiet đã có trong data/so-tay/, KHÔNG có mục nào dựng từ câu 'hoặc' với cả neuCo và neuKhong đều trỏ ra ngoài nhóm như vậy (0/579); 89% mục có sẵn dùng quy ước neuKhong trỏ về chính nhóm. Câu trích này đã được loaiTru[0]/[1] mang đủ, không mất thông tin gì khi xoá."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Chép đúng câu 'Nhóm này cũng bao gồm các bộ phận của dây đeo, quai đeo và vòng đeo đồng hồ làm từ bất cứ chất liệu gì khi có thể nhận biết được chúng.'; quyTac và tomTat không thêm gì ngoài câu."
+  }
+ ]
+}
