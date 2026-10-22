@@ -32,7 +32,8 @@ Cả 6 nhóm đều **chưa có** trong `data/so-tay/` (khác lô 010/012 vốn 
   → **102/102 (100 %)**, 0 nhóm lỗi.
 - [x] **B7.** `check-cay.mjs --chi-tiet` → **6/6 nhóm "đủ"**, 0 lỗi lệch cây.
   `npm run so-tay:check` → **233 nhóm / 7599 mục / 0 lỗi**. `npm test` → **ALL TESTS PASSED**.
-- [x] **B8.** Commit + push nhánh `so-tay/lo-017` + mở PR (**KHÔNG merge**).
+- [x] **B8.** Commit `f08879e` + push nhánh `so-tay/lo-017` + mở **PR #398** (**KHÔNG merge**):
+  https://github.com/ozvietnam/hs-code-api/pull/398
 
 ## Kết quả
 
