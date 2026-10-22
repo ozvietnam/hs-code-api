@@ -767,3 +767,88 @@ Sổ tay ghi được: 6 phạm vi · 15 điều kiện vào · 26 loại trừ 
 
 **Việc còn lại của người quản lý:** soát độc lập TOÀN BỘ 6 nhóm (134 mục) + tự soát ngẫu nhiên ≥ 10 % phần còn lại,
 quyết định về 4 kiến nghị luật máy trên, rồi mới gộp. PR **để mở, KHÔNG merge**.
+
+---
+
+# 2026-10-23 — SOÁT ĐỘC LẬP lô 021 (PR #402) — người soát: Claude (phiên quản lý, KHÁC người soạn `dev-zcode-mm`)
+
+> Người soạn đã tự soát bản nháp và ghi ở trên rằng **7324 giữ "với điều kiện rằng" thành `dieuKienVao` là có chủ ý**.
+> Em **XOÁ mục đó** — lý do ở mục 1 dưới đây; đây là chỗ duy nhất em bác ý rõ ràng của người soạn, nên ghi đầu tiên.
+
+## Số liệu
+
+| | |
+|---|---|
+| Phạm vi soát | **50 mục** = toàn bộ 5 khối của 6 nhóm (6802: 13 · 6903: 6 · 7310: 14 · 7311: 4 · 7324: 6 · 7325: 7) |
+| Kết quả | **giữ 42 · sửa 7 · xoá 1** |
+| Tổng mục sau soát | 134 → **133** (bao cáo lô `133/133`, 100 %) |
+| `nguonLoai` | 49 mục 5 khối → `NGUOI_DUYET`; `tieuChi6`/`dong8`/`cay` giữ `AI_DA_KIEM` (đúng luật 11) |
+| Cổng | `check-so-tay --raw` 133/133 · `so-tay:check` 250 nhóm / 8.111 mục / 0 lỗi · `check-cay --chi-tiet` 6/6 · `npm test` ALL TESTS PASSED |
+
+Hồ sơ: `review/{6802,6903,7310,7311,7324,7325}.json` — mỗi tệp ghi **đủ 50/50 mục đã soi** (kể cả mục `giu`) kèm `lyDo` riêng.
+
+## Tầng máy em viết thêm cho vòng soát (`scripts/audit-lo021.mjs`)
+
+`check-so-tay` chỉ chứng minh câu trích **có thật trong nguồn**, và nó so bằng `squash()` — bỏ HẾT dấu câu.
+Script của em làm 3 việc CI chưa làm, chạy trước khi đọc tay:
+1. **Nguyên văn từng mảnh** (tách theo `…`) so với đúng khối nguồn khai ở `nguon`, chỉ chuẩn hoá khoảng trắng → **50/50 mục đều khớp tuyệt đối, 0 lỗi đỏ**.
+2. **In 240 ký tự nguồn ngay SAU mảnh trích cuối** — đây là chỗ duy nhất lộ ra ngoại lệ bị nuốt. Nó bắt được cả lỗi thật của lô này (mục 4, 5) và cả nhiễu phải bác bỏ (mục "Những gì em soi thấy nhưng KHÔNG sửa").
+3. Cảnh báo trích 300–600 ký tự (vùng cắt lặng lẽ) + câu trích mở bằng từ rào.
+
+## 8 lỗi tìm được — máy KHÔNG bắt được
+
+1. **XOÁ — 7324 `dieuKienVao[3]`: câu CHO PHÉP có điều kiện bị đặt thành `= true`.**
+   Nguồn: *"Chúng **có thể** được gắn với nắp, tay cầm… **với điều kiện rằng** chúng vẫn còn nguyên tính chất của các mặt hàng bằng sắt hoặc thép."*
+   Mục đã bỏ vế "có thể … với điều kiện rằng", thành khẳng định phẳng `van_con_nguyen_tinh_chat… = true`.
+   Đúng hình dạng luật `dieu-kien-chi-cho-phep` cấm — nhưng `CAU_CHO_PHEP` (`lib/so-tay.js:166`) không có mẫu
+   "có thể … với điều kiện rằng" nên lọt. Thêm nữa khẳng định này **vốn hiển nhiên**: hàng 7324 đã là mặt hàng sắt/thép
+   theo `dieuKienVao[0]`, nên mục không thêm thông tin phân loại nào, chỉ thêm nhiễu vào prompt.
+2. **SỬA — 6802 `phanBiet[0]`: rơi 2/3 nhánh đích.** Câu trích nêu *"nhóm 68.03, 96.09 và 96.10"* nhưng `neuCo` chỉ `"6803"`.
+   Sửa thành `"6803|9609|9610"` (quy ước a|b đã có **61/531** `phanBiet` trong sổ tay). `neuKhong:"6802"` giữ nguyên — mẫu "ở lại nhóm này", 318/480 mục.
+3. **SỬA — 7325 `ngoaiTru` (cả 2 `dieuKienVao`): cắt lặng lẽ mất vế nhượng bộ.** Nguồn: *"…các vật đúc chưa hoàn thiện mà đòi hỏi sự gia công tiếp theo **như có đặc tính cần thiết của những sản phẩm như thế nhưng đã hoàn thiện**."*
+   Bản nháp dừng ở "…gia công tiếp theo." ⇒ ngoại lệ bị **thu hẹp**: vật đúc chưa hoàn thiện *nhưng đã có đặc tính cần thiết* sẽ không còn bị loại — trái nguồn.
+4. **SỬA — 7325 `dieuKienVao[0].ngoaiTru`: lỗi chính tả của người soạn, "đồ dùng cơ khế".** Nguồn là "cơ khí".
+   `ngoaiTru` được nạp vào prompt và dùng `phraseHit` — sai một chữ là mất khả năng khớp. *(Người soát tự dính đúng lỗi loại này một lần khi chép câu `ch68.chuong` — đã sinh lại chuỗi từ kệ sách bằng script thay vì gõ tay.)*
+5. **SỬA — 7325 `loaiTru[2]`: `dieuKien` làm mất điều kiện, có thể chuyển nhầm cả nhóm.**
+   Bản nháp: *"hoa, bộ lá cây giả **và** các mặt hàng thuộc nhóm 83.06 (loại trừ nằm ngay trong danh sách mặt hàng của nhóm)"*.
+   Nguồn: *"(trừ các mặt hàng thuộc nhóm 83.06)"* đứng sau "hoa, bộ lá cây giả" ⇒ chính "hoa, bộ lá cây giả" **được bao gồm**, trừ phần thuộc 83.06.
+   Chữ "và" làm câu đọc thành danh sách ba thành phần ngang hàng. `gates.js:206` `phraseHit(dieuKien)` rồi hỏi thẳng người khai ⇒
+   một tờ khai khai *"nhánh cọt bằng gang đúc mô phỏng cây"* sẽ khớp "hoa, bộ lá cây giả" và bị chuyển sang 83.06 — **trái với phần "bao gồm" của chính câu chú giải**.
+   Ngoài ra ngoặc "(loại trừ nằm ngay trong danh sách mặt hàng của nhóm)" là chữ tự viết, không có trong nguồn (luật 7). Sửa thành `"hoa, bộ lá cây giả thuộc nhóm 83.06"`.
+6. **SỬA — 7310 `dieuKienVao[1].ngoaiTru`: thêm mã 73.09 không có trong nguồn + SAI CHIỀU với nghĩa trường.**
+   Chú giải chỉ viết *"nhóm trước"*, không nêu số — 73.09 là suy diễn (đúng nhưng không được ghi vào sổ tay).
+   Quan trọng hơn: `ngoaiTru` của điều kiện ngưỡng số nghĩa là *"hàng thuộc ngoại lệ → điều kiện không áp dụng"*; `gates.js:226` bỏ qua kiểm ngưỡng khi khớp và dòng 230 in ra **"ngoại lệ không giới hạn"**.
+   Câu này lại khẳng định trên 300 l **KHÔNG** thuộc 7310 ⇒ đặt vào đây là ngược chiều. Xoá; thông tin "nhóm trước áp dụng cho >300 l" vẫn nằm nguyên văn trong `phamVi.trich`.
+7. **SỬA — 6903 `dieuKienVao[0].ngoaiTru`: nối chéo khối nguồn.** `nguon` khai `ch69.chuong` nhưng `ngoaiTru` ghi "nón Seger…" — câu đó ở `nhom6903.nhom`.
+   Với `dieuKienVao`, `nguon` **chính là căn cứ pháp lý** runtime dán cạnh fact (`gates.js:135` in `fact … [nguon]`; nhánh ngưỡng số gửi kèm `legal:{nguon,trich}`) ⇒ ngoại lệ gắn nhầm khối là căn cứ sai. Xoá; nội dung đã có đúng nguồn ở `loaiTru[0]`.
+8. **SỬA — 6802 `boPhan.trich`: diễn đạt có chữ nằm ngoài câu trích.** `trich` lược bằng `…` đúng nơi có ngoặc ví dụ *"(ví dụ, đá thạch anh, đá lửa, dolomit và steatit)"*, nhưng `quyTac` lại liệt kê nguyên các ví dụ đó.
+   Sửa theo hướng an toàn: **ghi trọn câu** (336 ký tự, nguyên văn, sinh bằng `indexOf` trên kệ sách, dưới trần 600 của máy) chứ không sửa `quyTac`.
+
+## Những gì em soi thấy nghi ngờ nhưng KHÔNG sửa (đã cân)
+
+| Nhóm / mục | Biểu hiện | Vì sao giữ |
+|---|---|---|
+| 6903 `boPhan` | `trich` **439 ký tự**, mở bằng "Tuy nhiên" | Đã đọc tay: câu ghi **TRỌN** cả hai câu, không lược gì; "Tuy nhiên" là chính từ nối câu loại trừ, không phải cắt trích. Vượt mốc 300 của lược đồ, dưới trần 600 của máy |
+| 6802 `phamVi` (315), 7310 `phamVi` (413) | vùng cắt lặng lẽ 300–600 | 6802 dừng trước câu **dẫn chiếu**; 7310 dừng đúng cuối đoạn nguồn. Không mất ngoại lệ nào |
+| 6903 `phamVi.text` | nguồn viết "chưa được nêu cụ thể hoặc **được** xếp", `text` viết "hoặc **chưa** xếp" | Đọc theo phạm vi phủ định là đúng nghĩa gốc HS (*all refractory **not** specified or included in preceding headings*), **không phải** thêm hiểu biết riêng |
+| 6903 `dieuKienVao[1]` | câu kế "Tùy theo mục đích sử dụng cụ thể…" | Chỉ **bổ sung** thuộc tính (dẫn/cách nhiệt, giãn nở, chống mài mòn), không phủ định ⇒ mục không nói quá |
+| 6903 `loaiTru[1]` (graphit → 8545) | lấy từ Chú giải **cấp Chương** | Áp cho mọi nhóm trong chương — hợp lệ (tiền lệ 8201→8466, 9607→7117) |
+| 6802 / 7324 | bỏ các loại trừ chỉ nêu *"Chương N"* (25, 91, 94) | Đúng luật 3 |
+| 7310 `phanBiet[0]`, 7325 `phanBiet[0]` | dễ đảo nhánh | Đã đọc kỹ chiều, **đúng**: có-thì-sang / không-thì-ở-lại |
+| 7310 `dieuKienVao[0..2]` | 3 fact dùng chung **một** câu trích | Chấp nhận — một câu, ba sự kiện mô tả hàng thuộc nhóm |
+| 7324 `dieuKienVao[0..2]` | 3 fact dùng chung **một** câu trích | Như trên |
+| 6903 `loaiTru[0].dieuKien` | "các sản phẩm này" → "sản phẩm này" (số ít) | Sắc thái thuật ngữ, không đổi câu trả lời của cổng. Ghi nhận, **không sửa** để tránh vác nhẹ |
+
+## Kiến nghị luật máy (đề xuất, KHÔNG tự sửa)
+
+1. **Bổ sung mẫu vào `CAU_CHO_PHEP`**: `có thể … với điều kiện rằng` / `với điều kiện là` — đây là lỗi **mục 1** lọt máy.
+2. **Kiểm `ngoaiTru` cũng phải nằm trong khối nguồn khai ở `nguon`** — bắt được lỗi **mục 7**. Hiện `ngoaiTru` là prose tự do, máy không hề đọc.
+3. **Kiểm `ngoaiTru` của điều kiện ngưỡng số không được MÂU THUẪN CHIỀU** với `op` (bắt lỗi **mục 6**): `ngoaiTru` nói "trên ngưỡng là sang nhóm khác" thì đặt vào đây là sai nghĩa.
+4. **`phanBiet`: kiểm ĐỦ mọi mã đích câu trích nêu**, không chỉ kiểm mã đích *có* trong câu — bắt lỗi **mục 2** (lặp lại ở 8460 "82.05 và 84.67", 6116 "43.03 hoặc 43.04", 8708 vòng trước — lần thứ 4 cùng họ).
+5. **Vùng mù 300–600 ký tự nên bắt buộc người soát đọc tay** — lô này có 3 trích ở vùng đó; may mắn là cả 3 đều đủ câu.
+
+## Việc còn lại của người quản lý
+
+- Tự soát ngẫu nhiên **≥ 10 %** phần còn lại (`tieuChi6` + `dong8` + `cay`: 84 mục) — mục §4 bullet 2 của `so-tay-giao-ngoai.md`, **em không làm thay** vì đó là việc của người duyệt chứ không phải người soát độc lập.
+- Quyết định 5 kiến nghị luật máy ở trên + 4 lỗi kệ sách do người soạn ghi (Section XI nhầm cho ch.68/69; "3001"; ngắt dòng `nhom6903`; `tax.68029200/68029900` thiếu gạch).
+- PR **để mở, KHÔNG merge** — em chưa gộp.

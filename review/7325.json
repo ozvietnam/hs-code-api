@@ -1,0 +1,59 @@
+{
+ "nhom": "7325",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-23T00:30:00+07:00",
+ "phamViSoat": "Toàn bộ 7 mục của 5 khối (1 phamVi + 2 dieuKienVao + 3 loaiTru + 1 phanBiet; boPhan null) trong tmp/so-tay/raw/7325.json, đọc cùng tmp/so-tay/nguon/7325.txt. Tầng máy: 0 mảnh trích sai.",
+ "soat": 7,
+ "sua": 3,
+ "chen": 0,
+ "xoa": 0,
+ "ghiChu": "Không xoá mục nào. Ba lỗi sửa, tất cả nằm ở trường diễn giải (không phải câu trích — mọi trich đều nguyên văn): (1) ngoaiTru của cả hai dieuKienVao bị CẮT LẶNG LẼ ở giữa vế 'như có đặc tính cần thiết của những sản phẩm như thế nhưng đã hoàn thiện', làm mất nghĩa nhượng bộ — sau khi cắt, một vật đúc chưa hoàn thiện NHƯNG ĐÃ CÓ đặc tính cần thiết sẽ bị hiểu là vẫn thuộc 7325, trái với nguồn; (2) trong ngoaiTru của dieuKienVao[0] có lỗi chính tả do người soạn gõ: 'cơ khế' thay vì 'cơ khí' như nguồn; (3) loaiTru[2] diễn đạt phần loại trừ chung chung khiến câu hỏi cổng chuyển mọi hàng 'hoa, bộ lá cây giả' sang 83.06 — trái với chính phần 'bao gồm' của câu chú giải.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "trich nguyên văn câu đầu nhom7325.nhom; text khớp 1:1, không thêm chữ. Câu này đã gói sẵn điều kiện 'chưa được định rõ hay bao gồm ở nơi khác' nên không có chỗ nào bị cắt lặng lẽ."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "fact 'la_san_pham_duc_bang_sat_hoac_thep' đúng; lỗi nằm ở ngoaiTru. Nguồn: 'Nhóm này không bao gồm những vật đúc là những sản phẩm rơi vào các nhóm khác của Danh mục (ví dụ các bộ phận máy móc có thể nhận dạng hoặc các đồ dùng cơ khí) hoặc các vật đúc chưa hoàn thiện mà đòi hỏi sự gia công tiếp theo NHƯ CÓ ĐẶC TÍNH CẦN THIẾT của những sản phẩm như thế nhưng đã hoàn thiện.' Bản nháp dừng ở '…đòi hỏi sự gia công tiếp theo.', bỏ mất vế nhượng bộ 'như có đặc tính cần thiết…' — nghĩa là ngoại lệ bị thu hẹp: vật đúc chưa hoàn thiện ĐÃ có đặc tính cần thiết sẽ không còn bị loại, đúng loại 'mất ngoại lệ ngay sau câu trích' mà brief liệt kê. Thêm nữa bản nháp gõ sai 'đồ dùng cơ khế' (nguồn và ngữ cảnh đều là 'cơ khí'); ngoaiTru được nạp vào prompt và dùng phraseHit nên lỗi chính tả làm mất khả năng khớp. Sửa cả hai, chỉ sửa phần diễn giải chứ không đụng câu trích.",
+   "sua": {
+    "ngoaiTru": [
+     "Những vật đúc là sản phẩm rơi vào các nhóm khác của Danh mục (ví dụ các bộ phận máy móc có thể nhận dạng hoặc các đồ dùng cơ khí), hoặc là vật đúc chưa hoàn thiện mà đòi hỏi sự gia công tiếp theo, dù có đặc tính cần thiết của những sản phẩm như thế nhưng đã hoàn thiện."
+    ]
+   }
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng một lỗi cắt lặng lẽ như dieuKienVao[0] nhưng chỉ trong bản rút gọn: ngoaiTru dừng ở '…đòi hỏi sự gia công tiếp theo.', mất vế 'dù có đặc tính cần thiết của những sản phẩm nhưng đã hoàn thiện'. Khôi phục để hai điều kiện nói cùng một điều và không trái nhau.",
+   "sua": {
+    "ngoaiTru": [
+     "Những vật đúc là sản phẩm rơi vào các nhóm khác của Danh mục, hoặc là vật đúc chưa hoàn thiện mà đòi hỏi sự gia công tiếp theo, dù có đặc tính cần thiết của những sản phẩm nhưng đã hoàn thiện."
+    ]
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (a) nguyên văn, giữ cả vế giới hạn quan trọng 'thuộc loại đã được mô tả ở trên' — tức loại trừ chỉ áp cho đúng các loại hàng nhóm này liệt kê, không phải mọi sản phẩm trừ đúc nói chung. Đích 7326 có trong câu."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b) nguyên văn (nguồn không có dấu chấm cuối, giữ nguyên); đích 8306 có trong câu."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "Nguồn: '…hoa, bộ lá cây giả,…, (trừ các mặt hàng thuộc nhóm 83.06); chai thủy ngân.' — nghĩa là 'hoa, bộ lá cây giả' ĐƯỢC bao gồm, TRỪ phần thuộc nhóm 83.06. Bản nháp viết dieuKien là 'hoa, bộ lá cây giả VÀ các mặt hàng thuộc nhóm 83.06 (loại trừ nằm ngay trong danh sách mặt hàng của nhóm)': (a) chữ 'và' làm câu đọc thành danh sách ba thành phần ngang hàng thay vì điều kiện phải thỏa CẢ HAI — lib/so-tay-gates.js:206 dùng phraseHit(dieuKien) rồi hỏi thẳng người khai, nên một tờ khai khai 'nhánh cọt bằng gang đúc mô phỏng cây' sẽ khớp 'hoa, bộ lá cây giả' và bị chuyển sang 83.06, trái với phần 'bao gồm' của chính câu chú giải; (b) chú thích '(loại trừ nằm ngay trong danh sách mặt hàng của nhóm)' là chữ tự viết của người soạn, không có trong nguồn — luật 7 cấm thêm hiểu biết riêng vào dieuKien. Sửa thành điều kiện rõ ràng và bỏ chú thích; câu trích giữ nguyên.",
+   "sua": { "dieuKien": "hoa, bộ lá cây giả thuộc nhóm 83.06" }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi phân biệt 'trừ đúc hay đúc?' đã đọc kỹ chiều: có thì 7326, không thì ở lại 7325 — đúng với mục (a) 'Các sản phẩm thuộc loại đã được mô tả ở trên thu được bằng các phương pháp trừ đúc… (nhóm 73.26)'. Không rơi nhánh 'hoặc' (câu không có nhánh), không gộp vế ngoài câu, neuKhong=7325 là mẫu 'ở lại nhóm này' đã được chấp nhận. Đối chiếu với loaiTru[0]: cùng nguồn, cùng đích, không mâu thuẫn."
+  }
+ ]
+}
