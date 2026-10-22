@@ -1,0 +1,46 @@
+{
+  "nhom": "8462",
+  "nguoiSoat": "NGUOI_DUYET",
+  "luc": "2026-10-22T21:55:00+07:00",
+  "daKiem": 20,
+  "soat": 20,
+  "xoa": 2,
+  "sua": 3,
+  "soatPhu": { "tieuChi6": 30, "dong8": 31, "cay": 6 },
+  "ghiChu": "SOÁT ĐỘC LẬP 8462 (1 phamVi + 1 boPhan + 2 dieuKienVao + 12 loaiTru + 4 phanBiet = 20 mục bắt buộc; đọc thêm 30 tieuChi6 + 31 dong8 + 6 cay.tenDien). KIỂM KÝ TỰ: 84/85 mục khớp nguyên văn; 1 mục SAI KÝ TỰ — dong8[29] (tax.84629010) ghi '84629010 - Máy rèn khuôn...', nguồn là '84629010 - - Máy rèn khuôn...' (THIẾU MỘT DẤU GẠCH); check-so-tay bỏ dấu câu trước khi so nên lọt. XOÁ 2. (1) dieuKienVao[0] — đây là lỗi 'CẮT TRÍCH NÉ CÂU RÀO' đúng như brief mô tả: câu nguồn mở đầu bằng 'NHÌN CHUNG' (định ngữ giới hạn) và nói về 'các loại máy công cụ vận hành bằng động cơ' để phân biệt với dụng cụ cầm tay 82.05/84.67, còn trích cắt ngay trước 'trên thực tế những loại máy này được thiết kế để...'. Item biến một đặc điểm thực tiễn (có 'Nhìn chung') thành điều kiện vào nhóm không điều kiện. Xoá; thông tin 'máy đặt sàn/trên giá máy/gắn tường' vẫn còn trong chính câu nguồn. (2) phanBiet[3] (Chú giải 3 chương 84, ưu tiên 8456) — nhánh 'không' ghi 8462 là SAI: câu nguồn chỉ nói máy đáp ứng 84.56 VÀ 84.57/58/59/60/61/64/65 thì xếp 84.56; nếu không thì máy vào 8457–8465 tuỳ loại, không phải chắc chắn 8462. Hơn nữa nhánh 'có' cũng thiếu điều kiện 'và đồng thời', mà không thể viết mã vào hoi (luật máy hoi-nhac-ma-phan-nhom chặn). Không diễn đạt được thành cặp có/không trung thực → xoá. SỬA 3 (khối phụ). (1) dong8[1] (84621900, dòng 'Loại khác') — dieuKien gốc đưa mục (c) 'búa máy, máy rèn, búa thả...' vào làm định nghĩa dòng, mà dòng này thực ra là phần còn lại của 846219; lệch khỏi quy ước mọi dòng 'Loại khác' khác trong chính lô này. Đã sửa. (2) dong8[9] (84623210) — tieuChi co_dieu_khien_so=true nhưng câu trích wco.846232 KHÔNG có 'numerically controlled' (thuộc tính này nằm ở dòng biểu thuế 'Điều khiển số'); đổi nguồn sang tax.84623210 cho trích chứa đúng thuộc tính. (3) dong8[29] — sửa thiếu dấu gạch trong trích. GIỮ: phamVi giữ nguyên lỗi gõ nguồn 'các bua kim loại' (luật 2); dieuKienVao[1] đúng; 12 loaiTru đều nêu đích danh và đủ định ngữ giới hạn; 3 phanBiet còn lại đúng chiều, không nhắc mã; boPhan khớp trích; 30 tieuChi6 và 6 cay.tenDien lấy từ wco, dịch sát tiêu đề (846226 'không phải máy chấn/uốn bảng/uốn định hình lăn', 846269 'khác thủy lực, cơ khích, servo'...); 31 dong8 khớp đủ 31 dòng biểu thuế, dòng 8462611/8462619 được ghi trung thực 'biểu thuế ghi Điều khiển số / Loại khác'."
+  ,
+  "thayDoi": [
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "xoa",
+      "lyDo": "Câu nguồn mở đầu bằng 'Nhìn chung' và nói về máy công cụ vận hành bằng động cụ (phân biệt với dụng cụ cầm tay 82.05/84.67); trích cắt ngay trước 'trên thực tế...'. Item biến đặc điểm thực tiễn có định ngữ giới hạn thành điều kiện vào nhóm không điều kiện."
+    },
+    {
+      "index": "phanBiet[3]",
+      "hanhDong": "xoa",
+      "lyDo": "Nhánh 'không' ghi 8462 là sai với Chú giải 3 chương 84 (máy thuộc 8457–8465, không phải chắc chắn 8462), và nhánh 'có' thiếu điều kiện 'đồng thời' mà không thể viết mã vào hoi. Không trung thực thì xoá."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "sua",
+      "lyDo": "84621900 là dòng 'Loại khác'; dieuKien gốc đưa ví dụ mục (c) của chú giải nhóm vào làm định nghĩa dòng, lệch quy ước các dòng Loại khác khác của lô.",
+      "sua": { "dieuKien": "Loại khác — phần còn lại của phân nhóm 846219 (ví dụ theo chú giải nhóm: búa máy, máy rèn, búa thả hoạt động bằng hàng loạt va chạm nhanh và đột ngột)" }
+    },
+    {
+      "index": "dong8[9]",
+      "hanhDong": "sua",
+      "lyDo": "tieuChi co_dieu_khien_so=true không có 'numerically controlled' trong câu trích wco.846232; đổi sang nguồn biểu thuế 84623210 (dòng ghi 'Điều khiển số') cho bằng chứng đúng thuộc tính.",
+      "sua": {
+        "nguon": "tax.84623210",
+        "trich": "84623210 - - - Điều khiển số",
+        "dieuKien": "Điều khiển số — dòng đầu của phân nhóm 846232 (dây chuyền xẻ cuộn và dây chuyền cắt xén thành đoạn)"
+      }
+    },
+    {
+      "index": "dong8[29]",
+      "hanhDong": "sua",
+      "lyDo": "Trích thiếu một dấu gạch so với nguồn (nguồn: '84629010 - - Máy rèn khuôn hoặc máy dập khuôn'); check-so-tay bỏ dấu câu trước khi so nên không bắt được.",
+      "sua": { "trich": "84629010 - - Máy rèn khuôn hoặc máy dập khuôn " }
+    }
+  ]
+}

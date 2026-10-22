@@ -1,0 +1,25 @@
+{
+  "nhom": "8451",
+  "nguoiSoat": "NGUOI_DUYET",
+  "luc": "2026-10-22T21:50:00+07:00",
+  "daKiem": 17,
+  "soat": 17,
+  "xoa": 1,
+  "sua": 1,
+  "soatPhu": { "tieuChi6": 8, "dong8": 10 },
+  "ghiChu": "SOÁT ĐỘC LẬP 8451 (1 phamVi + 1 boPhan + 1 dieuKienVao + 10 loaiTru + 4 phanBiet = 17 mục bắt buộc; đọc thêm 8 tieuChi6 + 10 dong8). Câu trích khớp nguyên văn cả 35 mục. XOÁ 1. loaiTru[1] ('máy giặt công nghiệp dùng cho sợi dệt... → 8450') ĐẢO NGƯỢC CÂU NGUỒN: chữ 'Nhóm này bao gồm: (1) Máy giặt công nghiệp ... LOẠI TRỪ máy giặt thuộc nhóm 84.50' — thứ bị loại là 'máy giặt thuộc nhóm 84.50', còn máy giặt công nghiệp thì ĐƯỢC BAO GỒM. Viết thành loạiTru thành nói ngược nhóm, và cũng trùng loaiTru[0] (máy giặt gia đình/trong hiệu giặt → 8450, đã đúng). Xoá. SỬA 1 (khối phụ). dong8[7] (84518000, dòng 'Máy khác'): dieuKien gốc đưa thẳng câu chú giải nhóm vào định nghĩa dòng 8 số, trong khi nguồn chỉ nói nhóm 'CŨNG bao gồm' (tức là ví dụ, không phải định nghĩa của dòng Loại khác) — dễ khiến mô hình hiểu 84518000 chỉ gồm đúng loại máy nhuộm đó. Đã sửa thành 'Máy khác — phần còn lại của tiêu đề 8451.80 (ví dụ: ...)'. GIỮ: dieuKienVao[0] là điều kiện vào nhóm thật (câu 'Để thuộc nhóm này...'); boPhan giữ nguyên (quyTac chỉ diễn lại đúng câu trích, câu đã tự ràng buộc 'theo những điều khoản chung'); 9 loaiTru còn lại đều nêu đích danh và giữ đủ định ngữ giới hạn (máy làm mượt/máy là cán ép 'có hoặc không được sử dụng trong gia đình'; máy nghiền 'chủ yếu được dùng trong sản xuất các sản phẩm nỉ'; máy sấy 'không phải chuyên dùng'); lỗi gõ nguồn 'máy sấy ly tinh' được giữ nguyên trong trích; 4 phanBiet đều có mã đích trong trích, nhánh 'không' = chính nhóm là dạng hợp lệ (có căn cứ ở chính câu 'khóm này không bao gồm'); phamVi lược mục (II) có gắn nhãn '(III)' nên không lừa; tieuChi6 số 10 kg có trong trích; 10 dong8 đủ, dòng 84513010 lấy điều kiện từ SEN đúng luật."
+  ,
+  "thayDoi": [
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "xoa",
+      "lyDo": "Câu nguồn là 'Nhóm này bao gồm: (1) Máy giặt công nghiệp ... loại trừ máy giặt thuộc nhóm 84.50' — máy giặt công nghiệp là thứ ĐƯỢC BAO GỒM, không phải thứ bị loại. Item ghi thành loạiTru (đích 8450) là đảo ngược nghĩa, và cũng trùng loaiTru[0]."
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "sua",
+      "lyDo": "Dòng 84518000 là dòng 'Máy khác' (phần còn lại). Câu trích chỉ nói nhóm 'cũng bao gồm' máy nhuộm/hồ bóng — đó là ví dụ, không phải định nghĩa của dòng; cần nói rõ để không bị hiểu là điều kiện đầy đủ của dòng.",
+      "sua": { "dieuKien": "Máy khác — phần còn lại của tiêu đề 8451.80 (ví dụ: máy móc dùng để nhuộm hoặc hồ bóng hàng hóa dạng mảnh với độ rộng tùy ý, đặc trưng chủ yếu là kết hợp một hệ thống các con lăn dùng để vắt kiệt chất lỏng thừa)" }
+    }
+  ]
+}

@@ -545,3 +545,103 @@ Có SEN: 1 (`sen.84513010` → dòng 84513010). Không nhóm nào dùng `wco-op`
 - **PR #394** — https://github.com/ozvietnam/hs-code-api/pull/394 — **KHÔNG merge** (chờ soát độc lập).
 - CI: `test` **pass** (1m41s) · `bench` **pass** (6m37s). `Vercel: Deployment was blocked` là **đỏ có sẵn**
   (CEO đã gỡ Vercel 09/10/2026) — không phải lỗi code.
+
+---
+
+## Soát ĐỘC LẬP lô 013 (phiên khác người soạn) — 22/10/2026
+
+Brief: `brief-st-soat-lo013.md` (mục 4 `docs/giao-viec/so-tay-giao-ngoai.md`). Soát **TOÀN BỘ** khối bắt
+buộc: `phamVi` + `boPhan` + `dieuKienVao` + `loaiTru` + `phanBiet` của cả 6 nhóm, cùng nguồn gốc
+`tmp/so-tay/nguon/<nhom>.txt`. Kết quả ghi `review/<nhom>.json`, áp bằng `scripts/apply-review-lo013.mjs`
+(sao từ bản lô 012), rồi nạp lại `--tu-tep --force`.
+
+| Nhóm | Soát mục | Xoá | Sửa | Ghi chú |
+|---|---|---|---|---|
+| 6910 | 8 | 0 | 0 | sạch; phạm vi giữ nguyên chữ "thường" |
+| 6911 | 2 | 0 | 0 | nguồn mỏng (xem dưới), giữ nguyên cảnh báo |
+| 7010 | 12 | 0 | 2 | mất định ngữ "thường"; `hoi` phanBiet thiếu loại hàng |
+| 8215 | 3 (+12 khối phụ) | 1 | 2 | `hoi` mất định ngữ giới hạn; suy cấu trúc anh em |
+| 8451 | 17 | 1 | 1 | **loaiTru đảo ngược nghĩa câu nguồn** |
+| 8462 | 20 | 2 | 3 | cắt trích né "Nhìn chung"; nhánh "không" sai; 1 lỗi ký tự |
+| **Cộng** | **62** | **4** | **8 mục / 10 trường** | 175 → **171 mục, 171/171 (100 %)** |
+
+### 4 mục XOÁ
+
+1. **8451 `loaiTru[1]`** — câu nguồn: *"Nhóm này bao gồm: (1) Máy giặt công nghiệp … **loại trừ** máy giặt
+   thuộc nhóm 84.50"*. Item ghi thành loại trừ (đích 8450) với `dieuKien` là *máy giặt công nghiệp* —
+   tức nói ngược nhóm; máy giặt công nghiệp là thứ **được bao gồm**. Cũng trùng `loaiTru[0]` (đã đúng).
+2. **8462 `dieuKienVao[0]`** — câu nguồn mở đầu bằng **"Nhìn chung"** và nói về máy công cụ vận hành bằng
+   động cơ để phân biệt với dụng cụ cầm tay 82.05/84.67; bản nháp **cắt trích ngay trước** "trên thực tế
+   những loại máy này được thiết kế để…" rồi biến thành điều kiện vào nhóm. Đúng loại "cắt trích né câu rào".
+3. **8462 `phanBiet[3]`** (Chú giải 3 chương 84) — nhánh "không" ghi 8462 là sai: máy thuộc
+   8457–8465 tuỳ loại, không chắc chắn 8462; nhánh "có" cũng thiếu điều kiện "đồng thời", mà không thể
+   viết mã vào `hoi` (luật máy `hoi-nhac-ma-phan-nhom` chặn) → không diễn đạt được thành cặp có/không
+   trung thực.
+4. **8215 `tieuChi6[6]`** (hs6 821599, fact `khong_la_bo_tong_hop`) — tiêu đề `wco.821599` chỉ có
+   *"other than plated with precious metal"*, **không** nói gì về bộ tổ hợp; cụm đó suy từ tiêu đề anh em
+   821591 ("plated …, not in sets") — cấm theo luật "không suy từ cấu trúc anh em".
+
+### 8 mục SỬA
+
+- **7010 `dieuKienVao[0].fact`** → `thuong_dung_cho_muc_dich_thuong_mai_de_van_chuyen_hoac_dong_hang`:
+  nguồn nói "**thường** dùng cho các mục đích thương mại", fact cũ phát biểu thành điều kiện tuyệt đối.
+- **7010 `phanBiet[0].hoi`** → thêm loại hàng ("Đồ chứa thủy tinh **gia dụng**"): câu loại trừ (c) chỉ nói
+  về đồ thủy tinh trong gia dụng, hoi cũ áp nhánh không→7013 cho mọi hàng không dùng thương mại.
+- **8215 `phanBiet[0].hoi`** → thêm định ngữ giới hạn ("**thuộc thể loại kéo cắt cây hoặc kéo hai lưỡi**"):
+  `loaiTru[0]` đã giữ đúng cụm này, `phanBiet` thì bỏ mất.
+- **8215 `dong8[3]` (82159900)** → bỏ "không phải bộ tổ hợp" (không có trong `trich`).
+- **8451 `dong8[7]` (84518000)** → "Máy khác — **phần còn lại của tiêu đề 8451.80 (ví dụ: …)**": nguồn chỉ
+  nói nhóm "cũng bao gồm", tức là ví dụ, không phải định nghĩa của dòng Loại khác.
+- **8462 `dong8[1]` (84621900)** → cùng lý do: dòng "Loại khác" mà `dieuKien` đưa mục (c) của chú giải
+  nhóm vào làm định nghĩa dòng, lệch quy ước các dòng "Loại khác" khác của lô.
+- **8462 `dong8[9]` (84623210)** → đổi nguồn `wco.846232` → `tax.84623210`: `tieuChi co_dieu_khien_so = true`
+  mà câu trích wco **không** có "numerically controlled" (thuộc tính nằm ở dòng biểu thuế).
+- **8462 `dong8[29]` (84629010)** → sửa **lỗi ký tự**: nháp ghi `"84629010 - Máy rèn khuôn…"`, nguồn là
+  `"84629010 - - Máy rèn khuôn…"` (**thiếu một dấu gạch**).
+
+### Kiểm tra bổ sung không nằm trong luật máy
+
+Viết script so **từng ký tự** (tách mảnh theo `…` rồi so khớp chuỗi con với đúng khối nguồn, **không** bỏ
+dấu câu như `check-so-tay`): 174/175 khớp, bắt đúng lỗi 84629010 ở trên. Sau khi sửa: **171/171 khớp**.
+Cũng kiểm độ dài trích: dài nhất 269 ký tự — **không có trích nào lọt khe 300–600 ký tự** mà máy không bắt.
+
+### Máy kiểm
+
+- `check-so-tay --raw` → 171/171 đạt, 0 nhóm lỗi.
+- `npm run so-tay:check` → 233 nhóm / 7.668 mục / 0 mục không kiểm được nguồn.
+- `check-cay --nhom=<6 nhóm> --chi-tiet` → 6/6 nhóm đủ, 0 lỗi lệch cây.
+- `npm test` → ALL TESTS PASSED.
+- Báo cáo lô: `data/so-tay/bao-cao/lo-013.json` — 171 mục, `tyLeDat` 100, `nhomLoi` rỗng
+  (xoá báo cáo cũ trước khi nạp lại vì `--bao-cao` nối thêm vào tệp đã có).
+- `nguonLoai`: 59 mục ở 5 khối bắt buộc chuyển `AI_DA_KIEM` → `NGUOI_DUYET`
+  (62 mục đã soi − 3 mục vừa bị xoá). Khối `tieuChi6`/`dong8`/`cay` **giữ `AI_DA_KIEM`** như lô 006/007/009/012.
+
+### Những chỗ phiên soạn đã tự ghi và phiên soát đã cân nhắc (giữ nguyên, không đổi)
+
+- **8215 `phamVi`** — dấu `…` lược mục (1)–(6) của danh sách liệt kê nhưng `text` nêu đủ; mục đã gắn nhãn
+  "(7)" nên không lừa, và cùng cách làm với `phamVi` 6204 đã gộp (text rộng hơn trích) → giữ.
+- **8451 `phamVi`** — lược mục (II) có "loại trừ máy hoàn thiện nỉ" bên trong, nhưng mục đó đã tách thành
+  `loaiTru[2]` riêng và dấu "(III)" còn lại trong trích → giữ.
+- **6911 `phamVi`** — không mô tả phạm vi mà báo rõ gói nguồn thiếu chú giải 69.12; không đoán phạm vi
+  từ tên WCO → giữ (đúng tinh thần "thà bỏ mục còn hơn mục không căn cứ").
+- **8451 `boPhan`** — `quyTac` chỉ diễn lại đúng câu trích (câu đã tự ràng buộc "theo những điều khoản
+  chung về phân loại các bộ phận") → không cần sửa.
+
+### Đề xuất bổ sung phần 1 `docs/giao-viec/so-tay-giao-ngoai.md`
+
+1. **`check-so-tay` bỏ dấu câu trước khi so** → lỗi thiếu/thừa dấu gạch trong trích biểu thuế lọt.
+   Nên có một máy so **nguyên văn** (không squash) cho ít nhất khối `trich`.
+2. **`phanBiet` về luật ưu tiên của Chú giải chương** (kiểu Chú giải 3 chương 84: ưu tiên 8456 khi mã
+   thuộc 8456 **và** 8457–8465) **không diễn đạt được** thành cặp có/không: `hoi` bị luật máy cấm nhắc mã,
+   còn nhánh "không" không phải một mã. Cần luật riêng hoặc loại khỏi danh mục trích.
+3. **Dòng "Loại khác" 8 số**: không được lấy một câu chú giải nhóm làm `dieuKien` của dòng (chỉ là ví dụ
+   trong nhóm, không phải định nghĩa của dòng) — luôn viết "Loại khác — phần còn lại của phân nhóm … (ví dụ: …)".
+
+### Còn lại cho người quản lý
+
+- Tự soát ngẫu nhiên ≥ 10 % phần khối phụ đã soi: `tieuChi6` 49, `dong8` 53, `cay.tenDien` 6.
+- Quyết định về `nguonLoai` khối phụ (xem trên).
+- Xử lý riêng lỗi kệ sách: `phan69.phan`/`phan70.phan` sai tên Phần; nút 6 số `701090`/`846290` mang
+  tên "Loại khác"; nguồn 6911 thiếu chú giải 69.12; lệch nhẹ giữa `wco.691010` ("baths, bidets") và chú
+  giải nhóm 6910 (bồn tắm di động sang 69.11/69.12) — sổ tay chỉ trích nên không khẳng định gì.
+- **KHÔNG merge** cho tới khi người quản lý duyệt.
