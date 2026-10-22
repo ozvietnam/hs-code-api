@@ -799,3 +799,17 @@ tên sẵn dùng trong `data/so-tay/bao-cao/` (memory `bao-cao-lo-...-lo-0NN`).
   Biệt phân nhóm 12 vẫn đủ vì nằm ở đầu văn bản.
 - **`ch64.chuong` Chú giải 2 (nhóm 96.06)** nói về "các bộ phận" của **nhóm 64.06**, không phải
   6401 → không dùng làm `loaiTru` của 6401 (điều kiện sai cấp).
+
+- [x] **B8.** Commit `fec74ff` (9 tệp: 6 `data/so-tay/*.json` + `bao-cao/lo-020.json` + TIEN-TRINH +
+  dòng CSV; **không** có `tmp/`) → push nhánh `so-tay/lo-020` → mở **PR #401**
+  (https://github.com/ozvietnam/hs-code-api/pull/401). **KHÔNG merge.**
+  CSV dòng 020 giữ `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm` — đổi `xong`+`pr=401` là việc
+  của người duyệt sau khi qua soát độc lập (mục 4 giao việc).
+
+## Còn lại
+
+1. **Soát độc lập toàn bộ** `phamVi`/`boPhan`/`dieuKienVao`/`loaiTru`/`phanBiet` của 6 nhóm
+   (195 mục) — người/agent KHÁC người soạn. CHƯA làm.
+2. Người duyệt tự soát ngẫu nhiên ≥ 10 % số mục còn lại.
+3. Gộp `scripts/check-trich-nguyen-van.mjs` từ PR #396 vào `scripts/` (nó đang nằm ở `tmp/`
+   nên không lấy lại được) — hoặc đề xuất vá `quoteInSource()` để so khớp nguyên văn thay vì squash.
