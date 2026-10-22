@@ -1,0 +1,68 @@
+{
+ "nhom": "5705",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T14:45:00+07:00",
+ "daKiem": 13,
+ "soat": 13,
+ "xoa": 0,
+ "sua": 1,
+ "ghiChu": "Audit 5705 (1 phamVi + 1 dieuKienVao + 2 loaiTru + 2 phanBiet + 7 dong8 = 13 mục). CÓ THẬT: 13/13 câu trích khớp nguồn tuyệt đối, kể cả mục (q) của phan57 có xuống dòng cứng giữa \"bằng/sợi carbon\" — giữ nguyên vì đó là ký tự nguồn. SỬA 1: dieuKienVao[0] — fact chỉ lấy nửa đầu định nghĩa, BỎ nửa sau \"và gồm cả…\": chú giải 1 Chương 57 định nghĩa nhóm là (A) vật liệu dệt làm bề mặt ngoài khi sử dụng HOẶC (B) hàng có đặc tính trải sàn dệt nhưng dự định dùng cho mục đích khác. fact cũ khiến (B) — mà chính TỔNG QUÁT Phần XI liệt kê rõ \"đồ treo tường hoặc các loại phủ bàn\" — bị loại khỏi 5705 khi đọc trong prompt. Đã ghi lại đủ hai nhánh, không đổi câu trích. Ngoài ra: phamVi đổi \"Chương này\" → \"Chương 57\" là đúng để câu tự đứng; loaiTru (b) → 5904 lấy từ chú giải Chương, (q) → 6805|6815 lấy từ phần 57 — cả hai giữ đủ \"hoặc\"; 5705 không có dong8 nào thiếu (đủ 7 dòng tax). tieuChi6 rỗng: wco.570500 chỉ nêu phạm vi \"n.e.c. in chapter 57\" chứ không có ngưỡng phân biệt được, không bịa.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "fact chỉ lấy nửa đầu định nghĩa ở chú giải 1 Chương 57 và BỎ nửa sau: nguồn định nghĩa nhóm là (A) vật liệu dệt làm bề mặt ngoài khi sử dụng HOẶC (B) hàng có đặc tính của trải sàn dệt nhưng dự định dùng cho mục đích khác. Chỉ fact mới đi vào prompt (so-tay-gates.js:135), nên nhánh (B) — mà chính TỔNG QUÁT Phần XI liệt kê rõ \"đồ treo tường hoặc các loại phủ bàn\" — bị loại khỏi 5705. Ghi lại đủ hai nhánh trong fact; câu trích giữ nguyên.",
+   "sua": {
+    "fact": "vat_lieu_det_dung_lam_be_mat_ngoai_cua_san_pham_khi_su_dung_hoac_co_dac_tinh_cua_hang_det_tra_san_du_dinh_dung_cho_muc_dich_khac"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu"
+  }
+ ]
+}
