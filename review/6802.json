@@ -1,0 +1,82 @@
+{
+ "nhom": "6802",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-23T00:20:00+07:00",
+ "phamViSoat": "Toàn bộ 13 mục của 5 khối (1 phamVi + 2 dieuKienVao + 8 loaiTru + 1 phanBiet + 1 boPhan) trong bản nháp tmp/so-tay/raw/6802.json, đọc cùng tmp/so-tay/nguon/6802.txt (nhom6802.nhom, ch68.chuong, phan68.phan, wco.680210…680299, tax.68021000…68029900). Tầng máy: scripts/audit-lo021.mjs — 0 mảnh trích sai, so từng mảnh (tách theo …) với đúng khối nguồn khai ở `nguon`, chỉ chuẩn hoá khoảng trắng.",
+ "soat": 13,
+ "sua": 2,
+ "chen": 0,
+ "xoa": 0,
+ "ghiChu": "Không xoá mục nào: cả 13 mục đều có câu trích nguyên văn đúng khối nguồn và nói đúng điều mục khẳng định. Hai lỗi sửa: (1) phanBiet chỉ lấy một nhánh đích trong khi câu trích nêu ba ('nhóm 68.03, 96.09 và 96.10') — đúng họ lỗi 'một nhánh của A hoặc B bị tách thành đích duy nhất' mà brief yêu cầu bắt; sửa bằng quy ước a|b đã có 61/531 phanBiet trong sổ tay (neuKhong=6802 là mẫu 'ở lại nhóm này', 318/480 mục, không đụng). (2) boPhan.trich lược bằng '…' mất đúng ngoặc ví dụ '(ví dụ, đá thạch anh, đá lửa, dolomit và steatit)' trong khi quyTac lại chép nguyên các ví dụ đó — diễn đạt có chữ nằm ngoài câu trích. Sửa bằng cách GHI TRỌN câu (336 ký tự, nguyên văn, vẫn dưới trần 600 của máy) chứ không sửa quyTac.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "trich nguyên văn câu đầu nhom6802.nhom, đủ cả vế 'Tuy nhiên, có một số trường hợp loại trừ…' (315 ký tự — vượt mốc 300 nhưng liệt kê vòng mù, đã đọc kỹ: phần nguồn ngay sau chỉ là câu dẫn chiếu '…được nêu ở phần cuối của Chú giải Chi tiết này', không phải ngoại lệ). text chỉ diễn đạt lại đúng hai câu đó. Hai loại trừ mà nguồn chỉ nêu Chương/không nêu nhóm (đá cuội, đá hạt, đá dăm chưa xử lý, cát nhuộm màu → Chương 25; phiến đá làm bề mặt đồ nội thất → Chương 94) không ghi thành loaiTru là đúng luật 3 — không có số nhóm đích trong câu."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "trich nguyên văn 'Do đó, nhóm này bao gồm các loại đá đã được gia công thêm hơn là chỉ được tạo hình thành các khối, tấm hoặc phiến…'; fact 'da_gia_cong_them_hon_la_chi_duoc_tao_hinh' bám đúng vế đó, không thêm chữ. Nguồn ngay sau chuyển sang đoạn liệt kê (A)/(B) — không có ngoại lệ nào bị nuốt."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "trich nguyên văn câu dẫn + mục (A) của nhom6802.nhom; fact 'la_san_pham_da_duoc_tao_boi_tho_da_tho_dieu_khac' đúng với 'sản phẩm đá ở các dạng được tạo bởi thợ đá, thợ điêu khắc'. Dấu '…' lược mục (B) nhưng (B) là phần liệt kê thứ hai cùng tính chất, không phải ngoại lệ — không mất ý."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "trich nguyên văn mục (a) danh sách loại trừ; đích 6803|9609|9610 cả ba đều nêu trong câu. Có giữ cả vế 'trừ đá khối dùng để khảm' trong dieuKien — không cắt mất ngoại lệ lồng nhau."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "mục (b) 'các sản phẩm bằng basan nung chảy (nhóm 68.15)' nguyên văn; đích 6815 có trong câu."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "mục (d) 'các sản phẩm giả trang sức (nhóm 71.17)' nguyên văn; đích 7117 có trong câu. (Mục (c) đá steatite đã nung chỉ nêu 'Chương 69 hoặc Chương 85' nên bỏ qua theo luật 3 — đúng.)"
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "mục (f) 'Đèn (luminaires), bộ đèn và các bộ phận của nó (nhóm 94.05)' nguyên văn; đích 9405 có trong câu."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "mục (g) nguyên văn; chỉ lấy nhánh 'khuy bằng đá (nhóm 96.06)'. Câu có hai vế nối 'và' (khuy → 9606; phấn viết → 9504 hoặc 9609) và sổ tay tách thành HAI loaiTru riêng [4] và [5] — đúng, không rơi nhánh."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "cùng câu mục (g), lấy nhánh 'phấn viết thuộc nhóm 95.04 hoặc 96.09'; đích 9504|9609 cả hai có trong câu (dùng đúng quy ước nhiều đích a|b)."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "mục (h) 'Nguyên bản tác phẩm điều khắc và tượng tạc (nhóm 97.03)' nguyên văn, là mục cuối danh sách; đích 9703 có trong câu."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "câu về đá nhân tạo gắn kết mảnh vụn (nhóm 68.10), trich nguyên văn kèm dấu '…' lược đúng một vế trung gian. Cảnh báo máy 'nguồn ngay sau có không bao gồm' là hợp lý: đoạn kế tiếp chính là 'Nhóm này cũng không bao gồm: (a)…' — tức danh sách loại trừ đã được ghi đủ ở [0]–[6], không phải ngoại lệ bị bỏ sót."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích '(a) Đá phiến và các sản phẩm bằng đá phiến đã được gia công, trừ đá khối dùng để khảm và sản phẩm tương tự (nhóm 68.03, 96.09 và 96.10)' nêu BA đích nhưng neuCo chỉ ghi '6803' — rơi mất 96.09 và 96.10. Đúng họ lỗi brief liệt kê ('một nhánh của A hoặc B bị tách thành một nhánh đích duy nhất'); máy không bắt vì luật chỉ kiểm mã đích CÓ trong câu chứ không kiểm ĐỦ mọi mã câu nêu. Hoi giữ nguyên (đã giữ đúng vế 'không phải đá khối dùng để khảm'). neuKhong=6802 là mẫu 'không dính điều kiện loại trừ thì ở lại nhóm này' đã được chấp nhận ở 318/480 mục — không đụng.",
+   "sua": { "neuCo": "6803|9609|9610" }
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích lược bằng '…' đúng nơi có ngoặc ví dụ '(ví dụ, đá thạch anh, đá lửa, dolomit và steatit)', nhưng quyTac lại liệt kê nguyên các ví dụ đó — tức diễn đạt mang chữ không có trong câu trích (lỗi luật 7 / bảng lỗi 'text/tomTat/dieuKien thêm chữ không có trong câu trích'). Sửa theo hướng an toàn: GHI TRỌN câu thay vì sửa quyTac. Câu đầy đủ dài 336 ký tự, đối chiếu nguyên văn với ch68.chuong là khớp tuyệt đối (đã kiểm bằng indexOf trên nguồn), vẫn dưới trần 600 của máy. tomTat 'Đá tự nhiên nào cũng có thể thuộc 6802 nếu gia công tương tự đá xây dựng, trừ đá phiến' đúng với cả hai vế của câu.",
+   "sua": {
+    "trich": "Trong nhóm 68.02, khái niệm “đá xây dựng hoặc đá làm tượng đài đã được gia công” được áp dụng không chỉ đối với nhiều loại đá đã được nêu ra trong nhóm 25.15 hoặc 25.16 mà còn đối với tất cả các loại đá tự nhiên khác (ví dụ, đá thạch anh, đá lửa, dolomit và steatit) đã được gia công tương tự; tuy nhiên, không áp dụng đối với đá phiến."
+   }
+  }
+ ]
+}

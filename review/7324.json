@@ -1,0 +1,43 @@
+{
+ "nhom": "7324",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-23T00:28:00+07:00",
+ "phamViSoat": "Toàn bộ 6 mục của 5 khối (1 phamVi + 4 dieuKienVao + 1 loaiTru; phanBiet rỗng, boPhan null) trong tmp/so-tay/raw/7324.json, đọc cùng tmp/so-tay/nguon/7324.txt. Tầng máy: 0 mảnh trích sai.",
+ "soat": 6,
+ "sua": 0,
+ "chen": 0,
+ "xoa": 1,
+ "ghiChu": "Xoá 1 mục (dieuKienVao[3]), giữ 5. Đây là kẽ hở của luật máy: câu 'Chúng CÓ THỂ được gắn với nắp, tay cầm… với ĐIỀU KIỆN rằng chúng vẫn còn nguyên tính chất của các mặt hàng bằng sắt hoặc thép' là câu CHO PHÉP có điều kiện, đúng hình dạng luật dieu-kien-chi-cho-phep cấm đặt value=true — nhưng regex CAU_CHO_PHEP trong lib/so-tay.js:166 chỉ bắt 'ngay cả khi / vẫn được phân loại|thuộc nhóm|được xếp|nằm trong nhóm / đã hoặc chưa / whether or not / even if', không bắt 'có thể … với điều kiện rằng', nên mục lọt qua máy. Đề xuất nối luật máy ghi ở TIEN-TRINH.md. Ba dieuKienVao còn lại đều lấy từ CÙNG câu mở đầu và là ba vế của một mệnh đề — hợp lệ, máy không loại. Loại trừ (b) trong nguồn chỉ nêu 'Chương 94' không có số nhóm nên không sinh loaiTru — đúng luật 3.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "trich nguyên văn trọn câu đầu nhom7324.nhom; text diễn lại đúng một-một ('chưa được bao gồm rõ ràng riêng biệt trong các nhóm khác của Danh mục, dùng cho các mục đích vệ sinh'), không mở rộng phạm vi. text chỉ nói 'mục đích vệ sinh' chứ không kể bồn tắm/chậu rửa/ống nhổ — nguồn có liệt kê ở đoạn 3 nhưng thu hẹp xuống cũng không sai, chỉ là bỏ sót thông tin chứ không thêm."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "fact 'la_mat_hang_bang_sat_hoac_thep' bám đúng vế 'các mặt hàng bằng sắt hoặc thép'. Lấy từ nhom7324.nhom (khối nhóm), không phải ch73.chuong nên không dính lỗ hổng dieuKienVao lấy quá tầng."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "fact 'duoc_su_dung_cho_muc_dich_ve_sinh' đúng với 'được sử dụng cho các mục đích vệ sinh'. Đây là điều kiện cốt lõi phân biệt 7324 với nhóm vật dụng khác."
+  },
+  {
+   "index": "dieuKienVao[2]",
+   "hanhDong": "giu",
+   "lyDo": "fact 'chua_duoc_bao_gom_ro_rang_rieng_biet_o_nhom_khac' bám đúng 'chưa được bao gồm một cách rỗ ràng, riêng biệt hơn trong các nhóm khác của Danh mục'. Đây là mệnh đề loại trừ chạy trước (residual) nên đúng là điều kiện vào nhóm."
+  },
+  {
+   "index": "dieuKienVao[3]",
+   "hanhDong": "xoa",
+   "lyDo": "Câu nguồn là CÂU CHO PHÉP CÓ ĐIỀU KIỆN: 'Chúng có thể được gắn với nắp, tay cầm hoặc các bộ phận rời hay các phụ tùng khác bằng vật liệu khác VỚI ĐIỀU KIỆN RẠNG chúng vẫn còn nguyên tính chất của các mặt hàng bằng sắt hoặc thép.' Mục đã biến vế điều kiện đó thành khẳng định phẳng 'van_con_nguyen_tinh_chat_la_mat_hang_bang_sat_hoac_thep = true', tức làm mất hai thông tin: (a) vế 'có thể … với điều kiện rằng' — luật 3 của tài liệu giao việc cấm đúng hình dạng này với dieuKienVao (luật máy dieu-kien-chi-cho-phep, lỗi bảng 'dieuKienVao từ câu CHO PHÉP … đặt =true'); (b) nội dung thực chất của quy tắc, vốn là 'được phép gắn vật liệu khác khi nào còn giữ nguyên tính chất sắt/thép'. Ngoài ra khẳng định này vốn hiển nhiên — hàng thuộc 7325… 7324 đã là mặt hàng bằng sắt/thép theo dieuKienVao[0], nên mục không thêm thông tin phân loại nào mà chỉ thêm nhiễu vào prompt. Máy không bắt được vì CAU_CHO_PHEP (lib/so-tay.js:166) không có mẫu 'có thể … với điều kiện rằng' — đề xuất bổ sung vào luật máy. Theo brief: mục mờ má → XOÁ. Nội dung thật của quy tắc không mất vì nguồn vẫn nguyên văn trong kệ sách (nếu sau này muốn dùng thì đặt vào boPhan, không phải dieuKienVao)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "mục (a) 'Bình, hộp và các đồ chứa tương tự thuộc nhóm 73.10.' nguyên văn; đích 7310 có trong câu. Mục (b) trong nguồn chỉ nêu 'Chương 94' (không có số nhóm) nên không sinh loaiTru — đúng luật 3 'không tính số nhóm chỉ là … Chương N'."
+  }
+ ]
+}

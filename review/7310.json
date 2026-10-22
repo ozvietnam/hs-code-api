@@ -1,0 +1,84 @@
+{
+ "nhom": "7310",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-23T00:25:00+07:00",
+ "phamViSoat": "Toàn bộ 14 mục của 5 khối (1 phamVi + 3 dieuKienVao + 9 loaiTru + 1 phanBiet; boPhan null) trong tmp/so-tay/raw/7310.json, đọc cùng tmp/so-tay/nguon/7310.txt. Tầng máy: 0 mảnh trích sai.",
+ "soat": 14,
+ "sua": 1,
+ "chen": 0,
+ "xoa": 0,
+ "ghiChu": "Không xoá mục nào; danh sách loại trừ (a)–(h) của nguồn được ghi đủ 9/9 (kèm điều khoản 84.19 ở vị trí đầu). Một lỗi sửa: dieuKienVao[1].ngoaiTru = 'Nhóm trước (73.09) áp dụng cho đồ chứa có dung tích trên 300 lít.' — vừa thêm mã 73.09 vốn KHÔNG có trong nguồn (chú giải chỉ nói 'nhóm trước'), vừa sai chiều với nghĩa của trường ngoaiTru. lib/so-tay-gates.js:226 dùng ngoaiTru để BỎ QUA kiểm ngưỡng số và dòng 230 in ra cho người dùng là 'ngoại lệ không giới hạn' — với điều kiện 'dung tích ≤ 300 lít' thì ngoại lệ đúng phải là 'bất kỳ dung tích nào cũng được', còn câu này nói ngược lại (trên 300 l thì KHÔNG thuộc 7310). Sửa: xoá ngoaiTru; thông tin 'nhóm trước áp dụng cho >300 l' vẫn còn nguyên văn trong chính phamVi.trich nên không mất thông tin. Ghi nhận lỗi kệ sách (không tự sửa): nhom7310.nhom ghi '3001' thay vì '300 l' (chữ l bị đọc thành số 1) — sổ tay giữ nguyên trong trich, chỉ diễn giải thành 300 lít ở fact/text, đúng hướng an toàn.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "trich nguyên văn TRỌN cả đoạn đầu nhom7310.nhom (413 ký tự — vượt mốc 300 của lược đồ, dưới trần 600 của máy; đã đọc tay và đối chiếu từng câu: đoạn nguồn kết thúc đúng ở '…lắp đặt như những vật cố định.', không lược gì). Giữ cả mệnh đề mở đầu 'Trong khi nhóm trước áp dụng cho các đồ chứa có dung tích trên 3001' — nhờ đó người đọc thấy ngay ranh giới với 7309. text diễn lại đúng, chỉ chuẩn hoá '3001' thành '300 lít' (lỗi OCR quen thuộc) chứ không thêm ý."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "trich là mảnh giữa câu (bắt đầu bằng dấu '…' hợp lệ, khớp nguyên văn nhom7310.nhom); fact 'la_do_chua_bang_sat_hoac_thep_la_hoac_thep_tam' đúng với 'các đồ chứa bằng sắt hoặc thép lá hoặc thép tấm'. Là điều kiện vật liệu, không phải điều kiện phân nhóm — nên không dính luật dieu-kien-cap-phan-nhom."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "sua",
+   "lyDo": "Mô tả đúng (nguồn: 'dung tích không vượt quá 3001'; ngưỡng 300 lít có thật trong câu trích) nhưng ngoaiTru thì sai hai lớp. (1) Nội dung 'Nhóm trước (73.09) áp dụng cho đồ chứa có dung tích trên 300 lít' — chú giải nhóm chỉ viết 'nhóm trước', không nêu số 73.09; đây đúng là lỗi 'thêm chữ không có trong câu trích (…mã)' mà brief yêu cầu bắt. (2) Chiều nghĩa: ngoaiTru của một điều kiện ngưỡng số là 'hàng thuộc ngoại lệ thì điều kiện không áp dụng' — lib/so-tay-gates.js:226 bỏ qua kiểm ngưỡng khi khớp, dòng 230 in 'ngoại lệ không giới hạn'. Câu này lại khẳng định trên 300 l KHÔNG thuộc 7310, tức làm siết chứ không nới — đặt vào ngoạiTru là ngược. Sửa: xoá ngoaiTru (không có ngoại lệ dung tích nào cho 7310 trong nguồn); thông tin 'nhóm trước áp dụng cho >300 l' vẫn nằm nguyên văn trong phamVi.trich.",
+   "sua": { "ngoaiTru": [] }
+  },
+  {
+   "index": "dieuKienVao[2]",
+   "hanhDong": "giu",
+   "lyDo": "fact 'co_kich_co_de_di_chuyen_hoac_xach_tay' đúng với 'nhưng có kích cỡ dễ di chuyển hoặc xách tay'; đây mới là điều kiện phân biệt thật sự với nhóm trước (7309 áp cho đồ chứa thường lắp cố định trong nhà máy), và câu trích có giữ cả vế đối chiếu đó."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Điều khoản về thùng thành đôi/đáy kép: trich ghi nguyên văn cả câu 'Nhóm này cũng bao gồm các thùng,… được cách nhiệt nhờ bởi thành đôi hoặc đáy kép với giả thiết là KHÔNG làm sẵn để luân chuyển… (Các đồ chứa với những điều khoản như vậy bị loại trừ, xem nhóm 84.19)'. Cảnh báo máy 'nguồn ngay sau có không bao gồm' là chính danh sách (a)–(h) đã được ghi đủ ở [1]–[8]. dieuKien lấy đúng phần bị loại ('có sẵn điều khoản luân chuyển…'), không đảo thành phần được giữ — đúng chiều."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "mục (a) 'Các sản phẩm thuộc nhóm 42.02.' nguyên văn; đích 4202 có trong câu."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "mục (b) nguyên văn (chỉ dùng dấu phẩy thay chữ 'và' trong 'các thùng chứa và hộp nhỏ tương tự' — vẫn trong câu); đích 7323 có trong câu."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "mục (c) nguyên văn với cả hai đích trong một ngoặc '(nhóm 73.25 hoặc 73.26)'; đích 7325|7326 đủ cả hai, dùng đúng quy ước a|b — đây là trường hợp 'A hoặc B' được giữ trọn vẹn, đối chiếu với lỗi cùng họ ở vòng trước (8708 chỉ lấy 70.09)."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "mục (d) két sắt/hòm tiền/tủ chứng từ nguyên văn; đích 8303 có trong câu."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "mục (e) 'Các mặt hàng thuộc nhóm 83.04.' nguyên văn; đích 8304 có trong câu."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "mục (f) 'Các hộp dùng để trang trí (nhóm 83.06).' nguyên văn; đích 8306 có trong câu."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "mục (g) thùng chứa thiết kế riêng cho vận tải nguyên văn; đích 8609 có trong câu."
+  },
+  {
+   "index": "loaiTru[8]",
+   "hanhDong": "giu",
+   "lyDo": "mục (h) 'Phích chân không… thuộc nhóm 96.17' nguyên văn; đích 9617 có trong câu. Đây là mục cuối danh sách, phần nguồn ngay sau chính là đầu khối ch73.chuong — cảnh báo máy về 'không bao gồm' là nhiễu do ranh giới khối nguồn."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đây là câu hỏi dễ đảo nhánh nên đã đọc kỹ chiều: hỏi 'Đồ chứa CÓ SẴN điều khoản luân chuyển chất lỏng làm lạnh/nóng giữa các thành?' → có thì sang 84.19, không thì ở lại 7310. Nguồn nói 'được làm sẵn để luân chuyển' là ĐIỀU KIỆN bị loại, còn thành đôi/đáy kép KHÔNG có sẵn điều khoản thì ĐƯỢC giữ trong 7310 — đúng chiều. Câu hỏi còn giữ nguyên nghĩa 'có sẵn' nên không đảo thành 'có thành đôi'. trich gốc đủ cả hai vế (bao gồm + ngoặc loại trừ xem nhóm 84.19)."
+  }
+ ]
+}

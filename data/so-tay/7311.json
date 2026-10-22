@@ -1,0 +1,462 @@
+{
+ "nhom": "7311",
+ "phamVi": {
+  "text": "Các loại thùng chứa có dung tích bất kỳ dùng để vận chuyển hoặc bảo quản khí nén hoặc khí hoá lỏng.",
+  "nguon": "nhom7311.nhom",
+  "trich": "Nhóm này bao gồm các loại thùng chứa có dung tích bất kỳ được sử dụng để vận chuyển hoặc bảo quản các khí nén hoặc khí hoá lỏng (ví dụ như hêli, ôxy, agon, hydro, axêtylen, cacbon điôxit hay butan).",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_thung_chua_dung_cho_van_chuyen_bao_quan_khi_nen_hoac_khi_hoa_long",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "các loại ắc quy hơi nước (nhóm 84.04)"
+   ],
+   "nguon": "nhom7311.nhom",
+   "trich": "Nhóm này bao gồm các loại thùng chứa có dung tích bất kỳ được sử dụng để vận chuyển hoặc bảo quản các khí nén hoặc khí hoá lỏng (ví dụ như hêli, ôxy, agon, hydro, axêtylen, cacbon điôxit hay butan).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "co_dung_tich_bat_ky_khong_co_gioi_han_dung_tich",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom7311.nhom",
+   "trich": "Nhóm này bao gồm các loại thùng chứa có dung tích bất kỳ được sử dụng để vận chuyển hoặc bảo quản các khí nén hoặc khí hoá lỏng (ví dụ như hêli, ôxy, agon, hydro, axêtylen, cacbon điôxit hay butan).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "các loại ắc quy hơi nước",
+   "sangNhom": "8404",
+   "nguon": "nhom7311.nhom",
+   "trich": "Nhóm này loại trừ các loại ắc quy hơi nước (nhóm 84.04)",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "73110021",
+   "dieuKien": "Có dung tích từ 30 lít trở lên nhưng dưới 110 lít, dùng để chứa khí tự nhiên nén (CNG) hoặc khí tự nhiên hóa lỏng (LNG) cho ô tô — dòng cha 7311002: dạng hình trụ bằng thép đúc liền (đối chiếu biểu thuế)",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "dung_tich",
+     "op": ">=",
+     "value": 30,
+     "donVi": "lít"
+    },
+    {
+     "fact": "dung_tich",
+     "op": "<",
+     "value": 110,
+     "donVi": "lít"
+    }
+   ],
+   "nguon": "tax.73110021",
+   "trich": "73110021 - - Có dung tích từ 30 lít trở lên, nhưng dưới 110 lít, dùng để chứa khí tự nhiên nén (CNG) hoặc khí tự nhiên hóa lỏng (LNG) cho ô tô",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "73110022",
+   "dieuKien": "Có dung tích từ 110 lít trở lên, dùng để chứa khí tự nhiên nén (CNG) hoặc khí tự nhiên hóa lỏng (LNG) cho ô tô — dòng cha 7311002: dạng hình trụ bằng thép đúc liền (đối chiếu biểu thuế)",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "dung_tich",
+     "op": ">=",
+     "value": 110,
+     "donVi": "lít"
+    }
+   ],
+   "nguon": "tax.73110022",
+   "trich": "73110022 - - Có dung tích từ 110 lít trở lên, dùng để chứa khí tự nhiên nén (CNG) hoặc khí tự nhiên hóa lỏng (LNG) cho ô tô",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "73110023",
+   "dieuKien": "Có dung tích dưới 30 lít, dùng để chứa khí dầu mỏ hóa lỏng (LPG) — dòng cha 7311002: dạng hình trụ bằng thép đúc liền (đối chiếu biểu thuế)",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "dung_tich",
+     "op": "<",
+     "value": 30,
+     "donVi": "lít"
+    }
+   ],
+   "nguon": "tax.73110023",
+   "trich": "73110023 - - Có dung tích dưới 30 lít, dùng để chứa khí dầu mỏ hóa lỏng (LPG)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "73110024",
+   "dieuKien": "Có dung tích từ 30 lít trở lên nhưng dưới 110 lít, dùng để chứa khí dầu mỏ hóa lỏng (LPG) — dòng cha 7311002: dạng hình trụ bằng thép đúc liền (đối chiếu biểu thuế)",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "dung_tich",
+     "op": ">=",
+     "value": 30,
+     "donVi": "lít"
+    },
+    {
+     "fact": "dung_tich",
+     "op": "<",
+     "value": 110,
+     "donVi": "lít"
+    }
+   ],
+   "nguon": "tax.73110024",
+   "trich": "73110024 - - Có dung tích từ 30 lít trở lên nhưng dưới 110 lít, dùng để chứa khí dầu mỏ hóa lỏng (LPG)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "73110025",
+   "dieuKien": "Loại khác, dùng để chứa khí dầu mỏ hóa lỏng (LPG) — dòng cha 7311002: dạng hình trụ bằng thép đúc liền (đối chiếu biểu thuế)",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "tax.73110025",
+   "trich": "73110025 - - Loại khác, dùng để chứa khí dầu mỏ hóa lỏng (LPG)",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "7311002",
+    "truAnhEm": [
+     "73110021",
+     "73110022",
+     "73110023",
+     "73110024",
+     "73110026",
+     "73110027"
+    ],
+    "toTienCoTen": "7311",
+    "dinhNghiaDuoc": false
+   }
+  },
+  {
+   "hs": "73110026",
+   "dieuKien": "Loại khác, có dung tích dưới 30 lít — dòng cha 7311002: dạng hình trụ bằng thép đúc liền (đối chiếu biểu thuế)",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "tax.73110026",
+   "trich": "73110026 - - Loại khác, có dung tích dưới 30 lít",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "7311002",
+    "truAnhEm": [
+     "73110021",
+     "73110022",
+     "73110023",
+     "73110024",
+     "73110025",
+     "73110027"
+    ],
+    "toTienCoTen": "7311",
+    "dinhNghiaDuoc": false
+   }
+  },
+  {
+   "hs": "73110027",
+   "dieuKien": "Loại khác, có dung tích từ 30 lít trở lên nhưng dưới 110 lít — dòng cha 7311002: dạng hình trụ bằng thép đúc liền (đối chiếu biểu thuế)",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "tax.73110027",
+   "trich": "73110027 - - Loại khác, có dung tích từ 30 lít trở lên nhưng dưới 110 lít",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "7311002",
+    "truAnhEm": [
+     "73110021",
+     "73110022",
+     "73110023",
+     "73110024",
+     "73110025",
+     "73110026"
+    ],
+    "toTienCoTen": "7311",
+    "dinhNghiaDuoc": false
+   }
+  },
+  {
+   "hs": "73110029",
+   "dieuKien": "Loại khác (không ghi rõ khí chứa) — dòng cha 7311002: dạng hình trụ bằng thép đúc liền (đối chiếu biểu thuế)",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "tax.73110029",
+   "trich": "73110029 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "7311002",
+    "truAnhEm": [
+     "73110021",
+     "73110022",
+     "73110023",
+     "73110024",
+     "73110025",
+     "73110026",
+     "73110027"
+    ],
+    "toTienCoTen": "7311",
+    "dinhNghiaDuoc": false
+   }
+  },
+  {
+   "hs": "73110091",
+   "dieuKien": "Có dung tích không quá 7,3 lít — dòng cha 7311009 ghi “Loại khác” trong biểu thuế",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "dung_tich",
+     "op": "<=",
+     "value": 7.3,
+     "donVi": "lít"
+    }
+   ],
+   "nguon": "tax.73110091",
+   "trich": "73110091 - - Có dung tích không quá 7,3 lít",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "73110092",
+   "dieuKien": "Có dung tích trên 7,3 lít nhưng dưới 30 lít — dòng cha 7311009 ghi “Loại khác” trong biểu thuế",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "dung_tich",
+     "op": ">",
+     "value": 7.3,
+     "donVi": "lít"
+    },
+    {
+     "fact": "dung_tich",
+     "op": "<",
+     "value": 30,
+     "donVi": "lít"
+    }
+   ],
+   "nguon": "tax.73110092",
+   "trich": "73110092 - - Có dung tích trên 7,3 lít nhưng dưới 30 lít",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "73110094",
+   "dieuKien": "Có dung tích từ 30 lít trở lên nhưng dưới 110 lít — dòng cha 7311009 ghi “Loại khác” trong biểu thuế",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "dung_tich",
+     "op": ">=",
+     "value": 30,
+     "donVi": "lít"
+    },
+    {
+     "fact": "dung_tich",
+     "op": "<",
+     "value": 110,
+     "donVi": "lít"
+    }
+   ],
+   "nguon": "tax.73110094",
+   "trich": "73110094 - - Có dung tích từ 30 lít trở lên nhưng dưới 110 lít",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "73110099",
+   "dieuKien": "Loại khác (không ghi rõ dung tích) — dòng cha 7311009 ghi “Loại khác” trong biểu thuế",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "tax.73110099",
+   "trich": "73110099 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "7311009",
+    "truAnhEm": [
+     "73110091",
+     "73110092",
+     "73110094"
+    ],
+    "toTienCoTen": "7311",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "7311",
+    "cap": 4,
+    "cha": "73",
+    "tenVi": "Các loại thùng chứa khí nén hoặc khí hóa lỏng, bằng sắt hoặc thép.",
+    "tenEn": "Containers for compressed or liquefied gas, of iron or steel",
+    "suyRa": false
+   },
+   {
+    "id": "7311002",
+    "cap": "TIEU_DE_QG",
+    "cha": "7311",
+    "tenVi": "Dạng hình trụ bằng thép đúc liền",
+    "tenEn": "Seamless steel cylinders",
+    "suyRa": true
+   },
+   {
+    "id": "73110021",
+    "cap": 8,
+    "cha": "7311002",
+    "tenVi": "Có dung tích từ 30 lít trở lên, nhưng dưới 110 lít, dùng để chứa khí tự nhiên nén (CNG) hoặc khí tự nhiên hóa lỏng (LNG) cho ô tô",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "73110022",
+    "cap": 8,
+    "cha": "7311002",
+    "tenVi": "Có dung tích từ 110 lít trở lên, dùng để chứa khí tự nhiên nén (CNG) hoặc khí tự nhiên hóa lỏng (LNG) cho ô tô",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "73110023",
+    "cap": 8,
+    "cha": "7311002",
+    "tenVi": "Có dung tích dưới 30 lít, dùng để chứa khí dầu mỏ hóa lỏng (LPG)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "73110024",
+    "cap": 8,
+    "cha": "7311002",
+    "tenVi": "Có dung tích từ 30 lít trở lên nhưng dưới 110 lít, dùng để chứa khí dầu mỏ hóa lỏng (LPG)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "73110025",
+    "cap": 8,
+    "cha": "7311002",
+    "tenVi": "Loại khác, dùng để chứa khí dầu mỏ hóa lỏng (LPG)",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "73110026",
+    "cap": 8,
+    "cha": "7311002",
+    "tenVi": "Loại khác, có dung tích dưới 30 lít",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "73110027",
+    "cap": 8,
+    "cha": "7311002",
+    "tenVi": "Loại khác, có dung tích từ 30 lít trở lên nhưng dưới 110 lít",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "73110029",
+    "cap": 8,
+    "cha": "7311002",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "7311009",
+    "cap": "TIEU_DE_QG",
+    "cha": "7311",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "73110091",
+    "cap": 8,
+    "cha": "7311009",
+    "tenVi": "Có dung tích không quá 7,3 lít",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "73110092",
+    "cap": 8,
+    "cha": "7311009",
+    "tenVi": "Có dung tích trên 7,3 lít nhưng dưới 30 lít",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "73110094",
+    "cap": 8,
+    "cha": "7311009",
+    "tenVi": "Có dung tích từ 30 lít trở lên nhưng dưới 110 lít",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "73110099",
+    "cap": 8,
+    "cha": "7311009",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom7311.nhom",
+  "tax.73110021",
+  "tax.73110022",
+  "tax.73110023",
+  "tax.73110024",
+  "tax.73110025",
+  "tax.73110026",
+  "tax.73110027",
+  "tax.73110029",
+  "tax.73110091",
+  "tax.73110092",
+  "tax.73110094",
+  "tax.73110099"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-22T17:17:47.428Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 16,
+  "dat": 16,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

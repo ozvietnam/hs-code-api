@@ -1,0 +1,33 @@
+{
+ "nhom": "7311",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-23T00:26:00+07:00",
+ "phamViSoat": "Toàn bộ 4 mục của 5 khối (1 phamVi + 2 dieuKienVao + 1 loaiTru; phanBiet rỗng, boPhan null) trong tmp/so-tay/raw/7311.json, đọc cùng tmp/so-tay/nguon/7311.txt. Tầng máy: 0 mảnh trích sai.",
+ "soat": 4,
+ "sua": 0,
+ "chen": 0,
+ "xoa": 0,
+ "ghiChu": "Cả 4 mục giữ nguyên, không có lỗi. Đây là nhóm nguồn mỏng nhất của lô (một trang, 6 đoạn) và người soạn đã tránh sẵn bẫy lớn nhất: câu 'Một số là những xylanh, ống, chai lọ,… cứng, vững chắc, đã thử sức chịu đựng ở áp suất cao' trông như một điều kiện vào nhóm nhưng thực chất chỉ là câu 'Một số là…' liệt kê — bản nháp đã KHÔNG sinh dieuKienVao nào từ câu đó (chỉ còn 2 mục lấy từ câu mở đầu, an toàn). Cũng không có loại trừ nào bị rơi: nguồn chỉ có một loại trừ duy nhất (ắc quy hơi nước → 84.04) và nó được ghi ở cả loaiTru[0] lẫn ngoaiTru của dieuKienVao[0].",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "trich nguyên văn trọn câu đầu nhom7311.nhom kèm ví dụ các loại khí; text chỉ rút gọn ví dụ, không thêm ý. Chữ 'dung tích bất kỳ' được giữ nguyên — đây là điểm mấu chốt phân biệt 7311 (không giới hạn) với 7310 (≤300 l), nên không được sửa thành 'không giới hạn dung tích' theo cảm tính."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "trich nguyên văn cùng câu; fact 'la_thung_chua_dung_cho_van_chuyen_bao_quan_khi_nen_hoac_khi_hoa_long' đúng. ngoaiTru 'các loại ắc quy hơi nước (nhóm 84.04)' lấy từ CÙNG khối nguồn khai (nhom7311.nhom, câu 'Nhóm này loại trừ các loại ắc quy hơi nước (nhóm 84.04)') — không nối chéo khối như lỗi đã gặp ở 6903. Vế 'này không được nung sau khi tạo hình' cũng nằm trong chính câu loại trừ đó. Giá trị value=true nên không kích hoạt nhánh ngưỡng số của cổng."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "fact 'co_dung_tich_bat_ky_khong_co_gioi_han_dung_tich' bám đúng 'có dung tích bất kỳ'. Cố tình value=true chứ không gắn một con số — đúng, vì nguồn không nêu ngưỡng nào; nếu gắn số thì máy sẽ loại theo luật ngưỡng-không-có-trong-trích. Hai dieuKienVao dùng chung một câu trích là chấp nhận được (một câu, hai sự kiện mô tả hàng thuộc nhóm)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "trich nguyên văn câu loại trừ cuối 'Nhóm này loại trừ các loại ắc quy hơi nước (nhóm 84.04)' — giữ cả việc không có dấu chấm cuối như nguồn; đích 8404 có trong câu. Đây là loại trừ duy nhất của nhóm và đã ghi đủ."
+  }
+ ]
+}

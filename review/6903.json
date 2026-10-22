@@ -1,0 +1,44 @@
+{
+ "nhom": "6903",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-23T00:22:00+07:00",
+ "phamViSoat": "Toàn bộ 6 mục của 5 khối (1 phamVi + 2 dieuKienVao + 2 loaiTru + 1 boPhan; phanBiet rỗng) trong tmp/so-tay/raw/6903.json, đọc cùng tmp/so-tay/nguon/6903.txt. Tầng máy: 0 mảnh trích sai.",
+ "soat": 6,
+ "sua": 1,
+ "chen": 0,
+ "xoa": 0,
+ "ghiChu": "Không xoá mục nào. Một lỗi sửa: dieuKienVao[0].ngoaiTru lấy nội dung 'nón Seger…' từ khối nhom6903.nhom trong khi mục khai nguon=ch69.chuong — nối chéo khối nguồn, trái luật 'một mục chỉ trích từ một khối'. Với dieuKienVao, nguon chính là căn cứ pháp lý mà runtime trả kèm (lib/so-tay-gates.js:135 in fact + [nguon], và legal:{nguon,trich}) nên ngoại lệ gắn nhầm khối là căn cứ sai. Thông tin này đã có đủ và đúng nguồn ở loaiTru[0] nên xoá khỏi điều kiện, không mất gì. Ba câu hỏi đã soi kỹ và bác bỏ: (a) boPhan mở bằng 'Tuy nhiên' — không phải cắt trích né câu rào, vì câu trích đã ghi TRỌN cả hai câu (439 ký tự, kiểm tay từng chữ với ch69.chuong là khớp tuyệt đối); (b) 'chưa được nêu cụ thể hoặc chưa xếp trong các nhóm trước' trong phamVi.text — nguồn viết 'chưa được nêu cụ thể hoặc **được** xếp', đọc theo phạm vi phủ định là 'chưa (nêu cụ thể lẫn xếp)' và đúng nghĩa gốc HS (all refractory not specified or included in preceding headings), nên không phải thêm hiểu biết riêng; (c) câu 'Tùy theo mục đích sử dụng cụ thể…' ngay sau dieuKienVao[1] chỉ BỔ SUNG thuộc tính, không phủ định nên mục không nói quá. Ghi nhận lỗi kệ sách (không tự sửa trong lô này): ch69.chuong ghi 'nhóm 69,09' bằng dấu phẩy thay dấu chấm — sổ tay giữ nguyên trong trich đúng luật 2.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "trich nguyên văn câu mở + mục (2) của nhom6903.nhom, dấu '…' lược mục (1) (danh sách dài, mục (2) đứng ngay sau nên lược không giấu gì). Cảnh báo máy 'nguồn ngay sau có thường' là vế 'thậm chí có thể được dùng như các sản phẩm có tính chất cố định thường xuyên trong công việc xây dựng' — nằm trong chính mục (2), không phải ngoại lệ. Cảnh báo 'câu trích mở bằng từ rào Tuy nhiên' của máy là báo nhầm: từ rào nằm ở câu KẾ tiếp (loại trừ nón Seger) và câu trích này mở bằng 'Nhóm này bao gồm'. text chỉ liệt kê thành phần của mục (2) với động từ 'gồm' (không kín), không thu hẹp phạm vi nhóm."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "Lỗi nối chéo khối nguồn: nguon khai ch69.chuong và trich lấy đúng từ đó ('Chương này chỉ áp dụng đối với những sản phẩm gốm, sứ đã được nung sau khi tạo hình') — nhưng ngoaiTru ghi 'nón Seger (chất thử gia nhiệt gốm sứ); các sản phẩm này không được nung sau khi tạo hình', là câu ở nhom6903.nhom; khối ch69.chuong không có chữ 'Seger'. Với dieuKienVao, nguon chính là căn cứ pháp lý runtime dán cạnh fact (gates.js:135, và legal:{nguon,trich} ở nhánh ngưỡng số) — để ngoại lệ gắn nhầm khối là trích sai nơi. Ngoài ra mệnh đề (b) 'gia nhiệt dưới 800°C… không được coi là nung' ngay sau câu trích không tạo ngoại lệ mà làm câu điều kiện chặt hơn (hàng nung dưới 800°C vốn đã không thoả 'đã được nung sau khi tạo hình'). Sửa: xoá ngoaiTru vì nội dung này đã có đúng nguồn ở loaiTru[0] (nhom6903.nhom, nguyên văn).",
+   "sua": { "ngoaiTru": [] }
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "trich nguyên văn mục (B) ch69.chuong về định nghĩa sản phẩm chịu lửa 69.02/69.03 kèm ví dụ 1.500°C; fact bám đúng ('đã nung có đặc tính đặc biệt chịu được nhiệt độ cao phù hợp với các ngành công nghiệp thủy tinh, luyện kim'), không đưa con số 1.500 vào fact nên không sinh ngưỡng. Đã đọc hai câu kế tiếp: 'Tùy theo mục đích sử dụng cụ thể… cũng có thể cần…' chỉ BỔ SUNG thuộc tính (dẫn nhiệt/cách nhiệt, giãn nở nhiệt, chống mài mòn) chứ không phủ định; 'Tuy nhiên các nhóm 69.02 và 69.03 không bao gồm các sản phẩm… không có khả năng chịu được các mức nhiệt độ công nghiệp' làm điều kiện chặt hơn chứ không mở rộng. Không có chỗ nào mục nói quá."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "trich nguyên văn 'Tuy nhiên, nhóm này không bao gồm nón Seger… (xem phần chú giải chi tiết của nhóm 38.24); các sản phẩm này không được nung sau khi tạo hình.'; đích 3824 có trong câu. Cảnh báo 'mở bằng từ rào Tuy nhiên' là báo nhầm — 'Tuy nhiên' là chính từ nối câu loại trừ, đã giữ nguyên nên không có cắt trích nào. Ghi nhận sắc thái (không sửa): dieuKien diễn lại 'các sản phẩm này' thành 'sản phẩm này' (số ít) — vô hại vì câu hỏi cổng chỉ hỏi 'có thuộc diện nón Seger không'."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "mục (7) ch69.chuong nguyên văn gồm cả ngoặc loại trừ '(Các sản phẩm làm từ graphit hoặc cácbon khác loại được dùng cho các mục đích sử dụng điện được xếp vào nhóm 85.45)'; đích 8545 có trong câu. Đây là loại trừ cấp CHƯƠNG áp cho mọi nhóm trong chương — hợp lệ theo tiền lệ đã gộp (8201 → 8466 theo Chú giải 2 Chương 82; 9607 → 7117 theo Chú giải 1(c) Chương 96), không phải 'không liên quan nhóm'."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "439 ký tự (vượt mốc 300 của lược đồ nhưng dưới trần 600 của máy) — đã đọc tay: trich GHI TRỌN cả hai câu của đoạn (171–173 trong nguồn), không lược gì, đối chiếu từng chữ khớp tuyệt đối kể cả vế '(nghĩa là các sản phẩm chịu lửa)'. quyTac và tomTat chỉ diễn lại đúng hai ý (phải chịu nhiệt + phải thiết kế cho nhiệt; nồi nhôm thiêu kết vào 6903, gạt dẫn chỉ không chịu lửa thì sang 6909), không thêm chữ. Nguồn ngay sau câu là danh sách (1)–(8) vật liệu chịu lửa — phần liệt kê mới, không phải ngoại lệ."
+  }
+ ]
+}
