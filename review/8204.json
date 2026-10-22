@@ -1,0 +1,47 @@
+{
+ "nhom": "8204",
+ "nguoiSoat": "dev-soat-doc-lap-l022",
+ "luc": "soát độc lập lô 022 (PR #403)",
+ "daKiem": "check-so-tay --raw=tmp/so-tay/raw + đọc tay toàn vện tmp/so-tay/nguon/8204.txt",
+ "soat": 5,
+ "xoa": 0,
+ "sua": 3,
+ "ghiChu": "Chú giải nhóm 8204 chỉ có hai mục (1) và (2) — không có danh sách loại trừ riêng; chỉ có một ngoại lệ cắt ngang giữa câu: 'Tuy vậy nhóm này không bao gồm thanh vặn tarô) (nhóm 82.05)'. Không suy ra thêm mục nào khác.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Dấu lược '…' giữa mục (1) và mục (2) nuốt mất NGOẠI LỆ nằm ngay sau câu trích: 'Tuy vậy nhóm này không bao gồm thanh vặn tarô) (nhóm 82.05)'. Đọc câu trích ra thấy phạm vi nhóm không có chỗ nào bị loại, trong khi thực tế thanh vặn tarô sang 82.05 (đã có ở loaiTru[0]). Sửa: kéo nguyên văn câu ngoại lệ vào giữa hai mục và nói rõ trong text.",
+   "sua": {
+    "text": "Cờ lê và thanh vặn đai ốc bằng tay, trừ thanh vặn tarô (82.05); đầu cờ lê (chìa) vặn đai ốc có thể thay đổi, có hoặc không có cán, kể cả bộ phận điều chỉnh và mở rộng (nới rộng).",
+    "trich": "(1) Cờ lê và thanh vặn đai ốc bằng tay … Tuy vậy nhóm này không bao gồm thanh vặn tarô) (nhóm 82.05). (2) Đầu cờ lê (chìa) vặn đai ốc có thể thay đổi, có hoặc không có cán, kể cả bộ phận điều chỉnh và mở rộng (nới rộng)."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "Fact 'dung_cho_van_dai_oc_hoac_bu_long' thêm chữ không có trong nguồn: chú giải nhóm 8204 và cả Chương 82 đều chỉ nói 'cờ lê và thanh vặn đai ốc', KHÔNG hề nhắc bu lông (chữ 'bu lông' chỉ xuất hiện ở Chú giải tổng quát Chương 82 về bộ phận có công dụng chung, không liên quan). Sửa tên fact theo đúng câu trích.",
+   "sua": {
+    "fact": "dung_cho_van_dai_oc"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn (kể cả dấu ngoặc thừa trong nguồn), đích 82.05 nêu rõ trong câu."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoại lệ cấp Chương 82, đích 90.18 nêu rõ trong câu. Cùng dạng với loạiTru của 8202/8206/8211 — chấp nhận."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "quyTac và tomTat khẳng định cả vế thứ hai nhưng trich chỉ chép câu đầu — text thêm chữ không có trong trích. Sửa: kéo nguyên văn cả ba câu liền nhau (552 ký tự, dưới trần 600 của máy; cố ý vượt quy ước 300 để giữ ngoại lệ và vế về bộ phận công dụng chung mà tomTat khẳng định).",
+   "sua": {
+    "trich": "Các bộ phận là kim loại Cơ bản có thể xác định được của các dụng cụ, dao kéo... (Ví dụ: các khung cưa, lưỡi bào) thông thường được phân loại trong những nhóm tương tự như các mặt hàng hoàn thiện. Quy tắc này tuy nhiên không áp dụng đối với các bộ phận là đối tượng thuộc một nhóm đặc biệt. Các dây xích, đinh, bulông, đai ốc, vít, đinh tán, lò xo (Ví dụ: dùng trong: kéo cắt cành) và các bộ phận có công dụng chung khác như định nghĩa ở chú giải 2 phần XV bị loại trừ khỏi chương này và nằm trong các chương phù hợp (các Chương 73 tới 76 và 78 tới 81)."
+   }
+  }
+ ]
+}

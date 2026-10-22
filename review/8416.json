@@ -1,0 +1,52 @@
+{
+ "nhom": "8416",
+ "nguoiSoat": "dev-soat-doc-lap-l022",
+ "luc": "soát độc lập lô 022 (PR #403)",
+ "daKiem": "check-so-tay --raw=tmp/so-tay/raw + đọc tay toàn vện tmp/so-tay/nguon/8416.txt",
+ "soat": 8,
+ "xoa": 2,
+ "sua": 0,
+ "ghiChu": "Chênh lệch then chốt giữa hai cụm 'ví dụ' trong lô này: loaiTru[0] của nhóm 8305 ('Đinh ấn (đinh rệp) (ví dụ: nhóm 73.17 hoặc 74.15)') GIỮ vì câu nguồn không nêu chỗ khác, 73.17/74.15 chính là chỗ phân loại của hàng bị loại; còn loaiTru[1] của 8416 ('... sẽ được phân loại là bộ phận của máy và thiết bị đó (ví dụ: cho các máy tạo khí - nhóm 84.05)') phải XOÁ vì chính câu nguồn đã nói đích là 'bộ phận của máy và thiết bị đó' — tức ĐÍCH THAY ĐỔI THEO MÁY, 84.05 chỉ là một ví dụ minh hoạ. Ghi sangNhom '8405' là khẳng định một đích cố định mà nguồn không cam kết. Máy không bắt được vì luật chỉ kiểm số nhóm có trong câu (84.05 có trong câu nên qua).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Ba đoạn nguyên văn (câu mở đầu + tiêu đề (A) + tiêu đề (B)); đoạn lược chỉ là mô tả các loại đầu đốt, không chứa ngoại lệ. Các ngoại lệ (ghi lò không thuộc dạng cơ khí, buồng đốt của nồi hơi 84.02, thanh đốt gạch 73.21/73.22/73.26) đều nằm sau đoạn trích và đã có ở loaiTru."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn câu mở đầu; fact 'dung_cho_dot_va_cap_nhien_lieu_cho_lo' nói đúng câu."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn, đích 84.02 nêu rõ trong câu ('được xem như bộ phận của nồi hơi và thuộc nhóm 84.02'). Không phải ví dụ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "xoa",
+   "lyDo": "Không thể diễn đạt đúng bằng loaiTru. Câu nguồn: 'một số loại ghi lò không thuộc dạng cơ khí được xác định là chuyên dùng cho các máy hoặc thiết bị cụ thể sẽ được phân loại là bộ phận của máy và thiết bị đó (ví dụ: cho các máy tạo khí - nhóm 84.05)' — đích do chính câu này chỉ ra là 'bộ phận của máy và thiết bị đó', TỨC THAY ĐỔI THEO TỪNG MÁY; 84.05 chỉ là ví dụ cho một loại máy cụ thể. Ghi sangNhom '8405' khiến máy phân loại nhầm mọi ghi lò chuyên dụng về 84.05. Không sửa được bằng cách đổi chữ (loaiTru bắt buộc có sangNhom) nên theo luật 8 'thà bỏ mục còn hơn mục không có căn cứ' — xoá."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn; ba đích 73.21, 73.22, 73.26 đều được nêu rõ trong câu và giữ nguyên dạng phép 'hoặc' (sangNhom '7321|7322|7326'). Đây là ngoại lệ đích danh thật."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mã 84.02 nêu trong câu; hoi hỏi về đặc tính lắp ráp, không nhắc mã. Nhánh 'không' trỏ chính nhóm — cùng thực hành phổ biến của sổ tay."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "xoa",
+   "lyDo": "Cùng lý do loaiTru[1]: neuCo='8405' khẳng định một đích cố định mà câu nguồn không cam kết (đích là nhóm của chính máy/thiết bị, 84.05 chỉ là ví dụ). Thêm nữa nhánh 'không' (→ 8416) là suy từ phủ định, nguồn không nói gì về nhánh này. Hai nhánh đều không có căn cứ trong nguồn — xoá."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn; quyTac và tomTat nói đúng câu. Trích dừng trước ngoặc liệt kê ví dụ bộ phận (không có điều kiện/ngoại lệ trong ngoặc) — không lược qua ngoại lệ nào."
+  }
+ ]
+}
