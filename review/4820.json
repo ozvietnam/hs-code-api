@@ -1,0 +1,149 @@
+{
+ "nhom": "4820",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T12:25:00+07:00",
+ "phamViSoat": "Toàn bộ 19 mục của bản nháp (1 phamVi + 0 dieuKienVao + 4 loaiTru + 2 phanBiet + 6 tieuChi6 + 6 dong8), đọc cùng tmp/so-tay/nguon/4820.txt (412 dòng: nhom4820.nhom, ch48.chuong, phan48.phan, wco.4820xx, tax.4820xxxx).",
+ "soat": 19,
+ "sua": 1,
+ "chen": 0,
+ "xoa": 0,
+ "ghiChu": "Audit 4820: 19/19 câu trích nguyên văn. SỬA 1 (mục thiếu). GIỮ có lý do: (1) loaiTru chỉ ghi 4 mục và ĐÚNG — 4 câu loại trừ dứt khoát có đích danh là (a) séc 49.07, (b) vé du lịch nhiều chặng 49.11, sách bài tập giáo dục 49.01, sách bài tập trẻ em 49.03; các câu còn lại trong nguồn đều bị bỏ đúng vì không đủ điều kiện luật mục 3: 'giá (đế) của tập ghi nhớ … tùy từng trường hợp', 'tờ rời của giấy bài tập … thường thuộc nhóm 48.02, 48.10, 48.11 hoặc 48.23, tuỳ từng trường hợp' (đúng loại 'thường thuộc/tùy trường hợp' mà máy loại), 'tờ rời của album … phân loại vào các nhóm khác tuỳ theo đặc tính' (không nêu mã nào). (2) loaiTru[2] giữ đúng định ngữ 'và thường có các khoảng trống' — không rút thành điều kiện bắt buộc. (3) loaiTru[3] không bị bẫy 'bao hàm trông như loại trừ': câu nguồn 'Các sách bài tập cho trẻ em bao gồm chủ yếu là các tranh ảnh… cũng bị loại trừ (nhóm 49.03)' dịch đúng câu gốc tiếng Anh '…are also excluded', nên đọc thành loại trừ là đúng.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "text chỉ mô tả MỘT trong tám thành phần của nhóm — mục (1) sổ và tập giấy — trong khi chú giải nhóm liệt kê tới (8), tám thành phần này lặp đúng tám dòng biểu thuế 48201000–48209000. Người đọc sẽ không biết vở bài tập, bìa đóng hồ sơ, biểu mẫu thương mại nhiều liên, tập giấy có chèn giấy than, album và tấm bọc sách đều ở nhóm 4820. Đã viết lại text để nêu đủ tám thành phần, kèm trích mang theo tiêu đề đánh số của cả tám. Ràng buộc đã kiểm: lib/so-tay-gates.js:134 in phamVi bằng clip(text, 220), nên text mới phải ≤220 ký tự mới không bị cắt mất đuôi khi chạy — bản dựng đầu tiên dài 330 ký tự (sẽ mất trọn mục (4)–(8)) nên đã nén lại còn 211.",
+   "sua": {
+    "text": "Văn phòng phẩm đa dạng (trừ thư tín 48.17): sổ, tập ghi chép các loại; vở bài tập; bìa đóng hồ sơ, cặp giấy; biểu mẫu thương mại nhiều liên; tập giấy có chèn giấy than; album để mẫu; tập giấy thấm; tấm bọc sách.",
+    "trich": "Nhóm này bao gồm các mặt hàng văn phòng phẩm đa dạng, trừ các mặt hàng thư tín của nhóm 48.17 … (1) Sổ đăng ký, sổ kế toán, sổ ghi chép các loại … (2) Vở bài tập. … (3) Bìa đóng hồ sơ để giữ các tờ rời, các tạp chí … và cặp giấy. … (4) Biểu mẫu thương mại nhiều liên … (5) Tập giấy ghi chép có chèn giấy than … (6) Album để mẫu hay để các bộ sưu tập khác … (7) Các mặt hàng văn phòng phẩm khác như tập giấy thấm … (8) Các tấm bọc sách (bìa sách hoặc bọc chống bụi) …"
+   }
+  },
+  {
+   "index": "dieuKienVao",
+   "hanhDong": "giu",
+   "lyDo": "Rỗng là ĐÚNG, dù nhóm này có hai câu trông rất giống điều kiện vào nhóm. (a) 'Một số sản phẩm của nhóm này thường chứa một số lượng đáng kể nội dung đã in nhưng vẫn được phân loại trong nhóm này (và không thuộc Chương 49) với điều kiện là việc in mang tính chất phụ trợ so với công dụng chính' và (b) ch48.chuong 'Chương này bao gồm giấy đã in … với điều kiện là việc in chỉ là phần phụ so với việc sử dụng giấy để bao gói, để viết…'. Cả hai đều là quy tắc 'khi nào thì KHÔNG rơi sang Chương 49', KHÔNG phải điều kiện để VÀO 4820: một cuốn sổ trắng không in gì vẫn vào 4820. Đưa vào dieuKienVao sẽ biến điều kiện chống sang chương khác thành điều kiện bắt buộc của nhóm — đúng cái lỗi 'thêm hiểu biết riêng' mà người soát phải bắt."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "'(a) Các quyển séc (nhóm 49.07)' nguyên văn; đích danh, dứt khoát."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "'(b) Vé du lịch nhiều chặng để trống (nhóm 49.11).' nguyên văn; đích danh, dứt khoát."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nguồn bị ngắt dòng giữa chừng ('…bằng việc viết bằng tay thì bị' / 'loại trừ (nhóm 49.01).') — bản nháp đã nối lại đúng và kéo cả vế 'thì bị loại trừ (nhóm 49.01)' vào trích, tức KHÔNG rơi vào bẫy 'mất ngoại lệ ngay sau câu trích'. Điều kiện giữ nguyên định ngữ 'và thường có các khoảng trống' chứ không nâng thành điều kiện bắt buộc."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "'Các sách bài tập cho trẻ em bao gồm chủ yếu là các tranh ảnh, có phần chữ mang tính chất bổ sung, dùng làm bài tập viết hoặc các bài tập khác cũng bị loại trừ (nhóm 49.03).' nguyên văn. Vế 'bao gồm chủ yếu là các tranh ảnh' là MÔ TẢ loại sách (tương ứng 'consisting principally of pictures' của câu gốc), không phải câu 'nhóm này bao gồm' — đã đọc kỹ để không rơi vào bẫy 'bao hàm trông như loại trừ' (bài học lô 008, mục 3916)."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "hoi không nhắc mã (đạt luật §MA_PHAN_NHOM_TRONG_HOI), nhánh 'có' 4901 được câu trích nêu đích danh dưới dạng 'nhóm 49.01', nhánh 'không' = 4820 là chính nhóm (khuôn mẫu đã chấp nhận ở lô 007). Ghi chú về vế 'thường có các khoảng trống' xem ở canhBaoKhongSuaTrongAudit."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "hoi diễn đạt đúng 'chủ yếu là các tranh ảnh, có phần chữ mang tính chất bổ sung'; đích 4903 có trong câu trích dưới dạng 'nhóm 49.03'."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "null là ĐÚNG: không có quy tắc bộ phận nào trong nhom4820.nhom."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "wco.482010 'registers, account books, note books, order books, receipt books, letter pads, memorandum pads, diaries and similar articles' — fact bỏ ba ví dụ ở giữa (letter pads, memorandum pads, diaries) nhưng giữ vế chốt 'và các ấn phẩm tương tự' (= 'and similar articles'), nên độ rộng không bị thu hẹp. Không sửa (khác với lỗi đã gặp ở 9606 tieuChi6[0], ở đó rơi mất vế quyết định 'and parts thereof')."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "wco.482020 'exercise books' ↔ fact 'la_vo_bai_tap' — khớp 1-1."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "wco.482030 'binders, folders and file covers' ↔ fact 'la_bia_dong_ho_so_bia_kep_ho_so_va_vo_bia_kep_ho_so' — đủ ba vế."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "wco.482040 'manifold business forms and interleaved carbon sets' ↔ fact 'la_bieu_mau_thuong_mai_nhieu_lien_va_tap_giay_ghi_chep_co_chen_giay_than' — 'interleaved carbon sets' dịch thành 'tập giấy ghi chép có chèn giấy than', đúng với cách dùng của chính biểu thuê VN cho dòng 48204000."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "wco.482050 'albums for samples or for collections' ↔ fact 'la_album_de_mau_hoac_de_bo_suu_tap' — đủ hai vế 'samples' và 'collections'."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "wco.482090 'stationery n.e.c. in heading no. 4820' ↔ fact 'la_van_phong_pham_khac_thuoc_nhom_4820' — 'n.e.c.' dịch đúng là 'khác'."
+  },
+  {
+   "index": "cay.tenDien",
+   "hanhDong": "giu",
+   "lyDo": "Rỗng là ĐÚNG: chạy check-cay xác nhận nhóm 4820 không có nút ảo chưa có tên."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "tax.48201000 nguyên văn; chú thích '(phân nhóm 482010)' là chú thích cấu trúc theo chữ số mã, giữ theo thói quen đã gộp của lô 006/007. Danh sách đầy đủ trong dieuKien của dòng được loại nhóm cũng không dùng câu trích riêng nên không gắn được."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "tax.48202000 'Vở bài tập' nguyên văn."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "tax.48203000 nguyên văn. Biểu thuê ghi rõ '(trừ bìa đóng sách)' — đúng với nguồn mục (3) 'hồ sơ (trừ hộp đựng tài liệu) và cặp giấy'."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "tax.48204000 nguyên văn; tên dòng đã gộp cả hai thành phần mục (4) và (5) của chú giải nhóm — đúng với biểu thuê, không sửa."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "tax.48205000 nguyên văn."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "tax.48209000 'Loại khác' nguyên văn. dieuKien liệt kê anh em 48201000–48205000 dài 241 ký tự — viết tay không có trong trích của chính dòng này, NHƯNG là cấu trúc cây theo chữ số mã và khớp đúng với khối phamViLoaiKhac do máy tự sinh; cách làm này đã có sẵn trong kho đã gộp (xem 17029099 'Loại khác của 1702.90 (vd đường nghịch chuyển dạng rắn)', 0402 các dòng 'Phân nhóm 0402.xx…'). Giữ nguyên để không lệch style. loaiKhac=false trong bản nháp không sao — máy tự ghi đè thành true khi nạp theo biểu thuê."
+  }
+ ],
+ "canhBaoKhongSuaTrongAudit": [
+  {
+   "loai": "Chú giải 10 Chương 48 loại trừ quan trọng mà sổ tay KHÔNG diễn đạt được",
+   "lyDo": "Ch48.chuong mục 10: 'Nhóm 48.20 không bao gồm các loại tờ rời hoặc thiếp, thẻ rời, đã cắt theo cỡ, đã hoặc chưa in, rập nổi hoặc đục lỗ.' Đây là loại trừ thật, hay gặp trong thực tế (thiếp cắt sẵn, vé số cào…). Không đưa vào loaiTru được vì câu KHÔNG nêu đích danh nhóm nào (chỉ biết sang 48.23 nhưng không viết ra — đúng luật mục 3: không tự điền mã). Không đưa vào phanBiet được vì nhánh 'không' bắt buộc phải có mã có thật trong câu trích. Không đưa vào phamVi được vì phamVi chỉ nhận MỘT nguồn và câu này nằm ở ch48.chuong, khác nguồn nhom4820.nhom. Đề xuất cho phiên quản lý: hoặc cho phép phamVi nhiều nguồn, hoặc thêm một loại trường chuyên cho 'loại trừ không nêu mã đích'."
+  },
+  {
+   "loai": "phanBiet[0].hoi bỏ vế 'và thường có các khoảng trống để hoàn thành bằng việc viết bằng tay'",
+   "lyDo": "Câu nguồn điều kiện gồm HAI vế: 'chứa câu hỏi hoặc bài tập in sẵn không phải là phụ … VÀ thường có các khoảng trống'. hoi chỉ hỏi vế một. Không sửa vì: (a) vế hai mang định ngữ 'thường' — đưa vào một câu hỏi có/không sẽ thành câu hỏi không trả lời được; (b) trich (lưu trong tệp, dù không in ra prompt) vẫn giữ trọn câu có cả hai vế; (c) loaiTru[2] cũng ghi đủ hai vế. Điểm yếu thật là ở chỗ khác: xem mục kế tiếp."
+  },
+  {
+   "loai": "31/67 trường văn bản của lô 010 bị CẮT khi đưa vào prompt LLM — vấn đề hệ thống, không riêng lô này",
+   "lyDo": "lib/so-tay-gates.js:127 soTayBlock() in ra: phamVi.text clip 220, loaiTru.dieuKien clip 55, dong8.dieuKien clip 90, phanBiet.hoi clip 110 — và CHỈ in các trường này, KHÔNG in trich. Em đã đo toàn lô: 31/67 trường vượt ngân sách (4820: 5, 5607: 15, 6107: 7, 3407: 4, 9616: 0). Nặng nhất là loaiTru và dong8: loaiTru[2] của 4820 dài 152 ký tự nhưng chỉ còn 55 khi chạy, mất hẳn vế 'thường có khoảng trống'; dong8[5] của 4820 dài 241 còn 90. Không sửa từng mục trong lô này vì rút ngắn sẽ mất nghĩa (đúng tinh thần bài học 'thà bỏ mục còn hơn mục không căn cứ'). Đề xuất cho phiên quản lý: hoặc nới các ngưỡng clip, hoặc cho in kèm trich rút gọn, hoặc kiểm số đo này thành luật máy cho các lô sau."
+  },
+  {
+   "loai": "trich phamVi sau khi sửa dài 466 ký tự (>300)",
+   "lyDo": "Dưới trần 600 của máy. Có lý do: phải mang tiêu đề đánh số của cả tám thành phần mới đủ; liệt kê trọn sẽ vượt cả trần 600 (đã thử và bị loại). Chọn giữ nội dung."
+  },
+  {
+   "loai": "loaiTru[2] trích dài 291 ký tự vì câu nguồn bị ngắt dòng",
+   "lyDo": "Không phải trích dài lười: câu gốc trong kệ sách bị vỡ dòng ('…viết bằng tay thì bị' / 'loại trừ (nhóm 49.01).'), nối lại nguyên văn là bắt buộc. Ghi ra để người quản lý biết đây là lỗi kệ sách, không phải lỗi người soạn."
+  }
+ ]
+}

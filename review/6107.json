@@ -1,0 +1,206 @@
+{
+ "nhom": "6107",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T12:45:00+07:00",
+ "phamViSoat": "Toàn bộ 32 mục của bản nháp (1 phamVi + 2 dieuKienVao + 4 loaiTru + 1 phanBiet + 16 tieuChi6 + 8 dong8), đọc cùng tmp/so-tay/nguon/6107.txt (600 dòng: nhom6107.nhom, ch61.chuong, phan61.phan, wco.6107xx, tax.6107xxxx).",
+ "soat": 32,
+ "sua": 2,
+ "chen": 0,
+ "xoa": 0,
+ "ghiChu": "Audit 6107: 32/32 câu trích nguyên văn. SỬA 2 — cả hai đều là lỗi máy KHÔNG bắt được. (1) phamVi dài 245 ký tự, vượt trần clip 220 của prompt nên khi chạy sẽ bị cắt mất đuôi; đã nén lại 213 ký tự mà vẫn giữ nguyên văn phần giữ lại. (2) phanBiet[0] đảo cực, dẫn tới việc áo ngủ — vốn cũng thuộc 6107 — bị máy chỉ sang 61.09. GIỮ có lý do: (1) 4 loaiTru đều lấy từ câu 'không bao gồm' có thật; riêng loaiTru[1] trích chừa mục (a) nhóm 62.12 bằng dấu lược nhưng (a) đó đã có mặt riêng ở loaiTru[2], nên không mất nhánh nào — khác hẳn lỗi 'rơi một nhánh của A hoặc B'. (2) tieuChi6 dùng tiêu chí vật liệu PHỦ ĐỊNH cho ba dòng cha 610719/610729/610799; 610799 chỉ phủ định 'bông' chứ không phủ định 'sợi nhân tạo' — đúng vì wco.610799 ghi 'of textile materials (other than cotton)' chứ không phải '(other than cotton or man-made fibres)'. Đây là điểm dễ làm sai nhất của nhóm và bản nháp đã làm đúng.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "text dài 245 ký tự. lib/so-tay-gates.js:134 in phạm vi nhóm bằng clip(text, 220), nên 25 ký tự cuối — gồm cả vế 'và các loại tương tự' — sẽ bị cắt mất khi chạy, đọc câu bị đứt. Đã nén xuống 213 ký tự: rút 'bộ quần áo lót' thành 'quần áo lót' và bỏ vế '…và các loại tương tự' ở cuối; mọi chữ còn lại giữ nguyên văn theo câu nguồn. trich không đổi, vẫn là nguyên văn trọn câu nên phần bị rút khỏi text vẫn còn trong câu trích.",
+   "sua": {
+    "text": "Hai nhóm sản phẩm riêng biệt của nam giới hoặc trẻ em trai, dệt kim hoặc móc: quần áo lót, quần sịp và những loại tương tự; áo ngủ, bộ pyjama, áo choàng tắm (kể cả áo choàng tắm biển), áo choàng dài mặc trong nhà."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng ý nghĩa của trường: đây là SỰ KIỆN MÔ TẢ HÀNG THUỘC NHÓM (quần áo của nam giới hoặc trẻ em trai), không phải điều kiện cần — đúng như hồ sơ giao nghĩa định nghĩa (mục 0: cổng sau không được loại nhóm chỉ vì thiếu một dieuKienVao). Câu trích là câu mở đầu của chú giải nhóm, nguyên văn."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "'Chương này chỉ áp dụng với mặt hàng may mặc sẵn được dệt kim hoặc móc.' nguyên văn. Đây là điều kiện VÀO thật (tồn tại bắt buộc), khác với dạng 'điều kiện chống sang chương khác' đã bị loại ở 4820 — nên ghi vào dieuKienVao là đúng."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "'Nhóm này không bao gồm áo ba lỗ (singlet) và các loại áo lót khác (nhóm 61.09).' nguyên văn, loại trừ cấp NHÓM, dứt khoát."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích lược mất mục (a) 62.12 bằng dấu '…' nhưng mục (a) đã có mặt riêng ở loaiTru[2], nên đây KHÔNG phải lỗi 'rơi một nhánh của A hoặc B'. Nhánh (c) 90.21 không được ghi vì là dụng cụ chỉnh hình/đai phẫu thuật — không phải quần áo nên không thuộc phạm vi nhóm 6107; bỏ là hợp lý."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu lấy từ mục TỔNG QUÁT chương 61: 'Chương này bao gồm hàng may mặc sẵn… Tuy nhiên, Chương này không bao gồm xu chiêng, gen, áo nịt ngực, dây đeo quần, dây móc bít tất, nịt tất-, hoặc các sản phẩm tương tự hoặc các bộ phận của chúng, được dệt kim hoặc móc (nhóm 62.12).' Câu trích bắt đúng từ 'Tuy nhiên,' trở đi; phần bị lược là câu liệt kê vế 'bao gồm', không phải ngoại lệ."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đã tra nguồn: mục này nằm ở dòng 111, dưới tiêu đề 'Chương này không bao gồm:' (dòng 109) — là danh sách loại trừ cấp CHƯƠNG, không phải ghi chú riêng của một nhóm con nào. Ghi đủ cả bốn nhóm đích 39.26/40.15/42.03/68.12, không rơi nhánh."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "ĐẢO CỰC — lỗi này sẽ dẫn LLM đi sai với chính các mặt hàng của nhóm. Bản nháp hỏi 'Hàng là quần áo lót hoặc quần sịp không?' rồi gán không→6109. Vấn đề: nhóm 6107 gồm HAI nhóm sản phẩm — quần áo lót/quần sịp VÀ áo ngủ/pyjama/áo choàng tắm. Một chiếc áo ngủ nam trả lời 'không' cho câu hỏi đó, và LLM sẽ được chỉ sang 61.09 — sai, vì áo ngủ nam chính là 6107.21/22/29. Nguyên nhân gốc: đây là duy nhất trong lô 010 có phanBiet đặt nhánh 'không' là MÃ KHÁC (6109) chứ không phải chính nhóm; nhánh 'không' chỉ đúng khi rơi về chính nhóm. Đã đảo: hỏi về vệt đặc trưng của nhóm đích (áo ba lỗ và các loại áo lót khác) → có→6109 (câu trích nói thẳng sang nhóm 61.09), không→6107 (chính phạm vi nhóm, do câu đầu định nghĩa). Đồng thời kéo câu định danh mục 6107 vào trích để cụm 'các loại áo lót khác' có antecedent ('khác' so với quần áo lót, quần sịp) — trước đó trích chỉ có câu loại trừ nên 'khác' bị treo. Hoi cũ 34 ký tự nhưng sai hướng; bản mới 97 ký tự, dưới trần clip 110.",
+   "sua": {
+    "hoi": "Hàng là áo ba lỗ (singlet) hoặc một loại áo lót khác, không phải quần áo lót hoặc quần sịp không?",
+    "neuCo": "6109",
+    "neuKhong": "6107",
+    "trich": "Nhóm này bao gồm hai nhóm sản phẩm riêng biệt của nam giới hoặc trẻ em trai, bao gồm bộ quần áo lót, quần sịp và những loại tương tự (quần áo lót) … Nhóm này không bao gồm áo ba lỗ (singlet) và các loại áo lót khác (nhóm 61.09)."
+   }
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "null là ĐÚNG: không có quy tắc bộ phận nào trong nguồn của nhóm 6107 (khác 5607/4820 cũng rỗng vì lý do này)."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "wco.610711 'Underpants and briefs; men's or boys', of cotton' → tách thành [0] loại sản phẩm + [1] vật liệu bông. Đúng."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "chat_lieu = bông, trích đúng 'of cotton'."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "wco.610712 loại sản phẩm; đúng cấu trúc như 610711."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "chat_lieu = sợi nhân tạo, trích đúng 'of man-made fibres'."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "wco.610719 loại sản phẩm; đúng cấu trúc."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí PHỦ ĐỊNH chat_lieu != 'bông|sợi nhân tạo', trích 'other than cotton or man-made fibres'. Dùng toán tử != kèm danh sách nối dấu | thay vì bỏ trống dòng cha — đúng, và nhất quán với 5607."
+  },
+  {
+   "index": "tieuChi6[6]",
+   "hanhDong": "giu",
+   "lyDo": "wco.610721 'Nightshirts and pyjamas' ↔ fact 'la_ao_ngu_va_bo_pyjama'."
+  },
+  {
+   "index": "tieuChi6[7]",
+   "hanhDong": "giu",
+   "lyDo": "chat_lieu = bông."
+  },
+  {
+   "index": "tieuChi6[8]",
+   "hanhDong": "giu",
+   "lyDo": "wco.610722 loại sản phẩm."
+  },
+  {
+   "index": "tieuChi6[9]",
+   "hanhDong": "giu",
+   "lyDo": "chat_lieu = sợi nhân tạo."
+  },
+  {
+   "index": "tieuChi6[10]",
+   "hanhDong": "giu",
+   "lyDo": "wco.610729 loại sản phẩm."
+  },
+  {
+   "index": "tieuChi6[11]",
+   "hanhDong": "giu",
+   "lyDo": "chat_lieu != 'bông|sợi nhân tạo' theo 'other than cotton or man-made fibres'."
+  },
+  {
+   "index": "tieuChi6[12]",
+   "hanhDong": "giu",
+   "lyDo": "wco.610791 'Bathrobes, dressing gowns and similar articles' ↔ fact 'la_ao_choang_tam_va_ao_choang_dai_mat_trong_nha' — giữ cả ba vế (áo choàng tắm, áo choàng dài, các loại tương tự) vì fact viết 'và các loại tương tự'."
+  },
+  {
+   "index": "tieuChi6[13]",
+   "hanhDong": "giu",
+   "lyDo": "chat_lieu = bông."
+  },
+  {
+   "index": "tieuChi6[14]",
+   "hanhDong": "giu",
+   "lyDo": "wco.610799 loại sản phẩm."
+  },
+  {
+   "index": "tieuChi6[15]",
+   "hanhDong": "giu",
+   "lyDo": "QUAN TRỌNG — điểm dễ sai nhất của nhóm và bản nháp đã làm ĐÚNG: wco.610799 ghi 'of textile materials (other than cotton)', KHÔNG có vế 'or man-made fibres'. Vì vậy tiêu chí phải là != 'bông' (đã bao gồm cả sợi nhân tạo), chứ không phải != 'bông|sợi nhân tạo' như ba dòng cha 610719/610729. Nếu gộp nhầm, áo choàng tắm từ sợi nhân tạo sẽ bị loại khỏi 610799 một cách vô lý."
+  },
+  {
+   "index": "cay.tenDien",
+   "hanhDong": "giu",
+   "lyDo": "Rỗng là ĐÚNG: chạy check-cay xác nhận nhóm 6107 không có nút ảo chưa có tên."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "tax.61071100 'Từ bông' nguyên văn; phần mô tả sản phẩm lấy từ wco.610711 + nhom6107.nhom, đúng thói quen đã gộp của lô 006/007."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "tax.61071200 nguyên văn; tieuChi chat_lieu = sợi nhân tạo khớp."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng cha 'Từ các vật liệu dệt khác'; tieuChi phủ định != 'bông|sợi nhân tạo' khớp đúng với wco.610719."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "tax.61072100 nguyên văn."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "tax.61072200 nguyên văn."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng cha; tieuChi phủ định khớp wco.610729."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "tax.61079100 nguyên văn."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng cha; tieuChi phủ định chỉ 'bông' — nhất quán với wco.610799 và với tieuChi6[15]."
+  }
+ ],
+ "canhBaoKhongSuaTrongAudit": [
+  {
+   "loai": "Nhóm 6107 không có bất kỳ điều kiện vào nào có số — nhưng chương 61 có một ngưỡng liên quan",
+   "lyDo": "Ch61.chuong Chú giải 4 nêu 'loại áo có bình quân dưới 10 mũi khâu/1 cm…' nhưng đó là loại trừ của nhóm 61.05/61.06 (áo có túi dưới thắt lưng), KHÔNG phải của 6107, nên không đưa vào. Không có ngưỡng nào trong nguồn 6107 thuộc về nhóm này. Ghi ra để người quản lý không tưởng sổ tay bỏ sót."
+  },
+  {
+   "loai": "dieuKienVao[0] trùng nội dung với phamVi",
+   "lyDo": "Hai mục nói cùng một điều ('hàng của nam giới hoặc trẻ em trai'). Không xoá vì chúng phục vụ hai đường khác nhau: phamVi đưa vào phần 'Phạm vi' của prompt còn dieuKienVao đưa vào phần 'Điều kiện vào nhóm' và là nơi cổng sau này lấy để gợi ý hỏi người khai. Ghi ra cho người quản lý thấy là trùng có chủ đích."
+  },
+  {
+   "loai": "7/16 trường văn bản của nhóm 6107 bị cắt khi vào prompt",
+   "lyDo": "Xem canhBao chung trong review/4820.json (31/67 trường của cả lô vượt ngân sách clip của lib/so-tay-gates.js). Riêng 6107: phamVi.text 245 (đã sửa xuống 213), loaiTru[2].dieuKien 146, loaiTru[3].dieuKien 75, dong8[2] 96, dong8[5] 92, dong8[6] 121, dong8[7] 138."
+  }
+ ]
+}

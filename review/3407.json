@@ -1,0 +1,99 @@
+{
+ "nhom": "3407",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T12:15:00+07:00",
+ "phamViSoat": "Toàn bộ 8 mục của bản nháp (1 phamVi + 0 dieuKienVao + 3 loaiTru + 1 phanBiet + 0 tieuChi6 + 3 dong8), đọc cùng tmp/so-tay/nguon/3407.txt (172 dòng: nhom3407.nhom, ch34.chuong, phan34.phan, wco.340700, tax.34070010/020/030).",
+ "soat": 8,
+ "sua": 2,
+ "chen": 0,
+ "xoa": 0,
+ "ghiChu": "Audit 3407: 8/8 câu trích nguyên văn. SỬA 2 — cả hai đều là lỗi máy KHÔNG bắt được. (1) phamVi thiếu mục (C): chú giải nhóm chia làm ba thành phần (A) bột nhão làm hình mẫu, (B) 'sáp dùng trong nha khoa'/'các chất làm khuôn răng', (C) 'các chế phẩm khác dùng trong nha khoa, với thành phần cơ bản là thạch cao' — text chỉ nói (A) và (B), bỏ (C), mà (C) chính là dòng 8 số 34070030. (2) phanBiet[0] SAI PHẠM VI: câu nguồn mở bằng 'Các chế phẩm này' — chỉ trỏ về nhóm con (B) sáp nha khoa, nhưng hoi được viết chung chung cho cả nhóm và nhánh 'không' gán cứng 3404|3824. Câu nguồn ngay trên (mục (A)) nói ngược lại: 'Những chất bột nhão dùng làm hình mẫu đủ loại, kể cả được đóng thành bộ dùng cho mục đích giải trí của trẻ em, cũng được phân loại vào nhóm này' — tức bột nhão KHÔNG cần điều kiện đóng gói. lib/so-tay-gates.js:141 in phanBiet thành 'Câu hỏi phân biệt: … có→3407 / không→3404/3824' đưa thẳng vào prompt LLM, nên nhánh 'không' sai sẽ dẫn AI đi sai. Đã sửa bằng cách thu hẹp hoi vào chính nhóm con mà câu trích nói, đồng thời kéo câu định danh (B) vào trích để 'Các chế phẩm này' có antecedent. GIỮ có lý do: tieuChi6 rỗng là ĐÚNG (nhóm 3407 không có nút 6 số nào trong cây — máy cũng bắt buộc phải rỗng); dong8[].dieuKien chỉ lại nguyên văn tên dòng biểu thuế, không thêm chữ.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "text BỎ SÓT mục (C) của chú giải nhóm: 'Các chế phẩm khác dùng trong nha khoa, với thành phần cơ bản là thạch cao (thạch cao nung hoặc sunphat canxi)'. Đây là một trong ba thành phần của nhóm và có dòng 8 số riêng 34070030 ('Chế phẩm khác dùng trong nha khoa có thành phần cơ bản là thạch cao plaster'), nên người đọc phạm vi nhóm sẽ không biết nhóm 3407 còn phần này. Đã thêm (C) vào text và kéo câu nguyên văn của (C) vào trich (các thành phần là ba đoạn rời nhau trong nguồn, nối bằng dấu lược). Ràng buộc đã kiểm: lib/so-tay-gates.js:134 in phamVi bằng clip(text, 220). Bản text đầu tiên dài 264 ký tự — khi chạy sẽ bị cắt mất trọn vế (C), tức đúng phần vừa thêm vào. Đã nén lại 199 ký tự, giữ đủ ba thành phần (A)(B)(C); trich không đổi nên phần rút khỏi text vẫn còn nguyên văn trong câu trích.",
+   "sua": {
+    "text": "Chế phẩm plastic làm hình mẫu cho các hoạ sĩ, thợ kim hoàn và giải trí trẻ em; sáp dùng trong nha khoa và các chất làm khuôn răng; chế phẩm khác dùng trong nha khoa có thành phần cơ bản là thạch cao.",
+    "trich": "Đây là các chế phẩm plastic thường được các hoạ sĩ hoặc thợ kim hoàn dùng để làm mẫu và dùng cho mục đích giải trí của trẻ em. … (B) Các chế phẩm được biết như \"sáp dùng trong nha khoa\" hay \"các chất làm khuôn răng\". … (C) Các chế phẩm khác dùng trong nha khoa, với thành phần cơ bản là thạch cao (thạch cao nung hoặc sunphat canxi)."
+   }
+  },
+  {
+   "index": "dieuKienVao",
+   "hanhDong": "giu",
+   "lyDo": "Rỗng là ĐÚNG, và đây là chỗ dễ sai nhất của nhóm. Có hai câu trông như điều kiện vào nhóm nhưng KHÔNG đưa vào được: (a) 'Các chế phẩm này được phân loại ở nhóm này chỉ khi chúng được đóng thành bộ, đóng gói để bán lẻ hoặc là ở dạng phiến, dạng móng ngựa…' — từ 'Các chế phẩm này' chỉ trỏ về nhóm con (B) sáp nha khoa, không phải cả nhóm; mục (A) nói ngược lại là bột nhão 'kể cả được đóng thành bộ… cũng được phân loại vào nhóm này'. (b) 'Nhóm này bao gồm những chế phẩm được dùng trong nha khoa có thành phần cơ bản là thạch cao, thường chứa hơn 2% chất phụ gia…' — chỉ là điều kiện của nhóm con (C), và ngưỡng 2% đi kèm chữ 'thường' (đúng dạng câu rào mà _he-thong.txt cấm đặt thành điều kiện bắt buộc). Nếu đưa vào dieuKienVao thì máy đọc kiểu AND sẽ loại nhầm bột nhão làm hình mẫu và sáp nha khoa đúng. Điều kiện đóng gói đã được dùng ở đúng chỗ của nó là phanBiet[0] và dong8[1]."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "'Cần lưu ý rằng không nhầm lẫn các chế phẩm này với thạch cao mà chỉ có chứa một lượng nhỏ chất tăng tốc hoặc chất ức chế (nhóm 25.20).' nguyên văn; nêu đích danh nhóm 25.20 và câu là mệnh lệnh dứt khoát ('không nhầm lẫn'), không phải 'thường thuộc'/'tùy trường hợp'. Đúng luật mục 3."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "'Nhóm này không bao gồm xi măng hàn răng và các chất hàn răng khác (nhóm 30.06).' nguyên văn; loại trừ dứt khoát có đích danh. Đúng."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "'(c) Dầu gội đầu, sản phẩm đánh răng, kem cạo và bọt cạo, hoặc các chế phẩm dùng để tắm, chứa xà phòng hay chất hữu cơ hoạt động bề mặt khác (nhóm 33.05, 33.06 hoặc 33.07).' nguyên văn, nêu đủ cả ba nhóm đích. Lấy từ ch34.chuong (chú giải chương, cấp chương chứ không phải cấp nhóm) là hợp lệ: 3407 thuộc Chương 34 nên chịu chú giải chương."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "SAI PHẠM VI — lỗi nguy hiểm vì nhánh 'không' bị gán cứng một mã đích. Câu nguồn mở đầu bằng 'CÁC CHẾ PHẨM NÀY' (đại từ, không có antecedent trong câu trích) và chỉ nói về nhóm con (B) sáp nha khoa; bản nháp đã viết hoi ở mức cả nhóm ('Hàng có được đóng thành bộ… không?') và gán neuKhong='3404|3824'. Nhưng ngay ở nhóm con (A) nguồn nói: 'Những chất bột nhão dùng làm hình mẫu đủ loại, kể cả được đóng thành bộ dùng cho mục đích giải trí của trẻ em, cũng được phân loại vào nhóm này' — tức bột nhão vào 3407 KHÔNG cần điều kiện đóng gói. lib/so-tay-gates.js:141 đưa nguyên văn thành 'Câu hỏi phân biệt: … có→3407 / không→3404/3824' trong prompt, nên với một bột nhão đóng dạng khối, AI sẽ bị dẫn sang 3404/3824 — sai. Sửa: thu hẹp hoi vào đúng nhóm con mà câu trích nói (sáp dùng trong nha khoa/hợp chất tạo khuôn răng) và kéo câu định danh mục (B) vào trích để 'Các chế phẩm này' có antecedent trong chính câu trích. Giữ nguyên neuCo/neuKhong vì sau khi thu hẹp phạm vi thì nhánh 'không' → 3404/3824 là đúng và câu trích đã nêu đủ hai nhóm (không rơi nhánh nào của 'các nhóm 34.04, 38.24, vv..').",
+   "sua": {
+    "hoi": "Hàng là sáp dùng trong nha khoa hoặc hợp chất tạo khuôn răng được đóng thành bộ, đóng gói để bán lẻ hoặc ở dạng phiến, dạng móng ngựa, dạng thanh hoặc dạng tương tự không?",
+    "trich": "(B) Các chế phẩm được biết như \"sáp dùng trong nha khoa\" hay \"các chất làm khuôn răng\". … Các chế phẩm này được phân loại ở nhóm này chỉ khi chúng được đóng thành bộ, đóng gói để bán lẻ hoặc là ở dạng phiến, dạng móng ngựa … dạng thanh hoặc các dạng tương tự. Mặt khác, khi chúng được đóng ở dạng khác … chúng được phân loại theo thành phần cấu tạo của chúng (các nhóm 34.04, 38.24, vv..)."
+   }
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "null là ĐÚNG: nguồn 3407 không có quy tắc bộ phận nào (không có câu 'được phân loại cùng với…' hay 'với điều kiện đã đóng gói kèm…')."
+  },
+  {
+   "index": "tieuChi6",
+   "hanhDong": "giu",
+   "lyDo": "Rỗng là ĐÚNG: nhóm 3407 không có nút 6 số nào trong cây HS (không có phân nhóm), nên mọi tieuChi6 đều bị máy loại với lý do hs6-khong-co-trong-cay. Đã chạy check-cay xác nhận không phát sinh cảnh báo 'phan-nhom-chua-co-tieu-chi'."
+  },
+  {
+   "index": "cay.tenDien",
+   "hanhDong": "giu",
+   "lyDo": "Rỗng là ĐÚNG: chạy check-cay xác nhận nhóm 3407 không có nút ảo chưa có tên."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "tax.34070010 'Bột nhão dùng để làm hình mẫu, kể cả đất nặn dùng cho trẻ em' nguyên văn; tieuChi chỉ lại đúng câu đó, không thêm chữ ngoài trích."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "tax.34070020 nguyên văn; điều kiện đóng gói trong tên dòng khớp đúng với câu nguồn đã dùng cho phanBiet[0], nên ba nơi thống nhất."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "tax.34070030 nguyên văn. Lưu ý nguồn chú giải mục (C) ghi 'sunphat canxi' còn biểu thuế ghi 'canxi sulphat nung' — khác biệt dịch của chính kệ sách, KHÔNG sửa (luật 2: giữ nguyên nguồn)."
+  }
+ ],
+ "canhBaoKhongSuaTrongAudit": [
+  {
+   "loai": "trich sau khi sửa vượt quy ước 300 (phamVi 333, phanBiet[0] 389)",
+   "lyDo": "Dưới trần 600 của máy. Cả hai đều CÓ LÝ DO: phamVi phải mang đủ ba thành phần (A)(B)(C) của nhóm thì mới đủ; phanBiet phải giữ câu định danh mục (B) để 'Các chế phẩm này' không bị treo. Rút xuống ≤300 chỉ được bằng cách bỏ nội dung mà mục khẳng định. Chọn giữ nội dung."
+  },
+  {
+   "loai": "chú giải nhóm 3407 nhiều khả năng bị mất đầu mục (A) — lỗi kệ sách",
+   "lyDo": "Đoạn đầu của nhom3407.nhom mở thẳng bằng 'Đây là các chế phẩm plastic thường được các hoạ sĩ hoặc thợ kim hoàn dùng để làm mẫu…' — câu đứt, không có chủ ngữ, trong khi các mục sau đánh số rõ (B) và (C). Có lẽ phần '(A) Các chế phẩm dùng làm hình mẫu…' đã bị mất khi trích xuất. Không sửa được trong sổ tay (luật: không sửa nguồn). Đề xuất cho phiên quản lý: kiểm lại data/chu-giai-heading.json['3407'].nhom với bản Công báo."
+  },
+  {
+   "loai": "hai ngưỡng số trong chú giải (C) không được dùng",
+   "lyDo": "'thường chứa hơn 2% chất phụ gia tính theo trọng lượng' và 'thường chứa 25% trở lên… α-canxi sulphat hemihydrat'. Cả hai đều kèm định ngữ 'thường' (không phải ngưỡng dứt khoát) VÀ chỉ nói về nhóm con (C). Không đưa vào dong8[2].tieuChi cũng vì lý do thứ hai. Ghi ra để người quản lý biết số tồn tại trong nguồn nhưng không dùng được."
+  },
+  {
+   "loai": "loaiTru[2] lấy từ ch34.chuong (cấp chương) chứ không phải nhom3407.nhom",
+   "lyDo": "Không phải lỗi — 3407 thuộc Chương 34 nên chịu chú giải chương, và luật 1 cho phép nguồn ch<2>.chuong. Ghi ra để người quản lý thấy đích loại trừ (33.05/33.06/33.07) không phải loại trừ riêng của nhóm 3407 mà là của cả Chương 34."
+  }
+ ]
+}

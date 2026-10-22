@@ -36,9 +36,11 @@ function parseIndex(index) {
 function applyThayDoi(obj, thayDoi) {
   const sua = []; let xoa = 0; const chen = []; let giu = 0;
   for (const t of thayDoi) {
-    const { kind, idx } = parseIndex(t.index);
     const hanhDong = t.hanhDong || (t.sua ? 'sua' : null);
+    // `giu` là no-op: không cần (và không nên bắt buộc) index phải phân giải được.
+    // Nhờ vậy người soát ghi nhãn chính xác các khối không đụng tới, kể cả đường lồng nhau (`cay.tenDien`).
     if (hanhDong === 'giu') { giu += 1; continue; }
+    const { kind, idx } = parseIndex(t.index);
     if (hanhDong === 'chen') {
       if (idx == null) throw new Error(`chen cần index có [i]: ${t.index}`);
       chen.push({ kind, idx, muc: t.muc });

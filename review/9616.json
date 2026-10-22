@@ -1,0 +1,106 @@
+{
+ "nhom": "9616",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T12:10:00+07:00",
+ "phamViSoat": "Toàn bộ 13 mục của bản nháp (1 phamVi + 0 dieuKienVao + 3 loaiTru + 3 phanBiet + 3 tieuChi6 + 3 dong8), đọc cùng tmp/so-tay/nguon/9616.txt (86 dòng: nhom9616.nhom, ch96.chuong, wco.961610/961620, tax.96161010/96161020/96162000).",
+ "soat": 13,
+ "sua": 1,
+ "chen": 0,
+ "xoa": 0,
+ "ghiChu": "Audit 9616: đối chiếu từng câu trích với nguồn — 13/13 nguyên văn, KHÔNG phát hiện lỗi 'cắt trích né câu rào' (nguồn 9616 không có câu rào nào), không trích dài 300–600, không ghép hai câu xa nhau. SỬA 1 (lỗi máy không bắt được — mục thiếu, không phải mục sai). GIỮ có lý do: (1) loaiTru chỉ ghi 3 trong 4 khoản loại trừ, BỎ (a) 'Vật chứa (lọ, bình, chai,…) dùng cho bình xịt, ở dạng riêng lẻ' là ĐÚNG — câu đó nói phân loại theo vật liệu cấu thành, không nêu đích danh mã nhóm nào, ghi vào sẽ bị máy loại và cũng không đúng luật mục 3. (2) 3 phanBiet trùng lặp đúng 3 loaiTru: nhánh 'không' = chính nhóm, đây là khuôn mẫu ĐÃ ĐƯỢC CHẤP NHẬN ở lô 007 (review/6116.json phanBiet[0] giữ với lý do 'câu loại trừ nói rõ những găng này không ở 6116') — không phải lỗi 'suy từ danh sách loại trừ'. Ba câu hỏi khác nhau về ba loại hàng khác nhau nên không vi phạm luật 'không tạo nhiều mục cùng một câu hỏi'. (3) tieuChi6 có 2 mục cho cùng hs6 961620: ĐÚNG, không xoá — 170 tệp sổ tay đã gộp có tiêu chí trùng phân nhóm (đã kiểm bằng script), nguồn WCO tiếng Anh và nguồn chú giải tiếng Việt bổ sung cho nhau. (4) dong8[].dieuKien ghi kèm '(phân nhóm 961610)' — giữ nguyên theo đúng thói quen đã gộp của lô 006/007 (review/8460.json dong8[5], dong8[12] giữ giới hạn lấy từ wco.* và ghi rõ trong canhBaoKhongSuaTrongAudit); ở đây chỉ là chú thích cấu trúc theo chữ số mã, không bịa đặc tính.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "text BỎ SÓT 2 trong 4 mục có số của chú giải nhóm: mục (2) 'Vòi bình xịt vệ sinh' và mục (3) 'Đầu của vòi bình xịt vệ sinh'. Đây không phải mục sai (text hiện tại không sai chỗ nào) mà là mục THIẾU — nhóm 9616 có 4 thành phần, text chỉ nói 2, và phần bị thiếu chính là phần có dòng 8 số 96161020 'Các bộ phận gá lắp và đầu xịt'. Người đọc phạm vi nhóm sẽ tưởng nhóm này chỉ có bình xịt và miếng/tấm. Đã sửa cả text lẫn trich để trích mang theo đủ (2) và (3) nguyên văn; các mục (2)/(3) trong nguồn là hai câu riêng biệt nên nối bằng dấu lược. Ràng buộc đã kiểm: lib/so-tay-gates.js:134 in phamVi bằng clip(text, 220). Bản text đầu tiên dài 240 ký tự nên khi chạy sẽ bị cắt cụt đuôi; đã nén lại 182 ký tự, vẫn nêu đủ bốn thành phần của nhóm. Cách rút: 'vòi bình xịt vệ sinh và đầu của vòi bình xịt vệ sinh' thành 'vòi và đầu vòi bình xịt vệ sinh'. trich không đổi nên phần rút khỏi text vẫn còn nguyên văn trong câu trích.",
+   "sua": {
+    "text": "Bình xịt nước hoa, gôm chải tóc và bình xịt tương tự (để bàn hoặc bỏ túi, cá nhân hoặc chuyên ngành); vòi và đầu vòi bình xịt vệ sinh; miếng và tấm cho mỹ phẩm hoặc chế phẩm vệ sinh.",
+    "trich": "Nhóm này bao gồm: … (1) Bình xịt nước hoa, gôm chải tóc và các loại bình xịt tương tự... loại để bàn, hoặc bỏ túi, và loại dùng cho cá nhân hoặc chuyên ngành. … (2) Vòi bình xịt vệ sinh. … (3) Đầu của vòi bình xịt vệ sinh. … (4) Miếng và tấm dùng cho các loại mỹ phẩm hoặc chế phẩm vệ sinh (phấn thoa mặt, phấn hồng, bột tan…)."
+   }
+  },
+  {
+   "index": "dieuKienVao",
+   "hanhDong": "giu",
+   "lyDo": "Rỗng là ĐÚNG: chú giải nhóm 9616 không có câu nào đặt điều kiện vào nhóm (toàn bộ là liệt kê 'Nhóm này bao gồm: (1)…(4)' và 'không áp dụng cho (a)…(d)'). Không được thêm điều kiện từ wco.961610/961620 vì đó là tiêu chí cấp phân nhóm, thuộc tieuChi6."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "'(b) Quả bơm tay bằng cao su (nhóm 40.14)' nguyên văn; nguồn nêu ĐÍCH DANH nhóm 40.14 ngay trong câu (không phải ví dụ linh kiện, không phải 'Chương N'), đích không phải chính nhóm. Đúng luật mục 3."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "'(c) Dụng cụ tạo bụi nước hoặc phun sương của nhóm 84.24.' nguyên văn; nêu đích danh nhóm 84.24. Đúng."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "'(d) Máy phun hơi của nhóm 84.76.' nguyên văn; nêu đích danh nhóm 84.76. Đúng."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "'Hàng là quả bơm tay bằng cao su không?' — hỏi về đặc tính hàng, KHÔNG nhắc mã phân nhóm (đạt luật §MA_PHAN_NHOM_TRONG_HOI); nhánh 'có' 4014 được câu trích nêu đích danh; nhánh 'không' = 9616 là chính nhóm, đúng như khuôn mẫu đã chấp nhận ở lô 007 (review/6116.json)."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng lý do với phanBiet[0]; đích danh nhóm 84.24 có trong câu trích."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng lý do với phanBiet[0]; đích danh nhóm 84.76 có trong câu trích."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "wco.961610 'Scent sprays and similar toilet sprays, and mounts and heads therefor' — fact 'la_binh_xit_nuoc_hoa_va_cac_bo_phan_dau_xit_cua_no' giữ đủ cả hai vế (bình xịt + bộ phận/đầu xịt của chúng), không rơi vế như lỗi đã gặp ở 9606 tieuChi6[0]. Đích đúng phân nhóm trong cây."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "wco.961620 'Powder puffs and pads; for the application of cosmetics or toilet preparations' — fact 'la_mienh_va_tam_dung_cho_my_pham_hoac_che_pham_ve_sinh' diễn đạt đúng cả vế 'puffs and pads' lẫn vế 'for the application of cosmetics or toilet preparations'."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng hs6 961620 nhưng lấy từ nguồn tiếng Việt (nhom9616.nhom mục (4)) — KHÔNG xoá. Đã kiểm toàn kho: 170 tệp sổ tay đã gộp có phân nhóm mang nhiều tiêu chí, đây là dạng thường gặp, không phải mục thừa. fact 'dung_cho_my_pham_hoac_che_pham_ve_sinh' có nguyên văn trong câu trích."
+  },
+  {
+   "index": "cay.tenDien",
+   "hanhDong": "giu",
+   "lyDo": "Rỗng là ĐÚNG: chạy check-cay xác nhận nhóm 9616 không còn nút ảo chưa có tên."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "tax.96161010 'Bình, lọ xịt nước hoa và bình, lọ xịt trang điểm tương tự' nguyên văn; tieuChi chỉ lại đúng câu đó, không thêm chữ ngoài trích. Chú thích '(phân nhóm 961610)' là chú thích cấu trúc theo chữ số mã, giữ theo thói quen đã gộp của lô 006/007."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "tax.96161020 'Các bộ phận gá lắp và đầu xịt' nguyên văn; dòng cha 961610 mà dòng này thuộc về đã được phamVi (sau khi sửa) và tieuChi6[0] phủ, nên không thiếu căn cứ."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "tax.96162000 'Miếng và tấm để xoa và chấm mỹ phẩm hoặc các sản phẩm trang điểm' nguyên văn; loaiKhac=false đúng vì tên dòng không bắt đầu bằng 'Loại khác' (máy cũng tự suy vậy)."
+  }
+ ],
+ "canhBaoKhongSuaTrongAudit": [
+  {
+   "loai": "trich phamVi sau khi sửa dài 327 ký tự (>300, cũ là 265)",
+   "lyDo": "Vượt quy ước 300 của bản nháp nhưng dưới trần 600 của máy, và CÓ LÝ DO: nhóm 9616 có 4 mục đánh số trong chú giải, giữ trọn cả 4 thì câu trích dài; rút xuống ≤300 chỉ được bằng cách bỏ vế 'loại để bàn, hoặc bỏ túi, và loại dùng cho cá nhân hoặc chuyên ngành' — tức phải bỏ luôn thông tin đó khỏi text. Chọn giữ thông tin, giống cách xử lý ở review/9606.json."
+  },
+  {
+   "loai": "dong8[].dieuKien có chú thích '(phân nhóm 96xx)' không nằm trong trích của chính dòng",
+   "lyDo": "Ghi ra đây để người quản lý biết (mẫu bắt buộc trong mô tả PR). Nội dung là cấu trúc theo chữ số mã, không phải đặc tính bịa thêm; cùng dạng với các dòng đã giữ ở lô 006/007 với phần giới hạn lấy từ wco.*. Không sửa vì sẽ lệch style với phần còn lại của kho sổ tay."
+  },
+  {
+   "loai": "ch96.chuong có câu rào liên quan nhóm 96.01–96.06 (mục 4 chú giải chương)",
+   "lyDo": "'…Tuy nhiên, các nhóm từ 96.01 đến 96.06 và 96.15 kể cả các mặt hàng có chứa ngọc trai… kim loại quí… nhưng những chất liệu này chỉ là thành phần phụ.' Đây là điều kiện của các nhóm 96.01–96.06, KHÔNG phủ 9616 (nằm ngoài dải 96.01–96.06/96.15), và vế đối chiếu của nó là '96.07 đến 96.14 và 96.16 đến 96.18 có thể làm bằng toàn bộ hoặc một phần…'. Vì vậy câu rào này KHÔNG sinh vế loại trừ cho 9616 — không ghi vào loaiTru (ghi thêm sẽ là bịa). Đã đọc kỹ và bỏ qua có lý do."
+  }
+ ]
+}
