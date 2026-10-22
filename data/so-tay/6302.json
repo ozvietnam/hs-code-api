@@ -1,0 +1,944 @@
+{
+ "nhom": "6302",
+ "phamVi": {
+  "text": "Khăn trải giường, khăn trải bàn, khăn phòng vệ sinh và khăn dùng cho nhà bếp.",
+  "nguon": "nhom6302.nhom",
+  "trich": "(1) Khăn trải giường, ví dụ như: … đệm. … (2) Khăn trải bàn, ví dụ như: … cốc. … Tuy nhiên, cũng nên lưu ý rằng, một số sản phẩm nhất định được mô tả ở phần trên (khăn dùng để phủ giữa bàn làm bằng ren, nhung, vật liệu thêu kim tuyến (gấm) không được xem như là các sản phẩm của khăn bàn; các sản phẩm này thường được phân loại trong nhóm 63.04. … (3) Khăn phòng vệ sinh … (4) Khăn dùng cho nhà bếp: …",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Khăn lau sàn nhà, khăn lau đĩa, khăn lau chùi sạch, khăn lau bụi và khăn lau chùi tương tự (các sản phẩm này thường được làm bằng các vật liệu thô dày) — không được xem là phù hợp với miêu tả “Khăn dùng cho nhà bếp”",
+   "sangNhom": "6307",
+   "nguon": "nhom6302.nhom",
+   "trich": "Các mặt hàng như: khăn lau sàn nhà, khăn lau đĩa, khăn lau chùi sạch, khăn lau bụi và khăn lau chùi tương tự, các sản phẩm này thường được làm bằng các vật liệu thô dày, không được xem là phù hợp với miêu tả “Khăn dùng cho nhà bếp” được loại ra khỏi nhóm này (nhóm 63.07)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các sản phẩm không dệt chỉ được cắt thành hình vuông hoặc hình chữ nhật (ví dụ, tấm trải giường dùng một lần)",
+   "sangNhom": "5603",
+   "nguon": "ch63.chuong",
+   "trich": "(b) Các sản phẩm không dệt chỉ được cắt thành hình vuông hoặc hình chữ nhật (ví dụ, tấm trải giường dùng một lần) (nhóm 56.03)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các loại lưới hoàn chỉnh",
+   "sangNhom": "5608",
+   "nguon": "ch63.chuong",
+   "trich": "(c) Các loại lưới hoàn chỉnh thuộc nhóm 56.08.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Quần áo đã qua sử dụng hoặc các mặt hàng đã qua sử dụng khác",
+   "sangNhom": "6309",
+   "nguon": "ch63.chuong",
+   "trich": "(b) Quần áo đã qua sử dụng hoặc các mặt hàng đã qua sử dụng khác thuộc nhóm 63.09",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Sản phẩm không dệt có chỉ được cắt thành hình vuông hoặc hình chữ nhật không?",
+   "neuCo": "5603",
+   "neuKhong": "6302",
+   "nguon": "ch63.chuong",
+   "trich": "(b) Các sản phẩm không dệt chỉ được cắt thành hình vuông hoặc hình chữ nhật (ví dụ, tấm trải giường dùng một lần) (nhóm 56.03)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Sản phẩm đã qua sử dụng chưa?",
+   "neuCo": "6309",
+   "neuKhong": "6302",
+   "nguon": "ch63.chuong",
+   "trich": "(b) Quần áo đã qua sử dụng hoặc các mặt hàng đã qua sử dụng khác thuộc nhóm 63.09",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "630210",
+   "fact": "la_khan_trai_giuong_det_kim_hoac_moc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630210",
+   "trich": "630210 Bed linen; knitted or crocheted",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630221",
+   "fact": "la_khan_trai_giuong_tu_bong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630221",
+   "trich": "630221 Bed linen; of cotton, printed, not knitted or crocheted",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630221",
+   "fact": "duoc_in_hoa",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630221",
+   "trich": "630221 Bed linen; of cotton, printed, not knitted or crocheted",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630222",
+   "fact": "la_khan_trai_giuong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630222",
+   "trich": "630222 Bed linen; of man-made fibres, printed, not knitted or crocheted",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630222",
+   "fact": "tu_soi_nhan_tao",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630222",
+   "trich": "630222 Bed linen; of man-made fibres, printed, not knitted or crocheted",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630222",
+   "fact": "duoc_in_hoa",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630222",
+   "trich": "630222 Bed linen; of man-made fibres, printed, not knitted or crocheted",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630229",
+   "fact": "tu_vat_lieu_det_khac_bong_hoac_soi_nhan_tao",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630229",
+   "trich": "630229 Bed linen; of textile materials (other than cotton or man-made fibres), printed, not knitted or crocheted",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630229",
+   "fact": "duoc_in_hoa",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630229",
+   "trich": "630229 Bed linen; of textile materials (other than cotton or man-made fibres), printed, not knitted or crocheted",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630231",
+   "fact": "la_khan_trai_giuong_tu_bong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630231",
+   "trich": "630231 Bed linen; of cotton (not printed, knitted or crocheted)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630232",
+   "fact": "tu_soi_nhan_tao",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630232",
+   "trich": "630232 Bed linen; of man-made fibres (not printed, knitted or crocheted)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630239",
+   "fact": "tu_vat_lieu_det_khac_bong_hoac_soi_nhan_tao",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630239",
+   "trich": "630239 Bed linen; of textile materials other than cotton or man-made fibres (not printed, knitted or crocheted)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630240",
+   "fact": "la_khan_trai_ban_det_kim_hoac_moc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630240",
+   "trich": "630240 Table linen; knitted or crocheted",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630251",
+   "fact": "la_khan_trai_ban_tu_bong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630251",
+   "trich": "630251 Table linen; of cotton, not knitted or crocheted",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630253",
+   "fact": "tu_soi_nhan_tao",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630253",
+   "trich": "630253 Table linen; of man-made fibres, not knitted or crocheted",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630259",
+   "fact": "tu_vat_lieu_det_khac_bong_hoac_soi_nhan_tao",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630259",
+   "trich": "630259 Table linen; of textile materials (other than cotton or man-made fibres), not knitted or crocheted",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630260",
+   "fact": "tu_bong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630260",
+   "trich": "630260 Kitchen and toilet linen; of terry towelling or similar terry fabrics, of cotton",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630260",
+   "fact": "tu_vai_det_vong_long_hoac_vai_tuong_tu",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630260",
+   "trich": "630260 Kitchen and toilet linen; of terry towelling or similar terry fabrics, of cotton",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630291",
+   "fact": "tu_bong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630291",
+   "trich": "630291 Toilet and kitchen linen; of cotton, excluding terry towelling or similar terry fabrics",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630291",
+   "fact": "khong_phai_vai_det_vong_long_hoac_vai_tuong_tu",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630291",
+   "trich": "630291 Toilet and kitchen linen; of cotton, excluding terry towelling or similar terry fabrics",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630293",
+   "fact": "tu_soi_nhan_tao",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630293",
+   "trich": "630293 Toilet and kitchen linen; of man-made fibres",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "630299",
+   "fact": "tu_vat_lieu_det_khac_bong_hoac_soi_nhan_tao",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.630299",
+   "trich": "630299 Toilet and kitchen linen; of textile materials (other than cotton or man-made fibres)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "63021000",
+   "dieuKien": "Vỏ ga, vỏ gối, khăn trải giường (bed linen), dệt kim hoặc móc",
+   "tieuChi": {
+    "fact": "det_kim_hoac_moc",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.63021000",
+   "trich": "63021000 - Vỏ ga, vỏ gối, khăn trải giường (bed linen), dệt kim hoặc móc",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "63022100",
+   "dieuKien": "Khăn trải giường từ bông, đã in, không dệt hoặc móc (tên WCO 630221)",
+   "tieuChi": {
+    "fact": "tu_bong",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.63022100",
+   "trich": "63022100 - - Từ bông",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "63022210",
+   "dieuKien": "Khăn trải giường từ sợi nhân tạo (tên WCO 630222), ở dạng vải không dệt",
+   "tieuChi": {
+    "fact": "la_vai_khong_det",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.63022210",
+   "trich": "63022210 - - - Vải không dệt",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "63022290",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 630222 — khăn trải giường từ sợi nhân tạo, đã in, không dệt hoặc móc (tên WCO 630222) — trừ 63022210 (vải không dệt)",
+   "tieuChi": {
+    "fact": "la_vai_khong_det",
+    "op": "=",
+    "value": false,
+    "donVi": null
+   },
+   "nguon": "wco.630222",
+   "trich": "630222 Bed linen; of man-made fibres, printed, not knitted or crocheted",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "630222",
+    "truAnhEm": [
+     "63022210"
+    ],
+    "toTienCoTen": "630222",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "63022900",
+   "dieuKien": "Khăn trải giường từ các vật liệu dệt khác (trừ bông và sợi nhân tạo), đã in, không dệt hoặc móc (tên WCO 630229)",
+   "tieuChi": {
+    "fact": "tu_vat_lieu_det_khac_bong_hoac_soi_nhan_tao",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.63022900",
+   "trich": "63022900 - - Từ các vật liệu dệt khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "63023100",
+   "dieuKien": "Khăn trải giường từ bông (không in, không dệt hoặc móc) (tên WCO 630231)",
+   "tieuChi": {
+    "fact": "tu_bong",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.63023100",
+   "trich": "63023100 - - Từ bông",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "63023210",
+   "dieuKien": "Khăn trải giường từ sợi nhân tạo (tên WCO 630232), ở dạng vải không dệt",
+   "tieuChi": {
+    "fact": "la_vai_khong_det",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.63023210",
+   "trich": "63023210 - - - Vải không dệt",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "63023290",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 630232 — khăn trải giường từ sợi nhân tạo (không in, không dệt hoặc móc) (tên WCO 630232) — trừ 63023210 (vải không dệt)",
+   "tieuChi": {
+    "fact": "la_vai_khong_det",
+    "op": "=",
+    "value": false,
+    "donVi": null
+   },
+   "nguon": "wco.630232",
+   "trich": "630232 Bed linen; of man-made fibres (not printed, knitted or crocheted)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "630232",
+    "truAnhEm": [
+     "63023210"
+    ],
+    "toTienCoTen": "630232",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "63023900",
+   "dieuKien": "Khăn trải giường từ các vật liệu dệt khác (trừ bông và sợi nhân tạo) (tên WCO 630239)",
+   "tieuChi": {
+    "fact": "tu_vat_lieu_det_khac_bong_hoac_soi_nhan_tao",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.63023900",
+   "trich": "63023900 - - Từ các vật liệu dệt khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "63024000",
+   "dieuKien": "Khăn trải bàn, dệt kim hoặc móc",
+   "tieuChi": {
+    "fact": "la_khan_trai_ban_det_kim_hoac_moc",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.63024000",
+   "trich": "63024000 - Khăn trải bàn, dệt kim hoặc móc",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "63025110",
+   "dieuKien": "Khăn trải bàn từ bông (tên WCO 630251), được in bằng phương pháp batik truyền thống",
+   "tieuChi": {
+    "fact": "duoc_in_bang_phuong_phap_batik_truyen_thong",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.63025110",
+   "trich": "63025110 - - - Được in bằng phương pháp batik truyền thống (SEN)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "63025190",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 630251 — khăn trải bàn từ bông, không dệt hoặc móc (tên WCO 630251) — trừ 63025110 (được in bằng phương pháp batik truyền thống)",
+   "tieuChi": {
+    "fact": "duoc_in_bang_phuong_phap_batik_truyen_thong",
+    "op": "=",
+    "value": false,
+    "donVi": null
+   },
+   "nguon": "wco.630251",
+   "trich": "630251 Table linen; of cotton, not knitted or crocheted",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "630251",
+    "truAnhEm": [
+     "63025110"
+    ],
+    "toTienCoTen": "630251",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "63025300",
+   "dieuKien": "Khăn trải bàn từ sợi nhân tạo (tên WCO 630253)",
+   "tieuChi": {
+    "fact": "tu_soi_nhan_tao",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.63025300",
+   "trich": "63025300 - - Từ sợi nhân tạo",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "63025910",
+   "dieuKien": "Khăn trải bàn từ lanh (tên WCO 630259: vật liệu dệt khác, trừ bông và sợi nhân tạo, không dệt hoặc móc)",
+   "tieuChi": {
+    "fact": "tu_lanh",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.63025910",
+   "trich": "63025910 - - - Từ lanh",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "63025990",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 630259 — khăn trải bàn từ vật liệu dệt khác, trừ bông và sợi nhân tạo, không dệt hoặc móc (tên WCO 630259) — trừ 63025910 (từ lanh)",
+   "tieuChi": {
+    "fact": "tu_lanh",
+    "op": "=",
+    "value": false,
+    "donVi": null
+   },
+   "nguon": "wco.630259",
+   "trich": "630259 Table linen; of textile materials (other than cotton or man-made fibres), not knitted or crocheted",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "630259",
+    "truAnhEm": [
+     "63025910"
+    ],
+    "toTienCoTen": "630259",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "63026000",
+   "dieuKien": "Khăn trong phòng vệ sinh và khăn nhà bếp, từ vải dệt vòng lông hoặc các loại vải dệt vòng lông tương tự, từ bông",
+   "tieuChi": {
+    "fact": "tu_vai_det_vong_long_hoac_vai_tuong_tu",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.63026000",
+   "trich": "63026000 - Khăn trong phòng vệ sinh và khăn nhà bếp, từ vải dệt vòng lông hoặc các loại vải dệt vòng lông tương tự, từ bông",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "63029100",
+   "dieuKien": "Khăn phòng vệ sinh và khăn nhà bếp từ bông, không phải vải dệt vòng lông hoặc vải tương tự (tên WCO 630291)",
+   "tieuChi": {
+    "fact": "tu_bong",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.63029100",
+   "trich": "63029100 - - Từ bông",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "63029300",
+   "dieuKien": "Khăn phòng vệ sinh và khăn nhà bếp từ sợi nhân tạo (tên WCO 630293)",
+   "tieuChi": {
+    "fact": "tu_soi_nhan_tao",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.63029300",
+   "trich": "63029300 - - Từ sợi nhân tạo",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "63029910",
+   "dieuKien": "Khăn phòng vệ sinh và khăn nhà bếp từ lanh (tên WCO 630299: vật liệu dệt khác, trừ bông và sợi nhân tạo)",
+   "tieuChi": {
+    "fact": "tu_lanh",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.63029910",
+   "trich": "63029910 - - - Từ lanh",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "63029990",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 630299 — khăn phòng vệ sinh và khăn nhà bếp từ vật liệu dệt khác, trừ bông và sợi nhân tạo (tên WCO 630299) — trừ 63029910 (từ lanh)",
+   "tieuChi": {
+    "fact": "tu_lanh",
+    "op": "=",
+    "value": false,
+    "donVi": null
+   },
+   "nguon": "wco.630299",
+   "trich": "630299 Toilet and kitchen linen; of textile materials (other than cotton or man-made fibres)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "630299",
+    "truAnhEm": [
+     "63029910"
+    ],
+    "toTienCoTen": "630299",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "6302",
+    "cap": 4,
+    "cha": "63",
+    "tenVi": "Vỏ ga, vỏ gối, khăn trải giường (bed linen), khăn trải bàn, khăn trong phòng vệ sinh và khăn nhà bếp.",
+    "tenEn": "Bed linen, table linen, toilet linen and kitchen linen",
+    "suyRa": false
+   },
+   {
+    "id": "63021000",
+    "cap": 8,
+    "cha": "6302",
+    "tenVi": "Vỏ ga, vỏ gối, khăn trải giường (bed linen), dệt kim hoặc móc",
+    "tenEn": "Bed linen; knitted or crocheted",
+    "suyRa": false,
+    "laPhanNhom": "630210"
+   },
+   {
+    "id": "63022",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "6302",
+    "tenVi": "Vỏ ga, vỏ gối, khăn trải giường (bed linen) khác, đã in",
+    "tenEn": "Other bed linen, printed",
+    "suyRa": true
+   },
+   {
+    "id": "63022100",
+    "cap": 8,
+    "cha": "63022",
+    "tenVi": "Từ bông",
+    "tenEn": "Bed linen; of cotton, printed, not knitted or crocheted",
+    "suyRa": false,
+    "laPhanNhom": "630221"
+   },
+   {
+    "id": "630222",
+    "cap": 6,
+    "cha": "63022",
+    "tenVi": null,
+    "tenEn": "Bed linen; of man-made fibres, printed, not knitted or crocheted",
+    "suyRa": false
+   },
+   {
+    "id": "63022210",
+    "cap": 8,
+    "cha": "630222",
+    "tenVi": "Vải không dệt",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "63022290",
+    "cap": 8,
+    "cha": "630222",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "63022900",
+    "cap": 8,
+    "cha": "63022",
+    "tenVi": "Từ các vật liệu dệt khác",
+    "tenEn": "Bed linen; of textile materials (other than cotton or man-made fibres), printed, not knitted or crocheted",
+    "suyRa": false,
+    "laPhanNhom": "630229"
+   },
+   {
+    "id": "63023",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "6302",
+    "tenVi": "Vỏ ga, vỏ gối, khăn trải giường (bed linen) khác",
+    "tenEn": "Other bed linen",
+    "suyRa": true
+   },
+   {
+    "id": "63023100",
+    "cap": 8,
+    "cha": "63023",
+    "tenVi": "Từ bông",
+    "tenEn": "Bed linen; of cotton (not printed, knitted or crocheted)",
+    "suyRa": false,
+    "laPhanNhom": "630231"
+   },
+   {
+    "id": "630232",
+    "cap": 6,
+    "cha": "63023",
+    "tenVi": null,
+    "tenEn": "Bed linen; of man-made fibres (not printed, knitted or crocheted)",
+    "suyRa": false
+   },
+   {
+    "id": "63023210",
+    "cap": 8,
+    "cha": "630232",
+    "tenVi": "Vải không dệt",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "63023290",
+    "cap": 8,
+    "cha": "630232",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "63023900",
+    "cap": 8,
+    "cha": "63023",
+    "tenVi": "Từ các vật liệu dệt khác",
+    "tenEn": "Bed linen; of textile materials other than cotton or man-made fibres (not printed, knitted or crocheted)",
+    "suyRa": false,
+    "laPhanNhom": "630239"
+   },
+   {
+    "id": "63024000",
+    "cap": 8,
+    "cha": "6302",
+    "tenVi": "Khăn trải bàn, dệt kim hoặc móc",
+    "tenEn": "Table linen; knitted or crocheted",
+    "suyRa": false,
+    "laPhanNhom": "630240"
+   },
+   {
+    "id": "63025",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "6302",
+    "tenVi": "Khăn trải bàn khác",
+    "tenEn": "Other table linen",
+    "suyRa": true
+   },
+   {
+    "id": "630251",
+    "cap": 6,
+    "cha": "63025",
+    "tenVi": null,
+    "tenEn": "Table linen; of cotton, not knitted or crocheted",
+    "suyRa": false
+   },
+   {
+    "id": "63025110",
+    "cap": 8,
+    "cha": "630251",
+    "tenVi": "Được in bằng phương pháp batik truyền thống (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "63025190",
+    "cap": 8,
+    "cha": "630251",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "63025300",
+    "cap": 8,
+    "cha": "63025",
+    "tenVi": "Từ sợi nhân tạo",
+    "tenEn": "Table linen; of man-made fibres, not knitted or crocheted",
+    "suyRa": false,
+    "laPhanNhom": "630253"
+   },
+   {
+    "id": "630259",
+    "cap": 6,
+    "cha": "63025",
+    "tenVi": null,
+    "tenEn": "Table linen; of textile materials (other than cotton or man-made fibres), not knitted or crocheted",
+    "suyRa": false
+   },
+   {
+    "id": "63025910",
+    "cap": 8,
+    "cha": "630259",
+    "tenVi": "Từ lanh",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "63025990",
+    "cap": 8,
+    "cha": "630259",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "63026000",
+    "cap": 8,
+    "cha": "6302",
+    "tenVi": "Khăn trong phòng vệ sinh và khăn nhà bếp, từ vải dệt vòng lông hoặc các loại vải dệt vòng lông tương tự, từ bông",
+    "tenEn": "Kitchen and toilet linen; of terry towelling or similar terry fabrics, of cotton",
+    "suyRa": false,
+    "laPhanNhom": "630260"
+   },
+   {
+    "id": "63029",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "6302",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "63029100",
+    "cap": 8,
+    "cha": "63029",
+    "tenVi": "Từ bông",
+    "tenEn": "Toilet and kitchen linen; of cotton, excluding terry towelling or similar terry fabrics",
+    "suyRa": false,
+    "laPhanNhom": "630291"
+   },
+   {
+    "id": "63029300",
+    "cap": 8,
+    "cha": "63029",
+    "tenVi": "Từ sợi nhân tạo",
+    "tenEn": "Toilet and kitchen linen; of man-made fibres",
+    "suyRa": false,
+    "laPhanNhom": "630293"
+   },
+   {
+    "id": "630299",
+    "cap": 6,
+    "cha": "63029",
+    "tenVi": null,
+    "tenEn": "Toilet and kitchen linen; of textile materials (other than cotton or man-made fibres)",
+    "suyRa": false
+   },
+   {
+    "id": "63029910",
+    "cap": 8,
+    "cha": "630299",
+    "tenVi": "Từ lanh",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "63029990",
+    "cap": 8,
+    "cha": "630299",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": [
+   {
+    "id": "630222",
+    "tenVi": "Khăn trải giường, từ sợi nhân tạo, đã in, không dệt hoặc móc",
+    "nguon": "wco.630222",
+    "trich": "630222 Bed linen; of man-made fibres, printed, not knitted or crocheted",
+    "nguonLoai": "AI_DA_KIEM"
+   },
+   {
+    "id": "630232",
+    "tenVi": "Khăn trải giường, từ sợi nhân tạo (không in, không dệt hoặc móc)",
+    "nguon": "wco.630232",
+    "trich": "630232 Bed linen; of man-made fibres (not printed, knitted or crocheted)",
+    "nguonLoai": "AI_DA_KIEM"
+   },
+   {
+    "id": "630251",
+    "tenVi": "Khăn trải bàn, từ bông, không dệt hoặc móc",
+    "nguon": "wco.630251",
+    "trich": "630251 Table linen; of cotton, not knitted or crocheted",
+    "nguonLoai": "AI_DA_KIEM"
+   },
+   {
+    "id": "630259",
+    "tenVi": "Khăn trải bàn, từ các vật liệu dệt khác (trừ bông và sợi nhân tạo), không dệt hoặc móc",
+    "nguon": "wco.630259",
+    "trich": "630259 Table linen; of textile materials (other than cotton or man-made fibres), not knitted or crocheted",
+    "nguonLoai": "AI_DA_KIEM"
+   },
+   {
+    "id": "630299",
+    "tenVi": "Khăn phòng vệ sinh và khăn nhà bếp, từ các vật liệu dệt khác (trừ bông và sợi nhân tạo)",
+    "nguon": "wco.630299",
+    "trich": "630299 Toilet and kitchen linen; of textile materials (other than cotton or man-made fibres)",
+    "nguonLoai": "AI_DA_KIEM"
+   }
+  ]
+ },
+ "dungTuNguon": [
+  "ch63.chuong",
+  "nhom6302.nhom",
+  "tax.63021000",
+  "tax.63022100",
+  "tax.63022210",
+  "tax.63022900",
+  "tax.63023100",
+  "tax.63023210",
+  "tax.63023900",
+  "tax.63024000",
+  "tax.63025110",
+  "tax.63025300",
+  "tax.63025910",
+  "tax.63026000",
+  "tax.63029100",
+  "tax.63029300",
+  "tax.63029910",
+  "wco.630210",
+  "wco.630221",
+  "wco.630222",
+  "wco.630229",
+  "wco.630231",
+  "wco.630232",
+  "wco.630239",
+  "wco.630240",
+  "wco.630251",
+  "wco.630253",
+  "wco.630259",
+  "wco.630260",
+  "wco.630291",
+  "wco.630293",
+  "wco.630299"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-22T06:49:12.151Z",
+  "ms": 87
+ },
+ "kiemTra": {
+  "tong": 53,
+  "dat": 53,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan63.phan (46130→25000)"
+  ]
+ }
+}

@@ -1,0 +1,437 @@
+{
+ "nhom": "9028",
+ "phamVi": {
+  "text": "Thiết bị đo khí, chất lỏng hoặc lượng điện sản xuất hoặc cung cấp, kể cả bộ phận và phụ kiện của chúng.",
+  "nguon": "nhom9028.nhom",
+  "trich": "Các thiết bị đo khí, chất lỏng hoặc lượng điện sản xuất hoặc cung cấp vẫn thuộc nhóm này … các bộ phận và phụ kiện của những công tơ thuộc nhóm này cũng được phân loại vào nhóm này.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Lưu lượng kế đo tốc độ lưu lượng",
+   "sangNhom": "9026",
+   "nguon": "nhom9028.nhom",
+   "trich": "Lưu lượng kế đo tốc độ lưu lượng bị loại trừ (nhóm 90.26).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các thiết bị đo đơn giản những đại lượng điện khác, không dùng để đo tổng số lượng điện hay năng lượng tiêu thụ (vôn kế, ampe kế, oát kế,...)",
+   "sangNhom": "9030",
+   "nguon": "nhom9028.nhom",
+   "trich": "Nhóm này loại trừ các thiết bị như vôn kế, ampe kế, oát kế,...không dùng để đo tổng số lượng điện hay năng lượng tiêu thụ mà để đo đơn giản những đại lượng điện khác (nhóm 90.30).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các bơm chất lỏng (ngay cả khi nó có một cơ cấu đo)",
+   "sangNhom": "8413",
+   "nguon": "nhom9028.nhom",
+   "trich": "trừ các bơm chất lỏng (ngay cả khi nó có một cơ cấu đo) của nhóm 84.13.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải bơm chất lỏng không, kể cả khi nó có một cơ cấu đo?",
+   "neuCo": "8413",
+   "neuKhong": "9028",
+   "nguon": "nhom9028.nhom",
+   "trich": "trừ các bơm chất lỏng (ngay cả khi nó có một cơ cấu đo) của nhóm 84.13.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng có đo tốc độ lưu lượng không?",
+   "neuCo": "9026",
+   "neuKhong": "9028",
+   "nguon": "nhom9028.nhom",
+   "trich": "Lưu lượng kế đo tốc độ lưu lượng bị loại trừ (nhóm 90.26).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Thiết bị có đo tổng số lượng điện hay năng lượng tiêu thụ không?",
+   "neuCo": "9028",
+   "neuKhong": "9030",
+   "nguon": "nhom9028.nhom",
+   "trich": "Nhóm này loại trừ các thiết bị như vôn kế, ampe kế, oát kế,...không dùng để đo tổng số lượng điện hay năng lượng tiêu thụ mà để đo đơn giản những đại lượng điện khác (nhóm 90.30).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "902810",
+   "fact": "do_luong_khi_san_xuat_hoac_cung_cap",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.902810",
+   "trich": "902810 Meters; gas, supply or production meters, including calibrating meters thereof",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "902810",
+   "fact": "ke_ca_cong_to_chuan",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.902810",
+   "trich": "902810 Meters; gas, supply or production meters, including calibrating meters thereof",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "902820",
+   "fact": "do_luong_chat_long_san_xuat_hoac_cung_cap",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.902820",
+   "trich": "902820 Meters; liquid supply or production meters, including calibrating meters thereof",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "902820",
+   "fact": "do_theo_don_vi_the_tich_luong_chat_long_chay_qua_mot_ong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom9028.nhom",
+   "trich": "Phần này, nói về những dụng cụ dùng để đo theo đơn vị thể tích, lượng chất lỏng chảy qua một ống.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "902830",
+   "fact": "do_luong_luong_dien_san_xuat_hoac_cung_cap",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.902830",
+   "trich": "902830 Meters; electricity supply or production meters, including calibrating meters thereof",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "902830",
+   "fact": "do_luong_luong_dien_tieu_thu_hoac_nang_luong_tieu_thu",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom9028.nhom",
+   "trich": "Công tơ điện dùng để đo lượng điện tiêu thụ (thường có đơn vị là ampe/giờ, hoặc kilô ampe/giờ,..) (công tơ số lượng), hoặc năng lượng tiêu thụ (bằng oát giờ, hectô oát giờ, kilô oát giờ, kilôvôn ampe giờ) (công tơ năng lượng có khi gọi là công tơ công suất).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "902890",
+   "fact": "la_bo_phan_va_phu_kien_cua_cong_to_do_khi_chat_long_luong_dien",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.902890",
+   "trich": "902890 Meters; parts and accessories of gas, liquid, electricity supply or production meters, including calibrating meters thereof",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "902890",
+   "fact": "la_bo_phan_va_phu_kien_cua_cong_to_thuoc_nhom_nay",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom9028.nhom",
+   "trich": "Theo Chú giải 1 và 2 của Chương này (xem Chú giải tổng quát) các bộ phận và phụ kiện của những công tơ thuộc nhóm này cũng được phân loại vào nhóm này.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "90281010",
+   "dieuKien": "Thiết bị đo khí loại lắp trên bình ga",
+   "tieuChi": {
+    "fact": "lap_tren_binh_ga",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.90281010",
+   "trich": "90281010 - - Thiết bị đo khí loại lắp trên bình ga",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "90281090",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 902810 (thiết bị đo khí sản xuất hoặc cung cấp, kể cả công tơ chuẩn, theo tên WCO) trừ 90281010 (lắp trên bình ga)",
+   "tieuChi": {
+    "fact": "lap_tren_binh_ga",
+    "op": "=",
+    "value": false,
+    "donVi": null
+   },
+   "nguon": "wco.902810",
+   "trich": "902810 Meters; gas, supply or production meters, including calibrating meters thereof",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "902810",
+    "truAnhEm": [
+     "90281010"
+    ],
+    "toTienCoTen": "902810",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "90282020",
+   "dieuKien": "Công tơ nước",
+   "tieuChi": {
+    "fact": "do_luong_luong_nuoc",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.90282020",
+   "trich": "90282020 - - Công tơ nước",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "90282090",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 902820 (thiết bị đo chất lỏng sản xuất hoặc cung cấp, kể cả công tơ chuẩn, theo tên WCO) trừ 90282020 (công tơ nước)",
+   "tieuChi": {
+    "fact": "do_luong_luong_nuoc",
+    "op": "=",
+    "value": false,
+    "donVi": null
+   },
+   "nguon": "wco.902820",
+   "trich": "902820 Meters; liquid supply or production meters, including calibrating meters thereof",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "902820",
+    "truAnhEm": [
+     "90282020"
+    ],
+    "toTienCoTen": "902820",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "90283010",
+   "dieuKien": "Máy đếm ki-lô-oát giờ",
+   "tieuChi": {
+    "fact": "do_nang_luong_don_vi_kilo_oat_gio",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.90283010",
+   "trich": "90283010 - - Máy đếm ki-lô-oát giờ",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "90283090",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 902830 (công tơ đo lượng điện hoặc năng lượng tiêu thụ, kể cả công tơ chuẩn, theo tên WCO) trừ 90283010 (máy đếm ki-lô-oát giờ)",
+   "tieuChi": {
+    "fact": "do_nang_luong_don_vi_kilo_oat_gio",
+    "op": "=",
+    "value": false,
+    "donVi": null
+   },
+   "nguon": "wco.902830",
+   "trich": "902830 Meters; electricity supply or production meters, including calibrating meters thereof",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "902830",
+    "truAnhEm": [
+     "90283010"
+    ],
+    "toTienCoTen": "902830",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "90289010",
+   "dieuKien": "Vỏ hoặc thân của công tơ nước",
+   "tieuChi": {
+    "fact": "la_vo_hoac_than_cua_cong_to_nuoc",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.90289010",
+   "trich": "90289010 - - Vỏ hoặc thân của công tơ nước",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "90289090",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 902890 (bộ phận và phụ kiện của công tơ đo khí, chất lỏng, lượng điện, theo tên WCO) trừ 90289010 (vỏ hoặc thân của công tơ nước)",
+   "tieuChi": {
+    "fact": "la_vo_hoac_than_cua_cong_to_nuoc",
+    "op": "=",
+    "value": false,
+    "donVi": null
+   },
+   "nguon": "wco.902890",
+   "trich": "902890 Meters; parts and accessories of gas, liquid, electricity supply or production meters, including calibrating meters thereof",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "902890",
+    "truAnhEm": [
+     "90289010"
+    ],
+    "toTienCoTen": "902890",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "boPhan": {
+  "quyTac": "Bộ phận và phụ kiện của những công tơ thuộc nhóm này cũng được phân loại vào nhóm này.",
+  "tomTat": "Bộ phận và phụ kiện của công tơ → vẫn thuộc 9028 (dòng 90289010/90289090).",
+  "nguon": "nhom9028.nhom",
+  "trich": "Theo Chú giải 1 và 2 của Chương này (xem Chú giải tổng quát) các bộ phận và phụ kiện của những công tơ thuộc nhóm này cũng được phân loại vào nhóm này.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "9028",
+    "cap": 4,
+    "cha": "90",
+    "tenVi": "Thiết bị đo khí, chất lỏng hoặc lượng điện được sản xuất hoặc cung cấp, kể cả thiết bị kiểm định các thiết bị trên.",
+    "tenEn": "Gas, liquid or electricity supply or production meters, including calibrating meters therefor",
+    "suyRa": false
+   },
+   {
+    "id": "902810",
+    "cap": 6,
+    "cha": "9028",
+    "tenVi": "Thiết bị đo khí",
+    "tenEn": "Meters; gas, supply or production meters, including calibrating meters thereof",
+    "suyRa": false
+   },
+   {
+    "id": "90281010",
+    "cap": 8,
+    "cha": "902810",
+    "tenVi": "Thiết bị đo khí loại lắp trên bình ga",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "90281090",
+    "cap": 8,
+    "cha": "902810",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "902820",
+    "cap": 6,
+    "cha": "9028",
+    "tenVi": "Thiết bị đo chất lỏng",
+    "tenEn": "Meters; liquid supply or production meters, including calibrating meters thereof",
+    "suyRa": false
+   },
+   {
+    "id": "90282020",
+    "cap": 8,
+    "cha": "902820",
+    "tenVi": "Công tơ nước",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "90282090",
+    "cap": 8,
+    "cha": "902820",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "902830",
+    "cap": 6,
+    "cha": "9028",
+    "tenVi": "Công tơ điện",
+    "tenEn": "Meters; electricity supply or production meters, including calibrating meters thereof",
+    "suyRa": false
+   },
+   {
+    "id": "90283010",
+    "cap": 8,
+    "cha": "902830",
+    "tenVi": "Máy đếm ki-lô-oát giờ",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "90283090",
+    "cap": 8,
+    "cha": "902830",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "902890",
+    "cap": 6,
+    "cha": "9028",
+    "tenVi": "Bộ phận và phụ kiện",
+    "tenEn": "Meters; parts and accessories of gas, liquid, electricity supply or production meters, including calibrating meters thereof",
+    "suyRa": false
+   },
+   {
+    "id": "90289010",
+    "cap": 8,
+    "cha": "902890",
+    "tenVi": "Vỏ hoặc thân của công tơ nước",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "90289090",
+    "cap": 8,
+    "cha": "902890",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom9028.nhom",
+  "tax.90281010",
+  "tax.90282020",
+  "tax.90283010",
+  "tax.90289010",
+  "wco.902810",
+  "wco.902820",
+  "wco.902830",
+  "wco.902890"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-22T06:49:12.160Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 24,
+  "dat": 24,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
