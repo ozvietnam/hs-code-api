@@ -754,3 +754,7 @@ Cây của cả 6 nhóm đã đủ, **không cần điền `cay.tenDien`** (khô
 ### Bước 5 — nộp
 Commit `data/so-tay/{4421,4812,4908,4911,5209,5906}.json` + `data/so-tay/bao-cao/lo-019.json`
 + dòng 019 của `docs/giao-viec/so-tay-lo.csv` + `TIEN-TRINH.md`. `tmp/` đã gitignore, không lọt vào commit.
+
+### Bước 6 — mở PR (KHÔNG merge)
+`gh pr create` → **PR #400** https://github.com/ozvietnam/hs-code-api/pull/400 (base `main`, head `so-tay/lo-019`, trạng thái OPEN).
+Dòng 019 trong `so-tay-lo.csv` để `nguoi_lam=dev-zcode-mm`, `trang_thai=dang-lam`; cột `pr` để trống — theo mục 4 giao việc, người duyệt điền `trang_thai=xong` + `pr` **sau khi gộp**.
