@@ -1,0 +1,719 @@
+{
+ "nhom": "5210",
+ "phamVi": {
+  "text": "Vải được phân loại như là vải bông theo Chú giải 2 Phần XI, phải đáp ứng: tỷ trọng bông dưới 85%; được pha chủ yếu hay chỉ pha duy nhất với xơ nhân tạo; trọng lượng không quá 200 g/m2.",
+  "nguon": "nhom5210.nhom",
+  "trich": "(a) Có tỷ trọng bông dưới 85%;\n\n(b) Được pha chủ yếu hay chỉ pha duy nhất với xơ nhân tạo;\n\n(c) Trọng lượng không quá 200g/m2.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_vai_det_thoi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom5210.nhom",
+   "trich": "Nhóm này bao gồm các loại vải dệt như đã định nghĩa trong Phần (I) (C) của Chú giải tổng quát Phần XI.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "ty_trong_bong",
+   "op": "<",
+   "value": 85,
+   "donVi": "%",
+   "ngoaiTru": [],
+   "nguon": "nhom5210.nhom",
+   "trich": "(a) Có tỷ trọng bông dưới 85%;",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "pha_chu_y_hoac_chi_pha_duy_nhat_voi_xo_nhan_tao",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom5210.nhom",
+   "trich": "(b) Được pha chủ yếu hay chỉ pha duy nhất với xơ nhân tạo;",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "dinh_luong",
+   "op": "<=",
+   "value": 200,
+   "donVi": "g/m2",
+   "ngoaiTru": [],
+   "nguon": "nhom5210.nhom",
+   "trich": "(c) Trọng lượng không quá 200g/m2.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ",
+   "sangNhom": "3005",
+   "nguon": "nhom5210.nhom",
+   "trich": "(a) Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ (nhóm 30.05).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các loại vải dệt thuộc nhóm 58.01",
+   "sangNhom": "5801",
+   "nguon": "nhom5210.nhom",
+   "trich": "(b) Các loại vải dệt nhóm 58.01.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Vải khăn lông và các loại vải dệt thoi tạo vòng lông tương tự",
+   "sangNhom": "5802",
+   "nguon": "nhom5210.nhom",
+   "trich": "(c) Vải khăn lông và các loại vải dệt thoi tạo vòng lông tương tự (nhóm 58.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Vải dệt quấn",
+   "sangNhom": "5803",
+   "nguon": "nhom5210.nhom",
+   "trich": "(d) Vải dệt quấn (nhóm 58.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Vải dệt thoi phục vụ cho mục đích kỹ thuật",
+   "sangNhom": "5911",
+   "nguon": "nhom5210.nhom",
+   "trich": "(e) Vải dệt thoi phục vụ cho mục đích kỹ thuật, thuộc nhóm 59.11.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là vải dệt thoi có tỷ trọng bông dưới 85%, pha chủ yếu hay pha duy nhất với xơ sợi nhân tạo và trọng lượng không quá 200g/m2?",
+   "neuCo": "5212",
+   "neuKhong": "5210",
+   "nguon": "phan52.phan",
+   "trich": "thì không thuộc nhóm 52.12 (vải dệt thoi khác từ sợi bông) mà ở trong nhóm 52.10\n(các loại vải dệt thoi từ sợi bông, có tỷ trong bông dưới 85%, pha chủ yếu hay pha duy\nnhất với xơ sợi nhân tạo, trọng lượng không vượt quá 200g/m2).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "521011",
+   "fact": "chua_tay_trang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521011",
+   "trich": "521011 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, unbleached, plain weave, weighing 200g/m2 or less",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521011",
+   "fact": "det_van_diem",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521011",
+   "trich": "521011 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, unbleached, plain weave, weighing 200g/m2 or less",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521019",
+   "fact": "chua_tay_trang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521019",
+   "trich": "521019 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, unbleached, of weaves n.e.c. in item no. 5210.1, weighing 200g/m2 or less",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521019",
+   "fact": "hoa_van_det_khac_ngoai_5210_1",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521019",
+   "trich": "521019 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, unbleached, of weaves n.e.c. in item no. 5210.1, weighing 200g/m2 or less",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521021",
+   "fact": "da_tay_trang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521021",
+   "trich": "521021 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, bleached, plain weave, weighing 200g/m2 or less",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521021",
+   "fact": "det_van_diem",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521021",
+   "trich": "521021 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, bleached, plain weave, weighing 200g/m2 or less",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521029",
+   "fact": "da_tay_trang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521029",
+   "trich": "521029 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, bleached, of weaves n.e.c. in item no. 5210.2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521029",
+   "fact": "hoa_van_det_khac_ngoai_5210_2",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521029",
+   "trich": "521029 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, bleached, of weaves n.e.c. in item no. 5210.2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521031",
+   "fact": "da_nhuom_mau",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521031",
+   "trich": "521031 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, dyed, plain weave",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521031",
+   "fact": "det_van_diem",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521031",
+   "trich": "521031 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, dyed, plain weave",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521032",
+   "fact": "da_nhuom_mau",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521032",
+   "trich": "521032 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, dyed, 3-thread or 4-thread twill, including cross twill",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521032",
+   "fact": "van_cheo_3_soi_hoac_4_soi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521032",
+   "trich": "521032 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, dyed, 3-thread or 4-thread twill, including cross twill",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521039",
+   "fact": "da_nhuom_mau",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521039",
+   "trich": "521039 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, dyed, of weaves n.e.c. in item no. 5210.3",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521039",
+   "fact": "hoa_van_det_khac_ngoai_5210_3",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521039",
+   "trich": "521039 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, dyed, of weaves n.e.c. in item no. 5210.3",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521041",
+   "fact": "det_bang_soi_ma_khac_nhau",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521041",
+   "trich": "521041 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, of yarns of different colours, plain weave",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521041",
+   "fact": "det_van_diem",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521041",
+   "trich": "521041 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, of yarns of different colours, plain weave",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521049",
+   "fact": "det_bang_soi_ma_khac_nhau",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521049",
+   "trich": "521049 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, of yarns of different colours, of weaves n.e.c. in item no. 5210.4",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521049",
+   "fact": "hoa_van_det_khac_ngoai_5210_4",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521049",
+   "trich": "521049 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, of yarns of different colours, of weaves n.e.c. in item no. 5210.4",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521051",
+   "fact": "da_in",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521051",
+   "trich": "521051 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, printed, plain weave",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521051",
+   "fact": "det_van_diem",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521051",
+   "trich": "521051 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, printed, plain weave",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521059",
+   "fact": "da_in",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521059",
+   "trich": "521059 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, printed, of weaves n.e.c. in item no. 5210.5",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "521059",
+   "fact": "hoa_van_det_khac_ngoai_5210_5",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.521059",
+   "trich": "521059 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, printed, of weaves n.e.c. in item no. 5210.5",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "52101100",
+   "dieuKien": "Vải chưa tẩy trắng, dệt vân điểm",
+   "nguon": "wco.521011",
+   "trich": "521011 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, unbleached, plain weave, weighing 200g/m2 or less",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "52101900",
+   "dieuKien": "Vải chưa tẩy trắng, các hoa văn dệt khác ngoài loại ở 5210.1",
+   "nguon": "wco.521019",
+   "trich": "521019 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, unbleached, of weaves n.e.c. in item no. 5210.1, weighing 200g/m2 or less",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "52102100",
+   "dieuKien": "Vải đã tẩy trắng, dệt vân điểm",
+   "nguon": "wco.521021",
+   "trich": "521021 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, bleached, plain weave, weighing 200g/m2 or less",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "52102900",
+   "dieuKien": "Vải đã tẩy trắng, các hoa văn dệt khác ngoài loại ở 5210.2",
+   "nguon": "wco.521029",
+   "trich": "521029 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, bleached, of weaves n.e.c. in item no. 5210.2",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "52103100",
+   "dieuKien": "Vải đã nhuộm màu, dệt vân điểm",
+   "nguon": "wco.521031",
+   "trich": "521031 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, dyed, plain weave",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "52103200",
+   "dieuKien": "Vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo dấu nhân",
+   "nguon": "tax.52103200",
+   "trich": "52103200 - - Vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo dấu nhân",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "52103900",
+   "dieuKien": "Vải đã nhuộm màu, các hoa văn dệt khác ngoài loại ở 5210.3",
+   "nguon": "wco.521039",
+   "trich": "521039 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, dyed, of weaves n.e.c. in item no. 5210.3",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "52104110",
+   "dieuKien": "Vải Ikat — dệt trên máy dệt thủ công truyền thống từ các sợi đặc biệt đã được nhuộm sau khi buộc (ikat) tại các đoạn cần thiết để tạo ra các họa tiết như mong muốn",
+   "nguon": "sen.52104110",
+   "trich": "Vải Ikat hay còn được gọi là “Ikat\", là một loại vải truyền thống, được dệt trên máy dệt thủ công truyền thống điều khiển bằng tay từ các sợi đặc biệt đã được nhuộm sau khi buộc (ikat) tại các đoạn cần thiết để tạo ra các họa tiết như mong muốn.",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "52104190",
+   "dieuKien": "Vải dệt bằng sợi nhiều màu, dệt vân điểm",
+   "nguon": "wco.521041",
+   "trich": "521041 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, of yarns of different colours, plain weave",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "521041",
+    "truAnhEm": [
+     "52104110"
+    ],
+    "toTienCoTen": "521041",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "52104900",
+   "dieuKien": "Vải dệt bằng sợi nhiều màu, các hoa văn dệt khác ngoài loại ở 5210.4",
+   "nguon": "wco.521049",
+   "trich": "521049 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, of yarns of different colours, of weaves n.e.c. in item no. 5210.4",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "52105110",
+   "dieuKien": "Được in bằng phương pháp batik truyền thống",
+   "nguon": "tax.52105110",
+   "trich": "52105110 - - - Được in bằng phương pháp batik truyền thống (SEN)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "52105190",
+   "dieuKien": "Vải đã in, dệt vân điểm",
+   "nguon": "wco.521051",
+   "trich": "521051 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, printed, plain weave",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "521051",
+    "truAnhEm": [
+     "52105110"
+    ],
+    "toTienCoTen": "521051",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "52105910",
+   "dieuKien": "Được in bằng phương pháp batik truyền thống",
+   "nguon": "tax.52105910",
+   "trich": "52105910 - - - Được in bằng phương pháp batik truyền thống (SEN)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "52105990",
+   "dieuKien": "Vải đã in, các hoa văn dệt khác ngoài loại ở 5210.5",
+   "nguon": "wco.521059",
+   "trich": "521059 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, printed, of weaves n.e.c. in item no. 5210.5",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "521059",
+    "truAnhEm": [
+     "52105910"
+    ],
+    "toTienCoTen": "521059",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5210",
+    "cap": 4,
+    "cha": "52",
+    "tenVi": "Vải dệt thoi từ bông, có hàm lượng bông chiếm dưới 85% tính theo khối lượng, pha chủ yếu hoặc pha duy nhất với xơ sợi nhân tạo, có định lượng không quá 200 g/m2.",
+    "tenEn": "Woven fabrics of cotton, containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing not more than 200 g/m2",
+    "suyRa": false
+   },
+   {
+    "id": "52101",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5210",
+    "tenVi": "Chưa tẩy trắng",
+    "tenEn": "Unbleached",
+    "suyRa": true
+   },
+   {
+    "id": "52101100",
+    "cap": 8,
+    "cha": "52101",
+    "tenVi": "Vải vân điểm",
+    "tenEn": "Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, unbleached, plain weave, weighing 200g/m2 or less",
+    "suyRa": false,
+    "laPhanNhom": "521011"
+   },
+   {
+    "id": "52101900",
+    "cap": 8,
+    "cha": "52101",
+    "tenVi": "Vải dệt khác",
+    "tenEn": "Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, unbleached, of weaves n.e.c. in item no. 5210.1, weighing 200g/m2 or less",
+    "suyRa": false,
+    "laPhanNhom": "521019"
+   },
+   {
+    "id": "52102",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5210",
+    "tenVi": "Đã tẩy trắng",
+    "tenEn": "Bleached",
+    "suyRa": true
+   },
+   {
+    "id": "52102100",
+    "cap": 8,
+    "cha": "52102",
+    "tenVi": "Vải vân điểm",
+    "tenEn": "Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, bleached, plain weave, weighing 200g/m2 or less",
+    "suyRa": false,
+    "laPhanNhom": "521021"
+   },
+   {
+    "id": "52102900",
+    "cap": 8,
+    "cha": "52102",
+    "tenVi": "Vải dệt khác",
+    "tenEn": "Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, bleached, of weaves n.e.c. in item no. 5210.2",
+    "suyRa": false,
+    "laPhanNhom": "521029"
+   },
+   {
+    "id": "52103",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5210",
+    "tenVi": "Đã nhuộm",
+    "tenEn": "Dyed",
+    "suyRa": true
+   },
+   {
+    "id": "52103100",
+    "cap": 8,
+    "cha": "52103",
+    "tenVi": "Vải vân điểm",
+    "tenEn": "Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, dyed, plain weave",
+    "suyRa": false,
+    "laPhanNhom": "521031"
+   },
+   {
+    "id": "52103200",
+    "cap": 8,
+    "cha": "52103",
+    "tenVi": "Vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo dấu nhân",
+    "tenEn": "Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, dyed, 3-thread or 4-thread twill, including cross twill",
+    "suyRa": false,
+    "laPhanNhom": "521032"
+   },
+   {
+    "id": "52103900",
+    "cap": 8,
+    "cha": "52103",
+    "tenVi": "Vải dệt khác",
+    "tenEn": "Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, dyed, of weaves n.e.c. in item no. 5210.3",
+    "suyRa": false,
+    "laPhanNhom": "521039"
+   },
+   {
+    "id": "52104",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5210",
+    "tenVi": "Từ các sợi có các màu khác nhau",
+    "tenEn": "Of yarns of different colours",
+    "suyRa": true
+   },
+   {
+    "id": "521041",
+    "cap": 6,
+    "cha": "52104",
+    "tenVi": null,
+    "tenEn": "Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, of yarns of different colours, plain weave",
+    "suyRa": false
+   },
+   {
+    "id": "52104110",
+    "cap": 8,
+    "cha": "521041",
+    "tenVi": "Vải Ikat (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "52104190",
+    "cap": 8,
+    "cha": "521041",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "52104900",
+    "cap": 8,
+    "cha": "52104",
+    "tenVi": "Vải dệt khác",
+    "tenEn": "Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, of yarns of different colours, of weaves n.e.c. in item no. 5210.4",
+    "suyRa": false,
+    "laPhanNhom": "521049"
+   },
+   {
+    "id": "52105",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5210",
+    "tenVi": "Đã in",
+    "tenEn": "Printed",
+    "suyRa": true
+   },
+   {
+    "id": "521051",
+    "cap": 6,
+    "cha": "52105",
+    "tenVi": null,
+    "tenEn": "Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, printed, plain weave",
+    "suyRa": false
+   },
+   {
+    "id": "52105110",
+    "cap": 8,
+    "cha": "521051",
+    "tenVi": "Được in bằng phương pháp batik truyền thống (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "52105190",
+    "cap": 8,
+    "cha": "521051",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "521059",
+    "cap": 6,
+    "cha": "52105",
+    "tenVi": null,
+    "tenEn": "Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, printed, of weaves n.e.c. in item no. 5210.5",
+    "suyRa": false
+   },
+   {
+    "id": "52105910",
+    "cap": 8,
+    "cha": "521059",
+    "tenVi": "Được in bằng phương pháp batik truyền thống (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "52105990",
+    "cap": 8,
+    "cha": "521059",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": [
+   {
+    "id": "521041",
+    "tenVi": "Vải dệt thoi dưới 85% bông, pha chủ yếu hoặc duy nhất với xơ nhân tạo, 200 g/m2 trở xuống, dệt bằng sợi nhiều màu, vân điểm",
+    "nguon": "wco.521041",
+    "trich": "521041 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, of yarns of different colours, plain weave",
+    "nguonLoai": "AI_DA_KIEM"
+   },
+   {
+    "id": "521051",
+    "tenVi": "Vải dệt thoi dưới 85% bông, pha chủ yếu hoặc duy nhất với xơ nhân tạo, 200 g/m2 trở xuống, đã in, vân điểm",
+    "nguon": "wco.521051",
+    "trich": "521051 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, printed, plain weave",
+    "nguonLoai": "AI_DA_KIEM"
+   },
+   {
+    "id": "521059",
+    "tenVi": "Vải dệt thoi dưới 85% bông, pha chủ yếu hoặc duy nhất với xơ nhân tạo, 200 g/m2 trở xuống, đã in, các hoa văn dệt khác",
+    "nguon": "wco.521059",
+    "trich": "521059 Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, printed, of weaves n.e.c. in item no. 5210.5",
+    "nguonLoai": "AI_DA_KIEM"
+   }
+  ]
+ },
+ "dungTuNguon": [
+  "nhom5210.nhom",
+  "phan52.phan",
+  "sen.52104110",
+  "tax.52103200",
+  "tax.52105110",
+  "tax.52105910",
+  "wco.521011",
+  "wco.521019",
+  "wco.521021",
+  "wco.521029",
+  "wco.521031",
+  "wco.521032",
+  "wco.521039",
+  "wco.521041",
+  "wco.521049",
+  "wco.521051",
+  "wco.521059"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-22T17:52:16.392Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 50,
+  "dat": 50,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan52.phan (46130→25000)"
+  ]
+ }
+}
