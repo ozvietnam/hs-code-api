@@ -661,3 +661,81 @@ Kiến thức này **còn trong `phanBiet`** (cùng câu trích, luật `phanBie
    không có `phan54.phan` (chương 54 rỗng) → không dựng được điều kiện vào nhóm.
 5. Tự soát ngẫu nhiên ≥ 10 % phần còn lại (mục 4 giao việc).
 6. Khi đạt: `so-tay-lo.csv` dòng 012 → `trang_thai=xong` + `pr=390`, rồi merge.
+
+---
+
+# LÔ 017 — SOÁT ĐỘC LẬP (PR #398, nhóm 7317/7607/7610/8441/8447/8503)
+
+Người soát khác người soạn. Đọc lại **toàn bộ** `phamVi` / `boPhan` / `dieuKienVao` / `loaiTru` /
+`phanBiet` của 6 nhóm cùng nguyên văn `tmp/so-tay/nguon/<nhom>.txt`. Kết quả trong `review/<nhom>.json`
+(6 tệp, mỗi mục đã soi đều có `hanhDong` + `lyDo`).
+
+| | Mục |
+|---|---|
+| Đã soát | **57** (6 `phamVi` + 3 `boPhan` + 2 `dieuKienVao` + 23 `loaiTru` + 23 `phanBiet`) |
+| Giữ nguyên | **51** |
+| **Xoá** | **2** (cả hai ở 7317) |
+| **Sửa** | **4** |
+| `nguonLoai` → `NGUOI_DUYET` | **55** (= 57 − 2 mục đã xoá) |
+
+Số mục sổ tay **102 → 100**. `check-so-tay --raw` 100/100 · `strict-trich` 100/100 (0 trích >300 ký tự) ·
+`check-cay` 0 lỗi 6/6 nhóm · `so-tay:check` 233 nhóm / 7.597 mục / 0 lỗi · `npm test` xanh.
+
+## Xoá 2 — nguồn tự mâu thuẫn về "đinh móc" (7317)
+
+Lỗi kệ sách, **không sửa được trong sổ tay**:
+
+- Dòng 22 bao hồm *"đinh móc … được mài nhọn cả hai đầu"*; mục **(B)(3)** dòng 32 bao hồm *"Đinh móc và
+  đinh vành … dập từ kim loại tấm hoặc được rèn"*; dòng 38 **chốt**: *"Tất cả những hàng hoá đề cập ở trên
+  **vẫn ở trong nhóm này**"*.
+- Dòng 40-42 lại mở *"Nhóm này không bao gồm: (a) **Đinh móc**, đinh vòng, vít dẫn động … (nhóm 73.18)"* —
+  cùng từ, không nêu tiêu chí phân biệt.
+
+⇒ Luật *"nguồn mâu thuẫn → bỏ cả hai phía"*: xoá `loaiTru[0]` + `phanBiet[0]`. 7318 đã gộp không khẳng
+định đinh móc thuộc 7318 nên không để lại lỗ hổng. Phần *"đinh vòng, vít dẫn động"* trong cùng câu không
+bị mâu thuẫn nhưng **không tự tách riêng** — nó chung một mục với "đinh móc" đã mâu thuẫn.
+
+## Sửa 4 — nhãn rộng hơn câu trích, KHÔNG sửa câu trích
+
+1. **8441 `loaiTru[3]` + `phanBiet[3]`** — mất *"là những máy mà thường được sử dụng vì mục đích này"*.
+   Loại trừ có điều kiện thành vô điều kiện ⇒ mọi máy ép bị kéo nhầm sang 84.79.
+2. **8447 `phanBiet[2]`** — hoi ghi *"máy khâu **chỉ** thực hiện"*, nguồn ghi *"máy khâu **mà có thể**
+   thực hiện"*. Máy vừa khâu vừa thêu: nguồn → 84.52, hoi cũ → 84.47. `loaiTru[1]` đã viết đúng.
+3. **7317 `phanBiet[1]`** — mất vế *"có hoặc không có"*; loại không có mũi nhọn, vốn cũng bị nguồn loại,
+   bị đẩy nhầm về 7317. `loaiTru[1]` đã viết đúng.
+
+Cả 3 đều là **cùng một kiểu**: nhãn viết tắt làm nghĩa khẳng định rộng/narrow hơn câu nguồn.
+
+## Bẫy lô này đã QUA đúng cách (không sửa)
+
+- **7317 dòng 16** mở bằng *"Nhóm này **cũng bao hồm** máy dệt kim gia dụng loại nhỏ…"* rồi mới sang câu
+  mới *"… được phân loại ở nhóm 84.52"* — đúng bẫy lô 008 ở 3916. Không lấy 2 mục "máy dệt kim gia dụng" /
+  "máy chữa bít tất" làm `loaiTru` ✓
+- **7607 `loaiTru[1]`** giữ trọn *"với điều kiện … vẫn giữ lại thuộc tính cơ bản của giấy và bìa"* ✓
+- Giữ nguyên lỗi nguồn: `8441` *"máy dập **đây** kim loại"*, `8441` *"sáp…. bằng phương pháp nhúng"*,
+  `7607 (c)` không có dấu chấm cuối ✓
+
+## Ghi nhận cho quản lý (không tự sửa)
+
+1. **8441 dòng 42 — điều kiện vào nhóm chưa ghi**: máy có trang bị thiết bị in chỉ xếp vào 8441 *"với điều
+   kiện chức năng in không phải là chức năng chủ yếu của máy"*. Làm `dieuKienVao` cứng thì **không được**
+   (cổng đọc kiểu AND) — đúng như mục 5 của PR đã nêu.
+2. **`loai-tru-chi-la-thuong` lỡ câu 8441**: biểu thức ở `lib/so-tay.js:164` chỉ khớp
+   `thường (nằm|thuộc|được xếp|xếp)` / `tùy trường hợp`, còn câu 8441 là *"thường **được sử dụng**"*.
+   Máy **không** báo là đúng; lỗi nằm ở chỗ **nhãn** bỏ vế giới hạn.
+3. **`8447 tieuChi6[3]`** dịch *"gimped yarn"* thành `suoi_vien` chưa chuẩn và **bỏ mất** "đồ thêu"
+   (*embroidery*) có trong câu WCO.
+4. **Ba chỗ lược `…` nuốt một nhánh "hoặc"**: 8447 *"sợi chưa được xe"*, 8441 *"tờ có kích cỡ thương
+   mại"*, 7607 *"chất hỗ trợ khác"*. Đều là vế **cùng loại** trong chuỗi bao hồm, **không phải ngoại lệ**
+   ⇒ không đảo nghĩa; câu trích đầy đủ vẫn còn trong `data`. Giữ nguyên cho nhất quán (sửa sẽ >300 ký tự).
+5. **"biểu thuề"** ở 7607/7610 — đã có sẵn trong **7** tệp đã gộp, không do lô 017, không sửa để khỏi nhiễu diff.
+6. **Quy ước trích loại trừ không kèm câu dẫn** ("Nhóm này không bao gồm:"): sổ tay đã gộp có sẵn 711
+   `loaiTru` + 171 `phanBiet` kiểu này ⇒ đã qua soát các lô trước, giữ nguyên cho nhất quán.
+
+## Việc còn lại của người quản lý
+
+1. Tự soát ngẫu nhiên ≥ 10 % phần còn lại (mục 4 giao việc).
+2. Bổ sung mục 1 `docs/giao-viec/so-tay-giao-ngoai.md`: **nhãn (`dieuKien`/`hoi`) bỏ định ngữ giới hạn
+   của câu** — 3 mục trong lô này, máy không bắt được vì câu trích vẫn đúng nguyên văn.
+3. **Lỗi kệ sách mới**: 7317 mâu thuẫn "đinh móc" (bao hồm ở dòng 22/32/38, loại trừ ở dòng 42).
+4. Khi đạt: `docs/giao-viec/so-tay-lo.csv` dòng 017 → `trang_thai=xong` + `pr=398`, rồi merge.
