@@ -19,13 +19,14 @@ Nguyên tắc sống còn: **model nhỏ là TRỢ LÝ DỮ KIỆN, không đoá
 
 - Ta chỉ chốt được mã HS 100% tự tin khi **hiểu rõ sản phẩm**. Hiểu rồi thì áp mã nhẹ nhàng.
 - Biểu thuế chia mã dựa trên **đặc điểm phân biệt** cụ thể (chất liệu, công suất, có phải bộ phận, ngưỡng kích thước…). Tầng **sổ tay** (`data/so-tay/<nhóm4>.json`) đã mã hoá đúng các đặc điểm này — có cấu trúc `{fact, op, value, đơn_vị}` + câu trích luật nguyên văn.
-- Hàm `chotDong8`/`chamDieuKienSo` (`lib/so-tay-gates.js`) chấm mỗi đặc điểm **tất định (không AI)** ra **THOẢ / TRÁI / CHƯA BIẾT** và sinh thẳng `missingFacts`.
+- Hàm `chotDong8()` cùng bộ chấm điều kiện (`lib/so-tay-gates.js`) chấm mỗi đặc điểm **tất định (không AI)** ra **THOẢ / TRÁI / CHƯA BIẾT** và sinh thẳng `missingFacts`.
 - ⇒ **"Điểm tự tin thấp" = đang ở trạng thái CHƯA BIẾT** (thiếu đúng dữ kiện sổ tay đòi). Sửa điểm thấp KHÔNG phải bằng model đoán giỏi hơn, mà bằng **lấp đúng khoảng trống dữ kiện**.
 - ⇒ "Suy nghĩ sâu" dời khỏi khâu áp mã, về **(a) hiểu sản phẩm** + **(b) biết đặc điểm quyết định** (sổ tay lo (b)).
 
 ## 2. Hiện trạng (số đo thật, đã kiểm trong repo)
 
-- Độ chính xác máy hiện tại (`data/accuracy-latest.json`, n=57, 2026-07-07): **chương 73.7% · nhóm-4 64.9% · 6 số 40.4% · 8 số 24.6%** top-1; keyword thô 1.75%.
+- Độ chính xác máy mốc 07/07 (`data/accuracy-latest.json`, n=57 — bộ đo GĐ0 so với): **chương 73.7% · nhóm-4 64.9% · 6 số 40.4% · 8 số 24.6%** top-1; keyword thô 1.75%.
+- Số đo mới hơn (13–15/10, sau khi bật sổ tay `gates`): 80 mẫu vàng Đ8 60.1–63.8%; bench 20 nhóm #253 Đ8 57.3%. Nút thắt hiện tại là **tốc độ model (llmMs 109–211 s, nghiệm thu #325)** + độ phủ sổ tay, không phải Đ8 = 24.6%.
 - Sổ tay: **~174/1.269 nhóm** đã dựng, phủ ~90% tờ khai thật; prod đang bật `gates` (chưa `full`).
 - Retrieval hiện **chỉ dùng từ khoá** (`lib/search-utils.js`); dense embedding từng bị bỏ vì API Gemini từ xa chậm — **chưa từng thử embedding cục bộ**.
 - Model: MiniMax **M2.7-highspeed** không tắt được "suy nghĩ" (30–120s/lượt × 2–3 lượt). Repo **đã nối sẵn** thinking-off (MiniMax-M3) + cấu hình theo bước `LLM_STEP_*` → quick win chỉ cần đổi env.
@@ -100,7 +101,7 @@ Nguyên tắc: **bắt buộc có `evidence` + `asOf`** (y kỷ luật `nguon`/`
 
 | Dự án | Bản chất | Dùng được gì cho OZ | Hạn chế |
 |---|---|---|---|
-| **MicroHS** (HF Space, MIT) | embedding `multilingual-e5-small` + k-NN, 6 số, **có vi/zh** | **Tham khảo + khởi đầu Tầng 1** (xác nhận hướng embedding đa ngữ) | data synthetic, chưa kiểm tờ khai thật; 6 số |
+| **MicroHS** (HF model [`Mead0w1ark/multilingual-e5-small-hs-codes`](https://huggingface.co/Mead0w1ark/multilingual-e5-small-hs-codes), MIT) | embedding `multilingual-e5-small` + k-NN, 6 số, **có vi/zh** | **Tham khảo + khởi đầu Tầng 1** (xác nhận hướng embedding đa ngữ) | data synthetic, chưa kiểm tờ khai thật; 6 số |
 | **ATLAS** (`flexifyai/atlas-llama3.3-70b-hts-classification`) | LLaMA-3.3-70B fine-tune HTS/HS, tự host | mốc tham chiếu (6 số ~57.5%); chứng minh fine-tune khả thi | **HTS Mỹ, tiếng Anh, 70B nặng**, license chưa rõ |
 | **HSGraphAgent** (ACL 2026) | LLM ép sinh theo đường cây hợp lệ | **ý tưởng chống mã bịa** (đúng ca malt gặp ở test) | chưa rõ có code; nghiên cứu |
 | **HS4** (GitHub, TF-IDF+SVM) | phân loại 4 số + top-3 | baseline nhẹ để so | 4 số, US CROSS |
