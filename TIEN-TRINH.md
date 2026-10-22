@@ -33,7 +33,9 @@ $ awk -F, '$1=="010"' docs/giao-viec/so-tay-lo.csv
   → **104/104 (100 %)**, 0 nhóm lỗi, 5 nhóm. **Không nạp 9406** (xem B2).
 - [x] **B7.** `check-cay.mjs --chi-tiet` → **6/6 "đủ"**, 0 lỗi lệch cây.
   `npm run so-tay:check` → **211 nhóm / 7204 mục / 0 lỗi**. `npm test` → **ALL TESTS PASSED**.
-- [x] **B8.** Commit + push + mở PR (**KHÔNG merge**).
+- [x] **B8.** Commit `acefe63` + push + mở **PR #384** (**KHÔNG merge**).
+  CI: `test` ✅ (2m3s) · `bench` ✅ (8m53s) · "Vercel: Deployment was blocked" ❌ là **đỏ có sẵn**
+  (memory `vercel-check-blocked-la-pre-existing` — Vercel đã gỡ khỏi deploy từ 09/10/2026).
 
 ## B2 — 9406 ĐÃ CÓ SẴN: không soạn lại VÀ không sửa
 
@@ -187,7 +189,7 @@ tên phân nhóm cha theo mẫu 9406 (mục 5 ở trên). Hai chỗ tôi **cố 
 
 ## Bàn giao
 
-- **PR đang mở, KHÔNG merge**, chờ người duyệt.
+- **PR #384** đang mở, **KHÔNG merge**: https://github.com/ozvietnam/hs-code-api/pull/384
 - Việc còn lại của người duyệt (mục 4 giao việc): **soát độc lập TOÀN BỘ** `phamVi` / `boPhan` /
   `dieuKienVao` / `loaiTru` / `phanBiet` của 5 nhóm này — tức **38 mục** (5 phạm vi + 0 bộ phận + 2 điều kiện +
   22 loại trừ + 9 phân biệt); cộng 35 `tieuChi6` + 31 `dong8` nếu muốn soi thêm. Sau đó tự soát ngẫu nhiên
