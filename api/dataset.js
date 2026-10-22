@@ -5,7 +5,7 @@ const confusionPairs = require('../lib/confusion-pairs');
 const { buildAdminOverview } = require('../lib/admin-overview');
 const { getDocByCode, listDocs } = require('../lib/legal-docs');
 const { legalDocsInfo } = require('../lib/data-freshness');
-const { searchPrecedents } = require('../lib/precedent-search');
+const { searchPrecedents, NGUONG_KHOP_TIEN_LE } = require('../lib/precedent-search');
 const { searchOzByHs, searchOzByKeyword } = require('../lib/oz-precedent-search');
 const { listMinistries, getMinistriesByChapter } = require('../lib/ministries');
 const { detectMaterials, listTaxonomySummary } = require('../lib/material-taxonomy');
@@ -121,15 +121,30 @@ module.exports = async function handler(req, res) {
       const { hs, q, description } = req.query;
       const searchText = String(q || description || '').trim();
       if (searchText.length >= 3) {
-        const matches = searchPrecedents(searchText, { topK: 5 });
-        // Có ý kiến WCO trong kết quả → kèm banQuyen ở cấp phản hồi (luật 1); từng mục chỉ có trích đoạn + xemToanVan.
+        // Ngưỡng #359: dưới ngưỡng KHÔNG trả match — trả found:false kèm lý do, để người
+        // đọc hiểu "không có tiền lệ đủ gần" chứ không phải "hệ thống lỗi". Trước đây
+        // top-k trả về bất kể độ liên quan (0,15) nên 20/10 người khai thấy found:true
+        // với tiền lệ điều khiển từ xa bảng giá điện tử cho một nắp tủ điện.
+        // hs (nếu có) chỉ ưu tiên nhóm 4 số, KHÔNG lọc bỏ tiền lệ nhóm khác.
+        const matches = searchPrecedents(searchText, { topK: 5, minSimilarity: NGUONG_KHOP_TIEN_LE, maHs: hs });
         const coWco = matches.some((m) => m.loaiNguon === 'WCO_OP');
         const wcoBanQuyen = coWco ? require('../lib/wco-op').BAN_QUYEN : null;
+        if (!matches.length) {
+          return res.status(200).json({
+            found: false,
+            query: searchText,
+            total: 0,
+            matches: [],
+            nguong: NGUONG_KHOP_TIEN_LE,
+            lyDo: `không có tiền lệ đủ gần (mọi tiền lệ khớp dưới ngưỡng similarity ${NGUONG_KHOP_TIEN_LE})`,
+          });
+        }
         return res.status(200).json({
-          found: matches.length > 0,
+          found: true,
           query: searchText,
           total: matches.length,
           matches,
+          nguong: NGUONG_KHOP_TIEN_LE,
           ...(coWco ? { banQuyen: wcoBanQuyen } : {}),
         });
       }
