@@ -37,7 +37,9 @@ $ grep -E '^018' docs/giao-viec/so-tay-lo.csv
 - [x] **B7.** `check-cay.mjs --chi-tiet` → **6/6 nhóm "đủ"**, 0 lỗi lệch cây.
   `npm run so-tay:check` → **233 nhóm / 7590 mục / 0 mục không kiểm được nguồn**.
   `npm test` → **ALL TESTS PASSED**.
-- [x] **B8.** Commit + push nhánh `so-tay/lo-018` + mở **PR** (**KHÔNG merge**).
+- [x] **B8.** Commit `e350dea` + push nhánh `so-tay/lo-018` + mở **PR #399** (**KHÔNG merge**).
+  CI: `test` · `bench` · "Vercel: Deployment was blocked" ❌ là **đỏ có sẵn** (memory
+  `vercel-check-blocked-la-pre-existing` — Vercel đã gỡ khỏi deploy từ 09/10/2026).
 
 ## Kết quả
 
