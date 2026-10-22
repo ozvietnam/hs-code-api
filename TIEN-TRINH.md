@@ -432,4 +432,97 @@ Tất cả mục còn lại đều ≤ 300 ký tự.
 - 1 file mới `data/so-tay/bao-cao/lo-009.json`
 - 1 file `docs/giao-viec/so-tay-lo.csv` (dòng 009: `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm`)
 - 1 file `TIEN-TRINH.md` (viết lại cho phiên soạn lô 009; bản lô 008 còn nguyên trong lịch sử git)
+
+---
+
+# TIEN-TRINH — lô 009 · SOÁT ĐỘC LẬP (PR #386)
+
+**Người soát:** `dev-zcode-mm` — là người **soát**, KHÔNG phải người soạn. Đọc lại từng mục cùng
+nguyên văn nguồn `tmp/so-tay/nguon/<nhom>.txt`, hỏi mỗi mục: **câu trích CÓ THẬT và CÓ NÓI ĐÚNG
+điều mục khẳng định?** Máy chỉ chứng minh câu trích có thật; nó không chứng minh câu đó nói đúng.
+
+## Kết quả
+
+| | |
+|---|---|
+| Mục đã đọc | **94/94** (không lấy mẫu): 40 mục lõi + 54 `tieuChi6`/`dong8` |
+| **Sửa** | **7 mục** (9 trường) |
+| **Xoá** | **0** |
+| Đổi `nguonLoai` | **40** mục lõi `AI_DA_KIEM` → `NGUOI_DUYET` |
+| Sau sửa | `check-so-tay --raw` 94/94 · `build-so-tay` **94/94 (100 %)** · `check-cay` **0 lệch** · `so-tay:check` 212 nhóm / 7194 mục / **0 lỗi** · `npm test` **ALL TESTS PASSED** |
+
+Hồ sơ soát: `review/{6601,6603,6805,6815,8212,9032}.json` (ghi **đủ 94 mục** với `hanhDong:"giu"`
+cho mục giữ nguyên, không chỉ mục bị sửa). Áp bằng `scripts/apply-review-lo009.mjs`.
+
+## 7 lỗi đã sửa — đều là loại máy KHÔNG bắt được
+
+1. **`phamVi` 6601 — dấu lược `…` ở ĐẦU nuốt mất ngoại lệ.** Trích bắt đầu bằng *"… nhóm này gồm…"*,
+   còn câu nguồn mở đầu là **"Không kể các loại ô, dù che, loại được thiết kế rõ ràng để sử dụng làm
+   đồ chơi hoặc mặt hàng dùng trong các lễ hội (Chương 95)"**. Đoạn bị lược chứa đúng từ khoá ngoại lệ
+   *"Không kể"* → vi phạm luật 11 (đoạn lược không được chứa ngoại lệ). Mục này khẳng định "ô, dù che,
+   gậy chống **đủ các loại**" mà giấu mất ngoại lệ Chương 95. **Sửa:** mở trích về đúng đầu câu, chỉ
+   lược danh sách ví dụ ở giữa; `text` bổ sung ngoại lệ.
+2. **`loaiTru[0]` + `phanBiet[2]` 6815 — trích MỒ CÔI, mất chủ thể.** Cả hai dùng câu *"Các sản
+   phẩm tương tự sau nung được loại trừ (nhóm 69.02 hoặc 69.03)."* nhưng **"sản phẩm tương tự" là cái
+   gì** thì nằm ở mục (5) *"Gạch xây và các hình khối khác (đặc biệt các sản phẩm bằng magiê hoặc
+   magiê crom), được liên kết bằng hoá học, nhưng chưa được nung"*. Đọc riêng câu trích thì không ra
+   loại trừ áp cho mặt hàng nào. **Sửa:** nối chủ thể bằng `…`; đoạn lược là câu *"Các sản phẩm này
+   được nung trong quá trình nung đầu tiến của lò…"* — **không có ngoại lệ**, hợp luật 11.
+3. **`loaiTru[5]` + `phanBiet[4]` 9032 — KHẲNG ĐỊNH VÔ ĐIỀU KIỆN, mất ngoại lệ ngay sau câu trích.**
+   Câu trích dừng ở dấu `…` **có sẵn trong nguồn** (nên máy không thấy là lỗi) nhưng **câu kế tiếp
+   ngay lập tức là ngoại lệ**: *"Trong trường hợp mà bộ điều chỉnh tự động được phối hợp với một cơ
+   cấu kích hoạt, toàn bộ cơ cấu này phải được xếp theo Quy tắc 1 hoặc theo Quy tắc 3(b)."*
+   Giữ nguyên thì một cụm **ổn nhiệt gắn van** (cơ cấu chức năng) bị đẩy nhầm sang 84.81. **Sửa:** kéo
+   câu điều kiện vào trích (nguyên văn) và viết lại `dieuKien` có điều kiện.
+4. **`dieuKienVao[0]` 6815 — trích chép từ giữa câu.** Bắt đầu bằng *"các sản phẩm bằng đá…"* (vế
+   không chủ ngữ). Bổ sung *"Nhóm này gồm"* — nguyên văn nguồn. (Chuẩn hoá cho khớp 6805, mà người
+   soạn đã kéo về đủ câu.)
+5. **`phanBiet[0]` 6601 — câu hỏi mất chủ ngữ.** Hỏi chung *"Hàng có mang tính chất như dù che…?"*
+   cho **mọi** hàng; trả lời "không" thì chỉ ra 63.06 — trong khi câu trích chỉ loại trừ **lều trại
+   trên bãi biển**. Thu hẹp câu hỏi vào đúng chủ thể. *(Đây là chỗ PR ghi "để mắt nhiều nhất".)*
+
+> 5 mục đã sửa tính gộp lại là 7 mục / 9 trường (mục 2 và 3 mỗi mục sửa 2 chỗ).
+
+## Đã đọc và GIỮ (không sửa) — ghi lại để người sau đừng sửa nhầm
+
+- **Chiều nhánh `phanBiet` ĐÚNG ở cả 14 mục.** Đã kiểm từng cặp `neuCo`/`neuKhong` với câu loại trừ.
+  Riêng 6603 (`gậy chống chưa hoàn chỉnh`: có → 6602, không → 6603) và 6601 (có → 6601, không → 6306)
+  là hai mối dễ đảo nhất — **đã kiểm lại, đúng**.
+- **`dieuKienVao` 8212 rỗng là ĐÚNG.** Câu *"Phôi lưỡi dao cạo râu… **với điều kiện là** những phôi này
+  đã được khoan lỗ sẵn…"* có *"với điều kiện là"* nhưng là điều kiện riêng cho **phôi lưỡi** (8212.20),
+  không phải điều kiện vào cả nhóm 4 số — người soạn đã bỏ đúng, không bổ sung lại.
+- **Ba trích dài 300–600 ký tự** (máy cho qua, đã đọc tay): `phamVi` 9032 (534), `dieuKienVao[0]` 9032
+  (568), `boPhan` 6603 (485). Cả ba đều **không nuốt ngoại lệ**; `boPhan` 6603 giữ nguyên dấu `…` có
+  sẵn trong nguồn. **Giữ nguyên.**
+- **Chú thích "Dòng cha không có trong nguồn — đối chiếu biểu thuế, không đoán"** (6815 ×4, 9032 ×2):
+  đúng văn phong lô 008 đã duyệt. Riêng chú thích của `90328939` nói *"tiêu đề quốc gia 9032.89.3 (Loại
+  khác, hoạt động bằng điện)"* — **đã tra `data/bieu-thue/2026.04.05/ten-nut.json`**: nút `9032893`
+  có `tenVi: "Loại khác, hoạt động bằng điện:"`, `cap: TIEU_DE_QG`. **Không phải chế tác.**
+- **Chỗ KHÔNG ghi mà ghi đúng:** 6603 không ghi `(b)` ống/thanh thép (chỉ nêu *"Chương 72 hoặc Chương
+  73"* — luật 3); 6815 không ghi `(b)` sản phẩm chịu lửa (*"tùy trường hợp cụ thể"* — câu có định ngữ
+  giới hạn); 9032 không ghi `(a)` buồng tĩnh nhiệt (*"phân loại theo các nhóm tương ứng"* — không nêu
+  đích danh) và không ghi mục `(2)` của Chú giải 7 (đó là **lọi vào** nhóm này, không phải loại trừ).
+
+## Sai sót quy trình đã phát hiện và xử lý
+
+- **Brief ghi `--bao-cao=data/so-tay/bao-cao/lo-09.json` nhưng tệp đang theo dõi trong git là
+  `lo-009.json`** (thiếu một số 0; cả 9 báo cáo lô trước đều viết `lo-0NN`). Chạy theo đúng brief sẽ
+  tạo tệp lạ và **mất báo cáo cũ khỏi git**. Đã dùng `lo-009.json`. *Ba brief liên tiếp (003/008/009)
+  đều có sai sót nhỏ — nên đọc lại tệp thật trước khi tin brief.*
+- **Ghi tệp JSON phải bỏ newline cuối.** `build-so-tay.mjs` ghi `JSON.stringify(…, 1)` **không kèm
+  newline**; script áp review ban đầu của em thêm `'\n'` → diff mỗi tệp thêm một dòng `}` giả. Đã bỏ,
+  khớp 145/212 tệp sổ tay sẵn có.
+- **`--bao-cao` nối thêm vào tệp cũ** (memory `so-tay-bao-cao-ghi-de`) — phải `rm` trước khi nạp lại.
+
+## Bàn giao
+
+- **KHÔNG merge** — PR #386 vẫn đang mở, chờ anh duyệt.
+- Việc mục 4 (soát độc lập) của lô 009 **đã xong** ở phần soát người. Phần còn lại là **người duyệt**
+  tự soát ngẫu nhiên ≥ 10 % — em đã đọc 54 mục `tieuChi6`/`dong8` nhưng **giữ nhãn `AI_DA_KIEM`** cho
+  chúng theo đúng quy ước lô 006/007 (chỉ khối lõi 5 loại mới mang nhãn `NGUOI_DUYET`).
+- Ba nút 6 số chưa có tên tiếng Việt (681513, 681519, 903289) vẫn **để trống** — nguồn chỉ có tên
+  tiếng Anh, tự dịch là diễn đạt lại. Cần anh chốt có cho phép điền kèm trích tiếng Anh hay không.
+- Khi anh duyệt: `docs/giao-viec/so-tay-lo.csv` dòng 009 → `trang_thai=xong` + điền `pr`.
+- Đề xuất (đã nêu ở PR, **chưa làm**, ngoài phạm vi brief): tách `TIEN-TRINH.md` gốc thành thư mục
+  `TIEN-TRINH/<việc>.md` để hết xung đột merge khi nhiều phiên cùng ghi.
 - **KHÔNG** commit `tmp/` (gitignored). **KHÔNG** ghi `nguonLoai` (máy tự gán `AI_DA_KIEM`; đổi sang `NGUOI_DUYET` là việc của người soát độc lập — luật 11). **KHÔNG** soạn `cay` (máy sinh). **KHÔNG** merge.

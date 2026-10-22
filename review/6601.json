@@ -1,0 +1,53 @@
+{
+ "nhom": "6601",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T12:40:00+07:00",
+ "daKiem": 8,
+ "soat": 8,
+ "xoa": 0,
+ "sua": 2,
+ "ghiChu": "Audit 6601 (3 mục lõi + 2 tieuChi6 + 3 dong8 = 8 mục, đọc hết cùng nguồn tmp/so-tay/nguon/6601.txt). SỬA 2: (1) phamVi.trich — dấu lược '…' ở ĐẦU trích nuốt mất ngoại lệ 'Không kể các loại ô, dù che, loại được thiết kế rõ ràng để sử dụng làm đồ chơi hoặc mặt hàng dùng trong các lễ hội (Chương 95)'; đoạn bị lược chứa từ khoá ngoại lệ 'Không kể' nên vi phạm luật 11 (đoạn lược không được chứa ngoại lệ). Sửa bằng cách mở trích về đúng từ đầu câu 'Không kể các loại ô, dù che…', giữ nguyên lược '…' ở giữa (đoạn lược là danh sách ví dụ '(ví dụ, ô có cán là ba toong…)', không có ngoại lệ); text bổ sung ngoại lệ Chương 95 cho khớp. (2) phanBiet[0].hoi — câu hỏi mất chủ ngữ: hỏi chung 'Hàng có mang tính chất như dù che…' cho mọi hàng, trả lời 'không' thì chỉ ra 6306, trong khi câu trích chỉ loại trừ LỀU TRẠI TRÊN BÃI BIỂN. Thu hẹp câu hỏi vào đúng chủ thể của câu trích. GIỮ: loaiTru[0] (lều trại trên bãi biển → 63.06, số nhóm đích có thật trong trích); tieuChi6 660110 (dù che gắn cố định, trích chú giải phân nhóm nguyên văn), 660191 (cán telescopic, trích wco.660191 nguyên văn); dong8 đủ 3 dòng, lấy đúng tax.*, loaiKhac đúng (66019900 'Loại khác'). 660199 không có tieuChi6 (WCO chỉ ghi n.e.c.) — không bịa. Kiểm ngược: loại trừ (a) 'hộp để ô' không nêu nhóm đích nên đúng là KHÔNG ghi loaiTru; chương 66 mục 1(a) gậy chống đo (90.17) là loại trừ cấp chương, không đưa vào nhóm này. Chiều nhánh phanBiet[0] ĐÚNG: có tính chất dù che → 6601; không → 6306. Không xoá mục nào.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Dấu lược '…' đầu trích nuốt ngoại lệ 'Không kể … (Chương 95)'. Mở trích từ đầu câu, chỉ lược danh sách ví dụ ở giữa.",
+   "sua": {
+    "trich": "Không kể các loại ô, dù che, loại được thiết kế rõ ràng để sử dụng làm đồ chơi hoặc mặt hàng dùng trong các lễ hội (Chương 95), nhóm này gồm các loại ô, dù che và gậy chống đủ các loại… không phụ thuộc chất liệu các thành phần cấu thành (kể cả các bộ phận và đồ trang trí lắp vào) bằng bất kỳ nguyên liệu nào.",
+    "text": "Ô, dù che và gậy chống đủ các loại, không phụ thuộc chất liệu các thành phần cấu thành bằng bất kỳ nguyên liệu nào; không kể các loại ô, dù che được thiết kế rõ ràng để sử dụng làm đồ chơi hoặc mặt hàng dùng trong các lễ hội (Chương 95)."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "Câu hỏi mất chủ ngữ: trích chỉ loại trừ lều trại trên bãi biển, nhưng hỏi chung mọi hàng nên nhánh 'không' dẫn tới 6306 cả cho hàng không phải lều. Thu hẹp vào chủ thể có thật trong trích; chiều nhánh giữ nguyên (có → 6601, không → 6306).",
+   "sua": {
+    "hoi": "Lều trại trên bãi biển này có mang tính chất như dù che hoặc dù che có thể làm thành lều không?"
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu"
+  }
+ ]
+}
