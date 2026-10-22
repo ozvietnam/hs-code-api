@@ -1,0 +1,241 @@
+{
+ "nhom": "3506",
+ "phamVi": {
+  "text": "Sản phẩm phù hợp dùng như keo hoặc chất kết dính đã đóng gói để bán lẻ (tịnh không quá 1kg) và keo, chất kết dính thành phẩm khác không nằm trong nhóm cụ thể hơn.",
+  "nguon": "nhom3506.nhom",
+  "trich": "(A) Các sản phẩm phù hợp dùng như keo hoặc chất kết dính và đã đóng gói để bán lẻ như keo hoặc chất kết dính, trọng lượng tịnh không quá 1kg. … (B) Keo thành phẩm và chất kết dính thành phẩm khác, không nằm trong một nhóm cụ thể hơn trong Danh mục hàng hóa",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "khong_thuoc_nhom_cu_the_hon_trong_danh_muc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom3506.nhom",
+   "trich": "(B) Keo thành phẩm và chất kết dính thành phẩm khác, không nằm trong một nhóm cụ thể hơn trong Danh mục hàng hóa",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Keo không phù hợp với điều khoản của phần (A) (tức không đóng gói để bán lẻ với trọng lượng không quá 1kg): keo casein, keo có nguồn gốc động vật, keo có thành phần cơ bản là tinh bột hoặc dextrin hoặc tinh bột biến tính khác",
+   "sangNhom": "3501|3503|3505",
+   "nguon": "nhom3506.nhom",
+   "trich": "Trừ khi chúng phù hợp với điều khoản của phần (A) ở trên, nhóm này loại trừ các sản phẩm thuộc một nhóm cụ thể hơn trong Danh mục hàng hóa, ví dụ:\n\n(a) Keo casein (nhóm 35.01), keo có nguồn gốc động vật (nhóm 35.03) và các keo có thành phần cơ bản là tinh bột, hoặc dextrin hoặc các tinh bột biến tính khác (nhóm 35.05).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Keo không phù hợp với điều khoản của phần (A) (tức không đóng gói để bán lẻ với trọng lượng không quá 1kg): sản phẩm dùng được như keo trực tiếp hoặc sau khi xử lý như nhựa bẫy chim, silicate không trộn, caseinat canxi, dextrin, chất phân tán/hòa tan của polyme 39.01–39.13, chất phân tán/hòa tan của cao su",
+   "sangNhom": "1302|2839|3501|3505|3208",
+   "nguon": "nhom3506.nhom",
+   "trich": "Trừ khi chúng phù hợp với điều khoản của phần (A) ở trên, nhóm này loại trừ các sản phẩm thuộc một nhóm cụ thể hơn trong Danh mục hàng hóa, ví dụ: … (b) Các sản phẩm khác, có thể được dùng như keo hoặc các chất kết dính khác hoặc trực tiếp hoặc sau khi xử lý, ví dụ, nhựa bẫy chim (nhóm 13.02), silicate, không trộn (nhóm 28.39), caseinat canxi (nhóm 35.01), dextrin (nhóm 35.05), chất phân tán hay hòa tan của polyme thuộc các nhóm từ 39.01 đến 39.13 (Chương 39 hoặc nhóm 32.08) và chất phân tán hay hòa tan của cao su (Chương 40).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Chất làm bóng và chất xử lý hoàn tất vải đã điều chế dùng cho ngành dệt, và chất đúc lõi cáp điện",
+   "sangNhom": "3809|3824",
+   "nguon": "nhom3506.nhom",
+   "trich": "Nhóm này không bao gồm chất làm bóng và chất xử lý hoàn tất vải đã được điều chế dùng cho ngành dệt, vv...(nhóm 38.09) hoặc chất đúc lõi cáp điện (nhóm 38.24); ở một số nước, những chất này đôi lúc được gọi là \"keo\", nhưng chúng không được dùng để kết dính.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Sản phẩm có đặc tính của ma tít, chất bồi",
+   "sangNhom": "3214",
+   "nguon": "nhom3506.nhom",
+   "trich": "Nhóm này cũng không bao gồm các sản phẩm có đặc tính của ma tít, chất bồi, vv... thuộc nhóm 32.14.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Dextrin có được đóng gói để bán lẻ như một loại keo không?",
+   "neuCo": "3506",
+   "neuKhong": "3505",
+   "nguon": "phan35.phan",
+   "trich": "dextrin\nđược đóng gói để bán lẻ như là một loại keo được phân loại vào nhóm 35.06 và không được\nphân loại vào nhóm 35.05.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "350610",
+   "fact": "khoi_luong_tinh_khong_qua",
+   "op": "<=",
+   "value": 1,
+   "donVi": "kg",
+   "nguon": "nhom3506.nhom",
+   "trich": "(A) Các sản phẩm phù hợp dùng như keo hoặc chất kết dính và đã đóng gói để bán lẻ như keo hoặc chất kết dính, trọng lượng tịnh không quá 1kg.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "350691",
+   "fact": "duoc_chua_bang_polyme_hoac_cao_su",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.350691",
+   "trich": "350691 Adhesives; prepared, based on polymers of heading 3901 to 3913 or on rubber",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "350699",
+   "fact": "khong_duoc_mo_ta_rieng_o_noi_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.350699",
+   "trich": "350699 Glues and other adhesives; prepared, n.e.c. in heading no. 3506, not exceeding a net weight of 1kg",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "35061000",
+   "dieuKien": "Sản phẩm phù hợp dùng như keo hoặc chất kết dính, đã đóng gói để bán lẻ như keo hoặc chất kết dính",
+   "tieuChi": {
+    "fact": "khoi_luong_tinh_khong_qua",
+    "op": "<=",
+    "value": 1,
+    "donVi": "kg"
+   },
+   "nguon": "tax.35061000",
+   "trich": "35061000 - Các sản phẩm phù hợp dùng như keo hoặc như các chất kết dính, đã đóng gói để bán lẻ như keo hoặc như các chất kết dính, khối lượng tịnh không quá 1kg",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "35069110",
+   "dieuKien": "Chất kết dính dạng free-film trong suốt quang học và chất kết dính dạng lỏng có thể đóng rắn trong suốt quang học chỉ được sử dụng hoặc được sử dụng chủ yếu để sản xuất màn hình dẹt hoặc màn hình cảm ứng",
+   "tieuChi": null,
+   "nguon": "sen.35069110",
+   "trich": "CHẤT KẾT DÍNH DẠNG FREE-FILM TRONG SUỐT QUANG HỌC VÀ CHẤT KẾT DÍNH DẠNG LỎNG CÓ THỂ ĐÓNG RẮN TRONG SUỐT QUANG HỌC CHỈ ĐƯỢC SỬ DỤNG HOẶC ĐƯỢC SỬ DỤNG CHỦ YẾU ĐỂ SẢN XUẤT MÀN HÌNH DẸT HOẶC MÀN HÌNH CẢM ỨNG",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "35069190",
+   "dieuKien": "Loại khác — phần còn lại của phân nhóm 350691 (chất kết dính đã điều chế có thành phần polyme thuộc 39.01–39.13 hoặc cao su)",
+   "tieuChi": null,
+   "nguon": "wco.350691",
+   "trich": "350691 Adhesives; prepared, based on polymers of heading 3901 to 3913 or on rubber",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "350691",
+    "truAnhEm": [
+     "35069110"
+    ],
+    "toTienCoTen": "350691",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "35069900",
+   "dieuKien": "Loại khác — keo và chất dính đã điều chế khác, không được mô tả riêng ở nơi khác trong Danh mục",
+   "tieuChi": null,
+   "nguon": "wco.350699",
+   "trich": "350699 Glues and other adhesives; prepared, n.e.c. in heading no. 3506, not exceeding a net weight of 1kg",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "35069",
+    "truAnhEm": [
+     "350691"
+    ],
+    "toTienCoTen": "3506",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "3506",
+    "cap": 4,
+    "cha": "35",
+    "tenVi": "Keo đã điều chế và các chất dính đã điều chế khác, chưa được chi tiết hoặc ghi ở nơi khác; các sản phẩm phù hợp dùng như keo hoặc các chất kết dính, đã đóng gói để bán lẻ như keo hoặc như các chất kết dính, trọng lượng tịnh không quá 1 kg.",
+    "tenEn": "Prepared glues and other prepared adhesives, n.e.c. or included; products suitable for use as glues or adhesives, put up for retail sale as glues or adhesives, not exceeding 1kg net weight",
+    "suyRa": false
+   },
+   {
+    "id": "35061000",
+    "cap": 8,
+    "cha": "3506",
+    "tenVi": "Các sản phẩm phù hợp dùng như keo hoặc như các chất kết dính, đã đóng gói để bán lẻ như keo hoặc như các chất kết dính, khối lượng tịnh không quá 1kg",
+    "tenEn": "Glues or adhesives; prepared, products suitable for use as glues or adhesives, put up for retail sale as glues or adhesives, not exceeding a net weight of 1kg",
+    "suyRa": false,
+    "laPhanNhom": "350610"
+   },
+   {
+    "id": "35069",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "3506",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "350691",
+    "cap": 6,
+    "cha": "35069",
+    "tenVi": null,
+    "tenEn": "Adhesives; prepared, based on polymers of heading 3901 to 3913 or on rubber",
+    "suyRa": false
+   },
+   {
+    "id": "35069110",
+    "cap": 8,
+    "cha": "350691",
+    "tenVi": "Chất kết dính dạng free-film trong suốt quang học và chất kết dính dạng lỏng có thể đóng rắn trong suốt quang học chỉ được sử dụng hoặc được sử dụng chủ yếu để sản xuất màn hình dẹt hoặc màn hình cảm ứng (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "35069190",
+    "cap": 8,
+    "cha": "350691",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "35069900",
+    "cap": 8,
+    "cha": "35069",
+    "tenVi": "Loại khác",
+    "tenEn": "Glues and other adhesives; prepared, n.e.c. in heading no. 3506, not exceeding a net weight of 1kg",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "350699"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom3506.nhom",
+  "phan35.phan",
+  "sen.35069110",
+  "tax.35061000",
+  "wco.350691",
+  "wco.350699"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-22T15:12:24.079Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 14,
+  "dat": 14,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

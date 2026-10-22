@@ -1,0 +1,140 @@
+{
+ "nhom": "9612",
+ "phamVi": {
+  "text": "Ruy băng dùng cho máy đánh chữ, máy tính hoặc máy khác có thiết bị in bằng ruy băng (đã hoặc chưa cuộn vào thành ống) và tấm mực dấu (đã hoặc chưa tẩm mực, có hoặc không hộp); nhóm có danh sách mặt hàng loại trừ riêng.",
+  "nguon": "nhom9612.nhom",
+  "trich": "(1) Các ruy băng, đã hoặc chưa cuộn vào thành ống hoặc để trong ruy băng dùng cho máy đánh chữ, máy tính … Nhóm này không bao gồm: … (2) Tấm mực dấu đã hoặc chưa tẩm mực, dùng cho con dấu đóng ngày tháng,....",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "961210",
+   "fact": "duoc_tam_muc_hoac_san_sang_de_in_an",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom9612.nhom",
+   "trich": "Để xếp vào nhóm này, các ruy băng phải được tẩm mực hoặc sẵn sàng để in ấn",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "961220",
+   "fact": "la_tam_muc_dau_co_hoac_khong_co_hop",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.961220",
+   "trich": "961220 Ink pads; whether or not inked, with or without boxes",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "96121010",
+   "dieuKien": "Ruy băng bằng vật liệu dệt (phân nhóm 961210)",
+   "tieuChi": null,
+   "nguon": "tax.96121010",
+   "trich": "96121010 - - Bằng vật liệu dệt",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "96121090",
+   "dieuKien": "Loại khác — phần còn lại của phân nhóm 961210 (ruy băng bằng vật liệu khác)",
+   "tieuChi": null,
+   "nguon": "tax.96121090",
+   "trich": "96121090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "961210",
+    "truAnhEm": [
+     "96121010"
+    ],
+    "toTienCoTen": "961210",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "96122000",
+   "dieuKien": "Tấm mực dấu, đã hoặc chưa tẩm mực, có hoặc không có hộp",
+   "tieuChi": null,
+   "nguon": "wco.961220",
+   "trich": "961220 Ink pads; whether or not inked, with or without boxes",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "9612",
+    "cap": 4,
+    "cha": "96",
+    "tenVi": "Ruy băng máy chữ hoặc tương tự, đã phủ mực hay làm sẵn bằng cách khác để in ấn, đã hoặc chưa cuộn vào lõi hoặc nằm trong vỏ; tấm mực dấu, đã hoặc chưa tẩm mực, có hoặc không có hộp.",
+    "tenEn": "Typewriter, similar ribbons, inked, otherwise prepared for giving impressions, whether or not on spools or in cartridges; ink pads, whether or not inked, with or without boxes",
+    "suyRa": false
+   },
+   {
+    "id": "961210",
+    "cap": 6,
+    "cha": "9612",
+    "tenVi": "Ruy băng",
+    "tenEn": "Ribbons; for typewriters and the like, inked or otherwise prepared, for giving impressions, whether or not on spools or in cartridges",
+    "suyRa": false
+   },
+   {
+    "id": "96121010",
+    "cap": 8,
+    "cha": "961210",
+    "tenVi": "Bằng vật liệu dệt",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "96121090",
+    "cap": 8,
+    "cha": "961210",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "96122000",
+    "cap": 8,
+    "cha": "9612",
+    "tenVi": "Tấm mực dấu",
+    "tenEn": "Ink pads; whether or not inked, with or without boxes",
+    "suyRa": false,
+    "laPhanNhom": "961220"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom9612.nhom",
+  "tax.96121010",
+  "tax.96121090",
+  "wco.961220"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-22T15:12:24.078Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 6,
+  "dat": 6,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
