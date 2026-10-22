@@ -21,10 +21,12 @@ Embedding cục bộ **đạt vượt trội về tốc độ** (p50 9ms, gấp 
 | Top-1 | 342 (44,8%) | 44,8% |
 | Top-2 | 90 | 56,6% |
 | Top-3 | 48 | 62,9% |
-| Top-4–5 | 229 | **92,9%** |
-| Ngoài top-5 | 54 | — |
+| Top-4–5 | 61 | **70,9%** |
+| Top-6–10 | 54 | 78% |
 
-**92,9% ca có nhóm đúng trong top-5** — đây là con số quan trọng cho vai trò tầng ứng viên.
+**70,9% ca có nhóm đúng trong top-5** (78% trong top-10) — con số quan trọng cho vai trò tầng ứng viên.
+
+> ⚠️ **ĐÍNH CHÍNH 22/10:** lượt phân tích đầu báo phủ top-5 92,9% là SAI — script dùng `findIndex` và nhận `-1` (không tìm thấy) vào nhóm top-5. Đo lại bằng `.some()` trên slice: **top-5 = 70,9%, top-10 = 78%**. Các số top-1/top-3 (44,8/62,9) không đổi và vẫn đúng. Kết luận NO-GO/GO không thay đổi nhưng kỳ vọng GĐ1 khiêm tốn hơn: pool top-5 chỉ phủ ~7/10 ca ở nhóm 4 số.
 
 ## Đọc số cho đúng (bài học từ phân tích lỗi)
 
@@ -54,6 +56,13 @@ Việc này không trái cổng #377 — nó đúng kiến trúc đích của #3
 - Index: 1.269 nhóm-4 + 5.784 PN6 = 23MB JSON, load RAM ~100MB, tìm toàn bộ cosine 7.053 nhãn trong <10ms
 - Holdout đã loại khỏi index (chống rò rỉ) — kiểm tra bằng `isHeldOut` từng bản ghi
 - Scripts: `scripts/gd0/j1-harness.mjs` → `j2-build-index.mjs` → `j3-retrieve.mjs` → `j4-bench-holdout.mjs`
+
+## GĐ1 (đã code, chờ bật) — tầng ứng viên nối vào động cơ
+
+- `lib/embed-pool.js`: `poolNhom(moTa)` lazy-load index + model e5-small, trả top-5 nhóm 4/6; cờ `HS_EMBED_POOL=on` (mặc định TẮT); lỗi bất kỳ → null, engine chạy như cũ.
+- `lib/engine-loop.js`: pool top-3 được nạp CHÚ GIẢI (AI chọn được nhóm ngoài giả thuyết vòng 1), top-5 vào gói vòng 2 kèm nhãn TÍN HIỆU-không-bằng-chứng; `engine.phases.embedMs` + `dossier.embedPool` để đo trên prod. Cờ tắt = hành vi cũ nguyên vẹn (test chặn).
+- Thí nghiệm nạp thêm nguồn (đã đo, chưa dùng): nối chuỗi tiền lệ TB-TCHQ + tên tiếng Trung 税则 vào nhãn làm LOÃNG mean-pooling (phủ top-5 70,9→68,2) → tắt qua cờ `GD0_THEM_NGUON`, mặc định off. Đường đúng cho sau: multi-vector theo nguồn + trọng số, không nối chuỗi.
+- Bật điều kiện: đo end-to-end trên 80 mẫu vàng (độ chính xác không giảm, p50 giảm) rồi mới `HS_EMBED_POOL=on` ở prod — đúng kỷ luật #193.
 
 ## Việc kế (chờ CEO gật GĐ1-điều-chỉnh)
 1. Nối `j3-retrieve` vào `engine-loop.js` làm nguồn pool nhóm (thay/bổ sung bước LLM đoán nhóm khi pool đủ tin)
