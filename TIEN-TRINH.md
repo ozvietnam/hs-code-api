@@ -450,6 +450,7 @@ nguyên văn nguồn `tmp/so-tay/nguon/<nhom>.txt`, hỏi mỗi mục: **câu tr
 | **Xoá** | **0** |
 | Đổi `nguonLoai` | **40** mục lõi `AI_DA_KIEM` → `NGUOI_DUYET` |
 | Sau sửa | `check-so-tay --raw` 94/94 · `build-so-tay` **94/94 (100 %)** · `check-cay` **0 lệch** · `so-tay:check` 212 nhóm / 7194 mục / **0 lỗi** · `npm test` **ALL TESTS PASSED** |
+| CI PR #386 | `test` **pass** 1m55s · `bench` **pass** 11m57s · `Vercel` fail — *"Deployment was blocked"*, lỗi có sẵn ở tài khoản Vercel (đã gỡ Vercel 09/10/2026), **không phải lỗi code** |
 
 Hồ sơ soát: `review/{6601,6603,6805,6815,8212,9032}.json` (ghi **đủ 94 mục** với `hanhDong:"giu"`
 cho mục giữ nguyên, không chỉ mục bị sửa). Áp bằng `scripts/apply-review-lo009.mjs`.
