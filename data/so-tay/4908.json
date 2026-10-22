@@ -1,0 +1,131 @@
+{
+ "nhom": "4908",
+ "phamVi": {
+  "text": "Đề can các loại (decalcomanias): hình vẽ, thiết kế hoặc mẫu tự một màu duy nhất hoặc nhiều màu, được in lytô hoặc in cách khác trên giấy nhẹ thấm nước, được tráng phủ bằng một chế phẩm để tiếp nhận hình in; nhóm này cũng bao gồm đề can kính.",
+  "nguon": "nhom4908.nhom",
+  "trich": "Đề can các loại (decalcomanias) bao gồm hình vẽ, thiết kế hoặc mẫu tự một màu duy nhất hoặc nhiều màu, được in lytô hoặc được in cách khác trên giấy nhẹ, thấm nước (hoặc đôi khi trên một tấm plastic trong suốt mỏng), được tráng phủ bằng một chế phẩm, như từ tinh bột và keo, để tiếp nhận hình in mà bản thân nó được phủ một chất kết dính.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Giấy chuyển thuộc loại được gọi là lá phôi rập hoặc lá phôi khối, điều chế với một lớp phủ kim loại, bột kim loại hoặc thuốc màu, dùng để in bìa sách, băng mũ",
+   "sangNhom": "3212",
+   "nguon": "nhom4908.nhom",
+   "trich": "Nhóm này không bao gồm giấy chuyển thuộc loại được gọi là lá phôi rập hoặc lá phôi khối, được điều chế với một lớp phủ kim loại, bột kim loại hoặc thuốc màu, và được dùng để in bìa sách, băng mũ... (nhóm 32.12).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải tấm che cửa sổ trong suốt không?",
+   "neuCo": "4814|4911",
+   "neuKhong": "4908",
+   "nguon": "nhom4908.nhom",
+   "trich": "Các sản phẩm được mô tả trên không nên lẫn với tấm che cửa sổ trong suốt, mà thuộc nhóm 48.14 hoặc 49.11 (xem Chú giải chi tiết của nhóm trước).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "490810",
+   "fact": "de_can_vitrifiable",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.490810",
+   "trich": "490810 Printed matter; transfers (decalcomanias), vitrifiable",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "490890",
+   "fact": "de_can_khong_phai_vitrifiable",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.490890",
+   "trich": "490890 Printed matter; transfers (decalcomanias), other than vitrifiable",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "49081000",
+   "dieuKien": "Đề can các loại (decalcomanias) dùng cho các sản phẩm thủy tinh (tên WCO 490810: vitrifiable)",
+   "nguon": "tax.49081000",
+   "trich": "49081000 - Đề can các loại (decalcomanias), dùng cho các sản phẩm thủy tinh",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "49089000",
+   "dieuKien": "Phần còn lại của phân nhóm 4908.90 — đề can không phải loại vitrifiable (tên WCO 490890), không dùng cho các sản phẩm thủy tinh",
+   "nguon": "wco.490890",
+   "trich": "490890 Printed matter; transfers (decalcomanias), other than vitrifiable",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "4908",
+    "truAnhEm": [
+     "49081000"
+    ],
+    "toTienCoTen": "4908",
+    "dinhNghiaDuoc": true
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "4908",
+    "cap": 4,
+    "cha": "49",
+    "tenVi": "Đề can các loại (decalcomanias).",
+    "tenEn": "Transfers (decalcomanias)",
+    "suyRa": false
+   },
+   {
+    "id": "49081000",
+    "cap": 8,
+    "cha": "4908",
+    "tenVi": "Đề can các loại (decalcomanias), dùng cho các sản phẩm thủy tinh",
+    "tenEn": "Printed matter; transfers (decalcomanias), vitrifiable",
+    "suyRa": false,
+    "laPhanNhom": "490810"
+   },
+   {
+    "id": "49089000",
+    "cap": 8,
+    "cha": "4908",
+    "tenVi": "Loại khác",
+    "tenEn": "Printed matter; transfers (decalcomanias), other than vitrifiable",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "490890"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom4908.nhom",
+  "tax.49081000",
+  "wco.490810",
+  "wco.490890"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-22T16:33:08.794Z",
+  "ms": 0
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
