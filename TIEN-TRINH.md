@@ -452,3 +452,89 @@ Kiến thức này **còn trong `phanBiet`** (cùng câu trích, luật `phanBie
    không có `phan54.phan` (chương 54 rỗng) → không dựng được điều kiện vào nhóm.
 5. Tự soát ngẫu nhiên ≥ 10 % phần còn lại (mục 4 giao việc).
 6. Khi đạt: `so-tay-lo.csv` dòng 012 → `trang_thai=xong` + `pr=390`, rồi merge.
+
+---
+
+# SỔ TAY LÔ 013 — agent `dev-zcode-mm` (22/10/2026)
+
+Nhóm của lô (theo `docs/giao-viec/so-tay-lo.csv` dòng 013 — **nguồn chuẩn**):
+`6910, 6911, 7010, 8215, 8451, 8462` (169.890 ký tự nguồn).
+
+⚠️ **Mâu thuẫn brief**: `brief-st-lo013.md` dòng 4 ghi đúng 6 nhóm trên, nhưng **dòng 6**
+(các lệnh chính) lại ghi `--nhom=7615,9609,3215,6306,6804,7412` — đây là mẫu
+copy-paste từ lô khác, KHÔNG phải lô 013. CSV là nguồn chuẩn → dùng 6 nhóm CSV.
+
+## Các bước đã làm
+
+1. ✅ Đọc TRƯỌN `docs/giao-viec/so-tay-giao-ngoai.md` (11 luật mục 3 + quy trình mục 2).
+2. ✅ Xuất nguồn: `node scripts/build-so-tay.mjs --nhom=6910,6911,7010,8215,8451,8462
+   --xuat-nguon=tmp/so-tay/nguon` → 6 tệp + `_he-thong.txt` (230.564 ký tự).
+3. ✅ Đọc TRƯỌN cả 7 tệp nguồn (6910/6911/7010/8215/8451/8462 + `_he-thong.txt`).
+
+4. ✅ Soạn `tmp/so-tay/raw/<nhom>.json` cho cả 6 nhóm theo 11 luật mục 3 (không ghi `nguonLoai`,
+   không soạn `cay` — chỉ điền `cay.tenDien[]` cho nút 6 số chưa có tên tiếng Việt khi nguồn có câu nêu tên).
+5. ✅ `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → lần 1 **166/169**, sửa 3 câu trích
+   chép lệch ký tự nguồn, lần 2 **169/169 (100 %)**, 0 mục rớt.
+6. ✅ Nạp `--tu-tep --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-013.json`.
+7. ✅ `npm run so-tay:check` xanh toàn kho (233 nhóm, 7.672 mục, 0 mục hỏng) · `check-cay` 6/6 nhóm
+   "đủ" (có cây, đủ dong8, đủ tên nút ảo, đủ tiêu chí 6 số) · `npm test` **ALL TESTS PASSED**.
+
+## Kết quả (báo cáo thật)
+
+| nhóm | phạm vi | đK vào | loại trừ | phân biệt | bộ phận | tiêu chí 6 | dòng 8 | tên nút | đạt |
+|---|---|---|---|---|---|---|---|---|---|
+| 6910 | 1 | 3 | 2 | 2 | – | 2 | 2 | – | 12/12 |
+| 6911 | 1 | 1 | 0 | 0 | – | 4 | 2 | – | 8/8 |
+| 7010 | 1 | 2 | 7 | 2 | – | 3 | 6 | – | 21/21 |
+| 8215 | 1 | 0 | 1 | 1 | – | 8 | 4 | – | 15/15 |
+| 8451 | 1 | 1 | 10 | 4 | 1 | 8 | 10 | – | 35/35 |
+| 8462 | 1 | 2 | 12 | 4 | 1 | 27 | 31 | 6 | 84/84 |
+| **lô 013** | 6 | 9 | 32 | 13 | 2 | 52 | 55 | 6 | **175/175 (100 %)** |
+
+Có SEN: 1 (`sen.84513010` → dòng 84513010). Không nhóm nào dùng `wco-op`.
+
+## Ba chỗ tôi cố ý cắt bằng "…" — nhờ người duyệt phán
+
+1. **6910 `loaiTru` ×2** — câu nguồn dài 415 ký tự (gộp hai loại trừ). Tách thành 2 mục, mỗi mục
+   lược giữa "… và cũng không bao gồm …". Ghép lại 2 câu trích là **đủ nguyên văn toàn câu**, không
+   mất ngoại lệ nào; riêng từng mục thì phần lược của mục kia chứa "không bao gồm".
+2. **8451 `phanBiet` 84.19 ↔ 84.51** — trích *"Tuy nhiên, nhóm 84.19 không bao gồm: … (iv) Máy để xử
+   lý nhiệt đối với sợi dệt, vải hoặc các sản phẩm dệt (nhóm 84.51);"*, lược (i)(ii)(iii) (3 ngoại lệ
+   anh em, **không liên quan máy dệt**). Đây là ranh giới dễ nhầm nhất của nhóm nên tôi vẫn giữ.
+3. **8215 `phamVi`** — câu liệt kê (1)…(7) dài ~700 ký tự; trích lược giữa "Nhóm này bao gồm:" và
+   mục (7) + câu về bộ 82.11. Mọi từ trong `text` đều là chữ có thật trong mục (1)…(6) của nguồn.
+
+## Lỗi tôi tự phát hiện trước khi nộp (đã sửa, ghi lại cho lô sau)
+
+- **Đoán dòng cha 12 dòng máy ép của 8462.** Bản nháp đầu ghi `84626191/99` là "servo" và
+  `84626291/99` là "điều khiển số" — **không có căn cứ trong nguồn**. Cây máy cho thấy đúng là:
+  8462611/8462621 = *"Điều khiển số"*, 8462619/8462629 = *"Loại khác"* (tên lấy từ biểu thuế Tổng cục).
+  Đã sửa thành câu có ghi rõ nguồn: *"thuộc tiêu đề 8462611 (biểu thuế ghi 'Điều khiển số')"*.
+  → **Luật nhỏ cho lô sau: dòng 8 số có tiêu đề 7 số thì hỏi cây (`data/so-tay/<nhom>.json` → `cay.nut`)
+  TRƯỚC khi viết `dieuKien`, đừng đoán cấp.**
+- **5 `phamVi.text` rộng hơn câu trích** (8215, 8451, 8462, 7010, 6911): đã thu về đúng câu đã trích.
+
+## Nguồn mỏng / bất thường — cần người quản lý xử lý riêng
+
+1. **6911 — nguồn gần như rỗng.** `nhom6911.nhom` chỉ có *"Xem phần chú giải chi tiết của nhóm 69.12."*;
+   gói nguồn **không có `nhom6912.nhom`**. Sổ tay 6911 chỉ có 8 mục, tất cả từ `ch69.chuong` / `wco.*` / `tax.*`.
+   Không có `loaiTru`, không có `phanBiet` — đúng luật 8 (không trích được thì bỏ, không đoán).
+2. **`phan69.phan` và `phan70.phan` mang tiêu đề SAI.** Cả hai đều là *"AMIĂNG, MICA HOẶC CÁC VẬT LIỆU
+   TƯƠNG TỰ; ĐỒ GỐM; SỨ (CERAMIC); THUỶ TINH…"* — đó là tiêu đề Phần XIII lẫn với tiêu đề Phần XI cũ,
+   không phải chú giải Phần. Cần sửa riêng ở `data/chu-giai-chuong.json`.
+3. **Nút 6 số `701090` và `846290` mang tên "Loại khác".** `lib/hs-tree.js` lấy tên nút 6 số từ
+   `data/bieu-thue`; hai phân nhóm này không có dòng biểu thuế 6 số riêng nên tên của dòng lá "Loại khác"
+   bị gán ngược lên nút 6 số. Tên đúng có ở `wco.701090` / `wco.846290`. `check-cay` không bắt được
+   (chỉ hỏi nút ảo chưa có tên). 7010 tôi đã ghi rõ trong `dong8`.
+4. **`846222`/`846232`/`846261`/`846262`/`846263`/`846269` chưa có tên tiếng Việt** — đã điền
+   `cay.tenDien[]` từ tên WCO nguyên văn (6 mục, có `trich`).
+5. **SEN 8451 chỉ có 1 mục** (`sen.84513010`) — kho SEN 2022 vắng ở nhóm 8451.
+6. **8451 dùng SEN gắn ở dòng 8 số** (`84513010`), đúng luật 6; 4 nhóm còn lại không có SEN nào.
+
+## Việc còn lại của người quản lý
+
+1. **Soát độc lập TOÀN BỘ** 32 `loaiTru` + 13 `phanBiet` + 9 `dieuKienVao` + 2 `boPhan` của lô này
+   (người khác người soạn), ghi `xoa`/`sua` theo `index`.
+2. Tự soát ngẫu nhiên ≥ 10 % phần còn lại (52 `tieuChi6` + 55 `dong8` + 6 `phamVi`).
+3. Bổ sung mục 1 `docs/giao-viec/so-tay-giao-ngoai.md` với lỗi kệ sách mục 2 và 3 ở trên.
+4. Khi đạt: `so-tay-lo.csv` dòng 013 → `trang_thai=xong` + `pr=<số>`, rồi merge.

@@ -1,0 +1,151 @@
+{
+ "nhom": "6911",
+ "phamVi": {
+  "text": "Chú giải chi tiết của nhóm này chỉ trỏ sang phần chú giải chi tiết của nhóm 69.12; gói nguồn của lô này không có chú giải 69.12 nên phạm vi nhóm chỉ dựa được trên tên phân nhóm WCO.",
+  "nguon": "nhom6911.nhom",
+  "trich": "Xem phần chú giải chi tiết của nhóm 69.12.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "nhung_o_nhiet_do_toi_thieu",
+   "op": ">=",
+   "value": 800,
+   "donVi": "°C",
+   "ngoaiTru": [
+    "gia nhiệt ở nhiệt độ dưới 800°C cho các mục đích như đóng rắn nhựa, tăng tốc phản ứng hydrat hóa, hoặc để loại bỏ nước hoặc các thành phần dễ bay hơi khác, không được coi là nung"
+   ],
+   "nguon": "ch69.chuong",
+   "trich": "Ở công đoạn này, “sản phẩm màu lục” được nung ở mức nhiệt độ 800 °C hoặc cao hơn tùy thuộc vào bản chất của sản phẩm.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "691110",
+   "fact": "la_bo_do_an_va_bo_do_nha_bep",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.691110",
+   "trich": "691110 Tableware and kitchenware; of porcelain or china",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "691110",
+   "fact": "vat_lieu_la_duc_su_hoa_anh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.691110",
+   "trich": "691110 Tableware and kitchenware; of porcelain or china",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "691190",
+   "fact": "la_hang_gia_dung_va_ve_sinh_khac_thuoc_nhom_6911",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.691190",
+   "trich": "691190 Household and toilet articles; n.e.c. in heading no. 6911, of porcelain or china",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "691190",
+   "fact": "vat_lieu_la_duc_su_hoa_anh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.691190",
+   "trich": "691190 Household and toilet articles; n.e.c. in heading no. 6911, of porcelain or china",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "69111000",
+   "dieuKien": "Bộ đồ ăn và bộ đồ nhà bếp",
+   "tieuChi": null,
+   "nguon": "tax.69111000",
+   "trich": "69111000 - Bộ đồ ăn và bộ đồ nhà bếp",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "69119000",
+   "dieuKien": "Loại khác — phần còn lại của phân nhóm 691190",
+   "tieuChi": null,
+   "nguon": "tax.69119000",
+   "trich": "69119000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "6911",
+    "truAnhEm": [
+     "69111000"
+    ],
+    "toTienCoTen": "6911",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "6911",
+    "cap": 4,
+    "cha": "69",
+    "tenVi": "Bộ đồ ăn, bộ đồ nhà bếp, đồ gia dụng và đồ sứ vệ sinh khác, bằng sứ.",
+    "tenEn": "Tableware, kitchenware, other household articles and toilet articles; of porcelain or china",
+    "suyRa": false
+   },
+   {
+    "id": "69111000",
+    "cap": 8,
+    "cha": "6911",
+    "tenVi": "Bộ đồ ăn và bộ đồ nhà bếp",
+    "tenEn": "Tableware and kitchenware; of porcelain or china",
+    "suyRa": false,
+    "laPhanNhom": "691110"
+   },
+   {
+    "id": "69119000",
+    "cap": 8,
+    "cha": "6911",
+    "tenVi": "Loại khác",
+    "tenEn": "Household and toilet articles; n.e.c. in heading no. 6911, of porcelain or china",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "691190"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch69.chuong",
+  "nhom6911.nhom",
+  "tax.69111000",
+  "tax.69119000",
+  "wco.691110",
+  "wco.691190"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-22T09:25:45.922Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
