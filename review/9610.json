@@ -1,0 +1,49 @@
+{
+ "nhom": "9610",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T21:20:00+07:00",
+ "daKiem": 7,
+ "soat": 7,
+ "xoa": 1,
+ "sua": 2,
+ "ghiChu": "Audit 9610 (1 phamVi + 2 dieuKienVao + 1 loaiTru + 1 phanBiet + 2 dong8 = 7 mục; boPhan/tieuChi6/cay.tenDien rỗng). CÓ THẬT: chạy strict-nguyen-van (so từng byte, không squash dấu câu) — 9/9 đoạn trích khớp nguồn. ĐÚNG KHẲNG ĐỊNH thì không: 1 mục mờ má (dieuKienVao[1] — trích cắt ngay trước 'có thể') và 2 mục có chữ ngoài câu trích (phanBiet[0].hoi, dong8[1].dieuKien). Không có câu nào trong nguồn 9610 rào bằng 'thường…' hay 'tùy từng trường hợp', và không có nhánh 'A hoặc B' bị tách — nhóm này chỉ có một câu loại trừ, nêu đích danh 'nhóm 25.14 hoặc 68.03', giữ nguyên cả hai nhánh. loaiTru[0] và phanBiet[0] dùng CHUNG một cặp câu (được bao gồm / không bao gồm) — không phải ghép câu xa, hai câu liền trong cùng chú giải nhóm. boPhan rỗng là đúng: nguồn không có quy tắc cấu thành. tieuChi6 rỗng là đúng: wco.961000 chỉ là tiêu đề, không có ngưỡng số.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "xoa",
+   "lyDo": "Trích cắt NGAY TRƯỚC câu rào 'có thể'. Câu nguồn đầy đủ là: \"Các sản phẩm này, có hoặc không có khung, có thể làm bằng đá phiến, kể cả đá ép, hoặc làm bằng bất kỳ chất liệu nào khác (gỗ, giấy bồi, vật liệu dệt, amiăng ximăng ...), được đắp lên một hoặc hai mặt một chất bột đá hoặc bất kỳ một lớp sơn phủ nào khác thích hợp để viết hoặc một lớp plastic.\" — mục chép từ chữ \"được đắp lên\", mất chủ thể \"Các sản phẩm này\" và mất đúng chữ \"có thể\". Kết quả: mục biến một câu MÔ TẢ cách làm bảng thành điều kiện vào nhóm BẮT BUỘC ('mặt viết có lớp phủ bột đá hoặc sơn phủ = true'), trong khi nguồn chỉ nói bảng CÓ THỂ làm bằng chất liệu bất kỳ. Đúng loại lỗi 'cắt trích né câu rào' mà brief liệt kê. KHÔNG cứu được bằng cách nới trích: câu đầy đủ vẫn là câu mô tả, không phải điều kiện vào nhóm 9610. Theo luật 'thà bỏ mục còn hơn mục không có căn cứ' → XOÁ."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "`hoi` thêm chữ không có trong câu trích. Trích chỉ có hai câu: '…rõ ràng được thiết kế để dùng để viết hoặc vẽ' và 'không bao gồm các bảng dùng để viết hoặc vẽ nhưng CHƯA SẴN SÀNG ĐỂ SỬ DỤNG'. Mốc phân biệt mà nguồn nêu là 'sẵn sàng để sử dụng', còn `hoi` lại dùng 'đã được phủ một lớp để viết hoặc vẽ' — cụm 'được phủ một lớp' lấy từ câu THỨ HAI của chú giải nhóm (mà câu trích này không có), tức là ghép chữ từ câu khác vào. Viết lại `hoi` chỉ dùng từ ngữ có thật trong câu trích. Giữ nguyên neuCo/neuKhong và câu trích.",
+   "sua": {
+    "hoi": "Bảng dùng để viết hoặc vẽ đã sẵn sàng để sử dụng chưa?"
+   }
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu"
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "sua",
+   "lyDo": "`dieuKien` thêm chữ không có trong trích, và lấy từ nguồn khác trong khi `nguon` khai là tax.96100090 (trích chỉ có '96100090 - Loại khác'). Cụm 'bảng đá đen và bảng có bề mặt dùng để viết hoặc vẽ' là từ phamVi (nguồn nhom9610.nhom), cụm 'khác bảng đá phiến (slate) dùng trong trường học' là do suy ra từ dòng anh em; riêng đoạn trong ngoặc '(tên dòng cha 961000 theo wco.961000: Slates and boards; with writing or drawing surfaces, whether or not framed)' là kéo tên WCO vào `dieuKien` dù luật 7 cấm đưa tên ngoài nguồn vào. Viết lại chỉ dựa trên hai dòng biểu thuế của nhóm: dòng này là 'Loại khác', tức không phải dòng 96100010. Không đổi câu trích.",
+   "sua": {
+    "dieuKien": "Loại khác — không phải bảng đá phiến (slate) dùng trong trường học"
+   }
+  }
+ ]
+}
