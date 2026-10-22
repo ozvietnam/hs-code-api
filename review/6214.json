@@ -1,0 +1,132 @@
+{
+ "nhom": "6214",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T22:20:00+07:00",
+ "daKiem": 23,
+ "soat": 23,
+ "sua": 1,
+ "xoa": 1,
+ "giu": 21,
+ "ghiChu": "Audit 6214 (1 phamVi + 1 dieuKienVao + 5 loaiTru + 2 phanBiet + 5 tieuChi6 + 9 dong8 = 23). CÓ THẬT: 23/23 nguyên văn tuyệt đối. SỬA 1 / XOÁ 1. `phamVi` là lỗi nặng nhất lô: trích CHỈ có câu \"Cạnh, rìa của các sản phẩm này thường được làm viền, quấn hoặc có tua\" (59 ký tự), còn `text` kể cả 5 loại khăn của mục (1)-(4) và vế \"không dệt kim hoặc móc\" — không mảnh nào trong trích nói. Đã dựng lại trích từ chính các tiêu đề (1)-(4) + câu cạnh-rìa (175 ký tự) và bỏ vế \"không dệt kim hoặc móc\" (đã có ở loaiTru[2] và phanBiet[1]). XOÁ `dieuKienVao` \"co_canh_tren > 60 cm\": ngưỡng 60 cm chỉ áp cho khăn VUÔNG/gần vuông, không áp cho mạng che, khăn choàng vai, khăn quàng cổ — đặt làm điều kiện vào cả nhóm sẽ loại oang chính những hàng đó; thêm nữa kệ sách tự mâu thuẫn tại đúng mốc 60 cm (chú giải chương 62 mục 8: \">60 cm → 62.14\" còn chú giải nhóm mục (d): \"không có cạnh quá 60 cm → 62.13\"). Thông tin này không mất: `phanBiet[0]` đã hỏi đúng và trích trọn cả mục 8. GIỮ: 5 loại trừ đều nêu đích danh; 4 dòng batik trích `tax.*` vì `sen-2022.json` không có mục nào cho 6214 (đã kiểm) — chấp nhận, không tự bịa nguồn.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Trích gốc chỉ chép 1 câu về cạnh-rìa trong khi `text` kể 5 loại khăn ở mục (1)-(4) + vế \"không dệt kim hoặc móc\" — `text` nói nhiều hơn hẳn trích. Dựng lại trích từ chính các tiêu đề (1)-(4) và câu cạnh-rìa; bỏ vế không có trong trích (đã phủ ở loaiTru[2]/phanBiet[1]).",
+   "sua": {
+    "text": "Khăn choàng, khăn quàng cổ và khăn choàng rộng đội đầu, khăn choàng vai và mạng che. Cạnh, rìa của các sản phẩm này thường được làm viền, quấn hoặc có tua.",
+    "trich": "(1) Khăn choàng … (2) Khăn quàng cổ và khăn choàng rộng đội đầu. … (3) Khăn choàng vai … (4) Mạng che. … Cạnh, rìa của các sản phẩm này thường được làm viền, quấn hoặc có tua."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "Sai tầng + dựa trên câu kệ sách tự mâu thuẫn. (1) Ngưỡng \"cạnh trên 60 cm\" trong chú giải chương 62 mục 8 chỉ nói về \"khăn choàng và các mặt hàng thuộc dạng khăn quàng, vuông hoặc gần như vuông\" — không áp cho mạng che / khăn choàng vai / khăn choàng rộng đội đầu; đặt làm điều kiện VÀO NHÓM sẽ loại oang chính những hàng đó. (2) Tại đúng mốc 60 cm kệ sách tự mâu thuẫn: chương 62 mục 8 \"Khăn tay có cạnh trên 60 cm → 62.14\" vs chú giải nhóm mục (d) \"khăn quàng cổ vuông không có cạnh quá 60 cm → 62.13\"; hard-code một ngưỡng là nhúng mâu thuẫn vào sổ tay. Thông tin còn nguyên ở phanBiet[0] (hỏi đúng, trích trọn mục 8)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  }
+ ]
+}

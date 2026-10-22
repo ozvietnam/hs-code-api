@@ -1,0 +1,66 @@
+{
+ "nhom": "6216",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-22T22:20:00+07:00",
+ "daKiem": 10,
+ "soat": 10,
+ "sua": 1,
+ "xoa": 0,
+ "giu": 9,
+ "ghiChu": "Audit 6216 (1 phamVi + 1 dieuKienVao + 2 loaiTru + 2 phanBiet + 0 tieuChi6 + 4 dong8 = 10). CÓ THẬT: 10/10 nguyên văn tuyệt đối. SỬA 1. `phamVi.text` mở đầu \"Găng tay, găng tay hở ngón và găng bao tay\" — cụm \"găng tay hở ngón và găng bao tay\" không có trong `nhom6216.nhom` mà lấy từ dòng biểu thuế `tax.62160010`; mục chỉ được trích từ MỘT khối nguồn (luật 1) nên `text` không được mượn chữ khối khác. Bỏ cụm đó, phần còn lại của `text` có trích dìu. GIỮ: `dieuKienVao` \"không phải dệt kim hoặc móc\" là điều kiện vào nhóm thật (móc có tua chính là loại trừ (b) → 5810, còn găng dệt kim → 61.09), không phải câu cho phép. Ghi nhận (không sửa): trích `phamVi` lược mất câu dẫn chi tiết nhóm 61.16 (\"Các quy định của Chú giải chi tiết nhóm 61.16 được áp dụng tương tự…\") — đó là quy tắc áp dụng quan trọng nhưng không phải ngoại lệ nên lược hợp lệ; nên mở rộng `sourcesFor` để kéo chú giải 61.16 cho 6216 ở lô sau. Nhóm mỏng nhất lô: không có sen.*, không có tieuChi6, không có boPhan.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "`text` mượn cụm \"găng tay hở ngón và găng bao tay\" từ khối `tax.62160010`, không có trong `nhom6216.nhom` — mục chỉ trích được từ một khối nguồn nên `text` không được lấy chữ khối khác. Bỏ cụm đó (phần còn lại của `text` đều có trong trích).",
+   "sua": {
+    "text": "Găng tay làm bằng mọi loại chất liệu dệt (kể cả bằng hàng ren), trừ sản phẩm dệt kim hoặc móc; gồm cả găng tay bảo vệ trong công nghiệp."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "đã đọc cùng nguồn: câu trích nguyên văn và nói đúng điều mục khẳng định."
+  }
+ ]
+}
