@@ -1196,3 +1196,22 @@ Hồ sơ soát: `review/{4412,4807,5210,5508,5510}.json` (mọi mục đều có
 
 **KHÔNG merge.** PR #407 chờ người duyệt quyết định tự soát mẫu ≥ 10 % phần còn lại
 (`tieuChi6`/`dong8`/`cay`) rồi gộp và điền `trang_thai=xong`, cột `pr` trong `so-tay-lo.csv`.
+
+## Bước 7 — đồng bộ main sau soát (23/10/2026)
+
+Sau khi đẩy commit soát `ee1c187`, PR #407 thành `CONFLICTING` vì main đã có lô 022–024. Đã merge
+`origin/main` vào nhánh — commit `08ef5c1`; PR trở lại **MERGEABLE**.
+
+- Xung đột `docs/giao-viec/so-tay-lo.csv`: giữ lô 022–024 = `xong` (PR 403/404/405) của main và
+  dòng 025 = `dang-lam,dev-zcode-mm` của nhánh.
+- Xung đột `TIEN-TRINH.md`: main đã **tái cấu trúc** tệp (thêm lô 018 ở đầu, lô 024 ở cuối) và
+  **làm rơi section lô 022/023** ngay trong commit lô 024 `3c84411` (kiểm bằng
+  `git show 6cd0bfe:TIEN-TRINH.md` — lúc đó còn `# TIEN-TRINH — lô 023, PHIÊN SOÁT ĐỘC LẬP`;
+  `3c84411` không còn). Đây là lỗi có sẵn trên main, **không phải** do merge này; đã báo người
+  quản lý. Cách ghép: lấy nguyên bản main (018/012/010/018-soát/024) + chèn lại **lô 015, lô 015
+  soát, lô 021, lô 021 soát** từ nhánh + lô 025 ở cuối — không bỏ phần của phiên nào.
+- Kiểm lại sau merge: `npm run so-tay:check` = **302 nhóm, 9.271 mục, 0 mục không kiểm được
+  nguồn**; `npm test` = **ALL TESTS PASSED**; `check-cay` 5 nhóm lô 025 vẫn "đủ".
+- CI PR #407 (commit `08ef5c1`): `test` **pass** (2m34s), `bench` **pass** (7m38s);
+  `Vercel` fail vì **"Deployment rate limited — retry in 24 hours"** — lỗi hạ tầng tài khoản
+  Vercel, đã có sẵn từ các PR trước, không phải lỗi code.
