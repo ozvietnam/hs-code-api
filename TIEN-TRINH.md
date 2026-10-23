@@ -2618,3 +2618,100 @@ Vercel  fail  — "Deployment rate limited — retry in 24 hours"
 `#409` (lô 028) và `#415` đều "Deployment rate limited", `#410` là "Deployment was blocked".
 Repo đã **gỡ Vercel** (CEO chốt 09/10/2026, deploy qua Coolify); CI thật của repo chỉ có
 `test` + `bench`, hai cái này **xanh**.
+
+---
+
+## 2026-10-23 — SOÁT ĐỘC LẬP lô 032 (PR #421), người soát `dev-zcode-mm`
+
+Em là người soát **độc lập**, không phải người soạn (soạn là phiên trước). Đọc lại **toàn bộ**
+`phamVi` / `boPhan` / `dieuKienVao` / `loaiTru` / `phanBiet` của 6 nhóm, **mỗi mục cùng nguồn**.
+
+**Kết quả: soát 56 mục — giữ 47, sửa 7, xoá 2.** Sau khi xoá 2 mục, lô còn **200/200 mục (100 %)**.
+
+| nhóm | soát | giữ | sửa | xoá |
+|---|---|---|---|---|
+| 5513 | 8 | 7 | 1 | 0 |
+| 5702 | 5 | 4 | 0 | **1** |
+| 5909 | 6 | 5 | 1 | 0 |
+| 6105 | 15 | 14 | 1 | 0 |
+| 6202 | 10 | 8 | 2 | 0 |
+| 6211 | 12 | 9 | 2 | **1** |
+
+### 2 mục XOÁ — máy xanh 100 %, người đọc mới bắt được
+
+1. **5702 `dieuKienVao[0]`** (`la_tham_det_thoi_co_ket_cau_noi_vong_hoac_khong_co_vong = true`):
+   lấy từ mục **(4)** của chú giải nhóm — "Thảm dệt ngang **không có các vòng hoặc nổi vòng**…".
+   Nhưng (4) chỉ là **MỘT TRONG BẢY** loại thảm liệt kê thuộc 5702; thảm Wilton (1), Axminster (2),
+   sơnin (3), terry (6) **có vòng / nổi vòng mà vẫn thuộc 5702** ⇒ điều kiện vào nhóm sai.
+   Prompt nối các điều kiện bằng `·` nên đọc thành VÀ → sẽ loại chính 6/7 nhóm này.
+2. **6211 `dieuKienVao[2]`** (`bo_quan_ao_truot_tuyet_dung_cho_truot_tuyet = true`): đây là
+   **định nghĩa riêng của "bộ quần áo trượt tuyết"** (Chú giải 7 Chương 62) — **MỘT trong ba** loại
+   hàng của nhóm. 6211 còn gồm bộ thể thao và quần áo bơi, với hai loại đó mệnh đề là sai.
+
+### 7 mục SỬA
+
+- **5513 `phamVi.trich`** — trích cũ chỉ chép câu mở đầu, còn `text` khẳng định cả ba tiêu chuẩn
+  (a) dưới 85 % (b) pha chủ yếu/duy nhất với bông (c) không quá 170 g/m² **và** câu loại trừ
+  "Băng … (nhóm 30.05)". **Nối `trich` bằng "…"** (chiều ngược lỗi lô 027), không cắt bớt `text`.
+  Dài 563/600 — vẫn dưới trần.
+- **5909 `phamVi` (text + trich)** — đoạn định nghĩa nhóm có **ba** câu, người soạn lấy hai câu đầu,
+  bỏ câu "bao gồm" thứ ba (ống dệt phủ cao su/plastic ở mặt trong, gia cố bằng kim loại).
+  Đúng lỗi "phamVi chỉ chép câu đầu, bỏ câu kế" của lô 028.
+- **6211 `phamVi` (text + trich)** — bỏ trọn **hai** đoạn "cũng bao gồm" sau đoạn đầu:
+  áo gi-lê may trình bày riêng biệt (khác 61.14) và **vải dạng mảnh tạo khố / khố riêng chiếc**
+  (tức khăn quấn — hàng xuất khá phổ biến). Bổ sung vào `text`, nối `trich`; trích dài 573/600.
+- **6105 `loaiTru[9]` + 6202 `loaiTru[4]` + 6211 `loaiTru[3]`** — cùng một lỗi: câu loại trừ 63.07 có
+  **hai vế nối**, "…nhưng chưa được hoàn thiện đầy đủ **và được xem như áo quần / các chi tiết của áo quần**";
+  người soạn chỉ lấy vế một ⇒ **loại trừ thành loạng** (mọi miếng vải dệt chưa hoàn thiện, kể cả loại
+  không nhìn ra là áo quần). Nối lại vế hai, y nguyên nguồn.
+- **6202 `dieuKienVao[2]` — ĐẢO CHIỀU.** Nhóm 62.02 là áo khoác **cho nữ / trẻ em gái**, nhưng mục lại
+  ghi điều kiện *"cài thân trước **từ trái qua phải**"* — đúng quy tắc của áo **NAM** theo Chú giải 9
+  Chương 62 (cài trái→phải là nam; **phải→trái là nữ**). Sửa sang vế nữ; câu trích giữ nguyên vẹn,
+  `ngoaiTru` (cách cắt may thể hiện rõ ràng là nam/nữ thì không áp dụng quy tắc này) giữ nguyên.
+
+### ĐÁNH GIÁ LẠI HỒ SƠ ĐỎ — `6105 dieuKienVao[2]` **KHÔNG** bị đảo
+
+Phiên soạn đã tự ghi "có thể là suy luận đảo chiều, nếu người soát thấy không vững thì xoá".
+**Giữ nguyên.** Câu nguồn loại trừ áo "có bình quân **dưới** 10 mũi khâu/1 cm dài theo mỗi chiều";
+phần bù của `< 10` đúng là `>= 10` ⇒ đây là **điều kiện VÀO NHÓM** hợp lệ, không đảo. Ngưỡng cũng
+có trong câu trích nên máy kiểm được. Đã ghi lý do vào `review/6105.json`.
+
+### Những chỗ em CỐ TÌNH KHÔNG sửa (có tiền lệ, để người duyệt thấy rõ)
+
+- **6202 `phamVi`** — `text` liệt kê các loại áo khoác (áo mưa, ponchos, duffel, gabardines, trench…)
+  nhưng câu trích của chú giải nhóm chỉ có hai câu. Danh sách đó **có thật trong chính tệp nguồn**
+  (`tax.62022010/62023010/62024010`), và nhóm **6201 đã gộp** dùng đúng mẫu này sau khi đã qua soát
+  độc lập → giữ theo quy ước, không sửa oan.
+- **5702 `phamVi`** — chữ "dệt thoi" ở đầu `text` là tên tiêu đề nhóm theo biểu thuế, xuất hiện
+  37 lần trong chính `5702.txt`, không phải kiến thức ngoài lạ.
+- **5909 `dieuKienVao[2]`** — `fact` phủ định (`khong_phai_…`) đặt `= true`: đã đếm tiền lệ trên
+  `data/so-tay`, **14/552** mục đã gộp có `fact` bắt đầu `khong_` → quy ước có sẵn.
+- **6105 `loaiTru[0]` và `[1]`** cùng trích một câu nhưng khác nhánh (61.07 và 61.09) — hợp lệ, một
+  mục chỉ nằm trong **một** khối nguồn.
+- **`neuKhong` = chính nhóm** (5909 → 5909, 5702 → 5702) — mẫu đã gộp 318/480 mục, không xoá.
+- **"Loại khác" / câu nói chỉ Chương** (5702: "chiếu và thảm làm từ vật liệu tết bện (Chương 46)") —
+  luật 3: không có mã nhóm đích danh thì không ghi `loaiTru`.
+
+### Cách làm (đúng thứ tự)
+
+1. `tmp/so-tay/gen-review-lo032.mjs` sinh `review/<nhom>.json` **trước** khi áp, ghi đủ **tất cả** 56 mục
+   (kể cả `giu`). Mọi câu trích mới **cắt từ tệp nguồn** bằng hàm `cat()` — không gõ tay — và `cat()`
+   ném lỗi nếu đoạn không có trong nguồn (lần này nó bắt được 2 lỗi gõ tay của chính em).
+2. Sao lưu `tmp/so-tay/raw/` rồi `TARGET=raw APPLY=1 node scripts/apply-review-lo032.mjs`
+   (lượt 1 `sua`, lượt 2 `xoa` theo index **giảm dần**).
+3. `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **200/200**.
+4. `python3 tmp/so-tay/strict-trich-032.py tmp/so-tay/raw` → **200 mục, 0 câu không nguyên văn**.
+5. **xoá** `data/so-tay/bao-cao/lo-032.json` cũ rồi nạp lại `--tu-tep --force`
+   (`build-so-tay` nối vào báo cáo cũ nếu không xoá ⇒ `nhomLoi` sót) → **200/200 (100 %)**.
+6. `TARGET=data APPLY=1` — **chỉ đổi `nguonLoai`**, không áp lại `thayDoi` (lô 007 đã dính lỗi
+   chèn trùng mục). Kết quả **54 mục = NGUOI_DUYET** (56 − 2 mục đã xoá), `tieuChi6`/`dong8`/`cay`
+   giữ nguyên `AI_DA_KIEM`/`MAY_SUY`.
+7. Đọc lại `data/so-tay/*.json`: **không có `sangNhom`/`hs`/`hs6` trùng** do áp (trùng `hs6` ở
+   `tieuChi6` là có sẵn từ bản nháp — hai tiêu chí khác nhau cho cùng một phân nhóm, không phải nhân đôi).
+
+### Trạng thái cuối
+
+- `check-so-tay --raw` → **200/200**; `strict-trich-032.py` → **200/200 nguyên văn**.
+- `npm run so-tay:check` → **326 nhóm, 9.874 mục, 0 mục không kiểm được nguồn**.
+- `node scripts/check-cay.mjs --nhom=5513,5702,5909,6105,6202,6211` → **6 nhóm đủ, 0 lỗi lệch cây**.
+- `npm test` → **ALL TESTS PASSED**.

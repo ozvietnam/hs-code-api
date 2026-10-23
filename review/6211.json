@@ -1,0 +1,80 @@
+{
+ "nhom": "6211",
+ "nguoiSoat": "NGUOI_DUYET",
+ "nguoiSoTen": "dev-zcode-mm (soát độc lập, không phải người soạn)",
+ "luc": "2026-10-23T18:20:00+07:00",
+ "soat": 12,
+ "xoa": 1,
+ "sua": 2,
+ "giu": 9,
+ "ghiChu": "Soát 12/12 mục (1 phamVi + 3 dieuKienVao + 7 loaiTru + 1 phanBiet). SỬA 2 + XOÁ 1: (1) phamVi bỏ trọn hai đoạn \"cũng bao gồm\" sau đoạn đầu — áo gi-lê may trình bày riêng biệt (khác 61.14) và vải dạng mảnh tạo khố / khố riêng chiếc; bổ sung vào `text` và nối `trich` bằng \"…\". (2) loaiTru[3] rớt vế hai của câu loại trừ 6307. (3) XOÁ dieuKienVao[2]: nó chỉ định nghĩa \"bộ quần áo trượt tuyết\" — MỘT trong ba loại hàng của nhóm — đặt `= true` như điều kiện vào nhóm thì loại cả đồ thể thao và đồ bơi. loaiTru[5][6] khăn choàng/khăn tay theo cạnh 60 cm là loại trừ áp thẳng cho 6211 (6211 có khăn quàng) và phanBiet[0] hỏi đúng chiều có→6214 / không→6213, cả HAI nhánh đều có căn cứ trong câu trích.",
+ "thayDoi": [
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "sua",
+   "lyDo": "Câu nguồn có HAI vế nối: \"chưa được hoàn thiện đầy đủ **và được xem như quần áo hoặc các chi tiết của quần áo**\". Người soạn chỉ lấy vế một ⇒ loại trừ loạng mọi miếng vải dệt chưa hoàn thiện. Nối lại vế hai, y nguyên nguồn (giống loaiTru[4] của 6202 và loaiTru[9] của 6105).",
+   "sua": {
+    "dieuKien": "miếng vải dệt đã qua một vài công đoạn gia công dùng để sản xuất áo quần nhưng chưa hoàn thiện đầy đủ và được xem như quần áo hoặc các chi tiết của quần áo"
+   }
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Đoạn định nghĩa nhóm 6211 có BA đoạn; `text` và `trich` chỉ lấy đoạn đầu, BỎ HAI đoạn \"cũng bao gồm\" sau đó — (1) \"khác với nhóm 61.14, nhóm này cũng bao gồm áo gi-lê may được trình bày riêng biệt, không dệt kim hoặc móc\" và (2) \"Nhóm này cũng bao gồm vải ở dạng mảnh … có thể tạo ra khố (khăn quấn quanh thắt lưng)… Khố riêng chiếc cũng được phân loại vào nhóm này\". Bỏ đoạn 2 là mất một phần thuộc nhóm (đúng lỗi lô 028: \"phamVi chỉ chép câu đầu, bỏ câu kế\"). Sửa: bổ sung vào `text` và nối `trich` bằng \"…\".",
+   "sua": {
+    "text": "Bộ quần áo thể thao, bộ quần áo trượt tuyết, quần áo bơi và các loại áo quần khác, may sẵn bằng vải dệt, không dệt kim hoặc móc; áp dụng tương tự Chú giải chi tiết nhóm 61.12 (cho bộ quần áo thể thao, bộ quần áo trượt tuyết và quần áo bơi) và nhóm 61.14 (cho các loại áo quần khác) với sửa đổi cho phù hợp; bộ đồ thể thao thuộc nhóm này có thể được lót. Lưu ý rằng, không giống như nhóm 61.14, nhóm này cũng bao gồm áo gi-lê may được trình bày riêng biệt, không dệt kim hoặc móc. Nhóm này cũng bao gồm vải ở dạng mảnh, có sợi ngang cách đều, có thể tạo ra khố bằng cách cắt đơn giản và không phải gia công thêm). Khố riêng chiếc cũng được phân loại vào nhóm này.",
+    "trich": "Các quy định của Chú giải chi tiết nhóm 61.12 đối với bộ quần áo thể thao, bộ quần áo trượt tuyết và quần áo bơi và của Chú giải chi tiết nhóm 61.14 về các loại áo quần khác được áp dụng tương tự nhưng phải có sự sửa đổi sao cho phù hợp … Tuy nhiên, bộ đồ thể thao thuộc nhóm này có thể được lót. … nhóm này cũng bao gồm áo gi-lê may được trình bày riêng biệt, không dệt kim hoặc móc. … Nhóm này cũng bao gồm vải ở dạng mảnh, có sợi ngang cách đều, có thể tạo ra khố … bằng cách cắt đơn giản và không phải gia công thêm). … Khố riêng chiếc cũng được phân loại vào nhóm này."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dieuKienVao[2]",
+   "hanhDong": "xoa",
+   "lyDo": "Câu trích định nghĩa riêng của MỘT trong ba loại hàng của nhóm 6211 (\"bộ quần áo trượt tuyết\" theo Chú giải 7 Chương 62), không phải điều kiện chung của nhóm. 6211 còn gồm bộ quần áo thể thao và quần áo bơi — với hai loại đó `fact = true` là sai, mà prompt nối các điều kiện bằng \"·\" nên đọc thành VÀ ⇒ điều kiện này loại chính đồ thể thao và đồ bơi ra khỏi nhóm. Đúng loại \"một nhánh bị tách thành điều kiện độc lập\" (mục 0 tài liệu giao việc). Xoá."
+  }
+ ]
+}

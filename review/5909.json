@@ -1,0 +1,47 @@
+{
+ "nhom": "5909",
+ "nguoiSoat": "NGUOI_DUYET",
+ "nguoiSoTen": "dev-zcode-mm (soát độc lập, không phải người soạn)",
+ "luc": "2026-10-23T18:20:00+07:00",
+ "soat": 6,
+ "xoa": 0,
+ "sua": 1,
+ "giu": 5,
+ "ghiChu": "Soát 6/6 mục (1 phamVi + 3 dieuKienVao + 1 loaiTru + 1 phanBiet). SỬA 1: phamVi bỏ câu \"bao gồm\" thứ hai của đoạn định nghĩa nhóm (ống dệt phủ cao su/plastic ở mặt trong, gia cố bằng kim loại, gắn bộ phận phụ trợ không dệt) — lỗi \"chỉ chép câu đầu, bỏ câu kế\" của lô 028. dieuKienVao[2] là điều kiện phủ định (fact \"khong_phai_…\") dạng `= true`: đã đếm tiền lệ trên data/so-tay — 14/552 dieuKienVao đã gộp có fact bắt đầu \"khong_\", nên đây là quy ước có sẵn, không xoá oan. phanBiet[0] hỏi đúng chiều có→4009 / không→5909.",
+ "thayDoi": [
+  {
+   "index": "dieuKienVao[2]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Đoạn định nghĩa nhóm 5909 có BA câu; `text` và `trich` chỉ lấy hai câu đầu, bỏ câu \"bao gồm\" thứ ba (\"Ống dệt cũng được phân loại trong nhóm này, nếu được phủ ở mặt trong bằng cao su, hoặc plastic hoặc được gia cố bằng kim loại…\") — đó là một phần thuộc nhóm, bỏ thì `text` thiếu (đúng lỗi \"phamVi chỉ chép câu đầu, bỏ câu kế\" của lô 028). Sửa: bổ sung câu đó vào `text` và nối `trich` bằng \"…\".",
+   "sua": {
+    "text": "Ống mềm, ví dụ ống chữa cháy, và các loại ống dẫn tương tự làm bằng vật liệu dệt để dẫn chất lỏng; thường làm bằng vải dệt thoi dày và khít từ bông, lanh, gai hoặc sợi nhân tạo, được dệt hoặc may hoặc ở dạng ống, có thể được hoặc không được phủ hoặc ngâm tẩm dầu, hắc ín hoặc các chế phẩm hóa học. Nhóm cũng bao gồm ống dệt được phủ ở mặt trong bằng cao su, hoặc plastic hoặc được gia cố bằng kim loại.",
+    "trich": "Nhóm này bao gồm ống mềm, ví dụ ống chữa cháy và các loại ống dẫn tương tự làm bằng vật liệu dệt để dẫn chất lỏng. … Chúng thường được làm bằng vải dệt thoi dày và khít từ bông, lanh, gai hoặc sợi nhân tạo, được dệt hoặc may hoặc ở dạng ống, và có thể được hoặc không được phủ hoặc ngâm tẩm dầu, hắc ín hoặc các chế phẩm hóa học. … Ống dệt cũng được phân loại trong nhóm này, nếu được phủ ở mặt trong bằng cao su, hoặc plastic hoặc được gia cố bằng kim loại"
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  }
+ ]
+}

@@ -1,0 +1,56 @@
+{
+ "nhom": "5513",
+ "nguoiSoat": "NGUOI_DUYET",
+ "nguoiSoTen": "dev-zcode-mm (soát độc lập, không phải người soạn)",
+ "luc": "2026-10-23T18:20:00+07:00",
+ "soat": 8,
+ "xoa": 0,
+ "sua": 1,
+ "giu": 7,
+ "ghiChu": "Soát 8/8 mục (1 phamVi + 3 dieuKienVao + 4 loaiTru; phanBiet và boPhan rỗng). CÓ THẬT: chạy strict-trich-032.py (so từng ký tự, KHÔNG squash như `so-tay:check`) — 202/202 mục cả lô nguyên văn. đieuKienVao[0..2] khớp đúng ba tiêu chuẩn kỹ thuật (a)(b)(c) của chú giải nhóm, ngưỡng \"dưới 85%\" → op \"<\" và \"không vượt quá 170g/m2\" → op \"<=\" đều đúng chiều; loạiTru[1][2] lấy từ chú giải Phần XI và loaiTru[3] từ chú giải Chương 55 — đúng mẫu đã gộp (loại trừ cấp Phần/Chương áp cho mọi nhóm trong Chương), mã đích 25.24/68.12/68.13/68.05/68.15/70.19 đều có trong câu trích. CHỈ SỬA phamVi (nối trích). Không có phanBiet: nguồn không đưa ra cặp mã nào để hỏi Có/Không, không tự bịa.",
+ "thayDoi": [
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dieuKienVao[2]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích cũ chỉ chép câu mở đầu (\"…nếu chúng đáp ứng được các tiêu chuẩn kỹ thuật sau:\") nhưng `text` khẳng định cả ba tiêu chuẩn (a) dưới 85 % (b) pha chủ yếu/duy nhất với bông (c) không quá 170 g/m2 lẫn câu loại trừ \"Băng … bị loại trừ (nhóm 30.05)\" — câu trích KHÔNG nói tới các ý đó ⇒ mục nói chắc hơn nguồn (chiều ngược lỗi lô 027). Sửa đúng cách: NỐI `trich` bằng \"…\", không cắt bớt `text`. Ba tiêu chuẩn vốn đã có ở dieuKienVao[0..2] và câu loại trừ có ở loaiTru[0], nhưng `text` đi thẳng vào prompt vòng 2 (so-tay-gates.js:134) nên câu trích phải tự nói được.",
+   "sua": {
+    "trich": "Nhóm này bao gồm các loại vải dệt thoi được định nghĩa trong Phần (I) (C) của Chú giải tổng quát Phần XI. … Nhóm này bao gồm các loại vải trên nếu chúng được phân loại như vải làm từ xơ staple tổng hợp bằng cách áp dụng Chú giải 2 của Phần XI (xem Phần (I) (A) của Chú giải tổng quát của Phần XI) và nếu chúng đáp ứng được các tiêu chuẩn kỹ thuật sau: (a) Có tỷ trọng xơ staple tổng hợp dưới 85%; (b) Được pha chủ yếu hoặc pha duy nhất với bông; (c) Trọng lượng không vượt quá 170g/m2. … Băng, đã tẩm thuốc hoặc đã đóng gói để bán lẻ thì bị loại trừ (nhóm 30.05)."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  }
+ ]
+}
