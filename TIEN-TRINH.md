@@ -1,3 +1,61 @@
+# TIEN-TRINH — lô 027 (soạn sổ tay chú giải)
+
+Nhóm của lô: **6303, 6504, 6702, 6914, 7018, 7304**
+Người soạn: `dev-zcode-mm` · Nhánh: `so-tay/lo-027` @ `1828d3b` (main mới nhất) · Ngày: 2026-10-23
+Phiên này là **người soạn** (không phải soát độc lập — việc đó là người khác, mục 4 giao việc).
+
+## Sai lệch brief ↔ CSV (đã xử lý, không im lặng)
+
+Brief dòng 4 ghi nhóm `6303,6504,6702,6914,7018,7304` — **khớp** CSV dòng `027`.
+Brief dòng 6 kèm **lệnh mẫu** `--nhom=7615,9609,3215,6306,6804,7412` — đó **không phải** nhóm của lô này
+(cũng không phải của lô 001 như lô 014 gặp; nó là nhóm của lô khác), copy-paste nhầm y như lô 012 và 014
+(memory `so-tay-lo-quy-trinh`). Đã bỏ lệnh mẫu, chốt nhóm theo CSV. Cập nhật CSV dòng 027 →
+`trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm`.
+
+## Các bước
+
+- [x] **B1.** Đọc TRỌN `docs/giao-viec/so-tay-giao-ngoai.md` (mục 0 đợt 1: 14 kiểu lỗi; mục 0/vòng 2:
+  bắt buộc soát độc lập; mục 1 bài học; mục 2 gói việc; mục 3 **11 luật**; mục 4 người duyệt) + brief.
+- [x] **B2.** Xuất nguồn `--nhom=6303,6504,6702,6914,7018,7304 --xuat-nguon=tmp/so-tay/nguon` →
+  **122.516 ký tự** (6303 40k · 6504 5,6k · 6702 6,2k · 6914 15,9k · 7018 18,8k · 7304 30k).
+- [x] **B3.** Đọc `tmp/so-tay/nguon/_he-thong.txt` trọn + **HẾT cả 6 tệp nguồn**. Đọc `lib/so-tay.js`
+  (`checkItem`/`verifySoTay`/`soCoTrongTrich`) trước khi soạn để biết máy loại mục nào. In cây
+  `lib/hs-tree.js` cho cả 6 nhóm (`scripts/tmp-dump-cay-lo027.cjs`) để biết nút 6 số / nút thiếu tên.
+- [x] **B4.** Soạn `tmp/so-tay/raw/<nhom>.json` — 6 nhóm, **157 mục** sau tự soát.
+  Cây các nhóm in bằng `tmp/so-tay/cong-cu/dump-cay-lo027.cjs`.
+- [x] **B5.** Tự kiểm TRƯỚC khi nạp, hai lớp:
+  - **Nguyên văn TUYỆT ĐỐI** (script riêng `tmp/so-tay/cong-cu/soat-nguyen-van-lo027.mjs`, KHÔNG squash — bù lỗ
+    hổng `check-so-tay-squash-mat-ky-tu`): lần 1 bắt **4 mục sai** (xem "Máy không bắt được") → vá xong
+    **157/157 khớp nguyên văn**, kể cả `ngoaiTru` (trường máy KHÔNG đọc — em tự so riêng, 1/1 khớp).
+    Script để ở `tmp/` (gitignored) vì brief chỉ cho phép commit `data/so-tay/*` + CSV; **người duyệt có thể
+    quyết định đưa nó vào `scripts/` cho các lô sau** — nó bắt được loại lỗi mà `check-so-tay` bỏ qua.
+  - `check-so-tay.mjs --raw`: lần 1 loại **2 mục** (`6504` hs6=6504 không có trong cây; `6914` chữ
+    "Gốc" thay "Gốm") → vá xong **157/157, 0 mục không kiểm được nguồn**.
+
+## Máy KHÔNG bắt được — tự soát thủ công đã bắt (đề xuất đưa vào phần 1 giao việc)
+
+1. **Dấu nháy cong của nguồn.** `ch69.chuong` viết **“sản phẩm màu lục”** (nháy cong, không phải `"` thẳng).
+   Em chép thành nháy thẳng → `check-so-tay` vẫn XANH (hàm `squash` bỏ toàn bộ dấu câu), chỉ script soát
+   nguyên văn mới bắt. **Bài học: câu trích có dấu nháy bên trong thì phải so từng ký tự.**
+2. **Dấu phẩy trong tên WCO là lỗi riêng từng phân nhóm.** `wco.730459` = "tubes**,** pipes" nhưng
+   `wco.730449` = "tubes pipes" (nguồn thiếu dấu phẩy). Em sửa hàng loạt theo 730459 thì làm hỏng 730449.
+   **Sửa câu trích phải theo từng nguồn một, không dùng thay-thế chuỗi toàn cục.**
+3. **Một nhánh của "A hoặc B"** (luật cũ, tái diễn): `nhom6504` mở đầu bằng "chủ yếu bao gồm … thân mũ
+   65.02 đã dựng theo khuôn…", nhưng mục (2) của cùng nhóm lại nói nhóm còn gồm mũ **ghép từ dải**. Em đã
+   **XOÁ** `dieuKienVao` của 6504 thay vì giữ điều kiện thiếu một nhánh.
+4. **`dieuKien` nói nhiều hơn câu trích**: `7304` `loaiTru` viết "…trục bàn đạp và khung xe đạp" nhưng trích
+   mới cắt tới "(ví dụ, nhóm 87.08 hoặc 87.14)". Kéo nốt vế sau vào câu trích (vẫn nguyên văn, ≤ 300 ký tự).
+5. **Cắt giữa câu phải để dấu lược**: `6303` `dieuKienVao` cắt sau "…sản phẩm không dệt,…)" mà không có
+   `…` → thêm `…` để không ám chỉ câu đã hết.
+
+## Cố ý KHÔNG soạn (thà bỏ mục còn hơn mục mờ — luật 8)
+
+- **`7018` không có `dieuKienVao`**: chú giải nhóm chỉ liệt kê các loại (A)–(H), không có câu nào nói
+  điều kiện chung vào nhóm. Chỉ có câu "có thể phủ nhựa…" (câu CHO PHÉP — luật 28 trong `_he-thong`).
+- **`6504` không có `tieuChi6`**: lá 65040000 là cả nhóm 4 số, máy chỉ nhận `hs6` là nút cấp 6 hoặc lá 8 số có
+  `laPhanNhom`; `hs6=6504` bị loại (`hs6-khong-co-trong-cay`). Ghi nhận để người duyệt biết là hạn chế máy.
+- Bỏ các `loaiTru` chỉ nói **"Chương N"** (65, 67, 70, 95) — luật 3 không tính là đích danh.
+
 # TIEN-TRINH — lô 014 (soạn sổ tay chú giải)
 
 Nhóm của lô: **8465, 8511, 8529, 9013, 9610, 4013**

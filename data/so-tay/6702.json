@@ -1,0 +1,213 @@
+{
+ "nhom": "6702",
+ "phamVi": {
+  "text": "Hoa, lá và quả nhân tạo, các phần của chúng và các sản phẩm làm bằng hoa, lá hoặc quả nhân tạo.",
+  "nguon": "nhom6702.nhom",
+  "trich": "(1) Hoa, lá và quả nhân tạo ở dạng giống với những sản phẩm tự nhiên, được tạo ra bởi việc ghép các phần khác nhau (bằng cách chằng buộc, dán bằng keo gắn, hoặc lắp với một vật khác hoặc bằng các phương pháp tương tự).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "duoc_tao_ra_bang_viec_ghep_cac_phan_khac_nhau",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom6702.nhom",
+   "trich": "(1) Hoa, lá và quả nhân tạo ở dạng giống với những sản phẩm tự nhiên, được tạo ra bởi việc ghép các phần khác nhau (bằng cách chằng buộc, dán bằng keo gắn, hoặc lắp với một vật khác hoặc bằng các phương pháp tương tự).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "khong_phu_thuoc_muc_do_hoan_chinh_cua_san_pham",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom6702.nhom",
+   "trich": "Với điều kiện chúng có những đặc tính đã được quy định trong những đoạn trước đây, tất cả những sản phẩm này được xếp trong nhóm này và không phụ thuộc mức độ hoàn chỉnh của chúng.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Hoa và cành, lá tự nhiên (kể cả đã được nhuộm, tráng bạc, mạ vàng)",
+   "sangNhom": "0603|0604",
+   "nguon": "nhom6702.nhom",
+   "trich": "(a) Hoa và cành, lá tự nhiên thuộc nhóm 06.03 hoặc 06.04 (ví dụ: được nhuộm, tráng bạc, mạ vàng).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hoa, lá hoặc quả là tự nhiên hay nhân tạo?",
+   "neuCo": "0603",
+   "neuKhong": "6702",
+   "nguon": "nhom6702.nhom",
+   "trich": "(a) Hoa và cành, lá tự nhiên thuộc nhóm 06.03 hoặc 06.04 (ví dụ: được nhuộm, tráng bạc, mạ vàng).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "670210",
+   "fact": "bang_plastic",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.670210",
+   "trich": "670210 Flowers, foliage and fruit, artificial, and parts thereof; articles made of artificial flowers, foliage or fruit, of plastics",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "670290",
+   "fact": "bang_vat_lieu_khac_plastic",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.670290",
+   "trich": "670290 Flowers, foliage and fruit, artificial, and parts thereof; articles made of artificial flowers, foliage or fruit, of materials other than plastics",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "67021000",
+   "dieuKien": "Bằng plastic",
+   "tieuChi": {
+    "fact": "bang_plastic",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.67021000",
+   "trich": "67021000 - Bằng plastic",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "67029010",
+   "dieuKien": "Bằng giấy",
+   "tieuChi": {
+    "fact": "bang_giay",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.67029010",
+   "trich": "67029010 - - Bằng giấy",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "67029020",
+   "dieuKien": "Bằng vật liệu dệt",
+   "tieuChi": {
+    "fact": "bang_vat_lieu_det",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.67029020",
+   "trich": "67029020 - - Bằng vật liệu dệt",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "67029090",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.67029090",
+   "trich": "67029090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "670290",
+    "truAnhEm": [
+     "67029010",
+     "67029020"
+    ],
+    "toTienCoTen": "670290",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "6702",
+    "cap": 4,
+    "cha": "67",
+    "tenVi": "67.02 Hoa, cành, lá, quả nhân tạo và các phần của chúng; các sản phẩm làm bằng hoa, cành, lá hoặc quả nhân tạo.",
+    "tenEn": "Flowers, foliage and fruit, artificial, and parts thereof; articles made of artificial flowers, foliage or fruit",
+    "suyRa": false
+   },
+   {
+    "id": "67021000",
+    "cap": 8,
+    "cha": "6702",
+    "tenVi": "Bằng plastic",
+    "tenEn": "Flowers, foliage and fruit, artificial, and parts thereof; articles made of artificial flowers, foliage or fruit, of plastics",
+    "suyRa": false,
+    "laPhanNhom": "670210"
+   },
+   {
+    "id": "670290",
+    "cap": 6,
+    "cha": "6702",
+    "tenVi": "Bằng các loại vật liệu khác",
+    "tenEn": "Flowers, foliage and fruit, artificial, and parts thereof; articles made of artificial flowers, foliage or fruit, of materials other than plastics",
+    "suyRa": false
+   },
+   {
+    "id": "67029010",
+    "cap": 8,
+    "cha": "670290",
+    "tenVi": "Bằng giấy",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "67029020",
+    "cap": 8,
+    "cha": "670290",
+    "tenVi": "Bằng vật liệu dệt",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "67029090",
+    "cap": 8,
+    "cha": "670290",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom6702.nhom",
+  "tax.67021000",
+  "tax.67029010",
+  "tax.67029020",
+  "tax.67029090",
+  "wco.670210",
+  "wco.670290"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-23T08:06:34.930Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 11,
+  "dat": 11,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
