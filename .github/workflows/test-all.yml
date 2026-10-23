@@ -14,4 +14,8 @@ jobs:
         with:
           node-version: '22'
       - run: npm ci --no-audit --no-fund   # devDependency xlsx cho scripts/test-bieu-thue.mjs
+        env:
+          # onnxruntime-node (qua @huggingface/transformers) postinstall tải gói CUDA từ api.nuget.org — runner
+          # timeout thất thường (23/10, PR #424). CI không cần CUDA: bỏ qua phần không đóng gói sẵn.
+          ONNXRUNTIME_NODE_INSTALL: skip
       - run: npm test
