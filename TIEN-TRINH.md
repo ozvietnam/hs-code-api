@@ -1,6 +1,97 @@
 # TIEN-TRINH — sổ tay chú giải HS (dùng chung nhiều phiên)
 
 <!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
+---
+
+# SOẠN lô 036 — phiên `dev-zcode-mm` (23/10/2026)
+
+- **Nhánh:** `so-tay/lo-036` @ ba52670 · **Nhóm:** `8455,8464,8472,8474,8508,8526`
+
+## Sai lệch brief ↔ CSV
+
+Brief `brief-st-lo036.md` dòng 4 ghi đúng nhóm, nhưng **dòng 6 kèm lệnh `--nhom=7615,9609,3215,6306,6804,7412`**
+— nhóm của lô khác, copy-paste y nguyên khối (cùng kiểu lô 003/012/014/027). Theo `so-tay-lo.csv`
+là nguồn chuẩn → dùng `8455,8464,8472,8474,8508,8526`.
+
+## Công cụ tự dựng trong `tmp/so-tay/` (KHÔNG commit)
+
+| Tệp | Việc |
+|---|---|
+| `srclib.mjs` | **Cắt trích nguyên văn từ tệp nguồn** — `cu('<nhom>')` → `trich(mãNguồn, [đoạn…])`. Đoạn phải khớp DUY NHẤT (nới khoảng trắng xuống dòng), khớp nhiều chỗ thì dừng lại, khớp không được thì ném lỗi. **Không thể gõ sai dấu vào sổ tay.** |
+| `audit-truong.mjs` | Tự soát: (1) mỗi đoạn trích phải là **thở hàng lằn chính xác** của nguồn — chặt hơn `check-so-tay` (kiểm cả dấu câu, bắt được loại "rác trích" lô 029); (2) trường tự viết (`phamVi.text`, `boPhan.quyTac`, `loaiTru.dieuKien`, `phanBiet.hoi`, `dong8.dieuKien`) — bắt "thêm chữ lạ" + "sai dấu". |
+| `cat-trich.mjs`, `cay.mjs` | Thăm dò vị trí trong nguồn; in cây HS (nút ảo, nút thiếu tên, phân nhóm 6 số cần `tieuChi6`) |
+
+## Tiến độ
+
+| # | Nhóm | `check-so-tay --raw` | Tự soát |
+|---|---|---|---|
+| 1 | 8455 | ✅ 11/11 | sạch |
+| 2 | 8464 | ✅ 19/19 | sạch |
+| 3 | 8472 | ✅ 31/31 | sạch |
+| 4 | 8474 | ✅ 40/40 | sạch |
+| 5 | 8508 | ✅ 16/16 | sạch |
+| 6 | 8526 | ✅ 12/12 | sạch |
+| | **Tổng** | **129/129 (100 %)** | **0 lỗi** |
+
+Nạp xong: `bao-cao/lo-036.json` → `tyLeDat: 100`, `nhomLoi: []`.
+`npm run so-tay:check` → **350 nhóm, 10.412 mục, 0 mục không kiểm được nguồn**.
+`npm test` → **ALL TESTS PASSED**. `check-cay` cả 6 nhóm → **0 lỗi lệch cây**.
+
+### Phân bố mục
+
+| Nhóm | phạm vi | dieuKienVao | loạiTru | phanBiet | boPhan | tieuChi6 | tenDien | dong8 |
+|---|---|---|---|---|---|---|---|---|
+| 8455 | 1 | 0 | 4 | 0 | 1 | 0 | 0 | 5 |
+| 8464 | 1 | 0 | 9 | 0 | 1 | 2 | 0 | 6 |
+| 8472 | 1 | **1** | 16 | 1 | 1 | 2 | 0 | 8 |
+| 8474 | 1 | 0 | 12 | 0 | 1 | 6 | **2** | 17 |
+| 8508 | 1 | 0 | 2 | 0 | 1 | 5 | **1** | 6 |
+| 8526 | 1 | 0 | 1 | 0 | 1 | 3 | **1** | 5 |
+
+## Ghi chú nhóm 8455 (máy cán)
+
+- `dieuKienVao` **rỗng** — nguồn không có câu RÀNG BUỘC phủ cả nhóm 4 số (nhóm gồm cả máy cán lẫn trục cán + bộ phận);
+  "Máy cán là máy chế biến kim loại…" là ĐỊNH NGHĨA, "có thể được sử dụng để…" là câu CHO PHÉP.
+- `phanBiet` **rỗng** — chú giải chỉ nói một chiều ("…cũng bị loại trừ ra khỏi nhóm này") → nhánh "không" buộc phải suy từ danh sách loại trừ.
+- `loaiTru` 4 mục: máy cán ép → 84.20 · máy cán dán lá kim loại lên tấm đỡ giấy → 84.20 · máy uốn/gấp/làm thẳng/làm phẳng → 84.62 · (chú giải ch.84) máy hút bụi → 85.08.
+- Nút ảo `84552 "Máy cán khác"` **đã có tên** từ biểu thuế Tổng cục → không điền `cay.tenDien`.
+- `boPhan` lấy Chú giải 2 Phần XVI (a)+(b) — trích **394 ký tự** (dài nhất lô); luật bộ phận cắt bớt là mất nghĩa.
+
+### Các nhóm còn lại
+
+- **8464** `dieuKienVao`/`phanBiet` rỗng (xem lý do như 8455). `loaiTru` 9 mục; trong đó mục gia công
+  nóng thuỷ tinh → 84.75 kéo **cả câu ngoại lệ** phía sau ("không loại trừ … nếu vẫn còn giữ được
+  tính cứng chắc") — nếu lược bằng `…` thì mất ngoại lệ (luật 31). Mục (f) phải lược qua đoạn
+  nguồn có sẵn dấu `…` trong ngoặc kép ví dụ.
+- **8472** nhóm DUY NHẤT của lô có `dieuKienVao`: "Máy văn phòng được phân loại ở đây **chỉ khi**
+  chúng có đế gắn cố định hoặc đặt trên bàn" — câu RÀNG BUỘC phủ cả nhóm. `phanBiet` 1 mục
+  (máy không bàn phím có đáp ứng Chú giải 6 (D)(i) không → 84.43 / 84.72).
+- **8474** `tenDien` 2 mục (8474.31, 8474.32) lấy từ chú giải mục (C)(1)(2). `loaiTru` **không**
+  ghi điểm (e) "Đầm rung bê tông (nhóm 84.67 hoặc 84.79 **tùy trường hợp**)" — câu nguồn tự nói
+  "tùy trường hợp" nên không phải loại trừ dứt khoát (luật máy `loai-tru-chi-la-thuong`).
+  Hai mục 8421 có ngoại lệ riêng nên trích kèm câu "Tuy nhiên…" ngay sau.
+- **8508** nguồn mỏng nhất lô (chú giải nhóm chỉ ~15 dòng): `dieuKienVao`/`phanBiet` rỗng,
+  `loaiTru` chỉ 2. **Không diễn đạt được ngưỡng "1.500 W"** của 8508.11 vì
+  `soCoTrongTrich()` của `lib/so-tay.js` so số trong trích theo chuỗi thô — nguồn viết "1,500"
+  (dấu phẩy) nên `value: 1500` không khớp, còn `tieuChi6`/`dieuKienSo` lại **cấm** lấy từ `tax.*`.
+  Chỉ ghi được ngưỡng sức chứa "20L" từ tên WCO. → đề xuất luật máy cho lô sau.
+- **8526** chú giải nhóm liệt kê (1)–(12) nhưng **không gán điềm nào cho phân nhóm 6 số** →
+  cả `tieuChi6` và `cay.tenDien` lấy từ `wco.*` (bài học lô 029: tiêu chí phần bị treo nhầm lên hs6).
+  Dòng "*** … được loại trừ (**thường thuộc** nhóm 87.05)" không ghi `loaiTru` vì có định ngữ "thường".
+
+### Chỗ còn trống (`check-cay --chi-tiet`, chỉ là CẢNH BÁO không phải lỗi)
+
+`phan-nhom-chua-co-tieu-chi`: 845510/845521/845522/845530/845590 (toàn bộ 8455),
+846490, 847290, 847490 — đều là phân nhóm **"Loại khác"/dư địa nghĩa dư**, nguồn không nêu
+tiêu chí dương định nên để trống đúng nguyên tắc "thà để trống còn hơn đoán".
+
+### Sai lệch cần người duyệt biết
+
+- **Brief sai dòng lệnh** (xem đầu mục) — đã theo CSV.
+- `so-tay:check` và `npm test` xanh; `check-cay` **0 lỗi**.
+- Lô này **chưa qua soát độc lập** (mục 4 của giao việc) — người duyệt phải soát TOÀN BỘ
+  `phamVi`/`boPhan`/`dieuKienVao`/`loaiTru`/`phanBiet` của 6 nhóm này.
+
 
 ---
 

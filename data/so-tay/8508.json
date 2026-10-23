@@ -1,0 +1,279 @@
+{
+ "nhom": "8508",
+ "phamVi": {
+  "nguon": "nhom8508.nhom",
+  "trich": "Theo chú giải 1(d) chương 85, nhóm này bao gồm các máy hút bụi các loại, dù có hay không là loại cầm tay, bao gồm cả máy hút bụi loại khô và ướt, có hay không kèm theo đồ phụ trợ như chổi xoay, thiết bị làm sạch thảm, đầu hút đa chức năng... … Nhóm này bao gồm cả, không kể những cái khác, máy hút bụi loại để chải lông dùng cho ngựa hoặc gia súc khác.",
+  "text": "Các máy hút bụi các loại, dù có hay không là loại cầm tay, bao gồm cả máy hút bụi loại khô và ướt, có hay không kèm theo đồ phụ trợ như chổi xoay, thiết bị làm sạch thảm, đầu hút đa chức năng; và máy hút bụi loại để chải lông dùng cho ngựa hoặc gia súc khác.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "nguon": "nhom8508.nhom",
+   "trich": "Loại trừ khỏi nhóm này là các thiết bị làm sạch thảm bằng cách phun chất lỏng làm sạch lên trên mặt thảm, dung dịch làm sạch sau đó được hút ra mà không có sự kết hợp máy hút bụi khô hay ướt (nhóm 84.51 hoặc 85.09).",
+   "dieuKien": "các thiết bị làm sạch thảm bằng cách phun chất lỏng làm sạch lên trên mặt thảm, dung dịch làm sạch sau đó được hút ra mà không có sự kết hợp máy hút bụi khô hay ướt",
+   "sangNhom": "8451|8509",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "nguon": "nhom8508.nhom",
+   "trich": "Nhóm này cũng loại trừ các thiết bị chân không loại được sử dụng trong y tế, phẫu thuật, nha khoa và thú y khác (nhóm 90.18).",
+   "dieuKien": "các thiết bị chân không loại được sử dụng trong y tế, phẫu thuật, nha khoa và thú y khác",
+   "sangNhom": "9018",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "nguon": "wco.850811",
+   "trich": "850811 Vacuum cleaners, with self-contained electric motor, of a power not exceeding 1,500 W and having a dust bag or other receptacle capacity not exceeding 20L",
+   "hs6": "850811",
+   "fact": "co_dong_co_dien_gan_lien",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "nguon": "wco.850811",
+   "trich": "850811 Vacuum cleaners, with self-contained electric motor, of a power not exceeding 1,500 W and having a dust bag or other receptacle capacity not exceeding 20L",
+   "hs6": "850811",
+   "fact": "suc_chua_tui_hung_bui_hoac_do_chua_khac",
+   "op": "<=",
+   "value": 20,
+   "donVi": "L",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "nguon": "wco.850819",
+   "trich": "850819 Vacuum cleaners, with self-contained electric motor, n.e.c. in item no. 8508.1",
+   "hs6": "850819",
+   "fact": "co_dong_co_dien_gan_lien",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "nguon": "wco.850860",
+   "trich": "850860 Vacuum cleaners, other than with a self-contained electric motor",
+   "hs6": "850860",
+   "fact": "co_dong_co_dien_gan_lien",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "nguon": "wco.850870",
+   "trich": "850870 Parts of vacuum cleaners",
+   "hs6": "850870",
+   "fact": "la_bo_phan_may_hut_bui",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "nguon": "tax.85081100",
+   "trich": "85081100 - - Công suất không quá 1.500 W và có túi hứng bụi hoặc đồ chứa khác với sức chứa không quá 20 lít",
+   "hs": "85081100",
+   "dieuKien": "Công suất không quá 1.500 W và có túi hứng bụi hoặc đồ chứa khác với sức chứa không quá 20 lít",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "nguon": "tax.85081910",
+   "trich": "85081910 - - - Loại phù hợp dùng cho mục đích gia dụng",
+   "hs": "85081910",
+   "dieuKien": "- Loại phù hợp dùng cho mục đích gia dụng",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "nguon": "tax.85081990",
+   "trich": "85081990 - - - Loại khác",
+   "hs": "85081990",
+   "dieuKien": "- Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "850819",
+    "truAnhEm": [
+     "85081910"
+    ],
+    "toTienCoTen": "850819",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "nguon": "tax.85086000",
+   "trich": "85086000 - Máy hút bụi khác",
+   "hs": "85086000",
+   "dieuKien": "Máy hút bụi khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "nguon": "tax.85087010",
+   "trich": "85087010 - - Của máy hút bụi thuộc phân nhóm 8508.11.00 hoặc 8508.19.10",
+   "hs": "85087010",
+   "dieuKien": "Của máy hút bụi thuộc phân nhóm 8508.11.00 hoặc 8508.19.10",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "nguon": "tax.85087090",
+   "trich": "85087090 - - Loại khác",
+   "hs": "85087090",
+   "dieuKien": "Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "850870",
+    "truAnhEm": [
+     "85087010"
+    ],
+    "toTienCoTen": "850870",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "boPhan": {
+  "nguon": "nhom8508.nhom",
+  "trich": "BỘ PHẬN Theo quy tắc chung phân loại các bộ phận (xem chú giải chi tiết tổng quát phần XVI), bộ phận của các máy nhóm này cũng được phân loại ở đây. … Máy hút bụi của nhóm này có thể được đi kèm với các thiết bị phụ trợ (phụ kiện) (cho việc chải, đánh bóng, phun thuốc diệt côn trùng...) hoặc các bộ phận có thể thay đổi … Các thiết bị này được phân loại ở đây cùng với các bộ phận và phụ kiện đi kèm với máy hút bụi, với điều kiện chúng là loại thường được sử dụng với máy hút bụi. Khi xuất trình riêng rẽ, chúng được phân loại theo bản chất của mặt hàng.",
+  "quyTac": "Bộ phận của các máy nhóm này cũng được phân loại ở đây. Máy hút bụi của nhóm này có thể được đi kèm với các thiết bị phụ trợ (phụ kiện) hoặc các bộ phận có thể thay đổi; các thiết bị này được phân loại ở đây cùng với các bộ phận và phụ kiện đi kèm với máy hút bụi, với điều kiện chúng là loại thường được sử dụng với máy hút bụi. Khi xuất trình riêng rẽ, chúng được phân loại theo bản chất của mặt hàng.",
+  "tomTat": "Bộ phận của máy thuộc nhóm này → cùng nhóm; thiết bị phụ trợ/bộ phận thay đổi đi kèm → cùng nhóm nếu thường dùng với máy hút bụi, xuất trình riêng thì theo bản chất mặt hàng.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8508",
+    "cap": 4,
+    "cha": "85",
+    "tenVi": "Máy hút bụi.",
+    "tenEn": "Vacuum cleaners",
+    "suyRa": false
+   },
+   {
+    "id": "85081",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8508",
+    "tenVi": "Có động cơ điện gắn liền",
+    "tenEn": "With self-contained electric motor",
+    "suyRa": true
+   },
+   {
+    "id": "85081100",
+    "cap": 8,
+    "cha": "85081",
+    "tenVi": "Công suất không quá 1.500 W và có túi hứng bụi hoặc đồ chứa khác với sức chứa không quá 20 lít",
+    "tenEn": "Vacuum cleaners, with self-contained electric motor, of a power not exceeding 1,500 W and having a dust bag or other receptacle capacity not exceeding 20L",
+    "suyRa": false,
+    "laPhanNhom": "850811"
+   },
+   {
+    "id": "850819",
+    "cap": 6,
+    "cha": "85081",
+    "tenVi": null,
+    "tenEn": "Vacuum cleaners, with self-contained electric motor, n.e.c. in item no. 8508.1",
+    "suyRa": false
+   },
+   {
+    "id": "85081910",
+    "cap": 8,
+    "cha": "850819",
+    "tenVi": "Loại phù hợp dùng cho mục đích gia dụng",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "85081990",
+    "cap": 8,
+    "cha": "850819",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "85086000",
+    "cap": 8,
+    "cha": "8508",
+    "tenVi": "Máy hút bụi khác",
+    "tenEn": "Vacuum cleaners, other than with a self-contained electric motor",
+    "suyRa": false,
+    "laPhanNhom": "850860"
+   },
+   {
+    "id": "850870",
+    "cap": 6,
+    "cha": "8508",
+    "tenVi": "Bộ phận",
+    "tenEn": "Parts of vacuum cleaners",
+    "suyRa": false
+   },
+   {
+    "id": "85087010",
+    "cap": 8,
+    "cha": "850870",
+    "tenVi": "Của máy hút bụi thuộc phân nhóm 8508.11.00 hoặc 8508.19.10",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "85087090",
+    "cap": 8,
+    "cha": "850870",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": [
+   {
+    "nguon": "wco.850819",
+    "trich": "850819 Vacuum cleaners, with self-contained electric motor, n.e.c. in item no. 8508.1",
+    "id": "850819",
+    "tenVi": "Máy hút bụi có động cơ điện gắn liền, loại khác",
+    "nguonLoai": "AI_DA_KIEM"
+   }
+  ]
+ },
+ "dungTuNguon": [
+  "nhom8508.nhom",
+  "tax.85081100",
+  "tax.85081910",
+  "tax.85081990",
+  "tax.85086000",
+  "tax.85087010",
+  "tax.85087090",
+  "wco.850811",
+  "wco.850819",
+  "wco.850860",
+  "wco.850870"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-23T14:20:23.945Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 16,
+  "dat": 16,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
