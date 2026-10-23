@@ -4,38 +4,28 @@
   "text": "Sợi bông (trừ chỉ khâu) đóng gói để bán lẻ, ở các dạng và theo các điều kiện mô tả trong Chú giải tổng quát Phần XI.",
   "nguon": "nhom5207.nhom",
   "trich": "Nhóm này bao gồm cả sợi bông (trừ chỉ khâu) khi đóng gói để bán lẻ, ở các dạng và phù hợp với các điều kiện được mô tả trong Phần (I) (B) (3) của Chú giải Tổng quát Phần XI.",
-  "nguonLoai": "AI_DA_KIEM"
+  "nguonLoai": "NGUOI_DUYET"
  },
  "dieuKienVao": [
   {
-   "fact": "la_soi_bong_tru_chi_khau",
+   "fact": "la_soi_bong_tru_chi_khau_dong_goi_de_ban_le",
    "op": "=",
    "value": true,
    "donVi": null,
    "ngoaiTru": [],
    "nguon": "nhom5207.nhom",
    "trich": "Nhóm này bao gồm cả sợi bông (trừ chỉ khâu) khi đóng gói để bán lẻ",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
-   "fact": "trong_luong_goi_tren_bia_guong_gho_ong_tuyep",
-   "op": "<=",
-   "value": 125,
-   "donVi": "g",
+   "fact": "dong_goi_de_ban_le_theo_mot_trong_ba_dang_cua_phan_i_b_3",
+   "op": "=",
+   "value": true,
+   "donVi": null,
    "ngoaiTru": [],
    "nguon": "phan52.phan",
-   "trich": "(a) Trên bìa, guồng gờ, ống tuýp hoặc cuộn có lõi tương tự, với trọng lượng (kể cả lõi) không quá: (i) 85 g đối với tơ tằm, tơ tằm phế liệu hoặc sợi filament nhân tạo; hoặc (ii) 125 g đối với các loại sợi khác;",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "fact": "trong_luong_goi_dang_hinh_cau_con_sai_cuon_sai",
-   "op": "<=",
-   "value": 500,
-   "donVi": "g",
-   "ngoaiTru": [],
-   "nguon": "phan52.phan",
-   "trich": "(b) Dạng hình cầu, con sợi hoặc cuộn sợi với trọng lượng không quá: (i) 85 g đối với sợi filament nhân tạo độ mảnh dưới 3.000 decitex, tơ tằm hoặc phế liệu tơ tằm; (ii) 125 g đối với các loại sợi khác có độ mảnh dưới 2.000 decitex; hoặc (iii) 500 g đối với các loại sợi khác.",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "sợi (đơn, xe hoặc cáp) đóng gói ở các dạng: … (a) Trên bìa, guồng gờ, ống tuýp hoặc cuộn có lõi tương tự … (b) Dạng hình cầu, con sợi hoặc cuộn sợi với trọng lượng … (c) Dạng con sợi hoặc cuộn sợi gồm các con sợi hoặc cuộn sợi nhỏ hơn được phân cách nhau bởi các đường chỉ",
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "loaiTru": [
@@ -44,28 +34,28 @@
    "sangNhom": "5604",
    "nguon": "phan52.phan",
    "trich": "(a) Chỉ cao su, vải đã được bọc và sợi dệt đã ngâm tẩm (kể cả nhúng), phủ, bao, hay bọc bằng cao su hay plastic của nhóm 56.04.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Sợi trộn kim loại",
    "sangNhom": "5605",
    "nguon": "phan52.phan",
    "trich": "(b) Sợi trộn kim loại (nhóm 56.05).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Sợi cuốn bọc, sợi sơnin và sợi sùi vòng",
    "sangNhom": "5606",
    "nguon": "phan52.phan",
    "trich": "(c) Sợi cuốn bọc, sợi sơnin và sợi sùi vòng (nhóm 56.06).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Sợi dệt được gia cố bằng chỉ kim loại",
    "sangNhom": "5607",
    "nguon": "phan52.phan",
    "trich": "(e) Sợi dệt được gia cố bằng chỉ kim loại (nhóm 56.07).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "phanBiet": [
@@ -75,7 +65,7 @@
    "neuKhong": "5207",
    "nguon": "phan52.phan",
    "trich": "Theo mục đích của các nhóm 52.04, 54.01 và 55.08, khái niệm \"chỉ khâu\" có nghĩa là loại sợi xe hoặc sợi cáp: (a) Cuộn trên lõi (ví dụ, guồng gờ, ống tuýp) trọng lượng không quá 1.000 g (kể cả lõi); (b) Đã hoàn tất để sử dụng làm chỉ khâu; và (c) Có xoắn \"Z\" cuối cùng.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hoi": "Sợi có trộn kim loại không?",
@@ -83,7 +73,7 @@
    "neuKhong": "5207",
    "nguon": "phan52.phan",
    "trich": "(b) Sợi trộn kim loại (nhóm 56.05).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "tieuChi6": [
@@ -187,12 +177,12 @@
  "taoBoi": {
   "provider": "dev-zcode-mm",
   "model": null,
-  "luc": "2026-10-23T10:07:57.960Z",
-  "ms": 3
+  "luc": "2026-10-23T11:13:29.340Z",
+  "ms": 2
  },
  "kiemTra": {
-  "tong": 14,
-  "dat": 14,
+  "tong": 13,
+  "dat": 13,
   "loai": 0,
   "nguonBiCat": [
    "phan52.phan (46130→25000)"

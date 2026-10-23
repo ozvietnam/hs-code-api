@@ -1,0 +1,92 @@
+{
+ "nhom": "5402",
+ "ngườiSoát": "dev-zcode-mm",
+ "luc": "soát độc lập lô 031 (PR #420) — 5 khối phamVi/boPhan/dieuKienVao/loaiTru/phanBiet",
+ "daKiem": "đọc TỪNG mục cùng tmp/so-tay/nguon/5402.txt và ch54.chuong đầy đủ qua sourcesFor(); strict-nguyen-van.mjs; audit-sau-doan.mjs; đối chiếu dong8 với data/tax.json để xem ngưỡng nào thuộc cả nhóm; đối chiếu tiền lệ trên data/so-tay/*.json",
+ "soat": 15,
+ "giu": 13,
+ "sua": 1,
+ "xoa": 1,
+ "ghiChu": "Đối chiếu biểu thuê: 5402 gồm 5402.11/5402.19 (sợi xe, sợi cáp), 5402.20 (tô), 5402.31–5402.49 (sợi đơn multifilament có/không dún), 5402.51–5402.69 (sợi kéo) — ngưỡng \"độ mảnh dưới 67 decitex\" KHÔNG xuất hiện ở bất kỳ dòng nào, chỉ là định nghĩa \"sợi monofilament\" trong chú giải nhóm. Đó là cơ sở xoá dieuKienVao[1]. Đối chiếu này cũng ghi lại chênh lệch đã biết: WCO đặt ngưỡng 50 decitex cho 540231 còn biểu thuê đặt 50 tex (1 decitex = 0,1 Tex, Phần XI) — không thuộc phạm vi 5 khối nên không sửa ở đây.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "sua": {
+    "text": "Sợi filament tổng hợp (trừ chỉ khâu), gồm sợi monofilament có độ mảnh dưới 67 decitex, sợi đơn multifilament, và sợi xe (folded) hoặc sợi cáp.",
+    "trich": "Nhóm này bao gồm sợi filament tổng hợp (trừ chỉ khâu) gồm: … (1) Sợi monofilament (monophin) có độ mảnh dưới 67 decitex. … (2) Sợi multifilament thu được bằng cách gộp nhiều sợi monofilamnet lại với nhau … Sợi xe (folded) hoặc sợi cáp được sản xuất bằng cách kết hợp các sợi đơn đó"
+   },
+   "lyDo": "Text cũ liệt kê bằng \"gồm\" nhưng chỉ nêu MỌT (1) và (iii), bỏ hẳn nhánh (2) — nhánh đại diện cho phần lớn nhóm (sợi đơn multifilament 5402.31–5402.49 và sợi kéo 5402.51–5402.69). Đọc \"gồm\" thành liệt kê kín sẽ đẩy hàng hợp lệ ra khỏi 5402 — cùng lỗi 3401 ở lô 030 (chỉ trích phần đầu rồi coi là phạm vi nhóm). Nối trich để nêu đủ ba nhánh, đúng cách sửa đã dùng ở 3407/3506 và nhắc trong soat-lo030-phamvi-mo-ta-vat-lieu-hoac-mot-phan."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Sự kiện mô tả đúng toàn nhóm, fact khớp câu nguồn."
+  },
+  {
+   "index": "dieuKienVao[2]",
+   "hanhDong": "giu",
+   "lyDo": "\"da_dong_goi_de_ban_le = false\" phủ trọn nhóm và đúng: chính chú giải nhóm nói sợi đã đóng gói để bán lẻ thuộc 54.06 nên không thuộc 5402."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Khối \"Ngoài những loại trừ đã nêu, nhóm này không bao gồm:\", mục (a), tự nêu \"thuộc nhóm 54.04\"."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b), tự nêu \"của nhóm 55.01\"."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c), tự nêu \"của nhóm 55.03\"."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (d), tự nêu \"của nhóm 55.06\"."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (e), tự nêu \"(nhóm 56.05)\"."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"bị loại trừ khỏi nhóm này nếu chúng tạo nên sợi xe của nhóm 56.07 hoặc…\" — loại trừ tường minh, đích danh trong câu. Câu ngay sau (\"Ngoài những dạng thông thường…\") là mô tả, không phải ngoại lệ."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu, nhánh thứ hai: sợi đã đóng gói để bán lẻ → 54.06."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi CÓ/KHÔNG đúng chiều (monofilament/dải → 5404). Hỏi dạng \"A hoặc B\" nhưng neuCo là nhóm đích của cả hai nhánh nên không bị lỗi đảo chiều."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: đã đóng gói để bán lẻ → 5406."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: tô filament > 2 m → 5501."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: trộn kim loại (tỷ lệ bất kỳ) hoặc phủ kim loại → 5605; giữ đủ cả ba vế của nguồn."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "xoa",
+   "lyDo": "\"độ mảnh dưới 67 decitex\" trong chú giải nhóm chỉ định nghĩa SỢI MONOFILAMENT (mục (1)), không phải điều kiện của cả nhóm 5402. Đối chiếu biểu thuê: 5402.11/19 (sợi xe, sợi cáp), 5402.20 (tô), 5402.31–49 (sợi đơn multifilament), 5402.51–69 (sợi kéo) — không dòng nào có ngưỡng 67 decitex; ngưỡng đó thuộc định nghĩa chuyển sang 5404. Đặt vào dieuKienVao thì cổng đọc \"Điều kiện vào nhóm: … do_minh_monofilament < 67 decitex\" theo kiểu VÀ sẽ loại phần lớn hàng của chính nhóm này — cùng lỗi 3802 ở lô 030. Số 67 decitex không mất: còn nguyên trong trich của phamVi và trong tên nút 5404 trong cay."
+  }
+ ]
+}

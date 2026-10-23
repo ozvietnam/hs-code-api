@@ -1,0 +1,63 @@
+{
+ "nhom": "4814",
+ "ngườiSoát": "dev-zcode-mm",
+ "luc": "soát độc lập lô 031 (PR #420) — 5 khối phamVi/boPhan/dieuKienVao/loaiTru/phanBiet",
+ "daKiem": "đọc TỪNG mục cùng tmp/so-tay/nguon/4814.txt và khối nguồn đầy đủ qua sourcesFor(); soát nguyên văn bằng tmp/so-tay/strict-nguyen-van.mjs; soi câu ngay SAU mỗi đoạn trích bằng tmp/so-tay/audit-sau-doan.mjs (tìm ngoại lệ/câu rào bị nuốt); quét chữ trong text/dieuKien/hoi không có trong trich; đối chiếu tiền lệ trên data/so-tay/*.json trước khi kết luận mẫu nào là lỗi",
+ "soat": 10,
+ "giu": 8,
+ "sua": 0,
+ "xoa": 2,
+ "ghiChu": "Nhóm 4814 có 3 phần ngang hàng trong chính nó: (A) giấy dán tường/tấm phủ tường gồm (a) giấy dạng cuộn 45–160 cm, (b) đường viền và dải trang trí \"có hoặc không ở dạng cuộn\", (c) tranh tường làm từ panel \"có thể có nhiều kích cỡ\"; cộng thêm (B) tấm che cửa sổ \"có thể ở dạng cuộn, hoặc theo kích thước và hình dạng dùng ngay\". Ngưỡng chiều rộng 45–160 cm chỉ ràng cho mục (a); đặt vào dieuKienVao sẽ đẩy các phần còn lại ra khỏi nhóm — cùng lỗi 3802 ở lô 030. Số 45–160 cm không mất: nằm nguyên văn trong trich của loaiTru/phanBiet và trong chú giải 9 Chương 48. Mục (c) của danh sách loại trừ ghi \"(thường thuộc nhóm 48.23)\" — có \"thường\" nên không thành loaiTru; người soạn lấy câu cùng ý ở Chú giải 9 Chương 48, đúng luật.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Nêu đúng cả hai phần của nhóm — (A) GIẤY DÁN TƯỜNG VÀ CÁC LOẠI TẤM PHỦ TƯỜNG TƯƠNG TỰ và (B) TẤM CHE CỬA SỔ TRONG SUỐT BẰNG GIẤY — nối bằng \"…\"; đúng mẫu đã duyệt ở 3407/3506 (nêu tiêu đề các phần). Câu ngay sau mỗi đoạn đã soi, không có ngoại lệ nào bị nuốt."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nằm trong khối \"Nhóm này không bao gồm:\" và tự nêu đích \"nhóm 44.08, 45.02 hoặc 45.04\" trong chính câu — đạt luật 3."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (d) của khối loại trừ, tự nêu \"nhóm 49.08\"."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (e) của khối loại trừ, tự nêu \"nhóm 59.05\"."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (f) của khối loại trừ, tự nêu \"nhóm 76.07\"."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Lấy từ Chú giải 9 Chương 48 (cùng ý với mục (c) của khối loại trừ nhóm 4814, nhưng bản nhóm ghi \"thường thuộc nhóm 48.23\" nên không thành loạiTru). Câu tự nêu đích \"nhóm 48.23\"; nằm ngay sau mục (a)(b)(c) của Chú giải 9 — tức trong khối định nghĩa phạm vi 48.14, đọc ngược thành loại trừ là đúng."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi CÓ/KHÔNG đúng chiều: \"dùng cho cả việc trải sàn lẫn phủ tường\" → có → 48.23 (nguồn ghi rõ), không → ở lại 4814 (mẫu neuKhong = chính nhóm đã được chấp nhận 318/480 mục)."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: có veneer/lie trên nền giấy → 44.08/45.02/45.04. Dùng lại đúng đoạn trích với loaiTru[0] là mẫu phổ biến (434 mục trên toàn repo), không phải lỗi."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "xoa",
+   "lyDo": "Ngưỡng \"chiều rộng từ 45cm trở lên và không quá 160cm\" chỉ ràng cho mục (a) \"Giấy ở dạng cuộn\" của phần (A). Mục (b) nguồn ghi rõ \"có hoặc không ở dạng cuộn\", mục (c) \"các panel có thể có nhiều kích cỡ\", phần (B) \"có thể ở dạng cuộn, hoặc theo kích thước và hình dạng dùng ngay\" — không chịu ngưỡng này. Đặt vào dieuKienVao thì runtime in ra \"Điều kiện vào nhóm: …\" và cổng đọc kiểu VÀ, sẽ đẩy giấy dán tường dạng tranh (48142091) và tấm che cửa sổ ra khỏi nhóm. Cùng lỗi 3802 ở lô 030 (điều kiện chỉ phủ phần (A) của nhóm có phần (A)+(B)). Số 45–160 cm vẫn còn nguyên trong nguồn và trong trich của loaiTru."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "Xoá sau khi đã xử lý mục [1]; cùng lý do: chỉ ràng cho mục (a) của phần (A), không phủ phần (B) và các mục (b)/(c)."
+  }
+ ]
+}

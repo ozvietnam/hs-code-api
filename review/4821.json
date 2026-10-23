@@ -1,0 +1,46 @@
+{
+ "nhom": "4821",
+ "ngườiSoát": "dev-zcode-mm",
+ "luc": "soát độc lập lô 031 (PR #420) — 5 khối phamVi/boPhan/dieuKienVao/loaiTru/phanBiet",
+ "daKiem": "đọc TỪNG mục cùng tmp/so-tay/nguon/4821.txt; strict-nguyen-van.mjs; audit-sau-doan.mjs; quét chữ trong hoi/dieuKien không có trong trich; đối chiếu tiền lệ trên data/so-tay/*.json",
+ "soat": 6,
+ "giu": 5,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "Cả hai mục loại trừ đều nằm trong khối \"không bao gồm\"/\"bị loại trừ\" và tự nêu đích — hợp lệ. Câu nguồn của mục loại trừ 49.11 có vế \"được thiết kế, ví dụ, để quảng cáo hoặc trang trí giản đơn\" (có \"ví dụ\"), người soạn giữ đúng vế đó trong dieuKien nhưng lại rút gọn thành \"chỉ để\" trong hoi — đó là chỗ sai, đã sửa.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu đầu khối \"Nhóm này bao gồm tất cả các loại nhãn bằng giấy hoặc bìa…\", phủ trọn nhóm (nhóm không chia phần). Dấu \"…\" trùng đúng dấu \"…\" có sẵn của nguồn; phần bị lược (\"hoặc được thiết kế để dán bằng cách khác, ví dụ, dây bện\") là mô tả bổ sung chứ không phải ngoại lệ."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Sự kiện mô tả đúng toàn nhóm, không giới hạn theo phần nào, không thêm chữ ngoài trích."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nguồn tự nói \"bị loại trừ (nhóm 49.11)\" — loại trừ tường minh, đích danh có trong câu."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"Nhóm này không bao gồm các \"nhãn\"…\" tự nêu các nhóm 73.26, 76.16, 79.07 và 83.10. Dấu \"…\" có sẵn của nguồn nằm TRƯỚC vế \"hoặc nhóm 83.10\" và vế đó đã được lấy — không mất gì."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "sua": {
+    "hoi": "Nhãn là nhãn dính đã in tự dính, được thiết kế, ví dụ, để quảng cáo hoặc trang trí giản đơn không?"
+   },
+   "lyDo": "Hoi cũ chèn chữ \"CHỈ\" không có trong nguồn: nguồn ghi \"được thiết kế, ví dụ, để quảng cáo hoặc trang trí giản đơn\" — vế \"ví dụ\" bị biến thành điều kiện loại trừ tuyệt đối. Runtime in hoi thành \"… có→4911 / không→4821\"; hỏi \"chỉ để quảng cáo\" thì một nhãn vừa quảng cáo vừa nhận dạng sẽ trả lời \"không\" và rơi về 4821, trong khi chính nguồn loại nó sang 49.11. Sửa bằng cách trả về đúng vế có \"ví dụ\" của nguồn; dieuKien của loaiTru[0] vốn đã đúng, giữ nguyên."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: có nền là tờ kim loại cơ bản phủ giấy mỏng → 73.26/76.16/79.07/83.10; không → 4821."
+  }
+ ]
+}
