@@ -1,0 +1,75 @@
+{
+ "nhom": "3907",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-23T17:05:00+07:00",
+ "phamViSoat": "Toàn bộ 11 mục của 4 khối trong tmp/so-tay/raw/3907.json (1 phamVi + 1 dieuKienVao + 6 loaiTru + 3 phanBiet), đọc cùng tmp/so-tay/nguon/3907.txt, từng câu đối chiếu [nhom3907.nhom] và [ch39.chuong].",
+ "soat": 11,
+ "daKiem": 11,
+ "sua": 2,
+ "xoa": 0,
+ "ghiChu": "11 mục, giữ 9, sửa 2, xoá 0. phamVi là mẫu tốt: nêu đủ cả 5 phần và nối bằng dấu lược đúng kiểu 3407/3506. Hai lỗi sửa được đều là lỗi 'câu trích không nói điều mục khẳng định' — loại máy không bắt được vì nó chỉ kiểm chuỗi trích có nằm trong nguồn hay không. (1) dieuKienVao[0] trích Chú giải 6 (đỊNH NGHĨA thuật ngữ 'dạng nguyên sinh') chứ không phải câu ràng buộc; câu ràng buộc thật nằm ngay trên, ở mục 'Dạng nguyên sinh' của [ch39.chuong]. (2) phanBiet[0].hoi gộp ba loại chức (este/acetal/ete) nhưng câu trích chỉ nói về este; acetal và ete có câu riêng (mục (1) và (2)) với đích riêng.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Đúng: 'Nhóm này bao gồm:' + năm tiêu đề phần (1)–(5) nối bằng dấu lược, đủ năm phần, không bỏ phần nào; text liệt kê đúng năm phần đó."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích cũ là CHÚ GIẢI 6 — chỉ định nghĩa thuật ngữ 'dạng nguyên sinh' (lỏng/bột nhão/khối/bột/hạt/mảnh), không hề nói 39.07 đòi hỏi phải ở dạng nguyên sinh. Câu nói đúng điều kiện nằm ngay trên trong cùng nguồn: 'Các nhóm 39.01 đến 39.14 chỉ gồm những hàng hóa ở dạng nguyên sinh.' Thay trích bằng câu đó (kèm câu dẫn tới Chú giải 6) để fact o_dang_nguyen_sinh=true có căn cứ. Không nối bằng dấu lược với Chú giải 6 vì đoạn giữa hai câu chứa loạt loại trừ (keo đã điều chế, phụ gia dầu khoáng 38.11, dung dịch 32.08, polyme lỏng 32.10, phụ gia làm ma tít 32.14) — lược đi sẽ giấu ngoại lệ.",
+   "sua": {
+    "trich": "Các nhóm 39.01 đến 39.14 chỉ gồm những hàng hóa ở dạng nguyên sinh. Thuật ngữ “dạng nguyên sinh” được định nghĩa trong Chú giải 6 của Chương này."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng nghĩa, xin ghi chú cho người duyệt: nguồn nói dải 'các nhóm 29.36 đến 29.39 và 29.41' — tức gồm cả 29.37 và 29.38 — nhưng `sangNhom` chỉ liệt kê 2936|2939|2941 vì lib/so-tay.js đòi mỗi nhóm đích phải được NÊU NGUYÊN VĂN trong câu trích (mentions()), mà 29.37/29.38 không xuất hiện. Không sửa được mà không phá luật máy. `dieuKien` đã chép đúng cả dải nên người đọc vẫn thấy đủ; thiệt hại chỉ ở chỗ cổng LOẠI_TRỪ không bật đích 2937/2938. Đề xuất luật máy cho các lô sau: loaiTru có dải số thì sangNhom phải phủ hết dải, nếu không thì bỏ mục (áp ngay sẽ đỏ trên nhiều tệp đã duyệt)."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu cuối mục (1), nguyên văn; phân biệt đúng mặt cấu trúc (acetal TRONG mạch polyme của 39.07 với acetal THAY THẾ trong polyvinyl acetal của 39.05), đích 39.05 có trong câu."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu cuối mục (2), nguyên văn; cùng kiểu phân biệt với polyvinyl ete 39.05, đích có trong câu."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu cuối mục (5), nguyên văn 186 ký tự; phân biệt với polyvinyl este 39.05 và polyacrylic este 39.06, cả hai đích đều nêu trong câu."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nguyên văn sau mục (3), đích 15.18 nêu trong câu; đúng loại trừ đích danh."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải 2(e) của Chương 39, lấy đúng từ [ch39.chuong], nguyên văn 208 ký tự; giữ trọn điều kiện ngưỡng 50 % và ngoại lệ 'trừ các dung dịch keo'."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "hoi gộp ba chức 'este/acetal/ete' trong khi câu trích chỉ nói về chức este (mục (5)); nếu giữ nguyên, nhánh có/không cho acetal và ete sẽ không có căn cứ trong câu. Câu trích về acetal và ete là hai câu khác, đã có loaiTru[1] và loaiTru[2] rồi. Sửa hoi chỉ hỏi về chức este cho khớp đúng câu đã trích.",
+   "sua": {
+    "hoi": "Nhóm chức este của polyme nằm ở dạng chức thay thế trên mạch polyme hay ở dạng chức trong mạch polyme?"
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều và đúng căn cứ: câu lấy từ [ch39.chuong] nói nhựa phenol biến đổi bởi epichlorohydrin 'được phân loại như nhựa epoxy' (vế đầu → có = 3907) và 'không được phân loại như… thuộc nhóm 39.09' (→ không = 3909). Cả hai mã đều nêu trong câu."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều; câu trích giữ nguyên ngưỡng 50 % và ngoại lệ '(trừ các dung dịch keo)', hỏi cũng giữ ngoại lệ đó thành '(không phải dung dịch keo)'."
+  }
+ ]
+}

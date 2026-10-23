@@ -65,7 +65,14 @@ Bài học bước 1 (60 nhóm, 07/10/2026) — bắt buộc:
 - phanBiet: "hoi" KHÔNG nhắc mã phân nhóm hay "WCO". Nhánh "không" phải có căn cứ trong nguồn; không suy từ cấu trúc anh em hay từ danh sách loại trừ. Không tạo nhiều mục cùng một câu hỏi cho các cặp mã khác nhau.
 - Dấu lược "…": đoạn bị lược KHÔNG được chứa ngoại lệ ("trừ", "tuy nhiên", "với điều kiện", "không kể"). Câu liền sau câu trích mà bắt đầu bằng "Tuy nhiên/trừ khi" thì phải kéo vào câu trích.
 - Nguồn tự mâu thuẫn (nhóm bao gồm X ở một chỗ, loại trừ X ở chỗ khác) → bỏ cả hai phía, ghi vào mô tả PR.
-- Thà bỏ mục còn hơn mục không có căn cứ.`;
+- Thà bỏ mục còn hơn mục không có căn cứ.
+Bài học bước 1 (SOÁT ĐỘC LẬP lô 030, 23/10/2026) — bắt buộc, đều là lỗi máy KHÔNG bắt:
+- loaiTru chỉ ghi khi câu trích có DẤU HIỆU LOẠI TRỪ ("không bao gồm", "bị loại trừ", "sẽ thuộc nhóm", "không lẫn với"). Mục đánh số nằm trong khối "Phần này đặc biệt bao gồm / Nhóm này bao gồm" là mục BAO GỒM, dù có dẫn số nhóm trong ngoặc — vd "(c) Xà phòng dùng để cạo (các loại kem cạo thuộc nhóm 33.07)" nằm trong danh sách bao gồm của 34.01 là xà phòng cạo ĐƯỢC xếp 3401, KHÔNG phải loại trừ sang 33.07.
+- phamVi phải nêu PHẠM VI nhóm, không phải vật liệu và không phải một phần. Nhóm có các phần ngang hàng (A)/(B)/(I)…(IV) thì nêu tiêu đề các phần nối bằng "…"; KHÔNG lấy đoạn dẫn của phần đầu làm phạm vi cả nhóm (lô 030 dính 3401, 3810, 4415). Câu về vật liệu/về cách làm chỉ là ghi chú, không phải phạm vi.
+- Câu "CÓ THỂ …" không được đặt value=true trong dieuKienVao (máy chưa có mẫu "có thể" trong CAU_CHO_PHEP).
+- dieuKienVao phải trích câu RÀNG BUỘC ("Các nhóm 39.01 đến 39.14 CHỈ GỒM những hàng hóa ở dạng nguyên sinh"), không phải câu ĐỊNH NGHĨA một thuật ngữ. Và chỉ đặt khi câu đó phủ CẢ nhóm: nhóm có phần mà câu không nói tới (38.02 còn phần (B) muội động vật) thì để rỗng.
+- "hoi"/"dieuKien"/"text" không thêm chữ không có trong câu trích, kể cả chữ nhìn rất hiển nhiên từ đoạn trước (vd thêm "hàn" vào "các điện cực … có lõi bằng chất trợ dung").
+- loaiTru có DẢI SỐ trong trích ("các nhóm 29.36 đến 29.39 và 29.41") thì sangNhom phải phủ hết dải; phủ không nổi (máy đòi mỗi mã nêu nguyên văn) thì bỏ mục và ghi rõ trong mô tả PR.`;
 
 function promptFor(h4, sources) {
   const cut = [];
