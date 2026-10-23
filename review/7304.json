@@ -1,0 +1,417 @@
+{
+  "nhom": "7304",
+  "nguoiSoat": "NGUOI_DUYET",
+  "luc": "2026-10-23T15:40:00+07:00",
+  "soat": 79,
+  "daKiem": 78,
+  "xoa": 1,
+  "sua": 2,
+  "phamViSoat": "Toàn bộ 79 mục của bản nháp (1 phamVi + 2 dieuKienVao + 10 loaiTru + 3 phanBiet + 26 tieuChi6 + 8 cay.tenDien + 29 dong8), đọc cùng tmp/so-tay/nguon/7304.txt (405 dòng).",
+  "ghiChu": "Audit 7304: 79 mục, sửa 2, xoá 1. Đối chiếu tay 29 dòng biểu thuế với khối tax.* của nguồn: ĐỦ và đúng thứ tự, không thiếu dòng nào. Hai dòng 73043110/73045110 lấy nguồn SEN (đúng luật 6) và câu trích chép nguyên văn phần nội dung SEN. Các ngưỡng \"80.000 psi\" / \"42.000 psi\" KHÔNG đưa vào tieuChi vì viết kiểu Việt có dấu chấm phân tách (lib/so-tay.js:171 sẽ loại \"80000\" vì không có trong câu) — đây là hạn chế đã biết, ghi nhận chứ không sửa. Đã so tay 26 tiêu chí cấp 6 số và 8 tên tiếng Việt trong `cay.tenDien`: tất cả bám đúng tên WCO, kể cả lỗi chính tả có thật của nguồn — wco.730449 viết \"tubes pipes\" (thiếu dấu phẩy) còn wco.730459 viết \"tubes, pipes\"; bản nháp đã chép đúng chứ không đồng nhất hoá. BỎ SÓT (không sửa): `loaiTru` không có mục cho \"các bộ phận máy móc khác (Phần XVI)\" trong mục (f) — đúng luật 3 vì chỉ nêu Phần, không nêu số nhóm.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (\"text thêm chữ không có trong câu trích\" + \"cắt trích né vế nguồn\"): `text` mở đầu bằng \"bằng sắt (trừ gang đúc) hoặc thép\" (lấy từ Chú giải Tổng quát Chương 73, không có trong câu trích của nhóm) và kể tiếp \"ngưng tụ, lò tinh luyện, … khí đốt\" — những vế NẰM TRONG ĐOẠN ĐÃ BỊ LƯỢC bởi dấu \"…\". Sửa: thu hẹp `text` về đúng nội dung câu trích và MỞ LẠI đoạn lược để \"bộ ngưng tụ, lò tinh luyện\" vào trong câu (đoạn lược mới không chứa ngoại lệ nào).",
+      "sua": {
+        "text": "Ống dẫn dầu hoặc khí, ống chống, đường ống và ống khoan cho khoan dầu và khí; ống và ống dẫn cho nồi hơi, thiết bị tăng nhiệt, bộ trao đổi nhiệt, bộ ngưng tụ, lò tinh luyện; và ống cho đường trục phân phối nước và chất đốt trên đường phố.",
+        "trich": "Các sản phẩm thuộc nhóm này đặc biệt bao gồm các ống dẫn thuộc loại sử dụng cho dầu hoặc khí, ống chống, đường ống và các ống khoan sử dụng trong việc khoan dầu và khí, các ống và ống dẫn thích hợp để sử dụng trong các nồi hơi, thiết bị tăng nhiệt, bộ trao đổi nhiệt, bộ ngưng tụ, lò tinh luyện, … các ống cho đường trục phân phối nước và chất đốt trên đường phố."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "sua",
+      "lyDo": "Sửa cùng đợt với xoá `dieuKienVao[1]`: gộp HAI định nghĩa loại trừ nhau thành MỘT sự kiện vào nhóm. Chú giải Chương 73 định nghĩa \"ống và ống dẫn\" (1) và \"thanh hình rỗng\" (2) là hai loại VÀO CHÍNH NHÓM này, nhưng người soạn đặt thành hai mục value=true và mục (2) còn ghi rõ \"KHÔNG theo định nghĩa ở trên\" — runtime in các mục `dieuKienVao` nối bằng \"·\" dưới nhãn \"Điều kiện vào nhóm\" (lib/so-tay-gates.js:135), nên mô hình bị dẫn hiểu là phải thỏa CẢ HAI, tức là vừa là ống vừa là thanh rỗng (loại trừ nhau) — sai nghĩa. Sửa thành một sự kiện liệt kê, lấy câu mở đầu chú giải nhóm làm căn cứ.",
+      "sua": {
+        "fact": "la_ong_ong_dan_hoac_thanh_dang_rong",
+        "nguon": "nhom7304.nhom",
+        "trich": "Các ống, ống dẫn và các thanh dạng rỗng thuộc nhóm này có thể được sản xuất bằng các phương pháp sau:"
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[4]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[5]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[6]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[7]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[8]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[9]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[4]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[5]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[6]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[7]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[8]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[9]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[10]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[11]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[12]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[13]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[14]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[15]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[16]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[17]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[18]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[19]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[20]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[21]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[22]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[23]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[24]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[25]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "cay.tenDien[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "cay.tenDien[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "cay.tenDien[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "cay.tenDien[3]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "cay.tenDien[4]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "cay.tenDien[5]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "cay.tenDien[6]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "cay.tenDien[7]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[8]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[9]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[10]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[11]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[12]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[13]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[14]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[15]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[16]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[17]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[18]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[19]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[20]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[21]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[22]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[23]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[24]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[25]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[26]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[27]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[28]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "xoa",
+      "lyDo": "XOÁ: mục này và `dieuKienVao[0]` là HAI MÔ TẢ LOẠI TRỪ NHAU (thanh dạng rỗng \"không theo định nghĩa ở trên\" ↔ ống và ống dẫn), nhưng cả hai đều đặt value=true nên bị đọc thành điều kiện VÀ, khiến prompt mô tả nhóm bằng hai mệnh đề loại trừ nhau. Không sửa `trich`/mã để lách — sau khi gộp vào `dieuKienVao[0]` thì nội dung \"ống, ống dẫn và thanh dạng rỗng\" vẫn còn trong `phamVi` và trong tên WCO của 13 tiêu chí cấp 6 số, nên không mất thông tin."
+    }
+  ]
+}

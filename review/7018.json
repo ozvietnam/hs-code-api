@@ -1,0 +1,133 @@
+{
+  "nhom": "7018",
+  "nguoiSoat": "NGUOI_DUYET",
+  "luc": "2026-10-23T15:40:00+07:00",
+  "soat": 22,
+  "daKiem": 22,
+  "xoa": 0,
+  "sua": 3,
+  "phamViSoat": "Toàn bộ 22 mục của bản nháp (1 phamVi + 9 loaiTru + 3 phanBiet + 4 tieuChi6 + 5 dong8; không có dieuKienVao/cay), đọc cùng tmp/so-tay/nguon/7018.txt.",
+  "ghiChu": "Audit 7018: 22 mục, sửa 3, xoá 0. `dieuKienVao` để rỗng là hợp lý: nguồn không có câu nào nêu điều kiện VÀO nhóm 4 số (các mục (A)–(H) là LIỆT KÊ loại hàng, \"có thể phủ nhựa\" chỉ là câu cho phép — máy cũng loại). BỎ SÓT (không phải lỗi, không tự chèn vì người soát chỉ xoá/sửa): `loaiTru` thiếu mục (c) \"Bưu ảnh, thiệp Giáng sinh … (nhóm 49.09)\" — đây là loại trừ nêu đích danh số nhóm, đáng có. Mục loaiTru về (g) chỉ ghi nhánh \"gắn/nạm kim loại quý\" → 71.13/71.14, bỏ nhánh \"đồ trang sức làm bằng chất liệu khác … nhóm 71.17\" — phần bỏ là THIẾU SOÁT chứ không sai, nên tô ghi nhận chứ không sửa. Sau khi nạp phải chạy `node scripts/check-cay.mjs --nhom=7018 --chi-tiet` vì dòng 70189010 dùng SEN (khối `sen.70189010` trong nguồn bị cụt ở câu cuối).",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (\"text thêm chữ không có trong câu trích\"): `text` liệt kê hạt bi, thủy tinh giả ngọc trai, giả đá quý, MẮT THỦY TINH, VI CẦU và các đồ vật nhỏ tương tự, trong khi câu trích chỉ là câu mở đầu \"một loạt các sản phẩm đa dạng … trang trí\". Không thể nối hết (mục (F) mắt thủy tình kèm lệnh trừ và mục (H) vi cầu sẽ vượt trần 600 ký tự, mà cắt (F) sau \"(F) Mắt thủy tinh\" là cắt mất ngoại lệ) → sửa theo hướng thu hẹp `text` về đúng ba mục nối được, phần còn lại đã có trong tieuChi6 + dong8 + loaiTru.",
+      "sua": {
+        "text": "Hạt bi thủy tinh, thủy tinh giả ngọc trai, thủy tinh giả đá quý hoặc đá bán quý và các đồ vật nhỏ tương tự bằng thủy tinh.",
+        "trich": "(A) Hạt bi thủy tinh (ví dụ làm chuỗi hạt đeo cổ, tràng hạt, hoa giả, các đồ trang trí cho mồ mả,..., để trang trí các sản phẩm dệt (đồ trang trí, đồ thêu,...), túi xách hoặc các đồ tương tự, hoặc để sử dụng như các vật cách điện). … (B) Thủy tinh giả ngọc trai, rỗng hoặc đặc, có tất cả các màu, hình dạng, kích cỡ, giống ngọc trai thật. … (C) Thủy tinh giả đá quý (kể cả thủy tinh giả đá bán quý) không được nhầm lẫn với đá quý tổng hợp hoặc tái tạo thuộc nhóm 71.04 (xem Chú giải tương ứng)."
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[4]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[5]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[6]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[7]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[8]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI ĐẢO NHÁNH (máy không đọc nghĩa): hoi dạng chọn hai \"Hàng là thủy tinh giả đá quý hay đá bán quý HAY là đá quý tổng hợp, tái tạo?\" nhưng `neuCo` lại để 7104 — tức mã của vế SAU. Runtime in `${hoi} có→${neuCo} / không→${neuKhong}` và quy ước toàn repo (9013/3701/4420) là `neuCo` = vế ĐẦU. Sửa hoi thành câu hỏi có/không đúng chiều, giữ nguyên cặp mã 7104/7018.",
+      "sua": {
+        "hoi": "Hàng có phải là đá quý tổng hợp hoặc đá quý tái tạo thật, chứ không phải thủy tinh giả đá quý hay đá bán quý không?"
+      }
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI \"dieuKien thêm chữ không có trong câu trích\" (máy không so `dieuKien` với `trich`): `dieuKien` của dòng 70189010 có \"dùng để làm mắt búp bê, mắt đồ chơi\" nhưng câu trích dừng ở câu SEN thứ hai. Sửa bằng cách KÉO THÊM câu SEN thứ ba vào câu trích (nguyên văn, cắt đúng chỗ nguồn bị cụt), không sửa `dieuKien`.",
+      "sua": {
+        "trich": "Thủy tinh dạng cầu, ô van hoặc tròn không có khung hoặc cơ cấu cơ khí bên ngoài, đường kính 4-36 mm. Chúng có thể có nhiều màu khác nhau, được hoặc không được trang trí, sơn. Chúng sử dụng để làm mắt búp bê, mắt đồ chơi hoặc mắt các sản phẩm thuộc Chương"
+      }
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    }
+  ]
+}
