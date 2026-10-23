@@ -9,8 +9,11 @@ ENV NODE_ENV=production \
     HS_DATA_DIR=/data
 
 COPY . .
-# Bước build: sinh openapi.json, community-data.json… vào public/.
-RUN npm run build && mkdir -p /data && chown -R node:node /data
+# Cài dependency runtime (@huggingface/transformers cho tầng ứng viên embedding GĐ1, xlsx cho script build).
+# Trước đây image không có node_modules — mã chỉ dùng module builtin nên chạy được, nhưng lib ngoài
+# (transformers.js) sẽ MODULE_NOT_FOUND khi bật HS_EMBED_POOL. npm ci cần package-lock chính xác; repo
+# dùng npm install là đủ cho tầng này (package-lock được giữ đồng bộ).
+RUN npm install --no-audit --no-fund && npm run build && mkdir -p /data && chown -R node:node /data
 
 USER node
 EXPOSE 3000
