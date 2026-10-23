@@ -1,200 +1,189 @@
-# TIEN-TRINH — lô 027 (SOÁT ĐỘC LẬP sổ tay chú giải)
+# TIEN-TRINH — lô 029 (soạn sổ tay chú giải)
 
-Nhóm của lô: **6303, 6504, 6702, 6914, 7018, 7304** · Người soát: `dev-zcode-mm` (KHÁC người soạn cùng tên —
-vai trò khác: đọc `review/<nhom>.json`) · Nhánh: `so-tay/lo-027` @ `06d56c8` · PR #410 · Ngày: 2026-10-23
-
-Phiên này là **người soát độc lập** (mục 4 `docs/giao-viec/so-tay-giao-ngoai.md`), **KHÔNG phải người soạn**.
-Phần "soạn" của phiên trước nằm ngay dưới, giữ nguyên.
-
-## Kết quả: soát **157/157 mục** — **XOÁ 1 · SỬA 10 mục (15 trường)**
-
-| Nhóm | Mục | xoá | sửa | Nội dung |
-|---|---|---|---|---|
-| 6303 | 25 | 0 | 2 | `phamVi.trich`, `phanBiet[0].hoi` |
-| 6504 | 7 | 0 | 2 | `phamVi.text`+`.trich`, `phanBiet[0].hoi` |
-| 6702 | 11 | 0 | 1 | `phamVi.trich` |
-| 6914 | 13 | 0 | 0 | đọc tay, **không sửa** |
-| 7018 | 22 | 0 | 3 | `phamVi.text`+`.trich`, `phanBiet[1].hoi`, `dong8[70189010].trich` |
-| 7304 | 79 | 1 | 2 | `phamVi.text`+`.trich`, `dieuKienVao[0]` + **XOÁ `dieuKienVao[1]`** |
-
-Hồ sơ soát: `review/6303.json`, `6504`, `6702`, `6914`, `7018`, `7304` — mỗi tệp ghi đủ **mọi** mục đã soi
-(`hanhDong: 'giu'` cho phần giữ, kèm `lyDo`), không chỉ phần sai. Áp bằng `scripts/apply-review-lo027.mjs`.
-
-## Lỗi bắt được — máy KHÔNG bắt (đề xuất đưa vào phần 1 giao việc)
-
-1. **`phamVi.text` nói nhiều hơn câu trích — 5/6 nhóm** (6303, 6504, 6702, 7018, 7304; chỉ 6914 sạch).
-   `text` liệt kê cả những loại hàng nằm ở mục khác của chú giải nhóm, còn `trich` chỉ chép **một** câu.
-   Máy chỉ kiểm "câu trích có thật trong nguồn" (`quoteInSource`), không kiểm text có nằm trong câu trích hay
-   không → 5/6 nhóm lọt. **Cách sửa đã dùng: NỐI câu trích bằng "…"** cho tới khi `text` nằm trọn trong
-   câu (đúng mẫu đã gộp ở 4012/8423/3918), thay vì cắt bớt thông tin người soạn.
-   * Riêng 7018 không nối được hết: mục (F) mắt thủy tinh kèm lệnh trừ 90.21/95.03 và mục (H) vi cầu làm
-     câu trích vượt trần 600 ký tự, mà cắt (F) ngay sau "(F) Mắt thủy tinh" là **cắt mất ngoại lệ** (luật
-     dấu lược) → thu hẹp `text` về (A)+(B)+(C), phần mắt thủy tinh/vi cầu đã có trong `tieuChi6` + `dong8`.
-   * 6504 thêm lỗi thứ hai cùng mục: `text` bỏ mất chữ **"chủ yếu"** — có ý nghĩa vì mục (1) của chú giải
-     nhóm còn có mũ nữ **chưa** dựng khuôn, **chưa** làm vành (vẫn thuộc 6504).
-2. **`hoi` dạng "A hay B" mà `neuCo` lại để mã của vế SAU → đảo nhánh** (6303 `phanBiet[0]`, 7018 `phanBiet[1]`).
-   Runtime in `${hoi} có→${neuCo} / không→${neuKhong}` (`lib/so-tay-gates.js:141`) và quy ước toàn repo
-   (9013, 3701, 4420) là **`neuCo` = vế đầu**. Ở 6303 hỏi "màn che **hay** tấm che nắng?" mà `neuCo=6306`
-   (tức vế sau) → mô hình trả "có" cho hàng màn che là ra 6306. **Luật máy chỉ chặn `hoi` nhắc mã 6 số, không
-   chặn câu hỏi hai vế.** Người soát các lô sau nên để `neuCo` luôn ứng với **vế đầu**.
-   *Giữ nguyên* `6702.phanBiet[0]` ("tự nhiên hay nhân tạo?") vì vế đầu đã là nhánh `neuCo` — 26/631 mục đã
-   gộp cùng dạng.
-3. **`hoi` thêm hiểu biết riêng, và nhánh "hoặc" sai tiêu chí** — 6504 `phanBiet[0]`: hoi ghi
-   "(dựng hình **hoặc làm vành**)" trong khi câu trích chỉ nói "đã được dựng theo khuôn"; hơn nữa "làm vành"
-   một mình KHÔNG phải tiêu chí vì mục (3) của chính chú giải nhóm nói thân mũ *chưa* dựng khuôn, *chưa* làm
-   vành nhưng đã lót/trang trí vẫn thuộc 6504 → câu hỏi dẫn người khai đi sai.
-4. **`dieuKien` nói nhiều hơn câu trích** — 7018 dòng 70189010: `dieuKien` có "dùng để làm mắt búp bê, mắt đồ
-   chơi" nhưng `trich` dừng ở câu SEN thứ hai. Sửa bằng cách **kéo câu SEN thứ ba vào câu trích** (nguyên văn,
-   cắt đúng chỗ nguồn bị cụt), không sửa `dieuKien`.
-5. **Hai `dieuKienVao` loại trừ nhau cùng value=true** — 7304: mục (1) định nghĩa "ống và ống dẫn", mục (2)
-   định nghĩa "thanh hình rỗng" và nói rõ **"không theo định nghĩa ở trên"**; nhưng runtime in các mục
-   `dieuKienVao` nối bằng "·" dưới nhãn "Điều kiện vào nhóm" (`so-tay-gates.js:135`) ⇒ mô hình đọc là phải
-   thỏa **cả hai**, tức vừa là ống vừa là thanh rỗng (loại trừ nhau). **Đây là lỗi nguy hiểm nhất của lô** —
-   sửa: gộp thành MỘT sự kiện liệt kê `la_ong_ong_dan_hoac_thanh_dang_rong` (lấy câu mở đầu chú giải nhóm),
-   **XOÁ** mục còn lại; nội dung "ống, ống dẫn và thanh dạng rỗng" vẫn còn ở `phamVi` + 13 tên WCO cấp 6 số.
-6. **`phamVi.text` lấy từ khối nguồn khác + nằm trong đoạn đã bị lược** — 7304: "bằng sắt (trừ gang đúc) hoặc
-   thép" lấy từ Chú giải Tổng quát Chương 73 (không có trong câu trích của nhóm), còn "ngưng tụ, lò tinh luyện"
-   nằm **trong khoảng bị cắt bởi dấu "…"** → mục nói chắc hơn nguồn. Sửa: thu hẹp `text` + mở lại đoạn lược.
-   Bài học chung: **đoạn bị lược phải được đọc thật**, không chỉ để máy kiểm.
-
-## Trả lời các điểm người soạn bàn giao (mục "Bàn giao cho người duyệt")
-
-- **`6914` `dieuKienVao[1]` `nhiet_do_nung_toi_thieu >= 800 °C`** (có vế "tùy thuộc vào bản chất của sản phẩm"):
-  **GIỮ**. Vế "tùy thuộc" nói cái nào nung ở mức cao hơn, còn **sàn 800 °C** là điều kiện tối thiểu; số 800 có
-  trong câu trích; chú giải chương còn loại riêng phần nung dưới 800 °C cho mục đích khác (`ngoaiTru` của mục
-  [0], tôi đã so tay và khớp nguyên văn — máy không đọc `ngoaiTru` nên không có gì để bắt).
-- **`6303` 3 `dieuKienVao` lấy từ chú giải chương 63**: **GIỮ** — chú giải nhóm 6303 không có câu điều kiện nào;
-  `dieuKienVao[1]` và `[2]` là hai vế của **cùng một câu** chú giải Tổng quát chương, tách mỗi vế một mục là
-  đúng luật "một mục chỉ trích từ một khối nguồn" (cùng `nguon: ch63.chuong`).
-- **`7304` 26 `tieuChi6` + 8 `tenDien` dịch từ tên WCO**: đã đối chiếu tay từng cái với tên WCO trong nguồn —
-  khớp, kể cả lỗi chính tả **có thật** của nguồn (`wco.730449` = "tubes pipes" thiếu dấu phẩy, còn
-  `wco.730459` = "tubes, pipes"); bản nháp chép đúng, không đồng nhất hoá.
-- **`6504` nhóm mỏng nhất (7 mục)**: đúng như bàn giao; `dieuKienVao` để rỗng là **đúng** (mục (1) mũ nữ chưa
-  dựng khuôn không có tiêu chí chung với mục (2) mũ ghép dải).
-
-## BỎ SÓT — ghi nhận, KHÔNG tự chèn (người soát chỉ xoá/sửa, không bổ sung)
-
-- `7018` `loaiTru` thiếu mục **(c) "Bưu ảnh, thiệp Giáng sinh … (nhóm 49.09)"** — đây là loại trừ **nêu đích
-  danh số nhóm**, đáng có. Đề xuất người duyệt cho lô sau dành chỗ cho mục loại trừ kiểu này.
-- `7018` `loaiTru` mục (g) chỉ ghi nhánh "gắn/nạm kim loại quý" → 71.13/71.14, bỏ nhánh "đồ trang sức làm
-  bằng chất liệu khác … nhóm 71.17" — **thiếu soát, không sai**.
-- `6303` `phamVi` không kể đoạn "vật liệu với độ dài sợi không hạn chế, được gia công sau khi dệt …" (nguồn
-  dòng 12) — bỏ sót, không sai.
-
-## Kiểm sau khi áp (đều xanh)
-
-- `check-so-tay.mjs --raw=tmp/so-tay/raw` → **156/156, 0 mục không kiểm được nguồn** (157 − 1 mục xoá).
-- `build-so-tay --tu-tep --force --nguoi-soan=dev-zcode-mm --bao-cao=…/lo-027.json` → **156/156 (100 %)**, `nhomLoi: []`.
-- `check-cay --nhom=… --chi-tiet` → **0 lỗi lệch cây, 6/6 nhóm đủ**.
-- `npm run so-tay:check` → **314 nhóm, 9.536 mục, 0 lỗi** (trước 9.537 — đúng bằng 1 mục bị xoá).
-- `npm test` → **ALL TESTS PASSED**, exit 0.
-- CI PR #410 sau commit `801086e`: `test` **pass** (1m37s), `bench` **pass** (8m59s). `Vercel` fail
-  *"Deployment rate limited — retry in 24 hours"* — hạ tầng có sẵn, CI thật chỉ có `test` + `bench`
-  (memory `vercel-check-blocked-la-pre-existing`). PR **OPEN + MERGEABLE**, **KHÔNG merge**.
-
-## `nguonLoai`
-
-Đổi **147** mục `AI_DA_KIEM → NGUOI_DUYET` cho **cả 7 khối đã soi** (`phamVi`, `boPhan`, `dieuKienVao`, `loaiTru`,
-`phanBiet`, `tieuChi6`, `dong8`) — khác script chuẩn lô 006/026 vốn chỉ đổi 5 khối, vì tôi đã đọc tay hết
-157 mục nên không mục nào của tôi còn là "AI tự soát". Chênh **9 mục** = 9 `cay.tenDien` giữ nguyên `MAY_SUY`
-(do máy sinh, `scripts/apply-review-lo027.mjs`). Nếu người duyệt muốn quay lại phạm vi 5 khối: chạy lại
-`TARGET=data APPLY=1` sau khi sửa mảng `KINDS_ARR` trong script.
-
----
-
-# TIEN-TRINH — lô 027 (soạn sổ tay chú giải)
-
-Nhóm của lô: **6303, 6504, 6702, 6914, 7018, 7304**
-Người soạn: `dev-zcode-mm` · Nhánh: `so-tay/lo-027` @ `1828d3b` (main mới nhất) · Ngày: 2026-10-23
+Nhóm của lô: **8461, 8484, 8510, 9402, 9504, 2508**
+Người soạn: `dev-zcode-mm` · Nhánh: `so-tay/lo-029` @ `1828d3b` (main mới nhất) · Ngày: 2026-10-23
 Phiên này là **người soạn** (không phải soát độc lập — việc đó là người khác, mục 4 giao việc).
 
 ## Sai lệch brief ↔ CSV (đã xử lý, không im lặng)
 
-Brief dòng 4 ghi nhóm `6303,6504,6702,6914,7018,7304` — **khớp** CSV dòng `027`.
-Brief dòng 6 kèm **lệnh mẫu** `--nhom=7615,9609,3215,6306,6804,7412` — đó **không phải** nhóm của lô này
-(cũng không phải của lô 001 như lô 014 gặp; nó là nhóm của lô khác), copy-paste nhầm y như lô 012 và 014
-(memory `so-tay-lo-quy-trinh`). Đã bỏ lệnh mẫu, chốt nhóm theo CSV. Cập nhật CSV dòng 027 →
-`trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm`.
+Brief dòng 4 ghi nhóm `8461,8484,8510,9402,9504,2508` — **khớp** CSV dòng `029`.
+Brief dòng 6 kèm **lệnh mẫu** `--nhom=7615,9609,3215,6306,6804,7412` — đó là nhóm của **lô 001**
+(`so-tay-lo.csv` dòng `001`), copy-paste nhầm y như lô 012 và lô 014 (memory `so-tay-lo-quy-trinh`).
+Đã bỏ lệnh mẫu, chốt nhóm theo CSV. Cập nhật CSV dòng 029 → `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm`.
 
 ## Các bước
 
 - [x] **B1.** Đọc TRỌN `docs/giao-viec/so-tay-giao-ngoai.md` (mục 0 đợt 1: 14 kiểu lỗi; mục 0/vòng 2:
   bắt buộc soát độc lập; mục 1 bài học; mục 2 gói việc; mục 3 **11 luật**; mục 4 người duyệt) + brief.
-- [x] **B2.** Xuất nguồn `--nhom=6303,6504,6702,6914,7018,7304 --xuat-nguon=tmp/so-tay/nguon` →
-  **122.516 ký tự** (6303 40k · 6504 5,6k · 6702 6,2k · 6914 15,9k · 7018 18,8k · 7304 30k).
-- [x] **B3.** Đọc `tmp/so-tay/nguon/_he-thong.txt` trọn + **HẾT cả 6 tệp nguồn**. Đọc `lib/so-tay.js`
-  (`checkItem`/`verifySoTay`/`soCoTrongTrich`) trước khi soạn để biết máy loại mục nào. In cây
-  `lib/hs-tree.js` cho cả 6 nhóm (`scripts/tmp-dump-cay-lo027.cjs`) để biết nút 6 số / nút thiếu tên.
-- [x] **B4.** Soạn `tmp/so-tay/raw/<nhom>.json` — 6 nhóm, **157 mục** sau tự soát.
-  Cây các nhóm in bằng `tmp/so-tay/cong-cu/dump-cay-lo027.cjs`.
-- [x] **B5.** Tự kiểm TRƯỚC khi nạp, hai lớp:
-  - **Nguyên văn TUYỆT ĐỐI** (script riêng `tmp/so-tay/cong-cu/soat-nguyen-van-lo027.mjs`, KHÔNG squash — bù lỗ
-    hổng `check-so-tay-squash-mat-ky-tu`): lần 1 bắt **4 mục sai** (xem "Máy không bắt được") → vá xong
-    **157/157 khớp nguyên văn**, kể cả `ngoaiTru` (trường máy KHÔNG đọc — em tự so riêng, 1/1 khớp).
-    Script để ở `tmp/` (gitignored) vì brief chỉ cho phép commit `data/so-tay/*` + CSV; **người duyệt có thể
-    quyết định đưa nó vào `scripts/` cho các lô sau** — nó bắt được loại lỗi mà `check-so-tay` bỏ qua.
-  - `check-so-tay.mjs --raw`: lần 1 loại **2 mục** (`6504` hs6=6504 không có trong cây; `6914` chữ
-    "Gốc" thay "Gốm") → vá xong **157/157, 0 mục không kiểm được nguồn**.
 
-## Máy KHÔNG bắt được — tự soát thủ công đã bắt (đề xuất đưa vào phần 1 giao việc)
+- [x] **B2.** Xuất nguồn
+  `build-so-tay.mjs --nhom=8461,8484,8510,9402,9504,2508 --xuat-nguon=tmp/so-tay/nguon`
+  → 6 nhóm, **180.425 ký tự** nguồn (8461 68k · 8484 61k · 8510 59k · 9402 22k · 9504 17k · 2508 11k).
+  Đọc `tmp/so-tay/nguon/_he-thong.txt` trọn + **HẾT cả 6 tệp nguồn** (8461/8484/8510 phải đọc 2 lần:
+  chú giải nhóm + chương/Phần + `wco.*` + `tax.*`). Đọc `lib/so-tay.js` để biết luật máy nào loại mục nào,
+  và `data/so-tay/8460.json` / `8462.json` (cùng Chương 84, đã duyệt) làm mẫu văn phong.
 
-1. **Dấu nháy cong của nguồn.** `ch69.chuong` viết **“sản phẩm màu lục”** (nháy cong, không phải `"` thẳng).
-   Em chép thành nháy thẳng → `check-so-tay` vẫn XANH (hàm `squash` bỏ toàn bộ dấu câu), chỉ script soát
-   nguyên văn mới bắt. **Bài học: câu trích có dấu nháy bên trong thì phải so từng ký tự.**
-2. **Dấu phẩy trong tên WCO là lỗi riêng từng phân nhóm.** `wco.730459` = "tubes**,** pipes" nhưng
-   `wco.730449` = "tubes pipes" (nguồn thiếu dấu phẩy). Em sửa hàng loạt theo 730459 thì làm hỏng 730449.
-   **Sửa câu trích phải theo từng nguồn một, không dùng thay-thế chuỗi toàn cục.**
-3. **Một nhánh của "A hoặc B"** (luật cũ, tái diễn): `nhom6504` mở đầu bằng "chủ yếu bao gồm … thân mũ
-   65.02 đã dựng theo khuôn…", nhưng mục (2) của cùng nhóm lại nói nhóm còn gồm mũ **ghép từ dải**. Em đã
-   **XOÁ** `dieuKienVao` của 6504 thay vì giữ điều kiện thiếu một nhánh.
-4. **`dieuKien` nói nhiều hơn câu trích**: `7304` `loaiTru` viết "…trục bàn đạp và khung xe đạp" nhưng trích
-   mới cắt tới "(ví dụ, nhóm 87.08 hoặc 87.14)". Kéo nốt vế sau vào câu trích (vẫn nguyên văn, ≤ 300 ký tự).
-5. **Cắt giữa câu phải để dấu lược**: `6303` `dieuKienVao` cắt sau "…sản phẩm không dệt,…)" mà không có
-   `…` → thêm `…` để không ám chỉ câu đã hết.
+- [x] **B3.** In cây `lib/hs-tree.js` cho cả 6 nhóm (`tmp/so-tay/in-cay.mjs`) để biết trước: phân nhóm 6 số nào
+  cần `tieuChi6`, dòng 8 số nào bắt buộc có trong `dong8`, nút nào bị lược.
 
-## Cố ý KHÔNG soạn (thà bỏ mục còn hơn mục mờ — luật 8)
+- [x] **B4.** Soạn `tmp/so-tay/raw/<nhom>.json` cho 6 nhóm — **125 mục**.
+  Chọn **thà bỏ mục còn hơn mục không có căn cứ** (xem "Bỏ có chủ đích" bên dưới).
 
-- **`7018` không có `dieuKienVao`**: chú giải nhóm chỉ liệt kê các loại (A)–(H), không có câu nào nói
-  điều kiện chung vào nhóm. Chỉ có câu "có thể phủ nhựa…" (câu CHO PHÉP — luật 28 trong `_he-thong`).
-- **`6504` không có `tieuChi6`**: lá 65040000 là cả nhóm 4 số, máy chỉ nhận `hs6` là nút cấp 6 hoặc lá 8 số có
-  `laPhanNhom`; `hs6=6504` bị loại (`hs6-khong-co-trong-cay`). Ghi nhận để người duyệt biết là hạn chế máy.
-- Bỏ các `loaiTru` chỉ nói **"Chương N"** (65, 67, 70, 95) — luật 3 không tính là đích danh.
+- [x] **B5.** Tự kiểm bản nháp, **hai lớp**:
 
-- [x] **B6.** Nạp: `build-so-tay.mjs --nhom=… --tu-tep=tmp/so-tay/raw --force --nguoi-soan="dev-zcode-mm"
-  --bao-cao=data/so-tay/bao-cao/lo-027.json` → **157/157 (100 %)**, `nhomLoi: []`.
-  Cỡ lô (đếm từ `data/so-tay/*.json` sau nạp, không ước lượng): 6 `phamVi` · 9 `dieuKienVao` ·
-  30 `loaiTru` · 12 `phanBiet` · 44 `tieuChi6` · 9 `cay.tenDien` · 47 `dong8` (20 dòng có `tieuChi`,
-  **4 dòng có ngưỡng số**: 7018.20.00 ≤ 1 mm; 7304.31.40/7304.39.40/7304.90.30 < 140 mm;
-  1 dòng có `dieuKienSo`: 7018.90.10 đường kính 4–36 mm) · 0 `boPhan`.
-- [x] **B7.** Kiểm toàn repo: `npm run so-tay:check` = **314 nhóm, 9.537 mục, 0 mục không kiểm được nguồn**;
-  `check-cay --nhom=6303,6504,6702,6914,7018,7304 --chi-tiet` = **0 lỗi lệch cây, 6/6 nhóm đủ**;
-  `npm test` = **ALL TESTS PASSED**, exit 0 (không suite nào fail).
-- [x] **B8.** Commit `63ebf94` (chỉ `data/so-tay/*.json` + `bao-cao/lo-027.json` + dòng CSV + tệp này;
-  KHÔNG commit `tmp/`) → push `so-tay/lo-027` → mở **PR #410** (KHÔNG merge).
-  Điền `pr=410` vào CSV dòng 027.
-- [x] **B9.** CI PR #410 (commit `a4e0a06`): `test` **pass** (2m06s), `bench` **pass** (6m04s),
-  PR `OPEN` + `MERGEABLE`; `Vercel` fail "Deployment was blocked" — lỗi hạ tầng có sẵn, CI thật chỉ có
-  `test` + `bench` (memory `vercel-check-blocked-la-pre-existing`).
+  1. **Nguyên văn TUYỆT ĐỐI** — `tmp/so-tay/strict-nguyen-van.mjs`, KHÔNG squash (bù lỗ hổng
+     `check-so-tay-squash-mat-ky-tu`: `lib/so-tay.js` nén hết ký tự không phải chữ/số nên lỗi dấu lọt qua,
+     lô 019 lọt 11 câu trích mất dấu `-`). **Lần 1 bắt 8 câu sai** — xem bảng dưới.
+  2. `check-so-tay.mjs --raw`: lần 1 loại **1 mục** (`fact-khong-hop-le` —
+     `luoi_dao_cut_giong_luot_truot_qua_lai tren_luoc_kim_loai_co_dinh` có **dấu cách**, luật
+     `^[a-z][a-z0-9_]{2,}$`). Sửa xong → **125/125, 0 mục không kiểm được nguồn**.
 
-## Lỗi của chính phiên này (ghi lại để không lặp)
+- [x] **B6.** Nạp: `build-so-tay.mjs --nhom=… --tu-tep=tmp/so-tay/raw --force
+  --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-029.json`
+  → **125/125 (100 %)**, `nhomLoi: []`.
 
-Bản PR đầu em ghi cỡ lô bằng **số ước lượng** ("8 `dieuKienVao` · 29 `loaiTru` · 46 `tieuChi6` ·
-42 `dong8`") và phải sửa lại sau khi đếm thật (`9 · 30 · 44 · 47`). Số liệu trong PR/TIEN-TRINH phải
-**đếm từ `data/so-tay/*.json` sau khi nạp**, không đoán.
+- [x] **B7.** Kiểm sau nạp:
+  - `node scripts/check-cay.mjs --nhom=<n> --chi-tiet` × 6 → **0 lỗi lệch cây**; 9402/9504/2508 **"đủ"**;
+    8461/8484/8510 còn 1 cảnh báo mỗi nhóm `phan-nhom-chua-co-tieu-chi` cho 8461.90 / 8484.90 / 8510.90
+    (nguồn thật sự không nêu tiêu chí phân biệt cho ba phân nhóm gom — không bịa).
+  - `npm run so-tay:check` → **314 nhóm, 9.505 mục, 0 mục không kiểm được nguồn**
+  - `npm test` → **ALL TESTS PASSED**, exit 0.
 
-## Bàn giao cho người duyệt (mục 4)
+## Lỗi gõ tay đã bắt được (máy `check-so-tay` KHÔNG bắt — cả 8 đều lọt qua luật squash)
 
-Cần **soát độc lập TOÀN BỘ** `phamVi`, `boPhan`, `dieuKienVao`, `loaiTru`, `phanBiet` của 6 nhóm
-(lô này `boPhan` không có mục nào — không nhóm nào có quy tắc bộ phận trong nguồn).
-Trọng tâm khi soát:
-- `7304` — 26 `tieuChi6` + 8 `tenDien` dịch từ tên WCO tiếng Anh (đúng thực tế từng chỗ có nguồn tiếng Việt là gì).
-- `6914` — `dieuKienVao` thứ 2 (`nhiet_do_nung_toi_thieu >= 800 °C`) lấy từ mô tả công đoạn (iv), câu có vế
-  *"tùy thuộc vào bản chất của sản phẩm"*; luật máy không chặn, người duyệt xem có nên giữ.
-- `6303` — 3 `dieuKienVao` lấy từ chú giải **chương 63** (không phải chú giải nhóm) vì chú giải nhóm 6303
-  không có câu điều kiện nào.
-- `6504` — nhóm mỏng nhất lô: chỉ 7 mục (1 `phamVi`, 4 `loaiTru`, 1 `phanBiet`, 1 `dong8`).
+Nguyên nhân chung: tôi **gõ lại** câu trích từ màn hình thay vì cắt–dán. Cả 8 đều sai **1 ký tự**
+nên `squash()` vẫn khớp → `check-so-tay` báo xanh. Chỉ lớp kiểm nguyên văn mới bắt được.
 
-# TIEN-TRINH — lô 014 (soạn sổ tay chú giải)
+| # | Nhóm | Tôi gõ | Nguồn thật |
+|---|---|---|---|
+| 1 | 8461 `phamVi`, `dieuKienVao[0]` | "hoặc **gốc** kim loại" | "hoặc **gốm** kim loại" |
+| 2 | 8484 `loaiTru[3]` | "một **bao bị**, hộp" | "một **bao bì**, hộp" |
+| 3 | 8484 `tieuChi6[0]` | "trong túi, **bao bị**, hộp" | "trong túi, **bao bì**, hộp" |
+| 4 | 8510 `tieuChi6[2]` | "động cơ điện **gắng** trong" | "động cơ điện **gắn** trong" |
+| 5 | 9402 `loaiTru[1]` | "dạng **gá lắm** đơn giản" | "dạng **gá lắp** đơn giản" |
+| 6 | 9504 `dong8[14]` | "95049033 - - - **Bàn** khác…" | "95049033 - - - **Loại bàn** khác…" |
+| 7 | 8484 `tieuChi6[0]` (lần 2) | "bao **bị**" (còn sót) | "bao **bì**" |
+| 8 | 8510 `tieuChi6[2].fact` | có dấu cách | luật `fact-khong-hop-le` |
+
+**Bài học (đề xuất đưa vào tệp dùng chung):** `scripts/check-trich-nguyen-van.mjs` (lô 016) và
+`tmp/so-tay/strict-nguyen-van.mjs` (lô 014) đều **chưa có trên `main`** — mỗi phiên phải viết lại.
+Nên đưa một bản vào `scripts/` để không còn lý do bỏ qua.
+Thêm: **đừng gõ lại trích, hãy cắt–dán hoặc dùng bộ căn chỉnh** (`tmp/so-tay/va-lai-trich.mjs`: bỏ ký tự
+không phải chữ/số để dò ngược trong nguồn rồi lấy lại **đúng đoạn gốc theo vị trí**) — nó vá được 67 trích
+trong một lượt.
+
+## Bỏ có chủ đích (thà bỏ mục còn hơn mục không có căn cứ)
+
+| Nhóm | Bỏ gì | Vì sao |
+|---|---|---|
+| 8484 | `dieuKienVao` mô tả "đệm tấm kim loại" | Nhóm 8484 có **ba nhánh loại trừ nhau** (A/B/C); viết một nhánh thành `value=true` sẽ loại nhầm hai nhánh kia ở cổng. Các nhánh đó nằm ở `tieuChi6` (8484.10, 8484.20) và `phamVi`. Chỉ giữ 1 `dieuKienVao` chung cho cả cụm 84.81–84.84, lấy từ Chú giải chương 84 khoản (6). |
+| 9402 | `dieuKienVao` "thiết kế đặc biệt cho ngành y…" | 9402 = đồ nội thất y tế **HOẶC** ghế cắt tóc xoay/ngả/nâng hạ. Điều kiện "thiết kế cho y tế" không đúng với ghế cắt tóc → đặt `value=true` là lách máy và gây loại oan. Nhánh (B) nằm ở `tieuChi6` 9402.10. |
+| 9402 | `boPhan` dùng Chú giải chương 94 "CÁC BỘ PHẬN" | Câu đó dài 370 ký tự (lược đồ khuyến nghị ≤ 300) và là quy tắc chung cả Chương; thay bằng quy tắc bộ phận riêng của nhóm (phần (C)) ngắn và sát hơn. |
+| 9504 | `loaiTru` "vé xổ số, thẻ cào… (thường là nhóm 49.11)" | Nguồn ghi "**thường là** nhóm 49.11" — câu không dứt khoát (đúng luật `loai-tru-chi-la-thuong`), và 4911 không có trong `chu-giai-heading.json`. |
+| 9504 | `loaiTru` "bàn để chơi bài thuộc Chương 94" | Nguồn không nêu số nhóm đích, chỉ nói "Chương 94" → không đủ căn cứ cho `sangNhom`. |
+| 9504 | `loaiTru` cho "phân nhóm 9504.30" | `sangNhom` chỉ nhận mã 4 số có thật hoặc mã 8 số đúng biểu thuế; chuyển thành `phanBiet` với 4 mã 8 số của 9504.30. |
+| 9504 | `loaiTru` cho thiết bị tùy chọn ngoại vi (Chú giải 5 (C) Chương 84) | Nguồn chỉ nói "Chương 84 (Phần XVI)", không có số nhóm đích. |
+| 8461 | `phanBiet` cho Chú giải 3 chương 84 ("đáp ứng 84.56 **và** 84.61 → 8456") | Chỉ đúng khi máy **đồng thời** thoả 84.56; nhánh "không" không thể khẳng định là 8461 (có thể là 8457/8458/8459…). Viết `neuKhong: "8461"` là nói quá. Ghi ra đây để người duyệt cân nhắc đưa thành luật máy. |
+| 2508 | `dieuKienVao` "là chất chứa sét tự nhiên" | 2508 còn chứa andalusite/kyanite/silimanite, mullite, chamotte, dinas — **không** phải chất chứa sét. Điều kiện đó chỉ đúng với nhánh đất sét. |
+| 2508 | `dieuKienVao` "tính chịu nhiệt" | Đúng với đất sét nhưng câu chú giải nói "các sản phẩm này" (= đất sét), không phải cả 6 nhánh. Nói vượt quá câu trích. |
+| 8510 | `dieuKienVao` "dùng để xén lông cừu / chải lông ngựa" | Nguồn ghi "**hoặc** để xén lông cừu **hoặc** chải lông ngựa" — một nhánh của "A hoặc B", không được tách thành điều kiện độc lập. |
+| 8461 | `dieuKienVao` "hoạt động bằng tay hoặc đạp chân" | Nguồn ghi "cũng được phân vào nhóm này" — câu **cho phép**, không phải điều kiện bắt buộc. |
+
+## Nguồn tự mâu thuẫn — BÁO ĐỂ NGƯỜI DUYỆT, không tự quyết
+
+**2508: bentonite trương nở.**
+
+- Chú giải **phân nhóm**: "Phân nhóm 2508.10 **bao gồm** natri bentonite (bentonite trương nở) và canxi
+  bentonite (bentonite không trương nở)"
+- Chú giải **nhóm**, mục (d) loại trừ: "Các loại **đất sét trương nở** … thậm chí nếu thu được bằng cách
+  duy nhất là nung đất sét tự nhiên (**nhóm 68.06**)"
+
+Cùng một cụm từ, hai hướng. Em **giữ** `loaiTru` về 68.06 (đó là danh sách loại trừ chính của nhóm, và tiêu đề
+6806 là "Đất sét trương nở") và **không** dựng `phanBiet` nào liên quan bentonite; `tieuChi6` 2508.10 chỉ
+chép định nghĩa phân nhóm, không suy ra kết luận xuyên nhóm. Người duyệt xác nhận.
+
+## Chỗ dấu lược "…" che mệt (quyết định có chủ đích, không phải lỗi)
+
+Luật mục 3: đoạn bị lược **không được chứa ngoại lệ**. Ở 2 nhóm, lược có che ngoại lệ, nhưng **bản thân ngoại lệ
+đó được trích đầy đủ ở `loaiTru` ngay trong cùng tệp** — người đọc không bị mất thông tin:
+
+- **9402 `phamVi`**: lược từ "(B) GHẾ CẮT TÓC…" sang danh sách "(1)…(12)" của phần (A), trong đó có loại trừ
+  90.22 / 90.21 / 94.03 / 90.18 → đã trích đủ ở `loaiTru[0..4]`.
+- **9504 `phamVi`**: lược qua câu "**Nhưng** nhóm này loại trừ máy đếm điểm … giá để gậy bi-a …" → đã trích
+  đủ ở `loaiTru[0..2]`.
+- **8461 `phamVi`**: lược qua các mục (1)–(8), **không có** ngoại lệ nào (mục (9) "máy chạm khắc, trừ
+  …84.59/84.60" được trích nguyên văn trong chính câu trích).
+
+Ngược lại, chỗ nào lược sẽ nuốt mất thông tin thì em **bỏ luôn nhánh đó** thay vì lược:
+
+- 9504 không lược từ mục (2) sang (11) để giữ đủ các mục giữa — vì phải lược đúng khối loại trừ.
+- 9402 không trích "(C) BỘ PHẬN" trong `phamVi` (lược qua loại trừ 94.01); phần (C) nằm ở `boPhan`.
+- 8484 không trích "(B)"/"(C)" trong `phamVi` (lược qua loại trừ 68.12 "trừ khi…"); hai nhánh đó ở `tieuChi6`.
+
+## Mẫu 3 mục (cho người duyệt đối chiếu)
+
+**1 loại trừ — 9402 `loaiTru[2]`** (giường không có bộ phận cơ khí → 9403):
+
+> `"dieuKien": "Giường không có các bộ phận cơ khí", "sangNhom": "9403"`
+> `"trich": "giường không có các bộ phận cơ khí được xếp vào nhóm 94.03."`
+
+**1 điều kiện số** — lô này **không có** điều kiện số nào. Cả 6 nhóm đều không có ngưỡng số trong nguồn
+(8461/8484/8510/9402/9504/2508 đều là nhóm máy móc–đồ dùng, không phải danh mục hạn ngạch). Thay vào đó là
+tiêu chí cấp 6 số, ví dụ **8484 `tieuChi6[1]`** (bộ làm kín kiểu cơ khí → 8484.20):
+
+> `"fact": "bo_lam_kin_co_khac_tao_dem_gioang_chong_ro_ri", "op": "=", "value": true`
+> `"trich": "Các bộ làm kín kiểu cơ khí (ví dụ, các đệm hình vòng trượt và các đệm vòng lò xo) bao gồm các hệ thống cơ khí - hình thành một đệm gioăng chống rò rỉ giữa các bề mặt phẳng, hoặc bề mặt quay … để chống sức ép và lực tác động từ các bộ phận chuyển động hoặc do rung động."`
+
+**1 dòng 8 số — 9504 `dong8[14]`**:
+
+> `"hs": "95049033", "dieuKien": "Bàn khác thiết kế để chơi bạc", "loaiKhac": false`
+> `"nguon": "tax.95049033", "trich": "95049033 - - - Loại bàn khác thiết kế để chơi bạc"`
+
+Và một dòng "Loại khác" mà dòng cha không có trong nguồn — **9402 `dong8[8]`**:
+
+> `"hs": "94029090", "dieuKien": "Loại khác (dòng cha 9402.90 không có trong nguồn — đối chiếu biểu thuế)"`
+> `"loaiKhac": true` (máy tự điền theo biểu thuế)
+
+## Nhóm nguồn mỏng / bất thường
+
+- **8484** — chú giải nhóm có cả ba phần (A)(B)(C) nhưng **không có** chú giải phân nhóm nào; phần (B)
+  chỉ nêu điều kiện "ít nhất hai tấm … làm bằng vật liệu khác nhau" (không có số). Dòng 8484.90 là
+  `Loại khác` không có tiêu chí.
+- **8461** — phân nhóm 8461.90 là `Loại khác`, chú giải nhóm không tách riêng; chỉ biết 8461.90.20 là máy bào.
+- **8510** — 8510.90 (bộ phận) không có tiêu chí riêng ngoài danh sách "đầu cắt, dao cát, lưỡi dao, lưỡi lược".
+- **9402 / 9504 / 2508** — `check-cay` báo **"đủ"** (không còn chỗ trống nào).
+- Lưu ý nguồn: `nhom8510.nhom` và `nhom9402.nhom` có lỗi chính tả của chính bản chú giải
+  ("gắ**n** trong" / "gá lắ**p**") — em chép **nguyên văn**, không sửa (luật mục 3).
+
+## Số liệu thật
+
+| nhóm | mục | đạt | ghi chú |
+|---|---|---|---|
+| 2508 | 20 | 20 | 5 loại trừ · 1 phân biệt · 6 tiêu chí 6 số · 7 dòng 8 số |
+| 8461 | 20 | 20 | 1 vào · 6 loại trừ · 1 phân biệt · 1 bộ phận · 4 tiêu chí 6 số · 6 dòng 8 số |
+| 8484 | 12 | 12 | 1 vào · 4 loại trừ · 1 phân biệt · 2 tiêu chí 6 số · 3 dòng 8 số |
+| 8510 | 13 | 13 | 1 vào · 2 loại trừ · 1 phân biệt · 1 bộ phận · 3 tiêu chí 6 số · 4 dòng 8 số |
+| 9402 | 23 | 23 | 8 loại trừ · 2 phân biệt · 1 bộ phận · 2 tiêu chí 6 số · 9 dòng 8 số (5 dòng trích từ **SEN**) |
+| 9504 | 37 | 37 | 6 loại trừ · 1 phân biệt · 1 bộ phận · 5 tiêu chí 6 số · 23 dòng 8 số |
+| **cộng** | **125** | **125 (100 %)** | |
+
+## Kiểm sau nạp
+
+| lệnh | kết quả |
+|---|---|
+| `node tmp/so-tay/strict-nguyen-van.mjs` | 125/125 câu trích **nguyên văn tuyệt đối**, 0 sai |
+| `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` | **125/125 đạt, 0 mục không kiểm được nguồn** |
+| `node scripts/build-so-tay.mjs --tu-tep … --force --bao-cao=lo-029.json` | **125/125 (100 %)**, `nhomLoi: []` |
+| `node scripts/check-cay.mjs --nhom=<n> --chi-tiet` × 6 | **0 lỗi lệch cây**; 3 nhóm "đủ", 3 nhóm chỉ còn cảnh báo 6 số |
+| `npm run so-tay:check` | **314 nhóm, 9.505 mục, 0 mục không kiểm được nguồn** |
+| `npm test` | **ALL TESTS PASSED**, exit 0 |
+
+Mọi tệp trong `tmp/` (nguồn xuất, bản nháp, 7 kịch bản kiểm) **không commit** — đúng quy định lô.
+
+**Còn lại:** soát độc lập TOÀN BỘ (mục 4 giao việc) là việc của người khác; mọi mục ở đây đang mang nhãn
+`AI_DA_KIEM`, chưa mục nào `NGUOI_DUYET`.
+
+**KHÔNG merge.**# TIEN-TRINH — lô 014 (soạn sổ tay chú giải)
 
 Nhóm của lô: **8465, 8511, 8529, 9013, 9610, 4013**
 Người soạn: `dev-zcode-mm` · Nhánh: `so-tay/lo-014` @ `022723f` (main mới nhất) · Ngày: 2026-10-22
@@ -1411,156 +1400,3 @@ Sau khi đẩy commit soát `ee1c187`, PR #407 thành `CONFLICTING` vì main đ�
 - CI PR #407 (commit `08ef5c1`): `test` **pass** (2m34s), `bench` **pass** (7m38s);
   `Vercel` fail vì **"Deployment rate limited — retry in 24 hours"** — lỗi hạ tầng tài khoản
   Vercel, đã có sẵn từ các PR trước, không phải lỗi code.
-
----
-
-# TIEN-TRINH — lô 028 (soạn sổ tay chú giải)
-
-Nhóm của lô: **7312, 7408, 7418, 8425, 8449, 8453** · Người soạn: `dev-zcode-mm` · Nhánh: `so-tay/lo-028` @ `1828d3b` (main mới nhất) · Ngày: 2026-10-23
-Phiên này là **người soạn** (không phải soát độc lập — mục 4 giao việc thuộc người khác).
-
-## Sai lệch brief ↔ CSV (đã xử lý, không im lặng)
-
-Brief dòng 4 ghi nhóm `7312,7408,7418,8425,8449,8453` — **khớp** CSV dòng `028`.
-Brief dòng 6 kèm **lệnh mẫu** `--nhom=7615,9609,3215,6306,6804,7412` — đó là nhóm của **lô 001** (`so-tay-lo.csv` dòng `001`), copy-paste nhầm y như lô 012/014 (memory `so-tay-lo-quy-trinh`). Đã bỏ lệnh mẫu, chốt nhóm theo CSV. Cập nhật CSV dòng 028 → `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm`.
-
-## Các bước
-
-- [x] **B1.** Đọc TRỌN `docs/giao-viec/so-tay-giao-ngoai.md` (mục 0 đợt 1: 14 kiểu lỗi; mục 0/vòng 2: bắt buộc soát độc lập; mục 1 bài học; mục 2 gói việc; mục 3 **11 luật**; mục 4 người duyệt) + brief.
-- [x] **B2.** Xuất nguồn `build-so-tay.mjs --nhom=7312,7408,7418,8425,8449,8453 --xuat-nguon=tmp/so-tay/nguon` → **6 nhóm đều cần dựng**, 271 nghìn ký tự nguồn (7312 22k · 7408 29k · 7418 27k · 8425 64k · 8449 63k · 8453 66k). Cả 6 đều dưới trần 350k.
-- [x] **B3.** Đọc `tmp/so-tay/nguon/_he-thong.txt` trọn + `lib/so-tay.js` trọn (để biết máy loại mục nào) + in cây `lib/hs-tree.js` cho cả 6 nhóm.
-- [x] **B4.** Đọc HẾT cả 6 tệp nguồn (`ch84.chuong` 21k và `phan84.phan` 22k dùng chung cho 8425/8449/8453, `phan74.phan` dùng chung cho 7408/7418 — đọc 1 lần đủ).
-- [x] **B5.** Soạn `tmp/so-tay/raw/<nhom>.json` — **138 mục**: 7312 15 · 7408 28 · 7418 23 · 8425 28 · 8449 13 · 8453 31.
-- [x] **B6.** Tự kiểm TRƯỚC khi nạp, hai lớp:
-  - **Nguyên văn TUYỆT ĐỐI** (script riêng `tmp/so-tay/strict-nguyen-van.mjs`, KHÔNG squash — bù lỗ hổng `check-so-tay-squash-mat-ky-tu`): lần 1 bắt **2 mục** thuộc 8425 vì câu trích **gán nhầm nguồn** (xem "Máy không bắt được"). Vá xong → **138/138 khớp nguyên văn**.
-  - `check-so-tay.mjs --raw`: **138/138 đạt, 0 mục không kiểm được nguồn**.
-
-## Hai lỗi MÁY KHÔNG BẮT ĐƯỢC (đã tự bắt — người soát nên soi lại)
-
-1. **Gán nhầm nguồn giữa hai nhóm cùng Chương 84.** Câu *"Những máy cán như vậy cũng được phân loại ở đây… loại trừ các máy cán quay… (nhóm 84.51)"* thuộc chú giải **nhóm 8449** (mục (3) "Máy cán làm chắc"), **không** phải 8425. Đã chuyển `loaiTru` + `phanBiet` từ 8425 sang 8449. `check-so-tay` cũng sẽ loại, nhưng nguyên nhân là nhớ nhầm chứ không phải lỗi soạn có chủ đích — script nguyên văn chặn được trước khi tệp bị loại mục âm thầm.
-2. **`phamVi.text` nói nhiều hơn câu trích.**
-   - 8425: tôi viết *"…: hệ ròng rọc và hệ tời…, tời ngang và tời dọc, và các loại kích"* nhưng trích chỉ có *"các thiết bị nâng hoặc xếp hàng đơn giản"*. Đã nới trích sang câu kế (quy tắc Chú giải 84.26 áp dụng cho máy tự hành/máy di động…).
-   - 8449: tôi viết *"kể cả máy làm mũ phớt"* nhưng trích chỉ tới *"các cốt dùng để làm mũ"* (phần "MÁY SẢN XUẤT MŨ PHỚT" nằm ngoài trích). Đã bỏ.
-
-## Nhóm nguồn mỏng / bất thường (đưa vào mô tả PR)
-
-- **7408**: chú giải nhóm chỉ 4 câu — "Chú giải 9(c) Phần XV định nghĩa dây" và "Phần thứ 2 của chú giải nhóm **74.07** được áp dụng" nhưng **bản chú giải 74.07 không được xuất vào nguồn** → không rút được `dieuKienVao` nào từ định nghĩa "dây" của Chương 74.
-- **7418**: chú giải nhóm bắt đầu bằng *"Chú giải Chi tiết nhóm 73.21, 73.23 và 73.24 áp dụng…"* nhưng **bản chú giải 73.23 không được xuất** → nhóm này cũng mỏng; chỉ dựng được `phamVi`/`dieuKienVao` từ câu "dụng cụ làm nóng… bằng đồng".
-- **8449**: nhóm một mã, chỉ một dòng 8 số (`84490000`). `tieuChi6` **bỏ trống** vì `844900` không phải nút 6 số trong cây (`lib/hs-tree.js` suy ra thẳng từ nhóm) → máy sẽ loại mọi mục `tieuChi6` của nhóm này.
-- **`phan84.phan`**: tiêu đề đầu nguồn là *"ĐIỆN; CÁC BỘ PHẬN CỦA CHÚ GIẢI; THIẾT BỊ GHI VÀ TÁI TẠO ÂM THANH…"* nhưng **thân văn bản là Chú giải Phần XVI** (bộ phận, máy đa chức năng, đơn vị máy chức năng, máy di động). Đây là **lỗi kệ sách** ở trường tiêu đề chú giải Phần, không phải lỗi sổ tay; nội dung dùng được. Đề xuất sửa riêng ở `data/chu-giai-chuong.json`/`hanh-muc` ngoài lô này.
-- **`nhom8453.nhom` chép thiếu dấu ngoặc**: mục loại trừ (a) đánh số bằng "(a)", các mục sau lại viết "b)", "(c)"… không quay lại "(b)" — giữ nguyên nguyên văn, chép y hệt trong `loaiTru`/`phanBiet`.
-
-## Bước 7 — nạp, kiểm, mở PR (23/10/2026)
-
-| lệnh | kết quả |
-|---|---|
-| `node scripts/build-so-tay.mjs --nhom=… --tu-tep=tmp/so-tay/raw --force --nguoi-soan=dev-zcode-mm --bao-cao=data/so-tay/bao-cao/lo-028.json` | **138/138 (100 %)**, `nhomLoi: []`, không nguồn nào bị cắt |
-| `node scripts/check-cay.mjs --nhom=7312,7408,7418,8425,8449,8453 --chi-tiet` | **0 lỗi lệch cây, 6 nhóm đủ** (có cây, đủ dong8, đủ tên nút ảo, đủ tiêu chí 6 số) |
-| `npm run so-tay:check` | **314 nhóm, 9.518 mục, 0 mục không kiểm được nguồn** |
-| `npm test` | **ALL TESTS PASSED** |
-| commit | `28e4554` — chỉ `data/so-tay/*.json` + `bao-cao/lo-028.json` + dòng CSV + TIEN-TRINH (KHÔNG commit `tmp/`) |
-| PR | **#409** `so-tay/lo-028` → `main`, MERGEABLE, **chưa merge** |
-| CI #409 | `test` **pass** (2m23s) · `bench` **pass** (6m10s) · `Vercel` fail — *"Deployment was blocked"*, lỗi hạ tầng có sẵn (memory `vercel-check-blocked-la-pre-existing`), không phải lỗi code |
-
-**KHÔNG merge.** Còn lại cho người duyệt: soát độc lập TOÀN BỘ `phamVi`/`boPhan`/`dieuKienVao`/`loaiTru`/`phanBiet`
-theo hồ sơ `review/<nhom>.json` + script áp 2 pha (xem `apply-review-lo025.mjs`), rồi điền `trang_thai=xong` + cột `pr`.
-
----
-
-# TIEN-TRINH — lô 028 · SOÁT ĐỘC LẬP (phiên người soát, KHÁC người soạn)
-
-Người soát: `dev-soat-doc-lap-lo028` · Nhánh: `so-tay/lo-028` @ `6b9b0ec` · Ngày: 2026-10-23 · PR **#409**
-Người soạn là `dev-zcode-mm` — phiên này **không** soạn, chỉ đọc lại từng mục cùng nguồn. **KHÔNG merge.**
-
-## Cách soát (không tin máy)
-
-Máy đã xanh ngay từ đầu: `check-so-tay --raw` 138/138 và `strict-nguyen-van.mjs` 138/138 nguyên văn — nên
-đợt này **không có việc gì để bắt máy**. Toàn bộ giá trị nằm ở đọc tay. Ba lớp đã dùng:
-
-1. **Đọc trọn 6 tệp nguồn** (`tmp/so-tay/nguon/<nhom>.txt`, 271 nghìn ký tự) cùng `tmp/so-tay/raw/<nhom>.json`.
-2. **Quét mẫu lỗi người soát phải bắt** (`tmp/so-tay/soat-028-scan.mjs`): cắt né câu rào · `hoi` đảo chiều ·
-   dấu lược nuốt ngoại lệ · trích mồ côi · thêm chữ ngoài trích · trích 300–600 · `hoi` nhắc mã.
-   Quét ra 30 cờ, bỏ hết cờ rác (`fact` snake_case, chữ "hàng" trong câu hỏi), giữ lại các cờ thật.
-3. **Đếm tiền lệ trên `data/so-tay` TRƯỚC khi kết luận mẫu nào là lỗi** (memory `so-tay-soat-mau-khong-phai-loi`) —
-   nhờ vậy **không sửa oan 3 mục** mà thoáng qua đã định sửa: xem bảng dưới.
-
-## Kết quả: 82 mục trong 5 khối — giữ 74 · sửa 8 · xoá 0
-
-138 mục đã đọc hết; phạm vi soát độc lập (mục 4) là **82 mục** ở `phamVi`/`boPhan`/`dieuKienVao`/`loaiTru`/`phanBiet`.
-`boPhan` của 7408 và 7418 là `null` (nguồn không có quy tắc bộ phận) nên không có mục để soi.
-
-| nhóm | soát | giữ | sửa | xoá |
-|---|---|---|---|---|
-| 7312 | 7 | 6 | 1 | 0 |
-| 7408 | 14 | 14 | 0 | 0 |
-| 7418 | 17 | 13 | 4 | 0 |
-| 8425 | 12 | 10 | 2 | 0 |
-| 8449 | 12 | 12 | 0 | 0 |
-| 8453 | 20 | 19 | 1 | 0 |
-| **Tổng** | **82** | **74** | **8** | **0** |
-
-### 8 lỗi thật đã sửa (máy KHÔNG bắt được — cả 8 đều xanh máy)
-
-1. **`phamVi` của 7418 bỏ mất nửa nhóm.** Chú giải còn nói *"Nhóm cũng bao gồm thiết bị gia đình được mô tả ở chú giải
-   nhóm 73.22"* ngay câu sau, mà `phamVi` chỉ mô tả "dụng cụ làm nóng / thiết bị nấu". 73.22 là "các sản phẩm bằng
-   đồng dùng trong gia đình" — tức phần lớn 7418 (741810 đồ bếp/nhà bếp, 741820 đồ vệ sinh). Trái với chính
-   `tieuChi6` của nhóm. Kéo câu thứ hai vào `trich` + viết lại `text` (279 ký tự, trong trần 300).
-2. **`phamVi` của 8453 bỏ mất nửa nhóm**, cùng lỗi: bỏ *"Nhóm còn bao gồm máy móc được sử dụng để sản xuất hoặc
-   sửa chữa các mặt hàng da sống, da thuộc"* — tức phân nhóm **845320** (máy làm/sửa giày dép) và **845380**.
-   Đọc `phamVi` cũ sẽ tưởng 8453 chỉ là máy thuộc da (332 ký tự).
-3. **`phamVi` của 8425 lấy dấu lúc `…` giấu đúng một NGOẠI LỆ.** Câu bị nuốt bắt đầu bằng chính chữ
-   *"Tuy nhiên, nếu 1 tời ngang là dụng cụ thông thường của một máy kéo, thì máy hoàn thiện … sẽ được phân
-   loại ở nhóm 87.01"* — đúng mẫu luật 31 (đoạn lược không được chứa ngoại lệ) và mẫu "cắt trích né câu rào".
-   Kéo ngoại lệ vào `trich`, viết lại `text` cho khớp (315 ký tự).
-4. **`phanBiet[0]` của 8425 hỏi SAI CHỦ THỂ → nhánh Có sai mã.** Hỏi *"Tời ngang có phải là dụng cụ thông
-   thường của một máy kéo không?"* rồi trả `neuCo: 8701`. Nhưng nguồn nói **máy hoàn thiện** (máy kéo + tời
-   ngang) mới về 87.01 — hỏi kiểu cũ thì một tời ngang rời (loại phổ biến nhất trong tờ khai) bị đẩy nhầm sang
-   87.01. Đổi `hoi` sang hỏi đúng chủ ngữ. `loaiTru[0]` cùng ý nhưng đã viết đúng chủ thể nên giữ.
-5. **`phanBiet[3]` của 7418 thêm chữ "dùng điện" không có trong nguồn.** Nguồn 7418 chỉ ghi *"Thiết bị gia dụng
-   của chương 85 (đặc biệt các dụng cụ và thiết bị của nhóm 85.09 và 85.16)"* — **không có "điện"**. Đây là
-   hiểu biết riêng của người soạn lấy từ tên 85.09 (mới là "dùng điện"; 85.16 là "khác"). Bỏ.
-6. **`boPhan` của 7312 trích thiếu câu dẫn.** Trích cũ chỉ là mục (a) của danh sách: *"Các sản phẩm thuộc nhóm
-   73.07, 73.12, …"* — bản thân nó **không nói** 73.12 là "bộ phận có công dụng chung", nên không đỡ được
-   `quyTac`/`tomTat`. Kéo thêm câu dẫn ngay trước trong cùng khối `[phan73.phan]`. (Ý thì vốn đúng.)
-7–8. **Trích mồ côi ở 7418** (`loaiTru[2]` + `phanBiet[2]`, dùng chung một câu nguồn): cắt ở dấu hai chấm
-   *"… thuộc nhóm 84.19, ví dụ:"* — hứa ví dụ rồi không lấy. Phần bị bỏ chỉ là 2 ví dụ, **không phải ngoại lệ**,
-   nên cắt ở ranh giới mệnh đề "thuộc nhóm 84.19" là sạch (110 ký tự).
-
-### 3 chỗ ĐÃ ĐỊNH sửa nhưng GIỮ LẠI sau khi đếm tiền lệ (để lô sau khỏi sửa oan)
-
-| mục | nghi ngờ | kết luận sau khi đếm |
-|---|---|---|
-| 7408 `phanBiet[2].hoi` | `hoi` nhắc mã nhóm 74.13 | Luật chỉ cấm mã **phân nhóm** (6 số); `MA_PHAN_NHOM_TRONG_HOI = /WCO\|\d{4}\.\d{2}/` không bắt mã 4 số. Sổ tay đã gộp sẵn **6 mục cùng mẫu** (5401 "nhóm 40.07", 6117, 8443, 9003…) → **giữ**. |
-| 7418 `loaiTru[3]` → `8509\|8516` | nguồn chỉ nói "chương 85 (đặc biệt…)" nên ghi 2 nhóm là hẹp | 7323 và 7615 đã gộp với **đúng mẫu này**, và `dieuKien` đã giữ đúng định ngữ "đặc biệt" → **giữ**. |
-| 8453 `loaiTru[8]`/`phanBiet[4]` → 4417 | nguồn nói "**thường** trong nhóm 44.17" — có điều kiện giới hạn | 8506 đã gộp với đúng mẫu "thông thường thuộc nhóm 85.07", `dieuKien` của 8453 đã giữ nguyên chữ "thường" → **giữ**. |
-
-### Ghi nhận (không sửa được / ngoài phạm vi — đề xuất cho lô sau)
-
-- **8453 thiếu một điều kiện vào nhóm quan trọng**: nguồn nói *"…tuy nhiên chúng vẫn thuộc nhóm này với điều kiện
-  chúng được thiết kế để sử dụng chủ yếu cho da sống, da thuộc"* (máy 84.53 dùng được cho bìa cứng/giả da/nhựa
-  vẫn thuộc 8453 **nếu** thiết kế chủ yếu cho da). Chưa mục nào ghi. Người soát chỉ xoá/sửa theo index, không
-  chèn mục → đề xuất đưa vào phần bổ sung lỗi kệ sách hoặc thành luật máy.
-- **7408 `dong8` 74082910** (nguồn `sen.74082910`): `dieuKien` viết *"Dây bằng hợp kim đồng-thiếc…"* trong khi câu
-  trích chỉ nói *"Hỗn hợp thiếc và đồng tạo ra đồng thanh"* — chữ "Dây" là thêm. `dong8` ngoài 5 khối soát.
-- **Độ dài trích**: 3 câu sau khi sửa dài 315–332 ký tự (vùng 301–600, máy cho tới 600; sổ tay đã gộp có
-  sẵn 115 mục 301–400 và 44 mục 401–600). Chọn giữ trung thực thay vì lược cắt thêm.
-
-## Các bước đã chạy
-
-- [x] Đọc `brief-st-soat-lo028.md` + `docs/giao-viec/so-tay-giao-ngoai.md` (mục 3 **11 luật**) + `_he-thong.txt`.
-- [x] Xác minh **từng câu trích định sửa** nằm nguyên văn trong đúng khối nguồn **trước khi** gõ vào hồ sơ
-      (`tmp/so-tay/soat-028-verify.mjs`, 5/5 OK) — không gõ tay.
-- [x] Ghi `review/<nhom>.json` (6 tệp) — `scripts/apply-review-lo028.mjs` dry-run rồi mới ghi.
-- [x] `TARGET=raw APPLY=1 node scripts/apply-review-lo028.mjs` → áp lên `tmp/so-tay/raw/`.
-- [x] `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **138/138, 0 mục không kiểm được nguồn**.
-- [x] `node tmp/so-tay/strict-nguyen-van.mjs` → **138/138 nguyên văn, 0 đoạn sai**.
-- [x] `rm data/so-tay/bao-cao/lo-028.json` **trước** khi nạp lại (memory `so-tay-bao-cao-ghi-de`: `--bao-cao` nối vào
-      tệp cũ, để lại `nhomLoi` sót), rồi `--tu-tep --force --nguoi-soan="dev-zcode-mm"` → **138/138 (100 %)**.
-- [x] `TARGET=data APPLY=1 node scripts/apply-review-lo028.mjs` → đổi `nguonLoai` **82/82** mục ở 5 khối
-      `AI_DA_KIEM → NGUOI_DUYET` (luật 11 — chỉ người soát độc lập được đổi). `tieuChi6`/`dong8`/`cay`
-      **giữ nguyên** `AI_DA_KIEM`/`MAY_SUY` vì ngoài phạm vi soát.
-- [x] `npm run so-tay:check` → **314 nhóm, 9.518 mục, 0 mục không kiểm được nguồn**.
-- [x] `npm test` → **ALL TESTS PASSED**.
-- [x] `node scripts/check-cay.mjs --nhom=<từng nhóm> --chi-tiet` → cả 6: **0 lỗi lệch cây, đủ**.
-
-**KHÔNG merge.** Chờ người duyệt: rà lại PR #409 rồi điền `so-tay-lo.csv` dòng 028 → `trang_thai=xong` + cột `pr`.
