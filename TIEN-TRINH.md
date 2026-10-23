@@ -92,6 +92,12 @@ tiêu chí dương định nên để trống đúng nguyên tắc "thà để t
 - Lô này **chưa qua soát độc lập** (mục 4 của giao việc) — người duyệt phải soát TOÀN BỘ
   `phamVi`/`boPhan`/`dieuKienVao`/`loaiTru`/`phanBiet` của 6 nhóm này.
 
+### Xong
+
+- Commit `862cc48` trên nhánh `so-tay/lo-036` · **PR #427** · **KHÔNG merge**.
+- Cột `pr` của dòng 036 trong `so-tay-lo.csv` đã điền `427` (`trang_thai` để `dang-lam`,
+  người duyệt mới đổi `xong`).
+
 
 ---
 
