@@ -90,6 +90,8 @@ module.exports = async function handler(req, res) {
 
   // tier: "auto" của NV (body.auto=true hoặc tier="premium") → Gemini trả phí (nhanh+chính xác); mặc định MiniMax $0
   const tier = (body?.tier === 'premium' || body?.auto === true) ? 'premium' : 'standard';
+  // #425: debug (body.debug=true hoặc ?debug=1) → engine.log + engine.llm (timeout theo bước, mạch đang mở). Không lộ khoá.
+  const debug = body?.debug === true || String(req.query?.debug || '') === '1';
 
   try {
     const started = Date.now();
@@ -98,10 +100,10 @@ module.exports = async function handler(req, res) {
     const run = wantsEvalHoldout(req) ? (fn) => withEvalHoldout(fn) : (fn) => fn();
     if (serviceCaller(req) !== null) {
       // Dữ liệu khách (#237 J1): LLM bên trong chỉ đi nhà cung cấp hợp lệ, không qua tầng miễn phí.
-      const { result, usage } = await run(() => withPrivateData(() => withUsage(() => classify(attrs, { tier }))));
+      const { result, usage } = await run(() => withPrivateData(() => withUsage(() => classify(attrs, { tier, debug }))));
       return res.status(200).json({ ...result, attrs, usage, ms: Date.now() - started });
     }
-    const result = await run(() => classify(attrs, { tier }));
+    const result = await run(() => classify(attrs, { tier, debug }));
     return res.status(200).json({ ...result, attrs, ms: Date.now() - started });
   } catch (e) {
     return res.status(502).json({ error: 'Classify failed', detail: String(e.message).slice(0, 240) });
