@@ -1,0 +1,191 @@
+{
+ "nhom": "6914",
+ "phamVi": {
+  "text": "Các sản phẩm bằng gốm, sứ không thuộc các nhóm khác của chương 69 hoặc ở các chương khác của Danh mục hàng hoá.",
+  "nguon": "nhom6914.nhom",
+  "trich": "Nhóm này gồm toàn bộ các sản phẩm bằng gốm, sứ không thuộc các nhóm khác của chương này hoặc ở các chương khác của Danh mục hàng hoá.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_san_pham_gom_suc_da_duoc_nung_sau_khi_tao_hinh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "Các sản phẩm được gia nhiệt ở nhiệt độ dưới 800°C cho các mục đích như đóng rắn nhựa, tăng tốc phản ứng hydrat hóa, hoặc để loại bỏ nước hoặc các thành phần dễ bay hơi khác, không được coi là nung."
+   ],
+   "nguon": "ch69.chuong",
+   "trich": "1. Chương này chỉ áp dụng đối với những sản phẩm gốm, sứ đã được nung sau khi tạo hình:",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "nhiet_do_nung_toi_thieu",
+   "op": ">=",
+   "value": 800,
+   "donVi": "°C",
+   "ngoaiTru": [],
+   "nguon": "ch69.chuong",
+   "trich": "Ở công đoạn này, “sản phẩm màu lục” được nung ở mức nhiệt độ 800 °C hoặc cao hơn tùy thuộc vào bản chất của sản phẩm.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Răng giả bằng gốm, sứ",
+   "sangNhom": "9021",
+   "nguon": "nhom6914.nhom",
+   "trich": "(a) Răng giả bằng gốm, sứ (nhóm 90.21).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Thiết bị làm nóng bằng điện",
+   "sangNhom": "8516",
+   "nguon": "nhom6914.nhom",
+   "trich": "Tuy nhiên, các thiết bị làm nóng bằng điện được phân loại vào nhóm 85.16.",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Gốm kim loại",
+   "sangNhom": "8113",
+   "nguon": "ch69.chuong",
+   "trich": "(d) Gốm kim loại thuộc nhóm 81.13;",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Khuy hoặc tẩu hút thuốc",
+   "sangNhom": "9606|9614",
+   "nguon": "ch69.chuong",
+   "trich": "(l) Các sản phẩm thuộc nhóm 96.06 (ví dụ, khuy) hoặc thuộc nhóm 96.14 (ví dụ, tẩu hút thuốc); hoặc",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Thiết bị làm nóng có dùng điện không?",
+   "neuCo": "8516",
+   "neuKhong": "6914",
+   "nguon": "nhom6914.nhom",
+   "trich": "Tuy nhiên, các thiết bị làm nóng bằng điện được phân loại vào nhóm 85.16.",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hoi": "Biển hiệu bằng gốm, sứ dùng làm biển hiệu cho cửa hàng, cửa sổ có được chiếu sáng không?",
+   "neuCo": "9405",
+   "neuKhong": "6914",
+   "nguon": "nhom6914.nhom",
+   "trich": "(4) Chữ cái, chữ số, tấm biển chỉ dẫn, và các mô tuýp tương tự dùng làm biển hiệu cho cửa hàng, cửa sổ, có hoặc không có tranh ảnh hoặc nội dung được in sẵn, trừ khi được chiếu sáng (nhóm 94.05).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "691410",
+   "fact": "bang_su",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.691410",
+   "trich": "691410 Ceramic articles n.e.c. in chapter 69; of porcelain or china",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hs6": "691490",
+   "fact": "khong_phai_su",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.691490",
+   "trich": "691490 Ceramic articles n.e.c. in chapter 69; other than of porcelain or china",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "69141000",
+   "dieuKien": "Bằng sứ",
+   "tieuChi": {
+    "fact": "bang_su",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.69141000",
+   "trich": "69141000 - Bằng sứ",
+   "nguonLoai": "NGUOI_DUYET",
+   "loaiKhac": false
+  },
+  {
+   "hs": "69149000",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.69149000",
+   "trich": "69149000 - Loại khác",
+   "nguonLoai": "NGUOI_DUYET",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "6914",
+    "truAnhEm": [
+     "69141000"
+    ],
+    "toTienCoTen": "6914",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "6914",
+    "cap": 4,
+    "cha": "69",
+    "tenVi": "Các sản phẩm khác bằng gốm , sứ khác",
+    "tenEn": "Ceramic articles; n.e.c. in chapter 69",
+    "suyRa": false
+   },
+   {
+    "id": "69141000",
+    "cap": 8,
+    "cha": "6914",
+    "tenVi": "Bằng sứ",
+    "tenEn": "Ceramic articles n.e.c. in chapter 69; of porcelain or china",
+    "suyRa": false,
+    "laPhanNhom": "691410"
+   },
+   {
+    "id": "69149000",
+    "cap": 8,
+    "cha": "6914",
+    "tenVi": "Loại khác",
+    "tenEn": "Ceramic articles n.e.c. in chapter 69; other than of porcelain or china",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "691490"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch69.chuong",
+  "nhom6914.nhom",
+  "tax.69141000",
+  "tax.69149000",
+  "wco.691410",
+  "wco.691490"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-23T08:56:35.651Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 13,
+  "dat": 13,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

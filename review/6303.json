@@ -1,0 +1,144 @@
+{
+  "nhom": "6303",
+  "nguoiSoat": "NGUOI_DUYET",
+  "luc": "2026-10-23T15:40:00+07:00",
+  "soat": 25,
+  "daKiem": 25,
+  "xoa": 0,
+  "sua": 2,
+  "phamViSoat": "Toàn bộ 25 mục của bản nháp (1 phamVi + 3 dieuKienVao + 2 loaiTru + 2 phanBiet + 10 tieuChi6 + 1 cay.tenDien + 6 dong8), đọc cùng tmp/so-tay/nguon/6303.txt.",
+  "ghiChu": "Audit 6303: 25 mục, sửa 2, xoá 0. Cả 2 lỗi thuộc loại máy không bắt được. Ghi chú (KHÔNG phải lỗi, không sửa): (1) `dieuKienVao[1]` và `dieuKienVao[2]` là hai vế của CÙNG một câu chú giải Tổng quát Chương 63 (\"các sản phẩm dệt làm thành từ bất kỳ loại vải dệt nào … và các sản phẩm này không được mô tả chi tiết hơn ở các Chương khác\"); tách mỗi vế một mục là đúng luật \"mỗi mục chỉ trích từ một khối nguồn\". (2) `loaiTru[1]` (đã qua sử dụng → 63.09) giữ nguyên vì câu chương 63 mục 2(b) nói đúng như vậy; hai điều kiện bổ sung của 63.09 nằm ở Chú giải 3 (ký hiệu còn mặc + đóng gói cỡ lớn) chứ không phải trong câu trích. (3) Thiếu loaiTru cho vật liệu dài sợi không hạn chế (nguồn dòng 12) — chỉ là bỏ sót, không sai; bù lại tô KHÔNG tự chèn vì người soát chỉ xoá/sửa.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (\"text thêm chữ không có trong câu trích\"): `phamVi.text` kể cả rèm mờ che phía trong (mục 2) và diềm màn che/diềm giường (mục 3), nhưng `trich` chỉ chép mục (1) → câu trích KHÔNG nói điều mục khẳng định. Sửa bằng cách NỐI câu trích (3 mục, lược bằng \"…\") đúng như mẫu đã gộp ở 4012/8423, không sửa text và không sửa mã/nguồn để lách máy.",
+      "sua": {
+        "trich": "(1) Màn che (kể cả rèm trang trí), được sử dụng như, ví dụ: để che bên trong của cửa sổ … (2) Rèm mờ (che phía trong), các sản phẩm này thường mờ đục và có dạng cuốn (như các sản phẩm dùng trong các toa tàu hỏa). … (3) Diềm màn che (vải đặt phía bên trên cửa sổ để cho que luồn qua rèm- pelmets), bao gồm các dải vải dùng để gắn trên cửa sổ để che phần gáy (phần trên cùng) của rèm cửa sổ, và diềm giường dùng để gắn vào giường để che đậy hoặc trang trí."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dieuKienVao[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI ĐẢO NHÁNH (máy không đọc nghĩa): hoi dạng chọn hai \"Màn che dùng che phía trong HAY tấm che nắng ở phía ngoài?\" nhưng runtime in `${hoi} có→${neuCo} / không→${neuKhong}` (lib/so-tay-gates.js:141) và quy ước toàn repo (9013, 3701, 4420) là `neuCo` = vế ĐẦU. Ở đây vế đầu là màn che (6303) nhưng neuCo lại là 6306 → mô hình đọc \"có\" là ra 6306 cho hàng màn che. Sửa hoi thành câu hỏi có/không đúng chiều; giữ nguyên mã 6306/6303 và câu trích.",
+      "sua": {
+        "hoi": "Tấm che nắng có được dùng ở bên ngoài không?"
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[4]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[5]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[6]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[7]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[8]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "tieuChi6[9]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "cay.tenDien[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn đúng khối nguồn đã khai, và nội dung khẳng định đúng với điều mục nêu (đã đọc tay câu nguồn)."
+    }
+  ]
+}
