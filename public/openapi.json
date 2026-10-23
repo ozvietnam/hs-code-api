@@ -4,7 +4,7 @@
     "title": "HS Knowledge Base API",
     "version": "2.0.0",
     "summary": "Kho tri thức mở về mã HS, thuế và pháp lý xuất nhập khẩu Việt Nam",
-    "description": "API tra mã HS, thuế suất, chính sách mặt hàng và sinh mô tả khai báo Hải quan theo TT 39/2018.\n\n## Quyền truy cập\n\n**Không cần token** — nhóm tra cứu (/api/tax, /api/search, /api/notes, /api/kg_chapter, /api/customs-types và các resource dữ liệu).\nĐây là kho tri thức mở: bất kỳ AI hay người nào cũng gọi được ngay.\n\n**Không cần token, không giới hạn lượt** — nhóm AI (`/api/suggest`, `/api/describe`, `/api/classify`, `/api/match`): gọi POST thẳng, không cần header Authorization. Mỗi lượt tốn chi phí mô hình nên hãy gọi có chủ đích.\n\n**Cần Bearer token** — nhóm quản trị và ghi dữ liệu (`/api/feedback`, sửa biểu thuế, dashboard, `extract-specs`, `declaration-sheet`).\n\n## Đọc kết quả cho đúng\n\nMọi trích dẫn quy tắc GIR đều kèm trường `basis`:\n\n| basis | Nghĩa | Dùng cho hồ sơ giải trình Hải quan? |\n|---|---|---|\n| `RULE_TABLE` | Bảng quyết định do người soạn, có dẫn văn bản gốc | Được |\n| `DETERMINISTIC` | Hệ thống suy ra từ tín hiệu chắc chắn | Được |\n| `HEURISTIC` | Dò từ khoá / điểm ước lượng | Cần người kiểm chứng |\n| `LLM_ASSERTED` | Mô hình tự khai, chưa kiểm chứng | Không |\n\n## Miễn trừ trách nhiệm\n\nĐây là **tài liệu tham khảo nghiệp vụ**, không phải phán quyết phân loại của cơ quan Hải quan và không phải tư vấn pháp lý.\nPháp luật XNK thay đổi liên tục — luôn đối chiếu văn bản gốc còn hiệu lực tại thời điểm khai báo.",
+    "description": "API tra mã HS, thuế suất, chính sách mặt hàng và sinh mô tả khai báo Hải quan theo TT 39/2018.\n\n## Quyền truy cập\n\n**Không cần token** — nhóm tra cứu (/api/tax, /api/search, /api/notes, /api/kg_chapter, /api/customs-types, /api/destination-facts và các resource dữ liệu).\nĐây là kho tri thức mở: bất kỳ AI hay người nào cũng gọi được ngay.\n\n**Không cần token, không giới hạn lượt** — nhóm AI (`/api/suggest`, `/api/describe`, `/api/classify`, `/api/match`): gọi POST thẳng, không cần header Authorization. Mỗi lượt tốn chi phí mô hình nên hãy gọi có chủ đích.\n\n**Cần Bearer token** — nhóm quản trị và ghi dữ liệu (`/api/feedback`, sửa biểu thuế, dashboard, `extract-specs`, `declaration-sheet`).\n\n## Đọc kết quả cho đúng\n\nMọi trích dẫn quy tắc GIR đều kèm trường `basis`:\n\n| basis | Nghĩa | Dùng cho hồ sơ giải trình Hải quan? |\n|---|---|---|\n| `RULE_TABLE` | Bảng quyết định do người soạn, có dẫn văn bản gốc | Được |\n| `DETERMINISTIC` | Hệ thống suy ra từ tín hiệu chắc chắn | Được |\n| `HEURISTIC` | Dò từ khoá / điểm ước lượng | Cần người kiểm chứng |\n| `LLM_ASSERTED` | Mô hình tự khai, chưa kiểm chứng | Không |\n\n## Miễn trừ trách nhiệm\n\nĐây là **tài liệu tham khảo nghiệp vụ**, không phải phán quyết phân loại của cơ quan Hải quan và không phải tư vấn pháp lý.\nPháp luật XNK thay đổi liên tục — luôn đối chiếu văn bản gốc còn hiệu lực tại thời điểm khai báo.",
     "license": {
       "name": "MIT (code) / CC BY-SA 4.0 (dữ liệu)",
       "url": "https://github.com/ozvietnam/hs-code-api/blob/main/NOTICE.md"
@@ -3016,7 +3016,7 @@
   },
   "x-generated": {
     "by": "scripts/build-openapi.mjs",
-    "at": "2026-10-11",
+    "at": "2026-10-23",
     "note": "Sinh tự động từ lib/public-access.js — đừng sửa tay, sửa nguồn rồi chạy npm run build."
   }
 }
