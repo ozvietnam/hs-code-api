@@ -1,3 +1,119 @@
+# TIEN-TRINH — sổ tay chú giải HS (dùng chung nhiều phiên)
+
+<!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
+
+---
+
+# SOÁT ĐỘC LẬP lô 029 — phiên `dev-soat-doc-lap` (23/10/2026)
+
+Người soát **khác** người soạn (`dev-zcode-mm`). Đã đọc lại **TOÀN BỘ 125 mục** của 6 nhóm
+cùng nguồn nguyên văn `tmp/so-tay/nguon/<nhom>.txt` — không soát mẫu.
+
+**Kết quả: xoá 3 · sửa 19 · còn lại 122/122 đạt (100 %) · `nhomLoi: []`**
+Commit `1d2aceb` trên nhánh `so-tay/lo-029` · PR #414 · **KHÔNG merge**.
+
+## Vì sao phải soát tay (máy báo xanh mà vẫn sai)
+
+Trước khi soát, `check-so-tay --raw` báo **125/125 đạt**. Đúng như mục 0 giao việc: máy chỉ
+chứng minh câu trích **có thật** trong nguồn, không chứng minh nó **nói đúng** điều mục
+khẳng định. Ba lớp kiểm đã chạy: (1) `check-so-tay --raw`, (2) kiểm **nguyên văn tuyệt đối
+không squash**, (3) đọc tay từng mục.
+
+## Lỗi nặng — máy KHÔNG bắt được
+
+| Nhóm | Mục | Lỗi |
+|---|---|---|
+| 9402 | `loaiTru[4]`, `phanBiet[0]` | Câu trích **bên nhiễm rác**: `...ghế quay, vv....(nhóm....(nhóm....(nhóm....vv....vv....vv....(nhóm 94.01).` Cụm thừa **không tồn tại trong nguồn**. Máy xanh vì tách mảnh theo `…` thì từng mảnh đều có trong nguồn. |
+| 8510 | `phamVi`, `dieuKienVao[0]` | Câu trích kết bằng **12 dấu chấm** `gia súc............`, nguồn chỉ có 3. |
+| 8461 | `phanBiet[0]` | Câu trích kết bằng **12 dấu chấm** `giá............`, nguồn chỉ có 3. |
+| 8484 | `tieuChi6[0]` | Tiêu chí **phần (B)** bị treo nhầm lên `hs6 8484.10`. Nguồn nói ngược lại ba lần: tiêu đề phần (A), `wco.848410`, và dòng biểu thuế `84841000` — 8484.10 là phần (A). Phần (B) thuộc **8484.90** (theo `wco.848490`). Còn mâu thuẫn với `dong8` ngay trong cùng tệp. |
+
+## Lỗi "nói rộng hơn câu trích" — sửa bằng cách **nối `trich`**, không cắt `text`
+
+Theo bài học lô 028: `text` nói nhiều hơn `trich` thì nối thêm vào `trich` bằng `…`,
+đừng cắt bớt `text`.
+
+- **9504** `phamVi`: `text` liệt 13 mục (1)-(13), `trich` chỉ có (1) và (2).
+- **8461** `phamVi`: `text` liệt 9 loại máy, `trich` chỉ có (2), (6), (9).
+- **9402** `phamVi`: `text` có ví dụ và nhắc Phần (C) mà `trich` không có.
+- **8484** `phamVi`: `text` nói cả ba phần (A)(B)(C), `trich` chỉ có (A).
+- **2508** `phamVi`: `text` liệt 6 sản phẩm, `trich` dừng ở dấu hai chấm trước danh sách.
+
+## Câu phân biệt XOÁ (2 mục ở 9402)
+
+- `phanBiet[0]` — nhánh **"không"** chỉ suy từ **danh sách loại trừ** (nguồn loại riêng ghế đẩu
+  piano, bập bênh, quay; không nói mọi ghế không có trục xoay đều sang 9401). Đúng loại lỗi
+  mục 0 đã ghi là "người soát bắt".
+- `phanBiet[1]` — nhánh **"có"** (`94029012`) **không có trong câu trích** (trích lấy từ
+  `sen.94029013`, chỉ nói bàn mổ *không* điện); `hoi` còn mượn chữ "điện thủy lực hoặc cơ điện"
+  nằm ở `sen.94029012`. Một mục chỉ trích được một khối nguồn nên không gộp được.
+
+Sự phân biệt **bàn mổ điện / không điện** vẫn còn đủ ở `dong8` 94029012 và 94029013, mỗi dòng
+một câu trích SEN riêng — không mất thông tin.
+
+## 2508 — nguồn tự mâu thuẫn, xử lý có chủ đích
+
+Chú giải phân nhóm nói `2508.10 bao gồm natri bentonite (bentonite trương nở)`, còn danh sách
+loại trừ mục (d) nói `đất sét trương nở → 68.06`. Hai mục sổ tay sẽ đọc ra hai kết luận trái nhau.
+
+- **XOÁ** `tieuChi6[hs6=2508.10]` — mảnh sinh mâu thuẫn.
+- **GIỮ** `loaiTru → 6806` — khai trong danh sách chính thức "Nhóm này không bao gồm:" mục (d),
+  có nêu đích danh 68.06.
+- `wco.250810` ("bentonite, whether or not calcined" kèm "**excluding** expanded clays of heading
+  no. 6806") cho thấy hai câu **song song đúng**, không thật sự mâu thuẫn. Việc xếp bentonite vào
+  2508.10 vẫn được phục vụ bởi dòng biểu thuế `25081000`.
+
+Không dựng `phanBiet` bentonite. Vẫn **báo để người duyệt quyết** (xem mục dưới).
+
+## Sửa còn lại
+
+| Nhóm | Mục | Việc sửa |
+|---|---|---|
+| 9504 | `loaiTru[2]` | Bổ sung "hoặc theo chất liệu cấu thành" — mất định ngữ giới hạn. |
+| 9504 | `loaiTru[4]` | Bổ sung "cũng như với DVD, đĩa nhạc CD, MP3 hoặc đầu băng video". |
+| 9504 | `phanBiet[0]` | Lấy câu ở `nhom9504.nhom` để **cả 9504.50 lẫn 9504.30 đều có mặt** trong trích (bản cũ lấy `ch95.chuong` chỉ nói "Phân nhóm này"). |
+| 9504 | `dong8[14]` | 95049033: `dieuKien` thiếu chữ **"Loại"** so với chính câu trích của nó (vòng soạn đã sửa trích nhưng quên sửa `dieuKien`). |
+| 8461 | `phanBiet[0]` | Nối câu "…hoạt động bằng tay hoặc đạp chân, **cũng được phân vào nhóm này**" — trước đó nhánh "có" không có căn cứ. |
+| 8484 | `tieuChi6[0]` | Chuyển `8484.10 → 8484.90`, lấy trích `wco.848490` (đúng cơ chế `_he-thong.txt` dòng 20). |
+| 8510 | `phanBiet[0]` | Trích bắt đầu bằng `…` nên cắt mất chữ **"máy cạo"** → nhánh "không" không có căn cứ. Nối lại đầu câu. |
+| 9402 | `loaiTru[1]` | `dieuKien` nói "gãy xương, sai khớp" nhưng trích chỉ có "các dụng cụ loại này" — nối thêm đầu mục (9). |
+| 8484 | `loaiTru[3]`, `phanBiet[0]` | Bỏ chữ "**giỏ**" không có trong câu trích. |
+
+## Nhận lỗi của chính người soát
+
+Sửa bằng tay thì **gõ sai ký tự**: chép "gốc kim loại" thay "gố**m** kim loại" (8461), "CƠ KHÁC"
+thay "CƠ KHÍ" (8484). Bộ kiểm báo lộ ra; đã **cắt lại trực tiếp từ tệp nguồn** bằng
+`tmp/so-tay/cat-trich.mjs` thay vì gõ tay — đúng bài học "vá bằng cách cắt từ nguồn".
+
+Cũng lộ ra một lỗi trong script áp review của em: sau khi xoá `tieuChi6[0]`, chỉ số còn lại
+lệch, lệnh "sửa" tại chỉ số 5 **chèn thêm phần tử** thay vì thay thế, làm `250870` bị trùng
+2 lần. Đã khôi phục bản gốc, sửa chỉ số và thêm chốt an toàn (chỉ số ngoài mảng thì dừng,
+không âm thầm chèn). Cũng lưu ý: `phanBiet` bị máy loại nếu mã không phải **4 số hoặc 8 số** —
+nên không hạ được mã phân nhóm 6 số trong `neuCo`/`neuKhong`.
+
+## Nhãn nguồn (luật 11)
+
+**122** mục đã soát chuyển `AI_DA_KIEM` → **`NGUOI_DUYET`**. 20 nút cây do máy sinh giữ nguyên
+`MAY_SUY`.
+
+## Gates
+
+```
+check-so-tay --raw        122/122
+kiểm nguyên văn tuyệt đối  122/122   (0 mảnh không nguyên văn)
+check-cay × 6              0 lỗi lệch cây
+so-tay:check               314 nhóm / 9.502 mục / 0 rớt
+npm test                   ALL TESTS PASSED
+```
+
+Ba phân nhóm báo `phan-nhom-chua-co-tieu-chi` (`8461.90`, `8510.90`, và `8484.90` sau khi đổi
+tiêu chí): nguồn không nêu tiêu chí bằng lời, `wco.*` chỉ là tên tiếng Anh — **không bịa**, để trống.
+
+## Vẫn chờ người duyệt quyết (không tự quyết)
+
+1. **2508 bentonite** — cách xử lý mâu thuẫn nguồn nêu ở trên. Đề xuất: giữ nguyên như đã làm.
+2. **Tự soát mẫu ≥ 10 %** (mục 4) — người duyệt tự rút ngẫu nhiên trên 122 mục còn lại.
+3. `TIEN-TRINH.md` dùng chung nhiều phiên — mục này của `dev-soat-doc-lap`, không sửa phần của phiên khác.
 # TIEN-TRINH — lô 029 (soạn sổ tay chú giải)
 
 Nhóm của lô: **8461, 8484, 8510, 9402, 9504, 2508**
