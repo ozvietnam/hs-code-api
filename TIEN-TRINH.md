@@ -1869,3 +1869,9 @@ node scripts/check-cay.mjs --nhom=6215,6301,6304,7017,7205,7306 --chi-tiet
 ```
 - `nguonLoai` máy tự gán `AI_DA_KIEM` cho mọi mục (không ghi tay).
 - Không mục nào dùng nguồn `phan*.phan` → chỗ chú giải Phần bị cắt còn 25.000 ký tự (báo cáo ghi `nguonBiCat`) không ảnh hưởng lô này.
+
+## Bước 6 — Nộp
+- Commit `bbe6c77` trên nhánh `so-tay/lo-033`; push `-u origin so-tay/lo-033`.
+- Mở PR **#423** (base `main`) — body có tỷ lệ đạt, 3 mục mẫu (loại trừ / điều kiện số / dòng 8 số), 7 nhóm nguồn mỏng hoặc bất thường, bảng 4 lỗi `dieuKien`/`hoi` đã sửa, danh sách cố ý bỏ và 2 đề xuất luật máy cho lô sau.
+- **KHÔNG merge** — chờ người duyệt soát độc lập (mục 4 giao việc).
+- Cột `pr` của CSV để trống theo đúng mục 4 (người duyệt điền khi gộp).
