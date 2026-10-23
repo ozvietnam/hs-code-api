@@ -1,0 +1,38 @@
+{
+ "nhom": "5702",
+ "nguoiSoat": "NGUOI_DUYET",
+ "nguoiSoTen": "dev-zcode-mm (soát độc lập, không phải người soạn)",
+ "luc": "2026-10-23T18:20:00+07:00",
+ "soat": 5,
+ "xoa": 1,
+ "sua": 0,
+ "giu": 4,
+ "ghiChu": "Soát 5/5 mục (1 phamVi + 2 dieuKienVao + 1 loaiTru + 1 phanBiet). XOÁ 1: dieuKienVao[0] lấy mục (4) \"Thảm dệt ngang không có các vòng hoặc nổi vòng\" — đó là MỘT TRONG BẢY loại thảm liệt kê thuộc nhóm, không phải điều kiện vào nhóm; thảm Wilton/Axminster/sơnin/terry đều có vòng hay nổi vòng mà vẫn thuộc 5702. phanBiet[0] hỏi đúng chiều (có→5904 theo câu loại trừ chương 57, không→5702 là chính nhóm, mẫu đã gộp 318/480 mục); loaiTru[0] 5904 có tên trong câu. CỐ TÌNH KHÔNG SỬA: chữ \"dệt thoi\" đầu `text` là tên tiêu đề nhóm theo biểu thuế, xuất hiện 37 lần trong chính tệp nguồn 5702.txt, không phải kiến thức ngoài lạ; và câu \"Nhóm này loại trừ các loại chiếu và thảm làm từ vật liệu tết bện (Chương 46)\" chỉ nêu Chương, theo luật 3 không được ghi thành loaiTru, `text` cũng không khẳng định nên không cần nối vào trích.",
+ "thayDoi": [
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "Mục (4) là MỘT TRONG BẢY loại thảm mà chú giải liệt kê thuộc nhóm 5702 — không phải điều kiện vào nhóm. Thảm Wilton (1), Axminster (2), thảm sơnin (3), thảm terry (6) đều CÓ vòng hoặc nổi vòng mà vẫn thuộc 5702, nên `la_tham_det_thoi_co_ket_cau_noi_vong_hoac_khong_co_vong = true` là mệnh đề SAI khi áp cho cả nhóm (đúng loại \"điều kiện chỉ phủ một phần\" — lô 027/030). Máy không bắt được vì câu trích nguyên văn. Xoá; nếu cần thì giữ ở dạng loại trừ đối chiếu, không đặt là điều kiện vào nhóm."
+  }
+ ]
+}

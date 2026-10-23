@@ -1,0 +1,473 @@
+{
+ "nhom": "5513",
+ "phamVi": {
+  "text": "Vải dệt thoi được định nghĩa trong Phần (I)(C) của Chú giải tổng quát Phần XI, được phân loại như vải làm từ xơ staple tổng hợp bằng cách áp dụng Chú giải 2 của Phần XI (xem Phần (I)(A) của Chú giải tổng quát của Phần XI) và đáp ứng các tiêu chuẩn kỹ thuật: tỷ trọng xơ staple tổng hợp dưới 85%, pha chủ yếu hoặc pha duy nhất với bông, trọng lượng không vượt quá 170 g/m2. Không gồm băng đã tẩm thuốc hoặc đã đóng gói để bán lẻ.",
+  "nguon": "nhom5513.nhom",
+  "trich": "Nhóm này bao gồm các loại vải dệt thoi được định nghĩa trong Phần (I) (C) của Chú giải tổng quát Phần XI. … Nhóm này bao gồm các loại vải trên nếu chúng được phân loại như vải làm từ xơ staple tổng hợp bằng cách áp dụng Chú giải 2 của Phần XI (xem Phần (I) (A) của Chú giải tổng quát của Phần XI) và nếu chúng đáp ứng được các tiêu chuẩn kỹ thuật sau: (a) Có tỷ trọng xơ staple tổng hợp dưới 85%; (b) Được pha chủ yếu hoặc pha duy nhất với bông; (c) Trọng lượng không vượt quá 170g/m2. … Băng, đã tẩm thuốc hoặc đã đóng gói để bán lẻ thì bị loại trừ (nhóm 30.05).",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "ty_trong_xo_staple_tong_hop",
+   "op": "<",
+   "value": 85,
+   "donVi": "%",
+   "ngoaiTru": [],
+   "nguon": "nhom5513.nhom",
+   "trich": "(a) Có tỷ trọng xơ staple tổng hợp dưới 85%;",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "pha_chu_yeu_hoac_pha_duy_nhat_voi_bong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom5513.nhom",
+   "trich": "(b) Được pha chủ yếu hoặc pha duy nhất với bông;",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "trong_luong_vai_moi_met_vuong",
+   "op": "<=",
+   "value": 170,
+   "donVi": "g/m2",
+   "ngoaiTru": [],
+   "nguon": "nhom5513.nhom",
+   "trich": "(c) Trọng lượng không vượt quá 170g/m2.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "băng, đã tẩm thuốc hoặc đã đóng gói để bán lẻ",
+   "sangNhom": "3005",
+   "nguon": "nhom5513.nhom",
+   "trich": "Băng, đã tẩm thuốc hoặc đã đóng gói để bán lẻ thì bị loại trừ (nhóm 30.05).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "amiăng (asbestos) thuộc nhóm 25.24 hoặc các sản phẩm từ amiăng hoặc các sản phẩm khác thuộc nhóm 68.12 hoặc 68.13",
+   "sangNhom": "2524|6812|6813",
+   "nguon": "phan55.phan",
+   "trich": "(d) Amiăng (asbestos) thuộc nhóm 25.24 hoặc các sản phẩm từ amiăng hoặc các sản phẩm khác thuộc nhóm 68.12 hoặc 68.13;",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "vật liệu dệt đã phủ bột mài và sợi carbon hoặc các sản phẩm bằng sợi carbon",
+   "sangNhom": "6805|6815",
+   "nguon": "phan55.phan",
+   "trich": "(q) Vật liệu dệt đã phủ bột mài (nhóm 68.05) và sợi carbon hoặc các sản phẩm bằng sợi carbon thuộc nhóm 68.15;",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "sợi thủy tinh và các mặt hàng từ sợi thủy tinh",
+   "sangNhom": "7019",
+   "nguon": "ch55.chuong",
+   "trich": "(d) Sợi thủy tinh và các mặt hàng từ sợi thủy tinh của nhóm 70.19.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "551311",
+   "fact": "loai_trang_phuc",
+   "op": "=",
+   "value": "vải dệt thoi dệt vân điểm, từ xơ staple polyeste, có tỷ trọng xơ loại này dưới 85% theo trọng lượng, pha chủ yếu hoặc pha duy nhất với bông, trọng lượng không vượt quá 170 g/m2, chưa tẩy trắng hoặc đã tẩy trắng",
+   "donVi": null,
+   "nguon": "wco.551311",
+   "trich": "551311 Fabrics, woven; plain weave, of polyester staple fibres, containing less than 85% by weight of such fibres, mixed mainly or solely with cotton, of a weight not exceeding 170g/m2, unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551312",
+   "fact": "loai_trang_phuc",
+   "op": "=",
+   "value": "vải dệt thoi dệt vân chéo 3 sợi hoặc vân chéo 4 sợi, từ xơ staple polyeste, có tỷ trọng xơ loại này dưới 85% theo trọng lượng, pha chủ yếu hoặc pha duy nhất với bông, trọng lượng không vượt quá 170 g/m2, chưa tẩy trắng hoặc đã tẩy trắng",
+   "donVi": null,
+   "nguon": "wco.551312",
+   "trich": "551312 Fabrics, woven; 3-thread or 4-thread twill, of polyester staple fibres, containing less than 85% by weight of such, mixed mainly or solely with cotton, not exceeding 170g/m2, unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551313",
+   "fact": "loai_trang_phuc",
+   "op": "=",
+   "value": "vải dệt thoi khác từ xơ staple polyeste, có tỷ trọng xơ loại này dưới 85% theo trọng lượng, pha chủ yếu hoặc pha duy nhất với bông, trọng lượng không vượt quá 170 g/m2, chưa tẩy trắng hoặc đã tẩy trắng",
+   "donVi": null,
+   "nguon": "wco.551313",
+   "trich": "551313 Fabrics, woven; of polyester staple fibres, containing less than 85% by weight of such fibres, mixed mainly or solely with cotton, not exceeding 170g/m2, unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551319",
+   "fact": "loai_trang_phuc",
+   "op": "=",
+   "value": "vải dệt thoi khác, chứa dưới 85% trọng lượng là xơ staple tổng hợp (trừ polyeste), pha chủ yếu hoặc pha duy nhất với bông, trọng lượng không vượt quá 170 g/m2, chưa tẩy trắng hoặc đã tẩy trắng",
+   "donVi": null,
+   "nguon": "wco.551319",
+   "trich": "551319 Fabrics, woven; containing less than 85% by weight of synthetic staple fibres (other than polyesters), mixed mainly or solely with cotton, not exceeding 170g/m2, unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551321",
+   "fact": "loai_trang_phuc",
+   "op": "=",
+   "value": "vải dệt thoi dệt vân điểm, đã nhuộm, chứa dưới 85% trọng lượng là xơ staple polyeste, pha chủ yếu hoặc pha duy nhất với bông, trọng lượng không vượt quá 170 g/m2",
+   "donVi": null,
+   "nguon": "wco.551321",
+   "trich": "551321 Fabrics, woven; plain weave, dyed, containing less than 85% by weight of polyester staple fibres, mixed mainly or solely with cotton, not exceeding 170g/m2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551323",
+   "fact": "loai_trang_phuc",
+   "op": "=",
+   "value": "vải dệt thoi đã nhuộm, chứa dưới 85% trọng lượng là xơ staple polyeste, pha chủ yếu hoặc pha duy nhất với bông, trọng lượng không vượt quá 170 g/m2",
+   "donVi": null,
+   "nguon": "wco.551323",
+   "trich": "551323 Fabrics, woven; dyed, containing less than 85% by weight of polyester staple fibres, mixed mainly or solely with cotton, not exceeding 170g/m2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551329",
+   "fact": "loai_trang_phuc",
+   "op": "=",
+   "value": "vải dệt thoi đã nhuộm, chứa dưới 85% trọng lượng là xơ staple tổng hợp (trừ polyeste), pha chủ yếu hoặc pha duy nhất với bông, trọng lượng không vượt quá 170 g/m2",
+   "donVi": null,
+   "nguon": "wco.551329",
+   "trich": "551329 Fabrics, woven; dyed, containing less than 85% by weight of synthetic staple fibres (other than polyesters), mixed mainly or solely with cotton, not exceeding 170g/m2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551331",
+   "fact": "loai_trang_phuc",
+   "op": "=",
+   "value": "vải dệt thoi dệt vân điểm, dệt từ sợi có các màu khác nhau, chứa dưới 85% trọng lượng là xơ staple polyeste, pha chủ yếu hoặc pha duy nhất với bông, trọng lượng không vượt quá 170 g/m2",
+   "donVi": null,
+   "nguon": "wco.551331",
+   "trich": "551331 Fabrics, woven; plain weave, of yarns of different colours, containing less than 85% by weight of polyester staple fibres, mixed mainly or solely with cotton, not exceeding 170g/m2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551339",
+   "fact": "loai_trang_phuc",
+   "op": "=",
+   "value": "vải dệt thoi dệt từ sợi có các màu khác nhau, chứa dưới 85% trọng lượng là xơ staple tổng hợp (trừ polyeste), pha chủ yếu hoặc pha duy nhất với bông, trọng lượng không vượt quá 170 g/m2",
+   "donVi": null,
+   "nguon": "wco.551339",
+   "trich": "551339 Fabrics, woven; of yarns of different colours, containing less than 85% of synthetic staple fibres (other than polyester, plain weave), mixed mainly or solely with cotton, not exceeding 170g/m2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551341",
+   "fact": "loai_trang_phuc",
+   "op": "=",
+   "value": "vải dệt thoi dệt vân điểm, đã in, từ xơ staple polyeste, có tỷ trọng xơ loại này dưới 85% theo trọng lượng, pha chủ yếu hoặc pha duy nhất với bông, trọng lượng không vượt quá 170 g/m2",
+   "donVi": null,
+   "nguon": "wco.551341",
+   "trich": "551341 Fabrics, woven; plain weave, printed, of polyester staple fibres, containing less than 85% by weight of such fibres, mixed mainly or solely with cotton, not exceeding 170g/m2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551349",
+   "fact": "loai_trang_phuc",
+   "op": "=",
+   "value": "vải dệt thoi đã in, chứa dưới 85% trọng lượng là xơ staple tổng hợp (trừ polyeste), pha chủ yếu hoặc pha duy nhất với bông, trọng lượng không vượt quá 170 g/m2",
+   "donVi": null,
+   "nguon": "wco.551349",
+   "trich": "551349 Fabrics, woven; printed, containing less than 85% by weight of synthetic staple fibres (other than polyester, plain weave), mixed mainly or solely with cotton, not exceeding 170g/m2",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "55131100",
+   "dieuKien": "Từ xơ staple polyeste, dệt vân điểm (= phân nhóm 5513.11 — WCO: plain weave, of polyester staple fibres … unbleached or bleached)",
+   "tieuChi": null,
+   "nguon": "tax.55131100",
+   "trich": "55131100 - - Từ xơ staple polyeste, dệt vân điểm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "55131200",
+   "dieuKien": "Vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo chữ nhân, từ xơ staple polyeste (= phân nhóm 5513.12 — WCO: 3-thread or 4-thread twill … unbleached or bleached)",
+   "tieuChi": null,
+   "nguon": "tax.55131200",
+   "trich": "55131200 - - Vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo chữ nhân, từ xơ staple polyeste",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "55131300",
+   "dieuKien": "Vải dệt thoi khác từ xơ staple polyeste (= phân nhóm 5513.13 — WCO: containing less than 85% by weight of such fibres … unbleached or bleached)",
+   "tieuChi": null,
+   "nguon": "tax.55131300",
+   "trich": "55131300 - - Vải dệt thoi khác từ xơ staple polyeste",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "55131900",
+   "dieuKien": "Vải dệt thoi khác (= phân nhóm 5513.19 — WCO: containing less than 85% by weight of synthetic staple fibres (other than polyesters) … unbleached or bleached)",
+   "tieuChi": null,
+   "nguon": "tax.55131900",
+   "trich": "55131900 - - Vải dệt thoi khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "55132100",
+   "dieuKien": "Từ xơ staple polyeste, dệt vân điểm (= phân nhóm 5513.21 — WCO: plain weave, dyed … not exceeding 170g/m2)",
+   "tieuChi": null,
+   "nguon": "tax.55132100",
+   "trich": "55132100 - - Từ xơ staple polyeste, dệt vân điểm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "55132300",
+   "dieuKien": "Vải dệt thoi khác từ xơ staple polyeste (= phân nhóm 5513.23 — WCO: dyed, containing less than 85% by weight of polyester staple fibres)",
+   "tieuChi": null,
+   "nguon": "tax.55132300",
+   "trich": "55132300 - - Vải dệt thoi khác từ xơ staple polyeste",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "55132900",
+   "dieuKien": "Vải dệt thoi khác (= phân nhóm 5513.29 — WCO: dyed, containing less than 85% by weight of synthetic staple fibres (other than polyesters))",
+   "tieuChi": null,
+   "nguon": "tax.55132900",
+   "trich": "55132900 - - Vải dệt thoi khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "55133100",
+   "dieuKien": "Từ xơ staple polyeste, dệt vân điểm (= phân nhóm 5513.31 — WCO: plain weave, of yarns of different colours …)",
+   "tieuChi": null,
+   "nguon": "tax.55133100",
+   "trich": "55133100 - - Từ xơ staple polyeste, dệt vân điểm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "55133900",
+   "dieuKien": "Vải dệt thoi khác (= phân nhóm 5513.39 — WCO: of yarns of different colours, containing less than 85% of synthetic staple fibres (other than polyester, plain weave))",
+   "tieuChi": null,
+   "nguon": "tax.55133900",
+   "trich": "55133900 - - Vải dệt thoi khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "55134100",
+   "dieuKien": "Từ xơ staple polyeste, dệt vân điểm (= phân nhóm 5513.41 — WCO: plain weave, printed, of polyester staple fibres …)",
+   "tieuChi": null,
+   "nguon": "tax.55134100",
+   "trich": "55134100 - - Từ xơ staple polyeste, dệt vân điểm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "55134900",
+   "dieuKien": "Vải dệt thoi khác (= phân nhóm 5513.49 — WCO: printed, containing less than 85% by weight of synthetic staple fibres (other than polyester, plain weave))",
+   "tieuChi": null,
+   "nguon": "tax.55134900",
+   "trich": "55134900 - - Vải dệt thoi khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5513",
+    "cap": 4,
+    "cha": "55",
+    "tenVi": "Vải dệt thoi bằng xơ staple tổng hợp, có hàm lượng loại xơ này chiếm dưới 85% tính theo khối lượng, pha chủ yếu hoặc pha duy nhất với bông, định lượng không quá 170 g/m2.",
+    "tenEn": "Woven fabrics of synthetic staple fibres, containing less than 85% by weight of such fibres, mixed mainly or solely with cotton, of a weight not exceeding 170g/m2",
+    "suyRa": false
+   },
+   {
+    "id": "55131",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5513",
+    "tenVi": "Chưa tẩy trắng hoặc đã tẩy trắng",
+    "tenEn": "Unbleached or bleached",
+    "suyRa": true
+   },
+   {
+    "id": "55131100",
+    "cap": 8,
+    "cha": "55131",
+    "tenVi": "Từ xơ staple polyeste, dệt vân điểm",
+    "tenEn": "Fabrics, woven; plain weave, of polyester staple fibres, containing less than 85% by weight of such fibres, mixed mainly or solely with cotton, of a weight not exceeding 170g/m2, unbleached or bleached",
+    "suyRa": false,
+    "laPhanNhom": "551311"
+   },
+   {
+    "id": "55131200",
+    "cap": 8,
+    "cha": "55131",
+    "tenVi": "Vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo chữ nhân, từ xơ staple polyeste",
+    "tenEn": "Fabrics, woven; 3-thread or 4-thread twill, of polyester staple fibres, containing less than 85% by weight of such, mixed mainly or solely with cotton, not exceeding 170g/m2, unbleached or bleached",
+    "suyRa": false,
+    "laPhanNhom": "551312"
+   },
+   {
+    "id": "55131300",
+    "cap": 8,
+    "cha": "55131",
+    "tenVi": "Vải dệt thoi khác từ xơ staple polyeste",
+    "tenEn": "Fabrics, woven; of polyester staple fibres, containing less than 85% by weight of such fibres, mixed mainly or solely with cotton, not exceeding 170g/m2, unbleached or bleached",
+    "suyRa": false,
+    "laPhanNhom": "551313"
+   },
+   {
+    "id": "55131900",
+    "cap": 8,
+    "cha": "55131",
+    "tenVi": "Vải dệt thoi khác",
+    "tenEn": "Fabrics, woven; containing less than 85% by weight of synthetic staple fibres (other than polyesters), mixed mainly or solely with cotton, not exceeding 170g/m2, unbleached or bleached",
+    "suyRa": false,
+    "laPhanNhom": "551319"
+   },
+   {
+    "id": "55132",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5513",
+    "tenVi": "Đã nhuộm",
+    "tenEn": "Dyed",
+    "suyRa": true
+   },
+   {
+    "id": "55132100",
+    "cap": 8,
+    "cha": "55132",
+    "tenVi": "Từ xơ staple polyeste, dệt vân điểm",
+    "tenEn": "Fabrics, woven; plain weave, dyed, containing less than 85% by weight of polyester staple fibres, mixed mainly or solely with cotton, not exceeding 170g/m2",
+    "suyRa": false,
+    "laPhanNhom": "551321"
+   },
+   {
+    "id": "55132300",
+    "cap": 8,
+    "cha": "55132",
+    "tenVi": "Vải dệt thoi khác từ xơ staple polyeste",
+    "tenEn": "Fabrics, woven; dyed, containing less than 85% by weight of polyester staple fibres, mixed mainly or solely with cotton, not exceeding 170g/m2",
+    "suyRa": false,
+    "laPhanNhom": "551323"
+   },
+   {
+    "id": "55132900",
+    "cap": 8,
+    "cha": "55132",
+    "tenVi": "Vải dệt thoi khác",
+    "tenEn": "Fabrics, woven; dyed, containing less than 85% by weight of synthetic staple fibres (other than polyesters), mixed mainly or solely with cotton, not exceeding 170g/m2",
+    "suyRa": false,
+    "laPhanNhom": "551329"
+   },
+   {
+    "id": "55133",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5513",
+    "tenVi": "Từ các sợi có các màu khác nhau",
+    "tenEn": "Of yarns of different colours",
+    "suyRa": true
+   },
+   {
+    "id": "55133100",
+    "cap": 8,
+    "cha": "55133",
+    "tenVi": "Từ xơ staple polyeste, dệt vân điểm",
+    "tenEn": "Fabrics, woven; plain weave, of yarns of different colours, containing less than 85% by weight of polyester staple fibres, mixed mainly or solely with cotton, not exceeding 170g/m2",
+    "suyRa": false,
+    "laPhanNhom": "551331"
+   },
+   {
+    "id": "55133900",
+    "cap": 8,
+    "cha": "55133",
+    "tenVi": "Vải dệt thoi khác",
+    "tenEn": "Fabrics, woven; of yarns of different colours, containing less than 85% of synthetic staple fibres (other than polyester, plain weave), mixed mainly or solely with cotton, not exceeding 170g/m2",
+    "suyRa": false,
+    "laPhanNhom": "551339"
+   },
+   {
+    "id": "55134",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5513",
+    "tenVi": "Đã in",
+    "tenEn": "Printed",
+    "suyRa": true
+   },
+   {
+    "id": "55134100",
+    "cap": 8,
+    "cha": "55134",
+    "tenVi": "Từ xơ staple polyeste, dệt vân điểm",
+    "tenEn": "Fabrics, woven; plain weave, printed, of polyester staple fibres, containing less than 85% by weight of such fibres, mixed mainly or solely with cotton, not exceeding 170g/m2",
+    "suyRa": false,
+    "laPhanNhom": "551341"
+   },
+   {
+    "id": "55134900",
+    "cap": 8,
+    "cha": "55134",
+    "tenVi": "Vải dệt thoi khác",
+    "tenEn": "Fabrics, woven; printed, containing less than 85% by weight of synthetic staple fibres (other than polyester, plain weave), mixed mainly or solely with cotton, not exceeding 170g/m2",
+    "suyRa": false,
+    "laPhanNhom": "551349"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch55.chuong",
+  "nhom5513.nhom",
+  "phan55.phan",
+  "tax.55131100",
+  "tax.55131200",
+  "tax.55131300",
+  "tax.55131900",
+  "tax.55132100",
+  "tax.55132300",
+  "tax.55132900",
+  "tax.55133100",
+  "tax.55133900",
+  "tax.55134100",
+  "tax.55134900",
+  "wco.551311",
+  "wco.551312",
+  "wco.551313",
+  "wco.551319",
+  "wco.551321",
+  "wco.551323",
+  "wco.551329",
+  "wco.551331",
+  "wco.551339",
+  "wco.551341",
+  "wco.551349"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-23T11:10:42.613Z",
+  "ms": 89
+ },
+ "kiemTra": {
+  "tong": 30,
+  "dat": 30,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan55.phan (46130→25000)"
+  ]
+ }
+}

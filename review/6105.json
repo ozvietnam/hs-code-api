@@ -1,0 +1,91 @@
+{
+ "nhom": "6105",
+ "nguoiSoat": "NGUOI_DUYET",
+ "nguoiSoTen": "dev-zcode-mm (soát độc lập, không phải người soạn)",
+ "luc": "2026-10-23T18:20:00+07:00",
+ "soat": 15,
+ "xoa": 0,
+ "sua": 1,
+ "giu": 14,
+ "ghiChu": "Soát 15/15 mục (1 phamVi + 3 dieuKienVao + 11 loaiTru). SỬA 1: loaiTru[9] rớt vế hai của câu loại trừ 6307 (\"…và được xem như áo quần hoặc các chi tiết của áo quần\") làm điều kiện thành loạng. ĐÁNH GIÁ LẠI HỒ SƠ ĐỎ của người soạn: dieuKienVao[2] \"so_mui_khau_tren_mot_cm_chieu_dai >= 10\" KHÔNG bị đảo chiều — nguồn loại trừ \"loại áo có bình quân dưới 10 mũi khâu/1 cm dài theo mỗi chiều\", phần bù của \"< 10\" đúng là \">= 10\"; đây là điều kiện VÀO NHÓM theo đúng luật, giữ. loaiTru[0][1] cùng trích một câu nhưng khác nhánh (61.07 và 61.09) là hợp lệ, một mục chỉ nằm trong MỘT khối nguồn. loaiTru[5..10] lấy từ chú giải Chương 61 mục 2 và danh sách \"Chương này không bao gồm\" (a)-(d); mã đích đều nằm trong câu trích. phanBiet rỗng: nguồn không có cặp mã Có/Không nào đủ căn cứ cho cả hai nhánh.",
+ "thayDoi": [
+  {
+   "index": "loaiTru[10]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[8]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dieuKienVao[2]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[9]",
+   "hanhDong": "sua",
+   "lyDo": "Câu nguồn có HAI vế nối: \"chưa được hoàn thiện đầy đủ **và được xem như áo quần hoặc các chi tiết của áo quần**\". Người soạn chỉ lấy vế một, làm loại trừ loạng: mọi miếng vải dệt kim chưa hoàn thiện (kể cả loại không nhìn ra là áo quần) đều bị đẩy sang 6307. Nối lại vế hai, y nguyên nguồn.",
+   "sua": {
+    "dieuKien": "miếng vải dệt kim hoặc móc đã trải qua một vài công đoạn gia công dùng để sản xuất áo quần nhưng chưa hoàn thiện đầy đủ để được xem như áo quần hoặc các chi tiết của áo quần"
+   }
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "đọc cùng khối nguồn khai ở `nguon`: câu trích nguyên văn từng ký tự và nói đúng điều mục khẳng định — giữ nguyên."
+  }
+ ]
+}
