@@ -1,0 +1,380 @@
+{
+ "nhom": "5512",
+ "phamVi": {
+  "text": "Vải dệt có tỷ trọng xơ staple tổng hợp từ 85% trở lên, dùng để may quần áo, rèm, vải trang trí, vải trải bàn, chăn, khăn tắm.",
+  "nguon": "nhom5512.nhom",
+  "trich": "Nhóm này bao gồm các loại vải dệt (được định nghĩa trong Phần (I) (C) của Chú giải tổng quát của Phần XI) có tỷ trọng xơ staple tổng hợp từ 85% trở lên.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "ty_trong_xo_staple_tong_hop",
+   "op": ">=",
+   "value": 85,
+   "donVi": "%",
+   "ngoaiTru": [],
+   "nguon": "nhom5512.nhom",
+   "trich": "Nhóm này bao gồm các loại vải dệt (được định nghĩa trong Phần (I) (C) của Chú giải tổng quát của Phần XI) có tỷ trọng xơ staple tổng hợp từ 85% trở lên.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Băng, đã tẩm thuốc hoặc đã đóng gói để bán lẻ",
+   "sangNhom": "3005",
+   "nguon": "nhom5512.nhom",
+   "trich": "Băng, đã tẩm thuốc hoặc đã đóng gói để bán lẻ thì bị loại trừ (nhóm 30.05).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Sợi được ghép song song và được liên kết bằng cao su",
+   "sangNhom": "5906",
+   "nguon": "phan55.phan",
+   "trich": "(g) Sợi được ghép song song và được liên kết bằng cao su, nhóm 59.06",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Sợi, monofilament hay xơ dệt được ghép song song và liên kết bằng chất kết dính",
+   "sangNhom": "5806",
+   "nguon": "phan55.phan",
+   "trich": "(f) Sợi, monofilament hay xơ dệt được ghép song song và liên kết bằng chất kết dính (nhóm 58.06)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là băng đã tẩm thuốc không?",
+   "neuCo": "3005",
+   "neuKhong": "5512",
+   "nguon": "nhom5512.nhom",
+   "trich": "Băng, đã tẩm thuốc hoặc đã đóng gói để bán lẻ thì bị loại trừ (nhóm 30.05).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "551211",
+   "fact": "ham_luong_xo_staple_polyeste",
+   "op": ">=",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.551211",
+   "trich": "551211 Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of polyester staple fibres, unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551211",
+   "fact": "chua_tay_trang_hoac_da_tay_trang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.551211",
+   "trich": "551211 Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of polyester staple fibres, unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551219",
+   "fact": "ham_luong_xo_staple_polyeste",
+   "op": ">=",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.551219",
+   "trich": "551219 Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of polyester staple fibres, other than unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551219",
+   "fact": "khac_chua_tay_trang_hoac_da_tay_trang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.551219",
+   "trich": "551219 Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of polyester staple fibres, other than unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551221",
+   "fact": "ham_luong_xo_staple_acrylic_hoac_modacrylic",
+   "op": ">=",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.551221",
+   "trich": "551221 Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of acrylic or modacrylic staple fibres, unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551221",
+   "fact": "chua_tay_trang_hoac_da_tay_trang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.551221",
+   "trich": "551221 Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of acrylic or modacrylic staple fibres, unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551229",
+   "fact": "ham_luong_xo_staple_acrylic_hoac_modacrylic",
+   "op": ">=",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.551229",
+   "trich": "551229 Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of acrylic or modacrylic staple fibres, other than unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551229",
+   "fact": "khac_chua_tay_trang_hoac_da_tay_trang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.551229",
+   "trich": "551229 Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of acrylic or modacrylic staple fibres, other than unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551291",
+   "fact": "ham_luong_xo_staple_tong_hop_khac",
+   "op": ">=",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.551291",
+   "trich": "551291 Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of such fibres n.e.c. in heading no. 5512, unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551291",
+   "fact": "chua_tay_trang_hoac_da_tay_trang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.551291",
+   "trich": "551291 Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of such fibres n.e.c. in heading no. 5512, unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551299",
+   "fact": "ham_luong_xo_staple_tong_hop_khac",
+   "op": ">=",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.551299",
+   "trich": "551299 Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of such fibres n.e.c. in heading no. 5512, other than unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "551299",
+   "fact": "khac_chua_tay_trang_hoac_da_tay_trang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.551299",
+   "trich": "551299 Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of such fibres n.e.c. in heading no. 5512, other than unbleached or bleached",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "55121100",
+   "dieuKien": "Chưa tẩy trắng hoặc đã tẩy trắng",
+   "nguon": "tax.55121100",
+   "trich": "55121100 - - Chưa tẩy trắng hoặc đã tẩy trắng",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "55121900",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.55121900",
+   "trich": "55121900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "55121",
+    "truAnhEm": [
+     "55121100"
+    ],
+    "toTienCoTen": "5512",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "55122100",
+   "dieuKien": "Chưa tẩy trắng hoặc đã tẩy trắng",
+   "nguon": "tax.55122100",
+   "trich": "55122100 - - Chưa tẩy trắng hoặc đã tẩy trắng",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "55122900",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.55122900",
+   "trich": "55122900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "55122",
+    "truAnhEm": [
+     "55122100"
+    ],
+    "toTienCoTen": "5512",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "55129100",
+   "dieuKien": "Chưa tẩy trắng hoặc đã tẩy trắng",
+   "nguon": "tax.55129100",
+   "trich": "55129100 - - Chưa tẩy trắng hoặc đã tẩy trắng",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "55129900",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.55129900",
+   "trich": "55129900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "55129",
+    "truAnhEm": [
+     "55129100"
+    ],
+    "toTienCoTen": "5512",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5512",
+    "cap": 4,
+    "cha": "55",
+    "tenVi": "Các loại vải dệt thoi từ xơ staple tổng hợp, có hàm lượng loại xơ này chiếm từ 85% trở lên tính theo khối lượng.",
+    "tenEn": "Woven fabrics of synthetic staple fibres, containing 85% or more by weight of synthetic staple fibres",
+    "suyRa": false
+   },
+   {
+    "id": "55121",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5512",
+    "tenVi": "Có hàm lượng xơ staple polyeste chiếm từ 85% trở lên tính theo khối lượng",
+    "tenEn": "Containing 85% or more by weight of polyester staple fibres",
+    "suyRa": true
+   },
+   {
+    "id": "55121100",
+    "cap": 8,
+    "cha": "55121",
+    "tenVi": "Chưa tẩy trắng hoặc đã tẩy trắng",
+    "tenEn": "Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of polyester staple fibres, unbleached or bleached",
+    "suyRa": false,
+    "laPhanNhom": "551211"
+   },
+   {
+    "id": "55121900",
+    "cap": 8,
+    "cha": "55121",
+    "tenVi": "Loại khác",
+    "tenEn": "Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of polyester staple fibres, other than unbleached or bleached",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "551219"
+   },
+   {
+    "id": "55122",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5512",
+    "tenVi": "Có hàm lượng xơ staple bằng acrylic hoặc modacrylic chiếm từ 85% trở lên tính theo khối lượng",
+    "tenEn": "Containing 85% or more by weight of acrylic or modacrylic staple fibres",
+    "suyRa": true
+   },
+   {
+    "id": "55122100",
+    "cap": 8,
+    "cha": "55122",
+    "tenVi": "Chưa tẩy trắng hoặc đã tẩy trắng",
+    "tenEn": "Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of acrylic or modacrylic staple fibres, unbleached or bleached",
+    "suyRa": false,
+    "laPhanNhom": "551221"
+   },
+   {
+    "id": "55122900",
+    "cap": 8,
+    "cha": "55122",
+    "tenVi": "Loại khác",
+    "tenEn": "Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of acrylic or modacrylic staple fibres, other than unbleached or bleached",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "551229"
+   },
+   {
+    "id": "55129",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5512",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "55129100",
+    "cap": 8,
+    "cha": "55129",
+    "tenVi": "Chưa tẩy trắng hoặc đã tẩy trắng",
+    "tenEn": "Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of such fibres n.e.c. in heading no. 5512, unbleached or bleached",
+    "suyRa": false,
+    "laPhanNhom": "551291"
+   },
+   {
+    "id": "55129900",
+    "cap": 8,
+    "cha": "55129",
+    "tenVi": "Loại khác",
+    "tenEn": "Fabrics, woven; of synthetic staple fibres, containing 85% or more by weight of such fibres n.e.c. in heading no. 5512, other than unbleached or bleached",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "551299"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom5512.nhom",
+  "phan55.phan",
+  "tax.55121100",
+  "tax.55121900",
+  "tax.55122100",
+  "tax.55122900",
+  "tax.55129100",
+  "tax.55129900",
+  "wco.551211",
+  "wco.551219",
+  "wco.551221",
+  "wco.551229",
+  "wco.551291",
+  "wco.551299"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-23T10:07:57.971Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 24,
+  "dat": 24,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan55.phan (46130→25000)"
+  ]
+ }
+}
