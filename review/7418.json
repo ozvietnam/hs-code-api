@@ -1,0 +1,111 @@
+{
+ "nhom": "7418",
+ "nguoiSoat": "dev-soat-doc-lap-lo028",
+ "luc": "soát độc lập lô 028 (PR #409) — 5 khối phamVi/boPhan/dieuKienVao/loaiTru/phanBiet",
+ "daKiem": "đọc từng mục cùng tmp/so-tay/nguon/<nhom>.txt + strict-nguyen-van.mjs (138/138 nguyên văn) + quét mẫu lỗi người soát phải bắt (cắt né câu rào, hoi đảo chiều, dấu lược nuốt ngoại lệ, thêm chữ ngoài trích, trích 300–600) + đối chiếu tiền lệ trên data/so-tay trước khi kết luận mẫu nào là lỗi",
+ "soat": 17,
+ "giu": 13,
+ "sua": 4,
+ "xoa": 0,
+ "ghiChu": "Đã đối chiếu tiền lệ trước khi giữ: loaiTru[3] sangNhom '8509|8516' trong khi nguồn chỉ nói 'chương 85 (đặc biệt… 85.09 và 85.16)' — 7323 và 7615 đã gộp với đúng mẫu này, và `dieuKien` đã giữ đúng định ngữ 'đặc biệt' nên giữ. loaiTru bỏ (a) 'Chương 82', (c) dải '82.11 đến 82.15' và (g) 'Chương 94' là ĐÚNG luật 3 (không nêu đích danh nhóm cụ thể). phanBiet không có phương án cho (a) và (e) là hợp lệ. boPhan = null, không có mục để soi.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "sua": {
+    "text": "Dụng cụ làm nóng hoặc thiết bị nấu bằng đồng, loại sử dụng trong gia đình (ví dụ bếp dầu, parafin, cồn), và cho sử dụng gia dụng; nhóm cũng bao gồm thiết bị gia đình được mô tả ở chú giải nhóm 73.22.",
+    "trich": "Nhóm này bao gồm dụng cụ làm nóng hoặc thiết bị nấu bằng đồng, loại sử dụng trong gia đình, ví dụ các dụng cụ nhỏ như bếp dầu, parafin, cồn thường được sử dụng cho du lịch, cắm trại,...và cho sử dụng gia dụng. Nhóm cũng bao gồm thiết bị gia đình được mô tả ở chú giải nhóm 73.22."
+   },
+   "lyDo": "Phạm vi bị THIẾU MỘT CÂU NGAY SAU: chú giải nhóm còn nói \"Nhóm cũng bao gồm thiết bị gia đình được mô tả ở chú giải nhóm 73.22.\" Mà 73.22 là \"các sản phẩm bằng đồng dùng trong gia đình\" — tức phần LỚN của 7418 (phân nhóm 741810 đồ bếp/nhà bếp, 741820 đồ vệ sinh). `phamVi` cũ chỉ mô tả \"dụng cụ làm nóng / thiết bị nấu\", đọc như đó sẽ tưởng 7418 chỉ là máy nấu — trái với chính `tieuChi6` của nhóm (bản thân người soạn cũng ghi 741810 = \"đồ bếp, nhà bếp hoặc dụng cụ gia đình\"). Hai câu trong nguồn LIỀN NHAU nên nối thẳng, không phải lược, tổng 279 ký tự (trong trần 300)."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "sua": {
+    "trich": "(e) Các máy, thiết bị làm nóng, nấu, rang, chưng cất,...hoặc các thiết bị thí nghiệm tương tự thuộc nhóm 84.19"
+   },
+   "lyDo": "Trích dừng ở dấu hai chấm \"…, ví dụ:\" — câu trích mồ côi, hứa ví dụ rồi không lấy. Phần bị bỏ là 2 ví dụ, KHÔNG phải ngoại lệ, nên cắt ở ranh giới mệnh đề \"thuộc nhóm 84.19\" là sạch và ngắn hơn (110 ký tự). Không đổi `dieuKien` vì nó đã đúng, chỉ sửa ký tự trong trích."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "sua",
+   "sua": {
+    "trich": "(e) Các máy, thiết bị làm nóng, nấu, rang, chưng cất,...hoặc các thiết bị thí nghiệm tương tự thuộc nhóm 84.19"
+   },
+   "lyDo": "Cùng lỗi trích mồ côi với loaiTru[2] — hai mục này dùng chung một câu nguồn nên phải sửa giống nhau, không được một sửa một không."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "sua",
+   "sua": {
+    "hoi": "Hàng có phải là thiết bị gia dụng của Chương 85 không?"
+   },
+   "lyDo": "`hoi` có chữ \"dùng điện\" mà câu trích KHÔNG có: nguồn 7418 chỉ viết \"Thiết bị gia dụng của chương 85 (đặc biệt các dụng cụ và thiết bị của nhóm 85.09 và 85.16)\" — không có \"điện\". Đây là hiểu biết riêng của người soạn lấy từ tên 85.09/85.16 (85.09 mới là \"dùng điện\"; 85.16 là \"khác\"), vi phạm luật \"không thêm hiểu biết riêng vào hoi/dieuKien\". Câu hỏi cũ còn sai ở chỗ nó gộp cả hai nhóm thành một nhánh đích. Bỏ \"dùng điện\" là đúng nghĩa với trích; `neuCo: 8509|8516` giữ nguyên vì 85.09 và 85.16 đều nêu đích danh trong trích. (loaiTru[3] giữ nguyên: `dieuKien` đã giữ đúng định ngữ \"đặc biệt\", và 7323/7615 đã gộp có cùng mẫu.)"
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "phanBiet[5]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "phanBiet[6]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  }
+ ]
+}

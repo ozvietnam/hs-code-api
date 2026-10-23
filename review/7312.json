@@ -1,0 +1,51 @@
+{
+ "nhom": "7312",
+ "nguoiSoat": "dev-soat-doc-lap-lo028",
+ "luc": "soát độc lập lô 028 (PR #409) — 5 khối phamVi/boPhan/dieuKienVao/loaiTru/phanBiet",
+ "daKiem": "đọc từng mục cùng tmp/so-tay/nguon/<nhom>.txt + strict-nguyen-van.mjs (138/138 nguyên văn) + quét mẫu lỗi người soát phải bắt (cắt né câu rào, hoi đảo chiều, dấu lược nuốt ngoại lệ, thêm chữ ngoài trích, trích 300–600) + đối chiếu tiền lệ trên data/so-tay trước khi kết luận mẫu nào là lỗi",
+ "soat": 7,
+ "giu": 6,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "Cây/nguồn kệ sách: đoạn chú giải (a) về 'bộ phận có công dụng chung' KHÔNG nằm trong khối [nhom7312.nhom] mà ở [phan73.phan] — người soạn ghi đúng nguồn, chỉ thiếu câu dẫn. Loại trừ (c) 'Cáp phanh, cáp gia tốc… thuộc Chương 87' chỉ nêu Chương nên không thành loaiTru — đúng luật 3.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "sua": {
+    "trich": "2. Trong Danh mục này, khái niệm “các bộ phận có công dụng chung” có nghĩa: (a) Các sản phẩm thuộc nhóm 73.07, 73.12, 73.15, 73.17 hoặc 73.18 và các sản phẩm tương tự bằng kim loại cơ bản khác;"
+   },
+   "lyDo": "Câu trích cũ chỉ là MỘT MỤC NHANH của danh sách (a), tức \"Các sản phẩm thuộc nhóm 73.07, 73.12, …\" — bản thân nó KHÔNG nói 73.12 là \"bộ phận có công dụng chung\", vậy nên nó không đỡ được `quyTac`/`tomTat`. Câu dẫn \"2. Trong Danh mục này, khái niệm “các bộ phận có công dụng chung” có nghĩa:\" nằm ngay trước trong cùng khối [phan73.phan] nên kéo vào là trích tự nó nói đúng. Đây là lỗi \"ghép hai câu\" dạng câu trích thiếu chủ ngữ; KHÔNG phải lỗi ý — quyTac/tomTat vốn đúng."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  }
+ ]
+}
