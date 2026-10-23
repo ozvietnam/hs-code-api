@@ -4,6 +4,107 @@
 
 ---
 
+# SOÁT ĐỘC LẬP lô 034 — phiên `dev-soat-doc-lap` (23/10/2026)
+
+Người soát **khác** người soạn (`dev-zcode-mm`). Đã đọc lại **TOÀN BỘ** 5 khối của 6 nhóm
+(28 mục: 6 `phamVi` + 2 `dieuKienVao` + 9 `loaiTru` + 8 `phanBiet` + 3 `boPhan`) cùng nguồn nguyên
+văn `tmp/so-tay/nguon/<nhom>.txt` — không soát mẫu. Ngoài ra đọc luôn **58 mục** ngoài 5 khối
+(18 `tieuChi6` + 35 `dong8` + 5 `cay.tenDien`) để kiểm độ phủ và chiều đúng–sai.
+
+**Kết quả: xoá 0 · sửa 2 · 28/28 mục đã soát đạt (100 %) · `nhomLoi: []`**
+PR #422 · nhánh `so-tay/lo-034` · **KHÔNG merge**.
+
+## Nguồn dùng để soát là nguồn MỚI NHẤT
+
+Không tin bản `tmp/so-tay/nguon/` của người soạn: đã xuất lại bằng
+`node scripts/build-so-tay.mjs --nhom=… --force --xuat-nguon=tmp/so-tay/nguon-check` rồi `diff` —
+**6/6 tệp giống hệt**, kể cả `_he-thong.txt`. Tức là dữ liệu gốc không đổi sau lúc soạn.
+
+## Hai lỗi đã sửa (máy đều KHÔNG bắt được)
+
+| Nhóm | Mục | Lỗi |
+|---|---|---|
+| 8210 | `dieuKienVao[0].trich` | Ghép **hai đoạn văn khác nhau bằng MỘT dấu cách** nên chuỗi đó **không tồn tại trong nguồn**: `[nhom8210.nhom]` viết `…những điều kiện sau:` ⏎⏎ `(1) Nặng 10 kg trở xuống.` (ngăn bởi dòng trống). `check-so-tay` xanh vì nó so qua `squash()` — xoá mọi ký tự không phải chữ/số, nên **xoá luôn dấu xuống dòng**. Bộ kiểm thứ hai `check-trich-nguyen-van.mjs` (so byte-exact) bắt được. Trích cũ còn tạo cảm giác sai rằng "(1) Nặng 10 kg trở xuống" nằm ngay trong câu, trong khi nó là **mục (1) của danh sách điều kiện** (mục (2) nằm ngay sau nó). **Sửa:** nối hai mảnh bằng dấu lược ` … ` đúng quy ước lược đồ. `fact/op/value` không đổi. |
+| 7606 | `dong8[4].dieuKien` | **Mất định ngữ giới hạn.** Câu nguồn `[sen.76061233]` là *"Các sản phẩm được phân loại ở đây **thường** có các thành phần sau"* — thành phần chỉ là thành phần **THƯỜNG THẤY**. Bản cũ ghi thẳng `— thành phần: nhôm 93,5 - 96,0, sắt không quá 0,35, …` đọc ra là phải đạt đúng bảng đó. Đúng loại lỗi luật bước 1 *"dieuKien phải giữ định ngữ giới hạn của câu"*, máy không bắt vì **câu trích vẫn nguyên văn** và `HEDGE_LOAI_TRU` chỉ soi `loaiTru`. **Sửa:** chèn lại "thường". Số và thứ tự cột bảng giữ nguyên (Mn ≤ 0,15 cho 5182, 0,20-0,50 cho 5082 — đúng thứ tự cột `Hợp kim 5182 | Hợp kim 5082`). |
+
+## Vì sao lỗi ít hơn các lô trước — và chỗ nào em đã soi mà KHÔNG sửa
+
+Người soạn đã **tránh sẵn** các lỗi đã biết và để trống có chủ đích nhiều khối, nên phần lớn
+28 mục trả lời được ngay. Những chỗ dưới đây em **đã đọc kỹ và chủ động giữ**, ghi ra để người duyệt
+không phải soi lại:
+
+- **8210 `dieuKienVao` là mục duy nhất có `dieuKienVao` thật và nó ĐÚNG** — câu nguồn là câu **ràng
+  buộc** phủ cả nhóm 82.10 (*"…thực tế chúng chỉ đáp ứng những điều kiện sau"*), không phải câu
+  định nghĩa (đúng bài học lô 030: *"chỉ đặt khi câu đó phủ CẢ nhóm"*).
+- **8210 `dieuKienVao[1]`**: trích *"(2) Có các đặc tính cơ khí như đã mô tả"* — phần *"như đã mô tả"*
+  trỏ về đoạn trước có **cả vế phủ định** *"một đòn bẩy đơn giản … tự nó không được coi như một đặc
+  tính cơ khí liên quan đến việc phân loại trong nhóm này"*. Mục vẫn đúng nghĩa (bool "có đặc tính cơ
+  khí") nhưng **không mang theo định nghĩa**. Ghép cả đoạn định nghĩa vào sẽ **vượt trần 600 ký tự**
+  của máy → **báo để người duyệt quyết**, không tự sửa.
+- **7606 `dong8[3]` (SEN lá nhôm làm lon)**: câu định mức *"Chúng **có thể** ở dạng lá có độ dày từ
+  0,175 mm nhưng không quá 0,432 mm và chiều rộng từ 254 mm nhưng không quá 1000 mm"* nằm **ngay
+  sau** đoạn đã trích. Nó **không phải ngoại lệ** (không "trừ/tuy nhiên/với điều kiện") nên dấu lược
+  **không vi phạm luật**; nhưng kéo vào sẽ đưa trích lên ~645 ký tự, **vượt trần 600**. Đây là
+  **THIẾU, không phải SAI** → báo, không tự sửa.
+- **8303 `boPhan.tomTat`** ghi *"Bộ phận của **két an toàn** đi theo két"* — chữ "két an toàn" không có
+  trong `trich`, nhưng đây là đúng cách áp luật chương cho nhóm này và **trùng mẫu đã duyệt** ở 168
+  nhóm có `boPhan` (vd 6102/6103/6104 *"Các bộ phận được móc của quần áo … được phân loại trong nhóm
+  61.17"*) → **giữ**, không sửa.
+- **7415 `boPhan`** chỉ chép vế *"bộ phận có công dụng chung"*, chưa kèm câu chung *"bộ phận xác định
+  được thì phân loại như bộ phận đó"* → thiếu sót, không sai; **không tự chèn câu ngoài phạm vi sửa**.
+
+## Kiểm thêm ngoài 5 khối (đọc nhưng không đổi nhãn)
+
+- **`dong8` phủ đủ** cả 6 nhóm — đối chiếu `tax.*` + `sen.*` trong nguồn: **thiếu 0, thừa 0, trùng 0**
+  (8/8, 8/8, 11/11, 6/6, 1/1, 1/1).
+- **Chiều `tieuChi6` đúng cả 18 mục**, kể cả cặp đối xứng dễ sai: `760691`/`760692` có
+  `la_dang_hinh_chu_nhat_hoa_vuong = **false**` (nguồn ghi "(not rectangular or square)"), và
+  `810294 = true` / `810295 = **false**` cho *"bars and rods obtained simply by sintering"* vs
+  *"other than those obtained simply by sintering"*.
+- **`dong8[76061233]` đọc cột bảng đúng** — chỉ Mn khác giữa hai hợp kim, đã gắn `(5182)` / `(5082)`
+  đúng thứ tự cột.
+
+## Lỗi kệ sách — báo, không sửa trong sổ tay
+
+1. **7604 mục (b) bị cụt**: nguồn ghi nguyên văn `(b) Các điện cực hàn đã được bọc phủ,.... (nhóm 83.11)`
+   — dấu `…,…` của **chính nguồn**, rất có thể thiếu vế "ví dụ …". `loaiTru[1]`/`phanBiet[1]` chỉ dùng
+   phần còn lại nên **vẫn đúng nghĩa**, nhưng ai đọc nguồn gốc sẽ thấy câu đứt. Không chép thêm
+   (không có gì để chép) và không xoá (mục vẫn đủ căn cứ).
+2. **8303 câu vỡ giữa chỗ**: *"…gia cố, ví dụ với với bê ⏎⏎ tông cốt thép"* — vỡ `bê` / `tông`,
+   lặp "với với". Không trích đoạn này (đã loại `boPhan` khác để tránh).
+3. **`tax.76069100` chứa ký tự KHÔNG NGẮT (U+00A0)** giữa hai dấu gạch. `check-trich-nguyen-van`
+   báo "không nguyên văn" ở đúng mục này — **đây là đúng**, và **không nên** chép `\xa0` vào JSON:
+   339/340 tệp `data/so-tay/*.json` không chứa ký tự này (chỉ `2508.json` có), tức là quy ước của
+   nhà là **quy về dấu cách thường**. Giữ nguyên, ghi ra đây để người sau không "sửa nhầm".
+
+## Nhãn nguồn (luật 11)
+
+**28** mục đã soát chuyển `AI_DA_KIEM` → **`NGUOI_DUYET`** (đúng bằng số mục của 5 khối). `tieuChi6`,
+`dong8`, `cay` **giữ nguyên** `AI_DA_KIEM` — phạm vi đổi nhãn chỉ 5 khối đã soi.
+
+## Gates
+
+```
+check-so-tay --raw        86/86   (6 nhóm, 0 mục không kiểm được nguồn)
+check-trich-nguyen-van    77/78   (1 mảnh lệch — chính là NBSP ở tax.76069100, xem mục 3)
+check-cay × 6              0 lỗi lệch cây
+so-tay:check               338 nhóm / 9.991 mục / 0 rớt
+npm test                   ALL TESTS PASSED
+```
+
+Ba canh báo `phan-nhom-chua-co-tieu-chi` (`741510`, `741539`, `810299`) là **tiếng ý có chủ đích**:
+tên WCO của ba nút đó không có tiêu chí có cấu trúc để rút — **không bịa**, để trống.
+
+## Vẫn chờ người duyệt quyết (không tự quyết)
+
+1. **8210 `dieuKienVao[1]`** và **7606 `dong8[3]`** — hai chỗ *thiếu* nêu trên; cả hai đều vì lý do
+   **vượt trần 600 ký tự của máy**, không phải vì không biết sửa. Cần người duyệt chọn: chấp nhận
+   thiếu, hay nới trần cho hai mục đó.
+2. **Tự soát mẫu ≥ 10 %** (mục 4 giao việc) — người duyệt tự rút ngẫu nhiên trên phần còn lại.
+3. `TIEN-TRINH.md` dùng chung nhiều phiên — mục này của `dev-soat-doc-lap`, không sửa phần của phiên khác.
+
+---
+
 # SOÁT ĐỘC LẬP lô 029 — phiên `dev-soat-doc-lap` (23/10/2026)
 
 Người soát **khác** người soạn (`dev-zcode-mm`). Đã đọc lại **TOÀN BỘ 125 mục** của 6 nhóm

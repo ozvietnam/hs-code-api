@@ -1,0 +1,19 @@
+{
+  "nhom": "8102",
+  "nguoiSoat": "NGUOI_DUYET",
+  "soatVaiTro": "soat-doc-lap",
+  "luc": "2026-10-23T22:40:00+07:00",
+  "phamViSoat": "Toàn bộ 1 mục của 5 khối trong tmp/so-tay/raw/8102.json (1 phamVi; dieuKienVao, loaiTru, phanBiet, boPhan đều rỗng), đọc cùng tmp/so-tay/nguon/8102.txt; ngoài ra soi 6 tieuChi6 + 6 dong8 + 0 cay.",
+  "soat": 1,
+  "daKiem": 1,
+  "sua": 0,
+  "xoa": 0,
+  "ghiChu": "Ba khối rỗng là KẾT QUẢ ĐÚNG, không phải thiếu sót. Cụ thể: (1) loaiTru rỗng vì câu loại trừ duy nhất của nguồn — \"Các hợp kim Molipđen … bị loại trừ khỏi nhóm này theo Chú giải 5 Phần XV\" — không nêu đích danh nhóm nào, mà luật 3 bắt chỉ ghi loại trừ khi số nhóm đích có trong câu. (2) phanBiet rỗng vì mọi câu có mã ngoài nhóm trong nguồn chỉ nói \"thuộc Chương 72\", không nêu mã phân nhóm; tạo mục sẽ phải đoán. (3) dieuKienVao rỗng vì không có câu ràng buộc nào phủ cả nhóm. Sáu tiêu chí 6 số đều lấy đúng chiều từ tên WCO, gồm cặp đối xứng 741294 (có ren do thiêu kết = true) / 810295 (= false). check-cay báo 810299 chưa có tieuChi6 — tên WCO là \"articles n.e.c. in heading no. 8102\", không có tiêu chí cấu trúc, để trống là hợp lệ.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Nguyên văn câu mô tả dạng sản phẩm của nhóm trong [nhom8102.nhom] (bánh ép để cán kéo, hoặc bột có thể thiêu kết như Volfram), kèm trỏ Chú giải Chi tiết nhóm 81.01. Giữ nguyên dấu \"…\" của chính nguồn và định ngữ \"có thể\" — không biến thành điều kiện bắt buộc. Đây là câu phạm vi duy nhất có sẵn trong nguồn nhóm."
+    }
+  ]
+}
