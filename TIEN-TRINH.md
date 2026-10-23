@@ -252,7 +252,8 @@ TARGET=data APPLY=1 node scripts/apply-review-lo031.mjs   # CHỈ đổi nguonLo
 
 - `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **6 nhóm, 189 mục, 0 mục không kiểm được nguồn**; tỉ lệ đạt 100 %.
 - `tmp/so-tay/strict-nguyen-van.mjs` → **6 tệp, 207 đoạn, 0 sai khác** (mọi `trich` khớp nguyên văn từng ký tự, kể cả 3 `trich` mới do người soát viết).
-- `npm run so-tay:check` → **326 nhóm, 9.863 mục, 0 mục không kiểm được nguồn**.
+- `npm run so-tay:check` → **326 nhóm, 9.863 mục, 0 mục không kiểm được nguồn**
+  *(con số lúc soát; sau khi merge `origin/main` — thêm lô 029 và 030 — là **338 nhóm, 10.094 mục**, vẫn 0 lỗi)*.
 - `node scripts/check-cay.mjs --nhom=... --chi-tiet` → **6/6 nhóm đủ, 0 lỗi lệch cây**.
 - `npm test` → **ALL TESTS PASSED**.
 - Kiểm trùng sau khi áp: `sangNhom`, `hs6|fact`, `hs`, `fact` trong `dieuKienVao`, `neuCo->neuKhong` → **0 trùng** (bẫy lô 029: lệch chỉ số làm `tieuChi6[5]` thành phần tử thứ 6 mà mọi bộ kiểm vẫn xanh).
