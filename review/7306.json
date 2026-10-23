@@ -1,0 +1,129 @@
+{
+ "nhom": "7306",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-23T22:10:00+07:00",
+ "phamViSoat": "Toàn bộ 14 mục của 4 khối trong tmp/so-tay/raw/7306.json (1 phamVi + 0 dieuKienVao + 13 loaiTru + 0 phanBiet + 0 boPhan), đọc cùng tmp/so-tay/nguon/7306.txt, từng câu đối chiếu [nhom7306.nhom]. Ngoài phạm vi: tieuChi6/dong8 (20 tiêu chí + 38 dòng) để máy kiểm nguyên văn.",
+ "soat": 14,
+ "daKiem": 14,
+ "sua": 13,
+ "xoa": 1,
+ "ghiChu": "14 mục, giữ 0, sửa 13, xoá 1. Hai lỗi NGHĨA, phần còn lại là lỗi ký tự. (1) LỖI NGHIÊM TRỌNG — phamVi chỉ lấy đoạn 'Nhóm này ĐẶC BIỆT bao gồm các ống dẫn dùng cho dầu và khí, ống chống và ống dùng khoan dầu và khí…', tức là phần 'dùng riêng' của nhóm, KHÔNG phải phạm vi nhóm. Hậu quả thật: người đọc sẽ hiểu 7306 chỉ dành cho ống dầu khí và khung kết cấu, đẩy hẳn 7306.11/7306.19 (ống thường), 7306.40 (ống không hàn, định hình) ra khỏi nhóm. Đây đúng là lỗi lô 030 ghi vào _he-thong.txt: 'phamVi phải nêu PHẠM VI nhóm, không phải vật liệu và không phải một phần'. Đã dựng lại từ các đoạn bao gồm CĂN BẢN (1)(2)(3) và đoạn 'còn bao gồm cả các ống được phủ…'. (2) loaiTru[11] chọn đích 87.08 và 87.14 nhưng nguồn ghi rõ '(ví dụ: nhóm 87.08 hoặc 87.14)' — luật 3 cấm coi số nhóm chỉ là VÍ DỤ làm đích loại trừ; quy tắc thật của nguồn là 'thuộc Chương 87'. Ghi sangNhom '8708|8714' còn nguy hiểm hơn: ám chỉ chỉ hai nhóm đó mới được. XOÁ. (3) 12 mục còn lại chỉ sửa ký tự trích (mất \"(\" mở đầu mục, cắt trước \")\", bỏ dấu chấm) — máy không bắt được vì squash() bỏ ngoặc/dấu câu. Lỗi kệ sách: mục (e) nguồn ghi 'Ông dẫn' (thiếu dấu huyền) — trich giữ nguyên lỗi gốc, còn dieuKien dùng chữ đúng 'Ống dẫn'; cần sửa kệ sách.",
+ "loaiNguonLoi": [
+  "Mục (e) chú giải nhóm ghi 'Ông dẫn được cách điện (nhóm 85.47)' — thiếu dấu huyền trên chữ Ố. Trich giữ nguyên nguyên văn (luật 2), dieuKien dùng chữ đúng. Nên sửa kệ sách.",
+  "Mục (f) nối hai vế bằng dấu phẩy, mất dấu chấm: '…(nhóm 73.08), những mặt cắt dạng ống của lò sưởi… (nhóm 73.22), các ống xả… (nhóm 84.09), các bộ phận máy móc khác (Phần XVI), bình xả… (ví dụ: nhóm 87.08 hoặc 87.14) trục bàn đạp và khung xe đạp (nhóm 87.14).' — vì vậy ranh giới giữa các mục loại trừ không rõ; loaiTru[12] vẫn đúng vì 87.14 được nêu thẳng cho trục bàn đạp/khung xe đạp, không phải ví dụ.",
+  "Nguồn mở đầu nhóm: 'Những qui định của Chú giải cho nhóm 73.05 với những sửa đổi thích hợp, sẽ được áp dụng cho các sản phẩm thuộc nhóm này' — chỉ là quy chiếu, không phải phạm vi nên không dùng làm phamVi."
+ ],
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Sửa cả text và trich. Bản cũ mô tả phần 'đặc biệt bao gồm' (ống dầu khí, ống khoan dầu khí, khung xe đẩy trẻ con) — đó là các ứng dụng đặc thù, không phải phạm vi nhóm, và bỏ sót toàn bộ phần bao gồm căn bản (1) ống hàn rèn/giáp mối, (2) ống nối hở, (3) ống cạnh mép kẹp cùng ống phủ. Đã dựng lại từ bốn đoạn nguyên văn của chính [nhom7306.nhom]; câu 'Các ống, ống dẫn và các thanh dạng rỗng được sử dụng để sản xuất các bộ phận… ô tô, máy móc, khung xe đạp, xe đẩy trẻ con' bị lược (ứng dụng, không phải thành phần nhóm) để câu trích còn 455 ký tự, dưới trần 600 của máy. Ứng dụng dầu khí vẫn còn trong tieuChi6 (7306.21 'casing and tubing of a kind used in drilling for oil and gas').",
+   "sua": {
+    "text": "Ống, ống dẫn và thanh dạng rỗng: các ống và ống dẫn được hàn bằng cách rèn, được biết như là những ống và ống dẫn được hàn giáp mối; các ống và ống dẫn với các cạnh mép kín … chúng được biết như những ống nối hở; các ống và ống dẫn mà trong đó các cạnh mép tiếp xúc được nối bằng cách kẹp; các ống, ống dẫn và các thanh dạng rỗng được phủ plastic hoặc phủ len thuỷ tinh kết hợp với bibum, cũng như các ống có bavia hoặc có phiến với các bavia dọc hoặc ngang.",
+    "trich": "Các ống và ống dẫn được hàn bằng cách rèn, được biết như là những ống và ống dẫn được hàn giáp mối. … Các ống và ống dẫn với các cạnh mép kín … chúng được biết như những ống nối hở. … Các ống và ống dẫn mà trong đó các cạnh mép tiếp xúc được nối bằng cách kẹp. … Nhóm này còn bao gồm cả các ống, ống dẫn và các thanh dạng rỗng được phủ plastic hoặc phủ len thuỷ tinh kết hợp với bibum, cũng như các ống có bavia hoặc có phiến với các bavia dọc hoặc ngang."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: bỏ dấu chấm cuối câu. Nội dung đúng: sản phẩm có khe hở dọc suốt chiều dài không phải ống nối hở → 72.16/72.22/72.28, cả ba đích có trong câu.",
+   "sua": {
+    "trich": "Tuy nhiên các sản phẩm có một khe hở dọc theo cả chiều dài sẽ được phân loại như các loại hình trong nhóm 72.16, 72.22 hay 72.28."
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: mất dấu \"(\" mở đầu mục và bỏ dấu chấm. Mục (a) loại trừ ống gang đúc; đích 73.03 nêu đích danh. Câu này chứa HAI vế loại trừ (73.03 và 73.04/73.05) nên được dùng chung cho loaiTru[1] và [2].",
+   "sua": {
+    "trich": "(a) Các ống và ống dẫn bằng gang đúc (nhóm 73.03) và ống và ống dẫn bằng sắt hoặc thép thuộc nhóm 73.04 hoặc 73.05."
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng câu (a), vế hai: ống sắt/thép 73.04 hoặc 73.05. Cả hai đích có trong câu. Sửa ký tự trích giống loaiTru[1].",
+   "sua": {
+    "trich": "(a) Các ống và ống dẫn bằng gang đúc (nhóm 73.03) và ống và ống dẫn bằng sắt hoặc thép thuộc nhóm 73.04 hoặc 73.05."
+   }
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: mất dấu \"(\" mở đầu mục và bỏ dấu chấm. Vế đầu mục (b): thanh dạng rỗng bằng gang đúc → 73.03, đích nêu đích danh.",
+   "sua": {
+    "trich": "(b) Các thanh dạng rỗng bằng gang đúc (nhóm 73.03) và các thanh dạng rỗng bằng sắt hoặc thép thuộc nhóm 73.04."
+   }
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng câu (b), vế hai: thanh dạng rỗng bằng sắt/thép → 73.04, đích nêu đích danh. Sửa ký tự trích giống loaiTru[3].",
+   "sua": {
+    "trich": "(b) Các thanh dạng rỗng bằng gang đúc (nhóm 73.03) và các thanh dạng rỗng bằng sắt hoặc thép thuộc nhóm 73.04."
+   }
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: mất dấu \"(\" và cắt trước \")\". Phụ kiện ghép nối ống sắt/thép → 73.07, nêu đích danh.",
+   "sua": {
+    "trich": "(c) Các phụ kiện ghép nối cho ống hoặc ống dẫn bằng sắt hoặc thép (nhóm 73.07)."
+   }
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: mất dấu \"(\" và cắt trước \")\". Ống dễ uốn (kể cả ống bộ điều chỉnh nhiệt và mối nối bù) → 83.07, đích nêu đích danh.",
+   "sua": {
+    "trich": "(d) Ống dễ uốn bằng sắt hoặc thép, có hay không có các phụ kiện ghép nối (gồm cả các ống của bộ điều chỉnh nhiệt và các mối nối bù) (nhóm 83.07)."
+   }
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: mất dấu \"(\" và cắt trước \")\". Đích 85.47 nêu đích danh. LƯU Ý KỆ SÁCH: nguồn ghi 'Ông dẫn' (thiếu dấu huyền) — trich giữ nguyên lỗi gốc theo luật 2, còn dieuKien dùng chữ đúng 'Ống dẫn'.",
+   "sua": {
+    "trich": "(e) Ông dẫn được cách điện (nhóm 85.47)."
+   }
+  },
+  {
+   "index": "loaiTru[8]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: mất dấu \"(\" và cắt trước \")\". Sản phẩm đặc thù để nhận dạng, làm để dùng trong kết cấu → 73.08, nêu đích danh.",
+   "sua": {
+    "trich": "(f) Các ống, ống dẫn và các thanh dạng rỗng được làm thành các sản phẩm đặc thù để nhận dạng, ví như những sản phẩm được làm để sử dụng trong các kết cấu (nhóm 73.08)"
+   }
+  },
+  {
+   "index": "loaiTru[9]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: cắt trước dấu ')' làm số nhóm đích trông như đứt. Mặt cắt dạng ống của lò sưởi trung tâm → 73.22, nêu đích danh.",
+   "sua": {
+    "trich": "những mặt cắt dạng ống của lò sưởi cho thiết bị sưởi ấm trung tâm (nhóm 73.22)"
+   }
+  },
+  {
+   "index": "loaiTru[10]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: cắt trước dấu ')'. Ống xả động cơ đốt kiểu pittông → 84.09, nêu đích danh. Trích dừng ở ')' là ranh giới mệnh đề trong nguồn (sau đó là 'các bộ phận máy móc khác (Phần XVI)').",
+   "sua": {
+    "trich": "các ống xả cho động cơ đốt trong kiểu pittông (nhóm 84.09)"
+   }
+  },
+  {
+   "index": "loaiTru[12]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: cắt trước ')' và bỏ dấu chấm. Trục bàn đạp và khung xe đạp → 87.14, nêu đích danh (khác với loaiTru[11] là 87.14 chỉ nêu trong ngoặc 'ví dụ').",
+   "sua": {
+    "trich": "trục bàn đạp và khung xe đạp (nhóm 87.14)."
+   }
+  },
+  {
+   "index": "loaiTru[11]",
+   "hanhDong": "xoa",
+   "lyDo": "SAI ĐÍCH — luật 3: số nhóm chỉ nẽ là VÍ DỤ thì không được chọn làm đích loại trừ. Nguyên văn: 'bình xả (hộp giảm thanh) và ống xả của xe cộ thuộc Chương 87 (ví dụ: nhóm 87.08 hoặc 87.14)'. Quy tắc thật của nguồn là 'thuộc Chương 87'; 87.08 và 87.14 chỉ là hai ví dụ minh hoạ. Ghi sangNhom '8708|8714' còn nguy hiểm hơn: ám chỉ chỉ hai nhóm đó là nơi đến, biến một ví dụ thành quy tắc, đẩy nhầm ống xả của các xe thuộc 87.01/87.02/87.03… ra khỏi nhóm. Máy KHÔNG bắt được vì check-so-tay chỉ kiểm mã đích có nằm trong câu trích — hai mã đều có thật trong ngoặc. Không sửa được bằng cách đổi sangNhom vì luật 3 không cho phép phủ 'Chương 87' bằng hai con số ví dụ."
+  }
+ ]
+}

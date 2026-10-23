@@ -1,0 +1,57 @@
+{
+ "nhom": "7017",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-23T21:55:00+07:00",
+ "phamViSoat": "Toàn bộ 7 mục của 4 khối trong tmp/so-tay/raw/7017.json (1 phamVi + 0 dieuKienVao + 5 loaiTru + 1 phanBiet), đọc cùng tmp/so-tay/nguon/7017.txt, từng câu đối chiếu [nhom7017.nhom]. Ngoài phạm vi: tieuChi6/dong8 để máy kiểm nguyên văn.",
+ "soat": 7,
+ "daKiem": 7,
+ "sua": 1,
+ "xoa": 1,
+ "ghiChu": "7 mục, giữ 5, sửa 1, xoá 1. Lỗi NGHĨA ở phanBiet[0]: câu trích là 'dù có khả năng thuộc nhóm 90.27 VẪN CÓ THỂ đồng thời được coi như là dụng cụ thủy tinh dùng trong phòng thí nghiệm của nhóm này' — đây là câu trao quyền ('vẫn có thể'), nói rằng những dụng cụ đó VẪN CÓ THỂ là 7017. Mục đang ghi neuCo=7017 (đúng) nhưng neuKhong=9027 (không có căn cứ, và trái ngược ý câu trích: nếu không phải dụng cụ phân tích thì càng không phải 9027). Riêng hoi cũng dựng vỡ: 'Hàng là dụng cụ, thiết bị phân tích lý, hoá, dù có khả năng thuộc nhóm khác vẫn được coi như là dụng cụ thủy tinh dùng trong phòng thí nghiệm?' — vế 'nhóm khác' không nêu mã, câu không phải câu hỏi có/không về đặc tính hàng. Máy KHÔNG bắt được: luật dieu-kien-chi-cho-pép chỉ áp cho dieuKienVao, không áp cho phanBiet. XOÁ theo nguyên tắc 'thà bỏ còn hơn mục không có căn cứ'. GHI CHÚ cho lô sau: cặp phân biệt đúng của 7017 với 9027 có căn cứ là câu loại trừ (b) — '…và các dụng cụ và thiết bị phân tích hoá hoặc lý,… thuộc nhóm 90.27' (có = 90.27, không = 7017); đó là mục MỚI, việc soạn mới, người soát không tự thêm.",
+ "loaiNguonLoi": [
+  "Chú giải nhóm 7017 đoạn loại trừ (b) bị ĐỨT CÂU trong kệ sách: '…tỷ trọng kế và các dụng cụ nổi, nhiệt kế, hoả kế và khí áp kế thuộc nhóm 90.25 dụng cụ và thiết bị thuộc nhóm 90.26 (để đo và kiểm tra lưu lượng chất lỏng,…)' — thiếu dấu chấm và ranh giới câu. loaiTru[3] cắt đúng ngay trước chỗ đứt nên vẫn đúng nghĩa (90.25 = tỷ trọng kế, nhiệt kế, hoả kế, khí áp kế), nhưng cần sửa kệ sách.",
+  "Mục (a) viết mã nhóm là '70,10' (dấu PHẨY thay dấu chấm) nên check-so-tay không khớp mã 7010 — người soạn đã cố ý bỏ mục loại trừ sang 70.10. Đúng, không sửa kệ sách trong sổ tay.",
+  "Đoạn cuối chú giải nhóm rơi thừa một dòng tiêu đề nhóm khác ('70.18 - Hạt bi thủy tinh…') — lỗi dàn trang kệ sách, không ảnh hưởng mục nào đã soát."
+ ],
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn, nêu đúng phạm vi nhóm (dụng cụ thủy tinh dùng chung trong phòng thí nghiệm). Đoạn dừng ở 'công nghiệp,' rồi nguồn có ',...' — dấu lược của chính nguồn."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: bản cũ dừng ở '(nhóm 70.15),' — cắt mất vế 'xem Chú giải Chi tiết nhóm này)' ngay sau đó, để ngoặc không cân. Nội dung loại trừ giữ nguyên: kính đồng hồ cá nhân uốn cong dùng trong phòng thí nghiệm → 70.15. Mục nằm trong khối 'Nhóm này không bao gồm:' mục (a).",
+   "sua": {
+    "trich": "kính đồng hồ cá nhân uốn cong thông thường đôi khi được sử dụng trong phòng thí nghiệm (nhóm 70.15), xem Chú giải Chi tiết nhóm này)"
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục cuối danh sách loại trừ (a): chai hiển thị hóa học chuyên dụng và đồ thủy tinh công nghiệp → 70.20, nêu đích danh trong câu. Trích nguyên văn trọn, có dấu chấm."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục đầu danh sách loại trừ (b): dụng cụ thủy tinh y tế/phẫu thuật/nha khoa/thú y → 90.18, nêu đích danh. Trích dừng ở dấu phẩy là ranh giới mệnh đề trong nguồn, không phải cắt cụt."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đích 90.25 nêu đích danh trong câu, ý đúng (tỷ trọng kế, dụng cụ nổi, nhiệt kế, hoả kế, khí áp kế). Chú giải bị đứt câu ngay SAU đoạn trích — đã soi và không có ngoại lệ nào bị nuốt. Xem mục loaiNguonLoi."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đích 90.27 nêu đích danh, nguyên văn có cả dấu lược ',...' của nguồn và dấu chấm cuối câu."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "xoa",
+   "lyDo": "SAI CHIỀU — câu trích nói 'dù có khả năng thuộc nhóm 90.27 VẪN CÓ THỂ đồng thời được coi như là dụng cụ thủy tinh dùng trong phòng thí nghiệm của nhóm này', tức là câu trao quyền giữ 7017 cho đúng những dụng cụ đó. Với câu này, 'có' thì 7017 đúng, nhưng 'không' không thể là 9027: câu không nói gì về nhánh không, và nghĩa ngược lại thì sai (hàng không phải dụng cụ phân tích thì càng không vào 90.27). hoi cũng không phải câu hỏi có/không về đặc tính hàng — nó là một mệnh đề kết bằng dấu hỏi, trong đó 'nhóm khác' không nêu mã. Máy không bắt được vì luật câu-cho-phép chỉ áp cho dieuKienVao."
+  }
+ ]
+}
