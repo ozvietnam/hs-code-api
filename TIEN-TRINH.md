@@ -2715,3 +2715,122 @@ có trong câu trích nên máy kiểm được. Đã ghi lý do vào `review/61
 - `npm run so-tay:check` → **326 nhóm, 9.874 mục, 0 mục không kiểm được nguồn**.
 - `node scripts/check-cay.mjs --nhom=5513,5702,5909,6105,6202,6211` → **6 nhóm đủ, 0 lỗi lệch cây**.
 - `npm test` → **ALL TESTS PASSED**.
+
+---
+
+## Lô 035 — nhóm 8304, 8415, 8430, 8433, 8436, 8448 (23/10/2026, `dev-zcode-mm`)
+
+Nhánh `so-tay/lo-035`. Nhóm lấy theo `docs/giao-viec/so-tay-lo.csv` dòng 36 (nguồn chuẩn);
+**dòng lệnh trong `brief-st-lo035.md` ghi nhầm nhóm** (`7615,9609,3215,6306,6804,7412` — copy-paste
+từ lô khác) nên không dùng.
+
+### Bước 1 — chuẩn bị
+
+- `node scripts/build-so-tay.mjs --nhom=8304,8415,8430,8433,8436,8448 --xuat-nguon=tmp/so-tay/nguon`
+  → 6 tệp nguồn, tổng 282.919 ký tự (khớp cột `ky_tu_nguon` của CSV).
+- Đọc TRỌN `tmp/so-tay/nguon/_he-thong.txt` (40 luật, gồm 6 luật bổ sung từ lô 030) + `docs/giao-viec/so-tay-giao-ngoai.md` mục 3.
+- Cột CSV đã chuyển `dang-lam` / `nguoi_lam=dev-zcode-mm`.
+
+### Bước 2 — nghiên cứu tiền đề trước khi soạn (không đoán)
+
+Đọc `lib/so-tay.js` (444 dòng, hàm `checkItem`) để biết máy thật sự chấp nhận gì, và dò tiền lệ
+trong `data/so-tay/*.json` cho 4 chỗ đang phải cân:
+
+| Câu hỏi | Kết luận từ tiền lệ |
+|---|---|
+| `dieuKienVao` mô tả điều kiện **phủ định** được không (`value: false`)? | Có — 73 mục đã qua (`0402` `da_lam_dong… = false`). Dùng được. |
+| `phanBiet` để `neuKhong` = chính nhóm đang soạn? | Có — 642 mục đã qua (`0402`, `1702`…). Dùng được. |
+| `loaiTru` mà câu trích có cụm "ví dụ" bên trong thì có bị loại? | Không — 145 mục đã qua (vd `1901` sangNhom `0901\|2101`). Chỉ loại khi số nhóm là ví dụ LINH KIỆN chứ không phải đích. |
+| `cay.tenDien` được dịch từ tên WCO tiếng Anh sang tiếng Việt? | Có — 81 mục đã qua (`3904` lấy `wco.390421`). |
+
+Thêm: dòng 8415 (loại trừ (c)) nguồn ghi `(nhóm 84.79, 85,16...)` — **lỗi nguồn, dấu phẩy thay dấu chấm**,
+nên mã `8516` không xuất hiện nguyên văn ⇒ máy loại `nhom-dich-khong-co-trong-trich`. Ghi nhận kệ sách,
+không sửa nguồn (luật 8).
+
+Mã đích dùng trong lô đã kiểm tồn tại thật trong `data/chu-giai-heading.json`: 7326 9403 7322 8418 8479 8516
+8429 8432 8467 8905 8431 8437 8208 8426 8428 8436 8445 8478 8424 8419 8425 8438 8439 8465 8508 8701 9018
+9303 8422 4421 8421 8523 8452 8413 6909 7020 5911.
+
+### Bước 3 — cây HS, biết chỗ nào còn trống
+
+`lib/hs-tree.js` cho sẵn cây. Nút còn TRỐNG tên (tenVi = null) — đây là chỗ duy nhất được điền `cay.tenDien`:
+
+- 8415: `841581`, `841582`, `841583` (cả 3 là nút 6 số, chỉ lấy tên được từ `wco.*`)
+- 8430: `843049` · 8433: `843319`, `843359` · 8436: `843621`, `843629`, `843699` · 8448: `844811`, `844819`, `844849`
+- 8304: KHÔNG có nút nào trống ⇒ không soạn `tenDien`.
+
+Mày sẽ bỏ qua phần này, chỉ báo trống (`nut-ao-chua-co-ten` / `phan-nhom-chua-co-tieu-chi`) — là cảnh báo,
+không phải lỗi.
+
+### Bước 4 — soạn: KHÔNG gõ tay bất kỳ câu trích nào
+
+Bài học lô 029/033: gõ lại câu trích ra là sai dấu. Nên em dựng `tmp/so-tay/quote-lo035.mjs` —
+cắt trích **theo chỉ số** (câu, từ ký tự, đến ký tự) hoặc theo **mảch ASCII** `(a)`, `84.32`, `***`.
+Chỉ số là số/ASCII nên không thể sai dấu; hàm `Q()` **ném lỗi** nếu mảnh cắt không có nguyên văn
+trong khối nguồn. `gen-lo035.mjs` dựng 6 tệp `tmp/so-tay/raw/*.json` từ đó.
+
+Hệ quả: **không có một ký tự tiếng Việt nào trong sổ tay do em gõ** — kể cả câu trích, kể cả tên
+dòng 8 số (lấy từ chính dòng biểu thuế), kể cả câu `dieuKien` (tự cắt phần sau gạch đầu dòng).
+
+Ba bản cắt phụ phục vụ luật "phải dò ngược về tiêu đề khối" (lô 022/030):
+
+- `ITEM()` — mục loại trừ `(a)(b)(c)` ghép với tiêu đề khối "Nhóm này không bao gồm:" của **cùng** câu.
+- `ITEM2()` — tiêu đề nằm ở câu khác (8448: danh sách `(a)…(d)` nằm trong câu 18, mở đầu danh sách ở câu đó).
+- `ITEM3()` — tiêu đề ở câu trước, mục ở câu sau (8436: `(a)(b)` ở câu 7, `(c)…(n)` ở câu 8).
+
+### Bước 5 — soát tay (máy KHÔNG bắt được phần này)
+
+Đọc lại toàn bộ phần tự viết. Bắt được **6 lỗi thật**, tất cả đều do cắt lệch 1–8 ký tự:
+
+1. **8430 loaiTru (b)(c)(d) MẤT DẤU ĐÁNH SỐ** — dùng offset gõ tay thay vì `ITEM()`, trích ra
+   `"…không bao gồm: …  Xe cán dùng trong nông nghiệp"` (thiếu `(b) `). Sửa bằng `ITEM()`.
+2. **8430 loại trừ đầu CẮT MẤT `84.32`** — cắt trước dấu `)`, máy loại `nhom-dich-khong-co-trong-trich`.
+3. **8448 tiêu đề khối nuốt `(a) Máy`** — khoảng cắt tiêu đề dài 7 ký tự quá; mọi 4 mục (a)–(d) đều bị.
+4. **8436 ba câu trích có ký tự rác `\n\n(` / `\n\n(14)`** ở cuối do cắt dài 1–2 ký tự.
+5. **8433 loaiTru 8428 XOÁ** — câu "khi được trình bày riêng biệt chúng thuộc nhóm 84.28" **không có dấu
+   hiệu loại trừ** (chỉ có `***`); theo luật lô 030 thì bỏ mục. Giữ lại `phanBiet` (phanBiet không cần dấu này).
+6. **8304 `phamVi` 498 ký tự** — cắt lại còn 283.
+
+Sau khi sửa: **189 mục**, `check-so-tay --raw` **189/189**, `check-trich-nguyen-van` **172/172 nguyên văn**,
+`boPhan`/`tenDien` **17/17 nguyên văn** (script này không kiểm 2 loại đó nên em tự kiểm riêng).
+Câu trích dài hơn 300 ký tự: **4/189** — đều là `phamVi` của nhóm có **phần ngang hàng** (8430 năm phần
+(I)–(V), 8436 ba phần, 8448 ba phần) và một `phanBiet` 8448. Trong `data/so-tay/` sẵn có 73/342 tệp
+vượt 300 (dài nhất 578) nên vẫn trong thực hành; ghi rõ ở mô tả PR.
+
+### Bước 6 — `tieuChi` dòng 8 số: chỉ điền khi dòng có MỘT ngưỡng số
+
+Bản nháp đầu tiên điền `tieuChi` cho **19** dòng của 8415 + 1 dòng 8433.90.10, lấy ngưỡng đầu tiên
+trong dòng. Soát lại thấy sai: `tieuChi` là **một** `{fact, op, value}`, nên dòng nhiều ngưỡng sẽ bị
+mô tả **thiếu** (nới phạm vi) — đúng loại lỗi memory lô 030/032 cảnh báo. Cụ thể:
+
+- `84158195` "trên 21,10 kW **nhưng không quá 26,38 kW** và lưu lượng > 67,96 m3/phút" → lấy ngưỡng nào
+  cũng thiếu một nhánh; riêng `<= 26,38 kW` còn **trùng** với anh em `84158198` (cùng dải, không có lưu lượng).
+- `84339010` "đường kính > 100 mm … không quá 250 mm … chiều rộng > 30 mm" → **3** ngưỡng.
+
+Đã đổi: chỉ điền `tieuChi` khi dòng có **đúng một** ngưỡng số. Còn **12** dòng (đều là
+"Công suất làm mát không quá X kW" không kèm ngưỡng nào khác), 8433.90.10 không còn `tieuChi`.
+
+Điều kiện **đầy đủ** vẫn nằm ở `dieuKien` (chuỗi) — và đó mới là thứ đưa vào prompt
+(`lib/so-tay-gates.js:139` chỉ đọc `d.dieuKien`; `dong8[].tieuChi` hiện chỉ được **kiểm**, chưa dùng lúc chạy —
+đã grep toàn bộ `lib/` xác nhận). Nên thu hẹp không mất thông tin nào lúc chạy.
+
+### Bước 7 — nạp và nghiệm thu
+
+`rm data/so-tay/bao-cao/lo-035.json` trước (không có sẵn) rồi nạp `--tu-tep --force`.
+
+| Kiểm | Kết quả |
+|---|---|
+| `check-so-tay --raw` | **189/189** |
+| `check-trich-nguyen-van` | **172/172** nguyên văn byte-exact |
+| `boPhan` + `cay.tenDien` (tự kiểm) | **17/17** nguyên văn |
+| `npm run so-tay:check` | 350 nhóm, 10.472 mục, **0** mục không kiểm được nguồn |
+| `check-cay --nhom=…` | **0 lỗi lệch cây**; còn trống `phan-nhom-chua-co-tieu-chi × 43` (cảnh báo) |
+| `npm test` | **ALL TESTS PASSED** |
+| Báo cáo lô | `lo-035.json` — 189/189, `tyLeDat` 100, `nhomLoi` rỗng |
+
+**43 `phan-nhom-chua-co-tieu-chi` là hạn chế thật của nguồn, không phải sót**: tên WCO của 8430/8433/8436/8448
+thuần danh tả ("Snow-ploughs and snow-blowers", "Poultry incubators and brooders") không có con số nào,
+mà `tieuChi6` lại **cấm** lấy từ `tax.*`. 8415 chỉ có ngưỡng ở tầng dòng 8 số. Ghi rõ trong PR.
+
+Không `nguonLoai` do em ghi; máy gán `AI_DA_KIEM` cho 189/189 mục, `cay` là `MAY_SUY`. Không soạn `cay`
+(ngoài `tenDien` cho 12 nút trống tên).

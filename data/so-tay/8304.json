@@ -1,0 +1,161 @@
+{
+ "nhom": "8304",
+ "phamVi": {
+  "text": "Tủ đựng hồ sơ, tủ đựng bộ phiếu thư mục, hộp phân loại và đồ dùng văn phòng tương tự dùng để lưu giữ, phân loại, sắp xếp giấy tờ… khay giấy để phân loại tài liệu và giá giữ giấy để đánh máy.",
+  "nguon": "nhom8304.nhom",
+  "trich": "Nhóm này bao gồm tủ đựng hồ sơ, tủ đựng bộ phiếu thư mục, các loại hộp phân loại và đồ dùng văn phòng tương tự dùng để lưu giữ, phân loại, sắp xếp thư từ, phiếu thư mục và các giấy tờ khác … Nhóm này cũng bao gồm các khay giấy để phân loại tài liệu, các loại giá giữ giấy để đánh máy",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "thiet_ke_de_dat_dung_ke_tren_san",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8304.nhom",
+   "trich": "với điều kiện loại đồ dùng này không được thiết kế để đặt đứng, kê trên sàn",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Các loại giỏ dùng để đựng giấy loại, được phân loại theo kim loại cấu thành",
+   "sangNhom": "7326",
+   "nguon": "nhom8304.nhom",
+   "trich": "Tuy nhiên nhóm này không bao gồm các loại giỏ dùng để đựng giấy loại, nó được phân loại theo kim loại cấu thành (ví dụ thuộc nhóm 73.26).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải là loại giỏ dùng để đựng giấy loại không?",
+   "neuCo": "7326",
+   "neuKhong": "8304",
+   "nguon": "nhom8304.nhom",
+   "trich": "Tuy nhiên nhóm này không bao gồm các loại giỏ dùng để đựng giấy loại, nó được phân loại theo kim loại cấu thành (ví dụ thuộc nhóm 73.26).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "83040010",
+   "dieuKien": "Tủ đựng hồ sơ và tủ đựng bộ phiếu thư mục",
+   "nguon": "tax.83040010",
+   "trich": "83040010 - Tủ đựng hồ sơ và tủ đựng bộ phiếu thư mục",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "83040091",
+   "dieuKien": "Bằng nhôm",
+   "nguon": "tax.83040091",
+   "trich": "83040091 - - Bằng nhôm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "83040092",
+   "dieuKien": "Bằng niken",
+   "nguon": "tax.83040092",
+   "trich": "83040092 - - Bằng niken",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "83040099",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.83040099",
+   "trich": "83040099 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8304009",
+    "truAnhEm": [
+     "83040091",
+     "83040092"
+    ],
+    "toTienCoTen": "8304",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8304",
+    "cap": 4,
+    "cha": "83",
+    "tenVi": "Tủ đựng hồ sơ, tủ đựng bộ phiếu thư mục, khay để giấy tờ, giá kẹp giấy, khay để bút, giá để con dấu văn phòng và các loại đồ dùng văn phòng hoặc các đồ dùng để bàn tương tự, bằng kim loại cơ bản, trừ đồ nội thất văn phòng thuộc nhóm 94.03.",
+    "tenEn": "Office equipment; filing cabinets, card-index cabinets, paper trays and rests, pen trays, office-stamp stands and the like, of base metal, other than office furniture of heading no. 9403",
+    "suyRa": false
+   },
+   {
+    "id": "83040010",
+    "cap": 8,
+    "cha": "8304",
+    "tenVi": "Tủ đựng hồ sơ và tủ đựng bộ phiếu thư mục",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "8304009",
+    "cap": "TIEU_DE_QG",
+    "cha": "8304",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "83040091",
+    "cap": 8,
+    "cha": "8304009",
+    "tenVi": "Bằng nhôm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "83040092",
+    "cap": 8,
+    "cha": "8304009",
+    "tenVi": "Bằng niken",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "83040099",
+    "cap": 8,
+    "cha": "8304009",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom8304.nhom",
+  "tax.83040010",
+  "tax.83040091",
+  "tax.83040092",
+  "tax.83040099"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-23T14:24:59.857Z",
+  "ms": 82
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

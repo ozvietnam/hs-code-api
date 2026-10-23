@@ -1,0 +1,1452 @@
+{
+ "nhom": "8415",
+ "phamVi": {
+  "text": "Máy điều hoà không khí dùng để duy trì điều kiện độ ẩm và nhiệt độ theo yêu cầu trong một không gian kín, ở dạng một khối… hoặc dạng hệ thống nhiều khối chức năng tách biệt.",
+  "nguon": "nhom8415.nhom",
+  "trich": "Nhóm này gồm các loại thiết bị cụ thể dùng để duy trì điều kiện độ ẩm và nhiệt độ theo yêu cầu trong một không gian kín … Các loại máy thuộc nhóm này có thể có dạng một khối … Ngoài ra, chứng có thể có dạng \"hệ thống nhiều khối chức năng tách biệt\"",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "co_quat_gio_ho_may_thoi_chay_bang_dong_co",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8415.nhom",
+   "trich": "(1) Có gắn quạt gió hoặc máy thổi chạy bằng động cơ, và",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "thay_doi_ca_nhiet_do_va_do_am_khong_khi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8415.nhom",
+   "trich": "(2) Được thiết kế để thay đổi cả nhiệt độ (bộ phận làm nóng hoặc làm lạnh hoặc cả hai chức năng) và độ ẩm không khí (bộ phận làm ẩm hoặc làm khô hoặc cả hai chức năng), và",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "cac_bo_phan_muc_1_va_2_trinh_bay_cung_voi_nhau",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8415.nhom",
+   "trich": "(3) Trong đó các bộ phận nêu trong mục (1) và (2) được trình bày cùng với nhau",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Các thiết bị làm nóng không khí và phân phối không khí nóng thuộc nhóm 73.22, loại cũng có thể phân phối khí trời hoặc không khí đã được điều hoà",
+   "sangNhom": "7322",
+   "nguon": "nhom8415.nhom",
+   "trich": "(a) Các thiết bị làm nóng không khí và phân phối không khí nóng thuộc nhóm 73.22, loại cũng có thể phân phối khí trời hoặc không khí đã được điều hoà.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Bơm nhiệt không đảo chiều và thiết bị làm lạnh cho máy điều hòa không khí",
+   "sangNhom": "8418",
+   "nguon": "nhom8415.nhom",
+   "trich": "(b) Bơm nhiệt không đảo chiều và thiết bị làm lạnh cho máy điều hòa không khí (nhóm 84.18).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các loại thiết bị, cho dù có gắn một quạt gió chạy bằng động cơ, chỉ có chức năng duy nhất là thay đổi hoặc nhiệt độ hoặc độ ẩm không khí",
+   "sangNhom": "8479",
+   "nguon": "nhom8415.nhom",
+   "trich": "(c) Các loại thiết bị, cho dù có gắn một quạt gió chạy bằng động cơ, chỉ có chức năng duy nhất là thay đổi hoặc nhiệt độ hoặc độ ẩm không khí (nhóm 84.79, 85,16...).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Thiết bị chỉ thay đổi nhiệt độ HOẶC chỉ thay đổi độ ẩm không khí (không thay đổi cả hai) không?",
+   "neuCo": "8479",
+   "neuKhong": "8415",
+   "nguon": "nhom8415.nhom",
+   "trich": "(c) Các loại thiết bị, cho dù có gắn một quạt gió chạy bằng động cơ, chỉ có chức năng duy nhất là thay đổi hoặc nhiệt độ hoặc độ ẩm không khí (nhóm 84.79, 85,16...).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "84151020",
+   "dieuKien": "Công suất làm mát không quá 21,10 kW",
+   "nguon": "tax.84151020",
+   "trich": "84151020 - - Công suất làm mát không quá 21,10 kW",
+   "tieuChi": {
+    "fact": "cong_suat_lam_mat",
+    "op": "<=",
+    "value": 21.1,
+    "donVi": "kW"
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84151030",
+   "dieuKien": "Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW",
+   "nguon": "tax.84151030",
+   "trich": "84151030 - - Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84151090",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84151090",
+   "trich": "84151090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "841510",
+    "truAnhEm": [
+     "84151020",
+     "84151030"
+    ],
+    "toTienCoTen": "841510",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84152010",
+   "dieuKien": "Công suất làm mát không quá 26,38 kW",
+   "nguon": "tax.84152010",
+   "trich": "84152010 - - Công suất làm mát không quá 26,38 kW",
+   "tieuChi": {
+    "fact": "cong_suat_lam_mat",
+    "op": "<=",
+    "value": 26.38,
+    "donVi": "kW"
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84152090",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84152090",
+   "trich": "84152090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "841520",
+    "truAnhEm": [
+     "84152010"
+    ],
+    "toTienCoTen": "841520",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84158111",
+   "dieuKien": "Công suất làm mát không quá 21,10 kW",
+   "nguon": "tax.84158111",
+   "trich": "84158111 - - - - Công suất làm mát không quá 21,10 kW",
+   "tieuChi": {
+    "fact": "cong_suat_lam_mat",
+    "op": "<=",
+    "value": 21.1,
+    "donVi": "kW"
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84158112",
+   "dieuKien": "Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)",
+   "nguon": "tax.84158112",
+   "trich": "84158112 - - - - Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84158119",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84158119",
+   "trich": "84158119 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415811",
+    "truAnhEm": [
+     "84158111",
+     "84158112"
+    ],
+    "toTienCoTen": "841581",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84158121",
+   "dieuKien": "Công suất làm mát không quá 26,38 kW",
+   "nguon": "tax.84158121",
+   "trich": "84158121 - - - - Công suất làm mát không quá 26,38 kW",
+   "tieuChi": {
+    "fact": "cong_suat_lam_mat",
+    "op": "<=",
+    "value": 26.38,
+    "donVi": "kW"
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84158129",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84158129",
+   "trich": "84158129 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415812",
+    "truAnhEm": [
+     "84158121"
+    ],
+    "toTienCoTen": "841581",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84158131",
+   "dieuKien": "Công suất làm mát không quá 26,38 kW",
+   "nguon": "tax.84158131",
+   "trich": "84158131 - - - - Công suất làm mát không quá 26,38 kW",
+   "tieuChi": {
+    "fact": "cong_suat_lam_mat",
+    "op": "<=",
+    "value": 26.38,
+    "donVi": "kW"
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84158139",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84158139",
+   "trich": "84158139 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415813",
+    "truAnhEm": [
+     "84158131"
+    ],
+    "toTienCoTen": "841581",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84158195",
+   "dieuKien": "Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)",
+   "nguon": "tax.84158195",
+   "trich": "84158195 - - - - Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84158196",
+   "dieuKien": "Công suất làm mát trên 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)",
+   "nguon": "tax.84158196",
+   "trich": "84158196 - - - - Công suất làm mát trên 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84158197",
+   "dieuKien": "Công suất làm mát không quá 21,10 kW",
+   "nguon": "tax.84158197",
+   "trich": "84158197 - - - - - Công suất làm mát không quá 21,10 kW",
+   "tieuChi": {
+    "fact": "cong_suat_lam_mat",
+    "op": "<=",
+    "value": 21.1,
+    "donVi": "kW"
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84158198",
+   "dieuKien": "Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW",
+   "nguon": "tax.84158198",
+   "trich": "84158198 - - - - - Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84158199",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84158199",
+   "trich": "84158199 - - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415819",
+    "truAnhEm": [
+     "84158195",
+     "84158196",
+     "84158197",
+     "84158198"
+    ],
+    "toTienCoTen": "841581",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84158211",
+   "dieuKien": "Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)",
+   "nguon": "tax.84158211",
+   "trich": "84158211 - - - - Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84158219",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84158219",
+   "trich": "84158219 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415821",
+    "truAnhEm": [
+     "84158211"
+    ],
+    "toTienCoTen": "841582",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84158221",
+   "dieuKien": "Công suất làm mát không quá 26,38 kW",
+   "nguon": "tax.84158221",
+   "trich": "84158221 - - - - Công suất làm mát không quá 26,38 kW",
+   "tieuChi": {
+    "fact": "cong_suat_lam_mat",
+    "op": "<=",
+    "value": 26.38,
+    "donVi": "kW"
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84158229",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84158229",
+   "trich": "84158229 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415822",
+    "truAnhEm": [
+     "84158221"
+    ],
+    "toTienCoTen": "841582",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84158231",
+   "dieuKien": "Công suất làm mát không quá 26,38 kW",
+   "nguon": "tax.84158231",
+   "trich": "84158231 - - - - Công suất làm mát không quá 26,38 kW",
+   "tieuChi": {
+    "fact": "cong_suat_lam_mat",
+    "op": "<=",
+    "value": 26.38,
+    "donVi": "kW"
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84158239",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84158239",
+   "trich": "84158239 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415823",
+    "truAnhEm": [
+     "84158231"
+    ],
+    "toTienCoTen": "841582",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84158291",
+   "dieuKien": "Công suất làm mát không quá 26,38 kW",
+   "nguon": "tax.84158291",
+   "trich": "84158291 - - - - Công suất làm mát không quá 26,38 kW",
+   "tieuChi": {
+    "fact": "cong_suat_lam_mat",
+    "op": "<=",
+    "value": 26.38,
+    "donVi": "kW"
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84158299",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84158299",
+   "trich": "84158299 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415829",
+    "truAnhEm": [
+     "84158291"
+    ],
+    "toTienCoTen": "841582",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84158311",
+   "dieuKien": "Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)",
+   "nguon": "tax.84158311",
+   "trich": "84158311 - - - - Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84158319",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84158319",
+   "trich": "84158319 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415831",
+    "truAnhEm": [
+     "84158311"
+    ],
+    "toTienCoTen": "841583",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84158321",
+   "dieuKien": "Công suất làm mát không quá 26,38 kW",
+   "nguon": "tax.84158321",
+   "trich": "84158321 - - - - Công suất làm mát không quá 26,38 kW",
+   "tieuChi": {
+    "fact": "cong_suat_lam_mat",
+    "op": "<=",
+    "value": 26.38,
+    "donVi": "kW"
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84158329",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84158329",
+   "trich": "84158329 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415832",
+    "truAnhEm": [
+     "84158321"
+    ],
+    "toTienCoTen": "841583",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84158331",
+   "dieuKien": "Công suất làm mát không quá 26,38 kW",
+   "nguon": "tax.84158331",
+   "trich": "84158331 - - - - Công suất làm mát không quá 26,38 kW",
+   "tieuChi": {
+    "fact": "cong_suat_lam_mat",
+    "op": "<=",
+    "value": 26.38,
+    "donVi": "kW"
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84158339",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84158339",
+   "trich": "84158339 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415833",
+    "truAnhEm": [
+     "84158331"
+    ],
+    "toTienCoTen": "841583",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84158391",
+   "dieuKien": "Công suất làm mát không quá 26,38 kW",
+   "nguon": "tax.84158391",
+   "trich": "84158391 - - - - Công suất làm mát không quá 26,38 kW",
+   "tieuChi": {
+    "fact": "cong_suat_lam_mat",
+    "op": "<=",
+    "value": 26.38,
+    "donVi": "kW"
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84158399",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84158399",
+   "trich": "84158399 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415839",
+    "truAnhEm": [
+     "84158391"
+    ],
+    "toTienCoTen": "841583",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84159013",
+   "dieuKien": "Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+   "nguon": "tax.84159013",
+   "trich": "84159013 - - - Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84159014",
+   "dieuKien": "Thiết bị làm bay hơi hoặc ngưng tụ dùng cho máy điều hòa không khí lắp trên xe có động cơ",
+   "nguon": "tax.84159014",
+   "trich": "84159014 - - - Thiết bị làm bay hơi hoặc ngưng tụ dùng cho máy điều hòa không khí lắp trên xe có động cơ",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84159015",
+   "dieuKien": "Khung vỏ, đã hàn và sơn, trừ loại thuộc phân nhóm 8415.90.13",
+   "nguon": "tax.84159015",
+   "trich": "84159015 - - - Khung vỏ, đã hàn và sơn, trừ loại thuộc phân nhóm 8415.90.13",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84159019",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84159019",
+   "trich": "84159019 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415901",
+    "truAnhEm": [
+     "84159013",
+     "84159014",
+     "84159015"
+    ],
+    "toTienCoTen": "841590",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84159024",
+   "dieuKien": "Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+   "nguon": "tax.84159024",
+   "trich": "84159024 - - - - Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84159025",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84159025",
+   "trich": "84159025 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415902",
+    "truAnhEm": [
+     "84159024",
+     "84159026"
+    ],
+    "toTienCoTen": "841590",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84159026",
+   "dieuKien": "Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+   "nguon": "tax.84159026",
+   "trich": "84159026 - - - - Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84159029",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84159029",
+   "trich": "84159029 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415902",
+    "truAnhEm": [
+     "84159024",
+     "84159026"
+    ],
+    "toTienCoTen": "841590",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84159034",
+   "dieuKien": "Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+   "nguon": "tax.84159034",
+   "trich": "84159034 - - - - Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84159035",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84159035",
+   "trich": "84159035 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415903",
+    "truAnhEm": [
+     "84159034",
+     "84159036"
+    ],
+    "toTienCoTen": "841590",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84159036",
+   "dieuKien": "Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+   "nguon": "tax.84159036",
+   "trich": "84159036 - - - - Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84159039",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84159039",
+   "trich": "84159039 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415903",
+    "truAnhEm": [
+     "84159034",
+     "84159036"
+    ],
+    "toTienCoTen": "841590",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84159044",
+   "dieuKien": "Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+   "nguon": "tax.84159044",
+   "trich": "84159044 - - - - Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84159045",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84159045",
+   "trich": "84159045 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415904",
+    "truAnhEm": [
+     "84159044",
+     "84159046"
+    ],
+    "toTienCoTen": "841590",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84159046",
+   "dieuKien": "Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+   "nguon": "tax.84159046",
+   "trich": "84159046 - - - - Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "84159049",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.84159049",
+   "trich": "84159049 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8415904",
+    "truAnhEm": [
+     "84159044",
+     "84159046"
+    ],
+    "toTienCoTen": "841590",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "boPhan": {
+  "quyTac": "Bộ phận đặt trong nhà và đặt ngoài trời dùng cho máy điều hòa không khí kiểu hệ thống nhiều khối chức năng tách biệt, khi được trình bày riêng biệt, được phân loại vào nhóm này.",
+  "tomTat": "Chỉ bộ phận của máy điều hòa không khí dạng hệ thống nhiều khối chức năng tách biệt mới được trình bày riêng biệt trong nhóm 8415.",
+  "nguon": "nhom8415.nhom",
+  "trich": "BỘ PHẬN Theo các quy định của Chú giải 2(b) Phần XVI, nhóm này bao gồm, được trình bày riêng biệt, các bộ phận đặt trong nhà và đặt ngoài trời dùng cho máy điều hòa không khí kiểu hệ thống nhiều khối chức năng tách biệt thuộc nhóm này",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8415",
+    "cap": 4,
+    "cha": "84",
+    "tenVi": "Máy điều hòa không khí, gồm có một quạt chạy bằng mô tơ và các bộ phận làm thay đổi nhiệt độ và độ ẩm, kể cả loại máy không điều chỉnh độ ẩm một cách riêng biệt (+).",
+    "tenEn": "Air conditioning machines; comprising a motor driven fan and elements for changing the temperature and humidity, including those machines in which the humidity cannot be separately regulated",
+    "suyRa": false
+   },
+   {
+    "id": "841510",
+    "cap": 6,
+    "cha": "8415",
+    "tenVi": "Loại thiết kế để lắp vào cửa sổ, tường, trần hoặc sàn, kiểu một khối (lắp liền trong cùng một vỏ, một cục) hoặc \"hệ thống nhiều khối chức năng\" (cục nóng, cục lạnh tách biệt)",
+    "tenEn": "Air conditioning machines; comprising a motor-driven fan and elements for changing the temperature and humidity, of a kind designed to be fixed to a window, wall, ceiling or floor, self-contained or split-system",
+    "suyRa": false
+   },
+   {
+    "id": "84151020",
+    "cap": 8,
+    "cha": "841510",
+    "tenVi": "Công suất làm mát không quá 21,10 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84151030",
+    "cap": 8,
+    "cha": "841510",
+    "tenVi": "Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84151090",
+    "cap": 8,
+    "cha": "841510",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "841520",
+    "cap": 6,
+    "cha": "8415",
+    "tenVi": "Loại sử dụng cho người, trong xe có động cơ",
+    "tenEn": "Air conditioning machines; comprising a motor driven fan and elements for changing the temperature and humidity, of a kind used for persons, in motor vehicles",
+    "suyRa": false
+   },
+   {
+    "id": "84152010",
+    "cap": 8,
+    "cha": "841520",
+    "tenVi": "Công suất làm mát không quá 26,38 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84152090",
+    "cap": 8,
+    "cha": "841520",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "84158",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8415",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "841581",
+    "cap": 6,
+    "cha": "84158",
+    "tenVi": null,
+    "tenEn": "Air conditioning machines; containing a motor driven fan, other than window or wall types, incorporating a refrigerating unit and a valve for reversal of the cooling/heat cycle (reversible heat pumps)",
+    "suyRa": false
+   },
+   {
+    "id": "8415811",
+    "cap": "TIEU_DE_QG",
+    "cha": "841581",
+    "tenVi": "Loại sử dụng cho phương tiện bay",
+    "tenEn": "Of a kind used in aircraft",
+    "suyRa": true
+   },
+   {
+    "id": "84158111",
+    "cap": 8,
+    "cha": "8415811",
+    "tenVi": "Công suất làm mát không quá 21,10 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84158112",
+    "cap": 8,
+    "cha": "8415811",
+    "tenVi": "Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84158119",
+    "cap": 8,
+    "cha": "8415811",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "8415812",
+    "cap": "TIEU_DE_QG",
+    "cha": "841581",
+    "tenVi": "Sử dụng cho phương tiện giao thông đường sắt",
+    "tenEn": "Of a kind used in railway rolling stock",
+    "suyRa": true
+   },
+   {
+    "id": "84158121",
+    "cap": 8,
+    "cha": "8415812",
+    "tenVi": "Công suất làm mát không quá 26,38 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84158129",
+    "cap": 8,
+    "cha": "8415812",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "8415813",
+    "cap": "TIEU_DE_QG",
+    "cha": "841581",
+    "tenVi": "Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)",
+    "tenEn": "Of a kind used in motor vehicles (other than those of subheading 8415.20)",
+    "suyRa": true
+   },
+   {
+    "id": "84158131",
+    "cap": 8,
+    "cha": "8415813",
+    "tenVi": "Công suất làm mát không quá 26,38 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84158139",
+    "cap": 8,
+    "cha": "8415813",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "8415819",
+    "cap": "TIEU_DE_QG",
+    "cha": "841581",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "84158195",
+    "cap": 8,
+    "cha": "8415819",
+    "tenVi": "Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84158196",
+    "cap": 8,
+    "cha": "8415819",
+    "tenVi": "Công suất làm mát trên 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84158197",
+    "cap": 8,
+    "cha": "8415819",
+    "tenVi": "Công suất làm mát không quá 21,10 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84158198",
+    "cap": 8,
+    "cha": "8415819",
+    "tenVi": "Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84158199",
+    "cap": 8,
+    "cha": "8415819",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "841582",
+    "cap": 6,
+    "cha": "84158",
+    "tenVi": null,
+    "tenEn": "Air conditioning machines; containing a motor driven fan, other than window or wall types, incorporating a refrigerating unit",
+    "suyRa": false
+   },
+   {
+    "id": "8415821",
+    "cap": "TIEU_DE_QG",
+    "cha": "841582",
+    "tenVi": "Loại sử dụng cho phương tiện bay",
+    "tenEn": "Of a kind used in aircraft",
+    "suyRa": true
+   },
+   {
+    "id": "84158211",
+    "cap": 8,
+    "cha": "8415821",
+    "tenVi": "Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84158219",
+    "cap": 8,
+    "cha": "8415821",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "8415822",
+    "cap": "TIEU_DE_QG",
+    "cha": "841582",
+    "tenVi": "Sử dụng cho phương tiện giao thông đường sắt",
+    "tenEn": "Of a kind used in railway rolling stock",
+    "suyRa": true
+   },
+   {
+    "id": "84158221",
+    "cap": 8,
+    "cha": "8415822",
+    "tenVi": "Công suất làm mát không quá 26,38 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84158229",
+    "cap": 8,
+    "cha": "8415822",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "8415823",
+    "cap": "TIEU_DE_QG",
+    "cha": "841582",
+    "tenVi": "Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)",
+    "tenEn": "Of a kind used in motor vehicles (other than those of subheading 8415.20)",
+    "suyRa": true
+   },
+   {
+    "id": "84158231",
+    "cap": 8,
+    "cha": "8415823",
+    "tenVi": "Công suất làm mát không quá 26,38 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84158239",
+    "cap": 8,
+    "cha": "8415823",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "8415829",
+    "cap": "TIEU_DE_QG",
+    "cha": "841582",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "84158291",
+    "cap": 8,
+    "cha": "8415829",
+    "tenVi": "Công suất làm mát không quá 26,38 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84158299",
+    "cap": 8,
+    "cha": "8415829",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "841583",
+    "cap": 6,
+    "cha": "84158",
+    "tenVi": null,
+    "tenEn": "Air conditioning machines; containing a motor driven fan, other than window or wall types, not incorporating a refrigerating unit",
+    "suyRa": false
+   },
+   {
+    "id": "8415831",
+    "cap": "TIEU_DE_QG",
+    "cha": "841583",
+    "tenVi": "Loại sử dụng cho phương tiện bay",
+    "tenEn": "Of a kind used in aircraft",
+    "suyRa": true
+   },
+   {
+    "id": "84158311",
+    "cap": 8,
+    "cha": "8415831",
+    "tenVi": "Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84158319",
+    "cap": 8,
+    "cha": "8415831",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "8415832",
+    "cap": "TIEU_DE_QG",
+    "cha": "841583",
+    "tenVi": "Sử dụng cho phương tiện giao thông đường sắt",
+    "tenEn": "Of a kind used in railway rolling stock",
+    "suyRa": true
+   },
+   {
+    "id": "84158321",
+    "cap": 8,
+    "cha": "8415832",
+    "tenVi": "Công suất làm mát không quá 26,38 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84158329",
+    "cap": 8,
+    "cha": "8415832",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "8415833",
+    "cap": "TIEU_DE_QG",
+    "cha": "841583",
+    "tenVi": "Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)",
+    "tenEn": "Of a kind used in motor vehicles (other than those of subheading 8415.20)",
+    "suyRa": true
+   },
+   {
+    "id": "84158331",
+    "cap": 8,
+    "cha": "8415833",
+    "tenVi": "Công suất làm mát không quá 26,38 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84158339",
+    "cap": 8,
+    "cha": "8415833",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "8415839",
+    "cap": "TIEU_DE_QG",
+    "cha": "841583",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "84158391",
+    "cap": 8,
+    "cha": "8415839",
+    "tenVi": "Công suất làm mát không quá 26,38 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84158399",
+    "cap": 8,
+    "cha": "8415839",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "841590",
+    "cap": 6,
+    "cha": "8415",
+    "tenVi": "Bộ phận",
+    "tenEn": "Air conditioning machines; with motor driven fan and elements for temperature control, parts thereof",
+    "suyRa": false
+   },
+   {
+    "id": "8415901",
+    "cap": "TIEU_DE_QG",
+    "cha": "841590",
+    "tenVi": "Của máy có công suất làm mát không quá 21,10 kW",
+    "tenEn": "Of machines with a cooling capacity not exceeding 21.10 kW",
+    "suyRa": true
+   },
+   {
+    "id": "84159013",
+    "cap": 8,
+    "cha": "8415901",
+    "tenVi": "Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84159014",
+    "cap": 8,
+    "cha": "8415901",
+    "tenVi": "Thiết bị làm bay hơi hoặc ngưng tụ dùng cho máy điều hòa không khí lắp trên xe có động cơ",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84159015",
+    "cap": 8,
+    "cha": "8415901",
+    "tenVi": "Khung vỏ, đã hàn và sơn, trừ loại thuộc phân nhóm 8415.90.13",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84159019",
+    "cap": 8,
+    "cha": "8415901",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "8415902",
+    "cap": "TIEU_DE_QG",
+    "cha": "841590",
+    "tenVi": "Của máy có công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW",
+    "tenEn": "Of machines with a cooling capacity exceeding 21.10 kW but not exceeding 26.38 kW",
+    "suyRa": true
+   },
+   {
+    "id": "84159024",
+    "cap": 8,
+    "cha": "8415902",
+    "tenVi": "Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84159025",
+    "cap": 8,
+    "cha": "8415902",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "84159026",
+    "cap": 8,
+    "cha": "8415902",
+    "tenVi": "Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84159029",
+    "cap": 8,
+    "cha": "8415902",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "8415903",
+    "cap": "TIEU_DE_QG",
+    "cha": "841590",
+    "tenVi": "Của máy có công suất làm mát trên 26,38 kW nhưng không quá 52,75 kW",
+    "tenEn": "Of machines with a cooling capacity exceeding 26.38 kW but not exceeding 52.75 kW",
+    "suyRa": true
+   },
+   {
+    "id": "84159034",
+    "cap": 8,
+    "cha": "8415903",
+    "tenVi": "Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84159035",
+    "cap": 8,
+    "cha": "8415903",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "84159036",
+    "cap": 8,
+    "cha": "8415903",
+    "tenVi": "Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84159039",
+    "cap": 8,
+    "cha": "8415903",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "8415904",
+    "cap": "TIEU_DE_QG",
+    "cha": "841590",
+    "tenVi": "Của máy có công suất làm mát trên 52,75 kW",
+    "tenEn": "Of machines with a cooling capacity exceeding 52.75 kW",
+    "suyRa": true
+   },
+   {
+    "id": "84159044",
+    "cap": 8,
+    "cha": "8415904",
+    "tenVi": "Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84159045",
+    "cap": 8,
+    "cha": "8415904",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "84159046",
+    "cap": 8,
+    "cha": "8415904",
+    "tenVi": "Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84159049",
+    "cap": 8,
+    "cha": "8415904",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": [
+   {
+    "id": "841581",
+    "tenVi": "Máy điều hòa không khí có quạt chạy bằng động cơ, không phải loại cửa sổ hoặc tường, có bộ phận làm lạnh và van đảo chiều chu trình nóng/lạnh (bơm nhiệt đảo chiều)",
+    "nguon": "wco.841581",
+    "trich": "841581 Air conditioning machines; containing a motor driven fan, other than window or wall types, incorporating a refrigerating unit and a valve for reversal of the cooling/heat cycle (reversible heat pumps)",
+    "nguonLoai": "AI_DA_KIEM"
+   },
+   {
+    "id": "841582",
+    "tenVi": "Máy điều hòa không khí có quạt chạy bằng động cơ, không phải loại cửa sổ hoặc tường, có bộ phận làm lạnh",
+    "nguon": "wco.841582",
+    "trich": "841582 Air conditioning machines; containing a motor driven fan, other than window or wall types, incorporating a refrigerating unit",
+    "nguonLoai": "AI_DA_KIEM"
+   },
+   {
+    "id": "841583",
+    "tenVi": "Máy điều hòa không khí có quạt chạy bằng động cơ, không phải loại cửa sổ hoặc tường, không có bộ phận làm lạnh",
+    "nguon": "wco.841583",
+    "trich": "841583 Air conditioning machines; containing a motor driven fan, other than window or wall types, not incorporating a refrigerating unit",
+    "nguonLoai": "AI_DA_KIEM"
+   }
+  ]
+ },
+ "dungTuNguon": [
+  "nhom8415.nhom",
+  "tax.84151020",
+  "tax.84151030",
+  "tax.84151090",
+  "tax.84152010",
+  "tax.84152090",
+  "tax.84158111",
+  "tax.84158112",
+  "tax.84158119",
+  "tax.84158121",
+  "tax.84158129",
+  "tax.84158131",
+  "tax.84158139",
+  "tax.84158195",
+  "tax.84158196",
+  "tax.84158197",
+  "tax.84158198",
+  "tax.84158199",
+  "tax.84158211",
+  "tax.84158219",
+  "tax.84158221",
+  "tax.84158229",
+  "tax.84158231",
+  "tax.84158239",
+  "tax.84158291",
+  "tax.84158299",
+  "tax.84158311",
+  "tax.84158319",
+  "tax.84158321",
+  "tax.84158329",
+  "tax.84158331",
+  "tax.84158339",
+  "tax.84158391",
+  "tax.84158399",
+  "tax.84159013",
+  "tax.84159014",
+  "tax.84159015",
+  "tax.84159019",
+  "tax.84159024",
+  "tax.84159025",
+  "tax.84159026",
+  "tax.84159029",
+  "tax.84159034",
+  "tax.84159035",
+  "tax.84159036",
+  "tax.84159039",
+  "tax.84159044",
+  "tax.84159045",
+  "tax.84159046",
+  "tax.84159049",
+  "wco.841581",
+  "wco.841582",
+  "wco.841583"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-23T14:24:59.866Z",
+  "ms": 7
+ },
+ "kiemTra": {
+  "tong": 61,
+  "dat": 61,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
