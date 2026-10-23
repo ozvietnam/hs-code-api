@@ -56,6 +56,30 @@ Brief dòng 6 kèm **lệnh mẫu** `--nhom=7615,9609,3215,6306,6804,7412` — �
   `laPhanNhom`; `hs6=6504` bị loại (`hs6-khong-co-trong-cay`). Ghi nhận để người duyệt biết là hạn chế máy.
 - Bỏ các `loaiTru` chỉ nói **"Chương N"** (65, 67, 70, 95) — luật 3 không tính là đích danh.
 
+- [x] **B6.** Nạp: `build-so-tay.mjs --nhom=… --tu-tep=tmp/so-tay/raw --force --nguoi-soan="dev-zcode-mm"
+  --bao-cao=data/so-tay/bao-cao/lo-027.json` → **157/157 (100 %)**, `nhomLoi: []`.
+  Cỡ lô: 6 `phamVi` · 8 `dieuKienVao` · 29 `loaiTru` · 12 `phanBiet` · 46 `tieuChi6` ·
+  9 `cay.tenDien` · 42 `dong8` (2 dòng có `tieuChi` số, 1 dòng có `dieuKienSo`).
+- [x] **B7.** Kiểm toàn repo: `npm run so-tay:check` = **314 nhóm, 9.537 mục, 0 mục không kiểm được nguồn**;
+  `check-cay --nhom=6303,6504,6702,6914,7018,7304 --chi-tiet` = **0 lỗi lệch cây, 6/6 nhóm đủ**;
+  `npm test` = **ALL TESTS PASSED**, exit 0 (không suite nào fail).
+- [x] **B8.** Commit `63ebf94` (chỉ `data/so-tay/*.json` + `bao-cao/lo-027.json` + dòng CSV + tệp này;
+  KHÔNG commit `tmp/`) → push `so-tay/lo-027` → mở **PR #410** (KHÔNG merge).
+  Điền `pr=410` vào CSV dòng 027. CI: `test` + `bench` chạy; `Vercel` đỏ "Deployment was blocked" —
+  lỗi hạ tầng có sẵn, CI thật chỉ có `test` + `bench` (memory `vercel-check-blocked-la-pre-existing`).
+
+## Bàn giao cho người duyệt (mục 4)
+
+Cần **soát độc lập TOÀN BỘ** `phamVi`, `boPhan`, `dieuKienVao`, `loaiTru`, `phanBiet` của 6 nhóm
+(lô này `boPhan` không có mục nào — không nhóm nào có quy tắc bộ phận trong nguồn).
+Trọng tâm khi soát:
+- `7304` — 26 `tieuChi6` + 8 `tenDien` dịch từ tên WCO tiếng Anh (đúng thực tế từng chỗ có nguồn tiếng Việt là gì).
+- `6914` — `dieuKienVao` thứ 2 (`nhiet_do_nung_toi_thieu >= 800 °C`) lấy từ mô tả công đoạn (iv), câu có vế
+  *"tùy thuộc vào bản chất của sản phẩm"*; luật máy không chặn, người duyệt xem có nên giữ.
+- `6303` — 3 `dieuKienVao` lấy từ chú giải **chương 63** (không phải chú giải nhóm) vì chú giải nhóm 6303
+  không có câu điều kiện nào.
+- `6504` — nhóm mỏng nhất lô: chỉ 7 mục (1 `phamVi`, 4 `loaiTru`, 1 `phanBiet`, 1 `dong8`).
+
 # TIEN-TRINH — lô 014 (soạn sổ tay chú giải)
 
 Nhóm của lô: **8465, 8511, 8529, 9013, 9610, 4013**
