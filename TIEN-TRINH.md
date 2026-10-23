@@ -1411,3 +1411,41 @@ Sau khi đẩy commit soát `ee1c187`, PR #407 thành `CONFLICTING` vì main đ�
 - CI PR #407 (commit `08ef5c1`): `test` **pass** (2m34s), `bench` **pass** (7m38s);
   `Vercel` fail vì **"Deployment rate limited — retry in 24 hours"** — lỗi hạ tầng tài khoản
   Vercel, đã có sẵn từ các PR trước, không phải lỗi code.
+
+---
+
+# TIEN-TRINH — lô 028 (soạn sổ tay chú giải)
+
+Nhóm của lô: **7312, 7408, 7418, 8425, 8449, 8453** · Người soạn: `dev-zcode-mm` · Nhánh: `so-tay/lo-028` @ `1828d3b` (main mới nhất) · Ngày: 2026-10-23
+Phiên này là **người soạn** (không phải soát độc lập — mục 4 giao việc thuộc người khác).
+
+## Sai lệch brief ↔ CSV (đã xử lý, không im lặng)
+
+Brief dòng 4 ghi nhóm `7312,7408,7418,8425,8449,8453` — **khớp** CSV dòng `028`.
+Brief dòng 6 kèm **lệnh mẫu** `--nhom=7615,9609,3215,6306,6804,7412` — đó là nhóm của **lô 001** (`so-tay-lo.csv` dòng `001`), copy-paste nhầm y như lô 012/014 (memory `so-tay-lo-quy-trinh`). Đã bỏ lệnh mẫu, chốt nhóm theo CSV. Cập nhật CSV dòng 028 → `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm`.
+
+## Các bước
+
+- [x] **B1.** Đọc TRỌN `docs/giao-viec/so-tay-giao-ngoai.md` (mục 0 đợt 1: 14 kiểu lỗi; mục 0/vòng 2: bắt buộc soát độc lập; mục 1 bài học; mục 2 gói việc; mục 3 **11 luật**; mục 4 người duyệt) + brief.
+- [x] **B2.** Xuất nguồn `build-so-tay.mjs --nhom=7312,7408,7418,8425,8449,8453 --xuat-nguon=tmp/so-tay/nguon` → **6 nhóm đều cần dựng**, 271 nghìn ký tự nguồn (7312 22k · 7408 29k · 7418 27k · 8425 64k · 8449 63k · 8453 66k). Cả 6 đều dưới trần 350k.
+- [x] **B3.** Đọc `tmp/so-tay/nguon/_he-thong.txt` trọn + `lib/so-tay.js` trọn (để biết máy loại mục nào) + in cây `lib/hs-tree.js` cho cả 6 nhóm.
+- [x] **B4.** Đọc HẾT cả 6 tệp nguồn (`ch84.chuong` 21k và `phan84.phan` 22k dùng chung cho 8425/8449/8453, `phan74.phan` dùng chung cho 7408/7418 — đọc 1 lần đủ).
+- [x] **B5.** Soạn `tmp/so-tay/raw/<nhom>.json` — **138 mục**: 7312 15 · 7408 28 · 7418 23 · 8425 28 · 8449 13 · 8453 31.
+- [x] **B6.** Tự kiểm TRƯỚC khi nạp, hai lớp:
+  - **Nguyên văn TUYỆT ĐỐI** (script riêng `tmp/so-tay/strict-nguyen-van.mjs`, KHÔNG squash — bù lỗ hổng `check-so-tay-squash-mat-ky-tu`): lần 1 bắt **2 mục** thuộc 8425 vì câu trích **gán nhầm nguồn** (xem "Máy không bắt được"). Vá xong → **138/138 khớp nguyên văn**.
+  - `check-so-tay.mjs --raw`: **138/138 đạt, 0 mục không kiểm được nguồn**.
+
+## Hai lỗi MÁY KHÔNG BẮT ĐƯỢC (đã tự bắt — người soát nên soi lại)
+
+1. **Gán nhầm nguồn giữa hai nhóm cùng Chương 84.** Câu *"Những máy cán như vậy cũng được phân loại ở đây… loại trừ các máy cán quay… (nhóm 84.51)"* thuộc chú giải **nhóm 8449** (mục (3) "Máy cán làm chắc"), **không** phải 8425. Đã chuyển `loaiTru` + `phanBiet` từ 8425 sang 8449. `check-so-tay` cũng sẽ loại, nhưng nguyên nhân là nhớ nhầm chứ không phải lỗi soạn có chủ đích — script nguyên văn chặn được trước khi tệp bị loại mục âm thầm.
+2. **`phamVi.text` nói nhiều hơn câu trích.**
+   - 8425: tôi viết *"…: hệ ròng rọc và hệ tời…, tời ngang và tời dọc, và các loại kích"* nhưng trích chỉ có *"các thiết bị nâng hoặc xếp hàng đơn giản"*. Đã nới trích sang câu kế (quy tắc Chú giải 84.26 áp dụng cho máy tự hành/máy di động…).
+   - 8449: tôi viết *"kể cả máy làm mũ phớt"* nhưng trích chỉ tới *"các cốt dùng để làm mũ"* (phần "MÁY SẢN XUẤT MŨ PHỚT" nằm ngoài trích). Đã bỏ.
+
+## Nhóm nguồn mỏng / bất thường (đưa vào mô tả PR)
+
+- **7408**: chú giải nhóm chỉ 4 câu — "Chú giải 9(c) Phần XV định nghĩa dây" và "Phần thứ 2 của chú giải nhóm **74.07** được áp dụng" nhưng **bản chú giải 74.07 không được xuất vào nguồn** → không rút được `dieuKienVao` nào từ định nghĩa "dây" của Chương 74.
+- **7418**: chú giải nhóm bắt đầu bằng *"Chú giải Chi tiết nhóm 73.21, 73.23 và 73.24 áp dụng…"* nhưng **bản chú giải 73.23 không được xuất** → nhóm này cũng mỏng; chỉ dựng được `phamVi`/`dieuKienVao` từ câu "dụng cụ làm nóng… bằng đồng".
+- **8449**: nhóm một mã, chỉ một dòng 8 số (`84490000`). `tieuChi6` **bỏ trống** vì `844900` không phải nút 6 số trong cây (`lib/hs-tree.js` suy ra thẳng từ nhóm) → máy sẽ loại mọi mục `tieuChi6` của nhóm này.
+- **`phan84.phan`**: tiêu đề đầu nguồn là *"ĐIỆN; CÁC BỘ PHẬN CỦA CHÚ GIẢI; THIẾT BỊ GHI VÀ TÁI TẠO ÂM THANH…"* nhưng **thân văn bản là Chú giải Phần XVI** (bộ phận, máy đa chức năng, đơn vị máy chức năng, máy di động). Đây là **lỗi kệ sách** ở trường tiêu đề chú giải Phần, không phải lỗi sổ tay; nội dung dùng được. Đề xuất sửa riêng ở `data/chu-giai-chuong.json`/`hanh-muc` ngoài lô này.
+- **`nhom8453.nhom` chép thiếu dấu ngoặc**: mục loại trừ (a) đánh số bằng "(a)", các mục sau lại viết "b)", "(c)"… không quay lại "(b)" — giữ nguyên nguyên văn, chép y hệt trong `loaiTru`/`phanBiet`.
