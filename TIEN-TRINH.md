@@ -67,8 +67,16 @@ Brief dòng 6 kèm **lệnh mẫu** `--nhom=7615,9609,3215,6306,6804,7412` — �
   `npm test` = **ALL TESTS PASSED**, exit 0 (không suite nào fail).
 - [x] **B8.** Commit `63ebf94` (chỉ `data/so-tay/*.json` + `bao-cao/lo-027.json` + dòng CSV + tệp này;
   KHÔNG commit `tmp/`) → push `so-tay/lo-027` → mở **PR #410** (KHÔNG merge).
-  Điền `pr=410` vào CSV dòng 027. CI: `test` + `bench` chạy; `Vercel` đỏ "Deployment was blocked" —
-  lỗi hạ tầng có sẵn, CI thật chỉ có `test` + `bench` (memory `vercel-check-blocked-la-pre-existing`).
+  Điền `pr=410` vào CSV dòng 027.
+- [x] **B9.** CI PR #410 (commit `a4e0a06`): `test` **pass** (2m06s), `bench` **pass** (6m04s),
+  PR `OPEN` + `MERGEABLE`; `Vercel` fail "Deployment was blocked" — lỗi hạ tầng có sẵn, CI thật chỉ có
+  `test` + `bench` (memory `vercel-check-blocked-la-pre-existing`).
+
+## Lỗi của chính phiên này (ghi lại để không lặp)
+
+Bản PR đầu em ghi cỡ lô bằng **số ước lượng** ("8 `dieuKienVao` · 29 `loaiTru` · 46 `tieuChi6` ·
+42 `dong8`") và phải sửa lại sau khi đếm thật (`9 · 30 · 44 · 47`). Số liệu trong PR/TIEN-TRINH phải
+**đếm từ `data/so-tay/*.json` sau khi nạp**, không đoán.
 
 ## Bàn giao cho người duyệt (mục 4)
 
