@@ -1449,3 +1449,18 @@ Brief dòng 6 kèm **lệnh mẫu** `--nhom=7615,9609,3215,6306,6804,7412` — �
 - **8449**: nhóm một mã, chỉ một dòng 8 số (`84490000`). `tieuChi6` **bỏ trống** vì `844900` không phải nút 6 số trong cây (`lib/hs-tree.js` suy ra thẳng từ nhóm) → máy sẽ loại mọi mục `tieuChi6` của nhóm này.
 - **`phan84.phan`**: tiêu đề đầu nguồn là *"ĐIỆN; CÁC BỘ PHẬN CỦA CHÚ GIẢI; THIẾT BỊ GHI VÀ TÁI TẠO ÂM THANH…"* nhưng **thân văn bản là Chú giải Phần XVI** (bộ phận, máy đa chức năng, đơn vị máy chức năng, máy di động). Đây là **lỗi kệ sách** ở trường tiêu đề chú giải Phần, không phải lỗi sổ tay; nội dung dùng được. Đề xuất sửa riêng ở `data/chu-giai-chuong.json`/`hanh-muc` ngoài lô này.
 - **`nhom8453.nhom` chép thiếu dấu ngoặc**: mục loại trừ (a) đánh số bằng "(a)", các mục sau lại viết "b)", "(c)"… không quay lại "(b)" — giữ nguyên nguyên văn, chép y hệt trong `loaiTru`/`phanBiet`.
+
+## Bước 7 — nạp, kiểm, mở PR (23/10/2026)
+
+| lệnh | kết quả |
+|---|---|
+| `node scripts/build-so-tay.mjs --nhom=… --tu-tep=tmp/so-tay/raw --force --nguoi-soan=dev-zcode-mm --bao-cao=data/so-tay/bao-cao/lo-028.json` | **138/138 (100 %)**, `nhomLoi: []`, không nguồn nào bị cắt |
+| `node scripts/check-cay.mjs --nhom=7312,7408,7418,8425,8449,8453 --chi-tiet` | **0 lỗi lệch cây, 6 nhóm đủ** (có cây, đủ dong8, đủ tên nút ảo, đủ tiêu chí 6 số) |
+| `npm run so-tay:check` | **314 nhóm, 9.518 mục, 0 mục không kiểm được nguồn** |
+| `npm test` | **ALL TESTS PASSED** |
+| commit | `28e4554` — chỉ `data/so-tay/*.json` + `bao-cao/lo-028.json` + dòng CSV + TIEN-TRINH (KHÔNG commit `tmp/`) |
+| PR | **#409** `so-tay/lo-028` → `main`, MERGEABLE, **chưa merge** |
+| CI #409 | `test` **pass** (2m23s) · `bench` **pass** (6m10s) · `Vercel` fail — *"Deployment was blocked"*, lỗi hạ tầng có sẵn (memory `vercel-check-blocked-la-pre-existing`), không phải lỗi code |
+
+**KHÔNG merge.** Còn lại cho người duyệt: soát độc lập TOÀN BỘ `phamVi`/`boPhan`/`dieuKienVao`/`loaiTru`/`phanBiet`
+theo hồ sơ `review/<nhom>.json` + script áp 2 pha (xem `apply-review-lo025.mjs`), rồi điền `trang_thai=xong` + cột `pr`.
