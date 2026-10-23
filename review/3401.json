@@ -1,0 +1,58 @@
+{
+ "nhom": "3401",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-23T17:05:00+07:00",
+ "phamViSoat": "Toàn bộ 8 mục của 4 khối trong tmp/so-tay/raw/3401.json (1 phamVi + 0 dieuKienVao + 5 loaiTru + 2 phanBiet), đọc cùng tmp/so-tay/nguon/3401.txt, từng câu đối chiếu [nhom3401.nhom]. Ngoài phạm vi: dong8/tieuChi6 để máy kiểm nguyên văn.",
+ "soat": 8,
+ "daKiem": 8,
+ "sua": 1,
+ "xoa": 2,
+ "ghiChu": "8 mục, giữ 5, sửa 1, xoá 2. Hai lỗi nghiêm trọng cùng một nguyên nhân: mục (c) 'Xà phòng dùng để cạo (các loại kem cạo thuộc nhóm 33.07)' nằm trong danh sách BAO GỒM của mục (1) ('Phần này đặc biệt bao gồm:'), không phải trong danh sách 'Nhóm này không bao gồm:' — nhưng vì nó có DẤU SỐ nhóm trong ngoặc nên soạn đọc thành loại trừ. Đã xoá cả loaiTru[1] và phanBiet[0] (cùng một căn cứ).Máy KHÔNG bắt được lỗi này: check-so-tay chỉ kiểm mã đích có nằm trong câu trích, không kiểm câu đó thuộc phần bao gồm hay phần loại trừ. Loại trừ THẬT của nhóm là danh sách (a)–(f); mục (d) và (e) đã ghi đúng, mục (f) 'Băng dính…' bỏ vì chỉ nêu nhóm theo 'ví dụ' là đúng luật 3.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Bản cũ chỉ trích câu dẫn nhập mục (I) XÀ PHÒNG rồi kết luận phạm vi nhóm 3401 = xà phòng. Nhóm 34.01 có BỐN phần ngang hàng ((I) xà phòng, (II) sản phẩm dùng như xà phòng dạng thỏi/bánh/viên/khuôn ép, (III) chế phẩm làm sạch da dạng lỏng/kem đóng gói bán lẻ, (IV) giấy–mền xơ–nỉ–không dệt thấm tẩm) — đọc 'Phạm vi: xà phòng…' sẽ đẩy sai 3401.11.70/3401.20/3401.30 ra khỏi nhóm. Sửa cả text và trich theo tiền lệ 3407/3506 (nhóm nhiều phần thì phamVi nêu các tiêu đề phần, nối bằng dấu lược).",
+   "sua": {
+    "text": "Xà phòng; sản phẩm và chế phẩm hữu cơ hoạt động bề mặt dùng như xà phòng ở dạng thỏi, bánh, viên hoặc khuôn ép; chế phẩm làm sạch da dạng lỏng hoặc kem, đóng gói để bán lẻ; giấy, mền xơ, nỉ và sản phẩm không dệt thấm tẩm, tráng hoặc phủ xà phòng hay chất tẩy.",
+    "trich": "(I) XÀ PHÒNG … (II) CÁC SẢN PHẨM VÀ CÁC CHẾ PHẨM HỮU CƠ HOẠT ĐỘNG BỀ MẶT DÙNG NHƯ XÀ PHÒNG, Ở DẠNG THỎI, DẠNG BÁNH, DẠNG VIÊN HOẶC DẠNG KHUÔN ÉP, CÓ HOẶC KHÔNG CHỨA XÀ PHÒNG … (III) CÁC SẢN PHẨM VÀ CÁC CHẾ PHẨM HỮU CƠ HOẠT ĐỘNG BỀ MẶT DÙNG ĐỂ LÀM SẠCH DA, Ở DẠNG LỎNG HOẶC DẠNG KEM VÀ ĐƯỢC ĐÓNG GÓI ĐỂ BÁN LẺ, CÓ HAY KHÔNG CHỨA XÀ PHÒNG. … (IV) GIẤY, MỀN XƠ, NỈ VÀ SẢN PHẨM KHÔNG DỆT, ĐÃ THẤM TẨM, TRÁNG HOẶC PHỦ XÀ PHÒNG HOẶC CHẤT TẨY."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (a) trong danh sách 'Nhóm này không bao gồm', nguyên văn 29 ký tự; đích 15.22 nêu trong chính câu."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "xoa",
+   "lyDo": "SAI — câu trích không phải loại trừ. Nguyên văn: câu này nằm trong khối 'Phần này đặc biệt bao gồm: (1) Xà phòng dùng cho vệ sinh…', tức là xà phòng cạo ĐƯỢC xếp vào 3401 (kem cạo gốc xà phòng của nhóm 33.07). Danh sách loại trừ thật của nhóm là (a)–(f) ở cuối, không có mục nào cấm xà phòng cạo. Dấu số 33.07 trong ngoặc là tham chiếu định danh, không phải đích loại trừ."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (f) trong khối bao gồm nhưng kết bằng câu dứt khoát 'sẽ thuộc nhóm 34.05' → loại trừ thật, đích 34.05 có trong câu."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (d) trong danh sách 'Nhóm này không bao gồm', nguyên văn; đích 33.05 và 33.06 ('tương ứng') có trong câu."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (e) trong danh sách 'Nhóm này không bao gồm', nguyên văn 232 ký tự; đủ ba vế và giữ nguyên điều kiện trong ngoặc."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "xoa",
+   "lyDo": "SAI — cùng căn cứ với loaiTru[1]. Câu trích nói xà phòng cạo (kem cạo nhóm 33.07) ĐƯỢC bao gồm trong 3401, nên chiều 'có → 3307' ngược nghĩa nguồn; 'không → 3401' thì đúng nhưng cả cặp đã sai nền."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều theo phần (1)(e): câu đối lập 'chế phẩm tẩy trùng 38.08 ở thể lỏng … trong khi xà phòng tẩy uế luôn luôn ở thể rắn' → có = 38.08, không = xà phòng 3401. Câu trích là mệnh đề tự đủ, không cần ghép với câu trước."
+  }
+ ]
+}

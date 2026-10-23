@@ -1,0 +1,63 @@
+{
+ "nhom": "4415",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-23T17:05:00+07:00",
+ "phamViSoat": "Toàn bộ 9 mục của 4 khối trong tmp/so-tay/raw/4415.json (1 phamVi + 1 dieuKienVao + 4 loaiTru + 3 phanBiet), đọc cùng tmp/so-tay/nguon/4415.txt, từng câu đối chiếu [nhom4415.nhom].",
+ "soat": 9,
+ "daKiem": 9,
+ "sua": 1,
+ "xoa": 1,
+ "ghiChu": "9 mục, giữ 7, sửa 1, xoá 1. Lỗi nghiêm trọng nhất lô nằm ở dieuKienVao[0]: câu nguồn là 'Các mặt hàng thuộc nhóm này CÓ THỂ được làm bằng gỗ thông thường…' — câu CHO PHÉP, luật bước 1 (mục 28) cấm đặt value=true cho câu này, và CAU_CHO_PHEP trong lib/so-tay.js chưa có mẫu 'có thể' nên máy không bắt. Hệ quả nếu giữ: sổ tay in ra 'Điều kiện vào nhóm: duoc_lam_bang_go_thuong… = true', tức bắt buộc hàng phải thuộc đúng danh sách vật liệu đó, trong khi nguồn chỉ nói 'có thể'. Khối loại trừ và phân biệt của nhóm này sạch, không sửa gì.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Bản cũ mô tả VẬT LIỆU chứ không phải PHẠM VI nhóm: 'Các mặt hàng thuộc nhóm này có thể được làm bằng gỗ thông thường…' đúng với mọi nhóm 44, nói riêng nhóm này thì trống — đọc 'Phạm vi:' không biết 44.15 gồm những gì. Nhóm 44.15 có bốn phần ngang hàng: (I) hòm/hộp/thùng thưa/thùng trống/bao bì tương tự, (II) tang cuốn cáp, (III) giá kệ để kê hàng và giá để hàng khác, (IV) kệ tháo lắp linh hoạt. Sửa theo tiền lệ 3407/3506: giữ câu vật liệu ở đầu (nó là câu dẫn thật của nhóm, có kèm trỏ Chú giải 3) rồi nối bốn tiêu đề phần; text vẫn giữ nguyên định ngữ 'có thể'.",
+   "sua": {
+    "text": "Các mặt hàng thuộc nhóm này có thể được làm bằng gỗ thông thường hoặc bằng ván dăm hoặc ván tương tự, ván sợi, gỗ ghép hoặc gỗ được làm tăng độ rắn; nhóm gồm hòm, hộp, thùng thưa, thùng hình trống và bao bị tương tự, tang cuốn cáp, giá kệ để kê hàng và các giá để hàng khác, kệ tháo lắp linh hoạt.",
+    "trich": "Các mặt hàng thuộc nhóm này có thể được làm bằng gỗ thông thường hoặc bằng ván dăm hoặc ván tương tự, ván sợi, gỗ ghép hoặc gỗ được làm tăng độ rắn (xem Chú giải 3 của Chương này). … (I) HÒM, HỘP, THÙNG THƯA, THÙNG HÌNH TRỐNG VÀ CÁC LOẠI BAO BÌ TƯƠNG TỰ … (II) TANG CUỐN CÁP … (III) GIÁ KỆ ĐỂ KÊ HÀNG, GIÁ ĐỂ HÀNG KIỂU THÙNG VÀ CÁC LOẠI GIÁ ĐỂ HÀNG KHÁC … (IV) KỆ CÓ THỂ THÁO LẮP LINH HOẠT (PALLET COLLARS)"
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "SAI — biến câu CHO PHÉP thành điều kiện bắt buộc. Câu trích là 'Các mặt hàng thuộc nhóm này CÓ THỂ được làm bằng gỗ thông thường hoặc bằng ván dăm…': nguồn chỉ nói vật liệu nào ĐƯỢC dùng, không nói mọi hàng của nhóm bắt buộc phải thuộc danh sách đó. Luật bước 1 (mục 28) và CAU_CHO_PHEP trong lib/so-tay.js đều cấm đặt value=true cho câu 'có thể…' (máy chưa có mẫu 'có thể' nên lọt). Ngoài ra fact còn nhồi cả dải liệt kê vào một tên sự kiện, đọc trong prompt sẽ thành một mệnh đề dài khó dùng. Câu này đã được giữ nguyên trong phamVi (nơi nó là mô tả, không phải điều kiện) nên không mất thông tin gì."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (a) trong 'Nhóm này cũng không bao gồm', nguyên văn; đích 42.02 nêu trong chính câu."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b), nguyên văn; đích 44.20 có trong câu."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c), nguyên văn; đích 86.09 có trong câu."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu về hòm/thùng thưa đã qua sử dụng, nguyên văn 208 ký tự, giữ trọn mệnh đề đối lập ('có thể dùng tiếp được … NHƯNG … bị loại trừ'); đích 44.01 có trong câu. Ghi nhận nhỏ: dieuKien gọi 'Hộp, thùng thưa' là 'bao bì gỗ' — chữ 'gỗ' không có trong câu nhưng đúng ngữ cảnh Chương 44 và đây chỉ là cách gọi tắt danh từ, chấp nhận được."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều (có = 44.20), hỏi đúng đối tượng tráp/hộp đựng/mặt hàng tương tự."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều (có = 86.09); hỏi giữ cả hai vế 'thiết kế và trang bị đặc biệt'."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều (có = 44.01); hỏi giữ đúng định ngữ giới hạn 'không thể sử dụng được trừ việc sử dụng như nhiên liệu' chứ không rút thành 'không dùng lại được'."
+  }
+ ]
+}

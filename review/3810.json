@@ -1,0 +1,56 @@
+{
+ "nhom": "3810",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-23T17:05:00+07:00",
+ "phamViSoat": "Toàn bộ 5 mục của 4 khối trong tmp/so-tay/raw/3810.json (1 phamVi + 0 dieuKienVao + 2 loaiTru + 2 phanBiet), đọc cùng tmp/so-tay/nguon/3810.txt, từng câu đối chiếu [nhom3810.nhom].",
+ "soat": 5,
+ "daKiem": 5,
+ "sua": 2,
+ "xoa": 0,
+ "ghiChu": "5 mục, giữ 3, sửa 2, xoá 0. Cả 2 lỗi đều ở khối phạm vi/câu hỏi, không ở khối loại trừ. NGUỒN BỊ THIẾU MỤC (1) (lỗi kệ sách, không sửa được): chú giải nhóm mở đầu bằng đoạn chế phẩm tẩy sạch rồi nhảy thẳng sang '(2) Các chất giúp chảy…'; vì vậy phần tẩy sạch không có tiêu đề đánh số, soạn dùng đoạn dẫn làm 'phần (1)' và phạm vi chỉ còn một phần trong bốn. Lỗi 'lỗi' (thay vì 'lõi') trong nguồn là lỗi in của kệ sách: giữ nguyên trong `trich` (luật 26), nhưng trong `text`/`dieuKien` — vốn là lời ta viết — dùng đúng 'lõi'.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Bản cũ mô tả phạm vi 38.10 bằng đúng một phần trong bốn (chế phẩm tẩy sạch) và bỏ mất ba phần hàn — chất giúp chảy (2), bột và bột nhão (3), chế phẩm làm lõi/vỏ bọc điện cực hàn (4). Nhóm 38.10 phân lớp vào 3810.10 (tẩy sạch + bột hàn) và 3810.90 (chất giúp chảy + lõi/vỏ bọc); đọc 'Phạm vi: các chế phẩm tẩy sạch…' sẽ kéo sai mặt hàng hàn. Sửa theo tiền lệ 3407/3506: text liệt kê các phần, trich nối đoạn dẫn + câu loại trừ liền kề + ba tiêu đề phần. Câu 'Nhóm này không bao gồm các chế phẩm làm sạch kim loại (nhóm 34.02)' nằm NGAY SAU đoạn dẫn nên lấy luôn vào trích cho khỏi lược mất.",
+   "sua": {
+    "text": "Các chế phẩm tẩy sạch; chất giúp chảy và chế phẩm phụ trợ dùng cho hàn thiếc, hàn hơi hoặc hàn điện; bột và bột nhão gồm kim loại và vật liệu khác dùng để hàn; chế phẩm làm lõi hoặc vỏ bọc cho các điện cực hàn, que hàn.",
+    "trich": "Các chế phẩm tẩy sạch thường dựa trên các axit loãng (HCl, H2SO4, HF, HNO3, H3PO4,...), và đôi khi chứa các chất ức chế hạn chế quá trình ăn mòn kim loại. Tuy nhiên, một số chế phẩm dựa trên kiềm (ví dụ, NaOH). Nhóm này không bao gồm các chế phẩm làm sạch kim loại (nhóm 34.02). … (2) Các chất giúp chảy và các chế phẩm phụ khác dùng trong việc hàn thiếc, hàn hơi hoặc hàn điện. … (3) Bột và bột nhão gồm các kim loại và các vật liệu khác dùng để hàn thiếc, hàn hơi hoặc hàn điện. … (4) Các chế phẩm thuộc loại dùng để làm lỗi hoặc vỏ bọc cho các điện cực hàn hoặc que hàn."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nằm ngay sau đoạn dẫn, nguyên văn; đích 34.02 nêu trong chính câu. Đây là loại trừ chống trùng với 3402 (chế phẩm làm sạch kim loại)."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu cuối mục (4), nguyên văn 129 ký tự; đích 83.11 có trong câu. dieuKien giữ đủ cả ba cách xử lý (bọc, phủ, có lõi) và vế 'bằng chất trợ dung (flux)'."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều: 'Nhóm này không bao gồm các chế phẩm làm sạch kim loại (nhóm 34.02)' → có = 34.02, không = 38.10."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "hoi thêm chữ 'hàn' không có trong câu trích: nguồn chỉ viết 'Các điện cực, bằng kim loại cơ bản hoặc bằng cacbua kim loại, được bọc, phủ hoặc có lõi bằng chất trợ dung (flux), bị loại trừ'. Chữ 'hàn' là suy từ đoạn trước (chế phẩm làm lõi/vỏ bọc cho điện cực hàn) — đúng loại 'thêm hiểu biết riêng'. Cùng lý do nên loaiTru[1].dieuKien (đã viết không có 'hàn') là chuẩn; sửa hoi cho khớp.",
+   "sua": {
+    "hoi": "Hàng là các điện cực bằng kim loại cơ bản hoặc bằng cacbua kim loại được bọc, phủ hoặc có lõi bằng chất trợ dung (flux)?"
+   }
+  }
+ ],
+ "thayDoiNgoaiPhamVi": [
+  {
+   "index": "dong8[1]",
+   "hanhDong": "sua",
+   "lyDo": "Ngoài 5 khối soát bắt buộc nhưng là lỗi chữ có tác động thật (dong8.dieuKien đi vào prompt vòng 2). Trich của mục là wco.381090 tiếng Anh — 'preparations used as CORES or coatings' — nhưng dieuKien dịch là 'chế phẩm dùng làm lỗi' (= lỗi chứ không phải lõi), kế thừa luôn lỗi in của bản Việt. Sửa thành 'lõi'; `trich` giữ nguyên tiếng Anh nên không đụng luật 26.",
+   "sua": {
+    "dieuKien": "Chất giúp chảy và các chế phẩm phụ trợ khác dùng trong việc hàn thiếc, hàn hơi hoặc hàn điện; chế phẩm dùng làm lõi hoặc vỏ bọc cho các điện cực hàn hoặc que hàn"
+   }
+  }
+ ]
+}
