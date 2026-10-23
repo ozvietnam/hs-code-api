@@ -1,0 +1,41 @@
+{
+ "nhom": "6304",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-23T21:50:00+07:00",
+ "phamViSoat": "Toàn bộ 4 mục của 4 khối trong tmp/so-tay/raw/6304.json (1 phamVi + 0 dieuKienVao + 3 loaiTru + 0 phanBiet), đọc cùng tmp/so-tay/nguon/6304.txt, từng câu đối chiếu [nhom6304.nhom]. Ngoài phạm vi: tieuChi6/dong8 để máy kiểm nguyên văn.",
+ "soat": 4,
+ "daKiem": 4,
+ "sua": 2,
+ "xoa": 1,
+ "ghiChu": "4 mục, giữ 1, sửa 2, xoá 1. Hai lỗi NGHĨA, một lỗi ký tự. (1) LỖI NGHIÊM TRỌNG — loaiTru[1] lấy từ câu THUỘC KHỐI 'Các sản phẩm này bao gồm…': nguyên văn là 'khăn trải giường (nhưng không bao gồm vỏ bọc; giường thuộc nhóm 94.04)'. Cụm 'không bao gồm' ở đây CHỈ giới hạn 'vỏ bọc', còn 'giường thuộc nhóm 94.04' là câu khẳng định riêng về giường (nệm), không phải đích loại trừ. Người soạn gộp hai chủ thể lại thành 'Vỏ bọc, giường → 9404' — vừa đổi chủ thể vừa biến câu bao gồm thành loại trừ. Máy KHÔNG bắt được: check-so-tay chỉ kiểm mã đích có nằm trong câu trích, không kiểm câu đó thuộc phần bao gồm hay phần loại trừ. Đây đúng là kiểu lỗi đã ghi thành luật ở lô 030 (3401: mục đánh số nằm trong khối 'đặc biệt bao gồm' bị đọc thành loại trừ). Loại trừ thật của nhóm 6304 chỉ có một: chụp đèn → 94.05. (2) loaiTru[2] đúng là loại trừ (nguồn viết rõ 'trừ các sản phẩm thuộc nhóm 63.03') nhưng dieuKien chỉ ghi 'Diềm', bỏ mất định ngữ giới hạn — đọc thành MỌI rèm đều sang 63.03, trong khi nguồn chỉ loại phần rèm thuộc 63.03. Đã sửa thành 'diềm thuộc nhóm 63.03'. (3) loaiTru[0] chỉ cắt trích trước dấu ')'.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn, nêu đúng phạm vi nhóm (sản phẩm dệt trang bị trong nhà, trừ nhóm trước đó và 94.04). Đoạn dừng ở 'nhà thờ' rồi nguồn có ',...' — dấu lược của chính nguồn, không phải cắt cụt."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: bản cũ cắt trước dấu ')'. Đây là loại trừ DUY NHẤT của nhóm 6304, nằm ở câu 'Nhóm này không bao gồm chụp đèn (nhóm 94.05).', đích 94.05 nêu đích danh.",
+   "sua": {
+    "trich": "Nhóm này không bao gồm chụp đèn (nhóm 94.05)."
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "Loại trừ đúng (nguồn viết 'diềm (trừ các sản phẩm thuộc nhóm 63.03)') nhưng hai chỗ thiếu. (1) dieuKien 'Diềm' mất định ngữ giới hạn — phải giữ 'thuộc nhóm 63.03', nếu không mục này nói rằng MỌI rèm đều sang 63.03. (2) trich cắt trước dấu ')' và bỏ dấu chấm.",
+   "sua": {
+    "dieuKien": "diềm thuộc nhóm 63.03",
+    "trich": "diềm (trừ các sản phẩm thuộc nhóm 63.03)."
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "xoa",
+   "lyDo": "SAI — câu trích không phải loại trừ. Nguyên văn: 'khăn trải giường (nhưng không bao gồm vỏ bọc; giường thuộc nhóm 94.04)' nằm trong câu BAO GỒM của nhóm 6304 ('Các sản phẩm này bao gồm màn phủ tường và các sản phẩm dệt dùng cho các nghi thức…; vỏ nệm, vỏ bọc mềm dùng để phủ, che đồ đạc, áo ghế; tấm phủ bàn…'). Cụm 'không bao gồm' chỉ loại 'vỏ bọc' (vỏ bọc chăn), còn 'giường thuộc nhóm 94.04' là câu khẳng định độc lập về giường/nệm. Mục đang ghi gộp hai chủ thể thành 'Vỏ bọc, giường → 94.04': vừa đổi chủ thể, vừa biến câu bao gồm thành loại trừ. Ngoài ra nguồn không nói vỏ bọc sang nhóm nào, nên không cứu được bằng cách đổi đích."
+  }
+ ]
+}
