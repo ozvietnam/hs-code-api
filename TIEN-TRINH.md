@@ -2605,3 +2605,16 @@ Vì vậy em viết thêm kiểm bất biến: **mọi dòng 8 số `nguon=tax.*
 - **PR #421**: https://github.com/ozvietnam/hs-code-api/pull/421 — **KHÔNG merge**, chờ bước soát
   độc lập. Cột `pr` của dòng 032 trong `so-tay-lo.csv` đã điền `#421`; `trang_thai` để `dang-lam`
   (người duyệt mới đổi `xong`).
+
+### CI của PR #421
+
+```
+test    pass  2m32s
+bench   pass  11m53s
+Vercel  fail  — "Deployment rate limited — retry in 24 hours"
+```
+
+**Vercel đỏ là lỗi có sẵn, không phải lỗi code** — đối chiếu các PR gần đây cùng đỏ:
+`#409` (lô 028) và `#415` đều "Deployment rate limited", `#410` là "Deployment was blocked".
+Repo đã **gỡ Vercel** (CEO chốt 09/10/2026, deploy qua Coolify); CI thật của repo chỉ có
+`test` + `bench`, hai cái này **xanh**.
