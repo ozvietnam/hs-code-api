@@ -1,0 +1,128 @@
+{
+ "nhom": "8210",
+ "phamVi": {
+  "text": "Nhóm này bao gồm các cộng cụ cơ khí không dùng điện, nói chung là đồ dùng cầm tay nặng không quá 10 kg dùng để chế biến, pha chế hoặc phục vụ việc làm đồ ăn hoặc đồ uống.",
+  "nguon": "nhom8210.nhom",
+  "trich": "Nhóm này bao gồm các cộng cụ cơ khí không dùng điện, nói chung là đồ dùng cầm tay nặng không quá 10 kg dùng để chế biến, pha chế hoặc phục vụ việc làm đồ ăn hoặc đồ uống.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "khoi_luong",
+   "op": "<=",
+   "value": 10,
+   "donVi": "kg",
+   "nguon": "nhom8210.nhom",
+   "trich": "Vì vậy, nhóm này bao gồm các công cụ có thể rơi vào nhóm 82.05 hoặc chương 84 nhưng thực tế chúng chỉ đáp ứng những điều kiện sau: (1) Nặng 10 kg trở xuống.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "co_dac_tinh_co_khi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom8210.nhom",
+   "trich": "(2) Có các đặc tính cơ khí như đã mô tả.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Dụng cụ mở đồ hộp đơn giản",
+   "sangNhom": "8205",
+   "nguon": "nhom8210.nhom",
+   "trich": "các dụng cụ mở cơ khí (trừ dụng cụ mở đồ hộp đơn giản thuộc nhóm 82.05)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Dụng cụ, kéo và các bộ dụng cụ cắt khác thuộc loại được sử dụng như các thiết bị hoặc dụng cụ dùng cho ngành y, nha khoa, phẫu thuật hoặc thú y",
+   "sangNhom": "9018",
+   "nguon": "ch82.chuong",
+   "trich": "(a) Các dụng cụ, kéo và các bộ dụng cụ cắt khác thuộc loại được sử dụng như các thiết bị hoặc dụng cụ dùng cho ngành y, nha khoa, phẫu thuật hoặc thú y (nhóm 90.18).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là dụng cụ mở đồ hộp đơn giản?",
+   "neuCo": "8205",
+   "neuKhong": "8210",
+   "nguon": "nhom8210.nhom",
+   "trich": "các dụng cụ mở cơ khí (trừ dụng cụ mở đồ hộp đơn giản thuộc nhóm 82.05)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là dụng cụ, kéo hoặc bộ dụng cụ cắt khác dùng cho ngành y, nha khoa, phẫu thuật hoặc thú y?",
+   "neuCo": "9018",
+   "neuKhong": "8210",
+   "nguon": "ch82.chuong",
+   "trich": "(a) Các dụng cụ, kéo và các bộ dụng cụ cắt khác thuộc loại được sử dụng như các thiết bị hoặc dụng cụ dùng cho ngành y, nha khoa, phẫu thuật hoặc thú y (nhóm 90.18).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "82100000",
+   "dieuKien": "Đồ dùng cơ khí hoạt động bằng tay, nặng 10 kg trở xuống, dùng để chế biến, pha chế hoặc phục vụ đồ ăn hoặc đồ uống",
+   "tieuChi": {
+    "fact": "khoi_luong",
+    "op": "<=",
+    "value": 10,
+    "donVi": "kg"
+   },
+   "nguon": "tax.82100000",
+   "trich": "82100000 Đồ dùng cơ khí hoạt động bằng tay, nặng 10 kg trở xuống, dùng để chế biến, pha chế hoặc phục vụ đồ ăn hoặc đồ uống",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  }
+ ],
+ "boPhan": {
+  "quyTac": "Các bộ phận bằng kim loại cơ bản của các sản phẩm thuộc Chương này được phân loại theo các sản phẩm đó, trừ các bộ phận được chi tiết riêng và tay cầm cho các loại dụng cụ cầm tay (nhóm 84.66); các bộ phận có công dụng chung nêu trong Chú giải 2 Phần XV được loại trừ khỏi Chương này trong mọi trường hợp.",
+  "tomTat": "Tay cầm của dụng cụ cầm tay không theo sản phẩm mà thuộc nhóm 84.66.",
+  "nguon": "ch82.chuong",
+  "trich": "2 - Các bộ phận bằng kim loại cơ bản của các sản phẩm thuộc Chương này được phân loại theo các sản phẩm đó, trừ các bộ phận được chi tiết riêng và tay cầm cho các loại dụng cụ cầm tay (nhóm 84.66). Tuy nhiên, các bộ phận có công dụng chung nêu trong Chú giải 2 Phần XV được loại trừ khỏi Chương này trong mọi trường hợp.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8210",
+    "cap": 4,
+    "cha": "82",
+    "tenVi": "Đồ dùng cơ khí hoạt động bằng tay, nặng 10 kg trở xuống, dùng để chế biến, pha chế hoặc phục vụ đồ ăn hoặc đồ uống.",
+    "tenEn": "Tools; hand-operated mechanical appliances, weighing 10kg or less, used in the preparation, conditioning or serving of food or drink",
+    "suyRa": false
+   },
+   {
+    "id": "82100000",
+    "cap": 8,
+    "cha": "8210",
+    "tenVi": "Đồ dùng cơ khí hoạt động bằng tay, nặng 10 kg trở xuống, dùng để chế biến, pha chế hoặc phục vụ đồ ăn hoặc đồ uống",
+    "tenEn": "Tools; hand-operated mechanical appliances, weighing 10kg or less, used in the preparation, conditioning or serving of food or drink",
+    "suyRa": false
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch82.chuong",
+  "nhom8210.nhom",
+  "tax.82100000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-23T11:12:08.946Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
