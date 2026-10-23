@@ -1,0 +1,200 @@
+{
+ "nhom": "4006",
+ "phamVi": {
+  "text": "Cao su chưa lưu hoá ở các dạng chưa được chi tiết trong các nhóm trước của Chương này, và các mặt hàng bằng cao su chưa được lưu hoá, đã hoặc chưa được pha trộn.",
+  "nguon": "nhom4006.nhom",
+  "trich": "Nhóm này bao gồm cao su chưa lưu hoá ở các dạng chưa được chi tiết trong các nhóm trước của Chương này và các mặt hàng bằng cao su chưa được lưu hoá, đã hoặc chưa được pha trộn.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_cao_su_chua_luu_hoa",
+   "op": "=",
+   "value": true,
+   "nguon": "nhom4006.nhom",
+   "trich": "Nhóm này bao gồm cao su chưa lưu hoá ở các dạng chưa được chi tiết trong các nhóm trước của Chương này",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Đĩa và vòng đệm bằng cao su chưa lưu hoá, cùng với các miếng đệm và các vật nối tương tự bằng vật liệu khác, được đóng gói vào túi nhỏ, phong bì hoặc các đồ bao gói tương tự",
+   "sangNhom": "8484",
+   "nguon": "nhom4006.nhom",
+   "trich": "(b) Đĩa và vòng đệm bằng cao su chưa lưu hoá, cùng với các miếng đệm và các vật nối tương tự bằng vật liệu khác, được đóng gói vào túi nhỏ, phong bì hoặc các đồ bao gói tương tự (nhóm 84.84).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là đĩa và vòng đệm bằng cao su chưa lưu hoá (cùng miếng đệm và vật nối tương tự bằng vật liệu khác) được đóng gói vào túi nhỏ, phong bì hoặc đồ bao gói tương tự?",
+   "neuCo": "8484",
+   "neuKhong": "4006",
+   "nguon": "nhom4006.nhom",
+   "trich": "(b) Đĩa và vòng đệm bằng cao su chưa lưu hoá, cùng với các miếng đệm và các vật nối tương tự bằng vật liệu khác, được đóng gói vào túi nhỏ, phong bì hoặc các đồ bao gói tương tự (nhóm 84.84).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "400610",
+   "fact": "la_dai_camel_back_dung_de_dap_lai_lop_cao_su",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.400610",
+   "trich": "400610 Rubber; unvulcanised, camel-back strips for retreading rubber tyres",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "400690",
+   "fact": "la_dai_camel_back_dung_de_dap_lai_lop_cao_su",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "nguon": "wco.400690",
+   "trich": "400690 Rubber; unvulcanised, other than camel back strips for retreading rubber tyres",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "40061000",
+   "dieuKien": "Dải \"camel-back\" dùng để đắp lại lốp cao su",
+   "nguon": "tax.40061000",
+   "trich": "40061000 - Dải \"camel-back\" dùng để đắp lại lốp cao su",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40069011",
+   "dieuKien": "Các sản phẩm của nhựa tự nhiên (tiêu đề 4006901); dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "nguon": "tax.40069011",
+   "trich": "40069011 - - - Các sản phẩm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "40069019",
+   "dieuKien": "Loại khác, của nhựa tự nhiên (tiêu đề 4006901); dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "nguon": "tax.40069019",
+   "trich": "40069019 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "4006901",
+    "truAnhEm": [
+     "40069011"
+    ],
+    "toTienCoTen": "400690",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "40069090",
+   "dieuKien": "Loại khác, thuộc phân nhóm 400690 (cao su chưa lưu hoá khác dải camel-back); dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "nguon": "tax.40069090",
+   "trich": "40069090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "400690",
+    "truAnhEm": [
+     "4006901"
+    ],
+    "toTienCoTen": "400690",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "4006",
+    "cap": 4,
+    "cha": "40",
+    "tenVi": "Các dạng khác (ví dụ, thanh, ống và dạng hình) và các sản phẩm khác (ví dụ, đĩa và vòng), bằng cao su chưa lưu hóa.",
+    "tenEn": "Unvulcanised rubber in other forms (e.g. rods, tubes and profile shapes) and articles (e.g. discs and rings)",
+    "suyRa": false
+   },
+   {
+    "id": "40061000",
+    "cap": 8,
+    "cha": "4006",
+    "tenVi": "Dải \"camel-back\" dùng để đắp lại lốp cao su",
+    "tenEn": "Rubber; unvulcanised, camel-back strips for retreading rubber tyres",
+    "suyRa": false,
+    "laPhanNhom": "400610"
+   },
+   {
+    "id": "400690",
+    "cap": 6,
+    "cha": "4006",
+    "tenVi": "Loại khác",
+    "tenEn": "Rubber; unvulcanised, other than camel back strips for retreading rubber tyres",
+    "suyRa": false
+   },
+   {
+    "id": "4006901",
+    "cap": "TIEU_DE_QG",
+    "cha": "400690",
+    "tenVi": "Của nhựa tự nhiên",
+    "tenEn": "Of natural gums",
+    "suyRa": true
+   },
+   {
+    "id": "40069011",
+    "cap": 8,
+    "cha": "4006901",
+    "tenVi": "Các sản phẩm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "40069019",
+    "cap": 8,
+    "cha": "4006901",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "40069090",
+    "cap": 8,
+    "cha": "400690",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom4006.nhom",
+  "tax.40061000",
+  "tax.40069011",
+  "tax.40069019",
+  "tax.40069090",
+  "wco.400610",
+  "wco.400690"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-23T10:00:27.261Z",
+  "ms": 96
+ },
+ "kiemTra": {
+  "tong": 10,
+  "dat": 10,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

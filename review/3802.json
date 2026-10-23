@@ -1,0 +1,72 @@
+{
+ "nhom": "3802",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-23T17:05:00+07:00",
+ "phamViSoat": "Toàn bộ 11 mục của 4 khối trong tmp/so-tay/raw/3802.json (1 phamVi + 1 dieuKienVao + 6 loaiTru + 3 phanBiet), đọc cùng tmp/so-tay/nguon/3802.txt, từng câu đối chiếu [nhom3802.nhom] và (mục (f)) [ch38.chuong].",
+ "soat": 11,
+ "daKiem": 11,
+ "sua": 1,
+ "xoa": 1,
+ "ghiChu": "11 mục, giữ 9, sửa 1, xoá 1. Điểm chính: `dieuKienVao[0]` đặt điều kiện BẮT BUỘC 'đã xử lý thay đổi cấu trúc bề mặt = true' cho cả nhóm 38.02, trong khi câu trích chỉ định nghĩa 'hoạt tính' cho vật liệu của phần (A) ('Carbon và các khoáng chất'), còn nhóm còn có phần (B) MUỘI ĐỘNG VẬT, KẺ CẢ TÀN MUỘI ĐỘNG VẬT — tiêu đề nhóm không có chữ 'hoạt tính'. Muội máu/muội xương/muội ngà/muội da thuộc xếp ở 3802.90 mà không hề có bước 'hoạt hóa bề mặt'. Máy đọc dieuKienVao theo kiểu AND (so-tay-gates.js:135 in thành 'Điều kiện vào nhóm: … = true') nên hàng muội động vật sẽ bị dắt ra khỏi nhóm — đúng lý do người soạn đã tự để rỗng ở 3401 và 3810, nhưng quên áp cho 3802. Đây là bài học kệ sách: CÙNG một kiểu chú giải chia nhóm nhiều phần thì phải xử lý dieuKienVao giống nhau, không chọn nhóm nào tuỳ.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "text nói nhiều hơn trich: 'cùng muội động vật và tàn muội động vật' không có trong câu trích. Câu trích chỉ đưa định nghĩa phần (A); nhóm 38.02 còn có phần (B). Sửa bằng cách NỐI thêm tiêu đề phần (B) vào trich (không cắt bớt text), đúng bài 'text nói nhiều hơn trich'.",
+   "sua": {
+    "trich": "Carbon và các khoáng chất được xem là hoạt tính khi cấu trúc bề mặt của chúng đã được sửa đổi bởi quá trình xử lý thích hợp (với nhiệt, hóa chất,...) nhằm làm cho chúng phù hợp với các mục đích nhất định, nhu khử màu, hấp thụ khí hoặc độ ẩm, xúc tác, trao đổi ion hoặc lọc. … (B) MUỘI ĐỘNG VẬT, KẺ CẢ TÀN MUỘI ĐỘNG VẬT"
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "SAI tầng — câu trích chỉ định nghĩa 'hoạt tính' cho phần (A) ('Carbon và các khoáng chất'), không phải điều kiện vào cả nhóm 38.02. Nhóm còn phần (B) muội động vật (tiêu đề nhóm trong bảng Tổng cục không có chữ 'hoạt tính'); muội máu, muội xương, muội ngà, muội da thuộc thu được bằng carbon hóa chứ không có bước xử lý thay đổi cấu trúc bề mặt. value=true sẽ loại nhầm chính các mục đó (3802.90). Không có câu nào trong nguồn phủ CẢ nhóm mà vẫn không loại hàng hợp lệ → để rỗng, đúng như 3401 và 3810."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nằm trong mục (1) diatomite, giữ nguyên chữ 'Tuy nhiên' mở đầu (luật 31) và kết 'bị loại trừ'; đích 25.12 trong câu."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b) trong 'Nhóm này cũng không bao gồm', nguyên văn 268 ký tự; đủ bốn nhóm đích (28.18, 28.11, 38.24, 28.42) đều có trong câu, kể cả vế 'hoặc, nếu chứa chất kết dính'."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c), nguyên văn; đích 30.03, 30.04, 33.07 đều có trong câu."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (d), nguyên văn; đích 38.15 có trong câu."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (e), nguyên văn; đích 68.06 có trong câu."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (f) lấy đúng từ [ch38.chuong] (Chú giải 1(f) của Chương 38), nguyên văn; đích 26.20 và 71.12 có trong câu. Không gộp với các mục (a)–(e) của nhóm vì khác nguồn và khác điều kiện."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều: vế 'diatomite được nung không có tác nhân thiêu kết thì bị loại trừ' → có = 25.12, không = 38.02. Giữ cả mệnh đề đối lập 'Tuy nhiên' trong câu trích."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều: hỏi về chất xúc tác gắn trên nền vật liệu hoạt tính → có = 38.15. Câu trích nêu đích và giữ ví dụ trong ngoặc."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều và đúng đối tượng: đá trân châu trương nở dạng hạt cầu nhẹ → 68.06, nêu trong câu."
+  }
+ ]
+}
