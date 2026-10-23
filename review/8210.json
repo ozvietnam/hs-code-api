@@ -1,0 +1,64 @@
+{
+  "nhom": "8210",
+  "nguoiSoat": "NGUOI_DUYET",
+  "soatVaiTro": "soat-doc-lap",
+  "luc": "2026-10-23T22:40:00+07:00",
+  "phamViSoat": "Toàn bộ 8 mục của 5 khối trong tmp/so-tay/raw/8210.json (1 phamVi + 2 dieuKienVao + 2 loaiTru + 2 phanBiet + 1 boPhan), đọc cùng tmp/so-tay/nguon/8210.txt; ngoài ra soi 1 dong8 + 0 tieuChi6 + 0 cay.",
+  "soat": 8,
+  "daKiem": 8,
+  "sua": 1,
+  "xoa": 0,
+  "ghiChu": "Nhóm DUY NHẤT của lô có dieuKienVao thật, và là đúng: câu nguồn \"Vì vậy, nhóm này bao gồm các công cụ có thể rơi vào nhóm 82.05 hoặc chương 84 nhưng thực tế chúng chỉ đáp ứng những điều kiện sau\" là câu RÀNG BUỘC phủ cả nhóm 82.10 (khác câu định nghĩa), nên (1) nặng ≤ 10 kg và (2) có đặc tính cơ khí đều đặt value=true là chính đáng. Hai loại trừ và hai câu hỏi phân biệt đều đúng chiều, không đảo nhánh. Lỗi duy nhất là kỹ thuật ở dieuKienVao[0] (xem thayDoi). Ghi nhận, KHÔNG sửa: dieuKienVao[1] trích \"(2) Có các đặc tính cơ khí như đã mô tả\" — phần \"như đã mô tả\" trỏ về đoạn trước có CẢ vế phủ định \"một đòn bẩy đơn giản … tự nó không được coi như một đặc tính cơ khí liên quan đến việc phân loại trong nhóm này\"; mục vẫn đúng nghĩa (bool \"có đặc tính cơ khí\") nhưng không mang theo định nghĩa. Ghép cả đoạn định nghĩa vào sẽ vượt trần 600 ký tự máy, nên ghi ở đây thay vì sửa.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Nguyên văn câu đầu chú giải nhóm; nêu đúng phạm vi (cộng cụ cơ khí không dùng điện, cầm tay, ≤ 10 kg, dùng để chế biến/pha chế/phục vụ đồ ăn uống). Giữ nguyên định ngữ \"nói chung là\" của nguồn — không ép thành điều kiện tuyệt đối."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích cũ ghép HAI đoạn khác nhau bằng MỘT dấu cách nên không có trong nguồn nguyên văn:\nnguồn [nhom8210.nhom] có \"…những điều kiện sau:\\n\\n(1) Nặng 10 kg trở xuống.\" (hai đoạn văn, ngăn bởi dòng trống).\ncheck-so-tay KHÔNG bắt vì nó so qua squash() (xoá mọi ký tự không phải chữ/số, nên xoá luôn dấu xuống dòng);\nscripts/check-trich-nguyen-van.mjs (so byte-exact) bắt: \"không nguyên văn\". Trích cũ còn tạo cảm giác sai rằng\n\"(1) Nặng 10 kg trở xuống\" nằm ngay trong câu, trong khi nó là MỤC (1) của danh sách điều kiện (mục (2) nằm sau nó).\nSửa: chép đúng hai mảnh, nối bằng dấu lược \" … \" đúng quy ước lược đồ. Nội dung điều kiện (fact/op/value) không đổi —\nngưỡng \"10 kg\" vẫn nằm trong câu nên check-so-tay vẫn xanh.",
+      "sua": {
+        "trich": "Vì vậy, nhóm này bao gồm các công cụ có thể rơi vào nhóm 82.05 hoặc chương 84 nhưng thực tế chúng chỉ đáp ứng những điều kiện sau: … (1) Nặng 10 kg trở xuống."
+      }
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu ràng buộc \"(2) Có các đặc tính cơ khí như đã mô tả\", nguyên văn; đây là điều kiện thứ hai trong danh sách mà câu trên dẫn vào, phủ cả nhóm. Không phải câu CHO PHÉP."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Nằm trong danh sách VÍ DỤ của nhóm nhưng bản thân là loại trừ dứt khoát: \"các dụng cụ mở cơ khí (trừ dụng cụ mở đồ hộp đơn giản thuộc nhóm 82.05)\" → đích 82.05 nêu nguyên văn trong chính câu; không có \"thường/tùy trường hợp\". Trích bắt đầu giữa câu (\"các dụng cụ mở cơ khí\") nhưng là mảnh nguyên văn liên tiếp, và dieuKien chỉ dùng đúng phần \"trừ …\" nên không mất nghĩa."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Loại trừ cấp CHƯƠNG: \"*** Chương này không bao gồm: (a) … (nhóm 90.18)\". Áp cho mọi nhóm trong Chương 82 — đúng phạm vi. Đích 90.18 nêu trong câu; hoi không nhắc mã."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Đúng chiều: có = 82.05 (dụng cụ mở đồ hộp đơn giản), không = 8210 (ở lại nhóm). Đích có nêu nguyên văn trong câu; neuKhong = chính nhóm là quy ước đã duyệt ở 196/321 nhóm."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Đúng chiều: có = 90.18, không = 8210. Hỏi về đặc tính (dụng cụ y tế) chứ không nhắc mã."
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "Trích 320 ký tự gồm ĐÚNG hai câu liền nhau của Chú giải 2 Chương 82 (không lược nên không nuốt gì); quyTac và tomTat (\"Tay cầm … thuộc nhóm 84.66\") chỉ nói đúng những gì trích nói. Dài hơn mốc mềm 300 nhưng dưới trần 600. Ghi nhận, không sửa: câu thứ ba của cùng Chú giải 2 (đầu/lưỡi dao máy cạo râu → 85.10) không có trong trích, nhưng không phải ngoại lệ của luật đã nêu và không liên quan dụng cụ 82.10."
+    }
+  ],
+  "ngoaiPhamViDaSoat": [
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 8 số duy nhất của nhóm (82100000), lấy nguyên văn từ tax; tieuChi khoi_luong ≤ 10 kg có số \"10 kg\" trong chính câu trích nên đạt luật số."
+    }
+  ]
+}
