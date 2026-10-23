@@ -1653,3 +1653,13 @@ Còn lại 5 `loaiTru` của 3401 vẫn đủ (1522 · 3307 · 3405 · 3305|3306
 Phiên quản lý phải giao **soát độc lập** (mục 4) cho 6 nhóm này — TOÀN BỘ `phamVi`/`boPhan`/`dieuKienVao`/
 `loaiTru`/`phanBiet`, không lấy mẫu. Sau khi soát mới gộp, điền `trang_thai=xong` + cột `pr` trong
 `so-tay-lo.csv`. `dong8[].tieuChi`/`tieuChi6`/`cay` đã xong, không cần nạp lại khi soát.
+
+### B8 (bổ sung) — PR #412 và CI
+
+- Commit `6103cba` → push nhánh `so-tay/lo-030` → **PR #412** (`https://github.com/ozvietnam/hs-code-api/pull/412`),
+  trạng thái **OPEN**, **MERGEABLE**, **KHÔNG merge** (mục 4: chờ soát độc lập).
+- CI PR #412: `test` **pass** (2m23s) · `bench` **pass** (11m10s) · `Vercel` **fail** vì
+  *"Deployment rate limited — retry in 24 hours"* — lỗi hạ tầng tài khoản Vercel, **có sẵn từ các PR trước** và dự án
+  đã **gỡ Vercel** (CEO chốt 09/10/2026), không phải lỗi code.
+- `docs/giao-viec/so-tay-lo.csv` dòng 030 → `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm` (**chưa** đổi `xong` —
+  chờ người duyệt điền sau khi soát).
