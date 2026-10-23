@@ -88,6 +88,9 @@ Hồ sơ soát: `review/6303.json`, `6504`, `6702`, `6914`, `7018`, `7304` — m
 - `check-cay --nhom=… --chi-tiet` → **0 lỗi lệch cây, 6/6 nhóm đủ**.
 - `npm run so-tay:check` → **314 nhóm, 9.536 mục, 0 lỗi** (trước 9.537 — đúng bằng 1 mục bị xoá).
 - `npm test` → **ALL TESTS PASSED**, exit 0.
+- CI PR #410 sau commit `801086e`: `test` **pass** (1m37s), `bench` **pass** (8m59s). `Vercel` fail
+  *"Deployment rate limited — retry in 24 hours"* — hạ tầng có sẵn, CI thật chỉ có `test` + `bench`
+  (memory `vercel-check-blocked-la-pre-existing`). PR **OPEN + MERGEABLE**, **KHÔNG merge**.
 
 ## `nguonLoai`
 
