@@ -2598,3 +2598,10 @@ Vì vậy em viết thêm kiểm bất biến: **mọi dòng 8 số `nguon=tax.*
 - `nguonLoai`: **202/202 mục `AI_DA_KIEM`** (không tự ghi `NGUOI_DUYET` — luật 11), `cay` = `MAY_SUY`.
 - 16 câu trích dài **301–427 ký tự** (máy cho tới 600): chủ yếu mô tả SEN nguyên văn + danh sách 7
   loại thảm của 5702. Đều là **câu trọn vẹn, không lược dấu "…"** — cắt bớt sẽ sinh điều kiện sai.
+
+### Nộp
+
+- `git commit` → `acdd0a7`, push nhánh `so-tay/lo-032`.
+- **PR #421**: https://github.com/ozvietnam/hs-code-api/pull/421 — **KHÔNG merge**, chờ bước soát
+  độc lập. Cột `pr` của dòng 032 trong `so-tay-lo.csv` đã điền `#421`; `trang_thai` để `dang-lam`
+  (người duyệt mới đổi `xong`).
