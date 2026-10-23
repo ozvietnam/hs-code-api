@@ -61,6 +61,29 @@ CEO chốt 29/09/2026: bỏ Vercel, chạy trên Coolify của server nhà. GitH
    `server.js` đọc `routes.json`, bỏ script Vercel Blob và `VERCEL_SHARE`, sửa CLAUDE.md/README.
    Còn lại là việc trên dashboard Vercel: xoá project (cần chủ tài khoản bấm xác nhận).
 
+## 4b. Xả lượt khi deploy — không giết `/api/classify` đang chạy (#418, 23/10/2026)
+
+`/api/classify` mất 2–5 phút/món. Mỗi commit vào `main` làm thay container; nếu container cũ bị `docker stop`
+với mặc định 10 giây thì mọi lượt đang chạy dở chết (khách thấy "không kết nối được", Cổng hoàn điểm, ERP thử lại tốn tiền).
+
+**Phía mã (đã có từ #418):**
+- `server.js` đếm lượt đang chạy (`lib/inflight.js`). Nhận `SIGTERM`/`SIGINT` → **dừng nhận lượt mới** (`server.close`),
+  `GET /api/health` trả **503 `status: draining`** để healthcheck/LB ngừng đưa lượt mới, rồi **chờ lượt đang chạy xong**
+  tối đa `HS_DRAIN_MS` (mặc định 330 000 ms = trần request 300 s + dư) mới `exit 0`. Log ghi "chờ N lượt" và "đã xả hết sau X ms".
+- `GET /api/health` → `checks.engine.inflight` (số lượt đang chạy) + `checks.engine.draining`.
+
+**Phía máy chủ (.120) — phải làm, mã trong repo không tự làm được:**
+1. `deploy-safe.sh`: dừng container cũ bằng **`docker stop -t 360 hs-code-api`** (Coolify: *Stop timeout* / `stop_grace_period: 360s`).
+   Mặc định 10 s thì server chỉ kịp xả 10 s rồi bị `SIGKILL`.
+2. **Bỏ dòng `cp -f "$DEPLOY"/server.js`** trong `deploy-safe.sh` (xem cảnh báo mục biến môi trường ở dưới): lớp bọc đè
+   `server.js` của repo thì cơ chế xả ở trên **không chạy trên prod**.
+3. Thứ tự khuyến nghị: kéo image mới → `docker run` container mới ở cổng tạm, chờ `/api/health` 200 → đổi cổng/route →
+   `docker stop -t 360` container cũ. Chưa làm được blue-green thì ít nhất giữ bước 1–2.
+4. Tuỳ chọn giảm số lần thay container: commit **chỉ dữ liệu** (`data/so-tay`, `plhq-sync`, `docs/`) gom deploy theo khung giờ
+   (vd mỗi giờ hoặc ban đêm) thay vì mỗi commit — 22–23/10 có ≥ 15 commit/17 giờ.
+
+Nghiệm thu: bắt đầu một lượt classify, gộp một commit nhỏ vào `main` giữa chừng → lượt vẫn xong; `docker logs` có dòng "chờ N lượt".
+
 ## 5. Lưu ý
 
 - `coolify-host` là VM trên node `pve` (192.168.1.100). Quy tắc hạ tầng: node cũ chỉ

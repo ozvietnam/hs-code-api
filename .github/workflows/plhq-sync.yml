@@ -41,6 +41,8 @@ jobs:
       - name: Toàn bộ test
         if: steps.sync.outputs.changed == 'true' || steps.sync.outputs.touched == 'true'
         run: npm ci --no-audit --no-fund && npm test   # devDependency xlsx cho test biểu thuế
+        env:
+          ONNXRUNTIME_NODE_INSTALL: skip   # không tải gói CUDA từ nuget (timeout thất thường) — xem test-all.yml
       - name: Commit / mở PR
         if: steps.sync.outputs.changed == 'true' || steps.sync.outputs.touched == 'true'
         env:
