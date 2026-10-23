@@ -1,3 +1,4 @@
+const inflight = require('../lib/inflight');
 const { taxData } = require('../lib/data');
 const { isApiTokenConfigured } = require('../lib/auth');
 const { ozGoldStats } = require('../lib/oz-precedent-search');
@@ -21,11 +22,13 @@ module.exports = function handler(req, res) {
   // tra thuế (taxData) + auth (apiToken) + AI suggest/describe (llm).
   const healthy = rows > 0 && apiToken && llm.ok;
   const freshness = freshnessReport();
+  // #418: đang xả (SIGTERM) → 503 'draining' để healthcheck/LB ngừng đưa lượt mới; lượt đang chạy vẫn được chờ.
+  const draining = inflight.laDangXa();
 
-  return res.status(healthy ? 200 : 503).json({
+  return res.status(healthy && !draining ? 200 : 503).json({
     service: 'hs-code-api',
     version: '2.0.0',
-    status: healthy ? 'healthy' : 'degraded',
+    status: draining ? 'draining' : healthy ? 'healthy' : 'degraded',
     // 'stale' = có nguồn quá hạn đối chiếu / sắp hoặc đã hết hiệu lực (xem checks.dataFreshness).
     dataStatus: freshness.ok ? 'fresh' : 'stale',
     checks: {
@@ -35,6 +38,8 @@ module.exports = function handler(req, res) {
       geminiKey: { ok: llm.gemini },
       apiToken: { ok: apiToken },
       dataFreshness: freshness,
+      // #418: số lượt HTTP đang chạy (classify dài) + cờ đang xả — deploy-safe.sh đọc trước khi thay container.
+      engine: { inflight: inflight.soDangChay(), draining },
     },
     stats: {
       withPolicyWarnings: withPolicy,

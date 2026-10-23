@@ -12,6 +12,7 @@
 'use strict';
 
 const http = require('http');
+const inflight = require('./lib/inflight');
 const fs = require('fs');
 const path = require('path');
 
@@ -164,6 +165,9 @@ async function handle(req, res) {
 function createServer() {
   const server = http.createServer(async (req, res) => {
     const t0 = Date.now();
+    // #418: đếm lượt đang chạy để khi deploy (SIGTERM) chờ xả hết rồi mới thoát; 'close' bắn cả khi xong lẫn khi đứt.
+    inflight.vao();
+    res.once('close', () => inflight.ra());
     if (process.env.HS_ACCESS_LOG !== '0') {
       // #261: khách không đồng ý chia sẻ → log stdout KHÔNG lộ mô tả hàng (che q/moTa/description, giữ độ dài).
       res.on('finish', () => {
@@ -199,10 +203,19 @@ if (require.main === module) {
   server.listen(port, host, () => {
     console.log(`hs-code-api listening on http://${host}:${port} (data write dir: ${process.env.HS_DATA_DIR || 'data/'})`);
   });
-  const stop = (sig) => {
-    console.log(`${sig} — dừng nhận request mới`);
-    server.close(() => process.exit(0));
-    setTimeout(() => process.exit(0), 10000).unref();
+  // #418: deploy thay container → SIGTERM. Dừng nhận lượt mới (server.close + health 503 draining), CHỜ lượt
+  // đang chạy (classify 2–5 phút) xong, tối đa HS_DRAIN_MS (mặc định 330 s), rồi mới thoát. Docker phải cho
+  // đủ thời gian: `docker stop -t 360` / stop_grace_period — xem docs/deploy-coolify.md.
+  let dangDung = false;
+  const stop = async (sig) => {
+    if (dangDung) return;
+    dangDung = true;
+    const dang = inflight.soDangChay();
+    console.log(`${sig} — dừng nhận request mới, chờ ${dang} lượt đang chạy (tối đa ${Number(process.env.HS_DRAIN_MS) || 330000} ms)`);
+    server.close();
+    const r = await inflight.xa();
+    console.log(r.conLai ? `hết giờ xả sau ${r.choMs} ms, còn ${r.conLai} lượt bị cắt` : `đã xả hết sau ${r.choMs} ms`);
+    process.exit(0);
   };
   process.on('SIGTERM', () => stop('SIGTERM'));
   process.on('SIGINT', () => stop('SIGINT'));
