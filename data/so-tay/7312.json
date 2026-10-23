@@ -1,0 +1,265 @@
+{
+ "nhom": "7312",
+ "phamVi": {
+  "text": "Dây cáp và thừng ở tất cả các kích cỡ, tạo hình bằng cách xoắn chặt hai hay nhiều dây đơn lại với nhau, hoặc xoắn các tao dây như vậy với nhau.",
+  "nguon": "nhom7312.nhom",
+  "trich": "Nhóm này bao gồm dây bện tao (hoặc cáp dây) thu được bằng cách xoắn chặt hai hay nhiều dây đơn lại với nhau, và những loại dây cáp và thừng tất cả các kích cỡ mà lần lượt được tạo hình bằng cách xoắn những tao dây như vậy lại với nhau.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "vat_lieu_la_day_thung_cap_bang_sac_hoac_thep",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom7312.nhom",
+   "trich": "Với điều kiện chúng nhất thiết vẫn là những mặt hàng bằng dây, thừng và cáp bằng sắt hoặc thép",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Dây thép gai, và dây kép xoắn lỏng, không có gai để làm hàng rào (\"torsades\")",
+   "sangNhom": "7313",
+   "nguon": "nhom7312.nhom",
+   "trich": "(a) Dây thép gai, và dây kép xoắn lỏng, không có gai để làm hàng rào (\"torsades\") (nhóm 73.13).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Dây cáp điện có cách điện",
+   "sangNhom": "8544",
+   "nguon": "nhom7312.nhom",
+   "trich": "(b) Dây cáp điện có cách điện (nhóm 85.44).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải dây thép gai, hoặc dây kép xoắn lỏng không có gai để làm hàng rào không?",
+   "neuCo": "7313",
+   "neuKhong": "7312",
+   "nguon": "nhom7312.nhom",
+   "trich": "(a) Dây thép gai, và dây kép xoắn lỏng, không có gai để làm hàng rào (\"torsades\") (nhóm 73.13).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hoi": "Hàng có phải dây cáp điện có cách điện không?",
+   "neuCo": "8544",
+   "neuKhong": "7312",
+   "nguon": "nhom7312.nhom",
+   "trich": "(b) Dây cáp điện có cách điện (nhóm 85.44).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "731210",
+   "fact": "co_cach_dien",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "nguon": "wco.731210",
+   "trich": "Iron or steel; stranded wire, ropes and cables, not electrically insulated",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "731290",
+   "fact": "co_cach_dien",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "nguon": "wco.731290",
+   "trich": "Iron or steel; plaited bands, slings and the like, not electrically insulated",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "73121010",
+   "dieuKien": "Cuộn dây bện tao kiểu bọc, dây tao dẹt và dây cáp chống xoắn (dòng biểu thuế; SEN nêu định nghĩa từng loại).",
+   "nguon": "tax.73121010",
+   "trich": "73121010 - - Cuộn dây bện tao kiểu bọc, dây tao dẹt và dây cáp chống xoắn(1) (SEN)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "73121020",
+   "dieuKien": "Loại được phủ, mạ hoặc tráng bằng đồng thau và có đường kính không quá 3 mm",
+   "tieuChi": {
+    "fact": "duong_kinh",
+    "op": "<=",
+    "value": 3,
+    "donVi": "mm"
+   },
+   "nguon": "tax.73121020",
+   "trich": "73121020 - - Loại được phủ, mạ hoặc tráng bằng đồng thau và có đường kính không quá 3 mm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "73121030",
+   "dieuKien": "Được phủ, mạ hoặc tráng nhôm",
+   "nguon": "tax.73121030",
+   "trich": "73121030 - - Được phủ, mạ hoặc tráng nhôm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "73121091",
+   "dieuKien": "Dây thép bện tao cho bê tông dự ứng lực",
+   "nguon": "tax.73121091",
+   "trich": "73121091 - - - Dây thép bện tao cho bê tông dự ứng lực",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "73121099",
+   "dieuKien": "Loại khác — không thuộc các dòng cùng cấp đứng trước (phạm vi cụ thể do máy suy từ biểu thuế, xem khoá phamViLoaiKhac).",
+   "nguon": "tax.73121099",
+   "trich": "73121099 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "7312109",
+    "truAnhEm": [
+     "73121091"
+    ],
+    "toTienCoTen": "731210",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "73129000",
+   "dieuKien": "Loại khác — không thuộc các dòng cùng cấp đứng trước (phạm vi cụ thể do máy suy từ biểu thuế, xem khoá phamViLoaiKhac).",
+   "nguon": "tax.73129000",
+   "trich": "73129000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "7312",
+    "truAnhEm": [
+     "731210"
+    ],
+    "toTienCoTen": "7312",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "boPhan": {
+  "quyTac": "Sản phẩm của nhóm 73.12 được tính là \"các bộ phận có công dụng chung\" theo Chú giải 2 Phần này.",
+  "tomTat": "Nhóm 73.12 nằm trong danh sách bộ phận có công dụng chung, cùng 73.07, 73.15, 73.17, 73.18 và sản phẩm tương tự bằng kim loại cơ bản khác.",
+  "nguon": "phan73.phan",
+  "trich": "2. Trong Danh mục này, khái niệm “các bộ phận có công dụng chung” có nghĩa: (a) Các sản phẩm thuộc nhóm 73.07, 73.12, 73.15, 73.17 hoặc 73.18 và các sản phẩm tương tự bằng kim loại cơ bản khác;",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "7312",
+    "cap": 4,
+    "cha": "73",
+    "tenVi": "Dây bện tao, thừng, cáp, băng tết, dây treo và các loại tương tự, bằng sắt hoặc thép, chưa cách điện.",
+    "tenEn": "Stranded wire, ropes, cables, plaited bands, slings and the like, of iron or steel, not electrically insulated",
+    "suyRa": false
+   },
+   {
+    "id": "731210",
+    "cap": 6,
+    "cha": "7312",
+    "tenVi": "Dây bện tao, thừng và cáp",
+    "tenEn": "Iron or steel; stranded wire, ropes and cables, not electrically insulated",
+    "suyRa": false
+   },
+   {
+    "id": "73121010",
+    "cap": 8,
+    "cha": "731210",
+    "tenVi": "Cuộn dây bện tao kiểu bọc, dây tao dẹt và dây cáp chống xoắn(1) (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "73121020",
+    "cap": 8,
+    "cha": "731210",
+    "tenVi": "Loại được phủ, mạ hoặc tráng bằng đồng thau và có đường kính không quá 3 mm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "73121030",
+    "cap": 8,
+    "cha": "731210",
+    "tenVi": "Được phủ, mạ hoặc tráng nhôm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "7312109",
+    "cap": "TIEU_DE_QG",
+    "cha": "731210",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "73121091",
+    "cap": 8,
+    "cha": "7312109",
+    "tenVi": "Dây thép bện tao cho bê tông dự ứng lực",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "73121099",
+    "cap": 8,
+    "cha": "7312109",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "73129000",
+    "cap": 8,
+    "cha": "7312",
+    "tenVi": "Loại khác",
+    "tenEn": "Iron or steel; plaited bands, slings and the like, not electrically insulated",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "731290"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom7312.nhom",
+  "phan73.phan",
+  "tax.73121010",
+  "tax.73121020",
+  "tax.73121030",
+  "tax.73121091",
+  "tax.73121099",
+  "tax.73129000",
+  "wco.731210",
+  "wco.731290"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-23T08:54:20.423Z",
+  "ms": 105
+ },
+ "kiemTra": {
+  "tong": 15,
+  "dat": 15,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

@@ -1,0 +1,80 @@
+{
+ "nhom": "8425",
+ "nguoiSoat": "dev-soat-doc-lap-lo028",
+ "luc": "soát độc lập lô 028 (PR #409) — 5 khối phamVi/boPhan/dieuKienVao/loaiTru/phanBiet",
+ "daKiem": "đọc từng mục cùng tmp/so-tay/nguon/<nhom>.txt + strict-nguyen-van.mjs (138/138 nguyên văn) + quét mẫu lỗi người soát phải bắt (cắt né câu rào, hoi đảo chiều, dấu lược nuốt ngoại lệ, thêm chữ ngoài trích, trích 300–600) + đối chiếu tiền lệ trên data/so-tay trước khi kết luận mẫu nào là lỗi",
+ "soat": 12,
+ "giu": 10,
+ "sua": 2,
+ "xoa": 0,
+ "ghiChu": "`dieuKienVao[0].ngoaiTru` lấy câu 87.01 từ chỗ khác trong cùng khối (không nằm trong `trich`) — đã đếm tiền lệ trên data/so-tay: 102 mục có ngoaiTru, 10 mục ngoaiTru không nằm trong trich → giữ. `loaiTru[4]` trỏ 8431 với dieuKien 'Bộ phận của thiết bị thuộc nhóm này' trùng nội dung `boPhan` — 8427 và 8428 đã gộp với cùng mẫu này → giữ.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "sua": {
+    "text": "Các thiết bị nâng hoặc xếp hàng đơn giản; quy tắc Chú giải chi tiết nhóm 84.26 với những sửa đổi thích hợp áp dụng cho chúng, trừ máy hoàn thiện gồm máy kéo và tời ngang khi tời ngang là dụng cụ thông thường của máy kéo thì về nhóm 87.01.",
+    "trich": "Nhóm này bao gồm các thiết bị nâng hoặc xếp hàng đơn giản. Các quy tắc của Chú giải chi tiết nhóm 84.26, với các sửa đổi thích hợp, sẽ áp dụng cho các thiết bị của nhóm này… Tuy nhiên, nếu 1 tời ngang là dụng cụ thông thường của một máy kéo, thì máy hoàn thiện (máy kéo và tời ngang) sẽ được phân loại ở nhóm 87.01."
+   },
+   "lyDo": "Dấu lược \"…\" đang GIẤU đúng một ngoại lệ: câu bị nuốt là \"Tuy nhiên, nếu 1 tời ngang là dụng cụ thông thường của một máy kéo, thì máy hoàn thiện … sẽ được phân loại ở nhóm 87.01.\" — bắt đầu bằng chính từ \"Tuy nhiên\". Đây đúng mẫu lỗi luật 31 (đoạn lược không được chứa ngoại lệ) và mẫu \"cắt trích né câu rào\" nêu trong brief; `text` cũ vì thế trình bày phạm vi như thể không có chỗ trừ. Kéo câu ngoại lệ vào trích. Vế \"trong phạm vi liên quan đến các máy tự hành… ở Phần XVII\" là điều kiện phạm vi thường, không có ngoại lệ, lược bằng \"…\" là hợp lệ; `text` viết lại cho khớp đúng những gì trích còn lại. Trích sau sửa 315 ký tự (máy cho tới 600; dưới đó có 115 mục 301–400 đã qua soát và gộp)."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "sua": {
+    "hoi": "Hàng có phải là máy hoàn thiện gồm máy kéo và tời ngang không?"
+   },
+   "lyDo": "Câu hỏi cũ hỏi về bản thân CÁI TỜI NGANG (\"Tời ngang có phải là dụng cụ thông thường của một máy kéo không?\") rồi cho nhánh Có = 87.01. Nhưng nguồn nói: \"nếu 1 tời ngang là dụng cụ thông thường của một máy kéo, thì MÁY HOÀN THIỆN (máy kéo và tời ngang) sẽ được phân loại ở nhóm 87.01\" — chủ ngữ đưa sang 87.01 là CẢ CỖ MÁY, không phải tời ngang rời. Hỏi kiểu cũ thì một tời ngang rời (loại phổ biến nhất trong tờ khai) sẽ bị đẩy nhầm sang 87.01. Đổi sang hỏi đúng chủ ngữ; `neuKhong: 8425` giữ nguyên. `loaiTru[0]` cùng ý này nhưng đã viết đúng chủ thể (\"Máy hoàn thiện gồm máy kéo và tời ngang…\") nên không cần sửa."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  }
+ ]
+}

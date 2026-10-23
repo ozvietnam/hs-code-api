@@ -1,0 +1,73 @@
+{
+ "nhom": "8449",
+ "nguoiSoat": "dev-soat-doc-lap-lo028",
+ "luc": "soát độc lập lô 028 (PR #409) — 5 khối phamVi/boPhan/dieuKienVao/loaiTru/phanBiet",
+ "daKiem": "đọc từng mục cùng tmp/so-tay/nguon/<nhom>.txt + strict-nguyen-van.mjs (138/138 nguyên văn) + quét mẫu lỗi người soát phải bắt (cắt né câu rào, hoi đảo chiều, dấu lược nuốt ngoại lệ, thêm chữ ngoài trích, trích 300–600) + đối chiếu tiền lệ trên data/so-tay trước khi kết luận mẫu nào là lỗi",
+ "soat": 12,
+ "giu": 12,
+ "sua": 0,
+ "xoa": 0,
+ "ghiChu": "Nhóm sạch nhất lô, 12/12 giữ, không sửa gì. `phanBiet[1]` hỏi A hoặc B ('thao tác ban đầu trước khi làm nỉ' hoặc 'chuẩn bị sợi để xe') — nguồn nói CẢ HAI đều 'vẫn được phân loại trong nhóm 84.45', nên gộp chung một nhánh là đúng, KHÔNG phải lỗi tách một nhánh của 'A hoặc B'. Nhóm chỉ có phân nhóm 844900 nên `tieuChi6` để rỗng là hợp lý.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc mục cùng câu trích trong khối nguồn: trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy), tự nó nói đúng điều mục khẳng định; không cắt né câu rào, không nuốt ngoại lệ, không thêm chữ ngoài trích; nhánh Có/Không đúng chiều với câu nguồn."
+  }
+ ]
+}
