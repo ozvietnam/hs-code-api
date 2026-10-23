@@ -1,0 +1,74 @@
+{
+ "nhom": "5207",
+ "ngườiSoát": "dev-zcode-mm",
+ "luc": "soát độc lập lô 031 (PR #420) — 5 khối phamVi/boPhan/dieuKienVao/loaiTru/phanBiet",
+ "daKiem": "đọc TỪNG mục cùng tmp/so-tay/nguon/5207.txt VÀ khối phan52.phan đầy đủ 46.130 ký tự qua sourcesFor() (bản .txt bị cắt ở 25.000 nên các mục lấy từ Chú giải 2(c) Phần XI phải đối chiếu nguồn gốc); strict-nguyen-van.mjs; audit-sau-doan.mjs; quét chữ trong fact/text/hoi không có trong trich; đối chiếu tiền lệ trên data/so-tay/*.json",
+ "soat": 10,
+ "giu": 7,
+ "sua": 2,
+ "xoa": 1,
+ "ghiChu": "Khối phan52.phan trùng byte với phan55.phan và dài 46.130 ký tự, nhưng bản xuất tmp/so-tay/nguon/*.txt cắt ở 25.000 — mọi mục lấy từ Chú giải 2(c) Phần XI (5604/5605/5606/5607/5806/5906) đã đối chiếu trực tiếp nguồn đầy đủ và đều nguyên văn. Thiếu sót phát hiện khi soát, KHÔNG sửa trong hồ sơ này (ngoài phạm vi \"đọc lại mục đã có\"): nhóm 5207 chưa có 2 mục loại trừ (f) → 58.06 và (g) → 59.06, dù 5211 và 5512 đã có. Cùng câu Chú giải 2(c) Phần XI áp cho mọi nhóm Chương 50–55. Đề xuất bổ sung cho lô sau.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu nguồn của nhóm chỉ có một câu; trich nguyên văn, text không thêm chữ nào ngoài câu (bỏ rút gọn \"(I)(B)(3)\" là rút gọn chứ không phải thêm)."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "sua": {
+    "fact": "la_soi_bong_tru_chi_khau_dong_goi_de_ban_le"
+   },
+   "lyDo": "Fact cũ \"la_soi_bong_tru_chi_khau\" bỏ mất đúng cái phần phân biệt nhóm 5207 với 5205/5206/5208/5209: câu nguồn nói \"sợi bông (trừ chỉ khâu) KHI ĐÓNG GÓI ĐỂ BÁN LẺ\". Fact mới là thứ đi vào prompt vòng 2 (lib/so-tay-gates.js:135) — thiếu vế này thì sợi cotton đầu cuộn 5 kg không đóng gói bán lẻ cũng \"thoả\" điều kiện và bị dẫn vào 5207. Chỉ đổi tên fact, trich giữ nguyên (đã chứa sẵn vế này)."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "sua",
+   "sua": {
+    "fact": "dong_goi_de_ban_le_theo_mot_trong_ba_dang_cua_phan_i_b_3",
+    "op": "=",
+    "value": true,
+    "donVi": null,
+    "ngoaiTru": [],
+    "trich": "sợi (đơn, xe hoặc cáp) đóng gói ở các dạng: … (a) Trên bìa, guồng gờ, ống tuýp hoặc cuộn có lõi tương tự … (b) Dạng hình cầu, con sợi hoặc cuộn sợi với trọng lượng … (c) Dạng con sợi hoặc cuộn sợi gồm các con sợi hoặc cuộn sợi nhỏ hơn được phân cách nhau bởi các đường chỉ"
+   },
+   "lyDo": "Hai mục cũ đặt ngưỡng cho DẠNG (a) và DẠNG (b) như thể phải cùng đúng, trong khi nguồn ghi \"sợi (đơn, xe hoặc cáp) đóng gói ở các dạng: (a)… (b)… (c)…\" — ba dạng thay thế nhau, không phải điều kiện VÀ. Runtime in chúng nối bằng \"·\" dưới nhãn \"Điều kiện vào nhóm\" nên mô hình đọc thành phải thỏa cả hai. Ngoài ra mục cũ [2] chỉ chọn NHÁNH (iii) 500 g của danh sách ba ngưỡng, bỏ mất (i) 85 g và (ii) 125 g. Gộp thành MỘT sự kiện liệt kê đủ ba dạng — đúng cách sửa đã dùng ở lô 027 (mục 7304) và lô 030."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải 2(c) Phần XI: \"Mặc dầu vậy các Chương từ 50 đến 55 không bao gồm: (a) Chỉ cao su… của nhóm 56.04.\" — loại trừ tường minh, áp cho cả Chương 52; đích danh trong câu."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b) của cùng khối, tự nêu \"nhóm 56.05\"."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c) của cùng khối, tự nêu \"nhóm 56.06\"."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (e) của cùng khối, tự nêu \"nhóm 56.07\". Mục (d) \"Sợi dệt bện (nhóm 56.07 hay nhóm 58.08 tuỳ trường hợp)\" bị bỏ là đúng — có \"tuỳ trường hợp\", đích không chắc chắn."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi CÓ/KHÔNG đúng chiều: có đủ ba tính chất của \"chỉ khâu\" (cuộn trên lõi ≤1.000 g + đã hoàn tất để dùng làm chỉ khâu + xoắn \"Z\" cuối cùng) → 52.04; nguồn ghi rõ \"Theo mục đích của các nhóm 52.04, 54.01 và 55.08\". Câu ngay sau trích sang Chú giải 6, không có ngoại lệ nào bị nuốt."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: có trộn kim loại → 56.05. Dùng lại đúng đoạn trích với loaiTru[1] là mẫu phổ biến (434 mục toàn repo)."
+  },
+  {
+   "index": "dieuKienVao[2]",
+   "hanhDong": "xoa",
+   "lyDo": "Đã gộp vào mục [1] (một sự kiện liệt kê ba dạng đóng gói). Xoá sau khi đã áp sửa [1] để chỉ số không lệch."
+  }
+ ]
+}

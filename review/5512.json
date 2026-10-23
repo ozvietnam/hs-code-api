@@ -1,0 +1,49 @@
+{
+ "nhom": "5512",
+ "ngườiSoát": "dev-zcode-mm",
+ "luc": "soát độc lập lô 031 (PR #420) — 5 khối phamVi/boPhan/dieuKienVao/loaiTru/phanBiet",
+ "daKiem": "đọc TỪNG mục cùng tmp/so-tay/nguon/5512.txt và ch55.chuong đầy đủ qua sourcesFor(); strict-nguyen-van.mjs; audit-sau-doan.mjs; quét chữ trong text/hoi không có trong trich; đối chiếu tiền lệ trên data/so-tay/*.json",
+ "soat": 6,
+ "giu": 4,
+ "sua": 2,
+ "xoa": 0,
+ "ghiChu": "Khối phan55.phan trùng byte với phan52.phan; hai mục loại trừ lấy từ Chú giải 2(c) Phần XI đã đối chiếu nguồn đầy đủ. Nhóm 5512 chưa có mục loại trừ (b) Sợi trộn kim loại → 56.05 và (e) Sợi dệt được gia cố bằng chỉ kim loại → 56.07 dù cùng câu áp cho mọi nhóm Chương 50–55 — ghi ở đây, không tự thêm trong hồ sơ soát.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "sua": {
+    "trich": "Nhóm này bao gồm các loại vải dệt (được định nghĩa trong Phần (I) (C) của Chú giải tổng quát của Phần XI) có tỷ trọng xơ staple tổng hợp từ 85% trở lên. Loại vải này rất đa dạng, được dùng trong may mặc quần áo, rèm hoặc vải dệt trang trí và vải trải bàn, chăn, khăn tắm"
+   },
+   "lyDo": "Text khẳng định cả vế công dụng (\"dùng để may quần áo, rèm, vải trang trí, vải trải bàn, chăn, khăn tắm\") nhưng trich cũ chỉ chứa CÂU ĐẦU — 11 từ trong text không có trong trich. Đây đúng là lỗi \"text nói nhiều hơn trich\" (mẫu lô 028, 5/6 nhóm). Sửa theo hướng đã định: NỐI trich, không cắt bớt text. Cắt đúng trước dấu \"…\" có sẵn của nguồn sau \"khăn tắm\" để không chép trọn đoạn lược."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Ngưỡng 85 % áp cho TOÀN bộ nhóm (5512 không chia phần ngang hàng), câu trích là câu định nghĩa phạm vi của chính nhóm chứ không phải câu ràng buộc riêng."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nguồn tự nói \"bị loại trừ (nhóm 30.05)\", đích danh trong câu."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải 2(c) Phần XI mục (g), loại trừ tường minh cho Chương 50–55, đích \"nhóm 59.06\"."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải 2(c) mục (f), cùng lý do, đích \"nhóm 58.06\"."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "sua": {
+    "hoi": "Hàng là băng đã tẩm thuốc hoặc đã đóng gói để bán lẻ không?"
+   },
+   "lyDo": "Nguồn nêu HAI vế nối \"hoặc\": \"Băng, đã tẩm thuốc HOẶC đã đóng gói để bán lẻ thì bị loại trừ (nhóm 30.05)\". Hoi cũ chỉ giữ vế \"đã tẩm thuốc\" — đúng cái lỗi \"A hoặc B bị tách thành một nhánh đích duy nhất\" mà brief liệt kê; một băng đã đóng gói bán lẻ mà không tẩm thuốc vẫn phải sang 3005 nhưng hoi cũ dẫn về 5512. Giữ cả hai vế."
+  }
+ ]
+}

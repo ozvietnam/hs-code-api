@@ -1,0 +1,154 @@
+{
+ "nhom": "5207",
+ "phamVi": {
+  "text": "Sợi bông (trừ chỉ khâu) đóng gói để bán lẻ, ở các dạng và theo các điều kiện mô tả trong Chú giải tổng quát Phần XI.",
+  "nguon": "nhom5207.nhom",
+  "trich": "Nhóm này bao gồm cả sợi bông (trừ chỉ khâu) khi đóng gói để bán lẻ, ở các dạng và phù hợp với các điều kiện được mô tả trong Phần (I) (B) (3) của Chú giải Tổng quát Phần XI.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_soi_bong_tru_chi_khau_dong_goi_de_ban_le",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom5207.nhom",
+   "trich": "Nhóm này bao gồm cả sợi bông (trừ chỉ khâu) khi đóng gói để bán lẻ",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "dong_goi_de_ban_le_theo_mot_trong_ba_dang_cua_phan_i_b_3",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "phan52.phan",
+   "trich": "sợi (đơn, xe hoặc cáp) đóng gói ở các dạng: … (a) Trên bìa, guồng gờ, ống tuýp hoặc cuộn có lõi tương tự … (b) Dạng hình cầu, con sợi hoặc cuộn sợi với trọng lượng … (c) Dạng con sợi hoặc cuộn sợi gồm các con sợi hoặc cuộn sợi nhỏ hơn được phân cách nhau bởi các đường chỉ",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [
+  {
+   "hoi": "Sợi có cuộn trên lõi (ví dụ, guồng gờ, ống tuýp) trọng lượng không quá 1.000 g (kể cả lõi), đã hoàn tất để sử dụng làm chỉ khâu và có xoắn \"Z\" cuối cùng không?",
+   "neuCo": "5204",
+   "neuKhong": "5207",
+   "nguon": "phan52.phan",
+   "trich": "Theo mục đích của các nhóm 52.04, 54.01 và 55.08, khái niệm \"chỉ khâu\" có nghĩa là loại sợi xe hoặc sợi cáp: (a) Cuộn trên lõi (ví dụ, guồng gờ, ống tuýp) trọng lượng không quá 1.000 g (kể cả lõi); (b) Đã hoàn tất để sử dụng làm chỉ khâu; và (c) Có xoắn \"Z\" cuối cùng.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "520710",
+   "fact": "ham_luong_bong",
+   "op": ">=",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.520710",
+   "trich": "520710 Cotton yarn; (not sewing thread), containing 85% or more by weight of cotton, put up for retail sale",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "520790",
+   "fact": "ham_luong_bong",
+   "op": "<",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.520790",
+   "trich": "520790 Cotton yarn; (not sewing thread), containing less than 85% by weight of cotton, put up for retail sale",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "52071000",
+   "dieuKien": "Có hàm lượng bông chiếm từ 85% trở lên tính theo khối lượng",
+   "tieuChi": {
+    "fact": "ham_luong_bong",
+    "op": ">=",
+    "value": 85,
+    "donVi": "%"
+   },
+   "nguon": "tax.52071000",
+   "trich": "52071000 - Có hàm lượng bông chiếm từ 85% trở lên tính theo khối lượng",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "52079000",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.52079000",
+   "trich": "52079000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "5207",
+    "truAnhEm": [
+     "52071000"
+    ],
+    "toTienCoTen": "5207",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5207",
+    "cap": 4,
+    "cha": "52",
+    "tenVi": "Sợi bông (trừ chỉ khâu), đã đóng gói để bán lẻ.",
+    "tenEn": "Cotton yarn (other than sewing thread), put up for retail sale",
+    "suyRa": false
+   },
+   {
+    "id": "52071000",
+    "cap": 8,
+    "cha": "5207",
+    "tenVi": "Có hàm lượng bông chiếm từ 85% trở lên tính theo khối lượng",
+    "tenEn": "Cotton yarn; (not sewing thread), containing 85% or more by weight of cotton, put up for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520710"
+   },
+   {
+    "id": "52079000",
+    "cap": 8,
+    "cha": "5207",
+    "tenVi": "Loại khác",
+    "tenEn": "Cotton yarn; (not sewing thread), containing less than 85% by weight of cotton, put up for retail sale",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "520790"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom5207.nhom",
+  "phan52.phan",
+  "tax.52071000",
+  "tax.52079000",
+  "wco.520710",
+  "wco.520790"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-23T11:13:29.340Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 13,
+  "dat": 13,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan52.phan (46130→25000)"
+  ]
+ }
+}
