@@ -3,6 +3,7 @@ import './test-isolate-data.mjs';
 /** lib/so-tay-runtime.js: sổ tay lúc chạy ở chế độ CỐ VẤN — đính vào phản hồi, không đổi mã đã chọn. */
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
+import { nhomChuaCoSoTay } from './nhom-chua-co-so-tay.mjs';
 const require = createRequire(import.meta.url);
 const { dataPath } = require('../lib/data-paths.js');
 const rt = require('../lib/so-tay-runtime.js');
@@ -39,7 +40,9 @@ assert('mã 4 số: mọi ý kiến trong nhóm; ứng viên dạng đối tư�
 const c = rt.advise({ topHs: '39269099', candidates: [] });
 assert('giới hạn 8 ý kiến + báo số còn lại', c.yKienWco.length === 8 && c.yKienWcoConLai === 3 && c.canGiaiTrinh.length === 0);
 
-assert('nhóm chưa có sổ tay → CHUA_CO_SO_TAY_CHO_NHOM (nói thật), vẫn là cố vấn', rt.advise({ topHs: '01012100' }).trangThai === 'CHUA_CO_SO_TAY_CHO_NHOM');
+// nhóm CHƯA CÓ sổ tay — chọn động theo dữ liệu hiện tại (lô soạn mới không làm đỏ test)
+const CHUA_CO_SO_TAY = nhomChuaCoSoTay();
+assert('nhóm chưa có sổ tay → CHUA_CO_SO_TAY_CHO_NHOM (nói thật), vẫn là cố vấn', rt.advise({ topHs: CHUA_CO_SO_TAY.hs8 }).trangThai === 'CHUA_CO_SO_TAY_CHO_NHOM');
 assert('không có mã → null (không bịa)', rt.advise({ topHs: null }) === null && rt.advise({}) === null && rt.advise({ topHs: '12' }) === null);
 assert('file sổ tay hỏng → vẫn không làm hỏng endpoint (coi như chưa có sổ tay)', rt.advise({ topHs: '99990000' }).trangThai === 'CHUA_CO_SO_TAY_CHO_NHOM');
 

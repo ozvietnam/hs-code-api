@@ -1,0 +1,34 @@
+{
+  "nhom": "9202",
+  "nguoiSoat": "dev-soat-doc-lap-lo038",
+  "luc": "2026-10-24T22:40:00+07:00",
+  "soat": 3,
+  "giu": 1,
+  "sua": 2,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 9202 (1 phamVi + 1 boPhan + 1 loaiTru = 3 mục trong phạm vi mục 4; đọc thêm 2 tieuChi6 + 2 dong8 + 2 cay.tenDien nhưng KHÔNG sửa — ngoài phạm vi, nên nguonLoai của chúng giữ AI_DA_KIEM). SỬA 2, mỗi sửa đều là lỗi MÁY KHÔNG BẮT được: (1) `phamVi.trich` — bản nháp dán \"Nhóm này bao gồm: (A) Nhạc cụ sử dụng cần kéo\" thành MỘT mảng, nhưng trong nguồn đó là HAI đoạn văn riêng biệt (ngăn bởi dòng trống) → chuỗi đó KHÔNG tồn tại trong nguồn. `check-so-tay` vẫn xanh vì nó so qua `squash()` (xoá cả ký tự xuống dòng); bộ kiểm thứ hai `scripts/check-trich-nguyen-van.mjs` (byte-exact) bắt được. Sửa: tách 3 mảnh nối bằng dấu lược \" … \" đúng quy ước lược đồ (đúng lỗi lô 034). `text` không đổi. (2) `boPhan` — (a) `tomTat` dài 192 ký tự, runtime đưa vào prompt vòng 2 qua `clip(s.boPhan.tomTat, 160)` nên bị cắt ĐÚNG KẾT LUẬN (\"…thì được phân loại …\"): mô hình chỉ thấy điều kiện, không thấy kết quả (\"được phân loại cùng nhóm với nhạc cụ liên quan\") → rút gọn còn 160 ký tự, giữ trọn phạm vi 92.02/92.06, CẢ HAI điều kiện (số lượng kèm theo thông thường; xác định là sử dụng cùng với nhạc cụ) và kết luận. (b) `quyTac` bỏ mất định ngữ giới hạn \"thuộc nhóm 92.02 hoặc 92.06\" — đọc câu trích thấy quy tắc này áp cho MỌI nhạc cụ, trong khi nguồn chỉ áp cho 92.02 và 92.06 → bổ sung lại đúng nguyên văn. `trich` của boPhan KHÔNG đổi (đã nguyên văn tuyệt đối). GIỮ 1: `loaiTru[0]` — câu nguồn có DẤU HIỆU LOẠI TRỪ (\"tuy nhiên, các nhạc cụ điện tử như ghita không có hộp cộng hưởng thuộc nhóm 92.07\"), nêu đích danh 92.07 trong chính câu trích; câu còn giữ rõ vế \"chúng không bị loại trừ khỏi nhóm này\" nên mục không nói chắc hơn nguồn.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (dán hai khối văn bằng MỘT DẤU CÁCH nên chuỗi không tồn tại trong nguồn). Bản nháp chép \"Nhóm này bao gồm: (A) Nhạc cụ sử dụng cần kéo\" thành MỘT mảng, nhưng trong [nhom9202.nhom] đó là HAI đoạn văn riêng (ngăn bởi dòng trống) → chuỗi đó không tồn tại trong nguồn. `check-so-tay` xanh vì so qua `squash()` (xoá cả ký tự xuống dòng); `scripts/check-trich-nguyen-van.mjs` (byte-exact) bắt được — đúng lỗi lô 034 (8210). Sửa: tách thành 3 mảng nối bằng dấu lược \" … \". `text` giữ nguyên (đúng hai phần ngang hàng (A)/(B) nối bằng \"…\").",
+      "sua": {
+        "trich": "Nhóm này bao gồm: … (A) Nhạc cụ sử dụng cần kéo … (B) Các nhạc cụ có dây khác"
+      }
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (cắt câu luật lúc chạy + mất định ngữ giới hạn). (1) `tomTat` dài 192 ký tự; runtime đưa vào prompt vòng 2 qua `clip(s.boPhan.tomTat, 160)` → bị cắt đúng phần KẾT LUẬN (\"…thì được phân loại …\"), mô hình chỉ thấy điều kiện không thấy kết quả (\"được phân loại cùng nhóm với nhạc cụ liên quan\"). Rút gọn còn 160 ký tự, giữ trọn: phạm vi 92.02/92.06, số lượng kèm theo thông thường, điều kiện xác định là sử dụng cùng với nhạc cụ, và kết luận. (2) `quyTac` bỏ mất định ngữ giới hạn \"thuộc nhóm 92.02 hoặc 92.06\" của câu nguồn → bổ sung lại (nguyên văn). `trich` KHÔNG đổi.",
+      "sua": {
+        "quyTac": "Cần kéo, que và các dụng cụ tương tự để chơi nhạc cụ thuộc nhóm 92.02 hoặc 92.06, đi kèm nhạc cụ với số lượng kèm theo thông thường và được xác định rõ là sử dụng cùng với nhạc cụ, được phân loại cùng nhóm với nhạc cụ liên quan.",
+        "tomTat": "Cần kéo, que kèm nhạc cụ 92.02 hoặc 92.06 (số lượng kèm theo thông thường, xác định là sử dụng cùng với nhạc cụ) được phân loại cùng nhóm với nhạc cụ liên quan."
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Đọc cùng câu trích trong [nhom9202.nhom]: câu có DẤU HIỆU LOẠI TRỪ (\"tuy nhiên, các nhạc cụ điện tử như ghita không có hộp cộng hưởng thuộc nhóm 92.07\"), nêu ĐÍCH DANH 92.07 ngay trong câu; câu trích còn giữ vế \"chúng không bị loại trừ khỏi nhóm này\" nên mục không nói chắc hơn nguồn. Không phải câu \"thường/tùy trường hợp\". GIỮ NGUYÊN."
+    }
+  ]
+}
