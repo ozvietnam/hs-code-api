@@ -1,0 +1,198 @@
+{
+ "nhom": "0106",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-24T23:50:00+07:00",
+ "phamViSoat": "Toàn bộ 34 mục của bản nháp lô 039 (1 phamVi + 1 dieuKienVao + 3 loaiTru + 2 phanBiet + 13 tieuChi6 + 14 dong8; không có boPhan, không có cay.tenDien), đọc cùng tmp/so-tay/nguon/0106.txt (nhom0106.nhom, ch01.chuong, phan01.phan, wco.010611…010690, tax.01061100…01069000). Đối chiếu TỪNG CÂU TRÍCH với đúng khối nguồn khai báo, không chỉ qua máy. Ngoài phạm vi: khối cay do máy sinh.",
+ "soat": 34,
+ "sua": 3,
+ "xoa": 0,
+ "giu": 31,
+ "ghiChu": "KẾT QUẢ: 34/34 mục đều có câu trích CÓ THẬT trong đúng khối nguồn; KHÔNG xoá mục nào (không có mục mờ má). SỬA 3 mục — cùng một lỗi: tên tiêu chí (fact) viết tắt tự do, có mảnh 'muc' KHÔNG ứng với loài nào trong nguồn và bỏ sót các loài nguồn có nêu (xem thayDoi). GIỮ có lý do: (1) phamVi.text nêu đủ NĂM phần ngang hàng (A)–(E) của nhóm, không thu hẹp về một phần; (2) dieuKienVao lấy câu RÀNG BUỘC của Chương 1 ('Chương này bao gồm tất cả các loại động vật sống trừ: (a)(b)(c)') — phủ trọn nhóm 0106 và là điều kiện vào nhóm 4 số thật sự (phân biệt động vật sống với thịt 02.x / 05.11); (3) loaiTru[1] và [2] là ngoại lệ CẤP CHƯƠNG nhưng nguồn nêu đích danh 03.01/03.06/03.07/03.08 và 30.02 trong chính câu → đạt luật mục 3, giữ; (4) phanBiet[0] và [1] đúng CHIỀU (có → nhóm đích; không → 0106). GHI CHÚ: (a) các đoạn lược '…' trong phamVi đã dựng lại và soi từng đoạn — không đoạn nào nuốt ngoại lệ, vì mảnh 'linh dương (trừ những động vật thuộc phân họ Bovinae)' được GIỮ trong câu trích; (b) nguồn chú giải nhóm mở đầu bằng 'Nhóm này có thể kể ra…' — đây là cách liệt kê định nghĩa chuẩn của HS (không phải câu cho phép kiểu 'vẫn được phân loại ở đây ngay cả khi…'), nên phamVi.text nói thẳng phạm vi là đúng.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "text nêu đủ năm phần ngang hàng của nhóm (A) động vật có vú, (B) loài bò sát, (C) các loại chim, (D) côn trùng, (E) loại khác — không thu hẹp về một phần (lỗi lô 030: 3401/3810/4415). Câu trích nguyên văn gồm 7 mảnh, tất cả có trong nhom0106.nhom. Bốn đoạn lược '…' đã dựng lại từ nguồn và soi: không đoạn nào chứa 'trừ/tuy nhiên/với điều kiện/không kể' — vì mảnh 'linh dương (trừ những động vật thuộc phân họ Bovinae)' được giữ trong trích. Đoạn lược giữa (A) và (B) nuốt mục (2) Cetacea/Sirenia/Pinnipedia và danh sách ví dụ (3) — chỉ là ví dụ, không phải ngoại lệ."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "fact 'la_dong_vat_song' = true, trích nguyên văn từ ch01.chuong: 'Chương này bao gồm tất cả các loại động vật sống trừ: (a) … (b) … (c) …'. Đây là câu RÀNG BUỘC (bao gồm… trừ…), không phải câu định nghĩa thuật ngữ, và nó phủ CẢ nhóm 0106 (mọi phần (A)–(E) đều là động vật sống) → đúng luật lô 030. Điều kiện này là điều kiện vào nhóm 4 số thật sự: phân biệt động vật sống (0106) với thịt 02.x và 05.11 — nguồn còn nói rõ 'Động vật, kể cả côn trùng, chết trên đường vận chuyển được phân loại vào các nhóm từ 02.01 đến 02.05…'. value=true không dính CAU_CHO_PHEP."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn nhom0106.nhom: 'Nhóm này không bao gồm bầy thú thuộc rạp xiếc, bầy thú hoặc động vật làm trò lưu động tương tự khác (nhóm 95.08).' Có DẤU HIỆU LOẠI TRỪ rõ ('không bao gồm') và nêu đích danh 95.08 ngay trong câu → đạt luật mục 3. Không phải ví dụ linh kiện, không phải dải số, không phải 'Chương N'. Câu trích là câu CUỐI của khối nhom — không có gì bị cắt phía sau."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn ch01.chuong mục (a) của danh sách 'Chương này không bao gồm:': '(a) Cá và động vật giáp xác, động vật thân mềm và động vật thuỷ sinh không xương sống khác, thuộc nhóm 03.01, 03.06, 03.07 hoặc 03.08;' — đích danh đủ BỐN nhóm, không tách 'A hoặc B' thành một nhánh đích duy nhất. Là ngoại lệ cấp CHƯƠNG nhưng áp cho nhóm (Chương 1 không chứa các nhóm này) → giữ. Sau câu trích là mục (b) mới, không có ngoại lệ nào bị nuốt."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn ch01.chuong mục (b): '(b) Vi sinh vật nuôi cấy và các sản phẩm khác thuộc nhóm 30.02;' — đích danh 30.02 trong câu, dấu hiệu loại trừ nằm ở tiêu đề danh sách 'Chương này không bao gồm:' ngay trên. Sau câu trích là mục (c) mới — không mất ngoại lệ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng CHIỀU: câu nguồn 'Nhóm này không bao gồm bầy thú thuộc rạp xiếc… (nhóm 95.08)' → có (là bầy thú rạp xiếc) = 95.08, không = 0106. 'hoi' không nhắc mã phân nhóm/WCO. Nhánh 'không' có căn cứ trong nguồn (chính câu loại trừ đã nói 'không bao gồm' → còn lại thuộc 0106), không suy từ cấu trúc anh em."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng CHIỀU: nguồn xếp cá và động vật giáp xác/thân mềm/thủy sinh vào 03.01/03.06/03.07/03.08 → có = 4 nhóm đích (đủ cả bốn, không tách nhánh), không = 0106. Câu trích nguyên văn từ ch01.chuong."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=010611 có thật trong cây (lá 01061100, laPhanNhom 010611); trích nguyên văn wco.010611 '010611 Mammals; live, primates'; fact 'la_bo_dong_vat_linh_truong' đúng nghĩa (primates = động vật linh trưởng, khớp tên biểu thuế 'Bộ động vật linh trưởng')."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "sua",
+   "lyDo": "SỬA TÊN TIÊU CHÍ — lỗi máy KHÔNG bắt được (máy chỉ kiểm trích có thật, không kiểm tên fact). fact cũ 'la_hoi_cao_hai_muc_hai_cau_luoc_bien_ca_nuoc' có mảng 'muc' KHÔNG ứng với loài nào trong nguồn (không phải cá heo, cá voi, hải cẩu, lợn biển hay cá nược — những từ này đều có mặt trong trích), đồng thời BỎ SÓT ba loài nguồn có nêu: porpoises (cá heo chuột), sea lions (sư tử biển) và walruses (hải mã). Tên tiêu chí là khoá máy đọc được nên phải nêu đúng các loài trong wco.010612. Đã sửa thành danh sách đầy đủ, vẫn dùng các mảnh của tên cũ; câu trích giữ nguyên.",
+   "sua": {
+    "fact": "la_hoi_cao_hai_cau_heo_chuot_luoc_bien_ca_nuoc_hai_cau_su_tu_bien_hai_ma"
+   }
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=010613 có thật trong cây; trích nguyên văn wco.010613 '010613 Mammals; live, camels and other camelids (Camelidae)'; fact 'la_lac_va_ho_lac_da' đúng nghĩa, khớp tên biểu thuế 'Lạc đà và họ lạc đà (Camelidae)'."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=010614 có thật trong cây; trích nguyên văn wco.010614 '010614 Mammals; live, rabbits and hares'; fact 'la_tho_va_tho_rung' đúng nghĩa, khớp biểu thuế 'Thỏ (Rabbits và hares)'."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "sua",
+   "lyDo": "SỬA TÊN TIÊU CHÍ — lỗi máy KHÔNG bắt được. fact cũ 'la_dong_vat_co_vu_khac_khong_phai_linh_truong_hoi_cao_hai_muc_hai_cau_luoc_bien_ca_nuoc_lac_va_tho' liệt kê những loài BỊ LOẠI khỏi 010619, nhưng có mảng 'muc' vô nghĩa và bỏ sót đúng ba loài mà wco.010619 nêu: porpoises (cá heo chuột), sea lions (sư tử biển), walruses (hải mã). Danh sách loại trừ thiếu 3 loài là tiêu chí SAI NGHĨA. Đã sửa thành danh sách đầy đủ; câu trích giữ nguyên.",
+   "sua": {
+    "fact": "la_dong_vat_co_vu_khac_khong_phai_linh_truong_hoi_cao_hai_cau_heo_chuot_luoc_bien_ca_nuoc_hai_cau_su_tu_bien_hai_ma_lac_va_tho"
+   }
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=010620 có thật trong cây; trích nguyên văn wco.010620 '010620 Reptiles; live (including snakes and turtles)'; fact 'la_loai_bo_sat' đúng nghĩa, khớp biểu thuế 'Loài bò sát (kể cả rắn và rùa)'."
+  },
+  {
+   "index": "tieuChi6[6]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=010631 có thật trong cây; trích nguyên văn wco.010631 '010631 Birds; live, birds of prey'; fact 'la_chim_san_moi' đúng nghĩa, khớp biểu thuế 'Chim săn mồi'."
+  },
+  {
+   "index": "tieuChi6[7]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=010632 có thật trong cây; trích nguyên văn wco.010632 '010632 Birds; live, Psittaciformes'; fact 'la_vet' đúng nghĩa, khớp biểu thuế 'Vẹt (kể cả vẹt lớn châu Mỹ…)'."
+  },
+  {
+   "index": "tieuChi6[8]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=010633 có thật trong cây; trích nguyên văn wco.010633 '010633 Birds; live, ostriches; emus (Dromaius novaehollandiae)'; fact 'la_da_dieu' đúng nghĩa — tiêu đề biểu thuế cũng ghi 'Đà điểu; đà điểu châu Úc (Dromaius novaehollandiae)'."
+  },
+  {
+   "index": "tieuChi6[9]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=010639 có thật trong cây; trích nguyên văn wco.010639 '010639 Birds; live, other than birds of prey, Psittaciformes, ostriches and emus (Dromaius novaehollandiae)'; fact 'la_chim_khac_khong_phai_chim_san_moi_vet_va_da_dieu' liệt kê đủ cả bốn nhóm bị loại theo nguồn (săn mồi, vẹt, đà điểu, đà điểu châu Úc) — không bỏ sót."
+  },
+  {
+   "index": "tieuChi6[10]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=010641 có thật trong cây; trích nguyên văn wco.010641 '010641 Insects; live, bees'; fact 'la_cac_loai_ong' đúng nghĩa, khớp biểu thuế 'Các loại ong'."
+  },
+  {
+   "index": "tieuChi6[11]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=010649 có thật trong cây; trích nguyên văn wco.010649 '010649 Insects; live, other than bees'; fact 'la_con_trung_khac_khong_phai_ong' đúng nghĩa."
+  },
+  {
+   "index": "tieuChi6[12]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=010690 có thật trong cây; trích nguyên văn wco.010690 '010690 Animals; live, n.e.c. in chapter 01, other than mammals, reptiles, birds and insects'; fact 'la_dong_vat_khac_khong_phai_dong_vat_co_vu_bo_sat_chim_va_con_trung' liệt kê đủ bốn nhóm bị loại theo nguồn. Khớp với phần (E) 'Loại khác, ví dụ các loại ếch' của chú giải nhóm."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "hs 01061100 có trong biểu thuế; trích nguyên văn tax.01061100 '01061100 - - Bộ động vật linh trưởng'; dieuKien nêu đúng tên dòng + phân nhóm 0106.11 (6 số) — văn phong đã được duyệt ở 0402/1702/3215."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "sua",
+   "lyDo": "SỬA fact TRONG tieuChi (lỗi máy KHÔNG bắt được — máy chỉ kiểm trích và dạng fact, không kiểm nghĩa). fact cũ 'la_hoi_cao_hai_muc_luoc_bien_ca_nuoc' có mảng 'muc' không ứng với loài nào và bỏ sót 'cá heo chuột' mà dòng này (01061210) nêu nguyên văn trong tên biểu thuế. Đã sửa thành 'la_hoi_cao_hai_cau_heo_chuot_luoc_bien_ca_nuoc'. Câu trích và phần còn lại của tieuChi giữ nguyên.",
+   "sua": {
+    "tieuChi": {
+     "fact": "la_hoi_cao_hai_cau_heo_chuot_luoc_bien_ca_nuoc",
+     "op": "=",
+     "value": true,
+     "donVi": null
+    }
+   }
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "hs 01061220 có trong biểu thuế; trích nguyên văn tax.01061220; fact 'la_hai_cau_su_tu_bien_va_hai_ma' liệt kê đủ ba loài nguồn nêu (hải cẩu, sư tử biển, hải mã) — dòng này đúng, không có lỗi 'muc'."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "hs 01061300 có trong biểu thuế; trích nguyên văn tax.01061300; tên dòng + phân nhóm 0106.13 đúng."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "hs 01061400 có trong biểu thuế; trích nguyên văn tax.01061400; tên dòng + phân nhóm 0106.14 đúng."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "hs 01061900 có trong biểu thuế, tên dòng là 'Loại khác' nên loaiKhac=true (máy tự điền); trích nguyên văn tax.01061900; dieuKien nêu phần còn lại của phân nhóm 0106.19 và tên WCO trong ngoặc — văn phong đã được duyệt (3215, 0402); fact trùng với tieuChi6[4] đã sửa ở trên."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "hs 01062000 có trong biểu thuế; trích nguyên văn tax.01062000; tên dòng + phân nhóm 0106.20 đúng."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "hs 01063100 có trong biểu thuế; trích nguyên văn tax.01063100; tên dòng + phân nhóm 0106.31 đúng."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "hs 01063200 có trong biểu thuế; trích nguyên văn tax.01063200; tên dòng + phân nhóm 0106.32 đúng."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "hs 01063300 có trong biểu thuế; trích nguyên văn tax.01063300; tên dòng + phân nhóm 0106.33 đúng."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "hs 01063900 có trong biểu thuế, tên dòng 'Loại khác' → loaiKhac=true; trích nguyên văn tax.01063900; dieuKien nêu phần còn lại của phân nhóm 0106.39 + tên WCO — văn phong đã duyệt."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "hs 01064100 có trong biểu thuế; trích nguyên văn tax.01064100; tên dòng + phân nhóm 0106.41 đúng."
+  },
+  {
+   "index": "dong8[12]",
+   "hanhDong": "giu",
+   "lyDo": "hs 01064900 có trong biểu thuế, tên dòng 'Loại khác' → loaiKhac=true; trích nguyên văn tax.01064900; dieuKien nêu phần còn lại của phân nhóm 0106.49 + tên WCO — văn phong đã duyệt."
+  },
+  {
+   "index": "dong8[13]",
+   "hanhDong": "giu",
+   "lyDo": "hs 01069000 có trong biểu thuế, tên dòng 'Loại khác' → loaiKhac=true; trích nguyên văn tax.01069000; dieuKien nêu phần còn lại của phân nhóm 0106.90 + tên WCO — văn phong đã duyệt."
+  }
+ ]
+}

@@ -1,0 +1,180 @@
+{
+ "nhom": "0204",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-24T23:58:00+07:00",
+ "phamViSoat": "Toàn bộ 32 mục của bản nháp lô 039 (1 phamVi + 2 dieuKienVao + 4 loaiTru + 1 phanBiet + 15 tieuChi6 + 9 dong8; không có boPhan, không có cay.tenDien), đọc cùng tmp/so-tay/nguon/0204.txt (nhom0204.nhom — gồm cả khối 'Chú giải phân nhóm' về thịt cừu non, ch02.chuong, phan02.phan, wco.020410…020450, tax.02041000…02045000). Đối chiếu TỪNG CÂU TRÍCH với đúng khối nguồn khai báo.",
+ "soat": 32,
+ "sua": 2,
+ "xoa": 0,
+ "giu": 30,
+ "ghiChu": "KẾT QUẢ: 32/32 mục đều có câu trích CÓ THẬT trong đúng khối nguồn. KHÔNG xoá mục nào. SỬA 2 mục — cùng một lỗi máy KHÔNG bắt được: câu trích MỞ ĐẦU BẰNG ĐẠI TỪ ('Thịt đó là…') nên tự nó KHÔNG nói được mình nói về loại thịt nào (xem thayDoi tieuChi6[10] và tieuChi6[13]). GIỮ CÓ LÝ DO: (1) phamVi.text chép lại đúng câu định nghĩa nhóm; (2) dieuKienVao gồm hai điều kiện VÀO NHÓM 4 số (thịt cừu/dê + dạng tươi/ướp lạnh/đông lạnh) lấy từ chú giải nhóm; (3) loaiTru[1] và [2] là ngoại lệ cấp CHƯƠNG nhưng nguồn nêu đích danh trong chính câu; (4) phanBiet[0] đúng CHIỀU (có → 4 dòng đông lạnh; không → 4 dòng tươi/ướp lạnh), dòng 02045000 (thịt dê) cố ý KHÔNG nằm trong nhánh nào vì wco.020450 gộp cả ba trạng thái ('fresh, chilled or frozen') — đúng, không phải dòng bị bỏ sót; (5) TIÊU CHÍ CỪU NON (≤ 12 tháng tuổi, thân thịt ≤ 26kg) đặt ở tieuChi6 (cấp 6 số) là ĐÚNG CẤP: nguồn nói rõ 'Theo mục đích của các phân nhóm 0204.10 và 0204.30' → đây là tiêu chí của PHÂN NHÓM, không phải điều kiện vào nhóm 4 số; đặt vào dieuKienVao sẽ sai cấp (máy loại) và nói chắc hơn nguồn. GHI CHÚ (không sửa trong lô này): (a) loaiTru[1] cắt sau '(nhóm 05.04)' nên không kèm vế 'hoặc tiết động vật (nhóm 05.11 hoặc 30.02)' — vế ALTERNATIVE cùng mục (c), KHÔNG phải ngoại lệ; (b) dong8[0] và dong8[4] ghép hai câu nguồn liền nhau thành một mệnh đề và bỏ câu 'Thịt đó là thịt thớ mịn…' — nhưng nhãn nguồn '(chú giải phân nhóm 0204.10)' ghi rõ chỗ lấy, hai điều kiện đều đúng, và bản có cấu trúc của chúng nằm ở tieuChi6 nên không sửa; (c) runtime hiện cắt dong8[].dieuKien ở 90 ký tự nên hai ngưỡng của dòng 02041000/02043000 bị cắt khi đưa vào prompt — đây là giới hạn của cổng runtime (lib/so-tay-gates.js clip 90), không phải lỗi dữ liệu, và cũng xảy ra với dữ liệu đã duyệt (0402).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn nhom0204.nhom: 'Nhóm này bao gồm thịt tươi, ướp lạnh hoặc đông lạnh của cừu (cừu đực, cừu cái và cừu non), dê hoặc dê non, nuôi hoặc hoang.' — text chép lại đúng một câu định nghĩa nhóm, không thêm bớt từ nào."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "fact 'la_thit_cuu_hoac_de' = true; trích 'của cừu (cừu đực, cừu cái và cừu non), dê hoặc dê non, nuôi hoặc hoang' nguyên văn. Điều kiện VÀO NHÓM 4 số thật sự, lấy từ chú giải nhóm — không phải từ tên phân nhóm/WCO/SEN nên không dính lỗi cấp của lô 030."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "fact 'tuoi_uop_lanh_hoac_dong_lanh' = true; trích 'Nhóm này bao gồm thịt tươi, ướp lạnh hoặc đông lạnh' nguyên văn. 'tươi, ướp lạnh hoặc đông lạnh' là một fact boolean gộp — KHÔNG tách thành ba nhánh điều kiện độc lập."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn ch02.chuong: 'Thịt và phụ phẩm dạng thịt không phù hợp hoặc không thích hợp dùng làm thức ăn cho người bị loại trừ (nhóm 05.11).' — có DẤU HIỆU LOẠI TRỪ và nêu đích danh 05.11 trong câu. Câu ngay sau ('Bột mịn, bột thô và viên … (nhóm 23.01)') là câu RIÊNG về bột thịt, không phải ngoại lệ của mục này."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn ch02.chuong mục (c) của danh sách 'Chương này không bao gồm:': '(c) Ruột, bong bóng hoặc dạ dày của động vật (nhóm 05.04)' — đích danh 05.04 trong câu. Vế bị cắt phía sau là vế ALTERNATIVE cùng mục (c), không phải ngoại lệ; không mở rộng trích vì sẽ gợi ý sai rằng tiết động vật cũng sang 05.04."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn ch02.chuong: '(a) Xúc xích hoặc sản phẩm tương tự, chín hoặc chưa chín (nhóm 16.01)' — trích từ câu 'Thịt và phụ phẩm dạng thịt sau giết mổ không thuộc bất cứ nhóm nào của Chương này được phân loại vào Chương 16, ví dụ:'; nêu đích danh 16.01 trong câu."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn ch02.chuong mục (b): 'Thịt và phụ phẩm dạng thịt được làm chín bằng bất cứ cách nào (luộc, hấp, nướng, rán hoặc quay) … bao gồm cả patê và patê gan (nhóm 16.02).' Đoạn lược '…' nuốt phần ', hoặc được chế biến hoặc bảo quản bởi bất cứ phương pháp nào không nêu trong Chương này, bao gồm cả thịt và phụ phẩm dạng thịt chỉ bao bột hoặc vụn bánh mì, thêm nấm hoặc ướp gia vị (ví dụ: hạt tiêu và muối),' — cùng một mục (b) (vế 'hoặc'), KHÔNG chứa ngoại lệ; mục 'thịt được làm chín bằng bất cứ cách nào → 16.02' đúng nghĩa, đích 16.02 có trong câu."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng CHIỀU: 'Được đông lạnh…?' → có = 02043000|02044100|02044200|02044300 (4 dòng đông lạnh), không = 02041000|02042100|02042200|02042300 (4 dòng tươi/ướp lạnh). Trích nguyên văn ch02.chuong mục (2) và (3); đoạn lược '…' chỉ nuốt ranh giới giữa hai mục, không nuốt ngoại lệ. Nhánh 'không' có căn cứ trong nguồn ('Được ướp lạnh … không dẫn đến đông lạnh') và phủ kín 8 lá của nhóm; dòng 02045000 (thịt dê) không thuộc nhánh nào là ĐÚNG vì wco.020450 gộp cả ba trạng thái. 'hoi' không nhắc mã phân nhóm/WCO."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020410 có thật trong cây (lá 02041000, laPhanNhom 020410); trích nguyên văn wco.020410 '020410 Meat; of sheep, lamb carcasses and half-carcasses, fresh or chilled'; fact 'la_thit_cuu_non_ca_con_va_nua_con' đúng nghĩa, khớp biểu thuế 'Thịt cừu non cả con và nửa con, tươi hoặc ướp lạnh'."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020421 có thật trong cây; trích nguyên văn wco.020421 '020421 Meat; of sheep, carcasses and half-carcasses (excluding carcasses and half-carcasses of lamb), fresh or chilled'; fact 'la_thit_ca_con_va_nua_con_khong_phai_thit_cuu_non' đúng nghĩa (excluding … of lamb)."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020422 có thật trong cây; trích nguyên văn wco.020422 '020422 Meat; of sheep (including lamb), cuts with bone in (excluding carcasses and half-carcasses), fresh or chilled'; fact 'la_thit_co_xuong' đúng nghĩa, khớp biểu thuế 'Thịt pha có xương khác'."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020423 có thật trong cây; trích nguyên văn wco.020423 '020423 Meat; of sheep (including lamb), boneless cuts, fresh or chilled'; fact 'la_thit_loc_khong_xuong' đúng nghĩa, khớp biểu thuế 'Thịt lọc không xương'."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020430 có thật trong cây; trích nguyên văn wco.020430 '020430 Meat; of sheep, lamb carcasses and half-carcasses, frozen'; fact 'la_thit_cuu_non_ca_con_va_nua_con' đúng nghĩa, khớp biểu thuế 'Thịt cừu non, cả con và nửa con, đông lạnh'."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020441 có thật trong cây; trích nguyên văn wco.020441 '020441 Meat; of sheep, carcasses and half-carcasses (excluding carcasses and half-carcasses of lamb), frozen'; fact 'la_thit_ca_con_va_nua_con_khong_phai_thit_cuu_non' đúng nghĩa."
+  },
+  {
+   "index": "tieuChi6[6]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020442 có thật trong cây; trích nguyên văn wco.020442 '020442 Meat; of sheep (including lamb), cuts with bone in (excluding carcasses and half-carcasses), frozen'; fact 'la_thit_co_xuong' đúng nghĩa."
+  },
+  {
+   "index": "tieuChi6[7]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020443 có thật trong cây; trích nguyên văn wco.020443 '020443 Meat; of sheep (including lamb), boneless cuts, frozen'; fact 'la_thit_loc_khong_xuong' đúng nghĩa."
+  },
+  {
+   "index": "tieuChi6[8]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020450 có thật trong cây; trích nguyên văn wco.020450 '020450 Meat; of goats, fresh, chilled or frozen'; fact 'la_thit_de' đúng nghĩa, khớp biểu thuế 'Thịt dê'."
+  },
+  {
+   "index": "tieuChi6[9]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020410; fact 'tuoi_cua_dong_vat_khong_qua_12_thang' op '<=' value 12 đơn vị 'tháng'; trích nguyên văn nhom0204.nhom: 'Theo mục đích của các phân nhóm 0204.10 và 0204.30, thịt cừu non là thịt từ một động vật thuộc loài cừu không quá 12 tháng tuổi.' — số 12 có nguyên văn trong câu, nghĩa đúng ('không quá 12 tháng tuổi' = tuổi ≤ 12 tháng), và đây là tiêu chí CẤP PHÂN NHÓM (nguồn nói 'Theo mục đích của các phân nhóm 0204.10 và 0204.30') nên đặt ở tieuChi6 là đúng cấp."
+  },
+  {
+   "index": "tieuChi6[10]",
+   "hanhDong": "sua",
+   "lyDo": "SỬA CÂU TRÍCH — lỗi máy KHÔNG bắt được. Câu trích cũ 'Thịt đó là thịt thớ mịn và kết cấu khít, màu hồng đậm và bề mặt mịn.' MỞ ĐẦU BẰNG ĐẠI TỪ 'Thịt đó' — tự nó KHÔNG nói được mình nói về loại thịt nào (chỉ khi đọc liền câu trước mới biết là 'thịt cừu non'). Đây là đúng lớp lỗi lô 035 ('câu trích kết bằng đại từ ⇒ phải mở rộng trích'). Đã nối thêm câu định nghĩa ngay trước (nguyên văn, liền khoảng trắng trong nguồn) để câu trích tự nói nghĩa; tổng 196 ký tự — dưới trần 300 của lược đồ. fact và các trường khác giữ nguyên.",
+   "sua": {
+    "trich": "Theo mục đích của các phân nhóm 0204.10 và 0204.30, thịt cừu non là thịt từ một động vật thuộc loài cừu không quá 12 tháng tuổi. Thịt đó là thịt thớ mịn và kết cấu khít, màu hồng đậm và bề mặt mịn."
+   }
+  },
+  {
+   "index": "tieuChi6[11]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020410; fact 'can_nang_ca_than_thit_khong_qua_26kg' op '<=' value 26 đơn vị 'kg'; trích nguyên văn 'Cân nặng cả thân thịt không quá 26kg.' — số 26 có nguyên văn trong câu (không có dấu chấm phân cách nên không lẫn nhầm kiểu số Việt), nghĩa đúng."
+  },
+  {
+   "index": "tieuChi6[12]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020430; fact 'tuoi_cua_dong_vat_khong_qua_12_thang' op '<=' value 12 đơn vị 'tháng'; trích nguyên văn nhom0204.nhom: 'Theo mục đích của các phân nhóm 0204.10 và 0204.30, thịt cừu non là thịt từ một động vật thuộc loài cừu không quá 12 tháng tuổi.' — nguồn nói câu này cho CẢ 0204.10 và 0204.30, nên đặt lặp ở cả hai phân nhóm là đúng (mỗi phân nhóm một bộ tiêu chí riêng). Số 12 có trong câu."
+  },
+  {
+   "index": "tieuChi6[13]",
+   "hanhDong": "sua",
+   "lyDo": "SỬA CÂU TRÍCH — cùng lỗi với tieuChi6[10]. Câu trích cũ 'Thịt đó là thịt thớ mịn và kết cấu khít, màu hồng đậm và bề mặt mịn.' mở đầu bằng đại từ nên không tự nói nghĩa. Đã nối thêm câu định nghĩa ngay trước (nguyên văn); tổng 196 ký tự, dưới trần 300. fact và các trường khác giữ nguyên.",
+   "sua": {
+    "trich": "Theo mục đích của các phân nhóm 0204.10 và 0204.30, thịt cừu non là thịt từ một động vật thuộc loài cừu không quá 12 tháng tuổi. Thịt đó là thịt thớ mịn và kết cấu khít, màu hồng đậm và bề mặt mịn."
+   }
+  },
+  {
+   "index": "tieuChi6[14]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020430; fact 'can_nang_ca_than_thit_khong_qua_26kg' op '<=' value 26 đơn vị 'kg'; trích nguyên văn 'Cân nặng cả thân thịt không quá 26kg.' — số 26 có nguyên văn trong câu, nghĩa đúng."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "hs 02041000 có trong biểu thuế; trích nguyên văn tax.02041000 '02041000 - Thịt cừu non cả con và nửa con, tươi hoặc ướp lạnh'. dieuKien nêu tên dòng + hai điều kiện của chú giải phân nhóm và GHI RÕ NGUỒN '(chú giải phân nhóm 0204.10)' — văn phong đã được duyệt (0402/3215). LƯU Ý: runtime cắt dieuKien ở 90 ký tự nên phần ngưỡng bị cắt khi vào prompt; đây là giới hạn của clip ở lib/so-tay-gates.js (ảnh hưởng cả dữ liệu đã duyệt, vd 0402), không phải lỗi dữ liệu; bản có cấu trúc của hai ngưỡng nằm ở tieuChi6[9..11]."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "hs 02042100 có trong biểu thuế; trích nguyên văn tax.02042100 '02042100 - - Thịt cả con và nửa con'; dieuKien nêu tên dòng + trạng thái của nhóm 0204.2 + mã nhóm 0204.2 — văn phong đã được duyệt; fact 'la_thit_ca_con_va_nua_con_khong_phai_thit_cuu_non' khớp wco.020421."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "hs 02042200 có trong biểu thuế; trích nguyên văn tax.02042200; dieuKien nêu đúng tên dòng + trạng thái + nhóm 0204.2; fact khớp wco.020422."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "hs 02042300 có trong biểu thuế; trích nguyên văn tax.02042300; dieuKien nêu đúng tên dòng + trạng thái + nhóm 0204.2; fact khớp wco.020423."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "hs 02043000 có trong biểu thuế; trích nguyên văn tax.02043000 '02043000 - Thịt cừu non, cả con và nửa con, đông lạnh'. dieuKien nêu tên dòng + hai điều kiện của chú giải phân nhóm có nhãn nguồn '(chú giải phân nhóm 0204.30)' — văn phong đã duyệt. LƯU Ý: runtime cắt ở 90 ký tự (xem chú thích ở dong8[0])."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "hs 02044100 có trong biểu thuế; trích nguyên văn tax.02044100 '02044100 - - Thịt cả con và nửa con'; dieuKien nêu đúng tên dòng + trạng thái + nhóm 0204.4; fact khớp wco.020441."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "hs 02044200 có trong biểu thuế; trích nguyên văn tax.02044200; dieuKien nêu đúng tên dòng + trạng thái + nhóm 0204.4; fact khớp wco.020442."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "hs 02044300 có trong biểu thuế; trích nguyên văn tax.02044300; dieuKien nêu đúng tên dòng + trạng thái + nhóm 0204.4; fact khớp wco.020443."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "hs 02045000 có trong biểu thuế; trích nguyên văn tax.02045000 '02045000 - Thịt dê'; dieuKien nêu đúng tên dòng + phân nhóm 0204.50; fact 'la_thit_de' khớp wco.020450. Đủ cả 9 dòng 8 số của nhóm — check-cay xanh."
+  }
+ ]
+}

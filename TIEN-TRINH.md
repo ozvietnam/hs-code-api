@@ -3249,3 +3249,108 @@ Nhánh này bị **conflict** với `main` (main đã có lô 035 `#428` + lô 0
 
 `data/so-tay/{0106,0201,0202,0203,0204,0205}.json` + `data/so-tay/bao-cao/lo-039.json` + dòng CSV 039 +
 `TIEN-TRINH.md`. KHÔNG commit `tmp/`. **KHÔNG merge.**
+
+---
+
+# SOÁT ĐỘC LẬP lô 039 — 0106 0201 0202 0203 0204 0205 (24/10/2026, `dev-zcode-mm` — người soát KHÁC người soạn)
+
+## Kết quả
+
+**120/120 mục đã soát** (0106: 34 · 0201: 13 · 0202: 13 · 0203: 20 · 0204: 32 · 0205: 8) —
+**sửa 5, xoá 0**. Không mục nào mờ má (mọi câu trích đều có thật trong đúng khối nguồn và nói đúng điều
+mục khẳng định). Hồ sơ soát: `review/{0106,0201,0202,0203,0204,0205}.json`; script áp:
+`scripts/apply-review-lo039.mjs` (2 pha, y hệt `apply-review-lo015.mjs`).
+
+## 5 lỗi đã bắt (máy KHÔNG bắt được)
+
+| # | Nhóm | Mục | Lỗi | Cách sửa |
+|---|---|---|---|---|
+| 1 | 0106 | `tieuChi6[1]` (hs6 010612) | Tên tiêu chí có mảng **`muc` không ứng với loài nào** trong nguồn, và bỏ sót 3 loài nguồn có nêu (cá heo chuột, sư tử biển, hải mã) | Sửa `fact` thành danh sách đầy đủ 8 loài; **câu trích giữ nguyên** |
+| 2 | 0106 | `tieuChi6[4]` (hs6 010619) | Tên tiêu chí liệt kê loại bị loại nhưng thiếu đúng 3 loài (cá heo chuột, sư tử biển, hải mã) + có mảng `muc` vô nghĩa | Sửa `fact`; **câu trích giữ nguyên** |
+| 3 | 0106 | `dong8[1]` (01061210) `tieuChi.fact` | Cùng lỗi mảng `muc` + bỏ sót 'cá heo chuột' mà tên biểu thuế dòng này nêu nguyên văn | Sửa `fact` |
+| 4 | 0204 | `tieuChi6[10]` (hs6 020410) | **Câu trích mở đầu bằng ĐẠI TỪ** 'Thịt đó là…' → tự nó KHÔNG nói được mình nói về loại thịt nào (lỗi lớp lô 035) | Nối thêm câu định nghĩa ngay trước (nguyên văn, liền khoảng trắng) → 196 ký tự, dưới trần 300 |
+| 5 | 0204 | `tieuChi6[13]` (hs6 020430) | Cùng lỗi đại từ | Như trên |
+
+Sau khi sửa: `check-so-tay --raw` **120/120**, `check-trich-nguyen-van` **120/120 nguyên văn tuyệt đối**
+(bộ kiểm byte-exact — bắt được lỗi mà `check-so-tay` bỏ qua vì `squash()` nén mất dấu).
+
+## Những chỗ CỐ Ý GIỮ (có lý do, không phải lỗi)
+
+- **`phamVi` 0106 nêu đủ 5 phần (A)–(E)** — không thu hẹp về một phần (đã soi từng đoạn lược '…': mảnh
+  'linh dương (trừ … phân họ Bovinae)' được giữ trong trích nên KHÔNG đoạn lược nào nuốt ngoại lệ).
+- **`dieuKienVao` 0106 = 'la_dong_vat_song'** (câu ràng buộc Chương 1 'bao gồm tất cả các loại động vật
+  sống trừ (a)(b)(c)') — phủ trọn nhóm, và là điều kiện vào nhóm 4 số thật sự (phân biệt với 02.x/05.11).
+- **`loaiTru` 0106/0201–0205 lấy ngoại lệ CẤP CHƯƠNG** — nguồn nêu đích danh 03.01/03.06/03.07/03.08,
+  30.02, 05.11, 05.04, 16.01, 16.02 trong chính câu → đạt luật mục 3.
+- **`phanBiet` 0203/0204 (đông lạnh ↔ tươi/ướp lạnh)** — đúng CHIỀU, phủ kín 6 lá (0203) / 8 lá (0204,
+  dòng 02045000 thịt dê cố ý không thuộc nhánh nào vì wco.020450 gộp cả ba trạng thái).
+  133 mục `phanBiet` đã gộp cũng dùng mã trong nhóm mà câu trích không nêu → đúng văn phong.
+- **`phanBiet` rỗng ở 0201/0202/0205** — ĐÚNG: nguồn các nhóm này không có câu nào nêu đích danh mã NGOÀI
+  nhóm, mà máy loại mọi phanBiet có mã ngoài nhóm không nêu trong câu trích.
+- **`tieuChi6` rỗng ở 0205** — ĐÚNG: cây HS của 0205 chỉ có MỘT lá 8 số (02050000) và lá này có
+  `laPhanNhom` 4 số → không có nút 6 số; máy sẽ loại mọi `tieuChi6` với hs6='020500'.
+- **Tiêu chí cừu non (≤ 12 tháng, ≤ 26kg) đặt ở `tieuChi6`, KHÔNG ở `dieuKienVao`** — ĐÚNG CẤP: nguồn
+  nói rõ 'Theo mục đích của các phân nhóm 0204.10 và 0204.30' → tiêu chí của PHÂN NHÓM, không phải điều
+  kiện vào nhóm 4 số (đặt vào `dieuKienVao` sẽ sai cấp và nói chắc hơn nguồn).
+- **`dong8[].dieuKien` ghi thêm 'phân nhóm X' / 'Tươi hoặc ướp lạnh' / 'tên WCO'** — văn phong ĐÃ ĐƯỢT
+  DUYỆT ở 0402/1702/3215; đã đếm tần suất trong `data/so-tay/*.json` trước khi kết luận.
+
+## Những chỗ KHÔNG sửa (nêu ra để người duyệt thấy rõ — KHÔNG phải lỗi của lô này)
+
+1. **Thiếu mục loại trừ cho 'tiết động vật' (0511|3002)** ở cả 5 nhóm thịt: câu nguồn
+   '(c) Ruột, bong bóng hoặc dạ dày của động vật (nhóm 05.04) **hoặc tiết động vật (nhóm 05.11 hoặc
+   30.02)**' bị cắt sau '(nhóm 05.04)'. Đây là **vẾ ALTERNATIVE cùng mục (c), KHÔNG phải ngoại lệ**, và mục
+   chỉ khẳng định nhánh 05.04 nên câu trích vẫn tự nói đúng điều mục khẳng định. Không mở rộng trích vì
+   sẽ gợi ý sai rằng tiết động vật cũng sang 05.04. Trong **374 nhóm đã gộp KHÔNG nhóm nào** có mục
+   loại trừ cho 'tiết động vật' → bổ sung là việc SOẠN, không phải sửa lỗi lô này.
+2. **Thiếu mục loại trừ cho bột thịt (23.01)** — cùng lý do: câu ngay sau câu trích là câu RIÊNG.
+3. **Runtime cắt `dong8[].dieuKien` ở 90 ký tự** → hai ngưỡng của dòng 02041000/02043000 (12 tháng,
+   26kg) bị cắt khi vào prompt. Đây là giới hạn của `clip()` ở `lib/so-tay-gates.js`, không phải lỗi
+   dữ liệu, và xảy ra y hệt với dữ liệu đã duyệt (0402). Bản có cấu trúc của hai ngưỡng nằm ở `tieuChi6`.
+4. **`tieuChi6` hiện CHƯA được cổng runtime dùng** — `lib/so-tay-gates.js` chỉ đọc `dieuKienVao`/`loaiTru`/
+   `phanBiet`/`dong8`; `tieuChi6` mới chỉ được máy kiểm + `check-cay` dùng.
+
+## Cách làm (đúng thứ tự)
+
+```bash
+# 1. Áp kết quả soát lên bản nháp (KHÔNG đụng data/)
+TARGET=raw APPLY=1 node scripts/apply-review-lo039.mjs
+node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw          # 120/120
+node scripts/check-trich-nguyen-van.mjs tmp/so-tay/raw/*.json # 120/120 nguyên văn tuyệt đối
+
+# 2. Nạp lại (báo cáo cũ phải rm trước, nếu không sẽ nối vào file cũ)
+rm -f data/so-tay/bao-cao/lo-039.json
+node scripts/build-so-tay.mjs --nhom=0106,0201,0202,0203,0204,0205 --tu-tep=tmp/so-tay/raw --force \
+  --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-039.json   # 120/120 (100 %)
+
+# 3. Đổi nhãn nguồn: CHỈ 5 khối đã soát (phamVi/boPhan/dieuKienVao/loaiTru/phanBiet) → NGUOI_DUYET
+TARGET=data APPLY=1 node scripts/apply-review-lo039.mjs    # 44 mục
+```
+
+**Nhãn `nguonLoai`:** đổi `AI_DA_KIEM → NGUOI_DUYET` cho **44 mục** thuộc 5 khối chính (đúng luật §L11 và
+đúng văn phong dữ liệu đã gộp: `tieuChi6` không có nhãn, `dong8` chủ yếu `AI_DA_KIEM`). `cay` do máy
+sinh (`MAY_SUY`) — không đụng.
+
+## Cách soát (không tin máy)
+
+Đọc HẾT 6 tệp nguồn `tmp/so-tay/nguon/*.txt` + HẾT 6 bản nháp, đối chiếu **từng câu trích** với đúng
+khối nguồn khai báo (không chỉ "có mặt ở đâu đó trong tệp"). Tự dựng lại TỪNG đoạn lược '…' và in
+câu ngay sau mảnh trích cuối để soi ngoại lệ bị nuốt (`tmp/so-tay/audit-truong.mjs`). Đếm tần suất văn
+phong trong `data/so-tay/*.json` (374 nhóm đã soát) trước mỗi kết luận "lỗi hay văn phong đã duyệt".
+Ngoài ra **3 lượt soát độc lập bổ sung bằng agent khác** (mỗi lượt 2 nhóm, đọc mù — không thấy kết
+luận của em): 0202/0203 và 0204/0205 → **không tìm ra lỗi nào** (0204/0205 cũng nhận ra lỗi đại từ
+'Thịt đó là…' và xác nhận tiêu chí cừu non đúng cấp); 0106/0201 → nêu đúng điểm cắt vế 'tiết động vật'
+(mà em đã đánh giá và ghi rõ lý do giữ, xem mục 1 ở trên).
+
+## Trạng thái cuối
+
+- `node scripts/check-so-tay.mjs` → **374 nhóm, 10 963 mục, 0 mục không kiểm được nguồn** ✅
+- `node scripts/check-cay.mjs --nhom=0106,0201,0202,0203,0204,0205 --chi-tiet` → **6/6 nhóm đủ, 0 lỗi** ✅
+- `npm run so-tay:check` → xanh ✅ · `npm test` → ALL TESTS PASSED ✅
+- PR #432 (https://github.com/ozvietnam/hs-code-api/pull/432) — **cập nhật mô tả, KHÔNG merge**.
+
+## Nộp dung
+
+`review/{0106,0201,0202,0203,0204,0205}.json` + `scripts/apply-review-lo039.mjs` +
+`data/so-tay/{0106,0201,0202,0203,0204,0205}.json` + `data/so-tay/bao-cao/lo-039.json` +
+`TIEN-TRINH.md`. KHÔNG commit `tmp/`. **KHÔNG merge.**
