@@ -4,6 +4,70 @@
 
 ---
 
+# SOẠN lô 042 — phiên `dev-zcode-mm` (24/10/2026)
+
+**Lô:** `0308 0309 0401 0403 0404 0405` (6 nhóm · 47 514 ký tự nguồn) · nhánh `so-tay/lo-042`
+**Kết quả: 125/125 mục đạt (100 %) · 0 mục rớt · `nhomLoi: []`** · `npm run so-tay:check` xanh (386 nhóm / 11 128 mục) ·
+`npm test` xanh (`=== ALL TESTS PASSED ===`) · `check-cay` 0 lỗi, 6/6 nhóm đủ (cây + dong8 + tên nút ảo + tiêu chí 6 số).
+**CHƯA soát độc lập** — PR **#435** (https://github.com/ozvietnam/hs-code-api/pull/435) chỉ mở, **KHÔNG merge**.
+
+## Quy trình đã làm (đúng `docs/giao-viec/so-tay-giao-ngoai.md` mục 2)
+
+1. Đọc TRỌN `docs/giao-viec/so-tay-giao-ngoai.md` (mục 2 + 11 luật mục 3) **trước** khi làm.
+2. `node scripts/build-so-tay.mjs --nhom=0308,0309,0401,0403,0404,0405 --xuat-nguon=tmp/so-tay/nguon`
+   → đọc HẾT 6 tệp nguồn + `_he-thong.txt`.
+3. Soạn `tmp/so-tay/raw/<nhom>.json` — **mọi câu trích cắt từ tệp nguồn theo SỐ THỨ TỰ ĐOẠN**
+   (script `tmp/so-tay/slice.mjs`), **không gõ tay tiếng Việt** → không bao giờ sai dấu.
+4. `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → 125/125, 0 lỗi.
+5. `node scripts/check-trich-nguyen-van.mjs` (byte-exact) → 123/123 mục có trích đúng nguyên văn trong đúng khối nguồn.
+6. `node scripts/build-so-tay.mjs --tu-tep=tmp/so-tay/raw --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-042.json`
+   → **mục đạt 125/125 (100 %)**, nhóm lỗi: 0.
+7. `npm run so-tay:check` + `npm test` → xanh.
+
+## Mục CỐ Ý bỏ (không đoán, không ép máy)
+
+| Nhóm | Bỏ gì | Vì sao |
+|---|---|---|
+| 0403 | `dieuKienVao` **rỗng** | Chú giải nhóm chỉ liệt kê sản phẩm (buttermilk, sữa đông, kem đông, sữa chua, kephir) — là **định nghĩa phạm vi**, không phải ràng buộc phủ cả nhóm. Các câu có "có thể …" (p1, p2, p3) là câu CHO PHÉP → không đặt `value=true`. Điều kiện "vẫn giữ được đặc tính cơ bản của sữa chua" chỉ phủ **sữa chua** (0403.20), không phủ cả nhóm. |
+| 0405 | `dieuKienVao` **rỗng** | Điều kiện của nhóm nằm rải ở từng phần (A) bơ 80–95 %, (B) chất phết 39–<80 %, (C) chất béo/dầu khác — không có câu ràng buộc nào phủ **cả ba phần**. Phần số đã đưa vào `tieuChi6` + `dong8[].dieuKienSo`. |
+| 0405 | `loaiTru` tới **15.17 / 21.06** | Nguồn ghi *"thường thuộc nhóm 15.17 hoặc 21.06"* — vừa là câu **"thường"** (máy loại `loai-tru-chi-la-thuong`) vừa **không phải loại trừ dứt khoát**. Không có câu nào khác trong nguồn nêu 15.17/21.06 → **XOÁ**, ghi ở mô tả PR. |
+| 0404 | `tieuChi6` 040490 (nguồn `ch04.chuong`) | Đã thử `khong_phai_bor_khu_nuoc_hoac_ghee` cho 040590 nhưng **SAI**: 040590.10 CHÍNH LÀ "chất béo khan của bơ" (= bơ khử nước). Đã XOÁ mục đó, giữ lại bản WCO (`khong_phai_bor_hoac_chat_phet_tu_bor_sua`) và chuyển ý này sang `phanBiet` (04059010/04059030 vs 04051000). |
+
+## Mục đáng chú ý cho người soát độc lập
+
+- **0401 — `phamVi.trich` dài 356 ký tự** (vượt mốc 300 trong giao việc, dưới trần máy 600). Lý do: câu nguồn của
+  nhóm 0401 là **MỘT câu** gộp cả phần "bao gồm" lẫn hai mệnh đề loại trừ (04.02, 04.03). Cắt bớt bằng "…" thì
+  **nuốt mất câu loại trừ** (đúng bài học lô 022/030) → giữ nguyên cả câu, không cắt.
+  Cùng kiểu: 0404 `phamVi.trich` 302 ký tự.
+- **0308 — `dieuKienVao[0]`** là câu loại trừ **"trừ động vật giáp xác và động vật thân mềm"** (đúng ở cả mục (1) và (2)).
+  Em diễn đạt thành `khong_phai_dong_vat_giap_xac_hoac_dong_vat_than_mem = true` — người soát xem có chấp nhận
+  cách diễn đạt "phủ định + = true" không, hay muốn đổi/thu.
+- **0404 — `dieuKienVao[1]`** đặt là `khong_chua_tren_95_lactose_khan = true` (theo câu loại trừ (c)), **không** đặt
+  `ham_luong_lactose_khan <= 95` để khỏi đảo chiều số so với câu nguồn.
+- **0405 — `phanBiet` mới**: "bơ khử nước hoặc ghee" → `04059010|04059030` vs bơ thường → `04051000`
+  (nguồn Chú giải phân nhóm 2 của Chương 4). Đây là điểm phân biệt quan trọng của nhóm.
+- **0308 — 2 nút 6 số thiếu tên tiếng Việt** (030811 hải sâm, 030821 cầu gai) → đã điền `cay.tenDien` kèm trích WCO.
+  Còn 030819/030829 thì cây đã có tên ("Loại khác" từ biểu thuê) nên **không** điền (sẽ bị báo trùng biểu thuế).
+- **0309/0401/0403/0404/0405** không có nguồn `sen.*` (chỉ 0404 có) nên `phienBan` = HS2022, riêng 0404 = HS2022+SEN2022.
+
+## Độ phủ
+
+`dong8` đủ **54/54** dòng `tax.*` của 6 nhóm (0308: 20 · 0309: 8 · 0401: 9 · 0403: 6 · 0404: 5 · 0405: 6) — kiểm bằng
+script so trực tiếp khối `[tax.*]` của tệp nguồn với `dong8` trong bản nháp: không THIẾU, không THỪA.
+
+## Gates
+
+- `npm run so-tay:check` → 386 nhóm, 11 128 mục, **0 mục không kiểm được nguồn**.
+- `npm test` → **ALL TESTS PASSED**.
+- `node scripts/check-cay.mjs --nhom=0308,0309,0401,0403,0404,0405 --chi-tiet` → 0 lỗi lệch cây, 6/6 nhóm đủ.
+- `node scripts/check-trich-nguyen-van.mjs` (byte-exact, cả bản nháp lẫn tệp đã nạp) → **OK**.
+- `node scripts/benchmark-alias-holdout.mjs --gate` (gate của CI) → **✓ Không tụt quá 1 điểm % so với mốc** (chạy local, exit 0).
+- **CI PR #435:** `test` pass (2m06) · `bench` pass (11m51) · `Vercel Preview Comments` pass.
+  `Vercel` = "Deployment was blocked" — **có sẵn ở mọi PR** (#431, #430, #427 đều vậy), không phải lỗi code.
+- Nhãn nguồn: **toàn bộ 125 mục = `AI_DA_KIEM`** (máy gán). Chưa mục nào mang `NGUOI_DUYET` — người soát độc lập mới đổi.
+
+---
+
 # SOÁT ĐỘC LẬP lô 038 — phiên `dev-soat-doc-lap-lo038` (24/10/2026)
 
 Người soát **khác** người soạn (`dev-zcode-mm`). Đã đọc lại **TOÀN BỘ** 5 khối của 6 nhóm
