@@ -1,0 +1,61 @@
+{
+ "nhom": "8715",
+ "nguoiSoat": "soat-doc-lap-037",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-24T22:40:00+07:00",
+ "phamViSoat": "Toàn bộ 8 mục của 5 khối trong tmp/so-tay/raw/8715.json (1 phamVi + 0 dieuKienVao + 3 loaiTru + 3 phanBiet + 1 boPhan), đọc cùng tmp/so-tay/nguon/8715.txt ([nhom8715.nhom], [ch87.chuong], [wco.871500], [tax.87150000]). Ngoài phạm vi: 1 dong8 + 0 tieuChi6 (máy kiểm nguyên văn) — đã đọc qua, không sửa.",
+ "soat": 8,
+ "daKiem": 8,
+ "sua": 2,
+ "xoa": 0,
+ "ghiChu": "2 sửa, 0 xoá. Cùng một lỗi gốc: mất ĐỊNH NGỮ GIỚI HẠN \"chỉ sử dụng hoặc chủ yếu dùng\". Nguồn: \"(i) Chúng phải được xác định phù hợp để chỉ sử dụng hoặc chủ yếu dùng cho các xe của nhóm này\" — điều kiện là \"dùng riêng HOẶC dùng chủ yếu\". Bản nháp ghi \"dành cho xe của nhóm này\" (phamVi.text) và \"phải dành riêng cho xe của nhóm này\" (boPhan.tomTat) — \"dành riêng\" là điều kiện TUYỆT ĐỐI, mạnh hơn nguồn, và làm mất nhánh \"chủ yếu dùng\" (bài học lô 034: nhãn điều kiện bỏ mất định ngữ giới hạn thì mục nói chắc hơn nguồn). Trong cùng khối boPhan, `quyTac` ĐÃ giữ đúng \"chỉ sử dụng hoặc chủ yếu dùng\" → mâu thuẫn nội bộ, đã sửa cả hai chỗ cho khớp. Thêm nữa, tomTat cũ chỉ lặp lại tiêu chí mà không tóm tắt các bộ phận, trong khi nguồn liệt kê 3 loại (\"Thân xe để gắn với khung gầm xe…\", \"Khung gầm và bộ phận của nó\", \"Bánh xe (đã hoặc chưa lắp lốp), và bộ phận của nó\") — theo tiền lệ 8608/9005, tomTat phải nêu ví dụ bộ phận, nên đã mở rộng câu trích (cắt nguyên văn từ nguồn) để đủ căn cứ.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Mất định ngữ giới hạn: nguồn yêu cầu bộ phận \"được xác định phù hợp để CHỈ SỬ DỤNG HOẶC CHỦ YẾU DÙNG cho các xe của nhóm này\"; bản nháp ghi \"dành cho xe của nhóm này\" — câu này đi vào prompt vòng 2 (lib/so-tay-gates.js chỉ đưa fact/text) nên sẽ dẫn mô hình xếp nhầm bộ phận dùng chủ yếu cho xe đẩy trẻ em. Sửa: đưa đúng vế \"chỉ sử dụng hoặc chủ yếu dùng\" của nguồn vào text (giữ nguyên \"thường đẩy bằng tay\" vốn đã có trong bản nháp).",
+   "sua": {
+    "text": "Các xe đẩy trẻ em, có hoặc không gấp, có hai hoặc nhiều bánh và thường đẩy bằng tay, cùng bộ phận của các xe đó đáp ứng cả hai tiêu chí: được xác định phù hợp để chỉ sử dụng hoặc chủ yếu dùng cho các xe của nhóm này và không bị loại trừ theo Chú giải Phần XVII."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải chương 87 mục (b) — \"Đồ chơi có bánh xe được thiết kế để trẻ em lái và xe đạp đồ chơi (trừ xe đạp trẻ em) (nhóm 95.03)\" — đích 95.03 nêu nguyên văn; không mâu thuẫn với nguồn nhóm 8712 (khác 8712: ở 8715 là đồ chơi bánh xe, không phải xe đạp trẻ em)."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải chương 87 mục (d) — phương tiện dùng cho trò chơi trong công viên giải trí/hội chợ (nhóm 95.08) — đích nêu nguyên văn."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải chương 87 mục (a) — mô hình trưng bày (nhóm 90.23) — đích nêu nguyên văn."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: có = 9503, không = 8715; mã 95.03 có trong câu trích; câu hỏi không nhắc mã."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: có = 9508, không = 8715; mã 95.08 có trong câu trích."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: có = 9023, không = 8715; mã 90.23 có trong câu trích."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "tomTat ghi \"Bộ phận phải dành riêng cho xe của nhóm này\" — \"dành riêng\" là điều kiện tuyệt đối, mạnh hơn nguồn (\"chỉ sử dụng hoặc chủ yếu dùng\"), và mâu thuẫn với chính `quyTac` trong cùng khối (quyTac giữ đúng \"chỉ sử dụng hoặc chủ yếu dùng\"). Đồng thời tomTat không tóm tắt các bộ phận (nguồn liệt kê 3 loại). Sửa tomTat: giữ định ngữ giới hạn của nguồn + nêu 3 loại bộ phận; mở rộng trich bằng câu nguyên văn về bộ phận (cắt từ nguồn) để đủ căn cứ cho phần tóm tắt mới.",
+   "sua": {
+    "tomTat": "Bộ phận được xác định phù hợp để chỉ sử dụng hoặc chủ yếu dùng cho các xe của nhóm này và không bị loại trừ bởi các quy định trong Chú giải Phần XVII; các bộ phận trong nhóm gồm thân xe để gắn với khung gầm xe, kể cả loại thân của xe đẩy có thể tháo rời để dùng làm nôi, khung gầm và bộ phận của nó, bánh xe (đã hoặc chưa lắp lốp) và bộ phận của nó.",
+    "trich": "(II) Bộ phận của các xe nêu trên, với điều kiện chúng đáp ứng cả hai tiêu chí sau: (i) Chúng phải được xác định phù hợp để chi sử dụng hoặc chủ yếu dùng cho các xe của nhóm này. và (ii) Chúng không bị loại trừ bởi các quy định trong Chú giải Phần XVII (xem Chú giải Tổng quan tương ứng). … Bộ phận trong Nhóm này bao gồm: (1) Thân xe để gắn với khung gầm xe, kể cả loại thân của xe đẩy có thể tháo rời để dùng làm nôi. (2) Khung gầm và bộ phận của nó. (3) Bánh xe (đã hoặc chưa lắp lốp), và bộ phận của nó."
+   }
+  }
+ ]
+}

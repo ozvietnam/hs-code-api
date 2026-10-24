@@ -1,0 +1,67 @@
+{
+ "nhom": "9107",
+ "nguoiSoat": "soat-doc-lap-037",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-24T22:40:00+07:00",
+ "phamViSoat": "Toàn bộ 10 mục của 5 khối trong tmp/so-tay/raw/9107.json (1 phamVi + 2 dieuKienVao + 4 loaiTru + 3 phanBiet + 0 boPhan), đọc cùng tmp/so-tay/nguon/9107.txt ([nhom9107.nhom], [ch91.chuong], [wco.910700], [tax.91070000]). Ngoài phạm vi: 1 dong8 + 0 tieuChi6 (máy kiểm nguyên văn) — đã đọc qua, không sửa.",
+ "soat": 10,
+ "daKiem": 10,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "1 sửa, 0 xoá. Sửa: fact của dieuKienVao[1] bỏ mất định ngữ giới hạn \"chủ yếu\" — nguồn ghi \"được thiết kế CHỦ YẾU để tự động nội hoặc ngắt mạch điện\", bản nháp đặt fact không có \"chủ yếu\" nên câu trích (giữ nguyên \"chủ yếu\") và fact (mất \"chủ yếu\") mâu thuẫn nhau; mà fact là thứ ĐI VÀO PROMPT cổng (lib/so-tay-gates.js chỉ đưa fact, không đưa trich) → mô hình sẽ xếp nhầm hàng chỉ \"chủ yếu\" dùng để hẹn giờ. Cùng lý do, phamVi.text của nhóm ĐÃ giữ đúng \"chủ yếu\" → trong nhóm này chỉ fact bị mất. Không xoá mục: \"Để được phân loại vào nhóm này… phải có…\" là câu ràng buộc đúng, còn vế thiết kế là đặc điểm mô tả hàng thuộc nhóm (dùng để gợi ý hỏi người khai, không dùng để chặn). GHI CHÚ: loaiTru không ghi mục ch91 (d) \"Bi của ổ bi (tùy theo từng trường hợp, thuộc nhóm 73.26 hoặc 84.82)\" — đúng luật máy \"loaiTru mà câu nói tùy trường hợp/thường thuộc thì BỎ\"; mục \"máy đồng hồ cá nhân hay đồng hồ thời gian (các nhóm từ 91.08 đến 91.10) và bộ phận của các máy này (thường thuộc nhóm 91.10 hay 91.14)\" cũng bị bỏ vì có dải số và \"thường thuộc\" — đúng luật.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Nêu đúng phạm vi nhóm, giữ nguyên định ngữ giới hạn \"chủ yếu\" và \"thường là theo chương trình hàng ngày hay hàng tuần đã lập trước\"; câu trích nguyên văn (bỏ chữ \"nhưng\" ở câu nối — không đổi nghĩa)."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu ràng buộc đúng dạng: \"Để được phân loại vào nhóm này, những thiết bị này phải có một máy thuộc loại đồng hồ cá nhân hoặc đồng hồ thời gian (…) hoặc chỉ có một động cơ đồng bộ…\". Fact giữ đúng hai nhánh \"hoặc\" (đồng hồ cá nhân HOẶC đồng hồ thời gian HOẶC động cơ đồng bộ) — không tách \"A hoặc B\" thành hai điều kiện độc lập."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "sua",
+   "lyDo": "Fact bỏ mất định ngữ giới hạn \"chủ yếu\" (nguồn: \"được thiết kế CHỦ YẾU để tự động nội hoặc ngắt mạch điện tại thời điểm đã định\"). Fact là thứ đi vào prompt cổng (lib/so-tay-gates.js chỉ đưa fact, không đưa trich) nên mất \"chủ yếu\" biến điều kiện thành bắt buộc tuyệt đối — mô hình sẽ loại nhầm hàng chỉ dùng CHỦ YẾU để hẹn giờ. Sửa: thêm \"chu_yeu\" vào tên fact (câu trích giữ nguyên, đã có \"chủ yếu\").",
+   "sua": {
+    "fact": "duoc_thiet_ke_chu_yeu_de_tu_dong_noi_hoac_ngat_mach_dien_tai_thoi_diem_dinh"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"Nhóm này không bao gồm những mặt hàng sau nếu được trình bày riêng: hộp (vỏ) cho các thiết bị được mô tả bên trên (có thể được phân vào nhóm 91.12 hay…)\" — điều kiện \"nếu được trình bày riêng\" giữ nguyên, đích 91.12 nêu nguyên văn."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải Tổng quát Chương 91 mục (b) — thiết bị âm nhạc tự động, hộp phát nhạc (nhóm 92.08) — đích nêu nguyên văn."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải Tổng quát Chương 91 mục (c) — đồng hồ đồ chơi/phụ kiện cây Giáng sinh (nhóm 95.03 hay 95.05) — đủ hai đích nêu nguyên văn."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải 1(f) Chương 91 — \"Ổ bi (nhóm 84.82)\" — đích nêu nguyên văn."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: có = 9112 (hộp vỏ trình bày riêng), không = 9107; mã 91.12 nêu nguyên văn."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: có = 9208, không = 9107; mã 92.08 nêu nguyên văn."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: có = 9503|9505, không = 9107; cả hai mã nêu nguyên văn trong câu."
+  }
+ ]
+}
