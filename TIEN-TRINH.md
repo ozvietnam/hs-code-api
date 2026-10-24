@@ -86,7 +86,7 @@ Theo luật *"nguồn bao gồm X ở một chỗ, loại trừ X ở chỗ khá
 check-so-tay --raw        74/74   (6 nhóm, 0 mục không kiểm được nguồn)
 check-trich-nguyen-van    71/71 OK — mọi câu trích nguyên văn tuyệt đối trong đúng khối nguồn
 check-cay × 6              0 lỗi lệch cây, 6 nhóm đủ
-so-tay:check               362 nhóm / 10.599 mục / 0 rớt
+so-tay:check               374 nhóm / 10.917 mục / 0 rớt   (sau khi gộp origin/main: lô 035/036 đã vào main)
 npm test                   ALL TESTS PASSED
 ```
 
@@ -98,6 +98,19 @@ Ba bản kiểm độc lập đã chạy cùng nhau (không tin bản nháp củ
    dấu (máy không bao giờ bắt vì `squash()` bỏ dấu), bắt đoạn **cắt cụt giữa câu**, bắt đoạn **dán hai
    khối văn bằng dấu cách**, và đo **ngưỡng clip lúc chạy** của runtime (`clip(…, 220/160/110/55/90)`).
    → **0 lỗi** trong 5 khối đã soát sau khi sửa.
+
+## Gộp `origin/main` vào nhánh — TIEN-TRINH.md ghép kiểu HỢP NHẤT (không mất mục nào)
+
+PR #430 bị `mergeable=CONFLICTING` vì lô 035 (#428) và lô 036 (#427) đã vào `main` sau khi nhánh này
+cắt. Đã `git merge origin/main` và **tự giải quyết** thay vì để người duyệt phải giải:
+
+- **9 mục chỉ có ở `main`** (lô 036 soạn, lô 031 soát + soạn, lô 027 soát + soạn, lô 014 soạn, lô 028 soát + soạn, lô 032 soạn) → **đã chèn vào**, không bỏ.
+- **4 mục chỉ có ở nhánh này** (lô 038 soát, lô 034 soát, lô 034 soạn, lô 038 soạn) → `main` **đã MẤT** các mục lô 034 vì PR #422 bị squash-merge mà không kèm `TIEN-TRINH.md` → bản ghép **khôi phục lại**.
+- Bản ghép cuối: **24 mục** = hợp nhất của cả hai bên; script đã tự kiểm "không mất mục nào".
+
+Đây là lần thứ hai `main` mất mục `TIEN-TRINH.md` khi squash-merge (lần trước lô 027/028/031) — xem
+memory `tien-trinh-main-da-mat-muc-cu-phien-cu`. **Khi gộp main vào nhánh sổ tay, phải ghép kiểu hợp
+nhất, không được chọn "ours/theirs".**
 
 ## Vẫn chờ người duyệt quyết (không tự quyết)
 
