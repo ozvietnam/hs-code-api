@@ -1,0 +1,114 @@
+{
+ "nhom": "0203",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-24T23:56:00+07:00",
+ "phamViSoat": "Toàn bộ 20 mục của bản nháp lô 039 (1 phamVi + 2 dieuKienVao + 4 loaiTru + 1 phanBiet + 6 tieuChi6 + 6 dong8; không có boPhan, không có cay.tenDien), đọc cùng tmp/so-tay/nguon/0203.txt (nhom0203.nhom, ch02.chuong, phan02.phan, wco.020311/020312/020319/020321/020322/020329, tax.02031100…02032900). Đối chiếu TỪNG CÂU TRÍCH với đúng khối nguồn khai báo.",
+ "soat": 20,
+ "sua": 0,
+ "xoa": 0,
+ "giu": 20,
+ "ghiChu": "KẾT QUẢ: 20/20 mục đều có câu trích CÓ THẬT trong đúng khối nguồn và câu trích NÓ ĐÚNG điều mục khẳng định. KHÔNG xoá, KHÔNG sửa. GIỮ CÓ LÝ DO: (1) phamVi.text chép lại cả HAI câu định nghĩa nhóm, kể cả câu đặc tính 'thịt ba chỉ và các loại thịt tương tự có tỷ lệ mỡ giắt cao…' — đây là nội dung nhóm do chính chú giải nhóm nói (không phải mô tả vật liệu thay phạm vi), nên giữ; (2) dieuKienVao gồm hai điều kiện VÀO NHÓM 4 số (thịt lợn + dạng tươi/ướp lạnh/đông lạnh) lấy từ chú giải nhóm; (3) loaiTru[1] và [2] là ngoại lệ cấp CHƯƠNG nhưng nguồn nêu đích danh trong chính câu; (4) phanBiet[0] đúng CHIỀU và phủ kín: nhánh 'có' = 3 dòng đông lạnh (02032100/02032200/02032900), nhánh 'không' = 3 dòng tươi/ướp lạnh (02031100/02031200/02031900) — cây 0203 chỉ có 6 lá này nên không còn dòng mồ côi, và nhóm không có dòng muối/làm khô; (5) tieuChi6 lấy từ wco.<6 số> đúng luật mục 10, đủ 6 phân nhóm. GHI CHÚ (không sửa trong lô này): loaiTru[1] cắt sau '(nhóm 05.04)' nên không kèm vế 'hoặc tiết động vật (nhóm 05.11 hoặc 30.02)' — vế ALTERNATIVE cùng mục (c), KHÔNG phải ngoại lệ, và mục chỉ khẳng định nhánh 05.04 nên câu trích vẫn tự nói đúng điều mục khẳng định; trong 374 nhóm đã gộp không nhóm nào có mục loại trừ cho 'tiết động vật'.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn nhom0203.nhom (2 câu): 'Nhóm này bao gồm thịt tươi, ướp lạnh hoặc đông lạnh của lợn nuôi hoặc hoang (ví dụ: lợn lòi). Nhóm này gồm thịt ba chỉ và các loại thịt tương tự có tỷ lệ mỡ giắt cao và mỡ tạo thành lớp dính với thịt.' — text chép lại đúng cả hai, không thêm bớt từ nào; không có dấu lược nên không có đoạn nào nuốt ngoại lệ."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "fact 'la_thit_lon' = true; trích 'của lợn nuôi hoặc hoang (ví dụ: lợn lòi)' nguyên văn trong nhom0203.nhom. Điều kiện VÀO NHÓM 4 số thật sự, lấy từ chú giải nhóm — không phải từ tên phân nhóm/WCO/SEN."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "fact 'tuoi_uop_lanh_hoac_dong_lanh' = true; trích 'Nhóm này bao gồm thịt tươi, ướp lạnh hoặc đông lạnh' nguyên văn. 'tươi, ướp lạnh hoặc đông lạnh' là một fact boolean gộp — KHÔNG tách thành ba nhánh điều kiện độc lập (đúng luật 'A hoặc B')."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn ch02.chuong: 'Thịt và phụ phẩm dạng thịt không phù hợp hoặc không thích hợp dùng làm thức ăn cho người bị loại trừ (nhóm 05.11).' — có DẤU HIỆU LOẠI TRỪ và nêu đích danh 05.11 trong câu. Câu ngay sau ('Bột mịn, bột thô và viên … (nhóm 23.01)') là câu RIÊNG về bột thịt, không phải ngoại lệ của mục này."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn ch02.chuong mục (c) của danh sách 'Chương này không bao gồm:': '(c) Ruột, bong bóng hoặc dạ dày của động vật (nhóm 05.04)' — đích danh 05.04 trong câu. Vế bị cắt phía sau là vế ALTERNATIVE cùng mục (c), không phải ngoại lệ; không mở rộng trích vì sẽ gợi ý sai rằng tiết động vật cũng sang 05.04."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn ch02.chuong: '(a) Xúc xích hoặc sản phẩm tương tự, chín hoặc chưa chín (nhóm 16.01)' — trích từ câu 'Thịt và phụ phẩm dạng thịt sau giết mổ không thuộc bất cứ nhóm nào của Chương này được phân loại vào Chương 16, ví dụ:'; nêu đích danh 16.01 trong câu."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn ch02.chuong mục (b): 'Thịt và phụ phẩm dạng thịt được làm chín bằng bất cứ cách nào (luộc, hấp, nướng, rán hoặc quay) … bao gồm cả patê và patê gan (nhóm 16.02).' Đoạn lược '…' nuốt phần ', hoặc được chế biến hoặc bảo quản bởi bất cứ phương pháp nào không nêu trong Chương này, bao gồm cả thịt và phụ phẩm dạng thịt chỉ bao bột hoặc vụn bánh mì, thêm nấm hoặc ướp gia vị (ví dụ: hạt tiêu và muối),' — cùng một mục (b) (vế 'hoặc'), KHÔNG chứa ngoại lệ; mục 'thịt được làm chín bằng bất cứ cách nào → 16.02' đúng nghĩa, đích 16.02 có trong câu."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng CHIỀU: 'hoi' hỏi 'Được đông lạnh (làm lạnh dưới điểm đóng băng của sản phẩm cho đến khi đông lạnh toàn phần)?' → có = 02032100|02032200|02032900 (3 dòng đông lạnh), không = 02031100|02031200|02031900 (3 dòng tươi/ướp lạnh). Trích nguyên văn ch02.chuong mục (2) và (3) của danh sách dạng thịt; đoạn lược '…' chỉ nuốt ranh giới giữa hai mục, không nuốt ngoại lệ. Nhánh 'không' có căn cứ trong nguồn (mục (2) 'Được ướp lạnh … không dẫn đến đông lạnh'), và phủ kín 6 lá của nhóm — không suy từ cấu trúc anh em. 'hoi' không nhắc mã phân nhóm/WCO. Đây cũng là văn phong đã được duyệt: 133 mục phanBiet đã gộp dùng mã trong nhóm mà câu trích không nêu."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020311 có thật trong cây (lá 02031100, laPhanNhom 020311); trích nguyên văn wco.020311 '020311 Meat; of swine, carcasses and half-carcasses, fresh or chilled'; fact 'la_thit_ca_con_va_nua_con' đúng nghĩa, khớp biểu thuế 'Thịt cả con và nửa con'."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020312 có thật trong cây; trích nguyên văn wco.020312 '020312 Meat; of swine, hams, shoulders and cuts thereof, with bone in, fresh or chilled'; fact 'la_thit_mong_dui_va_thit_vai_co_xuong' đúng nghĩa, khớp biểu thuế 'Thịt mông đùi (hams), thịt vai và các mảnh của chúng, có xương'."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020319 có thật trong cây; trích nguyên văn wco.020319 '020319 Meat; of swine, n.e.c. in item no. 0203.1, fresh or chilled'; fact 'la_thit_lon_khac' đúng nghĩa (n.e.c. = loại khác); dòng biểu thuế là 'Loại khác' → loaiKhac máy tự điền."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020321 có thật trong cây; trích nguyên văn wco.020321 '020321 Meat; of swine, carcasses and half-carcasses, frozen'; fact 'la_thit_ca_con_va_nua_con' đúng nghĩa."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020322 có thật trong cây; trích nguyên văn wco.020322 '020322 Meat; of swine, hams, shoulders and cuts thereof, with bone in, frozen'; fact 'la_thit_mong_dui_va_thit_vai_co_xuong' đúng nghĩa."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "hs6=020329 có thật trong cây; trích nguyên văn wco.020329 '020329 Meat; of swine, n.e.c. in item no. 0203.2, frozen'; fact 'la_thit_lon_khac' đúng nghĩa."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "hs 02031100 có trong biểu thuế; trích nguyên văn tax.02031100 '02031100 - - Thịt cả con và nửa con'; dieuKien nêu tên dòng + trạng thái của nhóm 0203.1 + mã nhóm 0203.1 — văn phong đã được duyệt ở 0402/1702/3215 (ghi thêm phân nhóm cha và trạng thái)."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "hs 02031200 có trong biểu thuế; trích nguyên văn tax.02031200; dieuKien nêu đúng tên dòng + trạng thái + nhóm 0203.1; fact 'la_thit_mong_dui_va_thit_vai_co_xuong' khớp trích."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "hs 02031900 có trong biểu thuế, tên dòng 'Loại khác' → loaiKhac=true; trích nguyên văn tax.02031900; dieuKien nêu trạng thái + nhóm 0203.1; fact 'la_thit_lon_khac' khớp wco.020319."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "hs 02032100 có trong biểu thuế; trích nguyên văn tax.02032100 '02032100 - - Thịt cả con và nửa con'; dieuKien nêu trạng thái 'Đông lạnh' + nhóm 0203.2 — đúng chiều (dòng này khác dòng 02031100 chỉ ở trạng thái)."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "hs 02032200 có trong biểu thuế; trích nguyên văn tax.02032200; dieuKien nêu trạng thái + nhóm 0203.2; fact khớp wco.020322."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "hs 02032900 có trong biểu thuế, tên dòng 'Loại khác' → loaiKhac=true; trích nguyên văn tax.02032900; dieuKien nêu trạng thái + nhóm 0203.2. Đủ cả 6 dòng 8 số của nhóm — check-cay xanh."
+  }
+ ]
+}

@@ -1,0 +1,655 @@
+{
+ "nhom": "0106",
+ "phamVi": {
+  "text": "Động vật nuôi hoặc hoang sau: động vật có vú, loài bò sát, các loại chim, côn trùng và loại khác (ví dụ ếch).",
+  "nguon": "nhom0106.nhom",
+  "trich": "Nhóm này có thể kể ra các động vật nuôi hoặc hoang sau: … (A) Động vật có vú: … linh dương (trừ những động vật thuộc phân họ Bovinae) … (B) Loài bò sát (bao gồm cả rắn và rùa). … (C) Các loại chim: … (D) Côn trùng, ví dụ các loại ong … (E) Loại khác, ví dụ các loại ếch.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_dong_vat_song",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch01.chuong",
+   "trich": "Chương này bao gồm tất cả các loại động vật sống trừ:\n\n(a) Cá và động vật giáp xác, động vật thân mềm và động vật thuỷ sinh không xương sống khác, thuộc nhóm 03.01, 03.06, 03.07 hoặc 03.08;\n\n(b) Vi sinh vật nuôi cấy và các sản phẩm khác thuộc nhóm 30.02; và\n\n(c) Động vật thuộc nhóm 95.08.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Bầy thú thuộc rạp xiếc, bầy thú hoặc động vật làm trò lưu động tương tự khác",
+   "sangNhom": "9508",
+   "nguon": "nhom0106.nhom",
+   "trich": "Nhóm này không bao gồm bầy thú thuộc rạp xiếc, bầy thú hoặc động vật làm trò lưu động tương tự khác (nhóm 95.08).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Cá và động vật giáp xác, động vật thân mềm và động vật thuỷ sinh không xương sống khác",
+   "sangNhom": "0301|0306|0307|0308",
+   "nguon": "ch01.chuong",
+   "trich": "(a) Cá và động vật giáp xác, động vật thân mềm và động vật thuỷ sinh không xương sống khác, thuộc nhóm 03.01, 03.06, 03.07 hoặc 03.08;",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Vi sinh vật nuôi cấy và các sản phẩm khác thuộc nhóm 30.02",
+   "sangNhom": "3002",
+   "nguon": "ch01.chuong",
+   "trich": "(b) Vi sinh vật nuôi cấy và các sản phẩm khác thuộc nhóm 30.02;",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Bầy thú thuộc rạp xiếc, bầy thú hoặc động vật làm trò lưu động tương tự khác?",
+   "neuCo": "9508",
+   "neuKhong": "0106",
+   "nguon": "nhom0106.nhom",
+   "trich": "Nhóm này không bao gồm bầy thú thuộc rạp xiếc, bầy thú hoặc động vật làm trò lưu động tương tự khác (nhóm 95.08).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hoi": "Cá và động vật giáp xác, động vật thân mềm và động vật thuỷ sinh không xương sống khác?",
+   "neuCo": "0301|0306|0307|0308",
+   "neuKhong": "0106",
+   "nguon": "ch01.chuong",
+   "trich": "(a) Cá và động vật giáp xác, động vật thân mềm và động vật thuỷ sinh không xương sống khác, thuộc nhóm 03.01, 03.06, 03.07 hoặc 03.08;",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "010611",
+   "fact": "la_bo_dong_vat_linh_truong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.010611",
+   "trich": "010611 Mammals; live, primates",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010612",
+   "fact": "la_hoi_cao_hai_cau_heo_chuot_luoc_bien_ca_nuoc_hai_cau_su_tu_bien_hai_ma",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.010612",
+   "trich": "010612 Mammals; live, whales, dolphins and porpoises (mammals of the order Cetacea); manatees and dugongs (mammals of the order Sirenia); seals, sea lions and walruses (mammals of the suborder Pinnipedia)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010613",
+   "fact": "la_lac_va_ho_lac_da",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.010613",
+   "trich": "010613 Mammals; live, camels and other camelids (Camelidae)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010614",
+   "fact": "la_tho_va_tho_rung",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.010614",
+   "trich": "010614 Mammals; live, rabbits and hares",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010619",
+   "fact": "la_dong_vat_co_vu_khac_khong_phai_linh_truong_hoi_cao_hai_cau_heo_chuot_luoc_bien_ca_nuoc_hai_cau_su_tu_bien_hai_ma_lac_va_tho",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.010619",
+   "trich": "010619 Mammals; live, other than primates, whales, dolphins, porpoises (mammals of the order Cetacea); manatees, dugongs (mammals of the order Sirenia); seals, sea lions, walruses (mammals of the suborder Pinnipedia), camels, other camelids, rabbits and hares",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010620",
+   "fact": "la_loai_bo_sat",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.010620",
+   "trich": "010620 Reptiles; live (including snakes and turtles)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010631",
+   "fact": "la_chim_san_moi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.010631",
+   "trich": "010631 Birds; live, birds of prey",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010632",
+   "fact": "la_vet",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.010632",
+   "trich": "010632 Birds; live, Psittaciformes",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010633",
+   "fact": "la_da_dieu",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.010633",
+   "trich": "010633 Birds; live, ostriches; emus (Dromaius novaehollandiae)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010639",
+   "fact": "la_chim_khac_khong_phai_chim_san_moi_vet_va_da_dieu",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.010639",
+   "trich": "010639 Birds; live, other than birds of prey, Psittaciformes, ostriches and emus (Dromaius novaehollandiae)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010641",
+   "fact": "la_cac_loai_ong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.010641",
+   "trich": "010641 Insects; live, bees",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010649",
+   "fact": "la_con_trung_khac_khong_phai_ong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.010649",
+   "trich": "010649 Insects; live, other than bees",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010690",
+   "fact": "la_dong_vat_khac_khong_phai_dong_vat_co_vu_bo_sat_chim_va_con_trung",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.010690",
+   "trich": "010690 Animals; live, n.e.c. in chapter 01, other than mammals, reptiles, birds and insects",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "01061100",
+   "dieuKien": "Bộ động vật linh trưởng — phân nhóm 0106.11",
+   "tieuChi": {
+    "fact": "la_bo_dong_vat_linh_truong",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.01061100",
+   "trich": "01061100 - - Bộ động vật linh trưởng",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "01061210",
+   "dieuKien": "Cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ cá voi Cetacea); lợn biển và cá nược (động vật có vú thuộc bộ Sirenia) — phân nhóm 0106.12",
+   "tieuChi": {
+    "fact": "la_hoi_cao_hai_cau_heo_chuot_luoc_bien_ca_nuoc",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.01061210",
+   "trich": "01061210 - - - Cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ cá voi Cetacea); lợn biển và cá nược (động vật có vú thuộc bộ Sirenia)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "01061220",
+   "dieuKien": "Hải cẩu, sư tử biển và hải mã (con moóc) (động vật có vú thuộc phân bộ Pinnipedia) — phân nhóm 0106.12",
+   "tieuChi": {
+    "fact": "la_hai_cau_su_tu_bien_va_hai_ma",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.01061220",
+   "trich": "01061220 - - - Hải cẩu, sư tử biển và hải mã (con moóc) (động vật có vú thuộc phân bộ Pinnipedia)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "01061300",
+   "dieuKien": "Lạc đà và họ lạc đà (Camelidae) — phân nhóm 0106.13",
+   "tieuChi": {
+    "fact": "la_lac_va_ho_lac_da",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.01061300",
+   "trich": "01061300 - - Lạc đà và họ lạc đà (Camelidae)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "01061400",
+   "dieuKien": "Thỏ (Rabbits và hares) — phân nhóm 0106.14",
+   "tieuChi": {
+    "fact": "la_tho_va_tho_rung",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.01061400",
+   "trich": "01061400 - - Thỏ (Rabbits và hares)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "01061900",
+   "dieuKien": "Loại khác — phần còn lại của phân nhóm 0106.19 (WCO: Mammals; live, other than primates, whales, dolphins, porpoises…)",
+   "tieuChi": {
+    "fact": "la_dong_vat_co_vu_khac_khong_phai_linh_truong_hoi_cao_hai_muc_hai_cau_luoc_bien_lac_va_tho",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": true,
+   "nguon": "tax.01061900",
+   "trich": "01061900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "01061",
+    "truAnhEm": [
+     "01061100",
+     "010612",
+     "01061300",
+     "01061400"
+    ],
+    "toTienCoTen": "0106",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "01062000",
+   "dieuKien": "Loài bò sát (kể cả rắn và rùa) — phân nhóm 0106.20",
+   "tieuChi": {
+    "fact": "la_loai_bo_sat",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.01062000",
+   "trich": "01062000 - Loài bò sát (kể cả rắn và rùa)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "01063100",
+   "dieuKien": "Chim săn mồi — phân nhóm 0106.31",
+   "tieuChi": {
+    "fact": "la_chim_san_moi",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.01063100",
+   "trich": "01063100 - - Chim săn mồi",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "01063200",
+   "dieuKien": "Vẹt (kể cả vẹt lớn châu Mỹ (parrots), vẹt nhỏ đuôi dài (parakeets), vẹt đuôi dài và vẹt có mào) — phân nhóm 0106.32",
+   "tieuChi": {
+    "fact": "la_vet",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.01063200",
+   "trich": "01063200 - - Vẹt (kể cả vẹt lớn châu Mỹ (parrots), vẹt nhỏ đuôi dài (parakeets), vẹt đuôi dài và vẹt có mào)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "01063300",
+   "dieuKien": "Đà điểu; đà điểu châu Úc (Dromaius novaehollandiae) — phân nhóm 0106.33",
+   "tieuChi": {
+    "fact": "la_da_dieu",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.01063300",
+   "trich": "01063300 - - Đà điểu; đà điểu châu Úc (Dromaius novaehollandiae)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "01063900",
+   "dieuKien": "Loại khác — phần còn lại của phân nhóm 0106.39 (WCO: Birds; live, other than birds of prey, Psittaciformes, ostriches and emus…)",
+   "tieuChi": {
+    "fact": "la_chim_khac_khong_phai_chim_san_moi_vet_va_da_dieu",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": true,
+   "nguon": "tax.01063900",
+   "trich": "01063900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "01063",
+    "truAnhEm": [
+     "01063100",
+     "01063200",
+     "01063300"
+    ],
+    "toTienCoTen": "0106",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "01064100",
+   "dieuKien": "Các loại ong — phân nhóm 0106.41",
+   "tieuChi": {
+    "fact": "la_cac_loai_ong",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.01064100",
+   "trich": "01064100 - - Các loại ong",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "01064900",
+   "dieuKien": "Loại khác — phần còn lại của phân nhóm 0106.49 (WCO: Insects; live, other than bees)",
+   "tieuChi": {
+    "fact": "la_con_trung_khac_khong_phai_ong",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": true,
+   "nguon": "tax.01064900",
+   "trich": "01064900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "01064",
+    "truAnhEm": [
+     "01064100"
+    ],
+    "toTienCoTen": "0106",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "01069000",
+   "dieuKien": "Loại khác — phần còn lại của phân nhóm 0106.90 (WCO: Animals; live, n.e.c. in chapter 01, other than mammals, reptiles, birds and insects)",
+   "tieuChi": {
+    "fact": "la_dong_vat_khac_khong_phai_dong_vat_co_vu_bo_sat_chim_va_con_trung",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": true,
+   "nguon": "tax.01069000",
+   "trich": "01069000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "0106",
+    "truAnhEm": [
+     "01061",
+     "01062000",
+     "01063",
+     "01064"
+    ],
+    "toTienCoTen": "0106",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "0106",
+    "cap": 4,
+    "cha": "01",
+    "tenVi": "Động vật sống khác.",
+    "tenEn": "Animals; live, n.e.c. in chapter 01",
+    "suyRa": false
+   },
+   {
+    "id": "01061",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "0106",
+    "tenVi": "Động vật có vú",
+    "tenEn": "Mammals",
+    "suyRa": true
+   },
+   {
+    "id": "01061100",
+    "cap": 8,
+    "cha": "01061",
+    "tenVi": "Bộ động vật linh trưởng",
+    "tenEn": "Mammals; live, primates",
+    "suyRa": false,
+    "laPhanNhom": "010611"
+   },
+   {
+    "id": "010612",
+    "cap": 6,
+    "cha": "01061",
+    "tenVi": "Cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ cá voi Cetacea); lợn biển và cá nược (động vật có vú thuộc bộ Sirenia); hải cẩu, sư tử biển và hải mã (con moóc) (động vật có vú thuộc phân bộ Pinnipedia)",
+    "tenEn": "Mammals; live, whales, dolphins and porpoises (mammals of the order Cetacea); manatees and dugongs (mammals of the order Sirenia); seals, sea lions and walruses (mammals of the suborder Pinnipedia)",
+    "suyRa": false
+   },
+   {
+    "id": "01061210",
+    "cap": 8,
+    "cha": "010612",
+    "tenVi": "Cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ cá voi Cetacea); lợn biển và cá nược (động vật có vú thuộc bộ Sirenia)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "01061220",
+    "cap": 8,
+    "cha": "010612",
+    "tenVi": "Hải cẩu, sư tử biển và hải mã (con moóc) (động vật có vú thuộc phân bộ Pinnipedia)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "01061300",
+    "cap": 8,
+    "cha": "01061",
+    "tenVi": "Lạc đà và họ lạc đà (Camelidae)",
+    "tenEn": "Mammals; live, camels and other camelids (Camelidae)",
+    "suyRa": false,
+    "laPhanNhom": "010613"
+   },
+   {
+    "id": "01061400",
+    "cap": 8,
+    "cha": "01061",
+    "tenVi": "Thỏ (Rabbits và hares)",
+    "tenEn": "Mammals; live, rabbits and hares",
+    "suyRa": false,
+    "laPhanNhom": "010614"
+   },
+   {
+    "id": "01061900",
+    "cap": 8,
+    "cha": "01061",
+    "tenVi": "Loại khác",
+    "tenEn": "Mammals; live, other than primates, whales, dolphins, porpoises (mammals of the order Cetacea); manatees, dugongs (mammals of the order Sirenia); seals, sea lions, walruses (mammals of the suborder Pinnipedia), camels, other camelids, rabbits and hares",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "010619"
+   },
+   {
+    "id": "01062000",
+    "cap": 8,
+    "cha": "0106",
+    "tenVi": "Loài bò sát (kể cả rắn và rùa)",
+    "tenEn": "Reptiles; live (including snakes and turtles)",
+    "suyRa": false,
+    "laPhanNhom": "010620"
+   },
+   {
+    "id": "01063",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "0106",
+    "tenVi": "Các loại chim",
+    "tenEn": "Birds",
+    "suyRa": true
+   },
+   {
+    "id": "01063100",
+    "cap": 8,
+    "cha": "01063",
+    "tenVi": "Chim săn mồi",
+    "tenEn": "Birds; live, birds of prey",
+    "suyRa": false,
+    "laPhanNhom": "010631"
+   },
+   {
+    "id": "01063200",
+    "cap": 8,
+    "cha": "01063",
+    "tenVi": "Vẹt (kể cả vẹt lớn châu Mỹ (parrots), vẹt nhỏ đuôi dài (parakeets), vẹt đuôi dài và vẹt có mào)",
+    "tenEn": "Birds; live, Psittaciformes",
+    "suyRa": false,
+    "laPhanNhom": "010632"
+   },
+   {
+    "id": "01063300",
+    "cap": 8,
+    "cha": "01063",
+    "tenVi": "Đà điểu; đà điểu châu Úc (Dromaius novaehollandiae)",
+    "tenEn": "Birds; live, ostriches; emus (Dromaius novaehollandiae)",
+    "suyRa": false,
+    "laPhanNhom": "010633"
+   },
+   {
+    "id": "01063900",
+    "cap": 8,
+    "cha": "01063",
+    "tenVi": "Loại khác",
+    "tenEn": "Birds; live, other than birds of prey, Psittaciformes, ostriches and emus (Dromaius novaehollandiae)",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "010639"
+   },
+   {
+    "id": "01064",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "0106",
+    "tenVi": "Côn trùng",
+    "tenEn": "Insects",
+    "suyRa": true
+   },
+   {
+    "id": "01064100",
+    "cap": 8,
+    "cha": "01064",
+    "tenVi": "Các loại ong",
+    "tenEn": "Insects; live, bees",
+    "suyRa": false,
+    "laPhanNhom": "010641"
+   },
+   {
+    "id": "01064900",
+    "cap": 8,
+    "cha": "01064",
+    "tenVi": "Loại khác",
+    "tenEn": "Insects; live, other than bees",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "010649"
+   },
+   {
+    "id": "01069000",
+    "cap": 8,
+    "cha": "0106",
+    "tenVi": "Loại khác",
+    "tenEn": "Animals; live, n.e.c. in chapter 01, other than mammals, reptiles, birds and insects",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "010690"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch01.chuong",
+  "nhom0106.nhom",
+  "tax.01061100",
+  "tax.01061210",
+  "tax.01061220",
+  "tax.01061300",
+  "tax.01061400",
+  "tax.01061900",
+  "tax.01062000",
+  "tax.01063100",
+  "tax.01063200",
+  "tax.01063300",
+  "tax.01063900",
+  "tax.01064100",
+  "tax.01064900",
+  "tax.01069000",
+  "wco.010611",
+  "wco.010612",
+  "wco.010613",
+  "wco.010614",
+  "wco.010619",
+  "wco.010620",
+  "wco.010631",
+  "wco.010632",
+  "wco.010633",
+  "wco.010639",
+  "wco.010641",
+  "wco.010649",
+  "wco.010690"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-24T16:48:06.052Z",
+  "ms": 86
+ },
+ "kiemTra": {
+  "tong": 34,
+  "dat": 34,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

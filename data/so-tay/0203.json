@@ -1,0 +1,355 @@
+{
+ "nhom": "0203",
+ "phamVi": {
+  "text": "Thịt tươi, ướp lạnh hoặc đông lạnh của lợn nuôi hoặc hoang (ví dụ: lợn lòi); gồm thịt ba chỉ và các loại thịt tương tự có tỷ lệ mỡ giắt cao và mỡ tạo thành lớp dính với thịt.",
+  "nguon": "nhom0203.nhom",
+  "trich": "Nhóm này bao gồm thịt tươi, ướp lạnh hoặc đông lạnh của lợn nuôi hoặc hoang (ví dụ: lợn lòi). Nhóm này gồm thịt ba chỉ và các loại thịt tương tự có tỷ lệ mỡ giắt cao và mỡ tạo thành lớp dính với thịt.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_thit_lon",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom0203.nhom",
+   "trich": "của lợn nuôi hoặc hoang (ví dụ: lợn lòi)",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "tuoi_uop_lanh_hoac_dong_lanh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom0203.nhom",
+   "trich": "Nhóm này bao gồm thịt tươi, ướp lạnh hoặc đông lạnh",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Thịt và phụ phẩm dạng thịt không phù hợp hoặc không thích hợp dùng làm thức ăn cho người",
+   "sangNhom": "0511",
+   "nguon": "ch02.chuong",
+   "trich": "Thịt và phụ phẩm dạng thịt không phù hợp hoặc không thích hợp dùng làm thức ăn cho người bị loại trừ (nhóm 05.11).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Ruột, bong bóng hoặc dạ dày của động vật",
+   "sangNhom": "0504",
+   "nguon": "ch02.chuong",
+   "trich": "(c) Ruột, bong bóng hoặc dạ dày của động vật (nhóm 05.04)",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Xúc xích hoặc sản phẩm tương tự, chín hoặc chưa chín",
+   "sangNhom": "1601",
+   "nguon": "ch02.chuong",
+   "trich": "(a) Xúc xích hoặc sản phẩm tương tự, chín hoặc chưa chín (nhóm 16.01)",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Thịt và phụ phẩm dạng thịt được làm chín bằng bất cứ cách nào",
+   "sangNhom": "1602",
+   "nguon": "ch02.chuong",
+   "trich": "Thịt và phụ phẩm dạng thịt được làm chín bằng bất cứ cách nào (luộc, hấp, nướng, rán hoặc quay) … bao gồm cả patê và patê gan (nhóm 16.02)",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Được đông lạnh (làm lạnh dưới điểm đóng băng của sản phẩm cho đến khi đông lạnh toàn phần)?",
+   "neuCo": "02032100|02032200|02032900",
+   "neuKhong": "02031100|02031200|02031900",
+   "nguon": "ch02.chuong",
+   "trich": "(2) Được ướp lạnh, tức là làm lạnh thông thường đến khoảng 0°C, không dẫn đến đông lạnh. … (3) Được đông lạnh, tức là làm lạnh dưới điểm đóng băng của sản phẩm cho đến khi đông lạnh toàn phần.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "020311",
+   "fact": "la_thit_ca_con_va_nua_con",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.020311",
+   "trich": "020311 Meat; of swine, carcasses and half-carcasses, fresh or chilled",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "020312",
+   "fact": "la_thit_mong_dui_va_thit_vai_co_xuong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.020312",
+   "trich": "020312 Meat; of swine, hams, shoulders and cuts thereof, with bone in, fresh or chilled",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "020319",
+   "fact": "la_thit_lon_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.020319",
+   "trich": "020319 Meat; of swine, n.e.c. in item no. 0203.1, fresh or chilled",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "020321",
+   "fact": "la_thit_ca_con_va_nua_con",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.020321",
+   "trich": "020321 Meat; of swine, carcasses and half-carcasses, frozen",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "020322",
+   "fact": "la_thit_mong_dui_va_thit_vai_co_xuong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.020322",
+   "trich": "020322 Meat; of swine, hams, shoulders and cuts thereof, with bone in, frozen",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "020329",
+   "fact": "la_thit_lon_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.020329",
+   "trich": "020329 Meat; of swine, n.e.c. in item no. 0203.2, frozen",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "02031100",
+   "dieuKien": "Tươi hoặc ướp lạnh — thịt cả con và nửa con (nhóm 0203.1)",
+   "tieuChi": {
+    "fact": "la_thit_ca_con_va_nua_con",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.02031100",
+   "trich": "02031100 - - Thịt cả con và nửa con",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "02031200",
+   "dieuKien": "Tươi hoặc ướp lạnh — thịt mông đùi (hams), thịt vai và các mảnh của chúng, có xương (nhóm 0203.1)",
+   "tieuChi": {
+    "fact": "la_thit_mong_dui_va_thit_vai_co_xuong",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.02031200",
+   "trich": "02031200 - - Thịt mông đùi (hams), thịt vai và các mảnh của chúng, có xương",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "02031900",
+   "dieuKien": "Tươi hoặc ướp lạnh — loại khác (nhóm 0203.1)",
+   "tieuChi": {
+    "fact": "la_thit_lon_khac",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": true,
+   "nguon": "tax.02031900",
+   "trich": "02031900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "02031",
+    "truAnhEm": [
+     "02031100",
+     "02031200"
+    ],
+    "toTienCoTen": "0203",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "02032100",
+   "dieuKien": "Đông lạnh — thịt cả con và nửa con (nhóm 0203.2)",
+   "tieuChi": {
+    "fact": "la_thit_ca_con_va_nua_con",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.02032100",
+   "trich": "02032100 - - Thịt cả con và nửa con",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "02032200",
+   "dieuKien": "Đông lạnh — thịt mông đùi (hams), thịt vai và các mảnh của chúng, có xương (nhóm 0203.2)",
+   "tieuChi": {
+    "fact": "la_thit_mong_dui_va_thit_vai_co_xuong",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.02032200",
+   "trich": "02032200 - - Thịt mông đùi (hams), thịt vai và các mảnh của chúng, có xương",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "02032900",
+   "dieuKien": "Đông lạnh — loại khác (nhóm 0203.2)",
+   "tieuChi": {
+    "fact": "la_thit_lon_khac",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": true,
+   "nguon": "tax.02032900",
+   "trich": "02032900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "02032",
+    "truAnhEm": [
+     "02032100",
+     "02032200"
+    ],
+    "toTienCoTen": "0203",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "0203",
+    "cap": 4,
+    "cha": "02",
+    "tenVi": "Thịt lợn, tươi, ướp lạnh hoặc đông lạnh.",
+    "tenEn": "Meat of swine; fresh, chilled or frozen",
+    "suyRa": false
+   },
+   {
+    "id": "02031",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "0203",
+    "tenVi": "Tươi hoặc ướp lạnh",
+    "tenEn": "Fresh or chilled",
+    "suyRa": true
+   },
+   {
+    "id": "02031100",
+    "cap": 8,
+    "cha": "02031",
+    "tenVi": "Thịt cả con và nửa con",
+    "tenEn": "Meat; of swine, carcasses and half-carcasses, fresh or chilled",
+    "suyRa": false,
+    "laPhanNhom": "020311"
+   },
+   {
+    "id": "02031200",
+    "cap": 8,
+    "cha": "02031",
+    "tenVi": "Thịt mông đùi (hams), thịt vai và các mảnh của chúng, có xương",
+    "tenEn": "Meat; of swine, hams, shoulders and cuts thereof, with bone in, fresh or chilled",
+    "suyRa": false,
+    "laPhanNhom": "020312"
+   },
+   {
+    "id": "02031900",
+    "cap": 8,
+    "cha": "02031",
+    "tenVi": "Loại khác",
+    "tenEn": "Meat; of swine, n.e.c. in item no. 0203.1, fresh or chilled",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "020319"
+   },
+   {
+    "id": "02032",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "0203",
+    "tenVi": "Đông lạnh",
+    "tenEn": "Frozen",
+    "suyRa": true
+   },
+   {
+    "id": "02032100",
+    "cap": 8,
+    "cha": "02032",
+    "tenVi": "Thịt cả con và nửa con",
+    "tenEn": "Meat; of swine, carcasses and half-carcasses, frozen",
+    "suyRa": false,
+    "laPhanNhom": "020321"
+   },
+   {
+    "id": "02032200",
+    "cap": 8,
+    "cha": "02032",
+    "tenVi": "Thịt mông đùi (hams), thịt vai và các mảnh của chúng, có xương",
+    "tenEn": "Meat; of swine, hams, shoulders and cuts thereof, with bone in, frozen",
+    "suyRa": false,
+    "laPhanNhom": "020322"
+   },
+   {
+    "id": "02032900",
+    "cap": 8,
+    "cha": "02032",
+    "tenVi": "Loại khác",
+    "tenEn": "Meat; of swine, n.e.c. in item no. 0203.2, frozen",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "020329"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch02.chuong",
+  "nhom0203.nhom",
+  "tax.02031100",
+  "tax.02031200",
+  "tax.02031900",
+  "tax.02032100",
+  "tax.02032200",
+  "tax.02032900",
+  "wco.020311",
+  "wco.020312",
+  "wco.020319",
+  "wco.020321",
+  "wco.020322",
+  "wco.020329"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-24T16:48:06.058Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 20,
+  "dat": 20,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
