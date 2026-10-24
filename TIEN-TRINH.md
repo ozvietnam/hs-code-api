@@ -2933,3 +2933,31 @@ Sửa ít hơn vòng 2 (xoá 325/sửa 95 trên ~1.300 mục) vì người soạ
   tiêu chí 6 số × 5 / × 1 / × 1 / × 1).
 - `npm test` → **ALL TESTS PASSED**.
 - **CHƯA merge** — chờ người duyệt (PR #427).
+
+### Phụ — kiểm TOÀN REPO câu trích sổ tay (24/10/2026, phát hiện khi soát lô 036)
+
+Ngoài 6 nhóm lô 036, phiên này chạy `scripts/check-trich-nguyen-van.mjs` (bộ kiểm byte-exact có sẵn trên
+`main`) cho **toàn bộ 350 nhóm / 9.982 mục** (xuất nguồn: `build-so-tay --nhom=<tất cả> --force
+--xuat-nguon=tmp/so-tay/nguon-all`). Kết quả:
+
+| loại lệch | số mảnh | đánh giá |
+|---|---|---|
+| Chỉ khác **xuống dòng** (nguồn PDF bẻ dòng giữa câu, câu trích dùng 1 dấu cách) | **317** | **KHÔNG phải lỗi** — đây là quy ước của repo: 9.882/9.897 câu trích đã gộp không chứa `\n`. Bộ kiểm byte-exact chặt hơn thực hành ⇒ báo động giả |
+| Lệch **chữ/dấu thật** | **24** (13 nhóm, đều thuộc lô CŨ) | **Cần người duyệt xem** — xem bên dưới |
+
+24 mục lệch thật, điển hình:
+- **`tax.*` đã được sửa sau khi sổ tay soạn** — `39181090 - - - Loại khác` (nguồn nay là `- -`),
+  `63059010/63059020/63059090`, `32159060 - Mực vẽ…` (nguồn nay có thêm một gạch), `22021030`.
+  Tức câu trích đang dẫn dòng biểu thuê CŨ ⇒ nên có quy trình "khi cập nhật biểu thuê thì rà lại
+  sổ tay".
+- **`6201 dieuKienVao[1]`** — câu trích kết bằng `.` trong khi nguồn ở giữa câu (`…trẻ em trai, và áo
+  được thiết kế để cài…`) ⇒ trích đã "đóng" câu đang chạy.
+- **`7019` / `3401`** — câu trích đổi ngoặc kép cong `“hở”`, `“bánh dệt”` thành ngoặc kép thẳng.
+- **`8471`, `8516`, `8528`, `8531`, `9003`, `9021`, `7321`** — câu trích cắt ở chỗ nguồn còn tiếp.
+
+**Lô 036 SẠCH**: 119/119 mục mà bộ kiểm byte-exact có sẵn phủ → xanh; thêm bộ kiểm bổ sung của phiên
+này (phủ `boPhan` + `cay.tenDien`, chịu được xuống dòng nhưng bắt lệch chữ) → **129/129**.
+
+**Khoảng trống của bộ kiểm có sẵn**: `scripts/check-trich-nguyen-van.mjs` **không** kiểm `boPhan` và
+`cay.tenDien` — đúng vào khối mà luật "mọi câu trích phải nguyên văn" hay bị bỏ sót nhất (sửa đáng
+chú ý nhất của lô 036 là `boPhan` 8455). Đề nghị lô sau mở rộng bộ kiểm này cho 2 khối đó.
