@@ -2275,6 +2275,17 @@ dấu hiệu loại trừ và đích nêu nguyên văn; chiều Có/Không của
 → **Đề xuất**: đưa `soat-doc-lap-037.mjs` vào `scripts/` cho các lô sau (gộp luôn phần kiểm dấu
 lược của `kiem-luc-037.mjs` của người soạn).
 
+## Trạng thái CI của PR #431 (ghi lại để người duyệt khỏi tưởng sót)
+
+Lần push đầu **không tạo run nào**; thử lại bằng đóng/mở PR và amend+force-push (`83464be`) → vẫn 0 run.
+Nguyên nhân: **GitHub Actions của repo ngừng tạo run cho MỌI PR** (run cuối của repo `15:33Z`, `so-tay/lo-039`;
+lô 038/039/040 cũng không có run mới; check-suite của commit mới chỉ có Vercel, app `claude`/`render`/`cursor`
+kẹt `queued`). Không liên quan thay đổi của lô này.
+
+**Đã chạy đúng lệnh CI trên cây commit này tại máy:** `npm test` → ALL TESTS PASSED ·
+`node scripts/benchmark-alias-holdout.mjs --gate` → ✓ không tụt quá 1 điểm % so với mốc ·
+`npm run so-tay:check` → 362 nhóm / 10.611 mục / 0 rớt · `check-cay` → 6/6 nhóm đủ, 0 lỗi.
+
 ## Nộp dung
 
 `data/so-tay/{8608,8712,8715,9005,9107,9201}.json` (86 mục, `nguonLoai` 5 khối đã soát =
