@@ -9,7 +9,7 @@
 **Lô:** `0308 0309 0401 0403 0404 0405` (6 nhóm · 47 514 ký tự nguồn) · nhánh `so-tay/lo-042`
 **Kết quả: 125/125 mục đạt (100 %) · 0 mục rớt · `nhomLoi: []`** · `npm run so-tay:check` xanh (386 nhóm / 11 128 mục) ·
 `npm test` xanh (`=== ALL TESTS PASSED ===`) · `check-cay` 0 lỗi, 6/6 nhóm đủ (cây + dong8 + tên nút ảo + tiêu chí 6 số).
-**CHƯA soát độc lập** — PR chỉ mở, KHÔNG merge.
+**CHƯA soát độc lập** — PR **#435** (https://github.com/ozvietnam/hs-code-api/pull/435) chỉ mở, **KHÔNG merge**.
 
 ## Quy trình đã làm (đúng `docs/giao-viec/so-tay-giao-ngoai.md` mục 2)
 
