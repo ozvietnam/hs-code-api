@@ -4,6 +4,120 @@
 
 ---
 
+# SOÁT ĐỘC LẬP lô 038 — phiên `dev-soat-doc-lap-lo038` (24/10/2026)
+
+Người soát **khác** người soạn (`dev-zcode-mm`). Đã đọc lại **TOÀN BỘ** 5 khối của 6 nhóm
+(**10 mục**: 6 `phamVi` + 1 `boPhan` + 2 `loaiTru` + 1 `phanBiet` + 0 `dieuKienVao`) cùng nguồn nguyên
+văn `tmp/so-tay/nguon/<nhom>.txt` — không soát mẫu. Ngoài ra đọc luôn **66 mục** ngoài 5 khối
+(23 `tieuChi6` + 41 `dong8` + 2 `cay.tenDien`) để kiểm độ phủ và chiều
+đúng–sai, nhưng **không sửa** (ngoài phạm vi mục 4).
+
+**Kết quả: xoá 2 · sửa 3 mục (5 trường) · giữ 5 · 74/74 mục đạt (100 %) · `nhomLoi: []`**
+PR #430 · nhánh `so-tay/lo-038` · **KHÔNG merge**.
+
+## Nguồn dùng để soát là nguồn MỚI NHẤT
+
+Không tin bản `tmp/so-tay/nguon/` của người soạn: đã xuất lại bằng
+`node scripts/build-so-tay.mjs --nhom=… --force --xuat-nguon=tmp/so-tay/nguon-check` rồi `diff` —
+**7/7 tệp giống hệt**, kể cả `_he-thong.txt`. Tức là dữ liệu gốc không đổi sau lúc soạn.
+
+## Ba lỗi đã sửa (máy đều KHÔNG bắt được)
+
+| Nhóm | Mục | Lỗi |
+|---|---|---|
+| 9202 | `phamVi.trich` | **Dán hai khối văn bằng MỘT DẤU CÁCH.** Bản nháp chép *"Nhóm này bao gồm: (A) Nhạc cụ sử dụng cần kéo"* thành **một** mảnh, nhưng trong `[nhom9202.nhom]` đó là **hai đoạn văn riêng** (ngăn bởi dòng trống) → chuỗi đó **không tồn tại trong nguồn**. `check-so-tay` xanh vì nó so qua `squash()` — xoá mọi ký tự không phải chữ/số, nên **xoá luôn dấu xuống dòng**. Bộ kiểm thứ hai `scripts/check-trich-nguyen-van.mjs` (byte-exact) bắt được — đúng lỗi lô 034 (8210). **Sửa:** tách 3 mảnh nối bằng dấu lược `" … "`. `text` không đổi. |
+| 0102 | `phamVi.text` + `phamVi.trich` | **Ba lỗi trong một mục.** (1) Đoạn cuối bản nháp dừng giữa câu ở *"…và linh dương sừng xoắn"* mà **không có dấu lược**, nên trích trông như câu trọn; nguồn còn *"thuộc giống Taurotragus và Tragelaphus."* → mất điều hạn. (2) Dán hai khối văn bằng dấu cách (như 9202) — byte-exact bắt được. (3) **Phạm vi thiếu định ngữ giới hạn:** bản nháp bắt đầu từ `"(1) Gia súc"` nên không có câu dẫn *"…trâu bò thuộc phân họ Bovinae, nuôi hoặc hoang và dù mục đích sử dụng thế nào (… làm thịt)"* — mất **"nuôi hoặc hoang"** và **"dù mục đích sử dụng thế nào"** (trâu bò **SỐNG**, kể cả để làm thịt — khác với xác ở Chương 02). 0101/0103/0104 đều giữ "nuôi hoặc hoang"; **chỉ 0102 rơi mất**. **Sửa:** nối câu dẫn vào đầu, tách mỗi tiêu đề thành mảnh riêng nối bằng `" … "`, hoàn tất câu (3). `text` mới giữ ≤ 220 ký tự để runtime (`clip(…, 220)`) không cắt cụt. |
+| 9202 | `boPhan.quyTac` + `boPhan.tomTat` | **Câu luật bị cắt lúc chạy + mất định ngữ giới hạn.** (a) `tomTat` dài **192** ký tự; runtime đưa vào prompt vòng 2 qua `clip(s.boPhan.tomTat, 160)` → bị cắt **đúng phần KẾT LUẬN** (*"…thì được phân loại …"*): mô hình chỉ thấy điều kiện, **không thấy kết quả** (*"được phân loại cùng nhóm với nhạc cụ liên quan"*). (b) `quyTac` bỏ mất định ngữ giới hạn *"thuộc nhóm 92.02 hoặc 92.06"* — đọc câu trích thấy quy tắc áp cho **mọi** nhạc cụ, trong khi nguồn chỉ áp cho 92.02 và 92.06. **Sửa:** rút `tomTat` còn **160** ký tự (giữ trọn phạm vi, **cả hai** điều kiện và kết luận) + bổ sung định ngữ giới hạn vào `quyTac`. `trich` **không đổi** (đã nguyên văn). |
+
+## Hai mục XOÁ — nguồn tự mâu thuẫn (0105)
+
+Chú giải nhóm ghi *"Nhóm này không bao gồm các loại chim sống khác (vd, gà gô, **gà lôi**, chim bồ câu,
+vịt trời, ngỗng trời) (nhóm 01.06)"* — nhưng **gà lôi (guinea fowl) CÓ phân nhóm 0105.15**
+(WCO `010515 Poultry; live, guinea fowls`) và có dòng biểu thuế **0105.15.10 / 0105.15.90**, cùng
+0105.99.30/40 *"Ngỗng, gà tây và gà lôi"*.
+
+- **`loaiTru[0]` → XOÁ**: giữ thì sổ tay dạy *"gà lôi → 01.06"* — **sai**; cổng loại trừ
+  (`lib/so-tay-gates.js`) sẽ đẩy gà lôi ra khỏi 0105, trái với chính 0105.15 dành cho gà lôi.
+- **`phanBiet[0]` → XOÁ**: cùng câu, nhánh *"có → 0106"* cũng đẩy gà lôi ra; nhánh *"không → 0105"*
+  chỉ suy ra từ danh sách loại trừ.
+
+Không sửa được vì **không có câu nào khác** trong nguồn 0105 nêu 01.06 (chú giải chương 1 chỉ loại
+03.01/03.06/03.07/03.08, 30.02, 95.08) và **không được** thu hẹp danh sách ví dụ trong câu trích.
+Theo luật *"nguồn bao gồm X ở một chỗ, loại trừ X ở chỗ khác → **bỏ cả hai phía**"* (tiền lệ lô
+030/7317) → **XOÁ**, ghi rõ trong mô tả PR. Hệ quả: sổ tay 0105 **không còn** mục loại trừ sang 01.06 —
+đây là mất thông do **lỗi kệ sách**, không phải do người soạn.
+
+## Những chỗ em đã soi kỹ và chủ động GIỮ (ghi để người duyệt khỏi soi lại)
+
+- **9202 `loaiTru[0]`** — câu nguồn có DẤU HIỆU LOẠI TRỪ rõ (*"tuy nhiên, các nhạc cụ điện tử như ghita
+  không có hộp cộng hưởng thuộc nhóm 92.07"*), nêu đích danh 92.07 trong chính câu; câu còn giữ vế
+  *"chúng không bị loại trừ khỏi nhóm này"* nên mục **không nói chắc hơn nguồn**. Đúng.
+- **0101/0103/0104 `phamVi`** — bản nháp chép **trọn** câu chú giải nhóm (không lược), nêu đủ phạm vi và
+  định ngữ *"nuôi hoặc hoang"* / *"nuôi và hoang"*. Đúng.
+- **0104** — nguồn mỏng nhất lô: chú giải nhóm **chỉ có một câu**, **không có** "Chú giải phân nhóm" →
+  nguồn **không** định nghĩa *"loại thuần chủng để nhân giống"* cho 0104.10/0104.20. Bản nháp **không**
+  mượn định nghĩa của 0101 sang → đúng (khác 0101/0102/0103 đều có câu định nghĩa).
+- **Cả 6 nhóm `dieuKienVao` rỗng** — đúng, không phải bỏ sót: không câu ràng buộc nào phủ **cả** nhóm 4 số.
+  Câu *"giới hạn trọng lượng tính theo TỪNG CON"* của 0103 là điều kiện **cấp phân nhóm** (máy loại
+  `dieu-kien-cap-phan-nhom`), thuộc về dòng 8 số — không được đưa vào `dieuKienVao`.
+- **`phanBiet` rỗng ở 9202/0101/0102/0103/0104** — đúng: không câu nào nêu **đích danh** nhóm khác.
+  Ở 9202 nguồn chỉ nói **một chiều** (loại trừ sang 92.07) nên nhánh *"không"* sẽ phải suy từ danh
+  sách loại trừ → không tạo.
+
+## Ghi nhận ngoài phạm vi (đọc, KHÔNG sửa — để người duyệt xem)
+
+- **`0105 dong8[01059410].dieuKien`** nói *"dòng biểu thuế ghi kèm loại trừ gà chọi"* trong khi `trich`
+  của mục đó là **SEN** (không chứa câu đó). Nội dung **đúng** (lấy từ `tax.01059410` = *"01059410 - -
+  - Để nhân giống (SEN), trừ gà chọi"*) nhưng câu trích không đỡ → cần người duyệt quyết có nối
+  thêm câu biểu thuế vào `trich` không (mục chỉ có **một** `nguon`).
+- **35 dòng 8 số khác** cũng nêu phạm vi cha (tên vật nuôi từ WCO 6 số, mã phân nhóm từ biểu thuế)
+  trong khi câu trích chỉ ghi *"Loại khác"* / *"Loại thuần chủng để nhân giống"* — **văn phong sẵn có của
+  repo**, đã được người soạn liệt kê đầy đủ trong mô tả PR #430.
+
+## Nhãn nguồn (luật 11)
+
+**8** mục đã soát chuyển `AI_DA_KIEM` → **`NGUOI_DUYET`** (6 `phamVi` + 1 `boPhan` + 1 `loaiTru` của
+9202; `loaiTru`/`phanBiet` của 0105 đã bị xoá nên không còn mục để đổi nhãn). `tieuChi6`, `dong8`,
+`cay` **giữ nguyên** `AI_DA_KIEM` — phạm vi đổi nhãn chỉ 5 khối đã soi.
+
+## Gates
+
+```
+check-so-tay --raw        74/74   (6 nhóm, 0 mục không kiểm được nguồn)
+check-trich-nguyen-van    71/71 OK — mọi câu trích nguyên văn tuyệt đối trong đúng khối nguồn
+check-cay × 6              0 lỗi lệch cây, 6 nhóm đủ
+so-tay:check               362 nhóm / 10.599 mục / 0 rớt
+npm test                   ALL TESTS PASSED
+```
+
+Ba bản kiểm độc lập đã chạy cùng nhau (không tin bản nháp của người soạn):
+
+1. `check-so-tay --raw` — máy kiểm chính (chỉ chứng minh câu trích **có thật**, qua `squash()`).
+2. `scripts/check-trich-nguyen-van.mjs` — so **byte-exact**; bắt được 3 mảnh dán bằng dấu cách.
+3. `tmp/so-tay/soat-lap-038.cjs` (em viết lại từ đầu cho lô này) — so từng **ký tự**, bắt lỗi gõ sai
+   dấu (máy không bao giờ bắt vì `squash()` bỏ dấu), bắt đoạn **cắt cụt giữa câu**, bắt đoạn **dán hai
+   khối văn bằng dấu cách**, và đo **ngưỡng clip lúc chạy** của runtime (`clip(…, 220/160/110/55/90)`).
+   → **0 lỗi** trong 5 khối đã soát sau khi sửa.
+
+## Vẫn chờ người duyệt quyết (không tự quyết)
+
+1. **0105 mất mục loại trừ sang 01.06** (vì nguồn mâu thuẫn về gà lôi) — người duyệt xem có chấp nhận
+   bỏ, hay muốn sửa kệ sách trước.
+2. **`0105 dong8[01059410]`** — nội dung đúng nhưng câu trích không đỡ (mục trên).
+3. **`phamVi.trich` của 0102 dài 492 ký tự** — vượt "hướng dẫn" 300 của lược đồ, **dưới trần 600** của máy;
+   trong repo đã có 195/10.083 mục (1,9 %) vượt 300 (max 578). `trich` **không** đưa vào prompt lúc chạy
+   (runtime chỉ gửi `phamVi.text`), nên không tốn token.
+4. **Tự soát mẫu ≥ 10 %** (mục 4 giao việc) — người duyệt tự rút ngẫu nhiên trên phần còn lại.
+5. **`docs/giao-viec/so-tay-lo.csv`** — em **KHÔNG** sửa dòng lô 038 (`trang_thai` vẫn `dang-lam`): theo thói
+   quen repo, người duyệt đặt `trang_thai=xong` + `pr` khi **gộp**; lô 034 cũng vậy.
+6. **Công cụ ở `tmp/`** (`soat-lap-038.cjs`, `tao-review-038.cjs`) sẽ mất sau lô này vì `tmp/` bị
+   gitignore — chưa đưa vào `scripts/` vì ngoài phạm vi brief (anh có pending decision về
+   `cat-trich.cjs` từ lô 038 rồi). `scripts/apply-review-lo038.mjs` thì **có** commit, đúng quy ước
+   repo (mỗi lô một script).
+7. `TIEN-TRINH.md` dùng chung nhiều phiên — mục này của `dev-soat-doc-lap-lo038`, không sửa phần của phiên khác.
+
+---
+
 # SOÁT ĐỘC LẬP lô 034 — phiên `dev-soat-doc-lap` (23/10/2026)
 
 Người soát **khác** người soạn (`dev-zcode-mm`). Đã đọc lại **TOÀN BỘ** 5 khối của 6 nhóm
