@@ -1,0 +1,157 @@
+{
+ "nhom": "8448",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-24T22:30:00+07:00",
+ "phamViSoat": "Toàn bộ 28 mục của tmp/so-tay/raw/8448.json (1 phamVi + 1 boPhan + 7 loaiTru + 1 phanBiet + 3 cay.tenDien + 15 dong8), đọc cùng tmp/so-tay/nguon/8448.txt.",
+ "soat": 28,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "Một sửa (phanBiet), không xoá mục nào. (1) Câu trích cũ CẮT CỤT giữa từ (\"…các máy dệt thoi đặc bi …\") và `hoi` viết dạng chọn hai (\"A hay B?\") — runtime in prompt dạng \"<hoi> có→<neuCo> / không→<neuKhong>\" (lib/so-tay-gates.js:141) nên mô hình đọc \"có\" theo VẾ ĐẦU; bản nháp để neuCo là vế SAU ⇒ sai chiều (lỗi lặp ở lô 027: 6303, 7018). Sửa: đổi `hoi` thành câu hỏi CÓ/KHÔNG đúng chiều, giữ nguyên cặp mã, và mở rộng câu trích để hết chỗ cắt cụt. GHI CHÚ KỆ SÁCH (cần CEO quyết): nguồn ghi \"84,47\" (dấu phẩy thay dấu chấm) ở đúng câu này, nên mã 84.47 KHÔNG có nguyên văn trong câu trích; luật 8 cấm sửa mã nguồn để máy cho qua, nên neuCo chỉ ghi 8444|8445|8446 và phần 84.47 ghi ở đây. (Trong cùng tệp nguồn, \"84.47\" có viết đúng ở các dòng 6/8/10, nhưng câu cần dùng thì nằm ở dòng 64 — không vá câu trích từ chỗ khác.) BỎ SÓT (ghi nhận, không tự thêm — tiền lệ lô 021/034): mục \"(8) Ống dẫn sợi (nhưng không phải thủy tinh hoặc gốm, xem các nhóm 70.20 và 69.09, mà cũng không phải bằng đá mã não hoặc bằng các loại đá quý và đá bán quý khác, xem nhóm 71.16)\" — loại trừ dứt khoát có nêu đích 70.20/69.09/71.16 nhưng chưa tách thành loaiTru (cùng dạng với \"loại trừ … (nhóm 84.61)\" của lô 021 đã ghi nhận trong ghiChu). QUAN SÁT: `boPhan.quyTac` ghi \"84.47\" (đã sửa lỗi dấu phẩy của nguồn trong phần văn xuôi; `trich` giữ nguyên \"84,47\") — sửa lỗi ở phần văn xuôi nhưng KHÔNG sửa mã trong câu trích, đúng luật 8.",
+ "thayDoi": [
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "HAI LỖI CÙNG MỘT MỤC. (a) Câu trích cắt CỤT giữa từ: \"…các máy dệt thoi đặc bi … Khi được hiện diện riêng rẽ …\" — mảnh \"đặc bi\" là rác. (b) `hoi` viết dạng CHỌN HAI (\"được trình bày riêng rẽ hay là bộ phận hợp thành của máy dệt thoi đặc biệt?\") trong khi runtime in dạng \"<hoi> có→<neuCo> / không→<neuKhong>\" ⇒ mô hình đọc \"có\" theo VẾ ĐẦU, mà bản nháp để neuCo là vế SAU (lỗi lặp ở lô 027: 6303 \"màn che trong hay ngoài?\" và 7018). Sửa: viết lại `hoi` thành câu hỏi CÓ/KHÔNG đúng chiều — \"có phải là bộ phận hợp thành của máy dệt thoi đặc biệt không?\" → có (là bộ phận hợp thành) → 8444|8445|8446, không (được trình bày riêng rẽ) → 8448 — và mở rộng câu trích để hết chỗ cắt cụt, lấy nguyên văn cả hai vế của quy tắc. LƯU Ý: mã 84.47 không thêm vào neuCo vì nguồn ghi \"84,47\" (lỗi dấu phẩy) nên không có nguyên văn — luật 8 cấm sửa mã nguồn; xem ghiChu.",
+   "sua": {
+    "hoi": "Máy móc được liệt kê ở trên có phải là bộ phận hợp thành của máy dệt thoi đặc biệt không?",
+    "trich": "Một vài máy móc được liệt kê trên đây có thể được thiết kế để tạo thành các bộ phận hợp thành của các máy dệt thoi đặc biệt (máy dệt Jacquard, máy dệt thoi tự động,.v.v...). Khi được hiện diện riêng rẽ những máy móc này được phân loại trong nhóm này, không phải với vai trò là máy móc phụ trợ, mà với vai trò là các bộ phận của máy móc thuộc nhóm 84.44, 84.45, 84.46 hoặc 84,47."
+   }
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn, nêu đủ ba mục (I)(II)(III) của \"Nhóm này bao gồm:\". Đoạn lược chỉ bỏ thuyết minh nghĩa của thuật ngữ \"phụ kiện\" và chú thích ví dụ, không có ngoại lệ nào."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn đúng khối nguồn (quy tắc máy móc được liệt kê ở trên, trình bày riêng rẽ → phân loại trong nhóm này với vai trò bộ phận của máy 84.44–84.47); quyTac và tomTat bám sát câu nguồn. `quyTac` ghi \"84.47\" (đã sửa lỗi dấu phẩy của nguồn trong phần văn xuôi) — `trich` giữ nguyên \"84,47\" theo luật 8."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "\"Nhóm này không bao gồm máy tết hoặc máy xoắn sợi thuộc nhóm 84.45.\" — loại trừ dứt khoát, đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "\"Nhóm này không bao gồm go và bộ dây đai của sợi dệt hoặc dây dệt (nhóm 59.11).\" — đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (a) trong khối \"*** Không kể những cải khác, nhóm này cũng không bao gồm,:\" — \"Máy bơm được sử dụng trong ép đùn sợi nhân tạo (nhóm 84.13).\" Đích có nguyên văn; dấu \"***\" và dấu phẩy lộn xộn của nguồn được giữ nguyên."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b) \"Bộ lọc được sử dụng trong ép đùn sợi nhân tạo (nhóm 84.21).\" — đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c) \"Kim thuộc loại được sử dụng trên máy khâu (nhóm 84.52).\" — đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (d) \"Phương tiện ghi dùng để điều khiển Jacquard hoặc các máy tương tự (nhóm 85.23).\" — đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (7) \"Bộ phận rút sợi, bộ phận xe chỉ, v.v.. … nhưng loại trừ sợi gốm (nhóm 69.09) hoặc sợi thủy tinh (nhóm 70.20).\" — hai đích có nguyên văn, `sangNhom` phủ đúng."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "Tên \"Máy phụ trợ: cơ cấu dobbie và Jacquard, máy giảm chày, máy sao chép, máy đục lỗ hoặc máy lắp ráp dùng cho chúng\" dịch đúng wco.844811."
+  },
+  {
+   "index": "cay.tenDien[1]",
+   "hanhDong": "giu",
+   "lyDo": "Tên \"Máy phụ trợ cho các máy thuộc nhóm 84.44, 84.45, 84.46 hoặc 84.47, không thuộc mục 8448.11\" dịch đúng wco.844819."
+  },
+  {
+   "index": "cay.tenDien[2]",
+   "hanhDong": "giu",
+   "lyDo": "Tên \"Bộ phận và phụ kiện của máy dệt, kể cả máy phụ trợ của chúng, không thuộc mục 8448.4 khác\" dịch đúng wco.844849 (\"… n.e.c. in item no. 8448.4\"); cách diễn đạt hơi gộp nhưng đúng nghĩa nguồn."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84481110 - - - Hoạt động bằng điện\" nguyên văn đúng khối tax.84481110; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84481120 - - - Không hoạt động bằng điện\" nguyên văn đúng khối tax.84481120; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84481910 - - - Hoạt động bằng điện\" nguyên văn đúng khối tax.84481910; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84481920 - - - Không hoạt động bằng điện\" nguyên văn đúng khối tax.84481920; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84482000 - Bộ phận và phụ kiện của máy thuộc nhóm 84.44 hoặc các máy phụ trợ của chúng\" nguyên văn đúng khối tax.84482000; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84483100 - - Kim chải\" nguyên văn đúng khối tax.84483100; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84483200 - - Của máy chuẩn bị xơ sợi dệt, trừ kim chải\" nguyên văn đúng khối tax.84483200; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84483300 - - Cọc sợi, gàng, nồi và khuyên\" nguyên văn đúng khối tax.84483300; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84483900 - - Loại khác\" nguyên văn đúng khối tax.84483900; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84484200 - - Lược dệt, go và khung go\" nguyên văn đúng khối tax.84484200; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84484911 - - - - Dùng cho máy hoạt động bằng điện\" nguyên văn đúng khối tax.84484911; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84484912 - - - - Dùng cho máy không hoạt động bằng điện\" nguyên văn đúng khối tax.84484912; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[12]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84484990 - - - Loại khác\" nguyên văn đúng khối tax.84484990; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[13]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84485100 - - Platin tạo vòng (sinker), kim dệt và các chi tiết tạo vòng khác\" nguyên văn đúng khối tax.84485100; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[14]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84485900 - - Loại khác\" nguyên văn đúng khối tax.84485900; dieuKien chép đúng tên dòng."
+  }
+ ]
+}

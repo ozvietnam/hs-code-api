@@ -1,0 +1,60 @@
+{
+ "nhom": "8304",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-24T22:30:00+07:00",
+ "phamViSoat": "Toàn bộ 8 mục của tmp/so-tay/raw/8304.json (1 phamVi + 1 dieuKienVao + 1 loaiTru + 1 phanBiet + 4 dong8), đọc cùng tmp/so-tay/nguon/8304.txt.",
+ "soat": 8,
+ "sua": 2,
+ "xoa": 0,
+ "ghiChu": "Nhóm mỏng (nguồn 18 ký tự) nhưng sạch: chỉ 2 lỗi, cùng một căn cứ — mệnh đề \"với điều kiện loại đồ dùng này không được thiết kế để đặt đứng, kê trên sàn hoặc không thuộc các mặt hàng đã nêu trong chú giải 2 của chương 94 (nhóm 94.03)\" bị CẮT ở cả hai mục (phamVi lược bằng \"…\", dieuKienVao cắt thẳng), nên ranh giới 94.03 (đồ dùng văn phòng thuộc Chương 94) biến mất khỏi sổ tay — đúng loại \"mất ngoại lệ ngay sau câu trích\" mà máy KHÔNG bắt (check-so-tay chỉ kiểm câu trích có nguyên văn trong nguồn). Sửa bằng cách MỞ RỘNG câu trích, không viết lại tay. LƯU Ý cho phiên quản lý: `phamVi.text` bị lib/so-tay-gates.js:136 clip ở 220 ký tự khi đóng gói prompt vòng 2 — nên `text` phải đủ ngắn và phần quan trọng nhất (điều kiện 94.03) nằm ĐẦU; bản sửa đã sắp xếp như vậy.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích lược bằng \"…\" đúng chỗ nuốt mất mệnh đề \"với điều kiện loại đồ dùng này không được thiết kế để đặt đứng, kê trên sàn hoặc không thuộc các mặt hàng đã nêu trong chú giải 2 của chương 94 (nhóm 94.03)\" — đoạn bị lược có \"với điều kiện\" và có ngoại lệ, vi phạm luật 31 (đoạn lược không được chứa ngoại lệ). Mở rộng để đoạn lược chỉ còn \"(xem chú giải tổng quát Chương 94)\". Đồng thời sửa `text`: bản cũ ghi \"sắp xếp giấy tờ\" (nguồn ghi \"sắp xếp thư từ, phiếu thư mục và các giấy tờ khác\") và im lặng mất ranh giới 94.03 — mà `phamVi.text` đi thẳng vào prompt vòng 2 nên dễ kéo 8304 sang đồ dùng văn phòng Chương 94. `text` mới xếp điều kiện 94.03 LÊN ĐẦU vì prompt clip 220 ký tự.",
+   "sua": {
+    "text": "Với điều kiện không được thiết kế để đặt đứng, kê trên sàn hoặc không thuộc các mặt hàng đã nêu trong chú giải 2 của chương 94 (nhóm 94.03), nhóm gồm tủ đựng hồ sơ, tủ đựng bộ phiếu thư mục, hộp phân loại và đồ dùng văn phòng tương tự để lưu giữ, phân loại, sắp xếp giấy tờ…",
+    "trich": "Nhóm này bao gồm tủ đựng hồ sơ, tủ đựng bộ phiếu thư mục, các loại hộp phân loại và đồ dùng văn phòng tương tự dùng để lưu giữ, phân loại, sắp xếp thư từ, phiếu thư mục và các giấy tờ khác, với điều kiện loại đồ dùng này không được thiết kế để đặt đứng, kê trên sàn hoặc không thuộc các mặt hàng đã nêu trong chú giải 2 của chương 94 (nhóm 94.03) … Nhóm này cũng bao gồm các khay giấy để phân loại tài liệu, các loại giá giữ giấy để đánh máy"
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích cắt tại \"kê trên sàn\" — mất ngay vế \"hoặc không thuộc các mặt hàng đã nêu trong chú giải 2 của chương 94 (nhóm 94.03)\". Đây là \"mất ngoại lệ ngay sau câu trích\" (máy không bắt). Mở rộng tới hết \"(nhóm 94.03)\" để mệnh đề điều kiện không bị cắt; không đổi `fact`/`value` vì phần \"không được thiết kế để đặt đứng, kê trên sàn\" vẫn nguyên vẹn.",
+   "sua": {
+    "trich": "với điều kiện loại đồ dùng này không được thiết kế để đặt đứng, kê trên sàn hoặc không thuộc các mặt hàng đã nêu trong chú giải 2 của chương 94 (nhóm 94.03)"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng: câu nguồn có dấu hiệu loại trừ rõ ràng (\"Tuy nhiên nhóm này không bao gồm các loại giỏ dùng để đựng giấy loại\") và nêu đích 73.26 trong chính câu. Đích ghi \"ví dụ thuộc nhóm 73.26\" là cách nguồn diễn đạt — có tiền lệ đã duyệt: 3006 \"Chúng được phân loại tùy theo bản chất của chúng, ví dụ, catgut (nhóm 42.06)\" cũng ghi loại trừ sang 42.06."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đúng chiều: câu nguồn nói \"không bao gồm các loại giỏ dùng để đựng giấy loại\" nên có → 73.26, không → 8304. `hoi` không nhắc mã phân nhóm. Nhánh \"không\" trỏ về chính nhóm là dạng đã có 513 mục trong sổ tay đã duyệt."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế nguyên văn \"83040010 - Tủ đựng hồ sơ và tủ đựng bộ phiếu thư mục\"; `dieuKien` chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế nguyên văn \"83040091 - - Bằng nhôm\"; `dieuKien` chép đúng."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế nguyên văn \"83040092 - - Bằng niken\"; `dieuKien` chép đúng."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế nguyên văn \"83040099 - - Loại khác\"; `loaiKhac` do máy tự điền theo biểu thuế (luật 6)."
+  }
+ ]
+}
