@@ -1,0 +1,321 @@
+{
+ "nhom": "0301",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-24T23:40:00+07:00",
+ "soat": 52,
+ "daKiem": 52,
+ "xoa": 0,
+ "sua": 16,
+ "phamViSoat": "Toàn bộ 52 mục của bản nháp (1 phamVi + 1 dieuKienVao + 2 loaiTru + 2 phanBiet + 10 tieuChi6 + 1 cay.tenDien + 35 dong8), đọc cùng tmp/so-tay/nguon/0301.txt.",
+ "ghiChu": "Audit 0301: đọc tay 52 mục cùng tmp/so-tay/nguon/0301.txt. Sửa 12, xoá 0. Lỗi bắt được (máy KHÔNG bắt): (1) hai mục loại trừ (0511, 1604) chỉ chép mục (c)/(d) của danh sách loại trừ không có câu dẫn → gắn lại câu dẫn \"Ngoài những phần loại trừ đã nêu trên, Chương này cũng không bao gồm:\". (2) 7 câu trích dài 591 ký tự bị CẮT GIỮA CÂU (\"…hoạt bát…\" cho 4 dòng SEN để nhân giống; \"…newworldencycloped…\" cho 3 dòng SEN cá chép khác) → cắt lại đúng ranh giới câu (295/134 ký tự). (3) 5 dòng \"Loại khác\" nói \"phần còn lại của phân nhóm 0301.93/0301.99\" trong khi thật ra cha của chúng là tiêu đề quốc gia 7 số (0301.93.2/.3, 0301.99.1/.2/.4) — 4 dòng cùng trùng một phạm vi, mâu thuẫn với dòng 03019990 (đúng là dòng gom của 0301.99) → sửa theo cấu trúc biểu thuế giống 4802/4012. Ghi chú (KHÔNG phải lỗi, không sửa): (1) `cay.tenDien[0]` (030111 = \"Cá cảnh nước ngọt\") đúng với tên WCO và nút cây đang trống tên → giữ nguyên, đổi nhãn NGUOI_DUYET. (2) Hai dòng 03019931/03019932 (cá măng biển để nhân giống / loại khác) dùng CHUNG một câu trích SEN nên `dieuKien` không phân biệt được; phần biểu thuế có phân biệt nhưng câu trích không có — người soát KHÔNG tự thêm chữ ngoài câu trích, ghi ở đây để người duyệt biết. (3) `dieuKienSo` của 03019931–03019935/03019941 lấy ngưỡng từ SEN (\"khối lượng không dưới 600/800 gram\", \"kích thước… 60/70/120/180 cm\") — số có trong trích, đơn vị \"gram\"/\"cm\" có trong trích.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): câu trích chỉ chép MỤC (c)/(d) của danh sách \"Chương này cũng không bao gồm:\" mà không có câu dẫn, nên đọc riêng KHÔNG nói đây là loại trừ khỏi Chương 3. Sửa bằng cách GẮN CÂU DẪN nguyên văn (\"Ngoài những phần loại trừ đã nêu trên, Chương này cũng không bao gồm:\") và lược các mục (a)/(b) bằng \"…\"; không sửa câu nguồn, không sửa mã đích.",
+   "sua": {
+    "trich": "Ngoài những phần loại trừ đã nêu trên, Chương này cũng không bao gồm: … (c) Phế liệu của cá và trứng cá không làm thực phẩm (ví dụ: trứng cá tuyết muối dùng làm mồi câu) (nhóm 05.11)."
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): câu trích chỉ chép MỤC (c)/(d) của danh sách \"Chương này cũng không bao gồm:\" mà không có câu dẫn, nên đọc riêng KHÔNG nói đây là loại trừ khỏi Chương 3. Sửa bằng cách GẮN CÂU DẪN nguyên văn (\"Ngoài những phần loại trừ đã nêu trên, Chương này cũng không bao gồm:\") và lược các mục (a)/(b) bằng \"…\"; không sửa câu nguồn, không sửa mã đích.",
+   "sua": {
+    "trich": "Ngoài những phần loại trừ đã nêu trên, Chương này cũng không bao gồm: … (d) Trứng cá tầm muối hoặc các sản phẩm thay thế trứng cá tầm muối từ trứng cá (nhóm 16.04)."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): câu trích chỉ chép MỤC (c)/(d) của danh sách \"Chương này cũng không bao gồm:\" mà không có câu dẫn, nên đọc riêng KHÔNG nói đây là loại trừ khỏi Chương 3. Sửa bằng cách GẮN CÂU DẪN nguyên văn (\"Ngoài những phần loại trừ đã nêu trên, Chương này cũng không bao gồm:\") và lược các mục (a)/(b) bằng \"…\"; không sửa câu nguồn, không sửa mã đích. (phanBiet dùng chung câu trích với loaiTru[0])",
+   "sua": {
+    "trich": "Ngoài những phần loại trừ đã nêu trên, Chương này cũng không bao gồm: … (c) Phế liệu của cá và trứng cá không làm thực phẩm (ví dụ: trứng cá tuyết muối dùng làm mồi câu) (nhóm 05.11)."
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): câu trích chỉ chép MỤC (c)/(d) của danh sách \"Chương này cũng không bao gồm:\" mà không có câu dẫn, nên đọc riêng KHÔNG nói đây là loại trừ khỏi Chương 3. Sửa bằng cách GẮN CÂU DẪN nguyên văn (\"Ngoài những phần loại trừ đã nêu trên, Chương này cũng không bao gồm:\") và lược các mục (a)/(b) bằng \"…\"; không sửa câu nguồn, không sửa mã đích. (phanBiet dùng chung câu trích với loaiTru[1])",
+   "sua": {
+    "trich": "Ngoài những phần loại trừ đã nêu trên, Chương này cũng không bao gồm: … (d) Trứng cá tầm muối hoặc các sản phẩm thay thế trứng cá tầm muối từ trứng cá (nhóm 16.04)."
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[6]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[7]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[8]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[9]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (\"trích 300–600 ký tự lặng lẽ\" + cắt trích giữa câu): câu trích dài 591 ký tự và bị CẮT GIỮA CÂU (\"…Cá phải nhanh nhẹn, hoạt bát…\"), trong khi mục chỉ khẳng định điều kiện \"cá để nhân giống có chứng nhận\". Sửa bằng cách CẮT LẠI đúng ranh giới câu: giữ tiêu đề SEN + câu \"Cá để nhân giống được kèm theo chứng nhận của các cơ quan có thẩm quyền theo quy định của luật quốc gia\" (nguyên văn, 295 ký tự); không sửa nguồn, không sửa `dieuKien`.",
+   "sua": {
+    "trich": "CÁ CHÉP ĐỂ NHÂN GIỐNG, TRỪ CÁ BỘT; CÁ BỘT CỦA CÁ MĂNG BIỂN VÀ CỦA CÁ MÚ, ĐỂ NHÂN GIỐNG; CÁ BỘT KHÁC ĐỂ NHÂN GIỐNG; CÁ CHÉP KHÁC ĐỂ NHÂN GIỐNG; CÁ MĂNG BIỂN ĐỂ NHÂN GIỐNG, TRỪ CÁ BỘT\nCá để nhân giống được kèm theo chứng nhận của các cơ quan có thẩm quyền theo quy định của luật quốc gia"
+   }
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[12]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (phạm vi dòng Loại khác SAI cấp): dòng 03019329 nằm trong tiêu đề quốc gia 0301.93.2 (theo cây hs-tree), không phải \"phần còn lại của phân nhóm 0301.93\" — mệnh đề cũ đúng cho dòng 03019339 nên hai dòng cùng một phạm vi (mâu thuẫn). Sửa theo đúng cấu trúc biểu thuế (giống cách đã gộp ở 4802/4012): nêu cha thật + các dòng anh em đã có tên bị loại. KHÔNG sửa mã, KHÔNG sửa nguồn, KHÔNG sửa `trich`.",
+   "sua": {
+    "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 0301.93.2 (Cá chép — đối chiếu biểu thuế) trừ 03019321 (Để nhân giống, trừ cá bột) và 03019322 (Cá bột); thuộc phân nhóm 0301.93 (tên WCO 030193: Fish; live, carp (Cyprinus spp., Carassius spp., Ctenopharyngodon idellus, Hypophthalmichthys spp., Cirrhinus spp., Mylopharyngodon piceus, Catla catla, Labeo spp., Osteochilus hasselti, Leptobarbus hoeveni, Megalobrama spp.))"
+   }
+  },
+  {
+   "index": "dong8[13]",
+   "hanhDong": "sua",
+   "lyDo": "Lỗi giống dong8[10] (câu trích SEN cắt giữa câu, 591 ký tự) — cắt lại theo ranh giới câu, giữ tiêu đề SEN + câu chứng nhận; không sửa nguồn, không sửa `dieuKien`.",
+   "sua": {
+    "trich": "CÁ CHÉP ĐỂ NHÂN GIỐNG, TRỪ CÁ BỘT; CÁ BỘT CỦA CÁ MĂNG BIỂN VÀ CỦA CÁ MÚ, ĐỂ NHÂN GIỐNG; CÁ BỘT KHÁC ĐỂ NHÂN GIỐNG; CÁ CHÉP KHÁC ĐỂ NHÂN GIỐNG; CÁ MĂNG BIỂN ĐỂ NHÂN GIỐNG, TRỪ CÁ BỘT\nCá để nhân giống được kèm theo chứng nhận của các cơ quan có thẩm quyền theo quy định của luật quốc gia"
+   }
+  },
+  {
+   "index": "dong8[14]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[15]",
+   "hanhDong": "sua",
+   "lyDo": "Lỗi giống dong8[12]: dòng 03019339 nằm trong tiêu đề quốc gia 0301.93.3, không phải \"phần còn lại của phân nhóm 0301.93\"; sửa theo đúng cấu trúc biểu thuế (cha thật + danh sách anh em bị loại).",
+   "sua": {
+    "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 0301.93.3 (Cá chép — đối chiếu biểu thuế) trừ 03019331 (Để nhân giống, trừ cá bột) và 03019332 (Cá bột); thuộc phân nhóm 0301.93 (tên WCO 030193: Fish; live, carp (Cyprinus spp., Carassius spp., Ctenopharyngodon idellus, Hypophthalmichthys spp., Cirrhinus spp., Mylopharyngodon piceus, Catla catla, Labeo spp., Osteochilus hasselti, Leptobarbus hoeveni, Megalobrama spp.))"
+   }
+  },
+  {
+   "index": "dong8[16]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[17]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[18]",
+   "hanhDong": "sua",
+   "lyDo": "Lỗi giống dong8[10] (câu trích SEN cắt giữa câu, 591 ký tự) — cắt lại theo ranh giới câu, giữ tiêu đề SEN + câu chứng nhận; không sửa nguồn, không sửa `dieuKien`.",
+   "sua": {
+    "trich": "CÁ CHÉP ĐỂ NHÂN GIỐNG, TRỪ CÁ BỘT; CÁ BỘT CỦA CÁ MĂNG BIỂN VÀ CỦA CÁ MÚ, ĐỂ NHÂN GIỐNG; CÁ BỘT KHÁC ĐỂ NHÂN GIỐNG; CÁ CHÉP KHÁC ĐỂ NHÂN GIỐNG; CÁ MĂNG BIỂN ĐỂ NHÂN GIỐNG, TRỪ CÁ BỘT\nCá để nhân giống được kèm theo chứng nhận của các cơ quan có thẩm quyền theo quy định của luật quốc gia"
+   }
+  },
+  {
+   "index": "dong8[19]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (phạm vi dòng Loại khác SAI + trùng với dòng 03019990): dòng 03019919 nằm trong tiêu đề quốc gia 0301.99.1 (\"Cá bột của cá măng biển và của cá mú\"), KHÔNG phải \"phần còn lại của phân nhóm 0301.99\" (đó mới là dòng 03019990) — mệnh đề cũ làm 4 dòng cùng nói một phạm vi. Sửa theo đúng cấu trúc biểu thuế; KHÔNG sửa mã/nguồn/`trich`.",
+   "sua": {
+    "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 0301.99.1 (Cá bột của cá măng biển và của cá mú) trừ 03019911 (Để nhân giống (SEN)); thuộc phân nhóm 0301.99 (tên WCO 030199: Fish; live, n.e.c. in heading 0301)"
+   }
+  },
+  {
+   "index": "dong8[20]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (\"trích 300–600 ký tự lặng lẽ\" + cắt trích giữa URL): câu trích dài 591 ký tự và bị cắt giữa một từ (\"…http://www.newworldencycloped…\"). Sửa bằng cách CẮT LẠI đúng ranh giới câu: giữ tiêu đề \"CÁ CHÉP KHÁC\" + câu định nghĩa mà mục khẳng định (nguyên văn, 134 ký tự); không sửa nguồn, không sửa `dieuKien`.",
+   "sua": {
+    "trich": "CÁ CHÉP KHÁC\nCá chép khác được chi tiết tại 0301.99.22, 0301.99.23 và 0301.99.42 là cá chép không được chi tiết tại phân nhóm 0301.93"
+   }
+  },
+  {
+   "index": "dong8[21]",
+   "hanhDong": "sua",
+   "lyDo": "Lỗi giống dong8[20] (câu trích SEN cắt giữa URL, 591 ký tự) — cắt lại theo ranh giới câu; không sửa nguồn, không sửa `dieuKien`.",
+   "sua": {
+    "trich": "CÁ CHÉP KHÁC\nCá chép khác được chi tiết tại 0301.99.22, 0301.99.23 và 0301.99.42 là cá chép không được chi tiết tại phân nhóm 0301.93"
+   }
+  },
+  {
+   "index": "dong8[22]",
+   "hanhDong": "sua",
+   "lyDo": "Lỗi giống dong8[10] (câu trích SEN cắt giữa câu, 591 ký tự) — cắt lại theo ranh giới câu, giữ tiêu đề SEN + câu chứng nhận; không sửa nguồn, không sửa `dieuKien`.",
+   "sua": {
+    "trich": "CÁ CHÉP ĐỂ NHÂN GIỐNG, TRỪ CÁ BỘT; CÁ BỘT CỦA CÁ MĂNG BIỂN VÀ CỦA CÁ MÚ, ĐỂ NHÂN GIỐNG; CÁ BỘT KHÁC ĐỂ NHÂN GIỐNG; CÁ CHÉP KHÁC ĐỂ NHÂN GIỐNG; CÁ MĂNG BIỂN ĐỂ NHÂN GIỐNG, TRỪ CÁ BỘT\nCá để nhân giống được kèm theo chứng nhận của các cơ quan có thẩm quyền theo quy định của luật quốc gia"
+   }
+  },
+  {
+   "index": "dong8[23]",
+   "hanhDong": "sua",
+   "lyDo": "Lỗi giống dong8[19]: dòng 03019929 nằm trong tiêu đề quốc gia 0301.99.2 (\"Cá bột loại khác\"), không phải \"phần còn lại của phân nhóm 0301.99\"; sửa theo đúng cấu trúc biểu thuế.",
+   "sua": {
+    "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 0301.99.2 (Cá bột loại khác) trừ 03019922 (Cá chép khác, để nhân giống (SEN)), 03019923 (Cá chép loại khác (SEN)) và 03019924 (Loại khác, để nhân giống); thuộc phân nhóm 0301.99 (tên WCO 030199: Fish; live, n.e.c. in heading 0301)"
+   }
+  },
+  {
+   "index": "dong8[24]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[25]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[26]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[27]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[28]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[29]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[30]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[31]",
+   "hanhDong": "sua",
+   "lyDo": "Lỗi giống dong8[20] (câu trích SEN cắt giữa URL, 591 ký tự) — cắt lại theo ranh giới câu; không sửa nguồn, không sửa `dieuKien`.",
+   "sua": {
+    "trich": "CÁ CHÉP KHÁC\nCá chép khác được chi tiết tại 0301.99.22, 0301.99.23 và 0301.99.42 là cá chép không được chi tiết tại phân nhóm 0301.93"
+   }
+  },
+  {
+   "index": "dong8[32]",
+   "hanhDong": "sua",
+   "lyDo": "Lỗi giống dong8[19]: dòng 03019949 nằm trong tiêu đề quốc gia 0301.99.4 (\"Cá nước ngọt khác\"), không phải \"phần còn lại của phân nhóm 0301.99\"; sửa theo đúng cấu trúc biểu thuế.",
+   "sua": {
+    "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 0301.99.4 (Cá nước ngọt khác) trừ 03019941 (Cá rô phi (Oreochromis spp.)(SEN)) và 03019942 (Cá chép khác, để nhân giống (SEN)); thuộc phân nhóm 0301.99 (tên WCO 030199: Fish; live, n.e.c. in heading 0301)"
+   }
+  },
+  {
+   "index": "dong8[33]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[34]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  }
+ ]
+}

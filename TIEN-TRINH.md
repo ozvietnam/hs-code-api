@@ -3083,3 +3083,123 @@ chú ý nhất của lô 036 là `boPhan` 8455). Đề nghị lô sau mở rộn
 
 `data/so-tay/{0206,0207,0208,0209,0210,0301}.json` + `data/so-tay/bao-cao/lo-040.json` +
 dòng CSV + `TIEN-TRINH.md`. KHÔNG commit `tmp/`. **KHÔNG merge** — chờ người duyệt soát độc lập.
+
+## 2026-10-24 — SOÁT ĐỘC LẬP lô 040 (PR #433), người soát `dev-soat-lo040` (KHÁC người soạn `dev-zcode-mm`)
+
+Em là người soát **độc lập**: bản nháp `tmp/so-tay/raw/*.json` của lô 040 do phiên trước
+(`dev-zcode-mm`) soạn, em đọc lại **toàn bộ** `phamVi` / `boPhan` / `dieuKienVao` / `loaiTru` /
+`phanBiet` / `tieuChi6` / `cay.tenDien` / `dong8` của 6 nhóm (0206, 0207, 0208, 0209, 0210, 0301),
+**mỗi mục cùng nguồn** `tmp/so-tay/nguon/<nhom>.txt`.
+
+**Kết quả: soát 239/239 mục — giữ 214, sửa 25, xoá 0.** 239 = đúng số mục báo cáo lô
+(39 + 88 + 21 + 11 + 28 + 52). Sau soát vẫn **239/239 mục (100 %)**; **239 mục** (cả 8 khối đã soi
+— kể cả `tieuChi6`, `dong8` và `cay.tenDien`) đổi `nguonLoai` → `NGUOI_DUYET`; khối `cay` bên ngoài
+(cây do máy sinh) vẫn `MAY_SUY`.
+
+| nhóm | soát | giữ | sửa | xoá |
+|---|---|---|---|---|
+| 0206 | 39 | 37 | 2 | 0 |
+| 0207 | 88 | 86 | 2 | 0 |
+| 0208 | 21 | 17 | 4 | 0 |
+| 0209 | 11 | 10 | 1 | 0 |
+| 0210 | 28 | 28 | 0 | 0 |
+| 0301 | 52 | 36 | 16 | 0 |
+| **lô** | **239** | **214** | **25** | **0** |
+
+### 25 mục SỬA — 4 nhóm lỗi, đều thuộc loại máy KHÔNG bắt được
+
+1. **MỤC LOẠI TRỪ CHỈ CHÉP MỤC DANH SÁCH, KHÔNG CÓ CÂU DẪN (11 mục)** — `loaiTru`/`phanBiet` trích
+   "(b) Thịt và phụ phẩm dạng thịt được làm chín … (nhóm 16.02)" (0206, 0207), "(c) Ruột, bong bóng
+   hoặc dạ dày của động vật (nhóm 05.04) …" (0208), "(c) Phế liệu của cá và trứng cá không làm
+   thực phẩm … (nhóm 05.11)" + "(d) Trứng cá tầm muối … (nhóm 16.04)" (0301) — đọc riêng thì câu
+   trích **không có dấu hiệu loại trừ** (luật lô 030: loại trừ phải có "không bao gồm" /
+   "bị loại trừ" / "được phân loại vào nhóm …"). Sửa bằng cách **gắn lại câu dẫn nguyên văn**:
+   "… được phân loại vào Chương 16, ví dụ: …", "Chương này không bao gồm: …",
+   "Ngoài những phần loại trừ đã nêu trên, Chương này cũng không bao gồm: …" (giống cách đã gộp ở
+   6406/9002). Không sửa câu nguồn, không sửa mã đích.
+2. **`phamVi.text` MẤT ĐIỀU KIỆN / ĐẢO CHIỀU (2 mục)** —
+   **0208**: bỏ mất "miễn là chúng thích hợp dùng làm thức ăn cho người" ⇒ phạm vi bị nói rộng
+   (không ăn được thì sang 05.11 theo Chú giải Chương 2). **0209**: bỏ mất vế "bị loại trừ
+   (Chương 15)" ⇒ câu "Mỡ động vật để riêng, trừ mỡ lợn không dính nạc và mỡ gia cầm…" đọc ngược
+   thành "mỡ lợn không dính nạc/mỡ gia cầm **không** thuộc nhóm", trái với chính mục loại trừ của
+   nhóm (mỡ gia cầm chưa nấu chảy **vẫn** ở 0209). Cả hai sửa bằng cách chèn lại đúng câu nguồn.
+3. **CÂU TRÍCH 591 KÝ TỰ BỊ CẮT GIỮA CÂU / GIỮA URL (7 mục, 0301)** — 4 dòng SEN "CÁ CHÉP ĐỂ
+   NHÂN GIỐNG…" cắt giữa câu ("…Cá phải nhanh nhẹn, hoạt bát…") và 3 dòng SEN "CÁ CHÉP KHÁC" cắt
+   giữa từ ("…http://www.newworldencycloped…"). Đây là loại "trích 300–600 ký tự lặng lẽ" mà máy
+   cho qua. Sửa bằng cách **cắt lại đúng ranh giới câu**: giữ tiêu đề SEN + câu chứng nhận (285 ký
+   tự) và tiêu đề + câu định nghĩa cá chép khác (134 ký tự) — nguyên văn, không mất gì.
+4. **DÒNG "LOẠI KHÁC" NÓI SAI CẤP PHẠM VI (5 mục, 0301)** — 03019329, 03019339, 03019919, 03019929,
+   03019949 đều ghi "phần còn lại của phân nhóm 0301.93/0301.99", nhưng theo cây `hs-tree` cha của
+   chúng là **tiêu đề quốc gia 7 số** (0301.93.2, 0301.93.3, 0301.99.1, 0301.99.2, 0301.99.4) ⇒
+   **4 dòng cùng trùng một phạm vi**, và phạm vi đó còn chồng lên dòng 03019990 (đúng là dòng gom
+   của 0301.99). Sửa theo đúng cấu trúc biểu thuế, giống cách đã gộp ở 4802/4012: nêu cha thật +
+   danh sách dòng anh em đã có tên bị loại (ví dụ 03019919 = "phần còn lại của tiêu đề quốc gia
+   0301.99.1 (Cá bột của cá măng biển và của cá mú) trừ 03019911"). Không sửa mã, không sửa nguồn.
+
+### XOÁ: 0 mục — không mục nào mờ má
+
+Sửa ít hơn vòng 2 (xoá 325/sửa 95 trên ~1.300 mục) vì người soạn đã tránh sẵn các lỗi đã biết; 25
+mục sửa nêu trên đều thuộc đúng nhóm lỗi mà máy không bắt: **thiếu câu dẫn ở mục loại trừ**,
+**phạm vi đảo chiều**, **cắt trích giữa câu**, **phạm vi dòng Loại khác sai cấp**.
+
+### Những chỗ em CỐ TÌNH KHÔNG sửa (có lý do, để người duyệt thấy rõ)
+
+- **0207 `phamVi.text`** bỏ chữ "chỉ" của "Nhóm này **chỉ** bao gồm…" — nhưng danh sách nội dung
+  nhóm đủ và đúng, không nói rộng hơn câu trích ⇒ giữ.
+- **0207 hai dòng SEN 02071491/02072791** có câu trích 507 ký tự (trích **trọn** bản SEN, kết thúc
+  đúng câu, không cắt mất ngoại lệ) — loại "trích 300–600 lặng lẽ" mà máy không bắt; đọc tay thấy
+  đủ căn cứ ⇒ giữ (khác 7 câu 0301 bị cắt giữa chỗ thì sửa).
+- **0209 `dieuKienVao` rỗng** là ĐÚNG (điều kiện "mỡ không dính nạc" chỉ phủ mỡ lợn, không phủ mỡ
+  gia cầm; câu "ngay cả khi chỉ thích hợp dùng cho công nghiệp" là câu cho phép) — người soạn đã
+  ghi rõ trong hồ sơ, em xác nhận.
+- **0209 `loaiTru[1]`** (mỡ quanh bộ phận nội tạng lợn → 15.01) dùng câu "… thì **được phân loại
+  vào nhóm 15.01**" chứ không có chữ "bị loại trừ" — vẫn là dấu hiệu phân loại sang nhóm đích
+  (luật lô 030 có "sẽ thuộc nhóm") ⇒ giữ.
+- **0210 `tieuChi6[9]`** (hs6 021099) dùng fact "khac_trong_chuong_02" trong khi tên WCO là
+  "other than of primates, whales… reptiles" — tóm lược có mất danh sách loại trừ, nhưng `trich`
+  giữ nguyên văn và khối này **chưa đưa vào prompt vòng 2** ⇒ không sửa (ghi ra đây).
+- **0301 hai dòng 03019931 / 03019932** ("cá măng biển để nhân giống" / "loại khác") dùng CHUNG
+  một câu trích SEN nên `dieuKien` không phân biệt được; phần biểu thuế có phân biệt nhưng câu trích
+  không có ⇒ người soát KHÔNG tự thêm chữ ngoài câu trích, ghi ra đây để người duyệt biết.
+- **0210 `boPhan`** để null — chú giải nhóm có câu về thịt nhồi trong ruột/dạ dày/vỏ bọc (có thể làm
+  quy tắc bộ phận) nhưng đã được `dieuKienVao[0]` + `phanBiet[1]` phục vụ; người soát KHÔNG tự chèn.
+- **0210 — không sửa gì cả**: 28/28 mục giữ nguyên, đọc tay thấy câu trích nguyên văn và nói đúng.
+
+### Ghi chú cho lô sau (ngoài phạm vi đợt này — KHÔNG tự sửa)
+
+1. **Phạm vi dòng "Loại khác" phải lấy theo CHA THẬT trong cây, không theo phân nhóm 6 số** — 5/30
+   dòng "Loại khác" của lô 040 sai vì cứ ghi "phần còn lại của phân nhóm <6 số>". Máy có sẵn
+   `phamViLoaiKhac.cha` / `truAnhEm` (MAY_SUY) nhưng runtime (`lib/so-tay-gates.js:139`) chỉ in
+   `dieuKien` ⇒ tay soát phải tự đối chiếu cây. Đề xuất cho lô sau: soát bắt buộc dòng "Loại khác"
+   bằng `T.loaiKhacOf(hs)` rồi đối chiếu `dieuKien`.
+2. **Trần 220 ký tự của `phamVi.text` khi chạy** (`lib/so-tay-gates.js:134`) — lô 040 có 2/6 nhóm
+   vượt (0206: 427, 0210: 402) ⇒ nợ chung của repo đã ghi ở lô 036, không riêng lô này.
+3. **Câu trích dài của SEN**: kệ sách `sen.03019922/23/42` có văn bản kết thúc bằng dấu "(" rác OCR
+   và kèm URL Wikipedia — nên khi trích phải cắt theo ranh giới câu (đã làm vậy ở đây).
+
+### Cách làm (đúng thứ tự)
+
+1. Đọc trọn 6 tệp nguồn `tmp/so-tay/nguon/<nhom>.txt` + bản nháp `tmp/so-tay/raw/<nhom>.json`,
+   đối chiếu **từng mục**: câu trích có thật trong nguồn không, và có nói đúng điều mục khẳng định không.
+2. Kiểm **khắt** toàn bộ 239 câu trích bằng script riêng (`tmp/so-tay/kiem-tra-trich-lo040.mjs`):
+   so **từng ký tự** với nguồn (chỉ gộp khoảng trắng, không squash như máy) ⇒ **239/239 nguyên văn**,
+   0 sai dấu. Script này bắt được loại lỗi "gốm/gốc" mà máy không thấy.
+3. Ghi `review/<nhom>.json` — **239 mục, kể cả mục "giu"** (mỗi mục một lý do + đường dẫn `index`).
+4. `TARGET=raw APPLY=1 node scripts/apply-review-lo040.mjs` → sửa **25 trường trên 25 mục**.
+5. `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **239/239**.
+6. Nạp lại `node scripts/build-so-tay.mjs --nhom=0206,0207,0208,0209,0210,0301 --tu-tep=tmp/so-tay/raw
+   --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-040.json` → **239/239 (100 %)**.
+   (Xoá báo cáo cũ trước khi nạp lại để không sót `nhomLoi` — bài học "báo cáo lô bị ghi đè".)
+7. `TARGET=data APPLY=1` — **chỉ đổi `nguonLoai`** (không áp lại `thayDoi`) → **239 mục = NGUOI_DUYET**.
+8. So lại với HEAD bằng script (`tmp/so-tay/so-doi-lo040.mjs`, bỏ qua `nguonLoai` + metadata) ⇒ đúng
+   **25 mục** khác nội dung, đúng như hồ sơ soát.
+
+### Trạng thái cuối
+
+- `check-so-tay --raw` → **239/239**; kiểm chặt trích → **239/239 nguyên văn** (từng ký tự).
+- Nạp lại → **239/239 mục (100 %)**; `npm run so-tay:check` → **374 nhóm, 11.082 mục, 0 mục không
+  kiểm được nguồn**.
+- `node scripts/check-cay.mjs --nhom=0206,0207,0208,0209,0210,0301 --chi-tiet` → **6/6 nhóm đủ**,
+  **0 lỗi lệch cây**.
+- `npm test` → **ALL TESTS PASSED**.
+- **CHƯA merge** — chờ người duyệt (PR #433).

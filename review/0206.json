@@ -1,0 +1,214 @@
+{
+ "nhom": "0206",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-24T23:40:00+07:00",
+ "soat": 39,
+ "daKiem": 39,
+ "xoa": 0,
+ "sua": 2,
+ "phamViSoat": "Toàn bộ 39 mục của bản nháp (1 phamVi + 1 dieuKienVao + 3 loaiTru + 2 phanBiet + 23 tieuChi6 + 9 dong8), đọc cùng tmp/so-tay/nguon/0206.txt.",
+ "ghiChu": "Audit 0206: đọc tay 39 mục cùng tmp/so-tay/nguon/0206.txt (đã so từng ký tự câu trích với nguồn — không dựa vào squash của máy). Sửa 2 (cùng một lỗi: mục loại trừ sang 16.02 chỉ chép mục (b) không có câu dẫn), xoá 0. Ghi chú (KHÔNG phải lỗi, không sửa): (1) `dieuKienVao[0]` lấy điều kiện \"thích hợp dùng làm thức ăn cho người\" từ Chú giải Tổng quát Chương 2 — hợp lệ vì chú giải nhóm 0206 trỏ về Chú giải Tổng quát của Chương và có câu đối chiếu loại trừ sang 05.11. (2) `tieuChi6` lấy từ tên WCO (tiếng Anh) theo luật 10; `dong8` lấy đủ 9 dòng biểu thuế, dòng \"Loại khác\" ghi \"phần còn lại của phân nhóm 02xx.yy\" — đúng vì mỗi phân nhóm 6 số của 0206 chỉ có MỘT dòng \"Loại khác\". (3) `boPhan` để null — nhóm này không có quy tắc bộ phận.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): câu trích chỉ chép MỤC (b) của danh sách ví dụ (\"…(b) Thịt và phụ phẩm dạng thịt được làm chín … (nhóm 16.02)\") mà không có câu dẫn, nên đọc riêng KHÔNG nói đây là phân loại sang Chương 16 — trong khi mục khẳng định loại trừ sang 1602. Sửa bằng cách GẮN CÂU DẪN nguyên văn (\"… được phân loại vào Chương 16, ví dụ:\") và lược mục (a) bằng \"…\"; không sửa câu nguồn, không sửa mã đích.",
+   "sua": {
+    "trich": "Thịt và phụ phẩm dạng thịt sau giết mổ không thuộc bất cứ nhóm nào của Chương này được phân loại vào Chương 16, ví dụ: … (b) Thịt và phụ phẩm dạng thịt được làm chín bằng bất cứ cách nào (luộc, hấp, nướng, rán hoặc quay), hoặc được chế biến hoặc bảo quản bởi bất cứ phương pháp nào không nêu trong Chương này, bao gồm cả thịt và phụ phẩm dạng thịt chỉ bao bột hoặc vụn bánh mì, thêm nấm hoặc ướp gia vị (ví dụ: hạt tiêu và muối), bao gồm cả patê và patê gan (nhóm 16.02)."
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): câu trích chỉ chép MỤC (b) của danh sách ví dụ (\"…(b) Thịt và phụ phẩm dạng thịt được làm chín … (nhóm 16.02)\") mà không có câu dẫn, nên đọc riêng KHÔNG nói đây là phân loại sang Chương 16 — trong khi mục khẳng định loại trừ sang 1602. Sửa bằng cách GẮN CÂU DẪN nguyên văn (\"… được phân loại vào Chương 16, ví dụ:\") và lược mục (a) bằng \"…\"; không sửa câu nguồn, không sửa mã đích. (phanBiet dùng chung câu trích với loaiTru[1])",
+   "sua": {
+    "trich": "Thịt và phụ phẩm dạng thịt sau giết mổ không thuộc bất cứ nhóm nào của Chương này được phân loại vào Chương 16, ví dụ: … (b) Thịt và phụ phẩm dạng thịt được làm chín bằng bất cứ cách nào (luộc, hấp, nướng, rán hoặc quay), hoặc được chế biến hoặc bảo quản bởi bất cứ phương pháp nào không nêu trong Chương này, bao gồm cả thịt và phụ phẩm dạng thịt chỉ bao bột hoặc vụn bánh mì, thêm nấm hoặc ướp gia vị (ví dụ: hạt tiêu và muối), bao gồm cả patê và patê gan (nhóm 16.02)."
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[6]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[7]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[8]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[9]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[10]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[11]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[12]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[13]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[14]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[15]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[16]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[17]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[18]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[19]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[20]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[21]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[22]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  }
+ ]
+}

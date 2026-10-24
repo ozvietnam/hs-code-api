@@ -1,0 +1,71 @@
+{
+ "nhom": "0209",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-24T23:40:00+07:00",
+ "soat": 11,
+ "daKiem": 11,
+ "xoa": 0,
+ "sua": 1,
+ "phamViSoat": "Toàn bộ 11 mục của bản nháp (1 phamVi + 0 dieuKienVao + 2 loaiTru + 1 phanBiet + 5 tieuChi6 + 2 dong8), đọc cùng tmp/so-tay/nguon/0209.txt.",
+ "ghiChu": "Audit 0209: đọc tay 11 mục cùng tmp/so-tay/nguon/0209.txt. Sửa 1, xoá 0. Lỗi: `phamVi.text` bỏ mất vế \"bị loại trừ (Chương 15)\" khiến câu đọc ngược thành loại mỡ lợn không dính nạc/mỡ gia cầm ra khỏi nhóm — trái với chính mục loại trừ của nhóm. Ghi chú (KHÔNG phải lỗi, không sửa): `dieuKienVao` để rỗng là ĐÚNG — điều kiện \"mỡ không dính nạc\" chỉ phủ mỡ lợn (không phủ cả mỡ gia cầm) nên không đặt điều kiện chung cho nhóm; câu \"ngay cả khi chỉ thích hợp dùng cho công nghiệp\" là câu cho phép, không phải điều kiện. `boPhan` null — không có quy tắc bộ phận.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (phạm vi đảo chiều khi đọc): `phamVi.text` bỏ mất vế \"bị loại trừ (Chương 15)\", nên câu \"Mỡ động vật để riêng, trừ mỡ lợn không dính nạc và mỡ gia cầm…\" đọc ngược thành \"mỡ lợn không dính nạc và mỡ gia cầm KHÔNG thuộc nhóm\" — trái với chính mục loại trừ của nhóm (mỡ gia cầm chưa nấu chảy VẪN thuộc 0209). Sửa bằng cách CHÈN LẠI vế bị bỏ (\"bị loại trừ (Chương 15)\"), giữ nguyên phần còn lại của câu nguồn; `trich` giữ nguyên.",
+   "sua": {
+    "text": "Mỡ động vật để riêng bị loại trừ (Chương 15) (trừ mỡ lợn không dính nạc và mỡ gia cầm, chưa nấu chảy hoặc chiết xuất cách khác), nhưng mỡ dính vào thân thịt hoặc dính vào thịt được xem như là một phần của thịt"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn (đã so từng ký tự, không dựa vào squash của máy) và tự nó nói đúng điều mục khẳng định — giữ nguyên."
+  }
+ ]
+}
