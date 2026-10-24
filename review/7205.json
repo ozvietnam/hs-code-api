@@ -1,0 +1,59 @@
+{
+ "nhom": "7205",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-23T22:00:00+07:00",
+ "phamViSoat": "Toàn bộ 6 mục của 4 khối trong tmp/so-tay/raw/7205.json (1 phamVi + 0 dieuKienVao + 5 loaiTru + 0 phanBiet), đọc cùng tmp/so-tay/nguon/7205.txt, từng câu đối chiếu [nhom7205.nhom]. Ngoài phạm vi: tieuChi6/dong8 để máy kiểm nguyên văn.",
+ "soat": 6,
+ "daKiem": 6,
+ "sua": 5,
+ "xoa": 0,
+ "ghiChu": "6 mục, giữ 1, sửa 5, xoá 0 — toàn bộ 5 sửa đều là lỗi KÝ TỰ, không có lỗi nghĩa nào. Cả 5 mục loại trừ nằm đúng trong khối 'Nhóm này không bao gồm: (a)…(e)', đều nêu đích danh nhóm trong chính câu; riêng loaiTru[1] có HAI đích '30.03 hoặc 30.04' và sangNhom '3003|3004' đã phủ đủ cả hai. Máy KHÔNG bắt lỗi ký tự vì squash() bỏ ngoặc/dấu chấm và hạ chữ thường. phamVi giữ nguyên: nhóm có HAI phần ngang hàng '(A) HẠT' và '(B) BỘT' và phamVi nêu cả hai — đúng bài học lô 030 (phạm vi phải nêu các phần, không lấy đoạn dẫn của phần đầu). dieuKienVao để rỗng là đúng: hai câu định nghĩa 'hạt' và 'bột' là định nghĩa thuật ngữ, không phải điều kiện vào nhóm.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn 2 đoạn, nêu đủ hai phần của nhóm (hạt + bột) với định nghĩa kèm theo, không thu hẹp về một phần."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: bản cũ 'a) Bột sắt phóng xạ (các đồng vị) (nhóm 28.44' — mất dấu \"(\" mở đầu mục và cắt trước \")\". Đích 28.44 nêu đích danh.",
+   "sua": {
+    "trich": "(a) Bột sắt phóng xạ (các đồng vị) (nhóm 28.44)."
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: mất dấu \"(\" mở đầu mục và bỏ dấu chấm. Hai đích 30.03 và 30.04 đều có trong câu, sangNhom '3003|3004' phủ đủ.",
+   "sua": {
+    "trich": "(b) Bột sắt được đóng gói như dược phẩm theo quan niệm chung của nhóm 30.03 hoặc 30.04."
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: mất dấu \"(\" và cắt trước \")\". Đích 72.02 nêu đích danh (hợp kim fero không thuộc 7205 vì không phải sắt/thép không hợp kim).",
+   "sua": {
+    "trich": "(c) Hạt và bột hợp kim fero (nhóm 72.02)."
+   }
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: mất dấu \"(\" và cắt trước \")\". Đích 72.04 nêu đích danh.",
+   "sua": {
+    "trich": "(d) Mạt giũa hoặc phoi tiện phế thải bằng sắt hoặc thép (nhóm 72.04)."
+   }
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: mất dấu \"(\" và bỏ dấu chấm. Mục (e) nêu đích danh và kết dứt khoát ('sẽ được phân loại trong nhóm 73.26') nên đúng là loại trừ, không phải câu 'thường thuộc'. Định ngữ 'thường được sử dụng cho cùng những mục đích như hạt kim loại' đã giữ nguyên trong dieuKien, không bị rút thành điều kiện tuyệt đối.",
+   "sua": {
+    "trich": "(e) Bi ổ trục nhỏ có khuyết tật, những bi mặc dầu thường được sử dụng cho cùng những mục đích như hạt kim loại, sẽ được phân loại trong nhóm 73.26 theo Chú giải 7 của Chương 84."
+   }
+  }
+ ]
+}

@@ -38,6 +38,45 @@ theo nhóm 4 số, có `questionVi` + `questionZh` để hỏi shop). Danh mục
 một nhóm: `GET /api/declaration-fields?hs=8413` (công khai). Tên khóa thuộc tính dùng
 chung: `GET /api/attribute-synonyms` (công khai).
 
+### `/api/so-tay-questions` — câu hỏi rà soát TẤT ĐỊNH từ sổ tay (không AI, công khai)
+
+```http
+POST /api/so-tay-questions
+{ "hs": "84811019",
+  "productText": "Van cổng inox 304 điều khiển bằng tay, đường kính trong 25 mm, PN16",
+  "facts": { } }
+```
+
+Dùng ở bước "Oz rà soát" khi đã có mã (≥ 6 số mới có câu chốt đuôi 8 số). Trả
+`{ coSoTay, nhom, nguonSoTay, questions[] }`; nhóm chưa có sổ tay → `coSoTay:false`,
+`questions:[]` (ERP tự rơi về `/api/declaration-fields`). Mỗi câu: `key · questionVi ·
+questionZh? · type (choice|number) · required · loai · unit? · options? · nguon? · trich? ·
+askStaff? · tacDongThue?` (đặc tả đầy đủ: `/openapi.json` → `SoTayQuestion`).
+
+| `loai` | Nguồn câu | `required` | Ai trả lời |
+|---|---|---|---|
+| `DONG_BIEU` | đặc điểm quyết định đuôi 8 số (`dong8[].dieuKienSo` của sổ tay), có `trich`/`nguon` dòng biểu, kèm `tacDongThue` | `true` | khách — câu sắc, có căn cứ dòng thuế |
+| `CONG` | cổng sổ tay máy nghi (loại trừ / ngưỡng / bộ phận / dòng "Loại khác"), ngôn ngữ luật | `false`, `askStaff:true` | chuyên viên Oz |
+| `TT39` | trường khai bắt buộc theo nhóm hàng (TT 39/2018), không có trích dòng biểu | `false` khi có `productText`; `true` khi không | chuyên viên tự xác định — ERP không bắt khách |
+
+- **Máy tự đọc `productText` trước khi hỏi** (#411, 24/10/2026). Bước 1 đọc số có đơn vị +
+  vật liệu (cùng máy với `chotDong8`: "đường kính trong 25 mm"/"DN25" → 2,5 cm, "inox" → kim
+  loại). Bước 3 chạy mẫu nhận diện của từng trường TT39 (`data/chapter-declaration-fields.json`,
+  `data/attributes.json`, từ điển nhãn tiếng Trung) trên cả mô tả: "PN16" ⇒ bỏ `pressureRating`,
+  "inox 304" ⇒ bỏ `material`, "25 mm" ⇒ bỏ `dimensions`, "380V"/"3 pha"/"7500 W" ⇒ bỏ
+  `voltage`/`phaseCount`/`power`. Câu đã có trong mô tả **không trả về** — gửi càng đủ mô tả
+  (tên + model + nhãn hiệu + thông số, Việt/Trung đều được) càng ít câu. Trước #411 bước 3 chỉ
+  lọc theo `facts`, nên khách đã ghi vẫn bị hỏi lại 4 câu `required:true`.
+- `tacDongThue` (chỉ câu `DONG_BIEU`): `{ mfnMin, mfnMax, chenh, acftaKhac, dong[] }` — MFN (%)
+  thấp nhất / cao nhất và chênh giữa các dòng 8 số cùng phân nhóm 6 mà câu quyết định (`dong[]`;
+  gồm dòng có điều kiện nhắc tới đặc điểm đó + dòng "Loại khác" cùng phân nhóm); `acftaKhac` =
+  mức ACFTA khác nhau giữa các dòng đó; số `null` khi biểu thiếu. Dùng để **xếp câu theo tiền
+  thuế** (`chenh: 0` ⇒ trả lời không đổi MFN, có thể hạ xuống tuỳ chọn). Không phải thuế của mã;
+  không đổi thứ tự câu.
+- `facts { key: value }` = đáp án đã có (khách trả lời lần trước / máy tự điền) — không hỏi lại.
+- Tương thích ngược: client không gửi `productText` nhận payload như trước (+ `loai`,
+  `tacDongThue`). Công tắc đóng khẩn cấp dùng chung với nhóm đọc công khai: `HS_PUBLIC_READ=false`.
+
 ### `/api/suggest`
 
 ```http

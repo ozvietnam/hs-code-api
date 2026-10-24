@@ -236,6 +236,22 @@ lệch nhau 5,8 điểm), không kết luận được lợi hay hại. `changed
 gặp (giao với #141 và các nhóm trong đề vàng): **9004, 8708, 6204, 6403, 9405, 7019, 8539** — đủ để
 cổng bắt lửa >5% số mẫu; sau đó chạy lại bench này (script/kịch bản đã sẵn ở mục trên).
 
+## Trạng thái 24/10/2026 — #411 `/api/so-tay-questions` đọc productText + `loai` + `tacDongThue` (phục vụ "Kỷ luật hỏi" phía ERP)
+
+Bước 3 (câu chung TT 39/2018) trước đây chỉ lọc theo `facts`, không đọc `productText` → khách ghi
+"van cổng inox 304 … đường kính trong 25 mm … PN16" vẫn bị hỏi lại 4 câu `required:true` (chặn nút
+Gửi ở portal). Sửa (nhánh `feat/411-so-tay-questions-product-text`): đưa mô tả vào haystack của
+`missingStructured` (cùng máy dò với `/api/classify`), vật liệu đọc thêm bằng bảng `MATERIALS` của
+`chotDong8`; mỗi câu mang `loai` (`DONG_BIEU` · `CONG` · `TT39`); câu TT39 là tuỳ chọn khi có mô tả;
+câu `DONG_BIEU` kèm `tacDongThue` (chênh MFN giữa các dòng 8 số cùng PN6 mà câu quyết định —
+`lib/so-tay-gates.js#tacDongThueDong8`, chỉ tính, không đổi thứ tự). Không `productText` → payload y cũ.
+
+Đo trên 5.133 mô tả thật có sổ tay (`data/oz-gold-final.jsonl`): câu TT39 **3,75 → 1,98/món (−47 %)**;
+soát tay 40 câu bị bỏ: 0 bỏ sai, 1 ca mép (`form` bắt "thanh" trong "nút bịt thanh nẹp rèm"). Độ phủ
+câu sắc vẫn là điểm nghẽn: 146 PN6 có `dieuKienSo` (88 phủ định hoàn chỉnh), **94/146 chênh MFN = 0**
+(vd 3920.xx `be_day` đều 6 %) → việc tiếp theo (ngoài #411): nâng `tieuChi6` (181 nhóm / 1.427 tiêu chí)
+thành câu sắc có trích để tăng "câu có căn cứ" (hiện 29/131 nhóm trên bộ 830 dòng ERP).
+
 ## Liên quan
 - Bước 2 G-2 (bóc mệnh đề loại trừ thành cấu trúc) và bước 5 D-3 (định tuyến 6 số): sổ tay là
   cách làm chung cho cả hai.

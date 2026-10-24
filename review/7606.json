@@ -1,0 +1,47 @@
+{
+  "nhom": "7606",
+  "nguoiSoat": "NGUOI_DUYET",
+  "soatVaiTro": "soat-doc-lap",
+  "luc": "2026-10-23T22:40:00+07:00",
+  "phamViSoat": "Toàn bộ 5 mục của 5 khối trong tmp/so-tay/raw/7606.json (1 phamVi + 2 loaiTru + 2 phanBiet; dieuKienVao và boPhan rỗng), đọc cùng tmp/so-tay/nguon/7606.txt; ngoài ra soi 6 tieuChi6 + 11 dong8 + 2 cay.",
+  "soat": 5,
+  "daKiem": 5,
+  "sua": 1,
+  "xoa": 0,
+  "ghiChu": "5 khối sạch: hai loại trừ nằm dưới tiêu đề \"Nhóm này không bao gồm\", đích 76.07 / 76.16 nêu nguyên văn; hai câu hỏi phân biệt đúng chiều, không nhắc mã. Lỗi nằm ở ngoài 5 khối: dong8[4] bỏ mất chữ \"thường\". Ghi nhận, KHÔNG sửa vì không có mảnh nào trong trích để dựng lại: dong8[3] (SEN lá nhôm làm lon) có câu định mức \"có thể ở dạng lá có độ dày từ 0,175 mm nhưng không quá 0,432 mm và chiều rộng từ 254 mm nhưng không quá 1000 mm\" nằm NGAY SAU đoạn đã trích, không phải ngoại lệ (không có \"trừ/tuy nhiên/với điều kiện\") nên dấu lược không vi phạm luật; nhưng kéo vào sẽ đưa trích lên ~645 ký tự, VƯỢT trần 600 của máy. Ô \"dieuKien\" cũng không kể định mức, nên đây là THIẾU, không phải sai — giao người duyệt quyết định có bổ sung không. Ghi nhận thêm: bảng thành phần của dong8[4] có thêm Crôm, Đồng và hai dòng \"Loại khác\" mà trích lẫn dieuKien đều không nêu — vẫn trung thực (không thêm gì sai), chỉ thiếu.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Chú giải nhóm 76.06 chỉ có đúng 3 câu: 1 câu dẫn (định nghĩa theo chú giải 9(d) Phần XV, chú giải 74.09 áp dụng) + tiêu đề \"Nhóm này không bao gồm\" + 2 mục loại trừ. Câu dẫn là cây phạm vi duy nhất có sẵn; không mô tả vật liệu, không lấy một phần trong nhiều phần. Câu chú giải phân nhóm (C) của Chương 76 (\"các nhóm 76.04 tới 76.07\") phủ nhiều tiêu đề nên không dùng làm phạm vi."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Mục (a) dưới tiêu đề \"Nhóm này không bao gồm\", nguyên văn; đích 76.07 có trong câu. Ngưỡng \"0,2mm\" cũng có trong câu."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Mục (b), nguyên văn; đích 76.16 có trong câu; không có dấu hiệu rào (\"thường…/tùy…\")."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Đúng chiều: có = 76.07, không = 7606; hoi không nhắc mã phân nhóm; ngưỡng trong hoi khớp câu trích."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Đúng chiều: có = 76.16, không = 7606; hỏi đúng đặc tính (lưới đột dập kéo giãn)."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "sua",
+      "lyDo": "Mất định ngữ giới hạn — biến câu \"THƯỜNG\" thành điều kiện bắt buộc.\nCâu nguồn [sen.76061233] là \"Các sản phẩm được phân loại ở đây thường có các thành phần sau\", tức thành phần chỉ là thành phần THƯỜNG THẤY, không phải ngưỡng bắt buộc để được ở 7606.12.33. Bản cũ ghi thẳng \"— thành phần: nhôm 93,5 - 96,0, sắt không quá 0,35, magie 4,0 - 5,0 …\", đọc ra là phải đạt đúng bảng thành phần đó. Đây đúng loại lỗi luật bước 1 (\"dieuKien phải giữ định ngữ giới hạn của câu\") mà máy KHÔNG bắt được: câu trích vẫn nguyên văn nên check-so-tay xanh, HEDGE_LOAI_TRU cũng chỉ soi loaiTru.\nSửa: chèn lại \"thường\" vào đúng chỗ. Số trong bảng và thứ tự cột giữ nguyên (Mn ≤ 0,15 cho 5182; 0,20-0,50 cho 5082 — đúng thứ tự cột \"Hợp kim 5182 | Hợp kim 5082\" của bảng nguồn).",
+      "sua": {
+        "dieuKien": "Dạng lá, bằng hợp kim nhôm 5082 hoặc 5182, có chiều rộng trên 1m, dạng cuộn — thường có thành phần: nhôm 93,5 - 96,0, sắt không quá 0,35, magie 4,0 - 5,0, mangan không quá 0,15 (hợp kim 5182) hoặc 0,20 -0,50 (hợp kim 5082), silic không quá 0,20, titan không quá 0,10, kẽm không quá 0,25."
+      }
+    }
+  ]
+}

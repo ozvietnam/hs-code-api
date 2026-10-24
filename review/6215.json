@@ -1,0 +1,35 @@
+{
+ "nhom": "6215",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-23T21:40:00+07:00",
+ "phamViSoat": "Toàn bộ 3 mục của 4 khối trong tmp/so-tay/raw/6215.json (1 phamVi + 0 dieuKienVao + 2 loaiTru + 0 phanBiet), đọc cùng tmp/so-tay/nguon/6215.txt, từng câu đối chiếu [nhom6215.nhom]. Ngoài phạm vi: tieuChi6/dong8 để máy kiểm nguyên văn.",
+ "soat": 3,
+ "daKiem": 3,
+ "sua": 2,
+ "xoa": 0,
+ "ghiChu": "3 mục, giữ 1, sửa 2, xoá 0. Cả 2 lỗi cùng một loại: câu trích bị CẮT CỤT trong ngoặc và mất dấu \"(\" mở đầu mục. Máy KHÔNG bắt được vì lib/so-tay.js squash() bỏ mọi dấu ngoặc/dấu câu và hạ chữ thường — 'a) …(nhóm 61.17' và '(a) …(nhóm 61.17).' nén ra cùng một chuỗi. Đã cắt lại bằng cat-trich.mjs (module tự định vị trong nguồn rồi trả nguyên văn, hậu tố ')' và '.' được đối chiếu với nguồn nên không thể bịa). Không có lỗi nghĩa trong nhóm này: hai loại trừ nằm đúng trong khối 'Nhóm này không bao gồm:', đích 61.17 và 62.17 đều có trong câu; phamVi nêu đúng phạm vi (cà vạt + vải cắt thành mẫu, loại trừ dải cắt chéo); dieuKienVao để rỗng là đúng vì chú giải nhóm không có câu ràng buộc nào phủ cả nhóm; phanBiet để rỗng là đúng vì câu loại trừ không có vế 'Ngược lại' nói chiều còn lại thuộc 6215.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn 3 đoạn ghép bằng dấu lược, nêu đúng phạm vi nhóm (cà vạt/nơ/cravat/cổ cồn + vải cắt thành mẫu, kèm loại trừ dải cắt chéo). Đoạn 1 dừng ở 'kim loại,' rồi nguồn có ',...' — đó là dấu lược CỦA CHÍNH NGUỒN, không phải cắt cụt."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích, không sửa nghĩa. Bản cũ 'a) Cà vạt, nơ con bướm và nơ thường được dệt kim hoặc móc (nhóm 61.17' — mất dấu \"(\" mở đầu mục và bị cắt trước dấu \")\" khiến số nhóm đích trông như đứt. Nghĩa vẫn đúng: mục (a) nằm trong khối 'Nhóm này không bao gồm:', đích 61.17 có trong câu. Định ngữ 'thường' đã được giữ nguyên trong dieuKien (không rút thành điều kiện tuyệt đối).",
+   "sua": {
+    "trich": "(a) Cà vạt, nơ con bướm và nơ thường được dệt kim hoặc móc (nhóm 61.17)."
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: bản cũ 'b) Cổ bẻ to (rabat), khăn đeo ngực (jabot) và các mặt hàng tương tự thuộc nhóm 62.17' mất dấu \"(\" mở đầu mục. Mục (b) nằm trong khối 'Nhóm này không bao gồm:', đích 62.17 nêu đích danh ngay trong câu.",
+   "sua": {
+    "trich": "(b) Cổ bẻ to (rabat), khăn đeo ngực (jabot) và các mặt hàng tương tự thuộc nhóm 62.17."
+   }
+  }
+ ]
+}

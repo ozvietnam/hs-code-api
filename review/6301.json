@@ -1,0 +1,52 @@
+{
+ "nhom": "6301",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-23T21:45:00+07:00",
+ "phamViSoat": "Toàn bộ 5 mục của 4 khối trong tmp/so-tay/raw/6301.json (1 phamVi + 0 dieuKienVao + 3 loaiTru + 1 phanBiet), đọc cùng tmp/so-tay/nguon/6301.txt, từng câu đối chiếu [nhom6301.nhom] và [ch63.chuong]. Ngoài phạm vi: tieuChi6/dong8 để máy kiểm nguyên văn.",
+ "soat": 5,
+ "daKiem": 5,
+ "sua": 4,
+ "xoa": 0,
+ "ghiChu": "5 mục, giữ 1, sửa 4, xoá 0. Ba loại trừ đều đúng nghĩa, chỉ sửa ký tự trích (mất \"(\" mở đầu mục, cắt trước \")\"). Lỗi thật của lô nằm ở phanBiet[0].hoi: câu hỏi bị dựng vỡ — người soạn dừng giữa chừng ở đoạn '…hoặc kiện, bao' rồi gắn dấu hỏi, để lại '…kiện, bao?' — đây là câu hỏi không trọn vẹn, đọc lên nghĩa là 'bao?'. Máy KHÔNG bắt được vì hoi không được kiểm với câu trích. Chiều phân biệt giữ nguyên vì đúng: 63.09 chỉ gồm hàng có ký hiệu 'còn mặc được' VÀ đóng gói cỡ lớn/kiện/bao (ch63.chuong mục 3); thiếu một trong hai điều kiện thì không vào 63.09 — tiền lệ đã duyệt: 3215 (96.08), 3406 (30.04), 2508 (25.07) đều có nhánh 'không' trỏ về chính nhóm.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn, nêu đúng phạm vi: chăn/chăn du lịch + thảm, chăn trẻ nhỏ/xe đẩy + chăn làm nóng bằng điện. Ba đoạn ghép bằng dấu lược; giữa chúng không có ngoại lệ nào bị nuốt (đã soi đoạn sau MỖI dấu lược theo bài học lô 022)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: bản cũ mất dấu \"(\" mở đầu mục và bị cắt trước \")\". Mục (a) trong khối 'Nhóm này không bao gồm:', đích 42.01 nêu trong chính câu.",
+   "sua": {
+    "trich": "(a) Các loại chăn có hình dáng đặc biệt dùng để che, phủ động vật (thuộc nhóm 42.01)"
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: bản cũ mất dấu \"(\" và cắt trước \")\". Mục (b) trong khối loại trừ, đích 63.04 có trong câu.",
+   "sua": {
+    "trich": "(b) Khăn trải giường và khăn phủ giường (nhóm 63.04)"
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa ký tự trích: bản cũ mất dấu \"(\" mở đầu mục và bỏ dấu chấm câu. Mục (c) trong khối loại trừ, đích 94.04 nêu đích danh.",
+   "sua": {
+    "trich": "(c) Các loại tấm phủ giường được may chần hoặc nhồi thuộc nhóm 94.04."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa câu hỏi và ký tự trích. (1) hoi cũ 'Hàng là chăn, chăn du lịch có ký hiệu là hàng còn mặc được và được thể hiện ở dạng đóng gói cỡ lớn hoặc kiện, bao?' bị dựng vỡ: dừng giữa chừng ở '…hoặc kiện, bao' rồi gắn dấu hỏi, để lại vế 'bao?' trồi lên. Dựng lại trọn vẹn từ câu trích, giữ đủ cả vế 'hoặc các kiểu đóng gói tương tự' — bỏ vế này đi thì câu hỏi thành tiêu chí hẹp hơn nguồn, sẽ đẩy nhầm hàng đóng gói kiểu tương tự sang 6309. (2) trich cũ mất dấu ':' sau 'dưới đây', dấu ';' sau 'chăn du lịch' và dấu '.' cuối câu.",
+   "sua": {
+    "hoi": "Hàng là chăn, chăn du lịch có ký hiệu là hàng còn mặc được và được thể hiện ở dạng đóng gói cỡ lớn hoặc kiện, bao hoặc các kiểu đóng gói tương tự?",
+    "trich": "Nhóm 63.09 chỉ bao gồm các mặt hàng dưới đây: … (ii) Chăn và chăn du lịch; … Để được xếp vào nhóm này, các mặt hàng nêu ở trên phải thoả mãn cả hai điều kiện sau đây: (i) Chúng phải có ký hiệu là hàng còn mặc được, và (ii) Chúng phải được thể hiện ở dạng đóng gói cỡ lớn hoặc kiện, bao hoặc các kiểu đóng gói tương tự."
+   }
+  }
+ ]
+}
