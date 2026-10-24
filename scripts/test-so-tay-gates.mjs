@@ -1,6 +1,7 @@
 // Cổng sổ tay chú giải lúc chạy (lib/so-tay-gates.js) — tất định, không AI. Dữ liệu: data/so-tay/8509.json.
 import './test-isolate-data.mjs';
 import { createRequire } from 'module';
+import { nhomChuaCoSoTay } from './nhom-chua-co-so-tay.mjs';
 const require = createRequire(import.meta.url);
 const { soTayGates, soTayBlock, headPhrases, productHead, phraseHit, isPartsLine, loadSoTay, chotDong8, giaTriCua } = require('../lib/so-tay-gates.js');
 
@@ -22,7 +23,9 @@ check('"… and parts thereof" không phải dòng bộ phận; "…; parts" th�
 const blk = soTayBlock('8509', { lines: ['85098010', '85098090'] });
 check('khối sổ tay có loại trừ kèm nhóm đích + nguồn', /LOẠI TRỪ/.test(blk) && /84\.14/.test(blk) && /\[nhom8509\.nhom/.test(blk), blk.slice(0, 200));
 check('khối sổ tay chỉ in điều kiện dòng 8 số đang đưa cho AI', /85098010/.test(blk) && !/85094000:/.test(blk));
-check('nhóm chưa có sổ tay → null, cổng không kiểm', soTayBlock('0101') === null && loadSoTay('0101') === null && soTayGates({ hs: '01012100', productText: 'ngựa' }).checked === false);
+// nhóm CHƯA CÓ sổ tay — chọn động theo dữ liệu hiện tại (lô soạn mới không làm đỏ test)
+const CHUA_CO_SO_TAY = nhomChuaCoSoTay();
+check('nhóm chưa có sổ tay → null, cổng không kiểm', soTayBlock(CHUA_CO_SO_TAY.h4) === null && loadSoTay(CHUA_CO_SO_TAY.h4) === null && soTayGates({ hs: CHUA_CO_SO_TAY.hs8, productText: 'hàng' }).checked === false);
 
 // 1. Loại trừ đích danh
 let r = soTayGates({ hs: '85098090', productName: 'Quạt thông gió gia dụng', productText: 'quạt thông gió 30W' });

@@ -1,0 +1,173 @@
+{
+ "nhom": "0104",
+ "phamVi": {
+  "text": "Cừu nuôi hoặc hoang (cừu đực, cừu cái và cừu non), dê và dê con nuôi hoặc hoang",
+  "nguon": "nhom0104.nhom",
+  "trich": "Nhóm này bao gồm cừu nuôi hoặc hoang (cừu đực, cừu cái và cừu non), dê và dê con nuôi hoặc hoang.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "010410",
+   "fact": "loai_vat",
+   "op": "=",
+   "value": "Cừu",
+   "donVi": null,
+   "nguon": "wco.010410",
+   "trich": "010410 Sheep; live",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010420",
+   "fact": "loai_vat",
+   "op": "=",
+   "value": "Dê",
+   "donVi": null,
+   "nguon": "wco.010420",
+   "trich": "010420 Goats; live",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "01041010",
+   "dieuKien": "Cừu (phân nhóm 0104.10) loại thuần chủng để nhân giống",
+   "nguon": "tax.01041010",
+   "trich": "01041010 - - Loại thuần chủng để nhân giống",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "01041090",
+   "dieuKien": "Cừu (phân nhóm 0104.10) — dòng biểu thuế ghi \"Loại khác\"",
+   "nguon": "tax.01041090",
+   "trich": "01041090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "010410",
+    "truAnhEm": [
+     "01041010"
+    ],
+    "toTienCoTen": "010410",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "01042010",
+   "dieuKien": "Dê (phân nhóm 0104.20) loại thuần chủng để nhân giống",
+   "nguon": "tax.01042010",
+   "trich": "01042010 - - Loại thuần chủng để nhân giống",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "01042090",
+   "dieuKien": "Dê (phân nhóm 0104.20) — dòng biểu thuế ghi \"Loại khác\"",
+   "nguon": "tax.01042090",
+   "trich": "01042090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "010420",
+    "truAnhEm": [
+     "01042010"
+    ],
+    "toTienCoTen": "010420",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "0104",
+    "cap": 4,
+    "cha": "01",
+    "tenVi": "Cừu, dê sống.",
+    "tenEn": "Sheep and goats; live",
+    "suyRa": false
+   },
+   {
+    "id": "010410",
+    "cap": 6,
+    "cha": "0104",
+    "tenVi": "Cừu",
+    "tenEn": "Sheep; live",
+    "suyRa": false
+   },
+   {
+    "id": "01041010",
+    "cap": 8,
+    "cha": "010410",
+    "tenVi": "Loại thuần chủng để nhân giống",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "01041090",
+    "cap": 8,
+    "cha": "010410",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "010420",
+    "cap": 6,
+    "cha": "0104",
+    "tenVi": "Dê",
+    "tenEn": "Goats; live",
+    "suyRa": false
+   },
+   {
+    "id": "01042010",
+    "cap": 8,
+    "cha": "010420",
+    "tenVi": "Loại thuần chủng để nhân giống",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "01042090",
+    "cap": 8,
+    "cha": "010420",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom0104.nhom",
+  "tax.01041010",
+  "tax.01041090",
+  "tax.01042010",
+  "tax.01042090",
+  "wco.010410",
+  "wco.010420"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-24T14:23:17.334Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

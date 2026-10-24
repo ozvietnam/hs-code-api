@@ -1,0 +1,168 @@
+{
+ "nhom": "0103",
+ "phamVi": {
+  "text": "Lợn nuôi và hoang (như lợn lòi)",
+  "nguon": "nhom0103.nhom",
+  "trich": "Nhóm này gồm lợn nuôi và hoang (như lợn lòi).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "010310",
+   "fact": "thuan_chung_de_nhan_giong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom0103.nhom",
+   "trich": "Phân nhóm 0103.10 Theo mục đích của phân nhóm 0103.10, thuật ngữ \"loại thuần chủng để nhân giống” chỉ gồm những động vật giống được các cơ quan quốc gia có thẩm quyền công nhận là “thuần chủng”.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010391",
+   "fact": "khoi_luong",
+   "op": "<",
+   "value": 50,
+   "donVi": "kg",
+   "nguon": "wco.010391",
+   "trich": "010391 Swine; live, other than pure-bred breeding animals, weighing less than 50kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010392",
+   "fact": "khoi_luong",
+   "op": ">=",
+   "value": 50,
+   "donVi": "kg",
+   "nguon": "wco.010392",
+   "trich": "010392 Swine; live, other than pure-bred breeding animals, weighing 50kg or more",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "01031000",
+   "dieuKien": "Loại thuần chủng để nhân giống — chỉ gồm những động vật giống được các cơ quan quốc gia có thẩm quyền công nhận là “thuần chủng” (theo mục đích của phân nhóm 0103.10)",
+   "nguon": "nhom0103.nhom",
+   "trich": "Phân nhóm 0103.10 Theo mục đích của phân nhóm 0103.10, thuật ngữ \"loại thuần chủng để nhân giống” chỉ gồm những động vật giống được các cơ quan quốc gia có thẩm quyền công nhận là “thuần chủng”.",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "01039100",
+   "dieuKien": "Lợn sống khác loại thuần chủng để nhân giống, khối lượng dưới 50 kg; giới hạn trọng lượng của phân nhóm 0103.91 và 0103.92 tính theo trọng lượng của mỗi con vật (chú giải phân nhóm 01.03)",
+   "tieuChi": {
+    "fact": "khoi_luong",
+    "op": "<",
+    "value": 50,
+    "donVi": "kg"
+   },
+   "dieuKienSo": [
+    {
+     "fact": "khoi_luong",
+     "op": "<",
+     "value": 50,
+     "donVi": "kg"
+    }
+   ],
+   "nguon": "tax.01039100",
+   "trich": "01039100 - - Khối lượng dưới 50 kg",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "01039200",
+   "dieuKien": "Lợn sống khác loại thuần chủng để nhân giống, khối lượng từ 50 kg trở lên; giới hạn trọng lượng của phân nhóm 0103.91 và 0103.92 tính theo trọng lượng của mỗi con vật (chú giải phân nhóm 01.03)",
+   "tieuChi": {
+    "fact": "khoi_luong",
+    "op": ">=",
+    "value": 50,
+    "donVi": "kg"
+   },
+   "dieuKienSo": [
+    {
+     "fact": "khoi_luong",
+     "op": ">=",
+     "value": 50,
+     "donVi": "kg"
+    }
+   ],
+   "nguon": "tax.01039200",
+   "trich": "01039200 - - Khối lượng từ 50 kg trở lên",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "0103",
+    "cap": 4,
+    "cha": "01",
+    "tenVi": "Lợn sống (+).",
+    "tenEn": "Swine; live",
+    "suyRa": false
+   },
+   {
+    "id": "01031000",
+    "cap": 8,
+    "cha": "0103",
+    "tenVi": "Loại thuần chủng để nhân giống",
+    "tenEn": "Swine; live, pure-bred breeding animals",
+    "suyRa": false,
+    "laPhanNhom": "010310"
+   },
+   {
+    "id": "01039",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "0103",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "01039100",
+    "cap": 8,
+    "cha": "01039",
+    "tenVi": "Khối lượng dưới 50 kg",
+    "tenEn": "Swine; live, other than pure-bred breeding animals, weighing less than 50kg",
+    "suyRa": false,
+    "laPhanNhom": "010391"
+   },
+   {
+    "id": "01039200",
+    "cap": 8,
+    "cha": "01039",
+    "tenVi": "Khối lượng từ 50 kg trở lên",
+    "tenEn": "Swine; live, other than pure-bred breeding animals, weighing 50kg or more",
+    "suyRa": false,
+    "laPhanNhom": "010392"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom0103.nhom",
+  "tax.01039100",
+  "tax.01039200",
+  "wco.010391",
+  "wco.010392"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-24T14:23:17.333Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
