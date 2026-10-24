@@ -1987,3 +1987,87 @@ cùng brief lại là `--nhom=7615,9609,3215,6306,6804,7412`** — đúng 6 nhó
 
 `data/so-tay/{7415,7604,7606,8102,8210,8303}.json` + `bao-cao/lo-034.json` + dòng CSV +
 `TIEN-TRINH.md`. KHÔNG commit `tmp/`. **KHÔNG merge.**
+
+---
+
+# Lô 039 — nhóm 0106, 0201, 0202, 0203, 0204, 0205 (24/10/2026, dev-zcode-mm)
+
+## Sai lệch brief ↔ CSV (đã xử lý, không im lặng)
+
+- Brief (`~/.zcode/workspace/default/oz-dev-kit/brief-st-lo039.md`) dòng 4 ghi nhóm `0106,0201,0202,0203,0204,0205` —
+  **khớp** CSV; nhưng dòng 6 (lệnh mẫu) ghi `--nhom=7615,9609,3215,6306,6804,7412` = nhóm của **lô 001**
+  (copy-paste y nguyên khối, y hệt lô 003/014/027). Đã theo **CSV** (`docs/giao-viec/so-tay-lo.csv` dòng `039`).
+
+## Các bước
+
+1. **Đọc trước**: `docs/giao-viec/so-tay-giao-ngoai.md` (mục 2 + 11 luật mục 3) và `tmp/so-tay/nguon/_he-thong.txt`
+   (lược đồ + bài học lô 030) — xuất nguồn bằng `node scripts/build-so-tay.mjs --nhom=0106,0201,0202,0203,0204,0205 --xuat-nguon=tmp/so-tay/nguon`.
+2. **Đọc HẾT 6 tệp nguồn** + tra cây `lib/hs-tree.js` (nút 6 số, nhóm một gạch 5 số, tên từ biểu thuế) để biết dòng 8 số nào cần điều kiện.
+3. **Soạn bằng script, không gõ tay**: `tmp/so-tay/lib-nguon.mjs` (đọc khối `[mã nguồn]`) + `tmp/so-tay/soan-039.mjs`
+   (dựng JSON; mọi `trich` **cắt từ tệp nguồn** qua hàm `cat()` — mốc không tìm thấy là ném lỗi, nên không thể sai ký tự).
+   Bản nháp: `tmp/so-tay/raw/<nhom>.json`.
+4. **Tự kiểm 3 lớp**:
+   - `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **120/120 (100 %)**, 0 mục loại;
+   - `tmp/so-tay/audit-truong.mjs` (tự viết) — so trường tự viết với câu trích (bỏ dấu + giữ dấu), dựng lại **đoạn bị lược** để dò ngoại lệ bị nuốt, và in **câu ngay sau mảnh trích** để mắt soi;
+   - `node scripts/check-cay.mjs --nhom=<nhom> --chi-tiet` → cả 6 nhóm **"đủ"** (0 lỗi lệch cây, đủ dong8, đủ tên nút ảo, **đủ tiêu chí 6 số**).
+5. **Nạp**: `node scripts/build-so-tay.mjs --nhom=... --tu-tep=tmp/so-tay/raw --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-039.json`
+   → `mục đạt 120/120 (100 %)`; `npm run so-tay:check` → **362 nhóm, 10 645 mục, 0 mục hỏng**; `npm test` → **ALL TESTS PASSED**.
+
+## Hai chỗ TỰ SỬA trước khi nạp (máy KHÔNG bắt được)
+
+1. **`phamVi.text` của 0203** — em gõ "gồm **cả** thịt ba chỉ" trong khi nguồn ghi "gồm thịt ba chỉ" (thêm chữ không có trong câu trích — lô 030). Đã bỏ "cả".
+2. **`phanBiet.hoi` của 0106** — em gõ "động vật **thủy** sinh" trong khi nguồn ghi "**thuỷ** sinh" (sai dấu, lọt máy vì `squash` bỏ dấu). Đã sửa theo nguồn.
+3. **`phamVi` của 0106** — bản đầu lược "(A) Động vật có vú … (B) Loài bò sát" nuốt mất vế "**trừ** những động vật thuộc phân họ Bovinae" (lô 037). Đã thêm mảnh chứa chữ "trừ" vào câu trích → **không còn đoạn lược nào chứa ngoại lệ**.
+
+## Chủ ý BỎ (thà ít mục chắc chắn hơn nhiều mục mờ má)
+
+- **`phanBiet` rỗng cho 0201, 0202, 0205**: nguồn không có câu nêu **cả hai** nhánh có/không với mã đích nêu đích danh.
+  0201/0202 phân biệt "tươi/ướp lạnh" với "đông lạnh" nhưng mã 0202 **không có trong câu trích** (luật 4) → không dựng;
+  0205 chỉ có một dòng 8 số, không có cặp để hỏi.
+- **`dieuKienVao` không lấy ngưỡng "0 °C"** của chú giải Chương 2: điều kiện đó chỉ phủ phần **ướp lạnh**
+  (nhóm 0201 còn phần tươi) → đặt vào sẽ khiến cổng loại oan thịt tươi (lô 030).
+- **Không lấy "Mỡ động vật … (Chương 15)" làm loại trừ**: nguồn chỉ nêu *Chương*, không nêu mã nhóm đích (luật 3).
+- **Không gộp "tiết động vật (nhóm 05.11 hoặc 30.02)"** vào mục loại trừ 05.04 — đó là **chủ thể khác** trong cùng mệnh đề (lô 033).
+- **Không dựng `phanBiet` "có xương / không xương"** cho 0201/0202/0203/0204: dòng "thịt cả con và nửa con" cũng
+  **có xương**, nên nhánh "không" sẽ sai cho thịt cả con → bỏ (thông tin này đã nằm ở `dong8` + `tieuChi6`).
+- **Không soạn `cay`** (máy sinh) và **không ghi `nguonLoai`** (luật 9 + 11).
+
+## Nhóm nguồn mỏng / bất thường — báo cáo cho người duyệt
+
+- **0106** — chú giải nhóm là danh sách 5 phần (A)–(E) với ví dụ dài; `phamVi` nêu đủ 5 phần, `tieuChi6` lấy
+  **tên phân nhóm WCO (tiếng Anh)** cho cả 13 nút 6 số (010611…010690), 3 dòng "Loại khác" (01061900/01063900/01069000)
+  được định nghĩa bằng **tên WCO 6 số** (`Mammals; live, other than primates…`) vì biểu thuế VN chỉ ghi "Loại khác".
+  Loại trừ lấy từ **chú giải Chương 1** (cấp chương, áp cho cả nhóm): 95.08, 03.01/03.06/03.07/03.08, 30.02.
+- **0201–0205 (5 nhóm thịt)** — nguồn mỏng: chú giải nhóm chỉ **một câu định nghĩa**; phần còn lại là **chú giải Chương 2**
+  (dùng chung cho cả 5 nhóm) → 4 mục loại trừ lấy từ Chương 2: **05.11** (không ăn được), **05.04** (ruột, bong bóng, dạ dày),
+  **16.01** (xúc xích), **16.02** (thịt đã làm chín / chế biến).
+- **0204** — nguồn **đặc biệt**: chú giải phân nhóm trong chính nguồn nhóm cho tiêu chí cấp 6 số của **0204.10 và 0204.30**:
+  thịt cừu non = động vật loài cừu **≤ 12 tháng**, thịt thớ mịn/kết cấu khít/màu hồng đậm, **cân nặng cả thân thịt ≤ 26 kg**
+  → đã đưa vào `tieuChi6` (3 mục cho mỗi phân nhóm) chứ **không** đưa vào `dieuKienVao` (điều kiện cấp phân nhóm).
+- **0205** — không có phân nhóm 6 số (dòng lá `02050000` là cả nhóm, `laPhanNhom = 0205`) → `tieuChi6` rỗng, `check-cay` vẫn xanh.
+
+## `dieuKien` ghi điều mà câu trích KHÔNG nói (theo yêu cầu mô tả PR)
+
+Các mục sau lấy điều kiện từ **khối khác** trong khi `trich` vẫn là dòng biểu thuế (nguyên tắc khuôn của repo, xem `0402`/`3701`):
+
+| mục | `dieuKien` ghi thêm | nguồn của phần thêm |
+|---|---|---|
+| 0106 — 14 dòng 8 số | "— phân nhóm 0106.xx" | cây `lib/hs-tree.js` (tên phân nhóm) |
+| 0106 — 01061900 / 01063900 / 01069000 | "(WCO: …)" — tên phân nhóm WCO 6 số | `wco.010619/010639/010690` |
+| 0203 — 02031100…02032900 | "Tươi hoặc ướp lạnh / Đông lạnh (nhóm 0203.1 / 0203.2)" | biểu thuế (tên nhóm một gạch 5 số) |
+| 0204 — 02042100…02044300 | "Thịt cừu khác, tươi hoặc ướp lạnh / Thịt cừu khác, đông lạnh (nhóm 0204.2 / 0204.4)" | biểu thuế (tên nhóm một gạch 5 số) |
+| 0204 — 02041000 / 02043000 | tiêu chí "thịt cừu non ≤ 12 tháng, ≤ 26 kg" | chú giải phân nhóm trong `nhom0204.nhom` |
+| 0205 — 02050000 | "động vật khi còn sống được phân loại vào nhóm 01.01 (chú giải nhóm 0205)" | `nhom0205.nhom` |
+
+## Ba mục mẫu
+
+| loại | mục |
+|---|---|
+| loại trừ | **0201** → "Thịt và phụ phẩm dạng thịt không phù hợp hoặc không thích hợp dùng làm thức ăn cho người bị loại trừ (nhóm 05.11)." → `sangNhom: 0511` |
+| điều kiện số | **0204** → `tieuChi6[020410]`: `can_nang_ca_than_thit_khong_qua_26kg <= 26 kg` + `tuoi_cua_dong_vat_khong_qua_12_thang <= 12 tháng` (chú giải phân nhóm 0204.10/0204.30) |
+| dòng 8 số | **01063200** → "Vẹt (kể cả vẹt lớn châu Mỹ (parrots), vẹt nhỏ đuôi dài (parakeets), vẹt đuôi dài và vẹt có mào) — phân nhóm 0106.32" |
+
+## Nộp dung
+
+`data/so-tay/{0106,0201,0202,0203,0204,0205}.json` + `data/so-tay/bao-cao/lo-039.json` + dòng CSV 039 +
+`TIEN-TRINH.md`. KHÔNG commit `tmp/`. **KHÔNG merge.**
