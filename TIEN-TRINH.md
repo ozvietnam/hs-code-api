@@ -2421,3 +2421,152 @@ Lô soạn sau sẽ không làm đỏ test nữa.
 
 `data/so-tay/{9202,0101,0102,0103,0104,0105}.json` + `bao-cao/lo-038.json` + dòng CSV +
 `scripts/nhom-chua-co-so-tay.mjs` + 2 test sửa + `TIEN-TRINH.md`. KHÔNG commit `tmp/`. **KHÔNG merge.**
+
+---
+
+# SỔ TAY LÔ 041 — 0302 0303 0304 0305 0306 0307 (24/10/2026, `dev-zcode-mm`)
+
+## Về nhóm của lô — brief copy-paste nhầm (lần thứ 6), CSV mới là chuẩn
+
+Brief `brief-st-lo041.md` ghi tiêu đề nhóm `0302 0303 0304 0305 0306 0307` nhưng dòng lệnh
+trong brief lại là `--nhom=7615,9609,3215,6306,6804,7412` (6 nhóm của lô khác). Chuẩn là
+`docs/giao-viec/so-tay-lo.csv` dòng `041` → **0302 0303 0304 0305 0306 0307** (108 589 ký tự nguồn).
+Đã dùng nhóm trong CSV.
+
+## Các bước
+
+1. `node scripts/build-so-tay.mjs --nhom=0302,0303,0304,0305,0306,0307 --xuat-nguon=tmp/so-tay/nguon`
+   → 6 tệp nguồn (144 284 ký tự) + `_he-thong.txt`.
+2. Đọc TRƯỚC `docs/giao-viec/so-tay-giao-ngoai.md` (mục 2 + mục 3, 11 luật) và `_he-thong.txt`.
+3. **Tách "cơ học" khỏi "ngữ nghĩa"** — công cụ mới của lô:
+   - `tmp/so-tay/cat-trich.cjs` (mượn từ lô 038): **cắt** câu trích nguyên văn từ tệp nguồn;
+     đối chiếu lại diacritic-sensitive, sai dấu thì BÁO chứ không âm thầm nhận.
+   - `tmp/so-tay/lay-cay.cjs`: in ra **đủ** dòng 8 số + phân nhóm 6 số + nút ảo chưa có tên.
+   - `tmp/so-tay/gen.cjs`: sinh `tmp/so-tay/raw/<nhom>.json` từ **tệp spec** `tmp/so-tay/spec/<nhom>.json`
+     (spec chỉ chứa phần NGỮ NGHĨA + ghi đè; phần cơ học máy tự làm).
+   → 6 agent soạn SONG SONG, mỗi agent một nhóm, mỗi agent một tệp spec.
+4. Tự soát của phiên chính: đọc lại **toàn bộ** 5 khối `phamVi`/`dieuKienVao`/`loaiTru`/`phanBiet`/`boPhan`
+   của cả 6 nhóm + `cay.tenDien`, sửa 9 điểm (xem dưới).
+5. `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **626/626**, 0 mục loại.
+   `node scripts/check-trich-nguyen-van.mjs` → **OK 614 mục**, mọi câu trích nguyên văn byte-exact.
+6. Nạp: `node scripts/build-so-tay.mjs --nhom=… --tu-tep=tmp/so-tay/raw --force --nguoi-soan="dev-zcode-mm"
+   --bao-cao=data/so-tay/bao-cao/lo-041.json` → **626/626 (100 %)**, `nhomLoi: []`.
+7. `npm run so-tay:check` → **386 nhóm, 11 629 mục, 0 mục không kiểm được nguồn**.
+   `node scripts/check-cay.mjs --nhom=…` → **0 lỗi lệch cây, 6/6 nhóm đủ** (đủ cây, đủ dong8, đủ tên nút ảo, đủ tiêu chí 6 số).
+   `npm test` → **ALL TESTS PASSED**.
+
+## Kết quả theo nhóm
+
+| nhóm | mục | đạt | ghi chú |
+|---|---|---|---|
+| 0302 | 111 | 111 | 59 dong8 · 46 tieuChi6 · 4 loaiTru |
+| 0303 | 112 | 112 | 62 dong8 · 44 tieuChi6 · 4 loaiTru · 2 điều kiện số (SEN) |
+| 0304 | 105 | 105 | 50 dong8 · 48 tieuChi6 · 1 boPhan · 1 phanBiet |
+| 0305 | 66 | 66 | 36 dong8 · 22 tieuChi6 · 4 loaiTru · 1 phanBiet |
+| 0306 | 120 | 120 | 71 dong8 · 40 tieuChi6 · 3 tenDien · 1 phanBiet |
+| 0307 | 112 | 112 | 54 dong8 · 47 tieuChi6 · 7 tenDien |
+| **cả lô** | **626** | **626 (100 %)** | 0 nhóm lỗi |
+
+## Chủ ý BỎ (không có căn cứ — có chủ đích)
+
+1. **Loại trừ "trừ các phụ phẩm ăn được sau giết mổ của cá thuộc các phân nhóm từ 0302.91 đến 0302.99"**
+   (lặp ở 6 khối loài của chú giải 0302, và tương tự ở 0303) → **không biểu diễn được** thành `loaiTru`:
+   máy chỉ nhận mã đích **4 số có thật** (`validHeading`) hoặc **8 số** (`validTax`); 0302.91/0302.99 là
+   mã 6 số. Ép thành 03029100 thì sai tầng (loại trừ cấp phân nhóm, không phải dòng 8 số) **và**
+   `mentions()` không khớp "0302.91" với "03029100". → **BỎ, ghi rõ ở đây + mô tả PR.**
+2. **Câu cho phép** không dùng làm `dieuKienVao` (đặt `value=true` sẽ loại nhầm hàng):
+   0302 "Cá được ướp với ít đường… vẫn được phân loại trong nhóm này" · 0303 định nghĩa "đông lạnh"/"ướp lạnh"
+   (là **định nghĩa thuật ngữ**, không phải câu ràng buộc) · 0305 "Cá đã qua từ hai quá trình chế biến trở lên…",
+   "Cá hun khói đôi khi được xử lý nhiệt…" · 0307 "…chỉ được trụng/chần nước sôi…".
+3. **Loại trừ cấp Chương không nêu đích danh** → bỏ: "Chương 5" (mã 2 số), "Chương 16", nhóm 01.06 /
+   02.08 / 02.10 (không liên quan cá), nhóm 03.09 (câu "Các nhóm từ 03.05 đến 03.08" **không phủ** 0302–0304).
+4. **Phân biệt "đã làm chín / chưa làm chín"** của các cặp dòng biểu thuế trùng chữ ở 0306
+   (…21/…31, …29/…39): biểu thuế ghi giống hệt nhau ("Hun khói"/"Loại khác"), WCO cấp 6 số cũng **không**
+   tách cooked/not-cooked → không có căn cứ, **không đoán**.
+5. **`phanBiet`** rỗng ở 0302, 0303, 0307 — không có câu nào nêu **cả hai nhánh** có/không với mã đích danh.
+6. **Chú giải phân nhóm 0302.92** dùng cho `dong8` 03029200; **0305.71** dùng cho 03057110 — đều là
+   chú giải phân nhóm trong chính khối nhóm, hợp lệ.
+
+## Nhóm nguồn mỏng / bất thường — báo cáo cho người duyệt
+
+1. **Chú giải nhóm 0302 VÀ 0303 BỊ CẮT ĐẦU** trong `data/chu-giai-heading.json`:
+   0302 mở đầu bằng `"Citharidae), trừ phụ phẩm ăn được…"` (mất tiêu đề khối 0302.1),
+   0303 mở đầu bằng `"Ictalurus spp.), cá chép…"`. → 0303 **không có câu "Nhóm này gồm…" phủ cả nhóm**;
+   `phamVi` của 0303 lấy từ `wco.030311` ("Fish; frozen, … excluding fillets, fish meat of 0304,
+   and edible fish offal of subheadings 0303.91 to 0303.99") vì câu WCO nói đúng **phạm vi chung** của nhóm
+   (38/44 dòng WCO trong nhóm có cùng phần đuôi loại trừ này).
+2. **Chú giải nhóm 0304 CŨNG cắt đầu** (mở đầu `"Ctenopharyngodon idellus, …"`) **và đường dẫn định nghĩa
+   phi-lê bị ngắt ở "xương lưng chính,"** rồi nối tiếp ở "xương bụng hoặc sườn…" → mảnh trích phân biệt
+   phi-lê/thịt cắt **trước** chỗ ngắt.
+3. **Tiếng Anh lọt vào nguồn** — chép nguyên văn, không sửa: `0303.59 - - Other`,
+   `0303.26 - - Cá chình (Angullla spp.)` (sai chính tả "Angullla"), `0304.75- - Cá Minh Thái (Pollack Alaska)`.
+4. **Dòng biểu thuế `03055400` dài 759 ký tự** (vượt trần 600 của cả hai máy kiểm) → `trich` cắt thành
+   **đầu + "…" + cuối** của chính dòng biểu thuế (nguyên văn), `dieuKien` giữ nguyên tên đầy đủ.
+5. **SEN bị cắt**: `sen.03035410` cắt giữa dòng ("…Blue Mackerel (") → chỉ trích dòng **tiêu đề** trọn vẹn.
+   `sen.03057211` và `sen.03057219` **giống hệt nhau** ("BONG BÓNG CÁ") → không phân biệt được cá tuyết
+   với loại khác; chỉ dùng cho 03057219.
+6. **Biểu thuế trùng chữ**: 03074211/03074221 (mực nang + mực ống) và 03074310/03074921/03074931 — khác nhau
+   ở trạng thái ở câu cha, máy không phân biệt được → `dieuKien` ghi rõ loài + phân nhóm.
+   03063311/03063391 ("Sống") và 03063312/03063392 ("Tươi hoặc ướp lạnh") giống hệt nhau.
+   03045200 tên chỉ "Cá hồi" (1 chữ) trong khi 03044100/03048100 là "Cá hồi Thái Bình Dương…".
+   03049990 có dấu cách thừa ở cuối ("Loại khác ").
+7. **Hai nút 6 số của 0306 trùng tên** (030611 và 030631 đều là "tôm hùm biển và tôm biển khác") — đúng
+   theo WCO (chỉ khác trạng thái đông lạnh / sống-tươi), nêu rõ trong `tenDien`.
+
+## 9 điểm TỰ SỬA sau khi đọc lại (trước khi nạp)
+
+1. **Câu trích chứa dấu lược nuốt ngoại lệ**: 0303 — câu sẹ/bọc trứng cá có **xuống dòng trống** giữa chừng
+   trong nguồn → tách thành 2 mảnh nối bằng "…".
+2. **Loại trừ cấp Chương phải ĐỒNG NHẤT giữa 6 nhóm**: 0303 đã có 4 mục từ `ch03.chuong`
+   (23.01 / 16.04 / 05.11) nhưng 0302/0304/0305/0306/0307 không có → bổ sung mục **2301** (bột mịn, bột thô
+   và viên — câu có nhắc đúng loại hàng của nhóm) cho cả 5 nhóm, **0511** cho 0302 và 0304.
+   Cơ sở: `loaiTru` lấy từ `ch*.chuong` là **mẫu đã được duyệt** (0402 dùng `ch04.chuong`).
+3. **`dieuKienVao` của 0306/0307**: 3 mục nguồn nhóm đều chứa "đã hoặc chưa" (máy loại theo `CAU_CHO_PHEP`)
+   → dùng câu ràng buộc của chú giải Chương (giống 0303), **cùng cách diễn đạt** để 6 nhóm nhất quán.
+   Trước đó 0307 cắt trích còn "sống, tươi, ướp lạnh…" (**mất tiền tố câu**) → đã bỏ.
+4. **`dieuKienVao.value` của 0304** ghi "tươi hoặc ướp lạnh|đông lạnh" (dấu |) → đổi thành "tươi hoặc
+   ướp lạnh, đông lạnh" cho khớp 0302/0305/0307 (runtime in ra đúng chuỗi này cho LLM).
+5. **`phamVi.text` vượt trần cắt của runtime** (`clip()` ở `lib/so-tay-gates.js`: 220 ký tự):
+   0305 (243) và 0306 (300) → rút xuống 170 / 195 ký tự, **giữ nguyên nghĩa** (không cắt giữa câu).
+6. **Tên 6 số bị mất loài**: `shortName()` cắt tại dấu "(" **đầu tiên** → "Cá rô phi (Oreochromis spp.), cá da
+   trơn…" chỉ còn "Cá rô phi" (mất 5/6 loài, 18 mục). Đã sửa ở máy: bỏ **mọi** phần ngoặc khoa học,
+   giữ phần tên sau → "Cá rô phi, cá da trơn, cá chép, cá chình, cá rô sông Nile và cá quả".
+   (Lô 0304 đã ghi đè thủ công toàn bộ 48 phân nhóm theo WCO vì lý do này.)
+7. **"sò vẹo" là TỪ BỐI CÁI** — xuất hiện ở `cay.tenDien` (030771) + 4 `dong8.dieuKien`
+   (03077110/20, 03077930/40) + 3 `tieuChi6.value` (030771/030772/030779) của 0307.
+   "sò vẹo" **không có trong nguồn** (chú giải nhóm chỉ ghi "nghêu (ngao), sò"; WCO chỉ ghi "ark shells")
+   **và không có trong bất kỳ tệp data/ nào của repo** → đổi hết thành "Nghêu (ngao) và sò".
+8. **Dòng 0302.99** ghi "Vây cá khác vây cá mập, đầu…" (đọc vướng) → "Vây cá (khác vây cá mập), đầu, đuôi,
+   dạ dày và các phụ phẩm ăn được khác của cá".
+9. **Thiếu `tieuChi6` cho 030571** (check-cay báo) → bổ sung ("Vây cá mập", nguồn `wco.030571`).
+10. **Nhãn chờ "(loại khác)"** ở 03028929 (tiêu đề quốc gia 0302.89.2 tên biểu thuế là "Loại khác") → bỏ.
+11. **Quét "dieuKien nói thứ không có trong trích"** (`tmp/so-tay/audit-dieuKien.cjs`): 153/332 dòng 8 số
+    bị gắn cờ — rà tay thì **đều là bản dịch tiếng Việt của câu WCO tiếng Anh**
+    ("fresh or chilled" → "tươi hoặc ướp lạnh", "Nile perch" → "cá rô sông Nile"…) → **hợp lệ**;
+    lỗi thật duy nhất là "sò vẹo" ở mục 7.
+
+## Ba mục mẫu
+
+| loại | mục |
+|---|---|
+| loại trừ | **0304** → *"Phi-lê cá đã chín, và phi-lê chỉ bao bột hoặc bao vụn bánh mì, có hoặc không đông lạnh, được phân loại vào nhóm 16.04."* → `sangNhom: 1604` (câu có DẤU HIỆU LOẠI TRỪ + nêu đích danh nhóm đích) |
+| điều kiện số | **0303 / 03038923** → `dieuKienSo: [{fact:"khoi_luong", op:">=", value:800, donVi:"g"}]`, trích *"CÁ MĂNG BIỂN (CHANOS CHANOS)…Khối lượng không dưới 800 gram."* (SEN); thêm **03034910** → 1000 g |
+| dòng 8 số | **0302 / 03029200** → "Vây lưng, vây ngực, vây bụng, vây hậu môn và phần vây đuôi dưới của cá mập; các phần trên của đuôi cá mập không được coi là vây cá mập" (nguồn `nhom0302.nhom`) |
+
+## Cần người duyệt để mắt (máy KHÔNG bắt)
+
+1. **Runtime cắt ngắn trường sổ tay** — `clip()` ở `lib/so-tay-gates.js`: `loaiTru.dieuKien` **55 ký tự**,
+   `phamVi.text` 220, `boPhan.tomTat` 160, `phanBiet.hoi` 110. Lô này có **9 mục `loaiTru.dieuKien`**
+   dài hơn 55 → bị cắt GIỮA CÂU lúc chạy. Đây là **tình trạng có sẵn toàn repo** (1093/2142 mục
+   `loaiTru.dieuKien`, 114/378 `phamVi.text`) — **KHÔNG sửa trong PR dữ liệu này**, đề xuất mở issue riêng
+   để nới trần hoặc đổi cách in.
+2. **`dieuKienVao` lấy từ chú giải Chương** (0303, 0306, 0307) — câu ràng buộc cấp CHƯƠNG dùng làm điều kiện
+   cấp NHÓM; đánh giá lại xem có nên chuyển sang `dieuKienVao = []`.
+3. **`loaiTru` cấp Chương** — 9 mục lấy từ `ch03.chuong` (mẫu 0402 đã được duyệt) — xác nhận cùng cách
+   xử lý cho cả 6 nhóm.
+4. **0303 `phamVi` lấy từ WCO** (1 dòng đại diện cho cả nhóm) — đối chiếu với ý kiến người duyệt.
+
+## Nộp dung
+
+`data/so-tay/{0302,0303,0304,0305,0306,0307}.json` + `bao-cao/lo-041.json` + dòng CSV +
+`TIEN-TRINH.md`. KHÔNG commit `tmp/`. **KHÔNG merge.**
