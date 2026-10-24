@@ -1,0 +1,115 @@
+{
+ "nhom": "8464",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-24T22:20:00+07:00",
+ "phamViSoat": "Toàn bộ 19 mục của bản nháp lô 036 (1 phamVi + 0 dieuKienVao + 9 loaiTru + 0 phanBiet + 1 boPhan + 2 tieuChi6 + 0 cay.tenDien + 6 dong8), đọc cùng tmp/so-tay/nguon/8464.txt (nhom8464.nhom 73 dòng, ch84.chuong, phan84.phan, wco.846410/846420/846490, tax.84641010…84649020).",
+ "soat": 19,
+ "sua": 2,
+ "xoa": 0,
+ "giu": 17,
+ "ghiChu": "Audit 8464 (đọc nguồn nguyên văn, không chỉ qua máy). KẾT QUẢ: 19/19 mục có câu trích thật trong nguồn; KHÔNG xoá mục nào. SỬA 2 mục — lỗi máy KHÔNG bắt được: (1) phamVi bỏ sót 2 phần (F) và (G) của chính chú giải nhóm (xem thayDoi phamVi); (2) loaiTru[7].trich lược '…' đúng chỗ nguồn nói 'không loại trừ những máy đó khỏi nhóm này' (xem thayDoi loaiTru[7]). GIỮ có lý do: dieuKienVao rỗng là ĐÚNG — câu 'Nhóm này bao gồm không chỉ những loại máy để gia công đá tự nhiên, mà còn cả những máy để gia công những nguyên liệu cứng tương tự' là câu ĐỊNH NGHĨA/liệt kê, và chỉ phủ phần (I) (phần (II) gia công nguội thủy tinh không nằm trong câu) → theo luật lô 030, chỉ đặt dieuKienVao khi câu phủ CẢ nhóm; phanBiet rỗng là ĐÚNG (chú giải nhóm không nêu đích danh mã ngoài nhóm trong cùng câu với nhau — nguồn chỉ nêu mã trong các mục loại trừ, đã ghi ở loaiTru); tieuChi6 có 2 mục cho 846410 và 846420, còn phân nhóm 846490 chưa có tiêu chí → check-cay báo 'phan-nhom-chua-co-tieu-chi:846490' (CHỈ là cảnh báo; ngoài phạm vi 5 trường của đợt soát này, KHÔNG tự thêm); cay.tenDien rỗng là ĐÚNG (các nút 6 số đã có tên tiếng Việt từ biểu thuế Tổng cục). GHI CHÚ CHO LÔ: phamVi.text sau khi sửa dài 348 ký tự, vượt trần 220 mà runtime dùng để in (lib/so-tay-gates.js:134 clip(text,220)) — nếu muốn sửa thì phải rút gọn danh sách 7 phần, mà rút thì mất nghĩa; xem ghi chú chung của lô trong PR.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "BỎ SÓT 2 phần có số của chú giải nhóm: mục (F) 'Các máy dùng cắt hoặc sửa đá mài' và mục (G) 'Các máy công cụ dùng để gia công những sản phẩm bằng gốm'. Đây là mục THIẾU (text nói chưa sai chỗ nào) nhưng người đọc phạm vi nhóm sẽ tưởng nhóm 8464 chỉ có (A)–(E) và phần (II); (G) lại đúng là phần có loại trừ sang 84.74 (xem loaiTru[6]) nên thiếu nó làm phạm vi nhóm sai lệch. Đã sửa cả text lẫn trich (thêm (F) và (G) nguyên văn; câu trích dài 438 ký tự, trong khoảng 300–600 mà máy cho qua — đã đọc kỹ: các đoạn lược bằng '…' chỉ chứa tiêu đề/giải thích, không chứa ngoại lệ). Chú ý: nguồn ghi 'bằng gốm' (không phải 'gốc') — giữ nguyên chữ nguồn.",
+   "sua": {
+    "text": "Máy công cụ gia công đá, gốm, bê tông, xi măng – amiăng hoặc các loại khoáng vật tương tự (máy cưa, máy cắt, máy rạch hoặc chẻ, máy nghiền, làm nhẵn, đánh bóng, tạo vân, máy khoan, phay, máy tiện, chạm khắc, tạc, khuôn cắt, máy dùng cắt hoặc sửa đá mài, máy công cụ dùng để gia công những sản phẩm bằng gốm) và máy công cụ gia công nguội thủy tinh.",
+    "trich": "(I) MÁY CÔNG CỤ ĐỂ GIA CÔNG ĐÁ, GỐM, BÊ TÔNG, XI MĂNG – AMIĂNG HOẶC CÁC LOẠI KHOÁNG VẬT TƯƠNG TỰ … (A) Máy cưa hoặc máy cắt, như: … (B) Các máy để rạch hoặc chẻ. … (C) Các máy nghiền, làm nhẵn, đánh bóng, tạo vân,... … (D) Các máy khoan, phay. … (E) Các máy tiện, chạm khắc, tạc, khuôn cắt,… … (F) Các máy dùng cắt hoặc sửa đá mài. … (G) Các máy công cụ dùng để gia công những sản phẩm bằng gốm … (II) MÁY CÔNG CỤ GIA CÔNG NGUỘI THỦY TINH"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn trong nhom8464.nhom ('Nhóm này không bao gồm: … (a) Dụng cụ cầm tay hoặc đá mài quay tay hoặc hoạt động bằng bàn đạp (nhóm 82.05).'), có dấu hiệu loại trừ và nêu đích danh 82.05 → đúng luật mục 3."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn, nêu đích danh cả 84.45 và 84.46 (sangNhom '8445|8446' — máy kiểm đòi mỗi mã có trong câu, đạt). Đúng luật mục 3."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn trọn mục (c), nêu đích danh 84.56 → đúng luật mục 3."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn trọn mục (d), nêu đích danh 84.67 → đúng luật mục 3."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn trọn mục (e), nêu đích danh 84.74 → đúng luật mục 3."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn mục (f); dấu lược '…' chỉ che ngoặc giải thích '(như là “tấm bán dẫn mỏng cắt nhỏ ngang dọc vuông góc“)' — KHÔNG che ngoại lệ. Nêu đích danh 84.86 → đúng luật mục 3."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn từ mục (G): 'trừ những máy để gia công bột gốm nhão hoặc những vật phẩm chưa nung bằng nguyên liệu gốc (ví dụ, những máy tạo khuôn và tạo hình bột gốm nhão, nhóm 84.74).' Có dấu hiệu loại trừ ('trừ') và nêu đích danh 84.74 → đúng luật mục 3."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "sua",
+   "lyDo": "Dấu lược '…' của câu trích cắt đúng phần quyết định: nguồn viết '…thủy tinh được nung nóng nhẹ để phục vụ cho những quá trình nhất định THÌ KHÔNG LOẠI TRỪ những máy đó khỏi nhóm này, nếu…' — tức có ngoại lệ, không phải loại trừ tuyệt đối; mục khẳng định 'máy gia công nóng thủy tinh → 84.75' thì không có ngoại lệ nào, tức nói chắc hơn nguồn. Đã thay bằng TRỌN CÂU nguồn (448 ký tự, nguyên văn, không lược) — máy cho qua, người đọc thấy đủ vế ngoại lệ; đích 84.75 vẫn nêu đích danh.",
+   "sua": {
+    "trich": "Loại này bao gồm các loại máy công cụ dùng để gia công nguội thủy tinh, loại trừ những loại máy dùng để gia công nóng thuỷ tinh (tức là thủy tinh nung nóng đến khi trở thành thể lỏng hoặc dẻo) (nhóm 84.75). Tuy nhiên trên thực tế một số trường hợp, thủy tinh được nung nóng nhẹ để phục vụ cho những quá trình nhất định thì không loại trừ những máy đó khỏi nhóm này, nếu chúng gia công thủy tinh mà vẫn còn giữ được tính cứng chắc của vật liệu cứng."
+   }
+  },
+  {
+   "index": "loaiTru[8]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn từ mục (5): 'Tuy nhiên, máy chạm khắc bằng phun cát thì không thuộc nhóm này (nhóm 84.24)' — có dấu hiệu loại trừ và nêu đích danh 84.24 → đúng luật mục 3."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn trong nhom8464.nhom ('BỘ PHẬN VÀ PHỤ KIỆN Theo như những quy định chung liên quan đến việc phân loại các bộ phận (xem chú giải tổng quát phần XVI), các bộ phận và phụ tùng (trừ các dụng cụ thuộc Chương 82) của các loại máy công cụ thuộc nhóm này được xếp vào nhóm 84.66.'); quyTac và tomTat diễn đạt đúng câu, giữ cả ngoại lệ 'trừ các dụng cụ thuộc Chương 82'."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "trich = 'Phân nhóm 8464.10 Phân nhóm này bao gồm máy cắt và máy cưa được mô tả trong đoạn A của phần I của chú giải nhóm 84.64.' nguyên văn trong nhom8464.nhom; giá trị 'máy cắt|máy cưa' bám sát câu."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '846420 Machine-tools; grinding or polishing machines, for working stone, ceramics, concrete, asbestos-cement or like mineral materials or for cold working glass' nguyên văn từ wco.846420; value 'grinding or polishing machines' lấy đúng tên phân nhóm."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84641010 - - Hoạt động bằng điện' nguyên văn từ tax.84641010; đủ 6 dòng 8 số của nhóm (84641010/84641020/84642010/84642020/84649010/84649020)."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84641020 - - Không hoạt động bằng điện' nguyên văn từ tax.84641020."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84642010 - - Hoạt động bằng điện' nguyên văn từ tax.84642010."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84642020 - - Không hoạt động bằng điện' nguyên văn từ tax.84642020."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84649010 - - Hoạt động bằng điện' nguyên văn từ tax.84649010."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84649020 - - Không hoạt động bằng điện' nguyên văn từ tax.84649020."
+  }
+ ]
+}

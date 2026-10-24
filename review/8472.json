@@ -1,0 +1,171 @@
+{
+ "nhom": "8472",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-24T22:20:00+07:00",
+ "phamViSoat": "Toàn bộ 31 mục của bản nháp lô 036 (1 phamVi + 1 dieuKienVao + 17 loaiTru + 1 phanBiet + 1 boPhan + 2 tieuChi6 + 0 cay.tenDien + 8 dong8), đọc cùng tmp/so-tay/nguon/8472.txt (nhom8472.nhom 127 dòng, ch84.chuong, phan84.phan, wco.847210/847230/847290, tax.84721000…84729090).",
+ "soat": 31,
+ "sua": 1,
+ "xoa": 0,
+ "giu": 30,
+ "ghiChu": "Audit 8472 (đọc nguồn nguyên văn, không chỉ qua máy). KẾT QUẢ: 31/31 mục có câu trích thật trong nguồn; KHÔNG xoá mục nào. SỬA 1 mục — loại trừ 'gọt bút chì' bị cắt mất ngoại lệ (xem thayDoi loaiTru[3]). GIỮ có lý do: dieuKienVao[0] là điều kiện vào nhóm ĐÚNG — câu 'Máy văn phòng được phân loại ở đây chỉ khi chúng có đế gắn cố định hoặc đặt trên bàn v.v..' có định ngữ ràng buộc 'chỉ khi', phủ CẢ nhóm (không phải câu định nghĩa, không phải câu cho phép), đạt luật lô 030; phanBiet[0] đúng chiều Có/Không — nguồn nói thẳng 'các máy in đáp ứng các điều kiện của Chú giải 6 (D) (i) của Chương này sẽ được phân loại là máy in thuộc nhóm 84.43', nên Có → 8443, Không → 8472 (chính nhóm), và 'hoi' không nhắc mã phân nhóm lẫn 'WCO' nên qua cổng máy; boPhan nguyên văn và giữ đủ ngoại lệ; tieuChi6 847210/847230 lấy đúng tiêu đề phân nhóm. GHI CHÚ CHO LÔ (không sửa trong lô này): phamVi liệt kê 14 trong 24 mục đánh số của chú giải nhóm (bỏ (9), (10), (12)–(14), (16)–(18), (21), (22) và nhóm máy chữ tự động (i)–(iv)); câu trích có dấu '…' nên vẫn báo hiệu là trích lược, và các mục bị bỏ (gấp thư, mở/đóng thư, đóng dấu hủy tem) đã có trong tieuChi6 của phân nhóm 847230 — nhưng nếu muốn phạm vi đầy đủ thì phải nâng trần câu trích của máy (600 ký tự) hoặc tách phạm vi thành hai mục; ghi ra đây để lô sau xử lý, KHÔNG tự soạn thêm trong đợt soát này.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn trong nhom8472.nhom; text diễn đạt đúng phần định nghĩa nhóm ('máy văn phòng không thuộc ba nhóm trước hoặc được mô tả chi tiết hơn tại nhóm khác') và điều kiện vào nhóm ('chỉ được phân loại ở đây khi có đế gắn cố định hoặc đặt trên bàn'). Danh sách liệt kê là lựa chọn (14/24 mục) nhưng câu trích có dấu '…' báo hiệu trích lược, và phần định nghĩa phủ trọn nhóm → không sai ở chỗ nào. GIỮ (xem ghiChú về việc phạm vi chưa đầy đủ)."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn 'Máy văn phòng được phân loại ở đây chỉ khi chúng có đế gắn cố định hoặc đặt trên bàn v.v..' — định ngữ ràng buộc 'chỉ khi' (không phải câu cho phép 'vẫn được phân loại…', 'có thể…'), phủ CẢ nhóm 8472, nên là điều kiện vào nhóm 4 số hợp lệ. fact/op/value khớp câu."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn: 'Nhưng nhóm này không bao gồm những máy in nhỏ (ví dụ, máy in nổi, in litô hoặc máy in off-set) ngay cả khi ý định dùng cho văn phòng, và máy nhân bản dùng những tấm kim loại hoặc nhựa dập nổi (kể cả những máy đó có thể hoạt động với giấy nến), và thiết bị phô tô copy hoặc sao chụp nhiệt (nhóm 84.43)'. Có dấu hiệu loại trừ và nêu đích danh 84.43. Câu nguồn còn tiếp 'và thiết bị vi phim (Chương 90)' — phần này không nằm trong điều kiện của mục (là hàng khác) nên KHÔNG sửa; ghi ra đây để lô sau cân nhắc."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn trọn mục (3) kèm ngoặc loại trừ; nêu đích danh 84.70 và 84.76 (sangNhom '8470|8476', máy đòi mỗi mã có trong câu → đạt)."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn 'Máy đếm tiền xu hoạt động bằng cân thuộc nhóm 84.23 hoặc nhóm 90.16.' — nêu đích danh cả hai nhóm đích; câu đủ để dẫn (không phải câu 'thường thuộc'/'tùy trường hợp')."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "sua",
+   "lyDo": "MẤT NGOẠI LỆ NGAY SAU CÂU TRÍCH (lỗi máy không bắt): nguồn viết '…những loại này sẽ thuộc nhóm 82.14 HOẶC nếu chúng có đặc điểm của đồ chơi thì xếp vào Chương 95.' — tức cùng một hàng (gọt bút chì không có hoạt động cơ khí) còn có một đích thứ hai. Câu trích cũ dừng ở 'sẽ thuộc nhóm 82.14' nên nói chắc hơn nguồn. Đã nối trọn câu nguồn (168 ký tự, nguyên văn). Chương 95 không ghi được vào sangNhom (không phải mã nhóm 4 số, máy sẽ loại) nên giữ sangNhom 8214 và ghi rõ đích thứ hai trong lyDo + ghiChu của lô.",
+   "sua": {
+    "trich": "Nhóm này không bao gồm những cái gọt bút chì không có hoạt động cơ khí; những loại này sẽ thuộc nhóm 82.14 hoặc nếu chúng có đặc điểm của đồ chơi thì xếp vào Chương 95."
+   }
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn: 'Nhóm này không bao gồm những máy để đục hàng lỗ nhỏ (như trong tờ in tem thư) (nhóm 84.41).' — dấu hiệu loại trừ + đích danh 84.41."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn '(a) Súng bắn ghim (nhóm 82.05)' nằm trong khối 'Nhưng nhóm này không bao gồm: (a)…(c)' → đích danh 82.05."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn '(b) Máy dập ghim loại dùng để đóng sách (nhóm 84.40).' — đích danh 84.40."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn '(c) Máy dập ghim loại dùng trong việc sản xuất hộp cát tông (nhóm 84.41).' — đích danh 84.41."
+  },
+  {
+   "index": "loaiTru[8]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn 'Nhóm này không bao gồm: … (a) Máy phân loại, là bộ phận hoặc phụ kiện của máy thuộc nhóm 84.43.' — đích danh 84.43."
+  },
+  {
+   "index": "loaiTru[9]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn '(b) Máy kế toán (nhóm 84.70)' — đích danh 84.70."
+  },
+  {
+   "index": "loaiTru[10]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn '(c) Máy xử lý dữ liệu tự động (nhóm 84.71).' — đích danh 84.71."
+  },
+  {
+   "index": "loaiTru[11]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn '(d) Máy điện báo (nhóm 85.17).' — đích danh 85.17."
+  },
+  {
+   "index": "loaiTru[12]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn '(e) Máy đọc chính tả và các thiết bị ghi âm hoặc tái tạo âm thanh khác (nhóm 85.19 ).' — giữ nguyên cả khoảng trắng lạ trong nguồn trước dấu ')' (không sửa ký tự nguồn); đích danh 85.19."
+  },
+  {
+   "index": "loaiTru[13]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn '(f) Thiết bị sử dụng tia X-quang để kiểm tra tiền giấy và các tài liệu khác (nhóm 90.22).' — đích danh 90.22."
+  },
+  {
+   "index": "loaiTru[14]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn '(g) Máy ghi thời gian (nhóm 91.06).' — đích danh 91.06."
+  },
+  {
+   "index": "loaiTru[15]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn '(h) Máy chữ đồ chơi (nhóm 95.03).' — đích danh 95.03."
+  },
+  {
+   "index": "loaiTru[16]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn '(h) Con dấu ngày, con dấu niêm phong và các loại tương tự thực hiện bằng tay (nhóm 96.11).' — nguồn ghi trùng chữ cái '(h)' hai lần (lỗi nguồn), giữ nguyên; đích danh 96.11."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều Có/Không đúng: nguồn nói 'các máy in đáp ứng các điều kiện của Chú giải 6 (D) (i) của Chương này sẽ được phân loại là máy in thuộc nhóm 84.43' → Có thì 8443; không thỏa thì ở lại 8472 (chính nhóm). 'hoi' không nhắc mã phân nhóm hay 'WCO' (đạt cổng hoi-nhac-ma-phan-nhom) và không gộp vế ngoài câu. Dấu lược '…' chỉ che câu giải thích cơ chế kết nối, không che ngoại lệ."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn 'CÁC BỘ PHẬN VÀ PHỤ KIỆN Theo quy định chung liên quan đến việc phân loại các bộ phận (xem chú giải tổng quát Phần XVI), các bộ phận và phụ kiện của máy thuộc nhóm này được phân loại vào nhóm 84.73.'; quyTac/tomTat diễn đạt đúng, không thêm chữ ngoài câu."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '(1) Máy nhân bản loại in bản viết (ví dụ nhân bản dùng gelatin hoặc rượu), và máy nhân bản giấy sáp hoạt động bằng giấy nến có lớp sáp được cắt trước bằng một bút trâm hoặc trong một máy chữ.' nguyên văn trong nhom8472.nhom; value 'máy nhân bản' bám sát câu."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "trich nối bằng '…' giữa các mục (12)(13)(14)(15) — mỗi đoạn đều nguyên văn trong nhom8472.nhom; danh sách value bám sát tiêu đề các mục."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84721000 - Máy nhân bản' nguyên văn từ tax.84721000; đủ 8 dòng 8 số của nhóm (84721000, 84723000, 84729010, 84729041, 84729049, 84729050, 84729060, 84729090)."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84723000 - Máy phân loại hoặc gấp thư hoặc cho thư vào phong bì hoặc băng giấy, máy mở, gấp hoặc gắn kín và máy đóng dán tem hoặc hủy tem bưu chính' nguyên văn từ tax.84723000."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84729010 - - Máy thanh toán tiền tự động' nguyên văn từ tax.84729010."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84729041 - - - Tự động' nguyên văn từ tax.84729041; dieuKien giữ nguyên gạch đầu dòng của nguồn."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84729049 - - - Loại khác' nguyên văn từ tax.84729049; máy tự điền loaiKhac=true theo biểu thuế (tên dòng bắt đầu bằng 'Loại khác')."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84729050 - - Máy xử lý văn bản' nguyên văn từ tax.84729050."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84729060 - - Loại khác, hoạt động bằng điện' nguyên văn từ tax.84729060; máy tự điền loaiKhac=true (tên dòng bắt đầu bằng 'Loại khác')."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84729090 - - Loại khác, không hoạt động bằng điện' nguyên văn từ tax.84729090; máy tự điền loaiKhac=true."
+  }
+ ]
+}

@@ -1,0 +1,77 @@
+{
+ "nhom": "8526",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-24T22:20:00+07:00",
+ "phamViSoat": "Toàn bộ 12 mục của bản nháp lô 036 (1 phamVi + 0 dieuKienVao + 1 loaiTru + 0 phanBiet + 1 boPhan + 3 tieuChi6 + 1 cay.tenDien + 5 dong8), đọc cùng tmp/so-tay/nguon/8526.txt (nhom8526.nhom 33 dòng, ch85.chuong, phan85.phan, wco.852610/852691/852692, tax.85261010…85269200).",
+ "soat": 12,
+ "sua": 1,
+ "xoa": 0,
+ "giu": 11,
+ "ghiChu": "Audit 8526 (đọc nguồn nguyên văn, không chỉ qua máy). KẾT QUẢ: 12/12 mục có câu trích thật trong nguồn; KHÔNG xoá mục nào. SỬA 1 mục — phạm vi nhóm bỏ sót mục (12) (xem thayDoi phamVi). GIỮ có lý do: loaiTru[0] đúng — nguồn nói 'Các kíp nổ hoàn chỉnh có gắn chất nổ nằm trong nhóm 93.06' là nêu đích danh nhóm đích (không phải câu 'thường thuộc'/'tùy trường hợp'), đạt luật mục 3; dieuKienVao rỗng là ĐÚNG (nguồn chỉ liệt kê các loại thiết bị, không có câu ràng buộc vào nhóm 4 số); phanBiet rỗng là ĐÚNG (chú giải nhóm không nêu mã phân nhóm nào để đối chiếu); boPhan nguyên văn, không thêm chữ ngoài câu; 3 tieuChi6 lấy đúng tên phân nhóm WCO. GHI CHÚ CHO LÔ (không sửa trong lô này): nguồn có câu loại trừ '*** Các xe chuyên dùng được lắp cố định với các rađa hoặc thiết bị khác của nhóm này thì được loại trừ (thường thuộc nhóm 87.05).' — CHƯA ghi vào loaiTru là ĐÚNG (câu có 'thường thuộc' → máy loại theo luật loai-tru-chi-la-thuong, và 87.05 không phải mã nhóm 4 số); ghi ra đây để lô sau cân nhắc. Ngoài ra phamVi.text sau khi sửa dài 535 ký tự, vượt trần 220 mà runtime in (lib/so-tay-gates.js:134 clip(text,220)) — xem ghi chú chung của lô trong PR.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "BỎ SÓT mục (12) của chú giải nhóm: 'Các thiết bị radio để kích nổ mìn hoặc để điều khiển máy móc từ xa' — nằm trong nhóm 8526 nhưng không có trong text lẫn trong câu trích, nên phạm vi nhóm bị thiếu một thành phần (máy phát/thu radio điều khiển từ xa). Đã bổ sung vào cả hai. Vì câu trích có giới hạn 600 ký tự của máy, bản sửa bỏ số mục '(1)…(12)' ở đầu mỗi đoạn (mỗi tiêu đề vẫn nguyên văn trong nguồn, chỉ lược chữ số thứ tự) để vừa trần; câu trích mới dài 593 ký tự — trong khoảng 300–600 mà máy cho qua, đã đọc kỹ: các đoạn lược bằng '…' chỉ nối các mục liền kề, không che ngoại lệ.",
+   "sua": {
+    "text": "Thiết bị dẫn đường bằng sóng vô tuyến (kể cả các hệ thống thu định vị toàn cầu GPS); thiết bị rađa định vị cho tàu biển hoặc phương tiện bay; thiết bị điều khiển hạ cánh; thiết bị đo độ cao bằng rađa; rađa khí tượng; thiết bị dẫn đường ném bom; thiết bị rađa dùng để xác định kíp nổ bom hoặc đạn; thiết bị rađa cảnh báo tấn công bằng đường hàng không; thiết bị rađa để định hướng và xác định phạm vi; máy thu phát ra đa; thiết bị radio để điều khiển từ xa các tàu thuyền; thiết bị radio để kích nổ mìn hoặc để điều khiển máy móc từ xa.",
+    "trich": "Thiết bị dẫn đường bằng sóng vô tuyến … Nó cũng bao gồm các hệ thống thu định vị toàn cầu (GPS). … Thiết bị rađa định vị cho tàu biển hoặc phương tiện bay … Các thiết bị điều khiển hạ cánh … Các thiết bị đo độ cao bằng rađa … Rađa khí tượng … Thiết bị dẫn đường ném bom. … Các thiết bị rađa dùng để xác định kíp nổ bom hoặc đạn … Các thiết bị rađa cảnh báo tấn công bằng đường hàng không. … Các thiết bị rađa để định hướng và xác định phạm vi … Các máy thu phát ra đa; … Các thiết bị radio để điều khiển từ xa các tàu thuyền … Các thiết bị radio để kích nổ mìn hoặc để điều khiển máy móc từ xa"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn trong nhom8526.nhom: 'Các kíp nổ hoàn chỉnh có gắn chất nổ nằm trong nhóm 93.06.' — nêu đích danh nhóm đích 93.06 trong chính câu, không phải câu 'thường thuộc'/'tùy trường hợp' → đúng luật mục 3."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn 'BỘ PHẬN Theo quy tắc chung phân loại các bộ phận (xem Chú giải Chi tiết Tổng quát Phần XVI), bộ phận của các thiết bị thuộc nhóm này được phân loại vào nhóm 85.29.'; quyTac/tomTat diễn đạt đúng, không thêm chữ ngoài câu."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '852610 Radar apparatus' nguyên văn từ wco.852610; value 'radar apparatus' bám sát tên phân nhóm."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '852691 Radio navigational aid apparatus' nguyên văn từ wco.852691; value bám sát tên phân nhóm."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '852692 Radio remote control apparatus' nguyên văn từ wco.852692; value bám sát tên phân nhóm."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "id 852691 (phân nhóm 6 số chưa có tên tiếng Việt trong biểu thuê — chỉ có dòng 85269110/85269190); tenVi 'Thiết bị dẫn đường bằng sóng vô tuyến' là bản dịch đúng nghĩa của 'Radio navigational aid apparatus' trong câu trích kèm theo (luật mục 9); nguồn tiếng Việt tương ứng là mục (1) của chú giải nhóm."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '85261010 - - Ra đa, loại dùng trên mặt đất, hoặc trang bị trên máy bay dân dụng, hoặc chỉ dùng cho tàu thuyền đi biển' nguyên văn từ tax.85261010; đủ 5 dòng 8 số của nhóm (85261010, 85261090, 85269110, 85269190, 85269200)."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '85261090 - - Loại khác' nguyên văn từ tax.85261090; máy tự điền loaiKhac=true."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '85269110 - - - Thiết bị dẫn đường bằng sóng vô tuyến, loại dùng trên máy bay dân dụng, hoặc chỉ dùng cho tàu thuyền đi biển' nguyên văn từ tax.85269110."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '85269190 - - - Loại khác' nguyên văn từ tax.85269190; máy tự điền loaiKhac=true."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '85269200 - Thiết bị điều khiển từ xa bằng sóng vô tuyến' nguyên văn từ tax.85269200."
+  }
+ ]
+}

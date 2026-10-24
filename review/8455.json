@@ -1,0 +1,79 @@
+{
+ "nhom": "8455",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-24T22:20:00+07:00",
+ "phamViSoat": "Toàn bộ 11 mục của bản nháp lô 036 (1 phamVi + 0 dieuKienVao + 4 loaiTru + 0 phanBiet + 1 boPhan + 0 tieuChi6 + 0 cay.tenDien + 5 dong8), đọc cùng tmp/so-tay/nguon/8455.txt (nhom8455.nhom 50 dòng, ch84.chuong, phan84.phan, wco.845510/521/522/530/590, tax.84551000…84559000).",
+ "soat": 11,
+ "sua": 3,
+ "xoa": 0,
+ "giu": 8,
+ "ghiChu": "Audit 8455 (đọc nguồn nguyên văn, không chỉ qua máy). KẾT QUẢ: 11/11 mục đều có câu trích thật trong nguồn; KHÔNG xoá mục nào (không có mục mờ má). SỬA 3 mục — đều là lỗi máy KHÔNG bắt được: (1) phamVi.text hẹp hơn nguồn (xem thayDoi phamVi); (2) loaiTru[1].trich bị cắt giữa chừng, mất vế loại trừ (xem thayDoi loaiTru[1]); (3) boPhan mất ngoại lệ 'trừ 11 nhóm' của chính câu trích (xem thayDoi boPhan). GIỮ có lý do: dieuKienVao rỗng là ĐÚNG (chú giải nhóm 8455 không có câu ràng buộc nào vào nhóm 4 số — mọi câu là định nghĩa máy cán hoặc danh sách loại trừ; câu 'Các máy tương tự dùng để cán các vật liệu khác kim loại…' là loại trừ, không phải điều kiện vào); phanBiet rỗng là ĐÚNG (nguồn không có cặp mã ngoài nhóm được nêu đích danh trong cùng câu); tieuChi6 rỗng → check-cay sẽ báo 'phan-nhom-chua-co-tieu-chi' cho 5 phân nhóm 845510/845521/845522/845530/845590 (CHỈ là cảnh báo, không phải lỗi; ngoài phạm vi 5 trường của đợt soát này, KHÔNG tự thêm tiêu chí); cay.tenDien rỗng là ĐÚNG (mọi nút 6 số của 8455 đã có tên tiếng Việt từ biểu thuế Tổng cục). GHI CHÚ RIÊNG cho lô (không sửa trong lô này): loaiTru[3] lấy ngoại lệ cấp CHƯƠNG từ ch84.chuong ('(e) Máy hút bụi thuộc nhóm 85.08') — đúng luật mục 3 (nguồn nêu đích danh nhóm đích 85.08), nhưng đây là loại trừ ở tầng chương chứ không phải trong chú giải nhóm; giữ vì không có nguồn nào khác nói về 8455.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "text hẹp hơn nguồn: nguồn mục (D) ghi 'Cán phôi bánh xe hoặc phôi vành bánh xe' (nhiều lựa chọn), còn text chỉ ghi 'cán phôi vành bánh xe' — bỏ mất nhánh 'phôi bánh xe'. Đây là lỗi 'nói chắc hơn nguồn' (thu hẹp phạm vi), máy KHÔNG bắt được vì máy chỉ đối chiếu câu trích. Đã sửa theo nguyên văn nguồn; câu trích không đổi (đã chứa trọn mục (D)).",
+   "sua": {
+    "text": "Máy cán (cán để làm giảm độ dày tương ứng với tăng độ dài, cán để tạo ra một tiết diện cụ thể, cán ống, cán phôi bánh xe hoặc phôi vành bánh xe) và trục cán, các bộ phận khác của máy cán."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn trong nhom8455.nhom: 'Các máy tương tự dùng để cán các vật liệu khác kim loại, ví dụ máy cán ép bị loại trừ (nhóm 84.20).' Có dấu hiệu loại trừ rõ ('bị loại trừ') và nêu ĐÍCH DANH nhóm đích 84.20 trong chính câu → đúng luật mục 3. Không phải ví dụ linh kiện, không phải dải số, không phải 'Chương N'."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích bị CẮT giữa ngoặc, dừng ở '(… một tấm đỡ giấy (nhóm 84.20)' — không chứa vế loại trừ ('không được coi như là máy cán … và do đó cũng bị loại trừ ra khỏi nhóm này'), nên câu trích KHÔNG nói đúng điều mục khẳng định (loại trừ sang 84.20). Máy không bắt được (đoạn đầu vẫn nằm trong nguồn). Đã nối lại trọn câu nguồn (nguyên văn, không sửa chữa), dài 256 ký tự — dưới trần 300 của lược đồ và dưới trần 600 của máy. Đích 84.20 vẫn nêu đích danh trong câu.",
+   "sua": {
+    "trich": "Các máy cán khác (ví dụ máy cán dùng để dán lá kim loại lên trên một tấm đỡ giấy (nhóm 84.20), máy uốn, gấp, làm thẳng hoặc máy làm phẳng (nhóm 84.62) không được coi như là máy cán với cách hiểu được mô tả ở trên và do đó cũng bị loại trừ ra khỏi nhóm này."
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn, có dấu hiệu loại trừ ('không được coi như là máy cán … bị loại trừ ra khỏi nhóm này') và nêu đích danh nhóm 84.62. Đúng luật mục 3."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn trong ch84.chuong: 'Chương này không bao gồm: … (e) Máy hút bụi thuộc nhóm 85.08;' — nêu đích danh 85.08 nên đạt luật mục 3. Đây là loại trừ ở tầng chương (Chương 84 không chứa máy hút bụi), vẫn áp cho nhóm 8455; KHÔNG có nguồn nào khác trong nguồn của nhóm nói về 8455 nên giữ."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "MẤT NGOẠI LỆ NGAY TRONG CÂU TRÍCH (lỗi máy không bắt): câu (a) của phan84.phan có ngoặc loại trừ '(trừ các nhóm 84.09, 84.31, 84.48, 84.66, 84.73, 84.87, 85.03, 85.22, 85.29, 85.38 và 85.48)' nhưng dấu lược '…' của câu trích cắt đúng nơi đó; quyTac/tomTat lại khẳng định 'đã được định danh tại nhóm nào đó của Chương 84 hoặc 85 → phân loại vào nhóm đó TRONG MỌI TRƯỜNG HỢP' — tức nói chắc hơn nguồn cho 11 nhóm mà nguồn loại ra. Đã sửa: kéo trọn ngoặc loại trừ vào câu trích, kéo thêm câu 'Tuy nhiên, bộ phận phù hợp để chỉ sử dụng cho các hàng hóa thuộc các nhóm 85.17 và 85.25 đến 85.28 được phân loại vào nhóm 85.17;' (câu liền sau, bắt đầu bằng 'Tuy nhiên' — theo luật lô 030 phải kéo vào), và viết lại quyTac/tomTat theo đúng câu trích. GIỚI HẠN GHI NHẬN: để kéo cả hai ngoại lệ mà còn dưới trần 600 ký tự của máy thì phải lược bỏ danh sách 'nhóm thích hợp như 84.09, 84.31, …' trong câu (b); vì vậy câu trích mới dừng ở 'hoặc vào nhóm thích hợp' (chữ có thật trong nguồn) và quyTac/tomTat không liệt kê mã nhóm thích hợp nữa. Vì vậy câu trích dài 542 ký tự — trong khoảng 300–600 mà máy cho qua, người soát đã đọc kỹ: chỉ có 3 đoạn lược bằng '…', không đoạn nào bị lược chứa ngoại lệ.",
+   "sua": {
+    "trich": "Các bộ phận đã được định danh tại nhóm nào đó của Chương 84 hoặc 85 (trừ các nhóm 84.09, 84.31, 84.48, 84.66, 84.73, 84.87, 85.03, 85.22, 85.29, 85.38 và 85.48) được phân loại vào nhóm đó trong mọi trường hợp; … Các bộ phận khác, nếu phù hợp để chỉ sử dụng hoặc chủ yếu sử dụng cho các loại máy cụ thể, hoặc cho một số loại máy cùng nhóm … được phân loại theo nhóm của các máy cụ thể đó hoặc vào nhóm thích hợp … Tuy nhiên, bộ phận phù hợp để chỉ sử dụng cho các hàng hóa thuộc các nhóm 85.17 và 85.25 đến 85.28 được phân loại vào nhóm 85.17;",
+    "quyTac": "Bộ phận đã được định danh tại nhóm nào đó của Chương 84 hoặc 85 (trừ 84.09, 84.31, 84.48, 84.66, 84.73, 84.87, 85.03, 85.22, 85.29, 85.38 và 85.48) được phân loại vào nhóm đó trong mọi trường hợp; các bộ phận khác, nếu phù hợp để chỉ sử dụng hoặc chủ yếu sử dụng cho các loại máy cụ thể, hoặc cho một số loại máy cùng nhóm, được phân loại theo nhóm của các máy cụ thể đó hoặc vào nhóm thích hợp; tuy nhiên, bộ phận phù hợp để chỉ sử dụng cho các hàng hóa thuộc 85.17 và 85.25 đến 85.28 được phân loại vào nhóm 85.17.",
+    "tomTat": "Bộ phận có nhóm riêng ở Ch.84/85 (trừ 84.09, 84.31, 84.48, 84.66, 84.73, 84.87, 85.03, 85.22, 85.29, 85.38, 85.48) → nhóm đó; bộ phận dành cho máy → nhóm máy."
+   }
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84551000 - Máy cán ống' nguyên văn từ tax.84551000; đủ 5 dòng 8 số của nhóm (84551000, 84552100, 84552200, 84553000, 84559000) — không thiếu dòng nào (check-cay xanh)."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84552100 - - Máy cán nóng hoặc máy cán nóng và nguội kết hợp' nguyên văn từ tax.84552100."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84552200 - - Máy cán nguội' nguyên văn từ tax.84552200."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84553000 - Trục cán dùng cho máy cán' nguyên văn từ tax.84553000."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84559000 - Bộ phận khác' nguyên văn từ tax.84559000; máy tự điền loaiKhac theo biểu thuế (tên dòng 'Bộ phận khác' không bắt đầu bằng 'Loại khác' → loaiKhac=false, đúng)."
+  }
+ ]
+}
