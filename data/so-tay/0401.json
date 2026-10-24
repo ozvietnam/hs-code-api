@@ -1,0 +1,406 @@
+{
+ "nhom": "0401",
+ "phamVi": {
+  "text": "Sữa (như đã định nghĩa trong Chú giải 1 của Chương này) và kem đã hoặc chưa thanh trùng, tiệt trùng hoặc bảo quản cách khác, đồng thể hoá hoặc pepton hoá.",
+  "nguon": "nhom0401.nhom",
+  "trich": "Nhóm này bao gồm sữa (như đã định nghĩa trong Chú giải 1 của Chương này) và kem đã hoặc chưa thanh trùng, tiệt trùng hoặc bảo quản cách khác, đồng thể hoá hoặc pepton hoá; nhưng nhóm này không bao gồm sữa và kem đã cô đặc hoặc pha thêm đường hoặc chất làm ngọt khác (nhóm 04.02) và sữa và kem đã được làm đông, được lên men hoặc được axit hoá (nhóm 04.03).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "khong_con_dac_va_khong_pha_them_duong_chat_lam_ngot_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom0401.nhom",
+   "trich": "nhưng nhóm này không bao gồm sữa và kem đã cô đặc hoặc pha thêm đường hoặc chất làm ngọt khác (nhóm 04.02)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "khong_lam_dong_len_men_hoac_axit_hoa",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom0401.nhom",
+   "trich": "sữa và kem đã được làm đông, được lên men hoặc được axit hoá (nhóm 04.03)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Sữa và kem đã cô đặc hoặc pha thêm đường hoặc chất làm ngọt khác",
+   "sangNhom": "0402",
+   "nguon": "nhom0401.nhom",
+   "trich": "nhưng nhóm này không bao gồm sữa và kem đã cô đặc hoặc pha thêm đường hoặc chất làm ngọt khác (nhóm 04.02)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Sữa và kem đã được làm đông, được lên men hoặc được axit hoá",
+   "sangNhom": "0403",
+   "nguon": "nhom0401.nhom",
+   "trich": "sữa và kem đã được làm đông, được lên men hoặc được axit hoá (nhóm 04.03)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Kem lạnh và sản phẩm ăn được tương tự khác",
+   "sangNhom": "2105",
+   "nguon": "ch04.chuong",
+   "trich": "Ngoài những loại khác, Chương này cũng không bao gồm các sản phẩm sau: … (c) Kem lạnh và sản phẩm ăn được tương tự khác (nhóm 21.05).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Sữa và kem này đã được làm cô đặc hoặc pha thêm đường hoặc chất làm ngọt khác?",
+   "neuCo": "0402",
+   "neuKhong": "0401",
+   "nguon": "nhom0401.nhom",
+   "trich": "nhưng nhóm này không bao gồm sữa và kem đã cô đặc hoặc pha thêm đường hoặc chất làm ngọt khác (nhóm 04.02)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Sữa và kem này đã được làm đông, được lên men hoặc được axit hoá?",
+   "neuCo": "0403",
+   "neuKhong": "0401",
+   "nguon": "nhom0401.nhom",
+   "trich": "sữa và kem đã được làm đông, được lên men hoặc được axit hoá (nhóm 04.03)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Sản phẩm này có phải là kem lạnh hoặc sản phẩm ăn được tương tự khác không?",
+   "neuCo": "2105",
+   "neuKhong": "0401",
+   "nguon": "ch04.chuong",
+   "trich": "Ngoài những loại khác, Chương này cũng không bao gồm các sản phẩm sau: … (c) Kem lạnh và sản phẩm ăn được tương tự khác (nhóm 21.05).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "040110",
+   "fact": "ham_luong_chat_beo",
+   "op": "<=",
+   "value": 1,
+   "donVi": "%",
+   "nguon": "wco.040110",
+   "trich": "040110 Dairy produce; milk and cream, not concentrated, not containing added sugar or other sweetening matter, of a fat content, by weight, not exceeding 1%",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "040120",
+   "fact": "ham_luong_chat_beo",
+   "op": ">",
+   "value": 1,
+   "donVi": "%",
+   "nguon": "wco.040120",
+   "trich": "040120 Dairy produce; milk and cream, not concentrated, not containing added sugar or other sweetening matter, of a fat content, by weight, exceeding 1% but not exceeding 6%",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "040120",
+   "fact": "ham_luong_chat_beo",
+   "op": "<=",
+   "value": 6,
+   "donVi": "%",
+   "nguon": "wco.040120",
+   "trich": "040120 Dairy produce; milk and cream, not concentrated, not containing added sugar or other sweetening matter, of a fat content, by weight, exceeding 1% but not exceeding 6%",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "040140",
+   "fact": "ham_luong_chat_beo",
+   "op": ">",
+   "value": 6,
+   "donVi": "%",
+   "nguon": "wco.040140",
+   "trich": "040140 Dairy produce; milk and cream, not concentrated, not containing added sugar or other sweetening matter, of a fat content, by weight, exceeding 6% but not exceeding 10%",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "040140",
+   "fact": "ham_luong_chat_beo",
+   "op": "<=",
+   "value": 10,
+   "donVi": "%",
+   "nguon": "wco.040140",
+   "trich": "040140 Dairy produce; milk and cream, not concentrated, not containing added sugar or other sweetening matter, of a fat content, by weight, exceeding 6% but not exceeding 10%",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "040150",
+   "fact": "ham_luong_chat_beo",
+   "op": ">",
+   "value": 10,
+   "donVi": "%",
+   "nguon": "wco.040150",
+   "trich": "040150 Dairy produce; milk and cream, not concentrated, not containing added sugar or other sweetening matter, of a fat content, by weight, exceeding 10%",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "04011010",
+   "dieuKien": "Sữa và kem, hàm lượng chất béo không quá 1% (phân nhóm 0401.10) — dạng lỏng",
+   "nguon": "tax.04011010",
+   "trich": "04011010 - - Dạng lỏng",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "04011090",
+   "dieuKien": "Sữa và kem, hàm lượng chất béo không quá 1% (phân nhóm 0401.10) — dòng biểu thuế ghi \"Loại khác\"",
+   "nguon": "tax.04011090",
+   "trich": "04011090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "040110",
+    "truAnhEm": [
+     "04011010"
+    ],
+    "toTienCoTen": "040110",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "04012010",
+   "dieuKien": "Sữa và kem, hàm lượng chất béo trên 1% nhưng không quá 6% (phân nhóm 0401.20) — dạng lỏng",
+   "nguon": "tax.04012010",
+   "trich": "04012010 - - Dạng lỏng",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "04012090",
+   "dieuKien": "Sữa và kem, hàm lượng chất béo trên 1% nhưng không quá 6% (phân nhóm 0401.20) — dòng biểu thuế ghi \"Loại khác\"",
+   "nguon": "tax.04012090",
+   "trich": "04012090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "040120",
+    "truAnhEm": [
+     "04012010"
+    ],
+    "toTienCoTen": "040120",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "04014010",
+   "dieuKien": "Sữa và kem, hàm lượng chất béo trên 6% nhưng không quá 10% (phân nhóm 0401.40) — sữa dạng lỏng",
+   "nguon": "tax.04014010",
+   "trich": "04014010 - - Sữa dạng lỏng",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "04014020",
+   "dieuKien": "Sữa và kem, hàm lượng chất béo trên 6% nhưng không quá 10% (phân nhóm 0401.40) — sữa dạng đông lạnh",
+   "nguon": "tax.04014020",
+   "trich": "04014020 - - Sữa dạng đông lạnh",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "04014090",
+   "dieuKien": "Sữa và kem, hàm lượng chất béo trên 6% nhưng không quá 10% (phân nhóm 0401.40) — dòng biểu thuế ghi \"Loại khác\"",
+   "nguon": "tax.04014090",
+   "trich": "04014090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "040140",
+    "truAnhEm": [
+     "04014010",
+     "04014020"
+    ],
+    "toTienCoTen": "040140",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "04015010",
+   "dieuKien": "Sữa và kem, hàm lượng chất béo trên 10% (phân nhóm 0401.50) — dạng lỏng",
+   "nguon": "tax.04015010",
+   "trich": "04015010 - - Dạng lỏng",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "04015090",
+   "dieuKien": "Sữa và kem, hàm lượng chất béo trên 10% (phân nhóm 0401.50) — dòng biểu thuế ghi \"Loại khác\"",
+   "nguon": "tax.04015090",
+   "trich": "04015090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "040150",
+    "truAnhEm": [
+     "04015010"
+    ],
+    "toTienCoTen": "040150",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "0401",
+    "cap": 4,
+    "cha": "04",
+    "tenVi": "Sữa và kem, chưa cô đặc và chưa pha thêm đường hoặc chất tạo ngọt khác.",
+    "tenEn": "Milk and cream; not concentrated, not containing added sugar or other sweetening matter",
+    "suyRa": false
+   },
+   {
+    "id": "040110",
+    "cap": 6,
+    "cha": "0401",
+    "tenVi": "Có hàm lượng chất béo không quá 1% tính theo khối lượng",
+    "tenEn": "Dairy produce; milk and cream, not concentrated, not containing added sugar or other sweetening matter, of a fat content, by weight, not exceeding 1%",
+    "suyRa": false
+   },
+   {
+    "id": "04011010",
+    "cap": 8,
+    "cha": "040110",
+    "tenVi": "Dạng lỏng",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "04011090",
+    "cap": 8,
+    "cha": "040110",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "040120",
+    "cap": 6,
+    "cha": "0401",
+    "tenVi": "Có hàm lượng chất béo trên 1% nhưng không quá 6% tính theo khối lượng",
+    "tenEn": "Dairy produce; milk and cream, not concentrated, not containing added sugar or other sweetening matter, of a fat content, by weight, exceeding 1% but not exceeding 6%",
+    "suyRa": false
+   },
+   {
+    "id": "04012010",
+    "cap": 8,
+    "cha": "040120",
+    "tenVi": "Dạng lỏng",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "04012090",
+    "cap": 8,
+    "cha": "040120",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "040140",
+    "cap": 6,
+    "cha": "0401",
+    "tenVi": "Có hàm lượng chất béo trên 6% nhưng không quá 10% tính theo khối lượng",
+    "tenEn": "Dairy produce; milk and cream, not concentrated, not containing added sugar or other sweetening matter, of a fat content, by weight, exceeding 6% but not exceeding 10%",
+    "suyRa": false
+   },
+   {
+    "id": "04014010",
+    "cap": 8,
+    "cha": "040140",
+    "tenVi": "Sữa dạng lỏng",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "04014020",
+    "cap": 8,
+    "cha": "040140",
+    "tenVi": "Sữa dạng đông lạnh",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "04014090",
+    "cap": 8,
+    "cha": "040140",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "040150",
+    "cap": 6,
+    "cha": "0401",
+    "tenVi": "Có hàm lượng chất béo trên 10% tính theo khối lượng",
+    "tenEn": "Dairy produce; milk and cream, not concentrated, not containing added sugar or other sweetening matter, of a fat content, by weight, exceeding 10%",
+    "suyRa": false
+   },
+   {
+    "id": "04015010",
+    "cap": 8,
+    "cha": "040150",
+    "tenVi": "Dạng lỏng",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "04015090",
+    "cap": 8,
+    "cha": "040150",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch04.chuong",
+  "nhom0401.nhom",
+  "tax.04011010",
+  "tax.04011090",
+  "tax.04012010",
+  "tax.04012090",
+  "tax.04014010",
+  "tax.04014020",
+  "tax.04014090",
+  "tax.04015010",
+  "tax.04015090",
+  "wco.040110",
+  "wco.040120",
+  "wco.040140",
+  "wco.040150"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-24T16:50:32.399Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 24,
+  "dat": 24,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
