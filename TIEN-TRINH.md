@@ -61,6 +61,9 @@ script so trực tiếp khối `[tax.*]` của tệp nguồn với `dong8` trong
 - `npm test` → **ALL TESTS PASSED**.
 - `node scripts/check-cay.mjs --nhom=0308,0309,0401,0403,0404,0405 --chi-tiet` → 0 lỗi lệch cây, 6/6 nhóm đủ.
 - `node scripts/check-trich-nguyen-van.mjs` (byte-exact, cả bản nháp lẫn tệp đã nạp) → **OK**.
+- `node scripts/benchmark-alias-holdout.mjs --gate` (gate của CI) → **✓ Không tụt quá 1 điểm % so với mốc** (chạy local, exit 0).
+- **CI PR #435:** `test` pass (2m06) · `bench` pass (11m51) · `Vercel Preview Comments` pass.
+  `Vercel` = "Deployment was blocked" — **có sẵn ở mọi PR** (#431, #430, #427 đều vậy), không phải lỗi code.
 - Nhãn nguồn: **toàn bộ 125 mục = `AI_DA_KIEM`** (máy gán). Chưa mục nào mang `NGUOI_DUYET` — người soát độc lập mới đổi.
 
 ---
