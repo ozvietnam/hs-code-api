@@ -1,0 +1,69 @@
+{
+ "nhom": "8712",
+ "nguoiSoat": "soat-doc-lap-037",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-24T22:40:00+07:00",
+ "phamViSoat": "Toàn bộ 11 mục của 5 khối trong tmp/so-tay/raw/8712.json (1 phamVi + 1 dieuKienVao + 5 loaiTru + 4 phanBiet + 0 boPhan), đọc cùng tmp/so-tay/nguon/8712.txt ([nhom8712.nhom], [ch87.chuong], [sen.87120020], [wco.871200], 4 dòng tax). Ngoài phạm vi: 4 dong8 + 0 tieuChi6 (máy kiểm nguyên văn) — đã đọc qua, không sửa.",
+ "soat": 11,
+ "daKiem": 11,
+ "sua": 0,
+ "xoa": 2,
+ "ghiChu": "2 xoá, 0 sửa. NGƯỒN TỰ MÂU THUẪN về \"xe đạp trẻ em\": (1) chú giải NHÓM 8712 mục (b) — \"Nhóm này cũng không bao gồm: (b) Các xe đạp dùng cho trẻ em (trừ xe đạp hai bánh cho trẻ em) (thuộc nhóm 9503)\"; (2) chú giải CHƯƠNG 87 mục 4 — \"Nhóm 87.12 bao gồm tất cả xe đạp trẻ em các loại. Các loại xe trẻ em khác được xếp trong nhóm 95.03.\" Hai câu này loại trừ và bao gồm CÙNG một đối tượng (xe đạp trẻ em KHÔNG phải hai bánh, ví dụ xe đạp ba bánh cho trẻ em) theo hai hướng ngược nhau → theo luật \"Nguồn tự mâu thuẫn → bỏ cả hai phía\" (mục 3 docs/giao-viec/so-tay-giao-ngoai.md; tiền lệ lô 003 nhóm 8409 \"bơm phun\") đã XOÁ cả loaiTru[1] lẫn phanBiet[1]. Việc phân loại thực tế vẫn còn: dòng 8 số 87120020 (xe đạp thiết kế dành cho trẻ em theo ngưỡng AHTN 43 cm / 16 inch) giữ nguyên; người khai báo xe đạp trẻ em ba bánh phải tra biểu thuế và chú giải chương 87. Câu \"chú giải chương 87 mục 4\" KHÔNG được đưa vào sổ tay để tránh mâu thuẫn — nêu trong mô tả PR để người duyệt quyết.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Nêu đúng phạm vi: xe đạp không lắp động cơ (một hoặc nhiều bánh chuyển động nhờ bàn đạp) và các loại xe đạp đặc biệt khác; câu trích nguyên văn có dấu \"…\", đoạn bị lược là các mục (2)–(7) — chỉ là danh sách BAO GỒM, không có ngoại lệ nào bị nuốt (kiểm bằng script riêng: dấu lược không chứa \"trừ/tuy nhiên/với điều kiện/không kể\")."
+  },
+  {
+   "index": "dieuKienVao",
+   "hanhDong": "giu",
+   "lyDo": "fact \"lap_dong_co = false\" bám sát câu \"Nhóm này bao gồm các xe đạp không lắp động cơ…\" — điều kiện vào nhóm, không phải điều kiện cấp phân nhóm/dòng 8 số."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (a) trong khối \"Nhóm này cũng không bao gồm:\" — đích 87.11 nêu nguyên văn."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "xoa",
+   "lyDo": "SAI — nguồn tự mâu thuẫn (bỏ cả hai phía). Câu trích mục (b) của chú giải nhóm loại \"Các xe đạp dùng cho trẻ em (trừ xe đạp hai bánh cho trẻ em)\" sang 9503, NHƯNG chú giải chương 87 mục 4 nói \"Nhóm 87.12 bao gồm tất cả xe đạp trẻ em các loại\" — hai nguồn cùng nói về một đối tượng theo hai hướng trái ngược. Ghi một vế là sổ tay tự chọn hướng trong khi nguồn chưa chốt; không được ghi (xem loaiTru[1] và phanBiet[1] cùng căn cứ)."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c) — \"Xe đạp đặc biệt chỉ dùng cho các trò vui trong hội chễ (nhóm 95.08)\" — đích 95.08 nêu nguyên văn."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"Các xe đạp trong Nhóm này có gắn thùng xe vẫn xếp loại ở đây, nhưng nếu thùng xe để riêng thì không thuộc Nhóm này (thuộc Nhóm 87.11)\" — câu có cả hai vế (còn ở đây / không thuộc), điều kiện \"thùng xe để riêng\" giữ nguyên, đích 87.11 có trong câu."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải chương 87 mục (a) — mô hình trưng bày (nhóm 90.23) — đích nêu nguyên văn, không mâu thuẫn với nhóm."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: có = 8711 (xe có gắn động cơ phụ trợ), không = 8712 (chính nhóm); mã 87.11 có trong câu trích; câu hỏi không nhắc mã."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "xoa",
+   "lyDo": "SAI — cùng căn cứ với loaiTru[1]: nhánh \"xe đạp trẻ em → 9503\" đối lập chú giải chương 87 mục 4 (\"87.12 bao gồm tất cả xe đạp trẻ em các loại\"). Bỏ cả hai phía."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: có = 9508 (xe đạp hội chợ), không = 8712; mã 95.08 có trong câu trích."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: có = 8711 (thùng xe trình bày riêng), không = 8712; mã 87.11 có trong câu trích."
+  }
+ ]
+}

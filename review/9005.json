@@ -1,0 +1,105 @@
+{
+ "nhom": "9005",
+ "nguoiSoat": "soat-doc-lap-037",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-24T22:40:00+07:00",
+ "phamViSoat": "Toàn bộ 17 mục của 5 khối trong tmp/so-tay/raw/9005.json (1 phamVi + 0 dieuKienVao + 10 loaiTru + 5 phanBiet + 1 boPhan), đọc cùng tmp/so-tay/nguon/9005.txt ([nhom9005.nhom], [ch90.chuong], 3 wco.*, 5 tax.*). Ngoài phạm vi: 5 dong8 + 3 tieuChi6 (máy kiểm nguyên văn) — đã đọc qua, không sửa.",
+ "soat": 17,
+ "daKiem": 17,
+ "sua": 2,
+ "xoa": 0,
+ "ghiChu": "2 sửa, 0 xoá. (1) phamVi: bản dịch tiếng Việt của câu WCO bỏ mất \"parts and accessories\" (bộ phận và phụ kiện — mà chính nhóm 9005 có mục \"CÁC BỘ PHẬN VÀ PHỤ KIỆN\") và NHÂN ĐÔI \"khung giá\" (mountings) thành hai vế, khiến câu không còn khớp với câu trích. (2) boPhan.quyTac: thêm vế \"chỉ dùng hoặc chủ yếu dùng cho các mặt hàng thuộc nhóm này\" — vế này lấy từ Chú giải 2(b) Chương 90, KHÔNG có trong câu trích đang dẫn (chỉ là đoạn \"CÁC BỘ PHẬN VÀ PHỤ KIỆN\" của chú giải nhóm); theo luật \"text/tomTat/quyTac không thêm chữ không có trong câu trích\" + tiền lệ 9013/8716 (quyTac luôn diễn đạt đúng câu trích) đã sửa quyTac theo câu trích, giữ nguyên con trỏ \"theo các quy định của Chú giải 1 và 2 của Chương này\" để người đọc tra được điều kiện \"chỉ dùng hoặc chủ yếu dùng\" ngay trong chú giải chương. GHI CHÚ: phamVi lấy từ wco.900590 vì chú giải nhóm 9005 có 13 mục song song, lược bằng \"…\" sẽ nuốt luôn hai ngoại lệ \"tuy nhiên … nhóm 90.06\" nằm giữa mục (3) và mục (4) — dùng tiêu đề WCO (nguyên văn, ≤600 ký tự) là cách đúng; câu WCO 900590 trong data/wco-hs-international.csv TRÙNG tiêu đề heading 9005 nhưng đó là dữ liệu gốc, không phải lỗi soạn.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "text tiếng Việt không khớp câu trích: bỏ mất \"parts and accessories\" (bộ phận và phụ kiện) và nhân đôi \"mountings\" (khung giá) thành hai vế, trong khi câu trích chỉ có MỘT vế \"; parts and accessories (including mountings)\". Sửa text bám sát câu trích, giữ đủ phần bộ phận và phụ kiện (có khung giá).",
+   "sua": {
+    "text": "Ống nhòm loại hai mắt, ống nhòm đơn, kính viễn vọng quang học khác, các dụng cụ thiên văn (trừ các dụng cụ dùng cho thiên văn học vô tuyến); các bộ phận và phụ kiện (kể cả khung giá) của các loại trên."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu sau mục (3): \"…tuy nhiên, các máy ảnh mà không là bộ phận không thể thiếu của kính thiên văn thì phân loại vào nhóm 90.06\" — dấu hiệu loại trừ rõ, đích 90.06 nêu nguyên văn."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu sau mục (4): \"Tuy nhiên, các máy ảnh mà không là bộ phận không tách rời của kính viễn vọng thì phân loại vào nhóm 90.06\" — đích 90.06 nêu nguyên văn."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"Tuy nhiên, theo Chú giải 4 của Chương này, nhóm này không bao gồm… hoặc của Phần XVI (nhóm 90.13)\" — giữ nguyên lỗi gõ \"máy kinh vĩ,-\" của nguồn; đích 90.13 nêu nguyên văn."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (9): \"Máy kinh vĩ được thiết kế theo cùng một nguyên lý, nhưng cỡ nhỏ hơn, được dùng trong trắc địa bị loại trừ (nhóm 90.15)\" — loại trừ dứt khoát, đích 90.15 nêu nguyên văn."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c) — kính hiển vi thiên thực (nhóm 90.11) — đích nêu nguyên văn."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (d) — thiết bị ngắm qua cửa (nhóm 90.13) — đích nêu nguyên văn."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (e) — dụng cụ xác định vị trí trên mặt đất (nhóm 90.14) — đích nêu nguyên văn."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (f) — vi quang kế/vi tỷ trọng kế (nhóm 90.27) — đích nêu nguyên văn."
+  },
+  {
+   "index": "loaiTru[8]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải 1(d) Chương 90 — gương (nhóm 70.09; 83.06) — đủ hai đích nêu nguyên văn; \"Chương 71\" không ghi vì luật 3 không tính \"Chương N\" là đích loại trừ."
+  },
+  {
+   "index": "loaiTru[9]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải 1(e) Chương 90 — hàng hóa thuộc các nhóm 70.07, 70.08, 70.11, 70.14, 70.15 hoặc 70.17 — đủ cả sáu mã nêu nguyên văn trong câu."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu có HAI vế: \"Khi có máy ảnh là bộ phận không thể thiếu của kính thiên văn… thì tập hợp đó được phân loại vào nhóm này; tuy nhiên, các máy ảnh mà không là bộ phận không thể thiếu… thì phân loại vào nhóm 90.06\". Câu hỏi hỏi vế thứ hai (máy ảnh KHÔNG phải bộ phận không thể thiếu) → có = 9006, không = 9005 (chính nhóm), đúng chiều nguồn và đúng quy ước \"nhánh không = nhóm đang soát\"."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: có = 9013, không = 9005; mã 90.13 nêu nguyên văn; câu hỏi không nhắc mã."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: có = 9015 (máy kinh vĩ cỡ nhỏ dùng trong trắc địa bị), không = 9005; mã 90.15 nêu nguyên văn."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: có = 9011 (kính hiển vi thiên thực), không = 9005; mã 90.11 nêu nguyên văn."
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: có = 9014 (dụng cụ xác định vị trí trên mặt đất), không = 9005; mã 90.14 nêu nguyên văn."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "quyTac thêm vế \"chỉ dùng hoặc chủ yếu dùng cho các mặt hàng thuộc nhóm này\" — vế này nằm ở Chú giải 2(b) Chương 90, KHÔNG có trong câu trích (đoạn \"CÁC BỘ PHẬN VÀ PHỤ KIỆN\" của chú giải nhóm chỉ nói \"theo các quy định của Chú giải 1 và 2 của Chương này… nhóm này cũng gồm các bộ phận và phụ kiện của các mặt hàng thuộc nhóm này\"). Sửa quyTac theo đúng câu trích, giữ con trỏ tới Chú giải 1 và 2 của Chương. tomTat giữ nguyên (kể đủ ví dụ nguồn liệt kê: khung, lồng, ống, giá đỡ; vi kế vạch; thiết bị Gerrish).",
+   "sua": {
+    "quyTac": "Bộ phận và phụ kiện của các mặt hàng thuộc nhóm này được xếp vào nhóm này theo các quy định của Chú giải 1 và 2 của Chương này."
+   }
+  }
+ ]
+}
