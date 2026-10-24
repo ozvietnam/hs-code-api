@@ -87,6 +87,33 @@ const SCHEMAS = {
       },
     },
   },
+  SoTayQuestion: {
+    type: 'object',
+    description: 'Một câu hỏi phân loại TẤT ĐỊNH (không AI) của /api/so-tay-questions. `loai` cho biết căn cứ: DONG_BIEU (đặc điểm quyết định đuôi 8 số, có `trich` dòng biểu) · ' +
+      'CONG (cổng sổ tay máy nghi, ngôn ngữ luật → chuyên viên hỏi) · TT39 (trường khai chung theo nhóm hàng, TT 39/2018). Từ 24/10/2026 (#411).',
+    properties: {
+      key: str('Khoá đặc điểm — dùng làm key trong `facts` khi gọi lại'),
+      questionVi: str('Câu hỏi tiếng Việt'),
+      questionZh: str('Câu hỏi tiếng Trung (câu TT39, để gửi shop)'),
+      type: { type: 'string', enum: ['choice', 'number'] },
+      required: { type: 'boolean', description: 'Câu TT39: false khi có productText (tuỳ chọn, không hỏi khách); không có productText thì như trước. Câu DONG_BIEU: true. Câu CONG: false' },
+      loai: { type: 'string', enum: ['DONG_BIEU', 'CONG', 'TT39'] },
+      unit: str('Đơn vị khi type=number (cm, kg, kW…)'),
+      options: { type: 'array', items: { type: 'string' } },
+      nguon: str('Nguồn trích, vd tax.84811011'),
+      trich: str('Trích nguyên văn dòng biểu / chú giải (≤ 240 ký tự)'),
+      askStaff: { type: 'boolean', description: 'Câu ngôn ngữ luật → chuyên viên Oz hỏi, không đưa khách' },
+      tacDongThue: {
+        type: ['object', 'null'],
+        description: 'Chỉ câu DONG_BIEU: tiền thuế treo trên câu trả lời — MFN (%) min/max và chênh giữa các dòng 8 số cùng phân nhóm 6 mà đặc điểm này quyết định (`dong[]`), ' +
+          '`acftaKhac` = mức ACFTA khác nhau giữa các dòng đó. Số null khi biểu thuế thiếu dữ liệu. Để bên hỏi xếp câu theo tác động thuế; không phải thuế của mã.',
+        properties: {
+          mfnMin: { type: ['number', 'null'] }, mfnMax: { type: ['number', 'null'] }, chenh: { type: ['number', 'null'] },
+          acftaKhac: { type: 'boolean' }, dong: { type: 'array', items: { type: 'string' } },
+        },
+      },
+    },
+  },
   CanCuPhapLy: {
     type: 'object',
     description: 'Căn cứ pháp lý theo TT 85/2026/TT-BTC (hiệu lực 15/09/2026): bước nào đã áp dụng, tài liệu nào của Điều 6.1 thật sự có/đã tra. ' +
@@ -437,6 +464,37 @@ const paths = {
       id: 'customsTypes', tags: ['Tra cứu'], auth: pub,
       summary: 'Mã loại hình xuất nhập khẩu (QĐ 1357/QĐ-TCHQ)',
       params: [q('code', 'Mã loại hình, vd A11')],
+    }),
+  },
+  '/api/so-tay-questions': {
+    post: op({
+      id: 'soTayQuestions', tags: ['Tra cứu'], auth: pub,
+      summary: 'Câu hỏi phân loại TẤT ĐỊNH từ sổ tay thật (không AI) cho bước "Oz rà soát" của ERP / Cổng OZ',
+      description: 'Body `{hs: "<4–8 chữ số>", productText?, facts?}`. Ba nguồn câu, mỗi câu có `loai`: (1) `DONG_BIEU` — đặc điểm QUYẾT ĐỊNH đuôi 8 số ' +
+        'từ `dong8[].dieuKienSo` của sổ tay (có `trich`/`nguon` dòng biểu, kèm `tacDongThue` = chênh MFN giữa các dòng 8 số cùng phân nhóm mà câu quyết định); ' +
+        '(2) `CONG` — cổng sổ tay máy nghi (`askStaff: true`); (3) `TT39` — trường khai bắt buộc theo nhóm hàng (TT 39/2018). ' +
+        'Máy TỰ ĐỌC `productText` trước khi hỏi: số có đơn vị + vật liệu cho bước 1, và từ 24/10/2026 (#411) cả mẫu nhận diện của từng trường TT39 ' +
+        '("PN16", "inox 304", "25 mm", "380V", "3 pha"…) — câu đã có trong mô tả KHÔNG trả về; câu TT39 còn lại là tuỳ chọn (`required: false`) khi có `productText`. ' +
+        'Không gửi `productText` → hành vi như trước (câu TT39 `required: true`). `facts {key: value}` = đáp án đã có, không hỏi lại. ' +
+        'Nhóm chưa có sổ tay → `coSoTay: false`, `questions: []` (bên gọi tự rơi về /api/declaration-fields). Công khai, chỉ đọc dữ liệu tĩnh (đóng bằng HS_PUBLIC_READ=false).',
+      requestBody: {
+        type: 'object', required: ['hs'],
+        properties: {
+          hs: str('Mã HS 4–8 chữ số, vd "84811019" (≥ 6 số mới có câu DONG_BIEU)'),
+          productText: str('Mô tả hàng (tên + model + nhãn hiệu + thông số, Việt/Trung) — máy tự đọc để bớt câu'),
+          facts: { type: 'object', description: 'Đáp án đã có theo key câu hỏi, vd {"duong_kinh": 2.5}' },
+        },
+      },
+      response: {
+        type: 'object',
+        properties: {
+          coSoTay: { type: 'boolean', description: 'false = nhóm chưa có sổ tay (questions rỗng)' },
+          nhom: str('Nhóm 4 số'),
+          nguonSoTay: str('Tên + phiên bản sổ tay'),
+          questions: { type: 'array', items: { $ref: '#/components/schemas/SoTayQuestion' } },
+        },
+      },
+      errors: { 400: 'Thiếu hoặc sai hs (cần 4–8 chữ số) / body không phải JSON', 405: 'Chỉ nhận POST' },
     }),
   },
   '/api/suggest': {

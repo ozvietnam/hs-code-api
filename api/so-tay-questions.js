@@ -15,11 +15,18 @@
 // CÔNG KHAI như /api/declaration-fields: chỉ đọc dữ liệu tĩnh, không tốn tiền,
 // không chạm dữ liệu khách. Công tắc đóng khẩn cấp dùng chung: HS_PUBLIC_READ=false
 // → đòi Bearer token.
+//
+// #411 (24/10/2026 — phục vụ "Kỷ luật hỏi" phía ERP): bước 3 đọc cả productText (haystack
+// của lib/attributes.js, cùng máy dò với /api/classify) nên câu chung TT39 mà mô tả đã nêu
+// ("PN16", "inox 304", "25 mm", "380V", "3 pha"…) tự rụng; mỗi câu mang `loai`
+// (DONG_BIEU | CONG | TT39); câu TT39 là TUỲ CHỌN (required:false) khi có productText; câu
+// DONG_BIEU kèm `tacDongThue` (chênh MFN giữa các dòng 8 số mà câu quyết định — chỉ tính,
+// không đổi thứ tự). Toàn bộ ADDITIVE: không gửi productText → payload y như cũ (+2 field).
 
 const { setCors, handleOptions } = require('../lib/cors');
 const { publicReadEnabled } = require('../lib/public-access');
 const { requireAuth } = require('../lib/auth');
-const { loadSoTay, soTayGates, chotDong8, MATERIALS } = require('../lib/so-tay-gates');
+const { loadSoTay, soTayGates, chotDong8, tacDongThueDong8, chatLieuTrong, MATERIALS } = require('../lib/so-tay-gates');
 const { missingStructured } = require('../lib/declaration-fields');
 
 // Nhãn tiếng Việt thân thiện cho từng đại lượng máy (khớp LOAI_GIA_TRI trong lib/so-tay-gates.js).
@@ -91,16 +98,18 @@ module.exports = async function handler(req, res) {
         for (const mf of cd.missingFacts) {
           const fact = String(mf.fact || '').trim();
           if (!fact) continue;
+          // Tiền thuế treo trên câu trả lời (chênh MFN giữa các dòng 8 số mà đặc điểm này quyết định) — #411.
+          const thue = tacDongThueDong8({ hs: code, fact });
           if (fact === 'chat_lieu' || fact === 'vat_lieu') {
-            add({ key: 'chat_lieu', questionVi: 'Vật liệu chính của hàng là gì?', type: 'choice', options: MATERIAL_OPTIONS, required: true, nguon: nguon && nguon.nguon, trich: nguon && nguon.trich });
+            add({ key: 'chat_lieu', questionVi: 'Vật liệu chính của hàng là gì?', type: 'choice', options: MATERIAL_OPTIONS, required: true, loai: 'DONG_BIEU', tacDongThue: thue, nguon: nguon && nguon.nguon, trich: nguon && nguon.trich });
             continue;
           }
           const label = FACT_LABELS[fact];
           if (label) {
-            add({ key: fact, questionVi: `${label}${mf.donVi ? ` (${mf.donVi})` : ''}?`, type: 'number', unit: mf.donVi || undefined, required: true, nguon: nguon && nguon.nguon, trich: nguon && nguon.trich });
+            add({ key: fact, questionVi: `${label}${mf.donVi ? ` (${mf.donVi})` : ''}?`, type: 'number', unit: mf.donVi || undefined, required: true, loai: 'DONG_BIEU', tacDongThue: thue, nguon: nguon && nguon.nguon, trich: nguon && nguon.trich });
           } else {
             // Đặc điểm chưa mô hình thành câu thân thiện → để Oz hỏi (ngôn ngữ luật).
-            add({ key: fact, questionVi: `Cần xác định đặc điểm "${fact}"${mf.canThoa ? ` (điều kiện: ${mf.canThoa})` : ''} để chốt mã.`, type: 'choice', required: true, askStaff: true, nguon: nguon && nguon.nguon, trich: nguon && nguon.trich });
+            add({ key: fact, questionVi: `Cần xác định đặc điểm "${fact}"${mf.canThoa ? ` (điều kiện: ${mf.canThoa})` : ''} để chốt mã.`, type: 'choice', required: true, askStaff: true, loai: 'DONG_BIEU', tacDongThue: thue, nguon: nguon && nguon.nguon, trich: nguon && nguon.trich });
           }
         }
       }
@@ -112,15 +121,25 @@ module.exports = async function handler(req, res) {
     if (g && Array.isArray(g.challenges)) {
       for (const c of g.challenges) {
         const legal = Array.isArray(c.legal) && c.legal[0] ? c.legal[0] : null;
-        add({ key: `gate_${c.gate}${c.target ? `_${c.target}` : ''}`, questionVi: c.questionVi, type: 'choice', options: ['Có', 'Không', 'Chưa rõ'], required: false, askStaff: true, nguon: legal && legal.nguon, trich: legal && legal.trich });
+        add({ key: `gate_${c.gate}${c.target ? `_${c.target}` : ''}`, questionVi: c.questionVi, type: 'choice', options: ['Có', 'Không', 'Chưa rõ'], required: false, askStaff: true, loai: 'CONG', nguon: legal && legal.nguon, trich: legal && legal.trich });
       }
     }
 
     // 3) Trường khai bắt buộc còn thiếu theo nhóm hàng (TT 39/2018) — câu hỏi VI + ZH.
-    //    missingStructured đã lọc trường đã có trong facts.
-    for (const f of missingStructured(code, facts)) {
-      if (f.key === 'material' && seen.has('chat_lieu')) continue; // đã hỏi vật liệu ở trên (đặc điểm quyết định)
-      add({ key: f.key, questionVi: f.questionVi, questionZh: f.questionZh || undefined, type: 'choice', required: Boolean(f.required) });
+    //    missingStructured lọc trường đã có trong facts VÀ (#411) đã nêu trong productText: đưa mô tả vào
+    //    `specs` — haystacks() của lib/attributes.js gộp specs vào chuỗi dò, nên `patterns`/`detect` của
+    //    từng trường (data/chapter-declaration-fields.json, data/attributes.json) + từ điển nhãn tiếng Trung
+    //    tự loại câu đã có đáp án ("PN16" → pressureRating, "inox" → material, "25 mm" → dimensions…).
+    //    Không có productText → gọi y như cũ. Câu TT39 còn lại khi có mô tả là TUỲ CHỌN (ERP không hỏi khách,
+    //    chuyên viên tự xác định) — khi không có mô tả giữ `required` như trước.
+    const coMoTa = productText.trim() !== '';
+    const hoSo = coMoTa ? { ...facts, specs: [facts.specs, productText].filter(hasVal).join(' • ') } : facts;
+    // Vật liệu: máy dò của trường `material` chỉ bắt NHÃN ("chất liệu", "vật liệu"), không bắt TÊN vật liệu
+    // ("inox 304", "nhựa PP") → đọc thêm bằng chính bảng vật liệu Việt + Hán mà bước 1 (chotDong8) dùng.
+    const daCoVatLieu = coMoTa && chatLieuTrong(productText).length > 0;
+    for (const f of missingStructured(code, hoSo)) {
+      if (f.key === 'material' && (seen.has('chat_lieu') || daCoVatLieu)) continue; // đã hỏi ở bước 1 / mô tả đã nêu
+      add({ key: f.key, questionVi: f.questionVi, questionZh: f.questionZh || undefined, type: 'choice', required: coMoTa ? false : Boolean(f.required), loai: 'TT39' });
     }
 
     // Không hỏi lại đặc điểm khách đã trả lời trong facts.
@@ -128,13 +147,14 @@ module.exports = async function handler(req, res) {
 
     // Dọn field rỗng cho response gọn + bám đúng CONTRACT.
     const clean = out.map((q) => {
-      const o = { key: q.key, questionVi: q.questionVi, type: q.type, required: q.required };
+      const o = { key: q.key, questionVi: q.questionVi, type: q.type, required: q.required, loai: q.loai };
       if (q.questionZh) o.questionZh = q.questionZh;
       if (q.unit) o.unit = q.unit;
       if (q.options) o.options = q.options;
       if (hasVal(q.nguon)) o.nguon = q.nguon;
       if (hasVal(q.trich)) o.trich = clip(q.trich, 240);
       if (q.askStaff) o.askStaff = true;
+      if (q.tacDongThue) o.tacDongThue = q.tacDongThue; // chỉ câu DONG_BIEU (#411)
       return o;
     });
 
