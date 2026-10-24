@@ -51,6 +51,7 @@ openssl rand -hex 32
 | `/api/suggest` | POST | No (open) | AI HS suggestions (Gemini) |
 | `/api/describe` | POST | No (open) | AI customs description (Gemini) — auto-fit 200 ký tự ECUS, xuất xứ + tình trạng luôn ở cuối; trả `descriptionMeta {length, truncated, dropped, fullText}`. Khi LLM lỗi: **không fail-silent** — trả `degraded:true` + `llmError {code,message,retryable}` + warning `DESCRIPTION_DEGRADED` (mô tả là fallback context thô) |
 | `/api/feedback` | POST | Yes | Capture director override feedback |
+| `/api/so-tay-questions` | POST | No (open) | Câu hỏi phân loại **tất định** (không AI, chỉ đọc sổ tay tĩnh) cho bước "Oz rà soát" của ERP/Cổng OZ: body `{hs, productText?, facts?}`. Mỗi câu có `loai` — `DONG_BIEU` (đặc điểm chốt đuôi 8 số, có `trich` dòng biểu + `tacDongThue {mfnMin, mfnMax, chenh, acftaKhac, dong[]}` = chênh MFN giữa các dòng mà câu quyết định) · `CONG` (cổng sổ tay, `askStaff`) · `TT39` (trường khai chung). Máy **tự đọc `productText` trước khi hỏi** (#411, 24/10/2026): câu đã có trong mô tả ("PN16", "inox 304", "25 mm", "380V", "3 pha"…) không trả về, câu TT39 còn lại `required:false`; không gửi `productText` → như cũ. Nhóm chưa có sổ tay → `coSoTay:false` |
 | `/api/kg_chapter?chapter=` | GET | Yes | List HS codes in chapter |
 | `/api/kg_stats` | GET | Yes | Dataset overview (rewrite → `/api/dataset?resource=kg_stats`) |
 | `/api/versions` | GET | Yes | Tariff snapshot index (rewrite → `/api/tariff?op=versions`) |
