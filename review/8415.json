@@ -1,0 +1,318 @@
+{
+ "nhom": "8415",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-24T22:30:00+07:00",
+ "phamViSoat": "Toàn bộ 61 mục của tmp/so-tay/raw/8415.json: 9 mục trong 5 khối phải soát (1 phamVi + 1 boPhan + 3 dieuKienVao + 3 loaiTru + 1 phanBiet) đọc cùng tmp/so-tay/nguon/8415.txt; 49 dong8 + 3 cay.tenDien đối chiếu nguyên văn bằng máy.",
+ "soat": 61,
+ "sua": 0,
+ "xoa": 0,
+ "ghiChu": "Khối 5 mục soát rất sạch: mọi câu trích nguyên văn và nói đúng điều mục khẳng định. GHI CHÚ KỆ SÁCH (cần CEO quyết): nguồn chú giải nhóm 8415 ghi \"(nhóm 84.79, 85,16...)\" — dấu phẩy thay dấu chấm, nên mã 85.16 KHÔNG có nguyên văn trong câu trích; luật 8 cấm sửa mã nguồn để máy cho qua, nên loaiTru[2] và phanBiet[0] chỉ ghi đích 84.79 (đích có nguyên văn) và phần 85.16 ghi ở đây. (Trong cùng tệp nguồn, \"nhóm 85.16\" có viết đúng ở khối phan84.phan — dòng 506 — nhưng câu loại trừ (c) nằm ở nhom8415.nhom nên không dùng câu khối khác để vá.) Cũng lưu ý: đoạn \"Xét về mặt cấu trúc … phải có ít nhất các bộ phận sau\" và \"Nhóm này chỉ bao gồm các loại máy sau: (1)(2)(3)\" nằm trong khoảng lược của câu trích phamVi, nhưng (1)(2)(3) đã được ghi đủ vào dieuKienVao[0..2] nên không mất thông tin trong sổ tay. Câu \"Tuy nhiên, nhóm này không bao gồm các thiết bị làm lạnh … dưới 0° C … có thể được phân loại trong nhóm 84.18\" có \"có thể\" nên không được ghi thành loại trừ dứt khoát (đúng luật loại-trừ-chỉ-là-thường).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn và nói đúng phạm vi: \"thiết bị dùng để duy trì điều kiện độ ẩm và nhiệt độ theo yêu cầu trong một không gian kín\" + hai dạng cấu trúc (một khối / hệ thống nhiều khối chức năng tách biệt). Nhóm chỉ có MỘT loại hàng nên không có tiêu đề phần phải liệt kê. Khoảng lược giữa các đoạn không nuốt ngoại lệ nào chưa được ghi ở nơi khác: mệnh đề \"Nhóm này chỉ bao gồm các loại máy sau: (1)(2)(3)\" đã vào đủ dieuKienVao[0..2]; các loại trừ (a)(b)(c) đã vào đủ loaiTru[0..2]."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn đúng khối \"BỘ PHẬN\"; quyTac và tomTat đều bám sát câu nguồn (chỉ bộ phận đặt trong nhà và ngoài trời của máy điều hòa dạng hệ thống nhiều khối chức năng tách biệt mới được trình bày riêng biệt trong nhóm này; các bộ phận khác theo Chú giải 2(a) Phần XVI)."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn mục (1) của danh sách \"Nhóm này chỉ bao gồm các loại máy sau\": có gắn quạt gió hoặc máy thổi chạy bằng động cơ. fact đúng nghĩa, value=true đúng (đây là điều kiện bắt buộc của nhóm, không phải câu cho phép)."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn mục (2): thay đổi cả nhiệt độ và độ ẩm không khí. fact đúng, value=true đúng."
+  },
+  {
+   "index": "dieuKienVao[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn mục (3): các bộ phận nêu trong mục (1) và (2) được trình bày cùng với nhau. Câu ngay sau (\"các bộ phận dùng để làm ẩm … có thể tách biệt với các bộ phận làm nóng hoặc làm lạnh\") chỉ là chú thích cách bố trí bộ phận bên trong máy, không phủ định điều kiện (3) — không mất ngoại lệ nào."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trong khối \"Nhóm này không bao gồm:\", mục (a) nêu đích 73.22 ngay trong câu; loại trừ dứt khoát, không có dấu \"thường/tùy trường hợp\"."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b) trong khối \"không bao gồm\", đích 84.18 có nguyên văn trong câu."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c) trong khối \"không bao gồm\", đích 84.79 có nguyên văn trong câu. LƯU Ý KỆ SÁCH: nguồn ghi \"85,16\" (dấu phẩy) nên mã 85.16 không có nguyên văn để ghi thêm vào sangNhom; luật 8 cấm sửa mã nguồn, nên chỉ ghi 84.79 và nêu rõ ở đây để CEO quyết có sửa nguồn hay không."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều đúng: nguồn nói mục (c) KHÔNG thuộc nhóm 8415 mà sang 84.79/85.16 → \"có (chỉ thay đổi một trong hai) → 84.79\", \"không (thay đổi cả hai) → 8415\". hoi là câu hỏi CÓ/KHÔNG (không phải dạng \"A hay B\") nên chiều neuCo đúng. Cùng lưu ý kệ sách về 85.16 như loaiTru[2]."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84151020 - - Công suất làm mát không quá 21,10 kW\" nguyên văn đúng khối tax.84151020; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84151030 - - Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW\" nguyên văn đúng khối tax.84151030; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84151090 - - Loại khác\" nguyên văn đúng khối tax.84151090; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84152010 - - Công suất làm mát không quá 26,38 kW\" nguyên văn đúng khối tax.84152010; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84152090 - - Loại khác\" nguyên văn đúng khối tax.84152090; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158111 - - - - Công suất làm mát không quá 21,10 kW\" nguyên văn đúng khối tax.84158111; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158112 - - - - Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)\" nguyên văn đúng khối tax.84158112; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158119 - - - - Loại khác\" nguyên văn đúng khối tax.84158119; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158121 - - - - Công suất làm mát không quá 26,38 kW\" nguyên văn đúng khối tax.84158121; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158129 - - - - Loại khác\" nguyên văn đúng khối tax.84158129; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158131 - - - - Công suất làm mát không quá 26,38 kW\" nguyên văn đúng khối tax.84158131; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158139 - - - - Loại khác\" nguyên văn đúng khối tax.84158139; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[12]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158195 - - - - Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)\" nguyên văn đúng khối tax.84158195; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[13]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158196 - - - - Công suất làm mát trên 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)\" nguyên văn đúng khối tax.84158196; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[14]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158197 - - - - - Công suất làm mát không quá 21,10 kW\" nguyên văn đúng khối tax.84158197; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[15]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158198 - - - - - Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW\" nguyên văn đúng khối tax.84158198; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[16]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158199 - - - - - Loại khác\" nguyên văn đúng khối tax.84158199; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[17]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158211 - - - - Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)\" nguyên văn đúng khối tax.84158211; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[18]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158219 - - - - Loại khác\" nguyên văn đúng khối tax.84158219; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[19]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158221 - - - - Công suất làm mát không quá 26,38 kW\" nguyên văn đúng khối tax.84158221; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[20]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158229 - - - - Loại khác\" nguyên văn đúng khối tax.84158229; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[21]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158231 - - - - Công suất làm mát không quá 26,38 kW\" nguyên văn đúng khối tax.84158231; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[22]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158239 - - - - Loại khác\" nguyên văn đúng khối tax.84158239; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[23]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158291 - - - - Công suất làm mát không quá 26,38 kW\" nguyên văn đúng khối tax.84158291; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[24]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158299 - - - - Loại khác\" nguyên văn đúng khối tax.84158299; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[25]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158311 - - - - Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)\" nguyên văn đúng khối tax.84158311; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[26]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158319 - - - - Loại khác\" nguyên văn đúng khối tax.84158319; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[27]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158321 - - - - Công suất làm mát không quá 26,38 kW\" nguyên văn đúng khối tax.84158321; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[28]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158329 - - - - Loại khác\" nguyên văn đúng khối tax.84158329; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[29]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158331 - - - - Công suất làm mát không quá 26,38 kW\" nguyên văn đúng khối tax.84158331; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[30]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158339 - - - - Loại khác\" nguyên văn đúng khối tax.84158339; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[31]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158391 - - - - Công suất làm mát không quá 26,38 kW\" nguyên văn đúng khối tax.84158391; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[32]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84158399 - - - - Loại khác\" nguyên văn đúng khối tax.84158399; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[33]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84159013 - - - Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt\" nguyên văn đúng khối tax.84159013; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[34]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84159014 - - - Thiết bị làm bay hơi hoặc ngưng tụ dùng cho máy điều hòa không khí lắp trên xe có động cơ\" nguyên văn đúng khối tax.84159014; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[35]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84159015 - - - Khung vỏ, đã hàn và sơn, trừ loại thuộc phân nhóm 8415.90.13\" nguyên văn đúng khối tax.84159015; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[36]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84159019 - - - Loại khác\" nguyên văn đúng khối tax.84159019; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[37]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84159024 - - - - Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt\" nguyên văn đúng khối tax.84159024; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[38]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84159025 - - - - Loại khác\" nguyên văn đúng khối tax.84159025; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[39]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84159026 - - - - Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt\" nguyên văn đúng khối tax.84159026; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[40]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84159029 - - - - Loại khác\" nguyên văn đúng khối tax.84159029; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[41]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84159034 - - - - Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt\" nguyên văn đúng khối tax.84159034; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[42]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84159035 - - - - Loại khác\" nguyên văn đúng khối tax.84159035; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[43]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84159036 - - - - Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt\" nguyên văn đúng khối tax.84159036; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[44]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84159039 - - - - Loại khác\" nguyên văn đúng khối tax.84159039; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[45]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84159044 - - - - Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt\" nguyên văn đúng khối tax.84159044; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[46]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84159045 - - - - Loại khác\" nguyên văn đúng khối tax.84159045; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[47]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84159046 - - - - Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt\" nguyên văn đúng khối tax.84159046; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "dong8[48]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84159049 - - - - Loại khác\" nguyên văn đúng khối tax.84159049; dieuKien chép đúng tên dòng; tieuChi (nếu có) lấy ngưỡng có trong chính câu trích."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "Tên tiếng Việt cho nút 841581 dịch đúng nghĩa tên phân nhóm WCO (841581 Air conditioning machines; containing a motor driven fan, other than window or wall types, incorporating a refrigerating unit and a valve for reversal of the cooling/heat cycle (reversible heat pumps)); câu trích nguyên văn trong khối wco.841581."
+  },
+  {
+   "index": "cay.tenDien[1]",
+   "hanhDong": "giu",
+   "lyDo": "Tên tiếng Việt cho nút 841582 dịch đúng nghĩa tên phân nhóm WCO (841582 Air conditioning machines; containing a motor driven fan, other than window or wall types, incorporating a refrigerating unit); câu trích nguyên văn trong khối wco.841582."
+  },
+  {
+   "index": "cay.tenDien[2]",
+   "hanhDong": "giu",
+   "lyDo": "Tên tiếng Việt cho nút 841583 dịch đúng nghĩa tên phân nhóm WCO (841583 Air conditioning machines; containing a motor driven fan, other than window or wall types, not incorporating a refrigerating unit); câu trích nguyên văn trong khối wco.841583."
+  }
+ ]
+}

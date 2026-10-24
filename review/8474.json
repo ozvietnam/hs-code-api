@@ -1,0 +1,213 @@
+{
+ "nhom": "8474",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-24T22:20:00+07:00",
+ "phamViSoat": "Toàn bộ 40 mục của bản nháp lô 036 (1 phamVi + 0 dieuKienVao + 13 loaiTru + 0 phanBiet + 1 boPhan + 6 tieuChi6 + 2 cay.tenDien + 17 dong8), đọc cùng tmp/so-tay/nguon/8474.txt (nhom8474.nhom 153 dòng, ch84.chuong, phan84.phan, wco.847410/847420/847431/847432/847439/847480/847490, tax.84741010…84749000).",
+ "soat": 40,
+ "sua": 0,
+ "xoa": 0,
+ "giu": 40,
+ "ghiChu": "Audit 8474 (đọc nguồn nguyên văn, không chỉ qua máy). KẾT QUẢ: 40/40 mục có câu trích thật trong nguồn; KHÔNG sửa, KHÔNG xoá mục nào — bản nháp của nhóm này sạch. GIỮ có lý do: phamVi nêu đủ 3 phần ngang hàng (I)(II)(III) của chú giải nhóm, text bám sát nguồn; dieuKienVao rỗng là ĐÚNG — câu 'Một số máy loại thường được sử dụng… cũng xử lý các sản phẩm phi khoáng… những máy này cũng xếp vào nhóm này. Tuy nhiên, nhóm này không mở rộng đến máy móc được thiết kế đặc biệt để thực hiện các hoạt động tương tự đối với các nguyên liệu phi khoáng' có vế định ngữ 'thường' và nửa đầu là câu liệt kê → không đặt được value=true theo luật lô 030; phanBiet rỗng là ĐÚNG (mọi khác biệt trong nguồn đều là mục loại trừ, đã ghi ở loaiTru, không có cặp mã ngoài nhóm nêu đích danh trong cùng câu); boPhan giữ đủ cả vế ngoại lệ ('Tuy nhiên, bi cho máy nghiền bi được phân loại theo vật liệu cấu thành chúng.'); 2 tên điền (847431, 847432) lấy nguyên văn từ nhom8474.nhom và trùng với tiêu đề phân nhóm trong biểu thuê Tổng cục. GHI CHÚ CHO LÔ (không sửa trong lô này): nguồn có khoản loại trừ '(e) Đầm rung bê tông (nhóm 84.67 hoặc 84.79 tùy trường hợp)' mà bản nháp CHƯA ghi vào loaiTru — chưa ghi là đúng theo luật máy (câu có 'tùy trường hợp' → loại-tru-chi-la-thuong, và 84.79/84.67 có điều kiện tùy) nhưng là khoản trống; ghi ra đây, KHÔNG tự soạn thêm trong đợt soát này. Ngoài ra tieuChi6 chưa có mục cho 847490 (phân nhóm 'parts') → check-cay báo 'phan-nhom-chua-co-tieu-chi:847490' (chỉ là cảnh báo).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn, nêu đủ 3 phần ngang hàng (I) xử lý khoáng chất rắn, (II) kết tụ/tạo hình/tạo khuôn bột-bột nhão, (III) tạo khuôn đúc bằng cát; các đoạn lược '…' chỉ che phần ví dụ liệt kê vật liệu, không che ngoại lệ. text bám sát nguồn, không thêm chữ ngoài nguồn."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn mục (a), nêu đích danh 84.16 → đúng luật mục 3."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn mục (b) — giữ nguyên lỗi nguồn ('Máy cán là hoặc máy cán ép phẳng kiểu trục lăn'); nêu đích danh 84.20."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn mục (c), nêu đích danh 84.21."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn TRỌN đoạn, gồm cả vế 'Tuy nhiên, những máy mà trong đó lực li tâm được dùng để ném vật liệu vào sàng lưới được xếp vào nhóm này' — tức câu trích đã mang ngoại lệ (ngoại lệ NGAY SAU câu trích, không bị lược mất). Nêu đích danh 84.21."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn qua chỗ xuống dòng trong nguồn: '…nhưng các máy trong đó cát được phun bằng một luồng khí nén không … được xếp vào nhóm này (nhóm 84.24).' Dấu '…' ở đây là chỗ ngắt đoạn trong tệp nguồn, không che ngoại lệ; nêu đích danh 84.24."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn 'Lò làm khô lõi hoặc khuôn cũng không xếp vào nhóm này (nhóm 84.19).' — dấu hiệu loại trừ + đích danh 84.19."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn từ mục (C)(1), có ngoại lệ lấy trọn ('Tuy nhiên, máy trộn bê tông được gắn cố định vào xe goòng hoặc trên khung gầm xe tải không được xếp vào nhóm này'), nêu đích danh 86.04 và 87.05 (sangNhom '8604|8705' → đạt). Đúng luật mục 3."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn mục (d), nêu đích danh 84.64."
+  },
+  {
+   "index": "loaiTru[8]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn mục (f), nêu đích danh 84.75."
+  },
+  {
+   "index": "loaiTru[9]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn mục (g), nêu đích danh 84.77."
+  },
+  {
+   "index": "loaiTru[10]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn mục (h), nêu đích danh 84.79."
+  },
+  {
+   "index": "loaiTru[11]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn mục (ij): '(ij) Máy dàn bê tông (nhóm 84.79 hoặc Chương 87).' Nguồn nêu thêm 'Chương 87' nhưng đó không phải mã nhóm 4 số nên không thể đưa vào sangNhom (máy sẽ loại) → chỉ ghi 84.79, đúng luật mục 3 ('Chương N' không tính là đích danh). Giữ nguyên chữ '(ij)' của nguồn."
+  },
+  {
+   "index": "loaiTru[12]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn mục (k), nêu đích danh 84.80."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn trong nhom8474.nhom, gồm cả vế ngoại lệ 'Tuy nhiên, bi cho máy nghiền bi được phân loại theo vật liệu cấu thành chúng.'; quyTac/tomTat diễn đạt đúng."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '847410 Machines; for sorting, screening, separating or washing earth, stone, ores or other mineral substances' nguyên văn từ wco.847410; value lấy đúng tên phân nhóm."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '847420 Machines; for crushing or grinding earth, stone, ores or other mineral substances' nguyên văn từ wco.847420."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '(1) Máy trộn bê tông hoặc vữa.' nguyên văn trong nhom8474.nhom; value bám sát câu."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '(2) Máy móc dùng để trộn những chất khoáng (đá, sỏi, đá vôi,v.v.. đã vỡ hoặc nghiền) với nhựa đường, để làm ra vật liệu trải mặt đường.' nguyên văn trong nhom8474.nhom; value là tóm lược của câu, không thêm gì."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '847439 Machines; for mixing or kneading mineral substances, excluding concrete mixers and machines for mixing mineral substances with bitumen' nguyên văn từ wco.847439; value bám sát tên phân nhóm."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '847480 Machines; for agglomerating, shaping or moulding solid mineral fuels, ceramic paste, unhardened cements, plastering materials in powder or paste form, machines for forming foundry moulds of sand' nguyên văn từ wco.847480; value 'agglomerating, shaping or moulding|forming foundry moulds of sand' lấy đúng hai vế trong tên."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "id 847431 (phân nhóm 6 số chưa có tên tiếng Việt trong biểu thuê Tổng cục — chỉ có dòng 84743110/84743120), tenVi 'Máy trộn bê tông hoặc vữa' lấy nguyên văn từ nhom8474.nhom '(1) Máy trộn bê tông hoặc vữa.' — đúng luật mục 9."
+  },
+  {
+   "index": "cay.tenDien[1]",
+   "hanhDong": "giu",
+   "lyDo": "id 847432 (dòng 84743211…84743229), tenVi lấy từ nhom8474.nhom mục (C)(2) — đúng luật mục 9; trích kèm nguyên văn."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84741010 - - Hoạt động bằng điện' nguyên văn từ tax.84741010; đủ 17 dòng 8 số của nhóm trong tax.* (84741010, 84741020, 84742011, 84742019, 84742021, 84742029, 84743110, 84743120, 84743211, 84743219, 84743221, 84743229, 84743910, 84743920, 84748010, 84748020, 84749000)."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84741020 - - Không hoạt động bằng điện' nguyên văn từ tax.84741020."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84742011 - - - Dùng cho đá' nguyên văn từ tax.84742011."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84742019 - - - Loại khác' nguyên văn từ tax.84742019; máy tự điền loaiKhac=true."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84742021 - - - Dùng cho đá' nguyên văn từ tax.84742021."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84742029 - - - Loại khác' nguyên văn từ tax.84742029; máy tự điền loaiKhac=true."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84743110 - - - Hoạt động bằng điện' nguyên văn từ tax.84743110."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84743120 - - - Không hoạt động bằng điện' nguyên văn từ tax.84743120."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84743211 - - - - Có công suất không quá 80 tấn/giờ' nguyên văn từ tax.84743211; tieuChi (cong_suat <= 80, đơn vị tấn/giờ) — số 80 và đơn vị có trong câu trích → đạt luật số."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84743219 - - - - Loại khác' nguyên văn từ tax.84743219; máy tự điền loaiKhac=true."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84743221 - - - - Có công suất không quá 80 tấn/giờ' nguyên văn từ tax.84743221; tieuChi (cong_suat <= 80) đủ căn cứ trong câu trích."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84743229 - - - - Loại khác' nguyên văn từ tax.84743229; máy tự điền loaiKhac=true."
+  },
+  {
+   "index": "dong8[12]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84743910 - - - Hoạt động bằng điện' nguyên văn từ tax.84743910."
+  },
+  {
+   "index": "dong8[13]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84743920 - - - Không hoạt động bằng điện' nguyên văn từ tax.84743920."
+  },
+  {
+   "index": "dong8[14]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84748010 - - - Hoạt động bằng điện' nguyên văn từ tax.84748010."
+  },
+  {
+   "index": "dong8[15]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84748020 - - - Không hoạt động bằng điện' nguyên văn từ tax.84748020."
+  },
+  {
+   "index": "dong8[16]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '84749000 - Bộ phận' nguyên văn từ tax.84749000; tên dòng 'Bộ phận' không bắt đầu bằng 'Loại khác' nên máy không tự đặt loaiKhac — đúng biểu thuế."
+  }
+ ]
+}

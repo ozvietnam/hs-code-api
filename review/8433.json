@@ -1,0 +1,173 @@
+{
+ "nhom": "8433",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-24T22:30:00+07:00",
+ "phamViSoat": "Toàn bộ 30 mục của tmp/so-tay/raw/8433.json (1 phamVi + 1 boPhan + 1 dieuKienVao + 7 loaiTru + 1 phanBiet + 2 cay.tenDien + 17 dong8), đọc cùng tmp/so-tay/nguon/8433.txt.",
+ "soat": 30,
+ "sua": 3,
+ "xoa": 0,
+ "ghiChu": "Ba lỗi, không xoá mục nào. (1) phamVi: câu trích CẮT CỤT câu ở \"…nông sản khác\", bỏ mất ngay vế \"loại trừ các máy và thiết bị của nhóm 84.37\" — mất ngoại lệ ngay sau câu trích (máy không bắt). (2) phanBiet: câu trích bắt đầu giữa câu (\"được phân loại cùng với máy…\") nên KHÔNG chứa \"thiết bị nâng, điều khiển, vận chuyển phụ\" — mà hoi lại hỏi đúng ba từ đó; mở rộng lại từ nguồn. (3) boPhan.tomTat có thêm so sánh với nhóm khác (\"khác 8430 và 8415 là sang nhóm bộ phận riêng\") — không có trong câu trích của nhóm này, xoá. LƯU Ý KỆ SÁCH: nguồn vừa nói nhóm 8433 gồm \"Máy làm sạch, phân loại hoặc lựa chọn trứng…\" (mục B) vừa loại trừ \"máy kiểm tra trứng (nhóm 84.36)\" (mục (c)) — không mâu thuẫn (kiểm tra trứng ≠ làm sạch/phân loại trứng), nhưng người khai nên biết để hỏi đúng; đã ghi đủ ở loaiTru[3].",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích dừng ở \"…nông sản khác\" — cắt CỤT câu, mất ngay vế \"loại trừ các máy và thiết bị của nhóm 84.37\". Đây là \"mất ngoại lệ ngay sau câu trích\" (máy không bắt vì đoạn bị cắt vẫn là nguyên văn trong nguồn). Sửa: kéo trọn vế ngoại lệ vào câu trích và bổ sung vào `text` để ranh giới 84.37 có mặt trong prompt vòng 2 (`phamVi.text` là 1 trong 7 trường mà lib/so-tay-gates.js đóng gói cho mô hình).",
+   "sua": {
+    "text": "Thu hoạch hoa màu… máy cắt cỏ khô hoặc cỏ tươi, máy bó rơm rạ… máy làm sạch, phân loại hoặc lựa chọn trứng, hoa quả hoặc nông sản khác, loại trừ các máy và thiết bị của nhóm 84.37.",
+    "trich": "(A) Thu hoạch hoa màu (ví dụ: gặt, nhổ, lượm, hái, đập, buộc hoặc bó) … Máy cắt cỏ khô hoặc cỏ tươi, máy bó rơm rạ cũng thuộc nhóm này … (B) Máy làm sạch, phân loại hoặc lựa chọn trứng, hoa quả hoặc nông sản khác, loại trừ các máy và thiết bị của nhóm 84.37"
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích cũ bắt đầu giữa câu (\"được phân loại cùng với máy, với điều kiện…\") nên KHÔNG chứa cụm \"thiết bị nâng, điều khiển, vận chuyển phụ\" mà `hoi` hỏi — vi phạm luật \"hoi không thêm chữ không có trong câu trích\". Sửa: mở rộng câu trích từ đầu câu nguồn (\"*** Những máy thuộc loại này nằm trong nhóm này …\") để hoi có căn cứ trong chính câu trích. CHIỀU giữ nguyên và đúng: \"được trình bày cùng nhau\" → 8433, \"trình bày riêng biệt\" → 84.28.",
+   "sua": {
+    "trich": "*** Những máy thuộc loại này nằm trong nhóm này … thường kết hợp với thiết bị nâng, điều khiển, vận chuyển phụ … được phân loại cùng với máy, với điều kiện chúng được trình bày cùng nhau; khi được trình bày riêng biệt chúng thuộc nhóm 84.28."
+   }
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "`tomTat` thêm so sánh với nhóm khác — \"(khác 8430 và 8415 là sang nhóm bộ phận riêng)\" — không có trong câu trích của nhóm 8433 (nguồn của 8430/8415 nằm ở tệp khác) ⇒ vi phạm luật \"tomTat/text không thêm chữ không có trong câu trích\". Sửa: chỉ giữ đúng nội dung câu nguồn (\"các bộ phận của các máy thuộc nhóm này cũng được phân loại ở đây\").",
+   "sua": {
+    "tomTat": "Bộ phận của máy 8433 được phân loại ở chính nhóm 8433."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"Nhóm này bao gồm các loại máy được sử dụng thay cho những dụng cụ cầm tay, để thực hiện cơ khí hóa những hoạt động sau:\" — đây là điều kiện VÀO NHÓM (không phải câu cho phép, không có \"có thể\"), fact đúng nghĩa, value=true đúng."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "\"Tuy nhiên, nhóm này không bao gồm những máy cầm tay để cắt tỉa cỏ bãi … được phân loại ở nhóm 84.67.\" — đích 84.67 có nguyên văn. Đoạn lược chỉ bỏ mô tả cấu tạo (động cơ đốt trong / mô tơ điện / sợi nylon), không có ngoại lệ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (a) \"Lưỡi cắt và bộ phận lưỡi của máy xén cỏ (nhóm 82.08).\" — đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b) trong khối \"không bao gồm\", đích \"nhóm 84.26 hoặc 84.28\" có nguyên văn; `sangNhom` \"8426|8428\" phủ đúng hai đích."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c) trong khối \"không bao gồm\", đích 84.36 có nguyên văn trong câu."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (d) trong khối \"không bao gồm\", đích 84.37 có nguyên văn. Câu nguồn có lỗi gõ \"sử.dụng\" — bản nháp chép nguyên văn, đúng luật \"giữ lỗi chính tả của nguồn\"."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (e) \"Máy tỉa hạt bông (nhóm 84.45).\" — đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (f) \"Máy tước cọng lá thuốc lá hoặc thái lá) (nhóm 84.78).\" — đích có nguyên văn; dấu \")\" thừa là lỗi của nguồn, `dieuKien` bỏ nó đi nhưng `trich` giữ nguyên."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "Tên \"Máy cắt cỏ dùng cho các bãi cỏ, công viên hoặc sân chơi thể thao, loại khác với loại có chi tiết cắt quay trên mặt phẳng ngang\" dịch đúng wco.843319."
+  },
+  {
+   "index": "cay.tenDien[1]",
+   "hanhDong": "giu",
+   "lyDo": "Tên \"Máy thu hoạch khác, không được nêu ở mục nào khác của nhóm 8433\" dịch đúng \"843359 Harvesting machinery; n.e.c. in heading no. 8433\"."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84331100 - - Chạy bằng động cơ, với chi tiết cắt quay trên mặt phẳng ngang\" nguyên văn đúng khối tax.84331100; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84331910 - - - Không dùng động cơ\" nguyên văn đúng khối tax.84331910; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84331990 - - - Loại khác\" nguyên văn đúng khối tax.84331990; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84332000 - Máy cắt cỏ khác, kể cả các thanh cắt lắp vào máy kéo\" nguyên văn đúng khối tax.84332000; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84333000 - Máy dọn cỏ khô khác\" nguyên văn đúng khối tax.84333000; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84334000 - Máy đóng bó, bánh (kiện) rơm hoặc cỏ khô, kể cả máy nâng (thu dọn) các kiện đã được đóng\" nguyên văn đúng khối tax.84334000; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84335100 - - Máy gặt đập liên hợp\" nguyên văn đúng khối tax.84335100; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84335200 - - Máy đập khác\" nguyên văn đúng khối tax.84335200; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84335300 - - Máy thu hoạch sản phẩm củ hoặc rễ\" nguyên văn đúng khối tax.84335300; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84335920 - - - Máy hái bông (cotton)\" nguyên văn đúng khối tax.84335920; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84335990 - - - Loại khác\" nguyên văn đúng khối tax.84335990; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84336010 - - Hoạt động bằng điện\" nguyên văn đúng khối tax.84336010; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[12]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84336020 - - Không hoạt động bằng điện\" nguyên văn đúng khối tax.84336020; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[13]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84339010 - - Bánh xe đẩy (castor), có đường kính (gồm cả lốp) trên 100 mm nhưng không quá 250 mm, với điều kiện là bánh xe hoặc lốp lắp vào đó có chiều rộng trên 30 mm\" nguyên văn đúng khối tax.84339010; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[14]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84339020 - - Loại khác, của hàng hóa thuộc phân nhóm 8433.11.00 hoặc 8433.19.90\" nguyên văn đúng khối tax.84339020; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[15]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84339030 - - Loại khác, của hàng hóa thuộc phân nhóm 8433.19.10\" nguyên văn đúng khối tax.84339030; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[16]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84339090 - - Loại khác\" nguyên văn đúng khối tax.84339090; dieuKien chép đúng tên dòng."
+  }
+ ]
+}

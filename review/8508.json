@@ -1,0 +1,93 @@
+{
+ "nhom": "8508",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-24T22:20:00+07:00",
+ "phamViSoat": "Toàn bộ 16 mục của bản nháp lô 036 (1 phamVi + 0 dieuKienVao + 2 loaiTru + 0 phanBiet + 1 boPhan + 5 tieuChi6 + 1 cay.tenDien + 6 dong8), đọc cùng tmp/so-tay/nguon/8508.txt (nhom8508.nhom 17 dòng, ch85.chuong, phan85.phan, wco.850811/850819/850860/850870, tax.85081100…85087090).",
+ "soat": 16,
+ "sua": 0,
+ "xoa": 0,
+ "giu": 16,
+ "ghiChu": "Audit 8508 (đọc nguồn nguyên văn, không chỉ qua máy). KẾT QUẢ: 16/16 mục có câu trích thật trong nguồn; KHÔNG sửa, KHÔNG xoá mục nào. GIỮ có lý do: phamVi bám sát hai câu nguồn (định nghĩa nhóm + câu 'Nhóm này bao gồm cả, không kể những cái khác, máy hút bụi loại để chải lông…'), phần lược '…' giữa hai câu chỉ che đoạn mô tả chức năng hút/lọc, không che ngoại lệ; dieuKienVao rỗng là ĐÚNG (câu 'Máy hút bụi thực hiện 2 chức năng chính: hút các vật liệu… và lọc luồng không khí' là câu ĐỊNH NGHĨA, không phải điều kiện vào nhóm); phanBiet rỗng là ĐÚNG (chú giải nhóm 8508 không nêu mã phân nhóm nào để so sánh); 2 loại trừ đều có dấu hiệu loại trừ rõ và nêu đích danh (84.51/85.09 và 90.18); boPhan giữ đủ vế giới hạn 'với điều kiện chúng là loại thường được sử dụng với máy hút bụi' (định ngữ giới hạn không bị mất) và vế 'Khi xuất trình riêng rẽ, chúng được phân loại theo bản chất của mặt hàng'. GHI CHÚ CHO LÔ (không sửa trong lô này): tieuChi6 của phân nhóm 8508.11 có ngưỡng sức chứa 20L nhưng THIẾU ngưỡng công suất ≤ 1.500 W (đây mới là tiêu chí phân biệt 8508.11 với 8508.19) — không sửa vì tieuChi6 ngoài phạm vi 5 trường của đợt soát này; đề nghị lô sau bổ sung. Ngoài ra phamVi.text dài 258 ký tự, vượt trần 220 mà runtime in (lib/so-tay-gates.js:134) → phần cuối 'máy hút bụi loại để chải lông…' bị cắt khi chạy; xem ghi chú chung của lô trong PR.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn nối bằng '…' từ nhom8508.nhom (định nghĩa nhóm + câu về máy hút bụi chải lông); text diễn đạt đúng, giữ cả phần 'dù có hay không là loại cầm tay' và 'có hay không kèm theo đồ phụ trợ' (không nói chắc hơn nguồn). Đoạn bị lược nằm giữa hai câu mô tả chức năng, không chứa ngoại lệ."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn: 'Loại trừ khỏi nhóm này là các thiết bị làm sạch thảm bằng cách phun chất lỏng làm sạch lên trên mặt thảm, dung dịch làm sạch sau đó được hút ra mà không có sự kết hợp máy hút bụi khô hay ướt (nhóm 84.51 hoặc 85.09).' Dấu hiệu loại trừ rõ; nêu đích danh 84.51 và 85.09 (sangNhom '8451|8509' → đạt). Giữ nguyên định ngữ giới hạn 'không có sự kết hợp máy hút bụi khô hay ướt'."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn 'Nhóm này cũng loại trừ các thiết bị chân không loại được sử dụng trong y tế, phẫu thuật, nha khoa và thú y khác (nhóm 90.18).' — dấu hiệu loại trừ + đích danh 90.18; dieuKien chép nguyên văn (cụm 'thiết bị chân không loại được' là cách nói của nguồn, không sửa)."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn nối 3 đoạn bằng '…' trong nhom8508.nhom; các đoạn lược chỉ là phần mô tả thiết bị đi kèm, không che ngoại lệ. quyTac/tomTat giữ nguyên định ngữ giới hạn 'với điều kiện chúng là loại thường được sử dụng với máy hút bụi' và vế 'Khi xuất trình riêng rẽ, chúng được phân loại theo bản chất của mặt hàng'."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '850811 Vacuum cleaners, with self-contained electric motor, of a power not exceeding 1,500 W and having a dust bag or other receptacle capacity not exceeding 20L' nguyên văn từ wco.850811; fact co_dong_co_dien_gan_lien = true bám sát 'with self-contained electric motor'."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu trích wco.850811; ngưỡng 20 và đơn vị L có trong câu ('not exceeding 20L') → đạt luật số. Ghi chú: cùng phân nhóm còn ngưỡng công suất ≤ 1.500 W chưa có mục — xem ghiChú của lô (không sửa ở đợt này)."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '850819 Vacuum cleaners, with self-contained electric motor, n.e.c. in item no. 8508.1' nguyên văn từ wco.850819; value 'co_dong_co_dien_gan_lien = true' bám sát tên phân nhóm (không suy diễn thêm)."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '850860 Vacuum cleaners, other than with a self-contained electric motor' nguyên văn từ wco.850860; value = false là đúng nghĩa 'other than with a self-contained electric motor' (chiều đảo đúng)."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '850870 Parts of vacuum cleaners' nguyên văn từ wco.850870; fact la_bo_phan_may_hut_bui = true bám sát 'Parts of vacuum cleaners'."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "id 850819 (phân nhóm 6 số chưa có tên tiếng Việt trong biểu thuê — chỉ có dòng 85081910/85081990); tenVi là bản dịch đúng nghĩa của tên WCO trong câu trích kèm theo (luật mục 9 cho phép điền tên tiếng Việt cho phân nhóm 6 số chưa có tên, kèm câu làm căn cứ)."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '85081100 - - Công suất không quá 1.500 W và có túi hứng bụi hoặc đồ chứa khác với sức chứa không quá 20 lít' nguyên văn từ tax.85081100; đủ 6 dòng 8 số của nhóm (85081100, 85081910, 85081990, 85086000, 85087010, 85087090)."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '85081910 - - - Loại phù hợp dùng cho mục đích gia dụng' nguyên văn từ tax.85081910."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '85081990 - - - Loại khác' nguyên văn từ tax.85081990; máy tự điền loaiKhac=true."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '85086000 - Máy hút bụi khác' nguyên văn từ tax.85086000; tên dòng có tên riêng nên máy không đặt loaiKhac — đúng biểu thuế."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '85087010 - - Của máy hút bụi thuộc phân nhóm 8508.11.00 hoặc 8508.19.10' nguyên văn từ tax.85087010 (nguồn có khoảng trắng cuối dòng — bỏ qua, squash của máy không tính khoảng trắng)."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "trich = '85087090 - - Loại khác' nguyên văn từ tax.85087090; máy tự điền loaiKhac=true."
+  }
+ ]
+}
