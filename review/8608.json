@@ -1,0 +1,62 @@
+{
+ "nhom": "8608",
+ "nguoiSoat": "soat-doc-lap-037",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-24T22:40:00+07:00",
+ "phamViSoat": "Toàn bộ 9 mục của 5 khối trong tmp/so-tay/raw/8608.json (1 phamVi + 0 dieuKienVao + 5 loaiTru + 2 phanBiet + 1 boPhan), đọc cùng tmp/so-tay/nguon/8608.txt ([nhom8608.nhom], [ch86.chuong], [wco.860800], [tax.86080020], [tax.86080090]); đối chiếu từng câu trích nguyên văn. Ngoài phạm vi: 2 dong8 + 0 tieuChi6 (máy kiểm nguyên văn) — đã đọc qua, không sửa.",
+ "soat": 9,
+ "daKiem": 9,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "1 sửa, 0 xoá. Sửa duy nhất: câu trích của loaiTru[2] trong nguồn BỊ CẮT bằng dấu \"...\" (nguồn gốc chỉ ghi \"…trong các nhóm 68.10, 73.08...\"), bản nháp lấy câu trích không có dấu lược nên đọc như danh sách ĐÓNG (chỉ 68.10 và 73.08). Đã nối lại dấu \"…\" cuối câu (cắt nguyên văn từ nguồn). GHI CHÚ (không sửa): dong8[86080020].dieuKien trích tiêu đề phần (B) của chú giải nhóm (\"Thiết bị phát tín hiệu… bằng cơ khí (kể cả cơ điện) — phần (B) của chú giải nhóm\") trong khi `nguon` là tax.86080020; đây là dạng chú thích chéo đã có sẵn 728 dòng 8 số trong sổ tay (vd \"phân nhóm 9005.10 — WCO: Binoculars\") và nội dung là nguyên văn từ chính chú giải nhóm, nên GIỮ. Machine check-so-tay xanh vì nó chỉ kiểm câu trích có thật, không kiểm phần \"text\" tự do.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Phạm vi lấy từ Chú giải 3 Chương 86 (\"nhóm 86.08 áp dụng cho: (a)… (b)…\") là định nghĩa phạm vi đúng của nhóm theo chính chú giải chương; đủ hai vế (a) bộ phận đường ray và (b) thiết bị tín hiệu cơ khí, không bỏ vế nào. Câu trích nguyên văn, có dấu \"đã hoặc chưa lắp đặt\"."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"Tuy nhiên, nhóm này không bao gồm các đầu máu hoặc sàn chuyển toa xe… được xếp trong nhóm 84.28\" — dấu hiệu loại trừ rõ, đích 84.28 nêu nguyên văn trong câu."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"Nhóm này không bao gồm các tà vẹt bằng gỗ (nhóm 44.06), tà vẹt bằng bê tông (nhóm 68.10)… được chi tiết tại nhóm 73.02\" — đủ cả ba đích 44.06/68.10/73.02 trong câu, không có dải số nào bị bỏ sót."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích thiếu dấu lược cuối: NGUỒN gốc bị cắt bằng \"...\" (…trong các nhóm 68.10, 73.08...), bản nháp lấy câu không có \"…\" nên đọc như danh sách đóng (chỉ 68.10 và 73.08) trong khi nguồn nói \"trong các nhóm\" (không đóng). Sửa: nối lại dấu \"…\" nguyên văn cuối câu.",
+   "sua": {
+    "trich": "Các cột tháp và cổng dùng làm giá cho cáp điện không được xem là bộ phận cố định và ghép nối cho đường sắt hay đường tàu điện và được phân loại theo chất liệu cấu thành lên nó trong các nhóm 68.10, 73.08..."
+   }
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b) trong khối \"Nhóm này cũng loại trừ:\" — \"Đèn tín hiệu (nhóm 85.30 hoặc 94.05)\"; đủ hai đích trong câu."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải 1(c) Chương 86: \"Thiết bị tín hiệu, an toàn hoặc điều khiển giao thông bằng điện thuộc nhóm 85.30\" — loại trừ dứt khoát, đích 85.30 nêu nguyên văn."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng đối tượng của câu loại trừ (thiết bị tín hiệu… bằng điện) → có = 8530, không = 8608 (chính nhóm); mã 85.30 có trong câu trích."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi bám sát vế \"Các loại này cũng như một số thiết bị khác dùng vận hành các đầu máu toa xe… (thiết bị lật toa, thiết bị đẩy xe gòong) được xếp trong nhóm 84.28\"; \"A hoặc B\" (lật toa hoặc đẩy xe gòong) CÙNG về 84.28 nên không tách thành hai nhánh; không nhắc mã trong câu hỏi."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "quyTac và tomTat bám sát câu \"Nhóm này bao gồm các bộ phận có thể nhận dạng thuộc các thiết bị được nhắc ở trên (ví dụ, sàn quay, cột chỉ tín hiệu và địa chỉ tín hiệu, cần điều khiển, hộp khóa ghi, các cơ cấu khấc liên khoá)\"; tomTat kể đủ ví dụ nguồn liệt kê, giữ nguyên lỗi gõ \"địa chỉ tín hiệu\" của nguồn."
+  }
+ ]
+}

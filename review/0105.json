@@ -1,0 +1,27 @@
+{
+  "nhom": "0105",
+  "nguoiSoat": "dev-soat-doc-lap-lo038",
+  "luc": "2026-10-24T22:40:00+07:00",
+  "soat": 3,
+  "giu": 1,
+  "sua": 0,
+  "xoa": 2,
+  "ghiChu": "SOÁT ĐỘC LẬP 0105 (1 phamVi + 1 loaiTru + 1 phanBiet = 3 mục trong phạm vi mục 4; đọc thêm 7 tieuChi6 + 20 dong8 + 2 cay.tenDien nhưng KHÔNG sửa — ngoài phạm vi). XOÁ 2 — NGUỒN TỰ MÂU THUẪN (luật: nguồn bao gồm X ở một chỗ, loại trừ X ở chỗ khác → BỎ CẢ HAI PHÍA; tiền lệ lô 030/7317): chú giải nhóm ghi \"Nhóm này không bao gồm các loại chim sống khác (vd, gà gô, GÀ LÔI, chim bồ câu, vịt trời, ngỗng trời) (nhóm 01.06)\" — nhưng GÀ LÔI (guinea fowl) CÓ phân nhóm 0105.15 (WCO 010515 Poultry; live, guinea fowls) và có dòng biểu thuế 0105.15.10 / 0105.15.90, cùng 0105.99.30/40 (\"Ngỗng, gà tây và gà lôi\"). Câu nguồn đó tự mâu thuẫn nên không dùng làm căn cứ cho bất kỳ mục nào: giữ nó sẽ khiến sổ tay bảo \"gà lôi → 01.06\" — SAI, và sẽ đẩy gà lôi ra khỏi 0105 trong lúc chính 0105.15 dành cho gà lôi. Không sửa câu nguồn (đúng luật: giữ nguyên ký tự nguồn) và không thu hẹp danh sách ví dụ trong câu trích; vì không còn câu nào khác nêu 01.06 trong nguồn 0105 nên mất thông tin \"các loài chim sống khác → 01.06\" là do LỖI KỆ SÁCH, đã ghi rõ trong mô tả PR. GIỮ 1: `phamVi` — câu trích nguyên văn, nêu đúng phạm vi, KHÔNG đụng câu mâu thuẫn. GHI NHẬN (ngoài phạm vi, KHÔNG sửa): `dong8[01059410].dieuKien` nói \"dòng biểu thuế ghi kèm loại trừ gà chọi\" trong khi `trich` của mục đó là SEN (không chứa câu đó) — câu đó lấy từ tax.01059410 (\"01059410 - - - Để nhân giống (SEN), trừ gà chọi\"), nên nội dung ĐÚNG nhưng câu trích không đỡ; đã nêu để người duyệt xem.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn trong [nhom0105.nhom]; text nêu phạm vi \"các loại chim nuôi còn sống được chỉ rõ trong nhóm\" và loài Gallus domesticus (gà giò, gà trống thiến) — đúng, và KHÔNG đụng vào câu nguồn đang mâu thuẫn (xem loaiTru[0]/phanBiet[0]). GIỮ NGUYÊN."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "xoa",
+      "lyDo": "NGUỒN TỰ MÂU THUẪN → bỏ cả hai phía. Câu trích \"Nhóm này không bao gồm các loại chim sống khác (vd, gà gô, gà lôi, chim bồ câu, vịt trời, ngỗng trời) (nhóm 01.06)\" đích danh \"gà lôi\" là loại bị loại trừ sang 01.06 — nhưng gà lôi CÓ phân nhóm 0105.15 (WCO 010515 poultry; live, guinea fowls) và có dòng biểu thuế 0105.15.10/0105.15.90, cùng 0105.99.30/0105.99.40 \"Ngỗng, gà tây và gà lôi\". Giữ mục này thì sổ tay sẽ dạy \"gà lôi → 01.06\" — sai, và cổng loại trừ (lib/so-tay-gates.js) sẽ đẩy gà lôi ra khỏi 0105, trái với chính 0105.15 dành cho gà lôi. Không sửa được vì không có câu nào khác trong nguồn 0105 nêu 01.06 (chú giải chương 1 chỉ loại 03.01/03.06/03.07/03.08, 30.02, 95.08) và không được thu hẹp danh sách ví dụ trong câu trích. Theo luật nguồn mâu thuẫn (mục 4 + tiền lệ lô 030/7317) → XOÁ, và ghi rõ trong mô tả PR."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "xoa",
+      "lyDo": "Cùng mâu thuẫn nguồn về \"gà lôi\" với loaiTru[0] → bỏ cả hai phía. Câu hỏi \"Hàng có phải là loại chim sống khác không?\" dựng đúng nhưng nhánh \"có → 0106\" sẽ đẩy gà lôi (có 0105.15) ra khỏi nhóm, và nhánh \"không → 0105\" chỉ suy ra từ danh sách loại trừ. XOÁ. Đặt XOÁ này CUỐI danh sách để các mục ở trên không bị lệch index."
+    }
+  ]
+}

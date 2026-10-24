@@ -1,0 +1,224 @@
+{
+ "nhom": "0101",
+ "phamVi": {
+  "text": "Ngựa (ngựa cái, ngựa đực, ngựa thiến, ngựa con và ngựa nhỏ (pony)), lừa, la, nuôi hoặc hoang",
+  "nguon": "nhom0101.nhom",
+  "trich": "Nhóm này gồm các loại ngựa (ngựa cái, ngựa đực, ngựa thiến, ngựa con và ngựa nhỏ (pony)), lừa, la, nuôi hoặc hoang.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "010121",
+   "fact": "thuan_chung_de_nhan_giong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom0101.nhom",
+   "trich": "Phân nhóm 0101.21 Theo mục đích của phân nhóm 0101.21, thuật ngữ \"loại thuần chủng để nhân giống” chỉ gồm những động vật giống được các cơ quan quốc gia có thẩm quyền công nhận là “thuần chủng”.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010129",
+   "fact": "thuan_chung_de_nhan_giong",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "nguon": "wco.010129",
+   "trich": "010129 Horses; live, other than pure-bred breeding animals",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010130",
+   "fact": "loai_vat",
+   "op": "=",
+   "value": "Lừa",
+   "donVi": null,
+   "nguon": "wco.010130",
+   "trich": "010130 Asses; live",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "010190",
+   "fact": "loai_vat",
+   "op": "=",
+   "value": "La (mule) và hinny — con lai giữa lừa và ngựa",
+   "donVi": null,
+   "nguon": "wco.010190",
+   "trich": "010190 Mules and hinnies; live",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "01012100",
+   "dieuKien": "Loại thuần chủng để nhân giống — chỉ gồm những động vật giống được các cơ quan quốc gia có thẩm quyền công nhận là “thuần chủng” (theo mục đích của phân nhóm 0101.21)",
+   "nguon": "nhom0101.nhom",
+   "trich": "Phân nhóm 0101.21 Theo mục đích của phân nhóm 0101.21, thuật ngữ \"loại thuần chủng để nhân giống” chỉ gồm những động vật giống được các cơ quan quốc gia có thẩm quyền công nhận là “thuần chủng”.",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "01012900",
+   "dieuKien": "Ngựa sống khác loại thuần chủng để nhân giống (phân nhóm 0101.29) — dòng biểu thuế ghi \"Loại khác\"",
+   "nguon": "tax.01012900",
+   "trich": "01012900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "01012",
+    "truAnhEm": [
+     "01012100"
+    ],
+    "toTienCoTen": "0101",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "01013010",
+   "dieuKien": "Lừa (phân nhóm 0101.30) loại thuần chủng để nhân giống",
+   "nguon": "tax.01013010",
+   "trich": "01013010 - - Loại thuần chủng để nhân giống",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "01013090",
+   "dieuKien": "Lừa (phân nhóm 0101.30) — dòng biểu thuế ghi \"Loại khác\"",
+   "nguon": "tax.01013090",
+   "trich": "01013090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "010130",
+    "truAnhEm": [
+     "01013010"
+    ],
+    "toTienCoTen": "010130",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "01019000",
+   "dieuKien": "La (mule) và hinny — con lai giữa lừa và ngựa (phân nhóm 0101.90) — dòng biểu thuế ghi \"Loại khác\"",
+   "nguon": "tax.01019000",
+   "trich": "01019000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "0101",
+    "truAnhEm": [
+     "01012",
+     "010130"
+    ],
+    "toTienCoTen": "0101",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "0101",
+    "cap": 4,
+    "cha": "01",
+    "tenVi": "Ngựa, lừa, la sống (+).",
+    "tenEn": "Horses, asses, mules and hinnies; live",
+    "suyRa": false
+   },
+   {
+    "id": "01012",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "0101",
+    "tenVi": "Ngựa",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "01012100",
+    "cap": 8,
+    "cha": "01012",
+    "tenVi": "Loại thuần chủng để nhân giống",
+    "tenEn": "Horses; live, pure-bred breeding animals",
+    "suyRa": false,
+    "laPhanNhom": "010121"
+   },
+   {
+    "id": "01012900",
+    "cap": 8,
+    "cha": "01012",
+    "tenVi": "Loại khác",
+    "tenEn": "Horses; live, other than pure-bred breeding animals",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "010129"
+   },
+   {
+    "id": "010130",
+    "cap": 6,
+    "cha": "0101",
+    "tenVi": "Lừa",
+    "tenEn": "Asses; live",
+    "suyRa": false
+   },
+   {
+    "id": "01013010",
+    "cap": 8,
+    "cha": "010130",
+    "tenVi": "Loại thuần chủng để nhân giống",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "01013090",
+    "cap": 8,
+    "cha": "010130",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "01019000",
+    "cap": 8,
+    "cha": "0101",
+    "tenVi": "Loại khác",
+    "tenEn": "Mules and hinnies; live",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "010190"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom0101.nhom",
+  "tax.01012900",
+  "tax.01013010",
+  "tax.01013090",
+  "tax.01019000",
+  "wco.010129",
+  "wco.010130",
+  "wco.010190"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-24T15:21:46.571Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 10,
+  "dat": 10,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

@@ -1,0 +1,137 @@
+{
+ "nhom": "9202",
+ "phamVi": {
+  "text": "Nhạc cụ sử dụng cần kéo … Các nhạc cụ có dây khác",
+  "nguon": "nhom9202.nhom",
+  "trich": "Nhóm này bao gồm: … (A) Nhạc cụ sử dụng cần kéo … (B) Các nhạc cụ có dây khác",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Nhạc cụ điện tử (như ghita) không có hộp cộng hưởng",
+   "sangNhom": "9207",
+   "nguon": "nhom9202.nhom",
+   "trich": "Ở một số nhạc cụ, nhất là ghita, âm thanh có thể được tăng âm điện tử nhưng chúng không bị loại trừ khỏi nhóm này; tuy nhiên, các nhạc cụ điện tử như ghita không có hộp cộng hưởng thuộc nhóm 92.07",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "920210",
+   "fact": "su_dung_can_keo",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.920210",
+   "trich": "920210 Musical instruments; string, played with a bow (e.g. violins)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "920290",
+   "fact": "su_dung_can_keo",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "nguon": "wco.920290",
+   "trich": "920290 Musical instruments; string, played other than with a bow (e.g. guitars and harps)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "92021000",
+   "dieuKien": "Nhạc cụ có dây loại sử dụng cần kéo (phân nhóm 9202.10)",
+   "tieuChi": {
+    "fact": "su_dung_can_keo",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.92021000",
+   "trich": "92021000 - Loại sử dụng cần kéo",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "92029000",
+   "dieuKien": "Nhạc cụ có dây không sử dụng cần kéo (phân nhóm 9202.90) — dòng biểu thuế ghi \"Loại khác\"",
+   "nguon": "tax.92029000",
+   "trich": "92029000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "9202",
+    "truAnhEm": [
+     "92021000"
+    ],
+    "toTienCoTen": "9202",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "boPhan": {
+  "quyTac": "Cần kéo, que và các dụng cụ tương tự để chơi nhạc cụ thuộc nhóm 92.02 hoặc 92.06, đi kèm nhạc cụ với số lượng kèm theo thông thường và được xác định rõ là sử dụng cùng với nhạc cụ, được phân loại cùng nhóm với nhạc cụ liên quan.",
+  "tomTat": "Cần kéo, que kèm nhạc cụ 92.02 hoặc 92.06 (số lượng kèm theo thông thường, xác định là sử dụng cùng với nhạc cụ) được phân loại cùng nhóm với nhạc cụ liên quan.",
+  "nguon": "ch92.chuong",
+  "trich": "Cần kéo và que và các dụng cụ tương tự để chơi nhạc cụ thuộc nhóm 92.02 hoặc 92.06 đi kèm những loại nhạc cụ đó với số lượng kèm theo thông thường và được xác định rõ là sử dụng cùng với nhạc cụ, được phân loại cùng nhóm với nhạc cụ liên quan.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "9202",
+    "cap": 4,
+    "cha": "92",
+    "tenVi": "Các nhạc cụ có dây khác (ví dụ, ghi ta, vi-ô-lông, đàn hạc).",
+    "tenEn": "Musical instruments; string, n.e.c. in heading no. 9201, (e.g. guitars, violins, harps)",
+    "suyRa": false
+   },
+   {
+    "id": "92021000",
+    "cap": 8,
+    "cha": "9202",
+    "tenVi": "Loại sử dụng cần kéo",
+    "tenEn": "Musical instruments; string, played with a bow (e.g. violins)",
+    "suyRa": false,
+    "laPhanNhom": "920210"
+   },
+   {
+    "id": "92029000",
+    "cap": 8,
+    "cha": "9202",
+    "tenVi": "Loại khác",
+    "tenEn": "Musical instruments; string, played other than with a bow (e.g. guitars and harps)",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "920290"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch92.chuong",
+  "nhom9202.nhom",
+  "tax.92021000",
+  "tax.92029000",
+  "wco.920210",
+  "wco.920290"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-24T15:21:46.569Z",
+  "ms": 89
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

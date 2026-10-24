@@ -1,0 +1,21 @@
+{
+  "nhom": "0102",
+  "nguoiSoat": "dev-soat-doc-lap-lo038",
+  "luc": "2026-10-24T22:40:00+07:00",
+  "soat": 1,
+  "giu": 0,
+  "sua": 1,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0102 (1 phamVi trong phạm vi mục 4; đọc thêm 5 tieuChi6 + 8 dong8 nhưng KHÔNG sửa — ngoài phạm vi). SỬA 1 — ba lỗi máy KHÔNG bắt được, tất cả trong cùng một mục `phamVi`: (1) ĐOẠN CUỐI BỊ CẮT CỤT giữa câu, KHÔNG có dấu lược: bản nháp dừng ở \"…và linh dương sừng xoắn\", nguồn còn \"thuộc giống Taurotragus và Tragelaphus.\" — điều hạn (chỉ hai giống Taurotragus/Tragelaphus) bị mất, mà trích lại trông như câu trọn. (2) DÁN HAI KHỐI VĂN BẰNG MỘT DẤU CÁCH: \"(1) Gia súc: Loại này bao gồm…\" và \"(2) Trâu: Loại này bao gồm…\" — trong nguồn mỗi tiêu đề nằm ở đoạn văn riêng (ngăn bởi dòng trống) → chuỗi đó không tồn tại trong nguồn; `check-so-tay` xanh vì so qua `squash()` (xoá cả xuống dòng), `scripts/check-trich-nguyen-van.mjs` (byte-exact) bắt được. (3) PHẠM VI thiếu định ngữ giới hạn: bản nháp bắt đầu từ \"(1) Gia súc\" nên không có câu dẫn \"…trâu bò thuộc phân họ Bovinae, nuôi hoặc hoang và dù mục đích sử dụng thế nào (… làm thịt)\" — mất \"nuôi hoặc hoang\" và \"dù mục đích sử dụng thế nào\" (trâu bò SỐNG, kể cả để làm thịt — khác với xác ở Chương 02). Ba nhóm anh em 0101/0103/0104 đều giữ \"nuôi hoặc hoang\"; chỉ 0102 rơi mất. Cách sửa: NỐI câu dẫn vào trước, tách mỗi tiêu đề thành mảnh riêng nối bằng dấu lược \" … \", HOÀN TẤT câu (3); không sửa mã/nguồn, không thêm chữ ngoài nguồn; mọi đoạn cắt thẳng từ tệp nguồn. `text` giữ ≤220 ký tự để runtime không cắt cụt (clip 220). RỖNG ĐÚNG: `dieuKienVao`/`loaiTru`/`phanBiet` không có vì không câu ràng buộc vào nhóm, không loại trừ nêu đích danh nhóm khác; `boPhan` null.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (cắt cụt + dán hai khối văn bằng dấu cách + mất định ngữ giới hạn của phạm vi). (1) Đoạn cuối bản nháp dừng giữa câu ở \"…và linh dương sừng xoắn\" mà KHÔNG có dấu lược, nên trích trông như câu trọn; nguồn còn \"thuộc giống Taurotragus và Tragelaphus.\" — mất điều hạn (chỉ hai giống Taurotragus/Tragelaphus). (2) Bản nháp dán \"(1) Gia súc: Loại này bao gồm…\" và \"(2) Trâu: Loại này bao gồm…\" bằng MỘT DẤU CÁCH, nhưng trong nguồn tiêu đề và câu kế nằm ở HAI đoạn văn riêng (ngăn bởi dòng trống) → chuỗi đó KHÔNG tồn tại trong nguồn (bộ kiểm byte-exact `scripts/check-trich-nguyen-van.mjs` bắt được; `check-so-tay` xanh vì `squash()` xoá cả xuống dòng). (3) `text` bắt đầu từ \"(1) Gia súc\" nên không có câu dẫn của nhóm — mất \"trâu bò thuộc phân họ Bovinae, nuôi hoặc hoang và dù mục đích sử dụng thế nào (… làm thịt)\"; đây là điều kiện quyết định 0102 (động vật SỐNG, dù cho mục đích gì) và là nhóm duy nhất trong 0101–0105 mất định ngữ \"nuôi hoặc hoang\". Sửa: nối câu dẫn vào đầu, tách mỗi tiêu đề thành mảnh riêng nối bằng dấu lược \" … \", hoàn tất câu (3); giữ cấu trúc \"(1) … (2) … (3) …\" như mẫu 8529/9013; mọi đoạn cắt thẳng từ [nhom0102.nhom], không sửa câu nguồn.",
+      "sua": {
+        "text": "Trâu bò thuộc phân họ Bovinae, nuôi hoặc hoang và dù mục đích sử dụng thế nào (ví dụ: nhân giống, làm thịt): (1) gia súc … (2) trâu … (3) loại khác, kể cả linh dương bốn sừng và linh dương sừng xoắn",
+        "trich": "Nhóm này bao gồm tất cả các loại trâu bò thuộc phân họ Bovinae, nuôi hoặc hoang và dù mục đích sử dụng thế nào (ví dụ: dự trữ, chăn nuôi, vỗ béo, nhân giống, làm thịt). … (1) Gia súc: … Loại này bao gồm các động vật họ trâu bò thuộc giống Bos, được chia thành bốn phân giống: … (2) Trâu: … Loại này bao gồm các động vật thuộc giống Bubalus, Syncerus và Bison. … (3) Loại khác, kể cả linh dương bốn sừng (Tetracerus quadricornis) và linh dương sừng xoắn thuộc giống Taurotragus và Tragelaphus."
+      }
+    }
+  ]
+}
