@@ -1,0 +1,232 @@
+{
+ "nhom": "8436",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-24T22:30:00+07:00",
+ "phamViSoat": "Toàn bộ 41 mục của tmp/so-tay/raw/8436.json (1 phamVi + 1 boPhan + 1 dieuKienVao + 18 loaiTru + 2 phanBiet + 3 cay.tenDien + 15 dong8), đọc cùng tmp/so-tay/nguon/8436.txt.",
+ "soat": 41,
+ "sua": 4,
+ "xoa": 0,
+ "ghiChu": "Bốn sửa, không xoá mục nào. (1) loaiTru[2] cắt mất vế \"nhưng máy ươm mầm, mấy ấp trứng và sưởi ấm gia cầm mới nở với thiết bị nhiệt vẫn thuộc nhóm này\" — mất ngoại lệ ngay sau câu trích, và đây là vế bảo vệ quan trọng (máy ấp trứng có thiết bị nhiệt vẫn ở 8436, không sang 84.19). (2) loaiTru[4] `dieuKien` bỏ mất vế \"hoặc \"máy thổi hơi\"\" — làm loại trừ hẹp hơn nguồn. (3)+(4) loaiTru[14] và phanBiet[0]: câu trích gốc chỉ nói \"những máy loại này\" (đại từ) nên `dieuKien`/`hoi` phải tự thêm \"Máy chăm sóc gia cầm, máy soi trứng\" — không có trong câu trích; mở rộng câu trích để lấy nguyên mục (E) làm căn cứ. BỎ SÓT (ghi nhận, không tự thêm — tiền lệ lô 021/034): nguồn có hai loại trừ có số nhóm mà bản nháp chưa ghi: \"Tuy nhiên, nhóm này không bao gồm máy phun rắc bột (nhóm 84.24)\" (mục (A) phần I) và \"(d) Máy phun bột hoặc chất lỏng hoặc các thiết bị xông khói thuộc nhóm 84.24\" (phần III) — cả hai cùng trỏ 84.24, đã có loaiTru[3] nên ranh giới không mất, nhưng đều chưa có mục riêng. Mục \"(a) Tổ ong, được phân loại theo vật liệu cấu thành (thường thuộc nhóm 44.21)\" bị bỏ đúng luật loại-trừ-chỉ-là-thường (\"thường thuộc\" → không phải loại trừ dứt khoát). QUAN SÁT (không sửa, để lô sau xử lý): `phamVi.text` dài 260 ký tự, lib/so-tay-gates.js:136 clip 220 ký tự khi đóng gói prompt vòng 2 nên mất đuôi \"(III) MÁY NUÔI ONG\"; 102/348 nhóm sổ tay đã duyệt cũng vượt 220 nên đây là giới hạn chung của cách đóng gói prompt, không phải lỗi riêng của lô này.",
+ "thayDoi": [
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích dừng ở \"(nhóm 84.19)\" — mất ngay vế \"nhưng máy ươm mầm, mấy ấp trứng và sưởi ấm gia cầm mới nở với thiết bị nhiệt vẫn thuộc nhóm này\" (mất ngoại lệ ngay sau câu trích; máy KHÔNG bắt). Đây đúng là lỗi \"mất ngoại lệ\": đọc câu trích cũ thì máy ấp trứng và máy sưởi ấm gia cầm có thiết bị nhiệt bị đẩy sang 84.19, trong khi nguồn nói rõ chúng VẪN ở 8436. Sửa: nối thêm vế ngoại lệ bằng \"…\", cắt từ nguồn, không viết tay.",
+   "sua": {
+    "trich": "Nhóm này không bao gồm: … (b) Máy móc và thiết bị hoạt động bằng các quy trình liên quan đến sự thay đổi nhiệt độ (nhóm 84.19) … nhưng máy ươm mầm, mấy ấp trứng và sưởi ấm gia cầm mới nở với thiết bị nhiệt vẫn thuộc nhóm này."
+   }
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "sua",
+   "lyDo": "`dieuKien` bỏ mất vế \"hoặc \\\"máy thổi hơi\\\"\" có trong nguồn ⇒ loại trừ bị HẸP hơn nguồn (chỉ loại máy nâng bằng khí nén, không loại \"máy thổi hơi\"). `dieuKien` đi vào prompt vòng 2 (clip 55 ký tự) và vào runtime canGiaiTrinh, nên thiếu vế này làm mất một ranh giới. Sửa: chèn lại đúng nguyên văn nguồn.",
+   "sua": {
+    "dieuKien": "Máy nâng loại bằng khí nén hoặc \"máy thổi hơi\"; tời để nhổ gốc, kéo hoặc chở cây, củi, và thiết bị nâng, xếp hoặc di chuyển"
+   }
+  },
+  {
+   "index": "loaiTru[14]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích gốc chỉ nói \"Loại trừ những máy loại này mà được gắn với cơ cấu cơ khí lựa chọn phân cấp (nhóm 84.33).\" — đại từ \"những máy loại này\" không nói đó là máy gì, còn `dieuKien` lại thêm \"Máy chăm sóc gia cầm, máy soi trứng\" (chữ không có trong câu trích). Sửa: mở rộng câu trích để lấy nguyên mục (E) (\"Máy soi trứng (hoặc máy kiểm tra trứng) với các đặc điểm cơ khí … Loại trừ những máy loại này …\") và bỏ chữ \"máy chăm sóc gia cầm\" ra khỏi `dieuKien` (nguồn không nói ở câu này).",
+   "sua": {
+    "dieuKien": "Máy soi trứng (hoặc máy kiểm tra trứng) có đặc điểm cơ khí được gắn với cơ cấu cơ khí lựa chọn phân cấp",
+    "trich": "(E) Máy soi trứng (hoặc máy kiểm tra trứng) với các đặc điểm cơ khí (bao gồm các máy kiểm tra quang điện), trừ những đèn kiểm tra tĩnh.\n\nLoại trừ những máy loại này mà được gắn với cơ cấu cơ khí lựa chọn phân cấp (nhóm 84.33)."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lý do với loaiTru[14]: câu trích gốc là đại từ \"những máy loại này\" nên `hoi` (\"Máy soi trứng (máy kiểm tra trứng) …\") không có căn cứ trong câu trích. Sửa: mở rộng câu trích theo mục (E) và rút gọn `hoi` cho đúng nghĩa nguồn (máy soi trứng CÓ đặc điểm cơ khí VÀ được gắn cơ cấu cơ khí lựa chọn phân cấp). CHIỀU giữ nguyên và đúng: có (gắn cơ cấu chọn phân cấp) → 8433, không → 8436.",
+   "sua": {
+    "hoi": "Máy soi trứng có đặc điểm cơ khí và được gắn với cơ cấu cơ khí lựa chọn phân cấp không?",
+    "trich": "(E) Máy soi trứng (hoặc máy kiểm tra trứng) với các đặc điểm cơ khí (bao gồm các máy kiểm tra quang điện), trừ những đèn kiểm tra tĩnh.\n\nLoại trừ những máy loại này mà được gắn với cơ cấu cơ khí lựa chọn phân cấp (nhóm 84.33)."
+   }
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn, nêu đủ ba phần (I)(II)(III) và câu đầu phạm vi. Đoạn lược có chứa các khối \"Tuy nhiên, loại trừ những máy móc rõ ràng … trong công nghiệp\" (đã vào đủ dieuKienVao[0]) và \"Loại trừ những máy loại này … (nhóm 84.33)\" (đã vào đủ loaiTru[14]) — không mất ranh giới nào. Phần chưa ghi (máy phun rắc bột 84.24) nêu ở ghiChu."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn đúng khối \"CÁC BỘ PHẬN\"; quyTac và tomTat bám sát câu nguồn (bộ phận của máy 8436 → chính nhóm 8436)."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "\"Tuy nhiên, loại trừ những máy móc rõ ràng thuộc loại được thiết kế để sử dụng trong công nghiệp.\" — điều kiện vào nhóm 4 số (loại trừ dứt khoát, không có \"có thể\"), fact \"thiet_ke_de_su_dung_trong_cong_nghiep\" value=false đúng nghĩa. Chú ý: vế \"rõ ràng\" là định ngữ giới hạn của nguồn, không bỏ được."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "\"Loại trừ những kéo cắt lông cầm tay thông thường (nhóm 82.14 hoặc 85.10).\" — loại trừ dứt khoát; \"thông thường\" chỉ định loại kéo nào bị loại (kéo cầm tay), không phải \"thường nằm nhóm X\". Hai đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (a) \"Những lưỡi dao hoặc dao cắt cho máy thái củ, máy cắt rơm, v.v.. (nhóm 82.08).\" — đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c) \"Thiết bị cơ khí để phun bắn, phun rải hoặc phun áp lực chất lỏng hoặc chất bột (nhóm 84.24).\" — đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (e) \"Máy đào lỗ để trồng cây; máy ủi lưỡi thẳng và máy ủi lưỡi nghiêng … (nhóm 84.29 hoặc 84.30).\" — hai đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (f) \"Máy thái củ cải đường loại dùng trong công nghiệp (nhóm 84.38).\" — đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (g) \"Máy chặt củi thuộc nhóm 84.39.\" — đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[8]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (h) \"Máy tách vỏ cây bằng tia nước (nhóm 84.24) và máy bóc tách gỗ (nhóm 84.65 hoặc 84.79).\" — ba đích có nguyên văn, `sangNhom` phủ đúng."
+  },
+  {
+   "index": "loaiTru[9]",
+   "hanhDong": "giu",
+   "lyDo": "Mục \"(ij)\" — lỗi đánh số của nguồn (gộp (i) và (j)), giữ nguyên theo luật \"chép nguyên văn kể cả lỗi của nguồn\"; hai đích 84.65/84.67 có nguyên văn."
+  },
+  {
+   "index": "loaiTru[10]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (k) \"Máy hút chân không loại thiết bị dùng để chải lông cho ngựa hoặc gia súc (nhóm 85.08)\" — đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[11]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (l) \"Máy kéo được thiết kế chuyên để kéo khúc gỗ (khúc củi) (nhóm 87.01).\" — đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[12]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (m) \"Máy dùng để chăm sóc cho bê non mới sinh (nhóm 90.18).\" — đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[13]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (n) \"Súng bắn để chống mưa đá (nhóm 93.03).\" — đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[15]",
+   "hanhDong": "giu",
+   "lyDo": "\"Nhóm này không bao gồm các máy, thường được biết đến như là những máy (hệ thống) đếm và xếp gà vào thùng … (nhóm 84.22);\" — đích có nguyên văn. \"thường được biết đến như là\" là cách nguồn giới thiệu tên thiết bị, không phải \"thường nằm nhóm X\"; loại trừ vẫn dứt khoát (\"không bao gồm\")."
+  },
+  {
+   "index": "loaiTru[16]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b) phần (III) MÁY NUÔI ONG \"Bể nước nóng để làm nóng chảy lại các tầng ong, kể cả những máy có trục vít ép (nhóm 84.19).\" — đích có nguyên văn; nội dung (bể nước nóng làm nóng tầng ong) đủ xác định thuộc khối ong."
+  },
+  {
+   "index": "loaiTru[17]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c) phần (III) MÁY NUÔI ONG \"Máy chiết xuất mật ong loại li tâm (nhóm 84.21).\" — đích có nguyên văn."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "CHIỀU đúng: nguồn loại trừ \"các máy … đếm và xếp gà vào thùng … (nhóm 84.22)\" ⇒ có (xếp gà vào thùng hộp) → 8422, không → 8436. hoi không nhắc mã phân nhóm."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "Tên \"Máy ấp trứng gia cầm và thiết bị sưởi ấm gia cầm mới nở\" dịch đúng wco.843621 \"Poultry incubators and brooders\"."
+  },
+  {
+   "index": "cay.tenDien[1]",
+   "hanhDong": "giu",
+   "lyDo": "Tên \"Máy chăm sóc gia cầm, khác với máy ấp trứng gia cầm và thiết bị sưởi ấm gia cầm mới nở\" dịch đúng wco.843629."
+  },
+  {
+   "index": "cay.tenDien[2]",
+   "hanhDong": "giu",
+   "lyDo": "Tên \"Bộ phận của máy dùng trong nông nghiệp, làm vườn hoặc lâm nghiệp, khác với bộ phận của máy chăm sóc gia cầm, máy ấp trứng và thiết bị sưởi ấm\" dịch đúng wco.843699."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84361010 - - Hoạt động bằng điện\" nguyên văn đúng khối tax.84361010; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84361020 - - Không hoạt động bằng điện\" nguyên văn đúng khối tax.84361020; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84362110 - - - Hoạt động bằng điện\" nguyên văn đúng khối tax.84362110; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84362120 - - - Không hoạt động bằng điện\" nguyên văn đúng khối tax.84362120; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84362910 - - - Hoạt động bằng điện\" nguyên văn đúng khối tax.84362910; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84362920 - - - Không hoạt động bằng điện\" nguyên văn đúng khối tax.84362920; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84368011 - - - Dùng trong nông nghiệp hoặc làm vườn\" nguyên văn đúng khối tax.84368011; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84368019 - - - Loại khác\" nguyên văn đúng khối tax.84368019; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84368021 - - - Dùng trong nông nghiệp hoặc làm vườn\" nguyên văn đúng khối tax.84368021; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84368029 - - - Loại khác\" nguyên văn đúng khối tax.84368029; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84369100 - - Của máy chăm sóc gia cầm hoặc máy ấp trứng gia cầm và thiết bị sưởi ấm gia cầm mới nở\" nguyên văn đúng khối tax.84369100; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84369911 - - - - Dùng trong nông nghiệp hoặc làm vườn\" nguyên văn đúng khối tax.84369911; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[12]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84369919 - - - - Loại khác\" nguyên văn đúng khối tax.84369919; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[13]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84369921 - - - - Dùng trong nông nghiệp hoặc làm vườn\" nguyên văn đúng khối tax.84369921; dieuKien chép đúng tên dòng."
+  },
+  {
+   "index": "dong8[14]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84369929 - - - - Loại khác\" nguyên văn đúng khối tax.84369929; dieuKien chép đúng tên dòng."
+  }
+ ]
+}

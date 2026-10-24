@@ -1,0 +1,121 @@
+{
+ "nhom": "8430",
+ "nguoiSoat": "NGUOI_DUYET",
+ "soatVaiTro": "soat-doc-lap",
+ "luc": "2026-10-24T22:30:00+07:00",
+ "phamViSoat": "Toàn bộ 21 mục của tmp/so-tay/raw/8430.json (1 phamVi + 1 boPhan + 7 loaiTru + 1 phanBiet + 1 cay.tenDien + 10 dong8), đọc cùng tmp/so-tay/nguon/8430.txt.",
+ "soat": 21,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "Lỗi duy nhất: câu trích phanBiet bị cắt CỤT giữa từ (\"…của các máy đó, ng\"). BỎ SÓT (ghi nhận, không tự thêm — nhiệm vụ soát là xác minh, tiền lệ lô 021/034): (1) nguồn nêu hai loại trừ có SỐ NHÓM mà bản nháp chưa ghi: \"Các loại máy xúc..., được phân loại trong nhóm 86.04 nếu chúng được lắp trên các toa tàu hoặc toa chở hàng\" (máy lắp trên phương tiện Chương 86) và \"Các máy móc, thiết bị hút bùn nổi trên mặt nước bị loại trừ (thuộc nhóm 89.05)\" (máy hút bùn nổi); (2) khối \"Những trường hợp loại trừ gồm: (a)(b)(c)\" chỉ nêu Chương 86/87/89 nên không thể ghi loại trừ (luật 3). Câu trích phamVi lược qua khối này và qua các thân phần (III)(C)/(IV)(B)/(V)(B) — nhưng các ngoại lệ CÓ số nhóm ở đó đều đã được ghi ở loaiTru (84.67 ×2, 84.29/84.32), nên sổ tay không mất ranh giới nào đang hoạt động; phần chưa ghi nêu ở (1) và bị lược nên nêu ở đây. `phamVi.text` của nhóm này dài 195 ký tự — dưới trần clip 220 của prompt vòng 2 nên không bị cắt.",
+ "thayDoi": [
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích bị cắt CỤT giữa từ: \"…hoặc thuộc nhóm 84.31 nếu chúng là bộ phận của các máy đó, ng\" — mảnh \"ng\" là rác, và câu không đóng. Máy KHÔNG bắt được (đoạn cắt vẫn là nguyên văn trong nguồn) nhưng người đọc hồ sơ không dùng được. Sửa: cắt lại từ nguồn, kết thúc tại mệnh đề \"…là bộ phận của các máy đó\" — đủ để giữ đủ hai nhánh (\"tạo thành máy của nhóm này\" → 8430; \"là bộ phận của các máy đó\" → 84.31) mà không cắt giữa chừng. CHIỀU giữ nguyên: hoi là \"có phải là bộ phận của một máy thuộc nhóm này không?\" → có (là bộ phận) → 8431, không (tạo thành máy của nhóm này) → 8430.",
+   "sua": {
+    "trich": "Trong trường hợp như vậy, các công cụ làm việc vẫn thuộc nhóm này với điều kiện chúng tạo thành máy của nhóm này, hoặc thuộc nhóm 84.31 nếu chúng là bộ phận của các máy đó"
+   }
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn, nói đúng phạm vi nhóm và liệt kê đủ 5 phần (I)–(V) theo luật 36. Đoạn lược có nhúng khối \"Những trường hợp loại trừ gồm (a)(b)(c)\" nhưng các ngoại lệ có số nhóm trong đó đều đã ghi ở loaiTru; phần chưa ghi (86.04, 89.05) nêu ở ghiChu để phiên quản lý quyết."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn đúng khối \"CÁC BỘ PHẬN\"; quyTac và tomTat bám sát câu nguồn (bộ phận của máy 8430 → nhóm 84.31)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu mở đầu chú giải nhóm: \"Ngoại trừ các loại máy tự hành thuộc nhóm 84.29 và các loại máy nông nghiệp, làm vườn hoặc lâm nghiệp (nhóm 84.32)\" — loại trừ dứt khoát, hai đích có nguyên văn trong câu."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "\"Các loại máy tương đối khác thường được sử dụng cùng bị loại trừ ngay cả khi nó đi kèm máy khoan … (nhóm 84.13 hoặc 84.14)\". Chữ \"thường\" ở đây nói TẦN SUẤT dùng chung (loại máy hay đi kèm máy khoan), không phải \"thường nằm nhóm X\" — loại trừ vẫn dứt khoát (\"bị loại trừ\"), hai đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "\"Tuy nhiên nhóm này không bao gồm các xe lu lăn đường tự hành … (nhóm 84.29) và máy cán dùng trong nông nghiệp (nhóm 84.32).\" — dấu hiệu loại trừ rõ, hai đích có nguyên văn."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (a) trong khối \"Nhóm này không bao gồm:\", đích 84.24 có nguyên văn trong câu."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b) trong khối \"không bao gồm\", đích 84.32 có nguyên văn trong câu."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c) trong khối \"không bao gồm\", đích 84.67 có nguyên văn trong câu."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (d) trong khối \"không bao gồm\", đích 84.79 có nguyên văn trong câu."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "Tên \"Máy khoan hoặc máy đào sâu khác, loại không tự hành\" dịch đúng nghĩa wco.843049 \"Boring and sinking machinery; not self-propelled\"; câu trích nguyên văn trong khối wco.843049."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84301000 - Máy đóng cọc và nhổ cọc\" nguyên văn đúng khối tax.84301000; dieuKien chép đúng tên dòng. Dòng 84304910 lấy nguồn SEN theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84302000 - Máy xới và dọn tuyết\" nguyên văn đúng khối tax.84302000; dieuKien chép đúng tên dòng. Dòng 84304910 lấy nguồn SEN theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84303100 - - Loại tự hành\" nguyên văn đúng khối tax.84303100; dieuKien chép đúng tên dòng. Dòng 84304910 lấy nguồn SEN theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84303900 - - Loại khác\" nguyên văn đúng khối tax.84303900; dieuKien chép đúng tên dòng. Dòng 84304910 lấy nguồn SEN theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84304100 - - Loại tự hành\" nguyên văn đúng khối tax.84304100; dieuKien chép đúng tên dòng. Dòng 84304910 lấy nguồn SEN theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84305000 - Máy khác, loại tự hành\" nguyên văn đúng khối tax.84305000; dieuKien chép đúng tên dòng. Dòng 84304910 lấy nguồn SEN theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84306100 - - Máy đầm hoặc máy nén\" nguyên văn đúng khối tax.84306100; dieuKien chép đúng tên dòng. Dòng 84304910 lấy nguồn SEN theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84306900 - - Loại khác\" nguyên văn đúng khối tax.84306900; dieuKien chép đúng tên dòng. Dòng 84304910 lấy nguồn SEN theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"BỆ DÀN KHOAN VÀ CÁC MÔ-ĐUN TÍCH HỢP PHÙ HỢP SỬ DỤNG TRONG VẬN HÀNH KHOAN\nBệ dàn khoan là một dàn khoan dầu ngoài khơi cỡ nhỏ gắn với một dàn lớn hơn gọi là dàn vận hành trung tâm\" nguyên văn đúng khối tax.84304910; dieuKien chép đúng tên dòng. Dòng 84304910 lấy nguồn SEN theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế \"84304990 - - - Loại khác\" nguyên văn đúng khối tax.84304990; dieuKien chép đúng tên dòng. Dòng 84304910 lấy nguồn SEN theo luật 6 (có SEN thì ưu tiên SEN)."
+  }
+ ]
+}

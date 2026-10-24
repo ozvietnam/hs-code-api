@@ -4,6 +4,104 @@
 
 ---
 
+# SOÁT ĐỘC LẬP lô 035 — phiên `dev-soat-doc-lap` (24/10/2026)
+
+Người soát **khác** người soạn (`dev-zcode-mm`). Đã đọc lại **TOÀN BỘ 189 mục** của 6 nhóm
+(`8304 8415 8430 8433 8436 8448`) cùng nguồn nguyên văn `tmp/so-tay/nguon/<nhom>.txt` — không soát mẫu.
+
+**Kết quả: xoá 0 · sửa 11 mục (16 trường) · giữ nguyên 178 · 189/189 đạt (100 %) · `nhomLoi: []`**
+Hồ sơ: `review/8304.json` … `review/8448.json` · áp bằng `scripts/apply-review-lo035.mjs`
+(`TARGET=raw` → sửa bản nháp, `TARGET=data` → **chỉ** đổi `nguonLoai`) · PR #428 · **KHÔNG merge**.
+
+## Máy xanh mà vẫn sai — 5 lớp lỗi bắt được (máy KHÔNG bắt)
+
+`check-so-tay --raw` báo **189/189 đạt** ngay từ đầu (máy chỉ chứng minh câu trích **có thật** trong
+nguồn, không chứng minh nó **nói đúng** điều mục khẳng định). Ba lớp kiểm đã chạy:
+(1) `check-so-tay --raw`, (2) `check-trich-nguyen-van` (nguyên văn byte-exact, không squash),
+(3) đọc tay từng mục + quét tự động `tmp/so-tay/audit-lo035.mjs` (đo khoảng lược nuốt ngoại lệ,
+cắt cụt giữa từ, mã đích không có trong trích, `hoi` dạng "A hay B", độ dài trích).
+
+### 1. Mất ngoại lệ ngay sau câu trích (luật 31 — đoạn lược không được chứa ngoại lệ)
+
+| Nhóm | Mục | Lỗi |
+|---|---|---|
+| 8304 | `phamVi` + `dieuKienVao[0]` | Mệnh đề **"với điều kiện loại đồ dùng này không được thiết kế để đặt đứng, kê trên sàn hoặc không thuộc các mặt hàng đã nêu trong chú giải 2 của chương 94 (nhóm 94.03)"** bị cắt ở **CẢ HAI** mục ⇒ ranh giới 94.03 (đồ dùng văn phòng thuộc Chương 94) biến mất khỏi sổ tay. Sửa: mở rộng câu trích. |
+| 8433 | `phamVi` | Câu trích dừng ở "…nông sản khác", mất ngay vế **"loại trừ các máy và thiết bị của nhóm 84.37"**. Sửa: kéo trọn vế ngoại lệ vào trích **và** vào `text` (để có mặt trong prompt vòng 2). |
+| 8436 | `loaiTru[2]` | Câu trích dừng ở "(nhóm 84.19)", mất ngay vế **"nhưng máy ươm mầm, mấy ấp trứng và sưởi ấm gia cầm mới nở với thiết bị nhiệt vẫn thuộc nhóm này"** — đọc câu cũ thì máy ấp trứng có thiết bị nhiệt bị đẩy sang 84.19. |
+
+### 2. Câu trích bị cắt cụt / bắt đầu giữa câu
+
+- **8430 `phanBiet[0]`**: câu trích kết bằng mảnh rác `"…của các máy đó, ng"` — cắt **giữa từ** ("ngay cả…"). Sửa: cắt lại từ nguồn, kết thúc tại mệnh đề "…là bộ phận của các máy đó".
+- **8433 `phanBiet[0]`**: bắt đầu giữa câu (`"được phân loại cùng với máy…"`) nên **không chứa** cụm "thiết bị nâng, điều khiển, vận chuyển phụ" mà `hoi` lại hỏi ⇒ vi phạm luật "`hoi` không thêm chữ không có trong câu trích". Sửa: mở rộng từ đầu câu nguồn.
+- **8448 `phanBiet[0]`**: cắt giữa từ (`"…các máy dệt thoi đặc bi …"`).
+
+### 3. `hoi` phân biệt đảo chiều (lỗi lặp ở lô 027)
+
+**8448 `phanBiet[0]`** hỏi dạng **chọn hai** ("…trình bày riêng rẽ **hay** là bộ phận hợp thành…") trong khi runtime in
+prompt dạng `<hoi> có→<neuCo> / không→<neuKhong>` (`lib/so-tay-gates.js:141`) ⇒ mô hình đọc "có" theo **vế đầu**,
+mà bản nháp để `neuCo` là **vế sau**. Sửa: viết lại `hoi` thành câu hỏi CÓ/KHÔNG đúng chiều, giữ nguyên cặp mã.
+
+### 4. `dieuKien` / `tomTat` thêm hoặc bỏ chữ so với câu trích
+
+- **8436 `loaiTru[14]` + `phanBiet[0]`**: câu trích gốc chỉ nói **"những máy loại này"** (đại từ) mà `dieuKien`/`hoi` lại thêm "Máy chăm sóc gia cầm, máy soi trứng" — chữ **không có trong câu trích**. Sửa: mở rộng câu trích để lấy nguyên mục (E) làm căn cứ.
+- **8436 `loaiTru[4]`**: `dieuKien` **bỏ mất** vế "hoặc \"máy thổi hơi\"" ⇒ loại trừ **hẹp hơn nguồn**. Sửa: chèn lại nguyên văn.
+- **8433 `boPhan.tomTat`**: thêm so sánh với nhóm khác ("khác 8430 và 8415 là sang nhóm bộ phận riêng") — nguồn của 8430/8415 nằm ở tệp khác ⇒ chữ không có trong câu trích. Sửa: chỉ giữ đúng nội dung câu nguồn.
+
+### 5. Câu trích dài 300–600 ký tự (dấu hiệu "phủ thiếu")
+
+`8304.phamVi` 283 → **441** ký tự (thêm mệnh đề 94.03), `8448.phanBiet` 328 → **378** (thêm cả hai vế của quy tắc),
+`8436.loaiTru[2]` 126 → **225**, `8436.loaiTru[14]`/`phanBiet[0]` 89 → **226**, `8433.phamVi` 212 → **257**.
+Trong `data/so-tay/` sẵn có 55/3.302 câu trích vượt 300 (dài nhất 568) nên vẫn trong thực hành; ghi rõ ở PR.
+
+## BỎ SÓT — ghi nhận, KHÔNG tự thêm mục
+
+Nhiệm vụ soát là **xác minh**, không soạn bổ sung (tiền lệ lô 021/034: loại trừ có số nhóm mà bản nháp
+chưa tách thành `loaiTru` thì ghi ở `ghiChu` của hồ sơ soát, không tự chèn). Các mục này **CEO/phiên quản
+lý** quyết có bổ sung hay không:
+
+- **8430**: hai loại trừ có số nhóm chưa ghi — "Các loại máy xúc…, được phân loại trong **nhóm 86.04** nếu
+  chúng được lắp trên các toa tàu hoặc toa chở hàng" (máy lắp trên phương tiện Chương 86) và "Các máy móc,
+  thiết bị hút bùn nổi trên mặt nước bị loại trừ (**thuộc nhóm 89.05**)". Cả hai nằm trong khoảng lược của
+  `phamVi.trich` (khối "Những trường hợp loại trừ gồm (a)(b)(c)"). Các ngoại lệ **có** số nhóm khác trong
+  khoảng lược đó đã có mục riêng (84.67 ×2, 84.29/84.32) nên ranh giới đang hoạt động không mất.
+- **8436**: "Tuy nhiên, nhóm này không bao gồm **máy phun rắc bột (nhóm 84.24)**" (mục (A) phần I) và
+  "(d) Máy phun bột hoặc chất lỏng hoặc các thiết bị xông khói thuộc **nhóm 84.24**" (phần III) — cùng trỏ
+  84.24, đã có `loaiTru[3]` nên ranh giới không mất, nhưng chưa có mục riêng.
+- **8448**: mục "(8) Ống dẫn sợi (nhưng không phải thủy tinh hoặc gốm, xem các nhóm **70.20** và **69.09**,
+  mà cũng không phải bằng đá mã não hoặc bằng các loại đá quý và đá bán quý khác, xem **nhóm 71.16**)" — loại trừ
+  dứt khoát có nêu đích, chưa tách thành `loaiTru` (cùng dạng với "loại trừ … (nhóm 84.61)" của lô 021).
+
+## LỖI KỆ SÁCH — cần CEO quyết có sửa nguồn hay không
+
+| Nhóm | Nguồn | Hệ quả |
+|---|---|---|
+| 8415 | `nhom8415.nhom`: "…(nhóm **84.79, 85,16**…)" — dấu phẩy thay dấu chấm | Mã 85.16 **không có nguyên văn** trong câu trích ⇒ luật 8 (không sửa mã nguồn để máy cho qua) buộc `loaiTru[2]`/`phanBiet[0]` chỉ ghi đích 84.79. Trong cùng tệp, "nhóm 85.16" có viết đúng ở `phan84.phan` (dòng 506) nhưng câu loại trừ nằm ở khối `nhom8415.nhom` nên không vá được. |
+| 8448 | `nhom8448.nhom` dòng 64: "…nhóm 84.44, 84.45, 84.46 hoặc **84,47**." | Mã 84.47 không có nguyên văn ⇒ `phanBiet[0].neuCo` chỉ ghi `8444\|8445\|8446`. Cùng tệp, dòng 6/8/10 ghi "84.47" đúng — nhưng câu cần dùng thì ở dòng 64. `boPhan.quyTac` (phần văn xuôi) ghi "84.47" đã sửa lỗi dấu phẩy; `trich` giữ nguyên "84,47" theo luật 8. |
+
+## Nghiệm thu
+
+| Kiểm | Kết quả |
+|---|---|
+| `check-so-tay --raw` (sau khi áp review) | **189/189** |
+| `check-trich-nguyen-van` | **172/172** nguyên văn byte-exact |
+| `npm run so-tay:check` | 350 nhóm, 10.472 mục, **0** mục không kiểm được nguồn |
+| `check-cay --nhom=…` (6 nhóm) | **0 lỗi lệch cây**; còn trống `phan-nhom-chua-co-tieu-chi` (cảnh báo, hạn chế thật của nguồn — tên WCO thuần danh tả) |
+| `npm test` | **ALL TESTS PASSED** |
+| Báo cáo lô | `lo-035.json` — 189/189, `tyLeDat` 100, `nhomLoi` rỗng |
+
+**`nguonLoai`**: 67 mục ở 5 khối đã soát (`phamVi`/`boPhan`/`dieuKienVao`/`loaiTru`/`phanBiet`) đổi
+`AI_DA_KIEM` → **`NGUOI_DUYET`** (luật §L11 — chỉ người soát độc lập được đổi). `dong8`/`cay`/`tieuChi6`
+giữ nhãn của máy, không đụng.
+
+**Quy trình đã dùng**: `review/<nhom>.json` sinh bằng `tmp/so-tay/rv-lo035.mjs` + `rv-lo035b.mjs` — **mọi câu
+trích đều CẮT TỪ TỆP NGUỒN** (`seg`/`extend`/`head`/`same` ném lỗi nếu đoạn không có nguyên văn), không gõ tay
+(memory lô 029/033: gõ lại trích thì sai dấu). Áp bằng `scripts/apply-review-lo035.mjs` 2 pha
+(`sua` theo thứ tự mảng, `xoa` theo index giảm dần), `TARGET=data` **chỉ** đổi `nguonLoai`.
+
+**KHÔNG merge** — chờ phiên quản lý duyệt PR #428.
+
+---
+
 # SOÁT ĐỘC LẬP lô 029 — phiên `dev-soat-doc-lap` (23/10/2026)
 
 Người soát **khác** người soạn (`dev-zcode-mm`). Đã đọc lại **TOÀN BỘ 125 mục** của 6 nhóm
