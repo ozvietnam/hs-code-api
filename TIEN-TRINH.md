@@ -3084,7 +3084,7 @@ chú ý nhất của lô 036 là `boPhan` 8455). Đề nghị lô sau mở rộn
 `data/so-tay/{0206,0207,0208,0209,0210,0301}.json` + `data/so-tay/bao-cao/lo-040.json` +
 dòng CSV + `TIEN-TRINH.md`. KHÔNG commit `tmp/`. **KHÔNG merge** — chờ người duyệt soát độc lập.
 
-## 2026-10-24 — SOÁT ĐỘC LẬP lô 040 (PR #433), người soát `dev-soat-lo040` (KHÁC người soạn `dev-zcode-mm`)
+## 2026-10-24 — SOÁT ĐỘC LẬP lô 040 (PR #433), người soát `soat-doc-lap-mm` (KHÁC người soạn `dev-zcode-mm`)
 
 Em là người soát **độc lập**: bản nháp `tmp/so-tay/raw/*.json` của lô 040 do phiên trước
 (`dev-zcode-mm`) soạn, em đọc lại **toàn bộ** `phamVi` / `boPhan` / `dieuKienVao` / `loaiTru` /
