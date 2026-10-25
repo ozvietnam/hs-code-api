@@ -61,7 +61,10 @@ function apXoa(obj, thayDoi) {
     const { kind, idx } = parseIndex(t.index);
     if (idx == null) throw new Error(`xoa cần index có [i]: ${t.index}`);
     if (!Array.isArray(obj[kind])) throw new Error(`không xoá được: ${kind} không phải mảng`);
-    if (idx < 0 || idx >= obj[kind].length) throw new Error(`index ngoài mảng: ${t.index}`);
+    if (idx < 0 || idx >= obj[kind].length) {
+      throw new Error(`index ngoài mảng: ${t.index} (mảng ${kind} hiện có ${obj[kind].length} mục) — `
+        + `bản nháp CÓ THỂ ĐÃ ĐƯỢC ÁP rồi; muốn áp lại thì phải khôi phục bản nháp gốc trước`);
+    }
     if (!theoMang.has(kind)) theoMang.set(kind, []);
     theoMang.get(kind).push(idx);
     xoa += 1;
@@ -90,6 +93,10 @@ function hinhDangGoc(file) {
 
 console.log(`TARGET=${TARGET}  APPLY=${APPLY ? 'GHI' : 'DRY-RUN'}  lô 050 = ${NHOM_CUA_LO.join(', ')}`);
 const tong = { sua: 0, xoa: 0, giu: 0, nguonLoai: 0, soat: 0 };
+// HAI PHA: tính thay đổi cho MỌI nhóm trước, chỉ ghi tệp khi cả lô không lỗi — không bao giờ để lô
+// bị áp dở (một nhóm đã ghi, nhóm sau lỗi chỉ số).
+const keGhi = [];
+const loi = [];
 for (const nhom of NHOM_CUA_LO) {
   const file = path.join(TARGET_DIR, `${nhom}.json`);
   const rvPath = path.join(ROOT, 'review', `${nhom}.json`);
@@ -98,12 +105,18 @@ for (const nhom of NHOM_CUA_LO) {
   const review = JSON.parse(fs.readFileSync(rvPath, 'utf8'));
   const obj = JSON.parse(fs.readFileSync(file, 'utf8'));
   let sua = []; let xoa = 0;
-  if (TARGET === 'data') {
-    // data/so-tay/<nhom>.json vừa được build lại từ tmp/so-tay/raw (đã áp thayDoi rồi) → CHỈ đổi nguonLoai.
-    sua = []; xoa = 0;
-  } else {
-    sua = apSua(obj, review.thayDoi || []);
-    xoa = apXoa(obj, review.thayDoi || []);
+  try {
+    if (TARGET === 'data') {
+      // data/so-tay/<nhom>.json vừa được build lại từ tmp/so-tay/raw (đã áp thayDoi rồi) → CHỈ đổi nguonLoai.
+      sua = []; xoa = 0;
+    } else {
+      sua = apSua(obj, review.thayDoi || []);
+      xoa = apXoa(obj, review.thayDoi || []);
+    }
+  } catch (e) {
+    loi.push(`[${nhom}] ${e.message}`);
+    console.log(`[${nhom}] LỖI: ${e.message}`);
+    continue;
   }
   const giu = (review.thayDoi || []).filter((t) => t.hanhDong === 'giu').length;
   const nl = TARGET === 'data' ? apNguonLoai(obj) : 0;
@@ -111,12 +124,17 @@ for (const nhom of NHOM_CUA_LO) {
   tong.sua += sua.length; tong.xoa += xoa; tong.giu += giu; tong.nguonLoai += nl; tong.soat += review.soat || 0;
   console.log(`[${nhom}] soát ${review.soat} mục → giu ${giu}, sửa ${sua.length} (${sua.join('; ') || '-'}), `
     + `xoá ${xoa}, đổi nguonLoai ${nl}`);
-  if (APPLY && coThayDoi) {
-    const { indent, trailing } = hinhDangGoc(file);
-    fs.writeFileSync(file, JSON.stringify(obj, null, indent) + trailing, 'utf8');
-    console.log('         → ĐÃ GHI');
-  } else if (APPLY) {
-    console.log('         không có thay đổi nào → không ghi lại tệp (giữ nguyên thụt lề và mọi ký tự)');
-  }
+  if (APPLY && coThayDoi) keGhi.push({ file, obj });
+  else if (APPLY) console.log('         không có thay đổi nào → không ghi lại tệp (giữ nguyên thụt lề và mọi ký tự)');
+}
+if (loi.length) {
+  console.error(`\nCÓ ${loi.length} nhóm lỗi → KHÔNG ghi tệp nào:`);
+  for (const l of loi) console.error('  ' + l);
+  process.exit(1);
+}
+for (const { file, obj } of keGhi) {
+  const { indent, trailing } = hinhDangGoc(file);
+  fs.writeFileSync(file, JSON.stringify(obj, null, indent) + trailing, 'utf8');
+  console.log(`→ ĐÃ GHI ${path.basename(file)}`);
 }
 console.log(`Tổng: soát ${tong.soat} mục, giu ${tong.giu}, sửa ${tong.sua}, xoá ${tong.xoa}, nguonLoai ${tong.nguonLoai}.`);
