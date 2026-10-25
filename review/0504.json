@@ -1,0 +1,21 @@
+{
+ "nhom": "0504",
+ "nguoiSoat": "dev-soat-doc-lap-lo044",
+ "luc": "2026-10-25T17:45:00+07:00",
+ "soat": 7,
+ "giu": 6,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 0504 — 7 mục trong phạm vi mục 4 (1 phamVi + 2 dieuKienVao + 2 loaiTru + 2 phanBiet), đọc lại cùng nguồn nguyên văn tmp/so-tay/nguon/0504.txt. SỬA 1, XOÁ 0. Đọc thêm 1 dong8 nhưng KHÔNG sửa (ngoài phạm vi mục 4). GIỮ 6: `dieuKienVao[0]` (fact 'ruot_bong_bop_va_da_da_cua_ca = false' — chiều ĐÚNG: hàng thuộc 0504 thì KHÔNG phải ruột/bong bóng/dạ dày của cá; câu trích '…(trừ của cá, thuộc nhóm 05.11)…' nêu đúng vùng phủ định); `dieuKienVao[1]` (fact dương + value=false đúng chiều; câu 'Không bao gồm những sản phẩm được chế biến hoặc bảo quản cách khác (nhìn chung thuộc Chương 16).' là câu trọn vẹn trong nguồn); `loaiTru[0]` + `loaiTru[1]` (nguồn NÊU ĐÍCH DANH cả 39.17 và 42.06 trong câu trích; mỗi mục một nhánh loại trừ khác nhau, không trùng); `phanBiet[0]` + `phanBiet[1]` (hai câu hỏi KHÁC NHAU — một câu hỏi cho mỗi cặp mã, đúng luật 'không tạo nhiều mục cùng một câu hỏi'; mã đích có trong câu trích; chiều Có/Không khớp với loaiTru tương ứng). SỬA 1: `phamVi` — xem `thayDoi`. GHI NHẬN (ngoài phạm vi, KHÔNG sửa): (1) `loaiTru[0].dieuKien` bỏ vế 'sau đó làm cứng lại bằng dung dịch formaldehyde và phenol' — vế định ngữ giới hạn đó có trong nguồn nhưng thêm vào sẽ vượt trần clip 55 ký tự của runtime; giữ nguyên vì 'ruột nhân tạo được tạo bởi sự ép đùn bột nhão từ da hoặc xơ da' đã đủ để không nhầm với ruột tự nhiên. (2) `dong8[05040000]` lấy điều kiện từ dòng biểu thuế — đủ, không cần sửa.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "THIẾU 3 PHẦN — chú giải nhóm 0504 có khối 'Nhóm này bao gồm: (1) Dạ múi khế…, (2) Lòng và dạ cỏ…, (3) Màng ruột già chưa được xử lý…' nhưng `phamVi` chỉ lấy câu định nghĩa chung, bỏ trọn 3 phần. Đây là lỗi phạm vi mà máy KHÔNG bắt được, và lệch với chính lô 044: 0505/0506/0507/0508 đều đã nêu đủ tiêu đề các phần trong `phamVi.text`. Hệ quả: 'dạ múi khế' (dạ múi khế của bê, dê non — dùng chiết lấy men dịch vị, mặt hàng nhập khẩu thật của nhóm 0504) không có mặt trong phạm vi nhóm mà LLM nhìn thấy. SỬA: thêm 3 phần vào `text` và vào `trich` (mỗi phần lấy đúng tiêu đề trong nguồn). `trich` = câu định nghĩa (214 ký tự) + '…(1) Dạ múi khế.…(2) Lòng và dạ cỏ.…(3) Màng ruột già chưa được xử lý' — 286 ký tự (≤ 300 luật 2). `text` rút gọn phần trạng thái bảo quản một chút cho vừa trần clip 220 của runtime (bỏ 'hoặc ngâm nước muối') — các từ còn lại đều có trong câu trích. [BỔ SUNG sau khi tự soát lần 2: bản `text` đầu tiên dài 221 ký tự — vượt trần clip 220 của `lib/so-tay-gates.js` (`clip()` sẽ cắt cụt đuôi thành '…'); rút 'chưa được xử lý' → 'chưa xử lý' để còn 218 ký tự, mọi từ vẫn có trong câu trích.]",
+   "sua": {
+    "text": "Ruột, bong bóng và dạ dày của động vật (trừ của cá), nguyên dạng hoặc từng mảnh, có thể ăn được hoặc không, tươi, ướp lạnh, đông lạnh, muối, làm khô hoặc hun khói; dạ múi khế; lòng và dạ cỏ; màng ruột già chưa xử lý.",
+    "trich": "Nhóm này gồm ruột, bong bóng và dạ dày của động vật (trừ của cá, thuộc nhóm 05.11), nguyên dạng hoặc từng mảnh, có thể ăn được hoặc không, tươi, ướp lạnh, đông lạnh, muối hoặc ngâm nước muối, làm khô hoặc hun khói.…(1) Dạ múi khế…(2) Lòng và dạ cỏ.…(3) Màng ruột già chưa được xử lý"
+   }
+  }
+ ]
+}

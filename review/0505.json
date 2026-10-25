@@ -1,0 +1,44 @@
+{
+ "nhom": "0505",
+ "nguoiSoat": "dev-soat-doc-lap-lo044",
+ "luc": "2026-10-25T17:50:00+07:00",
+ "soat": 6,
+ "giu": 2,
+ "sua": 4,
+ "xoa": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 0505 — 6 mục trong phạm vi mục 4 (1 phamVi + 2 dieuKienVao + 1 loaiTru + 2 phanBiet), đọc lại cùng nguồn nguyên văn tmp/so-tay/nguon/0505.txt. SỬA 4, XOÁ 0. Đọc thêm 6 tieuChi6 + 4 dong8 nhưng KHÔNG sửa (ngoài phạm vi mục 4) — ghi nhận bên dưới. GIỮ 2: `dieuKienVao[0]` (fact 'moi_chi_lam_sach_khu_trung_hoac_xu_ly_de_bao_quan = true' — chiều đúng, câu trích 'mới chỉ làm sạch, khử trùng hay xử lý để bảo quản' nằm trong vế 'với điều kiện chúng chưa được xử lý…'); `dieuKienVao[1]` (fact 'chua_duoc_xu_ly_theo_cach_khac_hoac_chua_duoc_gan_voi_nhau = true' — chiều đúng, là nửa còn lại của điều kiện của mục (2); hai mục này cùng value=true và phải ĐỒNG THỜI đúng với nguồn nên khi prompt nối bằng '·' không bị đọc sai). SỬA 4: `phamVi.trich` (327→299 ký tự), `loaiTru[0].trich` (327→287), `phanBiet[0].trich` (327→287) và `phanBiet[1].hoi` — xem `thayDoi`. GHI NHẬN (ngoài phạm vi, KHÔNG sửa): (1) `dong8[05059010].dieuKien` ghi 'Lông vũ của vịt, ngan — không dùng để nhồi' trong khi câu trích (tax.05059010) CHỈ có '05059010 - - Lông vũ của vịt, ngan' — vế 'không dùng để nhồi' lấy từ tên WCO 050590 ('not for stuffing') chứ không có trong câu trích mà mục khai; máy KHÔNG bắt (đã nêu sẵn trong PR #440). (2) `dong8[05051090]` và `dong8[05051010]` dùng cùng nguồn chú giải phân nhóm nên điều kiện hai dòng gần trùng nhau, chỉ khác ở 'không dùng để nhồi'/'Loại khác' — nguồn không phân biệt được thì luật là ghi 'dòng cha không có trong nguồn — đối chiếu biểu thuế', mục chưa làm vậy. (3) `dong8[05059090].dieuKien` viết tiếng Anh theo nguyên văn tên WCO vì biểu thuế chỉ ghi 'Loại khác' — chấp nhận được (không có nguồn tiếng Việt nào cho dòng đó), nhưng lệch với các dòng khác cùng nhóm.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích cũ dài 393 ký tự — VƯỢT trần 300 ký tự luật 2 (máy chỉ chặn >600 nên lọt). SỬA: cắt tại ranh giới mệnh đề, mỗi mảnh nguyên văn liên tục trong nhom0505.nhom: mảnh 1 'Da và các bộ phận khác của chim và gia cầm (ví dụ: đầu, cánh) có lông vũ hoặc lông tơ', mảnh 2 'Lông vũ và các phần của lông vũ (đã hoặc chưa cắt tỉa), và lông tơ, với điều kiện chúng chưa được xử lý, mới chỉ làm sạch, khử trùng hay xử lý để bảo quản', mảnh 3 'Nhóm này cũng bao gồm bột, bột thô và phế liệu của lông vũ' — 299 ký tự. Cắt bỏ: (a) đuôi câu của mảnh 2 '…nhưng chưa được xử lý theo cách khác hoặc chưa được gắn với nhau' — đoạn này KHÔNG mất khỏi sổ tay vì đã được trích trọn ở `dieuKienVao[1]`; (b) đuôi mảnh 3 '…hoặc các phần của lông vũ' — phần tức thuộc các phần của lông vũ; (c) dấu lược nuốt ở giữa là các câu ĐỊNH NGHĨA và các mốc '(1)/(2)', không phải ngoại lệ. Giữ nguyên `text` và `nguon`.",
+   "sua": {
+    "trich": "Da và các bộ phận khác của chim và gia cầm (ví dụ: đầu, cánh) có lông vũ hoặc lông tơ…Lông vũ và các phần của lông vũ (đã hoặc chưa cắt tỉa), và lông tơ, với điều kiện chúng chưa được xử lý, mới chỉ làm sạch, khử trùng hay xử lý để bảo quản…Nhóm này cũng bao gồm bột, bột thô và phế liệu của lông vũ"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích cũ dài 327 ký tự — VƯỢT trần 300 ký tự luật 2. SỬA: lược đúng ngoặc '(như tẩy, nhuộm, làm quăn hoặc tạo sóng)' — đây là VÍ DỤ minh họa mức xử lý, KHÔNG phải ngoại lệ nên lược an toàn; giữ trọn cả ba nhánh loại trừ (da và các bộ phận khác của loài chim và gia cầm / lông vũ đã qua xử lý nhiều hơn mức cho phép / hoặc đã được gắn lại, và các sản phẩm làm từ lông vũ) và giữ cả vế đích 'nói chung chúng được phân loại vào nhóm 67.01' — 287 ký tự. `dieuKien` và `nguon` giữ nguyên.",
+   "sua": {
+    "trich": "Nhóm này không bao gồm da và các bộ phận khác của loài chim và gia cầm, lông vũ và các phần của lông vũ đã qua xử lý nhiều hơn mức cho phép tại nhóm này…hoặc đã được gắn lại, và các sản phẩm làm từ lông vũ,v.v... ; nói chung chúng được phân loại vào nhóm 67.01 (xem Chú giải của nhóm)."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích cũ dài 327 ký tự — VƯỢT trần 300 ký tự luật 2, và trùng lặp y hệt `loaiTru[0]`. SỬA: dùng CÙNG câu trích đã lược ngoặc ví dụ như `loaiTru[0]` (287 ký tự) — mọi từ trong `hoi` ('da', 'lông vũ', 'đã qua xử lý nhiều hơn mức cho phép tại nhóm này', 'đã được gắn lại') và mã đích 67.01 vẫn có trong câu trích. `hoi` và `nguon` giữ nguyên.",
+   "sua": {
+    "trich": "Nhóm này không bao gồm da và các bộ phận khác của loài chim và gia cầm, lông vũ và các phần của lông vũ đã qua xử lý nhiều hơn mức cho phép tại nhóm này…hoặc đã được gắn lại, và các sản phẩm làm từ lông vũ,v.v... ; nói chung chúng được phân loại vào nhóm 67.01 (xem Chú giải của nhóm)."
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "MỤC NÓI ĐÚNG HƠN CÂU TRÍCH — nguồn ghi 'lông ống đã xử lý và các sản phẩm làm từ lông ống được phân loại THEO ĐẶC TÍNH CỦA CHÚNG (ví dụ: phao để câu thuộc nhóm 95.07, tăm xỉa răng thuộc nhóm 96.01)': 95.07 và 96.01 là VÍ DỤ, quy tắc là 'theo đặc tính'. Mục cũ ghi `hoi`='Hàng là lông ống đã xử lý?' → runtime in ra 'có→9507|9601', tức khẳng định lông ống đã xử lý CHỈ sang 95.07 hoặc 96.01, điều nguồn không nói (lông ống làm nút, làm cán thì sang nhóm khác). SỬA: đưa vế 'theo đặc tính của chúng' vào `hoi` để mục nói đúng điều câu trích nói (mọi từ trong `hoi` đều có trong câu trích, kể cả liên từ 'và' theo đúng nguồn); `neuCo`/`neuKhong`/`nguon` giữ nguyên. GHI NHẬN: còn tồn đọng là `neuCo` chỉ gồm 2 nhóm ví dụ — runtime chỉ có ô 'có→mã' nên không diễn đạt được 'tuỳ đặc tính'; đã nêu để người duyệt xem.",
+   "sua": {
+    "hoi": "Hàng là lông ống đã xử lý và sản phẩm làm từ lông ống, được phân loại theo đặc tính của chúng?"
+   }
+  }
+ ]
+}

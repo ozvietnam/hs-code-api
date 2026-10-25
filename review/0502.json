@@ -1,0 +1,20 @@
+{
+ "nhom": "0502",
+ "nguoiSoat": "dev-soat-doc-lap-lo044",
+ "luc": "2026-10-25T17:40:00+07:00",
+ "soat": 4,
+ "giu": 3,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 0502 — 4 mục trong phạm vi mục 4 (1 phamVi + 1 dieuKienVao + 1 loaiTru + 1 phanBiet), đọc lại cùng nguồn nguyên văn tmp/so-tay/nguon/0502.txt. SỬA 1, XOÁ 0. Đọc thêm 5 tieuChi6 + 2 dong8 nhưng KHÔNG sửa (ngoài phạm vi mục 4) — ghi nhận bên dưới. GIỮ 3: `dieuKienVao[0]` (fact dương + value=false đúng chiều; câu trích 'Tuy nhiên, nhóm này không bao gồm lông hoặc lông cứng thuộc nhóm 96.03 khi chúng ở dạng túm hoặc búi đã được xử lý…' là câu LOẠI TRỪ có vùng phủ định rõ ràng, đọc đúng chiều với fact 'đã xử lý thành túm hoặc búi sẵn để làm bàn chải = false'); `loaiTru[0]` (nguồn NÊU ĐÍCH DANH nhóm đích 96.03 trong chính câu trích; `dieuKien` giữ đủ định ngữ 'ở dạng túm hoặc búi đã xử lý sẵn để làm bàn chải' — đúng luật 'dieuKien phải giữ định ngữ giới hạn của câu'); `phanBiet[0]` (mã đích 96.03 có trong câu trích, `hoi` không nhắc mã phân nhóm, nhánh 'không' trỏ về chính nhóm 0502 — đúng mẫu đã gộp 552/739 phanBiet; chiều Có/Không khớp với loaiTru[0] và dieuKienVao[0]). GHI NHẬN (ngoài phạm vi, KHÔNG sửa): (1) `dong8[05029000].dieuKien` ghi 'Loại khác: lông chồn hôi (skunk), lông sóc hoặc lông chồn mactet' — cụm 'Loại khác' lấy từ tên dòng biểu thuế '05029000 - Loại khác' còn phần sau lấy từ chú giải nhóm, nên `dieuKien` gộp hai nguồn trong khi `nguon` chỉ trỏ nhom0502.nhom — máy KHÔNG bắt; đã nêu để người duyệt xem. (2) `phamVi.text` bỏ chữ 'có thể' của nguồn ('Chúng có thể ở dạng thô hoặc đã được làm sạch…') → câu đọc chắc hơn nguồn một chút; vì nói ÍT hơn chứ không nói thêm nên giữ nguyên.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích cũ dài 327 ký tự — VƯỢT trần 300 ký tự luật 2 (máy chỉ chặn >600 nên lọt; đúng loại lỗi 'trích 300–600 ký tự lặng lẽ' mà giao việc §00 dặm người soát phải để mắt). SỬA: cắt tại ranh giới mệnh đề, giữ đủ mọi từ mà `phamVi.text` dùng — mảnh 1 'Những sản phẩm này có thể ở dạng rời hoặc buộc thành bó lỏng hoặc chặt trong đó lông hoặc lông cứng' (giữ 'lông hoặc lông cứng' vì `text` nêu 'Lông và lông cứng'), mảnh 2 'Chúng có thể ở dạng thô hoặc đã được làm sạch, tẩy, nhuộm hoặc khử trùng.', mảnh 3 'Những loại lông khác dùng làm bàn chải gồm lông chồn hôi (skunk), lông sóc hoặc lông chồn mactet.' — 279 ký tự, nguyên văn liên tục trong nhom0502.nhom. Đoạn bị lược giữa mảnh 1–2 là câu mô tả vị trí đuôi (không phải ngoại lệ); đoạn bị lược giữa mảnh 2–3 là CÂU LOẠI TRỪ 96.03 — nhưng câu đó đã được trích TRỌN VẸN ở `dieuKienVao[0]`, `loaiTru[0]` và `phanBiet[0]` của cùng nhóm nên không mất thông tin nào trong sổ tay (đúng tiền lệ lô 042 ở 0401). Giữ nguyên `text` và `nguon`.",
+   "sua": {
+    "trich": "Những sản phẩm này có thể ở dạng rời hoặc buộc thành bó lỏng hoặc chặt trong đó lông hoặc lông cứng…Chúng có thể ở dạng thô hoặc đã được làm sạch, tẩy, nhuộm hoặc khử trùng.…Những loại lông khác dùng làm bàn chải gồm lông chồn hôi (skunk), lông sóc hoặc lông chồn mactet."
+   }
+  }
+ ]
+}
