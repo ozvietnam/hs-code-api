@@ -240,6 +240,48 @@ check('vòng 1 lỗi tạm thời → nextAction RETRY', r.nextAction?.type === 
   micMod2.micLookup = saved2;
 }
 
+// ── Nhãn hồ sơ gốc (prod 25/10/2026): kẹp giấy 83059010 tự tin 97 bị cổng CAU_TRICH_KHONG_CO chặn vì AI chép cả nhãn của
+// prompt ("Tiêu đề gốc: … | chatLieu: … | congDung: …") trong khi nguồn căn cứ chỉ có giá trị; vòng 3 hết ngân sách giờ
+// → NEEDS_EXPERT / GATE_BLOCKED sau 213 s, kèm câu hỏi rác "Cần xác nhận: Vật liệu của hàng là thép mạ niken…". ──
+{
+  const { gates, round1Input } = require('../lib/engine-loop.js');
+  const { groundingSourceOf, verifyQuote, DOSSIER_LABELS } = require('../lib/classify.js');
+  const CLIP = { tenHang: 'Kẹp giấy văn phòng bằng thép mạ niken, dài 28 mm, hộp 100 chiếc', chatLieu: 'thép mạ niken', congDung: 'kẹp giữ giấy tờ văn phòng' };
+  const LIVE = 'Tiêu đề gốc: Kẹp giấy văn phòng bằng thép mạ niken, dài 28 mm, hộp 100 chiếc | chatLieu: thép mạ niken | congDung: kẹp giữ giấy tờ văn phòng';
+  const R2_CLIP = { decision: 'CHOT', hs: '83059010', confidence: 97, reason: 'kẹp giấy bằng kim loại cơ bản — nhóm 83.05, dòng 8305.90.10', gir: 'GIR 1',
+    basis: [{ stream: 'SAN_PHAM', claim: 'kẹp giấy văn phòng bằng thép mạ niken', evidence: LIVE }, { stream: 'CHU_GIAI', claim: 'nhóm 83.05 gồm kẹp giấy', ref: '8305' }],
+    conditions: [{ fact: 'Vật liệu của hàng là thép mạ niken (kim loại cơ bản)', status: 'MET', evidence: 'chatLieu: thép mạ niken' }, { fact: 'Hàng dùng để kẹp giữ giấy tờ văn phòng', status: 'MET', evidence: 'congDung: kẹp giữ giấy tờ văn phòng' }],
+    alternatives: [], questions: [] };
+  // ctx dựng như classifyLoop (không có ảnh → nguồn căn cứ = groundingSourceOf).
+  const ctx = { source: groundingSourceOf(CLIP), productText: [CLIP.tenHang, CLIP.chatLieu, CLIP.congDung, 'kẹp giấy văn phòng'].join('\n'), gathered: { headings: ['8305'], mic: null, supplier: null }, machinery: false, round: 2, productName: 'kẹp giấy văn phòng', form: 'hoàn chỉnh', pool: [] };
+  const gl = gates(R2_CLIP, ctx);
+  check('nhãn hồ sơ: gates() ca prod — không còn CAU_TRICH_KHONG_CO, câu trích SAN_PHAM verified', !gl.blocks.some((b) => b.gate === 'CAU_TRICH_KHONG_CO') && gl.basis[0].verified === true, JSON.stringify([gl.blocks, gl.basis]));
+  check('nhãn hồ sơ: điều kiện có câu trích kèm nhãn ("congDung: …") giữ MET, không bị hạ CHƯA RÕ', gl.conditions.length === 2 && gl.conditions.every((c) => c.status === 'MET' && !c.unverified && c.evidence) && !gl.warnings.some((w) => /câu trích không có/i.test(w)), JSON.stringify([gl.conditions, gl.warnings]));
+  // Phủ định: nhãn đúng, giá trị bịa → cổng vẫn chặn, điều kiện vẫn bị hạ.
+  const gb = gates({ ...R2_CLIP, basis: [{ stream: 'SAN_PHAM', claim: 'bằng nhôm', evidence: 'chatLieu: nhôm' }], conditions: [{ fact: 'Vật liệu là nhôm', status: 'MET', evidence: 'chatLieu: nhôm' }] }, ctx);
+  check('nhãn hồ sơ: "chatLieu: nhôm" (gốc ghi thép) → vẫn CAU_TRICH_KHONG_CO + điều kiện hạ CHƯA RÕ', gb.blocks.some((b) => b.gate === 'CAU_TRICH_KHONG_CO') && gb.conditions[0].status === 'UNKNOWN' && gb.conditions[0].unverified === true, JSON.stringify([gb.blocks, gb.conditions]));
+
+  // Cả luồng (AI giả lặp lại đúng câu trả lời prod ở mọi vòng): 2 lượt AI, chốt, không câu hỏi rác.
+  const R1_CLIP = { product: { nameVi: 'kẹp giấy văn phòng', nameEn: 'nickel plated steel paper clip', nameZh: '', purpose: 'kẹp giữ giấy tờ văn phòng', mechanism: 'không áp dụng', material: 'thép mạ niken', dimensions: 'dài 28 mm', form: 'hoàn chỉnh', evidence: { purpose: 'kẹp giữ giấy tờ văn phòng', material: 'thép mạ niken' } }, hypotheses: [{ chapter: '83', heading4: '8305', subheading6: '830590', why: 'kẹp giấy bằng kim loại cơ bản', confidence: 95 }], verify: { searchVi: ['kẹp giấy văn phòng'], notesChapters: ['83'], codes8: ['83059010'], micQuery: null, unknowns: [] } };
+  const rc = await run(CLIP, [R1_CLIP, R2_CLIP, R2_CLIP, R2_CLIP]);
+  check('nhãn hồ sơ: cả luồng ca prod → 83059010 sau 2 lượt AI, không NEEDS_EXPERT/GATE_BLOCKED', calls.length === 2 && rc.results[0]?.hs === '83059010' && rc.status !== 'NEEDS_EXPERT' && rc.nextAction?.reasonCode !== 'GATE_BLOCKED' && !(rc.engine.gates[0].blocks || []).length, JSON.stringify([calls.length, rc.status, rc.nextAction?.reasonCode, rc.engine.gates]));
+  check('nhãn hồ sơ: không còn "Cần xác nhận: Vật liệu… / Hàng dùng…" cho điều kiện đã có câu trích', !rc.missing.some((m) => /Cần xác nhận: (Vật liệu|Hàng dùng)/.test(m)), JSON.stringify(rc.missing));
+
+  // Chống lệch: prompt in nhãn từ CHÍNH bảng verifyQuote dùng, và MỌI dòng có nội dung của khối "HỒ SƠ GỐC" chép nguyên văn
+  // (kèm nhãn) đều kiểm được với nguồn căn cứ classifyLoop dựng. Thêm dòng/nhãn mới vào round1Input mà quên bảng hoặc quên
+  // nguồn căn cứ → đỏ ở đây.
+  const RICH = { nameZh: '回形针 镀镍 28mm 100枚/盒', tenHang: 'Kẹp giấy văn phòng bằng thép mạ niken', specs: 'Chiều dài: 28 mm\nSố lượng: 100 chiếc/hộp', chatLieu: 'thép mạ niken', congDung: 'kẹp giữ giấy tờ văn phòng', chucNang: 'kẹp giấy', customerDescription: 'kẹp giấy loại tròn', model: 'KG-28', brand: 'Deli', facts: [{ key: 'material', labelVi: 'Chất liệu', valueVi: 'thép mạ niken', evidence: '材质：镀镍钢' }], imageTexts: ['材质 镀镍钢\n规格 28mm', { url: 'x', text: '100枚/盒' }] };
+  const prompt = round1Input(RICH);
+  const srcRich = [groundingSourceOf(RICH), RICH.imageTexts.map((t) => (typeof t === 'string' ? t : t.text)).join('\n')].join('\n');
+  const lines = prompt.split('\n').map((l) => l.trim()).filter(Boolean);
+  const content = lines.filter((l) => !l.endsWith(':'));
+  const headers = lines.filter((l) => l.endsWith(':'));
+  check('nhãn hồ sơ: round1Input in nhãn từ bảng dùng chung DOSSIER_LABELS', [DOSSIER_LABELS.tieuDe, DOSSIER_LABELS.tenKhac, DOSSIER_LABELS.thongSo, DOSSIER_LABELS.duKien, DOSSIER_LABELS.chuAnh, ...DOSSIER_LABELS.truong].every((l) => prompt.includes(`${l}:`)) && prompt.includes(`[${DOSSIER_LABELS.goc}: `) && prompt.includes(`[${DOSSIER_LABELS.anh} 1] `), prompt);
+  const lech = content.filter((l) => verifyQuote(l, srcRich) !== 'ok');
+  check('nhãn hồ sơ: mọi dòng có nội dung của HỒ SƠ GỐC chép nguyên văn kèm nhãn → kiểm được', content.length === 12 && !lech.length, JSON.stringify([content.length, lech]));
+  check('nhãn hồ sơ: dòng tiêu đề mục (chỉ có nhãn) không phải câu trích', headers.length === 3 && headers.every((l) => verifyQuote(l, srcRich) === 'bad'), JSON.stringify(headers));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
 

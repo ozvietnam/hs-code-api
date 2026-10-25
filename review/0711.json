@@ -1,0 +1,20 @@
+{
+ "nhom": "0711",
+ "nguoiSoat": "dev-soat-doc-lap-lo047",
+ "luc": "2026-10-25T23:38:49+07:00",
+ "soat": 6,
+ "giu": 5,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 0711 — 6 mục trong phạm vi mục 4 (1 phamVi + 3 dieuKienVao + 0 loaiTru + 2 phanBiet), đọc lại từng mục cùng nguồn nguyên văn tmp/so-tay/nguon/0711.txt. SỬA 1, XOÁ 0, GIỮ 5. Đọc thêm 10 tieuChi6 + 15 dong8 nhưng không sửa (ngoài phạm vi mục 4) — ghi nhận bên dưới. KIỂM MÁY (tự viết, không tin máy nhà): byte-exact 6/6 câu trích có thật trong đúng khối nguồn; không trích > 300 ký tự; không trường nào vượt trần clip runtime; không từ nào trong text/dieuKien/hoi mà không có trong câu trích; đã in TỪNG đoạn bị lược '…' để soi ngoại lệ — không có ngoại lệ nào bị nuốt mất. GIỮ 5, LÝ DO: (1) `phamVi` — câu trích lấy nguyên văn cả hai vế (xử lý chỉ để bảo quản tạm thời + điều kiện vẫn không thể ăn ngay được); dấu lược chỉ nuốt phần VÍ DỤ trong ngoặc, không nuốt ngoại lệ. (2) `dieuKienVao[0]` 'da_xu_ly_chi_de_bao_quan_tam_thoi' = true. (3) `dieuKienVao[1]` 'khong_the_an_ngay_duoc_khi_o_dang_do' = true — câu trích nguyên văn có 'vẫn không thể ăn ngay được khi ở dạng đó'. (4) `dieuKienVao[2]` 'xu_ly_phuong_phap_dac_biet_ngoai_bao_quan_tam_thoi' = FALSE: fact DƯƠNG + value=false ⇒ 'KHÔNG (đã xử lý theo phương pháp đặc biệt ngoài bảo quản tạm thời)' — đúng chiều; nguồn nói loại trừ sang Chương 20 nhưng Chương 20 không mã hoá được thành nhóm 4 số nên mã hoá bằng fact âm đúng chiều là cách đúng. (5) `phanBiet[1]` 'Hàng là hành tây không?' → Có 07119040|07119050 (hai dòng hành tây trong nhánh 071190) / Không 07119010|07119020|07119030|07119060|07119090 (5 dòng còn lại của nhánh 071190) → phủ kín nhánh, không đảo Có/Không. LỖI ĐÃ BẮT (xem `thayDoi`): `phanBiet[0]` nhánh 'không' thiếu 5 dòng — đây là lỗi mà máy KHÔNG bắt được (máy chỉ kiểm mã ngoài nhóm có trong câu trích; các mã thiếu đều TRONG nhóm nên máy im lặng). GHI NHẬN (ngoài phạm vi, KHÔNG sửa): (a) `loaiTru` rỗng — đúng vì loại trừ của nhóm chỉ nói 'Chương 20' (không mã hoá được), đã nằm ở `dieuKienVao[2]`; khác 0707/0708/0709 là nhóm không có mục loại trừ cấp chương tới 06.02 — cùng lý do như 0710, người duyệt quyết có thêm hay không. (b) `dong8` có 15 dòng, runtime liệt kê TẤT CẢ thì chỉ lấy 12 dòng đầu (`slice(0,12)`) — khi tra một mã cụ thể vẫn đủ vì có bộ lọc trước. (c) Câu chú giải nhóm liệt kê 'cà chua' trong các loại chính của nhóm, nhưng cà chua thuộc nhóm 07.02 — đây là lỗi KỆ SÁCH, sổ tay không trích câu đó nên không sai. (d) Phép thử ở 0707/0708/0709/0710 dùng câu Chú giải 5 Chương 7 ('không phù hợp dùng ngay được'), còn 0711 dùng câu của chính nhóm ('vẫn không thể ăn ngay được') — hai cách diễn đạt cùng một phép thử theo nguồn của từng nhóm, giữ nguyên. (e) Đối chiếu đủ 15 dòng tax.* của nhóm, không thiếu dòng nào.",
+ "thayDoi": [
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "NHÁNH 'KHÔNG' THIẾU 5 DÒNG 8 SỐ → TRẢ LỜI SAI CHO TỜ KHAI KHÔNG BẢO QUẢN BẰNG KHÍ SUNPHUƠ. Câu hỏi 'Hàng đã được bảo quản bằng khí sunphurơ không?' có nhánh Có gồm đúng 6 dòng bảo quản bằng khí sunphurơ (07112010, 07114010, 07115110, 07115910, 07119040 hành tây, 07119060 loại khác) — nhưng nhánh Không chỉ liệt 4 dòng 'Loại khác' (07112090, 07114090, 07115190, 07115990), BỎ SÓT 5 dòng KHÔNG bảo quản bằng khí sunphurơ nằm trong nhánh 071190: 07119010 (Ngô ngọt), 07119020 (Quả ớt), 07119030 (Nụ bạch hoa), 07119050 (Hành tây bảo quản trừ loại khí sunphurơ) và 07119090 (Loại khác). Hệ quả: tờ khai 'nụ bạch hoa bảo quản tạm thời bằng cách ngâm nước muối' (đúng 07119030) sẽ bị runtime dẫn tới một trong 4 mã sai, vì 07119030 không có trong cả hai nhánh. SỬA: nhánh Không = phần bù CHÍNH XÁC của nhánh Có trong 15 dòng của nhóm, tức thêm 5 mã trên (giữ nguyên thứ tự nhóm). Mọi mã thêm đều TRONG nhóm 0711 nên không vi phạm luật 'mã ngoài nhóm phải có trong câu trích'; GIỮ NGUYÊN `neuCo`, `hoi` và `trich`.",
+   "sua": {
+    "neuKhong": "07112090|07114090|07115190|07115990|07119010|07119020|07119030|07119050|07119090"
+   }
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "nhom": "0802",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-25T23:44:00+07:00",
+ "soat": 19,
+ "daKiem": 19,
+ "xoa": 0,
+ "sua": 2,
+ "giu": 17,
+ "phamViSoat": "Toàn bộ 19 mục của bản nháp tmp/so-tay/raw/0802.json trong 5 khối (1 phamVi + 4 dieuKienVao + 7 loaiTru + 7 phanBiet; không có boPhan), đọc cùng tmp/so-tay/nguon/0802.txt (nhom0802.nhom + ch08.chuong + phan08.phan + sen.08021210 + 16 wco.* + 18 tax.*). Đối chiếu từng mục với câu nguồn, đo độ dài câu trích, dựng lại đoạn bị lược.",
+ "ghiChu": "Audit 0802 — đọc tay từng mục cùng nguồn. Kết quả: sửa 2, xoá 0, giữ 17. LỖI MÁY KHÔNG BẮT đã bắt: `loaiTru[6].dieuKien` và `phanBiet[6].hoi` biến ghi chú có định ngữ giới hạn 'THƯỜNG' thành điều kiện bắt buộc — nguồn chỉ nói hạt dẻ/hạnh nhân rang chín 'thường được sử dụng như chất thay thế cà phê', còn bản nháp khẳng định dứt khoát. Đúng lớp lỗi lô 034 ('mất định ngữ giới hạn') và lô 022 ('mất ngoại lệ ngay sau câu trích'): cắt mất chữ 'thường' làm mục nói chắc hơn nguồn. Sửa cả hai mục.\nKIỂM ĐỒNG Ý — BA ĐỀ XUẤT XOÁ ĐƯỢC BÁC BỎ (đã đếm tiền lệ trong data/so-tay/*.json trước khi kết luận, theo bài học 'đếm tiền lệ TRƯỚC khi kết luận mẫu nào là lỗi'):\n(a) 4 mục `dieuKienVao` có fact phủ định lấy từ danh sách 'Nhóm này không bao gồm:' — GIỮ. Corpus đã duyệt có 25 mục `dieuKienVao` fact phủ định ở 19 nhóm (0308, 0401, 0506, 0507, 0508…) và 22 mục trùng `trich` với một `loaiTru` ở 17 nhóm; đây là mẫu nhà, xoá đi là phá mẫu.\n(b) `phanBiet[3]` ('Hàng là lạc rang hoặc bơ lạc?' → 20.08) — GIỮ. Câu nguồn: '(c) Lạc (nhóm 12.02), lạc rang hoặc bơ lạc (nhóm 20.08)' — HAI vế 'lạc rang' VÀ 'bơ lạc' cùng dẫn về MỘT đích 20.08, nên đây KHÔNG phải lỗi 'một nhánh của A hoặc B bị tách thành đích duy nhất' (lỗi đó là khi nguồn đưa hai đích khác nhau); `loaiTru[3]` và `loaiTru[4]` cũng tách đúng hai mục theo hai đích 12.02 và 20.08.\n(c) `phanBiet[4]` ('Hàng là hạt dẻ ngựa (Aesculus hippocastanum)?' → 23.08) — GIỮ. Nhánh 'không→0802' là mẫu nhà: corpus có 612 mục `phanBiet` có nhánh 'không' trỏ về chính nhóm đang xét; căn cứ của nhánh 'không' ở đây là câu phạm vi nhóm trong nhom0802.nhom, không phải suy từ cấu trúc anh em hay danh sách loại trừ.\nGHI NHẬN (không tính lỗi, nhưng báo lại để người duyệt cân nhắc lô sau): câu nguồn thứ hai của nhom0802.nhom còn tiếp sau chỗ bản nháp cắt: '…hạt cola (cây côla) được dùng để nhai và làm nguyên liệu để sản xuất đồ uống VÀ CẢ LOẠI QUẢ ĂN ĐƯỢC, GIỐNG QUẢ HẠCH (nutlike), CÓ VỎ GAI thuộc loài Trapa natans, đôi khi được gọi là củ mã thầy' — tức là nhóm 0802 còn có một thành viên (Trapa natans — củ mã thầy) mà `phamVi` chưa nêu. Sửa được thì câu trích phải dài ≥ 460 ký tự (vượt lược đồ ≤300 và gần trần máy 600), nên KHÔNG sửa ở đợt này; nhưng cần lưu ý vì 'củ mã thầy' của Trapa natans rất dễ lẫn với 'củ mã thầy Trung Quốc' (Elcocharis) mà `loaiTru[0]` đã loại sang 07.14 — phía loại trừ đã có đủ căn cứ, phía thành viên thì chưa.",
+ "thayDoi": [
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — mất định ngữ giới hạn 'thường' (luật 13; bài học lô 034). Nguồn ch08.chuong: '(iii) Quả và quả hạch (nut) được rang chín (ví dụ: hạt dẻ, hạnh nhân và sung, vả) đã hoặc chưa xay, nghiền, THƯỜNG được sử dụng như chất thay thế cà phê (nhóm 21.01)'. Bản nháp ghi 'Hạt dẻ, hạnh nhân rang chín (chất thay thế cà phê)' — biến một ghi chú có tính 'thường' thành đặc điểm định nghĩa bắt buộc, nên mục nói chắc hơn nguồn (loại lỗi 'cắt trích né câu rào'). SỬA: viết lại theo nguồn, giữ 'đã hoặc chưa xay, nghiền' và 'thường được sử dụng như'. `trich` giữ nguyên — đã chép trọn câu nguồn.",
+   "sua": {
+    "dieuKien": "Hạt dẻ, hạnh nhân được rang chín, đã hoặc chưa xay, nghiền, thường được sử dụng như chất thay thế cà phê"
+   }
+  },
+  {
+   "index": "phanBiet[6]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `hoi` biến ghi chú 'thường được sử dụng' thành điều kiện bắt buộc, nên nhánh Có khẳng định dứt khoát hơn nguồn. Nguồn: '…đã hoặc chưa xay, nghiền, thường được sử dụng như chất thay thế cà phê (nhóm 21.01)'. Bản nháp: 'Hàng là hạt dẻ hoặc hạnh nhân được rang chín, xay hoặc nghiền làm chất thay thế cà phê?' — vừa bỏ 'thường', vừa bỏ 'đã hoặc chưa' (nguồn nói xay hoặc KHÔNG xay). SỬA: trả lại đúng nghĩa nguồn. `trich` giữ nguyên.",
+   "sua": {
+    "hoi": "Hàng là hạt dẻ hoặc hạnh nhân được rang chín, đã hoặc chưa xay, nghiền, thường được sử dụng như chất thay thế cà phê?"
+   }
+  }
+ ]
+}

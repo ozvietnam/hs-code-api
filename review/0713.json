@@ -1,0 +1,39 @@
+{
+ "nhom": "0713",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-25T23:38:00+07:00",
+ "soat": 12,
+ "daKiem": 12,
+ "xoa": 0,
+ "sua": 3,
+ "giu": 9,
+ "phamViSoat": "Toàn bộ 12 mục của bản nháp tmp/so-tay/raw/0713.json trong 5 khối (1 phamVi + 3 dieuKienVao + 4 loaiTru + 4 phanBiet; không có boPhan), đọc cùng tmp/so-tay/nguon/0713.txt (nhom0713.nhom + ch07.chuong + phan07.phan + 13 wco.* + 24 tax.*). Đối chiếu từng mục với câu nguồn, đo độ dài câu trích và dựng lại đoạn bị lược bằng dấu '…'.",
+ "ghiChu": "Audit 0713 — đọc tay từng mục cùng nguồn (không dựa vào squash của máy). Kết quả: sửa 1, xoá 0, giữ 11. LỖI MÁY KHÔNG BẮT đã bắt: (1) PHẠM VI CỤT — bản nháp cắt câu nguồn ngay trước vế '…thậm chí khi chúng có thể sử dụng để gieo trồng (cho dù có hoặc không ăn được vì đã qua xử lý bằng hoá chất)', tức là âm thầm bỏ mất CHÍNH THÀNH PHẦN mà toàn bộ 24 dòng biểu thuế của nhóm này dựa vào (mọi dòng 8 số đều là 'Phù hợp để gieo trồng' / 'Loại khác'); trong khi `phamVi.text` lại khẳng định nhóm chỉ gồm loại 'được sử dụng cho người hoặc động vật'. Sửa: nối lại vế 'gieo trồng' vào câu trích và nói ra trong `text`.\nKIỂM ĐỒNG Ý (không sửa, đã đếm tiền lệ trong data/so-tay/*.json trước khi kết luận): (a) 3 mục `dieuKienVao` có fact phủ định ('khong_phai_…') lấy từ danh sách 'Nhóm này không bao gồm:' — KHÔNG phải lỗi: corpus đã duyệt có 25 mục `dieuKienVao` fact phủ định ở 19 nhóm (0308, 0401, 0506, 0507, 0508…) và 22 mục trùng `trich` với một `loaiTru` ở 17 nhóm; đây là mẫu nhà, không xoá. (b) 4 mục `loaiTru` và 4 mục `phanBiet` nhánh 'không→0713' — KHÔNG phải lỗi: corpus có 612 mục `phanBiet` có nhánh 'không' trỏ về chính nhóm đang xét (mẫu nhà), và nhánh 'không' ở đây có căn cứ là câu phạm vi của nhóm ('Nhóm này bao gồm các loại rau đậu…'), không phải suy từ cấu trúc anh em. (c) `loaiTru[2]` giữ nguyên định ngữ giới hạn '(trừ đậu tằm (broad bean) và đậu ngựa)' — đúng luật 13; `phanBiet[2].hoi` cũng giữ, nhưng mục (c) chỉ có trong `loaiTru`+`phanBiet` chứ không có trong `dieuKienVao` (vì câu có chữ 'trừ' bên trong) — chấp nhận, không phải thiếu sót.\nGHI NHẬN (ngoài phạm vi 5 khối, không đưa vào `thayDoi`): (1) câu trích của `phamVi` không thể trích trọn câu nguồn (câu gốc dài ~700 ký tự, máy chặn >600); đoạn bị lược  có vế 'tuy nhiên, cách xử lý như vậy cần không làm ảnh hưởng đến đặc tính bên trong của phôi mầm' — nhưng `text` không khẳng định gì về xử lý nhiệt nên không bị đảo nghĩa; nên giữ. (2) `tieuChi6`/`dong8` không thuộc phạm vi soát đợt này. (3) Lỗi kệ sách: nguồn ghi 'thực ăn' (U+1EE9 'ứ') — đã chép nguyên văn theo luật, đề xuất sửa nguồn.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — cắt trích làm CỤT MỘT PHẦN CỦA CÂU NGUỒN. Nguồn nhom0713.nhom: 'Nhóm này bao gồm các loại rau đậu thuộc nhóm 07.08 đã làm khô và được bóc vỏ quả, thuộc loại được sử dụng cho người hoặc động vật (ví dụ, …), thậm chí khi chúng có thể sử dụng để gieo trồng (cho dù có hoặc không ăn được vì đã qua xử lý bằng hoá chất) hoặc được dùng vào mục đích khác.' — bản nháp cắt ngay trước 'thậm chí … gieo trồng', nên câu trích dừng ở '…được sử dụng cho người hoặc động vật'. Hậu quả: (i) `phamVi.text` khẳng định phạm vi nhóm 0713 là loại 'được sử dụng cho người hoặc động vật', TRONG KHÍ toàn bộ 24 dòng biểu thuế của nhóm này đều là 'Phù hợp để gieo trồng' / 'Loại khác' — phạm vi bị thu hẹp, mô hình đọc kiểu AND sẽ loại nhầm đậu để gieo trồng ra khỏi 0713; (ii) đoạn bị lược nuốt mất đúng vế mở rộng của nguồn, đúng loại lỗi 'cắt trích âm thầm' mà giao việc §00 dặm người soát phải để mắt. SỬA: nối lại vế 'gieo trồng' vào câu trích (nguyên văn) và nói ra trong `text`. Đo lại: trích mới 297 ký tự (≤300 theo lược đồ), các mảnh đều là mảnh liên tiếp của nhom0713.nhom; đoạn bị lược còn lại giữa các mảnh là ví dụ tên loại và câu về xử lý nhiệt, không chứa ngoại lệ nào làm đảo nghĩa `text`.",
+   "sua": {
+    "text": "Các loại rau đậu thuộc nhóm 07.08 đã làm khô và được bóc vỏ quả, thuộc loại được sử dụng cho người hoặc động vật, thậm chí khi chúng có thể sử dụng để gieo trồng (cho dù có hoặc không ăn được vì đã qua xử lý bằng hoá chất); các loại rau đậu đã làm khô thuộc nhóm này có thể đã được bóc vỏ hạt hoặc làm vỡ hạt.",
+    "trich": "Nhóm này bao gồm các loại rau đậu thuộc nhóm 07.08 đã làm khô và được bóc vỏ quả, thuộc loại được sử dụng cho người hoặc động vật…thậm chí khi chúng có thể sử dụng để gieo trồng (cho dù có hoặc không ăn được vì đã qua xử lý bằng hoá chất)…thuộc nhóm này có thể đã được bóc vỏ hạt hoặc làm vỡ hạt."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `fact` chép sai TỪ của nguồn. Nguồn: '(a) Rau đậu khô đã bóc vỏ dưới dạng bột, bột thô, bột mịn (nhóm 11.06)' — ba từ 'bột, bột thô, bột mịn'. Bản nháp ghi fact 'khong_phai_banh_banh_tho_banh_mien_cua_rau_dau_kho', tức là 'bánh, bánh thô, bánh mịn' (bánh = bánh/bread, không phải bột = flour) và 'mien' thay cho 'mịn'. `fact` là tên sự kiện đọc thẳng vào prompt vòng 2 (lib/so-tay-gates.js:135, in dưới nhãn 'Điều kiện vào nhóm'), nên mô hình sẽ đọc 'bánh' chứ không phải 'bột' — hàng là bột đậu thì điều kiện không khớp. Quy ước nhà đã dùng 'bot' cho 'bột' (0402: ty_le_tinh_bot_them_vao_sua_bot; 1901: …_tu_bot_tinh_bot_malt; 3920: chat_don_dang_bot_hat; 4802: lam_chu_yeu_tu_bot_giay…). SỬA: dùng đúng từ của nguồn. `trich` giữ nguyên (đã nguyên văn tuyệt đối — máy kiểm byte-exact không bắt được lỗi này vì nó nằm ở `fact`, không ở `trich`).",
+   "sua": {
+    "fact": "khong_phai_bot_bot_tho_bot_min_cua_rau_dau_kho"
+   }
+  },
+  {
+   "index": "dieuKienVao[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `fact` chép sai TỪ của nguồn. Nguồn: '(d) Hạt cây minh quyết (nhóm 12.12)' — từ 'quyết'. Bản nháp ghi 'khong_phai_hat_cay_minh_quet' ('quet'), trong khi quy ước nhà là 'quyet' (xem data/so-tay/…: tu_bien_doi_quy_trinh_bang_quyet_dinh_logic…). `fact` đi thẳng vào prompt nên phải bám đúng từ nguồn. SỬA: 'minh_quyet'. `trich` giữ nguyên.",
+   "sua": {
+    "fact": "khong_phai_hat_cay_minh_quyet"
+   }
+  }
+ ]
+}
