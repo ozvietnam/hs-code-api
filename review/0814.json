@@ -1,0 +1,43 @@
+{
+  "nhom": "0814",
+  "nguoiSoat": "dev-soat-doc-lap-lo050",
+  "luc": "2026-10-26T00:38:00+07:00",
+  "phamViSoat": "Toàn bộ 6 mục của bản nháp lô 050 (1 phamVi + 0 dieuKienVao + 2 loaiTru + 2 phanBiet + 0 tieuChi6 + 1 dong8), đọc cùng tmp/so-tay/nguon/0814.txt (nhom0814.nhom 3 dòng, ch08.chuong, phan08.phan, wco.081400, tax.08140000). Đối chiếu TỪNG câu trích với câu nguồn nguyên văn (không tin máy kiểm).",
+  "soat": 6,
+  "giu": 6,
+  "sua": 0,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0814 — 6/6 mục đã đọc cùng nguồn. KHÔNG xoá, KHÔNG sửa. (a) `phamVi`: lấy từ dòng biểu thuế tax.08140000, đúng tên nhóm 0814 của biểu thuế ('Vỏ các loại quả thuộc chi cam quýt hoặc các loại dưa (kể cả dưa hấu), tươi, đông lạnh, khô hoặc bảo quản tạm thời trong nước muối, nước lưu huỳnh hoặc trong các dung dịch bảo quản khác') — nêu PHẠM VI nhóm (không phải vật liệu, không phải một phần), `text` bám sát câu trích, không thêm chữ. Đối chiếu với wco.081400 ('Peel; of citrus fruit or melons (including watermelons), fresh, frozen, dried or provisionally preserved in brine, in sulphur water and other preservative solutions') thì hai nguồn khớp nhau. (b) `dieuKienVao` rỗng là ĐÚNG: nhom0814.nhom không có câu ràng buộc nào vào nhóm — chỉ có câu mô tả công dụng ('Những loại vỏ này chủ yếu được dùng để làm vỏ tẩm đường hoặc để chiết xuất lấy tinh dầu') và câu loại trừ; mà theo luật mục 4, dieuKienVao chỉ lấy từ nhom*/ch*/phan* và phải là điều kiện VÀO nhóm 4 số (tên trạng thái 'tươi, đông lạnh, khô…' nằm ở dòng biểu thuế, không được đưa vào). (c) `loaiTru[0]` và `[1]`: cùng một câu nguồn — 'Nhóm này loại trừ vỏ được tán thành bột (nhóm 11.06) và vỏ quả ngâm đường (nhóm 20.06).' Có DẤU HIỆU loại trừ rõ ('loại trừ') và nêu ĐÍCH DANH cả hai nhóm đích trong chính câu ⇒ đúng luật mục 3. (d) `phanBiet[0]` và `[1]`: chiều Có/Không đúng ('có' = tán thành bột → 1106; 'có' = ngâm đường → 2006), đích có trong câu trích, `neuKhong` = chính nhóm 0814 (mẫu đã duyệt trong kho), `hoi` không nhắc mã phân nhóm ⇒ đạt luật máy. (e) `tieuChi6` rỗng là ĐÚNG: nhóm 0814 chỉ có một mã 8 số 08140000, phân nhóm 081400 là dạng 'xxxx00' nên máy không dựng được nút 6 số (check-cay báo 6/6 nhóm đủ, 0 lỗi, 0 cảnh báo). (f) `dong8[0]`: dòng 08140000 có trong tax.*, `dieuKien` = tên dòng biểu thuế nguyên văn, `tieuChi.fact` bám đúng. GHI NHẬN cho người duyệt (KHÔNG sửa được ở bước soát): nhom0814.nhom mô tả vỏ của cam/chanh/thanh yên, còn dòng biểu thuế và wco.081400 nói rộng hơn ('chi cam quýt hoặc các loại dưa (kể cả dưa hấu)') — đây là khác biệt giữa chú giải nhóm tiếng Việt và tiêu đề nhóm của biểu thuế/WCO, không phải mâu thuẫn loại trừ nên bản nháp lấy tiêu đề biểu thuế là hợp lý; người duyệt nên biết để trả lời khi người khai hỏi về vỏ dưa.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn tax.08140000 (tên nhóm theo biểu thuế), nêu đúng PHẠM VI nhóm 0814 (vỏ quả cam quýt/dưa, các trạng thái tươi/đông lạnh/khô/bảo quản tạm thời); `text` bám sát câu trích, không thêm chữ ngoài nguồn."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom0814.nhom: 'Nhóm này loại trừ vỏ được tán thành bột (nhóm 11.06) và vỏ quả ngâm đường (nhóm 20.06).' Có DẤU HIỆU loại trừ rõ và nêu ĐÍCH DANH 11.06 trong chính câu ⇒ đúng luật mục 3."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Cùng câu nguồn, đích 20.06 nêu đích danh trong câu ⇒ đúng luật mục 3. `dieuKien` 'Vỏ quả ngâm đường' bám đúng từ nguồn."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = vỏ được tán thành bột → 1106, 'không' = vỏ quả thuộc nhóm → 0814; đích có trong câu trích; `hoi' không nhắc mã phân nhóm/WCO ⇒ đạt luật máy."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = vỏ quả ngâm đường → 2006, 'không' = 0814; đích có trong câu trích."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 08140000 có trong tax.*; `dieuKien` = tên dòng biểu thuế nguyên văn; `tieuChi.fact` 'la_vo_qua_thuoc_chi_cam_quyt_hoac_cac_loai_dua' bám đúng từ nguồn."
+    }
+  ]
+}

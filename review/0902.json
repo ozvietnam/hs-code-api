@@ -1,0 +1,138 @@
+{
+  "nhom": "0902",
+  "nguoiSoat": "dev-soat-doc-lap-lo050",
+  "luc": "2026-10-26T00:40:00+07:00",
+  "phamViSoat": "Toàn bộ 25 mục của bản nháp lô 050 (1 phamVi + 1 dieuKienVao + 3 loaiTru + 3 phanBiet + 1 boPhan + 8 tieuChi6 + 8 dong8), đọc cùng tmp/so-tay/nguon/0902.txt (nhom0902.nhom 10 đoạn, ch09.chuong, phan09.phan, wco.090210/090220/090230/090240, tax.09021010…09024090). Đối chiếu TỪNG câu trích với câu nguồn nguyên văn (không tin máy kiểm).",
+  "soat": 25,
+  "giu": 25,
+  "sua": 0,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0902 — 25/25 mục đã đọc cùng nguồn. KHÔNG xoá, KHÔNG sửa. Đây là nhóm CÓ CHẤT LƯỢNG CAO nhất của lô: 8 `tieuChi6` có ngưỡng số có cấu trúc lấy từ tên WCO ('in immediate packings of a content not exceeding 3kg' / 'exceeding 3kg' → <= 3 kg / > 3 kg, số '3' có nguyên văn trong câu trích, `donVi` 'kg' khớp với fact 'trong_luong_…' nên cổng ngưỡng số của runtime bắt được) — đúng như thiết kế của tiêu chí cấp 6 số (#236). (a) `phamVi`: chép từ nhom0902.nhom; đoạn lược '…' nuốt các đoạn mô tả cách chế biến chè xanh/chè đen và câu 'Nhóm này cũng bao gồm cả chè được ủ men một phần (ví dụ: chè Oolong)' — đều là câu BAO GỒM, không phải ngoại lệ ⇒ lược hợp lệ. `text` mở đầu bằng 'Các loại chè lấy từ các cây thuộc giống thực vật Thea (Camellia)' — đúng phạm vi nhóm; các thành phần 'chè được ủ men một phần', 'chè tẩm hương', 'chè đã khử caffeine' đều thuộc câu bao gồm đó nên không cần nêu riêng. GHI NHẬN cho người duyệt: `text` không nêu riêng 'chè tẩm hương' và 'chè đã khử caffeine' (vì các câu đó nằm SAU câu trích) — nếu muốn phải sửa `text` và kéo câu trích (ngoài phạm vi bước soát, em không tự thêm). (b) `dieuKienVao[0]`: 'Nhóm này bao gồm các loại chè khác nhau được lấy từ các cây thuộc giống thực vật Thea (Camellia).' — đây là ĐIỀU KIỆN VÀO NHÓM đúng tầng và phủ CẢ nhóm (0902 không chia phần (A)/(B) nào): nó chính là trục phân loại mà cả ba `loaiTru` của nhóm dựa vào ('các sản phẩm không phải lấy từ các cây thuộc giống thực vật Thea'). Giữ. (c) 3 `loaiTru`: (i) 'Chất caffeine' → 29.39, câu nguồn 'Nhóm này cũng bao gồm cả chè đã được khử caffeine, nhưng loại trừ caffeine (nhóm 29.39).' — có dấu hiệu loại trừ rõ ('loại trừ') + đích danh trong câu; (ii) 'Chè Paragoay' → 09.03, câu 'Ngoài ra nhóm này cũng không bao gồm các sản phẩm không phải lấy từ các cây thuộc giống thực vật Thea … (a) Chè Paragoay (nhóm 09.03).' — đoạn lược nuốt 'nhưng đôi khi cũng gọi là “chè”, ví dụ:' (vế giới thiệu, KHÔNG phải ngoại lệ) ⇒ hợp lệ; (iii) '“Chè” sâm' → 21.06, cùng dạng. Cả ba đúng luật mục 3, không dính mẫu 'thường thuộc/tùy trường hợp'. (d) 3 `phanBiet`: chiều Có/Không đúng; `neuKhong` = chính nhóm 0902 (mẫu đã duyệt trong kho); `hoi` không nhắc mã phân nhóm/WCO ⇒ đạt luật máy. (e) `boPhan`: `quyTac` chép NGUYÊN VĂN câu định nghĩa 'viên' của phan09.phan, GIỮ NGUYÊN cả dấu xuống dòng trong `trich` (nguồn `phan*.phan` có xuống dòng — bài học: bộ kiểm byte-exact không duyệt `boPhan`, phải tự giữ). GHI NHẬN: `tomTat` gom 'hàm lượng' về 'hàm lượng chất dính' — đây là CÁCH ĐỌC (đúng theo Chú giải GTS của HS: giới hạn 3 % là của chất dính) chứ không phải chữ lạ thêm vào; `quyTac` vẫn chép nguyên văn nên căn cứ không mất. Người duyệt nên xác nhận lại cách đọc này khi duyệt lô (đây là lần đầu trong kho dùng khối `boPhan` cho quy tắc 'viên'). (f) 8 `dong8`: chép nguyên văn tax.* (Lá chè / Loại khác) và wco.* cho các dòng 'Loại khác' theo mẫu 'Loại khác: <tên WCO>' đã dùng ở kho đã gộp (lô 046). GHI NHẬN: khoản loại trừ của nhom0902.nhom mục (b) ('Những sản phẩm dùng để pha chế thảo mộc hoặc pha chè thảo dược. Chúng được phân loại, ví dụ, vào các nhóm 08.13, 09.09, 12.11 hoặc 21.06.') bản nháp KHÔNG ghi thành loaiTru — đúng theo luật mục 3 vì nguồn nói 'ví dụ, vào các nhóm…' (danh sách ví dụ, không phải loại trừ đích danh); người duyệt nên biết là khoản này đang không có trong sổ tay và có thể tự thêm tay sau nếu muốn.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom0902.nhom; đoạn lược '…' chỉ nuốt các câu mô tả cách chế biến và câu bao gồm 'chè được ủ men một phần (ví dụ: chè Oolong)' (không phải ngoại lệ). `text` nêu đúng phạm vi nhóm, không thêm chữ ngoài nguồn."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Điều kiện vào nhóm đúng tầng và phủ cả nhóm (0902 không có phần (A)/(B)): 'Nhóm này bao gồm các loại chè khác nhau được lấy từ các cây thuộc giống thực vật Thea (Camellia).' — chính là trục phân loại mà 3 `loaiTru` của nhóm dựa vào. Không phải câu cho phép, không phải điều kiện cấp phân nhóm/dòng 8 số."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom0902.nhom: 'Nhóm này cũng bao gồm cả chè đã được khử caffeine, nhưng loại trừ caffeine (nhóm 29.39).' Dấu hiệu loại trừ rõ ('loại trừ'), đích 29.39 nêu đích danh trong câu ⇒ đúng luật mục 3."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom0902.nhom mục (a): 'Ngoài ra nhóm này cũng không bao gồm các sản phẩm không phải lấy từ các cây thuộc giống thực vật Thea … (a) Chè Paragoay (nhóm 09.03).' Đoạn lược nuốt 'nhưng đôi khi cũng gọi là “chè”, ví dụ:' (vế giới thiệu, không phải ngoại lệ). Dấu hiệu loại trừ rõ, đích 09.03 nêu đích danh ⇒ đúng luật mục 3."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom0902.nhom mục (c): '… (c) “Chè” sâm (hỗn hợp chiết suất sâm với lactoza hoặc glucoza) (nhóm 21.06).' Dấu hiệu loại trừ rõ, đích 21.06 nêu đích danh; vế 'lactoza hoặc glucoza' là hai vế cùng về đích nên không bị tách thành hai nhánh độc lập."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = chè Paragoay → 0903, 'không' = chè từ cây thuộc giống Thea → 0902 (chính nhóm); đích có trong câu trích; `hoi` không nhắc mã phân nhóm/WCO ⇒ đạt luật máy."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = hỗn hợp chiết suất sâm với lactoza hoặc glucoza → 2106, 'không' = chè Thea → 0902; đích có trong câu trích."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = chất caffeine → 2939, 'không' = chè → 0902; đích có trong câu trích."
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "`quyTac` chép nguyên văn câu định nghĩa 'viên' của phan09.phan; `trich` GIỮ NGUYÊN dấu xuống dòng của nguồn (bộ kiểm byte-exact không duyệt `boPhan` — nếu bỏ dấu xuống dòng thì câu trích không còn nguyên văn). GHI NHẬN: `tomTat` gom 'hàm lượng' về 'hàm lượng chất dính' — cách đọc đúng theo Chú giải GTS của HS (giới hạn 3 % là của chất dính), mọi từ đều có trong câu trích; `quyTac` nguyên văn nên căn cứ không mất. Người duyệt xác nhận lại khi duyệt lô."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090210 ('090210 Tea, green; (not fermented), in immediate packings of a content not exceeding 3kg'); fact 'la_che_xanh_chua_um_men' bám đúng từ nguồn."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Ngưỡng số có cấu trúc đúng chuẩn: 'trong_luong_dong_goi_san <= 3 kg', số 3 có nguyên văn trong câu trích, `donVi` 'kg' khớp với fact ⇒ cổng ngưỡng số của runtime bắt được; đây là mẫu tốt, KHÔNG sửa."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090220; fact 'la_che_xanh_chua_um_men' bám đúng từ nguồn."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "Ngưỡng số đúng chiều với nguồn ('exceeding 3kg' → '> 3 kg'); số 3 có nguyên văn trong câu trích, `donVi` khớp fact."
+    },
+    {
+      "index": "tieuChi6[4]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090230 ('090230 Tea, black; (fermented) and partly fermented tea, in immediate packings of a content not exceeding 3kg'); fact 'la_che_den_um_men_hoac_um_men_mot_phan' bám đúng từ nguồn."
+    },
+    {
+      "index": "tieuChi6[5]",
+      "hanhDong": "giu",
+      "lyDo": "Ngưỡng số '<= 3 kg' có nguyên văn trong câu trích, `donVi` khớp fact."
+    },
+    {
+      "index": "tieuChi6[6]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090240 ('090240 Tea, black; (fermented) and partly fermented tea, in immediate packings of a content exceeding 3kg'); fact bám đúng từ nguồn."
+    },
+    {
+      "index": "tieuChi6[7]",
+      "hanhDong": "giu",
+      "lyDo": "Ngưỡng số '> 3 kg' có nguyên văn trong câu trích, `donVi` khớp fact."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09021010 có trong tax.*; `dieuKien` = 'Lá chè' nguyên văn; `tieuChi.fact` bám đúng."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09021090 ('Loại khác') có trong tax.*; `dieuKien` lấy từ wco.090210 theo mẫu 'Loại khác: <tên WCO>' đã dùng ở kho đã gộp (lô 046); `loaiKhac` để máy tự điền theo biểu thuế."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09022010 có trong tax.*; `dieuKien` = 'Lá chè' nguyên văn; `tieuChi.fact` bám đúng."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09022090 ('Loại khác') có trong tax.*; `dieuKien` lấy từ wco.090220 theo mẫu đã dùng ở kho đã gộp; `loaiKhac` để máy tự điền."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09023010 có trong tax.*; `dieuKien` = 'Lá chè' nguyên văn; `tieuChi.fact` bám đúng."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09023090 ('Loại khác') có trong tax.*; `dieuKien` lấy từ wco.090230 theo mẫu đã dùng ở kho đã gộp; `loaiKhac` để máy tự điền."
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09024010 có trong tax.*; `dieuKien` = 'Lá chè' nguyên văn; `tieuChi.fact` bám đúng."
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09024090 ('Loại khác') có trong tax.*; `dieuKien` lấy từ wco.090240 theo mẫu đã dùng ở kho đã gộp; `loaiKhac` để máy tự điền."
+    }
+  ]
+}
