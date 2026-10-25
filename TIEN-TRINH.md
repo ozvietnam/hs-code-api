@@ -94,6 +94,22 @@
 30 mục đã soát (5 khối) → `nguonLoai: NGUOI_DUYET`. `tieuChi6`/`dong8`/`cay` **giữ nguyên**
 (`AI_DA_KIEM` / `MAY_SUY`) vì ngoài phạm vi soát.
 
+## Lỗi KỆ SÁCH phát hiện khi chạy CI (KHÔNG phải lỗi lô 044)
+
+CI `test` của PR #440 đỏ ở `scripts/test-data-sources.mjs`: "tệp chưa khai nguồn trong
+data/SOURCES.json: legal-status-miss.jsonl". **Nguyên nhân nằm ở `main`, không phải ở lô 004:**
+commit `c571da1` (PR #442) thêm `data/legal-status-miss.jsonl` vào repo (file bị TRACK) mà không khai
+trong `data/SOURCES.json` → check đỏ. Bản `main` cũng đỏ (run "Full test suite" của `c571da1` =
+failure). Đã có PR #444 (nhánh `fix/sources-legal-status-miss`) sửa đúng 5 dòng SOURCES.json —
+nhánh lô 044 đã **merge nhánh đó vào** để CI chạy được (không sửa gì của nội dung lô 044).
+
+**Nguyên nhân gốc (lỗi kệ sách thật, cần sửa riêng):** `api/dataset.js:46` ghi thẳng
+`path.join(process.cwd(), 'data', 'legal-status-miss.jsonl')` — **không** qua
+`lib/data-paths.js#dataPath` và không có `test-isolate-data.mjs` → mỗi lần `npm test` **ghi bẩn
+repo** (append 1 dòng vào tệp đang được track) → vi phạm luật bất biến 8 của CLAUDE.md ("Test KHÔNG
+được ghi vào `data/` thật") và làm CI đỏ. Trong lô 044 em đã xoá tệp bị test ghi bẩn và
+`git checkout --` trước khi commit.
+
 ## Bài học rút ra (đề xuất cho lô sau)
 
 - **Máy kiểm KHÔNG có trần 300 ký tự** cho `trich` (chỉ 600) → phải đo bằng script, không đo bằng mắt.
