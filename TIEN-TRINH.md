@@ -5,7 +5,7 @@
 
 # SOẠN lô 049 — phiên `dev-zcode-mm` (25/10/2026)
 
-- **Nhánh:** `so-tay/lo-049` (PR mở sau khi commit — **KHÔNG merge**) · **Nhóm:** `0805 0806 0807 0808 0809 0810`
+- **Nhánh:** `so-tay/lo-049` (**PR #453**, **KHÔNG merge**) · **Nhóm:** `0805 0806 0807 0808 0809 0810`
 - **Nhóm của lô lấy theo `docs/giao-viec/so-tay-lo.csv` dòng 049** (`0805 0806 0807 0808 0809 0810`, 42 144 ký tự nguồn).
   **Lệnh mẫu trong `brief-st-lo049.md` SAI** — dòng 6 ghi `--nhom=7615,9609,3215,6306,6804,7412` (nhóm của **lô 001**);
   đã theo CSV theo luật [[so-tay-lo-quy-trinh]] (đã lệch lần thứ 5 với cùng một kiểu copy-paste).
