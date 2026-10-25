@@ -97,9 +97,16 @@
 ## Bài học rút ra (đề xuất cho lô sau)
 
 - **Máy kiểm KHÔNG có trần 300 ký tự** cho `trich` (chỉ 600) → phải đo bằng script, không đo bằng mắt.
-  Nên thêm luật đo vào `check-so-tay.mjs` (độ dài ≤ 300) cho các lô sau.
+  **Đo bán kính nổ (25/10/2026, toàn sổ tay 11.444 câu trích): 207 mục (1,8 %) VƯỢT 300 ký tự và
+  0 mục vượt 600 → 100 % lọt máy.** Phần lớn là `phamVi` (6211: 9 mục, 5208: 6, 0207: 6, 0305: 6,
+  5703: 5, 6201: 5); dài nhất 8712 `phamVi` = 598. Vì đã có 207 mục ĐÃ ĐƯỢT DUYỆT vi phạm, đưa luật
+  vào `lib/so-tay.js` sẽ làm lần nạp sau xoá hàng loạt mục đang tốt → theo luật nhà (đo trước bán
+  kính nổ), luật này nên nằm ở **prompt soạn** (`SYSTEM` trong `scripts/build-so-tay.mjs`) + một kiểm
+  **chỉ báo** (không xoá) trong `check-so-tay.mjs`. Đề xuất — người duyệt quyết.
 - **Chiều nghĩa `fact` + `value` là thứ máy không bao giờ kiểm** → nên có luật: fact âm chỉ được
-  `value:true`; fact dương thì `value:false` nghĩa là mục đó loại trừ. Đề xuất thêm vào `lib/so-tay.js`.
+  `value:true`; fact dương thì `value:false` nghĩa là mục đó loại trừ. **Đo trước (25/10/2026, 410
+  nhóm): mẫu "fact âm + value=false" có 0 mẫu trong sổ tay đã gộp; "fact âm + value=true" 8 mẫu;
+  "fact dương + value=false" 8 mẫu** → luật này xoá 0 mục đang tốt, đưa vào `lib/so-tay.js` được.
 - **`trich` KHÔNG vào prompt vòng 2** (chỉ `fact`/`text`/`hoi`/`dieuKien`) → lỗi ở `trich` không ảnh hưởng
   trực tiếp tới LLM, nhưng lỗi ở `text`/`hoi`/`dieuKien` thì có; soát phải ưu tiên 3 trường đó.
 
