@@ -3,6 +3,126 @@
 <!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
 ---
 
+# SOÁT ĐỘC LẬP lô 046 — phiên `dev-soat-doc-lap-lo046` (25/10/2026)
+
+- **Nhánh:** `so-tay/lo-046` (PR #448, **KHÔNG merge**) · **Nhóm:** `0701,0702,0703,0704,0705,0706`
+- **Người soát KHÁC người soạn:** `dev-soat-doc-lap-lo046` ≠ `dev-zcode-mm` (đúng mục 4 giao việc).
+- **`docs/giao-viec/so-tay-lo.csv` dòng 046**: `trang_thai=dang-lam`, `nguoi_lam=soat-doc-lap-mm`, `pr=448`
+  (PR **chưa merge** → chưa đặt `xong`; người gộp đặt `trang_thai=xong` khi merge, đúng mục 4).
+- **Công cụ phụ** (tạm, KHÔNG commit): `tmp/so-tay/review-helper.mjs` (in từng mục trong phạm vi mục 4
+  kèm **đoạn nguồn quanh mỗi mảnh trích** để mắt thấy ngoại lệ nằm NGAY SAU câu trích) và
+  `tmp/so-tay/clip-check.mjs` (đo trường runtime sẽ bị cắt: `phamVi.text` 220 · `boPhan.tomTat` 160 ·
+  `loaiTru.dieuKien` 55 · `phanBiet.hoi` 110 · `dong8.dieuKien` 90).
+
+## Phạm vi soát
+
+- **23 mục trong 5 khối** (mục 4 giao việc) — đọc lại **TỪNG MỤC** cùng nguồn nguyên văn
+  `tmp/so-tay/nguon/<nhom>.txt`, không soát mẫu:
+  | Nhóm | `phamVi` | `boPhan` | `dieuKienVao` | `loaiTru` | `phanBiet` | Tổng |
+  |---|---|---|---|---|---|---|
+  | 0701 | 1 | 0 | 1 | 1 | 1 | 4 |
+  | 0702 | 1 | 0 | 1 | 0 | 0 | 2 |
+  | 0703 | 1 | 0 | 1 | 0 | 0 | 2 |
+  | 0704 | 1 | 0 | 1 | 1 | 1 | 4 |
+  | 0705 | 1 | 0 | 1 | 1 | 1 | 4 |
+  | 0706 | 1 | 0 | 1 | 3 | 2 | 7 |
+  | **Tổng** | 6 | 0 | 6 | 6 | 5 | **23** |
+- **47 mục ngoài phạm vi** (`tieuChi6` 20 + `dong8` 27) đọc để kiểm **độ phủ** và **chiều đúng–sai**,
+  KHÔNG sửa (đúng thực hành lô 041/042/044).
+- Hồ sơ soát: `review/0701.json` … `review/0706.json` (kèm `lyDo` từng mục) · kết quả:
+  **SỬA 2 mục · XOÁ 0 · GIỮ 21** · script áp: `scripts/apply-review-lo046.mjs`.
+
+## Hai lỗi bắt được — máy đều KHÔNG bắt được
+
+1. **`0704 phanBiet[0].hoi` MẤT ĐỊNH NGỮ GIỚI HẠN "khác"** (mẫu lô 034). Nguồn: *"các loại **rễ củ
+   khác** thuộc chi Brassica"*; bản nháp giữ "khác" ở `loaiTru[0].dieuKien` nhưng **bỏ ở `hoi`** →
+   câu hỏi rộng hơn nguồn. Hệ quả thật: **SU HÀO** là rễ củ của chi Brassica NHƯNG lại nằm TRONG
+   nhóm (mục (3) của chú giải nhóm) → người khai trả lời "có" thì bị dẫn sang `0706|1214` (sai).
+   Sửa: chèn lại đúng chữ "khác" của nguồn; giữ nguyên `neuCo`/`neuKhong`/`nguon`/`trich`.
+2. **`0705 dieuKienVao[0].trich` chỉ phủ PHẦN ĐẦU của nhóm** (mẫu lô 030 3802 — "điều kiện chỉ phủ
+   một phần"). Câu trích cũ (*"Nhóm này bao gồm rau diếp, xà lách (Lactuca sativa) tươi hoặc ướp
+   lạnh"*) chỉ chứng minh điều kiện "tươi hoặc ướp lạnh" cho phần **rau diếp, xà lách**; nhóm 0705 còn
+   phần **rau diếp xoăn (Cichorium spp.)**, và câu thứ hai của chú giải nhóm mới nói rõ phần đó cũng
+   phải "tươi hoặc ướp lạnh". Điều kiện ở đây ĐÚNG cho cả nhóm (nên không xoá), nhưng câu trích thì
+   chưa đủ căn cứ. Sửa: trích thêm nguyên văn câu *"Ngoài ra, nhóm này cũng bao gồm cả rau diếp xoăn
+   (Cichorium spp.) tươi hoặc ướp lạnh…"* (một đoạn liên tiếp, 204 ký tự ≤ 300 luật 2).
+
+## Đã kiểm và GIỮ (21 mục) — vì sao KHÔNG phải lỗi
+
+- **0701 `phamVi`**: giữ nguyên vế *"ngoài những loại khác, nhóm này **có thể** kể đến…"* — giữ đúng
+  độ lược "có thể" của nguồn (không biến thành khẳng định).
+- **0701 `dieuKienVao[0]`**: điều kiện "tươi hoặc ướp lạnh" **đúng tầng** (chính tiêu đề nhóm dùng khái
+  niệm này — mẫu hợp lệ như 7314 "dây"), phủ cả nhóm. Câu trích cắt trước "(trừ khoai lang thuộc
+  nhóm 07.14)" nhưng ngoại lệ đó **đã có đủ** ở `loaiTru[0]` + `phanBiet[0]` của cùng nhóm.
+  Đọc câu KẾ TIẾP trong nguồn để chắc không phải "cắt trích lách máy": câu sau là vế kể thêm, KHÔNG
+  phải câu cho phép → không dính mẫu lô 041.
+- **0702**: nguồn mỏng nhất lô (1 câu) → 2 mục, đều đúng; **không** ghi `loaiTru` cho các loại trừ
+  cấp chương (rau khô → 07.12, thức ăn gia súc → 12.14) vì nguồn chỉ nêu **DẢI "07.01 đến 07.11"** —
+  luật 3 cấm dùng dải số làm đích loại trừ.
+- **0703 `phamVi`**: nêu đủ 3 phần (1)(2)(3) nối bằng "…", mỗi mảnh là đoạn LIÊN TIẾP trong nguồn.
+- **0704/0705/0706 `loaiTru`**: đều có **dấu hiệu loại trừ** ("trừ" / "không bao gồm") và mã đích **có
+  trong câu trích**; `sangNhom` nhiều đích (`0706|1214`, `0601|1212`) chỉ ghi khi từng mã được nêu.
+- **0706 `dieuKienVao[0]`**: câu *"Những sản phẩm này **vẫn** ở trong nhóm này cho dù **đã hoặc chưa**
+  cắt bỏ lá"* là câu CHO PHÉP → **không** được biến thành điều kiện; bản nháp đã không dùng nó ✓.
+- **Cả 5 `phanBiet`**: chiều Có/Không đúng, nhánh "không" = **chính nhóm** (mẫu đã gộp 552/739),
+  `hoi` không nhắc mã.
+- **Trường runtime**: đo bằng `clip-check.mjs` → **0 trường bị cắt** ở cả 6 nhóm (mẫu lô 038: `tomTat`
+  192 ký tự → mất đúng kết luận).
+
+## Ghi nhận ngoài phạm vi (KHÔNG sửa — để người duyệt quyết)
+
+1. **0701**: chú giải chương 7 mục 3(c) loại *"bột, bột thô, bột mịn, mảnh lát, hạt và viên của khoai
+   tây (nhóm 11.05)"* — khoản loại trừ liên quan trực tiếp tới 0701 nhưng bản nháp **không** ghi
+   `loaiTru` cho 11.05; bước soát chỉ sửa/xoá được (không thêm mục) → người duyệt cân nhắc.
+2. **0703**: 4 dòng 8 số "Củ giống" + 3 dòng "Loại khác" ghi thêm **tên cha** trong `dieuKien`
+   (vd *"Củ giống — Hành, hẹ (chú giải nhóm 07.03)"*) trong khi câu trích của dòng đó chỉ là dòng biểu
+   thuế — tên cha lấy từ chú giải nhóm và **đã ghi rõ nguồn trong ngoặc**; máy không kiểm `dieuKien`.
+3. **0704 `dong8[6]` (07049030)**: `dieuKien` liệt kê "bắp cải vụ xuân, bắp cải xoăn, rau họ bắp cải
+   lá khác, bắp cải mọc mầm khác" (**không** có su hào) nhưng `tieuChi.fact` lại là
+   `…_va_su_hao` → mâu thuẫn nội bộ giữa hai trường cùng một mục.
+4. **0705**: **nguồn tự chồng lấn** — chú giải nhóm có (1) *"Rau diếp xoăn rễ củ (Cichorium intybus var.
+   foliosum)"* thuộc 0705, trong khi câu loại trừ lại loại *"cây và rễ rau diếp xoăn (nhóm 06.01 hoặc
+   12.12)"* → câu hỏi *"Hàng là cây hoặc rễ rau diếp xoăn?"* với hàng "rau diếp xoăn rễ củ" có thể bị
+   trả lời "có" và dẫn sai. Em **không** sửa (không được thêm chữ ngoài câu trích; mâu thuẫn nằm ở
+   nguồn) → người duyệt quyết.
+5. **0706**: `loaiTru[2]` (thức ăn cho gia súc → 12.14) **chưa có `phanBiet`** tương ứng (hai khoản
+   còn lại thì có); thông tin *"đã hoặc chưa cắt bỏ lá vẫn ở 0706"* chưa có chỗ nào trong sổ tay và
+   **không** nén vào `dieuKienVao` (sẽ đảo chiều — mẫu lô 044 0506/0507/0508).
+6. **Mẫu chung của cả kho (không phải lỗi lô 046)**: `hoi` dạng chọn "A **hay** B?" (vd 0701 "Hàng là
+   khoai lang hay khoai tây?") làm nhánh Có/Không mơ hồ khi runtime in "có→0714 / không→0701". Quét
+   `data/so-tay/*.json`: **56/818 `phanBiet`** có "hay" → mẫu có sẵn trong kho đã gộp, em **không**
+   sửa lô này; đề xuất mở đợt vệ sinh chung (hoặc luật máy) thay vì sửa lẻ từng lô.
+
+## Kiểm sau khi áp (đều xanh)
+
+| Kiểm | Kết quả |
+|---|---|
+| `scripts/check-trich-nguyen-van.mjs` (byte-exact) | **OK — 70 mục nguyên văn tuyệt đối** trong đúng khối nguồn (chạy trên `tmp/so-tay/raw` và trên `data/so-tay/`) |
+| `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` | 6 nhóm **70/70 mục**, 0 mục hỏng |
+| `npm run so-tay:check` | 422 nhóm, 12.345 mục, **0 mục không kiểm được nguồn** |
+| `node scripts/check-cay.mjs --nhom=<6 nhóm> --chi-tiet` | 6/6 nhóm đủ, **0 lỗi lệch cây** |
+| `npm test` | **ALL TESTS PASSED** |
+
+## Nhãn nguồn (luật 11)
+
+23 mục đã soát (5 khối) → `nguonLoai: NGUOI_DUYET` (4 + 2 + 2 + 4 + 4 + 7). `tieuChi6`/`dong8`/`cay`
+**giữ nguyên** (`AI_DA_KIEM` / `MAY_SUY`) vì ngoài phạm vi soát. Nạp lại theo 2 pha (memory
+`so-tay-apply-review-2-phase`): `TARGET=raw` (áp `thayDoi` lên bản nháp) → nạp lại bằng
+`build-so-tay.mjs --tu-tep --force` → `TARGET=data` (chỉ đổi `nguonLoai`).
+
+## Bài học rút ra (đề xuất cho lô sau)
+
+- **`dieuKienVao` phải trích câu phủ CẢ NHÓM, kể cả khi nhóm có nhiều câu** — lô 046 có 2 nhóm có
+  "phần đầu + phần sau" (0705) và 1 nhóm có câu thứ hai là phần chính (0702). Nhóm có **nhiều câu
+  định nghĩa cạnh nhau** thì điều kiện phải được chứng minh cho **từng câu**, không chỉ câu đầu.
+- **Câu hỏi phân biệt phải giữ định ngữ giới hạn của nguồn** ("khác", "đã hoặc chưa", "chưa") — mất
+  1 chữ là đổi cả nghĩa loại trừ (0704).
+- **Chỗ lược bằng "…" phải hỏi: đoạn bị lược có chứa ngoại lệ / điều kiện của phần còn lại không** —
+  0705 lược mất câu dẫn "…rau diếp xoăn (Cichorium spp.) tươi hoặc ướp lạnh…" (điều kiện của phần
+  thứ hai). Máy không bắt; người soát phải đọc câu kế tiếp.
+
+---
+
 # SOẠN lô 046 — phiên `dev-zcode-mm` (25/10/2026)
 
 - **Nhánh:** `so-tay/lo-046` @ c0eed65 (main mới nhất) · **Nhóm:** `0701,0702,0703,0704,0705,0706` (Chương 07 — rau)
