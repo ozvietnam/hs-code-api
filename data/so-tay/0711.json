@@ -1,0 +1,572 @@
+{
+ "nhom": "0711",
+ "phamVi": {
+  "text": "Rau đã được xử lý chỉ để bảo quản tạm thời trong quá trình vận chuyển hoặc lưu trữ trước khi sử dụng, với điều kiện vẫn không thể ăn ngay được khi ở dạng đó.",
+  "nguon": "nhom0711.nhom",
+  "trich": "Nhóm này áp dụng cho các loại rau đã được xử lý chỉ để bảo quản tạm thời trong quá trình vận chuyển hoặc lưu trữ trước khi sử dụng…với điều kiện chúng vẫn không thể ăn ngay được khi ở dạng đó.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "da_xu_ly_chi_de_bao_quan_tam_thoi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom0711.nhom",
+   "trich": "Nhóm này áp dụng cho các loại rau đã được xử lý chỉ để bảo quản tạm thời trong quá trình vận chuyển hoặc lưu trữ trước khi sử dụng…với điều kiện chúng vẫn không thể ăn ngay được khi ở dạng đó.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "khong_the_an_ngay_duoc_khi_o_dang_do",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom0711.nhom",
+   "trich": "với điều kiện chúng vẫn không thể ăn ngay được khi ở dạng đó",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "xu_ly_phuong_phap_dac_biet_ngoai_bao_quan_tam_thoi",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom0711.nhom",
+   "trich": "Tuy nhiên nhóm này loại trừ những sản phẩm mà ngoài việc bảo quản tạm thời bằng cách ngâm trong nước muối, cũng đã được xử lý theo phương pháp đặc biệt (ví dụ: ngâm trong dung dịch natri carbonate, lên men lactic); chúng thuộc Chương 20",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [
+  {
+   "hoi": "Hàng đã được bảo quản bằng khí sunphurơ không?",
+   "neuCo": "07112010|07114010|07115110|07115910|07119040|07119060",
+   "neuKhong": "07112090|07114090|07115190|07115990",
+   "nguon": "nhom0711.nhom",
+   "trich": "Nhóm này áp dụng cho các loại rau đã được xử lý chỉ để bảo quản tạm thời trong quá trình vận chuyển hoặc lưu trữ trước khi sử dụng (ví dụ: bảo quản bằng khí sunphurơ, ngâm nước muối…)…với điều kiện chúng vẫn không thể ăn ngay được khi ở dạng đó.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là hành tây không?",
+   "neuCo": "07119040|07119050",
+   "neuKhong": "07119010|07119020|07119030|07119060|07119090",
+   "nguon": "nhom0711.nhom",
+   "trich": "các loại chính là hành tây, ôliu, nụ bạch hoa, dưa chuột, dưa chuột ri, nấm, nấm cục (truffle) và cà chua",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "071120",
+   "fact": "la_oliu",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.071120",
+   "trich": "071120 Vegetables; olives, provisionally preserved but unsuitable in that state for immediate consumption",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "071120",
+   "fact": "da_bao_quan_tam_thoi_khong_an_ngay_duoc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.071120",
+   "trich": "071120 Vegetables; olives, provisionally preserved but unsuitable in that state for immediate consumption",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "071140",
+   "fact": "la_dua_chuot_va_dua_chuot_ri",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.071140",
+   "trich": "071140 Vegetables; cucumbers and gherkins, provisionally preserved but unsuitable in that state for immediate consumption",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "071140",
+   "fact": "da_bao_quan_tam_thoi_khong_an_ngay_duoc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.071140",
+   "trich": "071140 Vegetables; cucumbers and gherkins, provisionally preserved but unsuitable in that state for immediate consumption",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "071151",
+   "fact": "la_nam_thuoc_chi_agaricus",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.071151",
+   "trich": "071151 Vegetables; mushrooms of the genus Agaricus, provisionally preserved but unsuitable in that state for immediate consumption",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "071151",
+   "fact": "da_bao_quan_tam_thoi_khong_an_ngay_duoc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.071151",
+   "trich": "071151 Vegetables; mushrooms of the genus Agaricus, provisionally preserved but unsuitable in that state for immediate consumption",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "071159",
+   "fact": "la_nam_khac_chi_agaricus",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.071159",
+   "trich": "071159 Vegetables; mushrooms other than of the genus Agaricus, provisionally preserved but unsuitable in that state for immediate consumption",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "071159",
+   "fact": "da_bao_quan_tam_thoi_khong_an_ngay_duoc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.071159",
+   "trich": "071159 Vegetables; mushrooms other than of the genus Agaricus, provisionally preserved but unsuitable in that state for immediate consumption",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "071190",
+   "fact": "la_rau_khac_va_hon_hop_rau",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.071190",
+   "trich": "071190 Vegetables and mixed vegetables; n.e.c. in heading no. 0711, provisionally preserved but unsuitable in that state for immediate consumption",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "071190",
+   "fact": "da_bao_quan_tam_thoi_khong_an_ngay_duoc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.071190",
+   "trich": "071190 Vegetables and mixed vegetables; n.e.c. in heading no. 0711, provisionally preserved but unsuitable in that state for immediate consumption",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "07112010",
+   "dieuKien": "Đã bảo quản bằng khí sunphurơ",
+   "nguon": "tax.07112010",
+   "trich": "07112010 - - Đã bảo quản bằng khí sunphurơ",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "07112090",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.07112090",
+   "trich": "07112090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "071120",
+    "truAnhEm": [
+     "07112010"
+    ],
+    "toTienCoTen": "071120",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "07114010",
+   "dieuKien": "Đã bảo quản bằng khí sunphurơ",
+   "nguon": "tax.07114010",
+   "trich": "07114010 - - Đã bảo quản bằng khí sunphurơ",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "07114090",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.07114090",
+   "trich": "07114090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "071140",
+    "truAnhEm": [
+     "07114010"
+    ],
+    "toTienCoTen": "071140",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "07115110",
+   "dieuKien": "Đã bảo quản bằng khí sunphurơ",
+   "nguon": "tax.07115110",
+   "trich": "07115110 - - - Đã bảo quản bằng khí sunphurơ",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "07115190",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.07115190",
+   "trich": "07115190 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "071151",
+    "truAnhEm": [
+     "07115110"
+    ],
+    "toTienCoTen": "071151",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "07115910",
+   "dieuKien": "Đã bảo quản bằng khí sunphurơ",
+   "nguon": "tax.07115910",
+   "trich": "07115910 - - - Đã bảo quản bằng khí sunphurơ",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "07115990",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.07115990",
+   "trich": "07115990 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "071159",
+    "truAnhEm": [
+     "07115910"
+    ],
+    "toTienCoTen": "071159",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "07119010",
+   "dieuKien": "Ngô ngọt",
+   "nguon": "tax.07119010",
+   "trich": "07119010 - - Ngô ngọt",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "07119020",
+   "dieuKien": "Quả ớt (chillies) (quả thuộc chi Capsicum)",
+   "nguon": "tax.07119020",
+   "trich": "07119020 - - Quả ớt (chillies) (quả thuộc chi Capsicum)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "07119030",
+   "dieuKien": "Nụ bạch hoa",
+   "nguon": "tax.07119030",
+   "trich": "07119030 - - Nụ bạch hoa",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "07119040",
+   "dieuKien": "Hành tây, đã được bảo quản bằng khí sunphurơ",
+   "nguon": "tax.07119040",
+   "trich": "07119040 - - Hành tây, đã được bảo quản bằng khí sunphurơ",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "07119050",
+   "dieuKien": "Hành tây, đã được bảo quản trừ loại được bảo quản bằng khí sunphurơ",
+   "nguon": "tax.07119050",
+   "trich": "07119050 - - Hành tây, đã được bảo quản trừ loại được bảo quản bằng khí sunphurơ",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "07119060",
+   "dieuKien": "Loại khác, đã được bảo quản bằng khí sunphurơ",
+   "nguon": "tax.07119060",
+   "trich": "07119060 - - Loại khác, đã được bảo quản bằng khí sunphurơ",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "071190",
+    "truAnhEm": [
+     "07119010",
+     "07119020",
+     "07119030",
+     "07119040",
+     "07119050"
+    ],
+    "toTienCoTen": "071190",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "07119090",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.07119090",
+   "trich": "07119090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "071190",
+    "truAnhEm": [
+     "07119010",
+     "07119020",
+     "07119030",
+     "07119040",
+     "07119050",
+     "07119060"
+    ],
+    "toTienCoTen": "071190",
+    "dinhNghiaDuoc": false
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "0711",
+    "cap": 4,
+    "cha": "07",
+    "tenVi": "Rau các loại đã bảo quản tạm, nhưng không ăn ngay được.",
+    "tenEn": "Vegetables provisionally preserved, but unsuitable in that state for immediate consumption",
+    "suyRa": false
+   },
+   {
+    "id": "071120",
+    "cap": 6,
+    "cha": "0711",
+    "tenVi": "Ôliu",
+    "tenEn": "Vegetables; olives, provisionally preserved but unsuitable in that state for immediate consumption",
+    "suyRa": false
+   },
+   {
+    "id": "07112010",
+    "cap": 8,
+    "cha": "071120",
+    "tenVi": "Đã bảo quản bằng khí sunphurơ",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "07112090",
+    "cap": 8,
+    "cha": "071120",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "071140",
+    "cap": 6,
+    "cha": "0711",
+    "tenVi": "Dưa chuột và dưa chuột ri",
+    "tenEn": "Vegetables; cucumbers and gherkins, provisionally preserved but unsuitable in that state for immediate consumption",
+    "suyRa": false
+   },
+   {
+    "id": "07114010",
+    "cap": 8,
+    "cha": "071140",
+    "tenVi": "Đã bảo quản bằng khí sunphurơ",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "07114090",
+    "cap": 8,
+    "cha": "071140",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "07115",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "0711",
+    "tenVi": "Nấm và nấm cục (truffles)",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "071151",
+    "cap": 6,
+    "cha": "07115",
+    "tenVi": null,
+    "tenEn": "Vegetables; mushrooms of the genus Agaricus, provisionally preserved but unsuitable in that state for immediate consumption",
+    "suyRa": false
+   },
+   {
+    "id": "07115110",
+    "cap": 8,
+    "cha": "071151",
+    "tenVi": "Đã bảo quản bằng khí sunphurơ",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "07115190",
+    "cap": 8,
+    "cha": "071151",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "071159",
+    "cap": 6,
+    "cha": "07115",
+    "tenVi": "Loại khác",
+    "tenEn": "Vegetables; mushrooms other than of the genus Agaricus, provisionally preserved but unsuitable in that state for immediate consumption",
+    "suyRa": false
+   },
+   {
+    "id": "07115910",
+    "cap": 8,
+    "cha": "071159",
+    "tenVi": "Đã bảo quản bằng khí sunphurơ",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "07115990",
+    "cap": 8,
+    "cha": "071159",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "071190",
+    "cap": 6,
+    "cha": "0711",
+    "tenVi": "Rau khác; hỗn hợp các loại rau",
+    "tenEn": "Vegetables and mixed vegetables; n.e.c. in heading no. 0711, provisionally preserved but unsuitable in that state for immediate consumption",
+    "suyRa": false
+   },
+   {
+    "id": "07119010",
+    "cap": 8,
+    "cha": "071190",
+    "tenVi": "Ngô ngọt",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "07119020",
+    "cap": 8,
+    "cha": "071190",
+    "tenVi": "Quả ớt (chillies) (quả thuộc chi Capsicum)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "07119030",
+    "cap": 8,
+    "cha": "071190",
+    "tenVi": "Nụ bạch hoa",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "07119040",
+    "cap": 8,
+    "cha": "071190",
+    "tenVi": "Hành tây, đã được bảo quản bằng khí sunphurơ",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "07119050",
+    "cap": 8,
+    "cha": "071190",
+    "tenVi": "Hành tây, đã được bảo quản trừ loại được bảo quản bằng khí sunphurơ",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "07119060",
+    "cap": 8,
+    "cha": "071190",
+    "tenVi": "Loại khác, đã được bảo quản bằng khí sunphurơ",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "07119090",
+    "cap": 8,
+    "cha": "071190",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom0711.nhom",
+  "tax.07112010",
+  "tax.07112090",
+  "tax.07114010",
+  "tax.07114090",
+  "tax.07115110",
+  "tax.07115190",
+  "tax.07115910",
+  "tax.07115990",
+  "tax.07119010",
+  "tax.07119020",
+  "tax.07119030",
+  "tax.07119040",
+  "tax.07119050",
+  "tax.07119060",
+  "tax.07119090",
+  "wco.071120",
+  "wco.071140",
+  "wco.071151",
+  "wco.071159",
+  "wco.071190"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-25T15:18:57.722Z",
+  "ms": 4
+ },
+ "kiemTra": {
+  "tong": 31,
+  "dat": 31,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
