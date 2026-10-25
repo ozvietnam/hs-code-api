@@ -1,0 +1,142 @@
+{
+ "nhom": "0407",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-25T17:32:00+07:00",
+ "soat": 24,
+ "daKiem": 24,
+ "xoa": 0,
+ "sua": 3,
+ "phamViSoat": "Toàn bộ 24 mục của bản nháp tmp/so-tay/raw/0407.json (1 phamVi + 2 dieuKienVao + 0 loaiTru + 3 phanBiet + 5 tieuChi6 + 1 cay.tenDien + 12 dong8), đọc cùng tmp/so-tay/nguon/0407.txt; đối chiếu wco.0407xx, tax.0407xxxx và cây lib/hs-tree.js.",
+ "ghiChu": "Audit 0407: đọc tay từng mục cùng nguồn. Xoá 0, sửa 3, giữ 21. Nhóm 0407 có nguồn cực mỏng — chú giải nhóm chỉ có HAI câu, không có điều kiện vào, không có loại trừ; phần lớn nội dung nhóm đến từ tiêu đề WCO và biểu thuệ. Lỗi duy nhất đã bắt (máy KHÔNG bắt): 3 câu trích đặt dấu lược '…' giữa HAI CÂU LIỀN KỀ trong cùng một đoạn nguồn ('…của tất cả các loài gia cầm và chim.…Nhóm cũng bao gồm…') — tức lược một chỗ KHÔNG có gì để lược, nên câu trích không nguyên văn (nguồn có dấu chấm, bản nháp có '…'); sửa bằng cách nối thẳng hai câu. Ghi chú (KHÔNG phải lỗi, không sửa): (1) `loaiTru` để rỗng là ĐÚNG — nguồn của nhóm không có câu loại trừ nào; các mục loại trừ của Chú giải 5 Chương 4 (whey, albumin, casein…) không liên quan tới trứng, và lòng đỏ trứng/ trứng bóc vỏ sang 0408 cũng KHÔNG được ghi vì nguồn không nêu đích danh (luật 3). (2) `dieuKienVao[1]` ('trứng nguyên vỏ'): câu trích nói 'nguyên vỏ' cho phần trứng bảo quản/làm chín; tính chất 'in shell' của CẢ nhóm được xác nhận ở tên WCO của mọi phân nhóm (0407.11/19/21/29/90 đều 'Birds' eggs, in shell') và ở tiêu đề nhóm — giữ nguyên. (3) `phanBiet[1]` hỏi loài gà: nhánh 'có' gồm 0407.11.x (Gallus domesticus theo WCO 040711), 0407.21.00 và 0407.90.10 (theo biểu thuế), nhánh 'không' gồm 0407.19.x, 0407.29.x, 0407.90.20 và 0407.90.90 — đối chiếu đủ, không đảo nhánh. (4) `cay.tenDien[0]` (040711) đúng: nút 6 số này CHƯA có tên tiếng Việt trong cây (tenVi = null) và WCO nêu tên; các nút 0407.19/21/29/90 đã có tên nên không điền.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không nguyên văn): bản nháp đặt dấu lược '…' giữa HAI CÂU LIỀN KỀ trong cùng đoạn nguồn ('…gia cầm và chim.…Nhóm cũng bao gồm…') — nguồn không lược gì cả, nên chuỗi trích không tồn tại nguyên văn trong nguồn (nguồn có dấu chấm, bản nháp có '…'). Sửa bằng cách nối thẳng hai câu, giữ nguyên toàn bộ nội dung; `text` đã đúng phạm vi nhóm nên giữ nguyên.",
+   "sua": {
+    "trich": "Nhóm này bao gồm trứng đã thụ tinh để ấp và trứng sống khác (kể cả ướp lạnh) của tất cả các loài gia cầm và chim. Nhóm cũng bao gồm trứng đã bảo quản hoặc đã làm chín, nguyên vỏ."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không nguyên văn): cùng lỗi dấu lược '…' chèn giữa hai câu liền kề — sửa y hệt `phamVi`. `fact` 'trang_thai_trung' và `value` (ba trạng thái: trứng đã thụ tinh để ấp / trứng sống khác kể cả ướp lạnh / trứng đã bảo quản hoặc làm chín) đúng theo câu trích, không sửa.",
+   "sua": {
+    "trich": "Nhóm này bao gồm trứng đã thụ tinh để ấp và trứng sống khác (kể cả ướp lạnh) của tất cả các loài gia cầm và chim. Nhóm cũng bao gồm trứng đã bảo quản hoặc đã làm chín, nguyên vỏ."
+   }
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không nguyên văn): cùng lỗi dấu lược '…' chèn giữa hai câu liền kề — sửa y hệt `phamVi`. `fact` 'trung_nguyen_vo' lấy đúng chữ 'nguyên vỏ' của nguồn, giữ nguyên.",
+   "sua": {
+    "trich": "Nhóm này bao gồm trứng đã thụ tinh để ấp và trứng sống khác (kể cả ướp lạnh) của tất cả các loài gia cầm và chim. Nhóm cũng bao gồm trứng đã bảo quản hoặc đã làm chín, nguyên vỏ."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn trong nhom0407.nhom và nói đúng điều mục khẳng định; câu hỏi hỏi đúng CHỦ THỂ (trứng có thụ tinh để ấp không — không nhắc mã phân nhóm, không nhắc WCO). Nhánh Có = các dòng 'Để nhân giống' của 0407.11/19, nhánh Không = 0407.21/29 (trứng sống không để ấp) + 0407.90 (bảo quản/làm chín) — đúng theo WCO 040711/19/21/29/90. Giữ nguyên."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04072100 ('Của gà thuộc loài Gallus domesticus'); câu hỏi hỏi đúng chủ thể. Nhánh Có = 0407.11.x (Gallus domesticus theo WCO 040711) + 0407.21.00 + 0407.90.10; nhánh Không = 0407.19.x (WCO: other than Gallus domesticus), 0407.29.x, 0407.90.20 (vịt, ngan) và 0407.90.90 (khác) — không đảo nhánh Có/Không, không gộp vế ngoài câu. Giữ nguyên."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn 'Nhóm cũng bao gồm trứng đã bảo quản hoặc đã làm chín, nguyên vỏ.' và nói đúng điều mục khẳng định; nhánh Có = 0407.90.10/20/90 (WCO 040790: preserved or cooked), nhánh Không = các dòng trứng sống của nhóm. Giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: value dịch đúng tên WCO 040711 ('birds' eggs, in shell; fresh, fertilised eggs for incubation, of fowls of the species Gallus domesticus'); trích nguyên văn. Giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: value dịch đúng tên WCO 040719 ('other than fowls of the species Gallus domesticus'); trích nguyên văn. Giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: value dịch đúng tên WCO 040721 ('fresh, not for incubation, of fowls of the species Gallus domesticus'); trích nguyên văn; 0407.21 là phân nhóm lá (04072100) nên `hs6` hợp lệ. Giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: value dịch đúng tên WCO 040729 ('fresh, not for incubation, other than fowls of the species Gallus domesticus'); trích nguyên văn. Giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: value 'Trứng chim nguyên vỏ đã bảo quản hoặc đã làm chín' đúng với câu trích 'Nhóm cũng bao gồm trứng đã bảo quản hoặc đã làm chín, nguyên vỏ.' trong nhom0407.nhom. Giữ nguyên."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: nút 0407.11 trong cây lib/hs-tree.js CHƯA có tên tiếng Việt (tenVi = null) và nguồn WCO nêu đúng tên; trích nguyên văn. Giữ nguyên, đổi nhãn NGUOI_DUYET."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04071110 và `dieuKien` chép đúng tên dòng. Giữ nguyên."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04071190 ('Loại khác'); `dieuKien` nêu phân nhóm 0407.11 của gà Gallus domesticus và trừ dòng 'Để nhân giống' — đúng cấu trúc biểu thuế. Giữ nguyên."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04071911 ('Để nhân giống') và `dieuKien` chép đúng tên dòng. Giữ nguyên."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04071919 ('Loại khác'); `dieuKien` gắn với tiêu đề quốc gia 0407.19.1 — cây hs-tree đặt tên nút này là 'Của vịt, ngan' (đúng như mô tả) và mã 0407.19.1 là TIÊU ĐỀ QUỐC GIA 7 số nên cách gọi đúng. Giữ nguyên."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04071991 ('Để nhân giống') và `dieuKien` chép đúng tên dòng. Giữ nguyên."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04071999 ('Loại khác'); `dieuKien` mô tả phần còn lại của tiêu đề quốc gia 0407.19.9 sau khi trừ dòng 'Để nhân giống' — đúng cấu trúc biểu thuế. Giữ nguyên."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04072100 ('Của gà thuộc loài Gallus domesticus') và `dieuKien` chép đúng tên dòng. Giữ nguyên."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04072910 ('Của vịt, ngan') và `dieuKien` chép đúng tên dòng. Giữ nguyên."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04072990 ('Loại khác'); `dieuKien` mô tả phần còn lại của phân nhóm 0407.29 sau khi trừ dòng 'Của vịt, ngan' — đúng cấu trúc biểu thuế. Giữ nguyên."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04079010 ('Của gà thuộc loài Gallus domesticus') và `dieuKien` chép đúng tên dòng. Giữ nguyên."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04079020 ('Của vịt, ngan') và `dieuKien` chép đúng tên dòng. Giữ nguyên."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04079090 ('Loại khác'); `dieuKien` mô tả phần còn lại của phân nhóm 0407.90 sau khi trừ dòng gà và vịt/ngan — đúng cấu trúc biểu thuế. Giữ nguyên."
+  }
+ ]
+}

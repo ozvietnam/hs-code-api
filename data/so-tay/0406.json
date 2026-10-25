@@ -1,48 +1,12 @@
 {
  "nhom": "0406",
  "phamVi": {
-  "text": "Pho mát và curd: pho mát tươi (kể cả pho mát whey); pho mát đã xát nhỏ hoặc làm thành bột; pho mát đã chế biến; pho mát vân xanh và pho mát khác có vân (men Penicillium roqueforti); pho mát mềm; pho mát cứng.",
+  "text": "Pho mát và curd: pho mát tươi (kể cả pho mát chế biến từ whey hoặc buttermilk); pho mát đã xát nhỏ hoặc đã làm thành bột; pho mát đã chế biến; pho mát vân xanh và pho mát khác có vân được sản xuất từ men Penicillium roqueforti; pho mát mềm; pho mát cứng vừa và pho mát cứng.",
   "nguon": "nhom0406.nhom",
   "trich": "(1) Pho mát tươi (kể cả pho mát chế biến từ whey hoặc buttermilk) và curd.…(2) Pho mát đã xát nhỏ hoặc đã làm thành bột.…(3) Pho mát đã chế biến…(4) Pho mát vân xanh và pho mát khác có vân được sản xuất từ men Penicillium roqueforti.…(5) Pho mát mềm…(6) Pho mát cứng vừa và pho mát cứng",
-  "nguonLoai": "AI_DA_KIEM"
+  "nguonLoai": "NGUOI_DUYET"
  },
  "dieuKienVao": [
-  {
-   "fact": "ham_luong_chat_beo_sua_whey",
-   "op": ">=",
-   "value": 5,
-   "donVi": "%",
-   "nguon": "ch04.chuong",
-   "trich": "Các sản phẩm thu được từ quá trình cô đặc whey có pha thêm sữa hoặc chất béo của sữa được phân loại như pho mát trong nhóm 04.06 nếu có đủ ba tiêu chuẩn sau:…(a) hàm lượng chất béo của sữa, chiếm từ 5% trở lên, tính theo trọng lượng ở thể khô;",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "fact": "ham_luong_chat_kho_whey",
-   "op": ">=",
-   "value": 70,
-   "donVi": "%",
-   "nguon": "ch04.chuong",
-   "trich": "Các sản phẩm thu được từ quá trình cô đặc whey có pha thêm sữa hoặc chất béo của sữa được phân loại như pho mát trong nhóm 04.06 nếu có đủ ba tiêu chuẩn sau:…(b) hàm lượng chất khô, tối thiểu là 70% nhưng không quá 85%, tính theo trọng lượng; và",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "fact": "ham_luong_chat_kho_whey",
-   "op": "<=",
-   "value": 85,
-   "donVi": "%",
-   "nguon": "ch04.chuong",
-   "trich": "Các sản phẩm thu được từ quá trình cô đặc whey có pha thêm sữa hoặc chất béo của sữa được phân loại như pho mát trong nhóm 04.06 nếu có đủ ba tiêu chuẩn sau:…(b) hàm lượng chất khô, tối thiểu là 70% nhưng không quá 85%, tính theo trọng lượng; và",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "fact": "duoc_dong_khuon_whey",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "nguon": "ch04.chuong",
-   "trich": "Các sản phẩm thu được từ quá trình cô đặc whey có pha thêm sữa hoặc chất béo của sữa được phân loại như pho mát trong nhóm 04.06 nếu có đủ ba tiêu chuẩn sau:…(c) sản phẩm được đóng khuôn hoặc có thể được đóng khuôn.",
-   "nguonLoai": "AI_DA_KIEM"
-  },
   {
    "fact": "giu_duoc_dac_tinh_cua_pho_mat",
    "op": "=",
@@ -50,7 +14,7 @@
    "donVi": null,
    "nguon": "nhom0406.nhom",
    "trich": "Việc có thịt, cá, động vật giáp xác, thảo dược, gia vị, rau, quả, quả hạch (nuts), vitamin, sữa bột tách kem, v.v... không làm thay đổi cách phân loại miễn là sản phẩm giữ được đặc tính của pho mát.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "loaiTru": [
@@ -58,29 +22,29 @@
    "dieuKien": "Sản phẩm thu được từ whey có hàm lượng lactoza khan trên 95% trọng lượng khô",
    "sangNhom": "1702",
    "nguon": "ch04.chuong",
-   "trich": "Các sản phẩm thu được từ whey, có hàm lượng lactoza khan chiếm trên 95%, tính theo trọng lượng ở thể khô (nhóm 17.02)",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "Chương này không bao gồm:…(b) Các sản phẩm thu được từ whey, có hàm lượng lactoza khan chiếm trên 95%, tính theo trọng lượng ở thể khô (nhóm 17.02)",
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Sản phẩm thu được từ sữa bằng cách thay thế thành phần tự nhiên của sữa (vd chất béo butyric bằng chất béo oleic)",
    "sangNhom": "1901|2106",
    "nguon": "ch04.chuong",
-   "trich": "Các sản phẩm thu được từ sữa bằng cách thay thế một hoặc nhiều thành phần tự nhiên của sữa (ví dụ, chất béo butyric) bởi chất khác (ví dụ, chất béo oleic) (nhóm 19.01 hoặc 21.06)",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "Chương này không bao gồm:…(c) Các sản phẩm thu được từ sữa bằng cách thay thế một hoặc nhiều thành phần tự nhiên của sữa (ví dụ, chất béo butyric) bởi chất khác (ví dụ, chất béo oleic) (nhóm 19.01 hoặc 21.06)",
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Các albumin (kể cả dịch cô đặc từ hai hay nhiều whey protein) hoặc globulin",
    "sangNhom": "3502|3504",
    "nguon": "ch04.chuong",
-   "trich": "Các albumin (kể cả dịch cô đặc từ hai hay nhiều whey protein, có hàm lượng whey protein chiếm trên 80% tính theo trọng lượng ở thể khô) (nhóm 35.02) hoặc globulin (nhóm 35.04)",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "Chương này không bao gồm:…(d) Các albumin (kể cả dịch cô đặc từ hai hay nhiều whey protein, có hàm lượng whey protein chiếm trên 80% tính theo trọng lượng ở thể khô) (nhóm 35.02) hoặc globulin (nhóm 35.04).",
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Casein, albumin sữa hoặc casein đã được làm cứng",
    "sangNhom": "3501|3502|3913",
    "nguon": "ch04.chuong",
-   "trich": "Casein (nhóm 35.01), albumin sữa (nhóm 35.02) và casein đã được làm cứng (nhóm 39.13)",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "Ngoài những loại khác, Chương này cũng không bao gồm các sản phẩm sau:…(e) Casein (nhóm 35.01), albumin sữa (nhóm 35.02) và casein đã được làm cứng (nhóm 39.13).",
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "phanBiet": [
@@ -89,24 +53,24 @@
    "neuCo": "1901|2106",
    "neuKhong": "0406",
    "nguon": "ch04.chuong",
-   "trich": "Các sản phẩm thu được từ sữa bằng cách thay thế một hoặc nhiều thành phần tự nhiên của sữa (ví dụ, chất béo butyric) bởi chất khác (ví dụ, chất béo oleic) (nhóm 19.01 hoặc 21.06)",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "Chương này không bao gồm:…(c) Các sản phẩm thu được từ sữa bằng cách thay thế một hoặc nhiều thành phần tự nhiên của sữa (ví dụ, chất béo butyric) bởi chất khác (ví dụ, chất béo oleic) (nhóm 19.01 hoặc 21.06)",
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hoi": "Sản phẩm thu được từ whey có hàm lượng lactoza khan chiếm trên 95% tính theo trọng lượng ở thể khô không?",
    "neuCo": "1702",
    "neuKhong": "0406",
    "nguon": "ch04.chuong",
-   "trich": "Các sản phẩm thu được từ whey, có hàm lượng lactoza khan chiếm trên 95%, tính theo trọng lượng ở thể khô (nhóm 17.02)",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "Chương này không bao gồm:…(b) Các sản phẩm thu được từ whey, có hàm lượng lactoza khan chiếm trên 95%, tính theo trọng lượng ở thể khô (nhóm 17.02)",
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hoi": "Sản phẩm là casein, albumin sữa hay casein đã được làm cứng không?",
    "neuCo": "3501|3502|3913",
    "neuKhong": "0406",
    "nguon": "ch04.chuong",
-   "trich": "Casein (nhóm 35.01), albumin sữa (nhóm 35.02) và casein đã được làm cứng (nhóm 39.13)",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "Ngoài những loại khác, Chương này cũng không bao gồm các sản phẩm sau:…(e) Casein (nhóm 35.01), albumin sữa (nhóm 35.02) và casein đã được làm cứng (nhóm 39.13).",
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hoi": "Pho mát có được xát nhỏ hoặc đã làm thành bột không?",
@@ -114,7 +78,7 @@
    "neuKhong": "04061010|04061020|04063000|04064000|04069000",
    "nguon": "nhom0406.nhom",
    "trich": "(2) Pho mát đã xát nhỏ hoặc đã làm thành bột.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hoi": "Pho mát có được sản xuất bằng cách nghiền, trộn, nấu chảy và nhũ hoá (kể cả nhũ hoá bằng muối tan chảy) không?",
@@ -122,7 +86,7 @@
    "neuKhong": "04061010|04061020|04064000|04069000",
    "nguon": "nhom0406.nhom",
    "trich": "(3) Pho mát đã chế biến…Nó được sản xuất bằng cách nghiền, trộn, nấu chảy và nhũ hoá, dưới tác động của nhiệt và tác nhân nhũ hoá hoặc axit hóa (kể cả muối tan chảy)",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "tieuChi6": [
@@ -130,11 +94,11 @@
    "hs6": "040610",
    "fact": "loai_hang",
    "op": "=",
-   "value": "Pho mát tươi (chưa ủ chín hoặc chưa xử lý), kể cả pho mát whey, và curd",
+   "value": "Pho mát tươi (kể cả pho mát chế biến từ whey hoặc buttermilk) và curd; pho mát tươi là pho mát chưa ủ chín hoặc chưa xử lý",
    "donVi": null,
    "nguon": "nhom0406.nhom",
-   "trich": "(1) Pho mát tươi (kể cả pho mát chế biến từ whey hoặc buttermilk) và curd.",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "(1) Pho mát tươi (kể cả pho mát chế biến từ whey hoặc buttermilk) và curd. Pho mát tươi là pho mát chưa ủ chín hoặc chưa xử lý, được dùng ngay sau khi chế biến (ví dụ:…Ricotta, Broccio, pho mát cottage, pho mát kem, Mozzarella).",
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hs6": "040620",
@@ -143,18 +107,18 @@
    "value": "Pho mát đã xát nhỏ hoặc đã làm thành bột, của tất cả các loại",
    "donVi": null,
    "nguon": "nhom0406.nhom",
-   "trich": "(2) Pho mát đã xát nhỏ hoặc đã làm thành bột.",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "Nhóm này bao gồm tất cả các loại pho mát, đó là:…(2) Pho mát đã xát nhỏ hoặc đã làm thành bột.",
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hs6": "040630",
    "fact": "loai_hang",
    "op": "=",
-   "value": "Pho mát đã chế biến, chưa xát nhỏ hoặc chưa làm thành bột",
+   "value": "Pho mát đã chế biến, không xát nhỏ hoặc làm thành bột",
    "donVi": null,
-   "nguon": "nhom0406.nhom",
-   "trich": "(3) Pho mát đã chế biến, còn gọi là pho mát chế biến.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguon": "wco.040630",
+   "trich": "040630 Dairy produce; cheese, processed (not grated or powdered)",
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hs6": "040640",
@@ -164,7 +128,7 @@
    "donVi": null,
    "nguon": "nhom0406.nhom",
    "trich": "(4) Pho mát vân xanh và pho mát khác có vân được sản xuất từ men Penicillium roqueforti.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hs6": "040690",
@@ -174,7 +138,7 @@
    "donVi": null,
    "nguon": "wco.040690",
    "trich": "040690 Dairy produce; cheese (not grated, powdered or processed), n.e.c. in heading no. 0406",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "dong8": [
@@ -183,7 +147,7 @@
    "dieuKien": "Pho mát tươi (chưa ủ chín hoặc chưa xử lý), kể cả pho mát whey",
    "nguon": "tax.04061010",
    "trich": "04061010 - - Pho mát tươi (chưa ủ chín hoặc chưa xử lý), kể cả pho mát whey",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "NGUOI_DUYET",
    "loaiKhac": false
   },
   {
@@ -191,7 +155,7 @@
    "dieuKien": "Curd",
    "nguon": "tax.04061020",
    "trich": "04061020 - - Curd",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "NGUOI_DUYET",
    "loaiKhac": false
   },
   {
@@ -207,7 +171,7 @@
      "donVi": "kg"
     }
    ],
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "NGUOI_DUYET",
    "loaiKhac": false
   },
   {
@@ -215,7 +179,7 @@
    "dieuKien": "Pho mát đã xát nhỏ hoặc đã làm thành bột, của tất cả các loại (phân nhóm 0406.20), trừ dòng đóng gói với trọng lượng cả bì trên 20 kg — dòng biểu thuế ghi \"Loại khác\"",
    "nguon": "tax.04062090",
    "trich": "04062090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "NGUOI_DUYET",
    "loaiKhac": true,
    "phamViLoaiKhac": {
     "nguonLoai": "MAY_SUY",
@@ -232,7 +196,7 @@
    "dieuKien": "Pho mát đã chế biến, chưa xát nhỏ hoặc chưa làm thành bột",
    "nguon": "tax.04063000",
    "trich": "04063000 - Pho mát đã chế biến, chưa xát nhỏ hoặc chưa làm thành bột",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "NGUOI_DUYET",
    "loaiKhac": false
   },
   {
@@ -240,7 +204,7 @@
    "dieuKien": "Pho mát vân xanh và pho mát khác có vân được sản xuất từ men Penicillium roqueforti",
    "nguon": "tax.04064000",
    "trich": "04064000 - Pho mát vân xanh và pho mát khác có vân được sản xuất từ men Penicillium roqueforti",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "NGUOI_DUYET",
    "loaiKhac": false
   },
   {
@@ -248,7 +212,7 @@
    "dieuKien": "Pho mát loại khác",
    "nguon": "tax.04069000",
    "trich": "04069000 - Pho mát loại khác",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "NGUOI_DUYET",
    "loaiKhac": false
   }
  ],
@@ -353,18 +317,19 @@
   "tax.04063000",
   "tax.04064000",
   "tax.04069000",
+  "wco.040630",
   "wco.040690"
  ],
  "phienBan": "HS2022",
  "taoBoi": {
   "provider": "dev-zcode-mm",
   "model": null,
-  "luc": "2026-10-25T09:16:34.883Z",
+  "luc": "2026-10-25T10:05:41.169Z",
   "ms": 91
  },
  "kiemTra": {
-  "tong": 27,
-  "dat": 27,
+  "tong": 23,
+  "dat": 23,
   "loai": 0,
   "nguonBiCat": []
  }

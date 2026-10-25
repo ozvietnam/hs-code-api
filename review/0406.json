@@ -1,0 +1,184 @@
+{
+ "nhom": "0406",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-25T17:20:00+07:00",
+ "soat": 27,
+ "daKiem": 27,
+ "xoa": 4,
+ "sua": 11,
+ "phamViSoat": "Toàn bộ 27 mục của bản nháp tmp/so-tay/raw/0406.json (1 phamVi + 5 dieuKienVao + 4 loaiTru + 5 phanBiet + 5 tieuChi6 + 0 cay.tenDien + 7 dong8), đọc cùng tmp/so-tay/nguon/0406.txt; đối chiếu ch04.chuong, wco.0406xx, tax.0406xxxx và cây lib/hs-tree.js.",
+ "ghiChu": "Audit 0406: đọc tay từng mục cùng nguồn (không dựa vào squash của máy). Xoá 4, sửa 11, giữ 12. LỖI MÁY KHÔNG BẮT đã bắt: (1) SAI TẦNG — 4 mục `dieuKienVao` lấy ngưỡng của RIÊNG 'pho mát whey' (chất béo ≥ 5 %, chất khô 70–85 %, đóng khuôn) đặt làm điều kiện VÀO NHÓM 04.06; nhóm này gồm MỌI loại pho mát (Ricotta, pho mát mềm, pho mát cứng…) không cần đạt 70–85 % chất khô — runtime in `dieuKienVao` theo kiểu AND (lib/so-tay-gates.js:135) nên mô hình sẽ loại pho mát thường ra khỏi 0406. Cùng lỗi đã xử ở lô 030/031: 3506, 3802, 4814, 5402, 5808, 6211 → xoá 4 mục. Ba ngưỡng này không mất: nguyên văn trong trich của chính nguồn và áp cho phân nhóm 0406.10 (pho mát tươi kể cả whey) — nên đưa vào `tieuChi6` của 0406.10, đề nghị người soạn bổ sung ở lô sau. (2) `tieuChi6` lấy TRÍCH từ dòng biểu thuế: value của 040610 ('kể cả pho mát whey') và 040630 ('chưa xát nhỏ hoặc chưa làm thành bột') không có trong câu trích khai (040610 → chú giải nhóm; 040630 → tên WCO); luật 10 cấm lấy từ tax.* → sửa value + trích cho đúng nguồn. (3) 4 mục `loaiTru` chép MỤC của danh sách loại trừ mà không có CÂU DẪN ('Chương này không bao gồm:' / 'Ngoài những loại khác, Chương này cũng không bao gồm các sản phẩm sau:') nên đọc riêng không thấy đó là loại trừ — sửa y hệt cách lô 040 sửa 0206/0207/0208. Ghi chú (KHÔNG phải lỗi, không sửa): (a) `dieuKienVao[4]` ('sản phẩm giữ được đặc tính của pho mát') là điều kiện phủ CẢ nhóm → giữ; (b) `phanBiet[3]`/`[4]` chia 0406.20 / 0406.30 trong chính nhóm — ánh xạ 6 số lấy từ tên WCO + biểu thuế (cùng bộ nguồn của nhóm), không cần nêu mã trong câu trích; (c) `dong8[2]`/`[3]` mô tả dòng 0406.20 bằng tên phân nhóm lấy từ biểu thuệ — đúng nội dung, giữ nguyên.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (text thu hẹp phạm vi so với câu trích): bản nháp ghi 'pho mát tươi (kể cả pho mát whey)' trong khi câu trích (1) nói 'kể cả pho mát chế biến từ whey hoặc buttermilk' — mất vế 'chế biến từ' và mất 'buttermilk'; đồng thời ghi 'pho mát cứng' trong khi nguồn (6) là 'pho mát cứng vừa và pho mát cứng'. Text này đi thẳng vào prompt vòng 2 (lib/so-tay-gates.js:134) nên phải chép đúng phạm vi nhóm. Sửa text cho khớp câu trích; không sửa câu nguồn.",
+   "sua": {
+    "text": "Pho mát và curd: pho mát tươi (kể cả pho mát chế biến từ whey hoặc buttermilk); pho mát đã xát nhỏ hoặc đã làm thành bột; pho mát đã chế biến; pho mát vân xanh và pho mát khác có vân được sản xuất từ men Penicillium roqueforti; pho mát mềm; pho mát cứng vừa và pho mát cứng."
+   }
+  },
+  {
+   "index": "dieuKienVao[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn đã khai ở `nguon`: câu trích nguyên văn trong nhom0406.nhom và tự nó nói đúng điều mục khẳng định — 'sản phẩm giữ được đặc tính của pho mát' là điều kiện phủ CẢ nhóm (mọi pho mát 04.06 đều phải giữ đặc tính pho mát), không phải điều kiện riêng của một phần. Giữ nguyên."
+  },
+  {
+   "index": "dieuKienVao[3]",
+   "hanhDong": "xoa",
+   "lyDo": "SAI TẦNG: 'được đóng khuôn hoặc có thể được đóng khuôn' là điều kiện của RIÊNG pho mát whey (không phải pho mát tươi thường), không phải điều kiện vào nhóm 04.06 — xoá cùng lý do với `dieuKienVao[0]`."
+  },
+  {
+   "index": "dieuKienVao[2]",
+   "hanhDong": "xoa",
+   "lyDo": "SAI TẦNG: ngưỡng 'hàm lượng chất khô không quá 85 %' của RIÊNG pho mát whey, không phải điều kiện vào nhóm 04.06 — xoá cùng lý do với `dieuKienVao[0]`."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "xoa",
+   "lyDo": "SAI TẦNG: ngưỡng 'hàm lượng chất khô, tối thiểu 70 %' cũng là điều kiện của RIÊNG pho mát whey, không phủ cả nhóm 04.06 — xoá cùng lý do với `dieuKienVao[0]`."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "SAI TẦNG (cùng lỗi 3506/3802/4814/5402/5808/6211 của lô 030/031): ngưỡng 'hàm lượng chất béo của sữa từ 5 % trở lên' là điều kiện của RIÊNG 'pho mát whey' (Chú giải 4 Chương 4 và ghi chú sau danh sách (1)–(6) của chú giải nhóm), KHÔNG phải điều kiện vào nhóm 04.06 (nhóm gồm mọi loại pho mát tươi, mềm, cứng, vân xanh — Ricotta, Cheddar… không cần chất khô 70–85 %). Đặt vào `dieuKienVao` khiến prompt mô tả nhóm bằng điều kiện của một phần và mô hình loại nhầm pho mát thường ra khỏi 0406. Ba ngưỡng còn nguyên trong nguồn và thuộc phân nhóm 0406.10 — đề nghị người soạn đưa vào `tieuChi6` 040610 ở lô sau."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): trích chỉ chép MỤC (b) của danh sách loại trừ mà không có câu dẫn 'Chương này không bao gồm:' nên đọc riêng không thấy đây là loại trừ sang 17.02. Sửa bằng cách GẮN CÂU DẪN nguyên văn và lược mục (a) bằng '…'; không sửa câu nguồn, không sửa mã đích.",
+   "sua": {
+    "trich": "Chương này không bao gồm:…(b) Các sản phẩm thu được từ whey, có hàm lượng lactoza khan chiếm trên 95%, tính theo trọng lượng ở thể khô (nhóm 17.02)"
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): gắn câu dẫn nguyên văn 'Chương này không bao gồm:' trước mục (c); 'nhóm 19.01 hoặc 21.06' được giữ nguyên (đủ hai nhánh, không tách 'A hoặc B' thành một đích duy nhất).",
+   "sua": {
+    "trich": "Chương này không bao gồm:…(c) Các sản phẩm thu được từ sữa bằng cách thay thế một hoặc nhiều thành phần tự nhiên của sữa (ví dụ, chất béo butyric) bởi chất khác (ví dụ, chất béo oleic) (nhóm 19.01 hoặc 21.06)"
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): gắn câu dẫn nguyên văn 'Chương này không bao gồm:' trước mục (d); hai nhóm đích 35.02 và 35.04 đều có trong câu trích nên `sangNhom` giữ nguyên.",
+   "sua": {
+    "trich": "Chương này không bao gồm:…(d) Các albumin (kể cả dịch cô đặc từ hai hay nhiều whey protein, có hàm lượng whey protein chiếm trên 80% tính theo trọng lượng ở thể khô) (nhóm 35.02) hoặc globulin (nhóm 35.04)."
+   }
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): trích chép mục (e) của danh sách 'Ngoài những loại khác, Chương này cũng không bao gồm các sản phẩm sau:' mà không có câu dẫn. Sửa bằng cách gắn câu dẫn nguyên văn và lược mục (a)–(d) bằng '…' (đoạn lược chỉ chứa các mục loại trừ anh em, không có ngoại lệ nào bị nuốt).",
+   "sua": {
+    "trich": "Ngoài những loại khác, Chương này cũng không bao gồm các sản phẩm sau:…(e) Casein (nhóm 35.01), albumin sữa (nhóm 35.02) và casein đã được làm cứng (nhóm 39.13)."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): `phanBiet` dùng CHUNG câu trích với `loaiTru[1]` nên sửa y hệt (gắn câu dẫn 'Chương này không bao gồm:'). Câu hỏi hỏi đúng chủ thể (sản phẩm làm từ sữa có thay thế thành phần tự nhiên không), nhánh Có → 1901|2106, nhánh Không → 0406 — giữ nguyên.",
+   "sua": {
+    "trich": "Chương này không bao gồm:…(c) Các sản phẩm thu được từ sữa bằng cách thay thế một hoặc nhiều thành phần tự nhiên của sữa (ví dụ, chất béo butyric) bởi chất khác (ví dụ, chất béo oleic) (nhóm 19.01 hoặc 21.06)"
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): `phanBiet` dùng CHUNG câu trích với `loaiTru[0]` nên sửa y hệt (gắn câu dẫn 'Chương này không bao gồm:').",
+   "sua": {
+    "trich": "Chương này không bao gồm:…(b) Các sản phẩm thu được từ whey, có hàm lượng lactoza khan chiếm trên 95%, tính theo trọng lượng ở thể khô (nhóm 17.02)"
+   }
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): `phanBiet` dùng CHUNG câu trích với `loaiTru[3]` nên sửa y hệt (gắn câu dẫn 'Ngoài những loại khác, Chương này cũng không bao gồm các sản phẩm sau:').",
+   "sua": {
+    "trich": "Ngoài những loại khác, Chương này cũng không bao gồm các sản phẩm sau:…(e) Casein (nhóm 35.01), albumin sữa (nhóm 35.02) và casein đã được làm cứng (nhóm 39.13)."
+   }
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: câu trích '(2) Pho mát đã xát nhỏ hoặc đã làm thành bột.' nguyên văn trong nhom0406.nhom và nói đúng điều mục khẳng định; câu hỏi hỏi đúng CHỦ THỂ (trạng thái pho mát, không nhắc mã phân nhóm, không nhắc WCO). Ánh xạ sang 0406.20 lấy từ tên WCO 040620 ('cheese of all kinds, grated or powdered') và dòng biểu thuế — cùng bộ nguồn của nhóm; nhánh 'không' là các dòng 8 số còn lại của nhóm (0406.10/30/40/90). Giữ nguyên."
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích '(3) Pho mát đã chế biến… Nó được sản xuất bằng cách nghiền, trộn, nấu chảy và nhũ hoá…' nguyên văn trong nhom0406.nhom; câu hỏi hỏi đúng chủ thể và nhánh Có → 0406.30 (đúng với tiêu đề WCO 'cheese, processed'); nhánh 'không' là các dòng còn lại của nhóm. Giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (value không có trong câu trích): value 'Pho mát tươi (chưa ủ chín hoặc chưa xử lý), kể cả pho mát whey, và curd' chép từ DÒNG BIỂU THUẾ 04061010 (luật 10 cấm lấy tiêu chí 6 số từ tax.*), còn câu trích khai là chú giải nhóm — trong đó không có chữ 'kể cả pho mát whey' và không có vế 'chưa ủ chín hoặc chưa xử lý' (nó nằm ở câu kế tiếp). Sửa: nới trích xuống hết định nghĩa 'pho mát tươi' và viết value đúng theo chú giải. Không sửa câu nguồn, không sửa mã.",
+   "sua": {
+    "value": "Pho mát tươi (kể cả pho mát chế biến từ whey hoặc buttermilk) và curd; pho mát tươi là pho mát chưa ủ chín hoặc chưa xử lý",
+    "trich": "(1) Pho mát tươi (kể cả pho mát chế biến từ whey hoặc buttermilk) và curd. Pho mát tươi là pho mát chưa ủ chín hoặc chưa xử lý, được dùng ngay sau khi chế biến (ví dụ:…Ricotta, Broccio, pho mát cottage, pho mát kem, Mozzarella)."
+   }
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (value có chữ ngoài câu trích): value kết thúc bằng 'của tất cả các loại' — vế này lấy từ tên phân nhóm biểu thuệ, không có trong câu trích '(2) Pho mát đã xát nhỏ hoặc đã làm thành bột.'. Sửa bằng cách GẮN câu dẫn nguyên văn 'Nhóm này bao gồm tất cả các loại pho mát, đó là:' vào trích (đoạn lược chỉ bỏ mục (1), không có ngoại lệ nào bị nuốt); value giữ nguyên, không sửa câu nguồn.",
+   "sua": {
+    "trich": "Nhóm này bao gồm tất cả các loại pho mát, đó là:…(2) Pho mát đã xát nhỏ hoặc đã làm thành bột."
+   }
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (value không có trong câu trích): value 'Pho mát đã chế biến, chưa xát nhỏ hoặc chưa làm thành bột' chép nguyên văn dòng biểu thuế 04063000 — nhưng luật 10 cấm lấy tiêu chí 6 số từ tax.*, còn câu trích khai là chú giải nhóm (chỉ có '(3) Pho mát đã chế biến, còn gọi là pho mát chế biến.'). Sửa: chuyển sang nguồn hợp lệ theo luật 10 là tên WCO của phân nhóm, viết value đúng nghĩa 'chưa xát nhỏ hoặc làm thành bột' (WCO: not grated or powdered) — giữ đúng phân biệt 0406.20 / 0406.30, không sửa câu nguồn.",
+   "sua": {
+    "nguon": "wco.040630",
+    "value": "Pho mát đã chế biến, không xát nhỏ hoặc làm thành bột",
+    "trich": "040630 Dairy produce; cheese, processed (not grated or powdered)"
+   }
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: value chép đúng mục (4) của nhom0406.nhom và câu trích nguyên văn, không thêm bớt chữ nào. Giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: value 'Pho mát chưa xát nhỏ hoặc làm thành bột, chưa chế biến, thuộc loại khác trong nhóm 04.06' dịch đúng câu trích WCO 'cheese (not grated, powdered or processed), n.e.c. in heading no. 0406' — có căn cứ trong câu trích. Giữ nguyên."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04061010 và `dieuKien` chép đúng tên dòng; máy tự gắn `loaiKhac` = false. Giữ nguyên."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04061020; `dieuKien` chép đúng tên dòng ('Curd'). Giữ nguyên."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04062010; ngưỡng 'trên 20 kg' có đủ số và đơn vị trong câu trích nên `dieuKienSo` hợp lệ (op '>' đúng nghĩa 'trên 20 kg'); vế 'pho mát đã xát nhỏ hoặc đã làm thành bột, của tất cả các loại' là tên phân nhóm 0406.20 (biểu thuệ + WCO 'cheese of all kinds, grated or powdered') — đúng nội dung. Giữ nguyên."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04062090 ('Loại khác'); `dieuKien` mô tả phần còn lại của phân nhóm 0406.20 sau khi trừ dòng đóng gói trên 20 kg — đúng cấu trúc biểu thuế (dòng cha 0406.20 chỉ có hai dòng). Giữ nguyên."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04063000 và `dieuKien` chép đúng tên dòng. Giữ nguyên."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04064000 và `dieuKien` chép đúng tên dòng (khớp mục (4) của chú giải nhóm). Giữ nguyên."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04069000 và `dieuKien` chép đúng tên dòng; 0406.90 chỉ có một dòng nên không cần trừ anh em. Giữ nguyên."
+  }
+ ]
+}
