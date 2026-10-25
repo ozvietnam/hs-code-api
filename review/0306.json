@@ -1,0 +1,630 @@
+{
+  "nhom": "0306",
+  "nguoiSoat": "dev-soat-doc-lap-lo041",
+  "soatVaiTro": "soat-doc-lap",
+  "luc": "2026-10-25T09:11:35.954Z",
+  "phamViSoat": "Đã soi đầy đủ khối trong phạm vi: phamVi (1), boPhan (0 — không có), dieuKienVao (1), loaiTru (3), phanBiet (1) = 6 mục. Ngoài phạm vi đọc để kiểm độ phủ và chiều đúng–sai: tieuChi6 (40), dong8 (71), cay.tenDien (3) = 114 mục. Tổng 120 mục. Đã đọc TOÀN BỘ tmp/so-tay/nguon/0306.txt (99 khối: nhom0306.nhom, ch03.chuong, phan03.phan, 5 sen.*, 71 tax.*, 20 wco.*) và tmp/so-tay/nguon/_he-thong.txt.",
+  "soat": 120,
+  "daKiem": 118,
+  "sua": 1,
+  "xoa": 1,
+  "ghiChu": "SOÁT ĐỘC LẬP nhóm 0306 (lô 041, PR #436), người soạn dev-zcode-mm. Đã đọc TOÀN BỘ tmp/so-tay/nguon/0306.txt (99 khối nguồn: nhom0306.nhom, ch03.chuong, phan03.phan, 5 sen.*, 71 tax.*, 20 wco.*) và tmp/so-tay/nguon/_he-thong.txt; đối chiếu từng mục trong bản nháp. MÁY: check-trich-nguyen-van xanh (117/117 câu trích byte-exact trong đúng khối nguồn, 0 sai), check-so-tay xanh 120/120, check-cay \"1 nhóm đủ\" (0 lỗi lệch cây, đủ dong8, đủ tên nút ảo, đủ tiêu chí 6 số). Sau khi áp 2 đề xuất của tôi: check-trich-nguyen-van vẫn xanh (116/116), check-so-tay 119/119.\n\nKẾT QUẢ: soi 120 mục — trong phạm vi 6 mục (phamVi 1, boPhan 0, dieuKienVao 1, loaiTru 3, phanBiet 1) và ngoài phạm vi 114 mục (tieuChi6 40, dong8 71, cay.tenDien 3) để kiểm độ phủ + chiều đúng–sai. GIỮ 118, SỬA 1 (phamVi), XOÁ 1 (dieuKienVao[0]).\n\nĐỘ PHỦ: 71/71 dòng tax.* + sen.* có mặt trong dong8 (không thừa, không thiếu); 20/20 phân nhóm wco.* 6 số có mặt trong tieuChi6; cay.tenDien điền đúng 3 nút 6 số mà cây (lib/hs-tree.js buildCay('0306')) thật sự thiếu tên (030611, 030631, 030691 — đều ten=null), không thừa.\n\nLỖI ĐÃ SỬA:\n(1) phamVi.text — vế (3) viết \"hoặc chưa bóc mai, vỏ, đã hấp chín hoặc luộc chín trong nước\". Nguồn [nhom0306.nhom] mục (3): \"Động vật giáp xác chưa bóc mai, vỏ, đã hấp chín hoặc luộc chín trong nước\" — KHÔNG có \"hoặc\" trước \"chưa bóc mai\"; \"hoặc\" là sót từ cụm \"đã hoặc chưa bóc mai\" ở vế (1). \"hoặc chưa bóc mai\" không thành ngữ nghĩa, dễ đọc thành \"đã bóc mai hoặc chưa bóc mai\" — trái nguồn (mục (3) BẮT BUỘC còn vỏ) và mâu thuẫn với loaiTru[1] (đã bóc mai + luộc trong nước -> 16.05). Sửa thành \"chưa bóc mai, vỏ, đã hấp chín hoặc luộc chín trong nước\"; GIỮ NGUYÊN trich (đã nguyên văn).\n(2) dieuKienVao[0] — XOÁ. Câu \"Chương này chỉ giới hạn đối với cá ... ở những dạng được mô tả trong các nhóm của Chương\" là giới hạn phạm vi CẢ CHƯƠNG 3 (03.01–03.09, nói về cá/thân mềm/thủy sinh), không phải điều kiện vào nhóm 0306; mục biến câu CHẶN thành khẳng định dương \"= true\" (lật chiều). Câu kế tiếp là câu cho phép (\"vẫn được phân loại ... dù chúng đã hoặc chưa được cắt, chặt, xay, nghiền\") nên không dùng được. Trong [nhom0306.nhom] không có câu ràng buộc nào phủ cả nhóm để thay. Lưu ý: cùng mẫu câu này xuất hiện ở 0303 và 0307 của cùng lô — nên xem lại cả hai.\n\nGHI NHẬN KHÔNG SỬA (có lý do):\n(a) phamVi.trich (593 ký tự) KHÔNG kéo câu \"Nhóm này cũng bao gồm các bộ phận của động vật giáp xác (ví dụ: đuôi của tôm hùm hay tôm hùm nước ngọt, càng cua, ghẹ), với điều kiện những bộ phận đó đã bóc mai, vỏ và được chế biến như cách đã nêu ở mục (1) trên.\" — đây là một phần BAO GỒM có điều kiện (\"với điều kiện\") nằm ngay sau đoạn trích, mà luật lược dấu \"…\" cấm bỏ sót ngoại lệ dạng \"với điều kiện\". KHÔNG sửa vì: thêm nó vào text sẽ đưa phamVi.text vượt ngưỡng clip 220 của runtime (lib/so-tay-gates.js:134) và bị cắt GIỮA TỪ (\"chế b…\"), tức là tạo lỗi mới; còn thêm vào trich thì phải lược thêm 3 đoạn nữa (mẫu ví dụ trong ngoặc, ngoặc hoá chất ở mục (3)) và trích lên 671 ký tự — vượt trần 600 của lib/so-tay.js:191. Đề xuất cho người áp: nếu muốn đưa về sau, nên bổ sung ở khối khác (ví dụ một mục loaiTru ngược hoặc ghi chú mô tả PR), không nhồi vào phamVi.\n(b) phamVi.trich dừng ở câu \"Những loại động vật giáp xác chính là tôm hùm, tôm biển (sea crawfish), tôm hùm nước ngọt (crayfish), cua, ghẹ, tôm shrimp và tôm prawn.\" — danh sách loài chính, thông tin phụ, không bắt buộc trong phạm vi; KHÔNG sửa.\n(c) loaiTru[2].dieuKien chuyển \"làm từ cá hoặc động vật giáp xác, động vật thân mềm hoặc động vật thủy sinh...\" thành \"làm từ động vật giáp xác\" — đây là chuyên biệt hóa đúng cho nhóm 0306 (cá và thân mềm không thuộc 0306), không phải tách nhánh \"A hoặc B\" thành một nhánh sai; giữ nguyên định ngữ \"không thích hợp dùng làm thức ăn cho người\".\n(d) dong8 của các cặp dòng trùng chữ — người soạn cố ý KHÔNG đoán, ghi điều kiện giống hệt cho hai dòng anh em và chú thích \"dòng biểu thuê ghi ...\". Đã đối chiếu data/tax.json: các cặp 03063311/03063391, 03063312/03063392, 03069121/03069131, 03069221/03069231, 03069321/03069331, 03069421/03069431, 03069921/03069931, 03069529/03069530, 03061419/03061499, 03061719/03061729/03061790, 03063629/03063639 có cùng \"en\" WCO và cùng tên biểu thuê — nguồn THẬT SỰ không phân biệt, nên KHÔNG nói chắc hơn nguồn là đúng. 8 dòng 0306.1 cũng vậy (…10 hun khói / …90 loại khác) — trùng chữ theo biểu thuê nhưng người soạn vẫn phân biệt được vì tên dòng khác nhau.\n(e) tieuChi6 của 030619/030639/030699 ghi \"Động vật giáp xác khác thuộc mục 03.06.1 / .3 / .9\" — WCO ghi \"item no. 0306.1\"; cách viết lại mã thành dạng 03.06.1 là diễn đạt tiếng Việt, không đổi nghĩa và không tạo mã đích sai. KHÔNG sửa.\n(f) 03069521: dieuKien gộp \"hun khói\" (theo wco.030695) + \"còn vỏ, đã hấp chín hoặc luộc chín trong nước\" (theo tax.03069521) — cả hai đều có trong nguồn; KHÔNG sửa.\n(g) phanBiet[0].neuKhong = \"0306\" là nhánh mặc định (đối đều của câu \"Các nhóm từ 03.05 đến 03.08 không bao gồm ... (nhóm 03.09)\"), không phải mã bịa; máy chỉ đòi mã NGOÀI nhóm phải được nêu trong câu trích. KHÔNG sửa.\n(h) LỖI KỆ SÁCH nguồn: câu \"Thuật ngữ “ướp lạnh\" là nhiệt độ của sản phẩm thường được hạ đến khoảng 0°C nhưng không làm đông lạnh sản phẩm. Thuật ngữ \"đông lạnh\" có nghĩa là một sản phẩm bị làm lạnh xuống dưới điểm đông lạnh cho đến khi đông lạnh toàn phần.\" (ch03.chuong) là ĐỊNH NGHĨA thuật ngữ — có thể dùng làm dieuKienVao cho các nhóm trạng thái, nhưng với 0306 thì \"ướp lạnh/đông lạnh\" chỉ là một phần của phạm vi chứ không phải điều kiện vào nhóm (nhóm còn có sống, hun khói, luộc chín...), nên không dùng. GHI NHẬN, không sửa.\n(i) LỖI KỆ SÁCH nguồn: [ch03.chuong] và [phan03.phan] có câu cắt dở giữa dòng (\"...hoặc những\n\nloại thích hợp để dùng ngay như trứng cá tầm muối...\"); khối [nhom0306.nhom] không bị cắt. Không mục nào trong bản nháp dựa vào đoạn bị cắt nên không ảnh hưởng.\n(j) LỖI KỆ SÁCH nguồn: biểu thuê trùng chữ 03063311/03063391 (\"Sống\") và 03063312/03063392 (\"Tươi hoặc ướp lạnh\") — data/tax.json cho cả hai về cùng heading 030633 với \"en\" là \"Crustaceans; live, fresh or chilled, crabs\", nên không có nguồn nào phân biệt; đây là giới hạn của BIỂU THUẾ, không phải lỗi người soạn.\n(k) Hai nút 6 số 030611 và 030631 trùng tên \"Tôm hùm biển và tôm biển khác\" — đúng theo WCO (cùng \"rock lobsters and other sea crawfish\"), đã ghi đúng 2 tên riêng trong cay.tenDien.\n\n=== NGƯỜI DUYỆT (phiên quản lý) ===\nNGƯỜI DUYỆT: 2 đề xuất của agent — CHẤP NHẬN 2 (sửa phamVi.text bỏ chữ \"hoặc\" thừa; xoá dieuKienVao[0]). Sửa 1, xoá 1. Xác nhận thêm: cùng câu ch03.chuong (\"Chương này chỉ giới hạn … ở những dạng được mô tả trong các nhóm của Chương\") bị dùng làm dieuKienVao ở CẢ 0303, 0306, 0307 — cùng một lỗi (câu chặn cấp CHƯƠNG biến thành khẳng định dương value=true; bản nháp cắt ngay trước \"Theo điều kiện này chúng vẫn được phân loại trong Chương dù chúng đã hoặc chưa được cắt, chặt, xay, nghiền vv…\" để né mẫu CAU_CHO_PHEP của máy) → xoá ở cả ba nhóm.\nSố liệu chốt: soát 120 mục · giu 118 · sửa 1 · xoá 1 · chèn 0.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích nguyên văn byte-exact (máy check-trich-nguyen-van xanh) và nêu đúng cả ba phần ngang hàng (1)(2)(3) của nhóm — không dính lỗi \"chỉ một phần\" của lô 030. NHƯNG trường `text` sai nghĩa ở vế (3): viết \"hoặc chưa bóc mai, vỏ, đã hấp chín hoặc luộc chín trong nước\". Nguồn nguyên văn [nhom0306.nhom] mục (3) là \"Động vật giáp xác chưa bóc mai, vỏ, đã hấp chín hoặc luộc chín trong nước\" — KHÔNG có \"hoặc\" trước \"chưa bóc mai\"; \"hoặc\" là sót lại từ cụm \"đã hoặc chưa bóc mai\" ở vế (1). Câu \"hoặc chưa bóc mai, vỏ, ...\" không thành ngữ nghĩa và dễ bị đọc thành \"đã bóc mai hoặc chưa bóc mai\", trái với nguồn: mục (3) BẮT BUỘC còn vỏ (chưa bóc mai). Điều này còn mâu thuẫn với loaiTru[1] (đã bóc mai, vỏ được luộc trong nước → nhóm 16.05). Sửa `text` thành đúng nguồn; GIỮ NGUYÊN `trich` (đã nguyên văn, không cần đổi). `text` sau sửa dài 183 ký tự, vẫn nằm trong clip 220 của runtime (lib/so-tay-gates.js:134) nên không bị cắt giữa câu.",
+      "sua": {
+        "text": "Động vật giáp xác (đã hoặc chưa bóc mai, vỏ): sống, tươi, ướp lạnh, đông lạnh, làm khô, muối hoặc ngâm nước muối; đã hun khói; chưa bóc mai, vỏ, đã hấp chín hoặc luộc chín trong nước."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "xoa",
+      "lyDo": "Câu trích nguyên văn byte-exact, NHƯNG không phải điều kiện VÀO NHÓM 4 số 0306. Nguồn [ch03.chuong] nói: \"Chương này chỉ giới hạn đối với cá (kể cả gan, sẹ và bọc trứng cá) và động vật giáp xác, động vật thân mềm và động vật thủy sinh không xương sống khác ở những dạng được mô tả trong các nhóm của Chương.\" Đây là câu GIỚI HẠN PHẠM VI CỦA CẢ CHƯƠNG 3 (áp dụng như nhau cho 03.01–03.09, nói về cá/thân mềm/thủy sinh chứ không riêng giáp xác), không phải điều kiện vào nhóm 0306 — vi phạm luật \"dieuKienVao phải là điều kiện VÀO NHÓM 4 số\" và \"chỉ đặt khi câu đó phủ CẢ nhóm\" (_he-thong.txt dòng 27 và bài học lô 030 dòng 38). Thêm nữa, mục biến một câu CHẶN/GIỚI HẠN (\"chỉ giới hạn ... ở những dạng được mô tả trong các nhóm\") thành khẳng định DƯƠNG \"o_dang_duoc_mo_ta_trong_cac_nhom_cua_chuong = true\" — lật chiều nghĩa. Câu kế tiếp ngay sau (\"Theo điều kiện này chúng vẫn được phân loại trong Chương dù chúng đã hoặc chưa được cắt, chặt, xay, nghiền vv...\") mới là câu có tác dụng thật nhưng là câu CHO PHÉP (có \"vẫn được phân loại\" + \"đã hoặc chưa\") nên không dùng làm điều kiện được. Đã đối chiếu [nhom0306.nhom]: khối này CHỈ có danh sách bao gồm (1)(2)(3), câu ghi chú các bộ phận và hai mục loại trừ — KHÔNG có điều kiện ràng buộc phủ cả nhóm để thay thế. => để trống dieuKienVao cho nhóm 0306."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Nằm trong khối \"Nhóm này không bao gồm:\" của [nhom0306.nhom], mục (a) — có dấu hiệu LOẠI TRỪ rõ ràng (\"không bao gồm\"). Câu trích nêu đích danh \"(nhóm 03.08)\" đúng mã đích, không phải ví dụ. dieuKien chép đúng: \"Cầu gai và những động vật thủy sinh không xương sống khác\" — giữ nguyên định ngữ, không thêm chữ. GIỮ."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Nằm trong khối \"Nhóm này không bao gồm:\" của [nhom0306.nhom], mục (b) — có dấu hiệu loại trừ. Câu trích nêu đích danh \"(nhóm 16.05)\". dieuKien chép trọn mục (b) kèm ví dụ trong ngoặc \"(ví dụ, những động vật giáp xác đã bóc mai, vỏ được luộc trong nước)\" — ví dụ nằm TRONG câu loại trừ nên được giữ, không phải loại trừ đích danh sai. Mắt xích quan trọng: đây chính là câu làm nên loại trừ \"đã bóc mai, vỏ\" -> 16.05, nên loại trừ này là căn cứ trực tiếp cho người khai. GIỮ."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "Trích từ [ch03.chuong], danh sách loại trừ thứ hai (\"Ngoài những phần loại trừ đã nêu trên, Chương này cũng không bao gồm:\") — mục (d) nêu đích danh \"(nhóm 23.01)\"; câu trích nguyên văn khớp đúng vị trí (mục (d) của danh sách thứ hai là \"Bột mịn...\", không nhầm với mục (c) của danh sách thứ hai là \"Phế liệu... (nhóm 05.11)\"). dieuKien chuyển về \"làm từ động vật giáp xác\" là CHUYÊN BIỆT HÓA đúng cho nhóm 0306 (bỏ \"cá\" và \"động vật thân mềm/thủy sinh\" — vốn không thuộc 0306), không phải bóp méo; giữ trọn định ngữ \"không thích hợp dùng làm thức ăn cho người\". Cùng cách làm đã được duyệt ở 0304 (loaiTru[1] \"làm từ cá\"). GIỮ."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn từ [ch03.chuong] mục 3: \"Các nhóm từ 03.05 đến 03.08 không bao gồm bột mịn, bột thô và viên, thích hợp dùng làm thức ăn cho người (nhóm 03.09).\" Chiều Có/Không ĐÚNG: Có (là bột mịn/bột thô/viên thích hợp ăn cho người) -> 0309; Không -> 0306 (theo phản đề của câu, hàng không bị loại trừ thì ở lại nhóm 03.05–03.08). Đã đối chiếu data/tax.json: 0309 có đúng \"Flours, meals and pellets of crustaceans...\" (03099011/03099012) -> đích 0309 đúng cho giáp xác. `hoi` không nhắc mã phân nhóm hay \"WCO\" (đạt luật hoi-không-nhắc-mã); chỉ 1 mục, không lặp câu hỏi. GIỮ."
+    },
+    {
+      "index": "cay.tenDien[0]",
+      "hanhDong": "giu",
+      "lyDo": "id 030611 (phân nhóm 6 số tôm hùm biển/tôm biển khác). Cây dựng bằng lib/hs-tree.js cho nhóm 0306 có ĐÚNG 3 nút 6 số thiếu tên tiếng Việt (ten=null): 030611, 030631, 030691 — bản nháp điền đủ cả 3, không thừa không thiếu (máy check-cay: \"đủ tên nút ảo\"). Trích là nguyên văn wco.030611; tenVi dịch đúng \"rock lobsters and other sea crawfish (Palinurus spp., Panulirus spp., Jasus spp.)\". GIỮ."
+    },
+    {
+      "index": "cay.tenDien[1]",
+      "hanhDong": "giu",
+      "lyDo": "id 030631 (cùng tên với 030611 theo WCO — đúng, WCO đặt cả hai là \"rock lobsters and other sea crawfish (Palinurus spp., Panulirus spp., Jasus spp.)\"; 030611 đông lạnh/hun khói, 030631 sống/tươi). Trích nguyên văn wco.030631. GIỮ."
+    },
+    {
+      "index": "cay.tenDien[2]",
+      "hanhDong": "giu",
+      "lyDo": "id 030691 (hun khói, cùng tên WCO). Trích nguyên văn wco.030691. GIỮ."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030611 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030611. GIỮ."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030611 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030611. GIỮ."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030612 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030612. GIỮ."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030612 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030612. GIỮ."
+    },
+    {
+      "index": "tieuChi6[4]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030614 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030614. GIỮ."
+    },
+    {
+      "index": "tieuChi6[5]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030614 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030614. GIỮ."
+    },
+    {
+      "index": "tieuChi6[6]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030615 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030615. GIỮ."
+    },
+    {
+      "index": "tieuChi6[7]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030615 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030615. GIỮ."
+    },
+    {
+      "index": "tieuChi6[8]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030616 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030616. GIỮ."
+    },
+    {
+      "index": "tieuChi6[9]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030616 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030616. GIỮ."
+    },
+    {
+      "index": "tieuChi6[10]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030617 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030617. GIỮ."
+    },
+    {
+      "index": "tieuChi6[11]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030617 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030617. GIỮ."
+    },
+    {
+      "index": "tieuChi6[12]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030619 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030619. GIỮ."
+    },
+    {
+      "index": "tieuChi6[13]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030619 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030619. GIỮ."
+    },
+    {
+      "index": "tieuChi6[14]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030631 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030631. GIỮ."
+    },
+    {
+      "index": "tieuChi6[15]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030631 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030631. GIỮ."
+    },
+    {
+      "index": "tieuChi6[16]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030632 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030632. GIỮ."
+    },
+    {
+      "index": "tieuChi6[17]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030632 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030632. GIỮ."
+    },
+    {
+      "index": "tieuChi6[18]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030633 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030633. GIỮ."
+    },
+    {
+      "index": "tieuChi6[19]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030633 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030633. GIỮ."
+    },
+    {
+      "index": "tieuChi6[20]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030634 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030634. GIỮ."
+    },
+    {
+      "index": "tieuChi6[21]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030634 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030634. GIỮ."
+    },
+    {
+      "index": "tieuChi6[22]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030635 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030635. GIỮ."
+    },
+    {
+      "index": "tieuChi6[23]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030635 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030635. GIỮ."
+    },
+    {
+      "index": "tieuChi6[24]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030636 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030636. GIỮ."
+    },
+    {
+      "index": "tieuChi6[25]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030636 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030636. GIỮ."
+    },
+    {
+      "index": "tieuChi6[26]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030639 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030639. GIỮ."
+    },
+    {
+      "index": "tieuChi6[27]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030639 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030639. GIỮ."
+    },
+    {
+      "index": "tieuChi6[28]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030691 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030691. GIỮ."
+    },
+    {
+      "index": "tieuChi6[29]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030691 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030691. GIỮ."
+    },
+    {
+      "index": "tieuChi6[30]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030692 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030692. GIỮ."
+    },
+    {
+      "index": "tieuChi6[31]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030692 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030692. GIỮ."
+    },
+    {
+      "index": "tieuChi6[32]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030693 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030693. GIỮ."
+    },
+    {
+      "index": "tieuChi6[33]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030693 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030693. GIỮ."
+    },
+    {
+      "index": "tieuChi6[34]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030694 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030694. GIỮ."
+    },
+    {
+      "index": "tieuChi6[35]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030694 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030694. GIỮ."
+    },
+    {
+      "index": "tieuChi6[36]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030695 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030695. GIỮ."
+    },
+    {
+      "index": "tieuChi6[37]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030695 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030695. GIỮ."
+    },
+    {
+      "index": "tieuChi6[38]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030699 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value dịch đúng tên loài trong câu WCO (không thêm bớt), ví dụ 030617 \"shrimps and prawns, excluding cold-water varieties\" -> \"Tôm shrimps và tôm prawn khác, trừ các loại nước lạnh\". Trích là nguyên văn wco.030699. GIỮ."
+    },
+    {
+      "index": "tieuChi6[39]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030699 là phân nhóm 6 số có thật trong cây của nhóm 0306 (đủ 20/20 phân nhóm WCO trong nguồn). value là trạng thái đúng theo câu WCO: nhóm đông lạnh -> \"đông lạnh\" (frozen), nhóm sống/tươi -> \"sống, tươi hoặc ướp lạnh\" (live, fresh or chilled), nhóm hun khói -> \"hun khói\" (smoked). Không nói chắc hơn nguồn. Trích là nguyên văn wco.030699. GIỮ."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061110 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061190 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061210 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061290 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061411 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061419 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061491 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061492 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[8]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061493 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[9]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061499 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[10]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061500 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[11]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061600 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[12]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061711 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[13]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061719 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[14]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061721 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[15]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061722 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[16]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061729 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[17]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061730 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[18]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061790 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[19]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03061900 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[20]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063110 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[21]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063120 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[22]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063130 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[23]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063210 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[24]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063220 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[25]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063230 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[26]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063311 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[27]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063312 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[28]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063391 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[29]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063392 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[30]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063400 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[31]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063510 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon sen.* (điều kiện ưu tiên theo luật) — trích nguyên văn câu SEN về \"để nhân giống\"; taxon lấy từ phân nhóm cha 030635/030636. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[32]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063520 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[33]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063530 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[34]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063611 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon sen.* (điều kiện ưu tiên theo luật) — trích nguyên văn câu SEN về \"để nhân giống\"; taxon lấy từ phân nhóm cha 030635/030636. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[35]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063612 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon sen.* (điều kiện ưu tiên theo luật) — trích nguyên văn câu SEN về \"để nhân giống\"; taxon lấy từ phân nhóm cha 030635/030636. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[36]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063613 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon sen.* (điều kiện ưu tiên theo luật) — trích nguyên văn câu SEN về \"để nhân giống\"; taxon lấy từ phân nhóm cha 030635/030636. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[37]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063619 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon sen.* (điều kiện ưu tiên theo luật) — trích nguyên văn câu SEN về \"để nhân giống\"; taxon lấy từ phân nhóm cha 030635/030636. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[38]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063621 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[39]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063622 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[40]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063623 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[41]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063629 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[42]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063631 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[43]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063632 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[44]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063633 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[45]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063639 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[46]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063910 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[47]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03063920 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[48]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069121 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[49]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069129 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[50]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069131 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[51]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069139 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[52]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069221 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[53]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069229 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[54]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069231 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[55]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069239 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[56]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069321 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[57]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069329 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[58]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069331 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[59]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069339 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[60]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069421 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[61]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069429 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[62]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069431 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[63]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069439 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[64]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069521 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon tax.* — trích nguyên văn đúng dòng biểu thuê; phần \"loại khác\"/\"Hun khói\"/\"Đã bỏ đầu\" là TÊN DÒNG BIỂU THUẾ được nêu nguyên văn, phần taxon/trạng thái lấy từ phân nhóm cha 6 số (wco.*). Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". GIỮ."
+    },
+    {
+      "index": "dong8[65]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069529 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[66]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069530 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[67]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069921 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[68]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069929 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[69]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069931 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[70]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03069939 là dòng 8 số có thật trong khối [tax.*]/[sen.*] của nhóm 0306 (đủ 71/71 dòng, không thừa không thiếu). nguon wco.* — trích nguyên văn câu WCO của phân nhóm cha 6 số; phần \"dòng biểu thuế ghi ...\" là tên dòng lấy nguyên văn từ [tax.*]. Chiều trạng thái đúng với phân nhóm cha (nhóm 0306.1 đông lạnh, 0306.3 sống/tươi/ướp lạnh, 0306.9 hun khói) — đã quét 71/71 dòng, chỉ 03061110 và 03061210 có \"hun khói\" cộng \"đông lạnh\" và đúng vì wco.030611/030612 ghi \"frozen ... smoked, cooked or not before or during smoking\". DÒNG TRÙNG CHỮ: điều kiện được ghi GIỐNG HỆT dòng anh em cùng trùng tên biểu thuế — đây là cách ghi ĐÚNG: nguồn (WCO + biểu thuế) KHÔNG phân biệt các dòng này (data/tax.json cho 03063311/03063391 cùng \"en\" là \"crabs\"; 03069121/03069131 cùng \"en\"), nên sổ tay KHÔNG bịa tiêu chí phân biệt, chỉ nêu đúng điều nguồn nói. KHÔNG nói chắc hơn nguồn. GIỮ."
+    }
+  ],
+  "giu": 118,
+  "chen": 0,
+  "nguoiDuyet": "dev-soat-doc-lap-lo041 (phiên duyệt: đối chiếu lại từng đề xuất với nguồn nguyên văn)",
+  "soatChiTiet": {
+    "phamVi": 1,
+    "boPhan": 0,
+    "dieuKienVao": 1,
+    "loaiTru": 3,
+    "phanBiet": 1,
+    "tieuChi6": 40,
+    "dong8": 71,
+    "cayTenDien": 3
+  }
+}

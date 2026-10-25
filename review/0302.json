@@ -1,0 +1,60 @@
+{
+  "nhom": "0302",
+  "nguoiSoat": "dev-soat-doc-lap-lo041",
+  "soatVaiTro": "soat-doc-lap",
+  "luc": "2026-10-25T09:06:48.428Z",
+  "phamViSoat": "5 khối trong phạm vi: phamVi (1 mục), boPhan (0 mục — null), dieuKienVao (1 mục), loaiTru (4 mục), phanBiet (0 mục — rỗng) = 6 mục đã soi từng mục. Ngoài phạm vi đọc để kiểm độ phủ và chiều đúng–sai: tieuChi6 (46 mục, phủ đủ 45 phân nhóm wco.*), dong8 (59 mục, phủ đủ 59 dòng tax.*), cay.tenDien (0 mục — 2 nút ảo 0302891/0302892 đã có tên từ biểu thuế nên không cần điền).",
+  "soat": 111,
+  "daKiem": 5,
+  "sua": 1,
+  "xoa": 0,
+  "ghiChu": "KẾT QUẢ: 6 mục trong phạm vi — giu 4, sửa 2, xoá 0. Không mục nào phải xoá; không có mục mơ, không có mục biến câu \"cho phép\" thành điều kiện bắt buộc.\n\nLỖI SỬA (2):\n(1) phamVi — trích lược bằng \"…\" ĐÃ GIẤU MẤT NGOẠI LỆ (sổ lỗi #4). Trích gốc nối mảnh \"Nhóm này gồm cá…\" (cuối khối nhom0302.nhom) với mảnh \"- Gan, sẹ và bọc trứng cá…\" (giữa khối, đứng TRƯỚC) bằng \"…\", nhưng giữa hai mảnh trong nguồn nằm câu \"Tuy nhiên, nhóm này không bao gồm phi-lê cá và thịt cá khác thuộc nhóm 03.04.\" — dấu hiệu ngoại lệ bị \"…\" nuốt. Máy check-so-tay/check-trich-nguyen-van KHÔNG bắt được (quoteInSource chỉ kiểm từng mảnh có trong nguồn, không kiểm mảnh bị lược). Đã sửa: kéo nguyên văn câu \"Tuy nhiên…\" vào trong trích và đảo lại thứ tự hai mảnh theo đúng thứ tự nguồn (mảnh \"Gan, sẹ…\" đứng trước, mảnh \"Nhóm này gồm…\" đứng sau), nối bằng \"…\". Cả hai mảnh cắt bằng cat-trich.cjs nên byte-exact. text giữ nguyên (phạm vi cả nhóm, không mô tả vật liệu, không bỏ sót phần nào — mọi phần ngang hàng 0302.1/2/3/4/5/8/9 đều thuộc \"Cá\").\n(2) loaiTru[1] — dieuKien cắt bớt so với trích (sổ lỗi #7 ngược). Trích gốc: \"(d) Bột mịn, bột thô và viên làm từ cá HOẶC ĐỘNG VẬT GIÁP XÁC, ĐỘNG VẬT THÂN MỀM HOẶC ĐỘNG VẬT THỦY SINH KHÔNG XƯƠNG SỐNG KHÁC, không thích hợp dùng làm thức ăn cho người (nhóm 23.01).\" nhưng dieuKien chỉ còn \"…làm từ cá, không thích hợp dùng làm thức ăn cho người\" — hẹp điều kiện. Đã sửa: trả nguyên văn đầy đủ, khớp với tiền lệ 0303.json cùng lô (mục loaiTru sang 2301 giữ nguyên cụm \"hoặc động vật giáp xác…\").\n\nMỤC GIỮ (4) — lý do:\n- dieuKienVao[0]: trích nguyên văn đúng câu \"Nhóm này gồm cá, tươi hoặc ướp lạnh…\" (câu ràng buộc phạm vi nhóm 4 số, KHÔNG phải câu định nghĩa thuật ngữ, không phải câu cho phép). value \"tươi hoặc ướp lạnh\" bám đúng câu, KHÔNG mạnh hơn nguồn. Câu \"Cá được ướp với ít đường… vẫn được phân loại trong nhóm này\" là câu CHO PHÉP — drafter đã không biến thành điều kiện (đúng luật _he-thong.txt dòng 28), nên không có lỗi mạnh hơn nguồn. Trích không dùng dấu lược; ngoại lệ ngay sau (phi-lê/thịt cá 03.04) được loạiTru[0] trích nguyên văn đầy đủ nên không bị mất khỏi hệ thống. Cùng kiểu với tiền lệ 0304.\n- loaiTru[0]: trích nguyên văn \"Tuy nhiên, nhóm này không bao gồm phi-lê cá và thịt cá khác thuộc nhóm 03.04.\" — có dấu hiệu loại trừ rõ ràng, đích 03.04 nằm nguyên văn trong câu, sangNhom 0304 có thật. dieuKien là trích đúng, không thêm chữ.\n- loaiTru[2]: trích nguyên văn \"(c) Phế liệu của cá và trứng cá không làm thực phẩm (ví dụ: trứng cá tuyết muối dùng làm mồi câu) (nhóm 05.11).\" — đích 05.11 nằm trong câu, sangNhom 0511 có thật; dieuKien là trích đúng (bỏ ngoặc ví dụ là tuỳ chọn, không đổi nghĩa).\n- loaiTru[3]: trích nguyên văn \"(d) Trứng cá tầm muối hoặc các sản phẩm thay thế trứng cá tầm muối từ trứng cá (nhóm 16.04).\" — đích 16.04 nằm trong câu, sangNhom 1604 có thật; dieuKien là trích đúng.\n\nĐỘ PHỦ (ngoài phạm vi) — đã kiểm, KHÔNG có lỗi:\n- dong8: 59/59 dòng tax.* trong nguồn đều có mặt, không thừa, không thiếu. 45 dòng lấy trích từ tax.* nguyên văn; 14 dòng \"Loại khác\" lấy nhãn phân nhóm 6 số từ wco.* — đúng luật _he-thong.txt dòng 20 và đúng tiền lệ 0303/0305 cùng lô.\n- tieuChi6: 46 mục phủ đủ 45 phân nhóm wco.* (030292 có 2 mục: định nghĩa \"vây cá mập\" + ngoại lệ \"các phần trên của đuôi cá mập không được coi là vây cá mập\" value=false — NGOẠI LỆ ĐÃ ĐƯỢC GIỮ, không bị lược mất). Mọi value là bản dịch trung thành từ tên WCO/tên biểu thuế, không có từ bịa (đã quét toàn bộ từ vựng tiếng Việt: các từ không có trong nguồn chỉ là \"dòng biểu thuế\", \"tiêu đề quốc gia\", \"trang_thai\" — nhãn chuẩn, không phải từ bịa).\n- cay.tenDien: rỗng là ĐÚNG — 2 nút ảo 0302891 (Cá biển) và 0302892 (Loại khác) đã có tên tiếng Việt từ biểu thuế (tenNguon bieu-thue@2026.04.05); check-cay báo \"đủ tên nút ảo\".\n\nLỖI KỆ SÁCH (không phải lỗi người soạn, đã biết trước): khối [nhom0302.nhom] mở đầu bằng \"Citharidae), trừ phụ phẩm ăn được…\" — tức chú giải nhóm 0302.1 BỊ CẮT ĐẦU trong data/chu-giai-heading.json (mất tiêu đề khối \"Cá bơn…\"). Hệ quả: (a) không có câu \"Nhóm này gồm…\" phủ cả nhóm theo cấu trúc khối-tiêu đề, nên phamVi phải ghép từ câu chú giải ở cuối khối + danh sách phân nhóm — người soạn đã làm đúng, nhưng buộc phải lược bằng \"…\", và đó chính là chỗ dễ nuốt ngoại lệ (đã sửa); (b) đầu khối còn sót \"Citharidae), trừ phụ phẩm ăn được sau giết mổ của cá thuộc các phân nhóm từ 0302.91 đến 0302.99\" là câu CỤT (mất chủ ngữ) — KHÔNG dùng làm căn cứ cho mục nào, người soạn cũng không dùng, đúng.\n\nGHI NHẬN KHÔNG SỬA (có lý do):\n- phamVi.text không nhắc loại trừ phi-lê/thịt cá 03.04. Đây là lựa chọn chấp nhận được: 68/361 nhóm sổ tay có nêu loại trừ trong phamVi.text, 293 nhóm không; loại trừ này đã được loaiTru[0] trích nguyên văn và runtime dùng làm cổng CỨNG (SO_TAY_LOAI_TRU), nên không bị mất. Không sửa để tránh việc sửa nội dung không sai.\n- loaiTru[1].dieuKien sau khi sửa dài 166 ký tự; runtime cắt 55 ký tự khi hiển thị trong prompt (lib/so-tay-gates.js:137) nhưng phép khớp cụm từ (phraseHit) dùng TRƯỜNG ĐẦY ĐỦ, nên không mất tác dụng — cùng hành vi với tiền lệ 0303 (143 ký tự).\n- dong8[50] và dong8[55] (03028919 / 03028929) ghi \"tiêu đề quốc gia 0302.89.1 (cá biển)\" và \"0302.89.2\" — đã đối chiếu cây: 0302891 = \"Cá biển\", 0302892 = \"Loại khác\" (tenNguon bieu-thue@2026.04.05). Không có từ bịa.\n\nKIỂM MÁY (chạy trên bản nháp gốc và trên bản sau khi sửa): check-trich-nguyen-van.mjs = OK 111/111 byte-exact; check-so-tay.mjs --raw=tmp/so-tay/raw 0302 = đạt 111/111; check-cay.mjs --nhom=0302 --chi-tiet = 0 lỗi lệch cây, đủ dong8, đủ tên nút ảo, đủ tiêu chí 6 số. Sau khi sửa 2 mục: check-trich-nguyen-van vẫn OK 111/111, và checkItem() của lib/so-tay.js trên 111 mục = 0 lỗi.\n\n=== NGƯỜI DUYỆT (phiên quản lý) ===\nNGƯỜI DUYỆT: 2 đề xuất của agent — CHẤP NHẬN 1 (phamVi.trich), BÁC BỎ 1 (loaiTru[1]). Sửa 1, xoá 0. Ngoài phạm vi: không có lỗi nào được chốt.\nSố liệu chốt: soát 6 mục · giu 5 · sửa 1 · xoá 0 · chèn 0.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Trích gốc lược bằng \"…\" nuốt mất câu ngoại lệ nằm GIỮA hai mảnh trong nguồn: \"Tuy nhiên, nhóm này không bao gồm phi-lê cá và thịt cá khác thuộc nhóm 03.04.\" (sổ lỗi #4 — câu liền sau câu trích bắt đầu bằng \"Tuy nhiên\" phải được kéo vào). Đã sửa: kéo nguyên văn câu \"Tuy nhiên…\" vào trích, đảo thứ tự hai mảnh theo đúng thứ tự nguồn (khối nguồn nằm theo thứ tự: danh sách phân nhóm \"Gan, sẹ…\" trước, rồi tới câu chú giải \"Nhóm này gồm…\"), nối bằng \"…\". Cả hai mảnh cắt bằng tmp/so-tay/cat-trich.cjs nên byte-exact; text giữ nguyên.",
+      "sua": {
+        "trich": "Gan, sẹ và bọc trứng cá, vây, đầu, đuôi, bong bóng và các phụ phẩm ăn được sau giết mổ khác của cá…Nhóm này gồm cá, tươi hoặc ướp lạnh, có thể nguyên con, bỏ đầu, moi ruột hoặc cắt khúc còn xương hoặc sụn. Tuy nhiên, nhóm này không bao gồm phi-lê cá và thịt cá khác thuộc nhóm 03.04."
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "BÁC BỎ đề xuất nối lại nhánh \"hoặc động vật giáp xác, động vật thân mềm hoặc động vật thủy sinh không xương sống khác\". Lý do: (1) loại trừ phải MÔ TẢ HÀNG BỊ LOẠI KHỎI NHÓM NÀY — 0302 là nhóm cá, nhánh \"làm từ cá\" là nhánh duy nhất có thể xảy ra trong nhóm; giữ đủ 4 nhánh làm mục nói rộng hơn nguồn và dài hơn (bị clip 55 ký tự cắt giữa câu lúc chạy: lib/so-tay-gates.js:137). (2) Tiền lệ đã được duyệt trong repo: 1901 loaiTru -> 1101|1102, trích có 3 nhánh (\"bột ngũ cốc đã pha trộn… / bột và bột thô từ rau đậu… / bột, bột thô hoặc bột mịn từ quả…\") nhưng dieuKien chỉ giữ nhánh đầu; 0304/0305/0306/0307 của chính lô này cũng giữ đúng nhánh của nhóm mình (\"làm từ cá\" / \"làm từ động vật giáp xác\" / \"làm từ động vật thân mềm\"). (3) Chênh lệch \"bột thô hoặc viên\" (bản nháp) với \"bột thô và viên\" (nguồn) là khác biệt LIÊT KÊ, không đảo nghĩa; runtime tách nhánh theo cả \"hoặc\" lẫn \"và\" (lib/so-tay-gates.js:92) nên không ảnh hưởng cổng. GIỮ NGUYÊN."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Trích nguyên văn đúng câu \"Nhóm này gồm cá, tươi hoặc ướp lạnh, có thể nguyên con, bỏ đầu, moi ruột hoặc cắt khúc còn xương hoặc sụn.\" — đây là câu RÀNG BUỘC phạm vi nhóm 4 số (không phải câu định nghĩa thuật ngữ, không phải câu cho phép). value \"tươi hoặc ướp lạnh\" bám đúng câu, không mạnh hơn nguồn. Câu \"Cá được ướp với ít đường… vẫn được phân loại trong nhóm này\" là câu CHO PHÉP và đã KHÔNG bị biến thành điều kiện — đúng luật _he-thong.txt dòng 28. Ngoại lệ ngay sau câu trích (phi-lê/thịt cá 03.04) không bị mất khỏi hệ thống vì loaiTru[0] trích nguyên văn đầy đủ và runtime dùng làm cổng cứng. Cùng kiểu với tiền lệ 0304."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Trích nguyên văn \"Tuy nhiên, nhóm này không bao gồm phi-lê cá và thịt cá khác thuộc nhóm 03.04.\" — có dấu hiệu loại trừ rõ ràng; đích 03.04 nằm nguyên văn trong câu; sangNhom 0304 có thật trong biểu thuế. dieuKien \"phi-lê cá và thịt cá khác\" là trích đúng, không thêm chữ nào."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "Trích nguyên văn \"(c) Phế liệu của cá và trứng cá không làm thực phẩm (ví dụ: trứng cá tuyết muối dùng làm mồi câu) (nhóm 05.11).\" — đích 05.11 nằm trong câu, sangNhom 0511 có thật; dieuKien là trích đúng, bỏ ngoặc ví dụ là tuỳ chọn không đổi nghĩa."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "Trích nguyên văn \"(d) Trứng cá tầm muối hoặc các sản phẩm thay thế trứng cá tầm muối từ trứng cá (nhóm 16.04).\" — đích 16.04 nằm trong câu, sangNhom 1604 có thật; dieuKien là trích đúng."
+    }
+  ],
+  "giu": 5,
+  "chen": 0,
+  "nguoiDuyet": "dev-soat-doc-lap-lo041 (phiên duyệt: đối chiếu lại từng đề xuất với nguồn nguyên văn)",
+  "soatChiTiet": {
+    "phamVi": 1,
+    "boPhan": 0,
+    "dieuKienVao": 1,
+    "loaiTru": 4,
+    "phanBiet": 0,
+    "tieuChi6": 46,
+    "dong8": 59,
+    "cayTenDien": 0
+  }
+}

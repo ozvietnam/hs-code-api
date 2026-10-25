@@ -1,0 +1,563 @@
+{
+  "nhom": "0304",
+  "nguoiSoat": "dev-soat-doc-lap-lo041",
+  "soatVaiTro": "soat-doc-lap",
+  "luc": "2026-10-25T09:09:51.641Z",
+  "phamViSoat": "Soát đầy đủ 5 khối trong phạm vi của tmp/so-tay/raw/0304.json — không soát mẫu: phamVi (1 mục), boPhan (1 mục), dieuKienVao (1 mục), loaiTru (3 mục), phanBiet (1 mục) = 7 mục trong phạm vi. Ngoài phạm vi đã ĐỌC TOÀN BỘ để kiểm độ phủ và chiều điều kiện: tieuChi6 (48 mục), dong8 (50 mục), cay.tenDien (0 mục) = 98 mục. Đã đọc TOÀN BỘ nguồn tmp/so-tay/nguon/0304.txt (25 KB): khối [nhom0304.nhom], [ch03.chuong], [phan03.phan], [sen.03048910], [sen.03049910], 48 khối [wco.*], 50 khối [tax.*]; và tmp/so-tay/nguon/_he-thong.txt (lược đồ + 40 luật bắt buộc). Tổng 105 mục đã soi.",
+  "soat": 105,
+  "daKiem": 104,
+  "sua": 2,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP nhóm 0304 (lô 041, PR #436) — đã soát lại TỪ ĐẦU từ nguồn nguyên văn, KHÔNG kế thừa tệp review cũ (đã ghi đè). MÁY: scripts/check-trich-nguyen-van.mjs OK 104/104 mục byte-exact; scripts/check-so-tay.mjs --raw xanh 105/105; scripts/check-cay.mjs 0 lỗi lệch cây, đủ tên nút ảo, đủ tiêu chí 6 số. SOI TAY (phần máy KHÔNG bắt được): (1) chiều đúng–sai của từng câu điều kiện; (2) câu trích có nói đúng điều mục khẳng định; (3) mục có nói chắc hơn nguồn; (4) định ngữ giới hạn có bị rơi không. KẾT QUẢ: 7/7 mục trong phạm vi (phamVi, boPhan, dieuKienVao[0], loaiTru[0..2], phanBiet[0]) đạt — GIỮ, không có lỗi trong 5 khối soát chính. LỖI THẬT phát hiện ở NGOÀI phạm vi: 2 mục cần SỬA — tieuChi6[39] (hs6 030489) và dong8[40] (hs 03048990), cùng một nội dung. Câu WCO gốc \"030489 Fish fillets; frozen, of fish n.e.c. in heading 0304.8\" KHÔNG có mệnh đề \"excluding/other than\"; \"n.e.c. in heading 0304.8\" là định nghĩa phần DƯ của tiêu đề 0304.8 (030489 CÓ thuộc 0304.8). Bản nháp dịch \"Phi-lê cá đông lạnh, TRỪ nhóm 03.04.8\" — đảo ngược nghĩa. Đối chiếu quy ước cùng lô 0302/0303 (cùng Chương 3, cùng cấu trúc WCO): \"n.e.c. in heading 0302\" → \"Cá khác thuộc nhóm 0302\"; \"n.e.c. in item no. 0303.5\" → \"Cá khác thuộc nhóm 03.03.5\"; chữ \"trừ\" CHỈ dùng cho mệnh đề loại trừ thật (\"excluding fillets\" → \"trừ phi-lê\"; \"other than fish of heading 0304.4\" → \"trừ nhóm 03.04.4\"). Máy không bắt vì câu trích đúng nguyên văn. LỖI KỆ SÁCH: (a) khối [nhom0304.nhom] bị CẮT ĐẦU — mở đầu bằng \"Ctenopharyngodon idellus, …\" không có tiêu đề/đầu câu, danh sách loài của 0304.61 mở đầu bằng dấu ngoặc đóng; (b) câu định nghĩa phi-lê bị cắt ở \"xương lưng chính,\" rồi nối tiếp ở đoạn kế bằng \"xương bụng hoặc sườn…\" — nên phần định nghĩa còn thiếu tiêu chí cốt lõi \"hai bên không dính nhau\"; KHÔNG mục nào trong bản nháp dựa vào phần đầu bị cắt nên không phải sửa; (c) nguồn WCO viết \"fish of heading 0304.4/0304.8\" và \"item no. 0304.5/0304.9\" — bản nháp dịch \"nhóm 03.04.4/03.04.8/03.04.5/03.04.9\" (không đổi nghĩa); (d) ba câu WCO 030456/030457/030459 dùng dấu \";\" thay vì \",\" — bản nháp giữ nguyên câu trích, không sửa nguồn. ĐIỂM GHI NHẬN KHÔNG SỬA (kèm lý do): (1) dieuKienVao[0] không kể dạng thứ ba \"được ướp với ít đường hoặc được đóng gói với ít lá nguyệt quế thơm cũng thuộc nhóm này\" — câu này nằm SAU danh sách (i)/(ii) trong nguồn và không phủ định danh sách đó; nguồn tự liệt kê (i)/(ii) là đủ; cùng cách làm với 0302 (cùng câu \"được ướp với ít đường…\") và 0305 (cùng mẫu danh sách (1)(2)(3) → op \"in\"); KHÔNG sửa. (2) loaiTru[0].dieuKien dài 86 ký tự nên runtime clip(55) tại lib/so-tay-gates.js:137 cắt cụt thành \"Phi-lê cá đã chín, và phi-lê chỉ bao bột hoặc bao vụn b\" — nhưng 1109/2162 mục loaiTru toàn repo đều >55 ký tự, đây là giới hạn của runtime chứ không phải lỗi riêng của 0304; KHÔNG sửa, ghi nhận để nhóm sửa runtime. (3) phanBiet[0] dùng mã 8 số 03043100/03045100 trong khi câu trích không nêu mã đó — lib/so-tay.js:235 chỉ đòi mã NGOÀI nhóm phải được nêu trong trích; mã trong nhóm thì không bắt; 227 mục phanBiet 8 số khác trong repo cùng cách làm; chiều có→neuCo/không→neuKhong ĐÚNG; KHÔNG sửa. (4) phanBiet[0].trich lược giữa định nghĩa phi-lê (dừng ở \"theo xương sống của con cá\") nên mất tiêu chí \"hai bên không dính nhau\" — nhưng đoạn lược KHÔNG chứa ngoại lệ (không \"trừ/tuy nhiên/với điều kiện/không kể\") nên không vi phạm luật lược; KHÔNG sửa. (5) boPhan của 0304 nói \"hai phần ngang hàng (1)/(2)\" — cổng runtime SO_TAY_BO_PHAN chỉ bật khi nhóm có dòng tên bắt đầu \"Bộ phận/Phụ tùng\"; 0304 không có dòng nào như vậy nên cổng không bật, boPhan chỉ vào prompt vòng 2; ngữ nghĩa thì đúng (mẫu \"nhóm tách thành các phần\" như 3918/3922); KHÔNG sửa. (6) 03048990 là dòng \"Loại khác\" nhưng câu WCO 030489 là câu định nghĩa phần dư chứ không phải tên dòng — máy tự điền loaiKhac theo biểu thuế; vẫn giữ. ĐỘ PHỦ: 50/50 dòng tax.* có mặt trong dong8, 48/48 phân nhóm wco.* có mặt trong tieuChi6, không thừa không thiếu; cay.tenDien rỗng là ĐÚNG. Tên loài trong mọi dieuKien/tieuChi6 đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp 100%, không bịa, không dịch sai.\n\n=== NGƯỜI DUYỆT (phiên quản lý) ===\nNGƯỜI DUYỆT: 2 đề xuất của agent — CHẤP NHẬN 2 (sửa nghĩa đảo chiều \"trừ nhóm 03.04.8\"). Sửa 2, xoá 0. Đối chiếu thêm trong chính nhóm: 030449 (\"other than fish of heading 0304.4\" → \"trừ nhóm 03.04.4\" ĐÚNG), 030459 (\"n.e.c. in item no. 0304.5\" → \"thuộc nhóm 03.04.5\" ĐÚNG), 030499 (\"n.e.c. in item no. 0304.9\" → \"thuộc nhóm 03.04.9\" ĐÚNG), 030479 (\"other than cod, haddock…\" → \"trừ cá tuyết…\" ĐÚNG) — nên 030489 là mục LỆCH duy nhất, đúng như agent chỉ ra.\nSố liệu chốt: soát 105 mục · giu 104 · sửa 2 · xoá 0 · chèn 0.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn trong [nhom0304.nhom]: \"Nhóm này bao gồm phi-lê cá và tất cả thịt cá khác (đã hoặc chưa xay, nghiền) chỉ ở các dạng sau:…(i)…(ii)…\". Nêu đúng phạm vi CẢ nhóm: hai phần ngang hàng (phi-lê cá + tất cả thịt cá khác) và hai dạng (tươi/ướp lạnh, đông lạnh) — KHÔNG mô tả vật liệu, KHÔNG chỉ một phần, không dính lỗi lô 030 (lấy đoạn dẫn của phần đầu làm phạm vi). Đối chiếu tiêu đề chính thức của cây (lib/hs-tree.js nodeOf(\"0304\").tenVi = \"Phi-lê cá và các loại thịt cá khác (đã hoặc chưa xay, nghiền, băm), tươi, ướp lạnh hoặc đông lạnh.\") — bản nháp khớp gần như từng từ. GIỮ."
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "quyTac/tomTat bám đúng hai phần ngang hàng của nguồn: \"(1) Phi-lê cá\" và \"(2) Tất cả các loại thịt cá khác (đã hoặc chưa xay, nghiền) tức là thịt cá mà đã được loại bỏ xương\". Câu trích ghép byte-exact bằng \"…\" (đã tự dựng lại từ tệp nguồn để đối chiếu, không gõ tay). Đúng mẫu \"nhóm tách thành các phần\" như 3918/3922; không thêm chữ nào ngoài trích. GIỮ."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Điều kiện vào NHÓM 4 số: chỉ ở dạng (i) tươi/ướp lạnh hoặc (ii) đông lạnh. Nguồn tự liệt kê chẳng hạn \"chỉ ở các dạng sau\" → đây là ràng buộc phủ cẢ nhóm, KHÔNG phải câu định nghĩa thuật ngữ, KHÔNG phải câu cho phép, KHÔNG phải điều kiện cấp phân nhóm/dòng 8 số. op \"in\" đúng vì nguồn nối bằng \"hoặc\" (đối chiếu 0305 cùng mẫu danh sách (1)(2)(3) → op \"in\"). Định ngữ giới hạn \"thường\" trong \"(ii) Đông lạnh, thường dưới dạng khối đông lạnh\" giới hạn DẠNG (khối đông lạnh) chứ không phải trạng thái, nên value \"đông lạnh\" không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu nguyên văn: \"Phi-lê cá đã chín, và phi-lê chỉ bao bột hoặc bao vụn bánh mì, có hoặc không đông lạnh, được phân loại vào nhóm 16.04.\" — có DẤU HIỆU LOẠI TRỪ rõ (được phân loại vào nhóm khác) và nêu ĐÍCH DANH nhóm 16.04 (có thật trong data/tax.json, 31 mã 16xxxx). Không nằm trong khối \"bao gồm\" nên không dính lỗi lô 030 (mục BAO GỒM có số nhóm trong ngoặc). Định ngữ \"có hoặc không đông lạnh\" được giữ nguyên. GIỮ."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu nguyên văn trong [ch03.chuong], mục (d) của khối \"1. Chương này không bao gồm:\": \"…không thích hợp dùng làm thức ăn cho người (nhóm 23.01).\" — dấu hiệu loại trừ rõ + đích danh nhóm 23.01 (có thật, 4 mã). Điều kiện giữ trọn vế \"không thích hợp dùng làm thức ăn cho người\". GIỮ."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu nguyên văn trong [ch03.chuong], mục (c) của khối \"Ngoài những phần loại trừ đã nêu trên, Chương này cũng không bao gồm:\": \"Phế liệu của cá và trứng cá không làm thực phẩm (ví dụ: trứng cá tuyết muối dùng làm mồi câu) (nhóm 05.11).\" — dấu hiệu loại trừ rõ + đích danh nhóm 05.11 (có thật, 9 mã). Vế trong ngoặc chỉ là VÍ DỤ trong câu, không làm thay đổi điều kiện. GIỮ."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn ghép byte-exact: \"(1) Phi-lê cá.…Theo mục đích của nhóm này thuật ngữ phi-lê cá có nghĩa là những dải thịt được cắt dọc hai bên theo xương sống của con cá…(2) Tất cả các loại thịt cá khác (đã hoặc chưa xay, nghiền) tức là thịt cá mà đã được loại bỏ xương.\" Hoi không nhắc mã (đạt luật MA_PHAN_NHOM_TRONG_HOI của lib/so-tay.js). CHIỀU ĐÚNG theo runtime (có→neuCo / không→neuKhong): có = phi-lê → 03043100 (WCO 030431 = Fish fillets; fresh or chilled, tilapias) ✓; không = thịt cá khác đã loại bỏ xương → 03045100 (WCO 030451 = Fish meat, EXCLUDING fillets; fresh or chilled, tilapias…) ✓. Cả hai mã có thật trong biểu thuế và THUỘC nhóm 0304 → theo lib/so-tay.js:235 chỉ mã NGOÀI nhóm mới bắt buộc phải nêu trong câu trích, nên không nêu mã trong trích là hợp lệ (227 mục phanBiet 8 số khác trong repo cùng cách làm). Hai nhánh đều có căn cứ trực tiếp trong câu (1)/(2), không suy từ danh sách loại trừ hay cấu trúc anh em. GIỮ."
+    },
+    {
+      "index": "cay.tenDien",
+      "hanhDong": "giu",
+      "lyDo": "Mảng rỗng là ĐÚNG: scripts/check-cay.mjs --nhom=0304 báo \"0 lỗi lệch cây… đủ tên nút ảo\"; 0304 không có nút ảo 5 số (nhóm một gạch) nào thiếu tên tiếng Việt, mọi tiêu đề phân nhóm 6 số đã có tên từ tiêu đề quốc gia + câu WCO/SEN. Không có mục nào để sửa/xoá. GIỮ."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030431 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030431]: \"Phi-lê cá tươi hoặc ướp lạnh: cá rô phi\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030432 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030432]: \"Phi-lê cá tươi hoặc ướp lạnh: cá da trơn\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030433 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030433]: \"Phi-lê cá tươi hoặc ướp lạnh: cá rô sông Nile\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030439 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030439]: \"Phi-lê cá tươi hoặc ướp lạnh: cá chép, cá chình và cá quả\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[4]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030441 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030441]: \"Phi-lê cá tươi hoặc ướp lạnh: cá hồi Thái Bình Dương, cá hồi Đại Tây Dương và cá hồi sông Đa-nuýp\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[5]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030442 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030442]: \"Phi-lê cá tươi hoặc ướp lạnh: cá hồi chấm (trout)\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[6]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030443 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030443]: \"Phi-lê cá tươi hoặc ướp lạnh: cá bơn\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[7]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030444 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030444]: \"Phi-lê cá tươi hoặc ướp lạnh: cá thuộc các họ Bregmacerotidae, Euclichthyidae, Gadidae, Macrouridae, Melanonidae, Merlucciidae, Moridae và Muraenolepididae\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[8]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030445 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030445]: \"Phi-lê cá tươi hoặc ướp lạnh: cá kiếm\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[9]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030446 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030446]: \"Phi-lê cá tươi hoặc ướp lạnh: cá răng cưa\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[10]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030447 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030447]: \"Phi-lê cá tươi hoặc ướp lạnh: cá nhám góc và cá mập khác\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[11]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030448 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030448]: \"Phi-lê cá tươi hoặc ướp lạnh: cá đuối\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[12]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030449 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030449]: \"Phi-lê cá tươi hoặc ướp lạnh, trừ nhóm 03.04.4\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[13]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030451 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030451]: \"Thịt cá tươi hoặc ướp lạnh, trừ phi-lê: cá rô phi, cá da trơn, cá chép, cá chình, cá rô sông Nile và cá quả\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[14]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030452 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030452]: \"Thịt cá tươi hoặc ướp lạnh, trừ phi-lê: cá hồi\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[15]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030453 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030453]: \"Thịt cá tươi hoặc ướp lạnh, trừ phi-lê: cá thuộc các họ Bregmacerotidae, Euclichthyidae, Gadidae, Macrouridae, Melanonidae, Merlucciidae, Moridae và Muraenolepididae\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[16]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030454 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030454]: \"Thịt cá tươi hoặc ướp lạnh, trừ phi-lê: cá kiếm\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[17]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030455 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030455]: \"Thịt cá tươi hoặc ướp lạnh, trừ phi-lê: cá răng cưa\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[18]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030456 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030456]: \"Thịt cá tươi hoặc ướp lạnh, trừ phi-lê: cá nhám góc và cá mập khác\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[19]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030457 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030457]: \"Thịt cá tươi hoặc ướp lạnh, trừ phi-lê: cá đuối\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[20]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030459 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030459]: \"Thịt cá tươi hoặc ướp lạnh, trừ phi-lê, thuộc nhóm 03.04.5\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[21]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030461 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030461]: \"Phi-lê cá đông lạnh: cá rô phi\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[22]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030462 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030462]: \"Phi-lê cá đông lạnh: cá da trơn\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[23]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030463 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030463]: \"Phi-lê cá đông lạnh: cá rô sông Nile\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[24]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030469 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030469]: \"Phi-lê cá đông lạnh: cá chép, cá chình và cá quả\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[25]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030471 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030471]: \"Phi-lê cá đông lạnh: cá tuyết\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[26]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030472 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030472]: \"Phi-lê cá đông lạnh: cá tuyết chấm đen\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[27]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030473 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030473]: \"Phi-lê cá đông lạnh: cá tuyết đen\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[28]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030474 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030474]: \"Phi-lê cá đông lạnh: cá tuyết hake\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[29]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030475 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030475]: \"Phi-lê cá đông lạnh: cá Minh Thái\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[30]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030479 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030479]: \"Phi-lê cá đông lạnh thuộc các họ Bregmacerotidae, Euclichthyidae, Gadidae, Macrouridae, Melanonidae, Merlucciidae, Moridae và Muraenolepididae, trừ cá tuyết, cá tuyết chấm đen, cá tuyết đen, cá tuyết hake và cá Minh Thái\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[31]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030481 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030481]: \"Phi-lê cá đông lạnh: cá hồi Thái Bình Dương, cá hồi Đại Tây Dương và cá hồi sông Đa-nuýp\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[32]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030482 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030482]: \"Phi-lê cá đông lạnh: cá hồi chấm (trout)\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[33]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030483 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030483]: \"Phi-lê cá đông lạnh: cá bơn\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[34]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030484 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030484]: \"Phi-lê cá đông lạnh: cá kiếm\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[35]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030485 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030485]: \"Phi-lê cá đông lạnh: cá răng cưa\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[36]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030486 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030486]: \"Phi-lê cá đông lạnh: cá trích nước lạnh\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[37]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030487 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030487]: \"Phi-lê cá đông lạnh: cá ngừ đại dương và cá ngừ vằn (cá ngừ sọc dưa)\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[38]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030488 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030488]: \"Phi-lê cá đông lạnh: cá nhám góc, cá mập khác và cá đuối\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[39]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT (máy KHÔNG bắt được). Câu WCO gốc: \"030489 Fish fillets; frozen, of fish n.e.c. in heading 0304.8\" — KHÔNG có mệnh đề \"excluding/other than\" nào. \"n.e.c. in heading 0304.8\" là định nghĩa PHẦN DƯ của tiêu đề 0304.8: 030489 CÓ THUỘC 0304.8, chỉ là không nằm trong 8 dòng đã gọi tên (03048100-03048800). Bản nháp dịch là \"Phi-lê cá đông lạnh, TRỪ nhóm 03.04.8\" — ĐẢO NGƯỢC NGHĨA (mất cả định ngữ loại trừ lẫn nghĩa): đọc đúng nghĩa thì 030489 là phần dư CỦA 0304.8, không phải thứ NGOÀI 0304.8. Đối chiếu quy ước cùng lô: 0302 t6 030289 \"n.e.c. in heading 0302\" → \"Cá khác thuộc nhóm 0302\"; 0303 t6 030359 \"n.e.c. in item no. 0303.5\" → \"Cá khác thuộc nhóm 03.03.5\"; còn chữ \"trừ\" chỉ dùng cho mệnh đề loại trừ THẬT (\"excluding fillets\" → \"trừ phi-lê\"; \"other than fish of heading 0304.4\" → \"trừ nhóm 03.04.4\"). Hậu quả nếu để nguyên: dòng \"Loại khác\" 03048990 bị mô tả là ngoài 0304.8, có thể đẩy phi-lê đông lạnh sang nhóm khác hoặc loại nhầm 03048910 (cá nục heo cờ — vốn CÓ thuộc 0304.8). SỬA value; câu trích giữ nguyên nguyên văn, không đổi nguồn/mã.",
+      "sua": {
+        "value": "Phi-lê cá đông lạnh: Cá khác thuộc nhóm 03.04.8 (n.e.c. in heading 0304.8)"
+      }
+    },
+    {
+      "index": "tieuChi6[40]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030491 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030491]: \"Thịt cá đông lạnh, trừ phi-lê: cá kiếm\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[41]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030492 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030492]: \"Thịt cá đông lạnh, trừ phi-lê: cá răng cưa\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[42]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030493 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030493]: \"Thịt cá đông lạnh, trừ phi-lê: cá rô phi, cá da trơn, cá chép, cá chình, cá rô sông Nile và cá quả\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[43]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030494 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030494]: \"Thịt cá đông lạnh, trừ phi-lê: cá Minh Thái\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[44]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030495 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030495]: \"Thịt cá đông lạnh, trừ phi-lê: cá thuộc các họ Bregmacerotidae, Euclichthyidae, Gadidae, Macrouridae, Melanonidae, Merlucciidae, Moridae và Muraenolepididae, trừ cá Minh Thái\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[45]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030496 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030496]: \"Thịt cá đông lạnh, trừ phi-lê: cá nhám góc và cá mập khác\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[46]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030497 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030497]: \"Thịt cá đông lạnh, trừ phi-lê: cá đuối\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "tieuChi6[47]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 030499 là phân nhóm 6 số có thật trong cây của nhóm; value dịch đúng câu WCO trong [wco.030499]: \"Thịt cá đông lạnh, trừ phi-lê, thuộc nhóm 03.04.9\". Tên loài đối chiếu với tiêu đề tiếng Việt chính thức trong data/tax.json — khớp; không thêm chữ ngoài câu trích, không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03043100 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá tươi hoặc ướp lạnh: cá rô phi\". Câu trích nguyên văn trong [wco.030431]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03043200 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá tươi hoặc ướp lạnh: cá da trơn\". Câu trích nguyên văn trong [wco.030432]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03043300 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá tươi hoặc ướp lạnh: cá rô sông Nile\". Câu trích nguyên văn trong [wco.030433]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03043900 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá tươi hoặc ướp lạnh: cá chép, cá chình và cá quả\". Câu trích nguyên văn trong [wco.030439]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03044100 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá tươi hoặc ướp lạnh: cá hồi Thái Bình Dương, cá hồi Đại Tây Dương và cá hồi sông Đa-nuýp\". Câu trích nguyên văn trong [wco.030441]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03044200 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá tươi hoặc ướp lạnh: cá hồi chấm (trout)\". Câu trích nguyên văn trong [wco.030442]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03044300 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá tươi hoặc ướp lạnh: cá bơn\". Câu trích nguyên văn trong [wco.030443]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03044400 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá tươi hoặc ướp lạnh: cá thuộc các họ Bregmacerotidae, Euclichthyidae, Gadidae, Macrouridae, Melanonidae, Merlucciidae, Moridae và Muraenolepididae\". Câu trích nguyên văn trong [wco.030444]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[8]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03044500 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá tươi hoặc ướp lạnh: cá kiếm\". Câu trích nguyên văn trong [wco.030445]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[9]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03044600 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá tươi hoặc ướp lạnh: cá răng cưa\". Câu trích nguyên văn trong [wco.030446]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[10]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03044700 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá tươi hoặc ướp lạnh: cá nhám góc và cá mập khác\". Câu trích nguyên văn trong [wco.030447]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[11]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03044800 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá tươi hoặc ướp lạnh: cá đuối\". Câu trích nguyên văn trong [wco.030448]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[12]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03044900 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá tươi hoặc ướp lạnh, trừ nhóm 03.04.4\". Câu trích nguyên văn trong [wco.030449]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[13]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03045100 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Thịt cá tươi hoặc ướp lạnh, trừ phi-lê: cá rô phi, cá da trơn, cá chép, cá chình, cá rô sông Nile và cá quả\". Câu trích nguyên văn trong [wco.030451]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[14]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03045200 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Thịt cá tươi hoặc ướp lạnh, trừ phi-lê: cá hồi\". Câu trích nguyên văn trong [wco.030452]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[15]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03045300 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Thịt cá tươi hoặc ướp lạnh, trừ phi-lê: cá thuộc các họ Bregmacerotidae, Euclichthyidae, Gadidae, Macrouridae, Melanonidae, Merlucciidae, Moridae và Muraenolepididae\". Câu trích nguyên văn trong [wco.030453]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[16]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03045400 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Thịt cá tươi hoặc ướp lạnh, trừ phi-lê: cá kiếm\". Câu trích nguyên văn trong [wco.030454]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[17]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03045500 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Thịt cá tươi hoặc ướp lạnh, trừ phi-lê: cá răng cưa\". Câu trích nguyên văn trong [wco.030455]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[18]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03045600 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Thịt cá tươi hoặc ướp lạnh, trừ phi-lê: cá nhám góc và cá mập khác\". Câu trích nguyên văn trong [wco.030456]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[19]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03045700 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Thịt cá tươi hoặc ướp lạnh, trừ phi-lê: cá đuối\". Câu trích nguyên văn trong [wco.030457]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[20]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03045900 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Thịt cá tươi hoặc ướp lạnh, trừ phi-lê, thuộc nhóm 03.04.5\". Câu trích nguyên văn trong [wco.030459]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[21]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03046100 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh: cá rô phi\". Câu trích nguyên văn trong [wco.030461]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[22]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03046200 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh: cá da trơn\". Câu trích nguyên văn trong [wco.030462]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[23]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03046300 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh: cá rô sông Nile\". Câu trích nguyên văn trong [wco.030463]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[24]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03046900 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh: cá chép, cá chình và cá quả\". Câu trích nguyên văn trong [wco.030469]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[25]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03047100 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh: cá tuyết\". Câu trích nguyên văn trong [wco.030471]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[26]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03047200 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh: cá tuyết chấm đen\". Câu trích nguyên văn trong [wco.030472]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[27]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03047300 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh: cá tuyết đen\". Câu trích nguyên văn trong [wco.030473]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[28]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03047400 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh: cá tuyết hake\". Câu trích nguyên văn trong [wco.030474]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[29]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03047500 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh: cá Minh Thái\". Câu trích nguyên văn trong [wco.030475]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[30]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03047900 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh thuộc các họ Bregmacerotidae, Euclichthyidae, Gadidae, Macrouridae, Melanonidae, Merlucciidae, Moridae và Muraenolepididae, trừ cá tuyết, cá tuyết chấm đen, cá tuyết đen, cá tuyết hake và cá Minh Thái\". Câu trích nguyên văn trong [wco.030479]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[31]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03048100 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh: cá hồi Thái Bình Dương, cá hồi Đại Tây Dương và cá hồi sông Đa-nuýp\". Câu trích nguyên văn trong [wco.030481]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[32]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03048200 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh: cá hồi chấm (trout)\". Câu trích nguyên văn trong [wco.030482]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[33]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03048300 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh: cá bơn\". Câu trích nguyên văn trong [wco.030483]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[34]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03048400 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh: cá kiếm\". Câu trích nguyên văn trong [wco.030484]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[35]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03048500 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh: cá răng cưa\". Câu trích nguyên văn trong [wco.030485]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[36]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03048600 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh: cá trích nước lạnh\". Câu trích nguyên văn trong [wco.030486]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[37]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03048700 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh: cá ngừ đại dương và cá ngừ vằn (cá ngừ sọc dưa)\". Câu trích nguyên văn trong [wco.030487]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[38]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03048800 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Phi-lê cá đông lạnh: cá nhám góc, cá mập khác và cá đuối\". Câu trích nguyên văn trong [wco.030488]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[39]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03048910 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Cá nục heo cờ (Coryphaena hippurus) — hình dạng của phi lê cá nục heo cờ được xác định bằng đường máu ở giữa lát phi lê kéo dài đến toàn bộ cấu trúc cơ thể cá (đầu-đuôi)\". Điều kiện lấy từ SEN (lược đồ ưu tiên SEN cho dòng có mã riêng); câu trích nguyên văn trong [sen.03048910], tiền tố lấy từ tiêu đề SEN, không thêm chữ ngoài nguồn. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[40]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT (máy KHÔNG bắt được), cùng lỗi với tieuChi6[39]. Câu WCO gốc: \"030489 Fish fillets; frozen, of fish n.e.c. in heading 0304.8\" — KHÔNG có mệnh đề \"excluding/other than\" nào; \"n.e.c. in heading 0304.8\" nghĩa là 030489 là PHẦN DƯ CỦA tiêu đề 0304.8 (CÓ thuộc 0304.8), không phải thứ ngoài 0304.8. Bản nháp dịch \"Phi-lê cá đông lạnh, TRỪ nhóm 03.04.8\" — ĐẢO NGƯỢC NGHĨA. Đối chiếu quy ước cùng lô 0302/0303: \"n.e.c. in heading 0302\" → \"Cá khác thuộc nhóm 0302\"; chữ \"trừ\" chỉ dùng cho mệnh đề loại trừ thật. Đây là dòng \"Loại khác\" của 03048990 — mô tả sai có thể đẩy phi-lê đông lạnh sang nhóm ngoài 0304.8 hoặc loại nhầm 03048910 (cá nục heo cờ, vốn CÓ thuộc 0304.8). SỬA dieuKien; câu trích giữ nguyên nguyên văn, không đổi nguồn/mã.",
+      "sua": {
+        "dieuKien": "Phi-lê cá đông lạnh: Cá khác thuộc nhóm 03.04.8 (n.e.c. in heading 0304.8)"
+      }
+    },
+    {
+      "index": "dong8[41]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03049100 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Thịt cá đông lạnh, trừ phi-lê: cá kiếm\". Câu trích nguyên văn trong [wco.030491]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[42]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03049200 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Thịt cá đông lạnh, trừ phi-lê: cá răng cưa\". Câu trích nguyên văn trong [wco.030492]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[43]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03049300 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Thịt cá đông lạnh, trừ phi-lê: cá rô phi, cá da trơn, cá chép, cá chình, cá rô sông Nile và cá quả\". Câu trích nguyên văn trong [wco.030493]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[44]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03049400 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Thịt cá đông lạnh, trừ phi-lê: cá Minh Thái\". Câu trích nguyên văn trong [wco.030494]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[45]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03049500 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Thịt cá đông lạnh, trừ phi-lê: cá thuộc các họ Bregmacerotidae, Euclichthyidae, Gadidae, Macrouridae, Melanonidae, Merlucciidae, Moridae và Muraenolepididae, trừ cá Minh Thái\". Câu trích nguyên văn trong [wco.030495]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[46]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03049600 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Thịt cá đông lạnh, trừ phi-lê: cá nhám góc và cá mập khác\". Câu trích nguyên văn trong [wco.030496]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[47]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03049700 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Thịt cá đông lạnh, trừ phi-lê: cá đuối\". Câu trích nguyên văn trong [wco.030497]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[48]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03049910 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Surimi (thịt cá xay) — thịt cá đã tách xương sau đó được rửa sạch, lọc, xay và khử nước, và sau đó trộn với các thành phần thực phẩm chống đông (cryoprotective) và được làm đông lạnh\". Điều kiện lấy từ SEN (lược đồ ưu tiên SEN cho dòng có mã riêng); câu trích nguyên văn trong [sen.03049910], tiền tố lấy từ tiêu đề SEN, không thêm chữ ngoài nguồn. Không mạnh hơn nguồn. GIỮ."
+    },
+    {
+      "index": "dong8[49]",
+      "hanhDong": "giu",
+      "lyDo": "hs 03049990 là dòng 8 số có thật trong [tax.*] của nhóm (đủ 50/50, không thừa không thiếu); dieuKien: \"Thịt cá đông lạnh, trừ phi-lê, thuộc nhóm 03.04.9\". Câu trích nguyên văn trong [wco.030499]; tên loài đối chiếu khớp tiêu đề tiếng Việt chính thức trong data/tax.json. Không mạnh hơn nguồn. GIỮ."
+    }
+  ],
+  "giu": 104,
+  "chen": 0,
+  "nguoiDuyet": "dev-soat-doc-lap-lo041 (phiên duyệt: đối chiếu lại từng đề xuất với nguồn nguyên văn)",
+  "soatChiTiet": {
+    "phamVi": 1,
+    "boPhan": 1,
+    "dieuKienVao": 1,
+    "loaiTru": 3,
+    "phanBiet": 1,
+    "tieuChi6": 48,
+    "dong8": 50,
+    "cayTenDien": 0
+  }
+}
