@@ -3,6 +3,133 @@
 <!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
 ---
 
+# SOÁT ĐỘC LẬP lô 049 — phiên `dev-soat-doc-lap-lo049` (26/10/2026)
+
+- **Nhánh:** `so-tay/lo-049` (**PR #453**, **KHÔNG merge**) · **Nhóm:** `0805,0806,0807,0808,0809,0810`
+- **Người soát KHÁC người soạn:** `dev-soat-doc-lap-lo049` ≠ `dev-zcode-mm` (đúng mục 4 giao việc).
+- **Hồ sơ soát:** `review/0805.json` … `review/0810.json` (mỗi mục một `lyDo`) · **script áp:**
+  `scripts/apply-review-lo049.mjs` (chép từ `apply-review-lo046.mjs`: áp hết `sua` xong mới áp `xoa`,
+  `xoa` đi theo index giảm dần, giữ thụt lề tệp gốc, không ghi lại tệp khi không có thay đổi).
+- **Nguyên tắc:** em **không sửa câu nguồn / mã** để lách máy; mọi câu trích mới **cắt bằng script từ
+  tệp nguồn** `tmp/so-tay/nguon/<nhom>.txt` (`tmp/so-tay/gen-review-lo049.mjs` — cắt theo MỐC trong
+  nguồn, không gõ tay lại), rồi kiểm lại byte-exact + trần 600.
+
+## Phạm vi soát — 42 mục trong 5 khối, đọc TỪNG MỤC cùng nguồn
+
+| Nhóm | `phamVi` | `boPhan` | `dieuKienVao` | `loaiTru` | `phanBiet` | Tổng | SỬA | XOÁ |
+|---|---|---|---|---|---|---|---|---|
+| 0805 | 1 | 0 | 2 | 4 | 4 | 11 | 6 | 0 |
+| 0806 | 1 | 0 | 0 | 2 | 2 | 5 | 3 | 0 |
+| 0807 | 1 | 0 | 1 | 3 | 3 | 8 | 3 | 0 |
+| 0808 | 1 | 0 | 0 | 2 | 2 | 5 | 2 | 0 |
+| 0809 | 1 | 0 | 0 | 2 | 2 | 5 | 2 | 0 |
+| 0810 | 1 | 0 | 1 | 3 | 3 | 8 | 3 | 0 |
+| **Tổng** | 6 | 0 | 4 | 16 | 16 | **42** | **19** | **0** |
+
+- **70 mục ngoài phạm vi** (`tieuChi6` 28 + `dong8` 42) đã đọc để kiểm độ phủ và chiều đúng–sai,
+  **KHÔNG sửa** (đúng thực hành lô 041/042/044/046) — `nguonLoai` của chúng giữ nguyên `AI_DA_KIEM`.
+- **Kết quả toàn lô:** soát **112/112** mục · **SỬA 19 · XOÁ 0 · GIỮ 93** (42 mục trong phạm vi:
+  19 sửa + 23 giữ; 70 mục ngoài phạm vi giữ nguyên).
+- `nguonLoai` của **42 mục đã soát** (5 khối) đổi `AI_DA_KIEM` → **`NGUOI_DUYET`** (luật 11: chỉ người
+  soát độc lập được đổi, và chỉ cho khối đã soi).
+- **`docs/giao-viec/so-tay-lo.csv` dòng 049**: `nguoi_lam` → `soat-doc-lap-mm` (đã soát xong).
+  `trang_thai` **giữ `dang-lam`** vì **PR #453 chưa merge** — người gộp đặt `trang_thai=xong` khi merge
+  (đúng mục 4 giao việc; 38 dòng `xong` trong CSV đều là lô đã merge).
+
+## Ba lớp lỗi — máy đều KHÔNG bắt được (check-so-tay xanh 112/112 ngay từ đầu)
+
+### 1. Câu trích không tự nói điều mục khẳng định (13 mục)
+
+Đây là lớp lỗi **nhiều nhất** của lô này, và nó có **một dạng duy nhất**: mục đánh số trong chú giải được
+trích **KHÔNG kèm dòng dẫn "không bao gồm"** → câu trích đứng riêng không còn là một lệnh loại trừ.
+
+| Nhóm | Mục | Nguồn | Bản nháp | Sửa |
+|---|---|---|---|---|
+| 0805 | `dieuKienVao[1]`, `loaiTru[1]`, `phanBiet[1]` | `[nhom0805.nhom]` | `(b) Cam non, không ăn được, … (nhóm 12.11).` | thêm `Nhóm này không bao gồm:` + mục (a) (218 ký tự) |
+| 0805/0806/0807/0808/0809/0810 | `loaiTru`/`phanBiet` mục **"(i) Bột…"** | `[ch08.chuong]` | `(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06).` | thêm `Chương này cũng không bao gồm:` (86 ký tự) — **10 mục** |
+
+- Hệ quả rõ nhất ở `phanBiet`: nhánh **"có → 1106" / "có → 1211"** mà câu trích **không đủ căn cứ** —
+  người dùng nghe câu hỏi "Hàng là bột, bột thô hoặc bột mịn chế biến từ quả?" thì câu trích phải chứng minh
+  là hàng đó **không thuộc nhóm này** và sang 11.06.
+- Máy không bắt vì `check-so-tay` chỉ kiểm **mã đích có trong câu trích** (`mentions()`), không kiểm
+  câu trích có **vị ngữ "không bao gồm"** hay không.
+
+### 2. `phamVi` chỉ mô tất MỘT PHẦN của nhóm (3 mục — đúng lỗi lô 030/041)
+
+1. **0805** — câu trích dừng ở `(5) Quả chanh vàng` ⇒ mất vế *"và quả chanh xanh (Citrus aurantifolia,
+   Citrus latifolia)"* (**mất trọn một loại chanh của nhóm 0805**, dòng 08055020) và dấu lược `…` cuối
+   **nuốt mất câu bao hồm** *"Nhóm này cũng bao gồm các loại quả chanh xanh nhỏ và cam xanh nhỏ dùng để
+   bảo quản"* — quy tắc bao hồm có tác động phân loại (chanh xanh nhỏ dùng bảo quản vẫn thuộc 0805).
+   Sửa: trích lại trọn khối bao hồm (lead + mục (1)–(6) + câu bao hồm, **563 ký tự < 600**),
+   `text` thêm *"và quả chanh xanh"*, rút còn **217 ký tự** (dưới trần cắt 220 của runtime).
+2. **0807** — câu trích cắt **NGAY TRƯỚC** câu ngoại lệ *"Tuy nhiên nhóm này không gồm quả thuộc loài
+   Asimina triloba mà có tên theo tiếng Anh là "Pawpaws" (đu đủ) (nhóm 08.10)."* ⇒ dấu lược nuốt ngoại lệ
+   (đúng loại lỗi brief yêu cầu bắt tay). Hậu quả rất cụ thể: phạm vi cũ nói 0807 gồm *"đu đủ
+   (papaws or papaya)"* mà không nói loài **Asimina triloba** (cũng tên *Pawpaws/đu đủ*) sang 0810 →
+   hàng pawpaw dễ bị kéo nhầm vào 0807. Sửa: kéo câu ngoại lệ vào trích (**408 ký tự**) + thêm mệnh đề
+   loại trừ vào `text` (215 ký tự).
+3. **0810** — chú giải nhóm liệt kê **TÁM** nhóm quả ngang hàng (1)–(8) nhưng bản nháp chỉ nêu (1) và (2)
+   ⇒ phạm vi trông như 0810 chỉ gồm dâu tây + mâm xôi, còn sầu riêng/hồng vàng/lựu/nhãn/vải/thanh long/
+   hồng xiêm dễ bị đẩy sang nhóm khác. Câu trích cũng **bắt đầu giữa câu** (mất vị ngữ "Nhóm này bao gồm").
+   Sửa: `trich` = **trọn câu định nghĩa phạm vi** của nhóm (207 ký tự), `text` viết lại theo câu đó (173).
+   *Lý do không trích trọn tám mục:* ghép tám mục với câu định nghĩa **vượt trần 600** của máy
+   (`lib/so-tay.js:191`) ⇒ phạm vi diễn đạt bằng **quy tắc định nghĩa**; tám loại quả vẫn có mặt đầy đủ
+   trong `dong8` (19 dòng) và `tieuChi6` (8 phân nhóm) của cùng nhóm ⇒ **không mất thông tin phân loại nào**.
+
+### 3. Trích bắt đầu GIỮA CÂU — mất mệnh đề (1 mục)
+
+- **0806 `phamVi`** — bản nháp ghép 3 mảnh, **mảnh nào cũng cắt giữa câu và mất vị ngữ "bao gồm"**:
+  mảnh 1 bắt đầu bằng *"các loại nho tươi…"* (nguồn: *"Nhóm này **bao gồm** các loại nho tươi…"*),
+  mảnh 2 bằng *"các loại nho khô…"* (nguồn: *"Nhóm này **cũng bao gồm** các loại nho khô…"*). Cộng lại chỉ là
+  một **danh sách danh từ** — đọc câu trích **không biết nhóm 0806 có chứa những thứ đó hay không**.
+  Sửa: mở rộng hai mảnh để có đủ vị ngữ (283 ký tự); `text` giữ nguyên.
+
+### 4. `dieuKien` bỏ mất định ngữ giới hạn (1 mục)
+
+- **0805 `loaiTru[1].dieuKien`** — bản nháp *"Cam non dùng để chiết xuất tinh dầu (petit-grain)"* bỏ mất
+  **"chủ yếu"** và vế **"được để khô"** của câu nguồn ⇒ nghe như loại trừ dứt khoát **mọi** cam non.
+  Sửa: *"Cam non để khô chủ yếu dùng để chiết xuất tinh dầu"* (50 ký tự, dưới trần cắt 55 của runtime);
+  "(petit-grain)" giữ nguyên trong `trich`.
+
+## Đã kiểm và GIỮ (23 mục trong phạm vi) — vì sao KHÔNG phải lỗi
+
+- **0808 `phamVi`** — câu trích tự đủ (*"Quả táo (apple) và quả lê **được phân loại vào nhóm này**…"*),
+  phủ táo + lê + mộc qua; đoạn lược giữa các mảnh chỉ bỏ vế nối *"hoặc dùng cho các"*, **không phải ngoại lệ**.
+- **0809 `phamVi`** — câu trích là **trọn câu** (*"Nhóm này bao gồm quả mơ, … và mận gai."*), có vị ngữ,
+  phủ đủ 5 loại quả, `text` khớp 1-1, 189 ký tự; đây là câu cuối của khối nguồn ⇒ không có ngoại lệ bị nuốt.
+- **0808 `dieuKienVao` rỗng** — câu *"…**cho dù** chúng thích hợp để ăn tráng miệng, để sản xuất đồ uống… hoặc
+  dùng cho các mục đích công nghiệp"* là câu **CHO PHÉP** (táo/lê VẪN ở nhóm này dù dùng để làm nước uống
+  hay công nghiệp) ⇒ đặt `value=true` là **ngược chiều**, để rỗng là đúng.
+- **0806/0808/0809 `dieuKienVao` rỗng** — chú giải nhóm không có câu ràng buộc nào phủ cả nhóm 4 số.
+- **`loaiTru` "thấm lọc tách nước" → 20.08** (6 nhóm) — câu trích tự đủ (*"Tuy nhiên, Chương này không bao gồm
+  quả được bảo quản bằng cách thấm lọc tách nước.…Quả như vậy được phân loại vào Chương 20 (nhóm 20.08)."*);
+  đoạn lược giữa hai mảnh là **định nghĩa**, không phải ngoại lệ.
+- **Chiều Có/Không của `phanBiet`** — 12 mục đều đúng: "có" là vế **loại trừ** (0814 / 1211 / 1106 / 2008 /
+  0810 / 0909), "không" là chính nhóm; không mục nào đảo nhánh, không `hoi` nào nhắc mã phân nhóm.
+- **`boPhan` null ở cả 6 nhóm** — không có quy tắc bộ phận trong nguồn (định nghĩa "viên" của `phan08.phan`
+  là quy tắc cấp **Phần** cho 0812, không phủ 0805–0810).
+
+## Ghi nhận NGOÀI PHẠM VI (đã đọc, **không sửa** — để người duyệt quyết định)
+
+1. **0806 `dong8[0]`/`[1]`** lấy `dieuKien` từ câu chú giải **nhóm** (*"nho tươi dùng để ăn tráng miệng hay để
+   sản xuất rượu vang"*) thay vì từ dòng biểu thuệ (*"08061000 - Tươi"* / *"08062000 - Khô"*); vế *"dùng để
+   sản xuất rượu vang"* không phải điều kiện phân biệt dòng 8 số.
+2. **0809 `dong8[4]`/`[5]`** (08094010 mận, 08094020 mận gai) dùng **cùng một `fact`** *"la_qua_man_va_qua_man_gai"*
+   (fact cấp **phân nhóm**, không phải fact phân biệt dòng).
+3. **0805 `dong8[4]`** (08052900) lấy `dieuKien` từ câu chú giải phân nhóm 0805.29 thay vì dòng biểu thuệ
+   *"Loại khác"* — **chấp nhận được**, vì đây CHÍNH LÀ phân nhóm cha của dòng đó, không phải ví dụ linh kiện.
+
+## Kiểm đã chạy (sau khi áp review)
+
+- `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **112/112**, 0 mục không kiểm được nguồn.
+- `node scripts/check-trich-nguyen-van.mjs` → **OK 112/112**, mọi câu trích nguyên văn tuyệt đối
+  (kiểm lại trên `data/so-tay/0805..0810.json` sau khi nạp: **OK 112/112**).
+- `node scripts/check-cay.mjs --nhom=0805,…,0810 --chi-tiet` → **0 lỗi lệch cây, 6/6 nhóm đủ**.
+- `npm run so-tay:check` → **434 nhóm, 12 561 mục, 0 mục không kiểm được nguồn**.
+- `npm test` → **ALL TESTS PASSED**.
+
+---
+
 # SOẠN lô 049 — phiên `dev-zcode-mm` (25/10/2026)
 
 - **Nhánh:** `so-tay/lo-049` (**PR #453**, **KHÔNG merge**) · **Nhóm:** `0805 0806 0807 0808 0809 0810`

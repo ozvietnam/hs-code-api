@@ -1,0 +1,69 @@
+{
+  "nhom": "0810",
+  "nguoiSoat": "dev-soat-doc-lap-lo049",
+  "soatVaiTro": "soat-doc-lap",
+  "luc": "2026-10-26T01:10:00+07:00",
+  "phamViSoat": "8 mục trong phạm vi (phamVi 1, boPhan 0, dieuKienVao 1, loaiTru 3, phanBiet 3) + 27 mục ngoài phạm vi đã đọc kiểm (tieuChi6 8, dong8 19) = 35/35 mục của bản nháp.",
+  "soat": 35,
+  "daKiem": 32,
+  "sua": 3,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0810 (lô 049, PR #453). Đọc TOÀN BỘ tmp/so-tay/nguon/0810.txt (12.955 byte; khối [nhom0810.nhom], [ch08.chuong], [phan08.phan], [sen.08109010], [sen.08109094], 8 khối [wco.*], 19 khối [tax.*]). Máy xanh nhưng không chứng minh câu trích tự nói đúng điều mục khẳng định. KẾT QUẢ trong 8 mục trong phạm vi: 3 SỬA, 5 GIỮ (mọi mục ngoài phạm vi đều giữ nguyên).\n\nLỖI 1 (nghiêm trọng) — phamVi: chú giải nhóm liệt kê TÁM nhóm quả ngang hàng (1)–(8) nhưng bản nháp chỉ nêu (1) và (2) → phạm vi chỉ mô tất MỘT PHẦN của nhóm (đúng lỗi lô 030/041: đọc phạm vi cũ, 0810 trông như chỉ gồm dâu tây và mâm xôi, còn sầu riêng/hồng vàng/lựu/nhãn/vải/thanh long/hồng xiêm dễ bị đẩy sang nhóm khác). Câu trích cũng bắt đầu giữa câu, mất vị ngữ \"Nhóm này bao gồm\". SỬA: `trich` = trọn câu định nghĩa phạm vi của nhóm (207 ký tự, byte-exact), `text` viết lại theo câu đó (173 ký tự <220). LÝ DO KHÔNG TRÍCH TRỌN TÁM MỤC: ghép tám mục với câu định nghĩa vượt trần 600 ký tự của máy (lib/so-tay.js:191) — nên phạm vi được diễn đạt bằng quy tắc định nghĩa; tám loại quả vẫn có mặt đầy đủ trong dong8 (19 dòng) và tieuChi6 (8 phân nhóm) của cùng nhóm.\n\nLỖI 2 — loaiTru[1] / phanBiet[1]: mục \"(i) Bột…\" bị bỏ dòng dẫn \"Chương này cũng không bao gồm:\" → sửa.\n\nGHI NHẬN (ngoài phạm vi, không sửa): dong8[4] và dong8[5] (08094010 mận, 08094020 mận gai) dùng CÙNG một `fact` \"la_qua_man_va_qua_man_gai\" (fact cấp phân nhóm, không phải fact phân biệt dòng); nêu để người duyệt quyết định, không tự sửa ngoài phạm vi.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (phạm vi chỉ mô tất MỘT PHẦN của nhóm — đúng lỗi lô 030/041). Chú giải nhóm 0810 liệt kê TÁM nhóm quả ngang hàng (1) dâu tây, (2) mâm xôi/dâu tằm/dâu đỏ, (3) lý gai và lý chua, (4) quả Vaccinium, (5) ki-wi, (6) sầu riêng, (7) hồng vàng, (8) lê đá…na và quả Asimine triloba; bản nháp chỉ nêu (1) và (2) rồi dừng — đọc phạm vi cũ, nhóm 0810 trông như chỉ gồm dâu tây và mâm xôi, các loại quả còn lại (sầu riêng, hồng vàng, lựu, nhãn, vải, thanh long, hồng xiêm…) dễ bị đẩy sang nhóm khác. Thêm nữa, câu trích cũ bắt đầu GIỮA CÂU (\"tất cả các loại quả ăn được…\", mất vị ngữ \"Nhóm này bao gồm\"). SỬA: `trich` = TRỌN câu định nghĩa phạm vi của nhóm (nguyên văn byte-exact, 207 ký tự, có vị ngữ \"Nhóm này bao gồm\"), `text` viết lại theo câu đó (173 ký tự, dưới trần cắt 220). GHI CHÚ: tám mục (1)–(8) không thể trích trọn vẫn được — ghép với câu định nghĩa vượt trần 600 ký tự của máy (lib/so-tay.js:191) — nên phạm vi được diễn đạt bằng QUY TẮC ĐỊNH NGHĨA của nhóm (\"mọi quả ăn được còn lại\"), còn tám loại quả vẫn có mặt đầy đủ trong `dong8` (19 dòng 8 số, mỗi dòng một tên quả) và `tieuChi6` (8 phân nhóm) của cùng nhóm, nên không mất thông tin phân loại nào.",
+      "sua": {
+        "text": "Quả ăn được không thuộc bất kỳ nhóm nào trước đó của Chương này hoặc chưa thuộc các Chương khác của Danh mục (xem các phần loại trừ trong Chú giải tổng quát của Chương này).",
+        "trich": "Nhóm này bao gồm tất cả các loại quả ăn được không thuộc bất kỳ nhóm nào trước đó của Chương này hoặc chưa thuộc các Chương khác của Danh mục (xem các phần loại trừ trong\n\nChú giải tổng quát của Chương này)."
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định): mục \"(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)\" nằm dưới dòng dẫn \"Chương này cũng không bao gồm:\"; bản nháp bỏ dòng dẫn nên câu trích chỉ còn là một danh sách. SỬA: thêm dòng dẫn (nguyên văn byte-exact, 86 ký tự).",
+      "sua": {
+        "trich": "Chương này cũng không bao gồm:…(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)."
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định): mục \"(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)\" nằm dưới dòng dẫn \"Chương này cũng không bao gồm:\"; bản nháp bỏ dòng dẫn nên câu trích chỉ còn là một danh sách. SỬA: thêm dòng dẫn (nguyên văn byte-exact, 86 ký tự). Riêng `phanBiet` thì nhánh \"có → 1106\" không có căn cứ trong câu trích.",
+      "sua": {
+        "trich": "Chương này cũng không bao gồm:…(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích \"Nhóm này không bao gồm hạt bách xù (juniper berries) (nhóm 09.09).\" tự nói đủ, nêu đích danh 09.09; `fact` \"khong_phai_hat_bach_xu\" khớp nghĩa."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích tự đủ, nêu đích danh \"(nhóm 09.09)\"; `dieuKien` \"Hạt bách xù (juniper berries)\" chép đúng câu."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích tự đủ: nói rõ Chương này không bao gồm quả thấm lọc tách nước và dẫn tới (nhóm 20.08)."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu hỏi \"Hàng là hạt bách xù (juniper berries)?\" → có→0909 / không→0810: chiều đúng, câu trích nêu đích danh 09.09."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu hỏi \"Hàng là quả được bảo quản bằng cách thấm lọc tách nước?\" → có→2008 / không→0810: chiều đúng, câu trích nêu đích danh 20.08."
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ (null). Không có quy tắc bộ phận trong nguồn 0810."
+    }
+  ]
+}
