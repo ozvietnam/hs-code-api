@@ -4785,6 +4785,13 @@ quy ước các lô 028/031/036/040/044/045/046 là chỉ đổi nhãn 5 khối 
    không mất thông tin trên prompt; **không sửa** để tránh viết lại câu nguồn. (Trong kho hiện có
    1 154/2 269 `loaiTru.dieuKien` và 3 158/5 604 `dong8.dieuKien` dài hơn trần — vấn đề hệ thống,
    không riêng lô này.)
+7. **0902 — GIỮ `dieuKienVao[0]` dù câu không có mệnh đề loại**: câu *"Nhóm này bao gồm các loại chè
+   khác nhau được lấy từ các cây thuộc giống thực vật Thea (Camellia)."* không kèm chữ "trừ"/"không
+   bao gồm", nhưng vẫn là điều kiện vào nhóm **đúng tầng**: nó phủ CẢ nhóm (0902 không có phần
+   (A)/(B)) và chính là **trục phân loại** mà cả 3 `loaiTru` của nhóm dựa vào (mọi sản phẩm không phải
+   từ cây Thea → không phải 0902). Kho đã gộp có **80 mục `dieuKienVao` NGUOI_DUYET** cùng dạng
+   (0203, 0204, 0207, 0301, 0407, 0408, **0701–0706** của lô 046 vừa gộp…) ⇒ đừng để rỗng chỉ vì
+   thiếu mệnh đề loại. Đã ghi memory `so-tay-dieu-kien-bao-gom-van-la-rang-buoc`.
 
 ### Các bước đã chạy
 
