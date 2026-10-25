@@ -35,6 +35,20 @@ const path = require('path');
  * (fewer cold starts, tidy repo — not a plan constraint).
  * Entry: `GET /api/dataset` with `resource` query (set via rewrites from legacy URLs).
  */
+/**
+ * Ghi số hiệu tra KHÔNG thấy trong sổ cộng đồng (found:false) vào JSONL — bot đêm gom sinh issue.
+ * Không gọi GitHub trong request path (tránh tăng độ trễ + lộ token); chỉ append 1 dòng JSON.
+ */
+function ghiMissSoHieu(danhSach) {
+  try {
+    const path_ = require('path');
+    const fs_ = require('fs');
+    const f = path_.join(process.cwd(), 'data', 'legal-status-miss.jsonl');
+    const line = JSON.stringify({ ts: new Date().toISOString(), soHieu: danhSach }) + '\n';
+    fs_.appendFileSync(f, line);
+  } catch { /* không bao giờ làm hỏng request vì ghi log */ }
+}
+
 module.exports = async function handler(req, res) {
   setCors(res);
   if (handleOptions(req, res)) return;
@@ -391,6 +405,9 @@ module.exports = async function handler(req, res) {
       const so = String(req.query.so || '').split(/[,;\n]/).map((x) => x.trim()).filter(Boolean).slice(0, 50);
       if (so.length) {
         const items = so.map((q) => { const r = plhq.lookup(q); return r ? { query: q, found: true, ...r } : { query: q, found: false }; });
+        // Ghi miss để bot đêm gom sinh issue nạp văn bản còn thiếu (thiết kế #224/#209).
+        const misses = items.filter((x) => !x.found).map((x) => x.query);
+        if (misses.length) ghiMissSoHieu(misses);
         return res.status(200).json({ registry: meta, total: items.length, items });
       }
       const conflicts = plhq.libraryConflicts(listDocs());
