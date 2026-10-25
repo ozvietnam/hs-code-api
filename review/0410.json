@@ -1,0 +1,96 @@
+{
+ "nhom": "0410",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-25T17:52:00+07:00",
+ "soat": 16,
+ "daKiem": 16,
+ "xoa": 0,
+ "sua": 1,
+ "phamViSoat": "Toàn bộ 16 mục của bản nháp tmp/so-tay/raw/0410.json (1 phamVi + 1 dieuKienVao + 3 loaiTru + 4 phanBiet + 3 tieuChi6 + 0 cay.tenDien + 4 dong8), đọc cùng tmp/so-tay/nguon/0410.txt; đối chiếu ch04.chuong, wco.0410xx, tax.0410xxxx và cây lib/hs-tree.js.",
+ "ghiChu": "Audit 0410: đọc tay từng mục cùng nguồn. Xoá 0, sửa 1, giữ 15. Lỗi đã bắt (máy KHÔNG bắt): `phamVi` lược bằng '…' qua HAI câu có ngoại lệ — (1) câu liền sau câu trích đầu tiên là 'Tuy nhiên, các loại côn trùng không còn sống không thích hợp dùng làm thức ăn cho người … được phân loại và nhóm 05.11' (luật _he-thong.txt dòng 31: câu bắt đầu bằng 'Tuy nhiên' phải kéo vào câu trích); (2) đoạn lược giữa '(1) Trứng rùa.' và '(2) Tổ yến.' nuốt luôn câu 'Loại trừ dầu làm từ trứng rùa (nhóm 15.06).' — ngoại lệ bị nuốt. Sửa bằng cách kéo cả hai câu ngoại lệ vào trích, mọi đoạn lược còn lại chỉ bỏ phần định nghĩa (không có ngoại lệ); không sửa câu nguồn, không sửa `text`. Ghi chú (KHÔNG phải lỗi, không sửa): (1) `loaiTru` và `phanBiet` đã có dấu hiệu loại trừ ngay trong câu trích ('Tuy nhiên … được phân loại và nhóm 05.11', 'Loại trừ dầu làm từ trứng rùa (nhóm 15.06)', 'Nhóm này không bao gồm tiết động vật … (nhóm 05.11 hoặc 30.02)') nên không sửa. (2) `loaiTru[2]` giữ CẢ hai đích 05.11 và 30.02 vì nguồn ghi '05.11 hoặc 30.02' — không tách 'A hoặc B' thành một đích duy nhất. (3) `dieuKienVao[0]` ('thích hợp dùng làm thức ăn cho người') là điều kiện phủ CẢ nhóm (côn trùng theo Chú giải 6, trứng rùa, tổ yến) — đúng tầng. (4) `tieuChi6[1]` lấy định nghĩa 'côn trùng' ở Chú giải 6 Chương 4 — đúng nguồn cho tiêu chí của phân nhóm 0410.10. (5) `phanBiet[3]` tách côn trùng (0410.10) với phần 'các sản phẩm ăn được gốc động vật khác' (0410.90) — có căn cứ trong chính câu trích. (6) `cay.tenDien` để rỗng là ĐÚNG: nút 0410.90 đã có tên ('Loại khác') trong cây, không có nút 5 số/7 số nào bị lược.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mất ngoại lệ ngay sau câu trích + dấu lược nuốt ngoại lệ): (1) câu liền sau câu trích đầu tiên là 'Tuy nhiên, các loại côn trùng không còn sống không thích hợp dùng làm thức ăn cho người (kể cả bột mịn và bột thô của chúng) được phân loại và nhóm 05.11' — phải kéo vào câu trích theo luật _he-thong.txt dòng 31; (2) đoạn lược '…' giữa '(1) Trứng rùa.' và '(2) Tổ yến.' nuốt luôn câu 'Loại trừ dầu làm từ trứng rùa (nhóm 15.06).' — ngoại lệ bị nuốt. Sửa bằng cách kéo cả hai câu ngoại lệ vào trích; các đoạn lược còn lại chỉ bỏ phần ĐỊNH NGHĨA (không chứa ngoại lệ) và chỉ bỏ dấu xuống dòng trống. `text` đã nêu đúng phạm vi nhóm nên giữ nguyên, không sửa câu nguồn.",
+   "sua": {
+    "trich": "Nhóm này bao gồm côn trùng (như đã định nghĩa tại Chú giải 6 Chương này) và các sản phẩm ăn được gốc động vật khác thích hợp dùng làm thức ăn cho người, chưa được chi tiết hoặc chưa được ghi ở nơi khác trong Danh mục. Tuy nhiên, các loại côn trùng không còn sống không thích hợp dùng làm thức ăn cho người (kể cả bột mịn và bột thô của chúng) được phân loại và nhóm 05.11…Nhóm này bao gồm:…(1) Trứng rùa. Trứng của rùa sông hoặc rùa biển; có thể sống, làm khô hoặc bảo quản cách khác.…Loại trừ dầu làm từ trứng rùa (nhóm 15.06).…(2) Tổ yến."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn câu đầu nhom0410.nhom; 'thích hợp dùng làm thức ăn cho người' là điều kiện phủ CẢ nhóm 04.10 (côn trùng, trứng rùa, tổ yến) — đúng tầng `dieuKienVao`, không phải điều kiện riêng của một phần. Giữ nguyên."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn 'Tuy nhiên, các loại côn trùng không còn sống không thích hợp dùng làm thức ăn cho người (kể cả bột mịn và bột thô của chúng) được phân loại và nhóm 05.11' — CÓ dấu hiệu loại trừ, mã đích 05.11 có trong câu; `dieuKien` chép đúng nội dung câu (giữ lỗi chính tả nguồn 'được phân loại và nhóm'). Giữ nguyên."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn 'Loại trừ dầu làm từ trứng rùa (nhóm 15.06).' — CÓ dấu hiệu loại trừ và mã đích trong câu. Giữ nguyên."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn 'Nhóm này không bao gồm tiết động vật, ăn được hoặc không ăn được, dạng lỏng hoặc khô (nhóm 05.11 hoặc 30.02).' — CÓ dấu hiệu loại trừ; `sangNhom` giữ CẢ HAI nhóm 05.11 và 30.02 vì nguồn ghi '05.11 hoặc 30.02' (không tách một nhánh của 'A hoặc B' thành đích duy nhất). Giữ nguyên."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: dùng chung câu trích với `loaiTru[1]` (đã có dấu hiệu loại trừ) nên không sửa; câu hỏi hỏi đúng chủ thể, nhánh Có → 1506, nhánh Không → 0410. Giữ nguyên."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: dùng chung câu trích với `loaiTru[0]` nên không sửa; câu hỏi hỏi đúng chủ thể (côn trùng chết không ăn được), nhánh Có → 0511, nhánh Không → 0410, không đảo nhánh. Giữ nguyên."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: dùng chung câu trích với `loaiTru[2]` nên không sửa; câu hỏi hỏi đúng chủ thể (tiết động vật), nhánh Có → 0511|3002, nhánh Không → 0410. Giữ nguyên."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn câu đầu nhom0410.nhom ('côn trùng … và các sản phẩm ăn được gốc động vật khác…'); câu hỏi hỏi đúng CHỦ THỂ, không nhắc mã phân nhóm. Nhánh Có → 0410.10 (côn trùng, theo biểu thuế 04101000 và WCO 041010 'insects'), nhánh Không → 0410.90 (tổ yến, trứng rùa, loại khác — WCO 041090 'other than insects'). Giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: value 'Côn trùng (như đã định nghĩa tại Chú giải 6 Chương này)' đúng với câu trích nguyên văn trong nhom0410.nhom; 0410.10 là phân nhóm lá (04101000) nên `hs6` hợp lệ. Giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn Chú giải 6 Chương 4 (định nghĩa thuật ngữ 'côn trùng' cho mục đích nhóm 04.10) và `fact` 'con_trung_khong_con_song_an_duoc' nói đúng điều câu trích khẳng định (giữ nguyên cả lỗi dấu nháy lệch của nguồn). Giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: value chép đúng vế 'các sản phẩm ăn được gốc động vật khác thích hợp dùng làm thức ăn cho người, chưa được chi tiết hoặc chưa được ghi ở nơi khác trong Danh mục' của câu trích nguyên văn, khớp với tiêu đề WCO 041090. Giữ nguyên."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04101000 ('Côn trùng') và `dieuKien` chép đúng tên dòng. Giữ nguyên."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04109010 ('Tổ yến') và `dieuKien` chép đúng tên dòng. Giữ nguyên."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04109020 ('Trứng rùa') và `dieuKien` chép đúng tên dòng. Giữ nguyên."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04109090 ('Loại khác'); `dieuKien` mô tả phần còn lại của phân nhóm 0410.90 sau khi trừ tổ yến và trứng rùa — đúng cấu trúc biểu thuế (dòng cha 0410.90 có ba dòng). Giữ nguyên."
+  }
+ ]
+}

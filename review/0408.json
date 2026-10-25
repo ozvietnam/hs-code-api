@@ -1,0 +1,141 @@
+{
+ "nhom": "0408",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-25T17:40:00+07:00",
+ "soat": 19,
+ "daKiem": 19,
+ "xoa": 0,
+ "sua": 11,
+ "phamViSoat": "Toàn bộ 19 mục của bản nháp tmp/so-tay/raw/0408.json (1 phamVi + 1 dieuKienVao + 4 loaiTru + 5 phanBiet + 4 tieuChi6 + 0 cay.tenDien + 4 dong8), đọc cùng tmp/so-tay/nguon/0408.txt; đối chiếu wco.0408xx, tax.0408xxxx và cây lib/hs-tree.js.",
+ "ghiChu": "Audit 0408: đọc tay từng mục cùng nguồn. Xoá 0, sửa 11, giữ 8. Lỗi đã bắt (máy KHÔNG bắt): (1) 8 mục `loaiTru`/`phanBiet` chép MỤC (a)–(d) của danh sách loại trừ mà KHÔNG có câu dẫn 'Nhóm này không bao gồm:' — đọc riêng không thấy đó là loại trừ; sửa y hệt cách lô 040 sửa 0206/0207/0208 (gắn câu dẫn nguyên văn, lược mục anh em bằng '…', không sửa câu nguồn, không sửa mã đích). (2) `phamVi` đặt dấu lược '…' giữa HAI CÂU LIỀN KỀ trong cùng đoạn nguồn — lược một chỗ KHÔNG có gì để lược nên câu trích không nguyên văn; sửa bằng cách nối thẳng. (3) 2 dòng biểu thuế gọi nút 0408.1 / 0408.9 là 'tiêu đề quốc gia' trong khi đó là NHÓM MỘT GẠCH 5 số (tiêu đề quốc gia là 7 số — xem cây lib/hs-tree.js: cap NHOM_MOT_GACH vs TIEU_DE_QG); sửa nhãn cho đúng cấp. Ghi chú (KHÔNG phải lỗi, không sửa): (1) câu thứ ba của chú giải nhóm ('có thể đã hoặc chưa thêm đường hoặc chất tạo ngọt khác và có thể được dùng làm thực phẩm hoặc dùng cho mục đích công nghiệp') là ghi chú CHO PHÉP, không phải phạm vi và không phải điều kiện vào — thông tin này đã có trong cả 4 mục `tieuChi6` ('đã hoặc chưa thêm đường hoặc chất tạo ngọt khác') nên không sửa `phamVi`. (2) `phanBiet[4]` chia 0406.11/19 (lòng đỏ) với 0408.91/99 (trứng bóc vỏ không chỉ lòng đỏ) — ánh xạ lấy từ tên WCO 'yolks' và 'not in shell, excluding yolks only' (cùng bộ nguồn của nhóm), không cần nêu mã trong câu trích. (3) `cay.tenDien` để rỗng là ĐÚNG: hai nút 0408.1 ('Lòng đỏ trứng') và 0408.9 ('Loại khác') đã có tên trong cây.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không nguyên văn): bản nháp đặt dấu lược '…' giữa HAI CÂU LIỀN KỀ trong cùng đoạn nguồn ('…gia cầm và chim.…Những sản phẩm thuộc nhóm này…') — nguồn không lược gì cả, nên chuỗi trích không tồn tại nguyên văn trong nguồn. Sửa bằng cách nối thẳng hai câu; `text` đã nêu đúng phạm vi nhóm nên giữ nguyên.",
+   "sua": {
+    "trich": "Nhóm này bao gồm trứng cả quả, đã bóc vỏ, và lòng đỏ trứng của tất cả các loại gia cầm và chim. Những sản phẩm thuộc nhóm này có thể sống, được làm khô, hấp chín hoặc luộc chín trong nước, đóng khuôn (ví dụ \"trứng dài\" hình trụ), đông lạnh hoặc được bảo quản cách khác."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn câu đầu của nhom0408.nhom và tự nó nói đúng điều mục khẳng định — 'trứng cả quả, đã bóc vỏ, và lòng đỏ trứng' phủ CẢ nhóm (mọi dòng 8 số của 0408 đều là trứng bóc vỏ/lòng đỏ). Giữ nguyên."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): trích chỉ chép MỤC (a) của danh sách loại trừ mà không có câu dẫn 'Nhóm này không bao gồm:' nên đọc riêng không thấy đây là loại trừ sang 15.06. Sửa bằng cách GẮN CÂU DẪN nguyên văn và lược mục (b)–(d) bằng '…'; không sửa câu nguồn, không sửa mã đích.",
+   "sua": {
+    "trich": "Nhóm này không bao gồm:…(a) Dầu của lòng đỏ trứng (nhóm 15.06)."
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): gắn câu dẫn nguyên văn 'Nhóm này không bao gồm:' trước mục (b); mã đích 21.06 có trong câu trích nên `sangNhom` giữ nguyên.",
+   "sua": {
+    "trich": "Nhóm này không bao gồm:…(b) Những chế phẩm làm từ trứng có chứa gia vị hoặc các chất phụ gia khác (nhóm 21.06)."
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): gắn câu dẫn nguyên văn 'Nhóm này không bao gồm:' trước mục (c); mã đích 29.23 có trong câu trích nên `sangNhom` giữ nguyên.",
+   "sua": {
+    "trich": "Nhóm này không bao gồm:…(c) Lecithin (nhóm 29.23)."
+   }
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): gắn câu dẫn nguyên văn 'Nhóm này không bao gồm:' trước mục (d); mã đích 35.02 có trong câu trích nên `sangNhom` giữ nguyên.",
+   "sua": {
+    "trich": "Nhóm này không bao gồm:…(d) Lòng trắng trứng tách riêng (albumin trứng) (nhóm 35.02)."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): `phanBiet` dùng CHUNG câu trích với `loaiTru[0]` nên sửa y hệt (gắn câu dẫn 'Nhóm này không bao gồm:'). Câu hỏi hỏi đúng chủ thể, nhánh Có → 1506, nhánh Không → 0408 — giữ nguyên.",
+   "sua": {
+    "trich": "Nhóm này không bao gồm:…(a) Dầu của lòng đỏ trứng (nhóm 15.06)."
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): `phanBiet` dùng CHUNG câu trích với `loaiTru[1]` nên sửa y hệt (gắn câu dẫn 'Nhóm này không bao gồm:').",
+   "sua": {
+    "trich": "Nhóm này không bao gồm:…(b) Những chế phẩm làm từ trứng có chứa gia vị hoặc các chất phụ gia khác (nhóm 21.06)."
+   }
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): `phanBiet` dùng CHUNG câu trích với `loaiTru[2]` nên sửa y hệt (gắn câu dẫn 'Nhóm này không bao gồm:').",
+   "sua": {
+    "trich": "Nhóm này không bao gồm:…(c) Lecithin (nhóm 29.23)."
+   }
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): `phanBiet` dùng CHUNG câu trích với `loaiTru[3]` nên sửa y hệt (gắn câu dẫn 'Nhóm này không bao gồm:').",
+   "sua": {
+    "trich": "Nhóm này không bao gồm:…(d) Lòng trắng trứng tách riêng (albumin trứng) (nhóm 35.02)."
+   }
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn câu đầu nhom0408.nhom; câu hỏi hỏi đúng CHỦ THỂ (lòng đỏ hay trứng bóc vỏ không chỉ lòng đỏ) và không nhắc mã phân nhóm. Nhánh Có = 0408.11/19 (WCO: 'birds' eggs, yolks'), nhánh Không = 0408.91/99 (WCO: 'not in shell, excluding yolks only') — không đảo nhánh. Giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: value dịch đúng tên WCO 040811 ('birds' eggs, yolks, dried, whether or not containing added sugar or other sweetening matter'); trích nguyên văn. Giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: value dịch đúng tên WCO 040819 ('fresh, cooked by steaming or by boiling in water, moulded, frozen or otherwise preserved…'); trích nguyên văn. Giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: value dịch đúng tên WCO 040891 ('birds' eggs (not in shell, excluding yolks only), dried…'); trích nguyên văn. Giữ nguyên."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: value dịch đúng tên WCO 040899 ('birds' eggs (not in shell, excluding yolks only), fresh, cooked by steaming or boiling in water, moulded, frozen, otherwise preserved…'); trích nguyên văn. Giữ nguyên."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04081100 ('Đã làm khô') và `dieuKien` chép đúng tên dòng. Giữ nguyên."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (gọi sai cấp nút trong cây): 0408.1 là NHÓM MỘT GẠCH 5 số (cap NHOM_MOT_GACH trong lib/hs-tree.js), không phải 'tiêu đề quốc gia' (7 số, cap TIEU_DE_QG) — nhà gọi đúng 5 số là 'nhóm một gạch' (xem data/so-tay/4811.json, 7019.json, 9030.json). Sửa nhãn trong `dieuKien`; nội dung mô tả giữ nguyên, không sửa câu nguồn.",
+   "sua": {
+    "dieuKien": "Lòng đỏ trứng (nhóm một gạch 0408.1), khác dòng đã làm khô — dòng biểu thuế ghi \"Loại khác\""
+   }
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04089100 ('Đã làm khô') và `dieuKien` chép đúng tên dòng. Giữ nguyên."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (gọi sai cấp nút trong cây): 0408.9 là NHÓM MỘT GẠCH 5 số, không phải 'tiêu đề quốc gia' 7 số — sửa nhãn cho đúng cấp; nội dung mô tả giữ nguyên, không sửa câu nguồn.",
+   "sua": {
+    "dieuKien": "Trứng chim đã bóc vỏ, không chỉ lòng đỏ (nhóm một gạch 0408.9), khác dòng đã làm khô — dòng biểu thuế ghi \"Loại khác\""
+   }
+  }
+ ]
+}

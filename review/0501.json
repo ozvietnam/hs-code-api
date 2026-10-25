@@ -1,0 +1,97 @@
+{
+ "nhom": "0501",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-25T18:00:00+07:00",
+ "soat": 12,
+ "daKiem": 12,
+ "xoa": 1,
+ "sua": 8,
+ "phamViSoat": "Toàn bộ 12 mục của bản nháp tmp/so-tay/raw/0501.json (1 phamVi + 2 dieuKienVao + 4 loaiTru + 4 phanBiet + 0 tieuChi6 + 0 cay.tenDien + 1 dong8), đọc cùng tmp/so-tay/nguon/0501.txt; đối chiếu ch05.chuong, wco.050100, tax.05010000 và cây lib/hs-tree.js.",
+ "ghiChu": "Audit 0501: đọc tay từng mục cùng nguồn. Xoá 1, sửa 8, giữ 3. Lỗi đã bắt: (1) MẤT NGOẠI LỆ NGAY SAU CÂU TRÍCH — `loaiTru[0]` (và `phanBiet[0]` dùng chung câu) trích câu '…(nhóm 67.03, xem Chú giải tương ứng).' và dừng, trong khi câu kế tiếp ngay sau đó là NGOẠI LỆ: 'Loại trừ này không áp dụng đối với phế liệu của tóc người, luôn được phân vào nhóm này, ngay cả khi, ví dụ, là phế liệu của tóc nhuộm hoặc tẩy trắng.' — đọc câu trích riêng sẽ tưởng phế liệu tóc đã nhuộm cũng bị loại sang 67.03 (ngược với nguồn). Sửa bằng cách kéo câu ngoại lệ vào câu trích (nguyên văn, không sửa câu nguồn). (2) 3 mục `loaiTru` + 3 mục `phanBiet` chép MỤC (a)/(b)/(c) của danh sách loại trừ mà KHÔNG có câu dẫn 'Nhóm này cũng không bao gồm:' — sửa y hệt cách lô 040 sửa 0206/0207/0208. (3) XOÁ `dieuKienVao[0]` — bản nháp trích 'Nhóm này bao gồm tóc người, chưa xử lý' (CẮT câu ngay trước vế 'đã hoặc chưa rửa sạch hoặc gột tẩy' để lách máy); câu đầy đủ là câu CHO PHÉP theo luật _he-thong.txt dòng 28, và điều kiện 'chưa xử lý' không phủ CẢ nhóm vì phế liệu tóc người — kể cả phế liệu tóc nhuộm/tẩy trắng — luôn thuộc nhóm này. Ghi chú (KHÔNG phải lỗi, không sửa): (1) `dieuKienVao[1]` lấy 'chưa sắp xếp theo đầu và đuôi với nhau' từ Chú giải 2 Chương 5 — đúng điều kiện vào nhóm 05.01 (tóc đã sắp xếp đầu–đuôi thì sang 67.03) và phủ cả nhóm, không phải điều kiện của phân nhóm hay dòng 8 số nên đúng tầng. (2) `loaiTru[0].dieuKien` đã có sẵn vế '(trừ phế liệu)' nên nội dung mục đúng; chỉ câu trích là thiếu ngoại lệ. (3) `tieuChi6` để rỗng là ĐÚNG — cây hs-tree không có nút 6 số riêng cho 0501 (05010000 là lá, laPhanNhom = '0501'), scripts/check-cay.mjs báo nhóm này 'đủ'.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn trọn câu đầu nhom0501.nhom và `text` chép đúng phạm vi nhóm (kể cả vế 'kể cả tóc duỗi thẳng nhưng chưa sắp xếp đầu và đuôi tương ứng với nhau'), không thêm bớt chữ nào. Giữ nguyên."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "SAI TẦNG + CÂU CHO PHÉP (máy bắt được sau khi nới trích): (1) Câu đầy đủ của nguồn là 'Nhóm này bao gồm tóc người, chưa xử lý, đã hoặc chưa rửa sạch hoặc gột tẩy, kể cả tóc duỗi thẳng nhưng chưa sắp xếp đầu và đuôi tương ứng với nhau, và phế liệu tóc người.' — có vế 'đã hoặc chưa' (luật _he-thong.txt dòng 28: câu 'đã hoặc chưa' là câu CHO PHÉP, không đặt value=true; tiền lệ 9610 xoá mục tương tự). Bản nháp CẮT câu trích đúng trước vế đó để lách máy — vi phạm luật 'không sửa câu trích để máy kiểm cho qua'. (2) Quan trọng hơn: điều kiện 'chưa xử lý' KHÔNG phủ CẢ nhóm — phế liệu tóc người luôn thuộc nhóm này, kể cả phế liệu tóc nhuộm hoặc tẩy trắng (chính nguồn: 'Loại trừ này không áp dụng đối với phế liệu của tóc người, luôn được phân vào nhóm này'), và phạm vi nhóm cũng tách 'tóc người, chưa xử lý' với 'phế liệu tóc người'. Thông tin không mất: loaiTru[0] + phanBiet[0] đã nêu loại trừ sang 67.03 kèm ngoại lệ phế liệu."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn Chú giải 2 Chương 5 ('việc phân loại tóc theo độ dài (với điều kiện là chưa sắp xếp theo đầu và đuôi với nhau)…'); `fact` 'chua_sap_xep_theo_dau_den_voi_nhau' đúng là điều kiện vào nhóm 05.01 (tóc đã sắp xếp đầu–đuôi thì loại sang 67.03) nên đúng tầng `dieuKienVao`. Giữ nguyên."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mất ngoại lệ ngay sau câu trích): trích dừng ở '…(nhóm 67.03, xem Chú giải tương ứng).' trong khi câu liền sau là NGOẠI LỆ 'Loại trừ này không áp dụng đối với phế liệu của tóc người, luôn được phân vào nhóm này, ngay cả khi, ví dụ, là phế liệu của tóc nhuộm hoặc tẩy trắng.' — đọc riêng câu trích sẽ hiểu sai là phế liệu tóc đã nhuộm/tẩy trắng cũng bị loại sang 67.03. Sửa bằng cách kéo câu ngoại lệ vào câu trích (nguyên văn); `dieuKien` đã có sẵn '(trừ phế liệu)' nên giữ nguyên, không sửa mã đích.",
+   "sua": {
+    "trich": "Nhóm này không bao gồm tóc người (trừ phế liệu) đã được xử lý trên mức rửa sạch hoặc gột tẩy đơn giản, ví dụ: chuốt, nhuộm, tẩy, làm quăn hoặc chuẩn bị sẵn để làm tóc giả... và tóc người đã được sắp xếp đầu và đuôi tương ứng với nhau (nhóm 67.03, xem Chú giải tương ứng). Loại trừ này không áp dụng đối với phế liệu của tóc người, luôn được phân vào nhóm này, ngay cả khi, ví dụ, là phế liệu của tóc nhuộm hoặc tẩy trắng."
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): trích chỉ chép MỤC (a) của danh sách loại trừ mà không có câu dẫn 'Nhóm này cũng không bao gồm:' nên đọc riêng không thấy đây là loại trừ sang 59.11. Sửa bằng cách GẮN CÂU DẪN nguyên văn và lược mục (b)/(c) bằng '…'; không sửa câu nguồn, không sửa mã đích.",
+   "sua": {
+    "trich": "Nhóm này cũng không bao gồm:…(a) Vải lọc làm từ tóc người (nhóm 59.11)."
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): gắn câu dẫn nguyên văn 'Nhóm này cũng không bao gồm:' trước mục (b); mã đích 65.05 có trong câu trích nên `sangNhom` giữ nguyên.",
+   "sua": {
+    "trich": "Nhóm này cũng không bao gồm:…(b) Lưới bao tóc làm từ tóc người (nhóm 65.05)."
+   }
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): gắn câu dẫn nguyên văn 'Nhóm này cũng không bao gồm:' trước mục (c); mã đích 67.04 có trong câu trích nên `sangNhom` giữ nguyên.",
+   "sua": {
+    "trich": "Nhóm này cũng không bao gồm:…(c) Những vật phẩm khác làm bằng tóc người (nhóm 67.04)."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mất ngoại lệ ngay sau câu trích): `phanBiet` dùng CHUNG câu trích với `loaiTru[0]` nên sửa y hệt — kéo câu ngoại lệ về phế liệu tóc người vào câu trích. Câu hỏi hỏi đúng chủ thể (tóc đã xử lý / đã sắp xếp đầu–đuôi), nhánh Có → 6703, nhánh Không → 0501 — giữ nguyên.",
+   "sua": {
+    "trich": "Nhóm này không bao gồm tóc người (trừ phế liệu) đã được xử lý trên mức rửa sạch hoặc gột tẩy đơn giản, ví dụ: chuốt, nhuộm, tẩy, làm quăn hoặc chuẩn bị sẵn để làm tóc giả... và tóc người đã được sắp xếp đầu và đuôi tương ứng với nhau (nhóm 67.03, xem Chú giải tương ứng). Loại trừ này không áp dụng đối với phế liệu của tóc người, luôn được phân vào nhóm này, ngay cả khi, ví dụ, là phế liệu của tóc nhuộm hoặc tẩy trắng."
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): `phanBiet` dùng CHUNG câu trích với `loaiTru[1]` nên sửa y hệt (gắn câu dẫn 'Nhóm này cũng không bao gồm:').",
+   "sua": {
+    "trich": "Nhóm này cũng không bao gồm:…(a) Vải lọc làm từ tóc người (nhóm 59.11)."
+   }
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): `phanBiet` dùng CHUNG câu trích với `loaiTru[2]` nên sửa y hệt (gắn câu dẫn 'Nhóm này cũng không bao gồm:').",
+   "sua": {
+    "trich": "Nhóm này cũng không bao gồm:…(b) Lưới bao tóc làm từ tóc người (nhóm 65.05)."
+   }
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mục loại trừ không có câu dẫn): `phanBiet` dùng CHUNG câu trích với `loaiTru[3]` nên sửa y hệt (gắn câu dẫn 'Nhóm này cũng không bao gồm:').",
+   "sua": {
+    "trich": "Nhóm này cũng không bao gồm:…(c) Những vật phẩm khác làm bằng tóc người (nhóm 67.04)."
+   }
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 05010000 và `dieuKien` chép đúng tên dòng; đủ một dòng 8 số của nhóm. Giữ nguyên."
+  }
+ ]
+}

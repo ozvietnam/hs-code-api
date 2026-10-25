@@ -1,0 +1,46 @@
+{
+ "nhom": "0409",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-25T17:46:00+07:00",
+ "soat": 6,
+ "daKiem": 6,
+ "xoa": 0,
+ "sua": 1,
+ "phamViSoat": "Toàn bộ 6 mục của bản nháp tmp/so-tay/raw/0409.json (1 phamVi + 2 dieuKienVao + 1 loaiTru + 1 phanBiet + 0 tieuChi6 + 0 cay.tenDien + 1 dong8), đọc cùng tmp/so-tay/nguon/0409.txt; đối chiếu wco.040900, tax.04090000 và cây lib/hs-tree.js.",
+ "ghiChu": "Audit 0409: đọc tay từng mục cùng nguồn. Xoá 0, sửa 1, giữ 5. Nhóm mỏng nhất lô (nguồn chỉ 3 câu, một dòng biểu thuế) nhưng BẢN NHÁP SẠCH. Lỗi duy nhất đã bắt (máy KHÔNG bắt): `phamVi` đặt dấu lược '…' giữa HAI CÂU LIỀN KỀ trong cùng đoạn nguồn ('…bất kỳ chất nào khác.…Mật có thể phân theo nguồn…') — nguồn không lược gì cả, nên câu trích không nguyên văn; sửa bằng cách nối thẳng. Ghi chú (KHÔNG phải lỗi, không sửa): (1) `tieuChi6` để rỗng là ĐÚNG — cây hs-tree không có nút 6 số riêng cho 0409 (04090000 là lá, laPhanNhom = '0409' 4 số) nên không có tiêu chí 6 số để viết; scripts/check-cay.mjs báo nhóm này 'đủ'. (2) `dieuKienVao[0]` ('chưa cho thêm đường hoặc bất kỳ chất nào khác') và `dieuKienVao[1]` (ba dạng: quay ly tâm / trong bánh tổ / có miếng bánh tổ) là điều kiện phủ CẢ nhóm, lấy đúng câu 'miễn là chưa cho thêm đường…'. (3) `loaiTru[0]` và `phanBiet[0]` đã có CẦU DẪN trong câu trích ('Nhóm này không bao gồm mật ong nhân tạo…') nên không sửa — khác với các nhóm có danh sách mục (a)/(b)/(c).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không nguyên văn): bản nháp đặt dấu lược '…' giữa HAI CÂU LIỀN KỀ trong cùng đoạn nguồn — nguồn không lược gì cả nên chuỗi trích không tồn tại nguyên văn trong nguồn (nguồn có dấu chấm, bản nháp có '…'). Sửa bằng cách nối thẳng hai câu; `text` chép đúng phạm vi nhóm nên giữ nguyên.",
+   "sua": {
+    "trich": "Nhóm này gồm mật của ong (Apis mellifera) hoặc của côn trùng khác, đã quay ly tâm hoặc ở trong bánh tổ hoặc có chứa những miếng bánh tổ, miễn là chưa cho thêm đường hoặc bất kỳ chất nào khác. Mật có thể phân theo nguồn, xuất xứ hoặc màu sắc của hoa cho mật."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn '…miễn là chưa cho thêm đường hoặc bất kỳ chất nào khác.' trong nhom0409.nhom; `fact` 'chua_cho_them_duong_hoac_bat_ky_chat_nao_khac' giữ đúng định ngữ giới hạn của câu và là điều kiện phủ CẢ nhóm 04.09 (mật ong nhân tạo sang 17.02). Giữ nguyên."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn và `value` liệt kê đúng ba dạng nguồn ghi ('đã quay ly tâm hoặc ở trong bánh tổ hoặc có chứa những miếng bánh tổ'), không thêm bớt chữ nào. Giữ nguyên."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn trọn câu 'Nhóm này không bao gồm mật ong nhân tạo hoặc hỗn hợp giữa mật ong tự nhiên và mật ong nhân tạo (nhóm 17.02).' — CÓ dấu hiệu loại trừ ('không bao gồm') và mã đích 17.02 có trong câu; `dieuKien` chép đúng nội dung câu. Giữ nguyên."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: dùng chung câu trích với `loaiTru[0]` (đã có câu dẫn loại trừ) nên không sửa; câu hỏi hỏi đúng chủ thể (mật ong nhân tạo/hỗn hợp), nhánh Có → 1702, nhánh Không → 0409, không đảo nhánh. Giữ nguyên."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đọc tay cùng nguồn: trích nguyên văn dòng biểu thuế 04090000 ('Mật ong tự nhiên') và `dieuKien` chép đúng tên dòng; đủ một dòng 8 số của nhóm. Giữ nguyên."
+  }
+ ]
+}
