@@ -4540,3 +4540,153 @@ Em là người soát **độc lập**: bản nháp `tmp/so-tay/raw/*.json` củ
   (đổi `xong` khi gộp).
 
 ---
+
+# SOẠN lô 050 — phiên `dev-zcode-mm` (25/10/2026)
+
+- **Nhánh:** `so-tay/lo-050` @ ae85ecd (main mới nhất) · **Nhóm:** `0811,0812,0813,0814,0901,0902` (Ch.08 quả · Ch.09 cà phê/chè)
+- **Người soạn:** `dev-zcode-mm` — **CHƯA soát độc lập** (mục 4 giao việc: người duyệt phải soát TOÀN BỘ `phamVi`/`boPhan`/`dieuKienVao`/`loaiTru`/`phanBiet` bằng người khác).
+
+## Sai lệch brief ↔ CSV
+
+Brief `brief-st-lo050.md` dòng 4 ghi đúng nhóm (`0811 0812 0813 0814 0901 0902`) — khớp CSV dòng 050.
+Nhưng **dòng 6 kèm lệnh `--nhom=7615,9609,3215,6306,6804,7412`** — nhóm của **lô 001**, copy-paste y nguyên khối
+(đúng kiểu lô 003/012/014/027/036/044/046). Theo `docs/giao-viec/so-tay-lo.csv` là nguồn chuẩn → nhóm của dòng 050.
+
+## Bước 1 — xuất nguồn và đọc TRƯỚC
+
+```
+node scripts/build-so-tay.mjs --nhom=0811,0812,0813,0814,0901,0902 --xuat-nguon=tmp/so-tay/nguon
+```
+
+→ `tmp/so-tay/nguon/_he-thong.txt` (đọc TRƯỚC) + 6 tệp nguồn (**39 078 ký tự** — khớp `ky_tu_nguon` của
+CSV dòng 050), đọc HẾT.
+
+## Bước 2 — soạn `tmp/so-tay/raw/<nhom>.json` (106 mục)
+
+| # | Nhóm | `check-so-tay --raw` | `check-trich-nguyen-van` | Ghi chú |
+|---|---|---|---|---|
+| 1 | 0811 | ✅ 12/12 | OK | quả đông lạnh; 2 loại trừ (2008, 1106) |
+| 2 | 0812 | ✅ 10/10 | OK | quả bảo quản tạm thời; 2 `dieuKienVao` từ chú giải Ch.08 mục 4 |
+| 3 | 0813 | ✅ 25/25 | OK | 11 dòng 8 số; 3 loại trừ (2008, 1106, 2101) |
+| 4 | 0814 | ✅ 6/6 | OK | **nguồn mỏng nhất lô** (2 câu) |
+| 5 | 0901 | ✅ 28/28 | OK | 13 dòng 8 số, 5 SEN, 2 `cay.tenDien` |
+| 6 | 0902 | ✅ 25/25 | OK | 8 `tieuChi6` (4 bo + 4 ngưỡng 3 kg), 1 `boPhan` |
+| | **Tổng** | **106/106 (100 %)** | **OK 103/103** (+3 mục tự kiểm) | |
+
+Nạp xong: `data/so-tay/bao-cao/lo-050.json` → `tyLeDat: 100`, `nhomLoi: []`, `provider: dev-zcode-mm`.
+
+## Tự soát trước khi nạp (`tmp/so-tay/audit-lo050.cjs`, KHÔNG commit)
+
+Kiểm 3 lớp: (1) `trich` ≤ 300 ký tự (luật 2 — máy chỉ chặn >600); (2) trần runtime của `lib/so-tay-gates.js`
+(220 / 55 / 90 / 110 / 160 — cắt giữa câu làm mất kết luận của luật); (3) **từ** trong field tự viết mà không có
+trong câu trích (lần 1 kiểm ký tự, lần 2 kiểm TỪ — bắt được "thuộc Chương này" ở 0813 mà kiểm ký tự bỏ sót).
+
+Vòng 1 → **6 cờ**; vòng 2 (mức từ) → **1 cờ**; sau sửa → **0 cờ**. Đã sửa:
+
+| # | Mục | Cờ | Xử lý |
+|---|---|---|---|
+| 1 | 0811 `phamVi.text` | chữ "ũ" (cũng) không có trong trích | đổi thành "**đều** được phân loại" (đúng câu nguồn) |
+| 2 | 0901 `phamVi.trich` | 426 ký tự (>300) | cắt mệnh đề "tức là: còn trong quả… đã lột vỏ lụa" (chi tiết **bao gồm**, không phải loại trừ) + cắt vế "bằng cách ngâm hột nguyên liệu…" của (2) ⇒ 254 ký tự |
+| 3 | 0902 `phamVi.trich` | 302 ký tự (>300) | bỏ câu Oolong khỏi trích (thông tin nằm ở `tieuChi6` 090230/090240) + dùng trọn câu L10 ⇒ 266 ký tự |
+| 4 | 0902 `phamVi.text` | chữ "ả" ("cả") không có trong trích | bỏ "cả" ("gồm hoa chè…") |
+| 5 | 0902 `boPhan.tomTat` | 176 ký tự (>160) + từ ngoài trích | bỏ vế "(áp dụng cho chè tán bột ép thành hòn hoặc viên)" ⇒ 124 ký tự |
+| 6 | 0813 `phamVi.text` | từ "thuộc" / "Chương" ngoài trích | "thuộc Chương này" → "**được phân loại vào** các nhóm 08.07 đến 08.10" (đúng câu nguồn) |
+
+## Quyết định soạn (để người soát độc lập đối chiếu)
+
+### `dieuKienVao` rỗng ở 0814 và 0901 — ĐÚNG
+
+- **0814**: chú giải nhóm chỉ có 2 câu, **không câu nào phủ CẢ nhóm** (câu 1 nói vỏ cam/quýt — bỏ qua vỏ dưa;
+  câu 2 chỉ là loại trừ) ⇒ để rỗng thay vì bịa điều kiện. Mọi thông tin nằm ở `phamVi` + `loaiTru` + `phanBiet`.
+- **0901**: chú giải nhóm là **danh sách 5 phần ngang hàng** (1)–(5), không có câu ràng buộc nào phủ cả nhóm;
+  câu "(2) Cà phê đã khử chất caffeine bằng cách ngâm hột nguyên liệu…" nói về **cách** khử của riêng phần (2)
+  ⇒ không đặt thành điều kiện vào nhóm (sẽ đảo chiều: chè/cà phê rang KHÔNG khử caffeine vẫn thuộc 0901).
+
+### KHÔNG ghi `loaiTru` sang 2106 ở 0813 (câu có "thường")
+
+Câu nguồn: "…(thường thuộc nhóm 21.06)" → máy loại `loai-tru-chi-la-thuong` (luật "loạiTru câu nguồn nói
+*thường thuộc* thì BỎ"). Em **không ghi** mục loại trừ hỗn hợp quả khô với thực vật/chất khác ⇒ bỏ cả hai phía.
+
+### `cay.tenDien` chỉ ở 0901 (2 nút) — phần còn lại máy sinh
+
+`090111` và `090121` là phân nhóm 6 số **chưa có tên tiếng Việt** trong cây ⇒ điền tên dịch từ tên WCO kèm
+trích nguyên văn (mẫu lô 043/0101/0307). Nút ảo `09011` ("Cà phê, chưa rang"), `09012` ("Cà phê, đã rang"),
+`0901211` ("Chưa nghiền") **đã có tên sẵn** từ `data/bieu-thue` ⇒ không điền (luật 9: nút đã có tên → máy loại).
+
+### `tieuChi6` rỗng ở 0814 — đúng, KHÔNG phải thiếu sót
+
+Mã `081400` kết thúc bằng "00" ⇒ `lib/hs-tree.js#nodeOf` trả **nút 4 số** (`0814`) chứ không phải nút 6 số ⇒
+máy loại `hs6-khong-co-trong-cay:081400` (đã thử 1 lần, bị loại → xoá mục, không sửa mã). Thông tin vỏ quả đã nằm
+ở `phamVi` + `dong8[0].tieuChi`. `check-cay` **không** báo cảnh báo cho 0814 vì nút `08140000` không có `laPhanNhom`.
+
+### 0902 `boPhan` = định nghĩa "viên" của chú giải Phần 09
+
+Nhóm 0902 có "chè được tán thành bột (lá, hoa hoặc búp) được ép thành **hòn hoặc viên**" ⇒ định nghĩa "viên"
+của chú giải Phần 09 áp thẳng cho nhóm. `trich` giữ **nguyên xuống dòng** của nguồn (`…bằng cách\nnén trực tiếp…`).
+
+## 3 mục mẫu
+
+1. **Loại trừ** — 0813 `loaiTru[2]`: *"Quả và quả hạch (nut) được rang chín (ví dụ: hạt dẻ, hạnh nhân và sung, vả)
+   đã hoặc chưa xay, nghiền, thường được sử dụng như chất thay thế cà phê"* → `sangNhom` **2101**; nguồn
+   `ch08.chuong`, trích *"Chương này cũng không bao gồm: … (iii) Quả và quả hạch (nut) được rang chín (ví dụ: hạt
+   dẻ, hạnh nhân và sung, vả) đã hoặc chưa xay, nghiền, thường được sử dụng như chất thay thế cà phê (nhóm 21.01)."*
+   ⚠ **CẦN NGƯỜI DUYỆT ĐỂ MẮT**: câu nguồn có "thường", nhưng "thường" bổ đính cho *"được sử dụng như chất thay
+   thế cà phê"*, **không** bổ đính cho nhóm đích 21.01 → em vẫn ghi là loại trừ.
+2. **Điều kiện số** — 0902 `tieuChi6` hs6 **090220**: `trong_luong_dong_goi_san` `>` **3** `kg`; nguồn `wco.090220`,
+   trích *"090220 Tea, green; (not fermented), in immediate packings of a content exceeding 3kg"* (số 3 có nguyên
+   văn trong câu ✓). Cặp 090210/090230 là `<= 3 kg`.
+3. **Dòng 8 số** — 0901 `dong8` **09011120**: *"Cà phê Arabica — hàm lượng cafein thường 0,8 - 1,4%; hạt bầu dục,
+   dài hơn Robusta"*; nguồn `sen.09011120`, trích *"CÀ PHÊ ARABICA … • Hình thức: Hình dạng của hạt thường có
+   hình bầu dục và dài hơn Robusta. … • Hàm lượng cafein: thường 0,8 - 1,4% nên không quá đắng nhưng có độ chua cao hơn."*
+   (`tieuChi`: `la_ca_phe_arabica` = true).
+
+## Nhóm nguồn mỏng / bất thường — báo cáo cho người duyệt
+
+- **0814 — mỏng nhất lô**: chú giải nhóm chỉ 2 câu (L4 dùng vỏ làm tẩm đường/chiết xuất tinh dầu; L6 hai loại
+  trừ). Không câu nào phủ cả nhóm ⇒ `dieuKienVao` **rỗng**; `phamVi` lấy từ dòng biểu thuế `08140000`
+  (nguồn `tax.08140000`) vì đó là câu mô tả đủ phạm vi (tươi/đông lạnh/khô/bảo quản tạm thời).
+- **0811 + 0812 + 0813 dùng CHUNG chú giải Chương 8**: 3 nhóm lặp 2 loại trừ (2008 "thấm lọc tách nước" và
+  1106 "bột chế biến từ quả") lấy từ cùng một câu chú giải Chương. Người duyệt xem có nên giữ lặp hay gộp.
+- **0901 — MÂU THUẪN NGUỒN**: `sen.09011220` mô tả **CÀ PHÊ ROBUSTA**, còn dòng biểu thuế `09011220` ghi
+  *"Arabica (SEN) hoặc Robusta (SEN)"* ⇒ em **bỏ cả hai phía**: dòng 09011220 lấy nguồn `tax.09011220` (đúng phạm
+  vi dòng, không gắn mô tả SEN của riêng Robusta), và **không** dùng `sen.09011220` cho mục nào khác.
+- **0902 — chú giải Phần có XUỐNG DÒNG**: `phan09.phan` ngắt dòng giữa *"bằng cách"* và *"nén"* ⇒ `boPhan.trich`
+  phải giữ nguyên `\n`. `check-trich-nguyen-van.mjs` **KHÔNG duyệt `boPhan`** (cũng không duyệt `cay.tenDien`)
+  ⇒ em tự kiểm riêng 3 mục đó: **3/3 nguyên văn tuyệt đối** ⇒ tổng **106/106**.
+- **0813 — câu loại trừ có "thường"** (xem mục "Quyết định soạn" ở trên): bỏ mục, không lách máy.
+- **0813 — lỗi của nguồn WCO**: `wco.081340` ghi *"fruit n.e.c. in heading no. **0812**, dried"* (0813.40 của VN là
+  "quả khô khác"; số 0812 có vẻ lỗi WCO) ⇒ em **chép nguyên văn, không sửa**; cũng vậy ở `dong8` 08134090.
+
+## Những mục `dieuKien` có ghi điều mà câu trích không nói (khai báo trung thực)
+
+Sau tự soát 2 vòng (ký tự → từ): **0 mục thêm từ ngoài câu trích**. Còn các mục **diễn đạt lại** (dùng chữ của
+nguồn nhưng đổi cấu trúc câu) — người duyệt nên để mắt:
+
+| Mục | Diễn đạt lại | Nguồn |
+|---|---|---|
+| 0811/0812/0813 `loaiTru` + `phanBiet` | áp **câu chú giải Chương 8** (không phải chú giải nhóm) cho nhóm 4 số | `ch08.chuong` |
+| 0813 `dong8` 08134090 / 08135090 | `dieuKien` = "Loại khác: fruit n.e.c. in heading no. 0812, dried" (nguyên văn WCO) | `wco.081340`, `wco.081350` |
+| 0901 `dong8` 09011120/09011130/09012111/09012112 | "hạt bầu dục, dài hơn Robusta" rút gọn từ "Hình dạng của hạt thường có hình bầu dục và dài hơn Robusta" | `sen.0901*` |
+| 0902 `dong8` "Lá chè" | `dieuKien` chỉ "Lá chè" (không thêm tên phân nhóm) — theo mẫu 0706/0703 | `tax.0902*` |
+
+## Còn trống (`check-cay` chỉ báo) — KHÔNG phải lỗi
+
+`node scripts/check-cay.mjs --nhom=0811,0812,0813,0814,0901,0902 --chi-tiet` → **6/6 nhóm đủ**, 0 lỗi lệch cây,
+**0 cảnh báo** (đủ `dong8`, đủ tên nút ảo, đủ tiêu chí 6 số). Riêng 0814 **không có** `tieuChi6` (mã `081400` →
+nút 4 số, xem mục "Quyết định soạn") và `check-cay` không báo vì nút `08140000` không có `laPhanNhom`.
+
+## Trạng thái cuối
+
+| Kiểm | Kết quả |
+|---|---|
+| `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` | 6 nhóm, **106 mục, 0 mục không kiểm được nguồn** (106/106 = 100 %) |
+| `node scripts/check-trich-nguyen-van.mjs` | **OK — 103 mục** nguyên văn tuyệt đối (+ 3 mục `boPhan`/`tenDien` tự kiểm riêng ⇒ **106/106**) |
+| `node scripts/build-so-tay.mjs … --tu-tep --force --bao-cao=…/lo-050.json` | **106/106 (100 %)** — `tyLeDat: 100`, `nhomLoi: []` |
+| `npm run so-tay:check` | **434 nhóm, 12 555 mục, 0 mục không kiểm được nguồn** |
+| `npm test` | **ALL TESTS PASSED** (exit 0) |
+| `node scripts/check-cay.mjs --nhom=<6 nhóm> --chi-tiet` | **6/6 nhóm đủ**, **0 lỗi lệch cây**, 0 cảnh báo |
+
+- **CHƯA merge** — chờ người duyệt. `so-tay-lo.csv` dòng 050 = `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm`
+  (đổi `xong` + số PR khi gộp).
+
+---

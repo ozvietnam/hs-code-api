@@ -1,0 +1,549 @@
+{
+ "nhom": "0901",
+ "phamVi": {
+  "text": "Cà phê: (1) nguyên liệu dưới tất cả các dạng; (2) đã khử chất caffeine; (3) đã rang (đã hoặc chưa khử chất caffeine), đã hoặc chưa xay, nghiền; (4) vỏ quả và vỏ lụa cà phê; (5) chất thay thế cà phê có chứa cà phê.",
+  "nguon": "nhom0901.nhom",
+  "trich": "(1) Cà phê nguyên liệu dưới tất cả các dạng … (2) Cà phê đã khử chất caffeine … (3) Cà phê đã rang (đã hoặc chưa khử chất caffeine) đã hoặc chưa xay, nghiền. … (4) Vỏ quả và vỏ lụa cà phê. … (5) Các chất thay thế cà phê có chứa cà phê theo tỷ lệ nào đó.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Sáp cà phê",
+   "sangNhom": "1521",
+   "nguon": "nhom0901.nhom",
+   "trich": "Nhóm này không bao gồm: … (a) Sáp cà phê (nhóm 15.21).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Chiết xuất, tinh dầu và chất cô đặc cà phê (đôi khi được gọi là cà phê tan) và những chế phẩm có chứa chiết xuất, tinh dầu hoặc chất cô đặc này như là chất cơ bản; những chất thay thế cà phê rang không chứa cà phê",
+   "sangNhom": "2101",
+   "nguon": "nhom0901.nhom",
+   "trich": "Nhóm này không bao gồm: … (b) Những chiết xuất, tinh dầu và chất cô đặc cà phê (đôi khi được gọi là cà phê tan) và những chế phẩm có chứa chiết xuất, tinh dầu hoặc chất cô đặc này như là chất cơ bản; những chất thay thế cà phê rang không chứa cà phê (nhóm 21.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Chất caffeine, alkaloid có trong cà phê",
+   "sangNhom": "2939",
+   "nguon": "nhom0901.nhom",
+   "trich": "Nhóm này không bao gồm: … (c) Chất caffeine, alkaloid có trong cà phê (nhóm 29.39).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là chiết xuất, tinh dầu, chất cô đặc cà phê hay chất thay thế cà phê rang không chứa cà phê?",
+   "neuCo": "2101",
+   "neuKhong": "0901",
+   "nguon": "nhom0901.nhom",
+   "trich": "Nhóm này không bao gồm: … (b) Những chiết xuất, tinh dầu và chất cô đặc cà phê (đôi khi được gọi là cà phê tan) và những chế phẩm có chứa chiết xuất, tinh dầu hoặc chất cô đặc này như là chất cơ bản; những chất thay thế cà phê rang không chứa cà phê (nhóm 21.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là chất caffeine, alkaloid có trong cà phê hay là cà phê?",
+   "neuCo": "2939",
+   "neuKhong": "0901",
+   "nguon": "nhom0901.nhom",
+   "trich": "Nhóm này không bao gồm: … (c) Chất caffeine, alkaloid có trong cà phê (nhóm 29.39).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là sáp cà phê hay là cà phê?",
+   "neuCo": "1521",
+   "neuKhong": "0901",
+   "nguon": "nhom0901.nhom",
+   "trich": "Nhóm này không bao gồm: … (a) Sáp cà phê (nhóm 15.21).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là vỏ quả và vỏ lụa cà phê hay chất thay thế cà phê có chứa cà phê?",
+   "neuCo": "09019010",
+   "neuKhong": "09019020",
+   "nguon": "nhom0901.nhom",
+   "trich": "(4) Vỏ quả và vỏ lụa cà phê. … (5) Các chất thay thế cà phê có chứa cà phê theo tỷ lệ nào đó.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "090111",
+   "fact": "la_ca_phe_chua_rang_chua_khu_caffeine",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.090111",
+   "trich": "090111 Coffee; not roasted or decaffeinated",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "090112",
+   "fact": "la_ca_phe_chua_rang_da_khu_caffeine",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.090112",
+   "trich": "090112 Coffee; decaffeinated, not roasted",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "090121",
+   "fact": "la_ca_phe_da_rang_chua_khu_caffeine",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.090121",
+   "trich": "090121 Coffee; roasted, not decaffeinated",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "090122",
+   "fact": "la_ca_phe_da_rang_da_khu_caffeine",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.090122",
+   "trich": "090122 Coffee; roasted, decaffeinated",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "090190",
+   "fact": "la_vo_qua_va_vo_lua_ca_phe_hoac_chat_thay_the_co_chua_ca_phe",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.090190",
+   "trich": "090190 Coffee; husks and skins, coffee substitutes containing coffee in any proportion",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "09011120",
+   "dieuKien": "Cà phê Arabica — hàm lượng cafein thường 0,8 - 1,4%; hạt bầu dục, dài hơn Robusta",
+   "tieuChi": {
+    "fact": "la_ca_phe_arabica",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "sen.09011120",
+   "trich": "CÀ PHÊ ARABICA … • Hình thức: Hình dạng của hạt thường có hình bầu dục và dài hơn Robusta. … • Hàm lượng cafein: thường 0,8 - 1,4% nên không quá đắng nhưng có độ chua cao hơn.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "09011130",
+   "dieuKien": "Cà phê Robusta — hạt tròn hơn và thường lớn hơn; caffein thường là 1,7% - 4%",
+   "tieuChi": {
+    "fact": "la_ca_phe_robusta",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "sen.09011130",
+   "trich": "CÀ PHÊ ROBUSTA … • Hình thức: Hạt cà phê tròn hơn và thường lớn hơn. … • Hàm lượng caffein: thường là 1,7% - 4% nên có vị đắng và độ chua thấp.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "09011190",
+   "dieuKien": "Loại khác: coffee, not roasted or decaffeinated",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.090111",
+   "trich": "090111 Coffee; not roasted or decaffeinated",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "090111",
+    "truAnhEm": [
+     "09011120",
+     "09011130"
+    ],
+    "toTienCoTen": "090111",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "09011220",
+   "dieuKien": "Arabica (SEN) hoặc Robusta (SEN)",
+   "tieuChi": {
+    "fact": "la_ca_phe_arabica_hoac_robusta",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.09011220",
+   "trich": "09011220 - - - Arabica (SEN) hoặc Robusta (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "09011290",
+   "dieuKien": "Loại khác: coffee, decaffeinated, not roasted",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.090112",
+   "trich": "090112 Coffee; decaffeinated, not roasted",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "090112",
+    "truAnhEm": [
+     "09011220"
+    ],
+    "toTienCoTen": "090112",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "09012111",
+   "dieuKien": "Cà phê Arabica — hàm lượng cafein thường 0,8 - 1,4%; hạt bầu dục, dài hơn Robusta",
+   "tieuChi": {
+    "fact": "la_ca_phe_arabica",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "sen.09012111",
+   "trich": "CÀ PHÊ ARABICA … • Hình thức: Hình dạng của hạt thường có hình bầu dục và dài hơn Robusta. … • Hàm lượng cafein: thường 0,8 - 1,4% nên không quá đắng nhưng có độ chua cao hơn.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "09012112",
+   "dieuKien": "Cà phê Robusta — hạt tròn hơn và thường lớn hơn; caffein thường là 1,7% - 4%",
+   "tieuChi": {
+    "fact": "la_ca_phe_robusta",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "sen.09012112",
+   "trich": "CÀ PHÊ ROBUSTA … • Hình thức: Hạt cà phê tròn hơn và thường lớn hơn. … • Hàm lượng caffein: thường là 1,7% - 4% nên có vị đắng và độ chua thấp.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "09012119",
+   "dieuKien": "Loại khác: coffee, roasted, not decaffeinated",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.090121",
+   "trich": "090121 Coffee; roasted, not decaffeinated",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "0901211",
+    "truAnhEm": [
+     "09012111",
+     "09012112"
+    ],
+    "toTienCoTen": "090121",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "09012120",
+   "dieuKien": "Đã xay",
+   "tieuChi": {
+    "fact": "da_xay",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.09012120",
+   "trich": "09012120 - - - Đã xay",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "09012210",
+   "dieuKien": "Chưa xay",
+   "tieuChi": {
+    "fact": "chua_xay",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.09012210",
+   "trich": "09012210 - - - Chưa xay",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "09012220",
+   "dieuKien": "Đã xay",
+   "tieuChi": {
+    "fact": "da_xay",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.09012220",
+   "trich": "09012220 - - - Đã xay",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "09019010",
+   "dieuKien": "Vỏ quả và vỏ lụa cà phê",
+   "tieuChi": {
+    "fact": "la_vo_qua_va_vo_lua_ca_phe",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.09019010",
+   "trich": "09019010 - - Vỏ quả và vỏ lụa cà phê",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "09019020",
+   "dieuKien": "Các chất thay thế có chứa cà phê",
+   "tieuChi": {
+    "fact": "la_chat_thay_the_co_chua_ca_phe",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.09019020",
+   "trich": "09019020 - - Các chất thay thế có chứa cà phê",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "0901",
+    "cap": 4,
+    "cha": "09",
+    "tenVi": "Cà phê, rang hoặc chưa rang, đã hoặc chưa khử chất caffeine; vỏ quả và vỏ lụa cà phê; các chất thay thế cà phê có chứa cà phê theo tỷ lệ nào đó.",
+    "tenEn": "Coffee, whether or not roasted or decaffeinated; husks and skins; coffee substitutes containing coffee in any proportion",
+    "suyRa": false
+   },
+   {
+    "id": "09011",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "0901",
+    "tenVi": "Cà phê, chưa rang",
+    "tenEn": "Coffee, not roasted",
+    "suyRa": true
+   },
+   {
+    "id": "090111",
+    "cap": 6,
+    "cha": "09011",
+    "tenVi": null,
+    "tenEn": "Coffee; not roasted or decaffeinated",
+    "suyRa": false
+   },
+   {
+    "id": "09011120",
+    "cap": 8,
+    "cha": "090111",
+    "tenVi": "Arabica (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "09011130",
+    "cap": 8,
+    "cha": "090111",
+    "tenVi": "Robusta (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "09011190",
+    "cap": 8,
+    "cha": "090111",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "090112",
+    "cap": 6,
+    "cha": "09011",
+    "tenVi": "Đã khử chất caffeine",
+    "tenEn": "Coffee; decaffeinated, not roasted",
+    "suyRa": false
+   },
+   {
+    "id": "09011220",
+    "cap": 8,
+    "cha": "090112",
+    "tenVi": "Arabica (SEN) hoặc Robusta (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "09011290",
+    "cap": 8,
+    "cha": "090112",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "09012",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "0901",
+    "tenVi": "Cà phê, đã rang",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "090121",
+    "cap": 6,
+    "cha": "09012",
+    "tenVi": null,
+    "tenEn": "Coffee; roasted, not decaffeinated",
+    "suyRa": false
+   },
+   {
+    "id": "0901211",
+    "cap": "TIEU_DE_QG",
+    "cha": "090121",
+    "tenVi": "Chưa nghiền",
+    "tenEn": "Unground",
+    "suyRa": true
+   },
+   {
+    "id": "09012111",
+    "cap": 8,
+    "cha": "0901211",
+    "tenVi": "Arabica (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "09012112",
+    "cap": 8,
+    "cha": "0901211",
+    "tenVi": "Robusta (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "09012119",
+    "cap": 8,
+    "cha": "0901211",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "09012120",
+    "cap": 8,
+    "cha": "090121",
+    "tenVi": "Đã xay",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "090122",
+    "cap": 6,
+    "cha": "09012",
+    "tenVi": "Đã khử chất caffeine",
+    "tenEn": "Coffee; roasted, decaffeinated",
+    "suyRa": false
+   },
+   {
+    "id": "09012210",
+    "cap": 8,
+    "cha": "090122",
+    "tenVi": "Chưa xay",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "09012220",
+    "cap": 8,
+    "cha": "090122",
+    "tenVi": "Đã xay",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "090190",
+    "cap": 6,
+    "cha": "0901",
+    "tenVi": "Loại khác",
+    "tenEn": "Coffee; husks and skins, coffee substitutes containing coffee in any proportion",
+    "suyRa": false
+   },
+   {
+    "id": "09019010",
+    "cap": 8,
+    "cha": "090190",
+    "tenVi": "Vỏ quả và vỏ lụa cà phê",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "09019020",
+    "cap": 8,
+    "cha": "090190",
+    "tenVi": "Các chất thay thế có chứa cà phê",
+    "tenEn": null,
+    "suyRa": false
+   }
+  ],
+  "tenDien": [
+   {
+    "id": "090111",
+    "tenVi": "Cà phê chưa rang, chưa khử chất caffeine",
+    "nguon": "wco.090111",
+    "trich": "090111 Coffee; not roasted or decaffeinated",
+    "nguonLoai": "AI_DA_KIEM"
+   },
+   {
+    "id": "090121",
+    "tenVi": "Cà phê đã rang, chưa khử chất caffeine",
+    "nguon": "wco.090121",
+    "trich": "090121 Coffee; roasted, not decaffeinated",
+    "nguonLoai": "AI_DA_KIEM"
+   }
+  ]
+ },
+ "dungTuNguon": [
+  "nhom0901.nhom",
+  "sen.09011120",
+  "sen.09011130",
+  "sen.09012111",
+  "sen.09012112",
+  "tax.09011220",
+  "tax.09012120",
+  "tax.09012210",
+  "tax.09012220",
+  "tax.09019010",
+  "tax.09019020",
+  "wco.090111",
+  "wco.090112",
+  "wco.090121",
+  "wco.090122",
+  "wco.090190"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-25T16:47:48.538Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 28,
+  "dat": 28,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
