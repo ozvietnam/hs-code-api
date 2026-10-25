@@ -1,0 +1,13 @@
+{
+ "nhom": "0803",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-25T23:46:00+07:00",
+ "soat": 4,
+ "daKiem": 4,
+ "xoa": 0,
+ "sua": 0,
+ "giu": 4,
+ "phamViSoat": "Toàn bộ 4 mục của bản nháp tmp/so-tay/raw/0803.json trong 5 khối (1 phamVi + 1 dieuKienVao + 1 loaiTru + 1 phanBiet; không có boPhan), đọc cùng tmp/so-tay/nguon/0803.txt (nhom0803.nhom + ch08.chuong + phan08.phan + 3 sen.* + 2 wco.* + 6 tax.*). Đối chiếu từng mục với câu nguồn, đo độ dài câu trích, dựng lại đoạn bị lược.",
+ "ghiChu": "Audit 0803 — đọc tay từng mục cùng nguồn. Kết quả: KHÔNG sửa, KHÔNG xoá, giữ 4/4. Đây là nhóm sạch nhất của lô: mọi câu trích đều nguyên văn tuyệt đối trong đúng khối nguồn, đều ≤300 ký tự, không có đoạn lược nào nuốt ngoại lệ, và mọi mục đều nói đúng điều nó khẳng định.\nHAI ĐỀ XUẤT XOÁ ĐƯỢC BÁC BỎ (đếm tiền lệ trong data/so-tay/*.json trước khi kết luận): (a) `dieuKienVao[0]` ('la_qua_an_duoc_thuoc_chi_musa' = true, trích 'Nhóm này bao gồm tất cả các loại quả ăn được thuộc chi Musa') — câu này nêu ĐÚNG phạm vi của nhóm nên là điều kiện vào hợp lệ; corpus đã duyệt có 123 mục `dieuKienVao` trích câu mở đầu 'Nhóm này bao gồm…' ở nhiều nhóm (0203, 0301, 0407…), nên không xoá. (b) `phanBiet[0]` ('Hàng là bột, bột thô hoặc bột mịn chế biến từ quả?' → 11.06 / không → 08.03) — nhánh 'không' trỏ về chính nhóm đang xét là mẫu nhà (corpus có 612 mục `phanBiet` dạng này); căn cứ của nhánh 'không' là câu phạm vi nhóm trong nhom0803.nhom, KHÔNG phải suy từ cấu trúc anh em; mã 11.06 có nêu đích danh trong câu trích nên đạt luật 4. Giữ.\nGHI NHẬN (ngoài phạm vi 5 khối, không đưa vào `thayDoi`): (1) `phamVi.text` có kèm câu định nghĩa 'chuối lá là chuối có nhiều chất tinh bột mà ít ngọt hơn các chuối khác' — câu này nằm trong nhom0803.nhom và đã có ở `tieuChi6[080310]`, nên vô hại; `phamVi` vẫn nêu đúng phạm vi nhóm ở vế đầu. (2) Chương 8 còn nêu loại trừ 'quả được bảo quản bằng cách thấm lọc tách nước → nhóm 20.08' (không có mã trong ngoặc ở câu định nghĩa, mã 20.08 ở câu sau) — bản nháp chọn khoản '(i) Bột…' thay vì khoản này; cả hai đều là loại trừ hợp lệ, không tính lỗi, nhưng đề xuất cho lô sau nên cân nhắc khoản liên quan trực tiếp hơn với nhóm chuối.",
+ "thayDoi": []
+}

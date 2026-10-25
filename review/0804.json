@@ -1,0 +1,35 @@
+{
+ "nhom": "0804",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-25T23:48:00+07:00",
+ "soat": 8,
+ "daKiem": 8,
+ "xoa": 1,
+ "sua": 2,
+ "giu": 5,
+ "phamViSoat": "Toàn bộ 8 mục của bản nháp tmp/so-tay/raw/0804.json trong 5 khối (1 phamVi + 1 dieuKienVao + 3 loaiTru + 3 phanBiet; không có boPhan), đọc cùng tmp/so-tay/nguon/0804.txt (nhom0804.nhom + ch08.chuong + phan08.phan + 5 wco.* + 8 tax.*). Đối chiếu từng mục với câu nguồn, đo độ dài câu trích, dựng lại đoạn bị lược, và so phạm vi `phamVi` với cây nhóm.",
+ "ghiChu": "Audit 0804 — đọc tay từng mục cùng nguồn. Kết quả: xoá 1, sửa 2, giữ 5.\n(1) XOÁ `phamVi` — đây là nhóm DUY NHẤT trong 424 nhóm đã gộp có `phamVi` không phải là PHẠM VI mà là một ĐỊNH NGHĨA (đo bằng script quét data/so-tay/*.json: 423/424 nhóm khác nêu phạm vi; 0804 là nhóm duy nhất bắt đầu bằng 'Khái niệm…'). Nguồn nhom0804.nhom chỉ có MỘT câu: 'Theo mục đích của nhóm này, khái niệm \"quả sung, vả\" chỉ áp dụng cho các loại quả thuộc loài Fucus carica, đã hoặc chưa dùng để trưng cất; vì vậy nhóm này không bao gồm các loại vả xương rồng (lê gai) thuộc nhóm 08.10.' — đây là quy tắc của PHÂN NHÓM 0804.20 (quả sung, vả) cộng một khoản loại trừ, KHÔNG phải phạm vi của nhóm 0804 (chà là, sung, dứa, bơ, ổi, xoài, măng cụt). Đúng luật trong chính prompt soạn của máy (scripts/build-so-tay.mjs:71): 'phamVi phải nêu PHẠM VI nhóm, không phảa vật liệu và không phải một phần… Câu về vật liệu/về cách làm chỉ là ghi chú, không phạm vi' — và đúng lớp lỗi lô 030/031. Không có câu phạm vi nào trong nguồn để thay thế (nguồn chỉ có tên dòng biểu thuế 0804.10–0804.50 và tên WCO), nên theo tiền lệ 0303/7208/7209 (3 nhóm đã gộp KHÔNG có `phamVi`; `lib/so-tay.js:407` chỉ ghi `phamVi` khi có) thì bỏ hẳn. KHÔNG MẤT THÔNG TIN: định nghĩa Ficus carica đã có ở `tieuChi6[080420]`; khoản loại trừ vả xương rồng 08.10 đã có ở `dieuKienVao[0]`, `loaiTru[0]` và `phanBiet[0]`; phạm vi nhóm vẫn hiện đủ trong khối 'Điều kiện dòng 8 số' (08041000 Quả chà là, 08042000 Quả sung vả, 08043000 Quả dứa, 08044000 Quả bơ, 08045010 Quả ổi, 08045030 Quả măng cụt) và trong `tieuChi6`.\n(2) `loaiTru[2].dieuKien` và `phanBiet[2].hoi` — mất định ngữ giới hạn 'thường' (luật 13; bài học lô 034). Nguồn ch08.chuong: '(iii) Quả và quả hạch (nut) được rang chín (ví dụ: hạt dẻ, hạnh nhân và sung, vả) đã hoặc chưa xay, nghiền, THƯỜNG được sử dụng như chất thay thế cà phê (nhóm 21.01)'. Bản nháp viết 'Quả sung, vả rang chín (chất thay thế cà phê)' và 'Hàng là quả sung, vả rang chín, xay hoặc nghiền làm chất thay thế cà phê?' — biến ghi chú 'thường được sử dụng như' thành đặc điểm bắt buộc, mục nói chắc hơn nguồn. Sửa cả hai.\nKIỂM ĐỒNG Ý (không sửa): `dieuKienVao[0]` có fact phủ định ('khong_phai_va_xuong_rong_le_gai') — mẫu nhà đã duyệt (25 mục ở 19 nhóm), và với nhóm này nó có giá trị thực tế cao: vả xương rồng (lê gai) là nhầm lẫn thường gặp giữa 0804 và 0810.\nLỖI KỆ SÁCH (báo để sửa nguồn): nhom0804.nhom ghi 'Fucus carica' trong khi loài đúng là Ficus carica; các câu trích đã chép nguyên văn theo luật (đúng yêu cầu 'giữ nguyên ký tự').\nNHÓNG LƯU Ý THÊM: trong khối `tax.*` cuối tệp nguồn có dòng prompt dính vào ('Soạn sổ tay cho nhóm 0804.') — đã được người soạn xử lý (các câu trích `dong8` lấy đúng dòng đầu), không phát sinh lỗi.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "xoa",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `phamVi` đặt ĐỊNH NGHĨA vào nhãn 'Phạm vi'. Nguồn nhom0804.nhom chỉ có một câu duy nhất: 'Theo mục đích của nhóm này, khái niệm \"quả sung, vả\" chỉ áp dụng cho các loại quả thuộc loài Fucus carica, đã hoặc chưa dùng để trưng cất; vì vậy nhóm này không bao gồm các loại vả xương rồng (lê gai) thuộc nhóm 08.10.' — đây là quy tắc của PHÂN NHÓM 0804.20 (quả sung, vả) cộng một khoản loại trừ, KHÔNG nêu phạm vi của nhóm 0804 (chà là, sung, dứa, bơ, ổi, xoài, măng cụt). Đo bằng script quét data/so-tay/*.json: 0804 là nhóm DUY NHẤT trong 424 nhóm đã gộp có `phamVi` dạng định nghĩa thay vì phạm vi. Vi phạm đúng luật trong chính prompt soạn (scripts/build-so-tay.mjs:71: 'phamVi phải nêu PHẠM VI nhóm, không phải vật liệu và không phải một phần… Câu về vật liệu/về cách làm chỉ là ghi chú, không phạm vi') và lớp lỗi lô 030/031. Không có câu phạm vi nào trong nguồn để thay thế, nên theo tiền lệ 0303/7208/7209 (3 nhóm đã gộp không có `phamVi`; `lib/so-tay.js:407` chỉ ghi `phamVi` khi bản nháp có) thì bỏ hẳn. KHÔNG MẤT THÔNG TIN: định nghĩa Ficus carica đã ở `tieuChi6[080420]`; khoản loại trừ 08.10 đã ở `dieuKienVao[0]`, `loaiTru[0]`, `phanBiet[0]`; phạm vi nhóm hiện đủ ở khối 'Điều kiện dòng 8 số' và `tieuChi6`."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — mất định ngữ giới hạn 'thường' (luật 13; bài học lô 034: 'mất định ngữ giới hạn' — trích vẫn hoàn hảo nên máy im lặng). Nguồn ch08.chuong: '(iii) Quả và quả hạch (nut) được rang chín (ví dụ: hạt dẻ, hạnh nhân và sung, vả) đã hoặc chưa xay, nghiền, THƯỜNG được sử dụng như chất thay thế cà phê (nhóm 21.01)'. Bản nháp ghi 'Quả sung, vả rang chín (chất thay thế cà phê)' — nén vế 'đã hoặc chưa xay, nghiền' và BỎ chữ 'thường', biến một ghi chú thành đặc điểm định nghĩa bắt buộc, tức mục nói chắc hơn nguồn. SỬA: viết lại theo nguồn, giữ 'đã hoặc chưa xay, nghiền' và 'thường được sử dụng như'. `trich` giữ nguyên — đã chép trọn câu nguồn.",
+   "sua": {
+    "dieuKien": "Quả sung, vả được rang chín, đã hoặc chưa xay, nghiền, thường được sử dụng như chất thay thế cà phê"
+   }
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `hoi` biến ghi chú 'thường được sử dụng như chất thay thế cà phê' thành điều kiện BẮT BUỘC (nhánh Có khẳng định dứt khoát hơn nguồn), đồng thời bỏ 'đã hoặc chưa' (nguồn nói xay hoặc KHÔNG xay). Nguồn: '…đã hoặc chưa xay, nghiền, thường được sử dụng như chất thay thế cà phê (nhóm 21.01)'. Bản nháp: 'Hàng là quả sung, vả rang chín, xay hoặc nghiền làm chất thay thế cà phê?'. SỬA: trả lại đúng nghĩa nguồn. `trich` giữ nguyên.",
+   "sua": {
+    "hoi": "Hàng là quả sung, vả được rang chín, đã hoặc chưa xay, nghiền, thường được sử dụng như chất thay thế cà phê?"
+   }
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "nhom": "0801",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-25T23:42:00+07:00",
+ "soat": 6,
+ "daKiem": 6,
+ "xoa": 0,
+ "sua": 3,
+ "giu": 3,
+ "phamViSoat": "Toàn bộ 6 mục của bản nháp tmp/so-tay/raw/0801.json trong 5 khối (1 phamVi + 1 dieuKienVao + 2 loaiTru + 2 phanBiet; không có boPhan), đọc cùng tmp/so-tay/nguon/0801.txt (nhom0801.nhom + ch08.chuong + phan08.phan + sen.08011910 + 7 wco.* + 8 tax.*). Đối chiếu từng mục với câu nguồn, đối chiếu với cây nhóm trong lib/hs-tree.js để kiểm phạm vi.",
+ "ghiChu": "Audit 0801 — đọc tay từng mục cùng nguồn. Kết quả: sửa 3, xoá 0, giữ 3. Ba lỗi đều là lỗi MÁY KHÔNG BẮT, và là một lớp lỗi chung: mất vế giới hạn của câu nguồn.\n(1) PHẠM VI BIẾN 'MỘT PHẦN' THÀNH 'PHẠM VI CẢ NHÓM'. Nguồn: 'Nhóm này bao gồm CẢ dừa đã qua công đoạn làm khô, tức là cùi dừa nạo và làm khô, nhưng loại trừ copra…'. Bản nháp bỏ chữ 'cả' và bỏ vì ngữ 'Nhóm này bao gồm', để lại 'Dừa đã qua công đoạn làm khô…' — đọc như phạm vi của cả nhóm 0801. Nhưng nhóm 0801 theo cây là 'Dừa, quả hạch Brazil và hạt điều, tươi hoặc khô': còn dừa tươi (0801.19), dừa còn nguyên sọ (0801.12), hạch Brazil (0801.21/22), hạt điều (0801.31/32). `phamVi` đi thẳng vào prompt vòng 2 (lib/so-tay-gates.js:134) nên sẽ kéo sai phân loại. Sửa: trả lại vì ngữ + chữ 'cả' của nguồn.\n(2) ĐỊNH NGHĨA COPRA MẤT VẾ HAI. Nguồn: 'copra, phần cùi dừa khô dùng để chiết xuất dầu dừa VÀ không thích hợp làm thực ăn cho người (nhóm 12.03)'. Bản nháp giữ vế 'dùng để chiết xuất dầu dừa' nhưng bỏ vế 'và không thích hợp làm thực ăn cho người' ở CẢ `dieuKienVao[0].fact` LẪN `loaiTru[0].dieuKien' — trong khi `phanBiet[0].hoi` lại giữ đủ hai vế (bản nháp tự mâu thuẫn). Hệ quả: cùi dừa khô dùng chiết xuất dầu dừa NHƯNG ăn được sẽ bị `loaiTru` đẩy sang 12.03, trong khi nguồn nói nó KHÔNG phải copra nên vẫn ở 0801; đồng thời `dieuKienVao` lại bảo nó thỏa điều kiện vào nhóm — hai mục mâu thuẫn nhau. Sửa cả hai mục (giữ đúng định ngữ giới hạn, luật 13 + bài học lô 034).\nKIỂM ĐỒNG Ý (không sửa): `dieuKienVao[0]` có fact phủ định và trùng `trich` với `loaiTru[0]` — mẫu nhà đã duyệt (25 mục fact phủ định ở 19 nhóm; 22 mục trùng `trich` ở 17 nhóm), nên KHÔNG xoá. `loaiTru[1]`/`phanBiet[1]` trích mục '(i)' của Chương 8 không kèm câu dẫn 'Chương này cũng không bao gồm:' — về hình thức chưa đúng mẫu 0208/0501, nhưng người đọc vẫn xác định được đây là danh sách loại trừ (nhãn `loaiTru`/`phanBiet` đã mang nghĩa), nên đề xuất cho lô sau, không tính là lỗi của lô này.\nLỖI KỆ SÁCH (báo để sửa nguồn, không sửa trong sổ tay): nguồn ghi 'thức ăn' (U+1EE9) thay vì 'thực ăn' (U+1EF1); các câu trích đã chép nguyên văn theo luật.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — biến MỘT phần thành phạm vi CẢ nhóm. Nguồn nhom0801.nhom: 'Nhóm này bao gồm CẢ dừa đã qua công đoạn làm khô, tức là cùi dừa nạo và làm khô, nhưng loại trừ copra…'. Bản nháp bỏ chữ 'cả' (vì ngữ 'bao gồm cả' = mặt hàng ĐƯỢC bao gồm, không phải phạm vi trọn vẹn) và bỏ vì ngữ 'Nhóm này bao gồm', để lại 'Dừa đã qua công đoạn làm khô (tức là cùi dừa nạo và làm khô); loại trừ copra…' — đọc như phạm vi của cả nhóm 0801. Nhưng nhóm 0801 còn có dừa tươi (0801.19), dừa còn nguyên sọ (0801.12), hạch Brazil (0801.21/22) và hạt điều (0801.31/32); `phamVi` đi thẳng vào prompt vòng 2 (lib/so-tay-gates.js:134) nên sẽ kéo sai phân loại — đúng lớp lỗi lô 030 ('KHÔNG lấy đoạn dẫn của phần đầu làm phạm vi cả nhóm'). SỬA: thêm lại vì ngữ 'Nhóm này bao gồm cả' của nguồn; giữ nguyên phần còn lại của câu và giữ nguyên `trich` (đã nguyên văn tuyệt đối, kiểm bằng check-trich-nguyen-van).",
+   "sua": {
+    "text": "Nhóm này bao gồm cả dừa đã qua công đoạn làm khô (tức là cùi dừa nạo và làm khô); loại trừ copra — phần cùi dừa khô dùng để chiết xuất dầu dừa và không thích hợp làm thực ăn cho người (nhóm 12.03)."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — mất vế giới hạn thứ hai của định nghĩa copra, nên mục rộng hơn nguồn. Nguồn: 'copra, phần cùi dừa khô dùng để chiết xuất dầu dừa VÀ không thích hợp làm thực ăn cho người (nhóm 12.03)' — copra là cùi dừa khô dùng chiết xuất dầu dừa ĐỒNG THỜI không ăn được. Bản nháp ghi fact 'khong_phai_copra_dung_chiet_xuat_dau_dua', bỏ mất vế 'không thích hợp làm thực ăn cho người' (trong khi `phanBiet[0].hoi` cùng nhóm lại giữ đủ hai vế — bản nháp tự mâu thuẫn). Hệ quả: cùi dừa khô dùng chiết xuất dầu dừa nhưng còn ăn được sẽ thỏa 'điều kiện vào nhóm' dù theo nguồn nó VẪN ở 0801; đọc kiểu AND thì mô hình có thể loại nhầm. SỬA: bổ sung vế giới hạn vào `fact` (giữ dạng snake_case không dấu như các mục khác). `trich` giữ nguyên — đã chép trọn câu nguồn nên vẫn là căn cứ đầy đủ cho cả hai vế.",
+   "sua": {
+    "fact": "khong_phai_copra_dung_chiet_xuat_dau_dua_va_khong_thich_hop_lam_thuc_an_cho_nguoi"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — mất vế giới hạn thứ hai của định nghĩa copra (luật 13: `dieuKien` phải giữ định ngữ giới hạn của câu; bài học lô 034 'bỏ mất định ngữ giới hạn'). Nguồn: 'copra, phần cùi dừa khô dùng để chiết xuất dầu dừa VÀ không thích hợp làm thực ăn cho người (nhóm 12.03)'. Bản nháp chỉ ghi 'Copra — cùi dừa khô dùng để chiết xuất dầu dừa', nên điều kiện loại trừ rộng hơn nguồn: cùi dừa khô dùng chiết xuất dầu dừa NHƯNG ăn được sẽ bị đẩy sang 12.03, trái với nguồn (nguồn nói nó không phải copra ⇒ vẫn ở 0801). SỬA: thêm lại vế 'và không thích hợp làm thực ăn cho người', khớp đúng với `phanBiet[0].hoi` của cùng nhóm. `trich` giữ nguyên (đã nguyên văn trọn câu).",
+   "sua": {
+    "dieuKien": "Copra — cùi dừa khô dùng để chiết xuất dầu dừa và không thích hợp làm thực ăn cho người"
+   }
+  }
+ ]
+}

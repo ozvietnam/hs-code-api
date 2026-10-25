@@ -1,0 +1,22 @@
+{
+ "nhom": "0714",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-25T23:40:00+07:00",
+ "soat": 13,
+ "daKiem": 13,
+ "xoa": 0,
+ "sua": 1,
+ "giu": 12,
+ "phamViSoat": "Toàn bộ 13 mục của bản nháp tmp/so-tay/raw/0714.json trong 5 khối (1 phamVi + 2 dieuKienVao + 5 loaiTru + 5 phanBiet; không có boPhan), đọc cùng tmp/so-tay/nguon/0714.txt (nhom0714.nhom + ch07.chuong + phan07.phan + 6 wco.* + 16 tax.*). Đối chiếu từng mục với câu nguồn; đo độ dài câu trích; dựng lại đoạn bị lược bằng dấu '…' để tìm ngoại lệ bị nuốt.",
+ "ghiChu": "Audit 0714 — đọc tay từng mục cùng nguồn (không dựa vào squash của máy). Kết quả: sửa 1, xoá 0, giữ 12. LỖI MÁY KHÔNG BẮT đã bắt: `phamVi.text` khẳng định '(dùng để chế biến thành thực phẩm hoặc sản phẩm công nghiệp)' nhưng câu trích cắt đúng trước vế đó bằng dấu '…' — `text` nói điều mà `trich` không có, vi phạm luật 7/8 ('text/dieuKien chỉ diễn đạt điều câu trích nói'). Sửa: nối lại vế bị lược vào câu trích (nguyên văn), giữ nguyên `text`.\nKIỂM ĐỒNG Ý (đã đếm tiền lệ trong data/so-tay/*.json trước khi kết luận): (a) `dieuKienVao[0]` — ngưỡng 'hàm lượng phụ gia chất gắn ≤ 3 %' trong sản phẩm dạng viên: KHÔNG xoá. Corpus đã duyệt có 45 mục `dieuKienVao` có value số ở 14 nhóm, gồm đúng trường hợp cùng dạng 'ngưỡng của DẠNG' (0402: ty_le_tinh_bot_them_vao_sua_bot ≤ 5 %); phan07.phan cũng xác nhận cùng ngưỡng 3 % cho khái niệm 'viên' của Phần II. (b) `dieuKienVao[1]` fact phủ định: mẫu nhà đã duyệt (25 mục ở 19 nhóm). (c) `loaiTru[0..2]` dẫn tới 1106/1108/1903: câu nguồn 'Những sản phẩm thuộc nhóm này nếu được chế biến theo những cách khác sẽ được phân loại vào các Chương khác, ví dụ, bột, bột thô và bột mịn (nhóm 11.06), tinh bột (nhóm 11.08) và tinh bột sắn (nhóm 19.03)' có vị từ đích danh 'sẽ được phân loại vào', nên là loại trừ hợp lệ; `dieuKien` giữ định ngữ 'từ củ/rễ nhóm này' theo chủ thể câu nguồn. (d) `loaiTru[4].sangNhom = '0701|0712'` phủ hết nhánh 'tươi hoặc khô' — không tách một nhánh của 'A hoặc B' thành đích duy nhất; `phanBiet[4]` dùng cùng cách. (e) `phanBiet` nhánh 'không→0714' là mẫu nhà (612 mục trong corpus).\nGHI NHẬN (ngoài phạm vi 5 khối, không đưa vào `thayDoi`): (1) câu nguồn còn vế 'Trong một vài trường hợp, các loại củ và rễ này cũng được sử dụng trực tiếp cho người và động vật' — nằm ngoài câu trích; đây là mở rộng có điều kiện ('trong một vài trường hợp'), không phải điều kiện vào nhóm nên `text` không cần nêu. (2) `tieuChi6[071490]` có mục dựng từ vế '(not manioc, sweet potatoes, yams, taro or yautia)' của tiêu đề WCO — thuộc phạm vi soát `tieuChi6`, để người duyệt xem khi soát vòng đó.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `text` khẳng định điều mà `trich` KHÔNG có. Nguồn nhom0714.nhom: 'Nhóm này bao gồm các loại củ và rễ có hàm lượng tinh bột hoặc hàm lượng inulin cao và vì vậy được sử dụng để chế biến thành thực phẩm hoặc các sản phẩm công nghiệp; nó cũng bao gồm lõi cây cọ sago.' — bản nháp cắt đúng trước vế 'và vì vậy được sử dụng để chế biến thành thực phẩm hoặc các sản phẩm công nghiệp' bằng dấu '…', trong khi `phamVi.text` lại viết '(dùng để chế biến thành thực phẩm hoặc sản phẩm công nghiệp)'. Đó là vi phạm luật 7/8: `text`/`dieuKien` chỉ được diễn đạt điều câu trích nói — ở đây `text` nói về công dụng mà bằng chứng đi kèm không có, nên khi đọc hồ sơ hải quan không kiểm được. Sửa: nối lại vế bị lược vào câu trích (nguyên văn, giữ nguyên dấu ';' của nguồn), GIỮ NGUYÊN `text`. Đo lại: trích mới 265 ký tự (≤300 theo lược đồ); ba mảnh đều liên tiếp trong nhom0714.nhom; đoạn bị lược còn lại là câu 'Trong một vài trường hợp…' và không chứa từ ngoại lệ nào.",
+   "sua": {
+    "trich": "Nhóm này bao gồm các loại củ và rễ có hàm lượng tinh bột hoặc hàm lượng inulin cao và vì vậy được sử dụng để chế biến thành thực phẩm hoặc các sản phẩm công nghiệp…nó cũng bao gồm lõi cây cọ sago.…ở dạng tươi, ướp lạnh, đông lạnh hay khô, đã hoặc chưa thái lát hoặc dưới dạng viên"
+   }
+  }
+ ]
+}
