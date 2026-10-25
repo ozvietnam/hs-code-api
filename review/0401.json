@@ -1,0 +1,52 @@
+{
+  "nhom": "0401",
+  "nguoiSoat": "dev-soat-doc-lap-lo042",
+  "luc": "2026-10-25T16:35:00+07:00",
+  "soat": 9,
+  "giu": 4,
+  "sua": 5,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0401 — 9 mục trong phạm vi mục 4 (1 phamVi + 2 dieuKienVao + 3 loaiTru + 3 phanBiet). SỬA 5, XOÁ 0. VỀ CÂU HỎI MỞ CỦA PHIÊN SOẠN (giữ câu trích 356 ký tự vì 'cắt bớt bằng … sẽ nuốt mất câu loại trừ'): Sửa của em KHÔNG dùng dấu lược mà cắt TẠI RANH GIỚI CÂU, và hai khoản loại trừ 04.02 / 04.03 vẫn được trích TRỌN VẸN ở `loaiTru[0]`, `loaiTru[1]`, `phanBiet[0]`, `phanBiet[1]` (nay thêm ở `dieuKienVao[0]`, `dieuKienVao[1]`) → không mất thông tin nào trong sổ tay, chỉ bỏ phần TRÙNG LẶP trong khối phạm vi; đồng thời đưa được câu trích về dưới trần 300 ký tự luật 2 mà không cần lược. Đọc thêm 6 tieuChi6 + 9 dong8 nhưng KHÔNG sửa (ngoài phạm vi mục 4). SỬA 5: (a) `phamVi.trich` dài 356 ký tự — vượt trần 300 ký tự luật 2 (máy chỉ chặn >600 nên lọt). Cắt về đúng câu bao hàm phạm vi (170 ký tự), khớp 1-1 với `phamVi.text`; phần bị lược (hai khoản loại trừ 04.02 và 04.03) đã có trong `loaiTru[0]` và `loaiTru[1]`. (b) `dieuKienVao[1]` trích MẢNH câu trần trụi ('sữa và kem đã được làm đông, được lên men hoặc được axit hoá (nhóm 04.03)') — đọc riêng câu này nói NGƯỢC với điều kiện mà mục khẳng định, vì vế 'nhưng nhóm này không bao gồm' đã bị cắt mất. SỬA: trích lại từ 'nhóm này không bao gồm' cho tới hết câu (178 ký tự, nguyên văn liên tục) — có đủ vùng phủ định và nêu cả hai khoản loại trừ. (c) `dieuKienVao[0]`, `loaiTru[0]`, `phanBiet[0]` cùng trích một câu mở đầu bằng liên từ treo 'nhưng' (cắt giữa vế) — bỏ 'nhưng', bắt đầu từ 'nhóm này không bao gồm…' (100 ký tự, vẫn nguyên văn liên tục). GIỮ 4: `loaiTru[1]` (trích mảnh '(… nhóm 04.03)' — đúng mẫu đã gộp ở 0402), `loaiTru[2]` + `phanBiet[2]` (loại trừ CẤP CHƯƠNG từ ch04.chuong — 376 loaiTru đã gộp cũng trích cấp chương, đúng tiền lệ; nhánh 'không' = chính nhóm 0401 đúng mẫu 552/739 phanBiet đã gộp), `phanBiet[0]` và `phanBiet[1]` (chiều Có/Không đúng, mã đích có trong câu trích). GHI NHẬN (ngoài phạm vi, KHÔNG sửa): đoạn thứ hai của chú giải nhóm — 'Các sản phẩm trong nhóm này có thể ở dạng đông lạnh và có thể chứa các chất phụ gia… Nhóm này cũng bao gồm cả sữa và kem được hoàn nguyên có chất lượng và số lượng các thành phần như sản phẩm tự nhiên' — không mục nào đại diện; hai ý này là vế 'có thể' (không đặt được thành dieuKienVao value=true) và nhánh sữa hoàn nguyên chưa có chỗ nào trong nhóm này. Đã nêu để người duyệt xem.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích cũ dài 356 ký tự, vượt trần 300 ký tự luật 2 (máy chỉ chặn >600 nên lọt — đúng loại lỗi 'trích 300–600 ký tự lặng lẽ'). SỬA: cắt về đúng câu bao hàm phạm vi nhóm, 170 ký tự, khớp 1-1 với `phamVi.text`; nguyên văn liên tục trong nhom0401.nhom. Hai khoản loại trừ bị lược khỏi câu trích vẫn có mặt ở `loaiTru[0]` (04.02) và `loaiTru[1]` (04.03). Giữ nguyên `text` và `nguon`.",
+      "sua": {
+        "trich": "Nhóm này bao gồm sữa (như đã định nghĩa trong Chú giải 1 của Chương này) và kem đã hoặc chưa thanh trùng, tiệt trùng hoặc bảo quản cách khác, đồng thể hoá hoặc pepton hoá"
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích cũ mở đầu bằng liên từ treo 'nhưng' (cắt giữa vế câu) — không tự đứng được khi đọc. SỬA: bỏ 'nhưng', bắt đầu từ 'nhóm này không bao gồm…' (100 ký tự, nguyên văn liên tục trong nhom0401.nhom). Vùng phủ định 'không bao gồm' vẫn còn nguyên nên chiều của điều kiện không đổi. Giữ nguyên `fact`, `op`, `value`.",
+      "sua": {
+        "trich": "nhóm này không bao gồm sữa và kem đã cô đặc hoặc pha thêm đường hoặc chất làm ngọt khác (nhóm 04.02)"
+      }
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích cũ là MẢNH câu trần trụi ('sữa và kem đã được làm đông, được lên men hoặc được axit hoá (nhóm 04.03)') — đọc riêng, câu này nói NGƯỢC với điều kiện mà mục khẳng định ('không làm đông/lên men/axit hoá = true'), vì vế chủ 'nhưng nhóm này không bao gồm' đã bị cắt mất. SỬA: trích lại từ 'nhóm này không bao gồm' cho tới hết câu (178 ký tự, nguyên văn liên tục trong nhom0401.nhom) — có đủ vùng phủ định, nêu cả khoản 04.02 lẫn 04.03, không vướng CAU_CHO_PHEP. Giữ nguyên `fact`, `op`, `value`.",
+      "sua": {
+        "trich": "nhóm này không bao gồm sữa và kem đã cô đặc hoặc pha thêm đường hoặc chất làm ngọt khác (nhóm 04.02) và sữa và kem đã được làm đông, được lên men hoặc được axit hoá (nhóm 04.03)."
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích cũ mở đầu bằng liên từ treo 'nhưng' (cắt giữa vế câu). SỬA: bỏ 'nhưng', bắt đầu từ 'nhóm này không bao gồm…' (100 ký tự, nguyên văn liên tục); vùng phủ định và mã đích 04.02 vẫn còn nguyên. Giữ nguyên `dieuKien`, `sangNhom`, `nguon`.",
+      "sua": {
+        "trich": "nhóm này không bao gồm sữa và kem đã cô đặc hoặc pha thêm đường hoặc chất làm ngọt khác (nhóm 04.02)"
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích cũ mở đầu bằng liên từ treo 'nhưng' (cắt giữa vế câu). SỬA: bỏ 'nhưng', bắt đầu từ 'nhóm này không bao gồm…' (100 ký tự, nguyên văn liên tục); mã đích 04.02 vẫn có trong câu nên nhánh Có/Không giữ nguyên chiều. Giữ nguyên `hoi`, `neuCo`, `neuKhong`, `nguon`.",
+      "sua": {
+        "trich": "nhóm này không bao gồm sữa và kem đã cô đặc hoặc pha thêm đường hoặc chất làm ngọt khác (nhóm 04.02)"
+      }
+    }
+  ]
+}
