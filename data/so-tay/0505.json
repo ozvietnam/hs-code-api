@@ -1,0 +1,256 @@
+{
+ "nhom": "0505",
+ "phamVi": {
+  "text": "Da và các bộ phận khác của chim và gia cầm có lông vũ hoặc lông tơ; lông vũ, lông tơ chỉ mới làm sạch, khử trùng hay xử lý để bảo quản; bột và phế liệu của lông vũ.",
+  "nguon": "nhom0505.nhom",
+  "trich": "Da và các bộ phận khác của chim và gia cầm (ví dụ: đầu, cánh) có lông vũ hoặc lông tơ…Lông vũ và các phần của lông vũ (đã hoặc chưa cắt tỉa), và lông tơ, với điều kiện chúng chưa được xử lý, mới chỉ làm sạch, khử trùng hay xử lý để bảo quản, nhưng chưa được xử lý theo cách khác hoặc chưa được gắn với nhau.…Nhóm này cũng bao gồm bột, bột thô và phế liệu của lông vũ hoặc các phần của lông vũ.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "moi_chi_lam_sach_khu_trung_hoac_xu_ly_de_bao_quan",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom0505.nhom",
+   "trich": "mới chỉ làm sạch, khử trùng hay xử lý để bảo quản",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "chua_duoc_xu_ly_theo_cach_khac_hoac_chua_duoc_gan_voi_nhau",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom0505.nhom",
+   "trich": "chưa được xử lý theo cách khác hoặc chưa được gắn với nhau",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Lông vũ đã xử lý nhiều hơn mức cho phép tại nhóm này",
+   "sangNhom": "6701",
+   "nguon": "nhom0505.nhom",
+   "trich": "Nhóm này không bao gồm da và các bộ phận khác của loài chim và gia cầm, lông vũ và các phần của lông vũ đã qua xử lý nhiều hơn mức cho phép tại nhóm này (như tẩy, nhuộm, làm quăn hoặc tạo sóng), hoặc đã được gắn lại, và các sản phẩm làm từ lông vũ,v.v... ; nói chung chúng được phân loại vào nhóm 67.01 (xem Chú giải của nhóm).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là da và lông vũ đã qua xử lý nhiều hơn mức cho phép tại nhóm này hoặc đã được gắn lại?",
+   "neuCo": "6701",
+   "neuKhong": "0505",
+   "nguon": "nhom0505.nhom",
+   "trich": "Nhóm này không bao gồm da và các bộ phận khác của loài chim và gia cầm, lông vũ và các phần của lông vũ đã qua xử lý nhiều hơn mức cho phép tại nhóm này (như tẩy, nhuộm, làm quăn hoặc tạo sóng), hoặc đã được gắn lại, và các sản phẩm làm từ lông vũ,v.v... ; nói chung chúng được phân loại vào nhóm 67.01 (xem Chú giải của nhóm).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là lông ống đã xử lý?",
+   "neuCo": "9507|9601",
+   "neuKhong": "0505",
+   "nguon": "nhom0505.nhom",
+   "trich": "Tuy nhiên lông ống đã xử lý và các sản phẩm làm từ lông ống được phân loại theo đặc tính của chúng (ví dụ: phao để câu thuộc nhóm 95.07, tăm xỉa răng thuộc nhóm 96.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "050510",
+   "fact": "la_long_vu_va_long_to_dung_de_nhoi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.050510",
+   "trich": "050510 Animal products; feathers and down used for stuffing, not further worked than cleaned, disinfected or treated for preservation",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "050510",
+   "fact": "khong_duoc_xu_ly_them_ngoai_lam_sach_khu_trung_hoac_xu_ly_de_bao_quin",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.050510",
+   "trich": "050510 Animal products; feathers and down used for stuffing, not further worked than cleaned, disinfected or treated for preservation",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "050590",
+   "fact": "la_da_va_bo_phan_khac_cua_chim_va_gia_cam",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.050590",
+   "trich": "050590 Animal products; skins and other parts of birds, feathers and down (not for stuffing), powder and waste of such, not further worked than cleaned, disinfected or treated for preservation",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "050590",
+   "fact": "la_long_vu_va_long_to_khong_dung_de_nhoi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.050590",
+   "trich": "050590 Animal products; skins and other parts of birds, feathers and down (not for stuffing), powder and waste of such, not further worked than cleaned, disinfected or treated for preservation",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "050590",
+   "fact": "la_bot_va_phe_lieu_cua_long_vu",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.050590",
+   "trich": "050590 Animal products; skins and other parts of birds, feathers and down (not for stuffing), powder and waste of such, not further worked than cleaned, disinfected or treated for preservation",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "050590",
+   "fact": "khong_duoc_xu_ly_them_ngoai_lam_sach_khu_trung_hoac_xu_ly_de_bao_quin",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.050590",
+   "trich": "050590 Animal products; skins and other parts of birds, feathers and down (not for stuffing), powder and waste of such, not further worked than cleaned, disinfected or treated for preservation",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "05051010",
+   "dieuKien": "Lông vũ của vịt, ngan — lông vũ loại dùng để nhồi",
+   "nguon": "nhom0505.nhom",
+   "trich": "Phân nhóm 0505.10 “Lông vũ loại dùng để nhồi” tức là lông của gia cầm (nhất là của ngỗng hoặc vịt, ngan), của chim bồ câu, của gà gô hoặc động vật tương tự, trừ lông vũ lớn từ cánh hoặc từ đuôi cũng như những lông vũ lớn bị loại bỏ sau khi tuyển chọn.",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "05051090",
+   "dieuKien": "Lông vũ và lông tơ dùng để nhồi, trừ lông vũ lớn từ cánh hoặc từ đuôi",
+   "nguon": "nhom0505.nhom",
+   "trich": "Phân nhóm 0505.10 “Lông vũ loại dùng để nhồi” tức là lông của gia cầm (nhất là của ngỗng hoặc vịt, ngan), của chim bồ câu, của gà gô hoặc động vật tương tự, trừ lông vũ lớn từ cánh hoặc từ đuôi cũng như những lông vũ lớn bị loại bỏ sau khi tuyển chọn.",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "050510",
+    "truAnhEm": [
+     "05051010"
+    ],
+    "toTienCoTen": "050510",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "05059010",
+   "dieuKien": "Lông vũ của vịt, ngan — không dùng để nhồi",
+   "nguon": "tax.05059010",
+   "trich": "05059010 - - Lông vũ của vịt, ngan",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "05059090",
+   "dieuKien": "Feathers and down (not for stuffing), powder and waste of such",
+   "nguon": "wco.050590",
+   "trich": "050590 Animal products; skins and other parts of birds, feathers and down (not for stuffing), powder and waste of such, not further worked than cleaned, disinfected or treated for preservation",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "050590",
+    "truAnhEm": [
+     "05059010"
+    ],
+    "toTienCoTen": "050590",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "0505",
+    "cap": 4,
+    "cha": "05",
+    "tenVi": "Da và các bộ phận khác của loài chim và gia cầm, có lông vũ hoặc lông tơ, lông vũ và các phần của lông vũ (đã hoặc chưa cắt tỉa) và lông tơ, mới chỉ được làm sạch, khử trùng hoặc xử lý để bảo quản; bột và phế liệu từ lông vũ hoặc các phần của lông vũ.",
+    "tenEn": "Skins and other parts of birds with feathers, down; feathers, down and parts thereof; not further worked than cleaned, disinfected, treated for preservation; powder, waste and parts of feathers",
+    "suyRa": false
+   },
+   {
+    "id": "050510",
+    "cap": 6,
+    "cha": "0505",
+    "tenVi": "Lông vũ dùng để nhồi; lông tơ",
+    "tenEn": "Animal products; feathers and down used for stuffing, not further worked than cleaned, disinfected or treated for preservation",
+    "suyRa": false
+   },
+   {
+    "id": "05051010",
+    "cap": 8,
+    "cha": "050510",
+    "tenVi": "Lông vũ của vịt, ngan",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "05051090",
+    "cap": 8,
+    "cha": "050510",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "050590",
+    "cap": 6,
+    "cha": "0505",
+    "tenVi": "Loại khác",
+    "tenEn": "Animal products; skins and other parts of birds, feathers and down (not for stuffing), powder and waste of such, not further worked than cleaned, disinfected or treated for preservation",
+    "suyRa": false
+   },
+   {
+    "id": "05059010",
+    "cap": 8,
+    "cha": "050590",
+    "tenVi": "Lông vũ của vịt, ngan",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "05059090",
+    "cap": 8,
+    "cha": "050590",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom0505.nhom",
+  "tax.05059010",
+  "wco.050510",
+  "wco.050590"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-25T09:22:20.594Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 16,
+  "dat": 16,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
