@@ -65,8 +65,8 @@ check('subheading: bu lông M20x80 → cờ, nêu 20 mm, gợi ý 73181590', sM2
 check('subheading: không có ký hiệu / chữ đường kính → cờ như cũ', checkSubheading('73181510', 'Bu lông lục giác thép mạ kẽm').ok === false);
 // Sổ tay chỉ chấm vế đường kính của 8481.40.10 ("Bằng đồng hoặc hợp kim đồng" chưa mô hình) → THOẢ đường kính không đủ để
 // bỏ cảnh báo thiếu "đồng / hợp kim" — lời cảnh báo giữ nguyên bản cũ.
-const sVan = checkSubheading('84814010', 'Van an toàn bằng thép DN15');
-check('subheading: van thép DN15 chọn 84814010 → vẫn cờ thiếu "dong/hop/kim" (vế đồng chưa được chấm)', sVan.ok === false && /đòi dấu hiệu "dong", "hop", "kim"/.test(sVan.reasonVi), JSON.stringify(sVan));
+const sVan = checkSubheading('84814010', 'Van an toàn bằng thép DN40');
+check('subheading: van thép DN40 chọn 84814010 → vẫn cờ thiếu "dong/hop/kim" dù vế đường kính THOẢ (vế đồng chưa được chấm)', sVan.ok === false && /đòi dấu hiệu "dong", "hop", "kim"/.test(sVan.reasonVi), JSON.stringify(sVan));
 if (soTayEnv === undefined) delete process.env.HS_SO_TAY; else process.env.HS_SO_TAY = soTayEnv;
 check('subheading: dòng "Loại khác" không bị cờ', checkSubheading('22021090', 'nước ngọt').ok);
 

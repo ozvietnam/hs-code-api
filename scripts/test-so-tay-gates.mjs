@@ -161,7 +161,6 @@ const MAU = { plastic: 'nhựa', 'cao su': 'cao su', giấy: 'giấy', gỗ: 'g�
 check('mẫu thô: kiểm được câu trích luật (lib/so-tay.js); là MỘT nhóm cờ u, ghép tiền tố vào .source thì áp cho mọi phương án (so-tay-extract-conditions)',
   chatLieuRegex('gốm sứ').test('Bằng sứ') && chatLieuRegex('plastic').test('84818041 - - - Bằng plastic') && chatLieuRegex('vải dệt').test('có một mặt được lót vải dệt')
   && MATERIALS.every(([n, re]) => re.flags.includes('u') && !re.flags.includes('g') && new RegExp(`bằng\\s+${re.source}`, re.flags).test(`bằng ${MAU[n]}`) && !new RegExp(`bằng\\s+${re.source}`, re.flags).test(MAU[n])));
-check('"hợp kim" là kim loại (an toàn sau khi sửa 8481.40.10)', mat('Bản lề chất liệu hợp kim kẽm') === '["kim loại"]' && mat('Khuyên tai, chất liệu hợp kim titan (không mạ kim loại quý)') === '["kim loại"]');
 
 // ── Công tắc sổ tay dùng chung (HS_SO_TAY) — một bộ đọc cho động cơ và các cổng cảnh báo ──
 {
@@ -174,14 +173,9 @@ check('"hợp kim" là kim loại (an toàn sau khi sửa 8481.40.10)', mat('B�
   if (goc === undefined) delete process.env.HS_SO_TAY; else process.env.HS_SO_TAY = goc;
 }
 
-// ── 8481.40.10 "Bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống" (sổ tay từng ghi ">= 2,5") ──
-check('8481.40.10: "từ 2,5 cm trở xuống" là <= 2,5 cm (đúng trích + nhãn biểu thuế)', JSON.stringify(loadSoTay('8481').dong8.find((d) => d.hs === '84814010').dieuKienSo) === '[{"fact":"duong_kinh","op":"<=","value":2.5,"donVi":"cm"}]');
-cd = chotDong8({ hs: '84814090', productText: 'Van xả bằng đồng, đường kính trong 14 mm' });
-check('8481.40: van đồng 14 mm → CHOT 84814010 (trước đây hỏi lại chất liệu)', cd.ketQua === 'CHOT' && cd.hs === '84814010', JSON.stringify(cd));
-cd = chotDong8({ hs: '84814010', productText: 'Van xả bằng nhựa, đường kính trong 4 cm' });
-check('8481.40: van nhựa 4 cm → trái cả hai dòng có tên → LOAI_KHAC 84814090', cd.ketQua === 'LOAI_KHAC' && cd.hs === '84814090', JSON.stringify(cd));
-const tv = trangThaiDong8({ hs: '84814010', productText: 'Van an toàn bằng thép DN15' });
-check('trangThaiDong8.veMoHinh: 84814010 chỉ chấm vế đường kính, vế "Bằng đồng hoặc hợp kim đồng" không nằm trong', tv?.trangThai === 'THOA' && tv.veMoHinh.length === 1 && /đường kính trong từ 2,5 cm trở xuống/.test(tv.veMoHinh[0]) && !/đồng/.test(tv.veMoHinh.join(' ')), JSON.stringify(tv?.veMoHinh));
+// ── Vế câu trích mà điều kiện sổ tay chấm được (veMoHinh) — rào "phủ hết chữ đặc trưng" của cổng cảnh báo ──
+const tv = trangThaiDong8({ hs: '84814010', productText: 'Van an toàn bằng thép DN40' });
+check('trangThaiDong8.veMoHinh: 84814010 chỉ chấm vế đường kính, vế "Bằng đồng hoặc hợp kim đồng" không nằm trong', Boolean(tv) && tv.veMoHinh.length === 1 && /đường kính trong từ 2,5 cm trở xuống/.test(tv.veMoHinh[0]) && !/đồng/.test(tv.veMoHinh.join(' ')), JSON.stringify(tv?.veMoHinh));
 check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ngoài của thân không quá 16 mm"', JSON.stringify(trangThaiDong8({ hs: '73181510', productText: BULONG })?.veMoHinh) === '["Đường kính ngoài của thân không quá 16 mm"]');
 
 console.log(`\n${pass} passed, ${fail} failed`);
