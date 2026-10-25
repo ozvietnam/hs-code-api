@@ -4031,3 +4031,150 @@ Em là người soát **độc lập**: bản nháp `tmp/so-tay/raw/*.json` củ
   (đổi `xong` khi gộp).
 
 ---
+
+# SỔ TAY LÔ 051 — 0903 0904 0905 0906 0907 0908 (26/10/2026, `dev-zcode-mm`)
+
+## Về nhóm của lô
+
+- `docs/giao-viec/so-tay-lo.csv` dòng 52: `051,0903 0904 0905 0906 0907 0908` — **theo CSV**.
+- ⚠ **Sai lệch brief ↔ CSV (lần thứ 6)**: `brief-st-lo051.md` dòng 4 ghi đúng nhóm
+  `0903 0904 0905 0906 0907 0908` (khớp CSV), nhưng **dòng 6 lại kèm lệnh
+  `--nhom=7615,9609,3215,6306,6804,7412`** — đó là nhóm của **lô 001** (đối chiếu CSV dòng `001`).
+  Đúng y như lô 003/014/027/049: người quản lý copy-paste y nguyên khối lệnh mẫu. Em theo CSV.
+  Chi tiết loại lỗi này: memory `so-tay-lo-quy-trinh`.
+
+## Các bước đã chạy
+
+1. `node scripts/build-so-tay.mjs --nhom=0903,0904,0905,0906,0907,0908 --xuat-nguon=tmp/so-tay/nguon`
+   → 6 tệp nguồn (5,8–8,3 KB; **tổng 40 KB** — không có SEN, không có chú giải Phần riêng ngoài
+   `phan09.phan` 1 câu về khái niệm "viên"). Đọc TRỌN `tmp/so-tay/nguon/_he-thong.txt` trước.
+2. Dựng bộ cắt trích theo **chỉ số số** (`tmp/lo051/cat.cjs`): mọi câu trích **cắt thẳng từ nguồn
+   thật** trong `lib/so-tay.js` `sourcesFor()`, không gõ tay tiếng Việt (bài học lô 040/043 —
+   gõ tay là nguồn lỗi ký tự lớn nhất).
+3. Soạn **spec** (`tmp/lo051/spec.cjs`) → máy sinh `tmp/so-tay/raw/<nhom>.json`
+   (`tmp/lo051/gen.cjs`). Máy sinh tự kiểm: mỗi mảnh phải là **chuỗi con nguyên văn** của nguồn,
+   phải nằm trong **một dòng** của khối nguồn (bài học lô 038: dán 2 đoạn bằng 1 dấu cách),
+   phải qua đúng `quoteInSource()` của máy, và phải khớp với bản `.txt` đã xuất.
+4. `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **63/63** (lần đầu đã xanh).
+5. `node scripts/check-trich-nguyen-van.mjs` → **60/60 nguyên văn tuyệt đối** (3 mục còn lại —
+   `boPhan` 0906 và 2 `cay.tenDien` 0904 — nằm ngoài phạm vi bộ kiểm này; đã kiểm riêng ở bước 3).
+6. Audit "từ ngoài câu trích" (`tmp/lo051/audit-chu.cjs`, theo lô 040): mọi từ ≥ 3 ký tự trong
+   `text`/`dieuKien`/`hoi`/`quyTac`/`tomTat` phải có trong câu trích.
+7. `rm data/so-tay/bao-cao/lo-051.json` (bài học "báo cáo lô bị ghi đè") rồi
+   `node scripts/build-so-tay.mjs --nhom=0903,0904,0905,0906,0907,0908 --tu-tep=tmp/so-tay/raw
+   --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-051.json` → **63/63 (100 %)**.
+8. `npm run so-tay:check` → **446 nhóm, 12.892 mục, 0 mục không kiểm được nguồn**.
+   `node scripts/check-cay.mjs --nhom=<6 nhóm> --chi-tiet` → **6/6 nhóm đủ, 0 lỗi lệch cây**.
+9. `npm test` → **ALL TESTS PASSED** (0 failed). `data/legal-status-miss.jsonl` bị test ghi bậy 2
+   dòng → đã `git checkout` revert, không đưa vào commit.
+
+## Kết quả theo nhóm
+
+| Nhóm | Mục | `phamVi` | `dieuKienVao` | `loaiTru` | `phanBiet` | `tieuChi6` | `boPhan` | `dong8` | `tenDien` |
+|---|---|---|---|---|---|---|---|---|---|
+| 0903 | 2 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
+| 0904 | 22 | 1 | 1 | 2 | 2 | 4 | 0 | 10 | 2 |
+| 0905 | 11 | 1 | 0 | 3 | 3 | 2 | 0 | 2 | 0 |
+| 0906 | 8 | 1 | 0 | 0 | 0 | 3 | 1 | 3 | 0 |
+| 0907 | 7 | 1 | 0 | 1 | 1 | 2 | 0 | 2 | 0 |
+| 0908 | 13 | 1 | 0 | 0 | 0 | 6 | 0 | 6 | 0 |
+| **Tổng** | **63** | 6 | 1 | 6 | 6 | 17 | 1 | 24 | 2 |
+
+## Ba mục mẫu
+
+1. **Loại trừ** — `0905/loaiTru[0]`: "Nhựa dầu vani (đôi khi còn được gọi sai là nhựa vani)" →
+   `sangNhom: 1302`, trích nguyên văn `(a) Nhựa dầu vani (đôi khi còn được gọi sai là “nhựa vani”
+   hoặc “chiết xuất vani”) (nhóm 13.02).` — giữ cả định ngữ giới hạn "đôi khi" của câu nguồn.
+2. **Điều kiện số** — lô này **KHÔNG có tiêu chí số có cấu trúc** (`dong8[].tieuChi` /
+   `dieuKienSo` / `tieuChi6` số): không nhóm nào trong 6 nhóm này có ngưỡng số ở cấp dòng 8 số.
+   Ngưỡng duy nhất trong nguồn là **"dài không quá 1cm"** của hoa quế (0906) — nằm trong `boPhan`
+   dưới dạng văn xuôi (không phải tiêu chí có cấu trúc), và **"dài từ 27 đến 40 mm"** của bạch
+   đậu khấu loại to (0908) — **đã bỏ có chủ đích** (xem "Chủ ý BỎ"). Thay vào đó, mục mẫu là
+   **điều kiện cấu 6 số**: `0904/tieuChi6[2]` — `hs6: 090421`,
+   `fact: loai_hang`, `value: "Quả ớt thuộc chi Capsicum hoặc Pimenta, đã làm khô, chưa nghiền
+   hoặc chưa xay"`, trích nguyên văn tiếng Anh
+   `090421 Spices; fruits of the genus Capsicum or Pimenta, dried, neither crushed nor ground`.
+3. **Dòng 8 số** — `0904/dong8[6]`: `09042110` → "Quả ớt (chillies) thuộc chi Capsicum, đã làm
+   khô, chưa nghiền hoặc chưa xay — thuộc phân nhóm 0904.21", trích `09042110 - - - Quả ớt
+   (chillies) (quả thuộc chi Capsicum)`; `loaiKhac` do máy tự điền.
+
+## Nhóm nguồn mỏng / bất thường — báo cáo cho người duyệt
+
+- **0903 (chè Paragoay) — nguồn mỏng nhất lô**: toàn bộ chú giải nhóm **chỉ có 1 đoạn** (3 câu),
+  biểu thuế **chỉ 1 dòng 8 số** (`09030000 Chè Paragoay (Maté)`), không có phân nhóm 6 số
+  (`laPhanNhom=0903` chỉ 4 số ⇒ máy **không** nhận `tieuChi6` hs6=090300, và
+  `checkItem` sẽ loại mục đó — em đã kiểm và KHÔNG ghi). Vì vậy lô chỉ có **2 mục**.
+- **0906 — nguồn TỰ MÂU THUẪN về "muồng"** (khai báo, không tự sửa): chú giải Chương 9 mục
+  "Ngoài ra Chương này cũng không bao gồm: (d) … nhóm 12.11 (… ví dụ, **muồng**, hương thảo …)"
+  ⇒ loại "muồng" sang 12.11; nhưng chú giải nhóm 0906 lại nói "Quế Tàu … và Việt Nam
+  (Cinnamomum loureirii Nees), còn được gọi là **muồng** hoặc quế thường" ⇒ **muồng thuộc 0906**.
+  → Em **KHÔNG** tạo `loaiTru` sang 1211 cho 0906 (không bỏ "cả hai phía" vì phía Chương không
+  liên quan trực tiếp tới 0906), và ghi ra đây để người duyệt quyết.
+- **0906 — không tạo `phanBiet`**: chú giải phân nhóm phân biệt "Cinnamomum zeylanicum Blume"
+  (0906.11) với quế khác, nhưng nhánh "**đã xay**" của loài C. zeylanicum rơi sang **0906.20** →
+  **không có cặp mã 8 số nào phủ trọn**. Mục sai dễ làm tờ khai rơi nhầm mã ⇒ bỏ; thông tin này
+  đã nằm ở `tieuChi6` (090611) và `dong8` (09061100 / 09061900 / 09062000).
+- **0904 — chú giải nhóm thiếu mục "(1)"**: nguồn mở thẳng bằng "Thuật ngữ này bao gồm hạt hoặc quả
+  của tất cả các loại cây hạt tiêu thuộc chi Piper…" rồi tới "(2) Các quả đã làm khô…"; dấu
+  "(1)" không có trong nguồn (lỗi kệ sách, giống 1702/3208/4202 ở phần 1 của giao việc). Em chép
+  nguyên văn, không thêm "(1)" vào.
+- **0904 — "Piper cubera"**: nguồn ghi `hạt tiêu Cubeb (Piper cubera)` (sai chính tả), còn Chương 9
+  ghi `Piper cubeba`. Em chép **nguyên văn** "Piper cubera" theo luật "giữ nguyên lỗi nguồn".
+- **0905 — "Vanillon"**: nguồn ghi "Vanillon (thuộc dòng Vanilla pompana)"; giữ nguyên văn.
+- **0908 — không mã hoá được 4 giống bạch đậu khấu**: chú giải nhóm có (1) chùm, (2) nhỏ và vừa,
+  (3) loại to (hình tam giác, **dài 27–40 mm**, vỏ cứng mầu nâu nhạt), (4) hạt sa nhân
+  (*Aframomum melegueta*) — nhưng **không có dòng biểu thuế riêng** cho từng giống (0908.31 /
+  0908.32 chỉ tách "chưa xay/đã xay"). Đặt "loại to 27–40 mm" làm tiêu chí của phân nhóm 0908.31
+  sẽ **loại nhầm** bạch đậu khấu loại nhỏ và vừa (bài học lô 041: ngưỡng của một GIỐNG không phải
+  tiêu chí của cả phân nhóm) ⇒ **bỏ**. Một `boPhan` trích cả 4 mảnh sẽ dài 565 ký tự (>300 theo
+  lược đồ) nên em không ghi; khai ở đây.
+
+## Chủ ý BỎ (thà ít mục chắc chắn hơn nhiều mục mờ má)
+
+- **`dieuKienVao` rỗng ở 5/6 nhóm** (0903, 0905, 0906, 0907, 0908): không có câu **ràng buộc**
+  phủ cả nhóm 4 số. Chú giải nhóm của các nhóm này là câu **ĐỊNH NGHĨA** ("X là …", "Nhóm này
+  bao gồm: (1)…"), không phải câu ràng buộc kiểu "CHỈ GỒM …" (luật của bài học soát lô 030);
+  Chương 9 chỉ có câu cho phép ("có thể …") và câu định nghĩa "Gia vị, tức là …" ⇒ không đặt.
+  → Riêng **0904** có đủ: "Thuật ngữ này **bao gồm** … **trừ** hạt tiêu Cubeb (nhóm 12.11)" là
+  câu ràng buộc có ngoại lệ, ghép với mục "(2) Các quả đã làm khô hoặc nghiền hoặc xay thuộc chi
+  Capsicum hoặc chi Pimenta" để phủ **cả hai phần** của nhóm (09041 + 09042) ⇒ 1 mục
+  `dieuKienVao`.
+- **Không chép các loại trừ chung của Chương 9 vào từng nhóm** (hạt mù tạt → 12.07, hublong →
+  12.10, quả/hạt làm nước hoa → 12.11, gia vị hỗn hợp → 21.03/21.06): chỉ chép loại trừ **riêng
+  của nhóm** (0904: hạt tiêu Cubeb → 12.11; quả tươi chưa nghiền/xay → 07.09; 0905: 3 mục;
+  0907: vỏ và lá đinh hương → 12.11). Chép 4–5 mục chung của Chương vào cả 6 nhóm là nhiễu và
+  làm loãng điều kiện thật của từng nhóm.
+- **`phanBiet` chỉ ở 0904/0905/0907** (6 mục) — đều là cặp "mã NGOÀI nhóm ↔ chính nhóm", mã ngoài
+  nhóm đều được **nêu trong câu trích**. 0903/0906/0908 không có mã ngoài nhóm nào trong nguồn ⇒
+  rỗng (không suy từ danh sách loại trừ hay cấu trúc anh em).
+
+## Những mục `dieuKien` có ghi điều mà câu trích không nói (khai báo trung thực)
+
+- **24 dòng `dong8`** của lô: dòng biểu thuế chỉ ghi rất ít ("Trắng", "Đen", "Loại khác",
+  "Chưa xay hoặc chưa nghiền"), nên `dieuKien` của dòng 8 số ghi thêm **tên hàng** và
+  **trạng thái xay/nghiền** lấy từ: tên phân nhóm WCO 6 số (`wco.*`, đã nằm ở `tieuChi6`),
+  tên nhóm trong cây HS (`lib/hs-tree.js`: "Hạt tiêu", "Vỏ nhục đậu khấu", "Bạch đậu khấu"…) và
+  chú giải nhóm. Đây là **quy ước gloss lô 034** (giống `0804` của lô 048) — khai ở đây.
+- **`cay.tenDien` 090411 / 090421**: tên tiếng Việt cho 2 phân nhóm 6 số mà cây HS chưa có tên
+  ("Hạt tiêu, chưa nghiền hoặc chưa xay" / "Quả ớt thuộc chi Capsicum hoặc chi Pimenta, đã làm
+  khô, chưa nghiền hoặc chưa xay") — **dịch từ tên WCO 6 số** (nguồn tiếng Anh, trích nguyên văn).
+- **`tieuChi6[].value`** của 0904/0905/0907/0908: bản dịch tiếng Việt của tên WCO 6 số
+  (nguồn `wco.*` tiếng Anh, trích nguyên văn) — theo đúng lược đồ ("trích nguyên văn tiếng Anh").
+- **Câu hỏi `phanBiet`** mở đầu bằng "Hàng là …?" — "Hàng" là khung câu hỏi, không phải mệnh đề
+  (quy ước nhà: 263/841 mục `phanBiet` trong repo dùng khung này, 230 đã qua duyệt).
+
+## Còn trống (`check-cay` chỉ báo) — KHÁC lô trước
+
+- **KHÔNG còn chỗ trống nào**: `check-cay --nhom=0903..0908 --chi-tiet` → **6/6 nhóm đủ**
+  (có cây, đủ `dong8`, đủ tên nút ảo, **đủ tiêu chí 6 số** cho mọi phân nhóm 6 số).
+
+## Nộp dung
+
+- `data/so-tay/0903.json`, `0904.json`, `0905.json`, `0906.json`, `0907.json`, `0908.json`
+- `data/so-tay/bao-cao/lo-051.json` (63 mục, 63 đạt, 100 %)
+- `docs/giao-viec/so-tay-lo.csv` dòng 52 → `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm`
+  (cột `pr` điều sau khi `gh pr create`; `trang_thai=xong` để người duyệt đổi khi gộp).
+- **KHÔNG commit `tmp/`** (gitignored) — bộ cắt trích + spec + script audit để ở `tmp/lo051/`.
+- **CHƯA merge** — chờ người duyệt.
+
+---
