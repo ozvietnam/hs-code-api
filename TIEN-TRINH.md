@@ -4055,30 +4055,38 @@ Em là người soát **độc lập**: bản nháp `tmp/so-tay/raw/*.json` củ
    (`tmp/lo051/gen.cjs`). Máy sinh tự kiểm: mỗi mảnh phải là **chuỗi con nguyên văn** của nguồn,
    phải nằm trong **một dòng** của khối nguồn (bài học lô 038: dán 2 đoạn bằng 1 dấu cách),
    phải qua đúng `quoteInSource()` của máy, và phải khớp với bản `.txt` đã xuất.
-4. `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **63/63** (lần đầu đã xanh).
-5. `node scripts/check-trich-nguyen-van.mjs` → **60/60 nguyên văn tuyệt đối** (3 mục còn lại —
+4. `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **65/65** (lần đầu đã xanh).
+5. `node scripts/check-trich-nguyen-van.mjs` → **62/62 nguyên văn tuyệt đối** (3 mục còn lại —
    `boPhan` 0906 và 2 `cay.tenDien` 0904 — nằm ngoài phạm vi bộ kiểm này; đã kiểm riêng ở bước 3).
 6. Audit "từ ngoài câu trích" (`tmp/lo051/audit-chu.cjs`, theo lô 040): mọi từ ≥ 3 ký tự trong
    `text`/`dieuKien`/`hoi`/`quyTac`/`tomTat` phải có trong câu trích.
 7. `rm data/so-tay/bao-cao/lo-051.json` (bài học "báo cáo lô bị ghi đè") rồi
    `node scripts/build-so-tay.mjs --nhom=0903,0904,0905,0906,0907,0908 --tu-tep=tmp/so-tay/raw
-   --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-051.json` → **63/63 (100 %)**.
-8. `npm run so-tay:check` → **446 nhóm, 12.892 mục, 0 mục không kiểm được nguồn**.
+   --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-051.json` → **65/65 (100 %)**.
+8. `npm run so-tay:check` → **446 nhóm, 12.894 mục, 0 mục không kiểm được nguồn**.
    `node scripts/check-cay.mjs --nhom=<6 nhóm> --chi-tiet` → **6/6 nhóm đủ, 0 lỗi lệch cây**.
 9. `npm test` → **ALL TESTS PASSED** (0 failed). `data/legal-status-miss.jsonl` bị test ghi bậy 2
    dòng → đã `git checkout` revert, không đưa vào commit.
+10. **Sửa sau khi đối chiếu luật nhà (26/10, sau khi đã mở PR #455)**: phiên lô 050 đã **đính
+    chính** memory `so-tay-dieu-kien-bao-gom-van-la-rang-buoc` — mẹo "chỉ có 'bao gồm' mà không có
+    mệnh đề loại ⇒ để rỗng" của em **quá rộng** (80 mục `dieuKienVao` NGUOI_DUYET dạng "bao gồm"
+    đã gộp trong kho). Em **bổ sung 2 mục** `dieuKienVao` cho **0903** và **0905** (câu nguồn mô tả
+    đặc tính vật chất, phủ cả nhóm) ⇒ **63 → 65 mục**; nạp lại (`--force`, xoá báo cáo lô trước) và
+    kiểm lại toàn bộ: `check-so-tay --raw` **65/65**, `check-trich-nguyen-van` **62/62**,
+    `so-tay:check` **446 nhóm / 12.894 mục / 0 hỏng**, `check-cay` **6/6 nhóm đủ**,
+    `npm test` **ALL TESTS PASSED**.
 
 ## Kết quả theo nhóm
 
 | Nhóm | Mục | `phamVi` | `dieuKienVao` | `loaiTru` | `phanBiet` | `tieuChi6` | `boPhan` | `dong8` | `tenDien` |
 |---|---|---|---|---|---|---|---|---|---|
-| 0903 | 2 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
+| 0903 | 3 | 1 | 1 | 0 | 0 | 0 | 0 | 1 | 0 |
 | 0904 | 22 | 1 | 1 | 2 | 2 | 4 | 0 | 10 | 2 |
-| 0905 | 11 | 1 | 0 | 3 | 3 | 2 | 0 | 2 | 0 |
+| 0905 | 12 | 1 | 1 | 3 | 3 | 2 | 0 | 2 | 0 |
 | 0906 | 8 | 1 | 0 | 0 | 0 | 3 | 1 | 3 | 0 |
 | 0907 | 7 | 1 | 0 | 1 | 1 | 2 | 0 | 2 | 0 |
 | 0908 | 13 | 1 | 0 | 0 | 0 | 6 | 0 | 6 | 0 |
-| **Tổng** | **63** | 6 | 1 | 6 | 6 | 17 | 1 | 24 | 2 |
+| **Tổng** | **65** | 6 | 3 | 6 | 6 | 17 | 1 | 24 | 2 |
 
 ## Ba mục mẫu
 
@@ -4103,7 +4111,7 @@ Em là người soát **độc lập**: bản nháp `tmp/so-tay/raw/*.json` củ
 - **0903 (chè Paragoay) — nguồn mỏng nhất lô**: toàn bộ chú giải nhóm **chỉ có 1 đoạn** (3 câu),
   biểu thuế **chỉ 1 dòng 8 số** (`09030000 Chè Paragoay (Maté)`), không có phân nhóm 6 số
   (`laPhanNhom=0903` chỉ 4 số ⇒ máy **không** nhận `tieuChi6` hs6=090300, và
-  `checkItem` sẽ loại mục đó — em đã kiểm và KHÔNG ghi). Vì vậy lô chỉ có **2 mục**.
+  `checkItem` sẽ loại mục đó — em đã kiểm và KHÔNG ghi). Vì vậy lô chỉ có **3 mục**.
 - **0906 — nguồn TỰ MÂU THUẪN về "muồng"** (khai báo, không tự sửa): chú giải Chương 9 mục
   "Ngoài ra Chương này cũng không bao gồm: (d) … nhóm 12.11 (… ví dụ, **muồng**, hương thảo …)"
   ⇒ loại "muồng" sang 12.11; nhưng chú giải nhóm 0906 lại nói "Quế Tàu … và Việt Nam
@@ -4131,14 +4139,20 @@ Em là người soát **độc lập**: bản nháp `tmp/so-tay/raw/*.json` củ
 
 ## Chủ ý BỎ (thà ít mục chắc chắn hơn nhiều mục mờ má)
 
-- **`dieuKienVao` rỗng ở 5/6 nhóm** (0903, 0905, 0906, 0907, 0908): không có câu **ràng buộc**
-  phủ cả nhóm 4 số. Chú giải nhóm của các nhóm này là câu **ĐỊNH NGHĨA** ("X là …", "Nhóm này
-  bao gồm: (1)…"), không phải câu ràng buộc kiểu "CHỈ GỒM …" (luật của bài học soát lô 030);
-  Chương 9 chỉ có câu cho phép ("có thể …") và câu định nghĩa "Gia vị, tức là …" ⇒ không đặt.
-  → Riêng **0904** có đủ: "Thuật ngữ này **bao gồm** … **trừ** hạt tiêu Cubeb (nhóm 12.11)" là
-  câu ràng buộc có ngoại lệ, ghép với mục "(2) Các quả đã làm khô hoặc nghiền hoặc xay thuộc chi
-  Capsicum hoặc chi Pimenta" để phủ **cả hai phần** của nhóm (09041 + 09042) ⇒ 1 mục
-  `dieuKienVao`.
+- **`dieuKienVao` rỗng ở 3/6 nhóm** (0906, 0907, 0908) — theo luật đã đính chính
+  (`so-tay-dieu-kien-bao-gom-van-la-rang-buoc`): câu **"Nhóm này bao gồm …" VẪN là ràng buộc** khi
+  nó mô tả **đặc tính vật chất** (nguyên liệu, trạng thái, loài) mà hàng thuộc nhóm buộc phải có
+  và **phủ cả nhóm**; chỉ để rỗng khi câu chỉ **liệt kê danh mục** ("Nhóm này gồm: (1)…(2)…")
+  mà không có đặc tính vật chất chung.
+  → **0906**: "Quế là phần vỏ trong của các cành non…" **không phủ** hoa quế và quả quế (phần (c)
+    của nhóm) ⇒ không dùng làm điều kiện cả nhóm.
+  → **0907, 0908**: danh mục 3 phần ngang hàng, không có đặc tính vật chất chung ⇒ rỗng.
+  → Đã đặt 3 mục ở các nhóm có đặc tính vật chất phủ cả nhóm: **0903** ("lá khô của một số loại cây
+    bụi thuộc họ "nhựa ruồi" — trục phân loại maté ≠ chè 0902 ≠ cà phê 0901), **0905** ("quả (hoặc
+    đậu) của một loại cây dây leo thuộc họ "lan"" — cả 3 `loaiTru` của nhóm đều dựa vào nó),
+    **0904** ("Thuật ngữ này **bao gồm** … **trừ** hạt tiêu Cubeb (nhóm 12.11)" + mục "(2) Các quả
+    đã làm khô hoặc nghiền hoặc xay thuộc chi Capsicum hoặc chi Pimenta" để phủ **cả hai phần**
+    của nhóm: 09041 + 09042).
 - **Không chép các loại trừ chung của Chương 9 vào từng nhóm** (hạt mù tạt → 12.07, hublong →
   12.10, quả/hạt làm nước hoa → 12.11, gia vị hỗn hợp → 21.03/21.06): chỉ chép loại trừ **riêng
   của nhóm** (0904: hạt tiêu Cubeb → 12.11; quả tươi chưa nghiền/xay → 07.09; 0905: 3 mục;
