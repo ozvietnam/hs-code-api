@@ -6,14 +6,16 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 process.env.HS_ACCESS_LOG = '0';
 let girReply = null;
+let girUser = null; // prompt bước chọn mã (buildContext) — để kiểm nhãn hồ sơ khớp verifyQuote
 const llmTier = require('../lib/llm-tier');
-llmTier.callLLMJson = async (system) => {
+llmTier.callLLMJson = async (system, user) => {
   if (system.includes('DỮ KIỆN HÀNG HÓA')) return { json: { tenHangVi: 'máy cắt cau điện', banChat: 'máy cắt có động cơ điện' }, provider: 'stub', model: 'stub' };
   if (system.includes('mã HS 4 số')) return { json: { headings: ['8467', '8201'] }, provider: 'stub', model: 'stub' };
+  girUser = user;
   return { json: girReply, provider: 'stub', model: 'stub' };
 };
 console.error = () => {}; console.warn = () => {};
-const { classify, groundResults } = require('../lib/classify');
+const { classify, groundResults, verifyQuote, groundingSourceOf } = require('../lib/classify');
 let pass = 0; let fail = 0;
 const check = (n, c, x = '') => { if (c) { pass += 1; console.log(`PASS ${n}`); } else { fail += 1; console.log(`FAIL ${n} ${x}`); } };
 
@@ -46,6 +48,43 @@ check('trích nhiều đoạn + chú thích tiếng Việt vẫn được nhận
 const vf = groundResults([{ hs: '87120090', confidence: 85, basis: [SP('không động cơ', '折叠山地自行车; 无电动机')] }], BIKE);
 check('có mẩu chữ Hán tự chế ("无电动机") → bị coi là bịa', !vf.results[0].grounded && vf.results[0].confidence === 60);
 
+// Ca thật prod 25/10/2026 (kẹp giấy 83059010, tự tin 97 → CAU_TRICH_KHONG_CO → NEEDS_EXPERT): AI chép NGUYÊN VĂN
+// khối "HỒ SƠ GỐC" của prompt, KÈM nhãn trình bày ("Tiêu đề gốc:", "chatLieu:") và nối dòng bằng " | ". Nguồn căn cứ chỉ
+// có giá trị → câu trích đúng từng chữ bị coi là bịa. Nhãn hồ sơ phải được bỏ; phần giá trị vẫn phải nguyên văn.
+{
+  const CLIP = { tenHang: 'Kẹp giấy văn phòng bằng thép mạ niken, dài 28 mm, hộp 100 chiếc', chatLieu: 'thép mạ niken', congDung: 'kẹp giữ giấy tờ văn phòng' };
+  const SRC_CLIP = groundingSourceOf(CLIP);
+  const TITLE = 'Tiêu đề gốc: Kẹp giấy văn phòng bằng thép mạ niken, dài 28 mm, hộp 100 chiếc';
+  const LIVE = `${TITLE} | chatLieu: thép mạ niken | congDung: kẹp giữ giấy tờ văn phòng`;
+  check('nhãn hồ sơ: câu trích prod 25/10 (3 dòng hồ sơ kèm nhãn, nối " | ") → ok', verifyQuote(LIVE, SRC_CLIP) === 'ok');
+  check('nhãn hồ sơ: cùng câu tách thành từng mục basis → mỗi mục ok', [TITLE, 'chatLieu: thép mạ niken', 'congDung: kẹp giữ giấy tờ văn phòng'].every((e) => verifyQuote(e, SRC_CLIP) === 'ok'));
+  check('nhãn hồ sơ: AI viết nhãn tiếng Việt ("Chất liệu:", "Công dụng:", "Tên hàng:", gạch đầu dòng, nối bằng dấu phẩy) → ok',
+    ['Chất liệu: thép mạ niken', 'Công dụng: kẹp giữ giấy tờ văn phòng', 'Tên hàng: Kẹp giấy văn phòng', '- Vật liệu: thép mạ niken (kim loại cơ bản)', 'Chất liệu: thép mạ niken, Công dụng: kẹp giữ giấy tờ văn phòng'].every((e) => verifyQuote(e, SRC_CLIP) === 'ok'));
+  check('nhãn hồ sơ: nhãn đúng mà giá trị sai ("chatLieu: nhôm" khi gốc ghi thép) → bad', verifyQuote('chatLieu: nhôm', SRC_CLIP) === 'bad' && verifyQuote('Công dụng: kẹp sắt', SRC_CLIP) === 'bad');
+  check('nhãn hồ sơ: giá trị sai đi kèm dòng đúng KHÔNG được "rửa" (mọi mẩu mang nhãn phải nguyên văn) → bad',
+    verifyQuote(`${TITLE} | chatLieu: nhôm`, SRC_CLIP) === 'bad' && verifyQuote('Chất liệu: thép mạ niken, Công dụng: kẹp sắt', SRC_CLIP) === 'bad');
+  check('nhãn hồ sơ: mẩu chữ Hán tự chế vẫn → bad', verifyQuote('chatLieu: thép mạ niken; 不锈钢', SRC_CLIP) === 'bad' && verifyQuote('Tiêu đề gốc: 镀镍钢回形针', SRC_CLIP) === 'bad');
+  check('nhãn hồ sơ: chỉ có nhãn, không có giá trị → bad', ['chatLieu:', 'Tiêu đề gốc: | congDung:', 'Thông số (trang bán):'].every((e) => verifyQuote(e, SRC_CLIP) === 'bad'));
+  check('nhãn hồ sơ: không bỏ chữ tuỳ ý — chỉ nhãn trong bảng, ở ĐẦU mẩu, có ":" ("Ghi chú:", "Mô tả chi tiết:" không phải nhãn)',
+    verifyQuote('Ghi chú: thép mạ niken', SRC_CLIP) === 'bad' && verifyQuote('Mô tả chi tiết: thép mạ niken', SRC_CLIP) === 'bad' && verifyQuote('thép chatLieu: mạ niken', SRC_CLIP) === 'bad');
+  const g25 = groundResults([{ hs: '83059010', confidence: 97, basis: [SP('kẹp giấy văn phòng bằng thép mạ niken', LIVE)] }], SRC_CLIP);
+  check('nhãn hồ sơ: groundResults giữ độ tin 97, không đẩy thành "hồ sơ chưa ghi"', g25.results[0].grounded && g25.results[0].confidence === 97 && g25.unsupportedClaims.length === 0, JSON.stringify(g25.results[0].basis));
+
+  // Dữ kiện phiếu "- <nhãn>: <giá trị> [gốc: <bằng chứng>]" và chữ ảnh "[ảnh N] <OCR>" — thẻ bao là nhãn, phần trong vẫn phải có thật.
+  const RICH = { ...CLIP, nameZh: '回形针 镀镍 28mm 100枚/盒', model: 'KG-28', brand: 'Deli', facts: [{ key: 'material', labelVi: 'Chất liệu', valueVi: 'thép mạ niken', evidence: '材质：镀镍钢' }] };
+  const SRC_RICH = [groundingSourceOf(RICH), '材质 镀镍钢\n规格 28mm'].join('\n'); // + chữ ảnh như engine-loop ghép
+  check('nhãn hồ sơ: dòng dữ kiện phiếu kèm [gốc: …] chép nguyên văn → ok', verifyQuote('- Chất liệu: thép mạ niken [gốc: 材质：镀镍钢]', SRC_RICH) === 'ok');
+  check('nhãn hồ sơ: [gốc: …] bị sửa (chữ Hán không có trong gốc) → bad', verifyQuote('- Chất liệu: thép mạ niken [gốc: 材质：不锈钢]', SRC_RICH) === 'bad');
+  check('nhãn hồ sơ: [ảnh N] + chữ OCR có thật → ok; chữ OCR tự chế → bad', verifyQuote('[ảnh 1] 材质 镀镍钢 规格 28mm', SRC_RICH) === 'ok' && verifyQuote('[ảnh 1] 材质 不锈钢', SRC_RICH) === 'bad');
+  check('nhãn hồ sơ: tiêu đề chữ Hán kèm nhãn → ok; model/brand (có trong hồ sơ gốc) → ok', verifyQuote('Tiêu đề gốc: 回形针 镀镍 28mm', SRC_RICH) === 'ok' && verifyQuote('brand: Deli | model: KG-28', SRC_RICH) === 'ok');
+  // Luồng CHU_GIAI dùng chung verifyQuote: nhãn chú giải (NOTE_LABEL) vẫn bỏ như cũ; nhãn hồ sơ sản phẩm không làm câu sai thành đúng.
+  const cg = groundResults([{ hs: '82019000', confidence: 80, basis: [
+    { stream: 'CHU_GIAI', claim: 'dụng cụ làm vườn', evidence: 'GỒM: dụng cụ cầm tay dùng trong nông nghiệp', ref: 'Nhóm 8201' },
+    { stream: 'CHU_GIAI', claim: 'chất liệu thép', evidence: 'chatLieu: thép mạ niken', ref: 'Nhóm 8201' },
+  ] }], SRC, NOTES);
+  check('CHU_GIAI: nhãn "GỒM:" vẫn bỏ như cũ; "chatLieu: …" không có trong chú giải → chưa kiểm được', cg.results[0].basis[0].verified === true && cg.results[0].basis[1].verified === false);
+}
+
 // Qua classify đầy đủ: câu AI tự hiểu ("máy cắt có động cơ điện") KHÔNG phải chữ gốc sản phẩm
 girReply = { results: [{ hs: '84672900', confidence: 92, reason: 'dụng cụ có động cơ điện', basis: [SP('có động cơ điện', 'máy cắt có động cơ điện')] }], missing: [] };
 const r = await classify({ tenHang: '加粗防电摘割槟榔刀伸缩杆加长12米铝合金', nameZh: '加粗防电摘割槟榔刀伸缩杆加长12米铝合金', specs: '颜色分类: 13米8节加粗加厚杆+大刀 +锯刀' }, {});
@@ -55,5 +94,22 @@ check('đặc tính lấy từ câu AI tự hiểu bị loại → độ tin ≤
 girReply = { results: [{ hs: '82019000', confidence: 88, reason: 'dao hái cau', basis: [SP('chất liệu nhôm', 'hợp kim nhôm dày')] }], missing: [] };
 const r2 = await classify({ tenHang: '加粗防电摘割槟榔刀', nameZh: '加粗防电摘割槟榔刀', facts: [{ key: 'material', labelVi: 'Chất liệu', valueVi: 'hợp kim nhôm dày', evidence: '加厚铝合金' }] }, {});
 check('đặc tính từ dữ kiện phiếu được nhận, giữ độ tin', r2.results[0].grounded === true && r2.results[0].confidence === 88, JSON.stringify(r2.results[0]));
+
+// Động cơ một lượt (girConfirm — khi HS_CLASSIFY_ENGINE ≠ loop) in hồ sơ bằng nhãn riêng ("- Tên:", "[nguyên văn: …]"),
+// cũng lấy từ DOSSIER_LABELS: mọi dòng có nội dung chép nguyên văn kèm nhãn phải kiểm được; tên AI tự dịch thì không.
+{
+  const A = { tenHang: 'Dao hái cau cán nhôm dài 12 m', nameZh: '加粗防电摘割槟榔刀', chatLieu: 'hợp kim nhôm', congDung: 'hái quả cau', chucNang: 'cắt cuống quả', specs: 'Chiều dài cán: 12 m', facts: [{ key: 'material', labelVi: 'Chất liệu', valueVi: 'hợp kim nhôm dày', evidence: '加厚铝合金' }] };
+  girReply = { results: [{ hs: '82019000', confidence: 80, reason: 'dao hái cau', basis: [] }], missing: [] };
+  girUser = null;
+  await classify(A, {});
+  const lines = String(girUser || '').split('\nNHÓM ỨNG VIÊN')[0].split('\n').map((l) => l.trim()).filter(Boolean);
+  const content = lines.filter((l) => !l.endsWith(':'));
+  const headers = lines.filter((l) => l.endsWith(':'));
+  const lech = content.filter((l) => verifyQuote(l, groundingSourceOf(A)) !== 'ok');
+  check('nhãn hồ sơ (động cơ một lượt): mọi dòng HỒ SƠ SẢN PHẨM / DỮ KIỆN chép nguyên văn kèm nhãn → kiểm được', content.length === 7 && !lech.length, JSON.stringify([content, lech]));
+  check('nhãn hồ sơ (động cơ một lượt): tiêu đề mục chỉ có nhãn → không phải câu trích', headers.length === 2 && headers.every((l) => verifyQuote(l, groundingSourceOf(A)) === 'bad'), JSON.stringify(headers));
+  // Tên hàng chữ Hán → "- Tên:" là bản AI dịch (prepareClassifyInput), không phải chữ gốc → bỏ nhãn cũng không thành trích đúng.
+  check('nhãn hồ sơ: "- Tên: <tên AI tự dịch>" vẫn bad', verifyQuote('- Tên: máy cắt cau điện', groundingSourceOf({ tenHang: '加粗防电摘割槟榔刀', nameZh: '加粗防电摘割槟榔刀' })) === 'bad');
+}
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
