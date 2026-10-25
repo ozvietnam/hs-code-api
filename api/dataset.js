@@ -403,6 +403,12 @@ module.exports = async function handler(req, res) {
       const meta = plhq.registryMeta();
       if (!meta) return res.status(503).json({ error: 'Chưa có bản chụp sổ cộng đồng (data/plhq-registry.json)' });
       const so = String(req.query.so || '').split(/[,;\n]/).map((x) => x.trim()).filter(Boolean).slice(0, 50);
+      const tenQuery = String(req.query.ten || '').trim();
+      if (tenQuery && tenQuery.length >= 3) {
+        const ketQua = plhq.searchByTen(tenQuery, 10);
+        return res.status(200).json({ registry: meta, query: tenQuery, total: ketQua.length, items: ketQua, timTheo: 'ten' });
+      }
+
       if (so.length) {
         const items = so.map((q) => { const r = plhq.lookup(q); return r ? { query: q, found: true, ...r } : { query: q, found: false }; });
         // Ghi miss để bot đêm gom sinh issue nạp văn bản còn thiếu (thiết kế #224/#209).
