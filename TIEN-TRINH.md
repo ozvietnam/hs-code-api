@@ -3340,8 +3340,9 @@ nào nằm ngoài câu trích.
 ## Nộp dung
 
 - `data/so-tay/{0406,0407,0408,0409,0410,0501}.json` (mới) + `data/so-tay/bao-cao/lo-043.json` (mới)
-- `docs/giao-viec/so-tay-lo.csv` dòng 44: `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm`
+- `docs/giao-viec/so-tay-lo.csv` dòng 44: `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm`, `pr=439`
 - `TIEN-TRINH.md` (khối này)
 - **KHÔNG commit `tmp/`** (gitignored) — bộ máy 3 tầng (`cat-trich.cjs`/`gen.cjs`/`lay-cay.cjs`/
   `kiem-tra-trich-lo043.mjs`) chỉ tồn tại trong worktree, mỗi phiên sau tự dựng lại.
-- **CHƯA merge** — chờ người duyệt + soát độc lập.
+- **PR #439** (https://github.com/ozvietnam/hs-code-api/pull/439) — **CHƯA merge**, chờ người duyệt +
+  soát độc lập (mục 4 của `so-tay-giao-ngoai.md`).
