@@ -1,0 +1,55 @@
+{
+  "nhom": "0808",
+  "nguoiSoat": "dev-soat-doc-lap-lo049",
+  "soatVaiTro": "soat-doc-lap",
+  "luc": "2026-10-26T01:10:00+07:00",
+  "phamViSoat": "5 mục trong phạm vi (phamVi 1, boPhan 0, dieuKienVao 0, loaiTru 2, phanBiet 2) + 6 mục ngoài phạm vi đã đọc kiểm (tieuChi6 3, dong8 3) = 11/11 mục của bản nháp.",
+  "soat": 11,
+  "daKiem": 9,
+  "sua": 2,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0808 (lô 049, PR #453). Đọc TOÀN BỘ tmp/so-tay/nguon/0808.txt (7.534 byte; khối [nhom0808.nhom], [ch08.chuong], [phan08.phan], 3 khối [wco.*], 3 khối [tax.*]). Máy xanh nhưng không chứng minh câu trích tự nói đúng điều mục khẳng định. KẾT QUẢ trong 5 mục trong phạm vi: 2 SỬA, 3 GIỮ (mọi mục ngoài phạm vi đều giữ nguyên).\n\nLỖI 1 — loaiTru[0] / phanBiet[0]: mục \"(i) Bột…\" bị bỏ dòng dẫn \"Chương này cũng không bao gồm:\" → sửa (86 ký tự).\n\nGIỮ phamVi: câu trích tự đủ (\"Quả táo (apple) và quả lê được phân loại vào nhóm này…\"), phủ táo + lê + mộc qua; đoạn lược giữa các mảnh chỉ bỏ vế nối, không phải ngoại lệ. GIỮ dieuKienVao rỗng: câu \"…cho dù chúng thích hợp để ăn tráng miệng, để sản xuất đồ uống… hoặc dùng cho các mục đích công nghiệp\" là câu CHO PHÉP — đặt value=true là sai nghĩa (ngược chiều).",
+  "thayDoi": [
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định): mục \"(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)\" nằm dưới dòng dẫn \"Chương này cũng không bao gồm:\"; bản nháp bỏ dòng dẫn nên câu trích chỉ còn là một danh sách. SỬA: thêm dòng dẫn (nguyên văn byte-exact, 86 ký tự).",
+      "sua": {
+        "trich": "Chương này cũng không bao gồm:…(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)."
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định): mục \"(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)\" nằm dưới dòng dẫn \"Chương này cũng không bao gồm:\"; bản nháp bỏ dòng dẫn nên câu trích chỉ còn là một danh sách. SỬA: thêm dòng dẫn (nguyên văn byte-exact, 86 ký tự). Riêng `phanBiet` thì nhánh \"có → 1106\" không có căn cứ trong câu trích.",
+      "sua": {
+        "trich": "Chương này cũng không bao gồm:…(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)."
+      }
+    },
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích tự đủ: \"Quả táo (apple) và quả lê được phân loại vào nhóm này cho dù chúng thích hợp để ăn tráng miệng, để sản xuất đồ uống (ví dụ: rượu táo hoặc rượu lê)…mục đích công nghiệp (như chế phẩm bột, mứt hoặc thạch từ táo, chiết xuất của pectin).…Quả mộc qua chủ yếu dùng để làm mứt hoặc thạch.\" — có vị ngữ \"được phân loại vào nhóm này\", phủ đủ ba nội dung (táo + lê; dưa lợ; mộc qua). Đoạn lược \"…(ví dụ: rượu táo hoặc rượu lê)…mục đích công nghiệp\" chỉ bỏ vế nối \"hoặc dùng cho các\", không phải ngoại lệ. `text` không thêm chữ ngoài nguồn. Ngoài phạm vi: 3 tieuChi6 + 3 dong8 đã đọc kiểm, không sửa."
+    },
+    {
+      "index": "dieuKienVao",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ (rỗng). Câu chú giải \"…cho dù chúng thích hợp để ăn tráng miệng, để sản xuất đồ uống… hoặc dùng cho các mục đích công nghiệp\" là câu CHO PHÉP (nói táo/lê VẪN ở nhóm này dù dùng để làm nước uống hay công nghiệp) — đặt value=true là sai nghĩa (loại trừ ngược), nên để rỗng là đúng."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích tự đủ: nói rõ Chương này không bao gồm quả thấm lọc tách nước và dẫn tới (nhóm 20.08)."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu hỏi \"Hàng là quả được bảo quản bằng cách thấm lọc tách nước?\" → có→2008 / không→0808: chiều đúng, câu trích nêu đích danh 20.08."
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ (null). Không có quy tắc bộ phận trong nguồn 0808."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "nhom": "0807",
+  "nguoiSoat": "dev-soat-doc-lap-lo049",
+  "soatVaiTro": "soat-doc-lap",
+  "luc": "2026-10-26T01:10:00+07:00",
+  "phamViSoat": "8 mục trong phạm vi (phamVi 1, boPhan 0, dieuKienVao 1, loaiTru 3, phanBiet 3) + 6 mục ngoài phạm vi đã đọc kiểm (tieuChi6 3, dong8 3) = 14/14 mục của bản nháp.",
+  "soat": 14,
+  "daKiem": 11,
+  "sua": 3,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0807 (lô 049, PR #453). Đọc TOÀN BỘ tmp/so-tay/nguon/0807.txt (7.670 byte; khối [nhom0807.nhom], [ch08.chuong], [phan08.phan], 3 khối [wco.*], 3 khối [tax.*]). Máy xanh nhưng không chứng minh câu trích tự nói đúng điều mục khẳng định. KẾT QUẢ trong 8 mục trong phạm vi: 3 SỬA, 5 GIỮ (mọi mục ngoài phạm vi đều giữ nguyên).\n\nLỖI 1 (nghiêm trọng) — phamVi: câu trích cắt NGAY TRƯỚC câu ngoại lệ \"Tuy nhiên nhóm này không gồm quả thuộc loài Asimina triloba mà có tên theo tiếng Anh là \"Pawpaws\" (đu đủ) (nhóm 08.10).\" — dấu lược nuốt ngoại lệ (đúng loại lỗi phải bắt tay trong brief). Hậu quả: phạm vi cũ nói 0807 gồm \"đu đủ (papaws or papaya)\" mà không nói loài Asimina triloba (cũng tên Pawpaws/đu đủ) sang 0810 → hàng pawpaw dễ bị kéo nhầm vào 0807. SỬA: kéo câu ngoại lệ vào trích (408 ký tự <600) và thêm mệnh đề loại trừ vào `text` (213 ký tự <220). Ghi chú: nguồn 0807 ghi \"Asimina triloba\", nguồn 0810 ghi \"Asimine triloba\" — giữ nguyên chính tả từng nguồn.\n\nLỖI 2 — loaiTru[1] / phanBiet[1]: mục \"(i) Bột…\" bị bỏ dòng dẫn \"Chương này cũng không bao gồm:\" → sửa.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẬT (mất ngoại lệ ngay sau câu trích — đúng loại lỗi phải bắt tay trong brief). Bản nháp cắt câu trích NGAY TRƯỚC câu ngoại lệ \"Tuy nhiên nhóm này không gồm quả thuộc loài Asimina triloba mà có tên theo tiếng Anh là \"Pawpaws\" (đu đủ) (nhóm 08.10).\" — dấu lược \"…\" cuối câu đã NUỐT mất ngoại lệ, và `text` cũng không nhắc tới. Hậu quả rất cụ thể: phạm vi cũ nói nhóm 0807 gồm \"quả giống trái dưa thuộc loài Carica papaya, như là đu đủ (papaws or papaya)\" — tiếng Anh \"Pawpaws\"/\"đu đủ\" dùng cho HAI loài khác nhau (Carica papaya thuộc 0807, Asimina triloba thuộc 0810); đọc phạm vi cũ, hàng Asimina triloba (pawpaw) dễ bị kéo vào 0807. SỬA: kéo câu ngoại lệ vào câu trích (nguyên văn byte-exact, 408 ký tự <600) và thêm vào `text` mệnh đề loại trừ (213 ký tự, dưới trần cắt 220). Ghi chú kỹ thuật: nguồn 0807 ghi \"Asimina triloba\" còn nguồn 0810 ghi \"Asimine triloba\" — giữ nguyên chính tả từng nguồn, không tự sửa.",
+      "sua": {
+        "text": "Dưa tươi thuộc loài Citrrullus vulgaris hoặc Cucumis melo, kể cả dưa hấu, dưa thanh yên (để bảo quản), dưa lê, dưa đỏ, dưa vàng và dưa mật; quả Carica papaya (đu đủ); không gồm quả Asimina triloba (Pawpaws) — 08.10.",
+        "trich": "Ngoài những loại khác, nhóm này bao gồm các loại dưa tươi thuộc loài Citrrullus vulgaris hoặc Cucumis melo, kể cả dưa hấu, dưa thanh yên (để bảo quản), dưa lê, dưa đỏ, dưa vàng và dưa mật.…Nhóm này cũng bao gồm quả giống trái dưa thuộc loài Carica papaya, như là đu đủ (papaws or papaya).…Tuy nhiên nhóm này không gồm quả thuộc loài Asimina triloba mà có tên theo tiếng Anh là \"Pawpaws\" (đu đủ) (nhóm 08.10)."
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định): mục \"(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)\" nằm dưới dòng dẫn \"Chương này cũng không bao gồm:\"; bản nháp bỏ dòng dẫn nên câu trích chỉ còn là một danh sách. SỬA: thêm dòng dẫn (nguyên văn byte-exact, 86 ký tự).",
+      "sua": {
+        "trich": "Chương này cũng không bao gồm:…(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)."
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định): mục \"(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)\" nằm dưới dòng dẫn \"Chương này cũng không bao gồm:\"; bản nháp bỏ dòng dẫn nên câu trích chỉ còn là một danh sách. SỬA: thêm dòng dẫn (nguyên văn byte-exact, 86 ký tự). Riêng `phanBiet` thì nhánh \"có → 1106\" không có căn cứ trong câu trích.",
+      "sua": {
+        "trich": "Chương này cũng không bao gồm:…(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích \"Tuy nhiên nhóm này không gồm quả thuộc loài Asimina triloba mà có tên theo tiếng Anh là \"Pawpaws\" (đu đủ) (nhóm 08.10).\" tự nói đủ (có vế \"không gồm\"), nêu đích danh 08.10; `fact` \"khong_phai_qua_thuoc_loai_asimina_triloba\" khớp nghĩa."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích tự đủ, nêu đích danh \"(nhóm 08.10)\"; `dieuKien` \"Quả thuộc loài Asimina triloba (Pawpaws)\" chép đúng ý câu nguồn (nguồn nói quả này CÓ tên tiếng Anh là \"Pawpaws\"), không thêm chữ ngoài nguồn."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích tự đủ: nói rõ Chương này không bao gồm quả thấm lọc tách nước và dẫn tới (nhóm 20.08)."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu hỏi \"Hàng là quả thuộc loài Asimina triloba (Pawpaws)?\" → có→0810 / không→0807: chiều đúng, câu trích nêu đích danh 08.10."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu hỏi \"Hàng là quả được bảo quản bằng cách thấm lọc tách nước?\" → có→2008 / không→0807: chiều đúng, câu trích nêu đích danh 20.08."
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ (null). Không có quy tắc bộ phận trong nguồn 0807."
+    }
+  ]
+}
