@@ -1,0 +1,28 @@
+{
+ "nhom": "0506",
+ "nguoiSoat": "dev-soat-doc-lap-lo044",
+ "luc": "2026-10-25T17:55:00+07:00",
+ "soat": 4,
+ "giu": 2,
+ "sua": 2,
+ "xoa": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 0506 — 4 mục trong phạm vi mục 4 (1 phamVi + 1 dieuKienVao + 1 loaiTru + 1 phanBiet), đọc lại cùng nguồn nguyên văn tmp/so-tay/nguon/0506.txt. SỬA 2, XOÁ 0. Đọc thêm 4 tieuChi6 + 2 dong8 nhưng KHÔNG sửa (ngoài phạm vi mục 4). GIỮ 2: `loaiTru[0]` (nguồn NÊU ĐÍCH DANH 96.01 trong câu trích; `dieuKien` đúng phạm vi loại trừ); `phanBiet[0]` (mã đích 96.01 có trong câu trích, `hoi` không nhắc mã, nhánh 'không' trỏ về chính nhóm 0506 — đúng mẫu đã gộp). SỬA 2: `phamVi.trich` (561→233 ký tự) và `dieuKienVao[0].value` (đảo chiều) — xem `thayDoi`. GHI NHẬN (ngoài phạm vi, KHÔNG sửa): (1) `loaiTru[0].dieuKien` và `phanBiet[0].hoi` không nêu nhánh 'những hình khác' (chỉ nêu 'tấm, mảnh hình chữ nhật' và 'sản phẩm đúc khuôn bột xương') — nhánh này có trong câu trích nhưng không nằm trong `dieuKien`/`hoi`; thêm vào sẽ vượt trần clip 55/110 của runtime nên để người duyệt xem. (2) Đích loại trừ trong nguồn là 'nhóm 96.01 HOẶC ở các nhóm khác chi tiết hơn' — nhóm không nêu mã thì không ghi được vào `sangNhom`, nên `sangNhom` chỉ ghi 96.01 (đúng như tiền lệ 8541/9032 đã gộp: chỉ liệt kê mã có nêu). (3) `dong8[05069000].dieuKien` gộp 4 phần (1)(2)(4)(5) của chú giải trong một dòng — chấp nhận được vì biểu thuế chỉ ghi 'Loại khác'.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích cũ dài 561 ký tự — VƯỢT trần 300 ký tự luật 2 (máy chỉ chặn >600 nên lọt; đây là câu trích dài nhất trong lô). SỬA: bỏ câu loại trừ đứng giữa và lược các vế ĐỊNH NGHĨA của từng phần, chỉ giữ tiêu đề 5 phần — '(1) Xương và lõi sừng (xương trong của sừng), chưa xử lý hoặc đã khử mỡ…(2) Xương sơ chế (nhưng không cắt thành hình)…(3) Xương xử lý bằng axit…(4) Xương khử gelatin…(5) Bột và phế liệu từ xương (bao gồm cả xương nghiền nhỏ)' — 233 ký tự, mọi mảnh nguyên văn liên tục trong nhom0506.nhom, và `text` (đã nêu đủ 5 phần) khớp 1-1 với câu trích. Câu loại trừ bị bỏ khỏi đây vì đã được trích TRỌN VẸN ở `dieuKienVao[0]`, `loaiTru[0]` và `phanBiet[0]` của cùng nhóm — không mất thông tin nào trong sổ tay (đúng tiền lệ lô 042 ở 0401). Giữ nguyên `text` và `nguon`.",
+   "sua": {
+    "trich": "(1) Xương và lõi sừng (xương trong của sừng), chưa xử lý hoặc đã khử mỡ…(2) Xương sơ chế (nhưng không cắt thành hình)…(3) Xương xử lý bằng axit…(4) Xương khử gelatin…(5) Bột và phế liệu từ xương (bao gồm cả xương nghiền nhỏ)"
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "ĐẢO CHIỀU — mục ghi fact 'khong_phai_tam_va_manh_hinh_chu_nhat_hoac_hinh_khac' (tức 'KHÔNG phải tấm/mảnh hình chữ nhật hay hình khác') với value=false, nên runtime in ra 'khong_phai_tam_va_manh_hinh_chu_nhat_hoac_hinh_khac = false' — đọc thẳng là ĐÚNG LÀ tấm/mảnh hình chữ nhật, ngược hẳn ý nguồn: hàng thuộc 0506 thì KHÔNG phải những hình đã cắt thành hình (đó là loại trừ sang 96.01). Đây là lỗi đảo chiều mà máy KHÔNG bắt (máy chỉ kiểm câu trích, không kiểm chiều nghĩa của fact+value). SỬA: đổi value=false → true, đúng mẫu 8 mục đã gộp trong sổ tay ('fact âm + value=true' như 6202/6211/6303/6401); mẫu 'fact âm + value=false' (phủ định lồng phủ định) KHÔNG có tiền lệ nào trong 386 nhóm đã gộp — chính 3 mục của lô 044 là 3 mẫu duy nhất. Giữ nguyên `fact`, `nguon` và `trich`.",
+   "sua": {
+    "value": true
+   }
+  }
+ ]
+}

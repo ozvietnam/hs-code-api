@@ -3,6 +3,108 @@
 <!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
 ---
 
+# SOÁT ĐỘC LẬP lô 044 — phiên `dev-soat-doc-lap-lo044` (25/10/2026)
+
+- **Nhánh:** `so-tay/lo-044` (PR #440, **KHÔNG merge**) · **Nhóm:** `0502,0504,0505,0506,0507,0508`
+- **Người soát KHÁC người soạn:** `dev-soat-doc-lap-lo044` ≠ `dev-zcode-mm` (đúng mục 4 giao việc).
+
+## Phạm vi soát
+
+- **30 mục trong 5 khối** (mục 4 giao việc) — đọc lại **TỪNG MỤC** cùng nguồn nguyên văn
+  `tmp/so-tay/nguon/<nhom>.txt`, không soát mẫu:
+  | Nhóm | `phamVi` | `boPhan` | `dieuKienVao` | `loaiTru` | `phanBiet` | Tổng |
+  |---|---|---|---|---|---|---|
+  | 0502 | 1 | 0 | 1 | 1 | 1 | 4 |
+  | 0504 | 1 | 0 | 2 | 2 | 2 | 7 |
+  | 0505 | 1 | 0 | 2 | 1 | 2 | 6 |
+  | 0506 | 1 | 0 | 1 | 1 | 1 | 4 |
+  | 0507 | 1 | 0 | 2 | 1 | 1 | 5 |
+  | 0508 | 1 | 0 | 1 | 1 | 1 | 4 |
+  | **Tổng** | 6 | 0 | 9 | 7 | 8 | **30** |
+- **37 mục ngoài phạm vi** (`tieuChi6` 23 + `dong8` 14) đọc để kiểm **độ phủ** và **chiều đúng–sai**,
+  KHÔNG sửa (đúng thực hành lô 041/042).
+- Hồ sơ soát: `review/0502.json` … `review/0508.json` · kết quả: **SỬA 14 mục (15 trường) · XOÁ 0 · GIỮ 16**.
+
+## Tám lỗi bắt được — máy đều KHÔNG bắt được
+
+1. **7 câu trích vượt trần 300 ký tự luật 2** (máy chỉ chặn >600 nên lọt — đúng loại lỗi "trích
+   300–600 ký tự lặng lẽ" mà giao việc §00 dặm người soát phải để mắt):
+   `0502 phamVi` 327 · `0505 phamVi` 393, `loaiTru[0]` 327, `phanBiet[0]` 327 · `0506 phamVi` 561 ·
+   `0507 phamVi` 582 (dài nhất lô) · `0508 phamVi` 494 → cắt lại còn ≤ 300, **nguyên văn tuyệt đối**
+   (kiểm bằng `scripts/check-trich-nguyen-van.mjs`).
+2. **ĐẢO CHIỀU `dieuKienVao` ở 3 mục** (0506, 0507[1], 0508): fact **âm** (`khong_phai_…`) đi kèm
+   `value:false` → runtime in ra "khong_phai_X = false" tức đọc thẳng là **ĐÚNG LÀ X**, ngược hẳn
+   ý nguồn. Máy không kiểm chiều nghĩa fact+value. Sửa: `value:true` (đúng mẫu 8 mục đã gộp:
+   6202/6211/6303/6401…; mẫu "fact âm + value=false" **không có tiền lệ** trong 386 nhóm đã gộp —
+   3 mục của lô 044 là 3 mẫu duy nhất).
+3. **`0504 phamVi` thiếu trọn 3 phần** — chú giải nhóm có khối "(1) Dạ múi khế / (2) Lòng và dạ cỏ /
+   (3) Màng ruột già chưa được xử lý" nhưng `phamVi` chỉ lấy câu định nghĩa chung. Lệch với chính lô
+   này: 0505/0506/0507/0508 đều đã nêu đủ tiêu đề các phần. Hệ quả thật: **dạ múi khế** (men dịch
+   vị, mặt hàng nhập khẩu thật của 0504) không có mặt trong phạm vi mà LLM nhìn thấy.
+4. **`0508` thu hẹp nghĩa so với nguồn (2 mục)** — nguồn: "những hình khác, **đã hoặc chưa** đánh
+   bóng hoặc xử lý cách khác" (bao hàm cả hai vế) nhưng `loaiTru[0].dieuKien` và `phanBiet[0].hoi`
+   chỉ hỏi "**đã** đánh bóng" → hàng CHƯA đánh bóng không bị loại trừ, dễ xếp nhầm vào 0508.
+5. **`0505 phanBiet[1]` nói điều câu trích không nói** — nguồn: "lông ống đã xử lý … được phân loại
+   **theo đặc tính của chúng** (ví dụ: phao để câu 95.07, tăm xỉa răng 96.01)" → 2 nhóm là **VÍ DỤ**;
+   mục cũ in ra "có→9507|9601" tức khẳng định lông ống đã xử lý chỉ sang 2 nhóm đó. Sửa: đưa "theo
+   đặc tính" vào `hoi`.
+6. **Câu trích tự nó dài vô lý** ở 0506/0507/0508 — trích gộp cả **câu loại trừ** nằm giữa danh
+   sách phần; sửa bằng cách bỏ câu loại trừ khỏi `phamVi` (nó đã được trích trọn ở
+   `dieuKienVao`/`loaiTru`/`phanBiet` của cùng nhóm — đúng tiền lệ lô 042 ở 0401).
+7. **Người soạn tự báo 3 mục `dieuKien` trích không nói** (05059010 "không dùng để nhồi"; 05059090
+   viết tiếng Anh theo tên WCO) — em **đọc lại và XÁC NHẬN** 2 mục đó là đúng theo bản chất nhưng
+   **dòng 8 số nằm ngoài phạm vi mục 4** → không sửa, ghi nhận để người duyệt quyết.
+8. **Bộ tự soát của người soạn bỏ sót 4 dấu chấm câu bịa** — 4 mảnh trích em cắt lại có dấu `.`
+   không có trong nguồn; `scripts/check-trich-nguyen-van.mjs` (byte-exact) **BẮT** ngay, đã bỏ hết.
+   → Đây là bằng chứng `check-so-tay` (squash) không đủ; phải chạy bộ byte-exact.
+
+## Tiền lệ — đếm TRƯỚC khi kết luận mẫu nào là lỗi
+
+- `fact âm + value=false`: quét `data/so-tay/*.json` → **0 mẫu** trong 386 nhóm đã gộp; `fact âm +
+  value=true` có 8 mẫu; `fact dương + value=false` có 8 mẫu → mẫu của lô 044 là **ngoại lệ mới**.
+- `loaiTru` có vế đích **mềm** ("nói chung", "hoặc ở các nhóm khác chi tiết hơn"): cả repo chỉ có
+  **7 mục**, 4 mục là chính lô 044; 3 mục cũ (8541, 9032×2) đều liệt kê **mọi nhóm có nêu** trong
+  `sangNhom` → giữ nguyên ở lô 044 (chỉ ghi nhóm có mã).
+- `phanBiet` có chữ "ví dụ" trong câu trích: **12 mục** đã gộp → không phải mẫu lỗi.
+
+## Ghi nhận ngoài phạm vi (KHÔNG sửa — để người duyệt quyết)
+
+1. `05059010.dieuKien` có "không dùng để nhồi" trong khi câu trích (dòng biểu thuế) không có chữ
+   "nhồi" → căn cứ ở tên WCO 050590; nên `nguon` nên trỏ `wco.050590` hoặc bỏ vế đó.
+2. `05051090` và `05051010` lấy cùng nguồn chú giải phân nhóm → điều kiện hai dòng gần trùng nhau;
+   luật nhà khi nguồn không phân biệt được thì ghi "dòng cha không có trong nguồn — đối chiếu biểu thuế".
+3. `0506`/`0507`: `dieuKien`/`hoi` không nêu nhánh "những hình khác" / "hình bán hoàn chỉnh khác" có
+   trong câu trích — thêm vào là vượt trần clip runtime (55 / 110).
+4. Đích loại trừ ở 0505 ("nói chung … 67.01") và 0506/0507/0508 ("96.01 **hoặc** các nhóm khác
+   chi tiết hơn") là **mềm**; nhóm không nêu mã thì không ghi được vào `sangNhom`.
+
+## Kiểm sau khi áp (đều xanh)
+
+| Kiểm | Kết quả |
+|---|---|
+| `scripts/check-trich-nguyen-van.mjs` (byte-exact) | **OK — 67 mục nguyên văn tuyệt đối** trong đúng khối nguồn |
+| `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` | 6 nhóm **67/67 mục**, 0 mục hỏng |
+| `npm run so-tay:check` | 398 nhóm, 11.429 mục, **0 mục không kiểm được nguồn** |
+| `node scripts/check-cay.mjs --nhom=<6 nhóm> --chi-tiet` | 6/6 nhóm đủ, **0 lỗi lệch cây** |
+| `npm test` | **ALL TESTS PASSED** |
+| `tmp/so-tay/audit-truong.cjs` | 20 cờ — **đúng bằng mốc của người soạn** (10 cờ "Hàng" theo mẫu đã duyệt + 10 cờ ở `05059010` ngoài phạm vi); em **không** thêm cờ nào |
+
+## Nhãn nguồn (luật 11)
+
+30 mục đã soát (5 khối) → `nguonLoai: NGUOI_DUYET`. `tieuChi6`/`dong8`/`cay` **giữ nguyên**
+(`AI_DA_KIEM` / `MAY_SUY`) vì ngoài phạm vi soát.
+
+## Bài học rút ra (đề xuất cho lô sau)
+
+- **Máy kiểm KHÔNG có trần 300 ký tự** cho `trich` (chỉ 600) → phải đo bằng script, không đo bằng mắt.
+  Nên thêm luật đo vào `check-so-tay.mjs` (độ dài ≤ 300) cho các lô sau.
+- **Chiều nghĩa `fact` + `value` là thứ máy không bao giờ kiểm** → nên có luật: fact âm chỉ được
+  `value:true`; fact dương thì `value:false` nghĩa là mục đó loại trừ. Đề xuất thêm vào `lib/so-tay.js`.
+- **`trich` KHÔNG vào prompt vòng 2** (chỉ `fact`/`text`/`hoi`/`dieuKien`) → lỗi ở `trich` không ảnh hưởng
+  trực tiếp tới LLM, nhưng lỗi ở `text`/`hoi`/`dieuKien` thì có; soát phải ưu tiên 3 trường đó.
+
+---
+
 # SOẠN lô 044 — phiên `dev-zcode-mm` (25/10/2026)
 
 - **Nhánh:** `so-tay/lo-044` @ 307ec81 (main mới nhất) · **Nhóm:** `0502,0504,0505,0506,0507,0508` (Chương 05)

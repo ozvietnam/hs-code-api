@@ -1,0 +1,44 @@
+{
+ "nhom": "0508",
+ "nguoiSoat": "dev-soat-doc-lap-lo044",
+ "luc": "2026-10-25T18:05:00+07:00",
+ "soat": 4,
+ "giu": 0,
+ "sua": 4,
+ "xoa": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 0508 — 4 mục trong phạm vi mục 4 (1 phamVi + 1 dieuKienVao + 1 loaiTru + 1 phanBiet), đọc lại cùng nguồn nguyên văn tmp/so-tay/nguon/0508.txt. SỬA 4, XOÁ 0. Đọc thêm 2 dong8 nhưng KHÔNG sửa (ngoài phạm vi mục 4) — ghi nhận bên dưới. KHÔNG có mục nào giữ nguyên trọn vẹn: cả 4 mục đều cần sửa (một lỗi đảo chiều, hai lỗi thu hẹp nghĩa, một câu trích quá dài). GHI NHẬN (ngoài phạm vi, KHÔNG sửa): (1) `dong8[05080090].dieuKien` gộp (1)(2) + 'mai mực, mai, vỏ đã nghiền nhỏ hoặc tán thành bột' + phế liệu trong một dòng — chấp nhận được vì biểu thuế chỉ ghi 'Loại khác'. (2) Nhóm 0508 không có `tieuChi6` vì không có phân nhóm 6 số nào (chỉ có 050800) — đúng, không phải thiếu sót.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích cũ dài 494 ký tự — VƯỢT trần 300 ký tự luật 2 (máy chỉ chặn >600 nên lọt). SỬA: bỏ câu loại trừ ở cuối, chỉ giữ tiêu đề 3 phần + vế bột/phế liệu — '(1) San hô, chưa xử lý, hoặc chỉ loại bỏ lớp vỏ cứng bên ngoài.…(2) San hô, sơ chế nhưng chưa xử lý cách khác.…(3) Mai, vỏ, chưa xử lý hoặc đã sơ chế nhưng chưa cắt thành hình.…Nhóm này gồm cả mai mực, mai, vỏ, đã nghiền nhỏ hoặc tán thành bột dùng làm thức ăn cho gia súc, và phế liệu của mai, vỏ.' — 292 ký tự, mọi mảnh nguyên văn liên tục trong nhom0508.nhom; `text` khớp 1-1 với câu trích. Câu loại trừ bị bỏ khỏi đây vì đã được trích TRỌN VẸN ở `dieuKienVao[0]`, `loaiTru[0]` và `phanBiet[0]` của cùng nhóm (đúng tiền lệ lô 042 ở 0401). Giữ nguyên `text` và `nguon`.",
+   "sua": {
+    "trich": "(1) San hô, chưa xử lý, hoặc chỉ loại bỏ lớp vỏ cứng bên ngoài.…(2) San hô, sơ chế nhưng chưa xử lý cách khác…(3) Mai, vỏ, chưa xử lý hoặc đã sơ chế nhưng chưa cắt thành hình…Nhóm này gồm cả mai mực, mai, vỏ, đã nghiền nhỏ hoặc tán thành bột dùng làm thức ăn cho gia súc, và phế liệu của mai, vỏ."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "ĐẢO CHIỀU — mục ghi fact 'khong_phai_que_manh_hinh_chu_nhat_hoac_hinh_khac' (tức 'KHÔNG phải que/mảnh hình chữ nhật hay hình khác') với value=false, nên runtime in ra '… = false' — đọc thẳng là ĐÚNG LÀ que/mảnh hình chữ nhật, ngược hẳn ý nguồn (hàng thuộc 0508 thì KHÔNG phải những hình đã cắt/cán thành hình; đó là loại trừ sang 96.01). Lỗi đảo chiều, máy KHÔNG bắt. SỬA: value=false → true, đúng mẫu đã gộp trong sổ tay ('fact âm + value=true' như 6202/6211/6303/6401); mẫu 'fact âm + value=false' không có tiền lệ nào trong 386 nhóm đã gộp. Giữ nguyên `fact`, `nguon` và `trich` (câu trích đã cắt trước mốc 'đã hoặc chưa' vì luật máy `CAU_CHO_PHEP` loại câu đó — đúng bài học lô 044 đã ghi).",
+   "sua": {
+    "value": true
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "THU HẸP NGHĨA so với nguồn — nguồn ghi 'nhóm này không bao gồm que, mảnh hình chữ nhật (kể cả hình vuông) và những hình khác, ĐÃ HOẶC CHƯA đánh bóng hoặc xử lý cách khác' — vế 'đã hoặc chưa' là bao hàm (đánh bóng hay không đều loại trừ), nhưng `dieuKien` cũ ghi 'đã đánh bóng' nên chỉ loại trừ hàng ĐÃ đánh bóng, hàng chưa đánh bóng thì không bị loại trừ — trái nguồn. SỬA: bỏ định ngữ 'đã đánh bóng', còn lại 'Que, mảnh hình chữ nhật hoặc những hình khác' (46 ký tự, dưới trần clip 55 của runtime) — mọi từ đều có trong câu trích. Cũng khớp với cách 0506 ghi cùng kiểu loại trừ (không thêm định ngữ 'đã đánh bóng'). `trich` và `nguon` giữ nguyên.",
+   "sua": {
+    "dieuKien": "Que, mảnh hình chữ nhật hoặc những hình khác"
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "THU HẸP NGHĨA so với nguồn — cùng lý do như `loaiTru[0]`: nguồn loại trừ các hình que/mảnh hình chữ nhật/hình khác 'đã hoặc chưa đánh bóng hoặc xử lý cách khác' (bao hàm cả hai vế), nhưng `hoi` cũ chỉ hỏi '…đã đánh bóng hoặc xử lý cách khác?' nên hàng CHƯA đánh bóng không được hỏi → dễ xếp nhầm vào 0508. SỬA: hỏi theo đúng phạm vi nguồn — 'Hàng là que, mảnh hình chữ nhật hoặc những hình khác?' (54 ký tự, dưới trần clip 110 của runtime); mọi từ đều có trong câu trích, `neuCo`/`neuKhong`/`nguon`/`trich` giữ nguyên.",
+   "sua": {
+    "hoi": "Hàng là que, mảnh hình chữ nhật hoặc những hình khác?"
+   }
+  }
+ ]
+}
