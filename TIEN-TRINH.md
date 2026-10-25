@@ -3,6 +3,82 @@
 <!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
 ---
 
+# SOẠN lô 049 — phiên `dev-zcode-mm` (25/10/2026)
+
+- **Nhánh:** `so-tay/lo-049` (PR mở sau khi commit — **KHÔNG merge**) · **Nhóm:** `0805 0806 0807 0808 0809 0810`
+- **Nhóm của lô lấy theo `docs/giao-viec/so-tay-lo.csv` dòng 049** (`0805 0806 0807 0808 0809 0810`, 42 144 ký tự nguồn).
+  **Lệnh mẫu trong `brief-st-lo049.md` SAI** — dòng 6 ghi `--nhom=7615,9609,3215,6306,6804,7412` (nhóm của **lô 001**);
+  đã theo CSV theo luật [[so-tay-lo-quy-trinh]] (đã lệch lần thứ 5 với cùng một kiểu copy-paste).
+- **Công cụ (tạm, KHÔNG commit — `tmp/` gitignored):** `cat-trich.cjs` + `gen.cjs` + `lay-cay.cjs` (chép từ worktree
+  lô 043), `audit-truong.cjs` + `do-do.mjs` (chép từ lô 046), `review-helper.mjs` (mới — in đoạn nguồn QUANH
+  MỖI mảnh trích để soi ngoại lệ nằm ngay sau câu trích).
+
+## Các bước (đúng thứ tự)
+
+1. **Đọc trước** `docs/giao-viec/so-tay-giao-ngoai.md` (mục 2 + 11 luật mục 3) và
+   `tmp/so-tay/nguon/_he-thong.txt`; đọc TRỌN 6 tệp nguồn `0805..0810.txt` (mỗi nhóm ~7–13 ký tự nguồn).
+2. `node scripts/build-so-tay.mjs --nhom=0805,0806,0807,0808,0809,0810 --xuat-nguon=tmp/so-tay/nguon`.
+3. `node tmp/so-tay/lay-cay.cjs <nhom>` × 6 → biết chính xác dòng lá 8 số, phân nhóm 6 số, nút ảo
+   (6/6 nhóm **không có nút ảo** ⇒ không phải điền `cay.tenDien`).
+4. **Soạn `tmp/so-tay/spec/<nhom>.json`** — CHỈ phần ngữ nghĩa (`phamVi`, `dieuKienVao`, `loaiTru`, `phanBiet`,
+   `tieuChi6`, `dong8`); **câu trích không gõ tay** mà để `["nguon", "đoạn"]` cho `gen.cjs` cắt từ tệp nguồn.
+5. `node tmp/so-tay/gen.cjs <nhom>` × 6 → `tmp/so-tay/raw/<nhom>.json`.
+6. **Ba lớp kiểm** (mỗi vòng chạy tới khi sạch):
+   - `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **112/112**;
+   - `node scripts/check-trich-nguyen-van.mjs` (byte-exact, từng ký tự) → **112/112 nguyên văn**;
+   - `node tmp/so-tay/audit-truong.cjs` (trích ≤ 300 + trần runtime + "từ lạ" trong field tự viết) → **0 cờ**.
+   - Thêm `tmp/so-tay/review-helper.mjs` — soi **sau mỗi mảnh trích** xem có ngoại lệ bị dấu lược nuốt không.
+7. `rm data/so-tay/bao-cao/lo-049.json` (bài học "báo cáo lô bị ghi đè") rồi
+   `node scripts/build-so-tay.mjs --nhom=0805,0806,0807,0808,0809,0810 --tu-tep=tmp/so-tay/raw --force
+   --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-049.json` → **112/112 (100 %)**, 0 nhóm lỗi.
+8. `npm run so-tay:check` → **434 nhóm, 12 561 mục, 0 mục không kiểm được nguồn**;
+   `node scripts/check-cay.mjs --nhom=0805,0806,0807,0808,0809,0810 --chi-tiet` → **0 lỗi lệch cây, 6/6 nhóm đủ**;
+   `npm test` → **ALL TESTS PASSED**.
+9. `docs/giao-viec/so-tay-lo.csv` dòng 049 → `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm` (`pr` điều sau khi mở PR).
+
+## Quyết định soạn (để người duyệt đọc lại)
+
+- **`dieuKienVao` = "không phải <loại trừ>"** cho MỖI loại trừ có trong chú giải **nhóm** (0805 × 2, 0807 × 1,
+  0810 × 1) — y hệt cách lô 048 (0801–0804, cùng Chương 8) đã làm. 0806/0808/0809 **để rỗng**: chú giải nhóm
+  không có câu ràng buộc nào phủ cả nhóm 4 số (luật lô 030: "chỉ đặt khi câu đó phủ CẢ nhóm").
+- **Điều kiện cấp CHƯƠNG không đưa vào `dieuKienVao`**: câu "Quả và quả hạch (nuts) ướp lạnh được xếp cùng nhóm
+  với quả tươi" và câu "quả khô … với điều kiện là chúng vẫn giữ được đặc tính của quả khô" (ch08.chuong) chỉ
+  phủ **phần "khô"** của 0805/0806, không phủ nhóm; nên chỉ dùng làm căn cứ loại trừ, không làm điều kiện vào.
+- **`loaiTru` cấp CHƯƠNG dùng cho cả 6 nhóm**: (i) bột/bột thô/bột mịn chế biến từ quả → **11.06**;
+  (ii) quả bảo quản bằng cách thấm lọc tách nước → **20.08** (câu nguồn nêu đích danh "nhóm 20.08").
+  **`(iii) quả rang chín dùng làm chất thay thế cà phê → 21.01` BỎ** cho lô này: ví dụ trong nguồn là HẠT
+  (hạt dẻ, hạnh nhân, sung, vả) — không phải nhóm quả 0805–0810; lô 048 cũng chỉ dùng mục này cho 0802/0804
+  (nhóm hạt).
+- **Không soạn `boPhan`**: định nghĩa "viên" của `phan08.phan` (≤ 3 % chất dính) là quy tắc cho quả bảo quản
+  (0812), không liên quan 6 nhóm này; nhóm cũng không có "phần ngang hàng" riêng để mô tả.
+- **`cay.tenDien` rỗng** ở cả 6 nhóm: không có nút ảo nào thiếu tên (kiểm bằng `lay-cay.cjs`).
+
+## Chỗ phải cắt bớt (trích ≤ 300 ký tự — luật 2, máy chỉ chặn > 600)
+
+- **0805 `phamVi` (277)** — mục (1)–(6) của chú giải nhóm dài hơn 300 ⇒ cắt "(kể cả quýt tangerine và quýt
+  satsuma)" ở (2), cắt sau "quýt wilking" ở (3), cắt "và quả chanh xanh (…)" ở (5). Phần bị cắt có đủ ở
+  `tieuChi6[080550]` và `dong8[08055010/08055020]`.
+- **0806 `phamVi` (253)** — bỏ ngoặc "(tất cả các loại này phần lớn là không hột)"; tên nho khô có hạt
+  (Muscatel, Malaga…) bị cắt, còn "nho khô lớn có hạt" thì có.
+- **0808 `phamVi` (281)** — cắt "hoặc dùng cho các" giữa "(ví dụ: rượu táo hoặc rượu lê)" và "mục đích công nghiệp".
+- **0810 `phamVi` (243; câu trích dài nhất lô = 273 ở `dong8[08109094]`)** — danh sách (1)–(8) dài 739 ký tự
+  ⇒ chỉ giữ câu định nghĩa nhóm (residual heading) + mục (1)(2); các loài còn lại có đủ ở `dong8` (19 dòng)
+  và `tieuChi6` (8 mục).
+
+## Ghi chú cho lô sau
+
+1. **`cat-trich` báo "KHÔNG DUY NHẤT" khi hai đoạn khác nhau NÉN LẠI giống nhau** — `sen.08109010`: tiêu đề
+   "QUẢ NHÃN; QUẢ NHÃN MATA KUCING" và đoạn "Quả nhãn … Quả nhãn mata kucing" nén (bỏ dấu) thành cùng một
+   chuỗi. Cách xử lý: **đổi sang đoạn mô tả khác** (câu "Quả nhãn hoặc Dimocarpuslongan hoặc Euphoria longan
+   … mắt rồng") thay vì chọn `lan` — chọn `lan` thì câu trích mất nghĩa.
+2. **Nguồn `nhom0810.nhom` có xuống dòng giữa câu** ("… loại trừ trong\n\nChú giải tổng quát của Chương này).") —
+   gõ trích bằng DẤU CÁCH vẫn cắt đúng (máy nén bỏ khoảng trắng) và câu cắt ra **giữ nguyên `\n\n`** của nguồn.
+3. **`báo cáo lô` phải `rm` trước khi nạp** (đã làm) — nếu không `build-so-tay` nối vào báo cáo cũ.
+4. **`npm test` ghi thêm 1 dòng vào `data/legal-status-miss.jsonl`** (file bị theo dõi) — đã `git checkout` để
+   diff chỉ chứa 2 loại tệp của lô.
+
+---
+
 # SOÁT ĐỘC LẬP lô 046 — phiên `dev-soat-doc-lap-lo046` (25/10/2026)
 
 - **Nhánh:** `so-tay/lo-046` (PR #448, **KHÔNG merge**) · **Nhóm:** `0701,0702,0703,0704,0705,0706`
