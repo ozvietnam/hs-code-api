@@ -47,6 +47,13 @@ async function suggest(description) {
 const s1 = checkSubheading('22021020', 'nước ngọt có ga vị cola đóng chai thủy tinh');
 check('subheading: nước tăng lực không có dấu hiệu → cờ', s1.ok === false && s1.alternative === '22021030', JSON.stringify(s1));
 check('subheading: có chữ "tăng lực" → qua', checkSubheading('22021020', 'Nước tăng lực Red Bull lon 250ml').ok);
+// Dòng có điều kiện số trong sổ tay: ký hiệu ren M8x30 là đường kính → không cảnh báo "đòi đường kính, thân" (prod 25/10/2026);
+// M20 trái ngưỡng ≤ 16 mm → vẫn cảnh báo, nêu đúng số và chỉ dòng .90.
+const sBolt = checkSubheading('73181510', 'Bu lông lục giác bằng thép mạ kẽm M8x30, kèm đai ốc');
+check('subheading: bu lông M8x30 → qua bằng điều kiện số sổ tay', sBolt.ok === true && sBolt.reason === 'SO_TAY_THOA', JSON.stringify(sBolt));
+const sM20 = checkSubheading('73181510', 'M20x80 bu lông');
+check('subheading: bu lông M20x80 → cờ, nêu 20 mm, gợi ý 73181590', sM20.ok === false && sM20.alternative === '73181590' && /20 mm/.test(sM20.reasonVi), JSON.stringify(sM20));
+check('subheading: không có ký hiệu / chữ đường kính → cờ như cũ', checkSubheading('73181510', 'Bu lông lục giác thép mạ kẽm').ok === false);
 check('subheading: dòng "Loại khác" không bị cờ', checkSubheading('22021090', 'nước ngọt').ok);
 
 // 2. Hiểu hàng

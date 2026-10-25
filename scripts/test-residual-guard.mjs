@@ -76,6 +76,13 @@ const keep = checkResidualPreference({
 });
 assert('KHÔNG bật khi mô tả có nêu điều kiện đặc trưng', keep === null, keep);
 
+// Điều kiện của mã cụ thể là ĐIỀU KIỆN SỐ trong sổ tay ("Đường kính ngoài của thân không quá 16 mm"): ký hiệu ren M8x30
+// là bằng chứng (cùng máy chấm với chotDong8); M20 trái điều kiện thì vẫn đề nghị residual, nêu đúng số.
+assert('KHÔNG bật khi ký hiệu ren M8x30 chứng minh điều kiện số (prod 25/10/2026)',
+  checkResidualPreference({ hsCode: '73181510', description: 'Bu lông lục giác bằng thép mạ kẽm M8x30, kèm đai ốc' }) === null);
+const m20 = checkResidualPreference({ hsCode: '73181510', description: 'M20x80 bu lông' });
+assert('BẬT khi ký hiệu ren trái điều kiện số: M20 > 16 mm → 73181590, lý do nêu 20 mm', m20?.suggestedHs === '73181590' && /20 mm/.test(m20.reasonVi), m20);
+
 const ev = evidenceForSpecific('84818083', 'van ngắt nhiên liệu bằng plastic');
 assert('evidenceForSpecific nhận ra có bằng chứng', ev.supported === true, ev);
 assert('liệt kê được từ khớp', ev.matched.length > 0, ev);

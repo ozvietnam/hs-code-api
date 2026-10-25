@@ -106,5 +106,23 @@ assert('#411(d) câu TT39 không mang tacDongThue', (r._j.questions || []).filte
 r = await call({ hs: '85013400', productText: 'Động cơ điện xoay chiều 3 pha 220/380V công suất 7500 W 1450 vòng/phút' });
 assert('#411 8501 mô tả đủ 4 thông số → 0 câu', r._s === 200 && (r._j.questions || []).length === 0, keys(r));
 
+// ───────────── Ký hiệu ren M = đường kính (prod 25/10/2026: bu lông M8x30 bị hỏi lại "đường kính") ─────────────
+r = await call({ hs: '73181510', productText: 'Bu lông lục giác bằng thép mạ kẽm M8x30, kèm đai ốc' });
+assert('ren M: bu lông M8x30 (ca prod) → không hỏi duong_kinh', r._s === 200 && r._j.coSoTay === true && !keys(r).includes('duong_kinh'), keys(r));
+r = await call({ hs: '73181510', productText: 'M20x80 bu lông' });
+assert('ren M: M20x80 bu lông → không hỏi duong_kinh (máy đã đọc 20 mm → dòng 73181590)', !keys(r).includes('duong_kinh'), keys(r));
+r = await call({ hs: '73181690', productText: 'Đai ốc lục giác thép M10' });
+assert('ren M: đai ốc M10 → không hỏi duong_kinh', !keys(r).includes('duong_kinh'), keys(r));
+r = await call({ hs: '73181510', productText: 'Hàng M8x30 thép mạ kẽm' });
+assert('ren M: không có tên chi tiết lắp xiết → vẫn hỏi duong_kinh (DONG_BIEU, mm)', (r._j.questions || []).some((q) => q.key === 'duong_kinh' && q.loai === 'DONG_BIEU' && q.unit === 'mm'), r._j.questions);
+
+// ───────────── #434: chữ "sức"/"vân gỗ" không làm rụng câu vật liệu TT39; "gỗ" thật thì rụng ─────────────
+r = await call({ hs: '94036090', productText: 'Kệ trang sức' });
+assert('#434 "Kệ trang sức" → vẫn hỏi material ("sức" không phải sứ)', keys(r).includes('material'), keys(r));
+r = await call({ hs: '94036090', productText: 'Kệ trang trí vân gỗ' });
+assert('#434 "Kệ trang trí vân gỗ" → vẫn hỏi material (vân gỗ là bề ngoài)', keys(r).includes('material'), keys(r));
+r = await call({ hs: '94036090', productText: 'Kệ gỗ' });
+assert('#434 "Kệ gỗ" → không hỏi material', !keys(r).includes('material'), keys(r));
+
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);

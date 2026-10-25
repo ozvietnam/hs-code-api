@@ -3,7 +3,7 @@ import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 import { nhomChuaCoSoTay } from './nhom-chua-co-so-tay.mjs';
 const require = createRequire(import.meta.url);
-const { soTayGates, soTayBlock, headPhrases, productHead, phraseHit, isPartsLine, loadSoTay, chotDong8, giaTriCua } = require('../lib/so-tay-gates.js');
+const { soTayGates, soTayBlock, headPhrases, productHead, phraseHit, isPartsLine, loadSoTay, chotDong8, giaTriCua, trangThaiDong8, chatLieuTrong, chatLieuRegex, MATERIALS } = require('../lib/so-tay-gates.js');
 
 let pass = 0; let fail = 0;
 const check = (n, c, x = '') => { if (c) { pass += 1; console.log(`PASS ${n}`); } else { fail += 1; console.log(`FAIL ${n} ${x}`); } };
@@ -59,9 +59,6 @@ check('chọn "Loại khác" khi tên hàng là tên dòng cụ thể → nghi, 
 r = soTayGates({ hs: '85098010', productName: 'Máy đánh bóng sàn nhà mini' });
 check('đã chọn dòng cụ thể → không nghi', !gatesOf(r).some((g) => g.startsWith('SO_TAY_DONG8')));
 
-console.log(`\n${pass} passed, ${fail} failed`);
-if (fail) process.exit(1);
-
 // ── #195 CHỐT DÒNG 8 SỐ (dieuKienSo đã ốp vào data/so-tay) ──
 check('đọc số quy đổi: mm → cm, DN25 → 2.5cm, kích thước bao không lọt', JSON.stringify(giaTriCua('duong_kinh', 'đường kính 30 mm')) === '[3]' && JSON.stringify(giaTriCua('duong_kinh', 'van DN25')) === '[2.5]' && giaTriCua('duong_kinh', 'thùng 10 x 20 cm').length === 0);
 let cd = chotDong8({ hs: '40092190', productText: 'ống cao su có lắp phụ kiện cứng, đường kính 20 cm, độ dày thành ống 2 cm' });
@@ -116,3 +113,54 @@ check('8504.40 chọn .19 (LK trong) cũng không chốt được — phủ đ�
   cd = chotDong8({ hs: '87169999', productText: 'bánh xe đẩy, đường kính 80 mm' });
   check('thiếu chiều rộng → THIEU_SO_LIEU (không đoán)', cd.ketQua === 'THIEU_SO_LIEU' && (cd.missingFacts || []).some((m) => m.fact === 'chieu_rong'), JSON.stringify(cd.ketQua));
 }
+
+// ── Ký hiệu ren hệ mét M8 / M8x30 = đường kính danh nghĩa (prod 25/10/2026: "Bu lông … M8x30, kèm đai ốc" bị hỏi lại
+//    đường kính và cảnh báo chỉ sang dòng .90 dù đã chọn đúng 73181510) ──
+const dk = (t) => JSON.stringify(giaTriCua('duong_kinh', t).map((v) => Number(v.toFixed(3))));
+check('ren M + tên chi tiết lắp xiết: M8 · M8x30 · M8×1.25 · M 10 · M12x1.5x40 → 0.8 · 0.8 · 0.8 · 1 · 1.2 cm',
+  dk('Bu lông M8') === '[0.8]' && dk('Bu lông lục giác M8x30') === '[0.8]' && dk('Vít M8×1.25') === '[0.8]' && dk('Đai ốc M 10') === '[1]' && dk('Guzông M12x1.5x40') === '[1.2]',
+  [dk('Bu lông M8'), dk('Bu lông lục giác M8x30'), dk('Vít M8×1.25'), dk('Đai ốc M 10'), dk('Guzông M12x1.5x40')].join(' '));
+const KHONG_LAP_XIET = ['M8', 'M8x30', 'M8×1.25', 'M 10', 'M12x1.5x40', 'Bánh xe 2 phanh M12*25', 'Đồng hồ áp suất chân ren M20x1.5'];
+check('ren M KHÔNG kèm tên chi tiết lắp xiết → không đọc (kể cả dạng chặt M8x30: ren trục bánh xe / chân đồng hồ không phải đường kính hàng)',
+  KHONG_LAP_XIET.every((t) => dk(t) === '[]'), KHONG_LAP_XIET.map(dk).join(' '));
+const MA_MODEL = ['Chip Apple M2', 'Máy ảnh Leica M10', 'M3 Pro', 'Laptop Apple M3 Pro kèm ốc vít', 'Van điện từ SY3120-5LZ-M5', 'Cảm biến xi lanh D-M9BV', 'Máy bắt vít Milwaukee M12', 'Ốc hương size M 40', 'Vít me bi M12'];
+check('chip / máy ảnh / mã model / dụng cụ / ốc hương → không có đường kính', MA_MODEL.every((t) => dk(t) === '[]'), MA_MODEL.map(dk).join(' '));
+check('tên hàng theo danh từ đầu: "Van bướm DN100 kèm bu lông M16" chỉ DN100; "M20x80 bu lông", "Hex bolt", "螺栓" đọc được; "阀门带螺栓" không',
+  dk('Van bướm DN100 kèm bộ bu lông M16') === '[10]' && dk('M20x80 bu lông') === '[2]' && dk('Hex bolt M8x30') === '[0.8]' && dk('304不锈钢外六角螺栓 M8*30') === '[0.8]' && dk('阀门带螺栓M16') === '[]');
+check('ren M chỉ DỰ PHÒNG: mô tả đã ghi đường kính bằng chữ thì giữ số đó (ca thật 73181690)', dk('Đai ốc xoáy dùng cho xi lanh M16x1.5, bằng thép, đường kính: 20mm') === '[2]');
+check('"M8.8" là cấp bền, "kg/m2" / "2 m2" là đơn vị; M2,5 là cỡ lẻ hợp lệ',
+  dk('Bu lông cấp bền M8.8') === '[]' && dk('Bu lông neo tải 500kg/m2') === '[]' && dk('Bu lông neo 2 m2') === '[]' && dk('Vít M2,5x6') === '[0.25]');
+const BULONG = 'Bu lông lục giác bằng thép mạ kẽm M8x30, kèm đai ốc'; // nguyên văn ca prod 25/10/2026
+cd = chotDong8({ hs: '73181510', productText: BULONG });
+check('prod bu lông M8x30 → duong_kinh 0,8 cm, CHOT 73181510 qua sổ tay (không còn THIEU_SO_LIEU)', dk(BULONG) === '[0.8]' && cd.ketQua === 'CHOT' && cd.hs === '73181510', JSON.stringify(cd));
+cd = chotDong8({ hs: '73181510', productText: 'M20x80 bu lông' });
+check('M20x80 bu lông (> 16 mm) → LOAI_KHAC 73181590', cd.ketQua === 'LOAI_KHAC' && cd.hs === '73181590', JSON.stringify(cd));
+cd = chotDong8({ hs: '73181690', productText: 'Đai ốc lục giác thép M10' });
+check('đai ốc M10 → CHOT 73181610 ("cho bu lông có đường kính ngoài của thân ≤ 16 mm")', cd.ketQua === 'CHOT' && cd.hs === '73181610', JSON.stringify(cd));
+check('trangThaiDong8 chấm đúng một dòng: THOA / TRAI / CHUA_BIET; dòng "Loại khác" → null',
+  trangThaiDong8({ hs: '73181510', productText: BULONG })?.trangThai === 'THOA' && trangThaiDong8({ hs: '73181510', productText: 'M20x80 bu lông' })?.trangThai === 'TRAI'
+  && trangThaiDong8({ hs: '73181510', productText: 'Chip Apple M2' })?.trangThai === 'CHUA_BIET' && trangThaiDong8({ hs: '73181590', productText: BULONG }) === null);
+
+// ── #434 vật liệu (MATERIALS): ranh giới chữ Unicode + chữ vật liệu không nói hàng làm bằng vật liệu đó ──
+const mat = (t) => JSON.stringify(chatLieuTrong(t));
+check('#434(1) "trang sức" không phải gốm sứ; "Bát sứ" là gốm sứ',
+  mat('Nhẫn trang sức') === '[]' && mat('Hộp đựng trang sức') === '[]' && mat('Bát sứ') === '["gốm sứ"]' && mat('Bát sứ trắng') === '["gốm sứ"]');
+const BE_NGOAI = ['Tấm ốp tường vân gỗ', 'Sàn vân gỗ SPC', 'Rèm cửa giả gỗ', 'Khung ảnh giả đồng', 'Tay nắm cửa màu đồng'];
+check('#434(2) vân gỗ / giả gỗ / giả đồng / màu đồng là bề ngoài, không phải vật liệu', BE_NGOAI.every((t) => mat(t) === '[]'), BE_NGOAI.map(mat).join(' '));
+const CUM = ['Quả vải thiều sấy khô', 'Hàng đã có giấy phép NK', 'kèm giấy chứng nhận CO'];
+check('#434(3) vải thiều, giấy phép, giấy chứng nhận không phải vật liệu', CUM.every((t) => mat(t) === '[]'), CUM.map(mat).join(' '));
+check('#434(4) "Máy cắt thép / hàn inox / đúc nhôm": vật liệu là phôi; "Van thép đúc" vẫn là kim loại',
+  ['Máy cắt thép', 'Máy hàn inox', 'Máy đúc nhôm'].every((t) => mat(t) === '[]') && mat('Van thép đúc') === '["kim loại"]');
+check('#434 ca đúng giữ nguyên: bát sứ, cốc gốm sứ, trang sức bạc (không), khung giả gỗ bằng nhựa (nhựa), vải cotton, giấy kraft',
+  mat('bát sứ') === '["gốm sứ"]' && mat('cốc gốm sứ') === '["gốm sứ"]' && mat('trang sức bạc') === '[]' && mat('khung giả gỗ bằng nhựa') === '["plastic"]' && mat('vải cotton') === '["vải dệt"]' && mat('giấy kraft') === '["giấy"]');
+check('#434 không mất ca đúng: Vỏ đúc nhôm, Que hàn inox, Ván ép gỗ, Inox304, uPVC, viết dính "vảidệt", "tóc giả dệt kim", "hoa giả nhựa"',
+  mat('Vỏ đúc nhôm') === '["kim loại"]' && mat('Que hàn inox') === '["kim loại"]' && mat('Ván ép gỗ') === '["gỗ"]' && mat('Inox304') === '["kim loại"]' && mat('Ống nhựa uPVC') === '["plastic"]'
+  && mat('CL vảidệt từ 100% polyester') === '["vải dệt"]' && mat('Bộ tóc giả dệt kim') === '["vải dệt"]' && mat('Hoa giả nhựa') === '["plastic"]');
+check('#434 "cổ ngỗng" không phải gỗ, "Slabs" không phải ABS; "sắt" là kim loại', mat('Micro cổ ngỗng') === '[]' && mat('Slabs') === '[]' && mat('Khung sắt sơn tĩnh điện') === '["kim loại"]');
+const MAU = { plastic: 'nhựa', 'cao su': 'cao su', giấy: 'giấy', gỗ: 'gỗ', 'kim loại': 'thép', 'thủy tinh': 'thủy tinh', 'gốm sứ': 'sứ', 'vải dệt': 'vải' };
+check('mẫu thô: kiểm được câu trích luật (lib/so-tay.js); là MỘT nhóm cờ u, ghép tiền tố vào .source thì áp cho mọi phương án (so-tay-extract-conditions)',
+  chatLieuRegex('gốm sứ').test('Bằng sứ') && chatLieuRegex('plastic').test('84818041 - - - Bằng plastic') && chatLieuRegex('vải dệt').test('có một mặt được lót vải dệt')
+  && MATERIALS.every(([n, re]) => re.flags.includes('u') && !re.flags.includes('g') && new RegExp(`bằng\\s+${re.source}`, re.flags).test(`bằng ${MAU[n]}`) && !new RegExp(`bằng\\s+${re.source}`, re.flags).test(MAU[n])));
+
+console.log(`\n${pass} passed, ${fail} failed`);
+if (fail) process.exit(1);
