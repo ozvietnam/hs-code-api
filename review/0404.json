@@ -1,0 +1,31 @@
+{
+  "nhom": "0404",
+  "nguoiSoat": "dev-soat-doc-lap-lo042",
+  "luc": "2026-10-25T16:55:00+07:00",
+  "soat": 10,
+  "giu": 7,
+  "sua": 1,
+  "xoa": 2,
+  "ghiChu": "SOÁT ĐỘC LẬP 0404 — 10 mục trong phạm vi mục 4 (1 phamVi + 2 dieuKienVao + 5 loaiTru + 2 phanBiet). SỬA 1, XOÁ 2. VỀ CÂU HỎI MỞ CỦA PHIÊN SOẠN (`dieuKienVao[1]` đặt 'khong_chua_tren_95_lactose_khan = true' theo câu loại trừ (c), không đặt 'ham_luong_lactose_khan <= 95' để khỏi đảo chiều số): em vẫn XOÁ, nhưng lý do KHÁC — không phải đảo chiều số mà là (i) mảnh trích đã mất vùng phủ định nên đọc NGƯỢC chiều với `fact`, và (ii) câu chỉ phủ nhánh whey, không phủ cả nhóm 0404. Nếu sau này muốn đặt lại, chỉ nên đặt khi có câu ràng buộc phủ CẢ nhóm — nguồn 0404 không có câu đó. Đọc thêm 2 tieuChi6 + 5 dong8 + 2 sen.* nhưng KHÔNG sửa (ngoài phạm vi mục 4) — ghi nhận bên dưới. XOÁ 2: cả hai `dieuKienVao` đều không phủ cả nhóm và/hoặc đọc ngược chiều. (a) `dieuKienVao[0]` trích mục (E) của danh mục CHƯƠNG 4 trong ch04.chuong ('(E) Các sản phẩm có chứa thành phần sữa tự nhiên, chưa được chi tiết hoặc ghi ở nơi khác.') — đây là định nghĩa một PHẦN của Chương, không phải điều kiện vào nhóm 0404; và nó chỉ phủ nhánh 0404.90, không phủ nhánh whey (0404.10). Luật lô 030: 'chỉ đặt khi câu đó phủ CẢ nhóm: nhóm có phần mà câu không nói tới thì để rỗng'. (b) `dieuKienVao[1]` trích MẢNH của danh sách loại trừ mà mất luôn vùng phủ định ('(c) Những sản phẩm làm từ whey, chứa trên 95% lactose… (nhóm 17.02).') — đọc riêng, câu này liệt kê đúng những hàng bị LOẠI (sang 17.02), tức nói NGƯỢC với điều kiện 'không chứa trên 95% lactose khan = true'; và nó chỉ phủ nhánh whey, không phủ nhánh 0404.90. Cả hai thông tin không mất: điều kiện 'chưa được chi tiết hơn ở nơi khác' nằm trong `phamVi` sau khi sửa, khoản loại trừ 17.02 nằm trong `loaiTru[2]`. SỬA 1: `phamVi` — câu trích cũ dừng NGAY TRƯỚC ngoại lệ 'miễn là những sản phẩm này chưa được chi tiết hơn ở nơi khác' (đúng lỗi 'mất ngoại lệ ngay sau câu trích') và `text` cũng bỏ mất điều kiện đó nên nói nhiều hơn nguồn; câu trích cũ còn dài 302 ký tự (vượt trần 300 luật 2). SỬA: trích lại ba mảnh nguyên văn liên tục có đủ điều kiện 'miễn là…' (281 ký tự) và bổ sung điều kiện vào `text` (214 ký tự, dưới trần clip 220 của runtime). GIỮ 7: `loaiTru[0..4]` (mỗi câu giữ vùng phủ định 'Nhóm này không bao gồm:' và nêu đích danh mã nhóm đích 04.01+04.02 / 04.06 / 17.02 / 19.01 / 35.02+35.04; đoạn lược '…' chỉ bỏ các mục anh em trong danh sách, không bỏ ngoại lệ); `phanBiet[0..1]` (câu hỏi không nhắc mã phân nhóm, chiều Có/Không đúng, mã đích có trong câu trích, nhánh 'không' = chính nhóm 0404 đúng mẫu đã gộp). GHI NHẬN (ngoài phạm vi mục 4, KHÔNG sửa): (1) `dong8[04041011]` và `dong8[04041091]` trích CÙNG một câu SEN (hai khối sen.04041011 và sen.04041091 giống hệt nhau) và chỉ khác nhau ở nhãn 'tiêu đề quốc gia 0404.10.1' / '0404.10.9' không có trong câu trích; luật _he-thong yêu cầu ghi 'dòng cha không có trong nguồn — đối chiếu biểu thuế'. (2) Câu thứ ba của chú giải nhóm — 'Do vậy nhóm này bao gồm những sản phẩm thiếu một hoặc nhiều thành phần sữa tự nhiên, sữa đã bổ sung các thành phần sữa tự nhiên (ví dụ để tạo ra sản phẩm giàu protein)' — chưa mục nào đại diện; đưa vào `phamVi` sẽ vượt trần 300 ký tự. Đã nêu để người duyệt xem.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích cũ (302 ký tự, vượt trần 300 luật 2) DỪNG NGAY TRƯỚC ngoại lệ 'miễn là những sản phẩm này chưa được chi tiết hơn ở nơi khác', và `text` cũng bỏ mất điều kiện đó nên khẳng định phạm vi rộng hơn nguồn — đúng lỗi 'mất ngoại lệ ngay sau câu trích'. SỬA: trích lại ba mảnh nguyên văn liên tục, có đủ vế điều kiện 'miễn là những sản phẩm này chưa được chi tiết hơn ở nơi khác' (281 ký tự ≤ 300); bổ sung chính điều kiện này vào `text` (214 ký tự, dưới trần clip 220 của runtime). Giữ nguyên `nguon`.",
+      "sua": {
+        "text": "Whey và whey đã cải biến; sản phẩm tươi hoặc được bảo quản có chứa các thành phần sữa mà không có thành phần giống với thành phần của sản phẩm tự nhiên, miễn là những sản phẩm này chưa được chi tiết hơn ở nơi khác.",
+        "trich": "Nhóm này bao gồm whey … và whey đã cải biến … Nhóm này cũng bao gồm những sản phẩm tươi hoặc được bảo quản có chứa những thành phần sữa mà các sản phẩm này không có thành phần giống với thành phần của sản phẩm tự nhiên, miễn là những sản phẩm này chưa được chi tiết hơn ở nơi khác."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "xoa",
+      "lyDo": "Câu trích là MỤC (E) của danh mục Chương 4 trong ch04.chuong ('(E) Các sản phẩm có chứa thành phần sữa tự nhiên, chưa được chi tiết hoặc ghi ở nơi khác.') — định nghĩa một PHẦN của Chương, không phải điều kiện vào nhóm 0404; và chỉ phủ nhánh 0404.90, không phủ nhánh whey 0404.10. Luật lô 030: 'dieuKienVao phải trích câu RÀNG BUỘC… Và chỉ đặt khi câu đó phủ CẢ nhóm: nhóm có phần mà câu không nói tới… thì để rỗng'. Thông tin 'chưa được chi tiết hơn ở nơi khác' không mất — đã vào `phamVi` sau khi sửa. XOÁ theo luật 'thà bỏ mục còn hơn mục không có căn cứ'."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "xoa",
+      "lyDo": "Câu trích là MẢNH của danh sách loại trừ mà mất luôn vùng phủ định ('(c) Những sản phẩm làm từ whey, chứa trên 95% lactose, dưới dạng lactose khan, tính theo hàm lượng vật chất khô (nhóm 17.02).') — đọc riêng, câu này liệt kê đúng những hàng bị LOẠI sang 17.02, tức nói NGƯỢC với điều kiện 'khong_chua_tren_95_lactose_khan = true'; thêm nữa nó chỉ phủ nhánh whey, không phủ nhánh 0404.90. Cả hai lý do đều là lỗi máy KHÔNG bắt. Thông tin không mất: khoản loại trừ 17.02 đã có đầy đủ trong `loaiTru[2]`. XOÁ theo luật 'thà bỏ mục còn hơn mục không có căn cứ'."
+    }
+  ]
+}

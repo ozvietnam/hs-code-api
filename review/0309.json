@@ -1,0 +1,21 @@
+{
+  "nhom": "0309",
+  "nguoiSoat": "dev-soat-doc-lap-lo042",
+  "luc": "2026-10-25T16:25:00+07:00",
+  "soat": 4,
+  "giu": 3,
+  "sua": 1,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0309 — 4 mục trong phạm vi mục 4 (1 phamVi + 1 dieuKienVao + 1 loaiTru + 1 phanBiet). SỬA 1, XOÁ 0. Đọc thêm 2 tieuChi6 + 8 dong8 nhưng KHÔNG sửa (ngoài phạm vi mục 4) — ghi nhận bên dưới. SỬA 1: `dieuKienVao[0]` khẳng định 'thích hợp dùng làm thức ăn cho người = true' nhưng lại trích CÂU LOẠI TRỪ ('Nhóm này không bao gồm … không thích hợp dùng làm thức ăn cho người (nhóm 23.01)') — đọc riêng, câu trích nói NGƯỢC chiều với điều mục khẳng định. SỬA: chuyển sang câu khẳng định DƯƠNG có thật trong nguồn — chú giải chương 03, chú giải 3: '3. Các nhóm từ 03.05 đến 03.08 không bao gồm bột mịn, bột thô và viên, thích hợp dùng làm thức ăn cho người (nhóm 03.09).' Câu này nói thẳng bột mịn/bột thô/viên thích hợp làm thức ăn cho người thuộc 03.09 → đúng chiều với `fact`, và vẫn là câu nguyên văn byte-exact (121 ký tự, không vướng CAU_CHO_PHEP). Vế dương 'Bột mịn và bột thô từ cá … vẫn được phân loại ở đây' KHÔNG dùng được vì vướng 'vẫn được phân loại' → máy loại. GIỮ 3: `phamVi` (162 ký tự, nguyên văn, nêu đúng phạm vi nhóm); `loaiTru[0]` (có dấu hiệu loại trừ + nêu đích danh nhóm 23.01); `phanBiet[0]` (chiều Có/Không đúng: không thích hợp làm thức ăn cho người → 23.01; neuKhong = chính nhóm đúng mẫu đã gộp). GHI NHẬN (ngoài phạm vi, KHÔNG sửa): `dong8[03091000]` khai `nguon` = 'wco.030910' trong khi nhóm có `tax.03091000` ('03091000 - Của cá'); luật 6 ghi nguồn dòng 8 số là 'tax.<8 số> hoặc sen.<mã>', WCO chỉ để bổ sung tên phân nhóm 6 số — điều kiện dòng này trộn hai nguồn ('Của cá' của biểu thuế + 'thích hợp dùng làm thức ăn cho người' của WCO). Các dòng 03099011/12/19/21/22/29/90 ghi 'tiêu đề quốc gia 0309.90.1 / .2 / .9' — nhãn này KHÔNG có trong câu trích biểu thuế (chỉ ghi '- - - Tươi hoặc ướp lạnh', '- - - Đông lạnh', '- - - Loại khác'). Đã nêu để người duyệt xem; ngoài phạm vi mục 4 nên không sửa.",
+  "thayDoi": [
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích cũ là CÂU LOẠI TRỪ ('Nhóm này không bao gồm … không thích hợp dùng làm thức ăn cho người (nhóm 23.01)') nhưng mục khẳng định điều kiện DƯƠNG ('thích hợp dùng làm thức ăn cho người = true') — đọc riêng, câu trích nói ngược chiều. SỬA: đổi `nguon` sang 'ch03.chuong' và trích câu khẳng định dương có thật: '3. Các nhóm từ 03.05 đến 03.08 không bao gồm bột mịn, bột thô và viên, thích hợp dùng làm thức ăn cho người (nhóm 03.09).' — nói thẳng bột mịn/bột thô/viên thích hợp làm thức ăn cho người thuộc 03.09, đúng chiều với `fact`. Nguyên văn byte-exact, 121 ký tự, không vướng CAU_CHO_PHEP. Giữ nguyên `fact`, `op`, `value`, `donVi`, `ngoaiTru`.",
+      "sua": {
+        "nguon": "ch03.chuong",
+        "trich": "3. Các nhóm từ 03.05 đến 03.08 không bao gồm bột mịn, bột thô và viên, thích hợp dùng làm thức ăn cho người (nhóm 03.09)."
+      }
+    }
+  ]
+}

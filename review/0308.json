@@ -1,0 +1,20 @@
+{
+  "nhom": "0308",
+  "nguoiSoat": "dev-soat-doc-lap-lo042",
+  "luc": "2026-10-25T16:20:00+07:00",
+  "soat": 4,
+  "giu": 3,
+  "sua": 1,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0308 — 4 mục trong phạm vi mục 4 (1 phamVi + 1 dieuKienVao + 1 loaiTru + 1 phanBiet). SỬA 1, XOÁ 0. VỀ CÂU HỎI MỞ CỦA PHIÊN SOẠN ('người soát xem có chấp nhận cách diễn đạt phủ định + = true không, hay muốn đổi/thu'): GIỮ nguyên `fact` = 'khong_phai_dong_vat_giap_xac_hoac_dong_vat_than_mem' với value=true. Lý do: đây là mẫu ĐÃ CÓ trong sổ tay đã gộp — 20/590 dieuKienVao đã gộp dùng fact 'khong_*' với value=true (ví dụ 5808, 5909) — và runtime in ra đúng dạng 'fact op value' nên câu đọc được là 'không phải động vật giáp xác hoặc động vật thân mềm = true', không đảo chiều. Vấn đề thật của mục này KHÔNG phải cách diễn đạt mà là câu trích chỉ phủ mục (1) — đã sửa. Đọc thêm 8 tieuChi6 + 20 dong8 + 2 cay.tenDien nhưng KHÔNG sửa (ngoài phạm vi soát mục 4) — ghi nhận bên dưới. SỬA 1: `dieuKienVao[0]` trích MỖI mục (1) của chú giải nhóm nên không phủ cả nhóm (nhóm có hai mục song song (1) và (2), mục (2) là hàng hun khói); luật lô 030: 'chỉ đặt khi câu đó phủ CẢ nhóm'. Đã nối thêm mở đầu mục (2) (vẫn là câu nguyên văn liên tục trong nguồn) để điều kiện 'trừ động vật giáp xác và động vật thân mềm' được đặt cho cả hai mục. KHÔNG trích trọn mục (2) vì vế 'đã hoặc chưa làm chín…' vướng mẫu câu cho phép CAU_CHO_PHEP (lib/so-tay.js) → máy sẽ loại mục. GIỮ 3: `phamVi` (câu trích 297 ký tự ≤ 300, nguyên văn, nêu đúng phạm vi hai mục (1)+(2) nối bằng dấu lược đúng luật); `loaiTru[0]` (câu nguồn có dấu hiệu loại trừ 'không bao gồm' và NÊU ĐÍCH DANH nhóm 16.05); `phanBiet[0]` (câu hỏi Có/Không đúng chiều: đã luộc trong nước hoặc bảo quản trong dấm → 16.05; mẫu neuKhong = chính nhóm đúng như 552/739 phanBiet đã gộp). GHI NHẬN (ngoài phạm vi, KHÔNG sửa): (1) `phamVi` bỏ sót nhánh thứ ba của chú giải nhóm — 'Nhóm này cũng bao gồm các bộ phận của động vật thủy sinh không xương sống (ví dụ tuyến sinh dục của cầu gai), với điều kiện chúng được chế biến như cách đã nêu tại mục (1) hoặc (2) trên'; đưa vào văn bản phạm vi sẽ vượt trần 300 ký tự luật 2 (ba nhánh cộng lại ~376 ký tự), nên GIỮ và ghi nhận để người duyệt xem; (2) `phamVi.text` đổi 'làm khô, muối hoặc ngâm nước muối' thành 'làm khô, muối, ngâm nước muối' — chấp nhận được (danh sách ba trạng thái, nghĩa không đổi); (3) `cay.tenDien` điền tên cho 030811 và 030821 dù hai tên này đã nằm trong `tieuChi6` — ngoài phạm vi mục 4, đã nêu để người duyệt xem.",
+  "thayDoi": [
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích cũ chỉ phủ mục (1) của chú giải nhóm nên điều kiện vào nhóm không phủ cả nhóm 0308 (mục (2) là hàng hun khói — 'Động vật thủy sinh không xương sống hun khói trừ động vật giáp xác và động vật thân mềm'), vi phạm luật lô 030 'chỉ đặt khi câu đó phủ CẢ nhóm'. SỬA: nối thêm mở đầu mục (2) bằng dấu lược '…'; cả hai mảnh đều là câu nguyên văn liên tục trong nhom0308.nhom, tổng 176 ký tự. KHÔNG trích trọn mục (2) vì vế 'đã hoặc chưa làm chín trước hoặc trong quá trình hun khói' vướng CAU_CHO_PHEP → máy loại mục. Giữ nguyên `fact`, `op`, `value`.",
+      "sua": {
+        "trich": "(1) Động vật thủy sinh không xương sống trừ động vật giáp xác và động vật thân mềm … (2) Động vật thủy sinh không xương sống hun khói trừ động vật giáp xác và động vật thân mềm"
+      }
+    }
+  ]
+}

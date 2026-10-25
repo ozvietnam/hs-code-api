@@ -1,0 +1,36 @@
+{
+  "nhom": "0405",
+  "nguoiSoat": "dev-soat-doc-lap-lo042",
+  "luc": "2026-10-25T17:05:00+07:00",
+  "soat": 7,
+  "giu": 4,
+  "sua": 3,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0405 — 7 mục trong phạm vi mục 4 (1 phamVi + 0 dieuKienVao + 3 loaiTru + 3 phanBiet). SỬA 3, XOÁ 0. VỀ CÂU HỎI MỞ CỦA PHIÊN SOẠN (`phanBiet[0]` 'bơ khử nước hoặc ghee' → 04059010|04059030 vs bơ thường → 04051000, là điểm phân biệt quan trọng của nhóm): GIỮ. Tên hàng khớp đúng dòng biểu thuế ('bơ khử nước' = 'Chất béo khan của bơ' = 04059010; 'ghee' = 'Ghee' = 04059030), chiều Có/Không đúng, và hai mã 8 số nằm TRONG nhóm nên luật 4 không buộc phải nêu trong câu trích. Hạn chế đã biết (câu trích chỉ nêu 'phân nhóm 0405.90', không nêu mã 8 số) đã ghi ở mục GHI NHẬN bên dưới. Đọc thêm 8 tieuChi6 + 6 dong8 nhưng KHÔNG sửa (ngoài phạm vi mục 4) — ghi nhận bên dưới. SỬA 3: (a) `phamVi.text` nói nhánh 'sản phẩm chứa hỗn hợp bơ với lượng nhỏ thảo dược, gia vị, hương liệu, tỏi' như là phạm vi VÔ ĐIỀU KIỆN, trong khi chú giải nhóm nói '…(miễn là chúng vẫn giữ được đặc tính của những sản phẩm thuộc nhóm này)' — text nói nhiều hơn nguồn. SỬA: đưa vế điều kiện vào text (219 ký tự, dưới trần clip 220 của runtime nên không bị cắt giữa câu); `trich` đã có sẵn vế điều kiện nên giữ nguyên. (b) `loaiTru[1]` và (c) `phanBiet[1]` trích câu kết bằng liên từ treo '; hoặc' (dấu nối của danh sách chưa hết) — bỏ đuôi '; hoặc', câu trích còn nguyên văn liên tục và đủ vùng phủ định. GIỮ 4: `loaiTru[0]` và `loaiTru[2]` (mỗi câu có vùng phủ định 'Chương này cũng không bao gồm các sản phẩm sau:' và nêu đích danh mã 19.01 / 35.01+35.02+39.13); `phanBiet[0]` (câu hỏi không nhắc mã phân nhóm; chiều Có/Không đúng: bơ khử nước hoặc ghee → 0405.90, không phải bơ → 04051000); `phanBiet[2]` (mã đích 35.01/35.02/39.13 có trong câu trích; nhánh 'không' = chính nhóm 0405 đúng mẫu đã gộp). `dieuKienVao` rỗng là ĐÚNG: các ngưỡng số của nhóm (chất béo sữa 80–95% cho 0405.10, 39–80% cho 0405.20) thuộc CẤP PHÂN NHÓM nên phải nằm ở `tieuChi6`/`dong8`, không được đưa vào `dieuKienVao` (luật _he-thong, máy loại 'dieu-kien-cap-phan-nhom'). Loại trừ cấp NHÓM duy nhất — 'chất phết từ chất béo có chứa các chất béo khác chất béo sữa hoặc có chứa hàm lượng chất béo sữa dưới 39%… (thường thuộc nhóm 15.17 hoặc 21.06)' — được bản nháp BỎ, và đó là ĐÚNG: vế 'thường thuộc' là câu không dứt khoát, luật máy loại 'loai-tru-chi-la-thuong' cũng loại. GHI NHẬN (ngoài phạm vi mục 4, KHÔNG sửa): (1) cả 6 dòng `dong8` khai `nguon` = 'nhom0405.nhom' trong khi luật 6 ghi nguồn dòng 8 số là 'tax.<8 số> hoặc sen.<mã>'; hệ quả: `dong8[04059090]` khẳng định 'dòng biểu thuế ghi \"Loại khác\"' nhưng câu trích lại là câu chú giải nhóm về chất béo/dầu khác tách từ sữa — nội dung mâu thuẫn với chính câu trích; `dong8[04059010]` và `dong8[04059030]` dùng CHUNG một câu trích ('Ngoài ra nhóm này cũng bao gồm bơ khan và ghee…') trong khi biểu thuế ghi 'Chất béo khan của bơ' và 'Ghee'. (2) `phanBiet[0]` chỉ đích danh 'phân nhóm 0405.90' nhưng `neuCo` ghi hai mã 8 số (04059010|04059030) — tên hàng khớp ('bơ khử nước' = 'Chất béo khan của bơ', 'ghee' = 'Ghee') nhưng câu trích không nêu mã, và máy không kiểm mã 8 số nội nhóm. (3) `dong8[04051000]` và `dong8[04052000]` dùng khóa 'dieuKienSo' — không có trong lược đồ ghi ở _he-thong.txt (lược đồ ghi `dong8.tieuChi`), dù máy hiện chấp nhận. Đã nêu để người duyệt xem.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "`text` khẳng định nhánh 'sản phẩm chứa hỗn hợp bơ với lượng nhỏ thảo dược, gia vị, hương liệu, tỏi' là phạm vi VÔ ĐIỀU KIỆN, trong khi chú giải nhóm đặt điều kiện: '…(miễn là chúng vẫn giữ được đặc tính của những sản phẩm thuộc nhóm này)' — text nói nhiều hơn nguồn, và mất đúng kết luận của luật. SỬA: đưa vế điều kiện vào `text` (219 ký tự, dưới trần clip 220 của lib/so-tay-gates.js nên không bị cắt giữa câu). `trich` đã có sẵn vế điều kiện nên giữ nguyên (299 ký tự ≤ 300).",
+      "sua": {
+        "text": "Bơ … Chất phết từ bơ sữa … Những chất béo và dầu khác tách từ sữa; gồm cả bơ khan và ghee, và sản phẩm chứa hỗn hợp bơ với lượng nhỏ thảo dược, gia vị, hương liệu, tỏi (miễn là chúng vẫn giữ được đặc tính của nhóm này)."
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích kết bằng liên từ treo '; hoặc' (dấu nối dẫn sang mục (d) chưa được trích) — đọc như câu bị cụt. SỬA: bỏ đuôi '; hoặc'; câu còn nguyên văn liên tục, vẫn có vùng phủ định 'Chương này không bao gồm:' và nêu đích danh cả 19.01 lẫn 21.06. Giữ nguyên `dieuKien`, `sangNhom`, `nguon`.",
+      "sua": {
+        "trich": "5. Chương này không bao gồm: … (c) Các sản phẩm thu được từ sữa bằng cách thay thế một hoặc nhiều thành phần tự nhiên của sữa (ví dụ, chất béo butyric) bởi chất khác (ví dụ, chất béo oleic) (nhóm 19.01 hoặc 21.06)"
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích kết bằng liên từ treo '; hoặc' (dấu nối của danh sách chưa hết) — đọc như câu bị cụt. SỬA: bỏ đuôi '; hoặc'; câu còn nguyên văn liên tục, mã đích 19.01/21.06 vẫn có trong câu nên chiều Có/Không không đổi. Giữ nguyên `hoi`, `neuCo`, `neuKhong`, `nguon`.",
+      "sua": {
+        "trich": "5. Chương này không bao gồm: … (c) Các sản phẩm thu được từ sữa bằng cách thay thế một hoặc nhiều thành phần tự nhiên của sữa (ví dụ, chất béo butyric) bởi chất khác (ví dụ, chất béo oleic) (nhóm 19.01 hoặc 21.06)"
+      }
+    }
+  ]
+}
