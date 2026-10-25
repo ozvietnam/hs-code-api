@@ -77,11 +77,21 @@ const keep = checkResidualPreference({
 assert('KHÔNG bật khi mô tả có nêu điều kiện đặc trưng', keep === null, keep);
 
 // Điều kiện của mã cụ thể là ĐIỀU KIỆN SỐ trong sổ tay ("Đường kính ngoài của thân không quá 16 mm"): ký hiệu ren M8x30
-// là bằng chứng (cùng máy chấm với chotDong8); M20 trái điều kiện thì vẫn đề nghị residual, nêu đúng số.
-assert('KHÔNG bật khi ký hiệu ren M8x30 chứng minh điều kiện số (prod 25/10/2026)',
-  checkResidualPreference({ hsCode: '73181510', description: 'Bu lông lục giác bằng thép mạ kẽm M8x30, kèm đai ốc' }) === null);
+// là bằng chứng (cùng máy chấm với chotDong8); M20 trái điều kiện thì vẫn đề nghị residual, nêu đúng số. Chỉ khi công tắc
+// sổ tay HS_SO_TAY bật; tắt → y từng byte origin/main 55ef84d (ảnh chụp dưới).
+const BOLT = 'Bu lông lục giác bằng thép mạ kẽm M8x30, kèm đai ốc';
+const BOLT_ORIGIN_MAIN = {"currentHs":"73181510","currentName":"Đường kính ngoài của thân không quá 16 mm","suggestedHs":"73181590","suggestedName":"Loại khác","level":"phân nhóm 6 số","reasonVi":"Mô tả hàng không nêu bất kỳ điều kiện đặc trưng nào của mã 73181510 (\"Đường kính ngoài của thân không quá 16 mm\"). Một phân nhóm cụ thể chỉ áp dụng khi hàng hoá thoả điều kiện của nó; chưa chứng minh được thì mã \"Loại khác\" (73181590) ở cấp phân nhóm 6 số là lựa chọn đúng luật hơn.","evidence":{"requiredTerms":["duong","kinh","than"],"matchedTerms":[],"matchRatio":0,"residualInCandidates":null}};
+const soTayEnv = process.env.HS_SO_TAY;
+delete process.env.HS_SO_TAY;
+assert('HS_SO_TAY tắt (không đặt) → bu lông M8x30 vẫn BẬT như cũ, y từng byte origin/main',
+  JSON.stringify(checkResidualPreference({ hsCode: '73181510', description: BOLT })) === JSON.stringify(BOLT_ORIGIN_MAIN), checkResidualPreference({ hsCode: '73181510', description: BOLT }));
+process.env.HS_SO_TAY = 'off';
+assert('HS_SO_TAY=off → y từng byte origin/main', JSON.stringify(checkResidualPreference({ hsCode: '73181510', description: BOLT })) === JSON.stringify(BOLT_ORIGIN_MAIN));
+process.env.HS_SO_TAY = 'full';
+assert('HS_SO_TAY=full → KHÔNG bật khi ký hiệu ren M8x30 chứng minh điều kiện số (prod 25/10/2026)', checkResidualPreference({ hsCode: '73181510', description: BOLT }) === null);
 const m20 = checkResidualPreference({ hsCode: '73181510', description: 'M20x80 bu lông' });
 assert('BẬT khi ký hiệu ren trái điều kiện số: M20 > 16 mm → 73181590, lý do nêu 20 mm', m20?.suggestedHs === '73181590' && /20 mm/.test(m20.reasonVi), m20);
+if (soTayEnv === undefined) delete process.env.HS_SO_TAY; else process.env.HS_SO_TAY = soTayEnv;
 
 const ev = evidenceForSpecific('84818083', 'van ngắt nhiên liệu bằng plastic');
 assert('evidenceForSpecific nhận ra có bằng chứng', ev.supported === true, ev);
