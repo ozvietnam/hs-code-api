@@ -1,0 +1,156 @@
+{
+ "nhom": "0511",
+ "nguoiSoat": "dev-soat-doc-lap-lo045",
+ "luc": "2026-10-25T22:20:00+07:00",
+ "soatVaiTro": "Người soát ĐỘC LẬP (không phải người soạn). Đọc lại từng mục cùng nguồn nguyên văn tmp/so-tay/nguon/0511.txt; kiểm BYTE-EXACT từng mảnh câu trích (máy check-so-tay dùng squash() nên không bắt được lỗi ký tự).",
+ "soat": 14,
+ "daKiem": 13,
+ "giu": 12,
+ "sua": 2,
+ "xoa": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 0511 — 14 mục trong phạm vi mục 4 (1 phamVi + 9 loaiTru + 4 phanBiet; dieuKienVao rỗng, boPhan null), đọc lại cùng nguồn nguyên văn. SỬA 2, XOÁ 0, GIỮ 12. Nhóm có 14 mục ngang hàng — nhóm nhiều phần nhất của lô. SỬA 2: (1) `phamVi` — bổ sung 'động vật thân mềm' cho mục (6) (nguồn: 'Phế liệu của cá hoặc động vật giáp xác, động vật thân mềm hoặc động vật thủy sinh không xương sống khác') vì bản cũ nêu phạm vi hẹp hơn nguồn ('phế liệu cá và giáp xác'), và câu trích cũ cắt mất đúng nhánh 'động vật thân mềm'; (2) `loaiTru[0].dieuKien` — bản cũ bỏ nhánh 'hoặc chẩn đoán bệnh' của câu loại trừ, làm hẹp điều kiện loại trừ. GIỮ 12: 9 loaiTru còn lại đều nêu đích danh nhóm đích trong câu trích và có dấu hiệu loại trừ rõ ('loại trừ', 'không bao gồm', 'được phân loại vào nhóm', 'Không nên nhầm lẫn'); 4 phanBiet đều có mã đích trong câu trích, `hoi` không nhắc mã, nhánh Có/Không đúng chiều (kiểm riêng cặp `phanBiet[2]` 'gan cá dùng chế biến dược phẩm' → 0510 và `loaiTru[2]` cùng câu: chiều Có/Không khớp, không đảo). GHI NHẬN (ngoài phạm vi sửa, KHÔNG sửa — nêu để người duyệt xem): (a) `phamVi.trich` dài 573 ký tự, VƯỢT trần 300 của luật 2 (máy chỉ chặn >600 nên lọt) — KHÔNG cắt được: 14 mục ngang hàng, một trích tối thiểu phải nêu cả 14 tiêu đề đã dài ~560 ký tự; cắt còn ≤300 buộc phải BỎ mục thật khỏi phạm vi nhóm (đã thử: bỏ (2)(9)(10)(11) mới lên 592, vẫn >300). Nhà đã có 95/419 nhóm gộp >300, cao nhất 598 (8472: 568 ký tự/16 mục; 0410: 540 ký tự — lô 043 đã soát và giữ nguyên), nên giữ độ dài này là theo thực hành sẵn có, và chọn giữ phạm vi đủ 14 mục còn hơn bỏ mục thật để nhét trích. (b) Dấu lược '…' nuốt 2 ngoại lệ KHÔNG được ghi ở mục nào khác: sau mục (12) nuốt '... không thích hợp dùng làm thức ăn cho người TRỪ các sản phẩm thuộc nhóm 02.09 hoặc thuộc một trong các nhóm trước của Chương này' và sau mục (13) nuốt 'Nhóm này không bao gồm lông đuôi hoặc bờm ngựa đã trải qua quá trình xe sợi và lông đuôi hoặc bờm ngựa được nối với nhau (Chương 51)'. Không kéo được vào trích (vượt 600) và không mã hóa được: 'Chương 51' không phải mã nhóm nên không ghi vào `sangNhom`/`neuCo`; nhóm 02.09 lại là CHIẾT LƯỢC ('trừ ... của Chương này') chứ không phải loại trừ ra khỏi nhóm nên không thành `loaiTru`. Đề nghị người duyệt cân nhắc mở rộng lược đồ để giữ hai ý này. (c) `loaiTru[6].dieuKien` ('Thuốc nhuộm màu đỏ tươi và rất bền màu' → 32.03) không nêu 'chế từ bọ kemet' — thêm vào vượt trần 55 (41 → 59), nên ghi nhận. (d) `phamVi.text` không nêu mục (10) 'Mẩu vụn và phế liệu tương tự, của da và da sống thô' và (11) 'Phế thải của da lông thô' — thêm vào vượt trần 220 (sau khi sửa còn 220/220), nên ghi nhận.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Bản cũ nêu PHẠM VI hẹp hơn nguồn: mục (6) của nhóm 0511 trong nguồn là 'Phế liệu của cá hoặc động vật giáp xác, động vật thân mềm hoặc động vật thủy sinh không xương sống khác' nhưng bản cũ chỉ nêu 'phế liệu cá và giáp xác' (mất nhánh thân mềm) và câu trích cũ cắt đúng chỗ đó ('…(6) Phế liệu của cá hoặc động vật giáp xác…'). Lỗi này máy KHÔNG bắt được (máy chỉ kiểm câu trích có thật trong nguồn, không kiểm `text` có nói đúng phạm vi không) và rất dễ kéo sai phân loại: phế liệu mực/sò/ốc sẽ không được nhận là 0511 (0511.91.90) khi đọc phạm vi. SỬA `text`: thêm 'thân mềm' vào danh sách phần (212 → 220 ký tự, vẫn ≤ trần clip 220 của runtime lib/so-tay-gates.js clip(phamVi.text, 220) — hệt ngưỡng nên không bị cắt). SỬA `trich`: nối thêm mảnh nguyên văn 'động vật thân mềm' vào sau '…(6) Phế liệu của cá hoặc động vật giáp xác' (573 → 592 ký tự, vẫn ≤ trần 600 của máy). KHÔNG kéo được nhánh 'hoặc động vật thủy sinh không xương sống khác' vì sẽ vượt 600 (638) — xem ghiChu mục (a),(d).",
+   "sua": {
+    "text": "Tinh dịch, phôi, tiết động vật; bọ yên chi và côn trùng tương tự; trứng, sẹ, bọc trứng cá; phế liệu cá, giáp xác, thân mềm; trứng tằm; trứng kiến; gân, dây chằng; động vật chết; lông đuôi, bờm ngựa; bọt biển thiên nhiên.",
+    "trich": "(1) Tinh dịch của động vật.…(2) Phôi động vật, ở dạng đông lạnh để cấy…(3) Tiết động vật, ở dạng lỏng hoặc khô, có thể ăn được hoặc không.…(4) Bọ yên chi (bọ phấn thoa mặt/rệp son) và các côn trùng tương tự…(5) Trứng , sẹ và bọc trứng cá, không dùng làm thực phẩm.…(6) Phế liệu của cá hoặc động vật giáp xác, động vật thân mềm…(7) Trứng tằm.…(8) Trứng kiến.…(9) Gân và dây chằng…(10) Mẩu vụn và phế liệu tương tự, của da và da sống thô.…(11) Phế thải của da lông thô…(12) Động vật chết thuộc Chương 1 hoặc Chương 3…(13) Lông đuôi hoặc bờm ngựa…(14) Bọt biển thiên nhiên có nguồn gốc động vật."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "Bản cũ `dieuKien` = 'Tiết động vật điều chế dùng cho chữa bệnh, phòng bệnh' BỎ mất nhánh 'hoặc chẩn đoán bệnh' của câu nguồn 'Nhóm này loại trừ tiết động vật điều chế dùng cho chữa bệnh, phòng bệnh hoặc chẩn đoán bệnh (nhóm 30.02).' — hẹp điều kiện loại trừ: tiết động vật dùng để CHẨN ĐOÁN bệnh vẫn thuộc 30.02 nhưng sổ tay cũ không nêu, nên câu hỏi runtime ('Hàng có thuộc diện ... không?') không bắt được. Lỗi máy KHÔNG bắt (máy kiểm câu trích, không kiểm `dieuKien` có đủ nhánh không). SỬA: 'Tiết động vật điều chế dùng chữa, phòng, chẩn đoán bệnh' — 55 ký tự, vừa trần clip 55 của runtime (clip chỉ cắt khi DÀI HƠN 55 nên không bị cắt), giữ nguyên đầu danh từ 'Tiết động vật điều chế' mà cổng so khớp dùng, và nêu đủ cả ba công dụng trong câu trích. KHÔNG sửa `trich` (đã nguyên văn, đủ cả ba nhánh) và KHÔNG sửa `nguon`.",
+   "sua": {
+    "dieuKien": "Tiết động vật điều chế dùng chữa, phòng, chẩn đoán bệnh"
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "'Mai, vỏ động vật thân mềm, động vật giáp xác hoặc động vật da gai thuộc nhóm 05.08' — nêu đích danh 05.08, nằm trong khối 'Nhóm này cũng không bao gồm', `dieuKien` giữ đủ đối tượng."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "'Gan cá không thích hợp để làm thực phẩm mà dùng chế biến dược phẩm (nhóm 05.10)' — nêu đích danh 05.10; `dieuKien` 'Gan cá dùng chế biến dược phẩm' đã giữ định ngữ quyết định (dùng chế biến dược phẩm), không thêm chữ ngoài nguồn."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "'Nhựa cánh kiến đỏ ... (nhóm 13.01)' — nêu đích danh 13.01; `dieuKien` lấy danh từ bao trùm 4 dạng (phiến mỏng, hạt, thỏi, loại khác) nên phủ đúng phạm vi loại trừ."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "'Bộ sưu tập và các vật phẩm sưu tập về động vật học ... (nhóm 97.05)' — nêu đích danh 97.05, `dieuKien` chép đúng."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "'Xơ mướp, còn được gọi là bọt biển thực vật, được phân loại vào nhóm 14.04' — câu nêu rõ đích danh 14.04; `dieuKien` chép đúng."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "'Bọ kemet được sử dụng để chế thuốc nhuộm màu đỏ tươi và rất bền màu, loại thuốc nhuộm này được phân loại vào nhóm 32.03' — nêu đích danh 32.03, đối tượng loại trừ là chính thuốc nhuộm. Xem ghiChu mục (c) về việc không nêu 'chế từ bọ kemet' (thêm là vượt trần 55)."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "'Bọ yên chi cung cấp phẩm màu đỏ (chiết xuất bọ yên chi) (nhóm 32.03) dùng để chế biến chất màu đỏ (nhóm 32.05)' — `dieuKien` chỉ nhắm CHIẾT XUẤT (32.03), không nhầm sang chất màu đỏ (32.05); mã đích có trong câu trích."
+  },
+  {
+   "index": "loaiTru[8]",
+   "hanhDong": "giu",
+   "lyDo": "'Không nên nhầm lẫn giữa bọ kemet với “khoáng kemet” (nhóm 38.24)' — dấu hiệu loại trừ hợp lệ (tương đương 'không lẫn với'), mã đích có trong câu trích; xử lý đồng nhất với `loaiTru[3]` của 0510 (hổ phách vàng → 25.30)."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mã đích 16.04 có trong câu trích, `hoi` không nhắc mã, chiều Có/Không đúng (có → 1604 vì chế phẩm thay thế trứng cá tầm muối thuộc 16.04; không → 0511 vì là trứng muối thật của nhóm)."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mã đích 38.24 có trong câu trích, `hoi` không nhắc mã, chiều Có/Không đúng (có → 3824 vì khoáng kemet thuộc 38.24; không → 0511 vì là bọ kemet)."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mã đích 05.10 có trong câu trích, `hoi` không nhắc mã, chiều Có/Không đúng và KHỚP với `loaiTru[2]` (cùng một câu nguồn: có → 0510, không → 0511) — không bị đảo nhánh."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Mã đích 32.03 có trong câu trích, `hoi` không nhắc mã, chiều Có/Không đúng (có → 3203 vì chiết xuất bọ yên chi thuộc 32.03; không → 0511 vì là bọ yên chi)."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ `wco.051110`, không lỗi."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ mục (6) của nguồn, không lỗi."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ mục (12) của nguồn, không lỗi."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ `wco.051199`, không lỗi."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `tax.05111000`, không lỗi."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ mục (5) của nguồn, không lỗi."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ mục (ii) của nguồn, không lỗi."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ mục (iii) của nguồn, không lỗi."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: dòng 'Loại khác' theo biểu thuế, không lỗi."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `tax.05119910`, không lỗi."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ mục (7) của nguồn, không lỗi."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ mục (14) của nguồn, không lỗi."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: dòng 'Loại khác' theo biểu thuế, không lỗi."
+  }
+ ]
+}
