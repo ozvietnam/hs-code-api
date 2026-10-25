@@ -1,0 +1,107 @@
+{
+  "nhom": "0307",
+  "nguoiSoat": "dev-soat-doc-lap-lo041",
+  "soatVaiTro": "soat-doc-lap",
+  "luc": "2026-10-25T09:14:31.265Z",
+  "phamViSoat": "Đã soi đầy đủ 5 khối trong phạm vi của nhóm 0307: phamVi (1 mục), boPhan (0 — rỗng/null), dieuKienVao (1 mục), loaiTru (2 mục), phanBiet (0 — rỗng) = 4 mục trong phạm vi. Ngoài phạm vi đọc để kiểm độ phủ và chiều đúng–sai: tieuChi6 (47 mục), dong8 (54 mục), cay.tenDien (7 mục) = 108 mục. Tổng đã soi 112 mục. Đọc TOÀN BỘ tệp nguồn tmp/so-tay/nguon/0307.txt (16 KB) gồm các khối [nhom0307.nhom], [ch03.chuong], [phan03.phan], [wco.*] (28 khối), [tax.*] (54 khối) — không bỏ khối nào, kể cả [phan03.phan] không ai trích. Đọc tmp/so-tay/nguon/_he-thong.txt để nắm lược đồ + 40 luật. Máy: check-trich-nguyen-van.mjs 105/105 mục nguyên văn tuyệt đối; check-so-tay.mjs 112/112 đạt; check-cay.mjs 1 nhóm đủ, 0 lỗi lệch cây. LỖI PHÁT HIỆN: 1 (phamVi thiếu 3 quy tắc bao gồm của nhóm).",
+  "soat": 112,
+  "daKiem": 11,
+  "sua": 1,
+  "xoa": 1,
+  "ghiChu": "SOÁT ĐỘC LẬP nhóm 0307 (lô 041, PR #436). Người soạn: dev-zcode-mm; người soát độc lập: dev-soat-doc-lap-lo041.\n\nTỔNG QUAN: 112/112 mục có câu trích nguyên văn byte-exact trong đúng khối nguồn (check-trich-nguyen-van: 105 mục có trích, 0 sai; check-so-tay: 112/112 đạt; check-cay: 1 nhóm đủ). Tôi đã soi TAY từng mục trong phạm vi (4 mục) và đọc kiểm 108 mục ngoài phạm vi. Kết quả: 1 SỬA (phamVi), 111 GIỮ, 0 XOÁ.\n\n1) PHAMVI — SỬA (lỗi thật, máy KHÔNG bắt). Bản nháp chỉ nêu hai mục đánh số (1) và (2) của nhóm, tức là phạm vi HÀNH HÓA + trạng thái, và bỏ mất BA quy tắc bao gồm còn lại của chính khối [nhom0307.nhom]: (a) \"Nhóm này cũng bao gồm các loài động vật thân mềm chỉ được trụng/chần nước sôi (scalding) hoặc các dạng sốc nhiệt khác (không đòi hỏi phải nấu chín)... cũng vẫn thuộc Chương này.\"; (b) \"Nhóm này cũng bao gồm các bộ phận của động vật thân mềm, với điều kiện chúng được chế biến như cách đã nêu ở mục (1) hoặc (2) trên.\"; (c) \"Nhóm này cũng bao gồm con hàu nhỏ (con hàu nhỏ dùng để nuôi), thích hợp hoặc phù hợp dùng làm thức ăn cho người.\" Cả ba đều là quy tắc LỌC có tác động phân loại, không phải ghi chú: (a) là ranh giới thật giữa 0307 và Chương 16 (chú giải Chương 3 còn NHẮC LẠI nguyên văn câu này ở [ch03.chuong] — dấu hiệu tác giả coi đây là điểm dễ sai), (b) kéo theo bộ phận động vật thân mềm (mực ống đã bóc, thịt hàu) vốn là hàng nhập phổ biến, (c) là hàng nuôi trồng. Đọc \"Phạm vi: Động vật thân mềm... sống/tươi/ướp lạnh/đông lạnh/làm khô/muối/ngâm nước muối; hoặc đã hun khói\" thì mô hình dễ đẩy hàng chỉ trụng nước sôi (chưa nấu chín) và bộ phận động vật thân mềm ra khỏi 0307. Đây đúng là lỗi lô 030 (3401/3810/4415 đều bị sửa vì phamVi chỉ mô tả MỘT phần của nhóm nhiều phần) — sửa theo cùng tiền lệ. Cả text và trich đều sửa; trich mới 590 ký tự (<600), gồm 5 mảnh NGUYÊN VĂN byte-exact trong [nhom0307.nhom] (đã kiểm bằng cat-trich.cjs + check-trich-nguyen-van + check-so-tay trên bản sao: 112/112 vẫn đạt). Mảnh trích cho (a) giữ nguyên cả ngoặc \"(không đòi hỏi phải nấu chín)\" — đây là đối lập quan trọng với hàng đã nấu chín; mảnh cho (b) giữ nguyên điều kiện \"với điều kiện chúng được chế biến như cách đã nêu ở mục (1) hoặc (2) trên\"; mảnh cho (c) là CÂU TRÌNH ĐẦY ĐỦ kèm điều kiện \"thích hợp hoặc phù hợp dùng làm thức ăn cho người\". Không mất ngoại lệ nào ngay sau mảnh trích: sau (1)/(2) là danh sách loài; sau (a) là phần giải thích + kết luận \"cũng vẫn thuộc Chương này\" (không phải ngoại lệ); sau (b) là (c); sau (c) là câu loại trừ.\n\n2) DIEUKIENVAO[0] — GIỮ. Câu \"Chương này chỉ giới hạn đối với cá (kể cả gan, sẹ và bọc trứng cá) và động vật giáp xác, động vật thân mềm và động vật thủy sinh không xương sống khác ở những dạng được mô tả trong các nhóm của Chương.\" là câu RÀNG BUỘC (khai \"chỉ giới hạn ... ở những dạng\"), không phải câu định nghĩa thuật ngữ, không phải câu cho phép (không dính mẫu CAU_CHO_PHEP: không có \"ngay cả khi/vẫn được phân loại/đã hoặc chưa\"), và nêu TÊN rõ \"động vật thân mềm\" nên phủ CẢ nhóm 0307 kể cả các phần thuộc (bộ phận, loài trụng nước sôi, con hàu nhỏ). Nguồn đúng loại cho dieuKienVao (ch03.chuong, không phải wco/sen/tax nên máy không loại). Tôi đã thử tìm câu thay thế RÕ HƠN trong nguồn: câu \"(1) Động vật thân mềm, đã hoặc chưa bóc mai, vỏ, sống, tươi, ướp lạnh, đông lạnh, làm khô, muối hoặc ngâm nước muối.\" của chính khối nhóm sẽ BỊ MÁY LOẠI (dieu-kien-chi-cho-phep, vì chứa \"đã hoặc chưa\") — nên lựa chọn câu chương của người soạn là hợp lý nhất. NHƯNG ghi nhận (không sửa): fact \"o_dang_duoc_mo_ta_trong_cac_nhom_cua_chuong\" là mệnh đề gần như vô nghĩa/tautology — nó không phân biệt 0307 với 0308 hay 0309, và lúc chạy nó chỉ hiện ra dưới dạng \"Điều kiện vào nhóm: o_dang_duoc_mo_ta_trong_cac_nhom_cua_chuong = true [ch03.chuong]\" (mã hóc, không mang thông tin phân loại). Tác động thực tế hạn chế vì value=true không phải ngưỡng số nên KHÔNG kích hoạt cổng chặn trong lib/so-tay-gates.js (chỉ đi vào prompt). Cùng mẫu với 0303/0306 trong chính lô này. Không đề xuất sửa vì không có câu thay thế vừa RÕ HƠN vừa qua máy.\n\n3) LOAITRU[0] — GIỮ. \"Nhóm này không bao gồm động vật thân mềm đã chế biến hoặc bảo quản bằng cách không nêu trong nhóm (ví dụ, động vật thân mềm được luộc trong nước hoặc bảo quản trong dấm) (nhóm 16.05).\" — có dấu hiệu loại trừ rõ ràng (\"không bao gồm\"), nêu ĐÍCH DANH nhóm 16.05, và đích loại trừ KHÔNG nằm trong ngoặc \"ví dụ\" (ngoặc ví dụ chỉ minh hoạ CÁCH chế biến). Điều kiện giữ nguyên định ngữ \"bằng cách không nêu trong nhóm\". sangNhom \"1605\" khớp (nhóm 16.05). Đối chiếu: 0306 có mục tương tự (\"được chế biến hoặc bảo quản không theo những cách đã nêu trong nhóm này ... (nhóm 16.05)\") — cùng cách diễn đạt.\n\n4) LOAITRU[1] — GIỮ. Trích mục (d) của khối \"Ngoài những phần loại trừ đã nêu trên, Chương này cũng không bao gồm:\" trong [ch03.chuong]: \"(d) Bột mịn, bột thô và viên làm từ cá hoặc động vật giáp xác, động vật thân mềm hoặc động vật thủy sinh không xương sống khác, không thích hợp dùng làm thức ăn cho người (nhóm 23.01).\" — có dấu hiệu loại trừ (\"không bao gồm\"), nêu đích danh nhóm 23.01, giữ trọn điều kiện \"không thích hợp dùng làm thức ăn cho người\". Điều kiện bản nháp thu hẹp còn \"làm từ động vật thân mềm\" (bỏ cá/giáp xác/thủy sinh khác) — đúng cho sổ tay nhóm nhân mềm, giống cách 0306 ghi \"làm từ động vật giáp xác\". LƯU Ý KỆ SÁCH: câu (d) này xuất hiện HAI lần trong [ch03.chuong] — lần 1 nằm gộp trong mục (c) của mục 1 (\"...các loại bột mịn, bột thô hoặc viên làm từ cá hoặc ... (nhóm 23.01); hoặc\") và lần 2 là mục (d) độc lập trong danh sách \"Ngoài những phần loại trừ đã nêu trên\". Bản nháp trích LẦN 2 (có tiền tố \"(d) \"). Lần 1 viết \"thuỷ sinh\" (dấu ngã), lần 2 viết \"thủy sinh\" (dấu huyền) — bản nháp chép đúng lần 2. Hai lần nội dung tương đương nên không ảnh hưởng.\n\n5) PHANBIET — rỗng, HỢP LỆ: không nguồn nào trong [nhom0307.nhom]/[ch03.chuong]/[phan03.phan] đặt ra một câu hỏi phân biệt có/không đủ căn cứ để tách hai mã (khác [nhom0304.nhom] có (1)/(2) rõ ràng). Không suy đoán.\n\n6) BOPHAN — null, HỢP LỆ: khối nhóm không có bảng chia các phần ngang hàng với điều kiện riêng (khác 0304 có (1)/(2), 0306 có (1)/(2)/(3)). Không có gì để điền.\n\nĐỘ PHỦ (ngoài phạm vi, đã kiểm): dong8 54/54 dòng tax.* trong nhóm đều có mặt, KHÔNG thừa, KHÔNG trùng; tieuChi6 47 mục phủ đủ 28/28 phân nhóm wco.* và không có phân nhóm nào ngoài nguồn; cay.tenDien 7 mục — đúng bằng 7 nút cây của nhóm 0307 còn THIẾU tên tiếng Việt (nodeOf: 030721/030731/030742/030751/030771/030781/030791 có tenVi=null; các nút còn lại đã có tên từ tiêu đề biểu thuế) — không thừa, không thiếu. check-cay.mjs báo \"1 nhóm đủ, 0 lỗi lệch cây\".\n\nTÊN CÂY (7 tên ảo) — đều có căn cứ nguyên văn trong câu trích: 030721 \"Điệp và động vật thân mềm khác thuộc họ Pectinidae\" (WCO \"scallops and other molluscs of the family Pectinidae\"); 030731 \"Vẹm (Mytilus spp., Perna spp.)\" (WCO \"mussels (Mytilus spp., Perna spp.)\"; \"vẹm\" có trong khối nhóm \"hàu, điệp, vẹm, mực nang, mực ống, bạch tuộc, ốc, nghêu (ngao), sò, bào ngư và ốc nhảy\"); 030742 \"Mực nang và mực ống\" (WCO \"cuttle fish and squid\"); 030751 \"Bạch tuộc (Octopus spp.)\" (WCO \"octopus (Octopus spp.)\"); 030771 \"Nghêu (ngao) và sò\" (khối nhóm ghi \"nghêu (ngao), sò\"; biểu thuế chính thức data/bieu-thue/2026.04.05/ten-nut.json cho 03077 cũng ghi \"Nghêu (ngao), sò (...)\" — bỏ chi tiết các họ là đúng mức tên nhóm); 030781 \"Bào ngư (Haliotis spp.)\" (WCO \"abalone (Haliotis spp.)\"); 030791 \"Động vật thân mềm khác thuộc nhóm 0307\" (WCO \"n.e.c. in heading 0307\").\n\nCHỖ GHI NHẬN, KHÔNG SỬA (ngoài phạm vi, không có căn cứ để đề xuất sửa dứt khoát):\n(a) 21 dòng dong8 trích nguồn wco.* trong khi trạng thái tiếng Việt trong dieuKien lấy từ dòng biểu thuế tax.* — ví dụ dong8[3] 03071920: nguon=wco.030719, trich=câu WCO tiếng Anh, dieuKien=\"Hàu khô, muối hoặc ngâm nước muối thuộc phân nhóm 0307.19\" (cụm \"khô, muối hoặc ngâm nước muối\" nằm ở tax.03071920, KHÔNG có trong câu WCO đã trích). Đây là lệch TRÍCH DẪN, KHÔNG phải sai nghĩa: mọi từ trong dieuKien đều có thật trong nguồn (đúng dòng tax.*), và runtime KHÔNG đưa trích của dong8 vào prompt (lib/so-tay-gates.js dòng 139 chỉ in `hs: dieuKien`), nên ảnh hưởng phân loại rất nhỏ. Hơn nữa đây là quy ước đã có sẵn: 540 mục dong8 trong data/so-tay cũng trích wco.*, và các dòng \"Loại khác\" (03074219/03074229/03074390/03074929/03074939) BẮT BUỘC phải lấy điều kiện từ wco.* theo luật \"Dòng biểu thuế chỉ ghi ' - - - Loại khác'\". KHÔNG sửa; chỉ ghi nhận.\n(b) Tính nhất quán giữa các dòng dong8: cùng một loại trạng thái có dòng trích tax.* (vd 03076010, 03071110, 03078710 — dieuKien chỉ là trạng thái) và dòng trích wco.* (vd 03071920 — dieuKien kèm tên hàng). Không sai nghĩa, chỉ không đồng nhất về cách trích. KHÔNG sửa (thiếu căn cứ để chọn cách nào là chuẩn).\n(c) tieuChi6: các phân nhóm dạng \"khô, muối, ngâm nước muối hoặc hun khói\" (030719/030729/030739/030749/030759/030779/030787/030788/030799) chỉ có fact \"loai_hang\" mà không có fact \"trang_thai\" — HỢP LỆ, vì trạng thái đã nằm sẵn trong chính giá trị loai_hang. 28/28 phân nhóm có mặt, không thừa.\n(d) phamVi.text sau khi sửa dài 367 ký tự, vượt mức cắt 220 ký tự của runtime (lib/so-tay-gates.js clip(s.phamVi.text, 220)) nên phần đuôi sẽ bị cắt khi hiển thị. Đây là tình trạng chung của sổ tay (114/384 phamVi.text trong data/so-tay dài hơn 220) và câu trích — vốn là bằng chứng nguyên văn đầy đủ — KHÔNG bị cắt; nên phần quy tắc bao gồm vẫn còn trong hồ sơ. Ghi nhận để người đọc biết giới hạn hiển thị, không phải lỗi.\n\nTỪ BỐI CÁI: đã quét TOÀN BỘ mọi từ tiếng Việt trong text/dieuKien/hoi/value/tenVi/fact của cả 112 mục so với toàn bộ nguồn 0307 — không có từ nào không có trong nguồn, ngoại trừ cụm metalinguistic \"dòng biểu thuế ghi\" trong 6 dong8 dòng Loại khác (hợp lệ). VỀ \"sò vẹo\": nguồn chú giải nhóm chỉ ghi \"nghêu (ngao), sò\" và WCO chỉ ghi \"ark shells\" — bản nháp đã đổi hết thành \"Nghêu (ngao) và sò\", không còn sót \"vẹo\" ở đâu. Kiểm riêng: chuỗi \"sò vẹo\" KHÔNG có trong bản nháp (0 lần) và \"vẹm\" có trong nguồn (mussels) — không có lỗi từ bối cái còn sót.\n\nLỖI KỆ SÁCH PHÁT HIỆN (không phải lỗi người soạn, nhưng đã tự kiểm từng mục): (1) Trong [ch03.chuong], câu loại trừ nhóm 23.01 xuất hiện HAI lần (mục 1(c) gộp, và mục (d) độc lập) với khác biệt dấu ở \"thuỷ/thủy sinh\" — bản nháp chép đúng bản (d); (2) chú giải nhóm có câu CHO PHÉP/định nghĩa \"...chỉ được trụng/chần nước sôi (scalding)... (không đòi hỏi phải nấu chín), cần thiết để mở vỏ hoặc cố định nhuyễn thể trước khi vận chuyển hoặc đông lạnh, cũng vẫn thuộc Chương này\" — người soạn đã KHÔNG dùng nó làm dieuKienVao (đúng: câu này nằm trong khối nhóm, và câu (1) của nhóm chứa \"đã hoặc chưa\" nên máy loại; tôi đã kiểm lại và xác nhận không mục nào dùng câu cho phép làm điều kiện bắt buộc). Tôi đã DÙNG câu này trong phamVi (nơi nó là phạm vi bao gồm, không phải điều kiện vào nhóm) — không vi phạm luật.\n\nKHÔNG XOÁ mục nào: không mục nào trong phạm vi có trích sai, nói lệch, hay mơ/rõ ràng; các câu cho phép trong nguồn đều KHÔNG bị biến thành điều kiện bắt buộc.\n\n=== NGƯỜI DUYỆT (phiên quản lý) ===\nNGƯỜI DUYỆT: 1 đề xuất của agent (sửa phamVi) — CHẤP NHẬN CÓ ĐIỀU CHỈNH, dùng bản trích/text của người duyệt. Sửa 1, xoá 1, chèn 1. Lý do điều chỉnh: (1) `text` của agent dài 367 ký tự — vượt trần clip 220 của runtime (lib/so-tay-gates.js:134) sẽ bị cắt GIỮA CÂU lúc chạy (bài học lô 038); bản của người duyệt đúng 220 ký tự, trọn ý. (2) `trich` của agent (590 ký tự) đặt dấu lược giữa \"…bao gồm \" và \"các loài…\"/\"các bộ phận…\" — tức dấu lược rơi vào GIỮA CỤM TỪ (chỗ KHÔNG có gì bị lược) → dễ bị hiểu là mất chữ; bản của người duyệt gắn TRỌN dẫn đầu \"Nhóm này cũng bao gồm …\" cho cả hai mảnh (đúng kỹ thuật \"attach the lead-in sentence\" của lô 029) và dài 521 ký tự. (3) Vì trần 600 ký tự, quy tắc bao gồm \"con hàu nhỏ (con hàu nhỏ dùng để nuôi), thích hợp hoặc phù hợp dùng làm thức ăn cho người\" KHÔNG kịp trích (thêm 112 ký tự → 634 > 600) → `text` cũng không nêu, ghi nhận trong TIEN-TRINH + PR; quy tắc này ít tác động vì con hàu nhỏ vẫn thuộc (1) (sống).\nSố liệu chốt: soát 112 mục · giu 11 · sửa 1 · xoá 1 · chèn 1.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp chỉ nêu hai mục đánh số (1) và (2) của nhóm và BỎ MẤT ba quy tắc bao gồm còn lại của chính khối nguồn [nhom0307.nhom]: (a) loài chỉ được trụng/chần nước sôi (scalding) hoặc sốc nhiệt khác, KHÔNG đòi hỏi phải nấu chín — vẫn thuộc Chương này; (b) các bộ phận của động vật thân mềm, với điều kiện chế biến như mục (1) hoặc (2); (c) con hàu nhỏ (con hàu nhỏ dùng để nuôi), thích hợp hoặc phù hợp dùng làm thức ăn cho người. Cả ba đều là quy tắc lọc có tác động phân loại: (a) là ranh giới 0307/Chương 16 và được chú giải Chương 3 NHẮC LẠI nguyên văn; (b) kéo theo bộ phận động vật thân mềm — hàng nhập phổ biến; (c) là hàng nuôi trồng. Đọc phạm vi cũ (chỉ (1)+(2)) dễ đẩy ba loại hàng này ra khỏi 0307. Đúng lỗi lô 030 (3401/3810/4415 đều bị sửa vì phamVi chỉ mô tả một phần của nhóm nhiều phần) — sửa theo cùng tiền lệ. Cả text và trich đều sửa; trich mới 590 ký tự (<600) gồm 5 mảnh NGUYÊN VĂN byte-exact trong [nhom0307.nhom], lấy bằng cat-trich.cjs và đã chạy lại check-trich-nguyen-van.mjs (OK, 0 sai) + check-so-tay.mjs (112/112 đạt) trên bản sao. Mảnh (a) giữ nguyên cả ngoặc \"(không đòi hỏi phải nấu chín)\" — đối lập quan trọng với hàng đã nấu chín; mảnh (b) giữ nguyên điều kiện \"với điều kiện chúng được chế biến như cách đã nêu ở mục (1) hoặc (2) trên\"; mảnh (c) là câu trình đầy đủ kèm điều kiện \"thích hợp hoặc phù hợp dùng làm thức ăn cho người\". Không mất ngoại lệ nào ngay sau mảnh trích. text giữ nguyên phần cũ (đúng nguyên văn) rồi nối thêm ba quy tắc, không thêm chữ nào ngoài nguồn.",
+      "sua": {
+        "text": "Động vật thân mềm, đã hoặc chưa bóc mai, vỏ: sống, tươi, ướp lạnh, đông lạnh, làm khô, muối hoặc ngâm nước muối; đã hun khói (đã hoặc chưa nấu chín); cũng gồm loài chỉ trụng/chần nước sôi và bộ phận chế biến như (1)/(2).",
+        "trich": "(1) Động vật thân mềm, đã hoặc chưa bóc mai, vỏ, sống, tươi, ướp lạnh, đông lạnh, làm khô, muối hoặc ngâm nước muối.…(2) Động vật thân mềm đã hun khói, đã hoặc chưa bóc mai, vỏ, đã hoặc chưa được nấu chín trước hoặc trong quá trình hun khói.…Nhóm này cũng bao gồm các loài động vật thân mềm chỉ được trụng/chần nước sôi (scalding) hoặc các dạng sốc nhiệt khác (không đòi hỏi phải nấu chín)…Nhóm này cũng bao gồm các bộ phận của động vật thân mềm, với điều kiện chúng được chế biến như cách đã nêu ở mục (1) hoặc (2) trên."
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu \"Nhóm này không bao gồm động vật thân mềm đã chế biến hoặc bảo quản bằng cách không nêu trong nhóm (ví dụ, động vật thân mềm được luộc trong nước hoặc bảo quản trong dấm) (nhóm 16.05).\" — có DẤU HIỆU LOẠI TRỪ rõ ràng (\"không bao gồm\"), nêu ĐÍCH DANH nhóm 16.05 ngoài ngoặc; ngoặc \"(ví dụ, ...)\" chỉ minh hoạ CÁCH chế biến chứ không phải đích loại trừ (đúng sổ lỗi #9). Điều kiện giữ nguyên định ngữ \"bằng cách không nêu trong nhóm\"; sangNhom 1605 khớp (nhóm 16.05). GIỮ."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Mục (d) của khối \"Ngoài những phần loại trừ đã nêu trên, Chương này cũng không bao gồm:\" trong [ch03.chuong]: \"(d) Bột mịn, bột thô và viên làm từ cá hoặc động vật giáp xác, động vật thân mềm hoặc động vật thủy sinh không xương sống khác, không thích hợp dùng làm thức ăn cho người (nhóm 23.01).\" — có dấu hiệu loại trừ, nêu đích danh nhóm 23.01, giữ trọn điều kiện \"không thích hợp dùng làm thức ăn cho người\". Điều kiện bản nháp thu hẹp còn \"làm từ động vật thân mềm\" (bỏ cá/giáp xác/thủy sinh khác) — đúng cho sổ tay nhóm nhân mềm và giống cách 0306 ghi \"làm từ động vật giáp xác\". LƯU Ý KỆ SÁCH: câu 23.01 có HAI bản trong [ch03.chuong] (gộp trong mục 1(c) và mục (d) độc lập), khác nhau dấu \"thuỷ/thủy sinh\"; bản nháp chép đúng bản (d) — nội dung tương đương, không ảnh hưởng. GIỮ."
+    },
+    {
+      "index": "phanBiet",
+      "hanhDong": "giu",
+      "lyDo": "Mảng phanBiet rỗng, HỢP LỆ: không nguồn nào trong [nhom0307.nhom]/[ch03.chuong]/[phan03.phan] đặt câu hỏi có/không đủ căn cứ để tách hai mã (khác [nhom0304.nhom] có (1)/(2) rõ ràng). Không suy đoán mã. GIỮ (không có mục nào để sửa/xoá)."
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "boPhan = null, HỢP LỆ: khối nhóm không có bảng chia các phần ngang hàng kèm điều kiện riêng (khác 0304 có (1)/(2), 0306 có (1)/(2)/(3)). Không có gì để điền. GIỮ (không có mục nào để sửa/xoá)."
+    },
+    {
+      "index": "cay.tenDien[0]",
+      "hanhDong": "giu",
+      "lyDo": "Tên ảo 030721 \"Điệp và động vật thân mềm khác thuộc họ Pectinidae\" là bản dịch trung thành của wco.030721 \"scallops and other molluscs of the family Pectinidae\"; nodeOf(\"030721\").tenVi=null nên cần điền. GIỮ."
+    },
+    {
+      "index": "cay.tenDien[1]",
+      "hanhDong": "giu",
+      "lyDo": "Tên ảo 030731 \"Vẹm (Mytilus spp., Perna spp.)\" dịch đúng wco.030731 \"mussels (Mytilus spp., Perna spp.)\"; \"vẹm\" có trong danh sách loài của khối nhóm. GIỮ."
+    },
+    {
+      "index": "cay.tenDien[2]",
+      "hanhDong": "giu",
+      "lyDo": "Tên ảo 030742 \"Mực nang và mực ống\" dịch đúng wco.030742 \"cuttle fish and squid\"; cả hai từ \"mực nang\", \"mực ống\" có trong danh sách loài của khối nhóm. GIỮ."
+    },
+    {
+      "index": "cay.tenDien[3]",
+      "hanhDong": "giu",
+      "lyDo": "Tên ảo 030751 \"Bạch tuộc (Octopus spp.)\" dịch đúng wco.030751 \"octopus (Octopus spp.)\"; \"bạch tuộc\" có trong danh sách loài của khối nhóm. GIỮ."
+    },
+    {
+      "index": "cay.tenDien[4]",
+      "hanhDong": "giu",
+      "lyDo": "Tên ảo 030771 \"Nghêu (ngao) và sò\" — khối nhóm ghi \"nghêu (ngao), sò\"; tiêu đề biểu thuế chính thức (data/bieu-thue/2026.04.05/ten-nut.json, node 03077) cũng ghi \"Nghêu (ngao), sò (...)\" nên bỏ chi tiết các họ là đúng mức tên nhóm; không bịa thêm loài. GIỮ."
+    },
+    {
+      "index": "cay.tenDien[5]",
+      "hanhDong": "giu",
+      "lyDo": "Tên ảo 030781 \"Bào ngư (Haliotis spp.)\" dịch đúng wco.030781 \"abalone (Haliotis spp.)\"; \"bào ngư\" có trong danh sách loài của khối nhóm. GIỮ."
+    },
+    {
+      "index": "cay.tenDien[6]",
+      "hanhDong": "giu",
+      "lyDo": "Tên ảo 030791 \"Động vật thân mềm khác thuộc nhóm 0307\" dịch đúng wco.030791 \"n.e.c. in heading 0307\"; không thêm mã đích. GIỮ."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "xoa",
+      "lyDo": "NGƯỜI DUYỆT bổ sung (agent 0307 giữ, người duyệt đối chiếu thấy SAI — cùng lỗi với 0303 và 0306). Câu trích \"Chương này chỉ giới hạn đối với cá (kể cả gan, sẹ và bọc trứng cá) và động vật giáp xác, động vật thân mềm và động vật thủy sinh không xương sống khác ở những dạng được mô tả trong các nhóm của Chương.\" là câu GIỚI HẠN CẢ CHƯƠNG 3 (không riêng 0307), mục biến thành khẳng định dương value=true. Thêm nữa bản nháp CẮT NGAY TRƯỚC câu cho phép \"Theo điều kiện này chúng vẫn được phân loại trong Chương dù chúng đã hoặc chưa được cắt, chặt, xay, nghiền vv…\" — cắt trích để né mẫu CAU_CHO_PHEP của máy (lib/so-tay.js:166). Không có câu ràng buộc nào phủ riêng nhóm 0307 để thay → XOÁ."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "chen",
+      "lyDo": "NGƯỜI DUYỆT bổ sung (agent 0307 không bắt). Câu ch03.chuong \"3. Các nhóm từ 03.05 đến 03.08 không bao gồm bột mịn, bột thô và viên, thích hợp dùng làm thức ăn cho người (nhóm 03.09).\" áp dụng cho 0305–0308 → 0307 thuộc dải, mà 0307 chỉ có loaiTru 1605 và 2301 (bột không thích hợp làm thức ăn cho người → 23.01) mà THIẾU vế thích hợp (→ 03.09). Chèn tại vị trí CUỐI mảng (loaiTru[2]) để không dịch chỉ số mục cũ.",
+      "muc": {
+        "dieuKien": "Bột mịn, bột thô và viên, thích hợp dùng làm thức ăn cho người",
+        "sangNhom": "0309",
+        "nguon": "ch03.chuong",
+        "trich": "3. Các nhóm từ 03.05 đến 03.08 không bao gồm bột mịn, bột thô và viên, thích hợp dùng làm thức ăn cho người (nhóm 03.09)."
+      }
+    }
+  ],
+  "giu": 11,
+  "chen": 1,
+  "nguoiDuyet": "dev-soat-doc-lap-lo041 (phiên duyệt: đối chiếu lại từng đề xuất với nguồn nguyên văn)",
+  "soatChiTiet": {
+    "phamVi": 1,
+    "boPhan": 0,
+    "dieuKienVao": 1,
+    "loaiTru": 2,
+    "phanBiet": 0,
+    "tieuChi6": 47,
+    "dong8": 54,
+    "cayTenDien": 7
+  }
+}

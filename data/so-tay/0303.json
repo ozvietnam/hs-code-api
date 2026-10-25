@@ -1,51 +1,34 @@
 {
  "nhom": "0303",
- "phamVi": {
-  "text": "Cá đông lạnh, trừ phi-lê cá, thịt cá thuộc nhóm 03.04 và phụ phẩm ăn được của các phân nhóm 03.03.91 đến 03.03.99.",
-  "nguon": "wco.030311",
-  "trich": "030311 Fish; frozen, Pacific salmon, sockeye salmon (red salmon) (Oncorhynchus nerka), excluding fillets, fish meat of 0304, and edible fish offal of subheadings 0303.91 to 0303.99",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "o_dang_duoc_mo_ta_trong_cac_nhom_cua_chuong",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "ch03.chuong",
-   "trich": "Chương này chỉ giới hạn đối với cá (kể cả gan, sẹ và bọc trứng cá) và động vật giáp xác, động vật thân mềm và động vật thủy sinh không xương sống khác ở những dạng được mô tả trong các nhóm của Chương.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
+ "dieuKienVao": [],
  "loaiTru": [
   {
    "dieuKien": "Các loại bột mịn, bột thô hoặc viên làm từ cá hoặc động vật giáp xác, động vật thân mềm hoặc động vật thủy sinh không xương sống khác, không thích hợp dùng làm thức ăn cho người",
    "sangNhom": "2301",
    "nguon": "ch03.chuong",
    "trich": "(d) Bột mịn, bột thô và viên làm từ cá hoặc động vật giáp xác, động vật thân mềm hoặc động vật thủy sinh không xương sống khác, không thích hợp dùng làm thức ăn cho người (nhóm 23.01).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Trứng cá tầm muối hoặc các sản phẩm thay thế trứng cá tầm muối từ trứng cá",
    "sangNhom": "1604",
    "nguon": "ch03.chuong",
    "trich": "(d) Trứng cá tầm muối hoặc các sản phẩm thay thế trứng cá tầm muối từ trứng cá (nhóm 16.04).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Sẹ và bọc trứng cá dùng làm thức ăn được chế biến hoặc bảo quản bằng cách khác, hoặc những loại thích hợp để dùng ngay như trứng cá tầm muối",
    "sangNhom": "1604",
    "nguon": "ch03.chuong",
    "trich": "Sẹ và bọc trứng cá dùng làm thức ăn được chế biến hoặc bảo quản bằng cách khác, hoặc những…loại thích hợp để dùng ngay như trứng cá tầm muối và sản phẩm thay thế trứng cá tầm muối được phân loại vào nhóm 16.04.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Phế liệu của cá và trứng cá không làm thực phẩm (ví dụ: trứng cá tuyết muối dùng làm mồi câu)",
    "sangNhom": "0511",
    "nguon": "ch03.chuong",
    "trich": "(c) Phế liệu của cá và trứng cá không làm thực phẩm (ví dụ: trứng cá tuyết muối dùng làm mồi câu) (nhóm 05.11).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "phanBiet": [],
@@ -709,20 +692,8 @@
    "dieuKien": "Cá ngừ bò (Thunnus tonggol)",
    "nguon": "sen.03034910",
    "trich": "CÁ NGỪ BÒ (THUNNUS TONGGOL)…Khối lượng không dưới 1000 gram.",
-   "tieuChi": {
-    "fact": "khoi_luong",
-    "op": ">=",
-    "value": 1000,
-    "donVi": "g"
-   },
-   "dieuKienSo": [
-    {
-     "fact": "khoi_luong",
-     "op": ">=",
-     "value": 1000,
-     "donVi": "g"
-    }
-   ],
+   "tieuChi": null,
+   "dieuKienSo": [],
    "nguonLoai": "AI_DA_KIEM",
    "loaiKhac": false
   },
@@ -1027,20 +998,8 @@
    "dieuKien": "Cá măng biển (Chanos chanos)",
    "nguon": "sen.03038923",
    "trich": "CÁ MĂNG BIỂN (CHANOS CHANOS)…Khối lượng không dưới 800 gram.",
-   "tieuChi": {
-    "fact": "khoi_luong",
-    "op": ">=",
-    "value": 800,
-    "donVi": "g"
-   },
-   "dieuKienSo": [
-    {
-     "fact": "khoi_luong",
-     "op": ">=",
-     "value": 800,
-     "donVi": "g"
-    }
-   ],
+   "tieuChi": null,
+   "dieuKienSo": [],
    "nguonLoai": "AI_DA_KIEM",
    "loaiKhac": false
   },
@@ -1907,12 +1866,12 @@
  "taoBoi": {
   "provider": "dev-zcode-mm",
   "model": null,
-  "luc": "2026-10-24T16:53:32.494Z",
+  "luc": "2026-10-25T09:32:40.403Z",
   "ms": 10
  },
  "kiemTra": {
-  "tong": 112,
-  "dat": 112,
+  "tong": 110,
+  "dat": 110,
   "loai": 0,
   "nguonBiCat": []
  }

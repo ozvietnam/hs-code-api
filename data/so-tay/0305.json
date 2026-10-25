@@ -4,7 +4,7 @@
   "text": "Cá (nguyên con, không đầu, dạng miếng, dạng phi-lê hoặc đã được xay, nghiền) và phụ phẩm ăn được của cá: đã làm khô, đã muối hoặc ngâm nước muối, hoặc đã hun khói.",
   "nguon": "nhom0305.nhom",
   "trich": "Nhóm này bao gồm các loại cá (nguyên con, không đầu, ở dạng miếng, dạng phi-lê hoặc đã được xay, nghiền) và các phụ phẩm ăn được của cá, mà các sản phẩm này:…(1) đã được làm khô;…(2) đã được muối hoặc ngâm nước muối; hoặc…(3) đã được hun khói.",
-  "nguonLoai": "AI_DA_KIEM"
+  "nguonLoai": "NGUOI_DUYET"
  },
  "dieuKienVao": [
   {
@@ -14,7 +14,7 @@
    "donVi": null,
    "nguon": "nhom0305.nhom",
    "trich": "(1) đã được làm khô;…(2) đã được muối hoặc ngâm nước muối; hoặc…(3) đã được hun khói.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "loaiTru": [
@@ -23,38 +23,45 @@
    "sangNhom": "0511",
    "nguon": "nhom0305.nhom",
    "trich": "(a) Phụ phẩm cá không ăn được (ví dụ loại được sử dụng trong công nghiệp) và các phần phế liệu từ cá (nhóm 05.11).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Cá đã chín (trừ nội dung nêu trên liên quan đến cá hun khói), cá được chế biến theo bất kỳ cách nào khác (ví dụ bảo quản trong dầu hay trong dấm hoặc trong nước xốt), trứng cá muối và các sản phẩm thay thế trứng cá muối",
    "sangNhom": "1604",
    "nguon": "nhom0305.nhom",
    "trich": "(b) Cá đã chín (trừ nội dung nêu trên liên quan đến cá hun khói), cá được chế biến theo bất kỳ cách nào khác (ví dụ bảo quản trong dầu hay trong dấm hoặc trong nước xốt), trứng cá muối và các sản phẩm thay thế trứng cá muối (nhóm 16.04).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Súp cá",
    "sangNhom": "2104",
    "nguon": "nhom0305.nhom",
    "trich": "(c) Súp cá (nhóm 21.04).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Bột mịn, bột thô hoặc viên làm từ cá, không thích hợp dùng làm thức ăn cho người",
    "sangNhom": "2301",
    "nguon": "ch03.chuong",
    "trich": "(d) Bột mịn, bột thô và viên làm từ cá hoặc động vật giáp xác, động vật thân mềm hoặc động vật thủy sinh không xương sống khác, không thích hợp dùng làm thức ăn cho người (nhóm 23.01).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Bột mịn, bột thô và viên, thích hợp dùng làm thức ăn cho người",
+   "sangNhom": "0309",
+   "nguon": "ch03.chuong",
+   "trich": "3. Các nhóm từ 03.05 đến 03.08 không bao gồm bột mịn, bột thô và viên, thích hợp dùng làm thức ăn cho người (nhóm 03.09).",
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "phanBiet": [
   {
-   "hoi": "Cá đã được nấu chín hoặc chế biến theo cách khác (ví dụ bảo quản trong dầu, trong dấm hoặc trong nước xốt)?",
+   "hoi": "Cá đã chín hoặc chế biến theo cách khác (dầu, dấm, nước xốt)? Trừ cá hun khói được làm chín khi hun khói.",
    "neuCo": "1604",
    "neuKhong": "0305",
    "nguon": "nhom0305.nhom",
    "trich": "(b) Cá đã chín (trừ nội dung nêu trên liên quan đến cá hun khói), cá được chế biến theo bất kỳ cách nào khác (ví dụ bảo quản trong dầu hay trong dấm hoặc trong nước xốt), trứng cá muối và các sản phẩm thay thế trứng cá muối (nhóm 16.04).…Cá hun khói đôi khi được xử lý nhiệt trước hoặc trong khi hun khói (hun khói nóng) để làm chín một phần hoặc toàn bộ thịt cá; điều này không ảnh hưởng đến việc phân loại vào nhóm này miễn là chúng không được chế biến thêm làm mất đi đặc tính của cá hun khói.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "tieuChi6": [
@@ -1188,12 +1195,12 @@
  "taoBoi": {
   "provider": "dev-zcode-mm",
   "model": null,
-  "luc": "2026-10-24T16:53:32.511Z",
+  "luc": "2026-10-25T09:32:40.420Z",
   "ms": 6
  },
  "kiemTra": {
-  "tong": 66,
-  "dat": 66,
+  "tong": 67,
+  "dat": 67,
   "loai": 0,
   "nguonBiCat": []
  }
