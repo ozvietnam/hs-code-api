@@ -1,0 +1,90 @@
+{
+ "nhom": "0604",
+ "nguoiSoat": "dev-soat-doc-lap-lo045",
+ "luc": "2026-10-25T22:40:00+07:00",
+ "soatVaiTro": "Người soát ĐỘC LẬP (không phải người soạn). Đọc lại từng mục cùng nguồn nguyên văn tmp/so-tay/nguon/0604.txt; kiểm BYTE-EXACT từng mảnh câu trích (máy check-so-tay dùng squash() nên không bắt được lỗi ký tự).",
+ "soat": 7,
+ "daKiem": 6,
+ "giu": 2,
+ "sua": 5,
+ "xoa": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 0604 — 7 mục trong phạm vi mục 4 (1 phamVi + 4 loaiTru + 2 phanBiet; dieuKienVao rỗng, boPhan null), đọc lại cùng nguồn nguyên văn. SỬA 5, XOÁ 0, GIỮ 2. Kiểm byte-exact: 7/7 mục có câu trích nguyên văn đúng trong khối nguồn `nguon` — nhưng 'có thật' chưa phải 'có nói đúng'. Nhóm này SỬA NHIỀU NHẤT lô vì bản cũ cắt trích quá tay: (1) `phamVi.trich` lược mất CÂU ĐIỀU KIỆN 'Với điều kiện là những bó hoa,... như vậy vẫn giữ được đặc tính cơ bản của những sản phẩm của người làm hoa thì chúng vẫn ở trong nhóm này ngay cả khi chúng có chứa các đồ phụ trợ làm bằng chất liệu khác (ruy băng, khung thép,...)' — luật _he-thong.txt dòng 31 cấm lược đoạn có 'với điều kiện' (rõ ràng là từ bị cấm trong danh sách); (2) `phamVi.trich` cắt câu 'cây noel' ngay sau 'cây noel tự nhiên', nuốt luôn điều kiện 'miễn là chúng rõ ràng không thích hợp để trồng lại (ví dụ, rễ bị cưa, rễ bị làm chín trong nước sôi)'; (3) `loaiTru[1].trich` và `loaiTru[2].trich` CẮT MẤT ĐỘNG TỪ 'loại trừ' nên câu trích không còn nói là loại trừ — trong khi mục thì khẳng định loại trừ (đây là lỗi 'câu trích không nói đúng điều mục khẳng định'); (4) `loaiTru[2].dieuKien` = 'Để tết bện' — chỉ là VẾ, không nói ĐỐI TƯỢNG bị loại trừ. GIỮ 2: `loaiTru[0]` ('Những sản phẩm thuộc nhóm này ... nếu chúng gắn hoa hoặc nụ hoa thì chúng bị loại trừ (nhóm 06.03)' — có đủ dấu hiệu loại trừ và mã đích) và `loaiTru[3]` ('Nhóm này cũng loại trừ những tác phẩm ghép và phù điêu trang trí tương tự của nhóm 97.01'); 2 phanBiet giữ nguyên (mã đích có trong câu trích, `hoi` không nhắc mã, nhánh Có/Không đúng, khớp với loaiTru tương ứng). GHI NHẬN (ngoài phạm vi sửa): (a) `phamVi.trich` sau khi sửa dài 575 ký tự (>300 của luật 2, ≤600 của máy) — chấp nhận: không được hy sinh câu điều kiện để lấy con số (cùng cách lô 043 ở 0410), và nhà đã có 95/419 nhóm gộp >300. (b) `loaiTru[1].dieuKien` = 'Cây con và bộ phận dùng làm nước hoa, dược phẩm' không nêu nhánh 'làm thuốc trừ sâu, thuốc trừ nấm' (nguồn có 'hoặc các mục đích tương tự' bao trùm); thêm vào vượt trần 55 (47 → 63) nên ghi nhận. (c) `loaiTru[2].trich` lược mất nhánh '(nhóm 12.11)' — nhưng nhánh đó do `loaiTru[1]` phụ trách (mỗi mục phụ trách một nhánh của cùng câu nguồn, không tách 'A hoặc B' thành hai điều kiện độc lập), nên không mất thông tin. (d) Nhóm có hai dòng 'Rêu và địa y' (0604.20.10 và 0604.90.10) và hai dòng 'Loại khác' — ngoài phạm vi mục 4, đã đọc để tham chiếu.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (dấu lược nuốt ngoại lệ + cắt trích né câu rào), 2 lỗi trong cùng một mục. (1) Bản cũ lược mất CÂU ĐIỀU KIỆN 'Với điều kiện là những bó hoa,... như vậy vẫn giữ được đặc tính cơ bản của những sản phẩm của người làm hoa thì chúng vẫn ở trong nhóm này ngay cả khi chúng có chứa các đồ phụ trợ làm bằng chất liệu khác (ruy băng, khung thép,...)' — luật _he-thong.txt dòng 31 nêu thẳng: đoạn bị lược KHÔNG được chứa 'với điều kiện'; đây đúng câu chữ đó. (2) Bản cũ cắt câu 'cây noel' ngay sau chữ 'tự nhiên', nuốt luôn điều kiện 'miễn là chúng rõ ràng không thích hợp để trồng lại (ví dụ, rễ bị cưa, rễ bị làm chín trong nước sôi)' — 'miễn là' cũng là điều kiện không được nuốt. Hậu quả thực tế: `text` cũ nêu 'bó, vòng, lẵng hoa và sản phẩm tương tự có gắn tán lá ...' một cách vô điều kiện (đọc ngược nghĩa so với nguồn) và cây noel thì không kèm điều kiện 'không thích hợp trồng lại' — cây noel còn rễ (trồng lại được) sẽ bị loại oan. Máy KHÔNG bắt được (máy chỉ kiểm mảnh trích có thật trong nguồn). SỬA `trich`: kéo NGUYÊN VẸN cả hai câu vào (213 → 575 ký tự, ≤600 của máy; vượt 300 của luật 2 nhưng nhà đã có 95/419 nhóm gộp >300 và không được hy sinh câu điều kiện để lấy con số — cùng cách lô 043 ở 0410 đã kéo câu ngoại lệ vào trích). Sửa luôn đầu câu cho đủ: bản cũ mở đầu bằng 'tán lá, cành,...' (mất chữ 'Nhóm này bao gồm không chỉ') — nay lấy trọn câu. SỬA `text`: thêm 'miễn là giữ được đặc tính cơ bản của sản phẩm người làm hoa' (155 → 216 ký tự, ≤220 của runtime) để phạm vi đọc ra không còn vô điều kiện. KHÔNG thêm chữ nào ngoài nguồn.",
+   "sua": {
+    "text": "Tán lá, cành và các phần khác của cây; bó, vòng, lẵng hoa và sản phẩm tương tự có gắn tán lá, các phần khác của cây, cỏ, rêu hoặc địa y, miễn là giữ được đặc tính cơ bản của sản phẩm người làm hoa; cây noel tự nhiên.",
+    "trich": "Nhóm này bao gồm không chỉ tán lá, cành,... mà còn cả bó, vòng, lẵng hoa và sản phẩm tương tự có gắn tán lá hoặc các phần khác của cây, cây bụi, bụi cây hoặc các cây con khác hoặc có gắn cỏ, rêu hoặc địa y…Với điều kiện là những bó hoa,... như vậy vẫn giữ được đặc tính cơ bản của những sản phẩm của người làm hoa thì chúng vẫn ở trong nhóm này ngay cả khi chúng có chứa các đồ phụ trợ làm bằng chất liệu khác (ruy băng, khung thép,...).…Nhóm này bao gồm cây noel tự nhiên, miễn là chúng rõ ràng không thích hợp để trồng lại (ví dụ, rễ bị cưa, rễ bị làm chín trong nước sôi)."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích 'Những sản phẩm thuộc nhóm này có thể mang các loại quả trang trí, nhưng nếu chúng gắn hoa hoặc nụ hoa thì chúng bị loại trừ (nhóm 06.03)' có đủ dấu hiệu loại trừ ('bị loại trừ') và nêu đích danh 06.03; `dieuKien` 'Sản phẩm gắn hoa hoặc nụ hoa' đúng, không thêm chữ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không nói đúng điều mục khẳng định): bản cũ bắt đầu câu trích bằng 'những cây con và các bộ phận của chúng ...' — TỪ 'loại trừ' nằm ở câu trước ('Nhóm này cũng loại trừ những cây con và các bộ phận của chúng ...') đã bị lược, nên câu trích trả lời của mục (một LOẠI TRỪ sang 12.11) không còn động từ loại trừ; đọc câu trích như vậy thì không thấy mệnh đề loại trừ. SỬA: lấy lại đầu câu 'Nhóm này cũng loại trừ ' (268 → 291 ký tự, ≤300 của luật 2). KHÔNG sửa `dieuKien` (đã đúng, đủ định ngữ giới hạn) và KHÔNG sửa `nguon`. Lưu ý: câu trích này chứa CẢ hai nhánh '(nhóm 12.11)' lẫn '(nhóm 14.01)'; mỗi mục phụ trách một nhánh (12.11 ở `loaiTru[1]`, 14.01 ở `loaiTru[2]`) nên không tách thành hai điều kiện độc lập — máy chỉ đòi mã đích của mục phải có trong câu trích.",
+   "sua": {
+    "trich": "Nhóm này cũng loại trừ những cây con và các bộ phận của chúng (bao gồm cả cỏ, rêu và địa y) chủ yếu dùng làm nước hoa, trong bào chế dược phẩm, hoặc làm thuốc trừ sâu, thuốc trừ nấm hoặc các mục đích tương tự (nhóm 12.11)…miễn là chúng ở dạng không thích hợp để làm bó hoa hoặc để trang trí."
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "SỬA 2 trường của cùng một mục. (a) `trich`: bản cũ bắt đầu bằng '…hoặc để tết bện (nhóm 14.01), miễn là...' — dấu lược ở ĐẦU nuốt mất động từ 'loại trừ' của câu nguồn ('Nhóm này cũng loại trừ những cây con và các bộ phận của chúng ... hoặc để tết bện (nhóm 14.01), miễn là ...'), nên câu trích không nói mục này là LOẠI TRỪ. SỬA: lấy lại 'Nhóm này cũng loại trừ những cây con và các bộ phận của chúng…' rồi nối mảnh nguyên văn 'hoặc để tết bện (nhóm 14.01), miễn là chúng ở dạng không thích hợp để làm bó hoa hoặc để trang trí.' (161 ký tự, ≤300 của luật 2). Đoạn lược giữa hai mảnh là phần '... (bao gồm cả cỏ, rêu và địa y) chủ yếu dùng làm nước hoa ... (nhóm 12.11) hoặc' — nhánh 12.11 do `loaiTru[1]` phụ trách nên không mất thông tin, và trong đoạn lược không có 'trừ/tuy nhiên/không kể' nên không vi phạm luật dấu lược. (b) `dieuKien`: bản cũ = 'Để tết bện' — chỉ là VẾ của câu, KHÔNG nói đối tượng bị loại trừ, nên câu hỏi runtime ('Hàng có thuộc diện \"Để tết bện\" không?') vô nghĩa. SỬA: 'Cây con và bộ phận của chúng dùng để tết bện' — 44 ký tự, ≤ trần clip 55 của runtime, nói rõ VỪA đối tượng VỪA công dụng, và chép đúng từ câu trích. KHÔNG sửa `nguon` và KHÔNG sửa `sangNhom` (14.01 có trong câu trích).",
+   "sua": {
+    "dieuKien": "Cây con và bộ phận của chúng dùng để tết bện",
+    "trich": "Nhóm này cũng loại trừ những cây con và các bộ phận của chúng…hoặc để tết bện (nhóm 14.01), miễn là chúng ở dạng không thích hợp để làm bó hoa hoặc để trang trí."
+   }
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích 'Nhóm này cũng loại trừ những tác phẩm ghép và phù điêu trang trí tương tự của nhóm 97.01' có đủ dấu hiệu loại trừ và nêu đích danh 97.01; `dieuKien` chép đúng, không thêm chữ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mã đích 06.03 có trong câu trích, `hoi` không nhắc mã, nhánh Có/Không đúng (có → 0603 vì nguồn loại trừ sang nhóm 06.03; không → 0604) và khớp với `loaiTru[0]`."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mã đích 12.11 có trong câu trích, `hoi` không nhắc mã, nhánh Có/Không đúng (có → 1211; không → 0604) và khớp với `loaiTru[1]`."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ `wco.060420`, không lỗi."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ `wco.060490`, không lỗi."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `wco.060420`, không lỗi."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: dòng 'Loại khác' theo biểu thuế, không lỗi."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `wco.060490`, không lỗi."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: dòng 'Loại khác' theo biểu thuế, không lỗi."
+  }
+ ]
+}

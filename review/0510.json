@@ -1,0 +1,54 @@
+{
+ "nhom": "0510",
+ "nguoiSoat": "dev-soat-doc-lap-lo045",
+ "luc": "2026-10-25T22:15:00+07:00",
+ "soatVaiTro": "Người soát ĐỘC LẬP (không phải người soạn). Đọc lại từng mục cùng nguồn nguyên văn tmp/so-tay/nguon/0510.txt; kiểm BYTE-EXACT từng mảnh câu trích (máy check-so-tay dùng squash() nên không bắt được lỗi ký tự).",
+ "soat": 7,
+ "daKiem": 1,
+ "giu": 7,
+ "sua": 0,
+ "xoa": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 0510 — 7 mục trong phạm vi mục 4 (1 phamVi + 4 loaiTru + 2 phanBiet; dieuKienVao rỗng, boPhan null), đọc lại cùng nguồn nguyên văn. SỬA 0, XOÁ 0, GIỮ 7. Kiểm byte-exact: 7/7 mục có câu trích nguyên văn đúng trong khối nguồn `nguon` (không sai 1 ký tự nào, kể cả dấu câu). GIỮ CẢ 7: (1) `phamVi` — câu trích liệt kê đúng các mục của nhóm (long diên hương, hương hải ly, xạ hương cầy hương, xạ hương hươu, cantharide, tuyến/cơ quan, mật) và `text` chỉ diễn đạt đúng những gì câu trích nói; (2) `loaiTru[0]` — nguồn NÊU ĐÍCH DANH nhóm 30.01 và có dấu hiệu loại trừ rõ ('bị loại trừ'); (3) `loaiTru[1]` — 'chất chiết từ mật bị loại trừ - nhóm 30.01', `dieuKien` chép đúng cụm trích; (4) `loaiTru[2]` — 'không bao gồm nọc của rắn hoặc của ong ... (nhóm 30.01)'; (5) `loaiTru[3]` — câu 'Không nên nhầm lẫn long diên hương với hổ phách vàng (succinite) ... thuộc nhóm 25.30' là dấu hiệu loại trừ hợp lệ (tương đương 'không lẫn với' trong luật loạiTru), `sangNhom` 2530 có trong câu trích; (6) `phanBiet[0]` — mã đích 25.30 có trong câu trích, `hoi` không nhắc mã, chiều Có/Không đúng; (7) `phanBiet[1]` — mã đích 30.01 có trong câu trích, chiều Có/Không đúng. GHI NHẬN (ngoài phạm vi, KHÔNG sửa, nêu để người duyệt xem): (a) `phamVi.text` dùng cụm 'hươu xạ' — cụm này lấy từ `tax.05100000` ('chất xạ hương (từ cầy hương và hươu xạ)') chứ không có trong `nhom0510.nhom` mà `nguon` khai; nghĩa thì ĐÚNG (chú giải nói 'Xạ hương, do một loại hươu tiết ra') nên giữ nguyên ký tự, chỉ ghi nhận để lần sau biết phải bám nguồn. (b) `loaiTru[0].dieuKien` không nêu ngoại lệ '(tuy nhiên, đối với những sản phẩm dùng làm thực phẩm, xem Chú giải 1(a) của Chương này)' — câu trích CÓ đủ ngoại lệ này nhưng `dieuKien` bỏ; thử sửa thì vượt trần clip 55 của runtime ('Tuyến và cơ quan động vật khô hoặc chiết xuất (trừ dùng làm thực phẩm)' = 70 ký tự, 'Tuyến/cơ quan khô hoặc chiết xuất (trừ dùng làm thực phẩm)' = 58 ký tự) nên KHÔNG sửa để không lách trần; cùng kiểu với lô 044 ở 0506 (người soát ghi nhận thay vì ép chữ). (c) `phamVi.trich` (293 ký tự) lược mất câu 'Khi ở dạng khô hoặc chiết xuất, những sản phẩm này bị loại trừ (nhóm 30.01) (tuy nhiên ...)' — nhưng câu đó ĐÃ được trích TRỌN VẸN ở `loaiTru[0]` của cùng nhóm nên không mất thông tin nào trong sổ tay (đúng tiền lệ lô 044 ở 0502/0506).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn byte-exact, liệt kê đúng các mục của nhóm 0510; `text` chỉ diễn đạt đúng những gì câu trích nói (dài 194/220, không bị clip). Xem ghiChu mục (a) về cụm 'hươu xạ' lấy từ tax.*."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích có dấu hiệu loại trừ rõ ('bị loại trừ (nhóm 30.01)') và nêu đích danh nhóm 30.01; `dieuKien` giữ đủ định ngữ giới hạn ('ở dạng khô hoặc chiết xuất'). Xem ghiChu mục (b): ngoại lệ 'dùng làm thực phẩm' không vừa trần clip 55 nên ghi nhận, không sửa."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn ('chất chiết từ mật bị loại trừ - nhóm 30.01'); `dieuKien` = 'Chất chiết từ mật' chép đúng cụm trích, không thêm chữ nào."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích có 'không bao gồm' + nhóm 30.01; `dieuKien' giữ đủ điều kiện ('dạng mảnh khô đựng trong ống hàn kín')."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu 'Không nên nhầm lẫn ... với hổ phách vàng (succinite) ... thuộc nhóm 25.30' là dấu hiệu loại trừ hợp lệ (tương đương 'không lẫn với'), nhóm đích 25.30 có trong câu trích; `dieuKien` không thêm chữ ngoài nguồn."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mã đích 25.30 có trong câu trích, `hoi` không nhắc mã, nhánh Có/Không đúng chiều (có → 2530 vì succinite thuộc 25.30; không → 0510 vì là long diên hương)."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mã đích 30.01 có trong câu trích, `hoi` không nhắc mã, nhánh Có/Không đúng chiều (có → 3001 vì chất chiết từ mật bị loại trừ sang 30.01; không → 0510)."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `tax.05100000` nguyên văn, không có lỗi."
+  }
+ ]
+}

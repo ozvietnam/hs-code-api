@@ -1,0 +1,11 @@
+{
+  "nhom": "0703",
+  "nguoiSoat": "dev-soat-doc-lap-lo046",
+  "luc": "2026-10-25T22:10:00+07:00",
+  "soat": 2,
+  "giu": 2,
+  "sua": 0,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0703 — 2 mục trong phạm vi mục 4 (1 phamVi + 1 dieuKienVao; boPhan = null, không có loaiTru/phanBiet — chú giải nhóm không có khoản loại trừ nào). SỬA 0, XOÁ 0. (a) `phamVi`: chú giải nhóm 0703 có 3 phần ngang hàng (1) Hành tây… (2) Tỏi. (3) Tỏi tây, hẹ tây và các loại rau họ hành, tỏi khác. Bản nháp nêu đủ 3 phần nối bằng '…', `text` bám đúng nguồn ✓ (KHÔNG chỉ lấy phần đầu — lỗi lô 030 3401/3810/4415). Mỗi mảnh trích là một đoạn LIÊN TIẾP trong nguồn (không dán hai mảnh xa); dấu lược chỉ ở ranh giới đầu câu, không nuốt ngoại lệ. (b) `dieuKienVao[0]`: điều kiện 'tươi hoặc ướp lạnh' đúng TẦNG (tiêu đề nhóm = rau họ hành, tỏi tươi hoặc ướp lạnh), và PHỦ CẢ NHÓM: điều kiện nằm ở câu mở đầu duy nhất áp cho cả 3 phần ✓ (không dính lỗi lô 030 3802 'điều kiện chỉ phủ phần A'). Sau câu trích chỉ có 'sau:' rồi danh sách 3 phần → không phải cắt trích lách câu cho phép. GHI NHẬN (ngoài phạm vi mục 4, KHÔNG sửa): 4 dòng 8 số 'Củ giống' (07031021, 07032010, 07039010) và 3 dòng 'Loại khác' (07031019, 07032090, 07049030) ghi thêm TÊN CHA trong `dieuKien` (vd 'Củ giống — Hành, hẹ (chú giải nhóm 07.03)') trong khi câu trích của dòng đó chỉ là dòng biểu thuế ('07031021 - - - Củ giống') — tên cha lấy từ chú giải nhóm và ĐÃ ghi rõ nguồn trong ngoặc; máy không kiểm `dieuKien` nên không bắt → nêu để người duyệt xem (không sửa vì ngoài mục 4). Đã đọc 5 `tieuChi6` + 8 `dong8`, KHÔNG sửa.",
+  "thayDoi": []
+}
