@@ -1,0 +1,116 @@
+{
+ "nhom": "0603",
+ "nguoiSoat": "dev-soat-doc-lap-lo045",
+ "luc": "2026-10-25T22:35:00+07:00",
+ "soatVaiTro": "Người soát ĐỘC LẬP (không phải người soạn). Đọc lại từng mục cùng nguồn nguyên văn tmp/so-tay/nguon/0603.txt; kiểm BYTE-EXACT từng mảnh câu trích (máy check-so-tay dùng squash() nên không bắt được lỗi ký tự).",
+ "soat": 5,
+ "daKiem": 14,
+ "giu": 3,
+ "sua": 2,
+ "xoa": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 0603 — 5 mục trong phạm vi mục 4 (1 phamVi + 2 loaiTru + 2 phanBiet; dieuKienVao rỗng, boPhan null), đọc lại cùng nguồn nguyên văn. SỬA 2, XOÁ 0, GIỮ 3. Kiểm byte-exact: 5/5 mục có câu trích nguyên văn đúng trong khối nguồn `nguon`. SỬA 2: (1) `phamVi` — bản cũ CẮT TRÍCH BỎ câu điều kiện 'Nếu bó hoa như vậy vẫn giữ được đặc tính cơ bản của những sản phẩm của người làm hoa thì chúng vẫn ở trong nhóm này ngay cả khi chúng có chứa các đồ phụ trợ...' nên `text` nêu bó hoa/vòng hoa/lẵng hoa một cách VÔ ĐIỀU KIỆN, đọc ngược nghĩa so với nguồn; (2) `loaiTru[0].dieuKien` — bản cũ bỏ nhánh 'trong bào chế dược phẩm' của câu loại trừ. GIỮ 3: `loaiTru[1]` ('Nhóm này cũng loại trừ các tác phẩm ghép và phù điêu trang trí tương tự thuộc nhóm 97.01' — có đầy đủ dấu hiệu loại trừ và mã đích trong câu trích), `phanBiet[0]` (mã đích 12.11 có trong câu trích, `hoi` không nhắc mã, nhánh Có/Không đúng), `phanBiet[1]` (mã đích 97.01 có trong câu trích, chiều Có/Không đúng). GHI NHẬN (ngoài phạm vi sửa, KHÔNG sửa): (a) `phamVi.trich` sau khi sửa dài 493 ký tự (>300 của luật 2, ≤600 của máy) — chấp nhận được vì câu điều kiện KHÔNG được lược (luật _he-thong.txt dòng 31: đoạn lược không được chứa ngoại lệ; 'Với điều kiện' và 'miễn là' là hai từ bị cấm rõ ràng) và nhà đã có 95/419 nhóm gộp >300. (b) `loaiTru[0].dieuKien` sau khi sửa dài 55/55 — vừa trần clip, không có biên an toàn nếu sau này có sửa thêm; nếu người duyệt muốn có biên thì phải bỏ nhánh 'thuốc trừ sâu, thuốc trừ nấm' (nguồn có 'hoặc các mục đích tương tự' bao trùm) chứ không được thêm. (c) `loaiTru[0].dieuKien` vẫn không nêu nhánh 'làm thuốc trừ sâu, thuốc trừ nấm' — không vừa trần; đã có 'nước hoa/dược phẩm' làm đại diện cho 'các mục đích tương tự'.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (cắt trích né câu rào + mất ngoại lệ): bản cũ lược mất câu 'Nếu bó hoa như vậy vẫn giữ được đặc tính cơ bản của những sản phẩm của người làm hoa thì chúng vẫn ở trong nhóm này ngay cả khi chúng có chứa các đồ phụ trợ làm bằng vật liệu khác (ruy băng, hình cắt tỉa bằng giấy,v.v…).' — đây là ĐIỀU KIỆN VÀO NHÓM, không phải câu định nghĩa. Luật _he-thong.txt dòng 31 cấm lược đoạn có 'với điều kiện'; ở đây câu bị cắt đi hẳn và `text` cũ ('...bó hoa, vòng hoa, lẵng hoa và sản phẩm tương tự có gắn hoa hoặc nụ hoa...') nói bó hoa LUÔN thuộc 0603, tức đọc NGƯỢC nghĩa với nguồn (bó hoa vô điều kiện — kể cả không phải sản phẩm của người làm hoa — thì không thuộc 0603). Hậu quả thực tế: bó hoa dán, hoa giấy, hoa nhựa sẽ bị kéo vào 0603. SỬA `trich`: kéo NGUYÊN VẸN cả câu điều kiện vào giữa hai mảnh, không cắt đôi (272 → 493 ký tự, ≤600 của máy; vượt 300 của luật 2 nhưng nhà đã có 95/419 nhóm vượt 300 và không được hy sinh điều kiện để lấy con số — cùng cách lô 043 ở 0410 đã kéo câu ngoại lệ vào trích). SỬA `text`: thêm 'miễn là giữ được đặc tính cơ bản của sản phẩm người làm hoa' (124 → 185 ký tự, ≤220 của runtime) để phạm vi đọc ra không còn vô điều kiện. KHÔNG thêm chữ nào ngoài nguồn: 'đặc tính cơ bản của những sản phẩm của người làm hoa' và 'vẫn ở trong nhóm này' lấy thẳng từ câu trích.",
+   "sua": {
+    "text": "Hoa và nụ hoa cắt đơn giản; bó hoa, vòng hoa, lẵng hoa và sản phẩm tương tự có gắn hoa hoặc nụ hoa, miễn là giữ được đặc tính cơ bản của sản phẩm người làm hoa; cành cắt mang hoa và nụ.",
+    "trich": "Nhóm này bao gồm không chỉ hoa và nụ hoa cắt đơn giản mà cả bó hoa, vòng hoa, lẵng hoa và sản phẩm tương tự có gắn hoa hoặc nụ hoa…Nếu bó hoa như vậy vẫn giữ được đặc tính cơ bản của những sản phẩm của người làm hoa thì chúng vẫn ở trong nhóm này ngay cả khi chúng có chứa các đồ phụ trợ làm bằng vật liệu khác (ruy băng, hình cắt tỉa bằng giấy,v.v…).…Cành cắt từ cây, cây bụi và bụi cây, nếu mang hoa và nụ (như cành mộc lan và một số cành hồng), được coi như cành hoa và nụ hoa của nhóm này."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "Bản cũ `dieuKien` = 'Hoa không thích hợp bó hoa, dùng để chế nước hoa' BỎ nhánh 'dùng trong bào chế dược phẩm' của câu nguồn 'Nhóm này loại trừ hoa, cánh hoa và nụ hoa dùng chủ yếu để chế nước hoa, dùng trong bào chế dược phẩm, hoặc làm thuốc trừ sâu, thuốc trừ nấm hoặc các mục đích tương tự, miễn là chúng ở dạng không thích hợp để làm hoa bó hoặc để trang trí (nhóm 12.11).' → chỉ còn 'chế nước hoa' thì hoa dùng trong bào chế dược phẩm không bị bắt, dù đích loại trừ của nó cũng là 12.11. Máy KHÔNG bắt được (máy không kiểm `dieuKien` có đủ nhánh không). SỬA: 'Hoa không thích hợp bó hoa, dùng chế nước hoa/dược phẩm' — 55 ký tự, vừa trần clip 55 của runtime (clip chỉ cắt khi DÀI HƠN 55), phần đầu 'Hoa không thích hợp bó hoa' GIỮ NGUYÊN nên cổng so khớp không đổi, chỉ nối thêm '/dược phẩm' lấy từ câu trích. Đồng nhất với `loaiTru[1]` của 0604 ('Cây con và bộ phận dùng làm nước hoa, dược phẩm'). KHÔNG sửa `trich` (đã nguyên văn) và KHÔNG sửa `nguon`.",
+   "sua": {
+    "dieuKien": "Hoa không thích hợp bó hoa, dùng chế nước hoa/dược phẩm"
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích 'Nhóm này cũng loại trừ các tác phẩm ghép và phù điêu trang trí tương tự thuộc nhóm 97.01' có đầy đủ dấu hiệu loại trừ và nêu đích danh 97.01; `dieuKien` chép đúng, không thêm chữ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mã đích 12.11 có trong câu trích, `hoi` không nhắc mã, nhánh Có/Không đúng (có → 1211 vì nguồn loại trừ sang nhóm 12.11; không → 0603) và khớp với `loaiTru[0]`."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mã đích 97.01 có trong câu trích, `hoi` không nhắc mã, nhánh Có/Không đúng (có → 9701; không → 0603) và khớp với `loaiTru[1]`."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ `wco.060311`, không lỗi."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ `wco.060312`, không lỗi."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ `wco.060313`, không lỗi."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ `wco.060314`, không lỗi."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ `wco.060315`, không lỗi."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ `wco.060319`, không lỗi."
+  },
+  {
+   "index": "tieuChi6[6]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ `wco.060390`, không lỗi."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `wco.060311`, không lỗi."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `wco.060312`, không lỗi."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `wco.060313`, không lỗi."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `wco.060314`, không lỗi."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `wco.060315`, không lỗi."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: dòng 'Loại khác' theo biểu thuế, không lỗi."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `wco.060390`, không lỗi."
+  }
+ ]
+}

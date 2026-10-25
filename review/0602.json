@@ -1,0 +1,148 @@
+{
+ "nhom": "0602",
+ "nguoiSoat": "dev-soat-doc-lap-lo045",
+ "luc": "2026-10-25T22:30:00+07:00",
+ "soatVaiTro": "Người soát ĐỘC LẬP (không phải người soạn). Đọc lại từng mục cùng nguồn nguyên văn tmp/so-tay/nguon/0602.txt; kiểm BYTE-EXACT từng mảnh câu trích (máy check-so-tay dùng squash() nên không bắt được lỗi ký tự).",
+ "soat": 4,
+ "daKiem": 22,
+ "giu": 3,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 0602 — 4 mục trong phạm vi mục 4 (1 phamVi + 2 loaiTru + 1 phanBiet; dieuKienVao rỗng, boPhan null), đọc lại cùng nguồn nguyên văn. SỬA 1, XOÁ 0, GIỮ 3. Kiểm byte-exact: 4/4 mục có câu trích nguyên văn đúng trong khối nguồn `nguon` (kể cả dấu nháy thẳng \" trong câu chú giải phân nhóm — máy nén dấu nên lọt lỗi loại này, người soát phải so tay). SỬA 1: `phamVi` — bản cũ BỎ SÓT MỤC (3) 'Rễ sống của cây' (nguồn liệt kê 5 mục (1)…(5), bản cũ chỉ nêu (1)(2)(4)(5)). GIỮ 3: `loaiTru[0]` (nêu đích danh 06.01 và 12.12, `sangNhom` '0601|1212' phủ đúng cả hai nhánh), `loaiTru[1]` (nêu đích danh 06.01), `phanBiet[0]` (mã đích có trong câu trích, `hoi` không nhắc mã, chiều Có/Không đúng). GHI NHẬN (ngoài phạm vi sửa, KHÔNG sửa — nêu để người duyệt xem): (a) NGUYỒN MỎNG ĐẶC BIỆT — câu chú giải phân nhóm có câu 'Phân nhóm này không bao gồm cây tầm xuân (phân nhóm 0602.40)' là một LOẠI TRỪ có đích danh, nhưng KHÔNG mã hóa được: `sangNhom`/`neuCo` của lib/so-tay.js chỉ nhận mã 4 số (chu-giai-heading.json) hoặc 8 số (tax.json), mã 6 số '0602.40' bị máy loại ('nhom-dich-khong-co-that'), còn thay bằng nhóm cha 0602 thì máy loại ('nhom-dich-trung-nhom-nay'). Đã đối chiếu tiền lệ lô 044 ở 0506 và 0502: khi nhánh đích không nêu mã nhóm thì chỉ liệt kê mã có nêu — ở đây ngược lại, có nêu mã nhưng mã ở cấp phân nhóm nên không ghi được. Đề nghị người duyệt xử lý ở phiên quản lý (mở rộng lược đồ nhận mã 6 số), KHÔNG tự lách ở lô soát. (b) `phamVi.trich` lược mất câu 'Các loại cây, cây bụi, bụi cây và cây con khác thuộc nhóm này có thể ở dạng rễ trần hoặc rễ trong bầu đất, hoặc trồng trong bình, bao, giỏ, chậu hoặc bao bì tương tự.' — đây là đặc tính đặc trưng của nhóm 0602 (cây sống, có thể có rễ trần hoặc trong chậu), nhưng không phải ngoại lệ nên lược được; `text` cũng không nêu. Ghi nhận cho người duyệt. (c) `phamVi.trich` lược mất đuôi của mục (1) '..., kể cả thân/gốc dùng để ghép' (cây rừng/cây ăn quả/cây cảnh kể cả gốc ghép) — không phải ngoại lệ, `text` cũng không nêu. Ghi nhận. (d) `tieuChi6` có 4 mục `re_song_phan_loai_cung_voi_cay` cho 0602.20/30/40/90 — ngoài phạm vi mục 4, đã đọc để tham chiếu, trích nguyên văn.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Bản cũ nêu PHẠM VI THIẾU MỘT MỤC: nguồn liệt kê 5 mục — (1) Cây, cây bụi và bụi cây các loại; (2) Cây và cây giống các loại để cấy trồng; (3) Rễ sống của cây; (4) Cành giâm chưa mọc rễ, cành ghép, chồi gốc; (5) Hệ sợi nấm — nhưng bản cũ nhảy từ (2) sang (4), bỏ mất (3) 'Rễ sống của cây' ở cả `text` lẫn `trich`. Đây đúng lớp lỗi lô 030 ('phamVi phải nêu PHẠM VI nhóm, không phải một phần') và lô 022 ('cắt trích né câu rào'): máy check-so-tay KHÔNG bắt được (máy chỉ kiểm câu trích có thật trong nguồn, không kiểm `text`/`trich` có phủ hết các phần không). Hậu quả thực tế: rễ sống của cây là hàng hay gặp ở 0602 (nhập cây giống bóc rễ), đọc phạm vi thiếu sẽ dễ loại nhầm sang 0601 (rễ củ) hoặc 12.12. SỬA `text`: chèn 'rễ sống của cây' vào đúng thứ tự nguồn (142 → 159 ký tự, ≤ trần clip 220 của runtime). SỬA `trich`: chèn mảnh nguyên văn '(3) Rễ sống của cây.' vào giữa mảnh (2) và mảnh (4) (279 → 300 ký tự, vừa trần 300 của luật 2 — lần này VƯỢT trần 300 nên máy không bắt được, vẫn nằm dưới trần 600 của máy). Đoạn lược giữa mảnh (2) và (3) nuốt câu 'trừ những loại thuộc nhóm 06.01' — nhưng câu đó ĐÃ được trích TRỌN VẸN ở `loaiTru[1]` của cùng nhóm nên không mất thông tin nào trong sổ tay (đúng tiền lệ lô 044 ở 0502/0506).",
+   "sua": {
+    "text": "Cây, cây bụi, bụi cây (cây rừng, cây ăn quả, cây cảnh); cây và cây giống để cấy trồng; rễ sống của cây; cành giâm chưa mọc rễ, cành ghép, chồi gốc; hệ sợi nấm.",
+    "trich": "(1) Cây, cây bụi và bụi cây các loại (cây rừng, cây ăn quả, cây cảnh v.v...)…(2) Cây và cây giống các loại để cấy trồng…(3) Rễ sống của cây.…(4) Cành giâm chưa mọc rễ; cành ghép (mắt ghép hoặc chồi); cành giâm và chồi gốc.…(5) Hệ sợi nấm gồm đám thể sợi nấm, đã hoặc chưa trộn đất hoặc chất thực vật."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích có 'không bao gồm' và nêu đích danh cả 06.01 lẫn 12.12; `sangNhom` '0601|1212' phủ đúng cả hai nhánh (rễ củ → 0601; rễ rau diếp xoăn → 0601 hoặc 1212). `dieuKien` 'Rễ củ (ví dụ thược dược) và rễ rau diếp xoăn' chép đúng, không thêm chữ ngoài nguồn."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích '(2) Cây và cây giống các loại để cấy trồng, trừ những loại thuộc nhóm 06.01' có dấu hiệu loại trừ ('trừ') và nêu đích danh 06.01; `dieuKien` giữ đúng đối tượng và điều kiện."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mã đích 06.01 và 12.12 có trong câu trích, `hoi` không nhắc mã, chiều Có/Không đúng (có → 0601/1212 vì nguồn loại trừ sang hai nhóm đó; không → 0602) và khớp với `loaiTru[0]`."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ mục (4) của nguồn, không lỗi."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ `wco.060220`, không lỗi."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ câu chú giải phân nhóm 0602.20 (có dấu nháy thẳng, đã so tay), không lỗi."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ câu chú giải phân nhóm, không lỗi."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ `wco.060230`, không lỗi."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ câu chú giải phân nhóm, không lỗi."
+  },
+  {
+   "index": "tieuChi6[6]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ `wco.060240`, không lỗi."
+  },
+  {
+   "index": "tieuChi6[7]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ câu chú giải phân nhóm, không lỗi."
+  },
+  {
+   "index": "tieuChi6[8]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ `wco.060290`, không lỗi."
+  },
+  {
+   "index": "tieuChi6[9]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ câu chú giải phân nhóm, không lỗi."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `tax.06021010`, không lỗi."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `tax.06021020`, không lỗi."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: dòng 'Loại khác' theo biểu thuế, không lỗi."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `tax.06022000`, không lỗi."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `tax.06023000`, không lỗi."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `tax.06024000`, không lỗi."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `tax.06029010`, không lỗi."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `tax.06029020`, không lỗi."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `sen.06029040`, không lỗi."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` + `tieuChi` chép từ `sen.06029050`, ngưỡng 1–2 cm có trong trích, không lỗi."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` + `tieuChi` chép từ `sen.06029060`, ngưỡng 30 cm có trong trích, không lỗi."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: dòng 'Loại khác' theo biểu thuế, không lỗi."
+  }
+ ]
+}

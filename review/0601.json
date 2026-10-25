@@ -1,0 +1,72 @@
+{
+ "nhom": "0601",
+ "nguoiSoat": "dev-soat-doc-lap-lo045",
+ "luc": "2026-10-25T22:25:00+07:00",
+ "soatVaiTro": "Người soát ĐỘC LẬP (không phải người soạn). Đọc lại từng mục cùng nguồn nguyên văn tmp/so-tay/nguon/0601.txt; kiểm BYTE-EXACT từng mảnh câu trích (máy check-so-tay dùng squash() nên không bắt được lỗi ký tự).",
+ "soat": 5,
+ "daKiem": 5,
+ "giu": 4,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 0601 — 5 mục trong phạm vi mục 4 (1 phamVi + 2 loaiTru + 2 phanBiet; dieuKienVao rỗng, boPhan null), đọc lại cùng nguồn nguyên văn. SỬA 1, XOÁ 0, GIỮ 4. Kiểm byte-exact: 5/5 mục có câu trích nguyên văn đúng trong khối nguồn `nguon`. SỬA 1: `loaiTru[1].dieuKien` — bản cũ bỏ định ngữ giới hạn 'thuộc loài Cichorium intybus sativum' (xem `thayDoi`). GIỮ 4: (1) `phamVi` — `text` nêu đúng phạm vi (củ của các loài cây trang trí + củ cây không dùng để trang trí + thân rễ măng tây + thân/rễ rau diếp xoăn), câu trích liệt kê cả ba khối đó; (2) `loaiTru[0]` — nêu đích danh 09.10, `dieuKien` 'Thân rễ của gừng' đúng; (3) `phanBiet[0]` — mã đích 12.12 có trong câu trích, `hoi` không nhắc mã, chiều Có/Không đúng; (4) `phanBiet[1]` — mã đích 09.10 có trong câu trích, chiều Có/Không đúng. GHI NHẬN (ngoài phạm vi sửa, KHÔNG sửa): (a) `phamVi.trich` mở đầu bằng 'Cây hoa loa kèn, cỏ chân ngỗng (các loài có củ), ...' — BỎ câu dẫn 'Ngoài những loại khác, nhóm này có thể kể đến những loại củ, v.v… có hay không ở trong bình, chậu, hộp, v.v… của các cây thuộc các loài sau:'. Câu dẫn này mang hai ý: (i) danh sách cây là VÍ DỤ ('có thể kể đến', không phải liệt kê kín), (ii) điều kiện 'có hay không ở trong bình, chậu, hộp' (củ có trong chậu hay củ trần đều thuộc nhóm). `text` hiện chỉ nêu tên cây và có dấu '…' báo hiểu danh sách còn tiếp, nên không sai; nhưng ý 'có hay không trong chậu' không có ở đâu trong sổ tay. KHÔNG sửa vì kéo câu dẫn vào sẽ vượt trần 300 của luật 2 (trích hiện tại 276 ký tự; thêm câu dẫn 149 ký tự → 425) và `text` cũng không còn chỗ (163/220) — ghi nhận để người duyệt cân nhắc nếu cần. (b) `loaiTru[0].trich` gộp hai nhánh: nhánh 'thuộc Chương 7' (hành tây, hành, hẹ, tỏi, khoai tây, a-ti-sô Jerusalem) và nhánh 'thân rễ của gừng (nhóm 09.10)'. `sangNhom` chỉ ghi 0910 vì 'Chương 7' KHÔNG phải mã nhóm — đúng luật 3 và đúng tiền lệ lô 044 ở 0506 ('chỉ liệt kê mã có nêu'). (c) `phamVi.text` không nêu điều kiện 'củ có hay không ở trong bình, chậu, hộp' — xem (a).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn byte-exact, nêu đủ ba khối của nhóm 0601 (củ cây trang trí; củ cây không dùng để trang trí + thân rễ cây măng tây; thân và rễ rau diếp xoăn) và `text` (163/220) chỉ diễn đạt đúng những gì câu trích nói. Xem ghiChu mục (a),(c)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích có 'không bao gồm' và nêu đích danh nhóm 09.10; `dieuKien` 'Thân rễ của gừng' là đúng cụm trích. Xem ghiChu mục (b) về nhánh 'Chương 7' không ghi được vào `sangNhom`."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "Bản cũ `dieuKien` = 'Rễ rau diếp xoăn chưa rang' BỎ định ngữ giới hạn 'thuộc loài Cichorium intybus sativum' của câu nguồn 'Tuy nhiên, nhóm này loại trừ rễ rau diếp xoăn chưa rang thuộc loài Cichorium intybus sativum (nhóm 12.12).' Luật _he-thong.txt dòng 29: 'dieuKien phải giữ định ngữ giới hạn của câu'. Bỏ thì loại trừ bị RỘNG ra: mọi rễ rau diếp xoăn chưa rang (kể cả loài khác C. intybus sativum) đều bị đẩy sang 12.12. Máy KHÔNG bắt được (máy chỉ kiểm câu trích, không kiểm `dieuKien` có đủ định ngữ không). SỬA: 'Rễ rau diếp xoăn chưa rang (Cichorium intybus sativum)' — 54 ký tự, ≤ trần clip 55 của runtime; đầu danh từ 'Rễ rau diếp xoăn chưa rang' GIỮ NGUYÊN nên cổng so khớp không đổi; chữ trong ngoặc lấy nguyên văn từ câu trích. KHÔNG sửa `trich` (đã nguyên văn) và KHÔNG sửa `nguon`.",
+   "sua": {
+    "dieuKien": "Rễ rau diếp xoăn chưa rang (Cichorium intybus sativum)"
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mã đích 12.12 có trong câu trích, `hoi` không nhắc mã, chiều Có/Không đúng (có → 1212 vì nguồn loại trừ sang nhóm 12.12; không → 0601 vì là rễ rau diếp xoăn của nhóm)."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mã đích 09.10 có trong câu trích, `hoi` không nhắc mã, chiều Có/Không đúng (có → 0910 vì thân rễ gừng thuộc 09.10; không → 0601)."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ `wco.060110`, không lỗi."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `trich` nguyên văn từ `wco.060120`, không lỗi."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ `tax.06011000`, không lỗi."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ nguồn nhóm, không lỗi."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: `dieuKien` chép từ nguồn nhóm, không lỗi."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Ngoài phạm vi mục 4 — đã đọc để tham chiếu: dòng 'Loại khác' theo biểu thuế, không lỗi."
+  }
+ ]
+}

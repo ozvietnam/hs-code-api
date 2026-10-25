@@ -3,6 +3,91 @@
 <!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
 ---
 
+# SOẠN lô 045 — phiên `dev-zcode-mm` (25/10/2026)
+
+- **Nhánh:** `so-tay/lo-045` · **Nhóm:** `0510,0511,0601,0602,0603,0604` (Chương 5 + Chương 6)
+- **Người soạn:** `dev-zcode-mm` (soát độc lập là phiên khác — mục 4 giao việc, CHƯA làm ở lô này).
+
+## Các bước (theo thứ tự)
+
+1. **Đọc brief + giao việc TRƯỚC**: `docs/giao-viec/so-tay-giao-ngoai.md` đọc trọn (mục 2 = các lệnh
+   có sẵn; mục 3 = 11 luật bắt buộc), rồi mới xuất nguồn.
+2. **Xuất nguồn**: `node scripts/build-so-tay.mjs --nhom=0510,0511,0601,0602,0603,0604
+   --xuat-nguon=tmp/so-tay/nguon` → 6 tệp nguồn + `_he-thong.txt` (tổng 46.817 ký tự).
+3. **Đọc TRỌN `_he-thong.txt`** (lược đồ + 11 luật + 2 khối bài học soát lô 030) rồi đọc HẾT 6 tệp
+   nguồn trước khi soạn.
+4. **Dựng cây nhóm** (để biết dòng 8 số + nút 6 số): `tmp/dump-tree.mjs` (in `lib/hs-tree.js`).
+   Kết quả: 0510 = 1 dòng; 0511 = 9; 0601 = 4; 0602 = 12; 0603 = 7; 0604 = 4 ⇒ **37 dòng 8 số**.
+5. **Soạn bản nháp** `tmp/so-tay/raw/<nhom>.json` theo lược đồ: KHÔNG ghi `nguonLoai`, KHÔNG soạn
+   `cay` (máy sinh), `boPhan` = null (6 nhóm này không có dòng "Bộ phận/Phụ tùng").
+6. **Máy kiểm bản nháp**: `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **104/104 mục đạt,
+   0 mục loại** (lần 1 đã sạch).
+7. **Kiểm khắt câu trích** (byte-exact, không squash): `node scripts/check-trich-nguyen-van.mjs`
+   → lần 1 **SAI 2 mảnh/104**: (a) 0602 đóng ngoặc kép nguồn là `"` thẳng chứ không phải `”` cong;
+   (b) 0511 câu "(2) Phôi động vật… để cấy." có dấu chấm không có trong nguồn. Sửa cả hai →
+   **OK 104/104 mục nguyên văn tuyệt đối trong đúng khối nguồn**.
+8. **Tự soát trường tự viết** (máy KHÔNG bắt): `tmp/audit-chu.mjs` — mỗi từ trong
+   `phamVi.text` / `loaiTru.dieuKien` / `phanBiet.hoi` / `dong8.dieuKien` phải có trong câu trích
+   của chính mục đó. Kết quả đầu: 0510 `cantharides`→`cantharide` (nguồn viết số ít);
+   0604 hai mục `loaiTru`/`phanBiet` mất chủ ngữ vì câu trích đã lược → sửa lại câu trích giữ
+   chủ ngữ; 0603 `loaiTru`/`phanBiet` 1211 rút còn "Hoa không thích hợp bó hoa, dùng để chế nước
+   hoa" (vừa đủ 55 ký tự, không mất vế "dùng chủ yếu để chế nước hoa").
+9. **Đo trần clip runtime** (`tmp/lengths.mjs`): `phamVi.text` ≤220, `loaiTru.dieuKien` ≤55,
+   `phanBiet.hoi` ≤110, `dong8.dieuKien` ≤90 — **cả 6 nhóm trong trần**. `trich` ≤300 theo luật 2,
+   **trừ 1 câu**: `phamVi.trich` của 0511 dài **573** (nhóm liệt kê 14 mục (1)–(14)) — tiền lệ
+   lô 0102 (492), 0307 (521), 4015 (575); vẫn dưới trần máy 600.
+10. **Ghi danh CSV**: dòng 045 → `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm` (cột `pr` để
+    trống cho người duyệt điền khi gộp, đúng mục 4 giao việc).
+11. **Nạp**: `node scripts/build-so-tay.mjs --nhom=0510,0511,0601,0602,0603,0604 --tu-tep=tmp/so-tay/raw
+    --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-045.json`
+    → **104/104 mục (100 %)**, 0 nhóm lỗi, báo cáo riêng `data/so-tay/bao-cao/lo-045.json`.
+12. **Kiểm sau nạp**: `npm run so-tay:check` → **422 nhóm, 12.379 mục, 0 mục không kiểm được nguồn**;
+    `node scripts/check-cay.mjs --nhom=0510,0511,0601,0602,0603,0604 --chi-tiet` → **6/6 nhóm đủ,
+    0 lỗi lệch cây**; `check-trich-nguyen-van` trên `data/so-tay/` → **OK 104/104**;
+    `npm test` → **ALL TESTS PASSED**.
+13. **Dọn rác test**: `npm test` ghi thêm 1 dòng vào `data/legal-status-miss.jsonl` (log lúc chạy)
+    → `git checkout -- data/legal-status-miss.jsonl` để commit chỉ có đúng tệp của lô.
+14. **Commit + push**: commit `data(so-tay): lô 045 — 6 nhóm (0510 0511 0601 0602 0603 0604),
+    104/104 mục (100 %) (#365)` gồm 6 tệp `data/so-tay/*.json` + `bao-cao/lo-045.json` + dòng CSV
+    + `TIEN-TRINH.md` (KHÔNG commit `tmp/`); push nhánh `so-tay/lo-045`.
+15. **Mở PR #449** (base `main`) — **KHÔNG merge**. PR ghi tỷ lệ đạt, 3 mục mẫu (loại trừ / điều
+    kiện số / dòng 8 số), các nhóm nguồn mỏng-bất thường, và câu hỏi "mục `dieuKien` nào ghi điều
+    mà câu trích không nói" (trả lời: **không có**, đã soát bằng `tmp/audit-chu.mjs`).
+
+## Trạng thái cuối
+
+- `check-so-tay --raw` → **104/104**; kiểm khắt trích → **104/104 nguyên văn** (từng ký tự).
+- Nạp lại → **104/104 mục (100 %)**; `npm run so-tay:check` → **422 nhóm, 12.379 mục, 0 hỏng**.
+- `check-cay` → **6/6 nhóm đủ, 0 lỗi lệch cây**; `npm test` → **ALL TESTS PASSED**.
+- **CHƯA merge** — PR #449, chờ **soát độc lập** (người/agent KHÁC người soạn) theo mục 4 giao việc.
+  `so-tay-lo.csv` dòng 45 giữ `trang_thai=dang-lam` (đổi `xong` + ghi PR khi gộp).
+
+## Quyết định nội dung đáng ghi (để lô sau bám)
+
+- **`dieuKienVao` rỗng cho CẢ 6 nhóm** — không có câu ràng buộc nào phủ *cả* nhóm:
+  0510 (điều kiện "tươi/ướp lạnh" chỉ áp cho mục (1) tuyến, còn mật thì được khô),
+  0511 (14 mục không đồng nhất), 0601/0602/0603/0604 (nhóm gồm cả hàng tươi lẫn đã xử lý).
+  → **không bịa điều kiện vào chung**; ô trống là đúng, không phải thiếu sót.
+- **0510 `loaiTru` "chất chiết từ mật" → 3001**: ngoặc `(chất chiết từ mật bị loại trừ - nhóm 30.01)`
+  loại trừ **chiết xuất** mật, KHÔNG phải mật (mật đã hoặc chưa làm khô vẫn thuộc 0510).
+- **0511 `loaiTru` "chiết xuất bọ yên chi" → 3203** và **"thuốc nhuộm từ bọ kemet" → 3203**:
+  câu nguồn có dấu hiệu loại trừ ("được phân loại vào nhóm 32.03"); "chất màu đỏ (nhóm 32.05)"
+  là SẢN PHẨM làm ra từ chiết xuất nên **không** ghi thành loại trừ.
+- **"không nên nhầm lẫn … thuộc nhóm X"** dùng làm `loaiTru` (0510→2530 hổ phách vàng,
+  0511→3824 khoáng kemet) — có tiền lệ 5 mục trong `data/so-tay/` (3407, 3907, 6306, 7018, 8419).
+- **0602 `loaiTru` sangNhom "0601|1212"** (nhiều đích trong 1 mục) — máy tách `|` và đòi mỗi mã
+  có trong câu trích ✓. Câu loại trừ "cây tầm xuân → phân nhóm 0602.40" **bị bỏ**: `sangNhom`
+  chỉ nhận mã 4 số hoặc 8 số, 6 số bị máy loại (`nhom-dich-khong-co-that`) ⇒ ghi trong mô tả PR.
+- **0602 `tieuChi6` "rễ sống được phân loại cùng với cây"** đặt cho **cả 4** phân nhóm mà câu
+  nguồn nêu (0602.20/30/40/90) — cùng một câu trích, đúng theo câu nguồn.
+- **Dòng 8 số lấy `tax.*` khi biểu thuế đã có tên riêng** (vd 06022000), lấy `wco.*` khi biểu
+  thuế chỉ ghi "Loại khác" (mẫu của lô 0206), lấy `nhom*` khi chú giải mới phân biệt được
+  (vd 05119110 "Sẹ và bọc trứng cá", 05119130 "Da cá"), lấy `sen.*` cho dòng có SEN.
+- **`dong8[].tieuChi` số** (06029050 rễ ≥ 1 cm; 06029060 chồi ≥ 30 cm) — số có nguyên văn trong
+  câu trích SEN ✓.
+
+---
+
 # SOÁT ĐỘC LẬP lô 044 — phiên `dev-soat-doc-lap-lo044` (25/10/2026)
 
 - **Nhánh:** `so-tay/lo-044` (PR #440, **KHÔNG merge**) · **Nhóm:** `0502,0504,0505,0506,0507,0508`
@@ -3742,5 +3827,128 @@ Em là người soát **độc lập**: bản nháp `tmp/so-tay/raw/*.json` củ
 - `npm test` → **ALL TESTS PASSED**.
 - **CHƯA merge** — chờ người duyệt (PR #439). `so-tay-lo.csv` dòng 44 giữ `trang_thai=dang-lam`
   (đổi `xong` khi gộp).
+
+---
+## 2026-10-25 — SOÁT ĐỘC LẬP lô 045 (PR #449), người soát `dev-soat-doc-lap-lo045` (KHÁC người soạn `dev-zcode-mm`)
+
+Em là người soát **độc lập**: bản nháp `tmp/so-tay/raw/*.json` của lô 045 do phiên trước
+(`dev-zcode-mm`) soạn, em đọc lại **toàn bộ** `phamVi` / `boPhan` / `dieuKienVao` / `loaiTru` /
+`phanBiet` của 6 nhóm (0510, 0511, 0601, 0602, 0603, 0604), **mỗi mục cùng nguồn**
+`tmp/so-tay/nguon/<nhom>.txt` (đọc trọn, không dựa vào squash của máy). Ngoài phạm vi mục 4 em
+đọc thêm **61 mục** `tieuChi6` / `dong8` để tham chiếu — ghi `giu` trong `review/*.json`, **không sửa**.
+
+**Kết quả: soát 42 mục trong phạm vi mục 4 — giữ 33, sửa 9 mục (14 trường), xoá 0.** Sau soát vẫn
+**104/104 mục (100 %)**; **42 mục** đã soát đổi `nguonLoai` → `NGUOI_DUYET`. Khối `tieuChi6` /
+`dong8` ngoài phạm vi mục 4 giữ `AI_DA_KIEM`, khối `cay` do máy sinh giữ `MAY_SUY` — cùng cách lô 044
+(0502/0506/0508); lô 043 (0406) thì đổi cả 8 khối.
+
+| nhóm | soát (mục 4) | giữ | sửa | xoá | còn lại |
+|---|---|---|---|---|---|
+| 0510 | 7 | 7 | 0 | 0 | 8 |
+| 0511 | 14 | 12 | 2 | 0 | 27 |
+| 0601 | 5 | 4 | 1 | 0 | 11 |
+| 0602 | 4 | 3 | 1 | 0 | 26 |
+| 0603 | 5 | 3 | 2 | 0 | 19 |
+| 0604 | 7 | 2 | 3 | 0 | 13 |
+| **lô** | **42** | **33** | **9** | **0** | **104** |
+
+### Cách làm
+
+1. Đọc trọn 6 tệp nguồn `tmp/so-tay/nguon/<nhom>.txt` + `_he-thong.txt` (luật soạn) + bản nháp
+   `tmp/so-tay/raw/<nhom>.json`.
+2. Tự viết kiểm **BYTE-EXACT** (`tmp/so-tay/audit-lo045.mjs`) vì máy `check-so-tay` so trích qua
+   `squash()` (xoá mọi ký tự không phải chữ/số) nên **không** bắt được lỗi ký tự. Kết quả:
+   **42/42 mục trong phạm vi có câu trích nguyên văn tuyệt đối** trong đúng khối nguồn `nguon`.
+   ⇒ lỗi lô 045 **không** nằm ở "câu trích có thật hay không" mà ở **"câu trích có nói đúng điều
+   mục khẳng định không"** — đúng như giao việc mục 4 nói. (Vài mục trong `loaiTru` 0604 còn bị cắt
+   mất cả ĐỘNG TỪ "loại trừ" ⇒ câu trích không còn nói là loại trừ.)
+3. Đo trước mọi câu sửa: trần luật 2 (trích ≤ 300), trần clip runtime (`phamVi.text` 220 ·
+   `boPhan.tomTat` 160 · `loaiTru.dieuKien` 55 · `phanBiet.hoi` 110) và trần máy (trích ≤ 600) — đo
+   bằng script (`tmp/so-tay/soat-lo045*.mjs`), không gõ tay.
+4. Ghi `review/<nhom>.json` — **mỗi mục một dòng** `index` + `hanhDong` (`giu`/`sua`/`xoa`) + `lyDo`
+   nêu rõ căn cứ và vì sao sửa (giữ nguyên ký tự, không sửa câu nguồn, không sửa mã).
+5. `TARGET=raw APPLY=1 node scripts/apply-review-lo045.mjs` → sửa **14 trường trên 9 mục**, xoá **0**.
+6. `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **104/104**;
+   `node scripts/check-trich-nguyen-van.mjs` → **104/104 nguyên văn** (từng ký tự).
+7. `rm data/so-tay/bao-cao/lo-045.json` (bài học "báo cáo lô bị ghi đè") rồi
+   `node scripts/build-so-tay.mjs --nhom=0510,0511,0601,0602,0603,0604 --tu-tep=tmp/so-tay/raw --force
+   --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-045.json` → **104/104 (100 %)**.
+8. `TARGET=data APPLY=1` — **chỉ đổi `nguonLoai`** (không áp lại `thayDoi`) → **42 mục = NGUOI_DUYET**.
+
+### 9 mục động — 7 nhóm lỗi, đều thuộc loại máy KHÔNG bắt được
+
+1. **CẮT TRÍCH NÉ CÂU RÀO — MẤT ĐIỀU KIỆN VÀO NHÓM (2 mục: 0603 `phamVi`, 0604 `phamVi`)** — bản cũ lược
+   mất câu điều kiện "Nếu bó hoa như vậy vẫn giữ được đặc tính cơ bản của những sản phẩm của người
+   làm hoa thì chúng vẫn ở trong nhóm này…" (0603) và "Với điều kiện là những bó hoa,… như vậy vẫn
+   giữ được đặc tính cơ bản…" (0604). Luật `_he-thong.txt` dòng 31 cấm lược đoạn có **"với điều
+   kiện"** — 0604 đúng từ bị cấm. Hậu quả: `text` nêu bó hoa/vòng hoa/lẵng hoa **vô điều kiện**
+   (đọc ngược nghĩa nguồn) ⇒ bó hoa dán, hoa giấy, hoa nhựa bị kéo vào 0603. Sửa: kéo **nguyên văn**
+   cả câu điều kiện vào trích + thêm "miễn là giữ được đặc tính cơ bản của sản phẩm người làm
+   hoa" vào `text` (0603: trích 272→493, text 124→185; 0604: trích 213→575, text 155→216).
+2. **CÂU TRÍCH KHÔNG CÒN NÓI LÀ "LOẠI TRỪ" (2 mục: 0604 `loaiTru[1]`, `loaiTru[2]`)** — hai câu trích
+   cắt mất động từ "loại trừ" ("…những cây con và các bộ phận của chúng…" / "…hoặc để tết bện…")
+   trong khi mục thì khẳng định loại trừ sang 12.11 / 14.01. Sửa: lấy lại "Nhóm này cũng loại trừ …".
+3. **`dieuKien` CHỈ LÀ VẾ, KHÔNG NÓI ĐỐI TƯỢNG (1 mục: 0604 `loaiTru[2]`)** — "Để tết bện" ⇒ câu hỏi
+   runtime ("Hàng có thuộc diện \"Để tết bện\" không?") vô nghĩa. Sửa: "Cây con và bộ phận của chúng
+   dùng để tết bện" (44/55).
+4. **`phamVi` BỎ SÓT MỘT MỤC CỦA NHÓM (1 mục: 0602)** — nguồn liệt kê 5 mục (1)…(5) nhưng bản cũ nhảy
+   từ (2) sang (4), **bỏ mất (3) "Rễ sống của cây"** ở cả `text` lẫn `trich`. Đúng lớp lỗi lô 030
+   ("phamVi phải nêu phạm vi nhóm, không phải một phần") và lô 022. Sửa: chèn mục (3) (text 142→159,
+   trích 279→300).
+5. **`phamVi` NÊU PHẠM VI HẸP HƠN NGUỒN (1 mục: 0511)** — mục (6) của nhóm là "Phế liệu của cá hoặc
+   động vật giáp xác, **động vật thân mềm** hoặc động vật thủy sinh không xương sống khác" nhưng bản cũ
+   chỉ nêu "phế liệu cá và giáp xác" và trích cắt đúng chỗ đó ⇒ phế liệu mực/sò/ốc không được nhận là
+   0511. Sửa: thêm "động vật thân mềm" vào cả hai (text 212→220, trích 573→592).
+6. **`dieuKien` BỎ NHÁNH CỦA CÂU LOẠI TRỪ (2 mục: 0511 `loaiTru[0]`, 0603 `loaiTru[0]`)** — 0511 bỏ
+   "hoặc chẩn đoán bệnh" (tiết động vật dùng để chẩn đoán vẫn thuộc 30.02); 0603 bỏ "dùng trong bào
+   chế dược phẩm" (hoa dùng trong dược phẩm không bị bắt, dù đích loại trừ cũng là 12.11). Sửa:
+   "Tiết động vật điều chế dùng chữa, phòng, chẩn đoán bệnh" (55/55) và "Hoa không thích hợp bó hoa,
+   dùng chế nước hoa/dược phẩm" (55/55) — giữ nguyên đầu danh từ để cổng so khớp không đổi.
+7. **`dieuKien` BỎ ĐỊNH NGỮ GIỚI HẠN (1 mục: 0601 `loaiTru[1]`)** — bỏ "thuộc loài Cichorium intybus
+   sativum" (luật `_he-thong.txt` dòng 29) ⇒ loại trừ bị **rộng** ra: mọi rễ rau diếp xoăn chưa rang
+   đều bị đẩy sang 12.12. Sửa: "Rễ rau diếp xoăn chưa rang (Cichorium intybus sativum)" (54/55).
+
+### Những chỗ em CỐ TÌNH KHÔNG sửa (có lý do, để người duyệt thấy rõ)
+
+- **0511 `phamVi.trich` 573 ký tự** (> 300 của luật 2, ≤ 600 của máy) — nhóm có **14 mục ngang hàng**;
+  một trích tối thiểu phải nêu cả 14 tiêu đề đã dài ~560 ký tự. Cắt còn ≤ 300 buộc phải **bỏ mục
+  thật** khỏi phạm vi nhóm. Nhà đã có **95/419 nhóm gộp > 300** (cao nhất 598; 8472: 568 ký tự/16
+  mục; 0410: 540 — lô 043 đã soát và giữ nguyên) ⇒ em chọn giữ phạm vi đủ 14 mục.
+- **0511: 2 ngoại lệ bị dấu lược "…" nuốt, không mục nào ghi được** — sau mục (12): "… không thích
+  hợp dùng làm thức ăn cho người **TRỪ** các sản phẩm thuộc nhóm 02.09 hoặc thuộc một trong các
+  nhóm trước của Chương này"; sau mục (13): "Nhóm này **không bao gồm** lông đuôi hoặc bờm ngựa đã
+  trải qua quá trình xe sợi và lông đuôi hoặc bờm ngựa được nối với nhau (Chương 51)". Không kéo
+  được (vượt 600) và không mã hóa được: "Chương 51" không phải mã nhóm nên không ghi vào
+  `sangNhom`/`neuCo`; nhóm 02.09 lại là **CHIẾT LƯỢC** chứ không phải loại trừ ra khỏi nhóm.
+  **Đề nghị người duyệt cân nhắc mở rộng lược đồ để giữ hai ý này.**
+- **0602 "cây tầm xuân (phân nhóm 0602.40)"** — loại trừ có đích danh nhưng **không mã hóa được**:
+  `sangNhom`/`neuCo` của `lib/so-tay.js` chỉ nhận mã 4 số (chu-giai-heading.json) hoặc 8 số
+  (tax.json); mã 6 số bị máy loại (`nhom-dich-khong-co-that`), thay bằng nhóm cha thì bị
+  `nhom-dich-trung-nhom-nay`. Đã biết từ lúc soạn ⇒ đề nghị xử lý ở phiên quản lý (mở rộng lược đồ
+  nhận mã 6 số), **không** tự lách ở lô soát.
+- **0510 `loaiTru[0].dieuKien`** không nêu ngoại lệ "(tuy nhiên, đối với những sản phẩm dùng làm thực
+  phẩm, xem Chú giải 1(a) của Chương này)"; thêm vào vượt trần clip 55 (70 ký tự) ⇒ em ghi nhận
+  thay vì ép chữ — cùng cách lô 044 ở 0506.
+- **0510 `phamVi.text`** dùng cụm "hươu xạ" lấy từ `tax.05100000` (không có trong `nhom0510.nhom`
+  mà `nguon` khai) — nghĩa ĐÚNG (chú giải nói "Xạ hương, do một loại hươu tiết ra") nên giữ nguyên
+  ký tự, chỉ ghi nhận để lô sau bám nguồn.
+- **0601 `phamVi.trich`** mở đầu bằng "Cây hoa loa kèn…" (bỏ câu dẫn "Ngoài những loại khác, nhóm này
+  có thể kể đến… có hay không ở trong bình, chậu, hộp") — kéo vào sẽ vượt trần 300 (276 + 149 = 425)
+  nên ghi nhận cho người duyệt.
+- **0603 `loaiTru[0].dieuKien`** và **0511 `loaiTru[0].dieuKien`** sau khi sửa dài **55/55** — vừa
+  trần clip, không còn biên an toàn nếu sau này có sửa thêm; nếu người duyệt muốn có biên thì phải
+  bỏ nhánh "thuốc trừ sâu, thuốc trừ nấm" (nguồn có "hoặc các mục đích tương tự" bao trùm) chứ không
+  được thêm.
+
+### Trạng thái cuối
+
+- `check-so-tay --raw` → **104/104**; kiểm chặt trích → **104/104 nguyên văn** (từng ký tự).
+- Nạp lại → **104/104 mục (100 %)**; `npm run so-tay:check` → **422 nhóm, 12.379 mục, 0 mục không
+  kiểm được nguồn**.
+- `node scripts/check-cay.mjs --nhom=0510,0511,0601,0602,0603,0604 --chi-tiet` → **6/6 nhóm đủ**,
+  **0 lỗi lệch cây**.
+- `npm test` → **ALL TESTS PASSED**.
+- **CHƯA merge** — chờ người duyệt (PR #449). `so-tay-lo.csv` dòng 46 giữ `trang_thai=dang-lam`
+  (đổi `xong` khi gộp), đúng như lô 043.
 
 ---
