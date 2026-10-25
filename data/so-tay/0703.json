@@ -1,0 +1,353 @@
+{
+ "nhom": "0703",
+ "phamVi": {
+  "text": "Rau họ hành, tỏi tươi hoặc ướp lạnh: hành tây (gồm cả hành củ để trồng và hành lá) và hành, hẹ; tỏi; tỏi tây, hẹ tây và các loại rau họ hành, tỏi khác.",
+  "nguon": "nhom0703.nhom",
+  "trich": "Nhóm này bao gồm các loại rau họ hành, tỏi, tươi hoặc ướp lạnh sau:…(1) Hành tây (gồm cả hành củ để trồng và hành lá) và hành, hẹ.…(2) Tỏi.…(3) Tỏi tây, hẹ tây và các loại rau họ hành, tỏi khác.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "tuoi_hoac_uop_lanh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom0703.nhom",
+   "trich": "Nhóm này bao gồm các loại rau họ hành, tỏi, tươi hoặc ướp lạnh",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "070310",
+   "fact": "la_hanh_tay_va_hanh_he",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.070310",
+   "trich": "070310 Vegetables, alliaceous; onions and shallots, fresh or chilled",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "070310",
+   "fact": "la_hanh_tay_gom_ca_hanh_cu_de_trong_va_hanh_la",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom0703.nhom",
+   "trich": "(1) Hành tây (gồm cả hành củ để trồng và hành lá) và hành, hẹ.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "070320",
+   "fact": "la_toi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.070320",
+   "trich": "070320 Vegetables, alliaceous; garlic, fresh or chilled",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "070390",
+   "fact": "la_toi_tay_va_cac_loai_rau_ho_hanh_toi_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.070390",
+   "trich": "070390 Vegetables, alliaceous; leeks and other kinds n.e.c. in heading no. 0703, fresh or chilled",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "070390",
+   "fact": "la_toi_tay_he_tay_va_cac_loai_rau_ho_hanh_toi_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom0703.nhom",
+   "trich": "(3) Tỏi tây, hẹ tây và các loại rau họ hành, tỏi khác.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "07031011",
+   "dieuKien": "Hành tây — hành củ để trồng",
+   "tieuChi": {
+    "fact": "la_hanh_cu_de_trong",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "nhom0703.nhom",
+   "trich": "(1) Hành tây (gồm cả hành củ để trồng và hành lá) và hành, hẹ.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "07031019",
+   "dieuKien": "Hành tây — hành lá",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "nhom0703.nhom",
+   "trich": "(1) Hành tây (gồm cả hành củ để trồng và hành lá) và hành, hẹ.",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "0703101",
+    "truAnhEm": [
+     "07031011"
+    ],
+    "toTienCoTen": "070310",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "07031021",
+   "dieuKien": "Củ giống — Hành, hẹ (chú giải nhóm 07.03)",
+   "tieuChi": {
+    "fact": "la_cu_giong",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.07031021",
+   "trich": "07031021 - - - Củ giống",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "07031029",
+   "dieuKien": "Loại khác: phần còn lại của Hành, hẹ (chú giải nhóm 07.03)",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "tax.07031029",
+   "trich": "07031029 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "0703102",
+    "truAnhEm": [
+     "07031021"
+    ],
+    "toTienCoTen": "070310",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "07032010",
+   "dieuKien": "Củ giống — Tỏi (chú giải nhóm 07.03)",
+   "tieuChi": {
+    "fact": "la_cu_giong",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.07032010",
+   "trich": "07032010 - - Củ giống",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "07032090",
+   "dieuKien": "Loại khác: phần còn lại của Tỏi (chú giải nhóm 07.03)",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "tax.07032090",
+   "trich": "07032090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "070320",
+    "truAnhEm": [
+     "07032010"
+    ],
+    "toTienCoTen": "070320",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "07039010",
+   "dieuKien": "Củ giống — Tỏi tây, hẹ tây và các loại rau họ hành, tỏi khác (chú giải nhóm 07.03)",
+   "tieuChi": {
+    "fact": "la_cu_giong",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.07039010",
+   "trich": "07039010 - - Củ giống",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "07039090",
+   "dieuKien": "Loại khác: phần còn lại của Tỏi tây, hẹ tây và rau họ hành, tỏi khác",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "tax.07039090",
+   "trich": "07039090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "070390",
+    "truAnhEm": [
+     "07039010"
+    ],
+    "toTienCoTen": "070390",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "0703",
+    "cap": 4,
+    "cha": "07",
+    "tenVi": "Hành tây, hành, hẹ, tỏi, tỏi tây và các loại rau họ hành, tỏi khác, tươi hoặc ướp lạnh.",
+    "tenEn": "Onions, shallots, garlic, leeks and other alliaceous vegetables; fresh or chilled",
+    "suyRa": false
+   },
+   {
+    "id": "070310",
+    "cap": 6,
+    "cha": "0703",
+    "tenVi": "Hành tây và hành, hẹ",
+    "tenEn": "Vegetables, alliaceous; onions and shallots, fresh or chilled",
+    "suyRa": false
+   },
+   {
+    "id": "0703101",
+    "cap": "TIEU_DE_QG",
+    "cha": "070310",
+    "tenVi": "Hành tây",
+    "tenEn": "Onions",
+    "suyRa": true
+   },
+   {
+    "id": "07031011",
+    "cap": 8,
+    "cha": "0703101",
+    "tenVi": "Củ giống",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "07031019",
+    "cap": 8,
+    "cha": "0703101",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "0703102",
+    "cap": "TIEU_DE_QG",
+    "cha": "070310",
+    "tenVi": "Hành, hẹ",
+    "tenEn": "Shallots",
+    "suyRa": true
+   },
+   {
+    "id": "07031021",
+    "cap": 8,
+    "cha": "0703102",
+    "tenVi": "Củ giống",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "07031029",
+    "cap": 8,
+    "cha": "0703102",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "070320",
+    "cap": 6,
+    "cha": "0703",
+    "tenVi": "Tỏi",
+    "tenEn": "Vegetables, alliaceous; garlic, fresh or chilled",
+    "suyRa": false
+   },
+   {
+    "id": "07032010",
+    "cap": 8,
+    "cha": "070320",
+    "tenVi": "Củ giống",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "07032090",
+    "cap": 8,
+    "cha": "070320",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "070390",
+    "cap": 6,
+    "cha": "0703",
+    "tenVi": "Tỏi tây và các loại rau họ hành, tỏi khác",
+    "tenEn": "Vegetables, alliaceous; leeks and other kinds n.e.c. in heading no. 0703, fresh or chilled",
+    "suyRa": false
+   },
+   {
+    "id": "07039010",
+    "cap": 8,
+    "cha": "070390",
+    "tenVi": "Củ giống",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "07039090",
+    "cap": 8,
+    "cha": "070390",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom0703.nhom",
+  "tax.07031021",
+  "tax.07031029",
+  "tax.07032010",
+  "tax.07032090",
+  "tax.07039010",
+  "tax.07039090",
+  "wco.070310",
+  "wco.070320",
+  "wco.070390"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-25T14:22:41.164Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 15,
+  "dat": 15,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
