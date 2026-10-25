@@ -1,0 +1,11 @@
+{
+  "nhom": "0701",
+  "nguoiSoat": "dev-soat-doc-lap-lo046",
+  "luc": "2026-10-25T22:10:00+07:00",
+  "soat": 4,
+  "giu": 4,
+  "sua": 0,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0701 — 4 mục trong phạm vi mục 4 (1 phamVi + 1 dieuKienVao + 1 loaiTru + 1 phanBiet; boPhan = null vì chú giải nhóm không chia phần). SỬA 0, XOÁ 0. ĐỌC CÙNG NGUỒN (nhom0701.nhom + ch07.chuong), đối chiếu từng câu trích với câu nguồn nguyên văn. (a) `phamVi`: trích TRỌN cả hai câu của chú giải nhóm (194 ký tự ≤ 300); `text` bám đúng nguồn, không thêm ý. Vế 'ngoài những loại khác, nhóm này CÓ THỂ kể đến…' được giữ nguyên độ lược 'có thể' — KHÔNG biến thành khẳng định. (b) `dieuKienVao[0]`: điều kiện 'tươi hoặc ướp lạnh' đúng TẦNG (chính tiêu đề nhóm 'khoai tây tươi hoặc ướp lạnh' dùng khái niệm này — mẫu hợp lệ như 7314 'dây'), và phủ CẢ nhóm (chú giải nhóm chỉ có MỘT câu phạm vi, không chia phần như (A)/(B)). Câu trích cắt trước '(trừ khoai lang thuộc nhóm 07.14)' — nhưng ngoại lệ đó ĐÃ có đủ ở `loaiTru[0]` + `phanBiet[0]` của cùng nhóm, nên không mất thông tin. Đọc câu KẾ TIẾP trong nguồn để chắc không phải 'cắt trích để lách máy': câu sau là 'Ngoài những loại khác…' (vế kể thêm, KHÔNG phải câu cho phép), nên KHÔNG dính mẫu lô 041. (c) `loaiTru[0]`: có DẤU HIỆU loại trừ ('trừ'), đích danh 07.14 CÓ TRONG câu trích ✓. (d) `phanBiet[0]`: chiều Có/Không đúng (có = khoai lang → 0714; không = khoai tây → 0701), nhánh 'không' = chính nhóm (mẫu đã gộp). GHI NHẬN (ngoài phạm vi mục 4, KHÔNG sửa): (1) Chú giải chương 7 mục 3(c) loại 'bột, bột thô, bột mịn, mảnh lát, hạt và viên của khoai tây (nhóm 11.05)' — đây là khoản loại trừ liên quan trực tiếp tới 0701 nhưng bản nháp KHÔNG ghi `loaiTru` cho 11.05; em không thêm được (bước soát chỉ sửa/xoá được) → nêu để người duyệt cân nhắc. (2) `hoi` dạng chọn ('khoai lang hay khoai tây') chứ không phải câu hỏi có/không — runtime in 'có→0714 / không→0701' nên người khai dễ trả lời lệch; đây là mẫu có sẵn trong kho đã gộp (56/818 `phanBiet` có 'hay') nên em KHÔNG sửa lô này, đề xuất mở đợt vệ sinh chung cho cả kho. (3) Đã đọc 2 `tieuChi6` + 3 `dong8` để đối chiếu, KHÔNG sửa (ngoài mục 4).",
+  "thayDoi": []
+}

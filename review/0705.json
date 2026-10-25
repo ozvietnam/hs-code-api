@@ -1,0 +1,20 @@
+{
+  "nhom": "0705",
+  "nguoiSoat": "dev-soat-doc-lap-lo046",
+  "luc": "2026-10-25T22:10:00+07:00",
+  "soat": 4,
+  "giu": 3,
+  "sua": 1,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0705 — 4 mục trong phạm vi mục 4 (1 phamVi + 1 dieuKienVao + 1 loaiTru + 1 phanBiet; boPhan = null). SỬA 1, XOÁ 0. (a) `phamVi`: nêu đủ hai phần của nhóm — rau diếp/xà lách (chủ yếu là xà lách cuộn) và 3 loại rau diếp xoăn (1)(2)(3) ✓; dấu lược chỉ bỏ tên khoa học trong ngoặc, KHÔNG nuốt ngoại lệ. GHI NHẬN: bản nháp lược mất câu dẫn 'Ngoài ra, nhóm này cũng bao gồm cả rau diếp xoăn (Cichorium spp.) tươi hoặc ướp lạnh…' — câu này vốn là nơi nói rõ điều kiện 'tươi hoặc ướp lạnh' áp cho CẢ phần rau diếp xoăn; em KHÔNG sửa `phamVi` (câu trích hiện đã đủ căn cứ, ≤300 ký tự, 3 loại rau diếp xoăn vẫn còn nguyên) mà sửa `dieuKienVao` cho đúng trọn tâm — xem `thayDoi`. (b) `dieuKienVao[0]`: SỬA — câu trích cũ chỉ phủ PHẦN ĐẦU của nhóm (câu về rau diếp, xà lách) trong khi điều kiện 'tươi hoặc ướp lạnh' áp cho cả phần rau diếp xoăn. Theo luật soát lô 030 (điều kiện phải phủ mọi phần của nhóm; câu trích chỉ nói phần đầu thì điều kiện phải đủ căn cứ cho phần sau) → trích thêm câu thứ hai của chú giải nhóm. (c) `loaiTru[0]`: có dấu hiệu loại trừ ('không bao gồm'), cả hai đích danh 06.01 và 12.12 có trong câu trích ✓. (d) `phanBiet[0]`: chiều Có/Không đúng; nhánh 'không' = chính nhóm 0705 ✓. GHI NHẬN (ngoài phạm vi, KHÔNG sửa): (1) NGUỒN TỰ CHỒNG LẤN: chú giải nhóm có (1) 'Rau diếp xoăn rễ củ (Cichorium intybus var. foliosum)' thuộc 0705, trong khi câu loại trừ lại loại 'cây và rễ rau diếp xoăn (nhóm 06.01 hoặc 12.12)' → câu hỏi 'Hàng là cây hoặc rễ rau diếp xoăn?' với hàng 'rau diếp xoăn rễ củ' có thể bị trả lời 'có' và dẫn sai. Em KHÔNG sửa (không được thêm chữ ngoài câu trích; mâu thuẫn nằm ở nguồn) — nêu để người duyệt. (2) Đã đọc 6 `tieuChi6` + 4 `dong8`, KHÔNG sửa.",
+  "thayDoi": [
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích cũ ('Nhóm này bao gồm rau diếp, xà lách (Lactuca sativa) tươi hoặc ướp lạnh') chỉ chứng minh điều kiện 'tươi hoặc ướp lạnh' cho PHẦN ĐẦU của nhóm (rau diếp, xà lách). Nhóm 0705 có HAI phần: rau diếp/xà lách VÀ rau diếp xoăn (Cichorium spp.) — câu thứ hai của chú giải nhóm mới nói rõ phần thứ hai cũng phải 'tươi hoặc ướp lạnh'. Điều kiện ở đây ĐÚNG cho cả nhóm (không dính lỗi xoá như 3802), nhưng câu trích thì chưa đủ căn cứ cho phần còn lại — đúng mẫu lỗi 'điều kiện chỉ phủ một phần' mà máy KHÔNG bắt. SỬA: trích thêm nguyên văn câu 'Ngoài ra, nhóm này cũng bao gồm cả rau diếp xoăn (Cichorium spp.) tươi hoặc ướp lạnh…' (dấu lược đánh dấu phần đuôi câu bị bỏ) — toàn bộ là một đoạn LIÊN TIẾP trong nhom0705.nhom, 204 ký tự ≤ 300 luật 2, không chứa mẫu CAU_CHO_PHEP. Giữ nguyên `fact` (tuoi_hoac_uop_lanh), `op`, `value`, `nguon`.",
+      "sua": {
+        "trich": "Nhóm này bao gồm rau diếp, xà lách (Lactuca sativa) tươi hoặc ướp lạnh trong đó loại chủ yếu là xà lách cuộn. Ngoài ra, nhóm này cũng bao gồm cả rau diếp xoăn (Cichorium spp.) tươi hoặc ướp lạnh…"
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nhom": "0704",
+  "nguoiSoat": "dev-soat-doc-lap-lo046",
+  "luc": "2026-10-25T22:10:00+07:00",
+  "soat": 4,
+  "giu": 3,
+  "sua": 1,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0704 — 4 mục trong phạm vi mục 4 (1 phamVi + 1 dieuKienVao + 1 loaiTru + 1 phanBiet; boPhan = null). SỬA 1, XOÁ 0. (a) `phamVi`: nêu đủ 3 phần của nhóm (súp lơ/súp lơ xanh; cải Bruc-xen; các loại khác dạng bắp thuộc chi Brassica…) ✓; hai dấu lược chỉ bỏ VÍ DỤ trong ngoặc ('ví dụ. Brassica oleracea botrytis…', 'ví dụ: Bắp cải trắng, bắp cải vùng Savoy…') — KHÔNG nuốt ngoại lệ, KHÔNG nuốt tiêu đề phần ✓; `text` bám đúng nguồn. (b) `dieuKienVao[0]`: điều kiện 'tươi hoặc ướp lạnh' nằm ở đầu câu phạm vi, áp cho cả 3 phần ✓ đúng tầng, không có vế cho phép. (c) `loaiTru[0]`: có dấu hiệu loại trừ ('không bao gồm'), cả HAI đích danh 07.06 và 12.14 ĐỀU CÓ TRONG câu trích ✓ (`sangNhom` = '0706|1214' đúng phạm vi luật 3). (d) `phanBiet[0]`: SỬA — xem `thayDoi`. GHI NHẬN (ngoài phạm vi mục 4, KHÔNG sửa): (1) `dong8[2]` 07041090 'Súp lơ xanh khác' — nguồn không phân biệt được dòng cha → bản nháp ghi đúng theo luật 6 ('nguồn không phân biệt dòng này — đối chiếu biểu thuế'). (2) `dong8[6]` 07049030 — `dieuKien` liệt kê 'bắp cải vụ xuân, bắp cải xoăn, rau họ bắp cải lá khác, bắp cải mọc mầm khác' (KHÔNG có 'su hào') nhưng `tieuChi.fact` lại là '…va_su_hao' → MÂU THUẪN NỘI BỘ giữa hai trường cùng một mục; theo SEN 07049020, su hào là (3) Thân của bắp cải nên nhiều khả năng thuộc 07049030 → nêu để người duyệt. (3) Đã đọc 5 `tieuChi6` + 8 `dong8`, KHÔNG sửa.",
+  "thayDoi": [
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "BỎ MẤT ĐỊNH NGỮ GIỚI HẠN — lỗi máy KHÔNG bắt (mẫu lô 034 `dieuKien`/`hoi` bỏ định ngữ giới hạn). Nguồn ghi 'các loại RỄ CỦ KHÁC thuộc chi Brassica' — chữ 'khác' mang nghĩa loại trừ phần rễ đã nêu ở (1)(2)(3). Bản nháp giữ 'khác' ở `loaiTru[0].dieuKien` nhưng BỎ ở `phanBiet[0].hoi`, nên câu hỏi rộng hơn nguồn: SU HÀO là rễ củ của chi Brassica NHƯNG lại nằm TRONG nhóm (mục (3) của chú giải nhóm) → người khai trả lời 'có' thì bị dẫn sang 0706|1214 (SAI). SỬA: chèn lại đúng chữ 'khác' của nguồn vào `hoi` ('Hàng là rễ củ khác thuộc chi Brassica (củ cải, cải củ Thụy Điển)?'); giữ nguyên `neuCo` (0706|1214), `neuKhong` (0704), `nguon`, `trich`. Câu hỏi không nhắc mã (luật 4) và vẫn dưới trần 110 ký tự runtime (44 ký tự).",
+      "sua": {
+        "hoi": "Hàng là rễ củ khác thuộc chi Brassica (củ cải, cải củ Thụy Điển)?"
+      }
+    }
+  ]
+}

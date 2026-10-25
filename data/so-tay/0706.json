@@ -1,0 +1,201 @@
+{
+ "nhom": "0706",
+ "phamVi": {
+  "text": "Rễ củ tươi hoặc ướp lạnh: cà rốt, củ cải, củ dền làm sa- lát, diếp củ, cần củ, củ cải ri (radish), diếp củ đen (scorzonera), củ cải ngựa, rễ củ a-ti-sô Trung Quốc, củ ngưu bàng và củ cải vàng.",
+  "nguon": "nhom0706.nhom",
+  "trich": "Những loại rễ củ tươi hoặc ướp lạnh thuộc nhóm này bao gồm: Cà rốt, củ cải, củ dền làm sa- lát, diếp củ, cần củ…củ cải ri (radish), diếp củ đen (scorzonera), củ cải ngựa, rễ củ a-ti-sô Trung Quốc…củ ngưu bàng (Arcticum lappa) và củ cải vàng (Pastinaca sativa).",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "tuoi_hoac_uop_lanh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom0706.nhom",
+   "trich": "Những loại rễ củ tươi hoặc ướp lạnh thuộc nhóm này bao gồm",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Cần tây",
+   "sangNhom": "0709",
+   "nguon": "nhom0706.nhom",
+   "trich": "Nhóm này không bao gồm:…(a) Cần tây thuộc nhóm 07.09.",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Rễ cây ngưu bàng bảo quản tạm thời",
+   "sangNhom": "0711",
+   "nguon": "nhom0706.nhom",
+   "trich": "Nhóm này không bao gồm:…(b) Rễ cây ngưu bàng bảo quản tạm thời (nhóm 07.11).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Thức ăn cho gia súc",
+   "sangNhom": "1214",
+   "nguon": "nhom0706.nhom",
+   "trich": "Nhóm này không bao gồm:…(c) Thức ăn cho gia súc thuộc nhóm 12.14.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là cần tây?",
+   "neuCo": "0709",
+   "neuKhong": "0706",
+   "nguon": "nhom0706.nhom",
+   "trich": "Nhóm này không bao gồm:…(a) Cần tây thuộc nhóm 07.09.",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hoi": "Hàng là rễ cây ngưu bàng bảo quản tạm thời?",
+   "neuCo": "0711",
+   "neuKhong": "0706",
+   "nguon": "nhom0706.nhom",
+   "trich": "Nhóm này không bao gồm:…(b) Rễ cây ngưu bàng bảo quản tạm thời (nhóm 07.11).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "070610",
+   "fact": "la_ca_rot_va_cu_cai",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.070610",
+   "trich": "070610 Vegetables, root; carrots and turnips, fresh or chilled",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "070690",
+   "fact": "la_cac_loai_re_cu_an_duoc_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.070690",
+   "trich": "070690 Vegetables, root; salad beetroot, salsify, celeric, radishes and similar edible roots, fresh or chilled",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "07061010",
+   "dieuKien": "Cà rốt",
+   "tieuChi": {
+    "fact": "la_ca_rot",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.07061010",
+   "trich": "07061010 - - Cà rốt",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "07061020",
+   "dieuKien": "Củ cải",
+   "tieuChi": {
+    "fact": "la_cu_cai",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "tax.07061020",
+   "trich": "07061020 - - Củ cải",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "07069000",
+   "dieuKien": "Loại khác: salad beetroot, salsify, celeric, radishes and similar edible roots",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.070690",
+   "trich": "070690 Vegetables, root; salad beetroot, salsify, celeric, radishes and similar edible roots, fresh or chilled",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "0706",
+    "truAnhEm": [
+     "070610"
+    ],
+    "toTienCoTen": "0706",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "0706",
+    "cap": 4,
+    "cha": "07",
+    "tenVi": "Cà rốt, củ cải, củ dền làm sa- lát, diếp củ (salsify), cần củ (celeriac), củ cải ri (radish) và các loại củ rễ ăn được tương tự, tươi hoặc ướp lạnh.",
+    "tenEn": "Carrots, turnips, salad beetroot, salsify, celeriac, radishes and similar edible roots; fresh or chilled",
+    "suyRa": false
+   },
+   {
+    "id": "070610",
+    "cap": 6,
+    "cha": "0706",
+    "tenVi": "Cà rốt và củ cải",
+    "tenEn": "Vegetables, root; carrots and turnips, fresh or chilled",
+    "suyRa": false
+   },
+   {
+    "id": "07061010",
+    "cap": 8,
+    "cha": "070610",
+    "tenVi": "Cà rốt",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "07061020",
+    "cap": 8,
+    "cha": "070610",
+    "tenVi": "Củ cải",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "07069000",
+    "cap": 8,
+    "cha": "0706",
+    "tenVi": "Loại khác",
+    "tenEn": "Vegetables, root; salad beetroot, salsify, celeric, radishes and similar edible roots, fresh or chilled",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "070690"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom0706.nhom",
+  "tax.07061010",
+  "tax.07061020",
+  "wco.070610",
+  "wco.070690"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-25T15:01:37.699Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 12,
+  "dat": 12,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

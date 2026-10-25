@@ -1,0 +1,177 @@
+{
+ "nhom": "0701",
+ "phamVi": {
+  "text": "Khoai tây tươi hoặc ướp lạnh (trừ khoai lang thuộc nhóm 07.14); ngoài những loại khác, nhóm này có thể kể đến khoai tây giống dùng để trồng và khoai tây đầu mùa.",
+  "nguon": "nhom0701.nhom",
+  "trich": "Nhóm này bao gồm tất cả các loại khoai tây tươi hoặc ướp lạnh (trừ khoai lang thuộc nhóm 07.14). Ngoài những loại khác, nhóm này có thể kể đến khoai tây giống dùng để trồng và khoai tây đầu mùa.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "tuoi_hoac_uop_lanh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom0701.nhom",
+   "trich": "Nhóm này bao gồm tất cả các loại khoai tây tươi hoặc ướp lạnh",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Khoai lang",
+   "sangNhom": "0714",
+   "nguon": "nhom0701.nhom",
+   "trich": "Nhóm này bao gồm tất cả các loại khoai tây tươi hoặc ướp lạnh (trừ khoai lang thuộc nhóm 07.14).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là khoai lang hay khoai tây?",
+   "neuCo": "0714",
+   "neuKhong": "0701",
+   "nguon": "nhom0701.nhom",
+   "trich": "Nhóm này bao gồm tất cả các loại khoai tây tươi hoặc ướp lạnh (trừ khoai lang thuộc nhóm 07.14).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "070110",
+   "fact": "la_khoai_tay_duoc_danh_gia_la_de_gieo_trong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom0701.nhom",
+   "trich": "Phân nhóm 0701.10 Theo mục đích của phân nhóm 0701.10, khái niệm \"để làm giống\" chỉ bao gồm các loại khoai tây được các cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "070190",
+   "fact": "la_khoai_tay_khac_khoai_lam_giong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.070190",
+   "trich": "070190 Vegetables; potatoes (other than seed), fresh or chilled",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "07011000",
+   "dieuKien": "Khoai tây được cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng",
+   "tieuChi": {
+    "fact": "la_khoai_tay_duoc_danh_gia_la_de_gieo_trong",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "nhom0701.nhom",
+   "trich": "Phân nhóm 0701.10 Theo mục đích của phân nhóm 0701.10, khái niệm \"để làm giống\" chỉ bao gồm các loại khoai tây được các cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "07019010",
+   "dieuKien": "Thân củ trồng riêng cho nhà sản xuất khoai tây chiên; tròn hơn, có lớp vỏ dễ bóc",
+   "tieuChi": {
+    "fact": "la_loai_khoai_tay_thuong_dung_de_lam_khoai_tay_chien",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "sen.07019010",
+   "trich": "Loại khoai tây thường dùng để làm khoai tây chiên là loại thân củ được trồng riêng để đáp ứng nhu cầu của các nhà sản xuất khoai tây chiên.…Nhìn bề ngoài, loại khoai tây thường dùng để làm khoai tây chiên tròn hơn khoai tây thường và có màu sáng hơn và có lớp vỏ dễ bóc.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "07019090",
+   "dieuKien": "Loại khác: potatoes (other than seed), fresh or chilled",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.070190",
+   "trich": "070190 Vegetables; potatoes (other than seed), fresh or chilled",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "070190",
+    "truAnhEm": [
+     "07019010"
+    ],
+    "toTienCoTen": "070190",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "0701",
+    "cap": 4,
+    "cha": "07",
+    "tenVi": "Khoai tây, tươi hoặc ướp lạnh (+).",
+    "tenEn": "Potatoes; fresh or chilled",
+    "suyRa": false
+   },
+   {
+    "id": "07011000",
+    "cap": 8,
+    "cha": "0701",
+    "tenVi": "Để làm giống",
+    "tenEn": "Vegetables; seed potatoes, fresh or chilled",
+    "suyRa": false,
+    "laPhanNhom": "070110"
+   },
+   {
+    "id": "070190",
+    "cap": 6,
+    "cha": "0701",
+    "tenVi": "Loại khác",
+    "tenEn": "Vegetables; potatoes (other than seed), fresh or chilled",
+    "suyRa": false
+   },
+   {
+    "id": "07019010",
+    "cap": 8,
+    "cha": "070190",
+    "tenVi": "Loại thường dùng để làm khoai tây chiên (chipping potatoes) (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "07019090",
+    "cap": 8,
+    "cha": "070190",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom0701.nhom",
+  "sen.07019010",
+  "wco.070190"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-25T15:01:37.689Z",
+  "ms": 85
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

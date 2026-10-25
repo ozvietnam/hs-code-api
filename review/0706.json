@@ -1,0 +1,11 @@
+{
+  "nhom": "0706",
+  "nguoiSoat": "dev-soat-doc-lap-lo046",
+  "luc": "2026-10-25T22:10:00+07:00",
+  "soat": 7,
+  "giu": 7,
+  "sua": 0,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0706 — 7 mục trong phạm vi mục 4 (1 phamVi + 1 dieuKienVao + 3 loaiTru + 2 phanBiet; boPhan = null). SỬA 0, XOÁ 0. (a) `phamVi`: nêu đủ 10 loại rễ củ của nhóm ✓; hai dấu lược bỏ '(Stachys affinis)' (tên khoa học) và '(cần có rễ giống củ cải hoặc cần tây Đức)' (chú thích trong ngoặc) — KHÔNG phải ngoại lệ, KHÔNG nuốt câu ràng buộc. GHI NHẬN: chú thích '(cần có rễ giống củ cải hoặc cần tây Đức)' là thứ phân biệt 'CẦN CỦ' (thuộc 0706) với 'CẦN TÂY' (loại trừ sang 0709) — nếu người duyệt muốn câu trích nói rõ, có thể đổi '(Pastinaca sativa)' (19 ký tự) bằng chú thích này (42 ký tự) và vẫn ≤300; em KHÔNG sửa vì câu trích hiện đủ căn cứ, và `loaiTru[0]` + `phanBiet[0]` đã xử lý khoản loại trừ 07.09. (b) `dieuKienVao[0]`: điều kiện 'tươi hoặc ướp lạnh' đúng tầng, phủ cả nhóm (một câu phạm vi duy nhất liệt kê toàn bộ rễ củ). Câu 'Những sản phẩm này VẪN ở trong nhóm này cho dù ĐÃ HOẶC CHƯA cắt bỏ lá' là câu CHO PHÉP → KHÔNG được biến thành điều kiện (đúng mẫu CAU_CHO_PHEP, lô 041); bản nháp đã không dùng nó làm điều kiện ✓. (c) `loaiTru[0..2]`: đủ 3 khoản loại trừ (a) cần tây → 07.09, (b) rễ ngưu bàng bảo quản tạm thời → 07.11, (c) thức ăn cho gia súc → 12.14; cả ba đều có DẤU HIỆU loại trừ ('không bao gồm') và mã đích ĐỀU CÓ TRONG câu trích ✓. (d) `phanBiet[0..1]`: chiều Có/Không đúng; nhánh 'không' = chính nhóm 0706 ✓; `hoi` không nhắc mã ✓. GHI NHẬN (ngoài phạm vi, KHÔNG sửa): (1) `loaiTru[2]` (thức ăn cho gia súc → 12.14) CHƯA có `phanBiet` tương ứng, khác với hai khoản còn lại — bước soát chỉ sửa/xoá được (không thêm mục) → nêu để người duyệt. (2) Thông tin 'đã hoặc chưa cắt bỏ lá vẫn ở 0706' chưa có chỗ nào trong sổ tay; KHÔNG nén vào `dieuKienVao` vì sẽ đảo chiều (fact âm + value=false là đảo chiều, mẫu lô 044 0506/0507/0508) → nêu để người duyệt. (3) Đã đọc 2 `tieuChi6` + 3 `dong8`, KHÔNG sửa.",
+  "thayDoi": []
+}
