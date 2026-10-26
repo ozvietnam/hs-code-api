@@ -1,0 +1,87 @@
+{
+  "nhom": "1101",
+  "nguoiSoat": "claude-soat-doc-lap-lo053",
+  "luc": "2026-10-26T23:20:00+07:00",
+  "phamViSoat": "Toàn bộ 13 mục của bản nháp lô 053 cho nhóm 1101 (1 phamVi + 4 dieuKienVao + 3 loaiTru + 2 phanBiet + 0 tieuChi6 + 3 dong8), đọc cùng tmp/so-tay/nguon/1101.txt (nhom1101.nhom 5 đoạn, ch11.chuong, phan11.phan, sen.11010011, wco.110100, tax.11010011/11010019/11010020). Đối chiếu TỪNG câu trích với câu nguồn nguyên văn, không tin máy kiểm.",
+  "soat": 13,
+  "giu": 10,
+  "sua": 3,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 1101 — 13/13 mục đã đọc cùng nguồn. SỬA 3, GIỮ 10, XOÁ 0. (a) SỬA `phamVi.text`: bản nháp dài 313 ký tự > trần clip 220 của runtime (lib/so-tay-gates.js:134) ⇒ khi chạy, câu phạm vi bị CẮT mất đúng nửa còn lại — mất vế 'và phù hợp với tỷ lệ lọt qua sàng như quy định tại đoạn (B) của Chú giải 2 của Chương' (đoạn B). Đã viết lại còn 216 ký tự, giữ trọn CẢ HAI điều kiện (đoạn A và đoạn B), chỉ rút gọn phần trích dẫn chéo. (b) SỬA `phanBiet[0]`: câu hỏi 'Hàng là bột trộn với cacao?' với nhánh 'có' chỉ trỏ MỘT đích 18.06 là SAI: nguồn chia nhánh theo hàm lượng cacao ('nhóm 18.06 nếu chứa hàm lượng cacao từ 40% trọng lượng đã khử chất béo trở lên, **hoặc nếu dưới 40% thì thuộc nhóm 19.01**') ⇒ bột trộn cacao dưới 40% sẽ bị kéo nhầm sang 18.06. Đã đổi `neuCo` thành '1806|1901' (danh sách đích) — đúng mẫu đã gộp trong kho (0402 '1901|2106', 0403 '1901|2106', 0405 '04059010|04059030'); phần phân biệt theo % do hai `loaiTru` ứng với (1806 ≥40% và 1901 <40%) cung cấp, cả hai đều nằm trong cùng câu trích nên đạt luật mục 4. (c) SỬA `dong8[0]` (11010011): bản nháp THU HẸP định nghĩa SEN — bỏ 'ví dụ' (làm ví dụ thành định nghĩa), bỏ nhánh 'một hỗn hợp của cả hai', và đóng danh sách chất dinh dưỡng (nguồn mở: '…hoặc các thành phần khác') ⇒ loại bột làm từ hỗn hợp cả hai loài hoặc có chất dinh dưỡng khác sẽ không được nhận. Đã sửa lại đủ các nhánh, giữ nguyên tên khoa học theo nguồn. (d) GIỮ `dieuKienVao[3]` `khong_phai_bot_qua_cong_doan_che_bien_them_...`: câu nguồn 'Các loại bột qua những công đoạn chế biến thêm… bị loại trừ (**thường thuộc** nhóm 19.01)' — bản nháp KHÔNG tạo `loaiTru` cho nhánh này là ĐÚNG (máy loại `loai-tru-chi-la-thuong`), và vẫn giữ dạng `dieuKienVao` vì là khoản loại trừ phủ cả nhóm. (e) GIỮ `loaiTru[2]` lấy từ ch11.chuong: loại trừ CHUNG của Chương chép vào từng nhóm là BÌNH THƯỜNG (452/2329 mục loaiTru trong kho lấy nguồn chNN.chuong) — không xoá. (f) GHI NHẬN cho người duyệt (không sửa được ở bước soát): `tieuChi6` rỗng ⇒ `check-cay` sẽ báo cảnh báo 'phan-nhom-chua-co-tieu-chi:110100'; nguồn wco.110100 ('110100 Wheat or meslin flour') có thể lấp được nhưng đó là VIỆC BỔ SUNG của người soạn, không phải sửa lỗi. `phamVi.trich` (358 ký tự) và `dong8[0].trich` (537 ký tự) vượt trần lược đồ 300 nhưng là CÂU NGUỒN LIỀN MẠCH không thể cắt bớt mà không mất một vế (hai điều kiện đoạn A + đoạn B; định nghĩa SEN + quy tắc chứng nhận) ⇒ giữ, không có ngoại lệ nào bị giấu. `dong8[0].dieuKien` sau khi sửa dài 424 ký tự > trần clip 90 nhưng đầu câu (tên dòng) còn nguyên nên chưa mất kết luận.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "SỬA `text` — bản nháp dài 313 ký tự, vượt trần clip 220 của runtime (lib/so-tay-gates.js:134) nên khi chạy câu phạm vi bị cắt mất vế 'và phù hợp với tỷ lệ lọt qua sàng…' (đoạn B của Chú giải 2) — mất một nửa điều kiện vào nhóm. Đã viết lại còn 216 ký tự (≤ 220), giữ trọn cả hai điều kiện: hàm lượng tinh bột + hàm lượng tro (đoạn A Chú giải 2) và tỷ lệ lọt qua sàng (đoạn B Chú giải 2 của Chương). `trich` giữ nguyên (358 ký tự) vì đó là MỘT câu nguồn liền mạch, cắt bớt sẽ mất một vế; dấu '…' không dùng để giấu ngoại lệ. `nguon` giữ nguyên.",
+      "sua": {
+        "text": "Bột mì hoặc bột meslin — bột xay xát từ ngũ cốc thuộc nhóm 10.01, đáp ứng đầy đủ các tiêu chí hàm lượng tinh bột và hàm lượng tro (đoạn A Chú giải 2) và phù hợp với tỷ lệ lọt qua sàng (đoạn B Chú giải 2 của Chương)."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom1101.nhom. Tiêu đề nhóm 1101 CHÍNH LÀ 'Bột mì hoặc bột meslin' nên điều kiện này là định nghĩa dùng làm tiêu đề ⇒ hợp lệ (khác với lỗi 5808/6214: câu chỉ là đủ điều kiện riêng cho một tiểu loại). fact dương + `value:true` đúng luật nhà."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom1101.nhom: '…đáp ứng đầy đủ các tiêu chí hàm lượng tinh bột và hàm lượng tro được quy định trong đoạn (A) của Chú giải 2… và phù hợp với tỷ lệ lọt qua sàng như quy định tại đoạn (B) của Chú giải 2 của Chương.' Đây là câu RÀNG BUỘC phủ cả nhóm (không phải định nghĩa thuật ngữ) ⇒ đúng chỗ đặt `dieuKienVao`; fact nêu đủ CẢ HAI tiêu chí (đoạn A và đoạn B), không bỏ nhánh nào."
+    },
+    {
+      "index": "dieuKienVao[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn: 'Nhóm này cũng loại trừ bột trộn với cacao (nhóm 18.06 nếu chứa hàm lượng cacao từ 40% trọng lượng đã khử chất béo trở lên, hoặc nếu dưới 40% thì thuộc nhóm 19.01).' — khoản loại trừ phủ cả nhóm 1101; fact âm + `value:true` đúng luật nhà. Số 40% có trong câu trích."
+    },
+    {
+      "index": "dieuKienVao[3]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn: 'Các loại bột qua những công đoạn chế biến thêm hoặc có pha thêm một số chất dùng để làm chế phẩm thực phẩm bị loại trừ (thường thuộc nhóm 19.01).' Đây là khoản loại trừ phủ cả nhóm ⇒ đúng chỗ đặt `dieuKienVao`; bản nháp KHÔNG tạo `loaiTru` cho nhánh 19.01 là ĐÚNG vì câu nói 'thường thuộc' (máy loại `loai-tru-chi-la-thuong`) — thông tin không mất."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn: 'Nhóm này cũng loại trừ bột trộn với cacao (nhóm 18.06 nếu chứa hàm lượng cacao từ 40% trọng lượng đã khử chất béo trở lên, hoặc nếu dưới 40% thì thuộc nhóm 19.01).' Có DẤU HIỆU loại trừ rõ ('loại trừ') và nêu ĐÍCH DANH 18.06 trong chính câu trích ⇒ đúng luật mục 3; số 40% có trong trích. GHI NHẬN: dài 82 ký tự > trần clip 55 ⇒ bị cắt đuôi 'đã khử chất béo trở lên' nhưng kết luận (đích 18.06) render riêng nên không mất."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Cùng câu nguồn; nhánh còn lại của cùng một khoản loại trừ: cacao dưới 40% → 19.01, nêu đích danh trong câu trích ⇒ đúng luật mục 3. Số 40% có trong trích."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn ch11.chuong mục 1(b): '(b) Bột mịn, tấm, bột thô hoặc tinh bột đã chế biến thuộc nhóm 19.01;' — có DẤU HIỆU loại trừ ('không bao gồm' ở câu dẫn) và nêu đích danh 19.01. Loại trừ CHUNG của Chương chép vào từng nhóm là BÌNH THƯỜNG (452/2329 mục loaiTru trong kho lấy nguồn chNN.chuong) ⇒ không xoá."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA nhánh đích — 'một nhánh của A hoặc B bị chọn làm đích duy nhất' (lỗi người soát phải bắt, máy KHÔNG bắt được). Nguồn CHIA NHÁNH theo hàm lượng cacao: '…(nhóm 18.06 nếu chứa hàm lượng cacao từ 40% trọng lượng đã khử chất béo trở lên, **hoặc nếu dưới 40% thì thuộc nhóm 19.01**)'. Bản nháp để `neuCo`='1806' ⇒ bột trộn cacao DƯỚI 40% bị kéo nhầm sang 18.06. Đã đổi `neuCo` thành '1806|1901' (danh sách đích), đúng mẫu đã gộp trong kho (0402/0403 '1901|2106', 0405 '04059010|04059030'); cả 18.06 và 19.01 đều nằm trong câu trích nên đạt luật mục 4; phần phân biệt theo % do `loaiTru[0]` (≥40% → 18.06) và `loaiTru[1]` (<40% → 19.01) cung cấp. `hoi` và `neuKhong` giữ nguyên.",
+      "sua": {
+        "neuCo": "1806|1901"
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn ch11.chuong mục 1(b); chiều Có/Không đúng ('có' = bột mịn/tấm/bột thô/tinh bột đã chế biến → 19.01, đích có trong câu trích; 'không' = bột thường → 1101 = chính nhóm, mẫu đã được duyệt trong kho). `hoi` không nhắc mã phân nhóm, không nhắc WCO ⇒ đạt luật máy `hoi-nhac-ma-phan-nhom`."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA `dieuKien` — lỗi 'fact/text thu hẹp định nghĩa so với nguồn' (máy KHÔNG bắt được: câu trích byte-exact 100 %). Nguồn: 'Bột mì tăng cường vi chất dinh dưỡng là một loại bột làm từ nội nhũ của hạt lúa mì, **ví dụ,** thuộc loài Triticum aestivum l. (nhóm lúa mì) hoặc Triticum compactum, **một hỗn hợp của cả hai** hoặc chứa một hoặc nhiều các chất dinh dưỡng/bổ sung sau: Vitamin B1 - Thiamin, Vitamin B2 - Riboflavin , axit folic, sắt, kẽm **hoặc các thành phần khác**.' Bản nháp (i) bỏ 'ví dụ' nên biến VÍ DỤ thành định nghĩa, (ii) bỏ nhánh 'một hỗn hợp của cả hai', (iii) ĐÓNG danh sách chất dinh dưỡng bằng dấu ngoặc khi nguồn để mở ⇒ bột làm từ hỗn hợp cả hai loài, hoặc có chất dinh dưỡng khác ngoài danh sách, sẽ không được nhận. Đã sửa lại đủ các nhánh theo nguồn; `trich` giữ nguyên.",
+      "sua": {
+        "dieuKien": "Bột mì tăng cường vi chất dinh dưỡng (tiêu đề quốc gia 1101.00.1) — làm từ nội nhũ của hạt lúa mì, ví dụ, thuộc loài Triticum aestivum l. hoặc Triticum compactum, một hỗn hợp của cả hai hoặc chứa một hoặc nhiều chất dinh dưỡng/bổ sung (Vitamin B1 - Thiamin, Vitamin B2 - Riboflavin, axit folic, sắt, kẽm hoặc các thành phần khác), và được chứng nhận là “tăng cường vi chất dinh dưỡng” bởi các cơ quan quốc gia có thẩm quyền"
+      }
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.11010019: '11010019 - - Loại khác'; văn phong đã được duyệt; máy tự suy `loaiKhac=true`."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.11010020: '11010020 - Bột meslin'; `dieuKien` bám đúng tên dòng."
+    }
+  ]
+}

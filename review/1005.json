@@ -1,0 +1,62 @@
+{
+  "nhom": "1005",
+  "nguoiSoat": "claude-soat-doc-lap-lo053",
+  "luc": "2026-10-26T22:30:00+07:00",
+  "phamViSoat": "Toàn bộ 9 mục của bản nháp lô 053 cho nhóm 1005 (1 phamVi + 2 dieuKienVao + 2 tieuChi6 + 4 dong8), đọc cùng tmp/so-tay/nguon/1005.txt (nhom1005.nhom 5 dòng, ch10.chuong, phan10.phan, sen.10059010, sen.10059091, wco.100510/100590, tax.10051000/10059010/10059091/10059099). Đối chiếu TỪNG câu trích với câu nguồn nguyên văn, không tin máy kiểm.",
+  "soat": 9,
+  "giu": 8,
+  "sua": 1,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 1005 — 9/9 mục đã đọc cùng nguồn. SỬA 1, GIỮ 8, XOÁ 0. (a) SỬA `dong8[2]` (10059091): bản nháp khẳng định 'hàm lượng aflatoxin tối đa 20 ppb và độ ẩm không quá 14%' như câu nguồn viết 'Loại ngô này **thường có** hàm lượng aflatoxin tối đa là 20 ppb và độ ẩm không quá 14%' — đã BỎ định ngữ giới hạn 'thường có' (lỗi 'nhãn dieuKien bỏ mất định ngữ giới hạn', máy KHÔNG bắt được vì câu trích vẫn nguyên văn). Vì vậy `tieuChi` {ham_luong_aflatoxin_toi_da <= 20 ppb} đang mã hoá một NGƯỠNG CỨNG mà nguồn không cam kết → đã XOÁ `tieuChi` (đặt null). Số 20 ppb / 14% vẫn còn nguyên trong `dieuKien` và trong `trich`; không mất thông tin. (b) GIỮ `dieuKienVao[0]` `khong_phai_ngo_ngot = true`: đúng luật nhà 'fact âm chỉ được value:true' (không phải fact âm + value:false), và là khoản loại trừ PHỦ CẢ nhóm 4 số (nhóm 1005 không bao gồm ngô ngọt — Chương 7). (c) GIỮ `dieuKienVao[1]` `o_dang_hat = true` lấy từ ch10.chuong: điều kiện này ràng buộc MỌI nhóm của Chương 10 (nên phủ trọn nhóm 1005, không phải đủ điều kiện riêng cho một tiểu loại như lỗi 5808/6214). (d) `phamVi` nêu đúng phạm vi nhóm (màu sắc + hình dạng hạt), mọi từ đều có trong câu trích. (e) GHI NHẬN cho người duyệt (không sửa được ở bước soát): ch10.chuong mục 1(B) có khoản loại trừ chung của Chương 'hạt đã xát vỏ hoặc chế biến cách khác' kèm ngoại lệ 'Tuy nhiên, thóc… gạo đồ (1) hoặc gạo tấm vẫn được phân loại trong nhóm 10.06…' — bản nháp 1005 CHƯA đưa khoản này vào `dieuKienVao`; do câu ràng buộc có ngoại lệ riêng và ngoại lệ lại dẫn sang 10.06/10.08, để người duyệt chốt có nên bổ sung hay không. Cũng lưu ý `dong8[0]` và `dong8[2]` vượt trần clip 90 của runtime (lib/so-tay-gates.js) nên bị cắt, nhưng phần đầu (tên dòng + đặc trưng phân biệt) còn nguyên nên chưa mất kết luận.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn trong nhom1005.nhom: 'Có một vài loại ngô, với các loại hạt có màu sắc khác nhau (vàng óng, trắng, đôi khi nâu đỏ hoặc kết hợp nhiều màu), và có nhiều hình dạng khác nhau (tròn, răng ngựa, phẳng bẹt...)'. `text` nêu đúng PHẠM VI nhóm (màu sắc + hình dạng hạt), không mô tả vật liệu hay một phần; mọi từ trong `text` đều có trong câu trích (gác soát từ: không có từ ngoài trích)."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn: 'Nhóm này không bao gồm ngô ngọt (Chương 7).' — khoản loại trừ nêu đích danh CHƯƠNG 7 (không phải nhóm 4 số) ⇒ không mã hoá được thành loaiTru/phanBiet (đã đúng là không có), nhưng vẫn là ràng buộc PHỦ CẢ nhóm 1005 nên giữ dạng dieuKienVao. fact âm `khong_phai_ngo_ngot` đặt `value:true` đúng luật nhà (fact âm + value:false là đảo chiều, lô 044)."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn trong ch10.chuong: '1. (A) Các sản phẩm kể tên trong các nhóm của Chương này chỉ được phân loại trong các nhóm đó khi ở dạng hạt, còn hoặc không còn ở trên bông hay trên thân cây.' Điều kiện ràng buộc MỌI nhóm của Chương 10 nên phủ trọn nhóm 1005 (không phải 'đủ điều kiện riêng cho một tiểu loại' như lỗi 5808/6214). Không có ngoại lệ nào bị lược bỏ."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn nhom1005.nhom: 'Phân nhóm 1005.10 Theo mục đích của phân nhóm 1005.10, thuật ngữ \"hạt giống\" chỉ bao gồm ngô được được các cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng.' — giữ nguyên lỗi chính tả nguồn ('được được'). fact `duoc_danh_gia_la_de_gieo_trong` bám đúng câu; phân nhóm 100510 có thật trong cây 1005."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.100590: '100590 Cereals; maize (corn), other than seed'. 'other than seed' là LOẠI TRỪ thật (không phải 'n.e.c.' nên không đảo chiều) → fact âm `khong_phai_hat_giong` + `value:true` đúng luật nhà. Phân nhóm 100590 có thật trong cây 1005."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn nhom1005.nhom (câu chú giải phân nhóm 1005.10). `dieuKien` nêu đúng điều kiện dòng hạt giống, không thêm chữ ngoài trích. GHI NHẬN: dài 113 ký tự > trần clip 90 của runtime ⇒ bị cắt, nhưng phần đầu ('Ngô (phân nhóm 1005.10) hạt giống — chỉ gồm ngô được các cơ quan quốc gia có thẩm quyền đá…') vẫn giữ đúng tên dòng + đặc trưng phân biệt với dòng 10059099 nên chưa mất kết luận."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn sen.10059010 (tiêu đề + câu định nghĩa ngô rang nổ). `dieuKien` bám đúng từ nguồn, không thêm chữ."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "sua",
+      "lyDo": "Lỗi 'nhãn dieuKien bỏ mất định ngữ giới hạn' + 'mục khẳng định mạnh hơn nguồn' (máy KHÔNG bắt được: câu trích vẫn nguyên văn). Nguồn: 'Ngô thích hợp sử dụng cho con người là loại ngô sạch, tốt cho sức khỏe và được các cơ quan có thẩm quyền của quốc gia chứng nhận. Loại ngô này **thường có** hàm lượng aflatoxin tối đa là 20 ppb và độ ẩm không quá 14%.' Bản nháp viết thẳng 'hàm lượng aflatoxin tối đa 20 ppb và độ ẩm không quá 14%' — bỏ mất 'thường có' (mô tả đặc tính) và biến thành một NGƯỠNG CỨNG. Vì `dieuKien` là trường ĐƯỢC render vào prompt nên đã sửa lại nguyên văn có định ngữ. Đồng thời XOÁ `tieuChi` {ham_luong_aflatoxin_toi_da <= 20 ppb}: ngưỡng có điều kiện không được mã hoá thành tiêu chí so sánh cứng (tiền lệ lô 041 đã gỡ 2 tiêu chí SEN không phải điều kiện dòng); số 20 ppb và 14% vẫn còn trong `dieuKien` và `trich` nên không mất thông tin.",
+      "sua": {
+        "dieuKien": "Ngô thích hợp sử dụng cho con người — loại ngô sạch, được các cơ quan có thẩm quyền của quốc gia chứng nhận; loại ngô này thường có hàm lượng aflatoxin tối đa là 20 ppb và độ ẩm không quá 14%",
+        "tieuChi": null
+      }
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.10059099: '10059099 - - - Loại khác'. Văn phong '(tên dòng) — dòng biểu thuế ghi \"Loại khác\"' đã được duyệt ở 0101/0102/0402/1702/3215…; máy tự suy `loaiKhac=true`."
+    }
+  ]
+}
