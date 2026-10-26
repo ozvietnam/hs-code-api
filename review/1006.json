@@ -1,0 +1,146 @@
+{
+  "nhom": "1006",
+  "nguoiSoat": "claude-soat-doc-lap-lo053",
+  "luc": "2026-10-26T22:40:00+07:00",
+  "phamViSoat": "Toàn bộ 26 mục của bản nháp lô 053 cho nhóm 1006 (1 phamVi + 2 dieuKienVao + 2 loaiTru + 2 phanBiet + 6 tieuChi6 + 13 dong8), đọc cùng tmp/so-tay/nguon/1006.txt (nhom1006.nhom, ch10.chuong, phan10.phan, sen.10062010/10063030/10063040/10063050/10063060/10063070/10064010/10064090, wco.100610/100620/100630/100640, tax.10061010→10064090). Đối chiếu TỪNG câu trích với câu nguồn nguyên văn, không tin máy kiểm.",
+  "soat": 26,
+  "giu": 25,
+  "sua": 1,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 1006 — 26/26 mục đã đọc cùng nguồn. SỬA 1, GIỮ 25, XOÁ 0. Đây là nhóm sạch nhất của lô: không có mục nào sai nghĩa. (a) SỬA `phamVi.trich`: bản nháp dài 301 ký tự — vượt trần lược đồ 300 (máy chỉ chặn >600 nên lọt). Đã rút gọn đúng 1 mảnh: bỏ đuôi '… là loại gạo đã xát trắng được phủ một lớp dầu mỏng' và thay bằng '…' (đoạn bị lược này là CÂU ĐỊNH NGHĨA, không chứa ngoại lệ) → còn 250 ký tự, vẫn giữ nguyên 8 đoạn liệt kê thành phần nhóm và không mất thông tin nào (`text` vốn đã nêu đủ). (b) GIỮ `dieuKienVao[0]` `khong_phai_gao_da_che_bien_thay_doi_dang_ke_cau_hat`: câu nguồn 'Những loại gạo khác mà cấu trúc hạt đã bị thay đổi đáng kể trong quá trình chế biến không được phân loại vào nhóm này.' là khoản loại trừ PHỦ CẢ nhóm, không phải đủ điều kiện riêng cho một tiểu loại. (c) GIỮ 2 `loaiTru` + 2 `phanBiet` trỏ 19.04: đều lấy câu có DẤU HIỆU loại trừ rõ và nêu ĐÍCH DANH nhóm đích (19.04) trong chính câu trích; `neuKhong` = chính nhóm 1006 là mẫu đã được duyệt trong kho (không phải suy từ cấu trúc anh em). (d) GIỮ 6 `tieuChi6`: 100610/100620/100630/100640 chép nguyên văn nhom1006.nhom, khớp đúng 4 phân nhóm trong cây 1006; `la_gao_tam_bi_vos_trong_qua_trinh_che_bien` bám đúng câu '(5) Gạo tấm, là loại gạo bị vỡ trong quá trình chế biến.' (e) GIỮ 13 `dong8`: chép nguyên văn sen.*/tax.*, đủ cả 13 dòng 8 số của nhóm; văn phong '(tên dòng) — dòng biểu thuế ghi \"…\"' đã được duyệt ở 0101/0102/0402… GHI NHẬN cho người duyệt (không sửa được ở bước soát): (i) `dong8[2]`/`[4]`/`[5]`/`[7]`/`[8]`/`[9]`/`[11]`/`[12]` vượt trần clip 90 của runtime nên bị cắt đuôi, nhưng đầu câu (tên dòng + đặc trưng) còn nguyên; (ii) nhóm có 13 dòng 8 số mà runtime chỉ hiện `.slice(0, 12)` dòng đầu (lib/so-tay-gates.js:139) ⇒ dòng 10064090 không hiện trong prompt; (iii) bản nháp CHƯA đưa khoản loại trừ chung của Chương 10 (ch10.chuong mục 1(B): 'hạt đã xát vỏ hoặc chế biến cách khác' kèm ngoại lệ 'Tuy nhiên, thóc… gạo tấm vẫn được phân loại trong nhóm 10.06') vào `dieuKienVao` — câu ràng buộc có ngoại lệ riêng nên để người duyệt chốt.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Lỗi trần độ dài trích (máy chỉ chặn >600 nên 301 ký tự lọt; lỗi 'trích 300–600 ký tự lặng lẽ' — người soát phải để mắt). Bản nháp dài 301 ký tự. Đã rút đúng 1 mảnh: đoạn đuôi ' là loại gạo đã xát trắng được phủ một lớp dầu mỏng' là CÂU ĐỊNH NGHĨA (không chứa ngoại lệ nào) nên lược bằng '…' được ⇒ 250 ký tự. Giữ nguyên toàn bộ 8 đoạn liệt kê thành phần nhóm (1)(2)(3)(4)(5)(a)(b) và mảnh Camolino; `text` không đổi.",
+      "sua": {
+        "trich": "Nhóm này bao gồm:…(1) Gạo còn nguyên vỏ (thóc hay thóc chưa xay)…(2) Gạo lứt…(3) Gạo đã xát sơ bộ…(4) Gạo đã xát toàn bộ…(5) Gạo tấm…Nhóm này cũng bao gồm:…(a) Gạo giàu vitamin…(b) Gạo đồ…Nhóm này cũng bao gồm loại gạo \"làm bóng bằng dầu (Camolino)\"…"
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn: 'Những loại gạo khác mà cấu trúc hạt đã bị thay đổi đáng kể trong quá trình chế biến không được phân loại vào nhóm này.' Đây là khoản loại trừ PHỦ CẢ nhóm 1006 (không phải đủ điều kiện riêng cho một tiểu loại như lỗi 5808/6214) ⇒ đúng chỗ đặt `dieuKienVao`. fact âm + `value:true` đúng luật nhà. Câu liền sau ('Loại gạo đã được nấu chín trước… thuộc vào nhóm 19.04') không phủ định mục này nên không có ngoại lệ bị lược."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn trong ch10.chuong: '1. (A) Các sản phẩm kể tên trong các nhóm của Chương này chỉ được phân loại trong các nhóm đó khi ở dạng hạt, còn hoặc không còn ở trên bông hay trên thân cây.' Điều kiện ràng buộc MỌI nhóm của Chương 10 nên phủ trọn nhóm 1006."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn: 'Loại gạo đã được nấu chín trước là gạo đã được nấu chín một phần hay toàn phần và sau đó được rút hết nước thuộc vào nhóm 19.04.' Có DẤU HIỆU loại trừ ('thuộc vào nhóm 19.04' sau khi nói 'không được phân loại vào nhóm này') và nêu ĐÍCH DANH 19.04 trong chính câu trích ⇒ đúng luật mục 3. Không có dấu hiệu 'thường thuộc/tùy trường hợp'."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn: 'Còn bỏng gạo (puffed rice) có được sau quá trình nổ bỏng và ăn được ngay cũng được phân loại vào nhóm 19.04.' Nêu đích danh 19.04 ngay trong câu ⇒ đúng luật mục 3. GHI NHẬN: dài 68 ký tự > trần clip 55 của runtime (bị cắt đuôi 'và ăn được ngay'), nhưng kết luận (đích 19.04) render riêng nên không mất."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng theo câu nguồn: 'có' = gạo đã nấu chín trước → 19.04 (đích có trong câu trích); 'không' = gạo chưa nấu chín → 1006 (chính nhóm; mẫu `neuKhong` = chính nhóm đã được duyệt trong kho, KHÔNG phải suy từ cấu trúc anh em). `hoi` không nhắc mã phân nhóm, không nhắc WCO ⇒ đạt luật máy `hoi-nhac-ma-phan-nhom`."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = bỏng gạo (puffed rice) → 19.04; 'không' = gạo không phải bỏng → 1006. `hoi` không nhắc mã ⇒ đạt."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn nhom1006.nhom: '(1) Gạo còn nguyên vỏ (thóc hay thóc chưa xay), tức là, gạo còn nguyên vỏ trấu bao chặt lấy hạt.' fact `con_nguyen_vo_thoc` bám đúng; phân nhóm 100610 có thật trong cây 1006."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn: '(2) Gạo lứt (gạo mới xay bỏ phần trấu), mặc dù đã được xay bỏ hết phần trấu bởi máy xay, nhưng vẫn còn phần vỏ lụa.' fact `gao_lut_van_con_vo_lua` bám đúng; phân nhóm 100620 có thật."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn hai mục (3) và (4) của nhom1006.nhom nối bằng '…' (hai mục liền nhau, không có ngoại lệ ở giữa): '(3) Gạo đã xát sơ bộ… (4) Gạo đã xát toàn bộ (gạo đã tẩy trắng)…'. fact `da_xat_so_bo_hoac_da_xat_toan_bo` nêu đủ CẢ HAI nhánh (không bỏ nhánh 'hoặc'); phân nhóm 100630 có thật."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn: 'Nhóm này cũng bao gồm loại gạo \"làm bóng bằng dầu (Camolino)\" là loại gạo đã xát trắng được phủ một lớp dầu mỏng.' fact `duoc_phu_mot_lop_dau_mong` bám đúng; gán phân nhóm 100630 (gạo đã xát trắng = semi-milled/wholly milled theo wco.100630) là hợp lý."
+    },
+    {
+      "index": "tieuChi6[4]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn: '(a) Gạo giàu vitamin, là hỗn hợp giữa loại gạo xát trắng thường và một lượng rất nhỏ (1%) hạt gạo đã được phủ hoặc tẩm các chất vitamin.' fact `la_gao_giau_vitamin` bám đúng; phân nhóm 100630 có thật."
+    },
+    {
+      "index": "tieuChi6[5]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn: '(5) Gạo tấm, là loại gạo bị vỡ trong quá trình chế biến.' fact `la_gao_tam_bi_vos_trong_qua_trinh_che_bien` bám đúng; phân nhóm 100640 (wco: rice, broken) có thật."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.10061010: '10061010 - - Phù hợp để gieo trồng'. Văn phong '(tên dòng) — dòng biểu thuế ghi \"…\"' đã được duyệt ở 0101/0102/0402/1702/3215…; máy tự suy `loaiKhac=false`."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.10061090: '10061090 - - Loại khác'; máy tự suy `loaiKhac=true`."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn sen.10062010 (định nghĩa Gạo Hom Mali). `dieuKien` bám đúng từ nguồn. `tieuChi` {do_dai_hat_gam_trung_binh >= 7 mm} — số 7 có trong câu trích ('không dưới 7mm') nên đạt luật số. GHI NHẬN: dài 161 ký tự > trần clip 90 ⇒ bị cắt đuôi nhưng đầu câu (tên dòng + đặc trưng) còn nguyên."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.10062090: '10062090 - - Loại khác'; máy tự suy `loaiKhac=true`."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn sen.10063030 (Gạo nếp: dính như keo, bám dính khi nấu chín, hạt mờ đục như phấn). `dieuKien` bám đúng từ nguồn, không thêm chữ."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn sen.10063040 (Gạo Hom Mali cấp 1006.30). `dieuKien` + `tieuChi` {do_dai_hat_gam_trung_binh >= 7 mm} bám đúng; số 7 có trong trích."
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn sen.10063050 (Gạo Basmati: thơm hạt dài, mảnh, hương vị đặc trưng giống lá dứa). `dieuKien` bám đúng từ nguồn."
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn sen.10063060 (Gạo Malys). `dieuKien` + `tieuChi` {do_dai_hat_gam >= 7 mm} bám đúng; nguồn ghi 'bằng hoặc dài hơn 7 mm' nên op '>=' đúng; số 7 có trong trích."
+    },
+    {
+      "index": "dong8[8]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn sen.10063070 (Gạo thơm khác). `dieuKien` bám đúng các đặc trưng đã nêu (hảo hạng, mùi thơm tự nhiên và đặc trưng, hạt trung bình đến dài); câu 'Ví dụ về các loại gạo thơm ở đây là…' chỉ là danh sách ví dụ nên không bị ghi thành tiêu chí ⇒ đúng."
+    },
+    {
+      "index": "dong8[9]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn nhom1006.nhom mục (b): '(b) Gạo đồ, là loại gạo khi vẫn còn vỏ và trước khi được sơ chế (ví dụ, xay, xát, đánh bóng), được ngâm nước nóng hoặc hấp rồi được làm khô.' `dieuKien` bám đúng, không thêm chữ."
+    },
+    {
+      "index": "dong8[10]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.10063099: '10063099 - - - Loại khác'; máy tự suy `loaiKhac=true`."
+    },
+    {
+      "index": "dong8[11]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn sen.10064010: 'Theo mục đích phân loại của AHTN, sản phẩm này được phân loại là tấm sử dụng làm thức ăn chăn nuôi thuộc phân nhóm 1006.40.10.' `dieuKien` bám đúng."
+    },
+    {
+      "index": "dong8[12]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn sen.10064090: 'Tấm phù hợp sử dụng cho con người\\n\\nTheo mục đích phân loại của AHTN, sản phẩm này được phân loại thành tấm loại khác thuộc phân nhóm 1006.40.90.' Giữ nguyên xuống dòng của nguồn; `dieuKien` bám đúng."
+    }
+  ]
+}

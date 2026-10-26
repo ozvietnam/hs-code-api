@@ -1,0 +1,112 @@
+{
+  "nhom": "1106",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp chỉ nêu 2/4 phần ngang hàng của nhóm: (1) bột đậu (đậu Hà lan/hạt/lăng) và (4) bột vỏ quả — THIẾU (B) bột cọ sago hay từ rễ, củ, thân củ nhóm 07.14 (chính là phân nhóm 1106.20, có 3 dòng biểu thuế) và (C) bột sản phẩm Chương 8 (phân nhóm 1106.30). Vì phamVi là dòng ĐẦU tiên đưa vào prompt, thiếu 2 phần ⇒ mô hình không biết 1106.20/1106.30 thuộc nhóm 1106. SỬA: nêu đủ 4 phần trong text; trích kéo thêm (B), (C) và câu \"Tuy nhiên, nhóm này không bao gồm loại bột me…\" (câu liền sau câu trích bắt đầu bằng \"Tuy nhiên\" — luật không được bỏ ngoại lệ ngay sau câu trích). GHI NHẬN: trích mới dài 451 ký tự (>300 theo lược đồ, <600 theo máy) — không rút được nữa mà không mất một phần của nhóm.",
+      "sua": {
+        "text": "Bột, bột thô và bột mịn làm từ đậu Hà lan, đậu hạt hoặc đậu lăng; của cọ sago hoặc từ rễ, củ, thân củ nhóm 07.14; của sản phẩm thuộc Chương 8; của các loại vỏ quả.",
+        "trich": "Nhóm này gồm bột, bột thô và bột mịn được làm từ đậu Hà lan, đậu hạt hoặc đậu lăng; chủ yếu được dùng vào việc nấu súp hoặc quấy bột.…(B) Bột, bột thô và bột mịn của cọ sago hoặc từ rễ, củ hoặc thân củ thuộc nhóm 07.14.…(C) Bột, bột thô và bột mịn của các sản phẩm thuộc Chương 8.…Nhóm này cũng bao gồm bột, bột thô và bột mịn của các loại vỏ quả.…Tuy nhiên, nhóm này không bao gồm loại bột me được đóng gói để bán lẻ dùng để phòng hoặc chữa bệnh (nhóm 30.04)."
+      }
+    },
+    {
+      "index": "loaiTru[4]",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp dài 111 ký tự; clip(…, 55) chỉ còn \"Bột, bột thô, bột mịn của cọ sago hoặc của các loại rễ,…\" ⇒ MẤT HẲN điều kiện then chốt \"được ép dưới dạng viên\" (chỉ DẠNG VIÊN mới quay lại 07.14; bột thường của cọ sago vẫn ở 1106.20). SỬA: đảo thứ tự để \"dạng viên\" nằm trong 55 ký tự đầu mà vẫn giữ trọn vật liệu nguồn.",
+      "sua": {
+        "dieuKien": "Bột được ép dưới dạng viên từ cọ sago hoặc rễ, củ, thân củ 07.14"
+      }
+    },
+    {
+      "index": "loaiTru[5]",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp dài 59 ký tự; clip(…, 55) cắt chữ \"bệnh\" — mất đúng lý do loại trừ (dùng để phòng hoặc CHỮA bệnh ⇒ 30.04). SỬA: rút còn 52 ký tự, giữ nguyên nghĩa.",
+      "sua": {
+        "dieuKien": "Bột me đóng gói bán lẻ dùng để phòng hoặc chữa bệnh"
+      }
+    },
+    {
+      "index": "phanBiet[4]",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp dài 113 ký tự; clip(…, 110) cắt \"bột mịn\" ở vế \"không\". SỬA: rút câu hỏi xuống 88 ký tự, chiều Có/Không giữ nguyên (Có → 07.14, Không → 11.06), `hoi` không nhắc mã phân nhóm.",
+      "sua": {
+        "hoi": "Hàng là bột cọ sago hoặc rễ, củ, thân củ ép dưới dạng viên hay bột, bột thô và bột mịn?"
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "\"(a) Bột đậu tương chưa được tách dầu (nhóm 12.08)\" — nằm trong khối \"Nhóm này không bao gồm\", đích danh 12.08."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "\"(b) Bột quả minh quyết (nhóm 12.12)\" — đích danh 12.12."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "\"(c) Súp và nước xuýt … (nhóm 21.04)\" — đích danh 21.04. GHI NHẬN: `dieuKien` 65 ký tự > trần 55 nên clip mất \"của rau\"; KHÔNG sửa vì mọi cách rút gọn đều thu hẹp loại trừ (bỏ \"bột thô\") hoặc thêm chữ không có trong trích."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn; đích danh 11.08 trong \"Những loại tinh bất này được phân loại vào nhóm 11.08\". GHI NHẬN: trích 387 ký tự (>300) và có đoạn \"… củ sắn khô...\" là đoạn CHÍNH NGUỒN đã bị cắt — giữ nguyên để không đổi nghĩa và không sửa nguồn."
+    },
+    {
+      "index": "loaiTru[6]",
+      "hanhDong": "giu",
+      "lyDo": "\"(a) Lõi cây cọ sago (nhóm 07.14)\" — nằm trong khối \"Nhóm này cũng không bao gồm\", đích danh 07.14."
+    },
+    {
+      "index": "loaiTru[7]",
+      "hanhDong": "giu",
+      "lyDo": "\"(b) Thực phẩm chế biến sẵn được biết đến như bột sắn (nhóm 19.03)\" — đích danh 19.03."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "\"(a) Bột đậu tương chưa được tách dầu (nhóm 12.08)\" → 12.08; chiều Có/Không đúng."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "\"(b) Bột quả minh quyết (nhóm 12.12)\" → 12.12; chiều Có/Không đúng."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "\"(c) Súp và nước xuýt … (nhóm 21.04)\" → 21.04; chiều Có/Không đúng."
+    },
+    {
+      "index": "phanBiet[3]",
+      "hanhDong": "giu",
+      "lyDo": "Đích danh 11.08 trong câu; chiều Có/Không đúng (Có → 11.08, Không → 11.06). GHI NHẬN: trích 387 ký tự (>300), cùng lý do với loaiTru[3]."
+    },
+    {
+      "index": "phanBiet[5]",
+      "hanhDong": "giu",
+      "lyDo": "\"Tuy nhiên, nhóm này không bao gồm loại bột me … (nhóm 30.04)\" → 30.04; chiều Có/Không đúng."
+    },
+    {
+      "index": "phanBiet[6]",
+      "hanhDong": "giu",
+      "lyDo": "\"(a) Lõi cây cọ sago (nhóm 07.14)\" → 07.14; chiều Có/Không đúng."
+    },
+    {
+      "index": "phanBiet[7]",
+      "hanhDong": "giu",
+      "lyDo": "\"(b) Thực phẩm chế biến sẵn được biết đến như bột sắn (nhóm 19.03)\" → 19.03; chiều Có/Không đúng."
+    }
+  ],
+  "soat": 17,
+  "tongMucDaSoat": 25,
+  "sua": 4,
+  "xoa": 0,
+  "giu": 13,
+  "nguoiSoat": "dev-soat-doc-lap-lo054",
+  "luc": "2026-10-26T23:10:00+07:00",
+  "soatVaiTro": "Người soát ĐỘC LẬP (không phải người soạn). Đọc lại từng mục cùng nguồn nguyên văn tmp/so-tay/nguon/<nhom>.txt; kiểm BYTE-EXACT từng mảnh câu trích (máy check-so-tay dùng squash() nên không bắt được lỗi ký tự); đo trần clip() runtime của lib/so-tay-gates.js (phamVi.text 220 · boPhan.tomTat 160 · loaiTru.dieuKien 55 · dong8.dieuKien 90 · phanBiet.hoi 110).",
+  "ghiChu": "GHI NHẬN chung: (1) LỖI NGUỒN: nhãn mục \"(B)\" và \"(C)\" nằm ngay sau khối \"Nhóm này không bao gồm:\" nhưng NỘI DUNG là BAO GỒM (có dòng biểu thuế 1106.20.10/.20/.90 và 1106.30.00) ⇒ đọc máy-mềm sẽ sinh loaiTru sai; đã coi là phần BAO GỒM và đưa vào phạm vi. (2) Câu \"Các sản phẩm này thu được từ việc nạo hoặc xay lõi cọ sago hoặc rễ của củ sắn khô...\" là đoạn CHÍNH NGUỒN bị cắt — giữ nguyên, không sửa nguồn. (3) `phamVi.trich` sau khi sửa dài 409 ký tự (>300) vì phải nêu đủ 4 phần ngang hàng của nhóm + câu \"Tuy nhiên…\" liền sau (luật không được bỏ ngoại lệ ngay sau câu trích)."
+}

@@ -1,0 +1,60 @@
+{
+  "nhom": "1107",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp có `text` dài 250 ký tự > trần clip(…, 220) của runtime ⇒ bị cắt GIỮA CÂU (\"…không gồm malt đã rang …\"), mất luôn ngoại lệ cuối. SỬA: rút `text` xuống 171 ký tự (giữ cả phạm vi và hai ngoại lệ, không mất nghĩa); ĐỒNG THỜI sửa `trich` — bản nháp đặt dấu lược \"…\" vào giữa cụm từ \"chế phẩm thực phẩm…của chiết xuất malt thuộc nhóm 19.01\" (nguồn xuống dòng ở đúng chỗ đó) nên câu trích bị đọc thành hai mảnh rời và che mất mệnh đề định danh nhóm đích; thay bằng xuống dòng gốc của nguồn (byte-exact). Câu \"tuy nhiên …\" vẫn nằm trong trích — không được cắt ngoại lệ ngay sau câu trích.",
+      "sua": {
+        "text": "Malt nguyên dạng, nghiền vụn và bột; cũng gồm loại malt đã rang. Không gồm sản phẩm đã qua chế biến thêm (chiết xuất malt) và malt đã rang dùng làm chất thay thế cà phê.",
+        "trich": "Nhóm này bao gồm malt nguyên dạng, nghiền vụn và bột.…Nhóm cũng bao gồm loại malt đã rang (ví dụ, được sử dụng tạo màu cho bia), tuy nhiên nhóm này không bao gồm những sản phẩm đã qua những công đoạn chế biến thêm, như chiết xuất malt và chế phẩm thực phẩm\n\ncủa chiết xuất malt thuộc nhóm 19.01 và cả các loại malt đã rang được dùng làm chất thay thế cà phê (nhóm 21.01)."
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp đặt dấu lược \"…\" vào GIỮA CỤM TỪ: \"…như chiết xuất malt và chế phẩm thực phẩm…của chiết xuất malt thuộc nhóm 19.01…\" — dấu lược rơi đúng chỗ nối \"chế phẩm thực phẩm\" với \"của chiết xuất malt thuộc nhóm 19.01\" (chính là câu nói đích danh nhóm đích), nên câu trích bị đọc thành hai mảnh rời và mất mệnh đề định danh 19.01. NGUỒN xuống dòng ở đúng chỗ đó ⇒ theo luật \"trích phải giữ nguyên xuống dòng của nguồn\", SỬA bằng cách thay dấu lược bằng xuống dòng gốc của nguồn — byte-exact tuyệt đối, không đổi ký tự nào khác.",
+      "sua": {
+        "trich": "Nhóm cũng bao gồm loại malt đã rang (ví dụ, được sử dụng tạo màu cho bia), tuy nhiên nhóm này không bao gồm những sản phẩm đã qua những công đoạn chế biến thêm, như chiết xuất malt và chế phẩm thực phẩm\n\ncủa chiết xuất malt thuộc nhóm 19.01 và cả các loại malt đã rang được dùng làm chất thay thế cà phê (nhóm 21.01)."
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "sua",
+      "lyDo": "Cùng lý do dấu lược rơi giữa cụm từ với loaiTru[0]; sửa cùng một câu trích để hai mục không lệch nhau.",
+      "sua": {
+        "trich": "Nhóm cũng bao gồm loại malt đã rang (ví dụ, được sử dụng tạo màu cho bia), tuy nhiên nhóm này không bao gồm những sản phẩm đã qua những công đoạn chế biến thêm, như chiết xuất malt và chế phẩm thực phẩm\n\ncủa chiết xuất malt thuộc nhóm 19.01 và cả các loại malt đã rang được dùng làm chất thay thế cà phê (nhóm 21.01)."
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "Cùng lý do dấu lược rơi giữa cụm từ với loaiTru[0]; sửa cùng một câu trích.",
+      "sua": {
+        "trich": "Nhóm cũng bao gồm loại malt đã rang (ví dụ, được sử dụng tạo màu cho bia), tuy nhiên nhóm này không bao gồm những sản phẩm đã qua những công đoạn chế biến thêm, như chiết xuất malt và chế phẩm thực phẩm\n\ncủa chiết xuất malt thuộc nhóm 19.01 và cả các loại malt đã rang được dùng làm chất thay thế cà phê (nhóm 21.01)."
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "Cùng lý do dấu lược rơi giữa cụm từ với loaiTru[0]; sửa cùng một câu trích.",
+      "sua": {
+        "trich": "Nhóm cũng bao gồm loại malt đã rang (ví dụ, được sử dụng tạo màu cho bia), tuy nhiên nhóm này không bao gồm những sản phẩm đã qua những công đoạn chế biến thêm, như chiết xuất malt và chế phẩm thực phẩm\n\ncủa chiết xuất malt thuộc nhóm 19.01 và cả các loại malt đã rang được dùng làm chất thay thế cà phê (nhóm 21.01)."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "\"Malt là hạt nảy mầm (chủ yếu từ lúa đại mạch), sau đó thường được làm khô trong các lò khí nóng (lò sấy malt).\" — định nghĩa ĐÚNG với MỌI thành viên của nhóm (malt chưa rang 1107.10 và malt đã rang 1107.20 đều là hạt nảy mầm) nên không loại thành viên nào; câu trích nguyên văn, giữ nguyên cả định ngữ \"thường được làm khô\"."
+    }
+  ],
+  "soat": 6,
+  "tongMucDaSoat": 10,
+  "sua": 5,
+  "xoa": 0,
+  "giu": 1,
+  "nguoiSoat": "dev-soat-doc-lap-lo054",
+  "luc": "2026-10-26T23:10:00+07:00",
+  "soatVaiTro": "Người soát ĐỘC LẬP (không phải người soạn). Đọc lại từng mục cùng nguồn nguyên văn tmp/so-tay/nguon/<nhom>.txt; kiểm BYTE-EXACT từng mảnh câu trích (máy check-so-tay dùng squash() nên không bắt được lỗi ký tự); đo trần clip() runtime của lib/so-tay-gates.js (phamVi.text 220 · boPhan.tomTat 160 · loaiTru.dieuKien 55 · dong8.dieuKien 90 · phanBiet.hoi 110).",
+  "ghiChu": "GHI NHẬN chung: (1) Nguồn xuống dòng giữa \"chế phẩm thực phẩm\" và \"của chiết xuất malt thuộc nhóm 19.01\"; bản nháp đặt dấu lược \"…\" đúng chỗ đó làm câu trích thành hai mảnh rời và che mất mệnh đề định danh nhóm đích — đã sửa bằng cách giữ nguyên xuống dòng của nguồn (byte-exact). (2) `loaiTru[0].dieuKien` dài 57 ký tự (trần 55) — clip mất đuôi \"…của chiết xuất malt\" nhưng phần còn lại đã đủ nghĩa; ghi nhận, không sửa."
+}

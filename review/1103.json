@@ -1,0 +1,33 @@
+{
+  "nhom": "1103",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp BỎ SÓT NGOẠI LỆ ngay sau câu trích: câu kế \"Nhóm này không bao gồm những phế liệu được viên lại từ quá trình xay xát ngũ cốc (Chương 23).\" (nguồn nhom1103.nhom) — bản nháp dừng ở \"(xem Chú giải 1 của Phần II).\" nên mục nói \"dạng viên\" thuộc nhóm mà không kèm carve-out phế liệu được viên lại (thuộc Chương 23). SỬA: kéo câu ngoại lệ vào trích + nêu trong text; đồng thời rút đoạn định nghĩa \"Bột thô là …\" xuống còn một mệnh đề tròn (\"…sau xay xát\") để trích khỏi vượt trần 600 của máy (bản nháp 497 + 86 = 583, sát trần).",
+      "sua": {
+        "text": "Ngũ cốc dạng tấm, dạng bột thô và dạng viên; không gồm phế liệu được viên lại từ quá trình xay xát ngũ cốc (Chương 23).",
+        "trich": "Ngũ cốc dạng tấm là những mảnh vỡ nhỏ hoặc lõi chứa bột của hạt ngũ cốc từ quá trình xay thô ngũ cốc.…Bột thô là sản phẩm có hình hạt hơn so với bột mịn và được tạo ra từ quá trình sàng đầu tiên sau xay xát, hoặc nghiền lại và sàng lại tấm từ quá trình xay xát đầu tiên.…Viên là những sản phẩm thu được từ quá trình xay xát các loại ngũ cốc thuộc Chương này được tích tụ bằng cách nén trực tiếp bằng áp lực hay bổ sung chất kết dính với tỉ lệ không quá 3% trọng lượng…Nhóm này không bao gồm những phế liệu được viên lại từ quá trình xay xát ngũ cốc (Chương 23)."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn; ngưỡng 3% có trong câu. Tên fact tự định phạm vi (\"trong viên\") — cùng khuôn mẫu đã được duyệt ở 0714 (ham_luong_phu_gia_chat_gan_trong_vien <= 3 %) ⇒ giữ nguyên."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng với Chú giải 2(B): có tỷ lệ lọt qua sàng không thấp hơn → 11.01/11.02; \"các trường hợp khác\" → 11.03/11.04. `hoi` không nhắc mã, cả hai nhánh đích có trong câu trích. GHI NHẬN: trích 332 ký tự (>300 theo lược đồ, <600 theo máy) — không rút được mà không mất vế \"Các trường hợp khác\"."
+    }
+  ],
+  "soat": 3,
+  "tongMucDaSoat": 14,
+  "sua": 1,
+  "xoa": 0,
+  "giu": 2,
+  "nguoiSoat": "dev-soat-doc-lap-lo054",
+  "luc": "2026-10-26T23:10:00+07:00",
+  "soatVaiTro": "Người soát ĐỘC LẬP (không phải người soạn). Đọc lại từng mục cùng nguồn nguyên văn tmp/so-tay/nguon/<nhom>.txt; kiểm BYTE-EXACT từng mảnh câu trích (máy check-so-tay dùng squash() nên không bắt được lỗi ký tự); đo trần clip() runtime của lib/so-tay-gates.js (phamVi.text 220 · boPhan.tomTat 160 · loaiTru.dieuKien 55 · dong8.dieuKien 90 · phanBiet.hoi 110).",
+  "ghiChu": "GHI NHẬN chung: (1) 11 câu trích của lô dài hơn 300 ký tự (lược đồ ghi 300, máy chỉ chặn >600) — đã liệt kê đúng số trong báo cáo; không có mục nào vượt 600. (2) `phamVi.trich` sau khi sửa dài 530 ký tự vì phải chứa đủ 3 dạng của nhóm (tấm, bột thô, viên) + ngoại lệ \"phế liệu được viên lại\" (Chương 23) mà bản nháp đã bỏ sót; rút thêm sẽ mất một dạng nên giữ. (3) Nguồn chương 11 dùng chung cho mọi nhóm (`ch11.chuong`), nên Chú giải 2(B) và Chú giải 3 xuất hiện ở cả 1103 và 1104 — đúng như nguồn."
+}
