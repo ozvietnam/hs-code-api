@@ -322,6 +322,11 @@ này nên bản nháp vẫn xanh. 9/65 mục mục-4 bị cắt mất điều ki
   `1104 loaiTru[6]` (130 — clip còn giữ trọn ý *"… đã được nấu chín…"*),
   `1106 loaiTru[2]` (65 — rút gọn sẽ **thu hẹp** loại trừ, bỏ "bột thô"),
   `1107 loaiTru[0]` (57 — clip mất đuôi *"…của chiết xuất malt"* nhưng phần còn lại đủ nghĩa).
+- **Ghi nhận thêm:** `tieuChi6` **KHÔNG** đưa vào prompt runtime (`soTayBlock` chỉ có `phamVi` ·
+  `dieuKienVao` · `loaiTru` · `dong8` · `phanBiet` · `boPhan`) — nó chỉ dùng cho **kiểm độ phủ** của
+  `check-cay`. ⇒ muốn đưa một đặc tính nào đó cho mô hình thì phải đặt ở **`dong8`** (hoặc `phamVi`),
+  **không** phải `tieuChi6`. (Đây là lý do `1108 dieuKienVao[0]` bị xoá mà KHÔNG chuyển sang
+  `tieuChi6` — chuyển sang đó thì thông tin biến mất khỏi prompt, không phải là sửa.)
 - **Ghi nhận thêm:** `traNguon` (lib/so-tay-gates.js:568) chỉ đưa `clip(trich, 200)` cho mô hình ⇒
   `1104 loaiTru[2]` có "nhóm 23.02" ở ký tự ~196 ⇒ phần đích **không lọt** vào 200 ký tự đầu
   (vẫn có trong `legal` + `reasonVi` nên không mất thông tin, nhưng nên biết).
