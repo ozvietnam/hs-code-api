@@ -213,7 +213,7 @@ chữ "Hàng là …" trong `hoi`.
 
 # SOẠN lô 054 — phiên `dev-zcode-mm` (26/10/2026)
 
-- **Nhánh:** `so-tay/lo-054` (**PR #468**, **KHÔNG merge**) · **Nhóm:** `1103 1104 1105 1106 1107 1108`
+- **Nhánh:** `so-tay/lo-054` (**PR #469**, **KHÔNG merge**) · **Nhóm:** `1103 1104 1105 1106 1107 1108`
 - **Nhóm của lô lấy theo `docs/giao-viec/so-tay-lo.csv` dòng 054** (`1103 1104 1105 1106 1107 1108`, 39 683 ký tự nguồn).
   **Lệnh mẫu trong `brief-st-lo054.md` SAI** — dòng 6 ghi `--nhom=7615,9609,3215,6306,6804,7412` (nhóm của **lô 001**);
   đã theo CSV theo luật [[so-tay-lo-quy-trinh]] (đã lệch lần thứ 6 với cùng một kiểu copy-paste).
