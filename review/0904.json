@@ -1,0 +1,132 @@
+{
+  "nhom": "0904",
+  "nguoiSoat": "dev-soat-doc-lap-lo051",
+  "luc": "2026-10-26T21:22:00+07:00",
+  "phamViSoat": "Toàn bộ 22 mục của bản nháp lô 051 (1 phamVi + 1 dieuKienVao + 2 loaiTru + 2 phanBiet + 4 tieuChi6 + 10 dong8 + 2 cay.tenDien), đọc cùng tmp/so-tay/nguon/0904.txt (nhom0904.nhom có 12 đoạn; ch09.chuong; phan09.phan; wco.090411/090412/090421/090422; tax.09041110…09042290). Đối chiếu TỪNG câu trích với câu nguồn nguyên văn — không tin máy kiểm.",
+  "soat": 22,
+  "giu": 20,
+  "sua": 2,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0904 — 22/22 mục đã đọc cùng nguồn. SỬA 2 mục (3 trường), XOÁ 0, GIỮ 20. LỖI 1 — `dieuKienVao[0].fact` BỎ VẾ PHỦ ĐỊNH (máy KHÔNG bắt được). Nguồn: 'Thuật ngữ này bao gồm hạt hoặc quả của tất cả các loại cây hạt tiêu thuộc chi Piper, TRỪ hạt tiêu Cubeb (Piper cubera) (nhóm 12.11).' — `trich` giữ đúng vế 'trừ…', nhưng `fact` chỉ còn 'la_hat_tieu_chi_piper_hoac_qua_ot_chi_capsicum_pimenta'. `fact` là thứ ĐI VÀO PROMPT (lib/so-tay-gates.js:135 chỉ gửi fact/op/value, KHÔNG gửi `trich`) ⇒ mô hình đọc 'hạt tiêu chi Piper = true' thì hạt tiêu Cubeb cũng thoả ⇒ hàng đi vào 0904 trong khi phải sang 12.11. Đây đúng là lỗi 'fact bỏ vế phủ định' đã ghi thành luật (memory `so-tay-fact-la-thu-dung-vao-prompt`: 6203/6208 bỏ vế 'trừ mềm xơ / không bao gồm đồ dệt kim' ⇒ đồ dệt kim bị coi là thoả điều kiện vào 6203/6208). Sửa: đưa vế trừ vào `fact` (khuôn '…_tru_X' như 3902 'la_polyme_tu_cac_loai_olefin_tru_etilen') + đầy đủ `ngoaiTru` (khuôn 3701/3902/6202). KHÔNG sửa mã, KHÔNG sửa câu trích. LỖI 2 — `loaiTru[1].dieuKien` bị RUNTIME CẮT MẤT KẾT LUẬN: 61 ký tự > trần 55 (lib/so-tay-gates.js:137) ⇒ prompt in ra '…thuộc chi Capsicum hoặc P…', mất chi 'Pimenta' (loại trừ thứ hai) và để lại 'hoặc P…' cụt. Sửa: bỏ chữ 'thuộc' (không thêm chữ, không đổi nghĩa) → 55 ký tự, vừa trần. Còn lại: `phamVi` nêu đủ 2 phần ngang hàng của nhóm (hạt tiêu + quả ớt) và nêu rõ ngoại lệ Cubeb; `loaiTru[0]` + 2 `phanBiet` có DẤU HIỆU LOẠI TRỪ trong câu trích ('trừ…' / 'không bao gồm…') và đích danh 12.11 / 07.09 trong chính câu, chiều Có/Không đúng; 4 `tieuChi6` + 2 `cay.tenDien` chép nguyên văn wco.*; 10 `dong8` đủ 10/10 dòng biểu thuế. GHI NHẬN (KHÔNG sửa): `dong8[6]`/`dong8[7]` (09042110/09042190) dài 101 ký tự > trần 90 ⇒ runtime cắt phần gloss '— thuộc phân n…' (điều kiện dòng vẫn trọn vẹn, gloss lặp lại mã phân nhóm cha nên không mất nghĩa; 56 % dòng dong8 trong kho cũng vượt 90) — không sửa để giữ nhất quán gloss của nhóm.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom0904.nhom mục (1) + mục (2): 'Thuật ngữ này bao gồm hạt hoặc quả của tất cả các loại cây hạt tiêu thuộc chi Piper, trừ hạt tiêu Cubeb (Piper cubera) (nhóm 12.11). … (2) Các quả đã làm khô hoặc nghiền hoặc xay thuộc chi Capsicum hoặc chi Pimenta.' Đoạn lược '…' nuốt các đoạn 2–7 (hạt tiêu đen/trắng, Piper longum, cám và bụi hạt tiêu, ớt bị gọi nhầm là tiêu) — KHÔNG đoạn nào có 'trừ/tuy nhiên/với điều kiện/không kể' ⇒ không nuốt ngoại lệ. `text` nêu đủ CẢ HAI phần ngang hàng của nhóm (hạt tiêu + quả ớt) và có nêu ngoại lệ Cubeb ⇒ đúng luật lô 030 (phạm vi = phạm vi nhóm, không phải vật liệu, không phải một phần). 215 ký tự (dưới trần runtime 220)."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA 2 trường. (1) `fact` BỎ VẾ PHỦ ĐỊNH — lỗi máy KHÔNG bắt được, vì `fact` (không phải `trich`) mới đi vào prompt (lib/so-tay-gates.js:135). Câu nguồn nói rõ '…thuộc chi Piper, TRỪ hạt tiêu Cubeb (Piper cubera) (nhóm 12.11)', còn `fact` cũ chỉ có 'la_hat_tieu_chi_piper_hoac_qua_ot_chi_capsicum_pimenta' ⇒ mô hình coi hạt tiêu Cubeb cũng thoả điều kiện vào 0904, trong khi Cubeb phải sang 12.11. Luật đã ghi: 'Hai vế phủ định phải nằm trong fact' (6203/6208 lô 020) và khuôn '…_tru_X' (3902 'la_polyme_tu_cac_loai_olefin_tru_etilen'). Sửa `fact` thành 'la_hat_tieu_chi_piper_tru_cubeb_hoac_qua_ot_chi_capsicum_pimenta' — vế trừ nằm ĐÚNG trong nhánh hạt tiêu (Cubeb là loài Piper, không liên quan nhánh ớt). (2) `ngoaiTru` để rỗng trong khi câu có ngoại lệ ⇒ thêm 'hạt tiêu Cubeb (Piper cubera)' (khuôn 3701/3902/6202); runtime sẽ in '(trừ: hạt tiêu Cubeb (Piper cubera))' cạnh điều kiện. `trich`/`nguon`/`op`/`value` GIỮ NGUYÊN (đã đúng và nguyên văn). Lưu ý: KHÔNG tách thành 2 mục `dieuKienVao` — prompt nối các mục bằng '·' nên đọc thành điều kiện VÀ (memory `soat-dieu-kien-vao-hai-mo-ta-loai-tru-nhau`).",
+      "sua": {
+        "fact": "la_hat_tieu_chi_piper_tru_cubeb_hoac_qua_ot_chi_capsicum_pimenta",
+        "ngoaiTru": [
+          "hạt tiêu Cubeb (Piper cubera)"
+        ]
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom0904.nhom: 'Thuật ngữ này bao gồm hạt hoặc quả của tất cả các loại cây hạt tiêu thuộc chi Piper, trừ hạt tiêu Cubeb (Piper cubera) (nhóm 12.11).' Có DẤU HIỆU LOẠI TRỪ ('trừ'), đích 12.11 nêu đích danh trong chính câu ⇒ đúng luật 3. `dieuKien` 'Hạt tiêu Cubeb (Piper cubera)' (31 ký tự, dưới trần clip 55) là cụm sẽ khớp với tên hàng. GHI NHẬN: nguồn viết 'Piper cubera' ở chú giải nhóm, còn chú giải Chương viết 'Piper cubeba' — bản nháp chép đúng 'cubera' theo nguồn của mình (luật: chép nguyên văn kể cả lỗi chính tả nguồn), KHÔNG sửa."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA `dieuKien` (1 trường). Câu trích nguyên văn nhom0904.nhom: 'Nhóm này không bao gồm những quả tươi chưa nghiền hoặc xay thuộc chi Capsicum hoặc Pimenta (nhóm 07.09).' — có DẤU HIỆU LOẠI TRỪ ('không bao gồm'), đích 07.09 nêu đích danh ⇒ đúng luật 3, `trich` giữ nguyên. NHƯNG `dieuKien` cũ dài 61 ký tự, runtime cắt còn 55 (lib/so-tay-gates.js:137) ⇒ prompt in ra 'Quả tươi chưa nghiền hoặc xay thuộc chi Capsicum hoặc P…' — MẤT chữ 'Pimenta' (chi thứ hai của loại trừ) và để lại 'hoặc P…' bị cụt (bài học lô 038: runtime cắt giữa câu, mất kết luận của luật; lô 050 đã rút gọn 0813 loaiTru[2] 146→50 ký tự theo đúng lý do này). Sửa: bỏ chữ 'thuộc' (không thêm chữ nào, không đổi nghĩa, vẫn bám câu trích) → 'Quả tươi chưa nghiền hoặc xay chi Capsicum hoặc Pimenta' = 55 ký tự, vừa trần, KHÔNG bị cắt. Vế 'chưa nghiền hoặc xay' giữ nguyên theo nguồn (quả tươi ĐÃ nghiền không bị câu này loại trừ) — không tự sửa theo hiểu biết riêng.",
+      "sua": {
+        "dieuKien": "Quả tươi chưa nghiền hoặc xay chi Capsicum hoặc Pimenta"
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = hạt tiêu Cubeb → 1211 (đích có trong câu trích), 'không' = 0904 (chính nhóm, đã có sẵn trong kho). `hoi` không nhắc mã phân nhóm/WCO ⇒ đạt luật máy. Trùng ý với `loaiTru[0]` là đúng: `loaiTru` để cổng hỏi, `phanBiet` để hỏi mô hình (cả hai đều có trong lô 050 đã duyệt)."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = quả tươi chưa nghiền/xay chi Capsicum hoặc Pimenta → 0709 (đích có trong câu trích), 'không' = 0904. `hoi` giữ nguyên định ngữ 'chưa nghiền hoặc xay' của nguồn, không gộp thêm vế ngoài câu."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090411 '090411 Spices; pepper (of the genus piper), neither crushed nor ground'; `value` là bản dịch tên WCO ('Hạt tiêu (chi Piper), chưa nghiền hoặc chưa xay'), nguồn không phải tax.* ⇒ đúng luật 10. `fact` 'loai_hang' là khuôn có sẵn của nhà (264 mục trong kho)."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090412 '090412 Spices; pepper (of the genus piper), crushed or ground'; bản dịch khớp ('đã xay hoặc đã nghiền' ↔ crushed or ground), nguồn wco.* ⇒ đúng luật 10."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090421 '090421 Spices; fruits of the genus Capsicum or Pimenta, dried, neither crushed nor ground'; bản dịch giữ đủ ba vế (đã làm khô / chưa nghiền hoặc chưa xay) và KHÔNG bỏ vế phủ định nào ⇒ đúng luật 10 và đúng bài học 'fact/trích bỏ vế phủ định'."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090422 '090422 Spices; fruits of the genus Capsicum or Pimenta, crushed or ground'; bản dịch 'Quả ớt thuộc chi Capsicum hoặc chi Pimenta, đã xay hoặc đã nghiền' — vế 'dried' KHÔNG có trong WCO 090422 nên không thêm ⇒ đúng luật 10."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "09041110 = '09041110 - - - Trắng'. Điều kiện 'Hạt tiêu trắng' lấy từ tên dòng biểu thuế, vế trạng thái 'chưa nghiền hoặc chưa xay' lấy từ wco.090411 (tên phân nhóm cha) — đúng luật 20 của _he-thong.txt ('dòng biểu thuế chỉ ghi '- - - Trắng' thì điều kiện cấp phân nhóm lấy từ wco.<6 số>'). Gloss '— thuộc phân nhóm 0904.11' là quy ước nhà lô 034 (227 dòng đã có trong kho)."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "09041120 = '09041120 - - - Đen' ⇒ 'Hạt tiêu đen, chưa nghiền hoặc chưa xay' (tên dòng + wco.090411). Đúng, không sửa."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "09041190 = '09041190 - - - Loại khác' ⇒ 'Hạt tiêu chưa nghiền hoặc chưa xay, loại khác'; `loaiKhac` do máy tự điền theo biểu thuế (tên dòng bắt đầu bằng 'Loại khác' → true). Đúng luật 6 (loaiKhac không do người soạn quyết)."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "09041210 = '09041210 - - - Trắng' ⇒ 'Hạt tiêu trắng, đã nghiền hoặc đã xay' (tên dòng + wco.090412 'crushed or ground'). Đúng."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "09041220 = '09041220 - - - Đen' ⇒ 'Hạt tiêu đen, đã nghiền hoặc đã xay'. Đúng."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "09041290 = '09041290 - - - Loại khác' ⇒ 'Hạt tiêu đã nghiền hoặc đã xay, loại khác'; `loaiKhac` máy tự điền. Đúng."
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "giu",
+      "lyDo": "09042110 = '09042110 - - - Quả ớt (chillies) (quả thuộc chi Capsicum)' ⇒ 'Quả ớt (chillies) thuộc chi Capsicum, đã làm khô, chưa nghiền hoặc chưa xay' (vế trạng thái theo wco.090421 'dried, neither crushed nor ground'). Đúng."
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "giu",
+      "lyDo": "09042190 = '09042190 - - - Loại khác' ⇒ 'Quả ớt thuộc chi Capsicum, đã làm khô, chưa nghiền hoặc chưa xay, loại khác'; `loaiKhac` máy tự điền. Đúng."
+    },
+    {
+      "index": "dong8[8]",
+      "hanhDong": "giu",
+      "lyDo": "09042210 = '09042210 - - - Quả ớt (chillies) (quả thuộc chi Capsicum)' ⇒ 'Quả ớt (chillies) thuộc chi Capsicum, đã nghiền hoặc đã xay' (wco.090422 'crushed or ground' — KHÔNG có 'dried' nên không thêm 'đã làm khô'). Đúng."
+    },
+    {
+      "index": "dong8[9]",
+      "hanhDong": "giu",
+      "lyDo": "09042290 = '09042290 - - - Loại khác' ⇒ 'Quả ớt thuộc chi Capsicum, đã nghiền hoặc đã xay, loại khác'; `loaiKhac` máy tự điền. Đúng."
+    },
+    {
+      "index": "cay.tenDien[0]",
+      "hanhDong": "giu",
+      "lyDo": "Nút 6 số 090411 chưa có tên tiếng Việt trong cây (check-cay báo '6/6 nhóm đủ, 0 lỗi lệch cây'); tên điền từ câu wco.090411 và trích nguyên văn. Đúng luật 9."
+    },
+    {
+      "index": "cay.tenDien[1]",
+      "hanhDong": "giu",
+      "lyDo": "Nút 6 số 090421 chưa có tên tiếng Việt; tên điền từ wco.090421 ('fruits of the genus Capsicum or Pimenta, dried, neither crushed nor ground') và trích nguyên văn. Đúng luật 9."
+    }
+  ]
+}

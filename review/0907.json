@@ -1,0 +1,48 @@
+{
+  "nhom": "0907",
+  "nguoiSoat": "dev-soat-doc-lap-lo051",
+  "luc": "2026-10-26T21:28:00+07:00",
+  "phamViSoat": "Toàn bộ 7 mục của bản nháp lô 051 (1 phamVi + 0 boPhan + 0 dieuKienVao + 1 loaiTru + 1 phanBiet + 2 tieuChi6 + 2 dong8 + 0 cay.tenDien), đọc cùng tmp/so-tay/nguon/0907.txt (nhom0907.nhom: 'Nhóm này bao gồm:' mục (1)(2)(3) + 'Nhóm này loại trừ vỏ và lá đinh hương (nhóm 12.11).'; ch09.chuong; phan09.phan; wco.090710/090720; tax.09071000/09072000). Đối chiếu TỪNG câu trích với câu nguồn nguyên văn — không tin máy kiểm.",
+  "soat": 7,
+  "giu": 7,
+  "sua": 0,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0907 — 7/7 mục đã đọc cùng nguồn. KHÔNG xoá, KHÔNG sửa, GIỮ 7. (a) `phamVi`: nêu đủ 3 phần ngang hàng của nhóm (quả · nụ và hoa · thân/cành nhỏ) theo mục (1)(2)(3) của nguồn ⇒ đúng luật lô 030 (nêu tiêu đề các phần nối bằng '…'). (b) `dieuKienVao` RỖNG là ĐÚNG: nguồn chỉ LIỆT KÊ DANH MỤC 3 phần, không có đặc tính vật chất chung nào phủ cả nhóm ⇒ theo luật 4 bước thì để rỗng. (c) `loaiTru[0]` + `phanBiet[0]`: câu trích 'Nhóm này loại trừ vỏ và lá đinh hương (nhóm 12.11).' tự chứng minh được điều mục khẳng định (có DẤU HIỆU LOẠI TRỪ 'loại trừ' ngay trong câu, đích 12.11 nêu đích danh) ⇒ không cần nối vế đầu như 0905 (ở đó câu mục (a)(b)(c) đứng RIÊNG dưới tiêu đề 'Nhóm này không bao gồm:'). (d) `tieuChi6` chép nguyên văn wco.*, bản dịch giữ cả 'quả, nụ, hoa và thân' — 'hoa' có căn cứ ở nguồn riêng của nhóm (mục (2) 'Nụ và hoa đinh hương'). (e) 2 `dong8` đủ 2/2 dòng biểu thuế.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom0907.nhom: '(1) Quả đinh hương, (có vị và hương thơm đặc trưng của nụ đinh hương nhưng nhẹ hơn). … (2) Nụ và hoa đinh hương, hái trước khi hoa nở và phơi khô. … (3) Thân, cành nhỏ màu nâu nhạt, hương rất đậm của hoa đinh hương.' — đủ 3 mục của danh mục 'Nhóm này bao gồm:'; `text` nêu đủ 3 phần (quả · nụ và hoa · thân/cành nhỏ) ⇒ đúng luật lô 030 (phạm vi = các phần của nhóm). Đoạn lược chỉ nuốt phần giải thích trong ngoặc của mục (1) và vế 'của hoa đinh hương' của mục (3) — không có ngoại lệ. `text` 126 ký tự < trần runtime 220. GHI NHẬN: câu 'Nhóm này loại trừ vỏ và lá đinh hương (nhóm 12.11).' ĐỨNG NGAY SAU khối được trích nhưng KHÔNG kéo vào `phamVi` — vì nó là LOẠI TRỪ, đã có mục riêng `loaiTru[0]` + `phanBiet[0]` với câu trích riêng; tiền lệ lô 050 (0902 đã duyệt) cũng vậy ('Ngoài ra nhóm này cũng không bao gồm…' nằm ngoài `phamVi` nhưng có `loaiTru`/`phanBiet`)."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom0907.nhom: 'Nhóm này loại trừ vỏ và lá đinh hương (nhóm 12.11).' — CÓ DẤU HIỆU LOẠI TRỪ ('loại trừ') ngay trong câu, đích 12.11 nêu đích danh ⇒ đúng luật 3; câu trích tự đủ sức chứng minh (khác 0905, ở đó câu mục (a)(b)(c) đứng riêng dưới tiêu đề nên phải nối tiêu đề vào). `dieuKien` 'Vỏ và lá đinh hương' (20 ký tự < trần 55) là cụm sẽ khớp với tên hàng."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = vỏ và lá đinh hương → 1211 (đích có trong câu trích), 'không' = 0907 (chính nhóm). `hoi` không nhắc mã phân nhóm/WCO ⇒ đạt luật máy."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090710 '090710 Spices; cloves (whole fruit, cloves and stems), neither crushed nor ground'; bản dịch 'Đinh hương (quả, nụ, hoa và thân), chưa xay hoặc chưa nghiền' — 'hoa' có căn cứ ở nguồn riêng của nhóm (mục (2) 'Nụ và hoa đinh hương'), các từ còn lại bám đúng wco.*; nguồn wco.* (không phải tax.*) ⇒ đúng luật 10."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090720 '090720 Spices; cloves (whole fruit, cloves and stems), crushed or ground'; bản dịch 'Đinh hương (quả, nụ, hoa và thân), đã xay hoặc đã nghiền' khớp. Đúng luật 10."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "09071000 = '09071000 - Chưa xay hoặc chưa nghiền' ⇒ 'Đinh hương, chưa xay hoặc chưa nghiền — thuộc phân nhóm 0907.10' (tên hàng từ chú giải nhóm, trạng thái từ chính dòng biểu thuế); gloss theo quy ước lô 034. Đủ 1/2 dòng biểu thuế. Đúng."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "09072000 = '09072000 - Đã xay hoặc nghiền' ⇒ 'Đinh hương, đã xay hoặc đã nghiền — thuộc phân nhóm 0907.20'. Đủ 2/2 dòng biểu thuế. Đúng."
+    }
+  ]
+}

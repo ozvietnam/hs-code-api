@@ -1,0 +1,28 @@
+{
+  "nhom": "0903",
+  "nguoiSoat": "dev-soat-doc-lap-lo051",
+  "luc": "2026-10-26T21:20:00+07:00",
+  "phamViSoat": "Toàn bộ 3 mục của bản nháp lô 051 (1 phamVi + 1 dieuKienVao + 0 loaiTru + 0 phanBiet + 0 tieuChi6 + 1 dong8 + 0 cay.tenDien), đọc cùng tmp/so-tay/nguon/0903.txt (nhom0903.nhom có 3 câu; ch09.chuong; phan09.phan; wco.090300; tax.09030000). Đối chiếu TỪNG câu trích với câu nguồn nguyên văn — không tin máy kiểm (máy chỉ biết câu trích có thật, không biết nó nói đúng điều mục khẳng định).",
+  "soat": 3,
+  "giu": 3,
+  "sua": 0,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0903 — 3/3 mục đã đọc cùng nguồn. KHÔNG xoá, KHÔNG sửa, GIỮ 3. (a) `phamVi`: nhom0903.nhom mô tả trọn nhóm (0903 chỉ có 1 dòng 09030000 'Chè Paragoay (Maté)'), không có ngoại lệ nào đứng sau câu trích (câu kế tiếp chỉ nói tên gọi khác và công dụng pha đồ uống) → `text` nêu đúng phạm vi, không cắt mất gì. (b) `dieuKienVao[0]`: áp LUẬT 4 BƯỚC của nhà (memory `so-tay-dieu-kien-bao-gom-van-la-rang-buoc` + `so-tay-lo051-dieu-kien-vao-rang-buoc`): (1) câu phủ CẢ nhóm — nhóm chỉ có 1 dòng và 1 câu định nghĩa, không có phần nào ngoài; (2) câu mô tả ĐẶC TÍNH VẬT CHẤT (lá khô + loài cây bụi họ 'nhựa ruồi') mà hàng thuộc nhóm buộc phải có; (3) câu không cho phép ('có thể…', 'đã hoặc chưa…' không có); (4) không phải danh mục mà là định nghĩa có đặc tính vật chất. Và mệnh đề loại ('một số loại cây bụi') CÓ trong `text` (`trich` nguyên văn) → GIỮ. Câu này là trục phân loại maté ≠ chè 0902 ≠ cà phê 0901. (c) `loaiTru`/`phanBiet` rỗng là ĐÚNG: nhom0903.nhom KHÔNG có câu loại trừ nào; các loại trừ CHUNG của Chương 9 (hạt tiêu Cubeb 12.11 · hạt mù tạt 12.07 · hublong 12.10 · quả/hạt làm nước hoa 12.11 · gia vị hỗn hợp 21.03 · hỗn hợp 21.06) không chép vào từng nhóm (tiền lệ lô 048 — 0804 cũng chỉ chép loại trừ chương khi Chương NÊU TÊN mặt hàng; và lô 050 đã giữ 0902 cũng không chép 5 loại trừ chung). Mặt ngược, câu hỏi 'chè Paragoay hay chè Thea?' đã nằm ở nhóm 0902 (lô 050, đã soát) → không lặp. (d) `tieuChi6` rỗng là ĐÚNG: 0903 không có phân nhóm 6 số thật (lá 09030000 → nút 4 số 0903), đặt hs6 vào đây thì `checkItem` loại (hs6-khong-co-trong-cay). (e) `dong8[0]` 09030000: đủ 1/1 dòng biểu thuế của nhóm, `loaiKhac` do máy tự điền (tên dòng không bắt đầu bằng 'Loại khác' → false), điều kiện 'chưa xay/chưa nghiền' không áp (biểu thuế chỉ ghi '09030000 Chè Paragoay (Maté)').",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom0903.nhom: 'Chè Paragoay gồm lá khô của một số loại cây bụi thuộc họ \"nhựa ruồi\" mọc ở vùng Nam Mỹ.' — phủ trọn nhóm (0903 chỉ có 1 dòng biểu thuế). Câu KẾ TIẾP trong nguồn là 'Người ta thường gọi là \"chè Paragoay\" hoặc \"chè Jesuits (dòng Tên)\"' và câc kế nữa nói công dụng pha đồ uống → KHÔNG có ngoại lệ bị cắt mất. `text` (76 ký tự, dưới trần runtime 220) nêu đúng phạm vi và giữ nguyên định ngữ giới hạn 'một số loại cây bụi' (bài học lô 034/048: mất định ngữ giới hạn thì câu thành khẳng định tuyệt đối)."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Áp luật 4 bước của nhà: (1) câu phủ CẢ nhóm 0903 — không có phần nào ngoài; (2) có đặc tính vật chất (lá khô của cây bụi họ 'nhựa ruồi') mà hàng thuộc nhóm buộc phải có; (3) câu không cho phép; (4) không chỉ liệt kê danh mục. `fact` = 'la_la_kho_cay_bui_ho_nhua_ruoi' bám đúng từ nguồn; đây là trục phân loại maté ≠ chè 0902 ≠ cà phê 0901 nên có giá trị phân loại. Không sửa."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "09030000 là dòng 8 số DUY NHẤT của nhóm (tax.09030000 = '09030000 Chè Paragoay (Maté)') → đủ 1/1 theo luật 6. `dieuKien` lấy đúng tên dòng biểu thuế, gloss '— thuộc nhóm 0903 (tên WCO 090300: Mate)' nằm trong quy ước gloss phân nhóm của nhà (227 dòng đã có trong kho, vd 0713 lô 048); 'Mate' là tên WCO 090300 có thật trong nguồn. `loaiKhac` máy tự điền theo biểu thuế."
+    }
+  ]
+}
