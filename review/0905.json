@@ -1,0 +1,91 @@
+{
+  "nhom": "0905",
+  "nguoiSoat": "dev-soat-doc-lap-lo051",
+  "luc": "2026-10-26T21:24:00+07:00",
+  "phamViSoat": "Toàn bộ 12 mục của bản nháp lô 051 (1 phamVi + 1 dieuKienVao + 3 loaiTru + 3 phanBiet + 2 tieuChi6 + 2 dong8 + 0 cay.tenDien), đọc cùng tmp/so-tay/nguon/0905.txt (nhom0905.nhom: 1 đoạn định nghĩa + khối 'Nhóm này không bao gồm:' mục (a)(b)(c); ch09.chuong; phan09.phan; wco.090510/090520; tax.09051000/09052000). Đối chiếu TỪNG câu trích với câu nguồn nguyên văn — không tin máy kiểm.",
+  "soat": 12,
+  "giu": 6,
+  "sua": 6,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0905 — 12/12 mục đã đọc cùng nguồn. SỬA 6 mục (6 trường `trich`), XOÁ 0, GIỮ 6. LỖI BẮT ĐƯỢC (máy KHÔNG bắt được): 3 `loaiTru` + 3 `phanBiet` trích CÂU MỤC (a)/(b)/(c) nhưng KHÔNG kèm vế đầu 'Nhóm này không bao gồm:' ⇒ câu trích KHÔNG tự nói được điều mục khẳng định (mà mục khẳng định là '0905 LOẠI TRỪ mặt hàng này'). Đây là căn cứ pháp lý đưa cho Hải quan (runtime trả `legal: [{nguon, trich}]`) nên câu trích phải đủ sức chứng minh. Tiền lệ gần nhất: lô 050 (soát độc lập, đã duyệt) dùng đúng khuôn này — 0901 loaiTru[0] 'Nhóm này không bao gồm: … (a) Sáp cà phê (nhóm 15.21).' và 0902 phanBiet[0] 'Ngoài ra nhóm này cũng không bao gồm … (a) Chè Paragoay (nhóm 09.03).'. Sửa: nối vế đầu 'Nhóm này không bao gồm: …' vào trước câu mục (vẫn nguyên văn, vẫn ≤300 ký tự, không sửa mã/nguồn). Còn lại: `phamVi` nêu đúng phạm vi (quả/đậu của cây dây leo họ lan + hai loại + Vanillon); `dieuKienVao[0]` hợp lệ theo luật 4 bước; 2 `tieuChi6` + 2 `dong8` chép nguyên văn wco.*/tax.* và đủ 2/2 dòng biểu thuế.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom0905.nhom: 'Đây là quả (hoặc đậu) của một loại cây dây leo thuộc họ \"lan\". … Có hai loại vani, dài và ngắn, và cả một giống phẩm cấp rất thấp nữa được gọi là Vanillon (thuộc dòng Vanilla pompana), mềm, gần như là nhão và lúc nào cũng nở.' Đoạn lược nuốt 'Nó có màu đen nhạt và hương rất thơm.' — mô tả màu/hương, KHÔNG phải ngoại lệ ⇒ cắt trích hợp lệ. `text` nêu đúng phạm vi nhóm (vani + hai loại + Vanillon), không thêm tên nào ngoài câu trích. `text` 133 ký tự (dưới trần runtime 220) nên không bị cắt; `trich` 225 ký tự (dưới trần 300 của nhà) và `trich` không bị runtime clip, không vào prompt."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Áp luật 4 bước của nhà: (1) câu phủ CẢ nhóm 0905 (nhóm chỉ có 1 dòng phân nhóm học + quả vani; phần 'Vanillon' là một giống trong nhóm) — không có phần nào ngoài; (2) câu mô tả ĐẶC TÍNH VẬT CHẤT (quả/đậu của cây dây leo họ 'lan') mà hàng thuộc nhóm buộc phải có; (3) câu không cho phép; (4) không phải danh mục. `fact` = 'la_qua_cay_day_leo_ho_lan' bám đúng từ nguồn. Ba `loaiTru` của nhóm đều dựa trên chính câu định nghĩa này (mọi thứ không phải quả vani → không phải 0905) ⇒ có giá trị phân loại. GHI NHẬN: câu trích KHÔNG chứa các vế loại trừ (a)(b)(c) — nhưng 3 mục đó không thoả điều kiện 'là quả cây dây leo họ lan' nên không tạo loại trừ sai; chúng đã ở `loaiTru`."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA `trich`: câu trích cũ chỉ có '(a) Nhựa dầu vani (đôi khi còn được gọi sai là “nhựa vani” hoặc “chiết xuất vani”) (nhóm 13.02).' — tự nó KHÔNG nói được rằng 0905 loại trừ mặt hàng này (chỉ nói mặt hàng thuộc nhóm 13.02), trong khi mục khẳng định là một LOẠI TRỪ. Nối vế đầu 'Nhóm này không bao gồm: …' (nguyên văn) vào trước ⇒ câu trích tự chứng minh được điều mục khẳng định. Đích 13.02 đã nêu đích danh trong câu; `dieuKien` (46 ký tự < 55) và `sangNhom` giữ nguyên. Khuôn giống 0901 loaiTru[0] của lô 050 đã duyệt.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm: … (a) Nhựa dầu vani (đôi khi còn được gọi sai là “nhựa vani” hoặc “chiết xuất vani”) (nhóm 13.02)."
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA `trich` (cùng lý do như `loaiTru[0]`): thêm vế 'Nhóm này không bao gồm: …' để câu trích tự nói được điều mục khẳng định. Đích 17.01 và 17.02 đều nêu đích danh trong câu ('nhóm 17.01 hoặc 17.02') nên `sangNhom` '1701|1702' hợp lệ; `dieuKien` (25 ký tự) giữ nguyên.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm: … (b) Đường đã ướp hương vani (nhóm 17.01 hoặc 17.02)."
+      }
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA `trich` (cùng lý do như `loaiTru[0]`): thêm vế 'Nhóm này không bao gồm: …'. Đích 29.12 nêu đích danh trong câu; `dieuKien` giữ nguyên.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm: … (c) Chất vanillin (nguồn gốc hương thơm của vani) (nhóm 29.12)."
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA `trich` (cùng lý do như `loaiTru[0]`). Chiều Có/Không đúng: 'có' = nhựa dầu vani → 1302 (đích có trong câu trích), 'không' = 0905 (chính nhóm). `hoi` không nhắc mã phân nhóm/WCO ⇒ đạt luật máy. Câu trích phải chứng minh được cả phía 'có' (loại trừ) và phía 'không'.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm: … (a) Nhựa dầu vani (đôi khi còn được gọi sai là “nhựa vani” hoặc “chiết xuất vani”) (nhóm 13.02)."
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA `trich` (cùng lý do như `loaiTru[0]`). Chiều Có/Không đúng: 'có' = đường đã ướp hương vani → 1701|1702 (cả hai đích nêu đích danh trong câu), 'không' = 0905.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm: … (b) Đường đã ướp hương vani (nhóm 17.01 hoặc 17.02)."
+      }
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA `trich` (cùng lý do như `loaiTru[0]`). Chiều Có/Không đúng: 'có' = chất vanillin → 2912 (đích có trong câu trích), 'không' = 0905.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm: … (c) Chất vanillin (nguồn gốc hương thơm của vani) (nhóm 29.12)."
+      }
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090510 '090510 Spices; vanilla, neither crushed nor ground'; bản dịch 'Vani, chưa xay hoặc chưa nghiền' khớp; nguồn wco.* (không phải tax.*) ⇒ đúng luật 10."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090520 '090520 Spices; vanilla, crushed or ground'; bản dịch 'Vani, đã xay hoặc đã nghiền' khớp. Đúng luật 10."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "09051000 = '09051000 - Chưa xay hoặc chưa nghiền' ⇒ điều kiện 'Vani, chưa xay hoặc chưa nghiền' (tên hàng lấy từ chú giải nhóm + trạng thái từ chính dòng biểu thuế), gloss '— thuộc phân nhóm 0905.10' theo quy ước lô 034. Đủ 1/2 dòng biểu thuế của nhóm. Đúng."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "09052000 = '09052000 - Đã xay hoặc nghiền' ⇒ 'Vani, đã xay hoặc đã nghiền — thuộc phân nhóm 0905.20'. Đủ 2/2 dòng biểu thuế. Đúng."
+    }
+  ]
+}

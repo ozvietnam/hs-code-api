@@ -1,0 +1,73 @@
+{
+ "nhom": "1004",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-26T21:40:00+07:00",
+ "soat": 12,
+ "giu": 10,
+ "sua": 0,
+ "xoa": 2,
+ "phamViSoat": "Toàn bộ 12 mục đã soi của bản nháp gốc tmp/so-tay/raw-backup-lo052/1004.json (5 mục trong 5 khối soát phamVi/boPhan/dieuKienVao/loaiTru/phanBiet + các mục tieuChi6/dong8/cay có rủi ro sai nghĩa đã soi thêm), đọc cùng tmp/so-tay/nguon/1004.txt. Mọi câu trích MỚI cắt từ tệp nguồn bằng neo ASCII rồi tự kiểm byte-exact; mọi văn bản tự viết được gác soát từ (mọi từ phải có trong nguồn) để bắt chữ méo.",
+ "ghiChu": "Vòng soát TRỌN (không mẫu). Em phục hồi baseline = bản nháp gốc đã commit 178acda, đọc lại từng mục cùng nguồn, và BÁC một số kết luận của phiên soát trước (đã sửa 13 mục trong tmp/so-tay/raw nhưng chưa ghi review/): (1) khôi phục loaiTru \"gia vị và bột canh hỗn hợp → 21.03\" và \"hỗn hợp không xác định được đặc tính cơ bản → 21.06\" ở 0909/0910 — lý do \"nguồn tự mâu thuẫn 21.03/21.06\" của phiên trước SAI: hai câu nói về hai đối tượng khác nhau (hỗn hợp CÓ PHA THÊM chất khác vs hỗn hợp CÓ CHỨA cây/hạt/quả từ Chương khác); (2) BÁC cách \"sửa\" làm MẤT điều kiện \"khác nhau\" ở loaiTru/phanBiet về hỗn hợp của 0909 — em sửa giữ CẢ HAI (giữ \"khác nhau\" + thêm dải 09.04-09.10); (3) ĐỒNG Ý xoá 6 mục loaiTru/phanBiet trỏ 11.04 ở 1001/1002/1004 — lý do \"11.04 chỉ là VÍ DỤ\" ĐÚNG, em xoá theo. Xem `lyDo` từng mục.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn trong [nhom1004.nhom] (\"Nhóm này bao gồm hạt yến mạch có vỏ cũng như các hạt về bản chất tự nhiên không có trấu hoặc vỏ, miễn là chưa qua bất kỳ một quá trình chế biến nào trừ đập hay sàng sẩy.\") — đây là câu PHẠM VI THẬT của nhóm (có mệnh đề \"bao gồm\"), `text` bám đúng câu. GIỮ."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải 1(A) chương 10 — câu ràng buộc phủ cả nhóm 1004. GIỮ."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nguồn có mệnh đề ràng buộc \"miễn là chưa qua bất kỳ một quá trình chế biến nào trừ đập hay sàng sẩy\", phủ CẢ nhóm, có đặc tính trạng thái → hợp lệ theo luật \"bao gồm + đặc tính vật chất phủ cả nhóm\" (đối chiếu lô 051 thêm 2 mục cùng dạng). GIỮ."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "xoa",
+   "lyDo": "SAI ĐÍCH — luật 3: đích 11.04 chỉ là VÍ DỤ trong câu nguồn chương 10 (cùng câu với 1001/1002): \"…đã được xát vỏ hoặc sơ chế theo các cách khác, ví dụ, như được mô tả tại nhóm 11.04 (xem Chú giải tương ứng)\". Quy tắc thật là \"không thuộc Chương 10\", câu còn dẫn \"xem Chú giải tương ứng\"; ghi \"1104\" biến ví dụ thành quy tắc (yến mạch rang → 1106, malt → 1107…). XOÁ, ghi mô tả PR."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "xoa",
+   "lyDo": "Cùng lý do loaiTru[0]: nhánh Có = 11.04 chỉ là ví dụ minh hoạ trong câu nguồn. XOÁ, ghi mô tả PR."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Để null — nguồn 1004 không có quy tắc bộ phận. GIỮ."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích là NGUYÊN VĂN dòng nguồn [wco.100410] (đã kiểm bằng máy: mảnh trích nằm trong đúng dòng). Tên tiêu chí dịch đúng tên phân nhóm WCO 100410 và đối chiếu tên nhóm trong cây HS; số phải có trong trích ✓ (máy đã kiểm). GIỮ."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích là NGUYÊN VĂN dòng nguồn [wco.100490] (đã kiểm bằng máy: mảnh trích nằm trong đúng dòng). Tên tiêu chí dịch đúng tên phân nhóm WCO 100490 và đối chiếu tên nhóm trong cây HS; số phải có trong trích ✓ (máy đã kiểm). GIỮ."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích là NGUYÊN VĂN trong khối [nhom1004.nhom] (đã kiểm bằng máy: mảnh trích nằm trong đúng dòng). Tiêu chí phủ đúng phân nhóm 100410 của cây; KHÔNG lấy từ dòng biểu thuế ✓. GIỮ."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích là NGUYÊN VĂN trong khối [nhom1004.nhom] (đã kiểm bằng máy: mảnh trích nằm trong đúng dòng). Tiêu chí phủ đúng phân nhóm 100490 của cây; KHÔNG lấy từ dòng biểu thuế ✓. GIỮ."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 10041000 \"Hạt giống\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 10049000 \"Loại khác\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  }
+ ]
+}
