@@ -154,5 +154,25 @@ lượt 2 dừng giữa chừng cho tiết kiệm quota vì lượt 1 đã fail 
 2. Song song hoá `gather()` (PR nhỏ, có test).
 3. Chuyển vision sang M3 (PR nhỏ, có test) — cắt nốt khoá Gemini trả phí.
 
+## 6. Trạng thái 26/10/2026 — bước 3 + 4 bật MẶC ĐỊNH (CEO: "bật đi xem hiệu quả thế nào")
+
+Nhánh `perf/gon-dau-ra-cat-vong-sua` (`lib/engine-loop.js`, mục TỐI ƯU). Không đổi mẫu (MiniMax), không đụng thinking (§2c).
+- **`HS_GON_DAU_RA`** (trống = bật): khối "GỌN ĐẦU RA" nối sau prompt R1/R2 — trần số mục/ký tự đúng bằng phần code ĐỌC
+  (bảng `TRAN`, mỗi số dẫn tới dòng `slice`/`clip` tương ứng; test khoá hai bên khớp nhau), JSON một dòng, không chép lại hồ
+  sơ, giữ nguyên yêu cầu nguồn/trích. `maxTokens` R1 12.000 → **6.000**, R2 20.000 → **10.000** (tính cả `<think>` — chỉ chặn
+  đuôi; lý do từng số ở chú thích `R1_MAX_TOKENS_GON`); `R1_MAX_TOKENS`/`GIR_MAX_TOKENS` vẫn ghi đè. JSON cụt / mảnh vụn vớt từ
+  `<think>` (thiếu `product`/`hypotheses`, hoặc thiếu `decision`) → lưới "tắt suy nghĩ" sẵn có, không chạy trên mảnh vụn.
+- **`HS_MAX_VONG_SUA`** (trống = **1**): tối đa 1 vòng sửa THEO LÝ DO BỊ CHẶN (lượt giải trình sổ tay — tối đa 1 — không tính);
+  chạm trần → đáp án cuối + cờ như cũ (NEEDS_EXPERT/GATE_BLOCKED). Cùng công tắc: **NHOM_CHUA_KIEM tất định** — máy gom chú
+  giải nhóm rồi chạy lại MỌI chốt chặn trên cùng đáp án; nhận không cần vòng AI chỉ khi nhóm có sổ tay + mã 8 số khớp tờ khai
+  Oz (≥ 75%) hoặc bảng quyết định đã duyệt + không cảnh báo phân nhóm (ghi `engine.gates[].tatDinh` + `antiPatternWarnings`);
+  sổ tay nghi → gộp vào lượt giải trình (một vòng thay hai); còn lại → vòng AI như cũ.
+- **Tắt khẩn:** `HS_GON_DAU_RA=off HS_MAX_VONG_SUA=off` → prompt + luồng trùng từng byte bản bbc85f6
+  (`scripts/test-engine-loop-gon.mjs` so với golden master `tests/fixtures/engine-loop-goc/`). `HS_MAX_VONG_SUA=0` là trần
+  0 vòng sửa, KHÔNG phải công tắc tắt.
+- **Đo (chưa đo bằng AI thật):** `scripts/bench-classify-llm.mjs` nay ghi token vào/ra từng bước (withUsage), số lượt chạm trần
+  maxTokens, lượt lùi, cổng chặn từng vòng, bước tất định, `engine.toiUu` (chống đo nhầm nhánh) và p50/p90 ĐỘ TRỄ TỪNG MÓN.
+  Hai nhánh A (`off`/`off`) và B (mặc định) × 40 mẫu vàng, cùng container; cổng nghiệm thu như §4.
+
 Nguồn tham khảo: tài liệu nền tảng MiniMax — platform.minimax.io (API Models, subscribe/coding-plan);
 số đo trong tài liệu này là probe trực tiếp bằng key prod ngày 14/10/2026.
