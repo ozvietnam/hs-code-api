@@ -5,7 +5,7 @@
 
 # SOẠN lô 057 — phiên `dev-zcode-mm` (26/10/2026)
 
-- **Nhánh:** `so-tay/lo-057` (worktree `hs-code-api-wt-st-lo57`) · **Nhóm:** `1212 1213 1214 1301 1302 1401`
+- **Nhánh:** `so-tay/lo-057` (worktree `hs-code-api-wt-st-lo57`) · **PR #473** — **KHÔNG merge** · **Nhóm:** `1212 1213 1214 1301 1302 1401`
 - **Nhóm của lô lấy theo `docs/giao-viec/so-tay-lo.csv` dòng 057** (`1212 1213 1214 1301 1302 1401`, 49 888 ký tự nguồn).
   **Lệnh mẫu trong `brief-st-lo057.md` SAI** — dòng 6 ghi `--nhom=7615,9609,3215,6306,6804,7412` (nhóm của **lô 001**);
   đã theo CSV theo luật [[so-tay-lo-quy-trinh]] (lệch lần thứ 7 với cùng một kiểu copy-paste).
