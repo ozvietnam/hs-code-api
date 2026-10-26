@@ -6003,3 +6003,9 @@ node scripts/check-cay.mjs --nhom=0811,0812,0813,0814,0901,0902 --chi-tiet
   chủ yếu là tên gọi mặt hàng ở vế "không" của câu hỏi phân biệt) — **giữ nguyên**, đúng cách lô 054
   (`1104.phanBiet` cũng vậy: *"ngũ cốc đã qua xay xát"* không nằm trong câu trích *"Phần cặn còn lại…"*).
   ⇒ **LỖI THẬT = 0** sau khi sửa.
+
+### PR — lô 058
+
+- **PR #474** (https://github.com/ozvietnam/hs-code-api/pull/474) — **KHÔNG merge** (chờ soát độc lập mục 4).
+- `docs/giao-viec/so-tay-lo.csv` dòng 058: `pr=474`; `trang_thai` giữ `dang-lam` (PR chưa merge),
+  `nguoi_lam=dev-zcode-mm`. Người gộp đặt `trang_thai=xong` khi merge.
