@@ -1,0 +1,156 @@
+{
+ "nhom": "1004",
+ "phamVi": {
+  "text": "Hạt yến mạch có vỏ cũng như các hạt về bản chất tự nhiên không có trấu hoặc vỏ, miễn là chưa qua bất kỳ một quá trình chế biến nào trừ đập hay sàng sẩy.",
+  "nguon": "nhom1004.nhom",
+  "trich": "Nhóm này bao gồm hạt yến mạch có vỏ cũng như các hạt về bản chất tự nhiên không có trấu hoặc vỏ, miễn là chưa qua bất kỳ một quá trình chế biến nào trừ đập hay sàng sẩy.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_hat_o_dang_hat_con_hoac_khong_con_o_tren_bong_hoac_tren_than_cay",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch10.chuong",
+   "trich": "(A) Các sản phẩm kể tên trong các nhóm của Chương này chỉ được phân loại trong các nhóm đó khi ở dạng hạt, còn hoặc không còn ở trên bông hay trên thân cây.",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "chua_qua_qua_trinh_che_bien_nao_tru_dap_hoac_sang_say",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom1004.nhom",
+   "trich": "Nhóm này bao gồm hạt yến mạch có vỏ cũng như các hạt về bản chất tự nhiên không có trấu hoặc vỏ, miễn là chưa qua bất kỳ một quá trình chế biến nào trừ đập hay sàng sẩy.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "100410",
+   "fact": "la_yen_mach_hat_giong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.100410",
+   "trich": "100410 Cereals; oats, seeds",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "100490",
+   "fact": "la_yen_mach_khac_hat_giong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.100490",
+   "trich": "100490 Cereals; oats, other than seed",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "100410",
+   "fact": "la_hat_giong_la_yen_mach_duoc_danh_gia_de_gieo_trong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom1004.nhom",
+   "trich": "Phân nhóm 1004.10 Theo mục đích của phân nhóm 1004.10, thuật ngữ “hạt giống” chỉ bao gồm yến mạch được các cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "100490",
+   "fact": "chua_qua_qua_trinh_che_bien_nao_tru_dap_hoac_sang_say",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom1004.nhom",
+   "trich": "Nhóm này bao gồm hạt yến mạch có vỏ cũng như các hạt về bản chất tự nhiên không có trấu hoặc vỏ, miễn là chưa qua bất kỳ một quá trình chế biến nào trừ đập hay sàng sẩy.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "10041000",
+   "dieuKien": "Hạt giống — thuộc phân nhóm 1004.10 (tên WCO 100410)",
+   "nguon": "tax.10041000",
+   "trich": "10041000 - Hạt giống",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "10049000",
+   "dieuKien": "Loại khác: phần còn lại của 1004.90 (tên WCO 100490)",
+   "nguon": "wco.100490",
+   "trich": "100490 Cereals; oats, other than seed",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "1004",
+    "truAnhEm": [
+     "10041000"
+    ],
+    "toTienCoTen": "1004",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "1004",
+    "cap": 4,
+    "cha": "10",
+    "tenVi": "Yến mạch (+).",
+    "tenEn": "Oats",
+    "suyRa": false
+   },
+   {
+    "id": "10041000",
+    "cap": 8,
+    "cha": "1004",
+    "tenVi": "Hạt giống",
+    "tenEn": "Cereals; oats, seeds",
+    "suyRa": false,
+    "laPhanNhom": "100410"
+   },
+   {
+    "id": "10049000",
+    "cap": 8,
+    "cha": "1004",
+    "tenVi": "Loại khác",
+    "tenEn": "Cereals; oats, other than seed",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "100490"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch10.chuong",
+  "nhom1004.nhom",
+  "tax.10041000",
+  "wco.100410",
+  "wco.100490"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-26T14:33:27.867Z",
+  "ms": 0
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
