@@ -1,0 +1,103 @@
+{
+  "nhom": "1102",
+  "nguoiSoat": "claude-soat-doc-lap-lo053",
+  "luc": "2026-10-26T23:35:00+07:00",
+  "phamViSoat": "Toàn bộ 16 mục của bản nháp lô 053 cho nhóm 1102 (1 phamVi + 4 dieuKienVao + 3 loaiTru + 2 phanBiet + 2 tieuChi6 + 4 dong8), đọc cùng tmp/so-tay/nguon/1102.txt (nhom1102.nhom 5 đoạn, ch11.chuong, phan11.phan, wco.110220/110290, tax.11022000/11029010/11029020/11029090). Đối chiếu TỪNG câu trích với câu nguồn nguyên văn, không tin máy kiểm.",
+  "soat": 16,
+  "giu": 13,
+  "sua": 3,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 1102 — 16/16 mục đã đọc cùng nguồn. SỬA 3, GIỮ 13, XOÁ 0. (a) SỬA `loaiTru[0].dieuKien`: bản nháp viết điều kiện theo kiểu phủ định kép — 'Không có tỷ lệ phần trăm lọt qua sàng bằng lưới kim loại **không thấp hơn** tỷ lệ ghi cho từng loại ngũ cốc'. Runtime render thành câu hỏi yes/no: 'Hàng có thuộc diện \"Không có tỷ lệ… không thấp hơn…\" không?' — đọc gần như nghĩa ngược, và bị cắt ở trần 55 ký tự đúng giữa chỗ khó hiểu. Đã viết thẳng theo nghĩa đảo của nguồn: tỷ lệ lọt qua sàng THẤP HƠN tỷ lệ ghi cho từng loại ngũ cốc (nguồn: '…nếu có tỷ lệ phần trăm lọt qua sàng… **không thấp hơn** tỷ lệ ghi cho từng loại ngũ cốc… **Các trường hợp khác** sẽ được xếp vào nhóm 11.03 hoặc 11.04.'). (b) SỬA `phanBiet[0]`: cùng lỗi phủ định kép ở câu hỏi, ĐỒNG THỜI nhánh 'không' chỉ trỏ 11.03 trong khi nguồn nói 'nhóm **11.03 hoặc 11.04**' — đúng lỗi 'một nhánh của A hoặc B bị chọn làm đích duy nhất' mà máy KHÔNG bắt được. Đã sửa câu hỏi cho dễ hiểu và đổi `neuKhong` thành '1103|1104' (danh sách đích, đúng mẫu đã gộp trong kho: 0106 '0301|0306|0307|0308', 0406 '04062010|04062090'…). (c) SỬA `phanBiet[1]`: cùng lỗi nhánh cacao như 1101 — nguồn CHIA NHÁNH theo hàm lượng cacao ('nhóm 18.06 nếu… từ 40%… **hoặc nếu dưới 40% thì thuộc nhóm 19.01**') nhưng bản nháp để `neuCo`='1806' ⇒ bột trộn cacao dưới 40% bị kéo nhầm sang 18.06. Đã đổi `neuCo` thành '1806|1901'; phần phân biệt theo % do `loaiTru[1]` (≥40% → 18.06) và `loaiTru[2]` (<40% → 19.01) cung cấp. (d) GIỮ `dieuKienVao[3]` `khong_phai_bot_qua_cong_doan_che_bien_them_...`: nguồn 'Các loại bột đã qua các công đoạn chế biến thêm… bị loại trừ (**thường được phân loại vào nhóm 19.01**)' — KHÔNG tạo `loaiTru` cho nhánh 19.01 là ĐÚNG (máy loại `loai-tru-chi-la-thuong`). (e) GIỮ `tieuChi6[1]` `khong_phai_bot_mi_bot_meslin_hoac_bot_ngo`: wco.110290 ghi 'other than wheat, meslin, and maize (corn)' — 'other than' là loại trừ THẬT (không phải 'n.e.c.' nên không đảo chiều) ⇒ fact âm + `value:true` đúng luật nhà. (f) GHI NHẬN cho người duyệt (không sửa được ở bước soát): `phamVi.trich` (576 ký tự) và `dieuKienVao[1].trich` (450 ký tự) vượt trần lược đồ 300 nhưng là CÂU NGUỒN LIỀN MẠCH, cắt bớt sẽ mất một vế điều kiện ⇒ giữ, không có ngoại lệ nào bị giấu. `loaiTru[0].dieuKien` sau khi sửa dài 69 ký tự > trần clip 55 ⇒ bị cắt đuôi, nhưng phần còn lại ('Tỷ lệ phần trăm lọt qua sàng thấp hơn tỷ lệ ghi cho từng loại…') vẫn đọc được và kết luận (đích 11.03/11.04) render riêng.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn nhom1102.nhom (2 câu nguồn nối bằng '…'). `text` (193 ký tự ≤ trần clip 220) nêu đúng phạm vi nhóm: bột xay xát từ ngũ cốc Chương 10 TRỪ bột mì/bột meslin, và liệt kê các loại ngũ cốc nguồn; mọi từ trong `text` có trong câu trích. `trich` dài 576 ký tự nhưng là CÂU NGUỒN LIỀN MẠCH — cắt bớt sẽ mất một vế điều kiện ⇒ giữ."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn: 'Nhóm này bao gồm bột (nghĩa là bột có được từ quá trình xay xát các loại ngũ cốc thuộc Chương 10) trừ bột mì hoặc bột meslin.' Tiêu đề nhóm 1102 CHÍNH LÀ tiêu chí này ⇒ định nghĩa dùng làm tiêu đề là hợp lệ; fact dương + `value:true` đúng luật nhà."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn nhom1102.nhom: '…được phân loại vào nhóm này như các loại bột **nếu chúng** đáp ứng đầy đủ các tiêu chí về hàm lượng tinh bột và hàm lượng tro được quy định trong đoạn (A) của Chú giải 2… và phù hợp với tỷ lệ lọt qua sàng như quy định tại đoạn (B) của Chú giải 2 của Chương.' Đây là câu RÀNG BUỘC phủ cả nhóm, nêu đủ hai tiêu chí (đoạn A + đoạn B) ⇒ đúng chỗ đặt `dieuKienVao`."
+    },
+    {
+      "index": "dieuKienVao[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn: 'Nhóm này cũng loại trừ bột trộn với cacao (nhóm 18.06 nếu chứa hàm lượng cacao từ 40% trọng lượng đã khử chất béo trở lên, hoặc nếu dưới 40% thì thuộc nhóm 19.01).' — khoản loại trừ phủ cả nhóm; fact âm + `value:true` đúng luật nhà; số 40% có trong câu trích."
+    },
+    {
+      "index": "dieuKienVao[3]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn: 'Các loại bột đã qua các công đoạn chế biến thêm hoặc có pha thêm một số chất dùng để làm chế phẩm thực phẩm bị loại trừ (thường được phân loại vào nhóm 19.01).' Khoản loại trừ phủ cả nhóm ⇒ đúng chỗ `dieuKienVao`; bản nháp KHÔNG tạo `loaiTru` cho 19.01 là ĐÚNG vì câu nói 'thường được phân loại' (máy loại `loai-tru-chi-la-thuong`); thông tin không mất."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA điều kiện — bản nháp dùng PHỦ ĐỊNH KÉP ('Không có tỷ lệ… không thấp hơn…'). Runtime render thành câu hỏi yes/no 'Hàng có thuộc diện \"Không có tỷ lệ phần trăm lọt qua sàng bằng lưới kim loại không…\" không?' — gần như nghĩa ngược, và bị cắt ở trần 55 ký tự đúng giữa chỗ khó hiểu (bài học lô 038: không để clip cắt mất kết luận). Nguồn: '(B) … sẽ được xếp vào nhóm 11.01 hoặc 11.02 nếu có tỷ lệ phần trăm lọt qua sàng… **không thấp hơn** tỷ lệ ghi cho từng loại ngũ cốc… **Các trường hợp khác** sẽ được xếp vào nhóm 11.03 hoặc 11.04.' Đã viết thẳng nghĩa đảo: tỷ lệ lọt qua sàng THẤP HƠN tỷ lệ ghi cho từng loại ngũ cốc. `trich` giữ nguyên (cả hai mã 11.03 và 11.04 nằm trong câu trích nên `sangNhom`='1103|1104' đạt luật mục 3).",
+      "sua": {
+        "dieuKien": "Tỷ lệ phần trăm lọt qua sàng thấp hơn tỷ lệ ghi cho từng loại ngũ cốc"
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Cùng câu nguồn cacao: nhánh hàm lượng cacao từ 40% trọng lượng đã khử chất béo trở lên → 18.06; có DẤU HIỆU loại trừ ('loại trừ') và nêu đích danh trong câu trích ⇒ đúng luật mục 3; số 40% có trong trích. GHI NHẬN: dài 82 ký tự > trần clip 55 ⇒ cắt đuôi nhưng kết luận (đích 18.06) không mất."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "Cùng câu nguồn cacao: nhánh dưới 40% → 19.01; nêu đích danh trong câu trích ⇒ đúng luật mục 3; số 40% có trong trích."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA câu hỏi (bỏ phủ định kép) và SỬA nhánh đích. Nguồn: '(B) … nếu có tỷ lệ phần trăm lọt qua sàng… không thấp hơn tỷ lệ ghi cho từng loại ngũ cốc… **Các trường hợp khác sẽ được xếp vào nhóm 11.03 hoặc 11.04.**' (1) Câu hỏi cũ 'Bột có tỷ lệ phần trăm lọt qua sàng không thấp hơn tỷ lệ ghi cho từng loại ngũ cốc không?' là phủ định kép, dễ đọc ngược; đã viết lại thành 'Tỷ lệ phần trăm lọt qua sàng có thấp hơn tỷ lệ ghi cho từng loại ngũ cốc không?' (81 ký tự ≤ trần clip 110), bỏ luôn chữ 'của bột' vì câu trích (chú giải Chương) gọi chung là 'các sản phẩm' chứ không gọi tên 'bột'. (2) Nhánh 'không' cũ chỉ trỏ 11.03, bỏ mất 11.04 — đúng lỗi 'một nhánh của A hoặc B bị chọn làm đích duy nhất' mà máy KHÔNG bắt được; đã đổi `neuKhong` thành '1103|1104' (danh sách đích, đúng mẫu đã gộp trong kho: 0106 '0301|0306|0307|0308'…). Cả 11.03 và 11.04 đều nằm trong câu trích nên đạt luật mục 4. `neuCo`='1102' giữ nguyên ('có' = đạt tỷ lệ lọt qua sàng → ở lại nhóm 11.02 theo nguồn 'sẽ được xếp vào nhóm 11.01 hoặc 11.02'). `hoi` không nhắc mã phân nhóm, không nhắc WCO ⇒ vẫn đạt luật máy.",
+      "sua": {
+        "hoi": "Tỷ lệ phần trăm lọt qua sàng có thấp hơn tỷ lệ ghi cho từng loại ngũ cốc không?",
+        "neuKhong": "1103|1104"
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA nhánh đích — 'một nhánh của A hoặc B bị chọn làm đích duy nhất' (lỗi người soát phải bắt, máy KHÔNG bắt được). Nguồn: 'Nhóm này cũng loại trừ bột trộn với cacao (nhóm 18.06 nếu chứa hàm lượng cacao từ 40% trọng lượng đã khử chất béo trở lên, **hoặc nếu dưới 40% thì thuộc nhóm 19.01**).' Bản nháp để `neuCo`='1806' ⇒ bột trộn cacao DƯỚI 40% bị kéo nhầm sang 18.06. Đã đổi `neuCo` thành '1806|1901' (danh sách đích, đúng mẫu đã gộp trong kho: 0402/0403 '1901|2106'…); cả 18.06 và 19.01 đều nằm trong câu trích nên đạt luật mục 4; phần phân biệt theo % do `loaiTru[1]` (≥40% → 18.06) và `loaiTru[2]` (<40% → 19.01) cung cấp. `hoi` và `neuKhong` giữ nguyên.",
+      "sua": {
+        "neuCo": "1806|1901"
+      }
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.110220: '110220 Cereal flour; of maize (corn)'. fact `la_bot_ngo` bám đúng; phân nhóm 110220 có thật trong cây 1102."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.110290: '110290 Cereal flours; other than wheat, meslin, and maize (corn)'. 'other than' là loại trừ THẬT (khác với 'n.e.c.' — xem lỗi 1008 tieuChi6[7]) ⇒ fact âm `khong_phai_bot_mi_bot_meslin_hoac_bot_ngo` + `value:true` đúng luật nhà; phân nhóm 110290 có thật."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.11022000: '11022000 - Bột ngô'; văn phong đã được duyệt; máy tự suy `loaiKhac=false`."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.11029010: '11029010 - - Bột gạo'; `dieuKien` bám đúng tên dòng."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.11029020: '11029020 - - Bột lúa mạch đen'; `dieuKien` bám đúng tên dòng."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.11029090: '11029090 - - Loại khác'; máy tự suy `loaiKhac=true`."
+    }
+  ]
+}

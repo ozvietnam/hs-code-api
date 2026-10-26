@@ -1,0 +1,110 @@
+{
+  "nhom": "1007",
+  "nguoiSoat": "claude-soat-doc-lap-lo053",
+  "luc": "2026-10-26T22:55:00+07:00",
+  "phamViSoat": "Toàn bộ 17 mục của bản nháp lô 053 cho nhóm 1007 (1 phamVi + 4 dieuKienVao + 4 loaiTru + 4 phanBiet + 2 tieuChi6 + 2 dong8), đọc cùng tmp/so-tay/nguon/1007.txt (nhom1007.nhom 4 đoạn, ch10.chuong, phan10.phan, wco.100710/100790, tax.10071000/10079000). Đối chiếu TỪNG câu trích với câu nguồn nguyên văn, không tin máy kiểm.",
+  "soat": 17,
+  "giu": 10,
+  "sua": 4,
+  "xoa": 3,
+  "ghiChu": "SOÁT ĐỘC LẬP 1007 — 17/17 mục đã đọc cùng nguồn. XOÁ 3, SỬA 4, GIỮ 10. Đây là nhóm có lỗi NGHIÊM TRỌNG nhất của lô 053: bản nháp đã MÂU THUẪN CHÍNH VỚI CHÍNH NÓ. (a) Câu nguồn then chốt: 'Nhóm này không bao gồm lúa miến dùng làm thức ăn cho gia súc… hoặc các loại miến ngọt… **Nếu là hạt giống, các sản phẩm được phân loại vào nhóm 12.09.** **Trong các trường hợp khác**, lúa miến dùng làm thức ăn cho gia súc và lúa miến cỏ được phân loại vào nhóm 12.14 và lúa miến ngọt vào nhóm 12.12.' — 'các sản phẩm' ở câu 'Nếu là hạt giống' có tiền điểm là CÁC LOẠI BỊ LOẠI TRỪ nêu ở câu trước, và 'Trong các trường hợp khác' chính là nhánh đối lập với nhánh 'hạt giống'. ⇒ Hạt giống CỦA CÁC LOẠI BỊ LOẠI TRỪ đi 12.09; còn lại thì 12.14/12.12. (b) XOÁ `dieuKienVao[2]` (fact `khong_phai_hat_giong = true`): mục này khẳng định nhóm 1007 KHÔNG chứa hạt giống — MÂU THUẪN TRỰC TIẾP với chính sổ tay của nhóm: `dong8[0]` là '10071000 - Hạt giống' và `tieuChi6[0]` (hs6 100710) là 'được các cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng'. Nếu giữ, mô hình sẽ loại hạt giống lúa miến 1007.10 (dòng đúng nhất của nhóm) ra khỏi nhóm. Máy KHÔNG bắt được vì câu trích vẫn nguyên văn. (c) XOÁ `loaiTru[2]` (điều kiện 'Lúa miến là hạt giống' → 12.09): cùng lý do — điều kiện bị viết quá rộng, đọc thành MỌI lúa miến hạt giống đều sang 12.09. (d) XOÁ `phanBiet[2]` ('Hàng là lúa miến là hạt giống?' → có 12.09 / không 1007): cùng lý do và còn nguy hiểm hơn — người khai trả lời 'Có, là hạt giống' cho lúa miến ăn thường 1007.10 sẽ bị dẫn sang 12.09. (e) SỬA 4 mục `loaiTru[0]`, `loaiTru[1]`, `phanBiet[0]`, `phanBiet[1]`: bản nháp điều kiện 'Lúa miến dùng làm thức ăn cho gia súc và lúa miến cỏ' → 12.14 và 'Lúa miến ngọt' → 12.12, trong khi CÂU TRÍCH CỦA CHÍNH MỤC ĐÓ có nhánh 'Nếu là hạt giống… 12.09' ⇒ điều kiện thiếu ngoại lệ sẽ dẫn lúa miến thức ăn gia súc dạng hạt giống nhầm sang 12.14/12.12. Đã thêm '(không phải hạt giống)' vào điều kiện (đặt ngay sau tên để còn sống sót khi runtime cắt ở trần 55 ký tự). (f) GIỮ `dieuKienVao[0]` (`khong_phai_lua_mien_thuc_an_cho_gia_suc_hoac_lua_mien_co_hoac_lua_mien_ngot`): fact nêu đủ CẢ BA nhánh bị loại trừ, câu trích giữ nguyên cả 3 câu nguồn nên nhánh 'hạt giống → 12.09' VẪN HIỆN DIỆN trong trích ⇒ không có ngoại lệ nào bị giấu. (g) GHI NHẬN cho người duyệt (không sửa được ở bước soát, KHÔNG mã hoá được): nhánh 'hạt giống → 12.09' không còn mục nào trỏ tới sau khi xoá 3 mục nêu trên. Không thể mã hoá lại vì (i) điều kiện phải gộp 3 loại bị loại trừ và sẽ vượt trần clip 55 của runtime cắt mất đuôi, (ii) câu gốc dùng vị từ 'các sản phẩm' không có tiền điểm rõ ràng khi tách riêng. Theo nguyên tắc 'mục mờ má → XOÁ' và 'Trích sai điều luật tế hơn không trích', nhánh này được BỎ có chủ đích thay vì đoán. Ngoài ra: `dong8[0]` dài 123 ký tự > trần clip 90 ⇒ bị cắt đuôi nhưng phần đầu (tên dòng + đặc trưng) còn nguyên; bản nháp CHƯA đưa khoản loại trừ chung của Chương 10 (ch10.chuong mục 1(B)) vào `dieuKienVao` — câu có ngoại lệ riêng nên để người duyệt chốt.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn nhom1007.nhom: 'Nhóm này chỉ bao gồm những loại lúa miến mà hạt có thể được sử dụng làm ngũ cốc dùng làm thức ăn cho người. Cũng được phân loại vào nhóm này là các loại lúa miến như Caffrorum, cernuum (kê trắng), durra (kê nâu) và nervosum (cao lương).' `text` nêu đúng phạm vi nhóm và danh sách 4 loại được nêu; mọi từ trong `text` có trong trích."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Khoản loại trừ PHỦ CẢ nhóm: 'Nhóm này không bao gồm lúa miến dùng làm thức ăn cho gia súc… các loại miến cỏ… hoặc các loại miến ngọt…'. fact nêu đủ 3 nhánh bằng 'hoặc' nên là mệnh đề phủ định đúng (không phải nhánh 'A hoặc B' bị tách thành AND). Câu trích giữ nguyên 3 câu nguồn (492 ký tự) ⇒ nhánh 'Nếu là hạt giống… 12.09' và nhánh 'Trong các trường hợp khác… 12.14/12.12' vẫn hiện diện, không có ngoại lệ nào bị giấu. GHI NHẬN: 492 ký tự > trần lược đồ 300 (máy chỉ chặn >600) — giữ có chủ đích vì cắt bớt sẽ mất ngoại lệ."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn: 'Nhóm này cũng không bao gồm loại miến \"chổi\" (Sorghum vulgare var. technicum) được phân loại vào nhóm 14.04.' — khoản loại trừ phủ cả nhóm, fact âm `khong_phai_lua_mien_choi` + `value:true` đúng luật nhà."
+    },
+    {
+      "index": "dieuKienVao[2]",
+      "hanhDong": "xoa",
+      "lyDo": "XOÁ — mục khẳng định điều kiện vào nhóm SAI và MÂU THUẪN CHÍNH NÓ (máy KHÔNG bắt được: câu trích vẫn nguyên văn, và câu này không dính mẫu `dieu-kien-chi-cho-phep` nên cũng không bị loại). Mục đặt `khong_phai_hat_giong = true` ⇒ nhóm 1007 không chứa hạt giống. Nhưng (1) `dong8[0]` của chính nhóm này là '10071000 - Hạt giống' và `tieuChi6[0]` (hs6 100710) là 'được các cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng' ⇒ hạt giống CÓ trong 1007.10; (2) câu trích 'Nếu là hạt giống, các sản phẩm được phân loại vào nhóm 12.09' có tiền điểm là CÁC LOẠI BỊ LOẠI TRỪ ở câu trước, không phải mọi lúa miến của nhóm; (3) câu kế tiếp 'Trong các trường hợp khác' chứng minh nhánh 'hạt giống' là một TRƯỜNG HỢP RIÊNG của sản phẩm bị loại trừ, không phải điều kiện vào nhóm. Giữ mục này sẽ khiến mô hình loại hạt giống lúa miến 1007.10 ra khỏi nhóm. Theo nguyên tắc 'mục mờ má → XOÁ' và 'Trích sai điều luật tệ hơn không trích' ⇒ XOÁ. Thông tin không mất: nhánh 'hạt giống → 12.09' vẫn nằm trong trích của `dieuKienVao[0]`, `loaiTru[0..1]`, `phanBiet[0..1]`; xem ghiChu."
+    },
+    {
+      "index": "dieuKienVao[3]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn trong ch10.chuong: '1. (A) Các sản phẩm kể tên trong các nhóm của Chương này chỉ được phân loại trong các nhóm đó khi ở dạng hạt, còn hoặc không còn ở trên bông hay trên thân cây.' Điều kiện ràng buộc MỌI nhóm của Chương 10 nên phủ trọn nhóm 1007."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA điều kiện — thiếu ngoại lệ ngay trong CHÍNH câu trích của mục (lỗi 'mất ngoại lệ ngay sau câu trích', máy KHÔNG bắt được). Câu trích có 'Nếu là hạt giống, các sản phẩm được phân loại vào nhóm 12.09.' và chỉ 'Trong các trường hợp khác' mới dẫn tới 12.14/12.12. Điều kiện cũ 'Lúa miến dùng làm thức ăn cho gia súc và lúa miến cỏ' (không có ngoại lệ hạt giống) sẽ dẫn lúa miến thức ăn gia súc dạng hạt giống nhầm sang 12.14. Đã thêm '(không phải hạt giống)' ngay sau 'Lúa miến' để đoạn này còn sống sót khi runtime cắt ở trần 55 ký tự; đích danh 12.14 vẫn nằm trong câu trích nên đạt luật mục 3.",
+      "sua": {
+        "dieuKien": "Lúa miến (không phải hạt giống) dùng làm thức ăn cho gia súc và lúa miến cỏ"
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA điều kiện — cùng lý do thiếu ngoại lệ nhánh 'hạt giống' (nhánh 12.09) trong câu trích của mục. Điều kiện cũ 'Lúa miến ngọt' bao trùm cả lúa miến ngọt dạng hạt giống, vốn theo nguồn đi 12.09 chứ không phải 12.12. Đã thêm '(không phải hạt giống)'; đích danh 12.12 vẫn nằm trong câu trích.",
+      "sua": {
+        "dieuKien": "Lúa miến ngọt (không phải hạt giống)"
+      }
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "xoa",
+      "lyDo": "XOÁ — điều kiện 'Lúa miến là hạt giống' viết QUÁ RỘNG so với câu nguồn và MÂU THUẪN với dòng 1007.10 của chính nhóm (xem lyDo của `dieuKienVao[2]`). Câu nguồn 'Nếu là hạt giống, các sản phẩm được phân loại vào nhóm 12.09' chỉ nói về 'các sản phẩm' = các loại lúa miến vừa bị loại trừ ở câu trước (thức ăn gia súc / miến cỏ / miến ngọt); đọc thành 'mọi lúa miến hạt giống' thì phủ định cả dòng 1007.10 'Hạt giống' của nhóm. Không mã hoá lại được (điều kiện phải gộp 3 loại bị loại trừ sẽ vượt trần clip 55 của runtime và cắt mất đuôi). Theo 'mục mờ má → XOÁ' ⇒ XOÁ; xem ghiChu."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn: 'Nhóm này cũng không bao gồm loại miến \"chổi\" (Sorghum vulgare var. technicum) được phân loại vào nhóm 14.04.' Có DẤU HIỆU loại trừ rõ và nêu ĐÍCH DANH 14.04 trong chính câu trích ⇒ đúng luật mục 3."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA câu hỏi — bổ sung ngoại lệ nằm trong chính câu trích của mục ('Nếu là hạt giống… 12.09'), nếu không câu hỏi sẽ dẫn lúa miến thức ăn gia súc dạng hạt giống sang 12.14. Câu hỏi mới 86 ký tự ≤ trần clip 110 của runtime; chiều Có/Không giữ nguyên ('có' → 12.14, đích có trong trích; 'không' → 1007 = chính nhóm, mẫu đã được duyệt trong kho); `hoi` không nhắc mã phân nhóm hay WCO nên vẫn đạt luật máy.",
+      "sua": {
+        "hoi": "Hàng là lúa miến dùng làm thức ăn cho gia súc hoặc lúa miến cỏ (không phải hạt giống)?"
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA câu hỏi — cùng lý do thiếu ngoại lệ nhánh 'hạt giống' (12.09) trong câu trích của mục. Câu hỏi mới 45 ký tự; chiều Có/Không giữ nguyên ('có' → 12.12, 'không' → 1007); `hoi` không nhắc mã ⇒ đạt luật máy.",
+      "sua": {
+        "hoi": "Hàng là lúa miến ngọt (không phải hạt giống)?"
+      }
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "xoa",
+      "lyDo": "XOÁ — cùng lý do với `loaiTru[2]`/`dieuKienVao[2]`, và còn NGUY HIỂM HƠN: câu hỏi 'Hàng là lúa miến là hạt giống?' với nhánh 'có' → 12.09 sẽ kéo cả hạt giống lúa miến 1007.10 (dòng hạt giống ĐÚNG của nhóm) sang 12.09. Câu nguồn chỉ nói về 'các sản phẩm' bị loại trừ ở câu trước. Theo 'mục mờ má → XOÁ' ⇒ XOÁ; xem ghiChu."
+    },
+    {
+      "index": "phanBiet[3]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = loại miến 'chổi' → 14.04 (đích có trong câu trích); 'không' → 1007 (chính nhóm). `hoi` không nhắc mã phân nhóm, không nhắc WCO ⇒ đạt luật máy `hoi-nhac-ma-phan-nhom`."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn nhom1007.nhom: 'Phân nhóm 1007.10 Theo mục đích của phân nhóm 1007.10, thuật ngữ “hạt giống” chỉ bao gồm lúa miến được các cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng.' fact `duoc_danh_gia_la_de_gieo_trong` bám đúng; phân nhóm 100710 có thật trong cây 1007."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.100790: '100790 Cereals; grain sorghum, other than seed'. 'other than seed' là loại trừ thật ⇒ fact âm `khong_phai_hat_giong` + `value:true` đúng luật nhà; phân nhóm 100790 có thật."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn nhom1007.nhom (câu chú giải phân nhóm 1007.10). `dieuKien` bám đúng từ nguồn. GHI NHẬN: dài 123 ký tự > trần clip 90 ⇒ bị cắt đuôi nhưng đầu câu (tên dòng + đặc trưng 'hạt giống') còn nguyên nên chưa mất kết luận."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.10079000: '10079000 - Loại khác'; văn phong đã được duyệt; máy tự suy `loaiKhac=true`."
+    }
+  ]
+}
