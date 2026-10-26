@@ -5871,3 +5871,135 @@ node scripts/check-cay.mjs --nhom=0811,0812,0813,0814,0901,0902 --chi-tiet
   người duyệt). Không merge.
 
 ---
+
+# SOẠN lô 058 — phiên `dev-zcode-mm` (26/10/2026)
+
+- **Nhánh:** `so-tay/lo-058` (worktree `hs-code-api-wt-st-lo58`) · **KHÔNG merge** — chờ người duyệt + soát độc lập.
+- **Nhóm của lô lấy theo `docs/giao-viec/so-tay-lo.csv` dòng 058** = `1404 1501 1502 1503 1504 1505`
+  (6 nhóm, 67 766 ký tự nguồn). **Lệnh mẫu trong `brief-st-lo058.md` SAI** — dòng 6 ghi
+  `--nhom=7615,9609,3215,6306,6804,7412` (đó là nhóm của **lô 001**); đã theo CSV theo
+  [[so-tay-lo-quy-trinh]] (lần thứ 9 dính cùng một kiểu copy-paste).
+- **Đọc TRƯỚC:** `docs/giao-viec/so-tay-giao-ngoai.md` (mục 2 + 11 luật mục 3) rồi
+  `tmp/so-tay/nguon/_he-thong.txt` (lược đồ + 9 luật bắt buộc); đọc TRỌN 6 tệp nguồn `1404..1505.txt`.
+
+## Các bước (đúng thứ tự)
+
+1. `node scripts/build-so-tay.mjs --nhom=1404,1501,1502,1503,1504,1505 --xuat-nguon=tmp/so-tay/nguon`
+   → 6 tệp nguồn + `_he-thong.txt`.
+2. Dựng cây (`lib/hs-tree.js`) + dòng biểu thuế (`data/tax.json`) để biết đủ dòng 8 số, phân nhóm 6 số
+   và nút nào còn trống tên. **Cả 6 nhóm: KHÔNG nút nào trống tên** (mọi nút 4/5/6/7/8 số đã có `tenVi`)
+   ⇒ `cay.tenDien` = rỗng ở cả 6 nhóm (không bịa tên).
+3. **Soạn `tmp/so-tay/draft/<nhom>.json`** (6 tệp) — câu trích gõ tay có thể méo dấu, nên dùng công cụ
+   `tmp/so-tay/fix-trich.mjs` (tạm, KHÔNG commit): nạp nguồn thật qua `lib/so-tay.js#sourcesFor`
+   (đúng nguồn máy kiểm dùng), rồi **tự thay mỗi đoạn trích bằng đoạn NGUYÊN VĂN của nguồn**
+   (khớp squash = bỏ dấu cách/dấu câu, hạ chữ thường — nên sửa được lỗi gõ dấu; nếu không khớp thì
+   BÁO để xoá mục, không đoán). Công cụ này sửa **4 đoạn** trong lô này — đủ để chứng minh việc gõ tay
+   tiếng Việt là nguồn lỗi thật.
+4. **Ba lớp kiểm** (chạy tới khi sạch):
+   - `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **110/110**;
+   - `node scripts/check-trich-nguyen-van.mjs tmp/so-tay/raw/*.json` (byte-exact) → **110 mục nguyên văn tuyệt đối**;
+   - `node scripts/audit-trich.mjs <nhom> raw` (in câu TRƯỚC/SAU mỗi đoạn trích) → soi tay **ngoại lệ bị nuốt
+     khi lược bằng "…"** (mục 3 giao việc).
+5. `node scripts/build-so-tay.mjs --nhom=1404,1501,1502,1503,1504,1505 --tu-tep=tmp/so-tay/raw --force
+   --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-058.json` → **110/110 (100 %)**, 0 nhóm lỗi.
+6. `npm run so-tay:check` → **482 nhóm, 13 544 mục, 0 mục không kiểm được nguồn**;
+   `node scripts/check-cay.mjs --nhom=1404,1501,1502,1503,1504,1505 --chi-tiet` → **6/6 nhóm đủ, 0 lỗi lệch cây, 0 cảnh báo**;
+   `npm test` → **ALL TESTS PASSED**; `git checkout -- data/legal-status-miss.jsonl` (npm test ghi thêm 1 dòng).
+7. `docs/giao-viec/so-tay-lo.csv` dòng 058 → `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm`.
+
+## Số mục THẬT theo từng nhóm (báo cáo `data/so-tay/bao-cao/lo-058.json`)
+
+| Nhóm | `phamVi` | `boPhan` | `dieuKienVao` | `loaiTru` | `phanBiet` | `tieuChi6` | `dong8` | `tenDien` | Tổng | Đạt |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1404 | 1 | 0 | 2 | 17 | 10 | 2 | 6 | 0 | 38 | 38/38 |
+| 1501 | 1 | 0 | 2 | 6 | 6 | 3 | 3 | 0 | 21 | 21/21 |
+| 1502 | 1 | 0 | 2 | 5 | 5 | 2 | 3 | 0 | 18 | 18/18 |
+| 1503 | 1 | 0 | 2 | 2 | 2 | 0 | 2 | 0 | 9 | 9/9 |
+| 1504 | 1 | 0 | 2 | 1 | 3 | 3 | 5 | 0 | 15 | 15/15 |
+| 1505 | 1 | 0 | 2 | 2 | 2 | 0 | 2 | 0 | 9 | 9/9 |
+| **Tổng** | **6** | **0** | **12** | **33** | **28** | **10** | **21** | **0** | **110** | **110/110 (100 %)** |
+
+- **XOÁ 0 · RỚT 0** — không mục nào bị máy loại. `check-so-tay --raw` xanh ngay từ đầu và
+  `check-trich-nguyen-van` xanh ⇒ nạp vào không mất mục nào.
+
+## Quyết định soạn (để người duyệt đọc lại)
+
+- **KHÔNG soạn `boPhan`** cho cả 6 nhóm: không có "phần ngang hàng" để mô tả. `phan15.phan` chỉ có tiêu đề
+  Phần (không có quy tắc bộ phận) ⇒ `boPhan` rỗng.
+- **`dieuKienVao` chỉ 12 mục, mỗi mục là câu RÀNG BUỘC phủ CẢ nhóm 4 số** (luật lô 030):
+  - 1404 — hàng là sản phẩm từ thực vật chưa được chi tiết/ghi ở nơi khác; **không phải** sợi gỗ hay
+    túm/búi đã làm sẵn dùng làm chổi/bàn chải (chú giải 3 của Chương 14);
+  - 1501 — **không phải** mỡ lợn không dính nạc/mỡ gia cầm chưa nấu chảy; **không phải** mỡ thu được từ
+    động vật trừ loại nêu trong nhóm;
+  - 1502 — hàng là mỡ ở bộ phận nội tạng và cơ của trâu bò/cừu/dê; **không phải** mỡ của loài ngựa;
+  - 1503 — hàng thu được bằng cách **ép** mỡ lá/mỡ khổ của lợn hoặc ép mỡ tallow; **không phải** sản phẩm
+    đã nhũ hoá/pha trộn/chế biến cách khác;
+  - 1504 — hàng là mỡ và dầu (và phần phân đoạn) từ cá hoặc động vật có vú ở biển; **không phải** loại đã
+    hydro hoá / este hoá liên hợp / tái este hoá / eledin hoá;
+  - 1505 — hàng là mỡ lông và chất béo thu được từ mỡ lông; **không phải** phế liệu của mỡ lông.
+- **`dieuKienVao` 1504 phải LƯỚT bớt "vẫn thuộc nhóm này"**: câu gốc là *"…vẫn thuộc nhóm này khi được tinh
+  chế, nhưng bị loại trừ nếu được hydro hoá…"* — máy loại `dieuKienVao` có câu CHO PHÉP (`CAU_CHO_PHEP`
+  khớp "vẫn thuộc nhóm"), nên mục này **lược bằng "…"** để chỉ giữ vế "…nhưng bị loại trừ nếu…".
+  Câu đầy đủ vẫn nằm ở `loaiTru[0]` và `phanBiet[0]` của 1504.
+- **`loaiTru` chỉ ghi khi câu trích NÊU ĐÍCH DANH số nhóm** (luật 3). 33 mục:
+  - 1404 → 3005, 5601, 0910, 3201, 3203, 4405, 4501, 5305, 1401, 5303, 5305, 5305, 9603, 0511, 1302, 1212, 2102;
+  - 1501 → 0209, 1503, 1502|1504|1506, 1506, 1517, 1517; 1502 → 1503, 1506, 1501|1504|1506, 1506, 1515;
+  - 1503 → 1516|1517|1518, 1517; 1504 → 1516; 1505 → 1522, 3003|3004.
+- **1404 có 3 mục cùng đích 5305** nhưng khác lý do (xơ dừa dùng để nhồi · cỏ alfa/cỏ giấy cho dệt may ·
+  cỏ giấy đã dát mỏng/chải như sợi dệt) — giữ cả 3 vì điều kiện loại trừ khác nhau.
+- **`phanBiet` = 1 câu hỏi cho mỗi cặp mã có trích trong nguồn**; `neuCo` = **vế đầu** của câu hỏi
+  (runtime in "có→neuCo / không→neuKhong" — bài học lô 027); `neuKhong` = chính nhóm đang soạn.
+- **`phanBiet` phải dùng mã 4 số (tiêu đề chương) hoặc 8 số (dòng biểu thuế)** — mã 6 số **bị máy loại**
+  (`ma-khong-co-that`, vì `validHeading` chỉ có 4 số và `validTax` chỉ có 8 số). Ở 1504, phân biệt
+  dầu gan cá (150410) với mỡ/dầu cá (150420) và động vật có vú ở biển (150430) vì vậy phải dùng
+  `15041020|15041090` / `15042010|15042090` / `15043000`.
+- **`dong8`**: dòng có tên → trích `tax.<8 số>`; dòng "Loại khác" → trích `wco.<6 số>` (biểu thuế chỉ gì
+  "- - - Loại khác"), theo cách lô 050/054. `loaiKhac` và `phamViLoaiKhac` do máy tự gắn.
+- **`tieuChi6` chỉ 10 mục** — chỉ nhóm nào có nút 6 số trong cây mới được (140420, 140490, 150110, 150120,
+  150190, 150210, 150290, 150410, 150420, 150430). **1503 và 1505 không có nút 6 số** ⇒ `tieuChi6` rỗng
+  (máy sẽ loại mọi mục `hs6` của 2 nhóm này: `hs6-khong-co-trong-cay`).
+- **`cay.tenDien` rỗng cả 6 nhóm** — không có nút nào bị lược tên.
+
+## Lỗi nguồn / giới hạn nguồn phát hiện (kệ sách — KHÔNG sửa trong sổ tay)
+
+1. **1505 — loại trừ có đích "thường thuộc nhóm 34.02" KHÔNG ghi được `loaiTru`**:
+   *"Cũng không thuộc nhóm này là các lanolin thay đổi về mặt hoá học đến mức làm mất tính chất cơ bản
+   của lanolin, ví dụ lanolin được ethoxylat hóa đến mức trở thành hoà tan trong nước (thường thuộc nhóm
+   34.02)."* — đích 34.02 **chỉ nằm trong vế "thường thuộc"** ⇒ máy loại (`loai-tru-chi-la-thuong`) và
+   luật 3 cũng không cho tính là loại trừ dứt khoát. **BỎ mục**, ghi ở đây.
+2. **1505 — loại trừ "các loại cồn đã xác định về mặt hóa học" chỉ nêu "Chương 29"** ⇒ không mã hoá
+   được (luật 3: "Chương N" không phải đích danh). **BỎ mục**.
+   Ngược lại, vế "những chế phẩm dựa trên lanolin … (nhóm 30.03 hoặc 30.04, hoặc Chương 33)" **có** mã
+   4 số ⇒ ghi `loaiTru` với `sangNhom: "3003|3004"`, và **lược vế "(thường thuộc Chương 29)"** bằng "…"
+   (nếu giữ nguyên, cả câu mang "thường thuộc" ⇒ máy loại mục).
+3. **1404 — câu "Khi được gia công cách khác, chúng bị loại trừ (thường thuộc nhóm 96.02 hoặc nhóm 96.06)"**
+   ⇒ đích có vế "thường thuộc" ⇒ **KHÔNG ghi `loaiTru`** (máy loại `loai-tru-chi-la-thuong`; đúng luật 3).
+4. **1404 — câu "Còn ở các dạng khác, chúng bị loại trừ (Chương 44)"** ⇒ chỉ nêu Chương ⇒ **BỎ mục**.
+5. **1404 — câu "(3) Cây đậu chổi thô … sợi hoặc sợi lanh của đậu chổi đã được chải bị loại trừ"** không nêu
+   mã nhóm ⇒ **KHÔNG ghi `loaiTru`** (luật 3: số nhóm phải có trong câu trích).
+6. **1501 — câu "Mỡ trong nhóm này có thể thu được bởi bất cứ phương pháp nào…"** có vế **"có thể"**
+   (máy chưa có mẫu "có thể" trong `CAU_CHO_PHEP`) ⇒ **KHÔNG đặt `dieuKienVao` value=true** theo bài học lô 030.
+
+## Ghi chú cho lô sau
+
+- **Nhóm 6 số trong `phanBiet` không dùng được** — dùng 8 số (dòng biểu thuế) khi phân biệt trong cùng nhóm.
+- **Nhóm có câu "vẫn thuộc nhóm này … nhưng bị loại trừ nếu …"**: dùng nguyên câu cho `loaiTru`/`phanBiet`
+  (máy không kiểm `CAU_CHO_PHEP` ở 2 khối đó), nhưng `dieuKienVao` phải **lược vế "vẫn thuộc nhóm này"**
+  bằng "…" — nếu không mục bị máy loại (`dieu-kien-chi-cho-phep`).
+- **Đích loại trừ nằm trong vế "thường thuộc …" thì KHÔNG ghi mục** (máy loại + luật 3): 1505 (34.02),
+  1404 (96.02/96.06). Nêu trong mô tả PR thay vì cố lách.
+- **Công cụ `tmp/so-tay/fix-trich.mjs`** (tạm, gitignored) — sửa câu trích về **nguyên văn nguồn** bằng
+  cách nạp `sourcesFor()` (đúng nguồn máy kiểm dùng) và khớp "squash" (bỏ dấu cách/dấu câu, hạ chữ thường).
+  Lô này sửa **4 đoạn** ⇒ gõ tay tiếng Việt vẫn là nguồn lỗi thật (bài học lô 029/033/049).
+
+- **Công cụ `tmp/so-tay/audit-tu-ngoai.mjs`** (tạm, gitignored) — "gác soát từ": mọi từ trong
+  `phamVi.text` / `loaiTru.dieuKien` / `phanBiet.hoi` phải có trong nguồn nhóm. Vòng 1 bắt **1 lỗi thật**
+  (`1504 phamVi.text` dùng chữ *"kể"* không có trong nguồn 1504) + 3 lỗi diễn đạt ⇒ đã sửa **trước khi nạp**:
+  - `1504 phamVi.text`: *"kể cả stearin của cá"* → *"nhóm này cũng bao gồm stearin của cá"*;
+  - `1404 loaiTru[5..7]`: *"Nguyên liệu thực vật **dùng** để nhồi …"* → *"**được sử dụng** để nhồi …"*
+    (nguồn dùng "được sử dụng", không phải "dùng");
+  - `1404 phanBiet[9]`: bỏ đuôi *"do màng sợi của một loại họ bầu bí lai tạo thành"* trong `hoi`.
+  Còn lại **26 "chữ nhận diện nhóm"** (từ có trong nguồn nhóm nhưng không có trong câu trích của chính mục đó,
+  chủ yếu là tên gọi mặt hàng ở vế "không" của câu hỏi phân biệt) — **giữ nguyên**, đúng cách lô 054
+  (`1104.phanBiet` cũng vậy: *"ngũ cốc đã qua xay xát"* không nằm trong câu trích *"Phần cặn còn lại…"*).
+  ⇒ **LỖI THẬT = 0** sau khi sửa.
