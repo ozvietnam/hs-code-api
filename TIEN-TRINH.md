@@ -6138,6 +6138,7 @@ Em là người soát **độc lập**: bản nháp `tmp/so-tay/raw/*.json` củ
 - Hồ sơ soát: `review/1109.json` … `review/1205.json` · script áp: `scripts/apply-review-lo055.mjs`
   (2 pha, chép từ `apply-review-lo054.mjs`; **giữ thụt lề 1 space** của bản nháp và của
   `data/so-tay/`).
-- **PR #472** — https://github.com/ozvietnam/hs-code-api/pull/472 — **CHƯA merge**; body đã cập
-  nhật số mục soát/sửa/xoá + các lớp lỗi. `docs/giao-viec/so-tay-lo.csv` dòng 055 giữ nguyên
-  (`trang_thai=dang-lam`, `pr=472`) — người gộp đặt `trang_thai=xong` khi merge.
+- **PR #472** — https://github.com/ozvietnam/hs-code-api/pull/472 — **đã merge** (ozvietnam,
+  26/10/2026 17:04Z, commit `e046a5d`); body đã cập nhật số mục soát/sửa/xoá + các lớp lỗi.
+  `docs/giao-viec/so-tay-lo.csv` dòng 055: `trang_thai=xong`, `nguoi_lam=soat-doc-lap-mm`, `pr=472`
+  (đóng sổ sau khi PR đã merge — mẫu dòng 050/051/054).
