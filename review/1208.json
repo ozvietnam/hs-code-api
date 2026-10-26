@@ -1,0 +1,85 @@
+{
+ "nhom": "1208",
+ "nguoiSoat": "dev-soat-doc-lap-lo056",
+ "luc": "2026-10-26T23:40:00+07:00",
+ "phamViSoat": "Toàn bộ 12 mục của nhóm 1208 (1 phamVi + 1 dieuKienVao + 3 loaiTru + 3 phanBiet + 2 tieuChi6 + 2 dong8), đọc cùng tmp/so-tay/nguon/1208.txt (nhom1208.nhom, ch12.chuong, phan12.phan, wco.120810/120890, tax.12081000/12089000).",
+ "soat": 12,
+ "giu": 10,
+ "sua": 2,
+ "xoa": 0,
+ "ghiChu": "SỬA 2 (loaiTru[2] + phanBiet[2]: câu trích mượn từ phần TỔNG QUÁT của Chương 12 — chủ ngữ \"Nhóm này\" ở đó là NHÓM 12.01–12.07, KHÔNG phải 12.08 ⇒ câu trích không nói điều mục khẳng định; đổi sang mục (c) của chính chú giải nhóm 1208). XOÁ 0. GIỮ 10. GHI NHẬN cho người duyệt: 23.05 không có nguyên văn trong bất kỳ câu nào áp dụng cho 12.08 (chỉ có dải \"từ 23.04 đến 23.06\") ⇒ `sangNhom` đặt 2304|2306 theo tiền lệ 3907 (lô 007), thiếu 23.05 ghi rõ trong mô tả PR.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom1208.nhom]; cắt ở RANH GIỚI VẾ (\"…đã được loại bỏ chất béo\"), phần bị bỏ sau là NHÁNH THAY THẾ \"hoặc đã được bổ sung một phần hay toàn bộ chất béo bằng dầu lấy từ các loại bột đó\" — KHÔNG phải ngoại lệ, và vế đã giữ (\"đã được loại bỏ chất béo\") vẫn phủ nhánh đó (bột đã khử chất béo rồi bổ sung lại dầu vẫn là bột đã khử chất béo) ⇒ không mất nghĩa ⇒ KHÔNG sửa. `text` nêu đúng phạm vi nhóm, không thêm chữ ngoài nguồn. GIỮ."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu với phamVi; câu phủ CẢ nhóm 1208 (không chia phần A/B) và là câu RÀNG BUỘC thuộc nhóm; `fact` bám đúng từ nguồn, không có vế phủ định nào bị bỏ (câu trích không chứa \"trừ/không bao gồm\"). GIỮ."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom1208.nhom] — mục (a) của khối \"Nhóm này không bao gồm:\"; có DẤU HIỆU LOẠI TRỪ; đích 20.08 NÊU ĐÍCH DANH trong chính câu trích. GIỮ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b) của khối loại trừ của nhóm; đích 21.03 NÊU ĐÍCH DANH; câu trích giữ trọn định ngữ \"đã hoặc chưa khử chất béo, đã hoặc chưa chế biến\" (không thu hẹp thành một nhánh của \"A hoặc B\"); `dieuKien` gọn 29 ký tự, dưới trần clip 55. GIỮ."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI PHẠM VI CÂU TRÍCH — máy KHÔNG bắt được (mọi mã đều có thật và có nguyên văn trong câu). Bản nháp mượn câu ở phần TỔNG QUÁT của Chương 12: chủ ngữ \"Nhóm này\" trong câu đó là NHÓM 12.01–12.07 (\"Nhóm 12.01 đến 12.07 gồm… Nhóm này không bao gồm các phế liệu dạng rắng…\"), KHÔNG phải 12.08 ⇒ câu trích KHÔNG nói điều mục khẳng định về nhóm 1208. Loại trừ ĐÚNG cho 1208 nằm ở 2 câu có thật trong nguồn: chú giải nhóm mục (c) và Chú giải chương mục 2 (\"…nhóm này không áp dụng cho các loại phế liệu thuộc các nhóm 23.04 đến 23.06\"). Sửa: đổi `nguon` → [nhom1208.nhom] và `trich` → mục (c) của chính nhóm (cắt từ tệp nguồn, nguyên văn). MÃ 23.05 không có nguyên văn trong BẤT kỳ câu nào áp dụng cho 12.08 (chỉ có dải \"từ 23.04 đến 23.06\") ⇒ theo tiền lệ 3907 của lô 007 (giữ các mã nêu được nguyên văn, ghi rõ mã thiếu trong mô tả PR) đặt `sangNhom` = 2304|2306; khoảng trống 23.05 ghi rõ trong mô tả PR. `dieuKien` viết lại theo câu mới (giữ ngoại lệ mù tạt của chính mục (c); 47 ký tự, dưới trần clip 55). KHÔNG sửa mã đích, KHÔNG sửa câu nguồn.",
+   "sua": {
+    "dieuKien": "Bột mịn và bột thô bị khử chất béo (trừ mù tạt)",
+    "sangNhom": "2304|2306",
+    "nguon": "nhom1208.nhom",
+    "trich": "Nhóm này không bao gồm: … (c) Bột mịn và bột thô bị khử chất béo (trừ loại của hạt mù tạt) (các nhóm từ nhóm 23.04 đến nhóm 23.06)."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu với loaiTru[0]; Có → 20.08, Không → 1208 là phần BÙ của nhánh Có. GIỮ."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu với loaiTru[1]; Có → 21.03, Không → 1208 là phần BÙ của nhánh Có. GIỮ."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa cùng lý do PHẠM VI CÂU TRÍCH với loaiTru[2]: đổi `nguon`/`trich` sang mục (c) của chính chú giải nhóm 1208 (chủ ngữ đúng là 12.08) và `neuCo` = 2304|2306 (23.05 không có nguyên văn — xem loaiTru[2]); `neuKhong` = 1208 GIỮ NGUYÊN; `hoi` viết lại theo câu trích mới (mọi từ trong `hoi` phải có trong câu trích — gác soát từ; 56 ký tự, dưới trần clip 110).",
+   "sua": {
+    "hoi": "Hàng là bột mịn và bột thô bị khử chất béo (trừ mù tạt)?",
+    "neuCo": "2304|2306",
+    "nguon": "nhom1208.nhom",
+    "trich": "Nhóm này không bao gồm: … (c) Bột mịn và bột thô bị khử chất béo (trừ loại của hạt mù tạt) (các nhóm từ nhóm 23.04 đến nhóm 23.06)."
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.120810] (\"Flours and meals; of soya beans\"); tiêu chí cấp 6 số mô tả đúng phân nhóm 1208.10 (từ đậu tương). GIỮ."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.120890] (\"…excluding soya beans and mustard seeds\"); `fact` giữ nghĩa DƯƠNG \"khác\" (không đảo thành \"không phải\") — đúng luật lô 053 về \"n.e.c.\". GIỮ."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12081000]; `dieuKien` chép đúng tên dòng + gloss phân nhóm theo văn phong nhà; đủ 2/2 dòng biểu thuế của nhóm 1208. GIỮ."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 12089000: câu trích nguyên văn [wco.120890] (tên phân nhóm cha — dòng biểu thuế chỉ ghi \"- - - Loại khác\"); `loaiKhac` do máy tự điền theo biểu thuế; `dieuKien` mô tả phần còn lại của 1208.90 theo văn phong nhà. GIỮ."
+  }
+ ]
+}
