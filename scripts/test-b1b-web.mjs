@@ -2,6 +2,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { b1bShadow, cheDo, truyVan } from '../lib/b1b-web.js';
 
+delete process.env.ZAI_SEARCH_KEY; // test chạy offline: không key → webFacts thật trả null, không bao giờ gọi mạng
+
 test('cheDo: off mặc định, shadow/on hợp lệ, rác → off', () => {
   const saved = process.env.ZAI_WEB_FACTS;
   delete process.env.ZAI_WEB_FACTS;
