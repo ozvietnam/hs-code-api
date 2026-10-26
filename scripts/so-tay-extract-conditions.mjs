@@ -196,7 +196,8 @@ for (const f of files) {
     }
     // Chất liệu (#195 vòng 3): một vật liệu sau từ dẫn (cách điện/làm/bằng/chất liệu) → điều kiện LA
     // ("cách điện bằng plastic" của 8544.42.94); NHIỀU vật liệu nối bằng dấu phẩy/hoặc là phép CHỌN → chờ soát tay.
-    const matFound = MATERIALS.filter(([, re]) => new RegExp('(?:cách điện|làm|làm từ|làm bằng|chất liệu|bằng)\\s+[^,;:.]{0,25}?' + re.source, 'i').test(ownSegment));
+    // Cờ lấy theo mẫu gốc: mẫu vật liệu dùng ranh giới chữ Unicode (\p{L}, cờ u — #434); thiếu cờ u thì \p{L} bị đọc thành chữ "p".
+    const matFound = MATERIALS.filter(([, re]) => new RegExp('(?:cách điện|làm|làm từ|làm bằng|chất liệu|bằng)\\s+[^,;:.]{0,25}?' + re.source, re.flags).test(ownSegment));
     const matConds = [];
     if (matFound.length > 1) { stat.canSoat++; draft.push({ nhom, hs: l.hs, loaiKhac: !!l.loaiKhac, nguon: l.nguon || null, nguonLoai: l.nguonLoai || null, trich: trich.slice(0, 400), dieuKienSo: [], canSoat: [{ fact: null, lyDo: 'nhiều CHẤT LIỆU nối hoặc/dấu phẩy — phép CHỌN, chờ soát tay', soNguyenVan: null, donViNguyenVan: null }] }); continue; }
     if (matFound.length === 1) {
