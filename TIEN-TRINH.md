@@ -5489,6 +5489,7 @@ node scripts/check-cay.mjs --nhom=0811,0812,0813,0814,0901,0902 --chi-tiet
 
 - **CHƯA merge** — chờ người duyệt. `so-tay-lo.csv` dòng 055 giữ `trang_thai=dang-lam`,
   `nguoi_lam=dev-zcode-mm` (đổi `xong` + số PR khi gộp).
-- **PR** — (ghi số PR sau khi mở).
+- **PR #472** — https://github.com/ozvietnam/hs-code-api/pull/472 — **CHƯA merge**; body có đủ
+  tỷ lệ đạt + 3 mục mẫu + nhóm nguồn mỏng/bất thường + mục `dieuKien` ghi điều câu trích không nói.
 
 ---
