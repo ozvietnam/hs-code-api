@@ -1,0 +1,113 @@
+{
+  "nhom": "1104",
+  "thayDoi": [
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp dài 122 ký tự; runtime clip(…, 55) cắt thành \"Loại hạt yến mạch trong tình trạng tự nhiên không có vỏ…\" ⇒ MẤT HẲN điều kiện thứ hai (\"chưa qua bất kỳ quá trình chế biến nào trừ đập hoặc sàng sẩy\") — điều kiện quyết định mục này. SỬA: rút gọn nhưng giữ CẢ HAI điều kiện và giữ định ngữ \"chưa qua … trừ …\" (không thêm chữ nào ngoài trích).",
+      "sua": {
+        "dieuKien": "Hạt yến mạch tự nhiên không có vỏ trấu, chưa qua chế biến nào trừ đập hoặc sàng sẩy"
+      }
+    },
+    {
+      "index": "loaiTru[4]",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp dài 83 ký tự; clip(…, 55) cắt trước \"vỏ lụa\" ⇒ mất đặc điểm định danh của hàng bị loại trừ. SỬA: rút còn 53 ký tự, giữ nguyên định ngữ lượng \"toàn bộ hoặc một phần\" (bỏ \"một phần\" thì loại trừ thu hẹp — sai chiều) và giữ \"vỏ lụa\"; bỏ \"(quinoa)\" và \"để tách saponin\" vì trần 55 không chứa nổi.",
+      "sua": {
+        "dieuKien": "Hạt diêm mạch đã loại bỏ toàn bộ hoặc một phần vỏ lụa"
+      }
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp dài 169 ký tự; runtime clip(…, 90) cắt mất nửa tên WCO của dòng \"Loại khác\" 1104.29.90 — dòng này không có tên dòng biểu thuê riêng nên tên WCO là mô tả DUY NHẤT của nó. SỬA: rút tên WCO xuống 61 ký tự (giữ phần định danh \"worked, other than rolled or flaked\"), không đổi mã dòng.",
+      "sua": {
+        "dieuKien": "Loại khác: Cereal grains; worked, other than rolled or flaked"
+      }
+    },
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích là câu định nghĩa nhóm nguyên văn; `text` chép đúng câu đó, không thêm chữ nào; 118/220 ký tự (không bị clip)."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Dấu hiệu loại trừ rõ (\"trừ bột\"); nhóm đích 11.01 và 11.02 được nêu đích danh trong câu; `dieuKien` thu hẹp theo nhóm (chỉ \"Bột\"), không chép cả danh sách nhánh."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "\"trừ … ngũ cốc dạng tấm, bột thô và viên (nhóm 11.03)\" — dấu hiệu loại trừ + đích danh 11.03 trong cùng câu."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "\"… và phế liệu (nhóm 23.02)\" — đích danh 23.02. GHI NHẬN: \"nhóm 23.02\" nằm sát ký tự 200 của câu trích (runtime traNguon chỉ clip 200) nhưng `dieuKien` ngắn nên thông tin đích không bị mất trong prompt."
+    },
+    {
+      "index": "loaiTru[5]",
+      "hanhDong": "giu",
+      "lyDo": "\"(c) Lúa mì sấy khô đóng bánh ở dạng hạt đã được chế biến (nhóm 19.04)\" — nằm trong khối \"Nhóm này không bao gồm\", đích danh 19.04."
+    },
+    {
+      "index": "loaiTru[6]",
+      "hanhDong": "giu",
+      "lyDo": "\"… cũng như các sản phẩm ngũ cốc được nấu chín tương tự, thuộc nhóm 19.04\" — đích danh 19.04. GHI NHẬN: `dieuKien` 130 ký tự > trần 55 nhưng clip vẫn giữ trọn ý (\"… đã được nấu chín…\") nên không sửa."
+    },
+    {
+      "index": "loaiTru[7]",
+      "hanhDong": "giu",
+      "lyDo": "\"Phần cặn còn lại sau khi chiết xuất dầu từ mầm ngũ cốc được phân loại vào nhóm 23.06.\" — đích danh 23.06."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng (Có → 11.01/11.02, Không → 11.03/11.04); `hoi` không nhắc mã. GHI NHẬN: trích 336 ký tự (>300)."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "\"… và phế liệu (nhóm 23.02)\" → 23.02; vế \"không\" = 11.04 (chính nhóm) — hợp lý vì câu loại trừ phát ra từ chính nhóm này."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "Đích danh 10.08 trong câu; chiều Có/Không đúng (Có → 10.08, Không → 11.04)."
+    },
+    {
+      "index": "phanBiet[3]",
+      "hanhDong": "giu",
+      "lyDo": "Đích danh 19.04 (\"thuộc nhóm 19.04\"); chiều Có/Không đúng."
+    },
+    {
+      "index": "phanBiet[4]",
+      "hanhDong": "giu",
+      "lyDo": "Đích danh 19.04 (\"(c) … (nhóm 19.04)\"); chiều Có/Không đúng."
+    },
+    {
+      "index": "phanBiet[5]",
+      "hanhDong": "giu",
+      "lyDo": "Đích danh 10.04 (\"(nhóm 10.04)\"); chiều Có/Không đúng."
+    },
+    {
+      "index": "phanBiet[6]",
+      "hanhDong": "giu",
+      "lyDo": "Đích danh 23.06; chiều Có/Không đúng."
+    },
+    {
+      "index": "phanBiet[7]",
+      "hanhDong": "giu",
+      "lyDo": "\"trừ bột (nhóm 11.01 và 11.02)\" — CẢ HAI nhánh đích được nêu trong câu, không bị tách thành một nhánh đích duy nhất; chiều Có/Không đúng."
+    }
+  ],
+  "soat": 17,
+  "tongMucDaSoat": 33,
+  "sua": 3,
+  "xoa": 0,
+  "giu": 15,
+  "nguoiSoat": "dev-soat-doc-lap-lo054",
+  "luc": "2026-10-26T23:10:00+07:00",
+  "soatVaiTro": "Người soát ĐỘC LẬP (không phải người soạn). Đọc lại từng mục cùng nguồn nguyên văn tmp/so-tay/nguon/<nhom>.txt; kiểm BYTE-EXACT từng mảnh câu trích (máy check-so-tay dùng squash() nên không bắt được lỗi ký tự); đo trần clip() runtime của lib/so-tay-gates.js (phamVi.text 220 · boPhan.tomTat 160 · loaiTru.dieuKien 55 · dong8.dieuKien 90 · phanBiet.hoi 110).",
+  "ghiChu": "GHI NHẬN chung: (1) LỖI NGUỒN: mục (a) của khối \"Nhóm này không bao gồm\" bị CẮT CỤT ngay sau \"(nhóm\" (đáng lẽ phải là nhóm 10.06 — gạo lứt/gạo tấm) ⇒ không có mã đích để viết loaiTru; KHÔNG sửa nguồn, KHÔNG đoán mã. Đã ghi để người duyệt xử lý riêng. (2) Câu trích dài 336 ký tự (>300) ở phanBiet[0] — không rút được mà không mất vế \"Các trường hợp khác\". (3) Runtime chỉ đưa 4 phanBiet đầu vào prompt (slice(0,4)) nên phanBiet[4..7] không vào prompt — thông tin đó vẫn có trong loaiTru (runtime không cắt loaiTru)."
+}
