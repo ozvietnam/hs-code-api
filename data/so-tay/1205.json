@@ -1,0 +1,130 @@
+{
+ "nhom": "1205",
+ "phamVi": {
+  "text": "Các loại hạt cải dầu (các loại hạt của một số loài cải Brassica, nhất là cải Brassica napus (cải dầu) và brassica rapa (hoặc B. campestris)).",
+  "nguon": "nhom1205.nhom",
+  "trich": "Nhóm này gồm các loại hạt cải dầu (các loại hạt của một số loài cải Brassica, nhất là cải Brassica napus (cải dầu) và brassica rapa (hoặc B. campestris)). Nhóm này bao gồm cả hạt",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_hat_cua_mot_so_loai_cai_brassica",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom1205.nhom",
+   "trich": "Nhóm này gồm các loại hạt cải dầu (các loại hạt của một số loài cải Brassica, nhất là cải Brassica napus (cải dầu) và brassica rapa (hoặc B. campestris)). Nhóm này bao gồm cả hạt",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "120510",
+   "fact": "ham_luong_axit_eruxic",
+   "op": "<",
+   "value": 2,
+   "donVi": "%",
+   "nguon": "ch12.chuong",
+   "trich": "1. Theo mục đích của phân nhóm 1205.10, cụm từ \"hạt cải dầu có hàm lượng axit eruxic thấp\" có nghĩa là hạt cải dầu có chứa một lượng dầu không bay hơi với hàm lượng axit eruxic chiếm dưới 2% tính theo trọng lượng và thành phần rắn chứa dưới 30 micromol glucosinolate trên 1 gram.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "120590",
+   "fact": "la_hat_cai_dau_khac_loai_ham_luong_axit_eruxic_thap",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.120590",
+   "trich": "120590 Oil seeds; rape or colza seeds, other than low erucic, whether or not broken",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "12051000",
+   "dieuKien": "Hạt cải dầu có hàm lượng axit eruxic thấp — axit eruxic chiếm dưới 2% tính theo trọng lượng và thành phần rắn chứa dưới 30 micromol glucosinolate trên 1 gram",
+   "tieuChi": {
+    "fact": "ham_luong_axit_eruxic",
+    "op": "<",
+    "value": 2,
+    "donVi": "%"
+   },
+   "nguon": "ch12.chuong",
+   "trich": "1. Theo mục đích của phân nhóm 1205.10, cụm từ \"hạt cải dầu có hàm lượng axit eruxic thấp\" có nghĩa là hạt cải dầu có chứa một lượng dầu không bay hơi với hàm lượng axit eruxic chiếm dưới 2% tính theo trọng lượng và thành phần rắn chứa dưới 30 micromol glucosinolate trên 1 gram.",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "12059000",
+   "dieuKien": "Loại khác: hạt cải dầu khác loại có hàm lượng axit eruxic thấp (tên WCO 120590)",
+   "nguon": "wco.120590",
+   "trich": "120590 Oil seeds; rape or colza seeds, other than low erucic, whether or not broken",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "1205",
+    "truAnhEm": [
+     "12051000"
+    ],
+    "toTienCoTen": "1205",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "1205",
+    "cap": 4,
+    "cha": "12",
+    "tenVi": "Hạt cải dầu đã hoặc chưa vỡ mảnh.",
+    "tenEn": "Rape or colza seeds; whether or not broken",
+    "suyRa": false
+   },
+   {
+    "id": "12051000",
+    "cap": 8,
+    "cha": "1205",
+    "tenVi": "Hạt cải dầu có hàm lượng axit eruxic thấp",
+    "tenEn": "Oil seeds; low erucic acid rape or colza seeds, whether or not broken",
+    "suyRa": false,
+    "laPhanNhom": "120510"
+   },
+   {
+    "id": "12059000",
+    "cap": 8,
+    "cha": "1205",
+    "tenVi": "Loại khác",
+    "tenEn": "Oil seeds; rape or colza seeds, other than low erucic, whether or not broken",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "120590"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch12.chuong",
+  "nhom1205.nhom",
+  "wco.120590"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-26T15:28:48.036Z",
+  "ms": 0
+ },
+ "kiemTra": {
+  "tong": 6,
+  "dat": 6,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

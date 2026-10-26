@@ -5362,3 +5362,133 @@ node scripts/check-cay.mjs --nhom=0811,0812,0813,0814,0901,0902 --chi-tiet
   người duyệt). Không merge.
 
 ---
+
+# SỔ TAY LÔ 055 — 1109 1201 1202 1203 1204 1205 (26/10/2026, `dev-zcode-mm`)
+
+## Về nhóm của lô
+
+- `docs/giao-viec/so-tay-lo.csv` dòng 56: `055,1109 1201 1202 1203 1204 1205` — **theo CSV**.
+- ⚠ **Sai lệch brief ↔ CSV (lần thứ 7)**: `brief-st-lo055.md` dòng 4 ghi đúng nhóm
+  `1109 1201 1202 1203 1204 1205` (khớp CSV), nhưng **dòng 6 lại kèm lệnh
+  `--nhom=7615,9609,3215,6306,6804,7412`** — đó là nhóm của **lô 001** (đối chiếu CSV dòng `001`).
+  Em theo CSV, đúng như lô 003/014/027/049/051.
+
+## Các bước đã chạy
+
+1. `node scripts/build-so-tay.mjs --nhom=1109,1201,1202,1203,1204,1205 --xuat-nguon=tmp/so-tay/nguon`
+   → 6 tệp nguồn (5,4–7,7 KB; **tổng 44,8 KB**). Đọc TRỌN `tmp/so-tay/nguon/_he-thong.txt` trước.
+   Không nhóm nào có SEN; `phan11.phan` và `phan12.phan` chỉ có 1 câu về khái niệm "viên" (hàm
+   lượng chất dính ≤ 3 %) — không dùng được cho nhóm nào của lô.
+2. Cắt trích theo **số dòng** trong tệp nguồn (`tmp/so-tay-lib.cjs`): mọi `trich` cắt thẳng từ
+   tệp nguồn thật, **không gõ tay tiếng Việt**; hàm `assertIn` chặn nếu mảnh trích không nằm
+   trong khối nguồn khai. Bản nháp do `tmp/gen-raw.cjs` sinh ra (`tmp/so-tay/raw/<nhom>.json`).
+3. `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **38/38** (lần đầu đã xanh).
+4. `node scripts/check-trich-nguyen-van.mjs` → **38/38 nguyên văn tuyệt đối** (byte-exact; chạy cho
+   cả bản nháp lẫn `data/so-tay/` sau khi nạp).
+5. Audit "từ ngoài câu trích" (`tmp/check-tu-ngoai-trich.mjs`): 29 mục tự viết (`phamVi.text`,
+   `dieuKienVao.fact`, `loaiTru.dieuKien`, `phanBiet.hoi`, `dong8.dieuKien`) — mọi từ đều có trong
+   câu trích (so **không phân biệt dấu**, để `fact` viết không dấu khớp `bột` với `bot`);
+   2 cảnh báo là 2 dòng `Loại khác` trích từ `wco.*` (tiếng Anh, dịch sang tiếng Việt — tiền lệ
+   đã duyệt ở lô 052).
+   - Lần đầu audit bắt được lỗi thật: `fact` của 1109 gõ `cheo_xuat` thay vì `chiet_xuat` → đã sửa.
+6. `node scripts/build-so-tay.mjs --nhom=1109,1201,1202,1203,1204,1205 --tu-tep=tmp/so-tay/raw
+   --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-055.json` → **38/38 (100 %)**,
+   `nhomLoi: []`.
+7. `npm run so-tay:check` → **470 nhóm, 13 256 mục, 0 mục không kiểm được nguồn**.
+   `node scripts/check-cay.mjs --nhom=1109,1201,1202,1203,1204,1205 --chi-tiet` → **6/6 nhóm đủ,
+   0 lỗi lệch cây, 0 cảnh báo**.
+8. `npm test` → **ALL TESTS PASSED** (0 failed). `data/legal-status-miss.jsonl` bị test ghi bậy →
+   đã `git checkout` revert, không đưa vào commit.
+
+## Kết quả theo nhóm
+
+| Nhóm | Mục | `phamVi` | `dieuKienVao` | `loaiTru` | `phanBiet` | `tieuChi6` | `boPhan` | `dong8` | `tenDien` |
+|---|---|---|---|---|---|---|---|---|---|
+| 1109 | 9 | 1 | 1 | 3 | 3 | 0 | 0 | 1 | 0 |
+| 1201 | 8 | 1 | 0 | 1 | 1 | 3 | 0 | 2 | 0 |
+| 1202 | 9 | 1 | 1 | 0 | 0 | 4 | 0 | 3 | 0 |
+| 1203 | 4 | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 0 |
+| 1204 | 2 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
+| 1205 | 6 | 1 | 1 | 0 | 0 | 2 | 0 | 2 | 0 |
+| **Tổng** | **38** | 6 | 3 | 5 | 5 | 9 | 0 | 10 | 0 |
+
+## Ba mục mẫu
+
+1. **Loại trừ** — `1109/loaiTru[0]`: "Bột lúa mì được làm giàu bằng cách cho thêm gluten" →
+   `sangNhom: 1101`, trích nguyên văn `(a) Bột lúa mì được làm giàu bằng cách cho thêm gluten (nhóm 11.01).`
+2. **Điều kiện số** — `1205/dong8[12051000].tieuChi`: `ham_luong_axit_eruxic < 2 %`, nguồn
+   `ch12.chuong`, trích nguyên văn câu chú giải phân nhóm 1205.10 (…`hàm lượng axit eruxic chiếm
+   dưới 2% tính theo trọng lượng và thành phần rắn chứa dưới 30 micromol glucosinolate trên
+   1 gram.`). Cùng câu đó làm `tieuChi6` của phân nhóm **120510** (khác **120590** = “other than
+   low erucic”).
+3. **Dòng 8 số** — `1202/dong8[12023000]`: "Hạt giống — lạc được các cơ quan quốc gia có thẩm
+   quyền đánh giá là để gieo trồng", nguồn `nhom1202.nhom` (chú giải phân nhóm 1202.30), cùng câu
+   làm `tieuChi6` của 120230.
+
+## Nhóm có nguồn mỏng / bất thường
+
+- **1204 (hạt lanh) — nguồn mỏng nhất lô**: chú giải nhóm chỉ có **MỘT câu** ("Hạt lanh, nghĩa là,
+  hạt của cây lanh, cung cấp một trong những loại dầu làm khô quan trọng nhất.") ⇒ chỉ ghi
+  `phamVi` + 1 dòng 8 số (**2 mục**); không có câu nào để trích cho `dieuKienVao`/`loaiTru`/
+  `phanBiet`/`tieuChi6` ⇒ để rỗng, không đoán.
+- **1203 — điều kiện của nhóm là PHỦ ĐỊNH**: chú giải nhóm định nghĩa cùi dừa khô là phần cùi
+  làm khô **"không thích hợp dùng làm thức ăn cho người"**, rồi loại "dừa làm khô … thích hợp
+  dùng làm thức ăn cho người" (nhóm 08.01). Vì fact âm dễ bị đọc ngược (bài học lô 044) nên em
+  **KHÔNG** đặt `dieuKienVao`; thông tin nằm ở `phamVi` + `loaiTru` + `phanBiet`.
+- **1202 — nguồn nhắc "Chương 20" nhưng không mã hoá được**: "Lạc đã rang hoặc đã làm chín cách
+  khác thuộc Chương 20" ⇒ **không** ghi `loaiTru`/`phanBiet` (Chương chứ không phải nhóm; `phanBiet`
+  bắt buộc mã phải có thật) — cùng lý do lô 047 (Chương 20 / Phần IV).
+- **1205 — lỗi kệ sách: xuống dòng giữa câu**: `nhom1205.nhom` có câu "Nhóm này bao gồm cả hạt"
+  ở hết dòng rồi xuống dòng mới "cải dầu truyền thống và hạt cải dầu có hàm lượng axit eruxic
+  thấp." ⇒ em **không dán hai mảnh** (bài học lô 038/046: dán 2 đoạn bằng 1 dấu cách), bỏ vế "hạt
+  cải dầu truyền thống" trong `phamVi`; vế định nghĩa "axit eruxic thấp" đã nằm ở `tieuChi6` 120510
+  + `dong8` 12051000 (nguồn `ch12.chuong`, câu chú giải phân nhóm nguyên vẹn).
+- **1109 — chú giải nhóm có đủ 3 loại trừ (a)(b)(c)** với mã đích nêu rõ (11.01 / 35.04 / 35.06
+  hoặc 38.09) ⇒ 3 `loaiTru` + 3 `phanBiet`.
+
+## Chủ ý BỎ (thà ít mục chắc chắn hơn nhiều mục mờ má)
+
+- **Không chép loại trừ chung của Chương 12** (phần TỔNG QUÁT: "Nhóm 12.01 đến 12.07 … không
+  bao gồm … 08.01/08.02 … 23.04, 23.05 hoặc 23.06") vào từng nhóm: đó là loại trừ của **dải nhóm**,
+  không phải của riêng 1109/1201…1205 ⇒ `loaiTru`/`phanBiet` rỗng ở 1202/1204/1205. Cùng lý do
+  lô 051 (Chương 9) và lô 049 (`ch11.chuong` dùng chung cho mọi nhóm).
+- **`dieuKienVao` chỉ đặt ở 3 nhóm** (1109, 1202, 1205) — mỗi mục là **đặc tính vật liệu/trạng
+  thái phủ cả nhóm** theo luật đã đính chính (`so-tay-dieu-kien-bao-gom-van-la-rang-buoc`):
+  - 1109: "Gluten được chiết xuất từ bột mỳ bởi quá trình phân tách đơn giản trong nước…"
+    (đặc tính quy trình, phủ cả nhóm);
+  - 1202: "chưa rang hoặc chưa làm chín cách khác" — trích **mảnh** trong câu, vì cả câu chứa
+    "đã hoặc chưa" (máy loại câu cho phép);
+  - 1205: "các loại hạt của một số loài cải Brassica…" (đặc tính loài, phủ cả nhóm).
+  Rỗng ở 1201/1203/1204: 1201 chỉ có câu "có thể được xử lý nhiệt" (câu cho phép ⇒ không đặt);
+  1203 có điều kiện **phủ định** (xem trên); 1204 không có câu ràng buộc nào.
+- **`phanBiet` chỉ ở 1109/1201/1203** — mỗi mục là cặp "mã NGOÀI nhóm ↔ chính nhóm", mã ngoài
+  nhóm đều **nêu trong câu trích**. 1202/1204/1205 không có mã ngoài nhóm nào trong nguồn ⇒ rỗng
+  (không suy từ danh sách loại trừ hay cấu trúc anh em).
+- **Không ghi `boPhan`** ở cả 6 nhóm — không nguồn nào có quy tắc bộ phận.
+- **Không ghi `cay.tenDien`** — không nút ảo nào thiếu tên: nút ảo duy nhất (1202.4 "Loại khác")
+  đã có tên từ biểu thuế.
+
+## Những mục `dieuKien` có ghi điều mà câu trích không nói (khai báo trung thực)
+
+- **Không có mục nào.** Audit `tmp/check-tu-ngoai-trich.mjs` (29 mục tự viết) không phát hiện từ
+  nào nằm ngoài câu trích. Hai dòng `Loại khác` (12019000, 12059000) trích từ `wco.*` (tiếng Anh)
+  nên điều kiện là **bản dịch** của chính câu trích ("other than seed, whether or not broken" →
+  "đậu tương khác hạt giống, đã hoặc chưa vỡ mảnh"; "other than low erucic" → "hạt cải dầu khác
+  loại có hàm lượng axit eruxic thấp") — không có thông tin nào ngoài nguồn.
+
+## Trạng thái cuối
+
+| Kiểm | Kết quả |
+|---|---|
+| `check-so-tay.mjs --raw=tmp/so-tay/raw` | 6 nhóm, **38 mục, 0 mục không kiểm được nguồn** (38/38 = 100 %) |
+| `check-trich-nguyen-van.mjs` (bản nháp + `data/so-tay/`) | **OK — 38 mục** nguyên văn tuyệt đối |
+| `build-so-tay … --tu-tep --force` | **38/38 (100 %)** — `tyLeDat: 100`, `nhomLoi: []` |
+| `npm run so-tay:check` | **470 nhóm, 13 256 mục, 0 mục không kiểm được nguồn** |
+| `npm test` | **ALL TESTS PASSED** (exit 0) — đã revert `data/legal-status-miss.jsonl` |
+| `check-cay.mjs --chi-tiet` | **6/6 nhóm đủ**, **0 lỗi lệch cây**, 0 cảnh báo |
+
+- **CHƯA merge** — chờ người duyệt. `so-tay-lo.csv` dòng 055 giữ `trang_thai=dang-lam`,
+  `nguoi_lam=dev-zcode-mm` (đổi `xong` + số PR khi gộp).
+- **PR** — (ghi số PR sau khi mở).
+
+---

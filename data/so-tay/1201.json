@@ -1,0 +1,140 @@
+{
+ "nhom": "1201",
+ "phamVi": {
+  "text": "Đậu tương là một nguồn rất quan trọng của dầu thực vật; các loại đậu tương thuộc nhóm này có thể được xử lý nhiệt để giảm vị đắng.",
+  "nguon": "nhom1201.nhom",
+  "trich": "Đậu tương là một nguồn rất quan trọng của dầu thực vật. Các loại đậu tương thuộc nhóm này có thể được xử lý nhiệt để giảm vị đắng (xem trong phần Chú giải tổng quát).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Đậu tương rang được dùng làm các chất thay thế cà phê",
+   "sangNhom": "2101",
+   "nguon": "nhom1201.nhom",
+   "trich": "Tuy nhiên, nhóm này không bao gồm đậu tương rang được dùng làm các chất thay thế cà phê (nhóm 21.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là đậu tương rang được dùng làm các chất thay thế cà phê hay là đậu tương?",
+   "neuCo": "2101",
+   "neuKhong": "1201",
+   "nguon": "nhom1201.nhom",
+   "trich": "Tuy nhiên, nhóm này không bao gồm đậu tương rang được dùng làm các chất thay thế cà phê (nhóm 21.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "120110",
+   "fact": "la_dau_tuong_hat_giong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.120110",
+   "trich": "120110 Soya beans; seed, whether or not broken",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "120110",
+   "fact": "la_hat_giong_la_dau_tuong_duoc_co_quan_quoc_gia_co_tham_quyen_danh_gia_la_de_gieo_trong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom1201.nhom",
+   "trich": "Phân nhóm 1201.10 Theo mục đích của phân nhóm 1201.10, thuật ngữ “hạt giống” chỉ bao gồm đậu tương được các cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "120190",
+   "fact": "la_dau_tuong_khac_hat_giong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.120190",
+   "trich": "120190 Soya beans; other than seed, whether or not broken",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "12011000",
+   "dieuKien": "Hạt giống — đậu tương được các cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng",
+   "nguon": "nhom1201.nhom",
+   "trich": "Phân nhóm 1201.10 Theo mục đích của phân nhóm 1201.10, thuật ngữ “hạt giống” chỉ bao gồm đậu tương được các cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng.",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "12019000",
+   "dieuKien": "Loại khác: đậu tương khác hạt giống, đã hoặc chưa vỡ mảnh (tên WCO 120190)",
+   "nguon": "wco.120190",
+   "trich": "120190 Soya beans; other than seed, whether or not broken",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "1201",
+    "truAnhEm": [
+     "12011000"
+    ],
+    "toTienCoTen": "1201",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "1201",
+    "cap": 4,
+    "cha": "12",
+    "tenVi": "Đậu tương, đã hoặc chưa vỡ mảnh (+).",
+    "tenEn": "Soya beans, whether or not broken",
+    "suyRa": false
+   },
+   {
+    "id": "12011000",
+    "cap": 8,
+    "cha": "1201",
+    "tenVi": "Hạt giống",
+    "tenEn": "Soya beans; seed, whether or not broken",
+    "suyRa": false,
+    "laPhanNhom": "120110"
+   },
+   {
+    "id": "12019000",
+    "cap": 8,
+    "cha": "1201",
+    "tenVi": "Loại khác",
+    "tenEn": "Soya beans; other than seed, whether or not broken",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "120190"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom1201.nhom",
+  "wco.120110",
+  "wco.120190"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-26T15:28:48.032Z",
+  "ms": 0
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
