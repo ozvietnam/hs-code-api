@@ -3,6 +3,120 @@
 <!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
 ---
 
+# SOÁT ĐỘC LẬP lô 052 — phiên `dev-soat-doc-lap-lo052` (26/10/2026)
+
+- **Nhánh:** `so-tay/lo-052` (PR #456, **KHÔNG merge**) · **Nhóm:** `0909,0910,1001,1002,1003,1004`
+- **Người soát KHÁC người soạn:** `dev-soat-doc-lap-lo052` ≠ `dev-zcode-mm` (đúng mục 4 giao việc).
+- **Hồ sơ soát:** `review/0909.json` … `review/1004.json` · **SỬA 8 mục · XOÁ 6 mục · GIỮ 108 mục.**
+- **Baseline:** em **phục hồi bản nháp GỐC** (`tmp/so-tay/raw-backup-lo052/`, khớp 100 % với
+  `data/so-tay/*.json` đã commit 178acda) rồi soát lại **TOÀN BỘ** — phiên soát trước (01:29) đã sửa
+  13 mục trong `tmp/so-tay/raw` nhưng **vòng soát CHƯA trọn** và **chưa ghi `review/`**, nên không dùng
+  làm kết quả cuối.
+
+## Phạm vi soát
+
+- **48 mục trong 5 khối** (mục 4 giao việc) — đọc lại **TỪNG MỤC** cùng nguồn nguyên văn
+  `tmp/so-tay/nguon/<nhom>.txt`, không soát mẫu:
+| Nhóm | `phamVi` | `boPhan` | `dieuKienVao` | `loaiTru` | `phanBiet` | Tổng 5 khối | Sửa | Xoá |
+|---|---|---|---|---|---|---|---|---|
+| 0909 | 1 | 0 | 1 | 7 | 3 | 12 | 2 | 0 |
+| 0910 | 1 | 0 | 0 | 7 | 3 | 11 | 1 | 0 |
+| 1001 | 1 | 0 | 1 | 1 | 1 | 4 | 2 | 2 |
+| 1002 | 1 | 0 | 2 | 2 | 2 | 7 | 1 | 2 |
+| 1003 | 1 | 0 | 1 | 4 | 3 | 9 | 2 | 0 |
+| 1004 | 1 | 0 | 2 | 1 | 1 | 5 | 0 | 2 |
+| **Tổng** | 6 | 0 | 7 | 22 | 13 | **48** | **8** | **6** |
+
+- **67 mục ngoài phạm vi** (`tieuChi6` 27 + `dong8` 34 + `cay.tenDien` 6) đọc để kiểm **chiều đúng–sai**;
+  trong đó **2 mục SỬA** (`1001.tieuChi6[6]`, `1001.dong8[7]`) — sửa ngoài 5 khối là có tiền lệ
+  (lô 001/010/026 đã sửa `tieuChi6`/`dong8` trong `review/`).
+
+## Mười bốn lỗi bắt được — máy đều KHÔNG bắt được
+
+1. **1001/1002/1004 — `loaiTru` + `phanBiet` trỏ 11.04 trong khi 11.04 CHỈ LÀ VÍ DỤ** (6 mục → **XOÁ**).
+   Câu nguồn chương 10: "…những loại hạt khác không thuộc Chương này nếu chúng đã được xát vỏ hoặc sơ chế
+   theo các cách khác, **ví dụ, như được mô tả tại nhóm 11.04** (xem Chú giải tương ứng)" — quy tắc thật là
+   "KHÔNG THUỘC CHƯƠNG 10", 11.04 chỉ là ví dụ minh hoạ và câu còn dẫn "xem Chú giải tương ứng" (đích không
+   chốt). Ghi `sangNhom: "1104"` biến ví dụ thành quy tắc: lúa mì rang → 1106, malt → 1107, tinh bột → 1108
+   đều bị đẩy nhầm về 1104. **Máy không bắt** vì mã 11.04 có thật trong câu trích. (Tiền lệ lô 033:
+   nhóm 7306 xoá mục "thuộc Chương 87 (ví dụ: nhóm 87.08 hoặc 87.14)".)
+2. **0910 `phamVi` — câu trích CỤT giữa câu ở mệnh đề (g)** → **SỬA**. Bản nháp dừng ở "…các nhóm từ 09.04
+   đến 09.10", mất vế chính "khi tách riêng các thành phần của hỗn hợp được phân loại vào các nhóm khác
+   nhau"; máy vẫn xanh vì mảnh cuối vẫn nằm trong nguồn.
+3. **0910 `phamVi` — `text` BỎ SÓT thành phần HỖN HỢP** → **SỬA**. Hỗn hợp là bản chất của nhóm 0910
+   (phân nhóm WCO 091091 "mixtures of 2 or more products of different headings"; dòng biểu thuế 09109110
+   "Cà ri (curry)") — bản nháp chỉ liệt kê (a)–(f). `text` mới nêu đủ 7 thành phần **kèm điều kiện của (g)**,
+   còn **218 ký tự ≤ trần `clip(220)`** để runtime không cắt cụt.
+4. **0909 `loaiTru[5]` + `phanBiet[2]` — điều kiện/câu hỏi thiếu DẢI SỐ 09.04–09.10** → **SỬA**. Bản nháp
+   hỏi "Hàng là hỗn hợp sản phẩm thuộc các nhóm từ 09.04 đến 09.10?" — phạm vi câu hỏi **rộng hơn** mệnh đề
+   nguồn ("thuộc các nhóm **khác nhau**"): hỗn hợp cùng MỘT nhóm cũng trả lời "có" → dẫn nhầm sang 09.10.
+   Sửa: hỏi đúng mệnh đề (b) **và** gắn câu dẫn nguyên văn của Chú giải 1 chương 9 vào câu trích.
+5. **1003 `loaiTru[3]` + `phanBiet[1]` — điều kiện RỘNG hơn câu nguồn** → **SỬA**. Nguồn: "**Lúa đại mạch loại
+   này**, có màu vàng rơm và thuôn 2 đầu… Khi đã bị xát hết phần vỏ, nó bị loại trừ (nhóm 11.04)" — chủ ngữ
+   "nó" = loại **Bracteifeous**; bản nháp ghi chung "Lúa đại mạch đã bị xát hết phần vỏ" → áp cho MỌI lúa đại
+   mạch, **mâu thuẫn với chính câu kế của nguồn** ("Còn loại lúa đại mạch về bản chất tự nhiên không có vỏ, vẫn
+   thuộc nhóm này…") và với `tieuChi6[3]` của chính nhóm.
+6. **1002 `phamVi` — để lẫn MỘT SẢN PHẨM KHÁC (bột = 11.04) vào nhãn phạm vi** → **SỬA**. Bản nháp: "Lúa mạch
+   đen có hạt hình dạng dài hơn, màu xanh xám hoặc xám sáng; **bột của nó màu xám**"; `text` đi thẳng vào
+   prompt vòng 2 (`lib/so-tay-gates.js:134`) nên dễ kéo sai phân loại (luật lô 030).
+7. **1001 `tieuChi6[6]` — MẤT định ngữ giới hạn "thường"** → **SỬA**. Nguồn: "nó **thường** có vết nứt có màu
+   trắng đục…" — bản nháp viết fact "…**co** vết nứt…" → biến ghi chú thành đặc điểm bắt buộc (luật 13; bài
+   học lô 034/048). Tiền lệ: 0701 "la_loai_khoai_tay_**thuong**_dung_de_lam_khoai_tay_chien".
+8. **1001 `dong8[7]` — tiêu chí số NÓI CHẮC HƠN NGUỒN** → **SỬA**. SEN 10019999: "Loại này **có thể** có các
+   hạt đã nảy mầm và có độ ẩm chiếm trên 12% trọng lượng." — bản nháp đặt `tieuChi` (op ">") với value 12 như
+   một ngưỡng BẮT BUỘC; máy chỉ kiểm "số có trong trích", không đọc "có thể" (memory `so-tay-nhan-bo-dinh-ngu-gioi-han`).
+
+## Ba kết luận của phiên soát TRƯỚC — em BÁC (không tự ý kiện)
+
+Phiên 01:29 đã sửa 13 mục trong `tmp/so-tay/raw` (xoá 6 `loaiTru`/`phanBiet` 21.03/21.06/11.04, sửa 4 câu
+trích hỗn hợp, sửa `phamVi` 0910) nhưng **không ghi `review/`** và vòng soát chưa trọn. Em đọc lại từ đầu:
+
+1. **BÁC lý do "nguồn tự mâu thuẫn 21.03/21.06"** → **KHÔI PHỤC 3 mục** (0909 `loaiTru[4]` "gia vị và bột
+   canh hỗn hợp → 21.03"; 0909 `loaiTru[6]` + 0910 `loaiTru[6]` "hỗn hợp không xác định được đặc tính cơ bản
+   → 21.06"; 0910 `phanBiet[2]`). Lý do: Chú giải 1 chương 9 nói về **hỗn hợp CÓ PHA THÊM chất khác**
+   ("Việc pha thêm các chất khác… gia vị hỗn hợp hoặc bột canh hỗn hợp được phân loại trong nhóm 21.03"),
+   còn vế 21.06 nói về **"những hỗn hợp trên"** = hỗn hợp CÓ CHỨA cây/hạt/quả từ Chương khác dùng để tạo
+   hương cho đồ uống — **HAI ĐỐI TƯỢNG KHÁC NHAU**, không mâu thuẫn. Luật "bỏ cả hai phía" chỉ dành cho
+   mâu thuẫn CÙNG một đối tượng (vd 8409 "bơm phun", 8712). Tiền lệ đã duyệt: `data/so-tay/0712.json`
+   (NGUOI_DUYET) giữ đúng dạng "Gia vị hỗn hợp và bột canh hỗn hợp → 21.03".
+2. **BÁC cách "sửa" làm MẤT điều kiện "khác nhau"** ở 0909 `loaiTru[5]`/`phanBiet[2]` — phiên trước gắn
+   câu dẫn "09.04–09.10" nhưng viết điều kiện thành "Hỗn hợp sản phẩm thuộc các nhóm từ 09.04 đến 09.10"
+   → **mất "khác nhau"**, thành bắt cả hỗn hợp CÙNG một nhóm (mà theo mục (a) vẫn ở nhóm đó) → sai. Em sửa
+   theo hướng giữ **cả hai**: điều kiện "Hỗn hợp sản phẩm 09.04-09.10 thuộc các nhóm khác nhau" (53 ký tự
+   ≤ trần `clip(55)`).
+3. **ĐỒNG Ý** xoá 6 mục trỏ 11.04 (mục 1 ở trên) — lý do "11.04 chỉ là ví dụ" **đúng**.
+
+## Công cụ (KHÔNG commit)
+
+| Tệp | Việc |
+|---|---|
+| `tmp/so-tay/soat-lo052-final.mjs` | Dựng 6 tệp `review/*.json`. Mọi câu trích MỚI **cắt từ tệp nguồn bằng neo ASCII** (không gõ tay tiếng Việt — bài học "bóp méo dấu") rồi **tự kiểm byte-exact**; **gác soát từ** cho mọi văn bản tự viết (`text`/`dieuKien`/`hoi` phải có từ trong nguồn) để bắt chữ méo mà máy kiểm không thấy; vòng 2 kiểm bằng máy 67 mục ngoài 5 khối (tên phân nhóm WCO, đủ dòng 8 số, `dieuKien` bám tên dòng biểu thuế, nút `cay.tenDien` chưa có tên) |
+| `scripts/apply-review-lo052.mjs` | Áp `review/*.json` → `tmp/so-tay/raw/` (sửa + xoá) và đổi `nguonLoai` → `NGUOI_DUYET` **chỉ cho 5 khối đã soát** (luật 11). Mở rộng `sua` cho `tieuChi6`/`dong8` (có tiền lệ lô 001/010/026) |
+
+## Kiểm sau khi áp
+
+| Kiểm | Kết quả |
+|---|---|
+| `check-so-tay --raw=tmp/so-tay/raw` | **109/109 (100 %)** — 0 nhóm lỗi (115 − 6 mục xoá) |
+| `check-trich-nguyen-van` (byte-exact) | **OK — 106 mục** (106 = 109 − 3 `cay.tenDien`, bộ kiểm này không duyệt `tenDien`) |
+| Nạp `--tu-tep --force --bao-cao=…/lo-052.json` | **109/109 (100 %)**, `nhomLoi: []` |
+| `npm run so-tay:check` | **446 nhóm, 12.938 mục, 0 mục không kiểm được nguồn** |
+| `check-cay --nhom=… --chi-tiet` | **6/6 nhóm đủ**, 0 lỗi lệch cây, 0 chỗ còn trống |
+| `npm test` | **ALL TESTS PASSED** (0 failed) |
+
+## Ghi chú cho người duyệt
+
+- **Câu trích dài > 300 ký tự**: 2 mục (`0910.phamVi` 569, `1003.phamVi` 545) — có tiền lệ đã duyệt
+  (**99/442** nhóm đã gộp có `phamVi` > 300; 0306 = 593, 0511 = 592, 0604 = 575). Cắt bớt ở 0910 sẽ mất
+  đoạn loại trừ (20.08) và mệnh đề (g); ở 1003 sẽ mất đoạn loại trừ (11.04).
+- **1003 `loaiTru[0]` (11.07) là DẪN CHIẾU** ("xem Chú giải nhóm 11.07"), không phải phát biểu phẳng "thuộc
+  nhóm 11.07" như `loaiTru[3]` (11.04) — em **giữ** vì không có chữ "ví dụ" (khác 1001/1002/1004) và malt
+  (kể cả malt rang) đúng là thuộc 1107. Người duyệt xem lại nếu thấy chưa chắc.
+- **1002 `dieuKienVao[0]`** (đặc tính hạt lúa mạch đen) giữ theo luật "bao gồm + đặc tính vật chất phủ
+  cả nhóm" (memory `so-tay-dieu-kien-bao-gom-van-la-rang-buoc`; lô 051 thêm 2 mục cùng dạng).
+
+---
+
 # SOẠN lô 052 — phiên `dev-zcode-mm` (26/10/2026)
 
 - **Nhánh:** `so-tay/lo-052` @ main mới nhất (e2d4d71) · **Nhóm:** `0909,0910,1001,1002,1003,1004` (Chương 09 + Chương 10)

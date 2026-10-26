@@ -1,0 +1,181 @@
+{
+ "nhom": "0909",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-26T21:40:00+07:00",
+ "soat": 32,
+ "giu": 30,
+ "sua": 2,
+ "xoa": 0,
+ "phamViSoat": "Toàn bộ 32 mục đã soi của bản nháp gốc tmp/so-tay/raw-backup-lo052/0909.json (12 mục trong 5 khối soát phamVi/boPhan/dieuKienVao/loaiTru/phanBiet + các mục tieuChi6/dong8/cay có rủi ro sai nghĩa đã soi thêm), đọc cùng tmp/so-tay/nguon/0909.txt. Mọi câu trích MỚI cắt từ tệp nguồn bằng neo ASCII rồi tự kiểm byte-exact; mọi văn bản tự viết được gác soát từ (mọi từ phải có trong nguồn) để bắt chữ méo.",
+ "ghiChu": "Vòng soát TRỌN (không mẫu). Em phục hồi baseline = bản nháp gốc đã commit 178acda, đọc lại từng mục cùng nguồn, và BÁC một số kết luận của phiên soát trước (đã sửa 13 mục trong tmp/so-tay/raw nhưng chưa ghi review/): (1) khôi phục loaiTru \"gia vị và bột canh hỗn hợp → 21.03\" và \"hỗn hợp không xác định được đặc tính cơ bản → 21.06\" ở 0909/0910 — lý do \"nguồn tự mâu thuẫn 21.03/21.06\" của phiên trước SAI: hai câu nói về hai đối tượng khác nhau (hỗn hợp CÓ PHA THÊM chất khác vs hỗn hợp CÓ CHỨA cây/hạt/quả từ Chương khác); (2) bỏ \"sửa\" làm mất điều kiện \"khác nhau\" ở loaiTru/phanBiet về hỗn hợp của 0909 (giữ \"khác nhau\" + chỉ thêm dải 09.04-09.10); (3) giữ 4 mục loaiTru/phanBiet trỏ 11.04 ở 1001/1002/1004 đã xoá — lý do \"11.04 chỉ là ví dụ\" ĐÚNG, em đồng ý xoá. Xem `lyDo` từng mục.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn trong [nhom0909.nhom]; nêu đúng phạm vi nhóm 0909 (hạt hoa hồi loại hồi xanh + badian + hạt cây rau mùi / thì là Ai cập / ca-rum + quả cây bách xù) — khớp tên nhóm trong cây HS. `text` chỉ diễn đạt đúng câu trích. GIỮ."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"Những loại quả hoặc hạt này được dùng làm gia vị, dùng trong ngành công nghiệp (ví dụ, trong chưng cất) và dùng trong y tế.\" nguyên văn trong [nhom0909.nhom]; phủ CẢ nhóm (nguồn không chia phần A/B) và nêu đặc tính của hàng thuộc nhóm. KHÔNG phải câu cho phép (câu \"vẫn được phân loại trong nhóm này ngay cả khi…\" nằm ở câu KẾ và không có trong trích). GIỮ."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b) trong khối loại trừ của Chương 9 (\"Ngoài ra Chương này cũng không bao gồm:\"), nguyên văn; đích 12.07 nêu định danh trong chính câu trích. GIỮ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b) — vế \"bột mù tạt đã hoặc chưa chế biến (nhóm 21.03)\"; đích 21.03 nêu định danh. KHÁC với loaiTru[4] (\"gia vị và bột canh hỗn hợp\") — hai mục loại trừ khác nhau, không trùng. GIỮ."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c) khối loại trừ của Chương 9; đích 12.10 nêu định danh. GIỮ."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (d) khối loại trừ của Chương 9; điều kiện GIỮ định ngữ giới hạn \"thường\" của câu nguồn — không nới thành điều kiện bắt buộc. GIỮ."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (e) khối loại trừ của Chương 9, nguyên văn, đích 21.03 nêu định danh. PHIÊN TRƯỚC đã xoá mục này với lý do \"nguồn tự mâu thuẫn 21.03/21.06\" — em đọc lại và BÁC lý do đó: Chú giải 1 chương 9 nói về HỖN HỢP CÓ PHA THÊM chất khác (\"Việc pha thêm các chất khác… Trong các trường hợp khác… gia vị hỗn hợp hoặc bột canh hỗn hợp được phân loại trong nhóm 21.03\"), còn vế 21.06 nói về \"những hỗn hợp trên\" = hỗn hợp CÓ CHỨA cây/hạt/quả từ Chương khác dùng để tạo hương cho đồ uống. HAI ĐỐI TƯỢNG KHÁC NHAU — luật \"bỏ cả hai phía\" chỉ dành cho mâu thuẫn CÙNG một đối tượng (vd 8409 \"bơm phun\", 8712). Tiền lệ đã duyệt: data/so-tay/0712.json (NGUOI_DUYET) giữ đúng dạng \"Gia vị hỗn hợp và bột canh hỗn hợp → 21.03\". GIỮ."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — ĐIỀU KIỆN THIẾU DẢI SỐ, DỄ ĐỌC NHẦM. Bản nháp ghi \"Hỗn hợp sản phẩm thuộc các nhóm khác nhau\" và trích RIÊNG mục (b) — đọc riêng thì \"các nhóm khác nhau\" không biết là các nhóm nào, dễ hiểu thày MỌI hỗn hợp đều sang 09.10 (đẩy nhầm hỗn hợp ngoài dải 09.04–09.10). SỬA: (1) gắn CÂU DẪN nguyên văn của Chú giải 1 chương 9 vào câu trích để câu tự nói phạm vi (\"Hỗn hợp của các sản phẩm thuộc các nhóm từ 09.04 đến 09.10 được phân loại như sau:\"); (2) `dieuKien` giữ nguyên \"các nhóm KHÁC NHAU\" và thêm dải số. KHÔNG sửa câu nguồn, KHÔNG sửa mã đích.",
+   "sua": {
+    "dieuKien": "Hỗn hợp sản phẩm 09.04-09.10 thuộc các nhóm khác nhau",
+    "trich": "Hỗn hợp của các sản phẩm thuộc các nhóm từ 09.04 đến 09.10 được phân loại như sau:…(b) Hỗn hợp của hai hay nhiều sản phẩm thuộc các nhóm khác nhau cũng được xếp trong nhóm 09.10."
+   }
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn, có dấu hiệu loại trừ rõ (\"Chương này không bao gồm…\"), đích 21.06 nêu định danh trong chính câu trích. Điều kiện \"Hỗn hợp không xác định được đặc tính cơ bản\" (43 ký tự) là điều kiện CẦN đúng nguồn, KHÔNG nói chắc hơn nguồn; mệnh đề thử nghiệm đầy đủ \"(i) hoặc (ii)\" nằm ngay trong câu trích (bằng chứng runtime dẫn kèm) và ở phanBiet của 0910 — viết dài hơn sẽ bị runtime clip(55) cắt cụt. GIỮ. PHIÊN TRƯỚC đã xoá mục này với lý do \"mâu thuẫn 21.03/21.06\" — em BÁC lý do đó (xem lyDo ở loaiTru[4])."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi không nhắc mã; nhánh Có = 12.07 (nêu định danh trong câu trích), nhánh Không = 0909 (hàng còn lại ở nhóm) — có căn cứ trong nguồn. GIỮ."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi không nhắc mã; nhánh Có = 12.10 (nêu định danh), nhánh Không = 0909. GIỮ."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẬT — CÂU HỎI THIẾU DẢI SỐ. Bản nháp hỏi \"Hàng là hỗn hợp sản phẩm thuộc các nhóm từ 09.04 đến 09.10?\" — phạm vi câu hỏi RỘNG hơn mệnh đề nguồn (\"thuộc các nhóm KHÁC NHAU\"): hỗn hợp cùng MỘT nhóm cũng trả lời \"có\" → dẫn nhầm sang 09.10. SỬA: hỏi đúng mệnh đề (b) và gắn câu dẫn nguyên văn (dùng chung với loaiTru[5]). KHÔNG sửa mã đích.",
+   "sua": {
+    "hoi": "Hàng là hỗn hợp của hai hay nhiều sản phẩm thuộc các nhóm khác nhau (09.04-09.10)?",
+    "trich": "Hỗn hợp của các sản phẩm thuộc các nhóm từ 09.04 đến 09.10 được phân loại như sau:…(b) Hỗn hợp của hai hay nhiều sản phẩm thuộc các nhóm khác nhau cũng được xếp trong nhóm 09.10."
+   }
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Để null — nguồn 0909 không có quy tắc bộ phận (không có danh sách phần/phân bộ phận để ghi). GIỮ."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dịch đúng tên WCO 090921 \"coriander seeds\" = hạt cây rau mùi (khớp tên nhóm 0909 trong cây HS), trạng thái \"neither crushed nor ground\" = chưa xay hoặc chưa nghiền ✓. GIỮ."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dịch đúng tên WCO 090922 + trạng thái đã xay/nghiền ✓. GIỮ."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dịch đúng tên WCO 090931 \"cumin seeds\" = hạt cây thì là Ai cập (khớp tên nhóm 0909) ✓ + trạng thái ✓. GIỮ."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dịch đúng tên WCO 090932 + trạng thái ✓. GIỮ."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Dịch đúng \"seeds of anise, badian, caraway or fennel; juniper berries\" (tên nhóm 0909 trong cây HS: \"hoa hồi anise, hoa hồi badian, cây ca-rum (caraway)…, hạt bách xù\") + \"neither crushed nor ground\" ✓. GIỮ."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "Dịch đúng \"crushed or ground\" ✓. GIỮ."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nút 090961 là phân nhóm 6 số CHƯA CÓ tên tiếng Việt trong cây HS (tenVi = null) → điền tên được theo luật 9; tên dịch bám sát tên WCO + tên dòng biểu thuế ✓. GIỮ."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 09092100 \"Chưa xay hoặc chưa nghiền\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 09092200 \"Đã xay hoặc nghiền\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 09093100 \"Chưa xay hoặc chưa nghiền\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 09093200 \"Đã xay hoặc nghiền\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 09096110 \"Của hoa hồi anise (tiểu hồi)\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 09096120 \"Của hoa hồi badian (đại hồi)\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 09096130 \"Của cây ca-rum (caraway)\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 09096190 \"Loại khác\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 09096210 \"Của hoa hồi anise (tiểu hồi)\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 09096220 \"Của hoa hồi badian (đại hồi)\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 09096230 \"Của cây ca-rum (caraway)\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 09096290 \"Loại khác\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  }
+ ]
+}
