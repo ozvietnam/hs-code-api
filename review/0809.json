@@ -1,0 +1,55 @@
+{
+  "nhom": "0809",
+  "nguoiSoat": "dev-soat-doc-lap-lo049",
+  "soatVaiTro": "soat-doc-lap",
+  "luc": "2026-10-26T01:10:00+07:00",
+  "phamViSoat": "5 mục trong phạm vi (phamVi 1, boPhan 0, dieuKienVao 0, loaiTru 2, phanBiet 2) + 11 mục ngoài phạm vi đã đọc kiểm (tieuChi6 5, dong8 6) = 16/16 mục của bản nháp.",
+  "soat": 16,
+  "daKiem": 14,
+  "sua": 2,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0809 (lô 049, PR #453). Đọc TOÀN BỘ tmp/so-tay/nguon/0809.txt (7.745 byte; khối [nhom0809.nhom], [ch08.chuong], [phan08.phan], 5 khối [wco.*], 6 khối [tax.*]). Máy xanh nhưng không chứng minh câu trích tự nói đúng điều mục khẳng định. KẾT QUẢ trong 5 mục trong phạm vi: 2 SỬA, 3 GIỮ (mọi mục ngoài phạm vi đều giữ nguyên).\n\nLỖI 1 — loaiTru[0] / phanBiet[0]: mục \"(i) Bột…\" bị bỏ dòng dẫn \"Chương này cũng không bao gồm:\" → sửa (86 ký tự).\n\nGIỮ phamVi: câu trích là trọn câu \"Nhóm này bao gồm quả mơ, … và mận gai.\" — có vị ngữ, phủ đủ 5 loại quả, `text` khớp 1-1, 189 ký tự; đây là câu cuối của khối nguồn nên không có ngoại lệ nào bị nuốt.",
+  "thayDoi": [
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định): mục \"(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)\" nằm dưới dòng dẫn \"Chương này cũng không bao gồm:\"; bản nháp bỏ dòng dẫn nên câu trích chỉ còn là một danh sách. SỬA: thêm dòng dẫn (nguyên văn byte-exact, 86 ký tự).",
+      "sua": {
+        "trich": "Chương này cũng không bao gồm:…(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)."
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định): mục \"(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)\" nằm dưới dòng dẫn \"Chương này cũng không bao gồm:\"; bản nháp bỏ dòng dẫn nên câu trích chỉ còn là một danh sách. SỬA: thêm dòng dẫn (nguyên văn byte-exact, 86 ký tự). Riêng `phanBiet` thì nhánh \"có → 1106\" không có căn cứ trong câu trích.",
+      "sua": {
+        "trich": "Chương này cũng không bao gồm:…(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)."
+      }
+    },
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích là TRỌN CÂU \"Nhóm này bao gồm quả mơ, tất cả các loại quả anh đào (anh đào hình trái tim, anh đào chua...), đào các loại (kể cả xuân đào), tất cả các loại mận (mận lục, mận vàng, mận tím...) và mận gai.\" — có vị ngữ \"bao gồm\", phủ đủ 5 loại quả của nhóm, `text` khớp 1-1, 189 ký tự. Không có ngoại lệ nào sau câu (đây là câu cuối của khối nguồn 0809)."
+    },
+    {
+      "index": "dieuKienVao",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ (rỗng). Chú giải nhóm 0809 chỉ có một câu mô tả phạm vi, không có câu ràng buộc vào nhóm."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích tự đủ: nói rõ Chương này không bao gồm quả thấm lọc tách nước và dẫn tới (nhóm 20.08)."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu hỏi \"Hàng là quả được bảo quản bằng cách thấm lọc tách nước?\" → có→2008 / không→0809: chiều đúng, câu trích nêu đích danh 20.08."
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ (null). Không có quy tắc bộ phận trong nguồn 0809."
+    }
+  ]
+}

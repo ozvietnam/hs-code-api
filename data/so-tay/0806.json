@@ -1,0 +1,148 @@
+{
+ "nhom": "0806",
+ "phamVi": {
+  "text": "Nho tươi dùng để ăn tráng miệng hay để sản xuất rượu vang (kể cả loại đóng thô trong thùng tô nô); nho khô (chủ yếu là currants, sultanas, Izmir, Thompson hoặc nho khô không hạt); và nho khô lớn có hạt.",
+  "nguon": "nhom0806.nhom",
+  "trich": "Nhóm này bao gồm các loại nho tươi dùng để ăn tráng miệng hay để sản xuất rượu vang (kể cả loại đóng thô trong thùng tô nô)…Nhóm này cũng bao gồm các loại nho khô, loại chủ yếu là “currants”, “sultanas”, “Izmir”, “Thompson” hoặc loại được gọi là nho khô “không hạt”…nho khô lớn có hạt",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Bột, bột thô, bột mịn chế biến từ quả",
+   "sangNhom": "1106",
+   "nguon": "ch08.chuong",
+   "trich": "Chương này cũng không bao gồm:…(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Quả bảo quản bằng cách thấm lọc tách nước",
+   "sangNhom": "2008",
+   "nguon": "ch08.chuong",
+   "trich": "Tuy nhiên, Chương này không bao gồm quả được bảo quản bằng cách thấm lọc tách nước.…Quả như vậy được phân loại vào Chương 20 (nhóm 20.08).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là bột, bột thô hoặc bột mịn chế biến từ quả?",
+   "neuCo": "1106",
+   "neuKhong": "0806",
+   "nguon": "ch08.chuong",
+   "trich": "Chương này cũng không bao gồm:…(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hoi": "Hàng là quả được bảo quản bằng cách thấm lọc tách nước?",
+   "neuCo": "2008",
+   "neuKhong": "0806",
+   "nguon": "ch08.chuong",
+   "trich": "Tuy nhiên, Chương này không bao gồm quả được bảo quản bằng cách thấm lọc tách nước.…Quả như vậy được phân loại vào Chương 20 (nhóm 20.08).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "080610",
+   "fact": "la_nho_tuoi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.080610",
+   "trich": "080610 Fruit, edible; grapes, fresh",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "080620",
+   "fact": "la_nho_kho",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.080620",
+   "trich": "080620 Fruit, edible; grapes, dried",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "08061000",
+   "dieuKien": "Nho tươi dùng để ăn tráng miệng hay để sản xuất rượu vang",
+   "nguon": "nhom0806.nhom",
+   "trich": "các loại nho tươi dùng để ăn tráng miệng hay để sản xuất rượu vang (kể cả loại đóng thô trong thùng tô nô)",
+   "tieuChi": {
+    "fact": "la_nho_tuoi",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "08062000",
+   "dieuKien": "Nho khô (currants, sultanas, Izmir, Thompson hoặc nho khô không hạt)",
+   "nguon": "nhom0806.nhom",
+   "trich": "các loại nho khô, loại chủ yếu là “currants”, “sultanas”, “Izmir”, “Thompson” hoặc loại được gọi là nho khô “không hạt”",
+   "tieuChi": {
+    "fact": "la_nho_kho",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "0806",
+    "cap": 4,
+    "cha": "08",
+    "tenVi": "Quả nho, tươi hoặc khô.",
+    "tenEn": "Grapes; fresh or dried",
+    "suyRa": false
+   },
+   {
+    "id": "08061000",
+    "cap": 8,
+    "cha": "0806",
+    "tenVi": "Tươi",
+    "tenEn": "Fruit, edible; grapes, fresh",
+    "suyRa": false,
+    "laPhanNhom": "080610"
+   },
+   {
+    "id": "08062000",
+    "cap": 8,
+    "cha": "0806",
+    "tenVi": "Khô",
+    "tenEn": "Fruit, edible; grapes, dried",
+    "suyRa": false,
+    "laPhanNhom": "080620"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch08.chuong",
+  "nhom0806.nhom",
+  "wco.080610",
+  "wco.080620"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-25T17:50:39.980Z",
+  "ms": 0
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

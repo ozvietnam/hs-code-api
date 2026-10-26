@@ -1,0 +1,183 @@
+{
+ "nhom": "0808",
+ "phamVi": {
+  "text": "Quả táo (apple) và quả lê: ăn tráng miệng, sản xuất đồ uống (rượu táo, rượu lê), mục đích công nghiệp (chế phẩm bột, mứt, thạch từ táo, pectin); quả mộc qua chủ yếu dùng để làm mứt hoặc thạch.",
+  "nguon": "nhom0808.nhom",
+  "trich": "Quả táo (apple) và quả lê được phân loại vào nhóm này cho dù chúng thích hợp để ăn tráng miệng, để sản xuất đồ uống (ví dụ: rượu táo hoặc rượu lê)…mục đích công nghiệp (như chế phẩm bột, mứt hoặc thạch từ táo, chiết xuất của pectin).…Quả mộc qua chủ yếu dùng để làm mứt hoặc thạch.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Bột, bột thô, bột mịn chế biến từ quả",
+   "sangNhom": "1106",
+   "nguon": "ch08.chuong",
+   "trich": "Chương này cũng không bao gồm:…(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Quả bảo quản bằng cách thấm lọc tách nước",
+   "sangNhom": "2008",
+   "nguon": "ch08.chuong",
+   "trich": "Tuy nhiên, Chương này không bao gồm quả được bảo quản bằng cách thấm lọc tách nước.…Quả như vậy được phân loại vào Chương 20 (nhóm 20.08).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là bột, bột thô hoặc bột mịn chế biến từ quả?",
+   "neuCo": "1106",
+   "neuKhong": "0808",
+   "nguon": "ch08.chuong",
+   "trich": "Chương này cũng không bao gồm:…(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hoi": "Hàng là quả được bảo quản bằng cách thấm lọc tách nước?",
+   "neuCo": "2008",
+   "neuKhong": "0808",
+   "nguon": "ch08.chuong",
+   "trich": "Tuy nhiên, Chương này không bao gồm quả được bảo quản bằng cách thấm lọc tách nước.…Quả như vậy được phân loại vào Chương 20 (nhóm 20.08).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "080810",
+   "fact": "la_qua_tao",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.080810",
+   "trich": "080810 Fruit, edible; apples, fresh",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "080830",
+   "fact": "la_qua_le",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.080830",
+   "trich": "080830 Fruit, edible; pears, fresh",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "080840",
+   "fact": "la_qua_moc_qua",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom0808.nhom",
+   "trich": "Quả mộc qua chủ yếu dùng để làm mứt hoặc thạch.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "08081000",
+   "dieuKien": "Quả táo (apples)",
+   "nguon": "tax.08081000",
+   "trich": "08081000 - Quả táo (apples)",
+   "tieuChi": {
+    "fact": "la_qua_tao",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "08083000",
+   "dieuKien": "Quả lê",
+   "nguon": "tax.08083000",
+   "trich": "08083000 - Quả lê",
+   "tieuChi": {
+    "fact": "la_qua_le",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "08084000",
+   "dieuKien": "Quả mộc qua chủ yếu dùng để làm mứt hoặc thạch",
+   "nguon": "nhom0808.nhom",
+   "trich": "Quả mộc qua chủ yếu dùng để làm mứt hoặc thạch.",
+   "tieuChi": {
+    "fact": "la_qua_moc_qua",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "0808",
+    "cap": 4,
+    "cha": "08",
+    "tenVi": "Quả táo (apple), lê và quả mộc qua, tươi.",
+    "tenEn": "Apples, pears and quinces; fresh",
+    "suyRa": false
+   },
+   {
+    "id": "08081000",
+    "cap": 8,
+    "cha": "0808",
+    "tenVi": "Quả táo (apples)",
+    "tenEn": "Fruit, edible; apples, fresh",
+    "suyRa": false,
+    "laPhanNhom": "080810"
+   },
+   {
+    "id": "08083000",
+    "cap": 8,
+    "cha": "0808",
+    "tenVi": "Quả lê",
+    "tenEn": "Fruit, edible; pears, fresh",
+    "suyRa": false,
+    "laPhanNhom": "080830"
+   },
+   {
+    "id": "08084000",
+    "cap": 8,
+    "cha": "0808",
+    "tenVi": "Quả mộc qua",
+    "tenEn": "Fruit, edible; quinces, fresh",
+    "suyRa": false,
+    "laPhanNhom": "080840"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch08.chuong",
+  "nhom0808.nhom",
+  "tax.08081000",
+  "tax.08083000",
+  "wco.080810",
+  "wco.080830"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-25T17:50:39.983Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 11,
+  "dat": 11,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
