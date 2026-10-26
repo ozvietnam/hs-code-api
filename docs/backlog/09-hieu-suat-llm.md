@@ -167,7 +167,7 @@ Nhánh `perf/gon-dau-ra-cat-vong-sua` (`lib/engine-loop.js`, mục TỐI ƯU). K
   giải nhóm rồi chạy lại MỌI chốt chặn trên cùng đáp án; nhận không cần vòng AI chỉ khi nhóm có sổ tay + mã 8 số khớp tờ khai
   Oz (≥ 75%) hoặc bảng quyết định đã duyệt + không cảnh báo phân nhóm (ghi `engine.gates[].tatDinh` + `antiPatternWarnings`);
   sổ tay nghi → gộp vào lượt giải trình (một vòng thay hai); còn lại → vòng AI như cũ.
-- **Tắt khẩn:** `HS_GON_DAU_RA=off HS_MAX_VONG_SUA=off` → prompt + luồng trùng từng byte bản bbc85f6
+- **Tắt khẩn:** `HS_GON_DAU_RA=off HS_MAX_VONG_SUA=off` → prompt + luồng trùng từng byte bản main 43a3cae
   (`scripts/test-engine-loop-gon.mjs` so với golden master `tests/fixtures/engine-loop-goc/`). `HS_MAX_VONG_SUA=0` là trần
   0 vòng sửa, KHÔNG phải công tắc tắt.
 - **Đo (chưa đo bằng AI thật):** `scripts/bench-classify-llm.mjs` nay ghi token vào/ra từng bước (withUsage), số lượt chạm trần

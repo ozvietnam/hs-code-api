@@ -1,6 +1,6 @@
 // Tối ưu độ trễ engine-loop (backlog 09 bước 3+4): HS_GON_DAU_RA + HS_MAX_VONG_SUA — AI giả, không mạng, không LLM.
 //  A. CÔNG TẮC TẮT = origin/main TỪNG BYTE. Cùng kịch bản chạy qua golden master (tests/fixtures/engine-loop-goc/ — bản đóng
-//     băng lib/engine-loop.js tại bbc85f6) và qua lib/engine-loop.js với HS_GON_DAU_RA=off HS_MAX_VONG_SUA=off: mọi lời gọi AI
+//     băng lib/engine-loop.js tại main 43a3cae) và qua lib/engine-loop.js với HS_GON_DAU_RA=off HS_MAX_VONG_SUA=off: mọi lời gọi AI
 //     (system, user, opts kể cả khoá undefined, đúng thứ tự khoá) và phản hồi (bỏ trường đo giờ) phải trùng từng byte. Hai bản
 //     đọc CÙNG dữ liệu nên commit dữ liệu (sổ tay, biểu thuế…) không làm đỏ test. Thêm: băm SYS_R1/SYS_R2 ghim theo origin/main.
 //  B. MẶC ĐỊNH BẬT: prompt có trần (khớp đúng phần code đọc), maxTokens 6000/10000, AI giả ra kết quả hợp lệ; JSON cụt/mảnh vụn
@@ -35,7 +35,9 @@ console.error = () => {}; console.warn = () => {};
 const ozMod = require('../lib/oz-precedent-search');
 const ozThat = ozMod.searchOzByKeyword;
 let ozGoi = 0;
-const GOC = require('../tests/fixtures/engine-loop-goc/engine-loop.bbc85f6.js');
+// Golden master = RÀO CHẮN THỜI GIAN TRIỂN KHAI: chứng minh "off" ≡ main 43a3cae trong lúc hai công tắc mới bật trên prod.
+// XOÁ fixture này cùng phần A dưới đây ≤ 2 tuần sau khi HS_GON_DAU_RA / HS_MAX_VONG_SUA được xác nhận ổn trên prod.
+const GOC = require('../tests/fixtures/engine-loop-goc/engine-loop.43a3cae.js');
 const MOI = require('../lib/engine-loop.js');
 const { TRAN } = MOI;
 let pass = 0; let fail = 0;
@@ -122,9 +124,9 @@ const lechDau = (a, b) => { let i = 0; while (i < a.length && a[i] === b[i]) i +
 const sha = (s) => createHash('sha256').update(s, 'utf8').digest('hex');
 
 // ═════════ A. CÔNG TẮC TẮT = origin/main TỪNG BYTE ═════════
-// Băm prompt hệ thống của origin/main bbc85f6 (độc lập dữ liệu) — đổi chữ SYS_R1/SYS_R2 là đỏ ở đây.
-check('A0 SYS_R1 trùng origin/main bbc85f6 (sha256 ghim)', sha(MOI.SYS_R1) === '2ceb6b55f3cced0ece9bca9cb3d004d91654865a94cfc4bd0df130bd63807f8d' && MOI.SYS_R1 === GOC.SYS_R1, sha(MOI.SYS_R1));
-check('A0 SYS_R2 trùng origin/main bbc85f6 (sha256 ghim)', sha(MOI.SYS_R2) === '6d1267b2028d80fa264b4c3bb34fafabfc3dadd80d69fe40714d965077cd5677' && MOI.SYS_R2 === GOC.SYS_R2, sha(MOI.SYS_R2));
+// Băm prompt hệ thống của origin/main 43a3cae (độc lập dữ liệu) — đổi chữ SYS_R1/SYS_R2 là đỏ ở đây.
+check('A0 SYS_R1 trùng origin/main 43a3cae (sha256 ghim)', sha(MOI.SYS_R1) === '2ceb6b55f3cced0ece9bca9cb3d004d91654865a94cfc4bd0df130bd63807f8d' && MOI.SYS_R1 === GOC.SYS_R1, sha(MOI.SYS_R1));
+check('A0 SYS_R2 trùng origin/main 43a3cae (sha256 ghim)', sha(MOI.SYS_R2) === '6d1267b2028d80fa264b4c3bb34fafabfc3dadd80d69fe40714d965077cd5677' && MOI.SYS_R2 === GOC.SYS_R2, sha(MOI.SYS_R2));
 const TAT = { HS_GON_DAU_RA: 'off', HS_MAX_VONG_SUA: 'off' };
 for (const name of Object.keys(SC)) {
   const a = await chay(GOC, name);

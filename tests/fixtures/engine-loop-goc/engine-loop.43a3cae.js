@@ -1,9 +1,9 @@
-// GOLDEN MASTER — bản ĐÓNG BĂNG của lib/engine-loop.js tại origin/main bbc85f6 (26/10/2026), chỉ đổi đường require
-// ('./x' → '../../../lib/x'). Dùng DUY NHẤT cho scripts/test-engine-loop-gon.mjs: chạy cùng kịch bản (AI giả) qua bản này
-// và qua lib/engine-loop.js với HS_GON_DAU_RA=off HS_MAX_VONG_SUA=off → prompt + luồng phải trùng TỪNG BYTE.
+// GOLDEN MASTER — bản ĐÓNG BĂNG của lib/engine-loop.js tại origin/main 43a3cae (26/10/2026, đã gồm cac4f63 sửa B1b), chỉ đổi
+// đường require ('./x' → '../../../lib/x'). Dùng DUY NHẤT cho scripts/test-engine-loop-gon.mjs: chạy cùng kịch bản (AI giả) qua
+// bản này và qua lib/engine-loop.js với HS_GON_DAU_RA=off HS_MAX_VONG_SUA=off → prompt + luồng phải trùng TỪNG BYTE.
 // So sánh hai bản code trên CÙNG dữ liệu nên commit dữ liệu (sổ tay, biểu thuế…) không làm đỏ test.
-// KHÔNG sửa tay. Khi lib/engine-loop.js đổi CÓ CHỦ Ý cả đường tắt (sửa lỗi dùng chung), thay bản này bằng
-// bản mới tương ứng hoặc bỏ phần so golden master — cam kết "tắt = như 26/10" chỉ có nghĩa tới lần đổi đó.
+// KHÔNG sửa tay. Rào chắn THỜI GIAN TRIỂN KHAI: xoá (cùng phần A của test) ≤ 2 tuần sau khi hai công tắc được xác nhận trên prod;
+// trước đó, nếu lib/engine-loop.js đổi CÓ CHỦ Ý cả đường tắt, thay bản này bằng bản main mới tương ứng.
 // ĐỘNG CƠ HAI VÒNG + CHỐT CHẶN (CEO chốt 06/10/2026):
 //  - AI là bộ não phân loại: suy luận trước, kiểm chứng sau. Vòng 1: đọc hồ sơ hỗn độn (tiêu đề Trung, thông số,
 //    chữ OCR) → hồ sơ bản chất 3 thứ tiếng + giả thuyết Chương→Nhóm→Phân nhóm theo GIR + LỆNH KIỂM CHỨNG.
@@ -867,7 +867,7 @@ async function classifyLoop(rawAttrs, opts = {}) {
   // B1b shadow (doc 12): NEED_FACTS thì tra web theo mục tiêu — chỉ gắn webHint + log,
   // KHÔNG đổi quyết định engine. Gate ZAI_WEB_FACTS=shadow/on; lỗi → out nguyên vẹn.
   try {
-    loopOut = await require('../../../lib/b1b-web.js').b1bShadow(rawAttrs, loopOut);
+    return await require('../../../lib/b1b-web.js').b1bShadow(rawAttrs, loopOut);
   } catch { /* tầng tuỳ chọn: không bao giờ làm hỏng lượt chính */ }
   return loopOut;
 }
