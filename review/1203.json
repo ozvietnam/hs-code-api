@@ -1,0 +1,42 @@
+{
+  "nhom": "1203",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp CẮT TRÍCH TRƯỚC câu ngoại lệ nằm ngay sau: nguồn nhom1203.nhom có câu liền sau \"Nhóm này không bao gồm dừa làm khô, tức là, cùi dừa được cắt thành miếng nhỏ và được làm khô thích hợp dùng làm thức ăn cho người (nhóm 08.01).\" — luật \"không được bỏ ngoại lệ ngay sau câu trích\" + tiền lệ lô 054 (1103/1106/1107) bắt buộc kéo vào. Phạm vi bị nói quá: dừa làm khô (08.01) là loại trừ, không thuộc 1203. SỬA: trích = định nghĩa + câu ngoại lệ (cắt thẳng từ tệp nguồn, byte-exact); text nêu rõ ranh giới với 08.01 (120 → 199 ký tự, ≤220 ⇒ không bị clip). Đối chiếu: nhóm 08.01 (đã gộp) dùng đúng khuôn này — \"…; loại trừ copra — … (nhóm 12.03)\".",
+      "sua": {
+        "text": "Cùi (cơm) dừa khô dùng để ép dầu dừa và không thích hợp dùng làm thức ăn cho người; không gồm dừa làm khô, cùi dừa được cắt thành miếng nhỏ và làm khô thích hợp dùng làm thức ăn cho người (nhóm 08.01).",
+        "trich": "Cùi (cơm) dừa khô là phần cùi được làm khô của quả dừa dùng để ép dầu dừa và không thích hợp dùng làm thức ăn cho người.\n\nNhóm này không bao gồm dừa làm khô, tức là, cùi dừa được cắt thành miếng nhỏ và được làm khô thích hợp dùng làm thức ăn cho người (nhóm 08.01)."
+      }
+    },
+    {
+      "index": "dieuKienVao",
+      "hanhDong": "giu",
+      "lyDo": "Rỗng — đúng: điều kiện của nhóm là PHỦ ĐỊNH (\"không thích hợp dùng làm thức ăn cho người\"); fact âm + value=false là ĐẢO CHIỀU (bài học lô 044) ⇒ không đặt. Thông tin nằm ở phamVi + loaiTru (→ 0801) + phanBiet (→ 0801)."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp dài 106 ký tự; runtime clip(…, 55) cắt thành \"Dừa làm khô, tức là, cùi dừa được cắt thành miếng nhỏ v…\" ⇒ MẤT đúng điều kiện quyết định (\"được làm khô thích hợp dùng làm thức ăn cho người\") — đây mới là chỗ phân biệt dừa làm khô (08.01) với cùi dừa khô (1203). SỬA: rút còn 54 ký tự (≤55 ⇒ không bị clip), giữ đủ ba điểm: \"Dừa làm khô\" + \"cắt [thành] miếng nhỏ\" + \"dùng làm thức ăn cho người\"; không thêm chữ nào ngoài trích.",
+      "sua": {
+        "dieuKien": "Dừa làm khô, cắt miếng nhỏ, dùng làm thức ăn cho người"
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu loại trừ nguyên văn; chiều Có/Không đúng (Có = dừa làm khô cắt miếng nhỏ, ăn cho người → 0801; Không = 1203); `hoi` 102/110 ký tự, không bị clip; `hoi` không nhắc mã phân nhóm. Vế \"cùi dừa khô\" là TÊN NHÓM của chính 1203 (trong cùng chú giải + dòng biểu thuế 12030000) ⇒ không phải thêm thông tin ngoài nguồn."
+    },
+    {
+      "index": "tieuChi6",
+      "hanhDong": "giu",
+      "lyDo": "Rỗng — đúng: 1203 trong cây chỉ có nút lá 8 số 12030000 (laPhanNhom = 1203, 4 số) ⇒ không có nút phân nhóm 6 số nào cần tiêu chí (check-cay báo \"đủ tiêu chí 6 số\")."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 12030000 — điều kiện chép nguyên văn dòng biểu thuế \"12030000 Cùi (cơm) dừa khô\" (nguồn tax.12030000); 17/90 ký tự."
+    }
+  ]
+}
