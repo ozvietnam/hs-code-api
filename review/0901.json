@@ -1,0 +1,159 @@
+{
+  "nhom": "0901",
+  "nguoiSoat": "dev-soat-doc-lap-lo050",
+  "luc": "2026-10-26T00:39:00+07:00",
+  "phamViSoat": "Toàn bộ 28 mục của bản nháp lô 050 (1 phamVi + 0 dieuKienVao + 3 loaiTru + 4 phanBiet + 5 tieuChi6 + 2 cay.tenDien + 13 dong8), đọc cùng tmp/so-tay/nguon/0901.txt (nhom0901.nhom có mục (1)–(5) và mục không bao gồm (a)–(c), ch09.chuong, phan09.phan, sen.09011120/09011220/09012111/09011130/09012112, wco.090111/090112/090121/090122/090190, tax.09011120…09019020). Đối chiếu TỪNG câu trích với câu nguồn nguyên văn (không tin máy kiểm).",
+  "soat": 28,
+  "giu": 26,
+  "sua": 2,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0901 — 28/28 mục đã đọc cùng nguồn. KHÔNG xoá, SỬA 2, GIỮ 26. (a) `phamVi`: chép đúng 5 mục (1)–(5) của nhom0901.nhom, đủ cả 5 phần của nhóm; đoạn lược bằng '…' chỉ nuốt phần giải thích 'tức là: còn trong quả, mới thu hoạch; dạng hột hoặc hạt còn vỏ lụa màu vàng nhạt; dạng hột và hạt đã lột vỏ lụa' (thuộc định nghĩa 'dưới tất cả các dạng') và vế phương pháp của mục (2) — không có ngoại lệ nào bị nuốt; `text` (213 ký tự, dưới trần runtime 220) nêu đúng cả 5 phần và giữ nguyên tính chất 'đã hoặc chưa'. (b) `dieuKienVao` rỗng là ĐÚNG: nhom0901.nhom chỉ có danh sách mục (1)–(5) và danh sách không bao gồm (a)–(c), không có câu ràng buộc nào vào nhóm; theo luật mục 4, `dieuKienVao` chỉ lấy câu ràng buộc chứ không lấy danh sách định nghĩa. (c) 3 `loaiTru`: lấy từ 'Nhóm này không bao gồm: … (a) Sáp cà phê (nhóm 15.21). / … (b) … (nhóm 21.01). / … (c) Chất caffeine, alkaloid có trong cà phê (nhóm 29.39).' — có dấu hiệu loại trừ rõ, đích danh trong chính câu; KHÔNG dính mẫu 'thường thuộc nhóm X'/'tùy trường hợp' ⇒ đúng luật mục 3. (d) 4 `phanBiet`: chiều Có/Không đúng ở cả 4 mục; `neuKhong` = chính nhóm 0901 (mẫu đã duyệt trong kho); `hoi` không nhắc mã phân nhóm/WCO ⇒ đạt luật máy. `phanBiet[3]` dùng mã 8 số (09019010/09019020) để tách hai dòng trong cùng phân nhóm 0901.19 — mẫu này đã có sẵn trong kho đã gộp (0304, 0406, 0410, 3812, 3917) ⇒ đạt. (e) 5 `tieuChi6` chép nguyên văn wco.*, fact bám đúng; 2 `cay.tenDien` (090111, 090121) lấy từ wco.* và check-cay báo '6/6 nhóm đủ, 0 lỗi, 0 cảnh báo' ⇒ đủ tên nút. (f) 13 `dong8`: chép nguyên văn tax.*/sen.*/wco.*. SỬA 2 mục — cùng một lỗi: `dieuKien` bỏ mất định ngữ 'thường' của câu SEN (bài học lô 034/048: mất định ngữ giới hạn thì câu thành khẳng định tuyệt đối). Nguồn: 'Hình thức: Hình dạng của hạt thường có hình bầu dục và dài hơn Robusta.' — bản nháp ghi 'hạt bầu dục, dài hơn Robusta' ⇒ nói thành đặc điểm tuyệt đối. Dòng Robusta giữ 'thường' đúng ('hạt tròn hơn và thường lớn hơn'), nên chỉ sửa hai dòng Arabica. GHI NHẬN cho người duyệt: (1) `loaiTru[1].dieuKien` dài 213 ký tự, runtime cắt còn 55 ⇒ mất vế '…và những chế phẩm có chứa chiết xuất…; những chất thay thế cà phê rang không chứa cà phê'; nhưng phần bị mất đó ĐÃ có trong `phanBiet[0].hoi` (93 ký tự, dưới trần 110) nên không mất thông tin trên prompt — KHÔNG sửa để tránh viết lại câu. (2) `dong8[09012120]` và `dong8[09012220]` cùng tên 'Đã xay' và cùng fact 'da_xay' (dòng biểu thuế ghi đúng như vậy, phân biệt nằm ở phân nhóm cha 0901.21 vs 0901.22 đã có trong `tieuChi6`) ⇒ không sửa. (3) `dong8[09011220]` lấy điều kiện từ tax.09011220 ('Arabica (SEN) hoặc Robusta (SEN)') chứ không từ sen.09011220 (chỉ mô tả Robusta) — đúng, vì dòng biểu thuê gộp cả hai loài.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Chép đủ 5 mục (1)–(5) của nhom0901.nhom (nguồn có cả 5 phần trong nhóm, không chia (A)/(B)); đoạn lược '…' chỉ nuốt phần giải thích 'dưới tất cả các dạng' và vế phương pháp của mục (2), không nuốt ngoại lệ. `text` nêu đủ 5 phần, giữ nguyên 'đã hoặc chưa' (không biến thành điều kiện bắt buộc)."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom0901.nhom: 'Nhóm này không bao gồm: … (a) Sáp cà phê (nhóm 15.21).' Dấu hiệu loại trừ rõ, đích 15.21 nêu đích danh trong câu ⇒ đúng luật mục 3."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom0901.nhom mục (b), đích 21.01 nêu đích danh trong câu; không có mẫu 'thường thuộc/tùy trường hợp'. GHI NHẬN (không sửa): `dieuKien` 213 ký tự bị runtime cắt còn 55, mất vế 'chất thay thế cà phê rang không chứa cà phê' — nhưng vế đó đã có trong `phanBiet[0].hoi` nên không mất thông tin trên prompt."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom0901.nhom mục (c): 'Chất caffeine, alkaloid có trong cà phê (nhóm 29.39).' Dấu hiệu loại trừ rõ, đích 29.39 nêu đích danh trong câu ⇒ đúng luật mục 3."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = chiết xuất/tinh dầu/chất cô đặc cà phê HOẶC chất thay thế cà phê rang không chứa cà phê → 2101 (đích nêu trong câu trích), 'không' = cà phê → 0901 (chính nhóm). Hai vế của 'A hoặc B' cùng về đích 2101 nên không bị tách thành hai nhánh độc lập. `hoi` không nhắc mã phân nhóm/WCO ⇒ đạt luật máy."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = chất caffeine/alkaloid trong cà phê → 2939, 'không' = cà phê → 0901; đích có trong câu trích."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = sáp cà phê → 1521, 'không' = cà phê → 0901; đích có trong câu trích."
+    },
+    {
+      "index": "phanBiet[3]",
+      "hanhDong": "giu",
+      "lyDo": "Tách hai dòng 8 số trong cùng phân nhóm: 'có' = vỏ quả và vỏ lụa cà phê → 09019010, 'không' = chất thay thế có chứa cà phê → 09019020, đúng với mục (4)/(5) của nhom0901.nhom và với hai dòng biểu thuế. Mã 8 số trong `phanBiet` là mẫu đã có trong kho đã gộp (0304, 0406, 0410, 3812, 3917) và hai mã đều thuộc chính nhóm nên không cần nêu trong câu trích."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090111 ('090111 Coffee; not roasted or decaffeinated'); fact 'la_ca_phe_chua_rang_chua_khu_caffeine' bám đúng từ nguồn."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090112 ('090112 Coffee; decaffeinated, not roasted'); fact bám đúng từ nguồn."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090121 ('090121 Coffee; roasted, not decaffeinated'); fact bám đúng từ nguồn."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090122 ('090122 Coffee; roasted, decaffeinated'); fact bám đúng từ nguồn."
+    },
+    {
+      "index": "tieuChi6[4]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090190 ('090190 Coffee; husks and skins, coffee substitutes containing coffee in any proportion'); fact bám đúng từ nguồn."
+    },
+    {
+      "index": "cay.tenDien[0]",
+      "hanhDong": "giu",
+      "lyDo": "Nút 6 số 090111 chưa có tên tiếng Việt; tên điền từ câu wco.090111 ('not roasted or decaffeinated') và chép nguyên văn. check-cay báo nhóm 0901 đủ tên nút, 0 lỗi."
+    },
+    {
+      "index": "cay.tenDien[1]",
+      "hanhDong": "giu",
+      "lyDo": "Nút 6 số 090121 chưa có tên tiếng Việt; tên điền từ câu wco.090121 ('roasted, not decaffeinated') và chép nguyên văn. (Hai phân nhóm còn lại 090112/090122 đã có tên từ biểu thuế Tổng cục nên máy không đòi điền — check-cay xanh.)"
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "sua",
+      "lyDo": "`dieuKien` mất định ngữ giới hạn ⇒ nói chắc hơn nguồn (bài học lô 034/048: mất 'thường' thì câu thành khẳng định tuyệt đối; máy KHÔNG bắt được vì câu trích vẫn nguyên văn). Nguồn sen.09011120: 'Hình thức: Hình dạng của hạt THƯỜNG có hình bầu dục và dài hơn Robusta.' — bản nháp ghi 'hạt bầu dục, dài hơn Robusta'. Đã thêm lại 'thường' (88 ký tự, vẫn dưới trần runtime 90) và giữ nguyên `trich`, `nguon`, `tieuChi`.",
+      "sua": {
+        "dieuKien": "Cà phê Arabica — hàm lượng cafein thường 0,8 - 1,4%; hạt thường bầu dục, dài hơn Robusta"
+      }
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09011130 lấy từ sen.09011130; `dieuKien` giữ đủ định ngữ: 'hạt tròn hơn và THƯỜNG lớn hơn; caffein thường là 1,7% - 4%' đúng nguồn 'Hạt cà phê tròn hơn và thường lớn hơn' + 'thường là 1,7% - 4%'. Không sửa."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09011190 ('Loại khác') có trong tax.*; `dieuKien` lấy từ wco.090111 theo mẫu 'Loại khác: <tên WCO>' đã dùng ở kho đã gộp; `loaiKhac` để máy tự điền theo biểu thuế."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09011220 có trong tax.*; `dieuKien` = 'Arabica (SEN) hoặc Robusta (SEN)' nguyên văn dòng biểu thuế (dòng này gộp cả hai loài nên KHÔNG lấy riêng sen.09011220 vốn chỉ mô tả Robusta); `tieuChi.fact' gộp 'A hoặc B' trong một fact, không tách thành hai điều kiện độc lập."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09011290 ('Loại khác') có trong tax.*; `dieuKien` lấy từ wco.090112 theo mẫu đã dùng ở kho đã gộp; `loaiKhac` để máy tự điền."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "sua",
+      "lyDo": "Cùng lỗi mất định ngữ giới hạn ở `dong8[0]`: nguồn sen.09012111 ghi 'Hình dạng của hạt thường có hình bầu dục và dài hơn Robusta' nhưng `dieuKien` ghi 'hạt bầu dục, dài hơn Robusta'. Đã thêm lại 'thường' (88 ký tự ≤ trần 90); `trich`, `nguon`, `tieuChi` giữ nguyên.",
+      "sua": {
+        "dieuKien": "Cà phê Arabica — hàm lượng cafein thường 0,8 - 1,4%; hạt thường bầu dục, dài hơn Robusta"
+      }
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09012112 lấy từ sen.09012112; `dieuKien` giữ đủ 'thường' ('hạt tròn hơn và thường lớn hơn; caffein thường là 1,7% - 4%') đúng nguồn."
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09012119 ('Loại khác') có trong tax.*; `dieuKien` lấy từ wco.090121 theo mẫu đã dùng ở kho đã gộp; `loaiKhac` để máy tự điền."
+    },
+    {
+      "index": "dong8[8]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09012120 có trong tax.*; `dieuKien` = 'Đã xay' nguyên văn dòng biểu thuế; `tieuChi.fact` 'da_xay' bám đúng. Phân biệt với dòng 09012220 nằm ở phân nhóm cha 0901.21 (đã rang, chưa khử caffeine) đã có tiêu chí ở `tieuChi6[2]`."
+    },
+    {
+      "index": "dong8[9]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09012210 có trong tax.*; `dieuKien` = 'Chưa xay' nguyên văn; `tieuChi.fact` bám đúng."
+    },
+    {
+      "index": "dong8[10]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09012220 có trong tax.*; `dieuKien` = 'Đã xay' nguyên văn; `tieuChi.fact` bám đúng."
+    },
+    {
+      "index": "dong8[11]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09019010 có trong tax.*; `dieuKien` = 'Vỏ quả và vỏ lụa cà phê' nguyên văn; `tieuChi.fact` bám đúng nguồn và với mục (4) của nhom0901.nhom."
+    },
+    {
+      "index": "dong8[12]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 09019020 có trong tax.*; `dieuKien` = 'Các chất thay thế có chứa cà phê' nguyên văn; `tieuChi.fact` bám đúng nguồn và với mục (5) của nhom0901.nhom."
+    }
+  ]
+}

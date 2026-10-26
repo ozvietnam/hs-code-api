@@ -1,0 +1,152 @@
+{
+  "nhom": "0813",
+  "nguoiSoat": "dev-soat-doc-lap-lo050",
+  "luc": "2026-10-26T00:37:00+07:00",
+  "phamViSoat": "Toàn bộ 25 mục của bản nháp lô 050 (1 phamVi + 2 dieuKienVao + 3 loaiTru + 3 phanBiet + 5 tieuChi6 + 11 dong8), đọc cùng tmp/so-tay/nguon/0813.txt (nhom0813.nhom 7 đoạn có 2 phần (A)/(B), ch08.chuong, phan08.phan, wco.081310/081320/081330/081340/081350, tax.08131000…08135090). Đối chiếu TỪNG câu trích với câu nguồn nguyên văn (không tin máy kiểm).",
+  "soat": 25,
+  "giu": 20,
+  "sua": 3,
+  "xoa": 2,
+  "ghiChu": "SOÁT ĐỘC LẬP 0813 — 25/25 mục đã đọc cùng nguồn. XOÁ 2, SỬA 3, GIỮ 20. Đây là nhóm RỦI RO cao nhất của lô: nguồn có HAI phần (A) quả khô + (B) hỗn hợp quả hạch/quả khô, mà tiêu đề phần (A) bị MẤT trong nguồn ⇒ rất dễ đặt điều kiện chỉ phủ một phần. (a) XOÁ `dieuKienVao[0]` và `[1]`: cả hai câu trích ('Nhóm này bao gồm các loại quả khô khi ở trạng thái tươi chúng được phân loại vào các nhóm 08.07 đến 08.10' và 'Chúng được xử lý bằng cách phơi khô ngoài nắng hoặc bằng các phương pháp công nghiệp') chỉ nói về PHẦN (A), còn phần (B) của chính nhóm có câu 'Vì vậy nó bao gồm cả các hỗn hợp quả hạch (nut) TƯƠI hoặc khô, hỗn hợp quả khô (trừ quả hạch (nut)) và hỗn hợp quả hạch (nut) tươi hoặc khô và quả khô.' ⇒ 'la_qua_kho' và 'đã được xử lý bằng cách phơi khô…' KHÔNG phải điều kiện của mọi hàng thuộc 0813 (hỗn hợp quả hạch tươi không phải quả khô, cũng không được phơi khô). Đúng bài học lô 030: 'chỉ đặt khi câu đó phủ CẢ nhóm; nhóm có phần mà câu không nói tới thì để rỗng'. Máy KHÔNG bắt được (câu trích nguyên văn, đúng tầng theo tên nguồn) — đây đúng loại lỗi soát tay phải bắt. (b) SỬA `phamVi.text`: bản nháp ghi 'bột me chưa cho thêm đường' trong khi nguồn đòi 'bột me chưa cho thêm đường HOẶC các chất khác VÀ chưa được chế biến cách khác' — cắt bớt vế thứ hai làm THU HẸP sai (đọc `text` sẽ tưởng bột me đã chế biến vẫn thuộc 0813). Câu trích đã chứa đủ, chỉ sửa `text`; lý do chép nguyên văn nguồn. (c) SỬA `loaiTru[2].dieuKien`: 146 ký tự, runtime cắt còn 55 (`lib/so-tay-gates.js` clip `loaiTru.dieuKien` 55) ⇒ mất đúng vế quyết định 'thường được sử dụng như chất thay thế cà phê', biến loại trừ thành 'mọi quả rang chín → 2101' (bài học lô 038: cắt giữa câu mất kết luận của luật). Đã rút gọn còn 50 ký tự, giữ nguyên định ngữ 'thường'. (d) SỬA `dong8[6].tieuChi.fact`: bản nháp ghi 'la_hon_hop_qua_hat_brazil_chiem_da_so_khoi_luong' trong khi dòng biểu thuế là 'Hạt điều HOẶC quả hạch Brazil (Brazil nuts) chiếm đa số về khối lượng' — hạt điều (cashew) là loài KHÁC hạt Brazil, bỏ nó làm fact hẹp hơn dòng biểu thuế (bài học 'fact bám đúng TỪ nguồn'). GIỮ có lý do: 2 `loaiTru` và 2 `phanBiet` lấy từ ch08.chuong với dấu hiệu loại trừ rõ + đích danh trong câu; `neuKhong` = chính nhóm 0813 (mẫu đã duyệt); 5 `tieuChi6` + 11 `dong8` chép nguyên văn wco.*/tax.*. GHI NHẬN cho người duyệt (KHÔNG sửa được ở bước soát): (1) chính nhom0813.nhom có một khoản loại trừ riêng — 'Tuy nhiên, nhóm này không bao gồm những sản phẩm có chứa hỗn hợp của một hay nhiều quả khô thuộc nhóm này với các thực vật hoặc các phần của chúng thuộc các Chương khác hoặc với các chất khác… (thường thuộc nhóm 21.06)' — đích 'thường thuộc nhóm 21.06' là mẫu 'thường thuộc' mà luật mục 3 của mục 4 và luật máy `loai-tru-chi-la-thuong` đều loại ⇒ bản nháp bỏ qua là ĐÚNG; người duyệt nên biết là khoản loại trừ này đang không có trong sổ tay. (2) `loaiTru[1]` (bột chế biến từ quả → 1106) nằm cạnh `phamVi` nói 'bột me' thuộc nhóm này — hai câu KHÔNG mâu thuẫn (1106 là bột thô/mịn nghiền từ quả; 0813 là bột me nguyên liệu), nhưng nên để người duyệt xác nhận khi đọc. (3) tiêu đề phần (A) của nhom0813 bị MẤT trong nguồn (chỉ còn tiêu đề phần (B)) ⇒ `phamVi` phải mô tả phần (A) bằng nội dung, không nêu được tên phần; đây là lỗi nguồn, không phải lỗi bản nháp.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "`text` bớt một vế điều kiện nên nói HẸP hơn nguồn (máy KHÔNG bắt được: câu trích vẫn nguyên văn và đầy đủ). Nguồn: 'Nhóm cũng bao gồm bột me chưa cho thêm đường HOẶC các chất khác VÀ chưa được chế biến cách khác, còn hoặc không còn hạt, xơ và vỏ lụa.' — bản nháp ghi 'bột me chưa cho thêm đường', bỏ mất 'hoặc các chất khác và chưa được chế biến cách khác'. Vì `trich` không vào prompt (chỉ `text` và `fact`), người khai đọc sẽ hiểu là bột me đã chế biến vẫn thuộc 0813. Đã sửa `text` theo nguyên văn nguồn (189 ký tự ≤ trần runtime 220); `trich` GIỮ NGUYÊN vì đã chứa đủ câu và đoạn lược '…' chỉ nuốt vế cho phép 'còn hoặc không còn hạt, xơ và vỏ lụa' (vế 'đã hoặc chưa' không được biến thành điều kiện bắt buộc).",
+      "sua": {
+        "text": "Quả khô (khi tươi được phân loại vào các nhóm 08.07 đến 08.10), quả me và bột me chưa cho thêm đường hoặc các chất khác và chưa được chế biến cách khác; hỗn hợp quả hạch (nut) hoặc quả khô."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "xoa",
+      "lyDo": "Điều kiện KHÔNG phủ cả nhóm ⇒ mục nói sai. Nhóm 0813 có hai phần: (A) quả khô và (B) 'Hỗn hợp các loại quả hạch (nut) hoặc quả khô'. Câu trích ('Nhóm này bao gồm các loại quả khô khi ở trạng thái tươi chúng được phân loại vào các nhóm 08.07 đến 08.10.') chỉ nói phần (A), còn phần (B) theo nguồn 'bao gồm cả các hỗn hợp quả hạch (nut) TƯƠI hoặc khô…' ⇒ hàng thuộc 0813 không nhất thiết 'la_qua_kho'. Đúng bài học lô 030: 'chỉ đặt khi câu đó phủ CẢ nhóm; nhóm có phần mà câu không nói tới thì để rỗng'. Máy KHÔNG bắt được (đúng tầng theo tên nguồn nhom*, câu trích nguyên văn). XOÁ. Thông tin không mất: `phamVi` đã nêu đủ cả hai phần."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "xoa",
+      "lyDo": "Cùng lý do: câu 'Chúng được xử lý bằng cách phơi khô ngoài nắng hoặc bằng các phương pháp công nghiệp (ví dụ, lò sấy Tuy-nen).' có 'Chúng' = các loại quả khô của câu trước ⇒ chỉ phủ phần (A); phần (B) gồm hỗn hợp quả hạch tươi không hề được phơi khô. Đặt làm điều kiện vào nhóm sẽ loại nhầm hợp lệ (hỗn hợp quả hạch tươi + quả khô, xem dong8[08135010..40]). Máy KHÔNG bắt được. XOÁ; thông tin phối biến đã nằm trong `phamVi`."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn ch08.chuong: 'Tuy nhiên, Chương này không bao gồm quả được bảo quản bằng cách thấm lọc tách nước. … Quả như vậy được phân loại vào Chương 20 (nhóm 20.08).' Dấu hiệu loại trừ rõ, đích 20.08 nêu đích danh trong câu ⇒ đúng luật mục 3."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn ch08.chuong: 'Chương này cũng không bao gồm: … (i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06).' Dấu hiệu loại trừ rõ, đích 11.06 nêu đích danh trong câu; đoạn lược chỉ nuốt các mục (a)–(d) của cùng danh sách. KHÔNG mâu thuẫn với 'bột me' trong `phamVi` (bột thô/mịn nghiền từ quả ≠ bột me nguyên liệu) — xem ghi chú cho người duyệt."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "sua",
+      "lyDo": "Runtime cắt `loaiTru.dieuKien` còn 55 ký tự (lib/so-tay-gates.js) ⇒ bản nháp 146 ký tự bị cắt đúng trước vế quyết định 'thường được sử dụng như chất thay thế cà phê', biến loại trừ thành 'mọi quả và quả hạch rang chín → 21.01' (bài học lô 038: cắt giữa câu mất kết luận của luật). Đã rút gọn `dieuKien` còn 50 ký tự, giữ nguyên định ngữ 'thường' và giữ đích 21.01 trong `trich` (không đổi `trich`, không đổi nguồn). Vế 'thường' PHẢI giữ vì nguồn viết 'thường được sử dụng như chất thay thế cà phê' — đây là mô tả vế 'dùng làm thay cà phê' của nhóm (21.01), không phải mẫu 'thường thuộc nhóm X' mà luật mục 4 loại.",
+      "sua": {
+        "dieuKien": "Quả và quả hạch rang chín, thường dùng thay cà phê"
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = quả và quả hạch rang chín dùng làm chất thay thế cà phê → 2101 (đích nêu trong câu trích), 'không' = quả khô → 0813 (chính nhóm). `hoi` không nhắc mã phân nhóm/WCO ⇒ đạt luật máy."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = quả thấm lọc tách nước → 2008, 'không' = quả khô → 0813; đích có trong câu trích."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = bột chế biến từ quả → 1106, 'không' = quả khô → 0813; đích có trong câu trích."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.081310 ('081310 Fruit, edible; apricots, dried'); fact 'la_qua_mo_kho' bám đúng từ nguồn; phân nhóm 081310 có thật trong cây."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.081320 ('081320 Fruit, edible; prunes, dried'); fact bám đúng từ nguồn."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.081330 ('081330 Fruit, edible; apples, dried'); fact bám đúng từ nguồn."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.081340 ('081340 Fruit, edible; fruit n.e.c. in heading no. 0812, dried'). Fact 'la_qua_khac_kho' bám đúng từ nguồn và CỐ TÌNH không chép lệch số '0812' trong câu WCO (nguồn ghi vậy; số đó là đặc điểm của bản dịch WCO, không phải mã của nhóm này — người duyệt nên biết)."
+    },
+    {
+      "index": "tieuChi6[4]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.081350 ('081350 Nuts, edible; mixtures of nuts or dried fruits of chapter 08'); fact 'la_hon_hop_qua_hat_hoac_qua_kho' bám đúng từ nguồn."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 08131000 có trong tax.*; `dieuKien` = tên dòng biểu thuế nguyên văn ('Quả mơ'); `tieuChi.fact` bám đúng."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 08132000 có trong tax.*; `dieuKien` = 'Quả mận đỏ' nguyên văn; `tieuChi.fact` bám đúng."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 08133000 có trong tax.*; `dieuKien` = 'Quả táo (apples)' nguyên văn; `tieuChi.fact` bám đúng."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 08134010 có trong tax.*; `dieuKien` = 'Quả nhãn' nguyên văn; `tieuChi.fact` bám đúng."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 08134020 có trong tax.*; `dieuKien` = 'Quả me' nguyên văn; `tieuChi.fact` bám đúng."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 08134090 ('Loại khác') có trong tax.*; `dieuKien` lấy từ wco.081340 theo mẫu 'Loại khác: <tên WCO>' đã dùng ở kho đã gộp (lô 046); `loaiKhac` để máy tự điền theo biểu thuế."
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "sua",
+      "lyDo": "`tieuChi.fact` HẸP hơn dòng biểu thuế (bài học 'fact bám đúng TỪ nguồn — chép sai từ là sai nghĩa'). Dòng biểu thuế: '08135010 - - Hạt điều HOẶC quả hạch Brazil (Brazil nuts) chiếm đa số về khối lượng' — fact cũ 'la_hon_hop_qua_hat_brazil_…' bỏ mất 'Hạt điều' (cashew), vốn là loài KHÁC hạt Brazil, nên hỗn hợp chiếm đa số là hạt điều sẽ không khớp fact. Đã sửa fact theo đúng từ trong dòng biểu thuế; `dieuKien`, `trich`, `nguon` giữ nguyên.",
+      "sua": {
+        "tieuChi": {
+          "fact": "la_hon_hop_hat_dieu_hoac_qua_hat_brazil_chiem_da_so_khoi_luong",
+          "op": "=",
+          "value": true,
+          "donVi": null
+        }
+      }
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 08135020 có trong tax.*; `dieuKien` = 'Quả hạch (nuts) khác chiếm đa số về khối lượng' nguyên văn; `tieuChi.fact` bám đúng."
+    },
+    {
+      "index": "dong8[8]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 08135030 có trong tax.*; `dieuKien` = 'Quả chà là chiếm đa số về khối lượng' nguyên văn; `tieuChi.fact` bám đúng."
+    },
+    {
+      "index": "dong8[9]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 08135040 có trong tax.*; `dieuKien` = 'Quả bơ hoặc quả cam hoặc quả quýt các loại (kể cả quất) chiếm đa số về khối lượng' nguyên văn; `tieuChi.fact` bám đúng (bỏ 'các loại (kể cả quất)' không làm sai nghĩa vì quất là một loại quýt)."
+    },
+    {
+      "index": "dong8[10]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 08135090 ('Loại khác') có trong tax.*; `dieuKien` lấy từ wco.081350 theo mẫu 'Loại khác: <tên WCO>' đã dùng ở kho đã gộp; `loaiKhac` để máy tự điền theo biểu thuế."
+    }
+  ]
+}

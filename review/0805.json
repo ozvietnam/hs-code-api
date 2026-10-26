@@ -1,0 +1,94 @@
+{
+  "nhom": "0805",
+  "nguoiSoat": "dev-soat-doc-lap-lo049",
+  "soatVaiTro": "soat-doc-lap",
+  "luc": "2026-10-26T01:10:00+07:00",
+  "phamViSoat": "11 mục trong phạm vi (phamVi 1, boPhan 0, dieuKienVao 2, loaiTru 4, phanBiet 4) + 16 mục ngoài phạm vi đã đọc kiểm (tieuChi6 7, dong8 9) = 27/27 mục của bản nháp.",
+  "soat": 27,
+  "daKiem": 21,
+  "sua": 6,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0805 (lô 049, PR #453) — người soạn dev-zcode-mm, người soat độc lập dev-soat-doc-lap-lo049. Đọc TOÀN BỘ tmp/so-tay/nguon/0805.txt (12.648 byte, 201 dòng; khối [nhom0805.nhom], [ch08.chuong], [phan08.phan], [sen.08055010], [sen.08055020], 7 khối [wco.*], 9 khối [tax.*]) và tmp/so-tay/nguon/_he-thong.txt (lược đồ + 40 luật). Mọi câu trích của bản nháp đều NGUYÊN VĂN byte-exact (scripts/check-trich-nguyen-van.mjs: OK 112/112 cho cả lô) và máy kiểm xanh (check-so-tay.mjs: 112/112) — nhưng máy KHÔNG chứng minh câu trích nói ĐÚNG điều mục khẳng định, nên đã đọc tay từng mục. KẾT QUẢ trong 11 mục trong phạm vi: 6 SỬA, 5 GIỮ (mọi mục ngoài phạm vi đều giữ nguyên).\n\nLỖI 1 (nghiêm trọng) — phamVi: câu trích dừng ở \"(5) Quả chanh vàng\", bỏ vế \"và quả chanh xanh (Citrus aurantifolia, Citrus latifolia)\" — mất trọn một loại chanh của nhóm 0805 (dòng 08055020); và dấu lược \"…\" cuối đã nuốt câu bao hồm \"Nhóm này cũng bao gồm các loại quả chanh xanh nhỏ và cam xanh nhỏ dùng để bảo quản\" (quy tắc bao hồm có tác động phân loại: chanh xanh nhỏ dùng bảo quản vẫn thuộc 0805). SỬA: trích lại trọn khối bao hồm (8 mảnh byte-exact, 563 ký tự <600) + bổ sung \"và quả chanh xanh\" vào `text` (212 ký tự <220).\n\nLỖI 2 (nghiêm trọng) — dieuKienVao[1] / loaiTru[1] / phanBiet[1]: cả ba trích mục (b) mà BỎ dòng dẫn \"Nhóm này không bao gồm:\", nên câu trích không nói mục (b) bị loại; riêng phanBiet thì nhánh \"có → 1211\" mất căn cứ. SỬA: trích lại kèm dòng dẫn và mục (a) (218 ký tự). `dieuKien` của loaiTru[1] cũng bịa/thu hẹp: bỏ mất \"chủ yếu\" và \"được để khô\" → sửa.\n\nLỖI 3 — loaiTru[2] / phanBiet[2]: mục \"(i) Bột…\" bị bỏ dòng dẫn \"Chương này cũng không bao gồm:\" → sửa.\n\nNgoài phạm vi (đã đọc, không sửa): 7 tieuChi6 + 9 dong8 — câu trích đều byte-exact; ghi nhận một điểm nhỏ: dong8[4] (08052900) lấy `dieuKien` từ câu chú giải phân nhóm 0805.29 (thay vì dòng biểu thuất \"Loại khác\") — chấp nhận được vì đây CHÍNH LÀ phân nhóm cha của dòng đó, không phải ví dụ linh kiện.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (phạm vi chỉ mô tất MỘT PHẦN của nhóm — đúng lỗi lô 030/041). Bản nháp dừng câu trích ở \"(5) Quả chanh vàng\" nên (a) mất hẳn vế \"và quả chanh xanh (Citrus aurantifolia, Citrus latifolia)\" — tức MỘT TRONG HAI loại chanh của nhóm 0805 (dòng 08055020) không có trong phạm vi; (b) mất câu bao hồm \"Nhóm này cũng bao gồm các loại quả chanh xanh nhỏ và cam xanh nhỏ dùng để bảo quản\" — quy tắc BAO HỒM có tác động phân loại (chanh xanh nhỏ dùng bảo quản vẫn thuộc 0805, không sang Chương 20), mà dấu lược \"…\" ở cuối đã NUỐT mất câu đó; (c) mất các mệnh đề đầy đủ của mục (2) \"(kể cả quýt tangerine và quýt satsuma)\" và mục (3) \"và các loại quả lai tương tự thuộc chi cam quýt\". SỬA: trích lại trọn khối bao hồm (lead + mục (1)–(6) + câu \"Nhóm này cũng bao gồm...\") — 8 mảnh NGUYÊN VĂN byte-exact, tự cắt từ tệp nguồn; `text` bổ sung \"và quả chanh xanh\" và rút gọn cho vừa trần cắt 220 của runtime lib/so-tay-gates.js:134 (217 ký tự) — không mất mục nào so với bản nháp. Không mất ngoại lệ nào ngay sau mảnh trích: sau mục (6) là câu bao hồm đã kéo vào; sau câu bao hồm là \"Nhóm này không bao gồm:\" — phần LOẠI TRỪ đã ghi riêng ở loaiTru[0]/[1]/phanBiet[0]/[1] với chính câu này, không gộp vào phạm vi để tránh trích >600.",
+      "sua": {
+        "text": "Quả thuộc chi cam, quýt, chanh (citrus): cam ngọt hoặc đắng; cam/quýt mandarin; cam nhỏ (Clementines), quýt wilking; bưởi (bao gồm cả bưởi chùm); quả chanh vàng và chanh xanh; quả thanh yên, quất vàng và cam bergamot.",
+        "trich": "Ngoài những loại khác, khái niệm \"quả thuộc chi cam, quýt, chanh (citrus),\" áp dụng cho:…(1) Cam, ngọt hoặc đắng (cam đắng).…(2) Cam/quýt mandarin các loại (kể cả quýt tangerine và quýt satsuma).…(3) Cam nhỏ (Clementines), quýt wilking và các loại quả lai tương tự thuộc chi cam quýt.…(4) Quả bưởi (bao gồm cả bưởi chùm).…(5) Quả chanh vàng (Citrus limon, Citrus limonum) và quả chanh xanh (Citrus aurantifolia, Citrus latifolia).…(6) Quả thanh yên, quất vàng và cam bergamot,...…Nhóm này cũng bao gồm các loại quả chanh xanh nhỏ và cam xanh nhỏ dùng để bảo quản."
+      }
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định). Bản nháp trích đúng mục (b) \"Cam non, không ăn được, … (nhóm 12.11)\" nhưng BỎ mất dòng dẫn \"Nhóm này không bao gồm:\" ngay trên — nên câu trích đứng riêng KHÔNG nói gì về việc bị loại; chính câu đó mới là nơi nói mục (b) nằm trong danh sách loại trừ. Riêng với `phanBiet` thì hậu quả rõ: nhánh \"có → 1211\" mà câu trích không đủ căn cứ. SỬA: trích lại kèm dòng dẫn \"Nhóm này không bao gồm:\" và kèm luôn mục (a) để không bỏ sót một mục loại trừ khác trong đoạn lược (nguyên văn byte-exact, 218 ký tự). Cùng lý do này áp cho loaiTru[1] và phanBiet[1] (trích giống hệt).",
+      "sua": {
+        "trich": "Nhóm này không bao gồm:…(a) Vỏ quả thuộc chi cam quýt (nhóm 08.14).…(b) Cam non, không ăn được, rụng ngay sau khi hoa kết trái, được để khô chủ yếu dùng để chiết xuất tinh dầu chứa trong quả (petit-grain) (nhóm 12.11)."
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định). Bản nháp trích đúng mục (b) \"Cam non, không ăn được, … (nhóm 12.11)\" nhưng BỎ mất dòng dẫn \"Nhóm này không bao gồm:\" ngay trên — nên câu trích đứng riêng KHÔNG nói gì về việc bị loại; chính câu đó mới là nơi nói mục (b) nằm trong danh sách loại trừ. Riêng với `phanBiet` thì hậu quả rõ: nhánh \"có → 1211\" mà câu trích không đủ căn cứ. SỬA: trích lại kèm dòng dẫn \"Nhóm này không bao gồm:\" và kèm luôn mục (a) để không bỏ sót một mục loại trừ khác trong đoạn lược (nguyên văn byte-exact, 218 ký tự). Cùng lý do này áp cho loaiTru[1] và phanBiet[1] (trích giống hệt). Ngoài ra `dieuKien` cũ \"Cam non dùng để chiết xuất tinh dầu (petit-grain)\" bỏ mất định ngữ giới hạn \"chủ yếu\" và vế \"được để khô\" của câu nguồn — câu nguồn nói cam non ĐƯỢC ĐỂ KHÔ chủ yếu dùng để chiết xuất tinh dầu; viết gọn thành \"dùng để chiết xuất tinh dầu\" thì nghe như loại trừ dứt khoát mọi cam non (memory `so-tay-nhan-bo-dinh-ngu-gioi-han`). SỬA `dieuKien` thành \"Cam non để khô chủ yếu dùng để chiết xuất tinh dầu\" (50 ký tự, dưới trần cắt 55 của runtime); \"(petit-grain)\" giữ nguyên trong `trich`.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm:…(a) Vỏ quả thuộc chi cam quýt (nhóm 08.14).…(b) Cam non, không ăn được, rụng ngay sau khi hoa kết trái, được để khô chủ yếu dùng để chiết xuất tinh dầu chứa trong quả (petit-grain) (nhóm 12.11).",
+        "dieuKien": "Cam non để khô chủ yếu dùng để chiết xuất tinh dầu"
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định). Bản nháp trích đúng mục (b) \"Cam non, không ăn được, … (nhóm 12.11)\" nhưng BỎ mất dòng dẫn \"Nhóm này không bao gồm:\" ngay trên — nên câu trích đứng riêng KHÔNG nói gì về việc bị loại; chính câu đó mới là nơi nói mục (b) nằm trong danh sách loại trừ. Riêng với `phanBiet` thì hậu quả rõ: nhánh \"có → 1211\" mà câu trích không đủ căn cứ. SỬA: trích lại kèm dòng dẫn \"Nhóm này không bao gồm:\" và kèm luôn mục (a) để không bỏ sót một mục loại trừ khác trong đoạn lược (nguyên văn byte-exact, 218 ký tự). Cùng lý do này áp cho loaiTru[1] và phanBiet[1] (trích giống hệt).",
+      "sua": {
+        "trich": "Nhóm này không bao gồm:…(a) Vỏ quả thuộc chi cam quýt (nhóm 08.14).…(b) Cam non, không ăn được, rụng ngay sau khi hoa kết trái, được để khô chủ yếu dùng để chiết xuất tinh dầu chứa trong quả (petit-grain) (nhóm 12.11)."
+      }
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định). Bản nháp trích \"(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06).\" nhưng đó là MỘT MỤC ĐÁNH SỐ nằm dưới dòng dẫn \"Chương này cũng không bao gồm:\" — bỏ dòng dẫn thì câu trích chỉ còn là một danh sách, không nói hàng bị loại. SỬA: thêm dòng dẫn vào câu trích (nguyên văn byte-exact, 86 ký tự). Cùng lý do này áp cho phanBiet[2] của 0805 và cho loaiTru[0]/phanBiet[0] của 0806, loaiTru[1]/phanBiet[1] của 0807, loaiTru[0]/phanBiet[0] của 0808, 0809, loaiTru[1]/phanBiet[1] của 0810 — cùng một câu nguồn [ch08.chuong].",
+      "sua": {
+        "trich": "Chương này cũng không bao gồm:…(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)."
+      }
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định): mục \"(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)\" nằm dưới dòng dẫn \"Chương này cũng không bao gồm:\"; bản nháp bỏ dòng dẫn nên nhánh \"có → 1106\" của câu hỏi phân biệt không có căn cứ trong câu trích. SỬA: thêm dòng dẫn (nguyên văn byte-exact, 86 ký tự).",
+      "sua": {
+        "trich": "Chương này cũng không bao gồm:…(i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06)."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích \"Nhóm này không bao gồm:…(a) Vỏ quả thuộc chi cam quýt (nhóm 08.14).\" tự nói đủ (có dòng dẫn \"không bao gồm\"), nêu đích danh nhóm 08.14, và `fact` \"khong_phai_vo_qua_thuoc_chi_cam_quyt\" khớp nghĩa câu. Ngoài phạm vi: 7 tieuChi6 + 9 dong8 đã đọc kiểm, không sửa."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích đã có dòng dẫn \"Nhóm này không bao gồm:\" và nêu đích danh \"(nhóm 08.14)\"; `dieuKien` \"Vỏ quả thuộc chi cam quýt\" chép đúng câu, không thêm chữ."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích tự đủ: \"Tuy nhiên, Chương này không bao gồm quả được bảo quản bằng cách thấm lọc tách nước.…Quả như vậy được phân loại vào Chương 20 (nhóm 20.08).\" — nêu đích danh 20.08 và nói rõ bị loại. Đoạn lược giữa hai mảnh là ĐỊNH NGHĨA \"thấm lọc tách nước\" (không phải ngoại lệ), nên không mất gì."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu hỏi \"Hàng là vỏ quả thuộc chi cam quýt?\" → có→0814 / không→0805: chiều đúng (chú giải nói nhóm này KHÔNG bao gồm vỏ quả → vỏ quả sang 08.14). Câu trích tự đủ, có dòng dẫn \"không bao gồm\". `hoi` không nhắc mã phân nhóm."
+    },
+    {
+      "index": "phanBiet[3]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu hỏi \"Hàng là quả được bảo quản bằng cách thấm lọc tách nước?\" → có→2008 / không→0805: chiều đúng, câu trích nêu đích danh \"(nhóm 20.08)\" và nói rõ Chương này không bao gồm."
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ (null). Chú giải nhóm 0805 không có quy tắc bộ phận nào (chỉ có danh sách loại trừ và chú giải phân nhóm) → để trống là đúng."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "nhom": "0906",
+  "nguoiSoat": "dev-soat-doc-lap-lo051",
+  "luc": "2026-10-26T21:26:00+07:00",
+  "phamViSoat": "Toàn bộ 8 mục của bản nháp lô 051 (1 phamVi + 1 boPhan + 0 dieuKienVao + 0 loaiTru + 0 phanBiet + 3 tieuChi6 + 3 dong8 + 0 cay.tenDien), đọc cùng tmp/so-tay/nguon/0906.txt (nhom0906.nhom có 4 đoạn về quế + khối '***' + 'Chú giải phân nhóm' với câu về phân nhóm 0906.11; ch09.chuong; phan09.phan; wco.090611/090619/090620; tax.09061100/09061900/09062000). Đối chiếu TỪNG câu trích với câu nguồn nguyên văn — không tin máy kiểm.",
+  "soat": 8,
+  "giu": 8,
+  "sua": 0,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0906 — 8/8 mục đã đọc cùng nguồn. KHÔNG xoá, KHÔNG sửa, GIỮ 8. (a) `phamVi`: nêu đủ 4 thành phần của nhóm (vỏ trong của cành non · quế vụn 'quế dạng lát' · hoa quế · quả quế) — không phải vật liệu, không phải một phần ⇒ đúng luật lô 030. (b) `dieuKienVao` RỖNG là ĐÚNG: câu 'Quế là phần vỏ trong của các cành non…' KHÔNG phủ hoa quế và quả quế ⇒ theo luật 4 bước, điều kiện không phủ CẢ nhóm thì để rỗng (không nịt từ câu 'vỏ trong' thành điều kiện của cả nhóm). (c) `loaiTru`/`phanBiet` rỗng là ĐÚNG và CÓ LÝ DO: nhom0906.nhom không có câu loại trừ nào; các loại trừ CHUNG của Chương 9 không chép vào từng nhóm. LỖI KỆ SÁCH — nguồn TỰ MÂU THUẪN về 'muồng': chú giải Chương 9 mục '(d) … (nhóm 12.11) (… ví dụ, muồng, hương thảo …)' ⇒ loại muồng sang 12.11, còn chú giải nhóm 0906 nói 'Quế Tàu … và Việt Nam (Cinnamomum loureirii Nees), còn được gọi là MUỒNG hoặc quế thường' ⇒ muồng ở 0906. Theo luật nhà (nguồn mâu thuẫn ⇒ bỏ cả hai phía, ghi vào mô tả PR) nên KHÔNG tạo `loaiTru` 12.11 cho 0906 — bản nháp đã làm đúng. (d) `boPhan` mô tả hoa quế (hoa của cây quế đã giần sàng và làm khô; hình như cái chuỳ, dài không quá 1cm; sau khi nghiền trộn lẫn với quế) — đúng nguồn; nhóm 0906 KHÔNG có dòng biểu thuế nào tên 'Bộ phận/Phụ tùng' và WCO 090611/090619/090620 không có 'parts' ⇒ cổng SO_TAY_BO_PHAN (lib/so-tay-gates.js:237) không bắn được cho nhóm này, nên khối này chỉ đóng vai trò bổ sung cho prompt, không gây chặn sai. (e) `tieuChi6[0]` lấy từ câu CHÚ GIẢI PHÂN NHÓM 0906.11 (nguồn hợp lệ, không phải tax.*) — tiêu chí loài (Cinnamomum zeylanicum Blume) là đúng tầng cho phân nhóm này; 2 `tieuChi6` còn lại chép nguyên văn wco.*. (f) 3 `dong8` đủ 3/3 dòng biểu thuế.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom0906.nhom: 'Quế là phần vỏ trong của các cành non của một số loại cây thuộc họ Laurus. … Nhóm này cũng bao gồm quế vụn, được gọi là “quế dạng lát”, chủ yếu dùng để chiết xuất tinh dầu quế. … Hoa quế là hoa của cây quế đã được giần sàng và làm khô. … Nhóm này cũng bao gồm cả quả quế.' `text` nêu đủ 4 thành phần của nhóm (vỏ trong của cành non · quế vụn · hoa quế · quả quế) ⇒ PHẠM VI nhóm, không phải vật liệu và không phải một phần (luật lô 030). Đoạn lược nuốt các câu mô tả ngoại/dung (quế Sri Lanka vs quế Tàu/Indonesia/Việt Nam, màu sọc nâu, hình dạng bó) — không có ngoại lệ nào bị nuốt. `text` 203 ký tự < trần runtime 220 (không bị cắt giữa câu). GHI NHẬN: phần phân loại theo LOÀI (C. zeylanicum vs quế khác) không nằm ở `phamVi` mà nằm ở `tieuChi6` (0906.11 vs 0906.19) — đúng cấu trúc nhóm."
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom0906.nhom: 'Hoa quế là hoa của cây quế đã được giần sàng và làm khô. … Chúng có hình như cái chuỳ và dài không quá 1cm. … Sau khi nghiền, chúng được trộn lẫn với quế.' — 3 mảnh đều nguyên văn (khối này KHÔNG được scripts/check-trich-nguyen-van.mjs duyệt — memory `so-tay-check-trich-bo-sot-bo-phan` — nên em tự đối chiếu byte-exact bằng tmp/lo051/verify-soat.cjs). `quyTac`/`tomTat` bám đúng câu, không thêm chữ; giữ nguyên định ngữ 'dài không quá 1cm' (bài học lô 034/048: mất định ngữ giới hạn thì câu thành khẳng định tuyệt đối). `tomTat` 111 ký tự < trần runtime 160. GHI NHẬN CHO NGƯỜI DUYỆT: nhãn runtime in là 'Bộ phận: …' trong khi nội dung ở đây là MỘT THÀNH PHẦN của nhóm (hoa quế) chứ không phải bộ phận của một hàng — nhưng 0906 không có dòng biểu thuê nào tên 'Bộ phận/Phụ tùng' và WCO không có 'parts' ⇒ cổng SO_TAY_BO_PHAN không bắn cho nhóm này, chỉ bổ sung thông tin cho prompt (đã có tiền lệ 0712 dùng `boPhan` cho khái niệm 'viên' của Phần II — cũng không phải bộ phận)."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nhom0906.nhom (khối 'Chú giải phân nhóm'): 'Phân nhóm 0906.11 Phạm vi của phân nhóm này giới hạn ở quế có vỏ trong của các cành non của cây hoặc cây bụi Cinnamomum zeylanicum Blume, thường được gọi là quế Sri Lanka (Ceylon), Seychelles và Madagasca.' — đây là tiêu chí CẤP PHÂN NHÓM đúng tầng (điều kiện loài), nguồn là chú giải (không phải tax.*) ⇒ đúng luật 10; `fact` 'la_que_co_vo_trin_cua_cinnamomum_zeylanicum_blume' bám đúng từ nguồn. GHI NHẬN (KHÔNG sửa): slug 'vo_trin' cắt bớt chữ của 'vỏ trong' — nhưng `tieuChi6` KHÔNG đi vào prompt (chỉ lib/so-tay.js dùng để kiểm cây) nên không gây hiểu sai cho mô hình; sửa slug sẽ là thêm việc ngoài phạm vi soát."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090619 '090619 Spices; cinnamon and cinnamon-tree flowers, other than cinnamon (Cinnamomum zeylanicum Blume), neither crushed nor ground'; bản dịch 'Quế và hoa quế, trừ quế Cinnamomum zeylanicum Blume, chưa xay hoặc chưa nghiền' GIỮ đủ vế phủ định 'trừ…' (bài học lô 020: bỏ vế 'other than X' của tên WCO ⇒ thu hẹp phân nhóm, mũ bảo hiểm bị kéo sang 650691). Đúng luật 10."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090620 '090620 Spices; cinnamon and cinnamon-tree flowers, crushed or ground'; bản dịch 'Quế và hoa quế, đã xay hoặc đã nghiền' khớp; nguồn wco.* ⇒ đúng luật 10."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "09061100 = '09061100 - - Quế (Cinnamomum zeylanicum Blume)' ⇒ 'Quế (Cinnamomum zeylanicum Blume), chưa xay hoặc chưa nghiền — thuộc phân nhóm 0906.11'; vế trạng thái lấy từ wco.090611 ('neither crushed nor ground') theo luật 20. Đủ 1/3 dòng biểu thuế. Đúng."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "09061900 = '09061900 - - Loại khác' ⇒ 'Quế và hoa quế, trừ quế Cinnamomum zeylanicum Blume, chưa xay hoặc chưa nghiền, loại khác — thuộc phân nhóm 0906.19'; `loaiKhac` máy tự điền theo biểu thuế. GHI NHẬN (KHÔNG sửa): `dieuKien` dài 115 ký tự > trần runtime 90 ⇒ prompt in ra '…chưa xay hoặc chưa nghiền, loại khác …' — điều kiện dòng VẪN TRỌN VẸN (chỉ gloss '— thuộc phân nhóm 0906.19' bị cắt, mà gloss lặp lại mã phân nhóm cha nên không mất nghĩa; runtime còn tự thêm '(dòng Loại khác)'). 56 % dòng dong8 trong kho cũng vượt 90 ⇒ không sửa để giữ nhất quán."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "09062000 = '09062000 - Đã xay hoặc nghiền' ⇒ 'Quế và hoa quế, đã xay hoặc đã nghiền — thuộc phân nhóm 0906.20' (tên hàng từ wco.090620, trạng thái từ chính dòng biểu thuế). Đủ 3/3 dòng biểu thuế. Đúng."
+    }
+  ]
+}

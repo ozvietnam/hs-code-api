@@ -1,0 +1,77 @@
+{
+  "nhom": "0811",
+  "nguoiSoat": "dev-soat-doc-lap-lo050",
+  "luc": "2026-10-26T00:35:00+07:00",
+  "phamViSoat": "Toàn bộ 12 mục của bản nháp lô 050 (1 phamVi + 1 dieuKienVao + 2 loaiTru + 2 phanBiet + 3 tieuChi6 + 3 dong8), đọc cùng tmp/so-tay/nguon/0811.txt (nhom0811.nhom 5 dòng, ch08.chuong, phan08.phan, wco.081110/081120/081190, tax.08111000/08112000/08119000). Đối chiếu TỪNG câu trích với câu nguồn nguyên văn (không tin máy kiểm).",
+  "soat": 12,
+  "giu": 10,
+  "sua": 1,
+  "xoa": 1,
+  "ghiChu": "SOÁT ĐỘC LẬP 0811 — 12/12 mục đã đọc cùng nguồn. XOÁ 1, SỬA 1, GIỮ 10. (a) XOÁ `dieuKienVao[0]`: mục này khẳng định điều kiện vào nhóm là 'la_qua_dong_lanh = true', nhưng câu nguồn NGAY SAU CÂU TRÍCH lại nói 'Quả và quả hạch (nut) đông lạnh được làm chín bằng các phương pháp khác trước khi đông lạnh bị loại trừ (Chương 20)' — tức đông lạnh KHÔNG phải điều kiện đủ. Câu trích cắt đúng chỗ 'ngay trước câu rào' (loại 'cắt trích né câu rào' + 'mất ngoại lệ ngay sau câu trích' — máy KHÔNG bắt được vì đoạn cắt vẫn nguyên văn). Đây cũng là câu ĐỊNH NGHĨA phạm vi nhóm ('Nhóm này áp dụng cho…'), không phải câu ràng buộc, và câu trích còn bỏ mất vế 'nếu ở dạng tươi và ướp lạnh chúng được phân loại vào các nhóm trước đó của Chương này'. Thông tin không mất: đã đưa vào `phamVi` (xem thayDoi). (b) SỬA `phamVi`: bản nháp cắt trích ngay TRƯỚC câu loại trừ Chương 20, nên cả `text` (đi vào prompt) lẫn `trich` đều không nói chỗ loại trừ đó — người khai đọc sẽ tưởng mọi quả đông lạnh đều vào 0811. Đã nối lại trọn 3 câu nguồn (nguyên văn, 291 ký tự ≤ 300) và sửa `text` để nêu rõ chỗ loại trừ. (c) GIỮ có lý do: 2 `loaiTru` + 2 `phanBiet` đều lấy đúng câu 'không bao gồm…' của ch08.chuong, có DẤU HIỆU loại trừ rõ và nêu ĐÍCH DANH nhóm đích (20.08 / 11.06) trong chính câu trích; `neuKhong` = chính nhóm 0811 là mẫu đã được duyệt trong kho (không phải suy từ cấu trúc anh em). 3 `tieuChi6` + 3 `dong8` chép nguyên văn wco.*/tax.*, số phân nhóm đúng cây. GHI NHẬN cho người duyệt (KHÔNG sửa được ở bước soát, vì luật 3 của mục 4 chỉ nhận loại trừ có NHÓM ĐÍCH nêu đích danh): chú giải chương 8 còn hai khoản loại trừ liên quan tới 0811 mà bản nháp chưa ghi — mục (ii) 'Quả và quả hạch (nut) ăn được và vỏ quả dưa hoặc quả thuộc chi cam quýt, được chế biến hoặc bảo quản theo các phương pháp khác với các phương pháp đã được kể trên' (không nêu nhóm đích ⇒ không mã hoá được thành loaiTru) và khoản 'việc đồng nhất hoá… không làm sản phẩm đủ điều kiện để được phân loại vào Chương 20' (chỉ nói Chương 20, không nêu nhóm ⇒ không mã hoá được).",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Mất ngoại lệ ngay sau câu trích (máy KHÔNG bắt được: câu trích cũ vẫn nguyên văn trong nguồn). Bản nháp trích 'Nhóm này áp dụng cho quả và quả hạch (nut) đông lạnh, nếu ở dạng tươi và ướp lạnh… … Quả và quả hạch (nut) đã được hấp chín hoặc luộc chín trong nước trước khi đông lạnh đều được phân loại vào nhóm này.' — cắt đúng TRƯỚC câu 'Quả và quả hạch (nut) đông lạnh được làm chín bằng các phương pháp khác trước khi đông lạnh bị loại trừ (Chương 20).' Vì `trich` KHÔNG vào prompt (chỉ `text` và `fact` mới vào — lib/so-tay-gates.js), `text` cũ 'Quả và quả hạch (nut) đông lạnh; quả đã được hấp chín hoặc luộc chín trong nước trước khi đông lạnh đều được phân loại vào nhóm này.' khiến người khai tin rằng MỌI quả đông lạnh đều thuộc 0811, bỏ mất khoản loại trừ sang Chương 20. Đã nối lại 3 câu nguồn nguyên văn (291 ký tự ≤ 300) và sửa `text` (199 ký tự ≤ trần runtime 220) để nêu rõ chỗ loại trừ. Vế 'nếu ở dạng tươi và ướp lạnh chúng được phân loại vào các nhóm trước đó của Chương này' bị lược bởi dấu '…' nhưng KHÔNG mất thông tin: `text` nêu phạm vi là 'đông lạnh' nên quả tươi/ướp lạnh vốn đã nằm ngoài nhóm.",
+      "sua": {
+        "text": "Quả và quả hạch (nut) đông lạnh; quả đã hấp chín hoặc luộc chín trong nước trước khi đông lạnh đều thuộc nhóm này; trừ quả đông lạnh đã làm chín bằng phương pháp khác trước khi đông lạnh (Chương 20).",
+        "trich": "Nhóm này áp dụng cho quả và quả hạch (nut) đông lạnh … Quả và quả hạch (nut) đã được hấp chín hoặc luộc chín trong nước trước khi đông lạnh đều được phân loại vào nhóm này. … Quả và quả hạch (nut) đông lạnh được làm chín bằng các phương pháp khác trước khi đông lạnh bị loại trừ (Chương 20)."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "xoa",
+      "lyDo": "Khẳng định điều kiện vào nhóm SAI so với nguồn (máy KHÔNG bắt được: câu trích vẫn nguyên văn). Mục đặt 'la_qua_dong_lanh = true' làm điều kiện vào 0811, nhưng câu KẾ TIẾP trong nguồn nói: 'Quả và quả hạch (nut) đông lạnh được làm chín bằng các phương pháp khác trước khi đông lạnh bị loại trừ (Chương 20).' — đông lạnh KHÔNG đủ để vào 0811. Câu trích bị cắt đúng chỗ câu rào (loại lỗi 'cắt trích né câu rào' + 'mất ngoại lệ ngay sau câu trích'). Thêm nữa đây là câu ĐỊNH NGHĨA phạm vi nhóm ('Nhóm này áp dụng cho…') chứ không phải câu ràng buộc, và câu trích còn bỏ mất vế 'nếu ở dạng tươi và ướp lạnh chúng được phân loại vào các nhóm trước đó của Chương này'. Theo lô 030 ('dieuKienVao phải trích câu RÀNG BUỘC, không phải câu ĐỊNH NGHĨA một thuật ngữ') và nguyên tắc 'mục mờ má → XOÁ', XOÁ. Thông tin không mất: phạm vi 'đông lạnh' và khoản loại trừ Chương 20 đã nằm đầy đủ trong `phamVi` sau khi sửa."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn trong ch08.chuong: 'Tuy nhiên, Chương này không bao gồm quả được bảo quản bằng cách thấm lọc tách nước. … Quả như vậy được phân loại vào Chương 20 (nhóm 20.08).' Có DẤU HIỆU loại trừ rõ ('không bao gồm') và nêu ĐÍCH DANH nhóm đích 20.08 trong chính câu ⇒ đúng luật mục 3. Đoạn bị lược bằng '…' là câu ĐỊNH NGHĨA 'thấm lọc tách nước', không chứa ngoại lệ."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn trong ch08.chuong: 'Chương này cũng không bao gồm: … (i) Bột, bột thô, bột mịn chế biến từ quả (nhóm 11.06).' Có dấu hiệu loại trừ rõ và nêu đích danh 11.06 ⇒ đúng luật mục 3. Đoạn lược bằng '…' là các mục (a)–(d) của cùng danh sách, không chứa ngoại lệ."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = quả thấm lọc tách nước → 2008 (đích có trong câu trích), 'không' = quả đông lạnh → 0811 (chính nhóm; mẫu `neuKhong` = chính nhóm đã được duyệt trong kho, KHÔNG phải suy từ cấu trúc anh em). `hoi` không nhắc mã phân nhóm, không nhắc WCO ⇒ đạt luật máy `hoi-nhac-ma-phan-nhom`. Dạng 'A hay B' là mẫu có sẵn trong kho đã gộp (theo lô 046, không sửa ở lô này)."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không đúng: 'có' = bột chế biến từ quả → 1106 (đích có trong câu trích), 'không' = quả đông lạnh → 0811. `hoi` không nhắc mã ⇒ đạt."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.081110 ('081110 Fruit, edible; strawberries, uncooked or cooked by steaming or boiling in water, frozen, whether or not containing added sugar or other sweetening matter'); fact 'la_qua_dau_tay' bám đúng từ nguồn; phân nhóm 081110 có thật trong cây của 0811."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.081120; fact 'la_qua_mam_xoi_dau_tam_qua_ly_chua_qua_ly_gai' bám đúng các loài trong tên WCO (raspberries/blackberries/mulberries/loganberries/currants/gooseberries); phân nhóm 081120 có thật trong cây."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.081190 ('fruit and nuts n.e.c. in heading no. 0811'); fact 'la_qua_khac_thuoc_nhom_0811' bám đúng từ nguồn; phân nhóm 081190 có thật trong cây."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 08111000 có trong tax.*; `dieuKien` diễn đạt đúng wco.081110 ('đã hoặc chưa hấp chín hoặc luộc chín trong nước', 'có hoặc không có thêm đường hoặc chất làm ngọt khác' — giữ nguyên tính chất cho phép 'đã hoặc chưa', không biến thành điều kiện bắt buộc); `tieuChi.fact` không biến khối lượng/caffein thành ngưỡng số (đúng bài học lô 041: đặc tính của loài không phải điều kiện dòng 8 số)."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 08112000 có trong tax.*; `dieuKien` diễn đạt đúng wco.081120; `tieuChi.fact` bám đúng các loài trong tên WCO."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 08119000 ('Loại khác') có trong tax.*; `dieuKien` lấy từ wco.081190 và `loaiKhac` để máy tự điền theo biểu thuế; mẫu 'Loại khác: <tên WCO>' đúng với kho đã gộp (lô 046, 0701/0704)."
+    }
+  ]
+}
