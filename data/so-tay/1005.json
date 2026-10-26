@@ -1,0 +1,190 @@
+{
+ "nhom": "1005",
+ "phamVi": {
+  "text": "Ngô: các loại ngô có hạt nhiều màu sắc (vàng óng, trắng, đôi khi nâu đỏ hoặc kết hợp nhiều màu) và có nhiều hình dạng khác nhau (tròn, răng ngựa, phẳng bẹt).",
+  "nguon": "nhom1005.nhom",
+  "trich": "Có một vài loại ngô, với các loại hạt có màu sắc khác nhau (vàng óng, trắng, đôi khi nâu đỏ hoặc kết hợp nhiều màu), và có nhiều hình dạng khác nhau (tròn, răng ngựa, phẳng bẹt...)",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "khong_phai_ngo_ngot",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom1005.nhom",
+   "trich": "Nhóm này không bao gồm ngô ngọt (Chương 7).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "o_dang_hat",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch10.chuong",
+   "trich": "1. (A) Các sản phẩm kể tên trong các nhóm của Chương này chỉ được phân loại trong các nhóm đó khi ở dạng hạt, còn hoặc không còn ở trên bông hay trên thân cây.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "100510",
+   "fact": "duoc_danh_gia_la_de_gieo_trong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom1005.nhom",
+   "trich": "Phân nhóm 1005.10 Theo mục đích của phân nhóm 1005.10, thuật ngữ \"hạt giống\" chỉ bao gồm ngô được được các cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "100590",
+   "fact": "khong_phai_hat_giong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.100590",
+   "trich": "100590 Cereals; maize (corn), other than seed",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "10051000",
+   "dieuKien": "Ngô (phân nhóm 1005.10) hạt giống — chỉ gồm ngô được các cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng",
+   "nguon": "nhom1005.nhom",
+   "trich": "Phân nhóm 1005.10 Theo mục đích của phân nhóm 1005.10, thuật ngữ \"hạt giống\" chỉ bao gồm ngô được được các cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng.",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "10059010",
+   "dieuKien": "Ngô loại dùng để rang nổ (popcorn) — loại ngô nở ra từ nhân và phồng lên khi bị làm nóng",
+   "nguon": "sen.10059010",
+   "trich": "NGÔ LOẠI DÙNG ĐỂ RANG NỔ (POPCORN)\nNgô loại dùng để rang nổ (popcorn) còn được gọi là ngô rang nổ, là loại ngô (ngô, Zea mays var. Everta) nở ra từ nhân và phồng lên khi bị làm nóng.",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "10059091",
+   "dieuKien": "Ngô thích hợp sử dụng cho con người — loại ngô sạch, được các cơ quan có thẩm quyền của quốc gia chứng nhận; hàm lượng aflatoxin tối đa 20 ppb và độ ẩm không quá 14%",
+   "nguon": "sen.10059091",
+   "trich": "Ngô thích hợp sử dụng cho con người là loại ngô sạch, tốt cho sức khỏe và được các cơ quan có thẩm quyền của quốc gia chứng nhận. Loại ngô này thường có hàm lượng aflatoxin tối đa là 20 ppb và độ ẩm không quá 14%.",
+   "tieuChi": {
+    "fact": "ham_luong_aflatoxin_toi_da",
+    "op": "<=",
+    "value": 20,
+    "donVi": "ppb"
+   },
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "10059099",
+   "dieuKien": "Ngô (phân nhóm 1005.90) — dòng biểu thuế ghi \"Loại khác\"",
+   "nguon": "tax.10059099",
+   "trich": "10059099 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "1005909",
+    "truAnhEm": [
+     "10059091"
+    ],
+    "toTienCoTen": "100590",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "1005",
+    "cap": 4,
+    "cha": "10",
+    "tenVi": "Ngô (+).",
+    "tenEn": "Maize (corn)",
+    "suyRa": false
+   },
+   {
+    "id": "10051000",
+    "cap": 8,
+    "cha": "1005",
+    "tenVi": "Hạt giống",
+    "tenEn": "Cereals; maize (corn), seed",
+    "suyRa": false,
+    "laPhanNhom": "100510"
+   },
+   {
+    "id": "100590",
+    "cap": 6,
+    "cha": "1005",
+    "tenVi": "Loại khác",
+    "tenEn": "Cereals; maize (corn), other than seed",
+    "suyRa": false
+   },
+   {
+    "id": "10059010",
+    "cap": 8,
+    "cha": "100590",
+    "tenVi": "Loại dùng để rang nổ (popcorn) (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "1005909",
+    "cap": "TIEU_DE_QG",
+    "cha": "100590",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "10059091",
+    "cap": 8,
+    "cha": "1005909",
+    "tenVi": "Thích hợp sử dụng cho người (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "10059099",
+    "cap": 8,
+    "cha": "1005909",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch10.chuong",
+  "nhom1005.nhom",
+  "sen.10059010",
+  "sen.10059091",
+  "tax.10059099",
+  "wco.100590"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-26T14:29:44.903Z",
+  "ms": 91
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
