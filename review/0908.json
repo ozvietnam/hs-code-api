@@ -1,0 +1,81 @@
+{
+  "nhom": "0908",
+  "nguoiSoat": "dev-soat-doc-lap-lo051",
+  "luc": "2026-10-26T21:30:00+07:00",
+  "phamViSoat": "Toàn bộ 13 mục của bản nháp lô 051 (1 phamVi + 0 boPhan + 0 dieuKienVao + 0 loaiTru + 0 phanBiet + 6 tieuChi6 + 6 dong8 + 0 cay.tenDien), đọc cùng tmp/so-tay/nguon/0908.txt (nhom0908.nhom: 'Nhóm này bao gồm:' mục (a)(b)(c) với (c) có 4 mục con (1)–(4); ch09.chuong; phan09.phan; wco.090811/090812/090821/090822/090831/090832; tax.09081100…09083200). Đối chiếu TỪNG câu trích với câu nguồn nguyên văn — không tin máy kiểm.",
+  "soat": 13,
+  "giu": 12,
+  "sua": 1,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 0908 — 13/13 mục đã đọc cùng nguồn. SỬA 1 mục (1 trường), XOÁ 0, GIỮ 12. LỖI BẮT ĐƯỢC: `phamVi.trich` CẮT Ở RANH GIỚI CHƯA ĐÓNG — mảnh cuối '(c) Bạch đậu khấu:' kết thúc bằng DẤU HAI CHẤM, tức nguồn còn tiếp ('(1) Bạch đậu khấu chùm …'), nhưng câu trích dừng ở đó ⇒ trích như bị cắt cụt, không phải câu trích trọn vẹn (memory `so-tay-cat-trich-phai-bam-ranh-gi-dau-ngoac`: cắt trích phải bám ranh giới đóng). Sửa: bỏ dấu hai chấm ở cuối ⇒ mảnh cuối '(c) Bạch đậu khấu' là một mục DANH MỤC đóng, vẫn nguyên văn (byte-exact trong khối nguồn). KHÔNG nới trích thêm: 4 mục con của (c) ('(1) Bạch đậu khấu chùm … (4) Hạt sa nhân hoặc \"hạt thiên đường\" (Aframomum melegueta) …') khiến trích vượt 300 ký tự — mà 300–600 là vùng máy KHÔNG bắt (brief: 'trích 300–600 ký tự lặng lẽ'), nên không nới. GHI NHẬN CHO NGƯỜI DUYỆT (ngoài phạm vi sửa của phiên soát, KHÔNG tự thêm nội dung): mục (c) có 4 giống bạch đậu khấu, trong đó (4) là hạt sa nhân (Aframomum melegueta) và (3) có kích thước 'dài từ 27 đến 40 mm' — hai chi tiết này CHƯA có trong sổ tay. Lý do không tự đưa vào: (i) biểu thuế không tách các giống này (mọi bạch đậu khấu đều về 0908.31/0908.32) nên không có dòng 8 số nào để gắn; (ii) '27 đến 40 mm' là đặc tính của MỘT giống (loại to), không phải điều kiện của dòng ⇒ đặt vào `dieuKienSo` sẽ sai (memory `so-tay-sen-khoi-luong-la-dac-tinh-loai`); (iii) thêm vào `phamVi` sẽ vượt trần 300 của trích. Nên ghi ra đây để lô sau / người duyệt cân nhắc.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "SỬA `trich` (1 trường). Câu trích cũ: '(a) Hạt nhục đậu khấu, tròn hoặc dài, đã hoặc chưa bóc vỏ. … (b) Vỏ nhục đậu khấu, là lớp vỏ màng của hạt đậu khấu, nằm giữa phần vỏ ngoài và phần lõi hạch. … (c) Bạch đậu khấu:' — mảnh cuối KẾT THÚC BẰNG DẤU HAI CHẤM, tức còn tiếp trong nguồn ('(1) Bạch đậu khấu chùm, gọi như vậy vì …'), nên trích như bị cắt cụt (không phải câu trích trọn vẹn). Sửa: bỏ dấu hai chấm cuối ⇒ mảnh cuối '(c) Bạch đậu khấu' là mục danh mục đóng, VẪN NGUYÊN VĂN (byte-exact trong khối nguồn — em tự kiểm bằng tmp/lo051/verify-soat.cjs vì scripts/check-trich-nguyen-van.mjs không duyệt mảnh cuối khi trích hết mảnh). KHÔNG nới trích để lấy 4 mục con (1)–(4) của (c): sẽ vượt 300 ký tự (vùng 300–600 mà máy không bắt). `text` giữ nguyên (160 ký tự < trần runtime 220) vì đã nêu đủ 3 phần ngang hàng của nhóm (hạt nhục đậu khấu · vỏ nhục đậu khấu · bạch đậu khấu) theo mục (a)(b)(c) của nguồn.",
+      "sua": {
+        "trich": "(a) Hạt nhục đậu khấu, tròn hoặc dài, đã hoặc chưa bóc vỏ. … (b) Vỏ nhục đậu khấu, là lớp vỏ màng của hạt đậu khấu, nằm giữa phần vỏ ngoài và phần lõi hạch. … (c) Bạch đậu khấu"
+      }
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090811 '090811 Spices; nutmeg, neither crushed nor ground'; bản dịch 'Hạt nhục đậu khấu, chưa xay hoặc chưa nghiền' — 'nutmeg' = hạt nhục đậu khấu đúng theo nguồn riêng của nhóm (mục (a) 'Hạt nhục đậu khấu, tròn hoặc dài…'); nguồn wco.* ⇒ đúng luật 10."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090812 '090812 Spices; nutmeg, crushed or ground'; bản dịch khớp. Đúng luật 10."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090821 '090821 Spices; mace, neither crushed nor ground'; bản dịch 'Vỏ nhục đậu khấu, chưa xay hoặc chưa nghiền' — 'mace' = vỏ nhục đậu khấu đúng theo mục (b) của nguồn nhóm ('Vỏ nhục đậu khấu, là lớp vỏ màng của hạt đậu khấu…'). Đúng luật 10."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090822 '090822 Spices; mace, crushed or ground'; bản dịch khớp. Đúng luật 10."
+    },
+    {
+      "index": "tieuChi6[4]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090831 '090831 Spices; cardamoms, neither crushed nor ground'; bản dịch 'Bạch đậu khấu, chưa xay hoặc chưa nghiền' — 'cardamoms' = bạch đậu khấu đúng theo mục (c) của nguồn nhóm. Đúng luật 10."
+    },
+    {
+      "index": "tieuChi6[5]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.090832 '090832 Spices; cardamoms, crushed or ground'; bản dịch khớp. Đúng luật 10."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "09081100 = '09081100 - - - Chưa xay hoặc chưa nghiền' ⇒ 'Hạt nhục đậu khấu, chưa xay hoặc chưa nghiền — thuộc phân nhóm 0908.11' (tên hàng từ wco.090811 + chú giải nhóm, trạng thái từ chính dòng biểu thuế). Đúng."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "09081200 = '09081200 - - - Đã xay hoặc nghiền' ⇒ 'Hạt nhục đậu khấu, đã xay hoặc đã nghiền — thuộc phân nhóm 0908.12'. Đúng."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "09082100 = '09082100 - - - Chưa xay hoặc chưa nghiền' ⇒ 'Vỏ nhục đậu khấu, chưa xay hoặc chưa nghiền — thuộc phân nhóm 0908.21' (wco.090821 'mace'). Đúng."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "09082200 = '09082200 - - - Đã xay hoặc nghiền' ⇒ 'Vỏ nhục đậu khấu, đã xay hoặc đã nghiền — thuộc phân nhóm 0908.22'. Đúng."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "09083100 = '09083100 - - - Chưa xay hoặc chưa nghiền' ⇒ 'Bạch đậu khấu, chưa xay hoặc chưa nghiền — thuộc phân nhóm 0908.31' (wco.090831 'cardamoms'). Đúng."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "09083200 = '09083200 - - - Đã xay hoặc nghiền' ⇒ 'Bạch đậu khấu, đã xay hoặc đã nghiền — thuộc phân nhóm 0908.32'. Đủ 6/6 dòng biểu thuế của nhóm. Đúng."
+    }
+  ]
+}
