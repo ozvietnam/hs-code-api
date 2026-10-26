@@ -1,0 +1,282 @@
+{
+ "nhom": "1103",
+ "phamVi": {
+  "text": "Ngũ cốc dạng tấm, dạng bột thô và dạng viên.",
+  "nguon": "nhom1103.nhom",
+  "trich": "Ngũ cốc dạng tấm là những mảnh vỡ nhỏ hoặc lõi chứa bột của hạt ngũ cốc từ quá trình xay thô ngũ cốc.…Bột thô là sản phẩm có hình hạt hơn so với bột mịn và được tạo ra từ quá trình sàng đầu tiên sau xay xát, hoặc nghiền lại và sàng lại tấm từ quá trình xay xát đầu tiên.…Viên là những sản phẩm thu được từ quá trình xay xát các loại ngũ cốc thuộc Chương này được tích tụ bằng cách nén trực tiếp bằng áp lực hay bổ sung chất kết dính với tỉ lệ không quá 3% trọng lượng (xem Chú giải 1 của Phần II).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "ty_le_chat_ket_dinh_trong_vien",
+   "op": "<=",
+   "value": 3,
+   "donVi": "%",
+   "ngoaiTru": [],
+   "nguon": "nhom1103.nhom",
+   "trich": "Viên là những sản phẩm thu được từ quá trình xay xát các loại ngũ cốc thuộc Chương này được tích tụ bằng cách nén trực tiếp bằng áp lực hay bổ sung chất kết dính với tỉ lệ không quá 3% trọng lượng (xem Chú giải 1 của Phần II).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [
+  {
+   "hoi": "Sản phẩm có tỷ lệ phần trăm lọt qua sàng không thấp hơn tỷ lệ ghi cho từng loại ngũ cốc không?",
+   "neuCo": "1101|1102",
+   "neuKhong": "1103|1104",
+   "nguon": "ch11.chuong",
+   "trich": "Các sản phẩm thuộc Chương này theo những quy định trên đây sẽ được xếp vào nhóm 11.01 hoặc 11.02 nếu có tỷ lệ phần trăm lọt qua sàng bằng lưới kim loại với kích thước mắt sàng ghi trong Cột (4) hoặc (5) không thấp hơn tỷ lệ ghi cho từng loại ngũ cốc, tính theo trọng lượng.…Các trường hợp khác sẽ được xếp vào nhóm 11.03 hoặc 11.04.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "110311",
+   "fact": "la_ngu_coc_tam_bot_tho_cua_lua_mi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.110311",
+   "trich": "110311 Cereal groats and meal; of wheat",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "110313",
+   "fact": "la_ngu_coc_tam_bot_tho_cua_ngo",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.110313",
+   "trich": "110313 Cereal groats and meal; of maize (corn)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "110319",
+   "fact": "la_ngu_coc_tam_bot_tho_khac_trong_nhom_1103",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.110319",
+   "trich": "110319 Cereal groats and meal; n.e.c. in heading no. 1103",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "110320",
+   "fact": "la_vien_ngu_coc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.110320",
+   "trich": "110320 Cereal pellets",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "11031100",
+   "dieuKien": "Của lúa mì",
+   "tieuChi": {
+    "fact": "la_ngu_coc_tam_bot_tho_cua_lua_mi",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.11031100",
+   "trich": "11031100 - - Của lúa mì",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "11031300",
+   "dieuKien": "Của ngô",
+   "tieuChi": {
+    "fact": "la_ngu_coc_tam_bot_tho_cua_ngo",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.11031300",
+   "trich": "11031300 - - Của ngô",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "11031910",
+   "dieuKien": "Của meslin",
+   "tieuChi": {
+    "fact": "la_ngu_coc_tam_bot_tho_cua_meslin",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.11031910",
+   "trich": "11031910 - - - Của meslin",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "11031920",
+   "dieuKien": "Của gạo",
+   "tieuChi": {
+    "fact": "la_ngu_coc_tam_bot_tho_cua_gao",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.11031920",
+   "trich": "11031920 - - - Của gạo",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "11031990",
+   "dieuKien": "Loại khác: Cereal groats and meal; n.e.c. in heading no. 1103",
+   "tieuChi": null,
+   "nguon": "wco.110319",
+   "trich": "110319 Cereal groats and meal; n.e.c. in heading no. 1103",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "110319",
+    "truAnhEm": [
+     "11031910",
+     "11031920"
+    ],
+    "toTienCoTen": "110319",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "11032000",
+   "dieuKien": "Dạng viên",
+   "tieuChi": {
+    "fact": "la_vien_ngu_coc",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.11032000",
+   "trich": "11032000 - Dạng viên",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "1103",
+    "cap": 4,
+    "cha": "11",
+    "tenVi": "Ngũ cốc dạng tấm, dạng bột thô và viên.",
+    "tenEn": "Cereal groats; meal and pellets",
+    "suyRa": false
+   },
+   {
+    "id": "11031",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "1103",
+    "tenVi": "Dạng tấm và bột thô",
+    "tenEn": "Groats and meal",
+    "suyRa": true
+   },
+   {
+    "id": "11031100",
+    "cap": 8,
+    "cha": "11031",
+    "tenVi": "Của lúa mì",
+    "tenEn": "Cereal groats and meal; of wheat",
+    "suyRa": false,
+    "laPhanNhom": "110311"
+   },
+   {
+    "id": "11031300",
+    "cap": 8,
+    "cha": "11031",
+    "tenVi": "Của ngô",
+    "tenEn": "Cereal groats and meal; of maize (corn)",
+    "suyRa": false,
+    "laPhanNhom": "110313"
+   },
+   {
+    "id": "110319",
+    "cap": 6,
+    "cha": "11031",
+    "tenVi": null,
+    "tenEn": "Cereal groats and meal; n.e.c. in heading no. 1103",
+    "suyRa": false
+   },
+   {
+    "id": "11031910",
+    "cap": 8,
+    "cha": "110319",
+    "tenVi": "Của meslin",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "11031920",
+    "cap": 8,
+    "cha": "110319",
+    "tenVi": "Của gạo",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "11031990",
+    "cap": 8,
+    "cha": "110319",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "11032000",
+    "cap": 8,
+    "cha": "1103",
+    "tenVi": "Dạng viên",
+    "tenEn": "Cereal pellets",
+    "suyRa": false,
+    "laPhanNhom": "110320"
+   }
+  ],
+  "tenDien": [
+   {
+    "id": "110319",
+    "tenVi": "Ngũ cốc dạng tấm và bột thô khác thuộc nhóm 1103",
+    "nguon": "wco.110319",
+    "trich": "110319 Cereal groats and meal; n.e.c. in heading no. 1103",
+    "nguonLoai": "AI_DA_KIEM"
+   }
+  ]
+ },
+ "dungTuNguon": [
+  "ch11.chuong",
+  "nhom1103.nhom",
+  "tax.11031100",
+  "tax.11031300",
+  "tax.11031910",
+  "tax.11031920",
+  "tax.11032000",
+  "wco.110311",
+  "wco.110313",
+  "wco.110319",
+  "wco.110320"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-26T14:27:03.418Z",
+  "ms": 84
+ },
+ "kiemTra": {
+  "tong": 14,
+  "dat": 14,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
