@@ -1,0 +1,952 @@
+{
+ "nhom": "2009",
+ "phamVi": {
+  "text": "Nước ép quả, nước ép rau, chưa lên men và chưa pha thêm rượu; gồm cả nước dừa và hèm nho với điều kiện là chưa lên men.",
+  "nguon": "nhom2009.nhom",
+  "trich": "Liên quan đến nước ép, chưa lên men và chưa pha thêm rượu…Các loại nước ép quả hoặc nước ép rau của nhóm này…Nước ép thuộc nhóm này cũng bao gồm nước dừa.…Nhóm này cũng bao gồm hèm nho bất kể được dùng để làm gì, với điều kiện là chưa lên men.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "nong_do_con_theo_the_tich",
+   "op": "<=",
+   "value": 0.5,
+   "donVi": "%",
+   "ngoaiTru": [],
+   "nguon": "ch20.chuong",
+   "trich": "6. Theo mục đích của nhóm 20.09, khái niệm \"các loại nước ép, chưa lên men và chưa pha rượu\" để chỉ các loại nước ép có nồng độ cồn không quá 0,5% tính theo thể tích (xem Chú giải (2) của Chương 22).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "chua_len_men_va_chua_pha_them_ruou",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2009.nhom",
+   "trich": "Liên quan đến nước ép, chưa lên men và chưa pha thêm rượu, xem Chú giải 6 của Chương này.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Nước ép cà chua có hàm lượng khô từ 7% trở lên",
+   "sangNhom": "2002",
+   "nguon": "nhom2009.nhom",
+   "trich": "Nhóm này cũng không bao gồm:…(a) Nước ép cà chua có hàm lượng thành phần khô từ 7% trở lên (nhóm 20.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Nước có gas dùng nước ép quả để tạo hương",
+   "sangNhom": "2202",
+   "nguon": "nhom2009.nhom",
+   "trich": "nước có gas được dùng nước ép quả hoặc nước ép từ quả hạch (nut) để tạo hương đều bị loại trừ (nhóm 22.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Nước ép pha loãng do thêm nước vượt tỉ lệ cần thiết",
+   "sangNhom": "2202",
+   "nguon": "nhom2009.nhom",
+   "trich": "Tuy nhiên, nếu cho thêm nước vào nước quả ép,…với một tỉ lệ lớn hơn tỉ lệ cần thiết cho phép để thu được nước ép có thành phần tự nhiên ban đầu thì sẽ thu được sản phẩm pha loãng mà sẽ có đặc tính của đồ uống thuộc nhóm 22.02.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Hèm nho đã lên men hoặc đã cho thêm rượu",
+   "sangNhom": "2204",
+   "nguon": "nhom2009.nhom",
+   "trich": "Hèm nho đã lên men một phần, đã hoặc chưa lên men, cũng như loại hèm nho chưa lên men, đã cho thêm rượu, cả hai sản phẩm này đều có nồng độ cồn trên 0,5% theo thể tích thuộc nhóm 22.04.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Nước ép cà chua có hàm lượng thành phần khô từ 7% trở lên không?",
+   "neuCo": "2002",
+   "neuKhong": "2009",
+   "nguon": "nhom2009.nhom",
+   "trich": "(a) Nước ép cà chua có hàm lượng thành phần khô từ 7% trở lên (nhóm 20.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là nước có gas dùng nước ép quả để tạo hương?",
+   "neuCo": "2202",
+   "neuKhong": "2009",
+   "nguon": "nhom2009.nhom",
+   "trich": "nước có gas được dùng nước ép quả hoặc nước ép từ quả hạch (nut) để tạo hương đều bị loại trừ (nhóm 22.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng có nồng độ cồn trên 0,5% theo thể tích không?",
+   "neuCo": "2204",
+   "neuKhong": "2009",
+   "nguon": "nhom2009.nhom",
+   "trich": "Hèm nho đã lên men một phần, đã hoặc chưa lên men, cũng như loại hèm nho chưa lên men, đã cho thêm rượu, cả hai sản phẩm này đều có nồng độ cồn trên 0,5% theo thể tích thuộc nhóm 22.04.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "200912",
+   "fact": "tri_gi_brix",
+   "op": "<=",
+   "value": 20,
+   "donVi": "Brix",
+   "nguon": "wco.200912",
+   "trich": "200912 Juice; orange, not frozen, of a Brix value not exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200919",
+   "fact": "tri_gi_brix",
+   "op": ">",
+   "value": 20,
+   "donVi": "Brix",
+   "nguon": "wco.200919",
+   "trich": "200919 Juice; orange, not frozen, of a Brix value exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200921",
+   "fact": "tri_gi_brix",
+   "op": "<=",
+   "value": 20,
+   "donVi": "Brix",
+   "nguon": "wco.200921",
+   "trich": "200921 Juice; grapefruit or pomelo, of a Brix value not exceeding 20, unfermented, (not containing added spirit), whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200929",
+   "fact": "tri_gi_brix",
+   "op": ">",
+   "value": 20,
+   "donVi": "Brix",
+   "nguon": "wco.200929",
+   "trich": "200929 Juice; grapefruit or pomelo, of a Brix value exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200931",
+   "fact": "tri_gi_brix",
+   "op": "<=",
+   "value": 20,
+   "donVi": "Brix",
+   "nguon": "wco.200931",
+   "trich": "200931 Juice; of single citrus fruit (excluding orange, grapefruit or pomelo), of a Brix value not exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200939",
+   "fact": "tri_gi_brix",
+   "op": ">",
+   "value": 20,
+   "donVi": "Brix",
+   "nguon": "wco.200939",
+   "trich": "200939 Juice; of single citrus fruit (excluding orange, grapefruit or pomelo), of a Brix value exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200941",
+   "fact": "tri_gi_brix",
+   "op": "<=",
+   "value": 20,
+   "donVi": "Brix",
+   "nguon": "wco.200941",
+   "trich": "200941 Juice; pineapple, of a Brix value not exceeding 20, unfermented, (not containing added spirit), whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200949",
+   "fact": "tri_gi_brix",
+   "op": ">",
+   "value": 20,
+   "donVi": "Brix",
+   "nguon": "wco.200949",
+   "trich": "200949 Juice; pineapple, of a Brix value exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200961",
+   "fact": "tri_gi_brix",
+   "op": "<=",
+   "value": 30,
+   "donVi": "Brix",
+   "nguon": "wco.200961",
+   "trich": "200961 Juice; grape, of a Brix value not exceeding 30, unfermented, (not containing added spirit), whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200969",
+   "fact": "tri_gi_brix",
+   "op": ">",
+   "value": 30,
+   "donVi": "Brix",
+   "nguon": "wco.200969",
+   "trich": "200969 Juice; grape, of a Brix value exceeding 30, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200971",
+   "fact": "tri_gi_brix",
+   "op": "<=",
+   "value": 20,
+   "donVi": "Brix",
+   "nguon": "wco.200971",
+   "trich": "200971 Juice; apple, of a Brix value not exceeding 20, unfermented, (not containing added spirit), whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200979",
+   "fact": "tri_gi_brix",
+   "op": ">",
+   "value": 20,
+   "donVi": "Brix",
+   "nguon": "wco.200979",
+   "trich": "200979 Juice; apple, of a Brix value exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200911",
+   "fact": "la_nuoc_ep_cam_dong_lanh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.200911",
+   "trich": "200911 Juice; orange, frozen, unfermented, (not containing added spirit), whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200950",
+   "fact": "la_nuoc_ep_ca_chua",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.200950",
+   "trich": "200950 Juice; tomato, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200981",
+   "fact": "la_nuoc_ep_qua_cranberry_va_lingonberry",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.200981",
+   "trich": "200981 Juice; cranberry (Vaccinium macrocarpon, Vaccinium oxycoccos); Iingonberry (Vaccinium vitis-idaea), unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200989",
+   "fact": "nuoc_ep_chua_len_men_khong_co_con",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.200989",
+   "trich": "200989 Juice; of any single fruit, nut or vegetable n.e.c. in heading no. 2009, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200990",
+   "fact": "nuoc_ep_chua_len_men_khong_co_con",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.200990",
+   "trich": "200990 Juices; mixtures of fruits or vegetables (but not nut juice), unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "20091100",
+   "dieuKien": "Đông lạnh",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.20091100",
+   "trich": "20091100 - - Đông lạnh",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "20091200",
+   "dieuKien": "Không đông lạnh, với trị giá Brix không quá 20",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.20091200",
+   "trich": "20091200 - - Không đông lạnh, với trị giá Brix không quá 20",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "20091900",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2009.19",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.200919",
+   "trich": "200919 Juice; orange, not frozen, of a Brix value exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "20091",
+    "truAnhEm": [
+     "20091100",
+     "20091200"
+    ],
+    "toTienCoTen": "2009",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "20092100",
+   "dieuKien": "Với trị giá Brix không quá 20",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.20092100",
+   "trich": "20092100 - - Với trị giá Brix không quá 20",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "20092900",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2009.29",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.200929",
+   "trich": "200929 Juice; grapefruit or pomelo, of a Brix value exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "20092",
+    "truAnhEm": [
+     "20092100"
+    ],
+    "toTienCoTen": "2009",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "20093100",
+   "dieuKien": "Với trị giá Brix không quá 20",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.20093100",
+   "trich": "20093100 - - Với trị giá Brix không quá 20",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "20093900",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2009.39",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.200939",
+   "trich": "200939 Juice; of single citrus fruit (excluding orange, grapefruit or pomelo), of a Brix value exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "20093",
+    "truAnhEm": [
+     "20093100"
+    ],
+    "toTienCoTen": "2009",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "20094100",
+   "dieuKien": "Với trị giá Brix không quá 20",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.20094100",
+   "trich": "20094100 - - Với trị giá Brix không quá 20",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "20094900",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2009.49",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.200949",
+   "trich": "200949 Juice; pineapple, of a Brix value exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "20094",
+    "truAnhEm": [
+     "20094100"
+    ],
+    "toTienCoTen": "2009",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "20095000",
+   "dieuKien": "Nước cà chua ép",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.20095000",
+   "trich": "20095000 - Nước cà chua ép",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "20096100",
+   "dieuKien": "Với trị giá Brix không quá 30",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.20096100",
+   "trich": "20096100 - - Với trị giá Brix không quá 30",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "20096900",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2009.69",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.200969",
+   "trich": "200969 Juice; grape, of a Brix value exceeding 30, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "20096",
+    "truAnhEm": [
+     "20096100"
+    ],
+    "toTienCoTen": "2009",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "20097100",
+   "dieuKien": "Với trị giá Brix không quá 20",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.20097100",
+   "trich": "20097100 - - Với trị giá Brix không quá 20",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "20097900",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2009.79",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.200979",
+   "trich": "200979 Juice; apple, of a Brix value exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "20097",
+    "truAnhEm": [
+     "20097100"
+    ],
+    "toTienCoTen": "2009",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "20098110",
+   "dieuKien": "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.20098110",
+   "trich": "20098110 - - - Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "20098190",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2009.81",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.200981",
+   "trich": "200981 Juice; cranberry (Vaccinium macrocarpon, Vaccinium oxycoccos); Iingonberry (Vaccinium vitis-idaea), unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "200981",
+    "truAnhEm": [
+     "20098110"
+    ],
+    "toTienCoTen": "200981",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "20098910",
+   "dieuKien": "Nước ép từ quả lý chua đen",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.20098910",
+   "trich": "20098910 - - - Nước ép từ quả lý chua đen",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "20098920",
+   "dieuKien": "Nước dừa — dung dịch lỏng trong suốt bên trong quả dừa",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "sen.20098920",
+   "trich": "Nước dừa là một dung dịch lỏng trong suốt bên trong quả dừa (quả thuộc họ cọ dừa). Đây là một loại thực phẩm tự nhiên không có chất béo, ít đường và calo.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "20098930",
+   "dieuKien": "Nước dừa cô đặc — làm từ nước dừa bằng cách giảm hàm lượng nước",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "sen.20098930",
+   "trich": "Nước dừa cô đặc được làm từ nước dừa bằng cách giảm hàm lượng nước và có màu nâu nhạt.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "20098940",
+   "dieuKien": "Nước xoài ép cô đặc",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.20098940",
+   "trich": "20098940 - - - Nước xoài ép cô đặc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "20098991",
+   "dieuKien": "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.20098991",
+   "trich": "20098991 - - - - Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "20098999",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2009.89",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.200989",
+   "trich": "200989 Juice; of any single fruit, nut or vegetable n.e.c. in heading no. 2009, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "2009899",
+    "truAnhEm": [
+     "20098991"
+    ],
+    "toTienCoTen": "200989",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "20099010",
+   "dieuKien": "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.20099010",
+   "trich": "20099010 - - Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "20099091",
+   "dieuKien": "Dùng ngay được",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.20099091",
+   "trich": "20099091 - - - Dùng ngay được",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "20099099",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2009.90",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.200990",
+   "trich": "200990 Juices; mixtures of fruits or vegetables (but not nut juice), unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "2009909",
+    "truAnhEm": [
+     "20099091"
+    ],
+    "toTienCoTen": "200990",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2009",
+    "cap": 4,
+    "cha": "20",
+    "tenVi": "Các loại nước ép trái cây hoặc nước ép từ quả hạch (nut) (kể cả hèm nho và nước dừa) và nước rau ép, chưa lên men và chưa pha thêm rượu, đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác (+).",
+    "tenEn": "Fruit or nut juices (including grape must and coconut water) and vegetable juices, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+    "suyRa": false
+   },
+   {
+    "id": "20091",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "2009",
+    "tenVi": "Nước cam ép",
+    "tenEn": "Orange juice",
+    "suyRa": true
+   },
+   {
+    "id": "20091100",
+    "cap": 8,
+    "cha": "20091",
+    "tenVi": "Đông lạnh",
+    "tenEn": "Juice; orange, frozen, unfermented, (not containing added spirit), whether or not containing added sugar or other sweetening matter",
+    "suyRa": false,
+    "laPhanNhom": "200911"
+   },
+   {
+    "id": "20091200",
+    "cap": 8,
+    "cha": "20091",
+    "tenVi": "Không đông lạnh, với trị giá Brix không quá 20",
+    "tenEn": "Juice; orange, not frozen, of a Brix value not exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+    "suyRa": false,
+    "laPhanNhom": "200912"
+   },
+   {
+    "id": "20091900",
+    "cap": 8,
+    "cha": "20091",
+    "tenVi": "Loại khác",
+    "tenEn": "Juice; orange, not frozen, of a Brix value exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "200919"
+   },
+   {
+    "id": "20092",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "2009",
+    "tenVi": "Nước ép quả bưởi chùm; nước ép quả bưởi",
+    "tenEn": "Grapefruit juice; pomelo juice",
+    "suyRa": true
+   },
+   {
+    "id": "20092100",
+    "cap": 8,
+    "cha": "20092",
+    "tenVi": "Với trị giá Brix không quá 20",
+    "tenEn": "Juice; grapefruit or pomelo, of a Brix value not exceeding 20, unfermented, (not containing added spirit), whether or not containing added sugar or other sweetening matter",
+    "suyRa": false,
+    "laPhanNhom": "200921"
+   },
+   {
+    "id": "20092900",
+    "cap": 8,
+    "cha": "20092",
+    "tenVi": "Loại khác",
+    "tenEn": "Juice; grapefruit or pomelo, of a Brix value exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "200929"
+   },
+   {
+    "id": "20093",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "2009",
+    "tenVi": "Nước ép từ một loại quả thuộc chi cam quýt khác",
+    "tenEn": "Juice of any other single citrus fruit",
+    "suyRa": true
+   },
+   {
+    "id": "20093100",
+    "cap": 8,
+    "cha": "20093",
+    "tenVi": "Với trị giá Brix không quá 20",
+    "tenEn": "Juice; of single citrus fruit (excluding orange, grapefruit or pomelo), of a Brix value not exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+    "suyRa": false,
+    "laPhanNhom": "200931"
+   },
+   {
+    "id": "20093900",
+    "cap": 8,
+    "cha": "20093",
+    "tenVi": "Loại khác",
+    "tenEn": "Juice; of single citrus fruit (excluding orange, grapefruit or pomelo), of a Brix value exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "200939"
+   },
+   {
+    "id": "20094",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "2009",
+    "tenVi": "Nước dứa ép",
+    "tenEn": "Pineapple juice",
+    "suyRa": true
+   },
+   {
+    "id": "20094100",
+    "cap": 8,
+    "cha": "20094",
+    "tenVi": "Với trị giá Brix không quá 20",
+    "tenEn": "Juice; pineapple, of a Brix value not exceeding 20, unfermented, (not containing added spirit), whether or not containing added sugar or other sweetening matter",
+    "suyRa": false,
+    "laPhanNhom": "200941"
+   },
+   {
+    "id": "20094900",
+    "cap": 8,
+    "cha": "20094",
+    "tenVi": "Loại khác",
+    "tenEn": "Juice; pineapple, of a Brix value exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "200949"
+   },
+   {
+    "id": "20095000",
+    "cap": 8,
+    "cha": "2009",
+    "tenVi": "Nước cà chua ép",
+    "tenEn": "Juice; tomato, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+    "suyRa": false,
+    "laPhanNhom": "200950"
+   },
+   {
+    "id": "20096",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "2009",
+    "tenVi": "Nước nho ép (kể cả hèm nho)",
+    "tenEn": "Grape juice (including grape must)",
+    "suyRa": true
+   },
+   {
+    "id": "20096100",
+    "cap": 8,
+    "cha": "20096",
+    "tenVi": "Với trị giá Brix không quá 30",
+    "tenEn": "Juice; grape, of a Brix value not exceeding 30, unfermented, (not containing added spirit), whether or not containing added sugar or other sweetening matter",
+    "suyRa": false,
+    "laPhanNhom": "200961"
+   },
+   {
+    "id": "20096900",
+    "cap": 8,
+    "cha": "20096",
+    "tenVi": "Loại khác",
+    "tenEn": "Juice; grape, of a Brix value exceeding 30, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "200969"
+   },
+   {
+    "id": "20097",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "2009",
+    "tenVi": "Nước táo ép",
+    "tenEn": "Apple juice",
+    "suyRa": true
+   },
+   {
+    "id": "20097100",
+    "cap": 8,
+    "cha": "20097",
+    "tenVi": "Với trị giá Brix không quá 20",
+    "tenEn": "Juice; apple, of a Brix value not exceeding 20, unfermented, (not containing added spirit), whether or not containing added sugar or other sweetening matter",
+    "suyRa": false,
+    "laPhanNhom": "200971"
+   },
+   {
+    "id": "20097900",
+    "cap": 8,
+    "cha": "20097",
+    "tenVi": "Loại khác",
+    "tenEn": "Juice; apple, of a Brix value exceeding 20, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "200979"
+   },
+   {
+    "id": "20098",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "2009",
+    "tenVi": "Nước ép từ một loại quả, quả hạch (nut) hoặc rau khác",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "200981",
+    "cap": 6,
+    "cha": "20098",
+    "tenVi": null,
+    "tenEn": "Juice; cranberry (Vaccinium macrocarpon, Vaccinium oxycoccos); Iingonberry (Vaccinium vitis-idaea), unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+    "suyRa": false
+   },
+   {
+    "id": "20098110",
+    "cap": 8,
+    "cha": "200981",
+    "tenVi": "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "20098190",
+    "cap": 8,
+    "cha": "200981",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "200989",
+    "cap": 6,
+    "cha": "20098",
+    "tenVi": null,
+    "tenEn": "Juice; of any single fruit, nut or vegetable n.e.c. in heading no. 2009, unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+    "suyRa": false
+   },
+   {
+    "id": "20098910",
+    "cap": 8,
+    "cha": "200989",
+    "tenVi": "Nước ép từ quả lý chua đen",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "20098920",
+    "cap": 8,
+    "cha": "200989",
+    "tenVi": "Nước dừa (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "20098930",
+    "cap": 8,
+    "cha": "200989",
+    "tenVi": "Nước dừa cô đặc (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "20098940",
+    "cap": 8,
+    "cha": "200989",
+    "tenVi": "Nước xoài ép cô đặc",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "2009899",
+    "cap": "TIEU_DE_QG",
+    "cha": "200989",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "20098991",
+    "cap": 8,
+    "cha": "2009899",
+    "tenVi": "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "20098999",
+    "cap": 8,
+    "cha": "2009899",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "200990",
+    "cap": 6,
+    "cha": "2009",
+    "tenVi": "Nước ép hỗn hợp",
+    "tenEn": "Juices; mixtures of fruits or vegetables (but not nut juice), unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter",
+    "suyRa": false
+   },
+   {
+    "id": "20099010",
+    "cap": 8,
+    "cha": "200990",
+    "tenVi": "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "2009909",
+    "cap": "TIEU_DE_QG",
+    "cha": "200990",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "20099091",
+    "cap": 8,
+    "cha": "2009909",
+    "tenVi": "Dùng ngay được",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "20099099",
+    "cap": 8,
+    "cha": "2009909",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch20.chuong",
+  "nhom2009.nhom",
+  "sen.20098920",
+  "sen.20098930",
+  "tax.20091100",
+  "tax.20091200",
+  "tax.20092100",
+  "tax.20093100",
+  "tax.20094100",
+  "tax.20095000",
+  "tax.20096100",
+  "tax.20097100",
+  "tax.20098110",
+  "tax.20098910",
+  "tax.20098940",
+  "tax.20098991",
+  "tax.20099010",
+  "tax.20099091",
+  "wco.200911",
+  "wco.200912",
+  "wco.200919",
+  "wco.200921",
+  "wco.200929",
+  "wco.200931",
+  "wco.200939",
+  "wco.200941",
+  "wco.200949",
+  "wco.200950",
+  "wco.200961",
+  "wco.200969",
+  "wco.200971",
+  "wco.200979",
+  "wco.200981",
+  "wco.200989",
+  "wco.200990"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-27T23:15:08.310Z",
+  "ms": 86
+ },
+ "kiemTra": {
+  "tong": 52,
+  "dat": 52,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
