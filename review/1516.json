@@ -1,0 +1,306 @@
+{
+  "nhom": "1516",
+  "gopVoi": "soát độc lập lô 060 (PR #479) — người soát KHÁC người soạn",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "TRÀN CLIP — `text` 236 ký tự > trần 220 ⇒ runtime (lib/so-tay-gates.js:134) cắt đúng giữa \"tái este hoá h…\", MẤT VẾ CUỐI của phần (B) là \"hoặc elaidin hoá\" — tức mất một trong bốn phép chuyển đổi hoá học mà nhóm 1516 nêu (mẫu lỗi lô 038: mất kết luận của luật; đúng cách lô 058 xử lý 1502/1503/1504). SỬA: bỏ mạo từ \"theo những cách nêu sau đây\" (28 ký tự) — vốn chỉ là dẫn ý về danh sách (A)/(B) đứng ngay sau, không mất nghĩa — còn 208 ký tự, vẫn giữ trọn chủ thể, vế \"đã qua chuyển đổi hoá học\", vế \"nhưng không chế biến thêm\" và cả hai tiêu đề phần (A)/(B) với đủ bốn phép hoá chế. Câu trích (253 ký tự, ≤300) giữ nguyên; mọi từ trong `text` có trong câu trích ✓.",
+      "sua": {
+        "text": "Chất béo và dầu động vật, thực vật hoặc vi sinh vật đã qua chuyển đổi hoá học nhưng không chế biến thêm… (A) Chất béo và dầu đã hydro hoá… (B) Chất béo và dầu este hoá liên hợp, tái este hoá hoặc elaidin hoá."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI CHỮ MÁY KHÔNG BẮT (gác soát từ) — `fact` ghi \"theo_nhung_cach_noi_sau_day\" (cách NÓI) trong khi nguồn chỉ ghi \"theo những cách NÊU sau đây\" ⇒ `fact` thay sai TỪ của nguồn. Đây đúng là lớp lỗi lô 048 (fact ghi \"bánh\" thay vì \"bột\", \"quet\" thay vì \"quyet\") — `fact` đọc thẳng vào prompt nên đổi từ là đổi nghĩa. Quy ước nhà cho \"nêu\" là `neu` (xem 9403 \"duoc_neu_tai_nhom_truoc\", 8714/8708 \"khong_duoc_neu_cu_the_hon_o_noi_khac_trong_danh_muc\", 8202, 4202, 0910) — trong toàn corpus chỉ có 1 chỗ ghi \"cach_noi\", đúng chỗ này. SỬA: \"noi\" → \"neu\". Câu trích giữ nguyên (nguyên văn, đúng \"nêu\").",
+      "sua": {
+        "fact": "la_chat_beo_va_dau_dong_vat_thuc_vat_hoac_vi_sinh_vat_da_qua_chuyen_doi_hoa_hoc_theo_nhung_cach_neu_sau_day_nhung_khong_che_bien_them"
+      }
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "Hai phần (A) hydro hoá / (B) este hoá liên hợp, tái este hoá hoặc elaidin hoá — đủ các phép chuyển đổi hoá học mà nhóm 1516 nêu, nên là điều kiện VÀO nhóm phủ cả nhóm ✓. Đoạn lược \"…\" chỉ che phần DIỄN GIẢI bên trong phần (A) (không chứa \"trừ / tuy nhiên / với điều kiện / không kể\") ✓; fact dương + value=true ✓"
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "HAI LỖI MÁY KHÔNG BẮT. (1) `dieuKien` 169 ký tự > trần clip 55 ⇒ runtime in ra \"Chất béo, dầu và các phân đoạn của chúng đã được hydro …\" — cắt mất TOÀN BỘ vế điều kiện (\"đã qua chế biến thêm để dùng làm thực phẩm như thay đổi kết cấu\"), tức mất đúng cái làm thành loại trừ; mô hình chỉ thấy \"đã được hydro hoá\" thì hiểu nhầm rằng MỌI dầu hydro hoá đều sang 15.17 (ngược hẳn với nguồn). Đối chiếu lô 058 (1504 loaiTru[0]: clip cắt mất cụm \"đã hydro hoá\" nằm ngoài clip ⇒ đã sửa). SỬA `dieuKien` rút xuống 52 ký tự = \"Chất béo, dầu đã chế biến thêm để dùng làm thực phẩm\" — giữ trọn vế phân biệt (\"chế biến thêm để dùng làm thực phẩm\"); bỏ \"qua\" (vế \"chế biến thêm\" đã đủ nghĩa). (2) `trich` mở đầu bằng \"Tuy nhiên,\" trong khi vế đối lập (\"Những sản phẩm miêu tả trên đây được phân loại trong nhóm này…\") nằm NGOÀI câu trích ⇒ mệnh đề \"Tuy nhiên\" không còn gì để đối lập, đọc lên thành câu mồ côi (đúng lớp lỗi lô 058 sửa ở 1504 dieuKienVao[1]). SỬA `trich`: lược bỏ \"Tuy nhiên, \" và bắt đầu từ \"nhóm này không bao gồm …\" (211 ký tự, nguyên văn liên tục) — câu trích tự nói đủ điều mục khẳng định.",
+      "sua": {
+        "dieuKien": "Chất béo, dầu đã chế biến thêm để dùng làm thực phẩm",
+        "trich": "nhóm này không bao gồm chất béo, dầu và các phần phân đoạn của chúng đã được hydro hoá v.v. đã\n\nqua chế biến thêm để dùng làm thực phẩm như thay đổi kết cấu (thay đổi kết cấu hoặc cấu trúc tinh thể) (nhóm 15.17)."
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "sua",
+      "lyDo": "TRÀN CLIP ĐẢO NGHĨA — `dieuKien` 188 ký tự > trần 55 ⇒ runtime chỉ in \"Chất béo và dầu hoặc các phân đoạn của chúng được hydo …\", CẮT MẤT đúng vế giới hạn \"trong trường hợp mà các thay đổi liên quan đến nhiều hơn một chất béo hoặc dầu\". Hậu quả là ngược chiều hoàn toàn với nguồn: đọc cụt sẽ thành \"mọi dầu hydro/este hóa → 15.17/15.18\", trong khi nguồn loại trừ CHỈ vế \"liên quan đến nhiều hơn một chất béo hoặc dầu\" (vế \"chỉ liên quan đến một loại\" thuộc về 1516, đã ghi ở 1517 loaiTru[1]). SỬA: rút xuống 54 ký tự, giữ TRỌN định ngữ giới hạn của câu — \"Thay đổi liên quan đến nhiều hơn một chất béo hoặc dầu\" (chủ thể \"chất béo và dầu đã hydro/este/elaidin hóa\" đã có ở dieuKienVao[1] của chính nhóm này nên không mất thông tin). Câu trích giữ nguyên — đã có dấu hiệu loại trừ \"không bao gồm\" và đích danh \"(nhóm 15.17 hoặc 15.18)\" ✓.",
+      "sua": {
+        "dieuKien": "Thay đổi liên quan đến nhiều hơn một chất béo hoặc dầu"
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "HAI LỖI MÁY KHÔNG BẮT. (1) `hoi` 167 ký tự > trần clip 110 ⇒ runtime cắt mất cả vế thứ hai (\"… hay là chất béo và dầu chỉ chuyển đổi hoá học theo các cách nêu trong nhóm này?\"), in ra \"Hàng là chất béo và dầu đã qua chế biến thêm để dùng làm thực phẩm như thay đổi kết cấu hay là chất béo và dầu…\" — câu hỏi bị cụt, không còn dạng câu hỏi (mẫu lỗi lô 055/lô 058: 1503 phanBiet[1], 1504 phanBiet[0]). (2) Vế thứ hai (\"chất béo và dầu chỉ chuyển đổi hoá học theo các cách nêu trong nhóm này\") LẤY TỪ CÂU KHÁC (câu mở đầu chú giải nhóm), không có trong câu trích dẫn của mục này ⇒ \"gộp vế ngoài câu\" (brief mục 8). SỬA: đổi sang dạng CÓ/KHÔNG theo luật lô 055 (\"clip() cắt mất nhánh câu hỏi thì đổi dạng CÓ/KHÔNG\") — \"Hàng là chất béo và dầu đã qua chế biến thêm để dùng làm thực phẩm như thay đổi kết cấu không?\" (94 ký tự < 110): câu hỏi tự nói đúng điều mục khẳng định, nhánh Có ⇒ 15.17 (đích danh trong trích), nhánh Không ⇒ 1516 (nhóm) — chiều đúng, không đổi. Đồng thời bỏ \"Tuy nhiên,\" ở đầu câu trích để câu trích tự chứa (như loaiTru[0]).",
+      "sua": {
+        "hoi": "Hàng là chất béo và dầu đã qua chế biến thêm để dùng làm thực phẩm như thay đổi kết cấu không?",
+        "trich": "nhóm này không bao gồm chất béo, dầu và các phần phân đoạn của chúng đã được hydro hoá v.v. đã\n\nqua chế biến thêm để dùng làm thực phẩm như thay đổi kết cấu (thay đổi kết cấu hoặc cấu trúc tinh thể) (nhóm 15.17)."
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "HAI LỖI MÁY KHÔNG BẮT. (1) `hoi` 124 ký tự > trần clip 110 ⇒ runtime cắt mất đuôi (\"… hay là hỗn hợp hoặc chế phẩm ăn được?\"), in ra \"…hay là hỗn hợp hoặc chế…\" — mất dấu hỏi và mất nội dung nhánh. (2) Vế \"hay là hỗn hợp hoặc chế phẩm ăn được?\" KHÔNG có trong câu trích dẫn (\"trong trường hợp mà các thay đổi liên quan đến nhiều hơn một chất béo hoặc dầu (nhóm 15.17 hoặc 15.18)\") ⇒ gộp vế ngoài câu; hơn nữa vế đó là một loại trừ KHÁC của Chương (hỗn hợp/chế phẩm ăn được) — không được chép loại trừ chung của Chương vào từng nhóm (quyết định lô 060). SỬA: đổi sang dạng CÓ/KHÔNG, chỉ hỏi đúng vế loại trừ mà câu trích nêu — \"Hàng là chất béo và dầu mà việc thay đổi liên quan đến nhiều hơn một chất béo hoặc dầu không?\" (93 ký tự < 110). Chiều Có/Không giữ nguyên (Có ⇒ 15.17|15.18, Không ⇒ 1516) và đúng vì hai vế trong bản nháp đã là phần bù của nhau (vế \"một loại\" thuộc 1516, xem 1517 loaiTru[1]) ✓. Câu trích giữ nguyên — đã có \"không bao gồm\" và đích danh \"(nhóm 15.17 hoặc 15.18)\" ✓.",
+      "sua": {
+        "hoi": "Hàng là chất béo và dầu mà việc thay đổi liên quan đến nhiều hơn một chất béo hoặc dầu không?"
+      }
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tiêu đề phân nhóm WCO 151610; fact dương + value=true bám đúng tiêu đề, không thêm chữ ngoài trích [wco.151610] ✓"
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tiêu đề phân nhóm WCO 151620; fact dương + value=true bám đúng tiêu đề, không thêm chữ ngoài trích [wco.151620] ✓"
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tiêu đề phân nhóm WCO 151630; fact dương + value=true bám đúng tiêu đề, không thêm chữ ngoài trích [wco.151630] ✓"
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15161020: \"Đã tái este hóa\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151610 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162011: \"- Của đậu tương\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162012: \"- Của ngô (maize)\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162014: \"- Của dừa\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162017: \"- Của lạc\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162018: \"- Của hạt lanh\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151620 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
+    },
+    {
+      "index": "dong8[8]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162021: \"- Của quả cọ dầu, dạng thô\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[9]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162022: \"- Của quả cọ dầu, trừ dạng thô\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[10]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162023: \"- Của hạt cọ, dạng thô\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[11]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162024: \"- Của hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[12]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162025: \"- Của olein hạt cọ, dạng thô\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[13]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162026: \"- Của olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[14]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151620 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
+    },
+    {
+      "index": "dong8[15]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162031: \"- Của lạc; của dừa; của đậu tương\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[16]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162032: \"- Của hạt lanh\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[17]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162033: \"- Của ô liu\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[18]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162034: \"CHẤT BÉO ĐÃ HYDRO HÓA CỦA CỌ DẦU\nChất béo đã hydro hóa của cọ dầu thu được từ quả cọ dầu và hạt cọ sẽ được phân loại trong các nhóm này khi chúng đáp ứng điều kiện sau:\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[19]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162035: \"CHẤT BÉO ĐÃ HYDRO HÓA CỦA CỌ DẦU\nChất béo đã hydro hóa của cọ dầu thu được từ quả cọ dầu và hạt cọ sẽ được phân loại trong các nhóm này khi chúng đáp ứng điều kiện sau:\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[20]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151620 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
+    },
+    {
+      "index": "dong8[21]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162041: \"- Của hạt thầu dầu (sáp opal)\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[22]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162042: \"- Của dừa\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[23]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162043: \"- Của lạc\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[24]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162044: \"- Của hạt lanh\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[25]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162045: \"- Của ô liu\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[26]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162046: \"CHẤT BÉO ĐÃ HYDRO HÓA CỦA CỌ DẦU\nChất béo đã hydro hóa của cọ dầu thu được từ quả cọ dầu và hạt cọ sẽ được phân loại trong các nhóm này khi chúng đáp ứng điều kiện sau:\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[27]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162047: \"CHẤT BÉO ĐÃ HYDRO HÓA CỦA CỌ DẦU\nChất béo đã hydro hóa của cọ dầu thu được từ quả cọ dầu và hạt cọ sẽ được phân loại trong các nhóm này khi chúng đáp ứng điều kiện sau:\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[28]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162048: \"- Của đậu tương\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[29]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151620 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
+    },
+    {
+      "index": "dong8[30]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162051: \"- Của hạt lanh\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[31]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162052: \"- Của ô liu\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[32]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162053: \"- Của đậu tương\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[33]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162054: \"- Của lạc, cọ dầu hoặc dừa\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[34]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151620 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
+    },
+    {
+      "index": "dong8[35]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162061: \"- Dạng thô\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[36]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162062: \"- Đã tinh chế, tẩy và khử mùi (RBD)\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[37]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151620 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
+    },
+    {
+      "index": "dong8[38]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162091: \"- Stearin cọ, có chỉ số iốt trên 48\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[39]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162092: \"- Của hạt lanh\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[40]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162093: \"- Của ô liu\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[41]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162094: \"- Của đậu tương\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[42]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162096: \"- Stearin hạt cọ đã tinh chế, tẩy và khử mùi (RBD)\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[43]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15162098: \"- Của lạc, của cọ dầu hoặc của dừa\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[44]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151620 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
+    },
+    {
+      "index": "dong8[45]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15163000: \"Chất béo và dầu vi sinh vật và các phần phân đoạn của chúng\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    }
+  ]
+}

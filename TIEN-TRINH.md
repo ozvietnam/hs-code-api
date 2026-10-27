@@ -7393,3 +7393,146 @@ một mục ở 1517 **nói ÍT hơn** câu trích (đã khai báo ở trên).
   `nguoi_lam=dev-zcode-mm` (đổi `xong` + số PR khi gộp).
 
 ---
+
+# 2026-10-27 — SOÁT ĐỘC LẬP lô 060 (PR #479), người soát `dev-soat-doc-lap-lo060` (KHÁC người soạn `dev-zcode-mm`)
+
+Em là người soát **độc lập**: bản nháp `tmp/so-tay/raw/*.json` của lô 060 do phiên soạn (`dev-zcode-mm`)
+để lại, em đọc lại **toàn bộ** `phamVi` / `dieuKienVao` / `loaiTru` / `phanBiet` (5 khối bắt buộc theo
+mục 4 `docs/giao-viec/so-tay-giao-ngoai.md`) **và** đọc thêm `tieuChi6` / `dong8` của 6 nhóm
+(1512, 1513, 1514, 1515, 1516, 1517), **mỗi mục cùng nguồn** `tmp/so-tay/nguon/<nhom>.txt`.
+Hồ sơ soát: `review/1512.json` … `review/1517.json` — **mỗi trong 170 mục có một dòng `giu`/`sua`/`xoa`
+kèm lý do**, không bỏ mục nào không ghi lý do. (9 mục `cay.tenDien` là khối máy sinh từ cây HS ⇒ ngoài
+phạm vi soát, đúng luật §L11 như `apply-review-lo002.mjs`; vẫn đã đọc và đối chiếu 9/9.)
+
+**Kết quả: soát 170/170 mục — giữ 158, sửa 12 mục (17 trường), xoá 0.** Sau soát vẫn **179/179 mục (100 %)**;
+**25 mục** ở 5 khối đã soi đổi `nguonLoai` → `NGUOI_DUYET`; `tieuChi6`/`dong8` **giữ `AI_DA_KIEM`**
+(đã đọc và đối chiếu từng mục; luật 11 chỉ cho đổi nhãn 5 khối đã soát).
+
+| nhóm | tổng mục | soát | giữ | sửa | xoá | còn lại | `nguonLoai` → NGUOI_DUYET |
+|---|---|---|---|---|---|---|---|
+| 1512 | 15 | 13 | 13 | 0 | 0 | 15 | 2 |
+| 1513 | 26 | 22 | 22 | 0 | 0 | 26 | 2 |
+| 1514 | 16 | 14 | 13 | 1 | 0 | 16 | 3 |
+| 1515 | 36 | 35 | 34 | 1 | 0 | 36 | 2 |
+| 1516 | 56 | 56 | 50 | 6 | 0 | 56 | 7 |
+| 1517 | 30 | 30 | 26 | 4 | 0 | 30 | 9 |
+| **Tổng** | **179** | **170** | **158** | **12** | **0** | **179** | **25** |
+
+## 12 mục sửa — 5 lớp lỗi, đều là loại máy `check-so-tay` KHÔNG bắt được
+
+### Lớp 1 — TRÀN TRẦN CLIP RUNTIME (10 trường) — lớp lớn nhất, và nguy hiểm nhất
+
+`lib/so-tay-gates.js` cắt trước khi đưa vào prompt: `phamVi.text` 220 · `loaiTru.dieuKien` 55 ·
+`phanBiet.hoi` 110. Máy kiểm KHÔNG biết các trần này ⇒ mọi mục dưới đây đều **xanh máy**.
+
+| mục | dài | clip còn lại | MẤT |
+|---|---|---|---|
+| 1515 `phamVi.text` | 333 | cắt giữa từ *"dầu hạt ng…"* | 6/9 loại dầu (thầu dầu, hạt vừng, vi sinh vật, tung, jojoba, tallow, sáp cây sim) |
+| 1516 `phamVi.text` | 236 | cắt *"tái este hoá h…"* | vế cuối phần (B) *"hoặc elaidin hoá"* — mất 1 trong 4 phép hoá chế |
+| 1517 `phamVi.text` | 373 | cắt *"trừ cá…"* | **VẾ LOẠI TRỪ "trừ các loại thuộc nhóm 15.16"** + cả hai tiêu đề phần (A)/(B) |
+| 1516 `loaiTru[0].dieuKien` | 169 | *"…đã được hydro …"* | **toàn bộ vế "đã qua chế biến thêm để dùng làm thực phẩm"** — mất đúng cái làm thành loại trừ |
+| 1516 `loaiTru[1].dieuKien` | 188 | *"…được hydo …"* | vế *"các thay đổi liên quan đến nhiều hơn một chất béo hoặc dầu"* ⇒ **ĐẢO CHIỀU** |
+| 1517 `loaiTru[0].dieuKien` | 59 | *"…mỡ khổ của…"* | chữ *"lợn"* — mất loài vật xác định sản phẩm bị loại trừ |
+| 1517 `loaiTru[1].dieuKien` | 190 | *"…tái es…"* | vế *"chỉ liên quan đến một loại"* ⇒ **ĢO CHIỀU** (ngược nguồn) |
+| 1516 `phanBiet[0].hoi` | 167 | mất cả vế thứ hai | câu hỏi mất dạng câu hỏi |
+| 1516 `phanBiet[1].hoi` | 124 | mất đuôi | mất dấu hỏi + mất nội dung nhánh |
+| 1517 `phanBiet[1].hoi` | 171 | mất *"chỉ liên quan đến một loại"* | mất đúng vế phân biệt 1516 với 1517 |
+
+**Hai mục 1516 `loaiTru[1]` và 1517 `loaiTru[1]` là nguy hiểm nhất**: sau khi cắt, điều kiện đọc lên thành
+*"mọi dầu hydro/este/elaidin hoá → 15.17/15.18"* — **ngược hẳn nguồn** (nguồn chỉ loại vế *"chỉ liên quan
+đến một loại"*; vế *"nhiều hơn một loại"* thì ở lại 1517). Đã sửa bằng cách rút `dieuKien` về đúng định ngữ
+giới hạn của câu (54 và 53 ký tự).
+
+### Lớp 2 — NHÁNH "KHÔNG" CỦA `phanBiet` KHÔNG PHẢI PHẦN BÙ (1 mục)
+
+`1514 phanBiet[0]`: nhánh "có" đã liệt đúng 4 dòng 1514.11/1514.19 (15141100, 15141910, 15141920,
+15141990) nhưng nhánh "không" trỏ về **`1514`** — tức là **chính nhóm 1514**, chứa luôn 4 dòng của nhánh
+"có" ⇒ hai nhánh **CHỒNG NHAU**. Tờ khai *"dầu cây cải dầu axit eruxic cao"* (không phải "có") không được
+dẫn đi đâu cả. Luật: **hai nhánh phải phủ kín và không dư** (mẫu đúng đã gộp: 0304, 0708[0]/[1], 0711[0]/[1]).
+
+> **ĐO ĐƯỢC để bác luận "mẫu chuẩn nhà"** mà phiên soạn ghi trong PR body: toàn corpus có **766** mục
+> `neuKhong` = chính nhóm **với `neuCo` ở NGOÀI nhóm** (hợp lệ: "ra ngoài hay ở lại"), nhưng chỉ **3** mục
+> có `neuCo` **cũng ở trong nhóm** (5911, 8506, 8532) — tức là mẫu CHỒNG NHAU, cùng lớp lỗi này.
+> 1514 (trước khi sửa) là mục thứ 4. **SỬA**: `neuKhong` = `15149100|15149910|15149990` (3 dòng còn lại
+> của nhóm), có căn cứ từ chính nguồn (wco.151491 *"excluding low erucic acid rape or colza oil"*).
+
+### Lớp 3 — TRÍCH TRONG "VÙNG IM LẶNG" 301–600 KÝ TỰ (2 mục)
+
+Luật soạn là ≤ 300, máy chỉ chặn > 600 ⇒ 301–600 lọt máy: `1515.phamVi.trich` (525) và
+`1517.phamVi.trich` (356). Đã rút về 198 và 231 ký tự, lấy **nguyên văn** từ nguồn.
+
+### Lớp 4 — CÂU TRÍCH MẤT DẤU HIỆU LOẠI TRỪ / MỆNH ĐỀ NỐI ĐỨT LỨNG (3 trường)
+
+- `1516 loaiTru[0].trich` + `1516 phanBiet[0].trich` mở đầu bằng **"Tuy nhiên,"** trong khi vế đối lập
+  nằm NGOÀI câu trích ⇒ mệnh đề "Tuy nhiên" không còn gì để đối lập (đúng lớp lỗi lô 058 sửa ở 1504
+  `dieuKienVao[1]`). Đã lược bỏ "Tuy nhiên, " và bắt đầu từ *"nhóm này không bao gồm …"*.
+- `1517 loaiTru[1].trich` bắt đầu **giữa câu** ⇒ **không còn dấu hiệu loại trừ**; người đọc không biết đây
+  là mục loại trừ. Đã sửa thành *"nhóm không bao gồm …"* (phần bị lược là vế SONG SONG — sản phẩm ép tallow
+  → 15.03, đã ghi ở `loaiTru[0]` — chứ không phải điều kiện của vế giữ).
+
+### Lớp 5 — `hoi` GỘP VẾ NGOÀI CÂU + `text` THÊM CHỮ NGOÀI TRÍCH (2 mục)
+
+- `1516 phanBiet[1].hoi`: vế *"hay là hỗn hợp hoặc chế phẩm ăn được?"* lấy từ câu khác (vế loại trừ KHÁC
+  của Chương) ⇒ **gộp vế ngoài câu**; đã đổi sang dạng CÓ/KHÔNG (luật lô 055) chỉ hỏi đúng vế mà câu trích nêu.
+- `1517 phamVi.text` có *"hoặc vi sinh vật"* ở tiêu đề phần (B) trong khi câu trích bị cắt trước đó ⇒
+  `text` **thêm chữ không có trong câu trích**; đã bỏ ở `text` (thông tin vi sinh vật còn ở `tieuChi6[1]`).
+
+### Lớp 6 (1 mục) — `fact` THAY SAI TỪ CỦA NGUỒN
+
+`1516 dieuKienVao[0].fact` ghi *"theo_nhung_cach_noi_sau_day"* (cách **nói**) trong khi nguồn ghi *"theo những
+cách **nêu** sau đây"*. Đúng lớp lỗi lô 048 (`fact` ghi "bánh" thay "bột", "quet" thay "quyet") — `fact` đọc
+thẳng vào prompt nên đổi từ là đổi nghĩa. Quy ước nhà cho "nêu" là `neu` (9403, 8714, 8708, 8202, 4202,
+0910) — trong toàn corpus **chỉ có 1 chỗ** ghi "cach_noi", đúng chỗ này. Đã sửa `noi` → `neu`.
+
+## GHI NHẬN (KHÔNG sửa) — để người duyệt đối chiếu
+
+1. **1513 `dong8[3]` (15132911)** — câu trích `sen.15132911` mở đầu bằng câu về **Olein** (thuộc dòng
+   15132913 "olein hạt cọ"), câu của mục là câu về **Stearin**. `dong8` nằm ngoài phạm vi soát theo §L11
+   (và ngoài 5 khối bắt buộc) ⇒ **không sửa**; ghi lại để người duyệt cân nhắc.
+2. **`dieuKienVao` 1512/1513/1514 mượn TỔNG QUÁT (B) Chương 15** — chú giải riêng 3 nhóm này gần như
+   trống (chỉ có tiêu đề phần + *"Xem Chú giải của phân nhóm 1507.10"*); câu (B) phủ **cả** dải 15.07–15.15
+   ⇒ dùng được. Vế *"đã hoặc chưa tinh chế"* là câu CHO PHÉP (CAU_CHO_PHEP) và **đã được lược khỏi CẢ
+   trích lẫn `fact`** ⇒ `fact` nói ÍT hơn câu trích, không sai. **GIỮ**.
+3. **Loại trừ CHUNG của Chương 15 KHÔNG chép vào từng nhóm** — mục (B) loại *"các hỗn hợp … chất béo và
+   dầu thực vật đã thay đổi về mặt hoá học (nhóm 15.16, 15.17 hoặc 15.18)"* cho cả dải 15.07–15.15 ⇒
+   không chép vào 1512–1515 (quyết định lô 060). 4 `loaiTru` trong lô đều từ **chú giải riêng của nhóm**.
+4. **`fact` "dau_duna"** (dừa) — romanization của người soạn, dùng **nhất quán** ở 1513/1516/1517
+   (11 chỗ), đọc được trong prompt; chưa có mẫu nhà ⇒ **không sửa**, ghi lại.
+5. **`dong8` "Loại khác: <tên WCO>"** dài 96–240 ký tự (vượt trần clip 90) — văn phong khuôn mẫu đã gộp
+   (**53 % corpus**: 3304/6198 mục) ⇒ ngoài phạm vi soát, **không sửa**.
+6. **`dieuKienVao[3]` 1517 (value=false)** — mẫu nhà đã gộp 73 mục (1501/1502/1503/1504…) ⇒ **GIỮ**.
+
+## Trạng thái cuối
+
+| Kiểm | Kết quả |
+|---|---|
+| `check-so-tay.mjs --raw=tmp/so-tay/raw` | 6 nhóm, **179 mục, 0 mục không kiểm được nguồn** (179/179 = 100 %) |
+| `check-trich-nguyen-van.mjs` (byte-exact) | **OK — 170 mục** nguyên văn tuyệt đối trong đúng khối nguồn |
+| `build-so-tay … --tu-tep --force` | **179/179 (100 %)** — `tyLeDat: 100`, `nhomLoi: []` |
+| `npm run so-tay:check` | **506 nhóm, 14 033 mục, 0 mục không kiểm được nguồn** |
+| `npm test` | **ALL TESTS PASSED** (exit 0) |
+| `check-cay.mjs --chi-tiet` (6 nhóm) | **6/6 nhóm đủ** — 0 lỗi lệch cây, 0 cảnh báo |
+| `scripts/scan-so-tay-soat.mjs` (mới) | **0 cảnh báo** trên 5 khối bắt buộc (chỉ còn `dong8` "Loại khác" — xem ghi nhận 5) |
+
+### Công cụ mới — `scripts/scan-so-tay-soat.mjs`
+
+Quét 5 lớp lỗi soát mà `check-so-tay` KHÔNG bắt: **tràn trần clip runtime** (in ra cả đoạn bị cắt mất),
+**trích trong vùng im lặng 301–600**, **đoạn lược "…" nuốt ngoại lệ**, **câu ngay sau đoạn trích mở đầu bằng
+từ nối ngoại lệ**, **gác soát từ** (từ trong `text`/`dieuKien`/`hoi` không có trong khối nguồn). Chạy:
+`node scripts/scan-so-tay-soat.mjs [nhom ...]`. Lớp "tràn clip" đã tái phát ở nhiều lô (030/038/055/058/060)
+⇒ đề xuất người duyệt đưa vào **luật máy** (`lib/so-tay.js`) cho các lô sau.
+
+### Lệch so với brief (đã xử lý)
+
+- Brief ghi `--bao-cao=data/so-tay/bao-cao/lo-0060.json` — nhà đặt tên **`lo-0NN.json`** (`lo-060.json`, đã
+  có từ lần soạn; 11 lần trước đó brief cũng ghi sai tên này). Đã nạp lại vào **`lo-060.json`** (xoá file
+  cũ trước khi nạp để không sót `nhomLoi`) ⇒ **không** tạo tệp lạ `lo-0060.json`.
+
+### PR — lô 060
+
+- **PR #479** (https://github.com/ozvietnam/hs-code-api/pull/479) — **KHÔNG merge** (chờ người duyệt).
+- `docs/giao-viec/so-tay-lo.csv` dòng 060: `pr=479`; `trang_thai` giữ **`dang-lam`** (PR chưa merge),
+  `nguoi_lam=dev-zcode-mm`. Người gộp đặt `trang_thai=xong` khi merge.
+- Thêm `scripts/apply-review-lo060.mjs` (2 pha: `TARGET=raw` áp `thayDoi`, `TARGET=data` CHỈ đổi `nguonLoai`).
+
+---
