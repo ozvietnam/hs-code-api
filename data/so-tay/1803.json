@@ -1,0 +1,120 @@
+{
+ "nhom": "1803",
+ "phamVi": {
+  "text": "Bột ca cao nhão thu được từ việc nghiền hạt ca cao đã rang; gồm cả bột nhão ca cao đã được khử một phần hoặc toàn bộ chất béo (khô dầu ca cao).",
+  "nguon": "nhom1803.nhom",
+  "trich": "Bột ca cao nhão thu được từ việc nghiền hạt ca cao đã rang (hạt đã làm sạch vỏ cứng, vỏ lụa và phôi mầm của chúng) bằng máy nghiền đá mài nóng hoặc máy thớt nghiền;…Nhóm này cũng bao gồm bột nhão ca cao đã được khử một phần hoặc toàn bộ chất béo (khô dầu ca cao (cocoa cake))",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Bột nhão ca cao đã cho thêm đường hoặc chất làm ngọt",
+   "sangNhom": "1806",
+   "nguon": "nhom1803.nhom",
+   "trich": "Nhóm này loại trừ bột nhão ca cao đã cho thêm đường hoặc chất làm ngọt khác (nhóm 18.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là bột nhão ca cao đã cho thêm đường hoặc chất làm ngọt?",
+   "neuCo": "1806",
+   "neuKhong": "1803",
+   "nguon": "nhom1803.nhom",
+   "trich": "Nhóm này loại trừ bột nhão ca cao đã cho thêm đường hoặc chất làm ngọt khác (nhóm 18.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "180310",
+   "fact": "loai_hang",
+   "op": "=",
+   "value": "Bột ca cao nhão, chưa khử chất béo",
+   "donVi": null,
+   "nguon": "wco.180310",
+   "trich": "180310 Cocoa; paste, not defatted",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "180320",
+   "fact": "loai_hang",
+   "op": "=",
+   "value": "Bột ca cao nhão, đã khử một phần hoặc toàn bộ chất béo (khô dầu ca cao)",
+   "donVi": null,
+   "nguon": "nhom1803.nhom",
+   "trich": "Nhóm này cũng bao gồm bột nhão ca cao đã được khử một phần hoặc toàn bộ chất béo (khô dầu ca cao (cocoa cake))",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "18031000",
+   "dieuKien": "Chưa khử chất béo",
+   "nguon": "tax.18031000",
+   "trich": "18031000 - Chưa khử chất béo",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "18032000",
+   "dieuKien": "Bột nhão ca cao đã được khử một phần hoặc toàn bộ chất béo",
+   "nguon": "nhom1803.nhom",
+   "trich": "Nhóm này cũng bao gồm bột nhão ca cao đã được khử một phần hoặc toàn bộ chất béo (khô dầu ca cao (cocoa cake))",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "1803",
+    "cap": 4,
+    "cha": "18",
+    "tenVi": "Bột ca cao nhão, đã hoặc chưa khử chất béo.",
+    "tenEn": "Cocoa; paste; whether or not defatted",
+    "suyRa": false
+   },
+   {
+    "id": "18031000",
+    "cap": 8,
+    "cha": "1803",
+    "tenVi": "Chưa khử chất béo",
+    "tenEn": "Cocoa; paste, not defatted",
+    "suyRa": false,
+    "laPhanNhom": "180310"
+   },
+   {
+    "id": "18032000",
+    "cap": 8,
+    "cha": "1803",
+    "tenVi": "Đã khử một phần hoặc toàn bộ chất béo",
+    "tenEn": "Cocoa; paste, wholly or partly defatted",
+    "suyRa": false,
+    "laPhanNhom": "180320"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom1803.nhom",
+  "tax.18031000",
+  "wco.180310"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-27T15:29:37.208Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
