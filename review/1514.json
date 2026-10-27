@@ -1,0 +1,79 @@
+{
+  "nhom": "1514",
+  "gopVoi": "soát độc lập lô 060 (PR #479) — người soát KHÁC người soạn",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "2 phần ngang hàng (A) DẦU CÂY CẢI DẦU (RAPE OIL HOẶC COLZA OIL) · (B) DẦU MÙ TẠT; `text` nêu đủ 2 tiêu đề nối bằng \"…\" ✓; trich nguyên văn. 53 ký tự < 220 ✓"
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Cùng câu ràng buộc (B) Chương 15 (phủ 15.07–15.15); vế \"đã hoặc chưa tinh chế\" đã lược khỏi cả trích lẫn `fact` ✓; fact dương + value=true ✓"
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI NGỮ NGHĨA MÁY KHÔNG BẮT — nhánh \"không\" KHÔNG phải phần bù của nhánh \"có\". Câu hỏi \"Hàng là dầu cây cải dầu có hàm lượng axit eruxic thấp không?\" cắt ngang TOÀN BỘ nhóm 1514 (7 dòng 8 số): nhánh \"có\" đã liệt đúng 4 dòng 1514.11/1514.19 (15141100, 15141910, 15141920, 15141990) nhưng nhánh \"không\" lại trỏ về \"1514\" — TỨ LÀ CHÍNH NHÓM 1514, tức là chứa luôn 4 dòng của nhánh \"có\" ⇒ hai nhánh CHỒNG NHAU, không phủ kín và không dư. Hệ quả: tờ khai dầu cây cải dầu axit eruxic CAO (không phải \"có\") không được dẫn đi đâu cả (runtime in \"có→… / không→1514\" ⇒ mô hình quay lại đúng nhóm nó đang hỏi) — lỗi cùng lớp lô 047 (0711 phanBiet[0], nhánh \"không\" thiếu 5 dòng 8 số). Luật áp dụng: \"hai nhánh phải phủ kín và không dư\" (mẫu đúng đã gộp: 0304, 0708[0]/[1], 0711[0]/[1]). SỬA: neuKhong = 15149100|15149910|15149990 — đúng 3 dòng còn lại của nhóm (1514.91/1514.99), có căn cứ từ chính nguồn (wco.151491 \"excluding low erucic acid rape or colza oil\", wco.151499) và khớp với tieuChi6[2]/[3] đã ghi trong chính sổ tay nhóm này. Câu hỏi, nguồn và câu trích giữ nguyên.",
+      "sua": {
+        "neuKhong": "15149100|15149910|15149990"
+      }
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chú giải định nghĩa ngưỡng số cho phân nhóm 151411 (ham_luong_axit_eruxic < 2%); số có nguyên văn trong câu trích [ch15.chuong] ✓"
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chú giải định nghĩa ngưỡng số cho phân nhóm 151419 (ham_luong_axit_eruxic < 2%); số có nguyên văn trong câu trích [ch15.chuong] ✓"
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tiêu đề phân nhóm WCO 151491; fact dương + value=true bám đúng tiêu đề, không thêm chữ ngoài trích [wco.151491] ✓"
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tiêu đề phân nhóm WCO 151499; fact dương + value=true bám đúng tiêu đề, không thêm chữ ngoài trích [wco.151499] ✓"
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15141100: \"Dầu thô\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15141910: \"- Các phần phân đoạn của dầu chưa tinh chế\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15141920: \"- Đã tinh chế\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151419 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15149100: \"Dầu thô\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15149910: \"- Các phần phân đoạn của dầu chưa tinh chế\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151499 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
+    }
+  ]
+}
