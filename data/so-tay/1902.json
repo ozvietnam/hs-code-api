@@ -4,18 +4,30 @@
   "text": "Sản phẩm từ bột nhào (pasta) chưa được lên men làm từ bột hòn (semolina) hoặc bột lúa mỳ, bột ngô, bột gạo, bột khoai tây...; nhóm cũng bao gồm couscous là bột hòn (semolina) được xử lý bằng nhiệt.",
   "nguon": "nhom1902.nhom",
   "trich": "Sản phẩm từ bột nhào (pasta) thuộc nhóm này là các sản phẩm chưa được lên men làm từ bột hòn (semolina) hoặc bột lúa mỳ, bột ngô, bột gạo, bột khoai tây...…Nhóm này cũng bao gồm couscous là bột hòn (semolina) được xử lý bằng nhiệt.",
-  "nguonLoai": "AI_DA_KIEM"
+  "nguonLoai": "NGUOI_DUYET"
  },
  "dieuKienVao": [
   {
-   "fact": "la_san_pham_tu_bot_nhao_chua_duoc_len_man",
+   "fact": "la_san_pham_tu_bot_nhao_chua_duoc_len_men",
    "op": "=",
    "value": true,
    "donVi": null,
    "ngoaiTru": [],
    "nguon": "nhom1902.nhom",
    "trich": "Sản phẩm từ bột nhào (pasta) thuộc nhóm này là các sản phẩm chưa được lên men làm từ bột hòn (semolina) hoặc bột lúa mỳ, bột ngô, bột gạo, bột khoai tây...",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "ty_le_xuc_xich_thit_ca_giap_xac_than_mem_trong_luong",
+   "op": "<=",
+   "value": 20,
+   "donVi": "%",
+   "ngoaiTru": [
+    "các sản phẩm nhồi thuộc nhóm 19.02"
+   ],
+   "nguon": "nhom1902.nhom",
+   "trich": "(a) Các chế phẩm thực phẩm (trừ các sản phẩm nhồi thuộc nhóm 19.02) đã nhồi, có chứa trên 20% trọng lượng là xúc xích, thịt, phụ phẩm dạng thịt, tiết, côn trùng, cá hoặc động vật giáp xác, động vật thân mềm hoặc động vật thuỷ sinh không xương sống khác, hoặc hỗn hợp bất kỳ của các loại trên (Chương 16).\n",
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "loaiTru": [
@@ -24,7 +36,14 @@
    "sangNhom": "2104",
    "nguon": "nhom1902.nhom",
    "trich": "(b) Súp và nước xuýt và chế phẩm để làm súp và nước xuýt, có chứa sản phẩm từ bột nhào (pasta) (nhóm 21.04).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Chế phẩm làm súp/nước xuýt có chứa bột nhào (pasta)",
+   "sangNhom": "2104",
+   "nguon": "nhom1902.nhom",
+   "trich": "(b) Súp và nước xuýt và chế phẩm để làm súp và nước xuýt, có chứa sản phẩm từ bột nhào (pasta) (nhóm 21.04).",
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "phanBiet": [
@@ -34,7 +53,7 @@
    "neuKhong": "1902",
    "nguon": "nhom1902.nhom",
    "trich": "(b) Súp và nước xuýt và chế phẩm để làm súp và nước xuýt, có chứa sản phẩm từ bột nhào (pasta) (nhóm 21.04).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "tieuChi6": [
@@ -70,7 +89,7 @@
   },
   {
    "hs6": "190230",
-   "fact": "la_san_pham_tu_bot_nhao_da_nau_chin_hoac_chue_bien_cach_khac",
+   "fact": "la_san_pham_tu_bot_nhao_khong_nhoi_da_nau_chin_hoac_che_bien_cach_khac",
    "op": "=",
    "value": true,
    "donVi": null,
@@ -397,7 +416,7 @@
   "tenDien": [
    {
     "id": "190219",
-    "tenVi": "Mì chưa nấu chín, không nhồi, không chứa trứng",
+    "tenVi": "Mì chưa nấu chín, không nhồi, không chế biến cách khác, không chứa trứng",
     "nguon": "wco.190219",
     "trich": "190219 Food preparations; pasta, uncooked (excluding that containing eggs), not stuffed or otherwise prepared",
     "nguonLoai": "AI_DA_KIEM"
@@ -425,12 +444,12 @@
  "taoBoi": {
   "provider": "dev-zcode-mm",
   "model": null,
-  "luc": "2026-10-27T21:47:29.494Z",
-  "ms": 96
+  "luc": "2026-10-27T22:21:11.885Z",
+  "ms": 83
  },
  "kiemTra": {
-  "tong": 23,
-  "dat": 23,
+  "tong": 25,
+  "dat": 25,
   "loai": 0,
   "nguonBiCat": []
  }

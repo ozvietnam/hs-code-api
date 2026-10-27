@@ -1,0 +1,34 @@
+{
+ "nhom": "1903",
+ "nguoiSoat": "dev-soat-doc-lap-lo064",
+ "vong": 1,
+ "luc": "2026-10-28T05:22:00+07:00",
+ "daKiem": 3,
+ "xoa": 0,
+ "sua": 2,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 064 (nhóm 1903) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/1903.txt (6.614 ký tự, đọc hết). Nhóm MỎNG: chỉ 3 mục được dựng (1 chú giải nhóm + 1 chú giải chương + 1 WCO + 1 dòng biểu thuê), không có danh sách loại trừ riêng, không có câu phân biệt ⇒ `loaiTru`/`phanBiet`/`tieuChi6` rỗng là ĐÚNG, không phải thiếu sót (thà để trống còn hơn mục mờ má — luật \"không trích được nguyên văn thì BỎ\"). Kết quả: giữ 1 · sửa 2 · xoá 0.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích là CÂU MỞ ĐẦU của chú giải nhóm (nguyên văn, không lược) ⇒ không có dấu lược nào nuốt ngoại lệ. `text` 130/220 dưới trần clip. Câu nguồn phủ CẢ nhóm (1903 chỉ có một khối, không chia phần) ✓. GHI NHẬN: `text` rút gọn bỏ ngoặc \"(còn gọi là tapioca hoặc cọ sago bản địa)\" và \"(thí dụ: củ dong, củ lan, củ ngọc lá (yucca),...)\" — vế thí dụ là DANH SÁCH VÍ DỤ nên rút gọn không đổi nghĩa; còn \"(còn gọi là tapioca hoặc cọ sago bản địa)\" là tên gọi khác của TINH BỘT KHOAI TÂY, mất đi thì \"tinh bột khoai tây\" trong `text` có thể bị hiểu là tinh bột khoai tây thường (nhóm 11.05 / 1903 là tinh bột khoai tây đã chế biến từ tinh bột) — tuy nhiên câu trích giữ nguyên văn đầy đủ và `dieuKienVao[0]` dùng cùng câu đó nên căn cứ không mất ⇒ giữ nguyên."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI CHÍNH TẢ TRONG `fact`: \"la_che_pham_chue_bien_tu_tinh_bot_cu_san_...\" — \"chế biến\" bỏ dấu phải là \"che_bien\", không phải \"chue_bien\" (\"chue\" không phải từ nào). `check-so-tay.mjs` KHÔNG bắt được lớp lỗi này vì nó chỉ kiểm CÂU TRÍCH có thật trong nguồn, không kiểm `fact` (mà `fact` đọc thẳng vào prompt runtime: lib/so-tay-gates.js in `dieuKienVao` ra \"Điều kiện vào nhóm: <fact> <op> <value>\"). Đây là lớp lỗi đã gặp ở lô 060 (\"fact hỏng dấu do bộ sinh\") và lô 064 (một `fact` khác cùng lỗi \"chue_bien\" ở 1902/1904). Sửa đúng một từ, `trich` giữ nguyên. GHI NHẬN: câu \"Nhóm này bao gồm...\" dùng làm `dieuKienVao` là MẪU NHÀ (145/769 mục trong kho) ⇒ giữ nguyên phần này.",
+   "sua": {
+    "fact": "la_che_pham_che_bien_tu_tinh_bot_cu_san_hoac_tinh_bot_co_sago_hoac_tinh_bot_khoai_tay_hoac_tinh_bot_tuong_tu"
+   }
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT — THU HẸP VẬT LIỆU. Dòng biểu thuê 19030000 ghi: \"19030000 Sản phẩm từ tinh bột sắn và sản phẩm thay thế chế biến từ tinh bột, ở dạng mảnh, hạt, bột xay, bột rây hoặc các dạng tương tự\" (nguồn tax.19030000, đã trích nguyên văn ✓). Nhưng `dieuKien` chỉ còn \"Sản phẩm từ tinh bột ở dạng mảnh, hạt, bột xay, bột rây hoặc các dạng tương tự\" — MẤT vế \"tinh bột sắn và sản phẩm thay thế chế biến từ tinh bột\" ⇒ điều kiện này khớp với MỌI loại tinh bột (kể cả tinh bột lúa mì → 11.05/1904, tinh bột ngô → 1108) ⇒ dòng 8 số không còn phân biệt được với nhóm khác. Sửa: đưa vế vật liệu vào trước (đúng thứ tự dòng biểu thuê), giữ \"ở dạng mảnh, hạt\" làm hai dạng đầu của danh sách; 84/90 dưới trần clip nên không bị cắt giữa từ. GHI NHẬN: bỏ \"bột xay, bột rây hoặc các dạng tương tự\" là cắt danh sách dạng — chọn vật liệu vì vật liệu mới là phần PHÂN BIỆT nhóm (bột xay/bột rây vẫn nằm nguyên văn trong `trich` và trong `cay`); `dong8` chỉ có một dòng nên không mất thông tin.",
+   "sua": {
+    "dieuKien": "Sản phẩm từ tinh bột sắn và sản phẩm thay thế chế biến từ tinh bột, ở dạng mảnh, hạt"
+   }
+  }
+ ]
+}

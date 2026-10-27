@@ -1,0 +1,171 @@
+{
+ "nhom": "1905",
+ "nguoiSoat": "dev-soat-doc-lap-lo064",
+ "vong": 1,
+ "luc": "2026-10-28T05:30:00+07:00",
+ "daKiem": 31,
+ "xoa": 0,
+ "sua": 1,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 064 (nhóm 1905) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/1905.txt (15.704 ký tự, đọc hết — nhóm nhiều mục nhất lô: 15 mục đánh số (1)–(15) + phần (B) + 2 khối SEN). Kết quả: giữ 30 · sửa 1 · xoá 0. Lớp lỗi mới: mất VẾ QUYẾT ĐỊNH trong điều kiện dòng 8 số (SEN 19053220 bỏ \"không nướng trong lò\" ⇒ 19053210 và 19053220 trùng nhau) — máy `check-so-tay` KHÔNG bắt được vì nó chỉ kiểm câu trích có thật, không biết câu trích nói nhiều hơn điều kiện.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích ghép 2 mảnh: câu mở đầu \"Nhóm này bao gồm tất cả các loại bánh được nướng.\" + tiêu đề phần (B) \"Bánh thánh, vỏ thuốc con nhộng dùng trong ngành dược, bánh xốp (sealing wafer), bánh đa và các sản phẩm tương tự.\" ⇒ phủ CẢ hai phần của nhóm (phần (A) gồm các mục (1)–(15) và phần (B)) ✓. `text` 164/220 dưới trần clip. GHI NHẬN: đoạn lược nuốt luôn khối \"Nhóm này không bao gồm: (a) ... (b) ...\" và câu \"Tuy nhiên, bánh pizza chưa được làm chín thuộc nhóm 19.01.\" — NHƯNG cả hai đều ĐÃ có mục riêng (`dieuKienVao[1]` cho (a) và `loaiTru[1]` cho câu pizza) nên không mất luật nào khỏi hồ sơ; bộ quét (lớp lỗi 3) chỉ soi 60 ký tự quanh dấu lược nên bỏ sót. Đề xuất người duyệt: nếu muốn siết luật \"dấu lược không nuốt ngoại lệ\" thì phải sửa bộ quét, không sửa mục này."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"Nhóm này bao gồm tất cả các loại bánh được nướng.\" là câu ĐỊNH NGHĨA phạm vi nhóm, dùng làm `dieuKienVao` là MẪU NHÀ (145/769 mục trong kho lấy câu dạng \"Nhóm này bao gồm...\") ✓. `fact` \"la_cac_loai_banh_duoc_nuong\" bám đúng nguồn, không lỗi chính tả."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "CHIỀU ĐÚNG — cần đọc kỹ. Nguồn: \"Nhóm này không bao gồm: (a) Tất cả các sản phẩm có chứa TRÊN 20% trọng lượng là xúc xích, thịt, ...\". \"trên 20 %\" là phía BỊ LOẠI ⇒ điều kiện VÀO nhóm là ≤ 20 % ⇒ `op` \"<=\", `value` 20 ✓ (mẫu 1901 đã duyệt có `dieuKienVao[2]` với `fact` \"ty_le_xuc_xich_thit_ca_giap_xac_than_mem_trong_luong\" ≤ 20 %, `fact` Y HỆT). GHI NHẬN 1: `fact` rút gọn danh sách (bỏ \"phụ phẩm dạng thịt sau giết mổ\" và tiếp \"tiết, côn trùng\") — cùng cách rút gọn như 1901 và 2106 đã duyệt ⇒ giữ nguyên. GHI NHẬN 2: `trich` 258 ký tự nằm trong vùng 300–600 mà máy KHÔNG chặn (mẫu 1901 đã duyệt có 307) ⇒ giữ nguyên, không rút cụt. GHI NHẬN 3: dấu lược \"…\" trong `trich` đặt NGAY sau tiêu đề \"Nhóm này không bao gồm:\" (không có nội dung nào bị lược) — giữ nguyên vì cùng kiểu với các mục khác của lô và không làm sai nghĩa."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"(b) Các sản phẩm thuộc nhóm 20.05\" nằm trong khối \"Nhóm này không bao gồm:\" ⇒ loại trừ dứt khoát; đích 20.05 NÊU NGUYÊN VĂN ✓ luật 3. `dieuKien` 25/55 dưới trần clip. GHI NHẬN: `trich` KHÔNG mang dấu hiệu loại trừ (\"không bao gồm\"…) vì tiêu đề \"Nhóm này không bao gồm:\" nằm ở khối trước và nối tiêu đề vào `trich` sẽ khiến dấu lược nuốt mất mục (a) (ngưỡng 20 % thịt) — mà mục (a) đã có `dieuKienVao[1]` ⇒ không mất luật. Đây là lý do 68 % mục `loaiTru` trong kho cũng không có dấu hiệu loại trừ trong `trich`."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"Tuy nhiên, bánh pizza chưa được làm chín thuộc nhóm 19.01.\" GIỮ ĐÚNG từ nối ngoại lệ \"Tuy nhiên,\" ở đầu câu ✓ — đây là trường hợp lớp lỗi 4 của bộ quét (câu liền sau câu trích mở đầu bằng \"Tuy nhiên\" mà câu trích dừng trước đó): ở đây câu trích ĐÃ kéo cả vế ngoại lệ vào ✓. Đích 19.01 nêu nguyên văn ✓ luật 3; `dieuKien` 29/55 dưới trần clip."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi \"Hàng là bánh pizza chưa được làm chín hay là bánh đã được làm chín sơ hoặc đã chín?\" → có → 19.01 (mã 19.01 CÓ trong câu trích ✓ luật 4) / không → 19.05 (phần BÙ ✓ mẫu nhà). `trich` gộp CẢ mục (14) lẫn câu \"Tuy nhiên...\" ⇒ đủ căn cứ cho cả hai nhánh ✓; `hoi` 83/110 dưới trần clip; không nhắc mã phân nhóm ✓."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "hs6 190510 là nút 6 số thật ✓ luật 10; `trich` = \"Hàm lượng nước trong sản phẩm không quá 10% trọng lượng.\" (nguyên văn, mục (4) của chú giải nhóm — tiêu đề nhóm 1905.10 là bánh mì giòn / crispbread) ⇒ ngưỡng 10 % là điều kiện định danh của phân nhóm ✓. GHI NHẬN: `trich` không nêu CHỦ NGỮ (\"bánh mì giòn\") — chỉ đọc được khi ghép `hs6` 190510 + `phamVi`; `tieuChi6` KHÔNG vào prompt runtime (chỉ `phamVi.text`/`dieuKien`/`hoi` mới vào) nên không sửa (mẫu lô 060 vòng 3 giữ nguyên khi câu nguồn mơ hồ)."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "hs6 190520 là nút 6 số thật ✓; `trich` wco.190520 \"gingerbread and the like, whether or not containing cocoa\"; `fact` \"la_banh_ging_va_loai_tuong_tu\" = true ✓ (bộ quét báo \"từ ngoài nguồn\" do `fact` tiếng Việt còn nguồn tiếng Anh — báo động GIẢ, cùng mẫu với 1904/2001/2002)."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "hs6 190531 là nút 6 số thật ✓; `trich` = mục (8)(b) của chú giải nhóm (nguyên văn) ✓; ngưỡng \"ít nhất 50% trọng lượng sản phẩm\" mã hoá thành `value` 50, `op` \">=\", `donVi` \"%\" ✓ có số trong trích. GHI NHẬN: `fact` \"trong_luong_cac_thanh_phan_banh_quy\" gộp \"các thành phần\" (bột + đường/chất tạo ngọt + chất béo) thành \"các thành phần bánh quy\" — hơi rộng so với nguồn; `tieuChi6` không vào prompt runtime nên không sửa."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "hs6 190532 là nút 6 số thật ✓; `trich` wco.190532 \"waffles and wafers, whether or not containing cocoa\"; `fact` \"la_banh_que_waffles_va_banh_xop_wafers\" = true ✓. Khớp với hai dòng biểu thuê 19053210 (Bánh waffles) và 19053220 (Bánh xốp wafers) ✓."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "hs6 190540 là nút 6 số thật ✓; `trich` wco.190540 \"rusks, toasted bread and similar toasted products\"; `fact` \"la_banh_bit_cot_banh_mi_nuong_va_loai_tuong_tu\" là bản Việt của tiêu đề WCO, bám đúng mục (5) của chú giải nhóm (\"Bánh bít cốt, bánh mì nướng và các bánh nướng tương tự\") ✓ — bộ quét báo \"từ ngoài nguồn\" do nguồn khai là wco (tiếng Anh) trong khi `fact` lấy từ chú giải nhóm; GHI NHẬN: nên khai `nguon` là nhom1905.nhom cho khớp, nhưng `trich` đang là tiêu đề WCO nên không đổi `trich` ⇒ giữ nguyên, ghi nhận."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "hs6 190590 là nút 6 số thật ✓; `trich` wco.190590 (nguyên văn) ✓; `fact` \"la_cac_loai_banh_khac\" = true. GHI NHẬN: \"n.e.c. in heading no. 1605\" dịch thành \"các loại bánh khác\" là MẤT VẾ \"n.e.c. in heading 1605\" (bài học lô 041: \"n.e.c. in heading X\" = phần dư CỦA X, dịch \"trừ X\" là đảo nghĩa) — ở đây vẫn là 19.05 nên KHÔNG đảo chiều, chỉ bớt cụ thể ⇒ `tieuChi6` không vào prompt runtime nên giữ nguyên, ghi nhận."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nút 190531 CHƯA có tên tiếng Việt trong cây (190531, 190532 và 190219 là ba nút null của lô) ⇒ được phép điền ✓ luật 9. `tenVi` \"Bánh quy ngọt\" dịch đúng \"sweet biscuits\" của wco.190531 ✓ và khớp với mục (8)(b) của chú giải nhóm (\"Bánh quy ngọt\") — nên tên tiếng Việt có căn cứ trong nguồn ✓."
+  },
+  {
+   "index": "cay.tenDien[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nút 190532 chưa có tên tiếng Việt trong cây ✓ được phép điền; `tenVi` \"Bánh quế waffles và bánh xốp wafers\" bám đúng wco.190532 (\"waffles and wafers\") và khớp hai dòng biểu thuê 19053210/19053220 ✓."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19051000: `dieuKien` chép nguyên văn \"Bánh mì giòn\" ✓ (nguồn tax.19051000); 12/90. GHI NHẬN: ngưỡng \"hàm lượng nước trong sản phẩm không quá 10%\" của mục (4) chỉ nằm ở `tieuChi6[0]` (không vào prompt runtime) — chưa đưa vào `dieuKien`; KHÔNG sửa vì nhóm chỉ có một dòng 8 số, không cần phân biệt với anh em."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19052000: `dieuKien` chép nguyên văn \"Bánh mì có gừng và loại tương tự\" ✓ (nguồn tax.19052000); 31/90."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19053110: `dieuKien` chép nguyên văn \"Không chứa ca cao\" ✓ — nhánh bù của 19053120 \"Chứa ca cao\" trong cùng phân nhóm ✓."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19053120: `dieuKien` chép nguyên văn \"Chứa ca cao\" ✓; 12/90."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19053210 (SEN): `dieuKien` lấy từ khối sen.19053210 — \"bột nhào hoặc bột nhão được ép giữa hai khuôn kẹp bằng sắt và được nướng\" ✓ nguyên văn, bỏ đuôi \"để tạo hình dạng và đặc tính đặc trưng\" (là KẾT QUẢ, không phải điều kiện phân biệt) ✓; 86/90 dưới trần clip. Đối chiếu với dòng 19053220 (mục sau) — xem ghi chú ở `dong8[5]`."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT — HAI DÒNG ANH EM KHÔNG PHÂN BIỆT ĐƯỢC VÌ MẤT VẾ QUYẾT ĐỊNH. SEN 19053220 viết nguyên văn: \"Một loại bánh quy giòn mỏng (KHÔNG NẤU TRONG LÒ được nướng bằng khuôn kẹp bằng sắt) được làm từ mỏng và có thể có một hoặc nhiều lớp.\" — vế trong ngoặc \"(không nướng trong lò...)\" CHÍNH LÀ điều kiện phân biệt bánh xốp với bánh waffles (SEN 19053210: \"được ép giữa hai khuôn kẹp bằng sắt và được nướng\"). `dieuKien` hiện tại chỉ \"Bánh xốp wafers: bánh quy giòn mỏng được nướng bằng khuôn kẹp bằng sắt\" — bỏ mất \"không nướng trong lò\" ⇒ hai dòng 19053210 và 19053220 gần như TRÙNG NHAU (\"được nướng bằng khuôn kẹp bằng sắt\"), mô hình không có cách nào tách 19.05.32.10 khỏi 19.05.32.20. Sửa: chèn lại vế quyết định, 88/90 dưới trần clip nên không bị cắt giữa từ; mọi từ đều có trong câu trích SEN ✓. GHI NHẬN: `trich` giữ nguyên (đã nguyên văn).",
+   "sua": {
+    "dieuKien": "Bánh xốp wafers: bánh quy giòn mỏng, không nướng trong lò, nướng bằng khuôn kẹp bằng sắt"
+   }
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19054010: `dieuKien` chép nguyên văn \"Chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây\" ✓ (nguồn tax.19054010) — nhánh bù của dòng \"Loại khác\" 19054090 trong cùng phân nhóm ✓."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 19054090: `loaiKhac` máy tự điền ✓ luật 6; `dieuKien` lấy điều kiện cấp phân nhóm 6 số từ wco.190540 ✓ (cùng cách 175 dòng \"Loại khác\" đã duyệt trong kho). GHI NHẬN: 165 ký tự > trần clip 90 ⇒ runtime cắt mất đuôi tiếng Anh, phần tiếng Việt còn trọn trong 90 ký tự đầu ⇒ KHÔNG sửa (đổi 10 dòng sang dạng tiếng Việt của lô 15xx–18xx là việc soạn lại, không phải soát)."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19059010: `dieuKien` chép nguyên văn \"Bánh quy không ngọt dùng cho trẻ mọc răng hoặc thay răng\" ✓ (nguồn tax.19059010)."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19059020: `dieuKien` chép nguyên văn \"Bánh quy không ngọt khác\" ✓ — \"khác\" là phần bù của 19059010 ✓."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19059030: `dieuKien` chép nguyên văn \"Bánh ga tô (cakes)\" ✓ (nguồn tax.19059030) — giữ cả ngoặc tiếng Anh của biểu thuê ✓."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19059040: `dieuKien` chép nguyên văn \"Bánh bột nhào (pastry)\" ✓ (nguồn tax.19059040) — khớp với mục (10) của chú giải nhóm (\"Bánh bột nhào (pastry) và bánh ngọt (cakes)\") ✓."
+  },
+  {
+   "index": "dong8[12]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19059050: `dieuKien` chép nguyên văn \"Các loại bánh không bột\" ✓ (nguồn tax.19059050) — khớp với mục (11) của chú giải nhóm (\"Bánh nướng không bột (ví dụ, bánh trứng đường...)\") ✓."
+  },
+  {
+   "index": "dong8[13]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19059060: `dieuKien` chép nguyên văn \"Vỏ viên nhộng và sản phẩm tương tự dùng trong dược phẩm\" ✓ (nguồn tax.19059060) — khớp với phần (B) của chú giải nhóm (\"Vỏ thuốc con nhộng dùng trong ngành dược\") ✓."
+  },
+  {
+   "index": "dong8[14]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19059070: `dieuKien` chép nguyên văn \"Bánh thánh, bánh xốp sealing wafers, bánh đa và các sản phẩm tương tự\" ✓ (nguồn tax.19059070) — khớp với tiêu đề phần (B) của chú giải nhóm ✓."
+  },
+  {
+   "index": "dong8[15]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19059080: `dieuKien` chép nguyên văn \"Các sản phẩm thực phẩm giòn có hương liệu khác\" ✓ (nguồn tax.19059080) — khớp với mục (15) của chú giải nhóm ✓."
+  },
+  {
+   "index": "dong8[16]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 19059090: `loaiKhac` máy tự điền ✓; `dieuKien` từ wco.190590 ✓. GHI NHẬN: 271 ký tự > 90 ⇒ xem ghi chú ở `dong8[7]`."
+  }
+ ]
+}

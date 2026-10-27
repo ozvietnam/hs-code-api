@@ -1,0 +1,58 @@
+{
+ "nhom": "2001",
+ "nguoiSoat": "dev-soat-doc-lap-lo064",
+ "vong": 1,
+ "luc": "2026-10-28T05:33:00+07:00",
+ "daKiem": 9,
+ "xoa": 0,
+ "sua": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 064 (nhóm 2001) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/2001.txt (8.728 ký tự, đọc hết). Kết quả: giữ 9 · sửa 0 · xoá 0 — nhóm này SẠCH, không có mục nào sai. ĐÃ ĐỌC KỸ hai chỗ dễ nghi ngờ và GIỮ NGUYÊN có căn cứ: (1) `phanBiet[0]` — rào \"thường\" của nguồn gắn với vế DẠNG, không gắn với vế mà câu hỏi dùng ⇒ không phải lỗi \"cắt trích né câu rào\"; (2) `loaiTru` rỗng — câu \"được phân biệt với\" không phải dấu hiệu loại trừ theo luật 3 (lớp lỗi lô 030) ⇒ đúng là chỉ dùng `phanBiet`.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích là CÂU MỞ ĐẦU của chú giải nhóm, nguyên văn, không lược ⇒ không có dấu lược nào nuốt ngoại lệ. `text` 199/220 dưới trần clip. Câu nguồn phủ CẢ nhóm (2001 không chia phần) ✓. GHI NHẬN: `text` bỏ hai về sau của câu nguồn (\"Các sản phẩm này cũng có thể chứa dầu ăn hoặc một số phụ gia khác\" và \"Nhóm này cũng bao gồm một số các sản phẩm có tên gọi là dưa món, dưa mù tạt\") — vế đầu là ghi chú, vế sau là VÍ DỤ tên gọi ⇒ rút gọn không đổi nghĩa phạm vi; nguồn chỉ có 3 đoạn nên không có phần nào bị bỏ sót."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"Nhóm này bao gồm các loại rau ... đã chế biến hoặc bảo quản bằng dấm hoặc axit acetic ...\" là câu ĐỊNH NGHĨA phạm vi nhóm, dùng làm `dieuKienVao` là MẪU NHÀ (145/769 mục trong kho lấy câu dạng \"Nhóm này bao gồm...\") ✓; câu phủ CẢ nhóm ✓. `fact` \"la_san_pham_che_bien_hoac_bao_quan_bang_dam_hoac_axit_acetic\" bám đúng nguồn, không lỗi chính tả."
+  },
+  {
+   "index": "loaiTru",
+   "hanhDong": "giu",
+   "lyDo": "KHÔNG có mục `loaiTru` là ĐÚNG, không phải thiếu sót. Chú giải nhóm 2001 không có khối \"Nhóm này không bao gồm\" — chỉ có câu PHÂN BIỆT với nước xốt của nhóm 21.03 (\"được phân biệt với ... ở chỗ nước xốt và gia vị, bột canh thường có dạng lỏng, nhũ tương hoặc huyền phù, không được dùng để ăn một mình\"). Luật 3 (loaiTru chỉ ghi khi câu trích có DẤU HIỆU LOẠI TRỪ: \"không bao gồm\" / \"bị loại trừ\" / \"sẽ thuộc nhóm\" / \"không lẫn với\") ⇒ \"được phân biệt với\" KHÔNG phải dấu hiệu loại trừ (lớp lỗi lô 030) ⇒ chỉ dùng làm `phanBiet`, đúng như bản nháp đã làm. GHI NHẬN: các loại trừ CẤP CHƯƠNG của nhóm 20.01 (Chú giải Chương 20 mục 1(a) Ch.7/8/11, 1(c) Ch.16, 1(d) nhóm 19.05, 1(e) nhóm 21.04 và mục Tổng quát (a)–(d)) KHÔNG chép vào nhóm theo bài học lô 051/060 (\"loại trừ chung của Chương không chép vào từng nhóm\") — nền nhà đang lệch (1901 đã duyệt có 3 `loaiTru` lấy từ ch19.chuong) ⇒ giữ nguyên, đề xuất người duyệt chốt một quy tắc thống nhất trước các lô sau."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi \"Hàng là nước xốt, gia vị hoặc bột canh không được dùng để ăn một mình?\" → có → 21.03 (mã 21.03 CÓ trong câu trích ✓ luật 4) / không → 20.01 (phần BÙ ✓ mẫu nhà 824/1046 mục). `hoi` 70/110 dưới trần clip; không nhắc mã phân nhóm ✓. ĐÃ ĐỌC KỸ CHIỀU: câu nguồn là \"Các sản phẩm ở nhóm này được phân biệt với các loại nước xốt của nhóm 21.03 ở chỗ nước xốt và gia vị, bột canh THƯỜNG có dạng lỏng, nhũ tương hoặc huyền phù, KHÔNG ĐƯỢC DÙNG ĐỂ ĂN MỘT MÌNH nhưng được sử dụng như một món đi kèm với thức ăn hoặc để chế biến một số món ăn.\" — rào \"thường\" gắn với VẾ DẠNG (\"có dạng lỏng, nhũ tương hoặc huyền phù\"), KHÔNG gắn với vế \"không được dùng để ăn một mình\" ⇒ câu hỏi dùng đúng vế KHÔNG bị rào ⇒ KHÔNG phải lỗi \"cắt trích né câu rào\". Thêm nữa, câu hỏi hỏi về BẢN CHẤT hàng (\"là nước xốt, gia vị hoặc bột canh\") chứ không chỉ về dạng ⇒ \"dưa món\" (nhóm 20.01, ăn kèm) trả lời \"không\" ⇒ vẫn ở 20.01 ✓. GHI NHẬN: ranh giới 20.01 với 21.03 trong nguồn là mềm (nguồn tự dùng \"thường\") — không sửa được mà không bịa; đề xuất người duyệt."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "hs6 200110 là nút 6 số thật ✓ luật 10; `trich` wco.200110 \"cucumbers and gherkins, prepared or preserved by vinegar or acetic acid\" (nguyên văn) ✓; `fact` \"la_dua_chuot_va_dua_chuot_ri\" = true khớp đúng tên dòng biểu thuê 20011000 \"Dưa chuột và dưa chuột ri\" ✓. Bộ quét báo \"từ ngoài nguồn\" do `fact` tiếng Việt còn nguồn tiếng Anh — báo động GIẢ."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "hs6 200190 là nút 6 số thật ✓; `trich` wco.200190 (nguyên văn) ✓; `fact` \"khong_phai_dua_chuot_va_dua_chuot_ri\" với `value` = false là MẪU NHÀ \"vế BỊ LOẠI + value=false\" (mẫu 1518 lô 061, 1902 lô 064) — nguồn ghi \"(excluding cucumbers and gherkins)\" ⇒ chiều đúng, KHÔNG đảo chiều."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20011000: `dieuKien` chép nguyên văn \"Dưa chuột và dưa chuột ri\" ✓ (nguồn tax.20011000) — khớp với danh sách sản phẩm chính của chú giải nhóm (\"dưa chuột, dưa chuột ri, hành, hẹ tây, cà chua, súp lơ, ô liu, nụ bạch hoa, ngô ngọt, bông a-ti-sô, lõi cọ, củ từ, quả óc chó và xoài\") ✓."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20019010: `dieuKien` chép nguyên văn \"Hành tây\" ✓ (nguồn tax.20019010) — khớp với \"hành\" trong danh sách sản phẩm chính của chú giải nhóm ✓."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 20019090: `loaiKhac` máy tự điền theo biểu thuê ✓ luật 6; `dieuKien` lấy điều kiện cấp phân nhóm 6 số từ wco.200190 ✓ (cùng cách 175 dòng \"Loại khác\" đã duyệt trong kho). GHI NHẬN: 228 ký tự > trần clip 90 ⇒ runtime cắt mất đuôi tiếng Anh, phần tiếng Việt còn trọn trong 90 ký tự đầu ⇒ KHÔNG sửa (đổi 10 dòng sang dạng tiếng Việt của lô 15xx–18xx là việc soạn lại, không phải soát)."
+  }
+ ]
+}

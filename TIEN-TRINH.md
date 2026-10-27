@@ -3,6 +3,141 @@
 <!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
 ---
 
+# SOÁT ĐỘC LẬP lô 064 — phiên `dev-soat-doc-lap-lo064` (28/10/2026)
+
+- **Nhánh:** `so-tay/lo-064` · **PR #488** — **KHÔNG merge** · **Nhóm:** `1902,1903,1904,1905,2001,2002` (Chương 19 mì–bánh + Chương 20 rau quả)
+- **Vai trò:** người soát **ĐỘC LẬP** (KHÁC người soạn `dev-zcode-mm`) · theo `brief-st-soat-lo064.md` (oz-dev-kit) + mục 4 `docs/giao-viec/so-tay-giao-ngoai.md`
+- **Kết quả:** soát **102 mục hồ sơ** (23 + 3 + 18 + 31 + 8 + 13 mục của bản nháp + 5 mục chèn) — **giữ 83 · sửa 14 (17 trường) · chèn 5 · xoá 0** ⇒ sau soát **101/101 mục (100 %)** (96 mục của phiên soạn + 5 mục chèn)
+- **Nguồn đọc:** `tmp/so-tay/nguon/1902.txt`…`2002.txt` + `_he-thong.txt` — đọc **HẾT** 6 tệp (60.793 ký tự), không lấy mẫu; không dùng kiến thức ngoài kho số liệu
+- **Hồ sơ:** `review/1902.json`…`review/2002.json` — mỗi mục đúng MỘT dòng `hanhDong` + `lyDo` (kể cả mục giữ, đều có lý do + đo trần clip)
+- **Script áp:** `scripts/apply-review-lo064.mjs` (2 pha `TARGET=raw` → `TARGET=data`, có hành động `chen`)
+
+## 1. Sai lệch brief (đã tự xác định đúng PR)
+
+Brief ghi **PR #486** — nhưng #486 đã **đóng** lúc 04:31 (nhánh bị xoá khỏi remote). Nội dung lô 064 hiện tại là
+phiên **soạn lại** (PR **#488**, commit `e7da6e4`, 96/96 mục) đã push. Phiên này là người soát ĐỘC LẬP của nội dung đó.
+Worktree brief ghi `hs-code-api-wt-st-lo64` — worktree thật là `hs-code-api-wt-st-lo064` (thiếu số 0).
+
+## 2. Năm lớp lỗi tìm được — đều là loại `check-so-tay` KHÔNG bắt
+
+Máy kiểm chỉ chứng minh **câu trích có thật trong nguồn**; nó không biết câu trích **nói nhiều hơn** điều kiện mà
+mục khẳng định, không biết **một nhánh nào của câu nguồn bị rơi**, và **không kiểm `fact`** (mà `fact` đọc thẳng vào
+prompt runtime — `lib/so-tay-gates.js` in `Điều kiện vào nhóm: <fact> <op> <value>`).
+
+### (1) `fact` hỏng chính tả — 3 mục (1902, 1903, 1904)
+
+| Nhóm | Sai | Đúng |
+|---|---|---|
+| 1902 `dieuKienVao[0]` | `..._chua_duoc_len_**man**` | `..._chua_duoc_len_men` |
+| 1903 `dieuKienVao[0]` | `la_che_pham_**chue**_bien_...` | `la_che_pham_**che**_bien_...` |
+| 1904 `dieuKienVao[0]` | `chi_duoc_**chue**_bien_...` | `chi_duoc_**che**_bien_...` |
+
+**ĐO NỀN NHÀ:** toàn kho có 3 `fact` dạng `_len_men` và **đúng 1** dạng `_len_man` (là 1902) ⇒ sai. Cùng lớp lỗi
+"fact hỏng dấu do bộ sinh" của lô 060.
+
+### (2) Thu hẹp điều kiện loại trừ — 1904 `loaiTru[1]` + `phanBiet[0]`
+
+Nguồn: *"Các chế phẩm có chứa ca cao trên **6 %** trọng lượng **được tính trên cơ sở đã khử toàn bộ chất béo** hoặc
+**được bọc sôcôla** hoặc các chế phẩm thực phẩm khác có chứa ca cao thuộc nhóm 18.06 (nhóm 18.06)."* — mục chỉ ghi
+*"Chế phẩm có chứa ca cao trên 6 % trọng lượng"* ⇒ mất cơ sở tính ngưỡng **và** nhánh "bọc sôcôla".
+Sửa: `loaiTru[1]` → *"Ca cao trên 6 % tính trên cơ sở đã khử toàn bộ chất béo"* (54/55) + **chèn** `loaiTru[3]`
+*"Chế phẩm được bọc sôcôla"* → 18.06; `phanBiet[0].hoi` mang theo vế định danh.
+Mẫu nhà đã duyệt: 1901 giữ đúng vế "đã khử toàn bộ chất béo"; 155 nhóm có nhiều `loaiTru` cùng một đích.
+
+### (3) Hai dòng anh em không phân biệt được — 1905 `dong8[5]` (SEN 19053220)
+
+SEN: *"Một loại bánh quy giòn mỏng (**không nướng trong lò** được nướng bằng khuôn kẹp bằng sắt)…"* — mục bỏ mất
+vế trong ngoặc ⇒ 19053210 (bánh waffles) và 19053220 (bánh xốp) gần như **trùng nhau**.
+Sửa: *"Bánh xốp wafers: bánh quy giòn mỏng, không nướng trong lò, nướng bằng khuôn kẹp bằng sắt"* (88/90).
+
+### (4) "A hoặc B" bị tách thành một nhánh đích duy nhất — 2002 `phanBiet[1]`
+
+Câu nguồn nêu **ba** nhánh: (i) nước xốt cà chua ketchup, (ii) các loại xốt cà chua khác → 21.03; (iii) súp cà chua và
+chế phẩm làm súp cà chua → 21.04. Câu hỏi cũ chỉ hỏi "ketchup" ⇒ mất hai nhánh.
+Sửa: mở rộng `phanBiet[1].hoi` (gộp (i)+(ii)) + **chèn** `phanBiet[2]` cho (iii) → 21.04.
+**Đây là câu hỏi MỞ số 2 trong body PR #488 — câu trả lời: CÓ, cần thêm `phanBiet` cho 21.04.**
+
+### (5) Nhánh loại trừ của chính nhóm chưa có mục nào giữ — 1902 + 2002 (2 mục chèn)
+
+- **1902**: loại trừ *"Các chế phẩm thực phẩm (trừ các sản phẩm nhồi thuộc nhóm 19.02) đã nhồi, có chứa trên 20 %
+  trọng lượng là xúc xích, thịt… (Chương 16)."* — đích là **Chương 16** (không phải một nhóm) ⇒ không mã hoá được thành
+  `loaiTru` (luật 3), chỗ đúng là `dieuKienVao`. Đã **chèn** `dieuKienVao[1]`: `ty_le_xuc_xich_thit_ca_giap_xac_than_mem_trong_luong ≤ 20 %`
+  với `ngoaiTru` = *"các sản phẩm nhồi thuộc nhóm 19.02"* (thiếu ngoại lệ này thì mì nhồi thịt 19.02.20 bị loại oan).
+  **Mẫu nhà đã duyệt: 19.01 có đúng mục này, `fact` Y HỆT.**
+- **2002**: nhánh *"các loại cà chua đã được nêu cụ thể trong Chương 7"* (cà chua tươi/sấy khô → 07.02) — chưa có mục
+  nào giữ. Đã **chèn** `dieuKienVao[1]` (vế bị loại + `value=false`, mẫu 1518).
+
+### Sửa thêm (4 mục)
+
+- **1902 `cay.tenDien[0]`** (nút 190219 chưa có tên tiếng Việt trong cây): tên *"Mì chưa nấu chín, không nhồi, không
+  chứa trứng"* bỏ mất vế **"không chế biến cách khác"** của WCO (`not stuffed or otherwise prepared`) ⇒ mì chưa nấu
+  chín nhưng đã chế biến cách khác (thuộc 19.02.30) vẫn khớp tên 19.02.19. Khối này đi thẳng vào runtime
+  (`lib/so-tay-runtime.js` `tenSoTayOf()` → `viTri()`: "tên theo sổ tay: …"). Sửa tên đầy đủ 4 vế.
+- **1902 `loaiTru[1]` (chèn)**: bản nhép rút gọn mất nhánh *"và chế phẩm để làm súp và nước xuýt"* ⇒ thu hẹp loại trừ.
+- **1903 `dong8[0]`**: *"Sản phẩm từ **tinh bột** ở dạng mảnh…"* mất vế *"tinh bột sắn và sản phẩm thay thế chế biến từ
+  tinh bột"* ⇒ điều kiện khớp cả tinh bột lúa mì (1904/11.05).
+- **2002 `phamVi` / `loaiTru[0]` / `dong8[1]`**: `phamVi` bỏ vế "đã chế biến" (mâu thuẫn với `loaiTru[0]`/`phanBiet[0]`
+  đã sửa ở vòng soạn) và bỏ "trở lên" ở ngưỡng 7 %; `loaiTru[0]` dài 60 > trần 55 ⇒ runtime cắt mất đuôi *"axit **a…**"*
+  và ghi sai *"Cà **chuta**"*; `dong8[1]` để ngưỡng 25–40 % chỉ trong `dieuKienSo` (runtime **không** in khối này).
+
+## 3. ĐO NỀN NHÀ trước khi kết luận — những gì đã kiểm và **giữ nguyên**
+
+| Điểm nghi ngờ | Số đo trong kho | Kết luận |
+|---|---|---|
+| `dieuKienVao` lấy câu "Nhóm này bao gồm…" | 145/769 mục | Mẫu nhà ⇒ giữ |
+| `phanBiet` nhánh "không" trỏ về chính nhóm | 824/1.046 mục | Mẫu nhà ⇒ giữ |
+| Dòng "Loại khác" ghi "(tên WCO …)" | 175/1.900 dòng (lô mới nhất 15xx–18xx dùng dạng tiếng Việt) | Mẫu nhà ⇒ **không** đổi 10 dòng (việc soạn lại, không phải soát) |
+| `loaiTru` không có dấu hiệu loại trừ trong `trich` | 1.747/2.573 mục | Mẫu nhà — nối tiêu đề "Nhóm này không bao gồm:" vào `trich` sẽ khiến dấu lược nuốt mất mục (a) ⇒ giữ |
+| `dieuKienVao` có `ngoaiTru` | 111 mục | Mẫu nhà ⇒ dùng cho ngoại lệ 19.02 |
+| Nhiều `loaiTru` cùng một đích | 155 nhóm | Mẫu nhà ⇒ tách nhánh "bọc sôcôla" ra mục riêng |
+| `tieuChi6` lấy nguồn `ch*.chuong` | 39 mục | Mẫu nhà ⇒ giữ |
+| Trường vượt trần clip runtime | `phamVi.text` 119/532 · `loaiTru.dieuKien` 1.187/2.573 · `phanBiet.hoi` 166/1.046 · `dong8.dieuKien` 3.312/6.409 | Tràn là bình thường ở nhà; chỉ sửa khi cắt **mất nghĩa** |
+| Câu trích dài 300–600 (vùng máy không chặn) | 302/14.090 câu (max 598) | Mẫu đã duyệt ⇒ giữ |
+| `boPhan.quyTac` nói "… phần ngang hàng" | 7 nhóm đã duyệt | Mẫu nhà ⇒ giữ |
+
+## 4. Nhóm sạch — đọc kỹ và **không** sửa
+
+**2001**: hai chỗ dễ nghi ngờ đều **giữ nguyên có căn cứ** — (i) rào "thường" của nguồn gắn với vế *dạng* ("thường có dạng
+lỏng, nhũ tương hoặc huyền phù"), KHÔNG gắn với vế *"không được dùng để ăn một mình"* mà câu hỏi dùng ⇒ **không** phải
+lỗi "cắt trích né câu rào"; (ii) `loaiTru` rỗng vì câu *"được phân biệt với"* không phải dấu hiệu loại trừ (luật 3).
+
+## 5. Ghi nhận / đề xuất người duyệt
+
+1. **Loại trừ cấp CHƯƠNG có chép vào từng nhóm không?** `ch20.chuong` nêu đích danh `nhóm 19.05` (mục 1(d)) và
+   `nhóm 21.04` (mục 1(e)) ⇒ *có thể* mã hoá thành `loaiTru` cho 2001/2002. Phiên này **KHÔNG chép** (luật lô
+   051/060/061), còn `1901` đã duyệt có 3 `loaiTru` lấy từ `ch19.chuong` ⇒ **nền nhà đang lệch** — cần chốt một quy
+   tắc thống nhất trước các lô sau.
+2. **Nhánh thứ ba** của câu (b) ở 1904 (*"các chế phẩm thực phẩm khác có chứa ca cao thuộc nhóm 18.06"*) **không mã
+   hoá được** — điều kiện của nó chỉ là "thuộc nhóm 18.06", tức trùng đích.
+3. **`dieuKienSo[].fact`** không thuộc bảng `LOAI_GIA_TRI` của `lib/so-tay-gates.js` ⇒ cổng chốt dòng 8 số luôn trả
+   `CHUA_BIET` cho dòng đó (nền nhà: 56/393 mục, vd `khoi_luong_qui_doi_troi_qua_luoi_loc_1mm`). Không sửa (đổi tên `fact`
+   sẽ mất nghĩa); đã đưa ngưỡng 25–40 % vào `dieuKien` để mô hình đọc được.
+4. **Bộ quét `scan-so-tay-soat.mjs` bỏ sót 2 lớp lỗi**: (a) lớp 3 chỉ soi 60 ký tự quanh dấu lược ⇒ bỏ sót việc
+   đoạn lược nuốt ngoại lệ ở `phamVi` 1904/1905; (b) lớp 5 so CHUỖI CON trong khối nguồn đã nén ⇒ **không** bắt lỗi
+   gõ "Cà chuta" (2002 `loaiTru[0]`). Đề xuất: đổi lớp 5 sang so **TỪ nguyên vẹn** (đã dùng trong phiên này —
+   `tmp/so-tay/quet-chu.mjs`, bắt cả `chue_bien`/`len_man`).
+
+## 6. Chống méo ký tự (bài học lô 052/064)
+
+Mọi văn bản tự viết trong hồ sơ soát được **gác soát từ** (`tmp/so-tay/soat-lib.mjs`): mỗi từ trong
+`dieuKien`/`text`/`hoi`/`tenVi` phải có trong khối nguồn ⇒ méo 1 chữ là fail ngay. Câu trích MỚI được **cắt từ tệp
+nguồn bằng neo ASCII** (không gõ tay) — bắt được lỗi "Cà **chuta**" mà bộ quét của nhà bỏ sót. Kiểm byte NUL/control
++ NFC cho toàn bộ 6 tệp hồ sơ: sạch.
+
+## 7. Kiểm
+
+| Lệnh | Kết quả |
+|---|---|
+| `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` | 6 nhóm, **101 mục, 0 mục không kiểm được nguồn** |
+| `node scripts/check-trich-nguyen-van.mjs` | **OK — 97 mục** nguyên văn tuyệt đối trong đúng khối nguồn (+ 4 mục bộ kiểm bỏ sót: `boPhan` + 3 `cay.tenDien` — **tự kiểm riêng 4/4 đạt**) |
+| `node scripts/check-cay.mjs --nhom=1902,… --chi-tiet` | **6/6 nhóm đủ**, 0 lỗi lệch cây |
+| `npm run so-tay:check` | 536 nhóm, **14.525 mục, 0 mục không kiểm được nguồn** |
+| `npm test` | **ALL TESTS PASSED** |
+
+**KHÔNG merge** — chờ người duyệt. PR #488 (body đã cập nhật kèm số mục soát/sửa/chèn).
+
+---
+
 # SOÁT ĐỘC LẬP VÒNG 2 lô 063 — phiên `dev-soat-doc-lap-lo063-v2` (28/10/2026)
 
 - **Nhánh:** `so-tay/lo-063` · **PR #485** — **KHÔNG merge** · **Nhóm:** `1801,1802,1803,1804,1805,1806` (Chương 18 — Ca cao)

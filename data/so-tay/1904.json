@@ -4,18 +4,18 @@
   "text": "Thực phẩm chế biến từ hạt ngũ cốc làm giòn bằng cách nổ hoặc rang; chế phẩm tương tự từ bột hoặc cám; (B) thực phẩm từ mảnh ngũ cốc chưa rang; (C) lúa mì bulgur; (D) ngũ cốc khác, trừ ngô, được sơ chế hoặc chế biến.",
   "nguon": "nhom1904.nhom",
   "trich": "Nhóm này bao gồm một loạt các loại thực phẩm được chế biến từ các loại hạt ngũ cốc (ngô, lúa mì, gạo, lúa đại mạch, ...) được làm giòn bằng cách nổ hoặc rang.…Nhóm này cũng bao gồm các chế phẩm tương tự được chế biến từ bột hoặc cám bằng phương pháp rang hoặc trương nở.…(B) Thực phẩm chế biến từ mảnh ngũ cốc chưa rang hoặc từ hỗn hợp của mảnh ngũ cốc chưa rang và mảnh ngũ cốc đã rang hoặc ngũ cốc đã nổ.…(C) Lúa mì bulgur.…(D) Các loại ngũ cốc khác, trừ ngô, được sơ chế hoặc chế biến cách khác.",
-  "nguonLoai": "AI_DA_KIEM"
+  "nguonLoai": "NGUOI_DUYET"
  },
  "dieuKienVao": [
   {
-   "fact": "chi_duoc_chue_bien_hoac_xu_ly_theo_cac_phuong_phap_da_duoc_neu_o_chuong_10_hoac_chuong_11",
+   "fact": "chi_duoc_che_bien_hoac_xu_ly_theo_cac_phuong_phap_da_duoc_neu_o_chuong_10_hoac_chuong_11",
    "op": "=",
    "value": false,
    "donVi": null,
    "ngoaiTru": [],
    "nguon": "nhom1904.nhom",
    "trich": "Nhóm này không bao gồm các loại hạt ngũ cốc chỉ được chế biến hoặc xử lý theo các phương pháp đã được nêu ở Chương 10 hoặc Chương 11.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "loaiTru": [
@@ -24,31 +24,38 @@
    "sangNhom": "1704",
    "nguon": "nhom1904.nhom",
    "trich": "(a) Ngũ cốc đã chế biến được phủ hoặc xử lý cách khác, có chứa đường với tỷ lệ làm cho nó có đặc tính của kẹo đường (nhóm 17.04).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
-   "dieuKien": "Chế phẩm có chứa ca cao trên 6% trọng lượng",
+   "dieuKien": "Ca cao trên 6% tính trên cơ sở đã khử toàn bộ chất béo",
    "sangNhom": "1806",
    "nguon": "nhom1904.nhom",
    "trich": "(b) Các chế phẩm có chứa ca cao trên 6% trọng lượng được tính trên cơ sở đã khử toàn bộ chất béo hoặc được bọc sôcôla hoặc các chế phẩm thực phẩm khác có chứa ca cao thuộc nhóm 18.06 (nhóm 18.06).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Chế phẩm tương tự chế từ bột nhào chiên trong dầu ăn",
    "sangNhom": "1905",
    "nguon": "nhom1904.nhom",
    "trich": "Các chế phẩm tương tự được chế từ bột nhào và chiên trong dầu ăn thực vật bị loại trừ (nhóm 19.05).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Chế phẩm được bọc sôcôla",
+   "sangNhom": "1806",
+   "nguon": "nhom1904.nhom",
+   "trich": "(b) Các chế phẩm có chứa ca cao trên 6% trọng lượng được tính trên cơ sở đã khử toàn bộ chất béo hoặc được bọc sôcôla hoặc các chế phẩm thực phẩm khác có chứa ca cao thuộc nhóm 18.06 (nhóm 18.06).",
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "phanBiet": [
   {
-   "hoi": "Hàng có chứa ca cao trên 6% trọng lượng?",
+   "hoi": "Hàng chứa ca cao trên 6% trọng lượng (đã khử toàn bộ chất béo)?",
    "neuCo": "1806",
    "neuKhong": "1904",
    "nguon": "nhom1904.nhom",
    "trich": "(b) Các chế phẩm có chứa ca cao trên 6% trọng lượng được tính trên cơ sở đã khử toàn bộ chất béo hoặc được bọc sôcôla hoặc các chế phẩm thực phẩm khác có chứa ca cao thuộc nhóm 18.06 (nhóm 18.06).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "tieuChi6": [
@@ -84,7 +91,7 @@
   },
   {
    "hs6": "190490",
-   "fact": "ngu_coc_khac_tru_ngo_da_so_che_hoac_chue_bien_cach_khac",
+   "fact": "ngu_coc_khac_tru_ngo_da_so_che_hoac_che_bien_cach_khac",
    "op": "=",
    "value": true,
    "donVi": null,
@@ -190,7 +197,7 @@
   "tomTat": "Bốn phần: thực phẩm từ hạt ngũ cốc nổ hoặc rang, chế phẩm từ bột hoặc cám; (B) mảnh ngũ cốc chưa rang; (C) lúa mì bulgur; (D) ngũ cốc khác trừ ngô đã sơ chế.",
   "nguon": "nhom1904.nhom",
   "trich": "Nhóm này bao gồm một loạt các loại thực phẩm được chế biến từ các loại hạt ngũ cốc (ngô, lúa mì, gạo, lúa đại mạch, ...) được làm giòn bằng cách nổ hoặc rang.…Nhóm này cũng bao gồm các chế phẩm tương tự được chế biến từ bột hoặc cám bằng phương pháp rang hoặc trương nở.…(B) Thực phẩm chế biến từ mảnh ngũ cốc chưa rang hoặc từ hỗn hợp của mảnh ngũ cốc chưa rang và mảnh ngũ cốc đã rang hoặc ngũ cốc đã nổ.…(C) Lúa mì bulgur.…(D) Các loại ngũ cốc khác, trừ ngô, được sơ chế hoặc chế biến cách khác.",
-  "nguonLoai": "AI_DA_KIEM"
+  "nguonLoai": "NGUOI_DUYET"
  },
  "cay": {
   "nguonLoai": "MAY_SUY",
@@ -305,12 +312,12 @@
  "taoBoi": {
   "provider": "dev-zcode-mm",
   "model": null,
-  "luc": "2026-10-27T21:47:29.500Z",
+  "luc": "2026-10-27T22:21:11.888Z",
   "ms": 1
  },
  "kiemTra": {
-  "tong": 18,
-  "dat": 18,
+  "tong": 19,
+  "dat": 19,
   "loai": 0,
   "nguonBiCat": []
  }
