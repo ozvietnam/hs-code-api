@@ -8758,7 +8758,7 @@ Không có gì trong `data/so-tay/` hay `docs/giao-viec/so-tay-lo.csv` của lô
 
 # SOẠN SỔ TAY lô 064 — phiên `dev-zcode-mm` (28/10/2026)
 
-- **Nhánh:** `so-tay/lo-064` (worktree `hs-code-api-wt-st-lo064`) · **PR:** mở sau khi nạp — **KHÔNG merge**
+- **Nhánh:** `so-tay/lo-064` (worktree `hs-code-api-wt-st-lo064`) · **PR #488** — **KHÔNG merge**
 - **Nhóm:** `1902, 1903, 1904, 1905, 2001, 2002` (Chương 19 — bánh; Chương 20 — rau quả)
 - **Kết quả:** **96/96 mục (100 %)** — 6 nhóm; đã soát lại **từng mục** với nguồn (không tin bản nháp có sẵn)
 - **Quy trình:** `docs/giao-viec/so-tay-giao-ngoai.md` mục 2 + 11 luật mục 3 + `tmp/so-tay/nguon/_he-thong.txt`
