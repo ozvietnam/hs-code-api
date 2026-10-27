@@ -3,6 +3,82 @@
 <!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
 ---
 
+# SOẠN lô 064 — Chương 19 + Chương 20 (phiên Claude, 28/10/2026)
+
+- **Nhánh:** `so-tay/lo-064` (worktree `hs-code-api-wt-st-lo064`) · **PR: mở, KHÔNG merge**.
+- **Nhóm:** `1902, 1903, 1904, 1905, 2001, 2002` (Chương 19 — ngũ cốc/bánh; Chương 20 — rau quả).
+- **Ghi danh CSV:** dòng lô `064` đổi `chua-lam` → `dang-lam`, `nguoi_lam=dev-zcode-mm`.
+- **Báo cáo lô:** `data/so-tay/bao-cao/lo-064.json` (quy ước 3 số của repo, **không** phải `lo-0064.json` như brief ghi).
+
+## 1. Kết quả THẬT
+
+| Nhóm | Mục | Đạt | Rớt | Ghi chú |
+|---|---|---|---|---|
+| 1902 | 23 | 23 | 0 | 13 dòng 8 số; 5 tiêu chí 6 số; 1 tên nút ảo |
+| 1903 | 3 | 3 | 0 | nhóm 1 dòng 8 số; chú giải nhóm chỉ 3 câu |
+| 1904 | 17 | 17 | 0 | có `boPhan` cho các phần (B)(C)(D) |
+| 1905 | 29 | 29 | 0 | 17 dòng 8 số; 6 tiêu chí 6 số; 2 tên nút ảo |
+| 2001 | 8 | 8 | 0 | 3 dòng 8 số; **không** có `loaiTru` (xem mục 4) |
+| 2002 | 13 | 13 | 0 | 3 `loaiTru`, 2 `phanBiet` |
+| **TỔNG** | **93** | **93 (100 %)** | **0** | 6 `phamVi` · 6 `dieuKienVao` · 7 `loaiTru` · 6 `phanBiet` · 1 `boPhan` · 19 `tieuChi6` · 45 `dong8` · 3 `cay.tenDien` |
+
+Máy kiểm:
+- `node scripts/check-so-tay.mjs --raw=…` → **93/93 đạt, 0 mục không kiểm được nguồn**.
+- `node scripts/check-trich-nguyen-van.mjs` → **OK — mọi câu trích nguyên văn tuyệt đối** (so byte-exact, không dựa vào `squash`).
+- `npm run so-tay:check` → toàn repo **530 nhóm / 14.468 mục / 0 mục không kiểm được nguồn**.
+- `node scripts/check-cay.mjs --nhom=1902,1903,1904,1905,2001,2002 --chi-tiet` → **6/6 nhóm đủ, 0 lỗi lệch cây, 0 cảnh báo còn trống**.
+- `npm test` → **ALL TESTS PASSED** (exit 0).
+
+## 2. Phương pháp soạn (không gõ tay tiếng Việt)
+
+Script (gitignored, trong `tmp/so-tay/`):
+
+| Tệp | Vai trò |
+|---|---|
+| `kit-064.mjs` | nạp nguồn (bỏ dòng lệnh "Soạn sổ tay cho nhóm X." ở cuối khối `tax.*`), cắt trích theo **chỉ số từ** (`W`/`L`/`LL`), **gác soát từ 2 mức**, kiểm trần clip runtime |
+| `index2-064.mjs` | in chỉ mục từ/câu của từng dòng nguồn để cắt trích **theo số** (không đoán chỉ số) |
+| `spec-1902.mjs` … `spec-2002.mjs` | **spec** từng nhóm: mọi `trich` cắt từ nguồn, mọi trường tự viết qua gác soát từ |
+| `lap-raw-064.mjs` | dựng bản nháp + gác soát từ + kiểm trích byte-exact + ghi `tmp/so-tay/raw-064-A/` |
+
+- **Gác soát từ 2 mức**: mỗi từ của `phamVi.text` / `loaiTru.dieuKien` / `phanBiet.hoi` / `dong8.dieuKien` / `tenVi` phải có trong nguồn (giữ dấu **và** bỏ dấu) ⇒ bắt được méo dấu của Write tool. Chạy về sau: **0 lỗi** (chỉ 3 lần dừng lúc soạn vì từ khung của nhà chưa có trong nguồn: "lại", "phân", "tên", "WCO", "còn" — đã thêm vào danh sách từ khung).
+- **Trần clip runtime** kiểm ngay trong script: `phamVi.text` 220 · `loaiTru.dieuKien` 55 · `dong8.dieuKien` 90 · `phanBiet.hoi` 110 · `boPhan.tomTat` 160.
+
+## 3. Đo nhiễu nền của gate soát (`scripts/scan-so-tay-soat.mjs`)
+
+| | Lô 064 (6 nhóm) | Nền: 8 nhóm **đã duyệt** trên main (0206, 0209, 1506, 1507, 1601, 1602, 1604, 1701) |
+|---|---|---|
+| Tổng cảnh báo | **58** | **137** |
+| VÙNG-IM-LẶNG (trích 300–600) | **0** | 4 (0206 ×3, 1506, 1507) |
+| LƯỚC-NGOẠI-LỆ ("…" nuốt ngoại lệ) | **0** | 1 (1601) |
+| CÂU-SAU-NGOẠI-LỆ | **0** | 0 |
+| TRÀN-CLIP | 10 | 30 (cùng mẫu nhà) |
+| TỪ-NGOÀI-NGUỒN | 48 | phần lớn |
+
+Cảnh báo còn lại của lô 064 **đều là mẫu nhà**: (i) 10 dòng "Loại khác" viết theo mẫu *"phần còn lại của phân nhóm X (tên WCO …)"* — trùng mẫu `0206.json` đã được duyệt, clip cắt sau tên WCO nên **không mất nghĩa**; (ii) từ khung của nhà trong `fact` snake_case và chữ "Hàng" trong câu hỏi phân biệt.
+
+## 4. Nguồn mỏng / bất thường (kệ sách — cần sửa riêng, KHÔNG sửa trong sổ tay)
+
+1. **`phan19.phan` và `phan20.phan` mang nội dung chú giải Phần II (thuốc lá)** — định nghĩa "viên" + trang 146. Lô 063 đã gặp với `phan18.phan` ⇒ thành mẫu **3 chương liên tiếp** (18/19/20). Hai khối này **không dùng được** cho nhóm 1902–2002 ⇒ không mục nào trong lô lấy trích từ `phan*`.
+2. **Loại trừ cấp CHƯƠNG không mã hoá được** (không có mã 4 số trong `data/chu-giai-heading.json`): 1902(a) → Chương 16 · 1904(c) → Chương 20 · 1905(a) → Chương 16. Cũng **không** chép loại trừ chung của Chương 20 (19.05 / 21.04) vào từng nhóm 2001/2002 theo luật lô 060 ⇒ **2001 không có `loaiTru`**.
+3. **1903**: chú giải nhóm chỉ 3 câu, không có khối loại trừ riêng ⇒ không có `loaiTru`/`phanBiet`.
+4. **1904 có 3 phần ngang hàng** (đoạn dẫn không nhãn + (B) + (C) + (D)) ⇒ phần (B)(C)(D) đặt vào `boPhan` (mẫu `0304.json`), `phamVi` chỉ phủ phần dẫn + chế phẩm tương tự.
+5. **2002**: ngưỡng "hàm lượng thành phần khô từ 7 %" chỉ có ở chú giải **nhóm**; tiêu chí 6 số lấy ngưỡng từ **Chú giải chương 20 mục 4** ("hàm lượng chất khô từ 7 % trở lên được xếp vào nhóm 20.02").
+6. `tieuChi6` **không vào prompt runtime** (ghi chú lô 054/063) — vẫn điền cho đủ 6 số mỗi nhóm (19 mục) để hồ sơ đầy đủ.
+
+## 5. Mục `dieuKien` có ghi điều câu trích KHÔNG nói
+
+**0 mục.** Cả 6 `dieuKienVao` chép đúng ý câu trích (1902 "chưa được lên men" · 1903 "chế biến từ tinh bột …" · 1904 "không chỉ chế biến theo phương pháp Chương 10/11" (chiều `false`) · 1905 "các loại bánh được nướng" · 2001 "bảo quản bằng dấm hoặc axit acetic" · 2002 "cà chua chế biến/bảo quản **không phải** bằng giấm hoặc axit acetic").
+
+## 6. Ghi chú phiên SONG SONG (quan trọng cho phiên sau)
+
+Trong lúc phiên này soạn, **một phiên khác** cùng làm lô 064 trong worktree này (`tmp/so-tay/lap-raw-064a.mjs`, dựng `1902.json` + `1903.json` ra `tmp/so-tay/raw/`). Em **không ghi đè** bản của phiên kia: bản nháp của em nằm ở `tmp/so-tay/raw-064-A/` và **bản nạp vào `data/so-tay/` là bản của em** (spec `tmp/so-tay/spec-*.mjs`). So sánh 1902/1903: hai bản cùng cấu trúc; em giữ bản của mình vì (i) `tieuChi6` của em là **tiêu chí thật** ("có chứa trứng" true/false phân 1902.11 ↔ 1902.19) thay vì `loai_hang` (trùng `tenEn` của cây), (ii) bản em bổ sung `cay.tenDien` cho nút 6 số chưa có tên (190219), (iii) trích của em **không** kéo dòng dẫn "Nhóm này không bao gồm:" vào mục loại trừ (mẫu nhà `1601.json`/`1602.json` chỉ trích **mục** đánh số).
+
+## 7. Trạng thái cuối
+
+- Commit: `data/so-tay/{1902,1903,1904,1905,2001,2002}.json` + `data/so-tay/bao-cao/lo-064.json` + dòng CSV + mục này trong `TIEN-TRINH.md`. **KHÔNG commit `tmp/`.**
+- Đã push nhánh `so-tay/lo-064` và mở PR. **KHÔNG merge** — chờ người duyệt (mục 4 giao việc: còn phải **soát độc lập**).
+
+
 # SOÁT ĐỘC LẬP lô 058 — VÒNG 2 (phiên `dev-soat-doc-lap-lo058b`, 27/10/2026) — gộp với vòng 1
 
 - **Nhánh:** `so-tay/lo-058` (worktree `hs-code-api-wt-st-lo58`) · **PR #474** — **KHÔNG merge**.
