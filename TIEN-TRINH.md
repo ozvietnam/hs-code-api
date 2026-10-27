@@ -8550,3 +8550,80 @@ Cả 7 cảnh báo của lô 063 thuộc 2 lớp nhiễu đã biết: `hang` (ti
   câu trích · đo tràn trần clip runtime · đo nhiễu nền `scan-so-tay-soat` (7 cảnh báo ở lô 063
   vs 102 ở 4 nhóm đã duyệt) · gác soát từ (kiểm hồ sơ soát không bị méo dấu: 621 từ không dấu
   trong hồ sơ, **0 từ nghi vấn**).
+
+# CỨU lô 063 — PR #484 bị đóng CONFLICTING (28/10/2026, phiên `dev-zcode-mm`)
+
+## 0. Brief trỏ lô 051 — lô 051 đã xong; lô thật của phiên là 063
+
+- CEO giao `brief-st-lo051.md` → lô **051**. Nhưng lô **051 ĐÃ XONG + ĐÃ GỘP**: dòng CSV 051 =
+  `0903 0904 0905 0906 0907 0908`, `trang_thai=xong`, `pr=455`; `data/so-tay/0903.json`…`0908.json`
+  đã có trên `origin/main`; worktree `hs-code-api-wt-st-lo51` còn nằm với 4 commit chưa gộp
+  (`e744aa3`) ⇒ làm lại 051 là PR trùng dữ liệu đã soát độc lập.
+- Lệnh trong brief vẫn kèm `--nhom=7615,9609,3215,6306,6804,7412` = nhóm **lô 001** (copy-paste y
+  hệt lô 060/061/062).
+- Ba tín hiệu độc lập cùng chỉ lô thật = **063**: (1) worktree phiên này là
+  `hs-code-api-wt-st-lo063`; (2) nhánh `so-tay/lo-063`; (3) dòng CSV 063 = `1801 1802 1803 1804 1805
+  1806`, `trang_thai=chua-lam`, chưa có `data/so-tay/18xx.json` nào trên `origin/main`.
+⇒ Đây là lần thứ **13** brief trỏ nhầm lô (memory `so-tay-lo-quy-trinh`).
+
+## 1. PR #484 bị ĐÓNG — công việc soạn + soát suýt mất trọn
+
+Kiểm tra thực địa lúc mở phiên: `gh pr view 484` ⇒ `state=CLOSED`, `closedAt=2026-10-27T17:01:51Z`,
+`mergeable=CONFLICTING`, `mergeStateStatus=DIRTY`, `headRefOid=dd7879b`. Nhánh `so-tay/lo-063`
+**đã bị xoá khỏi remote** (`git ls-remote --heads origin` không còn `refs/heads/so-tay/lo-063`).
+
+Cứu qua ref PR (GitHub giữ ref sau khi đóng):
+
+```bash
+git fetch origin 'refs/pull/484/head:refs/remotes/origin/pr/484'   # → dd7879b
+```
+
+Nhánh cứu được có 6 commit: soạn (`31c2f05`) → ghi số PR (`2a6d8f2`) → soát độc lập (`6e20b2b`) →
+sửa mô tả sai lệch brief (`98ecc7d`) → đồng bộ main + đặt CSV `xong` (`6f49a57`) → wake CI (`dd7879b`).
+
+**Đặt lại trên `main` mới** (`bcba930` — lô 061 đã gộp) bằng `cherry-pick` 4 commit có ý nghĩa.
+Xung đột **chỉ ở `TIEN-TRINH.md`** (khối lô 061 của main ↔ khối lô 063 của nhánh) ⇒ giữ **CẢ HAI**
+phía, đúng như lô 060 khi cứu PR #479.
+
+**Bỏ 2 commit:**
+
+- `6f49a57` — (a) thêm 1 dòng vào `data/legal-status-miss.jsonl`: đây là log telemetry lúc chạy,
+  **lọt vào commit**; không lô nào khác kéo file này vào PR (đã đối chiếu lô 060/061/062); (b) đặt
+  CSV dòng 063 = `xong` **trước khi merge** — sai luật nhà, người gộp mới được đặt `xong` (tiền lệ
+  lô 060). Dòng CSV sau cứu = `dang-lam` ⇒ đúng luật.
+- `dd7879b` — commit rỗng "wake CI".
+
+## 2. Bản nháp gốc đã mất — dựng lại để chạy được bộ kiểm
+
+`tmp/so-tay/raw/` là gitignored ⇒ bản nháp của phiên soạn + phiên soát **không còn**. Nhưng
+`data/so-tay/*.json` sau khi nạp vẫn giữ đúng các trường do người viết (máy chỉ bổ sung, không sửa
+câu trích — báo cáo lô 063 ghi `loai = 0` cho cả 6 nhóm, tức **không mục nào bị máy loại**).
+
+`tmp/reconstruct-raw.mjs` (chép từ lô 060, đổi danh sách nhóm) dựng lại `tmp/so-tay/raw/<nhom>.json`
+từ `data/so-tay/<nhom>.json` ⇒ **49 mục**, đúng bằng số mục PR #484 ghi.
+
+Nguồn xuất lại: `node scripts/build-so-tay.mjs --nhom=1801,…,1806 --force --xuat-nguon=tmp/so-tay/nguon`
+(cần `--force` vì `data/so-tay/18xx.json` đã có nên script bỏ qua nhóm — không có `--force` thì
+"0 nhóm cần dựng" và không xuất được nguồn).
+
+## 3. Kết quả kiểm lại sau khi cứu
+
+| Lệnh | Kết quả |
+|---|---|
+| `check-so-tay.mjs --raw=tmp/so-tay/raw` | 6 nhóm, **49 mục, 0 mục không kiểm được nguồn** |
+| `check-trich-nguyen-van.mjs` (byte-exact) | **OK — 49 mục**, mọi câu trích nguyên văn tuyệt đối |
+| `check-cay.mjs --nhom=1801,… --chi-tiet` | **6/6 nhóm đủ**, 0 lỗi lệch cây |
+| `npm run so-tay:check` | **530 nhóm / 14 424 mục, 0 lỗi** |
+| `npm test` | **ALL TESTS PASSED** |
+
+Dữ liệu cứu về mang đúng trạng thái sau soát: `1804.phamVi` đã sửa (nêu đủ **hai** câu định nghĩa
+của nhóm, không lược mất câu về "chất béo ca cao" từ phế liệu) và **26 mục** đã đổi
+`nguonLoai` → `NGUOI_DUYET` (5 + 4 + 3 + 1 + 6 + 7).
+
+## 4. Trạng thái
+
+- Đã commit `data/so-tay/{1801,1802,1803,1804,1805,1806}.json` + `data/so-tay/bao-cao/lo-063.json` +
+  `review/{1801,…,1806}.json` + `scripts/apply-review-lo063.mjs` + dòng CSV + mục này trong
+  `TIEN-TRINH.md`. **KHÔNG commit `tmp/`.**
+- **KHÔNG merge** — chờ người duyệt đọc lại `review/1801.json`…`review/1806.json` (49 dòng, mỗi
+  dòng một `lyDo`) và phần "SOÁT ĐỘC LẬP lô 063" ở cuối `TIEN-TRINH.md`.
