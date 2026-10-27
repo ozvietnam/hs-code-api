@@ -77,9 +77,9 @@ assert('dữ liệu thật: không có trường nguyên văn nào lọt ra (ch�
   assert('loaiKhac: dòng chính nó có dieuKienSoTay; ghi chú nói "phải chứng minh KHÔNG rơi vào"', /không thuộc/.test(v.loaiKhac.dieuKienSoTay) && /KHÔNG rơi vào/.test(v.loaiKhac.ghiChu));
   const w = rt.advise({ topHs: '85042111', candidates: [] });
   assert('mã có tên (không Loại khác): có viTri (cha là tiêu đề bị lược), không có loaiKhac', w.viTri && w.viTri.cha.id === '8504211' && w.viTri.cha.suyRa === true && !w.loaiKhac);
-  // 1509 (dầu ô liu) chưa có sổ tay; 4011 đã có từ vòng soạn 20 nhóm 11/10.
-  const x = rt.advise({ topHs: '15099019', candidates: [] });
-  assert('nhóm chưa có sổ tay: vẫn có viTri + loaiKhac suy từ chữ số, trạng thái CHUA_CO_SO_TAY_CHO_NHOM', x.trangThai === 'CHUA_CO_SO_TAY_CHO_NHOM' && x.viTri && x.loaiKhac && x.loaiKhac.anhEmCoTen.map((a) => a.hs).join() === '15099011' && !x.loaiKhac.anhEmCoTen[0].trich, JSON.stringify(x));
+  // 4907 (tem bưu chính) chưa có sổ tay; 1509 đã có từ lô 059 (27/10), 4011 từ vòng soạn 20 nhóm 11/10.
+  const x = rt.advise({ topHs: '49070029', candidates: [] });
+  assert('nhóm chưa có sổ tay: vẫn có viTri + loaiKhac suy từ chữ số, trạng thái CHUA_CO_SO_TAY_CHO_NHOM', x.trangThai === 'CHUA_CO_SO_TAY_CHO_NHOM' && x.viTri && x.loaiKhac && x.loaiKhac.anhEmCoTen.map((a) => a.hs).join() === '49070021' && !x.loaiKhac.anhEmCoTen[0].trich, JSON.stringify(x));
   const y = rt.advise({ topHs: '8504', candidates: [] });
   assert('mã 4 số: viTri là nhóm, không có loaiKhac', y.viTri.nut.startsWith('Nhóm 8504') && !y.loaiKhac);
   process.env.HS_SOTAY_RUNTIME = 'false';
@@ -107,8 +107,8 @@ assert('dữ liệu thật: không có trường nguyên văn nào lọt ra (ch�
   assert('máy nghi: thiếu sanPham → không nghi, không lỗi', n2 && !n2.canGiaiTrinh.some((x) => x.loai === 'ANH_EM_CO_TEN_KHOP'));
   const n3 = rt.advise({ topHs: '85044040', candidates: [], sanPham: sp });
   assert('máy nghi: mã chọn có tên (không phải Loại khác) → không áp', !n3.canGiaiTrinh.some((x) => x.loai === 'ANH_EM_CO_TEN_KHOP'));
-  const n4 = rt.advise({ topHs: '15099019', candidates: [], sanPham: { tenHang: 'Dầu ô liu nguyên chất đóng gói với khối lượng tịnh không quá 30 kg' } });
-  assert('máy nghi: nhóm chưa có sổ tay vẫn nghi được theo tên dòng biểu thuế (nguon tax.<mã>)', n4.trangThai === 'CHUA_CO_SO_TAY_CHO_NHOM' && (n4.canGiaiTrinh || []).some((x) => x.loai === 'ANH_EM_CO_TEN_KHOP' && x.hs === '15099011' && x.nguon === 'tax.15099011'), JSON.stringify(n4.canGiaiTrinh));
+  const n4 = rt.advise({ topHs: '49070029', candidates: [], sanPham: { tenHang: 'Tem bưu chính' } });
+  assert('máy nghi: nhóm chưa có sổ tay vẫn nghi được theo tên dòng biểu thuế (nguon tax.<mã>)', n4.trangThai === 'CHUA_CO_SO_TAY_CHO_NHOM' && (n4.canGiaiTrinh || []).some((x) => x.loai === 'ANH_EM_CO_TEN_KHOP' && x.hs === '49070021' && x.nguon === 'tax.49070021'), JSON.stringify(n4.canGiaiTrinh));
 }
 
 
