@@ -1,0 +1,122 @@
+{
+ "nhom": "1801",
+ "phamVi": {
+  "text": "Hạt ca cao thô hoặc đã rang, nguyên hạt (đã hoặc chưa bóc vỏ cứng, vỏ lụa hoặc mầm) hoặc đã vỡ mảnh.",
+  "nguon": "nhom1801.nhom",
+  "trich": "Nhóm này bao gồm hạt thô hoặc hạt đã rang, nguyên hạt (đã hoặc chưa bóc vỏ cứng, vỏ lụa hoặc mầm) hoặc đã vỡ mảnh.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Vỏ quả, vỏ hạt, vỏ lụa và phế liệu khác của cacao",
+   "sangNhom": "1802",
+   "nguon": "nhom1801.nhom",
+   "trich": "(a) Phần vỏ quả, vỏ hạt, vỏ lụa và những phế liệu khác của cacao (nhóm 18.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Hạt ca cao đã được nghiền ở dạng bột nhão",
+   "sangNhom": "1803",
+   "nguon": "nhom1801.nhom",
+   "trich": "(b) Hạt ca cao đã được nghiền ở dạng bột nhão (nhóm 18.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là phần vỏ quả, vỏ hạt, vỏ lụa và phế liệu khác của cacao?",
+   "neuCo": "1802",
+   "neuKhong": "1801",
+   "nguon": "nhom1801.nhom",
+   "trich": "(a) Phần vỏ quả, vỏ hạt, vỏ lụa và những phế liệu khác của cacao (nhóm 18.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là hạt ca cao đã được nghiền ở dạng bột nhão?",
+   "neuCo": "1803",
+   "neuKhong": "1801",
+   "nguon": "nhom1801.nhom",
+   "trich": "(b) Hạt ca cao đã được nghiền ở dạng bột nhão (nhóm 18.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "18010010",
+   "dieuKien": "Hạt ca cao đã lên men",
+   "nguon": "sen.18010010",
+   "trich": "HẠT CA CAO ĐÃ LÊN MEN\n● Màu sắc: màu nâu đỏ cho tới màu nâu đen pha chút đỏ tía.\n\n● Mùi hương: mùi giấm chua.\n\n● Vị: có vị đắng và không rõ rệt, sau công đoạn làm khô, hạt sẽ có hương vị sô-cô-la.\n\n● Cấu trúc: hơi giòn, rỗng hoặc dễ vỡ.",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "18010090",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.18010090",
+   "trich": "18010090 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "1801",
+    "truAnhEm": [
+     "18010010"
+    ],
+    "toTienCoTen": "1801",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "1801",
+    "cap": 4,
+    "cha": "18",
+    "tenVi": "Hạt ca cao, đã hoặc chưa vỡ mảnh, sống hoặc đã rang.",
+    "tenEn": "Cocoa beans; whole or broken, raw or roasted",
+    "suyRa": false
+   },
+   {
+    "id": "18010010",
+    "cap": 8,
+    "cha": "1801",
+    "tenVi": "Đã lên men (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "18010090",
+    "cap": 8,
+    "cha": "1801",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom1801.nhom",
+  "sen.18010010",
+  "tax.18010090"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-27T15:29:37.205Z",
+  "ms": 84
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
