@@ -7057,6 +7057,12 @@ một mục ở 1517 **nói ÍT hơn** câu trích (đã khai báo ở trên).
 | `check-cay.mjs --chi-tiet` (6 nhóm) | **6/6 nhóm đủ** — 0 lỗi lệch cây, 0 cảnh báo |
 | đối chiếu `dong8` ↔ `tax.*` | THIẾU 0 · THỪA 0 (120/120 dòng) |
 
+### PR — lô 060
+
+- **PR #479** (https://github.com/ozvietnam/hs-code-api/pull/479) — **KHÔNG merge** (chờ soát độc lập mục 4).
+- `docs/giao-viec/so-tay-lo.csv` dòng 060: `pr=479`; `trang_thai` giữ `dang-lam` (PR chưa merge),
+  `nguoi_lam=dev-zcode-mm`. Người gộp đặt `trang_thai=xong` khi merge.
+
 - **CHƯA merge** — chờ người duyệt + soát độc lập. `so-tay-lo.csv` dòng 060 giữ `trang_thai=dang-lam`,
   `nguoi_lam=dev-zcode-mm` (đổi `xong` + số PR khi gộp).
 
