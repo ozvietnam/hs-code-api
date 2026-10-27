@@ -4,7 +4,7 @@
   "text": "Dầu cọ, chất béo thực vật thu được từ cơm của quả cọ dầu, dùng làm xà phòng, làm nến, mỹ phẩm hoặc các chế phẩm vệ sinh, chất bôi trơn; dầu cọ tinh chế dùng làm thực phẩm; không gồm dầu hạt cọ, dầu ba-ba-su (nhóm 15.13).",
   "nguon": "nhom1511.nhom",
   "trich": "Dầu cọ là một loại chất béo thực vật thu được từ cơm của quả cọ dầu.…Dầu này khác với dầu hạt cọ (nhóm 15.13), loại thu được từ cây cọ dầu có thành phần axit palmitic và axit oleic rất cao.…Dầu cọ được dùng làm xà phòng, làm nến, mỹ phẩm hoặc các chế phẩm vệ sinh, dùng như chất bôi trơn, để mạ thiếc nhúng nhóng, để sản xuất axit palmitic v.v. Dầu cọ tinh chế được dùng làm thực phẩm như mỡ rán và sản xuất margarin.…Nhóm này không bao gồm dầu hạt cọ, dầu ba-ba-su (nhóm 15.13).",
-  "nguonLoai": "AI_DA_KIEM"
+  "nguonLoai": "NGUOI_DUYET"
  },
  "dieuKienVao": [
   {
@@ -15,7 +15,7 @@
    "ngoaiTru": [],
    "nguon": "nhom1511.nhom",
    "trich": "Dầu cọ là một loại chất béo thực vật thu được từ cơm của quả cọ dầu.",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "fact": "la_dau_hat_co_va_dau_ba_ba_su",
@@ -25,7 +25,7 @@
    "ngoaiTru": [],
    "nguon": "nhom1511.nhom",
    "trich": "Nhóm này không bao gồm dầu hạt cọ, dầu ba-ba-su (nhóm 15.13).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "loaiTru": [
@@ -34,7 +34,7 @@
    "sangNhom": "1513",
    "nguon": "nhom1511.nhom",
    "trich": "Nhóm này không bao gồm dầu hạt cọ, dầu ba-ba-su (nhóm 15.13).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "phanBiet": [
@@ -43,16 +43,16 @@
    "neuCo": "1513",
    "neuKhong": "1511",
    "nguon": "nhom1511.nhom",
-   "trich": "Nhóm này không bao gồm dầu hạt cọ, dầu ba-ba-su (nhóm 15.13).",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "Nhóm này không bao gồm dầu hạt cọ, dầu ba-ba-su (nhóm 15.13).…Dầu cọ là một loại chất béo thực vật thu được từ cơm của quả cọ dầu.",
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "hoi": "Hàng là dầu cọ thô hay là dầu cọ đã tinh chế?",
-   "neuCo": "15119020",
-   "neuKhong": "15111000",
-   "nguon": "sen.1511",
-   "trich": "Dầu cọ thô có màu đỏ-cam thẫm do hàm lượng carotenes tự nhiên cao.",
-   "nguonLoai": "AI_DA_KIEM"
+   "neuCo": "15111000",
+   "neuKhong": "15119020",
+   "nguon": "nhom1511.nhom",
+   "trich": "Dầu thu được bởi chiết hoặc ép và có màu thay đổi theo trạng thái đã hoặc chưa tinh chế.",
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "tieuChi6": [
@@ -68,12 +68,12 @@
   },
   {
    "hs6": "151190",
-   "fact": "la_dau_co_va_cac_phan_phan_doan_cua_dau_co",
+   "fact": "la_dau_co_va_cac_phan_phan_doan_cua_chung_khong_phai_dau_tho",
    "op": "=",
    "value": true,
    "donVi": null,
-   "nguon": "sen.1511",
-   "trich": "Dầu cọ được thu từ thịt của quả cây cọ dầu (Elaeisguineensis) và có một tỷ lệ cân bằng giữa axit béo bão hòa và không bão hòa.",
+   "nguon": "wco.151190",
+   "trich": "151190 Vegetable oils; palm oil and its fractions, other than crude, whether or not refined, but not chemically modified",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],
@@ -110,7 +110,7 @@
    "hs": "15119031",
    "dieuKien": "Có chỉ số iốt từ 30 trở lên, nhưng dưới 40",
    "tieuChi": {
-    "fact": "chi_so_iot_tu_30_tro_len_nhung_duoi_40",
+    "fact": "chi_so_iot",
     "op": ">=",
     "value": 30,
     "donVi": null
@@ -144,7 +144,7 @@
    "hs": "15119036",
    "dieuKien": "Đóng gói với khối lượng tịnh không quá 25kg",
    "tieuChi": {
-    "fact": "la_dong_goi_voi_khoi_luong_tinh_khong_qua_25kg",
+    "fact": "khoi_luong_tinh",
     "op": "<=",
     "value": 25,
     "donVi": "kg"
@@ -158,7 +158,7 @@
    "hs": "15119037",
    "dieuKien": "Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60",
    "tieuChi": {
-    "fact": "chi_so_iot_tu_55_tro_len_nhung_duoi_60",
+    "fact": "chi_so_iot",
     "op": ">=",
     "value": 55,
     "donVi": null
@@ -215,7 +215,12 @@
   {
    "hs": "15119042",
    "dieuKien": "Loại khác, đóng gói với khối lượng tịnh không quá 25kg",
-   "tieuChi": null,
+   "tieuChi": {
+    "fact": "khoi_luong_tinh",
+    "op": "<=",
+    "value": 25,
+    "donVi": "kg"
+   },
    "nguon": "tax.15119042",
    "trich": "15119042 - - - Loại khác, đóng gói với khối lượng tịnh không quá 25kg (SEN)",
    "nguonLoai": "AI_DA_KIEM",
@@ -382,7 +387,6 @@
  },
  "dungTuNguon": [
   "nhom1511.nhom",
-  "sen.1511",
   "sen.15119049",
   "tax.15111000",
   "tax.15119020",
@@ -398,7 +402,7 @@
  "taoBoi": {
   "provider": "dev-zcode-mm",
   "model": null,
-  "luc": "2026-10-27T08:24:09.068Z",
+  "luc": "2026-10-27T09:37:29.760Z",
   "ms": 1
  },
  "kiemTra": {

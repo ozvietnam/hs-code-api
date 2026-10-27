@@ -1,0 +1,84 @@
+{
+ "nhom": "1506",
+ "gopVoi": "soát độc lập lô 059 (PR #477) — phiên claude-soat-doc-lap-lo059, 27/10/2026",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (máy KHÔNG bắt): (a) `text` khẳng định phạm vi chung của nhóm (\"Mỡ và dầu có nguồn gốc từ động vật cũng như các phần phân đoạn của chúng\") nhưng câu trích cũ BẮT ĐẦU từ \"Đặc biệt, nhóm này bao gồm:\" ⇒ vế phạm vi chung không có căn cứ trong trích. (b) `text` liệt kê 8 mục nhưng BỎ SÓT mục (6) \"Dầu trứng rùa\" (nguồn có 7 mục (1)–(7)) ⇒ danh sách không trọn, người đọc tưởng nhóm chỉ có những gì liệt kê. (c) `text` cũ dài 208 + \"dầu trứng rùa\" = 237 ký tự > trần clip 220 của runtime ⇒ sẽ bị cắt đuôi, mất danh sách. Đã nối câu mở đầu của nhóm vào trích (nguyên văn), bổ sung \"dầu trứng rùa\" và rút gọn `text` còn 206 ký tự (vẫn ≤ 220; bỏ \"các loại\", \"cua đất, rùa\" để còn chỗ — danh sách \"đặc biệt bao gồm\" là ví dụ, không phải trọn danh sách).",
+   "sua": {
+    "text": "Mỡ và dầu có nguồn gốc từ động vật cũng như các phần phân đoạn của chúng; đặc biệt gồm mỡ của ngựa, hà mã, gấu, thỏ, dầu xương, dầu từ chân bò, dầu chiết từ tủy, dầu lòng đỏ trứng, dầu trứng rùa, dầu nhộng.",
+    "trich": "Nhóm này bao gồm tất cả mỡ và dầu có nguồn gốc từ động vật cũng như các phần phân đoạn của chúng…Đặc biệt, nhóm này bao gồm:…(1) Mỡ của các loại ngựa, hà mã, gấu, thỏ, cua đất, rùa v.v.…(2) Dầu từ chân của bò…(3) Dầu xương…(4) Dầu chiết từ tủy…(5) Dầu của lòng đỏ trứng…(6) Dầu trứng rùa…(7) Dầu nhộng chiết từ nhộng tằm"
+   }
+  },
+  {
+   "index": "dieuKienVao[3]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (máy KHÔNG bắt): (a) câu trích cũ CẮT GIỮA danh sách, bắt đầu từ \"dầu oleo\" ⇒ mất chữ \"trừ\" ⇒ mảnh trích không còn nói là LOẠI TRỪ, trong khi mục khẳng định value=false. (b) `fact` dùng \"va\" (VÀ) cho 3 vế loại trừ rời nhau và BỎ SÓT \"dầu từ mỡ lá và mỡ khổ của lợn\" — vốn nằm ngay trước \"dầu oleo\" trong danh sách loại trừ ⇒ một loại dầu loại trừ thật của nhóm 15.06 không được ghi lại. Đã sửa `fact` thành phép HOẶC và bổ sung vế bị sót; trích lấy nguyên văn từ \"tất cả dầu nguồn gốc động vật trừ …\" (có chữ \"trừ\").",
+   "sua": {
+    "fact": "la_dau_tu_mo_la_va_mo_kho_cua_lon_hoac_dau_oleo_hoac_dau_tallow_hoac_dau_thu_duoc_tu_mo_long",
+    "trich": "tất cả dầu nguồn gốc động vật trừ dầu từ mỡ lá và mỡ khổ của lợn, dầu oleo, dầu tallow, dầu thu được từ cá hoặc động vật có vú ở biển và dầu thu được từ mỡ lông."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích là câu định nghĩa phủ CẢ nhóm 15.06 (\"Nhóm này bao gồm tất cả mỡ và dầu có nguồn gốc từ động vật cũng như các phần phân đoạn của chúng, trừ…\"), fact dương + value=true đúng chiều, không phải câu CHO PHÉP. GIỮ."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn mục (a) \"không bao gồm\"; fact âm + value=false đúng chiều (là mỡ lợn/mỡ gia cầm thì KHÔNG thuộc 15.06). GIỮ."
+  },
+  {
+   "index": "dieuKienVao[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn mục (c) \"không bao gồm\"; fact âm + value=false đúng chiều. GIỮ."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (a) \"Nhóm này không bao gồm…\" — có dấu hiệu loại trừ, nêu đích danh \"nhóm 02.09 hoặc 15.01\", `sangNhom` \"0209|1501\" mã có trong trích. GIỮ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b) — đích danh \"nhóm 15.02\". GIỮ."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c) — đích danh \"nhóm 15.04\". GIỮ."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (d) — đích danh \"nhóm 38.24\"; `dieuKien` chép đúng lời nguồn (kể cả lỗi chính tả \"piriddin\"). GIỮ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều Có/Không đúng: có = mỡ lợn/mỡ gia cầm → 0209|1501; không = 1506. `hoi` không nhắc mã. GIỮ."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều Có/Không đúng: có = mỡ trâu bò/dê/cừu → 1502. GIỮ."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều Có/Không đúng: có = mỡ/dầu cá hoặc động vật có vú ở biển → 1504. GIỮ."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều Có/Không đúng: có = sản phẩm bazơ piriddin → 3824. GIỮ."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 8 số 15060000 lấy nguyên văn từ biểu thuế, `dieuKien` bám đúng tên dòng; `tieuChi` lặp lại tên dòng (nhóm chỉ có MỘT dòng 8 số nên không có anh em để phân biệt) — không sai. GIỮ."
+  }
+ ]
+}
