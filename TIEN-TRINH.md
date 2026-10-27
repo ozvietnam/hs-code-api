@@ -8197,16 +8197,29 @@ nhomLoi: []`). Ngưỡng nghiệm thu ≥ 95 %.
 # 2026-10-27 23:xx — SOÁT ĐỘC LẬP VÒNG 3 lô 061 (PR #483) — phiên quản lý
 
 > Nhận brief `brief-st-soat-lo061.md` (đường dẫn `~/.zcode/workspace/default/oz-dev-kit/`).
-> Vai trò: **người soát ĐỘC LẬP**, KHÔNG phải người soạn. Brief trỏ PR #481 (đã đóng) — chốt
-> lô theo CSV + worktree + nhánh (luật của nhà) ⇒ **PR #483**, nhánh `so-tay/lo-061`,
+> Vai trò: **người soát ĐỘC LẬP**, KHÔNG phải người soạn.
+> **Đã kiểm thêm mọi brief trong thư mục** (`ls | grep brief-st-soat`): tệp MỚI NHẤT là
+> **`brief-st-soat-lo0061.md`** (27/10 22:48 — quy ước tên của nhà: số lô 4 chữ số có số 0 ở giữa
+> từ lô 10 trở đi) và nó ghi **PR #483** ✓ ⇒ đây là brief đúng cho phiên này. Tệp
+> `brief-st-soat-lo061.md` (19:24) là bản CŨ, vẫn trỏ PR #481 đã đóng.
+> ⇒ Lô chốt: **PR #483**, nhánh `so-tay/lo-061`, worktree `hs-code-api-wt-st-lo061`,
 > dòng CSV 061 = `1518 1520 1521 1522 1601 1602`.
 
 ## 0. SAI LỆCH BRIEF (khai trước)
 
-- Brief ghi worktree `hs-code-api-wt-st-lo61` và PR **#481**. Thực tế: worktree đang làm
+- Brief (bản cũ) ghi worktree `hs-code-api-wt-st-lo61` và PR **#481**. Thực tế: worktree đang làm
   `hs-code-api-wt-st-lo061`, PR **#481 đã đóng** (không merge), PR đang mở là **#483**.
   ⇒ Lần thứ 12 của lệp "brief trỏ nhầm lô" (memory `so-tay-lo-quy-trinh`). Chốt lô bằng
   CSV + nhánh + worktree, không tin tên brief.
+- Brief (cả 2 bản) ghi worktree `…-lo61` / nhánh `so-tay/lo-0061` — **không tồn tại**; tên thật
+  là `…-lo061` / `so-tay/lo-061` ⇒ theo thư mục làm việc, không theo brief.
+- Brief ghi `--bao-cao=data/so-tay/bao-cao/lo-0061.json` — quy ước repo là **`lo-0NN.json`**
+  (3 chữ số, số 0 ở giữa) ⇒ tệp cũ `lo-061.json` đang tồn tại; chạy theo brief sẽ tạo tệp lạ
+  và làm mất báo cáo cũ (memory `bao-cao-lo-so-tay-phai-dung-dinh-dang-lo-0NN`) ⇒ đã dùng
+  `lo-061.json`.
+- Brief ghi `--nguoi-soan="dev-zcode-mm"`; lần nạp dùng `dev-soat-doc-lap-lo061-v3` rồi **trả
+  `taoBoi.provider` về `dev-zcode-mm`** (mọi lô của nhà giữ tên người soạn: lô 060 vòng 3, 062,
+  063) — người soát độc lập được ghi ở `review/<nhom>.json` + PR + CSV.
 - Nội dung brief viết cho PR #481 cũ (110 mục); dữ liệu trên nhánh đã là bản **114 mục** (PR #483).
 
 ## 1. Quy trình đã chạy
