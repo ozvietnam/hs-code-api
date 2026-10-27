@@ -1,0 +1,74 @@
+{
+ "nhom": "1212",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-27T13:05:00+07:00",
+ "soat": 10,
+ "soatDongKy": 11,
+ "daKiem": 10,
+ "xoa": 0,
+ "sua": 1,
+ "giu": 9,
+ "phamViSoat": "10 mục trong 5 khối mục 4 (phamVi 1 · dieuKienVao 0 · loaiTru 8 · phanBiet 1), đọc cùng tmp/so-tay/nguon/1212.txt.",
+ "ghiChu": "TÓM: 10/10 câu trích có NGUYÊN VĂN byte-exact trong đúng khối nguồn và nói ĐÚNG điều mục khẳng định. SỬA 1 (phamVi), XOÁ 0, GIỮ 9. Lỗi sửa: phamVi trích CẮT NGANG tiêu đề phần (D) — bản nháp dừng ở \"…và các sản phẩm rau khác\", bỏ mất trong ngoặc \"(gồm cả rễ rau diếp xoăn chưa rang thuộc loài Cichorium intybus satirum)\" và vế \"chủ yếu dùng làm thức ăn cho người, chưa được chi tiết hoặc ghi ở nơi khác\". Hai thông tin này quyết định thành viên của phần (D) (rễ rau diếp xoăn loài nào mới thuộc 1212 — loài khác sang 06.01) nên câu trích phải trọn tiêu đề phần; đồng thời `text` nêu phần (D) cho đủ phạm vi. GHI NHẬN (không sửa): (a) dấu lược \"…\" trong trích phủ luôn khối \"Nhóm này không bao gồm:\" + mục (a)–(d) của phần đầu — nhưng CẢ BỐN mục loại trừ ấy đều đã có mục riêng trong `loaiTru` (1302, 2102, 3002, 3101|3105), không mất thông tin; đây cũng là văn phong sẵn có của kho (405/445 nhóm đã gộp có phamVi.trích không nhắc loại trừ). (b) `loaiTru[6]` kết thúc bằng dấu \"…\" để đánh dấu câu còn tiếp — phần bị lược là vế \"các nhân quả đã rang (thường được phân loại như các chất thay thế cà phê - nhóm 21.01)\", có định ngữ \"thường\" nên theo luật KHÔNG được ghi thành loại trừ ⇒ giữ nguyên cách cắt. (c) `loaiTru[7]` bỏ định ngữ \"thuộc loài này\" (đại từ chỉ có nghĩa trong khối 1212) — vô hại vì runtime chỉ in mục này khi đã ở trong khối 1212. (d) `phanBiet[0].trich` 317 ký tự (>300 theo lược đồ, <600 theo máy) — giữ nguyên vì phải trích LIÊN TỤC để không giấu vế loại trừ \"rễ đã rang → 21.01\".",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Bản nháp cắt trích NGAY GIỮA tiêu đề phần (D): \"…(D) Hạt quả và nhân của hạt và các sản phẩm rau khác\" — mất trọn ngoặc \"(gồm cả rễ rau diếp xoăn chưa rang thuộc loài Cichorium intybus satirum)\" và vế \"chủ yếu dùng làm thức ăn cho người, chưa được chi tiết hoặc ghi ở nơi khác\". Đây là hai điều kiện thành viên của phần (D) (chỉ rễ rau diếp xoăn LOÀI Cichorium intybus satirum mới thuộc 1212 — loài khác sang 06.01; và phần (D) chỉ dành cho sản phẩm CHƯA được chi tiết/ghi ở nơi khác), nên câu trích phải trọn tiêu đề phần, không cắt ngang. SỬA: kéo trọn tiêu đề phần (D) vào trích (cắt bằng SL() từ tệp nguồn ⇒ byte-exact) + `text` nêu rõ phần (D) gồm rễ rau diếp xoăn chưa rang loài Cichorium intybus satirum và dùng làm thức ăn cho người (209 ký tự < trần clip 220).",
+   "sua": {
+    "text": "Rong biển và các loại tảo khác… Củ cải đường và mía đường… Quả minh quyết… Hạt quả, nhân hạt và sản phẩm rau khác (gồm rễ rau diếp xoăn chưa rang Cichorium intybus satirum), chủ yếu dùng làm thức ăn cho người.",
+    "trich": "Nhóm này bao gồm tất cả các loại rong biển và các loại tảo khác, ăn được hay không ăn được.…(B) Củ cải đường và mía đường…(C) Quả minh quyết…(D) Hạt quả và nhân của hạt và các sản phẩm rau khác (gồm cả rễ rau diếp xoăn chưa rang thuộc loài Cichorium intybus satirum) chủ yếu dùng làm thức ăn cho người, chưa được chi tiết hoặc ghi ở nơi khác."
+   }
+  },
+  {
+   "index": "dieuKienVao",
+   "hanhDong": "giu",
+   "lyDo": "Để rỗng là ĐÚNG: không có câu ràng buộc nào phủ CẢ nhóm 4 số — nhóm có 4 phần (rong biển/tảo · củ cải đường + mía · quả minh quyết · hạt quả và sản phẩm rau), mỗi phần một điều kiện riêng (luật lô 030: chỉ đặt khi câu phủ cả nhóm)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(a) Thạch rau câu và carrageenan (nhóm 13.02).\" — có DẤU HIỆU LOẠI TRỪ (nằm trong khối \"Nhóm này không bao gồm:\"), nêu ĐÍCH DANH nhóm 13.02, không có định ngữ rào (\"thường\"/\"tùy trường hợp\") ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(b) Các loại tảo đơn bào chết (nhóm 21.02).\" — loại trừ dứt khoát, đích danh 21.02, `dieuKien` giữ trọn mệnh đề ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(c) Vi sinh nuôi cấy thuộc nhóm 30.02\" — loại trừ dứt khoát, đích danh 30.02 ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(d) Các loại phân bón thuộc nhóm 31.01 hoặc 31.05.\" — đích danh 2 nhóm, `sangNhom` \"3101|3105\" phủ đủ; `dieuKien` \"Các loại phân bón\" là tên mặt hàng, điều kiện lọc là \"thuộc nhóm 31.01 hoặc 31.05\" đã nằm ở phần đích ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"Nhóm này không bao gồm bã mía, phần bã của cây mía còn lại sau khi ép lấy nước mía (nhóm 23.03).\" — loại trừ dứt khoát, đích danh 23.03; `dieuKien` giữ đủ cả hai vế (bã mía + phần bã còn lại sau khi ép) ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"Nhóm này không bao gồm bột của phôi nhũ cây minh quyết, loại được phân loại vào nhóm 13.02 như chất nhầy hoặc chất làm đông.\" — đích danh 13.02 ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"Nhóm này không bao gồm các loại hạt quả hoặc các loại hạt dùng trong nghệ thuật trạm khắc (ví dụ, hạt chà là) (nhóm 14.04)…\" — đích danh 14.04, dấu \"…\" cuối trích đánh dấu câu còn tiếp (vế sau có \"thường\" nên không thành loại trừ) ⇒ giữ nguyên cách cắt."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"Rễ rau diếp xoăn đã rang thuộc loài này được dùng\n\nlàm chất thay thế cà phê bị loại trừ (nhóm 21.01).\" — đích danh 21.01, giữ nguyên xuống dòng của nguồn (byte-exact). GHI NHẬN: bỏ đại từ \"thuộc loài này\" là vô hại vì mục này chỉ hiện trong khối 1212 ⇒ giữ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều Có/Không đúng: hỏi \"rễ rau diếp xoăn chưa rang thuộc loài Cichorium intybus satirum?\" → có = thuộc 1212, không = loài khác → 06.01 (nguyên văn \"Các loại rễ của rau diếp xoăn thuộc loài khác chưa rang được phân loại vào nhóm 06.01.\"). `hoi` không nhắc mã; cả hai mã đích có trong câu trích; trích LIÊN TỤC để không giấu vế \"rễ đã rang → 21.01\" (317 ký tự, <600) ⇒ giữ."
+  }
+ ]
+}
