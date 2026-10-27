@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * scripts/apply-review-lo061.mjs — Áp kết quả SOÁT ĐỘC LẬP lô 061 (PR #481, nhóm 1518–1602).
+ * scripts/apply-review-lo061.mjs — Áp kết quả SOÁT ĐỘC LẬP lô 061 (PR #483, nhóm 1518–1602).
  *
  * Cùng cách làm của apply-review-lo060.mjs (2 pha, KHÔNG bao giờ áp thayDoi lên data):
  *
@@ -46,24 +46,14 @@ function normalize(review) {
   });
 }
 
-/** Sửa/xoá/CHÈN theo index GỐC. */
+/** Sửa/xoá theo index GỐC. */
 function applyThayDoi(obj, thayDoi) {
-  const sua = []; let xoa = 0; let chen = 0;
+  const sua = []; let xoa = 0;
   for (const t of thayDoi) {
     if (t.hanhDong === 'giu') continue;
     // Khối cây do MÁY sinh (luật §L11 mục 9) — hồ sơ chỉ được ghi "giu".
     if (t.kind === 'cay' || t.kind.startsWith('cay.')) {
       throw new Error(`${t.kind}[${t.idx}]: khối máy sinh, không được sửa/xoá bằng hồ sơ soát`);
-    }
-    // CHÈN mục mới (mục nguồn có nhưng bản nháp thiếu). `sua` = TRƯỜNG CỦA MỤC MỚI.
-    if (t.hanhDong === 'chen') {
-      if (!Array.isArray(obj[t.kind])) throw new Error(`không chèn được: ${t.kind} không phải mảng`);
-      const item = { ...(t.sua || {}) };
-      const at = (t.idx == null || t.idx > obj[t.kind].length) ? obj[t.kind].length : t.idx;
-      obj[t.kind].splice(at, 0, item);
-      chen += 1;
-      sua.push(`${t.kind}[${at}](mới)`);
-      continue;
     }
     if (t.hanhDong === 'xoa') {
       if (t.idx == null) throw new Error(`xoa cần index có [i]: ${t.kind}`);
@@ -81,7 +71,7 @@ function applyThayDoi(obj, thayDoi) {
       if (JSON.stringify(target[k]) !== JSON.stringify(v)) { target[k] = v; sua.push(`${t.kind}[${t.idx}].${k}`); }
     }
   }
-  return { sua, xoa, chen };
+  return { sua, xoa };
 }
 
 function applyNguonLoai(obj) {
@@ -101,7 +91,7 @@ function applyNguonLoai(obj) {
 }
 
 console.log(`TARGET=${TARGET}  APPLY=${APPLY ? 'GHI' : 'DRY-RUN'}  lô 061 = ${NHOM_CUA_LO.join(', ')}`);
-const tong = { sua: 0, xoa: 0, chen: 0, nguonLoai: 0, nhom: 0 };
+const tong = { sua: 0, xoa: 0, nguonLoai: 0, nhom: 0 };
 for (const nhom of NHOM_CUA_LO) {
   const file = path.join(TARGET_DIR, `${nhom}.json`);
   const rvPath = path.join(ROOT, 'review', `${nhom}.json`);
@@ -111,13 +101,13 @@ for (const nhom of NHOM_CUA_LO) {
   const list = normalize(review);
   // TARGET=data: data/so-tay/<nhom>.json vừa được build lại từ tmp/so-tay/raw (đã áp thayDoi rồi),
   // nên ở pha này CHỈ đổi nguonLoai — không áp lại thayDoi (sẽ chèn trùng mục).
-  const r = TARGET === 'data' ? { sua: [], xoa: 0, chen: 0 } : applyThayDoi(obj, list);
+  const r = TARGET === 'data' ? { sua: [], xoa: 0 } : applyThayDoi(obj, list);
   const nl = TARGET === 'data' ? applyNguonLoai(obj) : 0;
-  tong.sua += r.sua.length; tong.xoa += r.xoa; tong.chen += r.chen; tong.nguonLoai += nl; tong.nhom += 1;
+  tong.sua += r.sua.length; tong.xoa += r.xoa; tong.nguonLoai += nl; tong.nhom += 1;
   console.log(`[${nhom}] review ${list.length} mục → sửa ${r.sua.length} (${r.sua.join('; ') || '-'}), `
-    + `xoá ${r.xoa}, chèn ${r.chen}, đổi nguonLoai ${nl}${APPLY ? ' — ĐÃ GHI' : ''}`);
+    + `xoá ${r.xoa}, đổi nguonLoai ${nl}${APPLY ? ' — ĐÃ GHI' : ''}`);
   // build-so-tay.mjs ghi JSON.stringify(..., 1) KHÔNG kèm newline cuối — giữ đúng quy ước đó cho data/.
   // Bản nháp tmp/so-tay/raw người soạn dùng thụt lề 2 — giữ nguyên để diff soát đọc được.
   if (APPLY) fs.writeFileSync(file, JSON.stringify(obj, null, TARGET === 'data' ? 1 : 2), 'utf8');
 }
-console.log(`Tổng: ${tong.nhom} nhóm, sửa ${tong.sua}, xoá ${tong.xoa}, chèn ${tong.chen}, đổi nguonLoai ${tong.nguonLoai}.`);
+console.log(`Tổng: ${tong.nhom} nhóm, sửa ${tong.sua}, xoá ${tong.xoa}, đổi nguonLoai ${tong.nguonLoai}.`);
