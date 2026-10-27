@@ -5,7 +5,7 @@
 
 # SOẠN lô 064 — Chương 19 + Chương 20 (phiên Claude, 28/10/2026)
 
-- **Nhánh:** `so-tay/lo-064` (worktree `hs-code-api-wt-st-lo064`) · **PR: mở, KHÔNG merge**.
+- **Nhánh:** `so-tay/lo-064` (worktree `hs-code-api-wt-st-lo064`) · **PR #486** — **KHÔNG merge** (chờ người duyệt + soát độc lập).
 - **Nhóm:** `1902, 1903, 1904, 1905, 2001, 2002` (Chương 19 — ngũ cốc/bánh; Chương 20 — rau quả).
 - **Ghi danh CSV:** dòng lô `064` đổi `chua-lam` → `dang-lam`, `nguoi_lam=dev-zcode-mm`.
 - **Báo cáo lô:** `data/so-tay/bao-cao/lo-064.json` (quy ước 3 số của repo, **không** phải `lo-0064.json` như brief ghi).
@@ -76,7 +76,7 @@ Trong lúc phiên này soạn, **một phiên khác** cùng làm lô 064 trong w
 ## 7. Trạng thái cuối
 
 - Commit: `data/so-tay/{1902,1903,1904,1905,2001,2002}.json` + `data/so-tay/bao-cao/lo-064.json` + dòng CSV + mục này trong `TIEN-TRINH.md`. **KHÔNG commit `tmp/`.**
-- Đã push nhánh `so-tay/lo-064` và mở PR. **KHÔNG merge** — chờ người duyệt (mục 4 giao việc: còn phải **soát độc lập**).
+- Đã push nhánh `so-tay/lo-064` (2 commit: dữ liệu + ghi PR trong CSV) và mở **PR #486**. **KHÔNG merge** — chờ người duyệt (mục 4 giao việc: còn phải **soát độc lập**).
 
 
 # SOÁT ĐỘC LẬP lô 058 — VÒNG 2 (phiên `dev-soat-doc-lap-lo058b`, 27/10/2026) — gộp với vòng 1
