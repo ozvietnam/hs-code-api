@@ -3,6 +3,114 @@
 <!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
 ---
 
+# SOẠN lô 061 — 6 nhóm (1518 1520 1521 1522 1601 1602) (phiên `dev-zcode-mm`, 27/10/2026)
+
+- **Nhánh:** `so-tay/lo-061` (worktree `hs-code-api-wt-st-lo061`) — **CHƯA merge**, chờ người duyệt.
+- **Nhóm:** `1518, 1520, 1521, 1522, 1601, 1602` (Chương 15 + Chương 16).
+
+## Sai lệch giữa brief và lô thật (đã tự đối chiếu, KHÔNG hỏi lại)
+
+- CEO trỏ `brief-st-lo049.md`. Nhưng **lô 049 đã `xong`** từ trước (CSV dòng 049: `trang_thai=xong`,
+  đã có PR) — brief này là bản mẫu cũ. Lô của phiên này là **061**: worktree `…-wt-st-lo061`,
+  nhánh `so-tay/lo-061`, CSV dòng 061 = `chua-lam`, và có `brief-st-lo061.md` (sửa 27/10 17:35).
+- Dòng lệnh trong brief (`--nhom=7615,9609,3215,6306,6804,7412`) là nhóm của **lô 001** — copy-paste
+  mẫu (đã lặp 8 lần trước đây, xem memory `so-tay-lo-quy-trinh`). Dùng nhóm trong **CSV là nguồn chuẩn**.
+
+## Các bước (theo thứ tự)
+
+1. **Đọc trước:** `docs/giao-viec/so-tay-giao-ngoai.md` (mục 2 + 11 luật mục 3) → `brief-st-lo049.md`
+   → `tmp/so-tay/nguon/_he-thong.txt` (đọc TRỌN sau khi xuất nguồn).
+2. **Xuất nguồn:** `node scripts/build-so-tay.mjs --nhom=1518,1520,1521,1522,1601,1602 --xuat-nguon=tmp/so-tay/nguon`
+   → 6 tệp nguồn (96.872 ký tự) + `_he-thong.txt`; đọc HẾT cả 6 tệp.
+3. **Dựng cây** để biết đủ dòng 8 số / phân nhóm 6 số / nút ảo cần tên:
+   `tmp/so-tay/dump-cay-061.mjs` (đọc `lib/hs-tree.js`). Kết quả: 47 dòng 8 số; mọi nút ảo
+   (1518001, 1518003, 16023, 16024, 1602319, 1602491, 1602499) **đã có tên** ⇒ `cay.tenDien` rỗng.
+4. **Soạn bản nháp** bằng script `tmp/so-tay/lap-raw-061.mjs` (KHÔNG gõ tay câu trích):
+   - mọi `trich` **cắt từ tệp nguồn** theo số dòng/neo ⇒ byte-exact;
+   - mọi trường tự viết (`text`, `dieuKien`, `hoi`, `tomTat`, `quyTac`) qua **gác soát từ 2 mức**
+     (bỏ dấu + giữ dấu): mọi từ phải có trong nguồn — dừng script nếu lỗi;
+   - kiểm **trần clip runtime** (`lib/so-tay-gates.js`): `phamVi.text` 220 · `loaiTru.dieuKien` 55 ·
+     `dong8.dieuKien` 90 · `phanBiet.hoi` 110 · `boPhan.tomTat` 160 — vì clip cắt GIỮA CÂU làm
+     mất nghĩa (memory `so-tay-clip-runtime-dao-chieu-loai-tru`).
+5. **Máy kiểm bản nháp:** `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **110/110 (100 %)**,
+   0 mục không kiểm được nguồn.
+6. **Kiểm byte-exact:** `node scripts/check-trich-nguyen-van.mjs` → **OK 107 mục** (107 = 110 − 3 khối
+   `boPhan` mà bộ kiểm này **không** duyệt ⇒ tự viết `tmp/so-tay/check-boPhan-061.mjs`: **OK 3/3**).
+7. **Kiểm cây:** `node scripts/check-cay.mjs --raw=tmp/so-tay/raw --chi-tiet` → **0 lỗi** (chỉ báo
+   `chua-co-khoi-cay` — cây do máy sinh lúc nạp, không có trong bản nháp).
+
+8. **Nạp:** `node scripts/build-so-tay.mjs --nhom=1518,1520,1521,1522,1601,1602 --tu-tep=tmp/so-tay/raw --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-061.json`
+   → **110/110 (100 %)**, `nhomLoi: []`. `nguonLoai` do máy gán (`AI_DA_KIEM`), `cay` do máy sinh.
+9. **`npm run so-tay:check`** → **512 nhóm, 14 057 mục, 0 mục không kiểm được nguồn**
+   (trước lô này: 506 nhóm / 13 947 mục ⇒ **+6 nhóm / +110 mục**).
+   **`npm test`** → **ALL TESTS PASSED** (exit 0).
+   **`check-cay --nhom=… --chi-tiet`** → **6/6 nhóm đủ** (0 lỗi, 0 cảnh báo).
+
+## Số mục theo nhóm
+
+| Nhóm | Mục | `dieuKienVao` | `loaiTru` | `phanBiet` | `boPhan` | `tieuChi6` | `dong8` |
+|---|---|---|---|---|---|---|---|
+| 1518 | 24 | 1 | 4 | 1 | 1 | 0 | 16 |
+| 1520 | 9 | 2 | 2 | 2 | 0 | 0 | 2 |
+| 1521 | 14 | 0 | 4 | 3 | 1 | 2 | 3 |
+| 1522 | 10 | 0 | 4 | 2 | 1 | 0 | 2 |
+| 1601 | 7 | 2 | 1 | 1 | 0 | 0 | 2 |
+| 1602 | 46 | 2 | 6 | 4 | 0 | 11 | 22 |
+| **Tổng** | **110** | 7 | 21 | 13 | 3 | 13 | 47 |
+
+## Những gì CỐ TÌNH KHÔNG ghi (để người duyệt soi — không phải thiếu sót)
+
+| Nhóm | Câu nguồn | Vì sao không ghi |
+|---|---|---|
+| 1518 | (a) "Chất béo hoặc dầu đã bị làm biến chất (xem Chú giải 3 của Chương này)" | không nêu mã nhóm đích ⇒ không làm `loaiTru`; ý này đã vào `dieuKienVao` (Chú giải 3 Chương 15) |
+| 1520 | (c) "Glycerin thơm hoặc glycerin thêm vào dược mỹ phẩm (Chương 33)" | "Chương N" không phải đích danh ⇒ không ghi `loaiTru`/`phanBiet` |
+| 1521 | "Các hỗn hợp này **thường thuộc** Chương 34 (nhất là nhóm 34.04 hoặc 34.05)" và mục (a) của phần (II) | "thường thuộc" = không dứt khoát ⇒ không ghi `loaiTru` |
+| 1522 | (b) "Khô dầu, bã ép dư thừa… (các nhóm từ 23.04 đến 23.06)" | **dải số** — `sangNhom` phải phủ hết dải mà máy đòi mỗi mã nêu nguyên văn ⇒ bỏ mục (luật lô 030) |
+| 1601 | (a) "…**thường thuộc** nhóm 02.10 hoặc 16.02" | đích danh không dứt khoát ⇒ không ghi `loaiTru`; giữ ở `dieuKienVao` (`= false`) |
+| 1601 | (b) "Thịt sống, băm hoặc xay… (Chương 2)" · (c) "…**trừ khi** … **có thể** được phân loại trong nhóm này" | (b) không có mã; (c) là câu CHO PHÉP ⇒ không ghi |
+| 1521, 1522 | — | **không có `dieuKienVao`**: không có câu ràng buộc nào phủ CẢ nhóm (luật lô 030/045/051) |
+| 1602 | mục (5) "chứa trên 20%…" | câu chỉ nói về *chế phẩm thực phẩm*, không phủ cả nhóm ⇒ `fact` đã giới hạn phạm vi (`che_pham_thuc_pham_…`) |
+
+## Điểm CẦN NGƯỜI DUYỆT soi kỹ (em không dứt khoát 100 %)
+
+- **1518 · `loaiTru` → 4002**: câu nguồn "Nếu quá trình đó được thực hiện thêm, thu được sản phẩm rắn (các chất
+  thay thế cao su dẫn xuất từ dầu) (nhóm 40.02)" **không có dấu hiệu "không bao gồm"** (chỉ nói đích đến).
+  Em vẫn ghi vì câu giao đích rõ ràng (tiền lệ 0201 ghi `loaiTru` từ câu "bao gồm … (nhóm 16.02)").
+- **1602 · `dieuKienVao` 20 %**: xem bảng trên — `fact` tự giới hạn về "chế phẩm thực phẩm".
+- **1602 · `tieuChi6` 160210**: hai tiêu chí lấy từ Chú giải phân nhóm 1 (định nghĩa "chế phẩm đồng nhất"
+  + trọng lượng tịnh ≤ 250 g) — câu này tự nói "Theo mục đích của phân nhóm 1602.10" nên thuộc cấp 6 số.
+- **1518 · `phamVi`**: trích 3 mảnh — phần (A) + vế "với điều kiện …" + tiêu đề phần (B). Vế "với điều
+  kiện…" **không được lược mất** (luật: đoạn lược không chứa ngoại lệ).
+
+## Hai điểm kỹ thuật đáng lưu (áp lại được cho các lô sau)
+
+1. **Dòng 8 số có SEN thì lấy nguồn SEN** (luật mục 3.6) — `16023191` và `16029020` lấy `sen.*`
+   (kèm trỏ "Xem chú giải SEN của phân nhóm 0207.14.91 và 0207.27.91" cho 16023191) thay vì dòng
+   biểu thuế. Nguồn SEN có phần giải thích dài hơn hẳn tên dòng biểu thuế.
+2. **Dòng "Loại khác" lấy tên phân nhóm 6 số (WCO)** (chuẩn nhà lô 059) — trừ khi tên WCO quá dài
+   (1518: tiêu đề 6 số gộp CẢ phần (A) và (B), 262 ký tự ⇒ lấy dòng biểu thuế; phạm vi dòng do máy
+   suy `phamViLoaiKhac`). **12 dòng "Loại khác" sẽ bị runtime cắt 90 ký tự** (đuôi câu tiếng Anh):
+   1522/15220090 · 1601/16010090 · 1602/16021090, 16023199, 16023290, 16023900, 16024190, 16024290,
+   16024919, 16024999, 16025090, 16029090 — phần bị cắt là **đuôi** danh sách, phần đầu (phạm vi
+   phân nhóm) còn nguyên; phạm vi hẹp hơn do máy suy nên không mất thông tin.
+
+## Trạng thái cuối
+
+| Kiểm | Kết quả |
+|---|---|
+| `check-so-tay.mjs --raw=tmp/so-tay/raw` | 6 nhóm, **110 mục, 0 mục không kiểm được nguồn** (100 %) |
+| `check-trich-nguyen-van.mjs` (byte-exact) | **OK — 107 mục** nguyên văn tuyệt đối |
+| `check-boPhan-061.mjs` (tự viết — bộ kiểm nhà KHÔNG duyệt `boPhan`) | **OK — 3/3** |
+| `check-cay.mjs --nhom=… --chi-tiet` | **6/6 nhóm đủ** — 0 lỗi, 0 cảnh báo |
+| `build-so-tay … --tu-tep --force` | **110/110 (100 %)** — `nhomLoi: []` |
+| `npm run so-tay:check` | **512 nhóm, 14 057 mục, 0 mục không kiểm được nguồn** |
+| `npm test` | **ALL TESTS PASSED** (exit 0) |
+
+- **CHƯA merge** — chờ người duyệt + soát độc lập. `so-tay-lo.csv` dòng 061 để
+  `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm` (người gộp đặt `trang_thai=xong` khi merge).
+
+---
+
 # SOÁT ĐỘC LẬP lô 058 — VÒNG 2 (phiên `dev-soat-doc-lap-lo058b`, 27/10/2026) — gộp với vòng 1
 
 - **Nhánh:** `so-tay/lo-058` (worktree `hs-code-api-wt-st-lo58`) · **PR #474** — **KHÔNG merge**.

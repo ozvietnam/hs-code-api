@@ -1,0 +1,135 @@
+{
+ "nhom": "1601",
+ "phamVi": {
+  "text": "Xúc xích và các sản phẩm tương tự: chế phẩm gồm thịt hoặc phụ phẩm dạng thịt ăn được sau giết mổ hoặc côn trùng, đã được băm hoặc xay nhỏ, hoặc tiết, được nhồi vào lòng, dạ dày, bong bóng, da hoặc vỏ bọc tương tự.",
+  "nguon": "nhom1601.nhom",
+  "trich": "Nhóm này bao gồm xúc xích và các sản phẩm tương tự, tức là, các chế phẩm gồm thịt hoặc phụ phẩm dạng thịt ăn được sau giết mổ (kể cả lòng và dạ dày) hoặc côn trùng, đã được băm hoặc xay nhỏ, hoặc tiết, được nhồi vào lòng, dạ dày, bong bóng, da hoặc vỏ bọc tương tự (tự nhiên hoặc nhân tạo). Tuy nhiên, một số sản phẩm này có thể không có vỏ ngoài, chỉ được ép lại theo hình đặc trưng của xúc xích như hình trụ hoặc hình tương tự, có mặt cắt là hình tròn, bầu dục hoặc chữ nhật (có các góc hơi tròn).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "da_bam_hoac_xay_nho_truoc_roi_nhoi_vao_long_da_da_bong_bong_da_hoac_vo_boc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom1601.nhom",
+   "trich": "Nhóm này bao gồm xúc xích và các sản phẩm tương tự, tức là, các chế phẩm gồm thịt hoặc phụ phẩm dạng thịt ăn được sau giết mổ (kể cả lòng và dạ dày) hoặc côn trùng, đã được băm hoặc xay nhỏ, hoặc tiết, được nhồi vào lòng, dạ dày, bong bóng, da hoặc vỏ bọc tương tự (tự nhiên hoặc nhân tạo)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "la_thit_nhoi_trong_bong_bong_long_hoac_vo_ngoai_nhung_khong_bam_truoc",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom1601.nhom",
+   "trich": "(a) Thịt được nhồi trong bong bóng, lòng hoặc có vỏ ngoài tương tự (tự nhiên hoặc nhân tạo), nhưng không xay hoặc không băm trước, ví dụ, thịt mông đùi (ham) và vai cuốn tròn (thường thuộc nhóm 02.10 hoặc 16.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Thịt gia cầm chín đã rút xương",
+   "sangNhom": "1602",
+   "nguon": "nhom1601.nhom",
+   "trich": "(d) Thịt gia cầm chín đã rút xương như thịt gà tây cuốn (nhóm 16.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là thịt gia cầm chín đã rút xương hay là xúc xích và các sản phẩm tương tự?",
+   "neuCo": "1602",
+   "neuKhong": "1601",
+   "nguon": "nhom1601.nhom",
+   "trich": "(d) Thịt gia cầm chín đã rút xương như thịt gà tây cuốn (nhóm 16.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "16010010",
+   "dieuKien": "Đóng bao bì kín khí để bán lẻ",
+   "tieuChi": {
+    "fact": "dong_goi_kin_khi_de_ban_le",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.16010010",
+   "trich": "16010010 - Đóng bao bì kín khí để bán lẻ",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "16010090",
+   "dieuKien": "Loại khác: Meat preparations; sausages and similar products, of meat, meat offal, blood or insects, and food preparations based on these products",
+   "tieuChi": null,
+   "nguon": "wco.160100",
+   "trich": "160100 Meat preparations; sausages and similar products, of meat, meat offal, blood or insects, and food preparations based on these products",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "1601",
+    "truAnhEm": [
+     "16010010"
+    ],
+    "toTienCoTen": "1601",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "1601",
+    "cap": 4,
+    "cha": "16",
+    "tenVi": "Xúc xích và các sản phẩm tương tự làm từ thịt, từ phụ phẩm dạng thịt sau giết mổ hoặc tiết; các chế phẩm thực phẩm từ các sản phẩm đó.",
+    "tenEn": "Sausages and similar products, of meat, meat offal, blood or insects; food preparations based on these products",
+    "suyRa": false
+   },
+   {
+    "id": "16010010",
+    "cap": 8,
+    "cha": "1601",
+    "tenVi": "Đóng bao bì kín khí để bán lẻ",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "16010090",
+    "cap": 8,
+    "cha": "1601",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom1601.nhom",
+  "tax.16010010",
+  "wco.160100"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-27T11:09:16.092Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
