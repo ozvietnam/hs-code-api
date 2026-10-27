@@ -8753,3 +8753,103 @@ Hai script phụ trợ của phiên này (cắt trích theo vị trí TỪ, gene
 worktree đó để không lẫn với pipeline của agent kia. Agent của lô 064 có thể dùng lại hoặc viết lại
 2 bản nháp này — generator của agent đó ghi đè `tmp/so-tay/raw/<nhom>.json` từ `spec-*.mjs` của chính nó.
 Không có gì trong `data/so-tay/` hay `docs/giao-viec/so-tay-lo.csv` của lô 064 bị đụng.
+
+---
+
+# Lô 065 — SOẠN sổ tay chú giải, 6 nhóm Chương 20 (28/10/2026, phiên `dev-zcode-mm`)
+
+## 0. Brief trỏ lô 053 — lô 053 đã xong; lô thật của phiên là 065
+
+Brief được giao là `brief-st-lo053.md` (nhóm `1005 1006 1007 1008 1101 1102`, worktree
+`hs-code-api-wt-st-lo53`). Nhưng:
+
+- **Lô 053 đã XONG**: `data/so-tay/bao-cao/lo-053.json` có trong `main`, commit `be7513f`
+  "data(so-tay): lô 053 — 6 nhóm 1005/1006/1007/1008/1101/1102, 99/99 mục (100 %)" (PR #470),
+  dòng CSV 053 = `xong, soat-doc-lap-mm`.
+- **Worktree của phiên này** là `hs-code-api-wt-st-lo065`, nhánh `so-tay/lo-065` @ `e2854a5`.
+- **CSV dòng 065** = `2003 2004 2005 2006 2007 2008`, `chua-lam` ⇒ đúng lô của phiên này.
+- Có `brief-st-lo065.md` khớp đúng worktree/nhánh/nhóm.
+
+⇒ Làm **lô 065**, không làm lại lô 053. Đây là lần thứ **14** brief trỏ nhầm lô
+(lô 063 đã tính tới lần 13 — xem commit `data(so-tay): lô 063`).
+
+**Hai chỗ trong `brief-st-lo065.md` cũng lệch — đã sửa theo luật nhà:**
+
+| Brief ghi | Thực tế | Vì sao |
+|---|---|---|
+| `--bao-cao=.../lo-0065.json` | `lo-065.json` | Nhà dùng 3 số có số 0 (`lo-055`…`lo-063`); 4 số `lo-0065` tạo tệp lạ |
+| `--nhom=7615,9609,3215,6306,6804,7412` (lệnh mẫu của lô 001) | `2003,2004,2005,2006,2007,2008` | Lệnh mẫu bị copy-paste, không khớp lô |
+
+## 1. Các bước đã làm
+
+1. `node scripts/build-so-tay.mjs --nhom=2003,2004,2005,2006,2007,2008 --xuat-nguon=tmp/so-tay/nguon`
+   → 6 tệp nguồn + `_he-thong.txt` (đã đọc TRỌN trước khi soạn).
+2. Đọc tài liệu `docs/giao-viec/so-tay-giao-ngoai.md` mục 2 + 11 luật mục 3 (bắt buộc, đọc TRƯỚC).
+3. Soạn `tmp/so-tay/raw/<nhom>.json` bằng **script `tmp/so-tay/gen-lo065.mjs`** — mọi câu trích được
+   **CẮT THẲNG từ tệp nguồn theo neo** (không gõ tay ⇒ không méo dấu). Neo sai ⇒ script ném lỗi ngay.
+4. `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **6 nhóm, 130 mục, 0 mục không kiểm được nguồn**.
+5. `node scripts/check-trich-nguyen-van.mjs` (byte-exact) → **OK — 122 mục** (122 = 130 − 8 mục `cay.tenDien`).
+6. **Tự soát bản nháp** (máy không bắt được): rà `dieuKien`/`text`/`hoi` có nói đúng câu trích không →
+   sửa **6 mục** (mục 2).
+7. Nạp: `node scripts/build-so-tay.mjs --nhom=… --tu-tep=tmp/so-tay/raw --force
+   --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-065.json` → **130/130 mục (100 %)**, 0 loại.
+8. `npm run so-tay:check` → **536 nhóm / 14 554 mục, 0 lỗi**.
+9. `node scripts/check-cay.mjs --nhom=2003,…,2008 --chi-tiet` → **6/6 nhóm đủ**, 0 lỗi lệch cây, 0 chỗ còn trống.
+10. `npm test` → **ALL TESTS PASSED**.
+11. CSV dòng 065 → `dang-lam, dev-zcode-mm` (chưa đặt `xong` — người gộp mới được đặt).
+12. `data/legal-status-miss.jsonl` bị `npm test` ghi thêm 1 dòng (log telemetry lúc chạy) → **đã khôi phục**, không kéo vào PR.
+
+## 2. Sáu mục tự soát đã SỬA (máy KHÔNG bắt)
+
+| Nhóm | Mục | Sai lệch | Đã sửa thành |
+|---|---|---|---|
+| 2004 | `dong8[20041000]` | `dieuKien` "Khoai tây **đã đông lạnh**" nhưng trích là tên **WCO tiếng Anh**; dòng biểu thuệ ghi "Khoai tây" | nguồn `tax.20041000`, điều kiện "Khoai tây" (đúng tên dòng biểu thuế) |
+| 2005 | `dong8[20055910]` | điều kiện có "đóng bao bì kín khí để bán lẻ" nhưng trích WCO **không** nói câu đó | nguồn `tax.20055910`, điều kiện "Đóng bao bì kín khí để bán lẻ" |
+| 2005 | `dong8[20059910]` | như trên (nhộp "…chưa được nêu ở nơi khác trong nhóm 20.05, đóng bao bì…") | nguồn `tax.20059910`, điều kiện "Đóng bao bì kín khí để bán lẻ" |
+| 2005 | `dong8[20052011]` | điều kiện có "đóng bao bì kín khí để bán lẻ" nhưng trích **SEN** chỉ nói "dạng thanh và dạng que" | điều kiện "Khoai tây dạng thanh và dạng que (chips)"; trích kèm câu SEN giải thích "chips" |
+| 2005 | `phamVi.text` | nói thêm "không gồm rau … bằng giấm/đông lạnh/bằng đường" trong khi **trích lược bỏ** đúng ngoặc đó | bỏ mệnh đề đó khỏi `text` (3 ngoại lệ đã có mục `loaiTru` riêng) |
+| 2007 | `dong8[20079930]` | điều kiện dài 130 ký tự (runtime clip 90 ⇒ cụt giữa câu) | rút gọn còn 103 ký tự |
+
+**Sai lệch còn lại đã cân nhắc và GIỮ NGUYÊN** (có căn cứ, để người duyệt phản biện):
+
+- `2005.phamVi` và `2005.dieuKienVao` trích câu **"Các sản phẩm này (trừ …)"** — vế chủ ngữ "Các sản phẩm này"
+  không tự mang nghĩa. Đã chọn **cắt trích bỏ vế chủ ngữ + dấu lược**, chỉ giữ vế ràng buộc
+  ("chỉ được phân loại vào nhóm này nếu đã qua chế biến hoặc bảo quản khác theo các công đoạn đã được nêu ở Chương 7 hoặc 11")
+  ⇒ câu trích tự nói điều mục khẳng định. Ba ngoại lệ trong ngoặc đã được trích nguyên văn ở 3 mục `loaiTru`.
+- `2007.phamVi` lấy từ **chú giải chương** mục "(3)" + chú giải phân nhóm 2007.10 (2 mảnh, cùng nguồn `ch20.chuong`),
+  vì câu định nghĩa của nhóm trong `nhom2007.nhom` không nói tới "chế phẩm đồng nhất" (2007.10) ⇒ phạm vi phải phủ cả nhóm.
+- `2006.loaiTru` trích 3 mảnh cùng nguồn `nhom2006.nhom`, giữ nguyên dấu lược `…` **của chính nguồn** ở giữa.
+
+## 3. Nhóm nguồn mỏng / bất thường (báo cho người duyệt)
+
+- **2006 — nguồn rất mỏng**: nhóm này **không có phân nhóm 6 số** (cây: `2006` → `20060000` thẳng), nên **không có mục
+  `tieuChi6` nào** được viết (máy yêu cầu phân nhóm 6 số có thật trong cây). Phạm vi lấy từ dòng biểu thuệ `tax.20060000`.
+- **2005 — nguồn dài nhất lô (48 658 ký tự)**, có 2 mục `sen.*` (20052011, 20052019) cùng nội dung
+  "KHOAI TÂY DẠNG THANH VÀ DẠNG QUE" ⇒ dòng 20052011 lấy điều kiện từ SEN, dòng 20052019 (Loại khác) lấy từ biểu thuế.
+- **`ch20.chuong` là nguồn chung cho cả 6 nhóm** (Chương 20) ⇒ cùng một câu trích có thể xuất hiện ở nhiều nhóm; không phải lỗi.
+- **`phan20.phan`** là chú giải **Phần IV** (dùng chung cho ch.16–24, chỉ định nghĩa "viên" — tỷ lệ chất kết dính ≤ 3 %).
+  Không nhóm nào của lô này dùng được ⇒ **không trích nguồn này** (không phải lỗi kệ sách).
+- **2008 — nhóm lớn nhất lô**: 27 dòng 8 số, 13 phân nhóm 6 số; 5 phân nhóm chưa có tên tiếng Việt trong cây
+  (200811, 200819, 200893, 200897, 200899) ⇒ đã điền `cay.tenDien` từ tên WCO.
+
+## 4. Ba mục mẫu
+
+| Loại | Mục | Nội dung |
+|---|---|---|
+| **Loại trừ** | `2007.loaiTru[2]` | "Thạch ăn được được chế biến từ gelatin, đường và nước ép trái cây hoặc tinh chất trái cây nhân tạo" → `2106` (nguồn `nhom2007.nhom`) |
+| **Điều kiện số** | `2005.tieuChi6[hs6=200510]` | `khoi_luong <= 250 g` (nguồn `ch20.chuong`: "…trong bao bì với trọng lượng tịnh không quá 250 gam"); và `2007.dong8[20071000].dieuKienSo` cùng ngưỡng 250 g |
+| **Dòng 8 số** | `2008.dong8[20083010]` | "Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu" (nguồn `tax.20083010`); cạnh `20083090` = "Loại khác" |
+
+## 5. Mục `dieuKien` có ghi điều mà câu trích KHÔNG nói
+
+Sau khi tự soát: **không còn** mục nào. Sáu mục ở mục 2 đã sửa xong; các mục còn lại (`dieuKien` của `loaiTru`,
+`text` của `phamVi`, `hoi` của `phanBiet`, `dieuKien` của `dong8`) đều nằm trong phạm vi câu trích của nó.
+Riêng `2005.dieuKienVao` là điều kiện **boolean** (`value: true`) — cổng lúc chạy chỉ bật với ngưỡng số
+(`lib/so-tay-gates.js` mục "Ngưỡng số của điều kiện vào nhóm") nên mục này không gây câu hỏi vô nghĩa cho người khai.
+
+## 6. Trạng thái
+
+- Đã commit `data/so-tay/{2003,2004,2005,2006,2007,2008}.json` + `data/so-tay/bao-cao/lo-065.json`
+  + dòng CSV 065 + mục này trong `TIEN-TRINH.md`. **KHÔNG commit `tmp/`.**
+- **PR #487** — **KHÔNG merge** — chờ người duyệt đọc lại toàn bộ `phamVi`, `dieuKienVao`, `loaiTru`, `phanBiet`,
+  `dong8` của 6 nhóm (mục 4 của `docs/giao-viec/so-tay-giao-ngoai.md`: soát độc lập là BẮT BUỘC, người khác người soạn).
