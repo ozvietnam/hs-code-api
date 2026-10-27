@@ -3,6 +3,111 @@
 <!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
 ---
 
+# SOÁT ĐỘC LẬP lô 065 — phiên `dev-soat-doc-lap-lo065` (28/10/2026)
+
+- **Nhánh:** `so-tay/lo-065` · **PR #487** — **KHÔNG merge** · **Nhóm:** `2003,2004,2005,2006,2007,2008` (Chương 20 — Chế phẩm từ rau, quả, quả hạch)
+- **Vai trò:** người soát **ĐỘC LẬP** (KHÁC người soạn `dev-zcode-mm`) · theo `brief-st-soat-lo0065.md` (oz-dev-kit) + mục 4 `docs/giao-viec/so-tay-giao-ngoai.md`
+- **Kết quả:** soát **130/130 mục** (8 + 8 + 38 + 6 + 17 + 53) — **giữ 122 · sửa 8 mục (9 trường) · xoá 0** · sau soát vẫn **130/130 (100 %)**
+- **Nguồn đọc:** `tmp/so-tay/nguon/2003.txt`…`2008.txt` + `_he-thong.txt` — đọc **HẾT**, không lấy mẫu; không dùng kiến thức ngoài kho số liệu
+- **Hồ sơ:** `review/2003.json`…`review/2008.json` (130 dòng, mỗi mục đúng MỘT dòng `hanhDong` + `lyDo`; tệp ghi rõ `vong: 1`)
+- **Script:** `scripts/apply-review-lo065.mjs` (2 pha giống `apply-review-lo063.mjs`: `TARGET=raw` áp `thayDoi`, `TARGET=data` CHỈ đổi `nguonLoai`)
+
+## 1. Sai lệch brief (đã tự xác định đúng lô)
+
+Brief được giao là `brief-st-soat-lo065.md` nhưng tệp thật trong oz-dev-kit là **`brief-st-soat-lo0065.md`** (4 số 0).
+Brief cũng ghi worktree `hs-code-api-wt-st-lo65` và nhánh `so-tay/lo-0065` — thật là **`hs-code-api-wt-st-lo065`** / **`so-tay/lo-065`**,
+đúng với `git branch` và CSV dòng 065 (`2003 2004 2005 2006 2007 2008`). Tên báo cáo lô theo quy ước nhà là
+**`data/so-tay/bao-cao/lo-065.json`** (3 số — tệp này đã có sẵn trong git từ lượt soạn), KHÔNG phải `lo-0065.json` như brief ghi.
+
+## 2. Tám LỖI THẬT đã sửa (máy kiểm đều XANH — chỉ đọc mắt + đo trần runtime bắt được)
+
+### (1) `2008.loaiTru[1].trich` + `2008.phanBiet[1].trich` — dấu lược "…" NUỐT MẤT CHÍNH ĐOẠN XÁC ĐỊNH RANH GIỚI ⇒ ĐẢO CHIỀU
+
+Câu nguồn (`nhom2008.nhom`, mục (5)): *"…nghiền nát và đã tiệt trùng, **có hoặc không thêm nước hoặc xirô đường nhưng với tỷ lệ CHƯA ĐỦ để sản phẩm có thể sử dụng ngay như đồ uống**. Các sản phẩm này khi có thêm lượng nước và xirô đường **VỪA ĐỦ** để sử dụng ngay như đồ uống được phân loại vào nhóm 22.02."*
+
+Bản gốc lược bằng "…" và bỏ HẲN vế "chưa đủ" ⇒ trích còn lại đọc ra là **"quả nghiền nát rồi pha nước và xirô ĐỦ để uống ngay"** — tức **ĐẢO CHIỀU** so với nguồn (nguồn nói chỉ khi ĐỦ mới sang 22.02).
+Đo nền nhà: lược nuốt ngoại lệ chỉ có **13/2.579 `loaiTru.trich` (0,5 %)** và **20/1.051 `phanBiet.trich` (1,9 %)** ⇒ lớp lỗi **HIẾM**, phải bắt.
+Sửa: trích lại **nguyên văn liên tục 257 ký tự** (≤ 300, không dấu lược), giữ trọn cả vế "chưa đủ" và vế "vừa đủ", vẫn có số nhóm đích 22.02 ✓.
+
+### (2) `2006.loaiTru[1].dieuKien` — trần runtime 55 CẮT MẤT TRỌN ĐIỀU KIỆN ⇒ luật bắn cho MỌI quả
+
+Bản gốc 118 ký tự → runtime cắt còn *"Quả, quả hạch (nut), vỏ quả hoặc các bộ phận ăn được kh…"*, **mất trọn** "được bảo quản bằng đường và được đóng gói trong xirô" ⇒ luật loại trừ bắn cho **mọi** quả/quả hạch/vỏ quả, rộng hơn nguồn rất nhiều.
+Sửa: rút xuống 52 ký tự, **ưu tiên giữ điều kiện** (đó mới là điều kiện phân biệt): `"Quả, quả hạch, vỏ quả: bảo quản đường, đóng gói xirô"`.
+
+### (3) `2008.loaiTru[0].dieuKien` — trần 55 CẮT MẤT "VÀ ĐƯỢC LÀM ĐÔNG LẠNH"
+
+77 → *"Các loại quả đã được hấp chín hoặc luộc chín trong nước…"* ⇒ mất điều kiện phân biệt với 20.08 (chỉ quả **đông lạnh** mới sang 08.11).
+Sửa (54 ký tự): `"Quả đã hấp chín hoặc luộc chín trong nước và đông lạnh"`.
+
+### (4) `2008.loaiTru[1].dieuKien` — trần 55 CẮT MẤT NGƯỠNG "VỪA ĐỦ"
+
+96 → mất *"đường vừa đủ để sử dụng ngay như đồ uống"* — đúng ngưỡng làm nên ranh giới 2008/22.02.
+Sửa (54 ký tự): `"Quả nghiền nát, nước và xirô đường vừa đủ để uống ngay"` (giữ trọn "vừa đủ"; bỏ vế phụ "tiệt trùng"/"pha thêm" — vẫn còn nguyên trong `trich`).
+
+### (5) `2008.loaiTru[2].dieuKien` — trần 55 CẮT MẤT TRỌN "ĐƯỢC CHẾ BIẾN THÀNH KẸO ĐƯỜNG"
+
+89 → *"Trái cây, quả hạch (nut) hoặc các phần ăn được khác của…"* ⇒ luật bắn cho **mọi** trái cây/quả hạch/bộ phận ăn của cây.
+Sửa (53 ký tự): `"Kẹo đường từ trái cây, quả hạch, phần ăn được của cây"` — đặt điều kiện lên đầu, và dùng **đúng lời của nguồn** "phần ăn được" (không đổi thành "bộ phận" — từ "bộ phận" không có trong khối nguồn này).
+
+### (6) `2003.phamVi.text` — trần 220 CẮT MẤT NỬA CÂU PHẠM VI
+
+273 → runtime mất trọn vế *"n dạng, cắt miếng (thí dụ: thái mỏng) hoặc đồng nhất."* (đúng lớp lỗi lô 060: mất kết luận của luật).
+Sửa: rút xuống **204** ký tự, **giữ nguyên mọi thành phần** (nấm kể cả thân nấm + nấm cục + loại trừ "nhóm 20.01" + "Chương 7" + ba dạng nguyên dạng/cắt miếng/đồng nhất); chỉ bỏ ngoặc ví dụ `"(thí dụ: thái mỏng)"` — ví dụ vẫn còn nguyên trong `trich` nên không mất thông tin trong hồ sơ.
+
+### (7) `2003.phanBiet[0].trich` — mất CHỦ NGỮ ⇒ câu trích không tự nói được điều gì bị loại trừ
+
+Bản gốc cắt câu trích từ vị trí *"trừ …"* nên không còn "Nhóm này bao gồm các loại nấm (kể cả thân nấm) và nấm cục".
+Sửa: kéo lại **nguyên câu** (193 ký tự ≤ 300, nguyên văn 100 %), y hệt `loaiTru[0]` — cùng nguồn `nhom2003.nhom`.
+
+### (8) `2005.dong8[2].trich` (dòng 20052011) — lược "…" KHÔNG CẦN THIẾT, làm mất định nghĩa SEN
+
+Bản gốc chỉ còn tiêu đề + ngoặc giải thích "chips", **bỏ hẳn** câu định nghĩa *"… là các thanh khoai tây đã được chế biến thêm và mục đích dùng như khoai tây chiên kiểu Pháp khi nấu"*, trong khi khối SEN TRỌN chỉ **275 ký tự (≤ 300)**.
+Mẫu nhà: **351/441** dòng `dong8` nguồn `sen.*` trong kho đã gộp trích TRỌN khối SEN. Sửa: trích trọn khối (byte-exact từ nguồn).
+
+## 3. Những gì ĐÃ ĐO và quyết định KHÔNG sửa (có căn cứ, không phải bỏ sót)
+
+| Lớp lỗi | Đo nền nhà (536 nhóm đã gộp) | Quyết định lô 065 |
+|---|---|---|
+| trần clip `loaiTru.dieuKien` 55 | **1.194/2.579 (46,3 %)** trần | chỉ SỬA khi cắt làm luật **bắn rộng hơn nguồn** (mất điều kiện phân biệt) — 2006 `loaiTru[1]`, 2008 `loaiTru[0..2]`; còn lại (mất "t acetic"/"tic"/"ô") chỉ GHI NHẬN |
+| trần clip `dong8.dieuKien` 90 | **3.307/6.421 (51,5 %)** trần | GHI NHẬN (2006 `dong8[0]`, 2007 `dong8[0]`/`[4]`, 2008 `dong8[20]`/`[25]`) — luật vẫn bắn đúng chiều; ở 2007 `dong8[0]` ngưỡng 250 g còn trong `dieuKienSo` |
+| trần clip `phamVi.text` 220 | **121/532 (22,8 %)** trần (p90 = 272) | 2003 SỬA (mất nửa câu); 2008 GHI NHẬN (mất đúng 9 ký tự cuối "ương này.") |
+| `loaiTru.trich` bắt đầu từ "(a)" | **1.375/2.579 (53,3 %)** | GHI NHẬN — mẫu nhà |
+| `loaiTru.trich` KHÔNG có dấu loại trừ | **1.741/2.579 (67,5 %)** | GHI NHẬN — mẫu nhà (không sửa 4 mục loại trừ mở đầu "(a)") |
+| `phanBiet.trich` bắt đầu từ "(" | **617/1.051 (58,7 %)** | GHI NHẬN — mẫu nhà |
+| `phanBiet.neuCo` nhiều mã (`2002\|2003\|2005`) | **130/1.051 (12,4 %)** | GHI NHẬN — mẫu nhà, máy tách đúng (`headingCodes`) |
+| `tieuChi6.fact = "loai_hang"` | **301/2.427 (12,4 %)** | GHI NHẬN — cảnh báo "TỪ-NGOÀI-NGUỒN" của máy là **báo động giả** (tên trường máy, không phải lời) |
+| `2005.phamVi.trich` lược nuốt khối loại trừ "(trừ … 20.01/20.04/20.06)" | câu nguồn dài **323 ký tự > trần soạn 300** | GHI NHẬN — bị **ÉP** bởi trần (luật 2: `trich` phải NGUYÊN VĂN, không được diễn đạt lại để rút ngắn); cả 3 nhánh đã có mục riêng ở `loaiTru[0..2]` nên không mất thông tin trong hồ sơ |
+| `2007.phamVi.trich` ghép 2 mảnh khối `ch20.chuong` | 279/536 (52,1 %) `phamVi.trich` có "…" | GHI NHẬN — phần lược **không chứa ngoại lệ** và dấu "…" nói rõ là hai mảnh ⇒ không phải lỗi "ghép hai câu xa thành một kết luận"; mọi thành phần đều có trong `nhom2007.nhom` |
+
+## 4. Quan sát ngoài phạm vi dữ liệu (để người duyệt xem — KHÔNG sửa trong lô này)
+
+`lib/so-tay-gates.js` `soTayBlock()` in `dong8` `.slice(0, 12)` ⇒ nhóm 2008 có **28** dòng 8 số nhưng chỉ **12** dòng đầu đi tới prompt.
+Khối sổ tay của cả 6 nhóm lô 065 đều **< 1.800 ký tự** (max 1.270 của 2008) ⇒ không rơi vào trần 1.800 nên **không mục nào bị bỏ**.
+(Trong kho đã gộp: 189/536 nhóm = 35,3 % vượt trần 1.800 và bị BỎ mục "Câu hỏi phân biệt" — vấn đề chung của `lib/`, không thuộc lô này.)
+
+## 5. Kiểm đã chạy (tất cả XANH)
+
+- `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → 6 nhóm, 130 mục, **0 mục không kiểm được nguồn**
+- `node scripts/check-trich-nguyen-van.mjs` → **OK 122 mục**, mọi câu trích nguyên văn tuyệt đối trong đúng khối nguồn
+- `node scripts/build-so-tay.mjs --nhom=… --tu-tep=tmp/so-tay/raw --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-065.json` → **mục đạt 130/130 (100 %)**, nhóm lỗi 0
+- `npm run so-tay:check` → **536 nhóm, 14 554 mục, 0 mục không kiểm được nguồn**
+- `node scripts/check-cay.mjs --nhom=… --chi-tiet` → **6 nhóm đủ, 0 lỗi lệch cây**
+- `npm test` → **ALL TESTS PASSED**
+- Đối chiếu **TỪNG TRƯỜNG** `tmp/so-tay/raw` ↔ `data/so-tay` sau khi nạp: **khớp 100 %** trên cả 6 nhóm (chỉ khác các trường máy tự sinh: `loaiKhac`, `phamViLoaiKhac`, `nguonLoai`, `taoBoi`)
+- `nguonLoai`: 33 mục trong 5 khối §L11 đã đổi `AI_DA_KIEM` → **`NGUOI_DUYET`** (còn 0 `AI_DA_KIEM`); `tieuChi6`/`dong8`/`cay` giữ nguyên theo luật 11
+
+## 6. Tệp đã đổi
+
+- `data/so-tay/{2003,2004,2005,2006,2007,2008}.json` (8 trường sửa + 33 `nguonLoai`)
+- `data/so-tay/bao-cao/lo-065.json` (tạo lại sau khi `rm` — không nối vào báo cáo cũ)
+- `review/{2003,2004,2005,2006,2007,2008}.json` (hồ sơ soát, 130 mục)
+- `scripts/apply-review-lo065.mjs` (áp hồ sơ, 2 pha)
+- mục này trong `TIEN-TRINH.md`
+- **KHÔNG commit `tmp/`.** CSV dòng 065 giữ `trang_thai=dang-lam` (người gộp mới đặt `xong`).
+- **KHÔNG merge** — chờ người duyệt.
+
+---
+
 # SOÁT ĐỘC LẬP VÒNG 2 lô 063 — phiên `dev-soat-doc-lap-lo063-v2` (28/10/2026)
 
 - **Nhánh:** `so-tay/lo-063` · **PR #485** — **KHÔNG merge** · **Nhóm:** `1801,1802,1803,1804,1805,1806` (Chương 18 — Ca cao)

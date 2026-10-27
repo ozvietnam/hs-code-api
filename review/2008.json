@@ -1,0 +1,290 @@
+{
+ "nhom": "2008",
+ "nguoiSoat": "dev-soat-doc-lap-lo065",
+ "vong": 1,
+ "luc": "2026-10-28T05:40:00+07:00",
+ "daKiem": 53,
+ "xoa": 0,
+ "sua": 4,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 065 (PR #487, nhánh so-tay/lo-065) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI TOÀN BỘ 53/53 mục cùng nguồn tmp/so-tay/nguon/2008.txt (đọc HẾT, không lấy mẫu). Kết quả: giữ 49 · sửa 4 mục (5 trường) · xoá 0.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Phạm vi = đúng câu đầu của chú giải nhóm, nguyên văn, phủ CẢ NHÓM (quả, quả hạch, các phần ăn được khác của cây; nguyên trái/cắt miếng/nghiền nát; chế biến hoặc bảo quản khác với các cách đã nêu ở Chương khác hoặc nhóm trước) ✓. GHI NHẬN (không sửa): `text` dài 229 > trần runtime 220 → runtime mất đúng 9 ký tự cuối (\"ương này.\"); đo nền nhà: 121/532 `phamVi.text` (22,8 %) vượt trần 220, p90 = 272 ⇒ mức này là mẫu nhà; cắt thêm sẽ phải bỏ nội dung ⇒ không sửa."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "SUA 1 trường (`dieuKien`). Loại trừ đích danh sang 08.11: câu nguồn \"Tuy nhiên, các loại quả đã được hấp chín hoặc luộc chín trong nước và được làm đông lạnh vẫn thuộc nhóm 08.11.\" — có dấu loại trừ ✓, số nhóm đích 08.11 có trong câu ✓; dấu \"Tuy nhiên\" đã được KÉO VÀO câu trích ✓ (đúng bài học lô 030/055). Lý do sửa: TRẦN RUNTIME `loaiTru.dieuKien` = 55; bản gốc 77 ký tự → runtime cắt còn \"Các loại quả đã được hấp chín hoặc luộc chín trong nước…\" và MẤT vế \"VÀ ĐƯỢC LÀM ĐÔNG LẠNH\" — tức điều kiện \"đông lạnh\" (mới là điều kiện phân biệt với 20.08) biến mất, luật sẽ bắn cho MỌI quả hấp/luộc chín trong nước ⇒ luật bắn RỘNG hơn nguồn (đúng lớp lỗi lô 060: mất kết luận của luật). Sửa: rút xuống 54 ký tự, giữ trọn cả hai vế (\"đã hấp chín hoặc luộc chín trong nước\" + \"đông lạnh\"); mọi từ đều có trong câu trích, không thêm chữ ngoài nguồn.",
+   "sua": {
+    "dieuKien": "Quả đã hấp chín hoặc luộc chín trong nước và đông lạnh"
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "SUA 2 trường (`dieuKien` + `trich`). Loại trừ đích danh sang 22.02: câu nguồn kết thúc \"…được phân loại vào nhóm 22.02.\" — số nhóm đích có trong câu ✓. Lý do sửa (1) `dieuKien`: 96 > trần 55 → runtime cắt mất \"đường vừa đủ để sử dụng ngay như đồ uống\" — tức mất đúng ngưỡng \"VỪA ĐỦ\" làm nên ranh giới 2008/22.02, luật bắn RỘNG hơn nguồn. Sửa: rút xuống 54 ký tự, giữ trọn \"nước và xirô đường vừa đủ để uống ngay\" (ngưỡng \"vừa đủ\" còn nguyên), bỏ vế \"tiệt trùng\" và \"pha thêm\" (vế phụ, còn nguyên trong `trich`). Lý do sửa (2) `trich`: bản gốc CẮT bằng dấu lược \"…\" và NUỐT MẤT CHÍNH ĐOẠN XÁC ĐỊNH RANH GIỚI — \"có hoặc không thêm nước hoặc xirô đường NHƯNG VỚI TỶ LỆ CHƯA ĐỦ để sản phẩm có thể sử dụng ngay như đồ uống\" (đây là vế \"chưa đủ\" đối lập với \"vừa đủ\" ở câu sau) ⇒ trích cũ đọc ra là \"quả nghiền nát rồi pha nước và xirô ĐỦ để uống ngay\", tức đảo chiều so với nguồn. Đo nền nhà: chỉ 13/2.579 `loaiTru.trich` (0,5 %) và 20/1.051 `phanBiet.trich` (1,9 %) có dấu lược nuốt ngoại lệ ⇒ đây là lớp lỗi HIẾM, phải bắt. Sửa: trích lại nguyên văn liên tục 257 ký tự (≤ 300) không có dấu lược, giữ trọn cả vế \"chưa đủ\" và vế \"vừa đủ\", vẫn có số nhóm đích 22.02 ✓ (luật 4).",
+   "sua": {
+    "dieuKien": "Quả nghiền nát, nước và xirô đường vừa đủ để uống ngay",
+    "trich": "nghiền nát và đã tiệt trùng, có hoặc không thêm nước hoặc xirô đường nhưng với tỷ lệ chưa đủ để sản phẩm có thể sử dụng ngay như đồ uống. Các sản phẩm này khi có thêm lượng nước và xirô đường vừa đủ để sử dụng ngay như đồ uống được phân loại vào nhóm 22.02."
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "SUA 1 trường (`dieuKien`). Loại trừ đích danh sang 17.04: câu nguồn \"Nhóm này không bao gồm trái cây, quả hạch (nut) hoặc các phần ăn được khác của cây được chế biến thành kẹo đường (kể cả những loại làm từ mật ong tự nhiên), thuộc nhóm 17.04.\" — có dấu loại trừ ✓, số nhóm đích 17.04 có trong câu ✓. Lý do sửa: TRẦN RUNTIME `loaiTru.dieuKien` = 55; bản gốc 89 ký tự → runtime cắt còn \"Trái cây, quả hạch (nut) hoặc các phần ăn được khác của…\" và MẤT TRỌN vế \"được chế biến thành kẹo đường\" — tức luật sẽ bắn cho MỌI trái cây/quả hạch/bộ phận ăn của cây ⇒ luật bắn RỘNG hơn nguồn rất nhiều. Sửa: rút xuống 53 ký tự, đặt điều kiện lên đầu (\"Kẹo đường từ …\") để điều kiện phân biệt luôn hiện diện, và dùng đúng lời của nguồn \"phần ăn được của cây\" (không đổi thành \"bộ phận\" — từ \"bộ phận\" không có trong nguồn này).",
+   "sua": {
+    "dieuKien": "Kẹo đường từ trái cây, quả hạch, phần ăn được của cây"
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Chiều đúng: hàng là quả đã hấp chín/luộc chín trong nước VÀ được làm đông lạnh → có → 0811 / không → 2008 ✓; `hoi` không nhắc mã ✓, 80/110 không trần; `trich` kéo trọn câu \"Tuy nhiên …\" ✓ (không mất ngoại lệ)."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "SUA 1 trường (`trich`). Chiều đúng: hàng là quả nghiền nát, tiệt trùng, pha nước và xirô đường VỪA ĐỦ để uống ngay → có → 2202 / không → 2008 ✓; `hoi` không nhắc mã, 86/110 không trần. Lý do sửa: cùng lỗi với `loaiTru[1]` — bản gốc dùng dấu lược \"…\" nuốt mất vế \"có hoặc không thêm nước hoặc xirô đường nhưng với tỷ lệ CHƯA ĐỦ để sản phẩm có thể sử dụng ngay như đồ uống\", tức mất đúng ranh giới \"chưa đủ\" của nhóm 2008 ⇒ trích cũ đọc ra là điều kiện ĐẢO CHIỀU so với nguồn (lớp lỗi hiếm trong kho: 1,9 %). Sửa: trích lại nguyên văn liên tục 257 ký tự (giống `loaiTru[1]`, cùng câu nguồn), vẫn có số nhóm đích 22.02 ✓.",
+   "sua": {
+    "trich": "nghiền nát và đã tiệt trùng, có hoặc không thêm nước hoặc xirô đường nhưng với tỷ lệ chưa đủ để sản phẩm có thể sử dụng ngay như đồ uống. Các sản phẩm này khi có thêm lượng nước và xirô đường vừa đủ để sử dụng ngay như đồ uống được phân loại vào nhóm 22.02."
+   }
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Chiều đúng: hàng là trái cây/quả hạch được chế biến thành kẹo đường → có → 1704 / không → 2008 ✓; `hoi` không nhắc mã ✓, 64/110 không trần; `trich` giữ nguyên vế \"(kể cả những loại làm từ mật ong tự nhiên)\" ✓ không mất ngoại lệ."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tiêu chí 6 số lấy từ đúng tiêu đề WCO kèm trích nguyên văn tiếng Anh ✓; `value` dịch đúng và GIỮ ngoại trừ khi WCO có (\"excluding potatoes\", \"excluding ground-nuts\", \"excluding homogenised\", \"n.e.c. in heading no. …\") — không dịch sai chiều \"n.e.c.\" thành \"trừ\" ✓ (bài học lô 041); nút 6 số có thật trong cây (check-cay xanh)."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tiêu chí 6 số lấy từ đúng tiêu đề WCO kèm trích nguyên văn tiếng Anh ✓; `value` dịch đúng và GIỮ ngoại trừ khi WCO có (\"excluding potatoes\", \"excluding ground-nuts\", \"excluding homogenised\", \"n.e.c. in heading no. …\") — không dịch sai chiều \"n.e.c.\" thành \"trừ\" ✓ (bài học lô 041); nút 6 số có thật trong cây (check-cay xanh)."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tiêu chí 6 số lấy từ đúng tiêu đề WCO kèm trích nguyên văn tiếng Anh ✓; `value` dịch đúng và GIỮ ngoại trừ khi WCO có (\"excluding potatoes\", \"excluding ground-nuts\", \"excluding homogenised\", \"n.e.c. in heading no. …\") — không dịch sai chiều \"n.e.c.\" thành \"trừ\" ✓ (bài học lô 041); nút 6 số có thật trong cây (check-cay xanh)."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tiêu chí 6 số lấy từ đúng tiêu đề WCO kèm trích nguyên văn tiếng Anh ✓; `value` dịch đúng và GIỮ ngoại trừ khi WCO có (\"excluding potatoes\", \"excluding ground-nuts\", \"excluding homogenised\", \"n.e.c. in heading no. …\") — không dịch sai chiều \"n.e.c.\" thành \"trừ\" ✓ (bài học lô 041); nút 6 số có thật trong cây (check-cay xanh)."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tiêu chí 6 số lấy từ đúng tiêu đề WCO kèm trích nguyên văn tiếng Anh ✓; `value` dịch đúng và GIỮ ngoại trừ khi WCO có (\"excluding potatoes\", \"excluding ground-nuts\", \"excluding homogenised\", \"n.e.c. in heading no. …\") — không dịch sai chiều \"n.e.c.\" thành \"trừ\" ✓ (bài học lô 041); nút 6 số có thật trong cây (check-cay xanh)."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tiêu chí 6 số lấy từ đúng tiêu đề WCO kèm trích nguyên văn tiếng Anh ✓; `value` dịch đúng và GIỮ ngoại trừ khi WCO có (\"excluding potatoes\", \"excluding ground-nuts\", \"excluding homogenised\", \"n.e.c. in heading no. …\") — không dịch sai chiều \"n.e.c.\" thành \"trừ\" ✓ (bài học lô 041); nút 6 số có thật trong cây (check-cay xanh)."
+  },
+  {
+   "index": "tieuChi6[6]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tiêu chí 6 số lấy từ đúng tiêu đề WCO kèm trích nguyên văn tiếng Anh ✓; `value` dịch đúng và GIỮ ngoại trừ khi WCO có (\"excluding potatoes\", \"excluding ground-nuts\", \"excluding homogenised\", \"n.e.c. in heading no. …\") — không dịch sai chiều \"n.e.c.\" thành \"trừ\" ✓ (bài học lô 041); nút 6 số có thật trong cây (check-cay xanh)."
+  },
+  {
+   "index": "tieuChi6[7]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tiêu chí 6 số lấy từ đúng tiêu đề WCO kèm trích nguyên văn tiếng Anh ✓; `value` dịch đúng và GIỮ ngoại trừ khi WCO có (\"excluding potatoes\", \"excluding ground-nuts\", \"excluding homogenised\", \"n.e.c. in heading no. …\") — không dịch sai chiều \"n.e.c.\" thành \"trừ\" ✓ (bài học lô 041); nút 6 số có thật trong cây (check-cay xanh)."
+  },
+  {
+   "index": "tieuChi6[8]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tiêu chí 6 số lấy từ đúng tiêu đề WCO kèm trích nguyên văn tiếng Anh ✓; `value` dịch đúng và GIỮ ngoại trừ khi WCO có (\"excluding potatoes\", \"excluding ground-nuts\", \"excluding homogenised\", \"n.e.c. in heading no. …\") — không dịch sai chiều \"n.e.c.\" thành \"trừ\" ✓ (bài học lô 041); nút 6 số có thật trong cây (check-cay xanh)."
+  },
+  {
+   "index": "tieuChi6[9]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tiêu chí 6 số lấy từ đúng tiêu đề WCO kèm trích nguyên văn tiếng Anh ✓; `value` dịch đúng và GIỮ ngoại trừ khi WCO có (\"excluding potatoes\", \"excluding ground-nuts\", \"excluding homogenised\", \"n.e.c. in heading no. …\") — không dịch sai chiều \"n.e.c.\" thành \"trừ\" ✓ (bài học lô 041); nút 6 số có thật trong cây (check-cay xanh)."
+  },
+  {
+   "index": "tieuChi6[10]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tiêu chí 6 số lấy từ đúng tiêu đề WCO kèm trích nguyên văn tiếng Anh ✓; `value` dịch đúng và GIỮ ngoại trừ khi WCO có (\"excluding potatoes\", \"excluding ground-nuts\", \"excluding homogenised\", \"n.e.c. in heading no. …\") — không dịch sai chiều \"n.e.c.\" thành \"trừ\" ✓ (bài học lô 041); nút 6 số có thật trong cây (check-cay xanh)."
+  },
+  {
+   "index": "tieuChi6[11]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tiêu chí 6 số lấy từ đúng tiêu đề WCO kèm trích nguyên văn tiếng Anh ✓; `value` dịch đúng và GIỮ ngoại trừ khi WCO có (\"excluding potatoes\", \"excluding ground-nuts\", \"excluding homogenised\", \"n.e.c. in heading no. …\") — không dịch sai chiều \"n.e.c.\" thành \"trừ\" ✓ (bài học lô 041); nút 6 số có thật trong cây (check-cay xanh)."
+  },
+  {
+   "index": "tieuChi6[12]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tiêu chí 6 số lấy từ đúng tiêu đề WCO kèm trích nguyên văn tiếng Anh ✓; `value` dịch đúng và GIỮ ngoại trừ khi WCO có (\"excluding potatoes\", \"excluding ground-nuts\", \"excluding homogenised\", \"n.e.c. in heading no. …\") — không dịch sai chiều \"n.e.c.\" thành \"trừ\" ✓ (bài học lô 041); nút 6 số có thật trong cây (check-cay xanh)."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[12]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[13]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[14]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[15]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[16]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[17]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[18]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[19]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[20]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓. GHI NHẬN (không sửa): `dieuKien` 154 > trần 90 → runtime cắt mất \"s) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu\"; phần còn lại vẫn giữ đúng ý \"từ thân cây, rễ cây … không bao gồm quả hoặc quả hạch\" nên luật không đảo chiều; 51,5 % `dong8.dieuKien` trong kho đã gộp cũng trần 90 ⇒ không sửa."
+  },
+  {
+   "index": "dong8[21]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[22]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[23]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[24]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[25]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓. GHI NHẬN (không sửa): `dieuKien` 154 > trần 90 → runtime cắt mất \"s) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu\"; phần còn lại vẫn giữ đúng ý \"từ thân cây, rễ cây … không bao gồm quả hoặc quả hạch\" nên luật không đảo chiều; 51,5 % `dong8.dieuKien` trong kho đã gộp cũng trần 90 ⇒ không sửa."
+  },
+  {
+   "index": "dong8[26]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "dong8[27]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 8 số: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓, không thêm chữ; đủ 28/28 dòng `tax.*` của nhóm, khớp 100 % với nguồn; `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tên tiếng Việt cho nút 6 số bị lược, lấy từ đúng tiêu đề WCO kèm trích nguyên văn ✓; nút có thật trong cây, chưa có tên sẵn ⇒ hợp lệ theo luật 9; khớp `value` của `tieuChi6` tương ứng ✓. GHI NHẬN: wco.200893 giữ nguyên lỗi gõ \"Iingonberries\" của nguồn ✓ (không sửa lỗi nguồn)."
+  },
+  {
+   "index": "cay.tenDien[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tên tiếng Việt cho nút 6 số bị lược, lấy từ đúng tiêu đề WCO kèm trích nguyên văn ✓; nút có thật trong cây, chưa có tên sẵn ⇒ hợp lệ theo luật 9; khớp `value` của `tieuChi6` tương ứng ✓. GHI NHẬN: wco.200893 giữ nguyên lỗi gõ \"Iingonberries\" của nguồn ✓ (không sửa lỗi nguồn)."
+  },
+  {
+   "index": "cay.tenDien[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tên tiếng Việt cho nút 6 số bị lược, lấy từ đúng tiêu đề WCO kèm trích nguyên văn ✓; nút có thật trong cây, chưa có tên sẵn ⇒ hợp lệ theo luật 9; khớp `value` của `tieuChi6` tương ứng ✓. GHI NHẬN: wco.200893 giữ nguyên lỗi gõ \"Iingonberries\" của nguồn ✓ (không sửa lỗi nguồn)."
+  },
+  {
+   "index": "cay.tenDien[3]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tên tiếng Việt cho nút 6 số bị lược, lấy từ đúng tiêu đề WCO kèm trích nguyên văn ✓; nút có thật trong cây, chưa có tên sẵn ⇒ hợp lệ theo luật 9; khớp `value` của `tieuChi6` tương ứng ✓. GHI NHẬN: wco.200893 giữ nguyên lỗi gõ \"Iingonberries\" của nguồn ✓ (không sửa lỗi nguồn)."
+  },
+  {
+   "index": "cay.tenDien[4]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tên tiếng Việt cho nút 6 số bị lược, lấy từ đúng tiêu đề WCO kèm trích nguyên văn ✓; nút có thật trong cây, chưa có tên sẵn ⇒ hợp lệ theo luật 9; khớp `value` của `tieuChi6` tương ứng ✓. GHI NHẬN: wco.200893 giữ nguyên lỗi gõ \"Iingonberries\" của nguồn ✓ (không sửa lỗi nguồn)."
+  }
+ ]
+}
