@@ -5,7 +5,7 @@
 
 # LÔ 065 — khôi phục + soát lại toàn bộ (phiên `dev-zcode-mm`, 28/10/2026 06:00)
 
-- **Nhánh:** `so-tay/lo-065` · **Nhóm:** `2003,2004,2005,2006,2007,2008` (Chương 20 — rau, quả, quả hạch)
+- **Nhánh:** `so-tay/lo-065` · **PR #489** (thay cho #487 bị daemon tự đóng) — **KHÔNG merge** · **Nhóm:** `2003,2004,2005,2006,2007,2008` (Chương 20 — rau, quả, quả hạch)
 - **Kết quả:** **130/130 mục (100 %)** — 122 mục soạn + 8 mục `cay.tenDien`; **giữ nguyên 130/130**, không sửa nội dung (mục 4: đã đo nền nhà, mọi nghi vấn đều rơi vào mẫu nhà)
 - **Nguồn đọc:** `tmp/so-tay/nguon/2003.txt`…`2008.txt` + `_he-thong.txt` — đọc **HẾT** 6 tệp (64.710 ký tự), không lấy mẫu, không dùng kiến thức ngoài kho số liệu
 
