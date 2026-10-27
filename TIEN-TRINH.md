@@ -5,7 +5,7 @@
 
 # SOẠN lô 063 — phiên `dev-zcode-mm` (27/10/2026)
 
-- **Nhánh:** `so-tay/lo-063` @ main mới nhất (b574e44) · **Nhóm:** `1801,1802,1803,1804,1805,1806` (Chương 18 — Ca cao)
+- **Nhánh:** `so-tay/lo-063` @ main mới nhất (b574e44) · **PR #484** — **KHÔNG merge** · **Nhóm:** `1801,1802,1803,1804,1805,1806` (Chương 18 — Ca cao)
 - **Nguồn:** `docs/giao-viec/so-tay-lo.csv` dòng 063 · **Người soạn:** `dev-zcode-mm` · **KHÔNG merge** (chờ người soát độc lập)
 - **Kết quả:** **49/49 mục (100 %)**, 0 nhóm lỗi · `so-tay:check` 524 nhóm / 14.310 mục / 0 lỗi · `npm test` ALL TESTS PASSED
 
