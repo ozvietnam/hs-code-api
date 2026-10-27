@@ -5,7 +5,7 @@
 
 # SOẠN lô 063 — phiên `dev-zcode-mm` (27/10/2026)
 
-- **Nhánh:** `so-tay/lo-063` @ main mới nhất (b574e44) · **PR #484** — **KHÔNG merge** · **Nhóm:** `1801,1802,1803,1804,1805,1806` (Chương 18 — Ca cao)
+- **Nhánh:** `so-tay/lo-063` @ main mới nhất (b574e44) · **PR #484** (đã đóng 27/10 — cứu tại **PR #485**) — **KHÔNG merge** · **Nhóm:** `1801,1802,1803,1804,1805,1806` (Chương 18 — Ca cao)
 - **Nguồn:** `docs/giao-viec/so-tay-lo.csv` dòng 063 · **Người soạn:** `dev-zcode-mm` · **KHÔNG merge** (chờ người soát độc lập)
 - **Kết quả:** **49/49 mục (100 %)**, 0 nhóm lỗi · `so-tay:check` 524 nhóm / 14.310 mục / 0 lỗi · `npm test` ALL TESTS PASSED
 
@@ -8397,14 +8397,14 @@ nhóm) và 1520 `dieuKienVao[1]` (chiều `=false`).
 ## 0. Bối cảnh — em là người SOÁT, không phải người soạn
 
 - **Nhóm:** `1801 1802 1803 1804 1805 1806` (Chương 18 "Ca cao và các chế phẩm từ ca cao") — 49 mục.
-- **Nhánh:** `so-tay/lo-063` · **PR #484** (đang MỞ, KHÔNG merge).
+- **Nhánh:** `so-tay/lo-063` · **PR #484** (lúc đó đang MỞ; nay đã đóng — cứu tại **PR #485**, KHÔNG merge).
 - Người soạn: `dev-zcode-mm`. Người soát: `dev-soat-doc-lap-lo063` — **khác người soạn**, đúng
   mục 4 của `docs/giao-viec/so-tay-giao-ngoai.md` ("không lô nào được gộp nếu chưa qua bước soát
   độc lập").
 - **Brief trỏ sai TÊN TỆP (KHÁC kiểu lần 13 — không phải trỏ sai lô)**: đường dẫn CEO đưa là
   `brief-st-soat-lo063.md` — tệp đó **không tồn tại**; tệp thật là `brief-st-soat-lo0063.md`
   (nhóm brief soát đặt số lô 4 chữ số có số 0 ở giữa: `lo0059`…`lo0063`; chỉ lô < 10 mới dùng
-  3 chữ số `lo001`…`lo009`). Nội dung brief trỏ **ĐÚNG** lô 063 (nhóm 1801–1806, PR #484) ⇒
+  3 chữ số `lo001`…`lo009`). Nội dung brief trỏ **ĐÚNG** lô 063 (nhóm 1801–1806, PR #484 → nay #485) ⇒
   sổ đếm "brief trỏ nhầm LÔ" của nhà **vẫn là 13**, không tăng. Bài học thêm: khi đường dẫn brief
   không tồn tại thì **liệt kê thư mục brief** (`ls …/oz-dev-kit | grep brief-st-soat`) để tìm đúng
   tên, đừng vội kết luận là trỏ nhầm lô.
@@ -8540,7 +8540,7 @@ Cả 7 cảnh báo của lô 063 thuộc 2 lớp nhiễu đã biết: `hang` (ti
   --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-063.json` ⇒ **49/49 (100 %)**.
 - **`nguonLoai`**: 26 mục ở 5 khối đã soát → `NGUOI_DUYET`; `tieuChi6` / `dong8` / `cay.tenDien`
   giữ `AI_DA_KIEM` (ngoài phạm vi soát theo luật 11).
-- **KHÔNG merge.** PR #484 để người duyệt đọc lại.
+- **KHÔNG merge.** PR #484 để người duyệt đọc lại (nay: PR #485).
 
 ## 7. Script
 
@@ -8625,5 +8625,6 @@ của nhóm, không lược mất câu về "chất béo ca cao" từ phế li�
 - Đã commit `data/so-tay/{1801,1802,1803,1804,1805,1806}.json` + `data/so-tay/bao-cao/lo-063.json` +
   `review/{1801,…,1806}.json` + `scripts/apply-review-lo063.mjs` + dòng CSV + mục này trong
   `TIEN-TRINH.md`. **KHÔNG commit `tmp/`.**
-- **KHÔNG merge** — chờ người duyệt đọc lại `review/1801.json`…`review/1806.json` (49 dòng, mỗi
-  dòng một `lyDo`) và phần "SOÁT ĐỘC LẬP lô 063" ở cuối `TIEN-TRINH.md`.
+- **PR #485** (thay cho #484 đã đóng) — **KHÔNG merge** — chờ người duyệt đọc lại
+  `review/1801.json`…`review/1806.json` (49 dòng, mỗi dòng một `lyDo`) và phần "SOÁT ĐỘC LẬP lô 063"
+  ở cuối `TIEN-TRINH.md`.
