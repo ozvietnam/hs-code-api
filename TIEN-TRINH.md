@@ -7859,3 +7859,144 @@ Cổng kiểm của nhà chỉ khớp `dieuKienSo` (số) chứ không đọc `d
 
 - `scripts/apply-review-lo060.mjs` — bổ sung: `parseIndex` nhận kind có dấu chấm (`cay.tenDien[i]`)
   để hồ sơ ghi được **mọi** mục; và **chặn** sửa/xoá khối máy sinh `cay` (chỉ cho "giu").
+
+---
+
+# SOẠN lô 062 — phiên `dev-zcode-mm` (27/10/2026)
+
+- **Nhánh:** `so-tay/lo-062` (worktree `hs-code-api-wt-st-lo062`) · **PR: xem commit** — **KHÔNG merge**.
+- **Nhóm:** `1603, 1604, 1605, 1701, 1703, 1704` (Chương 16 + Chương 17).
+- **Người soạn:** `dev-zcode-mm` (khác người soát độc lập — sẽ giao sau).
+
+## 0. SAI LỆCH BRIEF — bắt buộc khai trước
+
+CEO trỏ `~/.zcode/workspace/default/oz-dev-kit/brief-st-lo050.md`. Nhưng:
+
+- Lô **050 đã `xong` từ trước**: CSV dòng `050` = `0811 0812 0813 0814 0901 0902`, `trang_thai=xong`,
+  `pr=454`; `data/so-tay/0811.json`…`0902.json` **đã có trên `origin/main`** (commit `55ef84d`,
+  "103/103 mục (100 %) — đã soát độc lập (#454)"). Làm lại 050 = PR xung đột với dữ liệu đã soát.
+- Dòng lệnh trong brief vẫn kèm `--nhom=7615,9609,3215,6306,6804,7412` = nhóm **lô 001** (mẫu copy-paste
+  cũ) và tên worktree/nhánh trong brief (`hs-code-api-wt-st-lo62`, `so-tay/lo-0062`) lệch với thực tế.
+- Lô thật của phiên là **062**: worktree `hs-code-api-wt-st-lo062`, nhánh `so-tay/lo-062`,
+  CSV dòng **062** = `1603 1604 1605 1701 1703 1704` (`trang_thai=chua-lam`), và có
+  `brief-st-lo062.md` ghi **đúng** nhóm này.
+
+⇒ Làm **lô 062** theo CSV (nguồn chuẩn) + worktree + nhánh. Đây là **lần thứ 12** brief trỏ nhầm lô
+(mẫu: 003, 012, 014, 027, 049, 051, 054, 055, 060, 061, 048) — lần này thuộc loại **mới nhất**:
+brief trỏ vào lô **đã merge**.
+
+## 1. Quy trình đã chạy
+
+1. `node scripts/build-so-tay.mjs --nhom=1603,1604,1605,1701,1703,1704 --xuat-nguon=tmp/so-tay/nguon`
+   → 6 tệp nguồn (tổng **46 831 ký tự**: 1604 nặng nhất 12 360, 1605 10 177, 1603 8 707,
+   1704 6 150, 1701 5 652, 1703 nhẹ nhất 3 785).
+2. Đọc TRỌN `_he-thong.txt` + 6 tệp nguồn.
+3. Soạn `tmp/so-tay/raw/<nhom>.json` bằng **script** `tmp/so-tay/lap-raw-062.mjs`:
+   mọi `trich` được **cắt thẳng từ tệp nguồn theo mốc đầu/mốc cuối** (byte-exact) — không gõ tay
+   tiếng Việt ⇒ không thể méo dấu.
+4. `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **135/135**, 0 mục loại.
+5. `node scripts/check-trich-nguyen-van.mjs` (byte-exact) → **OK — 135 mục**.
+6. `node scripts/scan-so-tay-soat.mjs` (trần clip runtime + vùng im lặng + lược nuốt ngoại lệ +
+   gác soát từ) → **17 cảnh báo, toàn bộ là `TỪ-NGOÀI-NGUỒN …: hang`**.
+7. Nạp: `node scripts/build-so-tay.mjs --nhom=… --tu-tep=tmp/so-tay/raw --force
+   --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-062.json` → **135/135 (100 %)**.
+8. `npm run so-tay:check` + `npm test` + `scripts/check-cay.mjs --chi-tiet` cho 6 nhóm.
+
+## 2. Kết quả
+
+| Kiểm | Kết quả |
+|---|---|
+| `check-so-tay.mjs --raw=tmp/so-tay/raw` | 6 nhóm, **135 mục, 0 mục không kiểm được nguồn** (135/135) |
+| `check-trich-nguyen-van.mjs` (byte-exact) | **OK — 135 mục** nguyên văn tuyệt đối trong đúng khối nguồn |
+| `build-so-tay … --tu-tep --force` | **135/135 (100 %)** — `tyLeDat: 100`, `nhomLoi: []` |
+| `npm run so-tay:check` | **518 nhóm, 14 261 mục, 0 mục không kiểm được nguồn** |
+| `npm test` | **ALL TESTS PASSED** (37 + 7 test, exit 0) |
+| `check-cay.mjs --chi-tiet` | **0 lỗi lệch cây**; còn trống `phan-nhom-chua-co-tieu-chi` × 33 (1604: 12 · 1605: 18 · 1701: 2 · 1703: 1) |
+| `scan-so-tay-soat.mjs` | 17 cảnh báo — **toàn bộ** là `TỪ-NGOÀI-NGUỒN …: hang` (tiền tố "Hàng là") |
+| `dong8` đủ dòng biểu thuế | 1603: 2/2 · 1604: **31/31** · 1605: **26/26** · 1701: 6/6 · 1703: 4/4 · 1704: 5/5 — THIẾU 0, THỪA 0 |
+
+**17 cảnh báo "hang" là nhiễu nền của chính gate, không phải lỗi**: tiền tố "Hàng là …" là mẫu câu hỏi
+của nhà. Em **đo lại trên 4 nhóm đã được duyệt** để chắc chắn gate thực sự so (bài học lô 060 vòng 3:
+"0 lỗi" của máy có thể là vì máy KHÔNG so gì cả):
+
+| Nhóm đã duyệt trên `main` | `TỪ-NGOÀI-NGUỒN` | trong đó `hang` |
+|---|---|---|
+| 0206 | 30 | 0 (`hoi` khai nguồn `ch02.chuong` — trong đó có chữ "Hàng") |
+| 0209 | 8 | 1 |
+| 1506 | 4 | 4 |
+| 1507 | 3 | 1 |
+
+⇒ "hang" xuất hiện ở 3/4 nhóm đã duyệt (6 lần) ⇒ **nhiễu nền của gate**. Ngược lại, lô 062 có
+**0** cảnh báo `TỪ-NGOÀI-NGUỒN` khác (mọi `fact`/`dieuKien` đều dùng đúng từ của khối nguồn khai) —
+tốt hơn mức nền của 4 nhóm trên.
+
+## 3. SOÁT BẰNG MẮT — 6 lớp lỗi máy KHÔNG bắt, đã sửa TRƯỚC khi nạp
+
+1. **`dieuKienVao` hai nhánh thay thế nhau → runtime nối bằng `·` ⇒ mô hình đọc thành điều kiện VÀ**
+   (bài học lô 027). Sửa ở 2 nhóm:
+   - **1701**: gộp "đường mía/củ cải" + "đường sucroza tinh khiết" thành **một** câu trích
+     (261 ký tự) và **một** `dieuKienVao` (`la_duong_o_the_ran_ke_ca_bot = true`); nhánh sucroza
+     tinh khiết vẫn nằm trong `phamVi.text`.
+   - **1605**: gộp "giáp xác/thân mềm" + "thủy sinh không xương sống" thành **một** `dieuKienVao`
+     (`la_dong_vat_giap_xac_hoac_dong_vat_than_mem_hoac_dong_vat_thuy_sinh_da_che_bien_hoac_bao_quan`);
+     "cầu gai, hải sâm, sứa" chuyển vào `phamVi.text` + `loaiTru` (ngoại lệ của nhóm).
+2. **Mất điều kiện quyết định trong `dieuKien` ⇒ loại trừ thành toàn diện** (bài học lô 061 mục 1).
+   - **1704 `loaiTru[5]`**: "Bột nhão từ đường có thêm chất béo, tỉ lệ lớn" ⇒ bỏ vế quyết định
+     *"không dùng trực tiếp làm mứt, kẹo"* ⇒ mọi bột nhão có béo bị loại oan. Sửa thành
+     **"Bột nhão từ đường, chất béo lớn, không làm mứt kẹo"**.
+   - **1603 `loaiTru[0]`**: "…chứa chất béo, gelatin, tỉ lệ muối lớn" ⇒ vế "tỉ lệ muối lớn" bị đặt
+     thành điều kiện cứng, trong khi nguồn ghi **"thường có tỉ lệ muối lớn"** (định ngữ giới hạn —
+     bài học lô 058 mục 4). Sửa thành **"Súp, nước xuýt còn chứa chất béo, chất kết dính"** (giữ đúng
+     vế quyết định *"còn chứa các chất khác"*), và `fact` của `dieuKienVao[1]` thêm
+     `va_con_chua_chat_khac`.
+3. **Mất ngoại lệ trong loại trừ** (bài học lô 058 mục 3 / lô 060 vòng 3).
+   - **1704 `loaiTru[1]`**: "Chế phẩm đường chứa cacao" ⇒ bỏ mất **"bơ cacao không được coi như cacao"**
+     ⇒ sô cô la trắng (thuộc 17.04) bị loại oan. Sửa: **"Chế phẩm đường chứa cacao, bơ cacao không coi
+     là cacao"**.
+   - **1704 `loaiTru[0]`**: bổ sung mảnh trích **"Tuy nhiên, khi được đóng gói ở dạng kẹo … không tính
+     đến tỷ lệ đường"** ⇒ chiết xuất cam thảo đóng gói vẫn thuộc 17.04 (trích 272 ký tự, ≤ 300).
+   - **1704 `loaiTru[4]/[5]`**: mục (d) của chú giải nhóm có **hai** nhánh loại trừ về 21.06 (kẹo có
+     chất làm ngọt tổng hợp; bột nhão từ đường). Tách thành 2 mục `loaiTru`, mỗi mục một câu trích
+     ≤ 300 ký tự.
+4. **Mất vế loại trừ trong `phamVi.text`** (bài học lô 061 mục 2 — `text` là thứ MÔ HÌNH ĐỌC).
+   - **1605**: `text` cũ chỉ nêu phạm vi ⇒ thêm **"Không gồm giáp xác còn nguyên vỏ đã hấp chín,
+     luộc chín trong nước và thân mềm trước khi vận chuyển, đông lạnh"** (vẫn ≤ 220 ký tự).
+   - **1704**: `text` nêu đủ 9 nhóm kẹo + "chiết xuất cam thảo" ✓.
+5. **Trích 300–600 ký tự = "vùng im lặng"** (máy chỉ chặn > 600). Rút về ≤ 300 **mọi** câu trích:
+   lô 06x có 2 câu 311 và 474 ký tự ở 1704 ⇒ đã lược bằng "…" thành 196 ký tự.
+6. **`fact` sai từ nguồn / để dấu lạc**: `la_mat_thu_duoc_tu_ket_qua_chi_t_xuat…` (gõ thiếu chữ)
+   → sửa `chiet_xuat`; `làm tác nhân keo` (nguồn SEN ghi "**là** tác nhân keo") → sửa.
+
+## 4. GHI NHẬN (không sửa — để người duyệt đối chiếu)
+
+1. **Không soạn `cay.tenDien`** (0 mục): 12 nút 6 số ở 1604/1605/1701 chưa có tên tiếng Việt trong
+   nguồn (tên chính thức chỉ có tiếng Anh ở `wco.*`), mà brief lô 062 cấm soạn trường `cay`
+   (máy sinh). Đây cũng là đa số nhà: 60/512 nhóm trên `main` có `tenDien`, **182 nhóm còn nút 6 số
+   thiếu tên**. Cây + tên tiếng Anh vẫn dùng được qua `lib/so-tay-runtime.js`.
+2. **1703 không có `phanBiet`**: máy chỉ nhận mã 4 số hoặc 8 số (`validHeading`/`validTax`), mà
+   chênh lệch của nhóm nằm ở **1703.10 (mật mía) vs 1703.90** — mã 6 số ⇒ `ma-khong-co-that`.
+   Tiêu chí phân biệt đã đặt vào `tieuChi6[170310]`.
+3. **Loại trừ CHUNG của Chương 16/17 không chép vào từng nhóm** (bài học lô 051): 1703 không có danh
+   sách "không bao gồm" riêng của nhóm ⇒ `loaiTru` rỗng; các mục loại trừ của Chương 17 (18.06,
+   29.40, Chương 30, 23.09) không chép sang 1701/1703/1704.
+4. **1604: nhánh "trứng cá tầm muối" không mã hoá thành `dieuKienVao` value=true** — sẽ thành điều
+   kiện VÀ với nhánh "cá đã chế biến" (bài học lô 027). Nhánh này nằm ở `phamVi.text` + 2 dòng 8 số
+   16043100 / 16043200 + `dong8[29..30]`.
+5. **1701: không mã hoá tiêu chí "0,1% đường nghịch chuyển"** — nguồn ghi **"thường chứa hơn 0,1%"**
+   và **"thường thấp hơn 0,1%"** (định ngữ giới hạn) ⇒ không thành điều kiện cứng. Hai tiêu chí
+   **định nghĩa** (không có "thường") thì có mã hoá: `170112`/`170114` = `< 99,5°` (Chú giải phân
+   nhóm 1 Chương 17), `170113` = `< 93°` (Chú giải phân nhóm 2 — dải 69°–93°).
+6. **1701 `tieuChi6` ở `170191`/`170199` bị bỏ**: khác biệt là "có/không pha thêm hương liệu hoặc
+   chất màu" — chỉ có ở tên WCO (tiếng Anh) hoặc ở câu nguồn có **"có thể đã được thêm"** (định ngữ
+   giới hạn) ⇒ không mã hoá. Tên 2 dòng 8 số 17019100/17019910 vẫn có trong `dong8`.
+7. **`dieuKienVao` lấy từ `ch16.chuong`/`ch17.chuong`** — hợp lệ (luật chỉ cấm `wco.*`/`sen.*`/`tax.*`),
+   dùng cho điều kiện **phủ cả nhóm**: 1704 "kẹo đường có pha cacao → 18.06".
+8. **Nguồn mỏng**: 1703 (4 866 ký tự, không có danh sách loại trừ riêng), 1701 (7 216), 1704
+   (7 919) — ngắn nhất; 1604 dài nhất (15 672) vì 31 dòng biểu thuế.
+9. **Số mục đạt: 135/135 (100 %), 0 mục rớt** — không mục nào bị loại khi nạp (trích nguyên văn được
+   hết ⇒ không có mục nào phải XOÁ theo cam kết "thà ít mục chắc chắn").
+
+## 5. Script (gitignored, trong `tmp/`)
+
+- `tmp/so-tay/lap-raw-062.mjs` — generator: cắt mọi `trich` từ tệp nguồn theo mốc đầu/mốc cuối,
+  tự kiểm trần (220/55/90/110/300/600) và tự nâng cảnh báo nếu vượt.
