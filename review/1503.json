@@ -1,0 +1,63 @@
+{
+  "nhom": "1503",
+  "gopVoi": "review phiên soát song song 4b7e956 + vòng soát này",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp 229 ký tự — vượt nhẹ trần clip 220 ⇒ cắt mất đuôi câu. SỬA: rút xuống 215, giữ nguyên cả hai cách ép (mỡ lá và mỡ khổ của lợn / mỡ tallow) và vế \"gồm cả dạng ăn được và không ăn được\" (đồng ý với phiên soát song parallel về nội dung; em chỉ rút cho vừa trần runtime).",
+      "sua": {
+        "text": "Sản phẩm thu được bằng cách ép mỡ lá và mỡ khổ của lợn (stearin mỡ lá và mỡ khổ của lợn, dầu từ mỡ lá và mỡ khổ của lợn) hoặc ép mỡ tallow (dầu oleo, dầu tallow và oleostearin), gồm cả dạng ăn được và không ăn được."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu \"Nhóm này bao gồm các sản phẩm thu được bằng cách ép mỡ lá và mỡ khổ của lợn… hoặc bằng cách ép mỡ tallow…\" là câu RÀNG BUỘC phủ cả nhóm (cả 2 dạng thu được); fact dương + value=true, \"hoặc\" đúng phép phân đoạn của nguồn (ép mỡ lá VÀ mỡ khổ HOẶC ép mỡ tallow). GIỮ (đồng ý phiên soát song song)."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "fact DƯƠNG \"la_san_pham_da_nhu_hoa_da_pha_tron_hoac_che_bien_cach_khac\" + value=false ⇒ \"hàng KHÔNG phải sản phẩm đã nhũ hoá/pha trộn/chế biến\" = đúng chiều. Mẫu nhà \"fact dương + value=false\" (0504, 0710, 5903…). GIỮ."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "dieuKien 59 ký tự, clip(55) cắt đuôi \"chế biến cách khác\" thành \"chế biến cách…\" — mất chữ \"khác\" (phân biệt với chế biến thường của chính nhóm này). SỬA: rút xuống 53 ký tự (bỏ mạo từ \"Các\"), giữ nguyên nghĩa.",
+      "sua": {
+        "dieuKien": "Sản phẩm đã nhũ hoá, đã pha trộn hoặc chế biến cách khác"
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "sua",
+      "lyDo": "ĐỒNG Ý phiên soát song song: bản nháp viết \"…ăn được trộn với mỡ lá và mỡ khổ của lợn mềm…\" — bỏ mất định ngữ giới hạn \"đôi khi\", biến một mô tả thực hành thành điều kiện tuyệt đối mà mọi hàng trộn đều bị loại (luật \"dieuKien phải giữ định ngữ giới hạn của câu\" — lô 028). Đã khôi phục nguyên văn có định ngữ. GHI NHẬN: đây là loại trừ có căn cứ vì chính SẢN PHẨM TRỘN mới thuộc 15.17, còn stearin thuần thuộc 1503 (khác lớp \"mục đánh số trong khối bao gồm\" của lô 030).",
+      "sua": {
+        "dieuKien": "Stearin từ mỡ lá và mỡ khổ của lợn ăn được đôi khi dùng trộn với mỡ lá và mỡ khổ của lợn mềm làm cho sản phẩm đồng nhất và đặc hơn"
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "\"Có\" = sản phẩm đã nhũ hoá/pha trộn/chế biến ⇒ 1516/1517/1518; \"Không\" = sản phẩm ép mỡ lá, mỡ khổ của lợn hoặc mỡ tallow ⇒ 1503. Câu trích nêu đủ ba đích. GIỮ."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "ĐỒNG Ý phiên soát song song: sửa cho khớp với điều kiện loại trừ đã khôi phục ở loaiTru[1] — nhánh \"có\" phải giữ định ngữ \"đôi khi\" của nguồn, và rút gọn vế đầu cho vừa trần clip 110 của runtime. BỔ SUNG của em: bản sửa của họ dài 111 ký tự ⇒ clip(110) cắt mất dấu hỏi cuối, câu hỏi in ra không còn dạng câu hỏi; em bỏ tiếp \"Hàng là \" cho vừa trần (105 ký tự), không mất nghĩa. Câu trích giữ nguyên (đã nguyên văn, có đủ đích 15.17).",
+      "sua": {
+        "hoi": "Stearin ăn được đôi khi trộn với mỡ lá và mỡ khổ của lợn mềm hay là stearin từ mỡ lá và mỡ khổ của lợn?"
+      }
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15030010: \"15030010 - Stearin mỡ lợn hoặc oleostearin\" — tên dòng nguyên văn; `tieuChi` `la_stearin_mo_lon_hoac_oleostearin` = true bám đúng tên dòng (boolean nên không cần số trong trích)."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" (tax.15030090 \"15030090 - Loại khác\") — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.150300 đúng khuôn mẫu (1103, 0206, 0207, 0208); máy tự suy loaiKhac=true. GHI NHẬN: `dieuKien` 118 ký tự > trần clip 90 (runtime cắt đuôi; phần đầu \"Loại khác: Lard stearin, lard oil, oleostearin…\" vẫn đủ để phân biệt với dòng stearin mỡ lợn)."
+    }
+  ]
+}

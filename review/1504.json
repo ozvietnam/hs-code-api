@@ -1,0 +1,97 @@
+{
+  "nhom": "1504",
+  "gopVoi": "review phiên soát song song 4b7e956 + vòng soát này",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp 422 ký tự; clip(phamVi.text, 220) cắt mất vế \"stearin của cá\" và VẾ LOẠI TRỪ (nhóm 15.16) — mất vế loại trừ là mất ranh giới quan trọng nhất của nhóm (dầu cá đã hydro hoá sang 1516). SỬA: rút xuống 214 ký tự, giữ chủ thể + nguồn gốc (cá / động vật có vú ở biển) + stearin của cá + vế loại trừ đủ bốn phép hoá chế. ĐỒNG Ý phiên soát song parallel về câu trích: họ nối thêm đúng 2 mảnh nguyên văn (đoạn stearin của cá và câu loại trừ 15.16) để câu trích phủ hết mọi điều `text` nói (chiều ngược lô 027) ⇒ em giữ nguyên `trich` của họ.",
+      "sua": {
+        "text": "Mỡ và dầu và các phần phân đoạn của chúng, có nguồn gốc từ cá hoặc động vật có vú ở biển; cũng bao gồm stearin của cá; không gồm mỡ và dầu đã hydro hoá, este hoá liên hợp, tái este hóa hoặc eledin hoá (nhóm 15.16)."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu \"Nhóm này bao gồm mỡ và dầu và các phần phân đoạn của chúng, có nguồn gốc từ các loại cá… hoặc động vật có vú ở biển…\" là câu RÀNG BUỘC phủ cả nhóm; fact dương + value=true. GIỮ (đồng ý phiên soát song song)."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "sua",
+      "lyDo": "ĐỒNG Ý phiên soát song song: bản nháp lược mất vế \"vẫn thuộc nhóm này khi được tinh chế\" bằng dấu \"…\" nhưng lại giữ lại chữ \"nhưng\", nên câu trích đọc lên thành \"…nhưng bị loại trừ nếu…\" — vế trước mất hết, mệnh đề \"nhưng\" không còn gì để đối lập. Đã lược QUA trọn vế đó nên câu trích tự nó nói đúng điều mục khẳng định. LƯU Ý: không thể trích trọn vế \"vẫn thuộc nhóm này khi được tinh chế\" — máy loại mục dieuKienVao có câu CHO PHÉP (dieu-kien-chi-cho-phep); vế đầy đủ vẫn nằm trong loaiTru[0] của chính nhóm này.",
+      "sua": {
+        "trich": "Mỡ và dầu có nguồn gốc từ cá hoặc động vật có vú ở biển…bị loại trừ nếu được hydro hoá, este hoá liên hợp, tái este hóa hoặc eledin hoá một phần hoặc toàn bộ (nhóm 15.16)."
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI NGỮ NGHĨA MÁY KHÔNG BẮT — clip cắt mất TOÀN BỘ vế phân biệt (phiên soát song song ghi nhận nhưng cho là phần đầu còn đủ; em ĐO LẠI: clip(55) dừng ở \"Mỡ và dầu có nguồn gốc từ cá hoặc động vật có vú ở biển…\" — cụm \"đã hydro hoá\" nằm ở ký tự 84-96, NGOÀI clip, nên phần đầu KHÔNG đủ). Runtime sẽ in ra \"Mỡ và dầu có nguồn gốc từ cá hoặc động vật có vú ở biển… → 15.16\", tức bảo MỌI dầu cá đều sang 15.16 — SAI, và trái với chính phamVi của nhóm. SỬA: rút xuống <=55 ký tự, giữ trọn bốn phép hoá chế (đã hydro hoá, este hoá liên hợp, tái este hóa, eledin hoá) để vẫn phân biệt được với dầu cá thường; câu trích giữ nguyên (nguyên văn đầy đủ, có DẤU HIỆU LOẠI TRỪ \"bị loại trừ\" + đích 15.16).",
+      "sua": {
+        "dieuKien": "Hydro hoá, este hoá liên hợp, tái este hoá, eledin hoá"
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "hoi 115 ký tự, clip(110) cắt mất dấu hỏi cuối (\"hay chưa?\") ⇒ câu hỏi in ra không còn dạng câu hỏi. SỬA: rút xuống <=110, giữ đủ bốn phép hoá chế và dấu hỏi.",
+      "sua": {
+        "hoi": "Hàng là mỡ và dầu đã hydro hoá, este hoá liên hợp, tái este hóa hoặc eledin hoá chưa?"
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Nguồn wco.150420: \"150420 Fats and oils and their fractions; of fish, (excluding liver-oils)\" — hỏi đúng cặp dầu gan cá ↔ mỡ/dầu cá khác dầu gan; \"Có\" (dầu gan cá) ⇒ 15041020|15041090, \"Không\" ⇒ 15042010|15042090 — CHIỀU ĐÚNG theo nghĩa \"excluding liver-oils\" (KHÔNG đảo thành \"trừ dầu gan cá\" cho nhánh có); cả hai mã đều thuộc nhóm 1504 nên không cần nêu trong câu trích, và nhánh \"có\" có căn cứ ở wco.150410 của chính nhóm này. GIỮ (đồng ý phiên soát song parallel)."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "sua",
+      "lyDo": "HAI LỖI MÁY KHÔNG BẮT: (1) bản nháp hỏi \"Hàng có nguồn gốc từ động vật có vú ở biển HOẶC từ các loại cá?\" — vế \"hoặc\" làm mệnh đề luôn ĐÚNG với mọi hàng trong nhóm ⇒ runtime in \"có→15043000\" và mô hình đẩy MỌI dầu cá sang 1504.30 (chỉ dành cho động vật có vú ở biển). ĐỒNG Ý phiên soát song parallel về cách viết: dùng hai vế đối lập \"mỡ và dầu của động vật có vú ở biển hay là mỡ và dầu của các loại cá?\" ⇒ \"Có\" (động vật có vú ở biển) → 15043000, \"Không\" (các loại cá) → phân nhóm 1504.2x. (2) BỔ SUNG nhánh \"không\": bản nháp chỉ liệt kê 15042010|15042090, BỎ SÓT 15041020|15041090 (dầu gan cá cũng không phải từ động vật có vú ở biển) ⇒ nếu không bổ sung thì dầu gan cá bị dẫn nhầm sang 1504.20. Mọi từ đều có trong câu trích (đoạn đầu nguồn).",
+      "sua": {
+        "hoi": "Hàng là mỡ và dầu của động vật có vú ở biển hay là mỡ và dầu của các loại cá?",
+        "neuKhong": "15041020|15041090|15042010|15042090"
+      }
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.150410: \"150410 Oils of fish; fish-liver oils and their fractions, whether or not refined, but not chemically modified\" — fact dương `la_dau_gan_ca_va_cac_phan_phan_doan_cua_chung` = true đúng chiều; vế \"not chemically modified\" đã được loạiTru[0] (15.16) của nhóm ghi nhận."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.150420: \"150420 Fats and oils and their fractions; of fish, (excluding liver-oils)\" — fact `la_mo_va_dau_va_cac_phan_phan_doan_cua_chung_tu_ca_tru_dau_gan_ca` = true bám đúng vế \"excluding liver-oils\" theo chiều ĐÚNG (bài học lô 041: dịch \"excluding\" thành \"trừ X\" là đảo nghĩa — ở đây không đảo)."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.150430: \"150430 Fats and oils and their fractions; of marine mammals\" — fact dương `la_mo_va_dau_va_cac_phan_phan_doan_cua_chung_tu_dong_vat_co_vu_o_bien` = true đúng chiều."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15041020: \"15041020 - - Các phần phân đoạn thể rắn\" — tên dòng nguyên văn; `tieuChi` `la_cac_phan_phan_doan_the_rac` = true phân biệt với dòng \"Loại khác\" của cùng phân nhóm."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" (tax.15041090 \"15041090 - - Loại khác\") — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.150410 đúng khuôn mẫu (1103, 0206, 0207, 0208); máy tự suy loaiKhac=true. GHI NHẬN: `dieuKien` 113 ký tự > trần clip 90 (runtime cắt đuôi; phần đầu \"Loại khác: Oils of fish; fish-liver oils…\" vẫn đủ để phân biệt)."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15042010: \"15042010 - - Các phần phân đoạn thể rắn\" — tên dòng nguyên văn; `tieuChi` phân biệt với dòng \"Loại khác\" 15042090."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" (tax.15042090 \"15042090 - - Loại khác\") — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.150420 đúng khuôn mẫu; máy tự suy loaiKhac=true."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15043000: \"15043000 - Mỡ và dầu và các phần phân đoạn của chúng, từ động vật có vú sống ở biển\" — tên dòng nguyên văn; `tieuChi` khớp với tieuChi6[2] của cùng nhóm."
+    }
+  ]
+}

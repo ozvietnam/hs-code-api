@@ -1,0 +1,64 @@
+{
+  "nhom": "1505",
+  "gopVoi": "review phiên soát song song 4b7e956 + vòng soát này",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "ĐỒNG Ý HOÀN TOÀN phiên soát song song: `text` mở đầu bằng \"Mỡ lông và chất béo thu được từ mỡ lông\" — đó là TÊN NHÓM chính thức lấy từ wco.150500, KHÔNG có trong câu trích khai nguồn nhom1505.nhom (lớp lỗi \"text khẳng định điều câu trích không nói\"); đồng thời `text` nêu khoản loại trừ 15.22 nhưng câu trích gốc dừng ở đoạn về lanolin nên mất khoản loại trừ. Đã viết lại `text` theo đúng lời nguồn (208 ký tự, vừa trần clip 220 của runtime) và NỐI thêm mảnh nguyên văn \"Nhóm này không bao gồm phế liệu của mỡ lông (nhóm 15.22).\" vào câu trích.",
+      "sua": {
+        "text": "Mỡ lông là một loại mỡ dính có mùi khó chịu, được chiết xuất từ nước xà phòng tẩy lông hoặc chuội hoặc hồ vải, và lanolin là sản phẩm đã được tinh chế của mỡ lông; không gồm phế liệu của mỡ lông (nhóm 15.22).",
+        "trich": "Mỡ lông là một loại mỡ dính có mùi khó chịu, được chiết xuất từ nước xà phòng tẩy lông hoặc chuội hoặc hồ vải.…Nó được dùng trong sản xuất các chất bôi trơn và cho các mục đích công nghiệp khác, nhưng nó được dùng chủ yếu như lanolin (sản phẩm đã được tinh chế của nó) hoặc để chiết xuất olein mỡ lông hoặc stearin mỡ lông.…Nhóm này không bao gồm phế liệu của mỡ lông (nhóm 15.22)."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "sua",
+      "lyDo": "ĐỒNG Ý phiên soát song parallel: fact `la_mo_long_va_chat_beo_thu_duoc_tu_mo_long` mượn tên nhóm chính thức từ wco.150500 trong khi mục khai nguồn nhom1505.nhom và câu trích chỉ nói về \"Mỡ lông là một loại mỡ dính có mùi khó chịu, được chiết xuất từ nước xà phòng tẩy lông hoặc chuội hoặc hồ vải.\" Đã rút fact về `la_mo_long` — đúng và đủ. KHÔNG dùng fact \"mỡ dính có mùi khó chịu\" vì lanolin tinh chế chỉ \"có mùi nhẹ đặc trưng\" ⇒ điều kiện đó không phủ cả nhóm.",
+      "sua": {
+        "fact": "la_mo_long"
+      }
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn \"Nhóm này không bao gồm phế liệu của mỡ lông (nhóm 15.22).\" — khoản loại trừ phủ cả nhóm, không phải câu CHO PHÉP; fact dương + value=false đúng chiều (mẫu nhà). GIỮ (đồng ý phiên soát song song)."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn nêu đích 15.22 ⇒ đích danh; `dieuKien` bám đúng câu nguồn. GIỮ."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích: \"Nhóm này không bao gồm các loại cồn đã xác định về mặt hóa học…và những chế phẩm dựa trên lanolin, ví dụ lanolin thêm thuốc hoặc chất thơm (nhóm 30.03 hoặc 30.04, hoặc Chương 33).\" — đích 30.03/30.04 nêu đích danh nên ghi \"3003|3004\"; vế \"Chương 33\" không mã hoá được (chương không phải mã nhóm) và vế \"các loại cồn đã xác định về mặt hóa học\" có định ngữ \"thường thuộc Chương 29\" (mềm) nên KHÔNG ghi mục — bản nháp xử lý đúng cả hai. GHI NHẬN: `dieuKien` 72 ký tự > trần clip 55 nhưng phần đầu \"Những chế phẩm dựa trên lanolin…\" giữ đủ định danh. GIỮ."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "ĐỒNG Ý phiên soát song parallel: nhánh \"không\" của bản nháp là \"mỡ lông và chất béo thu được từ mỡ lông\" — không có trong câu trích (nguồn khai nhom1505.nhom). Đã rút về \"mỡ lông\"; chiều Có/Không giữ nguyên (có → 1522, không → 1505), `hoi` không nhắc mã.",
+      "sua": {
+        "hoi": "Hàng là phế liệu của mỡ lông hay là mỡ lông?"
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "ĐỒNG Ý phiên soát song parallel về LỖI: nhánh \"không\" của bản nháp là \"mỡ lông và chất béo thu được từ mỡ lông\" — tên nhóm WCO không có trong câu trích. BỔ SUNG của em: bản sửa của họ vẫn dài 113 ký tự ⇒ clip(110) cắt mất dấu hỏi cuối, câu hỏi in ra không còn dạng câu hỏi ⇒ em rút thêm vế \"hoặc chất thơm\" (thuộc vế \"lanolin thêm thuốc hoặc chất thơm\" của nguồn) để vừa trần; chiều Có/Không giữ nguyên (có → 3003|3004, không → 1505), câu trích giữ nguyên.",
+      "sua": {
+        "hoi": "Hàng là chế phẩm dựa trên lanolin, lanolin thêm thuốc hay là mỡ lông?"
+      }
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15050010: \"15050010 - Lanolin\" — tên dòng nguyên văn; `tieuChi` `la_lanolin` = true bám đúng tên dòng."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" (tax.15050090 \"15050090 - Loại khác\") — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.150500 đúng khuôn mẫu (1103, 0206, 0207, 0208, 1502, 1504); máy tự suy loaiKhac=true."
+    }
+  ]
+}
