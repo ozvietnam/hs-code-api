@@ -1,0 +1,30 @@
+{
+  "gopVoi": "soát độc lập lô 063 (PR #484) — người soát KHÁC người soạn dev-zcode-mm",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Phạm vi = câu định nghĩa chung của nhóm \"Nhóm này bao gồm các phế liệu còn lại thu được từ sản xuất bột ca cao hoặc bơ ca cao.\" — phủ cả nhóm. Bốn mục (1)–(4) là phần chi tiết của chính định nghĩa đó; trích cả bốn mục lên ~640 ký tự (vượt luật ≤300) nên trích câu định nghĩa là chọn đúng, không phải bỏ sót. `text` không thêm chữ nào ngoài trích."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu \"Nhóm này bao gồm…\" LÀ câu ràng buộc (tiền lệ 80 mục NGUOI_DUYET dạng này đã gộp — mẹo \"chỉ có bao gồm thì để rỗng\" là mẹo quá rộng, đã bị bác ở lô 050); ở đây câu phủ cả nhóm 1802. `fact` snake_case bỏ dấu đúng (\"phe_lieu\", \"bot_cao\" ← \"bột\", \"bo_cao\" ← \"bơ\" — không viết \"bor\"). Câu trích không có câu cho phép (\"có thể…\", \"đã hoặc chưa…\") nên không rơi vào `dieu-kien-chi-cho-phep`."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu \"Nhóm này loại trừ khô dầu ca cao không có vỏ cứng, vỏ lụa, thu được từ quá trình chiết xuất bơ ca cao từ bột ca cao nhão (nhóm 18.03).\" — loại trừ dứt khoát, đích 18.03 nêu nguyên văn. `dieuKien` rút gọn theo nhóm (bỏ vế \"thu được từ quá trình chiết xuất bơ ca cao từ bột ca cao nhão\"), đúng mẫu nhà 1901→1101|1102 và 0304–0307 (loại trừ thu hẹp theo nhóm, không chép cả danh sách nhánh — lý do: giữ đủ nhánh làm mục nói RỘNG hơn nguồn và dài hơn, bị clip(…, 55) cắt giữa câu lúc chạy). Vế bị rút gọn vẫn nằm nguyên văn trong `trich`, mà runtime đính kèm `trich` làm căn cứ (`legal`) cho mọi challenge."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Hỏi \"Hàng là khô dầu ca cao không có vỏ cứng, vỏ lụa?\" → có→1803 (đích loại trừ) / không→1802 (chính nhóm) ⇒ đúng chiều, không đảo. `hoi` không nhắc mã, không thêm chữ ngoài trích."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Nhóm 1802 chỉ có một dòng biểu thuế 18020000; `dieuKien` chép đúng tên dòng \"Vỏ quả, vỏ hạt, vỏ lụa và phế liệu ca cao khác\"."
+    }
+  ]
+}

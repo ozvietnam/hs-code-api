@@ -1,0 +1,40 @@
+{
+  "gopVoi": "soát độc lập lô 063 (PR #484) — người soát KHÁC người soạn dev-zcode-mm",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Phạm vi ghép hai câu liền của chú giải nhóm: \"Nhóm này chỉ bao gồm bột ca cao chưa pha thêm đường hoặc chất làm ngọt khác.\" + \"Nhóm này bao gồm bột cacao thu được sau khi xử lý mảnh hạt, bột nhão và bột khô với chất kiềm (Carbonate natri hoặc carbonate kali…) để tăng độ hoà tan (ca cao hoà tan).\" — phủ cả nhóm (kể cả bột ca cao hoà tan). `text` bỏ ngoặc \"Carbonate natri hoặc carbonate kali…\" (chi tiết ví dụ) chứ không thêm mệnh đề nào; dấu lược chỉ đứng ở ranh giới câu, không nuốt ngoại lệ."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu \"Nhóm này CHỈ bao gồm bột ca cao chưa pha thêm đường hoặc chất làm ngọt khác.\" là câu ràng buộc rõ ràng, phủ cả nhóm 1805 (kể cả bột ca cao hoà tan vốn cũng chưa pha đường); `fact` snake_case bỏ dấu đúng, không có câu cho phép trong trích. Ghi \"chỉ bao gồm\" là điều kiện VÀO nhóm, không phải câu cho phép."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu \"Bột ca cao đã pha thêm đường hoặc chất ngọt khác và bột ca cao đã pha thêm sữa hoặc peptone thuộc nhóm 18.06. Tuy nhiên, dược phẩm trong đó có bột ca cao chỉ được sử dụng như là chất hỗ trợ hoặc chất dẫn cho thuốc thuộc nhóm 30.03 hoặc 30.04.\" — loại trừ dứt khoát, đích 18.06 nêu nguyên văn. QUAN TRỌNG: bản nháp KÉO CẢ câu \"Tuy nhiên…\" vào trích ⇒ không mất ngoại lệ dược phẩm (luật 31). `dieuKien` chỉ giữ nhánh \"pha thêm đường hoặc chất ngọt khác\" — thu hẹp theo nhóm, đúng mẫu nhà 1901→1101|1102 (giữ đủ nhánh sẽ làm mục nói rộng hơn nguồn và bị clip(…, 55) cắt giữa câu); nhánh \"sữa hoặc peptone\" vẫn nằm nguyên văn trong `trich`, mà runtime đính kèm `trich` làm căn cứ cho challenge."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Mục tách riêng cho ngoại lệ \"Tuy nhiên…\" — dược phẩm có bột ca cao chỉ dùng làm chất hỗ trợ hoặc chất dẫn cho thuốc thuộc nhóm 30.03 hoặc 30.04 ⇒ sang 3003|3004 (hai mã đều nêu nguyên văn trong câu trích). Tách thành mục riêng là đúng: giữ cả hai vế trong một `dieuKien` sẽ vượt trần clip 55 và bị cắt giữa câu (lô 060 vòng 3 đã sửa 3 mục vì lý do này). `dieuKien` giữ nhánh \"chất hỗ trợ\"; nhánh \"chất dẫn\" vẫn được `phanBiet[1].hoi` giữ đủ và nằm nguyên văn trong `trich` của cả hai mục."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Hỏi \"Hàng là bột ca cao đã pha thêm đường hoặc chất ngọt khác?\" → có→1806 / không→1805 ⇒ đúng chiều. Cùng câu trích với `loaiTru[0]` (kèm ngoại lệ dược phẩm) nên hai mục khớp nhau."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Hỏi \"Dược phẩm có bột ca cao chỉ dùng làm chất hỗ trợ hoặc chất dẫn cho thuốc?\" → có→3003|3004 (đích nằm NGOÀI nhóm, đã nêu nguyên văn trong trích) / không→1805 (chính nhóm) ⇒ đúng chiều bù, giữ đủ CẢ HAI nhánh \"hỗ trợ\" và \"dẫn\" — bổ sung cho `loaiTru[1]` (mục đó bị giới hạn bởi trần 55). Không nhắc mã phân nhóm trong `hoi`."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 18050000 \"Bột ca cao, chưa pha thêm đường hoặc chất tạo ngọt khác\": `dieuKien` chép đúng tên dòng biểu thuế, có nguồn tax.18050000."
+    }
+  ]
+}

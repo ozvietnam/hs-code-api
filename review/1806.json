@@ -1,0 +1,110 @@
+{
+  "gopVoi": "soát độc lập lô 063 (PR #484) — người soát KHÁC người soạn dev-zcode-mm",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Phạm vi lấy câu \"Nhóm này cũng bao gồm kẹo đường chứa ca cao với một tỷ lệ bất kỳ (bao gồm cả kẹo nougat sôcôla), bột ca cao đã cho thêm chất tạo ngọt, bột sôcôla, mứt sôcôla và nhìn chung, tất cả chế phẩm thực phẩm có chứa ca cao (trừ những sản phẩm đã được loại trừ trong Chú giải Tổng quát của Chương này).\" — mở đầu bằng đúng tên nhóm (\"Sô cô la và các chế phẩm thực phẩm khác có chứa ca cao\") và nêu đủ các dạng; `text` không thêm mệnh đề nào ngoài trích (cụm \"các… khác\" là cách diễn đạt của chính câu trích \"tất cả chế phẩm thực phẩm có chứa ca cao\"). Dưới trần clip 220."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích kết bằng \"và nhìn chung, tất cả chế phẩm thực phẩm có chứa ca cao\" ⇒ phủ cả nhóm 1806, và \"có chứa ca cao\" là đặc tính vật liệu mà hàng thuộc nhóm buộc phải có. `fact` snake_case bỏ dấu đúng. Câu có \"cũng bao gồm\" ở đầu nhưng vế sau là mệnh đề chung của nhóm, không phải câu cho phép; có tiền lệ đã duyệt cùng dạng (1507 `dieuKienVao[0]` NGUOI_DUYET với trích \"…Nhóm này cũng bao gồm…\")."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu \"(a) Sôcôla trắng (thành phần gồm bơ ca cao, đường và sữa bột) (nhóm 17.04).\" nằm trong khối \"Nhóm này không bao gồm:\" ⇒ loại trừ dứt khoát, đích 17.04 nêu nguyên văn; `dieuKien` rút gọn mệnh đề \"là\" và nằm dưới trần clip 55."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu \"(b) Bánh quy và các loại bánh bọc sôcôla khác (nhóm 19.05).\" — loại trừ dứt khoát, đích 19.05 nêu nguyên văn; `dieuKien` chép nguyên văn."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Hỏi \"Hàng là sôcôla trắng gồm bơ ca cao, đường và sữa bột?\" → có→1704 (đích loại trừ) / không→1806 (chính nhóm) ⇒ đúng chiều. `hoi` không nhắc mã."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Hỏi \"Hàng là bánh quy và các loại bánh bọc sôcôla khác?\" → có→1905 / không→1806 ⇒ đúng chiều, cùng câu trích với `loaiTru[1]`."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "Hỏi \"Sôcôla ở dạng khối, miếng hoặc thanh có nhân ở phần giữa không?\" → có→18063100 (có nhân) / không→18063200 (không có nhân): hai mã ĐỀU nằm trong nhóm nên không cần nêu trong trích; đây là mẫu nhà \"phanBiet 8 số\" (0203/0204). Trích ghép đúng hai vế của chú giải phân nhóm 1806.31: vế định nghĩa \"có nhân\" và vế phản ví dụ \"không được xem là 'có nhân'\" — đủ căn cứ cho CẢ HAI nhánh. Mảnh đầu bỏ tiền tố \"Phân nhóm 1806.31 Với mục đích của phân nhóm này,\" (chỉ là quy chiếu, mà mã 180631/18063100 đã nêu sẵn) và dấu lược nuốt DANH SÁCH vị nhân (ví dụ), không nuốt ngoại lệ nào."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 180610 là nút 6 số thật (18061000, laPhanNhom=180610); `trich` nguyên văn tiếng Anh theo luật wco.<6 số>; `value` \"Bột ca cao, đã pha thêm đường hoặc chất tạo ngọt khác\" bám đúng chữ biểu thuế 18061000 và chú giải nhóm, không dịch tự do."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 180620 là nút 6 số thật trong cây; `value` chép đúng danh sách dạng mà chú giải phân nhóm 1806.20 nêu (\"viên, hạt, tròn, giọt, hình bóng, lát mỏng, vảy, mảnh vụn, mảnh bào và các dạng tương tự\"). Lưu ý báo người duyệt: câu nguồn đặt điều kiện trong mệnh đề \"Hàng hóa được thể hiện 'dạng khối khác'… nếu chúng ở dạng…\"; bản nháp chỉ lấy vế \"nếu\" — cách hiểu rằng \"dạng khối khác\" CHÍNH LÀ danh sách liệt kê đó nên không sai nghĩa, nhưng nếu đọc thành hai điều kiện độc lập thì phạm vi hẹp hơn nguồn. Vì `tieuChi6` KHÔNG được đưa vào prompt runtime (chỉ `phamVi.text`/`dieuKien`/`hoi` mới vào) nên giữ nguyên, không sửa theo cách hiểu cá nhân."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 180631 là nút 6 số thật (18063100, laPhanNhom=180631); `value` \"Sôcôla ở dạng khối, miếng hoặc thanh, có nhân\" là định nghĩa nguyên văn của thuật ngữ \"có nhân\" trong chú giải phân nhóm 1806.31; `trich` lấy trọn câu định nghĩa (dưới ngưỡng 300 ký tự, không lược)."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 180632 là nút 6 số thật (18063200, laPhanNhom=180632); `value` \"…không có nhân\" khớp tên dòng biểu thuế 18063200 \"Không có nhân\", và `trich` là câu phản ví dụ nguyên văn của chú giải 1806.31."
+    },
+    {
+      "index": "tieuChi6[4]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 180690 là nút 6 số thật trong cây; \"n.e.c. in chapter 18\" dịch đúng nghĩa \"phần dư CỦA Chương 18\" (bài học lô 041: dịch \"n.e.c. in heading X\" thành \"trừ X\" là đảo nghĩa) ⇒ \"Các chế phẩm thực phẩm có chứa ca cao còn lại trong Chương 18\"."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 18061000: `dieuKien` chép đúng tên dòng biểu thuế, có nguồn tax.18061000."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 18062010 \"Kẹo sô cô la ở dạng khối, miếng hoặc thanh\": `dieuKien` chép nguyên văn tên dòng biểu thuế (kể cả lối chính tả \"sô cô la\" của biểu thuế — luật chép nguyên văn, không sửa)."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 18062090 \"Loại khác\": `dieuKien` chép đúng tên dòng; máy tự điền `loaiKhac`."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 18069010 \"Kẹo sô cô la ở dạng viên (tablets) hoặc viên ngậm (pastilles)\": `dieuKien` chép nguyên văn tên dòng biểu thuế."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 18069090 \"Loại khác\": `dieuKien` chép đúng tên dòng; máy tự điền `loaiKhac`."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 18063100 \"Có nhân\": điều kiện lấy từ chú giải phân nhóm 1806.31 (không phải tên dòng trần \"- - - Có nhân\"), ghi rõ \"ở phần giữa\" và vài ví dụ nằm trong câu trích; `dieuKien` 80 ký tự ≤ trần clip 90 nên không bị cắt giữa từ."
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 18063200 \"Không có nhân\": điều kiện lấy từ câu phản ví dụ nguyên văn của chú giải 1806.31 (\"…đã được bọc phủ sôcôla, không được xem là 'có nhân'\"); `dieuKien` 81 ký tự ≤ trần clip 90, không mất vế nào."
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 18069030: `dieuKienSo` mã hoá đúng hai ngưỡng có nguyên văn trong tên dòng (\"từ 40% trở lên nhưng không quá 50%\", đơn vị %); `dieuKien` nhắc lại cả hai ngưỡng nên người đọc prompt vẫn thấy ngưỡng (runtime chỉ in `dieuKien`, không in `dieuKienSo`)."
+    },
+    {
+      "index": "dong8[8]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 18069040: `dieuKienSo` mã hoá đúng hai ngưỡng có nguyên văn trong tên dòng (\"từ 5% trở lên nhưng không quá 10%\", đơn vị %); `dieuKien` nêu khoảng 5–10% và dùng cho trẻ sơ sinh/trẻ nhỏ như tên dòng, dưới trần clip 90."
+    }
+  ]
+}
