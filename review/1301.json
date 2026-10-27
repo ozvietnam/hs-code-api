@@ -1,0 +1,70 @@
+{
+ "nhom": "1301",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-27T13:05:00+07:00",
+ "soat": 10,
+ "soatDongKy": 11,
+ "daKiem": 10,
+ "xoa": 0,
+ "sua": 0,
+ "giu": 10,
+ "phamViSoat": "10 mục trong 5 khối mục 4 (phamVi 1 · dieuKienVao 0 · loaiTru 8 · phanBiet 1), đọc cùng tmp/so-tay/nguon/1301.txt.",
+ "ghiChu": "TÓM: 10/10 câu trích nguyên văn byte-exact và nói đúng điều mục khẳng định. KHÔNG SỬA, KHÔNG XOÁ. Ghi nhận: (a) `phamVi.text` (64 ký tự) nêu đủ hai phần ngang hàng của nhóm — phần (I) \"Nhựa cánh kiến đỏ\" (kệ sách HS 2022 KHÔNG có tiêu đề \"(I)\", nên lấy câu mở đầu làm định danh, không bịa tiêu đề) và phần (II) \"Gôm tự nhiên, nhựa cây, nhựa gôm và nhựa dầu\" ⇒ đúng quy ước lô 057. (b) Dấu lược \"…\" trong `phamVi.trich` phủ các mục (A)–(D) của phần (I) VÀ câu loại trừ \"Nhựa của một số cây phương Đông … bị loại trừ (nhóm 13.02)\" — nhưng câu loại trừ ấy đã có mục `loaiTru[0]` riêng (đích danh 13.02) nên không mất thông tin; đây cũng là văn phong sẵn có của kho. (c) `loaiTru[7]` (506 ký tự) là câu \"Tuy nhiên, chúng không thuộc nhóm này nếu trải qua các quá trình xử lý như … ; ví dụ: gôm và nhựa - gôm được hòa tan qua xử lý áp suất nước (nhóm 13.02), gôm được hòa tan qua xử lý bằng axit sulphuric (nhóm 35.06), và nhựa được xử lý nhiệt … (nhóm 38.06).\" — ba đích danh nằm trong CÙNG một câu nên phải trích trọn, không cắt được (giữ < 600). GHI NHẬN: nguồn dẫn ba đích bằng chữ \"ví dụ:\" ⇒ đây là các ca minh hoạ của luật chung (\"không thuộc nhóm này nếu trải qua các quá trình xử lý như…\"), không phải đích duy nhất; vẫn giữ vì mỗi đích đều được nguồn nêu tên và `dieuKien` đã thu hẹp đúng phạm vi \"gôm và nhựa\". (d) `loaiTru[0]` bỏ \"có thể\" và \"khi ở ngoài không khí\" (trần 55) — nhưng `phanBiet[0].hoi` giữ trọn \"đông lại tạo thành mảng bền khi ở ngoài không khí (sơn mài)\" nên điều kiện đầy đủ vẫn có trong prompt ⇒ giữ. (e) `loaiTru[4]` bỏ định ngữ giới hạn \"(thu được từ các chất của nhóm này)\" — vô hại vì \"chất tựa nhựa\" vốn luôn thuộc 33.01; `dieuKien` còn 21 ký tự trống nhưng cách viết lại đều dài hơn hoặc đổi nghĩa ⇒ ghi nhận, không sửa. (f) Mục (g) của khối loại trừ chỉ nêu \"Chương 38\" ⇒ KHÔNG ghi `loaiTru` (đúng luật \"chỉ ghi khi nguồn nêu đích danh số nhóm\") ⇒ giữ nguyên.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn, `text` nêu đủ hai phần ngang hàng (I) và (II); phần (I) không có tiêu đề trong kệ sách nên lấy câu mở đầu làm định danh — không bịa tiêu đề. GHI NHẬN dấu lược phủ câu loại trừ 13.02 (đã có ở `loaiTru[0]`) ⇒ giữ."
+  },
+  {
+   "index": "dieuKienVao",
+   "hanhDong": "giu",
+   "lyDo": "Để rỗng là ĐÚNG: nhóm có hai phần với điều kiện khác nhau, và câu \"chúng không thuộc nhóm này nếu trải qua các quá trình xử lý như…\" chỉ nói về phần (II) (không phủ cả nhóm) — đúng luật lô 054 (dieuKienVao phải phủ CẢ nhóm)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"Nhựa của một số cây phương Đông có thể đông lại, tạo thành một mảng bền khi ở ngoài không khí (như \"sơn mài Trung Quốc\", \"sơn mài Nhật Bản\"...) bị loại trừ (nhóm 13.02).\" — có DẤU HIỆU LOẠI TRỪ (\"bị loại trừ\"), đích danh 13.02 ⇒ giữ. `dieuKien` 48 ký tự < 55; phần \"khi ở ngoài không khí\" có ở `phanBiet[0].hoi`."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(a) Hổ phách (nhóm 25.30).\" — loại trừ dứt khoát, đích danh 25.30 ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(b) Thuốc có chứa nhựa balsam tự nhiên cũng như các thuốc được điều chế có chứa các nhựa balsam khác (nhóm 30.03 hoặc 30.04).\" — đích danh 2 nhóm, `sangNhom` \"3003|3004\" phủ đủ; `dieuKien` gộp hai vế bằng \"hoặc\" là chính xác (cùng nghĩa) ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(c) Thuốc nhuộm cánh kiến đỏ, chất màu được chiết xuất từ nhựa cánh kiến đỏ (nhóm 32.03).\" — đích danh 32.03; `dieuKien` 53 ký tự < 55 (rút \"cánh kiến đỏ\" sau \"nhựa\" là an toàn vì vế đầu đã ghi \"cánh kiến đỏ\") ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(d) Chất tựa nhựa (thu được từ các chất của nhóm này) và nhựa dầu đã chiết (nhóm 33.01).\" — đích danh 33.01 ⇒ giữ. GHI NHẬN: định ngữ giới hạn \"(thu được từ các chất của nhóm này)\" bị rút (xem ghiChu)."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(e) Dầu tall (tall oil) đôi khi còn gọi là nhựa thể lỏng (nhóm 38.03).\" — đích danh 38.03; bí danh \"nhựa thể lỏng\" là ghi chú, không phải điều kiện ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(f) Dầu nhựa thông (nhóm 38.05).\" — đích danh 38.05 ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn (506 ký tự) câu \"Tuy nhiên, chúng không thuộc nhóm này nếu trải qua các quá trình xử lý như xử lý với nước dưới áp suất, được xử lý bằng axit vô cơ hoặc bằng nhiệt; ví dụ: gôm và nhựa - gôm được hòa tan qua xử lý áp suất nước (nhóm 13.02), gôm được hòa tan qua xử lý bằng axit sulphuric (nhóm 35.06), và nhựa được xử lý nhiệt để chúng hòa tan trong dầu khô (nhóm 38.06).\" — ba đích danh nằm trong CÙNG một câu nên phải trích trọn (cắt bớt là mất đích); `sangNhom` \"1302|3506|3806\" phủ đủ, `dieuKien` 52 ký tự < 55 ⇒ giữ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều Có/Không đúng: hỏi \"Hàng là nhựa đông lại tạo thành mảng bền khi ở ngoài không khí (sơn mài)?\" → có = sơn mài (loại trừ) → 13.02, không = thuộc 1301; mã 13.02 có nêu trong câu trích; `hoi` không nhắc mã ⇒ giữ."
+  }
+ ]
+}

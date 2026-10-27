@@ -1,0 +1,138 @@
+{
+ "nhom": "1302",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-27T13:05:00+07:00",
+ "soat": 23,
+ "soatDongKy": 24,
+ "daKiem": 23,
+ "xoa": 0,
+ "sua": 1,
+ "giu": 22,
+ "phamViSoat": "23 mục trong 5 khối mục 4 (phamVi 1 · dieuKienVao 0 · loaiTru 21 · phanBiet 1), đọc cùng tmp/so-tay/nguon/1302.txt.",
+ "ghiChu": "TÓM: 23/23 câu trích nguyên văn byte-exact trong đúng khối nguồn; 22/23 nói đúng điều mục khẳng định. SỬA 1, XOÁ 0, GIỮ 22. PHÁT HIỆN THIẾU 1 MỤC (báo để người gộp quyết định — định dạng review không có hành động \"thêm\"): nguồn có một loại trừ mà `loaiTru` chưa ghi — \"Nhóm này cũng không bao gồm các chiết xuất từ thực vật đã được trộn hoặc pha (mà không thêm các thành phần khác) cho mục đích phòng hoặc chữa bệnh. Những hợp chất này, và các chiết xuất hợp chất thuốc tương tự … được phân loại vào nhóm 30.03 hay 30.04.\" (nguồn `nhom1302.nhom`). Đây là loại trừ KHÁC `loaiTru[16]` (mục (iii): hợp chất chiết xuất thực vật VỚI sản phẩm khác) — ở đây là trộn/pha MÀ KHÔNG thêm thành phần khác. Đề xuất bổ sung một mục `loaiTru` (dieuKien: \"Chiết xuất thực vật trộn/pha để phòng hoặc chữa bệnh\"; sangNhom \"3003|3004\"; nguôn `nhom1302.nhom`). Ghi nhận khác: (a) `phamVi.trich` (495 ký tự) có dấu lược \"…\" phủ TOÀN BỘ khối loại trừ (a)–(k) của phần (A) và 21 mục liệt kê (1)–(21) — nhưng mười một loại trừ có đích danh đều đã có mục riêng trong `loaiTru`; văn phong này giống kho đã gộp ⇒ giữ. (b) `loaiTru[9]` lấy đích 29.39 từ `ch13.chuong` (mục (f)) vì câu trong `nhom1302.nhom` chỉ nói \"xem Chú giải 1(f) của Chương này\" — trích nguyên văn từ đúng khối nguồn, không ghép hai nơi ⇒ đúng luật. (c) `loaiTru[19]` bỏ định ngữ \"nói chung\" của nguồn (\"…(nói chung thuộc nhóm 12.12)\") — định ngữ ấy bọc vế ĐÍCH, còn việc loại trừ đã tuyên bố ở tiêu đề \"Nhóm này không bao gồm:\" ⇒ vô hại, giữ. (d) `loaiTru[9].dieuKien` ghi \"từ cây anh túc\" (nguồn: \"từ thân cây anh túc\") và \"từ 50 %\" (nguồn: \"từ 50 % trở lên\") — \"từ 50 %\" hiểu là ≥ 50 %, không đổi nghĩa loại trừ ⇒ giữ. (e) `dong8[10].dieuKien` (13023200) bỏ \"đã hoặc chưa biến đổi\" — ngoài phạm vi mục 4, không ảnh hưởng phân loại (cả hai dạng đều ở 1302.32) ⇒ ghi nhận. (f) `tieuChi6` 1302.32 đặt fact chỉ nhắc \"hạt minh quyết hoặc hạt guar\" trong khi biểu thuế ghi \"quả minh quyết (1), hạt minh quyết (1) hoặc hạt guar\" — ngoài phạm vi mục 4 ⇒ ghi nhận.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn; `text` (185 ký tự < 220) nêu đủ ba phần ngang hàng (A) nhựa và chiết xuất — phần (A) không có tiêu đề trong kệ sách nên lấy câu mở đầu làm định danh — (B) chất pectic và (C) thạch rau câu, chất nhầy. GHI NHẬN: điều kiện \"các chất chiết xuất này không được chi tiết hoặc được ghi tại các nhóm chi tiết hơn của Danh mục\" chỉ có trong trích, chưa vào `text` — nhưng các loại trừ có đích danh đều nằm ở `loaiTru`, thêm vào `text` sẽ vượt trần 220 ⇒ giữ nguyên."
+  },
+  {
+   "index": "dieuKienVao",
+   "hanhDong": "giu",
+   "lyDo": "Để rỗng là ĐÚNG: nhóm có ba phần với điều kiện khác nhau, không câu ràng buộc nào phủ CẢ nhóm 4 số (luật lô 030)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(a) Gôm, nhựa cây, nhựa gôm và nhựa dầu tự nhiên (nhóm 13.01).\" — đích danh 13.01 ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(b) Chiết xuất malt (nhóm 19.01).\" — đích danh 19.01 ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(c) Chiết xuất của cà phê, chè hoặc chè Paragoay (nhóm 21.01).\" — đích danh 21.01 ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(e) Chiết xuất của thuốc lá (nhóm 24.03).\" — đích danh 24.03 ⇒ giữ. (Mục (d) \"…làm đồ uống có cồn (Chương 22)\" chỉ nêu Chương nên không ghi — đúng luật.)"
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(f) Long não (nhóm 29.14), glycyrrhizin và glycyrrhizates (nhóm 29.38).\" — hai đích danh, `sangNhom` \"2914|2938\" phủ đủ ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(g) Chiết xuất được dùng làm thuốc thử để xác định nhóm máu (nhóm 30.06).\" — đích danh 30.06 ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(h) Chiết xuất tanin (nhóm 32.01).\" — đích danh 32.01 ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(ij) Chiết xuất nhuộm (nhóm 32.03).\" — đích danh 32.03 ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[8]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(k) Cao su tự nhiên, nhựa cây balata, nhựa két, nhựa cây cúc cao su, nhựa cây họ sacolasea tự nhiên và các loại nhựa tự nhiên tương tự (nhóm 40.01).\" — đích danh 40.01; `dieuKien` rút gọn danh sách thành \"Cao su tự nhiên và các loại nhựa tự nhiên tương tự\" (53 ký tự < 55) — không thu hẹp nghĩa vì \"các loại nhựa tự nhiên tương tự\" đã bao trọn danh sách ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[9]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích lấy từ `ch13.chuong` mục (f): \"Dịch chiết đậm đặc từ thân cây anh túc có chứa hàm lượng alkaloid từ 50% trở lên tính theo trọng lượng (nhóm 29.39);\" — đích danh 29.39 nằm trong chính câu này, không ghép từ hai nơi (câu trong `nhom1302.nhom` chỉ trỏ sang Chú giải 1(f)) ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[10]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(Chất cam thảo chứa hàm lượng đường sucroza trên 10% tính theo trọng lượng, hoặc được đóng gói (tức là, được chế biến) dưới dạng kẹo đường với hàm lượng đường bất kỳ, bị loại trừ, xem nhóm 17.04).\" — loại trừ dứt khoát, đích danh 17.04, `dieuKien` giữ cả hai nhánh (sucroza > 10 % HOẶC đóng gói dạng kẹo) ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[11]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"Nhựa gai dầu, thô hoặc đã tinh chế, không thuộc nhóm này (nhóm 13.01).\" — chỉ loại trừ NHỰA, không loại trừ chiết xuất (mục (6) của nguồn nói chiết xuất và cồn của cây gai dầu THUỘC 1302) ⇒ không gộp \"A hoặc B\" thành một nhánh ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[12]",
+   "hanhDong": "sua",
+   "lyDo": "ĐIỀU KIỆN LOẠI TRỪ BỊ RÚT QUÁ MẠN (máy KHÔNG bắt): bản nháp ghi \"Hỗn hợp chiết xuất nhân sâm trộn thành phần khác\" — bỏ mất vế \"được dùng để chế biến \"trà sâm\" hoặc đồ uống từ sâm\" của nguồn. Hệ quả: runtime sẽ in \"LOẠI TRỪ: Hỗn hợp chiết xuất nhân sâm trộn thành phần khác → 21.06\", khiến hỗn hợp chiết xuất nhân sâm trộn bột (glucoza/lactoza) BÁN DƯỚI DẠNG BỘT bị đẩy sang 21.06, trong khi nguồn chỉ loại trừ khi hỗn hợp ấy dùng để chế biến trà sâm/đồ uống từ sâm (còn lại vẫn ở 1302). SỬA: `dieuKien` viết lại đủ hai ý trong trần 55 ký tự của runtime — \"Hỗn hợp nhân sâm trộn thành phần khác, chế biến trà sâm\" (55 ký tự, clip(…,55) không cắt). GHI NHẬN: phải rút \"chiết xuất\" và vế \"hoặc đồ uống từ sâm\" vì trần 55; \"trà sâm\" là ví dụ rõ nhất của nguồn, còn vế đồ uống vẫn có trong câu trích đầy đủ (224 ký tự). `trich` GIỮ NGUYÊN (nguyên văn, đã kiểm byte-exact).",
+   "sua": {
+    "dieuKien": "Hỗn hợp nhân sâm trộn thành phần khác, chế biến trà sâm"
+   }
+  },
+  {
+   "index": "loaiTru[13]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"Tuy nhiên, quả và lõi cây cassia bị loại trừ (nhóm 12.11).\" — loại trừ dứt khoát, đích danh 12.11; `dieuKien` ghi \"Quả và lõi cây cassia\" (CẢ HAI, không chỉ \"lõi\") nên không mâu thuẫn với vế \"Chiết xuất nước thu được từ lõi cây cassia\" ngay trước ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[14]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"Nhóm này không bao gồm papain (nhóm 35.07).\" — đích danh 35.07 ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[15]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(i) Xirô đã pha hương liệu có chứa các chiết xuất từ thực vật (nhóm 21.06).\" — đích danh 21.06 ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[16]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn mục (iii) (347 ký tự): \"Chế phẩm dược … gồm các hợp chất của các chiết xuất thực vật với các sản phẩm khác … (nhóm 30.03 hoặc nhóm 30.04).\" — đích danh 2 nhóm, `sangNhom` \"3003|3004\" phủ đủ ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[17]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn mục (iv) (284 ký tự): \"Các sản phẩm trung gian dùng cho quá trình sản xuất thuốc trừ sâu … (nhóm 38.08).\" — đích danh 38.08 ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[18]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"Nhóm này không bao gồm tinh dầu, chất tựa nhựa và nhựa dầu đã chiết (nhóm 33.01).\" — đích danh 33.01 ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[19]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(a) Rong biển và các loại tảo khác tươi hoặc đã làm khô (nói chung thuộc nhóm 12.12).\" — đích danh 12.12; định ngữ \"nói chung\" bọc vế ĐÍCH, còn việc loại trừ đã tuyên bố ở tiêu đề \"Nhóm này không bao gồm:\" ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[20]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(b) Axit alginic và muối alginate (nhóm 39.13).\" — đích danh 39.13 ⇒ giữ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều Có/Không đúng: hỏi \"Hàng là nhựa gai dầu thô hoặc đã tinh chế?\" → có = nhựa (loại trừ) → 13.01, không = chiết xuất/cồn của cây gai dầu → 1302. Trích gồm CẢ HAI câu (mục (6) và câu \"Nhựa gai dầu … không thuộc nhóm này\") nên không tách \"A hoặc B\" thành một nhánh đích duy nhất; mã 13.01 có nêu trong trích; `hoi` không nhắc mã ⇒ giữ."
+  }
+ ]
+}

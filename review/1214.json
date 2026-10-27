@@ -1,0 +1,55 @@
+{
+ "nhom": "1214",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-27T13:05:00+07:00",
+ "soat": 7,
+ "soatDongKy": 8,
+ "daKiem": 7,
+ "xoa": 0,
+ "sua": 0,
+ "giu": 7,
+ "phamViSoat": "7 mục trong 5 khối mục 4 (phamVi 1 · dieuKienVao 0 · loaiTru 5 · phanBiet 1), đọc cùng tmp/so-tay/nguon/1214.txt.",
+ "ghiChu": "TÓM: 7/7 câu trích nguyên văn byte-exact và nói đúng điều mục khẳng định. KHÔNG SỬA, KHÔNG XOÁ. Ghi nhận: (a) `phamVi.text` (209 ký tự) nêu ĐỦ hai phần ngang hàng của nhóm — phần (1) rễ cây và phần (2) cây trồng thức ăn gia súc; không lấy đoạn dẫn của phần đầu làm phạm vi cả nhóm (luật lô 030). (b) `phamVi.text` viết \"cà rốt\" không kèm màu, trong khi nguồn giới hạn \"cà rốt (có màu trắng hoặc vàng nhạt)\" và loại trừ \"Cà rốt (có màu vàng đỏ nhạt)\" → 07.06. Đã thử thêm định ngữ màu vào `text` nhưng phải vượt trần clip 220 (236 ký tự) và mọi cách rút gọn đều làm mất tên phần; vì carve-out đã nằm đầy đủ trong `loaiTru[0]` (có kèm màu) nên runtime vẫn phân định được ⇒ ghi nhận, không sửa. (c) `phamVi.trich` 350 ký tự (>300 theo lược đồ, <600 theo máy) — giữ nguyên vì phải trích liên tục cả hai phần (không câu nào nói cả hai). (d) `dieuKienVao` để rỗng là ĐÚNG: các câu \"vẫn được phân loại vào nhóm này ngay cả khi…\" / \"vẫn thuộc nhóm này ngay cả khi…\" là câu CHO PHÉP (máy loại), và không có câu ràng buộc nào phủ cả hai phần của nhóm. (e) `tieuChi6` (ngoài phạm vi mục 4) gắn ngưỡng \"tỉ lệ không quá 3 %\" của định nghĩa \"viên\" vào riêng phân nhóm 1214.10, trong khi câu nguồn nói chung cho mọi sản phẩm của nhóm; `tieuChi6` không đưa vào prompt runtime nên thiệt hại thấp ⇒ ghi nhận. (f) `tieuChi6` 1214.90 đặt tên fact có chữ \"khác\" (\"la_san_pham_lam_thuc_an_cho_gia_suc_khac\") trong khi tên WCO không có chữ \"khác\" — ngoài phạm vi mục 4 ⇒ ghi nhận.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn, nêu đủ hai phần (1) và (2) của nhóm; `text` 209 ký tự < trần 220, không cắt giữa câu. GHI NHẬN: \"cà rốt\" thiếu định ngữ màu của nguồn, nhưng carve-out đã ở `loaiTru[0]` ⇒ giữ nguyên, không sửa (xem ghiChu)."
+  },
+  {
+   "index": "dieuKienVao",
+   "hanhDong": "giu",
+   "lyDo": "Để rỗng là ĐÚNG: nhóm có hai phần với điều kiện khác nhau; các câu \"vẫn được phân loại vào nhóm này ngay cả khi…\" và \"vẫn thuộc nhóm này ngay cả khi…\" là câu CHO PHÉP, không được đặt value=true (luật lô 030)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(a) Cà rốt (có màu vàng đỏ nhạt) thuộc nhóm 07.06.\" — loại trừ dứt khoát, đích danh 07.06, `dieuKien` giữ định ngữ giới hạn \"có màu vàng đỏ nhạt\" ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(b) Rơm, rạ và trấu từ cây ngũ cốc (nhóm 12.13).\" — đích danh 12.13 ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(c) Sản phẩm rau dù được dùng làm thức ăn gia súc, nhưng không phải là được trồng cho riêng mục đích này như lá củ cải hoặc lá cà rốt và lá ngô (nhóm 23.08).\" — đích danh 23.08; `dieuKien` rút gọn thành \"Sản phẩm rau không trồng riêng cho thức ăn gia súc\" (50 ký tự < 55) và bỏ ví dụ lá — ví dụ chỉ là liệt kê, không đổi nghĩa loại trừ ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(d) Các chế phẩm dùng làm thức ăn chăn nuôi (ví dụ, thức ăn cho gia súc được làm ngọt) (nhóm 23.09).\" — đích danh 23.09; ví dụ trong ngoặc không phải đích ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"Khái niệm \"các sản phẩm tương tự làm thức ăn cho gia súc\" chỉ đề cập đến các loại cây trồng riêng cho mục đích này. Nó không bao gồm các phế liệu thực vật có thể được dùng cho mục đích tương tự (nhóm 23.08).\" — loại trừ dứt khoát, đích danh 23.08 ⇒ giữ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều Có/Không đúng: hỏi \"Hàng là cây trồng riêng cho mục đích làm thức ăn cho gia súc?\" → có = thuộc 1214, không = phế liệu thực vật → 23.08; cả hai nhánh đều có căn cứ trong câu trích (\"chỉ đề cập đến các loại cây trồng riêng…\" / \"Nó không bao gồm các phế liệu thực vật…\"). `hoi` không nhắc mã ⇒ giữ."
+  }
+ ]
+}

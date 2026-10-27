@@ -1,0 +1,30 @@
+{
+ "nhom": "1213",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-27T13:05:00+07:00",
+ "soat": 3,
+ "soatDongKy": 3,
+ "daKiem": 3,
+ "xoa": 0,
+ "sua": 0,
+ "giu": 3,
+ "phamViSoat": "3 mục trong 5 khối mục 4 (phamVi 1 · dieuKienVao 1 · loaiTru 1), đọc cùng tmp/so-tay/nguon/1213.txt.",
+ "ghiChu": "TÓM: 3/3 câu trích nguyên văn byte-exact và nói đúng điều mục khẳng định. KHÔNG SỬA, KHÔNG XOÁ. Ghi nhận: (a) `phamVi.trich` dài 300 ký tự — đúng trần lược đồ 300, <600 theo máy; `trich` không đưa vào prompt runtime nên không tốn token. (b) `phamVi.trích` dừng ở \"…nhưng không được chế biến thêm.\" và KHÔNG kéo câu ngoại lệ kế (\"Nhóm này không bao gồm rơm rạ đã được làm sạch, được tẩy trắng hoặc nhuộm (nhóm 14.01).\") vào — nhưng vế ngoại lệ ấy đã có mục `loaiTru[0]` riêng (đích danh 14.01) nên không mất thông tin. (c) `dieuKienVao[0]` dùng câu định nghĩa-duy nhất của nhóm (\"chỉ gồm … chưa chế biến … nhưng không được chế biến thêm\") làm điều kiện vào nhóm: hợp lệ vì nhóm 1213 chỉ có MỘT dòng biểu thuế 8 số (12130000) nên câu phủ CẢ nhóm, và câu là RÀNG BUỘC (không dính mẫu câu cho phép của máy). (d) GỢI Ý chưa dùng: định nghĩa \"viên\" (nén trực tiếp hoặc thêm chất kết dính ≤ 3 % tính theo trọng lượng) nằm ở chú giải Phần 12 (`phan12.phan`) và áp cho cả Phần — không gắn được vào `tieuChi6` vì 1213 không có nút 6 số riêng (chỉ có 1213.00), nên ghi nhận để người duyệt quyết định. (e) `dong8[0].dieuKien` rút \"làm thành dạng viên\" thành \"làm viên\" — ngoài phạm vi mục 4, rút gọn không đổi nghĩa phân loại ⇒ ghi nhận, không sửa.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn, là câu ĐỊNH NGHĨA nhóm 1213; `text` (154 ký tự) nêu đúng phạm vi và dưới trần clip 220. Không có phần ngang hàng nào bị bỏ sót (nhóm chỉ có một phần) ⇒ giữ."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"Nhóm này chỉ gồm rơm, rạ và trấu từ cây ngũ cốc chưa chế biến … nhưng không được chế biến thêm.\" là câu RÀNG BUỘC phủ CẢ nhóm 1213 (nhóm chỉ có một dòng 8 số 12130000) và không phải câu CHO PHÉP (không có \"ngay cả khi / vẫn được phân loại / đã hoặc chưa\") nên máy không loại ⇒ giữ. `fact` \"chua_che_bien_them\" bám đúng từ nguồn (\"chưa chế biến\", \"không được chế biến thêm\")."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"Nhóm này không bao gồm rơm rạ đã được làm sạch, được tẩy trắng hoặc nhuộm (nhóm 14.01).\" — loại trừ dứt khoát, đích danh 14.01; `dieuKien` giữ đủ ba vế giới hạn (đã làm sạch / tẩy trắng / nhuộm) nên không thu hẹp quá mức ⇒ giữ."
+  }
+ ]
+}

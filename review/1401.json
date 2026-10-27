@@ -1,0 +1,58 @@
+{
+ "nhom": "1401",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-27T13:05:00+07:00",
+ "soat": 8,
+ "soatDongKy": 8,
+ "daKiem": 8,
+ "xoa": 0,
+ "sua": 1,
+ "giu": 7,
+ "phamViSoat": "8 mục trong 5 khối mục 4 (phamVi 1 · dieuKienVao 1 · loaiTru 4 · phanBiet 2), đọc cùng tmp/so-tay/nguon/1401.txt.",
+ "ghiChu": "TÓM: 8/8 câu trích nguyên văn byte-exact; 7/8 nói đúng điều mục khẳng định. SỬA 1, XOÁ 0, GIỮ 7. Sửa: `phamVi.text` bản nháp VIẾT CỨNG \"cũng dùng làm bàn chải…\" trong khi nguồn nói \"cũng CÓ THỂ được sử dụng để làm bàn chải…\" — cắt mất câu rào \"có thể\" (đúng lớp lỗi \"cắt trích né câu rào\" mà máy KHÔNG bắt, vì máy chỉ kiểm mẫu câu cho phép ở `dieuKienVao`, không kiểm `phamVi.text`). Sửa bằng cách đưa \"có thể\" vào và tách vế \"chúng còn dùng để sản xuất bột giấy\" ra riêng cho đúng nghĩa nguồn (nguồn không rào vế này). Ghi nhận: (a) `phamVi.trich` 419 ký tự (>300 theo lược đồ, <600 theo máy) — giữ nguyên vì nguồn ngắt dòng GIỮA câu (\"Các nguyên liệu thô này\n\ncũng có thể…\") nên phải giữ nguyên `\n\n` để còn byte-exact. (b) `dieuKienVao[0]` dùng câu mở đầu của chú giải nhóm làm điều kiện vào nhóm — hợp lệ vì đây là đặc điểm định nghĩa của cả nhóm (tiêu đề Chương 14 \"Vật liệu thực vật dùng để tết bện\" và tên WCO 1401.10/1401.20/1401.90 đều dùng \"chủ yếu dùng để tết bện\"), khác với mẫu lỗi lô 054 (định nghĩa thuật ngữ chỉ phủ một phần) ⇒ giữ. (c) `loaiTru[0].trich` 315 ký tự — trích nguyên văn cả câu quy tắc chung của nhóm để không giấu vế loại trừ 12.13; `loaiTru[0].dieuKien` \"Rơm ngũ cốc trong tình trạng chưa chế biến\" GIỮ CHIỀU ĐÚNG (rơm CHƯA chế biến → 1213; rơm đã làm sạch/chuội/nhuộm → 1401 theo mục (6)) ⇒ không đảo chiều. (d) `dong8` ngoài phạm vi mục 4: `14012029` là dòng \"Loại khác\" nhưng `dieuKien` dùng mô tả SEN (\"Lõi cây song, mây đã tách, kích cỡ theo bề mặt cắt ngang\") thay vì công thức quy ước của nhà — thông tin đúng hơn (SEN mô tả chung cho 1401.20.21–1401.20.29) nên ghi nhận, không sửa; `14011000` bỏ \"chuội, chống cháy, đánh bóng hoặc nhuộm\" — không ảnh hưởng phân loại (mọi dạng tre đều ở 1401.10) ⇒ ghi nhận.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Bản nháp `text` khẳng định \"cũng dùng làm bàn chải, cán ô, cần câu, thừng, sản xuất bột giấy hoặc là rác thải\" — nhưng nguồn chỉ nói \"Các nguyên liệu thô này cũng CÓ THỂ được sử dụng để làm bàn chải, cán ô, ba toong, cần câu, ống tẩu, thừng,…, chúng còn dùng để sản xuất bột giấy, hoặc là rác thải.\" Đây là lớp lỗi \"cắt trích né câu rào\" mà máy KHÔNG bắt (máy chỉ kiểm mẫu câu cho phép ở `dieuKienVao`, không kiểm `phamVi.text`), và nó biến một câu CHO PHÉP thành khẳng định. SỬA: đưa \"có thể\" vào trước danh sách công dụng phụ — 215 ký tự < trần clip 220, không cắt giữa câu. GHI NHẬN: vì trần 220, câu rào \"có thể\" phải bao trọn cả vế cuối (\"sản xuất bột giấy hoặc là rác thải\") mà nguồn không rào vế đó — hệ quả này CHỈ LÀM CÂU YẾU ĐI (không sinh khẳng định thừa) nên không rủi ro phân loại; `trich` GIỮ NGUYÊN (nguyên văn, giữ nguyên `\n\n` của nguồn).",
+   "sua": {
+    "text": "Nguyên liệu thực vật thô chủ yếu dùng để gắn kết hoặc tết bện (chiếu, tấm chùi chân, thảm, khay, giỏ, hòm, vali, đồ nội thất, mũ); cũng có thể làm bàn chải, cán ô, cần câu, thừng, sản xuất bột giấy hoặc là rác thải."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"Nhóm này bao gồm nguyên liệu thực vật thô loại chủ yếu sử dụng để sản xuất các đồ vật bằng cách gắn kết hoặc tết bện…\" là đặc tính ĐỊNH NGHĨA của cả nhóm 1401 (tiêu đề Chương 14 và tên WCO 1401.10/1401.20/1401.90 đều dựa trên \"chủ yếu dùng để tết bện\"), phủ toàn bộ 7 mục (1)–(7) và 4 dòng biểu thuế 1401.90 — KHÁC với mẫu lỗi lô 054 (định nghĩa thuật ngữ chỉ phủ một phần của nhóm) ⇒ giữ. Câu không dính mẫu câu cho phép của máy."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"Ngoại trừ rơm ngũ cốc, mà trong tình trạng chưa chế biến bị loại trừ (nhóm 12.13), …\" — đích danh 12.13. `dieuKien` \"Rơm ngũ cốc trong tình trạng chưa chế biến\" GIỮ CHIỀU ĐÚNG (chỉ rơm CHƯA chế biến mới sang 12.13; rơm đã làm sạch/chuội/nhuộm thuộc mục (6) của nhóm) ⇒ không đảo chiều. Trích 315 ký tự giữ nguyên vì phải trích liên tục câu quy tắc chung (có cả loại trừ 12.13)."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"Vải từ cọ sợi chưa xe sợi bị loại trừ (nhóm 46.01).\" — loại trừ dứt khoát, đích danh 46.01, `dieuKien` giữ đủ định ngữ \"chưa xe sợi\" ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(a) Nan gỗ (chipwood) (nhóm 44.04).\" — đích danh 44.04 ⇒ giữ."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Nguyên văn \"(b) Nguyên liệu từ thực vật mô tả ở trên được dát mỏng, dùi đập, chải hoặc chế biến cách khác làm sợi xe (các nhóm 53.03 hoặc 53.05).\" — hai đích danh, `sangNhom` \"5303|5305\" phủ đủ; chủ thể \"Nguyên liệu từ thực vật mô tả ở trên\" chính là nhóm này nên `dieuKien` bỏ nó không đổi nghĩa ⇒ giữ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều Có/Không đúng: hỏi \"Hàng là rơm ngũ cốc trong tình trạng chưa chế biến?\" → có = loại trừ → 12.13, không = thuộc 1401; mã 12.13 có nêu trong câu trích; `hoi` không nhắc mã ⇒ giữ."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều Có/Không đúng: hỏi \"Hàng là vải từ cọ sợi chưa xe sợi?\" → có = loại trừ → 46.01, không = thuộc 1401; mã 46.01 có nêu trong câu trích; `hoi` không nhắc mã ⇒ giữ."
+  }
+ ]
+}
