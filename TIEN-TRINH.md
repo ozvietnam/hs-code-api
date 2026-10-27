@@ -8100,10 +8100,13 @@ tốt hơn mức nền của 4 nhóm trên.
 - Người soạn: `dev-zcode-mm`. Người soát: `dev-soat-doc-lap-lo063` — **khác người soạn**, đúng
   mục 4 của `docs/giao-viec/so-tay-giao-ngoai.md` ("không lô nào được gộp nếu chưa qua bước soát
   độc lập").
-- **Brief trỏ sai tên (lần thứ 14 — xem `so-tay-lo-quy-trinh`)**: đường dẫn CEO đưa là
-  `brief-st-soat-lo063.md`, tệp thật là `brief-st-soat-lo0063.md` (tên lô có số 0 ở giữa). Nội
-  dung brief trỏ đúng lô 063 (nhóm 1801–1806, PR #484) ⇒ lấy theo CSV + worktree + nhánh, như
-  mọi lần trước.
+- **Brief trỏ sai TÊN TỆP (KHÁC kiểu lần 13 — không phải trỏ sai lô)**: đường dẫn CEO đưa là
+  `brief-st-soat-lo063.md` — tệp đó **không tồn tại**; tệp thật là `brief-st-soat-lo0063.md`
+  (nhóm brief soát đặt số lô 4 chữ số có số 0 ở giữa: `lo0059`…`lo0063`; chỉ lô < 10 mới dùng
+  3 chữ số `lo001`…`lo009`). Nội dung brief trỏ **ĐÚNG** lô 063 (nhóm 1801–1806, PR #484) ⇒
+  sổ đếm "brief trỏ nhầm LÔ" của nhà **vẫn là 13**, không tăng. Bài học thêm: khi đường dẫn brief
+  không tồn tại thì **liệt kê thư mục brief** (`ls …/oz-dev-kit | grep brief-st-soat`) để tìm đúng
+  tên, đừng vội kết luận là trỏ nhầm lô.
 
 ## 1. Cách làm (không gật đầu cho qua)
 
