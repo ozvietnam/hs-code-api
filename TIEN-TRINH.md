@@ -7040,3 +7040,9 @@ nhóm 4907** (`49070029` "Loại khác" trần, cha `4907002` là tiêu đề qu
 - **CHƯA merge** — chờ người duyệt + soát độc lập (mục 4 giao việc).
 
 ---
+
+### PR — lô 059
+
+- **PR #477** (https://github.com/ozvietnam/hs-code-api/pull/477) — **KHÔNG merge** (chờ soát độc lập mục 4).
+- `docs/giao-viec/so-tay-lo.csv` dòng 059: `pr=477`; `trang_thai` giữ `dang-lam` (PR chưa merge),
+  `nguoi_lam=dev-zcode-mm`. Người gộp đặt `trang_thai=xong` khi merge.
