@@ -1,0 +1,46 @@
+{
+ "nhom": "1601",
+ "nguoiSoat": "dev-soat-doc-lap-lo061",
+ "luc": "2026-10-27T18:45:00+07:00",
+ "daKiem": 7,
+ "xoa": 0,
+ "sua": 3,
+ "ghiChu": "Soát ĐỘC LẬP 7/7 mục của nhóm 1601 (phamVi 1 · dieuKienVao 2 · loaiTru 1 · phanBiet 1 · dong8 2) — SỬA 3 mục (4 trường), XOÁ 0. Lớp lỗi chính: FACT THÊM CHỮ + BỎ MẤT NHÁNH 'HOẶC TIẾT' (gác soát từ 2 mức bắt được từ 'roi' không có trong nguồn — bài học lô 060 vòng 2) và trích 499 ký tự. GIỮ: dieuKienVao[1] fact dương + value=false lấy từ mục loại trừ (a) — đúng chiều, mẫu nhà ✓ · loaiTru[0] (16.02, đích danh trong trích) ✓ · phanBiet[0] (chiều Có/Không đúng) ✓ · 2 dòng 8 số ✓ · KHÔNG ghi loại trừ cho (a) 'thường thuộc nhóm 02.10 hoặc 16.02' (câu có 'thường thuộc' — máy loại HEDGE_LOAI_TRU; đã nằm ở dieuKienVao[1]) và (b) 'Chương 2' (không nêu đích danh nhóm) — đúng luật 3. NGUỒN BẤT THƯỜNG (ghi vào mô tả PR): mục loại trừ (c) của nhóm 1601 tự mâu thuẫn — 'Các chế phẩm có vỏ bao ngoài nhưng không phải là loại thường làm vỏ xúc xích, trừ khi các chế phẩm này không có vỏ bao ngoài như vậy có thể được phân loại trong nhóm này (nhóm 16.02).' (vừa nằm trong 'không bao gồm' vừa dẫn về chính nhóm này) ⇒ KHÔNG ghi loại trừ (không đoán). CẢNH BÁO GHI LẠI (không sửa): dong8[1].dieuKien dài 145 > trần clip 90 ⇒ runtime cắt mất đuôi ' insects, and food preparations based on these products'; là dòng 'Loại khác' bắt lấy tên WCO 6 số (mẫu nhà), phần cắt không đảo chiều điều kiện, và lô 060 vòng soát cũng không sửa loại tràn này ⇒ giữ nguyên, đưa vào mô tả PR.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "TRÍCH 499 KÝ TỰ (vùng im lặng 300–600, máy chỉ chặn >600). Rút xuống 290: giữ nguyên câu định nghĩa nhóm mà `text` dựa vào (đã bao gồm cả '(kể cả lòng và dạ dày)' và '(tự nhiên hoặc nhân tạo)'), bỏ câu kế 'Tuy nhiên, một số sản phẩm này có thể không có vỏ ngoài…' — `text` không nói tới nên không mất căn cứ nào. `text` giữ nguyên (213 ký tự ≤ trần clip 220).",
+   "sua": {
+    "trich": "Nhóm này bao gồm xúc xích và các sản phẩm tương tự, tức là, các chế phẩm gồm thịt hoặc phụ phẩm dạng thịt ăn được sau giết mổ (kể cả lòng và dạ dày) hoặc côn trùng, đã được băm hoặc xay nhỏ, hoặc tiết, được nhồi vào lòng, dạ dày, bong bóng, da hoặc vỏ bọc tương tự (tự nhiên hoặc nhân tạo)."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "GÁC SOÁT TỪ 2 MỨC (giữ dấu) bắt được: fact có từ 'roi' KHÔNG có trong nguồn. Người soạn đã thêm chữ 'trước rồi' và BỎ MẤT nhánh 'hoặc tiết' của câu nguồn '…đã được băm hoặc xay nhỏ, hoặc tiết, được nhồi vào lòng, dạ dày, bong bóng, da hoặc vỏ bọc tương tự…' ⇒ đọc thành chỉ nhận thịt băm, loại bỏ dồi tiết — trong khi dồi tiết CHÍNH LÀ sản phẩm của nhóm 16.01. SỬA theo đúng từ nguồn, không thêm bớt: 'da_bam_hoac_xay_nho_hoac_tiet_duoc_nhoi_vao_long_da_da_bong_bong_da_hoac_vo_boc'. `trich` giữ nguyên (đã là câu nguyên văn đầy đủ, 233 ký tự ≤300).",
+   "sua": {
+    "fact": "da_bam_hoac_xay_nho_hoac_tiet_duoc_nhoi_vao_long_da_da_bong_bong_da_hoac_vo_boc"
+   }
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "sua",
+   "lyDo": "MỘT NHÁNH CỦA 'A HOẶC B' BỊ TÁCH THÀNH MỘT NHÁNH (lớp lỗi mục 4 brief / lô 030). Nguồn: '…nhưng **không xay hoặc không băm trước**…' — phủ định bao trùm cả hai phép (xay và băm), nghĩa là thịt CHƯA được xay cũng chưa được băm. Bản nháp ghi fact '…_khong_bam_truoc' ⇒ chỉ còn nhánh 'không băm', bỏ mất nhánh 'không xay' ⇒ điều kiện vào nhóm rộng hơn hàng thật (thịt ĐÃ xay nhưng chưa băm vẫn lọt vào 16.01 dù nguồn loại trừ). SỬA: chép đủ hai nhánh theo nguồn, giữ value=false ⇒ đọc thành 'không (xay hoặc băm trước)' = false ⇔ đã xay hoặc đã băm. `trich` giữ nguyên (đã là câu nguyên văn đầy đủ, chứa cả 'không xay hoặc không băm trước').",
+   "sua": {
+    "fact": "la_thit_nhoi_trong_bong_bong_long_hoac_vo_ngoai_nhung_khong_xay_hoac_khong_bam_truoc"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 1602: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 30 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `hoi` không nhắc mã phân nhóm; chiều Có/Không đúng (có → 1602, không → 1601); `hoi` 80 ký tự ≤ trần clip 110."
+  }
+ ],
+ "giu": 2
+}

@@ -1,0 +1,52 @@
+{
+ "nhom": "1522",
+ "nguoiSoat": "dev-soat-doc-lap-lo061",
+ "luc": "2026-10-27T18:45:00+07:00",
+ "daKiem": 10,
+ "xoa": 0,
+ "sua": 0,
+ "ghiChu": "Soát ĐỘC LẬP 10/10 mục của nhóm 1522 (phamVi 1 · loaiTru 4 · phanBiet 2 · boPhan 1 · dong8 2) — KHÔNG cần sửa, KHÔNG xoá. Đã kiểm: (1) phamVi.text 169 ký tự ≤ trần 220, nêu đúng hai phần (chất nhờn tự nhiên/nhân tạo + phế thải xử lý chất béo hoặc sáp); trích 187 ký tự ≤300; đoạn lược nuốt 1571 ký tự = toàn bộ phần (A) chi tiết + khối loại trừ + 7 mục của phần (B) — NHƯNG cả 3 loại trừ có đích danh của phần (A) (15.18 / 34.02 / 34.03) ĐÃ có trong loaiTru[0..2], và mục (a) Tóp mỡ (23.01) có trong loaiTru[3] ⇒ không mất thông tin nào. (2) loaiTru[0..3]: đích danh 15.18/34.02/34.03/23.01 đều có trong câu trích ✓; không ghi loại trừ cho mục (b) 'khô dầu, bã ép dư thừa ... (các nhóm từ 23.04 đến 23.06)' — đúng luật 3 (dải số không mã hoá được vào sangNhom; mẫu lô 047), GHI NHẬN để mô tả PR. (3) phanBiet 2 câu: chiều Có/Không đúng (có → 15.18 / 23.01; không → 15.22). (4) boPhan 'Hai phần:' là mẫu nhà; tomTat 114 ≤ trần 160. (5) dong8[1] 'Loại khác' lấy tên WCO 6 số theo luật 6 ✓ (mẫu nhà). CẢNH BÁO GHI LẠI (không sửa, giống 53% mục dong8 của toàn bộ sổ tay đã gộp): dong8[1].dieuKien dài 105 > trần clip 90 ⇒ runtime cắt mất đuôi 'vegetable waxes'; là dòng 'Loại khác' bắt, phần cắt không đảo chiều điều kiện, và lô 060 vòng soát cũng KHÔNG sửa loại tràn này (chỉ sửa phamVi.text/loaiTru.dieuKien/phanBiet.hoi) ⇒ giữ nguyên, đưa vào mô tả PR.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `phamVi.text` 3 ký tự ≤ trần clip 220 của runtime; `trich` nguyên văn và đủ căn cứ cho từng vế của text (đã đối chiếu từng vế với nguồn)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 1518: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 45 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 3402: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 21 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 3403: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 25 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 2301: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 42 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `hoi` không nhắc mã phân nhóm; chiều Có/Không đúng (có → 1518, không → 1522); `hoi` 71 ký tự ≤ trần clip 110."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `hoi` không nhắc mã phân nhóm; chiều Có/Không đúng (có → 2301, không → 1522); `hoi` 32 ký tự ≤ trần clip 110."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `boPhan.tomTat` 114 ký tự ≤ trần clip 160; mẫu nhà 'N phần: …' (0304/1509/1510/1521/1522 đều dùng); câu trích nguyên văn."
+  }
+ ],
+ "giu": 8
+}

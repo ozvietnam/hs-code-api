@@ -3,6 +3,176 @@
 <!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
 ---
 
+# SOÁT ĐỘC LẬP lô 061 — 6 nhóm (1518 1520 1521 1522 1601 1602) (phiên `dev-soat-doc-lap-lo061`, 27/10/2026)
+
+- **Nhánh:** `so-tay/lo-061` (worktree `hs-code-api-wt-st-lo061`) — **CHƯA merge**, chờ người duyệt. PR #481.
+- **Người soát:** `dev-soat-doc-lap-lo061` — **KHÁC** người soạn (`dev-zcode-mm`).
+- **Phạm vi soát:** TOÀN BỘ `phamVi` · `boPhan` · `dieuKienVao` · `loaiTru` · `phanBiet` của 6 nhóm
+  (50 mục) + đọc lại `tieuChi6` (13) và `dong8` (47) để kiểm chéo ⇒ **110/110 mục**.
+- **Kết quả:** sửa **13 mục / 15 trường** · xoá **0** · giữ **40 mục** (ghi rõ từng mục trong `review/<nhom>.json`).
+  Sau soát vẫn **110/110 (100 %)**.
+
+## Sai lệch brief ↔ thực tế (đã tự đối chiếu)
+
+- CEO trỏ `brief-st-soat-lo061.md` — tệp thật trong `oz-dev-kit` là **`brief-st-soat-lo0061.md`** (4 chữ số,
+  đủ `0061`). Cũng như mọi lô trước, **phần "dòng lệnh mẫu" trong brief là của lô 001** ⇒ không dùng.
+- Brief ghi `--bao-cao=data/so-tay/bao-cao/lo-0061.json` — theo quy ước nhà (memory
+  `bao-cao-lo-so-tay-phai-dung-dinh-dang-lo-0NN`) tệp là **`lo-061.json`** ⇒ dùng `lo-061.json`,
+  KHÔNG tạo tệp lạ `lo-0061.json`.
+- Brief ghi `--nguoi-soan="dev-zcode-mm"` ⇒ giữ nguyên (mẫu nhà: lô 059 sau khi soát vẫn ghi
+  `provider: dev-zcode-mm` trong `data/so-tay/bao-cao/lo-059.json`).
+
+## Các bước
+
+1. **Đọc trước:** `docs/giao-viec/so-tay-giao-ngoai.md` (mục 4 + 11 luật) → `brief-st-soat-lo0061.md`
+   → `tmp/so-tay/nguon/_he-thong.txt`.
+2. **Đọc HẾT 6 tệp nguồn** `tmp/so-tay/nguon/{1518,1520,1521,1522,1601,1602}.txt` (96.872 ký tự)
+   **cùng** 6 bản nháp `tmp/so-tay/raw/*.json`; đối chiếu từng mục: câu trích CÓ THẬT không, và có NÓ ĐÚNG
+   điều mục khẳng định không.
+3. **Quét máy 5 lớp lỗi soát** (bộ kiểm của nhà KHÔNG bắt):
+   `scripts/scan-so-tay-soat.mjs` (mới — lấy từ nhánh lô 060 chưa gộp) + 3 script riêng trong
+   `tmp/so-tay/` (đo khoảng lược, gác soát từ giữ dấu, kiểm trích mới).
+4. **Đếm tiền lệ trong `data/so-tay/`** (512 nhóm / 14.057 mục) TRƯỚC khi quyết định giữ/xoá/sửa.
+5. Ghi `review/<nhom>.json` → áp 2 pha → nạp lại → đổi `nguonLoai` → kiểm → commit → push → **KHÔNG merge**.
+6. **Cập nhật body PR #481** (`gh pr edit --body-file`): thêm mục *"🧭 SOÁT ĐỘC LẬP (mục 4 giao việc) — ĐÃ
+   XONG"* (số mục soát / giữ / sửa / xoá theo bảng từng nhóm + 5 nhóm lỗi + mục "Ghi nhận (KHÔNG sửa)"),
+   và **thay mục "Những mục `dieuKien` có ghi điều mà câu trích không nói"** của người soạn bằng bảng
+   **KẾT LUẬN CỦA NGƯỜI SOÁT** cho từng điểm (giữ / đã sửa / giữ có điều kiện) — đây là câu trả lời cho
+   4 điểm người soạn đã dẳng dấu, trong đó **1518 `dieuKienVao` `= false` là CHIỀU ĐÚNG** (không phải đảo
+   chiều như người soạn nghi ngờ) và **1601 `dieuKienVao` = false là CHIỀU SAI** (đã sửa).
+7. `so-tay-lo.csv` dòng 061 **giữ** `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm`, `pr=481` (người gộp đặt
+   `trang_thai=xong` khi merge).
+
+## 5 lớp lỗi — đều thuộc loại máy `check-so-tay` KHÔNG bắt được
+
+### 1. ĐIỀU KIỆN LOẠI TRỪ THIẾU NGỮ CẢNH ⇒ ĐẢO CHIỀU (1518 `loaiTru[0]`) — lớp lỗi của lô 060
+
+- Nguồn: mục (4) nói về *"Dầu sulphat hoá"*; câu kế tiếp *"**Nếu quá trình đó** được thực hiện thêm, thu được
+  sản phẩm rắn (các chất thay thế cao su dẫn xuất từ dầu) (nhóm 40.02)"* — "quá trình đó" = quá trình
+  sulphat hoá.
+- Bản nháp ghi `dieuKien` = *"Sản phẩm rắn (chất thay thế cao su dẫn xuất từ dầu)"* ⇒ đọc thành **MỌI sản
+  phẩm rắn đều loại sang 40.02**, **trái nguồn**: chính nguồn còn nói *"Linoxyn, sản phẩm có tính chất như
+  cao su **ở dạng bán rắn** … cũng được phân loại trong nhóm này"*.
+- **Sửa:** `dieuKien` → *"Dầu sulphat hoá thực hiện thêm thành sản phẩm rắn"* (49 ≤ trần clip 55);
+  `trich` rút 444 → 249 ký tự **và nối mở đầu mục (4)** để "quá trình đó" có chủ ngữ.
+
+### 2. MẤT VẾ LOẠI TRỪ trong `text` — mô hình đọc `text`, KHÔNG đọc `trich` (1521 + 1602)
+
+- `soTayBlock` (`lib/so-tay-gates.js:134`) chỉ in `phamVi.text` vào khối sổ tay ⇒ cắt `text` là cắt mất
+  thông tin **cho mô hình**, dù `trich` còn nguyên.
+- **1602**: bản nháp dừng câu nguồn ngay sau *"thuộc Chương này"* ⇒ mất **hai loại trừ lớn nhất** của nhóm
+  (xúc xích/sản phẩm tương tự → 16.01; sản phẩm chiết xuất từ thịt và nước thịt ép → 16.03).
+  Sửa `text` (110 → 218 ký tự ≤ trần 220).
+- **1521**: dấu lược nuốt **toàn bộ khối loại trừ của phần (I)**, trong đó câu *"Các hỗn hợp này thường thuộc
+  Chương 34 (nhất là nhóm 34.04 hoặc 34.05)"* **không mục nào khác của sổ tay bắt được** (không thể làm
+  `loaiTru`: máy loại câu có "thường thuộc" — `HEDGE_LOAI_TRU`; cũng không nêu đích danh nhóm) ⇒ mô hình
+  không thấy hỗn hợp sáp thực vật ra khỏi nhóm 1521. Sửa: nối (c) + câu Chương 34 vào `trich` (165 → 268
+  ký tự) **và** thêm vế loại trừ vào `text` (163 → 220 ký tự = đúng trần clip).
+- Mẫu nhà đã dùng `phamVi.text` có vế loại trừ kiểu này: 1504 (*"không gồm mỡ và dầu đã hydro hoá…"*),
+  1505, 1511 (*"không gồm dầu hạt cọ…"*).
+
+### 3. `fact` THÊM CHỮ + BỎ MẤT NHÁNH (1601 `dieuKienVao[0]`) — gác soát từ 2 mức bắt được
+
+- Nguồn: *"…đã được băm hoặc xay nhỏ, **hoặc tiết**, được nhồi vào lòng, dạ dày, bong bóng, da hoặc vỏ bọc
+  tương tự…"*.
+- Bản nháp ghi fact `…_truoc_roi_nhoi_…` ⇒ **thêm chữ "trước rồi"** (không có trong nguồn — gác soát từ
+  **giữ dấu** bắt được) **và bỏ mất nhánh "hoặc tiết"** ⇒ đọc thành chỉ nhận thịt băm, **loại bỏ dồi tiết**
+  — trong khi dồi tiết chính là sản phẩm của nhóm 16.01.
+- Sửa theo đúng từ nguồn: `da_bam_hoac_xay_nho_hoac_tiet_duoc_nhoi_vao_long_da_da_bong_bong_da_hoac_vo_boc`.
+
+### 4. TRÍCH 300–600 (vùng im lặng) + TRÍCH MỞ ĐẦU BẰNG ĐẠI TỪ (9 trường)
+
+- **Trích >300** (luật soạn ≤300; máy chỉ chặn **>600** ⇒ lọt): 1518 ×3 (444), 1601 ×1 (499),
+  1602 ×3 (579, 579, 384) ⇒ rút hết về ≤300, **không mất vế nào mà `text`/`dieuKien` dựa vào**.
+- **Trích mở đầu bằng đại từ** (bài học lô 035/039): 1518 `phanBiet[0]` bắt đầu *"**Dầu này** được dùng để…"*
+  ⇒ tự nó không nói được mình nói về loại dầu nào. Sửa: nối thêm *"(b) Dầu khô (như dầu hạt lanh)"* nguyên văn
+  ở đầu câu ⇒ "Dầu này" và "chúng" có chủ ngữ.
+
+### 5. MỘT NHÁNH CỦA "A HOẶC B" BỊ TÁCH THÀNH MỘT NHÁNH (1601 `dieuKienVao[1]`) — lớp lỗi mục 4 brief
+
+- Nguồn: *"…nhưng **không xay hoặc không băm trước**…"* — phủ định bao trùm **cả hai** phép (xay và băm),
+  nghĩa là thịt chưa được xay **cũng** chưa được băm (tiếng Anh gốc: *"not minced or ground"*).
+- Bản nháp ghi fact `…_nung_khong_bam_truoc` ⇒ chỉ còn nhánh *"không băm"*, **bỏ mất nhánh "không xay"** ⇒
+  điều kiện vào nhóm **rộng hơn hàng thật**: thịt **đã xay** nhưng chưa băm vẫn lọt vào 16.01 dù nguồn loại trừ.
+- **Sửa:** `…_nung_khong_xay_hoac_khong_bam_truoc` (giữ `value=false` ⇒ đọc thành *"không (xay hoặc băm
+  trước) = false"* ⇔ đã xay hoặc đã băm).
+
+## Ghi nhận (KHÔNG sửa) — để người duyệt đối chiếu
+
+- **1521 — (d) và (e) của phần (I) vẫn nằm trong đoạn bị lược.** Bốn mục loại trừ nằm liền nhau trong nguồn;
+  bất kỳ câu trích nào có (II)/(III) đều phải lược qua chúng. (a) và (b) đã có trong `loaiTru[0..1]`;
+  (c) + câu Chương 34 đã đưa vào `phamVi`.
+- **1522 — mục (b) "khô dầu, bã ép dư thừa … (các nhóm từ 23.04 đến 23.06)"**: dải số ⇒ không mã hoá được vào
+  `sangNhom` (mẫu lô 047) ⇒ bỏ mục, không ghi ra ngoài.
+- **1601 — mục loại trừ (c) tự mâu thuẫn trong nguồn**: *"Các chế phẩm có vỏ bao ngoài nhưng không phải là
+  loại thường làm vỏ xúc xích, trừ khi các chế phẩm này không có vỏ bao ngoài như vậy **có thể được phân
+  loại trong nhóm này** (nhóm 16.02)."* — vừa nằm trong "không bao gồm" vừa dẫn về chính nhóm ⇒ KHÔNG đoán,
+  không ghi loại trừ.
+- **1602 — 11 dòng "Loại khác" có `dieuKien` dài 91–150 > trần clip 90**, 6 dòng cắt mất vế
+  *"(excluding livers and homogenised preparations)"* / *"n.e.c. in heading no. 1602"*. **Đây là điều kiện
+  CHUNG của toàn sổ tay** (3.289/6.154 dòng `dong8` đã gộp vượt 90) và lô 060 vòng soát cũng **không** sửa
+  loại tràn này (chỉ sửa `phamVi.text` / `loaiTru.dieuKien` / `phanBiet.hoi`) ⇒ giữ nguyên, đưa vào mô tả PR
+  để người duyệt quyết. Tương tự: 1522 `dong8[1]` (105) và 1601 `dong8[1]` (145).
+- **Lỗi chính tả trong NGUỒN (chép nguyên văn, không sửa):** chú giải nhóm 1521 ghi *"…hoặc chưa tinh chế
+  hoặc pha **mầu**"* ở phần (II) (đúng chính tả: "màu") — khác phần (III) ghi "màu". Bản nháp đã chép
+  đúng; em có một lúc gõ tay "màu" trong hồ sơ review ⇒ máy bắt (`trich-khong-co-trong-nguon`) ⇒ đã sửa lại
+  theo nguồn (xem "Sai sót của chính em" bên dưới).
+
+## Sai sót của chính em (đã tự bắt trước khi nạp — ghi lại để lô sau không dính)
+
+- **Câu trích gõ tay bị méo 1 ký tự**: hồ sơ review 1521 viết *"pha màu"* ở phần (II) trong khi nguồn ghi
+  *"pha **mầu**"* (lỗi chính tả của nguồn) ⇒ máy `check-so-tay --raw` **ĐỎ** (`trich-khong-co-trong-nguon`).
+  Khắc phục: viết `tmp/so-tay/sua-trich-tu-nguon-061.mjs` — **tự lấy lại câu NGUYÊN VĂN từ khối nguồn**
+  (fold 1-1 giữ độ dài để ánh xạ vị trí), không tin bản gõ tay. Chạy lại cho cả 6 nhóm ⇒ **0 mảnh còn
+  lệch** ⇒ áp review → xanh.
+
+## Đếm tiền lệ trước khi kết luận (để không xoá nhầm mẫu đã duyệt)
+
+Đã quét `data/so-tay/` **trước** khi quyết định (kho 512 nhóm, 14.057 mục):
+
+| mẫu | số liệu kho | kết luận của em |
+|---|---|---|
+| `dieuKienVao` có `value=false` (fact dương) | 83 mục | chuẩn nhà ⇒ **giữ** 1520 `dieuKienVao[1]`, 1518 `dieuKienVao[0]`, 1601 `dieuKienVao[1]` |
+| `phanBiet` có `neuKhong` = chính nhóm 4 số | 788 mục | chuẩn nhà ⇒ **giữ** toàn bộ `phanBiet` của lô 061 |
+| `boPhan.tomTat` mở đầu "Hai phần:" / "Ba phần:" | 0304 · 1509 · 1510 · 1521 · 1522 | chuẩn nhà ⇒ **giữ** |
+| `dong8` dòng "Loại khác" lấy tên WCO 6 số (`"Loại khác: <tiếng Anh>"`) | 1.993/2.027 `tieuChi6` + hàng trăm `dong8` | chuẩn nhà ⇒ **giữ** |
+| `dong8` có 2 dòng **trùng chữ** trong cùng nhóm | 0207 (02071491/02072791) · 0301 · 0305 | chuẩn nhà ⇒ **giữ** 1602.49.11/1602.49.91 |
+| `dieuKienVao` lấy ngưỡng % từ **mục con** của nhóm | — | 1602 mục (5) là tiêu chí của CHÍNH mục (5); mọi hàng thuộc 16.02 đều thoả ⇒ **giữ**, nhưng đã ghi rõ trong hồ sơ review để người duyệt xem |
+
+## Cách làm (kỹ thuật)
+
+- **Mọi câu trích mới cắt/lấy TỪ TỆP NGUỒN**, không tin bản gõ tay:
+  `tmp/so-tay/kiem-trich-061.mjs` (kiểm mảnh nguyên văn + **in đoạn bị nuốt** bởi dấu lược) và
+  `tmp/so-tay/sua-trich-tu-nguon-061.mjs` (tự sửa mảnh méo dấu bằng nguồn).
+- Bộ kiểm riêng trong `tmp/so-tay/` (KHÔNG commit): `kiem-trich-061.mjs` · `loi-luc-061.mjs` (đo khoảng lược
+  theo vị trí thật trong nguồn) · `gac-soat-tu-061.mjs` (gác soát từ **GIỮ DẤU**) ·
+  `check-boPhan-061.mjs` (bộ kiểm byte-exact riêng cho `boPhan` — `check-trich-nguyen-van` **không** duyệt
+  trường này, bài học lô 045).
+- **Thêm vào nhà:** `scripts/scan-so-tay-soat.mjs` (quét 5 lớp lỗi soát mà máy không bắt — lấy từ nhánh lô 060
+  chưa gộp, main chưa có) và `scripts/apply-review-lo061.mjs` (2 pha: `TARGET=raw` áp `thayDoi` →
+  `TARGET=data` **chỉ** đổi `nguonLoai`; KHÔNG bao giờ áp `thayDoi` lên `data` — sẽ chèn trùng mục).
+- **Nhật ký lần trước của em**: `tmp/so-tay/lap-raw-061.mjs` (bộ sinh bản nháp của người soạn) — giữ nguyên.
+
+## Trạng thái cuối
+
+| Kiểm | Kết quả |
+|---|---|
+| `check-so-tay.mjs --raw=tmp/so-tay/raw` | 6 nhóm, **110 mục, 0 mục không kiểm được nguồn** (110/110 = 100 %) |
+| `check-trich-nguyen-van.mjs` (byte-exact) | **OK — 107 mục** nguyên văn tuyệt đối (3 mục `boPhan` nằm ngoài phạm vi bộ kiểm này ⇒ tự soát riêng) |
+| `check-boPhan-061.mjs` (byte-exact riêng cho `boPhan`) | **OK — 3 khối** nguyên văn tuyệt đối |
+| gác soát từ **GIỮ DẤU** (chống méo ký tự) | 0 lỗi thật (cảnh báo còn lại là "hàng/hay/loại, khác/hai" — mẫu nhà) |
+| `check-cay.mjs --chi-tiet` (6 nhóm) | **6/6 nhóm đủ** — 0 lỗi lệch cây, 0 cảnh báo |
+| `build-so-tay … --tu-tep --force` | **110/110 (100 %)** — `tyLeDat: 100`, `nhomLoi: []` |
+| `npm run so-tay:check` | **512 nhóm, 14.057 mục, 0 mục không kiểm được nguồn** |
+| hồ sơ soát | 6 tệp `review/*.json` — **53 mục** (13 sửa · 40 giữ · 0 xoá) |
+| `npm test` | **ALL TESTS PASSED** (exit 0) |
+| `nguonLoai` | 50 mục ở 5 khối đã soát → **NGUOI_DUYET**; `tieuChi6`/`dong8`/`cay` giữ `AI_DA_KIEM` (luật 11) |
+
+- **CHƯA merge** — chờ người duyệt. `so-tay-lo.csv` dòng 061 giữ `trang_thai=dang-lam`,
+  `nguoi_lam=dev-zcode-mm`, `pr=481` (người gộp đặt `trang_thai=xong` khi merge).
+
+---
+
 # SOẠN lô 061 — 6 nhóm (1518 1520 1521 1522 1601 1602) (phiên `dev-zcode-mm`, 27/10/2026)
 
 - **Nhánh:** `so-tay/lo-061` (worktree `hs-code-api-wt-st-lo061`) — **CHƯA merge**, chờ người duyệt.

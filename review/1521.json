@@ -1,0 +1,64 @@
+{
+ "nhom": "1521",
+ "nguoiSoat": "dev-soat-doc-lap-lo061",
+ "luc": "2026-10-27T18:45:00+07:00",
+ "daKiem": 14,
+ "xoa": 0,
+ "sua": 2,
+ "ghiChu": "Soát ĐỘC LẬP 14/14 mục của nhóm 1521 (phamVi 1 · loaiTru 4 · phanBiet 3 · boPhan 1 · tieuChi6 2 · dong8 3) — SỬA 3 mục (4 trường), XOÁ 0. Lớp lỗi chính: DẤU LƯỚC '…' NUỐT NGOẠI LỆ (mục 4 brief; lớp lỗi lô 030/055) — trích bản nháp 'Sáp thực vật…(II)…(III)…' lược mất TOÀN BỘ khối loại trừ của phần (I), trong đó có câu 'Các hỗn hợp này thường thuộc Chương 34 (nhất là nhóm 34.04 hoặc 34.05)' mà KHÔNG mục nào khác của sổ tay bắt được (không thể làm loaiTru: máy loại câu có 'thường thuộc' — HEDGE_LOAI_TRU; cũng không nêu đích danh nhóm) ⇒ mô hình không thấy hỗn hợp sáp thực vật ra khỏi nhóm 1521. GIỮ: loaiTru[0..3] (15.15 · 15.15 · 96.02 · 15.04 — đích danh có trong câu trích) · 3 phanBiet (chiều Có/Không đúng) · tieuChi6 152110/152190 lấy từ wco ✓ · 3 dòng 8 số đủ theo biểu thuế · boPhan.tomTat (70 ký tự) ✓. KHÔNG ghi loaiTru cho (c)(d)(e) và câu Chương 34 — đúng luật máy (không nêu đích danh nhóm / câu có 'thường thuộc'); phần thông tin đó đã đưa vào phạm vi để mô hình vẫn thấy. CÒN TRONG ĐOẠN LƯỚC (ghi rõ để người duyệt biết): (d) và (e) của phần (I) vẫn nằm trong đoạn bị lược — vì bốn mục loại trừ nằm liền nhau trong nguồn, mọi câu trích có (II)/(III) đều phải lược qua chúng; (a)(b) thì đã có trong loaiTru.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "DẤU LƯỚC NUỐT NGOẠI LỆ + MẤT VẾ LOẠI TRỪ. (a) Trích: bản nháp 'Sáp thực vật…(II)…(III)…' nuốt mất khối 'Tuy nhiên, nhóm này không bao gồm: (a)…(e)… Các hỗn hợp này thường thuộc Chương 34' (đoạn nuốt 546 ký tự) — trong đó câu Chương 34 không mục nào khác bắt được ⇒ nối thêm mảnh '(c) Các hỗn hợp của sáp thực vật.' + 'Các hỗn hợp này thường thuộc Chương 34 (nhất là nhóm 34.04 hoặc 34.05).' vào câu trích (268 ký tự, vẫn ≤300). (b) Text: khối sổ tay runtime (soTayBlock — lib/so-tay-gates.js:134) chỉ in `text`, không in `trich` ⇒ mô hình đọc 'phạm vi = ba phần' và không thấy loại trừ hỗn hợp. Thêm vế 'không gồm hỗn hợp sáp thực vật (thường thuộc Chương 34)' vào `text` (220 ký tự = đúng trần clip 220), giữ nguyên định ngữ giới hạn 'thường' của nguồn.",
+   "sua": {
+    "text": "Sáp thực vật; (II) sáp ong và sáp các loại côn trùng khác, đã hoặc chưa tinh chế hoặc pha mầu; (III) sáp cá nhà táng, thô, ép hoặc tinh chế, có hoặc không pha mầu; không gồm hỗn hợp sáp thực vật (thường thuộc Chương 34).",
+    "trich": "Sáp thực vật…(c) Các hỗn hợp của sáp thực vật.…Các hỗn hợp này thường thuộc Chương 34 (nhất là nhóm 34.04 hoặc 34.05).…(II) Sáp ong và sáp các loại côn trùng khác, đã hoặc chưa tinh chế hoặc pha mầu.…(III) Sáp cá nhà táng, thô, ép hoặc tinh chế, có hoặc không pha màu."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 1515: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 10 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 1515: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 27 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 9602: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 17 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 1504: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 46 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `hoi` không nhắc mã phân nhóm; chiều Có/Không đúng (có → 1515, không → 1521); `hoi` 39 ký tự ≤ trần clip 110."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `hoi` không nhắc mã phân nhóm; chiều Có/Không đúng (có → 9602, không → 1521); `hoi` 63 ký tự ≤ trần clip 110."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `hoi` không nhắc mã phân nhóm; chiều Có/Không đúng (có → 1504, không → 1521); `hoi` 51 ký tự ≤ trần clip 110."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "Cùng câu trích với phamVi ⇒ cùng cách sửa (nối mảnh (c) + câu Chương 34, 268 ký tự). `quyTac`/`tomTat` giữ nguyên: 'Ba phần:' là mẫu nhà (0304/1509/1510/1522), tomTat 70 ký tự ≤ trần clip 160.",
+   "sua": {
+    "trich": "Sáp thực vật…(c) Các hỗn hợp của sáp thực vật.…Các hỗn hợp này thường thuộc Chương 34 (nhất là nhóm 34.04 hoặc 34.05).…(II) Sáp ong và sáp các loại côn trùng khác, đã hoặc chưa tinh chế hoặc pha mầu.…(III) Sáp cá nhà táng, thô, ép hoặc tinh chế, có hoặc không pha màu."
+   }
+  }
+ ],
+ "giu": 7
+}

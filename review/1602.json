@@ -1,0 +1,104 @@
+{
+ "nhom": "1602",
+ "nguoiSoat": "dev-soat-doc-lap-lo061",
+ "luc": "2026-10-27T18:45:00+07:00",
+ "daKiem": 46,
+ "xoa": 0,
+ "sua": 4,
+ "ghiChu": "Soát ĐỘC LẬP 46/46 mục của nhóm 1602 (phamVi 1 · dieuKienVao 2 · loaiTru 6 · phanBiet 4 · tieuChi6 11 · dong8 22) — SỬA 4 mục (5 trường), XOÁ 0. Lớp lỗi chính: MẤT VẾ LOẠI TRỪ trong `phamVi.text` (lớp lỗi lô 060 — 1517 phamVi.text cắt mất 'trừ các loại thuộc nhóm 15.16') và 3 câu trích 384–579 ký tự (vùng im lặng 300–600). GIỮ: phanBiet[0] — câu hỏi '…đáp ứng yêu cầu để được phân loại như xúc xích không?' ĐẢO ĐÚNG CHIỀU so với nguồn ('…MIỄN LÀ chúng KHÔNG đáp ứng…') ⇒ có → 16.01, không → 16.02 ✓; 5 loạiTrừ còn lại (16.01 · 16.01 · 16.03 · 19.02 · 21.03 · 21.04 — đích danh trong câu trích) ✓; dieuKienVao[0] ✓; dieuKienVao[1] ngưỡng >20% — GIỮ (mục (5) của chính nhóm, và mọi hàng thuộc 16.02 đều thoả vì là thịt/phụ phẩm/tiết/côn trùng ≥20%; không mâu thuẫn với lô 060); 11 tieuChi6 lấy đúng nguồn (ch16.chuong cho 1602.10, wco cho 10 phân nhóm còn lại) và dịch 'n.e.c. in heading no. 1602' theo đúng chiều ('hơn phân nhóm khác', không phải 'trừ 16.02'); 22 dòng 8 số đủ theo biểu thuế, mọi trích khớp từng dòng (kể cả hai dòng 'Đóng bao bì kín khí để bán lẻ' trùng chữ ở 1602.49.11/1602.49.91 — mẫu nhà 0207/0301/0305 cũng để trùng chữ). CẢNH BÁO GHI LẠI (không sửa): 11 dòng 'Loại khác' có dieuKien lấy tên WCO 6 số dài 91–150 > trần clip 90 ⇒ runtime cắt mất đuôi, trong đó 6 dòng cắt mất vế '(excluding livers and homogenised preparations)' / 'n.e.c. in heading no. 1602'. Đây là điều kiện CHUNG của toàn sổ tay (3.289/6.154 dòng dong8 đã gộp vượt 90) và lô 060 vòng soát cũng không sửa loại tràn này ⇒ giữ nguyên, đưa vào mô tả PR để người duyệt quyết.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "MẤT VẾ LOẠI TRỪ (lớp lỗi lô 060: 1517 phamVi.text cắt mất 'trừ các loại thuộc nhóm 15.16' ⇒ mô hình chỉ thấy phần bao gồm). Bản nháp cắt câu nguồn ngay sau 'thuộc Chương này', bỏ mất hai loại trừ LỚN NHẤT của nhóm (xúc xích và sản phẩm tương tự → 16.01; sản phẩm chiết xuất từ thịt và nước thịt ép → 16.03) — trong khi câu trích vẫn có đủ. Runtime chỉ in `phamVi.text` vào khối sổ tay (lib/so-tay-gates.js:134) nên phải sửa `text`. Sửa thành 218 ký tự (≤ trần clip 220), giữ nguyên nghĩa và định ngữ; `trich` giữ nguyên.",
+   "sua": {
+    "text": "Tất cả thịt, các phụ phẩm dạng thịt sau giết mổ, tiết hoặc côn trùng đã chế biến và bảo quản thuộc Chương này, trừ xúc xích và sản phẩm tương tự (nhóm 16.01) và sản phẩm chiết xuất từ thịt và nước thịt ép (nhóm 16.03)."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — fact `la_che_pham_thit_phu_pham_dang_thit_tiet_hoac_con_trung_da_chebien_va_bao_quan` = True, ngưỡng True có nguyên văn trong câu trích; chiều ĐÚNG (là điều kiện VÀO nhóm 1602); câu trích nguyên văn, không có câu cho-phép."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — fact `che_pham_thuc_pham_chua_tren_20_trong_luong_la_thit_phu_pham_dang_thit_tiet_hoac_con_trung` > 20, ngưỡng 20 có nguyên văn trong câu trích; chiều ĐÚNG (là điều kiện VÀO nhóm 1602); câu trích nguyên văn, không có câu cho-phép."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 1601: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 39 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 1601: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 29 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 1603: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 43 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 1902: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 38 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 2103: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 44 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 2104: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 55 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `hoi` không nhắc mã phân nhóm; chiều Có/Không đúng (có → 1601, không → 1602); `hoi` 109 ký tự ≤ trần clip 110."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `hoi` không nhắc mã phân nhóm; chiều Có/Không đúng (có → 1902, không → 1602); `hoi` 71 ký tự ≤ trần clip 110."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `hoi` không nhắc mã phân nhóm; chiều Có/Không đúng (có → 2103, không → 1602); `hoi` 77 ký tự ≤ trần clip 110."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `hoi` không nhắc mã phân nhóm; chiều Có/Không đúng (có → 2104, không → 1602); `hoi` 88 ký tự ≤ trần clip 110."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "sua",
+   "lyDo": "TRÍCH 579 KÝ TỰ (vùng im lặng 300–600; máy chỉ chặn >600, và so-tay-runtime cắt còn 300 ký tự khi đưa vào prompt). Rút xuống 265: bỏ mở đầu '1. Theo mục đích của phân nhóm 1602.10,' (ngữ cảnh, không thuộc định nghĩa) và cắt đuôi đúng chỗ '…không quá 250g.' — câu trích vẫn đủ toàn bộ định nghĩa 'chế phẩm đồng nhất' mà fact `la_che_pham_dong_nhat_mien` khẳng định, và số 250 vẫn có trong trích. `fact`/`op`/`value` giữ nguyên.",
+   "sua": {
+    "trich": "khái niệm \"chế phẩm đồng nhất\" được hiểu là chế phẩm từ thịt, các phụ phẩm dạng thịt sau giết mổ, tiết hoặc côn trùng, được làm đồng nhất mịn, phù hợp làm thực phẩm cho trẻ sơ sinh hoặc trẻ nhỏ hoặc để ăn kiêng, đóng gói để bán lẻ với trọng lượng tịnh không quá 250g."
+   }
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng câu trích 579 ký tự với tieuChi6[0]. Mục này chỉ khẳng định ngưỡng 'trọng lượng tịnh không quá 250g' (op '<=', donVi 'g') ⇒ chỉ trích đúng vế đó, nguyên văn, 56 ký tự; số 250 vẫn có trong câu trích (luật số phải có trong trích). `fact`/`op`/`value`/`donVi` giữ nguyên.",
+   "sua": {
+    "trich": "…đóng gói để bán lẻ với trọng lượng tịnh không quá 250g."
+   }
+  },
+  {
+   "index": "dong8[20]",
+   "hanhDong": "sua",
+   "lyDo": "TRÍCH 384 KÝ TỰ (vùng im lặng 300–600). Rút xuống 180: giữ tiêu đề SEN 'CÁC CHẾ PHẨM TỪ TIẾT' + 2 câu định nghĩa mà `dieuKien`='Các chế phẩm từ tiết' dựa vào; bỏ phần mô tả thành phần tiết và chú thích ảnh 'Ảnh 1. Tiết lợn đóng trong bao bì' (không liên quan điều kiện dòng). `dieuKien`/`tieuChi` giữ nguyên.",
+   "sua": {
+    "trich": "CÁC CHẾ PHẨM TỪ TIẾT…Chế phẩm chủ yếu từ tiết thu được từ giết mổ các động vật nuôi. Tiết thu được chế biến hợp vệ sinh dùng cho người ăn ngay hoặc chuyển đổi thành món ăn từ tiết."
+   }
+  }
+ ],
+ "giu": 12
+}

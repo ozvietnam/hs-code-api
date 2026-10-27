@@ -1,0 +1,47 @@
+{
+ "nhom": "1520",
+ "nguoiSoat": "dev-soat-doc-lap-lo061",
+ "luc": "2026-10-27T18:45:00+07:00",
+ "daKiem": 9,
+ "xoa": 0,
+ "sua": 0,
+ "ghiChu": "Soát ĐỘC LẬP 9/9 mục của nhóm 1520 (phamVi 1 · dieuKienVao 2 · loaiTru 2 · phanBiet 2 · dong8 2) — KHÔNG cần sửa, KHÔNG xoá. Đã kiểm từng điểm: (1) phamVi.text 190 ký tự ≤ trần clip 220, nói đúng phạm vi (glycerin thô <95% + nước glycerin + dung dịch kiềm glycerin + 2 sản phẩm phụ), trich 262 ký tự ≤ 300; đoạn lược chỉ nuốt 4 phương pháp thu được (1)–(4) + este hoá liên hợp, KHÔNG có ngoại lệ. (2) dieuKienVao[0] ngưỡng <95% — số 95 có trong câu trích ✓. (3) dieuKienVao[1] fact DƯƠNG + value=false lấy từ chính câu loại trừ (a) — ĐÚNG CHIỀU (hàng thuộc 15.20 không được là glycerin thuần khiết ≥95%) và là mẫu nhà (83 mục đã gộp; cùng kiểu với 1501/1505/1506). (4) loaiTru[1] sangNhom 3003|3004 — CẢ HAI mã đều có trong câu trích ('nhóm 30.03 hoặc 30.04') ✓, không tách 'A hoặc B' thành một nhánh. (5) Không ghi loaiTru cho mục (c) 'Glycerin thơm hoặc glycerin thêm vào dược mỹ phẩm (Chương 33)' — ĐÚNG: luật 3, 'Chương N' không phải nhóm đích danh. (6) phanBiet: 2 câu hỏi, mỗi câu một cặp mã, chiều Có/Không đúng (vế đầu → 29.05 / 30.03|30.04; vế sau → 15.20) ✓. (7) dong8 đủ 2 dòng theo biểu thuế; dòng 'Loại khác' lấy tên WCO 6 số theo luật 6 ✓ (mẫu nhà). Ghi chú thêm: fact dùng 'glyxerin' (chính tả biểu thuế VN 'Glyxerin thô', tax.15200010) trong khi chú giải ghi 'Glycerin' — KHÔNG sửa: đây là biến thể chính tả trong CHÍNH nhóm, dùng nhất quán, không phải méo dấu (gác soát từ 2 mức không báo lỗi méo ký tự nào).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `phamVi.text` 3 ký tự ≤ trần clip 220 của runtime; `trich` nguyên văn và đủ căn cứ cho từng vế của text (đã đối chiếu từng vế với nguồn)."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — fact `do_tinh_khiet_glyxerin_tho` < 95, ngưỡng 95 có nguyên văn trong câu trích; chiều ĐÚNG (là điều kiện VÀO nhóm 1520); câu trích nguyên văn, không có câu cho-phép."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — fact `la_glyxerin_thuan_khiet` = False, ngưỡng False có nguyên văn trong câu trích; chiều ĐÚNG (là điều kiện VÀO nhóm 1520); câu trích nguyên văn, không có câu cho-phép."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 2905: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 32 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 3003|3004: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 52 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `hoi` không nhắc mã phân nhóm; chiều Có/Không đúng (có → 2905, không → 1520); `hoi` 61 ký tự ≤ trần clip 110."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `hoi` không nhắc mã phân nhóm; chiều Có/Không đúng (có → 3003|3004, không → 1520); `hoi` 84 ký tự ≤ trần clip 110."
+  }
+ ],
+ "giu": 7
+}

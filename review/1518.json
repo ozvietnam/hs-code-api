@@ -1,0 +1,65 @@
+{
+ "nhom": "1518",
+ "nguoiSoat": "dev-soat-doc-lap-lo061",
+ "luc": "2026-10-27T18:45:00+07:00",
+ "daKiem": 24,
+ "xoa": 0,
+ "sua": 4,
+ "ghiChu": "Soát ĐỘC LẬP 24/24 mục của nhóm 1518 (phamVi 1 · dieuKienVao 1 · loaiTru 4 · phanBiet 1 · boPhan 1 · tieuChi6 0 · dong8 16) — đối chiếu từng câu trích với tmp/so-tay/nguon/1518.txt. SỬA 4 mục (7 trường), XOÁ 0. Lớp lỗi chính: ĐIỀU KIỆN LOẠI TRỪ THIẾU NGỮ CẢNH QUÁ TRÌNH (đọc thành đảo chiều, trái nguồn) + 3 câu trích dài 444 ký tự (vùng im lặng 300–600, máy chỉ chặn >600) + câu trích mở đầu bằng ĐẠI TỪ. GIỮ: phamVi.text (207 ký tự ≤ trần clip 220) · boPhan.tomTat (148 ≤ 160) · dieuKienVao[0] 'la_chat_beo_hoac_dau_chi_bi_lam_bien_chat'=false (chiều ĐÚNG: Chú giải 3 Chương 15 loại chất béo/dầu MỚI CHỈ làm biến chất ⇒ hàng thuộc 15.18 phải KHÔNG chỉ bị biến chất; mẫu nhà đã dùng 83 lần) · 3 loạiTrừ còn lại (15.16/23.09/34.02 — đích danh có trong câu trích) · phanBiet[0] hoi (vế đầu → 32.11, vế sau → 15.18, đúng chiều runtime) · 16 dòng 8 số (đủ theo biểu thuế, mọi trích khớp từng dòng). CẢNH BÁO GHI LẠI (không sửa): loaiTru[0].sangNhom=4002 chỉ có nghĩa khi đi kèm quá trình sulphat hoá — đã sửa ở dieuKien; các đoạn lược trong phamVi/boPhan chỉ nuốt CÁC VÍ DỤ (1)–(6) của phần (A), không nuốt ngoại lệ.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "TRÍCH 444 KÝ TỰ (vùng im lặng 300–600 — máy check-so-tay chỉ chặn >600 nên lọt). Rút xuống 261: giữ nguyên hai vế phạm vi mà `text` dựa vào (phần (A) chất béo/dầu đã đổi cấu trúc hoá học + phần (B) hỗn hợp/chế phẩm không ăn được của Chương này). Đoạn lược giữa hai mảnh CHỈ là các ví dụ (1)–(6)(a)–(d) của phần (A) — đã kiểm bằng script (đoạn nuốt 3241 ký tự) và KHÔNG chứa ngoại lệ nào.",
+   "sua": {
+    "trich": "Nhóm này bao gồm chất béo và dầu động vật, thực vật hoặc vi sinh vật và các phần phân đoạn của chúng đã qua quá trình làm thay đổi cấu trúc hoá học…(B) Hỗn hợp hoặc chế phẩm không ăn được từ chất béo hoặc dầu động vật, thực vật hoặc vi sinh vật…thuộc Chương này"
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — fact `la_chat_beo_hoac_dau_chi_bi_lam_bien_chat` = False, ngưỡng False có nguyên văn trong câu trích; chiều ĐÚNG (là điều kiện VÀO nhóm 1518); câu trích nguyên văn, không có câu cho-phép."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "ĐIỀU KIỆN LOẠI TRỪ MẤT NGỮ CẢNH ⇒ ĐẢO CHIỀU (lớp lỗi lô 060: 1516/1517 loaiTru cắt mất vế giới hạn ⇒ đọc lên thành NGƯỢC nguồn). Nguồn: mục (4) nói về 'Dầu sulphat hoá'; câu kế tiếp 'Nếu quá trình đó được thực hiện thêm, thu được sản phẩm rắn (các chất thay thế cao su dẫn xuất từ dầu) (nhóm 40.02)' — 'quá trình đó' = quá trình sulphat hoá. Bản nháp ghi dieuKien='Sản phẩm rắn (chất thay thế cao su dẫn xuất từ dầu)' ⇒ đọc thành MỌI sản phẩm rắn đều loại sang 40.02, TRÁI NGUỒN: chính nguồn còn nói 'Linoxyn, sản phẩm có tính chất như cao su ở dạng bán rắn ... cũng được phân loại trong nhóm này'. SỬA (49 ký tự ≤ trần clip 55): giữ đủ 'quá trình sulphat hoá được thực hiện thêm' + kết quả 'sản phẩm rắn'. ĐỒNG THỜI rút trích 444 → 249 ký tự (luật soạn ≤300; vùng im lặng 300–600 máy KHÔNG chặn) và nối mở đầu mục (4) để 'quá trình đó' có chủ ngữ; đoạn lược giữa hai mảnh KHÔNG chứa ngoại lệ.",
+   "sua": {
+    "dieuKien": "Dầu sulphat hoá thực hiện thêm thành sản phẩm rắn",
+    "trich": "(4) Dầu sulphat hoá, là kết quả của việc chế biến bằng lưu huỳnh hoặc sulphur chloride để tạo ra sự polimer hoá trong những phân tử.…Nếu quá trình đó được thực hiện thêm, thu được sản phẩm rắn (các chất thay thế cao su dẫn xuất từ dầu) (nhóm 40.02)."
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 1516: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 53 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 2309: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 48 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — loại trừ sang 3402: đích danh có nguyên văn trong câu trích, dấu hiệu loại trừ rõ (không phải câu 'thường thuộc'); `dieuKien` 50 ký tự ≤ trần clip 55."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "CÂU TRÍCH MỞ ĐẦU BẰNG ĐẠI TỪ 'Dầu này' (bài học lô 035/039: câu trích mở đầu bằng đại từ thì TỰ NÓ KHÔNG NÓI ĐƯỢC mình nói về loại dầu nào — phải MỞ RỘNG TRÍCH chứ không tự thêm chữ vào `hoi`). Nối thêm '(b) Dầu khô (như dầu hạt lanh)' nguyên văn ở đầu câu ⇒ 'Dầu này' và 'chúng' có chủ ngữ. Đoạn lược ('được thêm một lượng nhỏ chất làm khô lạnh ... nhằm làm tăng tính khô nhanh của chúng') không chứa ngoại lệ. `hoi` GIỮ NGUYÊN (chiều Có/Không đúng: có → 32.11, không → 15.18).",
+   "sua": {
+    "trich": "(b) Dầu khô (như dầu hạt lanh)…Dầu này được dùng để thay thế dầu đã đun sôi trong sản xuất vecni hoặc sơn, loại này rất khác với chất làm khô lỏng đã điều chế thuộc nhóm 32.11 (dung dịch cô đặc của chất làm khô) và không thể nhầm lẫn lộn với chúng."
+   }
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "Cùng một câu trích với phamVi (444 ký tự) ⇒ rút về 261 như trên cho nằm trong luật soạn ≤300. `quyTac`/`tomTat` giữ nguyên (148 ký tự ≤ trần clip 160 của runtime; 'Hai phần:' là mẫu nhà — 0304/1509/1510/1521/1522 đều dùng).",
+   "sua": {
+    "trich": "Nhóm này bao gồm chất béo và dầu động vật, thực vật hoặc vi sinh vật và các phần phân đoạn của chúng đã qua quá trình làm thay đổi cấu trúc hoá học…(B) Hỗn hợp hoặc chế phẩm không ăn được từ chất béo hoặc dầu động vật, thực vật hoặc vi sinh vật…thuộc Chương này"
+   }
+  }
+ ],
+ "giu": 4
+}
