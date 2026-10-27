@@ -3,6 +3,172 @@
 <!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
 ---
 
+# SOÁT ĐỘC LẬP lô 064 (PR #486) — phiên `dev-soat-doc-lap-lo064` (28/10/2026)
+
+- **Nhánh:** `so-tay/lo-064` (worktree `hs-code-api-wt-st-lo064`) · **PR #486** — **KHÔNG merge**.
+- **Nhóm:** `1902, 1903, 1904, 1905, 2001, 2002` (Chương 19 — ngũ cốc/bánh; Chương 20 — rau quả).
+- **Em là người soát ĐỘC LẬP** (không phải người soạn). Đọc lại **TỪNG mục** `phamVi` / `boPhan` /
+  `dieuKienVao` / `loaiTru` / `phanBiet` **cùng nguồn** `tmp/so-tay/nguon/<nhom>.txt`.
+
+## 0. SAI LỆCH BRIEF (khai trước)
+
+| Brief ghi | Thực tế | Em làm |
+|---|---|---|
+| `brief-st-soat-lo064.md` | tệp thật là **`brief-st-soat-lo0064.md`** (4 số) | đọc tệp thật |
+| worktree `hs-code-api-wt-st-lo64`, nhánh `so-tay/lo-0064` | worktree `hs-code-api-wt-st-lo064`, nhánh **`so-tay/lo-064`** | làm trên nhánh thật của PR #486 |
+| `--tu-tep=tmp/so-tay/raw` | `tmp/so-tay/raw/` là bản nháp của **phiên SONG SONG** (khác bản đã nạp!) | dùng thư mục riêng **`tmp/so-tay/raw-soat-064/`**, gốc = `tmp/so-tay/raw-064-A/` (bản đã nạp) |
+| `--bao-cao=.../lo-0064.json` | quy ước repo là **3 số** | `data/so-tay/bao-cao/lo-064.json` |
+
+**BẪY TRÁM THẬT (đã tránh):** bản nháp ở `tmp/so-tay/raw/` **khác** bản đã nạp ở 1902/1903/2002
+(số mục `loaiTru`/`tieuChi6`/`dong8` khác nhau). Nếu nạp lại từ đó thì **âm thầm hoàn nguyên** dữ liệu
+đã giao. Em đã đối chiếu `raw ↔ data` trước khi làm (mục 1).
+
+## 1. Quy trình đã chạy
+
+1. **Xác định đúng bản gốc**: dựng `tmp/so-tay/diff-064.mjs` so `data/so-tay/<nhom>.json` với **cả hai**
+   bản nháp (`raw-064-A/` và `raw/`) → kết luận `raw-064-A` là bản đã nạp (khác biệt chỉ là trường máy
+   thêm: `nguonLoai`, `loaiKhac`, `phamViLoaiKhac`, `cay`). ⇒ base của em = `tmp/so-tay/raw-soat-064/`.
+2. **Đọc lại từng mục cùng nguồn**: đọc trọn 6 tệp nguồn (`tmp/so-tay/nguon/1902…2002.txt`) + dữ liệu đã nạp.
+3. **Đo nền nhà TRƯỚC khi kết luận** (để biết cái nào là lỗi thật, cái nào là mẫu nhà):
+   - `phanBiet.hoi`: 83/1037 mục trên main có **2 nhánh** ("hay là …") ⇒ nhánh đối lập phải **nằm trong
+     câu trích** (mẫu 0304/0901/1109/1201 đều vậy); 954/1037 hỏi **1 nhánh**.
+   - `dieuKienVao` value=false: 92/765 mục, mẫu 1518 (lô 061 đã duyệt) đặt `fact` = **vế BỊ LOẠI**, chiều âm
+     nằm ở `value` ⇒ 1904 (câu "không bao gồm … Chương 10/11") và 1901 hợp lệ, giữ nguyên.
+   - `phamVi` của nhóm nhiều phần: 3401 = 436 · 3810 = 573 · 4415 = 406 ký tự (đều `NGUOI_DUYET`);
+     toàn repo 121/526 `phamVi.trich` > 300, max 598 ⇒ trích dài **không phải** lỗi khi phải phủ nhiều phần.
+4. **Gác soát từ 2 mức** cho mọi trường tự viết: mỗi từ phải có trong câu trích — (1) **giữ dấu**,
+   (2) **bỏ dấu** (NFD + `\p{M}`, không dùng `\p{Diacritic}` vì nó KHÔNG bỏ dấu chữ dựng sẵn).
+   Script `tmp/so-tay/gen-review-files-064.mjs` — chạy lại được, **dừng ngay** khi có từ lệch.
+5. **Mọi câu trích cắt TỪ TỆP NGUỒN theo (số dòng, mốc)** (`tmp/so-tay/gen-review-064.mjs`), không gõ tay.
+   *(Sự cố: lần đầu em gõ tay lại câu trích 2002 và ghi **"cà chuta"** — gác soát từ bắt được ngay.)*
+6. Áp `review/<nhom>.json` bằng `scripts/apply-review-lo064.mjs` (2 pha, hỗ trợ thêm `chen` = chèn mục mới),
+   rồi nạp lại `--tu-tep` + đổi `nguonLoai`.
+
+## 2. Kết quả
+
+| | Trước soát | Sau soát |
+|---|---|---|
+| Mục | 93 | **95** (+2 `loaiTru` chèn) |
+| Sửa | — | **13 mục** (21 trường) |
+| Xoá | — | **0** |
+| Chèn | — | **2 mục** (`loaiTru`) |
+| `nguonLoai` → `NGUOI_DUYET` | 0 | **28 mục** (đúng 5 khối đã soi) |
+| Máy kiểm | 93/93 | **95/95 (100 %)** |
+
+**Hồ sơ soát:** `review/{1902,1903,1904,1905,2001,2002}.json` — 96 dòng (93 mục đã soi + 2 chèn + 1 dòng
+"giữ" ghi nhận `loaiTru` rỗng của 2001). Mỗi dòng có `lyDo` nêu căn cứ + mẫu nhà đối chiếu.
+
+## 3. LỖI THẬT đã bắt (máy KHÔNG bắt được)
+
+### 3.1 `phamVi` chỉ phủ MỘT PHẦN của nhóm (lớp lỗi lô 030 / lô 063)
+
+- **1904**: `phamVi` chỉ phủ **phần dẫn**, thiếu hẳn 3 phần ngang hàng (B)(C)(D) ⇒ đọc "Phạm vi: Thực
+  phẩm được chế biến từ các loại hạt ngũ cốc…" sẽ **đẩy sai 1904.20 / 1904.30 / 1904.90 ra khỏi nhóm**.
+  Đây đúng là lỗi lô 030 đã sửa cho **3401** ("Nhóm 34.01 có BỐN phần ngang hàng…"), **3810**, **4415** —
+  cả ba đều để `phamVi` phủ CẢ các phần. Mẫu `0304.json` mà bản nháp dẫn thì `phamVi` CÓ phủ các phần
+  ⇒ dẫn không đúng. **Sửa**: `text` nêu phần dẫn + (B)(C)(D) (215 ≤ 220), `trich` kéo đủ 5 mảnh nguyên văn.
+- **1904 `boPhan`**: `quyTac`/`tomTat` viết "Nhóm này gồm các phần: (B)…; (C)…; (D)…" ⇒ **khẳng định
+  nhóm chỉ có 3 phần**, bỏ mất phần dẫn (nhóm 1904 có **4** phần). Mẫu nhà: 0304 / 1518 / 1521 / 1522 đều
+  liệt kê **đủ** các phần (1521 còn liệt kê phần dẫn **không** gắn nhãn "(A)" vì nguồn không ghi).
+- **2002**: `text` nêu "cà chua nguyên quả/dạng miếng" + "nước ép cà chua ≥ 7 %" nhưng **mất hẳn**
+  "các loại cà chua đồng nhất đã chế biến hoặc bảo quản (bột quấy cà chua, bột cà chua dạng sệt, cà chua
+  cô đặc)" ⇒ **2/3 dòng 8 số của phân nhóm 2002.90** không nằm trong phạm vi. **Sửa** cả `text` lẫn `trích`.
+
+### 3.2 `hoi`/`dieuKien` khẳng định điều câu trích KHÔNG nói
+
+| Mục | Vấn đề |
+|---|---|
+| **1904 `phanBiet[0].hoi`** | nhánh đối lập "hay là **thực phẩm chế biến từ hạt ngũ cốc**" — 5 từ **không có** trong trích |
+| **1905 `phanBiet[0].hoi`** | nhánh đối lập "hay là **bánh đã được làm chín sơ hoặc đã chín**" — không có trong trích |
+| **2001 `phanBiet[0].hoi`** | nhánh đối lập "hay là **rau, quả bảo quản bằng dấm**" — 6 từ không có trong trích |
+| **2002 `phanBiet[0].hoi`** | "hay là cà chua **đã chế biến theo cách khác**" — "theo cách khác" không có trong trích |
+| **2002 `phanBiet[1].hoi`** | "hay là cà chua **đã chế biến hoặc bảo quản**" — 4 từ không có trong trích |
+
+⇒ Cả 5 sửa theo **mẫu 1 nhánh** của nhà (0206/0401…): hỏi đúng vế có mã đích, `neuKhong` vẫn là nhóm
+đang xét. Riêng **1905** giữ 2 nhánh (thông tin đáng giá: pizza chưa nấu → 19.01, pizza nấu → 19.05) và
+**kéo câu (14) vào trích** để cả 2 nhánh đều có căn cứ.
+
+### 3.3 Chiều điều kiện sai ⇒ tờ khai rơi mã
+
+**2002 `dieuKienVao[0]`**: `fact` = "la_ca_chua_**chue_bien_hoac_bao_quan**_khong_phai_bang_giam_hoac_axit_acetic"
+(giá trị `true`) nghĩa là *"là cà chua **ĐÃ** chế biến hoặc bảo quản nhưng không phải bằng giấm/axit acetic"*
+⇒ **cà chua tươi** (2002.10.00 — dòng biểu thuế đầu tiên của nhóm) **KHÔNG thoả điều kiện** ⇒ tờ khai
+cà chua tươi bị đẩy ra khỏi nhóm. Nguồn chỉ loại TRỪ "loại cà chua **đã** chế biến hoặc bảo quản bằng giấm
+hoặc axit acetic", chứ không đòi hàng đã chế biến. **Sửa** theo đúng mẫu 1904 + 1518 (lô 061 đã duyệt):
+`fact` = vế **BỊ LOẠI**, chiều âm đặt ở `value` ⇒ `value: false`.
+
+### 3.4 `fact` hỏng / rơi nhánh
+
+- **1904 `tieuChi6[0].fact`**: ghi `…_trinh_**nang**_hoac_no_**ngu_co_c**` — "nang" không phải từ nào trong
+  nguồn (WCO: "obtained by the **swelling** or **roasting** of cereals or cereal products"; tiếng Việt của
+  nhóm: "làm giòn bằng cách **nổ** hoặc **rang**"), **nhánh "rang" bị rơi**, và "ngu_co_c" **thiếu chữ c**
+  (cả repo chỉ có **1** chỗ "ngu_co_c" là đúng dòng này). **Sửa** ⇒ `thu_duoc_qua_qua_trinh_no_hoac_rang_ngu_coc`.
+- **1904 `tieuChi6[1].fact`**: chỉ giữ nhánh "chế biến từ mảnh ngũ cốc chưa rang", **rơi** nhánh "hoặc từ hỗn
+  hợp của mảnh ngũ cốc chưa rang và mảnh ngũ cốc đã rang hoặc ngũ cốc đã nổ" ⇒ hàng làm từ **hỗn hợp**
+  (vẫn thuộc 1904.20) bị loại oan. Lớp lỗi "**một nhánh của A hoặc B bị tách thành điều kiện độc lập**".
+- **1905 `tieuChi6[2].fact`**: ghi "trong_luong_**bo_thanh_phan**_banh_quy" — chữ "**bổ**" không có trong nguồn;
+  `trich` cũ treo đại từ "**các thành phần này**" mà không có antecedent. **Sửa**: kéo câu nguồn "(b) Bánh quy
+  ngọt, … chế biến từ hỗn hợp bột, đường hoặc chất tạo ngọt khác và chất béo (các thành phần này chiếm ít
+  nhất 50 % trọng lượng sản phẩm)" vào trích + `fact` ⇒ `trong_luong_cac_thanh_phan_banh_quy`.
+
+### 3.5 Trích không tự nó nói đủ (đại từ treo / chữ ngoài trích)
+
+- **1903 `dong8[0]`**: trích chỉ có "Các sản phẩm **trên** được đưa ra thị trường…" (đại từ treo) mà câu
+  ĐỊNH NGHĨA nhóm nằm ngoài trích ⇒ `dieuKien` khẳng định "**Sản phẩm từ tinh bột**" trong khi trích không
+  có chữ đó. **Sửa**: lấy trích từ dòng biểu thuế `tax.19030000` (đúng **luật 6**: `dong8` lấy nguồn
+  `tax.<8 số>`) — 122 ký tự, tự nó nói đủ "sản phẩm từ tinh bột" + dạng "mảnh, hạt, bột xay, bột rây…",
+  hết đại từ treo.
+
+### 3.6 THIẾU MỤC `loaiTru` (chèn mới — luật 3)
+
+Cả hai mục lấy từ **chú giải RIÊNG của nhóm** (`nhom*.nhom`), **không** phải loại trừ chung của Chương ⇒
+không dính luật lô 051/060.
+
+- **1904 → 1905**: "Các chế phẩm tương tự được chế từ bột nhào và chiên trong dầu ăn thực vật **bị loại
+  trừ (nhóm 19.05)**." — đích danh, có trong câu trích.
+- **1905 → 1901**: "Tuy nhiên, bánh pizza chưa được làm chín **thuộc nhóm 19.01**." — đích danh, có trong câu
+  trích (bản nháp đã dùng đúng câu này cho `phanBiet[0]` nhưng bỏ sót `loaiTru`).
+
+Đối chiếu chiều ngược: nhóm **1901** đã duyệt có `loaiTru` "Pizza đã được làm chín sơ (pre-cooked) hoặc
+làm chín" → 1905.
+
+## 4. GHI NHẬN / ĐỀ XUẤT CHO NGƯỜI DUYỆT (không tự sửa)
+
+1. **Nền nhà KHÔNG thống nhất về loại trừ cấp CHƯƠNG.** Lô này bám **luật lô 051 + lô 060** ("loại trừ
+   chung của Chương không chép vào từng nhóm") ⇒ 2001 **không có** `loaiTru`, dù Chương 20 có 2 loại trừ
+   có mã 4 số (19.05 · 21.04). Nhưng **1901** (đã duyệt) lại có **3** `loaiTru` lấy từ `ch19.chuong`
+   (18.06 · 09.01|21.01 · 23.09), và toàn repo có **471/2563** `loaiTru` lấy từ nguồn `chNN.chuong`.
+   ⇒ **Cần người duyệt chốt một quy tắc thống nhất** cho các lô sau. Em **không** tự thêm vào lô này
+   (theo luật lô 051/060) và ghi rõ ở đây.
+2. **`phan19.phan` / `phan20.phan` mang chú giải Phần II (thuốc lá)** — không dùng được (lô 063 đã gặp với
+   `phan18.phan` ⇒ mẫu **3 chương liên tiếp**, cần sửa riêng ở tầng kệ sách).
+3. **`scan-so-tay-soat.mjs` đọc cứng `tmp/so-tay/raw/`** — khi có nhiều bản nháp trong worktree thì đo
+   NHẦM bản (lô 064 có 2 bản nháp). Em đã thêm biến môi trường `SO_TAY_RAW_DIR` (mặc định giữ nguyên).
+4. **Lỗi kệ sách nhỏ (không sửa trong sổ tay):** `npm test` ghi thêm 2 dòng vào `data/legal-status-miss.jsonl`
+   — vi phạm rule 8 ("test không được ghi vào `data/` thật"). Em đã `git checkout` file đó (không commit
+   2 dòng rác) nhưng **nên sửa riêng** (file này chưa nằm trong `lib/data-paths.js`).
+
+## 5. Máy kiểm sau khi soát
+
+| Kiểm | Kết quả |
+|---|---|
+| `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw-soat-064` | **95/95 đạt, 0 mục không kiểm được nguồn** |
+| `node scripts/check-trich-nguyen-van.mjs` (bản nháp + `data/`) | **OK — 91 mục, mọi câu trích nguyên văn tuyệt đối** (byte-exact, không dựa vàn `squash`) |
+| `npm run so-tay:check` | toàn repo **530 nhóm / 14.470 mục / 0 mục không kiểm được nguồn** |
+| `node scripts/check-cay.mjs --nhom=1902,1903,1904,1905,2001,2002 --chi-tiet` | **6/6 nhóm đủ, 0 lỗi lệch cây** |
+| `npm test` | **ALL TESTS PASSED** (exit 0) |
+| `scan-so-tay-soat.mjs` (nền trước → sau) | 60 → **62** cảnh báo; **+3** đều là "VÙNG-IM-LẶNG" (trích 300–600) ở `1904.phamVi`/`boPhan` (498) và `2002.phamVi` (415) — **đánh đổi có chủ ý**: phải phủ CẢ 4 phần của 1904 (mẫu nhà 3401 = 436, 3810 = 573, 4415 = 406) ⇒ không thể ≤ 300 mà vẫn nêu đủ phần. `1903` đã **hết** vùng im lặng sau khi đổi sang nguồn `tax.*`. |
+
+## 6. Trạng thái cuối
+
+- Đã commit: `data/so-tay/{1902,1903,1904,1905,2001,2002}.json` +
+  `data/so-tay/bao-cao/lo-064.json` + `review/{6 nhóm}.json` +
+  `scripts/apply-review-lo064.mjs` + `scripts/scan-so-tay-soat.mjs` (thêm `SO_TAY_RAW_DIR`) + mục này.
+  **KHÔNG commit `tmp/`.**
+- Đã push nhánh `so-tay/lo-064` và cập nhật body PR #486 (số mục soát/xoá/sửa/chèn).
+  **KHÔNG merge** — chờ người duyệt.
+
+
 # SOẠN lô 064 — Chương 19 + Chương 20 (phiên Claude, 28/10/2026)
 
 - **Nhánh:** `so-tay/lo-064` (worktree `hs-code-api-wt-st-lo064`) · **PR #486** — **KHÔNG merge** (chờ người duyệt + soát độc lập).
