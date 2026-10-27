@@ -1,0 +1,107 @@
+{
+ "nhom": "1502",
+ "nguoiSoat": "dev-soat-doc-lap-lo058",
+ "luc": "2026-10-27T12:05:00+07:00",
+ "soatVaiTro": "Người soát ĐỘC LẬP (không phải người soạn). Đọc từng mục cùng nguồn nguyên văn tmp/so-tay/nguon/1502.txt (nhom1502.nhom, ch15.chuong, phan15.phan, wco.150210/150290, tax.15021000/15029010/15029090); kiểm BYTE-EXACT từng mảnh câu trích; đối chiếu nghĩa; đo trần clip() runtime.",
+ "phamViSoat": "Toàn bộ 18 mục của bản nháp lô 058 cho nhóm 1502 (1 phamVi + 2 dieuKienVao + 5 loaiTru + 5 phanBiet + 2 tieuChi6 + 3 dong8), đọc cùng nguồn, không chỉ mẫu.",
+ "soat": 18,
+ "giu": 17,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 1502 — 18/18 mục đã đọc cùng nguồn. SỬA 1, GIỮ 17, XOÁ 0. Nhóm sạch: mọi mục chép nguyên văn đúng khối nguồn và nói đúng điều mục khẳng định; không mục nào đảo chiều Có/Không, không mục nào ghép hai câu xa, không mục nào bỏ mất ngoại lệ hay định ngữ giới hạn. Máy kiểm xanh 18/18; câu trích byte-exact 18/18. GHI NHẬN: `phamVi.text` 419 > trần clip 220; `phamVi.trich` 458 (>300 theo lược đồ, <600 theo máy); `loaiTru[2].dieuKien` 79 > trần clip 55; `phanBiet[2].hoi` 134 > trần clip 110; `dong8[2].dieuKien` 105 > trần clip 90 (dòng \"Loại khác\" mượn tên WCO — mẫu đã duyệt ở 0206/0207/1103). KIỂM TRA CHÉO VỚI BIỂU THUẾ: 1506 = \"Mỡ và dầu động vật khác và các phần phân đoạn của chúng…\", nên \"dầu xương\" (loaiTru[3]) và \"mỡ xương\" (loaiTru[2] và phần \"mỡ xương\" mà phạm vi nhóm 15.02 bao gồm) là HAI hàng khác nhau ⇒ nguồn KHÔNG tự mâu thuẫn, giữ đủ 5 mục loại trừ, không bỏ mục nào.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Lỗi \"text thêm chữ không có trong trích\" (gác soát từ — máy KHÔNG bắt được vì câu trích vẫn nguyên văn): `text` viết \"cùng mỡ xương…\" trong khi nguồn viết \"Nhóm này CŨNG BAO GỒM mỡ xương và mỡ thu được từ phế liệu, của động vật họ trâu bò, cừu hoặc dê.\" — \"cùng\" là từ không có trong câu trích (và nghĩa khác \"cũng\"). Đã dùng đúng lời nguồn: \"cũng bao gồm mỡ xương…\". Câu trích nguyên văn giữ nguyên (3 mảnh nối bằng \"…\"); `text` nêu đúng PHẠM VI nhóm + hai khoản loại trừ chính. GHI NHẬN: `phamVi.text` 419 > trần clip 220 của runtime.",
+   "sua": {
+    "text": "Mỡ ở các bộ phận nội tạng và cơ của động vật họ trâu bò, cừu hoặc dê và chủ yếu từ động vật họ trâu bò, chưa tinh chế (tươi, ướp lạnh hoặc đông lạnh), ướp muối, ngâm nước muối, làm khô, hun khói hoặc ở dạng mỡ nấu chảy (tallow), cũng bao gồm mỡ xương và mỡ thu được từ phế liệu của động vật họ trâu bò, cừu hoặc dê; không gồm oleostearin, dầu oleo và dầu mỡ (dầu tallow) (nhóm 15.03) và mỡ của các loại ngựa (nhóm 15.06)."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn: \"Nhóm này bao gồm mỡ ở các bộ phận nội tạng và cơ của động vật họ trâu bò, cừu hoặc dê và chủ yếu từ động vật họ trâu bò.\" — ràng buộc định danh phủ CẢ nhóm 1502, nguồn nhom1502.nhom (không phải wco/sen/tax nên không rơi vào luật dieu-kien-cap-phan-nhom); fact dương + value=true đúng luật nhà."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn \"(b) Mỡ của các loại ngựa (nhóm 15.06).\" — khoản loại trừ phủ cả nhóm 1502, không phải câu CHO PHÉP; fact dương + value=false đúng chiều."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "\"(a) Oleostearin, dầu oleo và dầu mỡ (dầu tallow) (nhóm 15.03).\" — khối \"Nhóm này không bao gồm:\", đích 15.03 nêu đích danh; `dieuKien` giữ cả ngoặc giải thích \"(dầu tallow)\"."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "\"(b) Mỡ của các loại ngựa (nhóm 15.06).\" — đích 15.06 nêu đích danh."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "\"(c) Mỡ xương và mỡ thu được từ phế liệu, của động vật không được nêu trong nhóm này (nhóm 15.01, 15.04 hoặc 15.06).\" — ghi đủ ba đích \"1501|1504|1506\", cả ba mã đều nêu trong câu trích. Điều kiện \"của động vật KHÔNG được nêu trong nhóm này\" được giữ nguyên ⇒ không biến khoản loại trừ thành cấm chung cho cả nhóm."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "\"(d) Dầu gốc động vật (ví dụ, dầu từ chân bò và dầu xương, thuộc nhóm 15.06).\" — đích 15.06 nêu đích danh; `dieuKien` giữ cả ví dụ trong ngoặc (không cắt trích bỏ ví dụ rồi gán đích)."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "\"(e) Một số chất béo thực vật, gọi là \\\"tallow thực vật\\\", ví dụ, tallow thực vật Trung Quốc … và \\\"tallow Borneo\\\" … (nhóm 15.15).\" — đích 15.15 nêu đích danh; `dieuKien` chỉ nêu phần định danh \"Một số chất béo thực vật, gọi là \\\"tallow thực vật\\\"\" (ví dụ vẫn còn trong câu trích), không thêm chữ ngoài nguồn."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích \"(a) Oleostearin, dầu oleo và dầu mỡ (dầu tallow) (nhóm 15.03).\" — chiều Có/Không đúng (có → 15.03), `hoi` không nhắc mã."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích \"(b) Mỡ của các loại ngựa (nhóm 15.06).\" — chiều Có/Không đúng, `hoi` không nhắc mã."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích \"(c) Mỡ xương và mỡ thu được từ phế liệu, của động vật không được nêu trong nhóm này (nhóm 15.01, 15.04 hoặc 15.06).\" — `neuCo` ghi đủ ba đích; `hoi` hỏi đúng hai vế (có → 15.01/15.04/15.06, không → mỡ của trâu bò/cừu/dê), không nhắc mã."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Trích \"(d) Dầu gốc động vật (ví dụ, dầu từ chân bò và dầu xương, thuộc nhóm 15.06).\" — chiều Có/Không đúng; nhánh \"không\" lấy từ cùng khối nguồn (mỡ ở các bộ phận nội tạng và cơ), không nhắc mã."
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "giu",
+   "lyDo": "Trích câu (e) — chiều Có/Không đúng (có → 15.15), `hoi` không nhắc mã."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chép nguyên văn wco.150210: \"150210 Tallow; other than those of heading 1503\" — fact dương `la_mo_tallow` = true đúng chiều; vế loại trừ 1503 đã có ở loaiTru[0] của chính nhóm này nên không mất thông tin (cùng cách làm với 1501/150110 và 1504/150430)."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Chép nguyên văn wco.150290: \"150290 Fats of bovine animals, sheep or goats; excluding tallow, and other than those of heading 1503\" — fact `la_mo_cua_dong_vat_ho_trau_bo_cu_hoac_de_tru_mo_tallow` = true bám đúng vế \"excluding tallow\" theo chiều ĐÚNG (không đảo thành \"chỉ gồm tallow\"); vế \"other than those of heading 1503\" đã có ở loaiTru[0]."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "tax.15021000: \"15021000 - Mỡ tallow\" — tên dòng nguyên văn; `tieuChi` khớp với tieuChi6[0] của cùng nhóm."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "tax.15029010: \"15029010 - - Loại ăn được\" — tên dòng nguyên văn; `tieuChi` `la_loai_an_duoc` = true phân biệt với dòng \"Loại khác\" của cùng phân nhóm."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" (tax.15029090 \"15029090 - - Loại khác\") — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.150290 đúng khuôn mẫu (1103, 0206, 0207); máy tự suy loaiKhac=true. GHI NHẬN: `dieuKien` 105 ký tự > trần clip 90 (runtime cắt đuôi, phần đầu — \"Loại khác: Fats and oils and their fractions\" — vẫn đủ để phân biệt)."
+  }
+ ]
+}

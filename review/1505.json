@@ -1,0 +1,72 @@
+{
+ "nhom": "1505",
+ "nguoiSoat": "dev-soat-doc-lap-lo058",
+ "luc": "2026-10-27T12:05:00+07:00",
+ "soatVaiTro": "Người soát ĐỘC LẬP (không phải người soạn). Đọc từng mục cùng nguồn nguyên văn tmp/so-tay/nguon/1505.txt (nhom1505.nhom, ch15.chuong, phan15.phan, wco.150500, tax.15050010/15050090); kiểm BYTE-EXACT từng mảnh câu trích; đối chiếu nghĩa; đo trần clip() runtime.",
+ "phamViSoat": "Toàn bộ 9 mục của bản nháp lô 058 cho nhóm 1505 (1 phamVi + 2 dieuKienVao + 2 loaiTru + 2 phanBiet + 0 tieuChi6 + 2 dong8), đọc cùng nguồn, không chỉ mẫu.",
+ "soat": 9,
+ "giu": 5,
+ "sua": 4,
+ "xoa": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 1505 — 9/9 mục đã đọc cùng nguồn. SỬA 4, GIỮ 5, XOÁ 0. Lỗi chung của nhóm: bản nháp mở đầu `phamVi`/`dieuKienVao` bằng câu \"Mỡ lông và chất béo thu được từ mỡ lông\" — đó là TÊN NHÓM chính thức lấy từ tên WCO (wco.150500 \"Wool grease and fatty substances derived therefrom\"), nhưng mục khai nguồn nhom1505.nhom thì câu trích KHÔNG có câu đó ⇒ `text`/`fact` khẳng định điều câu trích không nói. Đã sửa theo chiều an toàn: dùng đúng lời nguồn (\"Mỡ lông…\", fact `la_mo_long`) và NỐI thêm khoản loại trừ \"phế liệu của mỡ lông (nhóm 15.22)\" vào câu trích phạm vi; phần \"chất béo thu được từ mỡ lông\" không mất vì cây sổ tay (`cay.nut[].tenVi` của nút 1505) đã mang tên đầy đủ \"Mỡ lông và chất béo thu được từ mỡ lông (kể cả lanolin).\". Ngoài ra SỬA 2 câu hỏi `phanBiet` cho cùng lý do (nhánh \"không\" lấy từ tên WCO). GHI NHẬN: `phamVi.text` 237 > trần clip 220; `phamVi.trich` sau sửa 381 (>300 theo lược đồ, <600 theo máy); `loaiTru[1].dieuKien` 72 > trần clip 55; `phanBiet[1].hoi` sau sửa 92 ≤ trần 110. `tieuChi6` rỗng là ĐÚNG: cây HS của nhóm 1505 không có nút 6 số (con trực tiếp của 1505 là 15050010/15050090 — xem scripts/check-cay.mjs: 1 nhóm đủ, 0 cảnh báo), nên ghi tieuChi6 sẽ bị máy loại `hs6-khong-co-trong-cay`.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Lỗi \"text khẳng định điều câu trích không nói\" + \"mất ngoại lệ\": (i) `text` mở đầu bằng \"Mỡ lông và chất béo thu được từ mỡ lông\" — đó là tên nhóm chính thức từ wco.150500, không có trong câu trích của nhom1505.nhom; (ii) `text` nêu \"không gồm phế liệu của mỡ lông (nhóm 15.22)\" nhưng câu trích gốc dừng ở đoạn về lanolin nên mất khoản loại trừ. Đã viết lại `text` theo đúng lời nguồn và NỐI thêm mảnh nguyên văn \"Nhóm này không bao gồm phế liệu của mỡ lông (nhóm 15.22).\" vào câu trích; câu trích sau sửa 381 ký tự (<600).",
+   "sua": {
+    "text": "Mỡ lông là một loại mỡ dính có mùi khó chịu, được chiết xuất từ nước xà phòng tẩy lông hoặc chuội hoặc hồ vải, và lanolin là sản phẩm đã được tinh chế của mỡ lông; không gồm phế liệu của mỡ lông (nhóm 15.22).",
+    "trich": "Mỡ lông là một loại mỡ dính có mùi khó chịu, được chiết xuất từ nước xà phòng tẩy lông hoặc chuội hoặc hồ vải.…Nó được dùng trong sản xuất các chất bôi trơn và cho các mục đích công nghiệp khác, nhưng nó được dùng chủ yếu như lanolin (sản phẩm đã được tinh chế của nó) hoặc để chiết xuất olein mỡ lông hoặc stearin mỡ lông.…Nhóm này không bao gồm phế liệu của mỡ lông (nhóm 15.22)."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lỗi với `phamVi`: fact `la_mo_long_va_chat_beo_thu_duoc_tu_mo_long` mượn tên nhóm chính thức từ wco.150500 trong khi mục khai nguồn nhom1505.nhom và câu trích chỉ nói về \"Mỡ lông là một loại mỡ dính có mùi khó chịu, được chiết xuất từ nước xà phòng tẩy lông hoặc chuội hoặc hồ vải.\" Đã rút fact về `la_mo_long` — đúng và đủ (nhóm 1505 = mỡ lông; phần \"và chất béo thu được từ mỡ lông\" do cây sổ tay mang tên đầy đủ của nút 1505, còn lanolin là chế phẩm tinh chế của mỡ lông theo câu trích). KHÔNG dùng fact \"mỡ dính có mùi khó chịu\" vì lanolin tinh chế chỉ \"có mùi nhẹ đặc trưng\" ⇒ điều kiện đó không phủ cả nhóm.",
+   "sua": {
+    "fact": "la_mo_long"
+   }
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn \"Nhóm này không bao gồm phế liệu của mỡ lông (nhóm 15.22).\" — khoản loại trừ phủ cả nhóm, không phải câu CHO PHÉP; fact dương + value=false đúng chiều."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn nêu đích 15.22 ⇒ đích danh; `dieuKien` bám đúng câu nguồn."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích: \"Nhóm này không bao gồm các loại cồn đã xác định về mặt hóa học…và những chế phẩm dựa trên lanolin, ví dụ lanolin thêm thuốc hoặc chất thơm (nhóm 30.03 hoặc 30.04, hoặc Chương 33).\" — đích 30.03/30.04 nêu đích danh nên ghi \"3003|3004\"; vế \"Chương 33\" không mã hoá được (luật: đích chỉ nêu \"Chương N\" thì bỏ) và vế \"các loại cồn đã xác định về mặt hóa học\" có định ngữ \"thường thuộc Chương 29\" (mềm) nên KHÔNG ghi mục — bản nháp xử lý đúng cả hai. GHI NHẬN: `dieuKien` 72 ký tự > trần clip 55."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lỗi tên WCO: nhánh \"không\" của bản nháp là \"mỡ lông và chất béo thu được từ mỡ lông\" — không có trong câu trích (nguồn khai nhom1505.nhom). Đã rút về \"mỡ lông\" (đúng lời nguồn, đủ để chỉ nhóm 1505); chiều Có/Không giữ nguyên (có → 1522, không → 1505), `hoi` không nhắc mã.",
+   "sua": {
+    "hoi": "Hàng là phế liệu của mỡ lông hay là mỡ lông?"
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lỗi tên WCO ở nhánh \"không\" (\"mỡ lông và chất béo thu được từ mỡ lông\"). Đã rút về \"mỡ lông\"; chiều Có/Không giữ nguyên (có → 3003|3004, không → 1505), `hoi` không nhắc mã, câu trích giữ nguyên.",
+   "sua": {
+    "hoi": "Hàng là chế phẩm dựa trên lanolin, lanolin thêm thuốc hoặc chất thơm, hay là mỡ lông?"
+   }
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "tax.15050010: \"15050010 - Lanolin\" — tên dòng nguyên văn; `tieuChi` `la_lanolin` = true bám đúng tên dòng."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" (tax.15050090 \"15050090 - Loại khác\") — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.150500 đúng khuôn mẫu (1103, 0206, 0207, 0208, 1502, 1504); máy tự suy loaiKhac=true."
+  }
+ ]
+}
