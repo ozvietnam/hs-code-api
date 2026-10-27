@@ -7496,8 +7496,10 @@ thẳng vào prompt nên đổi từ là đổi nghĩa. Quy ước nhà cho "nê
 3. **Loại trừ CHUNG của Chương 15 KHÔNG chép vào từng nhóm** — mục (B) loại *"các hỗn hợp … chất béo và
    dầu thực vật đã thay đổi về mặt hoá học (nhóm 15.16, 15.17 hoặc 15.18)"* cho cả dải 15.07–15.15 ⇒
    không chép vào 1512–1515 (quyết định lô 060). 4 `loaiTru` trong lô đều từ **chú giải riêng của nhóm**.
-4. **`fact` "dau_duna"** (dừa) — romanization của người soạn, dùng **nhất quán** ở 1513/1516/1517
-   (11 chỗ), đọc được trong prompt; chưa có mẫu nhà ⇒ **không sửa**, ghi lại.
+4. **`fact` "dau_duna"** (dừa) — vòng 1 ghi "romanization của người soạn… chưa có mẫu nhà ⇒ **không sửa**".
+   **Vòng 2 ĐÃ SỬA** (xem mục "SOÁT ĐỘC LẬP lô 060 — vòng 2"): tìm được mẫu nhà (`dua` ở
+   0707/0711/0713/0801) và chứng minh **cùng một bộ sinh** sinh ra cả `rac` (rắn) lẫn `y_ieu` (yếu) ⇒
+   là lỗi hỏng dấu, không phải lựa chọn romanization. Sửa 26 trường slug.
 5. **`dong8` "Loại khác: <tên WCO>"** dài 96–240 ký tự (vượt trần clip 90) — văn phong khuôn mẫu đã gộp
    (**53 % corpus**: 3304/6198 mục) ⇒ ngoài phạm vi soát, **không sửa**.
 6. **`dieuKienVao[3]` 1517 (value=false)** — mẫu nhà đã gộp 73 mục (1501/1502/1503/1504…) ⇒ **GIỮ**.
@@ -7534,5 +7536,166 @@ từ nối ngoại lệ**, **gác soát từ** (từ trong `text`/`dieuKien`/`ho
 - `docs/giao-viec/so-tay-lo.csv` dòng 060: `pr=479`; `trang_thai` giữ **`dang-lam`** (PR chưa merge),
   `nguoi_lam=dev-zcode-mm`. Người gộp đặt `trang_thai=xong` khi merge.
 - Thêm `scripts/apply-review-lo060.mjs` (2 pha: `TARGET=raw` áp `thayDoi`, `TARGET=data` CHỈ đổi `nguonLoai`).
+
+---
+
+# SOÁT ĐỘC LẬP lô 060 — vòng 2 + cứu PR #479 (27/10/2026, phiên quản lý)
+
+Nhóm của lô: **1512, 1513, 1514, 1515, 1516, 1517** (Chương 15). Nhánh `so-tay/lo-060`.
+
+## 0. Brief trỏ nhầm lô — đã xác minh trước khi làm
+
+Yêu cầu giao tệp `brief-st-lo048.md`. Đọc kỹ + đối chiếu thực địa:
+
+| Kiểm | Kết quả |
+|---|---|
+| Nhóm trong brief (`0713 0714 0801 0802 0803 0804`) | = **lô 048** theo `so-tay-lo.csv` |
+| Lô 048 trên GitHub | **PR #450 ĐÃ MERGED** 25/10/2026 (soạn #365 → soát #450, 194/194 mục) |
+| `data/so-tay/0713.json`…`0804.json` | **có trên `origin/main`** (6 tệp) |
+| Dòng CSV 048 | `trang_thai=xong`, `pr=450` |
+| Lệnh mẫu trong brief | `--nhom=7615,9609,3215,6306,6804,7412` = **nhóm lô 001** (mẫu copy-paste lần thứ 11) |
+
+⇒ Lô 048 **đã xong và đã gộp**; làm lại chỉ tạo PR trùng dữ liệu. Phiên trước (soát lô 060) cũng đã
+ghi nhận đúng điểm này trong `TIEN-TRINH.md`. Em làm **lô 060** — lô mà worktree của phiên này
+(`hs-code-api-wt-st-lo060`) và CSV đang chỉ (`dòng 060 = chua-lam`, chưa có gì trên `main`).
+
+## 1. PR #479 bị ĐÓNG — công việc trước suýt mất, đã cứu được
+
+Khi mở phiên: PR **#479 đã CLOSED** (không merge) lúc 10:35:07Z — đúng giây worktree được tạo lại.
+Nhánh `origin/so-tay/lo-060` đã bị xoá ⇒ việc soát (12 mục sửa) không còn trên remote.
+
+Cứu bằng ref PR (GitHub giữ ref sau khi đóng):
+
+```bash
+git fetch origin 'refs/pull/479/head:refs/remotes/origin/pr-479'   # → cbe894a…bbbe877
+```
+
+Nhánh cứu được có 5 commit: bản nháp 179/179 (`bbbe877`) → CSV (`8a515af`) → soát sửa 12 mục
+(`9c4fbdf`) → đồng bộ main (`3c56305`) → wake CI (`cbe894a`).
+
+**Rebase lên `origin/main` mới** (nhánh cứu được đứng trước lô 059 ⇒ nếu để nguyên sẽ **xoá ngược**
+`data/so-tay/1506…1511.json` của lô 059). Rebase xong còn 2 conflict, đã giải quyết:
+
+- `docs/giao-viec/so-tay-lo.csv` — dòng 059 giữ nguyên của main (`dang-lam,dev-zcode-mm,477`); dòng 060
+  để `dang-lam` (commit cũ ghi `xong` **trước khi merge** — sai luật nhà, người gộp mới được đặt `xong`).
+- `TIEN-TRINH.md` — giữ CẢ HAI phía (mục lô 059 của main + mục lô 060 của nhánh).
+
+`data/legal-status-miss.jsonl` (log runtime lọt vào commit cũ) — bỏ khỏi diff.
+
+## 2. Bản nháp gốc đã mất — dựng lại để soát được
+
+`tmp/so-tay/raw/` là gitignored ⇒ bản nháp của phiên soát trước **không còn**. Nhưng `data/so-tay/*.json`
+sau khi nạp vẫn giữ đúng các trường người soạn viết (máy chỉ bổ sung, không sửa câu trích — báo cáo lô 060
+ghi `loai = 0` cho cả 6 nhóm, tức **không mục nào bị máy loại**).
+
+`tmp/reconstruct-raw.mjs` dựng lại `tmp/so-tay/raw/<nhom>.json` từ `data/so-tay/<nhom>.json` (chỉ giữ
+`phamVi/dieuKienVao/loaiTru/phanBiet/boPhan/tieuChi6/cay.tenDien/dong8` + các trường do người viết).
+Sau đó mọi bộ kiểm của nhà chạy được trên bản nháp:
+`check-so-tay --raw` **179/179 (100 %)** ⇒ bản dựng lại **đúng** bản nháp gốc.
+
+> **BẪY ĐÃ GẶP:** `scripts/scan-so-tay-soat.mjs` đọc `tmp/so-tay/raw/`; khi thư mục này trống, script
+> in **"Tổng cảnh báo: 0"** — xanh giả. Phải có bản nháp thì scanner mới có tác dụng.
+
+## 3. Soát độc lập vòng 2 — 28 mục sửa, 0 xoá
+
+Em đọc lại **toàn bộ 179 mục** (6 nhóm) cùng nguồn `tmp/so-tay/nguon/<nhom>.txt`, rồi chạy thêm các bộ
+quét riêng. Kết quả: ngoài các lỗi đã sửa ở vòng 1, phát hiện **một lớp lỗi mới do BỘ SINH của lô 060
+hỏng ký tự** — mà cả máy kiểm lẫn vòng soát 1 đều không thấy.
+
+### Lớp A — slug hỏng dấu (26 trường) — **LỖI THẬT, đã sửa**
+
+Bộ sinh (đã mất) bỏ dấu kiểu NFD nhưng bản đồ ký tự ơ/ư sai ⇒ sinh ra 3 mẫu hỏng:
+
+| Mẫu | Nguồn | Sinh ra | Đúng | Số chỗ |
+|---|---|---|---|---|
+| `ừ` (u+horn+grave) | dừa | `duna` | `dua` | 11 (1513 ×4, 1516 ×5, 1517 ×1 + 1) |
+| `ắ` (a+horn+acute) | rắn | `rac` | `ran` | 7 (1513 ×4, 1515 ×2, 1517 ×1) |
+| `ế` (e+circumflex) | yếu | `y_ieu` | `yeu` | 8 (1517 `dong8[8..15]`) |
+
+**Bằng chứng đã đối chiếu (không phải suy đoán):**
+
+- Mẫu nhà đã dùng `dua`: `0707` (`la_dua_chuot_hoac_dua_chuot_ri`), `0711`, `0713`
+  (`la_dau_dau_dua_vigna_unguiculata`), `0801` (`khong_phai_copra_dung_chiet_xuat_dau_dua_va_…`).
+- Mẫu nhà đã dùng `yeu`: **14 nhóm** ghi `chu_yeu` (ví dụ `1502`).
+- `duna` chỉ có ở lô 060 (3 nhóm); `rac` trong `1511` là **hợp lệ** (rác = rác), còn `rac` ở lô 060 là
+  `rắn` ⇒ phân biệt được bằng ngữ cảnh, không đoán mò.
+- Vòng soát 1 đã **ghi nhận nhưng không sửa** ("romanization của người soạn… chưa có mẫu nhà"). Vòng 2
+  tìm được mẫu nhà **và** chứng minh cùng một bộ sinh sinh ra cả 3 mẫu ⇒ **kết luận cũ bị đảo**, đã sửa.
+
+Cách phát hiện (lặp lại được, không mắt thường):
+
+- `tmp/soat-hoa-dau.mjs` — so `slug(dieuKien)` với `tieuChi.fact` của từng dòng 8 số.
+- `tmp/soat-slung.py` — token nào **bỏ 1 ký tự** thì khớp từ có thật trong nguồn (`duna`→`dua`).
+- `tmp/scan-slung-hon.py` — quét lỗi hỏng dấu theo nhóm.
+
+### Lớp B — câu trích chưa đủ căn cứ cho `fact` (4 mục)
+
+`1516 dong8[18]/[19]/[26]/[27]` (4 dòng SEN "Chất béo đã hydro hóa của cọ dầu"): câu trích dừng ở
+*"…khi chúng **đáp ứng điều kiện sau**:"* ⇒ `tieuChi.fact` = *"đã đáp ứng điều kiện chỉ số iốt theo bảng
+SEN"* có từ **không có trong câu trích** (lớp lỗi "fact nói điều câu trích không nói"). Sửa: nối thêm
+**dòng đầu bảng điều kiện** lấy **nguyên văn** từ khối SEN (`Sản phẩm | Chỉ số iốt (IV), Wijs`) — không
+suy diễn, không sửa câu nguồn.
+
+### Lớp C — mục GHI NHẬN của vòng 1 đã được giải quyết
+
+- **`1513 dong8[6]` (15132911)** — vòng 1 ghi nhận "câu trích mở đầu bằng câu về Olein, câu của mục là
+  câu về Stearin". Đối chiếu lại: dòng 15132911 của biểu thuế là **"Các phần phân đoạn thể rắn"** ⇒
+  dòng này là **stearin** ⇒ `dieuKien` ("Stearin hạt cọ là phần rắn hơn…") **đúng dòng**. Khối SEN gộp
+  chung nên câu trích mở đầu bằng Olein là do nguồn, không phải lỗi. *(Ghi chú: vòng 1 ghi index là
+  `dong8[3]` — thực tế là `dong8[6]`; hồ sơ `review/1513.json` cũng ghi nguồn là `tax.15132911` trong
+  khi thực tế là `sen.15132911`.)*
+- **`1515 dong8[3]/[5]`** — "thể rắn" bị sinh thành `the_rac` ⇒ đã sửa `the_ran` (xem lớp A).
+
+### Các mục GHI NHẬN còn lại — giữ nguyên, có căn cứ đo
+
+| Mục | Vì sao giữ |
+|---|---|
+| `dieuKienVao` 1512/1513/1514 mượn TỔNG QUÁT (B) Chương 15 | Chú giải riêng 3 nhóm gần như trống; câu (B) phủ cả dải 15.07–15.15; vế "đã hoặc chưa tinh chế" (câu CHO PHÉP) đã lược khỏi **cả** trích lẫn `fact` ⇒ `fact` nói **ít hơn** câu trích, không sai |
+| Loại trừ CHUNG của Chương 15 | Không chép vào 1512–1515; 4 `loaiTru` của lô đều từ chú giải riêng của nhóm |
+| `dong8` "Loại khác: <tên WCO>" dài 96–240 ký tự | Vượt trần clip 90 nhưng là **văn phong khuôn mẫu đã gộp**: đo lại toàn corpus **3304/6227** dòng `dong8` (376/512 nhóm) vượt trần ⇒ lỗi **cấp máy**, không phải lỗi lô 060. Đề xuất người duyệt đưa thành luật máy |
+| `dieuKienVao[3]` 1517 (`value=false`) | Mẫu nhà đã gộp: **81/81** mục `value=false` trong corpus **không** bắt đầu bằng `khong_` ⇒ giữ |
+| `1517 tieuChi6[1].fact` bỏ vế "n.e.c. in heading 1517" | Nói **ít hơn** câu trích (không đảo chiều) — mẫu lô 041: "n.e.c. in heading X" là **phần dư của X**; ở đây vế bị lược nên không có chiều ngược |
+| `1515/1516 tieuChi6` bỏ "partly or wholly", "whether or not refined" | Cùng loại: nói ít hơn, không đảo chiều |
+
+## 4. Trạng thái cuối
+
+| Kiểm | Kết quả |
+|---|---|
+| `check-so-tay.mjs --raw=tmp/so-tay/raw` | 6 nhóm, **179 mục, 0 mục không kiểm được nguồn** (179/179 = 100 %) |
+| `check-trich-nguyen-van.mjs` (byte-exact) | **OK — 170 mục** nguyên văn tuyệt đối trong đúng khối nguồn (kể cả 4 câu trích SEN đã nối thêm dòng bảng) |
+| `check-cay.mjs --chi-tiet` (6 nhóm) | **6/6 nhóm đủ** — 0 lỗi lệch cây, 0 cảnh báo |
+| `build-so-tay … --tu-tep --force` | **179/179 (100 %)** — `tyLeDat: 100`, `nhomLoi: []` |
+| `npm run so-tay:check` | **512 nhóm, 14 126 mục, 0 mục không kiểm được nguồn** |
+| `npm test` | **ALL TESTS PASSED** (exit 0) |
+| đối chiếu `dong8` ↔ `tax.*` | THIẾU 0 · THỪA 0 (120/120 dòng) |
+| quét hỏng dấu (`soat-hoa-dau` / `soat-slung` / `scan-slung-hon`) | **0 lỗi còn lại** |
+
+Số mục sửa của lô 060 tính **cả 2 vòng**: vòng 1 sửa 12 mục · vòng 2 (phiên này) sửa **28 mục** (26 slug
++ 4 câu trích SEN; 1517 `dong8[14]` gộp 2 lỗi trong 1 mục) · **xoá 0** · 179/179 (100 %) không đổi.
+
+---
+
+## Đề xuất cho người duyệt — luật máy cho lớp lỗi "slug hỏng dấu"
+
+Lớp lỗi lô 060 (`duna`/`rac`/`y_ieu`) là lỗi **cấp máy**: `check-so-tay.mjs` không kiểm `fact`, và
+người soát cũng dễ bỏ sót vì `fact` là chuỗi không dấu nhìn "gần đúng".
+
+**Cách phát hiện đã dùng (chạy lại được):**
+
+1. So `slug(dieuKien)` với `tieuChi.fact` của từng dòng 8 số — lệch 1 ký tự là nghi.
+2. Token nào **bỏ 1 ký tự** thành từ có thật trong khối nguồn ⇒ hỏng dấu (bỏ dấu kiểu NFD nhưng bản đồ
+   ký tự ơ/ư sai).
+
+**Cảnh báo khi đưa thành luật máy:** bản "khoảng cách sửa ≤1" báo **84 dòng** toàn repo, trong đó phần lớn là
+nhiễu (ví dụ `chat_lieu` của "chất liệu" khớp `tieu` trong "tiêu đề"; `luong` khớp `long`; `lam` khớp `lap`).
+Muốn luật máp sạch thì phải so với **từ đã bỏ dấu trong tên dòng**, không so khoảng cách ký tự.
+
+**Ngoài lô 060, quét toàn repo thấy thêm 3 dòng lỗi THẬT ở các lô đã gộp** (ngoài phạm vi PR này, đề
+người duyệt xử lý ở lô tương ứng):
+
+| Nhóm | Dòng | `fact` hiện tại | Đúng theo tên dòng |
+|---|---|---|---|
+| 9616 | 96162000 | `la_mienh_va_tam_de_xoa_…` | `la_mieng_va_tam_de_xoa_…` ("Miếng và tấm để xoa") |
+| 8529 | 85299053, 85299094 | `dung_cho_man_hinh_dep` | `dung_cho_man_hinh_det` ("màn hình **dẹt**") |
 
 ---
