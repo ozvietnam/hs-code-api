@@ -106,8 +106,9 @@
 | `npm run so-tay:check` | **512 nhóm, 14 057 mục, 0 mục không kiểm được nguồn** |
 | `npm test` | **ALL TESTS PASSED** (exit 0) |
 
-- **CHƯA merge** — chờ người duyệt + soát độc lập. `so-tay-lo.csv` dòng 061 để
-  `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm` (người gộp đặt `trang_thai=xong` khi merge).
+- **CHƯA merge** — chờ người duyệt + soát độc lập. **PR #481** (đã mở, KHÔNG merge).
+  `so-tay-lo.csv` dòng 061 để `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm`, `pr=481`
+  (người gộp đặt `trang_thai=xong` khi merge).
 
 ---
 
