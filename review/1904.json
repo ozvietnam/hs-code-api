@@ -1,0 +1,126 @@
+{
+ "nhom": "1904",
+ "nguoiSoat": "dev-soat-doc-lap-lo064",
+ "vong": 1,
+ "luc": "2026-10-28T05:25:00+07:00",
+ "daKiem": 19,
+ "xoa": 0,
+ "sua": 4,
+ "chen": 1,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 064 (nhóm 1904) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/1904.txt (10.887 ký tự, đọc hết — nhóm nhiều phần: phần đầu không nhãn + (B) + (C) + (D)). Kết quả: giữ 14 · sửa 4 · chèn 1 · xoá 0. Lớp lỗi mới của vòng này: thu hẹp ĐIỀU KIỆN LOẠI TRỪ (mất vế \"tính trên cơ sở đã khử toàn bộ chất béo\" + mất nhánh \"được bọc sôcôla\") ở cả `loaiTru[1]` lẫn `phanBiet[0]` — máy `check-so-tay` KHÔNG bắt được vì nó chỉ kiểm câu trích có thật, không biết câu trích nói nhiều hơn điều kiện.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích ghép 4 mảnh của chú giải nhóm bằng \"…\" và NÊU ĐỦ CÁC PHẦN ngang hàng: phần đầu (không ghi nhãn trong nguồn) + (B) + (C) + (D) ⇒ phạm vi PHỦ CẢ NHÓM, không chỉ đoạn dẫn của phần đầu (lớp lỗi lô 030: \"KHÔNG lấy đoạn dẫn của phần đầu làm phạm vi cả nhóm\"). `text` 215/220 dưới trần clip. GHI NHẬN 1: đoạn lược có nuốt câu loại trừ \"Các chế phẩm tương tự được chế từ bột nhào và chiên trong dầu ăn thực vật bị loại trừ (nhóm 19.05)\" — NHƯNG câu đó ĐÃ có mục `loaiTru[2]` riêng với trích nguyên văn ⇒ không mất luật nào khỏi hồ sơ; bộ quét `scan-so-tay-soat.mjs` (lớp lỗi 3) chỉ soi 60 ký tự quanh dấu lược nên bỏ sót. GHI NHẬN 2: `trich` 498 ký tự nằm trong vùng 300–600 mà máy KHÔNG chặn — mẫu đã duyệt trong kho có trích dài hơn (8712 = 598) ⇒ giữ nguyên, không rút cụt."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI CHÍNH TẢ TRONG `fact`: \"chi_duoc_chue_bien_hoac_xu_ly_theo_cac_phuong_phap_da_duoc_neu_o_chuong_10_hoac_chuong_11\" — \"chế biến\" bỏ dấu phải là \"che_bien\", không phải \"chue_bien\". Máy kiểm KHÔNG bắt (chỉ kiểm câu trích, không kiểm `fact`), còn `fact` thì đọc thẳng vào prompt runtime. VỀ NGHĨA giữ nguyên: `fact` là VẾ BỊ LOẠI với `value` = false ⇒ câu hỏi \"chỉ được chế biến theo phương pháp của Chương 10/11?\" trả lời \"không\" ⇒ MẪU NHÀ 1518 (lô 061) ✓ chiều đúng, không đảo. Sửa đúng một từ.",
+   "sua": {
+    "fact": "chi_duoc_che_bien_hoac_xu_ly_theo_cac_phuong_phap_da_duoc_neu_o_chuong_10_hoac_chuong_11"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"(a) Ngũ cốc đã chế biến được phủ hoặc xử lý cách khác, có chứa đường với tỷ lệ làm cho nó có đặc tính của kẹo đường (nhóm 17.04).\" nằm trong khối \"Nhóm này cũng không bao gồm:\" ⇒ loại trừ dứt khoát; đích 17.04 NÊU NGUYÊN VĂN ✓ luật 3. `dieuKien` rút gọn \"được phủ hoặc xử lý cách khác\" (mệnh đề bổ nghĩa cách chế biến) — không đổi nghĩa loại trừ, không đảo chiều; 45/55 dưới trần clip ⇒ không bị cắt."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT — THU HẸP ĐIỀU KIỆN LOẠI TRỪ. Câu nguồn (b): \"Các chế phẩm có chứa ca cao trên 6% trọng lượng được tính trên cơ sở đã khử toàn bộ chất béo hoặc được bọc sôcôla hoặc các chế phẩm thực phẩm khác có chứa ca cao thuộc nhóm 18.06 (nhóm 18.06).\" Còn `dieuKien` chỉ \"Chế phẩm có chứa ca cao trên 6% trọng lượng\" ⇒ MẤT (i) vế định danh \"tính trên cơ sở đã khử toàn bộ chất béo\" — ngưỡng 6 % trong nguồn TÍNH TRÊN CƠ SỞ ĐÃ KHỬ CHẤT BÉO, còn `dieuKien` đọc như tính trên tổng trọng lượng ⇒ một sản phẩm 5 % ca cao tính theo tổng nhưng 8 % tính sau khi khử chất béo sẽ bị giữ lại ở 19.04 thay vì sang 18.06; và MẤT (ii) nhánh \"hoặc được bọc sôcôla\". Sửa: đưa vế định danh vào (54/55, vừa dưới trần clip) và tách nhánh \"bọc sôcôla\" thành mục `loaiTru[3]` CHÈN cùng đích 18.06 — 155 nhóm trong kho có nhiều `loaiTru` cùng một đích. GHI NHẬN: nhánh thứ ba (\"các chế phẩm thực phẩm khác có chứa ca cao thuộc nhóm 18.06\") KHÔNG mã hoá được — điều kiện của nó chỉ là \"thuộc nhóm 18.06\", tức trùng đích ⇒ đề xuất người duyệt. MẪU NHÀ: 1901 đã duyệt có `loaiTru` \"Chế phẩm từ hàng hóa 04.01–04.04 chứa từ 5% trở lên cacao đã khử toàn bộ chất béo\" — vẫn giữ vế \"đã khử toàn bộ chất béo\" ✓.",
+   "sua": {
+    "dieuKien": "Ca cao trên 6% tính trên cơ sở đã khử toàn bộ chất béo"
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"Các chế phẩm tương tự được chế từ bột nhào và chiên trong dầu ăn thực vật bị loại trừ (nhóm 19.05).\" có DẤU HIỆU LOẠI TRỪ rõ (\"bị loại trừ\") ✓ và đích 19.05 NÊU NGUYÊN VĂN ✓. `dieuKien` rút gọn \"trong dầu ăn thực vật\" → \"dầu ăn\" — không đổi nghĩa loại trừ; 50/55 dưới trần clip."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "chen",
+   "lyDo": "CHÈN nhánh bị bỏ của câu (b) — \"hoặc được bọc sôcôla\", cùng đích 18.06. Nhánh này là điều kiện RIÊNG (một sản phẩm phủ sôcôla bị loại khỏi 19.04 dù lượng ca cao không vượt 6 %) nên không thể gộp vào `loaiTru[1]` mà vẫn giữ nghĩa. `dieuKien` 24/55; `trich` là CÙNG câu (b) đã nguyên văn trong bản nháp (không gõ lại). GHI NHẬN: chữ \"sôcôla\" viết liền là đúng với nguồn nhóm 1904 (chú giải Chương 19 viết \"sô cô la\" — giữ đúng vẻ của khối nguồn đã trích).",
+   "muc": {
+    "dieuKien": "Chế phẩm được bọc sôcôla",
+    "sangNhom": "1806",
+    "nguon": "nhom1904.nhom",
+    "trich": "(b) Các chế phẩm có chứa ca cao trên 6% trọng lượng được tính trên cơ sở đã khử toàn bộ chất béo hoặc được bọc sôcôla hoặc các chế phẩm thực phẩm khác có chứa ca cao thuộc nhóm 18.06 (nhóm 18.06)."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "Câu hỏi phải mang vế định danh của nguồn, không thể hỏi chỉ \"có chứa ca cao trên 6%\". Câu (b) nói ngưỡng 6 % được \"tính trên cơ sở đã khử toàn bộ chất béo\" ⇒ hỏi \"chứa ca cao trên 6 % trọng lượng\" mà không nói cơ sở tính là HỎI SAI ĐỀ (một hàng 5 % ca cao tính trên tổng sẽ trả lời \"không\" ⇒ rơi nhầm 19.04). Sửa: thêm ngoặc \"(đã khử toàn bộ chất béo)\" — 63/110 dưới trần clip. Đích 18.06 CÓ trong câu trích ✓ luật 4; nhánh \"không\" → 19.04 là phần BÙ ✓ (mẫu nhà 824/1046 mục).",
+   "sua": {
+    "hoi": "Hàng chứa ca cao trên 6% trọng lượng (đã khử toàn bộ chất béo)?"
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "hs6 190410 là nút 6 số thật ✓ luật 10; nguồn wco.190410 (KHÔNG lấy từ tax.*) ✓; `fact` là bản Việt của tiêu đề WCO \"obtained by the swelling or roasting of cereals or cereal products\". GHI NHẬN: bộ quét báo \"từ ngoài nguồn\" cho `fact` này (do `fact` tiếng Việt còn nguồn là tiếng Anh) — đây là báo động GIẢ của lớp lỗi 5 (mẫu nhà: 1905/2001/2002 cùng dạng). Phần (A) của chú giải nhóm KHÔNG ghi nhãn trong nguồn ⇒ không lấy được tiêu đề tiếng Việt từ `nhom1904.nhom`, wco.190410 là nguồn hợp lệ theo luật 10 ✓."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "hs6 190420 là nút 6 số thật ✓; `trich` lấy từ chú giải nhóm — tiêu đề phần \"(B) Thực phẩm chế biến từ mảnh ngũ cốc chưa rang hoặc từ hỗn hợp của mảnh ngũ cốc chưa rang và mảnh ngũ cốc đã rang hoặc ngũ cốc đã nổ.\" (nguyên văn) ✓; `fact` bám đúng vế \"chế biến từ mảnh ngũ cốc chưa rang...\" ✓. Nguồn này RỘNG HƠN tiêu đề WCO (WCO 190420 ghi thêm \"swelled cereals\") ⇒ không mất luật nào, không sửa."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "hs6 190430 là nút 6 số thật ✓; `trich` = \"(C) Lúa mì bulgur.\" (nguyên văn) ✓; `fact` \"la_lua_mi_bulgur\" = true bám đúng ✓."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI CHÍNH TẢ TRONG `fact`: \"ngu_coc_khac_tru_ngo_da_so_che_hoac_chue_bien_cach_khac\" — \"chế biến\" bỏ dấu phải là \"che_bien\", không phải \"chue_bien\". Máy kiểm KHÔNG bắt được (chỉ kiểm câu trích); `fact` đọc thẳng vào prompt runtime. VỀ NGHĨA giữ nguyên: `trich` = \"(D) Các loại ngũ cốc khác, trừ ngô, được sơ chế hoặc chế biến cách khác.\" ✓ bám đúng. Sửa đúng một từ.",
+   "sua": {
+    "fact": "ngu_coc_khac_tru_ngo_da_so_che_hoac_che_bien_cach_khac"
+   }
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "`quyTac` (363 ký tự) liệt kê đủ 4 phần ngang hàng của nhóm; `tomTat` (157/160) rút gọn còn 4 tiêu đề phần ✓ dưới trần clip. GHI NHẬN: nguồn chỉ GHI NhãN (B), (C), (D) — phần đầu không nhãn — nhưng `tomTat` nói \"Bốn phần\"; con số 4 đúng vì nhóm có 4 phân nhóm 6 số thật (190410/190420/190430/190490, đều là nút 6 số trong cây) ✓. `trich` 498 ký tự (vùng 300–600, máy không chặn; mẫu kho có dài hơn) ⇒ giữ nguyên."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19041010: `dieuKien` chép nguyên văn \"Chứa ca cao\" ✓ (nguồn tax.19041010); 14/90."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 19041090: `loaiKhac` máy tự điền ✓ luật 6; `dieuKien` lấy điều kiện cấp phân nhóm 6 số từ wco.190410 ✓ (cùng cách 175 dòng \"Loại khác\" đã duyệt trong kho). GHI NHẬN: 149 ký tự > trần clip 90 ⇒ runtime cắt mất đuôi tiếng Anh, nhưng phần tiếng Việt còn trọn trong 90 ký tự đầu ⇒ KHÔNG sửa (đổi 10 dòng sang dạng tiếng Việt của lô 15xx–18xx là việc soạn lại, không phải soát)."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19042010: `dieuKien` chép nguyên văn \"Thực phẩm chế biến từ mảnh ngũ cốc chưa rang\" ✓ (nguồn tax.19042010)."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 19042090: `loaiKhac` máy tự điền ✓; `dieuKien` từ wco.190420 ✓. GHI NHẬN: 209 ký tự > 90 ⇒ xem ghi chú ở `dong8[1]`."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19043000: `dieuKien` \"Lúa mì bulgur\" — bỏ đánh số chú thích \"(1)\" ở cuối dòng biểu thuê (đánh số chú thích, không phải điều kiện) ✓; `trich` giữ nguyên cả \"(1)\" theo luật chép nguyên văn."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19049010: `dieuKien` chép nguyên văn \"Các chế phẩm từ gạo, kể cả gạo đã nấu chín sơ\" ✓ (nguồn tax.19049010) — cũng khớp với chú giải phần (D): \"gạo đã được nấu chín sơ một phần hoặc hoàn toàn\"."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 19049090: `loaiKhac` máy tự điền ✓; `dieuKien` từ wco.190490 ✓ (tên WCO ghi rõ \"excluding maize\" — khớp phần (D) \"trừ ngô\" ✓). GHI NHẬN: 175 ký tự > 90 ⇒ xem ghi chú ở `dong8[1]`."
+  }
+ ]
+}

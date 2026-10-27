@@ -1,0 +1,545 @@
+{
+ "nhom": "1905",
+ "phamVi": {
+  "text": "Tất cả các loại bánh được nướng; nhóm cũng bao gồm bánh thánh, vỏ thuốc con nhộng dùng trong ngành dược, bánh xốp (sealing wafer), bánh đa và các sản phẩm tương tự.",
+  "nguon": "nhom1905.nhom",
+  "trich": "Nhóm này bao gồm tất cả các loại bánh được nướng.…(B) Bánh thánh, vỏ thuốc con nhộng dùng trong ngành dược, bánh xốp (sealing wafer), bánh đa và các sản phẩm tương tự.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_cac_loai_banh_duoc_nuong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom1905.nhom",
+   "trich": "Nhóm này bao gồm tất cả các loại bánh được nướng.",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "ty_le_xuc_xich_thit_ca_giap_xac_than_mem_trong_luong",
+   "op": "<=",
+   "value": 20,
+   "donVi": "%",
+   "ngoaiTru": [],
+   "nguon": "nhom1905.nhom",
+   "trich": "Nhóm này không bao gồm:…(a) Tất cả các sản phẩm có chứa trên 20% trọng lượng là xúc xích, thịt, phụ phẩm dạng thịt sau giết mổ, tiết, côn trùng, cá hoặc động vật giáp xác, động vật thân mềm, động vật thủy sinh không xương sống khác hoặc hỗn hợp các loại trên",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Sản phẩm thuộc nhóm 20.05",
+   "sangNhom": "2005",
+   "nguon": "nhom1905.nhom",
+   "trich": "(b) Các sản phẩm thuộc nhóm 20.05",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Bánh pizza chưa được làm chín",
+   "sangNhom": "1901",
+   "nguon": "nhom1905.nhom",
+   "trich": "Tuy nhiên, bánh pizza chưa được làm chín thuộc nhóm 19.01.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là bánh pizza chưa được làm chín hay là bánh đã được làm chín sơ hoặc đã chín?",
+   "neuCo": "1901",
+   "neuKhong": "1905",
+   "nguon": "nhom1905.nhom",
+   "trich": "(14) Bánh pizza (đã được làm chín sơ hoặc đã chín), gồm một đế bánh pizza phủ một số thành phần như pho mát, cà chua, dầu ăn, thịt, cá trỏng. Tuy nhiên, bánh pizza chưa được làm chín thuộc nhóm 19.01.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "190510",
+   "fact": "han_luong_nuoc",
+   "op": "<=",
+   "value": 10,
+   "donVi": "%",
+   "nguon": "nhom1905.nhom",
+   "trich": "Hàm lượng nước trong sản phẩm không quá 10% trọng lượng.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "190520",
+   "fact": "la_banh_ging_va_loai_tuong_tu",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.190520",
+   "trich": "190520 Food preparations; gingerbread and the like, whether or not containing cocoa",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "190531",
+   "fact": "trong_luong_cac_thanh_phan_banh_quy",
+   "op": ">=",
+   "value": 50,
+   "donVi": "%",
+   "nguon": "nhom1905.nhom",
+   "trich": "(b) Bánh quy ngọt, là sản phẩm cao cấp bảo quản được lâu, chế biến từ hỗn hợp bột, đường hoặc chất tạo ngọt khác và chất béo (các thành phần này chiếm ít nhất 50% trọng lượng sản phẩm)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "190532",
+   "fact": "la_banh_que_waffles_va_banh_xop_wafers",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.190532",
+   "trich": "190532 Food preparations; waffles and wafers, whether or not containing cocoa",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "190540",
+   "fact": "la_banh_bit_cot_banh_mi_nuong_va_loai_tuong_tu",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.190540",
+   "trich": "190540 Food preparations; rusks, toasted bread and similar toasted products, whether or not containing cocoa",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "190590",
+   "fact": "la_cac_loai_banh_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.190590",
+   "trich": "190590 Food preparations; bakers' wares n.e.c. in heading no. 1605, whether or not containing cocoa; communion wafers, empty cachets suitable for pharmaceutical use, sealing wafers, rice papers and similar products",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "19051000",
+   "dieuKien": "Bánh mì giòn",
+   "tieuChi": null,
+   "nguon": "tax.19051000",
+   "trich": "19051000 - Bánh mì giòn",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "19052000",
+   "dieuKien": "Bánh mì có gừng và loại tương tự",
+   "tieuChi": null,
+   "nguon": "tax.19052000",
+   "trich": "19052000 - Bánh mì có gừng và loại tương tự",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "19053110",
+   "dieuKien": "Không chứa ca cao",
+   "tieuChi": null,
+   "nguon": "tax.19053110",
+   "trich": "19053110 - - - Không chứa ca cao",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "19053120",
+   "dieuKien": "Chứa ca cao",
+   "tieuChi": null,
+   "nguon": "tax.19053120",
+   "trich": "19053120 - - - Chứa ca cao",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "19053210",
+   "dieuKien": "Bánh waffles: bột nhào hoặc bột nhão được ép giữa hai khuôn kẹp bằng sắt và được nướng",
+   "tieuChi": null,
+   "nguon": "sen.19053210",
+   "trich": "BÁNH WAFFLES\nMột loại bột nhào hoặc bột nhão được ép giữa hai khuôn kẹp bằng sắt và được nướng để tạo hình dạng và đặc tính đặc trưng.",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "19053220",
+   "dieuKien": "Bánh xốp wafers: bánh quy giòn mỏng, không nướng trong lò, nướng bằng khuôn kẹp bằng sắt",
+   "tieuChi": null,
+   "nguon": "sen.19053220",
+   "trich": "BÁNH XỐP WAFERS\nMột loại bánh quy giòn mỏng (không nướng trong lò được nướng bằng khuôn kẹp bằng sắt) được làm từ mỏng và có thể có một hoặc nhiều lớp.",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "19054010",
+   "dieuKien": "Chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây",
+   "tieuChi": null,
+   "nguon": "tax.19054010",
+   "trich": "19054010 - - Chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "19054090",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 1905.40 (tên WCO 190540: Food preparations; rusks, toasted bread and similar toasted products, whether or not containing cocoa)",
+   "tieuChi": null,
+   "nguon": "wco.190540",
+   "trich": "190540 Food preparations; rusks, toasted bread and similar toasted products, whether or not containing cocoa",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "190540",
+    "truAnhEm": [
+     "19054010"
+    ],
+    "toTienCoTen": "190540",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "19059010",
+   "dieuKien": "Bánh quy không ngọt dùng cho trẻ mọc răng hoặc thay răng",
+   "tieuChi": null,
+   "nguon": "tax.19059010",
+   "trich": "19059010 - - Bánh quy không ngọt dùng cho trẻ mọc răng hoặc thay răng",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "19059020",
+   "dieuKien": "Bánh quy không ngọt khác",
+   "tieuChi": null,
+   "nguon": "tax.19059020",
+   "trich": "19059020 - - Bánh quy không ngọt khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "19059030",
+   "dieuKien": "Bánh ga tô (cakes)",
+   "tieuChi": null,
+   "nguon": "tax.19059030",
+   "trich": "19059030 - - Bánh ga tô (cakes)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "19059040",
+   "dieuKien": "Bánh bột nhào (pastry)",
+   "tieuChi": null,
+   "nguon": "tax.19059040",
+   "trich": "19059040 - - Bánh bột nhào (pastry)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "19059050",
+   "dieuKien": "Các loại bánh không bột",
+   "tieuChi": null,
+   "nguon": "tax.19059050",
+   "trich": "19059050 - - Các loại bánh không bột",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "19059060",
+   "dieuKien": "Vỏ viên nhộng và sản phẩm tương tự dùng trong dược phẩm",
+   "tieuChi": null,
+   "nguon": "tax.19059060",
+   "trich": "19059060 - - Vỏ viên nhộng và sản phẩm tương tự dùng trong dược phẩm",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "19059070",
+   "dieuKien": "Bánh thánh, bánh xốp sealing wafers, bánh đa và các sản phẩm tương tự",
+   "tieuChi": null,
+   "nguon": "tax.19059070",
+   "trich": "19059070 - - Bánh thánh, bánh xốp sealing wafers, bánh đa và các sản phẩm tương tự",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "19059080",
+   "dieuKien": "Các sản phẩm thực phẩm giòn có hương liệu khác",
+   "tieuChi": null,
+   "nguon": "tax.19059080",
+   "trich": "19059080 - - Các sản phẩm thực phẩm giòn có hương liệu khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "19059090",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 1905.90 (tên WCO 190590: Food preparations; bakers' wares n.e.c. in heading no. 1605, whether or not containing cocoa; communion wafers, empty cachets suitable for pharmaceutical use, sealing wafers, rice papers and similar products)",
+   "tieuChi": null,
+   "nguon": "wco.190590",
+   "trich": "190590 Food preparations; bakers' wares n.e.c. in heading no. 1605, whether or not containing cocoa; communion wafers, empty cachets suitable for pharmaceutical use, sealing wafers, rice papers and similar products",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "190590",
+    "truAnhEm": [
+     "19059010",
+     "19059020",
+     "19059030",
+     "19059040",
+     "19059050",
+     "19059060",
+     "19059070",
+     "19059080"
+    ],
+    "toTienCoTen": "190590",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "1905",
+    "cap": 4,
+    "cha": "19",
+    "tenVi": "Bánh mì, bánh bột nhào (pastry), bánh ga tô (cakes), bánh quy và các loại bánh khác, có hoặc không chứa ca cao; bánh thánh, vỏ viên nhộng dùng trong ngành dược, bánh xốp sealing wafers, bánh đa và các sản phẩm tương tự.",
+    "tenEn": "Bread, pastry, cakes, biscuits, other bakers' wares, whether or not containing cocoa; communion wafers, empty cachets suitable for pharmaceutical use, sealing wafers, rice paper and similar products",
+    "suyRa": false
+   },
+   {
+    "id": "19051000",
+    "cap": 8,
+    "cha": "1905",
+    "tenVi": "Bánh mì giòn",
+    "tenEn": "Food preparations; crispbread, whether or not containing cocoa",
+    "suyRa": false,
+    "laPhanNhom": "190510"
+   },
+   {
+    "id": "19052000",
+    "cap": 8,
+    "cha": "1905",
+    "tenVi": "Bánh mì có gừng và loại tương tự",
+    "tenEn": "Food preparations; gingerbread and the like, whether or not containing cocoa",
+    "suyRa": false,
+    "laPhanNhom": "190520"
+   },
+   {
+    "id": "19053",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "1905",
+    "tenVi": "Bánh quy ngọt; bánh waffles và bánh xốp wafers",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "190531",
+    "cap": 6,
+    "cha": "19053",
+    "tenVi": null,
+    "tenEn": "Food preparations; sweet biscuits, whether or not containing cocoa",
+    "suyRa": false
+   },
+   {
+    "id": "19053110",
+    "cap": 8,
+    "cha": "190531",
+    "tenVi": "Không chứa ca cao",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "19053120",
+    "cap": 8,
+    "cha": "190531",
+    "tenVi": "Chứa ca cao",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "190532",
+    "cap": 6,
+    "cha": "19053",
+    "tenVi": null,
+    "tenEn": "Food preparations; waffles and wafers, whether or not containing cocoa",
+    "suyRa": false
+   },
+   {
+    "id": "19053210",
+    "cap": 8,
+    "cha": "190532",
+    "tenVi": "Bánh waffles (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "19053220",
+    "cap": 8,
+    "cha": "190532",
+    "tenVi": "Bánh xốp wafers (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "190540",
+    "cap": 6,
+    "cha": "1905",
+    "tenVi": "Bánh bít cốt (rusks), bánh mì nướng và các loại bánh nướng tương tự",
+    "tenEn": "Food preparations; rusks, toasted bread and similar toasted products, whether or not containing cocoa",
+    "suyRa": false
+   },
+   {
+    "id": "19054010",
+    "cap": 8,
+    "cha": "190540",
+    "tenVi": "Chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "19054090",
+    "cap": 8,
+    "cha": "190540",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "190590",
+    "cap": 6,
+    "cha": "1905",
+    "tenVi": "Loại khác",
+    "tenEn": "Food preparations; bakers' wares n.e.c. in heading no. 1605, whether or not containing cocoa; communion wafers, empty cachets suitable for pharmaceutical use, sealing wafers, rice papers and similar products",
+    "suyRa": false
+   },
+   {
+    "id": "19059010",
+    "cap": 8,
+    "cha": "190590",
+    "tenVi": "Bánh quy không ngọt dùng cho trẻ mọc răng hoặc thay răng",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "19059020",
+    "cap": 8,
+    "cha": "190590",
+    "tenVi": "Bánh quy không ngọt khác",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "19059030",
+    "cap": 8,
+    "cha": "190590",
+    "tenVi": "Bánh ga tô (cakes)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "19059040",
+    "cap": 8,
+    "cha": "190590",
+    "tenVi": "Bánh bột nhào (pastry)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "19059050",
+    "cap": 8,
+    "cha": "190590",
+    "tenVi": "Các loại bánh không bột",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "19059060",
+    "cap": 8,
+    "cha": "190590",
+    "tenVi": "Vỏ viên nhộng và sản phẩm tương tự dùng trong dược phẩm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "19059070",
+    "cap": 8,
+    "cha": "190590",
+    "tenVi": "Bánh thánh, bánh xốp sealing wafers, bánh đa và các sản phẩm tương tự",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "19059080",
+    "cap": 8,
+    "cha": "190590",
+    "tenVi": "Các sản phẩm thực phẩm giòn có hương liệu khác",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "19059090",
+    "cap": 8,
+    "cha": "190590",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": [
+   {
+    "id": "190531",
+    "tenVi": "Bánh quy ngọt",
+    "nguon": "wco.190531",
+    "trich": "190531 Food preparations; sweet biscuits, whether or not containing cocoa",
+    "nguonLoai": "AI_DA_KIEM"
+   },
+   {
+    "id": "190532",
+    "tenVi": "Bánh quế waffles và bánh xốp wafers",
+    "nguon": "wco.190532",
+    "trich": "190532 Food preparations; waffles and wafers, whether or not containing cocoa",
+    "nguonLoai": "AI_DA_KIEM"
+   }
+  ]
+ },
+ "dungTuNguon": [
+  "nhom1905.nhom",
+  "sen.19053210",
+  "sen.19053220",
+  "tax.19051000",
+  "tax.19052000",
+  "tax.19053110",
+  "tax.19053120",
+  "tax.19054010",
+  "tax.19059010",
+  "tax.19059020",
+  "tax.19059030",
+  "tax.19059040",
+  "tax.19059050",
+  "tax.19059060",
+  "tax.19059070",
+  "tax.19059080",
+  "wco.190520",
+  "wco.190531",
+  "wco.190532",
+  "wco.190540",
+  "wco.190590"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-27T22:21:11.890Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 31,
+  "dat": 31,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
