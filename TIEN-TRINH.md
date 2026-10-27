@@ -8753,3 +8753,81 @@ Hai script phụ trợ của phiên này (cắt trích theo vị trí TỪ, gene
 worktree đó để không lẫn với pipeline của agent kia. Agent của lô 064 có thể dùng lại hoặc viết lại
 2 bản nháp này — generator của agent đó ghi đè `tmp/so-tay/raw/<nhom>.json` từ `spec-*.mjs` của chính nó.
 Không có gì trong `data/so-tay/` hay `docs/giao-viec/so-tay-lo.csv` của lô 064 bị đụng.
+
+---
+
+# SOẠN SỔ TAY lô 064 — phiên `dev-zcode-mm` (28/10/2026)
+
+- **Nhánh:** `so-tay/lo-064` (worktree `hs-code-api-wt-st-lo064`) · **PR:** mở sau khi nạp — **KHÔNG merge**
+- **Nhóm:** `1902, 1903, 1904, 1905, 2001, 2002` (Chương 19 — bánh; Chương 20 — rau quả)
+- **Kết quả:** **96/96 mục (100 %)** — 6 nhóm; đã soát lại **từng mục** với nguồn (không tin bản nháp có sẵn)
+- **Quy trình:** `docs/giao-viec/so-tay-giao-ngoai.md` mục 2 + 11 luật mục 3 + `tmp/so-tay/nguon/_he-thong.txt`
+
+## 0. Brief nhận được trỏ LÔ KHÁC — đã điều tra trước khi làm
+
+`brief-st-lo052.md` (oz-dev-kit) giao lô **052** (`0909 0910 1001 1002 1003 1004`). Kiểm tra thực tế:
+
+| Kiểm | Kết quả |
+|---|---|
+| CSV `docs/giao-viec/so-tay-lo.csv` dòng 052 | `trang_thai=xong`, `pr=456`, `phu_cum_pct=100.0` |
+| PR #456 | **MERGED** 26/10/2026 15:05 — `data/so-tay/0909.json`…`1004.json` + `bao-cao/lo-052.json` đã nằm trên `main` |
+| Worktree của phiên này | `hs-code-api-wt-st-lo064` → nhánh `so-tay/lo-064`; CSV dòng **064** = `chua-lam`; `main` **không** có 6 nhóm này |
+| `main` | không có `data/so-tay/1902.json`…`2002.json`, không có `bao-cao/lo-064.json` |
+
+⇒ Lô đúng của worktree này là **064** (`brief-st-lo064.md` — cùng mẫu, chỉ khác số lô/nhóm; lệnh mẫu `--nhom=7615,9609,…` trong cả hai brief là lệnh copy-paste của lô 001 ⇒ dùng nhóm thật của CSV).
+Cùng lúc, agent kia ở `wt-st-lo65` nhận `brief-st-lo053.md` — lô 053 cũng đã `xong` (PR #470). Đây là lần thứ 12 brief của oz-dev-kit trỏ lô đã xong; lần này **2 agent cùng nhận brief cũ**.
+
+## 1. PR #486 của lô 064 đã bị đóng lúc 04:31 hôm nay
+
+- PR #486 (soát độc lập, 95/95 mục) **đóng** 27/10 21:31 UTC; nhánh `so-tay/lo-064` bị **xoá khỏi remote**, local branch bị reset về `e2854a5` (= `main`), commit cũ **còn trong object store** (`a906c41` bản nháp 93 mục, `99f2e2e` bản soát 95 mục).
+- Không có lý do kỹ thuật nào trong PR (chỉ có bình luận bot Vercel). `main` vẫn **không** có dữ liệu lô 064 ⇒ lô này phải làm lại.
+- **Cách làm của phiên này:** dựng lại bản nháp từ commit đã phục hồi (`tmp/so-tay/extract-raw.mjs`, bỏ mọi trường máy sinh `nguonLoai`/`cay`/`loaiKhac`/`phamViLoaiKhac`) làm **khung**, rồi **đọc lại toàn bộ 6 tệp nguồn và soát từng mục một** — không mượn nguyên xi kết quả cũ.
+
+## 2. Các bước đã làm
+
+1. `node scripts/build-so-tay.mjs --nhom=1902,1903,1904,1905,2001,2002 --xuat-nguon=tmp/so-tay/nguon` → 6 tệp nguồn (60.793 ký tự) + `_he-thong.txt` — **đọc trọn** `_he-thong.txt` và **đọc hết** cả 6 tệp nguồn.
+2. Dựng bản nháp `tmp/so-tay/raw/<nhom>.json` (95 mục khôi phục) — rồi **soát lại từng mục** với nguồn.
+3. `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → 95/95 lúc đầu.
+4. Sửa 4 mục (mục 3) → `check-so-tay --raw` **96/96**, `check-trich-nguyen-van.mjs` **92/92 OK** (4 mục bộ kiểm này không duyệt — `boPhan` + `cay.tenDien` — em tự kiểm byte-exact riêng: **OK**).
+5. `node scripts/build-so-tay.mjs --nhom=… --tu-tep=tmp/so-tay/raw --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-064.json` → nạp 96/96.
+6. `node scripts/check-cay.mjs --nhom=1902,1903,1904,1905,2001,2002 --chi-tiet` → 6/6 nhóm đủ, 0 lỗi lệch cây.
+7. `npm run so-tay:check` + `npm test` → xanh.
+8. Cập nhật dòng CSV 064 (`nguoi_lam=dev-zcode-mm`, `trang_thai=dang-lam`), commit, push nhánh, mở PR — **KHÔNG merge**.
+
+## 3. Kết quả soát từng mục — 4 sửa, 0 xoá, 1 thêm
+
+| # | Nhóm / mục | Vấn đề | Cách sửa |
+|---|---|---|---|
+| 1 | 2002 `loaiTru[0].dieuKien` | Câu nguồn: "trừ loại cà chua **đã chế biến hoặc bảo quản** bằng giấm hoặc axit acetic (nhóm 20.01)" — bản nháp chỉ ghi "bảo quản" ⇒ **thu hẹp** điều kiện loại trừ | Sửa thành "Cà chua **đã chế biến hoặc bảo quản** bằng giấm hoặc axit acetic" |
+| 2 | 2002 `phanBiet[0].hoi` | Cùng lỗi thu hẹp: câu hỏi hỏi "bảo quản" trong khi nguồn ghi "chế biến **hoặc** bảo quản" | Sửa câu hỏi theo nguyên văn |
+| 3 | 2001 `phanBiet[0].hoi` | Câu hỏi dùng "**dạng lỏng, nhũ tương hay huyền phù**" làm điều kiện phân biệt — nhưng đó là câu **"thường có dạng"** (giới hạn), và hàng 2001 cũng có thể lỏng ⇒ **không phân biệt được**; đồng thời bỏ mất vế phân biệt thật của nguồn | Đổi sang điều kiện phân biệt thật: "không được dùng để ăn một mình" (nguyên văn nguồn) |
+| 4 | 1905 `dieuKienVao` | Nhóm **thiếu** điều kiện vào "≤ 20 % xúc xích/thịt…" — nhóm 19.01 đã duyệt có mục này (`ty_le_xuc_xich_thit_ca_giap_xac_than_mem_trong_luong`), còn 1905 thì không (nên loại trừ "Chương 16" bị nuốt trong câu trích `phamVi` mà không mục nào giữ) | **Thêm** 1 `dieuKienVao` (`op<=`, `value=20`, `%`), trích nguyên văn từ `nhom1905.nhom` |
+
+### 3.1. Những gì đã soi và **GIỮ NGUYÊN** (có căn cứ — để người duyệt phản biện)
+
+- **`dieuKienVao` 2002** có `value=false` ⇒ `fact` là **vế BỊ LOẠI** ("là cà chua chế biến hoặc bảo quản bằng giấm hoặc axit acetic" = **không**) — đúng chiều (mẫu nhà 1518 lô 061). Không đảo.
+- **Dòng "Loại khác"** (10 dòng) ghi điều kiện cấp phân nhóm 6 số lấy từ `wco.<6 số>` — đúng luật 6 của `_he-thong.txt`; **1.729 dòng đã duyệt** trong kho cũng viết y hệt ⇒ giữ, không đổi sang tên node trong cây (nhiều node 6 số tên là "Loại khác" ⇒ vô nghĩa).
+- **Câu trích dài > 300 ký tự**: `phamVi` 1904 (498), `phamVi` 2002 (415), `boPhan` 1904 (498) — nằm trong vùng 300–600 mà máy không chặn; **mẫu đã duyệt** có trích dài hơn (`phamVi` 8608 = 533, 9201 = 494) ⇒ giữ, không rút cụt làm mất nghĩa.
+- **Đoạn lược "…" nuốt ngoại lệ**: `phamVi`/`boPhan` 1904 nuốt "bị loại trừ (nhóm 19.05)" và `phamVi` 1905 nuốt "Nhóm này không bao gồm: (a)…(Chương 16). (b) … nhóm 20.05" — **nhưng** từng ngoại lệ đó đã có mục riêng trong cùng nhóm với trích nguyên văn (`loaiTru` 1904→1905, `loaiTru` 1905→2005, `dieuKienVao` 1905 ≤ 20 % thịt) ⇒ không mất thông tin; đúng mẫu `phamVi` 1901 đã duyệt (cũng lược qua danh sách loại trừ của nhóm).
+- **`tieuChi6`** lấy từ `wco.<6 số>`/`nhom*` (không lấy từ `tax.*`) — đúng luật 10.
+- **Không ghi `nguonLoai`** (luật 11) ⇒ máy gán `AI_DA_KIEM` cho toàn bộ mục soạn; nhãn `NGUOI_DUYET` để cho người soát độc lập đặt sau.
+- **Không soạn `cay`** (máy sinh từ `lib/hs-tree.js`); chỉ điền `cay.tenDien` cho 3 nút 6 số chưa có tên tiếng Việt (190219, 190531, 190532).
+
+## 4. Bảng kiểm cuối
+
+| Kiểm | Kết quả |
+|---|---|
+| `check-so-tay.mjs --raw=tmp/so-tay/raw` | 6 nhóm, **96 mục, 0 mục không kiểm được nguồn** |
+| `check-trich-nguyen-van.mjs` (byte-exact) | **OK — 92 mục**; thêm 4 mục bộ kiểm này không duyệt (`boPhan`, `cay.tenDien`) — em tự kiểm: **OK** |
+| `scan-so-tay-soat.mjs` (trần clip runtime 220/160/55/110/90 · trích 300–600 · câu-sau-ngoại-lệ · gác soát từ) | **0 cảnh báo** |
+| `kiem-luc.mjs` (tự dựng đoạn lược THẬT rồi dò ngoại lệ) | 3 cảnh báo — đã giải trình ở mục 3.1 (mọi ngoại lệ bị nuốt đều có mục riêng trong cùng nhóm) |
+| `build-so-tay --tu-tep --force` | **96/96 (100 %)** — `tyLeDat: 100`, `nhomLoi: []` |
+| `check-cay.mjs --chi-tiet` (6 nhóm) | **6/6 nhóm đủ** — 0 lỗi lệch cây, 0 cảnh báo |
+| `npm run so-tay:check` | toàn kho — xanh |
+| `npm test` | **ALL TESTS PASSED** |
+
+## 5. Câu hỏi MỞ cho người duyệt (chưa tự quyết)
+
+1. **Loại trừ cấp CHƯƠNG có chép vào nhóm không?** Chương 20 (`ch20.chuong`) nêu đích danh `nhóm 19.05` (mục 1(d)) và `nhóm 21.04` (mục 1(e)) ⇒ *có thể* mã hoá thành `loaiTru` cho 2001/2002. Phiên này **KHÔNG chép** (theo luật lô 051/060/061: "loại trừ chung của Chương không chép vào từng nhóm"), còn `1901` đã duyệt thì có 3 `loaiTru` lấy từ `ch19.chuong` ⇒ **nền nhà đang lệch**. Cần chốt một quy tắc thống nhất trước các lô sau.
+2. `phanBiet` 2002 nhánh "không" là **2002**, trong khi câu trích còn nêu nhánh 21.04 (súp cà chua) — đã tách `loaiTru` riêng cho 21.04 nên không lẫn; người duyệt xem có cần thêm một `phanBiet` cho 2104 không.
+

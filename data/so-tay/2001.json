@@ -1,0 +1,161 @@
+{
+ "nhom": "2001",
+ "phamVi": {
+  "text": "Các loại rau, quả, quả hạch (nut) và các phần ăn được khác của cây, đã chế biến hoặc bảo quản bằng dấm hoặc axit acetic, có hoặc không thêm muối, gia vị, mù tạt, đường hoặc một số chất tạo ngọt khác.",
+  "nguon": "nhom2001.nhom",
+  "trich": "Nhóm này bao gồm các loại rau (xem Chú giải 3 của Chương này) quả, quả hạch (nut) và các phần ăn được khác của cây, đã chế biến hoặc bảo quản bằng dấm hoặc axit acetic, có hoặc không thêm muối, gia vị, mù tạt, đường hoặc một số chất tạo ngọt khác.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_san_pham_che_bien_hoac_bao_quan_bang_dam_hoac_axit_acetic",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2001.nhom",
+   "trich": "Nhóm này bao gồm các loại rau (xem Chú giải 3 của Chương này) quả, quả hạch (nut) và các phần ăn được khác của cây, đã chế biến hoặc bảo quản bằng dấm hoặc axit acetic, có hoặc không thêm muối, gia vị, mù tạt, đường hoặc một số chất tạo ngọt khác.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là nước xốt, gia vị hoặc bột canh không được dùng để ăn một mình?",
+   "neuCo": "2103",
+   "neuKhong": "2001",
+   "nguon": "nhom2001.nhom",
+   "trich": "Các sản phẩm ở nhóm này được phân biệt với các loại nước xốt của nhóm 21.03 ở chỗ nước xốt và gia vị, bột canh thường có dạng lỏng, nhũ tương hoặc huyền phù, không được dùng để ăn một mình nhưng được sử dụng như một món đi kèm với thức ăn hoặc để chế biến một số món ăn.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "200110",
+   "fact": "la_dua_chuot_va_dua_chuot_ri",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.200110",
+   "trich": "200110 Vegetable preparations; cucumbers and gherkins, prepared or preserved by vinegar or acetic acid",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200190",
+   "fact": "khong_phai_dua_chuot_va_dua_chuot_ri",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "nguon": "wco.200190",
+   "trich": "200190 Vegetable preparations; vegetables, fruit, nuts and other edible parts of plants, prepared or preserved by vinegar or acetic acid (excluding cucumbers and gherkins)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "20011000",
+   "dieuKien": "Dưa chuột và dưa chuột ri",
+   "tieuChi": null,
+   "nguon": "tax.20011000",
+   "trich": "20011000 - Dưa chuột và dưa chuột ri",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "20019010",
+   "dieuKien": "Hành tây",
+   "tieuChi": null,
+   "nguon": "tax.20019010",
+   "trich": "20019010 - - Hành tây",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "20019090",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2001.90 (tên WCO 200190: Vegetable preparations; vegetables, fruit, nuts and other edible parts of plants, prepared or preserved by vinegar or acetic acid (excluding cucumbers and gherkins))",
+   "tieuChi": null,
+   "nguon": "wco.200190",
+   "trich": "200190 Vegetable preparations; vegetables, fruit, nuts and other edible parts of plants, prepared or preserved by vinegar or acetic acid (excluding cucumbers and gherkins)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "200190",
+    "truAnhEm": [
+     "20019010"
+    ],
+    "toTienCoTen": "200190",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2001",
+    "cap": 4,
+    "cha": "20",
+    "tenVi": "Rau, quả, quả hạch (nut) và các phần ăn được khác của cây, đã chế biến hoặc bảo quản bằng giấm hoặc axit acetic.",
+    "tenEn": "Vegetables, fruit, nuts and other edible parts of plants; prepared or preserved by vinegar or acetic acid",
+    "suyRa": false
+   },
+   {
+    "id": "20011000",
+    "cap": 8,
+    "cha": "2001",
+    "tenVi": "Dưa chuột và dưa chuột ri",
+    "tenEn": "Vegetable preparations; cucumbers and gherkins, prepared or preserved by vinegar or acetic acid",
+    "suyRa": false,
+    "laPhanNhom": "200110"
+   },
+   {
+    "id": "200190",
+    "cap": 6,
+    "cha": "2001",
+    "tenVi": "Loại khác",
+    "tenEn": "Vegetable preparations; vegetables, fruit, nuts and other edible parts of plants, prepared or preserved by vinegar or acetic acid (excluding cucumbers and gherkins)",
+    "suyRa": false
+   },
+   {
+    "id": "20019010",
+    "cap": 8,
+    "cha": "200190",
+    "tenVi": "Hành tây",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "20019090",
+    "cap": 8,
+    "cha": "200190",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2001.nhom",
+  "tax.20011000",
+  "tax.20019010",
+  "wco.200110",
+  "wco.200190"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-27T21:47:29.503Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
