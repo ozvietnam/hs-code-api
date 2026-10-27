@@ -1,0 +1,58 @@
+{
+ "nhom": "2003",
+ "nguoiSoat": "dev-soat-doc-lap-lo065",
+ "vong": 1,
+ "luc": "2026-10-28T05:40:00+07:00",
+ "daKiem": 8,
+ "xoa": 0,
+ "sua": 2,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 065 (PR #487, nhánh so-tay/lo-065) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI TOÀN BỘ 8/8 mục cùng nguồn tmp/so-tay/nguon/2003.txt (đọc HẾT, không lấy mẫu). Kết quả: giữ 6 · sửa 2 · xoá 0.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "SUA 1 trường (`text`). Lý do: TRẦN RUNTIME `phamVi.text` = 220 (lib/so-tay-gates.js:134). Bản gốc dài 273 ký tự → runtime cắt còn \"...các sản phẩm nấm và nấm cục có thể còn nguyê…\" và MẤT TRỌN vế \"n dạng, cắt miếng (thí dụ: thái mỏng) hoặc đồng nhất.\" — tức mất nửa câu phạm vi, đúng lớp lỗi lô 060 (mất kết luận của luật). Rút xuống 204 ký tự mà GIỮ NGUYÊN mọi thành phần: loại nấm (kể cả thân nấm) + nấm cục + nhánh loại trừ \"nhóm 20.01\" + nhánh \"Chương 7\" + ba dạng (nguyên dạng / cắt miếng / đồng nhất); chỉ bỏ ngoặc ví dụ \"(thí dụ: thái mỏng)\" — ví dụ vẫn còn nguyên trong `trich` nên không mất thông tin nào trong hồ sơ. `trich` giữ nguyên (nguyên văn, có dấu lược \"…\"), không đụng.",
+   "sua": {
+    "text": "Các loại nấm (kể cả thân nấm) và nấm cục, trừ sản phẩm chế biến hoặc bảo quản bằng giấm hoặc axit acetic (nhóm 20.01) và sản phẩm nêu cụ thể tại Chương 7; có thể còn nguyên dạng, cắt miếng hoặc đồng nhất."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Loại trừ ĐÍCH DANH sang 20.01: câu trích có dấu hiệu loại trừ (\"trừ\") và số nhóm đích 20.01 CÓ trong câu ✓; `dieuKien` chép đúng vế của nguồn, không thêm chữ. GHI NHẬN (không sửa): `dieuKien` dài 63 > trần clip runtime 55 → runtime cắt còn \"...bằng giấm hoặc axi…\" (cắt giữa từ \"acetic\") nhưng luật vẫn chỉ bắn đúng một chiều (chế biến/bảo quản bằng giấm hoặc axit acetic) nên KHÔNG đảo nghĩa; rút tiếp thì phải mất chữ — đo nền nhà: 1.194/2.579 `loaiTru.dieuKien` (46,3 %) trong kho đã gộp cũng trần 55 ⇒ không sửa (nhà chấp nhận trần này)."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "SUA 1 trường (`trich`). Chiều phân biệt ĐÚNG: hàng là nấm/nấm cục CHẾ BIẾN hoặc BẢO QUẢN bằng giấm/axit acetic → có → 2001 (nguồn loại trừ khỏi 2003) / không → 2003 ✓; `hoi` không nhắc mã ✓. Lý do sửa: bản gốc CẮT CÂU TRÍCH từ vị trí \"trừ …\" nên MẤT CHỦ NGỮ (\"Nhóm này bao gồm các loại nấm (kể cả thân nấm) và nấm cục\") — câu trích không tự nói được điều gì bị loại trừ, đọc lệch (lớp lỗi \"câu trích phải tự nó nói điều mục khẳng định\"). Kéo lại nguyên câu (193 ký tự ≤ 300, nguyên văn 100 %) y hệt `loaiTru[0]` — cùng nguồn `nhom2003.nhom`.",
+   "sua": {
+    "trich": "Nhóm này bao gồm các loại nấm (kể cả thân nấm) và nấm cục, trừ các sản phẩm được chế biến hoặc bảo quản bằng giấm hoặc axit acetic) (nhóm 20.01) và các sản phẩm đã được nêu cụ thể tại Chương 7."
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tiêu chí 6 số 200310 lấy đúng tên phân nhóm WCO (\"mushrooms of the genus Agaricus\"); `value` dịch đúng, không thêm chữ ngoài trích; nút 6 số 200310 CÓ THẬT trong cây (check-cay xanh)."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Tiêu chí 6 số 200390 lấy đúng tên phân nhóm WCO (\"mushrooms and truffles, other than mushrooms of the genus Agaricus\"); `value` giữ cả phần phân biệt \"không thuộc chi Agaricus\" ✓; nút 6 số 200390 có thật trong cây."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 20031000: `dieuKien` chép nguyên văn dòng biểu thuế \"Nấm thuộc chi Agaricus\" ✓; đủ dòng tax.* của nhóm (3 dòng: 20031000, 20039010, 20039090 — khớp 100 % với nguồn); `loaiKhac` do máy tự điền."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 20039010: `dieuKien` chép nguyên văn \"Nấm cục (truffles)\" ✓, không thêm chữ."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 20039090 \"Loại khác\": `loaiKhac` do máy tự điền theo biểu thuế ✓."
+  }
+ ]
+}

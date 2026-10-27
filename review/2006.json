@@ -1,0 +1,45 @@
+{
+ "nhom": "2006",
+ "nguoiSoat": "dev-soat-doc-lap-lo065",
+ "vong": 1,
+ "luc": "2026-10-28T05:40:00+07:00",
+ "daKiem": 6,
+ "xoa": 0,
+ "sua": 1,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 065 (PR #487, nhánh so-tay/lo-065) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI TOÀN BỘ 6/6 mục cùng nguồn tmp/so-tay/nguon/2006.txt (đọc HẾT, không lấy mẫu). Kết quả: giữ 5 · sửa 1 · xoá 0.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Phạm vi lấy từ dòng biểu thuế `tax.20060000` — đây là tên nhóm chính thức, là nguồn HỢP LỆ (luật 1 cho phép `tax.*`) ✓; nội dung phủ đúng cả nhóm (rau, quả, quả hạch, vỏ quả, bộ phận khác của cây, bảo quản bằng đường, ba dạng) ✓; 143/220 không trần. GHI NHẬN: chú giải nhóm mô tả công ngháp ngâm xirô — là MÔ TẢ CÁCH LÀM, không phải phạm vi, nên không kéo vào `phamVi` ✓ (luật lô 030)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Loại trừ đích danh sang 20.02/20.03/20.05: câu nguồn nói \"đều bị loại trừ khỏi nhóm này … nếu là rau sẽ thuộc nhóm 20.02, 20.03 hoặc 20.05\" — `sangNhom` \"2002|2003|2005\" phủ TRỌN cả ba số nhóm đích có trong câu ✓ (luật 3, không bỏ sót đầu dải). GHI NHẬN (không sửa): `dieuKien` 56 > trần 55 → runtime cắt còn \"...đóng gói trong xir…\"; luật vẫn đúng một chiều nên không đảo nghĩa; 46,3 % `loaiTru.dieuKien` trong kho đã gộp cũng trần ⇒ không sửa."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "SUA 1 trường (`dieuKien`). Lý do: TRẦN RUNTIME `loaiTru.dieuKien` = 55. Bản gốc dài 118 ký tự → runtime cắt còn \"Quả, quả hạch (nut), vỏ quả hoặc các bộ phận ăn được kh…\" và MẤT TRỌN điều kiện \"được bảo quản bằng đường và được đóng gói trong xirô\" — tức luật sẽ bắn cho MỌI loại quả/quả hạch/vỏ quả, rộng hơn nguồn rất nhiều (đúng lớp lỗi lô 060: cắt mất kết luận của luật). Sửa: rút xuống 52 ký tự, ƯU TIÊN GIỮ ĐIỀU KIỆN (bảo quản bằng đường + đóng gói trong xirô) vì đó mới là điều kiện phân biệt; danh sách hàng rút gọn còn \"Quả, quả hạch, vỏ quả\" (phần \"các bộ phận ăn được khác của cây\" vẫn còn nguyên trong `trich`). Mọi từ đều có trong câu trích, không thêm chữ ngoài nguồn.",
+   "sua": {
+    "dieuKien": "Quả, quả hạch, vỏ quả: bảo quản đường, đóng gói xirô"
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Chiều đúng: hàng là quả/quả hạch/vỏ quả BẢO QUẢN BẰNG ĐƯỜNG VÀ ĐÓNG GÓI TRONG XIRÔ → có → 2008 (nguồn: bị loại trừ khỏi 2006, thuộc 20.08) / không → 2006 ✓; `hoi` không nhắc mã ✓; 82/110 không trần; `trich` có số nhóm đích 20.08 ✓ (luật 4)."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Chiều đúng: hàng là RAU bảo quản bằng đường và đóng gói trong xirô → có → 20.02/20.03/20.05 / không → 2006 ✓; `neuCo` nhiều mã \"2002|2003|2005\" được máy tách đúng (lib/so-tay.js `headingCodes` tách theo [|]) và là MẪU NHÀ (130/1.051 `phanBiet.neuCo` có nhiều mã) ✓; `trich` có đủ ba số nhóm đích ✓."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Đã đọc lại cùng nguồn: câu trích có THẬT trong khối nguồn khai (nguyên văn), nội dung khẳng định KHỚP đúng câu trích, không thêm chữ ngoài trích, không ghép hai câu xa. Dòng 20060000: `dieuKien` chép nguyên văn tên dòng biểu thuế ✓; nhóm 2006 chỉ có 1 dòng 8 số trong nguồn ✓. GHI NHẬN (không sửa): `dieuKien` 146 > trần 90 → runtime cắt mất \"…(dạng khô có tẩm đường, ngâm trong nước đường hoặc bọc đường)\" nhưng vẫn giữ đúng phần cốt lõi \"được bảo quản bằng đường\" nên luật không đảo nghĩa; 51,5 % `dong8.dieuKien` trong kho đã gộp cũng trần ⇒ không sửa."
+  }
+ ]
+}
