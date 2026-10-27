@@ -1,0 +1,65 @@
+{
+  "nhom": "1520",
+  "nguoiSoat": "dev-soat-doc-lap-lo061-v2",
+  "luc": "2026-10-27T00:00:00+07:00",
+  "daKiem": 9,
+  "xoa": 0,
+  "sua": 1,
+  "ghiChu": "Đọc HẾT nguồn (13.167 byte, 5 khối) + đối chiếu từng mục bản nháp với nguồn, không chỉ chạy máy. Máy đã xanh (9/9 mục byte-exact, không mảnh trích >300 ký tự) nên tôi săn lớp NGỮ NGHĨA. KẾT QUẢ: 1 lỗi THẬT ở dieuKienVao[1] — tên fact 'la_glyxerin_thuan_khiet' BỎ MẤT ngưỡng 95% mà nguồn nêu đích danh ('Glycerin thuần khiết 95% trở lên'); đây là mục value:false DUY NHẤT trong toàn corpus (749 fact / 87 value:false) có ngưỡng số trong câu trích mà tên fact không mang theo. Đọc trong prompt runtime cho ra mâu thuẫn nội tại ở dải 95–100%: hàng 96% bị kết luận ở 15.20 trong khi loaiTru/phanBiet cùng khối bảo 95%+ sang 29.05. Đề xuất sửa fact + kéo vế dẫn 'Nhóm này không bao gồm:' vào trích. Xoá 0. Các mục còn lại (phamVi, loaiTru[0..1], phanBiet[0..1], tieuChi6 rỗng, dong8[0..1]) đã đối chiếu sâu và GIỮ: loaiTru đủ 2/3 mục có đích danh nhóm, mục (c) 'Chương 33' cố ý KHÔNG ghi vì không phải nhóm đích danh; phanBiet đúng chiều vế ĐẦU và phủ cả 30.03+30.04; dong8 đủ 2/2 dòng tax.*1520; tieuChi6 rỗng đúng mẫu nhóm 2 dòng 8 số. LƯU Ý (không sửa): phamVi.text không mang ngoại lệ và 190/220 ký tự — thêm ngoại lệ sẽ tràn trần clip 220 và cắt mất vế cuối, mà ngoại lệ đã được phát ra qua loaiTru + phanBiet nên chấp nhận.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Nêu đúng PHẠM VI nhóm (không phải vật liệu, không phải một phần của nhóm): glycerin thô + nước glycerin + dung dịch kiềm glycerin + sản phẩm phụ chế biến axit béo/sản xuất xà phòng — đúng 'Nhóm này cũng bao gồm nước glycerin, sản phẩm phụ của quá trình chế biến axit béo, cũng như và dung dịch kiềm glycerin, sản phẩm phụ của quá trình sản xuất xà phòng.' 190 ký tự ≤ trần clip runtime 220 → KHÔNG bị cắt, không đảo chiều. GHI NHẬN nhưng không sửa: (1) text không mang ngoại lệ (29.05 / 30.03-30.04 / Chương 33) — thử thêm thì dài 256-325 ký tự, clip 220 cắt mất vế cuối ('... (2…'), đó là lớp lỗi lô 060; ngoại lệ đã phát ra qua loaiTru + phanBiet trong cùng prompt nên không mất thông tin; (2) text gom 'nước glycerin và dung dịch kiềm glycerin, sản phẩm phụ của quá trình chế biến axit béo và sản xuất xà phòng' — nguồn ghép đôi (nước glycerin ↔ SP chế biến axit béo) và (dung dịch kiềm glycerin ↔ SP sản xuất xà phòng), bản nháp đã gộp thành một danh sách; hệ quả phân loại KHÔNG đổi (cả 4 đều thuộc 15.20), nên không đáng trả giá tràn trần clip."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "fact 'do_tinh_khiet_glyxerin_tho' + op '<' + value 95 + donVi '%' đúng mẫu nhà (đại lượng + ngưỡng; xem 0402 'ty_le_tinh_bot_them_vao_sua_bot <= 5 %', 3916 'kich_thuoc_mat_cat_ngang > 1 mm'). Trích nguyên văn đúng câu định nghĩa 92 ký tự. fact gắn đúng phạm vi 'glyxerin thô' — đây là điều kiện của KHÁI NIỆM glycerin thô (dòng 15200010), không phải điều kiện phủ cả nhóm, nên không vi phạm luật 'dieuKienVao phải phủ CẢ nhóm'. Ghi nhận: ngưỡng này KHÔNG kích hoạt cổng SO_TAY_NGUONG (UNIT_RULES chỉ có khoi_luong/trong_luong/dien_ap/dung_tich) — nhưng fact đi thẳng vào prompt nên vẫn có tác dụng."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT — tên fact BỎ MẤT ngưỡng 95% mà nguồn nêu ĐÍCH DANH. Nguồn: '(a) Glycerin thuần khiết 95% trở lên (tính so với trọng lượng sản phẩm khô) (nhóm 29.05).' — trong chú giải, 'thuần khiết' LUÔN đi kèm ngưỡng 95% trở lên (tức KHÔNG phải 100%). Bản nháp đặt fact 'la_glyxerin_thuan_khiet' (không ngưỡng) + value=false ⇒ prompt runtime in ra 'la_glyxerin_thuan_khiet = false' ⇒ với hàng 96% (không phải 100% thuần khiết theo cách hiểu thường), mô hình thấy điều kiện ĐÚNG ⇒ kết luận ở 15.20, TRONG KHI loaiTru[0] và phanBiet[0] cùng khối prompt bảo 95%+ sang 29.05 ⇒ mâu thuẫn nội tại ở đúng dải 95–100% (dải quyết định ranh giới nhóm). Đo toàn corpus: 749 fact, 87 value=false, và đây là mục value:false DUY NHẤT có ngưỡng số trong câu trích mà tên fact không mang theo ⇒ lỗi riêng của lô này, không phải mẫu nhà. Sửa: (1) fact thành 'la_glyxerin_thuan_khiet_95_tro_len' (bám đúng TỪ nguồn 'thuần khiết 95% trở lên') ⇒ 96% ⇒ '95 trở lên = true' ⇒ điều kiện sai ⇒ không ở 15.20, khớp loaiTru/phanBiet; (2) trich kéo thêm vế dẫn 'Nhóm này không bao gồm:' (dùng dấu … để mảnh vẫn nguyên văn) vì bản nháp chỉ trích mục (a) — đọc độc lập câu '(a) Glycerin thuần khiết 95% trở lên … (nhóm 29.05)' KHÔNG nói đây là loại trừ; vế dẫn mới nói rõ chiều. 113 ký tự, không trần 300, hai mảnh đều nguyên văn trong khối nhom1520.nhom.",
+      "sua": {
+        "fact": "la_glyxerin_thuan_khiet_95_tro_len",
+        "trich": "Nhóm này không bao gồm:…(a) Glycerin thuần khiết 95% trở lên (tính so với trọng lượng sản phẩm khô) (nhóm 29.05)."
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu nguồn nằm dưới vế dẫn 'Nhóm này không bao gồm:' ⇒ có DẤU HIỆU LOẠI TRỪ, và nêu ĐÍCH DANH nhóm đích '(nhóm 29.05)' ⇒ đủ điều kiện ghi loaiTru. 'Glycerin thuần khiết 95% trở lên' giữ TRỌN vế ngưỡng (32 ký tự ≤ trần clip 55, không bị cắt). Đối xứng với dieuKienVao[1] (cùng một ranh giới 95%) — cả hai phải sửa cùng lúc nếu sửa."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu '(b) Glycerin dưới dạng đóng gói dược phẩm hoặc có thêm các chất dược phẩm (nhóm 30.03 hoặc 30.04).' — có DẤU HIỆU LOẠI TRỪ + nêu ĐÍCH DANH HAI nhóm đích. sangNhom '3003|3004' phủ CẢ HAI đích (luật: câu 'A hoặc B' phải phủ cả hai, không được chọn một) ✓. dieuKien 52 ký tự ≤ trần clip 55 — giữ được vế giới hạn 'hoặc thêm chất dược phẩm' (bản nhép bỏ chữ 'dưới dạng' và 'các' cho vừa trần, nghĩa không đổi). Mục (c) 'Glycerin thơm hoặc glycerin thêm vào dược mỹ phẩm (Chương 33)' cố ý KHÔNG ghi: 'Chương 33' không phải nhóm đích danh ⇒ không mã hoá được sangNhom (luật 3) — đúng, không phải thiếu sót."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều CÓ/KHÔNG đúng: vế ĐẦU của câu nguồn là 'Glycerin thuần khiết 95% trở lên' ⇒ neuCo = 2905; nhánh BÙ = 15.20 (chính nhóm). hoi 61 ký tự ≤ trần clip 110, không nhắc mã phân nhóm lẫn nhóm khác. Mã 29.05 nêu nguyên văn trong trich ✓. Trùng khớp mẫu nhà (1003/1104/1105/1106 đều 'Hàng là X hay là Y?' với neuCo = vế đầu)."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Vế ĐẦU 'Glycerin dưới dạng đóng gói dược phẩm hoặc có thêm các chất dược phẩm' ⇒ neuCo = '3003|3004' (phủ cả hai nhóm đích, không tách 'A hoặc B' thành điều kiện độc lập) ✓; nhánh BÙ = 1520 ✓. hoi 84 ký tự ≤ trần clip 110. Nguyên văn: câu nguồn là '(b) Glycerin dưới dạng đóng gói dược phẩm hoặc có thêm các chất dược phẩm (nhóm 30.03 hoặc 30.04).' — trich byte-exact."
+    },
+    {
+      "index": "tieuChi6",
+      "hanhDong": "giu",
+      "lyDo": "Rỗng là ĐÚNG: nhóm 1520 chỉ có MỘT phân nhóm 6 số (152000) và biểu thuê tách ở 8 số thành 15200010 / 15200090 — không có mã 6 số riêng trong tax.json (đối chiếu: tax.json chỉ có 15200010 và 15200090). Mẫu nhà: 39 nhóm có đúng 2 dòng 8 số, 10 nhóm trong đó có tieuChi6 rỗng (0508, 1503, 1505, 1603, 5909, 8405, 8503, 8608, 9610, 9617) ⇒ không phải thiếu sót."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Đủ dòng: 15200010 — tên lấy nguyên văn từ [tax.15200010] '15200010 - Glyxerin thô' (byte-exact); dieuKien 'Glyxerin thô' 12 ký tự ≤ trần clip 90; tieuChi.fact 'la_glyxerin_tho' bám đúng tên dòng, không thêm chữ ngoài trích. Đối chiếu data/tax.json: vn '- Glyxerin thô' ✓."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Đủ dòng: 15200090 — biểu thuê chỉ ghi '- - - Loại khác' ⇒ theo luật 6 lấy điều kiện cấp phân nhóm từ [wco.152000] '152000 Glycerol, crude; glycerol waters and glycerol lyes'; văn phong 'Loại khác: <tên WCO>' khớp mẫu nhà (1503, 1601, 1522 cùng lô; 705 mục nguồn wco.* toàn corpus). 61 ký tự ≤ trần clip 90, không bị cắt. tieuChi: null là đúng — dòng 'Loại khác' không có tiêu chí phân biệt. GHI NHẬN (không sửa): tiêu đề tiếng Anh của CẢ HAI dòng trong tax.json đều là 'Glycerol, crude; glycerol waters and glycerol lyes' (15200010 và 15200090 có en giống hệt), nên 'Glycerol, crude' trong tên dòng .90 là do WCO mô tả cả phân nhóm, không phải lỗi soạn; phân biệt thật nằm ở tiếng Việt (15200010 = 'Glyxerin thô' vs 15200090 = 'Loại khác'), và dong8[0] đã nêu đúng."
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "nhom": "1521",
+  "nguoiSoat": "dev-soat-doc-lap-lo061-v2",
+  "luc": "2026-10-27T22:41:00+07:00",
+  "daKiem": 14,
+  "xoa": 0,
+  "sua": 5,
+  "ghiChu": "SOÁT ĐỘC LẬP nhóm 1521 (lô 061). Đọc hết tmp/so-tay/nguon/1521.txt, đối chiếu từng mục; máy đã xanh (14/14 byte-exact) nên lỗi dưới đây là lớp ngữ nghĩa máy không hiểu. KẾT QUẢ: 14/14 mục đã kiểm, 0 xoá, 5 sửa. LỖI 1 (nặng, phamVi+boPhan): đoạn lược '…' nuốt mất hai ngoại lệ ràng buộc (d) 'hỗn hợp của sáp thực vật với sáp động vật, sáp vô cơ hoặc nhân tạo' và (e) 'Sáp thực vật trộn với chất béo, nhựa, các chất vô cơ hoặc các chất khác (trừ các chất mầu)' — cả hai dưới 'Tuy nhiên, nhóm này không bao gồm:' nên là loại trừ bắt buộc; bản nháp chỉ kéo (c) rồi nhảy sang câu 'thường thuộc Chương 34' (gợi ý mềm). LỖI 2 (nặng, tieuChi6[1]): WCO 152190 'Waxes, other than vegetable, n.e.c. in heading no. 1521…' — fact cũ 'la_sap_khac_thuoc_sap_thuc_vat' bỏ mệnh đề loại trừ 'other than vegetable' (đọc thành 152190 CÓ là sáp thực vật → đảo chiều; cây HS: 152110='Sáp thực vật', 152190='Loại khác') và bỏ 'n.e.c. in heading no. 1521' (luật nhà đã chốt ở lô 041 mục 030489: 'n.e.c. in heading X' = PHẦN DƯ CỦA X, không phải 'trừ X'). LỖI 3 (tieuChi6[0]): fact 'la_sap_thuc_vat_khong_phai_triglyxerit' CHIỀU ĐÚNG nhưng bỏ 'whether or not refined or coloured' (mẫu nhà 1515 giữ vế này). LỖI 4 (loaiTru[3]): nguồn '…dầu của cá nhà táng, dù thô hoặc được tinh chế KHI BẰNG CÁCH PHÂN CHIA TÁCH MỠ SÁP CÁ NHÀ TÁNG (nhóm 15.04)' — định ngữ giới hạn bị rơi, thành loại trừ vô điều kiện. LỖI 5 (boPhan.quyTac): ghi 'pha mầu' cho phần (III) trong khi nguồn ghi 'pha màu' (nguồn dùng 'mầu' ở phần (II) và mục loại trừ (e), dùng 'màu' ở phần (I) và (III)); thêm nhãn (I)(II)(III) cho ba phần theo mẫu nhà 0304/1509. GIỮ 9 mục: dieuKienVao rỗng đúng (mọi câu điều kiện trong nguồn đều là câu CHO PHÉP — 'có thể ở dạng thô', 'đã hoặc chưa thành khối', 'có hoặc không tẩy trắng hoặc pha mầu', 'ngay cả khi … cũng thuộc nhóm này' — và không câu nào phủ cả ba phần); loaiTru[0..2] có đích danh trong câu trích; KHÔNG thêm loại trừ cho hỗn hợp sáp vì 'thường thuộc Chương 34 (nhất là nhóm 34.04 hoặc 34.05)' là câu cho-phép + số nhóm chỉ là ví dụ; phanBiet[0..2] chiều Có/Không đúng, mã ngoài nhóm (1515/9602/1504) có trong câu trích, neuKhong=1521 là chính nhóm (86 tiền lệ trong repo); tieuChi6 phủ 2/2 phân nhóm 6 số của cây; dong8 phủ đủ 3/3 dòng tax.*, không dòng nào ghi 'Loại khác' nên không cần dẫn wco.*. Mọi câu trích đề xuất sửa lấy từ tệp nguồn bằng script (tmp/so-tay/probe-1521-*.mjs) rồi kiểm lại bằng squash — byte-exact 6/6 mảnh (phamVi.trich) và 3/3 mảnh (boPhan.trich), không gõ tay tiếng Việt; đã đo trần runtime: text 219≤220, trich 244≤300, tomTat 85≤160, dieuKien 55≤55, fact khớp /^[a-z][a-z0-9_]{2,}$/ — không trường nào bị clip cắt vế cuối.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "LỖI 1 (máy KHÔNG bắt được — câu trích byte-exact nhưng đoạn lược '…' nuốt mất ngoại lệ ràng buộc). Nguồn, ngay sau '(c) Các hỗn hợp của sáp thực vật.' có: '(d) Những hỗn hợp của sáp thực vật với sáp động vật, sáp vô cơ hoặc nhân tạo.' và '(e) Sáp thực vật trộn với chất béo, nhựa, các chất vô cơ hoặc các chất khác (trừ các chất mầu).' — cả hai nằm dưới 'Tuy nhiên, nhóm này không bao gồm:' nên là LOẠI TRỪ BẮT BUỘC (không phải câu cho-phép, không phải câu giải thích mềm). Bản nháp chỉ kéo (c) rồi nhảy thẳng sang câu 'Các hỗn hợp này thường thuộc Chương 34 (nhất là nhóm 34.04 hoặc 34.05)' — tức đoạn bị lược CHỨA ngoại lệ có giá trị ràng buộc, khác hẳn câu 'thường thuộc' vốn chỉ là gợi ý mềm (theo luật nhà, số nhóm 34.04/34.05 chỉ là VÍ DỤ nên không thành loạiTrừ đích danh — giữ nguyên kết luận đó, không thêm loạiTru). Hậu quả: phamVi.text (thứ MÔ HÌNH ĐỌC) chỉ nói 'không gồm hỗn hợp sáp thực vật', bỏ sót (d)+(e); một cây nến sáp thực vật trộn parafin/sáp động vật bị kéo vào 15.21 thay vì Chương 34. SỬA: (1) text — bổ sung phạm vi loại trừ (c)+(d)+(e) và giữ định ngữ 'trừ màu'; chữa 'pha mầu'→'pha màu' cho phần (III) theo nguồn; (2) trich — kéo (d) và (e) vào, cắt bằng '…' đúng chỗ nguồn ngắt đoạn. ĐÃ ĐO: text mới 219 ký tự ≤ trần runtime 220 (lib/so-tay-gates.js:134) nên KHÔNG bị clip cắt vế cuối; trich mới 244 ký tự ≤ 300, mọi mảnh (6/6) đều là chuỗi con byte-exact của nguồn (lấy bằng script tmp/so-tay/probe-1521-*.mjs, không gõ tay).",
+      "sua": {
+        "text": "Sáp thực vật; (II) sáp ong, sáp côn trùng khác… (III) sáp cá nhà táng thô, ép, tinh chế; đã hoặc chưa tinh chế, pha màu; không gồm hỗn hợp sáp thực vật, trộn sáp động vật/vô cơ/nhân tạo/chất béo/nhựa/chất khác (trừ màu)",
+        "trich": "Sáp thực vật thuộc nhóm này … (c) Các hỗn hợp của sáp thực vật. … (d) Những hỗn hợp của sáp thực vật với sáp động vật … sáp vô cơ hoặc nhân tạo. … (e) Sáp thực vật trộn với chất béo, nhựa, … các chất vô cơ hoặc các chất khác (trừ các chất mầu)."
+      }
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "sua",
+      "lyDo": "LỖI 5 (máy KHÔNG bắt được — trường tự viết, lỗi chính tả trong từ nguồn). (1) quyTac ghi '…(III) sáp cá nhà táng, thô, ép hoặc tinh chế, có hoặc không pha mầu.' nhưng NGUỒN ghi 'pha màu' (à): nguồn dùng 'mầu' ở phần (II) ('(II) Sáp ong và sáp các loại côn trùng khác, đã hoặc chưa tinh chế hoặc pha mầu.') và ở mục loại trừ (e) của phần (I) ('(trừ các chất mầu)'), nhưng dùng 'màu' ở phần (I) ('đã tẩy trắng hoặc pha màu') và ở phần (III) ('có hoặc không pha màu'). Bản nháp đảo dấu ở phần (III) — đúng cái lớp lỗi mà lô 059 ghi nhận (gõ lại tiếng Việt méo dấu). ĐÃ SỬA theo nguồn. (2) quyTac cũ ghi 'ba phần ngang hàng: sáp thực vật; (II)…; (III)…' — dán nhãn không nhất quán (một phần không nhãn, hai phần có nhãn); đã thống nhất thành 'phần (I) sáp thực vật; (II)…; (III)…' theo mẫu nhà 0304 ('Nhóm này gồm hai phần ngang hàng: (1)…; (2)…') và 1509 ('năm phần ngang hàng: (A)…'). Ghi chú: nguồn KHÔNG in nhãn '(I)' cho phần đầu (đoạn mở đầu 'Sáp thực vật thuộc nhóm này có thể…' không có nhãn) — nhưng đánh số (I) là SỰ SUY LUẬN an toàn từ cặp nhãn (II)/(III) đã có trong chính nguồn, và cần thiết để ba phần 'ngang hàng' đọc được; giữ nhãn trong tomTat để tương thích với mẫu 1509 ('(A) …; (B) …'). (3) tomTat cũ 'Ba phần: sáp thực vật; sáp ong và sáp côn trùng khác; sáp cá nhà táng.' thiếu nhãn (I)(II)(III) — đã thêm cho khớp quyTac. (4) trich cũ TRÙNG Y HỆT phamVi.trich (cùng một chuỗi), nên không mang bằng chứng riêng cho khối bộ phận; đã đổi sang trich riêng dẫn đúng ba tiêu đề phần — byte-exact 3/3 mảnh, 181 ký tự ≤ 300. tomTat mới 85 ký tự ≤ trần 160 nên không bị clip.",
+      "sua": {
+        "quyTac": "Nhóm này gồm ba phần ngang hàng: phần (I) sáp thực vật; (II) sáp ong và sáp các loại côn trùng khác, đã hoặc chưa tinh chế hoặc pha mầu; (III) sáp cá nhà táng, thô, ép hoặc tinh chế, có hoặc không pha màu.",
+        "tomTat": "Ba phần: (I) sáp thực vật; (II) sáp ong và sáp côn trùng khác; (III) sáp cá nhà táng.",
+        "trich": "Sáp thực vật thuộc nhóm này … (II) Sáp ong và sáp các loại côn trùng khác, đã hoặc chưa tinh chế hoặc pha mầu. … (III) Sáp cá nhà táng, thô, ép hoặc tinh chế, có hoặc không pha màu."
+      }
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI 4 (máy KHÔNG bắt được — câu trích đúng nguyên văn nhưng dieuKien tự viết bỏ mất định ngữ giới hạn; luật 3 'dieuKien phải GIỮ định ngữ giới hạn của câu'). Nguồn: 'Nhóm này không bao gồm dầu của cá nhà táng, dù thô hoặc được tinh chế KHI BẰNG CÁCH PHÂN CHIA TÁCH MỠ SÁP CÁ NHÀ TÁNG (nhóm 15.04).' Điều kiện 'khi bằng cách phân chia tách mỡ sáp cá nhà táng' là định ngữ GIỚI HẠN: loại trừ chỉ áp dụng cho dầu thu được bằng cách tách mỡ sáp đó, không phải mọi dầu cá nhà táng. Bản nháp ghi 'Dầu của cá nhà táng, dù thô hoặc được tinh chế' — bỏ hẳn vế giới hạn, biến loại trừ có điều kiện thành loại trừ vô điều kiện (sẽ loại nhầm cả dầu cá nhà táng thu được theo cách khác). SỬA: 'Dầu của cá nhà táng (thô hoặc tinh chế khi tách mỡ sáp)' — giữ đủ định ngữ, và đã ĐO 55 ký tự = trần runtime clip 55 của lib/so-tay-gates.js:137 nên KHÔNG bị cắt cụt. Câu trích, nguồn và sangNhom 1504 GIỮ NGUYÊN (đích danh có trong chính câu trích, không phải hedge 'thường').",
+      "sua": {
+        "dieuKien": "Dầu của cá nhà táng (thô hoặc tinh chế khi tách mỡ sáp)"
+      }
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI 3 (máy KHÔNG bắt được — fact tự viết, câu trích đúng nguyên văn; fact đi thẳng vào prompt nên bỏ nhánh là mất nghĩa). Nguồn wco.152110: '152110 Vegetable waxes (other than triglycerides); whether or not refined or coloured'. Fact cũ 'la_sap_thuc_vat_khong_phai_triglyxerit' CHIỀU ĐÚNG — 'other than triglycerides' là mệnh đề loại trừ thật nên 'không phải triglyxerit' là cách diễn đạt đúng (không có lỗi đảo chiều kiểu lô 041). NHƯNG fact bỏ mất vế 'whether or not refined or coloured'. Mẫu nhà giữ vế này: 1515 (151550) 'la_dau_hat_vung_va_cac_phan_phan_doan_cua_chung_da_hoac_chua_tinh_che_khong_thay_doi_ve_mat_hoa_hoc'; 1516 giữ 'da_hoac_chua_tinh_che'; tiêu đề quốc gia của chính nhóm 1521 cũng kết bằng 'đã hoặc chưa tinh chế hay pha màu'. Bỏ vế này thì mô hình không biết tinh chế/pha màu KHÔNG làm đổi mã (nguy cơ tách nhầm). SỬA: bổ sung 'da_hoac_chua_tinh_che_hoac_pha_mau'. fact mới khớp /^[a-z][a-z0-9_]{2,}$/ (73 ký tự). op/value/nguon/trich GIỮ NGUYÊN.",
+      "sua": {
+        "fact": "la_sap_thuc_vat_khong_phai_triglyxerit_da_hoac_chua_tinh_che_hoac_pha_mau"
+      }
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI 2 (nặng, máy KHÔNG bắt được — câu trích byte-exact nhưng fact sai nghĩa). Nguồn wco.152190: '152190 Waxes, other than vegetable, n.e.c. in heading no. 1521; whether or not refined or coloured'. Fact cũ 'la_sap_khac_thuoc_sap_thuc_vat' có BA lỗi: (1) BỎ MẤT mệnh đề loại trừ 'other than vegetable' — cụm 'sáp khác thuộc sáp thực vật' đọc lên có thể thành 'sáp khác THUỘC sáp thực vật', tức 152190 CÓ là sáp thực vật, ĐẢO CHIỀU (sáp thực vật thật sự là 152110 — cây HS: nodeOf('152110').tenVi='Sáp thực vật', nodeOf('152190').tenVi='Loại khác'); (2) BỎ MẤT 'n.e.c. in heading no. 1521' — theo luật nhà đã chốt ở lô 041 (030489: 'n.e.c. in heading X' là PHẦN DƯ CỦA X, KHÔNG phải 'trừ X'; lô 060: 'crude' = dầu thô chứ không phải đã/chưa tinh chế) thì 152190 là phần dư của nhóm 15.21, tức sáp KHÔNG phải sáp thực vật; (3) BỎ MẤT 'whether or not refined or coloured'. Mẫu nhà cho đúng loại câu này: 0302/0303/0307 dùng 'khac thuoc nhom 03xx' (phần dư CỦA nhóm); 481190 dùng 'chua_chi_tiet_o_phan_nhom_khac_cua_4811'; 0301 dùng 'khac_trong_nhom_0301'. SỬA thành fact đủ ba vế, đúng chiều: 'la_sap_khac_khong_phai_sap_thuc_vat_la_phan_du_con_lai_cua_nhom_1521_da_hoac_chua_tinh_che_hoac_pha_mau'. fact mới khớp /^[a-z][a-z0-9_]{2,}$/ (103 ký tự). op/value/nguon/trich GIỮ NGUYÊN.",
+      "sua": {
+        "fact": "la_sap_khac_khong_phai_sap_thuc_vat_la_phan_du_con_lai_cua_nhom_1521_da_hoac_chua_tinh_che_hoac_pha_mau"
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "ĐÚNG. Nguồn: '(a) Dầu jojoba (nhóm 15.15).' nằm dưới 'Tuy nhiên, nhóm này không bao gồm:' → dấu hiệu loại trừ rõ; nhóm đích 15.15 CÓ ĐÍCH DANH trong chính câu trích; không phải hedge 'thường'/'tùy trường hợp'; không phải ví dụ. dieuKien 'Dầu jojoba' (10 ký tự) không bị clip 55. Câu trích byte-exact. GIỮ NGUYÊN."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "ĐÚNG. Nguồn: '(b) Những sản phẩm được gọi chung là sáp cây sim và sáp Nhật Bản (nhóm 15.15).' — dấu hiệu loại trừ rõ, đích danh 15.15 trong câu. Lưu ý: cùng nhãn '(b)' với loaiTru[2] nhưng thuộc DANH SÁCH LOẠI TRỪ KHÁC (danh sách của phần (I) vs của phần (II)) — câu trích phân biệt được vì nội dung khác nhau, không nhầm. dieuKien 'Sáp cây sim và sáp Nhật Bản' (27 ký tự) không bị clip. GIỮ NGUYÊN."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "ĐÚNG. Nguồn: '(b) Sáp để ong làm tổ (nhóm 96.02).' nằm cuối danh sách loại trừ của phần (II) — dấu hiệu loại trừ rõ, đích danh 96.02 trong câu trích. dieuKien 'Sáp để ong làm tổ' (17 ký tự) không bị clip. GIỮ NGUYÊN."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "ĐÚNG. hoi 'Hàng là dầu jojoba hay là sáp thực vật?' không nhắc mã phân nhóm, không nhắc 'WCO' (thoát regex MA_PHAN_NHOM_TRONG_HOI). Chiều Có/Không đúng: vế ĐẦU của câu nguồn '(a) Dầu jojoba' → có=1515, không=1521 (chính nhóm; 86 mục phanBiet trong repo có neuKhong = nhóm 4 số của mình). Mã NGOÀI nhóm 1515 CÓ trong câu trích. GIỮ NGUYÊN."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "ĐÚNG. hoi 'Hàng là sáp để ong làm tổ hay là sáp ong và sáp côn trùng khác?' — không nhắc mã phân nhóm/WCO; vế đầu của câu nguồn '(b) Sáp để ong làm tổ' → có=9602, không=1521; mã 96.02 có trong câu trích. hoi 63 ký tự ≤ trần 110 nên không bị clip. GIỮ NGUYÊN."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "ĐÚNG. hoi 'Hàng là dầu của cá nhà táng hay là sáp cá nhà táng?' — không nhắc mã phân nhóm/WCO; vế đầu của câu nguồn 'dầu của cá nhà táng' → có=1504, không=1521; mã 15.04 có trong câu trích. Chiều đúng, nhánh 'không' là phần bù của nhánh 'có'. hoi 51 ký tự ≤ 110. GIỮ NGUYÊN."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "ĐÚNG. Đủ dòng 8 số: 15211000 'Sáp thực vật' — tên dòng lấy đúng từ tax.15211000; dieuKien 'Sáp thực vật' (13 ký tự) ≤ trần 90; tieuChi.fact 'la_sap_thuc_vat' op '=' value=true theo mẫu nhà (mẫu la_… + value true cho dòng có tên, vd 01062000 'la_loai_bo_sat'). Dòng này KHÔNG ghi 'Loại khác' nên không cần dẫn wco.*. GIỮ NGUYÊN."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "ĐÚNG. 15219010 'Sáp ong và sáp côn trùng khác' — tên dòng từ tax.15219010; dieuKien 28 ký tự ≤ 90; tieuChi.fact 'la_sap_ong_va_sap_con_trung_khac' theo mẫu nhà. Không phải dòng 'Loại khác'. GIỮ NGUYÊN."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "ĐÚNG. 15219020 'Sáp cá nhà táng' — tên dòng từ tax.15219020; dieuKien 16 ký tự ≤ 90; tieuChi.fact 'la_sap_ca_nha_tang' theo mẫu nhà. Không phải dòng 'Loại khác'. GIỮ NGUYÊN."
+    }
+  ]
+}

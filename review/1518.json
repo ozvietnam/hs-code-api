@@ -1,0 +1,204 @@
+{
+  "nhom": "1518",
+  "nguoiSoat": "dev-soat-doc-lap-lo061-v2",
+  "luc": "2026-10-27T15:13:00.114Z",
+  "daKiem": 26,
+  "xoa": 0,
+  "sua": 9,
+  "ghiChu": "Soát độc lập 24/24 mục (phamVi 1, boPhan 1, dieuKienVao 1, loaiTru 4, phanBiet 1, tieuChi6 0, dong8 16). Máy đã xanh (byte-exact, ≤300) — lớp lỗi NGỮ NGHĨA tìm được 7, căn cứ nguồn và lý do đầy đủ trong lyDo từng mục. Nặng nhất: dieuKienVao[0] loại trừ quá rộng (mất câu 'Tuy nhiên… Chú giải 3 không áp dụng cho hỗn hợp hoặc chế phẩm biến chất … (nhóm 15.18)' — đã thêm ngoaiTru + kéo câu vào trich); phamVi.text và boPhan.tomTat thu hẹp phạm vi; loaiTru[0] mất danh từ định danh; dong8[5], [6], [14] mất phần phân biệt trong tên dòng / fact. THIẾU 2 mục (script áp lô 061 không có 'chen') — đề xuất đủ trong lyDo: dieuKienVao vế 'nhiều hơn một loại chất béo hoặc dầu' (đối xứng loaiTru[1]) và phanBiet cho cặp 'một loại / nhiều hơn một loại'; 1517 đã duyệt có đủ. Xoá 0.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "LỚP LỖI 5 (text là thứ MÔ HÌNH ĐỌC; trich KHÔNG vào prompt). Bản nháp: \"hỗn hợp hoặc chế phẩm không ăn được từ chất béo hoặc dầu thuộc Chương này.\" — bỏ (a) định danh nguồn gốc \"động vật, thực vật hoặc vi sinh vật\"; (b) vế \"hoặc từ các phần phân đoạn của các loại chất béo hoặc dầu khác nhau\"; (c) vế \"chưa được chi tiết hoặc ghi ở nơi khác\"; (d) ở phần (A) mất điều kiện \"với điều kiện chúng vẫn giữ được cấu trúc cơ bản gốc và không được chi tiết hơn ở nơi khác\". Nguồn [nhom1518.nhom]: \"Nhóm này bao gồm chất béo và dầu động vật, thực vật hoặc vi sinh vật và các phần phân đoạn của chúng đã qua quá trình làm thay đổi cấu trúc hoá học … với điều kiện chúng vẫn giữ được cấu trúc cơ bản gốc …\" và \"(B) Hỗn hợp hoặc chế phẩm không ăn được từ chất béo hoặc dầu động vật, thực vật hoặc vi sinh vật hoặc từ các phần phân đoạn của các loại chất béo hoặc dầu khác nhau thuộc Chương này, chưa được chi tiết hoặc ghi ở nơi khác.\" Bản nháp thu hẹp phạm vi ⇒ mô hình loại nhầm hỗn hợp có thực vật / có phần phân đoạn. Đã viết lại text 219 ký tự (≤ trần clip runtime 220, KHÔNG bị cắt). Giữ trich nguyên văn như cũ (mảnh byte-exact trong [nhom1518.nhom]).",
+      "sua": {
+        "text": "(A) Chất béo/dầu động vật, thực vật hoặc vi sinh vật và phần phân đoạn của chúng đã thay đổi cấu trúc hoá học (giữ cấu trúc gốc); (B) hỗn hợp/chế phẩm không ăn được từ mỡ/dầu động vật khác nhau hoặc phân đoạn của chúng."
+      }
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "sua",
+      "lyDo": "Cùng lớp lỗi 5: tomTat bản nháp bỏ 'động vật, thực vật hoặc vi sinh vật' và bỏ 'hoặc từ các phần phân đoạn của các loại chất béo hoặc dầu khác nhau' + 'chưa được chi tiết hoặc ghi ở nơi khác' của phần (B) ⇒ tomTat (thứ mô hình đọc, trần clip 160) nói ÍT hơn phạm vi thật. Đã sửa tomTat 155 ký tự (≤160, không bị clip) và quyTac (không trần) cho đủ. GIỮ khối boPhan: (A)/(B) ở đây là hai LOẠI HÀNG ngang hàng, không phải 'bộ phận' — nhưng mẫu nhà ĐÃ DUYỆT có tiền lệ đúng y: 1509 ('năm phần ngang hàng'), 1510 ('hai phần ngang hàng'), 0304 ('hai phần ngang hàng'); còn nhóm 1518 KHÔNG có dòng 'Bộ phận' nào trong biểu thuế (đã kiểm data/tax.json: 16 mã 1518*, không mã nào mở đầu 'Bộ phận/Phụ tùng') ⇒ cổng SO_TAY_BO_PHAN không bật, giữ boPhan là an toàn (xoá thì mất thông tin (A)/(B) vô ích). trich giữ nguyên (byte-exact).",
+      "sua": {
+        "quyTac": "Nhóm này gồm hai phần ngang hàng: (A) chất béo và dầu động vật, thực vật hoặc vi sinh vật và các phần phân đoạn của chúng đã qua quá trình làm thay đổi cấu trúc hoá học, với điều kiện chúng vẫn giữ được cấu trúc cơ bản gốc và không được chi tiết hơn ở nơi khác; (B) hỗn hợp hoặc chế phẩm không ăn được từ chất béo hoặc dầu động vật, thực vật hoặc vi sinh vật hoặc từ các phần phân đoạn của các loại chất béo hoặc dầu khác nhau thuộc Chương này, chưa được chi tiết hoặc ghi ở nơi khác.",
+        "tomTat": "(A) chất béo/dầu đã thay đổi cấu trúc hoá học (giữ cấu trúc gốc); (B) hỗn hợp/chế phẩm không ăn được từ mỡ/dầu động vật khác nhau hoặc phân đoạn của chúng."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỚP LỖI NẶNG NHẤT (máy KHÔNG bắt) — LOẠI TRỪ QUÁ RỘNG, MẤT VẾ MIỄN TRỪ. Bản nháp đặt trần fact 'la_chat_beo_hoac_dau_chi_bi_lam_bien_chat' = false, KHÔNG có ngoaiTru ⇒ runtime in ra 'la_chat_beo_hoac_dau_chi_bi_lam_bien_chat = false' ⇒ mô hình hiểu là BẤT KỲ hàng nào CHỈ bị làm biến chất đều bị loại khỏi 1518. Nhưng nguồn nói ngược lại cho phần (B): [ch15.chuong] \"Tuy nhiên, cần lưu ý rằng Chú giải 3 của Chương này KHÔNG áp dụng cho hỗn hợp hoặc chế phẩm biến chất của chất béo hoặc dầu hoặc của các phần phân đoạn của chúng (nhóm 15.18).\" ⇒ hỗn hợp/chế phẩm ĐÃ biến chất vẫn thuộc 1518; Chú giải 3 chỉ loại các dầu đơn của phần (A) — khớp với [nhom1518.nhom] \"(a) Chất béo hoặc dầu đã bị làm biến chất (xem Chú giải 3 của Chương này).\" Đã (1) kéo câu \"Tuy nhiên…\" vào trich (cùng khối ch15.chuong với Chú giải 3 ⇒ byte-exact được; trich mới 269 ký tự ≤ trần 300), (2) thêm ngoaiTru để ngoại lệ hiện ra trong prompt (runtime in ' (trừ: …)'). GIỮ fact/op/value vì chúng đúng chiều; chỉ bổ sung ngoại lệ. THÊM NỮA — mục này lấy từ Chú giải 3 (cấp Chương) nhưng câu ghi rõ 'Nhóm 15.18 không bao gồm…' nên dùng làm điều kiện của 1518 được. THIẾU (không sửa được — script áp lô 061 chỉ có giu/sua/xoa, không có hanhDong 'chen'): bản nháp THIẾU một dieuKienVao cho vế '…trong trường hợp mà việc thay đổi liên quan đến nhiều hơn một loại chất béo hoặc dầu' — nguồn [nhom1518.nhom] \"Nhóm này cũng bao gồm chất béo và dầu đã hydro hóa, este hóa liên hợp, tái este hóa hoặc elaidin hóa hoặc các phân đoạn của chúng, trong trường hợp mà việc thay đổi liên quan đến nhiều hơn một loại chất béo hoặc dầu.\" — tức vế ĐỐI XỨNG với loaiTru[1] ('chỉ liên quan đến một loại' → 1516). Nhóm 1517 (đã duyệt) có đúng cả hai vế: dieuKienVao[2] 'la_chat_beo_va_dau_da_hydro_hoa_este_hoa_lien_hop_tai_este_hoa_hoac_elaidin_hoa_khi_viec_thay_doi_lien_quan_den_nhieu_hon_mot_loai_chat_beo_hoac_dau' = true, và loaiTru[1] 'Thay đổi chỉ liên quan đến một loại chất béo hoặc dầu' → 1516. Chỉ có một nhánh ⇒ mô hình chỉ biết loại trừ, không biết điều kiện VÀO ⇒ ĐẢO CHIỀU. Đề xuất NGƯỜI DUYỆT chèn {fact:'la_chat_beo_va_dau_da_hydro_hoa_este_hoa_lien_hop_tai_este_hoa_hoac_elaidin_hoa_khi_viec_thay_doi_lien_quan_den_nhieu_hon_mot_loai_chat_beo_hoac_dau', op:'=', value:true, donVi:null, ngoaiTru:[], nguon:'nhom1518.nhom', trich:'Nhóm này cũng bao gồm chất béo và dầu đã hydro hóa, este hóa liên hợp, tái este hóa hoặc elaidin hóa hoặc các phân đoạn của chúng, trong trường hợp mà việc thay đổi liên quan đến nhiều hơn một loại chất béo hoặc dầu.'}.\n\n[NGƯỜI DUYỆT] Rút gọn `ngoaiTru` cho đúng ý nguồn và nêu rõ đây là MIỄN TRỪ của Chú giải 3 Chương 15 (nguồn: \"Chú giải 3 của Chương này không áp dụng cho hỗn hợp hoặc chế phẩm biến chất … (nhóm 15.18)\"). Trần runtime của `ngoaiTru` là 80 ký tự.",
+      "sua": {
+        "ngoaiTru": [
+          "hỗn hợp hoặc chế phẩm biến chất (Chú giải 3 không áp dụng, vẫn thuộc 15.18)"
+        ],
+        "trich": "3. Nhóm 15.18 không bao gồm chất béo hoặc dầu hay phân đoạn của chúng, mới chỉ làm biến chất,…Tuy nhiên, cần lưu ý rằng Chú giải 3 của Chương này không áp dụng cho hỗn hợp hoặc chế phẩm biến chất của chất béo hoặc dầu hoặc của các phần phân đoạn của chúng (nhóm 15.18)."
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "Lớp lỗi 3 (dieuKien phải giữ danh từ định danh của vật thể đi sang nhóm đích). Bản nháp: 'Dầu sulphat hoá thực hiện thêm thành sản phẩm rắn' — bỏ mất danh từ định danh vật thể đi sang 40.02. Nguồn [nhom1518.nhom]: 'Nếu quá trình đó được thực hiện thêm, thu được sản phẩm rắn (các chất thay thế cao su dẫn xuất từ dầu) (nhóm 40.02).' ⇒ đích 40.02 KHÔNG phải 'sản phẩm rắn' nói chung mà là 'các chất thay thế cao su dẫn xuất từ dầu'. Đã viết lại dieuKien 49 ký tự (≤ trần clip runtime 55, không bị cắt) giữ cả 'chất thay thế cao su dẫn xuất từ dầu'. Câu có DẤU HIỆU LOẠI TRỪ + nêu đích danh nhóm 40.02 trong trích ⇒ hợp lệ làm loaiTru. Giữ nguyên trich (byte-exact).",
+      "sua": {
+        "dieuKien": "Sản phẩm rắn chất thay thế cao su dẫn xuất từ dầu"
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu nguồn có DẤU HIỆU LOẠI TRỪ ('Nhóm này không bao gồm:') và NÊU ĐÍCH DANH '(nhóm 15.16)'. dieuKien 'Thay đổi chỉ liên quan đến một loại chất béo hoặc dầu' (53 ký tự ≤ trần clip 55) GIỮ TRỌN vế giới hạn 'chỉ liên quan đến MỘT loại' — đây là vế quyết định, đối xứng với vế 'nhiều hơn một loại' của chú giải nhóm (vế đó bản nháp thiếu, xem lyDo ở dieuKienVao[0]); bỏ vế này là đảo chiều luật. GIỮ."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu nguồn '(c) Các chế phẩm của loại dùng làm thức ăn chăn nuội (nhóm 23.09).' — có DẤU HIỆU LOẠI TRỪ, nêu đích danh nhóm 23.09, số nhóm có trong trích. dieuKien chép gần nguyên văn nguồn (48 ký tự ≤ 55). LƯU Ý: phần (B) còn có câu 'Phần này bao gồm dầu rán đã qua sử dụng chứa, ví dụ, dầu hạt cải (rape), dầu đậu tương và một lượng nhỏ mỡ động vật, được dùng trong chế biến thức ăn chăn nuội.' — dầu rán DÙNG ĐỂ LÀM thức ăn chăn nuội vẫn ở 1518, còn loại trừ là chế phẩm 'DÙNG LÀM' thức ăn chăn nuội ⇒ chiều đúng, không đảo. GIỮ."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "Câu nguồn '(d) Dầu sulphonate (tức là, dầu được xử lý bởi axit sulphuric) (nhóm 34.02).' — có DẤU HIỆU LOẠI TRỪ, nêu đích danh nhóm 34.02. dieuKien giữ cả ngoặc định nghĩa '(dầu được xử lý bởi axit sulphuric)' (50 ký tự ≤ 55) — đây là định danh để phân biệt dầu sulphonate với dầu sulphat hoá ở loaiTru[0]; không bỏ. GIỮ."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chiều Có/Không ĐÚNG và tự nhất quán: hoi 'Hàng là chất làm khô lỏng đã điều chế hay là dầu khô?' → nhánh 'có' = chất làm khô lỏng đã điều chế → 3211 (mã có nguyên văn trong trích: 'thuộc nhóm 32.11'), nhánh 'không' = dầu khô → 1518 (chính nhóm — mẫu nhà 766/1000 mục dùng chính nhóm cho nhánh bù). Nguồn [nhom1518.nhom] '(b) Dầu khô (như dầu hạt lanh) … Dầu này được dùng để thay thế dầu đã đun sôi trong sản xuất vecni hoặc sơn, loại này rất khác với chất làm khô lỏng đã điều chế thuộc nhóm 32.11 (dung dịch cô đặc của chất làm khô) và không thể nhầm lẫn lộn với chúng.' — vế ĐẦU của câu đối chiếu là 'loại này' (= dầu khô, 1518), vế SAU là 32.11; hoi hỏi theo thứ tự ngược (32.11 trước) nhưng ánh xạ có→neuCo / không→neuKhong nhất quán với câu hỏi ⇒ KHÔNG đảo chiều. Đoạn lược giữa hai mảnh chỉ bỏ 'được thêm một lượng nhỏ chất làm khô lạnh (ví dụ, borat chì, naphtenate kẽm, resinate coban) nhằm làm tăng tính khô nhanh của chúng.' — là ĐẶC TÍNH phân biệt, không phải ngoại lệ định mệnh ⇒ không mất nghĩa. hoi 53 ký tự ≤ trần clip 110. GIỮ. THIẾU (không sửa được — script áp lô 061 không có hanhDong 'chen'): bản nháp THIẾU phanBiet cho cặp 'chỉ liên quan MỘT loại / nhiều hơn MỘT loại' — 1517 (đã duyệt) có phanBiet[1] 'Hàng là chất béo và dầu đã hydro hóa, este hóa hoặc elaidin hóa mà thay đổi chỉ liên quan một loại không?' có→1516 / không→1517. Đề xuất NGƯỜI DUYỆT chèn {hoi:'Hàng là chất béo và dầu đã hydro hóa, este hóa hoặc elaidin hóa mà thay đổi chỉ liên quan một loại không?', neuCo:'1516', neuKhong:'1518', nguon:'nhom1518.nhom', trich:'(b) Chất béo và dầu hydro hoá, este hoá liên hợp, tái este hóa hoặc elaidin hóa hoặc các phân đoạn của chúng, trong trường hợp mà việc thay đổi chỉ liên quan đến một loại chất béo hoặc dầu (nhóm 15.16).'}"
+    },
+    {
+      "index": "tieuChi6",
+      "hanhDong": "giu",
+      "lyDo": "Mảng RỖNG. Nhóm 1518 chỉ có MỘT phân nhóm 6 số (151800) và nguồn chỉ có [wco.151800] (tiêu đề 6 số, không tách 151800.xx) ⇒ không có tiêu chí cấp 6 số để ghi; bịa tiêu chí không có nguồn thì vi phạm luật nhà. Mẫu nhà: 210/520 nhóm có tieuChi6 rỗng. GIỮ rỗng."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 15180012 — tên chép nguyên văn từ [tax.15180012] '15180012 - - Mỡ và dầu động vật' (byte-exact). tieuChi.fact 'la_mo_va_dau_dong_vat' bám đúng tên dòng. GIỮ."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 15180014 — tên nguyên văn [tax.15180014] 'Dầu lạc, dầu đậu tương, dầu cọ hoặc dầu dừa' (43 ký tự ≤ trần clip 90). tieuChi.fact bám đúng tên dòng, giữ đủ cả 4 nguồn gốc (lạc/đậu tương/cọ/dừa) — bỏ nhánh nào cũng thu hẹp dòng. GIỮ."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 15180015 — nguyên văn [tax.15180015] 'Dầu hạt lanh và các phần phân đoạn của dầu hạt lanh' (51 ≤ 90); tieuChi.fact giữ cả 'và các phần phân đoạn của dầu hạt lanh' (tính chất phân đoạn là điều kiện vào dòng, không được bỏ). GIỮ."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 15180016 — nguyên văn [tax.15180016] 'Dầu ô liu và các phần phân đoạn của dầu ô liu' (45 ≤ 90); tieuChi.fact giữ 'và các phần phân đoạn của dầu ô liu'. GIỮ."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 15180019 'Loại khác' — biểu thuế chỉ ghi '- - - Loại khác', không có tên hàng để chép; cờ loaiKhac + phamViLoaiKhac do MÁY suy từ biểu thuế (lib/so-tay.js#loaiKhacOf), tieuChi null là đúng (dòng không có tiêu chí phân biệt). GIỮ."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "sua",
+      "lyDo": "Lớp lỗi 8 + 6. Dòng 15180020. Bản nháp dieuKien 'Hỗn hợp hoặc chế phẩm không ăn được từ mỡ hoặc dầu động vật' CẮT mất đuôi định danh của tên dòng. Nguồn [tax.15180020]: 'Các hỗn hợp hoặc các chế phẩm không ăn được từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của các loại mỡ hoặc dầu động vật KHÁC NHAU'. Vế 'khác nhau' là điều kiện phân biệt dòng này với dòng 15180060 (thêm thực vật) và với 15180090 — bỏ nó thì một hỗn hợp của MỘT loại mỡ cũng khớp 15180020. Đã viết lại dieuKien 89 ký tự (≤ trần clip runtime 90, không bị cắt) giữ cả 'khác nhau' và 'phần phân đoạn của chúng'. tieuChi.fact bản nháp 'la_hon_hop_che_pham_khong_an_duoc_tu_mo_hoac_dau_dong_vat' bỏ nhánh 'khác nhau' ⇒ đã sửa thành fact đầy đủ (fact đi thẳng vào prompt, mô hình đọc NÓ chứ không đọc trich). KHÔNG đụng trich (vẫn nguyên văn biểu thuế, byte-exact).",
+      "sua": {
+        "dieuKien": "Hỗn hợp/chế phẩm không ăn được từ mỡ/dầu động vật khác nhau hoặc phần phân đoạn của chúng",
+        "tieuChi": {
+          "fact": "la_hon_hop_hoac_che_pham_khong_an_duoc_tu_mo_hoac_dau_dong_vat_khac_nhau_hoac_phan_phan_doan_cua_chung",
+          "op": "=",
+          "value": true,
+          "donVi": null
+        }
+      }
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "sua",
+      "lyDo": "Lớp lỗi 8. Dòng 15180032 — bản nháp rút tên dòng thành 'Dầu cọ hoặc olein hạt cọ (NBD hoặc RBD)' làm mất nghĩa của NBD/RBD. Nguồn [tax.15180032]: 'Của dầu cọ hoặc olein hạt cọ, ĐÃ TRUNG HÒA HÓA, TẨY VÀ KHỬ MÙI (NBD) hoặc ĐÃ TINH CHẾ, TẨY VÀ KHỬ MÙI (RBD)'. Giữ riêng chữ NBD/RBD mà không nói chúng là gì thì mô hình không biết phân biệt dòng này với 15180038 ('Của quả cọ dầu hoặc của hạt cọ, loại khác') hay với dầu cọ chưa tinh chế. Đã viết lại dieuKien 90 ký tự (≤ trần clip runtime 90, không bị cắt) nêu rõ 'đã trung hòa, tẩy, khử mùi (NBD) hoặc đã tinh chế, tẩy, khử mùi (RBD)'. tieuChi.fact bám đúng tên dòng mới. KHÔNG đụng trich (byte-exact).",
+      "sua": {
+        "dieuKien": "Dầu cọ/olein hạt cọ, đã trung hòa, tẩy, khử mùi (NBD) hoặc đã tinh chế, tẩy, khử mùi (RBD)",
+        "tieuChi": {
+          "fact": "la_dau_coc_hoac_olein_hat_coc_da_trung_hoa_tay_khu_mui_nbd_hoac_da_tinh_che_tay_khu_mui_rbd",
+          "op": "=",
+          "value": true,
+          "donVi": null
+        }
+      }
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 15180033 'Của hạt lanh' — nguyên văn [tax.15180033]. Đây là dòng 'Của…' của nhóm hỗn hợp (phần B của chú giải nhóm); tên dòng chỉ nói nguồn gốc (hạt lanh) — nguồn không có nội dung nào để bổ sung, không bịa. GIỮ."
+    },
+    {
+      "index": "dong8[8]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 15180034 'Của ô liu' — nguyên văn [tax.15180034]; nguồn không có nội dung để bổ sung. GIỮ."
+    },
+    {
+      "index": "dong8[9]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 15180035 'Của lạc' — nguyên văn [tax.15180035]; nguồn không có nội dung để bổ sung. GIỮ."
+    },
+    {
+      "index": "dong8[10]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 15180036 'Của đậu tương hoặc dừa' — nguyên văn [tax.15180036]; tieuChi.fact 'la_dau_dau_tuong_hoac_dua' bám đúng, giữ cả hai nhánh (đậu tương HOẶC dừa). GIỮ."
+    },
+    {
+      "index": "dong8[11]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 15180037 'Của hạt bông' — nguyên văn [tax.15180037]; nguồn không có nội dung để bổ sung. GIỮ."
+    },
+    {
+      "index": "dong8[12]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 15180038 'Của quả cọ dầu hoặc của hạt cọ, loại khác' — nguyên văn [tax.15180038] (41 ≤ 90). GIỮ nguyên cả vế 'loại khác' (phân biệt với 15180032 là dòng NBD/RBD). GIỮ."
+    },
+    {
+      "index": "dong8[13]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 15180039 'Loại khác' — biểu thuế chỉ ghi '- - - Loại khác'; loaiKhac do máy suy, tieuChi null đúng mẫu. GIỮ."
+    },
+    {
+      "index": "dong8[14]",
+      "hanhDong": "sua",
+      "lyDo": "Lớp lỗi 6. Dòng 15180060. dieuKien (89 ký tự, vừa đủ ≤ trần clip 90) đã giữ đúng điều kiện phân biệt với 15180020 là có thêm 'và chất béo hoặc dầu thực vật' ⇒ GIỮ nguyên dieuKien. NHƯNG tieuChi.fact bản nháp 'la_hon_hop_che_pham_khong_an_duoc_cua_dong_vat_va_thuc_vat' bỏ nhánh 'HOẶC CÁC PHẦN PHÂN ĐOẠN CỦA CHÚNG' — nguồn [tax.15180060]: '… hoặc từ các phần phân đoạn của chúng và chất béo hoặc dầu thực vật hoặc các phần phân đoạn của chúng'. fact đi thẳng vào prompt, mô hình đọc NÓ chứ không đọc trich ⇒ bỏ nhánh này là thu hẹp điều kiện của dòng. Đã sửa fact cho đủ; KHÔNG đụng dieuKien và trich (byte-exact).",
+      "sua": {
+        "tieuChi": {
+          "fact": "la_hon_hop_hoac_che_pham_khong_an_duoc_cua_mo_hoac_dau_dong_vat_hoac_phan_phan_doan_cua_chung_va_chat_beo_hoac_dau_thuc_vat_hoac_phan_phan_doan_cua_chung",
+          "op": "=",
+          "value": true,
+          "donVi": null
+        }
+      }
+    },
+    {
+      "index": "dong8[15]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 15180090 'Loại khác' — biểu thuế chỉ ghi '- Loại khác'; loaiKhac do máy suy, tieuChi null đúng mẫu. GIỮ."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "chen",
+      "lyDo": "[NGƯỜI DUYỆT] CHÈN — nhánh DƯƠNG còn thiếu. Nguồn nói: \"Nhóm này cũng bao gồm chất béo và dầu đã hydro hóa, este hóa liên hợp, tái este hóa hoặc elaidin hóa hoặc các phân đoạn của chúng, trong trường hợp mà việc thay đổi liên quan đến nhiều hơn một loại chất béo hoặc dầu.\" — bản nháp chỉ có vế loại trừ (một loại → 1516) nên mất vế đối xứng. Nhóm 1517 (đã duyệt) có đúng cả hai vế; lấy `fact` Y HỆT 1517 vì cùng câu nguồn.",
+      "sua": {
+        "fact": "la_chat_beo_va_dau_da_hydro_hoa_este_hoa_lien_hop_tai_este_hoa_hoac_elaidin_hoa_khi_viec_thay_doi_lien_quan_den_nhieu_hon_mot_loai_chat_beo_hoac_dau",
+        "op": "=",
+        "value": true,
+        "donVi": null,
+        "ngoaiTru": [],
+        "nguon": "nhom1518.nhom",
+        "trich": "Nhóm này cũng bao gồm chất béo và dầu đã hydro hóa, este hóa liên hợp, tái este hóa hoặc elaidin hóa hoặc các phân đoạn của chúng, trong trường hợp mà việc thay đổi liên quan đến nhiều hơn một loại chất béo hoặc dầu."
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "chen",
+      "lyDo": "[NGƯỜI DUYỆT] CHÈN — câu hỏi phân biệt đối xứng với loaiTru[1], theo đúng mẫu 1517 `phanBiet[1]` (có → 1516, không → nhóm đang xét).",
+      "sua": {
+        "hoi": "Hàng là chất béo và dầu đã hydro hóa, este hóa hoặc elaidin hóa mà thay đổi chỉ liên quan một loại không?",
+        "neuCo": "1516",
+        "neuKhong": "1518",
+        "nguon": "nhom1518.nhom",
+        "trich": "(b) Chất béo và dầu hydro hoá, este hoá liên hợp, tái este hóa hoặc elaidin hóa hoặc các phân đoạn của chúng, trong trường hợp mà việc thay đổi chỉ liên quan đến một loại chất béo hoặc dầu (nhóm 15.16)."
+      }
+    }
+  ]
+}

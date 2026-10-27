@@ -1,0 +1,301 @@
+{
+  "nhom": "1602",
+  "nguoiSoat": "dev-soat-doc-lap-lo061-v2",
+  "luc": "2026-10-27T15:14:59.001Z",
+  "daKiem": 47,
+  "xoa": 0,
+  "sua": 16,
+  "ghiChu": "SOÁT ĐỘC LẬP 46/46 mục (1 phamVi + 2 dieuKienVao + 6 loaiTru + 4 phanBiet + 11 tieuChi6 + 22 dong8) với tmp/so-tay/nguon/1602.txt. KHÔNG xoá; 16 sửa, 32 giữ có lý do (chi tiết ở lyDo). Lỗi ngữ nghĩa máy đã xanh: (1) phamVi.text đổi dấu phẩy liệt kê của nguồn thành 'và' → mất nghĩa 2 mục loại trừ. (2) THIẾU điều kiện vào nhóm 'phương pháp khác không nêu trong Chương 2/Chương 3/nhóm 05.04' (mục (3) chú giải nhóm) → không chặn được lẫn 02.x/05.04. (3) fact dieuKienVao[1] chứa 'trong_luong' khiến cổng đọc kg rồi so ngưỡng 20 % → bắt oan; đổi sang 'ty_le_'. (4) phanBiet[0] hỏi 2 điều kiện ghép bằng 'và' nên nhánh 'không' sai. (5) 10 dòng 'Loại khác' để nguyên WCO tiếng Anh nên tràn clip 90, mất vế loại trừ; viết lại ≤90 ký tự. (6) tieuChi6[8]/[10] dịch sai chiều n.e.c. Áp xong: 47/47.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp đổi dấu phẩy liệt kê trong câu nguồn thành liên từ 'và': nguồn ghi 'trừ xúc xích và sản phẩm tương tự (nhóm 16.01), các sản phẩm chiết xuất từ thịt và nước thịt ép (nhóm 16.03)' — đây là HAI mục loại trừ trong cùng danh sách 'trừ', không phải một vế liên từ. 'phamVi.text' là trường MÔ HÌNH ĐỌC (không có 'trich' trong prompt) nên lệch nhẹ ở đây là lệch nghĩa thật. Sửa: trả về đúng dấu phẩy + 'các sản phẩm' như nguồn; độ dài 220 = đúng trần clip 220 (không bị cắt). Không thêm mệnh đề Chương 2/3/05.04 vào đây vì sẽ vượt trần và bị cắt giữa câu; phần đó đã đưa vào dieuKienVao mới (mục dieuKienVao[2]).",
+      "sua": {
+        "text": "Tất cả thịt, các phụ phẩm dạng thịt sau giết mổ, tiết hoặc côn trùng đã chế biến và bảo quản thuộc Chương này, trừ xúc xích và sản phẩm tương tự (nhóm 16.01), các sản phẩm chiết xuất từ thịt và nước thịt ép (nhóm 16.03).",
+        "trich": "Nhóm này bao gồm tất cả thịt, các phụ phẩm dạng thịt sau giết mổ, tiết hoặc côn trùng đã chế biến và bảo quản thuộc Chương này, trừ xúc xích và sản phẩm tương tự (nhóm 16.01), các sản phẩm chiết xuất từ thịt và nước thịt ép (nhóm 16.03)."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "fact 'la_che_pham_thit_phu_pham_dang_thit_tiet_hoac_con_trung_da_chebien_va_bao_quan' = true; trích nguyên văn dòng 4 nhom1602.nhom 'Nhóm này bao gồm tất cả thịt, các phụ phẩm dạng thịt sau giết mổ, tiết hoặc côn trùng đã chế biến và bảo quản thuộc Chương này, trừ ...'. Đây là điều kiện VÀO NHÓM 4 số (chế phẩm từ thịt/phụ phẩm dạng thịt/tiết/côn trùng đã chế biến), lấy từ chú giải NHÓM (không phải WCO/SEN/biểu thuế) nên không dính lỗi cấp. Câu KHÔNG có dấu hiệu 'cho phép' nên value=true hợp lệ. Vế loại trừ (16.01/16.03) đã được loạiTru[1]/loaiTru[2] ghi riêng. GIỮ."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "sua",
+      "lyDo": "NGƯỠNG SỐ ĐÚNG CHIỀU nhưng fact SAI ĐƠN VỊ → runtime đọc sai. Cổng SO_TAY_NGUONG (lib/so-tay-gates.js:231) chọn quy tắc đơn vị theo regex /khoi_luong|trong_luong/ → đơn vị 'kg'; fact hiện tại chứa 'trong_luong' nên hồ sơ ghi 'Khối lượng: 5 kg' bị đọc thành số 5 rồi so với ngưỡng '> 20 %' → cổng bắt oan, hỏi người khai 'trái ngưỡng 20 %' cho một hộp thịt hộp 5 kg. Ngưỡng là TỈ LỆ % (có '20%' trong câu trích) nhưng cổng lại so theo kg. Sửa: đổi tên fact sang tiền tố 'ty_le_' theo đúng lệ phủ hiện hành (0402/0714/1103/1702/1901/5208/5512/6004/7208) để KHÔNG khớp regex đơn vị kg; chiều op '>' và value 20 giữ nguyên (đúng nghĩa: nhóm 16.02 chứa chế phẩm chứa TRÊN 20 %; khác 2106 dùng '<=' vì ở đó 20 % là điều kiện LOẠI TRỪ). Câu trích giữ nguyên.",
+      "sua": {
+        "fact": "ty_le_thit_phu_pham_dang_thit_tiet_hoac_con_trung_trong_che_pham_thuc_pham"
+      }
+    },
+    {
+      "index": "dieuKienVao[2]",
+      "hanhDong": "chen",
+      "lyDo": "THIẾU ĐIỀU KIỆN VÀO NHÓM QUAN TRỌNG. Mục (3) của chú giải nhóm nhom1602.nhom là điều kiện vào nhóm: 'Thịt và phụ phẩm dạng thịt sau giết mổ đã chế biến hoặc bảo quản bằng các phương pháp KHÁC KHÔNG NÊU TRONG CHƯƠNG 2 HOẶC NHÓM 05.04'. Bản nháp chỉ có dieuKienVao[0] (thịt đã chế biến) và [1] (ngưỡng 20 %) — không mục nào nêu điều kiện 'phương pháp chế biến khác Chương 2/3/05.04'. Đây là điều kiện phân định nhóm 16.02 với Chương 2 (thịt tươi/ướp lạnh/đông lạnh), Chương 3 (cá) và nhóm 05.04 (bột thịt): thịt sống/ướp lạnh KHÔNG được xếp 16.02, mà thịt luộc/hấp/nướng/chiên/quay ĐƯỢC. Bản nháp không chặn được lẫn 02.x/05.04. Thêm mục boolean value=true, nguồn nhom1602.nhom, trích cắt đúng câu (giữ nguyên vế đầu, cắt tại ', kể cả' để không dính vế ví dụ). Dựng theo đúng mẫu 1604 (dieuKienVao[1] fact 'la_ca_thuoc_cac_nhom_tu_0302_den_0305' = false lấy từ 'miễn là nó không thuộc các nhóm từ 03.02 đến 03.05').\n\n[NGƯỜI DUYỆT] Fact của người soát ghi thêm \"Chương 3\" trong khi câu trích (chú giải nhóm, mục (3)) chỉ nói \"Chương 2 hoặc nhóm 05.04\" ⇒ thừa từ, trái luật 7 (không thêm điều câu trích không nói). Cắt \"Chương 3\" cho khớp. Câu trích bổ sung vế \"kể cả các sản phẩm này chỉ được bao bột hoặc vụn bánh mì, trộn nấm củ hoặc thêm gia vị\" cho đủ ý (vẫn byte-exact, ≤ 300 ký tự).\n\n[NGƯỜI DUYỆT] Đổi `hanhDong` từ \"sua\" sang \"chen\" (mục này CHƯA có trong bản nháp — mục nguồn có, bản nháp thiếu). Câu trích lấy lại từ tệp nguồn bằng script (byte-exact), cắt tại \"…hoặc thêm gia vị\" (trước vế \"ví dụ, với cả tiêu và muối\").\n\n[NGƯỜI DUYỆT] `hanhDong` = \"chen\" (mục CHƯA có trong bản nháp — mục nguồn có, bản nháp thiếu). Câu trích lấy lại từ tệp nguồn bằng script (byte-exact), cắt tại \"…hoặc thêm gia vị\" để ≤ 300 ký tự.",
+      "sua": {
+        "fact": "che_bien_va_bao_quan_theo_phuong_phap_khac_khong_neu_trong_chuong_2_hoac_nhom_0504",
+        "op": "=",
+        "value": true,
+        "donVi": null,
+        "ngoaiTru": [],
+        "nguon": "nhom1602.nhom",
+        "trich": "(3) Thịt và phụ phẩm dạng thịt sau giết mổ đã chế biến hoặc bảo quản bằng các phương pháp khác không nêu trong Chương 2 hoặc nhóm 05.04, kể cả các sản phẩm này chỉ được bao bột hoặc vụn bánh mì, trộn nấm củ hoặc thêm gia vị"
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Nguyên văn nhom1602.nhom mục (4): '(4) Các chế phẩm từ tiết, trừ dồi đen (dồi tiết) và sản phẩm tương tự thuộc nhóm 16.01.' — có DẤU HIỆU LOẠI TRỪ ('trừ') và nêu ĐÍCH DANH 16.01 trong câu. dieuKien 'Dồi đen (dồi tiết) và sản phẩm tương tự' = 39 ký tự, dưới trần clip 55 → không bị cắt, giữ trọn định ngữ giới hạn. GIỮ."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Nguyên văn dòng 4: 'trừ xúc xích và sản phẩm tương tự (nhóm 16.01)' — dấu hiệu loại trừ 'trừ' + đích danh 16.01 trong câu. dieuKien 29 ký tự < 55. GIỮ."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "Nguyên văn dòng 4: 'các sản phẩm chiết xuất từ thịt và nước thịt ép (nhóm 16.03)' — cùng danh sách loại trừ, đích danh 16.03 trong câu. dieuKien 43 ký tự < 55. GIỮ."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "Nguyên văn nhom1602.nhom mục (a) (danh sách 'Nhóm này không bao gồm:'): '(a) Sản phẩm từ bột nhào (pasta) (ví dụ: bánh bao ý…) nhồi thịt hoặc phụ phẩm dạng thịt sau giết mổ (nhóm 19.02).' — đích danh 19.02. Câu trích giữ nguyên cả ví dụ trong ngoặc → không mất ngoại lệ. dieuKien 'Sản phẩm từ bột nhào (pasta) nhồi thịt' 38 ký tự < 55. GIỮ."
+    },
+    {
+      "index": "loaiTru[4]",
+      "hanhDong": "giu",
+      "lyDo": "Nguyên văn nhom1602.nhom mục (b): '(b) Nước xốt và các chế phẩm làm nước xốt, các loại gia vị hỗn hợp và bột canh hỗn hợp (nhóm 21.03).' — đích danh 21.03, dấu hiệu loại trừ do nằm trong danh sách 'Nhóm này không bao gồm:'. dieuKien 44 ký tự < 55. GIỮ."
+    },
+    {
+      "index": "loaiTru[5]",
+      "hanhDong": "giu",
+      "lyDo": "Nguyên văn nhom1602.nhom mục (c): '(c) Súp và nước xuýt và các chế phẩm làm súp và nước xuýt và các chế phẩm thực phẩm tổng hợp đồng nhất (nhóm 21.04).' — đích danh 21.04. dieuKien 'Súp, nước xuýt và chế phẩm thực phẩm tổng hợp đồng nhất' = ĐÚNG 55 ký tự, tức ngay dưới trần clip 55 (lib/so-tay-gates.js:137) → không bị cắt, không mất vế cuối. GIỮ."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "CÂU HỎI HỎI HAI ĐIỀU KIỆN GHÉP VÀO NHAU → nhánh 'không' sai. Nguồn (mục (2)): 'Patê, thịt xay nhuyễn, giò đông và thịt xay đóng hộp MIỄN LÀ CHÚNG KHÔNG ĐÁP ỨNG các yêu cầu để được phân loại trong nhóm 16.01 như xúc xích'. Bản nháp hỏi 'là patê, thịt xay nhuyễn, giò đông và thịt xay đóng hộp ĐÁP ỨNG yêu cầu... không?' — 'và' nối thành MỘT vế (là paté VÀ đáp ứng). Với câu hỏi ghép, một hộp thịt xay đóng hộp ĐÃ đáp ứng yêu cầu xúc xích (không phải patê) sẽ trả lời 'không' về vế 'là patê' → rơi vào neuKhong=1602, tức bị xếp SAI 16.02 dù đáng ra 16.01. Sửa: biến danh sách 'patê, thịt xay nhuyễn, giò đông, thịt xay đóng hộp' thành CHỦ THỂ, còn 'đáp ứng yêu cầu xúc xích' thành vị từ phân biệt (dùng 'mà' + mệnh đề phụ) → chỉ còn MỘT điều kiện phân biệt, nhánh có/không đúng chiều: có→1601, không→1602. Chiều nguồn giữ nguyên. 96 ký tự < trần 110. Câu trích giữ nguyên.",
+      "sua": {
+        "hoi": "Hàng là patê, thịt xay nhuyễn, giò đông hay thịt xay đóng hộp mà đáp ứng yêu cầu xúc xích không?"
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Nguồn nhom1602.nhom mục (a): '(a) Sản phẩm từ bột nhào (pasta) (ví dụ: bánh bao ý…) nhồi thịt hoặc phụ phẩm dạng thịt sau giết mổ (nhóm 19.02).' Câu hỏi đối chiếu hai vế đối nghịch (từ bột nhào nhồi thịt / thịt đã chế biến), vế ĐẦU = có → 19.02, không → 16.02; mã 19.02 có trong câu trích. Không nhắc mã phân nhóm hay chữ WCO trong hoi. GIỮ."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "Nguồn nhom1602.nhom mục (b): '(b) Nước xốt và các chế phẩm làm nước xốt, các loại gia vị hỗn hợp và bột canh hỗn hợp (nhóm 21.03).' Vế đầu = có → 21.03, không → 16.02; mã 21.03 có trong câu trích. GIỮ."
+    },
+    {
+      "index": "phanBiet[3]",
+      "hanhDong": "giu",
+      "lyDo": "Nguồn nhom1602.nhom mục (c): '(c) Súp và nước xuýt và các chế phẩm làm súp và nước xuýt và các chế phẩm thực phẩm tổng hợp đồng nhất (nhóm 21.04).' Vế đầu = có → 21.04, không → 16.02; mã 21.04 có trong câu trích. GIỮ."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "hs6=160210 có thật trong cây (nút 6 số, tên 'Chế phẩm đồng nhất'). Nguồn ch16.chuong mục 1: 'khái niệm \"chế phẩm đồng nhất\" được hiểu là chế phẩm từ thịt, các phụ phẩm dạng thịt sau giết mổ, tiết hoặc côn trùng, được làm đồng nhất mịn, phù hợp làm thực phẩm cho trẻ sơ sinh hoặc trẻ nhỏ hoặc để ăn kiêng, đóng gói để bán lẻ với trọng lượng tịnh không quá 250g.' fact 'la_che_pham_dong_nhat_mien' bám đúng nghĩa. GIỮ."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "hs6=160210; nguồn ch16.chuong cùng câu; ngưỡng 'trọng lượng tịnh không quá 250g' → op '<=' 250 g, có số 250 trong câu trích. fact 'trong_luong_tinh_dong_goi_ban_le' đúng. GIỮ."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "hs6=160220 (nút lá 8 số kiêm phân nhóm, laPhanNhom=160220 → hợp lệ cấp 6). Nguồn wco.160220 'Meat preparations; of the prepared or preserved liver of any animal (excluding homogenised preparations)'. fact 'la_che_pham_tu_gan_dong_vat' = 'chế phẩm từ gan động vật' — khớp đúng 'prepared or preserved liver of any animal'. GIỮ."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "hs6=160231 có thật trong cây. Nguồn wco.160231 'of turkeys, prepared or preserved meat or meat offal (excluding livers and homogenised preparations)'. fact 'la_che_pham_tu_thit_gai_tay' = 'chế phẩm từ thịt gà tây' — 'gai tây' là turkey, đúng loài; vế loại trừ (gan, chế phẩm đồng nhất) đã được phát ở dong8[5]. GIỮ."
+    },
+    {
+      "index": "tieuChi6[4]",
+      "hanhDong": "giu",
+      "lyDo": "hs6=160232 có thật trong cây. Nguồn wco.160232 'of the poultry of heading no. 0105, (i.e. of fowls of the species Gallus domesticus)'. fact 'la_che_pham_tu_gia_cam' = 'chế phẩm từ gia cầm' — đúng phạm vi WCO (gia cầm nhóm 01.05, tức gà Gallus domesticus). GIỮ."
+    },
+    {
+      "index": "tieuChi6[5]",
+      "hanhDong": "giu",
+      "lyDo": "hs6=160239 (nút lá 8 số kiêm phân nhóm). Nguồn wco.160239 'of poultry (excluding turkeys), prepared or preserved meat or meat offal (excluding livers and homogenised preparations)'. fact 'la_che_pham_tu_gia_cam_khong_phai_gai_tay' giữ đúng vế '(excluding turkeys)' — chiều loại trừ đúng (KHÔNG phải gà tây). GIỮ."
+    },
+    {
+      "index": "tieuChi6[6]",
+      "hanhDong": "giu",
+      "lyDo": "hs6=160241 có thật trong cây. Nguồn wco.160241 'of swine, hams and cuts thereof, prepared or preserved (excluding homogenised preparations)'. fact 'la_che_pham_tu_thit_lon_ham' = 'chế phẩm từ thịt lợn, hâm (thịt đùi)' — 'hams' dịch 'hâm/đùi' là đúng. GIỮ."
+    },
+    {
+      "index": "tieuChi6[7]",
+      "hanhDong": "giu",
+      "lyDo": "hs6=160242 có thật trong cây. Nguồn wco.160242 'of swine, shoulders and cuts thereof, prepared or preserved (excluding homogenised preparations)'. fact 'la_che_pham_tu_thit_lon_vai' = 'chế phẩm từ thịt lợn, vai' — 'shoulders' = vai, đúng. GIỮ."
+    },
+    {
+      "index": "tieuChi6[8]",
+      "hanhDong": "sua",
+      "lyDo": "fact 'la_che_pham_tu_thit_lon_hon_phan_nhom_khac' ĐỌC LẮM VÀ SAI CHIỀU. Nguồn wco.160249: 'of swine, meat or meat offal (including mixtures), prepared or preserved, n.e.c. in heading no. 1602'. 'n.e.c. in heading no. 1602' = 'KHÔNG NÊU Ở NƠI KHÁC TRONG MÃ 1602', tức phần CÒN LẠI của mã 1602 sau khi đã loại 1602.10/1602.31/1602.32/1602.39/1602.41/1602.42 — nghĩa là DƯƠNG (thuộc 1602.49). fact hiện tại '..._hon_phan_nhom_khac' ('khác phân nhóm khác') gợi ý loại trừ, đảo chiều. Sửa theo đúng mẫu nhà của 8519 ('phan_nhom_con_lai_cua_nhom_8519' cho 'n.e.c. in heading no 8519') và 9113 ('nec_trong_nhom_9113'). Câu trích giữ nguyên.",
+      "sua": {
+        "fact": "la_che_pham_tu_thit_lon_phan_nhom_con_lai_cua_nhom_1602"
+      }
+    },
+    {
+      "index": "tieuChi6[9]",
+      "hanhDong": "giu",
+      "lyDo": "hs6=160250 có thật trong cây (tên 'Từ động vật họ trâu bò'). Nguồn wco.160250 'of bovine animals, meat or meat offal, prepared or preserved (excluding livers and homogenised preparations)'. fact 'la_che_pham_tu_thit_trau_bo' = 'chế phẩm từ thịt trâu bò' — đúng. GIỮ."
+    },
+    {
+      "index": "tieuChi6[10]",
+      "hanhDong": "sua",
+      "lyDo": "fact 'la_che_pham_tu_thit_phu_pham_dang_thit_hoac_tiet_khong_phan_nhom_khac' SAI CHIỀU như tieuChi6[8]. Nguồn wco.160290: 'of meat, meat offal or the blood of any animal, n.e.c. in heading no. 1602' — 'n.e.c. in heading no. 1602' là phần CÒN LẠI của mã 1602 (DƯƠNG), không phải 'khác phân nhóm khác' (gợi ý loại trừ). Thêm nữa, nguồn tiếng Anh nói 'the blood of any animal' và tiếng Việt HS gọi là 'tiết' — vế 'tiết' trong fact là đúng, giữ nguyên. Sửa theo mẫu 8519/9113. Câu trích giữ nguyên.",
+      "sua": {
+        "fact": "la_che_pham_tu_thit_phu_pham_dang_thit_hoac_tiet_phan_nhom_con_lai_cua_nhom_1602"
+      }
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "hs 16021010 có trong biểu thuế. Nguồn tax.16021010 '16021010 - - Chứa thịt lợn, đóng bao bì kín khí để bán lẻ'. dieuKien nêu đúng tên dòng; tieuChi.fact 'chua_thit_lon_dong_goi_kin_khi_de_ban_le' bám sát tên dòng. GIỮ."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "sua",
+      "lyDo": "DÒNG 'LOẠI KHÁC' — bản nháp để nguyên tiêu đề WCO tiếng Anh dài 91 ký tự → runtime cắt 90, mất đuôi '...blood or insect' (mất chữ 's' của insects). Ngoài ra không đúng lệ phủ nhà: dòng Loại khác ở 0206/0207 được đặt tên TIẾNG VIỆT theo tiêu đề WCO kèm vế loại trừ. Sửa: viết lại ≤ 90 ký tự, giữ trọn nghĩa WCO 160210 (homogenised preparations of meat, meat offal, blood or insects) và nêu phân nhóm. Không đổi nguồn/trich.",
+      "sua": {
+        "dieuKien": "Loại khác 1602.10: chế phẩm đồng nhất từ thịt, phụ phẩm dạng thịt, tiết hoặc côn trùng"
+      }
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "hs 16022000 có trong biểu thuế. Nguồn tax.16022000 '16022000 - Từ gan động vật'. tieuChi.fact 'la_tu_gan_dong_vat' đúng. GIỮ."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "hs 16023110 có trong biểu thuế. Nguồn tax.16023110 '16023110 - - - Đóng bao bì kín khí để bán lẻ'. GIỮ."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "hs 16023191. Nguồn sen.16023191: 'THỊT ĐÃ ĐƯỢC LỌC HOẶC TÁCH KHỎI XƯƠNG BẰNG PHƯƠNG PHÁP CƠ HỌC / Xem chú giải SEN của phân nhóm 0207.14.91 và 0207.27.91.' dieuKien 'Từ thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học' khớp đúng mẫu đã duyệt ở 0207 (02071491/02072791 cùng câu này). Con trỏ 'Xem chú giải SEN 0207.14.91 và 0207.27.91' có trong trich nhưng không chép vào dieuKien — đây cũng là cách làm của 0207 đã duyệt nên không phải lỗi; GIỮ."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "sua",
+      "lyDo": "DÒNG 'LOẠI KHÁC' — bản nháp 130 ký tự, runtime cắt 90 mất trọn vế '(excluding livers and homogenised preparations)': đúng nghĩa vì dòng Loại khác của 1602.31 phải loại gan và chế phẩm đồng nhất. Sửa: viết lại ≤ 90 ký tự bằng tiếng Việt, giữ cả hai vế loại trừ theo chiều đúng (trừ gan VÀ trừ chế phẩm đồng nhất — không phải 'chỉ trừ'). Không đổi nguồn/trich.",
+      "sua": {
+        "dieuKien": "Loại khác 1602.31: từ thịt gà tây, trừ gan và chế phẩm đồng nhất"
+      }
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "giu",
+      "lyDo": "hs 16023210. Nguồn tax.16023210 '16023210 - - - Ca-ri gà, đóng bao bì kín khí để bán lẻ '. GIỮ."
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "sua",
+      "lyDo": "DÒNG 'LOẠI KHÁC' — bản nháp 114 ký tự, runtime cắt 90 mất đuôi '(i.e. of fowls of the species Gallus domesticus)' — mất đúng thông tin định danh loài (gà Gallus domesticus) là phần cần để tách khỏi gà tây/gia cầm khác. Sửa: viết lại ≤ 90 ký tự bằng tiếng Việt, giữ cả nhóm 01.05 và loài Gallus domesticus.",
+      "sua": {
+        "dieuKien": "Loại khác 1602.32: từ gia cầm nhóm 01.05, tức gà Gallus domesticus"
+      }
+    },
+    {
+      "index": "dong8[8]",
+      "hanhDong": "sua",
+      "lyDo": "DÒNG 'LOẠI KHÁC' — bản nháp 150 ký tự, runtime cắt 90 mất trọn vế '(excluding livers and homogenised preparations)' và cả phần định danh gia cầm. Sửa: viết lại ≤ 90 ký tự bằng tiếng Việt, giữ vế 'gia cầm trừ gà tây' (chiều excluding turkeys đúng) và hai vế loại trừ.",
+      "sua": {
+        "dieuKien": "Loại khác 1602.39: từ gia cầm trừ gà tây, trừ gan và chế phẩm đồng nhất"
+      }
+    },
+    {
+      "index": "dong8[9]",
+      "hanhDong": "giu",
+      "lyDo": "hs 16024110. Nguồn tax.16024110 '16024110 - - - Đóng bao bì kín khí để bán lẻ'. GIỮ."
+    },
+    {
+      "index": "dong8[10]",
+      "hanhDong": "sua",
+      "lyDo": "DÒNG 'LOẠI KHÁC' — bản nháp 121 ký tự, runtime cắt 90 mất '(excluding homogenised preparations)'. Sửa: viết lại ≤ 90 ký tự bằng tiếng Việt, giữ 'thịt lợn, thịt đùi' (hams) và vế loại trừ chế phẩm đồng nhất.",
+      "sua": {
+        "dieuKien": "Loại khác 1602.41: từ thịt lợn, thịt đùi, trừ chế phẩm đồng nhất"
+      }
+    },
+    {
+      "index": "dong8[11]",
+      "hanhDong": "giu",
+      "lyDo": "hs 16024210. Nguồn tax.16024210 '16024210 - - - Đóng bao bì kín khí để bán lẻ'. GIỮ."
+    },
+    {
+      "index": "dong8[12]",
+      "hanhDong": "sua",
+      "lyDo": "DÒNG 'LOẠI KHÁC' — bản nháp 126 ký tự, runtime cắt 90 mất '(excluding homogenised preparations)'. Sửa: viết lại ≤ 90 ký tự bằng tiếng Việt, giữ 'thịt lợn, thịt vai' (shoulders) và vế loại trừ chế phẩm đồng nhất.",
+      "sua": {
+        "dieuKien": "Loại khác 1602.42: từ thịt lợn, thịt vai, trừ chế phẩm đồng nhất"
+      }
+    },
+    {
+      "index": "dong8[13]",
+      "hanhDong": "giu",
+      "lyDo": "hs 16024911. Nguồn tax.16024911 '16024911 - - - - Đóng bao bì kín khí để bán lẻ'. GIỮ."
+    },
+    {
+      "index": "dong8[14]",
+      "hanhDong": "sua",
+      "lyDo": "DÒNG 'LOẠI KHÁC' — bản nháp 130 ký tự, runtime cắt 90 mất trọn vế 'n.e.c. in heading no. 1602' — mất đúng nghĩa 'phần còn lại của mã 1602' (tức dương: 1602.49 là phần còn lại sau các phân nhóm con khác của 1602). Sửa: viết lại ≤ 90 ký tự bằng tiếng Việt, giữ 'nằm ở phần còn lại' theo đúng chiều (KHÔNG dịch thành 'trừ').",
+      "sua": {
+        "dieuKien": "Loại khác 1602.49: từ thịt lợn, thịt hoặc phụ phẩm dạng thịt, phần còn lại"
+      }
+    },
+    {
+      "index": "dong8[15]",
+      "hanhDong": "giu",
+      "lyDo": "hs 16024991. Nguồn tax.16024991 '16024991 - - - - Đóng bao bì kín khí để bán lẻ'. GIỮ."
+    },
+    {
+      "index": "dong8[16]",
+      "hanhDong": "sua",
+      "lyDo": "DÒNG 'LOẠI KHÁC' — bản nháp 130 ký tự, runtime cắt 90 mất 'n.e.c. in heading no. 1602'. Sửa: viết lại ≤ 90 ký tự bằng tiếng Việt, giữ nghĩa 'phần còn lại' (dương).",
+      "sua": {
+        "dieuKien": "Loại khác 1602.49: từ thịt lợn, thịt hoặc phụ phẩm dạng thịt, phần còn lại"
+      }
+    },
+    {
+      "index": "dong8[17]",
+      "hanhDong": "giu",
+      "lyDo": "hs 16025010. Nguồn tax.16025010 '16025010 - - Đóng bao bì kín khí để bán lẻ'. GIỮ."
+    },
+    {
+      "index": "dong8[18]",
+      "hanhDong": "sua",
+      "lyDo": "DÒNG 'LOẠI KHÁC' — bản nháp 138 ký tự, runtime cắt 90 mất trọn vế '(excluding livers and homogenised preparations)'. Sửa: viết lại ≤ 90 ký tự bằng tiếng Việt, giữ 'thịt trâu bò' và hai vế loại trừ.",
+      "sua": {
+        "dieuKien": "Loại khác 1602.50: từ thịt trâu bò, trừ gan và chế phẩm đồng nhất"
+      }
+    },
+    {
+      "index": "dong8[19]",
+      "hanhDong": "giu",
+      "lyDo": "hs 16029010. Nguồn tax.16029010 '16029010 - - Ca-ri cừu, đóng bao bì kín khí để bán lẻ '. GIỮ."
+    },
+    {
+      "index": "dong8[20]",
+      "hanhDong": "giu",
+      "lyDo": "hs 16029020. Nguồn sen.16029020: 'CÁC CHẾ PHẨM TỪ TIẾT / Chế phẩm chủ yếu từ tiết thu được từ giết mổ các động vật nuôi. Tiết thu được chế biến hợp vệ sinh dùng cho người ăn ngay hoặc chuyển đổi thành món ăn từ tiết.' dieuKien 'Các chế phẩm từ tiết' = đúng tên dòng biểu thuế; tieuChi.fact 'la_cac_che_pham_tu_tiet' bám đúng. GIỮ."
+    },
+    {
+      "index": "dong8[21]",
+      "hanhDong": "sua",
+      "lyDo": "DÒNG 'LOẠI KHÁC' — bản nháp 104 ký tự, runtime cắt 90 mất đuôi 'n.e.c. in heading no. 1602' — mất nghĩa 'phần còn lại của mã 1602' (dương). Sửa: viết lại ≤ 90 ký tự bằng tiếng Việt, giữ 'tiết' (the blood of any animal) và nghĩa 'phần còn lại'.",
+      "sua": {
+        "dieuKien": "Loại khác 1602.90: từ thịt, phụ phẩm dạng thịt hoặc tiết, phần còn lại"
+      }
+    }
+  ]
+}

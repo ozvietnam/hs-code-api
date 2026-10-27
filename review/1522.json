@@ -1,0 +1,88 @@
+{
+  "nhom": "1522",
+  "nguoiSoat": "dev-soat-doc-lap-lo061-v2",
+  "luc": "2026-10-27T00:00:00Z",
+  "daKiem": 10,
+  "xoa": 0,
+  "sua": 3,
+  "ghiChu": "Đọc HẾT tmp/so-tay/nguon/1522.txt (khối nhom1522.nhom + ch15.chuong + phan15.phan + wco.152200 + tax.15220010/90) và đối chiếu 10 mục bản nháp. LỖI CHÍNH: đoạn lược '…' trong phamVi.trich/boPhan.trich nuốt mất câu THUẬT (không phải ngoại lệ) 'Cũng được phân loại trong Nhóm này cũng bao gồm chất nhờn thu được từ xử lý da thuộc dầu bởi bằng dung dịch kiềm và sự kết tủa hydroxy axit béo bằng axit sulphuric' — đây là thành viên thứ ba của phần A, không được ghi ở mục nào khác (đo độ phủ đoạn nguồn: câu này MISSING), nên phạm vi nhóm bị thu hẹp. Đã sửa phamVi (trich + text), boPhan (trich + quyTac + tomTat) và dong8[1].dieuKien (mất 'vegetable waxes' khi clip 90). GIỮ: dieuKienVao rỗng (Chú giải 4 Chương 15 chỉ nêu 5 mục, không phủ cả nhóm — đúng luật nhà); 4 loaiTru có đích danh + dấu hiệu loại trừ, chiều đúng; (b) Khô dầu 23.04–23.06 là DẢI nên không ghi loaiTru; 2 phanBiet đúng chiều Có/Không; tieuChi6 rỗng hợp lệ (không có nút 6 số 152200 — nhóm không chia phân nhóm, đã kiểm cây hs-tree); không xoá mục nào. Mọi trích sửa đều cắt từ nguồn bằng script (byte-exact, đã chạy check-trich-nguyen-van.mjs xanh) và giữ ≤300 ký tự để không rơi vào 'vùng im lặng' 301–600.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Lớp lỗi 9 (đoạn lược nuốt nội dung) + lớp lỗi 5 (text phải mang đủ nghĩa). Bản nháp trích 'Nhóm này bao gồm cả chất nhờn tự nhiên và chất nhờn nhân tạo…(B) Phế thải…' với dấu lược nuốt 5 đoạn giữa, trong đó có câu THUẬT 'Cũng được phân loại trong Nhóm này cũng bao gồm chất nhờn thu được từ xử lý da thuộc dầu bởi bằng dung dịch kiềm và sự kết tủa hydroxy axit béo bằng axit sulphuric.' — đây là thành viên thứ ba của phần A và KHÔNG được ghi ở mục nào khác (đo độ phủ đoạn nguồn: câu này MISSING trong toàn bộ bản nháp). Đã kéo vào trich, nối bằng '…' giữa các mảnh byte-exact. CHIẾN LƯỢC CẮT: giữ trich ở 293 ký tự (≤300 theo luật nhà; >300 là 'vùng im lặng' 301–600 mà máy không chặn) nên cắt đuôi câu 1 sau 'chất nhờn nhân tạo,' — vế 'là sản phẩm được dùng trong công nghiệp da để bôi (nhồi) da' bị lược khỏi trich nhưng ĐÃ giữ nguyên trong text (216 ký tự ≤220) mà mô hình đọc. Ngoại lệ 'Tuy nhiên, nhóm này không bao gồm…' nằm trong khoảng lược nhưng ĐÃ được ghi đủ ở loaiTru[0..2] nên không cần nhét vào trích phạm vi.",
+      "sua": {
+        "trich": "Nhóm này bao gồm cả chất nhờn tự nhiên và chất nhờn nhân tạo,…Cũng được phân loại trong Nhóm này cũng bao gồm chất nhờn thu được từ xử lý da thuộc dầu bởi bằng dung dịch kiềm và sự kết tủa hydroxy axit béo bằng axit sulphuric.…(B) Phế thải có từ xử lý chất béo hoặc sáp động vật hoặc thực vật.",
+        "text": "Chất nhờn tự nhiên và chất nhờn nhân tạo dùng trong công nghiệp da để bôi (nhồi) da; cả chất nhờn thu được từ xử lý da thuộc dầu bằng dung dịch kiềm; (B) phế thải có từ xử lý chất béo hoặc sáp động vật hoặc thực vật."
+      }
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "sua",
+      "lyDo": "Cùng lỗi lược nuốt câu thuật: trich của boPhan giống hệt phamVi nên cũng nuốt mất thành viên thứ ba của phần A. Ngoài ra quyTac (203 ký tự, không bị clip) và tomTat (114) chỉ liệt kê 'chất nhờn tự nhiên và chất nhờn nhân tạo' + tiêu đề (B) mà bỏ qua thành viên thứ ba; tomTat là thứ mô hình đọc (trần 160) nên cần nêu đủ cả ba thành viên của phần A. Đã sửa trich (kéo câu thuật vào, byte-exact, 293 ký tự ≤300), quyTac (311 ký tự, không có trần clip cho quyTac — chỉ tomTat mới bị clip 160) và tomTat (145 ký tự, không trần).",
+      "sua": {
+        "trich": "Nhóm này bao gồm cả chất nhờn tự nhiên và chất nhờn nhân tạo,…Cũng được phân loại trong Nhóm này cũng bao gồm chất nhờn thu được từ xử lý da thuộc dầu bởi bằng dung dịch kiềm và sự kết tủa hydroxy axit béo bằng axit sulphuric.…(B) Phế thải có từ xử lý chất béo hoặc sáp động vật hoặc thực vật.",
+        "quyTac": "Nhóm này gồm hai phần ngang hàng: (A) chất nhờn tự nhiên và chất nhờn nhân tạo dùng trong công nghiệp da để bôi (nhồi) da, cùng chất nhờn thu được từ xử lý da thuộc dầu bởi bằng dung dịch kiềm và sự kết tủa hydroxy axit béo bằng axit sulphuric; (B) phế thải có từ xử lý chất béo hoặc sáp động vật hoặc thực vật.",
+        "tomTat": "Hai phần: chất nhờn tự nhiên, chất nhờn nhân tạo và chất nhờn thu từ xử lý da thuộc dầu; phế thải xử lý chất béo hoặc sáp động vật hoặc thực vật."
+      }
+    },
+    {
+      "index": "dieuKienVao",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ rỗng — đúng luật nhà. Ứng viên duy nhất trong nguồn là Chú giải 4 Chương 15 ('Nguyên liệu sản xuất xà phòng, cặn dầu, hắc ín stearin, hắc ín glyxerin và phế liệu mỡ lông (wool grease) được phân loại vào nhóm 15.22') nhưng câu này CHỈ nêu 5 mục, không phủ cả nhóm (bỏ qua chất nhờn tự nhiên/nhân tạo ở phần A, đất sử dụng đã tẩy màu (6) và phế thải lọc sáp (7)). Đặt value=true ở đây sẽ khiến mô hình loại nhầm hàng thuộc 1522 nhưng không thuộc 5 mục nêu. Ngoài ra nguồn không có câu 'CHO PHÉP' nào cho nhóm này."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu nguồn 'Tuy nhiên, nhóm này không bao gồm, dầu cá chỉ oxy hoá hoặc polimer hóa đơn thuần (nhóm 15.18)…' có DẤU HIỆU LOẠI TRỪ rõ ràng và nêu ĐÍCH DANH nhóm 15.18 trong chính câu trích; dieuKien 45 ký tự ≤ 55 nên không bị clip. Giữ định ngữ 'đơn thuần' là đúng vì nó là điều kiện loại trừ (dầu cá chỉ oxy hoá/polimer hoá mà không trộn thêm gì)."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. 'dầu đã sulphonate hóa (nhóm 34.02)' — đích danh nhóm 34.02, có dấu hiệu loại trừ từ câu 'nhóm này không bao gồm', dieuKien 26 ký tự ≤ 55. Không có dấu hiệu 'thường thuộc'/'tùy trường hợp' nên không cần bỏ."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. 'những chế phẩm để bôi (nhồi) da (nhóm 34.03)' — đích danh nhóm 34.03 trong câu, thuộc cùng câu loại trừ; dieuKien 27 ký tự ≤ 55. Ghi chú: đây là ngoại lệ so với phần đầu nhóm ('chất nhờn… dùng trong công nghiệp da để bôi (nhồi) da') — nguồn phân biệt chất nhờn (1522) với chế phẩm để bôi (nhồi) da (3403), và bản nháp đã giữ đúng sự phân biệt này."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ (có nghi ngờ nhỏ về độ khớp từ, xem dưới). '(a) Tóp mỡ, phế thải màng có từ nấu chảy mỡ lợn hoặc mỡ động vật khác nóng chảy (nhóm 23.01).' — đích danh nhóm 23.01 trong câu, nằm dưới mục 'Nhóm này không bao gồm:' nên có dấu hiệu loại trừ hợp lệ; dieuKien 42 ký tự ≤ 55 không bị clip. NGHI NGỜ: bản nháp rút gọn 'Tóp mỡ, phế thải màng có từ nấu chảy mỡ lợn hoặc mỡ động vật khác nóng chảy' thành 'Tóp mỡ từ nấu chảy mỡ lợn hoặc mỡ động vật' — bỏ 'phế thải màng' và bỏ từ 'khác'; tuy nhiên nghĩa loại trừ (tóp mỡ từ nấu chảy mỡ lợn → 23.01) không bị đảo chiều, và câu nguồn lại dịch máy ('phế thải màng có từ nấu chảy mỡ lợn') nên câu chữ nguyên văn rối. Không đề xuất sửa vì mọi cách rút gọn còn lại đều > 55 ký tự và bị clip mất đuôi; giữ nguyên là lựa chọn an toàn hơn."
+    },
+    {
+      "index": "loaiTru",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ danh sách 4 mục, KHÔNG thêm mục thứ 5. Câu '(b) Khô dầu, bã ép dư thừa và phế thải khác (trừ cặn dầu) chiết xuất từ dầu thực vật (các nhóm từ nhóm 23.04 đến 23.06)' bị bỏ sót là ĐÚNG theo luật nhà: đích là DẢI nhóm 23.04–23.06, không phải đích danh một nhóm; loaiTru.sangNhom chỉ nhận mã cụ thể (4 số hoặc 8 số), ghi dải sẽ thành mã bịa. Ghi chú thêm: vế '(trừ cặn dầu)' trong câu là ngoại lệ NGƯỢC (cặn dầu là mục (1) THUỘC nhóm) — không phải loại trừ đi, nên không dựng được thành loaiTru; cặn dầu đã được phản ánh ở phần (1) của nguồn."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu 'Tuy nhiên, nhóm này không bao gồm, dầu cá chỉ oxy hoá hoặc polimer hóa đơn thuần (nhóm 15.18)…' — vế ĐẦU (dầu cá chỉ oxy hoá/polimer hoá) là nhánh CÓ → neuCo=1518, nhánh BÙ là chất nhờn thuộc nhóm → neuKhong=1522; chiều đúng theo luật nhà. hoi không nhắc mã phân nhóm 6 số, không nhắc 'WCO'; giữ cả định ngữ 'đơn thuần' trong hoi nên không mất điều kiện. neuKhong có căn cứ: câu loại trừ chỉ loại trừ dầu cá CHỈ oxy hoá/polimer hoá, còn lại thuộc nhóm."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỪ. '(a) Tóp mỡ, phế thải màng có từ nấu chảy mỡ lợn hoặc mỡ động vật khác nóng chảy (nhóm 23.01).' — vế ĐẦU (tóp mỡ) là nhánh CÓ → neuCo=2301, nhánh BÙ (không phải topping mỡ) → neuKhong=1522; chiều đúng. Mã 2301 CÓ trong câu trích; hoi không nhắc mã phân nhóm 6 số. Đề xuất thêm phanBiet cho 34.02 và 34.03 không bắt buộc (mỗi lượt chỉ lấy 4 mục) — không tính là lỗi."
+    },
+    {
+      "index": "tieuChi6",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ rỗng — hợp lệ. Đã kiểm cây hs-tree: nhóm 1522 KHÔNG chia phân nhóm (mã 6 số 152200 = 1522+'00' → không tạo nút 6 số riêng, lá 15220010/15220090 trỏ thẳng về nhóm 4 số). Vì vậy không có nút 6 số để điền tieuChi6; check-cay cũng không bắt. Trong cùng lô, 1521 có tieuChi6 vì 152110/152190 LÀ phân nhóm thật, còn 1518/1520/1520 đều để rỗng — nhất quán."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Dòng '15220010 - Chất nhờn' lấy từ tax.15220010 đúng nguồn (byte-exact 22 ký tự); tieuChi.fact 'la_chat_nhon' bám đúng TỪ nguồn ('Chất nhờn'), op '=' value=true là đúng vì đây là tiêu chí phân loại dòng, không phải ngưỡng số. Ghi chú: data/tax.json gán cùng chuỗi tiếng Anh 'Degras; residues…' cho cả hai dòng 15220010 và 15220090, nên dùng tiếng Anh cho dòng này sẽ KHÔNG phân biệt được với 'Loại khác' — dùng fact tiếng Việt theo tên dòng là đúng."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA theo yêu cầu mục 8. Bản nháp để nguyên tiếng Anh 'Loại khác: Degras; residues resulting from the treatment of fatty substances or animal or vegetable waxes' (105 ký tự) — vượt trần clip runtime 90 nên mô hình chỉ đọc '…animal or …', MẤT 'vegetable waxes' (sáp thực vật), tức là mất đúng danh từ cốt lõi phân biệt tiêu đề WCO 1522 với 1521 (sáp). Viết lại ≤90 ký tự, dịch đúng nghĩa tiêu đề WCO, không bịa thêm: 'Loại khác: Degras; phế thải thu được từ xử lý chất béo hoặc sáp động vật hoặc thực vật' (86 ký tự, clip không cắt, giữ đủ 'chất béo' + 'sáp động vật' + 'sáp thực vật'). KHÔNG sửa `trich` (vẫn nguyên văn WCO, byte-exact 103 ký tự, dưới trần 300) và không đụng tieuChi (null là đúng cho dòng 'Loại khác').",
+      "sua": {
+        "dieuKien": "Loại khác: Degras; phế thải thu được từ xử lý chất béo hoặc sáp động vật hoặc thực vật"
+      }
+    }
+  ]
+}

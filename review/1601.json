@@ -1,0 +1,78 @@
+{
+  "nhom": "1601",
+  "nguoiSoat": "dev-soat-doc-lap-lo061-v2",
+  "luc": "2026-10-27T15:11:12.780Z",
+  "daKiem": 7,
+  "xoa": 0,
+  "sua": 5,
+  "ghiChu": "Đọc HẾT nguồn 1601.txt + từng mục bản nháp; máy đã xanh nên săn lớp lỗi NGỮ NGHĨA. 6 sửa, 0 xoá: (1) phamVi.trich mất câu \"Tuy nhiên… có thể không có vỏ ngoài\" ⇒ mất ngoại lệ — sửa trích + text. (2) dieuKienVao[0].fact value=true khẳng định hàng PHẢI nhồi vào vỏ ⇒ MÂU THUẪN chính câu \"Tuy nhiên\", loại oan hàng ép không vỏ; đổi thành danh tính nhóm. (3) Thiếu dieuKienVao cho mục (b) ⇒ thêm value=false. (4) dong8[1].dieuKien 145 ký tự > trần clip 90, runtime cắt mất đuôi; tiêu đề WCO 160100 trùng tiêu đề 4 số 1601 nên không phân biệt dòng 16010010 ⇒ viết lại 86 ký tự. (5) dong8[1].trich đúng nguồn, giữ. (6) dieuKienVao[1].fact bỏ \"(tự nhiên hoặc nhân tạo)\" ⇒ bổ sung. GIỮ: loaiTru[0], phanBiet[0], dong8[0], tieuChi6 rỗng; KHÔNG tạo loaiTru cho (a)/(c)/(b).",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT — MẤT NGOẠI LỆ (lớp lỗi #10). Câu trích cũ dừng ở \"...(tự nhiên hoặc nhân tạo).\" nhưng câu NGAY SAU trong CÙNG đoạn nguồn [nhom1601.nhom] là: \"Tuy nhiên, một số sản phẩm này có thể không có vỏ ngoài, chỉ được ép lại theo hình đặc trưng của xúc xích như hình trụ hoặc hình tương tự, có mặt cắt là hình tròn, bầu dục hoặc chữ nhật (có các góc hơi tròn).\" ⇒ hàng KHÔNG có vỏ ngoài (chỉ ép lại hình xúc xích) VẪN thuộc nhóm 16.01. Bản nháp mất vế này ở CẢ trích lẫn text ⇒ mô hình tưởng bắt buộc có vỏ. Sửa: trích mới 285 ký tự (≤300) ghép 3 mảnh nguyên văn bằng dấu \"…\"; text mới 218 ký tự (≤220 trần clip runtime) nêu rõ \"có thể KHÔNG có vỏ ngoài nếu ép lại theo hình đặc trưng xúc xích\" — text mới là thứ MÔ HÌNH ĐỌC nên phải mang nghĩa này. Câu P1 (\"vẫn được phân loại ... cho dù ... cắt thành lát hoặc đóng bao bì kín khí\") là câu CHO PHÉP nên không đưa vào.\n\n[NGƯỜI DUYỆT] Bản đề xuất của người soát bỏ nhánh \"hoặc tiết\" (tiết = máu) trong khi nguồn ghi \"đã được băm hoặc xay nhỏ, hoặc tiết\" ⇒ phạm vi nhóm bị thu hẹp, mất nhóm con dồi tiết (16029020). Thêm lại nhánh \"hoặc tiết\"; \"dạ\" (mơ hồ) → \"dạ dày\"; \"hình đặc trưng của xúc xích\" → \"dạng xúc xích\" để vừa trần clip 220 (219 ký tự). Câu trích (285 ký tự) giữ nguyên.",
+      "sua": {
+        "text": "Xúc xích và sản phẩm tương tự: thịt/phụ phẩm dạng thịt ăn được sau giết mổ hoặc côn trùng, băm/xay nhỏ hoặc tiết, nhồi vào lòng, dạ dày, bong bóng, da hoặc vỏ bọc; có thể KHÔNG có vỏ ngoài nếu ép lại theo dạng xúc xích.",
+        "trich": "Nhóm này bao gồm xúc xích và các sản phẩm tương tự … đã được băm hoặc xay nhỏ, hoặc tiết, được nhồi vào lòng, dạ dày, bong bóng, da hoặc vỏ bọc tương tự (tự nhiên hoặc nhân tạo) … Tuy nhiên, một số sản phẩm này có thể không có vỏ ngoài, chỉ được ép lại theo hình đặc trưng của xúc xích"
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT — fact khẳng định ĐẢO CHIỀU. fact cũ \"da_bam_hoac_xay_nho_hoac_tiet_duoc_nhoi_vao_long_da_da_bong_bong_da_hoac_vo_boc\" với value=true đọc ra là BẮT BUỘC \"đã băm/xay nhỏ hoặc tiết, được nhồi vào lòng, dạ, bong bóng, da hoặc vỏ bọc\". Nhưng chính nguồn nói: \"Tuy nhiên, một số sản phẩm này có thể KHÔNG có vỏ ngoài, chỉ được ép lại theo hình đặc trưng của xúc xích\" ⇒ nhồi vào vỏ KHÔNG phải điều kiện bắt buộc; đặt value=true sẽ loại oan hàng ép không vỏ (cùng lớp lỗi \"đảo chiều\" đã gặp ở lô 060). Đổi fact thành DANH TÍNH NHÓM theo khuôn nhà (0203 \"la_thit_lon\", 0301 \"la_ca_song\", 1101 \"la_bot_mi_hoac_bot_meslin\"): \"la_xuc_xich_va_san_pham_tuong_tu\" — luôn đúng cho cả nhóm, không đảo chiều, không bỏ nhánh \"hoặc\" nào. Không thêm \"đã băm hoặc xay nhỏ\" làm điều kiện riêng vì nguồn viết \"đã được băm hoặc xay nhỏ, hoặc tiết\" (vế \"hoặc tiết\" không bắt buộc băm/xay) ⇒ không phủ hết nhóm. trích giữ nguyên câu định nghĩa (290 ký tự, byte-exact trong nguồn).",
+      "sua": {
+        "fact": "la_xuc_xich_va_san_pham_tuong_tu"
+      }
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT (nhỏ) — fact bỏ vế giới hạn của nguồn. Nguồn mục (a): \"Thịt được nhồi trong bong bóng, lòng hoặc có vỏ ngoài tương tự (TỰ NHIÊN HOẶC NHÂN TẠO), nhưng không xay hoặc không băm trước...\" — fact cũ ghi \"…hoac_vo_ngoai_nhung_khong_xay…\" làm mất định ngữ \"(tự nhiên hoặc nhân tạo)\" ⇒ nghĩa rộng hơn nguồn. Bổ sung vế bị bỏ. Chiều value=false là ĐÚNG (mục (a) nằm dưới \"Tuy nhiên, nhóm này không bao gồm:\") và trích giữ nguyên (byte-exact, 212 ký tự).",
+      "sua": {
+        "fact": "la_thit_nhoi_trong_bong_bong_long_hoac_vo_ngoai_tuong_tu_nhung_khong_xay_hoac_khong_bam_truoc"
+      }
+    },
+    {
+      "index": "dieuKienVao[2]",
+      "hanhDong": "chen",
+      "lyDo": "THIẾU MỤC (thêm mới) — nguồn liệt kê rõ một loại trừ nữa mà bản nháp bỏ sót. Sau \"Tuy nhiên, nhóm này không bao gồm:\" có mục \"(b) Thịt sống, băm hoặc xay nhưng không chứa các thành phần khác, mặc dù có vỏ bao ngoài (Chương 2).\" ⇒ hàng thịt sống/băm/xay KHÔNG có thành phần khác thì không thuộc 16.01 (dù có vỏ bọc ngoài). Thêm mục value=false với trích byte-exact 100 ký tự. KHÔNG tạo loaiTru cho mục (b) vì đích nguồn ghi là \"Chương 2\" — Chương, không phải nhóm 4 số (luật loại trừ đích danh).\n\n[NGƯỜI DUYỆT] Đổi `hanhDong` từ \"sua\" sang \"chen\": mục này CHƯA có trong bản nháp (mục nguồn có, bản nháp thiếu) — hồ sơ soát không phân biệt hai việc này.",
+      "sua": {
+        "fact": "la_thit_song_bam_hoac_xay_nhung_khong_chua_cac_thanh_phan_khac",
+        "op": "=",
+        "value": false,
+        "donVi": null,
+        "ngoaiTru": [],
+        "nguon": "nhom1601.nhom",
+        "trich": "(b) Thịt sống, băm hoặc xay nhưng không chứa các thành phần khác, mặc dù có vỏ bao ngoài (Chương 2)."
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — đúng cả 3 điều kiện: câu nguồn có DẤU HIỆU LOẠI TRỪ (\"Tuy nhiên, nhóm này không bao gồm: … (d)\"), nêu ĐÍCH DANH nhóm đích trong ngoặc \"(nhóm 16.02)\", và KHÔNG có dấu hiệu \"thường\"/\"tùy trường hợp\" (không dính HEDGE_LOAI_TRU). dieuKien \"Thịt gia cầm chín đã rút xương\" (30 ký tự ≤ trần clip 55) giữ đủ danh từ nguồn; vế \"như thịt gà tây cuốn\" chỉ là VÍ DỤ nên không chép (không thêm chữ ngoài trích). Không thêm loại trừ cho mục (a) \"thường thuộc nhóm 02.10 hoặc 16.02\" (có \"thường\" ⇒ không phải đích danh) và cho mục (c) (câu CHO PHÉP \"trừ khi … có thể được phân loại trong nhóm này\") — thiếu 2 mục loại trừ này là ĐÚNG, không phải thiếu sót."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — chiều đúng: hoi dạng \"A hay là B\", vế ĐẦU (\"thịt gia cầm chín đã rút xương\") → neuCo=1602, vế sau → neuKhong=1601 (chính nhóm) ⇒ đúng quy ước \"neuCo = vế ĐẦU\" của nhà. Nhánh \"không\" là phần BÙ của nhánh \"có\" và có căn cứ ngay trong trích (mục (d) của danh sách loại trừ). hoi không nhắc mã phân nhóm lẫn chữ \"WCO\" (để không bị loại bởi MA_PHAN_NHOM_TRONG_HOI). Mã 1602 có nguyên văn trong trích (\"nhóm 16.02\")."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — không có tieuChi6 trong bản nháp. Nhóm 16.01 chỉ có MỘT phân nhóm 6 số (1601.00) và mọi tiêu chí cấp phân nhóm đã nằm ở phamVi/dieuKienVao/dong8; nguồn cũng không có câu chú giải nào riêng cho phân nhóm. Để mảng rỗng là đúng."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — dòng 16010010 \"Đóng bao bì kín khí để bán lẻ\": tên dòng chép nguyên văn từ [tax.16010010] (byte-exact), tieuChi.fact \"dong_goi_kin_khi_de_ban_le\" bám đúng tên dòng, op/value đúng (boolean đặc tính), không thêm chữ ngoài trích. Đủ mọi dòng tax.* của nhóm (1601 có đúng 2 dòng 8 số: 16010010 và 16010090)."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT — TRÀN TRẦN CLIP runtime (145 ký tự > trần clip 90 ở lib/so-tay-gates.js:139) ⇒ runtime cắt thành \"Loại khác: Meat preparations; sausages and similar products, of meat, meat offal, blood or…\" và MẤT vế đuôi \"insects, and food preparations based on these products\". Ngoài lỗi tràn, bản nháp chép NGUYÊN tiêu đề WCO 6 số 160100 (\"Meat preparations; sausages and similar products, …\") — mà tiêu đề này gần như TRÙNG tiêu đề 4 số 1601 (\"Sausages and similar products, of meat, meat offal, blood or insects; food preparations based on these products\") ⇒ điều kiện dòng \"Loại khác\" trùng với PHẠM VI CẢ phân nhóm, không phân biệt được với dòng 16010010. Nhóm 16.01 có đúng 2 dòng 8 số, nên \"Loại khác\" = phần còn lại của phân nhóm sau khi trừ dòng đóng bao bì kín khí. Sửa thành \"Loại khác: phần còn lại của phân nhóm 16.01 (không phải đóng bao bì kín khí để bán lẻ)\" — 86 ký tự ≤ 90 (KHÔNG bị clip), giữ đúng nghĩa mà không bịa thêm (khối \"Loại khác\" do máy tự gắn theo biểu thuê; tên phân nhóm lấy từ [wco.160100]). trich giữ nguyên [wco.160100] (byte-exact) — nguồn của tiêu đề cấp phân nhóm; tieuChi null là đúng (dòng Loại khác không có tiêu chí phân biệt riêng).",
+      "sua": {
+        "dieuKien": "Loại khác: phần còn lại của phân nhóm 16.01 (không phải đóng bao bì kín khí để bán lẻ)"
+      }
+    }
+  ]
+}

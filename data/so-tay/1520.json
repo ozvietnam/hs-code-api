@@ -1,0 +1,150 @@
+{
+ "nhom": "1520",
+ "phamVi": {
+  "text": "Glycerin thô có sự tinh khiết nhỏ hơn 95% (tính so với trọng lượng sản phẩm khô); nước glycerin và dung dịch kiềm glycerin, sản phẩm phụ của quá trình chế biến axit béo và sản xuất xà phòng.",
+  "nguon": "nhom1520.nhom",
+  "trich": "Glycerin thô là sản phẩm có sự tinh khiết nhỏ hơn 95% (tính so với trọng lượng sản phẩm khô)…Nhóm này cũng bao gồm nước glycerin, sản phẩm phụ của quá trình chế biến axit béo, cũng như và dung dịch kiềm glycerin, sản phẩm phụ của quá trình sản xuất xà phòng.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "do_tinh_khiet_glyxerin_tho",
+   "op": "<",
+   "value": 95,
+   "donVi": "%",
+   "ngoaiTru": [],
+   "nguon": "nhom1520.nhom",
+   "trich": "Glycerin thô là sản phẩm có sự tinh khiết nhỏ hơn 95% (tính so với trọng lượng sản phẩm khô)",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "la_glyxerin_thuan_khiet_95_tro_len",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom1520.nhom",
+   "trich": "Nhóm này không bao gồm:…(a) Glycerin thuần khiết 95% trở lên (tính so với trọng lượng sản phẩm khô) (nhóm 29.05).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Glycerin thuần khiết 95% trở lên",
+   "sangNhom": "2905",
+   "nguon": "nhom1520.nhom",
+   "trich": "(a) Glycerin thuần khiết 95% trở lên (tính so với trọng lượng sản phẩm khô) (nhóm 29.05).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Glycerin đóng gói dược phẩm hoặc thêm chất dược phẩm",
+   "sangNhom": "3003|3004",
+   "nguon": "nhom1520.nhom",
+   "trich": "(b) Glycerin dưới dạng đóng gói dược phẩm hoặc có thêm các chất dược phẩm (nhóm 30.03 hoặc 30.04).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là glycerin thuần khiết 95% trở lên hay là glycerin thô?",
+   "neuCo": "2905",
+   "neuKhong": "1520",
+   "nguon": "nhom1520.nhom",
+   "trich": "(a) Glycerin thuần khiết 95% trở lên (tính so với trọng lượng sản phẩm khô) (nhóm 29.05).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hoi": "Hàng là glycerin đóng gói dược phẩm hoặc có thêm chất dược phẩm hay là glycerin thô?",
+   "neuCo": "3003|3004",
+   "neuKhong": "1520",
+   "nguon": "nhom1520.nhom",
+   "trich": "(b) Glycerin dưới dạng đóng gói dược phẩm hoặc có thêm các chất dược phẩm (nhóm 30.03 hoặc 30.04).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "15200010",
+   "dieuKien": "Glyxerin thô",
+   "tieuChi": {
+    "fact": "la_glyxerin_tho",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.15200010",
+   "trich": "15200010 - Glyxerin thô",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "15200090",
+   "dieuKien": "Loại khác: Glycerol, crude; glycerol waters and glycerol lyes",
+   "tieuChi": null,
+   "nguon": "wco.152000",
+   "trich": "152000 Glycerol, crude; glycerol waters and glycerol lyes",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "1520",
+    "truAnhEm": [
+     "15200010"
+    ],
+    "toTienCoTen": "1520",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "1520",
+    "cap": 4,
+    "cha": "15",
+    "tenVi": "Glycerin, thô; nước glycerin và dung dịch kiềm glycerin.",
+    "tenEn": "Glycerol, crude; glycerol waters and glycerol lyes",
+    "suyRa": false
+   },
+   {
+    "id": "15200010",
+    "cap": 8,
+    "cha": "1520",
+    "tenVi": "Glyxerin thô",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "15200090",
+    "cap": 8,
+    "cha": "1520",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom1520.nhom",
+  "tax.15200010",
+  "wco.152000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-27T15:22:19.391Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
