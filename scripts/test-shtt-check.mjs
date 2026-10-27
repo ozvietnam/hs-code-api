@@ -125,9 +125,12 @@ assert('laConSong: HET_HAN/TU_CHOI là chết', !laConSong(rec('A', 'HET_HAN')) 
   assert('thiếu brand → LoiDauVao', threw);
 }
 {
-  let threw = false;
-  try { chamRuiRo({ brand: 'SMC', hs: '8481', data: dataThap([]) }); } catch (e) { threw = e instanceof LoiDauVao && e.dauVaoSai; }
-  assert('hs không đủ 8 số → LoiDauVao', threw);
+  // maHs tuỳ chọn (CEO chốt 06/10, khớp hợp đồng Cổng OZ): thiếu/thiếu-số → tra mọi nhóm + cảnh báo mềm.
+  const r1 = chamRuiRo({ brand: 'SMC', data: dataThap([rec('SMC', 'DANG_KY')]) });
+  assert('thiếu hs → vẫn chấm được (RED như có hs)', r1.level === 'RED', r1.level);
+  assert('thiếu hs → cảnh báo mềm phạm vi rộng', r1.reasons.some((x) => /mọi nhóm hàng/.test(x)), r1.reasons);
+  const r2 = chamRuiRo({ brand: 'SMC', hs: '8481', data: dataThap([]) });
+  assert('hs không đủ 8 số → bỏ qua, tra mọi nhóm (không LoiDauVao)', r2.reasons.some((x) => /mọi nhóm hàng/.test(x)), r2.reasons);
 }
 
 // ---- 12. importer chỉ ghi chú, không đổi mức ----
@@ -164,9 +167,9 @@ assert('laConSong: HET_HAN/TU_CHOI là chết', !laConSong(rec('A', 'HET_HAN')) 
     const okj = await ok200.json();
     assert('có key + đầu vào đúng → 200 RED', ok200.status === 200 && okj.level === 'RED', { s: ok200.status, lvl: okj.level });
 
-    const bad400 = await fetch(`${base}/v1/check?brand=SMC&hs=8481`, { headers: { 'x-api-key': 'secret-test' } });
-    const badj = await bad400.json();
-    assert('hs không đủ 8 số → 400 {error}', bad400.status === 400 && typeof badj.error === 'string', { s: bad400.status, j: badj });
+    const badHs = await fetch(`${base}/v1/check?brand=SMC&hs=8481`, { headers: { 'x-api-key': 'secret-test' } });
+    const badj = await badHs.json();
+    assert('hs thiếu số → bỏ qua (tuỳ chọn), 200 + cảnh báo mềm', badHs.status === 200 && /mọi nhóm hàng/.test((badj.reasons || []).join(' ')), { s: badHs.status, j: badj });
 
     const noBrand = await fetch(`${base}/v1/check?hs=84813000`, { headers: { 'x-api-key': 'secret-test' } });
     assert('thiếu brand → 400', noBrand.status === 400, noBrand.status);
