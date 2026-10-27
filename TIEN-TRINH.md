@@ -3,6 +3,87 @@
 <!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
 ---
 
+# SOÁT ĐỘC LẬP lô 058 — VÒNG 2 (phiên `dev-soat-doc-lap-lo058b`, 27/10/2026) — gộp với vòng 1
+
+- **Nhánh:** `so-tay/lo-058` (worktree `hs-code-api-wt-st-lo58`) · **PR #474** — **KHÔNG merge**.
+- **Nhóm:** `1404, 1501, 1502, 1503, 1504, 1505` (Chương 14 + Chương 15).
+- **Người soát KHÁC người soạn:** `dev-soat-doc-lap-lo058b` ≠ `dev-zcode-mm` (đúng mục 4 giao việc).
+- **Bối cảnh:** khi phiên này đang soát, phiên soát độc lập **song song** `dev-soat-doc-lap-lo058`
+  đã commit `4b7e956` (13 mục sửa) và gộp `origin/main` (`5b81d84`). Hai vòng soát **bắt được lớp lỗi
+  khác nhau và bổ sung cho nhau** ⇒ em **GỘP** hai hồ sơ: lấy `review/<nhom>.json` của vòng 1 làm nền,
+  áp đè các mục em đã soi riêng (script `tmp/so-tay/soat-058-gop.mjs`, kéo `sua` của vòng 1 thẳng từ
+  git — không gõ tay — rồi kiểm lại byte-exact + trần clip). Hồ sơ gộp nằm ở `review/<nhom>.json`,
+  có trường `gopVoi` ghi rõ nguồn gốc. **Hai vòng đều được giữ nguyên trong lịch sử.**
+
+## Kết quả
+
+| | Vòng 1 (`dev-soat-doc-lap-lo058`) | Vòng 2 (phiên này) | Gộp |
+|---|---|---|---|
+| Mục đã soi | 110/110 | 110/110 | **110/110** |
+| Mục sửa | 13 | **24** | **31** |
+| Trường sửa | 15 | **27** | **42** |
+| Xoá | 0 | 0 | **0** |
+
+- **Vòng này sửa 24 mục / 27 trường** trên 6 nhóm: 1404 = 12 mục · 1501 = 2 · 1502 = 2 · 1503 = 3 ·
+  1504 = 4 · 1505 = 1. `nguonLoai` của **79 mục đã soát** (4 khối `phamVi`/`dieuKienVao`/`loaiTru`/
+  `phanBiet`) → **`NGUOI_DUYET`**; `tieuChi6`/`dong8` giữ `AI_DA_KIEM` (ngoài phạm vi soát).
+- **Ba lớp kiểm sau khi gộp:** `check-so-tay --raw` **110/110** · `check-trich-nguyen-van` **110/110
+  byte-exact** · **gác soát từ** — **0 lỗi thật** (24 cảnh báo còn lại đều là *chữ nhận diện nhóm*:
+  từ có trong nguồn nhóm nhưng không có trong câu trích của chính mục đó — khuôn mẫu đã được duyệt).
+  `npm run so-tay:check` **494 nhóm / 13.715 mục / 0 lỗi**; `npm test` **ALL TESTS PASSED**.
+
+## Lớp lỗi vòng 2 bắt được (máy đều KHÔNG bắt) — chủ yếu là **CLIP runtime cắt mất nghĩa**
+
+`lib/so-tay-gates.js` khi dựng prompt cho vòng 2 cắt: `phamVi.text` 220 · `loaiTru.dieuKien` **55** ·
+`phanBiet.hoi` **110** · `dong8.dieuKien` 90. Câu trích dài vẫn **nguyên văn** nên `check-so-tay` xanh —
+nhưng phần bị cắt thì mô hình **không thấy**.
+
+1. **`loaiTru` mất TOÀN BỘ vế phân biệt ⇒ loại trừ đọc thành bao gồm (1404 ×3, 1502 ×1, 1504 ×1)**
+   - `1404 loaiTru[5][6][7]`: `dieuKien` 120/118/130 ký tự ⇒ clip(55) dừng ở *"Nguyên liệu thực vật
+     được sử dụng để nhồi nhưng đã được…"* ⇒ **mất hẳn "sợi gỗ" / "sợi lie" / "xơ dừa"**, và cả 3 mục
+     in ra **ba câu GIỐNG HỆT NHAU** với ba đích 44.05 / 45.01 / 53.05. → SỬA: đặt vật bị loại trừ lên đầu.
+   - `1502 loaiTru[2]`: clip cắt *"…của động vật không…"* ⇒ **ĐẢO CHIỀU** — đọc thành "mỡ xương và mỡ từ
+     phế liệu" tức HÀNG THUỘC NHÓM, ngược hẳn nguồn (chính nhóm này CÓ bao gồm mỡ xương). → SỬA: rút
+     để clip(55) vẫn giữ vế **"không nêu"**.
+   - `1504 loaiTru[0]`: clip cắt mất *"đã hydro hoá, este hoá liên hợp…"* (nằm ở ký tự 84-96, **ngoài
+     clip**) ⇒ runtime in *"Mỡ và dầu có nguồn gốc từ cá… → 15.16"* tức **mọi dầu cá đều sang 15.16** —
+     sai, và trái với chính `phamVi` của nhóm. (Vòng 1 ghi nhận nhưng cho là "phần đầu vẫn đủ" — em đo lại
+     và **sai**.) → SỬA: rút xuống 53 ký tự, giữ trọn bốn phép hoá chế.
+2. **`phanBiet` hỏi "A hoặc B" ⇒ mệnh đề LUÔN ĐÚNG ⇒ mọi dầu cá bị đẩy sang 1504.30** (`1504[2]`)
+   — vế "hoặc" làm `Hàng có nguồn gốc từ … hoặc từ …?` luôn đúng với mọi hàng trong nhóm. → SỬA: hai
+   vế đối lập + **bổ sung `15041020|15041090`** vào nhánh "không" (bản nháp chỉ có 1504.20 ⇒ dầu gan cá
+   bị dẫn nhầm sang 1504.20).
+3. **Câu trích 300–408 ký tự — vượt trần lược đồ (máy chỉ chặn >600)** (`1404` ×8 mục) → cắt ở **ranh
+   giới câu/mục** để mỗi mục vẫn nêu đích danh của mình (14.01 · 53.03 · 53.05 · 13.02 · 12.12 ·
+   21.02) mà không lược mất ngoại lệ "trừ".
+4. **`phamVi.text` vượt clip 220** ở cả 6 nhóm → rút về ≤220 (1404 ngoại lệ 325: nhóm có **6 phần**,
+   tiêu đề 6 phần không vừa 220 mà không bỏ một phần — ưu tiên giữ đủ 6 phần theo luật lô 030; nhờ vậy
+   clip(220) lọt trọn phần (C) và (D)).
+5. **Câu hỏi mất dấu hỏi / mất trọn nhánh "không" khi bị clip** (`1504[0]`, `1505[1]`, `1404[9]`) →
+   rút cho vừa trần.
+
+## Bốn mục em ĐỒNG Ý với vòng 1 (lấy nguyên `sua` của họ, `lyDo` ghi lại lập luận của em)
+
+- `1505` `phamVi` / `dieuKienVao[0].fact` / 2 `phanBiet`: mượn **TÊN NHÓM WCO** vào mục khai nguồn
+  `nhom1505.nhom` ⇒ "text khẳng định điều câu trích không nói".
+- `1503` `loaiTru[1]` + `phanBiet[1]`: mất **định ngữ giới hạn "đôi khi"** ⇒ biến mô tả thực hành
+  thành điều kiện tuyệt đối.
+- `1501` `dieuKienVao[0].fact`: "va" biến thành phép VÀ ⇒ mỡ gia cầm chưa nấu chảy (đích 02.09) lọt.
+- `1504` `dieuKienVao[1].trich`: cắt trích đứt câu ("…nhưng bị loại trừ…" mà vế trước đã mất).
+
+## Điểm em CHƯA sửa (không thuộc phạm vi soát, ghi ra đây để người duyệt biết)
+
+- **`tieuChi6` ở 1501/1502/1504**: tên WCO có vế loại trừ ("other than that of heading 0209 and 1503",
+  "but not chemically modified") mà `fact` chỉ giữ vế dương. Theo tiền lệ `review/1005.json`
+  ("other than seed" → fact âm + `value:true`) thì nên mã hoá vế loại trừ. **Ngoài phạm vi mục 4 của
+  brief** (`phamVi`/`boPhan`/`dieuKienVao`/`loaiTru`/`phanBiet`) và cần **người soạn** viết fact ⇒ em
+  **không sửa**, chỉ ghi nhận. Nếu người duyệt muốn, đưa vào lô sau.
+- **`phamVi.trich` > 300** (1404 425 · 1501 403 · 1502 458 · 1504 574 · 1505 381): `phamVi.trich` là
+  **bằng chứng**, KHÔNG vào prompt (chỉ `phamVi.text` mới vào, `lib/so-tay-gates.js:134`) ⇒ chấp nhận
+  theo chuẩn kho đã gộp (106/472 = 22,5 %).
+
+---
+
 # SOÁT ĐỘC LẬP lô 058 — phiên `dev-soat-doc-lap-lo058` (27/10/2026)
 
 - **Nhánh:** `so-tay/lo-058` (worktree `hs-code-api-wt-st-lo58`) · **PR #474** — **KHÔNG merge**.

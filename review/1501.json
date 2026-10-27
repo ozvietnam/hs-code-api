@@ -1,129 +1,123 @@
 {
- "nhom": "1501",
- "nguoiSoat": "dev-soat-doc-lap-lo058",
- "luc": "2026-10-27T12:05:00+07:00",
- "soatVaiTro": "Người soát ĐỘC LẬP (không phải người soạn). Đọc từng mục cùng nguồn nguyên văn tmp/so-tay/nguon/1501.txt (nhom1501.nhom, ch15.chuong, phan15.phan, wco.150110/150120/150190, tax.15011000/15012000/15019000); kiểm BYTE-EXACT từng mảnh câu trích; đối chiếu nghĩa; đo trần clip() runtime.",
- "phamViSoat": "Toàn bộ 21 mục của bản nháp lô 058 cho nhóm 1501 (1 phamVi + 2 dieuKienVao + 6 loaiTru + 6 phanBiet + 3 tieuChi6 + 3 dong8), đọc cùng nguồn, không chỉ mẫu.",
- "soat": 21,
- "giu": 18,
- "sua": 3,
- "xoa": 0,
- "ghiChu": "SOÁT ĐỘC LẬP 1501 — 21/21 mục đã đọc cùng nguồn. SỬA 3, GIỮ 18, XOÁ 0. (a) SỬA `dieuKienVao[0].fact`: bản nháp dùng \"và\" (\"mỡ lợn không dính nạc VÀ mỡ gia cầm chưa nấu chảy\") trong khi nguồn là tiêu đề nhóm 02.09 gộp hai loại (\"Mỡ lợn không dính nạc và mỡ gia cầm, chưa nấu chảy hoặc chưa chiết xuất cách khác\") ⇒ đọc thành phép VÀ thì mỡ gia cầm chưa nấu chảy (đích 02.09) lại thoả điều kiện, sai chiều; đã đổi sang \"hoặc\" (đọc thành phép HOẶC thì value=false ⇒ \"không phải (mỡ lợn không dính nạc HOẶC mỡ gia cầm chưa nấu chảy)\", đúng tập hợp loại trừ). (b) SỬA `phanBiet[0].hoi`: bản nháp ghép vế của ĐOẠN MỞ ĐẦU nguồn (\"đã được nóng chảy, ép hoặc chiết xuất\") vào câu trích về mục (a) — \"nóng chảy\" (đoạn 1) khác \"nấu chảy\" (đoạn loại trừ) ⇒ đã viết lại chỉ bằng từ có trong câu trích. (c) SỬA `phamVi`: `text` có câu \"các loại mỡ không ăn được\" mà câu trích bị lược mất ⇒ đã NỐI thêm mảnh nguyên văn vào câu trích (không cắt bớt `text`) và chỉnh \"các loại mỡ khác\" thành \"những loại mỡ khác\" cho đúng nguyên văn. GHI NHẬN: `phamVi.text` 331 > trần clip 220; `phamVi.trich` sau sửa 432 (>300 theo lược đồ, <600 theo máy); 3 `loaiTru.dieuKien` vượt trần clip 55; `phanBiet[0].hoi` sau sửa 105 ký tự ≤ trần 110.",
- "thayDoi": [
-  {
-   "index": "phamVi",
-   "hanhDong": "sua",
-   "lyDo": "Lỗi \"text nói nhiều hơn trích\": `text` nêu \"các loại mỡ không ăn được\" nhưng câu trích cắt ở \"mỡ phế liệu…\" ⇒ mất mảng đó, mà `text` lại dùng để sinh prompt vòng 2. Theo chiều ngược của lô 027 (sửa bằng cách NỐI `trich` chứ không cắt bớt `text`) và bài học lô 028/lô 056, đã nối thêm mảnh nguyên văn \"và các loại mỡ không ăn được\" vào câu trích; đồng thời chỉnh `text` dùng đúng từ của nguồn (\"những loại mỡ khác của lợn\") thay cho \"các loại mỡ khác của lợn\" (nguyên văn: \"- Những loại mỡ khác của lợn, gồm cả mỡ xương, mỡ phế liệu và các loại mỡ không ăn được…\").",
-   "sua": {
-    "text": "Mỡ lợn từ mỡ lá và mỡ khổ của lợn, những loại mỡ khác của lợn gồm cả mỡ xương, mỡ phế liệu và các loại mỡ không ăn được, và mỡ gia cầm kể cả mỡ xương và mỡ phế liệu; không gồm mỡ lợn không dính nạc và mỡ gia cầm chưa nấu chảy hoặc chưa chiết xuất cách khác (nhóm 02.09) và stearin mỡ lá và mỡ khổ và dầu mỡ lá và mỡ khổ (nhóm 15.03).",
-    "trich": "Theo những nhận xét đã nêu trên, nhóm này bao gồm:…- Mỡ lợn từ mỡ lá và mỡ khổ của lợn là mỡ làm thực phẩm…- Những loại mỡ khác của lợn, gồm cả mỡ xương, mỡ phế liệu và các loại mỡ không ăn được…- Mỡ gia cầm, kể cả mỡ xương và mỡ phế liệu…Nhóm này không bao gồm:…(a) Mỡ lợn không dính nạc và mỡ gia cầm, chưa nấu chảy hoặc chưa chiết xuất cách khác, thuộc nhóm 02.09.…(b) Stearin mỡ lá và mỡ khổ và dầu mỡ lá và mỡ khổ (nhóm 15.03)."
-   }
-  },
-  {
-   "index": "dieuKienVao[0]",
-   "hanhDong": "sua",
-   "lyDo": "Lỗi \"A và B\" bị hiểu thành phép VÀ trong khi nguồn là tiêu đề nhóm 02.09 gộp hai loại mỡ. Câu trích: \"(a) Mỡ lợn không dính nạc và mỡ gia cầm, chưa nấu chảy hoặc chưa chiết xuất cách khác, thuộc nhóm 02.09.\" Với fact \"…_va_…\" và value=false, LLM đọc thành \"không phải (mỡ lợn không dính nạc VÀ mỡ gia cầm chưa nấu chảy)\" ⇒ mỡ gia cầm chưa nấu chảy (đích 02.09) lại thoả điều kiện, sai chiều. Đổi \"va\" thành \"hoac\" ⇒ \"không phải (mỡ lợn không dính nạc HOẶC mỡ gia cầm chưa nấu chảy)\" đúng tập hợp loại trừ. fact dương + value=false không đảo chiều (đảo chiều chỉ khi fact ÂM + value=false — bài học lô 044).",
-   "sua": {
-    "fact": "la_mo_lon_khong_dinh_nac_hoac_mo_gia_cam_chua_nau_chay_hoac_chua_chiet_xuat_cach_khac"
-   }
-  },
-  {
-   "index": "dieuKienVao[1]",
-   "hanhDong": "giu",
-   "lyDo": "Câu trích nguyên văn \"(c) Mỡ thu được từ động vật trừ những loại nêu trong nhóm này (nhóm 15.02, 15.04 hoặc 15.06).\" — khoản loại trừ PHỦ CẢ nhóm 1501 (không phải đủ điều kiện riêng cho một tiểu loại nào), nên giữ dạng dieuKienVao; fact dương + value=false đúng chiều."
-  },
-  {
-   "index": "loaiTru[0]",
-   "hanhDong": "giu",
-   "lyDo": "nhom1501.nhom \"(a) Mỡ lợn không dính nạc và mỡ gia cầm, chưa nấu chảy hoặc chưa chiết xuất cách khác, thuộc nhóm 02.09.\" — khối \"Nhóm này không bao gồm:\", đích 02.09 nêu đích danh; `dieuKien` giữ nguyên vế điều kiện (\"chưa nấu chảy hoặc chưa chiết xuất cách khác\"), không bỏ mất định ngữ."
-  },
-  {
-   "index": "loaiTru[1]",
-   "hanhDong": "giu",
-   "lyDo": "\"(b) Stearin mỡ lá và mỡ khổ và dầu mỡ lá và mỡ khổ (nhóm 15.03).\" — đích 15.03 nêu đích danh."
-  },
-  {
-   "index": "loaiTru[2]",
-   "hanhDong": "giu",
-   "lyDo": "\"(c) Mỡ thu được từ động vật trừ những loại nêu trong nhóm này (nhóm 15.02, 15.04 hoặc 15.06).\" — ghi đủ CẢ BA đích \"1502|1504|1506\" (không bỏ nhánh nào của cụm \"A hoặc B hoặc C\"); cả ba mã đều nêu trong câu trích."
-  },
-  {
-   "index": "loaiTru[3]",
-   "hanhDong": "giu",
-   "lyDo": "\"(d) Dầu xương thuộc nhóm 15.06.\" — đích 15.06 nêu đích danh."
-  },
-  {
-   "index": "loaiTru[4]",
-   "hanhDong": "giu",
-   "lyDo": "\"(e) Chế phẩm giả mỡ lá và mỡ khổ (nhóm 15.17).\" — đích 15.17 nêu đích danh."
-  },
-  {
-   "index": "loaiTru[5]",
-   "hanhDong": "giu",
-   "lyDo": "Câu nguồn giữ TRỌN cả hai vế: \"Mỡ lợn từ mỡ lá và mỡ khổ có thêm lá cây nguyệt quế hoặc gia vị khác, với số lượng ít không đủ để làm thay đổi đặc tính cơ bản của nó, được phân loại vào nhóm này, nhưng những hỗn hợp ăn được hoặc chế phẩm thực phẩm chứa mỡ từ mỡ lá và mỡ khổ bị loại trừ (nhóm 15.17).\" — không cắt trích né câu rào, giữ cả vế \"được phân loại vào nhóm này\" lẫn vế loại trừ; đích 15.17 nêu đích danh."
-  },
-  {
-   "index": "phanBiet[0]",
-   "hanhDong": "sua",
-   "lyDo": "Lỗi \"ghép hai câu xa thành một kết luận\" + \"thêm chữ không có trong trích\": nhánh \"không\" của bản nháp là \"mỡ lợn và mỡ gia cầm đã được nóng chảy, ép hoặc chiết xuất\" — lấy từ ĐOẠN MỞ ĐẦU nguồn (\"Mỡ trong nhóm này có thể thu được … bằng cách làm nóng chảy, ép hoặc chiết trong dung môi\"), trong khi câu trích là mục (a) với từ \"nấu chảy\" ⇒ hai từ khác nghĩa bị trộn trong một câu hỏi. Đã viết lại nhánh \"không\" chỉ bằng từ có trong câu trích (\"khác\").",
-   "sua": {
-    "hoi": "Hàng là mỡ lợn không dính nạc và mỡ gia cầm chưa nấu chảy hay là mỡ lợn và mỡ gia cầm khác?"
-   }
-  },
-  {
-   "index": "phanBiet[1]",
-   "hanhDong": "giu",
-   "lyDo": "Trích \"(b) Stearin mỡ lá và mỡ khổ và dầu mỡ lá và mỡ khổ (nhóm 15.03).\" — chiều Có/Không đúng (có → 15.03), `hoi` không nhắc mã."
-  },
-  {
-   "index": "phanBiet[2]",
-   "hanhDong": "giu",
-   "lyDo": "Trích \"(c) Mỡ thu được từ động vật trừ những loại nêu trong nhóm này (nhóm 15.02, 15.04 hoặc 15.06).\" — `neuCo` ghi đủ ba đích; nhánh \"không\" lấy từ cùng khối nguồn nhom1501.nhom (các loại mỡ lợn/mỡ gia cầm nêu ở đầu nhóm), không suy từ danh sách loại trừ."
-  },
-  {
-   "index": "phanBiet[3]",
-   "hanhDong": "giu",
-   "lyDo": "Trích \"(d) Dầu xương thuộc nhóm 15.06.\" — chiều Có/Không đúng, `hoi` không nhắc mã."
-  },
-  {
-   "index": "phanBiet[4]",
-   "hanhDong": "giu",
-   "lyDo": "Trích \"(e) Chế phẩm giả mỡ lá và mỡ khổ (nhóm 15.17).\" — chiều Có/Không đúng, `hoi` không nhắc mã."
-  },
-  {
-   "index": "phanBiet[5]",
-   "hanhDong": "giu",
-   "lyDo": "Trích giữ trọn hai vế (được phân loại vào nhóm này / bị loại trừ) của câu về hỗn hợp ăn được; chiều Có/Không đúng (có → 15.17), `hoi` không nhắc mã."
-  },
-  {
-   "index": "tieuChi6[0]",
-   "hanhDong": "giu",
-   "lyDo": "Chép nguyên văn wco.150110: \"150110 Pig fat; lard, other than that of heading 0209 and 1503\" — fact dương `la_mo_lon_va_mo_la_mo_kho` = true đúng chiều; vế loại trừ \"other than that of heading 0209 and 1503\" đã có trong loaiTru[0] (02.09) và loaiTru[1] (15.03) của chính nhóm này nên không mất thông tin. Cùng cách làm đã được duyệt ở 1502 (\"150210 Tallow; other than those of heading 1503\" → `la_mo_tallow`)."
-  },
-  {
-   "index": "tieuChi6[1]",
-   "hanhDong": "giu",
-   "lyDo": "Chép nguyên văn wco.150120: \"150120 Pig fat; not lard, other than that of heading 0209 or 1503\" — fact `la_mo_lon_khong_phai_mo_la_mo_kho` = true bám đúng \"not lard\"; fact ÂM (chứa \"không_phai\") đặt value=true đúng luật nhà (fact âm + value=false mới là đảo chiều)."
-  },
-  {
-   "index": "tieuChi6[2]",
-   "hanhDong": "giu",
-   "lyDo": "Chép nguyên văn wco.150190: \"150190 Poultry fat; other than that of heading 0209 or 1503\" — fact dương `la_mo_gia_cam` = true đúng chiều; vế loại trừ đã có ở loaiTru[0]."
-  },
-  {
-   "index": "dong8[0]",
-   "hanhDong": "giu",
-   "lyDo": "tax.15011000: \"15011000 - Mỡ lợn từ mỡ lá và mỡ khổ\" — tên dòng nguyên văn; `tieuChi` phân biệt với dòng 15012000 (mỡ lợn khác)."
-  },
-  {
-   "index": "dong8[1]",
-   "hanhDong": "giu",
-   "lyDo": "tax.15012000: \"15012000 - Mỡ lợn khác\" — tên dòng nguyên văn; `tieuChi` `la_mo_lon_khong_phai_mo_la_mo_kho` phân biệt đúng với dòng 15011000."
-  },
-  {
-   "index": "dong8[2]",
-   "hanhDong": "giu",
-   "lyDo": "Dòng \"Loại khác\" (tax.15019000 \"15019000 - Loại khác\") — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.150190 đúng khuôn mẫu (1103, 0206, 0207, 0208 và 1502/1504 của chính lô này); máy tự suy loaiKhac=true."
-  }
- ]
+  "nhom": "1501",
+  "gopVoi": "review phiên soát song song 4b7e956 + vòng soát này",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp 331 ký tự; clip(phamVi.text, 220) cắt mất vế loại trừ (nhóm 02.09) và các loại trừ còn lại ⇒ mô hình chỉ thấy phần bao gồm. SỬA (rút text xuống 212, giữ đủ 3 vế bao gồm + 2 vế loại trừ có đích 02.09/15.03). ĐỒNG Ý phiên soát song song về phần câu trích: họ nối thêm mảnh nguyên văn \"và các loại mỡ không ăn được\" vào `trich` để câu trích phủ hết mọi điều `text` nói (chiều ngược của lô 027 — nối trích chứ đừng cắt bớt text) ⇒ em giữ nguyên `trich` của họ, và vì vậy em bỏ \"các loại mỡ không ăn được\" khỏi `text` để hai bên không lệch nhau.",
+      "sua": {
+        "text": "Mỡ lợn từ mỡ lá và mỡ khổ, mỡ lợn khác gồm cả mỡ xương, và mỡ gia cầm kể cả mỡ xương, mỡ phế liệu; không gồm mỡ lợn không dính nạc và mỡ gia cầm chưa nấu chảy (nhóm 02.09) và stearin mỡ lá và mỡ khổ (nhóm 15.03)."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "sua",
+      "lyDo": "ĐỒNG Ý phiên soát song song: fact \"la_mo_lon_khong_dinh_nac_va_mo_gia_cam_chua_nau_chay…\" với value=false đọc thành \"không phải (mỡ lợn không dính nạc VÀ mỡ gia cầm chưa nấu chảy)\" ⇒ mỡ gia cầm chưa nấu chảy (đích 02.09) lại thoả điều kiện, sai chiều; nguồn là tiêu đề nhóm 02.09 gộp HAI loại mỡ (trừ theo nghĩa \"hoặc\"). Sửa \"va\" → \"hoặc\". GHI NHẬN thêm: fact DƯƠNG + value=false là MẪU NHÀ (65 mục đã gộp: 0504, 0710, 1503, 5903), KHÔNG phải mẫu đảo chiều của lô 044 (lô 044 chỉ cấm \"fact âm\" khởi đầu bằng \"khong_…\"). Không thể mã hoá DƯƠNG vì câu định nghĩa nhóm chỉ có \"có thể thu được bởi bất cứ phương pháp nào\" — câu CHO PHÉP, cấm value=true.",
+      "sua": {
+        "fact": "la_mo_lon_khong_dinh_nac_hoac_mo_gia_cam_chua_nau_chay_hoac_chua_chiet_xuat_cach_khac"
+      }
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu \"(c) Mỡ thu được từ động vật trừ những loại nêu trong nhóm này (nhóm 15.02, 15.04 hoặc 15.06).\" là khoản loại trừ phủ cả nhóm; fact dương + value=false ⇒ hàng KHÔNG phải mỡ động vật ngoài các loại nêu trong 1501 ⇒ đúng chiều. GIỮ (đồng ý phiên soát song song)."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỚP LỖI MÁY KHÔNG BẮT (phiên soát song song giữ mục này): clip(loaiTru.dieuKien, 55) cắt mất nhánh \"hoặc chưa chiết xuất cách khác\" ⇒ loại trừ bị THU HẸP còn một nhánh, hàng ép nhưng chưa nấu chảy sẽ bị giữ nhầm trong 1501 (đúng lớp \"một nhánh của A hoặc B bị tách\" của lô 035/040). SỬA: rút xuống 58 ký tự, giữ CẢ HAI nhánh \"chưa nấu chảy\" và \"chiết xuất\" (clip(55) vẫn giữ \"chưa nấu chảy hoặc chiết…\"); câu trích giữ nguyên.",
+      "sua": {
+        "dieuKien": "Mỡ lợn không dính nạc, mỡ gia cầm chưa nấu chảy hoặc chiết xuất"
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "\"(b) Stearin mỡ lá và mỡ khổ và dầu mỡ lá và mỡ khổ (nhóm 15.03).\" — dấu hiệu loại trừ + đích danh 15.03. GIỮ."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "\"(c) Mỡ thu được từ động vật trừ những loại nêu trong nhóm này (nhóm 15.02, 15.04 hoặc 15.06).\" — sangNhom \"1502|1504|1506\" phủ đủ CẢ BA nhánh (không tách \"A hoặc B\" thành một đích). GIỮ."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "\"(d) Dầu xương thuộc nhóm 15.06.\" — khoản loại trừ RIÊNG, đích danh 15.06. Lặp đích 1506 với [2] là do NGUỒN tách thành hai câu (c) và (d), không phải lỗi mã hoá; giữ để không mất mốc \"dầu xương\" (mỡ xương là hàng phổ biến trong tờ khai Oz). GIỮ."
+    },
+    {
+      "index": "loaiTru[4]",
+      "hanhDong": "giu",
+      "lyDo": "\"(e) Chế phẩm giả mỡ lá và mỡ khổ (nhóm 15.17).\" — dấu hiệu loại trừ + đích danh 15.17. GIỮ."
+    },
+    {
+      "index": "loaiTru[5]",
+      "hanhDong": "giu",
+      "lyDo": "Câu \"…nhưng những hỗn hợp ăn được hoặc chế phẩm thực phẩm chứa mỡ từ mỡ lá và mỡ khổ bị loại trừ (nhóm 15.17).\" — có DẤU HIỆU LOẠI TRỪ (\"bị loại trừ\") + đích danh 15.17; giữ CẢ HAI nhánh \"hỗn hợp ăn được\" và \"chế phẩm thực phẩm chứa mỡ từ mỡ lá và mỡ khổ\". GIỮ."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "ĐỒNG Ý phiên soát song song: nhánh \"không\" của bản nháp là \"mỡ lợn và mỡ gia cầm đã được nóng chảy, ép hoặc chiết xuất\" — lấy từ ĐOẠN MỞ ĐẦU nguồn (\"…bằng cách làm nóng chảy, ép hoặc chiết trong dung môi\"), trong khi câu trích là mục (a) với từ \"nấu chảy\" ⇒ hai từ khác nghĩa bị trộn trong một câu hỏi (lớp \"ghép hai câu xa thành một kết luận\"). Đã viết lại nhánh \"không\" theo đúng lời câu trích; chiều Có/Không giữ nguyên (có → 0209, không → 1501).",
+      "sua": {
+        "hoi": "Hàng là mỡ lợn không dính nạc và mỡ gia cầm chưa nấu chảy hay là mỡ lợn và mỡ gia cầm khác?"
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "\"Có\" = stearin mỡ lá và mỡ khổ và dầu mỡ lá và mỡ khổ ⇒ 1503; \"Không\" ⇒ 1501. Câu trích nêu đích danh 15.03. GIỮ."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "\"Có\" = mỡ thu được từ động vật trừ những loại nêu trong nhóm này ⇒ 1502/1504/1506; \"Không\" ⇒ 1501. Câu trích nêu đủ ba đích. GIỮ."
+    },
+    {
+      "index": "phanBiet[3]",
+      "hanhDong": "giu",
+      "lyDo": "\"Có\" = dầu xương ⇒ 1506; \"Không\" ⇒ 1501. Câu trích nêu đích danh 15.06. GIỮ."
+    },
+    {
+      "index": "phanBiet[4]",
+      "hanhDong": "giu",
+      "lyDo": "\"Có\" = chế phẩm giả mỡ lá và mỡ khổ ⇒ 1517; \"Không\" ⇒ 1501. GIỮ."
+    },
+    {
+      "index": "phanBiet[5]",
+      "hanhDong": "giu",
+      "lyDo": "\"Có\" = hỗn hợp ăn được hoặc chế phẩm thực phẩm chứa mỡ từ mỡ lá và mỡ khổ ⇒ 1517; \"Không\" ⇒ 1501. GIỮ."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.150110: \"150110 Pig fat; lard, other than that of heading 0209 and 1503\" — fact dương `la_mo_lon_va_mo_la_mo_kho` = true đúng chiều; vế loại trừ \"other than that of heading 0209 and 1503\" đã có trong loaiTru[0] (02.09) và loaiTru[1] (15.03) của chính nhóm này nên không mất thông tin. Cùng cách làm đã được duyệt ở 1502 (\"150210 Tallow; other than those of heading 1503\" → `la_mo_tallow`)."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.150120: \"150120 Pig fat; not lard, other than that of heading 0209 or 1503\" — fact `la_mo_lon_khong_phai_mo_la_mo_kho` = true bám đúng \"not lard\"; fact ÂM (chứa \"không_phai\") đặt value=true đúng luật nhà (fact âm + value=false mới là đảo chiều)."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.150190: \"150190 Poultry fat; other than that of heading 0209 or 1503\" — fact dương `la_mo_gia_cam` = true đúng chiều; vế loại trừ đã có ở loaiTru[0]."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15011000: \"15011000 - Mỡ lợn từ mỡ lá và mỡ khổ\" — tên dòng nguyên văn; `tieuChi` phân biệt với dòng 15012000 (mỡ lợn khác)."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15012000: \"15012000 - Mỡ lợn khác\" — tên dòng nguyên văn; `tieuChi` `la_mo_lon_khong_phai_mo_la_mo_kho` phân biệt đúng với dòng 15011000."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" (tax.15019000 \"15019000 - Loại khác\") — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.150190 đúng khuôn mẫu (1103, 0206, 0207, 0208 và 1502/1504 của chính lô này); máy tự suy loaiKhac=true."
+    }
+  ]
 }

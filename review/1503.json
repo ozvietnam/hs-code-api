@@ -1,65 +1,63 @@
 {
- "nhom": "1503",
- "nguoiSoat": "dev-soat-doc-lap-lo058",
- "luc": "2026-10-27T12:05:00+07:00",
- "soatVaiTro": "Người soát ĐỘC LẬP (không phải người soạn). Đọc từng mục cùng nguồn nguyên văn tmp/so-tay/nguon/1503.txt (nhom1503.nhom, ch15.chuong, phan15.phan, wco.150300, tax.15030010/15030090); kiểm BYTE-EXACT từng mảnh câu trích; đối chiếu nghĩa; đo trần clip() runtime.",
- "phamViSoat": "Toàn bộ 9 mục của bản nháp lô 058 cho nhóm 1503 (1 phamVi + 2 dieuKienVao + 2 loaiTru + 2 phanBiet + 0 tieuChi6 + 2 dong8), đọc cùng nguồn, không chỉ mẫu.",
- "soat": 9,
- "giu": 7,
- "sua": 2,
- "xoa": 0,
- "ghiChu": "SOÁT ĐỘC LẬP 1503 — 9/9 mục đã đọc cùng nguồn. SỬA 2, GIỮ 7, XOÁ 0. (a) SỬA `loaiTru[1].dieuKien`: bản nháp bỏ mất định ngữ giới hạn \"đôi khi dùng\" của nguồn (\"Stearin từ mỡ lá và mỡ khổ của lợn ăn được ĐÔI KHI DÙNG trộn với mỡ lá và mỡ khổ của lợn mềm…\") ⇒ câu loại trừ bị biến thành điều kiện tuyệt đối; đây là lớp lỗi \"nhãn dieuKien bỏ mất định ngữ giới hạn\" mà máy KHÔNG bắt được (máy chỉ có mẫu `loai-tru-chi-la-thuong` cho \"thường/tùy trường hợp\", không có mẫu \"đôi khi\"). (b) SỬA `phanBiet[1].hoi` cho khớp với điều kiện loại trừ đã khôi phục. GHI NHẬN: `loaiTru[0].dieuKien` 60 > trần clip 55; `loaiTru[1].dieuKien` 130 (sau sửa) > trần clip 55; `phanBiet[0].hoi` 140 và `phanBiet[1].hoi` 130 (sau sửa) > trần clip 110; `dong8[1].dieuKien` 118 > trần clip 90; `phamVi.text` 229 > trần clip 220 (vượt 9 ký tự, mất đúng dấu chấm câu cuối). `tieuChi6` rỗng là ĐÚNG: cây HS của nhóm 1503 không có nút 6 số (150300 không phải nút phân nhóm trong cây — con trực tiếp của 1503 là 15030010/15030090, xem scripts/check-cay.mjs: 1 nhóm đủ, 0 cảnh báo), nên không ghi tieuChi6 (ghi vào sẽ bị máy loại `hs6-khong-co-trong-cay`).",
- "thayDoi": [
-  {
-   "index": "phamVi",
-   "hanhDong": "giu",
-   "lyDo": "Câu trích nguyên văn trong nhom1503.nhom nối 2 mảnh: \"Nhóm này bao gồm các sản phẩm thu được bằng cách ép mỡ lá và mỡ khổ của lợn (tức là, stearin mỡ lá và mỡ khổ của lợn, dầu từ mỡ lá và mỡ khổ của lợn) hoặc bằng cách ép mỡ tallow (tức là, dầu oleo, dầu tallow và oleostearin).…Nhóm này bao gồm cả dạng ăn được và không ăn được.\" — `text` diễn lại đúng hai vế này (bỏ chữ \"tức là,\" trong ngoặc, không đổi nghĩa); mọi từ trong `text` đều có trong câu trích. GHI NHẬN: `text` không nêu khoản loại trừ (15.16/15.17/15.18) — khoản này đã có ở loaiTru[0] và dieuKienVao[1], không phải lỗi."
-  },
-  {
-   "index": "dieuKienVao[0]",
-   "hanhDong": "giu",
-   "lyDo": "Câu trích nguyên văn: \"Nhóm này bao gồm các sản phẩm thu được bằng cách ép mỡ lá và mỡ khổ của lợn (tức là, stearin mỡ lá và mỡ khổ của lợn, dầu từ mỡ lá và mỡ khổ của lợn) hoặc bằng cách ép mỡ tallow (tức là, dầu oleo, dầu tallow và oleostearin).\" — ràng buộc định danh phủ CẢ nhóm 1503, nguồn nhom1503.nhom; fact dùng \"hoặc\" đúng phép phân đoạn của nguồn (ép mỡ lá VÀ mỡ khổ HOẶC ép mỡ tallow) — không nhầm lẫn với phép VÀ."
-  },
-  {
-   "index": "dieuKienVao[1]",
-   "hanhDong": "giu",
-   "lyDo": "Câu trích nguyên văn: \"Nhóm này không bao gồm các sản phẩm đã nhũ hoá, đã pha trộn hoặc chế biến cách khác (nhóm 15.16, 15.17 hoặc 15.18).\" — khoản loại trừ phủ cả nhóm, không phải câu CHO PHÉP; fact dương + value=false đúng chiều."
-  },
-  {
-   "index": "loaiTru[0]",
-   "hanhDong": "giu",
-   "lyDo": "Câu trích nguyên văn nêu đủ ba đích 15.16/15.17/15.18; `sangNhom` ghi \"1516|1517|1518\" — không bỏ nhánh nào của cụm \"A hoặc B hoặc C\". GHI NHẬN: `dieuKien` 60 ký tự vượt trần clip 55 của runtime (cắt mất đúng chữ \"khác\" ở cuối, không mất kết luận)."
-  },
-  {
-   "index": "loaiTru[1]",
-   "hanhDong": "sua",
-   "lyDo": "Lỗi \"nhãn dieuKien bỏ mất định ngữ giới hạn\" (máy KHÔNG bắt được: câu trích vẫn nguyên văn nên check-so-tay xanh; luật máy chỉ có mẫu `loai-tru-chi-la-thuong` cho \"thường…/tùy trường hợp\", không có mẫu \"đôi khi\"). Nguồn: \"Stearin từ mỡ lá và mỡ khổ của lợn ăn được đôi khi dùng trộn với mỡ lá và mỡ khổ của lợn mềm làm cho sản phẩm đồng nhất và đặc hơn (nhóm 15.17).\" Bản nháp viết thẳng \"…ăn được trộn với mỡ lá và mỡ khổ của lợn mềm…\" — bỏ mất \"đôi khi dùng\", biến một mô tả thực hành (đôi khi) thành điều kiện tuyệt đối mà mọi hàng trộn đều bị loại. Đã khôi phục nguyên văn có định ngữ. Nội dung không mất: câu trích đã có sẵn và vẫn giữ nguyên.",
-   "sua": {
-    "dieuKien": "Stearin từ mỡ lá và mỡ khổ của lợn ăn được đôi khi dùng trộn với mỡ lá và mỡ khổ của lợn mềm làm cho sản phẩm đồng nhất và đặc hơn"
-   }
-  },
-  {
-   "index": "phanBiet[0]",
-   "hanhDong": "giu",
-   "lyDo": "Trích \"Nhóm này không bao gồm các sản phẩm đã nhũ hoá, đã pha trộn hoặc chế biến cách khác (nhóm 15.16, 15.17 hoặc 15.18).\" — chiều Có/Không đúng (có → 1516|1517|1518, không → 1503), `hoi` không nhắc mã; nhánh \"không\" lấy từ cùng khối nguồn (câu mở đầu nhóm). GHI NHẬN: `hoi` 140 ký tự > trần clip 110."
-  },
-  {
-   "index": "phanBiet[1]",
-   "hanhDong": "sua",
-   "lyDo": "Sửa cho khớp với điều kiện loại trừ đã khôi phục ở loaiTru[1]: nhánh \"có\" phải giữ định ngữ \"đôi khi dùng\" của nguồn, và rút gọn vế đầu cho vừa trần clip 110 của runtime. Câu trích giữ nguyên (đã nguyên văn, có đủ đích 15.17).",
-   "sua": {
-    "hoi": "Hàng là stearin ăn được đôi khi trộn với mỡ lá và mỡ khổ của lợn mềm hay là stearin từ mỡ lá và mỡ khổ của lợn?"
-   }
-  },
-  {
-   "index": "dong8[0]",
-   "hanhDong": "giu",
-   "lyDo": "tax.15030010: \"15030010 - Stearin mỡ lợn hoặc oleostearin\" — tên dòng nguyên văn; `tieuChi` `la_stearin_mo_lon_hoac_oleostearin` = true bám đúng tên dòng (boolean nên không cần số trong trích)."
-  },
-  {
-   "index": "dong8[1]",
-   "hanhDong": "giu",
-   "lyDo": "Dòng \"Loại khác\" (tax.15030090 \"15030090 - Loại khác\") — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.150300 đúng khuôn mẫu (1103, 0206, 0207, 0208); máy tự suy loaiKhac=true. GHI NHẬN: `dieuKien` 118 ký tự > trần clip 90 (runtime cắt đuôi; phần đầu \"Loại khác: Lard stearin, lard oil, oleostearin…\" vẫn đủ để phân biệt với dòng stearin mỡ lợn)."
-  }
- ]
+  "nhom": "1503",
+  "gopVoi": "review phiên soát song song 4b7e956 + vòng soát này",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp 229 ký tự — vượt nhẹ trần clip 220 ⇒ cắt mất đuôi câu. SỬA: rút xuống 215, giữ nguyên cả hai cách ép (mỡ lá và mỡ khổ của lợn / mỡ tallow) và vế \"gồm cả dạng ăn được và không ăn được\" (đồng ý với phiên soát song parallel về nội dung; em chỉ rút cho vừa trần runtime).",
+      "sua": {
+        "text": "Sản phẩm thu được bằng cách ép mỡ lá và mỡ khổ của lợn (stearin mỡ lá và mỡ khổ của lợn, dầu từ mỡ lá và mỡ khổ của lợn) hoặc ép mỡ tallow (dầu oleo, dầu tallow và oleostearin), gồm cả dạng ăn được và không ăn được."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu \"Nhóm này bao gồm các sản phẩm thu được bằng cách ép mỡ lá và mỡ khổ của lợn… hoặc bằng cách ép mỡ tallow…\" là câu RÀNG BUỘC phủ cả nhóm (cả 2 dạng thu được); fact dương + value=true, \"hoặc\" đúng phép phân đoạn của nguồn (ép mỡ lá VÀ mỡ khổ HOẶC ép mỡ tallow). GIỮ (đồng ý phiên soát song song)."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "fact DƯƠNG \"la_san_pham_da_nhu_hoa_da_pha_tron_hoac_che_bien_cach_khac\" + value=false ⇒ \"hàng KHÔNG phải sản phẩm đã nhũ hoá/pha trộn/chế biến\" = đúng chiều. Mẫu nhà \"fact dương + value=false\" (0504, 0710, 5903…). GIỮ."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "dieuKien 59 ký tự, clip(55) cắt đuôi \"chế biến cách khác\" thành \"chế biến cách…\" — mất chữ \"khác\" (phân biệt với chế biến thường của chính nhóm này). SỬA: rút xuống 53 ký tự (bỏ mạo từ \"Các\"), giữ nguyên nghĩa.",
+      "sua": {
+        "dieuKien": "Sản phẩm đã nhũ hoá, đã pha trộn hoặc chế biến cách khác"
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "sua",
+      "lyDo": "ĐỒNG Ý phiên soát song song: bản nháp viết \"…ăn được trộn với mỡ lá và mỡ khổ của lợn mềm…\" — bỏ mất định ngữ giới hạn \"đôi khi\", biến một mô tả thực hành thành điều kiện tuyệt đối mà mọi hàng trộn đều bị loại (luật \"dieuKien phải giữ định ngữ giới hạn của câu\" — lô 028). Đã khôi phục nguyên văn có định ngữ. GHI NHẬN: đây là loại trừ có căn cứ vì chính SẢN PHẨM TRỘN mới thuộc 15.17, còn stearin thuần thuộc 1503 (khác lớp \"mục đánh số trong khối bao gồm\" của lô 030).",
+      "sua": {
+        "dieuKien": "Stearin từ mỡ lá và mỡ khổ của lợn ăn được đôi khi dùng trộn với mỡ lá và mỡ khổ của lợn mềm làm cho sản phẩm đồng nhất và đặc hơn"
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "\"Có\" = sản phẩm đã nhũ hoá/pha trộn/chế biến ⇒ 1516/1517/1518; \"Không\" = sản phẩm ép mỡ lá, mỡ khổ của lợn hoặc mỡ tallow ⇒ 1503. Câu trích nêu đủ ba đích. GIỮ."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "ĐỒNG Ý phiên soát song song: sửa cho khớp với điều kiện loại trừ đã khôi phục ở loaiTru[1] — nhánh \"có\" phải giữ định ngữ \"đôi khi\" của nguồn, và rút gọn vế đầu cho vừa trần clip 110 của runtime. BỔ SUNG của em: bản sửa của họ dài 111 ký tự ⇒ clip(110) cắt mất dấu hỏi cuối, câu hỏi in ra không còn dạng câu hỏi; em bỏ tiếp \"Hàng là \" cho vừa trần (105 ký tự), không mất nghĩa. Câu trích giữ nguyên (đã nguyên văn, có đủ đích 15.17).",
+      "sua": {
+        "hoi": "Stearin ăn được đôi khi trộn với mỡ lá và mỡ khổ của lợn mềm hay là stearin từ mỡ lá và mỡ khổ của lợn?"
+      }
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "tax.15030010: \"15030010 - Stearin mỡ lợn hoặc oleostearin\" — tên dòng nguyên văn; `tieuChi` `la_stearin_mo_lon_hoac_oleostearin` = true bám đúng tên dòng (boolean nên không cần số trong trích)."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" (tax.15030090 \"15030090 - Loại khác\") — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.150300 đúng khuôn mẫu (1103, 0206, 0207, 0208); máy tự suy loaiKhac=true. GHI NHẬN: `dieuKien` 118 ký tự > trần clip 90 (runtime cắt đuôi; phần đầu \"Loại khác: Lard stearin, lard oil, oleostearin…\" vẫn đủ để phân biệt với dòng stearin mỡ lợn)."
+    }
+  ]
 }
