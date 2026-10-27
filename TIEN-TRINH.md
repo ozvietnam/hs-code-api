@@ -357,6 +357,24 @@ báo ở đây + trong `review/1302.json` + trong body PR để người gộp x
   lệch cây**; `npm test` → **ALL TESTS PASSED**.
 - `git checkout -- data/legal-status-miss.jsonl` — `npm test` ghi thêm 1 dòng vào file bị theo dõi.
 
+## PR #473 CONFLICTING ⇒ CI im lặng — đã merge `main` vào nhánh
+
+Sau khi push commit soát, **workflow `pull_request` KHÔNG chạy** cho PR #473. Nguyên nhân (bài học
+lô 047/lô 054): PR **CONFLICTING** với `main` (main đã gộp lô 056 #471 + lô 058 #474) ⇒ GitHub không
+tạo được merge ref ⇒ `pull_request` không chạy ⇒ CI im lặng. Xem `mergeable=false` trên API PR.
+
+Cách xử lý (KHÔNG merge PR — chỉ merge `main` **vào nhánh**):
+
+- `git merge origin/main` → conflict ở `TIEN-TRINH.md` + `docs/giao-viec/so-tay-lo.csv` (2 file dùng
+  chung nhiều phiên — memory `tien-trinh-md-chia-chong-gay-xung-dot`).
+- `TIEN-TRINH.md`: `node scripts/merge-tien-trinh.mjs --apply` (ghép theo **ranh giới khối**):
+  42 khối của HEAD + 4 khối của `origin/main` = **46 khối**; tự kiểm của script: *"mọi khối của HEAD và
+  origin/main đều còn đủ nội dung"* ⇒ khối lô 057 (soát) và lô 057 (soạn) không bị mất.
+- `so-tay-lo.csv`: lấy `origin/main` làm nền (lô 055/056/058 đã được main xử lý) + **ghi đè dòng 057**
+  bằng bản của HEAD (`dang-lam,soat-doc-lap-mm,473`) ⇒ 180 dòng dữ liệu, không mất dòng nào.
+- Kiểm lại sau merge: `npm run so-tay:check` → **500 nhóm, 13 854 mục, 0 mục không kiểm được nguồn**;
+  `check-cay` 6/6 nhóm đủ; `npm test` ALL TESTS PASSED.
+
 ## Ghi chú cho lô sau
 
 1. **Lỗi gõ tay "biếc" (thay vì "biến") do ĐỌC NHẦM ký tự trên màn hình** — em viết "chế biếc trà sâm"
