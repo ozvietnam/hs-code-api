@@ -26,7 +26,10 @@ const KINDS_SINGLE = ['phamVi', 'boPhan'];
 const KINDS_ARR = ['dieuKienVao', 'loaiTru', 'phanBiet'];
 
 function parseIndex(index) {
-  const m = String(index).match(/^([a-zA-Z_][a-zA-Z0-9]*)(?:\[(\d+)\])?$/);
+  // Cho phép kind có dấu chấm (cay.tenDien[i]) — hồ sơ soát vòng 3 ghi MỘT dòng cho
+  // MỌI mục của bản nháp, kể cả 9 mục cay.tenDien (khối máy sinh) để không mục nào
+  // thiếu lý do. Mấy mục đó chỉ được ghi "giu" — xem applyThayDoi.
+  const m = String(index).match(/^([a-zA-Z_][a-zA-Z0-9_.]*)(?:\[(\d+)\])?$/);
   if (!m) throw new Error(`Không parse được index: ${index}`);
   return { kind: m[1], idx: m[2] != null ? Number(m[2]) : null };
 }
@@ -48,6 +51,10 @@ function applyThayDoi(obj, thayDoi) {
   const sua = []; let xoa = 0;
   for (const t of thayDoi) {
     if (t.hanhDong === 'giu') continue;
+    // Khối cây do MÁY sinh (luật §L11 mục 9) — hồ sơ chỉ được ghi "giu".
+    if (t.kind === 'cay' || t.kind.startsWith('cay.')) {
+      throw new Error(`${t.kind}[${t.idx}]: khối máy sinh, không được sửa/xoá bằng hồ sơ soát`);
+    }
     if (t.hanhDong === 'xoa') {
       if (t.idx == null) throw new Error(`xoa cần index có [i]: ${t.kind}`);
       if (!Array.isArray(obj[t.kind])) throw new Error(`không xoá được: ${t.kind} không phải mảng`);

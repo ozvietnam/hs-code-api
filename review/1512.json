@@ -1,71 +1,92 @@
 {
   "nhom": "1512",
-  "gopVoi": "soát độc lập lô 060 (PR #479) — người soát KHÁC người soạn",
+  "gopVoi": "soát độc lập lô 060 — vòng 3 (PR #480) — người soát KHÁC người soạn dev-zcode-mm",
   "thayDoi": [
     {
       "index": "phamVi",
       "hanhDong": "giu",
-      "lyDo": "Chú giải nhóm 1512 có 3 phần ngang hàng (A) DẦU HẠT HƯỚNG DƯƠNG · (B) DẦU CÂY RUM · (C) DẦU HẠT BÔNG; `text` nêu đủ 3 tiêu đề nối bằng \"…\" (luật lô 030: phạm vi nhóm, không phải vật liệu/một phần); trich nguyên văn [nhom1512.nhom] ✓. 46 ký tự < trần clip 220 ✓"
+      "lyDo": "Phạm vi nhóm = 3 tiêu đề phần ngang hàng (A) DẦU HẠT HƯỚNG DƯƠNG · (B) DẦU CÂY RUM · (C) DẦU HẠT BÔNG, nêu tiêu đề nối bằng \"…\" (luật lô 030 — không phải vật liệu, không phải một phần). trich gom nguyên văn 3 tiêu đề từ [nhom1512.nhom]."
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "Nhóm không có khối bộ phận riêng trong nguồn (các tiêu đề phần (A)/(B)/(C) là các phần ngang hàng đã nêu ở phamVi, không phải bộ phận của cùng một hàng) ⇒ để null là đúng mẫu nhà."
     },
     {
       "index": "dieuKienVao[0]",
       "hanhDong": "giu",
-      "lyDo": "Câu ràng buộc (B) Chú giải Chương 15 phủ cả dải 15.07–15.15 (1512 nằm trong đó): dầu thực vật đơn lẻ (không trộn với chất béo/dầu tự nhiên khác), không bay hơi, kèm các phần phân đoạn, không thay đổi về mặt hoá học — đúng là điều kiện VÀO nhóm 4 số. Vế \"đã hoặc chưa tinh chế\" là câu CHO PHÉP (CAU_CHO_PHEP) nên đã lược khỏi CẢ trích lẫn `fact` — giữ nhất quán, không đảo chiều. fact dương + value=true ✓"
+      "lyDo": "Chú giải riêng nhóm 1512 gần như trống (chỉ 3 tiêu đề phần + dòng trích 1507.10) ⇒ điều kiện vào nhóm phải mượn câu (B) Chú giải Chương 15; câu này phủ cả dải 15.07–15.15 nên phủ trọn 1512. Vế \"đã hoặc chưa tinh chế\" là câu CHO PHÉP nên lược khỏi CẢ trích lẫn fact ⇒ fact nói ÍT hơn câu trích, không đảo chiều."
     },
     {
       "index": "tieuChi6[0]",
-      "hanhDong": "giu",
-      "lyDo": "Chép nguyên văn tiêu đề phân nhóm WCO 151211; fact dương + value=true bám đúng tiêu đề, không thêm chữ ngoài trích [wco.151211] ✓"
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT — dịch sai từ nguồn. WCO 151211 nói \"crude\" = DẦU THÔ, nhưng fact ghi \"chua_tinh_che\" (chưa tinh chế). Trong HS 1512 \"thô\" và \"chưa tinh chế\" là HAI tiêu chí khác nhau: biểu thuê có 15121100 \"Dầu thô\" và 15121920 \"Đã tinh chế\"; ch15.chuong cũng tách rõ \"chất béo thô và dầu thô … cũng như đã được tinh chế\". Fact hiện tại khiến 1512.11 trùng lẫn với 1512.19 (vốn đã ghi \"khac_dau_tho\") và với dòng 15121920 \"Đã tinh chế\". Sửa theo đúng mẫu nhà 1513 (151311 = \"dau_tho\") và 1514 (151491 = \"dau_tho\"): \"chua_tinh_che\" → \"dau_tho\". Mọi từ đều có trong khối nguồn 1512 (tax.15121100 \"Dầu thô\", ch15.chuong \"dầu thô\").",
+      "sua": {
+        "fact": "la_dau_hat_huong_duong_hoac_dau_cay_rum_va_cac_phan_phan_doan_cua_chung_dau_tho_khong_thay_doi_ve_mat_hoa_hoc"
+      }
     },
     {
       "index": "tieuChi6[1]",
       "hanhDong": "giu",
-      "lyDo": "Chép nguyên văn tiêu đề phân nhóm WCO 151219; fact dương + value=true bám đúng tiêu đề, không thêm chữ ngoài trích [wco.151219] ✓"
+      "lyDo": "WCO 151219 \"other than crude, whether or not refined, but not chemically modified\" ⇒ fact \"khac_dau_tho, da_hoac_chua_tinh_che\" — đối xứng với 1512.11 sau khi sửa \"crude\" thành \"dau_tho\"."
     },
     {
       "index": "tieuChi6[2]",
-      "hanhDong": "giu",
-      "lyDo": "Chép nguyên văn tiêu đề phân nhóm WCO 151221; fact dương + value=true bám đúng tiêu đề, không thêm chữ ngoài trích [wco.151221] ✓"
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT — cùng lớp lỗi với tieuChi6[0]: WCO 151221 nói \"crude\" mà fact ghi token trần \"tho\" (không có \"dầu\"). Trong nguồn 1512 chỉ dùng \"dầu thô\" (biểu thuê 15122100 \"Dầu thô, đã hoặc chưa khử gossypol\"; ch15.chuong \"dầu thô\"), chưa bao giờ \"thô\" trần. Sửa \"tho\" → \"dau_tho\" cho khớp mẫu nhà 1513/1514 và khớp mẫu \"khac_dau_tho\" của 1512.29.",
+      "sua": {
+        "fact": "la_dau_hat_bong_va_cac_phan_phan_doan_cua_chung_dau_tho_da_hoac_chua_khu_gossypol_khong_thay_doi_ve_mat_hoa_hoc"
+      }
     },
     {
       "index": "tieuChi6[3]",
       "hanhDong": "giu",
-      "lyDo": "Chép nguyên văn tiêu đề phân nhóm WCO 151229; fact dương + value=true bám đúng tiêu đề, không thêm chữ ngoài trích [wco.151229] ✓"
+      "lyDo": "WCO 151229 \"other than crude, whether or not refined, but not chemically modified\" ⇒ fact \"khac_dau_tho, da_hoac_chua_tinh_che\" — đối xứng với 1512.21 sau khi sửa \"crude\" thành \"dau_tho\"."
+    },
+    {
+      "index": "cay.tenDien[0]",
+      "hanhDong": "giu",
+      "lyDo": "Khối cây do MÁY sinh từ lib/hs-tree.js — không sửa. tenVi dịch từ [wco.151219], đã đối chiếu lại với tiêu đề WCO (145 ký tự byte-exact)."
+    },
+    {
+      "index": "cay.tenDien[1]",
+      "hanhDong": "giu",
+      "lyDo": "Khối cây do MÁY sinh từ lib/hs-tree.js — không sửa. tenVi dịch từ [wco.151229], đã đối chiếu lại với tiêu đề WCO (127 ký tự byte-exact)."
     },
     {
       "index": "dong8[0]",
       "hanhDong": "giu",
-      "lyDo": "tax.15121100: \"Dầu thô\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15121100] (20 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[1]",
       "hanhDong": "giu",
-      "lyDo": "tax.15121910: \"- Các phần phân đoạn của dầu hướng dương hoặc dầu cây rum chưa tinh chế\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15121910] (84 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[2]",
       "hanhDong": "giu",
-      "lyDo": "tax.15121920: \"- Đã tinh chế\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15121920] (26 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[3]",
       "hanhDong": "giu",
-      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151219 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
+      "lyDo": "Dòng \"Loại khác\" (biểu thuê chỉ ghi \"- - - Loại khác\") ⇒ lấy điều kiện cấp phân nhóm từ [wco.151219] theo luật 6; \"Loại khác\" là tiền tố máy tự gắn, tieuChi null là đúng (dòng không có tiêu chí phân biệt). LƯU Ý: dieuKien dài 149 > trần clip runtime 90 — đây là văn phong \"Loại khác: <tên WCO>\" đã đo 3304/6227 mục toàn corpus (mẫu nhà, cấp máy), không phải lỗi riêng của lô này."
     },
     {
       "index": "dong8[4]",
       "hanhDong": "giu",
-      "lyDo": "tax.15122100: \"Dầu thô, đã hoặc chưa khử gossypol\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15122100] (47 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[5]",
       "hanhDong": "giu",
-      "lyDo": "tax.15122910: \"- Các phần phân đoạn của dầu hạt bông chưa tinh chế\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15122910] (64 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[6]",
       "hanhDong": "giu",
-      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151229 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
+      "lyDo": "Dòng \"Loại khác\" (biểu thuê chỉ ghi \"- - - Loại khác\") ⇒ lấy điều kiện cấp phân nhóm từ [wco.151229] theo luật 6; \"Loại khác\" là tiền tố máy tự gắn, tieuChi null là đúng (dòng không có tiêu chí phân biệt). LƯU Ý: dieuKien dài 131 > trần clip runtime 90 — đây là văn phong \"Loại khác: <tên WCO>\" đã đo 3304/6227 mục toàn corpus (mẫu nhà, cấp máy), không phải lỗi riêng của lô này."
     }
   ]
 }

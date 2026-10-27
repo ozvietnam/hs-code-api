@@ -1,210 +1,144 @@
 {
   "nhom": "1513",
-  "gopVoi": "soát độc lập lô 060 (PR #479) — người soát KHÁC người soạn",
+  "gopVoi": "soát độc lập lô 060 — vòng 3 (PR #480) — người soát KHÁC người soạn dev-zcode-mm",
   "thayDoi": [
     {
       "index": "phamVi",
       "hanhDong": "giu",
-      "lyDo": "3 phần ngang hàng (A) DẦU (COPRA) DỪA · (B) DẦU HẠT CỌ · (C) DẦU CỌ BA-BA-SU; `text` nêu đủ 3 tiêu đề nối bằng \"…\" ✓; trich nguyên văn [nhom1513.nhom]. 44 ký tự < 220 ✓"
+      "lyDo": "Phạm vi nhóm = 3 tiêu đề phần ngang hàng (A) DẦU (COPRA) DỪA · (B) DẦU HẠT CỌ · (C) DẦU CỌ BA-BA-SU, nối bằng \"…\" (luật lô 030). trich gom nguyên văn từ [nhom1513.nhom]."
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "Nhóm không có khối bộ phận riêng trong nguồn (các tiêu đề phần (A)/(B)/(C) là các phần ngang hàng đã nêu ở phamVi, không phải bộ phận của cùng một hàng) ⇒ để null là đúng mẫu nhà."
     },
     {
       "index": "dieuKienVao[0]",
       "hanhDong": "giu",
-      "lyDo": "Cùng câu ràng buộc (B) Chương 15 như 1512 (phủ 15.07–15.15, 1513 nằm trong dải); vế \"đã hoặc chưa tinh chế\" đã lược khỏi cả trích lẫn `fact` ✓; fact dương + value=true đúng chiều ✓"
+      "lyDo": "Cùng lý do 1512: chú giải riêng nhóm 1513 chỉ có 3 tiêu đề phần + trích 1507.10 ⇒ mượn câu (B) Chú giải Chương 15 (phủ cả dải 15.07–15.15). Vế \"đã hoặc chưa tinh chế\" (câu CHO PHÉP) đã lược khỏi cả trích lẫn fact."
     },
     {
       "index": "tieuChi6[0]",
       "hanhDong": "giu",
-      "lyDo": "Chép nguyên văn tiêu đề phân nhóm WCO 151311; fact dương + value=true bám đúng tiêu đề, không thêm chữ ngoài trích [wco.151311] ✓"
+      "lyDo": "WCO 151311 \"coconut (copra) oil and its fractions, crude, not chemically modified\" ⇒ fact dùng \"dau_tho\" (khớp mẫu nhà và khớp 1512 sau khi sửa)."
     },
     {
       "index": "tieuChi6[1]",
       "hanhDong": "giu",
-      "lyDo": "Chép nguyên văn tiêu đề phân nhóm WCO 151319; fact dương + value=true bám đúng tiêu đề, không thêm chữ ngoài trích [wco.151319] ✓"
+      "lyDo": "WCO 151319 \"other than crude, whether or not refined, but not chemically modified\" ⇒ \"khac_dau_tho, da_hoac_chua_tinh_che\" — đối xứng với 1513.11."
     },
     {
       "index": "tieuChi6[2]",
       "hanhDong": "giu",
-      "lyDo": "Chép nguyên văn tiêu đề phân nhóm WCO 151321; fact dương + value=true bám đúng tiêu đề, không thêm chữ ngoài trích [wco.151321] ✓"
+      "lyDo": "WCO 151321 \"palm kernel or babassu oil and their fractions, crude, not chemically modified\" ⇒ \"dau_tho\" — khớp mẫu nhà."
     },
     {
       "index": "tieuChi6[3]",
       "hanhDong": "giu",
-      "lyDo": "Chép nguyên văn tiêu đề phân nhóm WCO 151329; fact dương + value=true bám đúng tiêu đề, không thêm chữ ngoài trích [wco.151329] ✓"
+      "lyDo": "WCO 151329 \"other than crude, whether or not refined, but not chemically modified\" ⇒ \"khac_dau_tho, da_hoac_chua_tinh_che\" — đối xứng với 1513.21."
+    },
+    {
+      "index": "cay.tenDien[0]",
+      "hanhDong": "giu",
+      "lyDo": "Khối cây do MÁY sinh từ lib/hs-tree.js — không sửa. tenVi dịch từ [wco.151311], đã đối chiếu lại với tiêu đề WCO (92 ký tự byte-exact)."
+    },
+    {
+      "index": "cay.tenDien[1]",
+      "hanhDong": "giu",
+      "lyDo": "Khối cây do MÁY sinh từ lib/hs-tree.js — không sửa. tenVi dịch từ [wco.151319], đã đối chiếu lại với tiêu đề WCO (131 ký tự byte-exact)."
+    },
+    {
+      "index": "cay.tenDien[2]",
+      "hanhDong": "giu",
+      "lyDo": "Khối cây do MÁY sinh từ lib/hs-tree.js — không sửa. tenVi dịch từ [wco.151321], đã đối chiếu lại với tiêu đề WCO (101 ký tự byte-exact)."
+    },
+    {
+      "index": "cay.tenDien[3]",
+      "hanhDong": "giu",
+      "lyDo": "Khối cây do MÁY sinh từ lib/hs-tree.js — không sửa. tenVi dịch từ [wco.151329], đã đối chiếu lại với tiêu đề WCO (140 ký tự byte-exact)."
     },
     {
       "index": "dong8[0]",
-      "hanhDong": "giu",
-      "lyDo": "tax.15131110: \"DẦU DỪA NGUYÊN CHẤT\nDầu dừa nguyên chất (VCO) là dầu tự nhiên thu được bằng cách chiết xuất cơ học từ cùi dừa già còn tươi.\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT — tràn trần clip runtime. `dieuKien` dài 101 ký tự > trần clip 90 của lib/so-tay-gates.js:139 ⇒ runtime cắt đúng giữa từ, mất vế \"già còn tươi\" (đặc tính \"còn tươi\" mới là điều kiện phân biệt dầu dừa nguyên chất VCO với dầu dừa đã sấy). Đây là cùng lớp lỗi vòng 1 đã sửa cho phamVi.text / loaiTru.dieuKien / phanBiet.hoi. Sửa: bỏ liên từ \"thu được bằng cách\", giữ nguyên mọi từ có nghĩa (\"dầu tự nhiên\", \"chiết xuất cơ học\", \"cùi dừa già còn tươi\") ⇒ còn 82 ký tự, không còn bị cắt. `trich` giữ nguyên (byte-exact sen.15131110), `tieuChi.fact` không đổi.",
+      "sua": {
+        "dieuKien": "Dầu dừa nguyên chất (VCO) — dầu tự nhiên chiết xuất cơ học từ cùi dừa già còn tươi"
+      }
     },
     {
       "index": "dong8[1]",
       "hanhDong": "giu",
-      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151311 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
+      "lyDo": "Dòng \"Loại khác\" (biểu thuê chỉ ghi \"- - - Loại khác\") ⇒ lấy điều kiện cấp phân nhóm từ [wco.151311] theo luật 6; \"Loại khác\" là tiền tố máy tự gắn, tieuChi null là đúng (dòng không có tiêu chí phân biệt). LƯU Ý: dieuKien dài 96 > trần clip runtime 90 — đây là văn phong \"Loại khác: <tên WCO>\" đã đo 3304/6227 mục toàn corpus (mẫu nhà, cấp máy), không phải lỗi riêng của lô này."
     },
     {
       "index": "dong8[2]",
       "hanhDong": "giu",
-      "lyDo": "tax.15131910: \"- Các phần phân đoạn của dầu dừa chưa tinh chế\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15131910] (59 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[3]",
       "hanhDong": "giu",
-      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151319 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
+      "lyDo": "Dòng \"Loại khác\" (biểu thuê chỉ ghi \"- - - Loại khác\") ⇒ lấy điều kiện cấp phân nhóm từ [wco.151319] theo luật 6; \"Loại khác\" là tiền tố máy tự gắn, tieuChi null là đúng (dòng không có tiêu chí phân biệt). LƯU Ý: dieuKien dài 135 > trần clip runtime 90 — đây là văn phong \"Loại khác: <tên WCO>\" đã đo 3304/6227 mục toàn corpus (mẫu nhà, cấp máy), không phải lỗi riêng của lô này."
     },
     {
       "index": "dong8[4]",
       "hanhDong": "giu",
-      "lyDo": "tax.15132110: \"DẦU HẠT CỌ VÀ CÁC PHÂN PHÂN ĐOẠN CỦA CHÚNG\nCọ dầu dùng để sản xuất hai loại dầu: dầu cọ thô từ sợi xơ và dầu hạt cọ thô từ nhân hạt. Mặc dù cả hai loại dầu có nguồn gốc từ cùng một quả, dầu cọ khác dầu hạt cọ về mặt hóa học và dinh dưỡng.\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Dòng 15132110: dieuKien \"Dầu hạt cọ thô từ nhân hạt\" lấy từ vế phân biệt của câu SEN (\"dầu cọ thô từ sợi xơ và dầu hạt cọ thô từ nhân hạt\") — đúng dòng biểu thuê \"Dầu hạt cọ (SEN)\"; \"thô\" khớp wco.151321 \"crude\"."
     },
     {
       "index": "dong8[5]",
       "hanhDong": "giu",
-      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151321 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
+      "lyDo": "Dòng \"Loại khác\" (biểu thuê chỉ ghi \"- - - Loại khác\") ⇒ lấy điều kiện cấp phân nhóm từ [wco.151321] theo luật 6; \"Loại khác\" là tiền tố máy tự gắn, tieuChi null là đúng (dòng không có tiêu chí phân biệt). LƯU Ý: dieuKien dài 105 > trần clip runtime 90 — đây là văn phong \"Loại khác: <tên WCO>\" đã đo 3304/6227 mục toàn corpus (mẫu nhà, cấp máy), không phải lỗi riêng của lô này."
     },
     {
       "index": "dong8[6]",
       "hanhDong": "giu",
-      "lyDo": "tax.15132911: \"Olein hạt cọ là thành phần lỏng trong của dầu hạt cọ thu được từ cất phân đoạn. Stearin hạt cọ là phần rắn hơn của nhân hạt cọ thu được từ cất phân đoạn.\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Dòng 15132911: dieuKien bám đúng câu SEN về Stearin (\"Stearin hạt cọ là phần rắn hơn của nhân hạt cọ thu được từ cất phân đoạn\") — đúng dòng biểu thuê \"Các phần phân đoạn thể rắn của dầu hạt cọ chưa tinh chế\". Khối SEN gộp chung nên câu trích mở đầu bằng câu về Olein là do nguồn, không phải lỗi."
     },
     {
       "index": "dong8[7]",
       "hanhDong": "giu",
-      "lyDo": "tax.15132912: \"- - Các phần phân đoạn thể rắn của dầu cọ ba-ba-su chưa tinh chế\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15132912] (77 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[8]",
       "hanhDong": "giu",
-      "lyDo": "tax.15132913: \"- - Loại khác, của dầu hạt cọ chưa tinh chế (olein hạt cọ) (SEN)\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15132913] (77 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[9]",
       "hanhDong": "giu",
-      "lyDo": "tax.15132914: \"- - Loại khác, của dầu cọ ba-ba-su chưa tinh chế\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15132914] (61 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[10]",
       "hanhDong": "giu",
-      "lyDo": "tax.15132991: \"- - Các phần phân đoạn thể rắn của dầu hạt cọ (SEN)\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15132991] (64 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[11]",
       "hanhDong": "giu",
-      "lyDo": "tax.15132992: \"- - Các phần phân đoạn thể rắn của dầu cọ ba-ba-su\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15132992] (63 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[12]",
       "hanhDong": "giu",
-      "lyDo": "tax.15132994: \"- - Olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15132994] (64 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[13]",
       "hanhDong": "giu",
-      "lyDo": "tax.15132995: \"- - Dầu hạt cọ, đã tinh chế, tẩy và khử mùi (RBD) (SEN)\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15132995] (68 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[14]",
       "hanhDong": "giu",
-      "lyDo": "tax.15132996: \"- - Loại khác, của dầu hạt cọ (SEN)\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15132996] (48 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[15]",
       "hanhDong": "giu",
-      "lyDo": "tax.15132997: \"- - Loại khác, của dầu cọ ba-ba-su\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
-    },
-    {
-      "index": "tieuChi6[0]",
-      "hanhDong": "sua",
-      "lyDo": "LỖI SLUG HỎNG KÝ TỰ (bộ sinh lô 060 hỏng dấu) — \"duna\" → \"dua\" theo đúng từ nguồn; mẫu nhà đã dùng \"dua\" (0707/0711/0713/0801) và \"chu_yeu\" (14 nhóm). Sửa token, giữ nguyên phần còn lại.",
-      "sua": {
-        "fact": "la_dau_dua_copra_va_cac_phan_phan_doan_cua_chung_dau_tho_khong_thay_doi_ve_mat_hoa_hoc"
-      }
-    },
-    {
-      "index": "tieuChi6[1]",
-      "hanhDong": "sua",
-      "lyDo": "LỖI SLUG HỎNG KÝ TỰ (bộ sinh lô 060 hỏng dấu) — \"duna\" → \"dua\" theo đúng từ nguồn; mẫu nhà đã dùng \"dua\" (0707/0711/0713/0801) và \"chu_yeu\" (14 nhóm). Sửa token, giữ nguyên phần còn lại.",
-      "sua": {
-        "fact": "la_dau_dua_copra_va_cac_phan_phan_doan_cua_chung_khac_dau_tho_da_hoac_chua_tinh_che_khong_thay_doi_ve_mat_hoa_hoc"
-      }
-    },
-    {
-      "index": "dong8[0]",
-      "hanhDong": "sua",
-      "lyDo": "LỖI SLUG HỎNG KÝ TỰ (bộ sinh lô 060 hỏng dấu) — \"duna\" → \"dua\" theo đúng từ nguồn; mẫu nhà đã dùng \"dua\" (0707/0711/0713/0801) và \"chu_yeu\" (14 nhóm). Sửa token, giữ nguyên phần còn lại.",
-      "sua": {
-        "tieuChi": {
-          "fact": "la_dau_dua_nguyen_chat_thu_duoc_bang_cach_chiet_xuat_co_mechanic_tu_cui_dua_gia_con_tuoi",
-          "op": "=",
-          "value": true,
-          "donVi": null
-        }
-      }
-    },
-    {
-      "index": "dong8[2]",
-      "hanhDong": "sua",
-      "lyDo": "LỖI SLUG HỎNG KÝ TỰ (bộ sinh lô 060 hỏng dấu) — \"duna\" → \"dua\" theo đúng từ nguồn; mẫu nhà đã dùng \"dua\" (0707/0711/0713/0801) và \"chu_yeu\" (14 nhóm). Sửa token, giữ nguyên phần còn lại.",
-      "sua": {
-        "tieuChi": {
-          "fact": "la_cac_phan_phan_doan_cua_dau_dua_chua_tinh_che",
-          "op": "=",
-          "value": true,
-          "donVi": null
-        }
-      }
-    },
-    {
-      "index": "dong8[6]",
-      "hanhDong": "sua",
-      "lyDo": "LỖI SLUG HỎNG KÝ TỰ (bộ sinh lô 060 hỏng dấu) — \"rac\" → \"ran\" theo đúng từ nguồn; mẫu nhà đã dùng \"dua\" (0707/0711/0713/0801) và \"chu_yeu\" (14 nhóm). Sửa token, giữ nguyên phần còn lại.",
-      "sua": {
-        "tieuChi": {
-          "fact": "la_stearin_hat_co_la_phan_ran_hon_cua_nhan_hat_co",
-          "op": "=",
-          "value": true,
-          "donVi": null
-        }
-      }
-    },
-    {
-      "index": "dong8[7]",
-      "hanhDong": "sua",
-      "lyDo": "LỖI SLUG HỎNG KÝ TỰ (bộ sinh lô 060 hỏng dấu) — \"rac\" → \"ran\" theo đúng từ nguồn; mẫu nhà đã dùng \"dua\" (0707/0711/0713/0801) và \"chu_yeu\" (14 nhóm). Sửa token, giữ nguyên phần còn lại.",
-      "sua": {
-        "tieuChi": {
-          "fact": "la_phan_phan_doan_the_ran_cua_dau_co_ba_ba_su_chua_tinh_che",
-          "op": "=",
-          "value": true,
-          "donVi": null
-        }
-      }
-    },
-    {
-      "index": "dong8[10]",
-      "hanhDong": "sua",
-      "lyDo": "LỖI SLUG HỎNG KÝ TỰ (bộ sinh lô 060 hỏng dấu) — \"rac\" → \"ran\" theo đúng từ nguồn; mẫu nhà đã dùng \"dua\" (0707/0711/0713/0801) và \"chu_yeu\" (14 nhóm). Sửa token, giữ nguyên phần còn lại.",
-      "sua": {
-        "tieuChi": {
-          "fact": "la_phan_phan_doan_the_ran_cua_dau_hat_co",
-          "op": "=",
-          "value": true,
-          "donVi": null
-        }
-      }
-    },
-    {
-      "index": "dong8[11]",
-      "hanhDong": "sua",
-      "lyDo": "LỖI SLUG HỎNG KÝ TỰ (bộ sinh lô 060 hỏng dấu) — \"rac\" → \"ran\" theo đúng từ nguồn; mẫu nhà đã dùng \"dua\" (0707/0711/0713/0801) và \"chu_yeu\" (14 nhóm). Sửa token, giữ nguyên phần còn lại.",
-      "sua": {
-        "tieuChi": {
-          "fact": "la_phan_phan_doan_the_ran_cua_dau_co_ba_ba_su",
-          "op": "=",
-          "value": true,
-          "donVi": null
-        }
-      }
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15132997] (47 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     }
   ]
 }

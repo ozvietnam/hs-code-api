@@ -1,287 +1,164 @@
 {
   "nhom": "1517",
-  "gopVoi": "soát độc lập lô 060 (PR #479) — người soát KHÁC người soạn",
+  "gopVoi": "soát độc lập lô 060 — vòng 3 (PR #480) — người soát KHÁC người soạn dev-zcode-mm",
   "thayDoi": [
     {
       "index": "phamVi",
-      "hanhDong": "sua",
-      "lyDo": "HAI LỖI MÁY KHÔNG BẬT — lỗi nặng nhất lô 060. (1) `text` 373 ký tự > trần clip 220 ⇒ runtime cắt đúng tại \"trừ cá…\", MẤT VẾ LOẠI TRỪ \"trừ các loại thuộc nhóm 15.16\" (ranh giới quan trọng nhất của nhóm 1517: chất béo đã chuyển đổi hoá học sang 15.16) VÀ mất cả hai tiêu đề phần (A)/(B) — đúng mẫu lỗi lô 038 và đúng cách lô 058 xử lý 1502/1503/1504 (cắt mất vế loại trừ là mất ranh giới của nhóm). (2) `trich` 356 ký tự — vùng im lặng 301–600, luật soạn là ≤300. (3) `text` có \"hoặc vi sinh vật\" ở tiêu đề phần (B) trong khi câu trích bị cắt trước đó ⇒ `text` thêm chữ không có trong câu trích (lớp lỗi brief mục 8). SỬA `text` rút xuống 217 ký tự: giữ chủ thể, vế \"các hỗn hợp hoặc chế phẩm thực phẩm ăn được\", nguồn gốc \"động vật hoặc thực vật\", TRỌN vế loại trừ \"trừ các loại thuộc nhóm 15.16\" và cả hai tiêu đề phần (A) Margarin (trừ margarin lỏng) / (B) Hỗn hợp hoặc chế phẩm ăn được. SỬA `trich` rút xuống 231 ký tự, lấy nguyên văn 4 mảnh: câu phạm vi (cắt bớt vế \"hoặc từ các phân đoạn của các loại chất béo hoặc dầu khác nhau thuộc Chương này\" — vế mở rộng, không phải điều kiện), \"trừ các loại thuộc nhóm 15.16.\", \"(A) Margarin (trừ margarin lỏng),\" và \"(B) Hỗn hợp hoặc chế phẩm ăn được\". Bỏ \"vi sinh vật\" ở `text` cho khớp câu trích — thông tin vi sinh vật vẫn còn ở tieuChi6[1] của chính nhóm này (\"…của chất béo hoặc dầu động vật thực vị sinh vật…\") ✓. Mọi từ trong `text` có trong câu trích ✓.",
-      "sua": {
-        "text": "Nhóm này bao gồm margarin và các hỗn hợp hoặc chế phẩm thực phẩm ăn được từ chất béo hoặc dầu động vật hoặc thực vật, trừ các loại thuộc nhóm 15.16… (A) Margarin (trừ margarin lỏng)… (B) Hỗn hợp hoặc chế phẩm ăn được.",
-        "trich": "Nhóm này bao gồm margarin và các hỗn hợp có thể ăn được khác hoặc chế phẩm thực phẩm làm từ chất béo hoặc dầu động vật hoặc thực vật…trừ các loại thuộc nhóm 15.16.…(A) Margarin (trừ margarin lỏng),…(B) Hỗn hợp hoặc chế phẩm ăn được"
-      }
+      "hanhDong": "giu",
+      "lyDo": "Phạm vi nhóm = câu định nghĩa kèm vế loại trừ \"trừ các loại thuộc nhóm 15.16\" (ranh giới quan trọng nhất của nhóm) + 2 tiêu đề phần (A) Margarin (trừ margarin lỏng) · (B) Hỗn hợp hoặc chế phẩm ăn được. Vòng 1 đã rút từ 373 xuống 217 ký tự để không bị trần clip runtime cắt mất vế loại trừ."
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "Nhóm không có khối bộ phận riêng trong nguồn (các tiêu đề phần (A)/(B)/(C) là các phần ngang hàng đã nêu ở phamVi, không phải bộ phận của cùng một hàng) ⇒ để null là đúng mẫu nhà."
     },
     {
       "index": "dieuKienVao[0]",
       "hanhDong": "giu",
-      "lyDo": "Chính chú giải NHÓM 1517: \"Nhóm này bao gồm margarin và các hỗn hợp có thể ăn được khác hoặc chế phẩm thực phẩm làm từ chất béo hoặc dầu …, trừ các loại thuộc nhóm 15.16.\" — điều kiện VÀO nhóm, phủ cả nhóm ✓; fact dương + value=true (vế \"trừ 15.16\" nằm trong chính câu) ✓"
+      "lyDo": "Câu định nghĩa phạm vi của chính nhóm, kèm vế loại trừ \"trừ các loại thuộc nhóm 15.16\"; trich giữ trọn câu (244 ký tự, không lược) nên không mất ngoại lệ."
     },
     {
       "index": "dieuKienVao[1]",
       "hanhDong": "giu",
-      "lyDo": "Câu \"Cũng thuộc trong nhóm này là các chế phẩm ăn được làm từ một loại chất béo hoặc dầu đơn (hoặc các phân đoạn của nó), … đã được chế biến bằng cách nhũ hoá, nhào trộn, thay đổi kết cấu v.v.\" — điều kiện VÀO nhóm phủ cả nhóm ✓. Vế \"đã hoặc chưa hydro hoá\" là câu CHO PHÉP nên đã lược khỏi cả trích lẫn `fact` ✓"
+      "lyDo": "Câu \"Cũng thuộc trong nhóm này là các chế phẩm ăn được làm từ một loại chất béo hoặc dầu đơn (hoặc các phân đoạn của nó),…đã được chế biến bằng cách nhũ hoá, nhào trộn, thay đổi kết cấu v.v.\" Vế \"đã hoặc chưa hydro hoá\" là câu CHO PHÉP nên lược, và fact cũng KHÔNG khẳng định vế đó (nằm ở dieuKienVao[2])."
     },
     {
       "index": "dieuKienVao[2]",
       "hanhDong": "giu",
-      "lyDo": "Câu \"Nhóm này bao gồm chất béo và dầu đã hydro hóa, este hóa liên hợp, tái este hóa hoặc elaidin hóa … trong trường hợp mà việc thay đổi liên quan đến nhiều hơn một chất béo hoặc dầu.\" — đây là VẾ ĐÚNG của điều kiện (phần bù với loại trừ \"chỉ liên quan đến một loại\" → 1516) ✓; fact dương + value=true ✓. KHÔNG trái với loaiTru[1] (vế \"chỉ\" thuộc 1516) ✓"
+      "lyDo": "Câu phủ vế giới hạn \"việc thay đổi liên quan đến nhiều hơn một loại chất béo hoặc dầu\" — đối xứng với loaiTru[1] (\"chỉ liên quan đến một loại\"); mất vế này là ĐẢO CHIỀU luật."
     },
     {
       "index": "dieuKienVao[3]",
       "hanhDong": "giu",
-      "lyDo": "Câu \"Nhóm này không bao gồm chất béo và dầu đơn đã tinh lọc một cách giản đơn, mà không xử lý tiếp\" — loại trừ, nên fact dương + value=FALSE là đúng chiều (mẫu nhà 1501/1502/1503/1504: 73 mục đã gộp) ✓. Câu trích dừng ở \";\" — vế sau (\"các loại dầu, chất béo này được phân loại trong nhóm tương ứng…\") chỉ là nơi đi tiếp, không phải điều kiện ✓"
+      "lyDo": "Câu phủ định \"không bao gồm chất béo và dầu đơn đã tinh lọc một cách giản đơn, mà không xử lý tiếp\" ⇒ value=false (mẫu nhà: 81/81 mục value=false trong corpus không bắt đầu bằng \"khong_\"). Vế \"ngay cả khi được đóng gói để bán lẻ\" là câu CHO PHÉP nên cắt khỏi trích."
     },
     {
       "index": "loaiTru[0]",
-      "hanhDong": "sua",
-      "lyDo": "TRÀN CLIP NHẸ — `dieuKien` 59 ký tự > trần 55 ⇒ runtime cắt đuôi đúng chỗ \"…mỡ khổ của lợn\" thành \"…mỡ khổ của…\", MẤT chữ \"lợn\" — tức mất luôn loại động vật xác định sản phẩm bị loại trừ (đối chiếu lô 058: 1503 loaiTru[0] 59→53, cùng lớp lỗi). SỬA: rút xuống 47 ký tự = \"Sản phẩm ép tallow hoặc mỡ lá và mỡ khổ của lợn\" (bỏ \"thu được từ\", giữ trọn cả ba chủ thể tallow / mỡ lá / mỡ khổ của lợn và giữ đúng vế \"hoặc\" của nguồn). Câu trích giữ nguyên — đã có dấu hiệu loại trừ \"không bao gồm\" và đích danh \"(nhóm 15.03)\" ✓.",
-      "sua": {
-        "dieuKien": "Sản phẩm ép tallow hoặc mỡ lá và mỡ khổ của lợn"
-      }
+      "hanhDong": "giu",
+      "lyDo": "Câu nguồn có DẤU HIỆU LOẠI TRỪ (\"nhóm không bao gồm …\") và NÊU ĐÍCH DANH nhóm đích \"(nhóm 15.03)\". dieuKien (47 ký tự ≤ trần clip 55) giữ nguyên danh từ nguồn: sản phẩm ép tallow hoặc mỡ lá và mỡ khổ của lợn."
     },
     {
       "index": "loaiTru[1]",
-      "hanhDong": "sua",
-      "lyDo": "HAI LỖI MÁY KHÔNG BẬT. (1) `dieuKien` 190 ký tự > trần clip 55 ⇒ runtime chỉ in \"Chất béo và dầu đã hydro hóa, este hóa liên hợp, tái es…\", CẮT MẤT vế quyết định \"trong trường hợp mà việc thay đổi chỉ liên quan đến một loại chất béo hoặc dầu\". Đọc cụt thành \"mọi dầu đã hydro/este/elaidin hóa → 15.16\" — NGƯỢC CHIỀU với nguồn: nguồn chỉ đưa vế \"chỉ liên quan đến MỘT loại\" sang 15.16, còn vế \"nhiều hơn một loại\" thì ở lại 1517 (đã ghi ở dieuKienVao[2]). Đây là lỗi nghiêm trọng nhất về nghĩa (đối chiếu lô 058: 1504 loaiTru[0] cùng lớp \"mất toàn bộ vế phân biệt\"). SỬA: rút xuống 53 ký tự, giữ TRỌN định ngữ giới hạn — \"Thay đổi chỉ liên quan đến một loại chất béo hoặc dầu\" (chủ thể \"chất béo và dầu đã hydro/este/elaidin hóa\" đã có ở dieuKienVao[2] của chính nhóm này). (2) `trich` bản nháp bắt đầu giữa câu (\"chất béo và dầu đã hydro hóa…\") nên KHÔNG có dấu hiệu loại trừ — người đọc không biết đây là mục loại trừ (đúng lớp lỗi lô 058 sửa ở 1504 dieuKienVao[1]: mệnh đề bị lược mất vế đối lập). SỬA `trich`: mở đầu bằng \"nhóm không bao gồm …\" (225 ký tự) — lấy nguyên văn dấu hiệu loại trừ, phần bị lược là vế SONG SONG (sản phẩm ép tallow → 15.03, đã ghi ở loaiTru[0] của chính nhóm) chứ không phải điều kiện của vế giữ; toàn bộ vế \"chỉ liên quan đến một loại\" vẫn nguyên vẹn ✓.",
-      "sua": {
-        "dieuKien": "Thay đổi chỉ liên quan đến một loại chất béo hoặc dầu",
-        "trich": "nhóm không bao gồm … chất béo và dầu đã hydro hóa, este hóa liên hợp, tái este hóa hoặc đã elaidin hóa hoặc các phân đoạn của chúng, trong trường hợp mà việc thay đổi chỉ liên quan đến một loại chất béo hoặc dầu (nhóm 15.16)."
-      }
+      "hanhDong": "giu",
+      "lyDo": "Câu nguồn có DẤU HIỆU LOẠI TRỪ và NÊU ĐÍCH DANH nhóm đích \"(nhóm 15.16)\". dieuKien giữ TRỌN vế giới hạn \"chỉ liên quan đến một loại chất béo hoặc dầu\" (53 ký tự ≤ trần clip 55) — đây là vế quyết định (đối xứng với \"nhiều hơn một\" của 1516); bỏ vế này là đảo chiều. Dấu \"…\" trong trich chỉ lược vế loại trừ SONG SANG (ép tallow → 15.03) đã có mục riêng loaiTru[0]."
     },
     {
       "index": "phanBiet[0]",
       "hanhDong": "giu",
-      "lyDo": "\"Hàng là sản phẩm thu được từ ép tallow hoặc mỡ lá và mỡ khổ của lợn hay là hỗn hợp hoặc chế phẩm ăn được?\" — Có (sản phẩm ép tallow/mỡ lợn) ⇒ 1503 (đích danh trong trích), Không ⇒ 1517 (nhóm). 105 ký tự < trần clip 110 ✓, `hoi` không nhắc mã ✓. Dạng \"hay là\" đúng mẫu nhà (1503 phanBiet[0]/[1], 1504 phanBiet[1]/[2] đã gộp) vì hai vế loại trừ trùng nhau ✓. GIỮ."
+      "lyDo": "Câu hỏi dạng \"A hay là B\": vế đầu (ép tallow / mỡ lá và mỡ khổ của lợn) → 1503, vế sau (hỗn hợp hoặc chế phẩm ăn được) → 1517 (chính nhóm) — đúng quy ước \"neuCo = vế ĐẦU\". Mã 1503 nêu nguyên văn trong trich."
     },
     {
       "index": "phanBiet[1]",
-      "hanhDong": "sua",
-      "lyDo": "TRÀN CLIP MẤT VẾ QUYẾT ĐỊNH — `hoi` 171 ký tự > trần clip 110 ⇒ runtime cắt mất \"…chỉ liên quan đến một loại…\" (vế phân biệt 1516 với 1517) và \"…hay là hỗn hợp hoặc chế phẩm ăn được?\" (câu hỏi mất dấu hỏi, không còn dạng câu hỏi). Ngoài ra vế \"hay là hỗn hợp hoặc chế phẩm ăn được?\" không có trong câu trích dẫn (trích chỉ nêu vế \"chỉ liên quan đến một loại\") ⇒ gộp vế ngoài câu. SỬA: đổi sang dạng CÓ/KHÔNG (luật lô 055), rút xuống 105 ký tự — \"Hàng là chất béo và dầu đã hydro hóa, este hóa hoặc elaidin hóa mà thay đổi chỉ liên quan một loại không?\". Giữ cả ba phép hoá chế của nguồn (riêng \"tái este hóa\" vốn được nguồn gọi là \"chất béo và dầu este hóa\" nên đã nằm trong \"este hóa\") và TRỌN vế giới hạn \"chỉ liên quan một loại\"; chiều Có/Không giữ nguyên (Có ⇒ 15.16, Không ⇒ 1517) ✓. Câu trích giữ nguyên — đã có đích danh \"(nhóm 15.16)\" ✓.",
-      "sua": {
-        "hoi": "Hàng là chất béo và dầu đã hydro hóa, este hóa hoặc elaidin hóa mà thay đổi chỉ liên quan một loại không?"
-      }
+      "hanhDong": "giu",
+      "lyDo": "Câu hỏi CÓ/KHÔNG hỏi đúng vế giới hạn \"chỉ liên quan một loại\" (đối xứng với dieuKienVao[2] \"nhiều hơn một loại\"); nhánh có→1516 (nêu nguyên văn trong trich), không→1517 (chính nhóm). hoi 105 ký tự ≤ trần clip 110 — nén bớt danh sách 4 phép hoá chế để KHÔNG tràn trần (nếu viết đủ sẽ 158 ký tự và bị runtime cắt giữa câu)."
     },
     {
       "index": "tieuChi6[0]",
       "hanhDong": "giu",
-      "lyDo": "Chép nguyên văn tiêu đề phân nhóm WCO 151710; fact dương + value=true bám đúng tiêu đề, không thêm chữ ngoài trích [wco.151710] ✓"
+      "lyDo": "WCO 151710 \"Margarine; excluding liquid margarine\" ⇒ \"la_margarin_tru_margarin_long\" — đúng chiều \"excluding\"."
     },
     {
       "index": "tieuChi6[1]",
       "hanhDong": "giu",
-      "lyDo": "Chép nguyên văn tiêu đề phân nhóm WCO 151790; fact dương + value=true bám đúng tiêu đề, không thêm chữ ngoài trích [wco.151790] ✓"
+      "lyDo": "WCO 151790 \"Edible mixtures or preparations of animal, vegetable or microbial fats or oils …, other than edible fats and oils or their fractions of heading 15.16\" ⇒ fact dịch đúng chiều \"other than\" thành \"trừ … thuộc nhóm 1516\"; vế \"n.e.c. in heading 1517\" bị bỏ ⇒ fact nói ÍT hơn câu trích, không đảo chiều."
     },
     {
       "index": "dong8[0]",
       "hanhDong": "giu",
-      "lyDo": "tax.15171010: \"Đóng bao bì kín khí để bán lẻ\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15171010] (42 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[1]",
       "hanhDong": "giu",
-      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151710 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
+      "lyDo": "Dòng \"Loại khác\" (biểu thuê chỉ ghi \"- - - Loại khác\") ⇒ lấy điều kiện cấp phân nhóm từ [wco.151710] theo luật 6; \"Loại khác\" là tiền tố máy tự gắn, tieuChi null là đúng (dòng không có tiêu chí phân biệt)."
     },
     {
       "index": "dong8[2]",
       "hanhDong": "giu",
-      "lyDo": "tax.15179010: \"Chế phẩm giả ghee\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179010] (30 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[3]",
       "hanhDong": "giu",
-      "lyDo": "tax.15179020: \"Margarin lỏng\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179020] (26 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[4]",
       "hanhDong": "giu",
-      "lyDo": "tax.15179030: \"Của loại sử dụng như chế phẩm tách khuôn\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179030] (53 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[5]",
       "hanhDong": "giu",
-      "lyDo": "tax.15179043: \"- Shortening\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179043] (25 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[6]",
       "hanhDong": "giu",
-      "lyDo": "tax.15179044: \"- Chế phẩm giả mỡ lợn\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179044] (34 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[7]",
-      "hanhDong": "giu",
-      "lyDo": "tax.15179050: \"Hỗn hợp hoặc chế phẩm ở dạng rắn khác của chất béo hoặc dầu thực vật hoặc của các phần phân đoạn của chúng\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT — tràn trần clip runtime. `dieuKien` dài 106 ký tự > trần clip 90 ⇒ runtime cắt giữa từ (\"…hoặc của các phân phâ…\"), mất vế \"các phần phân đoạn\" — tức là mất chính phạm vi \"hoặc của các phần phân đoạn\" của dòng (theo tax.15179050). Sửa: bỏ liên từ \"của chúng\" và đổi \"hoặc\" thành dấu phẩy ở \"chất béo, dầu thực vật\" (nguồn liệt kê hai mặt hàng) ⇒ còn 88 ký tự, giữ đủ mọi thành phần có nghĩa. `trich` giữ nguyên (byte-exact tax.15179050), `tieuChi.fact` không đổi.",
+      "sua": {
+        "dieuKien": "Hỗn hợp hoặc chế phẩm ở dạng rắn khác của chất béo, dầu thực vật hoặc các phần phân đoạn"
+      }
     },
     {
       "index": "dong8[8]",
       "hanhDong": "giu",
-      "lyDo": "tax.15179061: \"- Thành phần chủ yếu là dầu lạc\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179061] (44 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[9]",
       "hanhDong": "giu",
-      "lyDo": "tax.15179062: \"- Thành phần chủ yếu là dầu cọ thô\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179062] (47 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[10]",
       "hanhDong": "giu",
-      "lyDo": "tax.15179063: \"- Thành phần chủ yếu là dầu cọ khác, đóng gói với khối lượng tịnh không quá 25kg\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179063] (93 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[11]",
       "hanhDong": "giu",
-      "lyDo": "tax.15179064: \"- Thành phần chủ yếu là dầu cọ khác, đóng gói với khối lượng tịnh trên 25kg\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179064] (88 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[12]",
       "hanhDong": "giu",
-      "lyDo": "tax.15179065: \"- Thành phần chủ yếu là dầu hạt cọ\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179065] (47 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[13]",
       "hanhDong": "giu",
-      "lyDo": "tax.15179066: \"- Thành phần chủ yếu là olein hạt cọ\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179066] (49 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[14]",
       "hanhDong": "giu",
-      "lyDo": "tax.15179067: \"- Thành phần chủ yếu là dầu đậu tương hoặc dầu dừa\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179067] (63 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[15]",
       "hanhDong": "giu",
-      "lyDo": "tax.15179068: \"- Thành phần chủ yếu là dầu hạt illipe\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179068] (51 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
     },
     {
       "index": "dong8[16]",
       "hanhDong": "giu",
-      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151790 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
+      "lyDo": "Dòng \"Loại khác\" (biểu thuê chỉ ghi \"- - - Loại khác\") ⇒ lấy điều kiện cấp phân nhóm từ [wco.151790] theo luật 6; \"Loại khác\" là tiền tố máy tự gắn, tieuChi null là đúng (dòng không có tiêu chí phân biệt). LƯU Ý: dieuKien dài 240 > trần clip runtime 90 — đây là văn phong \"Loại khác: <tên WCO>\" đã đo 3304/6227 mục toàn corpus (mẫu nhà, cấp máy), không phải lỗi riêng của lô này."
     },
     {
       "index": "dong8[17]",
       "hanhDong": "giu",
-      "lyDo": "tax.15179080: \"Của hỗn hợp hoặc chế phẩm từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng\" — tên dòng nguyên văn; `tieuChi` bám đúng tên dòng ✓"
+      "lyDo": "Dòng 15179080: tên dòng biểu thuê chép nguyên văn (\"Của hỗn hợp hoặc chế phẩm từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng\"), 86 ký tự ≤ trần clip 90."
     },
     {
       "index": "dong8[18]",
       "hanhDong": "giu",
-      "lyDo": "Dòng \"Loại khác\" — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.151790 đúng khuôn mẫu (1103, 0206, 0207, 1502, 1504); máy tự suy loaiKhac=true ✓"
-    },
-    {
-      "index": "dong8[7]",
-      "hanhDong": "sua",
-      "lyDo": "LỖI SLUG HỎNG KÝ TỰ (bộ sinh lô 060 hỏng dấu) — \"rac\" → \"ran\" theo đúng từ nguồn; mẫu nhà đã dùng \"dua\" (0707/0711/0713/0801) và \"chu_yeu\" (14 nhóm). Sửa token, giữ nguyên phần còn lại.",
-      "sua": {
-        "tieuChi": {
-          "fact": "la_hon_hop_hoac_che_pham_o_dang_ran_khac_cua_chat_beo_hoac_dau_thuc_vat_hoac_cua_cac_phan_phan_doan_cua_chung",
-          "op": "=",
-          "value": true,
-          "donVi": null
-        }
-      }
-    },
-    {
-      "index": "dong8[8]",
-      "hanhDong": "sua",
-      "lyDo": "LỖI SLUG HỎNG KÝ TỰ (bộ sinh lô 060 hỏng dấu) — \"y_ieu\" → \"yeu\" theo đúng từ nguồn; mẫu nhà đã dùng \"dua\" (0707/0711/0713/0801) và \"chu_yeu\" (14 nhóm). Sửa token, giữ nguyên phần còn lại.",
-      "sua": {
-        "tieuChi": {
-          "fact": "thanh_phan_chu_yeu_la_dau_lac",
-          "op": "=",
-          "value": true,
-          "donVi": null
-        }
-      }
-    },
-    {
-      "index": "dong8[9]",
-      "hanhDong": "sua",
-      "lyDo": "LỖI SLUG HỎNG KÝ TỰ (bộ sinh lô 060 hỏng dấu) — \"y_ieu\" → \"yeu\" theo đúng từ nguồn; mẫu nhà đã dùng \"dua\" (0707/0711/0713/0801) và \"chu_yeu\" (14 nhóm). Sửa token, giữ nguyên phần còn lại.",
-      "sua": {
-        "tieuChi": {
-          "fact": "thanh_phan_chu_yeu_la_dau_co_tho",
-          "op": "=",
-          "value": true,
-          "donVi": null
-        }
-      }
-    },
-    {
-      "index": "dong8[10]",
-      "hanhDong": "sua",
-      "lyDo": "LỖI SLUG HỎNG KÝ TỰ (bộ sinh lô 060 hỏng dấu) — \"y_ieu\" → \"yeu\" theo đúng từ nguồn; mẫu nhà đã dùng \"dua\" (0707/0711/0713/0801) và \"chu_yeu\" (14 nhóm). Sửa token, giữ nguyên phần còn lại.",
-      "sua": {
-        "tieuChi": {
-          "fact": "thanh_phan_chu_yeu_la_dau_co_khac_dong_goi_voi_khoi_luong_tinh_khong_qua_25kg",
-          "op": "=",
-          "value": true,
-          "donVi": null
-        }
-      }
-    },
-    {
-      "index": "dong8[11]",
-      "hanhDong": "sua",
-      "lyDo": "LỖI SLUG HỎNG KÝ TỰ (bộ sinh lô 060 hỏng dấu) — \"y_ieu\" → \"yeu\" theo đúng từ nguồn; mẫu nhà đã dùng \"dua\" (0707/0711/0713/0801) và \"chu_yeu\" (14 nhóm). Sửa token, giữ nguyên phần còn lại.",
-      "sua": {
-        "tieuChi": {
-          "fact": "thanh_phan_chu_yeu_la_dau_co_khac_dong_goi_voi_khoi_luong_tinh_tren_25kg",
-          "op": "=",
-          "value": true,
-          "donVi": null
-        }
-      }
-    },
-    {
-      "index": "dong8[12]",
-      "hanhDong": "sua",
-      "lyDo": "LỖI SLUG HỎNG KÝ TỰ (bộ sinh lô 060 hỏng dấu) — \"y_ieu\" → \"yeu\" theo đúng từ nguồn; mẫu nhà đã dùng \"dua\" (0707/0711/0713/0801) và \"chu_yeu\" (14 nhóm). Sửa token, giữ nguyên phần còn lại.",
-      "sua": {
-        "tieuChi": {
-          "fact": "thanh_phan_chu_yeu_la_dau_hat_co",
-          "op": "=",
-          "value": true,
-          "donVi": null
-        }
-      }
-    },
-    {
-      "index": "dong8[13]",
-      "hanhDong": "sua",
-      "lyDo": "LỖI SLUG HỎNG KÝ TỰ (bộ sinh lô 060 hỏng dấu) — \"y_ieu\" → \"yeu\" theo đúng từ nguồn; mẫu nhà đã dùng \"dua\" (0707/0711/0713/0801) và \"chu_yeu\" (14 nhóm). Sửa token, giữ nguyên phần còn lại.",
-      "sua": {
-        "tieuChi": {
-          "fact": "thanh_phan_chu_yeu_la_olein_hat_co",
-          "op": "=",
-          "value": true,
-          "donVi": null
-        }
-      }
-    },
-    {
-      "index": "dong8[14]",
-      "hanhDong": "sua",
-      "lyDo": "LỖI SLUG HỎNG KÝ TỰ (bộ sinh lô 060 hỏng dấu) — \"y_ieu\" → \"yeu\", \"duna\" → \"dua\" theo đúng từ nguồn; mẫu nhà đã dùng \"dua\" (0707/0711/0713/0801) và \"chu_yeu\" (14 nhóm). Sửa token, giữ nguyên phần còn lại.",
-      "sua": {
-        "tieuChi": {
-          "fact": "thanh_phan_chu_yeu_la_dau_dau_tuong_hoac_dau_dua",
-          "op": "=",
-          "value": true,
-          "donVi": null
-        }
-      }
-    },
-    {
-      "index": "dong8[15]",
-      "hanhDong": "sua",
-      "lyDo": "LỖI SLUG HỎNG KÝ TỰ (bộ sinh lô 060 hỏng dấu) — \"y_ieu\" → \"yeu\" theo đúng từ nguồn; mẫu nhà đã dùng \"dua\" (0707/0711/0713/0801) và \"chu_yeu\" (14 nhóm). Sửa token, giữ nguyên phần còn lại.",
-      "sua": {
-        "tieuChi": {
-          "fact": "thanh_phan_chu_yeu_la_dau_hat_illipe",
-          "op": "=",
-          "value": true,
-          "donVi": null
-        }
-      }
+      "lyDo": "Dòng \"Loại khác\" (biểu thuê chỉ ghi \"- - - Loại khác\") ⇒ lấy điều kiện cấp phân nhóm từ [wco.151790] theo luật 6; \"Loại khác\" là tiền tố máy tự gắn, tieuChi null là đúng (dòng không có tiêu chí phân biệt). LƯU Ý: dieuKien dài 240 > trần clip runtime 90 — đây là văn phong \"Loại khác: <tên WCO>\" đã đo 3304/6227 mục toàn corpus (mẫu nhà, cấp máy), không phải lỗi riêng của lô này."
     }
   ]
 }

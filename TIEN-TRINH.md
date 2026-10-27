@@ -7703,3 +7703,159 @@ người duyệt xử lý ở lô tương ứng):
 | 8529 | 85299053, 85299094 | `dung_cho_man_hinh_dep` | `dung_cho_man_hinh_det` ("màn hình **dẹt**") |
 
 ---
+
+---
+
+# SOÁT ĐỘC LẬP lô 060 — vòng 3 (27/10/2026, người soát `dev-soat-doc-lap-lo060-v3`)
+
+Nhóm: **1512, 1513, 1514, 1515, 1516, 1517** (Chương 15) · Nhánh `so-tay/lo-060` ·
+**PR #480 (mở, KHÔNG merge)** · **KHÔNG merge** — chờ người duyệt.
+
+## 0. Bối cảnh — lô 060 đã qua 2 vòng soát trước
+
+| Vòng | Kết quả | PR |
+|---|---|---|
+| Soạn (`dev-zcode-mm`) | 179/179 mục (100 %) | #479 (đã đóng) |
+| Soát vòng 1 (`dev-soat-doc-lap-lo060`) | soát 170 mục · giữ 158 · **sửa 12** · xoá 0 | #479 (đã đóng) |
+| Soát vòng 2 (phiên quản lý) | **sửa 28** (26 slug hỏng dấu + 4 câu trích SEN) · xoá 0 | #480 (đang mở) |
+| **Soát vòng 3 (phiên này)** | soát **179/179 mục** · giữ 172 · **sửa 7** · xoá 0 | #480 |
+
+⇒ Vòng 3 soát lại **trạng thái hiện tại** (sau vòng 1 + vòng 2), không phải lại bản gốc.
+
+**Brief `brief-st-soat-lo060.md` lệch 2 chỗ (đã tự sửa, không hỏi lại):**
+- worktree ghi `hs-code-api-wt-st-lo60` — không tồn tại; thực tế `hs-code-api-wt-st-lo060` (thiếu số 0).
+- `--bao-cao=data/so-tay/bao-cao/lo-0060.json` — nhà đặt tên `lo-0NN.json` ⇒ dùng `lo-060.json`
+  (lần thứ **12** brief ghi sai tên này — xem [[so-tay-lo-quy-trinh]]).
+- PR trong brief là **#479** nhưng #479 đã đóng ⇒ mọi thay đổi lên **#480** (đang mở).
+
+## 1. Cách làm (không gật đầu cho qua)
+
+1. Đọc **trọn** 6 tệp nguồn `tmp/so-tay/nguon/1512..1517.txt` + **toàn bộ** bản nháp
+   `tmp/so-tay/raw/*.json` (179 mục) — tự đối chiếu TỪNG mục với nguồn.
+2. Đọc lại 5 khối bắt buộc của mục 4 `docs/giao-viec/so-tay-giao-ngoai.md`
+   (`phamVi` · `boPhan` · `dieuKienVao` · `loaiTru` · `phanBiet`) + đọc thêm `tieuChi6` ·
+   `dong8` · `cay.tenDien` (9/9 mục khối máy sinh — đã đối chiếu, không sửa).
+3. **6 agent soát độc lập chạy SONG SONG theo nhóm** (mỗi agent đọc cùng nguồn, trả về
+   kết luận từng mục) ⇒ **23 đề xuất sửa**; em đối chiếu từng đề xuất với nguồn:
+   **3 nhận · 20 bác** (mục 4). Không có đề xuất nào của agent được áp mà không tự kiểm lại.
+4. 4 mục em tự phát hiện (agent không thấy) — mục 3.
+5. Hồ sơ `review/<nhom>.json`: **185 dòng = 179 mục + 6 dòng `boPhan`**, mỗi dòng có
+   `hanhDong` + `lyDo` — **không mục nào không ghi lý do**. (Hồ sơ của vòng 1 nằm ở commit
+   `e9c05ec` + body PR #479; hồ sơ vòng 2 chưa có tệp riêng — xem TIEN-TRINH vòng 2.)
+
+## 2. Kết quả
+
+| nhóm | tổng mục | soát | giữ | **sửa** | xoá | còn lại | `nguonLoai` → NGUOI_DUYET |
+|---|---|---|---|---|---|---|---|
+| 1512 | 15 | 15 | 13 | **2** | 0 | 15 | 2 |
+| 1513 | 26 | 26 | 25 | **1** | 0 | 26 | 2 |
+| 1514 | 16 | 16 | 16 | 0 | 0 | 16 | 3 |
+| 1515 | 36 | 36 | 34 | **2** | 0 | 36 | 2 |
+| 1516 | 56 | 56 | 55 | **1** | 0 | 56 | 7 |
+| 1517 | 30 | 30 | 29 | **1** | 0 | 30 | 9 |
+| **Tổng** | **179** | **179** | **172** | **7** | **0** | **179** | **25** |
+
+Sau soát vẫn **179/179 (100 %)** · 0 mục bị máy loại · **25 mục** ở 5 khối đã soi đổi
+`nguonLoai` → `NGUOI_DUYET` (`tieuChi6`/`dong8` giữ `AI_DA_KIEM`, `cay` giữ `MAY_SUY` — luật 11).
+
+## 3. 7 mục sửa — 3 lớp lỗi, đều là loại máy `check-so-tay` KHÔNG bắt
+
+### Lớp 1 — DỊCH SAI TỪ NGUỒN: WCO `crude` phải là "dầu thô" (4 mục)
+
+`1512 tieuChi6[0]`, `1512 tieuChi6[2]`, `1515 tieuChi6[0]`, `1515 tieuChi6[2]`.
+
+WCO 1512/1515 tách **hai** tiêu chí: `crude` (= **dầu thô**) và `whether or not refined`
+(= đã hoặc chưa tinh chế). Bản nháp dịch `crude` thành `chua_tinh_che` (1512.11, 1515.11,
+1515.21) hoặc token trần `tho` (1512.21) ⇒ **mất khả năng phân biệt giữa 1512.11 và 1512.19**
+(vế "không" vẫn ghi `khac_dau_tho`), và 1512.11 còn đụng với dòng biểu thuê 15121920 "Đã tinh chế".
+
+Căn cứ đối chiếu:
+- biểu thuê: 15121100 "Dầu thô" · 15122100 "Dầu thô, đã hoặc chưa khử gossypol" ·
+  15121910 "…chưa tinh chế" · 15121920 "Đã tinh chế";
+- `ch15.chuong`: "Nhóm này bao gồm chất béo thô và **dầu thô** … cũng như **đã được tinh chế**…";
+- mẫu nhà đã gộp: 1513 (151311 = `dau_tho` · 151319 = `khac_dau_tho`) và 1514 (151491 = `dau_tho`).
+
+⇒ Sửa `chua_tinh_che` → `dau_tho` (4 mục) cho đối xứng với vế `khac_dau_tho` bên cạnh.
+
+### Lớp 2 — `fact` dùng sai từ của nguồn: "mỡ" → "chất béo" (1 mục)
+
+`1516 tieuChi6[0]`: fact ghi `la_mo_va_dau_dong_vat…` trong khi **chính chú giải nhóm 1516**
+viết "chất béo và dầu động vật, thực vật hoặc vi sinh vật", và hai `tieuChi6` anh em
+(151620 · 151630) đều dùng `chat_beo` ⇒ bản nháp tự mâu thuẫn nội bộ. "Mỡ" là từ của nhóm
+**1506** ("Mỡ hoặc dầu động vật khác") và hẹp hơn "chất béo" mà WCO 151610 ghi
+"Animal fats and oils". Đúng lớp lỗi lô 048 (`fact` chép sai từ là sai nghĩa).
+
+### Lớp 3 — TRÀN TRẦN CLIP RUNTIME ở `dong8.dieuKien` (2 mục)
+
+`lib/so-tay-gates.js:139` cắt `dieuKien` ở **90 ký tự**:
+
+| mục | len | runtime còn lại | MẤT |
+|---|---|---|---|
+| 1513 `dong8[0]` (15131110) | 101 | "…cùi dừa g…" | **"già còn tươi"** — đặc tính "còn tươi" mới là điều kiện phân biệt dầu dừa nguyên chất VCO |
+| 1517 `dong8[7]` (15179050) | 106 | "…hoặc của các phân phâ…" | **"các phần phân đoạn"** — mất phạm vi "hoặc của các phần phân đoạn" của dòng |
+
+Cùng lớp lỗi vòng 1 đã sửa cho `phamVi.text` · `loaiTru.dieuKien` · `phanBiet.hoi` — vòng 1
+chưa soi `dong8` (ngoài 5 khối §L11) nên lớp này lọt. Sửa bằng cách rút điều kiện còn ≤ 90
+ký tự, **giữ nguyên mọi từ có nghĩa** và **không đổi** `trich` (byte-exact) cùng `tieuChi.fact`.
+Cổng kiểm của nhà chỉ khớp `dieuKienSo` (số) chứ không đọc `dieuKien` ⇒ sửa không đổi hành vi cổng.
+
+## 4. 20 đề xuất sửa của 6 agent — ĐÃ BÁC (có căn cứ, để người duyệt đối chiếu)
+
+| # | nhóm | đề xuất | vì sao bác |
+|---|---|---|---|
+| 1 | 1514 | `dieuKienVao[0].trich` trả lại vế "đã hoặc chưa tinh chế" | Đó là câu CHO PHÉP (`CAU_CHO_PHEP`) ⇒ máy **loại mục**, 179→178. Hồi quy |
+| 2 | 1514 | xoá `tieuChi6[2]` + `tieuChi6[3]` | "excluding" dịch thành "trừ" là **đúng chiều** (nguồn vốn dùng "excluding"; khác "n.e.c. in heading X" là phần dư CỦA X). 21/25 `tieuChi6` của lô lấy từ `wco.<6 số>` — xoá 2 mục sẽ phá mẫu |
+| 3 | 1515 | `phamVi` đổi sang liệt kê 9 loại dầu | Nguồn ghi rõ 9 loại đó là "Những loại dầu sau **có giá trị thương mại nổi bật**" (ví dụ, không phải phạm vi trọn nhóm); trích bản đó dài 525 ký tự rơi vào vùng im lặng 301–600 (lớp lỗi vòng 1 đã sửa). Bản nháp hiện tại lấy **câu định nghĩa phạm vi** + vế loại trừ |
+| 4 | 1517 | `phamVi.text` thêm "hoặc vi sinh vật" | "vi sinh vật" **không có trong câu trích** của mục ⇒ vi phạm luật 7 (không thêm chữ ngoài câu trích). Vòng 1 đã cố ý bỏ và ghi "thông tin vi sinh vật còn ở `tieuChi6[1]`" |
+| 5 | 1517 | `loaiTru[1].trich` bỏ vế "nhóm không bao gồm …" | Bỏ vế đó là mất **dấu hiệu loại trừ** — đúng lớp lỗi vòng 1 đã sửa. Phần bị lược là vế loại trừ SONG SANG (ép tallow → 15.03) đã có mục riêng `loaiTru[0]` |
+| 6 | 1517 | `phanBiet[0].hoi` bỏ vế "hay là hỗn hợp hoặc chế phẩm ăn được" | Vế B là **chính phạm vi nhóm 1517** (có trong khối nguồn `nhom1517.nhom`, không có trong `trich` của mục) — dạng "A hay B" với `neuCo` = vế ĐẦU là mẫu nhà; toàn corpus có 48 mục dạng này, 26 mục còn vế B **không** có trong trich ⇒ không phải lỗi riêng lô 060 |
+| 7 | 1517 | `phanBiet[1].hoi` viết đủ 4 phép hoá chế | Bản đầy đủ dài **158** ký tự > trần clip 110 ⇒ runtime cắt giữa câu, MẤT vế quyết định. Bản hiện tại (105 ký tự) giữ trọn vế giới hạn "chỉ liên quan một loại" và nói ÍT hơn nguồn |
+| 8 | 1516 | `dieuKienVao[1].trich` nối thêm đoạn (A) | Đoạn nối thêm dài > 300 ký tự (luật 2) và phần bị lược là câu VÍ DỤ có từ rào "thường" — lược đi là hướng an toàn |
+| 9 | 1516 | `loaiTru[0].dieuKien` thêm "đã hydro hoá" | (a) bản đề xuất dài 65 > trần clip 55 ⇒ runtime cắt giữa từ, mất "làm thực phẩm"; (b) nguồn ghi "đã được hydro hoá **v.v.**" (vân vân) nên phủ cả các phép hoá chế khác — căn cứ: chú giải 1517 gom cả "chế phẩm ăn được làm từ **một loại** chất béo hoặc dầu đơn … đã được chế biến bằng cách nhũ hoá, nhào trộn, thay đổi kết cấu" ⇒ thu hẹp chỉ "đã hydro hoá" sẽ loại nhầm sản phẩm este hoá một loại sang 15.17 |
+| 10 | 1516 | `phanBiet[0].hoi` thêm "đã hydro hoá" | Cùng lý do (9) |
+| 11 | 1516 | 8 dòng "Loại khác" đổi `dieuKien` thành "Loại khác: không thuộc dòng cụ thể khác trong phân nhóm" | Bỏ định nghĩa kỹ thuật của phân nhóm (mất "re-esterified or elaidinised, whether or not refined, but not further prepared") và thêm chữ không có trong nguồn. Văn phong "Loại khác: <tên WCO>" là mẫu nhà đã gộp |
+| 12 | 1516 | `dong8[19]` + `dong8[27]` đổi nguồn trích từ `sen.*` sang `tax.*` | Luật 6: **có SEN thì ưu tiên SEN**. Khối SEN gộp chung nên nói "quả cọ dầu **và** hạt cọ"; sự phân biệt quả/hạt lấy từ **dòng biểu thuê** ("Của quả cọ dầu" / "Của hạt cọ") — dùng `tax.*` sẽ mất bảng ngưỡng chỉ số iốt của SEN |
+
+⇒ **3/23 đề xuất được nhận** (`1512 tieuChi6[0]`, `1512 tieuChi6[2]`, `1516 tieuChi6[0]`);
+4 mục còn lại trong 7 mục sửa là **em tự phát hiện** (2 mục `crude` ở 1515 + 2 mục tràn clip).
+
+## 5. ĐO ĐƯỢC — 2 đề xuất luật máy cho người duyệt
+
+1. **`dong8.dieuKien` tràn trần clip 90** — đo toàn corpus: **3103/5951** dòng KHÔNG phải mẫu
+   "Loại khác" vẫn vượt 90 (dài nhất 746). Lô 060 sau soát vòng 3: **còn 0** dòng vượt trần
+   ngoài mẫu "Loại khác" (mẫu này đã đo 3304/6227 ⇒ cấp máy, không sửa lẻ).
+   ⇒ Đề xuất: nới trần `clip(d.dieuKien, 90)` hoặc cắt theo dòng trong `lib/so-tay-gates.js`.
+2. **Gate "gác soát từ" của nhà có LỖI** — `tmp/gac-soat-tu.py` dùng `unicodedata.combining(c)`,
+   mà chữ Việt **dựng sẵn** (`á`, `ố`, `ữ`…) có `combining() == 0` ⇒ gate **không so từ có dấu
+   nào** (kho chỉ 21 từ). Vòng 3 viết `tmp/gac-soat-tu-v3.py` (kho 4372 từ, so không phân biệt
+   HOA/thường) → **0 từ lạ** ⇒ hồ sơ mới không méo ký tự.
+
+## 6. GHI NHẬN (không sửa — để người duyệt đối chiếu)
+
+1. **Loại trừ CHUNG của Chương 15** không chép vào 1512–1515 (bài học lô 051) — 4 `loaiTru`
+   của lô đều lấy từ **chú giải riêng của nhóm**.
+2. **9 mục `cay.tenDien`** là khối máy sinh (§L11 mục 9) — đã đọc và đối chiếu **9/9** với
+   tiêu đề WCO, không sửa.
+3. `1514 phanBiet[0]`: nhánh "không" = 3 dòng còn lại của nhóm ⇒ phủ kín 7/7, không chồng.
+4. `1517 dieuKienVao[3]` (`value=false`) là mẫu nhà đã gộp (81/81 mục `value=false` trong
+   corpus không bắt đầu bằng `khong_`).
+5. `dong8` "Loại khác: <tên WCO>" dài 96–240 ký tự — mẫu nhà (3304/6227) ⇒ **không sửa lẻ**.
+
+## 7. Trạng thái cuối
+
+| Kiểm | Kết quả |
+|---|---|
+| `check-so-tay.mjs --raw=tmp/so-tay/raw` | 6 nhóm, **179 mục, 0 mục không kiểm được nguồn** (179/179) |
+| `check-trich-nguyen-van.mjs` (byte-exact) | **OK — 170 mục** nguyên văn tuyệt đối trong đúng khối nguồn |
+| `build-so-tay … --tu-tep --force` | **179/179 (100 %)** — `tyLeDat: 100`, `nhomLoi: []` |
+| `npm run so-tay:check` | **512 nhóm, 14 126 mục, 0 mục không kiểm được nguồn** |
+| `npm test` | **ALL TESTS PASSED** (37 + 7 test, exit 0) |
+| `check-cay.mjs --chi-tiet` (6 nhóm) | **6/6 nhóm đủ** — 0 lỗi lệch cây, 0 cảnh báo |
+| `scan-so-tay-soat.mjs` (6 nhóm) | 25 cảnh báo — **toàn bộ** là mẫu "Loại khác: <tên WCO>" (cấp máy) |
+| quét hỏng dấu (`soat-hoa-dau` / `scan-slung-hon`) | **0 lỗi còn lại** |
+| `gac-soat-tu-v3.py` | **0 từ lạ** (hồ sơ mới không méo ký tự) |
+
+## 8. Script
+
+- `scripts/apply-review-lo060.mjs` — bổ sung: `parseIndex` nhận kind có dấu chấm (`cay.tenDien[i]`)
+  để hồ sơ ghi được **mọi** mục; và **chặn** sửa/xoá khối máy sinh `cay` (chỉ cho "giu").
