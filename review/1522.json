@@ -1,0 +1,85 @@
+{
+  "nhom": "1522",
+  "nguoiSoat": "dev-soat-doc-lap-lo061-v3",
+  "vong": 3,
+  "luc": "2026-10-27T23:55:00+07:00",
+  "daKiem": 15,
+  "xoa": 0,
+  "sua": 4,
+  "ghiChu": "SOÁT ĐỘC LẬP VÒNG 3 (phiên quản lý — người soát ĐỘC LẬP). Đã soi 15/15 mục (phamVi 1 · boPhan 1 · dieuKienVao 0 · loaiTru 4 · phanBiet 2 · tieuChi6 0 · dong8 2): SỬA 4, XOÁ 0, GIỮ 11. Lỗi thật: (1) `phamVi.trich` cắt \"…\" ngay sau \"chất nhờn nhân tạo,\" nuốt mất câu \"là sản phẩm được dùng trong công nghiệp da để bôi (nhồi) da\" — trong khi `phamVi.text` khẳng định đúng câu đó ⇒ mục nói điều trích không có; kéo trọn câu vào (257 ký tự ≤300). (2) `boPhan.trich` lược cùng lỗi ⇒ sửa theo. (3) `phanBiet[1].hoi` hỏi \"Hàng là:top mỡ hay là chất nhờn?\" — \"chất nhờn\" KHÔNG có trong câu trích của mục này, lại là phần (A) trong khi mục loại trừ (a) nằm ở cuối phần (B) ⇒ sửa `hoi` thành câu hỏi có/không về đặc tính hàng, và kéo tiêu đề phần (B) vào trích (171 ký tự). (4) `dong8[1].dieuKien` đặt tiếng Anh \"Degras\" TRƯỚC tiếng Việt, sát trần clip 90 (86/90) ⇒ nếu cắt sẽ mất đúng danh từ \"thực vật\" (phân biệt với 1521 \"sáp\"); sửa theo khuôn nhà dòng \"Loại khác\" (0713/1601/1602). BÁC 1 đề xuất của người soát vòng 3: bỏ nhãn \"(A)\" trong `boPhan.quyTac` — nguồn chỉ ghi nhãn \"(B)\" cho phần thứ hai nhưng mẫu nhà 1517 (đã duyệt) ghi \"(A) Margarin…(B) Hỗn hợp…\" ⇒ giữ nhãn \"(A)\" cho nhất quán trong lô. GHI NHẬN: loại trừ (b) \"Khô dầu, bã ép dư thừa… (các nhóm từ nhóm 23.04 đến 23.06)\" là DẢI số ⇒ không mã hoá được thành `loaiTru` (máy đòi từng mã nêu nguyên văn) nên bản nháp bỏ là ĐÚNG.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT (L8/L5) — máy KHÔNG bắt. Câu trích bản nháp cắt bằng \"…\" ngay sau \"chất nhờn nhân tạo,\" ⇒ nuốt mất câu \"là sản phẩm được dùng trong công nghiệp da để bôi (nhồi) da\" — trong khi `phamVi.text` khẳng định đúng câu đó ⇒ mục nói điều mà câu trích không có (bằng chứng đi kèm không hiện điều mục khẳng định). Sửa: kéo trọn vế \"là sản phẩm được dùng trong công nghiệp da để bôi (nhồi) da.\" vào trích và rút mảnh 2 về \"chất nhờn thu được từ xử lý da thuộc dầu bởi bằng dung dịch kiềm\" ⇒ 257 ký tự (≤300, khỏi vùng im lặng 301–600), vẫn phủ đủ ba ý của `text`.",
+      "sua": {
+        "trich": "Nhóm này bao gồm cả chất nhờn tự nhiên và chất nhờn nhân tạo, là sản phẩm được dùng trong công nghiệp da để bôi (nhồi) da.…chất nhờn thu được từ xử lý da thuộc dầu bởi bằng dung dịch kiềm…(B) Phế thải có từ xử lý chất béo hoặc sáp động vật hoặc thực vật."
+      }
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "sua",
+      "lyDo": "Cùng lỗi lược của `phamVi` ⇒ `boPhan.trich` sửa theo (dùng CHUNG câu trích, byte-exact). `quyTac` GIỮ NGUYÊN kèm nhãn \"(A)\": nguồn chỉ ghi nhãn \"(B)\" cho phần thứ hai, nhưng mẫu nhà 1517 đã duyệt ghi \"(A) Margarin…(B) Hỗn hợp…\" ⇒ giữ nhất quán trong lô (đề xuất bỏ nhãn của người soát vòng 3 BÁC). `tomTat` 145 ký tự ≤ trần clip 160 ✓.",
+      "sua": {
+        "trich": "Nhóm này bao gồm cả chất nhờn tự nhiên và chất nhờn nhân tạo, là sản phẩm được dùng trong công nghiệp da để bôi (nhồi) da.…chất nhờn thu được từ xử lý da thuộc dầu bởi bằng dung dịch kiềm…(B) Phế thải có từ xử lý chất béo hoặc sáp động vật hoặc thực vật."
+      }
+    },
+    {
+      "index": "dieuKienVao",
+      "hanhDong": "giu",
+      "lyDo": "Rỗng là ĐÚNG (L12) — nhóm 1522 có HAI phần ngang hàng (chất nhờn tự nhiên/nhân tạo + phế thải xử lý chất béo/sáp), không câu ràng buộc nào phủ CẢ nhóm; phần (B) chỉ liệt kê 7 loại BAO GỒM chứ không phải điều kiện."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. \"Tuy nhiên, nhóm này không bao gồm, dầu cá chỉ oxy hoá hoặc polimer hóa đơn thuần (nhóm 15.18)\" — có DẤU HIỆU LOẠI TRỪ + đích danh 15.18 ✓; `dieuKien` giữ trọn định ngữ giới hạn \"chỉ … đơn thuần\" (rút thành \"dầu cá đã oxy hoá\" sẽ ĐẢO CHIỀU — nhóm này CÓ chứa dầu cá đã oxy hoá trong hỗn hợp)."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. \"dầu đã sulphonate hóa (nhóm 34.02)\" ✓ loại trừ thật + đích danh."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. \"những chế phẩm để bôi (nhồi) da (nhóm 34.03)\" ✓ loại trừ thật + đích danh."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. \"(a) Tóp mỡ, phế thải màng có từ nấu chảy mỡ lợn hoặc mỡ động vật khác nóng chảy (nhóm 23.01)\" ✓ loại trừ thật + đích danh 23.01."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu loại trừ nằm ở phần (A) ⇒ vế ĐẦU \"dầu cá chỉ oxy hoá hoặc polimer hóa đơn thuần\" → `neuCo`=1518 (ngoài nhóm ✓); nhánh BÙ = 1522 ✓; không nhắc mã phân nhóm."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT (L3/L8). `hoi` bản nháp: \"Hàng là **(a)حة**…\" — thực tế là \"Hàng là:top mỡ hay là chất nhờn?\": (a) \"chất nhờn\" KHÔNG có trong câu trích của mục này (trích chỉ có câu loại trừ (a) Tóp mỡ…); (b) \"chất nhờn\" là thành viên phần (A) trong khi mục loại trừ (a) nằm ở CUỐI phần (B) ⇒ phần BÙ phải là phần (B). Sửa: `hoi` nêu đúng vế (B) và kéo tiêu đề phần (B) vào trích (171 ký tự ≤300) để mọi từ trong `hoi` đều có căn cứ trong trích; `neuCo`=2301 (vế ĐẦU, ngoài nhóm), `neuKhong`=1522 (phần BÙ = chính nhóm) — chiều L2 giữ nguyên.",
+      "sua": {
+        "hoi": "Hàng là:top mỡ hay là phế thải có từ xử lý chất béo hoặc sáp động vật hoặc thực vật?",
+        "trich": "(a) Tóp mỡ, phế thải màng có từ nấu chảy mỡ lợn hoặc mỡ động vật khác nóng chảy (nhóm 23.01).…(B) Phế thải có từ xử lý chất béo hoặc sáp động vật hoặc thực vật."
+      }
+    },
+    {
+      "index": "tieuChi6",
+      "hanhDong": "giu",
+      "lyDo": "Rỗng là ĐÚNG — cây HS của 1522 không có nút 6 số (chỉ có 152200 → 2 dòng 8 số 15220010/15220090) ⇒ không có mã 6 số để đặt tiêu chí."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Đủ dòng 15220010 — \"15220010 - Chất nhờn\"; `dieuKien` 10 ký tự ≤ trần 90; `tieuChi.fact` bám đúng tên dòng."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT (khuôn nhà dòng \"Loại khác\" — mẫu 0713/1601/1602 của chính lô này). Bản nháp đặt tiếng Anh \"Degras\" TRƯỚC tiếng Việt và dài 86/90 ký tự — sát trần clip runtime 90, nên chỉ cần thêm vài chữ là bị cắt đúng vế \"hoặc thực vật\" (tức phần phân biệt với 1521 \"sáp\"). Khuôn nhà: \"Loại khác: phần còn lại của phân nhóm X.XX trừ <mã> (<tên dòng>)\" — tiếng Việt định danh trước, tên WCO sau. Sửa theo khuôn (71 ký tự ≤90, không bị cắt) và nêu rõ dòng 15220010 là phần bị loại.",
+      "sua": {
+        "dieuKien": "Loại khác: phần còn lại của phân nhóm 1522.00 trừ 15220010 (Chất nhờn)"
+      }
+    }
+  ]
+}

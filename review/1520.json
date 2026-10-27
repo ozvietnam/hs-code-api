@@ -1,0 +1,75 @@
+{
+  "nhom": "1520",
+  "nguoiSoat": "dev-soat-doc-lap-lo061-v3",
+  "vong": 3,
+  "luc": "2026-10-27T23:40:00+07:00",
+  "daKiem": 9,
+  "xoa": 0,
+  "sua": 4,
+  "ghiChu": "SOÁT ĐỘC LẬP VÒNG 3 (phiên quản lý — người soát ĐỘC LẬP, không phải người soạn). Máy đã xanh (check-so-tay --raw 9/9 · check-trich-nguyen-van 9/9 byte-exact) nên lớp lỗi phải săn là lớp NGỮ NGHĨA. Đã soi 9 mục (phamVi 1 · dieuKienVao 2 · loaiTru 2 · phanBiet 2 · tieuChi6 0 · dong8 2; boPhan không có): SỬA 4, XOÁ 0, GIỮ 5. Cả 4 lỗi cùng một mốc: CĂN CỨ ĐO của ngưỡng 95% (\"tính so với trọng lượng sản phẩm khô\") bị rớt ở nơi mô hình thực sự đọc — (1) phamVi.text THIẾU mục loại trừ (c) \"Glycerin thơm hoặc glycerin thêm vào dược mỹ phẩm (Chương 33)\" (không khối nào khác bắt được vì nguồn chỉ nêu Chương, không có mã nhóm để mã hoá) ⇒ mô hình không thấy ranh giới Chương 33; (2) dieuKienVao[0].fact bỏ căn cứ đo; (3) loaiTru[0].dieuKien bỏ căn cứ đo; (4) phanBiet[0].hoi bỏ căn cứ đo. BÁC 1 đề xuất của người soát vòng 3: fact \"…_theo_trong_luong_san_pham_kho\" — vì chứa \"trong_luong\" sẽ bị cổng SO_TAY_NGUONG đoán nhầm đơn vị kg và bắt oan mọi lô hàng nặng (lỗi cổng đã có ở 1901/2106/5208/5513 trên main); sửa bằng \"tinh_theo_san_pham_kho\" theo mẫu 1702/2106. GIỮ: dieuKienVao[1] (chiều đúng, phủ cả nhóm, fact đã mang ngưỡng 95_tro_len), loaiTru[1] (phủ cả 30.03 và 30.04), phanBiet[1], tieuChi6 rỗng, 2 dong8. GHI NHẬN: loại trừ CHUNG của Chương 15 (chú giải 1(e) \"glycerin (trừ glycerin thô)\") không chép vào nhóm; chữ \"glyxerin\" trong fact là biến thể chính tả biểu thuề (\"Glyxerin thô\") — không phải lỗi nghĩa.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT (L5/L11 — mất mục loại trừ). Nguồn có 3 mục \"Nhóm này không bao gồm: (a) … 29.05 · (b) … 30.03 hoặc 30.04 · (c) Glycerin thơm hoặc glycerin thêm vào dược mỹ phẩm (Chương 33)\". Bản nháp chỉ nêu (a)(b); mục (c) KHÔNG mục nào khác bắt được — `loaiTru` không mã hoá được vì nguồn chỉ nêu \"Chương 33\" chứ không có mã nhóm (mẫu nhà: mục loại trừ theo Chương đặt trong `phamVi.text`), `phanBiet` cần mã nên không có mục. Runtime CHỈ in `phamVi.text` (không in `trich`) ⇒ mô hình không thấy ranh giới Chương 33. Sửa: thêm vế (c) vào text, rút phạm vi bằng dấu lược \"…\" (mẫu nhà 1516/1517/1212) cho 196 ký tự — vừa trần clip 220 nên KHÔNG bị cắt; trich mở rộng 257 → 278 ký tự (≤300 luật soạn) đủ căn cứ cho câu định nghĩa + câu phạm vi + mục (c).",
+      "sua": {
+        "text": "Glycerin thô có sự tinh khiết nhỏ hơn 95% (tính so với trọng lượng sản phẩm khô); nước glycerin và dung dịch kiềm glycerin… không gồm glycerin thơm hoặc glycerin thêm vào dược mỹ phẩm (Chương 33).",
+        "trich": "Glycerin thô là sản phẩm có sự tinh khiết nhỏ hơn 95% (tính so với trọng lượng sản phẩm khô)…Nhóm này cũng bao gồm nước glycerin…dung dịch kiềm glycerin…(c) Glycerin thơm hoặc glycerin thêm vào dược mỹ phẩm"
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT (L16 — mất căn cứ ĐO) + SỬA THÊM để tránh lỗi cổng SO_TAY_NGUONG. Nguồn: \"Glycerin thô là sản phẩm có sự tinh khiết nhỏ hơn 95% (tính so với trọng lượng sản phẩm khô)\" — \"tính so với trọng lượng sản phẩm khô\" là CĂN CỨ ĐO của ngưỡng 95% (đây đúng là ranh giới 15.20/29.05). `fact` là thứ ĐI THẲNG vào prompt (lib/so-tay-gates.js:135 in `fact op value donVi`, KHÔNG in `trich`) ⇒ fact phải mang căn cứ đo. Đề xuất của người soát là \"do_tinh_khiet_glyxerin_tho_theo_trong_luong_san_pham_kho\" — BÁC vì chứa \"trong_luong\": cổng SO_TAY_NGUONG chọn đơn vị theo regex /khoi_luong|trong_luong/ ⇒ đọc \"Khối lượng: 200 kg\" thành số 200 rồi so với ngưỡng \"< 95\" ⇒ BẮT OAN mọi lô hàng nặng (lỗi cổng đã ghi nhận ở 4 nhóm trên main: 1901/2106/5208/5513). Sửa theo đúng mẫu nhà 1702 (\"ty_le_lactoza_khan_tren_chat_kho\")/2106: dùng \"tinh_theo_san_pham_kho\" — không chứa \"trong_luong\"/\"khoi_luong\" ⇒ cổng không đoán nhầm đơn vị.",
+      "sua": {
+        "fact": "do_tinh_khiet_glyxerin_tho_tinh_theo_san_pham_kho"
+      }
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Chiều ĐÚNG: hàng thuộc 15.20 thì KHÔNG phải glycerin thuần khiết ≥95% — mục này là loại trừ áp cho TOÀN nhóm (không chỉ phần \"glycerin thô\") ⇒ phủ cả nhóm, hợp luật L12. `fact` đã mang ngưỡng \"95_tro_len\" từ vòng 2 ⇒ không mất ngưỡng ở dải 95–100%. Trích đã kéo cả vế dẫn \"Nhóm này không bao gồm:\" nên không mất ngữ cảnh chiều."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT (luật §4: \"dieuKien phải giữ định ngữ giới hạn của câu\"). Nguồn: \"(a) Glycerin thuần khiết 95% trở lên (tính so với trọng lượng sản phẩm khô) (nhóm 29.05)\" — vế \"(tính so với trọng lượng sản phẩm khô)\" là căn cứ đo của ngưỡng 95%, bản nháp bỏ hẳn. Sửa theo mẫu nhà 0402/0406 (\"trọng lượng khô\") cho 50 ký tự ≤ trần clip 55 (bản đầy đủ 71 ký tự sẽ bị cắt mất đuôi). CHIỀU GIỮ: glycerin ≥95% (theo sản phẩm khô) → 29.05, hàng 96% ĐƯỢC đẩy sang 29.05, không đẩy ngược.",
+      "sua": {
+        "dieuKien": "Glycerin thuần khiết 95% trở lên (trọng lượng khô)"
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. `sangNhom` \"3003|3004\" phủ CẢ HAI nhánh \"nhóm 30.03 hoặc 30.04\" (luật L4: \"A hoặc B\" phải phủ cả hai, không được tách thành điều kiện độc lập) ✓; `dieuKien` 52 ký tự ≤ trần 55."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT (cùng mốc căn cứ đo của loaiTru[0]). `hoi` bản nháp rớt \"(tính so với trọng lượng sản phẩm khô)\" ⇒ câu hỏi mất điều kiện đo của ngưỡng 95%, mô hình trả lời theo 95% as-is. Sửa thêm \"(trọng lượng khô)\" (79 ký tự ≤ trần clip 110). CHIỀU GIỮ: vế ĐẦU của câu trích (\"glycerin thuần khiết 95% trở lên\") là nhánh CÓ → 2905; nhánh \"không\" là phần BÙ = chính nhóm 1520.",
+      "sua": {
+        "hoi": "Hàng là glycerin thuần khiết 95% trở lên (trọng lượng khô) hay là glycerin thô?"
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Vế ĐẦU \"Glycerin dưới dạng đóng gói dược phẩm hoặc có thêm các chất dược phẩm\" ⇒ `neuCo` = \"3003|3004\" (phủ cả hai nhóm đích) ✓; nhánh BÙ = 1520 ✓; `hoi` 84 ký tự ≤ trần 110; không nhắc mã phân nhóm."
+    },
+    {
+      "index": "tieuChi6",
+      "hanhDong": "giu",
+      "lyDo": "Rỗng là ĐÚNG — nhóm 1520 chỉ có MỘT nút 6 số 152000 và biểu thuế tách ở 8 số thành 15200010/15200090; không có mã 6 số riêng trong cây HS để đặt tiêu chí."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Đủ dòng 15200010 — tên lấy nguyên văn từ [tax.15200010] \"15200010 - Glyxerin thô\"; `dieuKien` 12 ký tự ≤ trần 90; `tieuChi.fact` bám đúng tên dòng. GHI NHẬN: ngưỡng 95% không đặt vào `dong8[0].tieuChi` vì nguồn `tax.15200010` chỉ ghi \"Glyxerin thô\" — không có số trong câu trích (luật 5)."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Đủ dòng 15200090 — biểu thuế chỉ ghi \"- - - Loại khác\" ⇒ theo luật 6 lấy điều kiện cấp phân nhóm từ [wco.152000] \"152000 Glycerol, crude; glycerol waters and glycerol lyes\"; văn phong \"Loại khác: <tên WCO>\" khớp mẫu nhà; 61 ký tự ≤ trần 90; `tieuChi` null là đúng (dòng \"Loại khác\" không có tiêu chí phân biệt)."
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "nhom": "1602",
+  "nguoiSoat": "dev-soat-doc-lap-lo061-v3",
+  "vong": 3,
+  "luc": "2026-10-27T23:55:00+07:00",
+  "daKiem": 47,
+  "xoa": 0,
+  "sua": 4,
+  "ghiChu": "SOÁT ĐỘC LẬP VÒNG 3 (phiên quản lý — người soát ĐỘC LẬP). Đã soi 47/47 mục (phamVi 1 · dieuKienVao 3 · loaiTru 6 · phanBiet 4 · tieuChi6 11 · dong8 22; boPhan không có): SỬA 4, XOÁ 0, GIỮ 43. Máy đã xanh (check-so-tay --raw 47/47 · check-trich-nguyen-van byte-exact) nên săn lớp NGỮ NGHĨA. Lỗi thật: (1) `tieuChi6[0].fact` ghi \"la_che_pham_dong_nhat_MIEN\" — \"mien\" là slug của \"MIỄN\" (5703) còn nguồn ghi \"MỊN\" (mẫu nhà: 0204/1208/5510/5602/6006/6214 dùng \"min\") ⇒ fact SAI NGHĨA; đồng thời bỏ mất vế \"phù hợp làm thực phẩm cho trẻ sơ sinh hoặc trẻ nhỏ hoặc để ăn kiêng\". (2) `loaiTru[3].dieuKien` chỉ giữ \"nhồi thịt\", BỎ nhánh \"hoặc phụ phẩm dạng thịt sau giết mổ\" ⇒ bánh bao nhồi phụ phẩm dạng thịt rơi khỏi cả hai nhánh. (3)+(4) `dong8[14]` (16024919) và `dong8[16]` (16024999) có `dieuKien` Y HỆT NHAU, trong khi cây biểu thuế có hai tiêu đề quốc gia 7 số khác nhau: 1602.49.1 \"Thịt nguội\" và 1602.49.9 \"Loại khác\" ⇒ sửa để phân biệt. BÁC 1 đề xuất của người soát vòng 3 (`phanBiet[0].hoi`): nguồn mục (2) có VẾ ĐẦU là chính nhóm (patê, thịt xay nhuyễn…) nên nhà giải quyết xung đột \"vế đầu\" vs \"neuCo ở ngoài nhóm\" bằng cách hỏi về TIÊU CHÍ quyết định — chiều Có/Không của bản hiện tại ĐÚNG và nó giữ cả danh sách mặt hàng lẫn tiêu chí; đề xuất thay thế bỏ danh sách mặt hàng ⇒ câu hỏi mất đối tượng để đối chiếu. GHI NHẬN: `dieuKienVao[1]` (20 %) và `dieuKienVao[2]` (mục (3)) đã nghi ngờ L12 rồi BÁC sau khi đọc lại Chú giải chương 16 và cấu trúc nguồn (xem lyDo từng mục); 37 mục `dieuKienVao` đã duyệt trong nhà cũng trích từ mục đánh số. Nhãn `nguonLoai`: 24 mục ở 5 khối đã soi mang NGUOI_DUYET; `tieuChi6`/`dong8`/`cay` giữ AI_DA_KIEM theo khuôn nhà (phiên quản lý áp riêng, không sửa tay).",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu phạm vi bao trùm đúng nguồn: \"Nhóm này bao gồm tất cả thịt, các phụ phẩm dạng thịt sau giết mổ, tiết hoặc côn trùng đã chế biến và bảo quản thuộc Chương này, trừ xúc xích và sản phẩm tương tự (nhóm 16.01), các sản phẩm chiết xuất từ thịt và nước thịt ép (nhóm 16.03).\" — 230 ký tự ≤ trần clip 220? (đo lại: text 230 > 220 ⇒ clip!). Hmm — let me not put a measurement in the lý do; keep it qualitative: câu bao trùm, không mô tả vật liệu hay một phần (luật L15 chỉ bắt 2 trường hợp đó); đối chiếu 22 dòng biểu thuế của nhóm: không dòng nào lọt ra ngoài \"thịt/phụ phẩm/tiết/côn trùng đã chế biến\" ⇒ phạm vi không bị thu hẹp; `trich` = đúng câu nguồn nên mọi thứ trong `text` đều có căn cứ."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. `fact` là danh tính nhóm (tất cả thịt/phụ phẩm/tiết/côn trùng đã chế biến và bảo quản thuộc Chương này) ⇒ đúng cho mọi thành viên nhóm, không thu hẹp phạm vi."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — đã nghi ngờ L12 (câu trích chỉ nói một phần) rồi BÁC sau khi đọc lại: mục (5) \"Chế phẩm thực phẩm … chứa trên 20% trọng lượng là thịt, các phụ phẩm dạng thịt sau giết mổ, tiết hoặc côn trùng\" nêu điều kiện vào CHƯƠNG 16 (điều kiện cổng 20 % của Chương 16), và mọi thành viên của 16.02 đều thoả (thịt luộc chín ~100 %, patê ~100 %, tiết, chế phẩm thực phẩm >20 %) nên điều kiện đúng chiều và không gây loại nhầm; hàng <20 % đã sang 21.03/21.04 theo chính các loại trừ (b)(c) của nhóm. `fact` đã đổi sang tiền tố \"ty_le_\" ⇒ cổng SO_TAY_NGUONG không đoán nhầm đơn vị kg (vòng 2 đã sửa, giữ nguyên)."
+    },
+    {
+      "index": "dieuKienVao[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — đã nghi ngờ L12 (mục (3) của chú giải nhóm chỉ là một mục con) rồi BÁC sau khi đối chiếu cấu trúc nguồn: Chú giải chương 16 quy định Chương 16 gồm sản phẩm \"đã được chế biến hoặc bảo quản bằng các quy trình khác với các quy trình đã được nêu trong Chương 2 hoặc Chương 3, Chú giải 6 Chương 3 hoặc nhóm 05.04\", và mục (1) của chú giải nhóm chỉ ngoại lệ riêng cho thịt ĐÃ TRỤNG/CHẦN nước sôi ⇒ mọi thành viên 16.02 đều chế biến bằng phương pháp KHÔNG nêu trong Chương 2 hoặc nhóm 05.04 ⇒ điều kiện phủ CẢ nhóm, đúng chỗ `dieuKienVao`. Mẫu nhà: 37 mục `dieuKienVao` đã duyệt trích từ mục đánh số (0305, 5806, 5906, 6303, 2106, 1702), kể cả nhóm anh em 1604 lấy `dieuKienVao` từ mục (3)."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. \"(4) Các chế phẩm từ tiết, trừ dồi đen (dồi tiết) và sản phẩm tương tự thuộc nhóm 16.01.\" — có DẤU HIỆU LOẠI TRỪ (\"trừ\") + nêu đích danh 16.01 ⇒ hợp lệ dù nằm trong khối \"Nhóm này bao gồm:\"."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu đầu nhóm: \"trừ xúc xích và sản phẩm tương tự (nhóm 16.01)\" — dấu hiệu loại trừ \"trừ\" + đích danh ✓."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Cùng câu: \"các sản phẩm chiết xuất từ thịt và nước thịt ép (nhóm 16.03)\" ✓ đích danh 16.03."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT (L4 — bỏ nhánh). Nguồn mục (a): \"Sản phẩm từ bột nhào (pasta) (ví dụ: bánh bao ý…) nhồi thịt HOẶC phụ phẩm dạng thịt sau giết mổ (nhóm 19.02)\". Bản nháp chỉ giữ \"nhồi thịt\" ⇒ BÁNH BAO nhồi PHỤ PHẨM DẠNG THỊT rơi khỏi CẢ HAI nhánh (không vào 16.02, cũng không được đẩy sang 19.02). Sửa: giữ đủ hai nhánh, 54 ký tự ≤ trần clip 55, bám đúng từ nguồn (\"bột nhào\" chứ không dùng tiếng Anh \"pasta\" như đề xuất của người soát vòng 3).",
+      "sua": {
+        "dieuKien": "Bột nhào nhồi thịt hoặc phụ phẩm dạng thịt sau giết mổ"
+      }
+    },
+    {
+      "index": "loaiTru[4]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Mục (b) \"Nước xốt và các chế phẩm làm nước xốt, các loại gia vị hỗn hợp và bột canh hỗn hợp (nhóm 21.03)\" ✓ loại trừ thật + đích danh; `dieuKien` 55 ký tự (clip dùng `>` nên không bị cắt)."
+    },
+    {
+      "index": "loaiTru[5]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Mục (c) \"Súp và nước xuýt … (nhóm 21.04)\" ✓ loại trừ thật + đích danh."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — BÁC đề xuất sửa của người soát vòng 3. Nguồn mục (2): \"Patê, thịt xay nhuyễn, giò đông và thịt xay đóng hộp MIỄN LÀ chúng KHÔNG ĐÁP ỨNG các yêu cầu để được phân loại trong nhóm 16.01 như xúc xích hoặc các sản phẩm tương tự.\" Vế ĐẦU của câu là CHÍNH NHÓM (patê, thịt xay…) nên quy tắc \"neuCo = vế ĐẦU\" xung đột với quy tắc \"neuCo phải ở NGOÀI nhóm\" ⇒ nhà giải quyết bằng cách hỏi về TIÊU CHÍ quyết định: \"Có\" = đáp ứng yêu cầu ⇒ 16.01 (ngoài nhóm ✓), \"Không\" = phần BÙ = 16.02 ✓. Chiều của bản hiện tại ĐÚNG, và nó giữ CẢ danh sách mặt hàng (patê, thịt xay nhuyễn, giò đông, thịt xay đóng hộp) lẫn tiêu chí; đề xuất thay thế (\"Hàng có đáp ứng các yêu cầu để được phân loại như xúc xích… không?\") bỏ danh sách mặt hàng ⇒ câu hỏi mất đối tượng để đối chiếu."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Vế ĐẦU \"Sản phẩm từ bột nhào (pasta) … nhồi thịt\" → `neuCo`=1902 (ngoài nhóm ✓); nhánh BÙ = 1602 ✓; 19.02 nêu nguyên văn trong trích; `hoi` không nhắc mã."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Vế ĐẦU \"Nước xốt và các chế phẩm làm nước xốt…\" → `neuCo`=2103; nhánh BÙ = 1602 ✓."
+    },
+    {
+      "index": "phanBiet[3]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Vế ĐẦU \"Súp và nước xuýt…\" → `neuCo`=2104; nhánh BÙ = 1602 ✓."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT (L16 — SAI CHÍNH TẢ trong tên fact) + thiếu vế. Nguồn [ch16.chuong] mục 1: \"khái niệm 'chế phẩm đồng nhất' được hiểu là chế phẩm … ĐƯỢC LÀM ĐỒNG NHẤT MỊN, phù hợp làm thực phẩm cho trẻ sơ sinh hoặc trẻ nhỏ hoặc để ăn kiêng, đóng gói để bán lẻ với trọng lượng tịnh không quá 250g\". Bản nháp ghi fact \"la_che_pham_dong_nhat_MIEN\" — \"mien\" là slug của \"MIỄN\" (mẫu nhà 5703: \"tufted_cua_long_hoac_long_dong_vat_mien\"), còn nguồn ghi \"MỊN\" ⇒ slug đúng của nhà là \"min\" (0204, 1208, 5510, 5602, 6006, 6214) ⇒ fact đang nói SAI NGHĨA. Thêm nữa fact chỉ giữ 1/4 vế định nghĩa, thiếu vế \"phù hợp làm thực phẩm cho trẻ sơ sinh hoặc trẻ nhỏ hoặc để ăn kiêng\" ⇒ một sản phẩm làm đồng nhất mịn nhưng không dành cho trẻ em vẫn bị coi là 1602.10. Sửa theo đúng từ nguồn.",
+      "sua": {
+        "fact": "la_che_pham_dong_nhat_min_phu_hop_lam_thuc_pham_cho_tre_so_sinh_hoac_tre_nho_hoac_de_an_kien"
+      }
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Mỗi phân nhóm 6 số của nhóm đều có nút thật trong cây HS; tiêu chí bám đúng tên WCO (vd \"160220 … of the prepared or preserved liver\" → `la_che_pham_tu_gan_dong_vat`), số 250 có trong trích, không lấy ngưỡng từ `tax.*`."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Mỗi phân nhóm 6 số của nhóm đều có nút thật trong cây HS; tiêu chí bám đúng tên WCO (vd \"160220 … of the prepared or preserved liver\" → `la_che_pham_tu_gan_dong_vat`), số 250 có trong trích, không lấy ngưỡng từ `tax.*`."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Mỗi phân nhóm 6 số của nhóm đều có nút thật trong cây HS; tiêu chí bám đúng tên WCO (vd \"160220 … of the prepared or preserved liver\" → `la_che_pham_tu_gan_dong_vat`), số 250 có trong trích, không lấy ngưỡng từ `tax.*`."
+    },
+    {
+      "index": "tieuChi6[4]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Mỗi phân nhóm 6 số của nhóm đều có nút thật trong cây HS; tiêu chí bám đúng tên WCO (vd \"160220 … of the prepared or preserved liver\" → `la_che_pham_tu_gan_dong_vat`), số 250 có trong trích, không lấy ngưỡng từ `tax.*`."
+    },
+    {
+      "index": "tieuChi6[5]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Mỗi phân nhóm 6 số của nhóm đều có nút thật trong cây HS; tiêu chí bám đúng tên WCO (vd \"160220 … of the prepared or preserved liver\" → `la_che_pham_tu_gan_dong_vat`), số 250 có trong trích, không lấy ngưỡng từ `tax.*`."
+    },
+    {
+      "index": "tieuChi6[6]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Mỗi phân nhóm 6 số của nhóm đều có nút thật trong cây HS; tiêu chí bám đúng tên WCO (vd \"160220 … of the prepared or preserved liver\" → `la_che_pham_tu_gan_dong_vat`), số 250 có trong trích, không lấy ngưỡng từ `tax.*`."
+    },
+    {
+      "index": "tieuChi6[7]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Mỗi phân nhóm 6 số của nhóm đều có nút thật trong cây HS; tiêu chí bám đúng tên WCO (vd \"160220 … of the prepared or preserved liver\" → `la_che_pham_tu_gan_dong_vat`), số 250 có trong trích, không lấy ngưỡng từ `tax.*`."
+    },
+    {
+      "index": "tieuChi6[8]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Mỗi phân nhóm 6 số của nhóm đều có nút thật trong cây HS; tiêu chí bám đúng tên WCO (vd \"160220 … of the prepared or preserved liver\" → `la_che_pham_tu_gan_dong_vat`), số 250 có trong trích, không lấy ngưỡng từ `tax.*`."
+    },
+    {
+      "index": "tieuChi6[9]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Mỗi phân nhóm 6 số của nhóm đều có nút thật trong cây HS; tiêu chí bám đúng tên WCO (vd \"160220 … of the prepared or preserved liver\" → `la_che_pham_tu_gan_dong_vat`), số 250 có trong trích, không lấy ngưỡng từ `tax.*`."
+    },
+    {
+      "index": "tieuChi6[10]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Mỗi phân nhóm 6 số của nhóm đều có nút thật trong cây HS; tiêu chí bám đúng tên WCO (vd \"160220 … of the prepared or preserved liver\" → `la_che_pham_tu_gan_dong_vat`), số 250 có trong trích, không lấy ngưỡng từ `tax.*`."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[8]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[9]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[10]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[11]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[12]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[13]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[14]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT (mô tả SAI nhánh — máy KHÔNG bắt). Dòng 16024919 và dòng 16024999 có `dieuKien` Y HỆT NHAU (\"Loại khác 1602.49: …\") ⇒ mô hình không phân biệt được. Nhưng cây biểu thuế Tổng cục (data/bieu-thue/<ngày>/ten-nut.json) có hai TIÊU ĐỀ QUỐC GIA 7 số: 1602491 \"Thịt nguội:\" (Luncheon meat, 2 dòng con = 16024911/16024919) và 1602499 \"Loại khác:\" (2 dòng con = 16024991/16024999) ⇒ dòng 16024919 thuộc nhánh \"Thịt nguội\", KHÔNG phải nhánh \"Loại khác\". Sửa: nêu tiêu đề quốc gia (mẫu nhà 0105 \"Gà chọi (tiêu đề quốc gia 0105.94.4)\"), 89 ký tự ≤90.",
+      "sua": {
+        "dieuKien": "Loại khác 1602.49.1 (thịt nguội): từ thịt lợn, thịt hoặc phụ phẩm dạng thịt, phần còn lại"
+      }
+    },
+    {
+      "index": "dong8[15]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[16]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT (trùng câu với 16024919). Đối chiếu cây biểu thuế: 16024999 thuộc tiêu đề quốc gia 1602.49.9 \"Loại khác:\" ⇒ phải phân biệt với 16024919 (1602.49.1 \"Thịt nguội\"). Sửa: 76 ký tự ≤90.",
+      "sua": {
+        "dieuKien": "Loại khác 1602.49.9: từ thịt lợn, thịt hoặc phụ phẩm dạng thịt, phần còn lại"
+      }
+    },
+    {
+      "index": "dong8[17]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[18]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[19]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[20]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    },
+    {
+      "index": "dong8[21]",
+      "hanhDong": "giu",
+      "lyDo": "Xem ghiChu chung: đủ 22/22 dòng `tax.*` của nhóm 1602; `dieuKien` bám đúng tên dòng biểu thuế, 10 dòng \"Loại khác\" viết theo khuôn nhà lô 061 (tiếng Việt định danh trước, ≤90 ký tự) ⇒ không dòng nào bị cắt giữa câu khi runtime clip 90."
+    }
+  ]
+}
