@@ -1,0 +1,55 @@
+{
+  "nhom": "1205",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Hai lỗi cùng lúc. (1) Câu trích bị CẮT CỤT giữa chừng: \"… Nhóm này bao gồm cả hạt\" — nguồn xuống dòng ngay đó (\"cải dầu truyền thống…\" ở dòng kế), bản nháp dừng ở \"hạt\" ⇒ câu trích mồ côi. (2) Phạm vi bị nói THIỂU MỘT NỬA: nhóm 1205 gồm cả hạt cải dầu truyền thống LẪN hạt cải dầu có hàm lượng axit eruxic thấp; bản nháp chỉ nêu loài (Brassica napus/rapa) ⇒ mô hình không biết 1205.10 (axit eruxic thấp) thuộc nhóm 1205. SỬA: giữ NGUYÊN xuống dòng của nguồn (byte-exact, không dán hai mảnh — lỗi lô 038/046) và kéo trọn vế còn thiếu; text nêu đủ phạm vi (141 → 210 ký tự, ≤220 ⇒ không bị clip). GHI NHẬN LỖI KỆ SÁCH: nguồn viết hai kiểu chính tả cho cùng một thuật ngữ — chú giải NHÓM (nhom1205.nhom) dùng \"axit erucic\", còn chú giải CHƯƠNG (ch12.chuong) và dòng biểu thuế (tax.12051000) dùng \"axit eruxic\"; `text` của mục này bám theo trích của nó (\"erucic\"), còn `tieuChi6`/dòng 8 số bám theo \"eruxic\" của câu chú giải chương ⇒ không sửa nguồn, chỉ ghi nhận.",
+      "sua": {
+        "text": "Các loại hạt cải dầu (hạt của một số loài cải Brassica, nhất là cải Brassica napus (cải dầu) và brassica rapa (hoặc B. campestris)), gồm cả hạt cải dầu truyền thống và hạt cải dầu có hàm lượng axit erucic thấp.",
+        "trich": "Nhóm này gồm các loại hạt cải dầu (các loại hạt của một số loài cải Brassica, nhất là cải Brassica napus (cải dầu) và brassica rapa (hoặc B. campestris)). Nhóm này bao gồm cả hạt\n\ncải dầu truyền thống và hạt cải dầu có hàm lượng axit erucic thấp."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "sua",
+      "lyDo": "Cùng lý do câu trích cụt: bản nháp dừng ở \"Nhóm này bao gồm cả hạt\" (câu mồ côi) ⇒ không chứng minh được điều kiện phủ CẢ nhóm. SỬA: dùng lại đúng câu trích đầy đủ của phamVi (định nghĩa + vế \"bao gồm cả hạt cải dầu truyền thống và hạt cải dầu có hàm lượng axit eruxic thấp\", giữ xuống dòng gốc) ⇒ điều kiện \"hạt của một số loài cải Brassica\" được chứng minh là phủ cả 1205.10 lẫn 1205.90. `fact` không đổi.",
+      "sua": {
+        "trich": "Nhóm này gồm các loại hạt cải dầu (các loại hạt của một số loài cải Brassica, nhất là cải Brassica napus (cải dầu) và brassica rapa (hoặc B. campestris)). Nhóm này bao gồm cả hạt\n\ncải dầu truyền thống và hạt cải dầu có hàm lượng axit erucic thấp."
+      }
+    },
+    {
+      "index": "loaiTru",
+      "hanhDong": "giu",
+      "lyDo": "Rỗng — đúng: chú giải nhóm 1205 không có câu loại trừ nào (loại trừ chung của dải 12.01–12.07 trong TỔNG QUÁT Chương 12 không chép vào từng nhóm — cùng lý do lô 051/049)."
+    },
+    {
+      "index": "phanBiet",
+      "hanhDong": "giu",
+      "lyDo": "Rỗng — đúng: không có câu nêu đích danh mã nào để lập cặp Có/Không."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 120510 — ngưỡng số từ chú giải phân nhóm 1205.10 trong ch12.chuong (\"hàm lượng axit eruxic chiếm dưới 2% tính theo trọng lượng…\"), số 2 và \"%\" có trong câu trích; trích 279 ký tự (<300 lược đồ, <600 máy); nguồn KHÔNG phải tax.* ⇒ hợp lệ."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 120590 — tên WCO nguyên văn \"120590 Oil seeds; rape or colza seeds, other than low erucic, whether or not broken\" (nguồn wco.120590); đối chiếu đúng với 120510."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp dài 157 ký tự; runtime clip(…, 90) cắt thành \"…axit eruxic chiếm dưới 2% tính theo trọng lượn…\" ⇒ dấu lược rơi giữa chừng. SỬA: rút còn 85 ký tự (≤90 ⇒ không bị clip), giữ nguyên tên dòng + ngưỡng 2 % và cơ sở \"tính theo trọng lượng\". GHI NHẬN (giới hạn của trần 90): tiêu chí thứ hai của 1205.10 (\"thành phần rắn chứa dưới 30 micromol glucosinolate trên 1 gram\") không chứa nổi trong trần ⇒ vẫn nằm đủ trong `trich` (bằng chứng) nhưng `tieuChi6` chỉ có ngưỡng 2 % ⇒ đề xuất bổ sung tiêu chí glucosinolate cho 120510 do NGƯỜI DUYỆT quyết (bước soát không thêm mục mới).",
+      "sua": {
+        "dieuKien": "Hạt cải dầu có hàm lượng axit eruxic thấp — axit eruxic dưới 2% tính theo trọng lượng"
+      }
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 12059000 \"Loại khác\" — biểu thuế chỉ ghi \"- Loại khác\" nên lấy tên WCO 120590 (nguồn wco.120590); 79/90 ký tự, không bị clip. \"Loại khác\" do máy tự điền theo biểu thuế."
+    }
+  ]
+}

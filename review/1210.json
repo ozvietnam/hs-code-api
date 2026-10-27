@@ -1,0 +1,73 @@
+{
+ "nhom": "1210",
+ "nguoiSoat": "dev-soat-doc-lap-lo056",
+ "luc": "2026-10-26T23:40:00+07:00",
+ "phamViSoat": "Toàn bộ 12 mục của nhóm 1210 (1 phamVi + 1 dieuKienVao + 3 loaiTru + 3 phanBiet + 2 tieuChi6 + 2 dong8), đọc cùng tmp/so-tay/nguon/1210.txt (nhom1210.nhom, ch12.chuong, phan12.phan, wco.121010/121020, tax.12101000/12102000).",
+ "soat": 12,
+ "giu": 12,
+ "sua": 0,
+ "xoa": 0,
+ "ghiChu": "Không sửa, không xoá. GHI NHẬN: (1) câu trích `dieuKienVao[0]` dừng ở \"Nhóm 12.10 gồm hublong tươi hay khô\" — phần bị cắt sau là liệt kê dạng (\"đã hoặc chưa xay, nghiền thành bột hoặc ở dạng viên\"), KHÔNG phải ngoại lệ; KHÔNG kéo dài vì máy coi \"đã hoặc chưa\" là câu CHO PHÉP (`dieu-kien-chi-cho-phep`) ⇒ sẽ loại mục; các dạng đã được `tieuChi6` + 2 dòng biểu thuế ghi rõ. (2) Định nghĩa \"viên ≤ 3 %\" của phan12.phan CHỈ ràng buộc một nhánh của \"đã hoặc chưa xay, nghiền thành bột HOẶC ở dạng viên\" ⇒ không tách thành tiêu chí số (luật: không tách một nhánh của \"A hoặc B\"); đã trích nguyên văn trong `phamVi`.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom1210.nhom]: định nghĩa hublong + câu liệt kê thành phần nhóm + câu về phấn hoa bia; các đoạn lược \"…\" không nuốt ngoại lệ (phần bị lược là mô tả công dụng và định nghĩa \"viên\"); `text` nêu đúng phạm vi nhóm (hublong tươi hay khô, các dạng, phấn hoa bia — trùng với WCO 121020 \"lupulin\" và dòng biểu thuế 12102000), không thêm chữ ngoài nguồn. GIỮ."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom1210.nhom] (\"Nhóm 12.10 gồm hublong tươi hay khô\"); câu phủ CẢ nhóm (1210 không chia phần A/B) và là câu RÀNG BUỘC thuộc nhóm; `fact` bám đúng từ nguồn; KHÔNG có vế phủ định nào bị bỏ. GHI NHẬN: không kéo dài câu trích thêm phần liệt kê dạng (\"đã hoặc chưa xay, nghiền thành bột hoặc ở dạng viên\") vì máy coi \"đã hoặc chưa\" là câu CHO PHÉP (luật `dieu-kien-chi-cho-phep`) và sẽ loại mục; các dạng đã được ghi ở `tieuChi6` và 2 dòng biểu thuế. GIỮ."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom1210.nhom] — mục (a) của khối \"Nhóm này không bao gồm:\"; có DẤU HIỆU LOẠI TRỪ; đích 13.02 NÊU ĐÍCH DANH trong chính câu trích. GIỮ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (b) của khối loại trừ của nhóm; đích 23.03 NÊU ĐÍCH DANH; `dieuKien` chép trọn định ngữ \"chưa được khai thác hết\" của câu nguồn. GIỮ."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (c) của khối loại trừ của nhóm; đích 33.01 NÊU ĐÍCH DANH; `dieuKien` chép đúng \"Tinh dầu hublong\". GIỮ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu với loaiTru[0]; Có → 13.02, Không → 1210 là phần BÙ của nhánh Có. GIỮ."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu với loaiTru[1]; Có → 23.03, Không → 1210 là phần BÙ của nhánh Có. GIỮ."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu với loaiTru[2]; Có → 33.01, Không → 1210 là phần BÙ của nhánh Có. GIỮ."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.121010] (\"Hop cones; neither ground nor powdered nor in the form of pellets\"); tiêu chí cấp 6 số mô tả đúng phân nhóm 1210.10. GIỮ."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.121020] (\"Hop cones; ground, powdered or in the form of pellets; lupulin\"); `fact` giữ đúng cấu trúc \"HOẶC\" (hublong đã nghiền/xay/viên HOẶC phấn hoa bia = lupulin), không biến thành điều kiện VÀ. GIỮ."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12101000]; `dieuKien` chép đúng tên dòng + gloss phân nhóm theo văn phong nhà; đủ 2/2 dòng biểu thuế của nhóm 1210. GIỮ."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12102000]; `dieuKien` chép đúng tên dòng + gloss phân nhóm (90 ký tự, vừa trần clip 90 — không bị cắt). GIỮ."
+  }
+ ]
+}

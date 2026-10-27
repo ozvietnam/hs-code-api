@@ -1,0 +1,162 @@
+{
+ "nhom": "1202",
+ "phamVi": {
+  "text": "Các loại lạc (hạt đậu phộng) đã hoặc chưa tách vỏ hoặc vỡ mảnh, chưa rang hoặc chưa làm chín cách khác; lạc có thể bị xử lý nhiệt nhằm bảo quản tốt hơn. Lạc đã rang hoặc đã làm chín cách khác thuộc Chương 20.",
+  "nguon": "nhom1202.nhom",
+  "trich": "Nhóm này gồm các loại lạc (hay còn gọi là hạt đậu phộng) đã hoặc chưa tách vỏ hoặc vỡ mảnh, chưa rang hoặc chưa làm chín cách khác. Lạc thuộc nhóm này có thể bị xử lý nhiệt nhằm bảo quản tốt hơn (xem trong phần Chú giải tổng quát). Lạc đã rang hoặc đã làm chín cách khác thuộc Chương 20",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "chua_rang_hoac_chua_lam_chin_cach_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom1202.nhom",
+   "trich": "chưa rang hoặc chưa làm chín cách khác",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "120230",
+   "fact": "la_lat_hat_giong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.120230",
+   "trich": "120230 Ground-nuts; seed, not roasted or otherwise cooked, whether or not shelled or broken",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "120230",
+   "fact": "la_hat_giong_la_lat_duoc_co_quan_quoc_gia_co_tham_quyen_danh_gia_la_de_gieo_trong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom1202.nhom",
+   "trich": "Phân nhóm 1202.30 Theo mục đích của phân nhóm 1202.30, thuật ngữ “hạt giống” chỉ bao gồm lạc được các cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "120241",
+   "fact": "la_lat_khac_hat_giong_chua_boc_vo",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.120241",
+   "trich": "120241 Ground-nuts; other than seed, not roasted or otherwise cooked, in shell",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "120242",
+   "fact": "la_lat_khac_hat_giong_da_boc_vo",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.120242",
+   "trich": "120242 Ground-nuts; other than seed, not roasted or otherwise cooked, shelled, whether or not broken,",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "12023000",
+   "dieuKien": "Hạt giống — lạc được các cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng",
+   "nguon": "nhom1202.nhom",
+   "trich": "Phân nhóm 1202.30 Theo mục đích của phân nhóm 1202.30, thuật ngữ “hạt giống” chỉ bao gồm lạc được các cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng.",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "12024100",
+   "dieuKien": "Chưa bóc vỏ",
+   "nguon": "tax.12024100",
+   "trich": "12024100 - - Chưa bóc vỏ",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "12024200",
+   "dieuKien": "Lạc nhân, đã hoặc chưa vỡ mảnh",
+   "nguon": "tax.12024200",
+   "trich": "12024200 - - Lạc nhân, đã hoặc chưa vỡ mảnh",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "1202",
+    "cap": 4,
+    "cha": "12",
+    "tenVi": "Lạc chưa rang, hoặc chưa làm chín cách khác, đã hoặc chưa bóc vỏ hoặc vỡ mảnh. (+).",
+    "tenEn": "Ground-nuts; not roasted or otherwise cooked, whether or not shelled or broken",
+    "suyRa": false
+   },
+   {
+    "id": "12023000",
+    "cap": 8,
+    "cha": "1202",
+    "tenVi": "Hạt giống",
+    "tenEn": "Ground-nuts; seed, not roasted or otherwise cooked, whether or not shelled or broken",
+    "suyRa": false,
+    "laPhanNhom": "120230"
+   },
+   {
+    "id": "12024",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "1202",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "12024100",
+    "cap": 8,
+    "cha": "12024",
+    "tenVi": "Chưa bóc vỏ",
+    "tenEn": "Ground-nuts; other than seed, not roasted or otherwise cooked, in shell",
+    "suyRa": false,
+    "laPhanNhom": "120241"
+   },
+   {
+    "id": "12024200",
+    "cap": 8,
+    "cha": "12024",
+    "tenVi": "Lạc nhân, đã hoặc chưa vỡ mảnh",
+    "tenEn": "Ground-nuts; other than seed, not roasted or otherwise cooked, shelled, whether or not broken,",
+    "suyRa": false,
+    "laPhanNhom": "120242"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom1202.nhom",
+  "tax.12024100",
+  "tax.12024200",
+  "wco.120230",
+  "wco.120241",
+  "wco.120242"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-26T16:31:06.445Z",
+  "ms": 0
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
