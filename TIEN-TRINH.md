@@ -8191,3 +8191,100 @@ nhomLoi: []`). Ngưỡng nghiệm thu ≥ 95 %.
   `TIEN-TRINH.md`. **KHÔNG commit `tmp/`.**
 - Đã push nhánh `so-tay/lo-061` và mở PR. **KHÔNG merge** — chờ người duyệt (luật mục 4 giao việc).
 - `data/legal-status-miss.jsonl` bị `npm test` ghi thêm 2 dòng log ⇒ **đã hoàn nguyên**, không commit.
+
+---
+
+# 2026-10-27 23:xx — SOÁT ĐỘC LẬP VÒNG 3 lô 061 (PR #483) — phiên quản lý
+
+> Nhận brief `brief-st-soat-lo061.md` (đường dẫn `~/.zcode/workspace/default/oz-dev-kit/`).
+> Vai trò: **người soát ĐỘC LẬP**, KHÔNG phải người soạn. Brief trỏ PR #481 (đã đóng) — chốt
+> lô theo CSV + worktree + nhánh (luật của nhà) ⇒ **PR #483**, nhánh `so-tay/lo-061`,
+> dòng CSV 061 = `1518 1520 1521 1522 1601 1602`.
+
+## 0. SAI LỆCH BRIEF (khai trước)
+
+- Brief ghi worktree `hs-code-api-wt-st-lo61` và PR **#481**. Thực tế: worktree đang làm
+  `hs-code-api-wt-st-lo061`, PR **#481 đã đóng** (không merge), PR đang mở là **#483**.
+  ⇒ Lần thứ 12 của lệp "brief trỏ nhầm lô" (memory `so-tay-lo-quy-trinh`). Chốt lô bằng
+  CSV + nhánh + worktree, không tin tên brief.
+- Nội dung brief viết cho PR #481 cũ (110 mục); dữ liệu trên nhánh đã là bản **114 mục** (PR #483).
+
+## 1. Quy trình đã chạy
+
+1. Đọc HẾT nguồn 6 nhóm (`tmp/so-tay/nguon/*.txt`, 96 872 byte) + 6 bản nháp (`tmp/so-tay/raw/*.json`).
+2. Chạy **6 agent soát** (1 nhóm/agent) theo bộ luật `tmp/so-tay/luat-soat-v3.md` (17 lớp lỗi máy
+   KHÔNG bắt + mẫu hồ sơ + quy trình tự kiểm) ⇒ mỗi agent ghi `tmp/so-tay/review-v3/<nhom>.json`.
+3. **Phiên quản lý tự đọc lại nguồn + đối chiếu TỪNG đề xuất** (không tin agent): đo được
+   **1 đề xuất là NO-OP** (agent tự nhận sai là đã sửa), **3 đề xuất sai/nguy hiểm** bị bác,
+   **2 mục mà agent đòi sửa thực ra ĐÚNG** (bác đề xuất xoá/sửa).
+4. Sửa bản nháp 1521 **lệch với dữ liệu đã nạp** (mục 3 bên dưới).
+5. Dựng lại 6 hồ sơ soát (`review/<nhom>.json`, mỗi mục đã soi có 1 dòng kèm lý do) — **ghi đè**
+   hồ sơ vòng 2 (vòng 2 nằm trong git history commit `8e1e4f3`).
+6. Áp: `TARGET=raw APPLY=1 node scripts/apply-review-lo061.mjs` → `check-so-tay --raw` →
+   `build-so-tay --tu-tep --force --nguoi-soan=... --bao-cao=.../lo-061.json` →
+   `TARGET=data APPLY=1` (đổi `nguonLoai` → `NGUOI_DUYET` cho 5 khối đã soi).
+
+## 2. Kết quả
+
+**114/114 mục đã soi · sửa 21 mục / 32 trường · xoá 0 · hoàn nguyên 2 khối (1521).**
+
+| Nhóm | Mục | Sửa | Xoá | Lỗi thật |
+|---|---|---|---|---|
+| 1518 | 26 | 6 mục / 10 trường | 0 | 6 |
+| 1520 | 9 | 4 / 5 | 0 | 4 |
+| 1521 | 14 | 0 (hoàn nguyên 2 khối) | 0 | 2 (vòng 2 sửa hỏng) |
+| 1522 | 10 | 4 / 5 | 0 | 4 |
+| 1601 | 8 | 3 / 4 | 0 | 3 |
+| 1602 | 47 | 4 / 4 | 0 | 4 |
+
+Lỗi nặng nhất: **1518** dán "khác nhau" sai chỗ + bỏ "thực vật hoặc vi sinh vật" ở vế (B) (thu hẹp
+phạm vi nhóm); **1518 `dong8[5]`** biến *"của các loại mỡ hoặc dầu động vật khác nhau"* thành *"của
+chúng"* (đổi nghĩa); **1520** mất *"tính so với trọng lượng sản phẩm khô"* ở 4 chỗ (đúng là ranh giới
+15.20/29.05) + mất mục loại trừ (c) "Chương 33"; **1521 `phamVi.text`** của vòng 2 gán nhầm định ngữ
+của phần (II) cho phần (III); **1601** lược nuốt câu định nghĩa về vật liệu + mất ngoại lệ ngay sau
+câu trích; **1602 `tieuChi6[0].fact`** ghi *"mien"* (slug của "MIỄN") thay vì *"min"* (nguồn ghi "MỊN")
+⇒ sai nghĩa; **1602 `dong8[14]`/`[16]`** mô tả trùng nhau, không phân biệt được 1602.49.1 "Thịt nguội"
+với 1602.49.9 "Loại khác".
+
+Chi tiết đầy đủ (lý do từng mục, đề xuất bị bác): `review/{1518,1520,1521,1522,1601,1602}.json` +
+phần "SOÁT ĐỘC LẬP VÒNG 3" trong body PR #483.
+
+## 3. LỖI TRẠNG THÁI LÀM VIỆC — bản nháp 1521 lệch dữ liệu đã nạp
+
+`tmp/so-tay/raw/1521.json` là bản nháp **trước** vòng soát v2; `data/so-tay/1521.json` là bản **sau**
+v2 (đã có 2 sửa `tieuChi6` + 1 sửa `loaiTru[3]`). Áp review mới lên bản nháp cũ rồi nạp lại ⇒ 1521
+**mất 3 sửa của v2**, trong đó có sửa **đảo chiều** ở `tieuChi6[1].fact` (fact "la_sap_khac_thuoc_sap_thuc_vat"
+đọc ngược *"other than vegetable"*). Đã đồng bộ bản nháp (giữ `tieuChi6` + `loaiTru[3]` từ data, giữ
+nguyên `phamVi`/`boPhan` bản nháp vì bản nháp tốt hơn) rồi mới áp review — script
+`tmp/so-tay/dong-bo-raw-1521.mjs`. **Bài học: trước khi áp review lần 2, phải khoảng đối chiếu
+raw ↔ data (script `tmp/so-tay/diff-raw-data-061.mjs`).**
+
+## 4. Người duyệt đã BÁC 5 đề xuất của agent soát (có căn cứ)
+
+| Đề xuất | Quyết định | Căn cứ |
+|---|---|---|
+| 1518 `loaiTru[0]` → *"Dầu sulphat hoá xử lý thêm (sản phẩm rắn)"* | GIỮ bản cũ | luật lô 060: `dieuKien` phải giữ danh từ định danh vật thể đi sang nhóm đích |
+| 1520 `dieuKienVao[0].fact` → *"…_theo_trong_luong_san_pham_kho"* | SỬA thành *"tinh_theo_san_pham_kho"* | chứa `trong_luong` ⇒ cổng `SO_TAY_NGUONG` đoán đơn vị kg rồi so với ngưỡng "< 95" ⇒ bắt oan lô hàng nặng |
+| 1522 `boPhan.quyTac` bỏ nhãn "(A)" | GIỮ "(A)" | mẫu nhà 1517 đã duyệt |
+| 1601 dùng chung 1 câu trích cho `phamVi` + `dieuKienVao[0]` | TÁCH HAI | bản đó 375 ký tự (>300) |
+| 1602 `phanBiet[0].hoi` + `loaiTru[3].dieuKien` | GIỮ / SỬA | xem mục 3 ở PR body |
+
+Ngoài ra **2 mục mà agent đòi sửa thực ra ĐÚNG** (người duyệt bác đề xuất sửa): 1602 `dieuKienVao[2]`
+(điều kiện "phương pháp khác không nêu trong Chương 2/05.04" — đọc lại Chú giải chương 16 thấy phủ cả
+nhóm) và 1520 `dieuKienVao[1]` (chiều `=false`).
+
+## 5. Script (gitignored, trong `tmp/`)
+
+- `tmp/so-tay/luat-soat-v3.md` — bộ luật soát vòng 3 cho 6 agent (17 lớp lỗi + mẫu hồ sơ + tự kiểm).
+- `tmp/so-tay/v3-cut.mjs` — cắt câu trích NGUYÊN VĂN từ tệp nguồn theo chỉ số (byte-exact).
+- `tmp/so-tay/v3-build-review{,2,3,4}.mjs` — dựng 6 hồ sơ soát (mọi `trich` cắt từ nguồn).
+- `tmp/so-tay/dong-bo-raw-1521.mjs` — đồng bộ bản nháp 1521 với dữ liệu đã nạp (mục 3).
+- `tmp/so-tay/diff-raw-data-061.mjs` — khoảng đối chiếu raw ↔ data (bắt lệch trạng thái làm việc).
+- `tmp/so-tay/do-tran-clip-061.mjs` — đo trần clip runtime + vùng im lặng 300–600.
+- `tmp/so-tay/khoi-tao-boi-061.mjs` — giữ `taoBoi.provider` = "dev-zcode-mm" như mọi lô của nhà.
+
+## 6. Trạng thái cuối
+
+- Đã commit `data/so-tay/{1518,1520,1521,1522,1601,1602}.json` + `data/so-tay/bao-cao/lo-061.json` +
+  `review/{6 nhóm}.json` + mục này trong `TIEN-TRINH.md`. **KHÔNG commit `tmp/`.**
+- Đã push nhánh `so-tay/lo-061` và cập nhật body PR #483. **KHÔNG merge** — chờ người duyệt.
