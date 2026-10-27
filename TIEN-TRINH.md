@@ -8628,3 +8628,17 @@ của nhóm, không lược mất câu về "chất béo ca cao" từ phế li�
 - **PR #485** (thay cho #484 đã đóng) — **KHÔNG merge** — chờ người duyệt đọc lại
   `review/1801.json`…`review/1806.json` (49 dòng, mỗi dòng một `lyDo`) và phần "SOÁT ĐỘC LẬP lô 063"
   ở cuối `TIEN-TRINH.md`.
+
+## 5. Lô 064 — KHÔNG làm trong phiên này
+
+Phiên này (`dev-zcode-mm`, 28/10/2026) **KHÔNG làm lô 064**: worktree `hs-code-api-wt-st-lo064` đang
+do MỘT agent khác phụ trách (tiến trình `claude -p` chạy từ 02:57, nhận `brief-st-lo052.md`; lô 052
+đã `xong`/PR #456 nên agent đó chuyển sang lô 064). Làm song song sẽ tạo hai PR cho cùng một lô
+và đụng `tmp/so-tay/raw/` + `docs/giao-viec/so-tay-lo.csv` của nhau.
+
+Dấu vết của phiên này trong worktree đó (thuộc `tmp/` — gitignored, KHÔNG vào PR): 2 bản nháp
+`tmp/so-tay/raw/1902.json` (`22/22` mục) và `1903.json` (`3/3` mục) — **đã qua** `check-so-tay --raw`.
+Hai script phụ trợ của phiên này (cắt trích theo vị trí TỪ, generator 1902 + 1903) **đã xoá** khỏi
+worktree đó để không lẫn với pipeline của agent kia. Agent của lô 064 có thể dùng lại hoặc viết lại
+2 bản nháp này — generator của agent đó ghi đè `tmp/so-tay/raw/<nhom>.json` từ `spec-*.mjs` của chính nó.
+Không có gì trong `data/so-tay/` hay `docs/giao-viec/so-tay-lo.csv` của lô 064 bị đụng.
