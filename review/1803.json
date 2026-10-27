@@ -1,0 +1,47 @@
+{
+ "nhom": "1803",
+ "nguoiSoat": "dev-soat-doc-lap-lo063-v2",
+ "vong": 2,
+ "luc": "2026-10-28T03:54:00+07:00",
+ "daKiem": 7,
+ "xoa": 0,
+ "sua": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP VÒNG 2 của lô 063 (PR #485) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI 7/7 mục cùng nguồn tmp/so-tay/nguon/1803.txt (đọc HẾT, không lấy mẫu). Vòng 1 (PR #484) đã soát nhóm này: sửa 0 / xoá 0 / giữ 7. Vòng 2 XÁC NHẬN toàn bộ — không có mục nào mới cần sửa. Đo thêm: 0 trường tràn clip runtime (phamVi.text 143/220 · loaiTru.dieuKien 52/55 · phanBiet.hoi 61/110 · dong8.dieuKien 17 và 58/90) · 0 câu trích vượt 300 ký tự (dài nhất 275 ở phamVi) · khoảng lược lớn nhất 196 ký tự ở `phamVi` — đã đọc lại: đoạn bị lược là mô tả DÙNG và dạng (\"Sản phẩm thu được làm cứng dưới dạng viên, miếng hoặc khối. Bột nhão có thể được các nhà sản xuất bánh kẹo sử dụng luôn nhưng chúng thường được dùng để sản xuất bơ ca cao, bột ca cao và sôcôla.\") — KHÔNG chứa ngoại lệ ⇒ không mất luật nào · 0 mục thiếu nguồn.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Phạm vi phủ cả hai phân nhóm của nhóm: bột nhão CHƯA khử chất béo (1803.10) và bột nhão ĐÃ khử một phần/toàn bộ chất béo — khô dầu ca cao (1803.20); `text` chỉ dùng chữ có trong hai mảnh trích. Đoạn lược \"…\" nuốt câu công dụng (\"Sản phẩm thu được làm cứng dưới dạng viên, miếng hoặc khối. Bột nhão có thể được các nhà sản xuất bánh kẹo sử dụng luôn nhưng chúng thường được dùng để sản xuất bơ ca cao, bột ca cao và sôcôla.\") — mô tả DÙNG và dạng, không phải ngoại lệ ⇒ không mất luật nào (đo khoảng lược 196 ký tự < 200). GHI NHẬN: nhóm 1803 KHÔNG có câu \"Nhóm này bao gồm…\" mà chỉ có câu định nghĩa + câu \"Nhóm này cũng bao gồm…\" ⇒ `dieuKienVao` rỗng là ĐÚNG (không có câu ràng buộc nào phủ cả nhóm; câu cho phép thì máy loại)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Câu \"Nhóm này loại trừ bột nhão ca cao đã cho thêm đường hoặc chất làm ngọt khác (nhóm 18.06).\" — có DẤU HIỆU LOẠI TRỪ rõ ràng, đích 18.06 nêu nguyên văn ✓, không có câu rào. `dieuKien` bỏ chữ \"khác\" ở cuối (không đổi nghĩa) và GIỮ ĐỦ cả hai nhánh \"đường hoặc chất làm ngọt\" ✓, 52/55 không bị cắt."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Hỏi \"Hàng là bột nhão ca cao đã cho thêm đường hoặc chất làm ngọt?\" → có → 1806 (mã 18.06 có trong câu trích) / không → 1803 (chính nhóm) ⇒ đúng chiều, không đảo. Cùng câu trích với `loaiTru[0]` nên hai mục khớp nhau; 61/110 không bị cắt."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. hs6 180310 là nút 6 số THẬT trong cây (dòng lá 18031000, laPhanNhom=180310) ✓ luật 10. `trich` nguyên văn tiếng Anh từ nguồn wco.180310 (KHÔNG lấy từ tax.* — luật 10) ✓. `value` \"Bột ca cao nhão, chưa khử chất béo\" dịch đúng \"paste, not defatted\" bằng đúng chữ của chính nhóm (chú giải nhóm: \"Bột ca cao nhão\") + chữ biểu thuê 18031000 (\"Chưa khử chất béo\") — không mượn chữ của nhóm khác, không dịch tự do."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. hs6 180320 là nút 6 số thật (18032000, laPhanNhom=180320) ✓. `value` chép đúng vế \"bột nhão ca cao đã được khử một phần hoặc toàn bộ chất béo (khô dầu ca cao)\" của chú giải nhóm; nguồn nhom1803.nhom (chú giải, không phải tax.*) ✓ luật 10; không thêm chữ ngoài trích."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Dòng 18031000 \"Chưa khử chất béo\": `dieuKien` chép nguyên văn tên dòng biểu thuế, có nguồn tax.18031000 ✓; không cần `tieuChi` riêng vì tên dòng đã là điều kiện (không có ngưỡng số trong dòng này)."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Dòng 18032000 \"Đã khử một phần hoặc toàn bộ chất béo\": bản nháp lấy điều kiện từ chú giải nhóm (nêu rõ \"Bột nhão ca cao\") thay vì tên dòng trần — vẫn đúng tên dòng, không đoán, 58/90 không bị cắt. `trich` nguyên văn từ nhom1803.nhom ✓. Nhóm chỉ có 2 dòng biểu thuế ⇒ đủ 2/2."
+  }
+ ]
+}

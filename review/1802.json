@@ -1,0 +1,37 @@
+{
+ "nhom": "1802",
+ "nguoiSoat": "dev-soat-doc-lap-lo063-v2",
+ "vong": 2,
+ "luc": "2026-10-28T03:52:00+07:00",
+ "daKiem": 5,
+ "xoa": 0,
+ "sua": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP VÒNG 2 của lô 063 (PR #485) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI 5/5 mục cùng nguồn tmp/so-tay/nguon/1802.txt (đọc HẾT, không lấy mẫu). Vòng 1 (PR #484) đã soát nhóm này: sửa 0 / xoá 0 / giữ 5. Vòng 2 XÁC NHẬN toàn bộ — không có mục nào mới cần sửa; có 2 GHI NHẬN dưới đây (mơ hồ của chính nguồn, không sửa theo cách hiểu cá nhân — mẫu lô 060 vòng 3). Đo thêm: 0 trường tràn clip runtime (phamVi.text 68/220 · dieuKienVao.fact 60 · loaiTru.dieuKien 39/55 · phanBiet.hoi 48/110 · dong8.dieuKien 46/90) · 0 câu trích vượt 300 ký tự (dài nhất 134) · 0 khoảng lược · 0 mục thiếu nguồn.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Phạm vi = câu định nghĩa chung của chú giải nhóm \"Nhóm này bao gồm các phế liệu còn lại thu được từ sản xuất bột ca cao hoặc bơ ca cao.\" — đây là câu PHẠM VI của nhóm (không phải câu định nghĩa thuật ngữ), nên phủ cả nhóm. Bốn mục (1)–(4) là phần chi tiết của chính định nghĩa đó; trích cả bốn mục lên ~640 ký tự (vượt luật ≤300) nên trích câu định nghĩa là chọn đúng, không phải bỏ sót. `text` không thêm chữ nào ngoài trích. GHI NHẬN (không sửa): chủ ngữ nhóm \"Vỏ quả, vỏ hạt, vỏ lụa và phế liệu ca cao khác\" (tên biểu thuế 18020000) KHÔNG có trong chú giải nhóm — chú giải chỉ nói \"Vỏ cứng, vỏ lụa\" ở mục (1); thêm chủ ngữ vào `text` sẽ là thêm chữ ngoài câu trích (luật 7), nên giữ."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận và bổ sung một lý do phủ nhóm. Câu \"Nhóm này bao gồm các phế liệu còn lại thu được từ sản xuất bột ca cao hoặc bơ ca cao.\" là câu PHẠM VI (có \"bao gồm\"), không phải câu cho phép (không có \"có thể…\", \"đã hoặc chưa…\", \"vẫn được phân loại…\") nên hợp lệ làm điều kiện vào nhóm. Điều kiện này PHỦ CẢ 4 mục (1)–(4) của chú giải nhóm: (1) vỏ cứng/vỏ lụa tách ra khi rang và xay hạt (= sản xuất bột ca cao); (2) phôi mầm tách khi cho hạt qua máy tách mầm; (3) bụi cacao khi làm sạch vỏ trong máy phân loại; (4) khô dầu cacao khi chiết xuất bơ ca cao ⇒ không có mục con nào của nhóm nằm ngoài điều kiện (luật lô 030: nhóm có phần câu không nói tới thì để rỗng — ở đây không xảy ra). `fact` snake_case bỏ dấu đúng (\"phe_lieu\", \"bot_cao\", \"bo_cao\"), không câu cho phép trong trích. `ngoaiTru` rỗng là ĐÚNG: đây là điều kiện boolean, không có ngưỡng số."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 XÁC NHẬN và ghi nhận điểm mơ hồ của chính nguồn (KHÔNG sửa theo cách hiểu cá nhân — mẫu lô 060 vòng 3). Câu nguồn đầy đủ: \"Nhóm này loại trừ khô dầu ca cao không có vỏ cứng, vỏ lụa, thu được từ quá trình chiết xuất bơ ca cao từ bột ca cao nhão (nhóm 18.03).\" — loại trừ dứt khoát, đích 18.03 nêu nguyên văn ✓, không có câu rào. `dieuKien` rút gọn bỏ vế \"thu được từ quá trình chiết xuất bơ ca cao từ bột ca cao nhão\" (39/55, không bị cắt). HAI CÁCH HIỂU ĐỀU CÓ THỂ: (i) \"không có vỏ cứng, vỏ lụa\" là tiêu chí phân biệt — mục (4) của chính nhóm 1802 nói khô dầu cacao \"gồm những mẩu nhỏ của vỏ cứng, vỏ lụa\" (CÓ vỏ) còn khô dầu từ bột nhão thì KHÔNG có vỏ ⇒ điều kiện hiện tại ĐÚNG; (ii) vế bị bỏ là điều kiện bắt buộc ⇒ điều kiện hiện tại RỘNG hơn nguồn. Vì nguồn mơ hồ, không sửa; vế bị rút gọn vẫn nằm nguyên văn trong `trich` (134 ký tự), mà runtime đính kèm `trich` làm căn cứ (`legal`) cho mọi challenge ⇒ không mất căn cứ. Đề xuất người duyệt đọc lại điểm này."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận (kèm cùng GHI NHẬN mơ hồ ở `loaiTru[0]`). Hỏi \"Hàng là khô dầu ca cao không có vỏ cứng, vỏ lụa?\" → có → 1803 (đích loại trừ, mã 18.03 có trong câu trích) / không → 1802 (chính nhóm) ⇒ đúng chiều, không đảo. `hoi` không nhắc mã, không thêm chữ ngoài trích, 48/110 không bị cắt."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Nhóm 1802 chỉ có một dòng biểu thuế 18020000; `dieuKien` chép đúng nguyên văn tên dòng \"Vỏ quả, vỏ hạt, vỏ lụa và phế liệu ca cao khác\" (nguồn tax.18020000) ✓; đủ 1/1 dòng, không thừa không thiếu."
+  }
+ ]
+}

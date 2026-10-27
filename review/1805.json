@@ -1,0 +1,50 @@
+{
+ "nhom": "1805",
+ "nguoiSoat": "dev-soat-doc-lap-lo063-v2",
+ "vong": 2,
+ "luc": "2026-10-28T03:58:00+07:00",
+ "daKiem": 7,
+ "xoa": 0,
+ "sua": 1,
+ "ghiChu": "SOÁT ĐỘC LẬP VÒNG 2 của lô 063 (PR #485) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI 7/7 mục cùng nguồn tmp/so-tay/nguon/1805.txt (đọc HẾT). Vòng 1 (PR #484) đã soát nhóm này: sửa 0 / xoá 0 / giữ 7. Vòng 2: GIỮ 6 · SỬA 1 (1 trường: `phanBiet[0].hoi`) · XOÁ 0. LÝ DO SỬA: câu hỏi phân biệt chỉ nêu một nhánh của hai nhánh loại trừ mà câu nguồn nêu đích danh ⇒ NHÁNH \"KHÔNG\" KHÔNG PHẢI PHẦN BÙ của nhánh \"có\" (lớp lỗi lô 047): hàng \"bột ca cao có pha thêm sữa/peptone\" trả lời \"không\" cho câu hỏi này (⇒ rơi vào 1805) trong khi câu nguồn bắt nó sang 18.06. Đo thêm trên nhóm này: 0 trường tràn clip runtime (phamVi.text 160/220 · loaiTru.dieuKien 48 và 48/55 · phanBiet.hoi 57 và 73/110 · dong8.dieuKien 55/90) · 0 câu trích vượt 300 ký tự (dài nhất 248) · khoảng lược ở `phamVi` chỉ 1 ký tự ⇒ dấu lược KHÔNG nuốt gì · 0 mục thiếu nguồn.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận + GHI NHẬN một điểm người duyệt nên biết. Phạm vi ghép hai câu LIỀN của chú giải nhóm: \"Nhóm này chỉ bao gồm bột ca cao chưa pha thêm đường hoặc chất làm ngọt khác.\" + \"Nhóm này bao gồm bột cacao thu được sau khi xử lý mảnh hạt, bột nhão và bột khô với chất kiềm (Carbonate natri hoặc carbonate kali…) để tăng độ hoà tan (ca cao hoà tan).\" — phủ cả nhóm (kể cả bột ca cao hoà tan). `text` bỏ ngoặc \"Carbonate natri hoặc carbonate kali…\" (chi tiết ví dụ) chứ không thêm mệnh đề nào. Đo khoảng lược = 1 ký tự ⇒ dấu \"…\" chỉ đứng ở RANH GIỚI CÂU (hai câu liền nhau trong nguồn), KHÔNG nuốt ngoại lệ nào — cùng cách làm mẫu nhà 0905. GHI NHẬN (không sửa): câu ĐỊNH NGHĨA đầu tiên của chú giải nhóm — \"Bột ca cao thu được từ ca cao dạng nhão đã tách một phần chất béo thuộc nhóm 18.03 bằng cách tán thành bột.\" (110 ký tự) — KHÔNG nằm trong `trich`; nó nêu NGUỒN GỐC (từ bột nhão 1803) là ranh giới quan trọng với 1803/1806. Không sửa vì: (i) phạm vi vẫn đúng — câu ràng buộc \"chỉ bao gồm bột ca cao chưa pha thêm đường…\" đã nằm trong `trich` và lại còn có `dieuKienVao[0]`; (ii) thêm 110 ký tự sẽ vượt trần 300 (248 + 110) và phải bỏ mất một trong hai phần còn lại; (iii) không thấy kịch bản hàng bị xếp sai. Nếu người duyệt muốn có nguồn gốc thì thay `trich` bằng \"Bột ca cao thu được từ ca cao dạng nhão đã tách một phần chất béo thuộc nhóm 18.03 bằng cách tán thành bột.…Nhóm này bao gồm bột cacao thu được sau khi xử lý mảnh hạt, bột nhão và bột khô với chất kiềm (Carbonate natri hoặc carbonate kali...) để tăng độ hoà tan (ca cao hoà tan).\" (284 ký tự) và sửa `text` tương ứng — nhưng khi đó mất câu \"chưa pha thêm đường\" khỏi `phamVi` (vẫn còn ở `dieuKienVao[0]`)."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Câu \"Nhóm này CHỈ bao gồm bột ca cao chưa pha thêm đường hoặc chất làm ngọt khác.\" là câu RÀNG BUỘC (có \"chỉ bao gồm\"), phủ cả nhóm 1805 (kể cả bột ca cao hoà tan vốn cũng chưa pha đường) ⇒ hợp lệ làm điều kiện VÀO nhóm, KHÔNG phải câu cho phép. `fact` snake_case bỏ dấu đúng, không có câu cho phép trong trích (không rơi vào `dieu-kien-chi-cho-phep`). `ngoaiTru` rỗng là ĐÚNG: đây là điều kiện boolean, không có ngưỡng số ⇒ không có chỗ đứng cho `ngoaiTru`."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 XÁC NHẬN + GHI NHẬN điểm thu hẹp. Câu nguồn: \"Bột ca cao đã pha thêm đường hoặc chất ngọt khác và bột ca cao đã pha thêm sữa hoặc peptone thuộc nhóm 18.06. Tuy nhiên, dược phẩm trong đó có bột ca cao chỉ được sử dụng như là chất hỗ trợ hoặc chất dẫn cho thuốc thuộc nhóm 30.03 hoặc 30.04.\" — loại trừ dứt khoát, đích 18.06 nêu nguyên văn ✓. Bản nháp KÉO CẢ câu \"Tuy nhiên…\" vào `trich` ⇒ không mất ngoại lệ dược phẩm (luật 31) ✓. `dieuKien` chỉ giữ nhánh \"pha thêm đường hoặc chất ngọt khác\", BỎ nhánh \"sữa hoặc peptone\" — đây là THU HẸP THEO NHÓM, đúng mẫu nhà (1901→1101|1102, 0304–0307; đo trên kho: 278/2.564 `loaiTru` có \"hoặc\" trong trích mà không có trong `dieuKien`) và bắt buộc vì trần clip runtime của `loaiTru.dieuKien` là 55: mọi cách viết đủ hai nhánh đều dài 62 hoặc 66 ký tự ⇒ bị cắt GIỮA CÂU lúc chạy (bài học lô 060: cắt mất vế giới hạn ⇒ ĐẢO CHIỀU luật). Vế bị thu hẹp vẫn nằm nguyên văn trong `trich` (242 ký tự), mà runtime đính kèm `trich` làm căn cứ (`legal`) cho mọi challenge ⇒ không mất căn cứ. VẾ BÙ ĐÃ ĐƯỢC ĐƯA VÀO `phanBiet[0].hoi` (xem mục đó — câu hỏi có trần 110 nên đủ chỗ cho cả hai nhánh)."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 XÁC NHẬN (kể cả CHIỀU của luật — đây là điểm dễ đảo nên đã soi kỹ). Mục tách riêng cho ngoại lệ \"Tuy nhiên…\": dược phẩm có bột ca cao chỉ dùng làm chất hỗ trợ hoặc chất dẫn cho thuốc thuộc nhóm 30.03 hoặc 30.04 ⇒ sang 3003|3004 (hai mã đều nêu nguyên văn trong câu trích ✓). CHIỀU ĐÚNG: câu \"Tuy nhiên…\" là NGOẠI LỆ của câu \"… thuộc nhóm 18.06\" ⇒ hàng này ĐI sang 30.03/30.04 chứ KHÔNG ở lại 18.05; đích nêu trong chính câu trích; khớp mẫu nhà (0302 \"Tuy nhiên, nhóm này không bao gồm … thuộc nhóm 03.04\"; 0410 \"… được phân loại và nhóm 05.11\"; 0601) và khớp chú giải KG của chính nhóm 18.05 trong kho số liệu (\"Phân biệt với 1803 (bột nhão, bơ cao), 1806 (có đường/sữa), 3003/3004 (dược phẩm)\") ⇒ không đảo chiều. `dieuKien` giữ nhánh \"chất hỗ trợ\" (48/55), nhánh \"chất dẫn\" được `phanBiet[1].hoi` giữ đủ và nằm nguyên văn trong `trich` của cả hai mục ⇒ không mất thông tin."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT — NHÁNH \"KHÔNG\" KHÔNG PHẢI PHẦN BÙ CỦA NHÁNH \"CÓ\" (lớp lỗi lô 047). Câu nguồn loại trừ HAI nhánh: \"Bột ca cao đã pha thêm đường hoặc chất ngọt khác VÀ bột ca cao đã pha thêm sữa hoặc peptone thuộc nhóm 18.06.\" Câu hỏi hiện tại chỉ nêu nhánh đầu (\"Hàng là bột ca cao đã pha thêm đường hoặc chất ngọt khác?\") ⇒ hàng \"bột ca cao có pha thêm sữa/peptone\" trả lời \"KHÔNG\" cho câu hỏi này, tức rơi vào nhánh không → 1805, trong khi câu nguồn bắt sang 18.06 ⇒ tờ khai rơi khỏi CẢ HAI nhánh (đúng mô tả lớp lỗi lô 047: \"tờ khai rơi khỏi cả 2 nhánh\"). Sửa: \"Hàng là bột ca cao đã pha thêm đường, chất ngọt khác, sữa hoặc peptone?\" — 71 ký tự, ≤ trần clip 110 của `phanBiet.hoi` nên không bị cắt; mọi từ đều có trong câu trích (\"Bột ca cao đã pha thêm đường hoặc chất ngọt khác và bột ca cao đã pha thêm sữa hoặc peptone thuộc nhóm 18.06\"); `trich` giữ nguyên. Đây là mục có tác động vận hành (câu hỏi phân biệt đi vào prompt runtime), khác `tieuChi6` (không vào prompt) — nên ưu tiên sửa ở đây.",
+   "sua": {
+    "hoi": "Hàng là bột ca cao đã pha thêm đường, chất ngọt khác, sữa hoặc peptone?"
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Hỏi \"Dược phẩm có bột ca cao chỉ dùng làm chất hỗ trợ hoặc chất dẫn cho thuốc?\" → có → 3003|3004 (đích nằm NGOÀI nhóm, đã nêu nguyên văn trong trích) / không → 1805 (chính nhóm) ⇒ đúng chiều bù, giữ đủ CẢ HAI nhánh \"hỗ trợ\" VÀ \"dẫn\" (bù lại phần mà `loaiTru[1].dieuKien` phải thu hẹp theo trần 55). `hoi` không nhắc mã phân nhóm; 73/110 không bị cắt."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Dòng 18050000 \"Bột ca cao, chưa pha thêm đường hoặc chất tạo ngọt khác\": `dieuKien` chép đúng nguyên văn tên dòng biểu thuế, có nguồn tax.18050000 ✓; 55/90 không bị cắt; nhóm chỉ có 1 dòng biểu thuế ⇒ đủ 1/1."
+  }
+ ]
+}
