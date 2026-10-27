@@ -1,0 +1,177 @@
+{
+ "nhom": "1905",
+ "nguoiSoat": "dev-soat-doc-lap-lo064",
+ "vong": 1,
+ "luc": "2026-10-28T04:10:00+07:00",
+ "daKiem": 30,
+ "giu": 27,
+ "sua": 2,
+ "xoa": 0,
+ "chen": 1,
+ "ghiChu": "",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: `text` đã phủ CẢ phần dẫn lẫn phần (B) (\"bánh thánh, vỏ thuốc con nhộng dùng trong ngành dược, bánh xốp (sealing wafer), bánh đa…\") — đúng mẫu 1518/1521/1522."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: fact bám đúng trích (\"các loại bánh được nướng\"), điều kiện phủ phần dẫn; phần (B) đã nêu rõ trong `phamVi` (mẫu 1518 cũng có `dieuKienVao` phủ riêng phần (A))."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: loại trừ có dấu hiệu, đích danh \"nhóm 20.05\" trong trích, sangNhom 2005 đúng."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "chen",
+   "lyDo": "THIẾU MỤC (luật 3) — `nhom1905.nhom` mục (14): \"Tuy nhiên, bánh pizza chưa được làm chín thuộc nhóm 19.01.\" ⇒ loại trừ có DẤU HIỆU (\"Tuy nhiên\"), đích danh \"nhóm 19.01\" nằm trong câu trích ⇒ phải có `loaiTru` → 1901. Bản nháp BỎ SÓT dù đã dùng đúng câu này cho `phanBiet[0]` (chiều ngược lại, nhóm 1901 đã duyệt có `loaiTru` → 1905). Không phải loại trừ cấp CHƯƠNG ⇒ không dính luật lô 051/060. `dieuKien` 29 ≤ 55.",
+   "sua": {
+    "dieuKien": "Bánh pizza chưa được làm chín",
+    "sangNhom": "1901",
+    "nguon": "nhom1905.nhom",
+    "trich": "Tuy nhiên, bánh pizza chưa được làm chín thuộc nhóm 19.01."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT — `hoi` có nhánh đối lập \"hay là bánh đã được làm chín sơ hoặc đã chín\" nhưng câu trích chỉ có vế \"bánh pizza chưa được làm chín\" ⇒ các từ \"đã… sơ… hoặc\" KHÔNG có trong trích (luật lô 030/061). Sửa: kéo câu (14) — câu định nghĩa phần pizza — vào trích để trích nói đủ CẢ HAI nhánh (mẫu 0304/0901/1109/1201: 2 nhánh thì 2 nhánh đều phải nằm trong trích). Trích mới 200 ký tự, nguyên văn từ nguồn, không lược gì.",
+   "sua": {
+    "trich": "(14) Bánh pizza (đã được làm chín sơ hoặc đã chín), gồm một đế bánh pizza phủ một số thành phần như pho mát, cà chua, dầu ăn, thịt, cá trỏng. Tuy nhiên, bánh pizza chưa được làm chín thuộc nhóm 19.01."
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: ngưỡng \"không quá 10% trọng lượng\" có đúng số trong trích, op \"<=\" đúng chiều \"không quá\", nguon nhom1905.nhom."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: trích WCO nguyên văn, fact bám đúng từ nguồn."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: trích WCO nguyên văn, fact bám đúng từ nguồn."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: trích WCO nguyên văn, fact bám đúng từ nguồn."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: trích WCO nguyên văn, fact bám đúng từ nguồn."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (trích treo đại từ + fact thêm chữ ngoài nguồn) — trích cũ chỉ có \"(các thành phần này chiếm ít nhất 50% trọng lượng sản phẩm)\" ⇒ \"các thành phần này\" là ĐẠI TỪ TREO, không biết nói thành phần nào (lớp lỗi lô 061); `fact` lại ghi \"trong_luong_bo_thanh_phan_banh_quy\" — chữ \"bổ\" không có trong nguồn (luật lô 048: fact bám đúng TỪ nguồn). Sửa: kéo câu nguồn \"(b) Bánh quy ngọt… chế biến từ hỗn hợp bột, đường hoặc chất tạo ngọt khác và chất béo (các thành phần này chiếm ít nhất 50% trọng lượng sản phẩm)\" vào trích (184 ký tự) để \"các thành phần này\" có antecedent rõ ràng; `fact` đổi thành \"trong_luong_cac_thanh_phan_banh_quy\" (mọi từ đều có trong trích). Ngưỡng/op/donVi giữ nguyên.",
+   "sua": {
+    "fact": "trong_luong_cac_thanh_phan_banh_quy",
+    "trich": "(b) Bánh quy ngọt, là sản phẩm cao cấp bảo quản được lâu, chế biến từ hỗn hợp bột, đường hoặc chất tạo ngọt khác và chất béo (các thành phần này chiếm ít nhất 50% trọng lượng sản phẩm)"
+   }
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (17/17); dòng SEN 19053210/19053220 dùng nguồn sen.* theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (17/17); dòng SEN 19053210/19053220 dùng nguồn sen.* theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (17/17); dòng SEN 19053210/19053220 dùng nguồn sen.* theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (17/17); dòng SEN 19053210/19053220 dùng nguồn sen.* theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (17/17); dòng SEN 19053210/19053220 dùng nguồn sen.* theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (17/17); dòng SEN 19053210/19053220 dùng nguồn sen.* theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (17/17); dòng SEN 19053210/19053220 dùng nguồn sen.* theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (17/17); dòng SEN 19053210/19053220 dùng nguồn sen.* theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (17/17); dòng SEN 19053210/19053220 dùng nguồn sen.* theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (17/17); dòng SEN 19053210/19053220 dùng nguồn sen.* theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (17/17); dòng SEN 19053210/19053220 dùng nguồn sen.* theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (17/17); dòng SEN 19053210/19053220 dùng nguồn sen.* theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[12]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (17/17); dòng SEN 19053210/19053220 dùng nguồn sen.* theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[13]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (17/17); dòng SEN 19053210/19053220 dùng nguồn sen.* theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[14]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (17/17); dòng SEN 19053210/19053220 dùng nguồn sen.* theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[15]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (17/17); dòng SEN 19053210/19053220 dùng nguồn sen.* theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "dong8[16]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (17/17); dòng SEN 19053210/19053220 dùng nguồn sen.* theo luật 6 (có SEN thì ưu tiên SEN)."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: tenVi \"Bánh quy ngọt\" khớp wco.190531 (\"sweet biscuits\") và với nguồn nhóm \"(b) Bánh quy ngọt\"; trích WCO nguyên văn. (Khối `cay` — không sửa.)"
+  },
+  {
+   "index": "cay.tenDien[1]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: tenVi \"Bánh quế waffles và bánh xốp wafers\" khớp wco.190532 (\"waffles and wafers\"); trích WCO nguyên văn. (Khối `cay` — không sửa.)"
+  }
+ ]
+}

@@ -26,7 +26,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
-const RAW_DIR = path.join(ROOT, 'tmp/so-tay/raw');
+// SO_TAY_RAW_DIR: chỉ định thư mục bản nháp khác (lô 064 soát dùng tmp/so-tay/raw-soat-064
+// vì tmp/so-tay/raw/ là bản nháp của phiên SONG SONG, KHÔNG phải bản đã nạp).
+const RAW_DIR = path.join(ROOT, process.env.SO_TAY_RAW_DIR || 'tmp/so-tay/raw');
 const SRC_DIR = path.join(ROOT, 'tmp/so-tay/nguon');
 
 /** Trần cắt của runtime (lib/so-tay-gates.js) — đổi ở đây thì đổi cả hai nơi. */

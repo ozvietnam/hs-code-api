@@ -1,0 +1,128 @@
+{
+ "nhom": "1904",
+ "nguoiSoat": "dev-soat-doc-lap-lo064",
+ "vong": 1,
+ "luc": "2026-10-28T04:10:00+07:00",
+ "daKiem": 18,
+ "giu": 12,
+ "sua": 5,
+ "xoa": 0,
+ "chen": 1,
+ "ghiChu": "",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (luật lô 030 — \"KHÔNG lấy đoạn dẫn của phần đầu làm phạm vi cả nhóm\") — `phamVi` chỉ phủ PHẦN DẪN của nhóm, thiếu hẳn 3 phần ngang hàng (B)(C)(D); đọc \"Phạm vi: Thực phẩm được chế biến từ các loại hạt ngũ cốc…\" sẽ đẩy sai 1904.20/1904.30/1904.90 ra khỏi nhóm. Đây đúng là lỗi lô 030 đã sửa cho 3401 (\"Nhóm 34.01 có BỐN phần ngang hàng…\"), 3810 và 4415 (mỗi nhóm đã duyệt đều để `phamVi` phủ CẢ các phần) và cùng hình dạng với 0304/1518/1521/1522 đã duyệt. Bản nháp dẫn \"mẫu 0304.json\" nhưng 0304 thì `phamVi` CÓ phủ các phần ⇒ dẫn không đúng. Sửa: `text` nêu phần dẫn + (B)(C)(D) (215 ≤ 220 trần clip runtime), `trich` kéo đủ 5 mảnh nguyên văn (498 ký tự; các mảnh (B)(C)(D) cắt đúng từ nguồn).",
+   "sua": {
+    "text": "Thực phẩm chế biến từ hạt ngũ cốc làm giòn bằng cách nổ hoặc rang; chế phẩm tương tự từ bột hoặc cám; (B) thực phẩm từ mảnh ngũ cốc chưa rang; (C) lúa mì bulgur; (D) ngũ cốc khác, trừ ngô, được sơ chế hoặc chế biến.",
+    "trich": "Nhóm này bao gồm một loạt các loại thực phẩm được chế biến từ các loại hạt ngũ cốc (ngô, lúa mì, gạo, lúa đại mạch, ...) được làm giòn bằng cách nổ hoặc rang.…Nhóm này cũng bao gồm các chế phẩm tương tự được chế biến từ bột hoặc cám bằng phương pháp rang hoặc trương nở.…(B) Thực phẩm chế biến từ mảnh ngũ cốc chưa rang hoặc từ hỗn hợp của mảnh ngũ cốc chưa rang và mảnh ngũ cốc đã rang hoặc ngũ cốc đã nổ.…(C) Lúa mì bulgur.…(D) Các loại ngũ cốc khác, trừ ngô, được sơ chế hoặc chế biến cách khác."
+   }
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lớp lỗi của `phamVi`: `quyTac`/`tomTat` viết \"Nhóm này gồm các phần: (B)…; (C)…; (D)…\" ⇒ KHẲNG ĐỊNH nhóm chỉ có 3 phần, bỏ mất phần dẫn (nhóm 1904 có 4 phần: phần dẫn không nhãn + (B) + (C) + (D)). Mẫu nhà đã duyệt: 0304 \"gồm hai phần ngang hàng: (1)…(2)…\", 1518 \"gồm hai phần ngang hàng: (A)…(B)…\", 1521 \"gồm ba phần ngang hàng: sáp thực vật; (II)…; (III)…\" (phần dẫn không nhãn vẫn được liệt kê, KHÔNG gắn nhãn (A) vì nguồn không ghi). Sửa `quyTac` (nêu đủ 4 phần) + `tomTat` (157 ≤ 160 trần clip runtime) + `trich` (5 mảnh nguyên văn, khớp `phamVi.trich` như 1518/1522).",
+   "sua": {
+    "quyTac": "Nhóm này gồm bốn phần ngang hàng: thực phẩm chế biến từ hạt ngũ cốc làm giòn bằng cách nổ hoặc rang, chế phẩm tương tự từ bột hoặc cám; (B) Thực phẩm chế biến từ mảnh ngũ cốc chưa rang hoặc từ hỗn hợp của mảnh ngũ cốc chưa rang và mảnh ngũ cốc đã rang hoặc ngũ cốc đã nổ; (C) Lúa mì bulgur; (D) Các loại ngũ cốc khác, trừ ngô, được sơ chế hoặc chế biến cách khác.",
+    "tomTat": "Bốn phần: thực phẩm từ hạt ngũ cốc nổ hoặc rang, chế phẩm từ bột hoặc cám; (B) mảnh ngũ cốc chưa rang; (C) lúa mì bulgur; (D) ngũ cốc khác trừ ngô đã sơ chế.",
+    "trich": "Nhóm này bao gồm một loạt các loại thực phẩm được chế biến từ các loại hạt ngũ cốc (ngô, lúa mì, gạo, lúa đại mạch, ...) được làm giòn bằng cách nổ hoặc rang.…Nhóm này cũng bao gồm các chế phẩm tương tự được chế biến từ bột hoặc cám bằng phương pháp rang hoặc trương nở.…(B) Thực phẩm chế biến từ mảnh ngũ cốc chưa rang hoặc từ hỗn hợp của mảnh ngũ cốc chưa rang và mảnh ngũ cốc đã rang hoặc ngũ cốc đã nổ.…(C) Lúa mì bulgur.…(D) Các loại ngũ cốc khác, trừ ngô, được sơ chế hoặc chế biến cách khác."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch (có đối chiếu mẫu nhà): câu trích là câu LOẠI TRỪ cấp nhóm (\"Nhóm này không bao gồm các loại hạt ngũ cốc chỉ được chế biến hoặc xử lý theo các phương pháp đã được nêu ở Chương 10 hoặc Chương 11\") nhưng KHÔNG có mã 4 số đích ⇒ không thể là `loaiTru`; đặt `dieuKienVao` value=false là đúng mẫu nhà 1518 (lô 061, đã duyệt): fact là vế BỊ LOẠI, chiều âm đi trong `value`."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: loại trừ có dấu hiệu, đích danh \"nhóm 17.04\" trong trích, sangNhom 1704 đúng."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: loại trừ có dấu hiệu, đích danh \"nhóm 18.06\" trong trích, sangNhom 1806 đúng."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "chen",
+   "lyDo": "THIẾU MỤC (luật 3 — \"loaiTru chỉ ghi khi nguồn NÊU ĐÍCH DANH nhóm đích, và số nhóm phải có trong câu trích\") — chính `nhom1904.nhom` có câu loại trừ có đích danh: \"Các chế phẩm tương tự được chế từ bột nhào và chiên trong dầu ăn thực vật bị loại trừ (nhóm 19.05).\" ⇒ phải có `loaiTru` → 1905. Bản nháp BỎ SÓT (đối chiếu: nhóm 1901 đã duyệt có `loaiTru` \"Pizza đã được làm chín sơ (pre-cooked) hoặc làm chín\" → 1905, tức chiều ngược lại đã có). KHÔNG phải loại trừ cấp CHƯƠNG nên không dính luật lô 051/060 (\"loại trừ chung của Chương không chép vào từng nhóm\") — đây là loại trừ RIÊNG của nhóm, lấy từ `nhom1904.nhom`. `dieuKien` 52 ≤ 55 (trần clip runtime).",
+   "sua": {
+    "dieuKien": "Chế phẩm tương tự chế từ bột nhào chiên trong dầu ăn",
+    "sangNhom": "1905",
+    "nguon": "nhom1904.nhom",
+    "trich": "Các chế phẩm tương tự được chế từ bột nhào và chiên trong dầu ăn thực vật bị loại trừ (nhóm 19.05)."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (máy KHÔNG bắt) — `hoi` có NHÁNH ĐỐI LẬP \"hay là thực phẩm chế biến từ hạt ngũ cốc\" nhưng câu trích CHỈ nói về ca cao ⇒ 5 từ (\"thực phẩm chế biến từ hạt ngũ cốc\") KHÔNG có trong trích (luật lô 030/061). Mẫu nhà 2 nhánh đã duyệt (0304/0901/1109/1201) đều có CẢ HAI nhánh nằm trong câu trích. Sửa theo mẫu 1 nhánh của nhà (0206/0401…): hỏi đúng vế có mã đích, `neuKhong` vẫn là nhóm 1904.",
+   "sua": {
+    "hoi": "Hàng có chứa ca cao trên 6% trọng lượng?"
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (slug hỏng — lớp lỗi lô 048/060) — `fact` ghi \"thu_duoc_qua_qua_trinh_nang_hoac_no_ngu_co_c\": \"nang\" không phải từ nào trong nguồn (nguồn tiếng Anh: \"obtained by the swelling or roasting of cereals or cereal products\"; tiếng Việt của nhóm: \"làm giòn bằng cách nổ hoặc rang\") và NHÁNH \"rang\" bị rơi ⇒ slug nói sai nghĩa. Sửa: \"thu_duoc_qua_qua_trinh_no_hoac_rang_ngu_coc\" (nở/nổ ↔ swelling, rang ↔ roasting, ngũ cốc ↔ cereals) — \"ngu_co_c\" cũng SAI (thiếu chữ c); cả repo chỉ có 1 chỗ \"ngu_co_c\" là chính dòng này.. `trich` (WCO) giữ nguyên.",
+   "sua": {
+    "fact": "thu_duoc_qua_qua_trinh_no_hoac_rang_ngu_coc"
+   }
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (\"Một nhánh của A hoặc B bị tách thành điều kiện độc lập\" — lớp lỗi bắt buộc của vòng soát) — nguồn: \"(B) Thực phẩm chế biến từ mảnh ngũ cốc chưa rang HOẶC từ hỗn hợp của mảnh ngũ cốc chưa rang và mảnh ngũ cốc đã rang hoặc ngũ cốc đã nổ.\" Còn `fact` chỉ giữ nhánh \"chế biến từ mảnh ngũ cốc chưa rang\" ⇒ hàng làm từ HỖN HỢP (mảnh chưa rang + mảnh đã rang/ngũ cốc đã nổ) — vẫn thuộc 1904.20 — sẽ bị loại oan. Sửa: `fact` nêu đủ hai nhánh, mọi từ đều có trong trích.",
+   "sua": {
+    "fact": "che_bien_tu_manh_ngu_coc_chua_rang_hoac_hon_hop_manh_ngu_coc_chua_rang_va_manh_da_rang_hoac_ngu_coc_da_no"
+   }
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: fact \"la_lua_mi_bulgur\" bám đúng trích \"(C) Lúa mì bulgur.\""
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: fact bám đúng trích \"(D) Các loại ngũ cốc khác, trừ ngô, được sơ chế hoặc chế biến cách khác.\""
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (7/7); dòng \"Loại khác\" theo mẫu nhà."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (7/7); dòng \"Loại khác\" theo mẫu nhà."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (7/7); dòng \"Loại khác\" theo mẫu nhà."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (7/7); dòng \"Loại khác\" theo mẫu nhà."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (7/7); dòng \"Loại khác\" theo mẫu nhà."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (7/7); dòng \"Loại khác\" theo mẫu nhà."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (7/7); dòng \"Loại khác\" theo mẫu nhà."
+  }
+ ]
+}

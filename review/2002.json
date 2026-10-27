@@ -1,0 +1,94 @@
+{
+ "nhom": "2002",
+ "nguoiSoat": "dev-soat-doc-lap-lo064",
+ "vong": 1,
+ "luc": "2026-10-28T04:10:00+07:00",
+ "daKiem": 13,
+ "giu": 9,
+ "sua": 4,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (phạm vi chỉ phủ MỘT PHẦN — lớp lỗi lô 030/063) — `text` chỉ nêu \"cà chua nguyên quả/dạng miếng\" + \"nước ép cà chua ≥ 7%\" nhưng BỎ mất \"các loại cà chua đồng nhất đã chế biến hoặc bảo quản (bột quấy cà chua, bột cà chua dạng sệt, cà chua cô đặc)\" — tức 2/3 dòng 8 số của phân nhóm 2002.90 (20029010 \"Bột cà chua dạng sệt\", 20029020 \"Bột cà chua\") không nằm trong phạm vi ⇒ mô tả phạm vi thiếu, đọc sẽ tưởng nhóm 2002 chỉ có cà chua tươi + nước ép. Trích cũ cắt \"…\" đúng chỗ làm MẤT cả câu định nghĩa phần này. Sửa: `trich` kéo đủ 2 mảnh (415 ký tự, nguyên văn từ nguồn) + `text` nêu đủ 3 nhánh (215 ≤ 220 trần clip runtime; bỏ \"trở lên\" vì \"từ 7%\" đã là ngưỡng ≥ 7%).",
+   "sua": {
+    "text": "Cà chua nguyên quả hay dạng miếng, trừ loại bảo quản bằng giấm hoặc axit acetic (nhóm 20.01) và loại đã nêu trong Chương 7; cà chua đồng nhất đã chế biến hoặc bảo quản; nước ép cà chua có hàm lượng thành phần khô từ 7%.",
+    "trich": "Nhóm này bao gồm các loại cà chua, nguyên quả hay dạng miếng, trừ loại cà chua đã chế biến hoặc bảo quản bằng giấm hoặc axit acetic (nhóm 20.01) và các loại cà chua đã được nêu cụ thể trong Chương 7.…Nhóm này cũng bao gồm các loại cà chua đồng nhất đã chế biến hoặc bảo quản (ví dụ: bột quấy cà chua (tomato purée), bột cà chua dạng sệt, cà chua cô đặc) và nước ép cà chua mà hàm lượng thành phần khô từ 7% trở lên."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (chiều điều kiện sai ⇒ tờ khai rơi mã) — `fact` là \"la_ca_chua_chue_bien_hoac_bao_quan_khong_phai_bang_giam_hoac_axit_acetic\" (giá trị TRUE) nghĩa là \"là cà chua ĐÃ chế biến hoặc bảo quản nhưng không phải bằng giấm/axit acetic\" ⇒ CÀ CHUA TƯƠI (2002.10.00, dòng biểu thuế đầu tiên của nhóm, cũng là mã 2002 của Oz) KHÔNG thoả điều kiện ⇒ tờ khai cà chua tươi bị đẩy ra khỏi nhóm. Nguồn chỉ loại TRỪ \"loại cà chua đã chế biến hoặc bảo quản bằng giấm hoặc axit acetic\", chứ không đòi hàng đã chế biến. Sửa theo ĐÚNG mẫu nhà 1904 + 1518 (lô 061 đã duyệt): `fact` = VẾ BỊ LOẠI, chiều âm đặt ở `value` ⇒ value=false; mọi từ của fact đều có trong trích.",
+   "sua": {
+    "fact": "la_ca_chua_che_bien_hoac_bao_quan_bang_giam_hoac_axit_acetic",
+    "op": "=",
+    "value": false
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: loại trừ có dấu hiệu (\"trừ loại cà chua đã chế biến hoặc bảo quản bằng giấm hoặc axit acetic\"), đích danh \"nhóm 20.01\" trong trích, sangNhom 2001 đúng."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: loại trừ có dấu hiệu (\"không bao gồm\"), đích danh \"nhóm 21.03\" trong trích, sangNhom 2103 đúng."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: loại trừ có dấu hiệu, đích danh \"nhóm 21.04\" trong trích, sangNhom 2104 đúng."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (máy KHÔNG bắt) — `hoi` nhánh đối lập \"hay là cà chua đã chế biến theo cách khác\" trong khi trích KHÔNG có \"theo cách khác\" (nguồn chỉ viết \"trừ loại cà chua đã chế biến hoặc bảo quản bằng giấm hoặc axit acetic…\") ⇒ 3 từ ngoài trích. Sửa theo mẫu 1 nhánh của nhà: hỏi đúng vế có mã đích 20.01, `neuKhong` vẫn là nhóm 2002.",
+   "sua": {
+    "hoi": "Hàng là cà chua bảo quản bằng giấm hoặc axit acetic?"
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT — `hoi` nhánh đối lập \"hay là cà chua đã chế biến hoặc bảo quản\" không có trong trích (trích chỉ nói về ketchup / xốt / súp) ⇒ 4 từ ngoài trích. Sửa theo mẫu 1 nhánh của nhà: hỏi đúng vế có mã đích 21.03, `neuKhong` vẫn là nhóm 2002.",
+   "sua": {
+    "hoi": "Hàng là nước xốt cà chua ketchup?"
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: trích WCO nguyên văn, fact bám đúng."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: ngưỡng \"từ 7% trở lên\" có đúng số trong trích, op \">=\" đúng chiều, nguon ch20.chuong mục 4 (hợp lệ — luật 10 cho phép nguồn ch*)."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (4/4); dòng 20029010 dùng nguồn sen.* + dieuKienSo 25–40% theo luật 6."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (4/4); dòng 20029010 dùng nguồn sen.* + dieuKienSo 25–40% theo luật 6."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (4/4); dòng 20029010 dùng nguồn sen.* + dieuKienSo 25–40% theo luật 6."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Sạch: đủ mọi dòng tax.* của nhóm (4/4); dòng 20029010 dùng nguồn sen.* + dieuKienSo 25–40% theo luật 6."
+  }
+ ]
+}
