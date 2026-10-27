@@ -7385,12 +7385,13 @@ một mục ở 1517 **nói ÍT hơn** câu trích (đã khai báo ở trên).
 
 ### PR — lô 060
 
-- **PR #479** (https://github.com/ozvietnam/hs-code-api/pull/479) — **KHÔNG merge** (chờ soát độc lập mục 4).
-- `docs/giao-viec/so-tay-lo.csv` dòng 060: `pr=479`; `trang_thai` giữ `dang-lam` (PR chưa merge),
+- **PR #479** (https://github.com/ozvietnam/hs-code-api/pull/479) — đã **CLOSED** (không merge) trước khi
+  phiên vòng 2 mở; nhánh `origin/so-tay/lo-060` bị xoá ⇒ công việc soát đã cứu qua `refs/pull/479/head`
+  và rebase lên `origin/main` mới.
+- **PR #480** (https://github.com/ozvietnam/hs-code-api/pull/480) — mở lại với nội dung đã sửa ở vòng 2 —
+  **KHÔNG merge** (chờ người duyệt).
+- `docs/giao-viec/so-tay-lo.csv` dòng 060: `pr=480`; `trang_thai` giữ `dang-lam` (PR chưa merge),
   `nguoi_lam=dev-zcode-mm`. Người gộp đặt `trang_thai=xong` khi merge.
-
-- **CHƯA merge** — chờ người duyệt + soát độc lập. `so-tay-lo.csv` dòng 060 giữ `trang_thai=dang-lam`,
-  `nguoi_lam=dev-zcode-mm` (đổi `xong` + số PR khi gộp).
 
 ---
 
@@ -7532,8 +7533,11 @@ từ nối ngoại lệ**, **gác soát từ** (từ trong `text`/`dieuKien`/`ho
 
 ### PR — lô 060
 
-- **PR #479** (https://github.com/ozvietnam/hs-code-api/pull/479) — **KHÔNG merge** (chờ người duyệt).
-- `docs/giao-viec/so-tay-lo.csv` dòng 060: `pr=479`; `trang_thai` giữ **`dang-lam`** (PR chưa merge),
+- **PR #479** (https://github.com/ozvietnam/hs-code-api/pull/479) — đã **CLOSED** (không merge) trước khi
+  phiên vòng 2 mở; nhánh bị xoá ⇒ công việc soát đã cứu qua `refs/pull/479/head`.
+- **PR #480** (https://github.com/ozvietnam/hs-code-api/pull/480) — mở lại với nội dung đã sửa ở vòng 2 —
+  **KHÔNG merge** (chờ người duyệt).
+- `docs/giao-viec/so-tay-lo.csv` dòng 060: `pr=480`; `trang_thai` giữ **`dang-lam`** (PR chưa merge),
   `nguoi_lam=dev-zcode-mm`. Người gộp đặt `trang_thai=xong` khi merge.
 - Thêm `scripts/apply-review-lo060.mjs` (2 pha: `TARGET=raw` áp `thayDoi`, `TARGET=data` CHỈ đổi `nguonLoai`).
 
