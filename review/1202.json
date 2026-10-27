@@ -1,0 +1,64 @@
+{
+  "nhom": "1202",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp có DẤU LƯỚC \"…\" RỖNG: \"…chưa làm chín cách khác… Lạc thuộc nhóm này…\" — hai vế nằm LIỀN NHAU trong nguồn, dấu lược không lược gì mà làm câu trích đọc thành hai mảnh rời; đồng thời câu trích DỪNG TRƯỚC câu ngoại lệ nằm ngay sau trong cùng đoạn: \"Lạc đã rang hoặc đã làm chín cách khác thuộc Chương 20\" ⇒ phạm vi bị nói quá (lạc rang không thuộc 1202). SỬA: trích = cả đoạn nguồn (cắt thẳng từ tệp, byte-exact, BỎ dấu lược rỗng); text nêu rõ ranh giới với Chương 20 (182 → 205 ký tự, ≤220 ⇒ không bị clip).",
+      "sua": {
+        "text": "Các loại lạc (hạt đậu phộng) đã hoặc chưa tách vỏ hoặc vỡ mảnh, chưa rang hoặc chưa làm chín cách khác; lạc có thể bị xử lý nhiệt nhằm bảo quản tốt hơn. Lạc đã rang hoặc đã làm chín cách khác thuộc Chương 20.",
+        "trich": "Nhóm này gồm các loại lạc (hay còn gọi là hạt đậu phộng) đã hoặc chưa tách vỏ hoặc vỡ mảnh, chưa rang hoặc chưa làm chín cách khác. Lạc thuộc nhóm này có thể bị xử lý nhiệt nhằm bảo quản tốt hơn (xem trong phần Chú giải tổng quát). Lạc đã rang hoặc đã làm chín cách khác thuộc Chương 20"
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Điều kiện \"chưa rang hoặc chưa làm chín cách khác\" là đặc tính TRẠNG THÁI phủ CẢ nhóm 1202 (cả 120230, 120241, 120242 đều là lạc chưa rang/chưa làm chín — vế \"đã hoặc chưa\" nằm ở vế SHELL/vỡ mảnh, không nằm trong câu trích nên không dính CAU_CHO_PHEP). Trích là mảnh trong câu vì lấy trọn câu sẽ kéo theo \"đã hoặc chưa tách vỏ\" (mồ côi)."
+    },
+    {
+      "index": "loaiTru",
+      "hanhDong": "giu",
+      "lyDo": "Rỗng — đúng: nguồn chỉ nói \"Lạc đã rang hoặc đã làm chín cách khác thuộc CHƯƠNG 20\"; luật 3 không tính \"Chương N\" là đích danh, `sangNhom` chỉ nhận mã nhóm 4 số có thật ⇒ không mã hoá được (cùng lý do lô 047)."
+    },
+    {
+      "index": "phanBiet",
+      "hanhDong": "giu",
+      "lyDo": "Rỗng — đúng: cả hai nhánh phải là mã có thật trong `validHeading`/`validTax` và phải có trong câu trích; nguồn chỉ nói \"Chương 20\" ⇒ không được đoán mã."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 120230 — tên WCO nguyên văn \"120230 Ground-nuts; seed, not roasted or otherwise cooked, whether or not shelled or broken\" (nguồn wco.120230)."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 120230 — chú giải phân nhóm 1202.30 nguyên văn định nghĩa \"hạt giống\" (đánh giá của cơ quan quốc gia có thẩm quyền) — tiêu chí riêng của phân nhóm hạt giống, khớp `dong8[0]`."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 120241 — tên WCO nguyên văn \"120241 Ground-nuts; other than seed, not roasted or otherwise cooked, in shell\" (nguồn wco.120241); đối chiếu đúng với 120242 (đã bóc vỏ)."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "hs6 120242 — tên WCO nguyên văn \"120242 Ground-nuts; other than seed, not roasted or otherwise cooked, shelled, whether or not broken,\" (nguồn wco.120242; giữ cả dấu phẩy cuối câu như nguồn)."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 12023000 — biểu thuế chỉ ghi \"- Hạt giống\" nên lấy điều kiện từ chú giải phân nhóm 1202.30 (nguồn nhom1202.nhom); 81/90 ký tự, không bị clip."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 12024100 — điều kiện chép nguyên văn dòng biểu thuế \"12024100 - - Chưa bóc vỏ\" (nguồn tax.12024100); 11/90 ký tự."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 12024200 — điều kiện chép nguyên văn dòng biểu thuế \"12024200 - - Lạc nhân, đã hoặc chưa vỡ mảnh\" (nguồn tax.12024200); 30/90 ký tự."
+    }
+  ]
+}
