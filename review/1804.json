@@ -1,0 +1,19 @@
+{
+  "gopVoi": "soát độc lập lô 063 (PR #484) — người soát KHÁC người soạn dev-zcode-mm",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT — phạm vi CHỈ nói một phần của nhóm (lớp lỗi lô 030: \"phamVi phải nêu PHẠM VI nhóm, không phải một phần\"). Tên nhóm 1804 là \"Bơ ca cao, chất béo và dầu ca cao\"; chú giải nhóm có HAI phần: (1) \"Bơ ca cao, là phần chất béo có trong hạt ca cao…\" và (2) \"Phần chất lượng kém thường được gọi là chất béo ca cao cũng thu được từ hạt ca cao chất lượng kém hoặc từ các phế liệu khác nhau của ca cao (vỏ cứng, vỏ lụa hoặc bụi, rác…)\". Bản nháp chỉ giữ phần (1) và LƯỚC MẤT hẳn câu (2) (khoảng lược 248 ký tự) ⇒ sổ tay nói 1804 chỉ là bơ ca cao, hàng \"chất béo ca cao ép từ vỏ ca cao\" (phế liệu 1802) sẽ bị đẩy sang 1802. Sửa: nêu đủ hai phần, giữ vế \"chất lượng kém thường gọi là chất béo ca cao\" (không bỏ định ngữ \"thường\") và nêu rõ nguồn gốc phế liệu; bỏ ghi chú hình thái \"thường ở dạng rắn trong nhiệt độ phòng\" vì đó là ghi chú vật liệu, không phải phạm vi (luật lô 030) và trần clip runtime của `phamVi.text` là 220. `text` mới 186 ký tự (≤220), `trich` mới 281 ký tự (≤300), hai mảnh cắt BYTE-EXACT từ khối [nhom1804.nhom], mọi từ trong `text` đều có trong mảnh trích, khoảng lược giữa hai mảnh chỉ là dấu chấm + khoảng trắng (không nuốt gì).",
+      "sua": {
+        "text": "Bơ ca cao: phần chất béo có trong hạt ca cao; phần chất lượng kém thường gọi là chất béo ca cao, thu được từ hạt ca cao chất lượng kém hoặc từ phế liệu ca cao (vỏ cứng, vỏ lụa hoặc bụi).",
+        "trich": "Bơ ca cao, là phần chất béo có trong hạt ca cao, thu được từ việc ép nóng bột nhão ca cao hoặc hạt ca cao.…Phần chất lượng kém thường được gọi là chất béo ca cao cũng thu được từ hạt ca cao chất lượng kém hoặc từ các phế liệu khác nhau của ca cao (vỏ cứng, vỏ lụa hoặc bụi, rác...)"
+      }
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 18040000 \"Bơ ca cao, chất béo và dầu ca cao\": `dieuKien` chép đúng tên dòng biểu thuế, có nguồn tax.18040000. Nhóm không có dòng 8 số nào khác."
+    }
+  ]
+}

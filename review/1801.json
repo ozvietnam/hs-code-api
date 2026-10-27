@@ -1,0 +1,40 @@
+{
+  "gopVoi": "soát độc lập lô 063 (PR #484) — người soát KHÁC người soạn dev-zcode-mm",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Phạm vi lấy đúng câu định nghĩa nhóm \"Nhóm này bao gồm hạt thô hoặc hạt đã rang, nguyên hạt (đã hoặc chưa bóc vỏ cứng, vỏ lụa hoặc mầm) hoặc đã vỡ mảnh.\" — phủ TRỌN nhóm 1801 (hạt nguyên hoặc đã vỡ mảnh; có hoặc chưa bóc vỏ cứng/vỏ lụa/mầm). `text` chỉ thêm chủ ngữ \"Hạt ca cao\" — đúng tên nhóm, có nguyên văn ở câu đầu khối nguồn (\"Hạt ca cao là các hạt có nhiều (25-80) trong quả…\") — không thêm mệnh đề nào ngoài trích. Không có câu rào (\"tùy…\", \"thường…\") bị cắt né; không có dấu lược nào nuốt ngoại lệ."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu \"(a) Phần vỏ quả, vỏ hạt, vỏ lụa và những phế liệu khác của cacao (nhóm 18.02).\" nằm trong khối \"Nhóm này không bao gồm:\" ⇒ có dấu hiệu loại trừ DỨT KHOÁT (luật lô 030: mục đánh số trong khối \"bao gồm\" không phải loại trừ — ở đây ngược lại, rõ ràng là khối loại trừ), và đích \"18.02\" có nguyên văn trong câu trích. `dieuKien` chỉ rút gọn \"Phần…\"/\"những\" (không đổi nghĩa) và nằm dưới trần clip 55 của runtime."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu \"(b) Hạt ca cao đã được nghiền ở dạng bột nhão (nhóm 18.03).\" — loại trừ dứt khoát, đích 18.03 nêu nguyên văn; `dieuKien` chép đúng nguyên văn, không thêm chữ."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Hỏi \"Hàng là phần vỏ quả, vỏ hạt, vỏ lụa và phế liệu khác của cacao?\" → có→1802 (đích loại trừ, nằm NGOÀI nhóm) / không→1801 (chính nhóm) ⇒ đúng chiều bù, không đảo. `hoi` không nhắc mã phân nhóm (luật máy `hoi-nhac-ma-phan-nhom`) và mọi từ đều có trong câu trích (không tự thêm chữ)."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Hỏi \"Hàng là hạt ca cao đã được nghiền ở dạng bột nhão?\" → có→1803 / không→1801. Cùng câu trích với `loaiTru[1]` nên hai chiều khớp nhau, không đảo."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 18010010 \"Đã lên men (SEN)\": có SEN thì lấy điều kiện từ SEN (luật 6); `dieuKien` \"Hạt ca cao đã lên men\" đúng tiêu đề SEN \"HẠT CA CAO ĐÃ LÊN MEN\". Trích nguyên văn liền khối (màu sắc / mùi hương / vị / cấu trúc), dưới ngưỡng 300 ký tự, không cắt cụt giữa câu."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 18010090 \"Loại khác\": `dieuKien` chép đúng tên dòng biểu thuế; máy tự điền `loaiKhac` theo biểu thuế nên không cần cân nhắc."
+    }
+  ]
+}
