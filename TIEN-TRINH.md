@@ -3,6 +3,117 @@
 <!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
 ---
 
+# SOÁT ĐỘC LẬP VÒNG 2 lô 063 — phiên `dev-soat-doc-lap-lo063-v2` (28/10/2026)
+
+- **Nhánh:** `so-tay/lo-063` · **PR #485** — **KHÔNG merge** · **Nhóm:** `1801,1802,1803,1804,1805,1806` (Chương 18 — Ca cao)
+- **Vai trò:** người soát **ĐỘC LẬP** (KHÁC người soạn `dev-zcode-mm`) · theo `brief-st-soat-lo063.md` (oz-dev-kit) + mục 4 `docs/giao-viec/so-tay-giao-ngoai.md`
+- **Kết quả:** soát **49/49 mục** (7 + 5 + 7 + 2 + 7 + 21) — **giữ 47 · sửa 2 (2 trường) · xoá 0** · sau soát vẫn **49/49 (100 %)**
+- **Nguồn đọc:** `tmp/so-tay/nguon/1801.txt`…`1806.txt` + `_he-thong.txt` — đọc **HẾT**, không lấy mẫu; không dùng kiến thức ngoài kho số liệu
+- **Hồ sơ:** `review/1801.json`…`review/1806.json` (49 dòng, mỗi mục đúng MỘT dòng `hanhDong` + `lyDo`; tệp ghi rõ `vong: 2`)
+
+## 1. Sai lệch brief (đã tự xác định đúng lô)
+
+Brief trỏ **PR #484** — nhưng #484 đã **đóng CONFLICTING** từ 27/10, lô 063 đang chờ ở **PR #485**
+(cứu từ `refs/pull/484/head`), cùng nhánh `so-tay/lo-063`. Brief cũng ghi worktree `hs-code-api-wt-st-lo63`
+(thiếu số 0) — worktree thật là `hs-code-api-wt-st-lo063`. ⇒ Làm trên **PR #485**; KHÔNG đụng lô 064 (agent khác phụ trách).
+
+## 2. Hai LỖI THẬT đã sửa (máy kiểm đều XANH — chỉ đọc mắt bắt được)
+
+### (1) `1805.phanBiet[0].hoi` — nhánh "không" KHÔNG phải phần BÙ của nhánh "có" (lớp lỗi lô 047)
+
+Câu nguồn loại trừ **HAI** nhánh: *"Bột ca cao đã pha thêm đường hoặc chất ngọt khác **và** bột ca cao đã pha thêm sữa hoặc peptone thuộc nhóm 18.06."*
+Câu hỏi cũ chỉ nêu nhánh đầu ⇒ hàng **"bột ca cao có pha thêm sữa/peptone"** trả lời "không" cho câu hỏi này
+⇒ rơi vào nhánh không → 1805, trong khi câu nguồn bắt sang 18.06 ⇒ **tờ khai rơi khỏi CẢ HAI nhánh**.
+
+```diff
+- "hoi": "Hàng là bột ca cao đã pha thêm đường hoặc chất ngọt khác?",
++ "hoi": "Hàng là bột ca cao đã pha thêm đường, chất ngọt khác, sữa hoặc peptone?"
+```
+
+71 ký tự (≤ trần clip 110 của `phanBiet.hoi` ⇒ không bị cắt); mọi từ đều có trong câu trích; `trich` giữ nguyên.
+
+### (2) `1806.dong8[6].dieuKien` (dòng 18063200) — thiếu vế quyết định "không có nhân" ⇒ DỄ ĐẢO CHIỀU
+
+Câu nguồn (chú giải phân nhóm 1806.31) kết bằng: *"…đã được bọc phủ sôcôla, **không được xem là "có nhân"**."* —
+vế cuối CHÍNH LÀ điều kiện quyết định dòng 18063200 (tên dòng biểu thuê cũng là "Không có nhân"), nhưng `dieuKien`
+dừng ở "…được bọc phủ sôcôla" ⇒ thanh sôcôla có hạt bọc phủ trông GIỐNG hàng có nhân ở giữa, mà `dong8[5]`
+(18063100) lại liệt kê ví dụ vị nhân có "hạt" ⇒ dễ đọc nhầm sang 18063100.
+
+```diff
+- "dieuKien": "Sôcôla ở dạng khối, miếng hoặc thanh có chứa ngũ cốc, quả hoặc hạt được bọc phủ sôcôla",
++ "dieuKien": "Sôcôla dạng khối, miếng hoặc thanh không có nhân (chứa ngũ cốc, quả, hạt bọc phủ sôcôla)"
+```
+
+88 ký tự (≤ trần clip 90 ⇒ không bị cắt giữa từ); cụm "không có nhân" là cách nói ngắn của chính nguồn và khớp với
+`tieuChi6[3]` của cùng nhóm (đã viết "không có nhân") + tên dòng biểu thuê 18063200.
+
+## 3. PHÁT HIỆN BUG KỸ THUẬT — bản nháp dựng lại lúc CỨU PR đã BỎ SÓT `dieuKienSo` (ÂM THẦM mất ngưỡng số)
+
+Khi nạp lại, `data/so-tay/1806.json` **mất** khối `dieuKienSo` của **18069030** (40–50 %) và **18069040** (5–10 %).
+Nguyên nhân: `tmp/reconstruct-raw.mjs` (script dựng lại bản nháp lúc cứu PR #485) copy `dong8` bằng
+`pick(x, ['hs','dieuKien','tieuChi','nguon','trich'])` — **thiếu `dieuKienSo`** ⇒ nạp lại là mất ngưỡng số,
+không ai báo lỗi (máy chỉ kiểm mục CÓ mặt, không kiểm mục BỊ mất).
+⇒ Đã **khôi phục** 2 khối `dieuKienSo` từ bản đã commit (giữ nguyên thứ tự khoá `hs, dieuKien, dieuKienSo, nguon, trich`),
+sửa `tmp/reconstruct-raw.mjs` cho copy thêm trường này, và **đối chiếu HEAD ↔ bản nháp bằng script quét từng trường**
+— sau khi khôi phục, diff chỉ còn đúng 2 sửa ở mục 2.
+**Bài học nhà (rộng hơn lô 063):** script dựng lại bản nháp phải copy **MỌI** trường do người soạn viết, và trước khi
+nạp lại phải có một bước **đối chiếu HEAD ↔ raw theo từng trường** — nếu không, mọi trường bị bỏ sót sẽ biến mất
+ÂM THẦM khỏi `data/` mà máy kiểm vẫn xanh.
+
+## 4. Các điểm đã soi và GIỮ (có căn cứ — chi tiết trong `review/*.json`)
+
+1. **`loaiTru` thu hẹp theo nhóm là MẪU NHÀ** (không sửa ngược): đo kho đã gộp — 278/2.564 `loaiTru` có "hoặc"
+   trong `trich` mà không có trong `dieuKien`; tiền lệ đã duyệt 1901→1101|1102, 0304–0307. Lý do nhà: giữ đủ nhánh
+   làm mục nói **rộng hơn nguồn** và dài hơn ⇒ bị `clip(…, 55)` cắt **giữa câu** lúc chạy (bài học lô 060: cắt mất vế
+   giới hạn ⇒ ĐẢO CHIỀU luật). Vế bị thu hẹp vẫn nằm nguyên văn trong `trich`, mà runtime đính kèm `trich` làm căn cứ.
+   ⇒ Vế bù được đưa vào `phanBiet` (trần 110) — xem mục 2(1).
+2. **Câu trích không mang chữ báo loại trừ là MẪU NHÀ**: đo 1.164 `loaiTru` CÓ dấu hiệu loại trừ vs 1.400 KHÔNG có
+   ⇒ không sửa ở 1801/1806 (trích bắt đầu từ "(a)"/"(b)" sau khối "Nhóm này không bao gồm:").
+3. **`loaiTru[1]` của 1805 KHÔNG đảo chiều**: câu "Tuy nhiên…" là ngoại lệ của câu "… thuộc nhóm 18.06" ⇒ hàng đi
+   sang **30.03/30.04** (không ở lại 18.05); khớp mẫu nhà 0302/0410/0601 và chú giải KG của chính nhóm 18.05
+   ("Phân biệt với … 3003/3004 (dược phẩm)").
+4. **GHI NHẬN — 1802 `loaiTru[0]`**: câu nguồn *"khô dầu ca cao không có vỏ cứng, vỏ lụa, thu được từ quá trình chiết
+   xuất bơ ca cao từ bột ca cao nhão"* — `dieuKien` bỏ vế cuối. Hai cách hiểu đều có thể (tiêu chí phân biệt vỏ cứng/vỏ lụa
+   vs vế bắt buộc) ⇒ **không sửa theo cách hiểu cá nhân** (mẫu lô 060 vòng 3); đề xuất người duyệt đọc lại.
+5. **GHI NHẬN — 1805 `phamVi`**: câu ĐỊNH NGHĨA đầu tiên của chú giải nhóm (nguồn gốc từ bột nhão 18.03) chưa nằm
+   trong `trích`; dấu "…" chỉ đứng ở RANH GIỚI CÂU (đo khoảng lược = 1 ký tự ⇒ không nuốt gì). Phạm vi vẫn đúng vì
+   câu ràng buộc "chỉ bao gồm…" đã có trong `trích` và trong `dieuKienVao[0]` ⇒ không sửa; đã ghi rõ phương án thay
+   trong hồ sơ.
+6. **GHI NHẬN — 1806 `tieuChi6[1]` (180620)**: câu nguồn có hai cách hiểu; `tieuChi6` **KHÔNG** vào prompt runtime
+   (chỉ `phamVi.text`/`dieuKien`/`hoi` mới vào) nên giữ nguyên + ghi nhận.
+7. **GHI NHẬN — 1806 `dong8[8]` (18069040)**: `dieuKien` rút gọn hai vế *"làm từ sản phẩm thuộc các nhóm từ 04.01 đến
+   04.04"* và *"chưa đóng gói để bán lẻ"* (định danh dòng) — cùng cách rút gọn như `dong8[7]`, cả hai vế vẫn nằm trong
+   `trich` và trong tên dòng biểu thuê/cây ⇒ không sửa, nhưng báo người duyệt.
+8. **`tieuChi6`/`dong8`/`cay.tenDien` giữ `AI_DA_KIEM`/`MAY_SUY`** (ngoài phạm vi đổi nhãn theo luật 11) —
+   26 mục ở 5 khối `phamVi`/`dieuKienVao`/`loaiTru`/`phanBiet` đã đổi sang `NGUOI_DUYET` (5 + 4 + 3 + 1 + 6 + 7).
+
+## 5. Đo thêm trên lô (rẻ, nên làm mọi lô)
+
+- **0 trường tràn clip runtime** (`phamVi.text` 220 · `loaiTru.dieuKien` 55 · `dong8.dieuKien` 90 · `phanBiet.hoi` 110).
+- **0 câu trích vượt 300 ký tự** (dài nhất 292 ở `1806.phamVi`).
+- **Khoảng lược** (đoạn nguồn nằm giữa hai mảnh trích): 1803 **196** (mô tả dùng, vô hại) · 1804 **1** · 1805 **1** ·
+  1806 **191** (danh sách vị nhân, đã có trọn ở `tieuChi6[2]`/`dong8[5]`) ⇒ **không mất ngoại lệ nào**.
+
+## 6. Kiểm lại sau khi áp (2 pha)
+
+| Lệnh | Kết quả |
+|---|---|
+| `check-so-tay.mjs --raw=tmp/so-tay/raw` | 6 nhóm, **49 mục, 0 mục không kiểm được nguồn** |
+| `check-trich-nguyen-van.mjs` (byte-exact) | **OK — 49 mục**, mọi câu trích nguyên văn tuyệt đối |
+| `check-cay.mjs --nhom=1801,… --chi-tiet` | **6/6 nhóm đủ**, 0 lỗi lệch cây |
+| `npm run so-tay:check` | **530 nhóm / 14 424 mục, 0 lỗi** |
+| `npm test` | **ALL TESTS PASSED** |
+
+## 7. Trạng thái
+
+- Đã sửa `review/{1801,…,1806}.json` (bản **vòng 2**, có `vong: 2` + `ghiChu` nêu kết quả vòng 1) ·
+  `data/so-tay/{1801,…,1806}.json` (2 sửa) · `data/so-tay/bao-cao/lo-063.json` ·
+  `scripts/apply-review-lo063.mjs` (chú thích cập nhật) · mục này trong `TIEN-TRINH.md`.
+- **KHÔNG commit `tmp/`.** CSV dòng 063 giữ `trang_thai=dang-lam` (người gộp mới đặt `xong`).
+- **PR #485** — **KHÔNG merge** — chờ người duyệt đọc lại 49 dòng hồ sơ `review/1801.json`…`review/1806.json`.
+
+---
+
 # SOẠN lô 063 — phiên `dev-zcode-mm` (27/10/2026)
 
 - **Nhánh:** `so-tay/lo-063` @ main mới nhất (b574e44) · **PR #484** (đã đóng 27/10 — cứu tại **PR #485**) — **KHÔNG merge** · **Nhóm:** `1801,1802,1803,1804,1805,1806` (Chương 18 — Ca cao)

@@ -1,19 +1,22 @@
 {
-  "gopVoi": "soát độc lập lô 063 (PR #484) — người soát KHÁC người soạn dev-zcode-mm",
-  "thayDoi": [
-    {
-      "index": "phamVi",
-      "hanhDong": "sua",
-      "lyDo": "LỖI THẬT — phạm vi CHỈ nói một phần của nhóm (lớp lỗi lô 030: \"phamVi phải nêu PHẠM VI nhóm, không phải một phần\"). Tên nhóm 1804 là \"Bơ ca cao, chất béo và dầu ca cao\"; chú giải nhóm có HAI phần: (1) \"Bơ ca cao, là phần chất béo có trong hạt ca cao…\" và (2) \"Phần chất lượng kém thường được gọi là chất béo ca cao cũng thu được từ hạt ca cao chất lượng kém hoặc từ các phế liệu khác nhau của ca cao (vỏ cứng, vỏ lụa hoặc bụi, rác…)\". Bản nháp chỉ giữ phần (1) và LƯỚC MẤT hẳn câu (2) (khoảng lược 248 ký tự) ⇒ sổ tay nói 1804 chỉ là bơ ca cao, hàng \"chất béo ca cao ép từ vỏ ca cao\" (phế liệu 1802) sẽ bị đẩy sang 1802. Sửa: nêu đủ hai phần, giữ vế \"chất lượng kém thường gọi là chất béo ca cao\" (không bỏ định ngữ \"thường\") và nêu rõ nguồn gốc phế liệu; bỏ ghi chú hình thái \"thường ở dạng rắn trong nhiệt độ phòng\" vì đó là ghi chú vật liệu, không phải phạm vi (luật lô 030) và trần clip runtime của `phamVi.text` là 220. `text` mới 186 ký tự (≤220), `trich` mới 281 ký tự (≤300), hai mảnh cắt BYTE-EXACT từ khối [nhom1804.nhom], mọi từ trong `text` đều có trong mảnh trích, khoảng lược giữa hai mảnh chỉ là dấu chấm + khoảng trắng (không nuốt gì).",
-      "sua": {
-        "text": "Bơ ca cao: phần chất béo có trong hạt ca cao; phần chất lượng kém thường gọi là chất béo ca cao, thu được từ hạt ca cao chất lượng kém hoặc từ phế liệu ca cao (vỏ cứng, vỏ lụa hoặc bụi).",
-        "trich": "Bơ ca cao, là phần chất béo có trong hạt ca cao, thu được từ việc ép nóng bột nhão ca cao hoặc hạt ca cao.…Phần chất lượng kém thường được gọi là chất béo ca cao cũng thu được từ hạt ca cao chất lượng kém hoặc từ các phế liệu khác nhau của ca cao (vỏ cứng, vỏ lụa hoặc bụi, rác...)"
-      }
-    },
-    {
-      "index": "dong8[0]",
-      "hanhDong": "giu",
-      "lyDo": "Dòng 18040000 \"Bơ ca cao, chất béo và dầu ca cao\": `dieuKien` chép đúng tên dòng biểu thuế, có nguồn tax.18040000. Nhóm không có dòng 8 số nào khác."
-    }
-  ]
+ "nhom": "1804",
+ "nguoiSoat": "dev-soat-doc-lap-lo063-v2",
+ "vong": 2,
+ "luc": "2026-10-28T03:56:00+07:00",
+ "daKiem": 2,
+ "xoa": 0,
+ "sua": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP VÒNG 2 của lô 063 (PR #485) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI 2/2 mục cùng nguồn tmp/so-tay/nguon/1804.txt (đọc HẾT). Vòng 1 (PR #484) đã soát nhóm này và SỬA 1 mục (2 trường) — lỗi thật \"phamVi chỉ nói một phần của nhóm\"; bản dữ liệu hiện tại ĐÃ mang bản sửa đó. Vòng 2 đọc lại và XÁC NHẬN bản sửa đó đúng và đủ ⇒ giữ nguyên, không sửa thêm. Đo thêm: 0 trường tràn clip runtime (phamVi.text 186/220 · dong8.dieuKien 33/90) · 0 câu trích vượt 300 ký tự (dài nhất 281 ở phamVi) · khoảng lược ở `phamVi` chỉ 1 ký tự (dấu chấm + khoảng trắng) ⇒ dấu lược KHÔNG nuốt gì · 0 mục thiếu nguồn. Nhóm này có ít mục nhất lô (2) là do chú giải nhóm mỏng — KHÔNG phải bỏ sót.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "VÒNG 1 ĐÃ SỬA mục này (2 trường: `text` + `trich`) — vòng 2 đọc lại và XÁC NHẬN bản sửa đúng, không sửa thêm. Lỗi gốc: phạm vi CHỈ nói một phần của nhóm (lớp lỗi lô 030 — \"phamVi phải nêu PHẠM VI nhóm, không phải một phần\"). Tên nhóm 1804 là \"Bơ ca cao, chất béo và dầu ca cao\"; chú giải nhóm có HAI câu định nghĩa: (1) \"Bơ ca cao, là phần chất béo có trong hạt ca cao…\" và (2) \"Phần chất lượng kém thường được gọi là chất béo ca cao cũng thu được từ hạt ca cao chất lượng kém hoặc từ các phế liệu khác nhau của ca cao (vỏ cứng, vỏ lụa hoặc bụi, rác…)\" — bản nháp gốc chỉ giữ câu (1), lược mất hẳn câu (2) ⇒ hàng \"chất béo ca cao ép từ vỏ ca cao\" (phế liệu của 1802) bị đẩy nhầm sang 1802. Bản hiện tại đã nêu đủ HAI phần, giữ nguyên định ngữ \"chất lượng kém THƯỜNG gọi là chất béo ca cao\" (không bỏ từ \"thường\"), và không thêm ghi chú hình thái (\"thường ở dạng rắn trong nhiệt độ phòng\") vì đó là ghi chú vật liệu chứ không phải phạm vi (luật lô 030). Đo lại: `text` 186/220, `trich` 281/300, khoảng lược giữa hai mảnh chỉ 1 ký tự ⇒ không nuốt ngoại lệ; mọi từ trong `text` đều có trong mảnh trích. GHI NHẬN: tên nhóm có 3 thứ (bơ, chất béo, DẦU) nhưng chú giải nhóm KHÔNG có câu nào nói \"dầu\" ⇒ không thêm \"dầu\" vào `phamVi` (luật không thêm chữ ngoài câu trích), dù tên biểu thuê 18040000 có. `dieuKienVao` rỗng, không `loaiTru`, không `phanBiet` là ĐÚNG: chú giải nhóm chỉ có 2 câu định nghĩa + 1 câu công dụng, không có câu ràng buộc phủ cả nhóm, không có loại trừ, không có cặp mã để hỏi."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Dòng 18040000 \"Bơ ca cao, chất béo và dầu ca cao\": `dieuKien` chép đúng nguyên văn tên dòng biểu thuế, có nguồn tax.18040000 ✓; 33/90 không bị cắt. Nhóm không có dòng 8 số nào khác ⇒ đủ 1/1, không thừa không thiếu."
+  }
+ ]
 }

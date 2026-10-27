@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 /**
- * scripts/apply-review-lo063.mjs — Áp kết quả SOÁT ĐỘC LẬP lô 063 (PR #484, nhóm 1801–1806).
+ * scripts/apply-review-lo063.mjs — Áp kết quả SOÁT ĐỘC LẬP lô 063 (PR #485, nhóm 1801–1806).
+ *
+ * Hồ sơ review/1801..1806.json hiện là bản VÒNG 2 (soát độc lập vòng 2, 28/10/2026 — người soát
+ * dev-soat-doc-lap-lo063-v2 ≠ người soạn dev-zcode-mm): 49 mục, giữ 47 · sửa 2 · xoá 0.
+ * Vòng 1 (PR #484) đã sửa 1804.phamVi — bản nháp đã mang sẵn bản sửa đó nên vòng 2 không áp lại.
  *
  * Cùng cách làm của apply-review-lo060.mjs (2 pha, KHÔNG bao giờ áp thayDoi lên data):
  *
