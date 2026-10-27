@@ -1,0 +1,414 @@
+{
+ "nhom": "1511",
+ "phamVi": {
+  "text": "Dầu cọ, chất béo thực vật thu được từ cơm của quả cọ dầu, dùng làm xà phòng, làm nến, mỹ phẩm hoặc các chế phẩm vệ sinh, chất bôi trơn; dầu cọ tinh chế dùng làm thực phẩm; không gồm dầu hạt cọ, dầu ba-ba-su (nhóm 15.13).",
+  "nguon": "nhom1511.nhom",
+  "trich": "Dầu cọ là một loại chất béo thực vật thu được từ cơm của quả cọ dầu.…Dầu này khác với dầu hạt cọ (nhóm 15.13), loại thu được từ cây cọ dầu có thành phần axit palmitic và axit oleic rất cao.…Dầu cọ được dùng làm xà phòng, làm nến, mỹ phẩm hoặc các chế phẩm vệ sinh, dùng như chất bôi trơn, để mạ thiếc nhúng nhóng, để sản xuất axit palmitic v.v. Dầu cọ tinh chế được dùng làm thực phẩm như mỡ rán và sản xuất margarin.…Nhóm này không bao gồm dầu hạt cọ, dầu ba-ba-su (nhóm 15.13).",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_dau_co_la_mot_loai_chat_beo_thuc_vat_thu_duoc_tu_com_cua_qua_co_dau",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom1511.nhom",
+   "trich": "Dầu cọ là một loại chất béo thực vật thu được từ cơm của quả cọ dầu.",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "la_dau_hat_co_va_dau_ba_ba_su",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom1511.nhom",
+   "trich": "Nhóm này không bao gồm dầu hạt cọ, dầu ba-ba-su (nhóm 15.13).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Dầu hạt cọ, dầu ba-ba-su",
+   "sangNhom": "1513",
+   "nguon": "nhom1511.nhom",
+   "trich": "Nhóm này không bao gồm dầu hạt cọ, dầu ba-ba-su (nhóm 15.13).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là dầu hạt cọ hay là dầu cọ?",
+   "neuCo": "1513",
+   "neuKhong": "1511",
+   "nguon": "nhom1511.nhom",
+   "trich": "Nhóm này không bao gồm dầu hạt cọ, dầu ba-ba-su (nhóm 15.13).…Dầu cọ là một loại chất béo thực vật thu được từ cơm của quả cọ dầu.",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hoi": "Hàng là dầu cọ thô hay là dầu cọ đã tinh chế?",
+   "neuCo": "15111000",
+   "neuKhong": "15119020",
+   "nguon": "nhom1511.nhom",
+   "trich": "Dầu thu được bởi chiết hoặc ép và có màu thay đổi theo trạng thái đã hoặc chưa tinh chế.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "151110",
+   "fact": "la_dau_co_va_cac_phan_phan_doan_cua_chung_tho",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.151110",
+   "trich": "151110 Vegetable oils; palm oil and its fractions, crude, not chemically modified",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "151190",
+   "fact": "la_dau_co_va_cac_phan_phan_doan_cua_chung_khong_phai_dau_tho",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.151190",
+   "trich": "151190 Vegetable oils; palm oil and its fractions, other than crude, whether or not refined, but not chemically modified",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "15111000",
+   "dieuKien": "Dầu thô",
+   "tieuChi": {
+    "fact": "la_dau_tho",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.15111000",
+   "trich": "15111000 - Dầu thô",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "15119020",
+   "dieuKien": "Dầu tinh chế",
+   "tieuChi": {
+    "fact": "la_dau_tinh_che",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.15119020",
+   "trich": "15119020 - - Dầu tinh chế",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "15119031",
+   "dieuKien": "Có chỉ số iốt từ 30 trở lên, nhưng dưới 40",
+   "tieuChi": {
+    "fact": "chi_so_iot",
+    "op": ">=",
+    "value": 30,
+    "donVi": null
+   },
+   "nguon": "tax.15119031",
+   "trich": "15119031 - - - - Có chỉ số iốt từ 30 trở lên, nhưng dưới 40",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "15119032",
+   "dieuKien": "Loại khác: Vegetable oils; palm oil and its fractions, other than crude",
+   "tieuChi": null,
+   "nguon": "wco.151190",
+   "trich": "151190 Vegetable oils; palm oil and its fractions, other than crude, whether or not refined, but not chemically modified",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "1511903",
+    "truAnhEm": [
+     "15119031",
+     "15119036",
+     "15119037"
+    ],
+    "toTienCoTen": "151190",
+    "dinhNghiaDuoc": false
+   }
+  },
+  {
+   "hs": "15119036",
+   "dieuKien": "Đóng gói với khối lượng tịnh không quá 25kg",
+   "tieuChi": {
+    "fact": "khoi_luong_tinh",
+    "op": "<=",
+    "value": 25,
+    "donVi": "kg"
+   },
+   "nguon": "tax.15119036",
+   "trich": "15119036 - - - - Đóng gói với khối lượng tịnh không quá 25kg",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "15119037",
+   "dieuKien": "Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60",
+   "tieuChi": {
+    "fact": "chi_so_iot",
+    "op": ">=",
+    "value": 55,
+    "donVi": null
+   },
+   "nguon": "tax.15119037",
+   "trich": "15119037 - - - - Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "1511903",
+    "truAnhEm": [
+     "15119031",
+     "15119036"
+    ],
+    "toTienCoTen": "151190",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "15119039",
+   "dieuKien": "Loại khác: Vegetable oils; palm oil and its fractions, other than crude",
+   "tieuChi": null,
+   "nguon": "wco.151190",
+   "trich": "151190 Vegetable oils; palm oil and its fractions, other than crude, whether or not refined, but not chemically modified",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "1511903",
+    "truAnhEm": [
+     "15119031",
+     "15119036",
+     "15119037"
+    ],
+    "toTienCoTen": "151190",
+    "dinhNghiaDuoc": false
+   }
+  },
+  {
+   "hs": "15119041",
+   "dieuKien": "Các phần phân đoạn thể rắn",
+   "tieuChi": {
+    "fact": "la_cac_phan_phan_doan_the_rac",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "tax.15119041",
+   "trich": "15119041 - - - Các phần phân đoạn thể rắn (SEN)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "15119042",
+   "dieuKien": "Loại khác, đóng gói với khối lượng tịnh không quá 25kg",
+   "tieuChi": {
+    "fact": "khoi_luong_tinh",
+    "op": "<=",
+    "value": 25,
+    "donVi": "kg"
+   },
+   "nguon": "tax.15119042",
+   "trich": "15119042 - - - Loại khác, đóng gói với khối lượng tịnh không quá 25kg (SEN)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "1511904",
+    "truAnhEm": [
+     "15119041"
+    ],
+    "toTienCoTen": "151190",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "15119049",
+   "dieuKien": "Các phần phân đoạn của dầu cọ chưa tinh chế, rắn hoặc lỏng",
+   "tieuChi": {
+    "fact": "la_phan_phan_doan_rac_hoac_long_cua_dau_co_tho",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "nguon": "sen.15119049",
+   "trich": "CÁC PHẦN PHÂN ĐOẠN CỦA DẦU CỌ CHƯA TINH CHẾ\nĐây là các phần phân đoạn rắn hoặc lỏng thu được bằng cách phân đoạn dầu cọ thô bằng một số phương pháp công nghiệp, ví dụ kết tinh ở nhiệt độ được kiểm soát. Các phần phân đoạn này chưa qua chế biến để cải thiện các đặc tính vật lý của chúng.",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "1511904",
+    "truAnhEm": [
+     "15119041",
+     "15119042"
+    ],
+    "toTienCoTen": "151190",
+    "dinhNghiaDuoc": false
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "1511",
+    "cap": 4,
+    "cha": "15",
+    "tenVi": "Dầu cọ và các phần phân đoạn của dầu cọ, đã hoặc chưa tinh chế, nhưng không thay đổi về mặt hóa học (+).",
+    "tenEn": "Palm oil and its fractions; whether or not refined, but not chemically modified",
+    "suyRa": false
+   },
+   {
+    "id": "15111000",
+    "cap": 8,
+    "cha": "1511",
+    "tenVi": "Dầu thô",
+    "tenEn": "Vegetable oils; palm oil and its fractions, crude, not chemically modified",
+    "suyRa": false,
+    "laPhanNhom": "151110"
+   },
+   {
+    "id": "151190",
+    "cap": 6,
+    "cha": "1511",
+    "tenVi": "Loại khác",
+    "tenEn": "Vegetable oils; palm oil and its fractions, other than crude, whether or not refined, but not chemically modified",
+    "suyRa": false
+   },
+   {
+    "id": "15119020",
+    "cap": 8,
+    "cha": "151190",
+    "tenVi": "Dầu tinh chế",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "1511903",
+    "cap": "TIEU_DE_QG",
+    "cha": "151190",
+    "tenVi": "Các phần phân đoạn của dầu tinh chế",
+    "tenEn": "Fractions of refined oil",
+    "suyRa": true
+   },
+   {
+    "id": "15119031",
+    "cap": 8,
+    "cha": "1511903",
+    "tenVi": "Có chỉ số iốt từ 30 trở lên, nhưng dưới 40",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "15119032",
+    "cap": 8,
+    "cha": "1511903",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "15119036",
+    "cap": 8,
+    "cha": "1511903",
+    "tenVi": "Đóng gói với khối lượng tịnh không quá 25kg",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "15119037",
+    "cap": 8,
+    "cha": "1511903",
+    "tenVi": "Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "15119039",
+    "cap": 8,
+    "cha": "1511903",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "1511904",
+    "cap": "TIEU_DE_QG",
+    "cha": "151190",
+    "tenVi": "Các phần phân đoạn của dầu chưa tinh chế",
+    "tenEn": "Fractions of unrefined oil",
+    "suyRa": true
+   },
+   {
+    "id": "15119041",
+    "cap": 8,
+    "cha": "1511904",
+    "tenVi": "Các phần phân đoạn thể rắn (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "15119042",
+    "cap": 8,
+    "cha": "1511904",
+    "tenVi": "Loại khác, đóng gói với khối lượng tịnh không quá 25kg (SEN)",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "15119049",
+    "cap": 8,
+    "cha": "1511904",
+    "tenVi": "Loại khác (SEN)",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom1511.nhom",
+  "sen.15119049",
+  "tax.15111000",
+  "tax.15119020",
+  "tax.15119031",
+  "tax.15119036",
+  "tax.15119037",
+  "tax.15119041",
+  "tax.15119042",
+  "wco.151110",
+  "wco.151190"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-27T09:37:29.760Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 18,
+  "dat": 18,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

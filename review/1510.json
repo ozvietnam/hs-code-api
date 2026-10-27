@@ -1,0 +1,103 @@
+{
+ "nhom": "1510",
+ "gopVoi": "soát độc lập lô 059 (PR #477) — phiên claude-soat-doc-lap-lo059, 27/10/2026",
+ "thayDoi": [
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (máy KHÔNG bắt): `hoi` hỏi \"dầu ô liu hay là dầu bã ô liu\" nhưng câu trích (\"Nhóm này bao gồm dầu từ quả ôliu trừ dầu thuộc nhóm 15.09.\") KHÔNG có chữ \"dầu bã ô liu\" ⇒ `hoi` thêm chữ ngoài trích (lớp lỗi lô 030/035). Đã nối thêm câu \"Nhóm này bao gồm các loại dầu thu được từ bã ô liu.\" (nguyên văn) — nhờ đó cả hai nhánh (có = dầu ô liu 15.09; không = dầu bã ô liu 15.10) đều có căn cứ.",
+   "sua": {
+    "trich": "Nhóm này bao gồm dầu từ quả ôliu trừ dầu thuộc nhóm 15.09.…Nhóm này bao gồm các loại dầu thu được từ bã ô liu."
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lớp lỗi với phanBiet[0]: `hoi` có \"dầu bã ô liu\" nhưng trích chỉ có câu loại trừ \"dầu tái este hóa … (nhóm 15.16)\" ⇒ nhánh \"không\" (vào 1510) không có căn cứ trong nguồn. Đã nối thêm câu \"Nhóm này bao gồm các loại dầu thu được từ bã ô liu.\" (nguyên văn).",
+   "sua": {
+    "trich": "Nhóm này không bao gồm dầu tái este hóa thu được từ dầu ôliu (nhóm 15.16).…Nhóm này bao gồm các loại dầu thu được từ bã ô liu."
+   }
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (máy KHÔNG bắt): `quyTac` khẳng định \"Phần (B) bao gồm dầu bã ô liu tinh chế và dầu bã ô liu là hỗn hợp dầu bã ô liu tinh chế với dầu ô liu nguyên chất\" nhưng câu trích chỉ có hai câu mở đầu (A) và (B) ⇒ vế hỗn hợp không có căn cứ. Đã nối mảnh nguyên văn của mục (B)(2) vào trích. GHI NHẬN: nguồn viết vế hỗn hợp là \"dầu ô liu nguyên chất đặc biệt (A) và/hoặc dầu ô liu nguyên chất (B)\" — `tomTat` ghi rút gọn \"hỗn hợp với dầu ô liu nguyên chất\" (bao hàm cả vế đặc biệt) nên không sửa.",
+   "sua": {
+    "trich": "(A) Dầu bã ô liu thô, là loại dầu thu được bằng cách chiết dung môi hoặc các xử lý vật lý khác các cặn còn lại sau khi chiết xuất dầu ô liu thuộc nhóm 15.09.…(B) Dầu bã ô liu tinh chế, là loại dầu thu được từ dầu bã ô liu thô bằng phương pháp tinh chế, không dẫn đến thay đổi cấu trúc glyceridic ban đầu.…(2) Dầu bã ô liu là loại dầu bao gồm hỗn hợp dầu bã ô liu tinh chế và dầu ô liu nguyên chất đặc biệt (A) và/hoặc dầu ô liu nguyên chất (B)."
+   }
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (máy KHÔNG bắt): `fact` ghi \"…không thuộc nhóm 15_10\" — SAI CHIỀU: 1510.90 nằm TRONG nhóm 15.10, câu WCO \"n.e.c. in heading 1510\" nghĩa là PHẦN DƯ của nhóm 1510 (tức không phải 1510.10), không phải \"ngoài nhóm 1510\" (bài học lô 041: dịch \"n.e.c.\" thành \"trừ\" là đảo nghĩa). Đã sửa thành \"không thuộc phân nhóm 15_10\" và bổ sung vế hỗn hợp với dầu nhóm 15.09 mà WCO nêu (\"including blends of these oils or fractions with oils or fractions of heading no. 1509\").",
+   "sua": {
+    "fact": "la_dau_va_cac_phan_phan_doan_thu_duoc_duy_nhat_tu_oliu_khong_thuoc_phan_nhom_15_10_ke_ca_ho_mep_voi_dau_hoac_phan_phan_doan_cua_nhom_15_09"
+   }
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "`text` nêu đúng phạm vi (dầu từ quả ôliu trừ nhóm 15.09; gồm bã ô liu thô, bã ô liu tinh chế và hỗn hợp) và MỌI ý đều có trong trích nguyên văn. 429 ký tự (>300) nhưng trích không đi vào prompt runtime nên không tốn token; giữ trích trọn để không mất căn cứ. GIỮ."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"Nhóm này bao gồm các loại dầu thu được từ bã ô liu. Bã ô liu là chất rắn còn sót lại của ô liu…\"; fact dương + value=true đúng chiều. GIỮ."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"Nhóm này không bao gồm dầu tái este hóa thu được từ dầu ôliu (nhóm 15.16)\"; fact âm + value=false đúng chiều. GIỮ."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "\"Nhóm này bao gồm dầu từ quả ôliu trừ dầu thuộc nhóm 15.09.\" — đích danh \"nhóm 15.09\", `sangNhom` 1509 có trong trích. GIỮ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "\"…(nhóm 15.16)\" — đích danh. GIỮ."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều Có/Không đúng: có = bã ô liu thô → 15101000; không = tinh chế → 151090xx. Trích có đủ (A) và (B). GIỮ."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn wco.151010 (\"crude olive pomace oil and their fractions, obtained solely from olives\"). GIỮ."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn mục (A) — cách thu được của bã ô liu thô. GIỮ."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "GHI NHẬN (không sửa): `fact` lấy từ câu mở đầu phần (B) của nguồn — câu đó mô tả vế TINH CHẾ, còn vế HỖN HỢP nằm ở mục con (B)(2). Không sửa vì câu trích là nguyên văn của nguồn và tiêu chí cấp 6 số không đi vào prompt runtime."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 15101000 — nguyên văn biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 15109010 — nguyên văn biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 15109020 — nguyên văn biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" — công thức quy ước wco.151090. GIỮ."
+  }
+ ]
+}
