@@ -1,0 +1,76 @@
+{
+ "nhom": "2529",
+ "nguoiSoat": "dev-soat-doc-lap-lo074",
+ "luc": "2026-10-28T22:55:00+07:00",
+ "phamViSoat": "Toàn bộ 12 mục của nhóm 2529 (1 phamVi + 1 loaiTru + 1 phanBiet + 4 tieuChi6 + 5 dong8), đọc cùng tmp/so-tay/nguon/2529.txt (nhom2529.nhom, ch25.chuong, sen.25291010, wco.252910/252921/252922/252930, tax.25291010/25291090/25292100/25292200/25293000).",
+ "soat": 12,
+ "giu": 11,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 1 · GIU 11/12. SỬA 1 (`dong8[0].trich`): bản nháp mở đầu bằng dấu lược \"…\" rỗng (không lược gì) — lớp lỗi \"dấu lược … RỖNG\" của lô 055; bỏ đi, giữ nguyên văn. GHI NHẬN: `phamVi` chưa nêu \"flourit thu được từ khoáng chất qua xử lý nhiệt\" (một mảnh phạm vi) — đánh đổi: đưa mảnh đó vào trích phải lược qua câu loại trừ \"Nhóm này không bao gồm cát chứa feldspathic (nhóm 25.05)\" (đoạn lược nuốt ngoại lệ — lớp lỗi SOAT-LO), nên giữ nguyên bản nháp; ngoại lệ này đã có mục riêng (`loaiTru[0]`) với trích nguyên văn. GHI NHẬN: nguồn còn \"Nhóm này không bao gồm flourit hoặc flourit ở dạng đá quý hoặc bán quý (Chương 71)\" — đích là CHƯƠNG, không mã hoá được thành `loaiTru`/`phanBiet` (luật 3) nên không ghi. GHI NHẬN: `dieuKienVao` để RỖNG là ĐÚNG — nguồn không có câu ràng buộc phủ cả nhóm 25.29.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [nhom2529.nhom] (hai câu: tràng thạch/lơxit/nephelin và khoáng florit); `text` tóm tắt đúng các mảnh trong trích, không thêm chữ. GHI NHẬN: xem `ghiChu` về mảnh \"flourit qua xử lý nhiệt\"."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nêu đích danh 25.05 ✓ luật 3; `dieuKien` chép đúng \"cát chứa feldspathic\", không thêm chữ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi đúng MỘT nhánh có đích danh 25.05 ✓; `neuKhong` = 2529 là chính nhóm ✓ luật 4."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [nhom2529.nhom] có \"Tràng thạch (đá bồ tát)…\" ✓; 2529.10 có thật trong cây HS ✓ và nguồn không phải `tax.*` ✓ luật 10."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.252921] có mã 252921 ✓; `fact` đọc đúng chiều (\"97% or less of calcium fluoride\") và khớp với dòng biểu thuế 25292100 \"không quá 97%\"."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.252922] ✓; `fact` đọc đúng chiều (\"more than 97%\") và khớp với dòng 25292200 \"trên 97%\"."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu trích với tieuChi6[0], có \"Lơxit, nephelin và nephelin xienit\" ✓; 2529.30 có thật trong cây ✓ luật 10."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — DẤU LƯỚC \"…\" RỖNG. Bản nháp mở trích bằng \"…\" dù khối [sen.25291010] bắt đầu ĐÚNG tại \"POTASH TRÀNG THẠCH; SODA TRÀNG THẠCH\" ⇒ dấu lược không lược gì, chỉ gây hiểu nhầm là còn mảnh bị bỏ (lớp lỗi \"dấu lược … rỗng\" đã gặp ở lô 055). Sửa: bỏ dấu lược, giữ nguyên văn (96 ký tự). Nguồn dùng SEN cho dòng này là đúng luật 6 (\"có SEN thì ưu tiên điều kiện từ SEN\") — dòng biểu thuế 25291010 ghi rõ \"(SEN)\".",
+   "sua": {
+    "trich": "POTASH TRÀNG THẠCH; SODA TRÀNG THẠCH\nTràng thạch thuộc họ khoáng silicat sinh ra trong đá magma."
+   }
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25291090] \"Loại khác\" ✓ luật 6."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25292100] có số 97 trong câu ✓; `tieuChi` {ham_luong_canxi_florua ≤ 97 %} có số trong trích ✓ luật 10 (áp cho `dong8[].tieuChi`)."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25292200] \"trên 97%\" ✓; `tieuChi` {ham_luong_canxi_florua > 97 %} có số trong trích ✓, chiều đúng chiều với dòng."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25293000] \"Lơxit; nephelin và nephelin xienit\" ✓ luật 6."
+  }
+ ]
+}
