@@ -1,0 +1,64 @@
+{
+ "nhom": "2518",
+ "nguoiSoat": "dev-soat-doc-lap-lo073",
+ "luc": "2026-10-28T23:30:00+07:00",
+ "phamViSoat": "Toàn bộ 8 mục của nhóm 2518 (1 phamVi + 2 loaiTru + 1 phanBiet + 2 tieuChi6 + 2 dong8), đọc cùng tmp/so-tay/nguon/2518.txt (nhom2518.nhom, ch25.chuong, wco.251810/251820, tax.25181000/25182000).",
+ "ghiChu": "XOA 0 · SUA 3 · GIU 5. Đối chiếu chéo (agent thứ hai) đã báo 1 lỗi ĐÚNG (phanBiet[0].hoi thiếu nhánh \"đá rải đường tàu\") — đã sửa. Các đề xuất còn lại của agent về tieuChi6 (tách phân nhóm) không áp: tieuChi6 không vào prompt runtime, mẫu nhà đã chấp nhận tiêu chí cấp 6 số là một câu trích dùng chung cho nhiều phân nhóm.",
+ "soat": 8,
+ "giu": 5,
+ "sua": 3,
+ "xoa": 0,
+ "chen": 0,
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Phạm vi nhóm bỏ sót MỘT thành viên: \"dolomite đã đẽo thô hoặc chỉ cắt\" (dạng đẽo/cắt thành khối hoặc tấm hình chữ nhật). Đây là đặc điểm phân biệt 25.18 với 25.17 (đá nghiền làm cốt bê tông) — WCO 251810/251820 ghi rõ \"including dolomite roughly trimmed, or merely cut by sawing\", và ch25.chuong xác nhận \"các nguyên vật liệu của các nhóm 25.06, 24.14, 25.15, 25.16, 25.18 và 25.26 mới chỉ được đẽo thô hoặc mới chỉ cắt...\". Trích cũ cắt qua dấu \"…\" ở giữa câu nên giữ nguyên câu, kéo thêm mảnh cuối.",
+   "sua": {
+    "text": "Dolomite là dạng muối carbonate kép tự nhiên của canxi và magiê; nhóm này cũng bao gồm dolomite thô, dolomite đã nung và thiêu kết, cùng dạng dolomite đã đẽo thô hoặc chỉ cắt thành khối hoặc tấm hình chữ nhật.",
+    "trich": "Dolomite là dạng muối carbonate kép tự nhiên của canxi và magiê.…Nhóm này cũng bao gồm dolomite thô và dolomite đã nung và thiêu kết.…Nhóm này cũng bao gồm cả dạng dolomite đã đẽo thô hoặc chỉ cắt, bằng cách cưa hoặc bằng phương pháp khác thành các khối hoặc tấm hình chữ nhật (kể cả hình vuông)."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "Câu nguồn loại trừ \"dolomite nghiền để làm cốt bê tông, lớp đá dăm trải đường HOẶC đá rải đường tàu (nhóm 25.17)\". `dieuKien` bỏ mất nhánh \"hoặc đá rải đường tàu\" ⇒ loại trừ hẹp lại: dolomite nghiền làm đá ballast đường sắt sẽ bị xếp nhầm vào 25.18 thay vì 25.17. Giữ nguyên các từ đầu để không đổi tập mảnh khớp của cổng loại trừ (đã đo headPhrases trước/sau: không đổi).",
+   "sua": {
+    "dieuKien": "Dolomite nghiền làm cốt bê tông, đá dăm trải đường hoặc đá rải đường tàu"
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nguồn \"hoặc hỗn hợp dolomite ramming (nhóm 38.16)\" nêu đích danh 38.16; `dieuKien` chép đúng, không thêm chữ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "Câu hỏi bỏ SÓT nhánh \"hoặc đá rải đường tàu\" mà câu trích (và loaiTru[0]) có: tờ khai \"dolomite nghiền làm ballast đường sắt\" sẽ trả lời \"không\" ⇒ rơi vào 25.18, đáng lẽ phải 25.17. Bổ sung nhánh đã bỏ (rút gọn \"hỗn hợp dolomite ramming\" → \"hỗn hợp ramming\" để còn ≤ 110 ký tự — trần clip runtime của câu hỏi phân biệt; chủ ngữ \"Dolomite\" đã đứng đầu câu).",
+   "sua": {
+    "hoi": "Dolomite có được nghiền làm cốt bê tông, đá dăm trải đường, đá rải đường tàu hoặc hỗn hợp ramming không?"
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích \"Nhóm này cũng bao gồm dolomite thô và dolomite đã nung và thiêu kết\" — đối lập \"thô\" ↔ \"đã nung và thiêu kết\" nên `dolomite_tho` đúng chiều cho 251810 (WCO: not calcined or sintered)."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu trích; `dolomite_da_nung_hoac_thieu_ket` đúng chiều cho 251820 (WCO: calcined or sintered)."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích đúng dòng biểu thuế tax.25181000, không thêm chữ."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích đúng dòng biểu thuế tax.25182000, không thêm chữ."
+  }
+ ]
+}

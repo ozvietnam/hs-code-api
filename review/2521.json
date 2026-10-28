@@ -1,0 +1,68 @@
+{
+ "nhom": "2521",
+ "nguoiSoat": "dev-soat-doc-lap-lo073",
+ "luc": "2026-10-28T23:30:00+07:00",
+ "phamViSoat": "Toàn bộ 5 mục của nhóm 2521 (1 phamVi + 2 loaiTru + 1 phanBiet + 1 dong8), đọc cùng tmp/so-tay/nguon/2521.txt (nhom2521.nhom, ch25.chuong, wco.252100, tax.25210000).",
+ "ghiChu": "XOA 0 · SUA 2 · CHEN 2 · GIU 3. GHI NHẬN: (1) hai mục loaiTru CHÈN có `dieuKien` một từ (\"Dolomite\") → headPhrases() của lib/so-tay-gates.js cần ≥ 2 âm tiết nên cổng SO_TAY_LOAI_TRU không bắn được với mục \"Dolomite\"; đây là GIỚI HẠN CHUNG của nhà (10/2.734 loaiTru toàn kho có dieuKien một từ, vd \"Casein\" → 3501, \"Nến\" → 3406), mục vẫn có mặt trong dòng \"LOẠI TRỪ\" của gói sổ tay lúc chạy. (2) Đề xuất của agent đối chiếu \"xoá 2 mục vì thừa\" — không áp: nguồn nêu đích danh (25.18, 25.09) và mẫu nhà dùng đúng dạng này làm loại trừ (2515 loaiTru[5], 2516 loaiTru[0], 2517 loaiTru[2]).",
+ "soat": 5,
+ "giu": 3,
+ "sua": 2,
+ "xoa": 0,
+ "chen": 2,
+ "thayDoi": [
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "Câu nguồn \"không bao gồm đá đã vỡ hoặc nghiền làm cốt bê tông, rải đường bộ hay đường sắt hoặc đá ballast (nhóm 25.17)\". `dieuKien` bỏ mất \"đường sắt\" và \"đá ballast\" ⇒ loại trừ hẹp lại (đá ballast đường sắt bị xếp nhầm 25.21 thay vì 25.17). Bổ sung nguyên vệ.",
+   "sua": {
+    "dieuKien": "Đá đã vỡ hoặc nghiền làm cốt bê tông, rải đường bộ hay đường sắt hoặc đá ballast"
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "chen",
+   "muc": {
+    "dieuKien": "Dolomite",
+    "sangNhom": "2518",
+    "nguon": "nhom2521.nhom",
+    "trich": "Dolomite xếp vào nhóm 25.18 và đá phấn xếp vào nhóm 25.09."
+   },
+   "lyDo": "Câu nguồn \"Dolomite xếp vào nhóm 25.18\" là một định nghĩa loại trừ có căn cứ (đích danh 25.18) mà sổ tay 25.21 chưa ghi — tờ khai khai \"dolomite\" rơi vào 25.21 sẽ không được nhắc. Mẫu nhà: 2515 loaiTru[5] (\"Đá ở dạng hạt, mảnh vỡ hoặc bột\" → 25.17, trích \"…chúng được xếp vào nhóm 25.17\"), 2516 loaiTru[0], 2517 loaiTru[2] — câu nguồn dạng \"X được xếp vào nhóm Y\" vẫn dùng làm loại trừ."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "chen",
+   "muc": {
+    "dieuKien": "Đá phấn",
+    "sangNhom": "2509",
+    "nguon": "nhom2521.nhom",
+    "trich": "Dolomite xếp vào nhóm 25.18 và đá phấn xếp vào nhóm 25.09."
+   },
+   "lyDo": "Cùng câu nguồn: \"đá phấn xếp vào nhóm 25.09\" — đích danh 25.09, cũng chưa có trong sổ tay 25.21."
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Dấu lược \"…\" ở đây ẩn câu \"Dolomite xếp vào nhóm 25.18 và đá phấn xếp vào nhóm 25.09\" — là chuyển hướng sang nhóm khác, KHÔNG phải thành viên của 25.21; đã ghi thành 2 mục loại trừ riêng (loaiTru[2], loaiTru[3]) nên không mất thông tin. `text` nêu đúng phạm vi nhóm (chất gây chảy gốc đá vôi + dạng bột cải tạo đất)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nguồn \"không phải là đá cho xây dựng hoặc làm tượng đài (nhóm 25.15 hoặc 25.16)\"; `dieuKien` là điều kiện BỊ loại (\"hàng nào bị loại\") nên không cần lặp chữ \"không phải là\" — chép đúng, không thêm chữ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "ĐẢO CHIỀU Có/Không — lớp lỗi SOAT-LO liệt kê (\"`hoi` của `phanBiet` bị đảo so với câu loại trừ trong nguồn\"). Câu hỏi \"Đá dùng để sản xuất đá vôi hoặc xi măng, KHÔNG PHẢI đá cho xây dựng hoặc làm tượng đài?\" — vế KHẲNG ĐỊNH là \"đá dùng để sản xuất đá vôi hoặc xi măng\" (= 25.21), vế PHỦ ĐỊNH là \"đá cho xây dựng hoặc làm tượng đài\" (= 25.15/25.16). Nền nhà ĐỒNG NHẤT: 60 phanBiet có \"không phải\" trong `hoi`, cả 60 đều đặt `neuCo` = nhóm của vế KHẲNG ĐỊNH (0510 \"Hàng là hổ phách vàng (succinite) chứ không phải long diên hương?\" → co→2530 (hổ phách), không→0510 (long diên hương); 0709 \"Hàng là cần tây (không phải cần củ) không?\" → co→07094000, không→0706; 1901 → co→2105, không→1901; 8461 → co→8461, không→8205|8467). Mục cũ đặt NGƯỢC (co→2515|2516) ⇒ \"Có\" đúng nghĩa là \"đúng là chất gây chảy gốc đá vôi\" nhưng lại dẫn sang 25.15/25.16.",
+   "sua": {
+    "neuCo": "2521",
+    "neuKhong": "2515|2516"
+   }
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích đúng dòng biểu thuế tax.25210000 (nguồn không có dấu gạch đầu dòng — chép nguyên văn)."
+  }
+ ]
+}

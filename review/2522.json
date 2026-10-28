@@ -1,0 +1,63 @@
+{
+ "nhom": "2522",
+ "nguoiSoat": "dev-soat-doc-lap-lo073",
+ "luc": "2026-10-28T23:30:00+07:00",
+ "phamViSoat": "Toàn bộ 9 mục của nhóm 2522 (1 phamVi + 1 loaiTru + 1 phanBiet + 3 tieuChi6 + 3 dong8), đọc cùng tmp/so-tay/nguon/2522.txt (nhom2522.nhom, ch25.chuong, wco.252210/252220/252230, tax.25221000/25222000/25223000).",
+ "ghiChu": "XOA 1 · SUA 1 · GIU 7. GHI NHẬN: đề xuất của agent đối chiếu \"khôi phục tieuChi6[2]\" — KHÔNG áp: mục bị xoá là `fact=ti_le_dat_set, op=\"<=\", value=20, donVi=\"%\"` — tức mã hoá NGUỌNG CỨNG cho câu nguồn có định ngữ giới hạn (\"dù tỉ lệ THƯỜNG nhỏ hơn 20%\"), đúng lớp lỗi SOAT-LO nêu (\"thường…\"). Cảnh báo \"phan-nhom-chua-co-tieu-chi:252230\" của check-cay.mjs là CẢNH BÁO (không làm đỏ CI: exit code theo `loi`, mà `loi` = 0) và nền nhà đã có 1.182 cảnh báo cùng loại ⇒ chấp nhận.",
+ "soat": 9,
+ "giu": 7,
+ "sua": 1,
+ "xoa": 1,
+ "chen": 0,
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Phạm vi nhóm bỏ sót MỘT thành viên: \"Vôi thủy lực\" (dòng 25223000 \"Vôi thủy lực\", 1/3 dòng 8 số của nhóm). `text` cũ chỉ nêu vôi sống + vôi tôi. Kéo câu vôi thủy lực vào trích và nêu trong `text`.",
+   "sua": {
+    "text": "Vôi sống (oxit canxi lẫn tạp chất) nung từ đá vôi có chứa rất ít hoặc không chứa đất sét; vôi tôi (canxi hydroxide) tạo ra khi vôi sống kết hợp với nước; vôi thủy lực nung từ đá vôi có đất sét (tỉ lệ thường nhỏ hơn 20%).",
+    "trich": "Vôi sống (là một oxit canxi có lẫn tạp chất) thu được bằng cách nung đá vôi có chứa rất ít hoặc không chứa đất sét.…tạo ra vôi tôi (canxi hydroxide)…Vôi thủy lực thu được bằng cách nung đá vôi có chứa đất sét (dù tỉ lệ thường nhỏ hơn 20%) ở nhiệt độ thấp rồi tôi với nước."
+   }
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "xoa",
+   "lyDo": "Nguồn nói CÓ ĐỊNH NGỮ GIỚI HẠN: \"đá vôi có chứa đất sét (dù tỉ lệ THƯỜNG nhỏ hơn 20%)\". Mục mã hoá thành ngưỡng cứng `ti_le_dat_set <= 20 %` ⇒ nói CHẮC hơn nguồn (đúng lớp lỗi \"cắt trích né câu rào\" mà SOAT-LO liệt kê: \"thường…\"). Lược đồ `tieuChi6` không có chỗ mang định ngữ giới hạn, và tiêu chí này cũng không phải tiêu chí phân loại của nhóm (2522.10/2522.20/2522.30 phân biệt bằng LOẠI vôi, không bằng tỉ lệ đất sét) ⇒ theo luật \"Mục mờ má → XOÁ\", xoá mục có cấu trúc này. Câu nguồn (kèm định ngữ) vẫn được giữ nguyên trong `phamVi.trich`. Đo nền nhà: trong 2.566 tieuChi6 toàn kho chỉ có 5 câu trích có định ngữ giới hạn thật (các câu khác là false-positive), và cả 5 đều mã hoá ngưỡng cứng — mẫu 2522 là ngoại lệ duy nhất."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nguồn \"Nhóm này không bao gồm canxi oxit và canxi hydroxide đã tinh chế (nhóm 28.25)\" nêu đích danh 28.25; `dieuKien` chép đúng."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi về đặc tính hàng, không nhắc mã; nhánh Có → 28.25, nhánh Không → 25.22."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích \"Vôi sống (là một oxit canxi có lẫn tạp chất) thu được bằng cách nung đá vôi...\" ⇒ `voi_song_thu_duoc_bang_cach_nung_da_voi` đúng chiều cho 252210 (WCO: Quicklime)."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích \"…tạo ra vôi tôi (canxi hydroxide)\" ⇒ `voi_toi_canxi_hydroxide` đúng chiều cho 252220 (WCO: Slaked lime)."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích đúng dòng biểu thuế tax.25221000."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích đúng dòng biểu thuế tax.25222000."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích đúng dòng biểu thuế tax.25223000."
+  }
+ ]
+}
