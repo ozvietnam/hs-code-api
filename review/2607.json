@@ -1,0 +1,36 @@
+{
+ "nhom": "2607",
+ "nguoiSoat": "dev-soat-doc-lap-lo076",
+ "luc": "2026-10-28T23:55:00+07:00",
+ "phamViSoat": "Toàn bộ 4 mục của nhóm 2607 (1 phamVi + 2 dieuKienVao + 1 dong8), đọc cùng tmp/so-tay/nguon/2607.txt (nhom2607.nhom, ch26.chuong, wco.260700, tax.26070000). Đối chiếu BYTE-EXACT từng đoạn trích (mỗi đoạn ngăn bởi '…') với đúng khối nguồn — không dùng squash() của máy (bỏ dấu câu + hạ chữ thường) nên không bỏ sót lỗi gõ/dán.",
+ "soat": 4,
+ "giu": 3,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "XOÁ 0 · SỬA 1 · GIỮ 3/4. Mọi câu trích của nhóm 2607 đều NGUYÊN VĂN tuyệt đối trong đúng khối nguồn (kiểm bằng script byte-exact riêng + check-trich-nguyen-van.mjs) và ≤ 300 ký tự. SỬA 1: `phamVi.text` bỏ mất 2 trong 4 mô tả hoá học có trong câu trích ('chì sulphate' của Anglesite, 'chì carbonate' của Cerussite) — bản nháp tự rút gọn để vừa trần clip 220 của runtime, trong khi 3 nhóm anh em cùng lô (2608/2609/2611) giữ ĐỦ mọi mô tả; khôi phục được bằng cách bỏ 'trong nhóm này' (212 ký tự ≤ 220). GHI NHẬN: 2 `dieuKienVao` lấy từ khối 'KHÁI QUÁT CHUNG' của ch26.chuong là RÀNG BUỘC VÀO DẢI nhóm 26.01–26.17 (dạng 'được giới hạn cho … mà chúng: (A) … và (B) …'), KHÔNG phải loại trừ chung của Chương ⇒ chép vào từng nhóm được (bài học lô 051/060 vẫn đúng: các câu 'Chương này không bao gồm (a)…(g)' và 'Các nhóm 26.01 đến 26.17 không bao gồm (a)…(e)' KHÔNG được chép vào từng nhóm — bản nháp đã không chép ✓). GHI NHẬN: nguồn Chương 26 KHÔNG nêu ngưỡng số nào ⇒ không mục điều kiện số nào, không bịa. GHI NHẬN: dòng CUỐI tệp nguồn ('Soạn sổ tay cho nhóm 2607.') là câu thừa ngoài khối — `dong8[0].trich` lấy DÒNG ĐẦU của khối tax.26070000 ✓ (bài học lô 073). GHI NHẬN: `tieuChi6` rỗng — lá 26070000 có `laPhanNhom` chỉ 4 số ⇒ nhóm không có phân nhóm 6 số thật, máy loại mọi mục `tieuChi6` của nhóm này (`hs6-khong-co-trong-cay`). GHI NHẬN: `boPhan` = null — nguồn không chia nhóm 2607 thành bộ phận nào ⇒ để trống là đúng.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `phamVi.text` MẤT MÔ TẢ CÓ TRONG CÂU TRÍCH. Trích [nhom2607.nhom] chép ĐỦ 4 khoáng: '(a) Anglesite, chì sulphate (b) Cerussite, chì carbonate (c) Galena, chì sulphide, thường có chứa bạc (d) Pyromorrphite, phosphate chì và chloride chì', nhưng `text` chỉ giữ mô tả của Galena và Pyromorrphite, bỏ mất 'chì sulphate' (Anglesite) và 'chì carbonate' (Cerussite) ⇒ phạm vi mô tả hẹp hơn nguồn và KHÔNG đồng nhất với 3 nhóm anh em cùng lô (2608 'Blende (sphalerite), kẽm sulphide', 2609, 2611 — đều giữ đủ mọi mô tả). Nguyên nhân: bản nháp tự rút gọn để vừa trần clip 220 của runtime, trong khi rút gọn KHÔNG bắt buộc — bỏ 'trong nhóm này' (4 từ) là đủ. Sửa: khôi phục đủ mô tả, bỏ 'trong nhóm này'; bản mới 212 ký tự ≤ trần 220 ⇒ runtime không cắt giữa câu. Vẫn giữ nguyên định ngữ giới hạn của nguồn ('chính thường') — KHÔNG cắt trích để né câu rào.",
+   "sua": {
+    "text": "Quặng chì và tinh quặng chì: các quặng chính thường được phân loại là Anglesite (chì sulphate), Cerussite (chì carbonate), Galena (chì sulphide, thường có chứa bạc), Pyromorrphite (phosphate chì và chloride chì)."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [ch26.chuong] nguyên văn: 'KHÁI QUÁT CHUNG Các nhóm 26.01 đến 26.17 được giới hạn cho những quặng kim loại và những tinh quặng mà chúng:' ✓. Câu trích CÓ nói đúng điều mục khẳng định: 'được giới hạn cho những quặng kim loại và những tinh quặng' ⇒ `fact` = 'la_quang_kim_loai_va_tinh_quang' = true là chép lại đúng vế của nguồn, không thêm chữ nào. Đây là ràng buộc VÀO nhóm theo DẢI 26.01–26.17 ⇒ phủ trọn nhóm 2607 (luật 4 bước: câu phải phủ cả nhóm). GHI NHẬN: vế cho phép ở (A) — 'ngay cả khi chúng không dùng để luyện kim' — không đưa vào `fact` (nằm ngoài vế 'là quặng kim loại và tinh quặng'), tránh rủi ro loại nhầm hàng hợp lệ. GHI NHẬN: nền nhà đo trước — 113/590 nhóm đã có `dieuKienVao` lấy từ chương, 48 cụm câu chương dùng chung cho nhiều nhóm (ch10 '(A) …' cho 1001–1008; ch61 5 nhóm; ch62 7 nhóm) ⇒ mẫu này đúng nghiệp lệ của nhà."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [ch26.chuong] nguyên văn: '(B) Không phải chịu các quá trình không thông thường đối với ngành công nghiệp luyện kim.' ✓ — câu trích CÓ nói đúng điều mục khẳng định. `fact` = 'khong_phai_qua_trinh_khong_thong_thuong_doi_voi_nganh_cong_nghiep_luyen_kim' với `value` = true đọc ĐÚNG CHIỀU: 'không phải X' = true ⇒ hàng KHÔNG đã qua quá trình không thông thường (không phải đảo). Nền nhà đo trước: 46 mục có `fact` bắt đầu 'khong_phai_' và 46/46 đều `value` = true (0 trường hợp false) ⇒ đúng quy ước. Câu trích không dính mẫu 'câu cho phép' (ngay cả khi / vẫn được phân loại / đã hoặc chưa) nên máy không loại nhầm. KHÔNG ghép với vế (A) ở xa ⇒ không ghép hai câu xa thành một kết luận."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [tax.26070000] nguyên văn dòng ĐẦU: '26070000 Quặng chì và tinh quặng chì' ✓ — câu trích CÓ nói đúng điều mục khẳng định (`dieuKien` = 'Quặng chì và tinh quặng chì' chép đúng tên dòng biểu thuế, không rút gọn nên không mất mốc ngưỡng — bài học lô 074). Nhóm 2607 có đúng 1 dòng `tax.*` trong nguồn và đã đủ ✓ luật 6. `loaiKhac` do máy tự điền theo biểu thuế (tên dòng không bắt đầu bằng 'Loại khác' ⇒ false) ✓. Câu thừa 'Soạn sổ tay cho nhóm 2607.' ở DÒNG CUỐI tệp nguồn KHÔNG lọt vào trích ✓ (bài học lô 073)."
+  }
+ ]
+}
