@@ -57,13 +57,16 @@ r = await run({ tenHang: '86型墙壁暗装电源插座带开关五孔面板家�
 check('bảng 8536 đã duyệt ghi đè → RESOLVED_BY_TABLE 85366992', r.status === 'RESOLVED_BY_TABLE' && r.results[0]?.hs === '85366992' && r.results[0].resolverOverride?.from === '85366932', JSON.stringify([r.status, r.results.map((x) => x.hs)]));
 
 // 5. Câu trích bịa → chặn; AI vẫn bịa → sau trần vòng → NEEDS_EXPERT/NEED_FACTS, không chốt
-r = await run(KNIFE, [R1_KNIFE,
-  { decision: 'CHOT', hs: '84672900', confidence: 90, reason: 'dụng cụ có động cơ điện', basis: [{ stream: 'SAN_PHAM', claim: 'có động cơ điện', evidence: '电动机 220V' }], conditions: [], alternatives: [], questions: [] },
-  { decision: 'CHOT', hs: '84672900', confidence: 90, reason: 'dụng cụ có động cơ điện', basis: [{ stream: 'SAN_PHAM', claim: 'có động cơ điện', evidence: '电动机 220V' }], conditions: [], alternatives: [], questions: [] },
-  { decision: 'CHOT', hs: '84672900', confidence: 90, reason: 'dụng cụ có động cơ điện', basis: [{ stream: 'SAN_PHAM', claim: 'có động cơ điện', evidence: '电动机 220V' }], conditions: [], alternatives: [], questions: [] },
-]);
+const BIA = { decision: 'CHOT', hs: '84672900', confidence: 90, reason: 'dụng cụ có động cơ điện', basis: [{ stream: 'SAN_PHAM', claim: 'có động cơ điện', evidence: '电动机 220V' }], conditions: [], alternatives: [], questions: [] };
+// 5a. HS_MAX_VONG_SUA=off → trần cũ MAX_ROUNDS = 4 (hai vòng sửa).
+process.env.HS_MAX_VONG_SUA = 'off';
+r = await run(KNIFE, [R1_KNIFE, BIA, BIA, BIA]);
+delete process.env.HS_MAX_VONG_SUA;
 check('câu trích không có trong hồ sơ → chặn tới trần vòng → không CHỐT', r.status !== 'REVIEW' && r.status !== 'RESOLVED_BY_TABLE' && r.missing.some((m) => /Chưa chốt được/.test(m)) && calls.length === 4, JSON.stringify([r.status, calls.length, r.engine.gates.map((x) => x.blocks)]));
 check('nhóm 8467 chưa kiểm → máy chủ tự bổ sung chú giải cho vòng sau', /NHÓM 8467/.test(calls[2].user));
+// 5b. Mặc định (HS_MAX_VONG_SUA trống = 1 vòng sửa): dừng sau vòng 3, vẫn không CHỐT, cùng cờ GATE_BLOCKED, có ghi chú trần.
+r = await run(KNIFE, [R1_KNIFE, BIA, BIA, BIA]);
+check('mặc định 1 vòng sửa: dừng ở vòng 3, vẫn NEEDS_EXPERT/GATE_BLOCKED + "Chưa chốt được", log ghi trần', calls.length === 3 && r.status === 'NEEDS_EXPERT' && r.nextAction?.reasonCode === 'GATE_BLOCKED' && r.missing.some((m) => /Chưa chốt được/.test(m)) && r.engine.gates.some((x) => /trần vòng sửa HS_MAX_VONG_SUA=1/.test(x.note || '')), JSON.stringify([r.status, calls.length, r.engine.gates]));
 
 // 5b. Điều kiện phủ định CHƯA RÕ ("Hàng KHÔNG phải kéo…") không thành câu hỏi cho khách
 r = await run(KNIFE, [R1_KNIFE, { decision: 'CHOT', hs: '82019000', confidence: 85, reason: 'x', basis: [{ stream: 'SAN_PHAM', claim: 'hái cau', evidence: '用于摘取槟榔' }], conditions: [{ fact: 'Hàng KHÔNG phải kéo cắt cành có vòng xỏ ngón tay', status: 'UNKNOWN', evidence: '' }, { fact: 'Vận hành bằng tay, không có động cơ', status: 'UNKNOWN', evidence: '' }, { fact: 'Chiều dài cán', status: 'UNKNOWN', evidence: '' }], alternatives: [], questions: [] }]);
@@ -192,13 +195,23 @@ check('vòng 1 lỗi tạm thời → nextAction RETRY', r.nextAction?.type === 
   let cap1 = null; let cap2 = null;
   llmTier.callLLMJson = async (system, user, opts = {}) => { if (system.startsWith('VÒNG 1')) cap1 = opts.maxTokens; else cap2 = opts.maxTokens; return saved(system, user, opts); };
   const CHOT = { decision: 'CHOT', hs: '82019000', confidence: 88, reason: 'dụng cụ cầm tay nông nghiệp, cơ-tay', gir: 'GIR 1', basis: [{ stream: 'SAN_PHAM', claim: 'dùng hái cau', evidence: '用于摘取槟榔' }, { stream: 'CHU_GIAI', claim: 'nhóm 8201 gồm dụng cụ cầm tay nông nghiệp', ref: '8201' }], conditions: [], alternatives: [], questions: [] };
+  // HS_GON_DAU_RA=off → trần cũ 12000/20000 (y như trước 26/10/2026).
+  process.env.HS_GON_DAU_RA = 'off';
   await run(KNIFE, [R1_KNIFE, CHOT]);
-  check('R1_MAX_TOKENS: mặc định 12000', cap1 === 12000, String(cap1));
+  check('R1_MAX_TOKENS: mặc định 12000 (HS_GON_DAU_RA=off)', cap1 === 12000 && cap2 === 20000, JSON.stringify([cap1, cap2]));
   process.env.R1_MAX_TOKENS = '6000';
   await run(KNIFE, [R1_KNIFE, CHOT]);
   delete process.env.R1_MAX_TOKENS;
-  llmTier.callLLMJson = saved;
   check('R1_MAX_TOKENS=6000 hạ trần vòng 1, vòng 2 giữ nguyên', cap1 === 6000 && cap2 === 20000, JSON.stringify([cap1, cap2]));
+  delete process.env.HS_GON_DAU_RA;
+  // Mặc định (HS_GON_DAU_RA bật): 6000/10000; env tường minh vẫn thắng.
+  await run(KNIFE, [R1_KNIFE, CHOT]);
+  check('HS_GON_DAU_RA mặc định: trần R1 6000 / R2 10000', cap1 === 6000 && cap2 === 10000, JSON.stringify([cap1, cap2]));
+  process.env.R1_MAX_TOKENS = '9000'; process.env.GIR_MAX_TOKENS = '15000';
+  await run(KNIFE, [R1_KNIFE, CHOT]);
+  delete process.env.R1_MAX_TOKENS; delete process.env.GIR_MAX_TOKENS;
+  llmTier.callLLMJson = saved;
+  check('HS_GON_DAU_RA bật + R1_MAX_TOKENS/GIR_MAX_TOKENS tường minh → env thắng', cap1 === 9000 && cap2 === 15000, JSON.stringify([cap1, cap2]));
 }
 
 // ── Sổ tay (chế độ CỐ VẤN, #196/bước 3): đính vào phản hồi, KHÔNG đổi mã/trạng thái/cờ/lượt gọi AI ──
