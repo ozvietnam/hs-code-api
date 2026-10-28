@@ -41,11 +41,12 @@ const path = require('path');
  */
 function ghiMissSoHieu(danhSach) {
   try {
-    const path_ = require('path');
     const fs_ = require('fs');
-    const f = path_.join(process.cwd(), 'data', 'legal-status-miss.jsonl');
+    const { dataPath } = require('../lib/data-paths');
+    // dataPath(): tôn trọng HS_DATA_DIR — prod ghi vào volume /data (bền qua deploy),
+    // không phải /app/data trong ảnh (bị thay mỗi lần deploy).
     const line = JSON.stringify({ ts: new Date().toISOString(), soHieu: danhSach }) + '\n';
-    fs_.appendFileSync(f, line);
+    fs_.appendFileSync(dataPath('legal-status-miss.jsonl'), line);
   } catch { /* không bao giờ làm hỏng request vì ghi log */ }
 }
 
