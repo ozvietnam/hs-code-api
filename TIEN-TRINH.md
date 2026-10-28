@@ -10692,3 +10692,180 @@ Bộ sinh:
 4. **`sangNhom`/`neuCo`/`neuKhong` không nhận mã 6 số** ⇒ câu hỏi phân biệt **trong cùng nhóm** (2523.21 ↔ 2523.29) phải dùng mã **8 số** — làm nghẩn đọc nhưng đúng luật máy.
 5. **Chú giải phân nhóm 2523.21/2523.29 nằm chung khối `nhom2523.nhom`** ⇒ không có nguồn riêng cấp 6 số (`sen.*` không có) ⇒ tiêu chí 6 số cho 2523.29 chỉ có thể trích từ chú giải phân nhóm trong khối nhóm.
 6. **`tieuChi6` CHƯA được runtime dùng** — `soTayBlock` (`lib/so-tay-gates.js:127`) chỉ đưa vào gói vòng 2: `phamVi` · `dieuKienVao` · `loaiTru` · `dong8` · `phanBiet` · `boPhan` ⇒ **14 tiêu chí 6 số của lô này (kể cả ngưỡng 20 % của 2522.30) chưa tới prompt**; cổng chấm điều kiện số chạy trên `dong8[].dieuKienSo`, mà lô này không mã hoá (vì ngưỡng chỉ có ở chú giải nhóm, không có trong dòng biểu thuê). Lưu ý cho người duyệt: đừng kỳ vọng 6 nhóm này đã "nói chuyện" được với mô hình ở vòng 2.
+
+# LÔ 073 — SOÁT ĐỘC LẬP — 2518 2519 2520 2521 2522 2523
+
+> Phiên soát: `dev-soat-doc-lap-lo073` — **KHÁC** người soạn (`dev-zcode-mm`). Nhánh `so-tay/lo-073`, **PR #514**.
+> **KHÔNG merge** (chờ người duyệt — theo `SOAT-LO.md`, người soát KHÔNG gộp PR và KHÔNG tự cập nhật CSV).
+> Hồ sơ: `review/{2518,2519,2520,2521,2522,2523}.json` (một dòng cho **mọi** mục, kể cả mục GIỮ) ·
+> script áp 2 pha: `scripts/apply-review-lo073.mjs` ·
+> script sinh hồ sơ: `tmp/lo073-soat/tao-review-073.mjs` — **câu trích cắt byte-exact từ tệp nguồn** bằng neo
+> (anchor) ngắn, tự kiểm mỗi mảnh có nguyên văn trong đúng khối nguồn khai, và **báo độ dài** theo trần
+> clip runtime (`phamVi.text` 220 · `loaiTru.dieuKien` 55 · `phanBiet.hoi` 110 · `trich` 300 của luật 2).
+
+## 0. Sai lệch brief — đã xử lý TRƯỚC khi soát
+
+1. **Worktree**: brief ghi `hs-code-api-wt-st-lo73`; thực tế là `hs-code-api-wt-st-lo073` (thêm "0") ⇒ dùng
+   thư mục có "073" ✓.
+2. `SOAT-LO.md` + `LUAT-CHUNG.md` **có** trong nhánh này (đã tách ở PR #509) ⇒ đọc trực tiếp ✓.
+3. Nhóm `2518 2519 2520 2521 2522 2523` khớp CSV lô 073 ✓.
+
+## 1. Nền nhà đã ĐO trước khi kết luận (để không sửa theo cảm tính)
+
+| # | Phép đo | Kết quả | Hệ quả cho lô 073 |
+|---|---|---|---|
+| 1 | `phanBiet` có **"không phải"** trong `hoi` mà `neuCo` = nhóm của **vế phủ định** | 60 mẫu, **0** mẫu sai (cả 60 đặt `neuCo` = nhóm của **vế khẳng định**) | 2521 `phanBiet[0]` đặt NGƯỢC ⇒ **sửa** (mục 3.7) |
+| 2 | `loaiTru` có **ngưỡng số** trong trích mà `dieuKien` **không** mang số | 3/24 (12,5 %) ⇒ 21/24 (87,5 %) **mang theo** | 2519 `loaiTru[1]` bỏ mất "2,5g" ⇒ ngoại lệ ⇒ **sửa** (mục 3.4) |
+| 3 | `loaiTru` có câu **đảo chiều** về nhóm ("lại/vẫn … được xếp vào nhóm này") mà `dieuKien` không mang ngoại lệ | 5 mẫu toàn kho (chỉ 1 giữ ngoại lệ) | 2523 `loaiTru[2]` mất câu "Tuy nhiên, xỉ đã nghiền trộn … lại được xếp vào nhóm này" ⇒ **sửa** (mục 3.8) |
+| 4 | `tieuChi6` có **định ngữ giới hạn** ("thường …") trong trích mà vẫn mã hoá thành ngưỡng cứng | 2.566 mục, **chỉ 5 câu trích thật sự có định ngữ** (các câu khác là báo động giả) — và cả 5 đều mã hoá cứng | 2522 `tieuChi6[2]` là **ngoại lệ duy nhất** của cả kho ⇒ **xoá** (mục 3.9) |
+| 5 | `loaiTru.dieuKien` chỉ **1 từ** (cổng loại trừ không bắn được vì `headPhrases` cần ≥ 2 âm tiết) | 10/2.734 (0,4 %) — vd "Casein"→3501, "Nến"→3406 | 2521 mục chèn "Dolomite" → 2518 ⇒ **trong nền nhà** ⇒ giữ (mục 4.1) |
+| 6 | `phanBiet` **không** phủ hết dòng 8 số của nhóm | 1.073/1.108 (96,8 %) | 2523 `phanBiet[1]` không phủ 2523.30/2523.90 ⇒ **mẫu nhà** ⇒ giữ |
+| 7 | `phamVi.text` > 220 (trần clip runtime) | 120/586 (20,5 %) | 6 `phamVi.text` sửa của lô này đều **≤ 220** ⇒ không bị cắt |
+| 8 | `phamVi.text` có từ **không có trong `phamVi.trich`** | 124/586 (21,2 %) | 2522 `text` có "kết hợp với nước" (cùng câu nguồn, bị lược) ⇒ **trong nền nhà** ⇒ giữ, ghi nhận |
+
+## 2. Kết quả: **15 sửa · 1 xoá · 2 chèn** (mục soát: **63/63** → 64 sau soát)
+
+| Nhóm | Mục đã soi | Giữ | Sửa | Xoá | Chèn | Mục đổi `nguonLoai` → `NGUOI_DUYET` |
+|---|---|---|---|---|---|---|
+| 2518 | 8 | 5 | **3** | 0 | 0 | 4 (phamVi + 2 loaiTru + 1 phanBiet) |
+| 2519 | 10 | 6 | **4** | 0 | 0 | 5 (phamVi + 2 loaiTru + 2 phanBiet) |
+| 2520 | 8 | 7 | **1** | 0 | 0 | 3 (phamVi + 1 loaiTru + 1 phanBiet) |
+| 2521 | 5 | 3 | **2** | 0 | **2** | 6 (phamVi + 3 loaiTru + 1 phanBiet) |
+| 2522 | 9 | 7 | **1** | **1** | 0 | 3 (phamVi + 1 loaiTru + 1 phanBiet) |
+| 2523 | 23 | 19 | **4** | 0 | 0 | 10 (phamVi + 7 loaiTru + 2 phanBiet) |
+| **TỔNG** | **63** | **47** | **15** | **1** | **2** | **31** |
+
+Sau soát: **64/64 mục = 100 %** (`tyLeDat: 100`, `nhomLoi: []`).
+`tieuChi6`/`dong8`/`cay` giữ `AI_DA_KIEM` (luật 11 — chỉ 5 khối văn xuôi đã soi mới đổi).
+
+## 3. Mười lăm sửa + một xoá + hai chèn — đều là lớp lỗi máy KHÔNG bắt
+
+### 3.1. 2518 `phamVi` — bỏ sót thành viên "dolomite đã đẽo thô hoặc chỉ cắt"
+Dấu lược "…" của trích cũ ăn mất câu *"Nhóm này cũng bao gồm cả dạng dolomite đã đẽo thô hoặc chỉ cắt, bằng
+cách cưa … thành các khối hoặc tấm hình chữ nhật (kể cả hình vuông)"* ⇒ **phạm vi nhóm hẹp lại**, mất đúng
+đặc điểm phân biệt 25.18 với 25.17 (WCO 251810/251820: *"including dolomite roughly trimmed, or merely cut
+by sawing"*; ch25.chuong xác nhận 25.18 thuộc nhóm *"mới chỉ được đẽo thô hoặc mới chỉ cắt"*).
+
+### 3.2. 2518 `loaiTru[0]` — bỏ nhánh "hoặc đá rải đường tàu"
+Nguồn loại trừ *"dolomite nghiền để làm cốt bê tông, lớp đá dăm trải đường **hoặc đá rải đường tàu**
+(nhóm 25.17)"*; `dieuKien` chỉ giữ 2/3 ⇒ dolomite nghiền làm ballast đường sắt bị xếp nhầm 25.18.
+
+### 3.3. 2518 `phanBiet[0]` — câu hỏi bỏ cùng nhánh đó
+Tờ khai "dolomite nghiền làm ballast" trả lời "không" cho câu hỏi ⇒ rơi vào `neuKhong=2518` (sai, phải 25.17).
+Rút gọn "hỗn hợp dolomite ramming" → "hỗn hợp ramming" để còn 104 ≤ 110 (trần clip runtime của `hoi`).
+
+### 3.4. 2519 `phamVi` — lược mất "Bazơ magiê carbonate"
+Câu nguồn liệt kê 3 thành viên: *"các loại magiê (magiê oxit) thu được từ magiê carbonate tự nhiên, **Bazơ
+magiê carbonate**, magiê hydroxide được kết tủa từ nước biển"*; trích cũ lược "…" ở đúng chỗ đó.
+
+### 3.5. 2519 `loaiTru[1]` — mất ngưỡng "2,5g" ⇒ loại trừ thành TUYỆT ĐỐI
+Nguồn: *"trọng lượng **không ít hơn 2,5g mỗi tinh thể**"*; `dieuKien` cũ không có số ⇒ tinh thể magiê oxit 1 g
+(dưới ngưỡng, vẫn thuộc 25.19) cũng bị loại sang 38.24. Sửa theo đúng mẫu nhà 2501 `loaiTru[2]`
+(*"Tinh thể natri clorua nuôi cấy, mỗi tinh thể ≥ 2,5g"*, lô 070).
+
+### 3.6. 2519 `phanBiet[1]` — cùng lớp lỗi mất ngưỡng
+Câu hỏi phân biệt không nêu "2,5g" ⇒ tinh thể dưới ngưỡng vẫn bị dẫn sang 38.24.
+
+### 3.7. 2519 `tieuChi6[1].trich` — dấu lược nuốt thành viên
+Trích cũ *"… thu được từ magiê carbonate tự nhiên, **…** magiê hydroxide…"* lược mất "Bazơ magiê carbonate"
+và đẩy thêm "magiê hydroxide" vào mảnh mà `fact` không nói ⇒ thay bằng **đúng câu nguồn, không lược**.
+
+### 3.8. 2520 `phamVi` — bỏ sót "Thạch cao khan"
+Dấu lược nuốt *"Thạch cao khan là dạng canxi sulphate khan tự nhiên…"* — thành viên có thật (dòng 25201000
+"Thạch cao; thạch cao khan", WCO 252010 *"Gypsum; anhydrite"*).
+
+### 3.9. 2521 `loaiTru[1]` — bỏ nhánh "đường sắt hoặc đá ballast"
+Nguồn loại trừ *"đá đã vỡ hoặc nghiền làm cốt bê tông, rải đường bộ **hay đường sắt hoặc đá ballast**
+(nhóm 25.17)"*; `dieuKien` cũ chỉ giữ *"rải đường"* ⇒ đá ballast đường sắt bị xếp nhầm 25.21.
+
+### 3.10. 2521 `phanBiet[0]` — **ĐẢO CHIỀU Có/Không** (lớp lỗi nặng nhất của lô)
+Câu hỏi *"Đá dùng để sản xuất đá vôi hoặc xi măng, **không phải** đá cho xây dựng hoặc làm tượng đài?"* —
+vế khẳng định là 25.21, vế phủ định là 25.15/25.16; mục cũ đặt `neuCo=2515|2516` ⇒ "Có" đúng nghĩa
+("đúng là chất gây chảy gốc đá vôi") lại dẫn sang 25.15/25.16. Sửa: `neuCo=2521`, `neuKhong=2515|2516`.
+Nền nhà đồng nhất 60/60 mẫu có "không phải" đều đặt `neuCo` = nhóm của vế khẳng định.
+
+### 3.11. 2521 `loaiTru[2]` + `loaiTru[3]` — CHÈN 2 mục loại trừ
+Câu nguồn *"Dolomite xếp vào nhóm 25.18 và đá phấn xếp vào nhóm 25.09"* bị dấu lược của `phamVi` nuốt ⇒
+tờ khai "dolomite" / "đá phấn" rơi vào 25.21 không được nhắc. Mẫu nhà dùng đúng dạng này làm loại trừ:
+2515 `loaiTru[5]`, 2516 `loaiTru[0]`, 2517 `loaiTru[2]`.
+
+### 3.12. 2522 `phamVi` — bỏ sót "Vôi thủy lực"
+Nhóm có 3 dòng biểu thuế (vôi sống / vôi tôi / **vôi thủy lực**) nhưng `phamVi` chỉ nêu 2 ⇒ phạm vi hẹp lại.
+
+### 3.13. 2522 `tieuChi6[2]` — **XOÁ** (mục mờ má)
+Nguồn: *"đá vôi có chứa đất sét (**dù tỉ lệ thường nhỏ hơn 20 %**)"* — có **định ngữ giới hạn** ⇒ mã hoá thành
+ngưỡng cứng `ti_le_dat_set <= 20 %` là **nói chắc hơn nguồn** (đúng lớp lỗi SOAT-LO: *"thường…"*).
+Lược đồ `tieuChi6` không có chỗ mang định ngữ, và tỉ lệ đất sét **không phải** tiêu chí phân loại của nhóm
+(2522.10/20/30 phân biệt bằng LOẠI vôi) ⇒ xoá mục có cấu trúc; **câu nguồn kèm định ngữ vẫn giữ nguyên** trong
+`phamVi.trich` (mục 3.12). Người soạn đã tự ghi nhận điểm này ở `TIEN-TRINH.md` mục 6.1 của lô 073.
+
+### 3.14. 2523 `phamVi` — bỏ sót 2 phân nhóm 6 số
+Nguồn: *"Nhóm này cũng bao gồm xi măng nhôm ôxit, xi măng xỉ, xi măng super sulphat (…), xi măng puzolan,
+xi măng Roman, … và các hỗn hợp…"* ⇒ 2523.30 (xi măng nhôm) và 2523.90 (xi măng thủy lực khác) CÓ trong nhóm
+nhưng `phamVi` chỉ nêu xi măng poóc lăng + clinker.
+
+### 3.15. 2523 `loaiTru[1]` — bỏ nhánh "và các loại tương tự"
+Nguồn loại trừ *"đất puzolan, đất santorine **và các loại tương tự**, đôi khi còn được gọi là xi măng tự nhiên
+(nhóm 25.30)"* ⇒ đất tương tự puzolan bị xếp nhầm 25.23.
+
+### 3.16. 2523 `loaiTru[2]` — MẤT NGOẠI LỆ ⇒ loại trừ thành TUYỆT ĐỐI
+Nguồn: *"(a) Xỉ lò cao đã nghiền mịn cần bổ sung thêm một lượng nhỏ chất tăng tốc đông cứng ở thời điểm chế tạo
+(nhóm 26.19); **Tuy nhiên, xỉ đã nghiền trộn với chất tăng tốc đông cứng sẵn sàng cho việc sử dụng, lại được
+xếp vào nhóm này**."*; `dieuKien` cũ chỉ giữ vế loại trừ ⇒ **đúng cái mặt hàng tờ khai thật sự mô tả** (xỉ đã
+trộn sẵn chất tăng tốc) bị đẩy sang 26.19. Sửa kèm luôn định ngữ giới hạn *"một lượng nhỏ"* mà bản cũ đã vứt.
+Giữ nguyên các từ đầu để **không** đổi tập mảnh khớp của cổng loại trừ (đo `headPhrases()` thật trước/sau).
+
+### 3.17. 2523 `tieuChi6[4].trich` — `fact` nói về "hỗn hợp" mà câu trích cắt mất vế đó
+Trích cũ dừng ở dấu "..." của chính nguồn nên mất *"và các hỗn hợp của các loại xi măng đã nêu ở trên"*,
+trong khi `fact` có `va_hon_hop` ⇒ kéo trích đủ vế cuối.
+
+## 4. Ghi nhận (KHÔNG sửa — đã đo, để người duyệt quyết)
+
+1. **2521 mục chèn "Dolomite" → 2518**: `dieuKien` một từ ⇒ `headPhrases()` rỗng ⇒ **cổng SO_TAY_LOAI_TRU không
+   bắn được** với mục này (giới hạn chung của nhà: 10/2.734 `loaiTru` có `dieuKien` một từ — "Casein"→3501,
+   "Nến"→3406). Mục vẫn có mặt trong dòng "LOẠI TRỪ" của gói sổ tay lúc chạy.
+2. **2523 `tieuChi6[4]`** (`fact` chưa nêu "xi măng xỉ"): nguồn **không** gán phân nhóm cho từng loại xi măng,
+   mà 2523.30 theo biểu thuế chỉ là "Xi măng nhôm" ⇒ suy ra vị trí "xi măng xỉ" là **hiểu biết riêng** ⇒ không ghi.
+3. **2522 `phamVi.text`** có "kết hợp với nước" — thuộc cùng câu nguồn nhưng bị dấu lược bỏ ⇒ nền nhà 21,2 %
+   `phamVi.text` cũng vậy ⇒ giữ.
+4. **Cảnh báo `check-cay`** "phan-nhom-chua-co-tieu-chi:252230" (do mục 3.13 xoá) là **CẢNH BÁO, không làm đỏ
+   CI** (`check-cay.mjs` đặt exit code theo `loi`, mà `loi = 0`; nền nhà đã có 1.182 cảnh báo cùng loại).
+
+## 5. Đối chiếu chéo (agent thứ hai) — 1 đề xuất được chấp nhận, 4 đề xuất bị bác
+
+Một agent độc lập đọc lại 64 mục cùng nguồn và báo 6 lỗi còn sót + 3 chỗ sửa quá đà. Người soát **đã tự kiểm
+lại từng điểm** (không bác theo cảm tính):
+
+| Đề xuất | Kết luận | Căn cứ |
+|---|---|---|
+| 2521 `phanBiet[0]` đảo chiều Có/Không | **CHẤP NHẬN** → sửa (3.10) | nền nhà 60/60 mẫu có "không phải" đều đặt `neuCo` = vế khẳng định |
+| 2518 `phanBiet[0].hoi` thiếu "đá rải đường tàu" | **CHẤP NHẬN** → sửa (3.3) | cùng lớp lỗi với 3.2 |
+| "Khôi phục `2522.tieuChi6[2]`" | **BÁC** | agent mô tả sai nội dung mục (thực tế là `op="<=" value=20 donVi="%"` — ngưỡng cứng, không phải boolean); CI không đỏ vì `check-cay` chỉ đỏ khi `loi` |
+| "Sửa 2523 `loaiTru[2]` vì đổi `headPhrases`" | **BÁC** | đo lại bằng `headPhrases()` thật: trước và sau đều `[["xỉ","lò","cao","nghền"]]` — **không đổi** |
+| "Bỏ 2 mục `loaiTru` chèn của 2521" | **BÁC** | nguồn nêu đích danh (25.18, 25.09); mẫu nhà 2515/2516/2517 dùng đúng dạng này; `dieuKien` một từ là mẫu nhà (0,4 %) |
+| "Bỏ cụm 'mỗi tinh thể' ở 2519 `loaiTru[1]`" | **BÁC** | mẫu nhà 2501 `loaiTru[2]` dùng đúng *"mỗi tinh thể ≥ 2,5g"*; bỏ thì mất nghĩa "ngưỡng tính trên TỪNG tinh thể" |
+
+## 6. Kiểm sau khi áp
+
+| Lệnh | Kết quả |
+|---|---|
+| `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` | **6 nhóm, 64/64 mục, 0 mục không kiểm được nguồn** |
+| `node scripts/check-trich-nguyen-van.mjs` (bản nháp) | **OK — 63 mục**, mọi câu trích **nguyên văn tuyệt đối** trong đúng khối nguồn |
+| `node scripts/build-so-tay.mjs … --tu-tep --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-073.json` | **64/64 (100 %)**, `nhomLoi: []` |
+| `node scripts/check-cay.mjs --nhom=2518,…,2523 --chi-tiet` | 0 lỗi lệch cây · 5/6 nhóm "đủ" (2522 còn trống `tieuChi6` 2522.30 — xem mục 3.13) |
+| `npm run so-tay:check` | **590 nhóm, 15.310 mục, 0 mục không kiểm được nguồn** |
+| `npm test` | **ALL TESTS PASSED** |
+
+## 7. Còn mở cho người duyệt (ngoài phạm vi lô dữ liệu — không tự sửa `lib/`)
+
+1. **`loaiTru.dieuKien` quá 55 ký tự** (trần clip runtime) — 2523 `loaiTru[2]` nay dài 152 ký tự để giữ đủ ngoại lệ
+   + định ngữ giới hạn. Nền nhà: 45 % `loaiTru.dieuKien` đã tràn ⇒ trần clip **không phải luật nhà**; nhưng phần
+   bị cắt không được mất **kết luận** của luật. Cổng `SO_TAY_LOAI_TRU` và `canGiaiTrinh` (clip 240) vẫn thấy
+   đủ; chỉ dòng "LOẠI TRỪ" trong gói vòng 2 bị cắt.
+2. **Ngưỡng đơn vị "%" không đọc được số** — `SO_DON_VI_RE` kết thúc bằng `\b` **sau** `"%"` ⇒ mọi tiêu chí
+   `donVi: "%"` không chấm được (55 mục toàn kho; đã ghi ở PR #499 mục 7.4). Lô này **xoá** hẳn tiêu chí có
+   ngưỡng "%" (mục 3.13) ⇒ không còn mục chết âm thầm nào của lô này.
+3. **`tieuChi6` CHƯA được runtime dùng** — `soTayBlock` chỉ đưa `phamVi` · `dieuKienVao` · `loaiTru` · `dong8` ·
+   `phanBiet` · `boPhan` ⇒ 13 tiêu chí 6 số của lô này chưa tới prompt.
+4. **`sangNhom`/`neuCo`/`neuKhong` không nhận mã 6 số** ⇒ câu hỏi phân biệt trong cùng nhóm (2523.21 ↔
+   2523.29) phải dùng mã 8 số — nghẩn đọc nhưng đúng luật máy.
