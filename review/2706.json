@@ -1,0 +1,36 @@
+{
+ "nhom": "2706",
+ "nguoiSoat": "dev-soat-doc-lap-lo079",
+ "luc": "2026-10-29T04:45:00+07:00",
+ "phamViSoat": "Toàn bộ 4 mục của nhóm 2706 (1 phamVi + 1 loaiTru + 1 phanBiet + 1 dong8), đọc cùng tmp/so-tay/nguon/2706.txt (nhom2706.nhom, ch27.chuong, wco.270600, tax.27060000). Đối chiếu BYTE-EXACT từng đoạn trích với đúng khối nguồn; thêm kiểm mọi âm tiết trong `text`/`dieuKien`/`hoi` phải có nguyên văn trong câu trích của chính mục.",
+ "soat": 4,
+ "giu": 3,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "XOÁ 0 · SỬA 1 · GIỮ 3/4. SỬA 1: `phamVi.text` đổi dấu phẩy thành 'hoặc' ở vế cuối — bản nháp ghi 'hắc ín chưng cất từng phần, đã khử nước và hắc ín tái chế' trong khi nguồn ghi 'đã chưng cất từng phần HOẶC đã khử nước' ⇒ dấu phẩy biến điều kiện 'HOẶC' thành yêu cầu cả hai vế (phạm vi HẸP lại, sai nghĩa so với nguồn). GHI NHẬN: (1) `phamVi.trich` dài 451 ký tự (>300) nhưng dưới trần 600 của máy; nền nhà: 138/622 `phamVi` vượt 300 ⇒ chấp nhận được. (2) Lỗi chính tả nguồn 'chưng cất titan' (đáng lẽ 'titan' là 'than đá'/'hắc ín') được GIỮ NGUYÊN trong `trich` (luật 8) và KHÔNG đưa vào `phamVi.text` — xử lý đúng. (3) Đoạn bị lược giữa (1) và (2) nuốt 'Các loại hắc ín tương tự như các loại đã xếp ở điểm (1) trên, nhưng lại có một tỷ lệ lớn hơn các hợp chất béo, hợp chất naphthenic và phenolic' — là MÔ TẢ loại (2), không phải ngoại lệ ⇒ hợp lệ. (4) `dieuKienVao` rỗng là ĐÚNG: không có câu ràng buộc nào phủ CẢ nhóm.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `phamVi.text` ĐỔI NGHĨA điều kiện. Nguồn [nhom2706.nhom] nguyên văn: 'Nhóm này cũng bao gồm các loại hắc ín đã chưng cất từng phần hoặc đã khử nước và hắc ín tái chế' — vế 'HOẶC' (chưng cất từng phần HOẶC khử nước, tức chỉ cần một trong hai). Bản nháp ghi 'hắc ín chưng cất từng phần, đã khử nước và hắc ín tái chế' — dấu phẩy biến thành 'chưng cất từng phần VÀ đã khử nước' (yêu cầu cả hai) ⇒ phạm vi nhóm HẸP hơn nguồn. Sửa: thay dấu phẩy bằng 'hoặc' và thêm 'đã' (nguyên văn nguồn: 'đã chưng cất từng phần'). `trich` GIỮ NGUYÊN (đã byte-exact, đã giữ cả lỗi chính tả nguồn 'chưng cất titan'). KHÔNG sửa mã, KHÔNG sửa câu nguồn.",
+   "sua": {
+    "text": "Hắc ín chưng cất ở nhiệt độ cao, phần lớn là thành phần thơm … hắc ín chưng cất than non, than bùn hoặc than đá ở nhiệt độ thấp … hắc ín khoáng khác … hắc ín đã chưng cất từng phần hoặc đã khử nước và hắc ín tái chế."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [nhom2706.nhom] nguyên văn trọn câu: 'Nhóm này không bao gồm các loại hắc ín được tách chiết từ các nguồn phi khoáng, như hắc ín từ gỗ (nhóm 38.07).' — DẤU HIỆU LOẠI TRỪ + đích danh 38.07 + số nhóm trong câu trích ⇒ hợp lệ luật 3."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi 'Hàng là hắc ín được tách chiết từ nguồn phi khoáng (như hắc ín từ gỗ) không?' (không nhắc mã ✓); nhánh CÓ → '3807' (đích danh trong câu trích), KHÔNG → '2706' (chính nhóm) ✓; không đảo chiều Có/Không."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 27060000: trích nguyên văn [tax.27060000] '27060000 Hắc ín chưng cất từ than đá, than non hoặc than bùn, và các loại hắc ín khoáng chất khác, đã hoặc chưa khử nước hoặc chưng cất từng phần, kể cả hắc ín tái chế' ✓; `dieuKien` = đúng tên biểu thuế, không thêm từ nào."
+  }
+ ]
+}

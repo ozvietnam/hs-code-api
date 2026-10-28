@@ -11284,3 +11284,146 @@ Cấu trúc lô: `phamVi` 6 · `dieuKienVao` 1 · `loaiTru` 5 · `phanBiet` 8 ·
 4. **`dieuKienSo` không dùng trong lô này** — cổng `SO_TAY_NGUONG` đọc số theo TÊN `fact` (memory lô 076: `fact` chứa "trong_luong" ⇒ cổng đọc nhầm đơn vị); các ngưỡng % của lô này (50 %, 65 %) không thuộc bộ đọc số đã đăng ký ⇒ điền vào sẽ bị cổng đọc sai đơn vị.
 5. **`dieuKienVao` rỗng ở 2704/2705/2706/2707/2708** — không có câu ràng buộc nào phủ cả nhóm (mẫu nhà lô 078: 2619/2702/2703 cũng rỗng).
 6. **`phamVi.trich` của 2706/2707/2709 vượt 300 ký tự** — do nhóm có phần ngang hàng; nếu người duyệt đòi ≤ 300 thì phải hy sinh một phần (em chọn giữ đủ phần).
+
+---
+
+# LÔ 079 — SOÁT ĐỘC LẬP — 2704 2705 2706 2707 2708 2709 (29/10/2026, phiên `dev-soat-doc-lap-lo079`)
+
+> Phiên soát: `dev-soat-doc-lap-lo079` — **KHÁC** người soạn (`dev-zcode-mm`). Nhánh `so-tay/lo-079`, **PR #520**.
+> **KHÔNG merge** (theo `SOAT-LO.md`: người soát KHÔNG gộp PR và KHÔNG tự cập nhật CSV).
+> Hồ sơ: `review/{2704,2705,2706,2707,2708,2709}.json` (một dòng cho **mọi** mục, kể cả mục GIỮ) ·
+> script áp 2 pha: `scripts/apply-review-lo079.mjs` (chép từ bản lô 076) ·
+> script đối chiếu byte-exact CÓ SẴN trong repo: `scripts/check-trich-nguyen-van.mjs` (so thẳng từng đoạn ngăn bởi "…") ·
+> script đo nền nhà + kiểm "mọi âm tiết trong `text` có trong câu trích" (tạm, không commit): `tmp/soat-lo079/check-fix.mjs`.
+
+## 0. Sai lệch brief — đã xử lý TRƯỚC khi soát
+
+1. **Worktree**: brief ghi `hs-code-api-wt-st-lo79`; thực tế là `hs-code-api-wt-st-lo079` (thêm "0") ⇒ dùng
+   thư mục có "079" ✓.
+2. Brief soát ghi "đọc LẠI TOÀN BỘ `phamVi`, `boPhan`, `dieuKienVao`, `loaiTru`, `phanBiet`" — không nói
+   `tieuChi6`/`dong8`/`cay.tenDien`. Tôi soát THÊM 24 mục đó (5 `tieuChi6` + 18 `dong8` + 1 `cay.tenDien`) để
+   trả lời trọn vẹn 44 mục, nhưng theo luật 11 **chỉ** 5 khối văn xuôi đã soi mới được đổi `nguonLoai` ⇒
+   `tieuChi6`/`dong8`/`cay.tenDien` giữ `AI_DA_KIEM`.
+3. Nhóm `2704 2705 2706 2707 2708 2709` khớp CSV lô 079 (`docs/giao-viec/so-tay-lo.csv` dòng 079) ✓.
+
+## 1. Nền nhà ĐÃ ĐO trước khi kết luận (để không sửa theo cảm tính)
+
+| # | Phép đo | Kết quả | Hệ quả cho lô 079 |
+|---|---|---|---|
+| 1 | `phamVi.trich` vượt 300 ký tự | **138/622 (22,2 %)** `phamVi`; toàn kho **299/14.602 (2,0 %)** | 2706 = 451 · 2707 = 574 · 2708 = 381 · 2709 = 493 sau sửa ⇒ **trong nền nhà**, không phải lỗi mới (máy chỉ chặn > 600) |
+| 2 | `loaiTru.dieuKien` vượt 55 (trần clip runtime) | **1.211/2.778 (43,6 %)** | 2707 `loaiTru[0]` = 80 ký tự ⇒ **nền nhà**, giữ nguyên (cổng `SO_TAY_LOAI_TRU` khớp trên chuỗi đầy đủ) |
+| 3 | `dong8.dieuKien` vượt 90 | **3.320/6.809 (48,8 %)** | 2706 `dong8[0]` = 158 ⇒ nền nhà; các sửa của tôi đều **≤ 90** nên không bị cắt thêm |
+| 4 | `dieuKienVao` boolean: fact khẳng định + `value:false` | **87/745** (fact âm + `value:false` chỉ 8/745 ⇒ luật lô 066) | 2709 `dieuKienVao[0]` (fact khẳng định + `false`) **đúng chiều** ⇒ giữ |
+| 5 | `phanBiet` nhánh "không" = chính nhóm | **863/1.089 (79,2 %)**; nhánh dùng mã 8 số **205/1.089** | 2707 `phanBiet[0]` (neuKhong = 2707) · 2708 `phanBiet[0]` (neuCo/neuKhong = 27082000/27081000) · 2709 `phanBiet[0]` (neuCo = 27090020) ⇒ hợp lệ |
+| 6 | `cay.tenDien` đặt tên "Loại khác" | **3 nút** trong kho | 2707 `cay.tenDien[0]` (270799) lấy từ chính dòng nguồn ⇒ hợp lệ |
+| 7 | `fact` có dấu | **0/2.518** (luật lô 069) | `fact` của lô 079 là slug ASCII ⇒ không áp gác soát từ |
+| 8 | `phamVi.text` dùng liên từ ngoài câu trích | "và" thiếu 46/435 · "hoặc" thiếu 14/438 · "hay" thiếu 3/41 | Liên từ nối là **khuôn nhà** ⇒ không tính lỗi "thêm chữ" |
+| 9 | Câu trích `phamVi` **dừng trước ngoại lệ** | `scan-so-tay-soat.mjs` chỉ soi câu sau **mảnh ĐẦU TIÊN** ⇒ **không** bắt được trường hợp dừng trước ngoại lệ ở **mảnh CUỐI** | Đây chính là lỗi 2707 em sửa ⇒ **đề xuất luật máy** ở mục 4 |
+
+## 2. Kết quả: **7 sửa · 0 xoá** (mục soát: **44/44**)
+
+| Nhóm | Mục đã soi | Giữ | Sửa | Xoá | Mục đổi `nguonLoai` → `NGUOI_DUYET` |
+|---|---|---|---|---|---|
+| 2704 | 8 | 8 | 0 | 0 | 5 (phamVi + 2 loaiTru + 2 phanBiet) |
+| 2705 | 4 | 4 | 0 | 0 | 3 (phamVi + loaiTru + phanBiet) |
+| 2706 | 4 | 3 | **1** | 0 | 3 (phamVi + loaiTru + phanBiet) |
+| 2707 | 18 | 16 | **2** | 0 | 4 (phamVi + loaiTru + 2 phanBiet) |
+| 2708 | 4 | 1 | **3** | 0 | 2 (phamVi + phanBiet) |
+| 2709 | 6 | 5 | **1** | 0 | 3 (phamVi + dieuKienVao + phanBiet) |
+| **TỔNG** | **44** | **37** | **7** | **0** | **20** |
+
+Sau soát: **44/44 mục = 100 %** (`tyLeDat: 100`, `nhomLoi: []`). `tieuChi6` (5) + `dong8` (18) + `cay.tenDien` (1)
+giữ `AI_DA_KIEM` (luật 11 — chỉ 5 khối văn xuôi đã soi mới đổi; đúng như lô 061–069 · 075 · 076).
+
+**Vì sao 0 xoá?** Bản nháp của lô 079 **sạch về căn cứ**: `check-so-tay --raw` 44/44 · `check-trich-nguyen-van`
+43/43 câu trích **byte-exact tuyệt đối** · không có mục nào mơ hồ tới mức phải xoá. Lớp lỗi thật của lô này
+**KHÔNG phải** "mục mờ má" mà là **thu hẹp phạm vi** — nên em sửa 7 mục, không xoá mục nào.
+
+## 3. Bảy mục đã sửa (đều là lớp lỗi máy KHÔNG bắt)
+
+### 3.1. 2709 `phamVi` — DẤU LƯỚC NUỐT CÂU BAO HÀM + VẾ "với điều kiện là…" (lỗi nặng nhất lô)
+
+Nguồn [nhom2709.nhom]: *"Nhóm này bao gồm dầu lửa thô, và dầu thô thu được từ các khoáng chất có chứa bitum …
+dù thu được từ dạng thông thường hay dạng ngưng tụ cặn dầu hoặc bằng cách chưng cất phân hủy khoáng bitum.
+**Như vậy các loại dầu thô thu được vẫn được phân loại trong nhóm này, ngay cả khi chúng đã qua các quá trình
+sau: (1) Lắng cặn (2) Khử muối (3) Loại nước (4) Ổn định nhằm bình thường hóa áp suất hơi … (7) Bất kỳ quá
+trình thứ yếu khác nào đó, với điều kiện là quá trình này không làm thay đổi tính chất đặc trưng của sản phẩm.**"*
+
+Bản nháp lược qua **toàn bộ** khối đó ⇒ `phamVi` mô tả 2709 như chỉ gồm dầu thô **nguyên chất**; tờ khai
+*"dầu thô đã khử muối / đã ổn định"* (hàng xuất khẩu thật) bị đẩy ra khỏi 27.09. Đoạn bị lược còn chứa
+đúng mẫu câu *"với điều kiện là…"* mà luật soạn **cấm** nuốt trong dấu lược. Đây là lớp lỗi lô 069 (câu BAO HÀM
+bị bỏ ⇒ phạm vi HẸP lại), lần này rơi vào **nhóm có tầm quan trọng thực tế cao** (dầu thô đã xử lý).
+
+**Sửa**: `trich` = 9 mảnh byte-exact (493 ký tự < 600) giữ câu bao hàm + mục (1)(2)(3)(4) + mục (7) với điều
+kiện của nó; lược mục (5)(6) (chỉ là mô tả, **không** có "trừ/tuy nhiên/với điều kiện/không kể") và phần
+"dù thu được từ dạng thông thường…"; `text` = 213 ký tự (≤ trần clip 220) nêu phạm vi **và** kết luận
+*"dầu thô đã qua lắng cặn, khử muối, loại nước, ổn định, quá trình thứ yếu không làm thay đổi tính chất đặc
+trưng vẫn được phân loại trong nhóm này"*.
+
+### 3.2. 2708 `phamVi` — DẤU LƯỚC NUỐT CÂU BAO HÀM
+
+Nguồn: *"Hắc ín nhựa chưng đã được làm thay đổi chút ít bằng cách thổi không khí tương tự như nhựa không thổi
+**và vẫn được xếp trong nhóm này**."* — bản nháp lược qua ⇒ mất vế mở rộng phạm vi (nhựa chưng bị thổi vẫn
+thuộc 2708). **Sửa**: kéo nguyên văn vào `trich` (381 ký tự) + thêm vế tương ứng vào `text` (170 ký tự).
+
+### 3.3. 2707 `phamVi` — CÂU LIỀN SAU CÂU TRÍCH LÀ NGOẠI LỆ
+
+Bản nháp cắt trích **ngay trước** *"Nhưng nhóm này loại trừ các hợp chất đã xác định về mặt hóa học riêng biệt ở
+trạng thái tinh khiết hoặc tinh khiết cho mục đích thương mại, thu được bằng cách tiếp tục chưng cất phân đoạn
+hoặc bằng các quá trình chế biến dầu hắc ín khác (Chương 29)."* ⇒ mất ngoại lệ (ranh giới 2707 ↔ 2901/2902/2903).
+`scan-so-tay-soat.mjs` **không** bắt được vì nó chỉ soi câu sau **mảnh đầu tiên** (mục 1 bảng nền nhà).
+Điểm mạnh của việc sửa: `tieuChi6` (> 50 %) **KHÔNG được runtime in ra** (`lib/so-tay-gates.js` chỉ in
+phamVi · dieuKienVao · loaiTru · dong8 · phanBiet · boPhan) ⇒ nếu không nêu trong `phamVi.text`, mô hình **không
+có đường nào khác** để biết benzen tinh khiết sang 2901.
+**Sửa**: `trich` 574 ký tự (< 600) + `text` 205 ký tự (≤ 220) nêu vế loại trừ.
+
+### 3.4. 2706 `phamVi.text` — ĐỔI NGHĨA ĐIỀU KIỆN
+
+Nguồn: *"các loại hắc ín **đã chưng cất từng phần hoặc đã khử nước** và hắc ín tái chế"* — bản nháp ghi dấu phẩy
+⇒ biến thành "chưng cất từng phần **VÀ** đã khử nước" (phạm vi hẹp lại). **Sửa**: đổi dấu phẩy thành `hoặc` +
+thêm "đã" (nguyên văn nguồn).
+
+### 3.5–3.7. Ba `dong8` — ĐIỀU KIỆN HẸP HƠN NGUỒN (bỏ mất vế "hoặc …")
+
+| Mục | Nguồn | Bản nháp | Sửa |
+|---|---|---|---|
+| 2707 `dong8[6]` (27079910) | *"… chưng cất phân đoạn than hắc ín **hoặc dầu mỏ**"* | bỏ "hoặc dầu mỏ" | "Nguyên liệu sản xuất than đen: phần còn lại chưng cất phân đoạn than hắc ín hoặc dầu mỏ" (87) |
+| 2708 `dong8[0]` (27081000) | *"… ở nhiệt độ cao **hoặc hắc ín khoáng chất khác**"* | bỏ vế đó | "Nhựa chưng: cặn chưng cất hắc ín than đá ở nhiệt độ cao hoặc hắc ín khoáng chất khác" (84) |
+| 2708 `dong8[1]` (27082000) | *"… ở nhiệt độ thấp **hoặc nhiệt độ cao**"* | chỉ giữ "ở nhiệt độ thấp" | "Than cốc nhựa chưng: cặn cuối cùng từ chưng cất hắc ín than đá ở nhiệt độ thấp hoặc cao" (87) |
+
+Cả 3 sau khi sửa **≤ 90** (trần clip runtime) nên **không** bị cắt thêm; mọi từ còn lại đều có nguyên văn trong
+câu trích của chính mục đó (kiểm bằng `tmp/soat-lo079/check-fix.mjs`).
+
+## 4. Bài học + đề xuất luật máy (cho người duyệt)
+
+1. **LỖ HỔNG CỦA MÁY QUÉT — nên thành luật máy**: `scan-so-tay-soat.mjs` chỉ kiểm câu ngay sau **mảnh ĐẦU TIÊN**
+   của câu trích ⇒ **không** bắt được câu trích dừng trước ngoại lệ ở **mảnh CUỐI** (đúng lỗi 2707). Đề xuất:
+   kiểm thêm câu ngay sau **mọi** mảnh — nếu mở rộng, sẽ bắt được lớp lỗi "mất ngoại lệ ngay sau câu trích" ở
+   mọi lô sau, không phải chỉ lô này.
+2. **Câu BAO HÀM bị nuốt bởi dấu lược** (2708 · 2709) — máy có lớp `LƯỚC-NGOẠI-LỆ` nhưng mẫu của nó chỉ gồm
+   *"trừ / tuy nhiên / với điều kiện / không kể / đã hoặc chưa / tùy trường hợp / thường nằm|thuộc|được xếp|xếp"* —
+   **không** có mẫu cho *"vẫn được phân loại trong nhóm này"* / *"vẫn được xếp trong nhóm này"* ⇒ đề xuất thêm
+   mẫu **"vẫn được … trong nhóm này"** (bài học lô 069) để máy tự bắt lớp lỗi này.
+3. **`sangChuong`** (đã nêu ở phần soạn, mục 5): ngoại lệ **Chương 29** của 2707 giờ đã hiện trong `phamVi.text`
+   (runtime đọc được) nhưng **cổng `SO_TAY_LOAI_TRU`** thì không — cổng chỉ hiểu `sangNhom` 4 số.
+4. **`scan-so-tay-soat.mjs` báo 1 `LƯỚC-NGOẠI-LỆ` ở 2709 — BÁO ĐỘNG GIẢ**: máy soi **vùng quanh** dấu lược
+   (60 ký tự trước + 60 sau) nên *"với điều kiện là…"* của mục (7) — **phần được GIỮ** — bị quy về cho đoạn bị
+   lược. Đoạn bị lược thật chỉ là mục (5) và (6) — **mô tả**, không có mẫu ngoại lệ nào.
+
+## 5. Kiểm sau khi áp soát
+
+| Lệnh | Kết quả |
+|---|---|
+| `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` | **6 nhóm, 44/44 mục, 0 mục không kiểm được nguồn** |
+| `node scripts/check-trich-nguyen-van.mjs` | **OK — 43 mục** byte-exact (44 − 1 `cay.tenDien` mà bộ kiểm này không duyệt) |
+| `node scripts/check-cay.mjs --nhom=2704,…,2709 --chi-tiet` | **0 lỗi lệch cây**, 4/6 nhóm "đủ"; còn trống 4 chỗ `phan-nhom-chua-co-tieu-chi` (nguồn không có tiêu chí dương) |
+| `npm run so-tay:check` | **626 nhóm, 15.585 mục, 0 mục không kiểm được nguồn** |
+| `npm test` | **ALL TESTS PASSED** |
+| `node scripts/scan-so-tay-soat.mjs 2704,…,2709` | 14 cảnh báo thật: 7 `TỪ-NGOÀI-NGUỒN` (báo động giả theo khuôn nhà) · 4 `VÙNG-IM-LẶNG` (< 600, nền nhà 22 %) · 2 `TRÀN-CLIP` (giữ nguyên, nền nhà 44 %/49 %) · 1 `LƯỚC-NGOẠI-LỆ` (báo động giả — mục 4.4) |
+
+**Nạp lại**: `rm -f data/so-tay/bao-cao/lo-079.json` → `node scripts/build-so-tay.mjs --nhom=2704,2705,2706,2707,2708,2709
+--tu-tep=tmp/so-tay/raw --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-079.json` →
+**44/44 (100 %)**, `nhomLoi: []` → `TARGET=data APPLY=1 node scripts/apply-review-lo079.mjs` → đổi
+`nguonLoai` **20 mục** sang `NGUOI_DUYET`.
+
+**Chưa làm (thuộc người duyệt)**: KHÔNG merge PR #520 · KHÔNG tự cập nhật CSV `so-tay-lo.csv`.

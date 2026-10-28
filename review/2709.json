@@ -1,0 +1,47 @@
+{
+ "nhom": "2709",
+ "nguoiSoat": "dev-soat-doc-lap-lo079",
+ "luc": "2026-10-29T05:00:00+07:00",
+ "phamViSoat": "Toàn bộ 6 mục của nhóm 2709 (1 phamVi + 1 dieuKienVao + 1 phanBiet + 3 dong8), đọc cùng tmp/so-tay/nguon/2709.txt (nhom2709.nhom, ch27.chuong, wco.270900, tax.27090010/20/90). Đối chiếu BYTE-EXACT từng đoạn trích với đúng khối nguồn; thêm kiểm mọi âm tiết trong `text`/`dieuKien`/`hoi` phải có nguyên văn trong câu trích của chính mục.",
+ "soat": 6,
+ "giu": 5,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "XOÁ 0 · SỬA 1 · GIỮ 5/6. SỬA 1 (`phamVi`): dấu lược '…' nuốt mất CẢ câu BAO HÀM lẫn vế điều kiện — lỗi nặng nhất lô: nguồn [nhom2709.nhom] nguyên văn 'Như vậy các loại dầu thô thu được **vẫn được phân loại trong nhóm này, ngay cả khi chúng đã qua các quá trình sau: (1) Lắng cặn (2) Khử muối (3) Loại nước (4) Ổn định nhằm bình thường hóa áp suất hơi … (7) Bất kỳ quá trình thứ yếu khác nào đó, với điều kiện là quá trình này không làm thay đổi tính chất đặc trưng của sản phẩm.**' — bản nháp lược qua toàn bộ khối này. Hậu quả: `phamVi.text` mô tả 2709 như chỉ gồm dầu thô NGUYÊN CHẤT, tờ khai 'dầu thô đã khử muối / đã ổn định / condensate' (hàng xuất khẩu thật) bị đẩy ra khỏi 27.09. Ngoài ra đoạn bị lược có đúng câu chứa 'với điều kiện là…' — mẫu câu mà luật soạn cấm nuốt trong dấu lược. GHI NHẬN: (1) `phamVi.trich` sau sửa 473 ký tự (<600 trần máy); nền nhà 138/622 `phamVi` vượt 300 ⇒ chấp nhận được. (2) `phamVi.text` sau sửa 200 ký tự ≤ trần clip 220 của runtime, và kết luận 'vẫn được phân loại trong nhóm này' nằm TRONG 200 ký tự đó nên KHÔNG bị cắt mất. (3) Vế 'đã qua các quá trình sau: (1)…(4)' được kéo vào `trich` và rút gọn thành 'lắng cặn, khử muối, loại nước, ổn định' trong `text` — mọi từ đều có nguyên văn trong câu trích; các mục (5)(6) bị lược là MÔ TẢ (không có 'trừ'/'tuy nhiên'/'với điều kiện'/'không kể') ⇒ lược hợp lệ. (4) `dieuKienVao[0]` (mục (7)) giữ nguyên — nó đã mã hoá đúng điều kiện 'không làm thay đổi tính chất đặc trưng' dưới dạng fact+value=false (mẫu nhà: 87/745 mục boolean dùng fact khẳng định + value=false).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (nặng) — DẤU LƯỚC NUỐT CÂU BAO HÀM + VẾ ĐIỀU KIỆN. Nguồn [nhom2709.nhom] nguyên văn: '… dù thu được từ dạng thông thường hay dạng ngưng tụ cặn dầu hoặc bằng cách chưng cất phân hủy khoáng bitum. **Như vậy các loại dầu thô thu được vẫn được phân loại trong nhóm này, ngay cả khi chúng đã qua các quá trình sau: (1) Lắng cặn (2) Khử muối (3) Loại nước (4) Ổn định nhằm bình thường hóa áp suất hơi … (7) Bất kỳ quá trình thứ yếu khác nào đó, với điều kiện là quá trình này không làm thay đổi tính chất đặc trưng của sản phẩm.** … Nhóm này cũng bao gồm khí ngưng tụ…' — bản nháp lược qua toàn bộ khối 'Như vậy … (7) …'. Đây đúng lớp lỗi lô 069 (câu BAO HÀM 'vẫn được phân loại trong nhóm này' bị bỏ ⇒ phạm vi nhóm HẸP lại) ĐỒNG THỜI vi phạm luật soạn 'đoạn bị lược không được chứa ngoại lệ (trừ / tuy nhiên / với điều kiện / không kể)' vì trong đoạn lược có 'với điều kiện là…'. Sửa: (1) `trich` — kéo nguyên văn câu bao hàm vào, giữ mục (7) với điều kiện của nó, lược các mục (5)(6) (chỉ là mô tả) và phần 'dù thu được từ dạng thông thường…' — tổng 473 ký tự < 600; (2) `text` — nêu phạm vi (dầu lửa thô, dầu thô từ khoáng chất có chứa bitum, khí ngưng tụ) và KẾT LUẬN 'vẫn được phân loại trong nhóm này' sau khi qua quá trình thứ yếu không làm thay đổi tính chất đặc trưng (200 ký tự ≤ trần clip 220 của runtime); mọi từ trong `text` đều có nguyên văn trong câu trích. KHÔNG sửa mã, KHÔNG sửa câu nguồn.",
+   "sua": {
+    "text": "Dầu lửa thô, dầu thô từ khoáng chất có chứa bitum và khí ngưng tụ; dầu thô đã qua lắng cặn, khử muối, loại nước, ổn định, quá trình thứ yếu không làm thay đổi tính chất đặc trưng vẫn được phân loại trong nhóm này.",
+    "trich": "Nhóm này bao gồm dầu lửa thô, và dầu thô thu được từ các khoáng chất có chứa bitum … dù thành phần của chúng như thế nào … Như vậy các loại dầu thô thu được vẫn được phân loại trong nhóm này, ngay cả khi chúng đã qua các quá trình sau: … (1) Lắng cặn … (2) Khử muối … (3) Loại nước … (4) Ổn định nhằm bình thường hóa áp suất hơi … (7) Bất kỳ quá trình thứ yếu khác nào đó, với điều kiện là quá trình này không làm thay đổi tính chất đặc trưng của sản phẩm. … Nhóm này cũng bao gồm khí ngưng tụ"
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [nhom2709.nhom] nguyên văn 'Bất kỳ quá trình thứ yếu khác nào đó, với điều kiện là quá trình này không làm thay đổi tính chất đặc trưng của sản phẩm.' ✓ byte-exact; đây là câu RÀNG BUỘC vào nhóm (đã qua quá trình thứ yếu thì phải không làm thay đổi tính chất đặc trưng) và phủ CẢ nhóm; fact 'qua_qua_trinh_thu_yeu_lam_thay_doi_tinh_chat_dac_trung' = false (mẫu nhà: 87/745 mục boolean dùng fact khẳng định + value=false ⇒ đúng chiều, KHÔNG đảo); tên fact là slug ASCII không dấu (mẫu nhà 0/2.518 fact có dấu) ✓."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi 'Hàng là khí ngưng tụ thu được trong quá trình làm ổn định khí tự nhiên không?' (không nhắc mã ✓); trích [nhom2709.nhom] nguyên văn 'Nhóm này cũng bao gồm khí ngưng tụ, nghĩa là dầu thô thu được trong quá trình làm ổn định khí tự nhiên ngay khi khai thác nó.' ✓. Nhánh CÓ → '27090020' (dòng 'Condensate' — mã 8 số của chính nhóm, mẫu nhà 205/1.089 nhánh), KHÔNG → '2709' (chính nhóm — mẫu nhà 863/1.089) ⇒ phủ trọn; không đảo chiều Có/Không."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 27090010: trích nguyên văn [tax.27090010] '27090010 - Dầu mỏ thô' ✓; `dieuKien` = tên biểu thuế."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 27090020 (Condensate): trích [nhom2709.nhom] nguyên văn ✓; `dieuKien' dùng tên khái niệm của chú giải ('khí ngưng tụ') + định nghĩa rút gọn, không thêm từ nào không có trong câu trích; ưu tiên nguồn chú giải vì biểu thuế chỉ ghi 'Condensate' (không có điều kiện) — đúng luật 6."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 'Loại khác' 27090090: trích nguyên văn [tax.27090090] '27090090 - Loại khác' ✓; `dieuKien` theo mẫu nhà 'phần còn lại của nhóm 2709' — 2709 KHÔNG có phân nhóm 6 số (dòng 8 số nằm thẳng dưới nhóm) nên mẫu 'phần còn lại của nhóm' là đúng cấp; `loaiKhac` true do máy tự điền ✓."
+  }
+ ]
+}

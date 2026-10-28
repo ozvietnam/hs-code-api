@@ -1,0 +1,33 @@
+{
+ "nhom": "2705",
+ "nguoiSoat": "dev-soat-doc-lap-lo079",
+ "luc": "2026-10-29T04:42:00+07:00",
+ "phamViSoat": "Toàn bộ 4 mục của nhóm 2705 (1 phamVi + 1 loaiTru + 1 phanBiet + 1 dong8), đọc cùng tmp/so-tay/nguon/2705.txt (nhom2705.nhom, ch27.chuong, wco.270500, tax.27050000). Đối chiếu BYTE-EXACT từng đoạn trích với đúng khối nguồn; thêm kiểm mọi âm tiết trong `text`/`dieuKien`/`hoi` phải có nguyên văn trong câu trích của chính mục.",
+ "soat": 4,
+ "giu": 4,
+ "sua": 0,
+ "xoa": 0,
+ "ghiChu": "XOÁ 0 · SỬA 0 · GIỮ 4/4. Nguồn nhóm 2705 mỏng (1 đoạn chú giải + 1 câu loại trừ) nhưng bản nháp bám sát. GHI NHẬN (không tính lỗi, KHÔNG sửa được vì không mã hoá được): (1) câu trích [nhom2705.nhom] 'Nhóm này cũng bao gồm các hỗn hợp khí được hình thành do quá trình cracking hoặc reforming các loại dầu khoáng, khí dầu mỏ, các khí tự nhiên, thường có hơi nướp' (mở rộng phạm vi) và câu 'Nhóm này bao gồm khí được sản xuất bởi khí hóa ngầm' chưa vào `phamVi`; câu liền SAU câu trích là 'Ví dụ khí lò nung.' — là VÍ DỤ (luật lô 069 cho phép bỏ đoạn liệt kê ví dụ) nên không vi phạm luật 'câu liền sau trích là ngoại lệ'. (2) Tên biểu thuế [tax.27050000] và [wco.270500] đều có ngoại lệ 'trừ các loại khí dầu mỏ và khí hydrocarbon khác' (excluding petroleum and other gaseous hydrocarbons) — ngoại lệ này KHÔNG nêu đích nhóm cụ thể nên không mã hoá được thành `loaiTru` (luật 3: chỉ ghi khi nguồn nêu đích DANH); đề xuất để người duyệt cân nhắc trường `sangChuong` như đã nêu ở lô 079.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Trích [nhom2705.nhom] nguyên văn 2 đoạn nối bằng '…': 'Khí than đá thu được bằng cách chưng cất than trong môi trường chân không, thường ở các thiết bị sản xuất khí hoặc lò luyện cốc.' + 'Nhóm này bao gồm khí được sản xuất bởi khí hóa ngầm và cũng bao gồm khí than ướt, khí than nung và các loại khí tương tự.' ✓ byte-exact. Đoạn bị lược ('Nó là hỗn hợp phức tạp của các loại khí hydro, methane, carbon monoxide v.v…') là MÔ TẢ, không phải ngoại lệ ⇒ hợp lệ. `text` nêu phạm vi nhóm (khí than đá / than ướt / than nung / tương tự) và chỉ dùng từ có trong trích."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [nhom2705.nhom] nguyên văn trọn câu: 'Tuy nhiên, nhóm này cũng loại trừ các loại khí đã chi tiết hóa ở nhóm 27.11.' — có DẤU HIỆU LOẠI TRỪ + đích danh 27.11 + số nhóm trong câu trích ⇒ hợp lệ luật 3. Giữ nguyên lỗi chính tả nguồn ('chi tiết hóa'), không sửa nguồn."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi 'Hàng là loại khí đã chi tiết hóa không?' (không nhắc mã ✓); nhánh CÓ → '2711' (đích danh trong câu trích), KHÔNG → '2705' (chính nhóm — mẫu nhà 863/1.089 nhánh) ✓; không đảo chiều Có/Không."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 27050000: trích nguyên văn [tax.27050000] '27050000 Khí than đá, khí than ướt, khí than và các loại khí tương tự, trừ các loại khí dầu mỏ và khí hydrocarbon khác' ✓ (118 ký tự, không cắt). `dieuKien` rút gọn tên biểu thuế nhưng KHÔNG thêm từ nào không có trong trích và vẫn giữ vế loại trừ 'trừ khí dầu mỏ và hydrocarbon khác'."
+  }
+ ]
+}
