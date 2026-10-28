@@ -9821,7 +9821,8 @@ Xử lý:
 # LÔ 069 — SOẠN sổ tay chú giải (2306 2307 2308 2309 2401 2402)
 
 Người soạn: `dev-zcode-mm` (phiên headless của daemon `oz-so-tay-tuDong.sh`, 28/10/2026).
-Nhánh `so-tay/lo-069`, worktree `hs-code-api-wt-st-lo069`.
+Nhánh `so-tay/lo-069` · **PR #506** — **KHÔNG merge** (chờ soát độc lập) · worktree `hs-code-api-wt-st-lo069`.
+**Kết quả: 79/79 mục (100 %)** — `tyLeDat: 100`, `nhomLoi: []`; 6/6 nhóm "đủ" theo `check-cay`.
 
 ## 0. Sai lệch brief — đã làm theo CSV (nguồn chuẩn)
 
