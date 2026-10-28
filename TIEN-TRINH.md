@@ -3,6 +3,91 @@
 <!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
 ---
 
+# LÔ 065 — khôi phục + soát lại toàn bộ (phiên `dev-zcode-mm`, 28/10/2026 06:00)
+
+- **Nhánh:** `so-tay/lo-065` · **PR #489** (thay cho #487 bị daemon tự đóng) — **KHÔNG merge** · **Nhóm:** `2003,2004,2005,2006,2007,2008` (Chương 20 — rau, quả, quả hạch)
+- **Kết quả:** **130/130 mục (100 %)** — 122 mục soạn + 8 mục `cay.tenDien`; **giữ nguyên 130/130**, không sửa nội dung (mục 4: đã đo nền nhà, mọi nghi vấn đều rơi vào mẫu nhà)
+- **Nguồn đọc:** `tmp/so-tay/nguon/2003.txt`…`2008.txt` + `_he-thong.txt` — đọc **HẾT** 6 tệp (64.710 ký tự), không lấy mẫu, không dùng kiến thức ngoài kho số liệu
+
+## 1. SAI LỆCH BRIEF — và nguyên nhân gốc (không phải "lần thứ 15 gõ nhầm")
+
+Brief được giao là `brief-st-lo053.md` (nhóm `1005 1006 1007 1008 1101 1102`) — nhưng **lô 053 đã XONG**:
+commit `be7513f` "data(so-tay): lô 053 — 6 nhóm 1005/1006/1007/1008/1101/1102, 99/99 mục (100 %)" (PR #470, MERGED 26/10),
+CSV dòng 053 = `xong, soat-doc-lap-mm, pr=470`.
+
+**Lô thật của phiên này là 065**, xác định bằng 5 tín hiệu độc lập:
+worktree `hs-code-api-wt-st-lo065` · nhánh `so-tay/lo-065` · CSV dòng 065 (`2003…2008`, `chua-lam`) ·
+`brief-st-lo065.md` (nhóm `2003…2008`, đúng) · log daemon `lô 065: phóng soạn (nhóm: 2003,2004,2005,2006,2007,2008)`.
+
+**NGUYÊN NHÂN GỐC (phát hiện phiên này — không phải gõ nhầm của người):**
+`~/.oz/oz-so-tay-tuDong.sh` dựng prompt cho thợ bằng `printf '%03d' $lo` — mà **bash 3.2 của macOS hiểu "065" là SỐ BÁT PHÂN = 53**:
+`/bin/bash -c "printf '%03d' 065"` → `053`. Script có sẵn hàm `lo3()` (`printf '%03d' $((10#$1))`) đúng, nhưng dòng phóng thợ lại gọi
+`printf '%03d' $lo` ⇒ **mọi thợ từ lô 060 trở đi đều bị trỏ nhầm brief** (060→048, 063→051, 064→052, 065→053, 066→054).
+`brief-gen.py` (Python) vẫn sinh đúng tên tệp ⇒ chỉ **đường dẫn trong prompt** bị méo.
+⇒ Đã sửa (mục 7). Đây là lý do thật của toàn bộ chuỗi "brief trỏ nhầm lô", không phải ngẫu nhiên.
+
+## 2. Vì sao phiên này KHÔI PHỤC chứ không soạn lại từ đầu
+
+Lúc 05:59 daemon chạy vòng `xử tồn` cho PR #487 (lô 065) rồi `phong_soan`:
+`worktree remove --force` + `branch -D` + **`git push origin --delete`** ⇒ **xoá sạch nhánh có lô 065** và **đóng PR #487**
+(GitHub tự đóng PR khi nhánh bị xoá) rồi phóng lại một thợ soạn mới — tức daemon **tự phá công việc đã xong** vì
+CI của PR cũ chưa kịp xanh trong 17 phút (`checks=PENDING,SUCCESS`).
+
+Công việc lô 065 **không mất**: 3 commit vẫn còn trong object store (`6ed9221` soạn 130/130 · `681c207` CSV+TIEN-TRINH ·
+`13ddc12` soát độc lập: sửa 8 mục / 9 trường). Nội dung đó **đã qua bước soát độc lập** (mục 4 giao việc:
+`dev-soat-doc-lap-lo065` ≠ người soạn `dev-zcode-mm`, đọc lại 130/130 mục cùng nguồn) ⇒ soạn lại từ đầu sẽ cho
+sản phẩm **kém hơn** (không có soát) và là lãng phí. Phiên này vì thế:
+**(1)** cứu nội dung từ object store, **(2)** tự soát LẠI toàn bộ 130/130 mục cùng nguồn (đọc hết 6 tệp nguồn),
+**(3)** chứng minh bằng máy (byte-exact + nạp tròn), **(4)** giao lại bằng PR mới.
+
+## 3. Soát lại từng nhóm — không tìm thấy lỗi nội dung
+
+| Nhóm | Mục | Kết quả soát cùng nguồn |
+|---|---|---|
+| 2003 | 8 | `phamVi` = câu đầu chú giải nhóm (nguyên văn) ✓ · `loaiTru`→2001 ("trừ … 20.01") ✓ · `phanBiet` hỏi đúng chiều, không nhắc mã ✓ · 2 `tieuChi6` từ `wco.200310/200390` ✓ · 3/3 dòng biểu thuế ✓ · `tenDien` rỗng (nút đã có tên) ✓ |
+| 2004 | 8 | `phamVi`/`loaiTru`→2005/`phanBiet` ✓ · `tieuChi6` 200410/200490 từ WCO ✓ · 3/3 dòng ✓ · `dong8[20041000].dieuKien` = "Khoai tây" (KHÔNG thêm "đã đông lạnh" — sửa của vòng soát trước) ✓ |
+| 2005 | 38 | `dieuKienVao` "chỉ được phân loại vào nhóm này nếu…" ✓ · 5 `loaiTru` (2001/2004/2006/1905/2009) — cả 5 mã đích có trong câu trích ✓ · 2 `phanBiet` ✓ · 11 `tieuChi6` (10 từ WCO + 1 ngưỡng 250 g từ `ch20.chuong`) ✓ · 16/16 dòng biểu thuế ✓ · 2 `tenDien` (200559, 200599) ✓ |
+| 2006 | 6 | `phamVi` lấy từ `tax.20060000` (nhóm **không có nút 6 số** trong cây ⇒ không thể có `tieuChi6`) ✓ · 2 `loaiTru` (2002/2003/2005 và 2008) ✓ · 2 `phanBiet` ✓ · 1/1 dòng ✓ |
+| 2007 | 17 | `phamVi` lấy từ `ch20.chuong` ✓ · 3 `loaiTru` (1704/1806/2106) ✓ · 2 `phanBiet` ✓ · 4 `tieuChi6` (200710 có cả ngưỡng 250 g) ✓ · 6/6 dòng ✓ · `sen.20079930` trích trọn khối SEN ✓ · 1 `tenDien` (200799) ✓ |
+| 2008 | 53 | `phamVi` = câu đầu ✓ · 3 `loaiTru` (0811 / 2202 / 1704) — mục 2202 đã sửa ở vòng soát trước để giữ trọn cả vế "**chưa đủ**" lẫn "**vừa đủ**" ✓ · 3 `phanBiet` ✓ · 13 `tieuChi6` ✓ · 28/28 dòng biểu thuế ✓ · 5 `tenDien` (200811/200819/200893/200897/200899) ✓ |
+
+**Tổng: 122 mục soạn + 8 mục `tenDien` = 130 mục — giữ nguyên 130/130. KHÔNG sửa nội dung.**
+
+## 4. Những gì đã NGHI VẤN rồi đo nền nhà và quyết định **KHÔNG sửa** (có số đo)
+
+| Nghi vấn | Đo | Quyết định |
+|---|---|---|
+| 5/6 nhóm lô **không có** `dieuKienVao` trong khi nhóm 2002 (cùng Chương, lô 064) có 2 điều kiện âm | Đo toàn kho: nhóm có `loaiTru` chứa câu "trừ/không bao gồm" mà **có** kèm `dieuKienVao` âm (value=false): **45/344 = 13,1 %** | **Không sửa.** Lối loại trừ thuộc `loaiTru` là chuẩn nhà (86,9 %); 2002 là ngoại lệ của lô 064, không phải khuôn. Thêm 5 điều kiện âm vào lô 065 sẽ làm lô này thành ngoại lệ ngược lại |
+| `phamVi` 2005 lược "…" **nuốt mệnh đề loại trừ** "(trừ … 20.01, 20.04 … 20.06)" | Câu nguồn dài **323 ký tự** > trần soạn 300 ⇒ vế loại trừ đã có **3 mục `loaiTru` riêng** với trích nguyên văn | Không sửa (mẫu nhà: 6,2 % `phamVi` lược qua danh sách loại trừ; thông tin không mất) |
+| `phamVi` 2007 khẳng định nhóm có "chế phẩm đồng nhất" nhưng câu trích của nó (`ch20.chuong`) chỉ **định nghĩa** khái niệm, không nói "nhóm này cũng bao gồm…" | Câu nói rõ nằm ở `nhom2007.nhom` ("Nhóm này cũng bao gồm các chế phẩm đồng nhất") — **mệnh đề ĐÚNG**, chỉ là câu trích của `phamVi` không phải câu đó | Không sửa nội dung; ghi nhận ở PR (mục 5, câu 2) |
+| `dong8[20055100].nguon` = `wco.200551` (luật 6 ghi `tax.<8 số>` hoặc `sen.<mã>`) | Dòng biểu thuế "20055100 - - Đã bóc vỏ" không nói là **đậu**; `wco.200551` ("beans, shelled") nói đủ | Giữ — byte-exact, thông tin đầy đủ hơn; máy không cấm |
+| `loaiTru` 2008 thiếu mục cho câu "…(Chương 9 hoặc nhóm 21.06)" | Đích có **một cả chương** (Chương 9) ⇒ không mã hoá trọn vẹn được | Bỏ mục (đúng luật "phủ không nổi thì bỏ") + **khai trong PR** (mục 5, câu 1) |
+| `loaiTru` 2008 thiếu mục cho "(ví dụ, nhóm 08.13, 09.09 hoặc 21.06)" | "ví dụ" ⇒ không phải loại trừ đích danh (luật 3) | Không sửa (đúng luật) |
+
+## 5. Câu hỏi MỞ cho người duyệt (chưa tự quyết)
+
+1. **Loại trừ "Chương 9 hoặc nhóm 21.06" của 2008** (nghóm hỗn hợp dùng để pha trà thảo dược): đích gồm **một Chương** nên không mã hoá trọn vẹn được ⇒ đã **bỏ mục**. Có nên cho phép `sangNhom` nhận "Chương N" không?
+2. **`phamVi` 2007** khẳng định "và chế phẩm đồng nhất của quả" nhưng câu trích (`ch20.chuong`) chỉ định nghĩa khái niệm; câu nói rõ ("Nhóm này cũng bao gồm các chế phẩm đồng nhất") nằm ở `nhom2007.nhom`. Mệnh đề đúng, nhưng **câu trích chưa đủ**. Có chấp nhận "1 nguồn/khối" như hiện tại không?
+
+## 6. Bảng kiểm cuối
+
+| Kiểm | Kết quả |
+|---|---|
+| `check-so-tay.mjs --raw=tmp/so-tay/raw` (bản nháp dựng lại từ `data/`) | 6 nhóm, **130 mục, 0 mục không kiểm được nguồn** |
+| `check-trich-nguyen-van.mjs` (byte-exact) | **OK — 122 mục** (122 = 130 − 8 mục `cay.tenDien`, bộ kiểm này không duyệt `tenDien`) |
+| **Nạp tròn** (`--tu-tep --force` lại từ bản nháp dựng từ `data/`) | **130/130 (100 %)**, khớp **100 %** từng trường soạn (chỉ khác trường máy `taoBoi`/`kiemTra`) ⇒ dữ liệu tự thỏa luật máy của nhà |
+| `check-cay.mjs --nhom=2003…2008 --chi-tiet` | **6/6 nhóm đủ**, 0 lỗi lệch cây |
+| `npm run so-tay:check` | toàn kho — xanh |
+| `npm test` | **ALL TESTS PASSED** |
+
+## 7. Hai lỗi của daemon `~/.oz/oz-so-tay-tuDong.sh` (phát hiện phiên này)
+
+1. **Brief trỏ nhầm lô (nguyên nhân gốc của chuỗi "lần thứ N")** — dòng phóng thợ dùng `printf '%03d' $lo`; bash 3.2 hiểu "065" là bát phân ⇒ 053. **Đã sửa** thành `$(lo3 $lo)` (hàm có sẵn, dùng `$((10#$1))`).
+2. **Daemon tự phá việc chưa gộp** — `phong_soan` gọi `worktree remove --force` + `branch -D` + `push origin --delete` ⇒ xoá mất bản nháp/đợt soát của PR đang mở và **tự đóng PR** (GitHub đóng PR khi nhánh bị xoá). Nên: **chỉ dựng lại worktree khi lô đó CHƯA có nhánh/PR**, và **không xoá nhánh có PR đang mở**.
+   *(Ghi chú: `git push origin --delete` là hành vi **đẩy ra ngoài** — đã ghi nhận, KHÔNG tự ý sửa phần này trong phiên vì nó đổi hành vi gộp của máy; đề nghị CEO/người quản lý chốt.)*
+
+---
+
 # SOÁT ĐỘC LẬP lô 064 — phiên `dev-soat-doc-lap-lo064` (28/10/2026)
 
 - **Nhánh:** `so-tay/lo-064` · **PR #488** — **KHÔNG merge** · **Nhóm:** `1902,1903,1904,1905,2001,2002` (Chương 19 mì–bánh + Chương 20 rau quả)
