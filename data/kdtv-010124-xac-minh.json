@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2026-10-28",
+  "vanBan": "01/2024/TT-BNNPTNT",
+  "phuLuc": "Phụ lục I",
+  "nguon": [
+    "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2024/2/41292/48972-1-2024329-33001-2024-tt-bnnptnt-p2.pdf",
+    "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2024/2/41292/48972-1-2024329-33001-2024-tt-bnnptnt-p3.pdf",
+    "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2024/2/41292/48972-1-2024329-33001-2024-tt-bnnptnt-p4.pdf",
+    "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2024/2/41292/48972-1-2024329-33001-2024-tt-bnnptnt-p5.pdf"
+  ],
+  "phuongPhap": "Rà 100 nhóm 6 số mà cột cs biểu thuế 2026.04.05 gắn 'Kiểm dịch' dẫn 01/2024/TT-BNNPTNT nhưng index CSV oz-wiki-plhq không liệt kê (khớp heading 4 số). Đối chiếu toàn văn PDF gốc (pdftotext -layout, chuẩn hoá khoảng trắng trước khi dò mã chấm 'NNNN.NN'): 93 nhóm CÓ trong PDF — CSV bị GỘP DỒNG khi bóc tách (vd 0203.11.00 hấp mô tả 0203.12) → KHÔNG được tắt KDTV. 7 nhóm dưới đây KHÔNG xuất hiện ở bất kỳ bảng nào của TT 01/2024 → cột cs gắn sai chiều, tắt an toàn.",
+  "nhomKhongCoTrongVanBan": {
+    "110720": { "loai": "KIEM_DICH_THUC_VAT", "nhom": "Mục 9", "ghiChu": "Malt dạng khác" },
+    "121140": { "loai": "KIEM_DICH_THUC_VAT", "nhom": "Mục 9", "ghiChu": "Lá và hoa cây thuốc lá" },
+    "121410": { "loai": "KIEM_DICH_THUC_VAT", "nhom": "Mục 9", "ghiChu": "Cỏ khô" },
+    "200820": { "loai": "KIEM_DICH_THUC_VAT", "nhom": "Mục 9", "ghiChu": "Dứa chế biến — Mục 9 chỉ liệt kê 2008.11/.40/.50/.60/.70/.80/.91/.93/.97/.99" },
+    "200830": { "loai": "KIEM_DICH_THUC_VAT", "nhom": "Mục 9", "ghiChu": "Vỏ cam quýt tẩm ướp — ca khách 26/10 (#494)" },
+    "240391": { "loai": "KIEM_DICH_THUC_VAT", "nhom": "Mục 9", "ghiChu": "Khói hoá lỏng (thuốc lá điện tử dùng điếu nước)" },
+    "520299": { "loai": "KIEM_DICH_THUC_VAT", "nhom": "Mục 9", "ghiChu": "Phế liệu sợi bông loại khác" }
+  },
+  "luuY": "93 nhóm còn lại KHÔNG tắt vì CSV registry thiếu dòng (bóc tách gộp dòng) — cần oz-wiki-plhq bóc lại bảng theo PDF để mở rộng. Xem scripts/ra-soat-kdtv-494.mjs."
+}
