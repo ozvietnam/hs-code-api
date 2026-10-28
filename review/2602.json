@@ -1,0 +1,48 @@
+{
+ "nhom": "2602",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-28T17:13:20.426Z",
+ "daKiem": 6,
+ "soat": 6,
+ "xoa": 0,
+ "sua": 2,
+ "ghiChu": "Audit 2602 (lô 075, PR #516) — người soát ĐỘC LẬP (khác người soạn). Đối chiếu TỪNG câu trích với tmp/so-tay/nguon/2602.txt bằng so khớp byte (không nén khoảng trắng, giữ nguyên dấu tiếng Việt và lỗi chính tả nguồn). 6/6 câu trích nguyên văn. GIỮ: phamVi (danh sách 6 khoáng mangan; 304 ký tự — vượt mốc 300 mềm nhưng dưới trần 600 của máy; 22,7 % nhóm trong kho cũng vượt 300, đã nêu trong PR); loaiTru[0] (câu \"…những loại với hàm lượng mangan nhỏ hơn 20% … bị loại trừ (nhóm 26.01)\" — nêu ĐÍCH DANH nhóm 26.01 trong chính câu trích); loaiTru[1] (\"…pyrolusite được chế biến cho sử dụng trong pin khô (nhóm 25.30)\" — nêu đích danh, loại trừ dứt khoát, không có định ngữ \"thường/tùy trường hợp\"); phanBiet[0] (câu trích đã là CÂU ĐẦY ĐỦ nên cả hai nhánh đều có căn cứ trong nguồn); tieuChi6 RỖNG là ĐÚNG — cây hiện hành không có nút 6 số 260200 (nút 8 số 26020000 có laPhanNhom = 2602, 4 số) nên không thể điền tieuChi6 cho 260200 (máy sẽ loại với lý do \"hs6-khong-co-trong-cay\").",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Đối chiếu [nhom2602.nhom]: danh sách (a)–(f) nguyên văn; 304 ký tự (vượt mốc 300 mềm, dưới trần 600 của máy) — đã nêu trong PR."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — TRÍCH CÓ THẬT NHƯNG CHƯA ĐỦ CĂN CỨ CHO ĐIỀU KIỆN. Câu trích cũ chỉ chép VẾ ĐẦU (\"Nhóm này cũng bao gồm quặng và tinh quặng mangan chứa sắt, với hàm lượng mangan từ 20% trở lên …\") — chủ ngữ của câu đó là \"quặng và tinh quặng mangan CHỨA SẮT\", tức chỉ một PHẦN của nhóm 26.02; đọc riêng câu đó thì điều kiện Mn ≥ 20 % chỉ là điều kiện của phần quặng chứa sắt, chưa phải ràng buộc của cả nhóm. SỬA: mở rộng câu trích thành CÂU ĐẦY ĐỦ của nguồn (cắt liên tục, không lược) — vế sau \"…; những loại với hàm lượng mangan nhỏ hơn 20% tính theo trọng lượng khô bị loại trừ (nhóm 26.01)\" là câu loại trừ áp cho MỌI loại trong nhóm, nên điều kiện Mn ≥ 20 % mới là ràng buộc của cả nhóm 26.02. Câu trích mới trùng với câu đã dùng ở phanBiet[0] (cùng một câu nguồn). `fact`/`op`/`value`/`donVi` GIỮ NGUYÊN.",
+   "sua": {
+    "trich": "Nhóm này cũng bao gồm quặng và tinh quặng mangan chứa sắt, với hàm lượng mangan từ 20% trở lên tính theo trọng lượng khô (quặng và tinh quặng đã gia nhiệt tới nhiệt độ từ 105 đến 110°C); những loại với hàm lượng mangan nhỏ hơn 20% tính theo trọng lượng khô bị loại trừ (nhóm 26.01)."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nêu đích danh nhóm 26.01 ngay trong câu trích (\"bị loại trừ (nhóm 26.01)\") → loại trừ dứt khoát, đúng luật 3; không có định ngữ \"thường/tùy trường hợp\"."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"Nhóm này cũng loại trừ pyrolusite được chế biến cho sử dụng trong pin khô (nhóm 25.30)\" nêu đích danh nhóm 25.30; \"cũng loại trừ\" vẫn là loại trừ dứt khoát."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích là câu đầy đủ: vế \"có\" (Mn ≥ 20 % → thuộc nhóm này) và vế \"không\" (Mn < 20 % → \"bị loại trừ (nhóm 26.01)\") đều có căn cứ trong nguồn; `hoi` không nhắc mã, 55/110 ký tự."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — MẤT CĂN CỨ ĐO CỦA NGƯỠNG. Dòng biểu thuế ghi \"… với hàm lượng mangan từ 20% trở lên, tính theo trọng lượng khô\"; bản nháp rớt đúng vế \"tính theo trọng lượng khô\", nên điều kiện nói RỘNG hơn nguồn (ngưỡng 20 % không ghi căn cứ đo — mà quặng ẩm có thể vượt 20 % theo cơ sở ẩm). SỬA: bổ sung nguyên văn vế \"tính theo trọng lượng khô\" lấy từ chính dòng [tax.26020000]. `trich`/`tieuChi` GIỮ NGUYÊN.",
+   "sua": {
+    "dieuKien": "Quặng mangan và tinh quặng mangan, hàm lượng mangan từ 20% trở lên (trọng lượng khô)"
+   }
+  }
+ ]
+}

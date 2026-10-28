@@ -1,0 +1,31 @@
+{
+ "nhom": "2606",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-28T17:13:20.426Z",
+ "daKiem": 3,
+ "soat": 3,
+ "xoa": 0,
+ "sua": 1,
+ "ghiChu": "Audit 2606 (lô 075, PR #516) — người soát ĐỘC LẬP (khác người soạn). Đối chiếu TỪNG câu trích với tmp/so-tay/nguon/2606.txt bằng so khớp byte (không nén khoảng trắng, giữ nguyên dấu tiếng Việt và lỗi chính tả nguồn). GIỮ: dieuKienVao[0] (fact boolean \"la_boxit\" lấy từ câu định nghĩa \"Nhóm này bao gồm boxit (…)\" — cùng khuôn mẫu với nhóm 03.01 \"Nhóm này bao gồm tất cả các loại cá sống…\" → la_ca_song, đã qua soát trước đây; không phải câu CHO PHÉP); dong8[0] (trích nguyên văn dòng [tax.26060000]).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — CẮT MẤT NHÁNH \"HOẶC\" NGAY SAU CHỖ CẮT + LỚC MẤT \"vv…\" TRONG THÀNH PHẦN. Nguồn: \"Nhóm này cũng bao gồm boxit, đã xử lý nhiệt (1200°C đến 1400°C) thích hợp để sử dụng trong luyện kim để sản xuất nhôm (…) hoặc cho mục đích khác (đặc biệt cho sản xuất vật liệu mài).\" — bản nháp cắt ngay trước vế \"hoặc cho mục đích khác (đặc biệt cho sản xuất vật liệu mài)\", làm mất ngoại lệ/điều kiện ngay sau câu trích (lớp lỗi lô 022/030/050); đồng thời `text` bỏ chữ \"vv\" (nguồn ghi \"oxit silic vv…\") nên thành phần bị thu hẹp. SỬA: nối trích thành CẢ HAI câu của nguồn (cắt liên tục, \"…\" chỉ ở mốc giữa hai câu như khuôn mẫu 10.06/11.07/11.08 trong kho) và `text` giữ lại \"vv…\" + vế \"hoặc cho mục đích khác (đặc biệt cho sản xuất vật liệu mài)\".",
+   "sua": {
+    "text": "Boxit (oxit nhôm đã hydrate hoá có chứa oxit sắt và oxit silic vv… với các tỷ lệ khác nhau); boxit, đã xử lý nhiệt (1200°C đến 1400°C) thích hợp để sử dụng trong luyện kim để sản xuất nhôm hoặc cho mục đích khác.",
+    "trich": "Nhóm này bao gồm boxit (oxit nhôm đã hydrate hoá có chứa oxit sắt và oxit silic vv… với các tỷ lệ khác nhau.)…Nhóm này cũng bao gồm boxit, đã xử lý nhiệt (1200°C đến 1400°C) thích hợp để sử dụng trong luyện kim để sản xuất nhôm … hoặc cho mục đích khác (đặc biệt cho sản xuất vật liệu mài)."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn, là câu định nghĩa \"Nhóm này bao gồm boxit (…)\" — cùng khuôn mẫu với 03.01/la_ca_song đã được duyệt; boolean value=true, không phải câu CHO PHÉP."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 8 số duy nhất của nhóm, trích nguyên văn dòng [tax.26060000]."
+  }
+ ]
+}
