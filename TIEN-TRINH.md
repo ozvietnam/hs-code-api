@@ -10383,7 +10383,7 @@ với tờ khai "graphit nhân tạo". Sửa: `dieuKien` nêu đủ ba nhánh, �
    mà nhánh "không" của 2403 nếu trỏ toàn bộ 2403.99 (5 dòng) sẽ **dẫn nhầm** thuốc lá nhai (2403.99.50) —
    đúng lớp lỗi lô 066/069; (ii) 2504 bột/mảnh nằm ở **hai khối WCO khác nhau** mà một mục `phanBiet` chỉ
    mang **một** `nguon`+`trich` ⇒ nhánh "không" sẽ không có căn cứ. Cả hai đã được `tieuChi6` phủ.
-5. **9 câu trích 300–600 ký tự** (vùng "im lặng" — luật 2 ghi ≤ 300 nhưng máy chỉ chặn > 600): 2403 `phamVi`
+5. **8 câu trích 300–600 ký tự** (vùng "im lặng" — luật 2 ghi ≤ 300 nhưng máy chỉ chặn > 600): 2403 `phamVi`
    407 · 2404 `phamVi` 446 · 2404 `phanBiet[0]` 446 · 2404 `dong8[1]` 393 · 2501 `phamVi` 499 (sau sửa) ·
    2501 `dong8[0]` 323 · 2501 `dong8[3]` 410 · 2501 `dong8[4]` 469 · 2404 `dong8[1]` 393. Nền nhà 1,8 %;
    đã để mắt từng câu: **không câu nào cắt trước "tùy từng trường hợp"/"thường…"** để né câu rào, và
@@ -10397,7 +10397,7 @@ với tờ khai "graphit nhân tạo". Sửa: `dieuKien` nêu đủ ba nhánh, �
 |---|---|
 | `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` | **6 nhóm, 74/74 mục, 0 mục không kiểm được nguồn** |
 | `node scripts/check-trich-nguyen-van.mjs` | **OK — 74 mục**, mọi câu trích nguyên văn tuyệt đối trong đúng khối nguồn |
-| `node scripts/scan-so-tay-soat.mjs 2403 2404 2501 2502 2503 2504` | 35 cảnh báo: 1 `TRÀN-CLIP` (**có chủ đích**, xem 3.5) + 9 `VÙNG-IM-LẶNG` + 25 `TỪ-NGOÀI-NGUỒN` **giả** (`fact` tiếng Việt đi kèm trích WCO tiếng Anh; `dieuKien` dòng "Loại khác: phần còn lại của …" do máy suy) — **0 `LƯỚC-NGOẠI-LỆ`, 0 `CÂU-SAU-NGOẠI-LỆ`** |
+| `node scripts/scan-so-tay-soat.mjs 2403 2404 2501 2502 2503 2504` | 35 dòng cảnh báo = 32 cảnh báo thật (**8 `VÙNG-IM-LẶNG` + 24 `TỪ-NGOÀI-NGUỒN` giả**) + 1 `TRÀN-CLIP` (**có chủ đích**, xem 3.5) (`fact` tiếng Việt đi kèm trích WCO tiếng Anh; `dieuKien` dòng "Loại khác: phần còn lại của …" do máy suy) — **0 `LƯỚC-NGOẠI-LỆ`, 0 `CÂU-SAU-NGOẠI-LỆ`** |
 | `node scripts/check-cay.mjs --nhom=2403,… --chi-tiet` | **6/6 nhóm đủ**, 0 lỗi lệch cây |
 | `node scripts/build-so-tay.mjs … --tu-tep --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-070.json` | **74/74 (100 %)**, `nhomLoi: []` |
 | `TARGET=data APPLY=1 node scripts/apply-review-lo070.mjs` | đổi `nguonLoai` **28 mục** → `NGUOI_DUYET` (chỉ 5 khối văn xuôi) |
