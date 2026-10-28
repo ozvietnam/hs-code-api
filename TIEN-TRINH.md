@@ -6,7 +6,7 @@
 
 # LÔ 071 — soạn sổ tay chú giải (phiên `dev-zcode-mm`, 28/10/2026 18:56)
 
-- **Nhánh:** `so-tay/lo-071` (worktree `hs-code-api-wt-st-lo071`; đã kiểm `ps` — KHÔNG trùng PID với lô 072)
+- **Nhánh:** `so-tay/lo-071` (worktree `hs-code-api-wt-st-lo071`; đã kiểm `ps` — KHÔNG trùng PID với lô 072) · **PR #512** — **KHÔNG merge** (chờ soát độc lập)
 - **Nhóm:** `2505 2506 2507 2509 2510 2511` (Chương 25: cát · thạch anh · cao lanh · đá phấn · canxi phosphat · bari) — lấy theo CSV dòng 071, khớp brief
 - **Nguồn:** `tmp/so-tay/nguon/{2505,2506,2507,2509,2510,2511}.txt` (49.116 ký tự) + `_he-thong.txt` — đọc HẾT 6 tệp
 
