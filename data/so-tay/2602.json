@@ -1,0 +1,104 @@
+{
+ "nhom": "2602",
+ "phamVi": {
+  "text": "Các quặng mangan chính thường được phân loại trong nhóm này là: braunite, rhodochrosite (hoặc dialogite), hausmannite, manganite, psilomelane, pyrolusite (hoặc polianite).",
+  "nguon": "nhom2602.nhom",
+  "trich": "Các quặng chính thường được phân loại trong nhóm này là:…(a) Braunite, mangan oxit…(b) Rhodochrosite (hoặc dialogite) mangan carbonate…(c) Hausmannite, saline mangan oxit…(d) Manganite, mangan oxit đã hydrat hoá…(e) Psilomelane, mangan dioxit đã hydrate hoá…(f) Pyrolusite (hoặc polianite), mangan dioxit",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "ham_luong_mangan",
+   "op": ">=",
+   "value": 20,
+   "donVi": "%",
+   "ngoaiTru": [],
+   "nguon": "nhom2602.nhom",
+   "trich": "Nhóm này cũng bao gồm quặng và tinh quặng mangan chứa sắt, với hàm lượng mangan từ 20% trở lên tính theo trọng lượng khô",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Hàm lượng mangan nhỏ hơn 20% (trọng lượng khô)",
+   "sangNhom": "2601",
+   "nguon": "nhom2602.nhom",
+   "trich": "những loại với hàm lượng mangan nhỏ hơn 20% tính theo trọng lượng khô bị loại trừ (nhóm 26.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Pyrolusite được chế biến cho sử dụng trong pin khô",
+   "sangNhom": "2530",
+   "nguon": "nhom2602.nhom",
+   "trich": "Nhóm này cũng loại trừ pyrolusite được chế biến cho sử dụng trong pin khô (nhóm 25.30).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàm lượng mangan từ 20% trở lên tính theo trọng lượng khô?",
+   "neuCo": "2602",
+   "neuKhong": "2601",
+   "nguon": "nhom2602.nhom",
+   "trich": "Nhóm này cũng bao gồm quặng và tinh quặng mangan chứa sắt, với hàm lượng mangan từ 20% trở lên tính theo trọng lượng khô (quặng và tinh quặng đã gia nhiệt tới nhiệt độ từ 105 đến 110°C); những loại với hàm lượng mangan nhỏ hơn 20% tính theo trọng lượng khô bị loại trừ (nhóm 26.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "26020000",
+   "dieuKien": "Quặng mangan và tinh quặng mangan chứa sắt với hàm lượng mangan từ 20% trở lên",
+   "tieuChi": {
+    "fact": "ham_luong_mangan",
+    "op": ">=",
+    "value": 20,
+    "donVi": "%"
+   },
+   "nguon": "tax.26020000",
+   "trich": "26020000 Quặng mangan và tinh quặng mangan, kể cả quặng mangan chứa sắt và tinh quặng mangan chứa sắt với hàm lượng mangan từ 20% trở lên, tính theo trọng lượng khô",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2602",
+    "cap": 4,
+    "cha": "26",
+    "tenVi": "Quặng mangan và tinh quặng mangan, kể cả quặng mangan chứa sắt và tinh quặng mangan chứa sắt với hàm lượng mangan từ 20% trở lên, tính theo trọng lượng khô.",
+    "tenEn": "Manganese ores and concentrates, including ferruginous manganese ores and concentrates with a manganese content of 20% or more, calculated on the dry weight",
+    "suyRa": false
+   },
+   {
+    "id": "26020000",
+    "cap": 8,
+    "cha": "2602",
+    "tenVi": "Quặng mangan và tinh quặng mangan, kể cả quặng mangan chứa sắt và tinh quặng mangan chứa sắt với hàm lượng mangan từ 20% trở lên, tính theo trọng lượng khô",
+    "tenEn": "Manganese ores and concentrates, including ferruginous manganese ores and concentrates with a manganese content of 20% or more, calculated on the dry weight",
+    "suyRa": false
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2602.nhom",
+  "tax.26020000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T15:56:32.012Z",
+  "ms": 0
+ },
+ "kiemTra": {
+  "tong": 6,
+  "dat": 6,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
