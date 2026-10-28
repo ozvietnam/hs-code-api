@@ -1,0 +1,85 @@
+{
+ "nhom": "2525",
+ "nguoiSoat": "dev-soat-doc-lap-lo074",
+ "luc": "2026-10-28T22:55:00+07:00",
+ "phamViSoat": "Toàn bộ 13 mục của nhóm 2525 (1 phamVi + 3 loaiTru + 2 phanBiet + 1 boPhan + 3 tieuChi6 + 3 dong8), đọc cùng tmp/so-tay/nguon/2525.txt (nhom2525.nhom, ch25.chuong, wco.252510/252520/252530, tax.25251000/25252000/25253000).",
+ "soat": 13,
+ "giu": 11,
+ "sua": 2,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 2 (3 trường) · GIU 11/13. SỬA 1 (`loaiTru[1].trich`): bản nháp cắt trích bằng \"…\" NGAY GIỮA vế \"…và các sản phẩm được làm từ cách liên kết (ghép) các mi ca tách lớp\" ⇒ câu trích KHÔNG còn câu nào nói về điều kiện mà `dieuKien` khẳng định (\"Sản phẩm làm từ mi ca tách lớp liên kết\") — lớp lỗi \"dieuKien thêm chữ không có trong câu trích\". SỬA 2 (`phanBiet[0]`: `hoi` + `trich`): `hoi` hỏi chung hai nhánh trong khi nhánh thứ hai đã bị lược khỏi trích và nhánh thứ ba trong trích lại không được hỏi. Mọi câu trích mới đều cắt byte-exact từ [nhom2525.nhom]. GHI NHẬN: nhánh \"cắt dời hoặc dập nổi\" có đích \"nhóm 68.14 HOẶC chương 85\" — luật 3 loại \"Chương N\" khỏi danh sách nhóm đích nên chỉ mã hoá 6814; phần \"chương 85\" còn nguyên văn trong `trich`. GHI NHẬN: `dieuKienVao` để RỖNG là ĐÚNG — nguồn không có câu ràng buộc phủ cả nhóm 25.25 (chỉ có câu \"Nhóm này bao gồm…\" và câu loại trừ).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [nhom2525.nhom] ghép đủ ba mục (A)(B)(C) và câu \"Nhóm này cũng bao gồm phế liệu mi ca và mi ca bột\"; `text` là tóm tắt của đúng các mảnh trong trích, không thêm chữ."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nêu đích danh 68.14 ✓ luật 3; `dieuKien` chép đúng nhánh \"cắt dời hoặc dập nổi từ các tấm mi ca hoặc mi ca tách lớp\". GHI NHẬN: đích của nhánh này trong nguồn là \"nhóm 68.14 hoặc chương 85\" — \"chương 85\" không phải nhóm nên không mã hoá được (luật 3); nguyên văn vẫn còn trong `trich`."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `dieuKien` KHÔNG CÓ TRONG CÂU TRÍCH. Bản nháp cắt trích bằng \"…\" NGAY GIỮA \"…(nhóm 68.14 hoặc chương 85), VÀ CÁC SẢN PHẨM ĐƯỢC LÀM TỪ CÁCH LIÊN KẾT (GHÉP) CÁC MI CA TÁCH LỚP\" ⇒ phần còn lại của trích chỉ có \"(ví dụ: micanite, micafolium)\", trong khi `dieuKien` khẳng định \"Sản phẩm làm từ mi ca tách lớp liên kết\" — câu trích KHÔNG nói điều đó. Đây đúng lớp lỗi SOAT-LO \"dieuKien thêm chữ không có trong câu trích\" (máy kiểm byte-exact không bắt vì các mảnh trích đều có thật trong nguồn). Sửa: cắt lại trích liền mạch từ \"các sản phẩm được làm từ cách liên kết…\" đến hết câu (160 ký tự) — mảnh này chứa CẢ điều kiện lẫn đích 68.14; `dieuKien` giữ nguyên (nay nằm trong trích).",
+   "sua": {
+    "trich": "các sản phẩm được làm từ cách liên kết (ghép) các mi ca tách lớp (ví dụ: micanite, micafolium) hoặc từ mi ca đã được nghiền nhão (đã được tái chế) (nhóm 68.14)."
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nêu đích danh 25.30 ✓ luật 3 (vermiculit được xếp vào 25.30); `dieuKien` chép đúng, không thêm chữ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — CÂU HỎI GỘP NHÁNH \"A HOẶC B\", VÀ NHÁNH TRONG CÂU HỎI KHÔNG CÓ TRONG TRÍCH. `hoi` hỏi \"Sản phẩm được cắt dời, dập nổi từ tấm mi ca, HOẶC làm từ mi ca tách lớp liên kết?\" nhưng (1) nhánh \"làm từ mi ca tách lớp liên kết\" đã bị LƯỚC KHỎI câu trích, (2) nhánh \"từ mi ca đã được nghiền nhão (đã được tái chế)\" có trong trích nhưng không được hỏi, (3) hai nhánh đầu lại được đưa chung về một đích 68.14 trong khi nguồn ghi đích của nhánh đầu là \"68.14 hoặc chương 85\". Sửa: thu hẹp câu hỏi còn nhánh có đích danh và cắt lại trích đúng tới \"(nhóm 68.14 hoặc chương 85)\" (140 ký tự). Nhánh \"mi ca tách lớp liên kết\" vẫn được giữ đầy đủ ở `loaiTru[1]` (đã sửa trích), nhánh \"nghiền nhão\" nằm trong trích sửa của `loaiTru[1]`.",
+   "sua": {
+    "hoi": "Sản phẩm được cắt dời hoặc dập nổi từ các tấm mi ca hoặc mi ca tách lớp?",
+    "trich": "Nhóm này không bao gồm các sản phẩm thu được bằng cách cắt dời hoặc dập nổi từ các tấm mi ca hoặc mi ca tách lớp (nhóm 68.14 hoặc chương 85)"
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi đúng MỘT nhánh (vermiculit → 25.30) ✓; `neuKhong` = 2525 là chính nhóm nên không cần nêu trong trích ✓ luật 4."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Cấu trúc (A)(B)(C) lấy nguyên văn từ [nhom2525.nhom]; `quyTac`/`tomTat` chỉ ghép lại các mảnh có trong trích, không thêm chữ nào ngoài nguồn."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [nhom2525.nhom] có đủ \"(A) Mi ca thô…(B) Tấm mi ca…(C) Mi ca tách lớp\" ✓; 2525.10 có thật trong cây HS ✓ và nguồn không phải `tax.*` ✓ luật 10."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"Nhóm này cũng bao gồm phế liệu mi ca và mi ca bột\" — có \"mi ca bột\" ✓; 2525.20 có thật trong cây ✓ luật 10."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu trích, có \"phế liệu mi ca\" ✓; 2525.30 có thật trong cây ✓ luật 10."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25251000]; `dieuKien` chép đúng tên dòng biểu thuế. Nhóm 2525 có đúng 3 dòng `tax.*` và đã đủ cả ba ✓ luật 6."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25252000] \"Bột mi ca\" ✓ luật 6."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25253000] \"Phế liệu mi ca\" ✓ luật 6."
+  }
+ ]
+}

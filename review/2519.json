@@ -1,0 +1,77 @@
+{
+ "nhom": "2519",
+ "nguoiSoat": "dev-soat-doc-lap-lo073",
+ "luc": "2026-10-28T23:30:00+07:00",
+ "phamViSoat": "Toàn bộ 10 mục của nhóm 2519 (1 phamVi + 2 loaiTru + 2 phanBiet + 2 tieuChi6 + 3 dong8), đọc cùng tmp/so-tay/nguon/2519.txt (nhom2519.nhom, ch25.chuong, wco.251910/251990, tax.25191000/25199010/25199090).",
+ "ghiChu": "XOA 0 · SUA 4 · GIU 6. Đối chiếu chéo: 0 lỗi mới; đề xuất \"bỏ cụm \"mỗi tinh thể\" khỏi ngưỡng\" KHÔNG áp — mẫu nhà 2501 loaiTru[2] (sửa ở lô 070) dùng đúng \"mỗi tinh thể ≥ 2,5g\"; bỏ \"mỗi tinh thể\" sẽ mất ý nghĩa \"ngưỡng TÍNH TRÊN TỪNG TINH THỂ\" của nguồn.",
+ "soat": 10,
+ "giu": 6,
+ "sua": 4,
+ "xoa": 0,
+ "chen": 0,
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Câu nguồn liệt kê 3 thành viên: \"các loại magiê (magiê oxit) thu được từ magiê carbonate tự nhiên, Bazơ magiê carbonate, magiê hydroxide được kết tủa từ nước biển\". Trích cũ lược bằng \"…\" và NUỐT MẤT \"Bazơ magiê carbonate\" ⇒ phạm vi nhóm hẹp lại (bỏ một thành viên có thật). Kéo trích về đủ câu, và `text` nêu đủ 3 thành viên.",
+   "sua": {
+    "text": "Magiê (hoặc giobertite) ở dạng magiê carbonate xuất hiện tự nhiên với các tỉ lệ tạp chất khác nhau; magiê (magiê oxit) thu được từ magiê carbonate tự nhiên, bazơ magiê carbonate, magiê hydroxide kết tủa từ nước biển.",
+    "trich": "Nhóm này bao gồm magiê (hoặc giobertite) ở dạng magiê carbonate xuất hiện tự nhiên với các tỉ lệ tạp chất khác nhau.…Nhóm này cũng bao gồm các loại magiê (magiê oxit) thu được từ magiê carbonate tự nhiên, Bazơ magiê carbonate, magiê hydroxide được kết tủa từ nước biển"
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "Câu nguồn có NGƯỠNG: \"trọng lượng không ít hơn 2,5g mỗi tinh thể\". `dieuKien` bỏ mất ngưỡng ⇒ loại trừ thành tuyệt đối: tinh thể magiê oxit 1 g (dưới ngưỡng, vẫn thuộc 25.19) cũng bị loại sang 38.24. Mẫu nhà đã duyệt: 2501 loaiTru[2] \"Tinh thể natri clorua nuôi cấy, mỗi tinh thể ≥ 2,5g\" (sửa ở lô 070); nền nhà: 21/24 loaiTru có ngưỡng số trong trích thì GIỮ số trong `dieuKien` (87,5 %). Giữ nguyên các từ đầu và ghép bằng dấu \";\" để không đổi tập mảnh khớp của cổng (đã đo headPhrases trước/sau: không mất mảnh nào).",
+   "sua": {
+    "dieuKien": "Tinh thể nuôi cấy magiê oxit, mỗi tinh thể ≥ 2,5g; phần tử quang học"
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lớp lỗi mất ngưỡng với loaiTru[1]: câu hỏi phân biệt không nêu \"2,5g\" ⇒ tinh thể dưới ngưỡng (không thuộc 38.24) vẫn bị dẫn sang 38.24. Bổ sung ngưỡng trong ngoặc, giữ nguyên cấu trúc câu hỏi (không nhắc mã).",
+   "sua": {
+    "hoi": "Magiê oxit có ở dạng tinh thể nuôi cấy (mỗi tinh thể ≥ 2,5g) hay phần tử quang học không?"
+   }
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "sua",
+   "lyDo": "Trích cũ lược bằng \"…\" và đẩy thêm \"magiê hydroxide được kết tủa từ nước biển\" vào mảnh mà `fact` (\"magie_oxit_thu_duoc_tu_magie_carbonat\") không nói, đồng thời lược mất \"Bazơ magiê carbonate\". Thay bằng đúng câu nguồn (không lược) — câu nói đủ cả 3 thành viên, `fact` nói đúng phần mình.",
+   "sua": {
+    "trich": "Nhóm này cũng bao gồm các loại magiê (magiê oxit) thu được từ magiê carbonate tự nhiên, Bazơ magiê carbonate, magiê hydroxide được kết tủa từ nước biển"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nguồn \"(a) Magiê carbonate bazơ đã hydrate hóa, đôi khi được hiểu là \"magiê oxit trắng dược phẩm\" nhóm 28.36\" nêu đích danh 28.36; `dieuKien` chép đúng, không thêm chữ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi giữ nguyên định ngữ giới hạn của nguồn (\"có được hiểu là... không\") — không nhắc mã; nhánh Có → 28.36, nhánh Không → 25.19."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"Nhóm này bao gồm magiê (hoặc giobertite) ở dạng magiê carbonate xuất hiện tự nhiên...\"; `magie_carbonat_xuat_hien_tu_nhien` đúng chiều cho 251910."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích đúng dòng biểu thuế tax.25191000."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích đúng dòng biểu thuế tax.25199010."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích đúng dòng biểu thuế tax.25199090 (dòng \"Loại khác\" — máy tự điền `loaiKhac`)."
+  }
+ ]
+}

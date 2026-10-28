@@ -1,0 +1,46 @@
+{
+ "nhom": "2528",
+ "nguoiSoat": "dev-soat-doc-lap-lo074",
+ "luc": "2026-10-28T22:55:00+07:00",
+ "phamViSoat": "Toàn bộ 6 mục của nhóm 2528 (1 phamVi + 2 loaiTru + 2 phanBiet + 1 dong8), đọc cùng tmp/so-tay/nguon/2528.txt (nhom2528.nhom, ch25.chuong, wco.252800, tax.25280000).",
+ "soat": 6,
+ "giu": 5,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 1 · GIU 5/6. SỬA 1 (`dong8[0].dieuKien`): bản nháp rút gọn tên dòng biểu thuế làm RƠT mất mốc \"chứa không quá 85% H3BO3\" ⇒ tên dòng mô tả cả axit boric > 85 % (vốn thuộc 28.10) chứ không chỉ phần ≤ 85 %; mẫu nhà (0401) giữ ngưỡng trong `dieuKien` của dòng 8 số. GHI NHẬN: `dieuKienVao` để RỖNG là ĐÚNG — ngưỡng 85 % chỉ ràng cho \"axit boric tự nhiên\", KHÔNG phủ cả nhóm 25.28 (borat tự nhiên không có ngưỡng) ⇒ đặt vào `dieuKienVao` sẽ loại nhầm mọi borat. GHI NHẬN: `tieuChi6` để RỖNG là ĐÚNG — nhóm 2528 không có nút 6 số trong cây HS (chỉ có dòng lá 25280000); dùng \"252800\" là mã 6 số không có thật. GHI NHẬN: `dong8[].tieuChi` hiện KHÔNG được runtime đọc (`lib/so-tay-gates.js` chấm ngưỡng dòng 8 số bằng `dieuKienSo`, không đọc `tieuChi`) ⇒ việc đổi sang `dieuKienSo` sẽ MỞ cổng chốt dòng 8 số lúc chạy — quyết định của người duyệt, không phải của người soát (giữ nguyên, đã thêm mốc 85 % vào `dieuKien`).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [nhom2528.nhom] mở đầu bằng câu phạm vi \"Nhóm này chỉ bao gồm các khoáng chất borat tự nhiên do khai thác…\"; `text` rút gọn đúng nội dung câu. GHI NHẬN: câu nguồn còn một cách thu axit boric tự nhiên (qua nước ngầm) bị lược bằng \"…\" — không phải ngoại lệ nên không mất thông tin quyết định; phần ngưỡng 85 % nằm ở `loaiTru[0]` và `dong8[0]`."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nêu đích danh 28.10 ✓ luật 3 và có số 85 trong câu ✓ luật 5; `dieuKien` chép đúng \"nhiều hơn 85% H3BO3\", không đảo chiều (nhiều hơn 85 % ⇒ sang 28.10)."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nêu đích danh 28.40 ✓ luật 3; `dieuKien` gộp HAI nhánh (\"natri borat đã tinh chế\" + \"natri borat thu được bằng cách làm bay hơi nước muối phức hợp từ một số hồ nước mặn\") — cả hai cùng về 28.40 trong nguồn nên gộp là đúng, không phải lỗi \"A hoặc B gộp đích\"."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi đúng MỘT nhánh có đích danh 28.10 ✓; `neuKhong` = 2528 là chính nhóm ✓ luật 4; chiều hỏi/đáp khớp với câu loại trừ (có > 85 % ⇒ 28.10)."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi đúng nhánh natri borat ⇒ 28.40 ✓; `neuKhong` = 2528 ✓ luật 4."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — TÊN DÒNG 8 SỐ RÚT GỌN MẤT MỐC NGƯỠNG. Bản nháp để `dieuKien` = \"Quặng borat tự nhiên và tinh quặng borat (đã hoặc chưa nung); axit boric tự nhiên\", bỏ mất vế \"chứa không quá 85% H3BO3 tính theo trọng lượng khô\" có trong tên dòng biểu thuế ⇒ mô tả dòng 25280000 đúng ra phải là \"axit boric tự nhiên chứa KHÔNG QUÁ 85 %\", nhưng bản nháp mô tả cả axit boric > 85 % (vốn thuộc 28.10, đã có ở `loaiTru[0]`). Mẫu nhà (0401: \"Sữa và kem, hàm lượng chất béo không quá 1%…\") giữ ngưỡng ngay trong `dieuKien` của dòng 8 số. Sửa: đưa mốc \"không quá 85% H3BO3\" vào `dieuKien` (81 ký tự ≤ trần clip 90); giữ nguyên `tieuChi` {ham_luong_h3bo3_khong_qua_85 ≤ 85 %} và `trich` nguyên văn.",
+   "sua": {
+    "dieuKien": "Quặng borat tự nhiên và tinh quặng borat; axit boric tự nhiên không quá 85% H3BO3"
+   }
+  }
+ ]
+}

@@ -1,0 +1,159 @@
+{
+ "nhom": "2526",
+ "phamVi": {
+  "text": "Steatite tự nhiên và talc tự nhiên; steatite tự nhiên có thể được tạo hình; các dạng thường gặp của talc là dạng đã nghiền thành bột hoặc thô.",
+  "nguon": "nhom2526.nhom",
+  "trich": "Steatite tự nhiên và talc tự nhiên đều là các chất khoáng giàu magiê silicate chứa nước.…Steatite tự nhiên thuộc nhóm này có thể được tạo hình hoặc được xử lý bằng cách tương tự như các đá của nhóm 25.15…Các dạng thường gặp của talc là dạng đã nghiền thành bột hoặc thô.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Phấn thợ may có thành phần là steatit",
+   "sangNhom": "9609",
+   "nguon": "nhom2526.nhom",
+   "trich": "Nhóm này không bao gồm \"phấn thợ may\" có thành phần là steatit (nhóm 96.09).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Chất này có phải là \"phấn thợ may\" có thành phần là steatit không?",
+   "neuCo": "9609",
+   "neuKhong": "2526",
+   "nguon": "nhom2526.nhom",
+   "trich": "Nhóm này không bao gồm \"phấn thợ may\" có thành phần là steatit (nhóm 96.09).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "252610",
+   "fact": "steatite_not_crushed_or_powdered",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.252610",
+   "trich": "252610 Steatite; natural, (not crushed or powdered), whether or not roughly trimmed or merely cut, by sawing or otherwise, into blocks or slabs of a rectangular (including square) shape; talc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "252620",
+   "fact": "steatite_crushed_or_powdered",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.252620",
+   "trich": "252620 Steatite; natural, crushed, powdered, whether or not roughly trimmed or merely cut, by sawing or otherwise, into blocks or slabs of a rectangular (including square) shape; talc",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "25261000",
+   "dieuKien": "Chưa nghiền, chưa làm thành bột",
+   "tieuChi": null,
+   "nguon": "tax.25261000",
+   "trich": "25261000 - Chưa nghiền, chưa làm thành bột",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "25262010",
+   "dieuKien": "Bột talc",
+   "tieuChi": null,
+   "nguon": "tax.25262010",
+   "trich": "25262010 - - Bột talc",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "25262090",
+   "dieuKien": "Loại khác",
+   "tieuChi": null,
+   "nguon": "tax.25262090",
+   "trich": "25262090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "252620",
+    "truAnhEm": [
+     "25262010"
+    ],
+    "toTienCoTen": "252620",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2526",
+    "cap": 4,
+    "cha": "25",
+    "tenVi": "Quặng steatit tự nhiên, đã hoặc chưa đẽo thô hoặc mới chỉ cắt, bằng cưa hay các cách khác, thành các khối hoặc tấm hình chữ nhật (kể cả hình vuông); talc.",
+    "tenEn": "Natural steatite; whether or not roughly trimmed or merely cut, by sawing or otherwise, into blocks or slabs of a rectangular (including square) shape; talc",
+    "suyRa": false
+   },
+   {
+    "id": "25261000",
+    "cap": 8,
+    "cha": "2526",
+    "tenVi": "Chưa nghiền, chưa làm thành bột",
+    "tenEn": "Steatite; natural, (not crushed or powdered), whether or not roughly trimmed or merely cut, by sawing or otherwise, into blocks or slabs of a rectangular (including square) shape; talc",
+    "suyRa": false,
+    "laPhanNhom": "252610"
+   },
+   {
+    "id": "252620",
+    "cap": 6,
+    "cha": "2526",
+    "tenVi": "Đã nghiền hoặc làm thành bột",
+    "tenEn": "Steatite; natural, crushed, powdered, whether or not roughly trimmed or merely cut, by sawing or otherwise, into blocks or slabs of a rectangular (including square) shape; talc",
+    "suyRa": false
+   },
+   {
+    "id": "25262010",
+    "cap": 8,
+    "cha": "252620",
+    "tenVi": "Bột talc",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "25262090",
+    "cap": 8,
+    "cha": "252620",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2526.nhom",
+  "tax.25261000",
+  "tax.25262010",
+  "tax.25262090",
+  "wco.252610",
+  "wco.252620"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T15:55:54.367Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

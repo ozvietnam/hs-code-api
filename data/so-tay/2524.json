@@ -1,0 +1,133 @@
+{
+ "nhom": "2524",
+ "phamVi": {
+  "text": "Amiăng thô ở dạng đá, các sợi thô, sợi đã được đập nhỏ hoặc đã rửa (đã hoặc chưa phân loại theo chiều dài sợi), amiăng ở dạng vẩy hoặc bột kể cả dạng amiăng phế liệu.",
+  "nguon": "nhom2524.nhom",
+  "trich": "Nhóm này áp dụng cho amiăng thô ở dạng đá, cho các sợi thô, sợi đã được đập nhỏ hoặc đã rửa, đã hoặc chưa được phân loại theo chiều dài sợi, cũng áp dụng cho amiăng ở dạng vẩy hoặc bột kể cả dạng amiăng phế liệu",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Các sản phẩm hoàn thiện của amiăng",
+   "sangNhom": "6812",
+   "nguon": "nhom2524.nhom",
+   "trich": "Nhóm này loại trừ sợi đã được gia công nhiều hơn (ví dụ nhuộm, chải...) và các sản phẩm hoàn thiện của amiăng (nhóm 68.12)",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Sản phẩm là các sản phẩm hoàn thiện của amiăng?",
+   "neuCo": "6812",
+   "neuKhong": "2524",
+   "nguon": "nhom2524.nhom",
+   "trich": "Nhóm này loại trừ sợi đã được gia công nhiều hơn (ví dụ nhuộm, chải...) và các sản phẩm hoàn thiện của amiăng (nhóm 68.12)",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "252410",
+   "fact": "amiang_crocidolite_xanh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom2524.nhom",
+   "trich": "Amiăng crocidolite hay còn gọi là amiăng xanh, nó có độ bền kéo hơn, độ chịu nhiệt thấp hơn và sợi đàn hồi kém so với các dạng khác của amiăng và có tính chịu axit nhưng không chịu kiềm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "252490",
+   "fact": "asbestos_other_than_crocidolite",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.252490",
+   "trich": "252490 Asbestos; other than crocidolite (blue asbestos)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "25241000",
+   "dieuKien": "Crocidolite",
+   "tieuChi": null,
+   "nguon": "tax.25241000",
+   "trich": "25241000 - Crocidolite",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "25249000",
+   "dieuKien": "Loại khác",
+   "tieuChi": null,
+   "nguon": "tax.25249000",
+   "trich": "25249000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "2524",
+    "truAnhEm": [
+     "25241000"
+    ],
+    "toTienCoTen": "2524",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2524",
+    "cap": 4,
+    "cha": "25",
+    "tenVi": "Amiăng",
+    "tenEn": "Asbestos",
+    "suyRa": false
+   },
+   {
+    "id": "25241000",
+    "cap": 8,
+    "cha": "2524",
+    "tenVi": "Crocidolite",
+    "tenEn": "Asbestos; crocidolite (blue asbestos)",
+    "suyRa": false,
+    "laPhanNhom": "252410"
+   },
+   {
+    "id": "25249000",
+    "cap": 8,
+    "cha": "2524",
+    "tenVi": "Loại khác",
+    "tenEn": "Asbestos; other than crocidolite (blue asbestos)",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "252490"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2524.nhom",
+  "tax.25241000",
+  "tax.25249000",
+  "wco.252490"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T15:55:54.361Z",
+  "ms": 88
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

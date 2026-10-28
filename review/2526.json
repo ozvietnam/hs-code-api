@@ -1,0 +1,57 @@
+{
+ "nhom": "2526",
+ "nguoiSoat": "dev-soat-doc-lap-lo074",
+ "luc": "2026-10-28T22:55:00+07:00",
+ "phamViSoat": "Toàn bộ 8 mục của nhóm 2526 (1 phamVi + 1 loaiTru + 1 phanBiet + 2 tieuChi6 + 3 dong8), đọc cùng tmp/so-tay/nguon/2526.txt (nhom2526.nhom, ch25.chuong, wco.252610/252620, tax.25261000/25262010/25262090).",
+ "soat": 8,
+ "giu": 7,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 1 (2 trường) · GIU 7/8. SỬA 1 (`phamVi`: `text` + `trich`): bản nháp gộp vế \"thô hoặc đã nghiền thành bột\" (câu nguồn CHỈ nói về talc) cho cả steatit lẫn talc, đồng thời làm HẸP phạm vi nhóm (bỏ mất câu steatit tự nhiên có thể được tạo hình). Sửa: `trich` nối thêm câu về steatit tự nhiên, cắt byte-exact từ nguồn. GHI NHẬN: `dieuKienVao` để RỖNG là ĐÚNG — nguồn không có câu ràng buộc phủ cả nhóm 25.26. GHI NHẬN: chú giải Chương 25 ghi \"Tương tự, các nguyên vật liệu của các nhóm 25.06, 24.14, 25.15, 25.16, 25.18 và 25.26 mới chỉ được đẽo thô…\" là loại trừ CHUNG của Chương — không chép vào từng nhóm (mẫu nhà).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `text` GỘP NHẠM VỀ CÓ CHỦ NGỮ KHÁC, PHẠM VI NHÓM HẸP LẠI. Bản nháp ghi \"Steatite tự nhiên và talc tự nhiên, thô hoặc đã nghiền thành bột.\" Nhưng câu trích \"Các dạng thường gặp của talc là dạng đã nghiền thành bột hoặc thô\" CHỈ nói về TALC; còn steatit tự nhiên theo nguồn \"có thể được tạo hình hoặc được xử lý bằng cách tương tự như các đá của nhóm 25.15\" ⇒ (1) vế \"thô hoặc đã nghiền thành bột\" bị gán nhầm cho cả hai vật liệu, (2) phạm vi nhóm bị thu hẹp, đá xà phòng đã tạo hình không được nêu. Sửa: `text` nêu đúng ba vế có trong trích (steatit tự nhiên · steatit tự nhiên có thể được tạo hình · các dạng thường gặp của talc), `trich` nối thêm câu \"Steatite tự nhiên thuộc nhóm này có thể được tạo hình…\" — mọi mảnh cắt từ [nhom2526.nhom] nguyên văn (mảnh 117 + 64 ký tự, tổng 270 ≤ 300).",
+   "sua": {
+    "text": "Steatite tự nhiên và talc tự nhiên; steatite tự nhiên có thể được tạo hình; các dạng thường gặp của talc là dạng đã nghiền thành bột hoặc thô.",
+    "trich": "Steatite tự nhiên và talc tự nhiên đều là các chất khoáng giàu magiê silicate chứa nước.…Steatite tự nhiên thuộc nhóm này có thể được tạo hình hoặc được xử lý bằng cách tương tự như các đá của nhóm 25.15…Các dạng thường gặp của talc là dạng đã nghiền thành bột hoặc thô."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nêu đích danh 96.09 ✓ luật 3; `dieuKien` chép nguyên văn \"phấn thợ may\" (giữ cả dấu nháy kép) và chữ \"steatit\" đúng như nguồn, không sửa lỗi chính tả gốc."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi đúng MỘT nhánh có đích danh 96.09 ✓; `neuKhong` = 2526 là chính nhóm ✓ luật 4."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.252610] có mã 252610 ✓ luật 10; `fact` đọc đúng chiều (\"not crushed or powdered\") và khớp với dòng biểu thuế 25261000 \"Chưa nghiền, chưa làm thành bột\"."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.252620] ✓; 2526.20 có thật trong cây HS ✓ luật 10."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25261000] \"Chưa nghiền, chưa làm thành bột\" ✓ luật 6."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25262010] \"Bột talc\" ✓ luật 6."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25262090] \"Loại khác\" — `loaiKhac` do máy tự điền ✓ luật 6."
+  }
+ ]
+}
