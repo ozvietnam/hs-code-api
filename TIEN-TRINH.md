@@ -11151,7 +11151,7 @@ Cấu trúc lô **không đổi** (27 mục): `phamVi` 6 · `dieuKienVao` 3 · `
 
 # LÔ 077 — soạn sổ tay chú giải (phiên `dev-zcode-mm`, 29/10/2026 00:40)
 
-- **Nhánh:** `so-tay/lo-077` (worktree `hs-code-api-wt-st-lo077`; base `origin/main` = `69c7800` = lô 075)
+- **Nhánh:** `so-tay/lo-077` (worktree `hs-code-api-wt-st-lo077`; base `origin/main` = `69c7800` = lô 075) — **PR #518**, **KHÔNG merge** (chờ soát độc lập)
 - **Nhóm:** `2613 2614 2615 2616 2617 2618` (Chương 26 — Quặng, xỉ và tro: molipden · titan · zircon + niobi/tantali/vanadi · bạc & kim loại quý · antimon/beri/bismuth/germanium/thuỷ ngân · xỉ hạt)
 - **Nguồn:** `tmp/so-tay/nguon/{2613…2618}.txt` (44.308 ký tự) + `_he-thong.txt` — đọc HẾT 6 tệp
 
