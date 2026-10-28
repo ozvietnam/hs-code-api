@@ -11404,6 +11404,20 @@ Người soát: `dev-soat-doc-lap-lo081` — **KHÁC người soạn** (`dev-zco
 | `npm run so-tay:check` | **626 nhóm, 15.633 mục, 0 mục không kiểm được nguồn** |
 | `npm test` | **23 pass, 0 fail — ALL TESTS PASSED** |
 
+#### Bước 10 — gỡ xung đột để CI chạy (PR #522 bị CONFLICTING ⇒ workflow `pull_request` KHÔNG chạy)
+
+Sau khi push vòng soát, `gh pr view 522` báo **`mergeable=CONFLICTING` / `mergeStateStatus=DIRTY`** ⇒ GitHub **không tạo
+được merge ref** ⇒ workflow `pull_request` (`test-all.yml`, `accuracy-regression.yml`) **KHÔNG chạy** cho commit mới —
+`gh run list --branch so-tay/lo-081` rỗng, `gh pr checks` chỉ còn dòng Vercel (đúng bài học *"PR sổ tay CONFLICTING ⇒
+CI im lặng"*). Nguyên nhân: main đã gộp lô 079 (#520) + lô 080 (#521), cùng sửa `TIEN-TRINH.md` + `docs/giao-viec/so-tay-lo.csv`.
+
+Gỡ xung đột (theo mẹo của bài học):
+
+1. `node scripts/merge-tien-trinh.mjs --apply` — ghép theo **RANH GIỚI KHỐI**: **78 khối của HEAD + 1 khối của origin/main**
+   (`# LÔ 080 — SOÁT ĐỘC LẬP`) = 79 khối. Tự kiểm: **mọi heading `# …` của cả hai bên đều còn** (85 + 86 → 86, không mất khối nào).
+2. `docs/giao-viec/so-tay-lo.csv` — **mỗi dòng lấy trạng thái mới nhất**: dòng **079** (lô 079 đang làm) + **080** (lô 080 xong, `pr=521`) từ main; dòng **081** giữ của nhánh này (`dang-lam` / `dev-zcode-mm`). **181 dòng trước và sau** ✓.
+3. Push ⇒ CI chạy ngay (commit `e2bdd0a`).
+
 #### Còn mở cho người duyệt (ngoài phạm vi soát, KHÔNG tự sửa)
 
 1. **Khối "PHÂN CHƯƠNG II" dính trong `data/chu-giai-heading.json` → `2805.nhom`** (mục 3 ở trên) — lỗi tầng dữ liệu.
