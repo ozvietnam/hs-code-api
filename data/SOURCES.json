@@ -281,6 +281,10 @@
       "descriptionVi": "Bản rút gọn bảng mã HS ↔ văn bản danh mục của kho cộng đồng oz-wiki-plhq (dist/hs-index.json, CC BY 4.0): mã 4/6/8 số, loại tác động, điều kiện, tình trạng hiệu lực văn bản — lib/plhq-registry.js hsListings, trường hsListings trong /api/tax",
       "builtBy": "scripts/sync-plhq.mjs"
     },
+    "kdtv-010124-xac-minh.json": {
+      "kind": "CURATED",
+      "descriptionVi": "7 nhóm 6 số vắng sạch khỏi mọi bảng của TT 01/2024/TT-BNNPTNT (đối chiếu toàn văn PDF gốc p2–p5 bằng pdftotext, chuẩn hoá khoảng trắng) — dùng làm cổng xác minh cho lib/kdtv-010124.js tắt KDTV sai chiều theo issue #494. Rà soát bằng scripts/ra-soat-kdtv-494.mjs; nguồn PDF liệt kê trong trường nguon của file."
+    },
     "plhq-registry.json": {
       "kind": "DERIVED",
       "descriptionVi": "Bản chụp sổ đăng ký văn bản của kho cộng đồng oz-wiki-plhq (CC BY 4.0): hiệu lực, thay thế, mức xác minh — lib/plhq-registry.js, legalBasisRegistry + policyBasisReview trong /api/tax",
