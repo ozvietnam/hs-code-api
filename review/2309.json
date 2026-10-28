@@ -1,0 +1,103 @@
+{
+ "nhom": "2309",
+ "nguoiSoat": "dev-soat-doc-lap-lo069",
+ "luc": "2026-10-28T16:35:00+07:00",
+ "phamViSoat": "Toàn bộ 18 mục của nhóm 2309 (1 phamVi + 6 loaiTru + 2 tieuChi6 + 9 dong8), đọc cùng tmp/so-tay/nguon/2309.txt (nhom2309.nhom, ch23.chuong, phan23.phan, wco.230910/230990, tax.23091010…23099090).",
+ "soat": 18,
+ "giu": 18,
+ "sua": 0,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 0 · GIU 18. Nhóm lớn nhất lô nhưng mọi mục đều đúng: 6 loại trừ đều có DẤU HIỆU LOẠI TRỪ và đích NÊU ĐÍCH DANH, không tách nhánh của \"A hoặc B\", không mất định ngữ giới hạn. GHI NHẬN — 4 mục loại trừ CÓ THẬT trong nguồn nhưng bản nháp không ghi, đều là giới hạn kỹ thuật đã biết và đã nêu trong PR #506: (b) \"Các hỗn hợp đơn giản của hạt ngũ cốc (Chương 10), của bột ngũ cốc hoặc của bột rau đậu (Chương 11)\" và (f) \"Các sản phẩm của Chương 29.\" và (h) \"Các chất protein thuộc Chương 35.\" — nguồn chỉ nêu đích bằng SỐ CHƯƠNG, không nêu mã nhóm 4 số ⇒ `sangNhom` không mã hoá được (đúng luật lô 047: bỏ mục + ghi rõ trong PR, không đoán mã); (e) \"Vitamin … (nhóm 29.36)\" — câu nguồn dài 648 ký tự, vượt trần 600 của máy, mà cắt bớt để lọt sẽ nuốt vế ràng buộc \"với điều kiện … không dùng cho việc sử dụng chung\" và biến loại trừ hẹp thành rộng ⇒ thà bỏ hơn ghi sai. Người soát độc lập đối chiếu lại bản gốc: xác nhận 4 mục này bị bỏ CÓ CHỦ ĐÍCH, không phải sơ suất — GIỮ nguyên bản nháp, đề xuất chuyển thành luật máy cho các lô sau.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom2309.nhom]: câu mở đầu định nghĩa nhóm + 3 mục (1)(2)(3) liên tiếp, mỗi chỗ lược đúng một dấu \"…\" ở ranh giới đoạn — KHÔNG nuốt ngoại lệ nào (đoạn bị lược giữa các mảnh chỉ là xuống dòng trống). `text` nêu đúng phạm vi nhóm: thức ăn gia súc đã làm ngọt + thức ăn chăn nuôi đã chế biến, gồm hỗn hợp chất dinh dưỡng dùng làm thức ăn hoàn chỉnh / bổ sung / sản xuất thức ăn hoàn chỉnh hoặc bổ sung — tức nêu đủ 3 phần (I), (II)(A), (II)(B), (II)(C) chứ không dính một phần. 218 ký tự, vừa dưới trần clip 220 của runtime. GIỮ."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom2309.nhom] (mục (a) của khối \"Nhóm này không bao gồm:\"). Đích 07.14, 12.14, 23.01 NÊU ĐÍCH DANH trong chính câu trích, `sangNhom` \"0714|1214|2301\" phủ hết ba mã. `dieuKien` = \"Viên nguyên liệu thuộc nhóm cụ thể, kết dính ≤ 3%\" — cụm ứng viên \"viên nguyên liệu\" (3 âm tiết đặc thù) ⇒ cổng loại trừ BẮN ĐÚNG, không challenge oan; viên chất dính ≤ 3 % còn lại thuộc 23.01 đã có ở 2301/2302. GIỮ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom2309.nhom] (mục (c)): đích 19.01 và 21.06 NÊU ĐÍCH DANH. `dieuKien` \"Chế phẩm dùng cho người hoặc chăn nuôi, tuỳ bản chất\" GIỮ định ngữ giới hạn \"tuỳ bản chất\" (chính là điều kiện loại trừ: dùng làm thức ăn chăn nuôi hay thức ăn cho người tùy bản chất/độ tinh khiết/tỉ lệ) ⇒ không biến loại trừ có điều kiện thành loại trừ dứt khoát. GHI NHẬN: câu nguồn có thêm định ngữ \"có thể\" trước \"được dùng\" — thêm \"có thể\" vào `dieuKien` sẽ đẩy dài lên 59 ký tự, VƯỢT trần clip 55 của runtime và cắt mất chính định ngữ \"tuỳ bản chất\" đang giữ ⇒ không sửa (nền nhà: 64/2.656 = 2,4 % loaiTru cũng rơi định ngữ tương tự, trong đó 45 % kho vượt trần 55). GIỮ."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom2309.nhom] (mục (d)) \"Phế thải, phế liệu và sản phẩm phụ thực vật thuộc nhóm 23.08.\" — đích 23.08 NÊU ĐÍCH DANH; cụm ứng viên \"phế thải / phế liệu / sản phẩm phụ thực\" đều là cụm đặc thù của ngành hàng (không phải từ chung) ⇒ bắn đúng. GIỮ."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom2309.nhom] (mục (g)) \"Dược phẩm thuộc nhóm 30.03 và 30.04.\" — đích NÊU ĐÍCH DANH, `sangNhom` \"3003|3004\" phủ cả hai. GIỮ."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom2309.nhom] (mục (ij)): đích 38.08 NÊU ĐÍCH DANH; `dieuKien` giữ trọn vế \"được sử dụng trong việc chế biến thức ăn chăn nuôi nhằm kiểm soát các loại vi sinh vật không mong muốn\" trong câu trích (clip 55 chỉ cắt ở \"trong thức ăn chăn nuôi…\"), nghĩa không bị đảo. GIỮ."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom2309.nhom] (mục (k)): đích 38.24 NÊU ĐÍCH DANH. GHI NHẬN: nguồn có định ngữ \"hàm lượng chất kháng sinh thường không quá 70 %\" — `dieuKien` không đưa ngưỡng này vào (đúng luật: ngưỡng của mục loại trừ không phải điều kiện vào nhóm), và câu trích giữ nguyên văn nên không mất thông tin. GIỮ."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.230910] \"Dog or cat food; put up for retail sale, used in animal feeding\"; tiêu chí cấp 6 số mô tả đúng đặc điểm phân biệt 2309.10 (đóng gói để bán lẻ). GIỮ."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.230990] \"Dog or cat food; (not put up for retail sale), used in animal feeding\". `fact` giữ nghĩa DƯƠNG (\"put_up_for_retail_sale\") kèm value=false ⇒ nghĩa là \"KHÔNG đóng gói để bán lẻ\" — đúng chiều (luật lô 066: fact dương + value=false là hợp lệ; chỉ fact ÂM \"khong_phai_X\" mới bắt buộc value=true). GIỮ."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23091010]; `dieuKien` chép đúng tên dòng biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 23091090: câu trích nguyên văn [tax.23091090]; `dieuKien` theo mẫu nhà (50 ký tự, dưới trần clip 90). GIỮ."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23099011]; `dieuKien` chép đúng tên dòng. GIỮ."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23099012]; `dieuKien` chép đúng tên dòng. GIỮ."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23099013]; `dieuKien` chép đúng tên dòng. GIỮ."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23099014]; `dieuKien` chép đúng tên dòng. GIỮ."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 23099019: câu trích nguyên văn [tax.23099019]; `dieuKien` ghi \"Tiêu đề quốc gia 2309.90.1\" — đúng cấu trúc cây (2309.90.1 là tiêu đề quốc gia cha của các dòng .11–.19), theo mẫu nhà của lô 068 (2304.00.2). GIỮ."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23099020]; `dieuKien` chép đúng tên dòng. GIỮ."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 23099090: câu trích nguyên văn [tax.23099090]; `dieuKien` theo mẫu nhà, dưới trần clip 90. GIỮ."
+  }
+ ]
+}

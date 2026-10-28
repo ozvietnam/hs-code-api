@@ -1,0 +1,28 @@
+{
+ "nhom": "2307",
+ "nguoiSoat": "dev-soat-doc-lap-lo069",
+ "luc": "2026-10-28T16:35:00+07:00",
+ "phamViSoat": "Toàn bộ 3 mục của nhóm 2307 (1 phamVi + 1 loaiTru + 1 dong8), đọc cùng tmp/so-tay/nguon/2307.txt (nhom2307.nhom, ch23.chuong, phan23.phan, wco.230700, tax.23070000).",
+ "soat": 3,
+ "giu": 3,
+ "sua": 0,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 0 · GIU 3. Nhóm chỉ có 1 dòng biểu thuê nên sổ tay mỏng — đúng với nguồn. Loại trừ duy nhất (kem tartar/tartrate canxi) đã GIỮ định ngữ giới hạn \"tuỳ theo từng trường hợp\" nguyên văn trong `dieuKien` ⇒ không biến loại trừ có điều kiện thành loại trừ dứt khoát.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom2307.nhom], ghép 2 đoạn bằng \"…\". Đoạn bị lược (đoạn về dạng bột/hạt của bã rượu vang + đoạn định nghĩa cặn rượu + câu \"Cặn rượu đã được rửa này cũng được phân loại trong nhóm này\" + câu về công dụng) KHÔNG chứa ngoại lệ (\"trừ\"/\"tuy nhiên\"/\"với điều kiện\"/\"không kể\") và mệnh đề bao hàm \"cặn rượu đã rửa\" VẪN CÓ trong chính câu trích (\"kể cả cặn rượu đã rửa\"). `text` nêu đúng phạm vi nhóm (bã rượu vang + cặn rượu vang kể cả đã rửa), không thêm chữ ngoài câu trích. GIỮ."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom2307.nhom] \"Nhóm này không bao gồm kem tartar (nhóm 29.18) và tartrate canxi (nhóm 29.18 hoặc 38.24, tuỳ theo từng trường hợp).\" — có DẤU HIỆU LOẠI TRỪ (\"không bao gồm\"). `dieuKien` GIỮ NGUYÊN định ngữ giới hạn \"tuỳ theo từng trường hợp\" (55 ký tự, vừa tròn trần clip 55 của runtime) ⇒ không biến \"loại trừ có điều kiện\" thành loại trừ dứt khoát (đúng bài học lô 061: mất định ngữ giới hạn ⇒ sai chiều). `sangNhom` \"2918|3824\" phủ HẾT ba mã nêu trong câu trích (29.18 và 29.18 hoặc 38.24) — không tách một nhánh của \"A hoặc B\". GIỮ."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23070000] \"23070000 Bã rượu vang; cặn rượu\"; `dieuKien` chép đúng tên dòng biểu thuế, không thêm chữ. GIỮ."
+  }
+ ]
+}

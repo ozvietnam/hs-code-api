@@ -1,0 +1,83 @@
+{
+ "nhom": "2402",
+ "nguoiSoat": "dev-soat-doc-lap-lo069",
+ "luc": "2026-10-28T16:35:00+07:00",
+ "phamViSoat": "Toàn bộ 13 mục của nhóm 2402 (1 phamVi + 2 loaiTru + 1 phanBiet + 3 tieuChi6 + 6 dong8), đọc cùng tmp/so-tay/nguon/2402.txt (nhom2402.nhom, ch24.chuong, phan24.phan, sen.24022010/24022020, wco.240210/240220/240290, tax.24021000…24029020).",
+ "soat": 13,
+ "giu": 12,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 1 · GIU 12. SỬA 1: phanBiet[0] — hai nhánh đích chỉ trỏ tới dòng XÌ GÀ (24021000 / 24029010) trong khi câu hỏi áp cho CẢ nhóm (kể cả thuốc lá điếu) ⇒ một tờ khai \"thuốc lá điếu có chứa lá thuốc lá\" bị dẫn tới 2402.10 (xì gà) thay vì 2402.20 — đúng lớp lỗi lô 066 (nhánh phải ràng điều kiện cho CẢ HAI nhánh). GHI NHẬN (không sửa): loaiTru[1] (loại trừ sang 24.04) là loại trừ IM LẶNG — headPhrases() cắt tại \"dùng\" nên còn lại \"sản phẩm\", cả hai âm tiết đều thuộc GENERIC ⇒ cổng không bao giờ bắn; không có cách sửa an toàn (mọi danh từ đặc thù trong câu nguồn — \"lá thuốc lá\", \"thuốc lá hoàn nguyên\" — sẽ khớp oan với tờ khai thuốc lá điếu của chính nhóm 24.02), nền nhà 21,7 % loaiTru cũng im lặng. GHI NHẬN (không mã hoá được, đã nêu trong PR #506): nguồn có loại trừ \"Nhóm này không bao gồm các loại thuốc lá điếu dược phẩm (Chương 30)\" — chỉ nêu đích bằng SỐ CHƯƠNG, không có mã nhóm 4 số ⇒ không ghi được thành loaiTru (đúng luật lô 047: bỏ mục + ghi rõ trong PR, không đoán mã); kèm vế \"Tuy nhiên một số thuốc lá điếu có chứa … để làm giảm thói quen hút thuốc nhưng không có đặc tính dược liệu, vẫn được phân loại trong nhóm này\" — là câu bao hàm, không phải ngoại lệ của câu trích nên không kéo vào phamVi.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom2402.nhom] \"Nhóm này chỉ bao gồm xì gà (đã được cuộn hoặc chưa), xì gà xén hai đầu, xì gà nhỏ và thuốc lá điếu, được làm từ lá thuốc lá hoặc từ các chất thay thế lá thuốc lá.\" — nguyên văn, không lược gì. `text` nêu đúng phạm vi nhóm (4 loại sản phẩm: xì gà đã cuộn/chưa cuộn, xì gà xén hai đầu, xì gà nhỏ, thuốc lá điếu; làm từ lá thuốc lá hoặc chất thay thế) và không thêm chữ nào ngoài câu trích; 141 ký tự, dưới trần clip 220. GHI NHẬN: `text` bỏ chữ \"chỉ\" của nguồn (\"Nhóm này CHỈ bao gồm …\") — liệt kê trong `text` vốn đã là liệt kê đầy đủ (xì gà + thuốc lá điếu) nên \"chỉ\" không mang thêm thông tin phân loại ⇒ không sửa. GIỮ."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom2402.nhom] \"Các loại thuốc lá để hút khác, có hoặc không chứa các chất thay thế lá thuốc lá với mọi tỉ lệ, bị loại trừ (nhóm 24.03).\" — có DẤU HIỆU LOẠI TRỪ (\"bị loại trừ\"); đích 24.03 NÊU ĐÍCH DANH. `dieuKien` = \"Các loại thuốc lá để hút khác\" ⇒ cụm ứng viên \"loại thuốc lá\" (3 âm tiết đặc thù, KHÔNG bị định ngữ cắt) ⇒ cổng loại trừ bắn đúng mà không challenge oan (đây là bản sửa của người soạn cho lô 069; người soát độc lập đã đo lại bằng headPhrases() thật). GIỮ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom2402.nhom] \"Nhóm này không bao gồm các sản phẩm có chứa lá thuốc lá, thuốc lá hoàn nguyên hoặc các sản phẩm thay thế lá thuốc lá, ở dạng tương tự như các sản phẩm mô tả ở trên nhưng được dùng để hút mà không cần đốt cháy (nhóm 24.04).\" — có DẤU HIỆU LOẠI TRỪ (\"không bao gồm\"); đích 24.04 NÊU ĐÍCH DANH. `dieuKien` nêu đúng đặc điểm phân biệt (\"dùng để hút mà không cần đốt cháy\"), không thêm tên phân nhóm. GHI NHẬN: cụm ứng viên rỗng (im lặng) — xem ghiChu. GIỮ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — NHÁNH ĐÍCH CHỈ PHỦ MỘT PHẦN (đúng bài học lô 066 mục 5: \"phanBiet có nhánh không chỉ đúng MỘT dòng 8 số ⇒ phải ràng điều kiện cho CẢ HAI nhánh\"). Câu hỏi \"Hàng có chứa lá thuốc lá hay chỉ làm từ chất thay thế lá thuốc lá?\" áp cho CẢ nhóm 24.02, nhưng `neuCo` chỉ trỏ 2402.10.00 (dòng XÌ GÀ có chứa lá thuốc lá) và `neuKhong` chỉ trỏ 2402.90.10 (dòng XÌ GÀ làm từ chất thay thế) ⇒ một tờ khai \"thuốc lá điếu có chứa lá thuốc lá\" trả lời \"có\" sẽ bị dẫn tới 2402.10.00 (XÌ GÀ) thay vì 2402.20 (thuốc lá điếu); tương tự, \"thuốc lá điếu làm từ chất thay thế lá thuốc lá\" sẽ bị dẫn tới 2402.90.10 thay vì 2402.90.20. Sửa: (1) `neuCo` = \"24021000|24022010|24022020|24022090\" (phủ TRỌN phân nhóm 2402.10 — xì gà có chứa lá thuốc lá — VÀ phân nhóm 2402.20 — thuốc lá điếu có chứa lá thuốc lá, theo mục (1) và mục (2) của chú giải nhom2402); (2) `neuKhong` = \"24029010|24029020\" (phủ TRỌN phân nhóm 2402.90 — xì gà và thuốc lá điếu làm từ các chất thay thế lá thuốc lá, theo mục (3)); (3) `trich` — kéo thêm các mục (1), (2), (3) của chú giải nhóm VÀ câu \"Ngoài loại thuốc lá điếu có chứa hoàn toàn lá thuốc lá ra, nhóm này cũng bao gồm các loại thuốc lá điếu được chế biến từ hỗn hợp … không tính đến tỉ lệ\" để hai nhánh có căn cứ và để câu hỏi có đáp án DETERMINISTIC với hàng hỗn hợp (hỗn hợp lá thuốc lá với chất thay thế VẪN tính là CÓ lá thuốc lá); mỗi mảnh cắt byte-exact từ tệp nguồn, câu trích dài 510 ký tự — nằm trong \"vùng im lặng\" 300–600 của máy (nền nhà: 207/11.444 câu trích = 1,8 %, và bản nháp lô 069 đã có sẵn 7 câu ở vùng này: 2306/2308/2309), nhưng DƯỚI trần cứng 600 nên check-trich-nguyen-van vẫn kiểm byte-exact tuyệt đối. Đoạn lược chỉ nuốt (i) đoạn \"Các sản phẩm này có thể được chế biến hoàn toàn từ lá thuốc lá lá hoặc từ hỗn hợp …\" (câu bao hàm, không phải ngoại lệ — và quy tắc \"không tính đến tỉ lệ\" của nó VẪN còn nguyên trong câu \"Ngoài loại …\") và (ii) ví dụ \"thí dụ, các loại \\\"thuốc lá điếu\\\" …\" đứng sau \"thí dụ\" trong chính nguồn ⇒ KHÔNG nuốt ngoại lệ nào. KHÔNG sửa `hoi` (đã đúng: hỏi về đặc tính hàng, không nhắc mã phân nhóm, không nhắc \"WCO\").",
+   "sua": {
+    "neuCo": "24021000|24022010|24022020|24022090",
+    "neuKhong": "24029010|24029020",
+    "trich": "(1) Xì gà, xì gà xén hai đầu, xì gà nhỏ, có chứa lá thuốc lá.…(2) Thuốc lá điếu có chứa lá thuốc lá…Ngoài loại thuốc lá điếu có chứa hoàn toàn lá thuốc lá ra, nhóm này cũng bao gồm các loại thuốc lá điếu được chế biến từ hỗn hợp giữa lá thuốc lá và các chất thay thế lá thuốc lá không tính đến tỉ lệ lá thuốc lá và tỉ lệ chất thay thế lá thuốc lá có trong hỗn hợp.…(3) Xì gà, xì gà xén hai đầu, xì gà nhỏ và thuốc lá điếu làm từ các chất thay thế lá thuốc lá,…không chứa lá thuốc lá lá cũng không chứa nicotin."
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.240210]; tiêu chí \"containing_tobacco\" mô tả đúng đặc điểm của phân nhóm 2402.10 (xì gà có chứa thuốc lá, tính cả băng/giấy bọc). GIỮ."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.240220]; tiêu chí \"containing_tobacco\" mô tả đúng đặc điểm của phân nhóm 2402.20 (thuốc lá điếu có chứa thuốc lá) và đối chiếu với tên nút trong cây (\"Thuốc lá điếu có chứa lá thuốc lá\"). GIỮ."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.240290] \"Cigars, cigarillos and cheroots; containing tobacco substitutes …\"; tiêu chí \"containing_tobacco_substitutes\" mô tả đúng phân nhóm 2402.90 (sản phẩm làm từ chất thay thế lá thuốc lá), khớp với mục (3) của chú giải và với hai dòng 2402.90.10/.20. GIỮ."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.24021000]; `dieuKien` chép đúng tên dòng biểu thuế, không thêm chữ. GIỮ."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [sen.24022010] (giữ nguyên xuống dòng của khối SEN); `dieuKien` rút gọn đúng nội dung câu (\"thuốc lá khô cuộn thành điếu, được bọc trong lá tendu dại và buộc bằng dây\"), 69 ký tự, dưới trần clip 90. Vế \"Thường được bán trong các gói có 20-25 điếu\" là thông tin bao bì có định ngữ \"thường\" nên KHÔNG đưa vào `tieuChi` (ngưỡng có điều kiện, không phải tiêu chí phân biệt dòng) — vẫn còn nguyên trong câu trích. GIỮ."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [sen.24022020]; `dieuKien` nêu đúng cách pha trộn (lá thuốc lá + đinh hương + hương liệu), 63 ký tự, dưới trần clip 90. GIỮ."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 24022090: câu trích nguyên văn [tax.24022090]; `dieuKien` theo mẫu nhà, 50 ký tự, dưới trần clip 90. GIỮ."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.24029010]; `dieuKien` chép đúng tên dòng biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.24029020]; `dieuKien` chép đúng tên dòng biểu thuế. GIỮ."
+  }
+ ]
+}

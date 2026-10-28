@@ -1,0 +1,102 @@
+{
+ "nhom": "2401",
+ "nguoiSoat": "dev-soat-doc-lap-lo069",
+ "luc": "2026-10-28T16:35:00+07:00",
+ "phamViSoat": "Toàn bộ 17 mục của nhóm 2401 (1 phamVi + 3 tieuChi6 + 13 dong8), đọc cùng tmp/so-tay/nguon/2401.txt (nhom2401.nhom, ch24.chuong, phan24.phan, wco.240110/240120/240130, tax.24011010…24013090).",
+ "soat": 17,
+ "giu": 16,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 1 · GIU 16. SỬA 1: phamVi — bản nháp bỏ mất đoạn \"sao tẩm\" (điểm mở rộng phạm vi nhóm, xem lyDo). GHI NHẬN (không sửa): dieuKienVao để rỗng là ĐÚNG — câu ràng buộc \"thuốc lá chưa thể dùng để hút ngay được\" chỉ nằm trong mục (1) của nhóm, không phủ mục (2) (phế liệu lá thuốc lá); đặt thành điều kiện chung sẽ khiến mô hình loài hợp lệ (phế liệu lá thuốc lá) ra khỏi nhóm. Điều kiện này đã nằm ở đầu `phamVi.text` (trường duy nhất runtime luôn hiện) nên không mất nghĩa.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — BỎ MẤT ĐOẠN MỞ RỘNG PHẠM VI NHÓM (\"mất ngoại lệ ngay sau câu trích\"). Nguồn [nhom2401.nhom] có 3 đoạn trong mục (1) và 1 đoạn ở mục (2); bản nháp chỉ trích đoạn (1) và (2), BỎ ĐOẠN \"Các lá thuốc lá được trộn lẫn, được tước cọng và được \\\"sao tẩm\\\" (\\\"tẩm nước xốt\\\" hoặc \\\"tẩm rượu mùi\\\") bằng một chất lỏng có thành phần phù hợp … cũng thuộc nhóm này.\" — đoạn này là câu BAO HÀM (\"cũng thuộc nhóm này\") mở rộng phạm vi nhóm, KHÔNG phải ví dụ. Hậu quả thật: `phamVi.text` của bản nháp mở đầu bằng \"Lá thuốc lá CHƯA CHẾ BIẾN\" ⇒ một tờ khai khai \"lá thuốc lá đã trộn lẫn, tước cọng, tẩm nước xốt\" (hàng xuất khẩu thật của Việt Nam) bị đẩy ra khỏi 24.01, trong khi nguồn nói rõ vẫn thuộc nhóm này. Sửa: (1) `trich` — ghép thêm đoạn \"sao tẩm\" (cắt byte-exact từ tệp nguồn, mỗi mảnh đều là chuỗi LIÊN TẤC trong khối nguồn; câu trích dài 553 ký tự, dưới trần 600 của máy). Đoạn lược chỉ nuốt (i) vế giải thích MỤC ĐÍCH của việc tẩm (\"bằng một chất lỏng có thành phần phù hợp nhằm chủ yếu là ngăn ẩm mốc và khô và cũng để bảo quản hương vị\") — không phải ngoại lệ phân loại, và (ii) vế \"phế thải thu được từ việc hái tay lá thuốc lá hoặc từ việc sản xuất các sản phẩm thuốc lá\" đứng sau \"ví dụ\" trong chính nguồn ⇒ không nuốt điều kiện. (2) `text` — thêm vế \"lá trộn lẫn, tước cọng, sao tẩm\" và nén phần còn lại cho vừa trần clip 220 của runtime (219 ký tự); mọi từ trong `text` vẫn có nguyên văn trong câu trích. KHÔNG sửa mã, KHÔNG sửa câu nguồn.",
+   "sua": {
+    "text": "Lá thuốc lá chưa chế biến, chưa thể dùng để hút ngay được: cả cây hay lá tự nhiên, đã sấy hoặc ủ men, còn nguyên hoặc tước cọng, đã hoặc chưa xén, nghiền hoặc thái; lá trộn lẫn, tước cọng, sao tẩm; phế liệu lá thuốc lá.",
+    "trich": "(1) Lá thuốc lá chưa chế biến dưới dạng cả cây hay dạng lá ở dạng tự nhiên hoặc lá thuốc lá đã sấy hoặc đã ủ men, còn nguyên hoặc được tước cọng, lá này có thể còn nguyên dạng hay đã được tước cọng, đã hoặc chưa được xén, đã được nghiền hoặc thái (kể cả thái miếng theo hình dạng, nhưng với điều kiện là thuốc lá chưa thể dùng để hút ngay được).…Các lá thuốc lá được trộn lẫn, được tước cọng và được \"sao tẩm\" (\"tẩm nước xốt\" hoặc \"tẩm rượu mùi\")…cũng thuộc nhóm này.…(2) Phế liệu lá thuốc lá, ví dụ,…(thân lá, cuống lá, gân lá, rẻo lá xén ra, bụi,...)."
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.240110] \"Tobacco, (not stemmed or stripped)\". `fact` là fact ÂM (\"not_stemmed_or_stripped\") nhưng `value` = true ⇒ nghĩa là \"KHÔNG đã tước cọng\" — đúng chiều theo luật lô 066 (fact âm ⇒ value phải là true; 30/30 mục NGUOI_DUYET của nhà đều vậy). GIỮ."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.240120] \"Tobacco; partly or wholly stemmed or stripped\"; tiêu chí mô tả đúng phân nhóm 2401.20 (đã tước cọng một phần hoặc toàn bộ) và đối chiếu đúng với tên nút trong cây. GIỮ."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.240130] \"Tobacco refuse\"; mô tả đúng phân nhóm 2401.30 (phế liệu lá thuốc lá) và khớp với phạm vi mục (2) của nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.24011010]; `dieuKien` chép đúng tên dòng biểu thuế (\"Loại Virginia, đã sấy bằng không khí nóng (flue-cured)\"). GIỮ."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.24011020]; `dieuKien` chép đúng tên dòng, giữ nguyên vế phủ định \"trừ loại sấy bằng không khí nóng\". GIỮ."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.24011040]; `dieuKien` chép đúng tên dòng (\"Loại Burley\"). GIỮ."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.24011050]; `dieuKien` chép đúng tên dòng. GIỮ."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 24011090: câu trích nguyên văn [tax.24011090]; `dieuKien` theo mẫu nhà, 50 ký tự, dưới trần clip 90. GIỮ."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.24012010]; `dieuKien` chép đúng tên dòng. GIỮ."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.24012020]; `dieuKien` chép đúng tên dòng, giữ vế \"trừ loại sấy bằng không khí nóng\". GIỮ."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.24012030]; `dieuKien` chép đúng tên dòng (\"Loại Oriental\"). GIỮ."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.24012040]; `dieuKien` chép đúng tên dòng (\"Loại Burley\"). GIỮ."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.24012050]; `dieuKien` chép đúng tên dòng, giữ \"(flue-cured)\" đúng như nguồn (dòng 24011050 không có, 24012050 có — bản nháp không đồng nhất hoá). GIỮ."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 24012090: câu trích nguyên văn [tax.24012090]; `dieuKien` theo mẫu nhà. GIỮ."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.24013010]; `dieuKien` chép đúng tên dòng (\"Cọng thuốc lá\"). GIỮ."
+  },
+  {
+   "index": "dong8[12]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 24013090: câu trích nguyên văn [tax.24013090]; `dieuKien` theo mẫu nhà. GIỮ."
+  }
+ ]
+}
