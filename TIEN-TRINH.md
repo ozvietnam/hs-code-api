@@ -10681,7 +10681,8 @@ Không có `sen.*`, không có `phan26.phan`, không có phân nhóm 6 số th�
 > **KHÔNG merge** (theo `SOAT-LO.md`: người soát KHÔNG gộp PR và KHÔNG tự cập nhật CSV).
 > Hồ sơ: `review/{2607,2608,2609,2610,2611,2612}.json` (một dòng cho **mọi** mục, kể cả mục GIỮ) ·
 > script áp 2 pha: `scripts/apply-review-lo076.mjs` (chép từ bản lô 070) ·
-> script đối chiếu byte-exact + đo nền nhà: `tmp/so-tay/bytecheck076.cjs` · `tmp/so-tay/soat076-nen-nha.cjs`.
+> script đối chiếu byte-exact CÓ SẴN trong repo: `scripts/check-trich-nguyen-van.mjs` (so thẳng từng đoạn ngăn bởi "…") ·
+> script đo nền nhà (tạm, không commit): `tmp/so-tay/soat076-nen-nha.cjs`.
 
 ## 0. Sai lệch brief — đã xử lý TRƯỚC khi soát
 
@@ -10779,7 +10780,7 @@ Hạn chế đã ghi trong `review/2612.json` để người duyệt biết.
 
 | Lệnh | Kết quả |
 |---|---|
-| `node tmp/so-tay/bytecheck076.cjs` (script riêng, byte-exact từng đoạn) | **30 mục, 0 lỗi** |
+| `node scripts/check-trich-nguyen-van.mjs` (byte-exact từng đoạn ngăn bởi "…") | **OK — 30 mục**, 0 lỗi |
 | `node scripts/check-trich-nguyen-van.mjs` | **OK — 30 mục** nguyên văn tuyệt đối |
 | `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` | **6 nhóm, 30/30 mục, 0 mục không kiểm được nguồn** |
 | `node scripts/scan-so-tay-soat.mjs` | **2 cảnh báo**, đều là **báo động giả đã biết** (`tieuChi6[].fact` tiếng Việt đi kèm trích WCO tiếng Anh) · **0 `TRÀN-CLIP`** · **0 `LƯỚC-NGOẠI-LỆ`** · **0 `CÂU-SAU-NGOẠI-LỆ`** · **0 `VÙNG-IM-LẶNG`** |
