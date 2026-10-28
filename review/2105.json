@@ -1,0 +1,41 @@
+{
+ "nhom": "2105",
+ "nguoiSoat": "dev-soat-doc-lap-lo066",
+ "vong": 1,
+ "luc": "2026-10-28T10:40:00+07:00",
+ "daKiem": 5,
+ "xoa": 0,
+ "sua": 1,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 066 (nhóm 2105) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/2105.txt (3.227 ký tự, đọc hết) + ch21.chuong + wco.210500 + tax.21050000. Kết quả: giữ 4 · sửa 1 · xoá 0. Lớp lỗi: `dieuKienVao[0].fact` chứa \"trong_khoi_luong\" ⇒ cổng ngưỡng đọc số theo TÊN fact nên bắt oan (đo thật: \"Kem lạnh vị socola, khối lượng 25 kg\" ⇒ hỏi khách \"hồ sơ ghi 25 kg — trái ngưỡng <= 20\" và kết luận \"chọn nhóm khác\"); sửa bằng cách bỏ đuôi \"trong_khoi_luong\" khỏi fact (fact chỉ là khoá định danh). GHI NHẬN: nhóm 21.05 KHÔNG được miễn ngưỡng 20 % (ch21.chuong mục 1(e) chỉ miễn cho \"các sản phẩm ghi trong nhóm 21.03 hoặc 21.04\") nên điều kiện này vẫn đúng cho 21.05 — giữ, chỉ sửa tên fact. Đích loại trừ 18.06|19.01|21.06 giữ nguyên: câu nguồn \"(thí dụ: nhóm 18.06, 19.01 hoặc 21.06)\" — đã đối chiếu tiền lệ 8305 \"(a) Đinh ấn (đinh rệp) (ví dụ: nhóm 73.17 hoặc 74.15)\" NGUOI_DUYET ⇒ nhóm đích nêu sau \"ví dụ\" vẫn là đích hợp lệ, và cả 3 nhánh đều được giữ (không tách một nhánh của \"A hoặc B\").",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Phạm vi đúng câu đầu chú giải nhóm: kem lạnh chế biến với thành phần cơ bản là sữa hoặc kem, và kem ăn được khác (sherbet, kem que), có hoặc không chứa ca cao với tỉ lệ bất kỳ — `text` 157 < trần clip 220 ✓ (không bị cắt mất đuôi \"tỉ lệ bất kỳ\"); giữ nguyên định ngữ \"thường\" của nguồn ✓; `trich` nguyên văn ✓."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI CỔNG NGƯỠNG BẮT OAN (đo thật bằng lib/so-tay-gates.js — tmp/so-tay/lo066-thu-gate.js). `fact` chứa \"trong_khoi_luong\" ⇒ UNIT_RULES chọn luật \"đọc số khối lượng (kg)\" và so với 20, trong khi điều kiện là TỶ LỆ % (`donVi` \"%\", nguồn \"có chứa trên 20% tính theo khối lượng\"). Chạy thật: \"Kem lạnh vị socola, khối lượng 25 kg\" ⇒ cổng SO_TAY_NGUONG bắn ra \"ty_le_thit_va_nguyen_lieu_dong_vat_trong_khoi_luong <= 20 %, hồ sơ ghi 25 kg\" và hỏi khách \"Hồ sơ ghi 25 kg — trái ngưỡng <= 20 của nhóm 21.05. Nếu không → chọn nhóm khác\" ⇒ tờ khai kem lạnh 25 kg bị đẩy sang nhóm khác trong khi 25 kg là TỔNG khối lượng, không phải % thịt. Sửa: bỏ đuôi \"trong_khoi_luong\" khỏi tên fact (fact là KHOÁ ĐỊNH DANH — luật máy chỉ kiểm dạng /^[a-z][a-z0-9_]{2,}$/, KHÔNG kiểm fact có trong nguồn); `op` \"<=\" 20, `donVi` \"%\", `ngoaiTru` và `trich` GIỮ NGUYÊN (câu trích vẫn ghi \"tính theo khối lượng\" ⇒ nghĩa không đổi). GHI NHẬN: điều kiện 20 % này ĐÚNG cho 21.05 (ch21.chuong mục 1(e) chỉ miễn \"các sản phẩm ghi trong nhóm 21.03 hoặc 21.04\") ⇒ giữ mục, chỉ sửa tên fact. Cùng lỗi còn ở 1901/1902/1905/2106 đã gộp — nêu trong PR để người duyệt vá `lib/so-tay-gates.js` (UNIT_RULES phải tôn trọng `donVi`).",
+   "sua": {
+    "fact": "ty_le_thit_va_nguyen_lieu_dong_vat"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh: \"Các sản phẩm này sẽ được phân loại tuỳ theo thành phần cơ bản chứa trong sản phẩm (thí dụ: nhóm 18.06, 19.01 hoặc 21.06)\" — CẢ BA nhánh giữ trong `sangNhom` \"1806|1901|2106\" (không tách một nhánh của \"A hoặc B\" — lớp lỗi lô 030/052) ✓. Đối chiếu tiền lệ đã duyệt: 8305 \"(a) Đinh ấn (đinh rệp) (ví dụ: nhóm 73.17 hoặc 74.15)\" [NGUOI_DUYET] và 7304 \"(ví dụ, nhóm 87.08 hoặc 87.14)\" [NGUOI_DUYET] ⇒ nhóm đích nêu sau \"ví dụ\" vẫn là đích hợp lệ (khác lô 052, nơi \"ví dụ, như được mô tả tại nhóm 11.04 (xem Chú giải tương ứng)\" mới không đủ căn cứ). `dieuKien` 48 < trần clip 55 ✓."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi \"Hàng là hỗn hợp hoặc thành phần cơ bản để làm kem lạnh?\" không nhắc mã ✓; có→18.06|19.01|21.06 / không→21.05 đúng chiều, cả 3 nhánh đích giữ nguyên ✓; `trich` nguyên văn 205 ký tự ✓; 55 < trần 110 ✓."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 21050000 \"Kem lạnh và sản phẩm ăn được tương tự khác, có hoặc không chứa ca cao\" — tax nguyên văn ✓; `loaiKhac` false ✓; đủ 1/1 dòng tax.* của nhóm ✓."
+  }
+ ]
+}

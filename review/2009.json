@@ -1,0 +1,276 @@
+{
+ "nhom": "2009",
+ "nguoiSoat": "dev-soat-doc-lap-lo066",
+ "vong": 1,
+ "luc": "2026-10-28T10:40:00+07:00",
+ "daKiem": 52,
+ "xoa": 0,
+ "sua": 1,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 066 (nhóm 2009) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/2009.txt (21.123 ký tự, đọc hết) + ch20.chuong + wco.200911…200990 + sen.20098920/20098930 + 25 dòng tax.*. Kết quả: giữ 51 · sửa 1 · xoá 0. Lớp lỗi bắt được: (1) `phanBiet[2].hoi` hỏi CHUNG về \"nồng độ cồn trên 0,5%\" trong khi câu trích chỉ nói về HÈM NHO ⇒ nhánh \"có\" chỉ tới 22.04 (rượu nho) cho MỌI nước ép quả/rau vượt 0,5% cồn — mà Chú giải Chương 20 mục (d) chỉ nói \"Chương 22\" (không nêu đích danh nhóm nào) ⇒ thu hẹp câu hỏi về hèm nho, khớp đúng câu trích. GHI NHẬN (không sửa, không chèn theo phạm vi brief): câu loại trừ của chính nhóm còn 2 nhánh CHƯA có mục — \"nước ép quả/nước ép rau có chứa tỉ lệ carbon dioxide lớn hơn tỉ lệ bình thường\" và \"nước chanh\" (cùng đích 22.02); báo trong PR để người duyệt chốt có chèn hay không.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Phạm vi đúng tiêu đề nhóm: nước ép quả/nước ép rau chưa lên men và chưa pha thêm rượu, kể cả nước dừa và hèm nho (điều kiện chưa lên men). `text` 119 ký tự < trần clip 220 ✓. `trich` ghép 4 mảnh nguyên văn, mỗi mảnh tự nói nội dung của nó — không ghép hai câu xa nhau thành một kết luận; mảnh 1 giữ nguyên cả mệnh đề \"chưa lên men và chưa pha thêm rượu\", mảnh 4 giữ nguyên \"với điều kiện là chưa lên men\" (bỏ định ngữ giới hạn là lỗi lô 061/064 — ở đây không bỏ)."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Ngưỡng 0,5 % cồn theo thể tích: lấy đúng Chú giải Chương 20 mục 6 (\"để chỉ các loại nước ép có nồng độ cồn không quá 0,5% tính theo thể tích\") — đây CHÍNH LÀ cách nguồn định nghĩa tiêu đề nhóm 2009 (\"chưa lên men và chưa pha rượu\") ⇒ điều kiện VÀO nhóm, hợp lệ (cùng kiểu với 7314 \"dây ≤ 16 mm\" mà lô 041 đã giữ). `op` \"<=\" đúng chiều vì nguồn loại khi \"trên 0,5%\"; số 0,5 có trong trích ✓. GHI NHẬN: fact không chứa \"khoi_luong/trong_luong\" nên cổng ngưỡng không bắt nhầm đơn vị ✓."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "Điều kiện boolean \"chưa lên men và chưa pha thêm rượu\" lấy nguyên văn câu mở đầu chú giải nhóm. Tiêu đề nhóm 2009 (\"unfermented, not containing added spirit\") DÙNG đúng khái niệm này làm định nghĩa ⇒ là điều kiện vào nhóm, không phải câu định nghĩa thuật ngữ (luật 4 bước) ⇒ hợp lệ. Không có vế \"cho phép\" trong trích ⇒ không dính luật `dieu-kien-chi-cho-phep`."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có ĐÍCH DANH: \"Nước ép cà chua có hàm lượng thành phần khô từ 7% trở lên (nhóm 20.02)\" — câu trích chứa \"nhóm 20.02\" ✓ (luật 3). `dieuKien` 46 ký tự < trần clip 55 ✓. GHI NHẬN: giữ nguyên cách nói của chú giải NHÓM (\"hàm lượng thành phần khô\"), không đổi sang \"hàm lượng chất khô\" của Chú giải Chương 20 mục 4 — cùng nghĩa nhưng khác từ, mà `dieuKien` phải bám câu trích của khối nguồn đã khai (lô 064 đã quyết cho 2002 theo đúng lối này)."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"(nhóm 22.02)\" ✓. `trich` cắt đúng từ \"nước có gas được dùng nước ép quả…\" — vế trước đó là \"nước chanh\" (một hàng khác) nên cắt khỏi; `dieuKien` mô tả đúng phần còn lại (\"Nước có gas dùng nước ép quả để tạo hương\"), không gộp vế ngoài câu. `dieuKien` 41 < 55 ✓."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"thuộc nhóm 22.02\" ✓. Đoạn lược \"…\" nằm giữa hai vế SONG SONG của cùng một điều kiện (\"cho thêm nước vào nước quảép…\" / \"…với một tỉ lệ lớn hơn tỉ lệ cần thiết cho phép\") — không nuốt ngoại lệ (\"trừ\", \"tuy nhiên\", \"với điều kiện\") và câu kế tiếp trong nguồn không phải ngoại lệ ⇒ chấp nhận được. `dieuKien` 51 < 55 ✓."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"thuộc nhóm 22.04\" ✓. Câu trích giữ nguyên cả cấu trúc lượng của nguồn (\"Hèm nho đã lên men một phần, đã hoặc chưa lên men, cũng như loại hèm nho chưa lên men, đã cho thêm rượu\") — KHÔNG rút gọn thành một vế. `dieuKien` 40 < 55 ✓."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "CÂU HỎI TRÙNG VỚI `loaiTru[0]` NHƯNG CÓ NHÁNH \"không\" ĐÚNG: hỏi \"Nước ép cà chua có hàm lượng thành phần khô từ 7% trở lên không?\" ⇒ có→20.02 (đúng đích danh trong trích), không→20.09 (bổ sung của nhóm) ⇒ giữ. GHI NHẬN: \"không\" được dựa trên chính câu \"Nhóm này cũng không bao gồm:…(a) Nước ép cà chua…\" (nguồn nói rõ phần còn lại thuộc nhóm), không suy từ cấu trúc anh em (luật nhà)."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi \"Hàng là nước có gas dùng nước ép quả để tạo hương?\" — hỏi về đặc tính hàng, KHÔNG nhắc mã phân nhóm hay \"WCO\" (luật máy `hoi-nhac-ma-phan-nhom`) ✓; có→22.02 / không→20.09 đúng chiều; `trich` chứa \"(nhóm 22.02)\" ✓."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI ĐẢO PHẠM VI CÂU HỎI (máy KHÔNG bắt). `trich` nói về HÈM NHO: \"Hèm nho đã lên men một phần… đã cho thêm rượu, cả hai sản phẩm này đều có nồng độ cồn trên 0,5% theo thể tích thuộc nhóm 22.04\" — nhưng `hoi` hỏi CHUNG \"Hàng có nồng độ cồn trên 0,5% theo thể tích không?\" ⇒ nhánh \"có\" chỉ tới 22.04 (rượu nho) cho BẤT KỲ nước ép quả/nước ép rau vượt 0,5 % cồn, trong khi Chú giải Chương 20 mục (d) cho vế đó chỉ nói \"Chương 22\" (không nêu đích danh nhóm nào ⇒ không mã hoá được, đúng luật lô 052). Sửa: thu hẹp câu hỏi về hèm nho để khớp đúng câu trích và đúng chiều nhánh; \"không\" (hèm nho chưa lên men, chưa thêm rượu) → 20.09 theo câu \"Nhóm này cũng bao gồm hèm nho bất kể được dùng để làm gì, với điều kiện là chưa lên men\". `hoi` mới 61 ký tự < trần 110 ✓; không nhắc mã ✓.",
+   "sua": {
+    "hoi": "Hàng là hèm nho có nồng độ cồn trên 0,5% theo thể tích không?"
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí phân nhóm 2009.12 (Brix ≤ 20) lấy nguyên văn tên WCO \"of a Brix value not exceeding 20\" ✓ luật 10 (nguồn wco.*, không phải tax.*); số 20 có trong trích ✓; phân nhóm có thật trong cây nhóm ✓."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí phân nhóm 2009.19 (Brix > 20) — WCO \"Brix value exceeding 20\" ✓; chiều \">\" đúng với \"exceeding\"; số 20 có trong trích ✓."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chứ 2009.21 (Brix ≤ 20) — WCO \"of a Brix value not exceeding 20\" ✓; số 20 trong trích ✓."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 2009.29 (Brix > 20) — WCO \"Brix value exceeding 20\" ✓; số 20 trong trích ✓."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 2009.31 (Brix ≤ 20) — WCO \"of a Brix value not exceeding 20\" ✓ (trích 219 ký tự, dưới trần 300 ✓); số 20 trong trích ✓."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 2009.39 (Brix > 20) — WCO \"Brix value exceeding 20\" ✓; số 20 trong trích ✓."
+  },
+  {
+   "index": "tieuChi6[6]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 2009.41 (Brix ≤ 20) — WCO \"not exceeding 20\" ✓; số 20 trong trích ✓."
+  },
+  {
+   "index": "tieuChi6[7]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 2009.49 (Brix > 20) — WCO \"Brix value exceeding 20\" ✓; số 20 trong trích ✓."
+  },
+  {
+   "index": "tieuChi6[8]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 2009.61 (Brix ≤ 30) — WCO grape \"not exceeding 30\" ✓; số 30 trong trích ✓; khác nhóm 2009.69 (nho ≤ 30) ✓."
+  },
+  {
+   "index": "tieuChi6[9]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 2009.69 (Brix > 30) — WCO grape \"exceeding 30\" ✓; số 30 trong trích ✓."
+  },
+  {
+   "index": "tieuChi6[10]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 2009.71 (Brix ≤ 20) — WCO apple \"not exceeding 20\" ✓; số 20 trong trích ✓."
+  },
+  {
+   "index": "tieuChi6[11]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 2009.79 (Brix > 20) — WCO apple \"exceeding 20\" ✓; số 20 trong trích ✓."
+  },
+  {
+   "index": "tieuChi6[12]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 2009.11 (nước ép cam đông lạnh) — WCO \"orange, frozen\" ✓; boolean value=true đúng chiều (đây là ĐẶC TÍNH của phân nhóm, không phải điều kiện vào nhóm) ✓."
+  },
+  {
+   "index": "tieuChi6[13]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 2009.50 (nước cà chua ép) — WCO \"Juice; tomato\" ✓; boolean ✓."
+  },
+  {
+   "index": "tieuChi6[14]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 2009.81 (nước ép cranberry/lingonberry) — WCO nêu đúng hai loài quả ✓; boolean ✓."
+  },
+  {
+   "index": "tieuChi6[15]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 2009.89 (nước ép quả/hạch/rau khác, chưa lên men) — WCO \"of any single fruit, nut or vegetable n.e.c. in heading no. 2009, unfermented, not containing added spirit\" ✓; boolean ✓. GHI NHẬN: chữ \"n.e.c.\" được dịch thành \"khác\" — đúng nghĩa, và KHÔNG viết \"n.e.c.\" (lô 060 vòng 3 đã bắt lỗi dịch ngược chiều \"n.e.c. in heading X\")."
+  },
+  {
+   "index": "tieuChi6[16]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 2009.90 (hỗn hợp nước ép quả/rau, không phải nước ép hạch) — WCO \"mixtures of fruits or vegetables (but not nut juice)\" ✓; boolean ✓."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20091100 \"Đông lạnh\" — nguồn tax.20091100 nguyên văn ✓; `loaiKhac` false đúng (tên dòng không bắt đầu \"Loại khác\") ✓ luật 6; đủ mọi dòng tax.* của nhóm (25/25) ✓."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20091200 \"Không đông lạnh, với trị giá Brix không quá 20\" — tax nguyên văn ✓; `loaiKhac` false ✓; điều kiện dòng chưa số hoá (thiếu `dieuKienSo`) nhưng luật 6 chỉ yêu cầu đủ dòng + điều kiện từ SEN khi có — nhóm này không có SEN cho dòng này ⇒ giữ nguyên."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 20091900 — `loaiKhac` true đúng theo biểu thuê ✓; `trich` lấy tên WCO 2009.19 (Brix > 20) nên điều kiện phân biệt KHÔNG bị mất (memory \"Mẫu nhà dòng 8 số Loại khác\") ✓; `dieuKien` 45 < trần 90 ✓."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20092100 \"Với trị giá Brix không quá 20\" — tax nguyên văn ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 20092900 — `loaiKhac` true ✓; `trich` = WCO 2009.29 (Brix > 20) nên giữ được điều kiện phân biệt ✓."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20093100 \"Với trị giá Brix không quá 20\" — tax nguyên văn ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 20093900 — `loaiKhac` true ✓; `trich` = WCO 2009.39 ✓."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20094100 \"Với trị giá Brix không quá 20\" — tax nguyên văn ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 20094900 — `loaiKhac` true ✓; `trich` = WCO 2009.49 ✓."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20095000 \"Nước cà chuta ép\" — tax nguyên văn ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20096100 \"Với trị giá Brix không quá 30\" — tax nguyên văn ✓ (ngưỡng 30 khác các phân nhóm khác — đúng bảng biểu thuế); `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 20096900 — `loaiKhac` true ✓; `trich` = WCO 2009.69 (Brix > 30) ✓."
+  },
+  {
+   "index": "dong8[12]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20097100 \"Với trị giá Brix không quá 20\" — tax nguyên văn ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[13]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 20097900 — `loaiKhac` true ✓; `trich` = WCO 2009.79 ✓."
+  },
+  {
+   "index": "dong8[14]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20098110 \"Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ\" — tax nguyên văn ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[15]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 20098190 — `loaiKhac` true ✓; `trich` = WCO 2009.81 ✓."
+  },
+  {
+   "index": "dong8[16]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20098910 \"Nước ép từ quả lý chua đen\" — tax nguyên văn ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[17]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20098920 \"Nước dừa\" — nguồn sen.20098920; `dieuKien` ghép tên dòng biểu thuế + mô tả SEN (\"dung dịch lỏng trong suốt bên trong quả dừa\") — cả hai đều có trong khối SEN (tiêu đề \"NƯỚC DỪA\" + câu mở đầu) ✓; `trich` nguyên văn 2 câu đầu ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[18]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20098930 \"Nước dừa cô đặc\" — nguồn sen.20098930; `dieuKien` = tên dòng + \"làm từ nước dừa bằng cách giảm hàm lượng nước\" (nguyên văn trong khối SEN) ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[19]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20098940 \"Nước xoài ép cô đặc\" — tax nguyên văn ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[20]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20098991 \"Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ\" — tax nguyên văn ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[21]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 20098999 — `loaiKhac` true ✓; `trich` = WCO 2009.89 ✓."
+  },
+  {
+   "index": "dong8[22]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20099010 \"Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ\" — tax nguyên văn ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[23]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20099091 \"Dùng ngay được\" — tax nguyên văn ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[24]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 20099099 — `loaiKhac` true ✓; `trich` = WCO 2009.90 ✓."
+  }
+ ]
+}

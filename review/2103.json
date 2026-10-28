@@ -1,0 +1,158 @@
+{
+ "nhom": "2103",
+ "nguoiSoat": "dev-soat-doc-lap-lo066",
+ "vong": 1,
+ "luc": "2026-10-28T10:40:00+07:00",
+ "daKiem": 29,
+ "xoa": 2,
+ "sua": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 066 (nhóm 2103) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/2103.txt (9.060 ký tự, đọc hết) + ch21.chuong + sen.21039021 + wco.210310/210320/210330/210390 + 9 dòng tax.*. Kết quả: giữ 27 · sửa 0 · xoá 2. Lớp lỗi: HAI `dieuKienVao` mượn câu CHƯƠNG 21 (mục 1(g) và 1(h)) làm điều kiện vào nhóm 21.03 — nhưng chủ thể của hai câu đó là MEN (nhóm 21.02) và ENZYME (nhóm 35.07), KHÔNG phải nước xốt/gia vị/bột mù tạt; tiêu đề nhóm 2103 không dùng các khái niệm này làm định nghĩa (luật \"tiêu đề nhóm có dùng khái niệm này không? — không thì xoá\"), và chú giải RIÊNG của nhóm đã có trọn danh mục loại trừ của nó ⇒ XOÁ (bài học lô 051/060: loại trừ chung của Chương không chép vào từng nhóm).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Phạm vi đúng 2 phần của nhóm: (A) nước xốt và chế phẩm để làm nước xốt; đồ gia vị hỗn hợp và bột canh hỗn hợp · (B) bột mù tạt mịn, bột mù tạt thô và mù tạt đã chế biến — `trich` lấy đúng 2 tiêu đề nguyên văn ✓; `text` 134 < trần 220 ✓. GHI NHẬN: `phamVi.text` nêu tên đủ cả \"bột mù tạt mịn, bột mù tạt thô\" (không thu hẹp thành \"bột mù tạt\") ✓."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "XOÁ — mượn câu CHƯƠNG 21 mục 1(g) làm điều kiện vào nhóm 21.03. Câu trích: \"(g) Men được đóng gói như dược phẩm hoặc các sản phẩm khác thuộc nhóm 30.03 hay 30.04\" — CHỦ THỂ là MEN (nhóm 21.02) và sản phẩm nhóm 30.03/30.04; tiêu đề nhóm 2103 (nước xốt, gia vị hỗn hợp, bột canh hỗn hợp, bột mù tạt) KHÔNG dùng khái niệm này làm định nghĩa, và điều kiện này không mô tả đặc tính vật chất của nước xốt/gia vị ⇒ vi phạm luật 4 bước (bước 1: câu phủ cả nhóm không?) và bài học lô 051/060 \"loại trừ chung của Chương không chép vào từng nhóm\"; chú giải riêng của 2103 đã có trọn danh mục loại trừ (a)–(d) cho cả hai phần. Ngoài ra `fact` viết \"khong_phai_X\" mà đặt value=false là ĐẢO CHIỀU (đọc thành \"KHÔNG phải dược phẩm = false\" ⇒ \"là dược phẩm\"); nhà dùng `khong_phai_*` với value=true (30/30 mục NGUOI_DUYET) hoặc tên fact DƯƠNG kèm value=false. KHÔNG mất thông tin: vế \"các sản phẩm thuộc nhóm 30.03 hay 30.04\" vẫn nằm nguyên văn trong chú giải Chương 21 mục 1(g)."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "xoa",
+   "lyDo": "XOÁ — mượn câu CHƯƠNG 21 mục 1(h): \"(h) Enzyme đã chế biến thuộc nhóm 35.07.\" Chủ thể là ENZYME (nhóm 35.07), không phải nước xốt/gia vị/bột mù tạt; tiêu đề nhóm 2103 không dùng khái niệm \"enzyme đã chế biến\" làm định nghĩa, và câu không mô tả đặc tính vật chất của hàng thuộc 21.03 ⇒ cùng lý do với `dieuKienVao[0]` (luật 4 bước + bài học lô 051/060). KHÔNG mất thông tin: câu nằm nguyên văn trong chú giải Chương 21 mục 1(h)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"(nhóm 16.03)\" ✓. `dieuKien` \"Chiết xuất và nước ép thịt, cá hoặc động vật giáp xác\" bám câu trích (nguồn: \"Chiết xuất và nước ép thịt, cá hoặc của động vật giáp xác, động vật thân mềm hoặc động vật thuỷ sinh không xương sống khác\") — vế sau được rút gọn nhưng không đảo nghĩa; 53 < trần clip 55 ✓ (không bị cắt cụt). GHI NHẬN: vế \"động vật thân mềm / động vật thuỷ sinh không xương sống khác\" vẫn nguyên văn trong `trich` ⇒ không mất thông tin."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"(nhóm 21.04)\" ✓; `dieuKien` \"Súp, nước xuýt và chế phẩm để làm súp và nước xuýt\" bám câu trích ✓; 50 < 55 ✓."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"(nhóm 21.06)\" ✓; `dieuKien` \"Các chất phân huỷ protein\" nguyên văn đầu câu trích (phần sau \"chủ yếu là hỗn hợp giữa amino axit và natri chloride…\" là giải thích, không bắt buộc) ✓; 25 < 55 ✓."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"(nhóm 21.06)\" ✓; `dieuKien` \"Men tự phân\" nguyên văn ✓; 11 < 55 ✓. GHI NHẬN: hai mục cùng đích 21.06 nhưng khác chủ thể (chất phân huỷ protein vs men tự phân) — tách đúng, không gộp."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"(nhóm 12.07)\" ✓; `dieuKien` \"Hạt mù tạt\" nguyên văn ✓; 10 < 55 ✓."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"(nhóm 15.14)\" ✓; `dieuKien` \"Dầu mù tạt không bay hơi\" nguyên văn ✓; 24 < 55 ✓."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"(nhóm 23.06)\" ✓; `dieuKien` \"Khô dầu từ hạt mù tạt\" nguyên văn đầu câu ✓; 21 < 55 ✓."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"(nhóm 33.01)\" ✓; `dieuKien` \"Tinh dầu mù tạt\" nguyên văn ✓; 15 < 55 ✓."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi \"Hàng là súp, nước xuýt hoặc chế phẩm để làm súp và nước xuýt?\" không nhắc mã ✓; có→21.04 / không→21.03 đúng chiều ✓; 61 < 110 ✓."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi \"Hàng là men tự phân?\" không nhắc mã ✓; có→21.06 / không→21.03 ✓; 20 < 110 ✓."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi \"Hàng là hạt mù tạt?\" không nhắc mã ✓; có→12.07 / không→21.03 ✓; 19 < 110 ✓."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi \"Hàng là tinh dầu mù tạt?\" không nhắc mã ✓; có→33.01 / không→21.03 ✓; 24 < 110 ✓."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Cấu trúc phần đúng nguồn: (A) NƯỚC XỐT VÀ CÁC CHẾ PHẨM ĐỂ LÀM NƯỚC XỐT; ĐỒ GIA VỊ HỖN HỢP VÀ BỘT CANH HỖN HỢP · (B) BỘT MÙ TẠT MỊN, BỘT MÙ TẠT THÔ VÀ MÙ TẠT ĐÃ CHẾ BIẾN — `trich` lấy đúng 2 tiêu đề nguyên văn ✓. `tomTat` 102 < trần clip 160 ✓. GHI NHẬN: `quyTac` dài 161 ký tự nhưng runtime CHỈ in `tomTat` (lib/so-tay-gates.js dòng 143) nên không bị cắt ⇒ không sửa."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 210310 \"Sauces; soya\" — WCO nguyên văn ✓ luật 10; boolean ✓."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 210320 \"Sauces; tomato ketchup and other tomato sauces\" — WCO nguyên văn ✓; boolean ✓ (giữ đủ \"and other tomato sauces\" — không thu hẹp thành chỉ ketchup)."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 210330 \"Mustard flour and meal and prepared mustard\" — WCO nguyên văn ✓; boolean ✓."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 210390 \"Sauces and preparations therefor; mixed condiments and mixed seasonings\" — WCO nguyên văn ✓; boolean ✓."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 21031000 \"Nước xốt đậu tương\" — tax nguyên văn ✓; `loaiKhac` false ✓; đủ 9/9 dòng tax.* ✓."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 21032000 \"Ketchup cà chua và nước xốt cà chua khác\" — tax nguyên văn ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 21033000 \"Bột mù tạt mịn, bột mù tạt thô và mù tạt đã chế biến\" — tax nguyên văn ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 21039011 \"Tương ớt\" — tax nguyên văn ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 21039012 \"Nước mắm\" — tax nguyên văn ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 21039013 \"Nước xốt loại khác\" — tax nguyên văn ✓; `loaiKhac` false ✓ (tên dòng \"Nước xốt loại khác\" KHÔNG bắt đầu bằng \"Loại khác\" ⇒ máy tự điền false ✓)."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 21039019 — `loaiKhac` true ✓; `trich` = WCO 210390 nên giữ được đặc tính phân nhóm ✓; 45 < 90 ✓."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 21039021 \"Mắm tôm (mắm ruốc) kể cả belachan (blachan)\" — nguồn sen.21039021: tiêu đề khối SEN là \"MẮM TÔM (MẮM RUỐC) KỂ CẢ BELACHAN (BLACHAN)\" nên `dieuKien` bám đúng nguồn ✓; `trich` nguyên văn câu mô tả belachan ✓; `loaiKhac` false ✓; 76 < trần 90 ✓."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 21039029 — `loaiKhac` true ✓; `trich` = WCO 210390 ✓; 45 < 90 ✓."
+  }
+ ]
+}

@@ -1,0 +1,116 @@
+{
+ "nhom": "2104",
+ "nguoiSoat": "dev-soat-doc-lap-lo066",
+ "vong": 1,
+ "luc": "2026-10-28T10:40:00+07:00",
+ "daKiem": 20,
+ "xoa": 2,
+ "sua": 1,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 066 (nhóm 2104) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/2104.txt (12.860 ký tự, đọc hết) + ch21.chuong + sen.21041011/21041091 + wco.210410/210420 + 8 dòng tax.*. Kết quả: giữ 17 · sửa 1 · xoá 2. Lớp lỗi: (1) HAI `dieuKienVao` mượn câu CHƯƠNG 21 mục 1(g)/1(h) — chủ thể là MEN (21.02) và ENZYME (35.07), không phải súp/chế phẩm thực phẩm đồng nhất ⇒ XOÁ (luật \"tiêu đề nhóm có dùng khái niệm này không?\" + bài học lô 051/060). (2) `phanBiet[0].hoi` hỏi \"chế phẩm thực phẩm đồng nhất phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ, hay là súp và nước xuýt?\" nhưng NHÁNH \"không\" chỉ tới 2104.10.91 (dòng SÚP DÀNH CHO TRẺ) ⇒ một món súp KHÔNG dùng cho trẻ sẽ bị đẩy nhầm sang dòng trẻ; sửa bằng cách đặt điều kiện \"dùng cho trẻ sơ sinh hoặc trẻ nhỏ\" vào CẢ HAI nhánh (đúng câu trích: \"…được dùng làm thực phẩm cho trẻ sơ sinh hoặc trẻ nhỏ…\").",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Phạm vi đúng 2 phần: (A) súp và nước xuýt (broths) và chế phẩm để làm súp và nước xuýt · (B) chế phẩm thực phẩm đồng nhất — `trich` lấy đúng 2 tiêu đề nguyên văn ✓; `text` 92 < trần 220 ✓."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "XOÁ — mượn câu CHƯƠNG 21 mục 1(g) làm điều kiện vào nhóm 21.04: \"(g) Men được đóng gói như dược phẩm hoặc các sản phẩm khác thuộc nhóm 30.03 hay 30.04\" — chủ thể là MEN (nhóm 21.02) và sản phẩm nhóm 30.03/30.04, KHÔNG phải súp hay chế phẩm thực phẩm đồng nhất; tiêu đề nhóm 2104 không dùng khái niệm này làm định nghĩa và câu không mô tả đặc tính vật chất của hàng thuộc 21.04 ⇒ cùng lý do với 2103 (luật 4 bước + bài học lô 051/060). `fact` còn viết \"khong_phai_X\" với value=false ⇒ ĐẢO CHIỀU (đọc thành \"là dược phẩm\"); nhà dùng `khong_phai_*` với value=true (30/30 mục NGUOI_DUYET). KHÔNG mất thông tin: câu còn nguyên văn trong chú giải Chương 21 mục 1(g)."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "xoa",
+   "lyDo": "XOÁ — mượn câu CHƯƠNG 21 mục 1(h) \"(h) Enzyme đã chế biến thuộc nhóm 35.07.\" — chủ thể là ENZYME, không phải súp/chế phẩm thực phẩm đồng nhất; tiêu đề nhóm 2104 không dùng khái niệm này làm định nghĩa ⇒ cùng lý do với `dieuKienVao[0]`. KHÔNG mất thông tin: câu còn nguyên văn trong chú giải Chương 21 mục 1(h)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"(nhóm 07.12)\" ✓; `dieuKien` \"Hỗn hợp rau khô (rau thập cẩm thái quân cờ)\" bám câu trích (nguồn: \"Hỗn hợp rau khô (rau thập cẩm thái quân cờ), ở dạng bột hay không ở dạng bột\") — không thêm chữ nào không có trong nguồn ✓; 43 < 55 ✓."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"(nhóm 11.06)\" ✓; `dieuKien` \"Bột, bột thô, bột mịn của rau đậu khô\" nguyên văn ✓; 37 < 55 ✓."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"nhóm 20.04 hoặc 20.05\" ✓; CẢ HAI mã giữ trong `sangNhom` \"2004|2005\" ✓; `trich` giữ trọn vế \"gồm hỗn hợp các loại rau (julienne, salads, …), thậm chí đôi khi được sử dụng để chế biến súp\" — vế \"thậm chí… để chế biến súp\" là ngoại lệ ngay sau, đã có mặt trong trích ✓; 45 < 55 ✓."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"(nhóm 21.06)\" ✓; `dieuKien` \"Men tự phân\" nguyên văn ✓; 11 < 55 ✓."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI NHÁNH \"KHÔNG\" ĐÚNG CHỈ MỘT DÒNG (máy KHÔNG bắt). Câu hỏi cũ: \"Hàng là chế phẩm thực phẩm đồng nhất phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ, hay là súp và nước xuýt?\" — nhánh \"có\" → 2104.20.91 (chế phẩm thực phẩm đồng nhất dành cho trẻ), nhánh \"không\" → 2104.10.91 (súp/nước xuýt dành cho trẻ). Nhưng điều kiện \"dùng cho trẻ sơ sinh hoặc trẻ nhỏ\" chỉ nằm ở NHÁNH \"CÓ\", nên một món súp THƯỜNG (không dành cho trẻ) rơi vào nhánh \"không\" và bị chỉ tới 2104.10.91 — sai (phải là 2104.10.19/2104.10.99). Sửa: đưa điều kiện \"dùng cho trẻ sơ sinh hoặc trẻ nhỏ\" vào câu hỏi để nó chi phối CẢ HAI nhánh — khớp đúng câu trích (\"…được dùng làm thực phẩm cho trẻ sơ sinh hoặc trẻ nhỏ hoặc cho các mục đích ăn kiêng\") và hai đích 2104.20.91 / 2104.10.91 đều là dòng \"dành cho trẻ\" ✓. `hoi` mới 95 ký tự < trần clip 110 ✓; không nhắc mã ✓. GHI NHẬN: nhóm này còn phân nhóm 2104.20 với vế \"hoặc cho các mục đích ăn kiêng\" — nhánh đó không thuộc hai dòng \"dành cho trẻ\" nên nằm ngoài câu hỏi này, đã có ở `dong8` + `tieuChi6`.",
+   "sua": {
+    "hoi": "Hàng dùng cho trẻ sơ sinh hoặc trẻ nhỏ là chế phẩm thực phẩm đồng nhất hay là súp và nước xuýt?"
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi \"Hàng là men tự phân?\" không nhắc mã ✓; có→21.06 / không→21.04 ✓; 20 < 110 ✓."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Cấu trúc phần đúng nguồn: (A) SÚP VÀ NƯỚC XUÝT (BROTHS) VÀ CHẾ PHẨM ĐỂ LÀM SÚP VÀ NƯỚC XUÝT · (B) CHẾ PHẨM THỰC PHẨM ĐỒNG NHẤT — `trich` lấy đúng 2 tiêu đề nguyên văn ✓; `tomTat` 68 < trần 160 ✓."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 210410 \"Soups and broths and preparations therefor\" — WCO nguyên văn ✓ luật 10; boolean ✓."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 210420 (trọng lượng tịnh ≤ 250 g) — nguồn ch21.chuong mục 3 (\"được đóng gói với khối lượng tịnh không quá 250g để bán lẻ\") ✓; số 250 có trong trích ✓; `donVi` \"g\" khớp \"250g\" trong trích ✓. Đặt ở `tieuChi6` cấp phân nhóm (chứ không phải `dieuKienVao`) là ĐÚNG: điều kiện 250 g chỉ phủ phần (B) chế phẩm thực phẩm đồng nhất, không phủ phần (A) súp/nước xuýt (luật \"dieuKienVao chỉ đặt khi câu phủ CẢ nhóm\") ✓."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 21041011 \"Súp và nước xuýt phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ\" — nguồn sen.21041011: tiêu đề khối SEN đúng câu này ✓; `trich` nguyên văn câu mô tả súp ✓; `loaiKhac` false ✓; đủ 8/8 dòng tax.* ✓."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 21041019 — `loaiKhac` true ✓; `trich` = WCO 210410 ✓; 45 < 90 ✓."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 21041091 \"Súp và nước xuýt phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ\" — nguồn sen.21041091, tiêu đề khối SEN khớp ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 21041099 — `loaiKhac` true ✓; `trich` = WCO 210410 ✓."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 21042011 \"Chế phẩm thực phẩm đồng nhất phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ\" — tax nguyên văn ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 21042019 — `loaiKhac` true ✓; `trich` = WCO 210420 ✓."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 21042091 \"Chế phẩm thực phẩm đồng nhất phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ\" — tax nguyên văn (có ghi \"(SEN)\") ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 21042099 — `loaiKhac` true ✓; `trich` = WCO 210420 ✓."
+  }
+ ]
+}

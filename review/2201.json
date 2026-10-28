@@ -1,0 +1,114 @@
+{
+ "nhom": "2201",
+ "nguoiSoat": "dev-soat-doc-lap-lo066",
+ "vong": 1,
+ "luc": "2026-10-28T10:40:00+07:00",
+ "daKiem": 19,
+ "xoa": 0,
+ "sua": 2,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 066 (nhóm 2201) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/2201.txt (5.988 ký tự, đọc hết) + ch22.chuong + wco.220110/220190 + 4 dòng tax.*. Kết quả: giữ 17 · sửa 2 · xoá 0. Lớp lỗi: HAI `dieuKienVao` viết `fact` dạng \"khong_phai_X\" nhưng đặt `value: false` ⇒ đọc thành \"KHÔNG phải nước biển = false\" tức \"LÀ nước biển\" (đảo chiều). Nhà dùng `khong_phai_*` với value=true (30/30 mục NGUOI_DUYET đã gộp) hoặc tên fact DƯƠNG kèm value=false (vd 1404 \"la_soi_go_… = false\") ⇒ sửa thành value=true. Nội dung mục GIỮ: chú giải RIÊNG của nhóm đã viết hai loại trừ này vào định nghĩa phần (A) (\"bao gồm tất cả các loại nước thường tự nhiên (trừ nước biển - xem nhóm 25.01)\" và \"trừ nước cất hoặc nước khử độ dẫn…\") ⇒ điều kiện vào nhóm hợp lệ (khác 2103/2104, nơi câu chương nói về nhóm khác).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Phạm vi đúng 4 phần của nhóm: (A) nước tự nhiên thông thường · (B) nước khoáng (thiên nhiên hay nhân tạo) · (C) nước có ga · (D) nước đá và tuyết — `trich` lấy đúng 4 tiêu đề nguyên văn ✓; `text` 95 < trần 220 ✓; \"nước khoáng thiên nhiên hay nhân tạo\" giữ đủ hai loại như nguồn ✓."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI ĐẢO CHIỀU BOOLEAN (máy KHÔNG bắt — luật máy chỉ kiểm dạng fact/op/value). `fact` viết \"khong_phai_nuoc_bien\" (tức \"KHÔNG phải nước biển\") nhưng đặt `value: false` ⇒ runtime in ra \"khong_phai_nuoc_bien = false\" mà đọc thành \"KHÔNG phải nước biển = false\" ⇒ \"LÀ nước biển\" — ngược hẳn ý nghĩa, và là điều kiện VÀO nhóm 22.01 thì hàng phải KHÔNG phải nước biển. Sửa: `value` false → true. Căn cứ (đo nền nhà, tmp/so-tay/lo066-do-nen2.js): 36 mục có fact \"khong_phai_*\" trong kho đã gộp, 30 mục NGUOI_DUYET và TẤT CẢ đều dùng value=true; còn 35 mục value=false đã duyệt thì dùng fact DƯƠNG (\"la_soi_go_…\", \"da_xu_ly_…\") ⇒ nhà chỉ có MỘT cách viết \"không phải X\" là value=true. `op`, `donVi`, `nguon`, `trich` giữ nguyên. NỘI DUNG mục hợp lệ: chú giải RIÊNG của 2201 đã viết \"trừ nước biển - xem nhóm 25.01\" vào định nghĩa phần (A) ⇒ đây là điều kiện vào nhóm (khác 2103/2104, nơi câu chương nói về nhóm khác nên đã xoá).",
+   "sua": {
+    "value": true
+   }
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lỗi đảo chiều boolean: `fact` \"khong_phai_nuoc_cata_hoac_nuoc_khu_do_dan_va_nuoc_tinh_khiet_tuong_tu\" với `value: false` ⇒ đọc thành \"LÀ nước cất…\" (ngược ý). Sửa: `value` false → true (đúng lối nhà: `khong_phai_*` luôn value=true). NỘI DUNG hợp lệ: chú giải RIÊNG của 2201 viết \"trừ nước cất hoặc nước khử độ dẫn và các loại nước tinh khiết tương tự thuộc nhóm 28.53\" ngay trong phần (A) ⇒ điều kiện vào nhóm 22.01 ✓; `op`, `donVi`, `nguon`, `trich` giữ nguyên.",
+   "sua": {
+    "value": true
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"xem nhóm 25.01\" ✓ (luật 3); `dieuKien` \"Nước biển\" nguyên văn ✓; 9 < 55 ✓. `trich` giữ trọn CÂU ĐỊNH NGHĨA phần (A) kèm cả hai loại trừ (nước biển và nước cất) ⇒ không mất ngoại lệ ✓."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"thuộc nhóm 28.53\" ✓; `dieuKien` \"Nước cất, nước khử độ dẫn hoặc nước tinh khiết tương tự\" bám câu trích ✓; 55 ký tự = đúng trần clip 55 ⇒ KHÔNG bị cắt ✓."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"(nhóm 22.02)\" ✓; `trich` ghép 3 câu nguồn (mục trước phần (A) + hai câu \"Nhóm này loại trừ…\" cho nước khoáng và nước có ga); đoạn \"(hương cam…\" dừng đúng Ở DẤU LƯỢC CỦA CHÍNH NGUỒN (\"hương cam, chanh...\") ⇒ không phải lược cắt của người soạn, và phần sau dấu lược (\"(nhóm 22.02)\") không chứa ngoại lệ nào bị mất ✓; 288 ký tự < 300 ✓; `dieuKien` 39 < 55 ✓."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"thuộc nhóm 21.05\" ✓; `dieuKien` \"Kem ăn được\" nguyên văn ✓; 11 < 55 ✓."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Loại trừ có đích danh \"(nhóm 28.11)\" ✓; `dieuKien` \"Tuyết axit carbonic hoặc nước đá khô\" nguyên văn ✓; 36 < 55 ✓. GHI NHẬN: một câu nguồn có HAI đích (21.05 và 28.11) nên tách thành 2 mục `loaiTru` — đúng, không gộp."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi \"Hàng có phải là nước biển không?\" không nhắc mã ✓; có→25.01 / không→22.01 đúng chiều ✓; 32 < 110 ✓."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi \"Hàng có phải là nước cất, nước khử độ dẫn hay nước tinh khiết tương tự không?\" không nhắc mã ✓; có→28.53 / không→22.01 ✓; 77 < 110 ✓."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi \"Hàng có phải là tuyết axit carbonic hoặc nước đá khô không?\" không nhắc mã ✓; có→28.11 / không→22.01 ✓; 59 < 110 ✓."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi \"Hàng có phải là kem ăn được không?\" không nhắc mã ✓; có→21.05 / không→22.01 ✓; 34 < 110 ✓."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Cấu trúc phần đúng nguồn: (A) nước tự nhiên thông thường · (B) nước khoáng · (C) nước có ga · (D) nước đá và tuyết — `trich` lấy đúng 4 tiêu đề nguyên văn ✓; `tomTat` 70 < trần 160 ✓."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 220110 \"Waters; mineral and aerated, including natural or artificial, (not containing added sugar or other sweetening matter nor flavoured)\" — WCO nguyên văn ✓ luật 10; boolean ✓ (giữ đủ \"natural or artificial\")."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí 220190 \"Waters; other than mineral and aerated, (not containing added sugar…), ice and snow\" — WCO nguyên văn ✓; boolean ✓ (nêu cả \"ice and snow\" — không thu hẹp)."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 22011010 \"Nước khoáng\" — nguồn nhom2201.nhom phần (B) nguyên văn ✓; `dieuKien` \"Nước khoáng thiên nhiên hay nhân tạo\" bám câu nguồn ✓; `loaiKhac` false ✓; đủ 4/4 dòng tax.* ✓."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 22011020 \"Nước có ga\" — nguồn nhom2201.nhom phần (C) nguyên văn ✓; `dieuKien` bổ sung \"nạp khí carbon dioxide dưới áp suất\" theo đúng câu nguồn ✓ (không thêm ý riêng); `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 22019010 \"Nước đá và tuyết\" — nguồn nhom2201.nhom phần (D) nguyên văn ✓; `dieuKien` \"Nước đá và tuyết tự nhiên và nước được làm đông lạnh\" bám câu nguồn ✓; `loaiKhac` false ✓."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 22019090 — `loaiKhac` true đúng biểu thuế ✓; `trich` = WCO 220190 (nêu \"other than mineral and aerated … ice and snow\") nên giữ được đặc tính phân nhóm ✓; 45 < trần 90 ✓."
+  }
+ ]
+}
