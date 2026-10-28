@@ -1,114 +1,48 @@
 {
  "nhom": "2102",
- "nguoiSoat": "dev-soat-doc-lap-lo066",
- "vong": 1,
- "luc": "2026-10-28T10:40:00+07:00",
- "daKiem": 19,
+ "nguoiSoat": "dev-soat-doc-lap-lo066-v2",
+ "vong": 2,
+ "luc": "2026-10-28T11:20:00+07:00",
+ "daKiem": 21,
  "xoa": 0,
- "sua": 2,
- "chen": 0,
- "ghiChu": "SOÁT ĐỘC LẬP lô 066 (nhóm 2102) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/2102.txt (8.152 ký tự, đọc hết) + ch21.chuong + wco.210210/210220/210230 + 4 dòng tax.*. Kết quả: giữ 17 · sửa 2 · xoá 0. Hai lớp lỗi: (1) `dieuKienVao[0].fact` chứa \"trong_khoi_luong\" ⇒ cổng ngưỡng SO_TAY_NGUONG đọc số theo TÊN fact (không theo `donVi`) nên đọc \"khối lượng 25 kg\" rồi so với ngưỡng 20 (đơn vị \"%\") ⇒ bắt oan (đo thật: kem lạnh 25 kg, bột nở 25 kg) và kết luận sai \"Nếu không → chọn nhóm khác\"; sửa bằng cách bỏ đuôi \"trong_khoi_luong\" khỏi fact (fact chỉ là khoá định danh, luật máy chỉ kiểm dạng) — nghĩa giữ nguyên vì `trich` vẫn ghi \"tính theo khối lượng\". (2) `phamVi.text` bỏ mất định ngữ \"có thể\" của câu nguồn — lối nhà đã bắt ở lô 034/061 (72/538 `phamVi.text` đã duyệt giữ định ngữ này).",
+ "sua": 3,
+ "chen": 1,
+ "ghiChu": "SOÁT ĐỘC LẬP VÒNG 2 lô 066 — người soát KHÁC người soạn và khác người soát vòng 1. Đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/2102.txt (8.152 ký tự) + ch21.chuong + wco.210210/210220/210230 + 4 dòng tax.*. ĐÃ ĐO NỀN NHÀ: 0/21 trích quá 300, 0/21 sai byte-exact, 0 vượt trần clip. Ba lớp lỗi: (1) `dieuKien` biến VÍ DỤ của nguồn thành điều kiện (thu hẹp phạm vi loại trừ); (2) câu trích `phamVi` thiếu tiêu đề phần (A); (3) BỎ SÓT loại trừ Chú giải Chương 21 mục 1(g) — chủ thể là MEN (hàng của chính nhóm 21.02) nên đây là loại trừ ĐÚNG cho 2102, khác với 1(g)/1(h) mà vòng 1 xoá ở 2103/2104. GIỮ NGUYÊN: điều kiện 20% (chiều \"<=\" đúng vì nguồn loại \"trên 20%\"; `ngoaiTru` là mệnh đề trừ trong chính câu nguồn — mẫu nhà y hệt ở 6202/6211 với ngoaiTru=\"trừ các mặt hàng thuộc nhóm 62.12\" nên GIỮ, không xoá); tên fact đã vá ở vòng 1 (không chứa \"trong_khoi_luong\" ⇒ cổng ngưỡng không đọc nhầm 20% thành kg).",
  "thayDoi": [
   {
    "index": "phamVi",
    "hanhDong": "sua",
-   "lyDo": "BỎ MẤT ĐỊNH NGỮ GIỚI HẠN (lớp lỗi máy KHÔNG bắt — trích vẫn nguyên văn nên máy im lặng). Nguồn: \"Men thuộc nhóm này CÓ THỂ ở trạng thái hoạt động hoặc ỳ (không hoạt động).\" — `text` ghi \"Men ở trạng thái hoạt động hoặc ỳ\" ⇒ mất vế \"có thể\", câu thành khẳng định chắc hơn nguồn. Sửa: thêm lại \"có thể\"; `text` mới 94 ký tự < trần clip 220 ✓. `trich` giữ nguyên (đã nguyên văn).",
+   "lyDo": "Câu trích THIẾU tiêu đề phần (A). Nhóm 2102 có 3 phần ngang hàng (A) MEN · (B) CÁC VI SINH ĐƠN BÀO KHÁC, ĐÃ CHẾT · (C) BỘT NỞ ĐÃ PHA CHẾ; bản nháp trích \"Men thuộc nhóm này có thể ở trạng thái hoạt động hoặc ỳ…\" rồi lược thẳng sang tiêu đề (B) ⇒ mảnh đầu không còn gắn được với phần (A) (bài học lô 057: kệ sách thiếu tiêu đề phần). `text` đã nêu đủ A/B/C nên chỉ sửa `trich` — thêm mảnh \"(A) MEN\" ở đầu.",
    "sua": {
-    "text": "Men có thể ở trạng thái hoạt động hoặc ỳ; các vi sinh đơn bào khác đã chết; bột nở đã pha chế."
-   }
-  },
-  {
-   "index": "dieuKienVao[0]",
-   "hanhDong": "sua",
-   "lyDo": "LỖI CỔNG NGƯỠNG BẮT OAN (đo thật bằng lib/so-tay-gates.js, xem tmp/so-tay/lo066-thu-gate.js). `fact` chứa \"trong_khoi_luong\" ⇒ UNIT_RULES chọn luật \"đọc số khối lượng (kg)\" và so với 20, trong khi điều kiện này là TỶ LỆ % (`donVi` \"%\", câu trích \"có chứa trên 20% tính theo khối lượng\"). Chạy thật: mô tả \"Kem lạnh vị socola, khối lượng 25 kg\" ⇒ cổng SO_TAY_NGUONG bắn ra \"ty_le_thit_va_nguyen_lieu_dong_vat_trong_khoi_luong <= 20 %, hồ sơ ghi 25 kg\" và hỏi khách \"Hồ sơ ghi 25 kg — trái ngưỡng <= 20 của nhóm 21.02. Nếu không → chọn nhóm khác\" ⇒ tờ khai 25 kg bị đẩy sang nhóm khác trong khi 25 kg là TỔNG khối lượng, không phải % thịt. Sửa: bỏ đuôi \"trong_khoi_luong\" khỏi tên fact (fact là KHOÁ ĐỊNH DANH, luật máy chỉ kiểm dạng /^[a-z][a-z0-9_]{2,}$/ — KHÔNG kiểm fact có trong nguồn); `op` \"<=\" 20, `donVi` \"%\", `ngoaiTru` và `trich` GIỮ NGUYÊN (câu trích vẫn ghi \"tính theo khối lượng\" nên nghĩa không đổi). GHI NHẬN: cùng lỗi này còn ở 1901/1902/1905/2106 đã gộp — nêu trong PR để người duyệt vá `lib/so-tay-gates.js` (UNIT_RULES phải tôn trọng `donVi`) cho các nhóm đã gộp.",
-   "sua": {
-    "fact": "ty_le_thit_va_nguyen_lieu_dong_vat"
+    "trich": "(A) MEN…Men thuộc nhóm này có thể ở trạng thái hoạt động hoặc ỳ (không hoạt động).…(B) CÁC VI SINH ĐƠN BÀO KHÁC, ĐÃ CHẾT…(C) BỘT NỞ ĐÃ PHA CHẾ"
    }
   },
   {
    "index": "loaiTru[0]",
-   "hanhDong": "giu",
-   "lyDo": "Loại trừ có đích danh: \"(nhóm 11.01 hoặc 11.02)\" ✓ luật 3; CẢ HAI nhánh giữ trong `sangNhom` \"1101|1102\" (không tách một nhánh của \"A hoặc B\" — lớp lỗi lô 030/052) ✓. `dieuKien` \"Bột làm bánh ngũ cốc có thêm bột nở\" bám đúng câu trích (nguồn: \"Các loại bột làm bánh ngũ cốc ví dụ, bột được cho thêm bột nở\") ✓; 35 < trần 55 ✓. GHI NHẬN: chữ \"ví dụ\" trong nguồn giới thiệu VÍ DỤ của loại hàng, không phải ví dụ của nhóm đích — nhóm đích 11.01/11.02 được nêu đích danh trong chính mục (a) ⇒ hợp lệ (khác lô 052, nơi \"ví dụ, như được mô tả tại nhóm 11.04 (xem Chú giải tương ứng)\" mới là ví dụ của đích)."
-  },
-  {
-   "index": "loaiTru[1]",
-   "hanhDong": "giu",
-   "lyDo": "Loại trừ có đích danh \"(nhóm 21.06)\" ✓; `dieuKien` \"Men tự phân\" nguyên văn câu trích ✓; 11 < 55 ✓."
-  },
-  {
-   "index": "loaiTru[2]",
-   "hanhDong": "giu",
-   "lyDo": "Loại trừ có đích danh \"(nhóm 30.02)\" ✓; `dieuKien` giữ nguyên cả ngoặc \"(trừ các loại men)\" — đây là ngoại lệ CỦA CHÍNH mục loại trừ, bỏ đi sẽ thu hẹp sai phạm vi ✓; 46 < 55 ✓."
-  },
-  {
-   "index": "loaiTru[3]",
-   "hanhDong": "giu",
-   "lyDo": "Loại trừ có đích danh \"nhóm 30.03 hoặc 30.04\" ✓; CẢ HAI mã giữ trong `sangNhom` \"3003|3004\" ✓; 33 < 55 ✓."
-  },
-  {
-   "index": "loaiTru[4]",
-   "hanhDong": "giu",
-   "lyDo": "Loại trừ có đích danh \"(nhóm 35.07)\" ✓; `trich` giữ nguyên lỗi chính tả của nguồn (\"amylases, penpsine, men dịch vị\") — luật 2 \"giữ nguyên lỗi chính tả gốc\" ✓; 15 < 55 ✓."
+   "hanhDong": "sua",
+   "lyDo": "`dieuKien` biến VÍ DỤ thành ĐIỀU KIỆN, thu hẹp phạm vi loại trừ. Nguồn: \"(a) Các loại bột làm bánh ngũ cốc ví dụ, bột được cho thêm bột nở (nhóm 11.01 hoặc 11.02).\" — LỚP bị loại là \"các loại bột làm bánh ngũ cốc\"; \"bột được cho thêm bột nở\" chỉ là VÍ DỤ. Bản nháp ghi \"Bột làm bánh ngũ cốc có thêm bột nở\" ⇒ một bột làm bánh ngũ cốc KHÔNG có thêm bột nở sẽ không bị chặn (đúng luật lô 030: \"dieuKienVao chỉ phủ MỘT phần\" — cùng lớp lỗi với loaiTru[0] của 2103 sửa ở vòng này). Máy KHÔNG bắt được vì câu trích vẫn nguyên văn. Tiền lệ nhà: 0302/0304 giữ `dieuKien` là \"Phế liệu của cá và trứng cá không làm thực phẩm\" — BỎ vế ví dụ, chỉ 0303 giữ. `sangNhom`/`nguon`/`trich` giữ nguyên (11.01/11.02 vẫn được nêu đích danh trong câu trích).",
+   "sua": {
+    "dieuKien": "Bột làm bánh ngũ cốc"
+   }
   },
   {
    "index": "phanBiet[0]",
-   "hanhDong": "giu",
-   "lyDo": "Câu hỏi \"Hàng là bột làm bánh ngũ cốc được cho thêm bột nở?\" — hỏi về đặc tính hàng, không nhắc mã ✓; có→11.01/11.02 / không→21.02 đúng chiều; \"không\" dựa trên câu \"nhóm này không bao gồm\" của chính nguồn ✓."
+   "hanhDong": "sua",
+   "lyDo": "Cùng lý do loaiTru[0]: câu hỏi cũ \"Hàng là bột làm bánh ngũ cốc được cho thêm bột nở?\" lặp lại điều kiện thuộc VÍ DỤ của nguồn ⇒ hàng là bột làm bánh ngũ cốc không có thêm bột nở sẽ trả lời \"không\" và bị chỉ về 21.02 (sai). Sửa câu hỏi theo đúng LỚP bị loại. Mã đích 11.01|11.02 vẫn có trong câu trích; `trich` giữ.",
+   "sua": {
+    "hoi": "Hàng là bột làm bánh ngũ cốc?"
+   }
   },
   {
-   "index": "phanBiet[1]",
-   "hanhDong": "giu",
-   "lyDo": "Câu hỏi \"Hàng là men tự phân?\" không nhắc mã ✓; có→21.06 (đích danh trong trích) / không→21.02 ✓; 20 < 110 ✓."
-  },
-  {
-   "index": "phanBiet[2]",
-   "hanhDong": "giu",
-   "lyDo": "Câu hỏi \"Hàng là vi sinh nuôi cấy (trừ men) hoặc vắc xin?\" giữ nguyên ngoại lệ \"(trừ các loại men)\" ✓; có→30.02 / không→21.02 ✓; 48 < 110 ✓."
-  },
-  {
-   "index": "phanBiet[3]",
-   "hanhDong": "giu",
-   "lyDo": "Câu hỏi \"Hàng là enzyme?\" không nhắc mã ✓; có→35.07 / không→21.02 ✓; 15 < 110 ✓. GHI NHẬN: mục loại trừ (d) \"Thuốc thuộc nhóm 30.03 hoặc 30.04\" không có câu hỏi phân biệt riêng — không sai (nhà không bắt buộc 1:1; runtime chỉ in 4 câu hỏi đầu), và mục đó đã có `loaiTru` riêng ✓."
-  },
-  {
-   "index": "boPhan",
-   "hanhDong": "giu",
-   "lyDo": "Cấu trúc phần đúng nguồn: (A) MEN · (B) CÁC VI SINH ĐƠN BÀO KHÁC, ĐÃ CHẾT · (C) BỘT NỞ ĐÃ PHA CHẾ — `trich` lấy đúng 3 tiêu đề nguyên văn (byte-exact, đã tự so riêng vì `check-trich-nguyen-van.mjs` không duyệt `boPhan`) ✓. `quyTac` 89 ký tự, `tomTat` 53 ký tự < trần 160 ✓."
-  },
-  {
-   "index": "tieuChi6[0]",
-   "hanhDong": "giu",
-   "lyDo": "Tiêu chí 210210 \"Yeasts; active\" — WCO nguyên văn ✓ luật 10; boolean value=true đúng chiều ✓."
-  },
-  {
-   "index": "tieuChi6[1]",
-   "hanhDong": "giu",
-   "lyDo": "Tiêu chí 210220 \"Yeasts; inactive, other single-cell micro-organisms, dead\" — WCO nguyên văn ✓; boolean ✓ (nêu đủ cả hai vế của tiêu đề phân nhóm)."
-  },
-  {
-   "index": "tieuChi6[2]",
-   "hanhDong": "giu",
-   "lyDo": "Tiêu chí 210230 \"Baking powders; prepared\" — WCO nguyên văn ✓; boolean ✓."
-  },
-  {
-   "index": "dong8[0]",
-   "hanhDong": "giu",
-   "lyDo": "Dòng 21021000 \"Men sống\" — tax nguyên văn ✓; `loaiKhac` false ✓; đủ 4/4 dòng tax.* của nhóm ✓."
-  },
-  {
-   "index": "dong8[1]",
-   "hanhDong": "giu",
-   "lyDo": "Dòng 21022010 \"Loại dùng trong chăn nuôi động vật\" — tax nguyên văn ✓; `loaiKhac` false ✓."
-  },
-  {
-   "index": "dong8[2]",
-   "hanhDong": "giu",
-   "lyDo": "Dòng \"Loại khác\" 21022090 — `loaiKhac` true đúng biểu thuế ✓; `trich` = WCO 210220 nên giữ được đặc tính phân nhóm ✓; 45 < trần 90 ✓."
-  },
-  {
-   "index": "dong8[3]",
-   "hanhDong": "giu",
-   "lyDo": "Dòng 21023000 \"Bột nở đã pha chế\" — tax nguyên văn ✓; `loaiKhac` false ✓."
+   "index": "loaiTru",
+   "hanhDong": "chen",
+   "lyDo": "BỎ SÓT một loại trừ có căn cứ đầy đủ: Chú giải Chương 21 mục 1(g) — \"(g) Men được đóng gói như dược phẩm hoặc các sản phẩm khác thuộc nhóm 30.03 hay 30.04\". CHỦ THỂ của câu là MEN — tức hàng thuộc CHÍNH nhóm 21.02 (khác với mục 1(d) \"Thuốc thuộc nhóm 30.03 hoặc 30.04\" vốn là thuốc, không phải men) ⇒ đây là điều kiện loại trừ ĐÚNG cho nhóm 2102, chứ không phải \"mượn loại trừ chung của Chương\" (vòng 1 đã xoá đúng các mục 1(g)/1(h) ở 2103/2104 vì chủ thể là MEN/ENZYME — không phải hàng của 21.03/21.04). Đích danh 30.03 và 30.04 có trong câu trích. TIỀN LỆ NHÀ ĐÃ DUYỆT: data/so-tay/2101.json có ĐÚNG mục này với cùng nguồn ch21.chuong, cùng đích \"3003|3004\" và cùng cách diễn đạt `dieuKien`; 2106.json cũng có bản \"Men đóng gói như dược phẩm…\". Chèn (không sửa mục cũ) để giữ nguyên mục (d) \"Thuốc thuộc nhóm 30.03 hoặc 30.04\" vốn là loại trừ RIÊNG của chú giải nhóm.",
+   "muc": {
+    "dieuKien": "Men được đóng gói như dược phẩm hoặc sản phẩm khác thuộc nhóm 30.03 hay 30.04",
+    "sangNhom": "3003|3004",
+    "nguon": "ch21.chuong",
+    "trich": "(g) Men được đóng gói như dược phẩm hoặc các sản phẩm khác thuộc nhóm 30.03 hay 30.04;"
+   }
   }
  ]
 }
