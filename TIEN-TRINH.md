@@ -11214,3 +11214,97 @@ Không có `TRÀN-CLIP`, `VÙNG-IM-LẶNG`, `LƯỚC-NGOẠI-LỆ`, `CÂU-SAU-NG
 3. **`cay.tenDien` 262099**: nguồn tiếng Việt cho nút 6 số 2620.99 **không có** (biểu thuế Tổng cục không đặt tiêu đề cho dòng này) ⇒ tên tiếng Việt dịch từ tiêu đề WCO (`wco.262099`), y hệt cách lô 075 làm cho 260111/260112.
 4. **`tieuChi6` còn trống 12 chỗ**: nơi không có nguồn Việt có tiêu chí cấp 6 số. `tieuChi6` hiện **CHƯA được runtime dùng** (0 tham chiếu trong `lib/so-tay-runtime.js` + `lib/so-tay-gates.js`) ⇒ không ảnh hưởng phân loại; em **không** điền bừa.
 5. **`dieuKienSo` không dùng trong lô này** — xem lý do ở bảng quyết định soạn (2620): cổng `SO_TAY_NGUONG` đọc số theo TÊN `fact`; các ngưỡng % (chất bốc 14 %, K₂O 30–50 %) không thuộc bộ đọc số đã đăng ký ⇒ điền vào sẽ bị cổng đọc sai đơn vị (memory lô 076).
+
+---
+
+## Lô 081 — nhóm 2716, 2801, 2802, 2803, 2804, 2805 (soạn)
+
+Người soạn: `dev-zcode-mm` · ngày 29/10/2026 · nhánh `so-tay/lo-081` · **92/92 mục (100 %)**.
+
+### Bước 1 — đọc tài liệu bắt buộc
+- `docs/giao-viec/so-tay/LUAT-CHUNG.md` (11 luật) — đọc TRỌN.
+- `docs/giao-viec/so-tay/SOAN-LO.md` — đọc TRỌN (lệnh + mô tả PR + bảng lỗi máy tự loại).
+- KHÔNG đọc trọn `so-tay-giao-ngoai.md` (theo giao việc 3 tầng).
+- Bổ sung: `tmp/so-tay/nguon/_he-thong.txt` (lược đồ + 2 khối bài học bắt buộc) — đọc TRỌN sau khi xuất nguồn.
+
+### Bước 2 — xuất nguồn
+`node scripts/build-so-tay.mjs --nhom=2716,2801,2802,2803,2804,2805 --xuat-nguon=tmp/so-tay/nguon`
+→ 6 tệp nguồn + `_he-thong.txt`. Đã đọc **trọn** cả 6 tệp nguồn (5.7 KB + 35–42 KB × 5).
+
+### Bước 3 — dựng cây HS (để biết nút nào bị lược tên, phân nhóm nào có thật)
+`lib/hs-tree.js` → **không nhóm nào trong lô này có nút ảo thiếu tên** ⇒ `cay.tenDien` rỗng cả 6 nhóm.
+
+| Nhóm | Cấu trúc cây (lá 8 số) | Nút 6 số (`laPhanNhom`) | Hệ quả |
+|---|---|---|---|
+| 2716 | 27160000 | 2716 (4 số) | **không mã hoá được `tieuChi6`** (máy loại: `hs6-khong-co-trong-cay`) |
+| 2801 | 28011000 · 28012000 · 28013000 | 280110 · 280120 · 280130 | 3 `tieuChi6` |
+| 2802 | 28020000 | 2802 (4 số) | **không mã hoá được `tieuChi6`** |
+| 2803 | 28030020 · 28030041 · 28030049 · 28030090 | (không có nút 6 số; có nút 7 số 2803004 "Muội carbon khác" **đã có tên**) | **không mã hoá được `tieuChi6`** |
+| 2804 | 11 lá | 280410/21/29/30/40/45/61/69/70/80/90 | 11 `tieuChi6` |
+| 2805 | 28051100 · 28051200 · 28051900 · 28053000 · 28054000 | 280511 · 280512 · 280519 · 280530 · 280540 | 6 `tieuChi6` (280530 có 2) |
+
+### Bước 4 — soạn `tmp/so-tay/raw/<nhom>.json` (6 nhóm)
+
+**Công cụ (mượn từ lô 071, `tmp/lo081/` — gitignored):** mọi câu trích **CẮT THẲNG từ tệp nguồn** bằng "khoá ASCII đã bỏ dấu" (NFD + bỏ `\p{M}` + map `đ/ơ/ư`), nên không thể méo dấu tiếng Việt (bài học lô 066/068/071/077). Thêm `occurrence` để chọn lần khớp khi khoá trùng.
+**Lớp kiểm riêng của lô (`tmp/lo081/kit.mjs`):** *gác soát từ 2 mức* — mức A (mọi từ ≥3 ký tự trong trường tự viết phải có trong khối nguồn khai) và mức B (phải có trong **câu trích của chính mục đó**, so **GIỮ DẤU** ⇒ bắt được lỗi méo dấu mà so bỏ-dấu không bắt) + trần clip runtime + `fact` phải ASCII.
+
+Cấu trúc lô: `phamVi` 6 · `dieuKienVao` 2 · `loaiTru` 24 · `phanBiet` 15 · `tieuChi6` 20 · `cay.tenDien` 0 · `dong8` 25 = **92 mục**.
+
+| Nhóm | Ghi | Không ghi — vì sao |
+|---|---|---|
+| **2716** | `phamVi` (dòng biểu thuế); `dong8` 27160000 | `nhom2716.nhom` = *"Không chú giải."* ⇒ không có câu ràng buộc, không có loại trừ đích danh, không có câu phân biệt ⇒ `dieuKienVao`/`loaiTru`/`phanBiet` **RỖNG**. `tieuChi6` rỗng (2801 xem trên). Loại trừ chung của **Chương 27** (hợp chất hữu cơ · dược phẩm 30.03/30.04 · hydrocarbon 33.01/33.02/38.05) **không** chép vào nhóm (luật nhà) |
+| **2801** | `phamVi` (câu mở đầu + 4 tiêu đề phần, **giữ nguyên câu loại trừ của phần (C)** để không lược ngoại lệ); `dieuKienVao` ×1 (`la_phi_kim_halogen` — câu *"Nhóm này bao gồm các phi kim như halogen"* phủ CẢ 4 phần); `loaiTru` ×2: nguyên tố phóng xạ nhân tạo → **28.44**, dung dịch brom trong axit axetic → **38.24**; `phanBiet` ×2 (đối xứng với 2 loại trừ); `tieuChi6` ×3 (280110 Clo · 280120 Iot · 280130 Flo; brom — tên WCO tiếng Anh, `value` tiếng Việt theo mẫu 0101/0302); `dong8` ×3 | `boPhan` rỗng (phạm vi đã nêu đủ 4 phần — xem bước 7). Không có nút ảo thiếu tên ⇒ `cay.tenDien` rỗng |
+| **2802** | `phamVi` (2 tiêu đề phần); `loaiTru` ×3: lưu huỳnh "thu hồi" → **25.03**, lưu huỳnh chưa tinh chế (Frasch) → **25.03**, lưu huỳnh đã tinh chế → **25.03** (tách 3 đích theo câu nguồn); `phanBiet` ×3; `dong8` 28020000 | `dieuKienVao` rỗng: (A) và (B) là hai phần ngang hàng, mỗi phần có câu riêng ⇒ không có câu nào phủ CẢ nhóm. `tieuChi6` rỗng (2802 không chia phân nhóm 6 số trong cây HS). Loại trừ chung của **Phần VI** (Chú giải 2: hàng đóng gói để bán lẻ → nhóm 30.04) **không** chép vào nhóm |
+| **2803** | `phamVi` (carbon là phi kim dạng rắn + "Nhóm này bao gồm các loại carbon sau đây" + cách thu được muội carbon + cách mô tả bồ hóng/muội lò nung); `dieuKienVao` ×1 (`la_carbon`); `loaiTru` ×6: graphit tự nhiên → **25.04**, chất màu từ muội khoáng → **32.06**, graphit nhân tạo/keo/bán keo → **38.01**, carbon hoạt tính + muội động vật → **38.02**, than củi → **44.02**, carbon kết tinh kim cương → **71.02 + 71.04**; `phanBiet` ×3; `dong8` ×4 (28030041 lấy **SEN** + "Dạng vật lý : Rắn, bột, hoặc viên") | Mục **(b)** của danh sách loại trừ (than antraxit/than đá/than non/than cốc…) chỉ nêu **"Chương 27"** ⇒ không mã hoá được thành `loaiTru` (luật 3). `tieuChi6` rỗng (2803 không có nút 6 số trong cây HS) |
+| **2804** | `phamVi` (3 tiêu đề phần + câu định nghĩa "khí hiếm" — giữ vì có *"trong trường hợp của heli"*); `loaiTru` ×5: doteri → **28.45**, triti → **28.44**, radon → **28.44**, antimon → **81.10**, silic/selen dạng đĩa → **38.18**; `phanBiet` ×3; `tieuChi6` ×11 (9 theo tên WCO + **2 ngưỡng số**: silic ≥ 99,99 % (2804.61) / silic < 99,99 % (2804.69)); `dong8` ×11 | `dieuKienVao` rỗng (A/B/C là ba phần ngang hàng). Ngoại lệ **"selen ở dạng keo huyền phù (Chương 30)"** chỉ nêu CHƯƠNG ⇒ không mã hoá được. `cay.tenDien` rỗng (nút ảo 28042 "Khí hiếm" và 28046 "Silic" **đã có tên** từ biểu thuế) |
+| **2805** | `phamVi` (4 tiêu đề phần + câu loại trừ franxi nằm trong phần (A)); `loaiTru` ×8: hỗn hống natri → **28.53**, franxi → **28.44**, radi → **28.44**, magic → **81.04**, bery → **81.12**, prometi → **28.44**, hợp kim pyrophoric → **36.06**, muối + hợp chất của kim loại đất hiếm/ytri/scandi → **28.46**; `phanBiet` ×4; `tieuChi6` ×6 (5 theo tên WCO + **ngưỡng sắt của Mischmetal ≤ 5 %** cho 2805.30); `dong8` ×5 | `dieuKienVao` rỗng (A–D là bốn phần ngang hàng). **"hợp kim có hơn 5 % sắt … thì nó không thuộc nhóm này"** — đích là **chính nhóm này** ⇒ máy loại (`nhom-dich-trung-nhom-nay`), không mã hoá được thành `loaiTru`; đã đưa vế dương (≤ 5 % sắt) vào `tieuChi6` 2805.30. Nguồn ghi **"magic"** (lỗi chính tả của nguồn, ý là "magne") ⇒ **giữ nguyên** theo luật chép nguyên văn |
+
+### Bước 5 — tự kiểm bản nháp
+
+| Lệnh | Kết quả |
+|---|---|
+| `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` | **6 nhóm, 92/92 mục, 0 mục không kiểm được nguồn** |
+| `node scripts/check-trich-nguyen-van.mjs` | **OK — 92 mục**, mọi câu trích nguyên văn **byte-exact** trong đúng khối nguồn khai |
+| gác soát từ 2 mức của lô (`tmp/lo081/run.mjs`) | **0 lỗi** trên 5 nhóm; **1 cảnh báo thật** ở 2804 (xem bước 8) |
+| `node scripts/scan-so-tay-soat.mjs 2716 2801 2802 2803 2804 2805` | **31 cảnh báo**: 28 `TỪ-NGOÀI-NGUỒN` (báo động giả — xem bước 7) + 3 `LƯỚC-NGOẠI-LỆ` (báo động giả — xem bước 7). **0 TRÀN-CLIP · 0 VÙNG-IM-LẶNG · 0 CÂU-SAU-NGOẠI-LỆ** |
+| đối chiếu `dong8` với lá cây HS + `tax.json` (`tmp/lo081/kt-dong8.mjs`) | **6/6 nhóm khớp**: 2716 1 · 2801 3 · 2802 1 · 2803 4 · 2804 11 · 2805 5 — không thiếu, không thừa, không trùng, mọi mã có thật trong biểu thuế |
+
+### Bước 6 — nạp + kiểm
+
+| Lệnh | Kết quả |
+|---|---|
+| `node scripts/build-so-tay.mjs --nhom=2716,…,2805 --tu-tep=tmp/so-tay/raw --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-081.json` | **92/92 (100 %)**, `nhomLoi: []`, `tyLeDat: 100` |
+| `npm run so-tay:check` | **626 nhóm, 15.633 mục, 0 mục không kiểm được nguồn** (nền nhà trước lô: 620 nhóm / 15.541 mục) |
+| `node scripts/check-cay.mjs --nhom=2716,…,2805 --chi-tiet` | **6 nhóm, 0 lỗi lệch cây, 6/6 nhóm "đủ"** (cây đủ · đủ dong8 · đủ tên nút ảo · đủ tiêu chí 6 số) — lô này **không còn chỗ trống nào** |
+| `npm test` | **ALL TESTS PASSED** |
+
+### Bước 7 — cảnh báo còn lại (đã nêu, KHÔNG ẩn)
+
+**Hai lỗi của máy quét `scan-so-tay-soat.mjs` phát hiện khi soạn lô này:**
+
+1. **`trừ\b` KHÔNG BAO GIỜ khớp trong JS.** `\b` của JS chỉ tính `[A-Za-z0-9_]`, mà `ừ` (U+1EEB) không phải ký tự word ⇒ `trừ`/`loại trừ`/`bị loại trừ` **không bao giờ** kích hoạt cảnh báo `LƯỚC-NGOẠI-LỆ`. Chỉ còn 8 cụm thật sự kích hoạt: *tuy nhiên · với điều kiện · không kể · đã hoặc chưa · ngoại lệ · trong trường hợp · tùy trường hợp · thường (nằm|thuộc|được xếp|xếp)*.
+2. **`TỪ-NGOÀI-NGUỒN` bỏ dấu ở TỪ nhưng KHÔNG bỏ dấu ở NGUỒN** (`squash` giữ dấu, `fold` bỏ dấu) ⇒ **mọi từ tiếng Việt có dấu đều bị báo động giả**. Nền nhà đo được: 2613 (1), 2701 (4), 2615 (4) cũng vậy ⇒ 28 cảnh báo của lô này thuộc **3 khuôn mẫu chữ của nhà**:
+   - `tieuChi6[].fact` = `loai_hang` / `ham_luong_silic` ⇒ **19 cảnh báo** (mẫu `loai_vat`/`loai_quang_*` của 0101/0302/2615 trong kho);
+   - dòng 8 số "Loại khác: phần còn lại của phân nhóm X" ⇒ **5 cảnh báo** (mẫu của 2613/2615/2701);
+   - `phanBiet.hoi` mở đầu bằng **"Hàng này là …"** ⇒ **4 cảnh báo** (mẫu của 2701).
+
+**3 cảnh báo `LƯỚC-NGOẠI-LỆ` — cả 3 đều BÁO ĐỘNG GIẢ** (cụm kích hoạt nằm **trong** câu đã trích, không nằm trong đoạn bị lược; máy quét chỉ nhìn 60 ký tự đầu/cuối mỗi mảnh nên không phân biệt được):
+
+| Nhóm | Cảnh báo | Vì sao là giả |
+|---|---|---|
+| 2804 | `phamVi`: *"(trong trường hợp của heli)." ⟦⟦ "(C) CÁC PHI KIM KHÁC"* | Cụm *"trong trường hợp"* nằm **trong** mảnh đã trích (câu định nghĩa "khí hiếm"), **không** bị lược. Giữ mảnh này để không lược mất câu của phần (B) |
+| 2805 | `phamVi`: *"(B) KIM LOẠI KIỀM THỔ ⟦⟦ "(C) KIM LOẠI ĐẤT HIẾM; … ĐÃ HOẶC CHƯA PHA TRỘN …"* | Cụm *"ĐÃ HOẶC CHƯA"* nằm **trong** tiêu đề phần (C) đã trích; cắt bỏ nó thì `phamVi.text` mất vế "đã hoặc chưa pha trộn hoặc tạo hợp kim với nhau" |
+| 2805 | `phamVi`: *"… VỚI NHAU ⟦⟦ "(D) THỦY NGÂN"* | Cùng cụm *"ĐÃ HOẶC CHƯA"* ở đuôi mảnh (C) |
+
+⇒ **0 TRÀN-CLIP · 0 VÙNG-IM-LẶNG · 0 CÂU-SAU-NGOẠI-LỆ** trên 6 nhóm.
+
+### Bước 8 — còn mở cho người duyệt (KHÔNG tự sửa)
+
+1. **`loaiTru` 2804 → 38.18**: `dieuKien` ghi *"silic hoặc selen ở dạng đĩa, bánh hoặc tương tự"* nhưng câu trích (hai câu cuối chú giải nhóm) bắt đầu bằng *"Chúng được phân loại…"* — từ **"silic"/"selen"** nằm ở câu TRƯỚC đó (cùng dòng nguồn). Đây là **mục `dieuKien` có ghi điều mà câu trích không nói** (đã nêu trong mô tả PR). Sửa được: nối thêm câu *"Một vài phi kim trong nhóm này (ví dụ, silic và selen)…"* vào câu trích (dài 510 ký tự ⇒ vượt trần 300 của luật soạn, cân nhắc).
+2. **`loaiTru` 2803 → 38.01**: nguồn ghi *"(d) Graphit nhân tạo; graphit dạng keo hoặc dạng bán keo **(ví dụ, nhóm 38.01)**"* — số nhóm nằm trong ngoặc "ví dụ" ⇒ theo luật 3 ("không tính số nhóm chỉ là ví dụ") có thể **không** đủ điều kiện `loaiTru`. Em **đã ghi** (nằm trong danh sách "Nhóm này không bao gồm:" nên 38.01 là đích tự nhiên); nếu người duyệt bác thì chỉ cần bỏ 1 mục.
+3. **Loại trừ chỉ nêu CHƯƠNG — không mã hoá được**: 2803 mục (b) → "Chương 27"; 2804 "selen ở dạng keo huyền phù" → "Chương 30"; Chương 27 loại chung (hợp chất hữu cơ · dược phẩm 30.03/30.04 · hydrocarbon 33.01/33.02/38.05); Phần VI Chú giải 2 (hàng đóng gói để bán lẻ → 30.04) — tất cả **không** nêu mã nhóm đích ⇒ không đủ điều kiện `loaiTru` (luật 3). Cân nhắc thêm trường `sangChuong` cho các trường hợp này.
+4. **`loaiTru` 2805 "hợp kim có hơn 5 % sắt … không thuộc nhóm này"**: đích là **chính nhóm 2805** ⇒ máy loại (`nhom-dich-trung-nhom-nay`). Đã đưa vế dương (`tieuChi6` 2805.30: hàm lượng sắt ≤ 5 %) nhưng vẫn chưa có mục nào nói *"hơn 5 % sắt ⇒ không thuộc nhóm"*.
+5. **`boPhan` bỏ ở cả 6 nhóm**: phạm vi đã nêu đủ các phần ngang hàng (A)/(B)/(C)/(D) nên `boPhan` chỉ lặp lại ⇒ bỏ để khỏi nhân đôi số cảnh báo `LƯỚC-NGOẠI-LỆ` (mẫu `boPhan` của 0304 dùng cho nhóm có **hai phần ngang hàng nêu riêng** trong `phamVi.text`). Lô 077/078 cũng không dùng `boPhan`.
+6. **`tieuChi6` 20 mục, trong đó 19 mục lấy từ tiêu đề WCO tiếng Anh** (mẫu 0101/0302/2615 trong kho) — `tieuChi6` hiện **CHƯA được runtime dùng** (0 tham chiếu trong `lib/so-tay-runtime.js` + `lib/so-tay-gates.js`) ⇒ không ảnh hưởng phân loại. Riêng 2805.30 có **ngưỡng số thật** (Mischmetal tới 5 % sắt) và 2804.61/2804.69 có ngưỡng 99,99 % silic.
+7. **Nguồn 2805 chứa khối "PHÂN CHƯƠNG II: AXIT VÔ CƠ…"** ở cuối chú giải nhóm (dòng 94–104) — đây là **khối tổng quát của Phần II**, **không** áp cho nhóm 2805 (nhóm nguyên tố của Phần I) ⇒ em **không** dùng làm căn cứ. Nếu đây là lỗi ghép dữ liệu ở `data/chu-giai-heading.json` thì nên báo để sửa nguồn.
+8. **`dieuKienSo` không dùng trong lô này** — không có ngưỡng số nào đọc được theo TÊN `fact` của cổng `SO_TAY_NGUONG` (chỉ có 99,99 % silic và 5 % sắt, vốn là `tieuChi6` chứ không phải `dieuKienVao`).
