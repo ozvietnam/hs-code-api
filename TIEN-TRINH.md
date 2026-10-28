@@ -11314,7 +11314,7 @@ Cấu trúc lô: `phamVi` 6 · `dieuKienVao` 1 · `loaiTru` 5 · `phanBiet` 8 ·
 | 2 | `loaiTru.dieuKien` vượt 55 (trần clip runtime) | **1.211/2.778 (43,6 %)** | 2707 `loaiTru[0]` = 80 ký tự ⇒ **nền nhà**, giữ nguyên (cổng `SO_TAY_LOAI_TRU` khớp trên chuỗi đầy đủ) |
 | 3 | `dong8.dieuKien` vượt 90 | **3.320/6.809 (48,8 %)** | 2706 `dong8[0]` = 158 ⇒ nền nhà; các sửa của tôi đều **≤ 90** nên không bị cắt thêm |
 | 4 | `dieuKienVao` boolean: fact khẳng định + `value:false` | **87/745** (fact âm + `value:false` chỉ 8/745 ⇒ luật lô 066) | 2709 `dieuKienVao[0]` (fact khẳng định + `false`) **đúng chiều** ⇒ giữ |
-| 5 | `phanBiet` nhánh "không" = chính nhóm | **863/1.089 (79,2 %)**; nhánh dùng mã 8 số **205/1.089** | 2707 `phanBiet[0]` (neuKhong = 2707) · 2708 `phanBiet[0]` (neuCo/neuKhong = 27082000/27081000) · 2709 `phanBiet[0]` (neuCo = 27090020) ⇒ hợp lệ |
+| 5 | `phanBiet` nhánh "không" = chính nhóm | **898/1.143 (78,6 %) — đo trong phiên này**; nhánh dùng mã 8 số **224/1.143** | 2707 `phanBiet[0]` (neuKhong = 2707) · 2708 `phanBiet[0]` (neuCo/neuKhong = 27082000/27081000) · 2709 `phanBiet[0]` (neuCo = 27090020) ⇒ hợp lệ |
 | 6 | `cay.tenDien` đặt tên "Loại khác" | **3 nút** trong kho | 2707 `cay.tenDien[0]` (270799) lấy từ chính dòng nguồn ⇒ hợp lệ |
 | 7 | `fact` có dấu | **0/2.518** (luật lô 069) | `fact` của lô 079 là slug ASCII ⇒ không áp gác soát từ |
 | 8 | `phamVi.text` dùng liên từ ngoài câu trích | "và" thiếu 46/435 · "hoặc" thiếu 14/438 · "hay" thiếu 3/41 | Liên từ nối là **khuôn nhà** ⇒ không tính lỗi "thêm chữ" |
