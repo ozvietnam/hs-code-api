@@ -1,0 +1,164 @@
+{
+  "nhom": "1517",
+  "gopVoi": "soát độc lập lô 060 — vòng 3 (PR #480) — người soát KHÁC người soạn dev-zcode-mm",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Phạm vi nhóm = câu định nghĩa kèm vế loại trừ \"trừ các loại thuộc nhóm 15.16\" (ranh giới quan trọng nhất của nhóm) + 2 tiêu đề phần (A) Margarin (trừ margarin lỏng) · (B) Hỗn hợp hoặc chế phẩm ăn được. Vòng 1 đã rút từ 373 xuống 217 ký tự để không bị trần clip runtime cắt mất vế loại trừ."
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "Nhóm không có khối bộ phận riêng trong nguồn (các tiêu đề phần (A)/(B)/(C) là các phần ngang hàng đã nêu ở phamVi, không phải bộ phận của cùng một hàng) ⇒ để null là đúng mẫu nhà."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu định nghĩa phạm vi của chính nhóm, kèm vế loại trừ \"trừ các loại thuộc nhóm 15.16\"; trich giữ trọn câu (244 ký tự, không lược) nên không mất ngoại lệ."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu \"Cũng thuộc trong nhóm này là các chế phẩm ăn được làm từ một loại chất béo hoặc dầu đơn (hoặc các phân đoạn của nó),…đã được chế biến bằng cách nhũ hoá, nhào trộn, thay đổi kết cấu v.v.\" Vế \"đã hoặc chưa hydro hoá\" là câu CHO PHÉP nên lược, và fact cũng KHÔNG khẳng định vế đó (nằm ở dieuKienVao[2])."
+    },
+    {
+      "index": "dieuKienVao[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu phủ vế giới hạn \"việc thay đổi liên quan đến nhiều hơn một loại chất béo hoặc dầu\" — đối xứng với loaiTru[1] (\"chỉ liên quan đến một loại\"); mất vế này là ĐẢO CHIỀU luật."
+    },
+    {
+      "index": "dieuKienVao[3]",
+      "hanhDong": "giu",
+      "lyDo": "Câu phủ định \"không bao gồm chất béo và dầu đơn đã tinh lọc một cách giản đơn, mà không xử lý tiếp\" ⇒ value=false (mẫu nhà: 81/81 mục value=false trong corpus không bắt đầu bằng \"khong_\"). Vế \"ngay cả khi được đóng gói để bán lẻ\" là câu CHO PHÉP nên cắt khỏi trích."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu nguồn có DẤU HIỆU LOẠI TRỪ (\"nhóm không bao gồm …\") và NÊU ĐÍCH DANH nhóm đích \"(nhóm 15.03)\". dieuKien (47 ký tự ≤ trần clip 55) giữ nguyên danh từ nguồn: sản phẩm ép tallow hoặc mỡ lá và mỡ khổ của lợn."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu nguồn có DẤU HIỆU LOẠI TRỪ và NÊU ĐÍCH DANH nhóm đích \"(nhóm 15.16)\". dieuKien giữ TRỌN vế giới hạn \"chỉ liên quan đến một loại chất béo hoặc dầu\" (53 ký tự ≤ trần clip 55) — đây là vế quyết định (đối xứng với \"nhiều hơn một\" của 1516); bỏ vế này là đảo chiều. Dấu \"…\" trong trich chỉ lược vế loại trừ SONG SANG (ép tallow → 15.03) đã có mục riêng loaiTru[0]."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu hỏi dạng \"A hay là B\": vế đầu (ép tallow / mỡ lá và mỡ khổ của lợn) → 1503, vế sau (hỗn hợp hoặc chế phẩm ăn được) → 1517 (chính nhóm) — đúng quy ước \"neuCo = vế ĐẦU\". Mã 1503 nêu nguyên văn trong trich."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu hỏi CÓ/KHÔNG hỏi đúng vế giới hạn \"chỉ liên quan một loại\" (đối xứng với dieuKienVao[2] \"nhiều hơn một loại\"); nhánh có→1516 (nêu nguyên văn trong trich), không→1517 (chính nhóm). hoi 105 ký tự ≤ trần clip 110 — nén bớt danh sách 4 phép hoá chế để KHÔNG tràn trần (nếu viết đủ sẽ 158 ký tự và bị runtime cắt giữa câu)."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "WCO 151710 \"Margarine; excluding liquid margarine\" ⇒ \"la_margarin_tru_margarin_long\" — đúng chiều \"excluding\"."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "WCO 151790 \"Edible mixtures or preparations of animal, vegetable or microbial fats or oils …, other than edible fats and oils or their fractions of heading 15.16\" ⇒ fact dịch đúng chiều \"other than\" thành \"trừ … thuộc nhóm 1516\"; vế \"n.e.c. in heading 1517\" bị bỏ ⇒ fact nói ÍT hơn câu trích, không đảo chiều."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15171010] (42 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" (biểu thuê chỉ ghi \"- - - Loại khác\") ⇒ lấy điều kiện cấp phân nhóm từ [wco.151710] theo luật 6; \"Loại khác\" là tiền tố máy tự gắn, tieuChi null là đúng (dòng không có tiêu chí phân biệt)."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179010] (30 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179020] (26 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179030] (53 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179043] (25 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "giu",
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179044] (34 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI THẬT — tràn trần clip runtime. `dieuKien` dài 106 ký tự > trần clip 90 ⇒ runtime cắt giữa từ (\"…hoặc của các phân phâ…\"), mất vế \"các phần phân đoạn\" — tức là mất chính phạm vi \"hoặc của các phần phân đoạn\" của dòng (theo tax.15179050). Sửa: bỏ liên từ \"của chúng\" và đổi \"hoặc\" thành dấu phẩy ở \"chất béo, dầu thực vật\" (nguồn liệt kê hai mặt hàng) ⇒ còn 88 ký tự, giữ đủ mọi thành phần có nghĩa. `trich` giữ nguyên (byte-exact tax.15179050), `tieuChi.fact` không đổi.",
+      "sua": {
+        "dieuKien": "Hỗn hợp hoặc chế phẩm ở dạng rắn khác của chất béo, dầu thực vật hoặc các phần phân đoạn"
+      }
+    },
+    {
+      "index": "dong8[8]",
+      "hanhDong": "giu",
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179061] (44 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
+    },
+    {
+      "index": "dong8[9]",
+      "hanhDong": "giu",
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179062] (47 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
+    },
+    {
+      "index": "dong8[10]",
+      "hanhDong": "giu",
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179063] (93 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
+    },
+    {
+      "index": "dong8[11]",
+      "hanhDong": "giu",
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179064] (88 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
+    },
+    {
+      "index": "dong8[12]",
+      "hanhDong": "giu",
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179065] (47 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
+    },
+    {
+      "index": "dong8[13]",
+      "hanhDong": "giu",
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179066] (49 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
+    },
+    {
+      "index": "dong8[14]",
+      "hanhDong": "giu",
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179067] (63 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
+    },
+    {
+      "index": "dong8[15]",
+      "hanhDong": "giu",
+      "lyDo": "Tên dòng chép nguyên văn từ [tax.15179068] (51 ký tự byte-exact); tieuChi.fact bám đúng tên dòng, không thêm chữ ngoài trích."
+    },
+    {
+      "index": "dong8[16]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" (biểu thuê chỉ ghi \"- - - Loại khác\") ⇒ lấy điều kiện cấp phân nhóm từ [wco.151790] theo luật 6; \"Loại khác\" là tiền tố máy tự gắn, tieuChi null là đúng (dòng không có tiêu chí phân biệt). LƯU Ý: dieuKien dài 240 > trần clip runtime 90 — đây là văn phong \"Loại khác: <tên WCO>\" đã đo 3304/6227 mục toàn corpus (mẫu nhà, cấp máy), không phải lỗi riêng của lô này."
+    },
+    {
+      "index": "dong8[17]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 15179080: tên dòng biểu thuê chép nguyên văn (\"Của hỗn hợp hoặc chế phẩm từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng\"), 86 ký tự ≤ trần clip 90."
+    },
+    {
+      "index": "dong8[18]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" (biểu thuê chỉ ghi \"- - - Loại khác\") ⇒ lấy điều kiện cấp phân nhóm từ [wco.151790] theo luật 6; \"Loại khác\" là tiền tố máy tự gắn, tieuChi null là đúng (dòng không có tiêu chí phân biệt). LƯU Ý: dieuKien dài 240 > trần clip runtime 90 — đây là văn phong \"Loại khác: <tên WCO>\" đã đo 3304/6227 mục toàn corpus (mẫu nhà, cấp máy), không phải lỗi riêng của lô này."
+    }
+  ]
+}

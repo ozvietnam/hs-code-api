@@ -1,0 +1,87 @@
+{
+  "nhom": "1521",
+  "nguoiSoat": "dev-soat-doc-lap-lo061-v3",
+  "vong": 3,
+  "luc": "2026-10-27T23:40:00+07:00",
+  "daKiem": 14,
+  "xoa": 0,
+  "sua": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP VÒNG 3 (phiên quản lý — người soát ĐỘC LẬP). Đã soi 14/14 mục (phamVi 1 · boPhan 1 · dieuKienVao 0 · loaiTru 4 · phanBiet 3 · tieuChi6 2 · dong8 3): SỬA 0, XOÁ 0, GIỮ 14. KẾT QUẢ CHÍNH KHÔNG PHẢI LÀ SỬA MỚI MÀ LÀ PHỤC HỒI: phát hiện BẢN NHÁP 1521 (tmp/so-tay/raw/1521.json) KHÔNG ĐỒNG BỘ với dữ liệu đã nạp — bản nháp là bản TRƯỚC vòng soát v2, còn data/so-tay/1521.json là bản SAU v2 (đã có 2 sửa `tieuChi6` + 1 sửa `loaiTru[3]`). Nếu áp review mới lên bản nháp cũ rồi nạp lại thì 1521 MẤT 3 sửa của v2 (trong đó có 1 sửa ĐẢO CHIỀU ở tieuChi6[1].fact) ⇒ đã đồng bộ bản nháp với data (giữ nguyên bản nháp ở phamVi/boPhan vì bản nháp tốt hơn). Sau khi đồng bộ, đã kiểm lại TỪNG mục: vòng 2 sửa `phamVi` + `boPhan` theo hướng SAI (xem lyDo ở hai mục đó) ⇒ vòng 3 HOÀN NGUYÊN hai khối đó về bản nháp (đây là thay đổi so với dữ liệu đang mở trên PR #483). Các mục còn lại của v2 giữ nguyên vì đúng — đặc biệt `tieuChi6[1].fact` đã sửa đảo chiều \"other than vegetable\" và bổ sung \"n.e.c. in heading no. 1521\". GHI NHẬN: `dieuKienVao` rỗng là ĐÚNG (3 phần ngang hàng, không câu nào phủ cả nhóm); các mục loại trừ (c)(d)(e) của phần (I) và khối loại trừ của phần (II) vẫn nằm ngoài câu trích (kéo vô vượt 300 ký tự luật soạn) — (a)(b) đã có mục riêng trong `loaiTru`.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ bản nháp — và HOÀN NGUYÊN bản sửa của vòng 2. Vòng 2 đổi `phamVi` thành: \"Sáp thực vật; (II) sáp ong, sáp côn trùng khác… (III) sáp cá nhà táng thô, ép, tinh chế; đã hoặc chưa tinh chế, pha màu; …\" — LỖI THẬT: (a) vế \"đã hoặc chưa tinh chế, pha màu\" là định ngữ của phần (II) (\"đã hoặc chưa tinh chế hoặc pha mầu\") nhưng v2 đặt nó sau phần (III) — phần (III) của nguồn là \"Sáp cá nhà táng, thô, ép hoặc tinh chế, CÓ HOẶC KHÔNG pha màu\" ⇒ v2 gán nhầm định ngữ, mô hình đọc thành điều kiện của 15.21.21; (b) `trich` v2 không chứa (II)(III) trong khi `text` lại kể tên chúng ⇒ mục nói điều trích không có. Bản nháp gốc đúng: 3 phần + vế \"không gồm hỗn hợp sáp thực vật (thường thuộc Chương 34)\" (215 ký tự ≤ trần 220) và `trich` 271 ký tự có đủ (c) + câu \"Các hỗn hợp này thường thuộc Chương 34…\" + (II) + (III). GHI NHẬN: vẫn lược (d)(e) và khối loại trừ của phần (II) — kéo vô sẽ vượt 300 ký tự (luật soạn); (a)(b) đã có mục riêng trong loaiTru, (II)(b) và dầu cá nhà táng cũng đã có."
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ bản nháp — HOÀN NGUYÊN bản sửa vòng 2 (v2 thêm nhãn \"(I)\" cho phần đầu — nguồn KHÔNG có nhãn này, chỉ có \"(II)\" và \"(III)\") và `trich` v2 bỏ mất vế \"(c) Các hỗn hợp của sáp thực vật\" + \"Các hỗn hợp này thường thuộc Chương 34…\" mà `quyTac`/`tomTat` v2 lại dẫn. `quyTac` bản nháp liệt kê đúng 3 phần; `tomTat` 74 ký tự ≤ trần 160."
+    },
+    {
+      "index": "dieuKienVao",
+      "hanhDong": "giu",
+      "lyDo": "Rỗng là ĐÚNG (L12) — nhóm 1521 có BA phần ngang hàng (sáp thực vật / sáp ong và sáp côn trùng khác / sáp cá nhà táng), không câu nào phủ CẢ ba phần ⇒ không đặt điều kiện vào nhóm. Điều kiện của từng thành viên nằm ở `dong8`."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. \"(a) Dầu jojoba (nhóm 15.15)\" — nằm dưới vế dẫn \"Tuy nhiên, nhóm này không bao gồm:\" ⇒ có DẤU HIỆU LOẠI TRỪ + nêu đích danh 15.15 ✓; `dieuKien` 14 ký tự ≤ trần 55."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. \"(b) Những sản phẩm được gọi chung là sáp cây sim và sáp Nhật Bản (nhóm 15.15)\" ✓ loại trừ thật + đích danh. Mục (c)(d)(e) của phần (I) KHÔNG ghi: nguồn chỉ nói \"Các hỗn hợp này thường thuộc Chương 34 (nhất là nhóm 34.04 hoặc 34.05)\" — có từ rào \"thường\" + \"nhất là\" ⇒ không phải đích danh (luật loạiTru \"thường thuộc\" ⇒ BỎ)."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. \"(b) Sáp để ong làm tổ (nhóm 96.02)\" — thuộc khối loại trừ của phần (II) ✓ có dấu hiệu loại trừ + đích danh 96.02."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ (bản vòng 2). \"Nhóm này không bao gồm dầu của cá nhà táng, dù thô hoặc được tinh chế KHI BẰNG CÁCH PHÂN CHIA TÁCH MỠ SÁP CÁ NHÀ TÁNG (nhóm 15.04)\" — v2 đã rút gọn còn \"Dầu của cá nhà táng (thô hoặc tinh chế khi tách mỡ sáp)\" (55 ký tự = trần clip 55, KHÔNG bị cắt) để giữ định ngữ giới hạn \"khi … tách mỡ sáp\" (luật: dieuKien phải giữ định ngữ giới hạn của câu)."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Vế ĐẦU \"Dầu jojoba\" → `neuCo`=1515 (ngoài nhóm ✓); nhánh BÙ = 1521 ✓; `hoi` không nhắc mã phân nhóm."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Vế ĐẦU \"Sáp để ong làm tổ\" → `neuCo`=9602; nhánh BÙ = 1521 ✓; mã 96.02 nêu nguyên văn trong trích."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Vế ĐẦU \"dầu của cá nhà táng\" → `neuCo`=1504; nhánh BÙ = 1521 ✓; mã 15.04 nêu nguyên văn trong trích."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ (bản vòng 2). Nguồn wco.152110: \"Vegetable waxes (other than triglycerides); whether or not refined or coloured\" — v2 đã bổ sung vế \"đã hoặc chưa tinh chế hoặc pha màu\" vào `fact` (bản nháp chỉ có \"la_sap_thuc_vat_khong_phai_triglyxerit\", bỏ mất vế này)."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ (bản vòng 2) — SỬA ĐẢO CHIỀU nghiêm trọng. Nguồn wco.152190: \"Waxes, other than vegetable, n.e.c. in heading no. 1521; …\". Bản nháp có fact \"la_sap_khac_thuoc_sap_thuc_vat\" = \"sáp khác THUỘC sáp thực vật\" ⇒ đọc ngược \"other than vegetable\" ⇒ 152190 bị hiểu là CÓ là sáp thực vật (đảo chiều so với 152110 \"Sáp thực vật\"), đồng thời mất \"n.e.c. in heading no. 1521\" (luật nhà: \"n.e.c. in heading X\" = PHẦN DƯ CỦA X, dịch \"trừ X\" là đảo nghĩa). V2 đã sửa thành \"la_sap_khac_khong_phai_sap_thuc_vat_la_phan_du_con_lai_cua_nhom_1521_da_hoac_chua_tinh_che_hoac_pha_mau\" ✓."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Đủ dòng 15211000 — tên nguyên văn từ [tax.15211000]; `tieuChi.fact` bám đúng tên dòng; `dieuKien` 12 ký tự ≤ trần 90."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Đủ dòng 15219010 — \"15219010 - - Sáp ong và sáp côn trùng khác\"; `dieuKien` 27 ký tự ≤ trần 90."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Đủ dòng 15219020 — \"15219020 - - Sáp cá nhà táng\"; `dieuKien` 14 ký tự ≤ trần 90."
+    }
+  ]
+}

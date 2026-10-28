@@ -1,0 +1,172 @@
+{
+ "nhom": "1703",
+ "phamVi": {
+  "text": "Mật thu được từ chiết xuất hoặc tinh chế đường mía, đường củ cải hoặc từ sản xuất đường fructoza từ ngô.",
+  "nguon": "nhom1703.nhom",
+  "trich": "Mật thu được thường là sản phẩm phụ thông thường từ việc chiết xuất hoặc tinh chế đường mía hoặc đường củ cải hoặc từ việc sản xuất đường fructoza từ ngô.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_mat_thu_duoc_tu_ket_qua_chiet_xuat_hoac_tinh_che_duong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom1703.nhom",
+   "trich": "Các loại mật thuộc nhóm này chỉ thu được từ kết quả của việc chiết xuất hoặc tinh chế đường.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "170310",
+   "fact": "la_mat_mia",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom1703.nhom",
+   "trich": "Phân nhóm 1703.10 Mật mía có thể phân biệt với các loại mật khác của nhóm 17.03 dựa trên mùi và thành phần hoá học.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "17031010",
+   "dieuKien": "Đã pha thêm hương liệu hoặc chất màu",
+   "nguon": "tax.17031010",
+   "trich": "17031010 - - Đã pha thêm hương liệu hoặc chất màu",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "17031090",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.17031090",
+   "trich": "17031090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "170310",
+    "truAnhEm": [
+     "17031010"
+    ],
+    "toTienCoTen": "170310",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "17039010",
+   "dieuKien": "Đã pha thêm hương liệu hoặc chất màu",
+   "nguon": "tax.17039010",
+   "trich": "17039010 - - Đã pha thêm hương liệu hoặc chất màu",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "17039090",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.17039090",
+   "trich": "17039090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "170390",
+    "truAnhEm": [
+     "17039010"
+    ],
+    "toTienCoTen": "170390",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "1703",
+    "cap": 4,
+    "cha": "17",
+    "tenVi": "Mật thu được từ chiết xuất hoặc tinh chế đường (+).",
+    "tenEn": "Molasses; resulting from the extraction or refining of sugar",
+    "suyRa": false
+   },
+   {
+    "id": "170310",
+    "cap": 6,
+    "cha": "1703",
+    "tenVi": "Mật mía",
+    "tenEn": "Sugars; molasses, from sugar cane, resulting from the extraction or refining of sugar",
+    "suyRa": false
+   },
+   {
+    "id": "17031010",
+    "cap": 8,
+    "cha": "170310",
+    "tenVi": "Đã pha thêm hương liệu hoặc chất màu",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "17031090",
+    "cap": 8,
+    "cha": "170310",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "170390",
+    "cap": 6,
+    "cha": "1703",
+    "tenVi": "Loại khác",
+    "tenEn": "Sugars; molasses, from sugar beet, resulting from the extraction or refining of sugar",
+    "suyRa": false
+   },
+   {
+    "id": "17039010",
+    "cap": 8,
+    "cha": "170390",
+    "tenVi": "Đã pha thêm hương liệu hoặc chất màu",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "17039090",
+    "cap": 8,
+    "cha": "170390",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom1703.nhom",
+  "tax.17031010",
+  "tax.17031090",
+  "tax.17039010",
+  "tax.17039090"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-27T12:41:39.975Z",
+  "ms": 0
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

@@ -1,0 +1,67 @@
+{
+  "nhom": "1105",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp dùng câu QUY TRÌNH (\"bột thô, bột mịn, dạng mảnh lát và hạt … thu được từ khoai tây tươi hấp chín rồi nghiền nhừ và làm khô\") làm nửa thứ hai của phạm vi. Câu đó chỉ nói 4/5 dạng của nhóm (KHÔNG nói \"viên\"), trong khi câu kế ngay sau nguồn là \"Viên thuộc nhóm này thường thu được từ quá trình ép nén bột, bột thô, bột mịn hoặc các mẩu vụn của khoai tây.\" ⇒ giữ nguyên sẽ khiến mô hình đọc ngược là \"viên không thuộc 1105\" (sai, viên là 1105.20). SỬA: phạm vi chỉ giữ câu định nghĩa nhóm; ghi chú quy trình bị bỏ (không mất thông tin phân loại nào vì dòng 1105.20 đã có trong dong8/tieuChi6).",
+      "sua": {
+        "text": "Khoai tây khô dưới dạng bột, bột thô, bột mịn, dạng mảnh lát, hạt hoặc viên.",
+        "trich": "Nhóm này bao gồm khoai tây khô dưới dạng bột, bột thô, bột mịn, dạng mảnh lát, hạt hoặc viên."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "xoa",
+      "lyDo": "Câu trích là câu ĐỊNH NGHĨA/QUY TRÌNH (\"Bột thô, bột mịn, dạng mảnh lát và hạt của nhóm này thu được từ khoai tây tươi hấp chín và được nghiền nhừ rồi …\"), KHÔNG phải câu ràng buộc; và chỉ phủ 4/5 dạng của nhóm (thiếu \"viên\" — câu kế nguồn nói \"Viên thuộc nhóm này thường thu được từ quá trình ép nén bột…\"). Đặt op \"=\" value true trong dieuKienVao khiến runtime in ra \"Điều kiện vào nhóm: … = true\" ⇒ mô hình sẽ loại 1105.20 (dạng viên) khỏi nhóm 1105. Theo luật \"dieuKienVao phải phủ CẢ nhóm\" + \"thà bỏ mục còn hơn mục không có căn cứ\" ⇒ XOÁ."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp dài 98 ký tự; clip(…, 55) cắt mất vế \"mà không được chế biến thêm\" — chính là điều kiện phân biệt khoai tây 07.12 (chỉ làm khô đơn giản) với khoai tây đã chế biến. SỬA: rút còn 51 ký tự, giữ cả \"chỉ làm khô đơn giản\" lẫn \"không chế biến thêm\"; \"phơi khô hoặc tách nước\" là cách thể hiện của \"làm khô đơn giản\" nên không mất nghĩa.",
+      "sua": {
+        "dieuKien": "Khoai tây chỉ làm khô đơn giản, không chế biến thêm"
+      }
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp dài 61 ký tự; clip(…, 55) cắt \"khoai tây\" — mất luôn vật liệu định danh. SỬA: rút còn 52 ký tự, giữ nguyên nghĩa, không thêm chữ nào ngoài trích.",
+      "sua": {
+        "dieuKien": "Sản phẩm thay thế tinh bột sắn từ tinh bột khoai tây"
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp dài 132 ký tự; clip(…, 110) cắt vế \"không\" ở \"bột, bột thô và…\" ⇒ mất \"bột mịn\" (một dòng trong nhóm). SỬA: rút câu hỏi xuống 96 ký tự, giữ đủ cả hai nhánh Có/Không và chiều đúng (Có → 07.12, Không → 11.05).",
+      "sua": {
+        "hoi": "Hàng là khoai tây chỉ làm khô đơn giản, không chế biến thêm hay bột, bột thô và bột mịn?"
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "\"(b) Tinh bột khoai tây (nhóm 11.08)\" — nằm trong khối \"Nhóm này cũng không bao gồm\", đích danh 11.08."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "\"(b) Tinh bất khoai tây (nhóm 11.08)\" → 11.08; chiều Có/Không đúng."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "\"(c) Những sản phẩm thay thế tinh bột sắn … (nhóm 19.03)\" → 19.03; chiều Có/Không đúng."
+    }
+  ],
+  "soat": 8,
+  "tongMucDaSoat": 12,
+  "sua": 4,
+  "xoa": 1,
+  "giu": 3,
+  "nguoiSoat": "dev-soat-doc-lap-lo054",
+  "luc": "2026-10-26T23:10:00+07:00",
+  "soatVaiTro": "Người soát ĐỘC LẬP (không phải người soạn). Đọc lại từng mục cùng nguồn nguyên văn tmp/so-tay/nguon/<nhom>.txt; kiểm BYTE-EXACT từng mảnh câu trích (máy check-so-tay dùng squash() nên không bắt được lỗi ký tự); đo trần clip() runtime của lib/so-tay-gates.js (phamVi.text 220 · boPhan.tomTat 160 · loaiTru.dieuKien 55 · dong8.dieuKien 90 · phanBiet.hoi 110).",
+  "ghiChu": "GHI NHẬN chung: (1) Nguồn có câu \"Tuy nhiên, nhóm này không bao gồm các sản phẩm được cho thêm một số chất thay đổi đặc tính của chế phẩm khoai tây.\" — không có mã đích nên không sinh được loaiTru; bỏ đúng luật. (2) Câu \"Viên thuộc nhóm này thường thu được từ quá trình ép nén bột, bột thô, bột mịn hoặc các mẩu vụn của khoai tây.\" có định ngữ \"thường\" — không được đặt làm điều kiện (đây là lý do thêm cho việc xoá dieuKienVao[0])."
+}

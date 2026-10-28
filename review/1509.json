@@ -1,0 +1,176 @@
+{
+ "nhom": "1509",
+ "gopVoi": "soát độc lập lô 059 (PR #477) — phiên claude-soat-doc-lap-lo059, 27/10/2026",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (máy KHÔNG bắt): phần (D) của nhóm là \"Loại khác\" gồm HAI loại — (1) dầu ô liu tinh chế và (2) hỗn hợp dầu ô liu tinh chế với dầu ô liu nguyên chất — nhưng `text` chỉ nêu \"dầu ô liu tinh chế\" ⇒ mất vế hỗn hợp (chính là 1509.90 với dòng \"khác\" của hỗn hợp tinh chế + nguyên chất). Đã bổ sung vế hỗn hợp vào `text` và nối thêm mảnh nguyên văn của mục (D)(2) vào trích (rút bớt các mảnh thừa để trích còn < 600 ký tự).",
+   "sua": {
+    "text": "Dầu ô liu thu được từ quả ôliu, gồm dầu ô liu nguyên chất đặc biệt, dầu ô liu nguyên chất, các dầu ô liu nguyên chất khác, dầu ô liu tinh chế và hỗn hợp của nó với dầu ô liu nguyên chất, các phân đoạn và hỗn hợp.",
+    "trich": "Dầu oliu là dầu thu được từ quả ôliu (olea europaea L.)…Nhóm này bao gồm:…(A) Dầu ôliu nguyên chất đặc biệt,…(B) Dầu ôliu nguyên chất,…(C) Các dầu ô liu nguyên chất khác,…(D) Loại khác bao gồm các loại dầu thu được từ dầu ô liu nguyên chất thuộc các phân nhóm nêu trên bằng phương pháp tinh chế,…(2) Dầu ô liu bao gồm dầu ô liu tinh chế và dầu ô liu nguyên chất là dầu bao gồm hỗn hợp dầu ô liu tinh chế và dầu ô liu nguyên chất phù hợp để tiêu dùng.…(E) Các phân đoạn và hỗn hợp của các loại dầu được mô tả từ (A) đến (D) ở trên."
+   }
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (gác soát từ mức [B] bắt được, máy KHÔNG bắt): `fact` gõ \"hon_mep\" trong khi nguồn viết \"hỗn hợp\" ⇒ snake_case đúng là \"hon_hop\". Đồng thời dùng \"ol\" (viết tắt) trong khi câu trích dùng \"ô liu\"/\"ôliu\" ⇒ đã thống nhất \"oliu\".",
+   "sua": {
+    "fact": "la_dau_ba_oliu_va_hon_hop_cua_no_voi_dau_oliu_nguyen_chat"
+   }
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (máy KHÔNG bắt): (a) `quyTac` nói phần (D) gồm \"dầu ô liu tinh chế và hỗn hợp dầu ô liu tinh chế với dầu ô liu nguyên chất\" nhưng câu trích cũ chỉ có câu mở đầu (D) ⇒ vế hỗn hợp KHÔNG có căn cứ trong trích. (b) `tomTat` (chỉ `tomTat` đi vào prompt) chỉ nói \"(D) dầu ô liu tinh chế\" ⇒ mất vế hỗn hợp. Đã nối mảnh (D)(2) (nguyên văn) vào trích và sửa `tomTat` (vẫn ≤ 160 ký tự = trần clip runtime).",
+   "sua": {
+    "tomTat": "(A) dầu ô liu nguyên chất đặc biệt; (B) dầu ô liu nguyên chất; (C) dầu ô liu nguyên chất khác; (D) dầu ô liu tinh chế và hỗn hợp; (E) các phân đoạn và hỗn hợp.",
+    "trich": "(A) Dầu ôliu nguyên chất đặc biệt,…(B) Dầu ôliu nguyên chất,…(C) Các dầu ô liu nguyên chất khác,…(D) Loại khác bao gồm các loại dầu thu được từ dầu ô liu nguyên chất thuộc các phân nhóm nêu trên bằng phương pháp tinh chế,…(2) Dầu ô liu bao gồm dầu ô liu tinh chế và dầu ô liu nguyên chất là dầu bao gồm hỗn hợp dầu ô liu tinh chế và dầu ô liu nguyên chất phù hợp để tiêu dùng.…(E) Các phân đoạn và hỗn hợp của các loại dầu được mô tả từ (A) đến (D) ở trên."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu định nghĩa nhóm, fact dương + value=true đúng chiều, không phải câu CHO PHÉP. GIỮ."
+  },
+  {
+   "index": "dieuKienVao[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"không bao gồm … dầu tái este hóa thu được từ dầu ô liu (nhóm 15.16)\"; fact âm + value=false đúng chiều. GIỮ."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"không bao gồm dầu bã ô liu … (nhóm 15.10)\" — đích danh, mã có trong trích. GIỮ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"không bao gồm … dầu tái este hóa … (nhóm 15.16)\" — đích danh. GIỮ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều Có/Không đúng: có = dầu bã ô liu + hỗn hợp → 1510; không = 1509. GIỮ."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều Có/Không đúng: có = dầu tái este hóa → 1516. GIỮ."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều Có/Không đúng: có = dầu ô liu nguyên chất → 1509.20/30/40; không (tinh chế/hỗn hợp) → 1509.90. Mã 8 số trong cùng nhóm nên không cần nêu trong trích (luật 4 chỉ ràng mã NGOÀI nhóm). GIỮ."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Chiều Có/Không đúng: có = nguyên chất đặc biệt → 1509.20; không = nguyên chất → 1509.30/40. GIỮ."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn wco.150920 (\"extra virgin olive oil\"); fact \"nguyên chất đặc biệt\" đúng. GIỮ."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"chỉ số axit tự do tính theo axit oleic không vượt quá 0,8 gam trên 100 gam\"; op \"<=\" value 0.8 donVi \"gam/100 gam\" khớp số trong trích. GIỮ."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn wco.150930 (\"virgin olive oil\"). GIỮ."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"không vượt quá 2,0 gam trên 100 gam\"; value 2, donVi \"gam/100 gam\". GIỮ."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn wco.150940 (\"virgin olive oils n.e.c. in heading 1509\"); fact \"nguyên chất khác\" đúng (n.e.c. = nằm ngoài 1509.20/1509.30, KHÔNG phải ngoài nhóm 1509 — bài học lô 041). GIỮ."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn mục (C) — nêu đích danh \"dầu ô liu nguyên chất lampante và dầu ô liu nguyên chất thông thường\". GIỮ."
+  },
+  {
+   "index": "tieuChi6[6]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn wco.150990 (\"other than virgin\"); fact \"không phải dầu ô liu nguyên chất\" đúng chiều. GIỮ."
+  },
+  {
+   "index": "tieuChi6[7]",
+   "hanhDong": "giu",
+   "lyDo": "GHI NHẬN (không sửa): `fact` lấy từ câu mở đầu phần (D) của nguồn — câu đó mô tả vế TINH CHẾ, còn vế HỖN HỢP nằm ở mục con (D)(2). Không sửa vì (a) câu trích là nguyên văn của nguồn, (b) tiêu chí cấp 6 số KHÔNG đi vào prompt runtime nên không ảnh hưởng quyết định. Đề xuất cho người gộp: nếu muốn phủ cả vế hỗn hợp thì sửa riêng (ngoài hồ sơ xoa/sua)."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (máy KHÔNG bắt): `tieuChi.fact` là CÂU MỘT (\"la_dong_goi_voi_khoi_luong_tinh_khong_qua_30_kg\") trong khi op/value lại là phép so sánh ngưỡng (\"<=\" 30 kg) — lệch kiểu, đọc ra câu \"… <= 30 kg\" vô nghĩa. Lõi 137 dòng 8 số có tieuChi số trong kho đều đặt `fact` là TÊN ĐẠI LƯỢNG (\"khoi_luong\", \"do_dai_re\"…). Đã đổi thành \"khoi_luong_tinh\" (khối lượng tịnh — đúng dòng biểu thuế).",
+   "sua": {
+    "tieuChi": {
+     "fact": "khoi_luong_tinh",
+     "op": "<=",
+     "value": 30,
+     "donVi": "kg"
+    }
+   }
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 15093000 \"Dầu ô liu nguyên chất (Virgin olive oil)\" — `tieuChi` lặp đúng tên dòng, nguyên văn biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lỗi lệch kiểu ở `tieuChi.fact` (câu mô tả + op so sánh) như dong8[0]. Đã đổi thành tên đại lượng \"khoi_luong_tinh\".",
+   "sua": {
+    "tieuChi": {
+     "fact": "khoi_luong_tinh",
+     "op": "<=",
+     "value": 30,
+     "donVi": "kg"
+    }
+   }
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lỗi lệch kiểu ở `tieuChi.fact` như dong8[0]. Đã đổi thành tên đại lượng \"khoi_luong_tinh\".",
+   "sua": {
+    "tieuChi": {
+     "fact": "khoi_luong_tinh",
+     "op": "<=",
+     "value": 30,
+     "donVi": "kg"
+    }
+   }
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" — công thức quy ước, trích nguyên văn wco.150920. GIỮ."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 15093000 — nguyên văn biểu thuế (kể cả chú thích \"(1)\"). GIỮ."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" — công thức quy ước wco.150990. GIỮ."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" — công thức quy ước wco.150990. GIỮ."
+  }
+ ]
+}

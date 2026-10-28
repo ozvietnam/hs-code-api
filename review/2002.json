@@ -1,0 +1,116 @@
+{
+ "nhom": "2002",
+ "nguoiSoat": "dev-soat-doc-lap-lo064",
+ "vong": 1,
+ "luc": "2026-10-28T05:36:00+07:00",
+ "daKiem": 15,
+ "xoa": 0,
+ "sua": 4,
+ "chen": 2,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 064 (nhóm 2002) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/2002.txt (9.209 ký tự, đọc hết). Kết quả: giữ 9 · sửa 4 · chèn 2 · xoá 0. Ba lớp lỗi: (1) nhánh loại trừ \"cà chua đã được nêu cụ thể trong Chương 7\" chưa có mục nào giữ ⇒ CHÈN `dieuKienVao[1]`; (2) \"A hoặc B\" bị tách thành một nhánh đích duy nhất — câu nguồn có 3 nhánh (ketchup + xốt cà chua khác → 21.03; súp cà chua → 21.04) mà câu hỏi chỉ hỏi \"ketchup\" ⇒ mở rộng + CHÈN `phanBiet[2]` (đây là câu hỏi MỞ số 2 trong PR #488); (3) ngưỡng 25–40 % của bột cà chua dạng sệt chỉ nằm trong `dieuKienSo` mà runtime KHÔNG in ⇒ đưa vào `dieuKien`.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "HAI LỖI THU HẸP trong một câu. (1) \"trừ loại bảo quản bằng giấm hoặc axit acetic\" — nguồn ghi \"trừ loại cà chua ĐÃ CHẾ BIẾN hoặc bảo quản bằng giấm hoặc axit acetic\" ⇒ bỏ vế \"đã chế biến\" làm mất một nhánh của loại trừ (cà chua ĐÃ CHẾ BIẾN bằng giấm vẫn thuộc 20.01) — đúng lỗi mà phiên soạn đã sửa ở `loaiTru[0]` và `phanBiet[0]` nhưng BỎ SÓT ở `phamVi`, gây mâu thuẫn trong cùng một nhóm. (2) \"nước ép cà chua có hàm lượng thành phần khô từ 7%.\" — bỏ vế \"TRỞ LÊN\" ⇒ câu trích cụt, không đủ nghĩa. Sửa cả hai; `text` mới 219/220 dưới trần clip nên KHÔNG bị cắt mất ngưỡng 7 % ở đuôi câu (bản cũ dài 219 ký tự và nếu thêm vế \"trở lên\" sẽ vượt trần ⇒ đã rút gọn \"bằng giấm/axit acetic\" và \"chế biến/bảo quản\" theo cách viết của nhà — 1901 đã duyệt có \"chế phẩm làm súp/nước xuýt\"). `trich` giữ nguyên (đã nguyên văn, đủ mọi vế). GHI NHẬN: giữ nguyên cách nói CỦA CHÚ GIẢI NHÓM \"hàm lượng thành phần khô\" (không đổi sang \"hàm lượng chất khô\" của Chú giải Chương 20 mục 4 — cùng nghĩa nhưng khác từ, mà `text` phải bám đúng câu trích của khối nguồn đã khai); để vừa trần clip 220, vế \"các loại cà chua đã được nêu cụ thể trong Chương 7\" rút còn \"loại nêu ở Chương 7\" — phần \"đã được nêu cụ thể\" vẫn nguyên văn trong `trich` và trong `dieuKienVao[1]` vừa chèn.",
+   "sua": {
+    "text": "Cà chua nguyên quả, dạng miếng, trừ loại đã chế biến/bảo quản bằng giấm/axit acetic (nhóm 20.01) và loại nêu ở Chương 7; cà chua đồng nhất đã chế biến/bảo quản; nước ép cà chua có hàm lượng thành phần khô từ 7% trở lên."
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"Nhóm này bao gồm các loại cà chua, nguyên quả hay dạng miếng, trừ loại cà chua đã chế biến hoặc bảo quản bằng giấm hoặc axit acetic (nhóm 20.01) và các loại cà chua đã được nêu cụ thể trong Chương 7.\" — `fact` \"la_ca_chua_che_bien_hoac_bao_quan_bang_giam_hoac_axit_acetic\" với `value` = false là MẪU NHÀ \"vế BỊ LOẠI + value=false\" (mẫu 1518 lô 061, 1904 lô 064) ⇒ chiều đúng, KHÔNG đảo chiều. GHI NHẬN: câu nguồn có HAI nhánh loại trừ — (i) bằng giấm/axit acetic → nhóm 20.01 (đã có `loaiTru[0]`) và (ii) \"các loại cà chua đã được nêu cụ thể trong Chương 7\" — nhánh (ii) chưa có mục nào giữ ⇒ đã CHÈN ở `dieuKienVao[1]`."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "chen",
+   "lyDo": "CHÈN MỤC THIẾU — nhánh loại trừ thứ hai của chính nhóm 2002 chưa có mục nào giữ. Nguồn: \"...trừ loại cà chua đã chế biến hoặc bảo quản bằng giấm hoặc axit acetic (nhóm 20.01) VÀ CÁC LOẠI CÀ CHUA ĐÃ ĐƯỢC NÊU CỤ THỂ TRONG CHƯƠNG 7.\" — tức cà chua nêu cụ thể ở Chương 7 (vd 07.02 cà chua tươi/sấy khô) KHÔNG thuộc 20.02. Nhánh này không có đích là một NHÓM (Chương 7) ⇒ không mã hoá được thành `loaiTru` (luật 3) nên chỗ đúng của nó là `dieuKienVao`, đúng như nhánh (i). `fact` là vế bị loại với `value` = false (mẫu 1518) ⇒ chiều đúng. `trich` cắt NGUYÊN VĂN từ khối nguồn bằng neo ASCII (không gõ tay) ✓.",
+   "muc": {
+    "fact": "la_ca_chua_da_duoc_neu_cu_the_trong_chuong_7",
+    "op": "=",
+    "value": false,
+    "donVi": null,
+    "ngoaiTru": [],
+    "nguon": "nhom2002.nhom",
+    "trich": "các loại cà chua đã được nêu cụ thể trong Chương 7."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "HAI LỖI TRONG `dieuKien`. (1) LỖI CHÍNH TẢ: bản nháp ghi \"Cà CHUTA đã chế biến hoặc bảo quản bằng giấm hoặc axit acetic\" — nguồn ghi \"cà chua\" (một chữ \"t\" thừa). Bộ quét `scan-so-tay-soat.mjs` bỏ sót vì nó so CHUỖI CON trong khối nguồn đã nén, \"chuta\" vô tình khớp với một đoạn khác trong nguồn; quét theo TỪ nguyên vẹn (gác soát từ) thì bắt được. (2) LỖI KỸ THUẬT RUNTIME: `dieuKien` dài 55 ký tự > trần clip 55 của `loaiTru.dieuKien` (lib/so-tay-gates.js) ⇒ runtime cắt thành \"Cà chua đã chế biến hoặc bảo quản bằng giấm hoặc axit a…\" — mất đuôi \"acetic\" (lớp lỗi \"cắt GIỮA CÂU\" của lô 060). Sửa cả hai: sửa chữ \"chuta\" và rút gọn \"giấm hoặc axit acetic\" → \"giấm/axit acetic\" theo cách viết của nhà (1901 đã duyệt có \"chế phẩm làm súp/nước xuýt\"), 55/55 vừa đúng trần, KHÔNG bị cắt. VỀ NGHĨA giữ nguyên: đích 20.01 nêu nguyên văn trong câu trích ✓ luật 3; vế \"đã chế biến\" (đã sửa ở vòng soạn) được giữ nguyên ✓.",
+   "sua": {
+    "dieuKien": "Cà chua đã chế biến hoặc bảo quản bằng giấm/axit acetic"
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"Tuy nhiên, nhóm này không bao gồm: nước xốt cà chua có tên gọi ketchup và các loại xốt cà chua khác (nhóm 21.03) và cả các loại súp cà chua và các chế phẩm làm súp cà chua (nhóm 21.04).\" GIỮ ĐÚNG từ nối ngoại lệ \"Tuy nhiên,\" ✓; đích 21.03 nêu nguyên văn ✓ luật 3; `dieuKien` 49/55 dưới trần clip. GHI NHẬN: `dieuKien` chỉ nêu nhánh \"ketchup và các loại xốt cà chua khác\" (đúng với đích 21.03); nhánh súp cà chua có mục riêng `loaiTru[2]` → 21.04 ✓."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu nguồn với `loaiTru[1]`; đích 21.04 nêu nguyên văn ✓; `dieuKien` \"Các loại súp cà chua và các chế phẩm làm súp cà chua\" 53/55 dưới trần clip ⇒ không bị cắt."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi \"Hàng là cà chua đã chế biến hoặc bảo quản bằng giấm hoặc axit acetic?\" → có → 20.01 (mã 20.01 CÓ trong câu trích ✓ luật 4) / không → 20.02 (phần BÙ ✓ mẫu nhà). `hoi` 70/110 dưới trần clip; giữ đúng vế \"đã chế biến\" mà vòng soạn đã khôi phục ✓. GHI NHẬN: nhánh \"không\" là phần bù TRONG phạm vi nhóm; cà chua nêu ở Chương 7 không thuộc phạm vi 20.02 và đã có mục `dieuKienVao[1]` riêng."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT — \"A HOẶC B\" BỊ TÁCH THÀNH MỘT NHÁNH ĐÍCH DUY NHẤT (lớp lỗi nêu rõ trong tài liệu giao việc). Câu nguồn nêu BA nhánh: (i) \"nước xốt cà chua có tên gọi ketchup\", (ii) \"các loại xốt cà chua khác\" — cả hai về 21.03; (iii) \"các loại súp cà chua và các chế phẩm làm súp cà chua\" — về 21.04. Câu hỏi cũ chỉ hỏi về \"ketchup\" ⇒ bỏ nhánh (ii) và (iii). Sửa: mở rộng câu hỏi để gộp đúng hai nhánh cùng đích 21.03, và CHÈN thêm một mục `phanBiet[2]` cho nhánh (iii) về 21.04 (một `phanBiet` chỉ chứa được MỘT mã đích ⇒ phải tách). Cả hai mã 21.03 và 21.04 đều CÓ trong câu trích ✓ luật 4; 74/110 và 50/110 dưới trần clip. Trả lời câu hỏi MỞ trong PR #488 (mục 2) — câu trả lời: CÓ, cần thêm `phanBiet` cho 2104.",
+   "sua": {
+    "hoi": "Hàng là nước xốt cà chua có tên gọi ketchup hoặc là loại xốt cà chua khác?"
+   }
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "chen",
+   "lyDo": "CHÈN nhánh thứ ba của câu nguồn — \"các loại súp cà chua và các chế phẩm làm súp cà chua\" về 21.04. Không có mục này thì câu hỏi phân biệt của nhóm 20.02 không nhắc tới ranh giới 21.04 (súp cà chua) trong khi `loaiTru[2]` chỉ nằm trong khối \"LOẠI TRỪ\" của prompt runtime. `trich` là CÙNG câu nguồn đã nguyên văn trong bản nháp (không gõ lại). `neuKhong` = 20.02 là phần BÙ ✓ mẫu nhà.",
+   "muc": {
+    "hoi": "Hàng là súp cà chua hoặc chế phẩm làm súp cà chua?",
+    "neuCo": "2104",
+    "neuKhong": "2002",
+    "nguon": "nhom2002.nhom",
+    "trich": "Tuy nhiên, nhóm này không bao gồm: nước xốt cà chua có tên gọi ketchup và các loại xốt cà chua khác (nhóm 21.03) và cả các loại súp cà chua và các chế phẩm làm súp cà chua (nhóm 21.04)."
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "hs6 200210 là nút 6 số thật ✓ luật 10; `trich` wco.200210 \"tomatoes, whole or in pieces, prepared or preserved otherwise than by vinegar or acetic acid\" (nguyên văn) ✓; `fact` \"la_ca_chua_nguyen_qua_hoac_dang_mienng\" = true bám đúng \"whole or in pieces\" ✓ và khớp tên dòng biểu thuê 20021000 \"Cà chua, nguyên quả hoặc dạng miếng\" ✓."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "hs6 200290 là nút 6 số thật ✓; `trich` = Chú giải Chương 20 mục 4 \"Nước ép cà chua có hàm lượng chất khô từ 7% trở lên được xếp vào nhóm 20.02.\" (nguyên văn) ✓; ngưỡng 7 % mã hoá đúng (`value` 7, `op` \">=\", `donVi` \"%\") ✓. Nguồn cấp CHƯƠNG là hợp lệ theo luật 10 (39 mục `tieuChi6` trong kho cũng lấy nguồn ch*.chuong). GHI NHẬN: tiêu chí này nói về NƯỚC ÉP cà chua trong khi 200290 gồm cả bột cà chua dạng sệt và bột cà chua — nhưng mọi thành phẩm 2002.90 đều có hàm lượng chất khô ≥ 7 % (bột sệt 25–40 % theo SEN, bột cà chua cao hơn nữa) ⇒ điều kiện cần vẫn đúng, không đảo chiều."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20021000: `dieuKien` chép nguyên văn \"Cà chua, nguyên quả hoặc dạng miếng\" ✓ (nguồn tax.20021000); 35/90."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "sua",
+   "lyDo": "NGƯỠNG SỐ ĐANG VÔ HÌNH VỚI MÔ HÌNH. `dieuKien` chỉ \"Bột cà chua dạng sệt: cà chua nguyên chất cô đặc\" (89/90) — ngưỡng 25–40 % chỉ nằm trong `dieuKienSo`, mà runtime CHỈ in `dieuKien` vào prompt (lib/so-tay-gates.js in `clip(d.dieuKien, 90)`, KHÔNG in `dieuKienSo`) ⇒ mô hình không thấy ngưỡng nào để chốt dòng. Sửa: đưa ngưỡng vào `dieuKien`, lấy nguyên văn từ câu trích SEN (\"có từ 25% đến 40% hàm lượng là chất rắn không chứa muối\") ⇒ 89/90 dưới trần clip, không bị cắt giữa từ. `dieuKienSo` và `trich` giữ nguyên. GHI NHẬN: `dieuKienSo[].fact` là \"han_luong_chat_ran_khong_chua_muoi\" — fact KHÔNG thuộc bảng LOAI_GIA_TRI của lib/so-tay-gates.js ⇒ cổng chốt dòng 8 số luôn trả CHUA_BIET cho dòng này (nền nhà: 56/393 mục `dieuKienSo` cùng tình trạng, vd \"khoi_luong_qui_doi_troi_qua_luoi_loc_1mm\") ⇒ KHÔNG sửa tên fact (đổi thành \"ham_luong\" sẽ mất nghĩa \"chất rắn không chứa muối\"); đã đưa ngưỡng vào `dieuKien` để mô hình đọc được.",
+   "sua": {
+    "dieuKien": "Bột cà chua dạng sệt: cà chua nguyên chất cô đặc, từ 25% đến 40% chất rắn không chứa muối"
+   }
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 20029020: `dieuKien` chép nguyên văn \"Bột cà chua\" ✓ (nguồn tax.20029020) — phần bù của 20029010 (bột dạng sệt) ✓."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 20029090: `loaiKhac` máy tự điền theo biểu thuê ✓ luật 6; `dieuKien` lấy điều kiện cấp phân nhóm 6 số từ wco.200290 ✓ (cùng cách 175 dòng \"Loại khác\" đã duyệt trong kho). GHI NHẬN: 193 ký tự > trần clip 90 ⇒ runtime cắt mất đuôi tiếng Anh, phần tiếng Việt còn trọn trong 90 ký tự đầu ⇒ KHÔNG sửa (đổi 10 dòng sang dạng tiếng Việt của lô 15xx–18xx là việc soạn lại, không phải soát)."
+  }
+ ]
+}

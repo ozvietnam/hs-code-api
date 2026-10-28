@@ -1,0 +1,226 @@
+{
+ "nhom": "1211",
+ "nguoiSoat": "dev-soat-doc-lap-lo056",
+ "luc": "2026-10-26T23:40:00+07:00",
+ "phamViSoat": "Toàn bộ 40 mục của nhóm 1211 (1 phamVi + 1 dieuKienVao + 6 loaiTru + 6 phanBiet + 6 tieuChi6 + 20 dong8), đọc cùng tmp/so-tay/nguon/1211.txt (nhom1211.nhom gồm cả danh sách cây dài, ch12.chuong, phan12.phan, sen.12119013/12119095/12119097, wco.121120…121190, tax.12112010…12119099).",
+ "soat": 40,
+ "giu": 36,
+ "sua": 4,
+ "xoa": 0,
+ "ghiChu": "SỬA 3 (phamVi: câu trích cắt NGAY TRƯỚC ngoại lệ \"trừ các loại hạt và quả có dầu…\"; dieuKienVao: fact bỏ vế \"hoặc các mục đích tương tự\" ⇒ thu hẹp điều kiện vào nhóm, trái luật lô 054; loaiTru[5] + phanBiet[5]: câu trích kết bằng \"; và\" TREO — hứa mục (ii) nhưng không kèm). XOÁ 0. GIỮ 37. GHI NHẬN cho người duyệt: các nhánh loại trừ không mã hoá được của 1211 (Chương 9; Chương 44; dải \"30.03, 30.04, từ 33.03 đến 33.07 hoặc 38.08\" có câu \"tùy từng trường hợp cụ thể\") KHÔNG ghi thành mục — đúng luật 3 (chỉ ghi khi nêu đích danh) và luật \"câu có \"tùy từng trường hợp\" thì bỏ\".",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — CÂU TRÍCH CẮT NGAY TRƯỚC NGOẠI LỆ. Bản nháp dừng ở \"…hoặc chỉ là một phần cây\", bỏ mất đoạn \"(như vỏ cây, rễ cây, thân cây, lá, bông hoa, cánh hoa, quả và hạt (TRỪ các loại hạt và quả có dầu được phân loại trong các nhóm từ nhóm 12.01 đến 12.07))\". Hệ quả: nhóm 12.11 có câu \"quả và hạt\" trong phạm vi, nhưng ngoại lệ \"trừ\" bị nuốt ⇒ tờ khai khai hạt dầu (12.04/12.05/12.06) có thể bị kéo vào 12.11, trong khi nguồn loại chúng (đoạn 2 của chú giải nhóm còn viết rõ: \"Mặt khác, nhóm này không bao gồm các loại hạt, quả được dùng để chiết xuất dầu không bay hơi mặc dù lượng dầu đó được sử dụng cho các mục đích nêu tại nhóm này\"). Sửa: (1) `trich` thêm mảnh \"(trừ các loại hạt và quả có dầu được phân loại trong các nhóm từ nhóm 12.01 đến 12.07)\" (cắt từ tệp nguồn, nguyên văn; 272 ký tự, dưới trần lược đồ 300); (2) `text` thêm vế \"trừ hạt và quả có dầu (nhóm 12.01 đến 12.07)\" (211 ký tự, dưới trần runtime clip 220). KHÔNG sửa mã, KHÔNG sửa câu nguồn.",
+   "sua": {
+    "text": "Sản phẩm rau chủ yếu dùng làm nước hoa, dược phẩm, thuốc trừ sâu, thuốc diệt nấm hoặc các mục đích tương tự; ở dạng cả cây, rêu hoặc địa y, hoặc chỉ là một phần cây, trừ hạt và quả có dầu (nhóm 12.01 đến 12.07).",
+    "trich": "Nhóm này gồm các sản phẩm rau chủ yếu dùng làm nước hoa, dược phẩm, thuốc trừ sâu, thuốc diệt nấm hoặc các mục đích tương tự. … ở dạng cả cây, rêu hoặc địa y, hoặc chỉ là một phần cây … (trừ các loại hạt và quả có dầu được phân loại trong các nhóm từ nhóm 12.01 đến 12.07)"
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — FACT THU HẸP ĐIỀU KIỆN VÀO NHÓM (luật lô 054: `dieuKienVao` boolean là \"điều kiện VÀO NHÓM\"; fact phải phủ CẢ nhóm). Câu trích nói \"…thuốc diệt nấm HOẶC CÁC MỤC ĐÍCH TƯƠNG TỰ\" nhưng `fact` chỉ có \"…thuoc_diet_nam\" ⇒ mất vế bắt \"hoặc các mục đích tương tự\" (nhóm 12.11 có cả các cây dùng chủ yếu cho mục đích TƯƠNG TỰ — ví dụ \"cây trầm hương\" dùng làm hương theo sen.12119095) ⇒ mô hình có thể loài các mặt hàng đó ra khỏi 12.11. Sửa: thêm vế \"_hoac_muc_dich_tuong_tu\" vào `fact` (theo đúng câu trích). `trich`/`op`/`value`/`donVi`/`ngoaiTru` GIỮ NGUYÊN. Tiền lệ cùng kiểu trong kho: 0603/0604 (fact \"…hoac_muc_dich_tuong_tu\").",
+   "sua": {
+    "fact": "la_san_pham_rau_chu_y_dung_lam_nuoc_hoa_duoc_pham_thuoc_tru_sau_thuoc_diet_nam_hoac_muc_dich_tuong_tu"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom1211.nhom] — đoạn \"Cần lưu ý sản phẩm thực vật được mô tả cụ thể hơn trong các nhóm khác của danh mục bị loại khỏi nhóm này … Đó là trường hợp đối với vỏ chi cam quýt (nhóm 08.14)\"; có DẤU HIỆU LOẠI TRỪ (\"bị loại khỏi nhóm này\"); đích 08.14 NÊU ĐÍCH DANH trong chính câu trích. GIỮ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng đoạn với loaiTru[0] (hublong); đích 12.10 NÊU ĐÍCH DANH trong câu trích. GIỮ."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng đoạn với loaiTru[0] (rễ rau diếp xoăn); đích 12.12 NÊU ĐÍCH DANH trong câu trích (\"rễ rau diếp xoăn của nhóm 12.12\"). GIỮ."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng đoạn với loaiTru[0] (gôm, nhựa, nhựa-gôm, nhựa dầu tự nhiên); đích 13.01 NÊU ĐÍCH DANH trong câu trích; `dieuKien` giữ trọn danh sách 4 cụm của nguồn (40 ký tự, dưới trần clip 55). GIỮ."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (a) của khối \"Nhóm này cũng không bao gồm:\"; đích 21.03 NÊU ĐÍCH DANH; `dieuKien` chép đúng đối tượng (\"hỗn hợp thực vật khác nhau dùng làm nước xốt gia vị\"). GIỮ."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI NHỎ NHƯNG MÁY KHÔNG BẮT — CÂU TRÍCH KẾT BẰNG DẤU LƯỚC TREO. Bản nháp dừng ở \"…(nhóm 21.06); và\" — dấu \"và\" hứa mục (ii) (\"các hỗn hợp cây hoặc phần cây của nhóm này với các loại nông sản khác thuộc các Chương khác… (Chương 9 hoặc nhóm 21.06)\") nhưng mục (ii) không có trong câu trích ⇒ người đọc tưởng còn mục nào nữa. Sửa: cắt câu trích tại \"(nhóm 21.06)\" (bỏ phần \"…; và\" treo), nguyên văn, cắt từ tệp nguồn. `dieuKien`/`sangNhom` GIỮ NGUYÊN. GHI NHẬN: mục (ii) không mã hoá được vì đích là \"Chương 9 hoặc nhóm 21.06\" (một nhánh là Chương ⇒ không có mã 4 số) — theo luật 3 không ghi, và `dieuKien` của mục này là điều kiện RIÊNG của mục (i) (hỗn hợp các loài cây khác nhau) nên không nhầm với (ii).",
+   "sua": {
+    "trich": "Nhóm này cũng không bao gồm: … (b) các sản phẩm liệt kê dưới đây dùng trực tiếp để tạo mùi thơm đồ uống hoặc để điều chế các chiết xuất nhằm sản xuất đồ uống: … (i) các hỗn hợp bao gồm các loài cây khác nhau hoặc các phần của cây trong nhóm này (nhóm 21.06)"
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu với loaiTru[0]; Có → 08.14, Không → 1211 là phần BÙ của nhánh Có. GIỮ."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu với loaiTru[1]; Có → 12.10, Không → 1211 là phần BÙ của nhánh Có. GIỮ."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu với loaiTru[2]; Có → 12.12, Không → 1211 là phần BÙ của nhánh Có. GIỮ."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu với loaiTru[3]; Có → 13.01, Không → 1211 là phần BÙ của nhánh Có. GIỮ."
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu với loaiTru[4]; Có → 21.03, Không → 1211 là phần BÙ của nhánh Có. GIỮ."
+  },
+  {
+   "index": "phanBiet[5]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa cùng lý do với loaiTru[5]: bỏ phần \"…; và\" treo khỏi câu trích (cắt tại \"(nhóm 21.06)\", nguyên văn, cắt từ tệp nguồn). `hoi`/`neuCo`/`neuKhong` GIỮ NGUYÊN — `hoi` hỏi đúng điều kiện của mục (i) (hỗn hợp cây khác nhau hoặc phần cây trong nhóm này) và không nhắc mã.",
+   "sua": {
+    "trich": "Nhóm này cũng không bao gồm: … (b) các sản phẩm liệt kê dưới đây dùng trực tiếp để tạo mùi thơm đồ uống hoặc để điều chế các chiết xuất nhằm sản xuất đồ uống: … (i) các hỗn hợp bao gồm các loài cây khác nhau hoặc các phần của cây trong nhóm này (nhóm 21.06)"
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.121120] (\"Ginseng roots, of a kind used primarily in perfumery, in pharmacy or for insecticidal, fungicidal or similar purposes…\"); tiêu chí cấp 6 số mô tả đúng phân nhóm 1211.20 (rễ nhân sâm). GIỮ."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.121130] (\"Coca leaf…\"); tiêu chí cấp 6 số mô tả đúng phân nhóm 1211.30 (lá coca). GIỮ."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.121140] (\"Poppy straw…\"); tiêu chí cấp 6 số mô tả đúng phân nhóm 1211.40 (thân cây anh túc). GIỮ."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.121150] (\"Ephedra…\"); tiêu chí cấp 6 số mô tả đúng phân nhóm 1211.50 (cây ma hoàng). GIỮ."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.121160] (\"Bark of African cherry (Prunus africana)…\"); tiêu chí cấp 6 số mô tả đúng phân nhóm 1211.60 (vỏ cây anh đào châu Phi). GIỮ."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.121190] (\"Plants and parts (including seeds and fruits) n.e.c. in heading no. 1211…\"); `fact` dịch ĐÚNG nghĩa \"phần dư của nhóm 12.11\" (không dịch thành \"trừ 12.11\") — đúng luật lô 041. GIỮ."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12112010]; `dieuKien` chép đúng tên dòng + gloss phân nhóm theo văn phong nhà; đủ 20/20 dòng biểu thuế của nhóm 1211. GIỮ."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 12112090: câu trích nguyên văn [wco.121120] (tên phân nhóm cha — dòng biểu thuế chỉ ghi \"- - - Loại khác\"); `dieuKien` mô tả phần còn lại của 1211.20. GIỮ."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12113000]; `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12114000]; `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12115000]; `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12116000]; `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12119011]; `dieuKien` chép đúng tên dòng + gloss phân nhóm theo văn phong nhà. GIỮ."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12119012]; `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng có SEN: câu trích nguyên văn [sen.12119013] — điều kiện thật nằm ở SEN (rễ ba gạc dùng để sản xuất alkaloid reserpine, thuốc điều trị tâm thần, cao huyết áp), không nằm ở tên dòng biểu thuế; `dieuKien` bám đúng nguồn, 78 ký tự (dưới trần clip 90). GIỮ."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12119015]; `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 12119017: câu trích nguyên văn [tax.12119017]; `dieuKien` mô tả phần còn lại của tiêu đề quốc gia 1211.90.1 + điều kiện dạng theo chính tên dòng (\"tươi hoặc khô, đã cắt, nghiền hoặc dạng bột\"), 82 ký tự (dưới trần clip 90). GIỮ."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 12119018: câu trích nguyên văn [tax.12119018]; `dieuKien` mô tả phần còn lại của 1211.90.1 + điều kiện dạng theo tên dòng. GIỮ."
+  },
+  {
+   "index": "dong8[12]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 12119019: câu trích nguyên văn [tax.12119019]; `dieuKien` mô tả phần còn lại của 1211.90.1. GIỮ."
+  },
+  {
+   "index": "dong8[13]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12119091] (giữ nguyên dấu cách cuối của nguồn); `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[14]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12119092]; `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[15]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12119094] (\"Mảnh gỗ đàn hương\") — dạng \"gỗ mảnh\" đúng với điều kiện của chú giải nhóm về gỗ (chỉ ở dạng vỏ bào, gỗ mảnh, nghiền, xay hoặc bột mới thuộc 12.11); `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[16]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng có SEN: câu trích nguyên văn [sen.12119095] — điều kiện thật (lõi gỗ có nhựa sẫm màu của cây Aquilaria, Gyrinops) lấy từ SEN; `dieuKien` bám đúng nguồn, 80 ký tự (dưới trần clip 90). GIỮ."
+  },
+  {
+   "index": "dong8[17]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng có SEN: câu trích nguyên văn [sen.12119097] — điều kiện thật (vỏ cây persea, cây thơm có lớp vỏ dày, dùng chủ yếu trong việc làm hương) lấy từ SEN; `dieuKien` bám đúng nguồn. GIỮ."
+  },
+  {
+   "index": "dong8[18]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 12119098: câu trích nguyên văn [tax.12119098]; `dieuKien` mô tả phần còn lại của 1211.90.9 + điều kiện dạng theo tên dòng. GIỮ."
+  },
+  {
+   "index": "dong8[19]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 12119099: câu trích nguyên văn [tax.12119099]; `dieuKien` mô tả phần còn lại của 1211.90.9. GIỮ."
+  }
+ ]
+}

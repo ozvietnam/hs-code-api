@@ -1,0 +1,196 @@
+{
+ "nhom": "1209",
+ "nguoiSoat": "dev-soat-doc-lap-lo056",
+ "luc": "2026-10-26T23:40:00+07:00",
+ "phamViSoat": "Toàn bộ 35 mục của nhóm 1209 (1 phamVi + 1 dieuKienVao + 3 loaiTru + 3 phanBiet + 10 tieuChi6 + 3 cay.tenDien + 14 dong8), đọc cùng tmp/so-tay/nguon/1209.txt (nhom1209.nhom, ch12.chuong, phan12.phan, wco.120910…120999, tax.12091000…12099990).",
+ "soat": 35,
+ "giu": 33,
+ "sua": 2,
+ "xoa": 0,
+ "ghiChu": "SỬA 2 (phamVi: đoạn lược \"…\" nuốt mất vế \"mặc dù được dùng để gieo trồng\" — là điều kiện định tuyến, bỏ thì tướng khai \"hạt dùng để gieo trồng\" tưởng thuộc 12.09; dieuKienVao: fact không phủ \"hạt thậm chí không còn khả năng nảy mầm nữa\" — luật lô 054 \"dieuKienVao phải phủ CẢ nhóm\"). XOÁ 0. GIỮ 33.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — ĐOẠN LƯỢC NUỐT ĐIỀU KIỆN ĐỊNH TUYẾN. Bản nháp lược \"…\" ngay sau \"…được nêu ở phần cuối của Chú giải này\", bỏ mất vế \"mặc dù được dùng để gieo trồng, chúng được phân loại trong các nhóm khác của Danh mục\" (nguồn: \"…mặc dù được dùng để gieo trồng…\"). Đây là điều kiện QUAN TRỌNG của chính nhóm 12.09 (hạt để gieo trồng): danh sách loại trừ (a)–(h) gồm nhiều mặt hàng VẪN dùng để gieo trồng (ví dụ (f) \"Hạt và quả có dầu từ nhóm 12.01 đến nhóm 12.07\") — bỏ vế \"mặc dù\" thì câu trích đọc như \"không gồm sản phẩm không dùng để gieo trồng\", tức MÂU THUẪN với chính định nghĩa nhóm. Sửa: (1) `trich` kéo dài thêm vế \"mặc dù được dùng để gieo trồng\" (cắt từ tệp nguồn, nguyên văn; 291 ký tự, dưới trần lược đồ 300); (2) `text` thêm vế tương ứng (208 ký tự, dưới trần runtime clip 220). KHÔNG sửa mã, KHÔNG sửa câu nguồn. GHI NHẬN: câu trích vẫn dừng ở \"…hạt cỏ khác\" (trước danh sách ví dụ và vế \"trừ hạt thuộc loài Vicia faba\") — không kéo dài được (vượt 300 ký tự) mà `text` cũng không nêu đậu tằm nên không sai lệch; toàn bộ danh sách loại trừ (a)–(h) đã có ở 3 loaiTru + 3 phanBiet của nhóm.",
+   "sua": {
+    "text": "Hạt, quả và mầm dùng để gieo trồng; không gồm các sản phẩm được nêu ở phần cuối của Chú giải này, mặc dù được dùng để gieo trồng; bao gồm các loại hạt củ cải, hạt cỏ, hạt cỏ đồng nội hay các loại hạt cỏ khác.",
+    "trich": "Nhóm 12.09 gồm tất cả các loại hạt, quả và mầm dùng để gieo trồng. … Tuy nhiên, nhóm này không bao gồm các sản phẩm như các sản phẩm được nêu ở phần cuối của Chú giải này, mặc dù được dùng để gieo trồng … Nhóm này bao gồm các loại hạt củ cải, hạt cỏ, hạt cỏ đồng nội hay các loại hạt cỏ khác"
+   }
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — FACT CHỈ PHỦ MỘT PHẦN NHÓM (luật lô 054: `dieuKienVao` boolean là \"điều kiện VÀO NHÓM\" trong mắt mô hình; một fact chỉ phủ một phần nhóm sẽ khiến mô hình LOÀI thành viên hợp lệ ra khỏi nhóm). Câu nguồn ngay sau câu đã trích nói: \"Nhóm này bao gồm các hạt thậm chí không còn khả năng nảy mầm nữa.\" — tức hạt KHÔNG còn nảy mầm VẪN thuộc 12.09, nhưng `fact` chỉ có \"la_hat_qua_va_mam_dung_de_gieo_trong\" (dùng để gieo trồng) ⇒ tờ khai khai \"hạt cỏ không còn khả năng nảy mầm\" có thể bị loại khỏi 12.09. Sửa: (1) `trich` kéo dài thêm câu \"Nhóm này bao gồm các hạt thậm chí không còn khả năng nảy mầm nữa.\" (nguyên văn, cắt từ tệp nguồn); (2) `fact` thêm vế \"ke_ca_hat_khong_con_kha_nang_nay_mam\". `op`/`value`/`donVi`/`ngoaiTru` GIỮ NGUYÊN. Vế loại trừ (a)–(h) KHÔNG đưa vào `ngoaiTru` ở đây vì câu trích không chứa vế phủ định đó (nó nằm ở phamVi + 3 loaiTru + 3 phanBiet của cùng nhóm).",
+   "sua": {
+    "fact": "la_hat_qua_va_mam_dung_de_gieo_trong_ke_ca_hat_khong_con_kha_nang_nay_mam",
+    "trich": "Nhóm 12.09 gồm tất cả các loại hạt, quả và mầm dùng để gieo trồng. Nhóm này bao gồm các hạt thậm chí không còn khả năng nảy mầm nữa."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom1209.nhom] — mục (a) của khối \"Nhóm này không bao gồm:\"; có DẤU HIỆU LOẠI TRỪ; đích 06.02 NÊU ĐÍCH DANH trong chính câu trích. GIỮ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (g) của khối loại trừ của nhóm; đích 12.11 NÊU ĐÍCH DANH; `dieuKien` giữ định ngữ giới hạn \"chủ yếu\" của câu nguồn và dừng ở 47 ký tự (dưới trần clip 55) — phần bị lược (\"thuốc trừ sâu, thuốc diệt nấm hoặc cho các mục đích tương tự\") VẪN CÓ ĐỦ trong `hoi` của phanBiet[1] (87 ký tự, dưới trần 110) và trong câu trích. GIỮ."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Mục (h) của khối loại trừ của nhóm; đích 12.12 NÊU ĐÍCH DANH; đoạn lược \"…\" chỉ nuốt các mục (b)–(g) (loại trừ KHÁC, không phải ngoại lệ của mục (h)) ⇒ không mất nghĩa. GIỮ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu với loaiTru[0]; Có → 06.02, Không → 1209 là phần BÙ của nhánh Có. GIỮ."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu với loaiTru[1]; `hoi` giữ trọn danh sách mục đích của nguồn (\"nước hoa, dược phẩm, thuốc trừ sâu hoặc thuốc diệt nấm\", 93 ký tự, dưới trần clip 110); Có → 12.11, Không → 1209 là phần BÙ của nhánh Có. GIỮ."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu với loaiTru[2]; Có → 12.12, Không → 1209 là phần BÙ của nhánh Có. GIỮ."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.120910] (\"sugar beet seeds, of a kind used for sowing\"); tiêu chí cấp 6 số mô tả đúng phân nhóm 1209.10. GIỮ."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.120921] (\"lucerne (alfalfa) seeds\"); tiêu chí cấp 6 số mô tả đúng phân nhóm 1209.21. GIỮ."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.120922] (\"clover (Trifolium spp.) seeds\"); tiêu chí cấp 6 số mô tả đúng phân nhóm 1209.22. GIỮ."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.120923] (\"fescue seeds\"); `fact` dùng tên tiếng Việt theo biểu thuế (\"hạt cỏ đuôi trâu\" — tax.12092300) cho đúng tên mặt hàng; `tieuChi6` không đưa vào prompt runtime nên không rủi ro dịch (luật lô 054). GIỮ."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.120924] (\"Kentucky blue grass (Poa pratensis L.) seeds\"); tiêu chí cấp 6 số mô tả đúng phân nhóm 1209.24. GIỮ."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.120925] (\"rye grass (Lolium multiflorum Lam., Lolium perenne L.) seeds\"); `fact` dùng tên biểu thuế (\"hạt cỏ mạch đen\" — tax.12092500). GIỮ."
+  },
+  {
+   "index": "tieuChi6[6]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.120929] (\"other than lucerne, clover, fescue, Kentucky blue grass, and rye grass seeds\"); `fact` giữ nghĩa DƯƠNG \"khác\" (không đảo thành \"không phải\") — đúng luật lô 053; danh sách loại trừ được nêu đầy đủ ở cay.tenDien[0]. GIỮ."
+  },
+  {
+   "index": "tieuChi6[7]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.120930] (\"Seeds of herbaceous plants; cultivated principally for their flowers\"); tiêu chí cấp 6 số mô tả đúng phân nhóm 1209.30. GIỮ."
+  },
+  {
+   "index": "tieuChi6[8]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.120991] (\"vegetable seeds\"); tiêu chí cấp 6 số mô tả đúng phân nhóm 1209.91. GIỮ."
+  },
+  {
+   "index": "tieuChi6[9]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.120999] (\"n.e.c. in heading 1209\"); `fact` dịch ĐÚNG nghĩa \"phần dư của nhóm 12.09\" (không dịch thành \"trừ 12.09\") — đúng luật lô 041. GIỮ."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nút 120929 là phân nhóm 6 số CHƯA có tên tiếng Việt trong cây; tên lấy từ câu trích nguyên văn [wco.120929] và nêu đủ 5 loại bị loại trừ theo nguồn. GIỮ."
+  },
+  {
+   "index": "cay.tenDien[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nút 120991 là phân nhóm 6 số CHƯA có tên tiếng Việt trong cây; tên lấy từ câu trích nguyên văn [wco.120991]. GIỮ."
+  },
+  {
+   "index": "cay.tenDien[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nút 120999 là phân nhóm 6 số CHƯA có tên tiếng Việt trong cây; tên lấy từ câu trích nguyên văn [wco.120999] (\"n.e.c. in heading 1209\" = phần dư của nhóm 12.09, dịch DƯƠNG). GIỮ."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12091000]; `dieuKien` chép đúng tên dòng + gloss phân nhóm theo văn phong nhà; đủ 14/14 dòng biểu thuế của nhóm 1209. GIỮ."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12092100]; `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12092200] (giữ nguyên dấu cách cuối của nguồn); `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12092300]; `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12092400]; `dieuKien` chép đúng tên dòng + gloss phân nhóm (74 ký tự, dưới trần clip 90). GIỮ."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12092500] (giữ nguyên dấu cách cuối của nguồn); `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12092910]; `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 12092990: câu trích nguyên văn [wco.120929]; `dieuKien` mô tả phần còn lại của 1209.29. GIỮ."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12093000]; `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12099110]; `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 12099190: câu trích nguyên văn [wco.120991]; `dieuKien` mô tả phần còn lại của 1209.91. GIỮ."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12099920]; `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[12]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.12099930]; `dieuKien` chép đúng tên dòng + gloss phân nhóm. GIỮ."
+  },
+  {
+   "index": "dong8[13]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 12099990: câu trích nguyên văn [wco.120999]; `dieuKien` mô tả phần còn lại của 1209.99. GIỮ."
+  }
+ ]
+}

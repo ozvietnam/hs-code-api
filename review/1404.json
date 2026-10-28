@@ -1,0 +1,235 @@
+{
+  "nhom": "1404",
+  "gopVoi": "review phiên soát song song 4b7e956 + vòng soát này",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp 414 ký tự. Runtime chỉ đưa phamVi.text vào prompt (lib/so-tay-gates.js:134) và clip 220 — nên phần (D)(E)(F) rơi khỏi tầm nhìn của mô hình. SỬA: rút từ 414 xuống 325, giữ ĐỦ 6 tiêu đề phần (A)–(F) theo luật lô 030 và câu mở đầu (nhóm CHÒN — \"chưa được chi tiết hoặc ghi ở nơi khác\"), chỉ bỏ cụm thừa trong tiêu đề (\"loại chủ yếu\", \"công nghệ\", \"loại sử dụng\", \"chủ yếu\") và \"của Danh mục\"; không thêm chữ nào ngoài nguồn. GHI NHẬN (ngoại lệ trần 220): nhóm có 6 phần ngang hàng, tiêu đề 6 phần KHÔNG thể vừa 220 mà không bỏ một phần — em chọn giữ đủ 6 phần (luật lô 030) và rút tới 325; nhờ vậy clip(220) giờ lọt trọn phần (C) và (D) thay vì cắt giữa tiêu đề (C); phần (E)(F) được phục hồi bằng dong8 (14049020/14049030/14049091/14049092/14049099) và các loạiTrừ.",
+      "sua": {
+        "text": "Sản phẩm từ thực vật chưa được chi tiết hoặc ghi ở nơi khác: (A) Xơ của cây bông… (B) Nguyên liệu thực vật thô dùng trong nhuộm hoặc thuộc da… (C) Hạt cứng, hạt mềm, vỏ trái cây và quả hạch để chạm khắc… (D) Nguyên liệu thực vật để lót hoặc nhồi… (E) Nguyên liệu thực vật làm chổi hay bàn chải… (F) Sản phẩm khác từ thực vật."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích \"Nhóm này gồm các sản phẩm từ thực vật chưa được chi tiết hoặc ghi ở nơi khác của Danh mục.\" là câu RÀNG BUỘC phủ CẢ nhóm (không phải câu định nghĩa thuật ngữ) — đúng luật lô 030; fact dương + value=true (tiền lệ 0201/0202/3904). GIỮ (đồng ý phiên soát song song)."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "fact DƯƠNG \"la_soi_go_hoac_tum_hoac_bui_da_lam_san_dung_de_lam_choi_hoac_ban_chai\" + value=false ⇒ runtime in ra \"… = false\" = hàng KHÔNG phải sợi gỗ / túm-búi đã làm sẵn ⇒ ĐÚNG CHIỀU loại trừ (44.05 và 96.03). Đây là MẪU NHÀ \"fact dương + value=false\" (65 mục đã gộp: 0504 \"da_duoc_che_bien…\", 0710, 1503, 5903), KHÔNG phải mẫu đảo chiều của lô 044 (lô 044 chỉ cấm \"fact âm\" khởi đầu bằng \"khong_…\" + value=false). GIỮ."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu \"(a) Bông, y tế hoặc đóng gói bán lẻ dùng cho y tế, phẫu thuật, nha khoa hoặc thú y (nhóm 30.05).\" có DẤU HIỆU LOẠI TRỪ + đích danh 30.05; clip(55) vẫn giữ \"Bông, y tế … dùng cho y tế\" ⇒ định danh còn. GIỮ."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "\"(b) Các loại bông khác (nhóm 56.01).\" — đích danh 56.01, 28 ký tự, không bị clip. GIỮ."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "\"Cần chú ý rằng đầu nhụy và bầu nhị của cây nghệ tây bị loại trừ (nhóm 09.10).\" — có DẤU HIỆU LOẠI TRỪ (\"bị loại trừ\") + đích danh 09.10. GIỮ."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "Đích danh 32.01 trong câu; clip(55) giữ \"Chiết xuất tannin từ gốc thực vật và chất tanin\" ⇒ định danh còn. GIỮ."
+    },
+    {
+      "index": "loaiTru[4]",
+      "hanhDong": "giu",
+      "lyDo": "Đích danh 32.03 trong câu; clip(55) giữ \"Chiết xuất nhuộm từ gỗ…\" ⇒ định danh còn. GIỮ."
+    },
+    {
+      "index": "loaiTru[5]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT — clip CẮT MẤT HOÀN TOÀN phần định danh. dieuKien 120 ký tự, clip(loaiTru.dieuKien, 55) dừng ở \"Nguyên liệu thực vật được sử dụng để nhồi nhưng đã được…\" ⇒ mất HẾT \"sợi gỗ\"; hơn nữa [5][6][7] in ra BA CÂU GIỐNG HỆT NHAU với ba đích 44.05/45.01/53.05 ⇒ mô hình không phân biệt được. SỬA: đặt vật bị loại trừ lên đầu để clip không cắt mất, giữ cả hai vế \"đã chi tiết ở nơi khác\" và \"dùng để nhồi\"; câu trích giữ nguyên.",
+      "sua": {
+        "dieuKien": "Sợi gỗ (đã chi tiết ở nơi khác, dùng để nhồi)"
+      }
+    },
+    {
+      "index": "loaiTru[6]",
+      "hanhDong": "sua",
+      "lyDo": "Cùng lỗi clip 55 với [5]: mất HẾT định danh \"sợi lie\", còn lại chuỗi giống hệt [5] và [7] nhưng đích là 45.01. SỬA: đặt vật bị loại trừ lên đầu, giữ hai vế \"đã chi tiết ở nơi khác\" và \"dùng để nhồi\".",
+      "sua": {
+        "dieuKien": "Sợi lie (đã chi tiết ở nơi khác, dùng để nhồi)"
+      }
+    },
+    {
+      "index": "loaiTru[7]",
+      "hanhDong": "sua",
+      "lyDo": "Cùng lỗi clip 55: mất HẾT định danh \"xơ dừa (hoặc sợi dừa)\". SỬA: đặt vật bị loại trừ lên đầu, giữ cả hai tên gọi \"xơ dừa\" và \"sợi dừa\".",
+      "sua": {
+        "dieuKien": "Xơ dừa hoặc sợi dừa (đã chi tiết ở nơi khác, dùng để nhồi)"
+      }
+    },
+    {
+      "index": "loaiTru[8]",
+      "hanhDong": "sua",
+      "lyDo": "Câu trích dài 408 ký tự — VƯỢT trần 300 của lược đồ (máy chỉ chặn >600 nên lọt; đây là lớp lỗi người soát phải bắt). SỬA: cắt ở ranh giới mục \"(nhóm 14.01),\" — vẫn nêu đích danh 14.01 nên máy không loại; phần bị cắt là các mục 53.03/53.05 đã có mục riêng ([9][10]).",
+      "sua": {
+        "trich": "Nhưng loại này không bao gồm các nguyên liệu thực vật đã được chi tiết ở nơi khác trong Danh mục hoặc không được sử dụng chủ yếu để làm chổi hay bàn chải, ví dụ, tre, đã hoặc chưa chẻ, sậy và cây bấc (nhóm 14.01),"
+      }
+    },
+    {
+      "index": "loaiTru[9]",
+      "hanhDong": "sua",
+      "lyDo": "Hai lỗi: (1) trích 408 ký tự > 300; (2) dieuKien 67 ký tự, clip(55) cắt mất \"cho mục đích dệt may\" — vế ĐIỀU KIỆN quyết định mục này (chế biến cho dệt may ⇒ 53.03; nếu mất vế này thì \"thân của cây đậu chổi\" đọc thành HÀNG THUỘC NHÓM, vì chính phần (F) nói \"Cây đậu chổi thô … được loại trừ\"). SỬA: rút dieuKien cho vừa clip(55) mà vẫn giữ vế \"dệt may\"; trích cắt ở ranh giới mục, vẫn nêu đủ 53.03.",
+      "sua": {
+        "dieuKien": "Thân cây đậu chổi, nếu chế biến cho mục đích dệt may",
+        "trich": "cỏ alfa, cỏ giấy và thân của cây đậu chổi, nếu được chế biến để sử dụng cho mục đích dệt may (nhóm 53.03 (cây đậu chổi) hoặc nhóm 53.05 (cỏ alfa và cỏ giấy)), xơ dừa (hoặc sợi dừa) (nhóm 53.05)."
+      }
+    },
+    {
+      "index": "loaiTru[10]",
+      "hanhDong": "sua",
+      "lyDo": "Hai lỗi: (1) trích 408 ký tự > 300; (2) dieuKien 69 ký tự, clip(55) cắt mất \"cho mục đích dệt may\" ⇒ mất điều kiện loại trừ (chế biến cho dệt may ⇒ 53.05). SỬA: rút dieuKien cho vừa clip(55) mà vẫn giữ vế \"dệt may\"; trích cắt ở ranh giới mục, vẫn nêu đủ 53.05.",
+      "sua": {
+        "dieuKien": "Cỏ alfa và cỏ giấy, nếu chế biến cho mục đích dệt may",
+        "trich": "cỏ alfa, cỏ giấy và thân của cây đậu chổi, nếu được chế biến để sử dụng cho mục đích dệt may (nhóm 53.03 (cây đậu chổi) hoặc nhóm 53.05 (cỏ alfa và cỏ giấy)), xơ dừa (hoặc sợi dừa) (nhóm 53.05)."
+      }
+    },
+    {
+      "index": "loaiTru[11]",
+      "hanhDong": "giu",
+      "lyDo": "\"Cỏ giấy chỉ thuộc nhóm này nếu ở dạng thân cây hoặc lá… khi đã được dát mỏng, đập bẹt hoặc chải như sợi dệt thì bị loại trừ (nhóm 53.05).\" — có DẤU HIỆU LOẠI TRỪ (\"bị loại trừ\") + đích danh 53.05; clip(55) giữ \"Cỏ giấy đã được dát mỏng, đập bẹt hoặc chải như sợi dệt\" ⇒ định danh còn. GIỮ."
+    },
+    {
+      "index": "loaiTru[12]",
+      "hanhDong": "giu",
+      "lyDo": "\"Tuy nhiên, nhóm này không bao gồm các túm hoặc búi xơ đã làm sẵn… Những loại này được phân loại vào nhóm 96.03.\" — có \"không bao gồm\" + \"được phân loại vào nhóm 96.03\"; clip(55) giữ \"Các túm hoặc búi xơ đã làm sẵn để kết chặt\" ⇒ định danh còn. GIỮ."
+    },
+    {
+      "index": "loaiTru[13]",
+      "hanhDong": "giu",
+      "lyDo": "\"Loại trừ bọt biển có gốc động vật (nhóm 05.11).\" — dấu hiệu loại trừ + đích danh 05.11, 28 ký tự. GIỮ."
+    },
+    {
+      "index": "loaiTru[14]",
+      "hanhDong": "sua",
+      "lyDo": "Trích dài 313 ký tự (>300). Ba mục [14][15][16] dùng chung trích có chứa \"(trừ loại sử dụng để nhuộm (xem Mục (A)(7)), làm dược liệu hoặc trang trí)\" — nếu lược đoạn đó thì nuốt mất ngoại lệ \"trừ\" (luật _he-thong.txt dòng 31). SỬA: cắt ở RANH GIỚI CÂU (bắt đầu từ \"Thạch rau câu, carrageenan…\") nên không phải lược gì, còn 214 ký tự và vẫn nêu đủ 13.02. dieuKien giữ nguyên: clip(55) vẫn giữ \"Thạch rau câu, carrageenan và chất làm đặc\" ⇒ định danh còn.",
+      "sua": {
+        "trich": "Thạch rau câu, carrageenan và chất làm đặc, làm dày tự nhiên khác được chiết\n\nxuất từ nguyên liệu thực vật bị loại trừ (nhóm 13.02). Tảo biển và tảo khác thuộc nhóm 12.12 và tảo đơn bào đã chết (nhóm 21.02) cũng bị loại trừ."
+      }
+    },
+    {
+      "index": "loaiTru[15]",
+      "hanhDong": "sua",
+      "lyDo": "Cùng lỗi trích 313 ký tự (>300). SỬA: dùng chung trích cắt ở ranh giới câu (214 ký tự) — vẫn nêu đủ 12.12; dieuKien 28 ký tự không bị clip.",
+      "sua": {
+        "trich": "Thạch rau câu, carrageenan và chất làm đặc, làm dày tự nhiên khác được chiết\n\nxuất từ nguyên liệu thực vật bị loại trừ (nhóm 13.02). Tảo biển và tảo khác thuộc nhóm 12.12 và tảo đơn bào đã chết (nhóm 21.02) cũng bị loại trừ."
+      }
+    },
+    {
+      "index": "loaiTru[16]",
+      "hanhDong": "sua",
+      "lyDo": "Cùng lỗi trích 313 ký tự (>300). SỬA: dùng chung trích cắt ở ranh giới câu (214 ký tự) — vẫn nêu đủ 21.02; dieuKien 21 ký tự không bị clip.",
+      "sua": {
+        "trich": "Thạch rau câu, carrageenan và chất làm đặc, làm dày tự nhiên khác được chiết\n\nxuất từ nguyên liệu thực vật bị loại trừ (nhóm 13.02). Tảo biển và tảo khác thuộc nhóm 12.12 và tảo đơn bào đã chết (nhóm 21.02) cũng bị loại trừ."
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích có đích danh 30.05; \"Có\" = bông y tế ⇒ 3005, \"Không\" = xơ của cây bông ⇒ 1404. CHIỀU ĐÚNG theo runtime. GIỮ."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích \"(b) Các loại bông khác (nhóm 56.01).\" — \"Có\" ⇒ 5601, \"Không\" ⇒ 1404. GIỮ."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nêu đích danh 09.10; \"Có\" = đầu nhụy và bầu nhị nghệ tây ⇒ 0910, \"Không\" ⇒ 1404. clip(110) chỉ cắt đuôi \"thuộc da?\" — nhánh \"không\" vẫn đọc được. GIỮ."
+    },
+    {
+      "index": "phanBiet[3]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nêu đích danh 32.01; \"Có\" ⇒ 3201, \"Không\" ⇒ 1404. GIỮ."
+    },
+    {
+      "index": "phanBiet[4]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nêu đích danh 32.03; \"Có\" ⇒ 3203, \"Không\" ⇒ 1404. GIỮ."
+    },
+    {
+      "index": "phanBiet[5]",
+      "hanhDong": "sua",
+      "lyDo": "Trích 408 ký tự (>300) — cùng lỗi với loaiTru[8]. SỬA: trích cắt ở ranh giới mục, vẫn nêu đủ 14.01.",
+      "sua": {
+        "trich": "Nhưng loại này không bao gồm các nguyên liệu thực vật đã được chi tiết ở nơi khác trong Danh mục hoặc không được sử dụng chủ yếu để làm chổi hay bàn chải, ví dụ, tre, đã hoặc chưa chẻ, sậy và cây bấc (nhóm 14.01),"
+      }
+    },
+    {
+      "index": "phanBiet[6]",
+      "hanhDong": "giu",
+      "lyDo": "\"Cỏ giấy chỉ thuộc nhóm này nếu… khi đã được dát mỏng, đập bẹt hoặc chải như sợi dệt thì bị loại trừ (nhóm 53.05).\" — \"Có\" ⇒ 5305, \"Không\" = cỏ giấy ở dạng thân cây hoặc lá ⇒ 1404. GIỮ."
+    },
+    {
+      "index": "phanBiet[7]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nêu đích danh 96.03; \"Có\" = túm/búi xơ đã làm sẵn ⇒ 9603, \"Không\" ⇒ 1404. GIỮ."
+    },
+    {
+      "index": "phanBiet[8]",
+      "hanhDong": "giu",
+      "lyDo": "\"Loại trừ bọt biển có gốc động vật (nhóm 05.11).\" — \"Có\" = bọt biển gốc động vật ⇒ 0511, \"Không\" = xơ mướp ⇒ 1404. GIỮ."
+    },
+    {
+      "index": "phanBiet[9]",
+      "hanhDong": "sua",
+      "lyDo": "Hai lỗi: (1) hoi 158 ký tự, clip(110) cắt MẤT TRỌN vế \"hay là tảo biển, tảo khác hay tảo đơn bào đã chết?\" ⇒ mô hình chỉ thấy một nhánh, không trả lời được; (2) trích 313 ký tự (>300). SỬA: rút hoi xuống vừa clip(110) mà giữ đủ hai vế, trích cắt ở ranh giới câu.",
+      "sua": {
+        "hoi": "Hàng là thạch rau câu, carrageenan hay là tảo biển, tảo khác hay tảo đơn bào đã chết?",
+        "trich": "Thạch rau câu, carrageenan và chất làm đặc, làm dày tự nhiên khác được chiết\n\nxuất từ nguyên liệu thực vật bị loại trừ (nhóm 13.02). Tảo biển và tảo khác thuộc nhóm 12.12 và tảo đơn bào đã chết (nhóm 21.02) cũng bị loại trừ."
+      }
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.140420: \"140420 Vegetable products; cotton linters\" — fact dương `la_xo_cua_cay_bong` = true đúng chiều; phân nhóm 140420 có thật trong cây của 1404."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.140490: \"140490 Vegetable products; n.e.c. in chapter 14\" — \"n.e.c.\" = phần dư CỦA chương 14; fact dương `la_cac_san_pham_tu_thuc_vat_khac_trong_chuong_14` = true là chiều ĐÚNG (không đảo thành \"trừ chương 14\"); cùng khuôn mẫu với 0208 (\"khac_trong_chuong_02\"), 0301 (\"khac_trong_nhom_0301\")."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "tax.14042000: \"14042000 - Xơ của cây bông\" — `dieuKien` bám đúng tên dòng; `tieuChi` phân biệt với các dòng 140490xx bằng đặc trưng \"xơ của cây bông\" (giá trị boolean nên không cần số trong trích)."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "tax.14049020: \"14049020 - - Loại dùng chủ yếu trong công nghệ thuộc da hoặc nhuộm\" — tên dòng nguyên văn, không thêm chữ."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "tax.14049030: \"14049030 - - Bông gòn\" — tên dòng nguyên văn."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "tax.14049091: \"14049091 - - - Vỏ hạt cọ\" — tên dòng nguyên văn."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "tax.14049092: \"14049092 - - - Chùm không quả của cây cọ dầu\" — tên dòng nguyên văn."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng \"Loại khác\" (tax.14049099 \"14049099 - - - Loại khác\") — văn phong \"Loại khác: <tên WCO>\" + nguồn wco.140490 đúng khuôn mẫu đã duyệt (1103 \"Loại khác: Cereal groats and meal…\", 0206, 0207, 0208); máy tự suy loaiKhac=true theo biểu thuế. GHI NHẬN: `dieuKien` 51 ký tự ≤ trần 90."
+    }
+  ]
+}

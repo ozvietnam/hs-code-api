@@ -1,0 +1,164 @@
+{
+ "nhom": "1902",
+ "nguoiSoat": "dev-soat-doc-lap-lo064",
+ "vong": 1,
+ "luc": "2026-10-28T05:20:00+07:00",
+ "daKiem": 25,
+ "xoa": 0,
+ "sua": 3,
+ "chen": 2,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 064 (nhóm 1902) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/1902.txt (9.651 ký tự, đọc hết) và đối chiếu TỪNG MỤC của bản nháp. Kết quả: giữ 20 · sửa 3 · chèn 2 · xoá 0. ĐO NỀN NHÀ trước khi kết luận: (a) câu \"Nhóm này bao gồm...\" dùng làm `dieuKienVao` — 145/769 mục trong kho ⇒ mẫu nhà, KHÔNG phải lỗi; (b) nhánh \"không\" của `phanBiet` trỏ về chính nhóm — 824/1046 mục ⇒ mẫu nhà; (c) dòng \"Loại khác\" ghi \"(tên WCO ...)\" — 175/1.900 dòng ⇒ mẫu nhà, KHÔNG đổi; (d) `dieuKienVao` có `ngoaiTru` — 111 mục ⇒ mẫu nhà; (e) nhiều `loaiTru` cùng một đích — 155 nhóm ⇒ mẫu nhà.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích ghép HAI câu của chú giải nhóm (câu mở đầu + câu về couscous) bằng dấu lược \"…\". Đoạn bị lược (các đoạn về trộn/nhào bột, tạo hình, sấy khô, nấu & nhồi, hình dạng mì nhồi) đã đọc LẠI từng câu: KHÔNG chứa ngoại lệ nào (\"không bao gồm\" / \"bị loại trừ\" / \"Tuy nhiên\" / \"trừ khi\") ⇒ dấu lược KHÔNG nuốt luật (lớp lỗi lô 037). `text` 197/220 dưới trần clip của runtime. GHI NHẬN: câu mở đầu bao hàm cả mì đã nấu chín và mì nhồi (1902.20 / 1902.30) nhưng không nói rõ; các dòng 8 số và `loaiTru` giữ chi tiết ⇒ giữ nguyên, không sửa."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "sua",
+   "lyDo": "HAI VIỆC. (1) LỖI CHÍNH TẢ TRONG `fact`: \"la_san_pham_tu_bot_nhao_chua_duoc_len_man\" — nguồn ghi \"chưa được LÊN MEN\" ⇒ slug phải là \"_len_men\", không phải \"_len_man\". ĐO NỀN NHÀ: toàn kho có 3 `fact` dạng \"_len_men\" và ĐÚNG 1 `fact` dạng \"_len_man\" là mục này ⇒ sai. Máy kiểm KHÔNG bắt được (chỉ kiểm câu trích, không kiểm `fact`), còn `fact` đọc thẳng vào prompt runtime. (2) Phần nghĩa giữ nguyên: câu \"Sản phẩm từ bột nhào (pasta) thuộc nhóm này là các sản phẩm chưa được lên men làm từ bột hòn (semolina) hoặc bột lúa mỳ, bột ngô, bột gạo, bột khoai tây...\" là câu ĐỊNH NGHĨA phạm vi nhóm, dùng làm `dieuKienVao` là MẪU NHÀ: 145/769 mục `dieuKienVao` trong kho lấy đúng câu dạng \"Nhóm này bao gồm...\" ⇒ không phải lỗi; câu phủ CẢ nhóm (1902 không chia phần ngang hàng như 1904/1905) ✓. GHI NHẬN: nhóm 1902 CÒN THIẾU điều kiện ≤ 20 % thịt — đã CHÈN ở `dieuKienVao[1]` (xem mục đó).",
+   "sua": {
+    "fact": "la_san_pham_tu_bot_nhao_chua_duoc_len_men"
+   }
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "chen",
+   "lyDo": "CHÈN MỤC THIẾU — loại trừ \"Chương 16\" của chính nhóm 1902 chưa có mục nào giữ. Chú giải nhóm 1902 có mục (a): \"Các chế phẩm thực phẩm (trừ các sản phẩm nhồi thuộc nhóm 19.02) đã nhồi, có chứa trên 20% trọng lượng là xúc xích, thịt, phụ phẩm dạng thịt, tiết, côn trùng, cá hoặc động vật giáp xác, động vật thân mềm hoặc động vật thuỷ sinh không xương sống khác, hoặc hỗn hợp bất kỳ của các loại trên (Chương 16).\" — đích là CHƯƠNG 16, không phải một NHÓM ⇒ theo luật 3 (loaiTru chỉ ghi khi nêu đích danh một nhóm) KHÔNG mã hoá được thành `loaiTru`; chỗ đúng của nó là `dieuKienVao` (phía thuộc nhóm = ≤ 20 %). MẪU NHÀ ĐÃ DUYỆT: nhóm 19.01 đã duyệt có `dieuKienVao[2]` với `fact` \"ty_le_xuc_xich_thit_ca_giap_xac_than_mem_trong_luong\" ≤ 20 % — `fact` này dùng Y HỆT cho 1902 ✓. NGOẠI LỘ: nguồn nói \"(trừ các sản phẩm nhồi thuộc nhóm 19.02)\" ⇒ đặt vào `ngoaiTru` (111 mục trong kho có dùng `ngoaiTru`) — nếu không có ngoại lệ này thì mì nhồi thịt 19.02.20 (thịt > 20 %) sẽ bị loại oan.",
+   "muc": {
+    "fact": "ty_le_xuc_xich_thit_ca_giap_xac_than_mem_trong_luong",
+    "op": "<=",
+    "value": 20,
+    "donVi": "%",
+    "ngoaiTru": [
+     "các sản phẩm nhồi thuộc nhóm 19.02"
+    ],
+    "nguon": "nhom1902.nhom",
+    "trich": "(a) Các chế phẩm thực phẩm (trừ các sản phẩm nhồi thuộc nhóm 19.02) đã nhồi, có chứa trên 20% trọng lượng là xúc xích, thịt, phụ phẩm dạng thịt, tiết, côn trùng, cá hoặc động vật giáp xác, động vật thân mềm hoặc động vật thuỷ sinh không xương sống khác, hoặc hỗn hợp bất kỳ của các loại trên (Chương 16).\n"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu \"(b) Súp và nước xuýt và chế phẩm để làm súp và nước xuýt, có chứa sản phẩm từ bột nhào (pasta) (nhóm 21.04).\" nằm trong khối \"Nhóm này không bao gồm:\" ⇒ loại trừ dứt khoát; đích 21.04 NÊU NGUYÊN VĂN trong câu trích ✓ (luật 3). `dieuKien` 53/55 dưới trần clip ⇒ không bị cắt. GHI NHẬN: `dieuKien` rút gọn còn \"Súp và nước xuýt có chứa sản phẩm từ bột nhào (pasta)\" — BỎ nhánh \"và chế phẩm để làm súp và nước xuýt\" ⇒ thu hẹp; đã bù bằng mục `loaiTru[1]` CHÈN (cùng đích 21.04 — 155 nhóm trong kho có nhiều `loaiTru` cùng một đích) nên không mất nhánh nào."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "chen",
+   "lyDo": "CHÈN nhánh bị bỏ trong `loaiTru[0]`. Nguồn loại trừ 3 nhánh: (i) súp, (ii) nước xuýt, (iii) chế phẩm để làm súp và nước xuýt — tất cả khi \"có chứa sản phẩm từ bột nhào (pasta)\" và cùng đích 21.04. Bản nháp chỉ giữ (i)+(ii) ⇒ mất nhánh (iii): một \"chế phẩm để làm súp\" có chứa mì (vd súp bột ăn liền có mì) bị hiểu là còn ở 19.02 ⇒ xếp sai. `dieuKien` mới dùng cách viết của nhà (1901 đã duyệt: \"Súp, nước xuýt, chế phẩm làm súp/nước xuýt\"), có chứa vế \"có chứa bột nhào (pasta)\" của nguồn; 51/55 dưới trần clip. Cùng câu trích với `loaiTru[0]` (đã nguyên văn, không gõ lại).",
+   "muc": {
+    "dieuKien": "Chế phẩm làm súp/nước xuýt có chứa bột nhào (pasta)",
+    "sangNhom": "2104",
+    "nguon": "nhom1902.nhom",
+    "trich": "(b) Súp và nước xuýt và chế phẩm để làm súp và nước xuýt, có chứa sản phẩm từ bột nhào (pasta) (nhóm 21.04)."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi \"Hàng là súp và nước xuýt có chứa sản phẩm từ bột nhào (pasta) hay là sản phẩm từ bột nhào (pasta)?\" → có → 21.04 (mã 21.04 CÓ trong câu trích ✓ luật 4) / không → 19.02 (phần BÙ của nhánh \"có\" ✓ — 824/1046 mục `phanBiet` trong kho theo mẫu \"không → chính nhóm\"). `hoi` 98/110 dưới trần clip. Không nhắc mã phân nhóm ✓ (luật phanBiet). GHI NHẬN: nhánh \"chế phẩm để làm súp và nước xuýt\" không có trong câu hỏi, nhưng đã có mục `loaiTru[1]` riêng nên không mất thông tin."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "hs6 190211 là nút 6 số thật trong cây ✓ luật 10; `trich` lấy từ wco.190211 (KHÔNG lấy từ tax.*) ✓; `fact` \"co_cha_trung\" = true bám đúng \"containing eggs\" của tiêu đề WCO ✓."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "hs6 190219 là nút 6 số thật ✓; `fact` \"co_cha_trung\" với `value` = false là MẪU NHÀ \"vế BỊ LOẠI + value=false\" (mẫu 1518 lô 061 / 2001 lô 064) — nguồn WCO ghi \"excluding that containing eggs\" ⇒ chiều đúng, KHÔNG phải đảo chiều."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "hs6 190220 là nút 6 số thật ✓; `trich` wco.190220 \"pasta, stuffed (with meat or other substances), whether or not cooked or otherwise prepared\"; `fact` \"la_san_pham_tu_bot_nhao_da_nhoi\" = true bám đúng vế \"stuffed\" ✓."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "sua",
+   "lyDo": "HAI LỖI TRONG MỘT `fact`. (1) LỖI CHÍNH TẢ: \"chue_bien\" — \"chế biến\" bỏ dấu ra \"che_bien\", không phải \"chue\" (lớp lỗi slug hỏng dấu của lô 060; `check-so-tay` KHÔNG bắt được vì nó chỉ kiểm câu trích, không kiểm `fact`). (2) MẤT VẾ: tiêu đề WCO 190230 là \"pasta (excluding stuffed), cooked or otherwise prepared\" — `fact` cũ bỏ mất \"(excluding stuffed)\" ⇒ mì ĐÃ NHỒI mà đã nấu chín (WCO 190220 là \"stuffed ... whether or not cooked\") cũng khớp `fact` của 190230 ⇒ hai tiêu chí cùng đúng, không phân biệt được 19.02.20 với 19.02.30. Sửa: thêm \"khong_nhoi\" + sửa \"chue\"→\"che\". `trich` giữ nguyên. GHI NHẬN: `tieuChi6` KHÔNG vào prompt runtime (chỉ `phamVi.text`/`dieuKien`/`hoi` mới vào) nên hậu quả runtime thấp, nhưng đây là dữ liệu công khai nên vẫn sửa cho đúng.",
+   "sua": {
+    "fact": "la_san_pham_tu_bot_nhao_khong_nhoi_da_nau_chin_hoac_che_bien_cach_khac"
+   }
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "hs6 190240 là nút 6 số thật ✓; `trich` wco.190240 \"couscous\"; `fact` \"la_couscous\" = true ✓. Cũng khớp với `phamVi` (câu \"Nhóm này cũng bao gồm couscous là bột hòn (semolina) được xử lý bằng nhiệt\") và `dong8[12]` ✓."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT — TÊN NÚT BỎ MỘT VẾ QUYẾT ĐỊNH. Nút 190219 CHƯA có tên tiếng Việt trong cây (190219, 190531, 190532 là ba nút null) ⇒ được phép điền ✓ luật 9. Nhưng `tenVi` cũ \"Mì chưa nấu chín, không nhồi, không chứa trứng\" bỏ mất vế \"or otherwise prepared\" của wco.190219 (\"pasta, uncooked (excluding that containing eggs), not stuffed or otherwise prepared\") ⇒ mì CHƯA NẤU CHÍN nhưng ĐÃ CHẾ BIẾN CÁCH KHÁC (thuộc 1902.30 theo WCO: \"cooked or otherwise prepared\") vẫn khớp tên 190219 ⇒ phân loại sai. Sửa: thêm \"không chế biến cách khác\". `trich` giữ nguyên (tiêu đề WCO đầy đủ).",
+   "sua": {
+    "tenVi": "Mì chưa nấu chín, không nhồi, không chế biến cách khác, không chứa trứng"
+   }
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19021100: `dieuKien` chép đúng nguyên văn tên dòng biểu thuê \"Có chứa trứng\" (nguồn tax.19021100) ✓; 15/90 không bị cắt. `loaiKhac` máy tự điền ✓ luật 6."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19021920: `dieuKien` chép nguyên văn \"Mì, bún làm từ gạo (kể cả bee hoon)\" ✓ — giữ cả lối chính tả \"bee hoon\" của biểu thuê (luật chép nguyên văn)."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19021930: `dieuKien` chép nguyên văn \"Miến\" ✓ (nguồn tax.19021930)."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19021940: `dieuKien` chép nguyên văn \"Mì khác\" ✓ — \"khác\" là phần bù của anh em 19021920/30/40 trong cùng phân nhóm ✓."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 19021990: `loaiKhac` máy tự điền theo biểu thuê ✓ luật 6; `dieuKien` lấy điều kiện cấp phân nhóm 6 số từ wco.190219 — cùng cách với 175 dòng \"Loại khác\" đã duyệt trong kho. GHI NHẬN: 166 ký tự > trần clip 90 ⇒ runtime cắt mất đuôi tiếng Anh, nhưng phần tiếng Việt \"Loại khác: phần còn lại của phân nhóm 1902.19\" còn trọn trong 90 ký tự đầu ⇒ KHÔNG sửa (đổi cả 10 dòng sang dạng tiếng Việt của lô 15xx–18xx là việc SOẠN LẠI, không phải soát)."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19022010: `dieuKien` chép nguyên văn \"Được nhồi thịt hoặc phụ phẩm dạng thịt sau giết mổ\" ✓ (nguồn tax.19022010)."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19022030: `dieuKien` chép nguyên văn \"Được nhồi cá, động vật giáp xác hoặc động vật thân mềm\" ✓."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 19022090: `loaiKhac` máy tự điền ✓; `dieuKien` từ wco.190220 ✓ (cùng cách 175 dòng đã duyệt). GHI NHẬN: 174 ký tự > 90 ⇒ xem ghi chú ở `dong8[4]`."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19023020: `dieuKien` chép nguyên văn \"Mì, bún làm từ gạo (kể cả bee hoon)\" ✓."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19023030: `dieuKien` chép nguyên văn \"Miến\" ✓."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19023040: `dieuKien` chép nguyên văn \"Mì ăn liền khác\" ✓ — \"khác\" là phần bù của 19023020/30/40 ✓."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 19023090: `loaiKhac` máy tự điền ✓; `dieuKien` từ wco.190230 ✓. GHI NHẬN: 138 ký tự > 90 ⇒ xem ghi chú ở `dong8[4]`."
+  },
+  {
+   "index": "dong8[12]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 19024000: `dieuKien` KHÔNG chép tên dòng trần \"Couscous\" mà lấy câu chú giải nhóm \"Nhóm này cũng bao gồm couscous là bột hòn (semolina) được xử lý bằng nhiệt.\" ⇒ có thông tin hơn ✓; 63/90 không bị cắt."
+  }
+ ]
+}

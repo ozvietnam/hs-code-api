@@ -1,0 +1,47 @@
+{
+ "nhom": "1801",
+ "nguoiSoat": "dev-soat-doc-lap-lo063-v2",
+ "vong": 2,
+ "luc": "2026-10-28T03:50:00+07:00",
+ "daKiem": 7,
+ "xoa": 0,
+ "sua": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP VÒNG 2 của lô 063 (PR #485, nhánh so-tay/lo-063) — người soát KHÁC người soạn dev-zcode-mm. Đã đọc LẠI 7/7 mục cùng nguồn tmp/so-tay/nguon/1801.txt (đọc HẾT, không lấy mẫu). Vòng 1 (PR #484, dev-soat-doc-lap-lo063) đã soát nhóm này: sửa 0 / xoá 0 / giữ 7. Vòng 2 đối chiếu lại TỪNG mục và XÁC NHẬN toàn bộ — không có mục nào mới cần sửa. Đo thêm trên nhóm này: 0 trường tràn clip runtime (phamVi.text 100/220 · loaiTru.dieuKien 49 và 41/55 · phanBiet.hoi 63 và 50/110 · dong8.dieuKien 21 và 9/90) · 0 câu trích vượt 300 ký tự (dài nhất 236 ở dong8[0]) · 0 khoảng lược > 200 ký tự (nhóm này không câu trích nào có dấu lược) · 0 mục thiếu nguồn.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Phạm vi = đúng câu phạm vi của chú giải nhóm: \"Nhóm này bao gồm hạt thô hoặc hạt đã rang, nguyên hạt (đã hoặc chưa bóc vỏ cứng, vỏ lụa hoặc mầm) hoặc đã vỡ mảnh.\" — bao hết các dạng hạt (thô, đã rang, nguyên hạt, đã vỡ mảnh) nên PHỦ CẢ NHÓM, không phải một phần (luật lô 030). `text` chỉ nói điều câu trích nói; chủ ngữ \"Hạt ca cao\" lấy từ tên nhóm — mẫu nhà (0903 \"Chè Paragoay\", 0905 \"Vani\") nên không phải chữ thêm ngoài trích. GHI NHẬN: câu định nghĩa đầu tiên của chú giải nhóm (\"Hạt ca cao là các hạt có nhiều (25-80) trong quả (cocoa-pod) của cây ca cao…\") là MÔ TẢ hình thái, không phải phạm vi, nên không kéo vào `phamVi`; các câu công đoạn lên men/rang cũng là ghi chú công nghệ, không phải phạm vi. `dieuKienVao` để RỎNG là ĐÚNG: câu phạm vi có \"đã hoặc chưa\" là câu CHO PHÉP (luật 6110 của máy + _he-thong.txt) nên không mã hoá được thành điều kiện vào."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Loại trừ đích danh sang 18.02: nguồn có câu \"Nhóm này không bao gồm: (a) Phần vỏ quả, vỏ hạt, vỏ lụa và những phế liệu khác của cacao (nhóm 18.02).\" — số nhóm đích 18.02 CÓ trong câu trích, không phải ví dụ linh kiện, không phải dải số (luật 3). `dieuKien` = \"Vỏ quả, vỏ hạt, vỏ lụa và phế liệu khác của cacao\" là danh từ chính xác, không thêm chữ ngoài trích, không bị cắt (49/55). GHI NHẬN (không sửa): câu trích bắt đầu từ \"(a)\" nên KHÔNG mang chữ báo loại trừ (\"không bao gồm\") — đo trên kho đã gộp: 1.164 `loaiTru` có dấu hiệu loại trừ trong trích vs 1.400 không có ⇒ không có dấu hiệu là MẪU NHÀ (đa số), không sửa; đích 18.02 và câu đầy đủ vẫn nằm trong `trich` làm căn cứ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Loại trừ đích danh sang 18.03: \"(b) Hạt ca cao đã được nghiền ở dạng bột nhão (nhóm 18.03).\" — số nhóm đích có trong câu trích ✓, `dieuKien` chép đúng vế của nguồn, 41/55 không bị cắt."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Câu hỏi phân biệt đúng chiều: \"Hàng là phần vỏ quả, vỏ hạt, vỏ lụa và phế liệu khác của cacao?\" → có → 1802 (mã 18.02 có trong câu trích) / không → 1801 (chính nhóm). `hoi` KHÔNG nhắc mã phân nhóm (luật máy `hoi-nhac-ma-phan-nhom`), là CÂU HỎI CÓ/KHÔNG về đặc tính hàng ✓. Nhánh \"không\" là phần bù của nhánh \"có\": không phải vỏ quả/vỏ hạt/vỏ lụa/phế liệu ⇒ còn là hạt ca cao thuộc 1801 ✓ (bài học lô 047). Không có từ nào trong `hoi` mà câu trích không có."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Câu hỏi phân biệt đúng chiều: \"Hàng là hạt ca cao đã được nghiền ở dạng bột nhão?\" → có → 1803 (mã 18.03 có trong câu trích) / không → 1801. Không nhắc mã trong `hoi`, không gộp vế ngoài câu, 50/110 không bị cắt."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Dòng 18010010: `dieuKien` \"Hạt ca cao đã lên men\" khớp đúng tiêu đề SEN \"HẠT CA CAO ĐÃ LÊN MEN\" và dòng biểu thuế \"18010010 - Đã lên men (SEN)\" ✓. `trich` kéo nguyên khối SEN (236 ký tự, ≤ 300) — mẫu nhà: 351/441 dòng `dong8` nguồn sen.* trên repo trích > 120 ký tự ⇒ trích trọn khối SEN là chuẩn. Giữ nguyên cả đoạn cuối \"Picture 1. (Ảnh 1. Hạt ca\" vì nguồn đã bị cắt sẵn ở đó (luật giữ nguyên ký tự, không tự sửa nguồn). `loaiKhac` do máy tự điền."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Vòng 1 đã giu; vòng 2 xác nhận. Dòng 18010090: `dieuKien` \"Loại khác\" chép đúng dòng biểu thuế \"18010090 - Loại khác\" ✓; `loaiKhac: true` do máy tự điền theo biểu thuế (luật 6) ✓; nhóm chỉ có đúng 2 dòng 8 số nên đủ 2/2, không thừa không thiếu."
+  }
+ ]
+}

@@ -1,0 +1,142 @@
+{
+ "nhom": "1511",
+ "gopVoi": "soát độc lập lô 059 (PR #477) — phiên claude-soat-doc-lap-lo059, 27/10/2026",
+ "thayDoi": [
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT NẶNG NHẤT LÔ (máy KHÔNG bắt): (a) ĐẢO CHIỀU Có/Không — `hoi` là \"Hàng là dầu cọ thô hay là dầu cọ đã tinh chế?\" ⇒ \"có\" = THÔ = 15111000 (Dầu thô), nhưng `neuCo` lại là 15119020 (Dầu tinh chế) và `neuKhong` là 15111000 ⇒ ngược. Runtime in \"có→neuCo / không→neuKhong\" ⇒ mô hình bị dẫn sang dòng tinh chế khi hàng là dầu thô. (b) Câu trích cũ (\"Dầu cọ thô có màu đỏ-cam thẫm…\") chỉ căn cứ được cho NHÁNH \"thô\", nhánh \"đã tinh chế\" không có căn cứ. Đã đảo lại neuCo/neuKhong và đổi trích sang câu nguồn nói rõ cả hai trạng thái (\"Dầu thu được bởi chiết hoặc ép và có màu thay đổi theo trạng thái đã hoặc chưa tinh chế.\").",
+   "sua": {
+    "neuCo": "15111000",
+    "neuKhong": "15119020",
+    "nguon": "nhom1511.nhom",
+    "trich": "Dầu thu được bởi chiết hoặc ép và có màu thay đổi theo trạng thái đã hoặc chưa tinh chế."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (máy KHÔNG bắt): `hoi` hỏi \"dầu hạt cọ hay là dầu cọ\" nhưng câu trích chỉ có \"Nhóm này không bao gồm dầu hạt cọ, dầu ba-ba-su (nhóm 15.13).\" ⇒ không có \"dầu cọ\" và nhánh \"không\" (1511) không có căn cứ. Đã nối thêm câu định nghĩa nhóm (nguyên văn).",
+   "sua": {
+    "trich": "Nhóm này không bao gồm dầu hạt cọ, dầu ba-ba-su (nhóm 15.13).…Dầu cọ là một loại chất béo thực vật thu được từ cơm của quả cọ dầu."
+   }
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (máy KHÔNG bắt): tiêu chí cho phân nhóm 1511.90 (\"other than crude\") lại là câu ĐỊNH NGHĨA chung của dầu cọ (\"Dầu cọ được thu từ thịt của quả cây cọ dầu…\") ⇒ không phân biệt được 1511.90 với 1511.10 (cũng là \"dầu cọ và các phần phân đoạn của chúng\"). Đã đổi sang nguồn wco.151190 (\"other than crude, whether or not refined\") và sửa `fact` thành \"…không phải dầu thô\" — đúng mẫu mà 1507/1508/1509 đã dùng cho phân nhóm \"other than crude\".",
+   "sua": {
+    "fact": "la_dau_co_va_cac_phan_phan_doan_cua_chung_khong_phai_dau_tho",
+    "nguon": "wco.151190",
+    "trich": "151190 Vegetable oils; palm oil and its fractions, other than crude, whether or not refined, but not chemically modified"
+   }
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (máy KHÔNG bắt): `tieuChi.fact` là câu mô tả DẢI (\"chỉ số iốt từ 30 trở lên, nhưng dưới 40\") nhưng op/value chỉ chứa một ngưỡng (\">=\" 30) ⇒ mất trần 40. Đã đặt `fact` là tên đại lượng (\"chi_so_iot\") theo lõi nhà; trần 40 vẫn nằm nguyên văn trong `dieuKien` (dòng biểu thuế, là thứ đi vào prompt). KHÔNG dùng `dieuKienSo` vì \"chỉ số iốt\" không có đơn vị đo (máy yêu cầu đơn vị có nguyên văn trong trích).",
+   "sua": {
+    "tieuChi": {
+     "fact": "chi_so_iot",
+     "op": ">=",
+     "value": 30,
+     "donVi": null
+    }
+   }
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI THẬT (máy KHÔNG bắt): `tieuChi.fact` là CÂU MỘT (\"la_dong_goi_voi_khoi_luong_tinh_khong_qua_25kg\") trong khi op/value là phép so sánh ngưỡng ⇒ lệch kiểu. Lõi 137 dòng 8 số có tieuChi số trong kho đều đặt `fact` là TÊN ĐẠI LƯỢNG. Đã đổi thành \"khoi_luong_tinh\".",
+   "sua": {
+    "tieuChi": {
+     "fact": "khoi_luong_tinh",
+     "op": "<=",
+     "value": 25,
+     "donVi": "kg"
+    }
+   }
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lỗi lệch kiểu ở `tieuChi.fact` như dong8[2]. Đã đổi thành tên đại lượng \"chi_so_iot\".",
+   "sua": {
+    "tieuChi": {
+     "fact": "chi_so_iot",
+     "op": ">=",
+     "value": 55,
+     "donVi": null
+    }
+   }
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "sua",
+   "lyDo": "THIẾU SO VỚI ANH EM: dòng 15119042 (\"Loại khác, đóng gói với khối lượng tịnh không quá 25kg (SEN)\") có đúng điều kiện số như dòng 15119036 nhưng bản nháp để `tieuChi` rỗng ⇒ thông tin định lượng bị rơi. Đã điền theo đúng khuôn của 15119036 (tên đại lượng + ngưỡng + đơn vị); số 25 có nguyên văn trong trích.",
+   "sua": {
+    "tieuChi": {
+     "fact": "khoi_luong_tinh",
+     "op": "<=",
+     "value": 25,
+     "donVi": "kg"
+    }
+   }
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "`text` nêu đúng phạm vi (dầu cọ từ cơm quả cọ dầu; công dụng; dầu cọ tinh chế; loại trừ 15.13) và MỌI ý đều có trong trích nguyên văn. GHI NHẬN: `text` dài 220 ký tự = ĐÚNG bằng trần clip 220 của runtime (clip chỉ cắt khi > 220) ⇒ hiện chưa bị cắt, nhưng sát trần — đề xuất lô sau giữ ≤ 210."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn câu định nghĩa nhóm; fact dương + value=true đúng chiều. GIỮ."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"Nhóm này không bao gồm dầu hạt cọ, dầu ba-ba-su (nhóm 15.13).\"; fact âm + value=false đúng chiều. GIỮ."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "\"…(nhóm 15.13)\" — đích danh, `sangNhom` 1513 có trong trích. GIỮ."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn wco.151110 (\"palm oil and its fractions, crude\"); fact \"dầu cọ và các phân đoạn của chúng thô\" khớp. GIỮ."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 15111000 \"Dầu thô\" — nguyên văn biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 15119020 \"Dầu tinh chế\" — nguyên văn biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" — công thức quy ước wco.151190. GIỮ."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" — công thức quy ước wco.151190. GIỮ."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 15119041 \"Các phần phân đoạn thể rắn (SEN)\" — nguyên văn biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 15119049 — trích nguyên văn sen.15119049 (khối SEN), `dieuKien` bám đúng lời nguồn. GIỮ. GHI NHẬN KỆ SÁCH: sen.15119041 / sen.15119042 / sen.15119049 có NỘI DUNG GIỐNG HỆT NHAU ⇒ không phân biệt được 3 dòng này; phải dùng tiêu đề dòng biểu thuế."
+  }
+ ]
+}

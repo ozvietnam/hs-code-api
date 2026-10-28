@@ -1,0 +1,106 @@
+{
+  "nhom": "1008",
+  "nguoiSoat": "claude-soat-doc-lap-lo053",
+  "luc": "2026-10-26T23:05:00+07:00",
+  "phamViSoat": "Toàn bộ 18 mục của bản nháp lô 053 cho nhóm 1008 (1 phamVi + 1 dieuKienVao + 8 tieuChi6 + 8 dong8), đọc cùng tmp/so-tay/nguon/1008.txt (nhom1008.nhom phần (A)+(B), ch10.chuong, phan10.phan, wco.100810/100821/100829/100830/100840/100850/100860/100890, tax.10081000→10089000). Đối chiếu TỪNG câu trích với câu nguồn nguyên văn, không tin máy kiểm.",
+  "soat": 18,
+  "giu": 17,
+  "sua": 1,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 1008 — 18/18 mục đã đọc cùng nguồn. SỬA 1, GIỮ 17, XOÁ 0. (a) SỬA `tieuChi6[7]` (hs6 100890): lỗi DỊCH NGHĨA 'n.e.c.' — máy KHÔNG bắt được (câu trích byte-exact 100 %, chỉ sai ở nghĩa bản dịch, đúng loại lỗi lô 041 ở 0304). WCO ghi '100890 Cereals; n.e.c. in chapter 10'; 'n.e.c.' = *not elsewhere classified* = PHẦN DƯ của Chương 10 (tức ngũ cốc trong Chương 10 chưa được phân loại ở nơi khác), KHÔNG phải loại trừ. Bản nháp đặt fact `khong_phai_ngu_coc_khac_trong_chuong_10` = true ⇒ đọc thành 'KHÔNG phải ngũ cốc khác trong Chương 10' — đảo ngược nghĩa, và sai với chính cấu trúc HS: 1008.90 NẰM trong Chương 10. Đã sửa thành fact dương `la_ngu_coc_khac_trong_chuong_10` = true, đúng với tiền lệ đã gộp trong kho (0208 020890 dùng `khac_trong_chuong_02`, 0301 030199 dùng `khac_trong_nhom_0301`, 0203 020319 dùng `la_thit_lon_khac` — cùng mẫu 'phần dư', không phải 'trừ'). (b) GIỮ `loaiTru`/`phanBiet` rỗng: chú giải nhóm 1008 KHÔNG có khoản loại trừ nào nêu đích danh nhóm đích (ch10.chuong chỉ có khoản loại trừ chung của Chương, không mã hoá được thành loaiTru) ⇒ để rỗng là ĐÚNG, không phải thiếu sót. (c) GIỮ 7 `tieuChi6` còn lại: chép nguyên văn nhom1008.nhom / wco.*, phân nhóm có thật trong cây 1008. Riêng `tieuChi6[6]` (100860) giữ nguyên vì nguồn ghi 'một số loại ngũ cốc lai, **ví dụ**, lúa mì đen (triticale)' — 'ví dụ' ở đây chỉ là dẫn ví dụ về một loại ngũ cốc lai, phân nhóm 100860 vẫn là triticale theo cấu trúc HS nên không sai. (d) GIỮ 8 `dong8`: chép nguyên văn tax.*/nhom1008.nhom, đủ cả 8 dòng 8 số của nhóm. GHI NHẬN cho người duyệt (không sửa được ở bước soát): (i) `dong8[1]`, `[3]`, `[4]`, `[5]`, `[6]` vượt trần clip 90 của runtime nên bị cắt đuôi, nhưng đầu câu (tên dòng + đặc trưng phân biệt) còn nguyên; (ii) chú giải nhóm 1008 không nêu tiêu đề cho 1008.40 (Fonio), 1008.50 (diêm mạch), 1008.60 (triticale) nên ba phân nhóm này chỉ có tiêu chí lấy từ tên WCO — đúng, không cần bổ sung; (iii) bản nháp CHƯA đưa khoản loại trừ chung của Chương 10 (ch10.chuong mục 1(B)) vào `dieuKienVao` — câu có ngoại lệ riêng nên để người duyệt chốt.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn nhom1008.nhom: '(A) KIỀU MẠCH, KÊ, HẠT CÂY THÓC CHIM (HỌ LÚA)…Nhóm các sản phẩm này bao gồm:…(1) Kiều mạch:…(2) Kê, hạt tròn màu vàng rơm…(3) Hạt cây thóc chim…(B) NHỮNG LOẠI NGŨ CỐC KHÁC…Nhóm các sản phẩm này bao gồm một số loại ngũ cốc lai, ví dụ, lúa mì đen (triticale), loại ngũ cốc lai giữa lúa mì và mạch đen.' `text` nêu đúng hai phần ngang hàng (A) và (B) của nhóm, không lấy đoạn dẫn của phần đầu làm phạm vi cả nhóm (lỗi lô 030 ở 3401/3810/4415); các mảnh bị lược bằng '…' đều là mục định nghĩa, không chứa ngoại lệ. Đúng trần 300 ký tự."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn trong ch10.chuong: '1. (A) Các sản phẩm kể tên trong các nhóm của Chương này chỉ được phân loại trong các nhóm đó khi ở dạng hạt, còn hoặc không còn ở trên bông hay trên thân cây.' Điều kiện ràng buộc MỌI nhóm của Chương 10 nên phủ trọn nhóm 1008."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn nhom1008.nhom: '(1) Kiều mạch: Loại ngũ cốc này còn được gọi là lúa mỳ đen, thuộc họ Polygonaceae, tương đối khác với họ Gramineae mà bao gồm phần lớn các loại ngũ cốc khác.' fact `la_lua_mien_den_thuoc_ho_polygonaceae` bám đúng hai đặc trưng có trong câu; phân nhóm 100810 có thật trong cây 1008."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn nhom1008.nhom: 'Phân nhóm 1008.21 Theo mục đích của phân nhóm 1008.21, thuật ngữ “hạt giống” chỉ bao gồm kê được các cơ quan quốc gia có thẩm quyền đánh giá là để gieo trồng.' fact `duoc_danh_gia_la_de_gieo_trong` bám đúng; phân nhóm 100821 có thật."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn: '(2) Kê, hạt tròn màu vàng rơm và bao gồm các loại: Setaria, Pennisetum, Echinochloa, Eleusine (kể cả Eleusine coracana (Coracan)), Panicum, Digitaria sanguinalis và Eragrostis tef.' fact `la_ke_hat_tron_mau_vang_rom` bám đúng đặc trưng phân biệt; phân nhóm 100829 có thật."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn: '(3) Hạt cây thóc chim, là hạt có màu rơm, bóng, thon 2 đầu.' fact `la_hat_cay_thoc_chim_mau_rom_bong_thon_hai_dau` bám đúng; phân nhóm 100830 có thật."
+    },
+    {
+      "index": "tieuChi6[4]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.100840: '100840 Cereals; fonio (Digitaria spp.)'. fact `la_hat_ke_fonio` bám đúng tên WCO; phân nhóm 100840 có thật trong cây."
+    },
+    {
+      "index": "tieuChi6[5]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn wco.100850: '100850 Cereals; quinoa (Chenopodium quinoa)'. fact `la_hat_diem_mach` bám đúng; phân nhóm 100850 có thật."
+    },
+    {
+      "index": "tieuChi6[6]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn: 'Nhóm các sản phẩm này bao gồm một số loại ngũ cốc lai, ví dụ, lúa mì đen (triticale), loại ngũ cốc lai giữa lúa mì và mạch đen.' fact `la_ngu_coc_lai_lua_mi_den` bám đúng từ nguồn (giữ lỗi chính tả/lối diễn đạt của nguồn); phân nhóm 100860 có thật."
+    },
+    {
+      "index": "tieuChi6[7]",
+      "hanhDong": "sua",
+      "lyDo": "SỬA TÊN TIÊU CHÍ — lỗi DỊCH NGHĨA 'n.e.c.' mà máy KHÔNG bắt được (máy chỉ kiểm câu trích byte-exact, không kiểm nghĩa bản dịch — cùng loại lỗi lô 041 ở 0304). Câu trích: '100890 Cereals; n.e.c. in chapter 10'. 'n.e.c.' = *not elsewhere classified* = PHẦN DƯ của Chương 10, KHÔNG phải loại trừ. Fact cũ `khong_phai_ngu_coc_khac_trong_chuong_10` = true đọc thành 'KHÔNG phải ngũ cốc khác trong Chương 10' — đảo ngược nghĩa, và sai với chính cấu trúc HS (1008.90 nằm trong Chương 10). Đã đổi thành fact DƯƠNG `la_ngu_coc_khac_trong_chuong_10` = true, đúng với tiền lệ đã gộp trong kho (0208 020890 → `khac_trong_chuong_02`; 0301 030199 → `khac_trong_nhom_0301`; 0203 020319 → `la_thit_lon_khac`). `trich`, `op`, `value`, `nguon` giữ nguyên.",
+      "sua": {
+        "fact": "la_ngu_coc_khac_trong_chuong_10"
+      }
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.10081000: '10081000 - Kiều mạch'; văn phong đã được duyệt; máy tự suy `loaiKhac=false`."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn nhom1008.nhom (câu chú giải phân nhóm 1008.21). `dieuKien` bám đúng từ nguồn. GHI NHẬN: dài 111 ký tự > trần clip 90 ⇒ bị cắt đuôi nhưng đầu câu (tên dòng + đặc trưng 'hạt giống') còn nguyên."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.10082900: '10082900 - - Loại khác'; máy tự suy `loaiKhac=true`."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.10083000: '10083000 - Hạt cây thóc chim (họ lúa)'; `dieuKien` bám đúng. GHI NHẬN: dài 96 ký tự > trần clip 90 ⇒ chỉ bị cắt 6 ký tự cuối, thông tin không mất."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.10084000: '10084000 - Hạt kê Fonio (Digitaria spp.)'; `dieuKien` bám đúng."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.10085000: '10085000 - Hạt diêm mạch (Chenopodium quinoa)'; `dieuKien` bám đúng."
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.10086000: '10086000 - Lúa mì lai lúa mạch đen (Triticale)'; `dieuKien` bám đúng."
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "giu",
+      "lyDo": "Chép nguyên văn tax.10089000: '10089000 - Ngũ cốc loại khác'; máy tự suy `loaiKhac=true`."
+    }
+  ]
+}

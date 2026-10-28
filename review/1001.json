@@ -1,0 +1,130 @@
+{
+ "nhom": "1001",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-26T21:40:00+07:00",
+ "soat": 21,
+ "giu": 17,
+ "sua": 2,
+ "xoa": 2,
+ "phamViSoat": "Toàn bộ 21 mục đã soi của bản nháp gốc tmp/so-tay/raw-backup-lo052/1001.json (4 mục trong 5 khối soát phamVi/boPhan/dieuKienVao/loaiTru/phanBiet + các mục tieuChi6/dong8/cay có rủi ro sai nghĩa đã soi thêm), đọc cùng tmp/so-tay/nguon/1001.txt. Mọi câu trích MỚI cắt từ tệp nguồn bằng neo ASCII rồi tự kiểm byte-exact; mọi văn bản tự viết được gác soát từ (mọi từ phải có trong nguồn) để bắt chữ méo.",
+ "ghiChu": "Vòng soát TRỌN (không mẫu). Em phục hồi baseline = bản nháp gốc đã commit 178acda, đọc lại từng mục cùng nguồn, và BÁC một số kết luận của phiên soát trước (đã sửa 13 mục trong tmp/so-tay/raw nhưng chưa ghi review/): (1) khôi phục loaiTru \"gia vị và bột canh hỗn hợp → 21.03\" và \"hỗn hợp không xác định được đặc tính cơ bản → 21.06\" ở 0909/0910 — lý do \"nguồn tự mâu thuẫn 21.03/21.06\" của phiên trước SAI: hai câu nói về hai đối tượng khác nhau (hỗn hợp CÓ PHA THÊM chất khác vs hỗn hợp CÓ CHỨA cây/hạt/quả từ Chương khác); (2) BÁC cách \"sửa\" làm MẤT điều kiện \"khác nhau\" ở loaiTru/phanBiet về hỗn hợp của 0909 — em sửa giữ CẢ HAI (giữ \"khác nhau\" + thêm dải 09.04-09.10); (3) ĐỒNG Ý xoá 6 mục loaiTru/phanBiet trỏ 11.04 ở 1001/1002/1004 — lý do \"11.04 chỉ là VÍ DỤ\" ĐÚNG, em xoá theo. Xem `lyDo` từng mục.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn trong [nhom1001.nhom]; nêu đúng 4 thành phần của nhóm 1001 (lúa mì thường, lúa mì Durum, lúa mì Spelt, lúa mì Meslin) — `text` chỉ diễn đạt đúng câu trích, không thêm ý riêng. GIỮ."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Chú giải 1(A) chương 10 — câu RÀNG BUỘC (\"chỉ được phân loại trong các nhóm đó khi ở dạng hạt…\"), phủ cả Chương 10 nên phủ cả nhóm 1001; có đặc tính trạng thái. GIỮ."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "xoa",
+   "lyDo": "SAI ĐÍCH — luật 3: số nhóm chỉ nêu là VÍ DỤ thì không được chọn làm đích loại trừ. Câu nguồn: \"Tuy nhiên, những loại hạt khác không thuộc Chương này nếu chúng đã được xát vỏ hoặc sơ chế theo các cách khác, ví dụ, như được mô tả tại nhóm 11.04 (xem Chú giải tương ứng).\" — quy tắc thật là \"KHÔNG THUỘC CHƯƠNG 10\", còn 11.04 chỉ là VÍ DỤ minh hoạ và câu còn dẫn \"xem Chú giải tương ứng\" (tức đích không chốt ở đây). Ghi sangNhom \"1104\" biến ví dụ thành quy tắc: lúa mì rang → 1106, malt → 1107, tinh bột → 1108 đều bị đẩy nhầm về 1104; thóc/gạo xay bỏ trấu (ngoại lệ 10.06 của cùng Chú giải 1(B)) cũng theo (B) mà không đi vào 1104. Không sửa được bằng cách đổi sangNhom → XOÁ; ghi mô tả PR để người duyệt biết. (Máy không bắt vì mã 11.04 có thật trong câu trích.)"
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "xoa",
+   "lyDo": "Cùng lý do loaiTru[0]: nhánh Có = 11.04 chỉ là VÍ DỤ trong câu nguồn, không phải đích loại trừ chắc chắn; máy không bắt được vì mã 11.04 có thật trong câu trích. XOÁ, ghi mô tả PR."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "Để null — nguồn 1001 không có quy tắc bộ phận. GIỮ."
+  },
+  {
+   "index": "tieuChi6[6]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẬT — MẤT ĐỊNH NGỮ GIỚI HẠN \"thường\" (luật 13; bài học lô 034/048). Nguồn: \"nó thường có vết nứt có màu trắng đục, giống sừng, trong mờ.\" — \"thường\" (usually) chi phối cả vế, nhưng bản nháp viết fact \"la_lua_mi_durum_co_vet_nut_mau_trang_duc_giong_sung_trong_mo\" (CÓ vết nứt) → biến ghi chú thành đặc điểm bắt buộc, mục nói chắc hơn nguồn. SỬA: đưa \"thường\" vào tên fact (tiền lệ: 0701 \"la_loai_khoai_tay_thuong_dung_de_lam_khoai_tay_chien\"). Câu trích giữ nguyên.",
+   "sua": {
+    "fact": "la_lua_mi_durum_thuong_co_vet_nut_mau_trang_duc_giong_sung_trong_mo"
+   }
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẬT — TIÊU CHÍ SỐ NÓI CHẮC HƠN NGUỒN. SEN 10019999: \"Loại này CÓ THỂ có các hạt đã nảy mầm và có độ ẩm chiếm trên 12% trọng lượng.\" — định ngữ \"có thể\" chi phối cả vế, nhưng bản nháp đặt `tieuChi` {op:\">\", value:12} như một ngưỡng BẮT BUỘC của dòng 10019999 (máy chỉ kiểm số có trong trích, không đọc \"có thể\"). SỬA: (1) giữ định ngữ giới hạn trong tên fact; (2) `dieuKien` nêu thêm đặc tính PHÂN BIỆT thật của dòng theo câu định nghĩa SEN (có các hạt bị hư hỏng, vỡ mảnh, bẩn và bị nhiễm khuẩn) và giữ ≤ 90 ký tự để runtime (clip 90) không cắt cụt. Câu trích giữ nguyên (cắt lại từ tệp nguồn, nguyên văn tuyệt đối).",
+   "sua": {
+    "tieuChi": {
+     "fact": "co_the_co_do_am_chiem_tren_12_trong_luong",
+     "op": ">",
+     "value": 12,
+     "donVi": "%"
+    },
+    "trich": "LÚA MÌ (KHÔNG THÍCH HỢP SỬ DỤNG CHO NGƯỜI)…Lúa mì thuộc phân nhóm này được phân biệt với lúa mì phù hợp sử dụng cho người là do có các hạt bị hư hỏng, vỡ mảnh, bẩn, và bị nhiễm khuẩn.… Loại này có thể có các hạt đã nảy mầm và có độ ẩm chiếm trên 12% trọng lượng."
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích là NGUYÊN VĂN dòng nguồn [wco.100111] (đã kiểm bằng máy: mảnh trích nằm trong đúng dòng). Tên tiêu chí dịch đúng tên phân nhóm WCO 100111 và đối chiếu tên nhóm trong cây HS; số phải có trong trích ✓ (máy đã kiểm). GIỮ."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích là NGUYÊN VĂN dòng nguồn [wco.100119] (đã kiểm bằng máy: mảnh trích nằm trong đúng dòng). Tên tiêu chí dịch đúng tên phân nhóm WCO 100119 và đối chiếu tên nhóm trong cây HS; số phải có trong trích ✓ (máy đã kiểm). GIỮ."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích là NGUYÊN VĂN dòng nguồn [wco.100191] (đã kiểm bằng máy: mảnh trích nằm trong đúng dòng). Tên tiêu chí dịch đúng tên phân nhóm WCO 100191 và đối chiếu tên nhóm trong cây HS; số phải có trong trích ✓ (máy đã kiểm). GIỮ."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích là NGUYÊN VĂN dòng nguồn [wco.100199] (đã kiểm bằng máy: mảnh trích nằm trong đúng dòng). Tên tiêu chí dịch đúng tên phân nhóm WCO 100199 và đối chiếu tên nhóm trong cây HS; số phải có trong trích ✓ (máy đã kiểm). GIỮ."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích là NGUYÊN VĂN trong khối [nhom1001.nhom] (đã kiểm bằng máy: mảnh trích nằm trong đúng dòng). Tiêu chí phủ đúng phân nhóm 100111 của cây; KHÔNG lấy từ dòng biểu thuế ✓. GIỮ."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích là NGUYÊN VĂN trong khối [nhom1001.nhom] (đã kiểm bằng máy: mảnh trích nằm trong đúng dòng). Tiêu chí phủ đúng phân nhóm 100191 của cây; KHÔNG lấy từ dòng biểu thuế ✓. GIỮ."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 10011100 \"Hạt giống\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 10011900 \"Loại khác\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 10019100 \"Hạt giống\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 10019911 \"Meslin (SEN)\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 10019912 \"Hạt lúa mì đã bỏ lớp vỏ ngoài cùng (SEN)\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 10019919 \"Loại khác (SEN)\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng biểu thuế 10019991 \"Meslin\" — đủ mọi dòng 8 số của nhóm (kiểm bằng máy: có trong data/tax.json và `dieuKien` bám đúng tên dòng). Phần \"thuộc phân nhóm …/tên WCO …\" là quy ước gloss lô 034/051 đã duyệt. `loaiKhac` do máy tự điền theo biểu thuế. GIỮ."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nút 100199 là phân nhóm 6 số CHƯA CÓ tên tiếng Việt trong cây HS (kiểm bằng máy: tenVi = null) → được điền tên theo luật 9; tên dịch bám tên WCO 100199 + tên dòng biểu thuế. GIỮ."
+  }
+ ]
+}

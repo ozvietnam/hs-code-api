@@ -1,0 +1,61 @@
+{
+  "nhom": "1109",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích nguyên văn, 218/220 ký tự (không bị clip runtime); nêu đúng phạm vi nhóm 1109 (gluten lúa mì chiết xuất từ bột mỳ, dạng lỏng/sệt/bột). Ngoại lệ (a)(b)(c) đã nằm ở 3 mục loaiTru + 3 phanBiet (mỗi mục nêu đích danh) ⇒ không cần chép vào phạm vi. Dấu \"…\" trong \"(tinh bột…)\" là DẤU LƯỚC CỦA NGUỒN (nguồn viết \"(tinh bột...)\"), nên text bỏ dấu lược cho sạch, còn `trich` giữ nguyên byte-exact."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích là câu ĐỊNH NGHĨA CÓ RÀNG BUỘC của chính nhóm (\"Gluten được chiết xuất từ bột mỳ bởi quá trình phân tách đơn giản trong nước từ các thành phần khác nhau\"), phủ CẢ nhóm (1109 chỉ có 1 dòng 8 số 11090000). Không dính CAU_CHO_PHEP, không phải ngưỡng số. Giữ."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "\"(a) Bột lúa mì được làm giàu bằng cách cho thêm gluten (nhóm 11.01).\" — nằm trong khối \"Ngoài các loại khác, nhóm này không bao gồm\", có DẤU HIỆU LOẠI TRỪ, đích danh 11.01 có trong câu. `dieuKien` 50/55 ký tự (không bị clip)."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "\"(b) Các protein chiết xuất từ gluten lúa mì (nhóm 35.04).\" — loại trừ dứt khoát, đích danh 35.04 trong câu, 39/55 ký tự."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp dài 100 ký tự; runtime clip(…, 55) cắt thành \"Gluten lúa mì chế biến dùng làm hồ dán hoặc nước bóng h…\" ⇒ dấu lược rơi giữa chừng (\"h…\" dang dở) và mất vế \"chất xử lý hoàn tất trong công nghiệp dệt\". SỬA: rút còn 53 ký tự (≤55 ⇒ không bị clip), giữ nguyên định ngữ \"Gluten lúa mì chế biến dùng làm\" và hai phương án \"hồ dán\"/\"nước bóng\"; KHÔNG thêm chữ nào ngoài trích. GHI NHẬN (giới hạn của trần 55): vế thứ ba \"chất xử lý hoàn tất trong công nghiệp dệt\" không chứa nổi trong trần ⇒ nằm đủ trong `trich` (bằng chứng) và được nêu ở câu hỏi phân biệt (phanBiet[2] sau khi sửa).",
+      "sua": {
+        "dieuKien": "Gluten lúa mì chế biến dùng làm hồ dán hoặc nước bóng"
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "\"(a) Bột lúa mì được làm giàu bằng cách cho thêm gluten (nhóm 11.01).\" — chiều Có/Không đúng (Có = bột lúa mì làm giàu → 1101; Không = 1109); mã đích 11.01 có trong câu; `hoi` 80/110 ký tự, không bị clip."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "\"(b) Các protein chiết xuất từ gluten lúa mì (nhóm 35.04).\" — chiều Có/Không đúng (Có → 3504, Không → 1109); 69/110 ký tự."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "sua",
+      "lyDo": "Bản nháp dài 126 ký tự; runtime clip(…, 110) cắt đúng giữa nhánh \"hay là gluten lúa mì?\" thành \"…trong công nghiệp dệt hay l…\" ⇒ mất HẲN nhánh \"không\" (chỉ còn dấu \"hay l…\"), câu hỏi không còn đối chiếu được. SỬA: bỏ dấu \"…\" thừa ở cuối, đổi sang dạng câu hỏi CÓ/KHÔNG (đúng mẫu đã duyệt ở 0801: \"Hàng là copra — …?\"), giữ TRỌN cả ba phương án (\"hồ dán\", \"nước bóng\", \"chất xử lý hoàn tất trong công nghiệp dệt\") — 102/110 ký tự, không bị clip. Nhánh \"không\" vẫn do runtime in (\"không→1109\").",
+      "sua": {
+        "hoi": "Hàng là gluten lúa mì chế biến dùng làm hồ dán, nước bóng hoặc chất xử lý hoàn tất trong công nghiệp dệt?"
+      }
+    },
+    {
+      "index": "tieuChi6",
+      "hanhDong": "giu",
+      "lyDo": "Rỗng — đúng: 1109 trong cây chỉ có nút lá 8 số 11090000 (laPhanNhom = 1109, 4 số) ⇒ KHÔNG có nút phân nhóm 6 số nào cần tiêu chí (check-cay báo \"đủ tiêu chí 6 số\")."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "Dòng 11090000 — điều kiện chép nguyên văn dòng biểu thuế \"Gluten lúa mì, đã hoặc chưa làm khô\" (nguồn tax.11090000); 35/90 ký tự, không bị clip. Nhóm 1109 chỉ có đúng 1 dòng 8 số ⇒ đủ dòng."
+    }
+  ]
+}
