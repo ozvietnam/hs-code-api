@@ -1,0 +1,21 @@
+{
+ "nhom": "2201",
+ "nguoiSoat": "dev-soat-doc-lap-lo066-v2",
+ "vong": 2,
+ "luc": "2026-10-28T11:20:00+07:00",
+ "daKiem": 19,
+ "xoa": 0,
+ "sua": 1,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP VÒNG 2 lô 066 — người soát KHÁC người soạn và khác người soát vòng 1. Đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/2201.txt (5.988 ký tự) + ch22.chuong + wco.220110/220190 + 4 dòng tax.*. ĐÃ ĐO NỀN NHÀ: 0/19 trích quá 300, 0/19 sai byte-exact, 0 vượt trần clip. Một lớp lỗi: tên fact `khong_phai_...` lẫn \"hoặc\" (OR) và \"va\" (AND) cho 3 vế mà nguồn nối bằng \"hoặc… hay…\" (OR thuần). GIỮ NGUYÊN: 2 `dieuKienVao` lấy nguồn ch22.chuong là ĐÚNG (câu \"Chương này không bao gồm\" phủ cả Chương 22 ⇒ phủ cả 4 phần (A)(B)(C)(D) của 2201; còn nhom2201.nhom chỉ nói 2 loại trừ này trong phần (A) nên không phủ được cả nhóm — nên `loaiTru`/`phanBiet` lấy nguồn riêng là cố ý); chiều boolean value=true là đúng (đo toàn kho: 101 fact \"khong_phai_*\", 95 value=true; 6 value=false là lỗi đã biết ở 2001/5510); 4 `phanBiet` đều có căn cứ trong nguồn và phủ kín 4 dòng 8 số; mục \"Loại khác\" của 2201.90 lấy nguồn wco.220190 là mẫu nhà (535 dòng \"Loại khác\" nguồn wco.* trong kho, ví dụ 0206 \"Loại khác: phần còn lại của phân nhóm 0206.29 (tên WCO 020629: …)\"). Lỗi chính tả của nguồn (\"nước có gas\") được chép nguyên văn theo luật 2.",
+ "thayDoi": [
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "sua",
+   "lyDo": "Tên fact LẪN hai toán tử: \"hoặc\" (OR) rồi \"va\" (AND) cho 3 vế mà nguồn nối bằng \"hoặc… hay…\" (OR thuần). Câu trích (ch22.chuong mục 1(c)): \"(c) Nước cất hoặc nước khử độ dẫn hay các loại nước tinh khiết tương tự (nhóm 28.53);\" ⇒ 3 loại trừ NGANG HÀNG. Tên cũ \"khong_phai_nuoc_cata_hoac_nuoc_khu_do_dan_va_nuoc_tinh_khiet_tuong_tu\" đọc thành \"không phải (A hoặc B) và C\" ⇒ lẫn toán tử, khó đọc và dễ bị hiểu sai. Sửa thành OR thuần, đúng mẫu nhà đã duyệt 0802 \"khong_phai_lac_hoac_lac_rang_hoac_bo_lac\". Chiều boolean giữ nguyên value=true (đo toàn kho: 101 mục fact \"khong_phai_*\", 95 value=true; 6 value=false đều là lỗi đã biết ở 2001/5510). `op`/`value`/`donVi`/`ngoaiTru`/`nguon`/`trich` giữ nguyên.",
+   "sua": {
+    "fact": "khong_phai_nuoc_cata_hoac_nuoc_khu_do_dan_hoac_nuoc_tinh_khiet_tuong_tu"
+   }
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "nhom": "2102",
+ "nguoiSoat": "dev-soat-doc-lap-lo066-v2",
+ "vong": 2,
+ "luc": "2026-10-28T11:20:00+07:00",
+ "daKiem": 21,
+ "xoa": 0,
+ "sua": 3,
+ "chen": 1,
+ "ghiChu": "SOÁT ĐỘC LẬP VÒNG 2 lô 066 — người soát KHÁC người soạn và khác người soát vòng 1. Đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/2102.txt (8.152 ký tự) + ch21.chuong + wco.210210/210220/210230 + 4 dòng tax.*. ĐÃ ĐO NỀN NHÀ: 0/21 trích quá 300, 0/21 sai byte-exact, 0 vượt trần clip. Ba lớp lỗi: (1) `dieuKien` biến VÍ DỤ của nguồn thành điều kiện (thu hẹp phạm vi loại trừ); (2) câu trích `phamVi` thiếu tiêu đề phần (A); (3) BỎ SÓT loại trừ Chú giải Chương 21 mục 1(g) — chủ thể là MEN (hàng của chính nhóm 21.02) nên đây là loại trừ ĐÚNG cho 2102, khác với 1(g)/1(h) mà vòng 1 xoá ở 2103/2104. GIỮ NGUYÊN: điều kiện 20% (chiều \"<=\" đúng vì nguồn loại \"trên 20%\"; `ngoaiTru` là mệnh đề trừ trong chính câu nguồn — mẫu nhà y hệt ở 6202/6211 với ngoaiTru=\"trừ các mặt hàng thuộc nhóm 62.12\" nên GIỮ, không xoá); tên fact đã vá ở vòng 1 (không chứa \"trong_khoi_luong\" ⇒ cổng ngưỡng không đọc nhầm 20% thành kg).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích THIẾU tiêu đề phần (A). Nhóm 2102 có 3 phần ngang hàng (A) MEN · (B) CÁC VI SINH ĐƠN BÀO KHÁC, ĐÃ CHẾT · (C) BỘT NỞ ĐÃ PHA CHẾ; bản nháp trích \"Men thuộc nhóm này có thể ở trạng thái hoạt động hoặc ỳ…\" rồi lược thẳng sang tiêu đề (B) ⇒ mảnh đầu không còn gắn được với phần (A) (bài học lô 057: kệ sách thiếu tiêu đề phần). `text` đã nêu đủ A/B/C nên chỉ sửa `trich` — thêm mảnh \"(A) MEN\" ở đầu.",
+   "sua": {
+    "trich": "(A) MEN…Men thuộc nhóm này có thể ở trạng thái hoạt động hoặc ỳ (không hoạt động).…(B) CÁC VI SINH ĐƠN BÀO KHÁC, ĐÃ CHẾT…(C) BỘT NỞ ĐÃ PHA CHẾ"
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "`dieuKien` biến VÍ DỤ thành ĐIỀU KIỆN, thu hẹp phạm vi loại trừ. Nguồn: \"(a) Các loại bột làm bánh ngũ cốc ví dụ, bột được cho thêm bột nở (nhóm 11.01 hoặc 11.02).\" — LỚP bị loại là \"các loại bột làm bánh ngũ cốc\"; \"bột được cho thêm bột nở\" chỉ là VÍ DỤ. Bản nháp ghi \"Bột làm bánh ngũ cốc có thêm bột nở\" ⇒ một bột làm bánh ngũ cốc KHÔNG có thêm bột nở sẽ không bị chặn (đúng luật lô 030: \"dieuKienVao chỉ phủ MỘT phần\" — cùng lớp lỗi với loaiTru[0] của 2103 sửa ở vòng này). Máy KHÔNG bắt được vì câu trích vẫn nguyên văn. Tiền lệ nhà: 0302/0304 giữ `dieuKien` là \"Phế liệu của cá và trứng cá không làm thực phẩm\" — BỎ vế ví dụ, chỉ 0303 giữ. `sangNhom`/`nguon`/`trich` giữ nguyên (11.01/11.02 vẫn được nêu đích danh trong câu trích).",
+   "sua": {
+    "dieuKien": "Bột làm bánh ngũ cốc"
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lý do loaiTru[0]: câu hỏi cũ \"Hàng là bột làm bánh ngũ cốc được cho thêm bột nở?\" lặp lại điều kiện thuộc VÍ DỤ của nguồn ⇒ hàng là bột làm bánh ngũ cốc không có thêm bột nở sẽ trả lời \"không\" và bị chỉ về 21.02 (sai). Sửa câu hỏi theo đúng LỚP bị loại. Mã đích 11.01|11.02 vẫn có trong câu trích; `trich` giữ.",
+   "sua": {
+    "hoi": "Hàng là bột làm bánh ngũ cốc?"
+   }
+  },
+  {
+   "index": "loaiTru",
+   "hanhDong": "chen",
+   "lyDo": "BỎ SÓT một loại trừ có căn cứ đầy đủ: Chú giải Chương 21 mục 1(g) — \"(g) Men được đóng gói như dược phẩm hoặc các sản phẩm khác thuộc nhóm 30.03 hay 30.04\". CHỦ THỂ của câu là MEN — tức hàng thuộc CHÍNH nhóm 21.02 (khác với mục 1(d) \"Thuốc thuộc nhóm 30.03 hoặc 30.04\" vốn là thuốc, không phải men) ⇒ đây là điều kiện loại trừ ĐÚNG cho nhóm 2102, chứ không phải \"mượn loại trừ chung của Chương\" (vòng 1 đã xoá đúng các mục 1(g)/1(h) ở 2103/2104 vì chủ thể là MEN/ENZYME — không phải hàng của 21.03/21.04). Đích danh 30.03 và 30.04 có trong câu trích. TIỀN LỆ NHÀ ĐÃ DUYỆT: data/so-tay/2101.json có ĐÚNG mục này với cùng nguồn ch21.chuong, cùng đích \"3003|3004\" và cùng cách diễn đạt `dieuKien`; 2106.json cũng có bản \"Men đóng gói như dược phẩm…\". Chèn (không sửa mục cũ) để giữ nguyên mục (d) \"Thuốc thuộc nhóm 30.03 hoặc 30.04\" vốn là loại trừ RIÊNG của chú giải nhóm.",
+   "muc": {
+    "dieuKien": "Men được đóng gói như dược phẩm hoặc sản phẩm khác thuộc nhóm 30.03 hay 30.04",
+    "sangNhom": "3003|3004",
+    "nguon": "ch21.chuong",
+    "trich": "(g) Men được đóng gói như dược phẩm hoặc các sản phẩm khác thuộc nhóm 30.03 hay 30.04;"
+   }
+  }
+ ]
+}

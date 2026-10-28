@@ -1,0 +1,45 @@
+{
+ "nhom": "2103",
+ "nguoiSoat": "dev-soat-doc-lap-lo066-v2",
+ "vong": 2,
+ "luc": "2026-10-28T11:20:00+07:00",
+ "daKiem": 27,
+ "xoa": 0,
+ "sua": 4,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP VÒNG 2 lô 066 — người soát KHÁC người soạn và khác người soát vòng 1. Đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/2103.txt (9.060 ký tự) + ch21.chuong + sen.21039021 + wco.* + 9 dòng tax.*. ĐÃ ĐO NỀN NHÀ: 0/27 trích quá 300, 0/27 sai byte-exact, 0 vượt trần clip. Bốn lớp lỗi: (1) `dieuKien` cắt cụt danh sách động vật; (2) `dieuKien` mất vế \"thu được sau chiết xuất dầu không bay hơi\"; (3)(4) hai dòng \"Loại khác\" mô tả phạm vi theo phân nhóm 6 số trong khi máy tự tính cha là tiêu đề quốc gia 7 số (2103.901 / 2103.902) ⇒ chữ do người viết MÂU THUẪN với dữ liệu máy. GIỮ NGUYÊN: `dieuKienVao` rỗng là ĐÚNG (không câu nào phủ cả nhóm); 8/8 mục loại trừ của nguồn đều có mặt trong sổ tay; `loaiTru[2]`/`[3]` cùng đích 2106 là 2 mục khác nhau (chất phân huỷ protein vs men tự phân) nên không trùng.",
+ "thayDoi": [
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "`dieuKien` CẮT CỤT danh sách động vật, thu hẹp phạm vi loại trừ. Nguồn: \"(a) Chiết xuất và nước ép thịt, cá hoặc của động vật giáp xác, động vật thân mềm hoặc động vật thuỷ sinh không xương sống khác (nhóm 16.03).\" — bản nháp chỉ giữ tới \"động vật giáp xác\" ⇒ chiết xuất/nước ép của động vật thân mềm hoặc động vật thuỷ sinh không xương sống khác vẫn bị xếp nhầm ở 21.03. Sửa: nêu đủ danh sách, đúng cách nhà làm ở 0106 (\"Cá và động vật giáp xác, động vật thân mềm và động vật thuỷ sinh không xương sống khác\"). `trich`/`sangNhom`/`nguon` giữ nguyên (16.03 vẫn được nêu đích danh).",
+   "sua": {
+    "dieuKien": "Chiết xuất và nước ép thịt, cá hoặc của động vật giáp xác, động vật thân mềm hoặc động vật thuỷ sinh không xương sống khác"
+   }
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "sua",
+   "lyDo": "BỎ MẤT ĐỊNH NGỮ GIỚI HẠN (lớp lỗi máy KHÔNG bắt — trích vẫn nguyên văn). Nguồn: \"(c) Khô dầu từ hạt mù tạt thu được sau quá trình chiết xuất dầu không bay hơi từ hạt mù tạt (nhóm 23.06).\" — bản nháp rút gọn còn \"Khô dầu từ hạt mù tạt\" ⇒ MỌI khô dầu mù tạt (kể cả loại không thu được sau chiết xuất dầu không bay hơi) đều bị loại sang 23.06. Sửa: giữ vế \"thu được sau chiết xuất dầu không bay hơi\" — đúng cách nhà giữ ở 1212 (\"Bã mía và phần bã của cây mía sau khi ép lấy nước mía\") và 1108 (\"Amylopectine và Amylo tách riêng sau phân đoạn tinh bột\"). `trich`/`sangNhom`/`nguon` giữ nguyên.",
+   "sua": {
+    "dieuKien": "Khô dầu từ hạt mù tạt thu được sau chiết xuất dầu không bay hơi"
+   }
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "sua",
+   "lyDo": "SAI CẤP PHẠM VI — chữ do người viết MÂU THUẪN với phạm vi máy tự tính. Dòng 21039019 là \"Loại khác\" của TIÊU ĐỀ QUỐC GIA 7 SỐ 2103.901 (\"Nước xốt và các chế phẩm làm nước xốt\"), không phải của cả phân nhóm 6 số 2103.90 — máy đã tự tính `phamViLoaiKhac.cha = \"2103901\"` và `truAnhEm = 21039011, 21039012, 21039013` (3 anh em có tên), còn bản nháp ghi \"phần còn lại của phân nhóm 2103.90\" ⇒ phạm vi RỘNG HƠN thật (nuốt cả phần 2103.902 \"Gia vị hỗn hợp và bột canh hỗn hợp\") và trái với dữ liệu máy. Sửa theo đúng mẫu nhà đã duyệt ở 0301/0105 (\"Loại khác: phần còn lại của tiêu đề quốc gia 0301.99.1 … trừ 03019911\"). Giữ ≤ 90 ký tự để runtime không cắt giữa mã. `trich`/`nguon` giữ nguyên.",
+   "sua": {
+    "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 2103.901, trừ 21039011, 21039012, 21039013"
+   }
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "sua",
+   "lyDo": "SAI CẤP PHẠM VI — như dong8[6]. Dòng 21039029 là \"Loại khác\" của tiêu đề quốc gia 7 số 2103.902 (\"Gia vị hỗn hợp và bột canh hỗn hợp\"), máy tự tính `phamViLoaiKhac.cha = \"2103902\"` và `truAnhEm = 21039021` — bản nháp ghi \"phần còn lại của phân nhóm 2103.90\" nên phạm vi RỘNG HƠN thật. Sửa theo mẫu nhà 0301/0105. `trich`/`nguon` giữ nguyên.",
+   "sua": {
+    "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 2103.902, trừ 21039021"
+   }
+  }
+ ]
+}

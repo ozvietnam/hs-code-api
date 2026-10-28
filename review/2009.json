@@ -1,0 +1,37 @@
+{
+ "nhom": "2009",
+ "nguoiSoat": "dev-soat-doc-lap-lo066-v2",
+ "vong": 2,
+ "luc": "2026-10-28T11:20:00+07:00",
+ "daKiem": 52,
+ "xoa": 0,
+ "sua": 3,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP VÒNG 2 lô 066 — người soát KHÁC người soạn (dev-zcode-mm) và khác người soát vòng 1 (dev-soat-doc-lap-lo066). Đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/2009.txt (21.123 ký tự, đọc hết) + ch20.chuong + sen.20098920/20098930 + wco.* + tax.*. ĐÃ ĐO NỀN NHÀ TRƯỚC KHI KẾT LUẬN: trích 0/52 vượt 300 ký tự, 0/52 sai byte-exact, 0 trường tự viết vượt trần clip runtime. Lớp lỗi vòng 2: (1) dấu lược \"…\" che mất 2 đường loại trừ còn lại của câu nguồn; (2) tên fact \"không có cồn\" mạnh hơn nguồn (nhóm cho phép tới 0,5% cồn). GIỮ NGUYÊN (đã đối chiếu mẫu nhà, không sửa): dieuKienVao[1] \"chưa lên men và chưa pha thêm rượu\" — nhà có tiền lệ y hệt ở 1902 (la_san_pham_tu_bot_nhao_chua_duoc_len_men, cùng nguồn nhom*.nhom) và 33 nhóm trong kho có CẢ fact số + fact boolean. CÒN MỞ cho người duyệt (không tự chèn — vòng 1 đã báo, phạm vi brief chỉ xoa/sua): câu nguồn loại trừ 3 chủ thể cùng sang 22.02 (\"nước ép có CO2 lớn hơn bình thường\", \"nước chanh\", \"nước có gas dùng nước ép quả để tạo hương\") mà bản nháp chỉ có 1.",
+ "thayDoi": [
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "Dấu lược \"…\" ĐANG CHE MẤT 2 ĐƯỜNG LOẠI TRỪ còn lại của cùng câu nguồn. Nguồn: \"Tuy nhiên, nếu cho thêm nưới vào nước quả ép, nước ép từ quả hạch (nut) hoặc nước rau ép thông thường, hoặc thêm nưới vào nước ép trước đó đã cô đặc với một tỉ lệ lớn hơn tỉ lệ cần thiết cho phép để thu được nước ép có thành phần tự nhiên ban đầu thì sẽ thu được sản phẩm pha loãng mà sẽ có đặc tính của đồ uống thuộc nhóm 22.02.\" — bản nháp lược mất đúng hai đường \"nước ép từ quả hạch (nut) hoặc nước rau ép thông thường\" và \"hoặc thêm nưới vào nước ép trước đó đã cô đặc\", nên câu trích đọc lên như CHỈ nói về nước quả ép. Sửa: đổi chỗ lược sang giữa \"cho phép\" và \"thì sẽ thu được\" (đoạn bị lược \"để thu được nước ép có thành phần tự nhiên ban đầu\" KHÔNG chứa ngoại lệ \"trừ/tuy nhiên/với điều kiện/không kể\" ⇒ lược hợp lệ). Câu trích mới nêu đủ 3 đường thêm nước, `dieuKien` giữ nguyên.",
+   "sua": {
+    "trich": "Tuy nhiên, nếu cho thêm nước vào nước quả ép, nước ép từ quả hạch (nut) hoặc nước rau ép thông thường, hoặc thêm nước vào nước ép trước đó đã cô đặc với một tỉ lệ lớn hơn tỉ lệ cần thiết cho phép…thì sẽ thu được sản phẩm pha loãng mà sẽ có đặc tính của đồ uống thuộc nhóm 22.02."
+   }
+  },
+  {
+   "index": "tieuChi6[15]",
+   "hanhDong": "sua",
+   "lyDo": "Tên fact ĐẢO NGHĨA so với nguồn. `trich` (wco.200989) ghi \"unfermented, not containing added spirit\" ⇒ đúng là \"chưa lên men và chưa pha thêm rượu\"; fact cũ \"nuoc_ep_chua_len_men_khong_co_con\" (\"không có cồn\") mạnh hơn nguồn — nhóm 20.09 cho phép tới 0,5% cồn (Chú giải 6 Chương 20) nên \"không có cồn\" là SAI. Đo nền nhà: cả kho chỉ có 2 fact chứa \"khong_co_con\" và đều nằm ở 2009 (không có tiền lệ), còn mẫu OR 3 vế đã duyệt là 0802 \"khong_phai_lac_hoac_lac_rang_hoac_bo_lac\". Sửa tên fact; `op`/`value`/`donVi`/`trich` giữ.",
+   "sua": {
+    "fact": "chua_len_men_va_chua_pha_them_ruou"
+   }
+  },
+  {
+   "index": "tieuChi6[16]",
+   "hanhDong": "sua",
+   "lyDo": "Cùng lý do tieuChi6[15]: wco.200990 ghi \"unfermented, not containing added spirit\" ⇒ \"chưa lên men và chưa pha thêm rượu\"; fact cũ \"không có cồn\" mạnh hơn nguồn (nhóm 20.09 cho phép tới 0,5% cồn). Sửa tên fact.",
+   "sua": {
+    "fact": "chua_len_men_va_chua_pha_them_ruou"
+   }
+  }
+ ]
+}
