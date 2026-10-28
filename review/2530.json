@@ -1,0 +1,149 @@
+{
+ "nhom": "2530",
+ "nguoiSoat": "dev-soat-doc-lap-lo074",
+ "luc": "2026-10-28T22:55:00+07:00",
+ "phamViSoat": "Toàn bộ 23 mục của nhóm 2530 (1 phamVi + 10 loaiTru + 3 phanBiet + 1 boPhan + 3 tieuChi6 + 5 dong8), đọc cùng tmp/so-tay/nguon/2530.txt (nhom2530.nhom, ch25.chuong, wco.253010/253020/253090, tax.25301000/25302010/25302020/25309010/25309090).",
+ "soat": 23,
+ "giu": 18,
+ "sua": 5,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 5 (11 trường) · GIU 18/23. SỬA 1 (`phamVi`: `text` + `trich`): bản nháp bỏ mất \"hổ phách\" và \"đá jet\" — hai mặt hàng thật của phần (B) — nên phạm vi nhóm bị HẸP; sửa bằng cách nối thêm tiêu đề phần (B) (mảnh cắt byte-exact). SỬA 2 (`boPhan`: `trich` + `quyTac` + `tomTat`): đồng bộ với `phamVi`, nêu đủ \"đá jet\". SỬA 3 (`loaiTru[1]`: `dieuKien` + `trich`): `dieuKien` thiếu NGOẠI LỆ \"trừ oxit sắt có chứa mica\" ⇒ điều kiện loại trừ đọc thành tuyệt đối (mất ngữ cảnh ⇒ đảo chiều); trích cũ dài 319 ký tự (vùng im lặng > 300) và mở đầu bằng câu không liên quan (quặng sắt) — cắt lại từ \"các chất màu từ đất…\" (269 ký tự) và GIỮ NGUYÊN đoạn ngoại lệ \"Tuy nhiên oxit sắt có chứa mica…\" ngay sau, dùng chính ngắt đoạn của nguồn (không lược bằng \"…\") để không nuốt ngoại lệ. SỬA 4 (`loaiTru[4]`: `dieuKien` + `trich`): trích cũ mở đầu bằng \"Tuy nhiên, ở dạng trương nở… chúng…\" — chủ ngữ \"chúng\" nằm NGOÀI trích ⇒ câu trích không tự đủ nghĩa, và `dieuKien` không có trong trích; sửa cả trích (kéo về trước để có chủ ngữ) lẫn `dieuKien` (thêm chlorite, nguồn nói \"cũng như chlorite và perlite\"). SỬA 5 (`phanBiet[2]`: `hoi` + `trich`): cùng lớp lỗi với `loaiTru[4]`. GHI NHẬN: nguồn còn hai loại trừ có đích là CHƯƠNG (\"khi trộn với các chất khác… xếp vào Chương 32\"; \"Nhóm này không bao gồm đá quý và đá bán quý thuộc Chương 71\") — luật 3 không cho mã hoá \"Chương N\" nên không ghi thành mục. GHI NHẬN: `dieuKienVao` để RỖNG là ĐÚNG — nhóm 25.30 là nhóm gom, nguồn không có câu ràng buộc phủ cả nhóm.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — PHẠM VI NHÓM HẸP LẠI, MẤT \"HỔ PHÁCH\" VÀ \"ĐÁ JET\". Bản nháp `text` = \"Chất màu từ đất…đá bọt biển…strontianite…các khoáng chất chưa được nêu chi tiết…\" và trích chỉ giữ \"(B) ĐÁ BỌT BIỂN\" rồi lược mất. Nhưng tiêu đề phần (B) của nguồn là \"(B) ĐÁ BỌT BIỂN (ĐÃ HOẶC KHÔNG Ở DẠNG VIÊN ĐƯỢC MÀI BÓNG) VÀ HỔ PHÁCH; … ĐÁ JET.\" ⇒ hổ phách (amber) và đá jet là hai mặt hàng thật của nhóm, không có trong `text` (thứ MÔ HÌNH ĐỌC) nên dễ bị đẩy ra khỏi 25.30. Sửa: `text` nêu đủ đá bọt biển, hổ phách, đá jet; `trich` nối thêm tiêu đề phần (B) tới \"ĐÁ JET.\" — mọi mảnh cắt byte-exact từ [nhom2530.nhom] (254 ký tự ≤ 300).",
+   "sua": {
+    "text": "Chất màu từ đất…đá bọt biển, hổ phách, đá jet…strontianite…các khoáng chất chưa được nêu chi tiết hoặc ghi ở nơi khác, đồ gốm vỡ.",
+    "trich": "(A) CHẤT MÀU TỪ ĐẤT…(B) ĐÁ BỌT BIỂN (ĐÃ HOẶC KHÔNG Ở DẠNG VIÊN ĐƯỢC MÀI BÓNG) VÀ HỔ PHÁCH…ĐÁ JET.…Nhóm này bao gồm strontianite (strontium carbonate tự nhiên) và strontianite nung…(D) CÁC KHOÁNG CHẤT CHƯA ĐƯỢC NÊU CHI TIẾT HOẶC GHI Ở NƠI KHÁC, ĐỒ GỐM VỠ."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nêu đích danh 26.01 ✓ luật 3; `dieuKien` chép đúng \"quặng sắt\". Dấu lược \"…\" cuối trích đánh dấu câu nguồn còn tiếp (\"…và các chất màu từ đất có chứa 70 % trở lên…\") — phần đó có mục riêng (`loaiTru[1]) nên không mất ngoại lệ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `dieuKien` MẤT NGOẠI LỆ ⇒ ĐIỀU KIỆN LOẠI TRỪ ĐỌC THÀNH TUYỆT ĐỐI. Câu nguồn: \"Nhóm này không bao gồm … các chất màu từ đất có chứa 70% trở lên hợp chất của sắt tính theo trọng lượng Fe2O3 (nhóm 28.21)\" rồi ngay sau có đoạn ngoại lệ \"Tuy nhiên oxit sắt có chứa mica được dùng chủ yếu làm chất màu chống gỉ, được phân loại trong nhóm này mặc dù chúng có chứa hơn 70% hợp chất của sắt tính theo trọng lượng.\" Bản nháp `dieuKien` = \"Chất màu từ đất chứa 70% trở lên Fe2O3\" ⇒ oxit sắt có chứa mica (mà nhóm này VẪN bao gồm, xem tiêu đề phần (A) \"các oxit sắt tự nhiên có chứa mi ca\") bị loại nhầm sang 28.21. Sửa: thêm ngoại lệ vào `dieuKien` (53 ký tự ≤ trần clip 55) và cắt lại `trich` từ \"các chất màu từ đất có chứa 70%…\" (269 ký tự, hết vùng im lặng 319) — GIỮ NGUYÊN đoạn ngoại lệ ngay sau bằng chính ngắt đoạn của nguồn (không lược bằng \"…\" nên không nuốt ngoại lệ).",
+   "sua": {
+    "dieuKien": "Chất màu từ đất ≥70% Fe2O3, trừ oxit sắt có chứa mica",
+    "trich": "các chất màu từ đất có chứa 70% trở lên hợp chất của sắt tính theo trọng lượng Fe2O3 (nhóm 28.21)\n\nTuy nhiên oxit sắt có chứa mica được dùng chủ yếu làm chất màu chống gỉ, được phân loại trong nhóm này mặc dù chúng có chứa hơn 70% hợp chất của sắt tính theo trọng lượng."
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nêu đích danh 32.06 ✓ luật 3; `dieuKien` chép đúng \"Đất nâu vandyke dễ tan (chất màu được điều chế)\" — là dạng ĐƯỢC ĐIỀU CHẾ của đất nâu vandyke, không phải đất tự nhiên (mục (4) của phần (A))."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nêu đích danh 28.16 ✓ luật 3; `dieuKien` chép đúng \"oxit strontium tinh khiết\"."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — TRÍCH MỞ ĐẦU BẰNG TỪ NỐI NGOẠI LỆ, CHỦ NGỮ NẰM NGOÀI TRÍCH. Trích cũ = \"Tuy nhiên, ở dạng trương nở (hoặc tróc vảy) chúng được xếp vào nhóm 68.06.\" — \"chúng\" không có chủ ngữ trong câu trích, và `dieuKien` (\"Vermiculite, perlite ở dạng trương nở\") không có mặt trong trích ⇒ câu trích không nói đúng điều mục khẳng định. Sửa: kéo trích về trước để có chủ ngữ (\"cũng như chlorite và perlite, các khoáng này …\"), nối liền tới hết câu (250 ký tự) và bổ sung chlorite vào `dieuKien` (nguồn: \"cũng như chlorite và perlite, các khoáng này về mặt hoá học có quan hệ với vermiculite\").",
+   "sua": {
+    "dieuKien": "Vermiculite, chlorite, perlite trương nở (tróc vảy)",
+    "trich": "cũng như chlorite và perlite, các khoáng này về mặt hoá học có quan hệ với vermiculite. Các loại khoáng này bị trương nở khi nung và sau đó tạo\n\nthành các vật liệu cách nhiệt. Tuy nhiên, ở dạng trương nở (hoặc tróc vảy) chúng được xếp vào nhóm 68.06."
+   }
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nêu đích danh 68.15 ✓ luật 3; `dieuKien` chép đúng \"Các đá thử được làm bằng lydite (ví dụ để thử kim loại quý)\"."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nêu đích danh 25.05 ✓ luật 3; `dieuKien` chép đúng \"các loại cát được đào tự nhiên\"."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nêu đích danh 28.26 ✓ luật 3; `dieuKien` chép đúng \"các fluoride được sản xuất bằng hoá chất\" (giữ nguyên văn)."
+  },
+  {
+   "index": "loaiTru[8]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nêu đích danh 05.10 ✓ luật 3; `dieuKien` chép đúng \"ambergris (hổ phách xám) tiết ra từ cá voi\" — đây là cảnh báo \"cần tránh nhầm lẫn\", đích 05.10 nêu rõ trong câu."
+  },
+  {
+   "index": "loaiTru[9]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nêu đích danh 26.12 ✓ luật 3; `dieuKien` chép đúng \"manazite và các quặng … để tách uranium hoặc thorium\" (giữ nguyên lỗi chính tả \"manazite\" của nguồn, không sửa thành \"monazite\")."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi đúng MỘT nhánh có đích danh 32.06 ✓; `neuKhong` = 2530 là chính nhóm ✓ luật 4."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi đúng MỘT nhánh có đích danh 28.16 ✓; `neuKhong` = 2530 ✓ luật 4."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — CÙNG LỚP LỖI VỚI `loaiTru[4]`: trích mở đầu bằng \"Tuy nhiên, ở dạng trương nở … chúng …\" nên chủ ngữ nằm ngoài trích, `hoi` lại nêu \"Vermiculite, perlite\" trong khi trích không có từ nào trong hai từ đó và cũng bỏ sót chlorite (nguồn: \"cũng như chlorite và perlite\"). Sửa: dùng lại trích đã kéo về trước (có chủ ngữ) và nêu đủ ba khoáng trong `hoi`.",
+   "sua": {
+    "hoi": "Sản phẩm là vermiculite, chlorite hoặc perlite ở dạng trương nở (tróc vảy)?",
+    "trich": "cũng như chlorite và perlite, các khoáng này về mặt hoá học có quan hệ với vermiculite. Các loại khoáng này bị trương nở khi nung và sau đó tạo\n\nthành các vật liệu cách nhiệt. Tuy nhiên, ở dạng trương nở (hoặc tróc vảy) chúng được xếp vào nhóm 68.06."
+   }
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "Đồng bộ với `phamVi` (cùng câu trích mới có \"hổ phách\" và \"đá jet\") và sửa `quyTac`/`tomTat` cho khớp: trước đây phần (B) chỉ ghi \"Đá bọt biển và hổ phách\" trong khi trích chỉ tới \"(B) ĐÁ BỌT BIỂN\"; nay tiêu đề phần (B) có đủ \"ĐÁ BỌT BIỂN … VÀ HỔ PHÁCH … ĐÁ JET\" nên nêu đủ ba.",
+   "sua": {
+    "trich": "(A) CHẤT MÀU TỪ ĐẤT…(B) ĐÁ BỌT BIỂN (ĐÃ HOẶC KHÔNG Ở DẠNG VIÊN ĐƯỢC MÀI BÓNG) VÀ HỔ PHÁCH…ĐÁ JET.…Nhóm này bao gồm strontianite (strontium carbonate tự nhiên) và strontianite nung…(D) CÁC KHOÁNG CHẤT CHƯA ĐƯỢC NÊU CHI TIẾT HOẶC GHI Ở NƠI KHÁC, ĐỒ GỐM VỠ.",
+    "quyTac": "Nhóm này gồm bốn phần: (A) Chất màu từ đất, đã hoặc chưa được nung hoặc trộn với nhau; các oxit sắt tự nhiên có chứa mi ca; (B) Đá bọt biển, hổ phách, đá jet; (C) Strontianite, đã hoặc chưa nung, trừ oxit strontium; (D) Các khoáng chất chưa được nêu chi tiết hoặc ghi ở nơi khác, đồ gốm vỡ.",
+    "tomTat": "Bốn phần: chất màu từ đất và oxit sắt có chứa mi ca; đá bọt biển, hổ phách, đá jet; strontianite trừ oxit strontium; khoáng chất khác và đồ gốm vỡ."
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.253010] có mã 253010 ✓ luật 10; `fact` đọc đúng chiều (\"unexpanded\") và khớp với dòng biểu thuế 25301000 \"chưa giãn nở\"."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.253020] ✓; 2530.20 có thật trong cây HS ✓ luật 10."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.253090] ✓; 2530.90 có thật trong cây ✓ luật 10. GHI NHẬN: 2530.90 là nhóm gom (\"n.e.c. in chapter 25\"), phù hợp với bản chất phần (D) của nguồn."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25301000] ✓ luật 6."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25302010] \"Kiezerit\" ✓ luật 6."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25302020] \"Epsomite (magiê sulphat tự nhiên)\" ✓ luật 6."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25309010] ✓ luật 6. GHI NHẬN: nguồn nhóm chỉ nói chất làm mờ \"thu được bằng cách xử lý cát zircon (làm sạch bằng axit hydrochloric và đưa về kích thước micro)\" — khớp với tên dòng \"Cát zircon cỡ hạt micron\"."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25309090] \"Loại khác\" — `loaiKhac` do máy tự điền ✓ luật 6."
+  }
+ ]
+}

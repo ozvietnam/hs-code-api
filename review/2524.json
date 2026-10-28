@@ -1,0 +1,51 @@
+{
+ "nhom": "2524",
+ "nguoiSoat": "dev-soat-doc-lap-lo074",
+ "luc": "2026-10-28T22:55:00+07:00",
+ "phamViSoat": "Toàn bộ 7 mục của nhóm 2524 (1 phamVi + 1 loaiTru + 1 phanBiet + 2 tieuChi6 + 2 dong8), đọc cùng tmp/so-tay/nguon/2524.txt (nhom2524.nhom, ch25.chuong, wco.252410/252490, tax.25241000/25249000).",
+ "soat": 7,
+ "giu": 6,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 1 · GIU 6/7. SỬA 1: `phanBiet[0].hoi` — nhánh \"A hoặc B\" bị gộp thành MỘT đích duy nhất 68.12, trong khi câu nguồn chỉ nêu đích 68.12 cho nhánh \"các sản phẩm hoàn thiện của amiăng\"; nhánh \"sợi đã được gia công nhiều hơn (nhuộm, chải)\" không có đích trong nguồn nên không được gán 68.12. GHI NHẬN: `dieuKienVao` để RỖNG là ĐÚNG — nguồn không có câu ràng buộc phủ CẢ nhóm 25.24 (chỉ có câu phạm vi \"Nhóm này áp dụng cho…\" và câu loại trừ) ⇒ không có điều kiện VÀO nhóm để ghi, và LUAT-CHUNG nói rõ cổng không được loại nhóm vì thiếu `dieuKienVao`. GHI NHẬN: `boPhan` = null — nguồn không chia nhóm 2524 thành bộ phận nào (một đoạn phạm vi + một đoạn loại trừ) ⇒ để trống là đúng. GHI NHẬN: nhánh loại trừ \"sợi đã được gia công nhiều hơn (nhuộm, chải)\" KHÔNG có đích danh trong nguồn ⇒ không mã hoá được thành `loaiTru`/`phanBiet` riêng; nguyên văn của nó vẫn nằm trong `trich` của `loaiTru[0]` và `phanBiet[0]`.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [nhom2524.nhom] nguyên vẹn câu phạm vi (\"Nhóm này áp dụng cho amiăng thô…kể cả dạng amiăng phế liệu\"); `text` rút gọn đúng nội dung câu, không thêm chữ nào ngoài trích (luật 7)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nêu đích danh (nhóm 68.12) ✓ luật 3; `dieuKien` chép đúng nhánh có đích (\"các sản phẩm hoàn thiện của amiăng\") và không gán đích cho nhánh không có đích. GHI NHẬN: trích 142 ký tự."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — NHÁNH \"A HOẶC B\" BỊ GỘP THÀNH MỘT ĐÍCH DUY NHẤT. `hoi` hỏi \"Sản phẩm là sợi amiăng đã được gia công nhiều hơn (nhuộm, chải) HOẶC là sản phẩm hoàn thiện của amiăng?\" rồi đưa CẢ HAI nhánh về `neuCo` = 6812. Câu nguồn: \"Nhóm này loại trừ sợi đã được gia công nhiều hơn (ví dụ nhuộm, chải...) VÀ các sản phẩm hoàn thiện của amiăng (nhóm 68.12)\" — chỉ nhánh thứ hai mới có đích danh 68.12; nhánh \"sợi đã được gia công nhiều hơn\" KHÔNG có đích ⇒ gộp là mục khẳng định sai (một sợi amiăng đã nhuộm sẽ bị dẫn sang 68.12 theo bản nháp). Sửa: thu hẹp câu hỏi còn đúng nhánh có đích danh; nhánh sợi đã gia công vẫn còn nguyên văn trong `trich` (không mất thông tin nguồn).",
+   "sua": {
+    "hoi": "Sản phẩm là các sản phẩm hoàn thiện của amiăng?"
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [nhom2524.nhom] mô tả crocidolite (\"Amiăng crocidolite hay còn gọi là amiăng xanh…\") ✓; phân nhóm 2524.10 có thật trong cây HS ✓ và không lấy từ `tax.*` ✓ luật 10."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.252490] có mã 252490 trong câu ✓ luật 10; `fact` đọc đúng chiều (\"other than crocidolite\" ⇒ không phải crocidolite)."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25241000] \"25241000 - Crocidolite\"; `dieuKien` chép đúng tên dòng biểu thuế. Nhóm 2524 có đúng 2 dòng `tax.*` và đã đủ cả hai ✓ luật 6."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25249000] \"25249000 - Loại khác\"; `loaiKhac` do máy tự điền theo biểu thuế ✓ luật 6."
+  }
+ ]
+}
