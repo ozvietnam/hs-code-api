@@ -1,0 +1,70 @@
+{
+ "nhom": "2804",
+ "nguoiSoat": "dev-soat-doc-lap-lo081",
+ "luc": "2026-10-29T05:40:00+07:00",
+ "phamViSoat": 10,
+ "soat": 10,
+ "giu": 8,
+ "sua": 2,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2804 (10 mục trong phạm vi; đọc thêm 11 tieuChi6 + 11 dong8 nhưng KHÔNG sửa — ngoài phạm vi). SỬA 2 (loaiTru[4] — trích dùng đại từ \"chúng\", không nêu \"silic\"/\"selen\"; phanBiet[0] — thứ tự đích đảo) · XOÁ 0. GHI NHẬN: loại trừ \"selen ở dạng keo huyền phù (Chương 30)\" KHÔNG mã hoá được (chỉ nêu CHƯƠNG) ⇒ bỏ có chủ đích. GHI NHẬN: `tieuChi6[2]`/`[4]`/`[7]` dùng nhãn tiếng Việt dịch từ tiêu đề WCO tiếng Anh (\"Khí hiếm khác argon\", \"Bo; telu\", \"Selen\") — chỉ để người duyệt xem, ngoài phạm vi soát. GHI NHẬN: `phamVi.trich` lược mất câu loại trừ doteri/triti (và câu radon) — chấp nhận được: mẫu nhà chỉ 129/622 (20,7 %) `phamVi.trich` có câu loại trừ, cả 4 loại trừ đã có mục `loaiTru` riêng, và `phamVi.trich` KHÔNG đi vào prompt (runtime chỉ in `phamVi.text` + nguồn). GHI NHẬN CHUNG (máy quét `scripts/scan-so-tay-soat.mjs` báo 31 cảnh báo cho 6 nhóm, TẤT CẢ là động giả đã biết): (1) `TỪ-NGOÀI-NGUỒN` — máy bỏ dấu ở TỪ nhưng KHÔNG bỏ dấu ở NGUỒN nên báo nhầm mọi slug (`loai_hang`, `ham_luong_silic`), mọi câu hỏi mở đầu bằng \"Hàng này …\" và mọi dòng \"Loại khác: phần còn lại của phân nhóm X.XX\" (mẫu nhà: 453/794 dòng \"Loại khác\"); (2) `LƯỚC-NGOẠI-LỆ` — biểu thức `trừ\\b` KHÔNG BAO GIỜ khớp trong JS (\\b chỉ tính ASCII) nên máy mù với \"loại trừ\"; 3 cảnh báo còn lại do cụm \"trong trường hợp\" / \"đã hoặc chưa\" nằm NGAY TRONG mảnh đã trích chứ không nằm trong khoảng bị lược. Nền nhà cùng dạng: 2613/2701/2715 y hệt.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — text nêu đủ ba phần (A) HYDRO (B) KHÍ HIẾM (C) CÁC PHI KIM KHÁC; \"các phi kim khác\" phủ cả 8 dòng 8 số còn lại (Nitơ, Oxy, Bo; telu, silic, Phospho, Arsen, Selen) ⇒ không thu hẹp phạm vi."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ null — nhà chỉ dùng `boPhan` cho 202/626 nhóm; không tự thêm."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — \"Nhóm này không bao gồm doteri (đồng vị bền vững của hydro) thuộc nhóm 28.45, và triti …\" ⇒ đích 2845 có trong câu trích."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — vế thứ hai của cùng câu loại trừ ⇒ đích 2844 có trong câu trích."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — \"Radon là khí trơ phóng xạ thuộc nhóm 28.44 …\" nêu đích danh 28.44 ⇒ hợp lệ (khí trơ phóng xạ không thuộc nhóm phi kim 28.04)."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — \"Trong Danh mục, antimon được phân loại như là một kim loại (nhóm 81.10).\" nêu đích danh 81.10 ⇒ hợp lệ."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `dieuKien` nói \"silic hoặc selen\" nhưng câu trích CŨ chỉ dùng ĐẠI TỪ \"chúng\" (\"Chúng được phân loại trong nhóm này …\") ⇒ câu trích KHÔNG nêu hàng hóa mà mục khẳng định (đúng kiểu lỗi \"thêm chữ không có trong câu trích\" của SOAT-LO). Sửa: nối thêm câu nguồn có nêu tên hàng (\"Một vài phi kim trong nhóm này (ví dụ, silic và selen) …\") và lược bằng \" … \" phần ở giữa; giữ nguyên `dieuKien` và `sangNhom`. Câu trích mới 286 ký tự (≤300, đúng trần lược đồ).",
+   "sua": {
+    "trich": "Một vài phi kim trong nhóm này (ví dụ, silic và selen) có thể được pha tạp với các nguyên tố như Bo, phospho,…, theo một tỷ lệ khoảng một phần triệu thì chúng được sử dụng trong điện tử. … Khi cắt thành dạng đĩa, dạng bánh hoặc các dạng tương tự, thì chúng được phân loại ở nhóm 38.18."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — THỨ TỰ ĐÍCH ĐẢO so với câu hỏi. Nguồn: \"doteri (đồng vị bền vững của hydro) thuộc nhóm 28.45, và triti (đồng vị phóng xạ của hydro) thuộc nhóm 28.44\" ⇒ doteri = 28.45, triti = 28.44; nhưng `neuCo` ghi \"2844|2845\" ⇒ runtime in ra \"Hàng này là doteri hoặc triti không? có→28.44/28.45\" khiến người đọc tưởng doteri sang 28.44 (ngược chiều nguồn). Mẫu nhà (tiền lệ 142 `phanBiet` có dấu \"|\" trong `data/so-tay`) luôn đặt mã đích THEO THỨ TỰ xuất hiện trong câu hỏi/câu trích. Sửa: \"2845|2844\".",
+   "sua": {
+    "neuCo": "2845|2844"
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nhánh Có = 2844, Không = 2804; đích có trong câu trích."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nhánh Có = 8110, Không = 2804; đích có trong câu trích."
+  }
+ ]
+}

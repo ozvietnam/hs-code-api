@@ -1,0 +1,54 @@
+{
+ "nhom": "2802",
+ "nguoiSoat": "dev-soat-doc-lap-lo081",
+ "luc": "2026-10-29T05:40:00+07:00",
+ "phamViSoat": 8,
+ "soat": 8,
+ "giu": 8,
+ "sua": 0,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2802 (8 mục trong phạm vi; đọc thêm 1 dong8 nhưng KHÔNG sửa — ngoài phạm vi). Cả 3 mục `loaiTru` đều trỏ 25.03 — đúng nguồn: \"Nhóm này loại trừ lưu huỳnh chưa tinh chế được điều chế bằng phương pháp Frasch và lưu huỳnh đã tinh chế, thậm chí chúng có độ tinh khiết rất cao (nhóm 25.03).\" + dạng \"thu hồi\" (nghiền/mịn) cũng ở 25.03. SỬA 0 · XOÁ 0. GHI NHẬN CHUNG (máy quét `scripts/scan-so-tay-soat.mjs` báo 31 cảnh báo cho 6 nhóm, TẤT CẢ là động giả đã biết): (1) `TỪ-NGOÀI-NGUỒN` — máy bỏ dấu ở TỪ nhưng KHÔNG bỏ dấu ở NGUỒN nên báo nhầm mọi slug (`loai_hang`, `ham_luong_silic`), mọi câu hỏi mở đầu bằng \"Hàng này …\" và mọi dòng \"Loại khác: phần còn lại của phân nhóm X.XX\" (mẫu nhà: 453/794 dòng \"Loại khác\"); (2) `LƯỚC-NGOẠI-LỆ` — biểu thức `trừ\\b` KHÔNG BAO GIỜ khớp trong JS (\\b chỉ tính ASCII) nên máy mù với \"loại trừ\"; 3 cảnh báo còn lại do cụm \"trong trường hợp\" / \"đã hoặc chưa\" nằm NGAY TRONG mảnh đã trích chứ không nằm trong khoảng bị lược. Nền nhà cùng dạng: 2613/2701/2715 y hệt.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — text nêu đúng hai phần (A) LƯU HUỲNH THĂNG HOA HOẶC KẾT TỦA và (B) LƯU HUỲNH DẠNG KEO; trích lấy nguyên văn hai tiêu đề."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ null — nhà chỉ dùng `boPhan` cho 202/626 nhóm; không tự thêm (quyết định thiết kế của người soạn)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn nêu đích danh \"được phân loại trong nhóm 25.03\" cho dạng lưu huỳnh \"thu hồi\" ⇒ đích 2503 có trong câu trích; `dieuKien` bám đúng từ nguồn."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — \"Nhóm này loại trừ lưu huỳnh chưa tinh chế được điều chế bằng phương pháp Frasch và lưu huỳnh đã tinh chế … (nhóm 25.03).\" ⇒ đích 2503 có trong câu trích."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — vế thứ hai của CÙNG câu loại trừ (\"lưu huỳnh đã tinh chế, thậm chí chúng có độ tinh khiết rất cao (nhóm 25.03).\"), tách thành một luật riêng đúng mẫu \"mỗi vế một luật\" của lô này; đích 2503 có trong trích."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — hỏi đúng chủ thể loại trừ (\"lưu huỳnh thu hồi\"), nhánh Có = 2503 (nguồn: \"được phân loại trong nhóm 25.03\"), nhánh Không = 2802."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nhánh Có = 2503, Không = 2802; đích có trong câu trích."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nhánh Có = 2503, Không = 2802; đích có trong câu trích."
+  }
+ ]
+}

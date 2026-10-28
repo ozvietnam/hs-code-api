@@ -1,0 +1,77 @@
+{
+ "nhom": "2803",
+ "nguoiSoat": "dev-soat-doc-lap-lo081",
+ "luc": "2026-10-29T05:40:00+07:00",
+ "phamViSoat": 12,
+ "soat": 12,
+ "giu": 11,
+ "sua": 1,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2803 (12 mục trong phạm vi; đọc thêm 4 dong8 nhưng KHÔNG sửa — ngoài phạm vi). SỬA 1 (phamVi — thu hẹp phạm vi) · XOÁ 0. GHI NHẬN: mục loại trừ \"(b) … (Chương 27)\" KHÔNG mã hoá được vì `loaiTru.sangNhom` chỉ chứa mã NHÓM còn nguồn chỉ nêu CHƯƠNG (tiền lệ 2804 selen keo huyền phù → Chương 30) ⇒ bỏ có chủ đích, ĐỀ XUẤT thêm trường `sangChuong` cho người duyệt. GHI NHẬN: `loaiTru[2]` (38.01) giữ nguyên theo tiền lệ 9 mục cùng dạng trong kho. GHI NHẬN CHUNG (máy quét `scripts/scan-so-tay-soat.mjs` báo 31 cảnh báo cho 6 nhóm, TẤT CẢ là động giả đã biết): (1) `TỪ-NGOÀI-NGUỒN` — máy bỏ dấu ở TỪ nhưng KHÔNG bỏ dấu ở NGUỒN nên báo nhầm mọi slug (`loai_hang`, `ham_luong_silic`), mọi câu hỏi mở đầu bằng \"Hàng này …\" và mọi dòng \"Loại khác: phần còn lại của phân nhóm X.XX\" (mẫu nhà: 453/794 dòng \"Loại khác\"); (2) `LƯỚC-NGOẠI-LỆ` — biểu thức `trừ\\b` KHÔNG BAO GIỜ khớp trong JS (\\b chỉ tính ASCII) nên máy mù với \"loại trừ\"; 3 cảnh báo còn lại do cụm \"trong trường hợp\" / \"đã hoặc chưa\" nằm NGAY TRONG mảnh đã trích chứ không nằm trong khoảng bị lược. Nền nhà cùng dạng: 2613/2701/2715 y hệt.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `phamVi.text` THU HẸP phạm vi nhóm xuống còn MỘT dạng sản phẩm. Tiêu đề nhóm trong cây là \"28.03 – Carbon (muội carbon và các dạng khác của carbon chưa được chi tiết hoặc ghi ở nơi khác)\" và 2/4 dòng 8 số của nhóm là \"Loại khác\" (28030049, 28030090), nhưng `text` chỉ nói \"Muội carbon …\" ⇒ mô hình đọc phạm vi hẹp có thể loại các dạng carbon khác ra khỏi 28.03 (đúng lớp lỗi lô 030 ở 3401/3810). NGUỒN có câu phạm vi của chính nhóm — \"Nhóm này bao gồm các loại carbon sau đây.\" — nhưng bản nháp bỏ mất vì ngữ, chỉ chép phần mô tả muội carbon. Sửa: mở đầu `text` bằng vì ngữ phạm vi LẤY NGUYÊN VĂN từ câu nguồn (\"Các loại carbon\", theo mẫu nhà 3810 \"Các chế phẩm tẩy sạch; chất giúp chảy …\" và 3907 \"Nhóm gồm các polyaxetal, …\"), KHÔNG thêm chữ nào ngoài nguồn; phần còn lại của `text` và toàn bộ `trich` GIỮ NGUYÊN. GHI NHẬN: `text` mới 194 ký tự — dưới trần clip 220 của runtime (`lib/so-tay-gates.js` phần \"Phạm vi\") nên không bị cắt.",
+   "sua": {
+    "text": "Các loại carbon: muội carbon thu được từ việc đốt cháy không hoàn toàn hoặc cracking các chất hữu cơ giàu carbon; muội carbon cũng có thể được miêu tả như một dạng bồ hóng hoặc muội của lò nung."
+   }
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ null — nguồn không chia phần (A)/(B) cho nhóm 2803."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — \"Nhóm này bao gồm các loại carbon sau đây.\" là câu phủ CẢ nhóm, lấy từ [nhom2803.nhom] (đúng tầng)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn nêu đích danh \"(nhóm 25.04)\" ⇒ đích 2504 có trong câu trích."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — \"(c) Một số chất màu từ muội khoáng của nhóm 32.06 (ví dụ, muội nhôm, muội silic, muội sét).\" ⇒ đích 3206 có trong câu trích. GHI NHẬN: số nhóm nằm ở VẾ CHÍNH, \"ví dụ\" chỉ liệt kê màu cụ thể."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — \"(d) Graphit nhân tạo; graphit dạng keo hoặc dạng bán keo (ví dụ, nhóm 38.01).\" ĐO NỀN NHÀ: 9 mục `loaiTru` khác trong `data/so-tay` (không tính lô 081) cũng để mã đích TRONG ngoặc \"(ví dụ, … nhóm X)\" (tiền lệ 8304→7326, 8305→7317|7415, 8464→8474, 8484→6812) ⇒ KHÔNG xoá; mẫu nhà đã duyệt. `dieuKien` bám đúng từ nguồn."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — \"(e) Carbon hoạt tính, muội động vật (nhóm 38.02).\" ⇒ đích 3802 có trong câu trích."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — \"(f) Than củi (nhóm 44.02).\" ⇒ đích 4402 có trong câu trích."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — \"(g) Carbon kết tinh ở dạng kim cương (nhóm 71.02 và 71.04).\" ⇒ CẢ HAI đích có trong câu trích; thứ tự \"7102|7104\" theo đúng thứ tự trong câu (mẫu nhà)."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — hỏi đúng chủ thể loại trừ, nhánh Có = 2504, Không = 2803."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nhánh Có = 4402, Không = 2803; đích có trong câu trích."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nhánh Có = 3802, Không = 2803; đích có trong câu trích."
+  }
+ ]
+}

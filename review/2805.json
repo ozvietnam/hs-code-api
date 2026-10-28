@@ -1,0 +1,87 @@
+{
+ "nhom": "2805",
+ "nguoiSoat": "dev-soat-doc-lap-lo081",
+ "luc": "2026-10-29T05:40:00+07:00",
+ "phamViSoat": 14,
+ "soat": 14,
+ "giu": 13,
+ "sua": 1,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2805 (14 mục trong phạm vi; đọc thêm 6 tieuChi6 + 5 dong8 nhưng KHÔNG sửa — ngoài phạm vi). SỬA 1 (loaiTru[6] — trích cắt mất vế điều kiện) · XOÁ 0. GHI NHẬN: khối nguồn [nhom2805.nhom] trong `data/chu-giai-heading.json` bị GHÉP thêm \"PHÂN CHƯƠNG II: AXIT VÔ CƠ …\" (7.535 ký tự, phần chú giải Phân Chương 28 dính vào đuôi chú giải nhóm) — LỖI TẦNG DỮ LIỆU, không phải lỗi người soạn: bản nháp KHÔNG dùng đoạn đó làm căn cứ (đã kiểm từng mảnh trích). ĐỀ XUẤT NGƯỜI DUYỆT tách khối. GHI NHẬN: điều kiện loại trừ chính của nhóm \"hợp kim có hơn 5% sắt hoặc có thêm magic\" không có mã đích được nêu trong nguồn ⇒ không mã hoá được thành `loaiTru`; ngưỡng 5 % sắt đã có ở `tieuChi6` (ham_luong_sat_mischmetal ≤ 5). GHI NHẬN: `phamVi.trich` lược mất câu loại trừ radi/magic/bery (và câu 28.46) — chấp nhận được theo cùng lý do như 2804 (20,7 % mẫu nhà; các loại trừ đã có mục `loaiTru` riêng; `phamVi.trich` không đi vào prompt). GHI NHẬN CHUNG (máy quét `scripts/scan-so-tay-soat.mjs` báo 31 cảnh báo cho 6 nhóm, TẤT CẢ là động giả đã biết): (1) `TỪ-NGOÀI-NGUỒN` — máy bỏ dấu ở TỪ nhưng KHÔNG bỏ dấu ở NGUỒN nên báo nhầm mọi slug (`loai_hang`, `ham_luong_silic`), mọi câu hỏi mở đầu bằng \"Hàng này …\" và mọi dòng \"Loại khác: phần còn lại của phân nhóm X.XX\" (mẫu nhà: 453/794 dòng \"Loại khác\"); (2) `LƯỚC-NGOẠI-LỆ` — biểu thức `trừ\\b` KHÔNG BAO GIỜ khớp trong JS (\\b chỉ tính ASCII) nên máy mù với \"loại trừ\"; 3 cảnh báo còn lại do cụm \"trong trường hợp\" / \"đã hoặc chưa\" nằm NGAY TRONG mảnh đã trích chứ không nằm trong khoảng bị lược. Nền nhà cùng dạng: 2613/2701/2715 y hệt.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — text nêu đủ bốn phần (A) CÁC KIM LOẠI KIỀM (B) KIM LOẠI KIỀM THỔ (C) KIM LOẠI ĐẤT HIẾM; SCANDI VÀ YTRI, ĐÃ HOẶC CHƯA PHA TRỘN HOẶC TẠO HỢP KIM VỚI NHAU (D) THỦY NGÂN ⇒ phủ đủ 5 dòng 8 số."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ null — nhà chỉ dùng `boPhan` cho 202/626 nhóm; không tự thêm."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — \"Nhóm này không bao gồm hỗn hống natri (nhóm 28.53).\" ⇒ đích 2853 có trong câu trích."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — \"Kim loại kiềm có tính phóng xạ franxi bị loại trừ (nhóm 28.44).\" ⇒ đích 2844 có trong trích."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — vế \"radi, một nguyên tố phóng xạ (nhóm 28.44)\" của câu loại trừ chung ⇒ đích 2844 có trong trích."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — vế \"magic (nhóm 81.04)\" ⇒ đích 8104 có trong câu trích."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — vế \"bery (nhóm 81.12)\" ⇒ đích 8112 có trong câu trích."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — \"Prometi (nguyên tố 61), là chất phóng xạ, được phân loại trong nhóm 28.44.\" ⇒ đích 2844 có trong trích."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẬT — trích CŨ cắt mất VẾ ĐIỀU KIỆN, chỉ còn \"(ví dụ, nếu nó mang đặc tính của một hợp kim pyrophoric thì chúng thuộc nhóm 36.06).\" với đại từ \"nó\"/\"chúng\" không có chủ ngữ ⇒ không rõ điều kiện nào làm loại trừ (nguồn: \"Khi hợp kim có hơn 5% sắt hoặc có thêm magic hoặc các kim loại khác thì nó không thuộc nhóm này\"). Đây là lớp lỗi \"mất điều kiện\" (mất \"có thêm các chất bổ sung\" ở lô 080) và \"mất ngoại lệ ngay sau câu trích\". Sửa: nối vế điều kiện vào trích (181 ký tự, ≤300); `dieuKien` và `sangNhom` giữ nguyên. GHI NHẬN: ngưỡng \"hơn 5% sắt\" đã có ở `tieuChi6` (ham_luong_sat_mischmetal ≤ 5 %) và \"magic\" đã có ở `loaiTru[3]` ⇒ không chèn thêm.",
+   "sua": {
+    "trich": "Khi hợp kim có hơn 5% sắt hoặc có thêm magic hoặc các kim loại khác thì nó không thuộc nhóm này, (ví dụ, nếu nó mang đặc tính của một hợp kim pyrophoric thì chúng thuộc nhóm 36.06)."
+   }
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — \"Nhóm này không bao gồm các loại muối và hợp chất của kim loại đất hiếm, của ytri và scandi (nhóm 28.46).\" ⇒ đích 2846 có trong câu trích."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nhánh Có = 2853, Không = 2805; đích có trong câu trích."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nhánh Có = 2844, Không = 2805; đích có trong câu trích."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — hỏi gộp 3 chủ thể \"radi, magic hoặc bery\" theo đúng câu nguồn; thứ tự đích \"2844|8104|8112\" KHỚP thứ tự câu hỏi (mẫu nhà); cả 3 mã có trong câu trích."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nhánh Có = 2844, Không = 2805; đích có trong câu trích."
+  }
+ ]
+}

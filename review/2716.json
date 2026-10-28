@@ -1,0 +1,24 @@
+{
+ "nhom": "2716",
+ "nguoiSoat": "dev-soat-doc-lap-lo081",
+ "luc": "2026-10-29T05:40:00+07:00",
+ "phamViSoat": 2,
+ "soat": 2,
+ "giu": 2,
+ "sua": 0,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2716 (2 mục trong phạm vi: phamVi + boPhan; đọc thêm 1 dong8 nhưng KHÔNG sửa — ngoài phạm vi theo SOAT-LO). Nguồn [nhom2716.nhom] chỉ có MỘT câu \"Không chú giải.\" ⇒ nhóm không có chú giải để bám; `dieuKienVao`/`loaiTru`/`phanBiet` để rỗng là ĐÚNG (bài học lô 045/060: `dieuKienVao` rỗng là ĐÚNG khi không có câu phủ cả nhóm). GHI NHẬN: `check-cay` báo \"nút ảo chưa có tên\" cho 2716 — nguồn KHÔNG nêu tên nào cho nút này ⇒ không điền được, không phải lỗi. GHI NHẬN CHUNG (máy quét `scripts/scan-so-tay-soat.mjs` báo 31 cảnh báo cho 6 nhóm, TẤT CẢ là động giả đã biết): (1) `TỪ-NGOÀI-NGUỒN` — máy bỏ dấu ở TỪ nhưng KHÔNG bỏ dấu ở NGUỒN nên báo nhầm mọi slug (`loai_hang`, `ham_luong_silic`), mọi câu hỏi mở đầu bằng \"Hàng này …\" và mọi dòng \"Loại khác: phần còn lại của phân nhóm X.XX\" (mẫu nhà: 453/794 dòng \"Loại khác\"); (2) `LƯỚC-NGOẠI-LỆ` — biểu thức `trừ\\b` KHÔNG BAO GIỜ khớp trong JS (\\b chỉ tính ASCII) nên máy mù với \"loại trừ\"; 3 cảnh báo còn lại do cụm \"trong trường hợp\" / \"đã hoặc chưa\" nằm NGAY TRONG mảnh đã trích chứ không nằm trong khoảng bị lược. Nền nhà cùng dạng: 2613/2701/2715 y hệt.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn [nhom2716.nhom] chỉ ghi \"Không chú giải.\"; phạm vi lấy từ dòng biểu thuế [tax.27160000] \"27160000 Năng lượng điện.\" (nguyên văn, đúng tầng dòng 8 số). Nhóm không có chú giải ⇒ không thêm gì được; `dieuKienVao`/`loaiTru`/`phanBiet` để rỗng là ĐÚNG (không có câu nào phủ)."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ null — nhóm không có phần (A)/(B)/(C) nào trong nguồn."
+  }
+ ]
+}

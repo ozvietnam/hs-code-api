@@ -1,0 +1,49 @@
+{
+ "nhom": "2801",
+ "nguoiSoat": "dev-soat-doc-lap-lo081",
+ "luc": "2026-10-29T05:40:00+07:00",
+ "phamViSoat": 7,
+ "soat": 7,
+ "giu": 7,
+ "sua": 0,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2801 (7 mục trong phạm vi; đọc thêm 3 tieuChi6 + 3 dong8 nhưng KHÔNG sửa — ngoài phạm vi). Mọi câu trích nguyên văn byte-exact trong đúng khối nguồn (kiểm bằng scripts/check-trich-nguyen-van.mjs + bộ kiểm thứ 5 tự viết: mọi từ ≥3 ký tự trong phamVi.text / loaiTru.dieuKien / phanBiet.hoi phải có trong CÂU TRÍCH CỦA CHÍNH MỤC ĐÓ — ở lô 081 chỉ có 1 mục vi phạm: 2804 loaiTru[4], đã sửa). SỬA 0 · XOÁ 0. GHI NHẬN: `dieuKienVao[0]` lấy câu bao hàm phủ cả nhóm; vế \"trừ nguyên tố phóng xạ nhân tạo\" đã có ở `loaiTru[0]`. GHI NHẬN CHUNG (máy quét `scripts/scan-so-tay-soat.mjs` báo 31 cảnh báo cho 6 nhóm, TẤT CẢ là động giả đã biết): (1) `TỪ-NGOÀI-NGUỒN` — máy bỏ dấu ở TỪ nhưng KHÔNG bỏ dấu ở NGUỒN nên báo nhầm mọi slug (`loai_hang`, `ham_luong_silic`), mọi câu hỏi mở đầu bằng \"Hàng này …\" và mọi dòng \"Loại khác: phần còn lại của phân nhóm X.XX\" (mẫu nhà: 453/794 dòng \"Loại khác\"); (2) `LƯỚC-NGOẠI-LỆ` — biểu thức `trừ\\b` KHÔNG BAO GIỜ khớp trong JS (\\b chỉ tính ASCII) nên máy mù với \"loại trừ\"; 3 cảnh báo còn lại do cụm \"trong trường hợp\" / \"đã hoặc chưa\" nằm NGAY TRONG mảnh đã trích chứ không nằm trong khoảng bị lược. Nền nhà cùng dạng: 2613/2701/2715 y hệt.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — text liệt kê đủ 4 phần (A) FLO (B) CLO (C) BROM (D) IOT theo đúng thứ tự nguồn; câu trích nối các tiêu đề bằng \" … \" và CỐ TÌM câu loại trừ liền kề (28.44, 38.24) để không lược mất ngoại lệ."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ null — nhóm không có phần; nhà chỉ dùng `boPhan` cho 202/626 nhóm (32,3 %)."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — câu bao hàm phủ CẢ nhóm (\"Nhóm này bao gồm các phi kim như halogen\"), lấy từ [nhom2801.nhom] (đúng tầng, không mượn câu Chương). `ngoaiTru` để rỗng là MẪU NHÀ: 107/170 mục `dieuKienVao` có vế \"trừ\" trong trích cũng để rỗng; vế loại trừ đã được `loaiTru[0]` + `phanBiet[0]` gánh."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn nêu đích danh \"nguyên tố phóng xạ nhân tạo (nhóm 28.44)\" ⇒ đích 2844 có trong câu trích (luật 3); `dieuKien` bám đúng từ nguồn."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn nêu đích danh \"(nhóm 38.24)\" trong câu \"Nhóm này loại trừ các dung dịch brom trong axit axetic (nhóm 38.24).\" ⇒ đích 3824 có trong câu trích."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — hỏi đúng CHỦ THỂ loại trừ (\"nguyên tố phóng xạ nhân tạo\"), nhánh Có = 2844, nhánh Không = chính nhóm 2801 (mẫu nhà: 922/1166 mục `phanBiet` trỏ về chính nhóm)."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — cùng mẫu với [0]; đích 3824 có trong câu trích (luật 4)."
+  }
+ ]
+}
