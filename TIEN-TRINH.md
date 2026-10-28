@@ -9817,3 +9817,113 @@ Xử lý:
 3. Bổ sung **3 sửa của phiên này** mà phiên trùng chưa bắt: 2301 `phamVi` (đoạn lược giấu ngoại lệ "trừ xương…"), 2302 `phamVi` (đoạn lược giấu điều kiện Chú giải 2 (A) Chương 11 + `text` thu hẹp), 2304 `phamVi.text` (tràn clip 1 ký tự).
 4. **Gác soát từ bắt được lỗi GÕ TAY của chính phiên này**: bản nháp sửa 2301 lúc đầu gõ thiếu dấu cách (`"và tóp mỡ"`) — đã sửa và kiểm lại byte-exact trước khi nạp.
 5. Nạp lại toàn bộ 6 nhóm từ `tmp/so-tay/raw/` (bản nháp đã hợp nhất hai lượt soát) → đối chiếu `raw == data` 6/6 → đổi `nguonLoai` → `NGUOI_DUYET` cho 20 mục.
+
+# LÔ 069 — SOẠN sổ tay chú giải (2306 2307 2308 2309 2401 2402)
+
+Người soạn: `dev-zcode-mm` (phiên headless của daemon `oz-so-tay-tuDong.sh`, 28/10/2026).
+Nhánh `so-tay/lo-069`, worktree `hs-code-api-wt-st-lo069`.
+
+## 0. Sai lệch brief — đã làm theo CSV (nguồn chuẩn)
+
+Brief lô 069 ghi lệnh `--nhom=7615,9609,3215,6306,6804,7412` — đó là **lệnh copy-paste của lô 001**, không
+phải nhóm của lô 069. `docs/giao-viec/so-tay-lo.csv` dòng 69 ghi rõ:
+`069,2306 2307 2308 2309 2401 2402,6,33509`. Đã làm theo CSV (đúng như lô 067 đã gặp lỗi tương tự).
+
+Brief cũng ghi worktree `hs-code-api-wt-st-lo69` (thiếu số 0); thực tế là `hs-code-api-wt-st-lo069`.
+
+## 1. Sự cố: HAI phiên headless cùng lô trong MỌT worktree (đã xử lý)
+
+Daemon `oz-so-tay-tuDong.sh` phóng **2 phiên `claude -p` cùng brief lô 069** vào **CÙNG worktree**
+(PID 53398 lúc 15:33:13 và PID 54220 lúc 15:33:17 — `/tmp/oz-so-tay-tudong.log`: "lô 069: phóng soạn" ×2).
+Đây là lỗi lặp lại của mọi lô (067, 068 cũng ×2).
+
+Xử lý (theo đúng bài học lô 068):
+1. Truy cây tiến trình để xác định chính mình: `$$ → 57352 → 54220 → 54217 → 54211 (daemon)`.
+2. **Dừng phiên trùng** `kill 53398` (+ wrapper 53392) — còn đúng 1 phiên `claude -p`.
+3. Không cần dựng lại phần việc của phiên trùng (phiên trùng bị dừng trước khi viết tệp nào).
+
+## 2. Cách soạn
+
+- **Mọi câu trích CẮT TỪ TỆP NGUỒN bằng script** (`tmp/so-tay/gen-lo069.mjs`) — không gõ tay
+  (bài học lô 068: "hiển thị KHÔNG byte-exact với tiếng Việt"). Script có assert: neo không khớp ⇒ FAIL LOẜ.
+  Kiểm tra Write tool giữ nguyên dấu: file thử `Nhóm này không bao gồm cặn dầu (nhóm 15.22).` khớp
+  byte-exact với nguồn ✓.
+- 3 đoạn lược "…" chỉ đặt giữa các đoạn CÓ NGUYÊN VĂN LIÊN TIẾP trong nguồn (không ghép câu xa nhau).
+- `dieuKienVao` chỉ đặt cho **2308** (một câu ràng buộc phủ CẢ nhóm: "Miễn là chúng chưa được chi tiết ở bất
+  kỳ nhóm nào khác trong Danh mục và là loại được sử dụng cho chăn nuôi động vật" — 2 fact boolean).
+  2306/2307/2309/2401/2402 **để rỗng**: nhóm có phần ngang hàng, không có câu nào phủ cả nhóm
+  (luật lô 030/054 — boolean phải phủ cả nhóm, nếu không sẽ loài thành viên hợp lệ ra khỏi nhóm).
+- `tieuChi6` lấy từ **tên WCO** (nguồn `wco.<6 số>`) với `fact` bám đúng từ trong tiêu đề WCO ⇒
+  "gác soát từ" xanh và mô tả đúng phân nhóm.
+- `cay.tenDien`: chỉ điền **230641** ("Từ hạt cải dầu (rape seeds hoặc colza seeds) có hàm lượng axit
+  eruxic thấp") — nguồn có câu nêu tên đó. 230649 KHÔNG có câu nào nêu tên tiếng Việt ⇒ để trống.
+- `phanBiet` chỉ có **1 mục** (2402): hỏi "Hàng có chứa lá thuốc lá hay chỉ làm từ chất thay thế lá thuốc lá?"
+  → 24021000 / 24029010 (cả hai nhánh đều được câu trích đỡ). 2306 (2306.41 vs 2306.49) **KHÔNG ghi**:
+  máy chỉ nhận mã `phanBiet` là **4 số (heading) hoặc 8 số (dòng biểu thuế)** — mã 6 số bị loại
+  `ma-khong-co-that`; mà nguồn 2306 chỉ nêu "2306.41", không nêu 2306.49 ⇒ nhánh "không" không có căn cứ.
+  2309 (2309.10 vs 2309.90) cũng vì vậy chỉ đưa vào `tieuChi6` (đóng gói bán lẻ / không đóng gói bán lẻ).
+
+## 3. Mục đã LOẠI có chủ đích (không trích được nguyên văn ⇒ bỏ)
+
+| Nhóm | Mục | Vì sao bỏ |
+|---|---|---|
+| 2309 | loại trừ "(e) Vitamin … (nhóm 29.36)" | Câu nguồn **648 ký tự** (> trần 600 của máy). Cắt bớt sẽ nuốt vế **"với điều kiện … không dùng cho việc sử dụng chung"** ⇒ biến loại trừ hẹp thành rộng ⇒ bỏ mục, ghi ở mô tả PR. |
+| 2309 | loại trừ "(b) hỗn hợp đơn giản của hạt ngũ cốc (Chương 10) … (Chương 11)" | Nguồn chỉ nêu **Chương**, không nêu mã nhóm 4 số ⇒ `sangNhom` không mã hoá được (máy loại `nhom-dich-khong-co-that:10`). |
+| 2309 | loại trừ "(f) Các sản phẩm của Chương 29" · "(h) chất protein thuộc Chương 35" | Cùng lý do (Chương, không có mã nhóm). |
+| 2402 | loại trừ "thuốc lá điếu dược phẩm (Chương 30)" | Cùng lý do. |
+| 2401 | phần "lá thuốc lá đã **sao tẩm**" (đoạn 2 của chú giải) | `phamVi.trich` ghép đoạn (1) + (2) = **749 ký tự** > 600. Cắt đoạn (1) sẽ mất điều kiện **"thuốc lá chưa thể dùng để hút ngay được"** (ranh giới 24.01 ↔ 24.02) ⇒ giữ (1)+(2 của nhóm) và **báo lại trong mô tả PR**. |
+
+## 4. Bảng kiểm cuối
+
+| Kiểm | Kết quả |
+|---|---|
+| `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` | **79/79 mục đạt** — 2306 24/24 · 2307 3/3 · 2308 4/4 · 2309 18/18 · 2401 17/17 · 2402 13/13 |
+| `node scripts/check-trich-nguyen-van.mjs` (byte-exact) | **OK — 78/78** câu trích nguyên văn tuyệt đối trong đúng khối nguồn (bản nháp lẫn `data/`) |
+| `node scripts/check-cay.mjs --nhom=2306,…` | toàn kho **566 nhóm / 15.043 mục**, 0 lỗi lệch cây; **6/6 nhóm lô 069 đủ** (cây + dong8 + tên nút ảo + tiêu chí 6 số) — 0 cảnh báo |
+| Nạp `--tu-tep --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-069.json` | **79/79 (100 %)** — `tyLeDat: 100`, `nhomLoi: []` |
+| Đối chiếu bản nháp ↔ dữ liệu đã nạp | **6/6 khớp 100 %** (khác duy nhất: `nguonLoai` + `loaiKhac` + `phamViLoaiKhac` do máy gắn) |
+| `npm run so-tay:check` | toàn kho **566 nhóm / 15.043 mục**, 0 mục không kiểm được nguồn — xanh |
+| `npm test` | **ALL TESTS PASSED** |
+| Chạy thật cổng `soTayGates` — 36 mô tả hàng thật (nhóm A) | **0 challenge oan** từ `SO_TAY_LOAI_TRU`/`SO_TAY_NGUONG` |
+| Chạy thật cổng `soTayGates` — 9 mô tả thuộc diện loại trừ (nhóm B) | **9/9 loại trừ bắn đúng** (15.22 · 29.18 · 23.08 · 30.03 · 38.08 · 38.24 · 07.14/12.14/23.01 · 24.03) |
+| Gác soát từ (2 mức) mọi trường tự viết | 22 cờ: 12 cờ là **mẫu nhà đã duyệt** (`"Phân nhóm X — dòng biểu thuế ghi \"Loại khác\""` — y hệt lô 068; `"Hàng có phải…"` trong `phanBiet.hoi`), 9 cờ **VÙNG-IM-LẶNG** (trích 300–600, xem mục 5), 1 cờ **LƯỚC-NGOẠI-LỆ dương giả** (mục 5) |
+
+## 5. Lớp lỗi máy KHÔNG bắt — đã tự bắt trước khi nạp
+
+1. **`loaiTru.dieuKien` quá rộng ⇒ cổng bắn oan (2402).** Bản nháp đầu tiên viết
+   `"Thuốc lá để hút khác, có hoặc không chứa chất thay thế"` ⇒ `headPhrases()` cắt danh từ đầu tại
+   định ngữ **"để"** ⇒ cụm ứng viên chỉ còn **"thuốc lá"** ⇒ **MỌI hàng thuốc lá của nhóm 24.02 đều bị
+   challenge oan** (đo thật: 6/6 mô tả "Thuốc lá …" đều bắn). Sửa: `"Các loại thuốc lá để hút khác"`
+   ⇒ cụm ứng viên **"loại thuốc lá"** ⇒ chỉ bắn đúng hàng mô tả đúng kiểu ⇒ **0 challenge oan**.
+   *Đây là lớp lỗi mới: "điều kiện loại trừ mà danh từ đầu bị định ngữ cắt mất ⇒ cụm khớp rộng".*
+2. **`loaiTru.dieuKien` phải có CỤM ≥ 3 âm tiết đặc thù** — "Viên từ nguyên liệu thuộc nhóm cụ thể…"
+   bị cắt tại "từ" ⇒ cụm ứng viên 1 âm tiết ⇒ **không bao giờ bắn** (loại trừ im lặng). Sửa:
+   `"Viên nguyên liệu thuộc nhóm cụ thể, kết dính ≤ 3%"` ⇒ cụm **"viên nguyên liệu"** ⇒ bắn đúng.
+3. **VÙNG-IM-LẶNG (trích 300–600) — 9 mục, đều CÓ CHỦ ĐÍCH** (mỗi ký tự mang điều kiện/ngoại lệ):
+   2306 `phamVi` 321 · 2308 `phamVi` + 2 `dieuKienVao` 304 · 2309 `phamVi` 529 · 2309 `loaiTru[1]` 349 ·
+   2401 `phamVi` 521 · 2402 `dong8[2]` (SEN Kretek) 364. Nền nhà: 22 % `phamVi.trich` vượt 300 ⇒ không sửa.
+4. **LƯỚC-NGOẠI-LỆ ở 2401 `phamVi` là DƯƠNG GIẢ.** Máy báo vì chữ **"với điều kiện"** nằm ở CUỐI
+   đoạn trích phần (1) — **không** nằm trong đoạn bị lược. Đoạn bị lược là câu về lá thuốc lá đã
+   *"sao tẩm"* ("… cũng thuộc nhóm này") — **không chứa ngoại lệ** ⇒ không đảo chiều. Đã để nguyên.
+5. **Cổng `SO_TAY_DONG8` ("Loại khác") dùng TÊN DÒNG BIỂU THUẾ của anh em, KHÔNG dùng `dieuKien` của
+   sổ tay** (`lib/so-tay-gates.js:271` `taxData[c]?.vn`) ⇒ 24022090 ("Thuốc lá điếu có chứa lá thuốc lá")
+   luôn bị hỏi lại về 24022020. Đây là hành vi MÁY, ngoài phạm vi lô dữ liệu ⇒ ghi ở mô tả PR.
+
+## 6. Còn mở cho người duyệt (chưa tự quyết — cần sửa `lib/`, ngoài phạm vi lô dữ liệu)
+
+1. **`loaiTru.dieuKien` bị cắt ở định ngữ ⇒ cụm khớp 2 âm tiết ⇒ challenge oan.** `headPhrases()`
+   (`lib/so-tay-gates.js:84`) lấy danh từ đầu của điều kiện rồi cắt tại định ngữ đầu tiên
+   (`QUALIFIER`) ⇒ điều kiện nào bắt đầu bằng cụm chung ("Thuốc lá …") sẽ khớp MỌI hàng có cụm đó.
+   Đề xuất: khi cụm ứng viên ngắn (< 3 âm tiết) mà là từ chung của ngành hàng ⇒ bỏ cụm ứng viên đó
+   (chỉ giữ cờ khi "sang nhóm khác" có trong hồ sơ). Đo nền nhà: **195/2.656 (7,3 %)** `loaiTru` toàn kho
+   có cụm 2 âm tiết chứa từ GENERIC (vd 1214 "Các chế phẩm dùng làm thức ăn chăn nuôi" → "chế phẩm";
+   1805 "Dược phẩm có bột ca cao…" → "dược phẩm") ⇒ **không sửa hàng loạt**.
+2. **Bảng tra mã 4 số cho "Chương N"** — 4 mục loại trừ của lô này (2309 (b)(f)(h), 2402 Chương 30) nói
+   đích bằng **Chương** (10, 11, 29, 35, 30) nên không mã hoá được thành `sangNhom`. Đề xuất: cho
+   `loaiTru` nhận `sangNhom` dạng chương (vd `"Chương 29"`) và hiển thị "Chương 29" trong prompt.
+3. **`loaiTru` theo DẢI SỐ / danh sách có dấu "…"** — 2309 (a) nêu "(các nhóm 07.14, 12.14, 23.01, …)";
+   em mã hoá đúng 3 mã được nêu nguyên văn, phần "…" (các nhóm còn lại) **không mã hoá được** ⇒ ghi ở
+   mô tả PR. Đề xuất: cho `sangNhom` nhập "07.14|12.14|23.01|…" hoặc một trường `ghiChu`.
+4. **Câu trích > 600 ký tự không dùng được** — 2309 (e) Vitamin (648 ký tự) bị bỏ mục. Đề xuất: cho
+   `trich` dài hơn 600 ký tự khi là **một câu liền** (không lược) — máy chỉ cần trích đúng, không cần
+   ngắn.
