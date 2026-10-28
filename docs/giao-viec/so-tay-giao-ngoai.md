@@ -7,6 +7,14 @@
   tờ khai sau khi xong lô đó. Tái tạo bằng `node scripts/gen-so-tay-lo.mjs [--demand=<kết quả GET /api/demand>]`. Mỗi lô có tối đa 6 nhóm và ≤ 350 nghìn ký tự nguồn.
 - **Một agent nhận một lô.** Ghi tên vào cột `nguoi_lam` và chuyển `trang_thai` sang `dang-lam`. Làm xong một lô thì mở **một PR**.
 
+
+> **CẬP NHẬT 28/10/2026 — chia 3 tầng theo vai (progressive disclosure), không cần đọc trọn file này khi làm việc:**
+> - Luật chung cho CẢ soạn lẫn soát: [`so-tay/LUAT-CHUNG.md`](so-tay/LUAT-CHUNG.md)
+> - Người soạn một lô: [`so-tay/SOAN-LO.md`](so-tay/SOAN-LO.md)
+> - Người soát độc lập một PR: [`so-tay/SOAT-LO.md`](so-tay/SOAT-LO.md)
+>
+> File này giờ giữ vai trò **lịch sử + bài học các vòng** (tra cứu khi cần).
+
 ## 00. Đợt 1 theo tần suất (09/10/2026, #194): 32 nhóm, phủ 83,4% lên 90,1%
 
 Làm đúng quy trình dưới đây: 6 agent soạn (5–6 nhóm mỗi agent), 6 agent soát độc lập, máy kiểm lần cuối, rồi tự soát mẫu 26 mục ngẫu nhiên.
@@ -26,20 +34,7 @@ câu trích có thật trong nguồn, **không** chứng minh nó nói đúng đ
 đọc lại từng mục cùng nguồn, họ xoá/sửa một phần lớn: vòng 2 xoá 325 + sửa 95 trên ~1.300 mục; vòng 1 (đã gộp từ 07/10, chỉ soát mẫu 13 mục)
 soát lại xoá 262 + sửa 281. Kết luận: **không lô nào được gộp nếu chưa qua bước soát độc lập** (mục 4).
 
-Kiểu lỗi lặp lại, đã thành luật máy (`lib/so-tay.js`) hoặc người soát phải bắt:
-
-| Kiểu lỗi | Xử lý |
-|---|---|
-| `dieuKienVao` lấy từ tên phân nhóm WCO / SEN / dòng biểu thuế, trình bày như điều kiện vào cả nhóm 4 số ("công suất ≤ 750 W", "chu vi > 60 cm") | **Máy loại** (`dieu-kien-cap-phan-nhom`). Điều kiện phân nhóm thuộc `dong8` |
-| `dieuKienVao` từ câu CHO PHÉP ("vẫn được phân loại ở đây ngay cả khi…", "đã hoặc chưa…") đặt `=true` | **Máy loại** (`dieu-kien-chi-cho-phep`) |
-| `loaiTru` mà câu nguồn nói "thường thuộc nhóm X", "tùy trường hợp" | **Máy loại** (`loai-tru-chi-la-thuong`) |
-| `phanBiet` có `hoi` nhắc mã phân nhóm hoặc "WCO" | **Máy loại** (`hoi-nhac-ma-phan-nhom`) |
-| `loaiKhac` của dòng 8 số mỗi agent hiểu một kiểu | **Máy tự điền** theo biểu thuế (tên dòng bắt đầu bằng "Loại khác") |
-| Một nhánh của "A hoặc B" bị tách thành điều kiện độc lập (AND) | Người soát bắt |
-| Nhánh "không" của `phanBiet` chỉ suy từ cấu trúc anh em / danh sách loại trừ | Người soát bắt |
-| Dấu lược "…" nuốt mất ngoại lệ ("trừ", "tuy nhiên", "với điều kiện") hoặc câu liền sau trích là ngoại lệ | Người soát bắt |
-| `text`/`tomTat`/`dieuKien` thêm chữ không có trong câu trích (số hiệu chú giải, ví dụ, mã 8 số) | Người soát bắt |
-| Nguồn tự mâu thuẫn (bao gồm X ở một chỗ, loại X ở chỗ khác — vd 8409 "bơm phun") | Bỏ cả hai phía |
+Bảng kiểu lỗi đã tách theo vai (28/10): các lỗi **máy tự loại** nằm ở [`so-tay/SOAN-LO.md`](so-tay/SOAN-LO.md), các lỗi **chỉ người soát bắt được** nằm ở [`so-tay/SOAT-LO.md`](so-tay/SOAT-LO.md).
 
 **Ý nghĩa của `dieuKienVao` (quan trọng cho bước nối cổng):** đó là các sự kiện *mô tả hàng thuộc nhóm*, không phải điều kiện cần.
 Cổng sau này **không được** loại một nhóm chỉ vì thiếu một `dieuKienVao`. Dùng chúng để gợi ý hỏi người khai, không để chặn.
@@ -76,59 +71,16 @@ Lỗi của dữ liệu nguồn (kệ sách), cần sửa riêng chứ không s�
 - Chú giải nhóm còn dùng số hiệu chú giải chương cũ (8541 ghi "Chú giải 8 (a)", bản hiện hành là 12(a)).
 - SEN gắn ở dòng cha: 8504 (đầu điện áp cao), 8536.
 
-## 2. Gói việc cho một lô
+## 2. Gói việc cho một lô (người soạn)
 
-```bash
-git clone https://github.com/ozvietnam/hs-code-api.git && cd hs-code-api && npm ci
-LO=012; NHOM="$(awk -F, -v l=$LO '$1==l{gsub(/ /,",",$2); print $2}' docs/giao-viec/so-tay-lo.csv)"
-git checkout -b so-tay/lo-$LO origin/main
-
-# 1. Xuất nguồn và hướng dẫn (không cần khoá AI)
-node scripts/build-so-tay.mjs --nhom=$NHOM --xuat-nguon=tmp/so-tay/nguon
-#    → tmp/so-tay/nguon/_he-thong.txt  (lược đồ + luật, ĐỌC TRƯỚC)
-#    → tmp/so-tay/nguon/<nhom>.txt     (nguồn nguyên văn, đọc HẾT)
-
-# 2. Soạn tmp/so-tay/raw/<nhom>.json cho từng nhóm theo _he-thong.txt
-
-# 3. Tự kiểm bản nháp (chạy bao nhiêu lần cũng được)
-node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw
-
-# 4. Nạp: máy kiểm lần cuối, bỏ mục hỏng, ghi báo cáo riêng của lô
-node scripts/build-so-tay.mjs --nhom=$NHOM --tu-tep=tmp/so-tay/raw --force \
-  --nguoi-soan="<tên agent/người>" --bao-cao=data/so-tay/bao-cao/lo-$LO.json
-npm run so-tay:check && npm test
-
-# 5. Commit: data/so-tay/<nhom>.json + data/so-tay/bao-cao/lo-$LO.json (KHÔNG commit tmp/)
-git add data/so-tay && git commit -m "data(so-tay): lô $LO — <k> nhóm, <đạt>/<tổng> mục" && git push -u origin so-tay/lo-$LO
-```
-
-Mô tả PR phải có:
-- tỷ lệ đạt;
-- 3 mục mẫu (1 loại trừ, 1 điều kiện số, 1 dòng 8 số);
-- các nhóm có nguồn mỏng hoặc bất thường (theo mẫu phần 1);
-- những mục `dieuKien` có ghi điều mà câu trích không nói.
+Toàn bộ lệnh + mô tả PR phải có + bảng lỗi máy tự loại: [`so-tay/SOAN-LO.md`](so-tay/SOAN-LO.md).
 
 ## 3. Luật bắt buộc (máy kiểm phần lớn, phần còn lại người duyệt soát)
 
-1. Chỉ trích từ các nguồn trong tệp `<nhom>.txt`: `nhom<4>.nhom`, `ch<2>.chuong`, `phan<2>.phan`, `sen.*`, `tax.*`, `wco.*`.
-2. `trich` là câu chép **nguyên văn** từ đúng nguồn ghi ở `nguon`, ≤ 300 ký tự. Được lược bằng "…". Giữ nguyên lỗi chính tả gốc.
-3. `loaiTru` chỉ ghi khi nguồn **nêu đích danh** nhóm đích, và số nhóm phải có trong câu trích. Không tính số nhóm chỉ là ví dụ linh kiện, dải "từ X đến Y" hay "Chương N".
-4. `phanBiet`: mã ngoài nhóm phải có trong câu trích.
-5. `dieuKienVao` dạng số: số đó phải có trong câu trích.
-6. `dong8`: đủ mọi dòng `tax.*` của nhóm. `loaiKhac` máy tự điền theo biểu thuế (tên dòng bắt đầu bằng "Loại khác" → `true`), không cần cân nhắc. Có SEN thì ưu tiên điều kiện từ SEN. Dòng trùng chữ mà nguồn không phân biệt được thì ghi rõ, không đoán.
-7. Không ghép hai câu xa nhau thành một kết luận. Không thêm hiểu biết riêng vào `dieuKien`/`text`.
-8. Không sửa mã, nguồn hay câu trích để máy kiểm cho qua. Không trích được thì **xoá mục**.
-9. (11/10/2026) `cay` do máy sinh — **không soạn**. Chỉ điền `cay.tenDien[]` `{id, tenVi, nguon, trich}` cho nút bị lược (tiêu đề quốc gia 7 số, nhóm một gạch 5 số) hoặc phân nhóm 6 số chưa có tên tiếng Việt, khi nguồn có câu nêu tên đó. Nút đã có tên / dòng 8 số → máy loại.
-10. `tieuChi6[]` `{hs6, fact, op, value, donVi, nguon, trich}`: tiêu chí cấp 6 số từ chú giải/SEN/`wco.<6 số>` — không lấy từ `tax.*`; số phải có trong trích. `dong8[].tieuChi` `{fact, op, value, donVi}` tuỳ chọn, cùng luật số.
-11. Không ghi `nguonLoai` — máy gán `AI_DA_KIEM`; người soát độc lập mới đổi sang `NGUOI_DUYET`. Sau khi nạp chạy `node scripts/check-cay.mjs --nhom=<nhom> --chi-tiet` để thấy chỗ còn trống của nhóm.
+11 luật hiện chạy: [`so-tay/LUAT-CHUNG.md`](so-tay/LUAT-CHUNG.md) — bắt buộc với cả người soạn và người soát.
 
 ## 4. Người duyệt (phiên quản lý) làm gì với mỗi PR
 
-- CI xanh, `so-tay:check` xanh, tỷ lệ đạt của lô ≥ 95 %.
-- **Soát độc lập bắt buộc, TOÀN BỘ** `phamVi`, `boPhan`, `dieuKienVao`, `loaiTru`, `phanBiet` của lô (không chỉ mẫu): một người/agent KHÁC người soạn
-  đọc từng mục cùng nguồn, ghi `xoa`/`sua` theo `index` (cách làm ở vòng 2: tệp `review/<nhom>.json` rồi áp lên bản nháp trước khi nạp). Mục `sua` phải qua `check-so-tay --raw` lại. PR ghi số mục soát/xoá/sửa.
-- Sau đó người duyệt tự soát ngẫu nhiên ≥ 10 % số mục còn lại: `dieuKien`/`hoi` có đúng nghĩa với câu trích không, có ghép câu hay thêm hiểu biết riêng không.
-- Bổ sung lỗi kệ sách mới phát hiện vào phần 1. Lỗi lặp lại thì đưa thành luật máy (`lib/so-tay.js`) cho các lô sau.
-- Đạt thì gộp và cập nhật `so-tay-lo.csv` (`trang_thai=xong`, `pr`).
+Quy trình soát độc lập + danh sách lỗi máy không bắt được + thước đo "soát THẬT": [`so-tay/SOAT-LO.md`](so-tay/SOAT-LO.md).
 
 Ước tính toàn bộ 185 lô: soạn ~35 nghìn token/nhóm + soát độc lập ~30 nghìn token/nhóm → khoảng 70 triệu token. Vòng 2 (60 nhóm) mất khoảng 2 giờ với 10 agent soạn + 6 agent soát chạy song song.
