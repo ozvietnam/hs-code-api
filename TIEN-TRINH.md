@@ -10495,7 +10495,7 @@ với tờ khai "graphit nhân tạo". Sửa: `dieuKien` nêu đủ ba nhánh, �
    nếu không bật cổng (xem ghi nhận 3).
 # LÔ 072 — soạn sổ tay chú giải (phiên `dev-zcode-mm`, 28/10/2026 19:05)
 
-- **Nhánh:** `so-tay/lo-072` · **PR: mở kèm lô này — KHÔNG merge** (chờ soát độc lập) · **Nhóm:** `2512,2513,2514,2515,2516,2517` (Chương 25 — đất và đá)
+- **Nhánh:** `so-tay/lo-072` · **PR #513** — **KHÔNG merge** (chờ soát độc lập) · **Nhóm:** `2512,2513,2514,2515,2516,2517` (Chương 25 — đất và đá)
 - **Worktree:** `hs-code-api-wt-st-lo072` @ `e1d16e3` (main mới nhất) · deps đã cài
 - **Kết quả:** **76/76 mục (100 %)** — `tyLeDat: 100`, `nhomLoi: []`; **6/6 nhóm "đủ"** theo `check-cay` (cây + dong8 + tên nút ảo + tiêu chí 6 số)
 - **Nguồn:** `tmp/so-tay/nguon/2512.txt`…`2517.txt` (**50.436 ký tự**) + `_he-thong.txt` — đọc HẾT 6 tệp trước khi soạn
