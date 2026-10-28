@@ -1,10 +1,10 @@
 {
  "nhom": "2404",
  "phamVi": {
-  "text": "(A) Sản phẩm chứa lá thuốc lá, thuốc lá hoàn nguyên hoặc nguyên liệu thay thế, dùng để hút không cần đốt cháy… (B) Sản phẩm khác chứa nicotin, không chứa lá thuốc lá hoặc thuốc lá hoàn nguyên, để nạp nicotin vào cơ thể",
+  "text": "(A) Sản phẩm chứa lá thuốc lá, thuốc lá hoàn nguyên hoặc nguyên liệu thay thế, dùng để hút không cần đốt cháy… (B) Sản phẩm khác chứa nicotin, không chứa lá thuốc lá hoặc thuốc lá hoàn nguyên, nạp nicotin không qua hút",
   "nguon": "nhom2404.nhom",
   "trich": "(A) Các sản phẩm có chứa lá thuốc lá, thuốc lá hoàn nguyên, các nguyên liệu thay thế lá thuốc lá hoặc các nguyên liệu thay thế nicotin, dùng để hút mà không cần đốt cháy như định nghĩa trong Chú giải 3 của Chương này…(B) Các sản phẩm khác có chứa nicotin, nhưng không chứa lá thuốc lá hoặc thuốc lá hoàn nguyên, nhằm mục đích nạp nicotin vào cơ thể con người bằng cách nhai, hòa tan, ngửi, thẩm thấu qua da hoặc bất kỳ cách nào khác ngoại trừ hút",
-  "nguonLoai": "AI_DA_KIEM"
+  "nguonLoai": "NGUOI_DUYET"
  },
  "dieuKienVao": [],
  "loaiTru": [
@@ -13,21 +13,21 @@
    "sangNhom": "2402|2403",
    "nguon": "nhom2404.nhom",
    "trich": "(a) Các sản phẩm có chứa lá thuốc lá, thuốc lá hoàn nguyên hoặc các sản phẩm thay thế lá thuốc lá, dùng để hút sau khi đốt (nhóm 24.02 và 24.03), cũng như thuốc lá nhai và thuốc hít (nhóm 24.03);",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Thuốc lá nhai và thuốc hít",
    "sangNhom": "2403",
    "nguon": "nhom2404.nhom",
    "trich": "(a) Các sản phẩm có chứa lá thuốc lá, thuốc lá hoàn nguyên hoặc các sản phẩm thay thế lá thuốc lá, dùng để hút sau khi đốt (nhóm 24.02 và 24.03), cũng như thuốc lá nhai và thuốc hít (nhóm 24.03);",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   },
   {
    "dieuKien": "Alkaloid nicotine chiết xuất hoặc tổng hợp",
    "sangNhom": "2939",
    "nguon": "nhom2404.nhom",
    "trich": "(b) Nicotine, (alkaloid độc hại được chiết xuất từ lá thuốc lá cũng như alkaloid thu được bằng các quá trình tổng hợp) (nhóm 29.39).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "phanBiet": [
@@ -37,7 +37,7 @@
    "neuKhong": "24049110|24049190|24049210|24049290|24049900",
    "nguon": "nhom2404.nhom",
    "trich": "(A) Các sản phẩm có chứa lá thuốc lá, thuốc lá hoàn nguyên, các nguyên liệu thay thế lá thuốc lá hoặc các nguyên liệu thay thế nicotin, dùng để hút mà không cần đốt cháy như định nghĩa trong Chú giải 3 của Chương này…(B) Các sản phẩm khác có chứa nicotin, nhưng không chứa lá thuốc lá hoặc thuốc lá hoàn nguyên, nhằm mục đích nạp nicotin vào cơ thể con người bằng cách nhai, hòa tan, ngửi, thẩm thấu qua da hoặc bất kỳ cách nào khác ngoại trừ hút",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "tieuChi6": [
@@ -63,7 +63,7 @@
   },
   {
    "hs6": "240419",
-   "fact": "chua_nguyen_lieu_thay_the_la_thuoc_la",
+   "fact": "chua_nguyen_lieu_thay_the_la_thuoc_la_hoac_nguyen_lieu_thay_the_nicotin",
    "op": "=",
    "value": true,
    "donVi": null,
@@ -93,7 +93,7 @@
   },
   {
    "hs6": "240499",
-   "fact": "nap_nicotin_vao_co_the_con_nguoi_bang_cach_khac",
+   "fact": "nap_nicotin_vao_co_the_con_nguoi_khong_phai_hut_duong_uong_hoac_qua_da",
    "op": "=",
    "value": true,
    "donVi": null,
@@ -393,7 +393,7 @@
  "taoBoi": {
   "provider": "dev-zcode-mm",
   "model": null,
-  "luc": "2026-10-28T10:45:33.690Z",
+  "luc": "2026-10-28T11:23:08.223Z",
   "ms": 1
  },
  "kiemTra": {

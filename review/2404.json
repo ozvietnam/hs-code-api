@@ -1,0 +1,127 @@
+{
+ "nhom": "2404",
+ "nguoiSoat": "dev-soat-doc-lap-lo070",
+ "luc": "2026-10-28T18:40:00+07:00",
+ "phamViSoat": "Toàn bộ 21 mục của nhóm 2404 (1 phamVi + 3 loaiTru + 1 phanBiet + 6 tieuChi6 + 10 dong8), đọc cùng tmp/so-tay/nguon/2404.txt (nhom2404.nhom, ch24.chuong, phan24.phan, sen.24041210/24049110/24049210, wco.240411…240499, tax.24041100…24049900).",
+ "soat": 21,
+ "giu": 18,
+ "sua": 3,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 3 · GIU 21. SỬA 3: (1) `phamVi.text` mất vế \"ngoại trừ hút\" của phần (B) — ranh giới 24.04 với 24.02/24.03; (2) `tieuChi6[2]` (240419) bỏ nhánh \"hoặc\" và cộng chữ \"thay thế\" không có trong câu trích — dòng 24041920 (nguyên liệu thay thế nicotin) không khớp tiêu chí của tiêu đề quốc gia của nó; (3) `tieuChi6[5]` (240499) mất ba chiều loại trừ (hút / đường uống / qua da) nên kẹo cao su nicotin cũng thoả tiêu chí. GHI NHẬN (không sửa): loaiTru[0] bỏ nhánh \"sản phẩm thay thế lá thuốc lá\" — đo bằng headPhrases() thật thì mọi cách gộp lại đều hỏng: gộp vào thì trần clip 55 cắt mất đuôi \"hút sau khi đốt\" (dòng \"LOẠI TRỪ\" đọc như loại trừ MỌI sản phẩm có lá thuốc lá), đặt vế phân biệt lên đầu thì headPhrases() chỉ còn [\"hút\",\"sau\"] ⇒ cổng loại trừ tắt, tách mục riêng thì cụm ứng viên chỉ còn [\"sản\",\"phẩm\",\"thay\"] ⇒ bắn oan. Nhánh này vẫn đầy đủ trong `trich` (căn cứ pháp lý kèm mọi câu hỏi cổng).\nGHI NHẬN KHỐI ĐỂ RỖNG (không có mục để soát):\n- dieuKienVao: ĐỂ RỖNG là ĐÚNG. [ch24.chuong] chú giải 3 (\"Thuật ngữ \"hút mà không cần đốt cháy\" có nghĩa là…\") là ĐỊNH NGHĨA thuật ngữ, không phải câu ràng buộc (luật _he-thong dòng 73 và bài học lô 030); chú giải 2 lại là điều kiện của 24.04. Không có câu ràng buộc nào phủ CẢ (A) lẫn (B) ⇒ để rỗng là đúng, không đặt điều kiện âm cho nhóm có `loaiTru` (lô 065).",
+ "thayDoi": [
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn ✓ nêu đích danh 24.02 và 24.03. GHI NHẬN (không sửa) — nhánh thứ BA của mục (a) (\"hoặc các sản phẩm thay thế lá thuốc lá\") không có trong `dieuKien`, nhưng KHÔNG có cách sửa an toàn: (i) gộp vào thì `dieuKien` dài 81–85 ký tự, trần clip 55 cắt đúng đuôi \"hút sau khi đốt\" ⇒ dòng \"LOẠI TRỪ\" trong gói vòng 2 đọc như loại trừ MỌI sản phẩm có lá thuốc lá sang 24.02/24.03 (hại hơn là thiếu nhánh); (ii) đặt vế phân biệt lên đầu thì headPhrases() thật (lib/so-tay-gates.js:84) dừng ở định ngữ đầu tiên và chỉ trả về [\"hút\",\"sau\"] ⇒ cổng loại trừ TẮT (bản nháp hiện tại cho [\"lá\",\"thuốc\",\"lá\"] và [\"thuốc\",\"lá\",\"hoàn\",\"nguyên\"]); (iii) tách thêm một mục `loaiTru` riêng thì cụm ứng viên chỉ còn [\"sản\",\"phẩm\",\"thay\"] ⇒ bắn oan cho mọi \"Sản phẩm thay thế …\". Cả nhánh vẫn nằm nguyên trong `trich` = căn cứ pháp lý kèm mọi câu hỏi cổng."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn ✓ nêu đích danh 24.03; `dieuKien` \"Thuốc lá nhai và thuốc hít\" chép đúng vế thứ hai của mục (a); headPhrases() → [\"thuốc\",\"lá\",\"nhai\"], [\"thuốc\",\"hít\"]."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn ✓ nêu đích danh 29.39; `dieuKien` rút gọn (\"Alkaloid nicotine chiết xuất hoặc tổng hợp\") nhưng giữ CẢ HAI nhánh của câu nguồn (\"được chiết xuất từ lá thuốc lá cũng như alkaloid thu được bằng các quá trình tổng hợp\") — mọi từ đều có trong câu trích; headPhrases() → [\"alkaloid\",\"nicotine\",\"chiết\",\"xuất\"]."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi \"Sản phẩm có được dùng để hút mà không cần đốt cháy không?\" hỏi về đặc tính hàng, KHÔNG nhắc mã phân nhóm, không nhắc \"WCO\" (đạt luật 30). NHÁNH ĐÍCH PHỦ TRỌN: `neuCo` = 24041100+24041210+24041290+24041910+24041920 (toàn bộ 5 dòng của (A)) và `neuKhong` = 24049110+24049190+24049210+24049290+24049900 (toàn bộ 5 dòng của (B)) — không còn lớp lỗi lô 069 (một tờ khai rơi vào dòng XÌ GÀ vì nhánh chỉ phủ một dòng). Câu trích nguyên văn chứa cả (A) và (B)."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.240411] \"240411 Products containing tobacco or reconstituted tobacco, intended for inhalation without combustion\"; tiêu chí \"chua_la_thuoc_la_hoac_thuoc_la_hoan_nguyen = true\" khớp đúng dòng biểu thuế 24041100 (\"Chứa lá thuốc lá hoặc thuốc lá hoàn nguyên\")."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.240412] \"240412 Products containing nicotine, other than tobacco or reconstituted tobacco, intended for inhalation without combustion\"; tiêu chí \"chua_la_thuoc_la_hoac_thuoc_la_hoan_nguyen = false\" ⇒ nghĩa là có nicotin nhưng KHÔNG có lá thuốc lá/thuốc lá hoàn nguyên — CHIỀU ĐÚNG (fact dương + value=false, mẫu nhà có 79 mục)."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.240491] \"240491 Products n.e.c. in heading 2404, intended for the intake of nicotine into the human body, for oral application\"; tiêu chí \"nap_nicotin_vao_co_the_con_nguoi_duong_uong = true\" mô tả đúng 2404.91 (áp dụng qua đường uống) và khớp dòng 24049110 (kẹo cao su có nicotin)."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.240492] \"240492 Products n.e.c. in heading 2404, intended for the intake of nicotine into the human body, for transdermal application\"; tiêu chí \"nap_nicotin_vao_co_the_con_nguoi_qua_da = true\" mô tả đúng 2404.92 và khớp dòng 24049210 (miếng dán nicotin)."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24041100]; `dieuKien` chép đúng tên dòng biểu thuế."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [sen.24041210] (giữ nguyên xuống dòng); `dieuKien` rút gọn đúng nội dung câu (\"dạng lỏng hoặc gel dùng cho thuốc lá điện tử\", kèm cách gọi e-juice/vape juice trong chính khối SEN) — không thêm chữ ngoài nguồn. GHI NHẬN: trích 393 ký tự (vùng im lặng 300–600; nền nhà 1,8 %) — giữ vì cả khối SEN mới đủ ý."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24041290] \"Loại khác\"; 3 gạch ⇒ cha là phân nhóm 2404.12 ⇒ \"phần còn lại của phân nhóm 2404.12\" đúng."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24041910]; `dieuKien` chép đúng tên dòng biểu thuế."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24041920]; `dieuKien` chép đúng tên dòng biểu thuế."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [sen.24049110] (giữ nguyên xuống dòng); `dieuKien` rút gọn đúng nội dung câu."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24049190] \"Loại khác\"; 3 gạch ⇒ cha là phân nhóm 2404.91 ⇒ đúng."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [sen.24049210] (giữ nguyên xuống dòng); `dieuKien` rút gọn đúng nội dung câu."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24049290] \"Loại khác\"; 3 gạch ⇒ cha là phân nhóm 2404.92 ⇒ đúng."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24049900] \"Loại khác\"; 2 gạch ⇒ cha là phân nhóm 2404.99 ⇒ đúng."
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `phamVi.text` MẤT RANH GIỚI CỦA PHẦN (B) (\"ngoại trừ hút\"). Câu nguồn [nhom2404.nhom] định nghĩa (B) là \"Các sản phẩm khác có chứa nicotin, nhưng không chứa lá thuốc lá hoặc thuốc lá hoàn nguyên, nhằm mục đích nạp nicotin vào cơ thể con người bằng cách nhai, hòa tan, ngửi, thẩm thấu qua da hoặc bất kỳ cách nào khác NGOẠI TRỪ HÚT\" — vế \"ngoại trừ hút\" là ranh giới giữa 24.04 và 24.02/24.03. Bản nháp viết `text` dừng ở \"để nạp nicotin vào cơ thể\", mất hẳn vế đó ⇒ một tờ khai hàng chứa nicotin dùng để HÚT (sau khi đốt) đọc `text` sẽ tưởng thuộc 24.04. Sửa: thêm \"không qua hút\" vào cuối phần (B), bỏ \"vào cơ thể\" để vừa trần clip 220 (ngữ nghĩa \"nạp nicotin\" đã giữ ý \"nạp vào cơ thể\"; phần đích của việc nạp nicotin có ở `tieuChi6` 240491/240492/240499). Câu trích KHÔNG đổi (đã có nguyên văn \"…hoặc bất kỳ cách nào khác ngoại trừ hút\").",
+   "sua": {
+    "text": "(A) Sản phẩm chứa lá thuốc lá, thuốc lá hoàn nguyên hoặc nguyên liệu thay thế, dùng để hút không cần đốt cháy… (B) Sản phẩm khác chứa nicotin, không chứa lá thuốc lá hoặc thuốc lá hoàn nguyên, nạp nicotin không qua hút"
+   }
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `fact` BỎ MẤT NHÁNH \"HOẶC\" CỦA CÂU NGUỒN (lớp lỗi lô 061 mục 3 / lô 059). Câu nguồn [wco.240419] \"240419 Products containing tobacco or nicotine substitutes, intended for inhalation without combustion\" ⇒ \"A hoặc B\". Bản nháp chỉ giữ một nhánh và CỘNG thêm chữ không có trong câu trích: fact \"chua_nguyen_lieu_thay_the_la_thuoc_la\" đọc thành \"chứa nguyên liệu thay thế lá thuốc lá\" (chữ \"thay thế\" không có trong câu trích) và bỏ mất nhánh nguyên liệu thay thế nicotin. Hệ quả: dòng 24041920 (\"Chứa các nguyên liệu thay thế nicotin\") không khớp tiêu chí của tiêu đề quốc gia 2404.19 của nó. Sửa theo cấu trúc HS: trong tiêu đề 2404.19, chữ \"tobacco\" của WCO là nguyên liệu THAY THẾ lá thuốc lá (vì thuốc lá thuần thuộc 2404.11) — đúng với biểu thuế VN 24041910 \"Chứa các nguyên liệu thay thế lá thuốc lá\" và 24041920 \"Chứa các nguyên liệu thay thế nicotin\". Fact mới giữ CẢ HAI nhánh; câu trích giữ nguyên.",
+   "sua": {
+    "fact": "chua_nguyen_lieu_thay_the_la_thuoc_la_hoac_nguyen_lieu_thay_the_nicotin"
+   }
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `fact` MẤT CẢ BA CHIỀU LOẠI TRỪ CỦA CÂU NGUỒN. Câu nguồn [wco.240499] \"240499 Products n.e.c. in heading 2404, intended for the intake of nicotine into the human body, by ways other than inhalation, and other than oral or transdermal application\" — nghĩa là CHỈ những cách nạp KHÔNG phải hút, KHÔNG phải đường uống, KHÔNG phải qua da. Bản nháp ghi \"nap_nicotin_vao_co_the_con_nguoi_bang_cach_khac\" ⇒ đọc được là \"nạp bằng BẤT KỲ cách nào\", nên kẹo cao su nicotin (đường uống) cũng thoả tiêu chí của 2404.99 ⇒ dễ dẫn tài khai sang 2404.99 thay vì 2404.91. Sửa: fact nêu rõ ba phần bị loại, giữ nguyên câu trích.",
+   "sua": {
+    "fact": "nap_nicotin_vao_co_the_con_nguoi_khong_phai_hut_duong_uong_hoac_qua_da"
+   }
+  }
+ ]
+}

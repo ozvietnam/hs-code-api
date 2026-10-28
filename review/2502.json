@@ -1,0 +1,46 @@
+{
+ "nhom": "2502",
+ "nguoiSoat": "dev-soat-doc-lap-lo070",
+ "luc": "2026-10-28T18:40:00+07:00",
+ "phamViSoat": "Toàn bộ 6 mục của nhóm 2502 (1 phamVi + 1 dieuKienVao + 3 loaiTru + 1 dong8), đọc cùng tmp/so-tay/nguon/2502.txt (nhom2502.nhom, ch25.chuong, wco.250200, tax.25020000).",
+ "soat": 6,
+ "giu": 5,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 1 · GIU 6. SỬA 1: `loaiTru[0]` — `dieuKien` \"Pirít sắt đã nung\" có chữ \"sắt\" không có trong câu trích gốc (\"…các loại pirít đã nung (nhóm 26.01)\"); sửa bằng cách KÉO câu nguồn có căn cứ vào trích (\"Nhóm này liên quan tới tất cả các dạng pirít sắt chưa nung\") thay vì tự thêm chữ — không sửa mã, không sửa `dieuKien`, không đổi headPhrases() ([\"pirít\",\"sắt\"]). GHI NHẬN: nhóm có nguồn mỏng (chú giải nhóm 5 câu, không có chú giải phân nhóm, không SEN, biểu thuế 1 dòng) ⇒ `phanBiet`/`tieuChi6` để rỗng là đúng theo mẫu nhà (70 nhóm chỉ có một phân nhóm 6 số thì không nhóm nào có `tieuChi6`).\nGHI NHẬN KHỐI ĐỂ RỖNG (không có mục để soát):\n- phanBiet: ĐỂ RỖNG là ĐÚNG — nhóm 25.02 chỉ có một dòng 8 số (25020000) và không có chú giải phân nhóm để phân biệt; không có câu hỏi phân biệt nào trong nguồn mà không dẫn tới một nhánh đích cụ thể.\n- tieuChi6: ĐỂ RỖNG là ĐÚNG — mẫu nhà: 70 nhóm có đúng một phân nhóm 6 số thì không nhóm nào có `tieuChi6` (đo trong kho).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn câu đầu tiên của [nhom2502.nhom]; `text` nêu đúng phạm vi nhóm (mọi dạng pirít sắt chưa nung, kể cả quặng có đồng hoá trị 1 chưa nung), không thêm chữ nào ngoài nguồn; 96 ký tự, dưới trần clip 220."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"Nhóm này liên quan tới tất cả các dạng pirít sắt chưa nung, bao gồm cả quặng pirít sắt có chứa đồng hoá trị 1 chưa nung.\" — đây là câu RÀNG BUỘC VÀO NHÓM (chưa nung), không phải câu định nghĩa thuật ngữ; tiêu chí \"chua_nung = true\" đúng chiều (nhóm 25.02 = pirít CHƯA nung; pirít đã nung → 26.01)."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"(a) Chalcopyrite (các sulphua hỗn hợp của đồng và sắt) nhóm 26.03\" ✓ nêu đích danh 26.03; `dieuKien` đảo thứ tự để danh từ đầu có âm tiết đặc thù (headPhrases() → [\"sulphua\",\"hỗn\",\"hợp\"]), mọi từ đều có trong câu trích."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"(b) Marcasite (đá bán quý nhóm 71.03).\" ✓ nêu đích danh 71.03; `dieuKien` đảo thứ tự (headPhrases() → [\"đá\",\"bán\",\"quý\"]), mọi từ đều có trong câu trích."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25020000] \"25020000 Pirít sắt chưa nung\"; `dieuKien` chép đúng tên dòng biểu thuế."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `dieuKien` CÓ CHỮ KHÔNG CÓ TRONG CÂU TRÍCH. Câu trích gốc \"Nhóm này không bao gồm tất cả các loại pirít đã nung (nhóm 26.01)\" không có chữ \"sắt\", còn `dieuKien` ghi \"Pirít sắt đã nung\" (thêm \"sắt\" để danh từ đầu đủ 2 âm tiết đặc thù cho cổng loại trừ). Nền nhà: 262/2.673 mục (9,8 %) `loaiTru.dieuKien` có từ ngoài câu trích — không phải mẫu chuẩn. Sửa theo cách của nhà (kéo câu nguồn có căn cứ vào trích, không tự thêm chữ): trích kéo thêm câu đầu của nhóm \"Nhóm này liên quan tới tất cả các dạng pirít sắt chưa nung\" ⇒ \"sắt\" có nguyên văn trong chính câu trích đó; `dieuKien` giữ nguyên (headPhrases() → [\"pirít\",\"sắt\"], cổng loại trừ không đổi). Hai mảnh trích cắt byte-exact từ [nhom2502.nhom].",
+   "sua": {
+    "trich": "Nhóm này liên quan tới tất cả các dạng pirít sắt chưa nung…Nhóm này không bao gồm tất cả các loại pirít đã nung (nhóm 26.01)"
+   }
+  }
+ ]
+}

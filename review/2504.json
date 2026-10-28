@@ -1,0 +1,60 @@
+{
+ "nhom": "2504",
+ "nguoiSoat": "dev-soat-doc-lap-lo070",
+ "luc": "2026-10-28T18:40:00+07:00",
+ "phamViSoat": "Toàn bộ 8 mục của nhóm 2504 (1 phamVi + 1 dieuKienVao + 2 loaiTru + 2 tieuChi6 + 2 dong8), đọc cùng tmp/so-tay/nguon/2504.txt (nhom2504.nhom, ch25.chuong, wco.250410/250490, tax.25041000/25049000).",
+ "soat": 8,
+ "giu": 6,
+ "sua": 2,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 2 · GIU 8. SỬA 2: (1) `phamVi` mất câu \"Graphit tự nhiên vẫn thuộc nhóm này khi nó được xử lý nhiệt chỉ để loại tạp chất\" — câu bao hàm giữ graphit đã nung trong 25.04, cần thiết vì Chú giải Chương 25 mục 1 loại sản phẩm đã nung; (2) `loaiTru[0]` bỏ mất \"graphit nhân tạo\" và \"graphit keo hoặc bán keo\" ⇒ cổng loại trừ (25.04 ↔ 38.01) không bao giờ bắn với tờ khai \"graphit nhân tạo\"; sửa đủ ba nhánh, đặt \"Graphit nhân tạo\" ở đầu, vừa trần clip 55. GHI NHẬN (không sửa): `phanBiet` để rỗng — phân biệt 2504.10/2504.90 nằm ở HAI khối WCO khác nhau mà một mục `phanBiet` chỉ mang một `nguon`+`trich` (máy: `nguon-khong-duoc-trich`) ⇒ nhánh \"không\" sẽ không có căn cứ; cặp tiêu chí đã được `tieuChi6` phủ. `loaiTru[1]` bỏ chữ \"hoặc\" để vừa trần clip 55 — nghĩa không đổi và `sangNhom` giữ đủ 4 mã.\nGHI NHẬN KHỐI ĐỂ RỖNG (không có mục để soát):\n- phanBiet: ĐỂ RỖNG — GHI NHẬN lý do KHÔNG thêm. Phân biệt bột/mảnh (2504.10) với dạng khác (2504.90) nằm ở HAI khối WCO khác nhau ([wco.250410] và [wco.250490]) mà một mục `phanBiet` chỉ mang MỘT `nguon` + MỘT `trich` (máy: `nguon-khong-duoc-trich`) ⇒ nhánh \"không\" sẽ không có căn cứ trong khối của nhánh \"có\" (đúng luật: nhánh \"không\" phải có căn cứ trong nguồn). Cặp tiêu chí này đã được `tieuChi6` 250410/250490 phủ.",
+ "thayDoi": [
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn câu đầu [nhom2504.nhom]; tiêu chí \"la_graphit_tu_nhien = true\" là điều kiện VÀO NHÓM (25.04 = graphit tự nhiên; graphit nhân tạo → 38.01) — cùng dạng với 2501 (\"Nhóm này liên quan đến natri clorua…\") và 2502 (\"Nhóm này liên quan tới tất cả các dạng pirít sắt chưa nung\")."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"Nó cũng không bao gồm các sản phẩm bằng graphit tự nhiên thuộc nhóm 68.15, 69.02, 69.03 hoặc 85.45).\" ✓ có DẤU HIỆU LOẠI TRỪ (\"không bao gồm\") và nêu đích danh đủ bốn nhóm (68.15/69.02/69.03/85.45 — đủ để máy kiểm `nhom-dich-khong-co-trong-trich`). `dieuKien` bỏ chữ \"hoặc\" để vừa trần clip 55 — nghĩa không đổi (danh sách nhóm đích) và `sangNhom` giữ đủ 4 mã. headPhrases() → [\"graphit\",\"tự\",\"nhiên\"]."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.250410] \"250410 Graphite; natural, in powder or in flakes\"; tiêu chí \"o_dang_bot_hoac_dang_manh = true\" khớp đúng dòng biểu thuế 25041000 (\"Ở dạng bột hoặc dạng mảnh\")."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.250490] \"250490 Graphite; natural, in other forms, excluding powder or flakes\"; tiêu chí \"o_dang_bot_hoac_dang_manh = false\" ⇒ nghĩa là KHÔNG ở dạng bột/mảnh — CHIỀU ĐÚNG (fact dương + value=false, mẫu nhà có 79 mục)."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25041000] \"25041000 - Ở dạng bột hoặc dạng mảnh\"; `dieuKien` chép đúng tên dòng biểu thuế."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25049000] \"Loại khác\"; 2 gạch ⇒ cha là phân nhóm 2504.90 ⇒ \"phần còn lại của phân nhóm 2504.90\" đúng."
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẬT — `phamVi.text` + `phamVi.trich` MẤT CÂU BAO HÀM QUAN TRỌNG. Nguồn [nhom2504.nhom] có câu riêng: \"Graphit tự nhiên vẫn thuộc nhóm này khi nó được xử lý nhiệt chỉ để loại tạp chất.\" Bản nháp chỉ lấy câu định nghĩa đầu ⇒ mất câu này. Hệ quả: chú giải Chương 25 mục 1 chỉ cho phép sản phẩm \"thô hoặc mới chỉ được làm sạch… nhưng không phải là các sản phẩm đã nung, tôi\" ⇒ một tờ khai \"graphit tự nhiên đã nung loại bỏ tạp chất\" (mẫu WCO 2504.90, có thật trong thương mại) sẽ bị đẩy ra khỏi 25.04 vì sổ tay không có câu nào nói nó VẪN thuộc nhóm này. Sửa: thêm vế đó vào `text` (120 ký tự, dưới trần clip 220) và kéo nguyên văn câu vào `trich`; hai mảnh trích cắt byte-exact từ [nhom2504.nhom], tổng 171 ký tự (dưới trần 200 mà runtime cắt câu trích, nên câu dẫn VẪN hiện đủ cho mô hình).",
+   "sua": {
+    "text": "Graphit tự nhiên (còn được biết như than chì hoặc chì đen); vẫn thuộc nhóm này khi được xử lý nhiệt chỉ để loại tạp chất",
+    "trich": "Graphit tự nhiên (còn được biết như than chì hoặc chì đen)…Graphit tự nhiên vẫn thuộc nhóm này khi nó được xử lý nhiệt chỉ để loại tạp chất."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `dieuKien` BỎ MẤT HAI NHÁNH LOẠI TRỪ QUAN TRỌNG NHẤT CỦA NHÓM. Câu nguồn: \"Nhóm này loại trừ GRAPHIT NHÂN TẠO (…), graphit keo hoặc bán keo và các chế phẩm dựa trên graphit nhưng ở dạng bột nhão, khối, tấm hoặc các dạng bán thành phẩm khác (nhóm 38.01).\" Bản nháp chỉ giữ nhánh cuối (\"Chế phẩm graphit: bột nhào, khối, tấm, bán thành phẩm\") ⇒ mất \"graphit nhân tạo\" — tức là cơ chế phân biệt 25.04 ↔ 38.01 đúng nhất của nhóm — và mất \"graphit keo hoặc bán keo\". Hệ quả: headPhrases() của bản nháp không có cụm nào chứa \"graphit nhân tạo\" ⇒ cổng loại trừ KHÔNG BAO GIỜ bắn cho tờ khai \"graphit nhân tạo\". Sửa: `dieuKien` nêu đủ ba nhánh, đặt \"Graphit nhân tạo\" ở đầu ⇒ headPhrases() → [\"graphit\",\"nhân\",\"tạo\"], [\"graphit\",\"keo\",\"bán\",\"keo\"], [\"chế\",\"phẩm\",\"graphit\"]; 55 ký tự, vừa trần clip 55 (không tràn). `trich` giữ nguyên (đã có nguyên văn cả ba nhánh).",
+   "sua": {
+    "dieuKien": "Graphit nhân tạo, graphit keo/bán keo, chế phẩm graphit"
+   }
+  }
+ ]
+}

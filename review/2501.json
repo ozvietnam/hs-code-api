@@ -1,0 +1,88 @@
+{
+ "nhom": "2501",
+ "nguoiSoat": "dev-soat-doc-lap-lo070",
+ "luc": "2026-10-28T18:40:00+07:00",
+ "phamViSoat": "Toàn bộ 13 mục của nhóm 2501 (1 phamVi + 1 dieuKienVao + 4 loaiTru + 1 phanBiet + 6 dong8), đọc cùng tmp/so-tay/nguon/2501.txt (nhom2501.nhom, ch25.chuong, sen.25010010/25010020/25010091/25010093, wco.250100, tax.25010010…25010099).",
+ "soat": 13,
+ "giu": 10,
+ "sua": 3,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 3 · GIU 13. SỬA 3: (1) `phamVi` bỏ mục (2) \"muối có thêm chất chống đóng bánh hoặc chất chảy tự do\" và (3) \"muối đã được làm biến chất\" (= denatured salt, có trong tên WCO của 2501.00) ⇒ phạm vi nhóm hẹp lại; (2) `loaiTru[1]` mất ngoại lệ \"trừ loại dùng trong y tế hoặc dược phẩm\" ⇒ loại trừ sang 33.07 thành tuyệt đối; (3) `loaiTru[2]` mất định ngữ \"nuôi cấy\" ⇒ loại trừ cả tinh thể muối tự nhiên nặng từ 2,5 g. GHI NHẬN (không sửa): `tieuChi` của dòng 25010091 chỉ giữ mốc dưới \"> 60 %\" vì một tiêu chí chỉ có một phép so sánh — dải đầy đủ (\"trên 60 % đến dưới 97 %\") đã có trong `dieuKien` và `trich`; mẫu nhà với dải số là `dieuKienSo` nhiều điều kiện (0405), nhưng `dieuKienSo` MỞ cổng chốt dòng 8 số lúc chạy ⇒ việc bật cổng để người duyệt quyết, không phải việc của người soát. GHI NHẬN: `dieuKien` sửa dài 76 > trần clip 55 (điều kiện và ngoại lệ vẫn còn trong phần bị cắt; câu hỏi cổng clip 120 hiện đủ).\nGHI NHẬN KHỐI ĐỂ RỖNG (không có mục để soát):\n- tieuChi6: ĐỂ RỖNG là ĐÚNG — nhóm 25.01 chỉ có MỘT phân nhóm 6 số (2501.00) và mẫu nhà: 70 nhóm có đúng một phân nhóm 6 số thì KHÔNG nhóm nào có `tieuChi6` (đo trong kho).",
+ "thayDoi": [
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"Nhóm này liên quan đến natri clorua mà được hiểu chung là muối.\" — câu định nghĩa PHẠM VI của nhóm (nhóm 25.01 = natri clorua/muối), tiêu chí \"la_muoi_natri_clorua = true\" đúng chiều và là điều kiện VÀO nhóm chứ không phải ngưỡng của phân nhóm/dòng 8 số (luật dòng 27)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"(a) Các đồ gia vị có muối như gia vị cần tây (nhóm 21.03).\" ✓ nêu đích danh 21.03; `dieuKien` chép đúng, không thêm chữ."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"(d) Các bộ phận quang học bằng Natri clorua (nhóm 90.01)\" ✓ nêu đích danh 90.01; `dieuKien` chép đúng, không thêm chữ."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi \"Hàng có phải là nước biển không?\" hỏi về đặc tính hàng, không nhắc mã. NHÁNH ĐÍCH PHỦ TRỌN: `neuCo` = 25010050 (dòng \"Nước biển\"), `neuKhong` = 25010010+25010020+25010091+25010093+25010099 (toàn bộ 5 dòng còn lại của nhóm) ⇒ không có lớp lỗi lô 069 (nhánh chỉ phủ một dòng)."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [sen.25010010] (giữ nguyên xuống dòng); `dieuKien` rút gọn đúng nội dung câu. GHI NHẬN: trích 323 ký tự (vùng im lặng)."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [sen.25010020] (giữ nguyên xuống dòng); `dieuKien` rút gọn đúng nội dung câu."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25010050]; `dieuKien` chép đúng tên dòng biểu thuế."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [sen.25010091] (giữ nguyên xuống dòng); `dieuKien` chép đúng cả hai mốc của dải (\"trên 60% … dưới 97%\"). GHI NHẬN: `tieuChi` (một điều kiện) chỉ giữ được mốc DƯỚI \"60 %\" — mẫu nhà với dải số là `dieuKienSo` nhiều điều kiện (0405: >= 80 % VÀ <= 95 %), nhưng `dieuKienSo` MỞ cổng chốt dòng 8 số lúc chạy ⇒ việc bật cổng là quyết định của người duyệt, không phải của người soát; `dieuKien` + `trich` đã đủ cả dải."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [sen.25010093] (giữ nguyên xuống dòng); `dieuKien` chép đúng mốc \"từ 97 % trở lên, tính theo hàm lượng khô\"; `tieuChi` {ham_luong_natri_clorua >= 97 %} có số 97 trong câu trích ✓. GHI NHẬN: trích 469 ký tự (vùng im lặng)."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25010099] \"Loại khác\"; 2 gạch ⇒ cha là tiêu đề quốc gia 2501.009 ⇒ \"phần còn lại của tiêu đề quốc gia 2501.009\" đúng."
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `phamVi.text` + `phamVi.trich` BỎ MẤT HAI MỤC BAO HÀM (2) VÀ (3) ⇒ PHẠM VI NHÓM HẸP LẠI. Nguồn [nhom2501.nhom] liệt kê 7 mục (A)(B)(C)(1)…(4); bản nháp chép (1) rồi nhảy thẳng tới (4), nuốt mất: (2) \"Muối có thêm chất chống đóng bánh hoặc chất chảy tự do\" và (3) \"Muối đã được làm biến chất bằng một quá trình nào đó\". (3) chính là \"denatured salt\" — nằm ngay trong tên WCO của 2501.00 (\"Salt (including table salt and denatured salt)…\"). Hệ quả: một tờ khai \"muối ăn có chất chống đóng bánh\" hoặc \"muối đã làm biến chất\" không thấy trong `text` (thứ MÔ HÌNH ĐỌC — luật lô 061 mục 2) nên dễ bị đẩy ra khỏi 25.01. Sửa: thêm mục (2) và (3) vào cả `text` lẫn `trich` (mảnh trích cắt byte-exact từ nguồn); `text` nén lại cho vừa trần clip 220 (213 ký tự) — gộp ba mục (1)(2)(3) thành một vế liệt kê, mọi từ còn lại đều là của nguồn, cả hai nhánh \"chất chống đóng bánh\" và \"chất chảy tự do\" đều còn.",
+   "sua": {
+    "text": "(A) Muối tách chiết từ lòng đất… (B) Muối tạo bằng bay hơi… (C) Nước biển, nước muối, dung dịch muối… Muối iốt hóa/phosphat hóa nhẹ, có chất chống đóng bánh/chất chảy tự do, đã làm biến chất… Natri clorua phế thải",
+    "trich": "(A) Muối được tách chiết từ lòng đất…(B) Muối được tạo bằng phương pháp bay hơi…(C) Nước biển, nước muối và các loại dung dịch muối khác…(1) Muối (ví dụ, muối ăn) đã được iốt hóa hoặc phosphat hóa nhẹ…(2) Muối có thêm chất chống đóng bánh hoặc chất chảy tự do…(3) Muối đã được làm biến chất bằng một quá trình nào đó…(4) Natri clorua phế thải, đặc biệt là natri clorua để lại sau quá trình xử lý hoá học (ví dụ, điện phân) hoặc thu được như là sản phẩm phụ của quá trình xử lý một số quặng nhất định"
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `dieuKien` MẤT NGOẠI LỆ ⇒ ĐIỀU KIỆN LOẠI TRỪ ĐỌC THÀNH TUYỆT ĐỐI (lớp lỗi lô 061 mục 1: mất ngữ cảnh ⇒ đảo chiều). Câu nguồn: \"dung dịch natri clorua dùng cho mục đích vệ sinh được đóng gói để bán lẻ, TRỪ LOẠI DÙNG TRONG Y TẾ HOẶC DƯỢC PHẨM, có hoặc không vô trùng (nhóm 33.07)\" — tập bị loại sang 33.07 là dung dịch vệ sinh bán lẻ TRỪ loại dùng trong y tế/dược phẩm. Bản nháp ghi \"Dung dịch natri clorua vệ sinh đóng gói để bán lẻ\" ⇒ mất vế \"trừ…\" ⇒ mọi dung dịch natri clorua vệ sinh bán lẻ (kể cả loại dùng trong y tế) bị coi là loại trừ sang 33.07. Sửa: thêm ngoại lệ vào `dieuKien` (giữ đủ cả hai nhánh \"y tế\" và \"dược phẩm\"); `trich` đã có nguyên văn nên không đổi. Ghi chú trần clip: `dieuKien` dài 76 > 55 ⇒ phần bị cắt vẫn giữ đủ điều kiện (\"…đóng gói bán lẻ, trừ loại dùng y t…\"), còn câu hỏi cổng (clip 120) và `trich` hiện đủ bản đầy đủ.",
+   "sua": {
+    "dieuKien": "Dung dịch natri clorua vệ sinh đóng gói bán lẻ, trừ loại dùng y tế/dược phẩm"
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `dieuKien` BỎ ĐỊNH NGỮ GIỚI HẠN \"nuôi cấy\" ⇒ LOẠI TRỪ RỘNG HƠN NGUỒN (lớp lỗi lô 0508/0511/0601/0603: thu hẹp nghĩa). Câu nguồn: \"(c) Các dạng tinh thể natri clorua NUÔI CẤY mà trọng lượng mỗi tinh thể không ít hơn 2,5g (trừ các phần tử quang học, nhóm 38.24).\" Bản nháp ghi \"Tinh thể natri clorua không ít hơn 2,5g mỗi tinh thể\" ⇒ mất \"nuôi cấy\" ⇒ loại trừ cả tinh thể natri clorua TỰ NHIÊN (muối mỏ) nặng từ 2,5 g, vốn thuộc 25.01. Sửa: thêm lại \"nuôi cấy\" và giữ ngưỡng mỗi tinh thể (≥ 2,5 g — \"không ít hơn\" của nguồn); vế \"trừ các phần tử quang học\" đã có mục riêng (loaiTru[3] → 90.01) nên không chép lại. headPhrases() giữ nguyên cụm [\"tinh\",\"thể\",\"natri\",\"clorua\"] (mảnh đầu) ⇒ cổng loại trừ không bị tắt.",
+   "sua": {
+    "dieuKien": "Tinh thể natri clorua nuôi cấy, mỗi tinh thể ≥ 2,5g"
+   }
+  }
+ ]
+}
