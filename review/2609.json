@@ -1,0 +1,33 @@
+{
+ "nhom": "2609",
+ "nguoiSoat": "dev-soat-doc-lap-lo076",
+ "luc": "2026-10-28T23:57:00+07:00",
+ "phamViSoat": "Toàn bộ 4 mục của nhóm 2609 (1 phamVi + 2 dieuKienVao + 1 dong8), đọc cùng tmp/so-tay/nguon/2609.txt (nhom2609.nhom, ch26.chuong, wco.260900, tax.26090000). Đối chiếu BYTE-EXACT từng đoạn trích (mỗi đoạn ngăn bởi '…') với đúng khối nguồn.",
+ "soat": 4,
+ "giu": 4,
+ "sua": 0,
+ "xoa": 0,
+ "ghiChu": "XOÁ 0 · SỬA 0 · GIỮ 4/4. Mọi câu trích nguyên văn tuyệt đối trong đúng khối nguồn, ≤ 300 ký tự. `phamVi.text` giữ đủ cả 2 khoáng và đủ mô tả ('thiếc oxit', 'muối sulphide của thiếc, đồng và sắt') và giữ nguyên định ngữ giới hạn 'chính thường'. GHI NHẬN: 2 `dieuKienVao` lấy từ 'KHÁI QUÁT CHUNG' của ch26.chuong là ràng buộc vào DẢI 26.01–26.17, KHÔNG phải loại trừ chung của Chương ⇒ chép vào từng nhóm được; các câu loại trừ chung của Chương KHÔNG được chép ⇒ bản nháp đã không chép ✓. GHI NHẬN: nguồn không nêu ngưỡng số ⇒ không có điều kiện số, không bịa. GHI NHẬN: `tieuChi6` rỗng — lá 26090000 có `laPhanNhom` 4 số ⇒ không có phân nhóm 6 số thật. GHI NHẬN: `boPhan` = null — nguồn không chia nhóm thành bộ phận nào.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Trích [nhom2609.nhom] nguyên văn: '(a) Cassiterite (hoặc tin-stone), thiếc oxit (b) Stannite (hoặc thiếc pyrite), muối sulphide của thiếc, đồng và sắt' ✓ byte-exact. `text` rút gọn đúng nội dung câu, không thêm chữ nào ngoài trích (luật 7); giữ nguyên định ngữ giới hạn 'chính thường' ⇒ không cắt trích để né câu rào. `text` dài 198 ≤ trần clip 220 ⇒ không bị cắt giữa câu. Nêu phạm vi nhóm (thiếc + tinh quặng thiếc) ✓. GHI NHẬN: chú giải nhóm 2609 chỉ có 2 khoáng (khác 2607/2608/2611 có 4) ⇒ danh mục đầy đủ, không phải trích lược."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [ch26.chuong] nguyên văn 'KHÁI QUÁT CHUNG Các nhóm 26.01 đến 26.17 được giới hạn cho những quặng kim loại và những tinh quặng mà chúng:' ✓. Câu trích CÓ nói đúng điều mục khẳng định ⇒ `fact` = 'la_quang_kim_loai_va_tinh_quang' = true chép đúng vế nguồn. Ràng buộc vào DẢI 26.01–26.17 ⇒ phủ trọn nhóm 2609; mẫu nhà đã đo (113/590 nhóm có `dieuKienVao` từ chương; 48 cụm câu dùng chung nhiều nhóm) ⇒ hợp lệ."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [ch26.chuong] nguyên văn '(B) Không phải chịu các quá trình không thông thường đối với ngành công nghiệp luyện kim.' ✓ — CÓ nói đúng điều mục khẳng định. `fact` 'khong_phai_…' + `value` = true đọc ĐÚNG CHIỀU (hàng KHÔNG đã qua quá trình không thông thường); nền nhà 46/46 mục 'khong_phai_*' đều value = true. Không dính mẫu 'câu cho phép' của máy."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [tax.26090000] nguyên văn dòng ĐẦU '26090000 Quặng thiếc và tinh quặng thiếc' ✓; `dieuKien` chép đúng tên dòng biểu thuế, không rút gọn mất mốc ngưỡng (bài học lô 074). Nhóm 2609 có đúng 1 dòng `tax.*` và đã đủ ✓ luật 6. `loaiKhac` do máy tự điền ⇒ false ✓. Câu thừa 'Soạn sổ tay cho nhóm 2609.' ở dòng cuối tệp nguồn không lọt vào trích ✓."
+  }
+ ]
+}

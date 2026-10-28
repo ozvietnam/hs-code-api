@@ -1,0 +1,58 @@
+{
+ "nhom": "2612",
+ "nguoiSoat": "dev-soat-doc-lap-lo076",
+ "luc": "2026-10-29T00:05:00+07:00",
+ "phamViSoat": "Toàn bộ 9 mục của nhóm 2612 (1 phamVi + 2 dieuKienVao + 1 loaiTru + 1 phanBiet + 2 tieuChi6 + 2 dong8), đọc cùng tmp/so-tay/nguon/2612.txt (nhom2612.nhom, ch26.chuong, wco.261210, wco.261220, tax.26121000, tax.26122000). Đối chiếu BYTE-EXACT từng đoạn trích (mỗi đoạn ngăn bởi '…') với đúng khối nguồn; riêng 2 đoạn bị lược bằng '…' đã mở đúng khối nguồn kiểm tay xem đoạn bị lược có chứa ngoại lệ hay phản ví dụ không.",
+ "soat": 9,
+ "giu": 9,
+ "sua": 0,
+ "xoa": 0,
+ "ghiChu": "XOÁ 0 · SỬA 0 · GIỮ 9/9. Mọi câu trích nguyên văn tuyệt đối trong đúng khối nguồn, ≤ 300 ký tự. ĐÂY LÀ NHÓM GIÀU NHẤT LÔ (9 mục: loại trừ + câu hỏi phân biệt + 2 tiêu chí 6 số) và cũng là nhóm duy nhất có đích danh 28.44. GHI NHẬN 1 — `phanBiet` có MỘT ĐIỂM MỜ MÀ NGUỒN CŨNG KHÔNG PHÂN ĐỊNH: chú giải xếp '(l) Uranothorianite, uranium oxit và thorium oxit' vào DANH SÁCH QUẶNG URANIUM, trong khi đó là quặng chứa CẢ HAI kim loại. Câu hỏi 'Quặng này là quặng thori hay quặng urani?' (có→26122000 / không→26121000) là nhị phân, nên với Uranothorianite thì sổ tay không đưa được đáp án. Đã mở đúng khối nguồn kiểm: đoạn bị lược bằng '…' giữa '(g) Pitchblende và uraninite, muối oxit uranium' và 'Các loại quặng thorium chính thường…' chỉ chứa (h) Torbernite, (ij) Tyuyamunite, (k) Uranophane, (l) Uranothorianite — KHÔNG chứa ngoại lệ ('trừ' / 'tuy nhiên' / 'với điều kiện' / 'không kể') ⇒ không vi phạm luật 'đoạn lược không được nuốt ngoại lệ'. Vẫn GIỮ mục: cả HAI nhánh đều có căn cứ trong nguồn (nhánh thori ← danh sách quặng thorium + dòng biểu thuế 26122000; nhánh urani ← '(g) Pitchblende và uraninite, muối oxit uranium' + dòng biểu thuế 26121000) ⇒ không phải suy từ cấu trúc anh em; xoá đi sẽ MẤT đúng phần phân biệt quan trọng nhất của nhóm. Hạn chế đã được ghi ở đây để người duyệt biết. GHI NHẬN 2 — `phamVi.text` nêu danh sách quặng theo đúng câu trích nhưng câu trích ĐÃ LƯỢC bằng '…' (nguồn liệt kê 12 khoáng uranium (a)–(l), trích chỉ dẫn (g)); không sửa vì (i) trích đã công khai dấu lược, (ii) `phamVi.text` là trường tóm tắt 1–2 dòng, (iii) khoảng trống đã được bù bằng `phanBiet` (hỏi 'thori hay urani') và 2 `tieuChi6` — hàng 'quặng autunite' vẫn được dẫn về 26121000 qua nhánh 'không' của câu hỏi. GHI NHẬN 3: 2 `dieuKienVao` lấy từ 'KHÁI QUÁT CHUNG' của ch26.chuong là ràng buộc vào DẢI 26.01–26.17, KHÔNG phải loại trừ chung của Chương ⇒ chép vào từng nhóm được; các câu loại trừ chung của Chương KHÔNG được chép ⇒ bản nháp đã không chép ✓. GHI NHẬN 4: `loaiTru` và `dieuKienVao[1]` KHÔNG mâu thuẫn nhau — (B) của chương nói hàng không được đã qua quá trình không thông thường, `loaiTru` nói hàng ĐÃ qua quá trình không thông thường thì sang 28.44 ⇒ hai vế của cùng một quy tắc. GHI NHẬN 5: nguồn không nêu ngưỡng số ⇒ không có điều kiện số, không bịa. GHI NHẬN 6: dòng CUỐI tệp nguồn ('Soạn sổ tay cho nhóm 2612.') nằm trong khối tax.26122000 — cả 2 dòng biểu thuế đều lấy DÒNG ĐẦU ✓ (bài học lô 073).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Trích [nhom2612.nhom] nguyên văn 3 đoạn nối bằng '…': đoạn 1 'Các quặng chính thường được phân loại trong nhóm này là:' ✓, đoạn 2 '(g) Pitchblende và uraninite, muối oxit uranium' ✓, đoạn 3 'Các loại quặng thorium chính thường được phân loại trong nhóm này là: (a) Monazite, muối phosphate của thorium và các đất hiếm (b) Thorite, silicate thorium đã hydrate hoá' ✓ — cả 3 đoạn đều có nguyên văn trong đúng khối nguồn. Đã mở khối nguồn kiểm hai đoạn bị lược: giữa đoạn 1 và 2 là (a)–(f), giữa đoạn 2 và 3 là (h)–(l) — KHÔNG đoạn nào chứa ngoại lệ ⇒ không vi phạm luật lược. `text` CÓ nói đúng điều mục khẳng định: nêu phạm vi nhóm (quặng urani HOẶC quặng thori + tinh quặng tương ứng) rồi tới hai danh sách khoáng mà nguồn liệt kê; giữ nguyên định ngữ giới hạn 'chính thường' ở CẢ HAI danh sách ⇒ không cắt trích để né câu rào. `text` dài 202 ≤ trần clip 220 ⇒ không bị cắt giữa câu. GHI NHẬN: danh sách uranium trong nguồn dài 12 khoáng, trích chỉ dẫn (g) — xem GHI NHẬN 1 ở phần `ghiChu` (không xoá/sửa vì cả hai nhánh của câu hỏi phân biệt đều có căn cứ và dấu lược đã công khai trong chính câu trích)."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [ch26.chuong] nguyên văn 'KHÁI QUÁT CHUNG Các nhóm 26.01 đến 26.17 được giới hạn cho những quặng kim loại và những tinh quặng mà chúng:' ✓. Câu trích CÓ nói đúng điều mục khẳng định ⇒ `fact` = 'la_quang_kim_loai_va_tinh_quang' = true chép đúng vế nguồn ('được giới hạn cho những quặng kim loại và những tinh quặng'), không thêm chữ nào. Ràng buộc vào DẢI 26.01–26.17 ⇒ phủ trọn nhóm 2612 (26.12 nằm trong dải) ✓ luật 4 bước. Nền nhà đo trước khi kết luận: 113/590 nhóm có `dieuKienVao` lấy từ chương; 48 cụm câu chương dùng chung cho nhiều nhóm (ch10 '(A) …' cho 1001–1008, ch61 5 nhóm, ch62 7 nhóm) ⇒ mẫu này hợp lệ với nhà. GHI NHẬN: vế cho phép ở (A) — 'ngay cả khi chúng không dùng để luyện kim' — không đưa vào `fact` (nằm ngoài vế 'là quặng kim loại và tinh quặng'); máy cũng sẽ loại mục nếu đưa vào."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [ch26.chuong] nguyên văn '(B) Không phải chịu các quá trình không thông thường đối với ngành công nghiệp luyện kim.' ✓ — CÓ nói đúng điều mục khẳng định. `fact` 'khong_phai_…' + `value` = true đọc ĐÚNG CHIỀU: hàng KHÔNG đã qua quá trình không thông thường (không phải đảo chiều); nền nhà 46/46 mục 'khong_phai_*' đều value = true ⇒ đúng quy ước. Không dính mẫu 'câu cho phép' của máy. KHÔNG mâu thuẫn với `loaiTru[0]` (vế BÙ của cùng quy tắc) ✓."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [nhom2612.nhom] nguyên văn trọn câu: 'Nhóm này loại trừ các sản phẩm được biết trong thương mại như \"các tinh quặng\" của uranium mà chúng được điều chế từ những quá trình không thông thường đối với công nghiệp luyện kim (nhóm 28.44)' ✓ byte-exact. Câu trích CÓ nói đúng điều mục khẳng định: (i) có DẤU HIỆU LOẠI TRỪ dứt khoát ('loại trừ') — không phải 'thường thuộc'/'tùy trường hợp' ⇒ luật 3 và mẫu máy `HEDGE_LOAI_TRU` đều xanh; (ii) nêu ĐÍCH DANH nhóm đích — '(nhóm 28.44)' có trong câu trích ⇒ `sangNhom` = '2844' hợp lệ, và 2844 là nhóm có thật ('Các nguyên tố hóa học phóng xạ…'); (iii) `dieuKien` = 'Tinh quặng uranium từ quá trình không thông thường' chép đúng vế 'các tinh quặng của uranium … được điều chế từ những quá trình không thông thường', không thêm chữ, không gán thêm mã nào. `dieuKien` dài 48 ≤ trần clip 55 của runtime ⇒ không bị cắt giữa câu; câu đầy đủ vẫn nằm trong `trich`."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [nhom2612.nhom] nguyên văn 3 đoạn nối bằng '…' ✓ (đoạn bị lược đã mở đúng khối nguồn kiểm: không có ngoại lệ). Câu trích CÓ nói đúng điều mục khẳng định, và CẢ HAI nhánh đều có căn cứ trong nguồn — không suy từ cấu trúc anh em: nhánh thori ← danh sách 'Các loại quặng thorium … (a) Monazite … (b) Thorite …' + dòng biểu thuế 26122000 'Quặng thori và tinh quặng thori'; nhánh urani ← '(g) Pitchblende và uraninite, muối oxit uranium' + dòng biểu thuế 26121000 'Quặng urani và tinh quặng urani'. CHIỀU đúng: runtime in 'có→neuCo / không→neuKhong' (lib/so-tay-gates.js:141) ⇒ câu hỏi 'Quặng này là quặng thori hay quặng urani?' với vế ĐẦU là 'thori' ⇒ có = thori = 26122000 ✓, không = urani = 26121000 ✓. `hoi` không nhắc mã phân nhóm hay 'WCO' ✓. KHÔNG phải mẫu lỗi 'một nhánh của A hoặc B bị tách thành đích duy nhất' (cả hai nhánh đều có đích). GHI NHẬN: với quặng hỗn hợp (Uranothorianite, mục (l) nằm trong danh sách uranium nhưng chứa cả thorium) thì nguồn KHÔNG phân định — đã ghi ở `ghiChu`; vẫn giữ mục vì hai nhánh đều có căn cứ và xoá đi sẽ mất phần phân biệt quan trọng nhất của nhóm."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [wco.261210] nguyên văn '261210 Uranium ores and concentrates' ✓ byte-exact; nguồn là tên WCO 6 số, KHÔNG phải `tax.*` ✓ luật 10. Phân nhóm 261210 CÓ THẬT trong cây HS (lá 26121000 có `laPhanNhom` = 261210) ✓ và thuộc nhóm 2612 ✓. `value` = 'Quặng urani và tinh quặng urani' là tên tiêu đề quốc gia của phân nhóm 261210 (dòng biểu thuế) đi kèm câu trích tiếng Anh — đúng MẪU NHÀ: 2260 `tieuChi6` lấy từ `wco.*` trong đó 588 có `value` chuỗi tiếng Việt (vd 0101 'loai_vat' = 'Lừa' với trích '010130 Asses; live'; 0102 'loai_vat' = 'Động vật họ trâu bò khác trâu và bò'). `fact` = 'loai_quang_uranium' đặt theo tên khoáng, đọc đúng chiều (phân nhóm 2612.10 = quặng urani) ✓. Không có ngưỡng số ⇒ không phải kiểm số trong trích."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [wco.261220] nguyên văn '261220 Thorium ores and concentrates' ✓ byte-exact; nguồn là tên WCO 6 số, KHÔNG phải `tax.*` ✓ luật 10. Phân nhóm 261220 CÓ THẬT trong cây HS (lá 26122000 có `laPhanNhom` = 261220) ✓ và thuộc nhóm 2612 ✓. `value` = 'Quặng thori và tinh quặng thori' là tên tiêu đề quốc gia của phân nhóm 261220 — cùng mẫu nhà như `tieuChi6[0]` ✓. `fact` = 'loai_quang_thori' đọc đúng chiều (2612.20 = quặng thori) ✓. KHÔNG mâu thuẫn với `phanBiet` (hai tiêu chí 6 số bổ sung cho hai nhánh của câu hỏi) ✓."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [tax.26121000] nguyên văn dòng ĐẦU '26121000 - Quặng urani và tinh quặng urani' ✓; `dieuKien` chép đúng tên dòng biểu thuế, không rút gọn mất mốc ngưỡng (bài học lô 074). `loaiKhac` do máy tự điền theo biểu thuế ⇒ false ✓. GHI NHẬN: dòng này có DẤU GẠCH nối ('- ') trong khi 2607–2611 không có — chép nguyên văn, không sửa mã/nguồn ✓ luật 8."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [tax.26122000] nguyên văn dòng ĐẦU '26122000 - Quặng thori và tinh quặng thori' ✓; `dieuKien` chép đúng tên dòng biểu thuế ✓. GHI NHẬN: khối tax.26122000 là khối CUỐI tệp nguồn nên CÓ câu thừa 'Soạn sổ tay cho nhóm 2612.' ngay sau — trích đã lấy DÒNG ĐẦU, câu thừa KHÔNG lọt vào ✓ (bài học lô 073). Nhóm 2612 có đúng 2 dòng `tax.*` và đã đủ ✓ luật 6. `loaiKhac` do máy tự điền ⇒ false ✓."
+  }
+ ]
+}

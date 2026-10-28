@@ -1,0 +1,38 @@
+{
+ "nhom": "2610",
+ "nguoiSoat": "dev-soat-doc-lap-lo076",
+ "luc": "2026-10-28T23:58:00+07:00",
+ "phamViSoat": "Toàn bộ 5 mục của nhóm 2610 (1 phamVi + 3 dieuKienVao + 1 dong8), đọc cùng tmp/so-tay/nguon/2610.txt (nhom2610.nhom, ch26.chuong, wco.261000, tax.26100000). Đối chiếu BYTE-EXACT từng đoạn trích (mỗi đoạn ngăn bởi '…') với đúng khối nguồn.",
+ "soat": 5,
+ "giu": 5,
+ "sua": 0,
+ "xoa": 0,
+ "ghiChu": "XOÁ 0 · SỬA 0 · GIỮ 5/5. Mọi câu trích nguyên văn tuyệt đối trong đúng khối nguồn, ≤ 300 ký tự. GHI NHẬN: `dieuKienVao[2]` lấy từ câu phạm vi riêng của nhóm ('Nhóm này bao gồm chromite … có nghĩa là dạng oxit của crom và sắt') — đây là MẪU NHÀ ĐÃ CÓ: 264/638 `dieuKienVao` lấy từ nhom*.nhom có trích bắt đầu 'Nhóm này …' (vd 0301 'Nhóm này bao gồm tất cả các loại cá sống…' → fact 'la_ca_song' = true; 0203 'Nhóm này bao gồm thịt tươi…' → fact 'tuoi_uop_lanh_hoac_dong_lanh' = true), kể cả khi CÙNG câu đó đã làm `phamVi` ⇒ giữ. GHI NHẬN: 2 `dieuKienVao` lấy từ 'KHÁI QUÁT CHUNG' của ch26.chuong là ràng buộc vào DẢI 26.01–26.17, KHÔNG phải loại trừ chung của Chương ⇒ chép vào từng nhóm được; các câu loại trừ chung của Chương KHÔNG được chép ⇒ bản nháp đã không chép ✓. GHI NHẬN: nguồn không nêu ngưỡng số ⇒ không có điều kiện số, không bịa. GHI NHẬN: `tieuChi6` rỗng — lá 26100000 có `laPhanNhom` 4 số ⇒ không có phân nhóm 6 số thật. GHI NHẬN: `boPhan` = null — nguồn không chia nhóm thành bộ phận nào.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Trích [nhom2610.nhom] nguyên văn trọn câu: 'Nhóm này bao gồm chromite (hoặc quặng sắt crom) có nghĩa là dạng oxit của crom và sắt.' ✓ byte-exact. `text` diễn đạt đúng nội dung câu (có thêm dấu phẩy trước 'có nghĩa là' — không đổi nghĩa), KHÔNG thêm chữ nào ngoài trích (luật 7). Nêu phạm vi nhóm (chromite = dạng oxit của crom và sắt) chứ không phải một vật liệu hay một phần ✓. `text` dài 118 ≤ trần clip 220 ⇒ không bị cắt giữa câu. GHI NHẬN: nguồn của nhóm 2610 CHỈ có đúng một câu ⇒ không có cách nào viết phạm vi đầy đủ hơn."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [ch26.chuong] nguyên văn 'KHÁI QUÁT CHUNG Các nhóm 26.01 đến 26.17 được giới hạn cho những quặng kim loại và những tinh quặng mà chúng:' ✓. Câu trích CÓ nói đúng điều mục khẳng định ⇒ `fact` = 'la_quang_kim_loai_va_tinh_quang' = true chép đúng vế nguồn. Ràng buộc vào DẢI 26.01–26.17 ⇒ phủ trọn nhóm 2610; mẫu nhà đã đo ⇒ hợp lệ."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [ch26.chuong] nguyên văn '(B) Không phải chịu các quá trình không thông thường đối với ngành công nghiệp luyện kim.' ✓ — CÓ nói đúng điều mục khẳng định. `fact` 'khong_phai_…' + `value` = true đọc ĐÚNG CHIỀU; nền nhà 46/46 mục 'khong_phai_*' đều value = true. Không dính mẫu 'câu cho phép' của máy."
+  },
+  {
+   "index": "dieuKienVao[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [nhom2610.nhom] nguyên văn 'Nhóm này bao gồm chromite (hoặc quặng sắt crom) có nghĩa là dạng oxit của crom và sắt.' ✓ — câu trích CÓ nói đúng điều mục khẳng định: chromite CHÍNH LÀ 'dạng oxit của crom và sắt' ⇒ `fact` = 'la_dang_oxit_cua_crom_va_sat' = true là chép lại đúng, không thêm chữ. Đây là điều kiện VẬT LIỆU (boolean), KHÔNG phải ngưỡng số — nguồn Chương 26 không nêu ngưỡng nào. Nền nhà đo trước khi kết luận: 264/638 `dieuKienVao` lấy từ nhom*.nhom có trích bắt đầu 'Nhóm này …' (vd 0301, 0203) kể cả khi cùng câu đó đã làm `phamVi` ⇒ mẫu này được nhà chấp nhận, KHÔNG xoá. GHI NHẬN: vế 'có nghĩa là' là định nghĩa của chromite ⇒ mục này là MÔ TẢ hàng thuộc nhóm (LUAT-CHUNG: `dieuKienVao` là sự kiện mô tả hàng, không phải điều kiện cần; cổng sau này không được loại nhóm chỉ vì thiếu `dieuKienVao`)."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [tax.26100000] nguyên văn dòng ĐẦU '26100000 Quặng crôm và tinh quặng crôm' ✓; `dieuKien` chép đúng tên dòng biểu thuế, không rút gọn mất mốc ngưỡng. Nhóm 2610 có đúng 1 dòng `tax.*` và đã đủ ✓ luật 6. `loaiKhac` do máy tự điền theo biểu thuế ⇒ false ✓. Câu thừa 'Soạn sổ tay cho nhóm 2610.' ở dòng cuối tệp nguồn không lọt vào trích ✓. GHI NHẬN: cây HS ghi tên nhóm 4 số là 'Quặng crom và tinh quặng crom.' (chữ 'crom', có dấu chấm) còn dòng biểu thuế ghi 'Quặng crôm và tinh quặng crôm' — `dong8.dieuKien` lấy theo biểu thuế (đúng luật 6), không sửa nguồn."
+  }
+ ]
+}
