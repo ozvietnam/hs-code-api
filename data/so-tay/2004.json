@@ -1,0 +1,156 @@
+{
+ "nhom": "2004",
+ "phamVi": {
+  "text": "Các loại rau đông lạnh thuộc nhóm này; khi không được làm đông lạnh sẽ được phân loại trong nhóm 20.05.",
+  "nguon": "nhom2004.nhom",
+  "trich": "Các loại rau đông lạnh thuộc nhóm này sẽ được phân loại trong nhóm 20.05 khi không được làm đông lạnh (xem Chú giải nhóm 20.05).",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Rau không được làm đông lạnh",
+   "sangNhom": "2005",
+   "nguon": "nhom2004.nhom",
+   "trich": "Các loại rau đông lạnh thuộc nhóm này sẽ được phân loại trong nhóm 20.05 khi không được làm đông lạnh (xem Chú giải nhóm 20.05).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng rau có được làm đông lạnh không?",
+   "neuCo": "2004",
+   "neuKhong": "2005",
+   "nguon": "nhom2004.nhom",
+   "trich": "Các loại rau đông lạnh thuộc nhóm này sẽ được phân loại trong nhóm 20.05 khi không được làm đông lạnh (xem Chú giải nhóm 20.05).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "200410",
+   "fact": "loai_hang",
+   "op": "=",
+   "value": "Khoai tây đã đông lạnh",
+   "donVi": null,
+   "nguon": "wco.200410",
+   "trich": "200410 Vegetable preparations; potatoes, prepared or preserved otherwise than by vinegar or acetic acid, frozen",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "200490",
+   "fact": "loai_hang",
+   "op": "=",
+   "value": "Rau và hỗn hợp các loại rau đã đông lạnh (trừ khoai tây)",
+   "donVi": null,
+   "nguon": "wco.200490",
+   "trich": "200490 Vegetable preparations; vegetables and mixtures of vegetables (excluding potatoes), prepared or preserved otherwise than by vinegar or acetic acid, frozen",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "20041000",
+   "dieuKien": "Khoai tây",
+   "nguon": "tax.20041000",
+   "trich": "20041000 - Khoai tây",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "20049010",
+   "dieuKien": "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ",
+   "nguon": "tax.20049010",
+   "trich": "20049010 - - Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "20049090",
+   "dieuKien": "Loại khác",
+   "nguon": "tax.20049090",
+   "trich": "20049090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "200490",
+    "truAnhEm": [
+     "20049010"
+    ],
+    "toTienCoTen": "200490",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2004",
+    "cap": 4,
+    "cha": "20",
+    "tenVi": "Rau khác, đã chế biến hoặc bảo quản bằng cách khác trừ bảo quản bằng giấm hoặc axit axetic, đã đông lạnh, trừ các sản phẩm thuộc nhóm 20.06.",
+    "tenEn": "Vegetables preparations n.e.c.; prepared or preserved otherwise than by vinegar or acetic acid, frozen, other than products of heading no. 2006",
+    "suyRa": false
+   },
+   {
+    "id": "20041000",
+    "cap": 8,
+    "cha": "2004",
+    "tenVi": "Khoai tây",
+    "tenEn": "Vegetable preparations; potatoes, prepared or preserved otherwise than by vinegar or acetic acid, frozen",
+    "suyRa": false,
+    "laPhanNhom": "200410"
+   },
+   {
+    "id": "200490",
+    "cap": 6,
+    "cha": "2004",
+    "tenVi": "Rau khác và hỗn hợp các loại rau",
+    "tenEn": "Vegetable preparations; vegetables and mixtures of vegetables (excluding potatoes), prepared or preserved otherwise than by vinegar or acetic acid, frozen",
+    "suyRa": false
+   },
+   {
+    "id": "20049010",
+    "cap": 8,
+    "cha": "200490",
+    "tenVi": "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "20049090",
+    "cap": 8,
+    "cha": "200490",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2004.nhom",
+  "tax.20041000",
+  "tax.20049010",
+  "tax.20049090",
+  "wco.200410",
+  "wco.200490"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-27T23:02:23.641Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
