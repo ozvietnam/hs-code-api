@@ -10588,7 +10588,7 @@ với tờ khai "graphit nhân tạo". Sửa: `dieuKien` nêu đủ ba nhánh, �
 
 # LÔ 076 — soạn sổ tay chú giải (phiên `dev-zcode-mm`, 28/10/2026 22:39)
 
-- **Nhánh:** `so-tay/lo-076` · **PR:** (mở sau khi xong) — **KHÔNG merge** (chờ soát độc lập) · **Nhóm:** `2607,2608,2609,2610,2611,2612` (Chương 26 — quặng, xỉ và tro)
+- **Nhánh:** `so-tay/lo-076` · **PR #517** — **KHÔNG merge** (chờ soát độc lập) · **Nhóm:** `2607,2608,2609,2610,2611,2612` (Chương 26 — quặng, xỉ và tro)
 - **Worktree:** `hs-code-api-wt-st-lo076` @ `6e8c633` (main mới nhất) · deps đã cài
 - **Nguồn:** `tmp/so-tay/nguon/2607.txt`…`2612.txt` (**51.131 ký tự**) + `_he-thong.txt` — đọc HẾT 6 tệp trước khi soạn
 - **Cách soạn:** **sinh bằng script** (`tmp/so-tay/gen076.cjs`) — mọi câu TRÍCH **cắt từ tệp nguồn** (byte-exact), không gõ tay một ký tự tiếng Việt nào; phần văn xuất (`text`/`dieuKien`/`fact`/`hoi`) do người soạn viết rồi máy gác soát từ soi lại.
