@@ -14,6 +14,8 @@ const { classify } = require('../lib/classify');
 const { extractSpecs } = require('../lib/extract-specs');
 const { runDeclarationCheck, validateDeclarationCheckInput } = require('../lib/declaration-check');
 const { acquireServiceSlot } = require('../lib/service-rate-limit');
+const { normalizeEvidence } = require('../lib/source-rules');
+const { selfAnswer, validateSelfAnswerInput } = require('../lib/self-answer');
 
 /** `supplierHs`: {code, source?, url?} hoặc chuỗi mã. Trả null khi không đủ 6 chữ số. */
 function parseSupplierHs(v) {
@@ -34,6 +36,9 @@ module.exports = async function handler(req, res) {
   // POST /api/declaration-check (rewrite → ?mode=check, #338): soát tờ khai. KÍN — chỉ khoá dịch vụ / HS_API_TOKEN,
   // KHÔNG theo chế độ mở công khai của classify (dữ liệu tờ khai của khách).
   if (String(req.query?.mode || '') === 'check') return declarationCheck(req, res);
+  // POST /api/self-answer (rewrite → ?mode=self_answer, 28/10/2026): vòng tự trả lời câu hỏi bổ sung từ nguồn có nhãn.
+  // KÍN — dữ liệu trang/ảnh của khách, chỉ khoá dịch vụ / HS_API_TOKEN.
+  if (String(req.query?.mode || '') === 'self_answer') return selfAnswerHandler(req, res);
   // Chế độ phụ ?mode=extract_specs (/api/extract-specs) KHÔNG nằm trong 4 endpoint mở công khai → vẫn Bearer-only.
   const extractMode = String(req.query?.mode || '') === 'extract_specs';
   if (extractMode ? requireAuth(req, res) : requireAuthOrPublicLlm(req, res)) return;
@@ -74,6 +79,10 @@ module.exports = async function handler(req, res) {
     // Mã HS nhà cung cấp tự khai trên trang sản phẩm (made-in-china, 09/10/2026): mã TQ 8–10 số, chỉ 6 số đầu
     // theo HS quốc tế → MỘT nguồn kiểm chứng ở cấp nhóm, không phải đáp án. Phòng thủ: chỉ chữ số, ≥ 6.
     supplierHs: parseSupplierHs(body?.supplierHs),
+    // Nguồn có nhãn addon OZSource ([TITLE]/[ATTR]/[SKU]/[IMG-n]/[REVIEW]) + thông số từng SKU (28/10/2026).
+    // Có evidence → engine thêm quy tắc độ tin cậy + bảng tra nội bộ (lib/source-rules.js); không có → như cũ.
+    evidence: normalizeEvidence(body?.evidence) || null,
+    skuFacts: Array.isArray(body?.skuFacts) ? body.skuFacts.slice(0, 40) : [],
   };
 
   // Resolver attrs: canonical + aliasVi từ attributes.json
@@ -109,6 +118,27 @@ module.exports = async function handler(req, res) {
     return res.status(502).json({ error: 'Classify failed', detail: String(e.message).slice(0, 240) });
   }
 };
+
+/** POST /api/self-answer — { questions:[chuỗi], evidence } → { answers, unanswered } (lib/self-answer.js). */
+async function selfAnswerHandler(req, res) {
+  if (requireAuth(req, res)) return;
+  let body = req.body;
+  if (typeof body === 'string') {
+    try { body = JSON.parse(body); } catch { return res.status(400).json({ error: 'Invalid JSON body' }); }
+  }
+  const v = validateSelfAnswerInput(body);
+  if (!v.ok) return res.status(400).json({ error: v.error });
+  try {
+    const started = Date.now();
+    // Dữ liệu khách (#237 J1): LLM chỉ đi nhà cung cấp hợp lệ — như classify với khoá dịch vụ.
+    const run = () => selfAnswer(v.data);
+    const result = serviceCaller(req) !== null ? await withPrivateData(run) : await run();
+    res.setHeader('Cache-Control', 'no-store');
+    return res.status(200).json({ ...result, ms: Date.now() - started });
+  } catch (e) {
+    return res.status(502).json({ error: 'Self-answer failed', detail: String(e.message).slice(0, 240) });
+  }
+}
 
 /** POST /api/declaration-check — KetQuaSoat (lib/declaration-check.js). Không kiemMa → không gọi LLM. */
 async function declarationCheck(req, res) {
