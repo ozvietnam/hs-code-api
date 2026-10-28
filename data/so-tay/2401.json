@@ -1,0 +1,387 @@
+{
+ "nhom": "2401",
+ "phamVi": {
+  "text": "Lá thuốc lá chưa chế biến, chưa thể dùng để hút ngay được: cả cây hay lá tự nhiên, đã sấy hoặc ủ men, còn nguyên hoặc tước cọng, đã hoặc chưa xén, nghiền hoặc thái; lá trộn lẫn, tước cọng, sao tẩm; phế liệu lá thuốc lá.",
+  "nguon": "nhom2401.nhom",
+  "trich": "(1) Lá thuốc lá chưa chế biến dưới dạng cả cây hay dạng lá ở dạng tự nhiên hoặc lá thuốc lá đã sấy hoặc đã ủ men, còn nguyên hoặc được tước cọng, lá này có thể còn nguyên dạng hay đã được tước cọng, đã hoặc chưa được xén, đã được nghiền hoặc thái (kể cả thái miếng theo hình dạng, nhưng với điều kiện là thuốc lá chưa thể dùng để hút ngay được).…Các lá thuốc lá được trộn lẫn, được tước cọng và được \"sao tẩm\" (\"tẩm nước xốt\" hoặc \"tẩm rượu mùi\")…cũng thuộc nhóm này.…(2) Phế liệu lá thuốc lá, ví dụ,…(thân lá, cuống lá, gân lá, rẻo lá xén ra, bụi,...).",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "240110",
+   "fact": "not_stemmed_or_stripped",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.240110",
+   "trich": "240110 Tobacco, (not stemmed or stripped)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "240120",
+   "fact": "partly_or_wholly_stemmed_or_stripped",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.240120",
+   "trich": "240120 Tobacco; partly or wholly stemmed or stripped",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "240130",
+   "fact": "tobacco_refuse",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.240130",
+   "trich": "240130 Tobacco refuse",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "24011010",
+   "dieuKien": "Loại Virginia, đã sấy bằng không khí nóng (flue-cured)",
+   "nguon": "tax.24011010",
+   "trich": "24011010 - - Loại Virginia, đã sấy bằng không khí nóng (flue-cured)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "24011020",
+   "dieuKien": "Loại Virginia, trừ loại sấy bằng không khí nóng",
+   "nguon": "tax.24011020",
+   "trich": "24011020 - - Loại Virginia, trừ loại sấy bằng không khí nóng",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "24011040",
+   "dieuKien": "Loại Burley",
+   "nguon": "tax.24011040",
+   "trich": "24011040 - - Loại Burley",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "24011050",
+   "dieuKien": "Loại khác, được sấy bằng không khí nóng",
+   "nguon": "tax.24011050",
+   "trich": "24011050 - - Loại khác, được sấy bằng không khí nóng",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "240110",
+    "truAnhEm": [
+     "24011010",
+     "24011020",
+     "24011040"
+    ],
+    "toTienCoTen": "240110",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "24011090",
+   "dieuKien": "Phân nhóm 2401.10 — dòng biểu thuế ghi \"Loại khác\"",
+   "nguon": "tax.24011090",
+   "trich": "24011090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "240110",
+    "truAnhEm": [
+     "24011010",
+     "24011020",
+     "24011040",
+     "24011050"
+    ],
+    "toTienCoTen": "240110",
+    "dinhNghiaDuoc": false
+   }
+  },
+  {
+   "hs": "24012010",
+   "dieuKien": "Loại Virginia, đã sấy bằng không khí nóng (flue-cured)",
+   "nguon": "tax.24012010",
+   "trich": "24012010 - - Loại Virginia, đã sấy bằng không khí nóng (flue-cured)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "24012020",
+   "dieuKien": "Loại Virginia, trừ loại sấy bằng không khí nóng",
+   "nguon": "tax.24012020",
+   "trich": "24012020 - - Loại Virginia, trừ loại sấy bằng không khí nóng",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "24012030",
+   "dieuKien": "Loại Oriental",
+   "nguon": "tax.24012030",
+   "trich": "24012030 - - Loại Oriental",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "24012040",
+   "dieuKien": "Loại Burley",
+   "nguon": "tax.24012040",
+   "trich": "24012040 - - Loại Burley",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "24012050",
+   "dieuKien": "Loại khác, được sấy bằng không khí nóng (flue-cured)",
+   "nguon": "tax.24012050",
+   "trich": "24012050 - - Loại khác, được sấy bằng không khí nóng (flue-cured)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "240120",
+    "truAnhEm": [
+     "24012010",
+     "24012020",
+     "24012030",
+     "24012040"
+    ],
+    "toTienCoTen": "240120",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "24012090",
+   "dieuKien": "Phân nhóm 2401.20 — dòng biểu thuế ghi \"Loại khác\"",
+   "nguon": "tax.24012090",
+   "trich": "24012090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "240120",
+    "truAnhEm": [
+     "24012010",
+     "24012020",
+     "24012030",
+     "24012040",
+     "24012050"
+    ],
+    "toTienCoTen": "240120",
+    "dinhNghiaDuoc": false
+   }
+  },
+  {
+   "hs": "24013010",
+   "dieuKien": "Cọng thuốc lá",
+   "nguon": "tax.24013010",
+   "trich": "24013010 - - Cọng thuốc lá",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "24013090",
+   "dieuKien": "Phân nhóm 2401.30 — dòng biểu thuế ghi \"Loại khác\"",
+   "nguon": "tax.24013090",
+   "trich": "24013090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "240130",
+    "truAnhEm": [
+     "24013010"
+    ],
+    "toTienCoTen": "240130",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2401",
+    "cap": 4,
+    "cha": "24",
+    "tenVi": "Lá thuốc lá chưa chế biến; phế liệu lá thuốc lá.",
+    "tenEn": "Tobacco, unmanufactured; tobacco refuse",
+    "suyRa": false
+   },
+   {
+    "id": "240110",
+    "cap": 6,
+    "cha": "2401",
+    "tenVi": "Lá thuốc lá chưa tước cọng",
+    "tenEn": "Tobacco, (not stemmed or stripped)",
+    "suyRa": false
+   },
+   {
+    "id": "24011010",
+    "cap": 8,
+    "cha": "240110",
+    "tenVi": "Loại Virginia, đã sấy bằng không khí nóng (flue-cured)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "24011020",
+    "cap": 8,
+    "cha": "240110",
+    "tenVi": "Loại Virginia, trừ loại sấy bằng không khí nóng",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "24011040",
+    "cap": 8,
+    "cha": "240110",
+    "tenVi": "Loại Burley",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "24011050",
+    "cap": 8,
+    "cha": "240110",
+    "tenVi": "Loại khác, được sấy bằng không khí nóng",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "24011090",
+    "cap": 8,
+    "cha": "240110",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "240120",
+    "cap": 6,
+    "cha": "2401",
+    "tenVi": "Lá thuốc lá, đã tước cọng một phần hoặc toàn bộ",
+    "tenEn": "Tobacco; partly or wholly stemmed or stripped",
+    "suyRa": false
+   },
+   {
+    "id": "24012010",
+    "cap": 8,
+    "cha": "240120",
+    "tenVi": "Loại Virginia, đã sấy bằng không khí nóng (flue-cured)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "24012020",
+    "cap": 8,
+    "cha": "240120",
+    "tenVi": "Loại Virginia, trừ loại sấy bằng không khí nóng",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "24012030",
+    "cap": 8,
+    "cha": "240120",
+    "tenVi": "Loại Oriental",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "24012040",
+    "cap": 8,
+    "cha": "240120",
+    "tenVi": "Loại Burley",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "24012050",
+    "cap": 8,
+    "cha": "240120",
+    "tenVi": "Loại khác, được sấy bằng không khí nóng (flue-cured)",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "24012090",
+    "cap": 8,
+    "cha": "240120",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "240130",
+    "cap": 6,
+    "cha": "2401",
+    "tenVi": "Phế liệu lá thuốc lá",
+    "tenEn": "Tobacco refuse",
+    "suyRa": false
+   },
+   {
+    "id": "24013010",
+    "cap": 8,
+    "cha": "240130",
+    "tenVi": "Cọng thuốc lá",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "24013090",
+    "cap": 8,
+    "cha": "240130",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2401.nhom",
+  "tax.24011010",
+  "tax.24011020",
+  "tax.24011040",
+  "tax.24011050",
+  "tax.24011090",
+  "tax.24012010",
+  "tax.24012020",
+  "tax.24012030",
+  "tax.24012040",
+  "tax.24012050",
+  "tax.24012090",
+  "tax.24013010",
+  "tax.24013090",
+  "wco.240110",
+  "wco.240120",
+  "wco.240130"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T09:46:05.002Z",
+  "ms": 0
+ },
+ "kiemTra": {
+  "tong": 17,
+  "dat": 17,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

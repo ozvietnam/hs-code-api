@@ -1,0 +1,33 @@
+{
+ "nhom": "2308",
+ "nguoiSoat": "dev-soat-doc-lap-lo069",
+ "luc": "2026-10-28T16:35:00+07:00",
+ "phamViSoat": "Toàn bộ 4 mục của nhóm 2308 (1 phamVi + 2 dieuKienVao + 1 dong8), đọc cùng tmp/so-tay/nguon/2308.txt (nhom2308.nhom, ch23.chuong, phan23.phan, wco.230800, tax.23080000).",
+ "soat": 4,
+ "giu": 4,
+ "sua": 0,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 0 · GIU 4. Nhóm 23.08 là nhóm \"chưa được chi tiết ở nơi khác\" — đây là trường hợp `dieuKienVao` ĐÚNG: hai điều kiện lấy từ đúng câu ràng buộc của tiêu đề nhóm và câu đó phủ CẢ nhóm (không có phần nào của nhóm mà câu không nói tới) ⇒ mô hình không loại nhầm thành viên hợp lệ ra khỏi nhóm.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom2308.nhom], nguyên cả câu định nghĩa nhóm, không lược gì ⇒ không có chỗ nào nuốt ngoại lệ. `text` diễn đạt lại đúng nội dung câu trích (sản phẩm thực vật, phế thải, phế liệu và sản phẩm phụ từ chế biến công nghiệp vật liệu thực vật; chưa được chi tiết ở nhóm khác; dùng cho chăn nuôi động vật). GHI NHẬN: `text` bỏ các từ \"quá trình\" và \"một số loại\" so với nguồn — đây là rút gọn, KHÔNG thêm nghĩa và không làm đảo chiều mục khẳng định ⇒ không sửa. GIỮ."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom2308.nhom] \"Miễn là chúng chưa được chi tiết ở bất kỳ nhóm nào khác trong Danh mục …\". Đây là câu RÀNG BUỘC (không phải câu định nghĩa thuật ngữ) và nó phủ CẢ nhóm 23.08 ⇒ `dieuKienVao` boolean đúng chỗ, đúng chiều (value=true nghĩa là \"điều kiện này đúng\" — không phải phủ định). `fact` snake_case ASCII, không đụng tên phân nhóm. GIỮ."
+  },
+  {
+   "index": "dieuKienVao[1]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu nguồn: vế \"và là loại được sử dụng cho chăn nuôi động vật\" là điều kiện thứ hai của tiêu đề nhóm (\"of a kind used in animal feeding\") và phủ cả nhóm. Hai mục được runtime nối bằng \"·\" ⇒ đọc thành điều kiện VÀ, đúng ý nguồn (hai điều kiện cùng đúng, không loại trừ nhau — khác với lớp lỗi \"hai dieuKienVao loại trừ nhau\" của lô 027). GIỮ."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23080000]; `dieuKien` rút gọn còn 86 ký tự (dưới trần clip 90) và chỉ dùng từ có trong câu trích; vế \"chưa được chi tiết hoặc ghi ở nơi khác\" đã nằm ở phamVi + 2 dieuKienVao của cùng nhóm nên không mất nghĩa. GIỮ."
+  }
+ ]
+}

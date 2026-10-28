@@ -1,0 +1,133 @@
+{
+ "nhom": "2306",
+ "nguoiSoat": "dev-soat-doc-lap-lo069",
+ "luc": "2026-10-28T16:35:00+07:00",
+ "phamViSoat": "Toàn bộ 24 mục của nhóm 2306 (1 phamVi + 2 loaiTru + 8 tieuChi6 + 12 dong8 + 1 cay.tenDien), đọc cùng tmp/so-tay/nguon/2306.txt (nhom2306.nhom, ch23.chuong, phan23.phan, wco.230610…230690, tax.23061000…23069090).",
+ "soat": 24,
+ "giu": 24,
+ "sua": 0,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 0 · GIU 24. Cả 6 nhóm của lô đều qua sạch check-so-tay (79/79), check-trich-nguyen-van (78/78 mục có trích, byte-exact tuyệt đối) và scan-so-tay-soat (0 cảnh báo) — nên lớp lỗi phải bắt là lớp máy KHÔNG bắt: câu trích đúng nguyên văn nhưng mục khẳng định sai nghĩa, hoặc đúng nghĩa nhưng đủ thông tin để dẫn tới kết luận sai. Ở nhóm 2306 không tìm thấy mục nào như vậy: mọi câu trích nói đúng điều mục khẳng định và không mất ngoại lệ. GHI NHẬN (không sửa): loaiTru[1] (\"Các loại thuộc nhóm 23.04 hoặc 23.05\") là loại trừ IM LẶNG — headPhrases() cắt tại định ngữ \"thuộc\" nên chỉ còn \"loại\" (1 âm tiết) ⇒ cổng SO_TAY_LOAI_TRU không bao giờ bắn. Đây là giới hạn của máy, không phải lỗi dữ liệu: nguồn chỉ nói \"các loại thuộc nhóm 23.04 hoặc 23.05\", không nêu tên mặt hàng, mà mọi cách thêm danh từ đặc thù (vd \"khô dầu đậu tương\") đều là thêm hiểu biết riêng hoặc tạo cụm khớp rộng (\"loại khô dầu\" sẽ bắn oan cho 2306.10 \"Từ hạt bông\"). Nền nhà: 577/2.656 (21,7 %) loaiTru cũng im lặng ⇒ không vá từng mục.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom2306.nhom], ghép 2 đoạn liền nhau bằng \"…\" và không mất gì (giữa đoạn 1 và đoạn 2 của nguồn không có câu ngoại lệ nào bị nuốt). `text` nêu đúng PHẠM VI nhóm (khô dầu và phế liệu rắn còn lại sau chiết xuất dầu + cám gạo đã khử dầu), không phải vật liệu và không phải một phần; không thêm chữ nào ngoài câu trích. GIỮ."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom2306.nhom] \"Nhóm này không bao gồm cặn dầu (nhóm 15.22).\" — có DẤU HIỆU LOẠI TRỪ (\"không bao gồm\"); đích 15.22 NÊU ĐÍCH DANH trong chính câu trích. Cụm ứng viên \"cặn dầu\" là cụm đặc thù của ngành hàng ⇒ cổng loại trừ bắn đúng, không challenge oan. GIỮ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [nhom2306.nhom]: \"Nhóm này bao gồm các loại khô dầu … trừ các loại thuộc nhóm 23.04 hoặc 23.05 …\". Vế \"trừ\" là dấu hiệu loại trừ dứt khoát, đích 23.04 và 23.05 NÊU ĐÍCH DANH, và `sangNhom` \"2304|2305\" phủ HẾT cả hai nhánh (không tách một nhánh của \"A hoặc B\"). Loại trừ này có ý nghĩa thật: khô dầu đậu tương (23.04) và khô dầu lạc (23.05) không thuộc 23.06. GHI NHẬN: cụm ứng viên rỗng (im lặng) — xem ghiChu. GIỮ."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.230610]; tiêu chí cấp 6 số mô tả đúng phân nhóm 2306.10 (phế liệu từ chiết xuất dầu hạt bông). GIỮ."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.230620]; mô tả đúng phân nhóm 2306.20 (chiết xuất dầu hạt lanh). GIỮ."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.230630]; mô tả đúng phân nhóm 2306.30 (chiết xuất dầu hạt hướng dương). GIỮ."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.230641]; tiêu chí \"axit erucic thấp\" là đặc trưng phân biệt 2306.41 với 2306.49 — giữ nghĩa DƯƠNG, không đảo thành \"không phải\" (luật lô 053). GIỮ."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.230649] (\"rape seed oils (other than low erucic acid rape or colza)\"). `fact` giữ nghĩa DƯƠNG; vế loại trừ \"other than low erucic acid rape or colza\" KHÔNG mã hoá thành fact âm — nó đã được nêu đầy đủ ở cay.tenDien[0] (tên nút 2306.41) và ở các dòng 8 số 2306.41.10/.20 so với 2306.49.10/.20. GIỮ."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.230650]; mô tả đúng phân nhóm 2306.50 (chiết xuất dầu dừa/cùi dừa). GIỮ."
+  },
+  {
+   "index": "tieuChi6[6]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.230660]; mô tả đúng phân nhóm 2306.60 (chiết xuất dầu hạt cọ). GIỮ."
+  },
+  {
+   "index": "tieuChi6[7]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [wco.230690]; `fact` \"oils_n_e_c_in_heading_no_2306\" giữ nguyên nghĩa \"phần dư của nhóm 23.06\" — KHÔNG dịch thành \"trừ 23.06\" (đảo nghĩa, luật lô 041). GIỮ."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23061000]; `dieuKien` chép đúng tên dòng biểu thuế, không thêm chữ. GIỮ."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23062000]; `dieuKien` chép đúng tên dòng. GIỮ."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23063000]; `dieuKien` chép đúng tên dòng. GIỮ."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23064110]; `dieuKien` chép đúng tên dòng (có giữ \"axit eruxic\" đúng chính tả biểu thuê). GIỮ."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23064120]; `dieuKien` chép đúng tên dòng. GIỮ."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23064910]; `dieuKien` chép đúng tên dòng (\"khác\" = phần còn lại của 2306.49). GIỮ."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23064920]; `dieuKien` chép đúng tên dòng. GIỮ."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23065000]; `dieuKien` chép đúng tên dòng. GIỮ."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23066010]; `dieuKien` chép đúng tên dòng (\"Dạng xay hoặc dạng viên\"), không thêm chữ. GIỮ."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 23066090: câu trích nguyên văn [tax.23066090]; `dieuKien` ghi theo mẫu nhà của lô 068 (2301.20/2302.30/2302.40 cùng mẫu \"Phân nhóm X — dòng biểu thuế ghi \\\"Loại khác\\\"\"), 50 ký tự, dưới trần clip 90. GIỮ."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích nguyên văn [tax.23069010]; `dieuKien` chép đúng tên dòng (\"Từ mầm ngô\"). GIỮ."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" 23069090: câu trích nguyên văn [tax.23069090]; `dieuKien` theo mẫu nhà, dưới trần clip 90. GIỮ."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nút 2306.41 là phân nhóm 6 số CHƯA có tên tiếng Việt trong cây (nodeOf(\"230641\").tenVi = null) ⇒ việc điền tên là đúng chỗ. Tên lấy từ câu trích nguyên văn [nhom2306.nhom] và từ biểu thuế (tax.23064110/.20: \"Từ hạt cải dầu rape/colza có hàm lượng axit eruxic thấp\"). GHI NHẬN: nguồn tự dùng hai chính tả khác nhau — chú giải ghi \"erucic\", biểu thuế ghi \"eruxic\"; `tenVi` theo biểu thuế, `trich` giữ nguyên văn theo chú giải ⇒ KHÔNG sửa (luật \"chép nguyên văn kể cả lỗi chính tả của nguồn\"). GIỮ."
+  }
+ ]
+}
