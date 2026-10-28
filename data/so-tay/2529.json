@@ -1,0 +1,235 @@
+{
+ "nhom": "2529",
+ "phamVi": {
+  "text": "Tràng thạch (đá bồ tát), lơxit, nephelin và nephelin xienit…khoáng florit là dạng florua canxi tự nhiên.",
+  "nguon": "nhom2529.nhom",
+  "trich": "Tràng thạch (đá bồ tát), Lơxit, nephelin và nephelin xienit bao gồm các silicate phức hợp của nhôm và kim loại kiềm hay kim loại kiềm thổ.…Khoáng Flourit (hoặc florite) là dạng florua canxi tự nhiên, tồn tại ở dạng vỉa khối rắn, có nhiều màu sắc khác nhau",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Cát chứa feldspathic",
+   "sangNhom": "2505",
+   "nguon": "nhom2529.nhom",
+   "trich": "Nhóm này không bao gồm cát chứa feldspathic (nhóm 25.05).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Sản phẩm là cát chứa feldspathic?",
+   "neuCo": "2505",
+   "neuKhong": "2529",
+   "nguon": "nhom2529.nhom",
+   "trich": "Nhóm này không bao gồm cát chứa feldspathic (nhóm 25.05).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "252910",
+   "fact": "trang_thach_da_bo_tat",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom2529.nhom",
+   "trich": "Tràng thạch (đá bồ tát), Lơxit, nephelin và nephelin xienit bao gồm các silicate phức hợp của nhôm và kim loại kiềm hay kim loại kiềm thổ. Chúng được dùng làm các chất gây chảy trong ngành công nghiệp gốm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "252921",
+   "fact": "fluorspar_97_or_less_calcium_fluoride",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.252921",
+   "trich": "252921 Fluorspar; containing by weight 97% or less of calcium fluoride",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "252922",
+   "fact": "fluorspar_more_than_97_calcium_fluoride",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.252922",
+   "trich": "252922 Fluorspar; containing by weight more than 97% of calcium fluoride",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "252930",
+   "fact": "loxit_nephelin_va_nephelin_xienit",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom2529.nhom",
+   "trich": "Tràng thạch (đá bồ tát), Lơxit, nephelin và nephelin xienit bao gồm các silicate phức hợp của nhôm và kim loại kiềm hay kim loại kiềm thổ. Chúng được dùng làm các chất gây chảy trong ngành công nghiệp gốm",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "25291010",
+   "dieuKien": "Potash tràng thạch; soda tràng thạch",
+   "tieuChi": null,
+   "nguon": "sen.25291010",
+   "trich": "…POTASH TRÀNG THẠCH; SODA TRÀNG THẠCH\nTràng thạch thuộc họ khoáng silicat sinh ra trong đá magma.",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "25291090",
+   "dieuKien": "Loại khác",
+   "tieuChi": null,
+   "nguon": "tax.25291090",
+   "trich": "25291090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "252910",
+    "truAnhEm": [
+     "25291010"
+    ],
+    "toTienCoTen": "252910",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "25292100",
+   "dieuKien": "Có chứa canxi florua không quá 97% tính theo khối lượng",
+   "tieuChi": {
+    "fact": "ham_luong_canxi_florua",
+    "op": "<=",
+    "value": 97,
+    "donVi": "%"
+   },
+   "nguon": "tax.25292100",
+   "trich": "25292100 - - Có chứa canxi florua không quá 97% tính theo khối lượng",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "25292200",
+   "dieuKien": "Có chứa canxi florua trên 97% tính theo khối lượng",
+   "tieuChi": {
+    "fact": "ham_luong_canxi_florua",
+    "op": ">",
+    "value": 97,
+    "donVi": "%"
+   },
+   "nguon": "tax.25292200",
+   "trich": "25292200 - - Có chứa canxi florua trên 97% tính theo khối lượng",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "25293000",
+   "dieuKien": "Lơxit; nephelin và nephelin xienit",
+   "tieuChi": null,
+   "nguon": "tax.25293000",
+   "trich": "25293000 - Lơxit; nephelin và nephelin xienit",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2529",
+    "cap": 4,
+    "cha": "25",
+    "tenVi": "Tràng thạch (đá bồ tát); lơxit (leucite), nephelin và nephelin xienit; khoáng fluorite.",
+    "tenEn": "Feldspar; leucite; nepheline and nepheline syenite; fluorspar",
+    "suyRa": false
+   },
+   {
+    "id": "252910",
+    "cap": 6,
+    "cha": "2529",
+    "tenVi": "Tràng thạch (đá bồ tát)",
+    "tenEn": "Feldspar",
+    "suyRa": false
+   },
+   {
+    "id": "25291010",
+    "cap": 8,
+    "cha": "252910",
+    "tenVi": "Potash tràng thạch; soda tràng thạch(SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "25291090",
+    "cap": 8,
+    "cha": "252910",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "25292",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "2529",
+    "tenVi": "Khoáng fluorite",
+    "tenEn": "Fluorspar",
+    "suyRa": true
+   },
+   {
+    "id": "25292100",
+    "cap": 8,
+    "cha": "25292",
+    "tenVi": "Có chứa canxi florua không quá 97% tính theo khối lượng",
+    "tenEn": "Fluorspar; containing by weight 97% or less of calcium fluoride",
+    "suyRa": false,
+    "laPhanNhom": "252921"
+   },
+   {
+    "id": "25292200",
+    "cap": 8,
+    "cha": "25292",
+    "tenVi": "Có chứa canxi florua trên 97% tính theo khối lượng",
+    "tenEn": "Fluorspar; containing by weight more than 97% of calcium fluoride",
+    "suyRa": false,
+    "laPhanNhom": "252922"
+   },
+   {
+    "id": "25293000",
+    "cap": 8,
+    "cha": "2529",
+    "tenVi": "Lơxit; nephelin và nephelin xienit",
+    "tenEn": "Leucite; nepheline and nepheline syenite",
+    "suyRa": false,
+    "laPhanNhom": "252930"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2529.nhom",
+  "sen.25291010",
+  "tax.25291090",
+  "tax.25292100",
+  "tax.25292200",
+  "tax.25293000",
+  "wco.252921",
+  "wco.252922"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T15:22:54.746Z",
+  "ms": 0
+ },
+ "kiemTra": {
+  "tong": 12,
+  "dat": 12,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
