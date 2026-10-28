@@ -1,0 +1,141 @@
+{
+ "nhom": "2505",
+ "phamVi": {
+  "text": "Nhóm này bao gồm tất cả các loại cát tự nhiên ở biển, hồ, sông hoặc mỏ… (1) Cát oxit silic và cát thạch anh… (2) Cát có chứa đất sét bao gồm cát cao lanh… (3) Các loại cát feldspathic",
+  "nguon": "nhom2505.nhom",
+  "trich": "Nhóm này bao gồm tất cả các loại cát tự nhiên ở biển, hồ, sông hoặc mỏ (tức là cát ở dạng các hạt mịn ít hoặc mịn nhiều thu được từ quá trình phân huỷ tự nhiên các khoáng chất), nhưng loại trừ các loại cát và bột thu được bằng nhân tạo, ví dụ bằng cách nghiền (được phân loại ở nhóm 25.17 hoặc ở nhóm cho loại đá có liên quan)…(1) Cát oxit silic và cát thạch anh…(2) Cát có chứa đất sét bao gồm cát cao lanh…(3) Các loại cát feldspathic",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_cat_tu_nhien",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2505.nhom",
+   "trich": "Nhóm này bao gồm tất cả các loại cát tự nhiên ở biển, hồ, sông hoặc mỏ (tức là cát ở dạng các hạt mịn ít hoặc mịn nhiều thu được từ quá trình phân huỷ tự nhiên các khoáng chất), nhưng loại trừ các loại cát và bột thu được bằng nhân tạo, ví dụ bằng cách nghiền (được phân loại ở nhóm 25.17 hoặc ở nhóm cho loại đá có liên quan).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "cát và bột thu được bằng nhân tạo, ví dụ bằng cách nghiền",
+   "sangNhom": "2517",
+   "nguon": "nhom2505.nhom",
+   "trich": "nhưng loại trừ các loại cát và bột thu được bằng nhân tạo, ví dụ bằng cách nghiền (được phân loại ở nhóm 25.17 hoặc ở nhóm cho loại đá có liên quan).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "cát hắc ín hoặc \"cát nhựa đường\"",
+   "sangNhom": "2714",
+   "nguon": "nhom2505.nhom",
+   "trich": "Nhóm này cũng không bao gồm cát hắc ín hoặc \"cát nhựa đường\" (nhóm 27.14).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "250510",
+   "fact": "la_cat_oxit_silic_hoac_cat_thach_anh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.250510",
+   "trich": "250510 Sands; natural, silica and quartz sands, whether or not coloured",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "250590",
+   "fact": "la_cat_oxit_silic_hoac_cat_thach_anh",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "nguon": "wco.250590",
+   "trich": "250590 Sands; natural, (other than silica and quartz sands), whether or not coloured, (other than metal-bearing sands of chapter 26)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "25051000",
+   "dieuKien": "Cát oxit silic và cát thạch anh",
+   "nguon": "tax.25051000",
+   "trich": "25051000 - Cát oxit silic và cát thạch anh",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "25059000",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2505.90",
+   "nguon": "tax.25059000",
+   "trich": "25059000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "2505",
+    "truAnhEm": [
+     "25051000"
+    ],
+    "toTienCoTen": "2505",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2505",
+    "cap": 4,
+    "cha": "25",
+    "tenVi": "Các loại cát tự nhiên, đã hoặc chưa nhuộm màu, trừ cát chứa kim loại thuộc chương 26.",
+    "tenEn": "Sands of all kinds; natural, whether or not coloured, other than metal-bearing sands of chapter 26",
+    "suyRa": false
+   },
+   {
+    "id": "25051000",
+    "cap": 8,
+    "cha": "2505",
+    "tenVi": "Cát oxit silic và cát thạch anh",
+    "tenEn": "Sands; natural, silica and quartz sands, whether or not coloured",
+    "suyRa": false,
+    "laPhanNhom": "250510"
+   },
+   {
+    "id": "25059000",
+    "cap": 8,
+    "cha": "2505",
+    "tenVi": "Loại khác",
+    "tenEn": "Sands; natural, (other than silica and quartz sands), whether or not coloured, (other than metal-bearing sands of chapter 26)",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "250590"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2505.nhom",
+  "tax.25051000",
+  "tax.25059000",
+  "wco.250510",
+  "wco.250590"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T12:15:30.804Z",
+  "ms": 85
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

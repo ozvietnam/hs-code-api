@@ -1,0 +1,140 @@
+{
+ "nhom": "2511",
+ "phamVi": {
+  "text": "Nhóm này chỉ bao gồm bari sulphate ở dạng tự nhiên… và barium carbonate (witherrite)… Witherrite (BaCO3) đã nung, chứa lượng lớn tạp chất barium oxide, vẫn được xếp trong nhóm này.",
+  "nguon": "nhom2511.nhom",
+  "trich": "Nhóm này chỉ bao gồm bari sulphate ở dạng tự nhiên (barytes đôi khi được biết như là khoáng spar nặng) và barium carbonate (witherrite)…Witherrite (BaCO3) đã nung, chứa lượng lớn tạp chất barium oxide, vẫn được xếp trong nhóm này.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_bari_sulphate_hoac_barium_carbonate_tu_nhien",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2511.nhom",
+   "trich": "Nhóm này chỉ bao gồm bari sulphate ở dạng tự nhiên (barytes đôi khi được biết như là khoáng spar nặng) và barium carbonate (witherrite).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Barium Sulphate và Barium carbonate đã tinh chế hoặc được sản xuất bằng phương pháp hoá học",
+   "sangNhom": "2833|2836",
+   "nguon": "nhom2511.nhom",
+   "trich": "Barium Sulphate và Barium carbonate đã tinh chế hoặc được sản xuất bằng phương pháp hoá học bị loại trừ (nhóm 28.33 và 28.36 tương ứng).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "bari oxit tinh chế",
+   "sangNhom": "2816",
+   "nguon": "nhom2511.nhom",
+   "trich": "Nhóm này loại trừ bari oxit tinh chế (nhóm 28.16)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là bari sulphate tự nhiên (barytes) hay là barium carbonate (witherrite)?",
+   "neuCo": "25111000",
+   "neuKhong": "25112000",
+   "nguon": "nhom2511.nhom",
+   "trich": "Nhóm này chỉ bao gồm bari sulphate ở dạng tự nhiên (barytes đôi khi được biết như là khoáng spar nặng) và barium carbonate (witherrite).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "251110",
+   "fact": "la_bari_sulphate_tu_nhien",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.251110",
+   "trich": "251110 Barium sulphate (barytes); natural",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "251120",
+   "fact": "la_barium_carbonate_tu_nhien",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.251120",
+   "trich": "251120 Barium carbonate (witherite); natural, whether or not calcined, other than barium oxide of heading no. 2816",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "25111000",
+   "dieuKien": "Bari sulphat tự nhiên (barytes)",
+   "nguon": "tax.25111000",
+   "trich": "25111000 - Bari sulphat tự nhiên (barytes)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "25112000",
+   "dieuKien": "Bari carbonat tự nhiên (witherite)",
+   "nguon": "tax.25112000",
+   "trich": "25112000 - Bari carbonat tự nhiên (witherite)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2511",
+    "cap": 4,
+    "cha": "25",
+    "tenVi": "Bari sulphat tự nhiên (barytes); bari carbonat tự nhiên (witherite), đã hoặc chưa nung, trừ bari oxit thuộc nhóm 28.16.",
+    "tenEn": "Natural barium sulphate (barytes); natural barium carbonate, (witherite) whether or not calcined, other than barium oxide of heading no. 2816",
+    "suyRa": false
+   },
+   {
+    "id": "25111000",
+    "cap": 8,
+    "cha": "2511",
+    "tenVi": "Bari sulphat tự nhiên (barytes)",
+    "tenEn": "Barium sulphate (barytes); natural",
+    "suyRa": false,
+    "laPhanNhom": "251110"
+   },
+   {
+    "id": "25112000",
+    "cap": 8,
+    "cha": "2511",
+    "tenVi": "Bari carbonat tự nhiên (witherite)",
+    "tenEn": "Barium carbonate (witherite); natural, whether or not calcined, other than barium oxide of heading no. 2816",
+    "suyRa": false,
+    "laPhanNhom": "251120"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2511.nhom",
+  "tax.25111000",
+  "tax.25112000",
+  "wco.251110",
+  "wco.251120"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T12:15:30.810Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

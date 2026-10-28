@@ -1,0 +1,201 @@
+{
+ "nhom": "2510",
+ "phamVi": {
+  "text": "Nhóm này chỉ bao gồm apatite và các canxi phosphate tự nhiên khác… nhôm canxi phosphate tự nhiên và đá phấn chứa phosphate… Các sản phẩm trên vẫn thuộc nhóm này cả khi đã được nghiền",
+  "nguon": "nhom2510.nhom",
+  "trich": "Nhóm này chỉ bao gồm apatite và các canxi phosphate tự nhiên khác (tricalcium phosphate hay phosphorite), nhôm canxi phosphate tự nhiên và đá phấn chứa phosphate…Các sản phẩm trên vẫn thuộc nhóm này cả khi đã được nghiền để sử dụng làm phân bón",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_apatite_va_cac_canxi_phosphate_tu_nhien_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2510.nhom",
+   "trich": "Nhóm này chỉ bao gồm apatite và các canxi phosphate tự nhiên khác (tricalcium phosphate hay phosphorite), nhôm canxi phosphate tự nhiên và đá phấn chứa phosphate",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "các sản phẩm được nung hoặc xử lý nhiệt ngoài mục đích loại bỏ tạp chất",
+   "sangNhom": "3103|3105",
+   "nguon": "nhom2510.nhom",
+   "trich": "Tuy vậy nhóm này không bao gồm các sản phẩm được nung hoặc xử lý nhiệt ngoài mục đích loại bỏ tạp chất (nhóm 31.03 hoặc 31.05).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là apatite hay là canxi phosphate tự nhiên khác, nhôm canxi phosphate tự nhiên hay đá phấn chứa phosphate?",
+   "neuCo": "25101010|25102010",
+   "neuKhong": "25101090|25102090",
+   "nguon": "nhom2510.nhom",
+   "trich": "Nhóm này chỉ bao gồm apatite và các canxi phosphate tự nhiên khác (tricalcium phosphate hay phosphorite), nhôm canxi phosphate tự nhiên và đá phấn chứa phosphate",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "251010",
+   "fact": "chua_nghien",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.251010",
+   "trich": "251010 Natural calcium phosphates, natural aluminium calcium phosphates and phosphatic chalk; unground",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "251020",
+   "fact": "da_nghien",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.251020",
+   "trich": "251020 Natural calcium phosphates, natural aluminium calcium phosphates and phosphatic chalk; ground",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "25101010",
+   "dieuKien": "Apatít (apatite)",
+   "nguon": "tax.25101010",
+   "trich": "25101010 - - Apatít (apatite)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "25101090",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2510.10",
+   "nguon": "tax.25101090",
+   "trich": "25101090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "251010",
+    "truAnhEm": [
+     "25101010"
+    ],
+    "toTienCoTen": "251010",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "25102010",
+   "dieuKien": "Apatít (apatite)",
+   "nguon": "tax.25102010",
+   "trich": "25102010 - - Apatít (apatite)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "25102090",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2510.20",
+   "nguon": "tax.25102090",
+   "trich": "25102090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "251020",
+    "truAnhEm": [
+     "25102010"
+    ],
+    "toTienCoTen": "251020",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2510",
+    "cap": 4,
+    "cha": "25",
+    "tenVi": "Canxi phosphat tự nhiên, canxi phosphat nhôm tự nhiên và đá phấn có chứa phosphat.",
+    "tenEn": "Natural calcium phosphates; natural aluminium calcium phosphates and phosphatic chalk",
+    "suyRa": false
+   },
+   {
+    "id": "251010",
+    "cap": 6,
+    "cha": "2510",
+    "tenVi": "Chưa nghiền",
+    "tenEn": "Natural calcium phosphates, natural aluminium calcium phosphates and phosphatic chalk; unground",
+    "suyRa": false
+   },
+   {
+    "id": "25101010",
+    "cap": 8,
+    "cha": "251010",
+    "tenVi": "Apatít (apatite)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "25101090",
+    "cap": 8,
+    "cha": "251010",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "251020",
+    "cap": 6,
+    "cha": "2510",
+    "tenVi": "Đã nghiền",
+    "tenEn": "Natural calcium phosphates, natural aluminium calcium phosphates and phosphatic chalk; ground",
+    "suyRa": false
+   },
+   {
+    "id": "25102010",
+    "cap": 8,
+    "cha": "251020",
+    "tenVi": "Apatít (apatite)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "25102090",
+    "cap": 8,
+    "cha": "251020",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2510.nhom",
+  "tax.25101010",
+  "tax.25101090",
+  "tax.25102010",
+  "tax.25102090",
+  "wco.251010",
+  "wco.251020"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T12:15:30.809Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 10,
+  "dat": 10,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
