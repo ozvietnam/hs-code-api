@@ -66,7 +66,9 @@ export function thanhIssue({ so, soLan, lanCuoi }) {
 
 function main() {
   const thuc = process.argv.includes('--thuc');
-  const duongDan = (f) => join(process.cwd(), 'data', f);
+  // Đồng bộ lib/data-paths.js: prod đặt HS_DATA_DIR=/data (volume bền)
+  const goc = process.env.HS_DATA_DIR ? process.env.HS_DATA_DIR : join(process.cwd(), 'data');
+  const duongDan = (f) => join(goc, f);
   const jsonl = existsSync(duongDan('legal-status-miss.jsonl'))
     ? readFileSync(duongDan('legal-status-miss.jsonl'), 'utf8') : '';
   const daSinh = existsSync(duongDan('legal-status-issues.json'))

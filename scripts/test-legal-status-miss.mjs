@@ -39,7 +39,8 @@ check('tra đủ 2 số', items.length === 2, `n=${items.length}`);
 check('số có thật: found=true', items[0]?.found === true, JSON.stringify(items[0]).slice(0, 100));
 check('số không có: found=false', items[1]?.found === false);
 
-const missFile = join(dir, 'data', 'legal-status-miss.jsonl');
+// dataPath(): ghi thẳng vào HS_DATA_DIR do test-isolate-data đặt (thư mục riêng của isolate)
+const missFile = join(process.env.HS_DATA_DIR, 'legal-status-miss.jsonl');
 check('JSONL miss đã ghi', existsSync(missFile));
 if (existsSync(missFile)) {
   const lines = readFileSync(missFile, 'utf8').trim().split('\n');
