@@ -1,0 +1,168 @@
+{
+  "nhom": "2711",
+  "nguoiSoat": "dev-soat-doc-lap-lo080",
+  "luc": "2026-10-29T04:30:00+07:00",
+  "phamViSoat": 1,
+  "soat": 28,
+  "giu": 24,
+  "sua": 4,
+  "xoa": 0,
+  "chen": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 2711 (28 mục; đọc thêm 11 tieuChi6 + 9 dong8 nhưng KHÔNG sửa — ngoài phạm vi). Câu trích nguyên văn tuyệt đối trong đúng khối nguồn. SỬA 4. (1) loaiTru[0] — MẤT NGOẠI LỆ, NHIỀU NHẤT: câu nguồn '(a) Các hợp chất hydrocarbon đã được xác định rõ về mặt hóa học (TRỪ METHANE VÀ PROPANE) ở dạng tinh khiết … (nhóm 29.01)' — bản nháp viết nhãn 'hợp chất hydrocarbon tinh khiết vì mục đích thương mại', BỎ mất '(trừ methane và propane)' ⇒ nhãn MÂU THUẪN với chính câu đầu của nhóm ('Methane và propane, kể cả dạng tinh khiết cũng được xếp ở nhóm này'): sẽ đẩy methane/propane sang 29.01. Sửa nhãn + trích (trích cũ còn CẮT CỤT giữa câu ở '…xem chú giải chung', không có dấu lược ⇒ trông như câu trọn; cắt sạch tại '(nhóm 29.01)'). (2) loaiTru[1] — MẤT NGƯỠNG + NGOẠI LỆ: câu nguồn loại trừ butane hóa lỏng trong hộp CHỈ khi 'dung tích không vượt quá 300 cm3' và '(trừ những phần cấu thành của bật lửa …)'; nhãn cũ 'butane hóa lỏng đựng trong hộp chứa nạp bật lửa' bỏ cả hai ⇒ rộng hơn nguồn (bắt cả bình butane lớn). Sửa nhãn + câu hỏi phân biệt. (3) phanBiet[0].hoi — sửa để mang ngoại lệ, và phanBiet[0].trich cắt cụt như trên. GHI NHẬN: `dieuKienVao` ('dạng khí ở 15°C và dưới áp suất 1.013 milibar') đúng — điều kiện VÀO nhóm, nằm trong [nhom2711.nhom], phủ cả nhóm; không lấy từ wco/sen/tax (luật 6). GHI NHẬN: 'Các tỷ lệ phần trăm ở trên được tính theo thể tích đối với các sản phẩm khí' — không đưa vào tieuChi6 vì là đơn vị tính của ngưỡng, không phải tiêu chí của phân nhóm. GHI NHẬN (NGOÀI PHẠM VI — đề xuất người duyệt xử lý): tieuChi6 của 271113 chỉ mã hoá MỘT nhánh của điều kiện 'VÀ': nguồn 'IV. Butane có chứa ít hơn 95% n - butane VÀ ít hơn 95% isobutane' — bản nháp chỉ có do_tinh_khiet_n_butane < 95, mất nhánh isobutane (bài học lô 045: `phanBiet`/`loaiTru` nhánh 'A và B' phải đủ cả hai). GHI NHẬN: `boPhan` = null — nguồn CÓ liệt kê các phần (I)/(II) hoặc (A)/(B)/(C) nhưng nhà chỉ dùng `boPhan` cho 202/626 nhóm (32,3 %) và có 119 nhóm có liệt kê phần mà vẫn để null (0106, 0405, 0406 …) ⇒ KHÔNG tự thêm (đó là quyết định thiết kế dữ liệu của người soạn, không phải lỗi); đề xuất người duyệt cân nhắc nếu muốn nhóm này có `boPhan`.",
+  "thayDoi": [
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "MẤT NGOẠI LỆ (lớp lỗi nặng, máy KHÔNG bắt): câu nguồn '(a) Các hợp chất hydrocarbon đã được xác định rõ về mặt hóa học (TRỪ METHANE VÀ PROPANE) ở dạng tinh khiết hoặc dạng tinh khiết vì mục đích thương mại (nhóm 29.01)' — nhãn bản nháp 'hợp chất hydrocarbon tinh khiết vì mục đích thương mại' BỎ mất '(trừ methane và propane)', làm nhãn MÂU THUẪN với chính câu đầu của nhóm ('Methane và propane, kể cả dạng tinh khiết cũng được xếp ở nhóm này') ⇒ sẽ đẩy methane/propane sang 29.01. Đồng thời `trich` bản nháp CẮT CỤT giữa câu ở '…xem chú giải chung' mà không có dấu lược nên trông như câu trọn. Sửa: nhãn lấy lại đủ định ngữ giới hạn; `trich` cắt sạch tại '(nhóm 29.01)'.",
+      "sua": {
+        "dieuKien": "hợp chất hydrocarbon đã được xác định rõ về mặt hóa học (trừ methane và propane) ở dạng tinh khiết hoặc dạng tinh khiết vì mục đích thương mại",
+        "trich": "(a) Các hợp chất hydrocarbon đã được xác định rõ về mặt hóa học (trừ methane và propane) ở dạng tinh khiết hoặc dạng tinh khiết vì mục đích thương mại (nhóm 29.01)"
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "sua",
+      "lyDo": "MẤT NGƯỠNG + NGOẠI LỆ: câu nguồn chỉ loại trừ butane hóa lỏng trong hộp chứa 'dung tích không vượt quá 300 cm3' và '(trừ những phần cấu thành của bật lửa hút thuốc hoặc dạng bật lửa tương tự)'; nhãn bản nháp 'butane hóa lỏng đựng trong hộp chứa nạp bật lửa' bỏ CẢ HAI ⇒ rộng hơn nguồn (bắt cả bình butane lớn, và nuốt cả ngoại lệ 'phần cấu thành của bật lửa' — vốn là mục loại trừ riêng sang 96.13). Sửa nhãn theo nguyên văn, giữ định ngữ giới hạn của câu.",
+      "sua": {
+        "dieuKien": "butane hóa lỏng đựng trong các hộp chứa dùng để nạp đầy hoặc nạp lại cho bật lửa hút thuốc và các bật lửa tương tự, dung tích không vượt quá 300 cm3 (trừ những phần cấu thành của bật lửa)"
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "Câu hỏi phải mang ngoại lệ '(trừ methane và propane)' (nếu không, hỏi 'là hydrocarbon tinh khiết vì mục đích thương mại' thì methane/propane cũng dính). `trich` kèm theo cắt sạch tại '(nhóm 29.01)' như loaiTru[0].",
+      "sua": {
+        "hoi": "Trừ methane và propane, hàng này là hợp chất hydrocarbon tinh khiết vì mục đích thương mại không?",
+        "trich": "(a) Các hợp chất hydrocarbon đã được xác định rõ về mặt hóa học (trừ methane và propane) ở dạng tinh khiết hoặc dạng tinh khiết vì mục đích thương mại (nhóm 29.01)"
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "Câu hỏi phải mang ngưỡng 'dung tích không vượt quá 300 cm3' để không bắt nhầm bình butane lớn (khớp với nhãn loaiTru[1] đã sửa).",
+      "sua": {
+        "hoi": "Hàng này là butane hóa lỏng trong hộp chứa nạp bật lửa, dung tích không vượt quá 300 cm3 không?"
+      }
+    },
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[4]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[5]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[6]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[7]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[8]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[9]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[10]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[8]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    }
+  ]
+}
