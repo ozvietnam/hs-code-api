@@ -1,0 +1,106 @@
+{
+  "nhom": "2713",
+  "nguoiSoat": "dev-soat-doc-lap-lo080",
+  "luc": "2026-10-29T04:30:00+07:00",
+  "phamViSoat": 1,
+  "soat": 16,
+  "giu": 12,
+  "sua": 4,
+  "xoa": 0,
+  "chen": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 2713 (16 mục; đọc thêm 4 tieuChi6 + 4 dong8 nhưng KHÔNG sửa — ngoài phạm vi). Câu trích nguyên văn tuyệt đối. SỬA 4. (1) loaiTru[0] — ĐẢO CHIỀU LOGIC (lớp lỗi nặng): nguồn '(a) Naphthenate hòa tan trong nước HOẶC các loại sulphonate dầu mỏ tan trong nước …' — bản nháp viết 'naphthenate VÀ sulphonate dầu mỏ tan trong nước', biến phép HOẶC thành phép VÀ ⇒ điều kiện vào 34.02 thành kiểu AND (hàng chỉ có 1 trong 2 thành phần sẽ không khớp). Sửa lại 'hoặc' và trả về nguyên văn câu nguồn. (2) loaiTru[1] — MẤT NHÁNH 'hoặc các dạng sulphonate dầu mỏ không tan trong nước' + MẤT ĐIỀU KIỆN '(với điều kiện chúng không được xếp vào nhóm đặc trưng hơn)' (điều kiện quyết định 38.24 hay nhóm đặc trưng hơn). (3)(4) phanBiet[0][1].hoi sửa cho khớp. GHI NHẬN: `dieuKienVao` ('Bitum, than cốc và các cặn khác được xếp trong nhóm này nếu chúng tạo thành từ việc xử lý dầu đá phiến …') đúng — nằm trong [nhom2713.nhom] và phủ CẢ ba thành phần (A)(B)(C) của nhóm. GHI NHẬN: ba mục loạiTrừ (a)(b)(c) nêu đích danh 34.02 / 38.24 ⇒ hợp lệ; nhánh 'không' của phanBiet là phần BÙ (neuKhong = 2713) — đúng mẫu nhà (922/1166 mục phanBiet trong kho có neuKhong = nhóm của chính nó). GHI NHẬN: dong8[3].dieuKien ('Cặn khác từ dầu mỏ hoặc từ các loại dầu thu được từ các khoáng bi-tum') là RÚT GỌN so với tên biểu thuế ('… từ dầu có nguồn gốc từ dầu mỏ … các khoáng bi-tum') — đúng mẫu nhãn ngắn của nhà (vd 27101960), câu trích nguyên văn nên đọc được; KHÔNG sửa (ngoài phạm vi). GHI NHẬN: `boPhan` = null — nguồn CÓ liệt kê các phần (I)/(II) hoặc (A)/(B)/(C) nhưng nhà chỉ dùng `boPhan` cho 202/626 nhóm (32,3 %) và có 119 nhóm có liệt kê phần mà vẫn để null (0106, 0405, 0406 …) ⇒ KHÔNG tự thêm (đó là quyết định thiết kế dữ liệu của người soạn, không phải lỗi); đề xuất người duyệt cân nhắc nếu muốn nhóm này có `boPhan`.",
+  "thayDoi": [
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "ĐẢO CHIỀU LOGIC (lớp lỗi nặng, máy KHÔNG bắt): nguồn '(a) Naphthenate hòa tan trong nước HOẶC các loại sulphonate dầu mỏ tan trong nước …' — nhãn bản nháp viết 'naphthenate VÀ sulphonate dầu mỏ tan trong nước', biến phép HOẶC thành phép VÀ ⇒ điều kiện vào 34.02 thành kiểu AND (hàng chỉ có một trong hai thành phần sẽ không khớp). Sửa lại 'hoặc' và trả nhãn về nguyên văn câu nguồn.",
+      "sua": {
+        "dieuKien": "naphthenate hòa tan trong nước hoặc các loại sulphonate dầu mỏ tan trong nước"
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "sua",
+      "lyDo": "MẤT NHÁNH 'hoặc các dạng sulphonate dầu mỏ không tan trong nước' + MẤT ĐIỀU KIỆN '(với điều kiện chúng không được xếp vào nhóm đặc trưng hơn)' (điều kiện quyết định 38.24 hay nhóm đặc trưng hơn). Sửa nhãn theo nguyên văn.",
+      "sua": {
+        "dieuKien": "naphthenate không hòa tan trong nước hoặc các dạng sulphonate dầu mỏ không tan trong nước (với điều kiện chúng không được xếp vào nhóm đặc trưng hơn)"
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "Câu hỏi phải dùng 'hoặc' đúng như nguồn (khớp với nhãn loaiTru[0] đã sửa) — tránh hỏi theo kiểu AND.",
+      "sua": {
+        "hoi": "Hàng này là naphthenate hòa tan trong nước hoặc các loại sulphonate dầu mỏ tan trong nước không?"
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "Câu hỏi phải phủ cả nhánh 'các dạng sulphonate dầu mỏ không tan trong nước' của nguồn.",
+      "sua": {
+        "hoi": "Hàng này là naphthenate không hòa tan trong nước hoặc các dạng sulphonate dầu mỏ không tan trong nước không?"
+      }
+    },
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    }
+  ]
+}

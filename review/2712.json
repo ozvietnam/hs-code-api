@@ -1,0 +1,125 @@
+{
+  "nhom": "2712",
+  "nguoiSoat": "dev-soat-doc-lap-lo080",
+  "luc": "2026-10-29T04:30:00+07:00",
+  "phamViSoat": 1,
+  "soat": 18,
+  "giu": 11,
+  "sua": 7,
+  "xoa": 0,
+  "chen": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 2712 (18 mục; đọc thêm 3 tieuChi6 + 4 dong8 nhưng KHÔNG sửa — ngoài phạm vi). Câu trích nguyên văn tuyệt đối. SỬA 7. (1) phamVi.text — LỚP LỖI MÁY KHÔNG BẮT (trường văn xuất nói điều câu trích không nói): text viết 'Vazơlin (petroleum jelly)' nhưng câu trích chỉ có 'Vazơlin nhờn khi sờ.' (câu đầu của khối nhom2712 bị nhiễu khi trích xuất) — cụm '(petroleum jelly)' KHÔNG có trong câu trích. Sửa: bỏ '(petroleum jelly)' khỏi `text`, giữ nguyên `trich` (nguyên văn). (2) loaiTru[2] — MẤT NHÁNH 'hoặc': nguồn '(a) Sáp nhân tạo thu được từ sự biến đổi hóa học của sáp than non HOẶC từ các sáp khoáng khác', bản nháp chỉ 'từ sáp than non'. (3) loaiTru[3] — MẤT ĐIỀU KIỆN 'không nhũ hóa hoặc chứa dung môi' + nhánh 'sáp thực vật hoặc sáp nhân tạo'. (4) loaiTru[4] — MẤT NHÁNH 'các nguyên liệu khác' + ĐIỀU KIỆN 'với điều kiện là chúng có đặc tính của sáp' (điều kiện quyết định 3404 hay 2712). (5)(6)(7) phanBiet[2][3][4].hoi — sửa cho khớp nhãn, có đủ nhánh/điều kiện. GHI NHẬN: `dieuKienVao` rỗng là ĐÚNG — câu 'Để được xếp vào nhóm này, Vazơlin … không thấp hơn 30°C …' CHỈ ràng buộc phần (A) (Vazơlin, tức phân nhóm 2712.10), KHÔNG phủ phần (B) (sáp paraffin, sáp khoáng) ⇒ đặt vào dieuKienVao sẽ phủ sai cả nhóm; bản nháp đã đặt 4 ngưỡng đó vào tieuChi6[271210] + dong8[27121000] — đúng chỗ. GHI NHẬN (NGOÀI PHẠM VI — đề xuất người duyệt xử lý): nguồn nêu BỐN ngưỡng vào nhóm cho Vazơlin (điểm đông đặc ≥ 30°C; tỷ trọng ở 70°C < 0,942 g/cm3; độ thấm qua phễu ≥ 350 theo ISO 2137; độ thấm ≥ 80 theo ASTM D 937) — bản nháp chỉ mã hoá ngưỡng 30°C. Ba ngưỡng còn lại chưa mã hoá; riêng ngưỡng 'không được ít hơn 80' có dấu hiệu NGƯỢC CHIỀU với WCO (ASTM D 937 là 'không lớn hơn 80') nên em KHÔNG tự mã hoá — đề xuất người duyệt đối chiếu bản WCO gốc rồi quyết định. GHI NHẬN: `boPhan` = null — nguồn CÓ liệt kê các phần (I)/(II) hoặc (A)/(B)/(C) nhưng nhà chỉ dùng `boPhan` cho 202/626 nhóm (32,3 %) và có 119 nhóm có liệt kê phần mà vẫn để null (0106, 0405, 0406 …) ⇒ KHÔNG tự thêm (đó là quyết định thiết kế dữ liệu của người soạn, không phải lỗi); đề xuất người duyệt cân nhắc nếu muốn nhóm này có `boPhan`.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "LỚP LỖI MÁY KHÔNG BẮT (trường văn xuất nói điều câu trích KHÔNG nói): `text` viết 'Vazơlin (petroleum jelly)' nhưng câu trích của nhóm chỉ có 'Vazơlin nhờn khi sờ.' (câu đầu khối bị nhiễu khi trích xuất) — cụm '(petroleum jelly)' KHÔNG có trong câu trích. Sửa: bỏ '(petroleum jelly)' khỏi `text`; `trich` giữ nguyên (nguyên văn, không sửa nguồn).",
+      "sua": {
+        "text": "Vazơlin và các loại sáp khoáng: sáp paraffin, sáp dầu mỏ vi tinh thế, sáp mềm, ozokerite, sáp than non, sáp than bùn, các loại sáp khoáng khác và sản phẩm tương tự thu được bằng quy trình tổng hợp."
+      }
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "sua",
+      "lyDo": "MẤT NHÁNH 'hoặc' (lớp lỗi SOAT-LO: một nhánh của 'A hoặc B' bị tách/bỏ): nguồn '(a) Sáp nhân tạo thu được từ sự biến đổi hóa học của sáp than non HOẶC từ các sáp khoáng khác' — nhãn bản nháp chỉ '…từ sáp than non'. Sửa nhãn theo nguyên văn.",
+      "sua": {
+        "dieuKien": "sáp nhân tạo thu được từ sự biến đổi hóa học của sáp than non hoặc từ các sáp khoáng khác"
+      }
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "sua",
+      "lyDo": "MẤT ĐIỀU KIỆN + NHÁNH: nguồn '(b) Hỗn hợp, KHÔNG NHŨ HÓA HOẶC CHỨA DUNG MÔI, bao gồm: … (i) Các loại sáp của nhóm này trộn với sáp động vật (kể cả mỡ cá voi) sáp thực vật hoặc sáp nhân tạo.' — nhãn bản nháp 'hỗn hợp sáp trộn với sáp động vật' bỏ cả điều kiện quyết định (3404 hay 2712) lẫn nhánh sáp thực vật/sáp nhân tạo. Sửa nhãn theo nguyên văn.",
+      "sua": {
+        "dieuKien": "hỗn hợp không nhũ hóa hoặc chứa dung môi, gồm sáp của nhóm này trộn với sáp động vật (kể cả mỡ cá voi), sáp thực vật hoặc sáp nhân tạo"
+      }
+    },
+    {
+      "index": "loaiTru[4]",
+      "hanhDong": "sua",
+      "lyDo": "MẤT NHÁNH + ĐIỀU KIỆN: nguồn '(ii) Các loại sáp của nhóm này trộn với chất béo, nhựa, các chất khoáng HOẶC CÁC NGUYÊN LIỆU KHÁC VỚI ĐIỀU KIỆN LÀ CHÚNG CÓ ĐẶC TÍNH CỦA SÁP.' — nhãn bản nháp bỏ cả nhánh 'các nguyên liệu khác' lẫn điều kiện 'có đặc tính của sáp'. Sửa nhãn theo nguyên văn.",
+      "sua": {
+        "dieuKien": "hỗn hợp sáp của nhóm này trộn với chất béo, nhựa, các chất khoáng hoặc các nguyên liệu khác, với điều kiện là chúng có đặc tính của sáp"
+      }
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "sua",
+      "lyDo": "Câu hỏi phải phủ TRỌN mỗi nhánh của nguồn (thiếu nhánh 'hoặc từ các sáp khoáng khác').",
+      "sua": {
+        "hoi": "Sáp này là sáp nhân tạo thu được từ sự biến đổi hóa học của sáp than non hoặc từ các sáp khoáng khác không?"
+      }
+    },
+    {
+      "index": "phanBiet[3]",
+      "hanhDong": "sua",
+      "lyDo": "Câu hỏi phải mang điều kiện 'không nhũ hóa hoặc chứa dung môi' (quyết định 3404 hay 2712) và các nhánh sáp thực vật/sáp nhân tạo.",
+      "sua": {
+        "hoi": "Sáp này là hỗn hợp không nhũ hóa hoặc chứa dung môi, trộn sáp động vật, thực vật hoặc nhân tạo không?"
+      }
+    },
+    {
+      "index": "phanBiet[4]",
+      "hanhDong": "sua",
+      "lyDo": "Câu hỏi phải phủ nhánh 'các nguyên liệu khác' của nguồn (thiếu nhánh thì hàng có nguyên liệu lạ sẽ không được hỏi).",
+      "sua": {
+        "hoi": "Sáp này là hỗn hợp sáp của nhóm này trộn với chất béo, nhựa, các chất khoáng hoặc các nguyên liệu khác không?"
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    }
+  ]
+}
