@@ -1,0 +1,262 @@
+{
+ "nhom": "2207",
+ "phamVi": {
+  "text": "Cồn ê-ti-lích chưa biến tính có nồng độ cồn tính theo thể tích từ 80% trở lên; cồn ê-ti-lích và rượu mạnh khác, đã biến tính, ở mọi nồng độ.",
+  "nguon": "nhom2207.nhom",
+  "trich": "(1) Cồn ê-ti-lích chưa biến tính có nồng độ cồn tính theo thể tích từ 80% trở lên.…(2) Cồn ê-ti-lích và rượu mạnh khác, đã biến tính, ở mọi nồng độ.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "khong_phai_con_etilic_chua_bien_tinh_duoi_80",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2207.nhom",
+   "trich": "(a) Cồn ê-ti-lích chưa biến tính có nồng độ cồn theo thể tích dưới 80% (nhóm 22.08).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "khong_phai_ruou_manh_khac_chua_bien_tinh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2207.nhom",
+   "trich": "(b) Rượu mạnh khác (trừ loại đã biến tính) (nhóm 22.08).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "khong_phai_nhien_lieu_ran_ban_ran_co_thanh_phan_co_ban_la_con",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2207.nhom",
+   "trich": "(c) Các nhiên liệu ở dạng rắn và bán rắn có thành phần cơ bản là cồn (thường được bán trên thị trường với tên gọi là “cồn đóng rắn”) (nhóm 36.06).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Cồn ê-ti-lích chưa biến tính, nồng độ cồn dưới 80%",
+   "sangNhom": "2208",
+   "nguon": "nhom2207.nhom",
+   "trich": "(a) Cồn ê-ti-lích chưa biến tính có nồng độ cồn theo thể tích dưới 80% (nhóm 22.08).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Rượu mạnh khác (trừ loại đã biến tính)",
+   "sangNhom": "2208",
+   "nguon": "nhom2207.nhom",
+   "trich": "(b) Rượu mạnh khác (trừ loại đã biến tính) (nhóm 22.08).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Các nhiên liệu ở dạng rắn và bán rắn có thành phần cơ bản là cồn",
+   "sangNhom": "3606",
+   "nguon": "nhom2207.nhom",
+   "trich": "(c) Các nhiên liệu ở dạng rắn và bán rắn có thành phần cơ bản là cồn…(nhóm 36.06).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải là cồn ê-ti-lích chưa biến tính có nồng độ cồn theo thể tích dưới 80% không?",
+   "neuCo": "2208",
+   "neuKhong": "2207",
+   "nguon": "nhom2207.nhom",
+   "trich": "(a) Cồn ê-ti-lích chưa biến tính có nồng độ cồn theo thể tích dưới 80% (nhóm 22.08).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hoi": "Hàng có phải là rượu mạnh khác chưa biến tính không?",
+   "neuCo": "2208",
+   "neuKhong": "2207",
+   "nguon": "nhom2207.nhom",
+   "trich": "(b) Rượu mạnh khác (trừ loại đã biến tính) (nhóm 22.08).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "220710",
+   "fact": "nong_do_con_tinh_theo_the_tich",
+   "op": ">=",
+   "value": 80,
+   "donVi": "%",
+   "nguon": "nhom2207.nhom",
+   "trich": "(1) Cồn ê-ti-lích chưa biến tính có nồng độ cồn tính theo thể tích từ 80% trở lên.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "220720",
+   "fact": "ruou_manh_da_bien_tinh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom2207.nhom",
+   "trich": "(2) Cồn ê-ti-lích và rượu mạnh khác, đã biến tính, ở mọi nồng độ.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "22071000",
+   "dieuKien": "Cồn etylic chưa biến tính có nồng độ cồn từ 80% trở lên tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": ">=",
+    "value": 80,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22071000",
+   "trich": "22071000 - Cồn etylic chưa biến tính có nồng độ cồn từ 80% trở lên tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22072011",
+   "dieuKien": "Cồn etylic có nồng độ trên 99% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": ">",
+    "value": 99,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22072011",
+   "trich": "22072011 - - - Cồn etylic có nồng độ trên 99% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22072019",
+   "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 2207.201, trừ 22072011",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.220720",
+   "trich": "220720 Ethyl alcohol and other spirits; denatured, of any strength",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "2207201",
+    "truAnhEm": [
+     "22072011"
+    ],
+    "toTienCoTen": "220720",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "22072090",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2207.20",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.220720",
+   "trich": "220720 Ethyl alcohol and other spirits; denatured, of any strength",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "220720",
+    "truAnhEm": [
+     "2207201"
+    ],
+    "toTienCoTen": "220720",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "boPhan": {
+  "quyTac": "Nhóm gồm: (1) cồn ê-ti-lích chưa biến tính có nồng độ cồn tính theo thể tích từ 80% trở lên; (2) cồn ê-ti-lích và rượu mạnh khác, đã biến tính, ở mọi nồng độ.",
+  "tomTat": "Cồn ê-ti-lích chưa biến tính có nồng độ cồn tính theo thể tích từ 80% trở lên; cồn ê-ti-lích và rượu mạnh khác, đã biến tính, ở mọi nồng độ.",
+  "nguon": "nhom2207.nhom",
+  "trich": "(1) Cồn ê-ti-lích chưa biến tính có nồng độ cồn tính theo thể tích từ 80% trở lên.…(2) Cồn ê-ti-lích và rượu mạnh khác, đã biến tính, ở mọi nồng độ.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2207",
+    "cap": 4,
+    "cha": "22",
+    "tenVi": "Cồn etylic chưa biến tính có nồng độ cồn từ 80% trở lên tính theo thể tích; cồn etylic và rượu mạnh khác, đã biến tính, ở mọi nồng độ.",
+    "tenEn": "Ethyl alcohol, undenatured; of an alcoholic strength by volume of 80% vol. or higher; ethyl alcohol and other spirits, denatured, of any strength",
+    "suyRa": false
+   },
+   {
+    "id": "22071000",
+    "cap": 8,
+    "cha": "2207",
+    "tenVi": "Cồn etylic chưa biến tính có nồng độ cồn từ 80% trở lên tính theo thể tích",
+    "tenEn": "Undenatured ethyl alcohol; of an alcoholic strength by volume of 80% vol. or higher",
+    "suyRa": false,
+    "laPhanNhom": "220710"
+   },
+   {
+    "id": "220720",
+    "cap": 6,
+    "cha": "2207",
+    "tenVi": "Cồn etylic và rượu mạnh khác, đã biến tính, ở mọi nồng độ",
+    "tenEn": "Ethyl alcohol and other spirits; denatured, of any strength",
+    "suyRa": false
+   },
+   {
+    "id": "2207201",
+    "cap": "TIEU_DE_QG",
+    "cha": "220720",
+    "tenVi": "Cồn etylic đã biến tính, kể cả rượu mạnh đã methyl hoá",
+    "tenEn": "Denatured ethyl alcohol, including methylated spirits",
+    "suyRa": true
+   },
+   {
+    "id": "22072011",
+    "cap": 8,
+    "cha": "2207201",
+    "tenVi": "Cồn etylic có nồng độ trên 99% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22072019",
+    "cap": 8,
+    "cha": "2207201",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "22072090",
+    "cap": 8,
+    "cha": "220720",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2207.nhom",
+  "tax.22071000",
+  "tax.22072011",
+  "wco.220720"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T05:58:39.642Z",
+  "ms": 0
+ },
+ "kiemTra": {
+  "tong": 16,
+  "dat": 16,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

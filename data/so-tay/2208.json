@@ -1,0 +1,657 @@
+{
+ "nhom": "2208",
+ "phamVi": {
+  "text": "Các loại rượu với bất cứ nồng độ cồn nào: (A) rượu mạnh thu được bằng việc chưng cất rượu vang nho, vang táo hoặc các loại đồ uống đã được lên men khác; (B) rượu mùi; (C) các loại đồ uống có nồng độ cồn cao khác.",
+  "nguon": "nhom2208.nhom",
+  "trich": "Nhóm này bao gồm các loại rượu với bất cứ nồng độ cồn nào:…(A) Rượu mạnh thu được bằng việc chưng cất rượu vang nho, vang táo hoặc các loại đồ uống đã được lên men khác…(B) Rượu mùi…(C) Tất cả các loại đồ uống có nồng độ cồn cao khác không thuộc bất cứ nhóm nào trước đó trong Chương này.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "khong_phai_ruou_co_thanh_phan_co_ban_la_ruou_vang_nho_tuoi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2208.nhom",
+   "trich": "(a) Rượu vermouth và các loại rượu khai vị khác có thành phần cơ bản là rượu vang nho tươi (nhóm 22.05).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "fact": "khong_phai_con_etilic_va_ruou_manh_da_bien_tinh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2208.nhom",
+   "trich": "(b) Cồn ê-ti-lích và rượu mạnh khác, đã biến tính (ở mọi nồng độ), hoặc cồn ê-ty-lích chưa biến tính có nồng độ cồn từ 80% trở lên tính theo thể tích (nhóm 22.07).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Rượu vermouth và các loại rượu khai vị khác có thành phần cơ bản là rượu vang nho tươi",
+   "sangNhom": "2205",
+   "nguon": "nhom2208.nhom",
+   "trich": "(a) Rượu vermouth và các loại rượu khai vị khác có thành phần cơ bản là rượu vang nho tươi (nhóm 22.05).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Cồn ê-ti-lích và rượu mạnh khác, đã biến tính, hoặc cồn ê-ty-lích chưa biến tính có nồng độ cồn từ 80% trở lên",
+   "sangNhom": "2207",
+   "nguon": "nhom2208.nhom",
+   "trich": "(b) Cồn ê-ti-lích và rượu mạnh khác, đã biến tính (ở mọi nồng độ), hoặc cồn ê-ty-lích chưa biến tính có nồng độ cồn từ 80% trở lên tính theo thể tích (nhóm 22.07).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải là rượu vermouth hoặc rượu khai vị có thành phần cơ bản là rượu vang nho tươi không?",
+   "neuCo": "2205",
+   "neuKhong": "2208",
+   "nguon": "nhom2208.nhom",
+   "trich": "(a) Rượu vermouth và các loại rượu khai vị khác có thành phần cơ bản là rượu vang nho tươi (nhóm 22.05).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "hoi": "Hàng có phải là cồn hoặc rượu mạnh khác đã biến tính, hoặc cồn chưa biến tính từ 80% trở lên không?",
+   "neuCo": "2207",
+   "neuKhong": "2208",
+   "nguon": "nhom2208.nhom",
+   "trich": "(b) Cồn ê-ti-lích và rượu mạnh khác, đã biến tính (ở mọi nồng độ), hoặc cồn ê-ty-lích chưa biến tính có nồng độ cồn từ 80% trở lên tính theo thể tích (nhóm 22.07).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "220820",
+   "fact": "ruou_manh_thu_duoc_tu_viec_chung_cat_ruou_vang_nho_hoac_ba_nho",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom2208.nhom",
+   "trich": "(1) Rượu mạnh thu được từ việc chưng cất rượu vang nho hoặc từ bã nho (Cognac, armagnac, brandy, grappa, pisco, singani,...).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "220830",
+   "fact": "ruou_whisky_va_ruou_manh_khac_chung_cat_hem_ruou_hat_ngu_coc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom2208.nhom",
+   "trich": "(2) Rượu whisky và các loại rượu mạnh khác thu được bằng việc chưng cất hèm rượu của hạt ngũ cốc (đại mạch, yến mạch, mạch đen, lúa mì, ngô,...).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "220840",
+   "fact": "ruou_manh_chung_cat_san_pham_mia_duong_da_len_men",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom2208.nhom",
+   "trich": "(3) Rượu mạnh thu được từ việc chưng cất các sản phẩm đã lên men của mía đường (nước ép mía đường, xirô mía đường, mật mía đường), ví dụ, rượu rum, tafia, cachaca.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "220850",
+   "fact": "ruou_gin_hoac_ruou_geneva",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom2208.nhom",
+   "trich": "(4) Các loại đồ uống có cồn được biết tới dưới tên gọi là rượu gin hoặc rượu Geneva, có chứa các thành phần hương liệu của quả bách xù.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "220860",
+   "fact": "ruou_vodka_chung_cat_hem_da_len_men",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom2208.nhom",
+   "trich": "(5) Rượu vodka thu được từ việc chưng cất hèm đã lên men của các sản phẩm nông nghiệp (ví dụ, ngũ cốc, khoai tây) và đôi khi được tiếp tục xử lý bằng than hoạt tính hoặc carbon.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "220870",
+   "fact": "ruou_mu_i",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom2208.nhom",
+   "trich": "(B) Rượu mùi, là loại đồ uống có nồng độ cồn cao, mà trong đó người ta thường cho thêm đường, mật ong hoặc chất tạo ngọt tự nhiên khác và các chiết xuất hoặc tinh chất",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "220890",
+   "fact": "ruou_manh_ruou_mu_i_va_cac_do_uoc_co_ruou_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.220890",
+   "trich": "220890 Spirits, liqueurs and other spirituous beverages; n.e.c. in heading no. 2208",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "22082050",
+   "dieuKien": "Rượu brandy",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.22082050",
+   "trich": "22082050 - - Rượu brandy",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22082090",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2208.20",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.220820",
+   "trich": "220820 Spirits obtained by distilling grape wine or grape marc",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "220820",
+    "truAnhEm": [
+     "22082050"
+    ],
+    "toTienCoTen": "220820",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "22083010",
+   "dieuKien": "Được đựng trong đồ chứa trên 5 lít",
+   "tieuChi": {
+    "fact": "dung_tich_dong_dung",
+    "op": ">",
+    "value": 5,
+    "donVi": "lít"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22083010",
+   "trich": "22083010 - - Được đựng trong đồ chứa trên 5 lít",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22083090",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2208.30",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.220830",
+   "trich": "220830 Whiskies",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "220830",
+    "truAnhEm": [
+     "22083010"
+    ],
+    "toTienCoTen": "220830",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "22084000",
+   "dieuKien": "Rượu rum và rượu mạnh khác được cất từ các sản phẩm mía đường lên men",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.22084000",
+   "trich": "22084000 - Rượu rum và rượu mạnh khác được cất từ các sản phẩm mía đường lên men",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22085000",
+   "dieuKien": "Rượu gin và rượu Geneva",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.22085000",
+   "trich": "22085000 - Rượu gin và rượu Geneva",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22086000",
+   "dieuKien": "Rượu vodka",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.22086000",
+   "trich": "22086000 - Rượu vodka",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22087010",
+   "dieuKien": "Có nồng độ cồn không quá 57% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 57,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22087010",
+   "trich": "22087010 - - Có nồng độ cồn không quá 57% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22087090",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2208.70",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.220870",
+   "trich": "220870 Liqueurs and cordials",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "220870",
+    "truAnhEm": [
+     "22087010"
+    ],
+    "toTienCoTen": "220870",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "22089010",
+   "dieuKien": "Rượu bổ sam-su có nồng độ cồn không quá 40% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 40,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22089010",
+   "trich": "22089010 - - Rượu bổ sam-su có nồng độ cồn không quá 40% tính theo thể tích (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22089020",
+   "dieuKien": "Rượu bổ sam-su có nồng độ cồn trên 40% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": ">",
+    "value": 40,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22089020",
+   "trich": "22089020 - - Rượu bổ sam-su có nồng độ cồn trên 40% tính theo thể tích(SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22089030",
+   "dieuKien": "Rượu sam-su khác có nồng độ cồn không quá 40% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 40,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22089030",
+   "trich": "22089030 - - Rượu sam-su khác có nồng độ cồn không quá 40% tính theo thể tích (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22089040",
+   "dieuKien": "Rượu sam-su khác có nồng độ cồn trên 40% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": ">",
+    "value": 40,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22089040",
+   "trich": "22089040 - - Rượu sam-su khác có nồng độ cồn trên 40% tính theo thể tích (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22089050",
+   "dieuKien": "Rượu arrack hoặc rượu dứa có nồng độ cồn không quá 40% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 40,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22089050",
+   "trich": "22089050 - - Rượu arrack hoặc rượu dứa có nồng độ cồn không quá 40% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22089060",
+   "dieuKien": "Rượu arrack hoặc rượu dứa có nồng độ cồn trên 40% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": ">",
+    "value": 40,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22089060",
+   "trich": "22089060 - - Rượu arrack hoặc rượu dứa có nồng độ cồn trên 40% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22089070",
+   "dieuKien": "Rượu đắng và các loại đồ uống tương tự có nồng độ cồn không quá 57% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 57,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22089070",
+   "trich": "22089070 - - Rượu đắng và các loại đồ uống tương tự có nồng độ cồn không quá 57% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22089080",
+   "dieuKien": "Rượu đắng và các loại đồ uống tương tự có nồng độ cồn trên 57% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": ">",
+    "value": 57,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22089080",
+   "trich": "22089080 - - Rượu đắng và các loại đồ uống tương tự có nồng độ cồn trên 57% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22089091",
+   "dieuKien": "Có nồng độ cồn không quá 1,14% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 1.14,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22089091",
+   "trich": "22089091 - - - Có nồng độ cồn không quá 1,14% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22089099",
+   "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 2208.909, trừ 22089091",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.220890",
+   "trich": "220890 Spirits, liqueurs and other spirituous beverages; n.e.c. in heading no. 2208",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "2208909",
+    "truAnhEm": [
+     "22089091"
+    ],
+    "toTienCoTen": "220890",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "boPhan": {
+  "quyTac": "Nhóm gồm các phần: (A) rượu mạnh; (B) rượu mùi; (C) các loại đồ uống có nồng độ cồn cao khác không thuộc bất cứ nhóm nào trước đó trong Chương này.",
+  "tomTat": "(A) rượu mạnh; (B) rượu mùi; (C) các loại đồ uống có nồng độ cồn cao khác.",
+  "nguon": "nhom2208.nhom",
+  "trich": "Nhóm này bao gồm các loại rượu với bất cứ nồng độ cồn nào:…(A) Rượu mạnh…(B) Rượu mùi…(C) Tất cả các loại đồ uống có nồng độ cồn cao khác không thuộc bất cứ nhóm nào trước đó trong Chương này.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2208",
+    "cap": 4,
+    "cha": "22",
+    "tenVi": "Cồn etylic chưa biến tính có nồng độ cồn dưới 80% tính theo thể tích; rượu mạnh, rượu mùi và đồ uống có rượu khác.",
+    "tenEn": "Ethyl alcohol, undenatured; of an alcoholic strength by volume of less than 80% volume; spirits, liqueurs and other spirituous beverages",
+    "suyRa": false
+   },
+   {
+    "id": "220820",
+    "cap": 6,
+    "cha": "2208",
+    "tenVi": "Rượu mạnh thu được từ cất rượu vang nho hoặc bã nho",
+    "tenEn": "Spirits obtained by distilling grape wine or grape marc",
+    "suyRa": false
+   },
+   {
+    "id": "22082050",
+    "cap": 8,
+    "cha": "220820",
+    "tenVi": "Rượu brandy",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22082090",
+    "cap": 8,
+    "cha": "220820",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "220830",
+    "cap": 6,
+    "cha": "2208",
+    "tenVi": "Rượu whisky",
+    "tenEn": "Whiskies",
+    "suyRa": false
+   },
+   {
+    "id": "22083010",
+    "cap": 8,
+    "cha": "220830",
+    "tenVi": "Được đựng trong đồ chứa trên 5 lít",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22083090",
+    "cap": 8,
+    "cha": "220830",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "22084000",
+    "cap": 8,
+    "cha": "2208",
+    "tenVi": "Rượu rum và rượu mạnh khác được cất từ các sản phẩm mía đường lên men",
+    "tenEn": "Rum and other spirits obtained by distilling fermented sugar-cane products",
+    "suyRa": false,
+    "laPhanNhom": "220840"
+   },
+   {
+    "id": "22085000",
+    "cap": 8,
+    "cha": "2208",
+    "tenVi": "Rượu gin và rượu Geneva",
+    "tenEn": "Gin and geneva",
+    "suyRa": false,
+    "laPhanNhom": "220850"
+   },
+   {
+    "id": "22086000",
+    "cap": 8,
+    "cha": "2208",
+    "tenVi": "Rượu vodka",
+    "tenEn": "Vodka",
+    "suyRa": false,
+    "laPhanNhom": "220860"
+   },
+   {
+    "id": "220870",
+    "cap": 6,
+    "cha": "2208",
+    "tenVi": "Rượu mùi",
+    "tenEn": "Liqueurs and cordials",
+    "suyRa": false
+   },
+   {
+    "id": "22087010",
+    "cap": 8,
+    "cha": "220870",
+    "tenVi": "Có nồng độ cồn không quá 57% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22087090",
+    "cap": 8,
+    "cha": "220870",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "220890",
+    "cap": 6,
+    "cha": "2208",
+    "tenVi": "Loại khác",
+    "tenEn": "Spirits, liqueurs and other spirituous beverages; n.e.c. in heading no. 2208",
+    "suyRa": false
+   },
+   {
+    "id": "22089010",
+    "cap": 8,
+    "cha": "220890",
+    "tenVi": "Rượu bổ sam-su có nồng độ cồn không quá 40% tính theo thể tích (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22089020",
+    "cap": 8,
+    "cha": "220890",
+    "tenVi": "Rượu bổ sam-su có nồng độ cồn trên 40% tính theo thể tích(SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22089030",
+    "cap": 8,
+    "cha": "220890",
+    "tenVi": "Rượu sam-su khác có nồng độ cồn không quá 40% tính theo thể tích (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22089040",
+    "cap": 8,
+    "cha": "220890",
+    "tenVi": "Rượu sam-su khác có nồng độ cồn trên 40% tính theo thể tích (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22089050",
+    "cap": 8,
+    "cha": "220890",
+    "tenVi": "Rượu arrack hoặc rượu dứa có nồng độ cồn không quá 40% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22089060",
+    "cap": 8,
+    "cha": "220890",
+    "tenVi": "Rượu arrack hoặc rượu dứa có nồng độ cồn trên 40% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22089070",
+    "cap": 8,
+    "cha": "220890",
+    "tenVi": "Rượu đắng và các loại đồ uống tương tự có nồng độ cồn không quá 57% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22089080",
+    "cap": 8,
+    "cha": "220890",
+    "tenVi": "Rượu đắng và các loại đồ uống tương tự có nồng độ cồn trên 57% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "2208909",
+    "cap": "TIEU_DE_QG",
+    "cha": "220890",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "22089091",
+    "cap": 8,
+    "cha": "2208909",
+    "tenVi": "Có nồng độ cồn không quá 1,14% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22089099",
+    "cap": 8,
+    "cha": "2208909",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2208.nhom",
+  "tax.22082050",
+  "tax.22083010",
+  "tax.22084000",
+  "tax.22085000",
+  "tax.22086000",
+  "tax.22087010",
+  "tax.22089010",
+  "tax.22089020",
+  "tax.22089030",
+  "tax.22089040",
+  "tax.22089050",
+  "tax.22089060",
+  "tax.22089070",
+  "tax.22089080",
+  "tax.22089091",
+  "wco.220820",
+  "wco.220830",
+  "wco.220870",
+  "wco.220890"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T05:58:39.644Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 34,
+  "dat": 34,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

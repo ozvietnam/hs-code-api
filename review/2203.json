@@ -1,0 +1,29 @@
+{
+ "nhom": "2203",
+ "nguoiSoat": "dev-soat-doc-lap-lo067",
+ "vong": 1,
+ "luc": "2026-10-28T13:30:00+07:00",
+ "daKiem": 10,
+ "xoa": 0,
+ "sua": 2,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 067 — người soát KHÁC người soạn. Đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/2203.txt (5.972 ký tự) + ch22.chuong + sen.22030011/22030019 + wco.220300 + 4 dòng tax.*. ĐÃ ĐO NỀN NHÀ: 0/10 trích quá 300 ký tự, 118/118 câu trích byte-exact (check-trich-nguyen-van), 0 vượt trần clip. Lớp lỗi tìm được: 2 dòng \"Loại khác\" mô tả phạm vi theo PHÂN NHÓM 6 số trong khi máy tự tính cha là TIÊU ĐỀ QUỐC GIA 7 số ⇒ chữ do người viết MÂU THUẪN với dữ liệu máy (luật lô 066 vòng 2). GIỮ NGUYÊN: `dieuKienVao[0]` là điều kiện ÂM đúng với MỌI thành viên nhóm (bia của nhóm 22.03 đều có cồn) và đã được sổ tay 2201 duyệt dùng đúng kiểu này (fact \"khong_phai_*\" + value=true, 39 mục trong kho); 3/3 mục loại trừ của nguồn đều có mặt trong sổ tay; `loaiTru[0]` giữ vế \"đôi khi được gọi là bia\" của câu nguồn (mục (a)).",
+ "thayDoi": [
+  {
+   "index": "dong8[1]",
+   "hanhDong": "sua",
+   "lyDo": "SAI CẤP PHẠM VI — chữ do người viết MÂU THUẪN với phạm vi máy tự tính. Dòng 22030019 là \"Loại khác\" của TIÊU ĐỀ QUỐC GIA 7 số 2203.001 (\"Bia đen hoặc bia nâu\"), máy tự tính `phamViLoaiKhac.cha = \"2203001\"` và `truAnhEm = 22030011`; bản nháp ghi \"phần còn lại của phân nhóm 2203.00\" ⇒ phạm vi RỘNG HƠN thật (nuốt cả 2203.009 \"Loại khác, kể cả bia ale\") và trái với dữ liệu máy. Sửa theo đúng mẫu nhà đã duyệt ở 0301/0105 và lô 066 vòng 2 (\"Loại khác: phần còn lại của tiêu đề quốc gia 2103.901, trừ 21039011, 21039012, 21039013\"). Giữ ≤ 90 ký tự để runtime không cắt giữa mã. `trich`/`nguon` giữ nguyên.",
+   "sua": {
+    "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 2203.001, trừ 22030011"
+   }
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "sua",
+   "lyDo": "SAI CẤP PHẠM VI — như dong8[1]. Dòng 22030099 là \"Loại khác\" của TIÊU ĐỀ QUỐC GIA 7 số 2203.009 (\"Loại khác, kể cả bia ale\"), máy tự tính `phamViLoaiKhac.cha = \"2203009\"` và `truAnhEm = 22030091`; bản nháp ghi \"phần còn lại của phân nhóm 2203.00\" ⇒ phạm vi RỘNG HƠN thật (nuốt cả 2203.001 \"Bia đen hoặc bia nâu\"). Sửa theo mẫu nhà 0301/0105/lô 066 vòng 2. `trich`/`nguon` giữ nguyên.",
+   "sua": {
+    "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 2203.009, trừ 22030091"
+   }
+  }
+ ]
+}

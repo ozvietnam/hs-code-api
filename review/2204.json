@@ -1,0 +1,18 @@
+{
+ "nhom": "2204",
+ "nguoiSoat": "dev-soat-doc-lap-lo067",
+ "vong": 1,
+ "luc": "2026-10-28T13:30:00+07:00",
+ "daKiem": 31,
+ "xoa": 1,
+ "sua": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 067 — người soát KHÁC người soạn. Đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/2204.txt (8.334 ký tự) + ch22.chuong + wco.220410/220421/220422/220429/220430 + 17 dòng tax.*. ĐÃ ĐO NỀN NHÀ: 0/31 trích quá 300 ký tự, byte-exact 31/31, 0 vượt trần clip. Một lớp lỗi: `dieuKienVao` boolean chỉ phủ MỘT PHẦN nhóm ⇒ mô hình loài thành viên hợp lệ ra khỏi nhóm (lô 054). GIỮ NGUYÊN: `boPhan` có cấu trúc \"(1)…(4) + (II)\" của nguồn; 3/3 mục loại trừ của nguồn có mặt; `tieuChi6` 220410 (áp suất ≥ 3 bars) lấy đúng câu chú giải phân nhóm ở ch22.chuong; các dòng 8 số có ngưỡng hai vế (\"trên 15% nhưng không quá 23%\") để `tieuChi` rỗng là ĐÚNG — `tieuChi` là object đơn, nhiều ngưỡng thuộc `dieuKienSo` mà nhà chỉ có 276/6.575 dòng.",
+ "thayDoi": [
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "XOÁ — `dieuKienVao` chỉ phủ MỘT PHẦN nhóm, nên mô hình sẽ loài thành viên hợp lệ ra khỏi nhóm (lô 054: \"một fact chỉ phủ một phần nhóm sẽ khiến mô hình loài thành viên hợp lệ ra khỏi nhóm\"). Câu trích: \"Rượu vang được phân loại trong nhóm này phải là sản phẩm cuối cùng từ quá trình lên men rượu của hèm nho tươi.\" — chủ ngữ là \"RƯỢU VANG\", tức chỉ phủ các phần (1)–(4). Nhóm 22.04 còn có phần \"(II) Hèm nho\" (dòng 2204.30.10/2204.30.20 — hèm nho đã ngưng lên men, KHÔNG phải sản phẩm cuối cùng của lên men) ⇒ điều kiện này SAI với thành viên 22.04.30 ⇒ để trống đúng luật lô 030/045/054 (\"dieuKienVao phải phủ cả nhóm\"). Không sửa câu trích, không thêm câu khác (ghép hai câu xa nhau là lỗi)."
+  }
+ ]
+}

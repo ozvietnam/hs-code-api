@@ -1,0 +1,205 @@
+{
+ "nhom": "2203",
+ "phamVi": {
+  "text": "Bia là một loại đồ uống có chứa cồn thu được từ quá trình lên men của nước hèm (wort) chế biến từ ngũ cốc ủ mạch nha, nước và (thường) với hoa bia (houblon).",
+  "nguon": "nhom2203.nhom",
+  "trich": "Bia là một loại đồ uống có chứa cồn thu được từ quá trình lên men của nước hèm (wort) chế biến từ ngũ cốc ủ mạch nha (phổ biến nhất là lúa đại mạch hoặc lúa mì), nước và (thường) với hoa bia (houblon).",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "khong_phai_bia_khong_chua_con",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2203.nhom",
+   "trich": "(b) Các loại đồ uống được gọi là bia không chứa cồn gồm bia sản xuất từ malt, có nồng độ cồn tính theo thể tích giảm từ 0,5% trở xuống (nhóm 22.02).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Đồ uống không có cồn, đôi khi được gọi là bia",
+   "sangNhom": "2202",
+   "nguon": "nhom2203.nhom",
+   "trich": "(a) Một số đồ uống, mặc dù chúng đôi khi được gọi là bia, không có cồn (ví dụ: loại đồ uống thu được từ nước pha với đường caramen) (nhóm 22.02).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Bia không chứa cồn, nồng độ cồn từ 0,5% trở xuống",
+   "sangNhom": "2202",
+   "nguon": "nhom2203.nhom",
+   "trich": "(b) Các loại đồ uống được gọi là bia không chứa cồn gồm bia sản xuất từ malt, có nồng độ cồn tính theo thể tích giảm từ 0,5% trở xuống (nhóm 22.02).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Dược phẩm thuộc nhóm 30.03 hoặc 30.04",
+   "sangNhom": "3003|3004",
+   "nguon": "nhom2203.nhom",
+   "trich": "(c) Dược phẩm thuộc nhóm 30.03 hoặc 30.04.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải là bia không chứa cồn, nồng độ cồn tính theo thể tích từ 0,5% trở xuống không?",
+   "neuCo": "2202",
+   "neuKhong": "2203",
+   "nguon": "nhom2203.nhom",
+   "trich": "(b) Các loại đồ uống được gọi là bia không chứa cồn gồm bia sản xuất từ malt, có nồng độ cồn tính theo thể tích giảm từ 0,5% trở xuống (nhóm 22.02).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "22030011",
+   "dieuKien": "Có nồng độ cồn không quá 5,8% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 5.8,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22030011",
+   "trich": "22030011 - - Có nồng độ cồn không quá 5,8% tính theo thể tích (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22030019",
+   "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 2203.001, trừ 22030011",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.220300",
+   "trich": "220300 Beer; made from malt",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "2203001",
+    "truAnhEm": [
+     "22030011"
+    ],
+    "toTienCoTen": "2203",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "22030091",
+   "dieuKien": "Có nồng độ cồn không quá 5,8% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 5.8,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22030091",
+   "trich": "22030091 - - Có nồng độ cồn không quá 5,8% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22030099",
+   "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 2203.009, trừ 22030091",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.220300",
+   "trich": "220300 Beer; made from malt",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "2203009",
+    "truAnhEm": [
+     "22030091"
+    ],
+    "toTienCoTen": "2203",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2203",
+    "cap": 4,
+    "cha": "22",
+    "tenVi": "Bia sản xuất từ malt.",
+    "tenEn": "Beer made from malt",
+    "suyRa": false
+   },
+   {
+    "id": "2203001",
+    "cap": "TIEU_DE_QG",
+    "cha": "2203",
+    "tenVi": "Bia đen hoặc bia nâu",
+    "tenEn": "Stout or porter",
+    "suyRa": true
+   },
+   {
+    "id": "22030011",
+    "cap": 8,
+    "cha": "2203001",
+    "tenVi": "Có nồng độ cồn không quá 5,8% tính theo thể tích (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22030019",
+    "cap": 8,
+    "cha": "2203001",
+    "tenVi": "Loại khác (SEN)",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "2203009",
+    "cap": "TIEU_DE_QG",
+    "cha": "2203",
+    "tenVi": "Loại khác, kể cả bia ale",
+    "tenEn": "Other, including ale",
+    "suyRa": true
+   },
+   {
+    "id": "22030091",
+    "cap": 8,
+    "cha": "2203009",
+    "tenVi": "Có nồng độ cồn không quá 5,8% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22030099",
+    "cap": 8,
+    "cha": "2203009",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2203.nhom",
+  "tax.22030011",
+  "tax.22030091",
+  "wco.220300"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T05:58:39.634Z",
+  "ms": 85
+ },
+ "kiemTra": {
+  "tong": 10,
+  "dat": 10,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

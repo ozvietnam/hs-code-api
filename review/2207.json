@@ -1,0 +1,21 @@
+{
+ "nhom": "2207",
+ "nguoiSoat": "dev-soat-doc-lap-lo067",
+ "vong": 1,
+ "luc": "2026-10-28T13:30:00+07:00",
+ "daKiem": 16,
+ "xoa": 0,
+ "sua": 1,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 067 — người soát KHÁC người soạn. Đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/2207.txt (6.126 ký tự) + ch22.chuong + wco.220710/220720 + 4 dòng tax.*. ĐÃ ĐO NỀN NHÀ: 0/16 trích quá 300 ký tự, byte-exact 16/16, 0 vượt trần clip. Một lớp lỗi: dòng \"Loại khác\" mô tả phạm vi theo phân nhóm 6 số trong khi máy tự tính cha là tiêu đề quốc gia 7 số. GIỮ NGUYÊN: `loaiTru[2]` đã lược đúng ngoặc ghi chú tên thương mại \"(thường được bán… “cồn đóng rắn”)\" — đoạn lược KHÔNG chứa ngoại lệ, loại trừ trong nguồn là vô điều kiện, mục không nói chắc hơn nguồn (đã khai trong PR); 3/3 mục loại trừ của nguồn có mặt; `dieuKienVao` là 3 điều kiện ÂM, mỗi cái đúng với MỌI thành viên nhóm.",
+ "thayDoi": [
+  {
+   "index": "dong8[2]",
+   "hanhDong": "sua",
+   "lyDo": "SAI CẤP PHẠM VI — dòng 22072019 là \"Loại khác\" của TIÊU ĐỀ QUỐC GIA 7 số 2207.201 (\"Cồn etylic đã biến tính, kể cả rượu mạnh đã methyl hoá\"), máy tự tính `phamViLoaiKhac.cha = \"2207201\"` và `truAnhEm = 22072011`; bản nháp ghi \"phần còn lại của phân nhóm 2207.20\" ⇒ phạm vi RỘNG HƠN thật (nuốt cả 2207.2090 \"Loại khác\" của cả phân nhóm 2207.20). Sửa theo mẫu nhà 0301/0105 và lô 066 vòng 2. `trich`/`nguon` giữ nguyên. (Dòng dong8[3] = 22072090 là \"Loại khác\" của CẢ phân nhóm 2207.20 — máy tính `cha = \"220720\"` (6 số) nên câu hiện tại ĐÚNG, giữ nguyên.)",
+   "sua": {
+    "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 2207.201, trừ 22072011"
+   }
+  }
+ ]
+}
