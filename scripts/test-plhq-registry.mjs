@@ -50,6 +50,7 @@ t('khoá: QĐ có năm của bộ bỏ năm, sửa lỗi gõ ký hiệu', khoa('
 t('khoá: QĐ-TTg giữ năm', khoa('23/2019/QĐ-TTg') === '23/2019/QD-TTG');
 t('trích số hiệu từ chữ chính sách, bỏ hậu tố phụ lục', JSON.stringify(trichSoHieu('X (1182/QĐ-BCT-PL2-2021); Y (12/2022/TT-BGTVT PL1); Z (01/2024/TT-BNNPTNT M9)').map((c) => c.khoa)) === JSON.stringify(['1182/QD-BCT', '12/2022/TT-BGTVT', '01/2024/TT-BNNPTNT']));
 t('tra bằng số hiệu viết khác (lỗi gõ biểu thuế)', lookup('12/2018/TT-BTC')?.soHieu === '12/2018/TT-BCT');
+t('khoá: tên bộ mới sau sáp nhập BNNMT → BNNPTNT (#237)', khoa('01/2024/TT-BNNMT') === '01/2024/TT-BNNPTNT' && khoa('15/2020/TT-BNNMT') === '15/2020/TT-BNNPTNT');
 
 const r1 = registryReview('Áp thuế tự vệ đối với Phân bón (715/QĐ-BCT-2020); X (99/2099/TT-BYT)');
 t('registryReview: đếm có/không có trong sổ', r1.counts.total === 2 && r1.counts.found === 1 && r1.counts.notFound === 1 && r1.counts.expired === 1, JSON.stringify(r1.counts));
