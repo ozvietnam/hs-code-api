@@ -1,0 +1,142 @@
+{
+ "nhom": "2523",
+ "nguoiSoat": "dev-soat-doc-lap-lo073",
+ "luc": "2026-10-28T23:30:00+07:00",
+ "phamViSoat": "Toàn bộ 23 mục của nhóm 2523 (1 phamVi + 7 loaiTru + 2 phanBiet + 5 tieuChi6 + 7 dong8 + 1 cay.tenDien), đọc cùng tmp/so-tay/nguon/2523.txt (nhom2523.nhom, ch25.chuong, wco.252310/252321/252329/252330/252390, tax.25231010…25239000).",
+ "ghiChu": "XOA 0 · SUA 4 · GIU 19. GHI NHẬN (không sửa): tieuChi6[4] (2523.90) có `fact` chưa nêu \"xi măng xỉ\" (nguồn liệt kê cả xi măng xỉ) — nhưng nguồn KHÔNG gán phân nhóm cho từng loại xi măng, mà 2523.30 theo biểu thuế chỉ là \"Xi măng nhôm\"; suy ra vị trí \"xi măng xỉ\" là hiểu biết riêng nên không ghi. Đề xuất tách thêm tieuChi6 cho 2523.29 (poóc lăng thường/trung tính) — không áp: 2523.29 ĐÃ có một tieuChi6, và việc phân biệt trắng / không trắng đã nằm ở phanBiet[0] (runtime có dùng).",
+ "soat": 23,
+ "giu": 19,
+ "sua": 4,
+ "xoa": 0,
+ "chen": 0,
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "Phạm vi nhóm bỏ sót 2 phân nhóm 6 số: nguồn nói rõ \"Nhóm này cũng bao gồm xi măng nhôm ôxit, xi măng xỉ, xi măng super sulphat (…), xi măng puzolan, xi măng Roman, ... và các hỗn hợp của các loại xi măng đã nêu ở trên\" — tức 2523.30 (xi măng nhôm) và 2523.90 (xi măng thủy lực khác) CÓ trong nhóm, nhưng `phamVi` chỉ nêu xi măng poóc lăng + clinker. Trích cũ cắt qua dấu \"…\" ở giữa câu nên không thấy phần này. Kéo thêm câu liệt kê vào trích và nêu trong `text`.",
+   "sua": {
+    "text": "Xi măng poóc lăng (nung đá vôi ở trạng thái tự nhiên hoặc trộn nhân tạo với tỉ lệ đất sét thích hợp) và clinker; nhóm này cũng bao gồm xi măng nhôm ôxit, xi măng xỉ, xi măng super sulphat, xi măng puzolan, xi măng Roman.",
+    "trich": "Xi măng poóc lăng thu được bằng cách nung đá vôi ở trạng thái tự nhiên, hoặc được trộn nhân tạo với một tỉ lệ đất sét thích hợp.…tạo ra các bán thành phẩm gọi là clinker…Nhóm này cũng bao gồm xi măng nhôm ôxit, xi măng xỉ, xi măng super sulphat…xi măng puzolan, xi măng Roman"
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "MẤT NGOẠI LỆ ngay sau câu trích: nguồn nói \"(a) Xỉ lò cao đã nghiền mịn cần bổ sung thêm một lượng nhỏ chất tăng tốc đông cứng ở thời điểm chế tạo (nhóm 26.19); TUY NHIÊN, xỉ đã nghiền trộn với chất tăng tốc đông cứng sẵn sàng cho việc sử dụng, lại được xếp vào nhóm này.\" `dieuKien` cũ chỉ giữ vế loại trừ ⇒ loại trừ thành TUYỆT ĐỐI, đúng cái mặt hàng mà tờ khai thật sự mô tả (xỉ đã trộn sẵn chất tăng tốc) lại bị đẩy sang 26.19. Bổ sung (1) ngoại lệ sau dấu phẩy, (2) định ngữ giới hạn \"một lượng nhỏ\" mà bản cũ đã vứt (lớp lỗi \"mất định ngữ giới hạn\"). Giữ nguyên các từ đầu (không đưa \"đã\" lên đầu) để không đổi tập mảnh khớp của cổng loại trừ — đã đo headPhrases trước/sau: [\"xỉ\",\"lò\",\"cao\",\"nghền\"] không đổi. Mẫu nhà đã duyệt: 2501 loaiTru[1] lô 070 (\"…, trừ loại dùng y tế/dược phẩm\").",
+   "sua": {
+    "dieuKien": "Xỉ lò cao nghiền mịn cần bổ sung thêm một lượng nhỏ chất tăng tốc đông cứng, trừ xỉ đã nghiền trộn với chất tăng tốc đông cứng sẵn sàng cho việc sử dụng"
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "Câu nguồn loại trừ \"đất puzolan, đất santorine VÀ CÁC LOẠI TƯƠNG TỰ, đôi khi còn được gọi là xi măng tự nhiên (nhóm 25.30)\". `dieuKien` bỏ mất \"và các loại tương tự\" ⇒ loại trừ hẹp lại (đất tương tự puzolan bị xếp nhầm 25.23 thay vì 25.30). Bổ sung nguyên vệ.",
+   "sua": {
+    "dieuKien": "Đất puzolan, đất santorine và các loại tương tự (xi măng tự nhiên)"
+   }
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "sua",
+   "lyDo": "Câu trích cũ dừng ở dấu \"...\" của chính nguồn nên CẮT MẤT vế \"và các hỗn hợp của các loại xi măng đã nêu ở trên\", trong khi `fact` lại có \"va_hon_hop\" ⇒ mục khẳng định điều mà câu trích không nói. Kéo trích đủ vế cuối.",
+   "sua": {
+    "trich": "Nhóm này cũng bao gồm xi măng nhôm ôxit, xi măng xỉ, xi măng super sulphat (xỉ lò cao đã nghiền trộn với chất tăng tốc đông cứng và thạch cao nung), xi măng puzolan, xi măng Roman, ... và các hỗn hợp của các loại xi măng đã nêu ở trên."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nguồn nêu đích danh 25.20 (\"xi măng keene hoặc xi măng Anh (thạch cao plaster chứa phèn) (nhóm 25.20)\"); `dieuKien` chép đúng, không thêm chữ."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nguồn \"(b) Xi măng hàn răng và xi măng gắn xương (nhóm 30.06)\" nêu đích danh 30.06; `dieuKien` chép đúng."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nguồn \"(c) Xi măng của nhóm 32.14\" nêu đích danh 32.14; `dieuKien` chép đúng."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nguồn \"(d) Xi măng chịu lửa và vữa chịu lửa trên nền đất chịu lửa (chamotte), … (nhóm 38.16)\" nêu đích danh 38.16; dấu \"…\" là của chính nguồn; `dieuKien` chép đúng, không thêm chữ."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Câu nguồn \"(e) Vữa không chịu lửa và bê tông không chịu lửa (nhóm 38.24)\" nêu đích danh 38.24; `dieuKien` chép đúng."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi về đặc tính hàng (\"có là xi măng poóc lăng trắng không\"), không nhắc mã; nguồn liệt kê \"xi măng poóc lăng thông thường, xi măng poóc lăng trung tính và xi măng poóc lăng trắng\" ⇒ nhánh Có → 2523.21, nhánh Không (thường/trung tính) → 2523.29 (25232910/25232990 theo biểu thuế)."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi clinker CHƯA nghiền; câu nguồn \"Các clinker này SAU ĐÓ được nghiền để trở thành xi măng poóc lăng\" là căn cứ cho nhánh Có (clinker = 2523.10) và nhánh Không (poóc lăng = 2523.21/2523.29). Nhánh Không không phủ 2523.30/2523.90 là đúng vì câu hỏi chỉ phân biệt clinker ↔ xi măng poóc lăng (đo nền nhà: 96,8 % phanBiet không phủ hết dòng 8 số của nhóm — đây là mẫu nhà, không phải lỗi)."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích \"Kết quả của quá trình nung này là: tạo ra các bán thành phẩm gọi là clinker\" ⇒ `clinker_la_ban_thanh_pham_cua_qua_trinh_nung` đúng chiều cho 252310 (WCO: Cement clinkers)."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích liệt kê \"xi măng poóc lăng thông thường, xi măng poóc lăng trung tính và xi măng poóc lăng trắng\" ⇒ `xi_mang_pooc_lang_trang` đúng chiều cho 252321 (WCO: portland, white)."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích chú giải phân nhóm \"Đối với các mục đích của phân nhóm 2523.21 và 2523.29: 'xi măng poóc lăng' có nghĩa là xi măng thu được từ việc nghiền clinker poóc lăng với một lượng nhỏ phụ gia thích hợp canxi sulphate\" ⇒ `xi_mang_pooc_lang_thu_duoc_tu_viec_nghien_clinker` đúng chiều cho 252329."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Trích liệt kê \"xi măng nhôm ôxit\" ⇒ `xi_mang_nhom_oxit` đúng chiều cho 252330 (WCO: Cement; aluminous)."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích đúng dòng biểu thuế tax.25231010."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích đúng dòng biểu thuế tax.25231090 (dòng \"Loại khác\")."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích đúng dòng biểu thuế tax.25232100."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Trích đúng dòng biểu thuế tax.25232910 (ba gạch — chép nguyên văn)."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Trích đúng dòng biểu thuế tax.25232990 (dòng \"Loại khác\")."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Trích đúng dòng biểu thuế tax.25233000."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Trích đúng dòng biểu thuế tax.25239000."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nút 252329 trong cây máy KHÔNG có tên tiếng Việt (tenVi = null) ⇒ đúng luật 9, được điền tên từ wco.252329; `tenVi` dịch đúng \"other than white\" và không thêm chữ ngoài trích."
+  }
+ ]
+}
