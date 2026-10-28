@@ -1,0 +1,21 @@
+{
+ "nhom": "2209",
+ "nguoiSoat": "dev-soat-doc-lap-lo068",
+ "vong": 1,
+ "luc": "2026-10-28T14:30:00+07:00",
+ "daKiem": 5,
+ "xoa": 0,
+ "sua": 1,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 068 — người soát KHÁC người soạn (dev-zcode-mm). Đọc LẠI TOÀN BỘ tmp/so-tay/nguon/2209.txt (5.571 ký tự) + ch22.chuong + phan22.phan + wco.220900 + tax.22090000. ĐÃ ĐO NỀN NHÀ trước khi kết luận (bài học \"đếm tiền lệ trước\"): (1) `dieuKienVao` dạng \"Nhóm này bao gồm…\" — nhà chấp nhận 163/787 mục (đều NGUOI_DUYET) ⇒ KHÔNG coi là lỗi; (2) `phamVi.text` nói ngoài câu trích — nhà chấp nhận 22/560 nhóm (6201/6202 cùng dạng \"chú giải nhóm khác được áp dụng\") ⇒ KHÔNG coi là lỗi; (3) `loaiTru` theo dải số — nhà đã quy định BỎ (lô 066 vòng 2). GIỮ 4/5 mục: `phamVi` (nêu đủ hai phần (I) GIẤM + (II) CÁC CHẤT THAY THẾ GIẤM, giữ vế \"thường được tạo màu bằng caramen\", trích có kèm \"(xem phần loại trừ (a) dưới đây)\"); `loaiTru[1]` (b) 30.03/30.04 và `loaiTru[2]` (c) 33.04 — đích danh trong câu trích; `dong8[22090000]` (dòng biểu thuế nguyên văn). SỬA 1: `loaiTru[0].dieuKien` mất định ngữ giới hạn \"thường là\" (xem thayDoi). GHI NHẬN (không sửa được): `dieuKienVao` rỗng là ĐÚNG — không câu ràng buộc nào phủ cả nhóm (chú giải Chương 22 mục 1(d)/(e)/(f) là câu LOẠI TRỪ, không phải điều kiện vào).",
+ "thayDoi": [
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "MẤT ĐỊNH NGỮ GIỚI HẠN — câu nguồn nói \"có nồng độ axít axetíc THƯỜNG LÀ từ 10 đến 15% theo trọng lượng\" (tức vế ngoại lệ áp dụng với đa số dung dịch 10–15 %), còn `dieuKien` bản nháp viết thành \"có nồng độ axít axetíc từ 10 đến 15%\" ⇒ câu điều kiện nghe như TUYỆT ĐỐI, mạnh hơn nguồn. Câu trích (`trich`) giữ nguyên văn nên không sai; chỉ sửa trường tự viết. Dựng lại `dieuKien` từ nguồn (byte-exact, có \"thường là\" + dấu phẩy trước \"đã được tạo hương\"), giữ nguyên `trich`/`nguon`/`sangNhom` (29.15).",
+   "sua": {
+    "dieuKien": "Các dung dịch nước có chứa axít axetíc với tỉ trọng trên 10% (trừ các dung dịch cùng chủng loại có nồng độ axít axetíc thường là từ 10 đến 15% theo trọng lượng, đã được tạo hương hoặc tạo màu để sử dụng trong thực phẩm làm chất thay thế giấm)"
+   }
+  }
+ ]
+}

@@ -1,10 +1,10 @@
 {
  "nhom": "2301",
  "phamVi": {
-  "text": "Bột mịn và bột thô, không sử dụng làm thức ăn cho người, thu được từ quá trình chế biến, hoặc các loại động vật còn nguyên con; và tóp mỡ.",
+  "text": "Bột mịn và bột thô, không dùng làm thức ăn cho người, thu được từ quá trình chế biến, hoặc từ động vật còn nguyên con hoặc từ sản phẩm động vật (thịt, phụ phẩm thịt) trừ xương, móng guốc, sừng, mai, vỏ; và tóp mỡ.",
   "nguon": "nhom2301.nhom",
-  "trich": "(1) Bột mịn và bột thô, không sử dụng làm thức ăn cho người, thu được từ quá trình chế biến, hoặc các loại động vật còn nguyên con…(2) Tóp mỡ, là sản phẩm tạo thành bằng các mô màng còn lại sau quá trình rán mỡ lợn hoặc mỡ một số động vật khác.",
-  "nguonLoai": "AI_DA_KIEM"
+  "trich": "(1) Bột mịn và bột thô, không sử dụng làm thức ăn cho người, thu được từ quá trình chế biến, hoặc các loại động vật còn nguyên con…hoặc các sản phẩm động vật (như thịt hoặc phụ phẩm dạng thịt sau giết mổ) trừ xương, móng guốc, sừng, mai, vỏ,…(2) Tóp mỡ, là sản phẩm tạo thành bằng các mô màng còn lại sau quá trình rán mỡ lợn hoặc mỡ một số động vật khác.",
+  "nguonLoai": "NGUOI_DUYET"
  },
  "dieuKienVao": [],
  "loaiTru": [
@@ -13,7 +13,7 @@
    "sangNhom": "0511",
    "nguon": "nhom2301.nhom",
    "trich": "Nhóm này loại trừ bột mịn và bộ thô từ côn trùng, không thích hợp dùng làm thức ăn cho người (nhóm 05.11).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "NGUOI_DUYET"
   }
  ],
  "phanBiet": [],
@@ -54,14 +54,14 @@
    "nguon": "tax.23012010",
    "trich": "23012010 - - Từ cá, có hàm lượng protein dưới 60% tính theo khối lượng",
    "tieuChi": {
-    "fact": "ham_luong",
+    "fact": "ham_luong_protein",
     "op": "<",
     "value": 60,
     "donVi": "%"
    },
    "dieuKienSo": [
     {
-     "fact": "ham_luong",
+     "fact": "ham_luong_protein",
      "op": "<",
      "value": 60,
      "donVi": "%"
@@ -76,14 +76,14 @@
    "nguon": "tax.23012020",
    "trich": "23012020 - - Từ cá, có hàm lượng protein từ 60% trở lên tính theo khối lượng",
    "tieuChi": {
-    "fact": "ham_luong",
+    "fact": "ham_luong_protein",
     "op": ">=",
     "value": 60,
     "donVi": "%"
    },
    "dieuKienSo": [
     {
-     "fact": "ham_luong",
+     "fact": "ham_luong_protein",
      "op": ">=",
      "value": 60,
      "donVi": "%"
@@ -181,7 +181,7 @@
  "taoBoi": {
   "provider": "dev-zcode-mm",
   "model": null,
-  "luc": "2026-10-28T06:43:46.572Z",
+  "luc": "2026-10-28T07:43:23.613Z",
   "ms": 1
  },
  "kiemTra": {

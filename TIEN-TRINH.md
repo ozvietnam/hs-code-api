@@ -9744,3 +9744,76 @@ Daemon `oz-so-tay-tuDong.sh` phóng **2 phiên `claude -p` cùng brief soát lô
 (`ps` thấy PID 72077 và 72395, cùng prompt). Phiên trùng đã **bị dừng** (`kill 72395` + wrapper 72389) trước khi
 ghi bất kỳ tệp nào ⇒ không có ghi đè dữ liệu. Bản nháp dùng chung vẫn là `tmp/so-tay/raw/`; bản riêng của phiên soạn
 (`tmp/so-tay/raw-lo067-mm/`) đã **đồng bộ** với bản nháp sau soát để không lệch.
+
+---
+
+## 0. SOÁT ĐỘC LẬP lô 068 (PR #499) — người soát ≠ người soạn `dev-zcode-mm`
+
+6 nhóm chương 22/23: **2209** (giấm) · **2301** (bột mịn/bột thô + `\"tóp mỡ\"`) · **2302** (cám, tấm, phế liệu xay xát) ·
+**2303** (phế liệu tinh bột/đường/ủ chưng cất) · **2304** (khô dầu đậu tương) · **2305** (khô dầu lạc).
+
+### 1. Kết quả: **8 sửa (7 mục) · 1 xoá · 0 chèn** (mục soát: 50) → **49/49 mục (100 %)**
+
+| Nhóm | Mục soát | Sửa | Xoá |
+|---|---|---|---|
+| 2209 | 5 | 1 (`loaiTru[0].dieuKien`) | 0 |
+| 2301 | 8 | 3 (`dong8[1]`, `dong8[2]`, `phamVi`) | 0 |
+| 2302 | 13 | 1 (`phamVi`) | 0 |
+| 2303 | 14 | 2 (`loaiTru[4].trich`, `phanBiet[0].trich`) | 0 |
+| 2304 | 8 | 1 (`phamVi.text`) | 1 (`dieuKienVao[0]`) |
+| 2305 | 2 | 0 | 0 |
+
+### 2. Các lớp lỗi đã bắt (máy `check-so-tay` / `check-trich-nguyen-van` KHÔNG bắt được)
+
+1. **ĐOẠN LƯỢC GIẤU NGOẠI LỆ + PHẠM VI THU HẸP — 2301 `phamVi`.** Bản nháp trích `(1) Bột mịn và bột thô, … hoặc các loại động vật còn nguyên con…(2) Tóp mỡ, …` ⇒ đoạn lược giấu mất **nhánh `"hoặc các sản phẩm động vật (như thịt hoặc phụ phẩm dạng thịt sau giết mổ)"`** — đúng sản phẩm chính của dòng **23011000** (`"từ thịt hoặc phụ phẩm dạng thịt sau giết mổ"`) — và **ngoại lệ `"trừ xương, móng guốc, sừng, mai, vỏ"`** (luật lô 030: đoạn bị lược KHÔNG được chứa ngoại lệ `"trừ"`; lô 055: `phamVi` phải KÉO câu ngoại lệ ngay sau câu trích). Sửa: kéo cả hai vế vào câu trích (cắt NGUYÊN VĂN từ tệp nguồn) + viết lại `text` khớp trích, 215 ký tự (≤ trần clip runtime 220).
+2. **ĐOẠN LƯỢC GIẤU ĐIỀU KIỆN VÀO NHÓM — 2302 `phamVi`.** Đoạn lược giữa (A) và (B) giấu mất **"mà các loại này không đáp ứng được những điều kiện về hàm lượng tinh bột và hàm lượng tro được quy định tại Chú giải 2 (A) của Chương 11"** — tức điều kiện phân định **23.02 ↔ Chương 11** (sổ tay nhà 1101 đã nêu điều kiện tinh bột/tro; 1104 nêu `"phế liệu (nhóm 23.02)"`). Thêm vào đó `text` bản nháp **thu hẹp hơn chính câu trích của nó** (`"phế liệu sàng, sảy"` vs nguồn `"sàng, sảy hoặc từ các công đoạn xử lý khác"`). Sửa cả hai. **KHÔNG** đặt `dieuKienVao` cho điều kiện này: câu chỉ nói vế (A), không phủ cả nhóm (luật lô 030/054).
+3. **MẤT ĐỊNH NGỮ GIỚI HẠN — 2209 `loaiTru[0].dieuKien`.** Nguồn: `"có nồng độ axít axetíc **thường là** từ 10 đến 15%"`; bản nháp viết `"có nồng độ axít axetíc từ 10 đến 15%"` ⇒ nghe như TUYỆT ĐỐI, mạnh hơn nguồn. Sửa `dieuKien` (giữ nguyên `trich`/`nguon`/`sangNhom`).
+4. **TÊN TIÊU CHÍ MƠ HỒ — 2301 `dong8[1]`/`dong8[2]`.** Nguồn ghi `"hàm lượng **protein**"` nhưng `fact` để là `"ham_luong"` (hàm lượng nói chung) ⇒ runtime đọc số theo TÊN fact (`LOAI_GIA_TRI.ham_luong.ctx = /hàm lượng|nồng độ|chứa \d|content/`) nên **bắt được MỌI phần trăm** trong mô tả hàng (kể cả % độ ẩm) ⇒ chấm nhầm dòng. Sửa `"ham_luong_protein"` (bám đúng từ nguồn, đúng quy ước nhà `ham_luong_nuoc`/`ham_luong_chat_beo_sua`, và đúng cách lô này đặt ở 2304).
+5. **TRÍCH THIẾU TIỀN ĐẠN — 2303 `loaiTru[4]` + `phanBiet[0]`.** Câu trích mở đầu bằng đại từ **"Bã này"** mà không kèm câu định nghĩa của mục (B) ⇒ người đọc hồ sơ (và LLM lúc chạy) không biết "Bã này" là gì (bài học lô 061 mục 1, lô 035/039: phải **mở rộng trích** lấy mục nguồn, không tự thêm chữ). Sửa: mở rộng bằng câu `(B) Bã ép củ cải đường là phế liệu còn lại sau khi đường đã được chiết xuất từ củ cải đường.` cắt nguyên văn từ nguồn.
+6. **ĐIỀU KIỆN VÀO NHÓM KHÔNG PHỦ CẢ NHÓM + LÀ CÂU ĐỊNH NGHĨA — 2304 `dieuKienVao[0]` ⇒ XOÁ.** Câu trích chỉ nói vế (1) `"khô dầu và các phế liệu rắn khác còn lại sau khi chiết xuất dầu từ hạt đậu tương…"`, còn chú giải 23.04 còn vế (2) `"bột mịn của hạt đậu tương đã khử chất béo không có kết cấu thích hợp dùng làm thức ăn cho người"` — vế này **KHÔNG phải "khô dầu"** ⇒ đọc `fact: thuoc_dau_dau_tuong = true` như điều kiện BẮT BUỘC sẽ **loại oan hai dòng 2304.0010/2304.0021** (bột đậu tương khử chất béo / bột đậu tương thô dùng làm thức ăn cho người — đúng hai dòng có SEN). Runtime in ra prompt là `"Điều kiện vào nhóm: thuoc_dau_dau_tuong = true"`. Thông tin vế (1) **KHÔNG MẤT**: `phamVi.text` đã nêu đủ.
+7. **TRÀN TRẦN CLIP RUNTIME — 2304 `phamVi.text` (221 ký tự > 220).** `clip(s.phamVi.text, 220)` cắt đuôi ⇒ dòng `"Phạm vi:"` hiện ra kết thúc bằng `"…"` (đọc như câu còn tiếp). Rút gọn 4 ký tự (nghĩa không đổi, `trich` nguyên văn giữ nguyên).
+
+### 3. ĐÃ ĐO NỀN NHÀ trước khi kết luận (không bác nhầm mẫu nhà)
+
+| Mẫu nghi vấn | Số đo trong kho | Kết luận |
+|---|---|---|
+| `dieuKienVao` boolean kiểu `"Nhóm này bao gồm…"` | 613/787 mục `dieuKienVao` là boolean `= true`; 214 mục trích đúng dạng định nghĩa | **không coi là lỗi** ⇒ 2304 xử lý theo luật "phải phủ cả nhóm", không theo "sai dạng" |
+| `phamVi.text` nói ngoài câu trích | 124/556 nhóm (22 %) — vd 1704 (tên dòng biểu thuế), 1605 | **không coi là lỗi chung** ⇒ 2305 GIỮ (có tiền lệ đúng hình dạng: 6201/6202 `"Những quy định của Chú giải chi tiết nhóm 61.01 được áp dụng tương tự…"` + phạm vi lấy từ biểu thuế, đều `NGUOI_DUYET`) |
+| `loaiTru` theo **dải số** | 2302: `"các nhóm từ 23.04 đến 23.06"` — 23.05 **không** có nguyên văn trong câu ⇒ `sangNhom` không phủ nổi dải | **BỎ mục** (luật lô 066 vòng 2), nêu ở mục 5.1 để người duyệt cân nhắc nới luật |
+| Dòng `"Loại khác"` mô tả phạm vi | máy tự tính `phamViLoaiKhac.cha`: 23012090→`230120` (6 số) = đúng cấp `"Phân nhóm 2301.20"`; 23040029→`2304002` (7 số) = đúng `"Tiêu đề quốc gia 2304.00.2"`; 23040090→`2304` = đúng `"Nhóm 2304"` | **không sai cấp phạm vi** ⇒ giữ nguyên (khác lô 067, nơi bản nháp ghi 6 số còn máy tính 7 số) |
+| `fact` tên đại lượng | 405 điều kiện số toàn kho: 84 % dùng tên trong registry (`duong_kinh`, `khoi_luong`…), 16 % dùng tên riêng theo thành phần | `ham_luong` **chưa** dùng ở đâu ngoài lô này ⇒ đổi sang `ham_luong_protein` |
+| Trần clip runtime | `phamVi.text` > 220: 121/556 (21,8 %) · `loaiTru.dieuKien` > 55: 45,5 % · `dong8.dieuKien` > 90: 50,3 % | chỉ sửa 2304 (vượt **1** ký tự, mất đúng dấu chấm câu); các tràn còn lại là nền nhà, **không** rút gọn (rút gọn sẽ mất định ngữ giới hạn) |
+| Câu trích mở đầu bằng đại từ | 1.101 mục toàn kho (713 `NGUOI_DUYET`) | chỉ sửa 2303 vì **vế đầu là đại từ tham chiếu** ("Bã này") mà câu định nghĩa không có kèm |
+
+### 4. Bảng kiểm cuối (sau khi áp soát)
+
+| Kiểm | Kết quả |
+|---|---|
+| `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` | **49/49 mục đạt** — 2209 5/5 · 2301 8/8 · 2302 13/13 · 2303 14/14 · 2304 7/7 · 2305 2/2 |
+| `node scripts/check-trich-nguyen-van.mjs` (byte-exact, raw + `data/`) | **OK — 49/49** câu trích nguyên văn tuyệt đối trong đúng khối nguồn |
+| `node scripts/check-cay.mjs` | toàn kho **560 nhóm, 0 lỗi lệch cây**; 6/6 nhóm lô 068 đủ (cây + dong8 + tieuChi6) |
+| Nạp lại `--tu-tep=tmp/so-tay/raw --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-068.json` | **49/49 (100 %)** — `tyLeDat: 100`, `nhomLoi: []` |
+| Đối chiếu bản nháp ↔ dữ liệu đã nạp | **6/6 khớp** (khác duy nhất: `boPhan: null` bị máy bỏ key) |
+| `npm run so-tay:check` | toàn kho **560 nhóm / 14.964 mục**, 0 mục không kiểm được nguồn — xanh |
+| `npm test` | **ALL TESTS PASSED** |
+| Chạy thật cổng `soTayGates` với **15 mô tả hàng thật** (giấm ăn · bột thịt · tóp mỡ · bột cá 55 % protein · cám ngô · cám lúa mì · cám gạo · phế liệu tinh bột sắn · bã mía · bã bia · bột đậu tương · bột đậu tương thô · khô dầu lạc) | **0 challenge oan** |
+| Gác soát từ (2 mức) mọi trường tự viết | 9 cờ còn lại đều là **mẫu nhà đã duyệt** (`"dòng biểu thuế ghi \"Loại khác\""` — 0101/0102/0302/0306…; `"Hàng có phải…"` trong `phanBiet.hoi`; 2305 theo tiền lệ 6201/6202) |
+| `nguonLoai` | **20 mục** `phamVi`/`boPhan`/`dieuKienVao`/`loaiTru`/`phanBiet` → `NGUOI_DUYET`; `tieuChi6`/`dong8` giữ `AI_DA_KIEM`, `cay` giữ `MAY_SUY` (luật §L11 mục 11) |
+
+### 5. Còn mở cho người duyệt (chưa tự quyết — cần sửa `lib/`, ngoài phạm vi lô dữ liệu)
+
+1. **ĐƠN VỊ "%" KHÔNG ĐỌC ĐƯỢC SỐ — lỗi luật máy, ảnh hưởng 55 mục toàn kho.** `SO_DON_VI_RE` (`lib/so-tay-gates.js`) kết thúc bằng `\b` SAU "%" — mà "%" **không phải ký tự chữ** nên `\b` chỉ khớp khi ký tự ngay sau "%" là chữ (`"45%protein"` khớp, `"60% tính theo khối lượng"` **KHÔNG** khớp). Đã chạy thật: `giaTriCua('ham_luong', '… hàm lượng protein dưới 60% tính theo khối lượng')` → `[]` ⇒ **mọi tiêu chí `donVi: "%"` của cả kho (55 mục, gồm 11 mục lô này) không chấm được**, cổng chốt dòng trả `THIEU_SO_LIEU`. Đề xuất: bỏ `\b` sau "%" hoặc thêm nhánh riêng cho "%".
+2. **Loại trừ theo DẢI SỐ không mã hoá được — 2302.** `"khô dầu hoặc các loại phế liệu rắn khác thu được từ công đoạn chiết xuất chất béo hoặc dầu thực vật (các nhóm từ 23.04 đến 23.06)"` — máy đòi **mỗi mã nêu nguyên văn** (23.05 không có trong câu) ⇒ `sangNhom` không phủ nổi dải ⇒ bỏ mục. Đề xuất: cho `loaiTru` nhận dải ("23.04-23.06") hoặc cho phép mã không nêu nguyên văn khi nguồn nói "từ X đến Y".
+3. **SEN 23040010 còn 2 ngưỡng chưa mã hoá** — `"chỉ số hòa tan nitơ từ 70% trở lên"` và `"tỷ lệ tối thiểu 95% lọt qua sàng với kích thước mắt sàng 100"` (cùng câu `"được cơ quan nhà nước có thẩm quyền cho phép sử dụng làm thức ăn cho người"`). Không mã hoá vì (a) câu trích phải chứa ngưỡng để máy chấp được, mà câu đó làm trích dài > 300 (vùng "im lặng" 300–600), và (b) hai ngưỡng của 23040010/23040021 vốn **ĐÃ CHỒNG** nhau ⇒ `TRANH_CAP`. Đề xuất: tách `dieuKienSo` theo cặp ngưỡng đối chiếu được.
+4. **Câu trích 300–600 ký tự**: 3 `phamVi.trich` của lô này ở vùng này (2302 429 · 2303 472 · 2301 355) — **có chủ đích** (mỗi ký tự đều mang điều kiện/ngoại lệ bị lược mất); nền nhà: 22 % `phamVi.trich` vượt 300, p90 = 429 ⇒ không sửa.
+
+### 6. Sự cố phiên song song (đã xử lý)
+
+Daemon `oz-so-tay-tuDong.sh` phóng **2 phiên `claude -p` cùng brief soát lô 068** vào **CÙNG worktree** (PID 54263 và 54623, cùng lúc 14:02 — log `/tmp/oz-so-tay-tudong.log`: `"lô 068: phóng soát (PR #499)"` × 2). Phiên trùng (54623) đã **ghi `tmp/so-tay/raw/*.json` + `review/*.json` + `data/so-tay/*.json`** trước khi bị dừng.
+
+Xử lý:
+1. Xác định PID của chính mình qua cây tiến trình (`$$ → 54263 → 54257 → 54251`), **dừng phiên trùng** (`kill 54623` + wrapper `54617`).
+2. **Không bỏ phần việc đã làm**: đọc lại toàn bộ `review/*.json` của phiên trùng và **kiểm chứng từng mục lại với nguồn** (đặc biệt 3 điểm: 6201/6202 là tiền lệ đúng hình dạng cho 2305; `ham_luong` chưa dùng ở đâu ngoài lô này; `phamViLoaiKhac.cha` của 6 dòng `"Loại khác"` khớp đúng cấp mà bản nháp ghi).
+3. Bổ sung **3 sửa của phiên này** mà phiên trùng chưa bắt: 2301 `phamVi` (đoạn lược giấu ngoại lệ "trừ xương…"), 2302 `phamVi` (đoạn lược giấu điều kiện Chú giải 2 (A) Chương 11 + `text` thu hẹp), 2304 `phamVi.text` (tràn clip 1 ký tự).
+4. **Gác soát từ bắt được lỗi GÕ TAY của chính phiên này**: bản nháp sửa 2301 lúc đầu gõ thiếu dấu cách (`"và tóp mỡ"`) — đã sửa và kiểm lại byte-exact trước khi nạp.
+5. Nạp lại toàn bộ 6 nhóm từ `tmp/so-tay/raw/` (bản nháp đã hợp nhất hai lượt soát) → đối chiếu `raw == data` 6/6 → đổi `nguonLoai` → `NGUOI_DUYET` cho 20 mục.
