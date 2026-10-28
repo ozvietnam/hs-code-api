@@ -1,0 +1,129 @@
+{
+ "nhom": "2518",
+ "phamVi": {
+  "text": "Dolomite là dạng muối carbonate kép tự nhiên của canxi và magiê; nhóm này cũng bao gồm dolomite thô và dolomite đã nung và thiêu kết.",
+  "nguon": "nhom2518.nhom",
+  "trich": "Dolomite là dạng muối carbonate kép tự nhiên của canxi và magiê.…Nhóm này cũng bao gồm dolomite thô và dolomite đã nung và thiêu kết.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Dolomite nghiền làm cốt bê tông, đá dăm trải đường",
+   "sangNhom": "2517",
+   "nguon": "nhom2518.nhom",
+   "trich": "Tuy nhiên, nhóm này không bao gồm dolomite nghiền để làm cốt bê tông, lớp đá dăm trải đường hoặc đá rải đường tàu (nhóm 25.17) hoặc hỗn hợp dolomite ramming (nhóm 38.16).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Hỗn hợp dolomite ramming",
+   "sangNhom": "3816",
+   "nguon": "nhom2518.nhom",
+   "trich": "Tuy nhiên, nhóm này không bao gồm dolomite nghiền để làm cốt bê tông, lớp đá dăm trải đường hoặc đá rải đường tàu (nhóm 25.17) hoặc hỗn hợp dolomite ramming (nhóm 38.16).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Dolomite có được nghiền làm cốt bê tông, đá dăm trải đường hoặc hỗn hợp dolomite ramming không?",
+   "neuCo": "2517|3816",
+   "neuKhong": "2518",
+   "nguon": "nhom2518.nhom",
+   "trich": "Tuy nhiên, nhóm này không bao gồm dolomite nghiền để làm cốt bê tông, lớp đá dăm trải đường hoặc đá rải đường tàu (nhóm 25.17) hoặc hỗn hợp dolomite ramming (nhóm 38.16).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "251810",
+   "fact": "dolomite_tho",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom2518.nhom",
+   "trich": "Nhóm này cũng bao gồm dolomite thô và dolomite đã nung và thiêu kết.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "251820",
+   "fact": "dolomite_da_nung_hoac_thieu_ket",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom2518.nhom",
+   "trich": "Nhóm này cũng bao gồm dolomite thô và dolomite đã nung và thiêu kết.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "25181000",
+   "dieuKien": "Dolomite, chưa nung hoặc thiêu kết",
+   "tieuChi": null,
+   "nguon": "tax.25181000",
+   "trich": "25181000 - Dolomite, chưa nung hoặc thiêu kết",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "25182000",
+   "dieuKien": "Dolomite đã nung hoặc thiêu kết",
+   "tieuChi": null,
+   "nguon": "tax.25182000",
+   "trich": "25182000 - Dolomite đã nung hoặc thiêu kết",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2518",
+    "cap": 4,
+    "cha": "25",
+    "tenVi": "Dolomite, đã hoặc chưa nung hoặc thiêu kết, kể cả dolomite đã đẽo thô hay mới chỉ cắt bằng cưa hoặc các cách khác, thành các khối hoặc tấm hình chữ nhật (kể cả hình vuông);",
+    "tenEn": "Dolomite, whether or not calcined or sintered, including dolomite roughly trimmed or merely cut, by sawing or otherwise, into blocks or slabs of a rectangular (including square) shape",
+    "suyRa": false
+   },
+   {
+    "id": "25181000",
+    "cap": 8,
+    "cha": "2518",
+    "tenVi": "Dolomite, chưa nung hoặc thiêu kết",
+    "tenEn": "Dolomite, not calcined or sintered; including dolomite roughly trimmed, or merely cut by sawing or otherwise into blocks or slabs of rectangular (including square) shape",
+    "suyRa": false,
+    "laPhanNhom": "251810"
+   },
+   {
+    "id": "25182000",
+    "cap": 8,
+    "cha": "2518",
+    "tenVi": "Dolomite đã nung hoặc thiêu kết",
+    "tenEn": "Dolomite, calcined or sintered; including dolomite roughly trimmed, or merely cut by sawing or otherwise into blocks or slabs of rectangular (including square) shape",
+    "suyRa": false,
+    "laPhanNhom": "251820"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2518.nhom",
+  "tax.25181000",
+  "tax.25182000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T15:15:49.170Z",
+  "ms": 87
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

@@ -1,0 +1,157 @@
+{
+ "nhom": "2520",
+ "phamVi": {
+  "text": "Thạch cao (gypsum) là dạng canxi sulphate tự nhiên đã được hydrate hoá, thường màu trắng và dễ vụn; thạch cao plaster là thạch cao được tách nước một phần hoặc toàn bộ bằng cách nung.",
+  "nguon": "nhom2520.nhom",
+  "trich": "Thạch cao (gypsum) là dạng canxi sulphate tự nhiên đã được hydrate hoá, thường màu trắng và dễ vụn.…Thạch cao plaster bao gồm thạch cao (gypsum) được tách nước một phần hoặc toàn bộ bằng cách nung.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Chế phẩm nha khoa cơ bản là thạch cao plaster",
+   "sangNhom": "3407",
+   "nguon": "nhom2520.nhom",
+   "trich": "Nhóm này không bao gồm các chế phẩm dùng trong nha khoa có thành phần cơ bản là thạch cao plaster (nhóm 34.07).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Chế phẩm dùng trong nha khoa có thành phần cơ bản là thạch cao plaster không?",
+   "neuCo": "3407",
+   "neuKhong": "2520",
+   "nguon": "nhom2520.nhom",
+   "trich": "Nhóm này không bao gồm các chế phẩm dùng trong nha khoa có thành phần cơ bản là thạch cao plaster (nhóm 34.07).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "252010",
+   "fact": "thach_cao_va_thach_cao_khan",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom2520.nhom",
+   "trich": "Thạch cao (gypsum) là dạng canxi sulphate tự nhiên đã được hydrate hoá, thường màu trắng và dễ vụn.…Thạch cao khan là dạng canxi sulphate khan tự nhiên, được dùng trong sản xuất axit sulphuric hoặc một số dạng thạch cao plaster.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "252020",
+   "fact": "thach_cao_plaster_tach_nuoc_bang_cach_nung",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom2520.nhom",
+   "trich": "Thạch cao plaster bao gồm thạch cao (gypsum) được tách nước một phần hoặc toàn bộ bằng cách nung.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "25201000",
+   "dieuKien": "Thạch cao; thạch cao khan",
+   "tieuChi": null,
+   "nguon": "tax.25201000",
+   "trich": "25201000 - Thạch cao; thạch cao khan",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "25202010",
+   "dieuKien": "Loại phù hợp dùng trong nha khoa",
+   "tieuChi": null,
+   "nguon": "tax.25202010",
+   "trich": "25202010 - - Loại phù hợp dùng trong nha khoa",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "25202090",
+   "dieuKien": "Loại khác",
+   "tieuChi": null,
+   "nguon": "tax.25202090",
+   "trich": "25202090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "252020",
+    "truAnhEm": [
+     "25202010"
+    ],
+    "toTienCoTen": "252020",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2520",
+    "cap": 4,
+    "cha": "25",
+    "tenVi": "Thạch cao; thạch cao khan; thạch cao plaster (bao gồm thạch cao nung hay canxi sulphat đã nung), đã hoặc chưa nhuộm màu, có hoặc không thêm một lượng nhỏ chất xúc tác hay chất ức chế.",
+    "tenEn": "Gypsum; anhydrite; plasters (consisting of calcined gypsum or calcium sulphate), coloured or not, with or without small quantities of accelerators or retarders",
+    "suyRa": false
+   },
+   {
+    "id": "25201000",
+    "cap": 8,
+    "cha": "2520",
+    "tenVi": "Thạch cao; thạch cao khan",
+    "tenEn": "Gypsum; anhydrite",
+    "suyRa": false,
+    "laPhanNhom": "252010"
+   },
+   {
+    "id": "252020",
+    "cap": 6,
+    "cha": "2520",
+    "tenVi": "Thạch cao plaster",
+    "tenEn": "Plasters; (consisting of calcined gypsum or calcium sulphate), whether or not coloured, with or without small quantities of accelerators or retarders",
+    "suyRa": false
+   },
+   {
+    "id": "25202010",
+    "cap": 8,
+    "cha": "252020",
+    "tenVi": "Loại phù hợp dùng trong nha khoa",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "25202090",
+    "cap": 8,
+    "cha": "252020",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2520.nhom",
+  "tax.25201000",
+  "tax.25202010",
+  "tax.25202090"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T15:15:49.174Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
