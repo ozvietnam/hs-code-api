@@ -1,0 +1,75 @@
+{
+ "nhom": "2601",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-10-28T17:13:20.426Z",
+ "daKiem": 12,
+ "soat": 12,
+ "xoa": 0,
+ "sua": 1,
+ "ghiChu": "Audit 2601 (lô 075, PR #516) — người soát ĐỘC LẬP (khác người soạn). Đối chiếu TỪNG câu trích với tmp/so-tay/nguon/2601.txt bằng so khớp byte (không nén khoảng trắng, giữ nguyên dấu tiếng Việt và lỗi chính tả nguồn). 12/12 câu trích NGUYÊN VĂN. GIỮ: phamVi (danh sách quặng chính (a)–(e); tiền tố \"Quặng sắt và tinh quặng sắt\" là tên nhóm — 421/590 nhóm trong kho cũng vậy); dieuKienVao[0] (ngưỡng Mn < 20 % — ngưỡng số có thật trong câu, phủ cả nhóm, đối chiếu chéo với chú giải 26.02); tieuChi6[0]/[1] + cay.tenDien[0]/[1] (dịch đúng tiêu đề WCO \"non-agglomerated\"/\"agglomerated (excluding roasted iron pyrites)\", khớp cột `en` của biểu thuế trong data/tax.json); dong8[0..4] (5 dòng 8 số khớp đủ 5 dòng tax.*; \"Loại khác: phần còn lại của phân nhóm 2601.11\" là khuôn mẫu sẵn có — 290 dòng trong kho). loaiTru RỖNG là ĐÚNG: câu \"Nhóm này loại trừ magnetite đã nghiền mịn … (Chương 32)\" chỉ nêu CHƯƠNG, không nêu mã nhóm đích → không đủ điều kiện loaiTru (luật 3).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Đối chiếu [nhom2601.nhom]: câu trích chép nguyên văn danh sách quặng chính (a)–(e); các đoạn lược bằng \"…\" không chứa ngoại lệ (\"trừ\"/\"tuy nhiên\"/\"với điều kiện\"/\"không kể\")."
+  },
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "giu",
+   "lyDo": "Ngưỡng số Mn < 20 % có thật trong câu trích; \"Nhóm này cũng bao gồm …\" là câu BAO GỒM không phải câu CHO PHÉP; đối chiếu chéo với chú giải 26.02 (\"những loại với hàm lượng mangan nhỏ hơn 20% … bị loại trừ (nhóm 26.01)\") → ràng buộc đúng cho cả nhóm 26.01."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — NHÁNH \"KHÔNG\" THIẾU CĂN CỨ TRONG NGUỒN. Câu trích cũ dừng ở \"(… (xem chú giải nhóm 26.02).\" — dấu ngoặc đó là ngoặc ĐỊNH NGHĨA \"tinh quặng làm giàu\", KHÔNG phải câu nói rằng hàng Mn ≥ 20 % sang nhóm 26.02; nhánh \"không → 2602\" vì thế chỉ có căn cứ suy từ câu trích liên hệ. SỬA: NỐI THÊM câu nguyên văn ngay sau câu trích — \"Tùy thuộc vào hàm lượng mangan mà các quặng được biết đến như một trong hai quặng sắt chứa mangan hoặc quặng mangan chứa sắt.\" (cắt liên tục từ dòng 16 của nguồn, không lược) — đọc câu trích là thấy ngay hai vế \"quặng sắt chứa mangan / quặng mangan chứa sắt\" nên nhánh \"không\" có căn cứ thật trong nguồn. `hoi`/`neuCo`/`neuKhong` GIỮ NGUYÊN (chiều Có/Không đúng; \"20%\" không khớp mẫu `hoi` có mã phân nhóm).",
+   "sua": {
+    "trich": "Nhóm này cũng bao gồm quặng sắt và tinh quặng sắt với hàm lượng mangan ít hơn 20% tính theo trọng lượng khô (quặng và tinh quặng làm giàu đã gia nhiệt tới nhiệt độ 105 đến 110°C (xem chú giải nhóm 26.02). Tùy thuộc vào hàm lượng mangan mà các quặng được biết đến như một trong hai quặng sắt chứa mangan hoặc quặng mangan chứa sắt."
+   }
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí boolean lấy từ wco.260111 (\"non-agglomerated\"); số không có trong trích nên không cần; đối chiếu cột `en` của data/tax.json (26011110) khớp."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Tiêu chí boolean lấy từ wco.260112 (\"agglomerated (excluding roasted iron pyrites)\"); khớp cột `en` của data/tax.json (26011210)."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nút 6 số 260111 chưa có tên tiếng Việt trong cây (tenVi=null) → điền tên dịch từ tiêu đề WCO kèm trích, đúng luật 9."
+  },
+  {
+   "index": "cay.tenDien[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nút 6 số 260112 chưa có tên tiếng Việt trong cây → điền tên dịch từ tiêu đề WCO kèm trích, đúng luật 9."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 26011110: nguồn tax.* ghi \"(SEN)\" nên ưu tiên điều kiện từ sen.26011110 (luật 6); câu trích nguyên văn, 244 ký tự."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\"; \"phần còn lại của phân nhóm 2601.11\" là khuôn mẫu sẵn có của kho sổ tay (290 dòng), phần phạm vi thật do máy sinh (phamViLoaiKhac)."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 26011210: SEN có sẵn cho dòng này (sen.26011210), ưu tiên SEN theo luật 6."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng \"Loại khác\" — cùng khuôn mẫu với dong8[1]."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 26012000: trích nguyên văn dòng biểu thuế \"26012000 - Pirit sắt đã nung\"."
+  }
+ ]
+}
