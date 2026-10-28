@@ -11146,3 +11146,78 @@ nên xoá sẽ mất thông tin đúng. Các "giữ" đều có căn cứ đo đ
 | `npm test` | **ALL TESTS PASSED** |
 
 Cấu trúc lô **không đổi** (27 mục): `phamVi` 6 · `dieuKienVao` 3 · `loaiTru` 2 · `phanBiet` 2 · `tieuChi6` 2 · `cay.tenDien` 2 · `dong8` 10.
+
+---
+
+# LÔ 077 — soạn sổ tay chú giải (phiên `dev-zcode-mm`, 29/10/2026 00:40)
+
+- **Nhánh:** `so-tay/lo-077` (worktree `hs-code-api-wt-st-lo077`; base `origin/main` = `69c7800` = lô 075)
+- **Nhóm:** `2613 2614 2615 2616 2617 2618` (Chương 26 — Quặng, xỉ và tro: molipden · titan · zircon + niobi/tantali/vanadi · bạc & kim loại quý · antimon/beri/bismuth/germanium/thuỷ ngân · xỉ hạt)
+- **Nguồn:** `tmp/so-tay/nguon/{2613…2618}.txt` (44.308 ký tự) + `_he-thong.txt` — đọc HẾT 6 tệp
+
+## 0. Bước đọc bắt buộc (đúng quy trình 3 tầng)
+
+1. `brief-st-lo077.md` (nhóm 2613-2618) — KHÔNG đọc trọn `so-tay-giao-ngoai.md`.
+2. `docs/giao-viec/so-tay/LUAT-CHUNG.md` — 11 luật (chép nguyên văn ≤ 300 ký tự; loại trừ chỉ khi nêu đích danh; mã ngoài nhóm phải có trong trích; `cay` do máy sinh; không ghi `nguonLoai`).
+3. `docs/giao-viec/so-tay/SOAN-LO.md` — lệnh có sẵn + mô tả PR phải có + bảng "lỗi máy TỰ LOẠI".
+
+## 1. Xuất nguồn
+
+`node scripts/build-so-tay.mjs --nhom=2613,2614,2615,2616,2617,2618 --xuat-nguon=tmp/so-tay/nguon` → 6 tệp + `_he-thong.txt`.
+
+## 2. Bộ CẮT TRÍCH byte-exact (`tmp/lo077/build.mjs`)
+
+Bài học lô 066/068/071 (bản in của `Read` KHÔNG byte-faithful với tiếng Việt): **không gõ tay một câu trích nào**. Mọi `trich` cắt từ `tmp/so-tay/nguon/<nhom>.txt` theo **số dòng + thao tác ASCII** (`dropPrefix` / `cutAt` / `cutAtLast` / `keepUntil` / `after`); script **ném lỗi nếu khoá không khớp** ⇒ không thể méo dấu. Câu trích ghép nhiều mảnh bằng " … " (quy ước nhà); hai mảnh liền nhau trong nguồn thì gộp thành MỘT mảnh liên tục, giữ nguyên `\n\n`.
+
+## 3. Soạn bản nháp + máy kiểm
+
+`node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **46/46 mục đạt (100 %)**, 0 mục bị loại:
+2613 (9) · 2614 (6) · 2615 (10) · 2616 (8) · 2617 (8) · 2618 (5).
+
+Cấu trúc lô: `phamVi` 6 · `dieuKienVao` 11 · `loaiTru` 5 · `phanBiet` 5 · `tieuChi6` 8 · `dong8` 11 · `cay.tenDien` 0.
+
+Mọi `phanBiet` là cặp **anh em trong nhóm**, phủ kín cả 2 dòng 8 số của nhóm (không chồng, không dư): 2613 10/90 · 2614 10/90 · 2615 10/90 · 2616 10/90 · 2617 10/90.
+
+## 4. BỎ có chủ đích (thà bỏ còn hơn mờ má) — 4 mục
+
+| Nhóm | Câu nguồn (nguyên văn) | Vì sao KHÔNG ghi |
+|---|---|---|
+| 2614 | "Nhóm này loại trừ các quặng titan đã nghiền mịn để sử dụng làm chất màu (**Chương 32**)" | chỉ nêu **CHƯƠNG**, không nêu mã nhóm đích ⇒ luật 3 (`loaiTru` cần đích danh) |
+| 2615 | "Vanadium oxit nóng chảy … thì được loại trừ (**thường thuộc Chương 28**)" | vừa HEDGE "thường" vừa chỉ nêu Chương |
+| 2617 | "… beryl hoặc emerald **thường** được xếp trong nhóm 71.03" | HEDGE ⇒ máy loại `loai-tru-chi-la-thuong`; **giữ nguyên câu trong `phamVi.trich`** để không mất dấu vết |
+| 2617 | "… 'những tinh quặng' của germanium … (**thường thuộc nhóm 28.25**)" | HEDGE ⇒ không đủ điều kiện loại trừ dứt khoát |
+
+## 5. Ba quyết định kỹ thuật đáng ghi
+
+1. **2618 KHÔNG mượn "KHÁI QUÁT CHUNG" của Chương 26** — điều kiện đó áp cho các nhóm **26.01–26.17**; 2618 là xỉ (ngoài dải) ⇒ chỉ dùng câu của chính nhóm: *"Nhóm này bao gồm các dạng xỉ hạt nhỏ (xỉ cát) thu được…"* → `la_xi_hat_nho` = true (mẫu nhà: 264/638 mục `dieuKienVao` lấy từ câu "Nhóm này …" — bài học lô 076).
+2. **`dieuKienVao` của 2613–2617 lấy 2 điều kiện chung của Chương 26** (mẫu nhà lô 076: 113/590 nhóm lấy `dieuKienVao` từ chương) — cả 5 nhóm nằm trong dải 26.01–26.17.
+3. **2614 `dong8[26140010]`: ngưỡng TiO2 10–40 % KHÔNG mã hoá thành `tieuChi`** — nguồn nói *"Quặng inmenit **chưa được xử lý** có hàm lượng TiO2 từ 10% đến 40%"* ⇒ ngưỡng chỉ thuộc quặng CHƯA xử lý, còn dòng biểu thuế gộp cả "tinh quặng"; đặt `tieuChi` ở cấp dòng sẽ **hẹp hơn nguồn** ⇒ giữ trong `dieuKien` kèm định ngữ giới hạn `(quặng chưa xử lý)`.
+
+## 6. Nạp + kiểm + nộp
+
+```bash
+rm -f data/so-tay/bao-cao/lo-077.json     # báo cáo lô phải SẠCH trước khi nạp (bài học lô 068)
+node scripts/build-so-tay.mjs --nhom=2613,2614,2615,2616,2617,2618 --tu-tep=tmp/so-tay/raw --force \
+  --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-077.json
+# → mục đạt 46/46 (100 %) — nghiệm thu bước 1 cần ≥ 95 %; nhomLoi: []
+node scripts/check-cay.mjs --nhom=2613,…,2618 --chi-tiet   # → 6 nhóm, 0 lỗi lệch cây, 6/6 nhóm "đủ"
+node scripts/check-trich-nguyen-van.mjs                     # → OK — 46 mục, câu trích nguyên văn tuyệt đối
+node scripts/scan-so-tay-soat.mjs 2613,…,2618              # → 14 cảnh báo (mục 7)
+npm run so-tay:check                                        # → 614 nhóm, 15.482 mục, 0 mục không kiểm được nguồn
+npm test                                                     # → ALL TESTS PASSED
+```
+
+## 7. Cảnh báo còn lại của lô (đã đối chiếu — KHÔNG phải lỗi dữ liệu)
+
+| Loại | Số | Mục | Kết luận |
+|---|---|---|---|
+| `TỪ-NGOÀI-NGUỒN` | 12 | `tieuChi6[].fact` (6) · `dong8[1].dieuKien` "phần còn lại của phân nhóm …" (5) · 2618 `phamVi.text` (1) | **BÁO ĐỘNG GIẢ do lỗi `srcSquash` của `scan-so-tay-soat.mjs`** (script dựng `srcSquash` mà KHÔNG bỏ dấu ⇒ "quặng" ≠ "quang"). Đã đối chiếu thủ công bằng `fold()` trên toàn bộ `tmp/so-tay/nguon/<nhom>.txt`: **mọi từ bị báo đều CÓ trong nguồn của nhóm**. Cùng lớp cảnh báo đã ghi ở lô 070/072/075 — chưa sửa script (ngoài phạm vi lô dữ liệu) |
+| `VÙNG-IM-LẶNG` | 2 | 2615 `phamVi` (444) · 2617 `phamVi` (491) | Chú giải nhóm 2615/2617 là **danh mục khoáng dài** (3 nhóm kim loại / 5 nhóm kim loại với 12+ khoáng); cắt bớt ⇒ mất tên khoáng. Nền nhà đo được: **133/608** nhóm có `phamVi.trich` > 300 (máy chỉ chặn > 600) ⇒ giữ, nêu ở đây và trong body PR |
+
+⇒ **0 TRÀN-CLIP · 0 LƯỚC-NGOẠI-LỆ · 0 CÂU-SAU-NGOẠI-LỆ** trên 6 nhóm.
+
+## 8. Bài học cho lô sau
+
+- **`LƯỚC-NGOẠI-LỆ` giả (mẫu lô 075):** khi câu trích chứa "thường được xếp …" nằm trong 60 ký tự cuối của một mảnh, script báo cảnh báo dù **không có gì bị lược**. Cách tắt mà KHÔNG mất chữ: **GỘP các mảnh liền nhau thành MỘT mảnh liên tục** (giữ `\n\n` của nguồn) — đã dùng cho 2617 (gộp dòng 18–24) ⇒ cảnh báo biến mất, không mất chữ nào.
+- Bộ cắt theo số dòng + khoá ASCII (`dropPrefix`/`cutAt`/`cutAtLast`/`keepUntil`/`after`) dựng lại được **mọi** câu trích của nhà mà không gõ tay 1 ký tự tiếng Việt nào — nên dùng lại bộ này cho các lô sau.
+- `scan-so-tay-soat.mjs` báo `TỪ-NGOÀI-NGUỒN` cho mọi slug tiếng Việt (`loai_quang_…`) khi nguồn là tiêu đề WCO **tiếng Anh** — đừng sửa `fact` thành tiếng Anh; nền nhà dùng slug tiếng Việt 2.260/2.518 mục `tieuChi6`.
