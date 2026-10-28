@@ -6,7 +6,7 @@
 
 # LÔ 068 — soạn sổ tay chú giải (phiên `dev-zcode-mm`, 28/10/2026 13:25)
 
-- **Nhánh:** `so-tay/lo-068` · **Nhóm:** `2209,2301,2302,2303,2304,2305` (Chương 22 giấm + Chương 23 phế liệu)
+- **Nhánh:** `so-tay/lo-068` · **PR #499** — **KHÔNG merge** (chờ soát độc lập) · **Nhóm:** `2209,2301,2302,2303,2304,2305` (Chương 22 giấm + Chương 23 phế liệu)
 - **Kết quả:** **50/50 mục (100 %)** — `tyLeDat: 100`, `nhomLoi: []`; 6/6 nhóm "đủ" theo `check-cay`
 - **Nguồn:** `tmp/so-tay/nguon/2209.txt`…`2305.txt` (23.364 ký tự) + `_he-thong.txt` — đọc HẾT 6 tệp
 
