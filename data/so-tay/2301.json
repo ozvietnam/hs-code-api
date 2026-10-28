@@ -1,0 +1,193 @@
+{
+ "nhom": "2301",
+ "phamVi": {
+  "text": "Bột mịn và bột thô, không dùng làm thức ăn cho người, thu được từ quá trình chế biến, hoặc từ động vật còn nguyên con hoặc từ sản phẩm động vật (thịt, phụ phẩm thịt) trừ xương, móng guốc, sừng, mai, vỏ; và tóp mỡ.",
+  "nguon": "nhom2301.nhom",
+  "trich": "(1) Bột mịn và bột thô, không sử dụng làm thức ăn cho người, thu được từ quá trình chế biến, hoặc các loại động vật còn nguyên con…hoặc các sản phẩm động vật (như thịt hoặc phụ phẩm dạng thịt sau giết mổ) trừ xương, móng guốc, sừng, mai, vỏ,…(2) Tóp mỡ, là sản phẩm tạo thành bằng các mô màng còn lại sau quá trình rán mỡ lợn hoặc mỡ một số động vật khác.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Bột mịn và bột thô từ côn trùng, không thích hợp dùng làm thức ăn cho người",
+   "sangNhom": "0511",
+   "nguon": "nhom2301.nhom",
+   "trich": "Nhóm này loại trừ bột mịn và bộ thô từ côn trùng, không thích hợp dùng làm thức ăn cho người (nhóm 05.11).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "230110",
+   "fact": "nguon_goc_thit_va_top_mo",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.230110",
+   "trich": "230110 Flours, meals and pellets; of meat or meat offal, greaves",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "230120",
+   "fact": "nguon_goc_dong_vat_thuy_sinh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.230120",
+   "trich": "230120 Flours, meals and pellets; of fish or of crustaceans, molluscs or other aquatic invertebrates",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "23011000",
+   "dieuKien": "Bột mịn, bột thô và viên, từ thịt hoặc phụ phẩm dạng thịt sau giết mổ; tóp mỡ",
+   "nguon": "tax.23011000",
+   "trich": "23011000 - Bột mịn, bột thô và viên, từ thịt hoặc phụ phẩm dạng thịt sau giết mổ; tóp mỡ",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "23012010",
+   "dieuKien": "Từ cá, có hàm lượng protein dưới 60% tính theo khối lượng",
+   "nguon": "tax.23012010",
+   "trich": "23012010 - - Từ cá, có hàm lượng protein dưới 60% tính theo khối lượng",
+   "tieuChi": {
+    "fact": "ham_luong_protein",
+    "op": "<",
+    "value": 60,
+    "donVi": "%"
+   },
+   "dieuKienSo": [
+    {
+     "fact": "ham_luong_protein",
+     "op": "<",
+     "value": 60,
+     "donVi": "%"
+    }
+   ],
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "23012020",
+   "dieuKien": "Từ cá, có hàm lượng protein từ 60% trở lên tính theo khối lượng",
+   "nguon": "tax.23012020",
+   "trich": "23012020 - - Từ cá, có hàm lượng protein từ 60% trở lên tính theo khối lượng",
+   "tieuChi": {
+    "fact": "ham_luong_protein",
+    "op": ">=",
+    "value": 60,
+    "donVi": "%"
+   },
+   "dieuKienSo": [
+    {
+     "fact": "ham_luong_protein",
+     "op": ">=",
+     "value": 60,
+     "donVi": "%"
+    }
+   ],
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "23012090",
+   "dieuKien": "Phân nhóm 2301.20 — dòng biểu thuế ghi \"Loại khác\"",
+   "nguon": "tax.23012090",
+   "trich": "23012090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "230120",
+    "truAnhEm": [
+     "23012010",
+     "23012020"
+    ],
+    "toTienCoTen": "230120",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2301",
+    "cap": 4,
+    "cha": "23",
+    "tenVi": "Bột mịn, bột thô và viên, từ thịt hoặc phụ phẩm dạng thịt sau giết mổ, từ cá hay động vật giáp xác, động vật thân mềm hay động vật thuỷ sinh không xương sống khác, không thích hợp dùng làm thức ăn cho người; tóp mỡ.",
+    "tenEn": "Flours, meal and pellets, of meat or meat offal, of fish or of crustaceans, molluscs or other aquatic invertebrates, unfit for human consumption; greaves",
+    "suyRa": false
+   },
+   {
+    "id": "23011000",
+    "cap": 8,
+    "cha": "2301",
+    "tenVi": "Bột mịn, bột thô và viên, từ thịt hoặc phụ phẩm dạng thịt sau giết mổ; tóp mỡ",
+    "tenEn": "Flours, meals and pellets; of meat or meat offal, greaves",
+    "suyRa": false,
+    "laPhanNhom": "230110"
+   },
+   {
+    "id": "230120",
+    "cap": 6,
+    "cha": "2301",
+    "tenVi": "Bột mịn, bột thô và viên, từ cá hoặc từ động vật giáp xác, động vật thân mềm hoặc động vật thuỷ sinh không xương sống khác",
+    "tenEn": "Flours, meals and pellets; of fish or of crustaceans, molluscs or other aquatic invertebrates",
+    "suyRa": false
+   },
+   {
+    "id": "23012010",
+    "cap": 8,
+    "cha": "230120",
+    "tenVi": "Từ cá, có hàm lượng protein dưới 60% tính theo khối lượng",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "23012020",
+    "cap": 8,
+    "cha": "230120",
+    "tenVi": "Từ cá, có hàm lượng protein từ 60% trở lên tính theo khối lượng",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "23012090",
+    "cap": 8,
+    "cha": "230120",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2301.nhom",
+  "tax.23011000",
+  "tax.23012010",
+  "tax.23012020",
+  "tax.23012090",
+  "wco.230110",
+  "wco.230120"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T07:43:23.613Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

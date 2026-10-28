@@ -1,0 +1,64 @@
+{
+ "nhom": "2301",
+ "nguoiSoat": "dev-soat-doc-lap-lo068",
+ "vong": 2,
+ "luc": "2026-10-28T15:10:00+07:00",
+ "daKiem": 8,
+ "xoa": 0,
+ "sua": 3,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 068 — người soát KHÁC người soạn (dev-zcode-mm). Đọc LẠI TOÀN BỘ tmp/so-tay/nguon/2301.txt (4.933 ký tự) + ch23.chuong + phan23.phan + wco.230110/230120 + 4 dòng tax.*. ĐÃ ĐO NỀN NHÀ: `dieuKienVao` dạng định nghĩa — nhà chấp nhận rộng (163/787) nên không xoá; `fact` tên đại lượng chung \"ham_luong\" — CHỈ lô này dùng (2/433 mục `dieuKienSo` toàn kho), còn 433 mục còn lại đều đặt tên riêng theo thành phần. GIỮ 6/8 mục: `phamVi` (nêu đủ hai phần (1) bột mịn/bột thô + (2) tóp mỡ; đoạn lược \"…\" bỏ câu \"Các sản phẩm này… được nghiền\" và các câu MÔ TẢ cách làm — KHÔNG bỏ ngoại lệ); `loaiTru[0]` (bột mịn và bộ thô từ côn trùng → 05.11 — giữ nguyên lỗi kệ sách \"bộ thô\" trong `trich`; `dieuKien` dùng nghĩa đúng \"bột thô\"); `tieuChi6[0..1]` (wco.230110/230120); `dong8[23011000]`. SỬA 2: tên `fact` của 2 dòng ngưỡng protein (xem thayDoi). GHI NHẬN (không sửa được, ngoài phạm vi sổ tay): (1) `dieuKienVao` rỗng là ĐÚNG — nhóm có HAI phần, phần (1) có câu \"không sử dụng làm thức ăn cho người\" nhưng phần (2) (tóp mỡ) không nằm trong câu đó; vế \"tóp mỡ vẫn được phân loại ở đây ngay cả khi…\" là câu CHO PHÉP (máy loại). (2) Ngưỡng protein 60 % của 23012010/23012020 chạy được VỀ LÝ THUYẾT nhưng THỰC TẾ KHÔNG chạy: `SO_DON_VI_RE` trong lib/so-tay-gates.js kết thúc bằng \"\\b\" sau đơn vị \"%\" — \"%\" là ký tự KHÔNG phải chữ nên \\b không bao giờ khớp ⇒ mọi tiêu chí có donVi \"%\" (55 mục toàn kho, gồm 11 mục lô này) đều đọc số ra [] ⇒ cổng chốt dòng trả THIEU_SO_LIEU, KHÔNG chốt được (đã chạy thật lib/so-tay-gates.js). Đề xuất cho nhà: bỏ \\b hoặc thêm nhánh riêng cho \"%\". LƯỢT 2 (phiên soát chính, sau khi dừng phiên trùng của daemon): thêm 1 sửa `phamVi` — đoạn lược giấu ngoại lệ \"trừ xương, móng guốc, sừng, mai, vỏ\" + nhánh \"sản phẩm động vật\" (dòng 23011000 chính là sản phẩm thịt/phụ phẩm thịt), và `text` thu hẹp hơn câu trích. Kiểm lại TOÀN BỘ 8 mục 2301 ở lượt 2: không mục nào khác sai.",
+ "thayDoi": [
+  {
+   "index": "dong8[1]",
+   "hanhDong": "sua",
+   "lyDo": "TÊN TIÊU CHÍ MƠ HỒ — câu nguồn ghi \"có hàm lượng PROTEIN dưới 60% tính theo khối lượng\" nhưng `fact` lại đặt là \"ham_luong\" (hàm lượng nói chung). Runtime đọc số theo TÊN fact (LOAI_GIA_TRI.ham_luong.ctx = /hàm lượng|nồng độ|chứa \\d|content|含量/) nên \"hàm lượng\" bắt được MỌI phần trăm trong mô tả hàng (kể cả % độ ẩm đứng trước) ⇒ có thể chấm nhầm dòng. Sửa thành \"ham_luong_protein\": bám đúng từ nguồn, đúng quy ước nhà (ham_luong_nuoc / ham_luong_bong / ham_luong_axit_eruxic…) và đúng cách lô này đặt tên ở 2304. Số, đơn vị, toán tử, `trich`/`nguon` giữ nguyên.",
+   "sua": {
+    "tieuChi": {
+     "fact": "ham_luong_protein",
+     "op": "<",
+     "value": 60,
+     "donVi": "%"
+    },
+    "dieuKienSo": [
+     {
+      "fact": "ham_luong_protein",
+      "op": "<",
+      "value": 60,
+      "donVi": "%"
+     }
+    ]
+   }
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "sua",
+   "lyDo": "TÊN TIÊU CHÍ MƠ HỒ — như dong8[1]: câu nguồn \"có hàm lượng protein từ 60% trở lên tính theo khối lượng\" mà `fact` để là \"ham_luong\" (hàm lượng nói chung) ⇒ đọc số theo tên fact có thể bắt nhầm phần trăm khác trong mô tả hàng. Sửa thành \"ham_luong_protein\". Số, đơn vị, toán tử, `trich`/`nguon` giữ nguyên.",
+   "sua": {
+    "tieuChi": {
+     "fact": "ham_luong_protein",
+     "op": ">=",
+     "value": 60,
+     "donVi": "%"
+    },
+    "dieuKienSo": [
+     {
+      "fact": "ham_luong_protein",
+      "op": ">=",
+      "value": 60,
+      "donVi": "%"
+     }
+    ]
+   }
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "ĐOẠN LƯỢC GIẤU NGOẠI LỆ + PHẠM VI THU HẸP (vòng soát độc lập, lần 2 — không phải máy bắt). Bản nháp trích \"(1) Bột mịn và bột thô, không sử dụng làm thức ăn cho người, thu được từ quá trình chế biến, hoặc các loại động vật còn nguyên con…(2) Tóp mỡ, …\" ⇒ đoạn lược GIẤU mất (a) nhánh \"hoặc các sản phẩm động vật (như thịt hoặc phụ phẩm dạng thịt sau giết mổ)\" — đúng sản phẩm chính của dòng 23011000 (\"từ thịt hoặc phụ phẩm dạng thịt sau giết mổ\"), và (b) NGOẠI LỆ \"trừ xương, móng guốc, sừng, mai, vỏ\" (luật lô 030: đoạn bị lược KHÔNG được chứa ngoại lệ \"trừ\"; lô 055: `phamVi` phải KÉO câu ngoại lệ ngay sau câu trích). Hệ quả: `phamVi.text` bản nháp (\"… hoặc các loại động vật còn nguyên con; và:top mỡ.\") mô tả THU HẸP hơn nhóm thật, và ranh giới \"bột từ xương/voi/sừng\" không có trong sổ tay. Sửa: kéo cả nhánh \"sản phẩm động vật\" + ngoại lệ vào câu trích (cắt NGUYÊN VĂN từ tmp/so-tay/nguon/2301.txt, ghép bằng dấu lược \"…\"), và viết lại `text` khớp đúng trích, ≤ 220 ký tự để runtime (`clip(s.phamVi.text, 220)`) không cắt giữa câu. Giữ nguyên `nguon` (nhom2301.nhom) và không đổi mã nào.",
+   "sua": {
+    "text": "Bột mịn và bột thô, không dùng làm thức ăn cho người, thu được từ quá trình chế biến, hoặc từ động vật còn nguyên con hoặc từ sản phẩm động vật (thịt, phụ phẩm thịt) trừ xương, móng guốc, sừng, mai, vỏ; và tóp mỡ.",
+    "trich": "(1) Bột mịn và bột thô, không sử dụng làm thức ăn cho người, thu được từ quá trình chế biến, hoặc các loại động vật còn nguyên con…hoặc các sản phẩm động vật (như thịt hoặc phụ phẩm dạng thịt sau giết mổ) trừ xương, móng guốc, sừng, mai, vỏ,…(2) Tóp mỡ, là sản phẩm tạo thành bằng các mô màng còn lại sau quá trình rán mỡ lợn hoặc mỡ một số động vật khác."
+   }
+  }
+ ]
+}

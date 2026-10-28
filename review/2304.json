@@ -1,0 +1,27 @@
+{
+ "nhom": "2304",
+ "nguoiSoat": "dev-soat-doc-lap-lo068",
+ "vong": 2,
+ "luc": "2026-10-28T14:30:00+07:00",
+ "daKiem": 8,
+ "xoa": 1,
+ "sua": 1,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 068 — người soát KHÁC người soạn (dev-zcode-mm). Đọc LẠI TOÀN BỘ tmp/so-tay/nguon/2304.txt (5.322 ký tự) + ch23.chuong + phan23.phan + sen.23040010/23040021 + wco.230400 + 4 dòng tax.*. XOÁ 1 (`dieuKienVao[0]` — xem thayDoi; người soạn cũng đã dành riêng một mục trong PR để xin soi kỹ mục này). GIỮ 7/8 mục: `phamVi` (nêu đủ CẢ HAI vế — khô dầu/phế liệu rắn sau chiết xuất dầu đậu tương VÀ bột mịn đậu tương đã khử chất béo không có kết cấu thích hợp dùng làm thức ăn cho người); `loaiTru[0]` (cáu, cặn dầu → 15.22) và `loaiTru[1]` (protein cô đặc → 21.06, giữ trọn câu); `dong8[23040010]` + `dong8[23040021]` (điều kiện lấy từ SEN theo luật 6; câu trích có nguyên văn); `dong8[23040029]` (\"Loại khác\" của TIÊU ĐỀ QUỐC GIA 7 số 2304.00.2 — máy tự tính `phamViLoaiKhac.cha = 2304002`, `truAnhEm = 23040021` ⇒ mô tả của bản nháp KHÔNG MÂU THUẪN); `dong8[23040090]` (cha = 2304 theo cây ⇒ \"Nhóm 2304\" đúng). GHI NHẬN (không sửa được trong lô này): (1) Tiêu chí SEN của 23040010/23040021 dùng `fact` CHƯA ĐĂNG KÝ trong LOAI_GIA_TRI (do_am, ham_luong_protein, ham_luong_chat_beo, ham_luong_chat_xo, tro) ⇒ cổng chốt dòng không tự chấm được; thêm nữa mọi tiêu chí donVi \"%\" hiện KHÔNG đọc được vì `SO_DON_VI_RE` kết thúc bằng \"\\b\" sau \"%\" (ký tự không phải chữ) ⇒ 55 mục toàn kho đều vô hiệu — cần sửa lib/so-tay-gates.js, NGOÀI phạm vi lô dữ liệu. (2) SEN còn hai tiêu chí nữa không được mã hóa: \"chỉ số hòa tan nitơ từ 70% trở lên\" và \"tỷ lệ tối thiểu 95% lọt qua sàng với kích thước mắt sàng 100\" của 23040010 — thêm vào sẽ làm dòng này không chốt được nữa (và hai ngưỡng của 23040010/23040021 vốn ĐÃ CHỒNG nhau ⇒ TRANH_CAP). (3) \"Sản phẩm thường chứa…\" của SEN 23040021 có định ngữ \"thường\" nhưng lược đồ không có chỗ cho định ngữ ⇒ giữ nguyên trong `trich`. LƯỢT 2 (phiên soát chính): thêm 1 sửa `phamVi.text` — tràn trần clip 220 của runtime (221 ký tự ⇒ dòng \"Phạm vi:\" bị cắt đuôi). Kiểm lại TOÀN BỘ 7 mục 2304 ở lượt 2: không mục nào khác sai.",
+ "thayDoi": [
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "ĐIỀU KIỆN VÀO NHÓM KHÔNG PHỦ CẢ NHÓM + LÀ CÂU ĐỊNH NGHĨA (luật lô 030 + lô 054: điều kiện vào nhóm phải phủ CẢ nhóm, câu ràng buộc kiểu \"chỉ gồm…\", không phải câu định nghĩa phạm vi). Câu trích \"Nhóm này bao gồm các loại khô dầu và các phế liệu rắn khác còn lại sau khi chiết xuất dầu từ hạt đậu tương bằng dung môi hoặc bằng ép hoặc ép quay.\" chỉ nói VẾ (1); chú giải 23.04 còn vế (2) \"Nhóm này cũng bao gồm bột mịn của hạt đậu tương đã khử chất béo không có kết cấu thích hợp dùng làm thức ăn cho người.\" — vế này KHÔNG phải \"khô dầu\" ⇒ đọc `fact: thuoc_dau_dau_tuong = true` như điều kiện BẮT BUỘC sẽ loại oan hai dòng 2304.0010/2304.0021 (bột đậu tương khử chất béo/thô dùng làm thức ăn cho người — đúng hai dòng có SEN, tức là hai dòng có giá trị thương mại thật). Runtime in ra prompt là \"Điều kiện vào nhóm: thuoc_dau_dau_tuong = true\" ⇒ rủi ro loại oan. Thông tin về vế (1) KHÔNG MẤT: `phamVi.text` đã nêu đủ (\"Khô dầu và các phế liệu rắn khác còn lại sau khi chiết xuất dầu từ hạt đậu tương…\"). TIỀN LỆ ĐÃ ĐO (để người duyệt có thể bác nếu muốn): nhà có 7 nhóm NGUOI_DUYET với điều kiện chỉ phủ vế đầu của chú giải nhiều vế (0203, 1502, 1504, 1510, 2002, 8449, 8510) — nhưng ở các nhóm đó vế sau KHÔNG MÂU THUẪN với điều kiện, còn ở 2304 thì mâu thuẫn (bột mịn khử chất béo ≠ khô dầu).",
+   "sua": null
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "TRÀN TRẦN CLIP RUNTIME (1 ký tự) — `soTayBlock` in `clip(s.phamVi.text, 220)` (lib/so-tay-gates.js) cắt đuôi ⇒ dòng \"Phạm vi:\" hiện ra kết thúc bằng \"…\" (dấu lược), đọc như câu còn tiếp. Đã đo nền nhà trước (121/556 nhóm `phamVi.text` vượt 220) nhưng ở đây chỉ vượt 1 ký tự nên cắt đúng dấu chấm câu — dễ sửa. Rút gọn \"không có kết cấu thích hợp DÙNG làm thức ăn cho người\" → \"không có kết cấu thích hợp làm thức ăn cho người\" (nghĩa không đổi, câu trích nguyên văn giữ nguyên).",
+   "sua": {
+    "text": "Khô dầu và các phế liệu rắn khác còn lại sau khi chiết xuất dầu từ hạt đậu tương bằng dung môi hoặc bằng ép hoặc ép quay; và bột mịn của hạt đậu tương đã khử chất béo không có kết cấu thích hợp làm thức ăn cho người."
+   }
+  }
+ ]
+}

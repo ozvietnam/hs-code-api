@@ -1,0 +1,29 @@
+{
+ "nhom": "2303",
+ "nguoiSoat": "dev-soat-doc-lap-lo068",
+ "vong": 1,
+ "luc": "2026-10-28T14:30:00+07:00",
+ "daKiem": 14,
+ "xoa": 0,
+ "sua": 2,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 068 — người soát KHÁC người soạn (dev-zcode-mm). Đọc LẠI TOÀN BỘ tmp/so-tay/nguon/2303.txt (5.767 ký tự) + ch23.chuong + phan23.phan + 3 wco.* + 4 dòng tax.*. ĐÃ ĐO NỀN NHÀ: câu trích BẮT ĐẦU bằng đại từ — nhà chấp nhận 1.101 mục (713 NGUOI_DUYET) nên không coi là lỗi chung; nhưng ở đây vế ĐẦU là đại từ tham chiếu (\"Bã này\") mà câu trích không có câu định nghĩa đi kèm ⇒ hồ sơ bằng chứng (đưa vào evidence pack) đọc không hiểu \"Bã này\" là gì. SỬA 2: mở rộng trích (xem thayDoi). GIỮ 12/14 mục: `phamVi` (nêu đủ 5 phần (A)–(E)); `loaiTru[0..3]` ((a) 17.03, (b) 21.02, (c) 26.21, (d) 47.06 — đích danh trong câu trích); `phanBiet[0]` (có→2309 / không→2303 — nhánh \"không\" là phần BÙ đúng, \"nhóm này\" trong câu trích chính là 2303); `tieuChi6[0..2]`; `dong8` đủ 4 dòng tax.*. GHI NHẬN (không sửa được): `loaiTru[4]` và `phanBiet[0]` dùng CÙNG một câu trích — không phải lỗi (mẫu nhà đã dùng ở nhiều lô), nhưng nếu người duyệt muốn tách thì phải sửa cả hai cùng lúc.",
+ "thayDoi": [
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "sua",
+   "lyDo": "TRÍCH THIẾU TIỀN ĐẠN — câu trích mở đầu bằng \"Bã này\" mà không kèm câu định nghĩa của mục (B) ⇒ người đọc hồ sơ (và LLM lúc chạy) không biết \"Bã này\" là gì; mệnh đề \"bã ép củ cải đường lại thuộc nhóm 23.09\" ở cuối câu mới lộ ra chủ thể. Mở rộng trích thêm câu \"(B) Bã ép củ cải đường là phế liệu còn lại sau khi đường đã được chiết xuất từ củ cải đường.\" — cắt NGUYÊN VĂN từ nguồn (đúng câu mà `phamVi.trich` của chính nhóm 2303 đã trích), nối liền mạch, không đổi nghĩa, không thêm mã đích nào (23.09 vẫn có trong câu) ⇒ máy vẫn kiểm được.",
+   "sua": {
+    "trich": "(B) Bã ép củ cải đường là phế liệu còn lại sau khi đường đã được chiết xuất từ củ cải đường. Bã này được phân loại trong nhóm này có thể ở dạng ẩm hoặc khô nhưng nếu thêm mật vào bã hoặc chế biến cách khác thành thức ăn chăn nuôi thì bã ép củ cải đường lại thuộc nhóm 23.09."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "TRÍCH THIẾU TIỀN ĐẠN — như loaiTru[4]: câu trích mở đầu bằng \"Bã này\" ⇒ câu hỏi phân biệt (\"Hàng có phải là bã ép củ cải đường đã thêm mật… không?\") không có căn cứ đọc lại được ngay. Mở rộng bằng câu định nghĩa (B) cắt nguyên văn từ nguồn; `hoi`/`neuCo`/`neuKhong`/`nguon` giữ nguyên.",
+   "sua": {
+    "trich": "(B) Bã ép củ cải đường là phế liệu còn lại sau khi đường đã được chiết xuất từ củ cải đường. Bã này được phân loại trong nhóm này có thể ở dạng ẩm hoặc khô nhưng nếu thêm mật vào bã hoặc chế biến cách khác thành thức ăn chăn nuôi thì bã ép củ cải đường lại thuộc nhóm 23.09."
+   }
+  }
+ ]
+}

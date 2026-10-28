@@ -1,0 +1,22 @@
+{
+ "nhom": "2302",
+ "nguoiSoat": "dev-soat-doc-lap-lo068",
+ "vong": 2,
+ "luc": "2026-10-28T15:10:00+07:00",
+ "daKiem": 13,
+ "xoa": 0,
+ "sua": 1,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 068 — người soát KHÁC người soạn (dev-zcode-mm). Đọc LẠI TOÀN BỘ tmp/so-tay/nguon/2302.txt (7.410 ký tự) + ch23.chuong + phan23.phan + sen.23023010 + 4 wco.* + 6 dòng tax.*. XOÁ 0, SỬA 0 — không tìm thấy mục nào lỗi trong phạm vi mục 4. GIỮ 13/13: `phamVi` (nêu đủ ba phần (A) cám/tấm/phế liệu xay xát, (B) phế liệu sàng sảy, (C) phế liệu cây họ đậu; đoạn lược \"…\" bỏ câu MÔ TẢ các loại ngũ cốc + câu liệt kê — không bỏ ngoại lệ nào); `loaiTru[0]` (\"Vỏ, trấu ngũ cốc… được phân loại vào nhóm 12.13\" — đích danh, có dấu hiệu loại trừ); `phanBiet[0]` (câu hỏi không nhắc mã, có→23023010 / không→23023090 là phần BÙ đúng; mã đích trong cùng phân nhóm nên máy không đòi nêu trong trích; nhánh \"không\" dựa trên dòng biểu thuế \"Loại khác\" của 2302.30 — có căn cứ); `tieuChi6[0..3]` (4 wco.*); `dong8` đủ 6 dòng tax.* của nhóm (23021000, 23023010, 23023090, 23024010, 23024090, 23025000), dòng 23023010 lấy điều kiện từ SEN theo luật 6. GHI NHẬN (không sửa được — luật máy, đã có trong báo cáo lô): (1) loại trừ \"khô dầu hoặc các phế liệu rắn khác thu được từ công đoạn chiết xuất chất béo hoặc dầu thực vật (các nhóm từ 23.04 đến 23.06)\" có ĐÍCH DANH theo DẢI SỐ mà máy đòi mỗi mã nêu nguyên văn (23.05 không có trong câu) ⇒ KHÔNG mã hóa được, đã bỏ mục theo luật lô 066 vòng 2; nhờ người duyệt cân nhắc nới luật cho dải số. (2) Tiêu chí phân biệt với 11.02/11.04 — \"không đáp ứng được những điều kiện về hàm lượng tinh bột và hàm lượng tro tại Chú giải 2 (A) của Chương 11\" — KHÔNG vào được sổ tay: Chương 11 không có trong khối nguồn, câu lại gắn \"chủ yếu bao gồm\" và chỉ nói về mục (A) (không phủ cả nhóm) ⇒ không đặt `dieuKienVao` (luật: điều kiện vào nhóm phải phủ CẢ nhóm). LƯỢT 2 (phiên soát chính, sau khi dừng phiên trùng của daemon): thêm 1 sửa `phamVi` — đoạn lược giấu điều kiện hàm lượng tinh bột/tro theo Chú giải 2 (A) Chương 11 (ranh giới 23.02 ↔ Chương 11), và `text` thu hẹp hơn chính câu trích (bỏ vế \"hoặc từ các công đoạn xử lý khác\"). Kiểm lại TOÀN BỘ 13 mục 2302 ở lượt 2: không mục nào khác sai.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "ĐOẠN LƯỢC GIẤU ĐIỀU KIỆN VÀO NHÓM + `text` THU HẸP (vòng soát độc lập, lần 2 — không phải máy bắt). Bản nháp trích \"(A) Cám, tấm và phế liệu khác của qui trình xay xát hạt ngũ cốc.…(B) Phế liệu thu được từ việc sàng, sảy hoặc từ các công đoạn xử lý khác của hạt ngũ cốc.…(C) …\" ⇒ đoạn lược giữa (A) và (B) GIẤU mất điều kiện \"mà các loại này không đáp ứng được những điều kiện về hàm lượng tinh bột và hàm lượng tro được quy định tại Chú giải 2 (A) của Chương 11\" — đây là điều kiện phân định 23.02 với Chương 11 (sổ tay nhà 1101 đã nêu điều kiện tinh bột/tro; 1104 nêu \"phế liệu (nhóm 23.02)\"); luật lô 030: đoạn bị lược KHÔNG được chứa điều kiện. Hệ quả: `phamVi.text` bản nháp (\"phế liệu sàng, sảy của hạt ngũ cốc\") còn THU HẸP hơn chính câu trích của nó (\"sàng, sảy HOẶC từ các công đoạn xử lý khác\"). Sửa: kéo câu điều kiện (giữ cả \"mà các loại này\" để không mất chủ thể) vào câu trích, viết lại `text` khớp trích và nêu điều kiện đúng phạm vi (chỉ vế (A) — phế liệu xay xát), ≤ 220 ký tự. KHÔNG đặt `dieuKienVao` cho điều kiện này: câu chỉ nói về mục (A) (vế (B)/(C) không nói tới) nên không phủ CẢ nhóm (luật lô 030/054). Giữ nguyên `nguon` (nhom2302.nhom) và không đổi mã nào.",
+   "sua": {
+    "text": "Cám, tấm và phế liệu xay xát hạt ngũ cốc không đáp ứng điều kiện hàm lượng tinh bột và tro (Chú giải 2 (A) của Chương 11); phế liệu sàng, sảy và xử lý khác của hạt ngũ cốc; và phế liệu của các loại cây họ đậu.",
+    "trich": "(A) Cám, tấm và phế liệu khác của qui trình xay xát hạt ngũ cốc.…mà các loại này không đáp ứng được những điều kiện về hàm lượng tinh bột và hàm lượng tro được quy định tại Chú giải 2 (A) của Chương 11.…(B) Phế liệu thu được từ việc sàng, sảy hoặc từ các công đoạn xử lý khác của hạt ngũ cốc.…(C) Các phế liệu và phế thải của loại tương tự thu được từ quá trình nghiền hoặc từ các công đoạn chế biến khác của các loại cây họ đậu."
+   }
+  }
+ ]
+}

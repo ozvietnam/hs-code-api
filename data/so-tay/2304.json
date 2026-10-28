@@ -1,0 +1,228 @@
+{
+ "nhom": "2304",
+ "phamVi": {
+  "text": "Khô dầu và các phế liệu rắn khác còn lại sau khi chiết xuất dầu từ hạt đậu tương bằng dung môi hoặc bằng ép hoặc ép quay; và bột mịn của hạt đậu tương đã khử chất béo không có kết cấu thích hợp làm thức ăn cho người.",
+  "nguon": "nhom2304.nhom",
+  "trich": "Nhóm này bao gồm các loại khô dầu và các phế liệu rắn khác còn lại sau khi chiết xuất dầu từ hạt đậu tương bằng dung môi hoặc bằng ép hoặc ép quay.…Nhóm này cũng bao gồm bột mịn của hạt đậu tương đã khử chất béo không có kết cấu thích hợp dùng làm thức ăn cho người.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Cáu, cặn dầu",
+   "sangNhom": "1522",
+   "nguon": "nhom2304.nhom",
+   "trich": "(a) Cáu, cặn dầu (nhóm 15.22).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Protein cô đặc thu được bằng cách loại bỏ bớt một số thành phần của bột đậu tương đã khử chất béo (sử dụng như là phụ gia trong các chế phẩm thực phẩm) và bột đậu tương đã được tạo kết cấu",
+   "sangNhom": "2106",
+   "nguon": "nhom2304.nhom",
+   "trich": "(b) Protein cô đặc thu được bằng cách loại bỏ bớt một số thành phần của bột đậu tương đã khử chất béo (sử dụng như là phụ gia trong các chế phẩm thực phẩm) và bột đậu tương đã được tạo kết cấu (nhóm 21.06).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "23040010",
+   "dieuKien": "Bột đậu tương đã được khử chất béo, thích hợp dùng làm thức ăn cho người",
+   "nguon": "sen.23040010",
+   "trich": "BỘT ĐẬU TƯƠNG ĐÃ ĐƯỢC KHỬ CHẤT BÉO, THÍCH HỢP DÙNG LÀM THỨC ĂN CHO NGƯỜI…Bột đậu tương đã được khử chất béo, thích hợp dùng làm thức ăn cho người, là một sản phẩm đã chế biến có độ ẩm dưới 8%, protein từ 50% trở lên, chất béo dưới 1%, và chất xơ dưới 1%.",
+   "tieuChi": {
+    "fact": "do_am",
+    "op": "<",
+    "value": 8,
+    "donVi": "%"
+   },
+   "dieuKienSo": [
+    {
+     "fact": "do_am",
+     "op": "<",
+     "value": 8,
+     "donVi": "%"
+    },
+    {
+     "fact": "ham_luong_protein",
+     "op": ">=",
+     "value": 50,
+     "donVi": "%"
+    },
+    {
+     "fact": "ham_luong_chat_beo",
+     "op": "<",
+     "value": 1,
+     "donVi": "%"
+    },
+    {
+     "fact": "ham_luong_chat_xo",
+     "op": "<",
+     "value": 1,
+     "donVi": "%"
+    }
+   ],
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "23040021",
+   "dieuKien": "Bột đậu tương thô, thích hợp dùng làm thức ăn cho người",
+   "nguon": "sen.23040021",
+   "trich": "BỘT ĐẬU TƯƠNG THÔ, THÍCH HỢP DÙNG LÀM THỨC ĂN CHO NGƯỜI…Sản phẩm thường chứa độ ẩm không quá 12%, protein không ít hơn 46%, chất béo dưới 1,5%, chất xơ không quá 7% và tro không quá 6,5%.",
+   "tieuChi": {
+    "fact": "do_am",
+    "op": "<=",
+    "value": 12,
+    "donVi": "%"
+   },
+   "dieuKienSo": [
+    {
+     "fact": "do_am",
+     "op": "<=",
+     "value": 12,
+     "donVi": "%"
+    },
+    {
+     "fact": "ham_luong_protein",
+     "op": ">=",
+     "value": 46,
+     "donVi": "%"
+    },
+    {
+     "fact": "ham_luong_chat_beo",
+     "op": "<",
+     "value": 1.5,
+     "donVi": "%"
+    },
+    {
+     "fact": "ham_luong_chat_xo",
+     "op": "<=",
+     "value": 7,
+     "donVi": "%"
+    },
+    {
+     "fact": "tro",
+     "op": "<=",
+     "value": 6.5,
+     "donVi": "%"
+    }
+   ],
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "23040029",
+   "dieuKien": "Tiêu đề quốc gia 2304.00.2 — dòng biểu thuế ghi \"Loại khác\"",
+   "nguon": "tax.23040029",
+   "trich": "23040029 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "2304002",
+    "truAnhEm": [
+     "23040021"
+    ],
+    "toTienCoTen": "2304",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "23040090",
+   "dieuKien": "Nhóm 2304 — dòng biểu thuế ghi \"Loại khác\"",
+   "nguon": "tax.23040090",
+   "trich": "23040090 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "2304",
+    "truAnhEm": [
+     "23040010",
+     "2304002"
+    ],
+    "toTienCoTen": "2304",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2304",
+    "cap": 4,
+    "cha": "23",
+    "tenVi": "Khô dầu và phế liệu rắn khác, đã hoặc chưa xay hoặc ở dạng viên, thu được từ quá trình chiết xuất dầu đậu tương.",
+    "tenEn": "Oil-cake and other solid residues; whether or not ground or in the form of pellets, resulting from the extraction of soya-bean oil",
+    "suyRa": false
+   },
+   {
+    "id": "23040010",
+    "cap": 8,
+    "cha": "2304",
+    "tenVi": "Bột đậu tương đã được khử chất béo, thích hợp dùng làm thức ăn cho người(SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "2304002",
+    "cap": "TIEU_DE_QG",
+    "cha": "2304",
+    "tenVi": "Bột đậu tương thô",
+    "tenEn": "Soya-bean meal",
+    "suyRa": true
+   },
+   {
+    "id": "23040021",
+    "cap": 8,
+    "cha": "2304002",
+    "tenVi": "Thích hợp dùng làm thức ăn cho người(SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "23040029",
+    "cap": 8,
+    "cha": "2304002",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "23040090",
+    "cap": 8,
+    "cha": "2304",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2304.nhom",
+  "sen.23040010",
+  "sen.23040021",
+  "tax.23040029",
+  "tax.23040090"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T07:43:23.617Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
