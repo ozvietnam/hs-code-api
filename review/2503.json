@@ -1,0 +1,36 @@
+{
+ "nhom": "2503",
+ "nguoiSoat": "dev-soat-doc-lap-lo070",
+ "luc": "2026-10-28T18:40:00+07:00",
+ "phamViSoat": "Toàn bộ 4 mục của nhóm 2503 (1 phamVi + 2 loaiTru + 1 dong8), đọc cùng tmp/so-tay/nguon/2503.txt (nhom2503.nhom, ch25.chuong, wco.250300, tax.25030000).",
+ "soat": 4,
+ "giu": 3,
+ "sua": 1,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 1 · GIU 4. SỬA 1: `loaiTru[1]` — `dieuKien` bỏ nhánh \"hoặc\" thứ nhất của câu nguồn (\"Lưu huỳnh được tạo thành các dạng hoặc lưu huỳnh đóng gói cho bán lẻ như là chất diệt nấm,.., được xếp vào nhóm 38.08\") và tự thêm chữ \"làm từ\" (nguồn nói \"như là chất diệt nấm\"); sửa đủ hai nhánh, giữ danh từ đầu \"Chất diệt nấm\" để cổng loại trừ vẫn bắn đúng và không bắn oan lên mọi sản phẩm \"lưu huỳnh\". GHI NHẬN: `phamVi` không liệt kê riêng mục (3) và (4) nhưng đó là biến thể quy trình của mục (2) \"lưu huỳnh chưa tinh chế\" đã có trong `text`, dấu lược \"…\" phủ, không mất ngoại lệ nào. Nhóm có nguồn mỏng nhất lô (7 mục, không chú giải phân nhóm, không SEN, 1 dòng biểu thuế) nên `dieuKienVao`/`phanBiet`/`tieuChi6` để rỗng là đúng.\nGHI NHẬN KHỐI ĐỂ RỖNG (không có mục để soát):\n- dieuKienVao: ĐỂ RỖNG là ĐÚNG. Không có câu ràng buộc nào phủ CẢ nhóm; chú giải 3 Chương 25 (chỉ gồm sản phẩm thô/đã làm sạch…) là quy tắc CHUNG của Chương, không riêng 25.03; và theo luật lô 065, nhóm ĐÃ có `loaiTru` thì KHÔNG thêm điều kiện âm (\"không phải lưu huỳnh thăng hoa/kết tủa/keo\") — nền nhà của điều kiện âm chỉ 7–13 %.\n- phanBiet: ĐỂ RỖNG là ĐÚNG — nhóm 25.03 chỉ có một dòng 8 số (25030000), không có cặp mã để phân biệt trong nhóm.\n- tieuChi6: ĐỂ RỖNG là ĐÚNG — mẫu nhà: 70 nhóm có đúng một phân nhóm 6 số thì không nhóm nào có `tieuChi6` (đo trong kho).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn ghép mục (1), (2), (5), (6), (7) của [nhom2503.nhom]; `text` liệt kê các dạng lưu huỳnh trong nhóm, không thêm chữ nào ngoài nguồn. GHI NHẬN: mục (3) (\"lưu huỳnh chưa tinh chế thu được bằng cách nung quặng pirít\") và (4) (\"thu hồi như sản phẩm phụ trong quá trình tinh chế khí hoá than\") không được liệt kê riêng — nhưng cả hai đều là biến thể quy trình của mục (2) \"lưu huỳnh chưa tinh chế\" đã có trong `text`, và dấu lược \"…\" phủ; KHÔNG mất ngoại lệ nào (khối loại trừ nằm ở cuối nguồn, đã có ở `loaiTru`)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"Nhóm này không bao gồm lưu huỳnh thăng hoa, lưu huỳnh kết tủa và lưu huỳnh keo (nhóm 28.02).\" ✓ có DẤU HIỆU LOẠI TRỪ và nêu đích danh 28.02; `dieuKien` chép đúng cả ba dạng; headPhrases() → [\"lưu\",\"huỳnh\",\"thăng\",\"hoa\"], [\"lưu\",\"huỳnh\",\"kết\",\"tủa\"], [\"lưu\",\"huỳnh\",\"keo\"]."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.25030000] \"Lưu huỳnh các loại, trừ lưu huỳnh thăng hoa, lưu huỳnh kết tủa và lưu huỳnh dạng keo\"; `dieuKien` chép đúng tên dòng biểu thuế."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — `dieuKien` BỎ MẤT NHÁNH \"HOẶC\" THỨ NHẤT CỦA CÂU NGUỒN + TỰ THÊM CHỮ \"làm từ\" (lớp lỗi lô 061 mục 3). Câu nguồn: \"Lưu huỳnh được tạo thành các dạng HOẶC lưu huỳnh đóng gói cho bán lẻ như là chất diệt nấm,.., được xếp vào nhóm 38.08.\" — tập loại trừ sang 38.08 gồm HAI nhánh: lưu huỳnh tạo thành các dạng, và lưu huỳnh đóng gói cho bán lẻ như là chất diệt nấm. Bản nháp chỉ giữ nhánh thứ hai, lại viết \"làm từ\" (câu nguồn nói \"như là chất diệt nấm\", không nói \"làm từ\") ⇒ mất một nhánh của câu nguồn. Sửa: `dieuKien` nêu đủ hai dạng, giữ danh từ đầu \"Chất diệt nấm\" (headPhrases() → [\"chất\",\"diệt\",\"nấm\"] — cổng loại trừ vẫn bắn đúng hàng hoá, không bắn oan lên mọi sản phẩm \"lưu huỳnh\"); bỏ \"làm từ\"; mọi từ còn lại đều có trong câu trích. `trich` giữ nguyên.",
+   "sua": {
+    "dieuKien": "Chất diệt nấm: lưu huỳnh thành dạng, đóng gói bán lẻ"
+   }
+  }
+ ]
+}

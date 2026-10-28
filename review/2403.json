@@ -1,0 +1,123 @@
+{
+ "nhom": "2403",
+ "nguoiSoat": "dev-soat-doc-lap-lo070",
+ "luc": "2026-10-28T18:40:00+07:00",
+ "phamViSoat": "Toàn bộ 22 mục của nhóm 2403 (1 phamVi + 3 loaiTru + 4 tieuChi6 + 14 dong8), đọc cùng tmp/so-tay/nguon/2403.txt (nhom2403.nhom, ch24.chuong, phan24.phan, sen.24031911/24031991/24039940, wco.240311/240319/240391/240399, tax.24031110…24039990).",
+ "soat": 22,
+ "giu": 22,
+ "sua": 0,
+ "xoa": 0,
+ "ghiChu": "XOA 0 · SUA 0 · GIU 22. Bản nháp lô 070 sạch: mọi câu trích nguyên văn, mọi mã đích nêu đích danh, đủ 14/14 dòng 8 số của nhóm. GHI NHẬN (không sửa): (1) loaiTru[1] \"Thuốc trừ sâu\" — headPhrases() rỗng (định ngữ \"trừ\" cắt mảnh đầu) nên cổng loại trừ im lặng; mọi cách viết lại đều bắn oan (\"Sản phẩm thuốc trừ sâu\" khớp \"Sản phẩm thuốc lá\" của chính 24.03) ⇒ giữ lời nguồn. (2) phanBiet để rỗng — có phân biệt 2403.11 ↔ 2403.99 trong nguồn nhưng `phanBiet` chỉ nhận mã 4/8 số (0/1.091 mục trong kho dùng mã 6 số) và nhánh \"không\" trỏ toàn bộ 2403.99 sẽ dẫn nhầm thuốc lá nhai (2403.99.50) — đúng lớp lỗi lô 066/069; phân biệt đã được `tieuChi6` phủ. (3) trích `phamVi` 407 ký tự (vùng im lặng 300–600; nền nhà 1,8 %).\nGHI NHẬN KHỐI ĐỂ RỖNG (không có mục để soát):\n- dieuKienVao: ĐỂ RỖNG là ĐÚNG. [ch24.chuong] chú giải 2 (\"Bất kì sản phẩm nào có thể phân loại được vào nhóm 24.04 và bất kì nhóm nào khác thuộc Chương này, thì được phân loại vào nhóm 24.04\") là điều kiện của 24.04, không phủ 24.03; chú giải 3 là ĐỊNH NGHĨA thuật ngữ \"hút mà không cần đốt cháy\" (luật: `dieuKienVao` không lấy câu định nghĩa); loại trừ chung của Chương 24 (\"không bao gồm các loại thuốc lá dược phẩm (Chương 30)\") không chép vào từng nhóm (lô 060).\n- phanBiet: ĐỂ RỖNG — GHI NHẬN lý do KHÔNG thêm. [nhom2403.nhom] có phân biệt 2403.11 ↔ 2403.99 (\"Tuy nhiên, phân nhóm này loại trừ những sản phẩm không chứa lá thuốc lá sử dụng cho tẩu nước… (phân nhóm 2403.99)\"), nhưng (i) `phanBiet` chỉ nhận mã 4 số hoặc 8 số — máy loại mã 6 số (đo trong kho: 1.091 mục `phanBiet`, 0 mục nào dùng mã 6 số) nên phải trỏ tới dòng 8 số; (ii) nếu nhánh \"không\" trỏ toàn bộ 2403.99 (5 dòng: chiết xuất–tinh chất, nguyên liệu thay thế, thuốc lá bột, thuốc lá nhai, loại khác) thì một tờ khai thuốc lá NHAI (không phải thuốc lá tẩu nước) sẽ bị dẫn tới 2403.99.50 — đúng lớp lỗi lô 066/069 (nhánh phải ràng điều kiện cho CẢ HAI nhánh, không được trỏ sang một nhóm có nhiều dòng). Phân biệt 2403.11 ↔ 2403.99 đã được `tieuChi6` 240311 (nước tẩu) và 240399 (không phải đồng nật/hoàn nguyên/để hút) phủ.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích ghép nguyên văn cả 7 mục (1)–(7) của [nhom2403.nhom]; `text` liệt kê đúng 7 dạng hàng trong nhóm (hút / nhai / hít / nén-tẩm rượu / chất thay thế lá thuốc lá lá đã chế biến / thuần nhất-hoàn nguyên / chiết xuất và tinh chất dạng lỏng), không thêm chữ nào ngoài nguồn. GHI NHẬN: trích dài 407 ký tự (vùng im lặng 300–600 của máy; nền nhà 207/11.444 câu = 1,8 %) — giữ vì cần đủ 7 mục, và không mất ngoại lệ nào (mục (5) đã kèm luôn câu \"bị loại trừ (nhóm 12.11)\"). Ba loại trừ của nhóm (nicotin 29.39, thuốc trừ sâu 38.08, cannabis 12.11) đã có mục riêng ở `loaiTru` nên không cần chép lại vào `text` (luật lô 061 mục 2: `text` chỉ phải phủ loại trừ mà KHÔNG mục nào khác mang)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"(a) Chất nicotin (chất alkaloid được chiết xuất từ cây thuốc lá) (nhóm 29.39).\" ✓ nêu đích danh 29.39. Dấu hiệu loại trừ nằm ở tiêu đề danh sách \"Nhóm này không bao gồm:\" ngay trên — mẫu nhà đã được duyệt (0106 mục 1, 9013, 9616; 488/1.373 mục của nhóm ĐÃ soát vẫn dùng kiểu này) nên không sửa. `dieuKien` đảo thứ tự (\"Chất alkaloid nicotin…\") để danh từ đầu có ≥3 âm tiết đặc thù; headPhrases() thật → [\"chất\",\"alkaloid\",\"nicotin\"] ⇒ cổng loại trừ khớp đúng, mọi từ đều có trong câu trích."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"(b) Thuốc trừ sâu thuộc nhóm 38.08.\" ✓ nêu đích danh 38.08. GHI NHẬN: headPhrases() → RỖNG (định ngữ \"trừ\" cắt mảnh đầu còn lại \"Thuốc\") ⇒ cổng loại trừ im lặng; mọi cách viết lại đều bắn oan (vd \"Sản phẩm thuốc trừ sâu\" khớp \"Sản phẩm thuốc lá\" của chính 24.03) ⇒ giữ nguyên lời nguồn, không lách."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn \"Tuy nhiên các sản phẩm như cannabis (cây gai dầu) bị loại trừ (nhóm 12.11).\" ✓ có DẤU HIỆU LOẠI TRỪ (\"bị loại trừ\") và nêu đích danh 12.11; headPhrases() → [\"sản\",\"phẩm\",\"cannabis\"]."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.240311] \"240311 Tobacco; smoking, water pipe tobacco as specified in Subheading Note 1 to this Chapter, whether or not containing tobacco substitutes in any proportion\"; tiêu chí \"la_thuoc_la_cho_tau_nuoc = true\" mô tả đúng phân nhóm 2403.11 (thuốc lá cho tẩu nước) và khớp với chú giải phân nhóm 2403.11 (\"thuốc lá để sử dụng với tẩu nước\" = hỗn hợp thuốc lá và glyxerin…)."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.240319] \"240319 Tobacco; smoking, other than water pipe tobacco, whether or not containing tobacco substitutes in any proportion\"; tiêu chí \"la_thuoc_la_cho_tau_nuoc = false\" ⇒ nghĩa là KHÔNG phải thuốc lá tẩu nước — CHIỀU ĐÚNG (không phải đảo chiều như lớp lỗi lô 066 với fact ÂM + value=false; đây là fact DƯƠNG + value=false, kho có 79 mục dạng này)."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.240391] \"240391 Tobacco; homogenised or reconstituted\"; tiêu chí \"thuoc_la_dong_nhat_hoac_hoan_nguyen = true\" mô tả đúng phân nhóm 2403.91 và khớp mục (6) của chú giải nhóm."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [wco.240399] \"240399 Tobacco; other than homogenised or reconstituted or smoking\"; tiêu chí \"khong_phai_thuoc_la_dong_nhat_hoac_hoan_nguyen_hoac_de_hut = true\" — fact ÂM + value=true là MẪU NHÀ (lô 067), chiều đúng."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24031110]; `dieuKien` chép đúng tên dòng biểu thuế."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24031190] \"Loại khác\"; `dieuKien` \"Loại khác: phần còn lại của phân nhóm 2403.11\" đúng vì anh em 24031110 có tên (\"Đã được đóng gói để bán lẻ\") — dòng cha 2403.11 (3 gạch trong biểu thuế)."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [sen.24031911] (giữ nguyên xuống dòng của khối SEN); `dieuKien` rút gọn đúng nội dung câu, không thêm chữ ngoài trích."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24031919] \"Loại khác\"; 4 gạch ⇒ cha là tiêu đề quốc gia 2403.191 (anh em 24031911 Ang Hoon) ⇒ \"phần còn lại của tiêu đề quốc gia 2403.191\" đúng."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24031920]; `dieuKien` chép đúng tên dòng biểu thuế."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [sen.24031991] (giữ nguyên xuống dòng); `dieuKien` rút gọn đúng nội dung câu."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24031999] \"Loại khác\"; 4 gạch ⇒ cha là tiêu đề quốc gia 2403.199 ⇒ \"phần còn lại của tiêu đề quốc gia 2403.199\" đúng."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24039110]; `dieuKien` chép đúng tên dòng biểu thuế."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24039190] \"Loại khác\"; 3 gạch ⇒ cha là phân nhóm 2403.91 ⇒ \"phần còn lại của phân nhóm 2403.91\" đúng."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24039910]; `dieuKien` chép đúng tên dòng biểu thuế."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24039930]; `dieuKien` chép đúng tên dòng biểu thuế."
+  },
+  {
+   "index": "dong8[11]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [sen.24039940] (giữ nguyên xuống dòng); `dieuKien` lấy từ tiêu đề SEN + định nghĩa \"Snuff\" của chính khối đó ⇒ không có chữ nào ngoài nguồn."
+  },
+  {
+   "index": "dong8[12]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24039950]; `dieuKien` chép đúng tên dòng biểu thuế."
+  },
+  {
+   "index": "dong8[13]",
+   "hanhDong": "giu",
+   "lyDo": "Trích nguyên văn [tax.24039990] \"Loại khác\"; 3 gạch ⇒ cha là phân nhóm 2403.99 ⇒ \"phần còn lại của phân nhóm 2403.99\" đúng."
+  }
+ ]
+}

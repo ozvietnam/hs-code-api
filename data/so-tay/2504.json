@@ -1,0 +1,141 @@
+{
+ "nhom": "2504",
+ "phamVi": {
+  "text": "Graphit tự nhiên (còn được biết như than chì hoặc chì đen); vẫn thuộc nhóm này khi được xử lý nhiệt chỉ để loại tạp chất",
+  "nguon": "nhom2504.nhom",
+  "trich": "Graphit tự nhiên (còn được biết như than chì hoặc chì đen)…Graphit tự nhiên vẫn thuộc nhóm này khi nó được xử lý nhiệt chỉ để loại tạp chất.",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_graphit_tu_nhien",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2504.nhom",
+   "trich": "Graphit tự nhiên (còn được biết như than chì hoặc chì đen) là một loại carbon được phân biệt bởi ánh của nó và đặc tính riêng khi viết lên giấy (vì lý do này nó được dùng làm bút chì).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Graphit nhân tạo, graphit keo/bán keo, chế phẩm graphit",
+   "sangNhom": "3801",
+   "nguon": "nhom2504.nhom",
+   "trich": "Nhóm này loại trừ graphit nhân tạo (nó giống hệt graphit tự nhiên nhưng có độ tinh khiết cao hơn và trọng lượng riêng thấp hơn), graphit keo hoặc bán keo và các chế phẩm dựa trên graphit nhưng ở dạng bột nhão, khối, tấm hoặc các dạng bán thành phẩm khác (nhóm 38.01).",
+   "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "dieuKien": "Graphit tự nhiên thuộc nhóm 68.15, 69.02, 69.03, 85.45",
+   "sangNhom": "6815|6902|6903|8545",
+   "nguon": "nhom2504.nhom",
+   "trich": "Nó cũng không bao gồm các sản phẩm bằng graphit tự nhiên thuộc nhóm 68.15, 69.02, 69.03 hoặc 85.45).",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "250410",
+   "fact": "o_dang_bot_hoac_dang_manh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.250410",
+   "trich": "250410 Graphite; natural, in powder or in flakes",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "250490",
+   "fact": "o_dang_bot_hoac_dang_manh",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "nguon": "wco.250490",
+   "trich": "250490 Graphite; natural, in other forms, excluding powder or flakes",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "25041000",
+   "dieuKien": "Ở dạng bột hoặc dạng mảnh",
+   "nguon": "tax.25041000",
+   "trich": "25041000 - Ở dạng bột hoặc dạng mảnh",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "25049000",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2504.90",
+   "nguon": "tax.25049000",
+   "trich": "25049000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "2504",
+    "truAnhEm": [
+     "25041000"
+    ],
+    "toTienCoTen": "2504",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2504",
+    "cap": 4,
+    "cha": "25",
+    "tenVi": "Graphite tự nhiên",
+    "tenEn": "Graphite; natural",
+    "suyRa": false
+   },
+   {
+    "id": "25041000",
+    "cap": 8,
+    "cha": "2504",
+    "tenVi": "Ở dạng bột hoặc dạng mảnh",
+    "tenEn": "Graphite; natural, in powder or in flakes",
+    "suyRa": false,
+    "laPhanNhom": "250410"
+   },
+   {
+    "id": "25049000",
+    "cap": 8,
+    "cha": "2504",
+    "tenVi": "Loại khác",
+    "tenEn": "Graphite; natural, in other forms, excluding powder or flakes",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "250490"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2504.nhom",
+  "tax.25041000",
+  "tax.25049000",
+  "wco.250410",
+  "wco.250490"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T11:23:08.228Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
