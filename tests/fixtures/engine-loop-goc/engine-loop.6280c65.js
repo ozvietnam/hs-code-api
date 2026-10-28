@@ -1,4 +1,4 @@
-// GOLDEN MASTER — bản ĐÓNG BĂNG của lib/engine-loop.js tại origin/main 43a3cae (26/10/2026, đã gồm cac4f63 sửa B1b), chỉ đổi
+// GOLDEN MASTER — bản ĐÓNG BĂNG của lib/engine-loop.js tại origin/main 6280c65 (28/10/2026, đã gồm #467 B1b "on"), chỉ đổi
 // đường require ('./x' → '../../../lib/x'). Dùng DUY NHẤT cho scripts/test-engine-loop-gon.mjs: chạy cùng kịch bản (AI giả) qua
 // bản này và qua lib/engine-loop.js với HS_GON_DAU_RA=off HS_MAX_VONG_SUA=off → prompt + luồng phải trùng TỪNG BYTE.
 // So sánh hai bản code trên CÙNG dữ liệu nên commit dữ liệu (sổ tay, biểu thuế…) không làm đỏ test.
@@ -864,10 +864,11 @@ async function classifyLoop(rawAttrs, opts = {}) {
     const soTayBlock = soTayRuntime.advise({ topHs: top?.hs || null, candidates: gathered.headings, sanPham: { tenHang: product.nameVi || raw.tenHang, chatLieu: raw.chatLieu || product.material || null, congDung: raw.congDung || product.purpose || null, specs: raw.specs || null } });
     if (soTayBlock) loopOut.soTay = soTayBlock;
   }
-  // B1b shadow (doc 12): NEED_FACTS thì tra web theo mục tiêu — chỉ gắn webHint + log,
-  // KHÔNG đổi quyết định engine. Gate ZAI_WEB_FACTS=shadow/on; lỗi → out nguyên vẹn.
+  // B1b (doc 12): NEED_FACTS → tra web theo mục tiêu. shadow: chỉ webHint; on: chạy lại
+  // đúng một lượt với dữ kiện web gắn nhãn "chưa kiểm chứng" (cờ _b1bDaThu chặn đệ quy).
   try {
-    return await require('../../../lib/b1b-web.js').b1bShadow(rawAttrs, loopOut);
+    return await require('../../../lib/b1b-web.js').b1bApDung(rawAttrs, loopOut, opts, (a) =>
+      classifyLoop(a, { ...opts, _b1bDaThu: true }));
   } catch { /* tầng tuỳ chọn: không bao giờ làm hỏng lượt chính */ }
   return loopOut;
 }

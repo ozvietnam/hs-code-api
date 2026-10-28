@@ -167,9 +167,14 @@ Nhánh `perf/gon-dau-ra-cat-vong-sua` (`lib/engine-loop.js`, mục TỐI ƯU). K
   giải nhóm rồi chạy lại MỌI chốt chặn trên cùng đáp án; nhận không cần vòng AI chỉ khi nhóm có sổ tay + mã 8 số khớp tờ khai
   Oz (≥ 75%) hoặc bảng quyết định đã duyệt + không cảnh báo phân nhóm (ghi `engine.gates[].tatDinh` + `antiPatternWarnings`);
   sổ tay nghi → gộp vào lượt giải trình (một vòng thay hai); còn lại → vòng AI như cũ.
-- **Tắt khẩn:** `HS_GON_DAU_RA=off HS_MAX_VONG_SUA=off` → prompt + luồng trùng từng byte bản main 43a3cae
+- **Tắt khẩn:** `HS_GON_DAU_RA=off HS_MAX_VONG_SUA=off` → prompt + luồng trùng từng byte bản main 6280c65
   (`scripts/test-engine-loop-gon.mjs` so với golden master `tests/fixtures/engine-loop-goc/`). `HS_MAX_VONG_SUA=0` là trần
   0 vòng sửa, KHÔNG phải công tắc tắt.
+- **Với B1b "on" (#467, chạy lại cả động cơ một lượt khi NEED_FACTS):** lượt chạy lại đọc cùng công tắc; trần vòng sửa áp
+  riêng từng lượt (lượt chạy lại không tính là vòng sửa); `_b1bDaThu` chặn đệ quy. Khi `HS_MAX_VONG_SUA` bật thêm hai rào bản
+  #467 thiếu: lượt chạy lại dùng CHUNG hạn giờ của lượt chính (trước đây mở 285 s mới → tổng có thể vượt trần 300 s của
+  server.js → 504) và chỉ chạy khi còn ≥ 120 s; lượt chạy lại hỏng (ENGINE_TIMEOUT/không mã) không thay đáp án NEED_FACTS.
+  Mọi catch quanh B1b ghi đúng một dòng `b1b_error` (chỉ thông điệp lỗi). `HS_MAX_VONG_SUA=off` → B1b y hệt main.
 - **Đo (chưa đo bằng AI thật):** `scripts/bench-classify-llm.mjs` nay ghi token vào/ra từng bước (withUsage), số lượt chạm trần
   maxTokens, lượt lùi, cổng chặn từng vòng, bước tất định, `engine.toiUu` (chống đo nhầm nhánh) và p50/p90 ĐỘ TRỄ TỪNG MÓN.
   Hai nhánh A (`off`/`off`) và B (mặc định) × 40 mẫu vàng, cùng container; cổng nghiệm thu như §4.

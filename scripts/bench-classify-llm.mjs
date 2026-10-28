@@ -148,6 +148,8 @@ async function worker() {
         capHit: gl.some((x) => /trần vòng sửa/.test(String(x.note || ''))),
         toiUu: res.engine?.toiUu ?? null,
         hypHeadings: (res.dossier?.hypotheses || []).map((h) => nz(h.heading4).slice(0, 4)).filter(Boolean),
+        // B1b (#467): có webHint = đã tra web; webFactsApplied = đáp án là của LƯỢT CHẠY LẠI (engine.ms chỉ đo lượt đó).
+        b1b: res.webHint ? { cheDo: res.webHint.cheDo || null, applied: res.webFactsApplied === true } : null,
         llm: llmRows(calls),
       });
     } catch (e) {
@@ -168,8 +170,9 @@ const sec = (ms) => (ms == null ? null : Math.round(ms / 100) / 10);
 const quantile = (arr, q) => { const s = arr.filter((x) => Number.isFinite(x)).sort((a, b) => a - b); return s.length ? s[Math.min(s.length - 1, Math.max(0, Math.ceil(q * s.length) - 1))] : null; };
 const mean = (arr) => { const s = arr.filter((x) => Number.isFinite(x)); return s.length ? s.reduce((a, b) => a + b, 0) / s.length : null; };
 const countBy = (arr) => arr.reduce((m, k) => { m[k] = (m[k] || 0) + 1; return m; }, {});
-// Độ trễ TỪNG MÓN: engine.ms của món; món lỗi/BENCH_TIMEOUT không có engine.ms → dùng ms đo ở bench (≥ engine) để p90 không lạc quan.
-const perItemMs = out.map((o) => o.engineMs ?? o.ms);
+// Độ trễ TỪNG MÓN: engine.ms của món; món lỗi/BENCH_TIMEOUT không có engine.ms, và món B1b đã tra web (engine.ms chỉ đo một
+// lượt, không gồm tra web/lượt chạy lại) → dùng ms đo ở bench (≥ engine) để p90 không lạc quan.
+const perItemMs = out.map((o) => (o.b1b ? o.ms : (o.engineMs ?? o.ms)));
 const allCalls = out.flatMap((o) => o.llm || []);
 const tokenStep = (step) => {
   const cs = allCalls.filter((c) => c.step === step);
@@ -221,9 +224,9 @@ const sum = {
   // ── #416 K4 + backlog 09 bước 3+4 ──
   label: typeof argv.label === 'string' ? argv.label : null,
   latency: {
-    note: 'p50/p90/TB = độ trễ TỪNG MÓN (engine.ms của mỗi món; món lỗi/timeout dùng ms đo ở bench) — KHÔNG phải tổng thời gian ÷ n',
+    note: 'p50/p90/TB = độ trễ TỪNG MÓN (engine.ms của mỗi món; món lỗi/timeout/B1b đã tra web dùng ms đo ở bench) — KHÔNG phải tổng thời gian ÷ n',
     p50Sec: sec(quantile(perItemMs, 0.5)), p90Sec: sec(quantile(perItemMs, 0.9)), avgSec: sec(mean(perItemMs)), maxSec: sec(perItemMs.length ? Math.max(...perItemMs) : null),
-    fromBenchMs: out.filter((o) => o.engineMs == null).length,
+    fromBenchMs: out.filter((o) => o.engineMs == null || o.b1b).length,
     wallSec: sec(Date.now() - tBench), concurrency: conc,
   },
   phasesAvgSec: (() => { const ph = out.map((o) => o.phases).filter(Boolean); return ph.length ? { r1: sec(mean(ph.map((p) => p.r1Ms))), gather: sec(mean(ph.map((p) => p.gatherMs))), llm: sec(mean(ph.map((p) => p.llmMs))), embed: sec(mean(ph.map((p) => p.embedMs))) } : null; })(),
@@ -244,6 +247,7 @@ const sum = {
     tatDinh: countBy(out.flatMap((o) => (o.tatDinh || []).map((x) => x.ketQua === 'VONG_AI' ? `VONG_AI:${x.lyDo}` : x.ketQua))),
     fallbacks: countBy(out.flatMap((o) => (o.fallbacks || []).map((x) => `${x.step}:${x.fallback}`))),
   },
+  b1b: { traWeb: out.filter((o) => o.b1b).length, apDung: out.filter((o) => o.b1b?.applied).length },
   // Chống đo nhầm nhánh (#416 G4): số món mà engine báo cấu hình tối ưu (engine.toiUu) — nhánh tắt phải là 0 món.
   toiUuSeen: (() => { const t = out.map((o) => o.toiUu).filter(Boolean); return { items: t.length, gonDauRa: t.filter((x) => x.gonDauRa).length, maxVongSua: countBy(t.map((x) => String(x.maxVongSua))), maxTokens: countBy(t.map((x) => `${x.r1MaxTokens}/${x.r2MaxTokens}`)) }; })(),
   env: Object.fromEntries(ENV_KEYS.filter((k) => process.env[k] != null).map((k) => [k, process.env[k]])),

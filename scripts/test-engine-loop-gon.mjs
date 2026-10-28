@@ -1,6 +1,6 @@
 // Tối ưu độ trễ engine-loop (backlog 09 bước 3+4): HS_GON_DAU_RA + HS_MAX_VONG_SUA — AI giả, không mạng, không LLM.
 //  A. CÔNG TẮC TẮT = origin/main TỪNG BYTE. Cùng kịch bản chạy qua golden master (tests/fixtures/engine-loop-goc/ — bản đóng
-//     băng lib/engine-loop.js tại main 43a3cae) và qua lib/engine-loop.js với HS_GON_DAU_RA=off HS_MAX_VONG_SUA=off: mọi lời gọi AI
+//     băng lib/engine-loop.js tại main 6280c65) và qua lib/engine-loop.js với HS_GON_DAU_RA=off HS_MAX_VONG_SUA=off: mọi lời gọi AI
 //     (system, user, opts kể cả khoá undefined, đúng thứ tự khoá) và phản hồi (bỏ trường đo giờ) phải trùng từng byte. Hai bản
 //     đọc CÙNG dữ liệu nên commit dữ liệu (sổ tay, biểu thuế…) không làm đỏ test. Thêm: băm SYS_R1/SYS_R2 ghim theo origin/main.
 //  B. MẶC ĐỊNH BẬT: prompt có trần (khớp đúng phần code đọc), maxTokens 6000/10000, AI giả ra kết quả hợp lệ; JSON cụt/mảnh vụn
@@ -12,7 +12,7 @@ const require = createRequire(import.meta.url);
 process.env.HS_CLASSIFY_ENGINE = 'loop';
 process.env.MIC_OFF = '1';
 process.env.HS_EVAL_EXCLUDE_HOLDOUT = '1';
-for (const k of ['HS_GON_DAU_RA', 'HS_MAX_VONG_SUA', 'R1_MAX_TOKENS', 'GIR_MAX_TOKENS', 'HS_SO_TAY', 'HS_SO_TAY_DONG', 'HS_EMBED_POOL', 'LOOP_PROVIDER']) delete process.env[k];
+for (const k of ['HS_GON_DAU_RA', 'HS_MAX_VONG_SUA', 'R1_MAX_TOKENS', 'GIR_MAX_TOKENS', 'HS_SO_TAY', 'HS_SO_TAY_DONG', 'HS_EMBED_POOL', 'LOOP_PROVIDER', 'ZAI_WEB_FACTS', 'ZAI_SEARCH_KEY']) delete process.env[k];
 
 const llmTier = require('../lib/llm-tier');
 const { parseJsonLoose } = require('../lib/parse-json');
@@ -34,10 +34,13 @@ const theoVong = (r1, r2) => (user, system) => JSON.parse(JSON.stringify(String(
 console.error = () => {}; console.warn = () => {};
 const ozMod = require('../lib/oz-precedent-search');
 const ozThat = ozMod.searchOzByKeyword;
+const webMod = require('../lib/web-facts.js');
+const webThat = webMod.webFacts;
+const WEB_GIA = async () => ({ cauTraLoi: 'Móc khoá súng ngón tay in 3D, không phải mô hình theo tỷ lệ.', nguon: [{ url: 'https://example.com' }] });
 let ozGoi = 0;
-// Golden master = RÀO CHẮN THỜI GIAN TRIỂN KHAI: chứng minh "off" ≡ main 43a3cae trong lúc hai công tắc mới bật trên prod.
+// Golden master = RÀO CHẮN THỜI GIAN TRIỂN KHAI: chứng minh "off" ≡ main 6280c65 trong lúc hai công tắc mới bật trên prod.
 // XOÁ fixture này cùng phần A dưới đây ≤ 2 tuần sau khi HS_GON_DAU_RA / HS_MAX_VONG_SUA được xác nhận ổn trên prod.
-const GOC = require('../tests/fixtures/engine-loop-goc/engine-loop.43a3cae.js');
+const GOC = require('../tests/fixtures/engine-loop-goc/engine-loop.6280c65.js');
 const MOI = require('../lib/engine-loop.js');
 const { TRAN } = MOI;
 let pass = 0; let fail = 0;
@@ -97,9 +100,13 @@ const SC = {
   'vòng 2 cụt trong <think> (mảnh vụn)': () => ({ attrs: KNIFE, steps: [R1_KNIFE, R2_CUT_THINK, theoVong(R1_KNIFE, R2_KNIFE), theoVong(R1_KNIFE, R2_KNIFE)] }),
   'kẹp giấy — ca prod 25/10': () => ({ attrs: CLIP, steps: [R1_CLIP, R2_CLIP, R2_CLIP] }),
   'ổ cắm — bảng quyết định ghi đè': () => ({ attrs: SOCKET, steps: [R1_SOCKET, R2_SOCKET] }),
+  // B1b (#467): công tắc off phải ≡ main cả trên đường tra web + chạy lại một lượt (web giả, không mạng).
+  'B1b shadow — webHint': () => ({ attrs: TOY, env: { ZAI_WEB_FACTS: 'shadow' }, web: WEB_GIA, steps: [R1_TOY, TOY_HOI] }),
+  'B1b on — tra web, chạy lại một lượt': () => ({ attrs: TOY, env: { ZAI_WEB_FACTS: 'on' }, web: WEB_GIA, steps: [R1_TOY, TOY_HOI, R1_TOY, TOY_99] }),
+  'B1b on — lượt chạy lại hỏng': () => ({ attrs: TOY, env: { ZAI_WEB_FACTS: 'on' }, web: WEB_GIA, steps: [R1_TOY, TOY_HOI, new Error('HTTP 429 Token Plan rate limit')] }),
 };
 
-const ENV_KEYS = ['HS_SO_TAY', 'HS_GON_DAU_RA', 'HS_MAX_VONG_SUA', 'R1_MAX_TOKENS', 'GIR_MAX_TOKENS'];
+const ENV_KEYS = ['HS_SO_TAY', 'HS_GON_DAU_RA', 'HS_MAX_VONG_SUA', 'R1_MAX_TOKENS', 'GIR_MAX_TOKENS', 'ZAI_WEB_FACTS'];
 /** Chạy một kịch bản qua `mod` (GOC/MOI) với env cho trước; trả lời gọi AI + phản hồi đã bỏ trường đo giờ. */
 async function chay(mod, scName, env = {}) {
   const sc = SC[scName]();
@@ -107,9 +114,13 @@ async function chay(mod, scName, env = {}) {
   for (const k of ENV_KEYS) delete process.env[k];
   for (const [k, v] of Object.entries({ ...(sc.env || {}), ...env })) process.env[k] = v;
   ozMod.searchOzByKeyword = sc.oz || ozThat;
+  webMod.webFacts = sc.web || webThat;
   script = sc.steps.map(clone); calls = [];
   let out = null; let err = null;
-  try { out = await mod.classifyLoop(clone(sc.attrs), {}); } catch (e) { err = String(e?.stack || e); }
+  const ghiOut = process.stdout.write; // dòng đo b1b_web (có ts) không thuộc phần so sánh
+  if (sc.web) process.stdout.write = () => true;
+  try { out = await mod.classifyLoop(clone(sc.attrs), {}); } catch (e) { err = String(e?.stack || e); } finally { process.stdout.write = ghiOut; }
+  webMod.webFacts = webThat;
   for (const k of ENV_KEYS) { if (saved[k] === undefined) delete process.env[k]; else process.env[k] = saved[k]; }
   ozMod.searchOzByKeyword = ozThat;
   let o = null;
@@ -124,9 +135,9 @@ const lechDau = (a, b) => { let i = 0; while (i < a.length && a[i] === b[i]) i +
 const sha = (s) => createHash('sha256').update(s, 'utf8').digest('hex');
 
 // ═════════ A. CÔNG TẮC TẮT = origin/main TỪNG BYTE ═════════
-// Băm prompt hệ thống của origin/main 43a3cae (độc lập dữ liệu) — đổi chữ SYS_R1/SYS_R2 là đỏ ở đây.
-check('A0 SYS_R1 trùng origin/main 43a3cae (sha256 ghim)', sha(MOI.SYS_R1) === '2ceb6b55f3cced0ece9bca9cb3d004d91654865a94cfc4bd0df130bd63807f8d' && MOI.SYS_R1 === GOC.SYS_R1, sha(MOI.SYS_R1));
-check('A0 SYS_R2 trùng origin/main 43a3cae (sha256 ghim)', sha(MOI.SYS_R2) === '6d1267b2028d80fa264b4c3bb34fafabfc3dadd80d69fe40714d965077cd5677' && MOI.SYS_R2 === GOC.SYS_R2, sha(MOI.SYS_R2));
+// Băm prompt hệ thống của origin/main 6280c65 (độc lập dữ liệu) — đổi chữ SYS_R1/SYS_R2 là đỏ ở đây.
+check('A0 SYS_R1 trùng origin/main 6280c65 (sha256 ghim)', sha(MOI.SYS_R1) === '2ceb6b55f3cced0ece9bca9cb3d004d91654865a94cfc4bd0df130bd63807f8d' && MOI.SYS_R1 === GOC.SYS_R1, sha(MOI.SYS_R1));
+check('A0 SYS_R2 trùng origin/main 6280c65 (sha256 ghim)', sha(MOI.SYS_R2) === '6d1267b2028d80fa264b4c3bb34fafabfc3dadd80d69fe40714d965077cd5677' && MOI.SYS_R2 === GOC.SYS_R2, sha(MOI.SYS_R2));
 const TAT = { HS_GON_DAU_RA: 'off', HS_MAX_VONG_SUA: 'off' };
 for (const name of Object.keys(SC)) {
   const a = await chay(GOC, name);
@@ -160,23 +171,23 @@ for (const name of Object.keys(SC)) {
   check('B1 GỌN chỉ đổi prompt HỆ THỐNG: hồ sơ/gói vòng 2 (user) trùng nhánh tắt', r.rawCalls.map((c) => c.user).join('\u0000') === t.rawCalls.map((c) => c.user).join('\u0000'));
   check('B1 nhánh tắt không có engine.toiUu (shape phản hồi như cũ)', t.raw.engine.toiUu === undefined);
 }
-// B1b. Trần = ĐÚNG phần code đọc (không thấp hơn): đổi giới hạn trong code mà quên bảng TRAN → đỏ ở đây.
+// B1-tran. Trần = ĐÚNG phần code đọc (không thấp hơn): đổi giới hạn trong code mà quên bảng TRAN → đỏ ở đây.
 {
   const { gates, gather } = MOI;
   const { groundingSourceOf } = require('../lib/classify.js');
   const long = (ch, n) => ch.repeat(n);
   const ctx = { source: groundingSourceOf(KNIFE), productText: `${KNIFE.tenHang}\n${KNIFE.specs}`, gathered: { headings: ['8201'], mic: null, supplier: null }, machinery: false, round: 2, productName: 'dao hái cau', form: 'hoàn chỉnh', pool: [] };
   const g = gates({ decision: 'CHOT', hs: '82019000', basis: Array.from({ length: 15 }, () => ({ stream: 'SUY_LUAN', claim: long('c', 500), evidence: long('e', 500), ref: long('r', 300) })), conditions: Array.from({ length: 12 }, () => ({ fact: long('f', 500), status: 'UNKNOWN', evidence: '' })) }, ctx);
-  check('B1b basis: gates() đọc đúng TRAN.basis mục, claim/evidence/ref đúng TRAN.claim/basisEvidence/ref ký tự', g.basis.length === TRAN.basis && g.basis[0].claim.length === TRAN.claim && g.basis[0].evidence.length === TRAN.basisEvidence && g.basis[0].ref.length === TRAN.ref, JSON.stringify([g.basis.length, g.basis[0].claim.length, g.basis[0].evidence.length, g.basis[0].ref.length]));
-  check('B1b conditions: gates() đọc đúng TRAN.conditions mục, fact đúng TRAN.fact ký tự', g.conditions.length === TRAN.conditions && g.conditions[0].fact.length === TRAN.fact, JSON.stringify([g.conditions.length, g.conditions[0].fact.length]));
+  check('B1-tran basis: gates() đọc đúng TRAN.basis mục, claim/evidence/ref đúng TRAN.claim/basisEvidence/ref ký tự', g.basis.length === TRAN.basis && g.basis[0].claim.length === TRAN.claim && g.basis[0].evidence.length === TRAN.basisEvidence && g.basis[0].ref.length === TRAN.ref, JSON.stringify([g.basis.length, g.basis[0].claim.length, g.basis[0].evidence.length, g.basis[0].ref.length]));
+  check('B1-tran conditions: gates() đọc đúng TRAN.conditions mục, fact đúng TRAN.fact ký tự', g.conditions.length === TRAN.conditions && g.conditions[0].fact.length === TRAN.fact, JSON.stringify([g.conditions.length, g.conditions[0].fact.length]));
   const gt = await gather({ product: { nameVi: 'dao hái cau', purpose: long('p', 5000) }, hypotheses: [{ chapter: '82', heading4: '8201', subheading6: '820190', why: long('w', 600), confidence: 80 }], verify: { searchVi: ['dao hái cau'], codes8: ['82019000'] } }, KNIFE, { micAllowed: false });
   const spBlock = gt.pack.split('HỒ SƠ BẢN CHẤT')[1].split('\n\n')[0];
   const spJson = spBlock.slice(spBlock.indexOf('\n') + 1);
-  check('B1b product: gói vòng 2 chỉ đọc TRAN.productChars ký tự JSON product', spJson.length === TRAN.productChars, String(spJson.length));
-  check('B1b why: gói vòng 2 cắt why ở TRAN.why ký tự', gt.pack.includes(`${long('w', TRAN.why)}…`) && !gt.pack.includes(long('w', TRAN.why + 1)));
+  check('B1-tran product: gói vòng 2 chỉ đọc TRAN.productChars ký tự JSON product', spJson.length === TRAN.productChars, String(spJson.length));
+  check('B1-tran why: gói vòng 2 cắt why ở TRAN.why ký tự', gt.pack.includes(`${long('w', TRAN.why)}…`) && !gt.pack.includes(long('w', TRAN.why + 1)));
   script = [clone(R1_TOY), { ...clone(TOY_HOI), reason: long('x', 900), questions: Array.from({ length: 9 }, (_, i) => ({ fact: `f${i}`, question: `Câu hỏi thuộc tính số ${i}?`, whereToFind: 'nhãn' })) }]; calls = [];
   const r9 = await MOI.classifyLoop(clone(TOY), {});
-  check('B1b questions: code kết quả giữ đúng TRAN.questions; reason cắt ở TRAN.reason', r9.nextAction.questions.length === TRAN.questions && r9.results[0].reason.length === TRAN.reason + 1 && r9.results[0].reason.endsWith('…'), JSON.stringify([r9.nextAction.questions.length, r9.results[0]?.reason?.length]));
+  check('B1-tran questions: code kết quả giữ đúng TRAN.questions; reason cắt ở TRAN.reason', r9.nextAction.questions.length === TRAN.questions && r9.results[0].reason.length === TRAN.reason + 1 && r9.results[0].reason.endsWith('…'), JSON.stringify([r9.nextAction.questions.length, r9.results[0]?.reason?.length]));
 }
 
 // B2. JSON cụt → lưới an toàn sẵn có (gọi lại tắt suy nghĩ), không crash.
