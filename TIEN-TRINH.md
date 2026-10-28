@@ -4,6 +4,64 @@
 
 ---
 
+# LÔ 071 — soạn sổ tay chú giải (phiên `dev-zcode-mm`, 28/10/2026 18:56)
+
+- **Nhánh:** `so-tay/lo-071` (worktree `hs-code-api-wt-st-lo071`; đã kiểm `ps` — KHÔNG trùng PID với lô 072)
+- **Nhóm:** `2505 2506 2507 2509 2510 2511` (Chương 25: cát · thạch anh · cao lanh · đá phấn · canxi phosphat · bari) — lấy theo CSV dòng 071, khớp brief
+- **Nguồn:** `tmp/so-tay/nguon/{2505,2506,2507,2509,2510,2511}.txt` (49.116 ký tự) + `_he-thong.txt` — đọc HẾT 6 tệp
+
+## 0. Bước đọc bắt buộc (đúng quy trình 3 tầng)
+
+1. `brief-st-lo071.md` (nhóm 2505 2506 2507 2509 2510 2511) — KHÔNG đọc trọn `so-tay-giao-ngoai.md`.
+2. `docs/giao-viec/so-tay/LUAT-CHUNG.md` — 11 luật (chép nguyên văn ≤ 300 ký tự; loại trừ chỉ khi nêu đích danh; phanBiet mã ngoài nhóm phải có trong trích; `cay` do máy sinh; không ghi `nguonLoai`).
+3. `docs/giao-viec/so-tay/SOAN-LO.md` — lệnh có sẵn + mô tả PR phải có + bảng "lỗi máy TỰ LOẠI".
+
+## 1. Xuất nguồn
+
+`node scripts/build-so-tay.mjs --nhom=2505,2506,2507,2509,2510,2511 --xuat-nguon=tmp/so-tay/nguon` → 6 tệp + `_he-thong.txt`.
+
+## 2. PHƯƠNG PHÁP MỚI: bộ CẮT TRÍCH byte-exact (`tmp/lo071/cut.mjs` + `spec-071.mjs`)
+
+Bài học lô 068 (bản in của Read KHÔNG byte-faithful với tiếng Việt) + lô 066 (Write tool rơt ký tự trong code):
+**không gõ tay một câu trích nào.** Mọi câu trích/mô tả trong spec ghi dạng "khoá" = chuỗi ASCII **đã bỏ dấu**;
+bộ cắt gấp dấu (NFD + bỏ `\p{M}` + map `đ/ơ/ư`), khớp trong nguồn rồi cắt **đúng biên ký tự** ⇒ kết quả là đoạn
+NGUYÊN VĂN của nguồn (kể cả dấu ngoặc/dấu chấm ở cuối).
+
+**BẪY MỚI (đã bắt và sửa trong lô này):** bản khớp "bỏ dấu câu" (squash) **ăn mất dấu ở cuối** — cắt ra
+`…liên quan` thay vì `…liên quan).`, `Apatít (apatite` thay vì `Apatít (apatite)`, `chapter 26` thay vì `chapter 26)`.
+Cách sửa: khớp **bỏ dấu câu** để định vị, rồi **mở rộng biên** theo số dấu câu đầu/cuối mà khoá khai báo.
+Sau khi sửa: kiểm thêm **byte-exact thẳng** (không squash): **59/59 mảnh trích khớp NGUYÊN VĂN**.
+
+**GÁC SOÁT TỪ** (mọi từ ≥3 ký tự trong `hoi`/`fact` phải có trong từ vựng nhóm, hoặc trong danh sách từ chức năng
+lấy từ chính sổ tay nhà): **0 cảnh báo**.
+
+## 3. Soạn bản nháp + máy kiểm
+
+`node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **51/51 mục đạt (100 %)**, 0 mục bị loại:
+2505 (8) · 2506 (10) · 2507 (4) · 2509 (10) · 2510 (10) · 2511 (9).
+
+## 4. Lựa chọn "bỏ mục" có chủ đích (thà bỏ còn hơn mờ má)
+
+- **2505/2506: KHÔNG có `phanBiet`** — nguồn không nêu đích danh HAI vế của một cặp mã trong cùng câu
+  (2505.10 vs 2505.90: WCO 250590 ghi "other than silica and quartz sands" nhưng còn loại trừ "metal-bearing sands of
+  chapter 26" ⇒ nhánh "không" không phải phần bù trọn vẹn; 2506.10 vs 2506.20: hai câu ở hai chỗ khác nhau ⇒
+  cấm "ghép hai câu").
+- **2506/2507/2509: `tieuChi6` rỗng** — không câu nào cho tiêu chí cấp 6 số có cấu trúc (tên WCO chỉ là tên hàng).
+
+## 5. Nạp + kiểm + nộp
+
+```bash
+rm -f data/so-tay/bao-cao/lo-071.json     # báo cáo lô phải SẠCH trước khi nạp (bài học lô 068)
+node scripts/build-so-tay.mjs --nhom=2505,2506,2507,2509,2510,2511 --tu-tep=tmp/so-tay/raw --force \
+  --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-071.json
+# → mục đạt 53/53 (100 %) — nghiệm thu bước 1 cần ≥ 95 %; nhóm lỗi: 0
+npm run so-tay:check   # → 578 nhóm, 15.170 mục, 0 mục không kiểm được nguồn
+node scripts/check-cay.mjs --nhom=<nhom>   # → 6/6 nhóm "đủ" (cây, dong8, tên nút ảo, tiêu chí 6 số)
+npm test                # → ALL TESTS PASSED
+```
+
+**Kết quả lô 071: 53/53 mục (100 %)** — 2505 (8) · 2506 (12) · 2507 (4) · 2509 (10) · 2510 (10) · 2511 (9).
+
 # LÔ 068 — soạn sổ tay chú giải (phiên `dev-zcode-mm`, 28/10/2026 13:25)
 
 - **Nhánh:** `so-tay/lo-068` · **PR #499** — **KHÔNG merge** (chờ soát độc lập) · **Nhóm:** `2209,2301,2302,2303,2304,2305` (Chương 22 giấm + Chương 23 phế liệu)
