@@ -1,0 +1,44 @@
+{
+ "nhom": "2806",
+ "nguoiSoat": "dev-soat-doc-lap-lo082",
+ "luc": "2026-10-29T06:45:00+07:00",
+ "phamViSoat": 1,
+ "soat": 6,
+ "giu": 6,
+ "sua": 0,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2806 (6 mục trong phạm vi: phamVi · boPhan · dieuKienVao · loaiTru · phanBiet; đọc thêm 2 tieuChi6 + 2 dong8 nhưng KHÔNG sửa — ngoài phạm vi theo SOAT-LO). SỬA 0 · XOÁ 0 · CHÈN 0. Mọi câu trích nguyên văn tuyệt đối trong đúng khối nguồn (check-trich-nguyen-van byte-exact). Không có lỗi nào máy không bắt được trong 6 mục này: hai loại trừ có đích danh (28.11 · 28.12) đã ghi đủ, phép \"hoặc\" của nguồn được giữ nguyên, không mất ngoại lệ, không có mục loại trừ nào bị bỏ sót.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `trich` là nguyên văn hai tiêu đề phần \"(A) HYDRO CLORUA (AXIT CLOHYDRIC) … (B) AXIT CLOROSULPHURIC (CHLOROSULPHONIC ACID)\" (byte-exact trong [nhom2806.nhom]); `text` chỉ rút gọn đúng hai tên phần, không thêm chữ nào ngoài câu trích."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — quyTac/tomTat nêu đúng hai phần (A) Hydro clorua (axit clohydric) / (B) Axit clorosulphuric (chlorosulphonic acid); mọi từ ≥3 ký tự đều có trong chính `trich` của mục này. \"Nhóm này gồm hai phần:\" là khung câu (mẫu nhà có sẵn 8/208 nhóm), không phải thêm hiểu biết riêng."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn: \"Nhóm này không bao gồm axit hypochlorous, axit cloric hoặc axit percloric (nhóm 28.11).\" Nhãn giữ NGUYÊN phép \"hoặc\" của nguồn (không đổi thành \"và\" — lớp lỗi lô 080); đích 28.11 có tên trong câu trích."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn: \"Nhóm này cũng không gồm lưu huỳnh diclorua dioxit (sulphuryl chloride) (nhóm 28.12), mà đôi khi nó được hiểu nhầm là “clorosulphuric axit\".\" Câu trích giữ TRỌN vế sau (ghi chú nhầm lẫn) — vế đó KHÔNG phải ngoại lệ nên không cần đưa vào `dieuKien`; không có dấu lược ⇒ trông như câu trọn nhưng câu trích ĐÚNG là vậy."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — hỏi đủ cả 3 mục loại trừ (axit hypochlorous, axit cloric, axit percloric) như nguồn; neuCo=2811 (có) / neuKhong=2806 (không) đúng chiều."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — hỏi đủ mục loại trừ (lưu huỳnh diclorua dioxit / sulphuryl chloride); neuCo=2812 / neuKhong=2806 đúng chiều."
+  }
+ ]
+}

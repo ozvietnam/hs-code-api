@@ -11558,3 +11558,133 @@ node scripts/build-so-tay.mjs --nhom=2806,2807,2808,2809,2810,2811 --tu-tep=tmp/
 5. **`dong8[28092031]` chỉ ghi "Loại dùng cho thực phẩm"** — khối SEN phủ chung 3 mã 28092031/32/39 và **không** nêu tên "axit hypophosphoric" (chỉ nêu "axit phosphoric") ⇒ không thể ghi tên sản phẩm vào `dieuKien` mà vẫn đúng với câu trích. Tên dòng lấy từ biểu thuế (`28092031 - - - Axit hypophosphoric (SEN)`).
 6. **`dong8[28092039]` không có `dieuKienSo`** — dòng "Loại khác" ⇒ luật máy `dieu-kien-so-tren-dong-loai-khac` loại; chỉ giữ `tieuChi` 1 ngưỡng (arsen). 4 ngưỡng đầy đủ nằm ở 28092031/28092032 (cùng tiêu đề quốc gia 2809.20.3).
 7. **3 `TRÀN-CLIP` còn lại** — xem Bước 5; nền nhà 43 % `loaiTru` dài hơn 55 ký tự.
+
+---
+
+# LÔ 082 — SOÁT ĐỘC LẬP — 2806 2807 2808 2809 2810 2811 (29/10/2026, phiên `dev-soat-doc-lap-lo082`)
+
+Người soát **KHÁC người soạn** (`dev-zcode-mm`). Brief: `brief-st-soat-lo082.md` (oz-dev-kit).
+Đọc trước: `docs/giao-viec/so-tay/LUAT-CHUNG.md` (11 luật) + `docs/giao-viec/so-tay/SOAT-LO.md`.
+**KHÔNG merge PR #523** — chờ người duyệt. **KHÔNG tự cập nhật `so-tay-lo.csv`** (việc của người duyệt).
+
+## 1. Phạm vi soát — TOÀN BỘ, không lấy mẫu
+
+| Nhóm | Tổng mục | Cấu trúc | **Mục TRONG PHẠM VI soát** |
+|---|---|---|---|
+| 2806 | 10 | 1 `phamVi` · 2 `loaiTru` · 2 `phanBiet` · 1 `boPhan` · 2 `tieuChi6` · 2 `dong8` | **6** |
+| 2807 | 10 | 1 `phamVi` · 3 `loaiTru` · 3 `phanBiet` · 1 `boPhan` · 2 `dong8` | **8** |
+| 2808 | 7 | 1 `phamVi` · 2 `loaiTru` · 2 `phanBiet` · 1 `boPhan` · 1 `dong8` | **6** |
+| 2809 | 15 | 1 `phamVi` · 2 `loaiTru` · 2 `phanBiet` · 1 `boPhan` · 2 `tieuChi6` · 7 `dong8` | **6** |
+| 2810 | 10 | 1 `phamVi` · 3 `loaiTru` · 3 `phanBiet` · 1 `boPhan` · 2 `dong8` | **8** |
+| 2811 | 30 | 1 `phamVi` · 4 `loaiTru` · 4 `phanBiet` · 1 `boPhan` · 6 `tieuChi6` · 11 `dong8` · 3 `cay.tenDien` | **10** |
+
+**44 mục trong phạm vi** (`phamVi` · `boPhan` · `dieuKienVao` · `loaiTru` · `phanBiet`) — đọc từng mục
+cùng nguồn `tmp/so-tay/nguon/<nhom>.txt` (`nhom<4>.nhom`, `sen.*`, `tax.*`, `wco.*`).
+`dieuKienVao` rỗng ở **cả 6 nhóm** ⇒ **0 mục** của khối này để soát.
+
+`cay` do máy sinh (`lib/hs-tree.js`) — **không soạn, không sửa** (luật 9). `tieuChi6` / `dong8` đã đọc và
+đối chiếu nhưng **ngoài phạm vi soát** theo `SOAT-LO.md` ⇒ giữ nguyên, `nguonLoai` vẫn `AI_DA_KIEM`.
+
+Hồ sơ: `review/{2806,2807,2808,2809,2810,2811}.json` — **mỗi mục một dòng `lyDo`** + kết luận
+`giu`/`sua`/`xoa`/`chen`. Script áp 2 pha: `scripts/apply-review-lo082.mjs` (đúng cách của
+`apply-review-lo080.mjs`): `TARGET=raw APPLY=1` ghi `tmp/so-tay/raw/`, `TARGET=data APPLY=1` chỉ đổi
+`nguonLoai` trong `data/so-tay/`.
+
+## 2. Kết quả
+
+**44 mục soát · 4 mục SỬA (4 trường) · 0 xoá · 0 chèn · 44 mục đổi `nguonLoai` `AI_DA_KIEM` → `NGUOI_DUYET`.**
+
+Cả 4 máy kiểm của nhà (`check-so-tay`, `check-trich-nguyen-van`, `scan-so-tay-soat`, `check-cay`)
+đều **xanh TRƯỚC và SAU** — lỗi của lô này nằm đúng vào chỗ máy **KHÔNG** bắt được.
+
+| # | Nhóm | Mục | Lớp lỗi | Sửa |
+|---|---|---|---|---|
+| 1 | 2811 | `phanBiet[0].hoi` | **MẤT NGOẠI LỆ ⇒ ĐẢO CHIỀU** | kèm ngoại lệ *"trừ khi được điều chế riêng cho các mục đích đặc biệt"* vào câu hỏi |
+| 2 | 2807 | `phanBiet[2].hoi` | **BỎ SÓT 2/5 MỤC LOẠI TRỪ** | kể lại đủ 5 mục (peroxosulphuric + sulphamic) |
+| 3 | 2809 | `phanBiet[0].hoi` | **BỎ SÓT 2/5 VẾ LOẠI TRỪ** | kể lại đủ 5 vế (*anhydrit khác*, *anhydrit của nó*) |
+| 4 | 2809 | `boPhan.tomTat` | **TÊN MẶT HÀNG BỊ CẮT CỤT** | *"pentaoxide"* → *"diphosphorous pentaoxide"* |
+
+### 2.1. Lớp lỗi nặng nhất — `2811 phanBiet[0]`: mất ngoại lệ ⇒ đảo chiều
+
+Câu nguồn: *"Keo thể huyền phù của silica thường được phân loại vào nhóm 38.24 **trừ khi được điều chế
+riêng cho các mục đích đặc biệt** (ví dụ, như chất xử lý hoàn tất vải dệt thuộc nhóm 38.09)."*
+⇒ keo thể huyền phù của silica CHỈ sang 38.24 khi **KHÔNG** được điều chế riêng.
+
+`loaiTru[0].dieuKien` đã mang ngoại lệ này, nhưng `hoi` bản nháp chỉ hỏi *"Hàng này là keo thể huyền phù
+của silica không?"* ⇒ hàng được điều chế riêng cho mục đích đặc biệt (thuộc 38.09) bị hỏi "có" rồi
+đẩy sang 38.24 ⇒ **SAI**. Mẫu nhà: `8516` (*"… và KHÔNG chỉ để làm nóng nước, KHÔNG dùng trong gia hộ?"*),
+`8431` — câu hỏi phải mang theo điều kiện loại trừ.
+
+Sửa (ghép từ chính `trich` của mục này, nguyên văn cụm ngoại lệ):
+*"Hàng này là keo thể huyền phù của silica và KHÔNG được điều chế riêng cho các mục đích đặc biệt không?"*
+
+### 2.2. Hai lớp "thu hẹp phạm vi loại trừ" (bỏ sót mục trong `hoi`)
+
+| Nhóm | Câu nguồn loại trừ | `hoi` bản nháp | Mục BỎ SÓT | Hệ quả |
+|---|---|---|---|---|
+| 2807 | *"(b) Lưu huỳnh trioxit, hydro sulphua, **peroxosulphuric (pesulphuric) axit**, **sulphamic axit** và các axit khoáng của dãy thionic"* | 3/5 mục | 2 mục | peroxosulphuric axit & sulphamic axit (đều sang 28.11) hỏi "có" thì trả nhánh "không" ⇒ rơi nhầm vào 28.07 |
+| 2809 | *"(a) Các axit phosphorơ và **anhydrit khác** (axit phosphonic và **anhydrit của nó**, axit phosphinic)"* | 3/5 vế | 2 vế | anhydrit của axit phosphonic (P2O3/P4O6 — 2811 (IJ)(2) xác nhận thuộc 28.11) rơi nhầm vào 28.09 |
+
+Mẫu nhà: `0206` / `0401` / `0306` giữ **TRỌN** danh sách mục trong `hoi`.
+
+### 2.3. `2809 boPhan.tomTat` — tên mặt hàng bị cắt cụt
+
+`tomTat` ghi *"Các phần: **pentaoxide**; axit phosphoric; axit poly phosphoric."* — trong khi `quyTac`
+(cùng khối) và tiêu đề phần (A) trong nguồn đều ghi *"**Diphosphorous** pentaoxide"*. "pentaoxide" có
+nhiều nghĩa (nhiều oxit 5 oxít) ⇒ đọc `tomTat` không xác định được mặt hàng. Sửa: điền lại
+*"diphosphorous pentaoxide"* (cả 2 từ đều có trong chính `trich` của mục này).
+
+## 3. NỀN NHÀ đã ĐO (đo trong phiên soát, không đoán) — những nghi vấn ĐÃ bị bác
+
+Bài học lô 060/064/066/067: **đo nền nhà TRƯỚC khi bác đề xuất**, nếu không sẽ sửa oan.
+
+| Nghi vấn | Số đo lô 082 | Nền nhà (đo được trong phiên) | Kết luận |
+|---|---|---|---|
+| `hoi` đổi *"và"* → *"hoặc"* khi nguồn liệt kê nhiều mục | 4 mục (2807 · 2808 · 2809 · 2811) | **241/1.191** câu hỏi `phanBiet` trong kho làm vậy | **mẫu nhà ⇒ KHÔNG sửa** (lỗi lô 080 ngược chiều: nguồn *"hoặc"* mà nhãn ghi *"và"*) |
+| `boPhan.quyTac` mở đầu *"Nhóm này gồm … (hai) phần"* | 5/6 nhóm | **11/208** nhóm có `boPhan` khác null; **8/208** dùng đúng *"gồm hai phần"* | khung câu của nhà ⇒ **KHÔNG sửa** |
+| `dong8` dòng *"Loại khác"* mang `tieuChi` | 1 dòng (28092039) | **79/2.021** dòng *"Loại khác"* trong kho có `tieuChi` | **mẫu nhà ⇒ KHÔNG sửa** |
+| `dong8` dòng *"Loại khác"* **không** có `dieuKienSo` | 1 dòng | máy cấm (`dieu-kien-so-tren-dong-loai-khac`); **0/2.021** dòng trong kho có `dieuKienSo` | **đúng luật ⇒ KHÔNG sửa** |
+| `loaiTru.dieuKien` dài hơn 55 ký tự (trần clip runtime) | 4 mục | **1.227/2.826** mục `loaiTru` trong kho (43 %) | nền nhà ⇒ chỉ sửa khi cắt **MẤT KẾT LUẬN** (luật lô 054) |
+| `phanBiet.hoi` dài hơn 110 ký tự | 1 mục (2807, sau sửa = 136) | **166/1.191** câu hỏi trong kho | nền nhà ⇒ **KHÔNG rút ngắn** (rút ngắn là mất mục — đúng lỗi đang sửa) |
+| câu trích dài hơn 300 ký tự | 3 mục (`dong8` khối SEN, 374) | **342/15.224** mục có trích trong kho (2,2 %) | nền nhà ⇒ **ghi nhận, KHÔNG sửa** (ngoài phạm vi; cắt bớt sẽ mất 1 trong 4 ngưỡng mg/kg) |
+| `dieuKienVao` rỗng ở cả 6 nhóm | 6/6 nhóm | **412/638** nhóm trong kho có `dieuKienVao` | luật 4 bước: 2809 + 2811 chỉ **liệt kê danh mục** ("Nhóm này bao gồm <danh sách sản phẩm>"), 2810 chỉ phủ phần (A) ⇒ **để rỗng ĐÚNG** |
+| `phamVi` không dùng câu *"Nhóm này bao gồm …"* của nhóm | 2809 (2811 thì có dùng) | **327/459** nhóm có câu "bao gồm" ở đầu nguồn lại dùng câu đó (71 %) | lệch nhẹ so với nền — nhưng bản nháp **KHÔNG sai** (nêu đúng 3 phần của nhóm) ⇒ **ghi nhận cho người duyệt**, KHÔNG sửa |
+| `tieuChi6` / `cay.tenDien` lấy tên từ nguồn WCO tiếng Anh | 6 + 3 mục | **2.562/2.596** `tieuChi6` · **135/172** `tenDien` trong kho | quy ước nhà ⇒ **KHÔNG sửa** |
+
+## 4. Kiểm sau khi soát
+
+```
+TARGET=raw  APPLY=1 node scripts/apply-review-lo082.mjs
+rm -f data/so-tay/bao-cao/lo-082.json          # báo cáo lô bị GỘP nếu nạp lại mà không xoá (bài học lô 080)
+node scripts/build-so-tay.mjs --nhom=2806,2807,2808,2809,2810,2811 --tu-tep=tmp/so-tay/raw --force \
+  --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-082.json
+TARGET=data APPLY=1 node scripts/apply-review-lo082.mjs     # chỉ đổi nguonLoai
+```
+
+| Lệnh | Kết quả |
+|---|---|
+| `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` | **6 nhóm, 82/82 mục, 0 mục không kiểm được nguồn** |
+| `node scripts/check-trich-nguyen-van.mjs` (bản nháp) | **OK — 73 mục** nguyên văn byte-exact trong đúng khối nguồn |
+| `node scripts/check-trich-nguyen-van.mjs data/so-tay/2806.json … 2811.json` | **OK — 73 mục** (73 = 82 − 6 `boPhan` − 3 `cay.tenDien`; bộ kiểm này không duyệt 2 trường đó) |
+| `node tmp/so-tay/gac-soat-082.mjs` (gác soát từ cấp mục) | **0 lỗi · 11 info** (tên tiếng Việt trên nguồn WCO tiếng Anh — quy ước nhà) |
+| `build-so-tay --tu-tep` | **82/82 (100 %)**, `nhomLoi: []` — `data/so-tay/bao-cao/lo-082.json` |
+| `node scripts/check-cay.mjs --nhom=<n> --chi-tiet` | **6/6 nhóm "đủ"**, 0 lỗi lệch cây (có cây, đủ `dong8`, đủ tên nút ảo, đủ tiêu chí 6 số) |
+| `npm run so-tay:check` | **638 nhóm, 15.829 mục, 0 mục không kiểm được nguồn** |
+| `npm test` | **ALL TESTS PASSED** (23 pass, 0 fail) |
+| nhãn `nguonLoai` sau soát | **44 mục → `NGUOI_DUYET`** (2806: 6 · 2807: 8 · 2808: 6 · 2809: 6 · 2810: 8 · 2811: 10) · `tieuChi6`+`dong8`+`cay.tenDien` giữ `AI_DA_KIEM` (38) · `cay` giữ `MAY_SUY` (12) |
+
+## 5. Còn mở cho người duyệt (ngoài phạm vi soát, KHÔNG tự sửa)
+
+1. **`dong8[28092031]` mang điều kiện "H3BO3 > 85 %"** (28100020 của 2810) — ngưỡng này lấy từ câu về **axit boric thô tự nhiên**, trong khi dòng 28100020 còn chứa **axit metaboric (HBO2)n** ("Axit metaboric (HBO2)n cũng được phân loại ở đây") ⇒ điều kiện có thể **siết chặt dòng 8 số hơn nguồn**. `dong8` ngoài phạm vi soát ⇒ để người duyệt quyết.
+2. **Ba khối `sen.28092031/32/39` có nội dung BYTE-GIỐNG NHAU**, đều mô tả *"AXIT PHOSPHORIC VÀ AXIT POLYPHOSPHORIC, LOẠI DÙNG CHO THỰC PHẨM"*, trong khi dòng biểu thuế `28092031` lại tên *"Axit hypophosphoric (SEN)"* ⇒ **mâu thuẫn CỦA NGUỒN**. Bản nháp theo luật 6 (có SEN thì ưu tiên điều kiện từ SEN) nên lấy nội dung SEN cho cả ba mã ⇒ người duyệt nên để mắt câu này.
+3. **`dong8[2808]` không có `tieuChi6`** — phân nhóm 280800 là nút 6 số **không tồn tại** trong cây HS (`nodeOf('280800')` trả về nút nhóm 4 số) ⇒ máy loại mọi mục `hs6` tương ứng. Không phải thiếu sót.
+4. **`phamVi` của 2809** dùng ba tiêu đề phần (A)(B)(C) thay vì câu định nghĩa đầy đủ ở đầu nguồn (*"Nhóm này bao gồm diphosphorous pentaoxide, axit phosphoric …, axit pyrophosphoric …, axit metaphosphoric và các axit polyphosphoric khác."*) — câu đó kê thêm 2 mặt hàng mà `phamVi` hiện không nêu tên. Bản nháp **không sai** ⇒ người duyệt muốn thì đổi.
+5. **`boPhan` của 2811** mô tả trục sắp xếp theo phi kim loại (12 mục) thay vì liệt kê 13 tiêu đề phần (A)–(N) của nhóm ⇒ đúng nội dung nhưng không nêu tên từng phần.
+6. **Ngưỡng đơn vị `%` chưa kích hoạt được cổng chốt dòng** — lỗi luật máy `SO_DON_VI_RE` đã biết từ lô 068/PR #499 (chưa vá, ngoài phạm vi lô dữ liệu). Lô này có 2 ngưỡng `%`: 80 % H2SO4 (28070010) · 85 % H3BO3 (28100020).
+7. **Ba `TRÀN-CLIP` còn lại** (`loaiTru` 2807/2809/2811 > 55 ký tự) — cắt đi **không mất kết luận** (luật lô 054) nên giữ nguyên; nền nhà 43 %.
+
+## 6. Hồ sơ + trạng thái PR
+
+- Hồ sơ soát: `review/{2806,2807,2808,2809,2810,2811}.json` — 44 mục, mỗi mục một dòng `lyDo`.
+- Script áp: `scripts/apply-review-lo082.mjs` (2 pha: `raw` → `data`).
+- PR #523 — **đã cập nhật body, KHÔNG merge, chưa đụng `so-tay-lo.csv`**.

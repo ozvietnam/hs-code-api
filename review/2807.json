@@ -1,0 +1,57 @@
+{
+ "nhom": "2807",
+ "nguoiSoat": "dev-soat-doc-lap-lo082",
+ "luc": "2026-10-29T06:45:00+07:00",
+ "phamViSoat": 1,
+ "soat": 8,
+ "giu": 7,
+ "sua": 1,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2807 (8 mục trong phạm vi: phamVi · boPhan · dieuKienVao · loaiTru · phanBiet; đọc thêm 2 dong8 nhưng KHÔNG sửa — ngoài phạm vi theo SOAT-LO). SỬA 1 · XOÁ 0 · CHÈN 0. Lớp lỗi máy KHÔNG bắt: phanBiet[2] hỏi thiếu 2/5 mục loại trừ ⇒ thu hẹp phạm vi loại trừ. Ba loại trừ (a)(b)(c) có đích danh đều được ghi đủ, \"A hoặc B\" của (a) giữ cả hai đích \"2806|2808\" theo \"tương ứng\" của nguồn, phép \"hoặc\"/\"và\" của nguồn được giữ đúng, không mất ngoại lệ, không có mục loại trừ nào bị bỏ sót.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `trich` gồm ba mảnh nguyên văn: \"(A) AXIT SULPHURIC\", \"(B) OLEUM\" và câu \"Oleum (axit sulphuric bốc khói) là loại axit sulphuric được nạp với lượng dư (tới 80%) SO3 (lưu huỳnh trioxit).\" (byte-exact); `text` chỉ rút gọc đúng hai tên phần + bí danh trong ngoặc, không thêm chữ nào ngoài câu trích."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — quyTac/tomTat nêu đúng hai phần (A) Axit sulphuric / (B) Oleum (axit sulphuric bốc khói); bí danh \"axit sulphuric bốc khói\" lấy từ chính câu trích của mục này."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn: \"(a) Clorosulphuric axit (“sulphuric clorohydrin”) và sulphonitric axit (nhóm 28.06 và 28.08 tương ứng).\" Đích \"2806|2808\" GHI CẢ HAI nhánh theo \"tương ứng\" của nguồn (không tách \"A hoặc B\" thành một nhánh đích duy nhất); \"và\" của nguồn được giữ nguyên trong `dieuKien`."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn: \"(b) Lưu huỳnh trioxit, hydro sulphua, peroxosulphuric (pesulphuric) axit, sulphamic axit và các axit khoáng của dãy thionic (các axit polythionic (nhóm 28.11).\" `dieuKien` chép nguyên văn cả 5 mục; ngoặc \"(các axit polythionic\" (lệch ngoặc) là lỗi CHÍNH TẢ CỦA NGUỒN — giữ nguyên, không sửa câu nguồn."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn: \"(c) Thionyl hoặc sulphuryl clorua (nhóm 28.12).\" Giữ đúng phép \"hoặc\" của nguồn; đích 28.12 có tên trong câu trích."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — hỏi đủ 2 mục loại trừ (clorosulphuric axit / sulphonitric axit); neuCo=\"2806|2808\" giữ cả hai đích theo \"tương ứng\" của nguồn."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — hỏi đủ mục loại trừ (thionyl hoặc sulphuryl clorua); neuCo=2812 / neuKhong=2807 đúng chiều."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "sua",
+   "lyDo": "BỎ SÓT 2/5 MỤC LOẠI TRỪ ⇒ thu hẹp phạm vi loại trừ (lớp lỗi máy KHÔNG bắt). Câu nguồn loại trừ 5 mục: \"Lưu huỳnh trioxit, hydro sulphua, peroxosulphuric (pesulphuric) axit, sulphamic axit và các axit khoáng của dãy thionic\" — nhưng `hoi` bản nháp chỉ hỏi 3 mục (\"hydro sulphua, lưu huỳnh trioxit hoặc axit thionic\"), BỎ SÓT \"peroxosulphuric (pesulphuric) axit\" và \"sulphamic axit\". Hệ quả: peroxosulphuric axit và sulphamic axit (đều thuộc diện loại trừ sang 28.11) bị hỏi \"có\" thì trả nhánh \"không\" ⇒ rơi nhầm vào 28.07. Mẫu nhà: 0206 / 0401 / 0306 giữ TRỌN danh sách mục trong `hoi` (241/1.191 câu hỏi nhà dùng \"hoặc\" để liệt kê, nhưng không mất mục nào). Sửa: `hoi` kể lại đủ 5 mục, ghép từ chính `trich` của mục này; phép \"và\" của nguồn đổi thành \"hoặc\" trong câu hỏi (đúng mẫu nhà).",
+   "sua": {
+    "hoi": "Hàng này là lưu huỳnh trioxit, hydro sulphua, peroxosulphuric (pesulphuric) axit, sulphamic axit hoặc axit khoáng của dãy thionic không?"
+   }
+  }
+ ]
+}

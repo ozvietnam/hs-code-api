@@ -1,0 +1,54 @@
+{
+ "nhom": "2810",
+ "nguoiSoat": "dev-soat-doc-lap-lo082",
+ "luc": "2026-10-29T06:45:00+07:00",
+ "phamViSoat": 1,
+ "soat": 8,
+ "giu": 8,
+ "sua": 0,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2810 (8 mục trong phạm vi: phamVi · boPhan · dieuKienVao · loaiTru · phanBiet; đọc thêm 2 dong8 nhưng KHÔNG sửa — ngoài phạm vi theo SOAT-LO). SỬA 0 · XOÁ 0 · CHÈN 0. Ba mục loại trừ có đích danh (25.28 · 28.11 · 29.20) đều ghi đủ; ngưỡng 85 % H3BO3 có trong CẢ `loaiTru[0].dieuKien` lẫn `phanBiet[0].hoi` ⇒ không mất điều kiện lượng; không có ngoại lệ nào bị mất; `dieuKienVao` để rỗng là ĐÚNG — câu \"Nhóm này cũng bao gồm tất cả các loại oxit khác của Bo\" chỉ phủ phần (A), không phủ cả nhóm (luật 4 bước, mục 4).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `trich` là nguyên văn hai tiêu đề phần \"(A) CÁC OXIT CỦA BO … (B) AXIT BORIC\"; `text` chỉ rút gọn đúng hai tên phần, không thêm chữ nào ngoài câu trích."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — quyTac/tomTat nêu đúng hai phần (A) Các oxit của bo / (B) Axit boric; mọi từ ≥3 ký tự có trong chính `trich` của mục này."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn: \"Axit boric thô tự nhiên thô phân loại trong nhóm 25.28 khi chứa hàm lượng H3BO3 không quá 85% tính theo trọng lượng khô; khi hàm lượng axit boric (H3BO3) trên 85%, thì được phân loại trong nhóm này.\" Nhãn \"Axit boric thô tự nhiên: H3BO3 ≤ 85% (trọng lượng khô)\" nêu ĐÚNG kết luận của câu (điều kiện vào 25.28) và đặt kết luận LÊN ĐẦU để không bị cắt bởi trần 55 ký tự của runtime; đích 25.28 có tên trong câu trích. Không mâu thuẫn với phần \"bao gồm\" của nhóm (nhóm có cả phần (B) axit boric trên 85 %)."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn: \"(a) Axit tetrafluoroboric (axit fluoroboric) (nhóm 28.11).\" đích 28.11 có tên trong câu trích; nhất quán với 2811 (A)(2)(a) (\"Axit tetrafluoroboric (axit fluoroboric) (HBF4)\")."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn: \"(b) Axit glyceroboric (nhóm 29.20).\" đích 29.20 có tên trong câu trích."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — hỏi CÓ MANG ngưỡng \"hàm lượng H3BO3 không quá 85% tính theo trọng lượng khô\" (đúng mẫu nhà 8516: câu hỏi phải mang điều kiện lượng, nếu không hỏi \"là axit boric thô tự nhiên không?\" thì axit boric >85 % cũng dính vào nhánh \"có\"); neuCo=2528 / neuKhong=2810 đúng chiều."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — hỏi đúng mục loại trừ (axit tetrafluoroboric / axit fluoroboric); neuCo=2811 / neuKhong=2810 đúng chiều."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — hỏi đúng mục loại trừ (axit glyceroboric); neuCo=2920 / neuKhong=2810 đúng chiều."
+  }
+ ]
+}

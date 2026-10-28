@@ -1,0 +1,50 @@
+{
+ "nhom": "2809",
+ "nguoiSoat": "dev-soat-doc-lap-lo082",
+ "luc": "2026-10-29T06:45:00+07:00",
+ "phamViSoat": 1,
+ "soat": 6,
+ "giu": 4,
+ "sua": 2,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2809 (6 mục trong phạm vi: phamVi · boPhan · dieuKienVao · loaiTru · phanBiet; đọc thêm 2 tieuChi6 + 7 dong8 nhưng KHÔNG sửa — ngoài phạm vi theo SOAT-LO). SỬA 2 · XOÁ 0 · CHÈN 0. Lớp lỗi máy KHÔNG bắt: (1) phanBiet[0] hỏi thiếu 2/5 vế loại trừ (\"anhydrit khác\", \"anhydrit của nó\") ⇒ thu hẹp phạm vi loại trừ; (2) boPhan.tomTat để trần \"pentaoxide\" ⇒ mơ hồ về mặt hàng. GHI CHÚ mở cho người duyệt (ngoài phạm vi soát, KHÔNG tự sửa): (a) ba câu trích `sen.28092031/32/39` trong nguồn có nội dung BYTE-GIỐNG NHAU, đều mô tả \"AXIT PHOSPHORIC VÀ AXIT POLYPHOSPHORIC, LOẠI DÙNG CHO THỰC PHẨM\", trong khi dòng biểu thuế 28092031 lại tên \"Axit hypophosphoric (SEN)\" ⇒ mâu thuẫn CỦA NGUỒN; bản nháp theo luật 6 (có SEN thì ưu tiên điều kiện từ SEN) nên lấy nội dung SEN cho cả ba mã. (b) dòng 28092039 là dòng \"Loại khác\" nên máy cấm `dieuKienSo` (luật #195) — bản nháp để đúng như vậy. (c) `dong8[1]` (28100020) mang điều kiện \"H3BO3 > 85 %\" lấy từ câu về axit boric thô tự nhiên, trong khi dòng này còn chứa axit metaboric (HBO2)n — có thể siết chặt dòng 8 số hơn nguồn; ngoài phạm vi soát nên để người duyệt quyết.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `trich` là nguyên văn ba tiêu đề phần \"(A) DIPHOSPHOROUS PENTAOXIDE … (B) AXIT PHOSPHORIC … (C) CÁC AXIT POLY PHOSPHORIC\"; `text` chỉ rút gọn đúng ba tên phần, không thêm chữ nào ngoài câu trích. GHI CHÚ (không sửa): câu định nghĩa đầy đủ của nhóm ở đầu nguồn (\"Nhóm này bao gồm diphosphorous pentaoxide, axit phosphoric …, axit pyrophosphoric …, axit metaphosphoric và các axit polyphosphoric khác.\") kê thêm 2 mặt hàng mà `phamVi` hiện không nêu tên — nếu người duyệt muốn phạm vi đầy đủ thì đổi `trich` sang câu đó (không sửa ở đây vì bản nháp hiện KHÔNG sai: nó mô tả đúng 3 phần của nhóm)."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "sua",
+   "lyDo": "TÊN MẶT HÀNG BỊ CẮT CỤT ⇒ mơ hồ (lớp lỗi máy KHÔNG bắt). `tomTat` ghi \"Các phần: pentaoxide; axit phosphoric; axit poly phosphoric.\" — chỉ còn \"pentaoxide\" trần trụi, trong khi `quyTac` (cùng khối) và tiêu đề phần (A) trong nguồn đều ghi \"Diphosphorous pentaoxide\". \"pentaoxide\" có nhiều nghĩa (nhiều oxit 5 oxít) ⇒ đọc `tomTat` không xác định được mặt hàng. Sửa: điền lại \"diphosphorous pentaoxide\" (cả 2 từ đều có trong chính `trich` của mục này: \"(A) DIPHOSPHOROUS PENTAOXIDE\").",
+   "sua": {
+    "tomTat": "Các phần: diphosphorous pentaoxide; axit phosphoric; axit poly phosphoric."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn: \"(a) Các axit phosphorơ và anhydrit khác (axit phosphonic và anhydrit của nó, axit phosphinic) (nhóm 28.11).\" `dieuKien` chép nguyên văn cả vế trong ngoặc; đích 28.11 có tên trong câu trích; không mâu thuẫn với phần \"bao gồm\" của nhóm (2811 (IJ)(2) xác nhận axit phosphonic và anhydrit của nó thuộc 28.11)."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn: \"(b) Hydro photphua (nhóm 28.53).\" đích 28.53 có tên trong câu trích; nhất quán với 2811 (H)(1) (\"Các muối của nó (azit) được phân loại trong nhóm 28.50\")."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "BỎ SÓT 2/5 VẾ LOẠI TRỪ ⇒ thu hẹp phạm vi loại trừ (lớp lỗi máy KHÔNG bắt). Câu nguồn loại trừ: \"Các axit phosphorơ và anhydrit khác (axit phosphonic và anhydrit của nó, axit phosphinic) (nhóm 28.11).\" — `hoi` bản nháp chỉ hỏi \"axit phosphorơ, axit phosphonic hoặc axit phosphinic\", BỎ SÓT \"anhydrit khác\" và \"anhydrit của nó\" (anhydrit của axit phosphonic, tức P2O3/P4O6 — 2811 (IJ)(2) nêu rõ nó cũng thuộc 28.11). Hệ quả: anhydrit của axit phosphonic hỏi \"có\" thì trả nhánh \"không\" ⇒ rơi nhầm vào 28.09. Mẫu nhà: 0206 / 0401 / 0306 giữ TRỌN danh sách vế trong `hoi`. Sửa: `hoi` kể lại đủ 5 vế, ghép từ chính `trich` của mục này.",
+   "sua": {
+    "hoi": "Hàng này là axit phosphorơ, anhydrit khác, axit phosphonic, anhydrit của nó hoặc axit phosphinic không?"
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — hỏi đúng mục loại trừ (hydro photphua); neuCo=2853 / neuKhong=2809 đúng chiều."
+  }
+ ]
+}

@@ -1,0 +1,67 @@
+{
+ "nhom": "2811",
+ "nguoiSoat": "dev-soat-doc-lap-lo082",
+ "luc": "2026-10-29T06:45:00+07:00",
+ "phamViSoat": 1,
+ "soat": 10,
+ "giu": 9,
+ "sua": 1,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2811 (10 mục trong phạm vi: phamVi · boPhan · dieuKienVao · loaiTru · phanBiet; đọc thêm 6 tieuChi6 + 11 dong8 + 3 cay.tenDien nhưng KHÔNG sửa — ngoài phạm vi theo SOAT-LO). SỬA 1 · XOÁ 0 · CHÈN 0. Lớp lỗi máy KHÔNG bắt: phanBiet[0] hỏi KHÔNG mang ngoại lệ \"trừ khi được điều chế riêng cho các mục đích đặc biệt\" ⇒ hàng điều chế riêng bị đẩy nhầm sang 38.24. Bốn mục loại trừ có đích danh trong nguồn đều được ghi đủ (38.24 ×2 · 28.50 · 28.25); mục (a) \"Silica tự nhiên … (Chương 25)\" bản nháp không ghi là ĐÚNG theo luật 3 (nguồn chỉ nêu Chương, không nêu nhóm đích). GHI CHÚ mở cho người duyệt: `tieuChi6[2]` (281119) dịch \"Inorganic acids; other than hydrogen fluoride\" thành \"Axit vô cơ khác\" và `tieuChi6[5]` (281129) dịch \"n.e.c. in item no. 2811.2\" thành \"Hợp chất vô cơ chứa oxy khác của phi kim loại\" — hai chuỗi này TRÙNG với tên tiếng Việt mà cây HS hiện dùng (nút 28111 \"Axit vô cơ khác\", nút 28112 \"Hợp chất vô cơ chứa oxy khác của phi kim loại\") và với tên phân nhóm chính thức HS 2022 ⇒ KHÔNG phải lỗi, nhưng nếu muốn giữ đủ nghĩa \"n.e.c.\" thì phải viết \"khác thuộc nhóm 2811.2\" như mẫu nhà 0302.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `trich` là nguyên văn câu định nghĩa nhóm \"Nhóm này bao gồm các axit khoáng và các anhydrit và các oxit khác của các phi kim.\"; `text` chép lại đúng câu đó, không thêm chữ nào ngoài câu trích."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — `trich` ghép câu mở đầu nhóm với ghi chú chân trang ngay sau nó: \"Các chất quan trọng nhất được liệt kê dưới đây căn cứ theo thành phần phi kim loại của chúng (*): … * Theo thứ tự như sau: flo, clo, brom, iot, lưu huỳnh, selen, telu, nitơ, photpho, asen, cacbon, silic.\" (hai mảnh LIỀN NHAU trong nguồn, không phải \"ghép hai câu xa\"); quyTac/tomTat chỉ liệt kê đúng thứ tự phi kim loại mà nguồn nêu. GHI CHÚ (không sửa): nguồn có 13 tiêu đề phần (A)–(N) (A HỢP CHẤT CỦA FLO … N CÁC AXIT PHỨC) trong khi `boPhan` mô tả trục sắp xếp theo phi kim loại — đúng nội dung nhưng không liệt kê tên từng phần; nếu người duyệt muốn, có thể đổi sang liệt kê (A)–(N)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn: \"(b) Keo thể huyền phù của silica thường được phân loại vào nhóm 38.24 trừ khi được điều chế riêng cho các mục đích đặc biệt (ví dụ, như chất xử lý hoàn tất vải dệt thuộc nhóm 38.09).\" Nhãn `dieuKien` ĐÃ mang ngoại lệ \"trừ khi được điều chế riêng cho các mục đích đặc biệt\" (không mất) và đặt kết luận lên đầu để không bị cắt bởi trần 55 ký tự; \"thường được phân loại\" ở đây KHÔNG phải câu rào (đi kèm ngoại lệ tường minh) nên loại trừ vẫn dứt khoát. GHI CHÚ (không sửa): mục loại trừ (a) \"Silica tự nhiên … (Chương 25 …)\" bản nháp KHÔNG ghi là ĐÚNG — luật 3 cấm ghi khi nguồn chỉ nêu \"Chương N\", và 71.03/71.05 trong câu là chiếu dẫn chú giải chứ không phải đích loại trừ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn: \"(c) Gel silica có tẩm thêm muối coban (được dùng như một chất chỉ thị độ ẩm) (nhóm 38.24).\" Vế trong ngoặc là CHÚ THÍCH (công dụng), không phải ngoại lệ, và đã nằm trọn trong `trich`; đích 38.24 có tên trong câu trích."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn: \"Nhóm này loại trừ arsenic hydrides (ví dụ, AsH3) (nhóm 28.50).\" đích 28.50 có tên trong câu trích."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — nguồn (mục (N) CÁC AXIT PHỨC): \"Do antimon được xem là một kim loại trong Danh mục này, axit antimonic và oxit antimon phân loại vào nhóm 28.25.\" đích 28.25 có tên trong câu trích; giữ phép \"và\" của nguồn."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "MẤT NGOẠI LỆ NGAY TRONG CÂU ⇒ ĐẢO CHIỀU (lớp lỗi NẶNG, máy KHÔNG bắt). Câu nguồn: \"Keo thể huyền phù của silica thường được phân loại vào nhóm 38.24 TRỪ KHI được điều chế riêng cho các mục đích đặc biệt (ví dụ, như chất xử lý hoàn tất vải dệt thuộc nhóm 38.09).\" — nghĩa là keo thể huyền phù của silica CHỈ sang 38.24 khi KHÔNG được điều chế riêng cho mục đích đặc biệt. `loaiTru[0].dieuKien` đã mang ngoại lệ này, nhưng `hoi` bản nháp chỉ hỏi \"Hàng này là keo thể huyền phù của silica không?\" ⇒ hàng được điều chế riêng cho mục đích đặc biệt (nằm ở 38.09) bị hỏi \"có\" rồi đẩy sang 38.24 ⇒ SAI. Mẫu nhà: 8516 (\"… và KHÔNG chỉ để làm nóng nước, KHÔNG dùng trong gia hộ?\"), 8431 — câu hỏi phải mang theo điều kiện loại trừ. Sửa: `hoi` mang ngoại lệ, ghép từ chính `trich` của mục này (nguyên văn cụm ngoại lệ).",
+   "sua": {
+    "hoi": "Hàng này là keo thể huyền phù của silica và KHÔNG được điều chế riêng cho các mục đích đặc biệt không?"
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — hỏi đúng mục loại trừ (gel silica có tẩm thêm muối coban); neuCo=3824 / neuKhong=2811 đúng chiều."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — hỏi đúng mục loại trừ (arsenic hydrides, ví dụ AsH3); neuCo=2850 / neuKhong=2811 đúng chiều."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ — hỏi đủ cả 2 mục loại trừ (axit antimonic / oxit antimon); neuCo=2825 / neuKhong=2811 đúng chiều; đổi \"và\"→\"hoặc\" trong câu hỏi là đúng mẫu nhà."
+  }
+ ]
+}
