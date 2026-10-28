@@ -11219,7 +11219,7 @@ Không có `TRÀN-CLIP`, `VÙNG-IM-LẶNG`, `LƯỚC-NGOẠI-LỆ`, `CÂU-SAU-NG
 
 ## Lô 081 — nhóm 2716, 2801, 2802, 2803, 2804, 2805 (soạn)
 
-Người soạn: `dev-zcode-mm` · ngày 29/10/2026 · nhánh `so-tay/lo-081` · **92/92 mục (100 %)**.
+Người soạn: `dev-zcode-mm` · ngày 29/10/2026 · nhánh `so-tay/lo-081` (worktree `hs-code-api-wt-st-lo081`) · **PR #522** — **KHÔNG merge** (chờ soát độc lập) · **92/92 mục (100 %)**.
 
 ### Bước 1 — đọc tài liệu bắt buộc
 - `docs/giao-viec/so-tay/LUAT-CHUNG.md` (11 luật) — đọc TRỌN.
