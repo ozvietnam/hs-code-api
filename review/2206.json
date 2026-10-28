@@ -1,0 +1,51 @@
+{
+ "nhom": "2206",
+ "nguoiSoat": "dev-soat-doc-lap-lo067",
+ "vong": 1,
+ "luc": "2026-10-28T13:30:00+07:00",
+ "daKiem": 16,
+ "xoa": 1,
+ "sua": 4,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 067 — người soát KHÁC người soạn. Đọc LẠI TOÀN BỘ nguồn tmp/so-tay/nguon/2206.txt (14.025 ký tự) + ch22.chuong + sen.22060020/22060031/22060039/22060041/22060049/22060060/22060091 + wco.220600 + 10 dòng tax.*. ĐÃ ĐO NỀN NHÀ: 0/16 trích quá 300 ký tự, byte-exact 16/16, 0 vượt trần clip; chạy thật cổng soTayGates với 23 mô tả hàng thật (bia lager, vang táo, rượu sa kê, shandy, whisky, vodka, cồn etylic 96 %, rượu bổ sam-su…) ⇒ 0 challenge oan. Hai lớp lỗi: (1) `dieuKienVao` boolean chỉ phủ MỘT PHẦN nhóm (lô 054); (2) 3 dòng \"Loại khác\" mô tả phạm vi theo phân nhóm 6 số trong khi máy tự tính cha là tiêu đề quốc gia 7 số (lô 066 vòng 2). GIỮ NGUYÊN: `phamVi` lược mục (5) và (6) trong danh sách \"có thể kể đến\" — đo toàn kho, 158/1.288 đoạn lược có chứa từ \"trừ\" nên đây là mẫu nhà; câu lược KHÔNG làm đảo nghĩa mục nào; 2/2 mục loại trừ của nguồn có mặt (câu \"…nước ép quả… và… không quá 0,5 % (các nhóm 20.09 và 22.02 tương ứng)\" tách đúng theo \"tương ứng\").",
+ "thayDoi": [
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "XOÁ — `dieuKienVao` không phải điều kiện VÀO NHÓM mà là điều kiện để Ở LẠI nhóm, và chỉ áp cho MỘT THÀNH PHẦN của nhóm. Câu trích: \"Tất cả các loại đồ uống trên có thể có ga tự nhiên hoặc được nạp thêm carbon dioxide. Chúng được phân loại trong nhóm này khi được làm cao độ cồn hoặc khi lượng cồn được tăng lên do quá trình lên men thêm, với điều kiện là chúng vẫn giữ được đặc tính của các sản phẩm thuộc nhóm này.\" — \"Chúng\" chỉ là các biến thể CÓ GA/làm cao độ của 10 loại đồ uống liệt kê. Nếu để là điều kiện vào nhóm thì vang táo thường (2206.00.10, KHÔNG làm cao độ) sẽ bị loại khỏi nhóm 22.06 ⇒ sai chiều (lô 054). Để trống đúng luật \"dieuKienVao phải phủ cả nhóm\"; nội dung \"vẫn giữ được đặc tính\" không mất vì nó là điều kiện của biến thể, không phải điều kiện vào nhóm."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "sua",
+   "lyDo": "SAI CẤP PHẠM VI — dòng 22060039 là \"Loại khác\" của TIÊU ĐỀ QUỐC GIA 7 số 2206.003 (\"Toddy cọ dừa\"), máy tự tính `phamViLoaiKhac.cha = \"2206003\"` và `truAnhEm = 22060031`; bản nháp ghi \"phần còn lại của phân nhóm 2206.00\" ⇒ phạm vi RỘNG HƠN thật (nuốt cả 2206.004 \"Shandy\" và 2206.009). Sửa theo mẫu nhà 0301/0105 và lô 066 vòng 2. `trich`/`nguon` giữ nguyên.",
+   "sua": {
+    "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 2206.003, trừ 22060031"
+   }
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "sua",
+   "lyDo": "SAI CẤP PHẠM VI — dòng 22060049 là \"Loại khác\" của TIÊU ĐỀ QUỐC GIA 7 số 2206.004 (\"Shandy\"), máy tự tính `phamViLoaiKhac.cha = \"2206004\"` và `truAnhEm = 22060041`; bản nháp ghi \"phần còn lại của phân nhóm 2206.00\" ⇒ phạm vi RỘNG HƠN thật. Sửa theo mẫu nhà 0301/0105 và lô 066 vòng 2. `trich`/`nguon` giữ nguyên.",
+   "sua": {
+    "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 2206.004, trừ 22060041"
+   }
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "sua",
+   "lyDo": "SAI CẤP PHẠM VI — dòng 22060099 là \"Loại khác\" của TIÊU ĐỀ QUỐC GIA 7 số 2206.009 (\"Loại khác\"), máy tự tính `phamViLoaiKhac.cha = \"2206009\"` và `truAnhEm = 22060091`; bản nháp ghi \"phần còn lại của phân nhóm 2206.00\" ⇒ phạm vi RỘNG HƠN thật. Sửa theo mẫu nhà 0301/0105 và lô 066 vòng 2. `trich`/`nguon` giữ nguyên.",
+   "sua": {
+    "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 2206.009, trừ 22060091"
+   }
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "sua",
+   "lyDo": "TRÍCH CẮT CỤT GIỮA CÂU + NHIỀN ĐỊNH NGỮ GIỚI HẠN. Câu nguồn sen.22060091: \"Rượu gạo, trừ rượu sa kê, là sản phẩm chứa cồn lên men từ gạo hoặc gạo trộn lẫn với các loại ngũ cốc khác.\" — bản nháp cắt sau \"…lên men từ gạo\" ⇒ mất vế \"hoặc gạo trộn lẫn với các loại ngũ cốc khác\" ⇒ `dieuKien` hẹp hơn nguồn (rượu gạo trộn ngũ cốc cũng thuộc dòng này) — đúng lớp lỗi \"mất vế giới hạn\" (lô 017/046/048). Sửa: `trich` lấy TRỌN câu (cắt bằng neo từ nguồn, byte-exact) và `dieuKien` giữ đủ cả hai vế \"từ gạo hoặc gạo trộn lẫn với các loại ngũ cốc khác\". `nguon` giữ nguyên.",
+   "sua": {
+    "trich": "Rượu gạo, trừ rượu sa kê, là sản phẩm chứa cồn lên men từ gạo hoặc gạo trộn lẫn với các loại ngũ cốc khác.",
+    "dieuKien": "Rượu gạo, trừ rượu sa kê, là sản phẩm chứa cồn lên men từ gạo hoặc gạo trộn lẫn với các loại ngũ cốc khác"
+   }
+  }
+ ]
+}
